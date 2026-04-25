@@ -1,7 +1,7 @@
 # Maintainer: MCbabel <https://github.com/MCbabel>
 pkgname=steam-manifest-downloader
 pkgver=1.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Download Steam game depots and manifests via a modern Tauri GUI"
 arch=('x86_64')
 url="https://github.com/MCbabel/Steam-Manifest-Downloader"
@@ -9,9 +9,10 @@ license=('GPL-2.0-or-later')
 depends=(
   'webkit2gtk-4.1'
   'gtk3'
-  'libappindicator-gtk3'
+  'libayatana-appindicator'
   'openssl'
 )
+options=(!lto)
 makedepends=(
   'rust'
   'cargo'
@@ -32,20 +33,22 @@ prepare() {
 build() {
   cd "Steam-Manifest-Downloader-${pkgver}/src-tauri"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  # Force GNU linker — rust-lld cannot link ring/zstd-sys native assembly objects
-  export RUSTFLAGS="-C link-arg=-fuse-ld=bfd -C link-arg=-Wl,--copy-dt-needed-entries"
-  cargo build --frozen --release
+  # NO_STRIP keeps the embedded DepotDownloaderMod intact; Tauri's strip pass
+  # would otherwise corrupt the bundled .NET binary.
+  export NO_STRIP=true
+  cargo build --release --frozen
 }
 
 package() {
   cd "Steam-Manifest-Downloader-${pkgver}"
 
-  # Install main binary (DepotDownloaderMod is embedded via include_bytes!)
-  install -Dm755 "src-tauri/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "src-tauri/target/release/steam-manifest-downloader" "${pkgdir}/usr/bin/${pkgname}"
 
-  # Install desktop entry
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
+  install -Dm644 "assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
 [Desktop Entry]
 Categories=Utility;Game;
 Exec=${pkgname}
@@ -55,10 +58,4 @@ Type=Application
 Terminal=false
 Comment=Download Steam game depots and manifests
 EOF
-
-  # Install icon
-  install -Dm644 "assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
-
-  # Install license
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
