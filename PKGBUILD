@@ -8,7 +8,7 @@
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 
 pkgname=ocaml-sqlite3
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
@@ -21,7 +21,7 @@ replaces=('sqlite3-ocaml')
 conflicts=('sqlite3-ocaml')
 options=('!strip' 'staticlibs')
 source=("https://github.com/mmottl/sqlite3-ocaml/releases/download/${pkgver}/sqlite3-${pkgver}.tbz")
-sha256sums=('f0069532f78ac24f16d79262af01434952d0481f8bf80ae541dff4a56cc4e9ff')
+sha256sums=('729ec193fb1992bb1a2bce6736adbc82aa5bdb45d41c8cb715f84d5663a26135')
 
 build() {
     cd "${srcdir}/sqlite3-${pkgver}"
