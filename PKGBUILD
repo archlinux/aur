@@ -1,8 +1,8 @@
-# Maintainer: Maik <you@example.invalid>
+# Maintainer: pacmanics <pacman@altbox.de>
 
 pkgname=pentest-ghostwriter
 pkgver=6.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Local-first Arch Linux port of Ghostwriter for single-user offensive security workflows'
 arch=('x86_64')
 url='https://github.com/GhostManager/Ghostwriter'
@@ -13,7 +13,7 @@ depends=(
   'nodejs'
   'polkit'
   'postgresql'
-  'python'
+  'python312'
   'valkey'
   'xdg-utils'
 )
@@ -45,11 +45,12 @@ source=(
   'ghostwriter.desktop'
   'stop-ghostwriter.desktop'
   '0066_alter_reporttemplate_document.py'
+  '0068_merge_pacmanics_local_document_and_upstream_0067.py'
   'README.native-port.md'
 )
 sha256sums=('47ba1a268c60ab1a2bcb99301fc5697b3f05808d6407c484bcb1f90d2391fde0'
-            '58e19b92c73a6913b48c76581351bc21d55a04e0e126697d0ff120e33f913f4e'
-            '352f5a0cdf1c74a4368d39288a319b49ecb1055284a26fff08725400399a90d8'
+            '2cdb17f1ae988307d6cd2abcd0d54bdc11f2c4dcdff51683b0586896dafdb1e3'
+            '41e334ee463f79bab5bcff7a8aeb3239165b218f83077d6c1c962a8264f6abb6'
             '48cd59c775a3697920a414d7f3f17299e274d6d91e3761b9bc46b47eb0e372b2'
             '46fe6399794ee835ba2766b614641a1459e2562c1653d35f041db355ea1bb75d'
             'dacbde741cb2940fa91643e302ea30806986e9e4ccbe7fdeee14e47997f62a34'
@@ -69,6 +70,7 @@ sha256sums=('47ba1a268c60ab1a2bcb99301fc5697b3f05808d6407c484bcb1f90d2391fde0'
             'c6becd241b2e62443ecfe772e1cb5482425a82012136daa96ce8aa3c33f08864'
             '916d9c97509aad47e0e890c6c956329bd45dbadd324075b26c9b2f11f653aa23'
             '8afc13e41cf881eab51bec419ae7f5be97e9f66d421f0832543caebfa7bedadc'
+            '796e89d970858a30946ede593f3fe35e5594fc59461f80932fae1ba3e99ae77e'
             '8c7c12e253b5ce6e4d829e2151f8b210c5599632ce2380542edf62b029646eaa')
 
 prepare() {
@@ -250,6 +252,7 @@ package() {
   install -Dm644 "${srcdir}/stop-ghostwriter.desktop" "${pkgdir}/usr/share/applications/stop-ghostwriter.desktop"
   install -Dm644 "ghostwriter/static/images/favicons/favicon.ico" "${pkgdir}/usr/share/pixmaps/ghostwriter.ico"
   install -Dm644 "${srcdir}/0066_alter_reporttemplate_document.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0066_alter_reporttemplate_document.py"
+  install -Dm644 "${srcdir}/0068_merge_pacmanics_local_document_and_upstream_0067.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0068_merge_pacmanics_local_document_and_upstream_0067.py"
   install -Dm644 "${srcdir}/README.native-port.md" "${pkgdir}/usr/share/doc/${pkgname}/README.native-port.md"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
