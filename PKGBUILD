@@ -7,13 +7,13 @@ _pkgver=2.48.4
 _debianver="-1+b1"
 pkgname="${_pkgname}-${_pkgver}-compat-bin"
 pkgver="${_pkgver}"
-pkgrel=5
+pkgrel=6
 pkgdesc="File-synchronization tool. Specific version ${_pkgver}, compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!). Prebuilt binary from debian, repackaged."
 url='http://www.cis.upenn.edu/~bcpierce/unison/'
 arch=(
   'x86_64'
 )
-license=('GPL2')
+license=('GPL-3.0-or-later')
 depends=(
   'glibc'
 )
@@ -50,15 +50,21 @@ prepare() {
 }
 
 package() {
-    cd "${srcdir}/content"
+  cd "${srcdir}/content"
 
-    cp -a "${srcdir}/content"/* "${pkgdir}"/
+  cp -a "${srcdir}/content"/* "${pkgdir}"/
 
-    rm -R "${pkgdir}/usr/bin/unison-latest-stable"
-    rm -R "${pkgdir}/usr/share/doc-base"
-    rm -R "${pkgdir}/usr/share/man/man1/unison-latest-stable.1.gz"
+  rm -R "${pkgdir}/usr/bin/unison-latest-stable"
+  rm -R "${pkgdir}/usr/share/doc-base"
+  rm -R "${pkgdir}/usr/share/man/man1/unison-latest-stable.1.gz"
+  rm -R "${pkgdir}/usr/share/bash-completion"  # Would conflict with other unison versions, and file is somehow "broken" anyway.
 
-    for _docfile in "unison-${_pkgver}-manual".{html,pdf}; do
-      install -D -m644 "${srcdir}/${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
-    done
+  ## Move license file into place
+  install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  mv "${pkgdir}/usr/share/doc/unison/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+  for _docfiletype in html pdf; do
+    install -Dm644 "${srcdir}/unison-${_pkgver}-manual.${_docfiletype}" "${pkgdir}/usr/share/doc/${_pkgname}/unison-manual.${_docfiletype}"
+  done
+  mv "${pkgdir}/usr/share/doc/unison" "${pkgdir}/usr/share/doc/unison-${_pkgver}" # Do the renaming here. This will capture both files installed from upstream as well as PDF and HTML which are added manually.
 }
