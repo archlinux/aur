@@ -1,4 +1,4 @@
-# opencode-vim
+# opencode-vim-bin
 
 AI coding agent for the terminal - vim fork with enhanced vim features.
 
@@ -11,7 +11,7 @@ makepkg -si
 Or with an AUR helper:
 
 ```bash
-paru -S opencode-vim
+paru -S opencode-vim-bin
 ```
 
 ## Usage
