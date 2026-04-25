@@ -1,0 +1,20 @@
+pkgbase = material-maker
+	pkgdesc = A procedural textures authoring and 3D model painting tool based on the Godot game engine
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://rodzilla.itch.io/material-maker
+	arch = x86_64
+	license = MIT
+	makedepends = godot
+	makedepends = godot-export-templates-linux
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libvulkan.so
+	source = git+https://github.com/RodZill4/material-maker.git#tag=1.6
+	b2sums = dae64d8d5d88e6f78c146b654c854e73df1ac8401deedef468a4dee664ad6039a293c03393ea0ab7879eec2569c1da3d07fe1f0858dab458be0a105e77031f27
+
+pkgname = material-maker
