@@ -1,6 +1,6 @@
 pkgbase = tagspaces-bin
 	pkgdesc = An offline, open source, document manager with tagging support
-	pkgver = 6.10.5
+	pkgver = 6.11.2
 	pkgrel = 1
 	url = https://www.tagspaces.org
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tagspaces-bin
 	depends = xdg-utils
 	provides = tagspaces
 	conflicts = tagspaces
-	source = https://github.com/tagspaces/tagspaces/releases/download/v6.10.5/tagspaces-linux-amd64-6.10.5.deb
-	sha256sums = 8ef79097fa5ca7be02db22ec73952b1d49e661cb7c88a600aff5fe16d882e2a7
+	source = https://github.com/tagspaces/tagspaces/releases/download/v6.11.2/tagspaces-linux-amd64-6.11.2.deb
+	sha256sums = aba92e4167a00ee715de7ab650c572f096dc778cb53f37a9a05d0fc79390701d
 
 pkgname = tagspaces-bin
