@@ -15,7 +15,6 @@ pkgbase = crucible
 	depends = python-requests
 	depends = python-pillow
 	depends = umu-launcher
-	optdepends = proton-ge-custom: Proton-GE builds for running games
 	source = crucible-0.2.6.tar.gz::https://github.com/northmind/Crucible/archive/refs/tags/v0.2.6.tar.gz
 	source = fix-icon.py
 	sha256sums = 2c6a4cde11d22a67d4f7f8bdb1dd86439ba08d19ee210b08775f6c376ee6da3c
