@@ -2,11 +2,11 @@
 pkgname='wxparaver'
 pkgdesc='Expressive powerful and flexible trace visualizer for post-mortem trace analysis (from BSC).'
 pkgver='4.12.0.20241204'
-pkgrel='3'
+pkgrel='4'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL-2.1-or-later')
-depends=(wxwidgets-gtk3 webkit2gtk boost libxml2 zlib)
+depends=(wxwidgets-gtk3 boost libxml2 zlib)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         "wxparaver-tutorialsdownload-Fix-Boost-ASIO-1.87.0-removals.patch"
         "wxParaver.desktop")
