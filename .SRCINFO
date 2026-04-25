@@ -1,10 +1,10 @@
 pkgbase = unison-2.48.4
 	pkgdesc = Makes the specific version 2.48.4 of unison available as default unison.
 	pkgver = 2.48.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cis.upenn.edu/~bcpierce/unison/
 	arch = any
-	license = GPL2
+	license = GPL-3.0-or-later
 	depends = unison-2.48.4-compat
 	provides = unison=2.48.4
 	conflicts = unison
