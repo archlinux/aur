@@ -42,7 +42,9 @@ package() {
 	install -Dm644 "build/default_config.json" "${pkgdir}/usr/share/${pkgname}/default_config.json"
 
 	install -Dm644 "QUICKSTART.md" "${pkgdir}/usr/share/doc/${pkgname}/QUICKSTART.md"
-	install -Dm644 "README_EN.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+	install -Dm644 "RELEASE.md" "${pkgdir}/usr/share/doc/${pkgname}/RELEASE.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
