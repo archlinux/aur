@@ -93,7 +93,7 @@ int jint(cJSON *obj, const char *key) {
     return (item && cJSON_IsNumber(item)) ? item->valueint : 0;
 }
 
-void print_post(cJSON *post) {
+void print_post(cJSON *post, const char *handle) {
     if (jint(post, "system_message"))
         return;
 
@@ -108,29 +108,42 @@ void print_post(cJSON *post) {
     if (body && *body)
         printf("%s\n", body);
 
-    cJSON *media = cJSON_GetObjectItem(post, "media");
-    if (media && cJSON_IsArray(media)) {
-        cJSON *item;
-        cJSON_ArrayForEach(item, media) {
-            const char *type = jstr(item, "type");
-            const char *path = jstr(item, "path");
-            printf("  [%s: https://hjonk.me/storage/%s]\n",
-                type ? type : "file",
-                path ? path : "?");
+    // cdn_link: array of direct media URLs
+    cJSON *cdn = cJSON_GetObjectItem(post, "cdn_link");
+    if (cdn && cJSON_IsArray(cdn)) {
+        cJSON *link;
+        cJSON_ArrayForEach(link, cdn) {
+            if (cJSON_IsString(link))
+                printf("  [media: %s]\n", link->valuestring);
+        }
+    }
+
+    // lastfm_data: object when present, empty array when not
+    cJSON *lfm = cJSON_GetObjectItem(post, "lastfm_data");
+    if (lfm && cJSON_IsObject(lfm)) {
+        cJSON *track  = cJSON_GetObjectItem(lfm, "track");
+        if (track) {
+            const char *title  = jstr(track, "track_title");
+            const char *artist = jstr(track, "track_author");
+            const char *url    = jstr(track, "track_url");
+            printf("  [\u266a %s \u2014 %s]\n",
+                title  ? title  : "unknown",
+                artist ? artist : "unknown");
+            if (url) printf("     %s\n", url);
         }
     }
 
     printf("\n");
 }
 
-void print_posts(cJSON *arr) {
+void print_posts(cJSON *arr, const char *handle) {
     if (!arr || !cJSON_IsArray(arr)) {
         printf("nothing here.\n");
         return;
     }
     int n = cJSON_GetArraySize(arr);
     for (int i = n - 1; i >= 0; i--)
-        print_post(cJSON_GetArrayItem(arr, i));
+        print_post(cJSON_GetArrayItem(arr, i), handle);
 }
 
 void cmd_auth(const char *token) {
@@ -143,7 +156,7 @@ void cmd_auth(const char *token) {
 void cmd_feed(void) {
     cJSON *json = get_json(V1_URL "feed");
     if (!json) return;
-    print_posts(json);
+    print_posts(json, NULL);
     cJSON_Delete(json);
 }
 
@@ -178,7 +191,7 @@ void cmd_posts(const char *handle) {
     snprintf(url, sizeof(url), V1_URL "posts/%s", handle);
     cJSON *json = get_json(url);
     if (!json) return;
-    print_posts(json);
+    print_posts(json, handle);
     cJSON_Delete(json);
 }
 
@@ -187,7 +200,7 @@ void cmd_replies(const char *id) {
     snprintf(url, sizeof(url), V1_URL "replies/%s", id);
     cJSON *json = get_json(url);
     if (!json) return;
-    print_posts(json);
+    print_posts(json, NULL);
     cJSON_Delete(json);
 }
 

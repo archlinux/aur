@@ -1,6 +1,6 @@
 pkgbase = hjonkcli
 	pkgdesc = cli client for hjonk.me
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://hjonk.me
 	arch = x86_64
@@ -13,6 +13,6 @@ pkgbase = hjonkcli
 	options = !debug
 	options = strip
 	source = hjonk.c
-	sha256sums = b7aa84b1beafad2e94814d85dfc3bbf0bc4eaffb57286242b8cf15eaa0b9f7ca
+	sha256sums = 9c7714616738f686920692c12ce4810c378fd5f25efb2e0cb16d013b8339b8da
 
 pkgname = hjonkcli
