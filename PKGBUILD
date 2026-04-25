@@ -1,8 +1,8 @@
 # Maintainer: Archisman Panigrahi <apandada1 AT gmail DOT com>
 pkgname=wombat
 pkgver=0.4.0
-pkgrel=1
-pkgdesc="Scientific calculator using Numbat programming language with GTK4+libadwaita"
+pkgrel=2
+pkgdesc=" High-precision scientific calculator with full unit support, powered by Numbat"
 arch=('any')
 url="https://github.com/archisman-panigrahi/wombat"
 license=('GPL-3.0-or-later')
