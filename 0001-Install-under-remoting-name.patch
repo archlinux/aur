@@ -25,7 +25,7 @@ index 428beef48e14..13a609c1cfe9 100644
  DIST = dist
  else
 diff --git a/toolkit/mozapps/installer/packager.mk b/toolkit/mozapps/installer/packager.mk
-index 05bc3a664ff8..937b79eba724 100644
+index c663de3a732f..7487d1619524 100644
 --- a/toolkit/mozapps/installer/packager.mk
 +++ b/toolkit/mozapps/installer/packager.mk
 @@ -169,8 +169,8 @@ endif
