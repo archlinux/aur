@@ -1,6 +1,6 @@
 pkgbase = scopehal-apps-git
 	pkgdesc = glscopeclient and other client applications for libscopehal
-	pkgver = 0.0.e0dd8c5a
+	pkgver = 0.1.1.r343.g39dfe83
 	pkgrel = 1
 	url = https://github.com/ngscopeclient/scopehal-apps
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = scopehal-apps-git
 	makedepends = git
 	makedepends = vulkan-headers
 	makedepends = catch2
+	makedepends = lsb-release
 	depends = gtkmm3
 	depends = libsigc++
 	depends = ffts-git
