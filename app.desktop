@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Keybind visualizer
+GenericName=Keyboard shortcuts
+Comment=Interactive visualizer for keymaps
+Keywords=keymap;config;
+Categories=Utility;Viewer;
+Icon=input-keyboard
+Exec=keybind-visualizer
