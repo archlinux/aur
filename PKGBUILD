@@ -2,20 +2,20 @@
 # Maintainer: Gaurav Gosain <a77x86@gmail.com>
 
 pkgname='golars-bin'
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Pure-Go DataFrames modeled on polars. Eager + lazy + streaming, no cgo.'
 url='https://github.com/Gaurav-Gosain/golars'
 arch=('aarch64' 'x86_64')
 license=('MIT')
-provides=('golars' 'golars-lsp' 'golars-mcp')
+provides=('golars' 'golars-lsp' 'golars-mcp' 'golars-kernel')
 conflicts=('golars')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/golars/releases/download/v${pkgver}/golars_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('933516dc500efe84c3d08b3092a9aef9e3288d999019dfc0b4f0d823b9f88611')
+sha256sums_aarch64=('2341ff591f38863070c49ae10c84c62eaea78581e8b82cc69b8d65201b9c368d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/golars/releases/download/v${pkgver}/golars_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('3a08e6f607512482f3622e76cf9d6d867704d5b32e5225a830000ffbda373abf')
+sha256sums_x86_64=('282a1e4ecba71b7e347f22c49c75a8a6f798c253e7f2f45856a91f5830536b93')
 
 package() {
   # Archives ship with a top-level wrap directory
@@ -28,9 +28,10 @@ package() {
   *)       _d="." ;;
   esac
   cd "$_d"
-  install -Dm755 "./golars"     "${pkgdir}/usr/bin/golars"
-  install -Dm755 "./golars-lsp" "${pkgdir}/usr/bin/golars-lsp"
-  install -Dm755 "./golars-mcp" "${pkgdir}/usr/bin/golars-mcp"
+  install -Dm755 "./golars"        "${pkgdir}/usr/bin/golars"
+  install -Dm755 "./golars-lsp"    "${pkgdir}/usr/bin/golars-lsp"
+  install -Dm755 "./golars-mcp"    "${pkgdir}/usr/bin/golars-mcp"
+  install -Dm755 "./golars-kernel" "${pkgdir}/usr/bin/golars-kernel"
   install -Dm644 "./LICENSE"    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "./NOTICE"     "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 
