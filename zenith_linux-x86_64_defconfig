@@ -11531,7 +11531,7 @@ CONFIG_PKGLIST_USE_CONFIGFS=y
 #
 # KernelSU
 #
-CONFIG_KSU=m
+# CONFIG_KSU is not set
 # CONFIG_KSU_DEBUG is not set
 # end of KernelSU
 # end of Device Drivers

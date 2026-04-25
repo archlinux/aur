@@ -80,6 +80,9 @@ if [ "$SCCACHE" ]; then
 		RUSTC="$SCCACHE $RUSTC"
 fi
 
+# Workaround for android modules
+export KBUILD_MODPOST_WARN=1
+
 OLD_PATH=$PATH
 export PATH=$TARGET_CLANG_PATH:$RUST_BIN_DIR:$PATH
 
@@ -93,7 +96,7 @@ _pkgname="${pkgbase}${_pkgsuffix}-git"
 
 _ver=${_BRANCH%-*}
 _ver=${_BRANCH%_*}
-pkgver=6.18.15
+pkgver=6.18.21
 pkgdesc="Android™ Generic Project's Zenith linux kernel - ${_BRANCH} branch"
 pkgrel=1
 _kernver="$pkgver-$pkgrel"
@@ -102,6 +105,9 @@ arch=('x86' 'x86_64')
 url="https://github.com/android-generic/kernel-${_kernel_name}.git"
 license=('GPL-2.0-only')
 options=('!strip' '!debug' '!lto')
+optdepends=(
+	'modloader: for loading Android kernel modules'
+)
 makedepends=(
 	bc
 	clang-android
@@ -236,7 +242,7 @@ source=(
 
 sha256sums=(
 	'SKIP'
-	'0ac0c2f35795d05ec6de41d818e668e1f1589378ec64dcc41724ce59c331ab61'
+	'159f072734e2624a395e45dace1cd2052b27eaff07a6a98d24833d0c633db9da'
 )
 
 export KBUILD_BUILD_HOST=blisslabs
@@ -274,7 +280,7 @@ export KERNEL_TARGET=bzImage
 export KERNEL_CONFIG_DIR=arch/x86/configs
 export TARGET_KERNEL_CONFIG=android-${CARCH}_defconfig
 
-KBUILD_OUTPUT="out"
+KBUILD_OUTPUT="."
 KBUILD_JOBS=$(nproc)
 export MAKE_CMD=(
 	make
@@ -438,12 +444,12 @@ _package-headers() {
 	install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
 	# KernelSU headers
-	install -Dt "$builddir/drivers/kernelsu" -m644 drivers/kernelsu/*.h
+	# install -Dt "$builddir/drivers/kernelsu" -m644 drivers/kernelsu/*.h
 
 	# Selinux headers
-	install -Dt "$builddir/security/selinux" -m644 $KBUILD_OUTPUT/security/selinux/*.h
-	install -Dt "$builddir/security/selinux/include" -m644 security/selinux/include/*.h
-	install -Dt "$builddir/security/selinux/ss" -m644 security/selinux/ss/*.h
+	# install -Dt "$builddir/security/selinux" -m644 $KBUILD_OUTPUT/security/selinux/*.h
+	# install -Dt "$builddir/security/selinux/include" -m644 security/selinux/include/*.h
+	# install -Dt "$builddir/security/selinux/ss" -m644 security/selinux/ss/*.h
 
 	echo "Installing KConfig files..."
 	find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;

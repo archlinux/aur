@@ -1,6 +1,6 @@
 pkgbase = linux-zenith
 	pkgdesc = Android™ Generic Project's Zenith linux kernel - 6.18 branch
-	pkgver = 6.18.15
+	pkgver = 6.18.21
 	pkgrel = 1
 	url = https://github.com/android-generic/kernel-zenith.git
 	arch = x86
@@ -23,13 +23,14 @@ pkgbase = linux-zenith
 	makedepends = tar
 	makedepends = xz
 	makedepends = zstd
+	optdepends = modloader: for loading Android kernel modules
 	options = !strip
 	options = !debug
 	options = !lto
 	source = linux-zenith::shallowclone+https://github.com/android-generic/kernel-zenith.git?branch=6.18&depth=1
 	source = zenith_linux-x86_64_defconfig
 	sha256sums = SKIP
-	sha256sums = 0ac0c2f35795d05ec6de41d818e668e1f1589378ec64dcc41724ce59c331ab61
+	sha256sums = 159f072734e2624a395e45dace1cd2052b27eaff07a6a98d24833d0c633db9da
 
 pkgname = linux-zenith-git
 	pkgdesc = The Android™ Generic Project's Zenith linux kernel - 6.18 branch kernel and modules
