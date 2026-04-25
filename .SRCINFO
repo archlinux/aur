@@ -1,7 +1,7 @@
 pkgbase = dosbox-debug
 	pkgdesc = Emulator with builtin DOS for running DOS games (includes debugger for DOS apps)
 	pkgver = 0.74.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dosbox.sourceforge.net/
 	arch = x86_64
 	license = GPL
@@ -20,7 +20,9 @@ pkgbase = dosbox-debug
 	options = !buildflags
 	source = http://downloads.sourceforge.net/dosbox/dosbox-0.74-3.tar.gz
 	source = dosbox.png
+	source = ncurses6.patch
 	sha256sums = c0d13dd7ed2ed363b68de615475781e891cd582e8162b5c3669137502222260a
 	sha256sums = 491c42d16fc5ef7ee2eca1b736f7801249d4ca8c0b236a001aec0d3e24504f3b
+	sha256sums = 17de71d8e333aee01d6c75a15ef5545244af30e9bf67828a853d82f7d72ad00a
 
 pkgname = dosbox-debug

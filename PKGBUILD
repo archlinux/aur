@@ -9,7 +9,7 @@ srcname=dosbox
 pkgver=0.74.3
 # Upstream version number
 usver=0.74-3
-pkgrel=1
+pkgrel=2
 pkgdesc='Emulator with builtin DOS for running DOS games (includes debugger for DOS apps)'
 arch=('x86_64')
 url='http://dosbox.sourceforge.net/'
