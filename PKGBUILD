@@ -1,5 +1,5 @@
 pkgname=ebyt
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Minimal X11 activity tracker"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('ebyt')
 conflicts=('ebyt-bin')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/barjo/ebyt/archive/v$pkgver.tar.gz")
-sha256sums=('4c55846bb62277f8b4e710d399d76464d5b09289f2b78ea8ae7b700d583b6193')
+sha256sums=('a851f16caa35028b78b3ffdfea2eb50334e885d4202ee4d1c14a0d5ad9df50bf')
 
 build() {
     cd "$pkgname-$pkgver"

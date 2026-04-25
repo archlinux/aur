@@ -1,6 +1,6 @@
 pkgbase = ebyt
 	pkgdesc = Minimal X11 activity tracker
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/barjo/ebyt
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ebyt
 	provides = ebyt
 	conflicts = ebyt-bin
 	options = !debug
-	source = ebyt-0.2.0.tar.gz::https://github.com/barjo/ebyt/archive/v0.2.0.tar.gz
-	sha256sums = 4c55846bb62277f8b4e710d399d76464d5b09289f2b78ea8ae7b700d583b6193
+	source = ebyt-0.3.0.tar.gz::https://github.com/barjo/ebyt/archive/v0.3.0.tar.gz
+	sha256sums = a851f16caa35028b78b3ffdfea2eb50334e885d4202ee4d1c14a0d5ad9df50bf
 
 pkgname = ebyt
