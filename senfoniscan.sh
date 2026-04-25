@@ -4,10 +4,12 @@
 USER_DIR="$HOME/.local/share/senfoniscan"
 
 # Check if it is the first run for the user
-if [ ! -d "$USER_DIR" ]; then
-    echo -e "\e[96m[*] SenfoniScan: Initializing user environment in $USER_DIR...\e[0m"
-    mkdir -p "$USER_DIR"
-    cp -r /usr/share/senfoniscan/* "$USER_DIR/"
+# Sync/Update code files but preserve .venv and config.json
+mkdir -p "$USER_DIR"
+cp /usr/share/senfoniscan/*.py "$USER_DIR/" 2>/dev/null
+cp -r /usr/share/senfoniscan/core "$USER_DIR/" 2>/dev/null
+if [ ! -f "$USER_DIR/config.json" ]; then
+    cp /usr/share/senfoniscan/config.json "$USER_DIR/" 2>/dev/null
 fi
 
 # Switch to user directory and execute

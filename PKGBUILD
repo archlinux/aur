@@ -1,7 +1,7 @@
 # Maintainer: mefkuz <mefkuz@example.com>
 
 pkgname=senfoniscan-git
-pkgver=2.0
+pkgver=01bd2d2
 pkgrel=1
 pkgdesc="AI-Powered Passive Reconnaissance CLI (DNS, Subdomain, Screenshots, Wayback, Shodan, HIBP, AI Report)"
 arch=('any')
