@@ -3,7 +3,7 @@
 pkgname=nrc
 _pkgver=0.6.21
 _channel=beta
-_rel=1
+_rel=2
 _is_beta=true
 if [ "${_is_beta}" = "false" ]; then
     pkgver=${_pkgver}
