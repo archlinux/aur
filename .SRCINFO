@@ -1,6 +1,6 @@
 pkgbase = nscde-zh
 	pkgdesc = Not so Common Desktop Environment: Modern and functional CDE based on FVWM - Chinese Localization
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/wenyinos/NsCDE-zh
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = nscde-zh
 	optdepends = picom: X compositor that may fix tearing issues
 	optdepends = gkrellm: System monitor package fits nicely with NsCDE
 	provides = nscde-zh
-	source = nscde-zh-2.3.3.tar.gz::https://github.com/wenyinos/NsCDE-zh/archive/refs/tags/v2.3.3_zh.tar.gz
+	source = nscde-zh-2.3.4.tar.gz::https://github.com/wenyinos/NsCDE-zh/archive/refs/tags/v2.3.4_zh.tar.gz
 	sha256sums = SKIP
 
 pkgname = nscde-zh
