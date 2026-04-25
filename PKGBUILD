@@ -2,7 +2,7 @@
 pkgname=monokular
 pkgver=1.0.0
 pkgrel=3
-pkgdesc="Export PDF pages as images with preview — one thing, done well"
+pkgdesc="Export PDF pages as images with preview - one thing, done well"
 arch=('any')
 url="https://github.com/dyedfox/monokular"
 license=('GPL-3.0-or-later')

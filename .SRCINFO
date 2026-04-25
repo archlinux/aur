@@ -1,5 +1,5 @@
 pkgbase = monokular
-	pkgdesc = Export PDF pages as images with preview — one thing, done well
+	pkgdesc = Export PDF pages as images with preview - one thing, done well
 	pkgver = 1.0.0
 	pkgrel = 3
 	url = https://github.com/dyedfox/monokular
