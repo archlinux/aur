@@ -6,12 +6,7 @@ pkgdesc="Live wallpaper manager for Wayland using mpvpaper"
 arch=('x86_64')
 url="https://github.com/sunwoo101/livepaper"
 license=('MIT')
-depends=('mpvpaper' 'dotnet-runtime')
-optdepends=(
-    'ffmpeg: thumbnail auto-generation for the Import Wallpaper flow'
-    'libpulse: pactl/parec for the Auto-Mute feature (provided by pipewire-pulse on PipeWire systems)'
-    'wl-clipboard: persistent clipboard for the Settings keybind Copy buttons (snippets stay copied after closing livepaper)'
-)
+depends=('mpvpaper' 'dotnet-runtime' 'ffmpeg' 'libpulse' 'wl-clipboard')
 makedepends=('dotnet-sdk')
 provides=('livepaper')
 conflicts=('livepaper')
