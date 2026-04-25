@@ -7,7 +7,19 @@ arch=('x86_64')
 url="https://github.com/Berny23/virtual-surround-manager"
 license=('MIT')
 depends=('pipewire')
-makedepends=('git' 'ninja' 'libpipewire', 'base-devel', 'extra-cmake-modules', 'cmake', 'kirigami', 'ki18n', 'kcoreaddons', 'breeze', 'kiconthemes', 'qt6-base', 'qt6-declarative', 'qqc2-desktop-style' )
+makedepends=('git'
+    'ninja'
+    'libpipewire'
+    'base-devel'
+    'extra-cmake-modules'
+    'cmake'
+    'kirigami'
+    'ki18n'
+    'kcoreaddons''breeze'
+    'kiconthemes'
+    'qt6-base'
+    'qt6-declarative'
+    'qqc2-desktop-style')
 conflicts=("$pkgname")
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
