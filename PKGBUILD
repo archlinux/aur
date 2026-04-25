@@ -14,11 +14,11 @@ package() {
     cd "Edex-main"
 
     # install prebuilt binary
-    install -Dm755 "edex-linux/edex" "$pkgdir/usr/bin/edex"
+    install -Dm755 "edex-linux/main" "$pkgdir/usr/bin/edex"
 
     # install fonts
     install -dm755 "$pkgdir/usr/share/edex/fonts"
-    cp -r assets/fonts/. "$pkgdir/usr/share/edex/fonts/"
+    cp -r edex-linux/assets/fonts/. "$pkgdir/usr/share/edex/fonts/"
 
     # install readme
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
