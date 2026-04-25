@@ -1,6 +1,6 @@
 pkgbase = nyrra-foundry-cli-bin
 	pkgdesc = Foundry DevOps automation CLI
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/nyrra-labs/nyrra-foundry-cli
 	install = nyrra-foundry-cli-bin.install
