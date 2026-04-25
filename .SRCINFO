@@ -1,6 +1,6 @@
 pkgbase = rebased-bin
 	pkgdesc = Standalone JetBrains-based Git client (prebuilt binary)
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/DetachHead/rebased
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = rebased-bin
 	provides = rebased
 	conflicts = rebased
 	options = !strip
-	source = rebased-1.0.9.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.0.9/rebased.tar.gz
-	sha256sums = 75df29f91824f39e36e83c21653d3d7251082f70dacb271731b589f6ca21bf46
+	source = rebased-1.0.10.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.0.10/rebased.tar.gz
+	sha256sums = 76eea6322e20d1aa2ab66c35427c2a02f62cbb140e75636cda5860248496fe3a
 
 pkgname = rebased-bin
