@@ -3,8 +3,8 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=23.0.0_r573751.66f06f54cb4d
-pkgrel=2
+pkgver=23.0.0_r578095.0ad0e899d456
+pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
 url="https://libclc.llvm.org/"
@@ -17,7 +17,7 @@ source=("git+https://github.com/llvm/llvm-project.git"
         libclc.pc.in
 )
 sha256sums=('SKIP'
-            'b1503d1f26455b55d0da9e6aa5cf9f56a2a3db443151397f3018dbf449273982'
+            '686eaf3427ae9990110028c5b9d7f5e1a0ad17fc6188b2bffd6484d81400a848'
             'a4cfc362c5bbfcaae407496abbc5407454474ab1d2f9e4aa1ee12e81be1a0db6')
 options=(!lto !debug)
 
@@ -39,7 +39,7 @@ prepare() {
   # the 3rd removes (revision count) r461863 so only (the commit hash) 8064caf83fb1 remains
 
   git reset --hard $_commit_hash
-  
+
   # https://github.com/llvm/llvm-project/commit/10644a143922816b8326e8be0d1790220ba2cd6b.patch removes the libclc.pc needed by mesa
   # the commit can't be reverted cleanly, manually created a patch
   patch -Np1 -i "$srcdir"/revert-10644a1.patch
@@ -60,24 +60,31 @@ pkgver() {
     echo "${_pkgver}"
 }
 
+_targets=( amdgcn-amd-amdhsa-llvm clspv-- clspv64-- nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda spirv-mesa3d- spirv64-mesa3d- )
 build() {
     export CC=clang
     export CXX=clang++
-    cmake \
-      -B _build \
-      -S "$srcdir"/llvm-project/libclc  \
-      -G Ninja \
-      -D CMAKE_BUILD_TYPE=Release \
-      -D CMAKE_INSTALL_PREFIX=/usr \
-      -D LLVM_EXTERNAL_LIT=/usr/bin/lit \
-      -Wno-dev
-    ninja $NINJAFLAGS -C _build
-
-
+    for t in "${_targets[@]}"
+    do
+      cmake \
+        -B _build-$t \
+        -S "$srcdir"/llvm-project/libclc  \
+        -G Ninja \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D LLVM_DIR=/usr/lib/cmake/llvm \
+        -D LLVM_DEFAULT_TARGET_TRIPLE="$t" \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -Wno-dev
+      ninja $NINJAFLAGS -C _build-$t
+    done
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
+  for t in "${_targets[@]}"
+  do
+    DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C "_build-$t" install
+  done
+  
   install -Dm644 "$srcdir"/llvm-project/libclc/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
 }
 
