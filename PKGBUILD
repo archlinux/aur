@@ -1,8 +1,7 @@
-# Maintainer: MYT1 <MYT1 @ QQ .com>
-# Maintainer: i4 <admin@i4.cn>
-# Maintainer: taotieren <admin@taotieren.com>
+# Maintainer: MaoYaoTang <maoyaotang @ QQ .com>
 pkgname=i4tools-bin
-pkgver=3.10.001
+_pkgname=cn.i4Tools
+pkgver=9.0.022
 pkgrel=1
 epoch=1
 pkgdesc='爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。'
@@ -29,11 +28,17 @@ depends=(
     'libimobiledevice'
     'libimobiledevice-glue')
 source=(
-    "${pkgname%-bin}_v${pkgver}.rpm::https://d-updater.i4.cn/i4linux/deb/${pkgname%-bin}_v${pkgver}.rpm"
+    "${_pkgname}_${pkgver}_amd64.deb::https://d-updater.i4.cn/i4tools9/download/linux/x64/${_pkgname}_${pkgver}_amd64.deb"
     "https://www.i4.cn/copyright.html"
 )
-sha256sums=('5c8432b6f89a8d2b89263d0770d68afd313e70afdf86e1978e52a02f1c266582'
+sha256sums=('b20978c9c5e652a67b87dbb36a8c17731f1937f6cba5f793dc69adac981d90be'
             '79bf7500e724fda34fb534fe2b1e84e16cf39bb1e661e5368534f004dab729a5')
+
+install=i4Tools.install
+
+prepare() {
+    tar -Jxf data.tar.xz -C "${srcdir}"
+}
 
 package() {
     install -m755 -d "${pkgdir}/opt/${pkgname%-bin}"
@@ -46,17 +51,19 @@ package() {
     cp -r "${srcdir}/opt/apps/cn.i4Tools/"* "${pkgdir}/opt/${pkgname%-bin}/"
     sed -i 's|/opt/apps/cn.i4Tools/run.sh|i4tools %u|g' \
         "$pkgdir/usr/share/applications/"${pkgname%-bin}.desktop
-    sed -i 's|/opt/apps/cn.i4Tools/resources/logo.png|i4tools|g' \
+    sed -i 's|/opt/apps/cn.i4Tools/resources/logo.svg|i4tools|g' \
         "$pkgdir/usr/share/applications/"${pkgname%-bin}.desktop
     sed -i 's|utils|Utility;|g' \
         "$pkgdir/usr/share/applications/"${pkgname%-bin}.desktop
-    sed '7s/.*/    cd \/opt\/i4tools/g' -i "${pkgdir}/opt/i4tools/"run.sh
+#    sed '7s/.*/    cd \/opt\/i4tools/g' -i "${pkgdir}/opt/i4tools/"run.sh
     sed -i 's|export QT_AUTO_SCREEN_SCALE_FACTOR=0|export QT_AUTO_SCREEN_SCALE_FACTOR=1|g' \
         "${pkgdir}/opt/i4tools/"run.sh
-    sed -i '8i\	export LD_LIBRARY_PATH=\/opt\/i4tools\/lib:$LD_LIBRARY_PATH' "${pkgdir}/opt/i4tools/"run.sh
+#    sed -i '8i\	export LD_LIBRARY_PATH=\/opt\/i4tools\/lib:$LD_LIBRARY_PATH' "${pkgdir}/opt/i4tools/"run.sh
 #    cp -r "${srcdir}/opt/apps/cn.i4Tools/"* "${pkgdir}/opt/${pkgname%-bin}/"
     cd "${srcdir}/opt/apps/cn.i4Tools/resources"
-    cp logo.png "$pkgdir"/usr/share/pixmaps/${pkgname%-bin}.png
+#    cp logo.png "$pkgdir"/usr/share/pixmaps/${pkgname%-bin}.png
     cp logo.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg
     ln -s /opt/i4tools/run.sh "${pkgdir}/usr/bin/"${pkgname%-bin}
+    rm -r ${pkgdir}/opt/i4tools/cn.i4Tools.desktop
+    rm -r ${pkgdir}/opt/i4tools/share
 }
