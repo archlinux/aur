@@ -21,7 +21,6 @@ path = [
     "*.desktop",
     "*.hook",
     "cmake-target-none.patch",
-    "cmake-disable-gxx-warning.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

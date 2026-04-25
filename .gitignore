@@ -5,8 +5,6 @@
 !LICENSES/
 !LICENSES/*
 !REUSE.toml
-!.nvchecker.toml
 !.gitignore
 
 !cmake-target-none.patch
-!cmake-disable-gxx-warning.patch

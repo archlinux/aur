@@ -1,6 +1,6 @@
 pkgbase = vmaware-git
 	pkgdesc = Advanced VM detection library and tool
-	pkgver = 2.7.0
+	pkgver = 2.7.0.r58.g37c98e6
 	pkgrel = 1
 	url = https://github.com/kernelwernel/VMAware
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = vmaware-git
 	options = !debug
 	source = git+https://github.com/kernelwernel/VMAware
 	source = cmake-target-none.patch
-	source = cmake-disable-gxx-warning.patch
 	b2sums = SKIP
 	b2sums = 6c34166362dc9fe11bdbde6252e0e1e1c4baef33a29f93735115af75691cc6c0ee1574101d1be05391b769ae0bfce5819097cf94fb8a39660cb68c4f14c9bbd0
-	b2sums = 63bd46d0294c4e168b1188f787203a14881a6580d3dba97d68302d0680be5a9f118f352c49a950320ec7e606f438ccaac11b196682bafe9031639835d188c6c8
 
 pkgname = vmaware-git
