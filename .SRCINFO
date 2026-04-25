@@ -1,7 +1,7 @@
 pkgbase = crucible
 	pkgdesc = Linux launcher for Windows games via UMU and Proton
 	pkgver = 0.2.6
-	pkgrel = 4
+	pkgrel = 2
 	url = https://github.com/northmind/Crucible
 	arch = any
 	license = LicenseRef-proprietary
