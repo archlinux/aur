@@ -4,7 +4,7 @@
 # Contributor: Clarence <xjh.azzbcc@gmail.com>
 pkgname="ocenaudio-bin"
 _pkgname=ocenaudio
-pkgver=3.18
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${pkgver}_x86_64.tar.zst::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.zst?version=v${pkgver}")
-sha512sums=('8c6e528c4ffc69fcc6ce2fac0e2bb21ca0d82d0e75a945141e8475a1153e10bcb8a350ea195828cbae0a268f5442a59f7ad494c6ba7892d2f4abe447eaf576c4')
+sha512sums=('e15ff9e434a082b47757b6d96e35395040187f6b75de392a82d560fa38fae6f699133990b8642075dad94b4d4602734d4a5503dea53e489bf17c4cb0ebea5ea0')
 
 package() {
   cp -r "$srcdir/opt" "$pkgdir/"
