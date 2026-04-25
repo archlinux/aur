@@ -7,12 +7,12 @@
 
 pkgname=tuxedo-control-center
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to control performance, energy, fan and comfort settings on TUXEDO laptops. (With system-wide electron) "
 arch=(x86_64)
 url="https://github.com/tuxedocomputers/tuxedo-control-center"
 license=('GPL3')
-_electron='electron39'
+_electron='electron41'
 depends=(
   # 'tuxedo-drivers-dkms'
   ${_electron}
