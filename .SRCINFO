@@ -7,6 +7,7 @@ pkgbase = snry-shell-qs
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = go
 	depends = ansible-core
 	depends = git
 	depends = rsync

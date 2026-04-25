@@ -7,7 +7,7 @@ arch=('any')
 url='https://github.com/sonroyaalmerol/dots-hyprland'
 license=('MIT')
 depends=('ansible-core' 'git' 'rsync' 'python' 'uv' 'sudo' 'findutils' 'which')
-makedepends=('git')
+makedepends=('git' 'go')
 source=("git+https://github.com/sonroyaalmerol/dots-hyprland.git")
 sha256sums=('SKIP')
 backup=()
@@ -17,6 +17,12 @@ package() {
   cd "$srcdir/dots-hyprland"
   install -dm755 "$pkgdir/usr/share/snry-shell"
   cp -a ansible.cfg inventory.ini requirements.yml setup.yml uninstall.yml diagnose.yml checkdeps.yml group_vars roles data files files-extra "$pkgdir/usr/share/snry-shell/"
+
+  # Build and ship osk-watcher
+  cd "$srcdir/dots-hyprland/scripts/osk-watcher"
+  go build -o osk-watcher .
+  install -dm755 "$pkgdir/usr/share/snry-shell/scripts/osk-watcher"
+  install -Dm755 osk-watcher "$pkgdir/usr/share/snry-shell/scripts/osk-watcher/osk-watcher"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
 #!/bin/bash
 BASE=/usr/share/snry-shell
