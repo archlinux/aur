@@ -18,11 +18,13 @@ package() {
   install -dm755 "$pkgdir/usr/share/snry-shell"
   cp -a ansible.cfg inventory.ini requirements.yml setup.yml uninstall.yml diagnose.yml checkdeps.yml group_vars roles data files files-extra "$pkgdir/usr/share/snry-shell/"
 
-  # Build and ship osk-watcher
-  cd "$srcdir/dots-hyprland/scripts/osk-watcher"
-  go build -o osk-watcher .
-  install -dm755 "$pkgdir/usr/share/snry-shell/scripts/osk-watcher"
-  install -Dm755 osk-watcher "$pkgdir/usr/share/snry-shell/scripts/osk-watcher/osk-watcher"
+  # Build and ship snry-daemon
+  cd "$srcdir/dots-hyprland/scripts/snry-daemon"
+  go build -o snry-daemon .
+  install -dm755 "$pkgdir/usr/share/snry-shell/scripts/snry-daemon"
+  install -Dm755 snry-daemon "$pkgdir/usr/share/snry-shell/scripts/snry-daemon/snry-daemon"
+  install -Dm755 snry-daemon "$pkgdir/usr/share/snry-shell/scripts/snry-daemon/osk-input"
+  install -Dm755 snry-daemon "$pkgdir/usr/share/snry-shell/scripts/snry-daemon/snry-idle"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
 #!/bin/bash
 BASE=/usr/share/snry-shell
