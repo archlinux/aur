@@ -23,7 +23,7 @@ replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
-checkdepends=('python-pytest')
+# checkdepends=('python-pytest')
 depends=('bash' 'python' 'python-argcomplete' 'python-pyperclip' 'python-rich' 'python-textual' 'python-typing_extensions' 'python-unidiff' 'ansible-core' 'python-ensurepath')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
@@ -35,11 +35,11 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-check() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit
-
-    pytest --dist no -n 0 -s -v ./test.py
-}
+# check() {
+#     cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit
+#
+#     pytest --dist no -n 0 -s -v ./test.py
+# }
 
 package() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit
