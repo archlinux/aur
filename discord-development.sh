@@ -16,4 +16,4 @@ else
 fi
 
 echo "Passing extra electron flags: ${EXTRA_FLAGS}"
-/opt/discord-development/DiscordDevelopment "${EXTRA_FLAGS}"
+/opt/discord-development/discord-development "${EXTRA_FLAGS}"
