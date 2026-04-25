@@ -1,7 +1,7 @@
 # Maintainer: Emeric Grange <emeric.grange@gmail.com>
 
 pkgname=toolblex
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="A Bluetooth Low Energy device scanner and analyzer"
 url="https://github.com/emericg/toolBLEx"
@@ -12,7 +12,7 @@ makedepends=("qt6-tools" "cmake")
 optdepends=("bluez-utils: extra bluetooth infos")
 
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/emericg/toolBLEx/archive/v${pkgver}.tar.gz")
-sha256sums=('bf496b2ed9f3aa1e3c5613fabb291bc7e7ac2cf17b49abefe47543e2197355ef')
+sha256sums=('af940dffd14d87b9f40fae6df42e27b8eba97e672f2d031d9d1167146383127b')
 
 build() {
   cd "toolBLEx-${pkgver}"
