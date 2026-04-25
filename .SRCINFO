@@ -1,6 +1,6 @@
 pkgbase = undock-bin
 	pkgdesc = Extract contents of a container image in a local folder
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/crazy-max/undock
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = undock-bin
 	provides = undock
 	conflicts = undock
 	options = !strip
-	source_x86_64 = https://github.com/crazy-max/undock/releases/download/v0.12.0/undock_0.12.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6e1e20f2599d28ab59edb67a2ad5211277bf33e3a32cbaa9a2d5fe288f0f0fb2
-	source_aarch64 = https://github.com/crazy-max/undock/releases/download/v0.12.0/undock_0.12.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 809fed57bc926432fefb226900d6cb4a4656f5a21c933016720acd4b1fffe967
+	source_x86_64 = https://github.com/crazy-max/undock/releases/download/v0.13.0/undock_0.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9da411f3acdad308fbf301c52decff6f8b03d3432d9dcf79dc8ada93c0323363
+	source_aarch64 = https://github.com/crazy-max/undock/releases/download/v0.13.0/undock_0.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 251724dfdb0670b9dc502e919655edc2a1ed74129cff75e76b97006b815de343
 
 pkgname = undock-bin
