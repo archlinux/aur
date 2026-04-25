@@ -1,27 +1,65 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer:  AlphaJack <alphajack at tuta dot io>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
-pkgname=python-fastavro
-_name=${pkgname#python-}
-pkgver=1.12.1
+_pypiname="fastavro"
+pkgname="python-${_pypiname}"
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Fast read/write of AVRO files"
-arch=("any")
-url="https://github.com/fastavro/fastavro"
-license=("MIT")
-depends=("glibc" "python" "python-cramjam" "python-lz4" "python-snappy" "python-zstandard")
-makedepends=("cython" "python-build" "python-installer" "python-setuptools" "python-wheel")
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('2ebd733e12141b5bcfaf21166a4ce86073084ba52a9430594516b745a25c0719e4bb54705dd904e69fd270cd7737aa03ae7ced1ba9ed72e68f6c8a2f21200070')
+arch=(
+  'aarch64'
+  'x86_64'
+)
+url="https://github.com/${_pypiname}/${_pypiname}"
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+  'python>=3.10'
+  'python-cramjam'
+  'python-lz4'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
 
-build(){
- cd "$_name-$pkgver"
- python -m build --wheel --no-isolation
+  'python-setuptools'
+  'cython'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pandas'
+  'python-zlib-ng'
+)
+_pkgsrc="${url##*/}-${pkgver}"
+source=(
+  "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
+)
+b2sums=('c8fb6402d569ea890a0657c6de06299b602a3483686a114154b2eec6e7441c27cfcfbaa52c4355078f22821a83beb0373cd749355286b418b44813f8e48e79b6')
+
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  python -m build --wheel --no-isolation
 }
 
-package(){
- cd "$_name-$pkgver"
- python -m installer --destdir="$pkgdir" dist/*.whl
- install -D -m 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  pytest -k "not test_cython_python"
+}
+
+package() {
+  local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
+
+  cd "${srcdir}/${_pkgsrc}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -vsf "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

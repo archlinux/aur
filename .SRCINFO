@@ -1,22 +1,24 @@
 pkgbase = python-fastavro
 	pkgdesc = Fast read/write of AVRO files
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://github.com/fastavro/fastavro
-	arch = any
+	arch = aarch64
+	arch = x86_64
 	license = MIT
-	makedepends = cython
+	checkdepends = python-pytest
+	checkdepends = python-pandas
+	checkdepends = python-zlib-ng
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = cython
 	depends = glibc
-	depends = python
+	depends = python>=3.10
 	depends = python-cramjam
 	depends = python-lz4
-	depends = python-snappy
-	depends = python-zstandard
-	source = https://files.pythonhosted.org/packages/source/f/fastavro/fastavro-1.12.1.tar.gz
-	b2sums = 2ebd733e12141b5bcfaf21166a4ce86073084ba52a9430594516b745a25c0719e4bb54705dd904e69fd270cd7737aa03ae7ced1ba9ed72e68f6c8a2f21200070
+	source = https://github.com/fastavro/fastavro/archive/refs/tags/1.12.2/fastavro-1.12.2.tar.gz
+	b2sums = c8fb6402d569ea890a0657c6de06299b602a3483686a114154b2eec6e7441c27cfcfbaa52c4355078f22821a83beb0373cd749355286b418b44813f8e48e79b6
 
 pkgname = python-fastavro

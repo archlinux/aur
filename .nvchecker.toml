@@ -1,0 +1,3 @@
+[python-fastavro]
+source = "git"
+git = "https://github.com/fastavro/fastavro.git"
