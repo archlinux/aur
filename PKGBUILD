@@ -7,6 +7,10 @@ pkgdesc="A workflow engine for Wayland automation — Shortcuts-style GUI + CLI 
 arch=('x86_64')
 url="https://github.com/cushycush/wflow"
 license=('MIT' 'Apache-2.0')
+# cxx-qt-lib's generated C++ glue + makepkg's external LTO produces
+# unresolved-symbol link errors. Cargo's profile.release lto = "thin"
+# stays on; this only opts out of the system-driven LTO.
+options=(!lto)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 depends=(

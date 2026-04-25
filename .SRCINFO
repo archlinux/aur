@@ -18,6 +18,7 @@ pkgbase = wflow-git
 	optdepends = xdg-desktop-portal: input via libei portal + Record Mode
 	provides = wflow=0.3.0.r0.g0000000
 	conflicts = wflow
+	options = !lto
 	source = wflow::git+https://github.com/cushycush/wflow.git
 	sha256sums = SKIP
 
