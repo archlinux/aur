@@ -1,12 +1,15 @@
 pkgbase = webcrack
 	pkgdesc = Deobfuscate, unminify and unpack bundled javascript
-	pkgver = 2.15.1
-	pkgrel = 1
+	pkgver = 2.16.0
+	pkgrel = 2
 	url = https://webcrack.netlify.app
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	depends = gcc-libs
 	options = !debug
+	source = webcrack-2.16.0.tgz::https://registry.npmjs.org/webcrack/-/webcrack-2.16.0.tgz
+	sha256sums = 979f66ce4c10be28f502ab461cd1006027a88ad625f0d4dc68e7f84b38d788ab
 
 pkgname = webcrack

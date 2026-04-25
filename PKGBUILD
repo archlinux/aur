@@ -1,17 +1,17 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=webcrack
-pkgver=2.15.1
-pkgrel=1
+pkgver=2.16.0
+pkgrel=2
 pkgdesc="Deobfuscate, unminify and unpack bundled javascript"
 arch=('x86_64')
 url="https://webcrack.netlify.app"
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'gcc-libs')
 makedepends=('npm')
 options=('!debug')
-source=()
-sha256sums=()
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+sha256sums=('979f66ce4c10be28f502ab461cd1006027a88ad625f0d4dc68e7f84b38d788ab')
 
 latestver() {
   curl -s "https://registry.npmjs.org/${pkgname}" | python3 -c "import sys,json; print(json.load(sys.stdin)['dist-tags']['latest'])"
@@ -32,7 +32,7 @@ EOF
 
   npm install --cache "${srcdir}/npm-cache" \
     --omit=dev \
-    "${pkgname}@${pkgver}"
+    "${srcdir}/${pkgname}-${pkgver}.tgz"
 }
 
 package() {
@@ -53,8 +53,10 @@ package() {
 
   # Remove non-linux native binaries
   find "${node_root}" -type f -name '*.node' \
-    \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*-musl*' \) \
+    \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*.musl.node' \) \
     -delete
+
+  find "${node_root}" -type d -path '*/prebuilds/linux-arm64' -exec rm -rf {} + 2>/dev/null || true
 
   # Remove stray man pages from transitive deps
   find "${node_root}/node_modules" -type d -name man -exec rm -rf {} + 2>/dev/null || true
