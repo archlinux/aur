@@ -1,14 +1,14 @@
 pkgbase = xtensa-esp-elf-gdb-bin
 	pkgdesc = Espressif fork of GDB with support for Xtensa architechture ESP32 family chips
-	pkgver = 16.3_20250913
+	pkgver = 17.1_20260402
 	pkgrel = 1
 	url = https://github.com/espressif/binutils-gdb
 	arch = x86_64
 	license = GPL-3.0-or-later
-	optdepends = gdb-common=16.3: gdb python components for quality of life features
+	optdepends = gdb-common=17.1: gdb python components for quality of life features
 	provides = xtensa-esp-elf-gdb
 	conflicts = xtensa-esp-elf-gdb
-	source = https://github.com/espressif/binutils-gdb/releases/download/esp-gdb-v16.3_20250913/xtensa-esp-elf-gdb-16.3_20250913-x86_64-linux-gnu.tar.gz
-	sha256sums = 16d05c9104ff84529ac3799abb04d5666c193131ab461f153040721728b48730
+	source = https://github.com/espressif/binutils-gdb/releases/download/esp-gdb-v17.1_20260402/xtensa-esp-elf-gdb-17.1_20260402-x86_64-linux-gnu.tar.gz
+	sha256sums = 73bc6c4e50b06dceb60e94b53aded61b7769be3cf563572269d9c8d643db8e95
 
 pkgname = xtensa-esp-elf-gdb-bin
