@@ -5,7 +5,6 @@ pkgbase = eterm-backgrounds
 	url = https://github.com/mikepento/eterm-backgrounds
 	arch = any
 	license = GPL-1.0-or-later
-	depends = eterm
 	options = !debug
 	source = https://github.com/mikepento/eterm-bg/releases/download/v0.9.6-1/eterm-bg-0.9.6-1.tar.gz
 	sha256sums = 8f7e8f936de9e194f77f8f66725e8d7cb0b4d6b6f00998e6099479c76b36a781
