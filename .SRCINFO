@@ -1,20 +1,20 @@
 pkgbase = linux-galaxyaudio-bin
 	pkgdesc = Linux kernel for Samsung Galaxy Book 4 with MAX98390 sound support (Binary Release)
-	pkgver = 6.19.13
+	pkgver = 6.19.14
 	pkgrel = 1
 	url = https://github.com/antpln/linux-galaxyaudio
 	arch = x86_64
 	license = GPL2
 	makedepends = tar
 	makedepends = zstd
-	noextract = linux-galaxyaudio-6.19.13-1-x86_64.pkg.tar.zst
-	noextract = linux-galaxyaudio-headers-6.19.13-1-x86_64.pkg.tar.zst
+	noextract = linux-galaxyaudio-6.19.14-1-x86_64.pkg.tar.zst
+	noextract = linux-galaxyaudio-headers-6.19.14-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = linux-galaxyaudio-6.19.13-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v6.19.13/linux-galaxyaudio-6.19.13-1-x86_64.pkg.tar.zst
-	source = linux-galaxyaudio-headers-6.19.13-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v6.19.13/linux-galaxyaudio-headers-6.19.13-1-x86_64.pkg.tar.zst
+	source = linux-galaxyaudio-6.19.14-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v6.19.14/linux-galaxyaudio-6.19.14-1-x86_64.pkg.tar.zst
+	source = linux-galaxyaudio-headers-6.19.14-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v6.19.14/linux-galaxyaudio-headers-6.19.14-1-x86_64.pkg.tar.zst
 	source = linux-galaxyaudio.preset
-	sha256sums = bef5d6018d167c7667649b39c5a45ea28d211789963065c20a95fc62b0d31e5e
-	sha256sums = 7b6809be2e13ede26fe2b8aa2f198e9742281a52337f4a074e00294ad97615bc
+	sha256sums = 703e425f9c12082f3d4352f4d3a6ecc757d8ed4209b40eae37ac2929ca1c6f2b
+	sha256sums = 92873d2853747466a8f032708b0993c93c846c94e3ba306055fe4c04e8401c01
 	sha256sums = ed5f628f80039519b190f5ee5d529d167b6521a041ab20701f0c86a76a4ae963
 
 pkgname = linux-galaxyaudio-bin
@@ -24,14 +24,14 @@ pkgname = linux-galaxyaudio-bin
 	depends = kmod
 	depends = initramfs
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux=6.19.13
-	provides = linux-galaxyaudio=6.19.13
+	provides = linux=6.19.14
+	provides = linux-galaxyaudio=6.19.14
 	conflicts = linux-galaxyaudio
 
 pkgname = linux-galaxyaudio-headers-bin
 	pkgdesc = Headers and scripts for building modules for the linux-galaxyaudio kernel (Binary)
 	depends = pahole
-	provides = linux-headers=6.19.13
-	provides = linux-galaxyaudio-headers=6.19.13
+	provides = linux-headers=6.19.14
+	provides = linux-galaxyaudio-headers=6.19.14
 	conflicts = linux-headers
 	conflicts = linux-galaxyaudio-headers
