@@ -80,7 +80,7 @@ _print_posthook_instructions() {
   echo "==>   3) Verify it works:"
   echo "==>        sudo $theme_dir/scripts/sync.sh"
   echo ""
-  echo "==> Full posthook guide: https://github.com/ItsABigIgloo/caelestia-sddm/blob/main/POSTHOOK.md"
+  echo "==> Full posthook guide: https://github.com/ItsABigIgloo/caelestia-sddm/blob/main/.github/POSTHOOK.md"
 }
 
 # Copy template, run initial sync, fix ownership, print posthook instructions
@@ -101,7 +101,7 @@ post_install() {
   sudo -u "$real_user" mkdir -p "$real_home/.config/caelestia/templates"
   if [ -f "$theme_dir/theme.conf.template" ]; then
     sudo -u "$real_user" cp "$theme_dir/theme.conf.template" \
-       "$real_home/.config/caelestia/templates/sddm-theme.conf"
+      "$real_home/.config/caelestia/templates/sddm-theme.conf"
     echo "==> Template copied to $real_home/.config/caelestia/templates/sddm-theme.conf"
   fi
 

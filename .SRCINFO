@@ -1,5 +1,5 @@
 pkgbase = caelestia-sddm-git
-	pkgver = r141.c586ddf
+	pkgver = r144.c9fe7df
 	pkgrel = 1
 	url = https://github.com/ItsABigIgloo/caelestia-sddm
 	install = caelestia-sddm.install
