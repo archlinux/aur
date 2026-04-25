@@ -12,4 +12,5 @@ sha256sums=('07741ac00535acfb8f595e9bd72b963e9dfaf3f6a91ac8c2d9a947b2f07ff640')
 
 package() {
   install -Dm755 "$pkgname-$pkgver.AppImage" "$pkgdir/usr/bin/$pkgname"
+  chmod +x "$pkgdir/usr/bin/$pkgname"
 }
