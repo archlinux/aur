@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.19.13
+_kernver=6.19.14
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.19.13-arch1-1
+_KERNNAME=6.19.14-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-6.19.13.arch1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-headers-6.19.13.arch1-1-x86_64.pkg.tar.zst
-_docspkg=linux-docs-6.19.13.arch1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-6.19.14.arch1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-headers-6.19.14.arch1-1-x86_64.pkg.tar.zst
+_docspkg=linux-docs-6.19.14.arch1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('fcf9ab19b827c503a77bd222d9c1b4d0cd5718b894b3042da49f5a330e705d31'
-            '8739749d19f0a2db590af2e5a448c14f8a84e725d1cfe65030b6051639dfacfd'
-            '820cfa556d46698ec023783f6251a8b0cf0d568aa3dfa03fb3a56ed3dfadb7a2')
+sha256sums=('1bb79e11092f74af57040134e4db1afc3b5a3fb9a66d2432c83f8236497d246d'
+            '4b12bfb361425d9178447a1002d457ca6b1129c83cc9ac9bf3fcd90c8c58bafe'
+            '0966ec9e04edf4a5850b28948bf557254c0be2c05cdff7be6cd3883befe337f7')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.19.13.arch1-1-bin() {
+package_linux6.19.14.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -72,7 +72,7 @@ package_linux6.19.13.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.19.13.arch1-1-headers-bin() {
+package_linux6.19.14.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(binutils
            glibc
@@ -90,7 +90,7 @@ package_linux6.19.13.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.19.13.arch1-1-docs-bin() {
+package_linux6.19.14.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
