@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.6.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "libgcc" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango" "systemd-libs")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("48a12456b51e55720a0ed51eda9dc07446e06cbf1d34117da2c1eae3cfd49d0f35a33e804c67580ac41fbc58c5f38a0ccdbcb35693e708caeb7c7cc11e335392")
+sha512sums=("c8e5678c733968b87b0eaf6240d0d355fd95ef32e95b4d35695f24277a171e849f952f9f68f3d011d74e53a5595795e692f5a8759dd5eebdb524e0d74d1ef1ab")
 
 package() {
     # Extract package data
