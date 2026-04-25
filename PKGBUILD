@@ -1,5 +1,5 @@
 # Maintainer: exerinity <me@exerinity.com>
-pkgname=timein-git
+pkgname=timein
 pkgver=2
 pkgrel=1
 pkgdesc="A minimal tool for quickly getting the time and date in another city or timezone"
