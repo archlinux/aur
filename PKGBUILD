@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libchdr
 pkgname=$_pkgname-git
-pkgver=r283.8bba774
+pkgver=0.3.0.r0.g93d8c23
 pkgrel=1
 pkgdesc="Standalone library for reading MAME's CHDv1-v5 formats"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -16,29 +16,32 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git describe --long --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
+	cd $_pkgname
 	# only build shared library
-	sed -i '/(chdr-static/d;/tests/d' $_pkgname/CMakeLists.txt
+	sed -i '/(chdr-static/d;/tests/d' CMakeLists.txt
 }
 
 build() {
 	local options=(
+		-B build
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D WITH_SYSTEM_ZLIB=ON
 		-D WITH_SYSTEM_ZSTD=ON
-		-Wno-dev
+		-W no-dev
 	)
-	cmake "${options[@]}" -B build -S $_pkgname
+	cmake "${options[@]}" $_pkgname
 	cmake --build build
 }
 
 package() {
 	depends+=('libz.so' 'libzstd.so')
+
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE.txt
