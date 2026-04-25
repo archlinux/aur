@@ -1,0 +1,5 @@
+[chapar-bin]
+source = "github"
+github = "chapar-rest/chapar"
+use_latest_release = true
+prefix = "v"

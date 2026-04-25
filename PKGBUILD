@@ -1,45 +1,53 @@
-# Maintainer: Monirzadeh aur.phantom634 at passinbox dot com
-pkgname=chapar-bin
-pkgver=0.4.5
-pkgrel=1  # Set the initial package release number
-pkgdesc="Chapar is a simple and easy to use api testing tools aims to help developers to test their api endpoints. it support http and grpc protocols."
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Monirzadeh aur.phantom634 at passinbox dot com
+
+_gitauthor=chapar-rest
+_gitname=chapar
+_appname=${_gitname}
+pkgname=${_appname}-bin
+pkgdesc="A simple and easy to use api testing tools aims to help developers to test their api endpoints. It support http and grpc protocols."
+
+pkgver=0.5.0
+pkgrel=1
+_gitversion=v${pkgver}
+
 arch=('x86_64')
-url="https://github.com/chapar-rest/chapar"
+_barch=('amd64')
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
 license=('BSD-3-Clause')
-depends=()
-makedepends=('curl' 'jq')  # List any build dependencies here
-conflicts=(chapar)
 
-# Fetch the latest release URL
-source_url=$(curl -s https://api.github.com/repos/chapar-rest/chapar/releases/latest | jq -r '.assets[] | select(.name | test("amd64.tar.xz")) | .browser_download_url')
+provides=("${_appname}")
+conflicts=("${_appname}")
+depends=('glibc' 'libx11' 'libxkbcommon' 'libxkbcommon-x11' 'libxcursor' 'libxfixes' 'libglvnd' 'wayland')
 
-# Set the source
-source=("$source_url")
-sha256sums=('SKIP')  # Replace with actual checksum or 'SKIP' if not needed
+options=(!strip)
 
-pkgver() {
-  curl -s https://api.github.com/repos/chapar-rest/chapar/releases/latest | jq -r .tag_name | sed 's/v//'
+source=("README-${pkgver}.md::${_ghurlraw}/README.md")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-linux-${_gitversion}-${_barch[0]}.tar.xz")
+sha256sums=('5e03705feb76891a539b85633ea527788a04c9b11060fa31f18165dc231ae780')
+sha256sums_x86_64=('fb49287a308f8351cab6d317302d32a9a050103b41f52f8418a9bb7e941d2cfd')
+
+
+prepare() {
+	cd "${srcdir}/" || exit
+
+	sed -i -e "s#${_appname}.png#${_appname}#" "${srcdir}/desktop-assets/${_appname}.desktop"
 }
 
 package() {
-    # Create necessary directories
-    mkdir -p "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/usr/share/applications"
-    mkdir -p "$pkgdir/usr/share/icons"
+	cd "${srcdir}/" || exit
 
-    # Extract the tar.xz file
-    tar -xvf "$srcdir/chapar-linux-v${pkgver}-amd64.tar.xz" -C "$srcdir" --strip-components=1
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-    # Install the binary
-    install -Dm755 "$srcdir/chapar" "$pkgdir/usr/bin/chapar"
+	install -Dm644 "desktop-assets/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
-    # Copy the desktop entry
-    sed -e "s#{ICON_PATH}#${pkgdir}/usr/share/icons/chapar.png#" \
-        "$srcdir/desktop-assets/chapar.desktop" > "$pkgdir/usr/share/applications/chapar.desktop"
+	install -Dm644 "appicon.png" "${pkgdir}/usr/share/icons/${_appname}.png"
 
-    # Copy the icon
-    cp -v "$srcdir/appicon.png" "$pkgdir/usr/share/icons/chapar.png"
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    # copy the LICENSE file if you want to include it
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
