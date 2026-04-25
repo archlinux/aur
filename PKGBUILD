@@ -9,7 +9,7 @@ pkgname=(
 pkgbase=vencord-bin
 _zipdirname=builds
 _dirname=vencord
-pkgver=1.14.9
+pkgver=1.14.10
 pkgrel=1
 pkgdesc="The cutest Discord client mod"
 arch=(any)
@@ -19,9 +19,9 @@ license=(GPL3)
 makedepends=(
     unzip
 )
-_commit_sha="dbe5f66ef0f43f4cd9f66e0aee83f504f30196f6"
+_commit_sha="3ba9c5cf426bd4b11cd9bf0fcd459efd2ddd122d"
 source=("${pkgname}"-"${pkgver}".zip::"$_ghurl"/archive/"$_commit_sha".zip)
-sha256sums=('de456cf3bff9fccecdd1220d253c17706be2724eff0d43f80967649a151a86b7')
+sha256sums=('56ab86b5e4427644b04233ac5e9e8c602a871636a24af7cc34b737c0a02ad5b6')
 
 package_vencord-bin() {
     pkgdesc+=" (replaces Vesktop's built-in Vencord)"
