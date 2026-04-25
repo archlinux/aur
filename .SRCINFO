@@ -5,7 +5,6 @@ pkgbase = python-greenery
 	url = https://github.com/qntm/greenery
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-build
