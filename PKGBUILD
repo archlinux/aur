@@ -1,7 +1,7 @@
 # Maintainer: Monjaris <ziyanovruzlu750@gmail.com>
 pkgname=edex
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimal GUI text editor written in C++ with raylib"
 arch=('x86_64')
 url="https://github.com/Monjaris/Edex"
