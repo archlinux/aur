@@ -1,0 +1,5 @@
+[mingw-w64-gcc]
+source = 'git'
+git = 'https://gcc.gnu.org/git/gcc.git'
+include_regex = 'releases/gcc.*'
+prefix = 'releases/gcc-'
