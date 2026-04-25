@@ -11,17 +11,18 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-minimal-git
-pkgname=(mesa-minimal-git)
+pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=26.0.0_devel.217189.0c22a039e2f
+pkgver=26.2.0_devel.221637.5bfbb7b1a79
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
-                            wayland-protocols glslang llvm-minimal-git libdrm systemd-libs 
+                            wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
+                            rust rust-bindgen-git spirv-tools spirv-llvm-translator-minimal-git systemd-libs clang-opencl-headers-minimal-git
                             python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms python-pyaml libdisplay-info libpng)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=(mesa vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast vulkan-virtio vulkan-driver opengl-driver vulkan-mesa-implicit-layers)
+provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast vulkan-virtio vulkan-driver opengl-driver vulkan-mesa-implicit-layers)
 conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-virtio
                 vulkan-nouveau mesa-libgl vulkan-gfxstream vulkan-dzn vulkan-mesa-implicit-layers
 )
@@ -64,8 +65,8 @@ build() {
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland \
-       -D gallium-drivers=radeonsi,llvmpipe,zink,virgl \
-       -D vulkan-drivers=amd,swrast \
+       -D gallium-drivers=radeonsi,llvmpipe,zink,virgl,iris \
+       -D vulkan-drivers=amd,swrast,intel \
        -D egl=enabled \
        -D gallium-extra-hud=true \
        -D gallium-va=enabled \
@@ -83,9 +84,9 @@ build() {
        -D zstd=enabled \
        -D microsoft-clc=disabled \
        -D video-codecs=all \
-#       -D gallium-rusticl=true \
-#       -D gallium-rusticl-enable-drivers=radeonsi \
-#       -D rust_std=2021
+       -D gallium-rusticl=true \
+       -D gallium-rusticl-enable-drivers=radeonsi \
+       -D rust_std=2021
 
     meson configure --no-pager _build
     ninja $NINJAFLAGS -C _build
@@ -104,9 +105,9 @@ package_mesa-minimal-git() {
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
     # rusticl files go to a separate package
-#    mkdir -p "$srcdir"/rusticl/{etc/OpenCL/vendors,usr/lib} 
-#    mv "$pkgdir"/etc/OpenCL/vendors/rusticl.icd "$srcdir"/rusticl/etc/OpenCL/vendors
-#    mv "$pkgdir"/usr/lib/libRusticlOpenCL* "$srcdir"/rusticl/usr/lib
+    mkdir -p "$srcdir"/rusticl/{etc/OpenCL/vendors,usr/lib} 
+    mv "$pkgdir"/etc/OpenCL/vendors/rusticl.icd "$srcdir"/rusticl/etc/OpenCL/vendors
+    mv "$pkgdir"/usr/lib/libRusticlOpenCL* "$srcdir"/rusticl/usr/lib
 
     # indirect rendering
     ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
@@ -115,15 +116,15 @@ package_mesa-minimal-git() {
 }
 
 # I dislike splitting packages, but rusticl has several dependencies that are not needed by other mesa components
-#package_opencl-mesa-minimal-git() {
-#    pkgdesc="OpenCL support in rust for mesa drivers (git version)"
-#    conflicts=(opencl-mesa opencl-rusticl-mesa-minimal-git)
-#    provides=(opencl-mesa opencl-driver)
-#    depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools
-#                    mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git
-#                    expat libelf zstd lm_sensors zlib gcc-libs glibc clang-opencl-headers-minimal-git
-#    )
-#    
-#    cp --preserve --recursive "$srcdir"/rusticl/* "$pkgdir"/
-#        install -m644 -Dt "$pkgdir"/usr/share/licenses/$pkgname mesa/docs/license.rst
-#}
+package_opencl-mesa-minimal-git() {
+    pkgdesc="OpenCL support in rust for mesa drivers (git version)"
+    conflicts=(opencl-mesa opencl-rusticl-mesa-minimal-git)
+    provides=(opencl-mesa opencl-driver)
+    depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools
+                    mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git
+                    expat libelf zstd lm_sensors zlib gcc-libs glibc clang-opencl-headers-minimal-git
+    )
+    
+    cp --preserve --recursive "$srcdir"/rusticl/* "$pkgdir"/
+        install -m644 -Dt "$pkgdir"/usr/share/licenses/$pkgname mesa/docs/license.rst
+}
