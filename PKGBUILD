@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="librepods"
-pkgver=0.2.0
+pkgver=0.2.3
 _pkgver="$(sed -E 's/([a-z]+)/-\1./g' <<< "$pkgver")"
 pkgrel=1
 pkgdesc="AirPods liberated from Apple's ecosystem"
@@ -30,9 +30,9 @@ makedepends=(
 )
 _pkgsrc="${url##*/}"
 source=(
-  "${_pkgsrc}::git+${url}.git#tag=v${_pkgver}" # ?signed
+  "${_pkgsrc}::git+${url}.git#tag=v${_pkgver}?signed"
 )
-b2sums=('df958ceaae874c95ecdad0ad119aea483aa68d81011cc3f4270b3052d0261bc36843b660287e774bfe02ea497366e9a25bd668efa317f24c4ecd826b7087ec72')
+b2sums=('554197de4139c6f625c0df3b137d10de87b0128b500678ee76da0c7e137951833583fab6e4b31f19c6e1dae4ab5a3f9e1549a3aafc4531485e75bd065ec4d5b5')
 validpgpkeys=(
   '2D58709F32193AA828ED43D72DBD7F9150AB7E67' # Kavish Devar (GitHub Signing Key) <mail@kavishdevar.me>
 )
