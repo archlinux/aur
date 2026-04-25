@@ -31,7 +31,7 @@ conflicts=(
   "${_pkgname}-${pkgver%.*}"
 )
 source=(
-  "http://ftp.de.debian.org/debian/pool/main/u/${_pkgname}/${_pkgname}_${_pkgver}${_debianver}_amd64.deb"
+  "https://archive.debian.org/debian/pool/main/${_pkgname:0:1}/${_pkgname}/${_pkgname}_${_pkgver}${_debianver}_amd64.deb"
   "unison-${_pkgver}-manual.pdf.zst"
   "unison-${_pkgver}-manual.html.zst"
 )
