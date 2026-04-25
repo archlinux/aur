@@ -31,7 +31,7 @@ fi
 if [[ $1 = "--help" ]]; then
     echo "Usage: akg [OPTIONS] [PACKAGE NAME]"
     echo "AurKeinGit(no, im not german), an aur helper that doesn't use git clone."
-    echo "OPTIONS: -S - install, -R - remove"
+    echo "OPTIONS: -S - install, -R - remove, -Q - reinstall, -Ss - search"
     exit
 fi
 if [[ $1 = "-R" ]]; then
