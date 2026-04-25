@@ -7,6 +7,10 @@ arch=('x86_64')
 url="https://github.com/sunwoo101/livepaper"
 license=('MIT')
 depends=('mpvpaper' 'dotnet-runtime')
+optdepends=(
+    'ffmpeg: thumbnail auto-generation for the Import Wallpaper flow'
+    'libpulse: pactl/parec for the Auto-Mute feature (provided by pipewire-pulse on PipeWire systems)'
+)
 makedepends=('dotnet-sdk')
 provides=('livepaper')
 conflicts=('livepaper')
