@@ -1,0 +1,5 @@
+[passedbox-bin]
+source = "github"
+github = "altlimit/passedbox"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=PassedBox
+GenericName=PassedBox
+Comment=Your Digital Fortress. Fully Encrypted.
+Exec=passedbox %f
+TryExec=passedbox
+Icon=passedbox
+StartupWMClass=passedbox
+StartupNotify=false
+Terminal=false
+Type=Application
+Version=1.5
+Categories=Utility;Security;
+MimeType=application/passedbox;
+SingleMainWindow=true
+X-GNOME-SingleWindow=true
+Keywords=security;privacy;vault;
