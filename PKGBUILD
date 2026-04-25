@@ -1,6 +1,6 @@
 # Maintainer: Wieczorkiewicz <wieczorkiewicz at users dot noreply dot github dot com>
 pkgname=thinkpad-ipu7-camera-linux-driver
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="On-demand Intel IPU7 camera activation for ThinkPad X1 2-in-1 Gen 10 (Lunar Lake)"
 arch=('any')

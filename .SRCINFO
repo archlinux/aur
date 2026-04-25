@@ -1,6 +1,6 @@
 pkgbase = thinkpad-ipu7-camera-linux-driver
 	pkgdesc = On-demand Intel IPU7 camera activation for ThinkPad X1 2-in-1 Gen 10 (Lunar Lake)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Wieczorkiewicz/thinkpad-ipu7-camera-linux-driver
 	install = thinkpad-ipu7-camera-linux-driver.install
@@ -10,7 +10,7 @@ pkgbase = thinkpad-ipu7-camera-linux-driver
 	depends = gst-plugins-bad
 	depends = v4l2loopback-dkms
 	optdepends = gstreamer-icamerasrc: Intel IPU7 GStreamer plugin (required for camera to work)
-	source = thinkpad-ipu7-camera-linux-driver-1.0.0.tar.gz::https://github.com/Wieczorkiewicz/thinkpad-ipu7-camera-linux-driver/archive/v1.0.0.tar.gz
+	source = thinkpad-ipu7-camera-linux-driver-1.0.1.tar.gz::https://github.com/Wieczorkiewicz/thinkpad-ipu7-camera-linux-driver/archive/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = thinkpad-ipu7-camera-linux-driver
