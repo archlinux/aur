@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gale
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="A modern mod manager for Thunderstore"
 arch=('x86_64')
@@ -18,13 +18,13 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kesomannen/gale/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('1e9107a46cc0baf1e0a43c16e006a50320c1d4ee6cde6e4c6c440eb73ec17106'
+sha256sums=('963cff5642410f3e2f8a7a976ed19dc4114718974675637d5aa7d15303aabc83'
             '4de7796da59ef55bf7bbcde65a53b051245f80b3284ab53be20c4728345c4ff1')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --manifest-path src-tauri/Cargo.toml --locked --target host-tuple
+  cargo fetch --manifest-path src-tauri/Cargo.toml --target host-tuple
 }
 
 build() {
@@ -34,13 +34,13 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   pnpm install --frozen-lockfile
-  cargo tauri build --no-bundle -- --frozen
+  cargo tauri build --no-bundle
 }
 
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --manifest-path src-tauri/Cargo.toml --frozen
+  cargo test --manifest-path src-tauri/Cargo.toml
 }
 
 package() {

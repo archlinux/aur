@@ -1,6 +1,6 @@
 pkgbase = gale
 	pkgdesc = A modern mod manager for Thunderstore
-	pkgver = 1.13.1
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = https://kesomannen.com/gale
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = gale
 	depends = gtk3
 	depends = libsoup3
 	depends = webkit2gtk-4.1
-	source = gale-1.13.1.tar.gz::https://github.com/Kesomannen/gale/archive/refs/tags/1.13.1.tar.gz
+	source = gale-1.13.2.tar.gz::https://github.com/Kesomannen/gale/archive/refs/tags/1.13.2.tar.gz
 	source = gale.desktop
-	sha256sums = 1e9107a46cc0baf1e0a43c16e006a50320c1d4ee6cde6e4c6c440eb73ec17106
+	sha256sums = 963cff5642410f3e2f8a7a976ed19dc4114718974675637d5aa7d15303aabc83
 	sha256sums = 4de7796da59ef55bf7bbcde65a53b051245f80b3284ab53be20c4728345c4ff1
 
 pkgname = gale
