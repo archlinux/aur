@@ -3,7 +3,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang
-pkgver=2026.5.1
+pkgver=2026.7.1
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
@@ -14,7 +14,7 @@ source=(
 	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
 	"cmark::git+https://github.com/swiftlang/swift-cmark#branch=gfm"
 )
-sha256sums=('b579f39fb0e6da1e9eb9e8fd6cfbd1af826bcc51f4be3eef43ffe7eb49df1fff'
+sha256sums=('a15f320efac9f12cef89c9f40d277e3cc576f5b792eb7438a3e75897678c9c4a'
             '265ad53dcb67390ce21acb8165841439ca7bdd1e09a000a6c4e4d38b3a40a598'
             'SKIP')
 makedepends=(
