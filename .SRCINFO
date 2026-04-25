@@ -5,7 +5,6 @@ pkgbase = python-micropie
 	url = https://patx.github.io/micropie/
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
