@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evanpurkhiser/resyctl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0000000000000000000000000000000000000000000000000000000000000000')
+sha256sums=('9e0f5428ffa7c68a91ef5f0b37e36878c7227a7b0340c3e5a44b4ae0dc5c88f8')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
