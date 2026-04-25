@@ -1,12 +1,12 @@
-# Maintainer: cargabsj175
+# Maintainer: cargabsj175 <cargabsj175 at gmail.com>
 # PKGBUILD for Arch Linux - T-NESx Retro Emulator
 
 pkgname=t-nesx
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Cross-platform retro game emulator (NES, SNES, GBA & Intellivision)"
 arch=('x86_64')
-url="https://github.com/cargabsj175/t-nesx"
+url="https://gitlab.com/cargabsj175/t-nesx"
 license=('GPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'pango' 'gdk-pixbuf2' 'libsoup3' 'libappindicator-gtk3')
 makedepends=('npm' 'rust' 'cargo-c')
