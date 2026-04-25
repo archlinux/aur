@@ -6,7 +6,7 @@ _pkgname=akeyshually
 pkgname=${_appname}-bin
 pkgdesc="Actually, this is a shortcut daemon that is configured by config file and is graphical session agnostic"
 
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,11 +27,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"${_appname}.service")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}_${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}_${_barch[1]}")
-sha256sums=('c702d713d8f11450f8aeaf346fb0b74e20bf6b4b7f7d4d158e5ca5ffcb800d92'
+sha256sums=('4ca35c6019958f5fb2c632d6235929ab092140607c30f5acdbd18d7f0addc25b'
             'ce37bb083947186acb712a9cb01d81357f3b303b35db4119519361ee198b4b3e'
             '576012be74acec6a8332df203af16c46f637951710c0c40c3b5dd86b0f831bc7')
-sha256sums_x86_64=('8981671b754274866836cb93af2ae27b884e6040246bab19cccb08b038525338')
-sha256sums_aarch64=('cc9d124b82119ef3115fe5786f1629b60bd2f628cb8cd24ac6ba08ee7c085c48')
+sha256sums_x86_64=('3606f1934dab1584b93e080c362a217a1c822be6919eda45be6c84b1f5a8432e')
+sha256sums_aarch64=('b115ac7cdd1afbe2c18e9dd527c67a2d759f5a3ed4dcb0749751d83bd63a3a77')
 
 
 package() {
