@@ -1,0 +1,20 @@
+pkgbase = pv-static
+	pkgdesc = A terminal-based tool for monitoring the progress of data through a pipeline
+	pkgver = 1.10.5
+	pkgrel = 1
+	url = https://www.ivarch.com/programs/pv-static.shtml
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	provides = pv
+	conflicts = pv
+	source = https://www.ivarch.com/programs/sources/pv-1.10.5.tar.gz
+	source = pv-1.10.5.tar.gz.sig::https://www.ivarch.com/programs/sources/pv-1.10.5.tar.gz.txt
+	validpgpkeys = D8FF44A79CC8A61EF694FA7EB883E01314DA8E84
+	validpgpkeys = 2189D5C29F041F2277AFD50AC1596BA33FC56F51
+	validpgpkeys = 4267B4F90F2678A112169BD61D1EF7581B45E9A0
+	sha256sums = ab21b4f8662280646b6a02e1b9f096790918f89c952bbe0d06fef75d3b52fb15
+	sha256sums = SKIP
+
+pkgname = pv-static
