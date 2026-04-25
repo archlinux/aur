@@ -5,7 +5,7 @@ pkgname=(
     'python-slint'
     'slint-cpp'
     'slint-tools')
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -30,8 +30,8 @@ makedepends=(
     'wayland')
 source=("https://github.com/slint-ui/slint/archive/v${pkgver}/slint-${pkgver}.tar.gz"
         '010-slint-remove-jemalloc.patch')
-sha256sums=('462e186f651a68a15d3acfe51c317f5a9eb8bb7ee78bb3a1fda22efb561dbc7b'
-            'f4eafdb7a47a79ac13950153d835ad645078438c053ac5845817a0e5f2cf3d65')
+sha256sums=('7c701e9dfd8160e2a55df5cdb25eb3245659ddb1cf8c456c68a559be3ee29a19'
+            '0b3d5eb6a7513d921f19c1aa7b312fe80cf58850a2bd516d9dbe0a189709d685')
 
 prepare () {
     cargo fetch --locked --target "$(rustc --print host-tuple)" --manifest-path="${pkgbase}-${pkgver}/Cargo.toml"

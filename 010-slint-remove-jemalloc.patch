@@ -246,7 +246,7 @@
  clap = { workspace = true }
 --- a/tools/lsp/main.rs
 +++ b/tools/lsp/main.rs
-@@ -47,7 +47,6 @@ use crate::common::document_cache::Compi
+@@ -48,7 +48,6 @@
      target_arch = "wasm32",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
@@ -254,7 +254,7 @@
  
  #[cfg(not(any(
      target_os = "openbsd",
-@@ -55,8 +54,6 @@ use tikv_jemallocator::Jemalloc;
+@@ -56,8 +55,6 @@
      target_arch = "wasm32",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
