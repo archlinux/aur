@@ -3,7 +3,7 @@
 pkgname=cronet-go
 pkgver=147.0.7727.49_1
 _ver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='Go bindings for naiveproxy.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'loongarch64' 'riscv64')
 url='https://github.com/SagerNet/cronet-go'
@@ -12,7 +12,7 @@ depends=('libgcc' 'glibc')
 provides=("libcronet.so")
 source=("${pkgname}::git+https://github.com/SagerNet/cronet-go.git#tag=v$_ver")
 sha256sums=('853eee0cb8429f1dce187861e0d7d73dab614f76be02ec53d61306eb31fedd78')
-makedepends=('go>=1.25' 'git' 'ninja')
+makedepends=('go>=1.25' 'git' 'python' 'python-requests' 'dpkg' 'unzip' 'ninja')
 options=(!debug)
 
 prepare() {
