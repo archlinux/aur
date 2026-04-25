@@ -1,6 +1,6 @@
 pkgbase = drop-bin
 	pkgdesc = Productivity-focused sandboxing for Linux
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/wrr/drop
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = drop-bin
 	provides = drop
 	conflicts = drop
 	options = !strip
-	source = README-0.1.4.md::https://raw.githubusercontent.com/wrr/drop/v0.1.4/README.md
-	source = LICENSE-0.1.4::https://raw.githubusercontent.com/wrr/drop/v0.1.4/LICENSE
+	source = README-0.1.5.md::https://raw.githubusercontent.com/wrr/drop/v0.1.5/README.md
+	source = LICENSE-0.1.5::https://raw.githubusercontent.com/wrr/drop/v0.1.5/LICENSE
 	sha256sums = 3a465cddb775f62394964cd33e4c2c23b462acd0b7a12a900ab8a8889556139c
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = drop-x86_64-0.1.4::https://github.com/wrr/drop/releases/download/v0.1.4/drop-linux-amd64
-	sha256sums_x86_64 = 17c554ae3f66f6e3cf53307c8fc0b06c071e93712befa1d3d73a7a9ba912a098
-	source_aarch64 = drop-aarch64-0.1.4::https://github.com/wrr/drop/releases/download/v0.1.4/drop-linux-arm64
-	sha256sums_aarch64 = 66148616d6016b7681f1288ad97ad3a204037bb2cdbdf54ba8484e1f7d442417
+	source_x86_64 = drop-x86_64-0.1.5::https://github.com/wrr/drop/releases/download/v0.1.5/drop-linux-amd64
+	sha256sums_x86_64 = bec4d0792b2c741a727af7c465f0f9e2a70d94d22a44c809d4ac66f0d699db4b
+	source_aarch64 = drop-aarch64-0.1.5::https://github.com/wrr/drop/releases/download/v0.1.5/drop-linux-arm64
+	sha256sums_aarch64 = 1511e84e066a64b4dea7bcf29a3ab0acdda4703143131b36c93040588a830cec
 
 pkgname = drop-bin
