@@ -1,0 +1,12 @@
+pkgbase = propaganda-tiles
+	pkgdesc = Collection of seamless tiled images for Linux.
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/BenjaminHCCarr/PropagandaTiles
+	arch = any
+	license = GPL-1.0-or-later
+	options = !debug
+	source = git+https://github.com/BenjaminHCCarr/PropagandaTiles.git
+	sha256sums = SKIP
+
+pkgname = propaganda-tiles
