@@ -3,7 +3,7 @@
 pkgname=freetube-electron-git
 _pkgname=FreeTube
 _electron=electron41
-pkgver=0.24.0.beta.r10136.75fa0e7
+pkgver=0.24.0.beta.r10160.b55e623
 pkgrel=1
 pkgdesc='A private YouTube client - built from latest git, using the system electron.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('AGPL-3.0-or-later')
 
 # Added explicit dependencies to satisfy namcap and ensure runtime stability
 depends=($_electron 'alsa-lib' 'gtk3' 'nss' 'libxss' 'libxtst' 'libnm')
-makedepends=('git' 'yarn')
+makedepends=('git' 'pnpm')
 provides=("freetube")
 conflicts=("freetube" "freetube-bin" "freetube-git")
 source=(git+https://github.com/FreeTubeApp/FreeTube
@@ -38,9 +38,9 @@ prepare() {
 
 build() {
   cd "$_pkgname"
-  yarn run ci
-  yarn run lint
-  yarn run build
+  pnpm run ci
+  pnpm run lint
+  pnpm run build
 }
 
 package() {

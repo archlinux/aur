@@ -1,12 +1,12 @@
 pkgbase = freetube-electron-git
 	pkgdesc = A private YouTube client - built from latest git, using the system electron.
-	pkgver = 0.24.0.beta.r10136.75fa0e7
+	pkgver = 0.24.0.beta.r10160.b55e623
 	pkgrel = 1
 	url = https://freetubeapp.io
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
-	makedepends = yarn
+	makedepends = pnpm
 	depends = electron41
 	depends = alsa-lib
 	depends = gtk3
