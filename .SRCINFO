@@ -1,0 +1,41 @@
+pkgbase = linux-tpm453-mainline-bin
+	pkgdesc = Prebuilt TPM453 mainline kernel package
+	pkgver = 7.0.1.r20260423.ga3418d70e28
+	pkgrel = 1
+	url = https://github.com/docker-mobile/linux-tpm453
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = libarchive
+	makedepends = zstd
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	noextract = linux-tpm453-mainline-7.0.1.r20260423.ga3418d70e28-1-x86_64.pkg.tar.zst
+	noextract = linux-tpm453-mainline-headers-7.0.1.r20260423.ga3418d70e28-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = linux-tpm453-mainline-7.0.1.r20260423.ga3418d70e28-1-x86_64.pkg.tar.zst::https://github.com/docker-mobile/linux-tpm453/releases/download/linux-tpm453-mainline-7.0.1.r20260423.ga3418d70e28-1/linux-tpm453-mainline-7.0.1.r20260423.ga3418d70e28-1-x86_64.pkg.tar.zst
+	source = linux-tpm453-mainline-headers-7.0.1.r20260423.ga3418d70e28-1-x86_64.pkg.tar.zst::https://github.com/docker-mobile/linux-tpm453/releases/download/linux-tpm453-mainline-7.0.1.r20260423.ga3418d70e28-1/linux-tpm453-mainline-headers-7.0.1.r20260423.ga3418d70e28-1-x86_64.pkg.tar.zst
+	sha256sums = 8ccb651b9d4b8c1b15ec57afa5d05cc08b0b2bc57ae491ba3329bda5c7cffc6e
+	sha256sums = 1f0dae26d79fd1d56973f869c4861b96529b330f0954a17c482dd7dce5f877ed
+
+pkgname = linux-tpm453-mainline-bin
+	pkgdesc = Prebuilt TPM453 mainline kernel and modules
+	provides = linux-tpm453-mainline=7.0.1.r20260423.ga3418d70e28-1
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	provides = V4L2LOOPBACK-MODULE
+	provides = NTSYNC-MODULE
+	provides = VHBA-MODULE
+	provides = ADIOS-MODULE
+	conflicts = linux-tpm453-mainline
+
+pkgname = linux-tpm453-mainline-bin-headers
+	pkgdesc = Prebuilt headers for the TPM453 mainline kernel
+	depends = linux-tpm453-mainline-bin=7.0.1.r20260423.ga3418d70e28-1
+	provides = linux-tpm453-mainline-headers=7.0.1.r20260423.ga3418d70e28-1
+	provides = LINUX-HEADERS
+	conflicts = linux-tpm453-mainline-headers
