@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2026.1.0.r208.g0f186e20b70
+pkgver=2026.1.2.r366.gde348846562
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -17,6 +17,7 @@ makedepends=(
     'flatbuffers'
     'git'
     'git-lfs'
+    'level-zero-headers'
     'ocl-icd'
     'onetbb'
     'opencv'
@@ -80,7 +81,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '8bb27db4afdfa1a28ed1ddd7db7c523c8d9cecf39ee5027c7908d7ba79348fae'
-            '66615858cc57df2e0e256798415316e0b6deb41d6d9b3b135e8573f4a71b5f58')
+            '07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -174,7 +175,7 @@ build() {
     
     cd openvino/tools/benchmark_tool
     python -m build --wheel --no-isolation
-    python -m installer --destdir="${srcdir}/benchmark_app" --prefix='' dist/*.whl
+    python -m installer --destdir="${srcdir}/benchmark_app" dist/*.whl
 }
 
 package_openvino-git() {
@@ -277,7 +278,7 @@ package_python-openvino-git() {
     _site_pkgs=$(python -c "import site; print(site.getsitepackages()[0])")
     
     install -d -m755 "${pkgdir}/usr/lib"
-    install -D -m755 benchmark_app/bin/benchmark_app "${pkgdir}/usr/bin/ov-py-benchmark_app"
+    install -D -m755 benchmark_app/usr/bin/benchmark_app "${pkgdir}/usr/bin/ov-py-benchmark_app"
     mv "python${_pyver}" "${pkgdir}/usr/lib"
     rm "${pkgdir}${_site_pkgs}/requirements.txt"
     
