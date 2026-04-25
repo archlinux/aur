@@ -1,0 +1,41 @@
+pkgbase = linux-tpm453-release-bin
+	pkgdesc = Prebuilt TPM453 release kernel package
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://github.com/docker-mobile/linux-tpm453
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = libarchive
+	makedepends = zstd
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	noextract = linux-tpm453-release-7.0.1-1-x86_64.pkg.tar.zst
+	noextract = linux-tpm453-release-headers-7.0.1-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = linux-tpm453-release-7.0.1-1-x86_64.pkg.tar.zst::https://github.com/docker-mobile/linux-tpm453/releases/download/linux-tpm453-release-7.0.1-1/linux-tpm453-release-7.0.1-1-x86_64.pkg.tar.zst
+	source = linux-tpm453-release-headers-7.0.1-1-x86_64.pkg.tar.zst::https://github.com/docker-mobile/linux-tpm453/releases/download/linux-tpm453-release-7.0.1-1/linux-tpm453-release-headers-7.0.1-1-x86_64.pkg.tar.zst
+	sha256sums = 8c36c06c4f296d422e299c50a768a7bbfee4e3e6a37f6c798193932815934a42
+	sha256sums = a6248162df956cdfdc449eadefb0081e036b39c0a8986ccb056da2bb01881fd3
+
+pkgname = linux-tpm453-release-bin
+	pkgdesc = Prebuilt TPM453 release kernel and modules
+	provides = linux-tpm453-release=7.0.1-1
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	provides = V4L2LOOPBACK-MODULE
+	provides = NTSYNC-MODULE
+	provides = VHBA-MODULE
+	provides = ADIOS-MODULE
+	conflicts = linux-tpm453-release
+
+pkgname = linux-tpm453-release-bin-headers
+	pkgdesc = Prebuilt headers for the TPM453 release kernel
+	depends = linux-tpm453-release-bin=7.0.1-1
+	provides = linux-tpm453-release-headers=7.0.1-1
+	provides = LINUX-HEADERS
+	conflicts = linux-tpm453-release-headers
