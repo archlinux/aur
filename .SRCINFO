@@ -27,9 +27,9 @@ pkgbase = gradia
 	depends = python-pytesseract
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	options = !debug
-	source = gradia-1.13.0.zip::https://github.com/AlexanderVanhee/Gradia/archive/.zip
+	source = gradia-1.13.0.tar.gz::https://github.com/AlexanderVanhee/Gradia/archive/refs/tags/v1.13.0.tar.gz
 	source = gradia_ocr.patch
-	sha256sums = e0cfe26530e05e6542e184446be35cc22d5785852bd6221baaf129177183d6b3
+	sha256sums = bba20396de4b7e515597207828ef7e9f3906711a24399b39a52c7dac2333eb0b
 	sha256sums = 770b874fed71ec84a6a190b6e931be9189f512b4433eaef8996dca32644472d7
 
 pkgname = gradia
