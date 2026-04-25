@@ -5,7 +5,7 @@
 # Binary sha256 is in checksums-SHA256.txt attached to each GitHub release.
 
 pkgname=paintfe-bin
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="Fast, GPU-accelerated raster image editor (prebuilt binary)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "PaintFE-${pkgver}.png::https://raw.githubusercontent.com/kylejckson/PaintFE/v${pkgver}/assets/icons/app_icon.png"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/kylejckson/PaintFE/v${pkgver}/LICENSE.md"
 )
-sha256sums=('76b2573188c912d651d249e71a13781cd043c15bb252729662c98163ba29ec77'
+sha256sums=('9a3ee405d29ab59e5d57728956d66a8370277985ae9a24009ba921bb9abf2c28'
             '5025ed2b4f8403fd502b50baebe50f16b8e8c5b2b20569ce29dc25287ba4c072'
             '01d846f2682ae7fb3a67542ef4e2b31212a6286b6da3964d18e0591c72e3fcc5'
             '93a341aa77d861fdf5fcf20243c40a13da5bf7ab1d2058e9d67b8777534a5c0e')
