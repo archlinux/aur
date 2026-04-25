@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=23
+pkgrel=24
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -10,7 +10,7 @@ license=('GPL')
 # 核心依赖：桌面能够成功运行的底线包，以及脚本执行必须的工具
 depends=(
     'bash' 'curl'
-    'niri' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle'
+    'niri' 'nirius' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle'
     'fuzzel-ime-git' 'libnotify' 'brightnessctl' 'cava' 'cliphist' 'wl-clipboard' 
     'grim' 'slurp' 'hyprlock' 'hyprpicker' 'swayosd' 'awww' 'waybar' 'matugen' 'cliphist-tui-git'
 )
