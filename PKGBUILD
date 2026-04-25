@@ -7,16 +7,15 @@ arch=('x86_64')
 url="https://github.com/exerinity/timein"
 license=('MIT')
 depends=('glibc')
-makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/exerinity/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7e56547cddd486b2f0eeac311ad2fc7692f503ba07150d40eb9f37852d388bbc')
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     gcc -O2 -o timein execute.c find.c listofcities.c
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     install -Dm755 timein "$pkgdir/usr/bin/timein"
 }
