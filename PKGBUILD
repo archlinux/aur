@@ -1,12 +1,12 @@
 pkgname=cmdcreate
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Allows you to create custom commands for your custom scripts"
 arch=('x86_64' 'aarch64') 
 url="https://github.com/owen-debiasio/cmdcreate"
 license=('GPL3')
 
-depends=('gcc-libs' 'curl' 'git' 'openssl')
+depends=('gcc-libs' 'curl' 'git' 'less' 'openssl')
 makedepends=('cargo' 'cmake' 'clang')
 
 conflicts=('cmdcreate-git')
