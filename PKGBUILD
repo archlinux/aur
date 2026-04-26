@@ -2,7 +2,7 @@
 
 pkgname=llama-recipe-manager
 pkgver=0.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A native desktop application for managing and launching llama-server with named recipes of command-line flags"
 arch=('x86_64')
 url="https://github.com/Llama-Recipe-Manager/llama-recipe-manager"
