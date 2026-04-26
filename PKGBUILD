@@ -2,7 +2,7 @@
 # Maintainer: Dokter Smol <will.klare.nl@gmail.com>
 
 pkgname='goyoke-bin'
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='Programmatic enforcement for Claude Code agentic workflows'
 url='https://github.com/Bucket-Chemist/goYoke'
@@ -12,7 +12,7 @@ provides=('goYoke-dev')
 conflicts=('goYoke-dev')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Bucket-Chemist/goYoke/releases/download/v${pkgver}/goYoke_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('e47952668de8a653b916e2c4d1ae0d5a91534ea0a5115a2c4c0be787d6979093')
+sha256sums_x86_64=('8279e83220507da386d219c8d9b95db2b078ffd37e42a9d55dd1f5188445acbd')
 
 package() {
   install -Dm755 "./goyoke" "${pkgdir}/usr/bin/goyoke"

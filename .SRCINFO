@@ -1,13 +1,13 @@
 pkgbase = goyoke-bin
 	pkgdesc = Programmatic enforcement for Claude Code agentic workflows
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/Bucket-Chemist/goYoke
 	license = MIT
 	conflicts = goYoke-dev
 	provides = goYoke-dev
 	arch = x86_64
-	source_x86_64 = https://github.com/Bucket-Chemist/goYoke/releases/download/v0.5.5/goYoke_0.5.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = e47952668de8a653b916e2c4d1ae0d5a91534ea0a5115a2c4c0be787d6979093
+	source_x86_64 = https://github.com/Bucket-Chemist/goYoke/releases/download/v0.5.6/goYoke_0.5.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8279e83220507da386d219c8d9b95db2b078ffd37e42a9d55dd1f5188445acbd
 	
 pkgname = goyoke-bin
