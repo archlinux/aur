@@ -18,6 +18,8 @@ _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
 url=${_ghurl}
 
+provides=("${_appname}")
+conflicts=("${_appname}")
 depends=('glibc' 'libgcc' 'libstdc++' 'glib2' 'libsecret' 'zlib' 'gdk-pixbuf2' 'gtk3' 'at-spi2-core' 'harfbuzz' 'libepoxy' 'cairo' 'fontconfig' 'pango' 'bash')
 
 source=(
