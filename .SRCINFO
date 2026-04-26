@@ -1,0 +1,11 @@
+pkgbase = noctalia-git
+    pkgdesc = Placeholder for noctalia-git
+    pkgver = 0.0.0
+    pkgrel = 1
+    arch = any
+    url = https://github.com/noctalia-dev/noctalia
+    license = MIT
+    provides = noctalia
+    conflicts = noctalia
+
+pkgname = noctalia-git
