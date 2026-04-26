@@ -1,7 +1,7 @@
 # Maintainer: Gao Zimu <gaozimu_0502@163.com>
 pkgname=easytier-gui-bin
 pkgver=2.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
@@ -15,4 +15,6 @@ source_aarch64=("https://github.com/EasyTier/EasyTier/releases/download/v${pkgve
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir/"
+
+	sed -i 's/^Categories=$/Categories=Utility;Network;/' "$pkgdir/usr/share/applications/easytier-gui.desktop"
 }
