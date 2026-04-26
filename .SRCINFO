@@ -41,6 +41,6 @@ pkgbase = 02engine-bin
 	source = .INSTALL::https://github.com/02engine/02engine-aur/releases/download/INSTALL/INSTALL
 	source = 02engine-1.2.7.deb::https://github.com/02engine/desktop/releases/download/v1.2.7/02Engine-linux-amd64-1.2.7.deb
 	sha256sums = 2565e60d233d653206f33fc25b35c7b31b42d45c5fb1de7b28be966fae959d58
-	sha256sums = 925634e16b50942ea0e6243f4ddeef345758fd22a05f29aa1236965da3850f8c
+	sha256sums = d59951c222a6e6284b458996d81dc843e8fbf7ffe73175e2a21ed4fafcf6eb21
 
 pkgname = 02engine-bin
