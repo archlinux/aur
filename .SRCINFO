@@ -1,0 +1,25 @@
+pkgbase = ani-cli-mx-git
+	pkgdesc = Spanish-first independent fork of ani-cli
+	pkgver = 0.r801.gcbb9bf2
+	pkgrel = 1
+	url = https://github.com/Gildedboy/ani-cli-mx
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = fzf
+	depends = grep
+	depends = mpv
+	depends = openssl
+	depends = sed
+	optdepends = aria2: direct-file download support
+	optdepends = ffmpeg: m3u8 download fallback
+	optdepends = rofi: alternative interactive menu frontend
+	optdepends = vlc: alternative media player
+	provides = ani-cli-mx
+	conflicts = ani-cli-mx
+	source = ani-cli-mx::git+https://github.com/Gildedboy/ani-cli-mx.git
+	sha256sums = SKIP
+
+pkgname = ani-cli-mx-git
