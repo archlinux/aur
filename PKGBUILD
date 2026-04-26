@@ -1,9 +1,9 @@
 # Maintainer: Robert Manner <the_manni at users.sf.net>
 
 pkgname=osmin
-pkgver=1.14.5
+pkgver=1.14.6
 pkgrel=1
-osmscoutcommit="1296f6c937936b7241d3f4f304ec4f23ece90fb6"
+osmscoutcommit="6f36674e11f8a444668a4d2691654f07b65bc4dc"
 pkgdesc="Satellite Navigator & Tracker On-Road/Off-Road for Mobile"
 arch=('x86_64' 'aarch64')
 url="https://github.com/janbar/osmin"
@@ -13,8 +13,8 @@ makedepends=('clang' 'cmake' 'double-conversion' 'tslib' 'xcb-util-image' 'xcb-u
 source=("$url/archive/refs/tags/${pkgver}.tar.gz"
   "https://github.com/janbar/libosmscout/archive/${osmscoutcommit}.tar.gz"
   "osmin.patch")
-sha256sums=('5d8678bf2abac5655d2b556ff763be054fa695197ce9a395e8682bba84327db0'
-            '206ee97a421b76572b00ec61be1b04f02df88f3eff52a7730ea258aa1f5026b1'
+sha256sums=('08f3da97bb79d0b3c266c178588bf159e2a8e68e1a8dc6ab7b858edff185c3f5'
+            '7c5821ddc425a57b85956e7957c56227612b81cb49f313fb68e40105eb5e6c08'
             '3b215c8bd6c417537acc26d9cf43f960109c305f8f7bcb14787bb664cce3825b')
 
 prepare() {
