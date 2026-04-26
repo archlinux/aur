@@ -1,6 +1,6 @@
 pkgbase = distroav
 	pkgdesc = NDI integration for OBS Studio
-	pkgver = 6.1.1
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = https://github.com/DistroAV/DistroAV
 	install = distroav.install
@@ -16,7 +16,7 @@ pkgbase = distroav
 	conflicts = obs-ndi-bin
 	conflicts = obs-ndi-git
 	conflicts = distroav-git
-	source = distroav-6.1.1.tar.gz::https://github.com/DistroAV/DistroAV/archive/6.1.1.tar.gz
-	sha256sums = a5982d12c500733bf1d99c3b5e6ac7918d40bfb52e1589a5ee562e7f192588b9
+	source = distroav-6.2.1.tar.gz::https://github.com/DistroAV/DistroAV/archive/6.2.1.tar.gz
+	sha256sums = d40dbada1185fb1cdd1b9bb03a5d0641cfa0690aec08e53822e7bcdc5883190f
 
 pkgname = distroav
