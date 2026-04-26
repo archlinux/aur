@@ -1,6 +1,6 @@
 pkgbase = eilmeldung
 	pkgdesc = a TUI RSS reader based on the news-flash library
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/christo-auer/eilmeldung
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = eilmeldung
 	conflicts = eilmeldung-git
 	conflicts = eilmeldung-bin
 	options = !lto
-	source = eilmeldung-1.4.3.tar.gz::https://github.com/christo-auer/eilmeldung/archive/1.4.3.tar.gz
-	sha256sums = 901e8059048f668eb503f06587453c69be6e00c11b23dba27b38401cc38f9549
+	source = eilmeldung-1.4.4.tar.gz::https://github.com/christo-auer/eilmeldung/archive/1.4.4.tar.gz
+	sha256sums = 63cee4e949518b32f3f30d4c12909ba256715d77308eca8691343a51d24da67c
 
 pkgname = eilmeldung
