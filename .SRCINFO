@@ -1,0 +1,16 @@
+pkgbase = ignoreinit-bin
+	pkgdesc = A tool for creating .gitignore files from the command line
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/Loupeznik/ignoreinit
+	license = MIT
+	conflicts = ignoreinit
+	provides = ignoreinit
+	arch = aarch64
+	source_aarch64 = https://github.com/Loupeznik/ignoreinit/releases/download/v1.1.2/ignoreinit_1.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8e9537f9390d0d47467fb9fafca2ecd0b1eefec844edd10ffc608a127e2d28a2
+	arch = x86_64
+	source_x86_64 = https://github.com/Loupeznik/ignoreinit/releases/download/v1.1.2/ignoreinit_1.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 966f4f68b8eee19c8d90be54c18cca156ffaf9b838717695afd65e8181a10def
+	
+pkgname = ignoreinit-bin
