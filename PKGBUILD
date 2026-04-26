@@ -4,7 +4,7 @@
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.6.1.r11423.1799667
+pkgver=7.6.1.r11425.65e6a80
 _major=${pkgver:0:1}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
@@ -82,9 +82,6 @@ build() {
   export NUGET_PACKAGES="$srcdir/.nuget"
   export PATH="$PATH:$DOTNET_HOME"
 
-  ## Generate 'powershell.version'
-  git describe --dirty --abbrev=60 > "$_name.version"
-
   ## Generate resource binding C# files
   pushd src/ResGen
   dotnet run
@@ -121,7 +118,7 @@ check() {
 package() {
   cd "$_name"
   mkdir -pv "$pkgdir/opt/microsoft/$_name/$_major"
-  _dn="$(jq -r .sdk.version global.json | awk -F. '{print $1 "." $2}')"
+  _dn="$(jq -r .sdk.version global.json | awk -F. '{print $1 ".0"}')"
   cp -ar "src/$_name-unix/bin/Linux/net$_dn/linux-x64/"* "$pkgdir/opt/microsoft/$_name/$_major"
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
