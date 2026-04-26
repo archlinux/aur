@@ -1,6 +1,6 @@
 # Maintainer: zyxisme <d0116u@gmail.com>
 pkgname=sshkeyman
-pkgver=0.1.0
+pkgver=0.1.0_787f0ce
 pkgrel=1
 pkgdesc="Web-based SSH key & config manager"
 arch=('x86_64')
@@ -8,27 +8,29 @@ url="https://github.com/zyxisme/sshkeyman"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+_tag=v${pkgver%%_*}
+_srcdir=$pkgname-${pkgver%%_*}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
 sha256sums=('SKIP')
 options=('!lto')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$_srcdir"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_srcdir"
     cargo build --frozen --release
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$_srcdir"
     cargo test --frozen --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$_srcdir"
 
     install -Dm755 target/release/sshkeyman "$pkgdir/usr/bin/sshkeyman"
 
