@@ -1,0 +1,16 @@
+pkgbase = aurdash-bin
+	pkgdesc = A high-performance Rust TUI for searching, installing, and auditing AUR/Official packages with security scoring.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tantour/aurdash
+	arch = x86_64
+	license = MIT
+	depends = pacman
+	depends = glibc
+	depends = gcc-libs
+	provides = aurdash
+	conflicts = aurdash
+	source = aurdash-bin-1.0::https://github.com/tantour/aurdash/releases/download/v1.0/aurdash-x86_64
+	sha256sums = 3bb2369a029907a0be87768e076790e93060eac87254b1d121dbc50419d3f823
+
+pkgname = aurdash-bin
