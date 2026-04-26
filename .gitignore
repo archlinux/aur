@@ -1,0 +1,11 @@
+# Everything is ignored
+*
+
+# but the necessary bare minimum.
+# This package is completely specified by its PKGBUILD
+# (all components are fetched from the internet),
+# and we don't want to be committing something
+# else unless we explicitly allow it.
+!.gitignore
+!.SRCINFO
+!PKGBUILD
