@@ -1,0 +1,14 @@
+pkgbase = ioexplorer
+	pkgdesc = Wayland-native provider-oriented file manager for Wayland desktops
+	pkgver = r6.3fa9908
+	pkgrel = 1
+	url = https://github.com/LucasionGS/ioexplorer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = glib2
+	source = ioexplorer::git+https://github.com/LucasionGS/ioexplorer.git
+	sha256sums = SKIP
+
+pkgname = ioexplorer
