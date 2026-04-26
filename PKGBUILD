@@ -1,6 +1,7 @@
 # Maintainer: MicLeh <micleh at proton dot me>
 pkgname=cornelsen-offline-lernen-bin
 pkgver=37.10.2
+# App version 2026.6.1 from 2026-03-26
 pkgrel=3
 pkgdesc="Cornelsen Offline Lernen Electron App"
 arch=('x86_64')
@@ -14,7 +15,7 @@ source=("${pkgname}-${pkgver}.zip::https://ebook.cornelsen.de/uma20/public/v2/um
         "icon16.png"
         "icon32.png"
         "icon96.png")
-b2sums=('2801cc40ad4c023451bd2a2713e6d69ae036d32c450bc2ef5a920dd3c8b8bc3bddb7c5a22cb9b16fad3dad9b217ff3026be73a17410082c87d9ebdd90418cfad'
+b2sums=('6a6f85ea66ce44f4cdf9c6aa80736be9ebe24851f43460581dd1fb5edc97372ce3d65796400b34d8b74a43d3d8d587036360fa394f3fb379eefa6190e7c41326'
         '2f1c802ebb340472a192316bdd9a7834dcb9e205e6a5fb186684c6142efc1033ff76c7238e9753b0bfa3f2daccebce6c709332b38b4a84440ffb42f316373531'
         '8157b061d35da630252a8c402a98fb978fcad59fcfa813eb8b67dfeaae7e467051d659201e55b5d1811ae15eca49e47189a5a9840277f09876cf1d7021cfc1da'
         '8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65'
@@ -89,20 +90,29 @@ if (!fs.existsSync(distDir)) {
 
 const jsFiles = collectJsFiles(distDir);
 
+const verbose = process.env.CORNELSEN_PATCH_VERBOSE === '1';
+const strict = process.env.CORNELSEN_PATCH_STRICT === '1';
+
 const patches = [
     {
         name: 'annotations-404-fallback',
         regex: /getProductAnnotations\(r,s=!1\)\{return this\.http\.get\(`\$\{s\?os\.getSyncApiBaseUrl\(\):os\.getApiBaseUrl\(\)\}\/pspdf\/annotations\/\$\{r\}`\)\.pipe\(/g,
         replaceWith: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>s&&y.status===404?hs({}):r0(()=>y)),',
         from: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>r0(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
+        fromAlt: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?ls.getSyncApiBaseUrl():ls.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(nc(y=>this.mapOfflinePdfIds(y)))}',
+        toAlt: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?ls.getSyncApiBaseUrl():ls.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(op(y=>s&&y.status===404?fs({}):r0(()=>y)),nc(y=>this.mapOfflinePdfIds(y)))}',
         to: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>s&&y.status===404?hs({}):r0(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
-        alreadyMarker: 's&&y.status===404?hs({}):r0(()=>y)'
+        alreadyMarker: 's&&y.status===404?hs({}):r0(()=>y)',
+        required: false
     },
     {
         name: 'compatibility-401-fallback',
         from: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible))}',
+        fromAlt: 'isCompatibleWithOnline$(){return this.http.get(`${ls.getSyncApiBaseUrl()}/compatibility/offlineClients/${qE}`).pipe(sa(r=>r.isCompatible))}',
+        toAlt: 'isCompatibleWithOnline$(){return this.http.get(`${ls.getSyncApiBaseUrl()}/compatibility/offlineClients/${qE}`).pipe(sa(r=>r.isCompatible),op(r=>r.status===401?fs(!0):r0(()=>r)))}',
         to: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible),ip(r=>r.status===401?hs(!0):r0(()=>r)))}',
-        alreadyMarker: 'r.status===401?hs(!0):r0(()=>r)'
+        alreadyMarker: 'r.status===401?hs(!0):r0(()=>r)',
+        required: false
     }
 ];
 
@@ -112,7 +122,7 @@ for (const p of patches) {
     for (const filePath of jsFiles) {
         let txt = fs.readFileSync(filePath, 'utf8');
 
-        if (txt.includes(p.to) || txt.includes(p.alreadyMarker)) {
+        if (txt.includes(p.to) || (p.toAlt && txt.includes(p.toAlt)) || txt.includes(p.alreadyMarker)) {
             patched = true;
             break;
         }
@@ -130,10 +140,24 @@ for (const p of patches) {
             patched = true;
             break;
         }
+
+        if (p.fromAlt && p.toAlt && txt.includes(p.fromAlt)) {
+            txt = txt.replace(p.fromAlt, p.toAlt);
+            fs.writeFileSync(filePath, txt);
+            patched = true;
+            break;
+        }
     }
 
     if (!patched) {
-        console.warn(`WARN: patch target not found: ${p.name} (continuing)`);
+        if (p.required || strict) {
+            console.error(`ERROR: required patch target not found: ${p.name}`);
+            process.exit(1);
+        }
+
+        if (verbose) {
+            console.warn(`INFO: optional patch target not found: ${p.name} (continuing)`);
+        }
     }
 }
 NODE
