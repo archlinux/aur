@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia-git
 _pkgname=gamescope
-pkgver=3.16.23.r0.gf8b33d38
+pkgver=3.16.14.r2.g81e40911
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -83,11 +83,6 @@ prepare() {
   # stb
   sed -i "s#^url =.*#url = file://$srcdir/subprojects|stb#" subprojects/stb.wrap
   meson subprojects download stb glm
-
-  # temporary fix
-  msg2 'Applying temporary fix for wlroots'
-  curl -L https://gist.github.com/Billli11/d9e45819b87dbe82469fe2492492aff7/raw/1b3cd4aa948f0a184b063d6e6839d833b871bd81/diff.patch | \
-    patch -d "subprojects/wlroots" -Np1
 }
 
 pkgver() {
@@ -113,7 +108,7 @@ source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-He
          'subprojects|vkroots::git+https://github.com/Joshua-Ashton/vkroots#commit=5106d8a0df95de66cc58dc1ea37e69c99afc9540'
          'subprojects|openvr::git+https://github.com/ValveSoftware/openvr.git#commit=ff87f683f41fe26cc9353dd9d9d7028357fd8e1a'
          'src|reshade::git+https://github.com/Joshua-Ashton/reshade#commit=696b14cd6006ae9ca174e6164450619ace043283'
-         'subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=47a5590e9c4eb35d67651b8c05a55f1a48259329'
+         'subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=66b802d05b374cd8f388dc6ad1e7ae4f08cb3300'
          'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
          'subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=54e844748029d4874e14d0c086d50092c04c8899') # End
 
