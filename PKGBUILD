@@ -64,6 +64,15 @@ package() {
     install -d "$pkgdir/usr/share/man/man1"
     "$bin" man --output "$pkgdir/usr/share/man/man1" >/dev/null
 
+    # Desktop entry + scalable icon, so rofi / wofi / Krunner / GNOME
+    # Activities discover wflow as an app. Reverse-DNS name matches the
+    # Flatpak install so users see the same launcher entry across
+    # install methods.
+    install -Dm644 packaging/flatpak/io.github.cushycush.wflow.desktop \
+        "$pkgdir/usr/share/applications/io.github.cushycush.wflow.desktop"
+    install -Dm644 packaging/flatpak/io.github.cushycush.wflow.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.cushycush.wflow.svg"
+
     # Docs
     install -Dm644 README.md     "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 docs/KDL.md   "$pkgdir/usr/share/doc/$pkgname/KDL.md"
