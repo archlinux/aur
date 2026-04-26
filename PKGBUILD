@@ -2,7 +2,7 @@
 
 pkgname=bitshrinker
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop GUI app for compressing videos and images to a target file size"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Strawberry-Foundations/bitshrinker"
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'rust')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c4e1aaf2c6bc244505642ed03433ea3a5e4e1f77b4251e1e736e46a129c43c5b')
+sha256sums=('403e23e071ba1e3a6089bf9b3e0e3a94d9966d61f137033e788fb33e5faf6ee3')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
