@@ -3,7 +3,7 @@
 _appname=hson
 pkgauthor=kantord
 pkgname=headson
-pkgver=0.16.1
+pkgver=0.17.0
 _version=${pkgname}-v${pkgver}
 pkgrel=1
 pkgdesc="head/tail for structured data - summarize/preview JSON/YAML and source code"
@@ -18,7 +18,7 @@ makedepends=('cargo')
 provides=("${_appname}")
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_version}.tar.gz")
-sha256sums=('485c221b28b361c9de2b8223f7985401d37f2c75a2870be6f59af4d83f499db7')
+sha256sums=('9555186f0f79a8be725aec6a3d857ae6d2b58133e060b0b7eeeeb85715284dbf')
 
 prepare() {
 	cd "${pkgname}-${_version}"

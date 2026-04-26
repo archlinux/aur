@@ -1,6 +1,6 @@
 pkgbase = headson
 	pkgdesc = head/tail for structured data - summarize/preview JSON/YAML and source code
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/kantord/headson
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = headson
 	depends = libgcc
 	depends = zlib
 	provides = hson
-	source = headson-0.16.1.tgz::https://github.com/kantord/headson/archive/refs/tags/headson-v0.16.1.tar.gz
-	sha256sums = 485c221b28b361c9de2b8223f7985401d37f2c75a2870be6f59af4d83f499db7
+	source = headson-0.17.0.tgz::https://github.com/kantord/headson/archive/refs/tags/headson-v0.17.0.tar.gz
+	sha256sums = 9555186f0f79a8be725aec6a3d857ae6d2b58133e060b0b7eeeeb85715284dbf
 
 pkgname = headson
