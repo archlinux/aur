@@ -9,6 +9,7 @@ pkgbase = mcl-launcher-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	makedepends = jdk-openjdk
 	provides = mcl-launcher
 	conflicts = mcl-launcher
 	conflicts = mcl-launcher-bin
