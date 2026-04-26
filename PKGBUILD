@@ -9,9 +9,12 @@ source_x86_64=("mxlauncher::http://10.65.185.180/api/launcher/download/linux-x64
 source_aarch64=("mxlauncher::http://10.65.185.180/api/launcher/download/linux-arm64")
 source_armv7h=("mxlauncher::http://10.65.185.180/api/launcher/download/linux-arm")
 
+source+=("icon.jpg::http://10.65.185.180/icon.jpg")
+
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 sha256sums_armv7h=('SKIP')
+sha256sums=('SKIP')
 
 package() {
   install -Dm755 "$srcdir/mxlauncher" "$pkgdir/usr/bin/mxlauncher"
