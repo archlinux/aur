@@ -5,7 +5,21 @@ post_install() {
     echo "  You can run it from the application menu or via:"
     echo "    victus16-keyboard"
     echo "  command in the terminal."
+    echo ""
+    echo "  To enable auto-restore of backlight state on boot, run:"
+    echo "    systemctl --user enable --now victus16-keyboard-restore"
+    echo ""
+    echo "  Project Page & Issues:"
+    echo "    https://github.com/kadir-y/victus16-keyboard-ui"
     echo "════════════════════════════════════════════════"
+    
+    if [ ! -d "/sys/class/leds/hp::kbd_backlight" ]; then
+        echo -e "\e[31m\e[1m[WARNING] Hardware interface not found!\e[0m"
+        echo -e "\e[31mThe hp-wmi-fan-and-backlight-control kernel module appears to be missing.\e[0m"
+        echo -e "\e[31mThis application will not work without it.\e[0m"
+        echo -e "\e[31mPlease install it from: https://github.com/TUXOV/hp-wmi-fan-and-backlight-control\e[0m"
+        echo -e "\e[31mAfter installation, reboot your system.\e[0m"
+    fi
 }
 
 post_upgrade() {
@@ -16,4 +30,3 @@ post_remove() {
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
     echo "Victus 16 Keyboard Controller removed."
 }
-

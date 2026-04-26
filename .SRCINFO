@@ -1,6 +1,6 @@
 pkgbase = victus16-keyboard-ui
 	pkgdesc = HP Victus 16 Keyboard RGB Backlight Controller (GTK4)
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/kadir-y/victus16-keyboard-ui
 	install = victus16-keyboard.install

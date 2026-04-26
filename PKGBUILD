@@ -1,6 +1,6 @@
 # Maintainer: Abdulkadir Yildirim <contact@kadiryildirim.me>
 pkgname=victus16-keyboard-ui
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="HP Victus 16 Keyboard RGB Backlight Controller (GTK4)"
 arch=('any')
@@ -37,4 +37,7 @@ package() {
 
     install -Dm440 "victus16-keyboard-sudoers" \
         "$pkgdir/etc/sudoers.d/victus16-keyboard"
+
+    install -Dm644 "victus16-keyboard-restore.service" \
+        "$pkgdir/usr/lib/systemd/user/victus16-keyboard-restore.service"
 }
