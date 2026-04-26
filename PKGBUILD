@@ -1,6 +1,14 @@
 # Maintainer: mexus <gilaldpellaeon@gmail.com>
+#
+# Template — not a usable PKGBUILD on its own.
+# To publish to the AUR:
+#   1. Copy the contents of this directory into the AUR repo.
+#   2. Run `./prepare.sh` (uses the latest GitHub release) or
+#      `./prepare.sh X.Y.Z` to pin a version. The script renders this template,
+#      runs updpkgsums, and writes .SRCINFO.
+#   3. Commit & push.
 pkgname=pacrank-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Pick the fastest Archlinux mirrors (prebuilt binary)"
 arch=('x86_64')
@@ -15,8 +23,7 @@ source=(
     "LICENSE-MIT-$pkgver::$url/raw/v$pkgver/LICENSE-MIT"
     "LICENSE-APACHE-$pkgver::$url/raw/v$pkgver/LICENSE-APACHE"
 )
-# Run `updpkgsums` in this directory to update the entries with after bumping pkgver.
-sha256sums=('3d3b3ae251514e829e803630453c83146cc7c1d669aca9ad5e4c2d8d0ba5f1f9'
+sha256sums=('93f2f2750ee505129c8350219dfcdab97432c876801c8bccc2121d9dd50af842'
             '1f4501dd650e746acbfb3b11a4143ec4334751180817115a41b8583b60909548'
             '8e026767a7a93aa2d295f7a0b912d438aae888004d42a45c9510954a9efdb3d2')
 
