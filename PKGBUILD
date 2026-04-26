@@ -5,7 +5,7 @@ _version=2026.04.24-b97c38b
 
 pkgname=hytale-launcher-bin
 pkgver=${_version%-*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Hytale Launcher (Native Linux, Self-Updating) [${_version}]"
 url="https://hytale.com"
 license=('LicenseRef-custom')
