@@ -1,7 +1,7 @@
 pkgbase = r-gander
 	pkgdesc = High Performance, Low Friction Large Language Model Chat
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=gander
 	arch = any
 	license = MIT
