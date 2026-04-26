@@ -1,6 +1,6 @@
 # Maintainer: fibsussy <noahlykins@gmail.com>
 pkgname=krosshair
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Crosshair overlay for games on linux using Vulkan"
 arch=('x86_64' 'aarch64')
