@@ -1,7 +1,7 @@
 pkgbase = r-treesitter.r
 	pkgdesc = 'R' Grammar for 'Tree-Sitter'
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 5
 	url = https://cran.r-project.org/package=treesitter.r
 	arch = i686
 	arch = x86_64
