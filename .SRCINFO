@@ -1,7 +1,7 @@
 pkgbase = r-simsurv
 	pkgdesc = Simulate Survival Data
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 5
 	url = https://cran.r-project.org/package=simsurv
 	arch = any
 	license = GPL-3.0-or-later
