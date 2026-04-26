@@ -7,7 +7,7 @@ epoch=1
 _buildid_x86_64=20260415151706
 _buildid_i686=20260415143531
 _buildid_aarch64=20260415165514
-_date=2026.04.14
+_date=2026.04.15
 pkgver=52.9.${_date}
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)."
@@ -18,6 +18,7 @@ depends=('gtk3' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
+options=('!strip')
 source=('basilisk.desktop')
 source_x86_64=(https://dl.basilisk-browser.org/basilisk-${_buildid_x86_64}.linux-x86_64-gtk3.tar.xz)
 source_aarch64=(https://dl.basilisk-browser.org/basilisk-${_buildid_aarch64}.linux-aarch64-gtk3.tar.xz)
