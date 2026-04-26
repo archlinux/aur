@@ -1,3 +1,4 @@
+- Fix vault user password change not properly reencrypting secrets, making them not readable
 - Make explicit display scale value only accept multiples of 25% to prevent display issues
 - Fix sftp and vscode browser actions not opening for shell environments correctly
 - Fix browser navbar not aligning properly when the window width is constrained
