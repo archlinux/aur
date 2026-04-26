@@ -1,7 +1,7 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=oniri
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A tool that automatically maximizes the only window of a niri workspace"
 url="https://github.com/Antiz96/oniri"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc')
 makedepends=('cargo' 'scdoc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('57891edae6a38d976b731231c3e8b2021e6a899bac454f15efbfb159016ada42')
+sha256sums=('5ba656f4d5678e0d7649678e0c4d9036b3053c364f552e89e45175af583a9f63')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
