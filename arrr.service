@@ -1,0 +1,17 @@
+[Unit]
+Description=Arrr notification aggregator
+Documentation=https://github.com/tgiachi/Arrr
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/arrr
+Restart=on-failure
+RestartSec=5
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=arrr
+
+[Install]
+WantedBy=default.target

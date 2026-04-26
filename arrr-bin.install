@@ -1,0 +1,13 @@
+post_install() {
+    echo "arrr has been installed."
+    echo ""
+    echo "To start arrr as a user service:"
+    echo "  systemctl --user enable --now arrr"
+    echo ""
+    echo "To view logs:"
+    echo "  journalctl --user -u arrr -f"
+}
+
+post_upgrade() {
+    post_install
+}
