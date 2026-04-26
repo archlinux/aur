@@ -15,12 +15,12 @@ sha256sums=('15db76f2efb01229977618ebcc7e4310d8d5ed2ede6843e39cfffd232118a3c5'
             'fc302a303187ffc836f9379d88f9fafc64b9bd30c8db31768cbfa491ea8e4d36')
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" desktopfilesdir=/usr/share/xsessions install
   install -D -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
