@@ -1,5 +1,9 @@
-# Maintainer: MGislv <mgislv at ceppo dot xyz>
+# Maintainer: Michael Lass <bevan@bi-co.net>
+# Contributor: MGislv <mgislv at ceppo dot xyz>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
+
+# This PKGBUILD is maintained on github:
+# https://github.com/michaellass/AUR
 
 pkgname=dmidiplayer
 pkgver=1.7.5
