@@ -1,0 +1,25 @@
+pkgbase = nexis-git
+	pkgdesc = Linux & macOS System Optimizer and Monitoring (Qt6)
+	pkgver = 2.3.3.r19.g305436b
+	pkgrel = 1
+	url = https://github.com/s4solutionsllc/Nexis
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-charts
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	depends = polkit
+	optdepends = psmisc: for killall support
+	optdepends = smartmontools: for disk health monitoring
+	optdepends = systemd: for service management
+	provides = nexis
+	conflicts = nexis
+	source = git+https://github.com/s4solutionsllc/Nexis.git
+	sha256sums = SKIP
+
+pkgname = nexis-git
