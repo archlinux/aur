@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=testit
-_pkgver=0.15
+_pkgver=0.18
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,12 +15,9 @@ license=('MIT')
 depends=(
   r
 )
-optdepends=(
-  r-rstudioapi
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('447543565bb8f1a60628e44b492cc612')
-b2sums=('e65ca93d190cb25085245286c84dcc43d31f3a99724d0395e8068f0a9087814f494e4cf7f2e7ea07478d4e9c412b2ce68eed687e14a097dc1ceed28b0624fead')
+md5sums=('00780d40f30c43c961447875583f6f5f')
+b2sums=('259d6abf6d1b269ac1aff14c767d2838ca5655427d83f9a92857cd7f0835b4551935d7d3eb11f651df5b626dcc8cf10fa344debc543abbb038e306593f7e08a0')
 
 build() {
   mkdir build

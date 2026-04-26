@@ -1,14 +1,13 @@
 pkgbase = r-testit
 	pkgdesc = A Simple Package for Testing R Packages
-	pkgver = 0.15
+	pkgver = 0.18
 	pkgrel = 1
 	url = https://cran.r-project.org/package=testit
 	arch = any
 	license = MIT
 	depends = r
-	optdepends = r-rstudioapi
-	source = https://cran.r-project.org/src/contrib/testit_0.15.tar.gz
-	md5sums = 447543565bb8f1a60628e44b492cc612
-	b2sums = e65ca93d190cb25085245286c84dcc43d31f3a99724d0395e8068f0a9087814f494e4cf7f2e7ea07478d4e9c412b2ce68eed687e14a097dc1ceed28b0624fead
+	source = https://cran.r-project.org/src/contrib/testit_0.18.tar.gz
+	md5sums = 00780d40f30c43c961447875583f6f5f
+	b2sums = 259d6abf6d1b269ac1aff14c767d2838ca5655427d83f9a92857cd7f0835b4551935d7d3eb11f651df5b626dcc8cf10fa344debc543abbb038e306593f7e08a0
 
 pkgname = r-testit
