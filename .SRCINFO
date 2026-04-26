@@ -1,6 +1,6 @@
 pkgbase = matcha-client-bin
 	pkgdesc = A powerful, feature-rich email client for your terminal
-	pkgver = 0.34.0
+	pkgver = 0.35.0
 	pkgrel = 1
 	url = https://github.com/floatpane/matcha
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = matcha-client-bin
 	provides = matcha
 	conflicts = matcha
 	conflicts = matcha-bin
-	source_x86_64 = matcha-x86_64-0.34.0.tgz::https://github.com/floatpane/matcha/releases/download/v0.34.0/matcha_0.34.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 594e4078881a9c859368bc9dc41d19ba8ecba364baf49501566cec05642d7dad
-	source_aarch64 = matcha-aarch64-0.34.0.tgz::https://github.com/floatpane/matcha/releases/download/v0.34.0/matcha_0.34.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 21435ec4b2828e85f296235ae57f9cba564a27f17273078099b3d90e62941ef9
+	source_x86_64 = matcha-x86_64-0.35.0.tgz::https://github.com/floatpane/matcha/releases/download/v0.35.0/matcha_0.35.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1063e276487c4ec251fe9cf04ad6c37663f8bfeab5ba1e0e39ca05dcf93816af
+	source_aarch64 = matcha-aarch64-0.35.0.tgz::https://github.com/floatpane/matcha/releases/download/v0.35.0/matcha_0.35.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d81e41ad0b2ddf86d46b8747f5100b38b1f2c9579a4fb1ef876046a924ba43d9
 
 pkgname = matcha-client-bin
