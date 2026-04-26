@@ -1,0 +1,23 @@
+diff -ruNb a/src/mongo/bson/util/builder.h b/src/mongo/bson/util/builder.h
+--- a/src/mongo/bson/util/builder.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/bson/util/builder.h	2026-04-26 04:19:17.501874325 -0500
+@@ -39,6 +39,7 @@
+ #include <type_traits>
+ 
+ #include <boost/optional.hpp>
++#include <boost/static_assert.hpp>
+ 
+ #include "mongo/base/data_type_endian.h"
+ #include "mongo/base/data_view.h"
+diff -ruNb a/src/mongo/db/catalog/coll_mod.cpp b/src/mongo/db/catalog/coll_mod.cpp
+--- a/src/mongo/db/catalog/coll_mod.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/catalog/coll_mod.cpp	2026-04-26 16:13:40.091302393 -0500
+@@ -358,7 +358,7 @@
+         const auto sharedView = ViewCatalog::get(db)->lookup(opCtx, nss.ns());
+         if (sharedView) {
+             // We copy the ViewDefinition as it is modified below to represent the requested state.
+-            view = {*sharedView};
++            view = boost::optional<ViewDefinition> ({*sharedView});
+         }
+     }
+ 
