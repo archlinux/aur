@@ -25,8 +25,9 @@ source=("hytale-launcher-${_version}.zip::https://launcher.hytale.com/builds/rel
         "com.hypixel.HytaleLauncher.desktop"
         "LICENSE")
 
-# generated with: updpkgsums
-sha256sums=('f042e851d713b0533b54fb3446ff54ef3a470ff6e6efef493e33519e9ee1cd03'
+_sha256_linux_amd64='f042e851d713b0533b54fb3446ff54ef3a470ff6e6efef493e33519e9ee1cd03'
+
+sha256sums=("$_sha256_linux_amd64"
             '0835afe0aec4f086c72518512bf64bfa55679242f3214ca6542fb0fcadd150b9'
             '8a189633047b88b432cd0cf299d1a65cf97e511e4cb4a08951efa93cf4a3e4c9'
             '2ac413e944bff6afba669883dd6686c7f08aa77708b06d8492177fcd48fd6b2c'
