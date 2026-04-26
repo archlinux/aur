@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-${_android_arch}-boost
-pkgver=1.88.0
+pkgver=1.91.0
 pkgrel=1
 _srcname=boost_${pkgver//./_}
 arch=('any')
@@ -19,14 +19,17 @@ depends=("android-${_android_arch}-bzip2"
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://archives.boost.io/release/${pkgver}/source/${_srcname}.tar.bz2"
-        "disable-version-check.patch")
-sha256sums=('46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b'
-            '63d12e7d703b471882608b4225c489f6a35ab425602783a4f9c4ea99a10f9c4b')
+        "disable-version-check.patch"
+        "fix-android-x64-fp-traits.patch")
+sha256sums=('de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5'
+            '63d12e7d703b471882608b4225c489f6a35ab425602783a4f9c4ea99a10f9c4b'
+            'a7d1f66b813e64f3865fed1046451d838674e1d7ba3da0183ea0dd90d844f536')
 
 prepare() {
   cd "${srcdir}/$_srcname"
   source android-env ${_android_arch}
   patch -p1 -i ../disable-version-check.patch
+  patch -p1 -i ../fix-android-x64-fp-traits.patch
 }
 
 build() {
@@ -96,7 +99,6 @@ EOF
       --with-random \
       --with-regex \
       --with-serialization \
-      --with-system \
       --with-test \
       --with-thread \
       --with-timer \
@@ -104,6 +106,10 @@ EOF
       --with-wave \
       --with-stacktrace \
       -sICONV_PATH="${ANDROID_PREFIX}" \
+      -sZLIB_BINARY="${ANDROID_PREFIX_LIB}/libz.so" \
+      -sZSTD_BINARY="${ANDROID_PREFIX_LIB}/libzstd.so" \
+      -sBZIP2_BINARY="${ANDROID_PREFIX_LIB}/libbz2.so" \
+      -sLZMA_BINARY="${ANDROID_PREFIX_LIB}/liblzma.so" \
       variant=release \
       debug-symbols=off \
       runtime-link=shared \
