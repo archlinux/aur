@@ -1,6 +1,6 @@
 pkgbase = arrr-bin
 	pkgdesc = Linux desktop notification aggregator daemon — aggregates RSS, IMAP, Teams and more into one place
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/tgiachi/Arrr
 	install = arrr-bin.install
@@ -11,10 +11,10 @@ pkgbase = arrr-bin
 	optdepends = libnotify: desktop popup notifications via D-Bus
 	provides = arrr
 	conflicts = arrr
-	noextract = arrr-1.5.1-1-x86_64.pkg.tar.zst
-	source = arrr-1.5.1-1-x86_64.pkg.tar.zst::https://github.com/tgiachi/Arrr/releases/download/v1.5.1/arrr-1.5.1-1-x86_64.pkg.tar.zst
+	noextract = arrr-1.6.0-1-x86_64.pkg.tar.zst
+	source = arrr-1.6.0-1-x86_64.pkg.tar.zst::https://github.com/tgiachi/Arrr/releases/download/v1.5.1/arrr-1.6.0-1-x86_64.pkg.tar.zst
 	source = arrr.service
-	sha256sums = e4394ac90d2b654e98f03764dab1892432b929d3a755710f9143c070f720415c
+	sha256sums = 4a9c96b6fb7441d30a8a0ab4bd2fb249de688a2991632e8971fedc8a06309962
 	sha256sums = SKIP
 
 pkgname = arrr-bin
