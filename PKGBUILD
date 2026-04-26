@@ -2,7 +2,7 @@
 pkgname=quasar-mips-ide-git
 _pkgname=Quasar
 _pkgname_lower=quasar
-pkgver=1.0.0.r0.g3c2c8d2
+pkgver=1.6.0.r0.g397517e
 pkgrel=1
 pkgdesc="A modern, high-performance IDE for MIPS32 R2000 assembly (Source build)"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = quasar-mips-ide-git
 	pkgdesc = A modern, high-performance IDE for MIPS32 R2000 assembly (Source build)
-	pkgver = 1.0.0.r0.g3c2c8d2
+	pkgver = 1.6.0.r0.g397517e
 	pkgrel = 1
 	url = https://github.com/rmia46/quasar
 	arch = x86_64
