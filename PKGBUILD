@@ -2,10 +2,10 @@
 pkgname=eddy-audio
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="Fast, local-first speech recognition with OpenVINO (Parakeet TDT)"
+pkgdesc="C++ inference library for multi-vendor edge NPUs (OpenVINO Parakeet-TDT)"
 arch=(x86_64)
 url="https://github.com/FluidInference/eddy-audio"
-license=(MIT)
+license=(Apache-2.0)
 depends=(openvino libsndfile libsamplerate)
 makedepends=(cmake gcc)
 provides=(eddy)
