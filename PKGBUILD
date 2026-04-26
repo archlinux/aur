@@ -7,11 +7,10 @@ pkgrel=1
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
-license=('MIT')
+license=('GPL-3.0')
 depends=('alsa-lib' 'fontconfig' 'freetype2' 'glibc' 'libappindicator' 'libgl' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
 optdepends=(
     'android-tools: USB connectivity support'
-    'bluez-libs: Bluetooth connectivity support'
     'xdg-utils: Open URLs in default browser'
 )
 provides=('micyou')
