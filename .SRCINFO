@@ -1,0 +1,16 @@
+pkgbase = ibus-engine-bangla-google
+	pkgdesc = Bangla phonetic input engine for IBus using Google Input Tools
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shahratin/bangla-google-ibus
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = libibus
+	depends = python
+	depends = python-gobject
+	depends = glib2
+	source = git+https://github.com/shahratin/bangla-google-ibus.git
+	sha256sums = SKIP
+
+pkgname = ibus-engine-bangla-google

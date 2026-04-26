@@ -1,0 +1,12 @@
+[Unit]
+Description=Bangla Google Input Engine
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/lib/bangla-google-ibus/bangla_engine.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

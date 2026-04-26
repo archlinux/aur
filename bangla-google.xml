@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component>
+  <name>org.freedesktop.IBus.BanglaGoogle</name>
+  <description>Bangla Google Input</description>
+  <exec>/usr/bin/python3 /usr/lib/bangla-google-ibus/bangla_engine.py</exec>
+  <version>1.0</version>
+  <author>Mahmud</author>
+  <license>MIT</license>
+  <engines>
+    <engine>
+      <name>bangla-google</name>
+      <language>bn</language>
+      <license>MIT</license>
+      <author>Mahmud</author>
+      <layout>default</layout>
+      <longname>Bangla (Google)</longname>
+      <description>Bangla phonetic input using Google Input Tools</description>
+    </engine>
+  </engines>
+</component>
