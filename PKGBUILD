@@ -4,7 +4,7 @@ pkgname="$_pkgname-mkl-git"
 # Upstream has changed tag formats, epoch is necessary
 epoch=1
 _pkgver=2.0
-pkgver=2.0.a.6.17.r85.g0afaeb9f
+pkgver=2.0.a.7.0.r0.g38779704
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 2.00 (alpha); dynamically linked to Intel MKL"
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=('zlib>=1.2.4' 'intel-oneapi-mkl' 'intel-oneapi-openmp' 'intel-oneapi-co
 makedepends=('git')
 provides=('plink2')
 sha256sums=('SKIP'
-            '2391d3b519c379647de0825ec8c5311dd4e5ebe3c189eb3dcb73ad9a76c9f9d4')
+            'ef03418c3f0e3a6a2569f1df76a8a14f8d0cbb46415cfa3c9ccbdbbf0de8fd0c')
 
 prepare() {
     cd "plink-ng/$_pkgver/build_dynamic"
