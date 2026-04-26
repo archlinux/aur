@@ -1,82 +1,152 @@
 # Maintainer: Nova Bürky (me@novadragon.space)
-pkgbase=godot-bin
-pkgname=('godot-bin' 'godot-mono-bin')
+_pkgbase="godot"
+_pkgname=(
+  "${_pkgbase}"
+  "${_pkgbase/godot/godot-mono}"
+)
+pkgbase="${_pkgbase}-bin"
+pkgname=(
+  "${_pkgname[@]/%/-bin}"
+)
 pkgver=4.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Godot Engine - Prebuilt binary from GitHub"
-arch=(x86_64)
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
+
+
 url="https://godotengine.org"
+_url="https://github.com/godotengine/godot-builds"
 license=(MIT)
-makedepends=(setconf)
-depends=(libglvnd libspeechd libxcursor libxi libxinerama libxrandr)
+makedepends=(desktop-file-utils)
+depends=(glibc)
 
-_pkgver_url="4.6.2-stable"
-_filename_std="Godot_v${_pkgver_url}_linux.x86_64.zip"
-_filename_mono="Godot_v${_pkgver_url}_mono_linux_x86_64.zip"
+_pkgver="${pkgver}-stable"
+_pkgsrc="godot-${_pkgver}"
 
-source=("https://github.com/godotengine/godot-builds/releases/download/${_pkgver_url}/${_filename_std}"
-        "https://github.com/godotengine/godot-builds/releases/download/${_pkgver_url}/${_filename_mono}"
-        "godot.desktop"
-        "godot.svg"
-        "org.godotengine.Godot.xml")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            )
-noextract=("${_filename_std}" "${_filename_mono}")
+
+source=(
+  "${_url}/releases/download/${_pkgver}/${_pkgsrc}.tar.xz"
+)
+source_aarch64=(
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.arm64.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_arm64.zip"
+)
+source_armv7h=(
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.arm32.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_arm32.zip"
+)
+source_i686=(
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.x86_32.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_x86_32.zip"
+)
+source_x86_64=(
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.x86_64.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_x86_64.zip"
+)
+
+
+sha256sums=('3465f34ae41cb7d7c17b0516c7cce93cc8a7a4d62331456b7b18e4e1d1b064c2')
+sha256sums_aarch64=('c9154154de14acb1f38a6c8618f01f4111ecbd1cdbcecd0a5151be42de2bd1c9'
+                    '65ee9699f6112c87bff2191c8e82ed96cf4c48c6e1549b8a9eb2664a8e80c99e')
+sha256sums_armv7h=('d78dc08446394b6023624df7e1cead16fc9464409dd44df71f7febb5a88d1e88'
+                   '388f44c5fab27e69762c8061c290177156b53f63c71e1add01cefd53ed5a1de0')
+sha256sums_i686=('5c750b9ad53955f1e54fdf2dd61f75c6074d4972872b12e64046ec2f2b928c12'
+                 '388f44c5fab27e69762c8061c290177156b53f63c71e1add01cefd53ed5a1de0')
+sha256sums_x86_64=('30e6b6d141f0cd5bebd629ad1d0ef1324e60091bb20662d026b402ba58c59937'
+                   '7d53302c31648ad98b620e8ca5b0c869c1066495770e62b2fa770cfeb004f167')
 
 prepare(){
 
 
-  cp -f godot.desktop godot-mono.desktop
-  setconf godot-mono.desktop Exec godot-mono %f
-  setconf godot-mono.desktop Icon godot-mono.svg
-  setconf godot-mono.desktop Name 'Godot Engine Mono'
+  cd "${srcdir}/${_pkgsrc}/misc/dist/linux"
+  cp -f "org.godotengine.Godot.desktop" "org.godotengine.Godot-mono.desktop"
+
+  desktop-file-edit --set-key="Exec" --set-value="godot-mono %f" "org.godotengine.Godot-mono.desktop"
+
+
+  desktop-file-edit --set-name="Godot Engine Mono" "org.godotengine.Godot-mono.desktop"
 
   # MIME info fix, ref FS#77810
   sed -i 's,xmlns="https://specifications.freedesktop.org/shared-mime-info-spec",xmlns="http://www.freedesktop.org/standards/shared-mime-info",g' \
-    org.godotengine.Godot.xml
-
-  # Godot Mono MIME config
-  cp -f org.godotengine.Godot.xml org.godotengine.Godot-mono.xml
+    "org.godotengine.Godot.xml"
 
 }
 
 package_godot-bin() {
-    pkgdesc="Godot Engine - Prebuilt binary from GitHub"
-    provides=("godot=${pkgver}")
-    conflicts=('godot')
+  depends=(
+    'glibc'
+  )
+  provides=(
+    "${pkgname%-bin}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
+
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
+  cd "${srcdir}"
+  install -vDm755 "${source_artifact%.zip}" -t "${pkgdir}/usr/lib/${_pkgbase}"
+
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
+  install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE.txt"
 
 
-    install -dm755 "$pkgdir/opt/godot"
-    bsdtar -xf "${_filename_std}" -C "$pkgdir/opt/godot"
+  # dev versions of 4.7 have this in this commented out folder, lets have that stand here
+  # cd "${srcdir}/${_pkgsrc}/misc/logo"
+  install -vDm644 "icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.svg"
 
-    install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/godot/Godot_v${_pkgver_url}_linux.x86_64" "$pkgdir/usr/bin/godot"
+  cd "${srcdir}/${_pkgsrc}/misc/dist/linux"
+  install -vDm644 "godot.6" "${pkgdir}/usr/share/man/man6/${pkgname%-bin}.6"
+  install -vDm644 "org.godotengine.Godot.desktop" "${pkgdir}/usr/share/applications/org.godotengine.Godot.desktop"
+  install -vDm644 "org.godotengine.Godot.xml" "${pkgdir}/usr/share/metainfo/org.godotengine.Godot.xml"
 
-    install -Dm644 "$srcdir/godot.desktop" "$pkgdir/usr/share/applications/godot.desktop"
-    install -Dm644 "$srcdir/godot.svg" "$pkgdir/usr/share/pixmaps/godot.svg"
-    install -Dm644 "$srcdir/org.godotengine.Godot.xml" "$pkgdir/usr/share/mime/packages/org.godotengine.Godot.xml"
-
+  install -vd "${pkgdir}/usr/bin"
+  ln -vsf "/usr/lib/${_pkgbase}/${source_artifact%.zip}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
 
 package_godot-mono-bin() {
-    pkgdesc="Godot Engine (Mono) - Prebuilt binary from GitHub"
-    provides=("godot-mono=${pkgver}")
-    conflicts=('godot-mono')
-    depends+=(dotnet-sdk)
+  depends+=(
+    'dotnet-sdk'
+  )
+  provides=(
+    "${pkgname%-bin}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
 
-    install -dm755 "$pkgdir/opt/godot-mono"
+  local source_array="source_${CARCH}[1]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
 
-    bsdtar -xf "${_filename_mono}" -C "$pkgdir/opt/godot-mono"
+  cd "${srcdir}"
+  install -vd "${pkgdir}/usr/lib/${_pkgbase}"
+  cp -aT --no-preserve=ownership "${source_artifact%.zip}" "${pkgdir}/usr/lib/${_pkgbase}"
 
-    install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/godot-mono/Godot_v${_pkgver_url}_mono_linux_x86_64/Godot_v${_pkgver_url}_mono_linux.x86_64" "$pkgdir/usr/bin/godot-mono"
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
+  install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE.txt"
 
-    install -Dm644 "$srcdir/godot-mono.desktop" "$pkgdir/usr/share/applications/godot-mono.desktop"
-    install -Dm644 "$srcdir/godot.svg" "$pkgdir/usr/share/pixmaps/godot-mono.svg"
-    install -Dm644 "$srcdir/org.godotengine.Godot-mono.xml" "$pkgdir/usr/share/mime/packages/org.godotengine.Godot-mono.xml"
+  # dev versions of 4.7 have this in this commented out folder, lets have that stand here
+  # cd "${srcdir}/${_pkgsrc}/misc/logo"
+  install -vDm644 "icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.svg"
 
+  cd "${srcdir}/${_pkgsrc}/misc/dist/linux"
+  install -vDm644 "godot.6" "${pkgdir}/usr/share/man/man6/${pkgname%-bin}.6"
+  install -vDm644 "org.godotengine.Godot-mono.desktop" "${pkgdir}/usr/share/applications/org.godotengine.Godot-mono.desktop"
+  install -vDm644 "org.godotengine.Godot.xml" "${pkgdir}/usr/share/metainfo/org.godotengine.Godot-mono.xml"
+
+  install -vd "${pkgdir}/usr/bin"
+  # mhm
+  local source_artifact_fix="${source_artifact%.zip}"
+  ln -vsf "/usr/lib/${_pkgbase}/${source_artifact_fix/linux_/linux.}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
