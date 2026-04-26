@@ -1,7 +1,7 @@
 pkgbase = r-satellite
 	pkgdesc = Handling and Manipulating Remote Sensing Data
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=satellite
 	arch = i686
 	arch = x86_64
