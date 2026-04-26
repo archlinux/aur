@@ -1,7 +1,7 @@
 pkgbase = r-leafsync
 	pkgdesc = Small Multiples for Leaflet Web Maps
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=leafsync
 	arch = any
 	license = MIT
