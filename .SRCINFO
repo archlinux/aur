@@ -1,7 +1,7 @@
 pkgbase = r-ollamar
 	pkgdesc = 'Ollama' Language Models
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ollamar
 	arch = any
 	license = MIT
