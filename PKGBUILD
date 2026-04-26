@@ -2,12 +2,12 @@
 # Created with assistance from Gemini 3.1 Pro.
 pkgname=yandex-music-downloader-gui
 pkgver=1.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Простой и красивый загрузчик музыки из Яндекс.Музыки"
 arch=('any')
 url="https://github.com/atyonekilla/yandex-music-downloader-gui"
 license=('MIT')
-depends=('python' 'python-mutagen' 'python-pycryptodome' 'python-pillow' 'python-customtkinter' 'python-imageio-ffmpeg' 'python-strenum' 'python-requests' 'python-aiohttp' 'python-aiofiles' 'python-typing_extensions')
+depends=('python' 'python-mutagen' 'python-pycryptodome' 'python-pillow' 'python-customtkinter' 'python-imageio-ffmpeg' 'python-requests' 'python-aiohttp' 'python-aiofiles' 'python-typing_extensions')
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("git+$url.git#tag=v$pkgver"
         "$pkgname.desktop"
@@ -21,6 +21,19 @@ prepare() {
   # Remove setuptools-git requirement to simplify dependencies
   sed -i '/"setuptools-git"/d' pyproject.toml
   
+  # Remove strenum dependency from pyproject.toml
+  sed -i '/"StrEnum"/d' pyproject.toml
+  
+  # Patch out strenum dependency in code
+  sed -i 's/from strenum import StrEnum/from enum import StrEnum/g' ymd/api.py
+  sed -i 's/from strenum import LowercaseStrEnum/from enum import StrEnum/g' ymd/core.py
+  # Add LowercaseStrEnum implementation to core.py
+  sed -i '/from enum import StrEnum/a \
+\
+class LowercaseStrEnum(StrEnum):\
+    def _generate_next_value_(name, start, count, last_values):\
+        return name.lower()' ymd/core.py
+
   # Vendor specific yandex-music-api revision
   rm -rf yandex_music_ymd
   cp -r "../yandex-music-api-9623fbca7704f47766614efe51d66c9fd496714c/yandex_music" yandex_music_ymd
