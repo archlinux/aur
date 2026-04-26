@@ -1,21 +1,16 @@
 pkgbase = victus16-keyboard-ui
 	pkgdesc = HP Victus 16 Keyboard RGB Backlight Controller (GTK4)
-	pkgver = 1.0.4
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://github.com/kadir-y/victus16-keyboard-ui
 	install = victus16-keyboard.install
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python
 	depends = gtk4
 	depends = python-gobject
-	source = https://raw.githubusercontent.com/kadir-y/victus16-keyboard-ui/main/keyboard_controller.py
-	source = https://raw.githubusercontent.com/kadir-y/victus16-keyboard-ui/main/com.victus16.keyboard.desktop
-	source = https://raw.githubusercontent.com/kadir-y/victus16-keyboard-ui/main/victus16-keyboard-sudoers
-	source = https://raw.githubusercontent.com/kadir-y/victus16-keyboard-ui/main/com.victus16.keyboard.png
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/kadir-y/victus16-keyboard-ui.git#branch=main
 	sha256sums = SKIP
 
 pkgname = victus16-keyboard-ui
