@@ -1,5 +1,5 @@
 pkgbase = pwgen-static
-	pkgdesc = Password generator for creating easily memorable passwords
+	pkgdesc = Create memorable passwords
 	pkgver = 2.08
 	pkgrel = 1
 	url = https://sourceforge.net/projects/pwgen/
