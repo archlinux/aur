@@ -1,10 +1,9 @@
-pkgbase = gvfs
-	pkgdesc = Virtual filesystem implementation for GIO
+pkgbase = gvfs-googledrive
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend)
 	pkgver = 1.60.0
-	pkgrel = 2
-	url = https://gitlab.gnome.org/GNOME/gvfs
+	pkgrel = 1
+	url = https://gitlab.gnome.org/fluhus/gvfs
 	arch = x86_64
-	groups = gnome
 	license = LGPL-2.0-only
 	makedepends = avahi
 	makedepends = dbus
@@ -43,102 +42,144 @@ pkgbase = gvfs
 	depends = systemd
 	depends = systemd-libs
 	depends = udisks2
-	source = git+https://gitlab.gnome.org/GNOME/gvfs.git#tag=1.60.0
+	source = git+https://gitlab.gnome.org/fluhus/gvfs.git#branch=googledrive
 	source = gvfsd.hook
-	b2sums = 79865df854d878ecac23b8ea2cbbf594accb581a5c824a66314955374c8a633a3ed70ed752903f1369151dba86d6e9df4b2fdc390e0cde9052427f79953ad234
+	b2sums = SKIP
 	b2sums = a0356a49c419dc69466c591d5e69701b865bb97ca336ea6d8bca0f0d9173b832b73d9f2c701d572a0245957d39c9a38ab6dff4ea7c737c34f2a1a28d93c0427f
 
-pkgname = gvfs
+pkgname = gvfs-googledrive
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend)
+	groups = gnome
 	optdepends = gvfs-afc: AFC support (Apple mobile devices)
 	optdepends = gvfs-dnssd: DNS-SD and WebDAV support (macOS file sharing)
 	optdepends = gvfs-goa: Gnome Online Accounts support (e.g. OwnCloud)
+	optdepends = gvfs-google: Google Drive support
 	optdepends = gvfs-gphoto2: gphoto2 support (PTP camera, MTP media player)
 	optdepends = gvfs-mtp: MTP support (Android, media player)
 	optdepends = gvfs-nfs: NFS support
 	optdepends = gvfs-onedrive: Microsoft OneDrive support
 	optdepends = gvfs-smb: SMB/CIFS support (Windows file sharing)
 	optdepends = gvfs-wsdd: Web Services Dynamic Discovery support (Windows discovery)
-	conflicts = gvfs-google<=1.58.3-1
-	replaces = gvfs-google<=1.58.3-1
+	provides = gvfs=1.60.0
+	conflicts = gvfs
+	replaces = gvfs
 
 pkgname = gvfs-afc
-	pkgdesc = Virtual filesystem implementation for GIO - AFC backend (Apple mobile devices)
-	depends = gvfs=1.60.0
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - AFC backend (Apple mobile devices)
+	depends = gvfs-googledrive=1.60.0
 	depends = glib2
 	depends = glibc
 	depends = libimobiledevice
 	depends = libplist
 	depends = usbmuxd
+	provides = gvfs-afc=1.60.0
+	conflicts = gvfs-afc
+	replaces = gvfs-afc
 
 pkgname = gvfs-dnssd
-	pkgdesc = Virtual filesystem implementation for GIO - DNS-SD and WebDAV backend (macOS file sharing)
-	depends = gvfs=1.60.0
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - DNS-SD and WebDAV backend (macOS file sharing)
+	depends = gvfs-googledrive=1.60.0
 	depends = avahi
 	depends = dconf
 	depends = glib2
 	depends = glibc
 	depends = libsoup3
 	depends = libxml2
+	provides = gvfs-dnssd=1.60.0
+	conflicts = gvfs-dnssd
+	replaces = gvfs-dnssd
 
 pkgname = gvfs-goa
-	pkgdesc = Virtual filesystem implementation for GIO - Gnome Online Accounts backend (e.g. OwnCloud)
-	depends = gvfs=1.60.0
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - Gnome Online Accounts backend (e.g. OwnCloud)
+	depends = gvfs-googledrive=1.60.0
 	depends = glib2
 	depends = glibc
 	depends = libgcc
 	depends = libgoa
+	provides = gvfs-goa=1.60.0
+	conflicts = gvfs-goa
+	replaces = gvfs-goa
+
+pkgname = gvfs-google
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - Google Drive backend
+	depends = gvfs-goa=1.60.0
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	depends = libgoa
+	provides = gvfs-google=1.60.0
+	conflicts = gvfs-google
+	replaces = gvfs-google
 
 pkgname = gvfs-gphoto2
-	pkgdesc = Virtual filesystem implementation for GIO - gphoto2 backend (PTP camera, MTP media player)
-	depends = gvfs=1.60.0
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - gphoto2 backend (PTP camera, MTP media player)
+	depends = gvfs-googledrive=1.60.0
 	depends = glib2
 	depends = glibc
 	depends = libgcc
 	depends = libgphoto2
 	depends = libgudev
+	provides = gvfs-gphoto2=1.60.0
+	conflicts = gvfs-gphoto2
+	replaces = gvfs-gphoto2
 
 pkgname = gvfs-mtp
-	pkgdesc = Virtual filesystem implementation for GIO - MTP backend (Android, media player)
-	depends = gvfs=1.60.0
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - MTP backend (Android, media player)
+	depends = gvfs-googledrive=1.60.0
 	depends = glib2
 	depends = glibc
 	depends = libgcc
 	depends = libgudev
 	depends = libmtp
 	depends = libusb
+	provides = gvfs-mtp=1.60.0
+	conflicts = gvfs-mtp
+	replaces = gvfs-mtp
 
 pkgname = gvfs-nfs
-	pkgdesc = Virtual filesystem implementation for GIO - NFS backend
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - NFS backend
 	install = gvfs-nfs.install
-	depends = gvfs=1.60.0
+	depends = gvfs-googledrive=1.60.0
 	depends = glib2
 	depends = glibc
 	depends = libgcc
 	depends = libnfs
+	provides = gvfs-nfs=1.60.0
+	conflicts = gvfs-nfs
+	replaces = gvfs-nfs
 
 pkgname = gvfs-onedrive
-	pkgdesc = Virtual filesystem implementation for GIO - Microsoft OneDrive backend
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - Microsoft OneDrive backend
 	depends = gvfs-goa=1.60.0
 	depends = glib2
 	depends = glibc
 	depends = libgcc
 	depends = libgoa
 	depends = msgraph
+	provides = gvfs-onedrive=1.60.0
+	conflicts = gvfs-onedrive
+	replaces = gvfs-onedrive
 
 pkgname = gvfs-smb
-	pkgdesc = Virtual filesystem implementation for GIO - SMB/CIFS backend (Windows file sharing)
-	depends = gvfs=1.60.0
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - SMB/CIFS backend (Windows file sharing)
+	depends = gvfs-googledrive=1.60.0
 	depends = smbclient>=4.12.0
 	depends = dconf
 	depends = glib2
 	depends = glibc
 	depends = libgcc
+	provides = gvfs-smb=1.60.0
+	conflicts = gvfs-smb
+	replaces = gvfs-smb
 
 pkgname = gvfs-wsdd
-	pkgdesc = Virtual filesystem implementation for GIO - Web Services Dynamic Discovery backend (Windows discovery)
-	depends = gvfs=1.60.0
+	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - Web Services Dynamic Discovery backend (Windows discovery)
+	depends = gvfs-googledrive=1.60.0
 	depends = dconf
 	depends = glib2
 	depends = glibc
 	depends = libgcc
 	depends = wsdd
+	provides = gvfs-wsdd=1.60.0
+	conflicts = gvfs-wsdd
+	replaces = gvfs-wsdd
