@@ -1,13 +1,15 @@
 pkgbase = agent-browser-bin
 	pkgdesc = Fast browser automation CLI for AI agents (native binary)
 	pkgver = 0.26.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vercel-labs/agent-browser
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	provides = agent-browser
 	conflicts = agent-browser
+	source = LICENSE-0.26.0::https://raw.githubusercontent.com/vercel-labs/agent-browser/v0.26.0/LICENSE
+	sha256sums = 014bb31e83d5c2e76aea1cc6e82217346ab41362f32cb355ad0f5c10aa0aeaff
 	source_x86_64 = agent-browser-bin-0.26.0-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v0.26.0/agent-browser-linux-x64
 	sha256sums_x86_64 = 8784dc259abf72ee04e751b45677d956387af50c99aec5dcd7a41a9bc498e3c3
 	source_aarch64 = agent-browser-bin-0.26.0-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v0.26.0/agent-browser-linux-arm64
