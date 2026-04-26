@@ -1,7 +1,7 @@
 pkgbase = r-slippymath
 	pkgdesc = Slippy Map Tile Tools
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=slippymath
 	arch = any
 	license = MIT
