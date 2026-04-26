@@ -44,7 +44,7 @@ source=(
     $pkgname.desktop
 )
 sha256sums=('SKIP'
-            '42672b0bb297c4b38cee93567b023af00c4310d2edce0b9aa873e6b6afe781ee'
+            'df543bd3a1ede2e3d536c07d5b695795c7bb20b0c058170ac09b9f49bbf3d9c6'
             'SKIP'
             'a7f82f8d89b00bc0ea368299e979b900c87710b86b89eafb7122a502e5b47eaf')
 validpgpkeys=(
