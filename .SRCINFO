@@ -1,12 +1,12 @@
 pkgbase = sealsay
 	pkgdesc = CLI app that generates ASCII art of a seal saying a message
-	pkgver = 1.1.1
+	pkgver = 1.0.0
 	pkgrel = 2
 	url = https://github.com/phantypengy/sealsay
 	arch = any
 	license = GPL-3.0-or-later
 	depends = python
-	source = sealsay-1.1.1.tar.gz::https://github.com/phantypengy/sealsay/archive/v1.1.1.tar.gz
-	sha256sums = e8e37fc2e3076d883d8cde1aebc63aa5fe9eec284138a153af0245fc6e526a66
+	source = sealsay-1.0.0.tar.gz::https://github.com/phantypengy/sealsay/archive/v1.0.0.tar.gz
+	sha256sums = ec9f86883202b6b11c5a94860e270a45266e667ff65e7d0b78edc847ae95f86b
 
 pkgname = sealsay
