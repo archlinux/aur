@@ -3,49 +3,56 @@
 # Contributor: Laurent OF Fough
 
 pkgname=iptvnator-bin
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
-pkgdesc="Cross-platform IPTV player application with support for M3U/M3U8 playlists, EPG, favorites, TV archive and more."
+pkgdesc="Video player for IPTV playlists (m3u, m3u8) with EPG, favorites, and TV archive support."
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
 license=('MIT')
 
 depends=(
-  'c-ares'
-  'ffmpeg'
+  'alsa-lib'
+  'at-spi2-core'
+  'dbus'
+  'expat'
+  'glib2'
   'gtk3'
-  'http-parser'
-  'libevent'
-  'libvpx'
-  'libxslt'
-  'libxss'
-  'minizip'
-  'nss'
-  're2'
-  'snappy'
+  'libdrm'
   'libnotify'
-  'libappindicator-gtk3'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxrandr'
+  'mesa'
+  'nspr'
+  'nss'
+)
+
+optdepends=(
+  'libappindicator-gtk3: tray icon support'
+  'ffmpeg: for extended codec support'
 )
 
 provides=('iptvnator')
 conflicts=('iptvnator')
-options=(!strip)
+options=('!strip' '!debug')
 
-source=("iptvnator-${pkgver}.pacman::https://github.com/4gray/iptvnator/releases/download/v${pkgver}/iptvnator-${pkgver}-linux-x64.pacman")
-sha256sums=('0e8eeac752d47614579ceb431300bebb02fdfdf73cd6a83761df5fadd283f99a')
+source=("iptvnator-${pkgver}.pacman::${url}/releases/download/v${pkgver}/iptvnator-${pkgver}-linux-x64.pacman")
+sha256sums=('14792c467a2bf92a4d372ac2acb3d5f0270e931a603e6bbcb4e9f8ada11d53c4')
 
 package() {
-  bsdtar -xf "${srcdir}/iptvnator-${pkgver}.pacman" -C "${pkgdir}"
+  bsdtar -xf "iptvnator-${pkgver}.pacman" -C "${pkgdir}"
 
-  # Provide a stable CLI entry point regardless of upstream install-script behavior
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/IPTVnator/iptvnator" "${pkgdir}/usr/bin/iptvnator"
 
-  # License
   install -Dm644 "${pkgdir}/opt/IPTVnator/LICENSE.electron.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Remove upstream pacman metadata files from the repack
   rm -f "${pkgdir}/.INSTALL" \
         "${pkgdir}/.MTREE" \
         "${pkgdir}/.PKGINFO"
