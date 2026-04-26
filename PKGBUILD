@@ -1,6 +1,6 @@
 # Maintainer: Scott Jones <scottajones@gmail.com>
 pkgname=omarchy-emacs
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Emacs integration for Omarchy with automatic theme and font syncing"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/scottjones/omarchy-emacs"
 license=('MIT')
 depends=('emacs-wayland' 'bash')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('258cf3339d8e61fbe3e6abb60beb94f9d5d4a0cb58ab9bb7740c055ed6f0bb1d')
+sha256sums=('ecb4579ad970759dc48c216be61071f300fad3dd618d38e6fdeb175c09b5699e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -29,7 +29,6 @@ package() {
   # Install bin scripts to PATH
   install -Dm755 bin/omarchy-emacs-setup "$pkgdir/usr/bin/omarchy-emacs-setup"
   install -Dm755 bin/omarchy-restart-emacs "$pkgdir/usr/bin/omarchy-restart-emacs"
-  install -Dm755 bin/omarchy-font-size-current "$pkgdir/usr/bin/omarchy-font-size-current"
   install -Dm755 bin/omarchy-install-emacs "$pkgdir/usr/bin/omarchy-install-emacs"
 
   # Install license
