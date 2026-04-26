@@ -50,7 +50,7 @@ source_x86_64=(
   "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.x86_64.zip"
   "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_x86_64.zip"
 )
-# ${_url}/tree/main/releases
+# https://github.com/godotengine/godot-builds/tree/main/releases
 sha256sums=('4c99ebfc07a964d34fcfb9238b9ec1a843d89f88838acdc734fb9d2876ccde0b')
 sha256sums_aarch64=('37d064f6818381d40a680715d1acfccde9252faffc55cd43fb1670571513d81c'
                     'fceb1d3fd59bfc71e2aebf6ae79bdac8e03398529166c93c5191d6395eec2c46')
