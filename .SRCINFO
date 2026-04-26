@@ -1,0 +1,17 @@
+pkgbase = eddy-audio
+	pkgdesc = Fast, local-first speech recognition with OpenVINO (Parakeet TDT)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/FluidInference/eddy-audio
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = openvino
+	depends = libsndfile
+	depends = libsamplerate
+	provides = eddy
+	source = eddy-audio-0.0.1.tar.gz::https://github.com/FluidInference/eddy-audio/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = c85e0196e2ecb569bac94c77e96107d3812c7c98b4a217625e18a8d6d09f65aa
+
+pkgname = eddy-audio
