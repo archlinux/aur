@@ -1,4 +1,4 @@
-# Maintainer: Cachy <cachy@localhost>
+# Maintainer: Hunter Bow <hmbown@gmail.com>
 # Contributor: DeepSeek TUI by Hmbown <https://github.com/Hmbown/DeepSeek-TUI>
 
 pkgname=deepseek-tui-bin
