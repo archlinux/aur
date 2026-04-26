@@ -1,6 +1,6 @@
 # Maintainer: textfuel <https://github.com/textfuel>
 pkgname=lazyjira-git
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="Terminal UI for Jira (builds from git source)"
 arch=('x86_64' 'aarch64')
