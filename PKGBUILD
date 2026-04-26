@@ -20,7 +20,7 @@ optdepends=(
 provides=('marker')
 conflicts=('marker' 'marker-git' 'marker-enhanced-git')
 source=("https://github.com/alfonsodg/Marker/releases/download/v${pkgver}/marker-enhanced-2020.04.04.r43-x86_64.tar.gz")
-sha256sums=('c93bcc23c5a58a2089221a80f9a1af79c403af75fa5331954b541e9d229e094c')
+sha256sums=('f2baf5253756144252cb434ab0de77733127c83f2d40b297b124cd49c227e28f')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/usr"
