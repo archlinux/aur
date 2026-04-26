@@ -1,6 +1,6 @@
 # Maintainer: Mark <mark at sgtxd dot de >
 pkgname='ani-cli'
-pkgver=4.11
+pkgver=4.13
 pkgrel=1
 pkgdesc="A cli to browse and watch anime."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('grep' 'sed' 'curl' 'mpv' 'aria2' 'ffmpeg' 'fzf')
 optdepends=('vlc: An alternative video player')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pystardust/ani-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('96a0addc9021a029e7b0e421aa60136c004568d23e5e34ca189c395a979f2a29')
+sha256sums=('dae82ea7089108b1650d2e1e53d35aece04b9b3ea352001579c44635bf1a91ae')
 install="$pkgname.install"
 
 package() {
