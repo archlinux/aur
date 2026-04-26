@@ -29,6 +29,7 @@ prepare() {
         --name "${pkgname^}" \
         --categories 'Network'
 
+    mv "${pkgname^}-fb35c38d4fb8775e8f8e617e4f55c8d91e0b63bf" "${pkgname^}-${pkgver}"
     cd "${pkgname^}-${pkgver}/core/server"
     export GOBIN="${srcdir}/bin"
     export PATH="${PATH}:${GOBIN}"
