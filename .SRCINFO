@@ -1,7 +1,7 @@
 pkgbase = tunneled
 	pkgdesc = A simple and powerful CLI tool for creating TCP tunnels
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Strawberry-Foundations/tunneled
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,6 @@ pkgbase = tunneled
 	depends = openssl
 	options = !lto
 	source = tunneled-2.5.2.tar.gz::https://github.com/Strawberry-Foundations/tunneled/archive/refs/tags/v2.5.2.tar.gz
-	sha256sums = 715c35189a25b23e8112ee3d9ec77f7e6f8a815d53a1aa33c26648defd6c8f74
+	sha256sums = ff172f5c8dfb7689a130e2d719e041ebc1ef3debb1d56e8b6147e88bacbfa2f6
 
 pkgname = tunneled
