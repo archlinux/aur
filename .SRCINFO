@@ -1,7 +1,7 @@
 pkgbase = streamcontrol-git
 	pkgdesc = App to control overlay data for Fighting Game livestreams
 	pkgver = r213.c29caea
-	pkgrel = 1
+	pkgrel = 2
 	url = http://farpnut.net/streamcontrol/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = streamcontrol-git
 	license = custom
 	makedepends = qt5-script
 	makedepends = make
+	depends = qt5-script
 	provides = streamcontrol
 	conflicts = streamcontrol
 	source = git+https://github.com/farpenoodle/StreamControl.git
