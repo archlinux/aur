@@ -1,6 +1,6 @@
 pkgbase = nst
 	pkgdesc = An X11 terminal emulator with focus on security, simplicity, productivity and customizability intended for power users
-	pkgver = v1.0.2
+	pkgver = v1.1.4
 	pkgrel = 1
 	url = https://github.com/gerstner-hub/nst
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = nst
 	depends = libxft
 	depends = libx11
 	depends = fontconfig
-	source = git+https://github.com/gerstner-hub/nst.git?signed#tag=a75fefd65a61c437b6ced9d5753d0524f8e8fb2d
+	source = git+https://github.com/gerstner-hub/nst.git?signed#tag=295344ece117ef6eb6f7cc6e3fc61899c215d4d2
 	validpgpkeys = 40C89F006FB8A328B83A37CC14AD6F6579097284
 	sha256sums = SKIP
 

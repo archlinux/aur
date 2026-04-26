@@ -1,19 +1,19 @@
 # Maintainer: Matthias Gerstner <matthias.gerstner@nefkom.net>
 
 pkgname='nst'
-pkgver=v1.0.2
+pkgver=v1.1.4
 pkgrel=1
 pkgdesc='An X11 terminal emulator with focus on security, simplicity, productivity and customizability intended for power users'
 arch=('i686' 'x86_64')
 url='https://github.com/gerstner-hub/nst'
 license=('MIT')
-_tag='a75fefd65a61c437b6ced9d5753d0524f8e8fb2d' # v1.0.2
+_tag='295344ece117ef6eb6f7cc6e3fc61899c215d4d2' # v1.1.4
 source=("git+${url}.git?signed#tag=$_tag")
 sha256sums=('SKIP')
-# note: this also depends on libcosmos, to be installed manually from AUR as well
+# note: this also depends on libcosmos and libxpp, to be installed manually from AUR as well
 depends=('glibc' 'gcc-libs' 'libcosmos' 'libxpp' 'libxft' 'libx11' 'fontconfig')
 makedepends=('scons' 'asciidoc')
-# retrieve key for verification from PGP keyserver, or from gibhub.com/gerstner-hub.gpg
+# retrieve key for verification from PGP keyserver, or from github.com/gerstner-hub.gpg
 validpgpkeys=('40C89F006FB8A328B83A37CC14AD6F6579097284')
 
 pkgver() {
