@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 conflicts=('nekoray')
 replaces=('nekoray')
 depends=('glibc' 'qt6-base')
-makedepends=('cmake' 'gendesk' 'git' 'go=1.25.7-1' 'lld' 'protobuf' 'qt6-tools' 'vulkan-headers')
+makedepends=('cmake' 'gendesk' 'git' 'go=2:1.25.7-1' 'lld' 'protobuf' 'qt6-tools' 'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/throneproj/Throne/archive/fb35c38d4fb8775e8f8e617e4f55c8d91e0b63bf.tar.gz"
         "${pkgname}.sh"
         "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set")
