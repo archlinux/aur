@@ -84,6 +84,15 @@ package() {
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerCore.HttpApi.pdb" "${pkgdir}/opt/${_pkgname}/DnsServerCore.HttpApi.pdb"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerCore.dll" "${pkgdir}/opt/${_pkgname}/DnsServerCore.dll"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerCore.pdb" "${pkgdir}/opt/${_pkgname}/DnsServerCore.pdb"
+    
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll" "${pkgdir}/opt/${_pkgname}/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/Microsoft.IdentityModel.Abstractions.dll" "${pkgdir}/opt/${_pkgname}/Microsoft.IdentityModel.Abstractions.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/Microsoft.IdentityModel.JsonWebTokens.dll" "${pkgdir}/opt/${_pkgname}/Microsoft.IdentityModel.JsonWebTokens.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/Microsoft.IdentityModel.Logging.dll" "${pkgdir}/opt/${_pkgname}/Microsoft.IdentityModel.Logging.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/Microsoft.IdentityModel.Protocols.dll" "${pkgdir}/opt/${_pkgname}/Microsoft.IdentityModel.Protocols.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" "${pkgdir}/opt/${_pkgname}/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/Microsoft.IdentityModel.Tokens.dll" "${pkgdir}/opt/${_pkgname}/Microsoft.IdentityModel.Tokens.dll"
+    
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/BouncyCastle.Cryptography.dll" "${pkgdir}/opt/${_pkgname}/BouncyCastle.Cryptography.dll"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/Microsoft.Win32.SystemEvents.dll" "${pkgdir}/opt/${_pkgname}/Microsoft.Win32.SystemEvents.dll"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/QRCoder.dll" "${pkgdir}/opt/${_pkgname}/QRCoder.dll"
