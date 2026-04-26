@@ -17,6 +17,7 @@ pkgver=4.7beta1+g1c8cc9e7e
 # 3. replace text with -text
 # 4. add -stable if not present
 _pkgver="$(printf '%s\n' "${pkgver}" | sed -E 's/\+g.*//; s/alpha/dev/; s/^([0-9.]*)([a-z].*)$/\1-\2/; /-/!s/$/-stable/')"
+[[ "${pkgver%+g*}" == "$pkgver" ]] && _commit="$_pkgver" || _commit="${pkgver##*+g}"
 pkgrel=1
 pkgdesc="Advanced cross-platform 2D and 3D game engine"
 arch=(
@@ -35,12 +36,12 @@ makedepends=(
 _pkgsrc="godot-${_pkgver}"
 source=(
   # "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/${_pkgsrc}.tar.xz"
-  "${_pkgsrc}-README.md::https://github.com/godotengine/godot/raw/${pkgver##*+g}/README.md"
-  "${_pkgsrc}-LICENSE.txt::https://github.com/godotengine/godot/raw/${pkgver##*+g}/LICENSE.txt"
-  "${_pkgsrc}-icon.svg::https://github.com/godotengine/godot/raw/${pkgver##*+g}/misc/logo/icon.svg"
-  "${_pkgsrc}-godot.6::https://github.com/godotengine/godot/raw/${pkgver##*+g}/misc/dist/linux/godot.6"
-  "${_pkgsrc}-org.godotengine.Godot.desktop::https://github.com/godotengine/godot/raw/${pkgver##*+g}/misc/dist/linux/org.godotengine.Godot.desktop"
-  "${_pkgsrc}-org.godotengine.Godot.xml::https://github.com/godotengine/godot/raw/${pkgver##*+g}/misc/dist/linux/org.godotengine.Godot.xml"
+  "${_pkgsrc}-README.md::https://github.com/godotengine/godot/raw/${_commit}/README.md"
+  "${_pkgsrc}-LICENSE.txt::https://github.com/godotengine/godot/raw/${_commit}/LICENSE.txt"
+  "${_pkgsrc}-icon.svg::https://github.com/godotengine/godot/raw/${_commit}/misc/logo/icon.svg"
+  "${_pkgsrc}-godot.6::https://github.com/godotengine/godot/raw/${_commit}/misc/dist/linux/godot.6"
+  "${_pkgsrc}-org.godotengine.Godot.desktop::https://github.com/godotengine/godot/raw/${_commit}/misc/dist/linux/org.godotengine.Godot.desktop"
+  "${_pkgsrc}-org.godotengine.Godot.xml::https://github.com/godotengine/godot/raw/${_commit}/misc/dist/linux/org.godotengine.Godot.xml"
 )
 source_aarch64=(
   "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.arm64.zip"
