@@ -1,19 +1,19 @@
 post_install() {
   echo ""
   echo ">>> Snry Shell has been installed!"
-  echo ">>> To set up your dotfiles, run:"
-  echo ">>>   snry-shell"
+  echo ">>> Running initial setup..."
   echo ""
-  echo ">>> Run 'snry-shell --tags checkdeps' to check for missing AUR packages first."
-  echo ""
+  
+  snry-shell
 }
 
 post_upgrade() {
   echo ""
   echo ">>> Snry Shell updated!"
-  echo ">>> To apply changes, run:"
-  echo ">>>   snry-shell"
+  echo ">>> Applying updates (your custom configs are preserved)..."
   echo ""
+  
+  snry-shell
 }
 
 post_remove() {
