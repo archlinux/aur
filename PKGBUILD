@@ -23,8 +23,6 @@ package() {
   go build -o snry-daemon .
   install -dm755 "$pkgdir/usr/share/snry-shell/scripts/snry-daemon"
   install -Dm755 snry-daemon "$pkgdir/usr/share/snry-shell/scripts/snry-daemon/snry-daemon"
-  install -Dm755 snry-daemon "$pkgdir/usr/share/snry-shell/scripts/snry-daemon/osk-input"
-  install -Dm755 snry-daemon "$pkgdir/usr/share/snry-shell/scripts/snry-daemon/snry-idle"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
 #!/bin/bash
 BASE=/usr/share/snry-shell
