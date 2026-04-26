@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=kSamples
-_pkgver=1.2-10
+_pkgver=1.2-12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=2
@@ -13,8 +13,8 @@ depends=(
   r-suppdists
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b3f45e87748adf618c76c59740fcf3f7')
-b2sums=('e9ed5b3adc7185061fb32fcabf09e2d6a396c4072c88f210669bb49aaa5a0254fca096180601428992dabc4a151a1016443024cdfdcd2390c2773fd01d46f958')
+md5sums=('c1c26a5243114c3b979344f5ab7f2242')
+b2sums=('3e3a1b4f53d909e25b01abf5ecd5a1f5d17a2d301895d71dcc7a73ecdb0d085befb8e17c8ed7566d8d9802a63cea0a62379ab9146f8b1d88e3a8b06f3135c384')
 
 build() {
   mkdir build
