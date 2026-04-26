@@ -2,11 +2,15 @@ import urllib.request
 import urllib.parse
 import json
 import threading
+# import time
+from functools import lru_cache
 import gi
 gi.require_version('IBus', '1.0')
 from gi.repository import IBus, GLib, GObject
 
-def get_bangla_suggestions(text: str, num: int = 8) -> list[str]:
+@lru_cache(maxsize=512)
+
+def get_bangla_suggestions(text: str, num: int = 8) -> tuple:
     url = "https://inputtools.google.com/request"
     params = urllib.parse.urlencode({
         "text": text,
@@ -19,10 +23,10 @@ def get_bangla_suggestions(text: str, num: int = 8) -> list[str]:
         with urllib.request.urlopen(f"{url}?{params}", timeout=3) as r:
             data = json.loads(r.read().decode("utf-8"))
             if data[0] == "SUCCESS":
-                return data[1][0][1]
-            return []
+                return tuple(data[1][0][1])
+            return ()
     except Exception:
-        return []
+        return ()
 
 
 class BanglaEngine(IBus.Engine):
@@ -33,6 +37,23 @@ class BanglaEngine(IBus.Engine):
         self._buffer = ""          # accumulates what user types in roman
         self._lookup_table = IBus.LookupTable.new(9, 0, True, True)
         self._suggestions = []
+        self._debounce_timer = None
+        self._opener = urllib.request.build_opener()
+
+    def _fetch_and_show(self, text):
+        # Cancel previous pending request
+        if self._debounce_timer:
+            self._debounce_timer.cancel()
+
+        # Wait 150ms before actually fetching
+        self._debounce_timer = threading.Timer(
+            0.15, self._do_fetch, args=[text]
+        )
+        self._debounce_timer.start()
+
+    def _do_fetch(self, text):
+        suggestions = list(get_bangla_suggestions(text))
+        GLib.idle_add(self._update_lookup_table, suggestions)
 
     def do_process_key_event(self, keyval, keycode, state):
         # Ignore key release events
@@ -43,7 +64,7 @@ class BanglaEngine(IBus.Engine):
         if state & (IBus.ModifierType.CONTROL_MASK |
                  IBus.ModifierType.MOD1_MASK |    # Alt
                  IBus.ModifierType.SUPER_MASK):   # Windows key
-         return False
+            return False
 
         # Ignore arrow keys, function keys, and other special keys
         ignored_keys = {
@@ -72,11 +93,16 @@ class BanglaEngine(IBus.Engine):
             if self._buffer:
                 self._buffer = self._buffer[:-1]
                 if self._buffer:
+                   # UPDATE: show the shorter buffer in preedit
+                    self.update_preedit_text(
+                        IBus.Text.new_from_string(self._buffer), len(self._buffer), True
+                    )
                     self._fetch_and_show(self._buffer)
                 else:
                     self._clear()
                 return True
             return False
+        
 
         # Space — commit the top suggestion (or the buffer as-is)
         if keyval == IBus.KEY_space:
@@ -124,12 +150,12 @@ class BanglaEngine(IBus.Engine):
 
         return False
 
-    def _fetch_and_show(self, text):
-        # Fetch in a background thread so typing stays responsive
-        def fetch():
-            suggestions = get_bangla_suggestions(text)
-            GLib.idle_add(self._update_lookup_table, suggestions)
-        threading.Thread(target=fetch, daemon=True).start()
+    # def _fetch_and_show(self, text):
+    #     # Fetch in a background thread so typing stays responsive
+    #     def fetch():
+    #         suggestions = get_bangla_suggestions(text)
+    #         GLib.idle_add(self._update_lookup_table, suggestions)
+    #     threading.Thread(target=fetch, daemon=True).start()
 
     def _update_lookup_table(self, suggestions):
         self._suggestions = suggestions

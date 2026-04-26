@@ -5,15 +5,15 @@
   <exec>/usr/bin/python3 /usr/lib/bangla-google-ibus/bangla_engine.py</exec>
   <version>1.0</version>
   <author>Mahmud</author>
-  <license>MIT</license>
+  <license>GPL3</license>
   <engines>
     <engine>
       <name>bangla-google</name>
       <language>bn</language>
-      <license>MIT</license>
+      <license>GPL3</license>
       <author>Mahmud</author>
       <layout>default</layout>
-      <longname>Bangla (Google)</longname>
+      <longname>Bangla-Google</longname>
       <description>Bangla phonetic input using Google Input Tools</description>
     </engine>
   </engines>
