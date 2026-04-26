@@ -2,8 +2,8 @@
 
 _pkgname="fluent-reader"
 pkgname="$_pkgname-bin"
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 
 pkgdesc="Modern desktop RSS reader built with Electron, React, and Fluent UI."
 arch=('x86_64')
@@ -44,7 +44,7 @@ changelog="changelog.md"
 source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/yang991178/fluent-reader/releases/download/v${pkgver}/Fluent.Reader.${pkgver}.AppImage"
 	"https://raw.githubusercontent.com/yang991178/fluent-reader/master/LICENSE")
 noextract=("${pkgname}-${pkgver}.${CARCH}.AppImage")
-b2sums=('28c760a4451cf5c5b35c6daea7fe8d9a7bdcde2efe7ade93ad17183013e992ee1e92ce7d191f7bba67fcbab9d1a9b91b784d55d98416f88d7c3e20c9fe47ecfd'
+b2sums=('669d4661498e92a478429fc9a76c4f271108324eaa62a8e734ac69c4c932b7539d4bc024c2c0da5bb826e1b7f86e19b91cf20f874991497302062fefc912503d'
 	'0a8e04b682d991c30efd88ff67147b221eaf09e12c7234a776a90897bbedeb8379f73c5d853121f1b37d54bb510ea1bf223b8ef0f480ad3156c4159cbd78f0ac')
 
 prepare() {
