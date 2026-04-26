@@ -1,4 +1,0 @@
-[wsjtx]
-source = "regex"
-url = "https://sourceforge.net/projects/wsjt/files/"
-regex = '>wsjtx-([\.0-9]+)<'
