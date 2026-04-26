@@ -4,7 +4,7 @@ _pkgauthor=blacknon
 _pkgname=lssh
 _pkgexec=(lssh lscp lsftp lsmon lsshell)
 pkgname=${_pkgname}-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A list-based SSH/SCP/SFTP client supporting single and parallel connections, local bashrc usage on remote machines, and advanced proxying'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -18,7 +18,7 @@ conflicts=("${_pkgname}")
 depends=('glibc')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
-sha256sums_x86_64=('8ef2d5fb249c4e7fd9b9543a9d935a18e8a84a2028fa493518460286765fcb4c')
+sha256sums_x86_64=('4a45e5165393374edb71f875a1bd781dc552e65dff516c3c12797e3fd179b096')
 
 
 case ${CARCH} in
