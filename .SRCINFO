@@ -1,0 +1,9 @@
+pkgbase = ipsos
+	pkgdesc = Self-referential system introspection utility
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/q1sh101/ipsos
+	arch = x86_64
+	license = GPL3
+
+pkgname = ipsos
