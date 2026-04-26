@@ -1,7 +1,7 @@
 pkgbase = r-finalfit
 	pkgdesc = Quickly Create Elegant Regression Results Tables and Plots when Modelling
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=finalfit
 	arch = any
 	license = MIT
