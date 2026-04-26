@@ -1,26 +1,28 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=milcheck
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
-pkgdesc="A CLI that displays the status of your pacman mirrorlist and the Arch Linux latest news right in the terminal"
+pkgdesc="A CLI to get pacman mirrorlist status and the Arch Linux latest news"
 arch=('x86_64')
 url='https://github.com/doums/milcheck'
 license=('MPL2')
 depends=('openssl' 'gcc-libs')
-makedepends=('rust' 'cargo' 'cmake')
+makedepends=('rust' 'cargo')
 provides=('milcheck')
 conflicts=('milcheck')
+options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7bb156bde360827e276a5726d9718eaef05bfda20fe58560b1650cea9b141478')
+sha256sums=('1c8e433e790f2ac0eaa4c5a12b0282734901f30deac4cd8552a62e5e2b147fb8')
+_pkgdir="$pkgname-$pkgver"
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$_pkgdir"
   cargo build --release --locked
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dvm 755 "target/release/milcheck" "$pkgdir/usr/bin/milcheck"
+  install -Dm755 "$srcdir/$_pkgdir/target/release/milcheck" "$pkgdir/usr/bin/milcheck"
 }
 
