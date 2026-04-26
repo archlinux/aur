@@ -1,8 +1,8 @@
 # Maintainer: JasonLandbridge
 
 pkgname=omniroute-bin
-pkgver=3.7.0
-pkgrel=1
+pkgver=3.7.0 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
+pkgrel=2
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
@@ -48,8 +48,10 @@ _omniroute_pkgroot() {
 
 build() {
   local _pkgroot
+  local _app_binary
+
   _pkgroot="$(_omniroute_pkgroot)"
-  local _app_binary="${_pkgroot}/app/node_modules/better-sqlite3/build/Release/better_sqlite3.node"
+  _app_binary="${_pkgroot}/app/node_modules/better-sqlite3/build/Release/better_sqlite3.node"
 
   cd "${_pkgroot}"
 
@@ -82,6 +84,7 @@ package() {
 
   install -dm755 "${pkgdir}/usr/lib/omniroute"
   cp -a "${_pkgroot}/." "${pkgdir}/usr/lib/omniroute/"
+  ln -s app/node_modules "${pkgdir}/usr/lib/omniroute/node_modules"
 
   install -Dm755 "${srcdir}/omniroute.sh" "${pkgdir}/usr/bin/omniroute"
   install -Dm644 "${srcdir}/omniroute.service" "${pkgdir}/usr/lib/systemd/user/omniroute.service"
