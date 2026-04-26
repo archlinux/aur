@@ -2,7 +2,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.21611.r20.gb7d4107
+pkgver=4.21611.r94.ga94dcff
 pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
@@ -81,7 +81,7 @@ build() {
   export DESTDIR="build"
   export PREFIX="/usr"
   export UDEV_PREFIX="/usr/lib/udev/rules.d"
-  export CXXFLAGS="-Wall -Wextra"
+  export CXXFLAGS="-Wall -Wextra -fPIC"
 
   cd "${srcdir}/${pkgname}"
 
