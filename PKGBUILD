@@ -2,8 +2,8 @@
 
 pkgname=agent-browser-bin
 pkgver=0.26.0
-pkgrel=1
-pkgdesc="Fast browser automation CLI for AI agents"
+pkgrel=2
+pkgdesc="Fast browser automation CLI for AI agents (native binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vercel-labs/agent-browser"
 license=('Apache-2.0')
