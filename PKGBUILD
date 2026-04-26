@@ -9,22 +9,20 @@
 _pkgname="helium"
 pkgname="${_pkgname}-browser-bin"
 _binaryname="helium-browser"
-pkgver=0.11.3.2
+pkgver=0.11.5.1
 pkgrel=1
 pkgdesc="Private, fast, and honest web browser based on Chromium (Latest/Stable)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imputnet/helium-linux"
 license=('GPL-3.0-only AND BSD-3-Clause')
 options=('!strip')
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('alsa-lib' 'dbus' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libpulse' 'libva'
+	'libxss' 'nss' 'qt5-base' 'qt6-base' 'ttf-liberation' 'udev' 'xdg-utils')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
-            'kdialog: support for native dialogs in Plasma'
-            'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
-            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: support for storing passwords in KWallet on Plasma'
-            'upower: Battery Status API support')
+	'kdialog: support for native dialogs in Plasma'
+	'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
+	'kwallet: support for storing passwords in KWallet on Plasma'
+	'upower: Battery Status API support')
 conflicts=('helium-browser-beta-bin')
 provides=("helium-browser-beta-bin=${pkgver}")
 source=('0001-update-wrapper-arch.patch'
@@ -38,9 +36,9 @@ validpgpkeys=('BE677C1989D35EAB2C5F26C9351601AD01D6378E') # Helium <helium@imput
 sha256sums=('3846be557da5202267fc4d8a45572f4cedcd95e82d4e62e998c4486fed311314'
             'b7a7ab1deff2b586d6dfb18d4b24eb868f87fcb6864459d53498aa9cdc303adc'
             '9539b394e4179952698894bd62ef6566b6804ab0ff360dcf3a511cfaf7f78c4d')
-sha256sums_x86_64=('0cc832d4d1f6fa1bb30c6c92942a8da608fb2672ede0eb6051e0a3c4c096bc5b'
+sha256sums_x86_64=('c33f67a9ad2853e334634cfc91630257b2425e14f87c7c61802641e7297bf27a'
                    'SKIP')
-sha256sums_aarch64=('a7dc22b9a2ad4001c02f8c43152a6e878de67f9fb4cb8a64596e6daca14cb1dc'
+sha256sums_aarch64=('08d136d9d1a89ef82657606e2097c57c235e6c32ed27d21ee3490395bb7e7bb3'
                     'SKIP')
 prepare() {
   # Get architecture specific directory
