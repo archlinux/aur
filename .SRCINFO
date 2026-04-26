@@ -1,0 +1,20 @@
+pkgbase = linear-cli-finesssee-bin
+	pkgdesc = A powerful CLI for Linear.app built with Rust (by Finesssee) - Binary
+	pkgver = 0.3.22
+	pkgrel = 1
+	url = https://github.com/Finesssee/linear-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = linear-cli-finesssee=0.3.22
+	conflicts = linear-cli-finesssee
+	source = LICENSE-0.3.22::https://raw.githubusercontent.com/Finesssee/linear-cli/v0.3.22/LICENSE
+	sha256sums = 06dcddbb6908a0c6dd4a9e8ec822eea41d5a460a53089fecccc8a68049e99241
+	source_x86_64 = linear-cli-finesssee-bin-0.3.22-x86_64.tar.gz::https://github.com/Finesssee/linear-cli/releases/download/v0.3.22/linear-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c291becfd850ad85ccaa0e871d6723e019be8050c8647a92de916ee0a196c13c
+	source_aarch64 = linear-cli-finesssee-bin-0.3.22-aarch64.tar.gz::https://github.com/Finesssee/linear-cli/releases/download/v0.3.22/linear-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a1a569e70fd2b6a7b510c4e57d9297991157d37dd7d520ad605f35d1854c98e8
+
+pkgname = linear-cli-finesssee-bin
