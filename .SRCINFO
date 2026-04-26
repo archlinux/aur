@@ -1,7 +1,7 @@
 pkgbase = wombat
 	pkgdesc = High-precision scientific calculator with full unit support, powered by Numbat
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/archisman-panigrahi/wombat
 	arch = any
 	license = GPL-3.0-or-later
@@ -11,7 +11,7 @@ pkgbase = wombat
 	depends = gtk4
 	depends = libadwaita
 	options = !lto
-	source = git+https://github.com/archisman-panigrahi/wombat.git#tag=v0.4.0
+	source = git+https://github.com/archisman-panigrahi/wombat.git#tag=v0.4.1
 	sha256sums = SKIP
 
 pkgname = wombat
