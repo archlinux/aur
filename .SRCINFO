@@ -1,7 +1,7 @@
 pkgbase = r-rsconnect
 	pkgdesc = Deploy Docs, Apps, and APIs to 'Posit Connect', 'shinyapps.io', and 'RPubs'
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rsconnect
 	arch = any
 	license = GPL-2.0-only
