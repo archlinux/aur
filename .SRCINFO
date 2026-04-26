@@ -1,6 +1,6 @@
 pkgbase = r-yulab.utils
 	pkgdesc = Supporting Functions for Packages Maintained by 'YuLab-SMU'
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=yulab.utils
 	arch = any
@@ -13,8 +13,10 @@ pkgbase = r-yulab.utils
 	optdepends = r-httr2
 	optdepends = r-jsonlite
 	optdepends = r-openssl
-	source = https://cran.r-project.org/src/contrib/yulab.utils_0.2.2.tar.gz
-	md5sums = cdd0ec8beaa0cdddc2a93139f3d3b59d
-	b2sums = 72982368eb80662871f69de7555ae6a954ffaad5d88d6efa7c06944ac8fae2af10a566d76e5952014b28c0ab55956ed3bcca076b14d92074e4889555ec986ce3
+	optdepends = r-r.utils
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/yulab.utils_0.2.4.tar.gz
+	md5sums = 533d32dc0a1fe1654a6421560b2d23c2
+	b2sums = cddd2943be47cb611b4f1451820362230915b0d6879c5c4e33ae788246288b96670b2a918dc29417d17ff1817ad0cf7b182a97db5fee9fd7cbe329b7dfb9d40b
 
 pkgname = r-yulab.utils
