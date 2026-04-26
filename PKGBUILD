@@ -22,10 +22,10 @@ package() {
     cd wiRedPanda
     
     # Install main executable
-    install -Dm755 build/app/wiredpanda "$pkgdir/usr/bin/wiredpanda"
+    install -Dm755 build/wiredpanda "$pkgdir/usr/bin/wiredpanda"
 
     # Install application icon
-    install -Dm644 App/Resources/wpanda.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/wiredpanda.svg"
+    install -Dm644 App/Resources/Assets/Logos/wpanda.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/wiredpanda.svg"
 
     # Install license file
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
