@@ -2,7 +2,7 @@
 # Contributor: Kneesox
 
 pkgname=cvr-melon-assistant
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Mod manager for ChilloutVR using MelonLoader — unofficial Linux port"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
     'pkgconf'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ShiroBlank/CVRMelonAssistantLinux/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('fb14743c009b3bd73ff9e563921abd273d8a7916f8c6b68f0881dc692c9bd581')
 
 # If you want to build from the latest commit instead of a tag, use:
 # source=("${pkgname}::git+https://github.com/ShiroBlank/CVRMelonAssistantLinux.git")
