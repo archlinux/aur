@@ -1,8 +1,8 @@
-pkgbase = keepasschi-git
-	pkgdesc = Modern, secure, and open-source password manager (aka KeePassχ; fork of KeePassXC)
-	pkgver = r4736.gd3ea5c1
+pkgbase = chipass-git
+	pkgdesc = Modern, secure, and open-source password manager (fork of KeePassXC)
+	pkgver = r4756.g8fb6e89
 	pkgrel = 1
-	url = https://keepasschi.org/
+	url = https://chipass.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -30,12 +30,14 @@ pkgbase = keepasschi-git
 	depends = botan
 	depends = argon2
 	provides = org.freedesktop.secrets
-	provides = keepasschi=r4736.gd3ea5c1
-	conflicts = keepasschi
+	provides = chipass=r4756.g8fb6e89
+	conflicts = chipass
 	conflicts = keepassxc
 	conflicts = keepassxc-git
+	conflicts = keepasschi-git
+	replaces = keepasschi-git
 	options = !emptydirs
-	source = git+https://codeberg.org/keepasschi/keepasschi.git
+	source = git+https://codeberg.org/keepasschi/chipass.git#commit=8fb6e891e6
 	md5sums = SKIP
 
-pkgname = keepasschi-git
+pkgname = chipass-git

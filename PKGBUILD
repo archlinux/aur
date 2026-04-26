@@ -11,13 +11,13 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 # Contributor: Paolo Stivanin <admin at polslinux dot it>
 
-pkgname=keepasschi-git
-_gitname=keepasschi
-pkgver=r4736.gd3ea5c1
+pkgname=chipass-git
+_gitname=chipass
+pkgver=r4756.g8fb6e89
 pkgrel=1
-pkgdesc="Modern, secure, and open-source password manager (aka KeePassχ; fork of KeePassXC)"
+pkgdesc="Modern, secure, and open-source password manager (fork of KeePassXC)"
 arch=('i686' 'x86_64')
-url="https://keepasschi.org/"
+url="https://chipass.org/"
 license=('GPL2')
 depends=('qt5-base' 'qt5-x11extras' 'qt5-translations' 'qt5-imageformats'
          'libxtst' 'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils'
@@ -25,15 +25,18 @@ depends=('qt5-base' 'qt5-x11extras' 'qt5-translations' 'qt5-imageformats'
          'zlib' 'botan' 'argon2')
 makedepends=('git' 'intltool' 'cmake' 'qt5-tools' 'asciidoctor')
 checkdepends=('xorg-server-xvfb' 'xclip')
-provides=('org.freedesktop.secrets' "keepasschi=$pkgver")
+provides=('org.freedesktop.secrets' "chipass=$pkgver")
 conflicts=(
-    'keepasschi'
-    # the next two are hopefully temporary, but at the moment KeePassχ still uses a lot of the same file paths as KeePassXC
+    'chipass'
+    # the next two are hopefully temporary, but at the moment ChiPass still uses a lot of the same file paths as KeePassXC
     'keepassxc'
     'keepassxc-git'
+    # the next one (and the replaces=) is *very* temporary, upstream only used the KeePassχ name for a short time
+    'keepasschi-git'
 )
+replaces=('keepasschi-git')
 options=(!emptydirs)
-source=(git+https://codeberg.org/keepasschi/keepasschi.git)
+source=(git+https://codeberg.org/keepasschi/chipass.git#commit=8fb6e891e6)
 md5sums=('SKIP')
 
 pkgver() {
