@@ -1,7 +1,7 @@
 # Maintainer: Juliandev02 <julian@strawberryfoundations.org>
 
 pkgname=tunneled
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="A simple and powerful CLI tool for creating TCP tunnels"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'rust')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('779dc724f4522e1485be59093b742e4ebe15696ad378645771851f285a8dc1c8')
+sha256sums=('715c35189a25b23e8112ee3d9ec77f7e6f8a815d53a1aa33c26648defd6c8f74')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
