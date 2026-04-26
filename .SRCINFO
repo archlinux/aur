@@ -1,6 +1,6 @@
 pkgbase = ewwii
 	pkgdesc = Powerful and flexible widget system for Linux
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/Ewwii-sh/ewwii
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ewwii
 	provides = ewwii
 	conflicts = ewwii-bin
 	conflicts = ewwii-git
-	source = https://github.com/Ewwii-sh/ewwii/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 62a23e2c5686e2cd42ce63330a6597faf7d926b02a2345a9ce5fa0c6227aa8b6
+	source = https://github.com/Ewwii-sh/ewwii/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 96e6a2d41df1f19fc86f9d0c3285b81871d819fa3ef66f50f4f4e147fc456742
 
 pkgname = ewwii
