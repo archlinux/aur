@@ -2,7 +2,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=10.0-20260420
+_srctag=10.0-20260424
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
@@ -157,7 +157,6 @@ optdepends=(
   vulkan-icd-loader     lib32-vulkan-icd-loader
 )
 optdepends+=(
-  ntsync-common
   NTSYNC-MODULE
 )
 provides=('proton')
@@ -335,7 +334,7 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('c5d9da02bea7f8865b1fc9a828444c14867785cacd33bc084c1de36116a5d0b1227e7ceec1d4a47aad61c2d41509053c2b71eadfbbabad54601c4b2cbd5bab74'
+b2sums=('1afb0a589b4355019c3972c86d43c4f07714dee36ea0367e55d529c3f6d8159bcd99b129688c14d1ef4a0a5485850e07140d4a7436b8e0d957585e1a15cd779a'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '9ca53dee272470806432c61587080e6dc04fd9eaafde4f55f5d57d5557ec6859d77a74b74c9e3f472da04b8ace9609f0927573faab368a25249c76b3e37e65c1'
