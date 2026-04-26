@@ -1,7 +1,7 @@
 # Maintainer: Jason Landbridge <JasonLandbridge at aur dot archlinux dot org>
 
 pkgname=mcp-linker-bin
-pkgver=2.1.0
+pkgver=2.1.0 # renovate: datasource=github-tags depName=milisp/mcp-linker
 pkgrel=2
 pkgdesc="Desktop manager for adding and syncing MCP servers across AI clients"
 arch=('x86_64')
