@@ -1,7 +1,7 @@
 # Maintainer: Rasmus Karlsson <rasmus.karlsson@pajlada.com>
 
 pkgname=pajlada-signals
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='simple C++ signal library'
 arch=('any')
@@ -9,7 +9,7 @@ url=https://github.com/pajlada/signals
 license=('MIT')
 makedepends=('git' 'cmake' 'gtest')
 source=("git+https://github.com/pajlada/signals.git#tag=v${pkgver}")
-sha256sums=('2b22dbc39f5b0946da63663afbfc93f60fbcc7a54e5f3078850e12127e1bcffc')
+sha256sums=('fe25ac457eec4fb8862ed8461cbbd557294c7b02910a967312db17c13a42accd')
 
 build() {
     cmake -S signals \
