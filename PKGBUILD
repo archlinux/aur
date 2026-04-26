@@ -1,5 +1,5 @@
 pkgname=gsd-pi
-pkgver=2.77.0
+pkgver=2.78.1
 pkgrel=1
 pkgdesc="A powerful meta-prompting, context engineering and spec-driven development system that enables agents to work autonomously"
 arch=(x86_64)
@@ -9,8 +9,8 @@ makedepends=("npm" "jq" "findutils")
 depends=("nodejs" "npm")
 provides=(gsd gsd-cli)
 _npm_name="@gsd-build/engine-linux-x64-gnu"
-source=("https://registry.npmjs.org/@gsd-build/engine-linux-x64-gnu/-/engine-linux-x64-gnu-2.77.0.tgz")
-sha256sums=('d32097ee9c5e482e8134665fb7113f08d96e7327dab7a5b31979713352eb7619')
+source=("https://registry.npmjs.org/@gsd-build/engine-linux-x64-gnu/-/engine-linux-x64-gnu-2.78.1.tgz")
+sha256sums=('5576c493911d6f295329feab8417a5437f0f990eda789077a067ee71985eb4cd')
 
 prepare() {
     mkdir -p "${srcdir}/npm-cache"
