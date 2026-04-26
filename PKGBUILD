@@ -1,16 +1,16 @@
 # Maintainer: jonleithe
 pkgname=unitfy
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line unit conversion utility (temperature, length, volume, pressure)"
 arch=('x86_64')
 url="https://github.com/jonleithe/unitfy"
 license=('MIT')
 depends=('readline' 'gcc-libs')
 makedepends=('cmake' 'ninja' 'gcc')
-_commit='3bf5e85968741370d187e81e7e6a0b7fd798c2dc'
+_commit='33930af0a88952b3ea83ed0bdb37c23559315c8e'
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('ac8922ff8bf1c8bb460d6a5509eb1b0a231301fdfd3c91286e05a4445953f6c0')
+sha256sums=('e5d5b0a005c1b1f753b8363d9e71978f650e83bcdc59eb15f7b8b0d6798216f3')
 
 build() {
     cmake \
