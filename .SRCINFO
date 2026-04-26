@@ -1,12 +1,12 @@
 pkgbase = kdash-bin
 	pkgdesc = A simple and fast dashboard for Kubernetes
-	pkgver = 1.0.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/kdash-rs/kdash
 	arch = x86_64
 	license = MIT
 	depends = pacman>5
-	source = kdash-bin-1.0.0.tar.gz::https://github.com/kdash-rs/kdash/releases/download/v1.0.0/kdash-linux.tar.gz
-	sha256sums = 543516f6a6be9b34b15e5331277ce5ceb8c741fcc882a90ed0b9801dee6999b9
+	source = kdash-bin-1.1.1.tar.gz::https://github.com/kdash-rs/kdash/releases/download/v1.1.1/kdash-linux.tar.gz
+	sha256sums = 4a28500153265cefee770534a5c67524624f822e43b5980b2d5446c98d2af969
 
 pkgname = kdash-bin
