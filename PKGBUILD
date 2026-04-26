@@ -1,5 +1,5 @@
 pkgname=ioexplorer-git
-pkgver=r14.b0a88ed
+pkgver=r15.5da47f0
 pkgrel=1
 pkgdesc='Wayland-native provider-oriented file manager for Wayland desktops'
 arch=('x86_64')
