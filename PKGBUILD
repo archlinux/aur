@@ -23,6 +23,7 @@ arch=(
   'x86_64'
 )
 url="https://godotengine.org"
+_url="https://github.com/godotengine/godot-builds"
 license=(
   'MIT'
 )
@@ -31,25 +32,25 @@ makedepends=(
 )
 _pkgsrc="godot-${_pkgver}"
 source=(
-  "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/${_pkgsrc}.tar.xz"
+  "${_url}/releases/download/${_pkgver}/${_pkgsrc}.tar.xz"
 )
 source_aarch64=(
-  "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.arm64.zip"
-  "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_arm64.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.arm64.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_arm64.zip"
 )
 source_armv7h=(
-  "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.arm32.zip"
-  "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_arm32.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.arm32.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_arm32.zip"
 )
 source_i686=(
-  "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.x86_32.zip"
-  "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_x86_32.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.x86_32.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_x86_32.zip"
 )
 source_x86_64=(
-  "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.x86_64.zip"
-  "https://github.com/godotengine/godot-builds/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_x86_64.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_linux.x86_64.zip"
+  "${_url}/releases/download/${_pkgver}/Godot_v${_pkgver}_mono_linux_x86_64.zip"
 )
-# https://github.com/godotengine/godot-builds/tree/main/releases
+# ${_url}/tree/main/releases
 sha256sums=('4c99ebfc07a964d34fcfb9238b9ec1a843d89f88838acdc734fb9d2876ccde0b')
 sha256sums_aarch64=('37d064f6818381d40a680715d1acfccde9252faffc55cd43fb1670571513d81c'
                     'fceb1d3fd59bfc71e2aebf6ae79bdac8e03398529166c93c5191d6395eec2c46')
