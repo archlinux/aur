@@ -9,17 +9,19 @@ url="https://gibis-unifesp.github.io/wiRedPanda/"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-svg')
 makedepends=('cmake' 'ninja')
-source=("git+https://github.com/GIBIS-UNIFESP/wiRedPanda.git")
-sha256sums=('SKIP')
+# Using git with specific commit hash for version 5.0.1 (no git tag available)
+_commit=410ae117d45864d8828af27cad5adbd1a8e79d0d
+source=("$pkgname-$pkgver.tar.gz::https://github.com/GIBIS-UNIFESP/wiRedPanda/archive/${_commit}.tar.gz")
+sha256sums=('53540432928a030b51ffd36b2d21ac3ef5b2fa6bbb9abe478e344ef818319cca')
 
 build() {
-    cd wiRedPanda
+    cd "wiRedPanda-${_commit}"
     cmake --preset release
     cmake --build --preset release
 }
 
 package() {
-    cd wiRedPanda
+    cd "wiRedPanda-${_commit}"
     
     # Install main executable
     install -Dm755 build/wiredpanda "$pkgdir/usr/bin/wiredpanda"

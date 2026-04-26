@@ -10,7 +10,7 @@ pkgbase = wiredpanda
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-svg
-	source = git+https://github.com/GIBIS-UNIFESP/wiRedPanda.git
-	sha256sums = SKIP
+	source = wiredpanda-5.0.1.tar.gz::https://github.com/GIBIS-UNIFESP/wiRedPanda/archive/410ae117d45864d8828af27cad5adbd1a8e79d0d.tar.gz
+	sha256sums = 53540432928a030b51ffd36b2d21ac3ef5b2fa6bbb9abe478e344ef818319cca
 
 pkgname = wiredpanda
