@@ -1,7 +1,7 @@
 pkgbase = r-cols4all
 	pkgdesc = Colors for all
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=cols4all
 	arch = any
 	license = GPL-3.0-only
