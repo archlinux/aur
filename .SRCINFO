@@ -1,0 +1,14 @@
+pkgbase = nextcloud-app-memories
+	pkgdesc = Fast, modern and advanced photo management suite for Nextcloud
+	pkgver = 8.0.1
+	pkgrel = 1
+	url = https://github.com/pulsejet/memories
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = nextcloud
+	makedepends = yq
+	options = !strip
+	source = https://github.com/pulsejet/memories/releases/download/v8.0.1/memories.tar.gz
+	sha256sums = 07e3bbf2a8c141b98c9c502f1ffe5af98062bdefab9011bd00a4d7ec6dea351d
+
+pkgname = nextcloud-app-memories
