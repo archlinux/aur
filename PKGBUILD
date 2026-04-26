@@ -2,10 +2,10 @@
 # Maintainer: littzhch <2371050115@qq.com>
 
 pkgname=notepad---bin
-_pkgname=com.hmja.notepadqt6
+_pkgname=com.hmja.notepad
 pkgver=3.7.1.1
 _pkgver=v3.7
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=(${pkgname%-bin})
 depends=(
     gcc-libs
     qscintilla-qt6
-    qt6-xmlpatterns
+    qt5-xmlpatterns
     qt6-base
     libglvnd
     glibc
@@ -28,14 +28,14 @@ makedepends=(
 )
 source=("https://github.com/maoyaotang12/deb/raw/refs/heads/main/${_pkgname}_${pkgver}_amd64.deb"
 "${url}/raw/master/LICENSE")
-sha256sums=('05b6e22829ff5b17222f5f1be8ead34e51d3e6b957340c750987a07fa34f80ef'
+sha256sums=('136504f938974628075fa72438eda2ff2b974a995cfab71006e9eb62fcd06927'
             '0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b')
 options=("!strip")
 
 prepare() {
     cd ${srcdir}
     tar -xvf data.tar.xz
-    cd "${srcdir}/opt/apps/${_pkgname%qt6}/files"
+    cd "${srcdir}/opt/apps/${_pkgname}/files"
     strip lib*
     strip plugin/lib*
     patchelf Notepad-- --set-rpath /usr/lib/notepad--
@@ -45,14 +45,14 @@ prepare() {
 }
 
 package() {
-    cd "${srcdir}/opt/apps/${_pkgname%qt6}/files"
+    cd "${srcdir}/opt/apps/${_pkgname}/files"
     install -Dm755 "notepad--" "${pkgdir}/usr/bin/notepad--"
     install -Dm755 "Notepad--" "${pkgdir}/usr/lib/notepad--/Notepad--"
     install -Dm755 "libqmyedit_qt6.so.15" "${pkgdir}/usr/lib/notepad--/libqmyedit_qt6.so.15"
     cp -r plugin "${pkgdir}/usr/lib/notepad--/"
     cp -r themes "${pkgdir}/usr/lib/notepad--/"
 
-    cd "${srcdir}/opt/apps/${_pkgname%qt6}/entries/applications"
+    cd "${srcdir}/opt/apps/${_pkgname}/entries/applications"
     sed "s/\/opt\/apps\/com.hmja.notepad\/files\/Notepad--/notepad--/g" -i com.hmja.notepad.desktop
     sed "s/Categories=TextEditor;/Categories=TextEditor;Development;/g" -i com.hmja.notepad.desktop
     sed "s/Exec=notepad-- %U/Exec=env QT_SCALE_FACTOR=1.15 notepad-- %U/g" -i com.hmja.notepad.desktop
