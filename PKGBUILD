@@ -1,14 +1,14 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=ymir-emu
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
 license=("GPL3")
 depends=("sdl3")
-makedepends=("cmake" "clang" "git" "ninja" "python-jinja" "unzip" "zip")
+makedepends=("autoconf" "autoconf-archive" "automake" "cmake" "clang" "git" "libtool" "ninja" "python-jinja" "unzip" "zip")
 provides=($pkgname)
 conflicts=($pkgname)
 source=(
