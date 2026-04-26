@@ -3,7 +3,7 @@
 _pkgauthor=walles
 _pkgname=moor
 pkgname=${_pkgname}-bin
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration"
 
@@ -30,9 +30,9 @@ sha256sums=('b53f896a9da673233a432031ba2602e9cd16563ea2403da80d5af0d2cd6db64f'
             'f5f073e5c2be82c3e2cb7e0b67a5a72c7f563f08bf7e45da3ed05b8c1358d45c'
             '663fec717c38f524c8e5c707ea17bd5d6ac92433f1487ade5f0e6fdebfee1358'
             '809ae0a0a31a408d7a43c4e9ce7efe7678ebad59afd162b1eefa1d3a4b2d3442')
-sha256sums_x86_64=('1fac0e6995a75614aedf1159d48b1f19942e37265f5bf2f46ad551f7623af58b')
-sha256sums_i686=('0e53bdccb91d3646897f6993dbebcd9538123a9fa8e25a4f426f83dd01881a75')
-sha256sums_aarch64=('d620ba72b859b514bc81b44f1f373129209edd8f70492040f9cb0f6d4ead6b23')
+sha256sums_x86_64=('16bab55ede70effd93379c9de78b7dfa954d35bc470d95f9f1ec292c6bfef982')
+sha256sums_i686=('389e5be93f2111644c8ff66d37182dca9d6dcbaca6f3d89a67c4d68b297abcba')
+sha256sums_aarch64=('71ec114c59ca4d8f61aed4451c22e7cb1e924bd97e97584f4a34033ec3e47cd7')
 
 
 package() {
