@@ -1,36 +1,30 @@
-description="A small, speedy DNS proxy and bad-stuff-blocker."
+#!/sbin/openrc-run
 
-CONFFILE="/etc/dnss.conf"
+command="/usr/bin/dnss"
+command_args="-c /etc/dnss.conf"
 pidfile="/run/${RC_SVCNAME}.pid"
-
-command="/usr/bin/dnss -c /etc/dnss.conf"
-command_user="dnss"
-extra_started_commands="reload"
+command_background=true
+output_log="/var/log/dnss/${RC_SVCNAME}.log"
+error_log="/var/log/dnss/${RC_SVCNAME}.err"
 
 depend() {
+	provide dns
 	use net
 }
 
-start() {
-	ebegin "Starting ${RC_SVCNAME}"
-	start-stop-daemon --start --quiet \
-		--pidfile "${pidfile}" \
-		--make-pidfile \
-		--background \
-		--stdout /var/log/yggdrasil.stdout.log \
-		--stderr /var/log/yggdrasil.stderr.log \
-		--exec "${command}" -- -useconffile "${CONFFILE}"
-	eend $?
-}
-
-reload() {
-	ebegin "Reloading ${RC_SVCNAME}"
-	start-stop-daemon --signal HUP --pidfile "${pidfile}"
-	eend $?
+start_pre() {
+	# Create log directory if needed
+	checkpath -d -m 755 -o "${command_user}" /var/log/dnss
 }
 
 stop() {
 	ebegin "Stopping ${RC_SVCNAME}"
-	start-stop-daemon --stop --pidfile "${pidfile}" --exec "${command}"
+
+	# Graceful shutdown: TERM -> wait 5s -> KILL if still running
+	start-stop-daemon --stop \
+		--pidfile "${pidfile}" \
+		--retry TERM/5/KILL/5 \
+		--exec "${command}"
+
 	eend $?
 }

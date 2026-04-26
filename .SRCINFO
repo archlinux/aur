@@ -7,9 +7,7 @@ pkgbase = dnss-openrc
 	license = Unlicense
 	depends = dnss
 	source = dnss.service
-	source = dnss.sysusers
-	source = example.dnss.conf
-	b2sums = SKIP
+	source = dnss.conf
 	b2sums = SKIP
 	b2sums = SKIP
 
