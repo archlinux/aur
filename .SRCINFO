@@ -1,6 +1,6 @@
 pkgbase = devcontainer-cli
 	pkgdesc = Dev container CLI, which can take a devcontainer.json and create and configure a dev container from it.
-	pkgver = 0.83.3
+	pkgver = 0.86.0
 	pkgrel = 1
 	url = https://github.com/devcontainers/cli
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = devcontainer-cli
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = cli-0.83.3.tgz
-	source = https://registry.npmjs.org/@devcontainers/cli/-/cli-0.83.3.tgz
-	sha256sums = aaf430a270c554fdc273ff360ecfb8d23468806f298d1b3632df9107065e4312
+	noextract = cli-0.86.0.tgz
+	source = https://registry.npmjs.org/@devcontainers/cli/-/cli-0.86.0.tgz
+	sha256sums = bb20b62db0d2c3603104afb5b34160db83119fba3850237d5be777174c1aacd5
 
 pkgname = devcontainer-cli
