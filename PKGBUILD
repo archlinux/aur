@@ -2,7 +2,7 @@
 
 pkgname="dark-send"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI Telegram client written in python"
 arch=('x86_64')
 url="https://github.com/mindhuntr/dark-send"
