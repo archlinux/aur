@@ -1,19 +1,15 @@
 post_install() {
   echo ""
   echo ">>> Snry Shell has been installed!"
-  echo ">>> Running initial setup..."
+  echo ">>> Run 'snry-shell' to apply the setup."
   echo ""
-  
-  snry-shell
 }
 
 post_upgrade() {
   echo ""
   echo ">>> Snry Shell updated!"
-  echo ">>> Applying updates (your custom configs are preserved)..."
+  echo ">>> Run 'snry-shell' to apply updates."
   echo ""
-  
-  snry-shell
 }
 
 post_remove() {
