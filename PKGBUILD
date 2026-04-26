@@ -7,11 +7,11 @@
 
 pkgname=zsxd
 pkgver=1.12.2
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Zelda: Mystery of Solarus XD - an open-source parodic fangame"
 arch=('any')
-url="https://www.solarus-games.org/en/games/the-legend-of-zelda-mystery-of-solarus-xd"
+url="https://gitlab.com/solarus-games/games/zsxd"
 license=('GPL3' 'custom')
 groups=()
 depends=('solarus>=1.6.0')
