@@ -1,5 +1,5 @@
 pkgname=yasos-bin
-pkgver=20260427
+pkgver=20260426
 pkgrel=1
 pkgdesc="Compiler for the Yasos programming language (binary release)"
 arch=('x86_64')
