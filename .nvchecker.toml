@@ -1,0 +1,4 @@
+[pwgen]
+source = 'regex'
+url = 'https://sourceforge.net/projects/pwgen/best_release.json'
+regex = 'pwgen-([\d.]+).tar'
