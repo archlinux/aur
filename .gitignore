@@ -1,4 +1,4 @@
-*.dmg
+*.zip
 *.tgz
 *.pkg.tar.zst
 pkg/

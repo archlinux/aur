@@ -1,8 +1,9 @@
 # Maintainer: Parsiad Azimzadeh <parsiad.azimzadeh at gmail dot com>
+# Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=openai-codex-desktop
-pkgver=0
-pkgrel=3
+pkgver=26.422.30944
+pkgrel=1
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
@@ -10,7 +11,7 @@ license=('custom')
 
 depends=(
   'electron39'
-  'openai-codex'
+  'openai-codex>=0.121.0'
   'python'
   'hicolor-icon-theme'
   'xdg-utils'
@@ -18,9 +19,9 @@ depends=(
 
 makedepends=(
   'libicns'
+  'libarchive'
   'nodejs'
   'npm'
-  'p7zip'
 )
 
 _electron_major=39
@@ -28,21 +29,21 @@ _better_sqlite3_ver=12.8.0
 _node_pty_ver=1.1.0
 
 source=(
-  "Codex.dmg::https://persistent.oaistatic.com/codex-app-prod/Codex.dmg"
-  "better-sqlite3-${_better_sqlite3_ver}.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-${_better_sqlite3_ver}.tgz"
-  "node-pty-${_node_pty_ver}.tgz::https://registry.npmjs.org/node-pty/-/node-pty-${_node_pty_ver}.tgz"
+  "Codex.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-${pkgver}.zip"
+  "better-sqlite3.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-${_better_sqlite3_ver}.tgz"
+  "node-pty.tgz::https://registry.npmjs.org/node-pty/-/node-pty-${_node_pty_ver}.tgz"
   "codex-desktop.sh"
   "codex-desktop.desktop"
 )
 
 noextract=(
-  'Codex.dmg'
-  "better-sqlite3-${_better_sqlite3_ver}.tgz"
-  "node-pty-${_node_pty_ver}.tgz"
+  'Codex.zip'
+  'better-sqlite3.tgz'
+  'node-pty.tgz'
 )
 
 sha256sums=(
-  'SKIP'
+  '5705b030cbb557c84fd2fdbd7c64693867d17c9c5ff56a3060891ca05d55f852'
   '2602a5726d0a9d8e6be407c59bc125e605110eda8e3b04e7ef8d6ddf762c9122'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
   '5649a319d0fff30cc003d9298e8af36e1d65e060c29b5046d9213979b503d0b8'
@@ -54,16 +55,16 @@ prepare() {
   rm -rf dmg app-extracted app.asar app.asar.unpacked native-build
   mkdir dmg
 
-  7z x -y "Codex.dmg" -o"${srcdir}/dmg" >/dev/null
+  bsdtar -xf "Codex.zip" -C "${srcdir}/dmg"
 
-  icon_icns="$(find dmg -path '*/Contents/Resources/*.icns' | head -n1)"
+  icon_icns="$(find dmg -path '*/Contents/Resources/*.icns' ! -path '*/__MACOSX/*' ! -name '._*' | head -n1)"
   mkdir -p icon
   icns2png -x -o icon "${icon_icns}"
 
   local appdir
-  appdir="$(find dmg -maxdepth 4 -type d -name '*.app' | head -n1)"
+  appdir="$(find dmg -maxdepth 4 -type d -name '*.app' ! -path '*/__MACOSX/*' | head -n1)"
   [[ -n "${appdir}" ]] || {
-    echo "Could not find .app bundle in DMG"
+    echo "Could not find .app bundle in Codex archive"
     return 1
   }
 
@@ -106,8 +107,8 @@ EOF
     --ignore-scripts \
     --no-audit \
     --no-fund \
-    "${srcdir}/better-sqlite3-${_better_sqlite3_ver}.tgz" \
-    "${srcdir}/node-pty-${_node_pty_ver}.tgz"
+    "${srcdir}/better-sqlite3.tgz" \
+    "${srcdir}/node-pty.tgz"
 
   export npm_config_runtime=electron
   export npm_config_target="${_electron_major}.0.0"
@@ -123,25 +124,6 @@ EOF
 
   cd "${srcdir}"
   npx --yes asar pack app-extracted app.asar --unpack "{*.node,*.so}"
-}
-
-pkgver() {
-  cd "${srcdir}"
-
-  local appdir plist ver
-  appdir="$(find dmg -maxdepth 4 -type d -name '*.app' | head -n1)"
-  plist="${appdir}/Contents/Info.plist"
-
-  ver="$(
-    python - "$plist" <<'PY'
-import plistlib, sys
-with open(sys.argv[1], 'rb') as f:
-    p = plistlib.load(f)
-print(p.get('CFBundleShortVersionString') or p.get('CFBundleVersion') or '0')
-PY
-  )"
-
-  printf '%s\n' "${ver//-/.}"
 }
 
 package() {
