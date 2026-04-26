@@ -1,7 +1,7 @@
 pkgbase = r-maptiles
 	pkgdesc = Download and Display Map Tiles
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=maptiles
 	arch = any
 	license = GPL-3.0-only
