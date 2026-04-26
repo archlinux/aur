@@ -1,6 +1,6 @@
 pkgbase = nba-tv-bin
 	pkgdesc = Watch NBA streams in mpv from your terminal
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://github.com/ksc98/homebrew-tap
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nba-tv-bin
 	optdepends = whisper.cpp: live subtitles via --with-subs
 	provides = nba-tv
 	conflicts = nba-tv
-	source = nba-tv-1.5.6-x86_64.tar.gz::https://github.com/ksc98/homebrew-tap/releases/download/nba-tv-v1.5.6/nba-tv-linux-x86_64.tar.gz
-	sha256sums = f9d9916d9ff4ac3b34cc07ca19112a6f6fc5bd322055f7fc9a050eb5586e1925
+	source = nba-tv-1.5.7-x86_64.tar.gz::https://github.com/ksc98/homebrew-tap/releases/download/nba-tv-v1.5.7/nba-tv-linux-x86_64.tar.gz
+	sha256sums = a18d3bbcd762a9f2214e143bb0eec5c1b47944c992e6de4610f4dede0d21e9f4
 
 pkgname = nba-tv-bin
