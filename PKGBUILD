@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
-_cranname=shinytest2
-_cranver=0.5.1
+_pkgname=shinytest2
+_pkgver=0.5.1
 pkgname=r-shinytest2
 pkgdesc="Testing for Shiny Applications"
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=3
 makedepends=("gcc-fortran")
 
 arch=("any")
@@ -51,18 +51,18 @@ optdepends=(
     "r-usethis"
     "r-vdiffr>=1.0.0"
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("7da156cf2bf72e5cb7e870f506ddaa35a55afb9a132dc0a1499da29e5546583a")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('7da156cf2bf72e5cb7e870f506ddaa35a55afb9a132dc0a1499da29e5546583a')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${srcdir}/build/${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${srcdir}/build/${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${srcdir}/build/${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${srcdir}/build/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
