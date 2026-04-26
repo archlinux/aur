@@ -5,42 +5,31 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-${_android_arch}-boost
-pkgver=1.84.0
+pkgver=1.91.0
 pkgrel=1
 _srcname=boost_${pkgver//./_}
 arch=('any')
 pkgdesc="Free peer-reviewed portable C++ source libraries (Android, ${_android_arch})"
 url="https://www.boost.org/"
-license=('custom')
+license=('BSL-1.0')
 depends=("android-${_android_arch}-bzip2"
          "android-${_android_arch}-icu"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-zstd")
 makedepends=('android-environment')
-if [[ $_android_arch == aarch64 ]] || [[ $_android_arch == x86-64 ]]; then
-makedepends+=("android-${_android_arch}-openmpi")
-optdepends+=("android-${_android_arch}-openmpi: for mpi support")
-fi
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2"
-        "boost-1.81.0-phoenix-multiple-definitions.patch"
-        "boost-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch"
-        "disable-version-check.patch")
-md5sums=('9dcd632441e4da04a461082ebbafd337'
-         'cb1c25777e9b85af62366e7c930244b8'
-         '326826bf610c63c23247e70e648ff104'
-         '6290eb4fa0cab451aac92e12e85ef073')
+source=("https://archives.boost.io/release/${pkgver}/source/${_srcname}.tar.bz2"
+        "disable-version-check.patch"
+        "fix-android-x64-fp-traits.patch")
+sha256sums=('de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5'
+            '63d12e7d703b471882608b4225c489f6a35ab425602783a4f9c4ea99a10f9c4b'
+            'a7d1f66b813e64f3865fed1046451d838674e1d7ba3da0183ea0dd90d844f536')
 
 prepare() {
   cd "${srcdir}/$_srcname"
   source android-env ${_android_arch}
-
-  # https://github.com/boostorg/phoenix/issues/111
-  patch -Np1 -i ../boost-1.81.0-phoenix-multiple-definitions.patch
-
-  # https://github.com/boostorg/ublas/pull/97
-  patch -Np2 -i ../boost-ublas-c++20-iterator.patch
   patch -p1 -i ../disable-version-check.patch
+  patch -p1 -i ../fix-android-x64-fp-traits.patch
 }
 
 build() {
@@ -110,7 +99,6 @@ EOF
       --with-random \
       --with-regex \
       --with-serialization \
-      --with-system \
       --with-test \
       --with-thread \
       --with-timer \
@@ -118,6 +106,10 @@ EOF
       --with-wave \
       --with-stacktrace \
       -sICONV_PATH="${ANDROID_PREFIX}" \
+      -sZLIB_BINARY="${ANDROID_PREFIX_LIB}/libz.so" \
+      -sZSTD_BINARY="${ANDROID_PREFIX_LIB}/libzstd.so" \
+      -sBZIP2_BINARY="${ANDROID_PREFIX_LIB}/libbz2.so" \
+      -sLZMA_BINARY="${ANDROID_PREFIX_LIB}/liblzma.so" \
       variant=release \
       debug-symbols=off \
       runtime-link=shared \
