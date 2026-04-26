@@ -1,10 +1,10 @@
 pkgbase = randfill-git
 	pkgdesc = Overwrite files with cryptographically secure random data
-	pkgver = 0.1.1.r4.df3a1bb
-	pkgrel = 3
+	pkgver = 0.2.0.r0.0341655
+	pkgrel = 4
 	url = https://github.com/OpenHelloMiddle/RandFill
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = git
 	makedepends = cargo
 	provides = randfill

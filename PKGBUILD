@@ -3,12 +3,12 @@
 
 _pkgname=randfill
 pkgname=$_pkgname-git
-pkgver=0.1.1.r4.df3a1bb
-pkgrel=3
+pkgver=0.2.0.r0.0341655
+pkgrel=4
 pkgdesc="Overwrite files with cryptographically secure random data"
 arch=('any')
 url="https://github.com/OpenHelloMiddle/RandFill"
-license=('GPL')
+license=('MIT')
 makedepends=('git' 'cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
