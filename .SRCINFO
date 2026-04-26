@@ -1,12 +1,13 @@
 pkgbase = litellm
 	pkgdesc = Library to easily interface with LLM API providers.
-	pkgver = 1.83.12
+	pkgver = 1.83.14
 	pkgrel = 1
 	url = https://github.com/BerriAI/litellm
 	arch = any
 	license = MIT
 	makedepends = python-poetry-core
 	makedepends = python-build
+	makedepends = python-uv-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
@@ -61,7 +62,7 @@ pkgbase = litellm
 	optdepends = python-grpcio: grpc
 	optdepends = python-google-cloud-aiplatform: google
 	provides = python-litellm
-	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.83.12.tar.gz
-	sha256sums = d5c3c64321b9575169aaf374ebc629dc878a9b449fd20399a1ccdfaa869104ff
+	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.83.14.tar.gz
+	sha256sums = 24aef9b47cdc424c833e32f3727f411741c690832cd1fe4405e0077144fe09c9
 
 pkgname = litellm

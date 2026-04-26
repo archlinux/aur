@@ -5,14 +5,14 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.83.12
+pkgver=1.83.14
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=(any)
 url='https://github.com/BerriAI/litellm'
 license=('MIT')
 depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-jinja' 'python-aiohttp' 'python-pydantic' 'python-jsonschema' 'python-fastapi-sso')
-makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-poetry-core' 'python-build' 'python-uv-build' 'python-installer' 'python-wheel')
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
             'python-uvloop: proxy'
@@ -53,7 +53,7 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('d5c3c64321b9575169aaf374ebc629dc878a9b449fd20399a1ccdfaa869104ff')
+sha256sums=('24aef9b47cdc424c833e32f3727f411741c690832cd1fe4405e0077144fe09c9')
 
 
 prepare() {
