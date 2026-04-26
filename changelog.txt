@@ -1,4 +1,9 @@
--- $MawkId: CHANGES,v 1.437 2026/01/30 00:41:04 tom Exp $
+-- $MawkId: CHANGES,v 1.441 2026/03/03 01:19:00 tom Exp $
+
+20260302
+	+ amend behavior if stdout is a terminal/tty: do not make -W
+	  interactive "the default" because that interferes with setting RS and
+	  FS.  Instead, simply use setbuf (report by Joerg van den Hoff).
 
 20260129
 	+ make -W interactive the default if stdout is a terminal/tty
