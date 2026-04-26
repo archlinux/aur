@@ -1,6 +1,6 @@
 # Maintainer: Funami
 pkgname=asset-manager-studio
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Asset Manager Studio"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=()
 provides=('asset-manager-studio')
 conflicts=('asset-manager-studio')
 source=("https://assetmanager.studio/dl/${pkgver}/asset-manager-studio_${pkgver}_amd64.deb")
-sha256sums=('22cab1a1bbd7186b0ebf8a139e511d48293623b3d83eae937b4f181fb6ea804c')
+sha256sums=('cf9831ae8590b1f0acb0d3ad12ecaf1e9611ea73a6800b5874acb56f81390cee')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
