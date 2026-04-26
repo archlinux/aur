@@ -1,4 +1,4 @@
-# Maintainer: opencode <opencode@example.com>
+# Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=agent-browser-bin
 pkgver=0.26.0
