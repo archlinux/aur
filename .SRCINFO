@@ -1,6 +1,6 @@
 pkgbase = libcosmos
 	pkgdesc = A library providing a modern C++ API for the Linux operating system
-	pkgver = v0.3.0
+	pkgver = v0.4.5
 	pkgrel = 1
 	url = https://github.com/gerstner-hub/libcosmos
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = libcosmos
 	makedepends = scons
 	depends = glibc
 	depends = gcc-libs
-	source = git+https://github.com/gerstner-hub/libcosmos.git?signed#tag=8b2e84906d57039fde217d872e49fd2640ea18db
+	source = git+https://github.com/gerstner-hub/libcosmos.git?signed#tag=6bc8bec93e9393cac96b9a66ef56adc608b7f830
 	validpgpkeys = 40C89F006FB8A328B83A37CC14AD6F6579097284
 	sha256sums = SKIP
 
