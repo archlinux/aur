@@ -1,6 +1,6 @@
 # Maintainer: Matthew Cushing <cushing.matt@gmail.com>
 pkgname=wflow
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A workflow engine for Wayland automation — Shortcuts-style GUI + CLI"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
     'xdg-desktop-portal: input via libei portal + Record Mode'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b34bd044cd396ddf80acf99368e2a05a1847212e915b42141b846424b94082f1')
+sha256sums=('8390c7097ef5443043bcb70e225f50b2b9b56387b8d8d0152ca0858e9e040f1d')
 
 prepare() {
     cd "$pkgname-$pkgver"
