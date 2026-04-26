@@ -1,0 +1,12 @@
+[godot-dev-bin]
+source = "jq"
+url = "https://api.github.com/repos/godotengine/godot-builds/contents/releases"
+filter = '.[] | .name | capture("godot-(?<v>.*)\\.json") | .v | gsub("dev"; "alpha") | gsub("-stable"; "") | gsub("-"; "") | . + "+commit"'
+
+# source = "github"
+# github = "godotengine/godot-builds"
+# use_latest_release = true
+# include_prereleases = true
+# # TODO: replace dev with alpha
+# from_pattern = '^(.*?)(-stable|-)(.*)$'
+# to_pattern = '\1\3+commit9'
