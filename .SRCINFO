@@ -1,7 +1,7 @@
 pkgbase = r-cmprsk
 	pkgdesc = Subdistribution Analysis of Competing Risks
 	pkgver = 2.2.12
-	pkgrel = 1
+	pkgrel = 5
 	url = https://cran.r-project.org/package=cmprsk
 	arch = any
 	license = GPL-2.0-or-later
