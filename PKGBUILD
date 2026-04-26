@@ -2,8 +2,8 @@
 pkgname=quasar-mips-ide-bin
 _pkgname=Quasar
 _pkgname_lower=quasar
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="A modern, high-performance IDE for MIPS32 R2000 assembly (Pre-built binary)"
 arch=('x86_64')
 url="https://github.com/rmia46/quasar"
@@ -13,7 +13,7 @@ provides=('quasar-mips-ide')
 conflicts=('quasar-mips-ide' 'quasar-mips-ide-git')
 source=("https://github.com/rmia46/quasar/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
         "https://raw.githubusercontent.com/rmia46/quasar/main/LICENSE")
-sha256sums=('78968481991abd07d0b521464e6620dbd193c506cde11f00f9890f5a1d0b75b1'
+sha256sums=('f374f4e327022370378689ba3b6a1d057b9c4f36b843ebefca91875add7b71f4'
             '2c685bb9160a30c7c88334530378ae1dfd3c393af72efe3e48a322ee5fe53e28')
 
 prepare() {
