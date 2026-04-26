@@ -13,17 +13,39 @@
 
 pkgname=chipass-git
 _gitname=chipass
-pkgver=r4756.g8fb6e89
+pkgver=r4787.gaecdaf5
 pkgrel=1
 pkgdesc="Modern, secure, and open-source password manager (fork of KeePassXC)"
 arch=('i686' 'x86_64')
 url="https://chipass.org/"
 license=('GPL2')
-depends=('qt5-base' 'qt5-x11extras' 'qt5-translations' 'qt5-imageformats'
-         'libxtst' 'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils'
-         'libusb' 'pcsclite' 'qt5-svg' 'qrencode' 'minizip'
-         'zlib' 'botan' 'argon2')
-makedepends=('git' 'intltool' 'cmake' 'qt5-tools' 'asciidoctor')
+depends=(
+    'argon2'
+    'botan'
+    'desktop-file-utils'
+    'hicolor-icon-theme'
+    'libusb'
+    'libxi'
+    'libxtst'
+    'minizip'
+    'pcsclite'
+    'qrencode'
+    'qt6-5compat'
+    'qt6-base'
+    'qt6-svg'
+    'qt6-translations'
+    'qt6-wayland'
+    'readline'
+    'shared-mime-info'
+    'zlib'
+)
+makedepends=(
+    'asciidoctor'
+    'cmake'
+    'git'
+    'intltool'
+    'qt6-tools'
+)
 checkdepends=('xorg-server-xvfb' 'xclip')
 provides=('org.freedesktop.secrets' "chipass=$pkgver")
 conflicts=(
@@ -36,7 +58,7 @@ conflicts=(
 )
 replaces=('keepasschi-git')
 options=(!emptydirs)
-source=(git+https://codeberg.org/keepasschi/chipass.git#commit=8fb6e891e6)
+source=(git+https://codeberg.org/keepasschi/chipass.git)
 md5sums=('SKIP')
 
 pkgver() {
