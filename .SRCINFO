@@ -1,0 +1,13 @@
+pkgbase = perl-xml-tiny
+	pkgdesc = simple lightweight parser for a subset of XML
+	pkgver = 2.07
+	pkgrel = 0
+	url = https://metacpan.org/dist/XML-Tiny
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-2.0
+	makedepends = perl-extutils-makemaker
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/XML-Tiny-2.07.tar.gz
+	sha256sums = ce39fcb53e0fe9f1cbcd86ddf152e1db48566266b70ec0769ef364eeabdd8941
+
+pkgname = perl-xml-tiny
