@@ -1,0 +1,9 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+[pi-ext-awsdocs]
+source = "github"
+github = "dougefresher/pi-ext-cursor-rules"
+use_latest_release = true
+prefix = "v"
