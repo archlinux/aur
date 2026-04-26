@@ -1,0 +1,20 @@
+pkgbase = tuna-music
+	pkgdesc = TUNA — Terminal music player with real-time audio visualizer
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/randometerian/TUNA
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = mpv
+	depends = python-mutagen
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-pyaudio
+	depends = portaudio
+	source = tuna-music-1.1.0.tar.gz::https://github.com/randometerian/tuna-music/archive/v1.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = tuna-music
