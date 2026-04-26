@@ -1,7 +1,7 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=omarchy-prayer
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Muslim prayer-time notifier for Omarchy: mako + adhan, waybar countdown, themed TUI, qibla, hijri, adhan catalog"
 arch=('any')
 url="https://github.com/mrCode/omarchy-prayer"
@@ -45,11 +45,16 @@ package() {
     chmod 755 "${bindir}/${s}"
   done
 
-  # Systemd user units
+  # Systemd user units — rewrite ExecStart from the manual-install path
+  # (%h/.local/bin/, used by ./install.sh) to the system path so the daily
+  # rebuild timer + resume hook can find the binaries pacman installed.
   install -dm755 "${unitdir}"
   install -m644 share/systemd/omarchy-prayer-schedule.service "${unitdir}/"
   install -m644 share/systemd/omarchy-prayer-schedule.timer   "${unitdir}/"
   install -m644 share/systemd/omarchy-prayer-resume.service   "${unitdir}/"
+  sed -i 's|%h/\.local/bin/|/usr/bin/|g' \
+    "${unitdir}/omarchy-prayer-schedule.service" \
+    "${unitdir}/omarchy-prayer-resume.service"
 
   # License + docs
   install -Dm644 LICENSE   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
