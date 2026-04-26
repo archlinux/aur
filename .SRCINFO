@@ -1,6 +1,6 @@
 pkgbase = mydns
 	pkgdesc = MyDNS.JP IP update script with IPv4/IPv6 support and systemd timer
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/kenichyan/mydns
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = mydns
 	depends = bash
 	depends = curl
 	backup = etc/mydns/mydns.conf
-	source = mydns-1.0.0.tar.gz::https://github.com/kenichyan/mydns/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 50ea36f533402498a2e33e6b2811dc8300dd0f65ddbbc65608720614a17649f8
+	source = mydns-1.0.1.tar.gz::https://github.com/kenichyan/mydns/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = ac496ea4b19c1dda24955913f20fe7e5efb5d3e7d9069882bc9f0165cfd8d5e1
 
 pkgname = mydns
