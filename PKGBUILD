@@ -1,7 +1,7 @@
 # Maintainer: yuhldr <yuhldr@qq.com>
 
 pkgname=('python-symfc')
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Generate symmetrized force constants"
 arch=('any')
