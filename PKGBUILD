@@ -1,7 +1,7 @@
 # Maintainer: wingsummer <wing-summer@qq.com>
 
 pkgname=winghexexplorer2-git
-pkgver=2.3.5.r0.g74667a1
+pkgver=2.3.6.r0.gc1689b1
 pkgrel=1
 pkgdesc='一个自由强大跨平台的十六进制编辑器（每日构建版） / A free, powerful, cross-platform hex editor (Nightly Builds)'
 url="https://github.com/Wing-summer/WingHexExplorer2"
