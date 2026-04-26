@@ -1,7 +1,7 @@
 pkgbase = r-snowflakeauth
 	pkgdesc = Authentication to 'Snowflake'
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=snowflakeauth
 	arch = any
 	license = MIT
