@@ -1,7 +1,7 @@
 pkgbase = gamescope-nvidia
 	pkgdesc = SteamOS session compositing window manager (NVIDIA patch)
 	pkgver = 3.16.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 	install = gamescope.install
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = gamescope-nvidia
 	optdepends = mangohud: for option "--mangoapp"
 	provides = gamescope
 	conflicts = gamescope
-	source = gamescope::git+https://github.com/ValveSoftware/gamescope.git#commit=f8b33d38c5acc35825c7966b208222770c4a623e
+	source = gamescope::git+https://github.com/ValveSoftware/gamescope.git#commit=96376e4773574a929b59f53f021cf0923189c993
 	source = 1335.patch
 	source = 1908.patch
 	source = subprojects|glm::git+https://github.com/g-truc/glm.git#commit=0af55ccecd98d4e5a8d1fad7de25ba429d60e863
@@ -54,8 +54,8 @@ pkgbase = gamescope-nvidia
 	source = src|reshade::git+https://github.com/Joshua-Ashton/reshade#commit=696b14cd6006ae9ca174e6164450619ace043283
 	source = subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=47a5590e9c4eb35d67651b8c05a55f1a48259329
 	source = subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4
-	source = subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=54e844748029d4874e14d0c086d50092c04c8899
-	sha512sums = b31e2b0c3a500d3b02b83b2f713bc86fee2beec88b1d3be662c9a0f9256a7b28c25e6b2212607d75771f926e3516a7c36eb29f8437da32e52b5d042e8b6b1535
+	source = subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=c08d99437ec8bb56a703f04ad1ef199502c62d10
+	sha512sums = d3f28c9cb04f798d910760fd24bdef62b98a9da7c5df20af06e6da0e786ed2e006a43f546ea7ea124b50693935f94a36b5d542a08a61f57e553ad811f00c28e6
 	sha512sums = 69472f0f6feb124f55780ce05d2954b7efdc25a117c174dc2c1e194b23ff507efea59925517f31d2efab8a9d1f49356947aa0085dc67746d01f9f0d6c69e4d39
 	sha512sums = 42f3b58fc115993d82953df08e0595015e935df01e8bea0b66340698215b644bea2aabf845d353d717c23bebba236db6d548c82ac60322358089f95d8c27a09b
 	sha512sums = 16c0f045f0d0e223278d9cf3267a297eb33c30c773e67c5e863fb435cb24ff76cc886152e42f20dd759cd001398c8fb0bdfa2d7b1515a9ee0ac96c1741fa6eaa
@@ -66,6 +66,6 @@ pkgbase = gamescope-nvidia
 	sha512sums = 5629b847abdab649a205470e9128ffc104231f5cf248bbeb01fe555429f24206760c3aea8139d8b18e41ce5f423fd177515eb21f31b2d9b0a2fd19dfe20062ea
 	sha512sums = 76c398291bc3a201b03a42d299a320f08c04b48a273973182cf2f3ed5c433768b6f5998ec9420ccb4b911ee8c5357a4a2a620c92337532fd75f15ae974273727
 	sha512sums = f947f3a52f0d6aa4b2762f646cf785cea90c299d7116692120ebe2fc703ea79f52bc98d71631a07a87695addf2d8fd0e7c39d6690e0b18148c8652cf155cf17f
-	sha512sums = 1763e46e12876222fa76effb566c0088eff8f0e484814fc9bc6bbd7fcb55ee6d5d739cc20040dd1eb29bfd7ba133967cf796659df5a4726108d2d6858d26a5b9
+	sha512sums = 1246c7eb7c14add88e7a82427cc79f51a9463dc1ad82c202caf569e9ecdec27c8620dda06a5cc3afff416cb26826960f37c4d156dc59408c2fc31e5ec57ceb6f
 
 pkgname = gamescope-nvidia
