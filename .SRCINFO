@@ -1,7 +1,7 @@
 pkgbase = r-swagger
 	pkgdesc = Dynamically Generates Documentation from a 'Swagger' Compliant API
 	pkgver = 5.32.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=swagger
 	arch = any
 	license = Apache-2.0
