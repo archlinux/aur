@@ -1,7 +1,7 @@
 # Maintainer: YSTYLE <lxy5266@live.com>
 
 pkgname=cjvs-bin
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="仓颉Cangjie版本切换工具"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('cjvs')
 conflicts=('cjvs')
 source=("https://github.com/ystyle/cjvs/releases/download/v${pkgver}/cjvs_v${pkgver}_linux_amd64.zip")
 # source=("cjvs_v${pkgver}_linux_amd64.zip")
-sha256sums=('ec82ebad053c69c39b97f0a285f432b5ed032025c8b2d61dfa6dd7bf231d03f7')
+sha256sums=('9789e0ca6922acc0353d985dbc7de0f4a5d4256980490853f202e82406b521ba')
 
 package() {
     install -Dm755 cjvs "$pkgdir/usr/bin/cjvs"
