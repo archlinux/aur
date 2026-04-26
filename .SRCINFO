@@ -1,5 +1,5 @@
 pkgbase = headson
-	pkgdesc = head/tail for structured data - summarize/preview JSON/YAML and source code
+	pkgdesc = Budget‑constrained JSON preview renderer
 	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/kantord/headson

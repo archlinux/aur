@@ -7,7 +7,7 @@ _cratename=${pkgname}
 pkgver=0.17.0
 _version=${pkgver}
 pkgrel=1
-pkgdesc="head/tail for structured data - summarize/preview JSON/YAML and source code"
+pkgdesc="Budget‑constrained JSON preview renderer"
 
 arch=('x86_64')
 url="https://github.com/${pkgauthor}/${pkgname}"
