@@ -1,7 +1,7 @@
 pkgbase = r-osmdata
 	pkgdesc = Import 'OpenStreetMap' Data as Simple Features or Spatial Objects
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=osmdata
 	arch = any
 	license = GPL-3.0-only
