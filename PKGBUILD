@@ -1,5 +1,5 @@
 pkgname=iopenpod
-pkgver=1.0.45
+pkgver=1.0.47
 pkgrel=1
 pkgdesc="Open source iPod sync tool - manage your iPod without iTunes"
 arch=('x86_64' 'aarch64')
@@ -14,16 +14,9 @@ optdepends=(
     'chromaprint: for acoustic fingerprinting'
 )
 source=("https://github.com/TheRealSavi/iOpenPod/archive/refs/tags/v${pkgver}.tar.gz")
-source+=("disable-autoupdater.patch")
 sha256sums=(
-    c1e6ed8b41873b97c38945fe3c27e62a903ffb02dd32b6fcff6e796ef69dc392
-    SKIP
+    aaa5b1444b4dcecc2158b3a87802450c2a29fe271c961f3dfe58177eb8dab6ba
 )
-
-prepare() {
-    cd "${srcdir}/iOpenPod-${pkgver}"
-    patch -Np1 -i "${srcdir}/disable-autoupdater.patch"
-}
 
 build() {
     cd "${srcdir}/iOpenPod-${pkgver}"
