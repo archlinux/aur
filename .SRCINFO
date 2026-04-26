@@ -1,7 +1,7 @@
 pkgbase = r-spacesxyz
 	pkgdesc = CIE XYZ and Some of Its Derived Color Spaces
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=spacesXYZ
 	arch = any
 	license = GPL-3.0-or-later
