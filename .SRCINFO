@@ -1,0 +1,24 @@
+pkgbase = fcitx5-schnelle-umlaute-git
+	pkgdesc = Quick Accent equivalent for Linux/Fcitx5 — map any Unicode character
+	pkgver = 1.1.0.r323.gf67b16e
+	pkgrel = 1
+	url = https://github.com/Maik-0000FF/schnelle-umlaute
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = gettext
+	depends = fcitx5
+	depends = fcitx5-qt
+	depends = qt6-base
+	depends = libxkbcommon
+	optdepends = fcitx5-configtool: GUI configuration via system settings
+	optdepends = rebuild-detector: detects SONAME breakage after fcitx5 updates
+	provides = fcitx5-schnelle-umlaute
+	conflicts = fcitx5-schnelle-umlaute
+	source = fcitx5-schnelle-umlaute::git+https://github.com/Maik-0000FF/schnelle-umlaute.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = fcitx5-schnelle-umlaute-git
