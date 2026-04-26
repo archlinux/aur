@@ -1,6 +1,6 @@
 pkgbase = davinci-ffmpeg-encoder-plugin
 	pkgdesc = FFmpeg Encoder Plugin for DaVinci Resolve Studio
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/EdvinNilsson/ffmpeg_encoder_plugin
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = davinci-ffmpeg-encoder-plugin
 	makedepends = cmake
 	depends = ffmpeg
 	optdepends = davinci-resolve-studio
-	source = davinci-ffmpeg-encoder-plugin-1.3.0.tar.gz::https://github.com/EdvinNilsson/ffmpeg_encoder_plugin/archive/v1.3.0.tar.gz
-	sha256sums = 41c7d6226840ebb67c96a24352c92c78a3582254d7f47060b75e666a41773d16
+	source = davinci-ffmpeg-encoder-plugin-1.3.1.tar.gz::https://github.com/EdvinNilsson/ffmpeg_encoder_plugin/archive/v1.3.1.tar.gz
+	sha256sums = 887619cf5226480b52fa3f87d8a32e00c31536e6b10e4f4891f2563155caceb6
 
 pkgname = davinci-ffmpeg-encoder-plugin
