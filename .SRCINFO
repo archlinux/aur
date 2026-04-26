@@ -1,6 +1,6 @@
 pkgbase = unitfy
 	pkgdesc = Command-line unit conversion utility (temperature, length, volume, pressure)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/jonleithe/delta
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = unitfy
 	makedepends = gcc
 	depends = readline
 	depends = gcc-libs
-	source = unitfy-1.0.0.tar.gz::https://github.com/jonleithe/delta/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 5e2d40003726d717004573dbef8e3d52d29cd0e4b43f2158ccd927c804c36d03
+	source = unitfy-1.0.1.tar.gz::https://github.com/jonleithe/delta/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = ec426ba25083b97093a1045196f189ba453582b468484ffaacecf18ba4a4a708
 
 pkgname = unitfy
