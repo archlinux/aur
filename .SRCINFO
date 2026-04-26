@@ -1,7 +1,7 @@
 pkgbase = wpets
 	pkgdesc = A Wayland overlay that displays an animated virtual pet reacting to keyboard input
-	pkgver = 3.6.1
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/furudbat/wayland-vpets
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = wpets
 	depends = wayland
 	depends = glibc
 	depends = systemd
-	source = wayland-vpets-3.6.1.tar.gz::https://github.com/furudbat/wayland-vpets/archive/v3.6.1.tar.gz
-	sha256sums = 1c6a0668ca6207334a00cfd818827c2350db245537eb28b76824663416f1d174
+	source = wayland-vpets-4.0.0.tar.gz::https://github.com/furudbat/wayland-vpets/archive/v4.0.0.tar.gz
+	sha256sums = edb4661d0bace75eaac4d39a26853b977576d89a1592bc9c063b0f95441ee00f
 
 pkgname = wpets

@@ -1,7 +1,7 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 pkgname=wpets
-pkgver=3.6.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 arch=('x86_64' 'aarch64')
 url="https://github.com/furudbat/wayland-vpets"
@@ -10,13 +10,13 @@ depends=('wayland' 'glibc' 'systemd')
 makedepends=('gcc' 'cmake' 'make' 'wayland-protocols' 'pandoc-cli')
 #keywords=('wayland' 'virtual-pet' 'overlay' 'bongo-cat' 'cat' 'wpets' 'desktop-toy' 'bongo' 'bongocat-keyboard' 'cat' 'vpet' 'screenmate')
 source=("wayland-vpets-$pkgver.tar.gz::https://github.com/furudbat/wayland-vpets/archive/v$pkgver.tar.gz")
-sha256sums=('1c6a0668ca6207334a00cfd818827c2350db245537eb28b76824663416f1d174')
+sha256sums=('edb4661d0bace75eaac4d39a26853b977576d89a1592bc9c063b0f95441ee00f')
 
 build() {
     cd "$srcdir/wayland-vpets-$pkgver"
 	cmake -S . -B build \
         -DCMAKE_BUILD_TYPE=Release \
-        -DFEATURE_LAZY_LOAD_ASSETS=ON -DFEATURE_MULTI_VERSIONS=ON \
+        -DFEATURE_LAZY_LOAD_ASSETS=ON -DFEATURE_MULTI_VERSIONS=ON -DSKIP_CPM=ON \
         -Wno-dev
 	cmake --build build --parallel "$(nproc)"
 	cmake --build build --target manpages --parallel "$(nproc)"
