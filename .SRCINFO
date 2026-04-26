@@ -1,7 +1,7 @@
 pkgbase = r-pki
 	pkgdesc = Public Key Infrastructure for R Based on the X.509 Standard
 	pkgver = 0.1.15
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=PKI
 	arch = i686
 	arch = x86_64
