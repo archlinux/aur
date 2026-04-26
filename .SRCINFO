@@ -1,7 +1,7 @@
 pkgbase = r-leafgl
 	pkgdesc = High-Performance 'WebGl' Rendering for Package 'leaflet'
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=leafgl
 	arch = any
 	license = MIT
