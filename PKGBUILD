@@ -3,7 +3,7 @@
 # Contributor: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=dyff
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="Diff tool for YAML files"
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('961d9ac91a0d2e8a45fc4f11c6ab5514af3f42e572b066012dab06498da17315')
+sha256sums=('5840e1bfc520d481b0566f50a2ea8f03f1a4d0037503620526fef36be3b4add1')
 
 prepare() {
   cd ${pkgname}-${pkgver}
