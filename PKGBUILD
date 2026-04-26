@@ -46,7 +46,10 @@ makedepends=(
     'intltool'
     'qt6-tools'
 )
-checkdepends=('xorg-server-xvfb' 'xclip')
+checkdepends=(
+    'wl-clipboard'
+    'xwayland-run'
+)
 provides=('org.freedesktop.secrets' "chipass=$pkgver")
 conflicts=(
     'chipass'
@@ -77,10 +80,18 @@ build() {
     make -C build
 }
 
-#check() {
-#    cd "${_gitname}/build"
-#    xvfb-run --auto-display make test
-#}
+check() {
+    if ! wlheadless-run -- true; then
+        printf >&2 '%s PKGBUILD: wlheadless-run is not set up, skipping tests.\n' "$pkgname"
+        printf >&2 'To run the tests, select a compositor out of weston, kwin, mutter, gnome-kiosk, cage,\n'
+        printf >&2 'and add it to %s/wlheadless/wlheadless.conf:\n' "${XDG_CONFIG_HOME:-~/.config}"
+        printf >&2 '%s\n' '' '[DEFAULT]' 'Compositor = insert-compositor-here'
+        return 0
+    fi
+
+    cd "${_gitname}/build"
+    wlheadless-run -- make test
+}
 
 package() {
     cd "${_gitname}/build"
