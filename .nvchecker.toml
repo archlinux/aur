@@ -2,7 +2,7 @@
 oldver = "oldver.json"
 newver = "newver.json"
 
-[pi-ext-awsdocs]
+[pi-ext-cursor-rules]
 source = "github"
 github = "dougefresher/pi-ext-cursor-rules"
 use_latest_release = true
