@@ -1,0 +1,17 @@
+pkgbase = bdf-unifont-jp
+	pkgdesc = GNU Unifont Glyphs (Japanese)
+	pkgver = 17.0.04
+	pkgrel = 1
+	url = https://ftp.gnu.org/gnu/unifont
+	arch = any
+	license = custom
+	license = GPL2
+	source = https://ftp.gnu.org/gnu/unifont/unifont-17.0.04/unifont_jp-17.0.04.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-17.0.04/unifont_jp-17.0.04.bdf.gz.sig
+	source = LICENSE
+	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
+	sha512sums = ffd792260822980cf195f3368066d91d412af2d411cd7c378815dc4d55301f876932f282f9d7c0ab492b8918798fd100eda27e4df08ff082c262123ea91d907e
+	sha512sums = SKIP
+	sha512sums = 064e7c0afe836d48610fcdd5d2d080c2583be0f2b70e565440d743072f41a242aec29a500df7a2bd39f423089c291250eabe0cefae5d000aecd7f27a052ee242
+
+pkgname = bdf-unifont-jp
