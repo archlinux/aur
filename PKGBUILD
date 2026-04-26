@@ -1,7 +1,7 @@
 # Maintainer: InnocentThief <https://codeberg.org/InnocentThief>
 pkgname=custom-songs-manager-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Custom songs manager for Beat Saber"
 arch=('x86_64')
 url="https://codeberg.org/InnocentThief/custom-songs-manager"
@@ -11,13 +11,13 @@ provides=('custom-songs-manager')
 conflicts=('custom-songs-manager')
 
 source=("custom-songs-manager-${pkgver}.deb::https://codeberg.org/InnocentThief/custom-songs-manager/releases/download/v${pkgver}/Custom%20Songs%20Manager_${pkgver}_amd64.deb")
-sha256sums=('6060aebea7346c8e484c13af851bbbf53ae07f7d3d608194ef66fc12456d1ec3')
+sha256sums=('1d5b628f9137d4e21e0c378521100587640a031b797b51d19c66e09d4fa18d24')
 
 package() {
     cd "$srcdir"
     bsdtar -xf data.tar.gz
 
-    install -Dm755 usr/bin/app \
+    install -Dm755 usr/bin/custom-songs-manager \
         "$pkgdir/usr/bin/custom-songs-manager"
 
     install -dm755 "$pkgdir/usr/share/applications"
@@ -34,9 +34,12 @@ Categories=Game;Utility;
 EOF
 
     for size in 32x32 128x128; do
-        install -Dm644 "usr/share/icons/hicolor/${size}/apps/app.png" \
+        install -Dm644 "usr/share/icons/hicolor/${size}/apps/custom-songs-manager.png" \
             "$pkgdir/usr/share/icons/hicolor/${size}/apps/custom-songs-manager.png"
     done
-    install -Dm644 "usr/share/icons/hicolor/256x256@2/apps/app.png" \
+    install -Dm644 "usr/share/icons/hicolor/256x256@2/apps/custom-songs-manager.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/custom-songs-manager.png"
+
+    install -Dm644 "usr/share/metainfo/custom-songs-manager.metainfo.xml" \
+        "$pkgdir/usr/share/metainfo/custom-songs-manager.metainfo.xml"
 }
