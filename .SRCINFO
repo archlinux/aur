@@ -1,0 +1,16 @@
+pkgbase = wac
+	pkgdesc = WebAssembly Composition (WAC) tooling
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/bytecodealliance/wac
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	options = !debug
+	source = https://github.com/bytecodealliance/wac/archive/v0.10.0/wac-0.10.0.tar.gz
+	sha256sums = 3c84b58de58d531e7f93a1f17edc2dd7d3a1bc2a57f70b10c3f31d4fd3000648
+
+pkgname = wac
