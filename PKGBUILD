@@ -1,20 +1,20 @@
 # Maintainer: uli <cybuzuma at vnxs dot de>
 
 pkgname=opencpn-plugin-o_charts
-pkgver=2.0.32.0
-pkgrel=2
+pkgver=2.1.15
+pkgrel=1
 pkgdesc="use charts from o-charts.org in opencpn"
 arch=('x86_64' 'aarch64')
 license=("GPL2" "custom")
 depends=('opencpn' 'libusb-compat')
 makedepends=('cmake')
 url="https://opencpn.org/OpenCPN/plugins/ocharts.html"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bdbcat/o-charts_pi/archive/refs/tags/${pkgver}.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/facd6f684e8b851619a100e5601626e2002e1d42.tar.gz" "LICENSE")
-b2sums=('71019d4ac0475848f8cdc1de6e0b3d8d2b54dfdea8e2a174128a2fa32315840fa35ca00b49d64d7f33f0c8d3b0f20ed043f30a8c7f8ddf24eed95e4a609c6b6f' 'd6036bf37df6704d1fd92d475cd6e717c702d82b962103433b91ff7dbb541c0931e2b4b12f80bfa7a0840ee96178edbc746c57bb2c0d9057da59c19625e72c33' '2d09f9bc4f793b03977d05607f065fbd85e8c257edb70d27b8846f620f920d23803e320045ae3e6cc23e862d0c52336b8e334580d946518f86f4260c0a886deb')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bdbcat/o-charts_pi/archive/refs/tags/v${pkgver}.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/6a29da61ff17184e7c5a4eb9b883996a80a60fd5.tar.gz" "LICENSE")
+b2sums=('67eec29e2c2461f18c08f5fe1f3b573a357cb09ef5c33d89cec6a1ea914a529c99190bc656db193a17666276b07fe187cd339e4aa6a174367a624a4146d21c74' '02210f14e317962f9f776dfde5a32d7fea717a75fe909820b9e1f40cc534841a1d75f576e3cd6841fdc1c65f577834594550aec7e743a5964ec39aae81d2bb4c' '2d09f9bc4f793b03977d05607f065fbd85e8c257edb70d27b8846f620f920d23803e320045ae3e6cc23e862d0c52336b8e334580d946518f86f4260c0a886deb')
 
 
 prepare() {
-  cp -r opencpn-libs-facd6f684e8b851619a100e5601626e2002e1d42/* o-charts_pi-${pkgver}/opencpn-libs
+  cp -r opencpn-libs-6a29da61ff17184e7c5a4eb9b883996a80a60fd5/* o-charts_pi-${pkgver}/opencpn-libs
 }
 
 build() {
