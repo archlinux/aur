@@ -1,0 +1,11 @@
+--- a/src/commands/git.rs
++++ b/src/commands/git.rs
+@@ -564,7 +564,7 @@ fn git_reset<'a, T: TxnTExt + MutTxnTExt>(
+                                     let mut tmp_path = new_path.to_path_buf();
+                                     tmp_path.pop();
+                                     use rand::Rng;
+-                                    let s: String = rand::thread_rng()
++                                    let s: String = rand::rng()
+                                         .sample_iter(&rand::distr::Alphanumeric)
+                                         .take(30)
+                                         .map(|x| x as char)

@@ -1,0 +1,17 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "fix-rand-0.9-sanakirja-imports.patch",
+    "fix-deprecated-function-warning.patch",
+]
+SPDX-FileCopyrightText = "pijul contributors"
+SPDX-License-Identifier = "GPL-2.0-or-later"
