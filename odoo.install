@@ -1,0 +1,17 @@
+post_install(){
+	# show message after first install
+	echo "On first install you'll need to set your database connection details in /etc/odoo19/odoo.conf and initialize the database:
+
+  cd \`mktemp -d\`; sudo -u odoo19 /var/lib/odoo19/venv/bin/odoo --config /etc/odoo19/odoo.conf -i base
+"
+	post_upgrade
+}
+
+post_upgrade(){
+	echo "If you are upgrading from a previous version of Odoo you will need to update your database. First make a backup, then run the following as the odoo user:
+
+  cd \`mktemp -d\`; sudo -u odoo19 /var/lib/odoo19/venv/bin/odoo --config /etc/odoo19/odoo.conf -u all
+
+	For major version upgrades, see the Odoo website for instructions: https://www.odoo.com/documentation/19.0/administration/upgrade.html
+"
+}

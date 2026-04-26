@@ -1,0 +1,14 @@
+[Unit]
+Description=Odoo Open Source ERP and CRM version 19
+Requires=postgresql.service
+After=postgresql.service network-online.target
+
+[Service]
+Type=simple
+User=odoo19
+Group=odoo19
+ExecStart=/var/lib/odoo19/venv/bin/odoo --config /etc/odoo19/odoo.conf
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
