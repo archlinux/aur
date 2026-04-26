@@ -1,6 +1,6 @@
 pkgbase = libxpp
 	pkgdesc = A library providing an object orientented C++ API wrapper for parts of the X11 API
-	pkgver = v0.3.0
+	pkgver = v0.3.3
 	pkgrel = 1
 	url = https://github.com/gerstner-hub/libxpp
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = libxpp
 	depends = gcc-libs
 	depends = libcosmos
 	depends = libx11
-	source = git+https://github.com/gerstner-hub/libxpp.git?signed#tag=9c11c2b7e20e46d181dfa7c582c3bdfc72eb1dc6
+	source = git+https://github.com/gerstner-hub/libxpp.git?signed#tag=c8acd7a97338509665893964c3a5ee74e41a9312
 	validpgpkeys = 40C89F006FB8A328B83A37CC14AD6F6579097284
 	sha256sums = SKIP
 
