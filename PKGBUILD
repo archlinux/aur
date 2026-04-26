@@ -1,7 +1,7 @@
-# Maintainer: UgaUgaBamBam novaria@mailbox.org
+# Maintainer: Your Name <your@email.com>
 pkgname=crucible
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux launcher for Windows games via UMU and Proton"
 arch=('any')
 url="https://github.com/northmind/Crucible"
@@ -26,7 +26,7 @@ source=(
   "fix-icon.py"
 )
 sha256sums=('2c6a4cde11d22a67d4f7f8bdb1dd86439ba08d19ee210b08775f6c376ee6da3c'
-            '96e729c2be39935aa5a1889ac8a34757ccfda1818175c453fa605dfb79f35680')
+            '89afa59508d4560b7a3cf331be8ce52b6608a30e5af172113fce638de7dabafa')
 
 prepare() {
   cd "Crucible-$pkgver"
@@ -73,15 +73,16 @@ package() {
 exec python3 -m crucible "$@"
 EOF
 
-  python3 -c "
+  DESTDIR="$pkgdir" python3 << 'PYEOF'
+import os
 from PIL import Image
 from pathlib import Path
 src = Image.open('python/crucible/assets/images/icon.jpg').convert('RGBA')
 for size in (256, 512):
-    d = Path('$pkgdir/usr/share/icons/hicolor') / f'{size}x{size}' / 'apps'
+    d = Path(os.environ['DESTDIR'] + '/usr/share/icons/hicolor') / (str(size) + 'x' + str(size)) / 'apps'
     d.mkdir(parents=True, exist_ok=True)
     src.resize((size, size), Image.LANCZOS).save(d / 'crucible.png')
-"
+PYEOF
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" << 'EOF'
 [Desktop Entry]

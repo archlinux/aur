@@ -1,24 +1,31 @@
 from pathlib import Path
+import sys
 
-# patch __main__.py — add setDesktopFileName
-f = Path('python/crucible/__main__.py')
-src = f.read_text()
-src = src.replace(
+def patch(path, old, new):
+    f = Path(path)
+    src = f.read_text()
+    if new in src:
+        return  # already patched
+    if old not in src:
+        print(f"error: expected string not found in {path}", file=sys.stderr)
+        sys.exit(1)
+    f.write_text(src.replace(old, new, 1))
+
+patch(
+    'python/crucible/__main__.py',
     'app.setApplicationName("crucible")',
     'app.setApplicationName("crucible")\n    app.setDesktopFileName("crucible")',
 )
-f.write_text(src)
 
-# patch main_window.py — add QIcon import and setWindowIcon
-f = Path('python/crucible/ui/main_window.py')
-src = f.read_text()
-src = src.replace(
+patch(
+    'python/crucible/ui/main_window.py',
     'from PyQt6.QtGui import QColor',
     'from PyQt6.QtGui import QColor, QIcon',
 )
-src = src.replace(
+
+patch(
+    'python/crucible/ui/main_window.py',
     'self.setWindowFlags(Qt.WindowType.FramelessWindowHint)',
     'self.setWindowFlags(Qt.WindowType.FramelessWindowHint)\n'
     "        self.setWindowIcon(QIcon(str(Path(__file__).parent / 'assets' / 'images' / 'icon.jpg')))",
 )
-f.write_text(src)
