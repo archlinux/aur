@@ -1,20 +1,17 @@
-diff --unified --recursive --text a/src/Dialogs/Preferences/Pages/QuickAdd.vala b/src/Dialogs/Preferences/Pages/QuickAdd.vala
---- a/src/Dialogs/Preferences/Pages/QuickAdd.vala	2025-09-19 11:36:55.128346924 -0600
-+++ b/src/Dialogs/Preferences/Pages/QuickAdd.vala	2025-09-19 11:37:38.078759500 -0600
-@@ -32,11 +32,7 @@
-     }
+Binary files a/.git/index and b/.git/index differ
+diff -Npur a/src/Dialogs/Preferences/Pages/QuickAdd.vala b/src/Dialogs/Preferences/Pages/QuickAdd.vala
+--- a/src/Dialogs/Preferences/Pages/QuickAdd.vala	2026-04-26 09:43:53.989276531 -0600
++++ b/src/Dialogs/Preferences/Pages/QuickAdd.vala	2026-04-26 09:46:42.385970983 -0600
+@@ -33,7 +33,7 @@ public class Dialogs.Preferences.Pages.Q
  
      construct {
--        string quick_add_command =
+         string quick_add_command =
 -            "flatpak run --command=io.github.alainm23.planify.quick-add %s".printf (Build.APPLICATION_ID);
--        if (GLib.Environment.get_variable ("SNAP") != null) {
--            quick_add_command = "planify.quick-add";
--        }
-+        string quick_add_command = "planify.quick-add";
++            "io.github.alainm23.planify.quick-add %s".printf (Build.APPLICATION_ID);
  
          var description_label = new Gtk.Label (
              _(
-@@ -144,4 +140,4 @@
+@@ -152,4 +152,4 @@ public class Dialogs.Preferences.Pages.Q
  
          signal_map.clear ();
      }
