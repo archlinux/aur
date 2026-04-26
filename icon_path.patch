@@ -1,0 +1,40 @@
+diff -Naur fospx-pdf-editor-1.8.3.orig/fospx_pdf_editor/welcome_view.py fospx-pdf-editor-1.8.3/fospx_pdf_editor/welcome_view.py
+--- fospx-pdf-editor-1.8.3.orig/fospx_pdf_editor/welcome_view.py	2026-04-24 22:38:51.000000000 +0200
++++ fospx-pdf-editor-1.8.3/fospx_pdf_editor/welcome_view.py	2026-04-26 20:51:09.598535402 +0200
+@@ -31,7 +31,7 @@
+         main_box.set_margin_bottom(40)
+ 
+         try:
+-            icon_path = Path(__file__).resolve().parent / "img" / "f-pv1.png"
++            icon_path = Path("/usr/share/icons/hicolor/scalable/apps/fospx-pdf-editor.svg")
+             app_icon = Gtk.Picture.new_for_filename(str(icon_path))
+             app_icon.set_size_request(200, 200)
+             app_icon.set_valign(Gtk.Align.END)
+@@ -208,4 +208,4 @@
+     def on_recent_file_activated(self, row, uri):
+         if self.parent_window:
+             gfile = Gio.File.new_for_uri(uri)
+-            self.parent_window.load_document(gfile.get_path())
+\ Manca newline alla fine del file
++            self.parent_window.load_document(gfile.get_path())
+diff -Naur fospx-pdf-editor-1.8.3.orig/fospx_pdf_editor/window.py fospx-pdf-editor-1.8.3/fospx_pdf_editor/window.py
+--- fospx-pdf-editor-1.8.3.orig/fospx_pdf_editor/window.py	2026-04-24 22:38:51.000000000 +0200
++++ fospx-pdf-editor-1.8.3/fospx_pdf_editor/window.py	2026-04-26 20:51:45.247127412 +0200
+@@ -29,7 +29,7 @@
+         super().__init__(*args, **kwargs)
+         self.set_title(constants.APP_NAME)
+         self.set_default_size(1200, 800)
+-        self.set_icon_name("f-pv1")
++        self.set_icon_name("fospx-pdf-editor")
+ 
+         self.current_file_path = None
+         self.original_file_path = None
+@@ -645,7 +645,7 @@
+         about_dialog.set_comments(_("about_comments"))
+ 
+         try:
+-            app_icon_path = Path(__file__).resolve().parent / "img" / "f-pv1.svg"
++            app_icon_path = Path("/usr/share/icons/hicolor/scalable/apps/fospx-pdf-editor.svg")
+             if app_icon_path.exists():
+                 texture = Gdk.Texture.new_from_filename(str(app_icon_path))
+                 about_dialog.set_logo(texture)

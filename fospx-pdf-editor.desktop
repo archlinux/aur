@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FOSPX PDF Editor
+GenericName=FOSPX PDF Editor
+Comment=A simple and user-friendly PDF Editor
+Exec=fospx-pdf-editor
+Terminal=false
+Type=Application
+Icon=fospx-pdf-editor
+Categories=Office
+

@@ -1,0 +1,12 @@
+diff -Naur fospx-pdf-editor-1.8.3.orig/fospx_pdf_editor/window.py fospx-pdf-editor-1.8.3/fospx_pdf_editor/window.py
+--- fospx-pdf-editor-1.8.3.orig/fospx_pdf_editor/window.py	2026-04-24 22:38:51.000000000 +0200
++++ fospx-pdf-editor-1.8.3/fospx_pdf_editor/window.py	2026-04-26 20:55:04.608147632 +0200
+@@ -627,7 +627,7 @@
+         try:
+             license_path = Path(__file__).resolve().parent.parent / "LICENSE"
+             if not license_path.exists():
+-                license_path = Path("/usr/share/common-licenses/GPL-3")
++                license_path = Path("/usr/share/licenses/spdx/GPL-3.0-or-later.txt")
+ 
+             if license_path.exists():
+                 with open(license_path, 'r', encoding='utf-8') as f:
