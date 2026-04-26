@@ -19,6 +19,7 @@ build() {
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUNITFY_PKGREL="$pkgrel" \
         -DBUILD_TESTING=OFF
     cmake --build build
 }
@@ -30,6 +31,7 @@ check() {
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUNITFY_PKGREL="$pkgrel" \
         -DBUILD_TESTING=ON
     cmake --build build-test
     ctest --test-dir build-test --output-on-failure
