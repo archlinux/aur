@@ -9,7 +9,7 @@ url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost' 'pkgconfig' 'ccache' 'ninja' 'jq' 'curl' 'coreutils' 'git' 'cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'boost-libs' 'acl' 'patchelf' 'ccache' 'lmdb')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("6856cea841dcad853b9bca76255cbd22ebdc1e1895576a73318017f574a2df1e")
+sha256sums=("db73068c064c78059344380b439b79ca29ebd75cd57ce73ab9d2c8860fc97670")
 
 nekobox_source_directory="nekobox-unified-source-${pkgver}"
 
@@ -25,18 +25,9 @@ build() {
     export GOARCH=""
     export GOOS=linux
 
-    if [[ -d "core/server/vendor" ]]
-    then
-      export GO_MOD_TIDY=OFF
-    else
-      export GO_MOD_TIDY=ON
-    fi
-
-
     cmake -B "${NEKOBOX_CORE_BUILD}" -S ./core \
-        -D SKIP_UPDATER=ON \
-        -D GO_MOD_TIDY="${GO_MOD_TIDY}"
-    
+        -D SKIP_UPDATER=ON
+        
     cmake -B "${NEKOBOX_QT_BUILD}" -S . \
         -D BUILD_GO_PARTS=OFF \
         -D SKIP_UPDATER=ON \
@@ -55,7 +46,7 @@ packagecore() {
     depends=('gcc-libs' 'glibc')
     provides=('sing-box')
     conflicts=('sing-box')
-    DESTDIR="${pkgdir}/usr/libexec" cmake --install "${NEKOBOX_CORE_BUILD}"
+    DESTDIR="${pkgdir}" cmake --install "${NEKOBOX_CORE_BUILD}"
 }
 
 packageapp() {
