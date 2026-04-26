@@ -1,6 +1,6 @@
 pkgbase = xerahs-git
 	pkgdesc = Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI
-	pkgver = r2614.b680bcad
+	pkgver = r3172.2c007ee4
 	pkgrel = 1
 	url = https://github.com/ShareX/XerahS
 	arch = x86_64
