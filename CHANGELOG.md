@@ -18,6 +18,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.38.1] - 2026-04-22
+
+## 🐛 Fixes
+
+- **Restore retry-until-ready behavior for unavailable subgraphs - @dmallare PR #3187**
+
+  - Restores the behavior from v0.26.x where `rover dev` would continue polling unavailable subgraphs until they came online.
+
+## 📚 Documentation
+
+- **Update links for API keys - PR #3194**
+- **Clarify Node version strategy - PR #3186**
+
 # [0.38.0] - 2026-04-02
 
 ## 🚀 Features
