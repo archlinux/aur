@@ -1,18 +1,18 @@
 pkgbase = ryujinx-bin
 	pkgdesc = Experimental Nintendo Switch Emulator written in C#
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ryujinx.app
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = desktop-file-utils
 	depends = alsa-lib
 	depends = fontconfig
-	depends = gcc-libs
 	depends = glibc
 	depends = jack
+	depends = libgcc
 	depends = libpulse
+	depends = libstdc++
 	depends = libx11
 	depends = sh
 	depends = wayland
@@ -20,15 +20,15 @@ pkgbase = ryujinx-bin
 	conflicts = ryujinx
 	options = !strip
 	options = !debug
-	source = ryujinx-1.3.3-README.md::https://git.ryujinx.app/ryubing/ryujinx/-/raw/1.3.3/README.md?ref_type=tags&inline=false
-	source = ryujinx-1.3.3.desktop::https://git.ryujinx.app/ryubing/ryujinx/-/raw/1.3.3/distribution/linux/Ryujinx.desktop?ref_type=tags&inline=false
-	source = ryujinx-1.3.3.svg::https://git.ryujinx.app/ryubing/ryujinx/-/raw/1.3.3/distribution/misc/Logo.svg?ref_type=tags&inline=false
+	source = ryujinx-1.3.3-README.md::https://git.ryujinx.app/projects/Ryubing/raw/tag/1.3.3/README.md
+	source = ryujinx-1.3.3-Ryujinx.desktop::https://git.ryujinx.app/projects/Ryubing/raw/tag/1.3.3/distribution/linux/Ryujinx.desktop
+	source = ryujinx-1.3.3-Logo.svg::https://git.ryujinx.app/projects/Ryubing/raw/tag/1.3.3/distribution/misc/Logo.svg
 	sha256sums = d7b168ee77c5dbb6f7ca7fe7556cb057ca68939c392cdd038de83b5a771e829f
 	sha256sums = a19dc6e539931df63d4813f787c51f460cf72e0c44b20add1c0c6ef56c47d840
 	sha256sums = 6d8329413c64e2eb8a1706d2cf97e89fc5083b0654468bd6feefe47e61faaad2
-	source_aarch64 = ryujinx-1.3.3-aarch64.tar.gz::https://git.ryujinx.app/api/v4/projects/1/packages/generic/Ryubing/1.3.3/ryujinx-1.3.3-linux_arm64.tar.gz
+	source_aarch64 = https://git.ryujinx.app/projects/Ryubing/releases/download/1.3.3/ryujinx-1.3.3-linux_arm64.tar.gz
 	sha256sums_aarch64 = 0485b611583c401733d706ec39db40999f08ba4e22f6f38b0d94602a8016d295
-	source_x86_64 = ryujinx-1.3.3-x86_64.tar.gz::https://git.ryujinx.app/api/v4/projects/1/packages/generic/Ryubing/1.3.3/ryujinx-1.3.3-linux_x64.tar.gz
+	source_x86_64 = https://git.ryujinx.app/projects/Ryubing/releases/download/1.3.3/ryujinx-1.3.3-linux_x64.tar.gz
 	sha256sums_x86_64 = 19b67b222726f28d11846e9b7cbaed113ea03c2be016408662ffb27c558bd28c
 
 pkgname = ryujinx-bin
