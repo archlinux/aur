@@ -1,0 +1,49 @@
+pkgbase = gnome-online-accounts-googledrive
+	pkgdesc = Single sign-on framework for GNOME (with Google Files provider enabled)
+	pkgver = 3.58.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/wikis/home
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = git
+	makedepends = gi-docgen
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = dbus
+	depends = dconf
+	depends = gcr-4
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = json-glib
+	depends = keyutils
+	depends = krb5
+	depends = libadwaita
+	depends = libgcc
+	depends = librest
+	depends = libsecret
+	depends = libsoup3
+	depends = libxml2
+	optdepends = epiphany: (or another modern browser): OAuth authentication
+	optdepends = gvfs-goa: Virtual file systems, e.g. OwnCloud
+	optdepends = gvfs-onedrive: Microsoft OneDrive
+	optdepends = gvfs-googledrive: Google Drive support
+	provides = gnome-online-accounts=3.58.1
+	provides = libgoa=3.58.1
+	provides = libgoa-docs=3.58.1
+	provides = libgoa-1.0.so
+	provides = libgoa-backend-1.0.so
+	conflicts = gnome-online-accounts
+	conflicts = libgoa
+	conflicts = libgoa-docs
+	replaces = gnome-online-accounts
+	replaces = libgoa
+	replaces = libgoa-docs
+	source = git+https://gitlab.gnome.org/GNOME/gnome-online-accounts.git#tag=3.58.1
+	b2sums = 602f36235a44052e0a0b7feea7574f659144bb70f4f97b50c6d020927b6d153290cc0396d38265d20f36a2c2d8f920817c187ef6584279623935c3c9ed74ea8e
+
+pkgname = gnome-online-accounts-googledrive
+
