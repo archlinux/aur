@@ -1,0 +1,18 @@
+pkgbase = frecenfile
+	pkgdesc = Compute frecency scores for files in a Git repository
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/kantord/frecenfile
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = libgit2
+	depends = zlib
+	depends = jq
+	provides = frecenfile
+	source = frecenfile-0.4.1.crate::https://crates.io/api/v1/crates/frecenfile/0.4.1/download
+	sha256sums = 8f25cb6d11105515e8ef7e7b09ebeb2db132a7e158bf000a563717f8836ddd82
+
+pkgname = frecenfile
