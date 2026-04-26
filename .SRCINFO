@@ -1,7 +1,7 @@
 pkgbase = r-mall
 	pkgdesc = Run Multiple Large Language Model Predictions Against a Table, or Vectors
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=mall
 	arch = any
 	license = MIT
