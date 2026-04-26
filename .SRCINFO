@@ -1,0 +1,18 @@
+pkgbase = zeitgrep
+	pkgdesc = Find frecent results in git repositories using regular expressions
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/kantord/zeitgrep
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = libgit2
+	depends = openssl
+	depends = jq
+	provides = zg
+	source = zeitgrep-0.8.0.crate::https://crates.io/api/v1/crates/zeitgrep/0.8.0/download
+	sha256sums = f373114a0556dbc9df4d5b9d53832c1971edc49b7435d302aa15fa5de3da368e
+
+pkgname = zeitgrep
