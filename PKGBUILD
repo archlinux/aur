@@ -6,7 +6,7 @@
 
 pkgname='dasel'
 pkgdesc='Select, put and delete data from JSON, TOML, XML, YAML, HCL, and INI files with a single command-line tool'
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 url='https://github.com/TomWright/dasel'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -68,10 +68,10 @@ package() {
 }
 
 sha256sums=(
-  '3f2e62784020604f03676924796924ff0f776968b1bef6a424538fda5f9396e3'
+  'df47f3dd1afcc34214da10005adce85c1fe68859d39acbb503b035b853cabc89'
 )
 b2sums=(
-  '529c6402f2be7d3f0b4a5e0238d18c360614cc16dad37766890b904d168e1bfebce6abd55e9e60c658f05866bb4a31a586d9d2916ed9cac371762ea5df474ce4'
+  '45fb73fe7ea12c320efb33aa39faa84c979043fce46681eeafc5369ee7a6e95b6e2917b1d7569fc29c10df5ee537413fb8ba89baadf3d04e122938ed86033bdc'
 )
 
 # eof
