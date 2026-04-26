@@ -1,6 +1,6 @@
 # Maintainer: Hein (Warky Devs) <hein@warky.dev>
 pkgname=relspec
-pkgver=1.0.44
+pkgver=1.0.47
 pkgrel=1
 pkgdesc="RelSpec is a comprehensive database relations management tool that reads, transforms, and writes database table specifications across multiple formats and ORMs."
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://git.warky.dev/wdevs/relspecgo"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.zip::$url/archive/v$pkgver.zip")
-sha256sums=('04572734e9462fdc7861dd6781766d2ab5f35b339e0096f1f419d14090d872b0')
+sha256sums=('a916547d6696e1493bff3abdb1daa06c612997c5ecdf66de3b5ed428b9dd591a')
 
 build() {
     cd "relspecgo"
