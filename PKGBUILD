@@ -25,13 +25,22 @@ build() {
     export GOARCH=""
     export GOOS=linux
 
-    cmake -B "${NEKOBOX_CORE_BUILD}" -S ./core \
-        -D SKIP_UPDATER=ON
+    if [[ -d "core/server/vendor" ]]
+    then
+      export GO_MOD_TIDY=OFF
+    else
+      export GO_MOD_TIDY=ON
+    fi
+
+
+    cmake -B "${NEKOBOX_CORE_BUILD}" -S ./core  \
+        -D SKIP_UPDATER=ON                      \
+        -D GO_MOD_TIDY="${GO_MOD_TIDY}"
         
-    cmake -B "${NEKOBOX_QT_BUILD}" -S . \
-        -D BUILD_GO_PARTS=OFF \
-        -D SKIP_UPDATER=ON \
-        -D "NKR_DEFAULT_VERSION=${pkgver}" \
+    cmake -B "${NEKOBOX_QT_BUILD}" -S .         \
+        -D BUILD_GO_PARTS=OFF                   \
+        -D SKIP_UPDATER=ON                      \
+        -D "NKR_DEFAULT_VERSION=${pkgver}"      \
         -W no-dev -GNinja
 
     for i in "${NEKOBOX_CORE_BUILD}" "${NEKOBOX_QT_BUILD}"
