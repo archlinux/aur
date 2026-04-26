@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wlink-git
-pkgver=0.1.1.r7.g057724f
+pkgver=0.1.1.r14.g690bec1
 pkgrel=1
 pkgdesc="wlink - WCH-Link(RV) command line tool"
 arch=($CARCH)
 url="https://github.com/ch32-rs/wlink"
-license=('Apache-2.0' 'MIT')
+license=('Apache-2.0 AND MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}/"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 

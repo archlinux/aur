@@ -1,11 +1,10 @@
 pkgbase = wlink-git
 	pkgdesc = wlink - WCH-Link(RV) command line tool
-	pkgver = 0.1.1.r7.g057724f
+	pkgver = 0.1.1.r14.g690bec1
 	pkgrel = 1
 	url = https://github.com/ch32-rs/wlink
 	arch = x86_64
-	license = Apache-2.0
-	license = MIT
+	license = Apache-2.0 AND MIT
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
