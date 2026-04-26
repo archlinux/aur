@@ -25,18 +25,9 @@ build() {
     export GOARCH=""
     export GOOS=linux
 
-    if [[ -d "core/server/vendor" ]]
-    then
-      export GO_MOD_TIDY=OFF
-    else
-      export GO_MOD_TIDY=ON
-    fi
-
-
     cmake -B "${NEKOBOX_CORE_BUILD}" -S ./core \
-        -D SKIP_UPDATER=ON \
-        -D GO_MOD_TIDY="${GO_MOD_TIDY}"
-    
+        -D SKIP_UPDATER=ON
+        
     cmake -B "${NEKOBOX_QT_BUILD}" -S . \
         -D BUILD_GO_PARTS=OFF \
         -D SKIP_UPDATER=ON \
@@ -55,7 +46,7 @@ packagecore() {
     depends=('gcc-libs' 'glibc')
     provides=('sing-box')
     conflicts=('sing-box')
-    DESTDIR="${pkgdir}/usr/libexec" cmake --install "${NEKOBOX_CORE_BUILD}"
+    DESTDIR="${pkgdir}" cmake --install "${NEKOBOX_CORE_BUILD}"
 }
 
 packageapp() {
