@@ -1,0 +1,10 @@
+post_install() {
+  echo ">>> rtpengine-ctl must be run as root (or via sudo) to read /etc/rtpengine/rtpengine.conf"
+  echo ">>> To enable kernel forwarding, ensure the rtpengine-kernel-dkms package is installed."
+  echo ">>> The service will automatically attempt to load the nft_rtpengine module with the"
+  echo ">>> correct UID/GID permissions for the ngcp-rtpengine user upon startup."
+}
+
+post_upgrade() {
+  post_install
+}

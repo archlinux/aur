@@ -1,0 +1,4 @@
+d /run/rtpengine 0755 ngcp-rtpengine ngcp-rtpengine -
+d /var/spool/rtpengine 0750 ngcp-rtpengine ngcp-rtpengine -
+z /etc/rtpengine/rtpengine.conf 0640 root ngcp-rtpengine -
+z /etc/rtpengine/rtpengine-recording.conf 0640 root ngcp-rtpengine -
