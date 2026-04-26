@@ -1,4 +1,4 @@
-# Maintainer: adrianpriza-ai <your@email.com>
+# Maintainer: adrianpriza-ai <coreygit1@gmail.com>
 
 pkgname=alps-pm
 pkgver=0.8
@@ -18,18 +18,19 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "alps-$pkgver"
     export CGO_ENABLED=0
+    export GOFLAGS="-buildmode=pie"
     go build -ldflags="-s -w -X main.version=v$pkgver" -o alps .
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "alps-$pkgver"
     go vet ./...
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "alps-$pkgver"
 
     # binary
     install -Dm755 alps "$pkgdir/usr/bin/alps"
