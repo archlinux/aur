@@ -1,0 +1,8 @@
+post_install() {
+  echo ">>> Kamailio configuration is located in /etc/kamailio/"
+  echo ">>> Helper scripts (kamctl, kamdbctl) are located in /usr/bin/"
+}
+
+post_upgrade() {
+  post_install
+}

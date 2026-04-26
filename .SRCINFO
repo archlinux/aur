@@ -1,8 +1,9 @@
 pkgbase = kamailio
 	pkgdesc = SIP Server for large VoIP and real-time communication platforms
-	pkgver = 6.1.1
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = https://www.kamailio.org
+	install = kamailio.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cmake
@@ -46,9 +47,11 @@ pkgbase = kamailio
 	backup = etc/kamailio/kamailio.cfg
 	backup = etc/kamailio/kamctlrc
 	backup = etc/kamailio/tls.cfg
-	source = https://www.kamailio.org/pub/kamailio/latest/src/kamailio-6.1.1_src.tar.gz
+	source = https://www.kamailio.org/pub/kamailio/latest/src/kamailio-6.1.2_src.tar.gz
 	source = kamailio.sysusers
-	sha256sums = ea26f117449bb9bd806d033c1eb90b9f625bc15319140bb3ca3d40afeed81f9a
-	sha256sums = e2ad5c2f3213f2ce7de9524da378d062525ce99e2b401590ec0394c521a3d0c8
+	source = kamailio.tmpfiles
+	sha256sums = 203299cee87a49378ef9b160fd0ab79967b8ac58d2232ddbf92d790fd2ae8264
+	sha256sums = cbc0d7510a52791cb2016d91df9543433f3b8467efec196ed06d025ba5f8a0fa
+	sha256sums = edcbe39e6c5c368109e791693302dfc41c1b63f654eb6311281a8bdfc4adfbf3
 
 pkgname = kamailio

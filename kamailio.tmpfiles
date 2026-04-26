@@ -1,0 +1,2 @@
+d /run/kamailio 0750 kamailio kamailio -
+d /var/lib/kamailio 0750 kamailio kamailio -

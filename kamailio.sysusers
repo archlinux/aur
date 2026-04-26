@@ -1,1 +1,1 @@
-u kamailio - "Kamailio" /var/run/kamailio
+u kamailio - "Kamailio SIP Server" /var/lib/kamailio /usr/bin/nologin
