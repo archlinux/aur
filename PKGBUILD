@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=git-metrics
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A git extension to be able to track metrics about your project"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'git' 'openssl' 'zlib')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d8e25146d627bd55bc2780fa0f298943b13dd148be12cd5fdfef5aab3e744624')
+sha256sums=('f7f22b4d9c8902b9ff87925e27e97105e648d26578d57667a24122967e0e0eab')
 options=('!lto')
 
 prepare() {
