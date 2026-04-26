@@ -1,7 +1,7 @@
 pkgbase = r-shinyloadtest
 	pkgdesc = Load Test Shiny Applications
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=shinyloadtest
 	arch = any
 	license = GPL-3.0-only
