@@ -1,5 +1,5 @@
 pkgname=mxlauncher-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 url="http://10.65.185.180"
@@ -15,6 +15,8 @@ sha256sums_armv7h=('SKIP')
 
 package() {
   install -Dm755 "$srcdir/mxlauncher" "$pkgdir/usr/bin/mxlauncher"
+
+  install -Dm644 "$srcdir/icon.jpg" "$pkgdir/usr/share/pixmaps/mxworld.jpg"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/mxworld.desktop" <<EOF
 [Desktop Entry]
