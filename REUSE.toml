@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+SPDX-FileCopyrightText = 'Arch Linux contributors'
+SPDX-License-Identifier = '0BSD'
+path = ['PKGBUILD', 'README.md', '.SRCINFO', '.gitignore']
