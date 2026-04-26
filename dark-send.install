@@ -1,5 +1,4 @@
 post_install() {
-    echo "==> dark-send installed as a systemd user service."
-    echo "==> To enable and start it, run:"
-    echo "      systemctl enable --now myapp.service"
+    echo "==> Enable and start dark-send for your user:"
+    echo "      systemctl --user enable --now dark-send.service"
 }

@@ -21,5 +21,5 @@ build() {
 package() {
 	cd "dark_send-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm 644 ../../dark-send.service "${pkgdir}"/usr/lib/systemd/system/dark-send.service
+	install -Dm 644 ../../dark-send.service "${pkgdir}"/usr/lib/systemd/user/dark-send.service
 }
