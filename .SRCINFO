@@ -1,0 +1,16 @@
+pkgbase = toggl-timeguru-bin
+	pkgdesc = CLI + TUI for managing and analyzing Toggl Track time entries
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Loupeznik/toggl-timeguru
+	license = MIT
+	conflicts = toggl-timeguru
+	provides = toggl-timeguru
+	arch = aarch64
+	source_aarch64 = https://github.com/Loupeznik/toggl-timeguru/releases/download/v1.2.1/toggl-timeguru_1.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 70b2ce7199e47f68a43084bcabfff7c4d672cd86cf452d044f0214a0a299955c
+	arch = x86_64
+	source_x86_64 = https://github.com/Loupeznik/toggl-timeguru/releases/download/v1.2.1/toggl-timeguru_1.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = cee055bf6e1843486417afe1e143975b2d0e0ed4088da5e70e76bc05bedecd33
+	
+pkgname = toggl-timeguru-bin
