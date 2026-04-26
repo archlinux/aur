@@ -1,0 +1,19 @@
+pkgbase = subscribi
+	pkgdesc = Keep tabs on subscriptions (COSMIC desktop app)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://codeberg.org/Tony4dev/subscribi
+	arch = any
+	license = custom:NON-AI-MPL-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	depends = libxkbcommon
+	depends = sqlite
+	depends = cosmic-icon-theme
+	conflicts = subscribi-git
+	source = git+https://codeberg.org/Tony4dev/subscribi.git#tag=1.0.1
+	sha256sums = SKIP
+
+pkgname = subscribi
