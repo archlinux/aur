@@ -1,6 +1,6 @@
 pkgbase = rain-ascii-git
 	pkgdesc = Comfy ASCII rain for your terminal
-	pkgver = 0.1.0.r0.g25c672a
+	pkgver = 0.2.0.r0.gd6f3a80
 	pkgrel = 1
 	url = https://github.com/cursssed/rain
 	arch = x86_64
