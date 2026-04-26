@@ -2,7 +2,7 @@
 # Contributor: Gyara <laxect39@gmail.com>
 
 pkgname=electron-shogi
-pkgver=1.27.0
+pkgver=1.27.1
 pkgrel=1
 pkgdesc="将棋の GUI アプリです。 コンピューターとの対局や棋譜の編集・検討ができます。"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('nodejs' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sunfish-shogi/shogihome/archive/v${pkgver//_/-}.tar.gz"
     "ElectronShogi.desktop")
 
-sha512sums=('719b96f77eec30cc0ac0cac7ad1e058ef6095962def986a0871f0a72b5a3e79c7a153efca0949fa95bc845b049a2648796e0cfad929359e9d728c2786ccb36fa'
+sha512sums=('e7780c1ac26f01b668714fb41069174096ee9316817174278fa571d31197d42f2c9b90bc77f5324735ec23d77a33c19139ca4a361a58be1e88f0fbbf83a94b1e'
             '874e1834d3c8220a3c2772a372549a83f4c67ef7d487903d54f2b4d3f0dedcb2e70a13796a88d9d4ce1b7fa958c4a492efa586c65f9ec32851b75d5226f08978')
 
 build() {
