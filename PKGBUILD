@@ -2,7 +2,7 @@
 
 pkgname=pipewire-ldac-dec
 pkgdesc="A metapackage to install pipewire with ldac decoding support"
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 arch=(x86_64)
 license=(MIT)
