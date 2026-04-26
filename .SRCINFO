@@ -1,7 +1,7 @@
 pkgbase = r-packrat
 	pkgdesc = A Dependency Management System for Projects and their R Package Dependencies
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 5
 	url = https://cran.r-project.org/package=packrat
 	arch = any
 	license = GPL-2.0-only
