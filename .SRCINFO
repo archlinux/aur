@@ -1,6 +1,6 @@
 pkgbase = speedifyui
 	pkgdesc = Use multiple internet connections in parallel
-	pkgver = 16.6.1.12922
+	pkgver = 16.6.2.12924
 	pkgrel = 0
 	url = https://speedify.com/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = speedifyui
 	depends = speedify
 	depends = libayatana-appindicator
 	depends = webkit2gtk
-	source_x86_64 = http://apt.connectify.me/pool/main/s/speedifyui/speedifyui_16.6.1-12922_amd64.deb
-	md5sums_x86_64 = b0d068681c26cfe4f74a6be3cbf753d1
-	sha256sums_x86_64 = 67b909ce26aa02a626caf6ea693210f76d587a364bad6c3e262e6471632ee305
-	sha512sums_x86_64 = 9157333ec9cacf58c1223b067637a211a7058867d90740925ea93b9077be3274b4543ce2cbf16b9816d5b5b0e2e106d8be8b81d55f28bdb9a52e546134e0d884
-	source_aarch64 = http://apt.connectify.me/pool/main/s/speedifyui/speedifyui_16.6.1-12922_arm64.deb
+	source_x86_64 = http://apt.connectify.me/pool/main/s/speedifyui/speedifyui_16.6.2-12924_amd64.deb
+	md5sums_x86_64 = 45be91f6e7e0321490da98256609b4bc
+	sha256sums_x86_64 = 7f013b6901f04f2731235a429069cb166bb8cdb314f11bd217b9fb81c7e36702
+	sha512sums_x86_64 = c0a991b7f45b4a0634eddd44721420146275cf4855244a64884d484d1b3d3c273d97222dec0cadc1988181edbd4f3edd344329049d97198a5d321549b1473e9e
+	source_aarch64 = http://apt.connectify.me/pool/main/s/speedifyui/speedifyui_16.6.2-12924_arm64.deb
 	md5sums_aarch64 = SKIP
-	source_armv7h = http://apt.connectify.me/pool/main/s/speedifyui/speedifyui_16.6.1-12922_armhf.deb
+	source_armv7h = http://apt.connectify.me/pool/main/s/speedifyui/speedifyui_16.6.2-12924_armhf.deb
 	md5sums_armv7h = SKIP
 
 pkgname = speedifyui
