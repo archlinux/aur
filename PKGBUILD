@@ -4,10 +4,10 @@ pkgname=openpnp
 _pkgname=OpenPnP
 pkgver=2.6_2026_03_01_12_37_59
 _pkgver=2.6_2026-03-01_12-37-59.5bd404c
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source SMT Pick and Place Hardware and Software"
 arch=('arm64' 'x86_64')
-depends=('java-runtime>=11' 'java-runtime<=19')
+depends=('java-runtime')
 url='https://openpnp.org/'
 license=('GPL3')
 source=("OpenPnP-${_pkgver}.tar.gz"::"https://openpnp.s3-us-west-2.amazonaws.com/main/${_pkgver}/OpenPnP-unix-main.tar.gz"
