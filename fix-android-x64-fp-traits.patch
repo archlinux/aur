@@ -1,0 +1,14 @@
+--- a/boost/math/special_functions/detail/fp_traits.hpp	2026-04-24 12:23:32.000000000 +0200
++++ b/boost/math/special_functions/detail/fp_traits.hpp	2026-04-26 20:07:04.813225045 +0200
+@@ -305,9 +305,9 @@
+ 
+ // long double (>64 bits), x86 and x64 -----------------------------------------
+ 
+-#elif defined(__i386) || defined(__i386__) || defined(_M_IX86) \
++#elif !defined(__ANDROID__) && (defined(__i386) || defined(__i386__) || defined(_M_IX86) \
+     || defined(__amd64) || defined(__amd64__)  || defined(_M_AMD64) \
+-    || defined(__x86_64) || defined(__x86_64__) || defined(_M_X64)
++    || defined(__x86_64) || defined(__x86_64__) || defined(_M_X64))
+ 
+ // Intel extended double precision format (80 bits)
+ 
