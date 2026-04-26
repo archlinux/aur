@@ -1,17 +1,17 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=rtpengine-kernel-dkms
-pkgver=14.1.1.4
+pkgver=26.0.1.3
 pkgrel=1
-pkgdesc="Kernel module for rtpengine media proxy"
+pkgdesc="Kernel module for Sipwise rtpengine media proxy (DKMS)"
 url="https://github.com/sipwise/rtpengine"
 license=('GPL-3.0-or-later')
-arch=('x86_64')
+arch=('any')
 depends=('bash' 'dkms')
-optdepends=('linux: The Linux kernel'
-            'linux-headers: Header files and scripts for building modules for Linux kernel')
+provides=("rtpengine-kernel-module=${pkgver}")
+conflicts=('rtpengine-kernel-module')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz")
-sha256sums=('0c7684d1789f5a6fb862c8225f858752ea4c93ade6e6b1238f8e4edca9c34f38')
+sha256sums=('50960682ff4b844b2c3f14bf90c35d3d1e4eb938b2accf1030d7230cba985b5a')
 
 prepare() {
   cd "rtpengine-mr${pkgver}"
@@ -26,26 +26,34 @@ prepare() {
 
   # Create dkms.conf from Debian template:
   # - replace version placeholder
-  # - strip "ngcp-" prefix from PACKAGE_NAME so it becomes "rtpengine"
+  # - strip "ngcp-" prefix from PACKAGE_NAME
+  # - remove deprecated CLEAN directive for modern DKMS compatibility
   sed -e "s|#MODULE_VERSION#|${pkgver}|" \
       -e "s|ngcp-rtpengine|rtpengine|g" \
+      -e "/^CLEAN=/d" \
       debian/ngcp-rtpengine-kernel-dkms.dkms > dkms.conf
 }
 
 package() {
   cd "rtpengine-mr${pkgver}"
 
-  # Install dkms.conf and kernel module sources
-  install -Dm644 dkms.conf "${pkgdir}/usr/src/rtpengine-${pkgver}/dkms.conf"
-  install -Dm644 kernel-module/Makefile "${pkgdir}/usr/src/rtpengine-${pkgver}/Makefile"
-  install -Dm644 kernel-module/*.{inc,c,h} "${pkgdir}/usr/src/rtpengine-${pkgver}/"
+  local dkms_dir="${pkgdir}/usr/src/rtpengine-${pkgver}"
+  install -dm755 "${dkms_dir}"
+
+  # Install dkms.conf
+  install -Dm644 dkms.conf "${dkms_dir}/dkms.conf"
+  
+  # Install kernel module sources and Makefile
+  install -Dm644 kernel-module/Makefile "${dkms_dir}/Makefile"
+  install -Dm644 kernel-module/*.{inc,c,h} -t "${dkms_dir}/"
+  
   # Install patched gen-rtpengine-kmod-flags script
-  install -Dm755 kernel-module/gen-rtpengine-kmod-flags \
-    "${pkgdir}/usr/src/rtpengine-${pkgver}/gen-rtpengine-kmod-flags"
+  install -Dm755 kernel-module/gen-rtpengine-kmod-flags "${dkms_dir}/gen-rtpengine-kmod-flags"
 
   # Install modules-load configuration for automatic loading at boot
+  # Using the nft_rtpengine configuration since iptables is deprecated in v26
   install -Dm644 kernel-module/nft_rtpengine.modules.load.d \
-    "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
+    "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
 }
 
 # vim: set ts=2 sw=2 et:
