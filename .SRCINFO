@@ -1,7 +1,7 @@
 pkgbase = r-rix
 	pkgdesc = Reproducible Data Science Environments with 'Nix'
 	pkgver = 0.18.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rix
 	arch = any
 	license = GPL-3.0-or-later
