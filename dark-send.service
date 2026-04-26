@@ -1,0 +1,14 @@
+[Unit]
+Description=Daemon for dark-send
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -m dark_send.daemon
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
