@@ -1,6 +1,6 @@
 # Maintainer: jaoppb <joaopedroperes06@gmail.com>
 pkgname=cranky-git
-pkgver=0.3.0.rX.gYYYYYYY
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A minimalist, performant, and modular bar for Hyprland (git version)"
 arch=('x86_64' 'aarch64')
