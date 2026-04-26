@@ -1,6 +1,6 @@
 pkgbase = marker-enhanced-bin
 	pkgdesc = Markdown editor with Mermaid 10.9, batch PDF export, dark mode, and security fixes (prebuilt binary)
-	pkgver = 2024.04.25
+	pkgver = 2026.04.25
 	pkgrel = 1
 	url = https://github.com/alfonsodg/Marker
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = marker-enhanced-bin
 	conflicts = marker
 	conflicts = marker-git
 	conflicts = marker-enhanced-git
-	source = https://github.com/alfonsodg/Marker/releases/download/v2024.04.25/marker-enhanced-2020.04.04.r43-x86_64.tar.gz
-	sha256sums = f2baf5253756144252cb434ab0de77733127c83f2d40b297b124cd49c227e28f
+	source = https://github.com/alfonsodg/Marker/releases/download/v2026.04.25/marker-enhanced-2026.04.25-x86_64.tar.gz
+	sha256sums = 1040409437fcfdd8bf440aff961da686d20be39711f816879e8ae1dd805f5bda
 
 pkgname = marker-enhanced-bin
