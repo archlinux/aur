@@ -2,7 +2,7 @@
 pkgname=cornelsen-offline-lernen-bin
 pkgver=37.10.2
 # App version 2026.6.1 from 2026-03-26
-pkgrel=3
+pkgrel=4
 pkgdesc="Cornelsen Offline Lernen Electron App"
 arch=('x86_64')
 url="https://www.cornelsen.de"
