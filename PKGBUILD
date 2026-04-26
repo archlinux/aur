@@ -6,11 +6,11 @@ _pname=OpenSCQ30
 _powner=Oppzippy
 _pkgid=com.oppzippy.$_pname
 _deps_common=('libdbus-1.so' 'libsqlite3.so' 'libsystemd.so')
-_deps_gui=('cosmic-icon-theme')
+_deps_gui=('cosmic-icon-theme' 'libxkbcommon.so')
 
 pkgbase=openscq30
 pkgname=("$pkgbase"-{cli,gui})
-pkgver=2.6.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Cross platform application for controlling settings of Soundcore headphones"
 arch=(x86_64 aarch64 armv7l)
@@ -20,9 +20,9 @@ groups=("$pkgbase")
 makedepends=('cargo')
 depends=("${_deps_common[@]}" "${_deps_gui[@]}")
 source=("$_pname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('2b85c43b31c47532f9816e43809d00ab')
-sha512sums=('288293a26c735a06d44f30182bf4d84a931bc55d495c6ca0a93418adc0885de0cdbd4195ff4702e8a67e5b30db12a89ad30bb1bb6c53cc13fab32ba6f4a76be9')
-b2sums=('ead0e5e05803627a4fac2680bed6bda91bc93a3d8a75f0f9245841e3800097e30efc79b1888781a11f793473150702091e956eb50575267a0e2f02f3436ae992')
+md5sums=('ca0249126a9b1810aae58bae5f4582c4')
+sha512sums=('bac2f2b59f1cb4177936a06d97731b2a92b4a92e17f680b792b5752666491c1f01385b22bdc91886f6e942f2bc1a97372517ec7fd8d39883bb2cd1e443d48626')
+b2sums=('d2ba4fc0ef9745e0118a6d746684fcf7f17717073f441b722c7b5a8f1b10f2689ce16a8f1d4422264eedcaceeeb5f11ce901f1756154640ccaf60be17cd0cf27')
 
 prepare() {
 	cd "$srcdir/$_pname-$pkgver"
