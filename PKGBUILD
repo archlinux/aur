@@ -1,23 +1,23 @@
-# Maintainer: t3kk3n <corp[at]hush[dot]ai>
+# Contributor: t3kk3n <corp[at]hush[dot]ai>
 # Contributor: Bakasura <bakasura[at]protonmail[dot]ch>
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=fatx
-pkgver=1.17
-pkgrel=2
+pkgver=1.19
+pkgrel=1
 pkgdesc="XBox filesystem support for linux"
-arch=('any')
-url="http://sourceforge.net/projects/fatx/"
-license=('GPL')
-provides=($pkgname)
+arch=('x86_64')
+url="https://sourceforge.net/projects/fatx"
+license=('GPL-3.0-or-later')
 makedepends=('boost' 'cmake' 'doxygen' 'graphviz')
-depends=('fuse' 'boost-libs' 'libboost_program_options.so')
-source=("http://downloads.sourceforge.net/project/fatx/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('533b1a40d9fe0e7038d0ad8a461624c01cd0bc7c52a79cdc9293db0fcc1b4e25')
+depends=('fuse3' 'boost-libs')
+source=("$url/files/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('5cc962ffeef1b67c5e8aebad523693de1fbb0380c386872921d05d07faced12f')
 
 build() {
     sed -i 's/SBIN/BIN/g' "${srcdir}/CMakeLists.txt"
     sed -i 's/sbin/bin/g' "${srcdir}/CMakeLists.txt"
-    cmake -B build -S "$srcdir" -DCMAKE_BUILD_TYPE='None' -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev
+    cmake -B build -S "$srcdir" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev
     cmake --build build
 }
 
@@ -26,5 +26,6 @@ check() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install build --prefix /usr
+    install man8/*.gz "$pkgdir/usr/share/man/man8"
 }
