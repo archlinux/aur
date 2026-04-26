@@ -1,11 +1,13 @@
 pkgbase = mxlauncher-bin
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://10.65.185.180
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = custom
+	source = icon.jpg::http://10.65.185.180/icon.jpg
+	sha256sums = SKIP
 	source_x86_64 = mxlauncher::http://10.65.185.180/api/launcher/download/linux-x64
 	sha256sums_x86_64 = SKIP
 	source_aarch64 = mxlauncher::http://10.65.185.180/api/launcher/download/linux-arm64
