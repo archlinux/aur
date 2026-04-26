@@ -10,7 +10,7 @@ pkgbase = headson
 	depends = libgcc
 	depends = zlib
 	provides = hson
-	source = headson-0.17.0.tgz::https://github.com/kantord/headson/archive/refs/tags/headson-v0.17.0.tar.gz
-	sha256sums = 9555186f0f79a8be725aec6a3d857ae6d2b58133e060b0b7eeeeb85715284dbf
+	source = headson-0.17.0.crate::https://crates.io/api/v1/crates/headson/0.17.0/download
+	sha256sums = 66b4c69555ead9d88886861ce52aa1c15200c72999070d3bdc1b7a2772e0ea39
 
 pkgname = headson
