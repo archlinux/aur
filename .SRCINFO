@@ -1,6 +1,6 @@
 pkgbase = netbird-dashboard
 	pkgdesc = This project is the UI for NetBird's Management service.
-	pkgver = 2.36.0
+	pkgver = 2.37.1
 	pkgrel = 1
 	url = https://github.com/netbirdio/dashboard
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = netbird-dashboard
 	makedepends = nodejs
 	makedepends = npm
 	optdepends = nginx: reverse-proxy
-	source = netbird-dashboard-2.36.0.tar.gz::https://github.com/netbirdio/dashboard/archive/refs/tags/v2.36.0.tar.gz
-	sha512sums = 65def9cb894d026b22ee59eddd99a7e1e5c16703cb1c790be9eee7b2c914f024c7c26fb3acf35eb02889f05d2cb1e357371b2f4bdde8594fb3b477a8be2149b6
+	source = netbird-dashboard-2.37.1.tar.gz::https://github.com/netbirdio/dashboard/archive/refs/tags/v2.37.1.tar.gz
+	sha512sums = 7f74b205d9b9febf85512074fe3c1470f84869c99f8d5bdac626f849e59ee105cf528b9e3dd223d0c209d6a64bc3392d3096ac4b7fb64ed50e7c79738cdcd24c
 
 pkgname = netbird-dashboard
