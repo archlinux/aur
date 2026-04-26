@@ -1,13 +1,13 @@
 pkgbase = omarchy-emacs
 	pkgdesc = Emacs integration for Omarchy with automatic theme and font syncing
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/scottjones/omarchy-emacs
 	arch = any
 	license = MIT
 	depends = emacs-wayland
 	depends = bash
-	source = omarchy-emacs-1.8.1.tar.gz::https://github.com/scottjones/omarchy-emacs/archive/refs/tags/v1.8.1.tar.gz
-	sha256sums = fe753b0a3110f2e92b2dae21c587593314b7d27625034711db5c220e030188e7
+	source = omarchy-emacs-1.8.2.tar.gz::https://github.com/scottjones/omarchy-emacs/archive/refs/tags/v1.8.2.tar.gz
+	sha256sums = 258cf3339d8e61fbe3e6abb60beb94f9d5d4a0cb58ab9bb7740c055ed6f0bb1d
 
 pkgname = omarchy-emacs

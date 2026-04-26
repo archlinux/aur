@@ -1,6 +1,6 @@
 # Maintainer: Scott Jones <scottajones@gmail.com>
 pkgname=omarchy-emacs
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Emacs integration for Omarchy with automatic theme and font syncing"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/scottjones/omarchy-emacs"
 license=('MIT')
 depends=('emacs-wayland' 'bash')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fe753b0a3110f2e92b2dae21c587593314b7d27625034711db5c220e030188e7')
+sha256sums=('258cf3339d8e61fbe3e6abb60beb94f9d5d4a0cb58ab9bb7740c055ed6f0bb1d')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -18,8 +18,7 @@ package() {
   install -Dm644 config/init.el "$pkgdir/usr/share/omarchy-emacs/config/init.el"
   install -Dm644 config/omarchy.el "$pkgdir/usr/share/omarchy-emacs/config/omarchy.el"
   install -Dm644 config/shell-bashrc "$pkgdir/usr/share/omarchy-emacs/config/shell-bashrc"
-  install -Dm644 config/themes/omarchy-dark-theme.el "$pkgdir/usr/share/omarchy-emacs/config/themes/omarchy-dark-theme.el"
-  install -Dm644 config/themes/omarchy-light-theme.el "$pkgdir/usr/share/omarchy-emacs/config/themes/omarchy-light-theme.el"
+  install -Dm644 config/themes/omarchy-theme.el "$pkgdir/usr/share/omarchy-emacs/config/themes/omarchy-theme.el"
 
   # Install color template
   install -Dm644 omarchy-colors.el.tpl "$pkgdir/usr/share/omarchy-emacs/omarchy-colors.el.tpl"
