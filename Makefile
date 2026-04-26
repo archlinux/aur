@@ -1,6 +1,7 @@
 # vim: ts=4 sw=4 noet
 
-BUILD	= makepkg --log --syncdeps --rmdeps --check
+BUILD	= @makepkg --log --syncdeps --rmdeps --check
+BFAIL	= echo >&2 Did you install AUR package "python-flask-sqlalchemy-lite" first?
 NAME	= $(shell awk -F '"' '/^pkgname=/ {print $$2}' PKGBUILD)
 
 define usage
@@ -19,7 +20,7 @@ Available make targets:
 
 endef
 
-.PHONY:	build clean help install janitor mrproper pc remove shc verify
+.PHONY:	build clean help install janitor mrproper pc remove verify
 
 help:
 	$(info $(usage))
@@ -43,16 +44,13 @@ pc:
 	make .SRCINFO
 
 build:	PKGBUILD
-	$(BUILD)
+	$(BUILD) || $(BFAIL)
 
 install:	PKGBUILD
-	$(BUILD) --install
+	$(BUILD) --install || $(BFAIL)
 
 remove:
 	@echo -e "# Run the following only if you are certain:\nsudo pacman -Rs $(NAME)"
 
 janitor:	.gitignore .SRCINFO
 	sort -o $< $<
-
-shc:	PKGBUILD *.sh
-	shcare $^ || shellcheck $^

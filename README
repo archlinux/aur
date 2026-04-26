@@ -1,2 +1,6 @@
-Run "make" without arguments to display a list of available targets.
+Step 1: Install https://aur.archlinux.org/packages/python-flask-sqlalchemy-lite
+first. As of April 2026, "makepkg" does not resolve dependencies between AUR
+packages automatically.
+
+Step 2: Run "make" without arguments to display a list of available targets.
 For the impatient: "make install" is probably what you want.

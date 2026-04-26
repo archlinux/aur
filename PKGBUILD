@@ -3,14 +3,14 @@
 # shellcheck shell=bash disable=2034
 
 pkgname="automx2"
-pkgver="2026.1"
-pkgrel=2
+pkgver="2026.2"
+pkgrel=1
 pkgdesc="Mail User Agent (email client) configuration made easy"
 backup=("etc/automx2/automx2.conf")
 depends=("python"
+	"python-asgiref"
 	"python-flask"
-	"python-flask-migrate"
-	"python-flask-sqlalchemy>=3.1.1"
+	"python-flask-sqlalchemy-lite"
 	"python-ldap3"
 	"python-sqlalchemy>=2.0.31")
 makedepends=("grep" "python-build" "python-installer")
@@ -19,7 +19,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}
 	"automx2.service"
 	"automx2.sysusers"
 	"automx2.tmpfiles")
-b2sums=('fe0a363bfbdddb3ad5cf1b06bdc8c15767d985258728b529dfa6c1df2d47a8f31de2f8eb7d7123dd710d5b73899a03bf206493b93d00d72b37705a8a4fd5950c'
+b2sums=('c79923dae82c5d3c4abc79c71b7be168534027a01e395d72e4854f9123c870a2da64de0dcb9ebe1f059477c7569d6b129f79a92baf534c9fabaebb4599164b3f'
 	'e7afbacc9166556323f1c46f7bf65a906725cfce31f774f5bd47a5ab32102dacfd318c65c8524cf963918178097f8643b597c72db9514e131ee35d21e05240ce'
 	'b542063ed441dbcfb6c23a8bec997177176d102f9e97bb1d6f97ad84b8f9336ee14556138fc24b24d9ee4a21700b7e4cceb99e53f3cb0201590f489d718f8163'
 	'711dfeffbb4f10a323b6cd2a375e00f9b012598a94918baf036373b259ac416833a2a8143107209be5009a7550c40cbf9d3cab98cf89a8a628e112d9fb12dff6'
