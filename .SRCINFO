@@ -1,7 +1,7 @@
 pkgbase = unitfy
 	pkgdesc = Command-line unit conversion utility (temperature, length, volume, pressure)
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jonleithe/unitfy
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = unitfy
 	makedepends = gcc
 	depends = readline
 	depends = gcc-libs
-	source = unitfy-1.0.2-3.tar.gz::https://github.com/jonleithe/unitfy/archive/33930af0a88952b3ea83ed0bdb37c23559315c8e.tar.gz
-	sha256sums = e5d5b0a005c1b1f753b8363d9e71978f650e83bcdc59eb15f7b8b0d6798216f3
+	source = unitfy-1.0.2-4.tar.gz::https://github.com/jonleithe/unitfy/archive/490c4a0330c8f7d6c14774cfbc3f1b9751e81aa2.tar.gz
+	sha256sums = d3238a3c7d5c136010b7bbb0b44cad408d4a744bc12af47183efac6b5f7c8ad8
 
 pkgname = unitfy
