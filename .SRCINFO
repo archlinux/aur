@@ -1,5 +1,5 @@
 pkgbase = bitshrinker
-	pkgdesc = A simple and powerful CLI tool for creating TCP tunnels
+	pkgdesc = Desktop GUI app for compressing videos and images to a target file size
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Strawberry-Foundations/bitshrinker

@@ -3,7 +3,7 @@
 pkgname=bitshrinker
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A simple and powerful CLI tool for creating TCP tunnels"
+pkgdesc="Desktop GUI app for compressing videos and images to a target file size"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Strawberry-Foundations/bitshrinker"
 license=('GPL-3.0-or-later')
