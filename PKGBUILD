@@ -1,10 +1,10 @@
 # Maintainer: Hornfisk <hornfisk@users.noreply.github.com>
 pkgname=slammer
-pkgver=0.4.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Three-layer synthesized kick drum plugin (VST3, CLAP, Standalone)"
 arch=('x86_64')
-url="https://github.com/Hornfisk/slammer"
+url="https://github.com/hyperfocusdsp/slammer"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'libxcb' 'libx11' 'libxcursor' 'libxrandr' 'libxi' 'freetype2' 'fontconfig' 'alsa-lib' 'gtk3')
 makedepends=('cargo' 'pkgconf')
@@ -12,8 +12,8 @@ optdepends=(
   'pipewire-jack: low-latency standalone audio backend'
 )
 provides=('slammer-vst3' 'slammer-clap' 'slammer-standalone')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Hornfisk/slammer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hyperfocusdsp/slammer/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c4e21b127e22c3b3473369495adfd9884f2ec685fe2a9321ca2795eb45e1a0b9')
 
 prepare() {
   cd "$pkgname-$pkgver"

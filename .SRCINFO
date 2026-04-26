@@ -1,8 +1,8 @@
 pkgbase = slammer
 	pkgdesc = Three-layer synthesized kick drum plugin (VST3, CLAP, Standalone)
-	pkgver = 0.4.3
+	pkgver = 0.6.0
 	pkgrel = 1
-	url = https://github.com/Hornfisk/slammer
+	url = https://github.com/hyperfocusdsp/slammer
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
@@ -22,7 +22,7 @@ pkgbase = slammer
 	provides = slammer-vst3
 	provides = slammer-clap
 	provides = slammer-standalone
-	source = slammer-0.4.3.tar.gz::https://github.com/Hornfisk/slammer/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = SKIP
+	source = slammer-0.6.0.tar.gz::https://github.com/hyperfocusdsp/slammer/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = c4e21b127e22c3b3473369495adfd9884f2ec685fe2a9321ca2795eb45e1a0b9
 
 pkgname = slammer
