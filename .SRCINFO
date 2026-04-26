@@ -1,0 +1,13 @@
+pkgbase = bt
+	pkgdesc = Interactive tree-like terminal file manager
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/LeperGnome/bt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = bt-1.2.2.tar.gz::https://github.com/LeperGnome/bt/archive/refs/tags/v1.2.2.tar.gz
+	b2sums = 781dd37a0a28d56aaff80c0757a22a8c8d46d2f1db38689383bbe517ded3e4bbaa7cc537912488f97a7ea7c41886c699ee192633364ac382c8a8c0a3d7e40a84
+
+pkgname = bt
