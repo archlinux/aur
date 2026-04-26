@@ -1,4 +1,4 @@
-[kitchenowl]
+[kitchenowl-bin]
 source = "github"
 github = "TomBursch/kitchenowl"
 use_latest_release = true
