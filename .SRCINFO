@@ -1,6 +1,6 @@
 pkgbase = hydra-launcher-bin
 	pkgdesc = Hydra Launcher is an open-source gaming platform created to be the single tool that you need in order to manage your gaming library.
-	pkgver = 3.9.5
+	pkgver = 3.9.6
 	pkgrel = 1
 	url = https://github.com/hydralauncher/hydra
 	arch = x86_64
@@ -35,9 +35,9 @@ pkgbase = hydra-launcher-bin
 	depends = zlib
 	provides = hydra-launcher
 	options = !strip
-	source = https://github.com/hydralauncher/hydra/releases/download/v3.9.5/hydralauncher_3.9.5_amd64.deb
-	source = hydra-launcher-bin-LICENSE::https://github.com/hydralauncher/hydra/raw/refs/tags/v3.9.5/LICENSE
-	sha256sums = 00cec8a7148a87a6a4066855fdbc30900ea87233e8e68b9243b180e2fd0a22a4
-	sha256sums = 32619612c2e0223e86c4908747ec14bef64c3c423fee80910c1aa944769b66f9
+	source = https://github.com/hydralauncher/hydra/releases/download/v3.9.6/hydralauncher_3.9.6_amd64.deb
+	source = hydra-launcher-bin-LICENSE::https://github.com/hydralauncher/hydra/raw/refs/tags/v3.9.6/LICENSE
+	sha256sums = 13d41129bdc3229c2e538c2afc26424ba0015bc30271c6ad2eff0d4fc593635a
+	sha256sums = 63e5ec77ccd17a29d222f4de72fbab287773d8e7d63939bab60bd67d744e40b4
 
 pkgname = hydra-launcher-bin
