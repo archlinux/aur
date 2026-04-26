@@ -1,6 +1,6 @@
 # Maintainer: fibsussy <fibsussy@tuta.io>
 pkgname=crosshair-maker
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Crosshair overlay creator with SVG rendering and preview"
 arch=('x86_64' 'aarch64')
