@@ -1,6 +1,6 @@
 pkgbase = wflow
 	pkgdesc = A workflow engine for Wayland automation — Shortcuts-style GUI + CLI
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/cushycush/wflow
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = wflow
 	optdepends = wl-clipboard: clipboard via wl-copy
 	optdepends = xdg-desktop-portal: input via libei portal + Record Mode
 	options = !lto
-	source = wflow-0.3.10.tar.gz::https://github.com/cushycush/wflow/archive/v0.3.10.tar.gz
-	sha256sums = d00c15512feb626273653cf60d4b891cfbe6f7745d2a1a87dc186c0b0a7916b4
+	source = wflow-0.3.11.tar.gz::https://github.com/cushycush/wflow/archive/v0.3.11.tar.gz
+	sha256sums = c6fc28ff8160aebbdf11efbef8bd98443a4df818710da7075d3b884520b3380b
 
 pkgname = wflow
