@@ -91,11 +91,6 @@ prepare() {
   # stb
   sed -i "s#^url =.*#url = file://$srcdir/subprojects|stb#" subprojects/stb.wrap
   meson subprojects download stb glm
-
-  # temporary fix
-  msg2 'Applying temporary fix for wlroots'
-  curl -L https://gist.github.com/Billli11/d9e45819b87dbe82469fe2492492aff7/raw/1b3cd4aa948f0a184b063d6e6839d833b871bd81/diff.patch | \
-    patch -d "subprojects/wlroots" -Np1
 }
 
 #pkgver() {
