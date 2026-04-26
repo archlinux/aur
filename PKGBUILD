@@ -23,7 +23,7 @@ source=(
     "wavelog_icon_only.png"
 )
 sha256sums=('SKIP'
-            'ac05b6e3429c8b81b8ea3963da90581c305cbf6550188f13e5cfd11b09b91632'
+            '1f42c3eedc034ef363388224d05284b686ba94769650e1a2359f304c849197cb'
             '593e1c6e902130d0c911e34f5d26f1e4d2703327b814c94ae82be04e1c2d80bb'
             'aa5da810c4c84cbde4b79445e2fb1195c61d4f9b5c85eafa4bc2867b3d16a39d')
 
