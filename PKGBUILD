@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-frei0r-plugins
 _pkgname=frei0r-plugins
-pkgver=3.1.1
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='Collection of video effect plugins (mingw-w64)'
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(
   git
 )
 source=("git+https://github.com/dyne/frei0r#tag=v$pkgver")
-b2sums=('7045725c25d1ebe346e63a2752e377ffad75b0b7ec283c884804cd16cf9e31cf60b064a49d39c5af41279717ab2676e947d1b1ebe046d81a04abbc73e27621b1')
+b2sums=('fdc376ef13f622bcc8880cb0581c1f2bdf67f949d40f173f10fe4347762b0d62787bc0328c8cb8a766701272c584abe3b9043efdc6d8bee29d123fe67b07bfab')
 validpgpkeys=(6113D89CA825C5CEDD02C87273B35DA54ACB7D10) # Denis Roio (Jaromil)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
