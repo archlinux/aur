@@ -2,7 +2,7 @@
 # Maintainer: Dominik Zarsky <dzarsky@dzarsky.eu>
 
 pkgname='ignoreinit-bin'
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A tool for creating .gitignore files from the command line'
 url='https://github.com/Loupeznik/ignoreinit'
@@ -12,10 +12,10 @@ provides=('ignoreinit')
 conflicts=('ignoreinit')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Loupeznik/ignoreinit/releases/download/v${pkgver}/ignoreinit_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('8e9537f9390d0d47467fb9fafca2ecd0b1eefec844edd10ffc608a127e2d28a2')
+sha256sums_aarch64=('5e0fada0918d63a3ef990c9d5717d57cc8a3af895ddae45338e7a5c716e4219c')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Loupeznik/ignoreinit/releases/download/v${pkgver}/ignoreinit_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('966f4f68b8eee19c8d90be54c18cca156ffaf9b838717695afd65e8181a10def')
+sha256sums_x86_64=('55125459890e9b91bee860f8124fc366a695f309ba0f43f78857f909ef7c249d')
 
 package() {
   install -Dm755 "./ignoreinit" "${pkgdir}/usr/bin/ignoreinit"
