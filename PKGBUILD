@@ -2,7 +2,7 @@
 # Maintainer: elpdev <noreply@github.com>
 
 pkgname='bubbleplate-bin'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Opinionated generator for Go terminal UI projects built with the Charm stack'
 url='https://github.com/elpdev/bubbleplate'
@@ -12,10 +12,10 @@ provides=('bubbleplate')
 conflicts=('bubbleplate')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/elpdev/bubbleplate/releases/download/v${pkgver}/bubbleplate_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('a239ac2efa776418b25d0765a4210548309edc0ebb4d9057e6de479fab2922be')
+sha256sums_aarch64=('cb01f698505ffa4e7197b9f3c1adf075831c487961a864c40bb001f42310fada')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/elpdev/bubbleplate/releases/download/v${pkgver}/bubbleplate_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('837405b6d4a35ab8597065fcbf597e203ba4e47af0de601658390c13525c7a28')
+sha256sums_x86_64=('96aed6626771ed64b9c6ce3478fba9348d355daef1eb1570b348bf19ce7a9de1')
 
 package() {
   install -Dm755 bubbleplate "${pkgdir}/usr/bin/bubbleplate"
