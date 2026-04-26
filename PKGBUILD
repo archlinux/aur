@@ -1,5 +1,6 @@
 pkgname=zsh-patina-git
-pkgver=1.2.0.r0.g018f978
+_pkgname=${pkgname%-git}
+pkgver=1.5.1.r2.gc1c003b
 pkgrel=1
 pkgdesc='A blazingly fast Zsh syntax highlighter'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -7,8 +8,8 @@ url="https://github.com/michel-kraemer/zsh-patina"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
-provides=("${pkgname%-git}=${pkgver%.r*}")
-conflicts=("${pkgname%-git}")
+provides=("${_pkgname}=${pkgver%.r*}")
+conflicts=("${_pkgname}")
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
@@ -26,10 +27,12 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   cd "$pkgname"
   cargo build --release
+  "./target/release/$_pkgname" completion > "_$_pkgname"
 }
 
 package() {
   cd "$pkgname"
-  install -D -t "$pkgdir/usr/bin" target/release/zsh-patina
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dm644 "_$_pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
