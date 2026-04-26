@@ -2,8 +2,8 @@
 
 pkgname=openpnp
 _pkgname=OpenPnP
-pkgver=2025_02_02_20_41_38.e468422
-_pkgver=2025-02-02_20-41-38.e468422
+pkgver=2.6_2026_03_01_12_37_59
+_pkgver=2.6_2026-03-01_12-37-59.5bd404c
 pkgrel=1
 pkgdesc="Open Source SMT Pick and Place Hardware and Software"
 arch=('arm64' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 source=("OpenPnP-${_pkgver}.tar.gz"::"https://openpnp.s3-us-west-2.amazonaws.com/main/${_pkgver}/OpenPnP-unix-main.tar.gz"
         "OpenPnP.desktop"
         "OpenPnP.png")
-sha256sums=('4320e923565a07c01dc02c828bccaca01713bbe03c0eebdc149df89e3b8763ca'
+sha256sums=('3950df2d39f52c501d2bd3d663c5044d769b55c83f5cbbc3909726c3f6cb8cac'
             '7658037d685d39b77383e5fa9aef9946a6fffa8c95c7d2b3b0732065ddc15bb4'
             '077cb8d431a443ee67636ed8454f4637042d462a6934c78f739a66abeb288176')
 
