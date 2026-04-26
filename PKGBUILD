@@ -1,19 +1,20 @@
 # Maintainer: jonleithe
 pkgname=unitfy
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line unit conversion utility (temperature, length, volume, pressure)"
 arch=('x86_64')
-url="https://github.com/jonleithe/delta"
+url="https://github.com/jonleithe/unitfy"
 license=('MIT')
 depends=('readline' 'gcc-libs')
 makedepends=('cmake' 'ninja' 'gcc')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jonleithe/delta/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4f430a15a3ae3fa37668af8f47bf088849a579b723874a3feac6a71de616d508')
+_commit='3bf5e85968741370d187e81e7e6a0b7fd798c2dc'
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('ac8922ff8bf1c8bb460d6a5509eb1b0a231301fdfd3c91286e05a4445953f6c0')
 
 build() {
     cmake \
-        -S "delta-$pkgver" \
+        -S "$pkgname-$_commit" \
         -B build \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
@@ -24,7 +25,7 @@ build() {
 
 check() {
     cmake \
-        -S "delta-$pkgver" \
+        -S "$pkgname-$_commit" \
         -B build-test \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
@@ -37,7 +38,7 @@ check() {
 package() {
     DESTDIR="$pkgdir" cmake --install build
 
-    install -Dm644 "delta-$pkgver/LICENSE" \
+    install -Dm644 "$pkgname-$_commit/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     ln -sf unitfy "$pkgdir/usr/bin/uc"
