@@ -2,7 +2,7 @@
 # Contributor: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: tee < teeaur at duck dot com >
 pkgname=git-annex-standalone
-pkgver=10.20260213
+pkgver=10.20260420
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency."
 arch=(x86_64 aarch64)
