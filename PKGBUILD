@@ -1,7 +1,7 @@
 # Maintainer: Julian Corbet <julian.corbet@gmail.com>
 pkgname=dotkeeper-git
 _gitname=dotkeeper
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="P2P file sync with git history — embedded Syncthing + staggered git auto-backup (bleeding-edge, builds from main)"
 arch=('x86_64' 'aarch64')
