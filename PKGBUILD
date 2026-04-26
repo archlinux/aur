@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 # note: this also depends on libcosmos, to be installed manually from AUR as well
 depends=('glibc' 'gcc-libs' 'libcosmos' 'libx11')
 makedepends=('scons')
-# retrieve key for verification from PGP keyserver, or from gibhub.com/gerstner-hub.gpg
+# retrieve key for verification from PGP keyserver, or from github.com/gerstner-hub.gpg
 validpgpkeys=('40C89F006FB8A328B83A37CC14AD6F6579097284')
 
 pkgver() {
