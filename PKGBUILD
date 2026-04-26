@@ -1,7 +1,7 @@
 # Maintainer: Mahmud <your@email.com>
 pkgname=ibus-engine-bangla-google
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bangla phonetic input engine for IBus using Google Input Tools"
 arch=('any')
 url="https://github.com/shahratin/bangla-google-ibus"
