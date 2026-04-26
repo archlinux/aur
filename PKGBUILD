@@ -3,7 +3,7 @@
 # Maintainer: Ranjith Hegde <mayafluxcollective@proton.me>
 
 pkgname=mayaflux-dev-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=2
 pkgdesc="MayaFlux development build - A modern C++ framework for real-time graphics and audio"
 arch=('x86_64' 'aarch64')
@@ -34,6 +34,7 @@ depends=(
     'libutf8proc'
     'freetype2'
     'fontconfig'
+    'nlohmann-json'
 )
 makedepends=(
     'git'
