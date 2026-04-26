@@ -1,0 +1,17 @@
+pkgbase = cvr-melon-assistant
+	pkgdesc = Mod manager for ChilloutVR using MelonLoader — unofficial Linux port
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ShiroBlank/CVRMelonAssistantLinux
+	arch = x86_64
+	license = CC-BY-NC-4.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gtk4
+	depends = openssl
+	depends = hicolor-icon-theme
+	source = cvr-melon-assistant-1.2.0.tar.gz::https://github.com/ShiroBlank/CVRMelonAssistantLinux/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = cvr-melon-assistant
