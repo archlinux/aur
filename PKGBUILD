@@ -18,7 +18,7 @@ makedepends=(
     'cargo'
     'pkgconf'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ShiroBlank/CVRMelonAssistantLinux/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ShiroBlank/CVRMelonAssistantLinux/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('fb14743c009b3bd73ff9e563921abd273d8a7916f8c6b68f0881dc692c9bd581')
 
 # If you want to build from the latest commit instead of a tag, use:
