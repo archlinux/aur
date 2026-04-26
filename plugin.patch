@@ -1,9 +1,11 @@
---- a/gui/src/OCPNPlatform.cpp
-+++ b/gui/src/OCPNPlatform.cpp
-@@ -1321,6 +1321,30 @@ void OCPNPlatform::SetDefaultOptions(void) {
-     pConfig->SetPath(_T ( "/Settings/WMM" ));
-     pConfig->Write(_T ( "ShowIcon" ), true);
-     pConfig->Write(_T ( "ShowLiveIcon" ), true);
+diff --git a/gui/src/ocpn_platform.cpp b/gui/src/ocpn_platform.cpp
+index 5d6a89cff..857f4d7cc 100644
+--- a/gui/src/ocpn_platform.cpp
++++ b/gui/src/ocpn_platform.cpp
+@@ -1248,6 +1248,31 @@ void OCPNPlatform::SetDefaultOptions() {
+     pConfig->SetPath("/Settings/WMM");
+     pConfig->Write("ShowIcon", true);
+     pConfig->Write("ShowLiveIcon", true);
 +
 +    pConfig->SetPath(_T ( "/PlugIns/libcelestial_navigation_pi.so" ));
 +    pConfig->Write(_T ( "bEnabled" ), true);
@@ -28,37 +30,20 @@
 +
 +    pConfig->SetPath(_T ( "/PlugIns/libweather_routing_pi.so" ));
 +    pConfig->Write(_T ( "bEnabled" ), true);
++
    }
  #endif
  
---- a/model/src/plugin_loader.cpp
-+++ b/model/src/plugin_loader.cpp
-@@ -559,17 +559,17 @@ bool PluginLoader::LoadPluginCandidate(const wxString& file_name,
-   if (!base_plugin_path.EndsWith(wxFileName::GetPathSeparator()))
-     base_plugin_path += wxFileName::GetPathSeparator();
+diff --git a/model/src/config_vars.cpp b/model/src/config_vars.cpp
+index c501c2962..191e0e28c 100644
+--- a/model/src/config_vars.cpp
++++ b/model/src/config_vars.cpp
+@@ -27,7 +27,7 @@
+ #include "model/config_vars.h"
+ #include "config.h"
  
--  if (!g_bportable) {
--    if (base_plugin_path.IsSameAs(plugin_file_path)) {
--      if (!IsSystemPluginPath(file_name.ToStdString())) {
--        DEBUG_LOG << "Skipping plugin " << file_name << " in "
--                  << g_BasePlatform->GetPluginDir();
--
--        ClearLoadStamp(plugin_loadstamp.ToStdString());  // Not a fatal error
--        return false;
--      }
--    }
--  }
-+  // if (!g_bportable) {
-+  //   if (base_plugin_path.IsSameAs(plugin_file_path)) {
-+  //     if (!IsSystemPluginPath(file_name.ToStdString())) {
-+  //       DEBUG_LOG << "Skipping plugin " << file_name << " in "
-+  //                 << g_BasePlatform->GetPluginDir();
-+  //
-+  //       ClearLoadStamp(plugin_loadstamp.ToStdString());  // Not a fatal error
-+  //       return false;
-+  //     }
-+  //   }
-+  // }
- 
-   if (!IsSystemPluginPath(file_name.ToStdString()) && safe_mode::get_mode()) {
-     DEBUG_LOG << "Skipping plugin " << file_name << " in safe mode";
+-bool g_allow_arb_system_plugin = false;
++bool g_allow_arb_system_plugin = true;
+ bool g_always_send_rmb_rmc = false;
+ bool g_bAISRolloverShowClass = false;
+ bool g_bAISRolloverShowCOG = false;
