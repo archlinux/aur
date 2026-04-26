@@ -11,9 +11,9 @@ pkgbase = blogtato
 	depends = libgcc
 	depends = libgit2
 	depends = openssl
-	optdepends = jq
+	depends = jq
 	provides = blog
-	source = blogtato-0.1.23.tgz::https://github.com/kantord/blogtato/archive/refs/tags/v0.1.23.tar.gz
-	sha256sums = d6f309ab1112d49b3493fa7f1962f03e60e62449d34ef0b8d71ebc8d3496896e
+	source = blogtato-0.1.23.crate::https://crates.io/api/v1/crates/blogtato/0.1.23/download
+	sha256sums = 5a77dc4a114043a3ff535322fb4126ed17abb634c52e7455150aa44f740b4027
 
 pkgname = blogtato

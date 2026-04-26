@@ -3,8 +3,9 @@
 _appname=blog
 pkgauthor=kantord
 pkgname=blogtato
+_cratename=${pkgname}
 pkgver=0.1.23
-_version=v${pkgver}
+_version=${pkgver}
 pkgrel=1
 pkgdesc="A CLI RSS/Atom feed reader inspired by Taskwarrior"
 
@@ -12,24 +13,23 @@ arch=('x86_64')
 url="https://github.com/${pkgauthor}/${pkgname}"
 license=('Apache-2.0' 'MIT')
 
-depends=('glibc' 'libgcc' 'libgit2' 'openssl')
+depends=('glibc' 'libgcc' 'libgit2' 'openssl' 'jq')
 makedepends=('cargo')
-optdepends=('jq')
 
 provides=("${_appname}")
 
-source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_version}.tar.gz")
-sha256sums=('d6f309ab1112d49b3493fa7f1962f03e60e62449d34ef0b8d71ebc8d3496896e')
+source=("${_cratename}-${_version}.crate::https://crates.io/api/v1/crates/${_cratename}/${_version}/download")
+sha256sums=('5a77dc4a114043a3ff535322fb4126ed17abb634c52e7455150aa44f740b4027')
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+	cd "${_cratename}-${_version}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${_cratename}-${_version}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -37,13 +37,13 @@ build() {
 }
 
 check() {
-	cd "${pkgname}-${pkgver}"
+	cd "${_cratename}-${_version}"
 
 	./target/release/${_appname} --help
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${_cratename}-${_version}"
 
 	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 

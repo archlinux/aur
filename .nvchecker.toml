@@ -1,5 +1,3 @@
 [blogtato]
-source = "github"
-github = "kantord/blogtato"
-use_latest_release = true
-prefix = "v"
+source = "cratesio"
+cratesio = "blogtato"
