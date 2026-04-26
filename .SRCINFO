@@ -1,7 +1,7 @@
 pkgbase = r-treesitter
 	pkgdesc = Bindings to 'Tree-Sitter'
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=treesitter
 	arch = i686
 	arch = x86_64
