@@ -1,5 +1,5 @@
 pkgbase = pv-static
-	pkgdesc = A terminal-based tool for monitoring the progress of data through a pipeline
+	pkgdesc = monitor progress of data through a pipeline
 	pkgver = 1.10.5
 	pkgrel = 2
 	url = https://www.ivarch.com/programs/pv-static.shtml
