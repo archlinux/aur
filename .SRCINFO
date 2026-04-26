@@ -1,14 +1,14 @@
 pkgbase = randfill-bin
 	pkgdesc = Overwrite files with cryptographically secure random data
-	pkgver = 0.1.1.r0.f3f2e71
-	pkgrel = 1
+	pkgver = 0.2.0.r0.0341655
+	pkgrel = 2
 	url = https://github.com/OpenHelloMiddle/RandFill
 	arch = x86_64
-	license = GPL
+	license = MIT
 	provides = randfill
 	conflicts = randfill-git
 	options = !debug
-	source = randfill::https://github.com/OpenHelloMiddle/RandFill/releases/download/0.1.1/RandFill-x86_64-Linux
-	sha256sums = f58890eaa56336ef7907092556578352025975368bcb3eafbae844a560a5a7dc
+	source = randfill::https://github.com/OpenHelloMiddle/RandFill/releases/download/0.2.0/RandFill-x86_64-Linux
+	sha256sums = 600f4611ecfc7cc16b8640a6d2c9295f5f0c7a6603e10b48da96891af08f2d87
 
 pkgname = randfill-bin
