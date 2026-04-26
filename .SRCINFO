@@ -1,0 +1,17 @@
+pkgbase = tack-cli
+	pkgdesc = Install any website as a desktop app on Linux
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/plasmaDestroyer/tack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	depends = gcc-libs
+	provides = tack
+	conflicts = tack
+	source = tack-cli-0.8.0.tar.gz::https://github.com/plasmaDestroyer/tack/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = ad1ad8ebb64c02f3a8007bfb61140ba4017bdba80b07064a3b3b08191f34c7f4
+
+pkgname = tack-cli
