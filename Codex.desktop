@@ -7,3 +7,4 @@ Terminal=false
 Type=Application
 Categories=Development;IDE;
 StartupNotify=true
+StartupWMClass=Codex

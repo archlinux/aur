@@ -104,6 +104,7 @@ fi
 "${electron}" \
   --enable-sandbox \
   --ozone-platform-hint=auto \
+  --class=Codex \
   "${appdir}/resources/app.asar" \
   "$@" &
 electron_pid=$!

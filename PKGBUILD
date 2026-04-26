@@ -3,7 +3,7 @@
 
 pkgname=openai-codex-desktop
 pkgver=26.422.30944
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
@@ -11,7 +11,7 @@ license=('custom')
 
 depends=(
   'electron39'
-  'openai-codex>=0.121.0'
+  'openai-codex'
   'python'
   'hicolor-icon-theme'
   'xdg-utils'
@@ -33,7 +33,7 @@ source=(
   "better-sqlite3.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-${_better_sqlite3_ver}.tgz"
   "node-pty.tgz::https://registry.npmjs.org/node-pty/-/node-pty-${_node_pty_ver}.tgz"
   "codex-desktop.sh"
-  "codex-desktop.desktop"
+  "Codex.desktop"
 )
 
 noextract=(
@@ -46,8 +46,8 @@ sha256sums=(
   '5705b030cbb557c84fd2fdbd7c64693867d17c9c5ff56a3060891ca05d55f852'
   '2602a5726d0a9d8e6be407c59bc125e605110eda8e3b04e7ef8d6ddf762c9122'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
-  '5649a319d0fff30cc003d9298e8af36e1d65e060c29b5046d9213979b503d0b8'
-  '89be393152cc170cbe41fbf53ecd9e6b26e552b8036c637f0b852c7a3ed75b72'
+  '0ad6ffebf054f3289c7ed902e3b486e8dbe215dbd28e941c948e1e485963f1e2'
+  '89e52a28e4fc3ff6b863807497eec5c1942f7afd6e310814f388c8762c7c4937'
 )
 
 prepare() {
@@ -149,6 +149,6 @@ package() {
   install -Dm644 icon/*512x512*.png \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/openai-codex-desktop.png"
 
-  install -Dm644 codex-desktop.desktop \
-    "${pkgdir}/usr/share/applications/codex-desktop.desktop"
+  install -Dm644 Codex.desktop \
+    "${pkgdir}/usr/share/applications/Codex.desktop"
 }
