@@ -1,0 +1,16 @@
+pkgbase = akiflow-bin
+	pkgdesc = Akiflow - Time blocking and task management (unofficial Linux build)
+	pkgver = 2.72.5
+	pkgrel = 1
+	url = https://akiflow.com
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	makedepends = imagemagick
+	makedepends = icoutils
+	makedepends = python
+	depends = electron
+	source = Akiflow-2.72.5.exe::https://download.akiflow.com/builds/Akiflow-2.72.5-7536ef84-x64.exe
+	sha512sums = e4aeadcf7ec8a2a9c46dda84fe59d1cf38898808f891d28f98c73c8e1514d61051f4fa19215774c56c5c297befddefce4f8e55a6ec9bc92ed5d6a8b59c5a155d
+
+pkgname = akiflow-bin
