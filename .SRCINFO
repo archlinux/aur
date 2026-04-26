@@ -1,5 +1,5 @@
 pkgbase = organicmaps
-	pkgdesc = Organic Maps: Offline Hike, Bike, Trails and Navigation
+	pkgdesc = Offline Maps
 	pkgver = 2026.04.07_8
 	pkgrel = 1
 	url = https://organicmaps.app
