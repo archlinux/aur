@@ -1,9 +1,9 @@
 # Maintainer: fluhus
 # Based on Arch's gvfs PKGBUILD by Jan Alexander Steffens, Fabian Bornschein, Jan de Groot
 
-pkgbase=gvfs
+pkgbase=gvfs-googledrive
 pkgname=(
-  gvfs
+  gvfs-googledrive
   gvfs-afc
   gvfs-dnssd
   gvfs-goa
@@ -62,7 +62,6 @@ makedepends=(
   smbclient
   wsdd
 )
-groups=(gnome)
 source=(
   "git+https://gitlab.gnome.org/fluhus/gvfs.git#branch=googledrive"
   gvfsd.hook
@@ -98,7 +97,8 @@ _pick() {
   done
 }
 
-package_gvfs() {
+package_gvfs-googledrive() {
+  pkgdesc="Virtual filesystem implementation for GIO (with Google Drive backend)"
   optdepends=(
     'gvfs-afc: AFC support (Apple mobile devices)'
     'gvfs-dnssd: DNS-SD and WebDAV support (macOS file sharing)'
@@ -111,6 +111,10 @@ package_gvfs() {
     'gvfs-smb: SMB/CIFS support (Windows file sharing)'
     'gvfs-wsdd: Web Services Dynamic Discovery support (Windows discovery)'
   )
+  provides=("gvfs=$pkgver")
+  conflicts=('gvfs')
+  replaces=('gvfs')
+  groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
 
@@ -179,13 +183,16 @@ package_gvfs() {
 package_gvfs-afc() {
   pkgdesc+=" - AFC backend (Apple mobile devices)"
   depends=(
-    "gvfs=$pkgver"
+    "gvfs-googledrive=$pkgver"
     glib2
     glibc
     libimobiledevice
     libplist
     usbmuxd
   )
+  provides=("gvfs-afc=$pkgver")
+  conflicts=('gvfs-afc')
+  replaces=('gvfs-afc')
 
   mv afc/* "$pkgdir"
 }
@@ -193,7 +200,7 @@ package_gvfs-afc() {
 package_gvfs-dnssd() {
   pkgdesc+=" - DNS-SD and WebDAV backend (macOS file sharing)"
   depends=(
-    "gvfs=$pkgver"
+    "gvfs-googledrive=$pkgver"
     avahi
     dconf
     glib2
@@ -201,6 +208,9 @@ package_gvfs-dnssd() {
     libsoup3
     libxml2
   )
+  provides=("gvfs-dnssd=$pkgver")
+  conflicts=('gvfs-dnssd')
+  replaces=('gvfs-dnssd')
 
   mv dnssd/* "$pkgdir"
 }
@@ -208,12 +218,15 @@ package_gvfs-dnssd() {
 package_gvfs-goa() {
   pkgdesc+=" - Gnome Online Accounts backend (e.g. OwnCloud)"
   depends=(
-    "gvfs=$pkgver"
+    "gvfs-googledrive=$pkgver"
     glib2
     glibc
     libgcc
     libgoa
   )
+  provides=("gvfs-goa=$pkgver")
+  conflicts=('gvfs-goa')
+  replaces=('gvfs-goa')
 
   mv goa/* "$pkgdir"
 }
@@ -227,6 +240,9 @@ package_gvfs-google() {
     libgcc
     libgoa
   )
+  provides=("gvfs-google=$pkgver")
+  conflicts=('gvfs-google')
+  replaces=('gvfs-google')
 
   mv google/* "$pkgdir"
 }
@@ -234,13 +250,16 @@ package_gvfs-google() {
 package_gvfs-gphoto2() {
   pkgdesc+=" - gphoto2 backend (PTP camera, MTP media player)"
   depends=(
-    "gvfs=$pkgver"
+    "gvfs-googledrive=$pkgver"
     glib2
     glibc
     libgcc
     libgphoto2
     libgudev
   )
+  provides=("gvfs-gphoto2=$pkgver")
+  conflicts=('gvfs-gphoto2')
+  replaces=('gvfs-gphoto2')
 
   mv gphoto2/* "$pkgdir"
 }
@@ -248,7 +267,7 @@ package_gvfs-gphoto2() {
 package_gvfs-mtp() {
   pkgdesc+=" - MTP backend (Android, media player)"
   depends=(
-    "gvfs=$pkgver"
+    "gvfs-googledrive=$pkgver"
     glib2
     glibc
     libgcc
@@ -256,6 +275,9 @@ package_gvfs-mtp() {
     libmtp
     libusb
   )
+  provides=("gvfs-mtp=$pkgver")
+  conflicts=('gvfs-mtp')
+  replaces=('gvfs-mtp')
 
   mv mtp/* "$pkgdir"
 }
@@ -263,12 +285,15 @@ package_gvfs-mtp() {
 package_gvfs-nfs() {
   pkgdesc+=" - NFS backend"
   depends=(
-    "gvfs=$pkgver"
+    "gvfs-googledrive=$pkgver"
     glib2
     glibc
     libgcc
     libnfs
   )
+  provides=("gvfs-nfs=$pkgver")
+  conflicts=('gvfs-nfs')
+  replaces=('gvfs-nfs')
   install=gvfs-nfs.install
 
   mv nfs/* "$pkgdir"
@@ -284,6 +309,9 @@ package_gvfs-onedrive() {
     libgoa
     msgraph
   )
+  provides=("gvfs-onedrive=$pkgver")
+  conflicts=('gvfs-onedrive')
+  replaces=('gvfs-onedrive')
 
   mv onedrive/* "$pkgdir"
 }
@@ -291,13 +319,16 @@ package_gvfs-onedrive() {
 package_gvfs-smb() {
   pkgdesc+=" - SMB/CIFS backend (Windows file sharing)"
   depends=(
-    "gvfs=$pkgver"
+    "gvfs-googledrive=$pkgver"
     'smbclient>=4.12.0'
     dconf
     glib2
     glibc
     libgcc
   )
+  provides=("gvfs-smb=$pkgver")
+  conflicts=('gvfs-smb')
+  replaces=('gvfs-smb')
 
   mv smb/* "$pkgdir"
 }
@@ -305,13 +336,16 @@ package_gvfs-smb() {
 package_gvfs-wsdd() {
   pkgdesc+=" - Web Services Dynamic Discovery backend (Windows discovery)"
   depends=(
-    "gvfs=$pkgver"
+    "gvfs-googledrive=$pkgver"
     dconf
     glib2
     glibc
     libgcc
     wsdd
   )
+  provides=("gvfs-wsdd=$pkgver")
+  conflicts=('gvfs-wsdd')
+  replaces=('gvfs-wsdd')
 
   mv wsdd/* "$pkgdir"
 }
