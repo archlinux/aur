@@ -1,7 +1,7 @@
 pkgbase = r-tesseract
 	pkgdesc = Open Source OCR Engine
 	pkgver = 5.2.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tesseract
 	arch = i686
 	arch = x86_64
