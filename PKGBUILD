@@ -1,7 +1,7 @@
 # Maintainer: Hornfisk <hornfisk@users.noreply.github.com>
 pkgname=niner
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Three-layer synthesized kick drum plugin (VST3, CLAP, Standalone)"
 arch=('x86_64')
 url="https://github.com/hyperfocusdsp/niner"
@@ -11,7 +11,9 @@ makedepends=('cargo' 'pkgconf')
 optdepends=(
   'pipewire-jack: low-latency standalone audio backend'
 )
-provides=('niner-vst3' 'niner-clap' 'niner-standalone')
+provides=('niner-vst3' 'niner-clap' 'niner-standalone' 'slammer')
+replaces=('slammer')
+conflicts=('slammer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hyperfocusdsp/niner/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e26e1d1b2cfde801ea5f451ef318c4de38f9c0ed6d400d1f52b96993a5e9fc34')
 
