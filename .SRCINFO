@@ -1,0 +1,16 @@
+pkgbase = bitshrinker
+	pkgdesc = A simple and powerful CLI tool for creating TCP tunnels
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Strawberry-Foundations/bitshrinker
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	options = !lto
+	source = bitshrinker-1.0.0.tar.gz::https://github.com/Strawberry-Foundations/bitshrinker/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = c4e1aaf2c6bc244505642ed03433ea3a5e4e1f77b4251e1e736e46a129c43c5b
+
+pkgname = bitshrinker
