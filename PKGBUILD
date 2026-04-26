@@ -94,7 +94,7 @@ package_godot-rc-bin() {
     'glibc'
   )
   provides=(
-    "${pkgname%-bin}=${pkgver%+g*}"
+    "${pkgname%-bin}=${pkgver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -129,7 +129,7 @@ package_godot-mono-rc-bin() {
     'dotnet-sdk-8.0' # ?
   )
   provides=(
-    "${pkgname%-bin}=${pkgver%+g*}"
+    "${pkgname%-bin}=${pkgver}"
   )
   conflicts=(
     "${pkgname%-bin}"
