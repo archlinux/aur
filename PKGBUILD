@@ -1,8 +1,8 @@
 # Maintainer: JasonLandbridge
 
 pkgname=omniroute-bin
-pkgver=3.6.9
-pkgrel=5
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
@@ -19,7 +19,7 @@ source=(
   '.env.example'
 )
 sha512sums=(
-  '3b2d6dcbd5b2dfe7639eccb6ebfe5c9152a093606ddf95da85ab818e7df2bb35f781088fcb1ced0bd2dc0c266ff2c8e8ef70c4d19c99b03543dd1eca47370826'
+  '9132ede38804d14262161488662ccb022f2e740aa566cbb0fa088a1ca530f4e052499d44d6229c7f27e9cbb9300a2f37470f787ae92b2ac5ec9e9388b7fe8aa3'
   'SKIP'
   'SKIP'
   'SKIP'
