@@ -3,7 +3,7 @@
 
 _pkgname=docker-systemctl-replacement
 pkgname=$_pkgname-git
-pkgver=v1.5.7106.r6.gb18d67e
+pkgver=v1.7.1064.r93.g80dfcc2
 pkgrel=1
 
 pkgdesc="docker systemctl replacement - allows to deploy to systemd-controlled containers without starting an actual systemd daemon"
