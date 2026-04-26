@@ -2,7 +2,7 @@ post_install(){
 	# show message after first install
 	echo "On first install you'll need to set your database connection details in /etc/odoo18/odoo.conf and initialize the database:
 
-  cd `mktemp -d`; sudo -u odoo18 /var/lib/odoo18/venv/bin/odoo --config /etc/odoo18/odoo.conf -i base
+  cd \`mktemp -d\`; sudo -u odoo18 /var/lib/odoo18/venv/bin/odoo --config /etc/odoo18/odoo.conf -i base
 "
 	post_upgrade
 }
