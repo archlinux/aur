@@ -1,8 +1,8 @@
 # Maintainer: Hornfisk <hornfisk@users.noreply.github.com>
 pkgname=slammer
 pkgver=0.6.0
-pkgrel=1
-pkgdesc="Three-layer synthesized kick drum plugin (VST3, CLAP, Standalone)"
+pkgrel=2
+pkgdesc="DEPRECATED — package renamed to 'niner' (use: yay -S niner)"
 arch=('x86_64')
 url="https://github.com/hyperfocusdsp/slammer"
 license=('GPL-3.0-or-later')
