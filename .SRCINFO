@@ -1,6 +1,6 @@
 pkgbase = openclaw
 	pkgdesc = Personal AI assistant / multi-channel gateway
-	pkgver = 2026.4.23
+	pkgver = 2026.4.24
 	pkgrel = 1
 	url = https://github.com/openclaw/openclaw
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = openclaw
 	license = MIT
 	makedepends = pnpm
 	depends = nodejs>=22
-	source = https://github.com/openclaw/openclaw/archive/refs/tags/v2026.4.23.tar.gz
-	sha256sums = c21e40eda51f1bba5f2a6c93b475efb47ba31f296455f3c0e02f23b7857b8d61
+	depends = npm
+	source = https://github.com/openclaw/openclaw/archive/refs/tags/v2026.4.24.tar.gz
+	sha256sums = 412c816666b8ec792f42dee2f7f0757316cdde99733c6b4500ef666170f1d67b
 
 pkgname = openclaw

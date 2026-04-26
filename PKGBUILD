@@ -3,16 +3,16 @@
 # Contributor: Wuxxin <wuxxin@gmail.com>
 
 pkgname=openclaw
-pkgver=2026.4.23
+pkgver=2026.4.24
 pkgrel=1
 pkgdesc='Personal AI assistant / multi-channel gateway'
 arch=('x86_64' 'aarch64')
 url='https://github.com/openclaw/openclaw'
 license=('MIT')
-depends=('nodejs>=22')
+depends=('nodejs>=22' 'npm')
 makedepends=('pnpm')
 source=("https://github.com/openclaw/openclaw/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c21e40eda51f1bba5f2a6c93b475efb47ba31f296455f3c0e02f23b7857b8d61')
+sha256sums=('412c816666b8ec792f42dee2f7f0757316cdde99733c6b4500ef666170f1d67b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
