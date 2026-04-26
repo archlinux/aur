@@ -1,7 +1,7 @@
 pkgbase = r-survrm2
 	pkgdesc = Comparing Restricted Mean Survival Time
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=survRM2
 	arch = any
 	license = GPL-2.0-only
