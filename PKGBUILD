@@ -6,14 +6,14 @@
 
 pkgname=pv-static
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal-based tool for monitoring the progress of data through a pipeline'
 arch=(x86_64 aarch64)
 url="https://www.ivarch.com/programs/$pkgname.shtml"
 # _url="https://codeberg.org/a-j-wood/$pkgname"
 # _url="https://github.com/a-j-wood/$pkgname"
 license=('GPL-3.0-or-later')
-depends=(glibc)
+makedepends=(musl gcc make)
 provides=(pv)
 conflicts=(pv)
 _archive="${pkgname%-*}-$pkgver"

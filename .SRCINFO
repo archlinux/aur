@@ -1,12 +1,14 @@
 pkgbase = pv-static
 	pkgdesc = A terminal-based tool for monitoring the progress of data through a pipeline
 	pkgver = 1.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ivarch.com/programs/pv-static.shtml
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
-	depends = glibc
+	makedepends = musl
+	makedepends = gcc
+	makedepends = make
 	provides = pv
 	conflicts = pv
 	source = https://www.ivarch.com/programs/sources/pv-1.10.5.tar.gz
