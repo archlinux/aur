@@ -1,0 +1,9 @@
+pkgbase = metatron
+	pkgdesc = Firmware trust and physical security posture checker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/q1sh101/metatron
+	arch = x86_64
+	license = GPL3
+
+pkgname = metatron
