@@ -1,6 +1,6 @@
 # Maintainer: Ken-ichi Yasuda <msredcomet06@gmail.com>
 pkgname=mydns
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="MyDNS.JP IP update script with IPv4/IPv6 support and systemd timer"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('bash' 'curl')
 backup=('etc/mydns/mydns.conf')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kenichyan/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac496ea4b19c1dda24955913f20fe7e5efb5d3e7d9069882bc9f0165cfd8d5e1')
+sha256sums=('1a72887619bd7dbb58305b3bef064b7e1e69d5cd48e0cbe0b4a044fb550d6ac8')
 
 package() {
     cd "$pkgname-$pkgver"
