@@ -1,7 +1,7 @@
 pkgbase = make-static
 	pkgdesc = GNU make utility to maintain groups of programs
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/make
 	arch = aarch64
 	arch = x86_64
@@ -11,10 +11,12 @@ pkgbase = make-static
 	makedepends = gzip
 	provides = make
 	conflicts = make
-	source = https://ftp.gnu.org/gnu/make/make-4.4.1.tar.gz
-	source = https://ftp.gnu.org/gnu/make/make-4.4.1.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/make/make-4.4.1.tar.lz
+	source = https://ftp.gnu.org/gnu/make/make-4.4.1.tar.lz.sig
+	source = fix_signatures_for_getenv_getopt.patch
 	validpgpkeys = 6D4EEB02AD834703510B117680CB727A20C79BB2
-	sha256sums = dd16fb1d67bfab79a72f5e8390735c49e3e8e70b4945a15ab1f81ddb78658fb3
+	sha256sums = 8814ba072182b605d156d7589c19a43b89fc58ea479b9355146160946f8cf6e9
 	sha256sums = SKIP
+	sha256sums = 14aa7e9a923f1aab7da0811cdca094f1aea196aa159a43f8e1507a0dc5c4e3dc
 
 pkgname = make-static
