@@ -2,7 +2,7 @@
 
 _npmname=graphite-cli
 pkgname=$_npmname
-pkgver=1.7.13
+pkgver=1.8.5
 pkgrel=1
 
 pkgdesc="Graphite helps you create smaller pull requests, stay unblocked, and ship faster."
@@ -19,7 +19,7 @@ changelog="changelog.md"
 
 source=("https://registry.npmjs.org/@withgraphite/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('d84dc682181724aef7862186c9c406cc1d41a5fd0bc0bf7d922951194fedaf286413075dd2045628f20c75ab08b8c54a626915c07bbd8ca59bedc5e7f1e404b4')
+b2sums=('477a8e70a3f782a0c575cfa8163156c5f93585fd8f3e4c44bc22ee953054547addb88a2e1d491ad86b9ea3b0dd5efa7dc77c508b7106283babb0842805e40bf5')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
@@ -71,5 +71,4 @@ package() {
 	install -Dm 644 "$srcdir/bash-gt-completions" "$pkgdir/usr/share/bash-completion/completions/gt"
 	install -Dm 644 "$srcdir/zsh-graphite-completions" "$pkgdir/usr/share/zsh/site-functions/_graphite"
 	install -Dm 644 "$srcdir/zsh-gt-completions" "$pkgdir/usr/share/zsh/site-functions/_gt"
-	install -Dm 644 "$pkgdir/usr/lib/node_modules/@withgraphite/graphite-cli/gt.fish" "$pkgdir/usr/share/fish/completions/gt.fish"
 }
