@@ -1,14 +1,12 @@
 # Maintainer: Bastien 'neitsab' Traverse <neitsab@archlinux.org>
 
 pkgname=incus-compose-git
-pkgver=r93.ccd25d4
+pkgver=r116.d0f3988
 pkgrel=1
 pkgdesc="Bring the familiar Docker Compose workflow to Incus containers"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/r3j0/incus-compose"
 license=('Apache-2.0')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 depends=('incus')
 makedepends=('git' 'go')
@@ -21,7 +19,6 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
-    mkdir -p build/
     export GOPATH="${srcdir}"
     go mod download -modcacherw
 }
@@ -34,7 +31,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o build ./cmd/...
+    go build -o bin/"${pkgname%-git}" ./cmd/"${pkgname%-git}"
 }
 
 # Requires the incus daemon to be running, which breaks when building in a clean chroot
@@ -45,7 +42,9 @@ build() {
 
 package() {
     cd "${pkgname%-git}"
-    install -Dm755 "${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 "bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    # Documentation
+    install -v -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    cp -vr docs "${pkgdir}/usr/share/doc/${pkgname}/"
 }
