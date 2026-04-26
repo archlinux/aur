@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://github.com/${pkgauthor}/${pkgname}"
 license=('MIT')
 
-depends=('glibc' 'libgcc' 'zlib')
+depends=('glibc' 'libgcc' 'zlib' 'jq')
 makedepends=('cargo')
 
 provides=("${_appname}")

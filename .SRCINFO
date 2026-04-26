@@ -9,6 +9,7 @@ pkgbase = headson
 	depends = glibc
 	depends = libgcc
 	depends = zlib
+	depends = jq
 	provides = hson
 	source = headson-0.17.0.crate::https://crates.io/api/v1/crates/headson/0.17.0/download
 	sha256sums = 66b4c69555ead9d88886861ce52aa1c15200c72999070d3bdc1b7a2772e0ea39
