@@ -1,6 +1,6 @@
 pkgbase = primecore
 	pkgdesc = File integrity monitoring with VirusTotal and Abuse.ch integration
-	pkgver = 1.2.4
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/crazygiscool/primecore
 	arch = x86_64

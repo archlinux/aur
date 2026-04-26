@@ -1,6 +1,6 @@
 # Maintainer: Crazygiscool <crazygiscool@proton.me>
 pkgname=primecore
-pkgver=1.2.4
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="File integrity monitoring with VirusTotal and Abuse.ch integration"
 arch=('x86_64')
