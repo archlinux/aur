@@ -1,0 +1,25 @@
+pkgbase = primecore
+	pkgdesc = File integrity monitoring with VirusTotal and Abuse.ch integration
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/crazygiscool/primecore
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = python-nuitka
+	depends = python
+	depends = python-requests
+	depends = python-toml
+
+pkgname = primecore
+	pkgdesc = File integrity monitoring with VirusTotal and Abuse.ch integration
+	arch = x86_64
+	url = https://github.com/crazygiscool/primecore
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = python-nuitka
+	depends = python
+	depends = python-requests
+	depends = python-toml
