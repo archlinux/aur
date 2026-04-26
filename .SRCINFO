@@ -1,0 +1,24 @@
+pkgbase = myclash
+	pkgdesc = A Clash GUI based on tauri. Clash Nyanpasu! (qs625 build)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/qs625/clash
+	arch = x86_64
+	license = GPL3
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = mihomo
+	optdepends = clash-rs: custom protocol network proxy, coding with rust
+	provides = clash-nyanpasu
+	conflicts = clash-nyanpasu-git
+	conflicts = clash-nyanpasu-appimage
+	conflicts = clash-nyanpasu
+	conflicts = clash-nyanpasu-bin
+	conflicts = clash-nyanpasu-qs-bin
+	options = !strip
+	options = !debug
+	source = clash-nyanpasu-1.6.0-x86_64.deb::https://github.com/qs625/clash/releases/download/v1.6.0-r1/Clash.Nyanpasu_1.6.0_amd64.deb
+	sha256sums = f4314589d8d3d173ad3647c5333811421416065124d2b806dd08858a35c29524
+
+pkgname = myclash
