@@ -1,6 +1,6 @@
 # Maintainer: Kostiantyn Kushnir <...>
 pkgname=openusage-cli
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="HTTP daemon for executing OpenUsage plugins and exposing local usage snapshots"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('opencode: AI assistant integration')
 provides=("$pkgname=$pkgver")
 conflicts=('openusage-cli-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chpock/openusage-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fdab507f2edfc90c9f1a09f9396cc48991186d176ffbab22eff1875a6933afae')
+sha256sums=('b9a8d841c8bf5b0e49304e77fddb92a12d9340b45294b7aa6e0c3d6da47b5c92')
 
 build() {
     cd "$pkgname-$pkgver"
