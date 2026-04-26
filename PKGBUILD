@@ -3,8 +3,8 @@
 
 pkgname=notepad---bin
 _pkgname=com.hmja.notepadqt6
-pkgver=3.6.3.0
-_pkgver=v3.6
+pkgver=3.7.1.1
+_pkgver=v3.7
 pkgrel=1
 epoch=1
 pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
@@ -16,7 +16,7 @@ conflicts=(${pkgname%-bin})
 depends=(
     gcc-libs
     qscintilla-qt6
-    qt5-xmlpatterns
+    qt6-xmlpatterns
     qt6-base
     libglvnd
     glibc
@@ -39,7 +39,7 @@ prepare() {
     strip lib*
     strip plugin/lib*
     patchelf Notepad-- --set-rpath /usr/lib/notepad--
-    patchelf plugin/lib* --replace-needed libqmyedit_qt5.so.15 /usr/lib/notepad--/libqmyedit_qt5.so.15
+    patchelf plugin/lib* --replace-needed libqmyedit_qt6.so.15 /usr/lib/notepad--/libqmyedit_qt6.so.15
     echo "#!/bin/sh
 /usr/lib/notepad--/Notepad-- \$@" > notepad--
 }
