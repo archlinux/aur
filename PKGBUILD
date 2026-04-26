@@ -1,7 +1,7 @@
 # PKGBUILD (converted from hyprviz-bin)
 pkgname=hyprviz
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for configuring Hyprland!"
 url="https://github.com/timasoft/hyprviz"
 license=("("GPL-2.0")")
@@ -31,11 +31,11 @@ package() {
   # License
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/hyprviz/LICENSE"
   
-  # Desktop entry (check both possible names)
+  # Desktop entry — check root first, then assets/
   if [ -f "hyprviz.desktop" ]; then
     install -Dm644 "hyprviz.desktop" "${pkgdir}/usr/share/applications/hyprviz.desktop"
-  elif [ -f "hyprviz.desktop" ]; then
-    install -Dm644 "hyprviz.desktop" "${pkgdir}/usr/share/applications/hyprviz.desktop"
+  elif [ -f "assets/hyprviz.desktop" ]; then
+    install -Dm644 "assets/hyprviz.desktop" "${pkgdir}/usr/share/applications/hyprviz.desktop"
   fi
   
   # Icons — installed from extracted source archive (assets/ is in the tarball)
