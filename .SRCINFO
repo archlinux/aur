@@ -1,14 +1,14 @@
 pkgbase = audium
-	pkgdesc = Terminal music app built in Rust
-	pkgver = 1.0.0
+	pkgdesc = A keyboard-driven music app for people who live in the terminal.
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/takashialpha/audium
 	arch = x86_64
 	license = Apache-2.0
 	depends = alsa-lib
 	depends = alsa-utils
-	source = https://github.com/takashialpha/audium/releases/download/v1.0.0/audium-v1.0.0-x86_64-linux.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/takashialpha/audium/v1.0.0/LICENSE
+	source = https://github.com/takashialpha/audium/releases/download/v1.1.0/audium-v1.1.0-x86_64-linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/takashialpha/audium/v1.1.0/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -1,7 +1,7 @@
 pkgname=audium
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Terminal music app built in Rust"
+pkgdesc="A keyboard-driven music app for people who live in the terminal."
 arch=('x86_64')
 url="https://github.com/takashialpha/audium"
 license=('Apache-2.0')
