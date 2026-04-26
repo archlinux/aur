@@ -2,13 +2,19 @@
 
 pkgname=agent-browser-bin
 pkgver=0.26.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast browser automation CLI for AI agents (native binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vercel-labs/agent-browser"
 license=('Apache-2.0')
 provides=('agent-browser')
 conflicts=('agent-browser')
+optdepends=(
+    'chromium: Default browser engine (recommended)'
+    'google-chrome: Alternative browser engine'
+    'lightpanda: Alternative browser engine optimized for AI'
+    'appium: For iOS Simulator support (--provider ios)'
+)
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/vercel-labs/agent-browser/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v${pkgver}/agent-browser-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v${pkgver}/agent-browser-linux-arm64")

@@ -1,11 +1,15 @@
 pkgbase = agent-browser-bin
 	pkgdesc = Fast browser automation CLI for AI agents (native binary)
 	pkgver = 0.26.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vercel-labs/agent-browser
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	optdepends = chromium: Default browser engine (recommended)
+	optdepends = google-chrome: Alternative browser engine
+	optdepends = lightpanda: Alternative browser engine optimized for AI
+	optdepends = appium: For iOS Simulator support (--provider ios)
 	provides = agent-browser
 	conflicts = agent-browser
 	source = LICENSE-0.26.0::https://raw.githubusercontent.com/vercel-labs/agent-browser/v0.26.0/LICENSE
