@@ -9,7 +9,7 @@ license=('MIT')
 depends=('readline' 'gcc-libs')
 makedepends=('cmake' 'ninja' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jonleithe/delta/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ec426ba25083b97093a1045196f189ba453582b468484ffaacecf18ba4a4a708')
+sha256sums=('cf2392b2b4a770346850a967d183c050a1d839cbf0d4a52f9223e70a0257624d')
 
 build() {
     cmake \
