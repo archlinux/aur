@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=9.0.2
+pkgver=9.0.4
 pkgrel=1
 epoch=
 pkgdesc='Modern N64 Emulator'
@@ -42,13 +42,13 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog='parallel-launcher.changelog'
-source=('https://gitlab.com/-/project/22150690/uploads/f419398af24ff53f08e55d6ecd72fdaf/parallel-launcher-9.0.2.tar.gz')
+source=('https://gitlab.com/-/project/22150690/uploads/fe2c8f388f59b95439b8e4723c2c1685/parallel-launcher-9.0.4.tar.gz')
 noextract=()
-sha256sums=('a5a95eb74b7cd52865b94c58b274365f14e97bab4b2994114dcc4cebddaf0cf6')
+sha256sums=('e3f76f7c743049376c7d43e3bb3b0c0e800bb2a23a3e3907ee7b8bbd58982b36')
 validpgpkeys=()
 
 build() {
-	qmake6 app.pro -spec linux-g++ DEFINES+=RETROARCH_XWAYLAND
+	qmake6 app.pro -spec linux-g++
 	/usr/lib/qt6/bin/lrelease app.pro
 	make -j `nproc`
 }

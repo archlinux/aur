@@ -1,6 +1,6 @@
 pkgbase = parallel-launcher
 	pkgdesc = Modern N64 Emulator
-	pkgver = 9.0.2
+	pkgver = 9.0.4
 	pkgrel = 1
 	url = https://parallel-launcher.ca
 	install = parallel-launcher.install
@@ -29,7 +29,7 @@ pkgbase = parallel-launcher
 	depends = udisks2
 	depends = zlib
 	optdepends = noto-fonts-cjk
-	source = https://gitlab.com/-/project/22150690/uploads/f419398af24ff53f08e55d6ecd72fdaf/parallel-launcher-9.0.2.tar.gz
-	sha256sums = a5a95eb74b7cd52865b94c58b274365f14e97bab4b2994114dcc4cebddaf0cf6
+	source = https://gitlab.com/-/project/22150690/uploads/fe2c8f388f59b95439b8e4723c2c1685/parallel-launcher-9.0.4.tar.gz
+	sha256sums = e3f76f7c743049376c7d43e3bb3b0c0e800bb2a23a3e3907ee7b8bbd58982b36
 
 pkgname = parallel-launcher

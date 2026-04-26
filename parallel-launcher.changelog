@@ -1,3 +1,10 @@
+### v9.0.4 (Sun Apr 26 2026)
+* Fixed controller gate mappings not working in game when the source (physical) gate is set to "Octagonal (N64)"
+* Fixed certain keys such as Home and End being unable to be used as hotkeys on Windows
+
+### v9.0.3 (Sun Oct 19 2025)
+* Fixed downloading hacks from Romhacking.com not working consistently on Windows
+
 ### v9.0.2 (Sat Oct 18 2025)
 * Fixed the 'Open Containing Folder' action not opening the correct location on Windows if the rom file path ends up having mixed forward slash and backslash directory separators
 * Fixed the arrow keys not being able to be assigned to any keyboard controls on Windows
