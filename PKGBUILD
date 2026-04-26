@@ -11,8 +11,21 @@ url="https://akiflow.com"
 license=('custom')
 depends=('electron')
 makedepends=('p7zip' 'imagemagick' 'icoutils' 'python')
-source=("Akiflow-${pkgver}.exe::https://download.akiflow.com/builds/Akiflow-${pkgver}-${_buildhash}-x64.exe")
-sha512sums=('e4aeadcf7ec8a2a9c46dda84fe59d1cf38898808f891d28f98c73c8e1514d61051f4fa19215774c56c5c297befddefce4f8e55a6ec9bc92ed5d6a8b59c5a155d')
+_ghraw="https://raw.githubusercontent.com/shrimpwtf/akiflow-arch/main"
+source=("Akiflow-${pkgver}.exe::https://download.akiflow.com/builds/Akiflow-${pkgver}-${_buildhash}-x64.exe"
+        "patch-main.py::${_ghraw}/patch-main.py"
+        "plasma-widget-metadata.json::${_ghraw}/plasma-widget/package/metadata.json"
+        "plasma-widget-main.qml::${_ghraw}/plasma-widget/package/contents/ui/main.qml"
+        "plasma-widget-CompactRepresentation.qml::${_ghraw}/plasma-widget/package/contents/ui/CompactRepresentation.qml"
+        "plasma-widget-FullRepresentation.qml::${_ghraw}/plasma-widget/package/contents/ui/FullRepresentation.qml"
+        "plasma-widget-akiflow.png::${_ghraw}/plasma-widget/package/contents/icons/akiflow.png")
+sha512sums=('e4aeadcf7ec8a2a9c46dda84fe59d1cf38898808f891d28f98c73c8e1514d61051f4fa19215774c56c5c297befddefce4f8e55a6ec9bc92ed5d6a8b59c5a155d'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
     cd "${srcdir}"
@@ -68,7 +81,7 @@ build() {
     fi
 
     cd "$ASAR_PATH"
-    python "${startdir}/patch-main.py"
+    python "${srcdir}/patch-main.py"
 }
 
 package() {
@@ -115,8 +128,16 @@ exec electron --class=Akiflow --name=Akiflow /usr/lib/${pkgname}/app.asar "\$@"
 EOF
 
     # Install KDE Plasma widget for upcoming events
-    if [ -d "${startdir}/plasma-widget/package" ]; then
-        install -d "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget"
-        cp -r "${startdir}/plasma-widget/package/"* "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/"
-    fi
+    install -d "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/contents/ui"
+    install -d "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/contents/icons"
+    install -Dm644 "${srcdir}/plasma-widget-metadata.json" \
+        "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/metadata.json"
+    install -Dm644 "${srcdir}/plasma-widget-main.qml" \
+        "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/contents/ui/main.qml"
+    install -Dm644 "${srcdir}/plasma-widget-CompactRepresentation.qml" \
+        "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/contents/ui/CompactRepresentation.qml"
+    install -Dm644 "${srcdir}/plasma-widget-FullRepresentation.qml" \
+        "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/contents/ui/FullRepresentation.qml"
+    install -Dm644 "${srcdir}/plasma-widget-akiflow.png" \
+        "${pkgdir}/usr/share/plasma/plasmoids/com.akiflow.panelwidget/contents/icons/akiflow.png"
 }
