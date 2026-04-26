@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus <widow at codemux dot org>
 pkgname=codexbar-tui
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Thin Omarchy-themed terminal UI on top of the codexbar CLI (steipete/CodexBar)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('02f52d6e374c37eace0cb0409df3e32d04e9b92b02e422f97e7217453e26a1e3')
+sha256sums=('01d94ff44abc63731fe19a872b844e098e4d3d2bad1c3fe545e1452fd4ac7479')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
