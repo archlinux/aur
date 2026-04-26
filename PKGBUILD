@@ -7,7 +7,7 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=ggplot2
-_pkgver=4.0.2
+_pkgver=4.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -65,9 +65,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$_pkgname-fix-snapshots.patch::https://github.com/tidyverse/ggplot2/pull/5917/commits/7908e224e03fce65ce910cd85f3de3b2846970d6.patch")
-md5sums=('019f409ffe30dfb43d556bf78e13fd45'
+md5sums=('c50d6864f6226ed9759e5deaa0a25e7f'
          'c1beb06c438ec674a22babfb6ca987a8')
-b2sums=('7c2ab6b1da0641af8fcbde54bc8c50c238b2ef6ce4d292ae3ff477eebcd2156334631953e5621461779429cc60a1d353fe06b397e2f8efbcbdcf820334005eca'
+b2sums=('e7692acbc1a61f87212e287ac77f5bc4251b3ed041fa3e3ea3530d903b4c490d84e26f5fb63960dfddb87153c511c66ae080928f0e925417be8524c1c07cbc2b'
         'b01d6fd2c0d251fa64792fa22ccd7627f44d2cd9e1d11b3b4c085244fa14fcc074a07e9106d301e25cd51532f23e65536045e173a1c061d1d51732d0ee80a670')
 
 #prepare() {
