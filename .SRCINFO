@@ -1,7 +1,7 @@
 pkgbase = r-yyjsonr
 	pkgdesc = Fast 'JSON', 'NDJSON' and 'GeoJSON' Parser and Generator
 	pkgver = 0.1.22
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=yyjsonr
 	arch = i686
 	arch = x86_64
