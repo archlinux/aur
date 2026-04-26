@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Tobias Powalowski <t.powa@gmx.de>
-# AUR pv-static pkg: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
+# AUR pwgen-static pkg: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
 
 pkgname=pwgen-static
 _pkgname=pwgen
