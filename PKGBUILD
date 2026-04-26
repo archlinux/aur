@@ -11,6 +11,7 @@ depends=(
     'wails'
     'bun'
     'webkit2gtk'
+    'hamlib'
 )
 url="https://github.com/wavelog/WaveLogGate"
 license=('MIT')
@@ -34,7 +35,7 @@ options=(!lto !debug)
 build () {
 
     cd WaveLogGate
-    npm install --omit=dev --no-fund
+    wails build -clean
 }
 
 package() {

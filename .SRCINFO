@@ -10,6 +10,7 @@ pkgbase = waveloggate-git
 	depends = wails
 	depends = bun
 	depends = webkit2gtk
+	depends = hamlib
 	options = !lto
 	options = !debug
 	source = WaveLogGate::git+https://github.com/wavelog/WaveLogGate#tag=v2.0.2
