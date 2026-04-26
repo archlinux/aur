@@ -1,0 +1,13 @@
+pkgbase = x11-multimonitor-center
+	pkgdesc = X11 tray app to move newly spawned windows to the monitor with the mouse cursor if they spawn somewhere else
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/yourname/x11-multimonitor-center
+	arch = any
+	license = GPL3
+	makedepends = pkgconf
+	depends = gtk3
+	depends = libwnck3
+	depends = libappindicator-gtk3
+
+pkgname = x11-multimonitor-center
