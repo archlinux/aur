@@ -19,8 +19,6 @@ sha256sums=('b03958029be53693302c6edd34ca65a4b27c9e3379ca82e0e6dea57fb2dee98c'
             '3bb765a93afa8c4f3b4fbf4440507c79ba32e4e4600e94706ccd7705209e0c34'
             'SKIP')
 
-options=('!lto')
-
 prepare() {
     mkdir -p build
     cp routeprofiles/srslist.h build
@@ -52,9 +50,9 @@ build() {
 
     cd "${pkgname^}-${pkgver}/core/server"
     export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS} -fuse-ld=lld"
+    export CGO_CFLAGS="${CFLAGS} -fno-lto"
+    export CGO_CXXFLAGS="${CXXFLAGS} -fno-lto"
+    export CGO_LDFLAGS="${LDFLAGS} -fuse-ld=lld -fno-lto"
 
     VERSION_SINGBOX=$(go list -m -f '{{.Version}}' github.com/sagernet/sing-box)
     go build -o "${srcdir}/build" \
