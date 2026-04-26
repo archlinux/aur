@@ -2,7 +2,7 @@
 
 pkgname=fospx-pdf-editor
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and user-friendly PDF Editor"
 url="https://github.com/fospx-org/fospx-pdf-editor"
 arch=('any')
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/fospx-org/${pkgname}/
         "icon_path.patch"
         "license_path.patch")
 sha256sums=('08fc854841370fbd176590f828b34410ed3d46e4096c27ad7233a72ae5ebf295'
-            'd3d985a7408ff5594e2dc4cd044ab295bc53c22accdc4b6cca78dbe3063f9c51'
+            '5a3887f9fadbf62f0ab9604cf56467c9944191a9c6edc975e73c4b1ee6bd553c'
             'd0adfb3c8c4aaafc58a393fd88540ff56ffe8ece5a3dc8869a656eb519db543d'
             'ae48f512c74fb7d1f7550a849716e2897fd4d6c8454253481e307f37e676cd3e')
 
