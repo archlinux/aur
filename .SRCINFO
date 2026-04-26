@@ -1,0 +1,25 @@
+pkgbase = yandex-music-downloader-gui
+	pkgdesc = Простой и красивый загрузчик музыки из Яндекс.Музыки
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/atyonekilla/yandex-music-downloader-gui
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-yandex-music-api
+	depends = python-mutagen
+	depends = python-pycryptodome
+	depends = python-pillow
+	depends = python-customtkinter
+	depends = python-imageio-ffmpeg
+	depends = python-strenum
+	source = yandex-music-downloader-gui-1.1.1.tar.gz::https://github.com/atyonekilla/yandex-music-downloader-gui/archive/refs/tags/v1.1.1.tar.gz
+	source = yandex-music-downloader-gui.desktop
+	sha256sums = 10a49ad60082450fd0b842f1d237d9d6312a9e832f03ff7441ce860b61e12e4d
+	sha256sums = 1be1896f5e31ddc49c5d586d50666fa003ae750f8cd17e9504305fb2f6a493e5
+
+pkgname = yandex-music-downloader-gui

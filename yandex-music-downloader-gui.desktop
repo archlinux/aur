@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Yandex Music Downloader GUI
+Comment=Download music from Yandex Music
+Exec=yandex-music-downloader-gui
+Icon=applications-multimedia
+Terminal=false
+Type=Application
+Categories=AudioVideo;Network;
