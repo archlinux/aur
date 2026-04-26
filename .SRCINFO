@@ -1,0 +1,17 @@
+pkgbase = linear-cli-schpet-bin
+	pkgdesc = Linear without leaving the command line: list, start, and create PRs for linear issues. Agent friendly.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/schpet/linear-cli
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	depends = glibc
+	depends = gcc-libs
+	options = !strip
+	source_x86_64 = linear-cli-schpet-bin-2.0.0-x86_64.tar.xz::https://github.com/schpet/linear-cli/releases/download/v2.0.0/linear-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = affb594672c2f220cef68fa7cfeb813945c4010789a4b8cc2c0e46468feb7870
+	source_aarch64 = linear-cli-schpet-bin-2.0.0-aarch64.tar.xz::https://github.com/schpet/linear-cli/releases/download/v2.0.0/linear-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 6c3afdd11c7c0fb90053d4b53b27252b5c35bb75c679383234bef20a25558eac
+
+pkgname = linear-cli-schpet-bin
