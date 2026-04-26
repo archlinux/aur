@@ -3,7 +3,7 @@
 # Upstream: WinterSnowfall <https://github.com/WinterSnowfall/d7vk>
 
 pkgname=d7vk-bin
-pkgver=1.7.1
+pkgver=1.8
 pkgrel=1
 pkgdesc="Vulkan-based D3D7/6/5/3 implementation for Wine (prebuilt ddraw.dll)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Zlib')
 depends=('wine' 'vulkan-icd-loader')
 options=('!debug')
 source=("d7vk-v${pkgver}.zip::https://github.com/WinterSnowfall/d7vk/releases/download/v${pkgver}/d7vk-v${pkgver}.zip")
-sha256sums=('7081b41eb6d02d76a93781ee8c7b8008a28cec42628f236aa8ed810685f1cb60')
+sha256sums=('d009e960d2bdf68814346bbc22dd0539aeeba7377266c5ffec79d201321f5a43')
 
 package() {
     cd "${srcdir}/d7vk-v${pkgver}"
