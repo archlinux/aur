@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggimage
-_pkgver=0.3.3
+_pkgver=0.3.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Use Image in 'ggplot2'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,6 +18,12 @@ depends=(
   r-scales
   r-tibble
   r-withr
+  r-yulab.utils
+  r-purrr
+  r-digest
+  r-ggiraph
+  r-rlang
+
 )
 optdepends=(
   r-ape
@@ -27,8 +33,8 @@ optdepends=(
   r-rsvg
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8885f142e42910a64e8b8906cb8dd3a9')
-b2sums=('5f3c84892ad6716c497a1cad22ef1abd4138b62f0c8e1987c2ec76aa6945c9e8da7ff26b12083cda5aef24acc852de369383f7879dced6ef4db244573eee654c')
+md5sums=('62987c383b09c00104c8458bcc51988f')
+b2sums=('3844703440406729e6df95fccb3ea23e79d326eee643344745c047bcddee74ce37395a7c02fbe2a146518c2d0c0c0d26e2e05800b14b3fe5a72bf29b8e12e8f0')
 
 build() {
   mkdir build

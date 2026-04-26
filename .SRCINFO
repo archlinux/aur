@@ -1,7 +1,7 @@
 pkgbase = r-ggimage
 	pkgdesc = Use Image in 'ggplot2'
-	pkgver = 0.3.3
-	pkgrel = 3
+	pkgver = 0.3.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggimage
 	arch = any
 	license = Artistic-2.0
@@ -13,13 +13,18 @@ pkgbase = r-ggimage
 	depends = r-scales
 	depends = r-tibble
 	depends = r-withr
+	depends = r-yulab.utils
+	depends = r-purrr
+	depends = r-digest
+	depends = r-ggiraph
+	depends = r-rlang
 	optdepends = r-ape
 	optdepends = r-ggtree
 	optdepends = r-gridgraphics
 	optdepends = r-httr
 	optdepends = r-rsvg
-	source = https://cran.r-project.org/src/contrib/ggimage_0.3.3.tar.gz
-	md5sums = 8885f142e42910a64e8b8906cb8dd3a9
-	b2sums = 5f3c84892ad6716c497a1cad22ef1abd4138b62f0c8e1987c2ec76aa6945c9e8da7ff26b12083cda5aef24acc852de369383f7879dced6ef4db244573eee654c
+	source = https://cran.r-project.org/src/contrib/ggimage_0.3.5.tar.gz
+	md5sums = 62987c383b09c00104c8458bcc51988f
+	b2sums = 3844703440406729e6df95fccb3ea23e79d326eee643344745c047bcddee74ce37395a7c02fbe2a146518c2d0c0c0d26e2e05800b14b3fe5a72bf29b8e12e8f0
 
 pkgname = r-ggimage
