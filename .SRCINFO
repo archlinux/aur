@@ -1,6 +1,6 @@
 pkgbase = openusage-cli-git
 	pkgdesc = HTTP daemon for executing OpenUsage plugins and exposing local usage snapshots
-	pkgver = r0.0.0
+	pkgver = 0.0.6.r36.g00d565c
 	pkgrel = 1
 	url = https://github.com/chpock/openusage-cli
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = openusage-cli-git
 	depends = glibc
 	depends = gcc-libs
 	optdepends = opencode: AI assistant integration
-	provides = openusage-cli=r0.0.0
+	provides = openusage-cli=0.0.6.r36.g00d565c
 	conflicts = openusage-cli
 	options = !lto
 	source = git+https://github.com/chpock/openusage-cli.git

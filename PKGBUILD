@@ -1,6 +1,6 @@
 # Maintainer: Kostiantyn Kushnir <...>
 pkgname=openusage-cli-git
-pkgver=r0.0.0
+pkgver=0.0.6.r36.g00d565c
 pkgrel=1
 pkgdesc="HTTP daemon for executing OpenUsage plugins and exposing local usage snapshots"
 arch=('x86_64' 'aarch64')
