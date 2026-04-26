@@ -1,6 +1,6 @@
 # Maintainer: Alfonso de la Guarda <alfonsodg at gmail dot com>
 pkgname=marker-enhanced-git
-pkgver=2020.04.04.r43
+pkgver=2026.04.25
 pkgrel=1
 pkgdesc="Markdown editor for Linux with Mermaid 10.9, batch PDF export, dark mode, and security fixes"
 arch=('x86_64')
