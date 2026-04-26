@@ -1,7 +1,7 @@
 pkgbase = yandex-music-downloader-gui
 	pkgdesc = Простой и красивый загрузчик музыки из Яндекс.Музыки
 	pkgver = 1.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/atyonekilla/yandex-music-downloader-gui
 	arch = any
 	license = MIT

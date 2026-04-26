@@ -2,7 +2,7 @@
 # Created with assistance from Gemini 3.1 Pro.
 pkgname=yandex-music-downloader-gui
 pkgver=1.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Простой и красивый загрузчик музыки из Яндекс.Музыки"
 arch=('any')
 url="https://github.com/atyonekilla/yandex-music-downloader-gui"
@@ -25,8 +25,11 @@ prepare() {
   rm -rf yandex_music_ymd
   cp -r "../yandex-music-api-9623fbca7704f47766614efe51d66c9fd496714c/yandex_music" yandex_music_ymd
   
-  # Patch imports to use the vendored version
+  # Patch imports in the main project to use the vendored version
   find ymd -name "*.py" -exec sed -i 's/yandex_music/yandex_music_ymd/g' {} +
+  
+  # Patch internal imports in the vendored library itself
+  find yandex_music_ymd -name "*.py" -exec sed -i 's/yandex_music/yandex_music_ymd/g' {} +
   
   # Ensure the vendored package is included in the build
   sed -i 's/packages = \["ymd"\]/packages = ["ymd", "yandex_music_ymd"]/' pyproject.toml
