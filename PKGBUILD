@@ -2,7 +2,7 @@
 
 _pkgname="mise"
 pkgname="$_pkgname-git"
-pkgver=2026.2.1.r14.g7b360c9
+pkgver=2026.4.23.r0.g9225550
 pkgrel=1
 pkgdesc='The front-end to your dev env'
 arch=('x86_64')
@@ -18,12 +18,13 @@ makedepends=(
     cargo
     clang
     cmake
+    git
 )
 optdepends=(
     'bash-completion: bash completion support'
     'usage: completion support'
 )
-provides=("$_pkgname=${pkgver%.g*}")
+provides=("$_pkgname")
 conflicts=(
     rtx
     "$_pkgname"
@@ -67,7 +68,6 @@ check() {
     cargo test --frozen --all-features
 
     unset MISE_EXPERIMENTAL
-
 }
 
 package() {
