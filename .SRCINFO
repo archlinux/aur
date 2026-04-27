@@ -1,0 +1,20 @@
+pkgbase = mcpproxy-bin
+	pkgdesc = Smart proxy for AI agents using the Model Context Protocol
+	pkgver = 0.27.1
+	pkgrel = 1
+	url = https://github.com/smart-mcp-proxy/mcpproxy-go
+	arch = x86_64
+	license = MIT
+	optdepends = systemd: run the bundled mcpproxy.service system unit
+	provides = mcpproxy
+	conflicts = mcpproxy
+	options = !strip
+	backup = etc/mcpproxy/mcp_config.json
+	source = mcpproxy-0.27.1-linux-amd64.tar.gz::https://github.com/smart-mcp-proxy/mcpproxy-go/releases/download/v0.27.1/mcpproxy-0.27.1-linux-amd64.tar.gz
+	source = mcp_config.json.example::https://raw.githubusercontent.com/smart-mcp-proxy/mcpproxy-go/v0.27.1/packaging/linux/mcp_config.json.example
+	source = LICENSE::https://raw.githubusercontent.com/smart-mcp-proxy/mcpproxy-go/v0.27.1/LICENSE
+	sha256sums = d2a35cbdd62de85f2b05513056611138283e2900e9c9b15651c2c409ec23152a
+	sha256sums = f07d24f77cf4e69feec20282ff443fe1f83607495b1d03d0306342b00ddb1a61
+	sha256sums = 9cce20ad8a5cf6f6e381c267d4938ba78002496f63270f01f06dd5f8a68cc57d
+
+pkgname = mcpproxy-bin
