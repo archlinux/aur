@@ -25,6 +25,7 @@ conflicts=(
   'openai-codex-bin'
   'openai-codex-reasoning'
 )
+replaces=('openai-codex-reasoning')
 
 _fork_tag='aur-v0.125.0-reasoning.1'
 _asset_name="${pkgname}-${pkgver}-${pkgrel}-x86_64.tar.zst"
