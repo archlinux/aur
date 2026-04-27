@@ -6,7 +6,7 @@ _pkgname=promptcmd
 pkgname=${_pkgname}-bin
 pkgdesc="GenAI prompts as runnable programs"
 
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,7 +23,7 @@ conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.xz")
-sha256sums_x86_64=('33c4f8f2b2d4cc0798832967b04324d7c0882daa346de28fac00071c6673dce2')
+sha256sums_x86_64=('41b241e530ddef3a1be080c9ffa4e510ddb52c997f536543a09b4a98e2aa8047')
 
 
 case ${CARCH} in
