@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pupu-git
 _pkgname=PuPu
-pkgver=0.1.0.r38.g86ab73e
+pkgver=0.1.5.r61.g49c4192
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -15,6 +15,11 @@ depends=(
     "electron${_electronversion}"
     'ollama'
     'python'
+    'python-numpy'
+    'python-flask'
+    'python-httpx'
+    'python-werkzeug'
+    'python-openai'
 )
 makedepends=(
     'npm'
@@ -26,10 +31,12 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
+    "unchain::git+https://github.com/haoxiang-xu/unchain.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'SKIP'
+            '0386164f4c9dff659cf8d7a5b015dd62754927824a5dfe1000003e7b7d963020')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -55,7 +62,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -63,49 +69,46 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-    } >> .npmrc
+    local HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        }
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
+    sed -i "s/sys.version_info\[:2\] == (3, 12)/sys.version_info[0] == 3 and sys.version_info[1] >= 12/g" unchain_runtime/scripts/build_unchain_server.sh
+    sed -i "s/sys.version_info\[:2\] == (3, 12)/sys.version_info[0] == 3 and sys.version_info[1] >= 12/g" scripts/init_python312_venv.sh
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     _ensure_local_nvm
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export PUPU_VERSION_PREPARED=1
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     npm run build:miso:linux
+    NODE_ENV=production     npm run build:unchain:linux
     NODE_ENV=production     npm run build:web
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
+
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    cd "${srcdir}/${pkgname//-/.}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	find "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
-    if find "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
-            fi
-        done
-    fi
-    _icon_sizes=(128x128 256x256 512x512)
+    local _resources="dist/linux-unpacked/resources"
+    cp -a "${_resources}/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    _icon_sizes=(192 512)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/public/logo_${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+        install -Dm644 "${srcdir}/${pkgname//-/.}/public/logo${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname%-git}.png"
     done
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
