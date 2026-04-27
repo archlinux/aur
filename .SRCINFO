@@ -1,7 +1,7 @@
 pkgbase = openai-codex-reasoning
 	pkgdesc = OpenAI Codex CLI fork with inline reasoning traces
-	pkgver = 0.124.0
-	pkgrel = 2
+	pkgver = 0.125.0
+	pkgrel = 1
 	url = https://github.com/OneNoted/codex
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = openai-codex-reasoning
 	conflicts = openai-codex
 	conflicts = openai-codex-bin
 	options = !lto
-	source = codex::git+https://github.com/OneNoted/codex.git#tag=aur-v0.124.0-reasoning.1
+	source = codex::git+https://github.com/OneNoted/codex.git#tag=aur-v0.125.0-reasoning.1
 	sha256sums = SKIP
 
 pkgname = openai-codex-reasoning
