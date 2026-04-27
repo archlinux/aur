@@ -5,7 +5,7 @@ _pkgname=tennis
 pkgname=${_pkgname}-bin
 pkgdesc="Stylish CSV tables in your terminal"
 
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('73c0202a47d1541d5b3868bee5a2e8d1464cd7d26565fc190867f3161adf4b86')
-sha256sums_aarch64=('6b8d543affa7419a73ba1de3be4ac30427e447002ae26387b67def0a47735246')
+sha256sums_x86_64=('6441eb3e783c80e03518a096434b5bd30038dab329b47122fd04fcf8cbaafd0b')
+sha256sums_aarch64=('dcb8835e4f701ba2670e68a69115e882840aa631ff08d542c2c71a9e48e27fef')
 
 
 case ${CARCH} in
