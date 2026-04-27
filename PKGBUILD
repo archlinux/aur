@@ -10,14 +10,15 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.1.r62.g56cfc4543.0.g56cfc4543
+pkgver=1.4.1.r76.gfd1617827.0.gfd1617827
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
 url="https://github.com/clementine-player/Clementine"
 license=(GPL-3.0-or-later)
 depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp
-         protobuf qt5-x11extras projectm alsa-lib libpulse hicolor-icon-theme taglib
+         protobuf qt5-x11extras alsa-lib libpulse hicolor-icon-theme taglib
+         #projectm # now use bundled v4.x, Arch is at v3.x
 
          # namcap implicit depends
          zlib glib2 sqlite libx11 gstreamer glibc libstdc++ libgcc abseil-cpp qt5-base fftw
@@ -52,9 +53,8 @@ build() {
   local _flags=(
     #-DCMAKE_CXX_FLAGS="-fpermissive"
     #-DCMAKE_CXX_STANDARD=17
-    -DUSE_SYSTEM_PROJECTM=ON
+    #-DUSE_SYSTEM_PROJECTM=ON
     -DUSE_SYSTEM_TAGLIB=ON
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   )
 
   cmake -B build -S Clementine -Wno-dev \

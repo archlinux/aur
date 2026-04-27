@@ -1,6 +1,6 @@
 pkgbase = clementine-git
 	pkgdesc = A modern music player and library organizer
-	pkgver = 1.4.1.r62.g56cfc4543.0.g56cfc4543
+	pkgver = 1.4.1.r76.gfd1617827.0.gfd1617827
 	pkgrel = 1
 	url = https://github.com/clementine-player/Clementine
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = clementine-git
 	depends = libmtp
 	depends = protobuf
 	depends = qt5-x11extras
-	depends = projectm
 	depends = alsa-lib
 	depends = libpulse
 	depends = hicolor-icon-theme
