@@ -7,7 +7,7 @@
 #   4. Build and test (run: makepkg -sf)
 
 pkgname=open-webui-desktop-bin
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='User-friendly AI chat interface supports Ollama, OpenAI API (desktop client)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=('!strip' '!debug')
 source=("open-webui.sh")
 source_x86_64=("open-webui-bin_${pkgver}_amd64.deb::https://github.com/open-webui/desktop/releases/download/v${pkgver}/open-webui_amd64.deb")
 sha512sums=('068c7a3c5f3836872eed69e1d4e326c5ddcb2db1f7b170585598d8bd71024fab59ffe0d51a09b4e5f9de7404edea5dc75d7e6c985530ce597122f42a8813798e')
-sha512sums_x86_64=('20b94e2a2d3b839ab1ef7353a052cbea4ccb0678eb6bea749f71048c78bd2275c045db0489b27a8068f965027f7c43759b636d4a816eb58857a057c265bba169')
+sha512sums_x86_64=('e90c3a5559d9ac78e94e8ab3770d937260ec63a03089728652deeca28866777f921568558ad70b56f75a1b3fe082b51f64888c6d2b33b7e14d049e0b5f6c558f')
 noextract=("open-webui-bin_${pkgver}_amd64.deb")
 
 package() {
