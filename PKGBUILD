@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo' 'jdk-openjdk')
 provides=('mcl-launcher')
 conflicts=('mcl-launcher-bin' 'mcl-launcher-git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('07cd96c7669dd48f65c9b7aa7fe4e4d3419c828fa43ea817d35c13dc4074118b')
+sha256sums=('d00efafec9e3ce30390974791db262f42b039fb901b9ba33453cfe1c0a32fff0')
 
 build() {
   cd "$srcdir/mcl-${pkgver}"
