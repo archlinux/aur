@@ -1,6 +1,6 @@
 # Maintainer: Joseph Lyncheski <directmusic94@gmail.com>
 pkgname=simple-sc
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A simple PipeWire screen recording utility for Linux"
 arch=('x86_64')
