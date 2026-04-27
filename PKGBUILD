@@ -15,7 +15,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/leestripp/lucidvideo/-/archive/v${pkgver}/lucidvideo-${pkgver#v}.tar.gz")
+source=("https://gitlab.com/leestripp/lucidvideo/-/archive/${pkgver#v}/lucidvideo-${pkgver#v}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
