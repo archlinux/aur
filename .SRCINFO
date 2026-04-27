@@ -1,8 +1,8 @@
 pkgbase = cardwire
 	pkgdesc = GPU manager for Linux using eBPF LSM hooks
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/luytan/cardwire
+	url = https://github.com/OpenGamingCollective/cardwire
 	arch = x86_64
 	license = GPL3
 	makedepends = libbpf
@@ -11,7 +11,7 @@ pkgbase = cardwire
 	depends = hwdata
 	depends = dbus
 	depends = systemd
-	source = https://github.com/luytan/cardwire/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 37882d4d0d431c3ff48e24bd47cea03b7847080623254d8bdb4af9846134d700
+	source = https://github.com/OpenGamingCollective/cardwire/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = a03a37414037a210d25426675604009a0031a8b5df63681135514c240fd6e4ca
 
 pkgname = cardwire
