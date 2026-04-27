@@ -25,7 +25,7 @@ package() {
 [Desktop Entry]
 Name=Anilinux
 Comment=Anime viewer for Linux
-Exec=/opt/$pkgname/anilinux-electron
+Exec=/opt/$pkgname/anilinux
 Icon=$pkgname
 Type=Application
 Categories=Video;Player;
@@ -33,9 +33,9 @@ EOF
   
   # Install icon
   install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  install -m644 squashfs-root/*.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png" 2>/dev/null || true
+  install -m644 squashfs-root/anilinux.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png" 2>/dev/null || true
   
   # Install symlink to binary
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/anilinux-electron" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/anilinux" "$pkgdir/usr/bin/$pkgname"
 }
