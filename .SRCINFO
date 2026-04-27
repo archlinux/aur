@@ -1,13 +1,12 @@
 pkgbase = b-em-git
 	pkgdesc = BBC Micro emulator - git version
-	pkgver = r2122.40246d4
+	pkgver = r2158.7eb9b67
 	pkgrel = 1
 	url = http://b-em.bbcmicro.com/
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = allegro
 	depends = alsa-lib
-	depends = gcc-libs
 	depends = glibc
 	depends = jack
 	depends = zlib
