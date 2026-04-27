@@ -21,6 +21,7 @@ optdepends=(
     'bash-completion: bash tab completions'
     'zsh: zsh tab completions'
 )
+backup=('etc/gitpkg/gitpkg.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('6e959ef6dc6add86abb17eb5a4e03786f593eb616af2447749dd3356ac8b2248')
 
