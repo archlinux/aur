@@ -1,0 +1,16 @@
+pkgbase = bwx-cli
+	pkgdesc = Unofficial Bitwarden CLI with first-class macOS support (renamed fork of rbw)
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/drewcarlson/bwx-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = pinentry
+	provides = bwx
+	conflicts = bwx-cli-git
+	source = bwx-cli-2.2.1.tar.gz::https://github.com/drewcarlson/bwx-cli/archive/refs/tags/v2.2.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = bwx-cli
