@@ -1,7 +1,7 @@
 pkgbase = wayscrollshot-bin
 	pkgdesc = A scrolling screenshot tool for Wayland
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jswysnemc/wayscrollshot
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = wayscrollshot-bin
 	provides = wayscrollshot=0.1.5
 	conflicts = wayscrollshot
 	conflicts = wayscrollshot-git
-	source = https://github.com/jswysnemc/wayscrollshot/releases/download/v0.1.5/wayscrollshot-archlinux-x86_64.tar.gz
+	source = wayscrollshot-bin-0.1.5.tar.gz::https://github.com/jswysnemc/wayscrollshot/releases/download/v0.1.5/wayscrollshot-archlinux-x86_64.tar.gz
 	sha256sums = d95e8df34bb7837d8641fd852a2481c4cf01c5044ecdfb1f6791864cecfaec85
 
 pkgname = wayscrollshot-bin
