@@ -1,0 +1,18 @@
+pkgbase = soprano-tenor-git
+	pkgdesc = A privacy-respecting frontend to Tenor
+	pkgver = r14.de19c75
+	pkgrel = 1
+	url = https://git.vern.cc/cobra/Soprano
+	install = soprano.install
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	depends = guile
+	depends = guile-gnutls
+	depends = guile-lib
+	source = git+https://git.vern.cc/cobra/Soprano.git
+	source = soprano.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = soprano-tenor-git

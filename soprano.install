@@ -1,0 +1,6 @@
+post_install() {
+  echo "1. Enable/Start Soprano:"
+  echo "sudo systemctl enable soprano.service"
+  echo "sudo systemctl start soprano.service"
+  echo "2. Go to http://localhost:8005"
+}

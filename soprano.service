@@ -1,0 +1,12 @@
+[Unit]
+Description=Soprano startup unit
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/guile /usr/share/webapps/soprano/soprano.scm 
+WorkingDirectory=/usr/share/webapps/soprano/
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
