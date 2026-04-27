@@ -21,4 +21,4 @@ if [[ -f "${CHATLAB_USER_FLAGS_FILE}" ]]; then
 fi
 
 # Launch
-exec /usr/bin/electron /usr/lib/chatlab/app.asar $CHATLAB_USER_FLAGS "$@"
+exec /usr/bin/electron35 /usr/lib/chatlab/app.asar $CHATLAB_USER_FLAGS "$@"
