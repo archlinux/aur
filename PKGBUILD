@@ -145,6 +145,10 @@ build() {
     -D USE_SOUP2=ON
   )
 
+  # Limit parallel builds to what the user configured in /etc/makepkg.conf, also MAKEFLAGS
+  # might contains more than just -j<N>
+  export CMAKE_BUILD_PARALLEL_LEVEL=$(echo "$MAKEFLAGS" | sed 's/.*-j\([0-9]\+\).*/\1/')
+
   # Upstream prefers Clang
   # https://gitlab.archlinux.org/archlinux/packaging/packages/webkitgtk-6.0/-/issues/4
   export CC=clang CXX=clang++
@@ -158,7 +162,7 @@ build() {
   CFLAGS+=' -fcf-protection=none'
   CXXFLAGS+=' -fcf-protection=none'
 
-  cmake -S webkitgtk-$pkgver -B build "${cmake_options[@]}"
+  cmake -S webkitgtk-$pkgver -B build -G Ninja "${cmake_options[@]}"
   cmake --build build
 }
 
