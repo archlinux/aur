@@ -1,6 +1,7 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
-pkgname=fcitx5-lotus-git
-pkgver=1.9.0.r603.ged379aa
+pkgbase=fcitx5-lotus-git
+pkgname=('fcitx5-lotus-git' 'fcitx5-lotus-openrc-git' 'fcitx5-lotus-runit-git')
+pkgver=3.0.0.r660.ga9d12d0
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
@@ -8,6 +9,10 @@ url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
 depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'python-qtpy' 'python-dbus' 'libudev.so')
 makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'libx11' 'python')
+optdepends=(
+    'fcitx5-lotus-openrc-git: OpenRC init script for fcitx5-lotus'
+    'fcitx5-lotus-runit-git: Runit service for fcitx5-lotus'
+)
 provides=('fcitx5-lotus')
 conflicts=('fcitx5-lotus')
 source=(
@@ -37,11 +42,37 @@ prepare() {
 
 build() {
     cd "$srcdir/fcitx5-lotus"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib . \
+    -DINSTALL_OPENRC=ON \
+    -DINSTALL_RUNIT=ON \
+    -DRUNIT_SV_DIR=/etc/runit/sv
     make
 }
 
-package() {
-    cd "$srcdir/fcitx5-lotus"
-    make install DESTDIR="$pkgdir"
+prepare_staging() {
+    if [ ! -d "$srcdir/staging" ]; then
+        cd "$srcdir/fcitx5-lotus"
+        make install DESTDIR="$srcdir/staging"
+    fi
+}
+
+package_fcitx5-lotus-git() {
+    prepare_staging
+    cp -a "$srcdir/staging/usr" "$pkgdir/"
+}
+
+package_fcitx5-lotus-openrc-git() {
+    depends=('fcitx5-lotus-git')
+    pkgdesc="OpenRC init script for fcitx5-lotus"
+    prepare_staging
+    install -d "$pkgdir/etc/init.d"
+    install -m755 "$srcdir/staging/etc/init.d/fcitx5-lotus" "$pkgdir/etc/init.d/"
+}
+
+package_fcitx5-lotus-runit-git() {
+    depends=('fcitx5-lotus-git')
+    pkgdesc="Runit service for fcitx5-lotus"
+    prepare_staging
+    install -d "$pkgdir/etc/runit/sv/fcitx5-lotus"
+    install -m755 "$srcdir/staging/etc/runit/sv/fcitx5-lotus/run" "$pkgdir/etc/runit/sv/fcitx5-lotus/"
 }
