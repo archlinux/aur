@@ -9,7 +9,7 @@ pkgbase = wxc
 	makedepends = cmake
 	depends = gcc
 	depends = jsoncpp
-	depends = wxwidgets
+	depends = wxwidgets-gtk3
 	source = git+https://codeberg.org/wxHaskell/wxHaskell#commit=25688550f6e13615740ffb771b00eb93efbbb485
 	sha512sums = SKIP
 
