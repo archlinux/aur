@@ -1,8 +1,8 @@
 pkgbase = subs2srs-mono-git
 	pkgdesc = Create Anki import files from movies and TV shows for language learning
-	pkgver = 29.7.r29.52c07ba
+	pkgver = 29.7.r34.924196e
 	pkgrel = 1
-	url = https://gitlab.com/fkzys/subs2srs-mono
+	url = https://github.com/fkzys/subs2srs-mono
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -18,7 +18,7 @@ pkgbase = subs2srs-mono-git
 	provides = subs2srs
 	conflicts = subs2srs-mono
 	conflicts = subs2srs
-	source = subs2srs-mono-git::git+https://gitlab.com/fkzys/subs2srs-mono.git
+	source = subs2srs-mono-git::git+https://github.com/fkzys/subs2srs-mono.git
 	sha256sums = SKIP
 
 pkgname = subs2srs-mono-git
