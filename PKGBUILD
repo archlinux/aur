@@ -3,12 +3,12 @@
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.3.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://assault.cubers.net/'
 license=('Zlib' 'custom')
-depends=('zlib' 'gcc-libs')
+depends=('zlib' 'libgcc' 'libstdc++')
 makedepends=('mesa' 'clang' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/assaultcube/AC/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgbase}"
