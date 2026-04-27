@@ -1,4 +1,4 @@
-# Maintainer: fa5e4658010be730
+# Maintainer: fkzys <fkzys at proton dot me>
 pkgname=atomic-upgrade
 pkgver=0.1.9
 pkgrel=1
