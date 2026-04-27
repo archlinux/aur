@@ -1,7 +1,7 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.8.24
+pkgver=0.8.25
 pkgrel=1
 pkgdesc="Bash scripts for building Arch Linux bootable images"
 arch=('any')
@@ -12,15 +12,16 @@ optdepends=('devtools: for building ZFS packages'
             'edk2-ovmf: for emulating UEFI with aui-run'
             'erofs-utils: for experimental EROFS support in aui-mkiso'
             'f2fs-tools: for F2FS file system option'
+            'jq: for building ZFS packages'
             'openssl: for codesigning support when building netboot artifacts'
             'pacman-contrib: for building ZFS packages'
             'qemu-desktop: virtual machine for aui-run testings')
 conflicts=('archuseriso')
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('53e5c351d5e6f9b161f98a86f496a9042354b7e7683d5fd54e1518f594559489'
+sha256sums=('09c8e37b98ffbe6877b4875828e0b22ffa7ce6ff0247bb96a6c918dfecec3cca'
             'SKIP')
-b2sums=('ef529dbc8352e085e9d83f14b096bb0d8fd351ad3d54a3503c368e8e6abcf17ca015835d2999b850b53f0f4f9b7f28e842b39ddf565002ce2b74c83b0b7fea43'
+b2sums=('733ef27270fd19c39e06214d68c0b835155f58b6198f07da3d656923cfd86cd8a38f841886a8150f95fd88a491d3bc027b82952c79c82516914fdcaed2b67bd5'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
