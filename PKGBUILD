@@ -3,8 +3,8 @@
 pkgname=gitfourchette-bin
 _pkgname=gitfourchette
 
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 arch=('x86_64' 'aarch64')
 
 pkgdesc="The comfortable Qt-based Git GUI"
@@ -33,8 +33,8 @@ source_aarch64=(
 source_x86_64=(
   ${url}/releases/download/v${pkgver}/GitFourchette-${pkgver}-${arch}.AppImage
 )
-sha256sums_x86_64=('5136aa17006fa25cc7fa328fceb51c17020f858be19bf3eccedbe6b067bc77cf')
-sha256sums_aarch64=('eb3a665acc326e06dc0a639f21a0b9f27474bb0d9aeabae963624714866b9f49')
+sha256sums_x86_64=('541b6d30d41ae6db9a4f3dbcd5d0ddd2c4e4d8629b64cd9119f448c42a4e1ba9')
+sha256sums_aarch64=('541b6d30d41ae6db9a4f3dbcd5d0ddd2c4e4d8629b64cd9119f448c42a4e1ba9')
 
 package(){
   chmod +x ./GitFourchette-${pkgver}-${arch}.AppImage
