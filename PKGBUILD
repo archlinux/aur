@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=345.260421.2
+pkgver=345.260424.1
 pkgrel=1
 _nodeversion=22
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
@@ -28,7 +28,7 @@ source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/open-quantum-safe/liboqs.git'
         'git+https://github.com/tutao/Signal-FTS5-Extension.git'
         "$pkgname.desktop")
-sha256sums=('16ad21c37912bedb859e904654dba1ba1fd7b5ba861be68b2288999d57937113'
+sha256sums=('4b252ced765ca59a77a21d1a5f1764bbd00b2e8f09cd262653850e22cb379aa7'
             'SKIP'
             'SKIP'
             'SKIP'
