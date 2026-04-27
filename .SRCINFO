@@ -1,0 +1,11 @@
+pkgbase = rnetbench
+	pkgdesc = A modern, cross-platform network benchmarking tool (download, upload, latency, jitter) written in Rust.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/umpire274/rnetbench
+	arch = x86_64
+	license = MIT
+	source = rnetbench-0.2.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/umpire274/rnetbench/releases/download/v0.2.0/rnetbench-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 1da5ee982b2f4ee86c1a98fa92b2b2d7984224eb7de072d3d98da1f06f8b62dc
+
+pkgname = rnetbench
