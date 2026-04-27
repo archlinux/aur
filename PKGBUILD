@@ -88,7 +88,7 @@ _models=(
 )
 
 backup=('etc/sglang/sglang.conf' 'etc/sglang/sglang.env')
-source=("${_pkgname}::git+https://github.com/JustinTong0323/sglang.git#branch=new-model-gg"
+source=("${_pkgname}::git+https://github.com/sgl-project/sglang.git"
         'sglang@.service'
         'sglang.conf'
         'sglang.env'

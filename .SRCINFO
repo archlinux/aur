@@ -57,7 +57,7 @@ pkgbase = sglang-git
 	conflicts = sglang
 	backup = etc/sglang/sglang.conf
 	backup = etc/sglang/sglang.env
-	source = sglang::git+https://github.com/JustinTong0323/sglang.git#branch=new-model-gg
+	source = sglang::git+https://github.com/sgl-project/sglang.git
 	source = sglang@.service
 	source = sglang.conf
 	source = sglang.env
