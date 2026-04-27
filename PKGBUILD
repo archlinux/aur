@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: UgaUgaBamBam novaria@mailbox.org
 pkgname=crucible
 pkgver=0.2.6
 pkgrel=3
