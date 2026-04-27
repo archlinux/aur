@@ -1,12 +1,13 @@
 pkgbase = iocaine-git
 	pkgdesc = The deadliest poison known to AI
 	pkgver = r775.9d133f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iocaine.madhouse-project.org/
 	arch = any
 	license = MIT
 	makedepends = cargo
 	makedepends = just
+	makedepends = clang
 	optdepends = nginx: when using nginx as reverse proxy
 	optdepends = caddy: when using caddy as reverse proxy
 	conflicts = iocaine

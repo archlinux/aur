@@ -2,12 +2,12 @@
 
 pkgname=iocaine-git
 pkgver=r775.9d133f3
-pkgrel=1
+pkgrel=2
 pkgdesc='The deadliest poison known to AI'
 arch=('any')
 url='https://iocaine.madhouse-project.org/'
 license=('MIT')
-makedepends=('cargo' 'just')
+makedepends=('cargo' 'just' 'clang')
 optdepends=('nginx: when using nginx as reverse proxy'
 			'caddy: when using caddy as reverse proxy')
 backup=('etc/iocaine/config.kdl')
