@@ -6,13 +6,16 @@ pkgname=${_pkgname}-bin
 pkgver=1.9.0
 pkgrel=1
 pkgdesc='A terminal based UNIX user and group browser'
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
-depends=('glibc')
+
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64")

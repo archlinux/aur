@@ -7,7 +7,6 @@ pkgbase = ugm-bin
 	arch = i686
 	arch = aarch64
 	license = MIT
-	depends = glibc
 	provides = ugm
 	conflicts = ugm
 	source = LICENSE-1.9.0::https://raw.githubusercontent.com/ariasmn/ugm/v1.9.0/LICENSE
