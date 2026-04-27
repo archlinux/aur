@@ -1,12 +1,12 @@
 # Maintainer: nikren <superdug000@gmail.com>
 pkgname=anilinux-electron
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.2
+pkgrel=2
 pkgdesc="Anime viewer for Linux with Shikimori OAuth integration"
 arch=('x86_64')
 url="https://github.com/Nikren2006/anilinux-electron"
 license=('MIT')
-depends=('mpv' 'fuse2')
+depends=('mpv')
 source=("$pkgname-$pkgver.AppImage::https://github.com/Nikren2006/anilinux-electron/releases/download/v$pkgver/Anilinux-electron-$pkgver.AppImage")
 sha256sums=('8f4199e099be803d65bca2de1a1ba7d7a8531b1b1b373a2f53c246822a851e64')
 
@@ -17,18 +17,10 @@ prepare() {
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
-  install -m755 "$pkgname-$pkgver.AppImage" "$pkgdir/opt/$pkgname/anilinux-electron.AppImage"
+  cp -r squashfs-root/* "$pkgdir/opt/$pkgname/"
   
-  # Create wrapper script
-  cat > "$pkgdir/opt/$pkgname/anilinux-electron" <<EOF
-#!/bin/bash
-exec /opt/$pkgname/anilinux-electron.AppImage "\$@"
-EOF
-  chmod +x "$pkgdir/opt/$pkgname/anilinux-electron"
-  
-  # Install icon
-  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  install -m644 squashfs-root/anilinux.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png" 2>/dev/null || true
+  # Fix AppRun to use correct APPDIR
+  sed -i '2i export APPDIR="/opt/'$pkgname'"' "$pkgdir/opt/$pkgname/AppRun"
   
   # Install desktop entry
   install -d "$pkgdir/usr/share/applications"
@@ -36,13 +28,17 @@ EOF
 [Desktop Entry]
 Name=Anilinux
 Comment=Anime viewer for Linux
-Exec=/opt/$pkgname/anilinux-electron
+Exec=/opt/$pkgname/AppRun
 Icon=$pkgname
 Type=Application
 Categories=Video;Player;
 EOF
   
+  # Install icon
+  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -m644 squashfs-root/anilinux.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png" 2>/dev/null || true
+  
   # Install symlink to binary
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/anilinux-electron" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/AppRun" "$pkgdir/usr/bin/$pkgname"
 }
