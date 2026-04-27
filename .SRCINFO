@@ -1,0 +1,18 @@
+pkgbase = stalwart-cli-bin
+	pkgdesc = Stalwart Command Line Interface
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/stalwartlabs/cli
+	arch = x86_64
+	arch = aarch64
+	arch = arm
+	arch = armv7
+	license = AGPL-3.0-only
+	license = LicenseRef-SEL
+	provides = stalwart-cli
+	conflicts = stalwart-cli
+	conflicts = stalwart-mail-server
+	source = stalwart-cli-v1.0.2-x86_64-unknown-linux-gnu.tar.xz::https://github.com/stalwartlabs/cli/releases/download/v1.0.2/stalwart-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha512sums = 65976fe1556f51b400ac15fea3b9c366c196bcb95200734bc17f161509acacb93a45ce2d923a5f03b5f3f9abb5895e6ff38e6d51344f7cb738350a92424bf4be
+
+pkgname = stalwart-cli-bin
