@@ -1,6 +1,6 @@
 pkgbase = python-docstring-parser
 	pkgdesc = Parse Python docstrings
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/rr-/docstring_parser
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-docstring-parser
 	makedepends = python-installer
 	makedepends = python-hatchling
 	depends = python-pytest
-	source = https://files.pythonhosted.org/packages/source/d/docstring_parser/docstring_parser-0.17.0.tar.gz
-	sha256sums = 583de4a309722b3315439bb31d64ba3eebada841f2e2cee23b99df001434c912
+	source = https://files.pythonhosted.org/packages/source/d/docstring_parser/docstring_parser-0.18.0.tar.gz
+	sha256sums = 292510982205c12b1248696f44959db3cdd1740237a968ea1e2e7a900eeb2015
 
 pkgname = python-docstring-parser

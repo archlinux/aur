@@ -2,7 +2,7 @@
 _name=docstring_parser
 pkgname="python-${_name/_/-}"
 pkgdesc="Parse Python docstrings"
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 depends=('python')
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('python-pytest')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('583de4a309722b3315439bb31d64ba3eebada841f2e2cee23b99df001434c912')
+sha256sums=('292510982205c12b1248696f44959db3cdd1740237a968ea1e2e7a900eeb2015')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
