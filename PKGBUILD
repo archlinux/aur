@@ -1,7 +1,7 @@
 # Maintainer: UgaUgaBamBam  novaria@mailbox.org
 pkgname=crucible
 pkgver=0.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux launcher for Windows games via UMU and Proton"
 arch=('any')
 url="https://github.com/northmind/Crucible"
