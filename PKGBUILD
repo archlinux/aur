@@ -2,7 +2,7 @@
 
 pkgname=stelliberty-bin
 pkgver=1.2.279
-pkgrel=15
+pkgrel=16
 pkgdesc="Modern Clash/Mihomo 客户端的二进制发行版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Kindness-Kismet/Stelliberty"
@@ -11,12 +11,7 @@ install=stelliberty-bin.install
 depends=(
   'gtk3'
   'libkeybinder3'
-  'nss'
-  'openssl'
   'libappindicator'
-  'libdbusmenu-gtk3'
-  'util-linux-libs'
-  'xz'
   'rsync'
 )
 makedepends=('libarchive' 'patchelf')
