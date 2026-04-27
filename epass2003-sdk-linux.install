@@ -1,0 +1,38 @@
+post_install() {
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm control --reload-rules || true
+    udevadm trigger || true
+  fi
+
+  cat <<'EOF'
+
+ePass2003-SDK-Linux was installed successfully.
+
+PKCS#11 library path:
+  /usr/lib/libcastle.so.1.0.0
+
+Tools:
+  pkimanager
+  pkimanager_admin
+
+Run the following command to register the PKCS#11 module in the NSS user database:
+
+  modutil -dbdir sql:$HOME/.pki/nssdb \
+    -add "ePass2003" \
+    -libfile /usr/lib/libcastle.so.1.0.0
+
+When finished, disconnect and reconnect the USB token.
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm control --reload-rules || true
+    udevadm trigger || true
+  fi
+}
