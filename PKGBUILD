@@ -3,6 +3,7 @@
 pkgname=hacx-wad
 pkgver=1.2
 pkgrel=2
+# manual-hint: static IWAD; upstream download page lists Hacx 1.2 at http://www.drnostromo.com/hacx/page.php?content=download
 pkgdesc="Hacx IWAD (game data)"
 arch=('any')
 url="http://www.drnostromo.com/hacx/"
