@@ -1,6 +1,6 @@
 # Maintainer: ksc98 <ksc98@users.noreply.github.com>
 pkgname=nba-tv-bin
-pkgver=1.5.14
+pkgver=1.5.15
 pkgrel=1
 pkgdesc="Watch NBA streams in mpv from your terminal"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('nba-tv')
 conflicts=('nba-tv')
 
 source=("nba-tv-$pkgver-x86_64.tar.gz::https://github.com/ksc98/homebrew-tap/releases/download/nba-tv-v$pkgver/nba-tv-linux-x86_64.tar.gz")
-sha256sums=('e5641672766df2a77ed6ffc7781df866a8f8099e8f0f2a59dab8942d1385483c')
+sha256sums=('a41e7c2930a50bc19dffb7a67fb6f9ccf5bfdaf40c64628861a0cab8916b8906')
 
 package() {
     install -Dm755 "$srcdir/nba-tv" "$pkgdir/usr/bin/nba-tv"
