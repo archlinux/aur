@@ -1,8 +1,8 @@
 pkgbase = transformers_ocr-git
 	pkgdesc = An OCR tool for manga using Transformers (maintained fork)
-	pkgver = 0.21.0.r0.g148d2b4
+	pkgver = 2a7c3c4
 	pkgrel = 1
-	url = https://gitlab.com/fkzys/transformers_ocr
+	url = https://github.com/fkzys/transformers_ocr
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -17,7 +17,7 @@ pkgbase = transformers_ocr-git
 	optdepends = libnotify: desktop notifications
 	provides = transformers_ocr
 	conflicts = transformers_ocr
-	source = transformers_ocr-git::git+https://gitlab.com/fkzys/transformers_ocr.git
+	source = transformers_ocr-git::git+https://github.com/fkzys/transformers_ocr.git
 	sha256sums = SKIP
 
 pkgname = transformers_ocr-git

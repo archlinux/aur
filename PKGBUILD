@@ -1,11 +1,12 @@
 # Maintainer: fkzys <fkzys at proton dot me>
 
 pkgname=transformers_ocr-git
-pkgver=0.21.0.r0.g148d2b4
+pkgver=2a7c3c4
 pkgrel=1
+GITFLAGS=('--depth=0')
 pkgdesc="An OCR tool for manga using Transformers (maintained fork)"
 arch=(any)
-url="https://gitlab.com/fkzys/transformers_ocr"
+url="https://github.com/fkzys/transformers_ocr"
 license=('GPL-3.0-or-later')
 depends=('python')
 optdepends=(
@@ -26,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+    git describe --tags --always --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
