@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='1.3.2'
+_upstreamver='1.4.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='diwire'
@@ -18,7 +18,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-pydantic' 'python-pydantic-settings' 'python-fastapi' 'python-typing_extensions' 'python-pytest')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('21b410d95f1f74d2f73c7d697415bf5ce20f718c1f2d4cdce815eaca487d7835')
+sha256sums=('962f3cb4472b38efd2eab886f590f65c719bba2b9f43ca0779843d16e3b074b5')
 
 
 build() {
