@@ -5,7 +5,6 @@ pkgbase = wooting-analog-sdk-bin
 	url = https://github.com/WootingKb/wooting-analog-sdk
 	arch = x86_64
 	license = MPL-2.0
-	optdepends = universal-analog-plugin-bin: The analog plugins
 	source = https://github.com/WootingKb/wooting-analog-sdk/releases/download/v0.9.1/wooting-analog-sdk-v0.9.1-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 8df8ae7ff41c46e57aa9f8a5fa52e1ed82cf88e5dc1b90693fbc87a6213d4a11
 
