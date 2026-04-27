@@ -1,0 +1,17 @@
+pkgbase = python-tree-sitter-powershell
+	pkgdesc = A Powershell grammar for tree-sitter
+	pkgver = 0.26.3
+	pkgrel = 1
+	url = https://pypi.org/project/tree-sitter-powershell/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tree-sitter
+	source = python-tree-sitter-powershell-0.26.3.tar.gz::https://files.pythonhosted.org/packages/55/bc/5f0735a5836fab553c13673897988d2782d52cb0ca0541f47032b2c63e27/tree_sitter_powershell-0.26.3.tar.gz
+	sha256sums = 9f349e60a55f29e98bbe12b19d16e95d5956f9816d7df974d57b806787389330
+
+pkgname = python-tree-sitter-powershell
