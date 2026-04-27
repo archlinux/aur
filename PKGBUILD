@@ -2,8 +2,8 @@
 
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
-pkgver=r35.338da1c
-pkgrel=2
+pkgver=r59.6ff18ab
+pkgrel=1
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-contrib"
@@ -56,77 +56,123 @@ package() {
 set -euo pipefail
 
 # =============================================================================
-# 功能描述:
-#   Shorin Contrib 的主调度器。
-#   支持动态解析子命令描述，执行对应脚本，以及为普通用户生成免密本地快捷链接。
+# 功能描述: Shorin Contrib 的主调度器。
+#   支持动态解析子命令描述，并根据 LANG 环境变量显示中文/英文。
 # =============================================================================
 
 LIB_DIR="/usr/lib/shorin-contrib"
+
+# --------------------- 语言检测 ---------------------
+if [[ "${LANG:-}" == zh_CN* ]]; then
+    IS_CN=true
+else
+    IS_CN=false
+fi
+
+# --------------------- 双语字符串定义 ---------------------
+if $IS_CN; then
+    USAGE_STR="用法:"
+    AVAIL_STR="可用子命令:"
+    ENV_STR="环境管理:"
+    LINK_DESC="生成本地用户的快捷软链接 (全程免密)"
+    UNLINK_DESC="移除本地软链接"
+    LINK_START="开始生成本地快捷命令..."
+    LINK_DONE="链接部署完成！"
+    LINK_ITEM="[User] 已链接:"
+    UNLINK_START="开始清理快捷命令..."
+    UNLINK_DONE="链接清理完成！"
+    UNLINK_ITEM="[User] 已移除:"
+    UNKNOWN_CMD="未知子命令"
+    SUB_PLACEHOLDER="<子命令>"
+    OPT_PLACEHOLDER="[选项]"
+else
+    USAGE_STR="Usage:"
+    AVAIL_STR="Available subcommands:"
+    ENV_STR="Environment management:"
+    LINK_DESC="Create no-password local symlinks for user"
+    UNLINK_DESC="Remove local symlinks"
+    LINK_START="Creating local symlinks..."
+    LINK_DONE="Symlink deployment complete!"
+    LINK_ITEM="[User] Linked:"
+    UNLINK_START="Cleaning up symlinks..."
+    UNLINK_DONE="Symlink cleanup complete!"
+    UNLINK_ITEM="[User] Removed:"
+    UNKNOWN_CMD="unknown subcommand"
+    SUB_PLACEHOLDER="<subcommand>"
+    OPT_PLACEHOLDER="[options]"
+fi
 
 # 颜色定义
 BLUE='\033[0;34m'
 NC='\033[0m'
 
+# ===================== 无参数时显示帮助 =====================
 if [ $# -eq 0 ]; then
-    echo -e "用法: ${BLUE}shorin${NC} <子命令> [选项]"
-    echo -e "\n可用子命令:"
-    
-    # 遍历库目录并提取描述
+    echo -e "${USAGE_STR} ${BLUE}shorin${NC} ${SUB_PLACEHOLDER} ${OPT_PLACEHOLDER}"
+    echo -e "\n${AVAIL_STR}"
+
+    # 遍历库目录，提取对应语言的描述
     for script in "$LIB_DIR"/*; do
         if [ -x "$script" ]; then
             name=$(basename "$script")
-            # 提取第二行，去掉开头的 "# " 或 "# Description: "
-            desc=$(sed -n '2p' "$script" | sed -E 's/^# (Description: )?//')
+            if $IS_CN; then
+                # 中文：提取第二行，去掉 "# 描述：" 前缀
+                desc=$(sed -n '2p' "$script" | sed -E 's/^#[[:space:]]*描述：[[:space:]]*//')
+            else
+                # 英文：提取第三行，去掉 "# Description:" 前缀
+                desc=$(sed -n '3p' "$script" | sed -E 's/^#[[:space:]]*Description:[[:space:]]*//')
+            fi
+            # 若描述为空，显示占位符
+            [ -z "$desc" ] && desc="-"
             printf "  ${BLUE}%-15s${NC} %s\n" "$name" "$desc"
         fi
     done | sort
-    
-    echo -e "\n环境管理:"
-    printf "  ${BLUE}%-15s${NC} %s\n" "link" "生成本地用户的快捷软链接 (全程免密)"
-    printf "  ${BLUE}%-15s${NC} %s\n" "unlink" "移除本地软链接"
+
+    echo -e "\n${ENV_STR}"
+    printf "  ${BLUE}%-15s${NC} %s\n" "link"   "$LINK_DESC"
+    printf "  ${BLUE}%-15s${NC} %s\n" "unlink" "$UNLINK_DESC"
     exit 1
 fi
 
 COMMAND="$1"
 shift
 
-# 软链接管理模块
+# ===================== 软链接管理 =====================
 if [ "$COMMAND" = "link" ]; then
     mkdir -p "$HOME/.local/bin"
-    echo "开始生成本地快捷命令..."
+    echo "$LINK_START"
     for script in "$LIB_DIR"/*; do
         if [ -f "$script" ]; then
             base_name=$(basename "$script")
-            # 排除已经是全局命令的脚本
             if [[ "$base_name" != "quicksave" && "$base_name" != "quickload" && "$base_name" != "change-grub-theme" ]]; then
                 ln -sf "$script" "$HOME/.local/bin/$base_name"
-                echo "  [User] 已链接: ~/.local/bin/$base_name"
+                echo "  ${LINK_ITEM} ~/.local/bin/$base_name"
             fi
         fi
     done
-    echo -e "\n链接部署完成！"
+    echo -e "\n${LINK_DONE}"
     exit 0
 elif [ "$COMMAND" = "unlink" ]; then
-    echo "开始清理快捷命令..."
+    echo "$UNLINK_START"
     for script in "$LIB_DIR"/*; do
         if [ -f "$script" ]; then
             base_name=$(basename "$script")
-            # 排除已经是全局命令的脚本
             if [[ "$base_name" != "quicksave" && "$base_name" != "quickload" && "$base_name" != "change-grub-theme" ]]; then
                 rm -f "$HOME/.local/bin/$base_name"
-                echo "  [User] 已移除: ~/.local/bin/$base_name"
+                echo "  ${UNLINK_ITEM} ~/.local/bin/$base_name"
             fi
         fi
     done
-    echo -e "\n链接清理完成！"
+    echo -e "\n${UNLINK_DONE}"
     exit 0
 fi
 
+# ===================== 执行子命令 =====================
 TARGET_SCRIPT="$LIB_DIR/$COMMAND"
 if [ -x "$TARGET_SCRIPT" ]; then
     exec "$TARGET_SCRIPT" "$@"
 else
-    echo "shorin: 未知子命令 '$COMMAND'" >&2
+    echo "shorin: ${UNKNOWN_CMD} '$COMMAND'" >&2
     exit 1
 fi
 EOF
