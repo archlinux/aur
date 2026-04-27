@@ -6,7 +6,7 @@ _appname=hmx
 pkgname=${_gitname}-bin
 pkgdesc="A new UX layer for the terminal, built on tmux"
 
-pkgver=0.102.2
+pkgver=0.103.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('83d95437b5dcc77a6ab79b970da1adf97bd697f080bfbacb1596791521d010f8'
+sha256sums=('773bcff354ec6abba0beb81af759f9a4311018785ef8b553982dfcc3fa9ae0ac'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('eac625d5c251bfa8983b63ce4443f0f2a3bf716721718c4862faca9d95b516de')
-sha256sums_aarch64=('c9cea0fa68edecb222b36a51352d00026b33434dd48d46bb030217878b78c10e')
+sha256sums_x86_64=('b9ff841674d22078416335854374e0d6f84556b1db07d647bf54f3e1819bb677')
+sha256sums_aarch64=('35303f11df2e1e679e8d10af500a72fe49831bc1aea4144d73c3d2b5f7d97b4f')
 
 
 package() {
