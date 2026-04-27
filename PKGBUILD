@@ -11,7 +11,7 @@ conflicts=('python-clikit')
 url="https://github.com/sdispater/${_pkgname}"
 license=('MIT')
 depends=('python-pastel>=0.2.0' 'python-pastel<0.3.0' 'python-pylev>=1.3' 'python-pylev<2.0' 'python>=3.7' 'python<4.0')
-makedepends=(python-build python-installer python-wheel)
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
