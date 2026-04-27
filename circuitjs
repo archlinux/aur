@@ -1,0 +1,2 @@
+#!/bin/sh
+exec electron /opt/circuitjs/circuitjs.html

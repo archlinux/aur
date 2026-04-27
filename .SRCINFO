@@ -1,0 +1,18 @@
+pkgbase = circuitjs-electron-git
+	pkgdesc = Falstad circuit simulator (CircuitJS1), git HEAD, with Electron wrapper
+	pkgver = 20260426
+	pkgrel = 1
+	url = https://www.falstad.com/circuit/
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = jdk21-openjdk
+	depends = electron
+	source = git+https://github.com/pfalstad/circuitjs1.git
+	source = circuitjs.desktop
+	source = circuitjs
+	sha1sums = SKIP
+	sha1sums = fc64f94777891f25521ed5b447bd6f1db8e4ab86
+	sha1sums = 69721990fa2a3fb3bb73e436f70f55d5842b8334
+
+pkgname = circuitjs-electron-git

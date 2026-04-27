@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CircuitJS
+GenericName=Circuit simulator
+Type=Application
+Terminal=false
+Keywords=Electronics;Simulation;Simulator;
+Exec=/usr/bin/circuitjs
+Icon=/opt/circuitjs/icon1024.png
+Categories=Science;Education
