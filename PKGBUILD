@@ -1,5 +1,5 @@
 pkgname=hiresti
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="High-Res TIDAL player for Linux with bit-perfect playback support"
 arch=('x86_64')
@@ -56,7 +56,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/yelanxin/hiresTI/archive/refs/tags/${_tag}.tar.gz"
 )
 sha256sums=(
-  'a76cea72481b74148d8fa71ed78b21a13bfe929cecc5fc3d147487a8c309d521'
+  '6e5f3d7b311c06655f3f11e06de714ed59fa4ac508368d129cb62b8d88081feb'
 )
 
 build() {
