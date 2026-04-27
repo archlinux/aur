@@ -2,7 +2,7 @@
 
 pkgname=universal-analog-plugin-bin
 _pkgname=universal-analog-plugin
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A plugin for the Wooting Analog SDK that makes it support a wider range of keyboards."
 arch=('x86_64')
