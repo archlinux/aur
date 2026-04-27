@@ -20,7 +20,7 @@ _securityver=2
 _updatever=12
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 # pkgver=${_majorver}.u${_updatever}
-pkgrel=2
+pkgrel=3
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 # _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=(
   bash
   cpio
   freetype2
-  gcc-libs
+  libgcc
   giflib
   glibc
   graphviz
@@ -90,7 +90,7 @@ _commondeps=(
   'java-runtime-common>=3'
   ca-certificates-utils
   freetype2
-  gcc-libs
+  libgcc
   glibc
   harfbuzz
   lcms2

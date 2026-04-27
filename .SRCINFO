@@ -1,6 +1,6 @@
 pkgbase = java24-openjdk
 	pkgver = 24.0.2.u12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = LicenseRef-Java
@@ -9,7 +9,7 @@ pkgbase = java24-openjdk
 	makedepends = bash
 	makedepends = cpio
 	makedepends = freetype2
-	makedepends = gcc-libs
+	makedepends = libgcc
 	makedepends = giflib
 	makedepends = glibc
 	makedepends = graphviz
@@ -47,7 +47,7 @@ pkgname = jdk24-openjdk
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
 	depends = freetype2
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
 	depends = harfbuzz
 	depends = lcms2
@@ -79,13 +79,13 @@ pkgname = jdk24-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=24
 	provides = java-environment-openjdk=24
-	provides = jdk24-openjdk=24.0.2.u12-2
+	provides = jdk24-openjdk=24.0.2.u12-3
 	provides = java-runtime=24
 	provides = java-runtime-openjdk=24
-	provides = jre24-openjdk=24.0.2.u12-2
+	provides = jre24-openjdk=24.0.2.u12-3
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-openjdk=24
-	provides = jre24-openjdk-headless=24.0.2.u12-2
+	provides = jre24-openjdk-headless=24.0.2.u12-3
 	conflicts = jre24-openjdk
 	conflicts = jre24-openjdk-headless
 	backup = etc/java24-openjdk/logging.properties
@@ -109,7 +109,7 @@ pkgname = jre24-openjdk
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
 	depends = freetype2
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
 	depends = harfbuzz
 	depends = lcms2
@@ -127,10 +127,10 @@ pkgname = jre24-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=24
 	provides = java-runtime-openjdk=24
-	provides = jre24-openjdk=24.0.2.u12-2
+	provides = jre24-openjdk=24.0.2.u12-3
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-openjdk=24
-	provides = jre24-openjdk-headless=24.0.2.u12-2
+	provides = jre24-openjdk-headless=24.0.2.u12-3
 	conflicts = jdk24-openjdk
 	conflicts = jre24-openjdk-headless
 	backup = etc/java24-openjdk/logging.properties
@@ -154,7 +154,7 @@ pkgname = jre24-openjdk-headless
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
 	depends = freetype2
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
 	depends = harfbuzz
 	depends = lcms2
@@ -168,7 +168,7 @@ pkgname = jre24-openjdk-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-openjdk=24
-	provides = jre24-openjdk-headless=24.0.2.u12-2
+	provides = jre24-openjdk-headless=24.0.2.u12-3
 	conflicts = jdk24-openjdk
 	conflicts = jre24-openjdk
 	backup = etc/java24-openjdk/logging.properties
@@ -188,10 +188,10 @@ pkgname = jre24-openjdk-headless
 
 pkgname = openjdk24-doc
 	pkgdesc = OpenJDK Java 24 documentation
-	depends = jdk24-openjdk=24.0.2.u12-2
-	provides = openjdk24-doc=24.0.2.u12-2
+	depends = jdk24-openjdk=24.0.2.u12-3
+	provides = openjdk24-doc=24.0.2.u12-3
 
 pkgname = openjdk24-src
 	pkgdesc = OpenJDK Java 24 sources
-	depends = jdk24-openjdk=24.0.2.u12-2
-	provides = openjdk24-src=24.0.2.u12-2
+	depends = jdk24-openjdk=24.0.2.u12-3
+	provides = openjdk24-src=24.0.2.u12-3
