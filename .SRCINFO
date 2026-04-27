@@ -1,17 +1,17 @@
 pkgbase = publii-bin
 	pkgdesc = The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.47.5
+	pkgver = 0.47.6
 	pkgrel = 1
 	url = https://getpublii.com
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron37
+	depends = electron39
 	depends = libsecret
-	provides = publii=0.47.5
+	provides = publii=0.47.6
 	conflicts = publii
-	source = publii-0.47.5.rpm::https://getpublii.com/download/Publii-0.47.5.rpm
+	source = publii-0.47.6.rpm::https://getpublii.com/download/Publii-0.47.6.rpm
 	source = publii.sh
-	sha256sums = d20dfd0732bb17fd00aa73219094e0485b81f2da3f235d8b85c562c0cec8f836
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 3ddd45f43f8465500bee78451b576a8a5f9fdd4ab6d2dbe04f9c3ccd0b7be754
+	sha256sums = 3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5
 
 pkgname = publii-bin
