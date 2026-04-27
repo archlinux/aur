@@ -3,7 +3,7 @@ pkgname=escrcpy
 pkgver=2.9.0
 _electronversion=33
 _nodeversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
     'aarch64'
@@ -33,7 +33,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('57d4530b1be5b1feda501c55f1612e9dce5cb344391d0412bf5d1e56f26af4e4'
-            '3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
