@@ -4,7 +4,7 @@
 _pkgbase=efibooteditor
 pkgbase=${_pkgbase}-git
 pkgname=(efibooteditor-git efibooteditor-qt5-git)
-pkgver=r428.11bb3d2
+pkgver=r441.da9b4df
 pkgrel=1
 pkgdesc="Boot Editor for (U)EFI based systems."
 arch=(x86_64 aarch64 armv7h)
@@ -12,6 +12,10 @@ url="https://github.com/Neverous/efibooteditor"
 license=(LGPL3)
 depends=(efivar zlib qt6-base qt5-base qt6-svg qt5-svg)
 makedepends=(cmake git qt6-tools qt5-tools)
+optdepends=(
+    'polkit: to run EFIBootEditor from application menu'
+    'xorg-xhost: authorization from wayland'
+)
 source=("${pkgbase}::git+${url}.git?signed")
 b2sums=("SKIP")
 validpgpkeys=(

@@ -1,6 +1,6 @@
 pkgbase = efibooteditor-git
 	pkgdesc = Boot Editor for (U)EFI based systems.
-	pkgver = r428.11bb3d2
+	pkgver = r441.da9b4df
 	pkgrel = 1
 	url = https://github.com/Neverous/efibooteditor
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = efibooteditor-git
 	depends = qt5-base
 	depends = qt6-svg
 	depends = qt5-svg
+	optdepends = polkit: to run EFIBootEditor from application menu
+	optdepends = xorg-xhost: authorization from wayland
 	source = efibooteditor-git::git+https://github.com/Neverous/efibooteditor.git?signed
 	validpgpkeys = 9E76A390AAF9772C8448DCCEE4F948F71FEE7375
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
