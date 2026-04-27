@@ -1,0 +1,18 @@
+pkgbase = quarrel-git
+	pkgdesc = Lib for command line argument parsing.
+	pkgver = r869.9d0d482
+	pkgrel = 1
+	url = https://github.com/Aylur/astal
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	provides = libquarrel.so=0-64
+	source = git+https://github.com/Aylur/astal.git
+	sha256sums = SKIP
+
+pkgname = quarrel-git
