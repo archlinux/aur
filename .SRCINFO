@@ -1,6 +1,6 @@
 pkgbase = sglang-git
 	pkgdesc = A fast serving framework for large language models and vision language models
-	pkgver = r12023.c2ec64f243
+	pkgver = r11993.d773133086
 	pkgrel = 1
 	url = https://github.com/sgl-project/sglang
 	arch = x86_64
@@ -52,6 +52,7 @@ pkgbase = sglang-git
 	optdepends = python-sentencepiece: Tokenization
 	optdepends = python-soundfile: Audio file support
 	optdepends = python-tiktoken: OpenAI tokenizer
+	optdepends = python-tilelang: DeepSeek V4 model support
 	optdepends = python-timm: Vision model library
 	optdepends = uvicorn: ASGI server
 	optdepends = python-uvloop: Fast event loop
@@ -59,7 +60,7 @@ pkgbase = sglang-git
 	conflicts = sglang
 	backup = etc/sglang/sglang.conf
 	backup = etc/sglang/sglang.env
-	source = sglang::git+https://github.com/sgl-project/sglang.git
+	source = sglang::git+https://github.com/sgl-project/sglang.git#branch=amd/deepseek_v4
 	source = sglang@.service
 	source = sglang.conf
 	source = sglang.env

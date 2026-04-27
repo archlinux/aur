@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r12023.c2ec64f243
+pkgver=r11993.d773133086
 pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
@@ -59,6 +59,7 @@ optdepends=(
   'python-sentencepiece: Tokenization'
   'python-soundfile: Audio file support'
   'python-tiktoken: OpenAI tokenizer'
+  'python-tilelang: DeepSeek V4 model support'
   'python-timm: Vision model library'
   'uvicorn: ASGI server'
   'python-uvloop: Fast event loop'
@@ -90,7 +91,7 @@ _models=(
 )
 
 backup=('etc/sglang/sglang.conf' 'etc/sglang/sglang.env')
-source=("${_pkgname}::git+https://github.com/sgl-project/sglang.git"
+source=("${_pkgname}::git+https://github.com/sgl-project/sglang.git#branch=amd/deepseek_v4"
         'sglang@.service'
         'sglang.conf'
         'sglang.env'
