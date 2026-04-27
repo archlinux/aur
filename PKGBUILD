@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lhs
-_pkgver=1.2.1
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('12128ac8afac4407eb752a4234459686')
-b2sums=('de9ec8a0b77129b87b4b624ffe53ff2d96837c778e434e51142a6bd271602af947679d2e38d0d701e26c2cc44a84fc51cf4c32eccf8c331078a05371e2fed86b')
+md5sums=('70018dd2a1ea2c8070048efe07ea3583')
+b2sums=('db3661699269b626779caba6bfc4fbe4487712fb7c40e72538cb1769f65a0e052e74e245c986f45094b48b97ca1fbc9efc4001db429ff80b3296a26d6b62f7e7')
 
 build() {
   mkdir build
