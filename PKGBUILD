@@ -1,8 +1,8 @@
 # Maintainer: Jonatan Jonasson <notes@madeingotland.com>
 
 pkgname=openai-codex-reasoning
-pkgver=0.125.0
-pkgrel=1
+pkgver=0.124.0
+pkgrel=2
 pkgdesc="OpenAI Codex CLI fork with inline reasoning traces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OneNoted/codex"
@@ -24,10 +24,12 @@ provides=('openai-codex')
 conflicts=(
   'openai-codex'
   'openai-codex-bin'
+  'openai-codex-reasoning-bin'
 )
+replaces=('openai-codex-reasoning-bin')
 options=('!lto')
 
-_fork_tag='aur-v0.125.0-reasoning.1'
+_fork_tag='aur-v0.124.0-reasoning.1'
 _source_dir='codex'
 source=(
   "${_source_dir}::git+https://github.com/OneNoted/codex.git#tag=${_fork_tag}"
