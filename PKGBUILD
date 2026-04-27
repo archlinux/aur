@@ -1,9 +1,9 @@
 # Maintainer: ple <ple21108@gmail.com>
 # Contributor: Atte Virtanen <aten.email@gmail.com>
 pkgname=vrk-mpollux-digisign-client
-pkgver=4.4.0_9019
+pkgver=4.4.0b_9052
 pkgrel=1
-epoch=4
+epoch=5
 pkgdesc="Client program for Finnish chip ID cards"
 arch=('x86_64')
 url="https://dvv.fi/linux-versiot"
@@ -11,9 +11,9 @@ license=('custom')
 depends=('pcsclite' 'qt5-base' 'nss')
 install=vrk-mpollux-digisign-client.install
 
-source_x86_64=($pkgname-$pkgver.deb::"https://files.fineid.fi/download/digisign/${pkgver%_*}/linux/mpollux-digisign-client-for-dvv_${pkgver//_/-}_amd64.deb")
+source_x86_64=($pkgname-$pkgver.deb::"https://files.fineid.fi/download/digisign/${pkgver%_*}/linux/mpollux-digisign-client-for-dvv_$(tmp=${pkgver//_/-}; printf '%s' ${tmp//[a-z]/})_amd64.deb")
 
-sha256sums_x86_64=('efc4fd2ed98eb41f7ae4b2f6b75a98627e70546d53acd951e9f28cc7243eae1d')
+sha256sums_x86_64=('032077778089ffe2686001663c743b101248ec48d919d8d8954aefca5914115d')
 
 backup=('etc/xdg/autostart/mpollux-digisign-client.desktop'
         'etc/xdg/Fujitsu/CCryptoLib.conf')
