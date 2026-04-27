@@ -1,14 +1,14 @@
 pkgbase = playwright-cli
 	pkgdesc = CLI for browser automation - record, generate code, inspect selectors, take screenshots
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://playwright.dev/
 	arch = any
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = cli-0.1.8.tgz
-	source = https://registry.npmjs.org/@playwright/cli/-/cli-0.1.8.tgz
-	sha256sums = ed42526772b0ce7f777b86f6c00701fe3f5ae55ba980e511e1fd2eb37d4f7da4
+	noextract = cli-0.1.9.tgz
+	source = https://registry.npmjs.org/@playwright/cli/-/cli-0.1.9.tgz
+	sha256sums = 6be72037aa032f75349a9a1eecf67bae6120aeeb2855ea53adb30fbe6bd5931b
 
 pkgname = playwright-cli
