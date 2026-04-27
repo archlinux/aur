@@ -1,0 +1,32 @@
+diff -ura vod2pod-rss-1.2.4/src/main.rs vod2pod-rss-1.2.4.new/src/main.rs
+--- vod2pod-rss-1.2.4/src/main.rs	2025-04-04 09:24:03.000000000 +0200
++++ vod2pod-rss-1.2.4.new/src/main.rs	2026-04-26 09:14:39.261875923 +0200
+@@ -48,14 +48,14 @@
+     if let Some(ref cached_version) = cached_version {
+         if cached_version != app_version {
+             info!("detected version change ({cached_version} != {app_version}) flushing redis DB");
+-            redis::cmd("FLUSHDB").query_async(&mut con).await?;
++            redis::cmd("FLUSHDB").query_async::<()>(&mut con).await?;
+         }
+     }
+ 
+     redis::cmd("SET")
+         .arg("version")
+         .arg(app_version)
+-        .query_async(&mut con)
++        .query_async::<()>(&mut con)
+         .await?;
+     debug!("set cached app version to {app_version}");
+ 
+diff -ura vod2pod-rss-1.2.4/src/provider/twitch.rs vod2pod-rss-1.2.4.new/src/provider/twitch.rs
+--- vod2pod-rss-1.2.4/src/provider/twitch.rs	2025-04-04 09:24:03.000000000 +0200
++++ vod2pod-rss-1.2.4.new/src/provider/twitch.rs	2026-04-26 09:14:50.814782856 +0200
+@@ -334,7 +334,7 @@
+             redis::cmd("SET")
+                 .arg(OAuthCredentials::key())
+                 .arg(oauth_credentials.clone())
+-                .query_async(&mut redis)
++                .query_async::<()>(&mut redis)
+                 .await?;
+ 
+             info!(

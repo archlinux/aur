@@ -1,0 +1,17 @@
+[Unit]
+Description=Vod2pod-rss converts a YouTube or Twitch channel into a podcast 
+After=network-online.target
+
+[Service]
+WorkingDirectory=/usr/share/webapps/vod2pod-rss/
+ExecStart=/usr/bin/vod2pod-rss
+Restart=always
+SyslogIdentifier=vod2pod-rss
+DynamicUser=yes
+EnvironmentFile=/etc/default/vod2pod-rss
+StateDirectory=vod2pod-rss
+LogsDirectory=vod2pod-rss
+CacheDirectory=vod2pod-rss
+
+[Install]
+WantedBy=multi-user.target

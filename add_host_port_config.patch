@@ -1,0 +1,13 @@
+diff -ura vod2pod-rss-1.2.4.orig/src/main.rs vod2pod-rss-1.2.4/src/main.rs
+--- vod2pod-rss-1.2.4.orig/src/main.rs	2026-04-26 12:22:11.702594037 +0200
++++ vod2pod-rss-1.2.4/src/main.rs	2026-04-26 12:22:59.489234526 +0200
+@@ -25,7 +25,8 @@
+         );
+     }
+ 
+-    let listener = TcpListener::bind("0.0.0.0:8080").expect("Failed to bind");
++    let listen_host_port = std::env::var("VOD2POD_LISTEN_HOST_PORT").expect("Failed to get env var VOD2POD_LISTEN_HOST_PORT");
++    let listener = TcpListener::bind(listen_host_port).expect("Failed to bind");
+     info!("listening on http://{}", listener.local_addr().unwrap());
+     server::spawn_server(listener)
+         .expect("could not setup server")
