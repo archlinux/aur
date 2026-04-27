@@ -23,8 +23,8 @@ noextract=(
   "${_headers_asset}"
 )
 sha256sums=(
-  '8fdec5202c255421a832b13d703ba5ff818ecbed0f1f62c37fc8f4099e0f3867'
-  '74e01b6e966977fdbefd2a6d605ce03adf589acef298feff8f3c22e3499313f6'
+  '11629603c47e76ffd77253435c79df49aaeec5c40caa1d2637e76d73cd2b895c'
+  '681d1450df93d37f2e3bf1c670d1d6a22487791f9cae68edd0abec77ea58271c'
 )
 
 _extract_pkg_payload() {
