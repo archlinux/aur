@@ -1,0 +1,9 @@
+pkgbase = achlys
+	pkgdesc = Through the veil of the machine
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/q1sh101/achlys
+	arch = x86_64
+	license = MIT
+
+pkgname = achlys
