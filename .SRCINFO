@@ -1,18 +1,19 @@
 pkgbase = mingw-w64-flint
 	pkgdesc = A C library for doing number theory (mingw-w64)
-	pkgver = 3.4.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = http://www.flintlib.org
 	arch = any
 	license = LGPL-3.0-only
 	makedepends = mingw-w64-cmake
 	makedepends = python
+	depends = mingw-w64-crt
 	depends = mingw-w64-mpfr
 	depends = mingw-w64-cblas
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/flintlib/flint/archive/refs/tags/v3.4.0.tar.gz
-	sha256sums = 0a681ee6f02356ae8ab1b87eab2ad239598ec78563740547f6039cc256153eb8
+	source = https://github.com/flintlib/flint/archive/refs/tags/v3.5.0.tar.gz
+	sha256sums = 27f06fec6e311afe92ab89e0f486c131b68ab95cd3c842914ff37f17789dcf76
 
 pkgname = mingw-w64-flint
