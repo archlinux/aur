@@ -4,18 +4,29 @@
 pkgbase=efibooteditor
 pkgname=(efibooteditor efibooteditor-qt5)
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Boot Editor for (U)EFI based systems."
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Neverous/efibooteditor"
 license=(LGPL3)
 depends=(efivar zlib qt6-base qt5-base qt6-svg qt5-svg)
 makedepends=(cmake git qt6-tools qt5-tools)
-source=("${pkgbase}::git+${url}.git?signed#tag=v${pkgver}")
-b2sums=('685c3558eff2b556d86f8e32e8c64b7d6eda4fc8d30c54e1189054eceb517dfd683fb7fef99896eb8c4dbfe855ecb72ec13a138fdd5ce9eb4e4226dfef4b4949')
+optdepends=(
+    'polkit: to run EFIBootEditor from application menu'
+    'xorg-xhost: authorization from wayland'
+)
+source=("${pkgbase}::git+${url}.git?signed#tag=v${pkgver}" "exclude-apprun.patch")
+b2sums=('685c3558eff2b556d86f8e32e8c64b7d6eda4fc8d30c54e1189054eceb517dfd683fb7fef99896eb8c4dbfe855ecb72ec13a138fdd5ce9eb4e4226dfef4b4949'
+        '3830fc0c16301dac69b55011ba139711778e8af25c4d8956ab77f6d5ca067851cca424cd23edca6e9668f583a3697b902c3cd970bdef699485594ef9bc73e018')
 validpgpkeys=(
     "9E76A390AAF9772C8448DCCEE4F948F71FEE7375" # Maciej Szeptuch <neverous at neverous dot info>
 )
+
+prepare() {
+    cd ${pkgbase} || exit
+
+    patch -Np1 -i ../exclude-apprun.patch
+}
 
 build() {
     cd ${pkgbase} || exit

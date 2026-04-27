@@ -1,0 +1,21 @@
+From da9b4df41dd40d2c73ae4a77d2d7f59497568fb6 Mon Sep 17 00:00:00 2001
+From: Maciej Szeptuch <765629+Neverous@users.noreply.github.com>
+Date: Mon, 27 Apr 2026 23:36:22 +0200
+Subject: [PATCH] remove AppRun from default install targets (#524)
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2c34554..705ff3b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -405,6 +405,7 @@ else()
+             DESTINATION .
+             RENAME AppRun
+             COMPONENT AppImage
++            EXCLUDE_FROM_ALL
+         )
+         install(FILES misc/${PROJECT_NAME_CAPITALIZED}.desktop
+             DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
