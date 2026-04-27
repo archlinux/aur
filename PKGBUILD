@@ -52,6 +52,7 @@ Icon=deadsync
 Categories=Game;
 Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
+Actions=OpenConfigDir;OpenSongsDir;
 
 [Desktop Action OpenConfigDir]
 Name=Open Config Directory
