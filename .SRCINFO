@@ -1,7 +1,7 @@
 pkgbase = r-vetiver
 	pkgdesc = Version, Share, Deploy, and Monitor Models
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=vetiver
 	arch = any
 	license = MIT

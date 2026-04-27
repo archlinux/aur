@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
-_cranname=vetiver
-_cranver=0.2.7
+_pkgname=vetiver
+_pkgver=0.2.7
 pkgname=r-vetiver
 pkgdesc="Version, Share, Deploy, and Monitor Models"
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=3
 makedepends=("gcc-fortran")
 
 arch=("any")
@@ -79,18 +79,18 @@ optdepends=(
     "r-xgboost"
     "r-yardstick"
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("53a1ca4f516c6f2f4e691d418a71938bce9c9fad0b8a6f877a22e36bd52d1adb")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('53a1ca4f516c6f2f4e691d418a71938bce9c9fad0b8a6f877a22e36bd52d1adb')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${srcdir}/build/${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${srcdir}/build/${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${srcdir}/build/${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${srcdir}/build/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
