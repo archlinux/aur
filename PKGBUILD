@@ -2,7 +2,7 @@
 # Created with assistance from Gemini 3.1 Pro.
 pkgname=yandex-music-downloader-gui
 pkgver=1.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Простой и красивый загрузчик музыки из Яндекс.Музыки"
 arch=('any')
 url="https://github.com/atyonekilla/yandex-music-downloader-gui"
@@ -24,6 +24,9 @@ prepare() {
   # Remove strenum dependency from pyproject.toml
   sed -i '/"StrEnum"/d' pyproject.toml
   
+  # Change setuptools to find all packages and subpackages automatically
+  sed -i 's/packages = \["ymd"\]/packages = {find = {where = ["."], include = ["*"]}}/' pyproject.toml
+
   # Patch out strenum dependency in code
   sed -i 's/from strenum import StrEnum/from enum import StrEnum/g' ymd/api.py
   sed -i 's/from strenum import LowercaseStrEnum/from enum import StrEnum/g' ymd/core.py
@@ -43,9 +46,6 @@ class LowercaseStrEnum(StrEnum):\
   
   # Patch internal imports in the vendored library itself
   find yandex_music_ymd -name "*.py" -exec sed -i 's/yandex_music/yandex_music_ymd/g' {} +
-  
-  # Ensure the vendored package is included in the build
-  sed -i 's/packages = \["ymd"\]/packages = ["ymd", "yandex_music_ymd"]/' pyproject.toml
 }
 
 build() {
