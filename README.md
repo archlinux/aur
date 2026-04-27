@@ -53,8 +53,8 @@ makepkg -sric
 
 ```bash
 # Clone the repository
-git clone https://gitlab.com/leestripp/lucid.git
-cd lucid
+git clone https://gitlab.com/leestripp/lucidvideo.git
+cd lucidvideo
 
 # Create build directory
 mkdir build && cd build
@@ -82,8 +82,8 @@ MIT License - See LICENSE file for details.
 ## Links
 
 - **AUR Package**: https://aur.archlinux.org/packages/lucidvideo
-- **Source Code**: https://gitlab.com/leestripp/lucid
-- **Bug Reports**: https://gitlab.com/leestripp/lucid/-/issues
+- **Source Code**: https://gitlab.com/leestripp/lucidvideo
+- **Bug Reports**: https://gitlab.com/leestripp/lucidvideo/-/issues
 
 ## Maintainer
 

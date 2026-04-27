@@ -4,7 +4,7 @@ pkgver=0.4.1
 pkgrel=1
 pkgdesc="Intelligent video library with AI-powered search and semantic understanding"
 arch=('x86_64')
-url="https://gitlab.com/leestripp/lucid"
+url="https://gitlab.com/leestripp/lucidvideo"
 license=('MIT')
 depends=('gtk4' 'libadwaita' 'sqlite3' 'curl' 'json-glib' 'gst-libav' 'gst-plugins-base' 'gst-plugins-good')
 makedepends=('cmake' 'ninja' 'gcc' 'pkg-config')
@@ -15,11 +15,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/leestripp/lucid/-/archive/v${pkgver}/lucid-v${pkgver}.tar.gz")
+source=("https://gitlab.com/leestripp/lucidvideo/-/archive/v${pkgver}/lucidvideo-v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/lucid-${pkgver}"
+    cd "${srcdir}/lucidvideo-${pkgver}"
     mkdir -p build
     cd build
     cmake .. \
@@ -30,10 +30,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/lucid-${pkgver}/build"
+    cd "${srcdir}/lucidvideo-${pkgver}/build"
     install -Dm755 lucidvideo "${pkgdir}/usr/bin/lucidvideo"
-    install -Dm644 "${srcdir}/lucid-${pkgver}/data/lucid.desktop" \
+    install -Dm644 "${srcdir}/lucidvideo-${pkgver}/data/lucid.desktop" \
         "${pkgdir}/usr/share/applications/lucidvideo.desktop"
-    install -Dm644 "${srcdir}/lucid-${pkgver}/resources/icons/lucid-app.svg" \
+    install -Dm644 "${srcdir}/lucidvideo-${pkgver}/resources/icons/lucid-app.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lucidvideo.svg"
 }
