@@ -1,7 +1,7 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=gog-drova-forsaken-kin
-pkgver=1.3.4.1
+pkgver=1.3.4.2
 pkgrel=1
 pkgdesc='Pixel art action RPG inspired by Celtic mythology and Gothic. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -23,7 +23,7 @@ source=(
   'drova.bash'
 )
 
-sha512sums=('65759fced3f58bc611d3d5d56906635829c1e9b123454147e47c1e777e5856c20557360172593a3db331a3ea4a983d2990e07c0a64450d106374b1179ed031c4'
+sha512sums=('1eac11569b3fc723c28845852b6ec380782ce6145d6e9087d532e9f6c05c4571bb72ce630e1e3e65adf3beb28e8bb75c577b36b52073b50efb847ca38a5613dc'
             '24307f395b6c472264a9e04b043de8d42eb9fb8916f1a165b6ec3836c1ccf8065be1e6ed06197489c79ffcd5c3e74fe099f78d876fb21f07f25d1993d508a8c5'
             'e6a7780af2a4162b62ec5249786dd307712cd7e286a5b603aae3a1efdb2e29d1817fa6b10c712bc831e6099d29784cda14108ba39ed5d11edab855d7ad72bd56')
 
