@@ -1,20 +1,19 @@
-# Maintainer: Vaporeon <vaporeon@vaporeon.io>
-# Contributor: Kimiblock Moe
+# Maintainer: Kimiblock Moe
 
 _npmname=vite
 pkgname=nodejs-$_npmname
-pkgver=7.0.5
+pkgver=8.0.10
 pkgrel=1
 pkgdesc="Next generation frontend tooling. It's fast!"
-arch=('any')
+arch=(aarch64 x86_64)
 url="https://github.com/vitejs/vite"
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' libgcc)
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
         "${_npmname}-LICENSE::https://raw.githubusercontent.com/vitejs/vite/56eb869a67551a257d20cba00016ea59b1e1a2c4/LICENSE")
 noextract=($_npmname-$pkgver.tgz)
-sha512sums=('d669dc570271cb60bd4e12f0cf4fb618a672117b82dccc96b4002535fb656595d90cfdc026de459b070c8adfc818668d67c64e07604d3bf1c5501f82a4dd0d43'
+sha512sums=('ad9b94bbd8fa279ba8b4b0ecf9c000e0ee47e0ad527cf962525430a9ae981304ab5836733f8ae19b4d28251e6c9cc7b08f117957f2b70f891cb6c513b0853d33'
             '6d9074936683997b5f01e7ca64d88b4242be94a5bb151405654d3d4845cae7c2e4286d1b546b79b26c59866f56fe68b068c68f62f1cd465019fbb6de9abc9957')
 
 package() {
