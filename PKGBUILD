@@ -9,7 +9,6 @@ url='https://github.com/uxmal/reko'
 license=('GPL-2.0-only')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-options=('!strip')
 depends=('dotnet-runtime-8.0')
 makedepends=('curl' 'unzip' 'jq')
 SRC=https://api.github.com/repos/uxmal/reko/releases/latest
