@@ -2,7 +2,7 @@
 
 _pkgname="arduino-flasher-cli"
 pkgname="${_pkgname}-bin"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="CLI tool to flash UNO Q boards with the latest Arduino Linux image"
 arch=(
@@ -28,8 +28,8 @@ source_aarch64=(
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz"
 )
-sha256sums_aarch64=('ac56dee5b55451fa3d0889b72ab216375d45ca0e217e4525d53f49038ea1318c')
-sha256sums_x86_64=('0fd72ca93ebc118a74c5edfee51bd94f6e97ec5469d4c7fb936083dd8c65ad28')
+sha256sums_aarch64=('fcd92ad01cc34d592a0e471a2291ba767e240b5df1b8bf20575f97c63d350b0f')
+sha256sums_x86_64=('64e2d7977c639b87bba890f13938f630f0ba38f40807c3557181b6ad90f20222')
 
 prepare() {
   cd "${srcdir}"
