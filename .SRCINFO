@@ -1,0 +1,18 @@
+pkgbase = ghost-pause-git
+	pkgdesc = Automatically pause media players when a browser plays audio
+	pkgver = r3.2d3b2f5
+	pkgrel = 1
+	url = https://github.com/mentigen/ghost-pause
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = libpulse
+	depends = dbus
+	provides = ghost-pause
+	conflicts = ghost-pause
+	source = git+https://github.com/mentigen/ghost-pause.git
+	sha256sums = SKIP
+
+pkgname = ghost-pause-git
