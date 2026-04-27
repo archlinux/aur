@@ -7,7 +7,7 @@ url="https://github.com/gentij/lunie"
 license=('MIT')
 conflicts=('lunie' 'lunie-bin')
 source=("https://github.com/gentij/lunie/releases/download/v1.0.0/lunie_linux_amd64.tar.gz")
-sha256sums=('73f513e0e131063de033e313151a24f1b00e86e98539fecee5f0e9fea4694554')
+sha256sums=('d911d7d6d7ffc4415be97c8fa279102c8302bf291212274d8e7e86d3c1df0e90')
 
 package() {
   install -Dm755 "${srcdir}/lunie" "${pkgdir}/usr/bin/lunie"
