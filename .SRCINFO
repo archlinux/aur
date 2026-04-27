@@ -1,7 +1,7 @@
 pkgbase = r-gtsummary
 	pkgdesc = Presentation-Ready Data Summary and Analytic Result Tables
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=gtsummary
 	arch = any
 	license = MIT
