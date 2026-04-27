@@ -1,6 +1,6 @@
 pkgbase = plugdata-git
 	pkgdesc = Plugin wrapper around Pure Data with a new JUCE GUI, allowing patching in DAWs
-	pkgver = r10166.b1c5576
+	pkgver = r10469.4b5c0a8
 	pkgrel = 1
 	url = https://github.com/plugdata-team/plugdata/
 	arch = x86_64
@@ -21,7 +21,6 @@ pkgbase = plugdata-git
 	depends = libxrandr
 	depends = libxext
 	depends = libxinerama
-	depends = webkit2gtk
 	depends = libxrender
 	depends = libxcursor
 	depends = libxi

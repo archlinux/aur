@@ -3,10 +3,10 @@
 pkgname='plugdata-git'
 _name='plugdata'
 pkgdesc='Plugin wrapper around Pure Data with a new JUCE GUI, allowing patching in DAWs'
-pkgver=r10166.b1c5576
+pkgver=r10469.4b5c0a8
 pkgrel=1
 groups=('vst-plugins' 'lv2-plugins' 'vst3-plugins' 'pro-audio')
-depends=('freetype2' 'libx11' 'libxrandr' 'libxext' 'libxinerama' 'webkit2gtk' 'libxrender' 'libxcursor' 'libxi' 'alsa-lib' 'curl' 'jack' 'fontconfig' 'libxkbcommon' 'wayland' 'libdecor' 'freeglut' 'mesa' 'glfw-x11' 'glew' 'openssl')
+depends=('freetype2' 'libx11' 'libxrandr' 'libxext' 'libxinerama' 'libxrender' 'libxcursor' 'libxi' 'alsa-lib' 'curl' 'jack' 'fontconfig' 'libxkbcommon' 'wayland' 'libdecor' 'freeglut' 'mesa' 'glfw-x11' 'glew' 'openssl')
 makedepends=('git' 'cmake' 'ninja' 'gcc' 'python' 'pkgconf' 'unzip')
 optdepends=()
 provides=($_name)
