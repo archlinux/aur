@@ -31,3 +31,5 @@ package() {
     pip install --root="$pkgdir" --optimize=1 -e .
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+sha256sums=("SKIP")
