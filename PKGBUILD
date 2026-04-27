@@ -11,7 +11,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=3.3.0.r206.84c2c54bdf
+pkgver=3.3.1.r178.37deee935b
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -49,7 +49,7 @@ makedepends+=('git' 'intltool>=0.40.1'
              'gjs' 'python-gobject' 'python-packaging' 'luajit' 'meson'
              'glib2-devel'
              'libbacktrace' 'gi-docgen' 'cfitsio'
-             'python-cairo' 'xdg-utils' 'bash-completion'
+             'python-cairo' 'xdg-utils' 'bash-completion' 'vala'
              )
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
@@ -90,7 +90,6 @@ prepare() {
   git -C "$srcdir/gimp" -c protocol.file.allow=always submodule update --init
   sed -E 's/^(api_version_minor =) 0$/\1 1/' -i "${srcdir}"/${_pkgname}/meson.build
   sed -E "s/(require_version\('Gimp(Ui)?',) '3.0'\)/\1 '3.1'\)/g" -i $(grep -Rl "require_version('Gimp', '3.0')" "${srcdir}"/${_pkgname})
-  sed -z "s/\(project('gimp',\n  'c', 'cpp',\n  version: \)'[0-9.]*'/\1'3.3.0'/g" -i "${srcdir}"/${_pkgname}/meson.build
 }
 
 build() {
