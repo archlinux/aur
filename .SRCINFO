@@ -1,0 +1,17 @@
+pkgbase = scratch-everywhere
+	pkgdesc = A custom Scratch runtime written in C++!
+	pkgver = 0.40
+	pkgrel = 1
+	url = https://github.com/ScratchEverywhere/ScratchEverywhere
+	arch = any
+	license = LGPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = curl
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = miniz
+	source = ScratchEverywhere-0.40.tar.gz::https://github.com/ScratchEverywhere/ScratchEverywhere/archive/0.40.tar.gz
+	sha256sums = 2a860ac1baff1b74daf14e61ba88bc7c24d474a1d845ef96ac4700d34ad33d43
+
+pkgname = scratch-everywhere
