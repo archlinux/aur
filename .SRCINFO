@@ -1,0 +1,17 @@
+pkgbase = clues-static
+	pkgdesc = next-generation Linux system call tracing framework
+	pkgver = v0.1.1
+	pkgrel = 1
+	url = https://github.com/gerstner-hub/clues
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = scons
+	makedepends = asciidoc
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://github.com/gerstner-hub/clues.git?signed#tag=ab840488e1488089e16722c70dcaf48bea762507
+	validpgpkeys = 40C89F006FB8A328B83A37CC14AD6F6579097284
+	sha256sums = SKIP
+
+pkgname = clues-static
