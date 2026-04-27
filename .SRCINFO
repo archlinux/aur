@@ -1,0 +1,17 @@
+pkgbase = hn-bin
+	pkgdesc = Blazing fast, Hacker News CLI (TUI)⚡
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/heartleo/hn-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hn
+	conflicts = hn
+	options = !strip
+	source_x86_64 = hn-x86_64-0.0.6.tgz::https://github.com/heartleo/hn-cli/releases/download/v0.0.6/hn_0.0.6_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 10367599a85fff4fc1e2aabfe49b824daae42155e2ad32afc20cfb2f3b2e747f
+	source_aarch64 = hn-aarch64-0.0.6.tgz::https://github.com/heartleo/hn-cli/releases/download/v0.0.6/hn_0.0.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8acfdc256babdda64be710bd92a27d0c70dc6b9dad1d7ac05539f51c16bac259
+
+pkgname = hn-bin

@@ -1,0 +1,5 @@
+[hn-bin]
+source = "github"
+github = "heartleo/hn-cli"
+use_latest_release = true
+prefix = "v"
