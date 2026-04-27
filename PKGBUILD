@@ -1,7 +1,7 @@
 # Maintainer: nikren <superdug000@gmail.com>
 pkgname=anilinux-electron
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Anime viewer for Linux with Shikimori OAuth integration"
 arch=('x86_64')
 url="https://github.com/Nikren2006/anilinux-electron"
@@ -19,8 +19,13 @@ package() {
   install -d "$pkgdir/opt/$pkgname"
   cp -r squashfs-root/* "$pkgdir/opt/$pkgname/"
   
-  # Fix AppRun to use correct path
-  sed -i 's|$(dirname "$(readlink -f "\$0")")|/opt/'$pkgname'|g' "$pkgdir/opt/$pkgname/AppRun"
+  # Create wrapper script that sets APPDIR
+  cat > "$pkgdir/opt/$pkgname/anilinux-electron" <<EOF
+#!/bin/bash
+export APPDIR="/opt/$pkgname"
+exec "\$APPDIR/AppRun" "\$@"
+EOF
+  chmod +x "$pkgdir/opt/$pkgname/anilinux-electron"
   
   # Install desktop entry
   install -d "$pkgdir/usr/share/applications"
@@ -28,7 +33,7 @@ package() {
 [Desktop Entry]
 Name=Anilinux
 Comment=Anime viewer for Linux
-Exec=/opt/$pkgname/AppRun
+Exec=/opt/$pkgname/anilinux-electron
 Icon=$pkgname
 Type=Application
 Categories=Video;Player;
@@ -40,5 +45,5 @@ EOF
   
   # Install symlink to binary
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/AppRun" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/anilinux-electron" "$pkgdir/usr/bin/$pkgname"
 }
