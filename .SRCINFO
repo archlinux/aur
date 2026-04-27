@@ -1,7 +1,7 @@
 pkgbase = actionfps
 	pkgdesc = A game based on the open-source AssaultCube first-person shooter (FPS)
 	pkgver = 1.2.0.2.r896.g80dcc7b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://actionfps.com
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,8 @@ pkgbase = actionfps
 	makedepends = curl
 	makedepends = git
 	depends = zlib
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	source = assaultcube-actionfps::git+https://github.com/ActionFPS/AC.git#commit=80dcc7b4281bfcf02439e93275b20ae58971b6dc
 	source = actionfps
 	source = actionfps-server
@@ -38,7 +39,8 @@ pkgbase = actionfps
 
 pkgname = actionfps-client
 	depends = zlib
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = actionfps-common
 	depends = mesa
 	depends = sdl
@@ -55,7 +57,8 @@ pkgname = actionfps-client
 
 pkgname = actionfps-server
 	depends = zlib
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = actionfps-common
 	depends = systemd
 	conflicts = actionfps

@@ -9,12 +9,12 @@
 pkgbase=actionfps
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.2.0.2.r896.g80dcc7b
-pkgrel=1
+pkgrel=2
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://actionfps.com'
 license=('Zlib' 'custom')
-depends=('zlib' 'gcc-libs')
+depends=('zlib' 'libgcc' 'libstdc++')
 makedepends=('mesa' 'clang' 'sdl' 'sdl_mixer' 'sdl_image' 'openal' 'libgl' 'glu' 'libogg' 'libvorbis' 'curl' 'git')
 _commit='80dcc7b4281bfcf02439e93275b20ae58971b6dc'
 source=("assaultcube-$pkgbase::git+https://github.com/ActionFPS/AC.git#commit=${_commit}"
