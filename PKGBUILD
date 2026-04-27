@@ -7,6 +7,7 @@ pkgbase=cuda-pascal
 pkgver=12.9.1
 _driverver=575.57.08
 pkgrel=4
+# manual-hint: compatibility-pinned to latest CUDA/driver pair verified to support Pascal GPUs; do not blindly follow newest CUDA.
 pkgdesc="NVIDIA CUDA toolkit for Pascal GPUs (latest CUDA version still supporting Pascal)"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
