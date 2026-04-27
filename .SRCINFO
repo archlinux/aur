@@ -6,6 +6,7 @@ pkgbase = perl-xml-tiny
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-2.0
 	makedepends = perl-extutils-makemaker
+	depends = perl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/XML-Tiny-2.07.tar.gz
 	sha256sums = ce39fcb53e0fe9f1cbcd86ddf152e1db48566266b70ec0769ef364eeabdd8941
