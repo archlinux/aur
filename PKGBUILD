@@ -3,18 +3,18 @@
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 _pkgname=vscodium
-_electron=electron39
-_nodejs="22.22.0"
+_electron=electron41
+_nodejs="22.22.1"
 
 pkgname=${_pkgname}-electron
-pkgver=1.112.01907
+pkgver=1.116.02821
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
 license=('MIT')
 options=(!strip !debug)
-depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep' 'nodejs' 'python-fonttools' 'python' 'perl' 'webkit2gtk-4.1' 'util-linux-libs' 'glibc' 'dbus' 'gtk3' 'curl' 'libsoup3' 'openssl' 'glib2' 'gcc-libs')
+depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep' 'nodejs' 'python-fonttools' 'python' 'perl' 'webkit2gtk-4.1' 'util-linux-libs' 'glibc' 'dbus' 'gtk3' 'curl' 'libsoup3' 'openssl' 'glib2' 'libgcc' 'libstdc++' 'bash')
 optdepends=(
 	'gvfs: For move to trash functionality'
 	'libdbusmenu-glib: For KDE global menu'
@@ -38,8 +38,8 @@ source=(
 	"${_pkgname}.desktop"
 	"${_pkgname}-uri-handler.desktop"
 )
-sha256sums=('0a3ea62abf9fa83496ad5637d1d1f2e6ecba3d63f95411fd33fdb5cf82f847d0'
-            '263ab5c08072d3ff88dfc9eb5b1698a898e4550b1701d3283d1e18e811473cf4'
+sha256sums=('a220b2bb58380f4f20fd59ec7ed825901d10750291d5e6737c802505087f957b'
+            'da6f1b1e668991227584c9a897211cbf098296ea1421ae80b7f67f7e52fb4b6b'
             '617591ac74e2ef1ab30425895a79be5580db3280e7e44cee56a7a809637d438f'
             '28a271ba5b2e50b11259abd794ad2ab083612c78bee2d617bb5a8702932c8f44'
             '3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
