@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="fga"
-pkgver=0.7.12
+pkgver=0.7.13
 pkgrel=1
 pkgdesc="Cross-platform CLI to interact with an OpenFGA server"
 arch=(
@@ -23,9 +23,9 @@ makedepends=(
 )
 _pkgsrc="${pkgname}"
 source=(
-  "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}?signed"
+  "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}" #?signed"
 )
-b2sums=('f81da8283d52722aca54a1760c6e0c432c2371ef9e74f184801c35e384a8a853a771c43e710be955f1c750803ef79f571faace7ea0811897689d8811835f570c')
+b2sums=('94fe1655047ef177151a29585314b52e990e9ff75ba50ccb31552c433cd653927450693caf91a8c30541483fba2de3ab45e6e6e6ec5c4a47cfdd2280848febf0')
 validpgpkeys=(
   '510C64A6CDC3F0965291ED872E31AD2F054526F0' # Raghd Hamzeh <raghd.hamzeh@openfga.dev> (https://github.com/rhamzeh.gpg)
   '897A8242A34A6CD10A71EF68FE63E8B7C46439C8' # Anurag Bandyopadhyay <angbpy@gmail.com> (https://github.com/SoulPancake.gpg)
@@ -38,7 +38,7 @@ prepare() {
   go mod download -modcacherw -x
   go mod verify
 
-  mkdir -p "build" "completions" "manpages"
+  mkdir -p "completions" "manpages"
 }
 
 build() {
