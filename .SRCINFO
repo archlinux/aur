@@ -2,13 +2,13 @@ pkgbase = verify-lib
 	pkgdesc = Validates shell library files before sourcing — compiled binary to break the bootstrap problem
 	pkgver = 0.0.4
 	pkgrel = 1
-	url = https://gitlab.com/fkzys/verify-lib
+	url = https://github.com/fkzys/verify-lib
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = gcc
 	makedepends = make
 	depends = glibc
-	source = verify-lib-0.0.4.tar.gz::https://gitlab.com/fkzys/verify-lib/-/archive/v0.0.4/verify-lib-v0.0.4.tar.gz
-	sha256sums = a95e04674ddd2d5d88b700d8e6af4dd62a53140d02131b8ddf69903d04e0e94d
+	source = verify-lib-0.0.4.tar.gz::https://github.com/fkzys/verify-lib/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = 0eb765596e4192cb1195e7db4eacef2fe3437bd118e5747351b7954579a8e71e
 
 pkgname = verify-lib
