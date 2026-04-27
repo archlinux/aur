@@ -2,8 +2,8 @@
 # Contributor: Polarian <polarian@polarian.dev>
 
 pkgname=saber
-pkgver=1.31.1
-_flutter_ver=3.41.1
+pkgver=1.33.2
+_flutter_ver=3.41.7
 pkgrel=1
 pkgdesc="The cross-platform notes app built for handwriting"
 arch=('x86_64')
@@ -32,7 +32,7 @@ depends=('at-spi2-core'
 makedepends=('clang' 'cmake' 'fvm' 'gst-plugins-base-libs' 'java-environment' 'ninja' 'patchelf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('61de2f9c6b1f736a372fad76c376eaf5ebf175f2e4ebbf49fa07ddacbb8a959b'
+sha256sums=('3aa2b3deeeee0ea9632531880e4847d9e8aaf0dee0fbd85b353989bf4edd3b77'
             '2429585c739f6da2d2068fd44d5868bb9a0ef6657d8117ca32fd8e0b78942a10')
 
 prepare() {
