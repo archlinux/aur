@@ -1,7 +1,7 @@
 pkgbase = sqitch
 	pkgdesc = Sensible database change management
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sqitchers/sqitch
 	arch = any
 	license = MIT
@@ -56,6 +56,7 @@ pkgbase = sqitch
 	depends = perl-yaml-tiny
 	depends = perl-namespace-autoclean
 	options = !emptydirs
+	options = !purge
 	source = https://github.com/sqitchers/sqitch/releases/download/v1.6.1/App-Sqitch-v1.6.1.tar.gz
 	sha256sums = c82faf99128e5b3303ee3c8e85a3190f00bc91502e3919600ddc1f495f713474
 

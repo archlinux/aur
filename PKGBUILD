@@ -3,7 +3,7 @@
 _dist=App-Sqitch
 pkgname=sqitch
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Sensible database change management'
 arch=('any')
 url='https://github.com/sqitchers/sqitch'
@@ -64,7 +64,7 @@ checkdepends=(
     perl-xml-tiny
     perl-yaml-tiny
 )
-options=(!emptydirs)
+options=(!emptydirs !purge)
 source=("https://github.com/sqitchers/${pkgname}/releases/download/v${pkgver}/${_dist}-v${pkgver}.tar.gz")
 sha256sums=('c82faf99128e5b3303ee3c8e85a3190f00bc91502e3919600ddc1f495f713474')
 
@@ -79,6 +79,7 @@ build()
         --installdirs=vendor \
         --config installman1dir=/usr/share/man/man1 \
         --config installman3dir=/usr/share/man/man3 \
+        --etcdir=/etc/sqitch \
         --no-packlist \
         --no-perllocal
 
