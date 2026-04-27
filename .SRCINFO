@@ -1,0 +1,21 @@
+pkgbase = nexus-bin
+	pkgdesc = Nexus Storage - Cross-platform storage management tool
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = https://github.com/KOUSSEMON-Aurel/Nexus-Storage
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	provides = nexus
+	conflicts = nexus
+	options = !strip
+	options = !debug
+	source_x86_64 = nexus-7.2.0.AppImage::https://github.com/KOUSSEMON-Aurel/Nexus-Storage/releases/download/app-v7.2.0/nexus_7.2.0_amd64.AppImage
+	sha256sums_x86_64 = 4c0db6996306952d2a788f3588df4833878ebb7c70fca9eb172b1b80bd0edc55
+
+pkgname = nexus-bin
