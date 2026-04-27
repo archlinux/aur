@@ -1,0 +1,17 @@
+pkgbase = kbd-ergol-git
+	pkgdesc = Ergo‑L layout in keymap format for linux console
+	pkgver = 0.0.0.r33.ae49223
+	pkgrel = 1
+	url = https://codeberg.org/Alerymin/kbd-ergol
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	makedepends = git
+	makedepends = gzip
+	provides = kbd-ergol
+	conflicts = kbd-ergol
+	source = kbd-ergol::git+https://codeberg.org/Alerymin/kbd-ergol#branch=main
+	sha256sums = SKIP
+
+pkgname = kbd-ergol-git
