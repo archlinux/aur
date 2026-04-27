@@ -1,3 +1,4 @@
 [python-munge]
 source = "git"
 git = "https://github.com/20c/munge"
+prefix = "v"
