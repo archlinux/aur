@@ -36,7 +36,7 @@ options=(!strip)
 _appimage="alpaka-desktop-${pkgver}.AppImage"
 
 source=("${_appimage}::https://github.com/nikoteressi/alpaka-desktop/releases/download/v${pkgver}/alpaka-desktop_${pkgver}_amd64.AppImage")
-sha256sums=('f02f5b0ff084d2ad3cb96d4fec428e01dea2a605b5c88156ca5ee6447908259c')
+sha256sums=('effb470b94e4015021ec80c5247d753d5479475b2be79dda2e1850e3bf9f42f9')
 
 noextract=("${_appimage}")
 
