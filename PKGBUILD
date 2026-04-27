@@ -1,8 +1,8 @@
 # Maintainer: EliasofWaffle <eliascontato@protonmail.com>
 
 pkgname=libspatialaudio
-pkgver=0.4
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Spatial audio encoding / decoding and binauralization library"
 license=('LGPLv2' 'Proprietary')
 arch=('x86_64')
