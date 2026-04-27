@@ -22,7 +22,7 @@ sha256sums=('57c35a6bcd722433fc97344314e52c06c91fdfde33b18c6d1c14a4d29e229105'
 
 latestver() {
     curl -fsSL "$url" |
-        sed -nE 's#.*href="/s/SIGIL_V([0-9]+)_([0-9]+)-[^"]+\.zip".*#\1.\2#p' | head -1
+        sed -nE 's#.*[Ff]ree SIGIL v([0-9]+)\.([0-9]+) Megawad.*#\1.\2#p' | head -1
 }
 
 package() {
