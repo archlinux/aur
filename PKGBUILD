@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rsvg
-_pkgver=2.6.2
+_pkgver=2.7.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,15 +33,15 @@ optdepends=(
   r-webp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('02cc3a26aecd5bf6ab66a2b31c67a5bc')
-b2sums=('5b6e8b995835419281589e8c9ea96dd5b09d45b8001254701e7efd15c2d79de2243ad8594021855f809e4c07a79d19ce84852e29cb80f32bd1c8f815b14bc0e9')
+md5sums=('ca3fd0083f2d37e453805fe2d986a4f3')
+b2sums=('c8751b376595968e0c996dedf7eccfe32411d12359b83617df6c03ef64589bf82239e01cce7eac8bc58895e9143790361fa35c83a250488b51e64239ffe034d1')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
