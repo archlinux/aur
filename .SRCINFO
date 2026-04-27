@@ -1,6 +1,6 @@
 pkgbase = python-cmd-game-chess
 	pkgdesc = A simple command-line chess game with AI
-	pkgver = 0.1.4
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Danil-gtj/cmd-chess.git
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-cmd-game-chess
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/cmd-game-chess/cmd-game-chess-0.1.4.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/cmd-game-chess/cmd-game-chess-0.1.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-cmd-game-chess
