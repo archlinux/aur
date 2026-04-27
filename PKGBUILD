@@ -7,18 +7,18 @@
 # Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=3.2.82.r5.gf3da000
-pkgrel=2
+pkgver=3.3.2.r52.g072a2ac
+pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="https://apps.kde.org/amarok/"
 license=(GPL-2.0-or-later)
 depends=(threadweaver qt6-webengine qt6-declarative
          kcmutils ktexteditor kdnssd kirigami2 kstatusnotifieritem ktextwidgets
-         mariadb libmariadbclient fftw ffmpeg taglib libofa qt6-tools gstreamer gst-plugins-base-libs
+         mariadb libmariadbclient fftw ffmpeg taglib qt6-tools gstreamer gst-plugins-base-libs
 
          # namcap implicit depends
-         qt6-5compat kiconthemes ki18n qt6-svg gcc-libs kcompletion kitemviews kwidgetsaddons solid karchive kcrash
+         kiconthemes ki18n qt6-svg gcc-libs kcompletion kitemviews kwidgetsaddons solid karchive kcrash
          kdbusaddons kconfigwidgets kpackage kcodecs knotifications hicolor-icon-theme kxmlgui qt6-base kconfig
          kcoreaddons kglobalaccel kirigami kwindowsystem kguiaddons glibc kio kcolorscheme)
 makedepends=(git extra-cmake-modules kdoctools gdk-pixbuf2 knotifyconfig vulkan-headers
@@ -30,7 +30,7 @@ optdepends=("libmtp: support for portable media devices"
 conflicts=(amarok)
 provides=(amarok)
 source=("git+https://invent.kde.org/multimedia/amarok.git")
-sha512sums=("SKIP")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "amarok"
