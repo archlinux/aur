@@ -26,10 +26,8 @@ diff --git a/Makefile b/Makefile
 diff --git a/init/Kconfig b/init/Kconfig
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1582,6 +1582,12 @@ config CC_OPTIMIZE_FOR_PERFORMANCE
- 	  with the "-O2" compiler flag for best performance and most
- 	  helpful compile-time warnings.
- 
+@@ -1585,2 +1585,7 @@ config CC_OPTIMIZE_FOR_PERFORMANCE
+-
 +config CC_OPTIMIZE_FOR_PERFORMANCE_O3
 +	bool "Optimize more for performance (-O3)"
 +	help
@@ -37,7 +35,3 @@ diff --git a/init/Kconfig b/init/Kconfig
 +	  the kernel yet more for performance.
 +
  config CC_OPTIMIZE_FOR_SIZE
- 	bool "Optimize for size (-Os)"
- 	help
--- 
-2.51.0
