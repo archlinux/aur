@@ -1,0 +1,33 @@
+pkgbase = python-kicad
+	pkgdesc = KiCad API Python Bindings
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://gitlab.com/kicad/code/kicad-python
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-poetry
+	makedepends = python-poetry-core
+	makedepends = python-poetry-plugin-export
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-protoletariat
+	makedepends = python-mypy-protobuf
+	depends = python
+	depends = python-jsonschema
+	depends = python-protobuf
+	depends = python-typing_extensions
+	depends = python-pynng
+	optdepends = kicad
+	provides = python-kicad
+	provides = kicad-python
+	conflicts = python-kicad
+	conflicts = kicad-python
+	source = python-kicad::git+https://gitlab.com/kicad/code/kicad-python.git#tag=0.6.0
+	source = kicad::git+https://gitlab.com/kicad/code/kicad.git
+	sha256sums = 4f7bb9d8d1d7a3fe046fe564a4933f8abd9ba4fe3dc121ee48a962ac36689abd
+	sha256sums = SKIP
+
+pkgname = python-kicad
