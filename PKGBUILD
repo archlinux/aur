@@ -1,5 +1,5 @@
 pkgname=msvc-wine-git
-pkgver=18.5.1
+pkgver=18.5.1.a99ef92
 pkgrel=1
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
@@ -39,6 +39,7 @@ _architectures="x86 x64 arm64"
 pkgver() {
 	VS_VERSION=`python msvc-wine/vsdownload.py --print-version | grep "Loaded installer manifest for "`
 	echo -n ${VS_VERSION:30} | sed 's/\.\([^.]*\) (.*)$/.r\1/'
+	echo ".$(git -C msvc-wine rev-parse --short HEAD)"
 }
 
 prepare() {
