@@ -68,6 +68,7 @@ provides=('sglang')
 conflicts=('sglang')
 
 _models=(
+  'deepseek_v4_flash'
   'gemma_4_e2b'
   'gemma_4_e4b'
   'gemma_4_26b_a4b'
