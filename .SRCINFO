@@ -1,13 +1,13 @@
 pkgbase = amazon-athena-odbc-bin
 	pkgdesc = Amazon Athena ODBC Driver
-	pkgver = 2.0.6.0
+	pkgver = 2.1.0.0
 	pkgrel = 1
 	url = https://docs.aws.amazon.com/athena/latest/ug/connect-with-odbc.html
 	arch = x86_64
 	depends = unixodbc
 	depends = glibc
 	options = !debug
-	source = https://downloads.athena.us-east-1.amazonaws.com/drivers/ODBC/v2.0.6.0/Linux/AmazonAthenaODBC-2.0.6.0.rpm
-	sha256sums = 0317f5343328dc2e08f5ffeab93f53c95e824450ed1115c3ba0b3fd8680f8a21
+	source = https://downloads.athena.us-east-1.amazonaws.com/drivers/ODBC/v2.1.0.0/Linux/AmazonAthenaODBC-2.1.0.0.rpm
+	sha256sums = 5571cd53e4c2183ae1c8056619a59557283178b6f7a389d47b462b0fd392956b
 
 pkgname = amazon-athena-odbc-bin

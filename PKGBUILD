@@ -1,7 +1,7 @@
 # Maintainer: azunades <azunades at pm dot me>
 
 pkgname=amazon-athena-odbc-bin
-pkgver=2.0.6.0
+pkgver=2.1.0.0
 pkgrel=1
 pkgdesc="Amazon Athena ODBC Driver"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('unixodbc' 'glibc')
 
 source=("https://downloads.athena.us-east-1.amazonaws.com/drivers/ODBC/v${pkgver}/Linux/AmazonAthenaODBC-${pkgver}.rpm")
 
-sha256sums=('0317f5343328dc2e08f5ffeab93f53c95e824450ed1115c3ba0b3fd8680f8a21')
+sha256sums=('5571cd53e4c2183ae1c8056619a59557283178b6f7a389d47b462b0fd392956b')
 
 options=('!debug')
 
