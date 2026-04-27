@@ -2,18 +2,25 @@
 # Contributor: Xyne <ca archlinux xyne, backwards>
 
 pkgname=python-pyzotero-git
-pkgver=1.6.11.r6.gbaa510b
+pkgver=1.11.1.r0.ga1aae6b
 pkgrel=1
 pkgdesc="A Python wrapper for the Zotero API"
 arch=(any)
 url="https://github.com/urschrei/pyzotero"
 license=(BlueOak-1.0.0)
-depends=(python-requests python-feedparser python-bibtexparser python-pytz)
-makedepends=(git python-build python-wheel python-installer python-setuptools-scm python-toml)
+depends=(python python-feedparser python-bibtexparser ) #python-requests python-pytz
+makedepends=(git python-build python-wheel python-installer python-setuptools-scm python-toml python-uv-build)
 provides=(python-pyzotero)
 conflicts=(python-pyzotero)
-source=("python-pyzotero::git+https://github.com/urschrei/pyzotero.git")
-sha512sums=('SKIP')
+source=("python-pyzotero::git+https://github.com/urschrei/pyzotero.git"
+        0001-remove-lock.patch)
+sha512sums=('SKIP'
+            'fcae7dc070900c8701a35fcbc4862d5f625b9867e225f3137163ca06538850ec5a5e7ca791b14c874b6a5728ba104efd7ac2f737dbf44ca21f299d2fe45ee7ba')
+
+prepare() {
+  cd "python-pyzotero"
+  patch -Np1 -i ../0001-remove-lock.patch
+}
 
 pkgver() {
   cd "python-pyzotero"
