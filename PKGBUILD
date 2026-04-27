@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wchisp-git
-pkgver=0.3.0.r28.g9eaf3dc
+pkgver=0.3.0.r34.gcefd870
 pkgrel=1
 pkgdesc="WCH ISP Tool in Rust"
 arch=($CARCH)
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}/"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
