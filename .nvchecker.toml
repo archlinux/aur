@@ -1,0 +1,5 @@
+[ugm-bin]
+source = "github"
+github = "ariasmn/ugm"
+use_latest_release = true
+prefix = "v"
