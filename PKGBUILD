@@ -1,36 +1,44 @@
 # Maintainer: gilded <knukles30@gmail.com>
 
 pkgname=ani-cli-mx-git
-_pkgbase=ani-cli-mx
-pkgver=0.r801.gcbb9bf2
+pkgver=1.0.0.r804.g30a599b
 pkgrel=1
-pkgdesc='Spanish-first independent fork of ani-cli'
+pkgdesc='Spanish-first anime CLI (development snapshot)'
 arch=('any')
 url='https://github.com/Gildedboy/ani-cli-mx'
-license=('GPL-3.0-or-later')
-depends=('bash' 'curl' 'fzf' 'grep' 'mpv' 'openssl' 'sed')
+license=('GPL3')
+depends=('curl' 'sed' 'grep' 'fzf' 'openssl' 'mpv')
 makedepends=('git')
 optdepends=(
-  'aria2: direct-file download support'
-  'ffmpeg: m3u8 download fallback'
-  'rofi: alternative interactive menu frontend'
-  'vlc: alternative media player'
+  'vlc: alternative player backend'
+  'aria2: direct-file downloads'
+  'yt-dlp: extra extractor coverage and download handling'
+  'ffmpeg: HLS/m3u8 download fallback'
+  'patch: self-update support with -U'
+  'ani-skip: intro skipping with mpv'
 )
-provides=('ani-cli-mx')
-conflicts=('ani-cli-mx')
-source=("${_pkgbase}::git+https://github.com/Gildedboy/ani-cli-mx.git")
+source=('git+https://github.com/Gildedboy/ani-cli-mx.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgbase}"
-  printf '0.r%s.g%s\n' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/ani-cli-mx"
+
+  local version revision commit
+  version="$(sed -nE 's/^version_number="([^"]+)"/\1/p' ani-cli-mx-core | head -n1)"
+  revision="$(git rev-list --count HEAD)"
+  commit="$(git rev-parse --short HEAD)"
+  printf '%s.r%s.g%s\n' "$version" "$revision" "$commit"
 }
 
 package() {
-  cd "${srcdir}/${_pkgbase}"
+  cd "$srcdir/ani-cli-mx"
 
-  install -Dm755 ani-cli "${pkgdir}/usr/libexec/ani-cli-mx"
-  install -Dm755 ani-cli-mx "${pkgdir}/usr/bin/ani-cli-mx"
-  install -Dm644 ani-cli-mx.1 "${pkgdir}/usr/share/man/man1/ani-cli-mx.1"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 ani-cli-mx-core "$pkgdir/usr/libexec/ani-cli-mx-git"
+  install -Dm755 packaging/aur/ani-cli-mx-git/ani-cli-mx-git "$pkgdir/usr/bin/ani-cli-mx-git"
+  sed \
+    -e 's/"ANI-CLI-MX"/"ANI-CLI-MX-GIT"/' \
+    -e 's/"ani-cli-mx"/"ani-cli-mx-git"/g' \
+    ani-cli-mx.1 > ani-cli-mx-git.1
+  install -Dm644 ani-cli-mx-git.1 "$pkgdir/usr/share/man/man1/ani-cli-mx-git.1"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
