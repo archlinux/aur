@@ -56,6 +56,7 @@ optdepends=(
   'python-sentencepiece: Tokenization'
   'python-soundfile: Audio file support'
   'python-tiktoken: OpenAI tokenizer'
+  'python-tilelang: DeepSeek V4 model support'
   'python-timm: Vision model library'
   'uvicorn: ASGI server'
   'python-uvloop: Fast event loop'

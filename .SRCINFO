@@ -50,6 +50,7 @@ pkgbase = sglang
 	optdepends = python-sentencepiece: Tokenization
 	optdepends = python-soundfile: Audio file support
 	optdepends = python-tiktoken: OpenAI tokenizer
+	optdepends = python-tilelang: DeepSeek V4 model support
 	optdepends = python-timm: Vision model library
 	optdepends = uvicorn: ASGI server
 	optdepends = python-uvloop: Fast event loop
