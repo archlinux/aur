@@ -1,4 +1,4 @@
-# Maintainer: Brodino <brodino96@gmail.com>
+# Maintainer: Brodino <brodino@gmail.com>
 # Automated binary repackaging of webkit2gtk built from AUR sources.
 # Source: https://github.com/Brodino96/webkit2gtk-automator
 
@@ -95,7 +95,7 @@ provides=(
 )
 conflicts=(webkit2gtk)
 source=("webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst::https://github.com/Brodino96/webkit2gtk-automator/releases/download/v2.50.6-5/webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst")
-sha256sums=('5b09f581ff0091cd6c2793760fae2a1d64102a37dd6c8bac84a98b3ccc6d8462')
+sha256sums=('d8b41108c65b2392aeb6a00745d7044b22ccfc6674731a649f8f2943ddcc8343')
 
 package() {
   # The .pkg.tar.zst is a pre-built Arch package.
