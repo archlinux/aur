@@ -9,7 +9,7 @@
 
 _pkgname="hyprland"
 pkgname="$_pkgname-hidpi-xprop-git"
-pkgver=0.52.0.r82.ge584a8b
+pkgver=0.54.0.r252.g80763b1
 pkgrel=1
 pkgdesc="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -29,6 +29,7 @@ depends=(
   hyprlang-git
   hyprutils-git
   hyprwire-git
+  lcms2
   libdisplay-info
   libdrm
   libglvnd
