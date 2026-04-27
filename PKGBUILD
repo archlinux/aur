@@ -175,13 +175,13 @@ else
 fi
 
 pkgbase="linux-$_pkgsuffix"
-_major=7.0
+_major=7.1
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc7
+_rcver=rc1
 pkgver=${_major}.${_rcver}
-_tagrel=3
-pkgrel=2
+_tagrel=2
+pkgrel=1
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
@@ -196,9 +196,13 @@ license=('GPL-2.0-only')
 options=('!strip' '!debug' '!lto')
 makedepends=(
   bc
+  binutils
   cpio
   gettext
+  glibc
   libelf
+  libgcc
+  openssl
   pahole
   perl
   python
@@ -206,7 +210,9 @@ makedepends=(
   rust-bindgen
   rust-src
   tar
+  xxhash
   xz
+  zlib
   zstd
 )
 
@@ -244,11 +250,11 @@ fi
 
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
-             "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch"
-             "${_patchsource}/misc/nvidia/0004-HACK-kernel-open-Makefile-Remove-PAHOLE_VARIABLE.patch"
-             "${_patchsource}/misc/nvidia/0003-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
-             "${_patchsource}/misc/nvidia/0004-fix-dsc-use-bits_per_component-for-flatnessDetThresh.patch"
-             "${_patchsource}/misc/nvidia/0005-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
+             "${_patchsource}/misc/nvidia/0001-Add-IBT-support.patch"
+             "${_patchsource}/misc/nvidia/0002-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
+             "${_patchsource}/misc/nvidia/0003-fix-dsc-use-bits_per_component-for-flatnessDetThresh.patch"
+             "${_patchsource}/misc/nvidia/0004-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch"
+             "${_patchsource}/misc/nvidia/0005-HACK-kernel-open-Makefile-Remove-PAHOLE_VARIABLE.patch")
 fi
 
 # Use generated AutoFDO Profile
@@ -334,7 +340,7 @@ prepare() {
 
     ### Selecting the CPU scheduler
     case "$_cpusched" in
-        bore|hardened) scripts/config -e SCHED_BORE;;
+        cachyos|bore|hardened) scripts/config -e SCHED_BORE;;
         bmq) scripts/config -e SCHED_ALT -e SCHED_BMQ;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_RT;;
@@ -587,7 +593,16 @@ build() {
 
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
-    depends=('coreutils' 'kmod' 'initramfs')
+    depends=(binutils
+      glibc
+      libelf
+      libgcc
+      openssl
+      pahole
+      xxhash
+      zlib
+      zstd
+     "${pkgbase}")
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
@@ -802,6 +817,6 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('83a22300c3aca33fc4ba63171546d1ae1f1a3126553a61d45aa656e06a6d0b11a05a417f0854c75bf8570d9fd165765789af939c352388c57344b85de157cfad'
-        'f31abd75b2551c74aa86e8dd3f31e959dab2592e20ec52ffae5505b4baad2eef12757a77908fba3e95391c074b68da4d9ef6f213dc6ba224ae1872cd6ca457eb'
+b2sums=('c06d41134766233158368b699dd03e89e9adbe3be7762c1278c1e0f58cd948b10b03ec9e7dfe154a5e8f6e3d80736b6e1ac9f592d85f765a66a1bc580070be1d'
+        '2489dc698b9656960745b282ac0292ce35fb2572b863e35f6707a6ee149397118bf50f6bc1d3a4e4694e4be8a23c51d5f0c15f515041c5f3fd3c2e6fc36d787f'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
