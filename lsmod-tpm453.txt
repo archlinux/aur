@@ -26,10 +26,12 @@ cmac
 coretemp
 crypto_user
 dm_crypt
+dm_integrity
 dm_mod
 drm_buddy
 drm_display_helper
 encrypted_keys
+exfat
 fat
 ghash_clmulni_intel
 i2c_algo_bit
@@ -52,7 +54,9 @@ joydev
 kvm
 kvm_intel
 libarc4
+loop
 lpc_ich
+lz4
 lz4_compress
 lz4hc_compress
 mac80211
@@ -74,7 +78,9 @@ nf_tables
 nfnetlink
 nft_compat
 nft_limit
+ntfs3
 ntsync
+overlay
 pcspkr
 pkcs8_key_parser
 platform_profile
@@ -104,6 +110,7 @@ snd_seq_dummy
 snd_timer
 soundcore
 sparse_keymap
+squashfs
 sr_mod
 tcp_bbr
 tcp_dctcp
@@ -111,6 +118,7 @@ tcp_htcp
 tee
 trusted
 ttm
+uas
 uvc
 uvcvideo
 vfat
@@ -120,6 +128,7 @@ videobuf2_memops
 videobuf2_v4l2
 videobuf2_vmalloc
 videodev
+usb_storage
 wmi
 wmi_bmof
 x86_pkg_temp_thermal
