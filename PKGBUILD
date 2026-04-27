@@ -1,10 +1,10 @@
 # Maintainer: fkzys <fkzys at proton dot me>
 pkgname=btrfs-file-history-git
-pkgver=r9.98db6f2
+pkgver=r16.235bb21
 pkgrel=1
 pkgdesc="Track file and directory lifecycle across btrfs snapshots"
 arch=('any')
-url="https://gitlab.com/fkzys/btrfs-file-history"
+url="https://github.com/fkzys/btrfs-file-history"
 license=('AGPL-3.0-or-later')
 depends=('python' 'btrfs-progs' 'util-linux')
 optdepends=(

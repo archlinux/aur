@@ -1,8 +1,8 @@
 pkgbase = btrfs-file-history-git
 	pkgdesc = Track file and directory lifecycle across btrfs snapshots
-	pkgver = r9.98db6f2
+	pkgver = r16.235bb21
 	pkgrel = 1
-	url = https://gitlab.com/fkzys/btrfs-file-history
+	url = https://github.com/fkzys/btrfs-file-history
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = btrfs-file-history-git
 	optdepends = python-graphviz: Graphviz dot export
 	provides = btrfs-file-history
 	conflicts = btrfs-file-history
-	source = btrfs-file-history-git::git+https://gitlab.com/fkzys/btrfs-file-history.git
+	source = btrfs-file-history-git::git+https://github.com/fkzys/btrfs-file-history.git
 	sha256sums = SKIP
 
 pkgname = btrfs-file-history-git
