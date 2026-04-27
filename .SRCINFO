@@ -1,6 +1,6 @@
 pkgbase = redpanda-bin
 	pkgdesc = Redpanda is a streaming platform for mission critical workloads (binary package)
-	pkgver = 26.1.5
+	pkgver = 26.1.6
 	pkgrel = 1
 	url = https://github.com/redpanda-data/redpanda
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = redpanda-bin
 	conflicts = redpanda
 	replaces = redpanda-git
 	replaces = redpanda
-	noextract = redpanda-bin-26.1.5-x86_64.zip
-	noextract = redpanda-bin-26.1.5-aarch64.zip
-	source_x86_64 = redpanda-bin-26.1.5-x86_64.zip::https://github.com/redpanda-data/redpanda/releases/download/v26.1.5/rpk-linux-amd64.zip
-	sha256sums_x86_64 = bcf8842c45fbd6a1b44c0af1db73236c70b50c9739710102fdd793e70ac0e242
-	source_aarch64 = redpanda-bin-26.1.5-aarch64.zip::https://github.com/redpanda-data/redpanda/releases/download/v26.1.5/rpk-linux-arm64.zip
-	sha256sums_aarch64 = 346603a256f0ef6b48cde292916feb8423219dafe0ee89908cef590c37030ed4
+	noextract = redpanda-bin-26.1.6-x86_64.zip
+	noextract = redpanda-bin-26.1.6-aarch64.zip
+	source_x86_64 = redpanda-bin-26.1.6-x86_64.zip::https://github.com/redpanda-data/redpanda/releases/download/v26.1.6/rpk-linux-amd64.zip
+	sha256sums_x86_64 = bd018d75c6ba99f40d54086279b719d7c6101c734a01bdd14815e8c8c7b7dd8c
+	source_aarch64 = redpanda-bin-26.1.6-aarch64.zip::https://github.com/redpanda-data/redpanda/releases/download/v26.1.6/rpk-linux-arm64.zip
+	sha256sums_aarch64 = 325a62c10e104f9b26190f3a87346a799eb79d4d1c33ec54b0b95210fbb564f3
 
 pkgname = redpanda-bin
