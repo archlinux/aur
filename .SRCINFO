@@ -1,6 +1,6 @@
 pkgbase = netsonar-bin
 	pkgdesc = A network diagnostics tool for pinging hosts (ICMP/TCP/UDP/HTTP), managing network interfaces, and discovering local devices/services(Prebuilt version)
-	pkgver = 0.2.4
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/sn4k3/NetSonar
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = netsonar-bin
 	license = AGPL-3.0-or-later
 	depends = fontconfig
 	depends = glibc
-	provides = netsonar=0.2.4
+	provides = netsonar=0.2.6
 	conflicts = netsonar
 	options = !strip
 	options = staticlibs
 	source = netsonar.sh
 	sha256sums = 587630b858a37bc5b30f31af8d7e7f40c8c3b3cc3c2835278fabc13c79860485
-	source_aarch64 = netsonar-0.2.4-aarch64.AppImage::https://github.com/sn4k3/NetSonar/releases/download/0.2.4/NetSonar_linux-arm64_v0.2.4.AppImage
-	sha256sums_aarch64 = 01652105bfe29bed8b14b4e7371f0bd4320bfb0040dd1a7503c441b8a8bb1afa
-	source_x86_64 = netsonar-0.2.4-x86_64.AppImage::https://github.com/sn4k3/NetSonar/releases/download/0.2.4/NetSonar_linux-x64_v0.2.4.AppImage
-	sha256sums_x86_64 = bbd5d9c26a33b66b67458130a523c3fda59e14f99f873e52cfe9d947e2a8949f
+	source_aarch64 = netsonar-0.2.6-aarch64.AppImage::https://github.com/sn4k3/NetSonar/releases/download/0.2.6/NetSonar_linux-arm64_v0.2.6.AppImage
+	sha256sums_aarch64 = 50a8ea9d53fa1980ca3f336c32c249db3d972ac63439affa446049c318b95cb7
+	source_x86_64 = netsonar-0.2.6-x86_64.AppImage::https://github.com/sn4k3/NetSonar/releases/download/0.2.6/NetSonar_linux-x64_v0.2.6.AppImage
+	sha256sums_x86_64 = 467d1110af66f1f8fa7d0be156833704b54b289e644914a208f87f7aadf9c188
 
 pkgname = netsonar-bin
