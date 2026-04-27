@@ -1,7 +1,7 @@
-# Maintainer: UgaUgaBamBam novaria@mailbox.org
+# Maintainer: UgaUgaBamBam  novaria@mailbox.org
 pkgname=crucible
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux launcher for Windows games via UMU and Proton"
 arch=('any')
 url="https://github.com/northmind/Crucible"
@@ -20,19 +20,46 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-optdepends=()
-source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/northmind/Crucible/archive/refs/tags/v$pkgver.tar.gz"
-  "fix-icon.py"
-)
-sha256sums=('2c6a4cde11d22a67d4f7f8bdb1dd86439ba08d19ee210b08775f6c376ee6da3c'
-            '89afa59508d4560b7a3cf331be8ce52b6608a30e5af172113fce638de7dabafa')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/northmind/Crucible/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2c6a4cde11d22a67d4f7f8bdb1dd86439ba08d19ee210b08775f6c376ee6da3c')
 
 prepare() {
   cd "Crucible-$pkgver"
 
   # fix taskbar icon on Wayland: add setDesktopFileName and setWindowIcon
-  python3 "$srcdir/fix-icon.py"
+  python3 << 'PYEOF'
+from pathlib import Path
+import sys
+
+def patch(path, old, new):
+    f = Path(path)
+    src = f.read_text()
+    if new in src:
+        return
+    if old not in src:
+        print(f"error: expected string not found in {path}", file=sys.stderr)
+        sys.exit(1)
+    f.write_text(src.replace(old, new, 1))
+
+patch(
+    'python/crucible/__main__.py',
+    'app.setApplicationName("crucible")',
+    'app.setApplicationName("crucible")\n    app.setDesktopFileName("crucible")',
+)
+
+patch(
+    'python/crucible/ui/main_window.py',
+    'from PyQt6.QtGui import QColor',
+    'from PyQt6.QtGui import QColor, QIcon',
+)
+
+patch(
+    'python/crucible/ui/main_window.py',
+    'self.setWindowFlags(Qt.WindowType.FramelessWindowHint)',
+    'self.setWindowFlags(Qt.WindowType.FramelessWindowHint)\n'
+    "        self.setWindowIcon(QIcon(str(Path(__file__).parent / 'assets' / 'images' / 'icon.jpg')))",
+)
+PYEOF
 
   # upstream ships no pyproject.toml; generate one
   # include-package-data=false bypasses VCS discovery so non-Python

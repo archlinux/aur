@@ -1,7 +1,7 @@
 pkgbase = crucible
 	pkgdesc = Linux launcher for Windows games via UMU and Proton
 	pkgver = 0.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/northmind/Crucible
 	arch = any
 	license = LicenseRef-proprietary
@@ -16,8 +16,6 @@ pkgbase = crucible
 	depends = python-pillow
 	depends = umu-launcher
 	source = crucible-0.2.6.tar.gz::https://github.com/northmind/Crucible/archive/refs/tags/v0.2.6.tar.gz
-	source = fix-icon.py
 	sha256sums = 2c6a4cde11d22a67d4f7f8bdb1dd86439ba08d19ee210b08775f6c376ee6da3c
-	sha256sums = 89afa59508d4560b7a3cf331be8ce52b6608a30e5af172113fce638de7dabafa
 
 pkgname = crucible
