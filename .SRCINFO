@@ -1,18 +1,14 @@
 pkgbase = perl-test-dir
 	pkgdesc = test directory attributes
 	pkgver = 1.16
-	pkgrel = 1
-	url = https://metacpan.org/release/Test-Dir
+	pkgrel = 2
+	url = https://metacpan.org/dist/Test-Dir
 	arch = any
-	license = perl_5
-	checkdepends = perl-test-pod
-	checkdepends = perl-test-pod-coverage
-	depends = perl
-	depends = perl-module-install
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl-test-simple
 	options = !emptydirs
-	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/M/MT/MTHURN/Test-Dir-1.16.tar.gz
-	sha512sums = d0f22091e834ffc1111f9a56ecbd38c95c2e593ab680cf342744b8344c0c4dfd1bcbfe1ba753b23b420b089aa855c1b2b4a183fd8458c95a9cc6506123ec0a23
+	source = https://cpan.metacpan.org/authors/id/M/MT/MTHURN/Test-Dir-1.16.tar.gz
+	sha256sums = 7332b323913eb6a2684d094755196304b2f8606f70eaab913654ca91f273eac2
 
 pkgname = perl-test-dir
-
