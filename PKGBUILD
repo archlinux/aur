@@ -1,7 +1,7 @@
 # Maintainer: sunkhan
 pkgname=decibell
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
 url="https://github.com/sunkhan/decibell"
@@ -54,12 +54,10 @@ package() {
     install -Dm755 "src-tauri/target/release/decibell" \
         "${pkgdir}/usr/lib/decibell/decibell"
 
-    # Launcher wrapper: force X11 (WebKitGTK on Wayland crashes)
+    # Launcher wrapper
     install -d "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/decibell" <<'LAUNCHER'
 #!/bin/sh
-# WebKitGTK on Wayland crashes; force X11.
-export GDK_BACKEND=x11
 # WebKitGTK's DMABuf renderer fails to allocate GBM buffers on many
 # Mesa/NVIDIA setups ("Failed to create GBM buffer ... Invalid argument"),
 # resulting in a blank window. Fall back to the classic renderer.
