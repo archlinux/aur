@@ -8,9 +8,9 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler
-pkgver=2026.12rc1
+pkgver=2026.12.1rc1
 pkgrel=1
-_npu_compiler_tag=npu_ud_2026_12_rc1
+_npu_compiler_tag=npu_ud_2026_12_1_rc1
 _openvino_commit=b7f9dbfa7944a1c576b87a4061c298636ae9f2a7
 pkgdesc='Intel Neural Processing Unit (NPU) compiler'
 arch=('x86_64')
@@ -65,12 +65,12 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         'git+https://github.com/herumi/xbyak_riscv.git'
         # patches
         '010-intel-npu-compiler-llvm-disable-atomic-check.patch'
-        '020-intel-npu-compiler-disable-werror.patch'
+        #'020-intel-npu-compiler-disable-werror.patch'
         '030-intel-npu-compiler-fix-install.patch'
         '040-intel-npu-compiler-npu-plugin-elf-fix-install.patch'
         '010-openvino-disable-werror.patch'
         '020-openvino-gtest-gcc15-fix.patch')
-sha256sums=('15f58ccb3800ffe6e7ebb4eb50b2cd9316256b079eef9e8fb5b7e145d7fac667'
+sha256sums=('cc6733807e6ed1d95e3ae55f500b3c24d53de6315e71ad871e3e26eccc57d506'
             '49d646021bd209d2263981aa57193516fedae862cfca5823bf81a69dce6303fb'
             'SKIP'
             'SKIP'
@@ -102,7 +102,6 @@ sha256sums=('15f58ccb3800ffe6e7ebb4eb50b2cd9316256b079eef9e8fb5b7e145d7fac667'
             'SKIP'
             'SKIP'
             '6aea796acf3bbd3091dfeecbebfdbed1bd6023d343f49834c1d83fbb4a1d3eb8'
-            '3d13c41f7fac3568573680e84a01ed79727fe36587b1bc0285877d12ceea6e5a'
             'e1824ef4d3e2db7cdbabebf3c4fe565989541164345ee7714f9b7505ccc364c4'
             'e4734603808ad0402819eb36578f1eabb80524f4f82aed45f31736c5d184b2ef'
             'ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9'
@@ -161,7 +160,7 @@ prepare() {
     ln -sf ../npu_compiler/CMakePresets.json openvino/CMakePresets.json
     
     patch -d npu_compiler/thirdparty/llvm-project -Np1 -i "${srcdir}/010-intel-npu-compiler-llvm-disable-atomic-check.patch"
-    patch -d npu_compiler -Np1 -i "${srcdir}/020-intel-npu-compiler-disable-werror.patch"
+    #patch -d npu_compiler -Np1 -i "${srcdir}/020-intel-npu-compiler-disable-werror.patch"
     patch -d npu_compiler -Np1 -i "${srcdir}/030-intel-npu-compiler-fix-install.patch"
     patch -d npu_compiler/thirdparty/elf -Np1 -i "${srcdir}/040-intel-npu-compiler-npu-plugin-elf-fix-install.patch"
     
@@ -190,8 +189,10 @@ build() {
         -DCMAKE_C_COMPILER_LAUNCHER:STRING='' \
         -DCMAKE_CXX_COMPILER_LAUNCHER:STRING='' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DENABLE_SYSTEM_PUGIXML:BOOL='true' \
-        -DENABLE_SYSTEM_TBB:BOOL='true' \
+        -DENABLE_CLANG_FORMAT:BOOL='OFF' \
+        -DENABLE_NCC_STYLE:BOOL='OFF' \
+        -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
+        -DENABLE_SYSTEM_TBB:BOOL='ON' \
         -Wno-dev
     cmake --build build --target compilerTest profilingTest vpuxCompilerL0Test loaderTest
 }
