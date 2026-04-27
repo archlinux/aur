@@ -1,6 +1,6 @@
 pkgbase = teams-for-linux-electron-bin
 	pkgdesc = Unofficial Microsoft Teams for Linux client.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = aarch64
@@ -8,19 +8,19 @@ pkgbase = teams-for-linux-electron-bin
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = electron41
-	provides = teams-for-linux-electron=2.8.0
+	provides = teams-for-linux-electron=2.8.1
 	conflicts = teams-for-linux
 	conflicts = teams-for-linux-wayland-hook
 	conflicts = teams-for-linux-git
 	conflicts = teams-for-linux-bin
 	conflicts = teams-for-linux-electron
 	source = teams-for-linux-electron.sh
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = teams-for-linux-electron-2.8.0-aarch64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.8.0/teams-for-linux-2.8.0.aarch64.rpm
-	sha256sums_aarch64 = cd8805f9c349fcd5ff580821d8b3ba773b01c2c8bb4914c8c0cdbd9f6c35e8d7
-	source_armv7h = teams-for-linux-electron-2.8.0-armv7h.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.8.0/teams-for-linux-2.8.0.armv7l.rpm
-	sha256sums_armv7h = 59c825af66c4c78822b325e7685bdc3faf27c4f8c56c4dec8755efd35334c621
-	source_x86_64 = teams-for-linux-electron-2.8.0-x86_64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.8.0/teams-for-linux-2.8.0.x86_64.rpm
-	sha256sums_x86_64 = b860074ddaa9125dff80173519e58e37f3ba84908962d6607292287273dd8009
+	sha256sums = 3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5
+	source_aarch64 = teams-for-linux-electron-2.8.1-aarch64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.8.1/teams-for-linux-2.8.1.aarch64.rpm
+	sha256sums_aarch64 = 0f8139ce45a6e11799051af992dc1f3ec54056f5370df4d806c97e3f563b58ca
+	source_armv7h = teams-for-linux-electron-2.8.1-armv7h.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.8.1/teams-for-linux-2.8.1.armv7l.rpm
+	sha256sums_armv7h = 245c54bf9976f6a0d38874277b56148c3c2ebdb6a9ecdc3b464564bb6b46a9f5
+	source_x86_64 = teams-for-linux-electron-2.8.1-x86_64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.8.1/teams-for-linux-2.8.1.x86_64.rpm
+	sha256sums_x86_64 = f4f5bbde6dbe78c8bfdad11d9c0de2679a9976865c1914c8abf6fe7273c7b544
 
 pkgname = teams-for-linux-electron-bin
