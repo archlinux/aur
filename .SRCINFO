@@ -1,7 +1,7 @@
 pkgbase = r-terrainr
 	pkgdesc = Landscape Visualizations in R and 'Unity'
 	pkgver = 0.7.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=terrainr
 	arch = any
 	license = MIT
