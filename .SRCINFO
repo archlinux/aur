@@ -85,6 +85,6 @@ pkgbase = webkit2gtk-bin
 	provides = webkit2gtk
 	conflicts = webkit2gtk
 	source = webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst::https://github.com/Brodino96/webkit2gtk-automator/releases/download/v2.50.6-5/webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst
-	sha256sums = SKIP
+	sha256sums = 5b09f581ff0091cd6c2793760fae2a1d64102a37dd6c8bac84a98b3ccc6d8462
 
 pkgname = webkit2gtk-bin

@@ -1,6 +1,5 @@
-# Maintainer: Your Name <your@email.com>
-# This file is managed automatically by the webkit2gtk-automator.
-# Manual edits will be overwritten on the next build.
+# Maintainer: Brodino <brodino96@gmail.com>
+# Automated binary repackaging of webkit2gtk built from AUR sources.
 # Source: https://github.com/Brodino96/webkit2gtk-automator
 
 pkgname=webkit2gtk-bin
@@ -95,12 +94,15 @@ provides=(
   webkit2gtk
 )
 conflicts=(webkit2gtk)
-# source and sha256sums are populated automatically by publish.sh
 source=("webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst::https://github.com/Brodino96/webkit2gtk-automator/releases/download/v2.50.6-5/webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst")
-sha256sums=('SKIP')
+sha256sums=('5b09f581ff0091cd6c2793760fae2a1d64102a37dd6c8bac84a98b3ccc6d8462')
 
 package() {
+  # The .pkg.tar.zst is a pre-built Arch package.
+  # bsdtar extracts it; we relocate its contents into $pkgdir.
   cd "${srcdir}"
   bsdtar -xf "webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst" -C "${pkgdir}"
+  # Remove the embedded .PKGINFO and .MTREE metadata files that
+  # bsdtar includes – they are not part of the installed file tree.
   rm -f "${pkgdir}"/.PKGINFO "${pkgdir}"/.MTREE "${pkgdir}"/.BUILDINFO
 }
