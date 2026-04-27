@@ -1,6 +1,6 @@
 pkgbase = py-spy
 	pkgdesc = Sampling profiler for Python programs
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/benfred/py-spy
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = py-spy
 	makedepends = rust
 	makedepends = cargo
 	makedepends = libunwind
-	source = py-spy-0.4.1.tar.gz::https://github.com/benfred/py-spy/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 6abc303d4e2db30d472997838f83d547a990df7747e1d327249a757863ee9225
+	source = py-spy-0.4.2.tar.gz::https://github.com/benfred/py-spy/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = ecf8d945f63b172126abcd68e21f3e5f250498cb774d88247d80a6f2cacdb998
 
 pkgname = py-spy
