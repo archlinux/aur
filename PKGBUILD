@@ -4,8 +4,8 @@ _appName=EFIBootEditor
 _pkgauthor=Neverous
 _pkgname=efibooteditor
 pkgname=${_pkgname}-bin
-pkgver=1.5.6
-_qtversion=6.10.2
+pkgver=1.5.7
+_qtversion=6.11.0
 _ubuntuversion=24.04
 _compiler=CLang
 pkgrel=1
@@ -25,7 +25,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.txt"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_appName}-v${pkgver}-ubuntu-${_ubuntuversion}-qt-${_qtversion}-${_compiler}.deb")
 sha256sums=('e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118'
             'dc75ee36430c142cd4f7eaccacfcf44a2d12acabf54d23ef139bee45c21906d1')
-sha256sums_x86_64=('0799f65ebff07b99d00f1928808d3440ecb795d500cf76d4b72dee75de65388d')
+sha256sums_x86_64=('37f7f4950e6d1a001d0d0cd05e7a53c80ac2aa621206192879169d4f11b40f75')
 
 
 package() {
