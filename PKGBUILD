@@ -2,7 +2,7 @@
 
 pkgname=python-kicad
 _name=${pkgname#python-}
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="KiCad API Python Bindings"
 provides=(${pkgname} kicad-python)
@@ -37,7 +37,7 @@ source=(
     "${pkgname}::git+${url}.git#tag=$pkgver"
     "kicad::git+https://gitlab.com/kicad/code/kicad.git"
 )
-sha256sums=('4f7bb9d8d1d7a3fe046fe564a4933f8abd9ba4fe3dc121ee48a962ac36689abd'
+sha256sums=('a3101469ef55193be4f2fc2de857a8b139669a6322c98d244c927d5fbc7ca612'
             'SKIP')
 
 prepare() {
