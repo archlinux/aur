@@ -1,15 +1,15 @@
 # Maintainer: Zdeněk Biberle <zdenek at biberle dot net>
 pkgname=snx-rs
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="Rust client for Checkpoint VPN tunnels"
 arch=(x86_64)
 url=https://github.com/ancwrd1/snx-rs
 license=(AGPL-3.0-only)
-depends=(fontconfig glib2 glibc gtk4 libgcc openssl sqlite webkitgtk-6.0)
+depends=(fontconfig glib2 glibc gtk4 hicolor-icon-theme libgcc openssl sqlite webkitgtk-6.0)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ancwrd1/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b3521f754fad36ab5b610ee108445b2b4c4e72afa39e840f0497ec4c37466b80')
+sha256sums=('a7434b0a142a835e9ed964cad5922ff27c2937aa78433f61049a4ab8fc9ae7f8')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -35,4 +35,5 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" target/release/{snx-rs,snxctl,snx-rs-gui}
   install -Dm0644 -t "$pkgdir/usr/lib/systemd/system/" package/snx-rs.service
   install -Dm0644 -t "$pkgdir/usr/share/applications/" package/snx-rs-gui.desktop
+  install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps/" package/icons/snx-rs-*
 }

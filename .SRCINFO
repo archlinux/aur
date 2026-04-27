@@ -1,6 +1,6 @@
 pkgbase = snx-rs
 	pkgdesc = Rust client for Checkpoint VPN tunnels
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://github.com/ancwrd1/snx-rs
 	arch = x86_64
@@ -10,11 +10,12 @@ pkgbase = snx-rs
 	depends = glib2
 	depends = glibc
 	depends = gtk4
+	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = openssl
 	depends = sqlite
 	depends = webkitgtk-6.0
-	source = snx-rs-6.0.1.tar.gz::https://github.com/ancwrd1/snx-rs/archive/refs/tags/v6.0.1.tar.gz
-	sha256sums = b3521f754fad36ab5b610ee108445b2b4c4e72afa39e840f0497ec4c37466b80
+	source = snx-rs-6.0.2.tar.gz::https://github.com/ancwrd1/snx-rs/archive/refs/tags/v6.0.2.tar.gz
+	sha256sums = a7434b0a142a835e9ed964cad5922ff27c2937aa78433f61049a4ab8fc9ae7f8
 
 pkgname = snx-rs
