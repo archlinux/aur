@@ -2,13 +2,14 @@
 
 pkgname=optimizevideo-git
 _pkgname=optimizevideo
-pkgver=r15.1dd2dec
+pkgver=r30.0dba8f6
 pkgrel=1
 pkgdesc="Substitutes a video for its smallest size version which does not have perceivable quality loss"
 arch=('any')
 url='https://gitlab.com/es20490446e/optimizeVideo'
 license=('AGPL')
-provides=('optimizevideo' 'args')
+provides=('optimizevideo')
+conflicts=('optimizevideo')
 depends=('libvpx'
          'opus'
          'ffmpeg'

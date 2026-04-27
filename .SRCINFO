@@ -1,6 +1,6 @@
 pkgbase = optimizevideo-git
 	pkgdesc = Substitutes a video for its smallest size version which does not have perceivable quality loss
-	pkgver = r15.1dd2dec
+	pkgver = r30.0dba8f6
 	pkgrel = 1
 	url = https://gitlab.com/es20490446e/optimizeVideo
 	arch = any
@@ -11,11 +11,10 @@ pkgbase = optimizevideo-git
 	depends = ffmpeg
 	depends = solve
 	provides = optimizevideo
-	provides = args
+	conflicts = optimizevideo
 	source = optimizevideo::git+https://gitlab.com/es20490446e/optimizeVideo
 	source = args::git+https://gitlab.com/es20490446e/args
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = optimizevideo-git
-
