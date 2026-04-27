@@ -1,6 +1,6 @@
 pkgbase = pmount
 	pkgdesc = mount removable devices as normal user
-	pkgver = 0.9.23_10
+	pkgver = 0.9.23_11
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/pmount
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = pmount
 	depends = sysfsutils>=2.0.0-1
 	depends = util-linux
 	backup = etc/pmount.allow
-	source = pmount-debian-0.9.23-10.tar.gz::https://salsa.debian.org/debian/pmount/-/archive/debian/0.9.23-10/pmount-debian-0.9.23-10.tar.gz
+	source = pmount-debian-0.9.23-11.tar.gz::https://salsa.debian.org/debian/pmount/-/archive/debian/0.9.23-11/pmount-debian-0.9.23-11.tar.gz
 	source = 0001-fix-debug-segfault.patch
-	sha256sums = a1d027bef40250ed133e34289c8881d05a56438c6f4b5d1ca712a81e9d5c5bed
+	sha256sums = b41ab80692cc026556983e6a302abcca4e31cf0c388b27842f41e3e3f538897d
 	sha256sums = e19eda4987b41f1b76281b980b56239b386539938d70e5b4a40b286bff789b93
 
 pkgname = pmount

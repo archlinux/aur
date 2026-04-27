@@ -4,7 +4,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=pmount
-pkgver=0.9.23_10
+pkgver=0.9.23_11
 pkgrel=1
 pkgdesc='mount removable devices as normal user'
 arch=(i686 x86_64 armv7h)
@@ -20,7 +20,7 @@ source=(
     $_pkgname.tar.gz::$url/-/archive/debian/$_debver/$_pkgname.tar.gz
     0001-fix-debug-segfault.patch
 )
-sha256sums=('a1d027bef40250ed133e34289c8881d05a56438c6f4b5d1ca712a81e9d5c5bed'
+sha256sums=('b41ab80692cc026556983e6a302abcca4e31cf0c388b27842f41e3e3f538897d'
             'e19eda4987b41f1b76281b980b56239b386539938d70e5b4a40b286bff789b93')
 
 latestver() {
