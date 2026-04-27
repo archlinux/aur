@@ -1,0 +1,24 @@
+pkgbase = python-pytest-http-snapshot
+	pkgdesc = Pytest plugin that captures and snapshots HTTP roundtrips. Supports httpx and requests.
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/karpetrosyan/http-snapshot
+	arch = any
+	license = MIT
+	checkdepends = python-httpx
+	checkdepends = python-requests
+	checkdepends = python-urllib3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-inline-snapshot
+	depends = python-pytest
+	optdepends = python-httpx: integration with httpx
+	optdepends = python-requests: integration with requests
+	optdepends = python-urllib3: integration with requests
+	source = http-snapshot-0.1.9.tar.gz::https://github.com/karpetrosyan/http-snapshot/archive/0.1.9.tar.gz
+	sha512sums = 836530661757b20bb2df5da62d89956dd5781f8ca358e1f9974c884fbd751f79e0a5f3c851bbbcb28366995e5300f89b2df21eb19ec7d5a8f0425d588c005cfe
+
+pkgname = python-pytest-http-snapshot

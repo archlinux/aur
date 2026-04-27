@@ -1,0 +1,4 @@
+[python-pytest-http-snapshot]
+source = "github"
+github = "karpetrosyan/http-snapshot"
+use_latest_release = true
