@@ -1,15 +1,14 @@
 pkgbase = perl-test-simple
-	pkgdesc = Test::Simple - Basic utilities for writing tests
-	pkgver = 1.302106
-	pkgrel = 1
-	url = https://github.com/Test-More/test-more
+	pkgdesc = Backend for building test libraries
+	pkgver = 1.302219
+	pkgrel = 0
+	url = https://metacpan.org/dist/Test-Simple
 	arch = any
-	license = GPL
-	license = PerlArtistic
-	depends = perl>=5.10.0
-	source = https://github.com/Test-More/test-more/archive/v1.302106.tar.gz
-	md5sums = ccd36f49bb1f154ee6bff06374bf175d
-	sha256sums = 44f44c698acaf29107c33adea564f3f4921db79aebe51a188b895f8895097214
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl-test-simple
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-Simple-1.302219.tar.gz
+	sha256sums = 420600911230de768427f6646758d89b6c07977b565e5b40118e5b8440dbb30b
 
 pkgname = perl-test-simple
-

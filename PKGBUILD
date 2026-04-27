@@ -1,33 +1,48 @@
-# Maintainer: Flakebi <flakebi@t-online.de>
-_perlmod=test-more
-#_perlmod=Test-Simple
+# Maintainer: Homer Xing <homer.hsing at gmail dot com>
+# Contributor: Flakebi <flakebi@t-online.de>
+
+_author=EXODIST
+_dist=Test-Simple
 pkgname=perl-test-simple
-pkgver=1.302106
-pkgrel=1
-pkgdesc="Test::Simple - Basic utilities for writing tests"
+pkgver=1.302219
+pkgrel=0
+pkgdesc='Backend for building test libraries'
 arch=('any')
-url="https://github.com/Test-More/test-more"
-#url="http://search.cpan.org/~exodist/$_perlmod/"
-license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0')
-source=("https://github.com/Test-More/test-more/archive/v$pkgver.tar.gz")
-#source=("http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/$_perlmod-$pkgver.tar.gz")
-md5sums=('ccd36f49bb1f154ee6bff06374bf175d')
-sha256sums=('44f44c698acaf29107c33adea564f3f4921db79aebe51a188b895f8895097214')
+url='https://metacpan.org/dist/Test-Simple'
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+makedepends=('perl-extutils-makemaker')
+depends=('perl-test-simple')
+checkdepends=()
+options=(!emptydirs)
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/${_author}/${_dist}-${pkgver}.tar.gz")
+sha256sums=('420600911230de768427f6646758d89b6c07977b565e5b40118e5b8440dbb30b')
 
-build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+build()
+{
+    cd "${_dist}-${pkgver}"
 
-  # Install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-package() {
-  cd "$srcdir/$_perlmod-$pkgver"
-  make install DESTDIR="$pkgdir/"
+check()
+{
+    cd "${_dist}-${pkgver}"
 
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-# vim:set ts=2 sw=2 et:
+package()
+{
+    cd "${_dist}-${pkgver}"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+}
+
