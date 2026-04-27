@@ -114,6 +114,14 @@ Icon=deadsync
 Categories=Game;
 Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
+
+[Desktop Action OpenConfigDir]
+Name=Open Config Directory
+Exec=xdg-open "${HOME}/.deadsync"
+
+[Desktop Action OpenSongsDir]
+Name=Open Songs Directory
+Exec=xdg-open "${HOME}/.deadsync/songs"
 EOF
 
     # Install all sized icons into the hicolor theme so Icon=deadsync in the
