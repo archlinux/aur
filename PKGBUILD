@@ -3,7 +3,7 @@
 _pkgname='pixora-icons'
 pkgname="$_pkgname-git"
 pkgdesc='16-bit icons theme for Linux desktops. (GIT version)'
-pkgver=1.0.0.r293.gbb120a0
+pkgver=1.0.0.r302.g8359016
 pkgrel=1
 url='https://github.com/tsora1603/pixora-icons'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('findutils' 'git')
 provides=('pixora-icons')
 conflicts=("${provides[@]}")
 options=('!strip')
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,25 +23,18 @@ pkgver() {
 }
 
 package() {
-  install -dm755 "$pkgdir/usr/share/icons/pixora-icons"
-  cp -fa "$srcdir/$_pkgname/pixora-icons/"* "$pkgdir/usr/share/icons/pixora-icons/"  
-  find "$pkgdir/usr/share/icons/pixora-icons" -type d -print0 \
+  install -dm755 "$pkgdir/usr/share/icons/pixora"
+  cp -fa "$srcdir/$_pkgname/pixora/"* "$pkgdir/usr/share/icons/pixora/"  
+  find "$pkgdir/usr/share/icons/pixora" -type d -print0 \
     | xargs -r0 chmod 0755
-  find "$pkgdir/usr/share/icons/pixora-icons" -type f -print0 \
+  find "$pkgdir/usr/share/icons/pixora" -type f -print0 \
     | xargs -r0 chmod 0644
 
-  install -dm755 "$pkgdir/usr/share/icons/pixelitos-light"
-  cp -fa "$srcdir/$_pkgname/pixelitos-light/"* "$pkgdir/usr/share/icons/pixelitos-light/"
-  find "$pkgdir/usr/share/icons/pixelitos-light" -type d -print0 \
+  install -dm755 "$pkgdir/usr/share/icons/pixora-dark"
+  cp -fa "$srcdir/$_pkgname/pixora-dark/"* "$pkgdir/usr/share/icons/pixora-dark/"
+  find "$pkgdir/usr/share/icons/pixora-dark" -type d -print0 \
     | xargs -r0 chmod 0755
-  find "$pkgdir/usr/share/icons/pixelitos-light" -type f -print0 \
-    | xargs -r0 chmod 0644
-
-  install -dm755 "$pkgdir/usr/share/icons/pixelitos-dark"
-  cp -fa "$srcdir/$_pkgname/pixelitos-dark/"* "$pkgdir/usr/share/icons/pixelitos-dark/"
-  find "$pkgdir/usr/share/icons/pixelitos-dark" -type d -print0 \
-    | xargs -r0 chmod 0755
-  find "$pkgdir/usr/share/icons/pixelitos-dark" -type f -print0 \
+  find "$pkgdir/usr/share/icons/pixora-dark" -type f -print0 \
     | xargs -r0 chmod 0644
 
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
