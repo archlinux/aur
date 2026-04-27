@@ -2,10 +2,10 @@
 
 pkgname=whoogle
 pkgver="1.2.4"
-pkgrel=1
+pkgrel=2
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
-url="https://github.com/benbusby1.0oogle-search"
+url="https://github.com/benbusby/whoogle-search"
 license=(MIT)
 depends=(python)
 makedepends=(python python-pip)
