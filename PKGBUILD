@@ -25,7 +25,7 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.3.826.r0.g1f13b4f # Placeholder - gets overwritten with pkgver()
+pkgver=0.3.826.r4.g80c0b2a # Placeholder - gets overwritten with pkgver()
 pkgrel=1
 
 source=("${pkgname}::git+https://github.com/pnn64/deadsync.git")
@@ -114,15 +114,11 @@ Icon=deadsync
 Categories=Game;
 Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
-Actions=OpenConfigDir;OpenSongsDir;
+Actions=OpenDataDir;
 
-[Desktop Action OpenConfigDir]
-Name=Open Config Directory
-Exec=xdg-open "${HOME}/.deadsync"
-
-[Desktop Action OpenSongsDir]
-Name=Open Songs Directory
-Exec=xdg-open "${HOME}/.deadsync/songs"
+[Desktop Action OpenDataDir]
+Name=Open Data Directory
+Exec=xdg-open "$XDG_DATA_HOME/deadsync"
 EOF
 
     # Install all sized icons into the hicolor theme so Icon=deadsync in the
