@@ -1,6 +1,6 @@
 pkgbase = python-llm-anthropic
 	pkgdesc = LLM plugin for models hosted by Anthropic, including the Claude series
-	pkgver = 0.23
+	pkgver = 0.25
 	pkgrel = 1
 	url = https://github.com/simonw/llm-anthropic
 	arch = any
@@ -15,9 +15,8 @@ pkgbase = python-llm-anthropic
 	depends = python
 	depends = python-anthropic>=0.75
 	depends = python-llm
-	depends = python-json-schema-to-pydantic
 	depends = python-pydantic
-	source = llm-anthropic-0.23.tar.gz::https://github.com/simonw/llm-anthropic/archive/0.23.tar.gz
-	sha512sums = 4ddff04905eebf002b40c33640a9a566837d4546030cac8ec4360d72f774efddc489f09f2b1e6eed893c9b73a1a4ef5159fd56fe70a9349fdef117047e428e77
+	source = llm-anthropic-0.25.tar.gz::https://github.com/simonw/llm-anthropic/archive/0.25.tar.gz
+	sha512sums = b6b84b6737f0c3c33a49c6207f14434098631e6c81f8954686688d38b2c4f8a0e97ad587945613767811411d677e8ff5cbd197e74e1c7be0a5a77c37fcd2eeb5
 
 pkgname = python-llm-anthropic
