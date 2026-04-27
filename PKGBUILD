@@ -2,7 +2,7 @@
 pkgname=tuna-music
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="TUNA — Terminal music player with real-time audio visualizer"
+pkgdesc="TUNA - Terminal music player with real-time audio visualizer"
 arch=('x86_64')
 url="https://github.com/randometerian/TUNA"
 license=('MIT')
@@ -22,12 +22,12 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/randometerian/TUNA/archive/v$pkgver.tar.gz")
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd TUNA-$pkgver
     pip install --prefix="$srcdir/.deps" -e .
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd TUNA-$pkgver
     pip install --root="$pkgdir" --optimize=1 -e .
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

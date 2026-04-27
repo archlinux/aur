@@ -1,5 +1,5 @@
 pkgbase = tuna-music
-	pkgdesc = TUNA — Terminal music player with real-time audio visualizer
+	pkgdesc = TUNA - Terminal music player with real-time audio visualizer
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/randometerian/TUNA
