@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lemmy-ui
-pkgver=0.19.16
+pkgver=0.19.18
 pkgrel=1
 pkgdesc='The official web app for lemmy'
 arch=('any')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('nodejs' 'lemmy')
 makedepends=('git' 'pnpm' 'python')
 backup=('etc/lemmy/lemmy-ui.env')
-_commit='34953854cf57d7bcd9a3a7e2a875eab117266acd'
+_commit='21ba63b4b452346bca2d0ac3b65ade1ee395d72b'
 source=(
   "$pkgname::git+https://github.com/LemmyNet/lemmy-ui#commit=$_commit"
   'git+https://github.com/LemmyNet/lemmy-translations.git'
