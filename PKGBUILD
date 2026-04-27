@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # Указываем загрузку прямо из PyPI
-source=("https://files.pythonhosted.org/packages/source/c/cmd-game-chess/cmd-game-chess-$pkgver.tar.gz")
-sha256sums=('SKIP') # Для первой версии можно SKIP, потом лучше генерировать
+source=("https://files.pythonhosted.org/packages/source/c/cmd_game_chess/cmd_game_chess-$pkgver.tar.gz")
+sha256sums=('38fa982ecfc8eeb7e9cbdf981a9434d09e933200967510bdc42e87d5f0fe80d4')
 
 build() {
     cd "$_name-$pkgver"
