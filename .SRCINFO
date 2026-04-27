@@ -1,7 +1,7 @@
 pkgbase = manjaro-gaming-control-bin
 	pkgdesc = Exclusive optimization and hardware control utility for Manjaro Linux gamers.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/serhiidev88/ManjaroGamingControl
 	arch = x86_64
 	license = GPL

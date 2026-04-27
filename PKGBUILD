@@ -1,7 +1,7 @@
 # Maintainer: Serhii <serhiidev88@gmail.com>
 pkgname=manjaro-gaming-control-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Exclusive optimization and hardware control utility for Manjaro Linux gamers."
 arch=('x86_64')
 url="https://github.com/serhiidev88/ManjaroGamingControl"
