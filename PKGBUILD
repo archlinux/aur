@@ -1,21 +1,20 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
 # Contributor: Mario Finelli <mario at finel dot li>
 
-_commit=10bf0b27c5be81ee26c3a0d32e39b270f95329ce
 pkgname=vim-puppet
-pkgver=20240915
+pkgver=1.0.0
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc='Puppet language syntax highlighting for vim.'
 arch=('any')
 url='https://github.com/rodjek/vim-puppet'
 license=('Apache-2.0')
 depends=('vim')
-source=("${url}/archive/${_commit}.zip")
-sha256sums=('4bbeaf8e48f07949bd4e36f192950c0cadfcd72f60174061796c89d145aa1365')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rodjek/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('6d56d2260507482a48cded0b24191a15a3fb7b71f82df1ecbb2d4d036859a6be')
 
 package() {
-    cd "vim-puppet-${_commit}"
+    cd "${pkgname}-${pkgver}"
     _vimdir="${pkgdir}/usr/share/vim/vimfiles"
 
     install -Dm644 after/plugin/gutentags.vim  "${_vimdir}/after/plugin/gutentags.vim"
