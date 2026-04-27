@@ -19,8 +19,7 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/randometerian/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/randometerian/TUNA/archive/v$pkgver.tar.gz")
 
 build() {
     cd "$pkgname-$pkgver"
