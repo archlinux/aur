@@ -77,7 +77,7 @@ _git_revert=(49414a72f607ccd15f8b71b81edc9aff040d581e)
   _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=OFF )
 
 pkgname=blender-develop-git
-pkgver=5.2.r158974.gd80e87858d3
+pkgver=5.2.r160926.g54ebd89a64c
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -104,9 +104,11 @@ license=('GPL')
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
 source=("blender::git+https://github.com/blender/blender${_fragment}"
         SelectCudaComputeArch.patch
+        blender-fix-oneapi-2026.patch::https://raw.githubusercontent.com/intel/llvm/20a7095cba72ace59f7c8a64711ec4b51f01f030/devops/actions/blender/blender-build/patches/Fix-build.patch
         )
 sha256sums=('SKIP'
-            '60ac315c873a3842dd46393ed351c008255911a8fa352d39587a5eede3983e3a')
+            '60ac315c873a3842dd46393ed351c008255911a8fa352d39587a5eede3983e3a'
+            '154d89a0187476265f3d29fbc3ec696c0e293e27f75a4c633ea81393ab9a1ae2')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -125,7 +127,9 @@ prepare() {
   fi
   [[ -v _git_revert ]] && git -C "${srcdir}"/blender revert --no-commit -Xtheirs "${_git_revert[@]}" || git -C "${srcdir}"/blender revert --abort
 # remove deprecated headers in rocm:7
-sed -e '/Geometry.h/d' -e '/Scene.h/d' -i "$srcdir"/blender/intern/cycles/kernel/CMakeLists.txt
+  sed -e '/Geometry.h/d' -e '/Scene.h/d' -i "$srcdir"/blender/intern/cycles/kernel/CMakeLists.txt
+# fix build agaisnt oneapi:2026.0.0
+  git -C "$srcdir/blender" apply -v "${srcdir}"/blender-fix-oneapi-2026.patch
 }
 
 build() {

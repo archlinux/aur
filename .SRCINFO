@@ -1,6 +1,6 @@
 pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 5.2.r158974.gd80e87858d3
+	pkgver = 5.2.r160926.g54ebd89a64c
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -60,7 +60,9 @@ pkgbase = blender-develop-git
 	conflicts = blender=5.2
 	source = blender::git+https://github.com/blender/blender#branch=main
 	source = SelectCudaComputeArch.patch
+	source = blender-fix-oneapi-2026.patch::https://raw.githubusercontent.com/intel/llvm/20a7095cba72ace59f7c8a64711ec4b51f01f030/devops/actions/blender/blender-build/patches/Fix-build.patch
 	sha256sums = SKIP
 	sha256sums = 60ac315c873a3842dd46393ed351c008255911a8fa352d39587a5eede3983e3a
+	sha256sums = 154d89a0187476265f3d29fbc3ec696c0e293e27f75a4c633ea81393ab9a1ae2
 
 pkgname = blender-develop-git
