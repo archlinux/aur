@@ -1,13 +1,12 @@
 pkgbase = wooting-analog-sdk-bin
 	pkgdesc = Native support for Analog Keyboards
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WootingKb/wooting-analog-sdk
 	arch = x86_64
 	license = MPL-2.0
+	optdepends = universal-analog-plugin-bin: Plugins for a wider range of keyboards
 	source = https://github.com/WootingKb/wooting-analog-sdk/releases/download/v0.9.1/wooting-analog-sdk-v0.9.1-x86_64-unknown-linux-gnu.tar.gz
-	source = https://analogsense.org/udev-rules/70-analogsense.rules
 	sha256sums = 8df8ae7ff41c46e57aa9f8a5fa52e1ed82cf88e5dc1b90693fbc87a6213d4a11
-	sha256sums = a4cfdd8e82e13b26199c71c40494c3efd4c7d63b6f4400852bf95b00e6621a07
 
 pkgname = wooting-analog-sdk-bin
