@@ -1,4 +1,4 @@
-# Maintainer: fa5e4658010be730
+# Maintainer: fkzys <fkzys at proton dot me>
 pkgname=btrfs-file-history-git
 pkgver=r9.98db6f2
 pkgrel=1
