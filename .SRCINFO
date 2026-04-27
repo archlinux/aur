@@ -1,11 +1,11 @@
 pkgbase = cxstudy-wine
 	pkgdesc = a version of repacked wine app of cxstudy(学习通)
-	pkgver = 1.4.0
-	pkgrel = 6
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://atomgit.com/JingluWei_chn/cxstudy-wine/tree/master
 	arch = x86_64
 	license = MIT
-	depends = wine
+	depends = wine>=9.22
 	depends = wine-mono
 	depends = wine-gecko
 	depends = noto-fonts-cjk
