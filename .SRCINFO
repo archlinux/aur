@@ -14,7 +14,7 @@ pkgbase = tuna-music
 	depends = python-numpy
 	depends = python-pyaudio
 	depends = portaudio
-	source = tuna-music-1.1.0.tar.gz::https://github.com/randometerian/TUNA/archive/v1.1.0.tar.gz
+	source = TUNA-1.1.0.tar.gz::https://github.com/randometerian/TUNA/archive/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = tuna-music

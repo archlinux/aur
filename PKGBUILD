@@ -19,7 +19,7 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/randometerian/TUNA/archive/v$pkgver.tar.gz")
+source=("TUNA-$pkgver.tar.gz::https://github.com/randometerian/TUNA/archive/v$pkgver.tar.gz")
 
 build() {
     cd TUNA-$pkgver
