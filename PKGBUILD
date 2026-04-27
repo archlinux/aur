@@ -2,7 +2,7 @@
 
 pkgname=opkssh
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="opkssh (OpenPubkey SSH)"
 arch=('x86_64')
 url="https://github.com/openpubkey/opkssh"
@@ -25,7 +25,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build/opkssh main.go
+  go build -o build/opkssh .
 }
 
 check() {
