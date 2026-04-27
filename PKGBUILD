@@ -1,7 +1,7 @@
 # Maintainer: Archisman Panigrahi <apandada1 AT gmail DOT com>
 
 pkgname=wombat
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc=" High-precision scientific calculator with full unit support, powered by Numbat"
 arch=('any')
@@ -35,10 +35,6 @@ package() {
     # Install icon
     install -Dm644 data/io.github.archisman_panigrahi.wombat.png \
         "${pkgdir}/usr/share/icons/hicolor/64x64/apps/io.github.archisman_panigrahi.wombat.png"
-
-    # Install GSettings schema
-    install -Dm644 data/io.github.archisman_panigrahi.wombat.gschema.xml \
-        "${pkgdir}/usr/share/glib-2.0/schemas/io.github.archisman_panigrahi.wombat.gschema.xml"
     
     # Install license
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
