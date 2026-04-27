@@ -1,20 +1,11 @@
 pkgbase = python-tilelang
-	pkgdesc = Tile-level domain-specific language for high-performance GPU/CPU kernels
+	pkgdesc = Tile-level domain-specific language for high-performance GPU/CPU kernels (binary wheel)
 	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/tile-ai/tilelang
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = git
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-scikit-build-core
-	makedepends = python-pytorch
-	makedepends = cython
-	makedepends = cmake
-	makedepends = ninja
-	makedepends = patchelf
 	depends = python>=3.9
 	depends = python-pytorch
 	depends = python-tvm-ffi
@@ -25,8 +16,9 @@ pkgbase = python-tilelang
 	depends = python-psutil
 	depends = python-tqdm
 	depends = cuda
+	noextract = tilelang-0.1.9-cp38-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
 	options = !strip
-	source = tilelang::git+https://github.com/tile-ai/tilelang.git#tag=v0.1.9
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/f7/8a/1cbeee79d62abaa02441c2d00621554e41aa62dbf3b94a4feb3867184b01/tilelang-0.1.9-cp38-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+	sha256sums = 4bbccfe9035aed775ffafb6dc25a5994504b24e2c5d95d0f39643edfafa7bf12
 
 pkgname = python-tilelang

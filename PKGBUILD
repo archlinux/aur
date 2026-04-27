@@ -3,7 +3,7 @@ pkgname=python-tilelang
 _pkgname=tilelang
 pkgver=0.1.9
 pkgrel=1
-pkgdesc='Tile-level domain-specific language for high-performance GPU/CPU kernels'
+pkgdesc='Tile-level domain-specific language for high-performance GPU/CPU kernels (binary wheel)'
 arch=('x86_64')
 url='https://github.com/tile-ai/tilelang'
 license=('Apache-2.0')
@@ -19,42 +19,14 @@ depends=(
   'python-tqdm'
   'cuda'
 )
-makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-wheel'
-  'python-scikit-build-core'
-  'python-pytorch'
-  'cython'
-  'cmake'
-  'ninja'
-  'patchelf'
-)
+makedepends=('python-installer')
 options=('!strip')
-source=("${_pkgname}::git+https://github.com/tile-ai/tilelang.git#tag=v${pkgver}")
-sha256sums=('SKIP')
 
-prepare() {
-  cd "${_pkgname}"
-  git submodule update --init --recursive --depth 1
-  # Arch ships libz3 in the system 'z3' package, not inside python-z3-solver.
-  # Drop NO_DEFAULT_PATH so FindZ3 falls back to /usr/include and /usr/lib.
-  sed -i 's/ NO_DEFAULT_PATH//g' cmake/pypi-z3/FindZ3.cmake
-}
-
-build() {
-  cd "${_pkgname}"
-  # Honour MAKEFLAGS from /etc/makepkg.conf; fall back to nproc.
-  # TVM C++ jobs are modest in memory (~500 MB each) so full parallelism is safe.
-  [[ $MAKEFLAGS =~ -j[[:space:]]*([0-9]+) ]] && _jobs="${BASH_REMATCH[1]}" || _jobs=$(nproc)
-  export MAX_JOBS=$_jobs
-  export CMAKE_BUILD_PARALLEL_LEVEL=$_jobs
-  export CMAKE_POLICY_VERSION_MINIMUM=3.5
-  python -m build --wheel --no-isolation --skip-dependency-check
-}
+_wheel="${_pkgname}-${pkgver}-cp38-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+source=("https://files.pythonhosted.org/packages/f7/8a/1cbeee79d62abaa02441c2d00621554e41aa62dbf3b94a4feb3867184b01/${_wheel}")
+sha256sums=('4bbccfe9035aed775ffafb6dc25a5994504b24e2c5d95d0f39643edfafa7bf12')
+noextract=("${_wheel}")
 
 package() {
-  cd "${_pkgname}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="${pkgdir}" "${srcdir}/${_wheel}"
 }
