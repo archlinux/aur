@@ -1,0 +1,27 @@
+pkgbase = python-kicad-sch-api
+	pkgdesc = Professional KiCAD schematic manipulation library with exact format preservation
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/circuit-synth/kicad-sch-api
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-black
+	depends = python-jinja
+	depends = python-pydantic
+	depends = python-typing_extensions
+	depends = python-fastmcp
+	depends = python-mcp
+	depends = python-sexpdata
+	optdepends = kicad
+	provides = python-kicad-sch-api
+	conflicts = python-kicad-sch-api
+	source = kicad-sch-api::git+https://github.com/circuit-synth/kicad-sch-api.git#tag=v0.5.3
+	sha256sums = 75c7ff8844c36bccc54e1d286e2183bde37254eff010fbf25114426e92a99c02
+
+pkgname = python-kicad-sch-api
