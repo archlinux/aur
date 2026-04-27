@@ -22,11 +22,11 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.3.620
+pkgver=0.3.826
 pkgrel=1
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pnn64/deadsync/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('88e54dbcacba313720fc8e0473212a7e2f8bc7ca17094d4a53dde8a1c5868df3')
+sha256sums=('6ceba46a72e8b3f5e5c557b62345bd1465d95de179ef44cb19b6e9fc734ec568')
 
 prepare() {
     cd "${srcdir}/deadsync-${pkgver}"
@@ -92,6 +92,14 @@ Icon=deadsync
 Categories=Game;
 Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
+
+[Desktop Action OpenConfigDir]
+Name=Open Config Directory
+Exec=xdg-open "${HOME}/.deadsync"
+
+[Desktop Action OpenSongsDir]
+Name=Open Songs Directory
+Exec=xdg-open "${HOME}/.deadsync/songs"
 EOF
 
     local _icondir="assets/graphics/icon"
