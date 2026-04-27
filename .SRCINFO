@@ -9,6 +9,7 @@ pkgbase = bitshrinker
 	makedepends = cargo
 	makedepends = rust
 	depends = gcc-libs
+	depends = ffmpeg
 	options = !lto
 	source = bitshrinker-1.0.0.tar.gz::https://github.com/Strawberry-Foundations/bitshrinker/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = 403e23e071ba1e3a6089bf9b3e0e3a94d9966d61f137033e788fb33e5faf6ee3
