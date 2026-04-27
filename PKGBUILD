@@ -1,61 +1,94 @@
-# Maintainer: mekyt <hello at mek dot yt>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: mekyt <hello at mek dot yt>
 
-pkgname='openfga'
-pkgver=1.8.9
-pkgrel=0
-pkgdesc='Relationship-based access control'
-arch=('x86_64')
-url='https://github.com/openfga/openfga'
-license=('Apache-2.0')
-depends=('glibc')
+pkgname="openfga"
+pkgver=1.15.0
+pkgrel=1
+pkgdesc="High performance and flexible authorization/permission engine built for developers and inspired by Google Zanzibar"
+arch=(
+  'aarch64'
+  'i686'
+  'x86_64'
+)
+url="https://openfga.dev"
+_url="https://github.com/${pkgname}/${pkgname}"
+license=(
+  'Apache-2.0'
+)
+depends=(
+  'glibc'
+)
 makedepends=(
+  'git'
   'go'
 )
+backup=(
+  "etc/${pkgname}"
+)
+_pkgsrc="${_url##*/}"
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/openfga/openfga/archive/refs/tags/v${pkgver}.tar.gz"
-  'openfga.service'
-  'config.yaml'
-  'sysusers.conf'
-  'tmpfiles.conf'
+  "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
+  "${pkgname}."{service,sysusers,tmpfiles,yaml}
 )
-b2sums=(
-  'c90b1282483264a342eb2c608c77e38d651303efe3ad4d1cbe0c1386148d02662d98cb624e9e28651cf53abe32b934a5ecef530b847a86f56cce0f61f240feda'
-  '7c755f75f83a8b06e6afea225a203c672d186e314d6f347c1949488743b47684b4078452857b8e430a736a8d62c2fb74a330abe2d39a25b031af08ebc29f83d9'
-  '0cf0c6824d844a53af528c4ac15785140299f9b1c6a3304940710d3f07a7a3346c74780e4bf80770bc15a61166d21b4b3db460d2770f9a9775cdfd8d77293a1e'
-  '1cba873bfeed213bc702c20106c284f3d93d54e23578754fbd67babfe1ff2861d29a0a563b45e58d2d0ebc063de8d0ff57ec3650f7f6b09952b8939b96615ed0'
-  '91de9f416bc8eb033ac57eb4f8064eb21414a568217725dbee2ae3cd787c4788950b66f327d8614c7afe53c57faa1cb82d1a4644d7d0678be33258bf284f8e2b'
-)
+sha256sums=('5431081726c6c3b2913c5f08da3be0c5822d6e84d73f25349db501dda3f69b7b'
+            '6f5b8d7257f4158b3800346d9fa0679e1041c92987b0303f04439a54e3488580'
+            '0236b9c80bc4a6ca17c0cc5cae1091a0225cdc29163667661353d42927ecb1e7'
+            'ac8e4f66ab7fd0540f58d3de61940f0dea1494fa05b4b984796c1db41a053ea1'
+            '1929be63a6466a045939235754e2d2cfd4ca430c304698a6089614c6b8eec6d1')
 
-build() {
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export EXTRA_GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    export LDFLAGS="-X github.com/openfga/openfga/internal/build.Version=${pkgver} -X github.com/openfga/openfga/internal/build.ProjectName=${pkgname}"
+prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
 
-    cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgsrc}"
+  go mod download -modcacherw -x
+  go mod verify
 
-    go run ./cmd/openfga completion bash > "${pkgname}.bash"
-    go run ./cmd/openfga completion fish > "${pkgname}.fish"
-    go run ./cmd/openfga completion zsh > "_${pkgname}"
-
-    go build -o ./openfga ./cmd/openfga
+  mkdir -p "completions"
 }
 
+build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" -ldflags "\
+    -X ${_url#https://}/internal/build.Version=v${pkgver} \
+    -X ${_url#https://}/internal/build.Commit=$(git rev-parse HEAD 2>/dev/null || echo unknown) \
+    -X ${_url#https://}/internal/build.Date=$(git show -s --format=%cI HEAD 2>/dev/null | date -u -f - +"%Y-%m-%dT%H:%M:%SZ" || echo unknown) \
+    -X ${_url#https://}/internal/build.ProjectName=${pkgname}" \
+    ./"cmd/${pkgname}"
+
+  for _sh in bash fish powershell zsh; do
+    ./"build/${pkgname}" completion "${_sh}" > "completions/${pkgname}.${_sh}"
+  done
+}
+
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
+
 package() {
-    install -vDm644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
-	install -vDm644 sysusers.conf "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-	install -vDm644 tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  cd "${srcdir}"
+  install -vDm644 "${pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -vDm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -vDm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -vDm664 "${pkgname}.yaml"     "${pkgdir}/etc/${pkgname}"
 
-    install -vDm664 "config.yaml" -t "${pkgdir}/etc/${pkgname}"
+  cd "${_pkgsrc}"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    cd "${pkgname}-${pkgver}"
-
-    install -vDm755 "./${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -vDm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-	install -vDm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-	install -vDm644 "${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
-	install -vDm644 "_${pkgname}" -t "${pkgdir}/usr/share/zsh/site-functions/"
+  cd "completions"
+  install -vDm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
+  install -vDm644 "${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }

@@ -1,0 +1,4 @@
+[openfga]
+source = "git"
+git = "https://github.com/openfga/openfga.git"
+prefix = "v"
