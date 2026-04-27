@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=filezilla-server
-pkgver=1.12.1
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="A simple FTP, FTPS or SFTP server"
 arch=(x86_64)
@@ -14,7 +14,7 @@ optdepends=(wxwidgets-gtk3)
 #source=("FileZilla_Server_${pkgver}_src.tar.xz::https://dl1.cdn.filezilla-project.org/server/FileZilla_Server_${pkgver}_src.tar.xz?h=JVfOb794svM7ZUOHWIAsYg&x=1721567973")
 source=("https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZilla_Server_${pkgver}_src.tar.xz"
 		filezilla-server-Remove-demos-leftovers.patch)
-sha512sums=('0c57c16f61666d6f761c2614fe96f8fcad12d7c965b1c9f433351c767bace109b1bca8c97013421c113f77a6ed3136ed29314da941cdf64977c263ec0cfc787d'
+sha512sums=('0ab0b8342b4fafe4cfc1ecbd3b4aa29208cfcf183c63cf97d4dab4eb7838f178b00cb81f804a1196b654f51d91394fc9c443b0866ee298eedadaf692a3a8e5fb'
             '8981c2e10e12b627fc3b68e271e3449b05062fc717c537b6bf8cc38e8e2ea6bd79b47fb326ec5c36b718c7054f50b40e282fcd70b9cb902f25213602d6e52e3f')
 
 prepare() {
