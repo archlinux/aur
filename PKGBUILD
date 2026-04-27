@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://gitlab.com/leestripp/lucid"
 license=('MIT')
 depends=('gtk4' 'libadwaita' 'gstreamer1.0-libav' 'gstreamer1.0-plugins-base' 'gstreamer1.0-plugins-good' 'sqlite3' 'curl' 'json-glib')
-makedepends=()
+makedepends=('cmake' 'ninja' 'gcc' 'pkg-config')
 optdepends=()
 provides=('lucidvideo')
 conflicts=()
@@ -16,18 +16,33 @@ backup=()
 options=()
 install=
 changelog=
-source=("lucid-${pkgver}.tar.gz::https://gitlab.com/leestripp/lucid/-/archive/${pkgver}/lucid-${pkgver}.tar.gz")
+source=("https://gitlab.com/leestripp/lucid/-/archive/${pkgver}/lucid-${pkgver}.tar.gz")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
-package() {
-    # Install binary
-    install -Dm755 "${srcdir}/lucid-${pkgver}/build/lucid" "${pkgdir}/usr/bin/lucid"
+build() {
+    cd "${srcdir}/lucid-${pkgver}"
     
-    # Install bundled libraries (for custom whisper/llama builds)
-    install -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/lucid-${pkgver}/build/libs/"* "${pkgdir}/usr/lib/"
+    # Create build directory
+    mkdir -p build
+    cd build
+    
+    # Configure with CMake (Release mode)
+    cmake .. \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+        
+    # Build
+    ninja
+}
+
+package() {
+    cd "${srcdir}/lucid-${pkgver}/build"
+    
+    # Install binary
+    install -Dm755 lucid "${pkgdir}/usr/bin/lucid"
     
     # Install desktop file
     install -Dm644 "${srcdir}/lucid-${pkgver}/data/lucid.desktop" \
