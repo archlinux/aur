@@ -1,0 +1,35 @@
+pkgbase = pmount-modern-nosystemd-git
+	pkgdesc = Modernized pmount with D-Bus and PolicyKit integration. Built without systemd dependency.
+	pkgver = 0.10.0_dbus.r334.20260406.d1cbb00
+	pkgrel = 1
+	url = https://github.com/zHappySnake/pmount-modern
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = meson
+	makedepends = pkgconf
+	depends = dbus
+	depends = dbus-glib
+	depends = glib2
+	depends = polkit
+	depends = util-linux
+	depends = util-linux-libs
+	optdepends = cryptsetup: LUKS support
+	optdepends = ntfs-3g: NTFS mounting via ntfs-3g
+	provides = pmount
+	provides = pmount-modern=0.10.0_dbus.r334.20260406.d1cbb00
+	provides = pmount-modern-git=0.10.0_dbus.r334.20260406.d1cbb00
+	provides = pmount-modern-nosystemd=0.10.0_dbus.r334.20260406.d1cbb00
+	conflicts = pmount
+	conflicts = pmount-modern
+	conflicts = pmount-modern-git
+	conflicts = pmount-modern-nosystemd
+	backup = etc/pmount.allow
+	backup = etc/pmount.conf
+	source = pmount-modern::git+https://github.com/zHappySnake/pmount-modern.git
+	sha256sums = SKIP
+
+pkgname = pmount-modern-nosystemd-git
