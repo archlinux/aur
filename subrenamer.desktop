@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SubRenamer
+Icon=subrenamer
+Exec="/bin/subrenamer" %f
+Comment=Batch rename subtitle files to match video names with one-click
+Categories=Tool;
+Terminal=false
+#StartupWMClass=jetbrains-datagrip

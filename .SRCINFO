@@ -1,0 +1,14 @@
+pkgbase = subrenamer
+	pkgdesc = Batch rename subtitle files to match video names with one-click
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/qwqcode/SubRenamer
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = dotnet-sdk
+	source = https://github.com/qwqcode/SubRenamer/archive/refs/tags/v2.4.0.zip
+	source = subrenamer.desktop
+	sha256sums = 0314fa482273be46fd68be7c2d83b38c7af7c8e3313447b594855c94e1d20aa3
+	sha256sums = b4e1f10e2ec8d419452e0da991df874741d0f85c4518cb855389937f326e1f4b
+
+pkgname = subrenamer
