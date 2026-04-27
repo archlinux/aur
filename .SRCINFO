@@ -1,0 +1,16 @@
+pkgbase = decode1090-bin
+	pkgdesc = Decode and demodulate Mode S and ADS-B in Rust/Python
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/xoolive/jet1090
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = decode1090
+	conflicts = decode1090
+	source_x86_64 = https://github.com/xoolive/jet1090/releases/download/v0.5.2/decode1090-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 437b37d1cff7fa179811544b3bafe4c66b5c6aeb1ba4515bd9e1558383ae6f68
+	source_aarch64 = https://github.com/xoolive/jet1090/releases/download/v0.5.2/decode1090-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 751d69d084559269706aac07432a8d1a364b53d0cb2658fe5cea665789eebc5d
+
+pkgname = decode1090-bin
