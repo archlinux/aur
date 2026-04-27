@@ -1,22 +1,25 @@
 pkgbase = fscan-bin
 	pkgdesc = An intranet comprehensive scanning tool.Written in Go,binary version.一款内网综合扫描工具，方便一键自动化、全方位漏扫扫描.
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://github.com/shadow1ng/fscan
 	arch = aarch64
+	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = fscan=2.0.1
+	provides = fscan=2.1.2
 	conflicts = fscan
 	options = !strip
-	source = LICENSE-2.0.1::https://raw.githubusercontent.com/shadow1ng/fscan/v2.0.1/LICENSE.txt
+	source = LICENSE-2.1.2::https://raw.githubusercontent.com/shadow1ng/fscan/v2.1.2/LICENSE.txt
 	sha256sums = 9e9a6cba6e93bb83c334d47b92861615b5be438e1076644ff64e7b0f35100379
-	source_aarch64 = fscan-2.0.1-aarch64::https://github.com/shadow1ng/fscan/releases/download/v2.0.1/FScan_2.0.1_linux_arm64
-	sha256sums_aarch64 = 5632cd1f46d700e1feda86763bb6ba1ec40544b3192519ac7cc69f1cf96e83df
-	source_i686 = fscan-2.0.1-i686::https://github.com/shadow1ng/fscan/releases/download/v2.0.1/FScan_2.0.1_linux_x32
-	sha256sums_i686 = aefc4547cffa43317720d5fda97042cd0baa42b9d0a959f8c2a408048577c39a
-	source_x86_64 = fscan-2.0.1-x86_64::https://github.com/shadow1ng/fscan/releases/download/v2.0.1/FScan_2.0.1_linux_x64
-	sha256sums_x86_64 = 15c3d2050d0ada6a54f49023a788aaee9d1b3141116a68614464306a587e12d0
+	source_aarch64 = fscan-2.1.2-aarch64::https://github.com/shadow1ng/fscan/releases/download/v2.1.2/FScan_2.1.2_linux_arm64
+	sha256sums_aarch64 = a0154a9dcaa1c2e50327c5b392a166ea7c7369fd2d8b6c8532dae523de2f45b6
+	source_armv7h = fscan-2.1.2-armv7h::https://github.com/shadow1ng/fscan/releases/download/v2.1.2/FScan_2.1.2_linux_armv7
+	sha256sums_armv7h = 228f944a16a7b207cd25cde8f130a1b36315d0346100779981eb70574ee6872c
+	source_i686 = fscan-2.1.2-i686::https://github.com/shadow1ng/fscan/releases/download/v2.1.2/FScan_2.1.2_linux_x32
+	sha256sums_i686 = 94b01ffabb3a2f1e116c35d137a4a9f5ee829db88558f0ebbcbedf8fc074024d
+	source_x86_64 = fscan-2.1.2-x86_64::https://github.com/shadow1ng/fscan/releases/download/v2.1.2/FScan_2.1.2_linux_x64
+	sha256sums_x86_64 = 859ee2ee778782c9274bd3c892be60ad1b4a9cd7c87a17fc8dc7a8c4565e31e3
 
 pkgname = fscan-bin
