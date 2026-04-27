@@ -3,18 +3,18 @@
 # Contributor: syntheit <daniel@matv.io>
 
 pkgname=tagspaces
-pkgver=6.10.5
+pkgver=6.11.2
 pkgrel=1
 pkgdesc="Offline file organizer and browser with tagging support"
-arch=('x86_64')
+arch=('any')
 url="https://www.tagspaces.org"
 license=('AGPL-3.0-or-later')
 _electron=electron39
-depends=('bash' "${_electron}" 'glibc' 'libgcc' 'libstdc++')
-makedepends=('gendesk' 'git' 'nvm')
+depends=('bash' "${_electron}")
+makedepends=('gendesk' 'git'  'libxcrypt-compat' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('0ae4f5ec09f9c392d42e4e796a7fa0e929c6b6b202a384a68f915dc5f9cc1b50'
+sha256sums=('acf0f0d3a31492667b8656ee02e1100469f9f66583a6c0129eafb5953d2385c5'
             '3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f')
 
 _ensure_local_nvm() {
@@ -49,13 +49,7 @@ build() {
     cd "${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     npm install
-    npm run install-ext-node-linux
-    npm run clean-pro-ext
-    npm run generate-extensions
-    npx ts-node ./.erb/scripts/clean.js
-    npm run build
-    npm run clean-maps
-    npx electron-builder --linux --dir --config resources/builder.json \
+    npm run package-linux -- \
         -c.electronDist="/usr/lib/${_electron}" \
         -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
