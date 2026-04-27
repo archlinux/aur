@@ -1,10 +1,10 @@
 pkgbase = vkplay-gamecenter-bin
 	pkgver = 1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = vkplay.ru
 	install = vkplay-gamecenter-bin.install
 	arch = x86_64
-	license = EULA
+	license = ISC
 	depends = atk
 	depends = gdk-pixbuf2
 	depends = glib2
@@ -20,7 +20,10 @@ pkgbase = vkplay-gamecenter-bin
 	depends = libxkbcommon
 	depends = libxrandr
 	depends = nss
+	provides = vkplay
+	provides = GameCenterShowcase
 	options = !strip
+	options = !debug
 	source = vkplay-gamecenter-bin-1.15.deb::https://static.gc.vkplay.ru/gclinux/deb_repo/GameCenterShowcase_amd64.deb
 	sha512sums = 2768d06f804725129acc444f6d3bc434bbe3f18fbaf65569256fab8fac00f5b4d0e3f78b07d7a88b2045a5d9a9aa1b9559814517608ea11bfee52ecdd2ed39d9
 

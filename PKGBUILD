@@ -2,11 +2,11 @@
 
 pkgname=vkplay-gamecenter-bin
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="vkplay.ru"
 license=('ISC')
-options=('!strip' )
+options=('!strip' '!debug' )
 provides=('vkplay'  'GameCenterShowcase')
 install=${pkgname}.install
 depends=('atk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcups' 'libgcc' 'libstdc++' 'libx11' 'libxcomposite' 'libxdamage' 'libxfixes' 'libxkbcommon' 'libxrandr' 'nss')
