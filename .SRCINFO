@@ -5,6 +5,7 @@ pkgbase = python-pyrage
 	url = https://pypi.org/project/pyrage
 	arch = x86_64
 	license = MIT
+	checkdepends = python-parameterized
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
