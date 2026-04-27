@@ -1,7 +1,7 @@
 pkgbase = mcuviewer-bin
 	pkgdesc = Real-time embedded variable & trace viewer
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mcuviewer.com
 	arch = x86_64
 	license = comercial
@@ -16,7 +16,7 @@ pkgbase = mcuviewer-bin
 	conflicts = mcuviewer
 	conflicts = mcuviewer-git
 	options = !strip
-	source = mcuviewer-bin.zip::https://download.mcuviewer.com/releases/stable/1.2.6_f910782/MCUViewer_Linux.zip
+	source = mcuviewer-bin_1.2.6.zip::https://download.mcuviewer.com/releases/stable/1.2.6_f910782/MCUViewer_Linux.zip
 	sha256sums = baa49b7eb953f259a062fba0c46f4de0101898ab9e2f28abe6d6279ae708b67a
 
 pkgname = mcuviewer-bin
