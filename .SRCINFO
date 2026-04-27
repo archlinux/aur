@@ -1,0 +1,17 @@
+pkgbase = python-tree-sitter-go
+	pkgdesc = Go grammar for tree-sitter
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://pypi.org/project/tree-sitter-go/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tree-sitter
+	source = python-tree-sitter-go-0.25.0.tar.gz::https://files.pythonhosted.org/packages/01/05/727308adbbc79bcb1c92fc0ea10556a735f9d0f0a5435a18f59d40f7fd77/tree_sitter_go-0.25.0.tar.gz
+	sha256sums = a7466e9b8d94dda94cae8d91629f26edb2d26166fd454d4831c3bf6dfa2e8d68
+
+pkgname = python-tree-sitter-go
