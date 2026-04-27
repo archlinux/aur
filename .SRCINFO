@@ -1,6 +1,6 @@
 pkgbase = discord-launcher-git
 	pkgdesc = Keeps an up-to-date Discord install in your home directory, so Discord updates don't need root
-	pkgver = r97.10728b3
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/vscncls/discord-launcher
 	arch = x86_64
