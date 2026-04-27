@@ -2,7 +2,7 @@
 
 _pkgname="openfga"
 pkgname="${_pkgname}-bin"
-pkgver=1.14.2
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="High performance and flexible authorization/permission engine built for developers and inspired by Google Zanzibar"
 arch=(
@@ -52,16 +52,16 @@ sha256sums=('6f5b8d7257f4158b3800346d9fa0679e1041c92987b0303f04439a54e3488580'
             '0236b9c80bc4a6ca17c0cc5cae1091a0225cdc29163667661353d42927ecb1e7'
             'ac8e4f66ab7fd0540f58d3de61940f0dea1494fa05b4b984796c1db41a053ea1'
             '1929be63a6466a045939235754e2d2cfd4ca430c304698a6089614c6b8eec6d1'
-            'd805fc7020dce2918bcb4b084a680c46c068fb3f42877f624b3d9e98c2f6af24'
-            '5cfb534f5a1a7addc8c2aff1a1b10f051964405f025c03c436b9e7c921d392ce'
+            'a5e381b4a754fd6d091eca196a257a7187e0abb98bd52e967237748656d3fbba'
+            '74103255165472c618bd1701dfb8cc34e54b80987f960465d1bf7e6c1d6261c0'
             '1c46d7b2bed94d457d745f28cabeb31f8d6c81dd9035bc5d24039989ee1e1bff'
-            '82afcae37f141cfe724e7e54b32e8a221fe5adbc912eb36e4942ffb9d762f614'
-            'e850b3233953d0d0d0bdb4f5dc154a1ebab6d10b2e992be986cae5c6b7aeb461'
-            'f3ea4673276d3a61a5cef2cc66be23f45a21a6a0957ecd24cb059ddf4cd5f4eb'
-            'cfa42283be76869801a33230500fe410107d3bbe36adccfed6d0012f78f512d9')
-sha256sums_aarch64=('5fe6c3dfd966a64ff0060f1bb6dc23a7a7132306c550f763924a3928023bfe00')
-sha256sums_i686=('2eac2725bd1efba9484b6987da5e7b921dcb16db23744414f134adb440a4fe18')
-sha256sums_x86_64=('5ea9d3846b21a0a3ea7009fe9c7e294a33bc73a0a9020f30b5443ead101258cd')
+            'ecb271604c1fd539f9d4f55cbe2aca919ae02a470dd8083cf71a03a559163048'
+            '6026e66eb4f1763fc2f4fba766db97fbb9235b4eba19b6b49c49ea1d1cd98ec5'
+            'f0168999a9345688f0006f086eb4a6363b2408a8a5ed5d63578b9efd5a15e20a'
+            'bc35a80b561ce9069fc85ad843f7128e059da2170c571575b13e71b2e6a76963')
+sha256sums_aarch64=('fb8dfb09b021c745271fae31b791235a752ab6bc8fc8ebb1d5468bb696acf22b')
+sha256sums_i686=('4758becfa5ff0d1e91511c601c93fd4002dfc7131a2ed352c5aff2e49ac69de5')
+sha256sums_x86_64=('7714fd0f934092a5aecd0fce133c534964f2f44be50cbf0d263da5e116893aa0')
 
 verify() {
   export COSIGN_EXPERIMENTAL=true
