@@ -1,0 +1,24 @@
+pkgbase = nokkvi-git
+	pkgdesc = A native Rust/Iced desktop client for Navidrome music servers (git HEAD)
+	pkgver = 0.3.2.r1.g185fb46
+	pkgrel = 1
+	url = https://github.com/f-o-o-g-s/nokkvi
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = pipewire
+	depends = fontconfig
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	provides = nokkvi
+	conflicts = nokkvi
+	conflicts = nokkvi-bin
+	options = !debug
+	options = !lto
+	options = !buildflags
+	source = nokkvi::git+https://github.com/f-o-o-g-s/nokkvi.git
+	sha256sums = SKIP
+
+pkgname = nokkvi-git
