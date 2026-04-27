@@ -1,13 +1,13 @@
 pkgbase = ttf-nishiki-teki
 	pkgdesc = Unicode-based font inspired by a free shell of Ukagaka called “Nishiki”
-	pkgver = 3.99ziy
+	pkgver = 3.99zja
 	pkgrel = 1
 	url = https://umihotaru.work
 	arch = any
 	license = custom
-	source = ttf-nishiki-teki-3.99ziy.zip::http://umihotaru.fool.jp/nishiki-teki.zip
+	source = ttf-nishiki-teki-3.99zja.zip::http://umihotaru.fool.jp/nishiki-teki.zip
 	source = LICENSE
-	sha256sums = f14eb6a6f0caef70dce08667df00d838db879c6a1e3d9ed257e6901ceebcd0ce
+	sha256sums = 0ae4b9d61b29efe88f48b3762f39bf625af717243c68e2f9c5effe98c4838b7b
 	sha256sums = a60b2362ac0885bc4d7b013ccbbe38e2aeded839b3d88993add246d9076f72ad
 
 pkgname = ttf-nishiki-teki
