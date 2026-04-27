@@ -3,7 +3,7 @@
 _dist=App-Sqitch
 pkgname=sqitch
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Sensible database change management'
 arch=('any')
 url='https://github.com/sqitchers/sqitch'
@@ -44,6 +44,11 @@ depends=(
     perl-xml-tiny
     perl-yaml-tiny
     perl-namespace-autoclean
+)
+optdepends=(
+    perl-class-xsaccessor
+    perl-template-toolkit
+    perl-type-tiny-xs
 )
 checkdepends=(
     perl-capture-tiny
