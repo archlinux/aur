@@ -1,0 +1,5 @@
+[hack-browser-data-bin]
+source = "github"
+github = "moonD4rk/HackBrowserData"
+use_latest_release = true
+prefix = "v"
