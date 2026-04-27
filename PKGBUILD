@@ -1,22 +1,15 @@
 # Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=ntpclient
-pkgver=2015.365
-pkgrel=2
+pkgver=2024.132
+pkgrel=1
 pkgdesc='A simple NTP (RFC-1305) client'
 url='http://doolittle.icarus.com/ntpclient/'
 arch=(x86_64 i686)
 depends=(glibc)
 license=(GPL2)
-source=(http://doolittle.icarus.com/ntpclient/ntpclient_${pkgver/./_}.tar.gz
-        newkernel.patch)
-sha1sums=('7513df5b5b64797c5fac27d7c1161f53a4675b26'
-          '169d1938f31247d869cd09c42e50a2ffcca9ef7a')
-
-prepare() {
-  cd ntpclient-${pkgver%.*}
-  patch < ../newkernel.patch
-}
+source=(http://doolittle.icarus.com/ntpclient/ntpclient_${pkgver/./_}.tar.gz)
+sha1sums=('5db02f613a3033709b3073d7e16cd04bf6e3ae46')
 
 build() {
   cd ntpclient-${pkgver%.*}
