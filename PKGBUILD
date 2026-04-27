@@ -2,7 +2,7 @@
 
 _pkgname=minizip-ng
 pkgname=mingw-w64-${_pkgname}
-pkgver=4.1.2
+pkgver=4.2.0
 pkgrel=1
 _7zip_ver='26.00'
 pkgdesc='minizip-ng is a zip manipulation library written in C that is supported on Windows, macOS, and Linux. (mingw-w64)'
@@ -23,7 +23,7 @@ source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/zlib-ng/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 	"git+https://github.com/ip7z/7zip.git#tag=$_7zip_ver"
 	"${pkgname}-iconv.patch")
-sha256sums=('3738c742c663fda43f1e510b8eeef312917581a712c89cb253f682aaef8c732f'
+sha256sums=('d313661eecb75ef754f2839f770ffa64bec6af1fa931eab22fe1d1e996c4a64f'
             '0b10e9e903447068ce13161b8eb3864642523ee112c36676fe332d6e712a4550'
             'c4203584aed3c670c7aa2cb3774fe513088de3cee54c5b20f7ddea9fc673d1ef')
 
