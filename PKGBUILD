@@ -4,6 +4,7 @@ pkgname=cudnn-pascal
 pkgver=9.10.2.21
 _cudaver=12
 pkgrel=2
+# manual-hint: compatibility-pinned to latest cuDNN redist verified with CUDA 12.x and Pascal support; do not blindly follow newest cuDNN.
 pkgdesc="NVIDIA cuDNN library for Pascal GPUs (CUDA 12.x; pinned to latest Pascal-supported cuDNN)"
 arch=("x86_64")
 url="https://developer.nvidia.com/cuDNN"
