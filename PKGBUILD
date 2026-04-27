@@ -2,7 +2,7 @@
 
 _pkgname="fga"
 pkgname="${_pkgname}-bin"
-pkgver=0.7.12
+pkgver=0.7.13
 pkgrel=1
 pkgdesc="Cross-platform CLI to interact with an OpenFGA server"
 arch=(
@@ -42,13 +42,13 @@ source_i686=(
 source_x86_64=(
   "${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz"
 )
-sha256sums=('0c446a145a3ea8d707191337fd75318601979d13847b6cc83827f90d2fd81944'
-            'a1a0425ef76bdd16c7040fbc1423047b12742084bd398af2687f09845ae05fcc'
-            '1cf1656f9d4016a8e100be4919daddebc594bb9ea925d7e33ccf0891bcafac7e'
-            '156fc1cbf81d0c04601246c96c66125ea35eec7cd69bf86d5b3e6268cfc4d589')
-sha256sums_aarch64=('185ec47168067e722a8e898f7ac70cfa4c533a04062d8d0ddae9aa644297aa01')
-sha256sums_i686=('c56374ac36d5e097f725fcea810da44c878365b9d6bb97ad1f4a7a8b5c518dd3')
-sha256sums_x86_64=('8608a03fe7c222ccba4401c310a5c24792d3ec73ebf4c336b8348f3bba4518e1')
+sha256sums=('a885332618c81054751d33cacc52073b136d5e493b99e91a53f854e4594bcd55'
+            'fab82d6e1ac6117d77892189720258850f124ec17ac42db06fa9f36f0a7ef015'
+            '61d8fe214b2df17412987607000d802f4c21d70ed49ebd9af2f4b66765c50350'
+            '814dbbcc713cce58505f1fe0ae872f2123628ee678c99ddade3fd41063147ec7')
+sha256sums_aarch64=('12d78e3c66e75659612df0a68ca90dfa296d21772fb89559e81d177364a2dd29')
+sha256sums_i686=('a163345f749dbc521931ee055185ce7ab994710d4f12ee46db057c08fad664dd')
+sha256sums_x86_64=('de043bdee6318680125ea1f6160422389ec254411ea23c170e92dc101952ae31')
 
 verify() {
   export COSIGN_EXPERIMENTAL=1
