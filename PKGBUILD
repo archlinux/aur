@@ -2,7 +2,7 @@
 
 pkgname=kick-bin
 _pkgname=kick
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Local OpenAI-compatible proxy for Gemini CLI and Kiro'
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
   'gtk3'
   'curl'
   'libsecret'
+  'jsoncpp'
   'libayatana-appindicator'
   'libnotify'
   'hicolor-icon-theme'
@@ -35,7 +36,7 @@ source=(
 
 noextract=("kick-linux-x64-${pkgver}.tar.gz")
 
-sha256sums=('69b6d1a064bcb1c8455f7db8fc17928ef176adde5daaa5ecaa4d2315c8cb1725'
+sha256sums=('f15cb605fe11639e08e348747b9f02b8e9ac10232bc4932a4053568d11c64787'
             '4a0b715b3477d8d1ed829e57d6abfcb1c49d7152450b62e39f1a69a27fc6d9de'
             '5bab3301b9b65c0bf7373e311644de985bc34286cbf867156570c0570cb353aa'
             'dc402b8522496ca0df21d702646466370671ffb347a76631983e3c86dd88db5a'
