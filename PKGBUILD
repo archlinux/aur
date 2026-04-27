@@ -1,10 +1,11 @@
-# Maintainer: envolution
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
+# Contributor: envolution
 # Contributor: Carl Smedstad <carsme@archlinux.org>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-anthropic
 _pkgname=anthropic-sdk-python
-pkgver=0.75.0
+pkgver=0.97.0
 pkgrel=1
 pkgdesc="Python library that provides convenient access to the Anthropic REST API"
 arch=(any)
@@ -14,15 +15,13 @@ depends=(
   python
   python-anyio
   python-distro
+  python-docstring-parser
   python-httpx
   python-jiter
   python-pydantic
   python-pydantic-core
   python-sniffio
-  python-tokenizers
   python-typing_extensions
-  python-docstring-parser
-  python-inline-snapshot
 )
 makedepends=(
   python-build
@@ -32,10 +31,13 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
+  python-boto3
+  python-botocore
   python-dirty-equals
   python-pytest
-  python-pytest-xdist
   python-pytest-asyncio
+  python-pytest-http-snapshot
+  python-pytest-xdist
   python-respx
 )
 optdepends=(
@@ -46,17 +48,13 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('2b3362c917ccf03669f055627e367c7a8d0b8ef7a0ba959ad5e43f7cf2b48e95')
+sha256sums=('6dd54db8a6e639ef5a9faa746abab601c47e83878e94e2946e210ea6196bdc1b')
 
 prepare() {
   cd $_pkgname-$pkgver
   sed -i 's/hatchling==/hatchling>=/' pyproject.toml
-  sed -i '/^filterwarnings = \[/,/^]/d' pyproject.toml
-  # The following attempts to avoid pytest benchmarking utilities as suggested by
-  # AUR's comments section failed
-  #sed -i 's|^\(addopts *= *\).*|\1"--benchmark-skip --tb=short -n auto"|' pyproject.toml
-  #sed -i 's|^\(addopts *= *\).*|\1"--benchmark-skip --tb=short -n auto"|' pyproject.toml
 }
+
 build() {
   cd $_pkgname-$pkgver
 
@@ -66,18 +64,12 @@ build() {
 check() {
   cd $_pkgname-$pkgver
 
-  rm -rf tmp_install
-  python -m installer --destdir=tmp_install dist/*.whl
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
 
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$site_packages"
   # Deselect tests/api_resources as it requires access to the API.
-  # Also, deselect failing tests - not sure why they fail.
-  pytest \
-    --deselect tests/api_resources/ \
-    --deselect tests/lib/test_bedrock.py \
-    --deselect tests/test_client.py
-
+  test-env/bin/python -m pytest -p no:benchmark \
+    --deselect tests/api_resources/
 }
 
 package() {
@@ -86,4 +78,3 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
-# vim:set ts=2 sw=2 et:

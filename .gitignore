@@ -1,6 +1,9 @@
-*
-!.gitignore
-!.nvchecker.toml
-!.SRCINFO
-!PKGBUILD
-!fix-pytest-asyncio-usage.patch
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
+/.vscode/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
