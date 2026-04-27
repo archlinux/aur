@@ -56,9 +56,15 @@ _builder=tor-browser-build
 _pkgname=mullvadbrowser
 _pkgver=mb-$pkgver-$_buildver
 
+_export_perllib() {
+    export PERLLIB="${srcdir}/sys-ph-includes:${srcdir}/sys-ph-includes/usr/include:${srcdir}/sys-ph-includes/usr/include/sys:${srcdir}/sys-ph-includes/usr/include/asm:${srcdir}/sys-ph-includes/usr/include/bits"
+}
+
 prepare() {
-    cd /usr/include
-    sudo $(which h2ph) sys/syscall.h asm/unistd.h asm/unistd_64.h bits/syscall.h
+    mkdir -p sys-ph-includes
+    h2ph -d sys-ph-includes /usr/include/{sys/syscall.h,asm/unistd.h,asm/unistd_64.h,bits/syscall.h}
+
+    _export_perllib
 
     cd "$srcdir"/$_builder
     git checkout -f tags/$_pkgver
@@ -69,19 +75,20 @@ prepare() {
 }
 
 build() {
+    _export_perllib
     cd "$srcdir"/$_builder
     make $_pkgname-release-linux-$arch
 }
 
 check() {
-    cd "$srcdir"/$_builder/$_pkgname/release
-    sha256sum --ignore-missing -c ../../../sha256sums-unsigned-build.txt
+    cd "$srcdir"/$_builder/$_pkgname/release/unsigned/$pkgver-build1
+    sha256sum --ignore-missing -c "${srcdir}"/sha256sums-unsigned-build.txt
 }
 
 package() {
     install -d "$pkgdir"/usr/lib/$pkgname "$pkgdir"/usr/bin
     tar -C "$pkgdir"/usr/lib/$pkgname --strip-components=2 \
-        -xf "$srcdir"/$_builder/_$pkgname/release/$pkgname-linux-$arch-$pkgver.tar.xz
+        -xf "$srcdir"/$_builder/$_pkgname/release/unsigned/$pkgver-build1/$pkgname-linux-$arch-$pkgver.tar.xz
     ln -srfv "$pkgdir"/usr/lib/$pkgname/start-$pkgname "$pkgdir"/usr/bin/$pkgname
     install -Dm644 -t "$pkgdir"/usr/share/applications "$srcdir"/$pkgname.desktop
 
