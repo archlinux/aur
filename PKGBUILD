@@ -2,7 +2,7 @@
 # Co-author: Claude (Anthropic), via Claude Code
 
 pkgname=cryptsetup-beep
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Audible cue when systemd-cryptsetup prompts for a LUKS passphrase in initramfs'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 )
 install=cryptsetup-beep.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('645cc90bc5a7849b26872650b637c49f579f27d9083e0277d9910c9e00a01de1')
+sha256sums=('96562258ff710b2020330abd7116bed80ae65b745da5a950b49d0f880c2a60b3')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -35,8 +35,11 @@ package() {
     install -Dm755 initcpio/install-hook \
         "${pkgdir}/usr/lib/initcpio/install/cryptsetup-beep"
 
-    install -Dm644 data/beep.wav "${pkgdir}/usr/share/cryptsetup-beep/beep.wav"
-    install -Dm644 data/config.example "${pkgdir}/usr/share/cryptsetup-beep/config.example"
+    install -Dm644 data/beep.wav            "${pkgdir}/usr/share/cryptsetup-beep/beep.wav"
+    install -Dm644 data/beep-retry.wav      "${pkgdir}/usr/share/cryptsetup-beep/beep-retry.wav"
+    install -Dm644 data/beep-pin.wav        "${pkgdir}/usr/share/cryptsetup-beep/beep-pin.wav"
+    install -Dm644 data/beep-pin-retry.wav  "${pkgdir}/usr/share/cryptsetup-beep/beep-pin-retry.wav"
+    install -Dm644 data/config.example      "${pkgdir}/usr/share/cryptsetup-beep/config.example"
     install -Dm644 data/org.heath-toby.cryptsetup-beep.policy \
         "${pkgdir}/usr/share/polkit-1/actions/org.heath-toby.cryptsetup-beep.policy"
 
