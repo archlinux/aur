@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast terminal shell written in Rust"
 
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,9 +30,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('a7c7583d9a641a30f94eb00a173a50ff1416f68ae8d785f9ba318de466d5a37f')
-sha256sums_x86_64=('9b80382fb892ce157823d62b9c7d6f6ab1c9a2721b0880e9433245adf0fb67b3')
-sha256sums_aarch64=('307127422495f24f16cbfc1a9a9380a1d5f8c92929372bf93dadddbff8a04ce8')
+sha256sums=('90cbcff3c8775c8d4a91c455be65effbbeb6e66f3a079e43137fc9393016c4da')
+sha256sums_x86_64=('05a986460e7db32916e8ed12ead000904bcddf62681f498f0e408c99df934d77')
+sha256sums_aarch64=('d6faa9c6e33af8fc5290bf628d2322ca49ade521c0e746accc91e64f93f8fbde')
 
 
 package() {
