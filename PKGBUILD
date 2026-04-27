@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="File-based encryption for sensitive directories via gocryptfs + GNOME Keyring"
 arch=('any')
-url="https://gitlab.com/fkzys/keys-vault"
+url="https://github.com/fkzys/keys-vault"
 license=('AGPL-3.0-or-later')
 depends=(
     'gocryptfs'
@@ -17,15 +17,10 @@ optdepends=(
     'zsh: zsh tab completions'
 )
 backup=('etc/keys-vault.conf')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('9d94c4c88f889afff27d9cac4368ada6ce8e1c581854710d960359e3e9a9b6bc')
-
-check() {
-    cd "${pkgname}-v${pkgver}"
-    make test
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e38466966d7d0571a4beddb28cca180b69932981ef1a1477ba3a7eacc4397f9d')
 
 package() {
-    cd "${pkgname}-v${pkgver}"
+    cd "${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
