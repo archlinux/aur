@@ -1,7 +1,7 @@
 pkgbase = mcpproxy-bin
 	pkgdesc = Smart proxy for AI agents using the Model Context Protocol
 	pkgver = 0.27.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smart-mcp-proxy/mcpproxy-go
 	arch = x86_64
 	license = MIT

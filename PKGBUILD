@@ -2,7 +2,7 @@
 
 pkgname=mcpproxy-bin
 pkgver=0.27.1 # renovate: datasource=github-tags depName=smart-mcp-proxy/mcpproxy-go
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart proxy for AI agents using the Model Context Protocol"
 arch=('x86_64')
 url="https://github.com/smart-mcp-proxy/mcpproxy-go"
