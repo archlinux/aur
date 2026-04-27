@@ -1,0 +1,24 @@
+pkgbase = opencode-m0rf30-bin
+	pkgdesc = The AI coding agent built for the terminal (M0Rf30 fork: fires tool.definition plugin hook for MCP tools)
+	pkgver = 1.14.28
+	pkgrel = 1
+	url = https://github.com/M0Rf30/opencode
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = fzf
+	depends = ripgrep
+	provides = opencode
+	conflicts = opencode
+	conflicts = opencode-bin
+	conflicts = opencode-git
+	options = !strip
+	options = !debug
+	source = LICENSE::https://raw.githubusercontent.com/M0Rf30/opencode/v1.14.28-m0rf30/LICENSE
+	sha256sums = 625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b
+	source_x86_64 = opencode-m0rf30-1.14.28-x86_64.tar.gz::https://github.com/M0Rf30/opencode/releases/download/v1.14.28-m0rf30/opencode-linux-x64.tar.gz
+	sha256sums_x86_64 = 6276f86c303a7e530e3469bd5f76477424b1a5fe64cde4ef3f1b61c3a4d5e839
+	source_aarch64 = opencode-m0rf30-1.14.28-aarch64.tar.gz::https://github.com/M0Rf30/opencode/releases/download/v1.14.28-m0rf30/opencode-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8226d03dab79cf046d13ec594047faa15bf62b62d34dbb3fe4fbb713357857d0
+
+pkgname = opencode-m0rf30-bin
