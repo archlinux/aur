@@ -1,12 +1,12 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=argh-git
-pkgver=1.3.2.r6.g39b9a00
-pkgrel=1
+pkgver=1.3.2.r9.gc3f0d8c
+pkgrel=2
 pkgdesc="Minimalist argument handler"
 arch=(any)
 url="https://github.com/adishavit/argh"
-license=(BSD)
+license=(BSD-3-Clause)
 makedepends=(git cmake)
 provides=(argh)
 conflicts=(argh)
