@@ -1,30 +1,27 @@
 # Contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=ecode-bin
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
+pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance"
 url="https://github.com/SpartanJ/ecode"
 license=('MIT')
 arch=('x86_64')
-depends=(gcc-libs libglvnd sdl2 bash glibc libelf)
+depends=(glibc bash libelf libglvnd hicolor-icon-theme sdl2)
 provides=(ecode)
-source=(https://raw.githubusercontent.com/SpartanJ/ecode/ecode-$pkgver/LICENSE ecode.sh)
+source=("$url/raw/ecode-$pkgver/LICENSE")
 source_x86_64=("$url/releases/download/ecode-$pkgver/ecode-linux-$pkgver-$arch.tar.gz")
-sha256sums=('edb1348f5c3ceca72e9e98c282bfa70ebded0266a75e71def2ea13e932a54913'
-            '40460ea0c5d9c523274b53cf41e642bf6ed36406c14f6ce95a33e42e68c71923')
-sha256sums_x86_64=('afdd8a7bb3aa0e122284c404a3e5f8eb920e46c6e7a82b91125b7b223c4fa4b4')
+sha256sums=('SKIP')
+sha256sums_x86_64=('13fce12c032b13eb038add79f91b9689d71a01b5b91e2cb87045b2408ebf0b32')
 
 package() {
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
-  install -Dm755 ecode.sh "$pkgdir"/usr/bin/ecode
-  install -Dm644 "$srcdir"/ecode/ecode.desktop -t "$pkgdir"/usr/share/applications/
-  install -Dm644 "$srcdir"/ecode/ecode.png -t "$pkgdir"/usr/share/pixmaps/
-  rm "$srcdir"/ecode/ecode.desktop
-  rm "$srcdir"/ecode/ecode.png
-  # The libs and assets path are fixed, so I put them in /opt/
-  install -d "$pkgdir"/opt/$pkgname/
-  cp -av ecode/* "$pkgdir"/opt/$pkgname/
+  install -Dm755 ecode/{ecode,ecode.bin} -t "$pkgdir/opt/$pkgname/"
+  install -d "$pkgdir/usr/bin"
+  ln -s "/opt/$pkgname/ecode" -t "$pkgdir/usr/bin"
+  cp -av ecode/libs "$pkgdir/opt/$pkgname/"
+  cp -av ecode/assets "$pkgdir/opt/$pkgname/"
+  install -Dm644 ecode/ecode.desktop -t "$pkgdir"/usr/share/applications/
+#  install -Dm644 ecode/ecode.png -t "$pkgdir"/usr/share/pixmaps/
+  install -Dm644 ecode/ecode.png -t "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim: ts=2 sw=2 et:
