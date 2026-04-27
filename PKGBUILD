@@ -23,7 +23,7 @@ source=("TUNA-$pkgver.tar.gz::https://github.com/randometerian/TUNA/archive/v$pk
 
 build() {
     cd TUNA-$pkgver
-    pip install --prefix="$srcdir/.deps" -e .
+    pip wheel --no-deps -w . -e .
 }
 
 package() {
