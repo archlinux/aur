@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=qatlib-git
-pkgver=26.02.0.r1.g52cba23
+pkgver=26.02.0.r10.g1176355
 pkgrel=1
 pkgdesc='User space library for Intel(R) QuickAssist Technology (git version)'
 url='https://github.com/intel/qatlib/'
@@ -21,7 +21,7 @@ conflicts=('qatlib')
 source=('git+https://github.com/intel/qatlib.git'
         'qatlib.sysusers')
 sha256sums=('SKIP'
-            '39190c94d64d79120cf0b0dbb98b2e3a30acec3ae0f7312cc79369531c534792')
+            '20376c3ace6ca8e15c0ee0b2104049a8c2ff69113d51e489d121d41e2c0edcee')
 
 prepare() {
     cd qatlib

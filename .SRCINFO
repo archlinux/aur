@@ -1,6 +1,6 @@
 pkgbase = qatlib-git
 	pkgdesc = User space library for Intel(R) QuickAssist Technology (git version)
-	pkgver = 26.02.0.r1.g52cba23
+	pkgver = 26.02.0.r10.g1176355
 	pkgrel = 1
 	url = https://github.com/intel/qatlib/
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = qatlib-git
 	source = git+https://github.com/intel/qatlib.git
 	source = qatlib.sysusers
 	sha256sums = SKIP
-	sha256sums = 39190c94d64d79120cf0b0dbb98b2e3a30acec3ae0f7312cc79369531c534792
+	sha256sums = 20376c3ace6ca8e15c0ee0b2104049a8c2ff69113d51e489d121d41e2c0edcee
 
 pkgname = qatlib-git
