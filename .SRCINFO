@@ -37,7 +37,6 @@ pkgbase = gimp-develop-git
 	makedepends = python-cairo
 	makedepends = xdg-utils
 	makedepends = bash-completion
-	makedepends = vala
 	depends = libxmu
 	depends = lcms2>=2.8
 	depends = libwmf>=0.2.8

@@ -49,7 +49,7 @@ makedepends+=('git' 'intltool>=0.40.1'
              'gjs' 'python-gobject' 'python-packaging' 'luajit' 'meson'
              'glib2-devel'
              'libbacktrace' 'gi-docgen' 'cfitsio'
-             'python-cairo' 'xdg-utils' 'bash-completion' 'vala'
+             'python-cairo' 'xdg-utils' 'bash-completion'
              )
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
