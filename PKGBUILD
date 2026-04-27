@@ -6,7 +6,7 @@ _major=25
 _minor=0
 _patch=2
 _java_version=$_major.$_minor.$_patch
-_build=329.117
+_build=432.48
 pkgver="${_java_version}b${_build}"
 pkgrel=1
 pkgdesc="OpenJDK Java $_major runtime with some fixes and enhancements by JetBrains"
@@ -21,7 +21,7 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-environme
 _zipname="jbr_jcef-$_java_version-linux-x64-b$_build.tar.gz"
 install=$pkgname.install
 source=("https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
-b2sums=('09554d4d2e04a4cd3fe405d49be2ae5cd47e35eba0dd215a3b641c27f15d6019f40f74d4665e67fd602e8b2ada237cd6df802fa2cdd1b6a6f8cdf5903ec810fb')
+b2sums=('bc7705064aa597a9d68b79fa80b817ea32d813c3afeb0eca51307efa0a274b01a2ea3acfd9227604017a5834a85647b24b27f8359731fc4db8bae8374b939c59')
 
 package() {
     rm "$srcdir/$_zipname"
