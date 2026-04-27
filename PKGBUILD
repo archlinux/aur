@@ -3,7 +3,7 @@
 
 pkgname=qatlib
 pkgver=26.02.0
-pkgrel=1
+pkgrel=2
 pkgdesc='User space library for Intel(R) QuickAssist Technology'
 url='https://github.com/intel/qatlib/'
 license=('BSD-3-Clause')
@@ -19,7 +19,7 @@ makedepends=(
 source=("https://github.com/intel/qatlib/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'qatlib.sysusers')
 sha256sums=('7c68bf05f196153b1b1669a7d17e5bfba6253e7cafb69f67d30a0d17e7facecb'
-            '39190c94d64d79120cf0b0dbb98b2e3a30acec3ae0f7312cc79369531c534792')
+            '20376c3ace6ca8e15c0ee0b2104049a8c2ff69113d51e489d121d41e2c0edcee')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
