@@ -1,8 +1,8 @@
 # Maintainer: Andreas Wachter <buddyspencer@protonmail.com>
 
 pkgname=gickup
-pkgver=0.10.40
-_pkgver=0.10.40
+pkgver=0.10.41
+_pkgver=0.10.41
 pkgrel=1
 pkgdesc='Backup tool for your cloud git repositories'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('glibc')
 makedepends=('go' )
 source=("https://github.com/cooperspencer/${pkgname}/archive/v${_pkgver}/${pkgname}-v${_pkgver}.tar.gz")
-sha256sums=('abffb493e8f253594385fd8721c9b950b09792210de7fc884494e3c8bc2ce6c3')
+sha256sums=('0108f7cd449f017897c4f51ef8a591e7add1fb1f9a925476e5850db4bb3d2076')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
