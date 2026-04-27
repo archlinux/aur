@@ -1,6 +1,6 @@
 pkgbase = intel-npu-compiler-git
 	pkgdesc = Intel Neural Processing Unit (NPU) compiler (git version)
-	pkgver = 2026.12rc1.r0.g01a807a
+	pkgver = 2026.12rc1.r1.g3af33f6
 	pkgrel = 1
 	url = https://github.com/openvinotoolkit/npu_compiler/
 	arch = x86_64

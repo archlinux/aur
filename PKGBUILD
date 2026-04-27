@@ -8,7 +8,7 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
-pkgver=2026.12rc1.r0.g01a807a
+pkgver=2026.12rc1.r1.g3af33f6
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) compiler (git version)'
 arch=('x86_64')
@@ -202,8 +202,10 @@ build() {
         -DCMAKE_C_COMPILER_LAUNCHER:STRING='' \
         -DCMAKE_CXX_COMPILER_LAUNCHER:STRING='' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DENABLE_SYSTEM_PUGIXML:BOOL='true' \
-        -DENABLE_SYSTEM_TBB:BOOL='true' \
+        -DENABLE_CLANG_FORMAT:BOOL='OFF' \
+        -DENABLE_NCC_STYLE:BOOL='OFF' \
+        -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
+        -DENABLE_SYSTEM_TBB:BOOL='ON' \
         -Wno-dev
     cmake --build build --target compilerTest profilingTest vpuxCompilerL0Test loaderTest
 }
