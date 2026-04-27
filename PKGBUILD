@@ -3,7 +3,7 @@
 _pkgname=comfy-cli
 _pipname=${_pkgname//-/_}
 pkgname="python-${_pkgname}"
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Command Line Interface for Managing ComfyUI"
 arch=('any')
