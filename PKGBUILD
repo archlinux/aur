@@ -1,10 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freerouting-zh-cn-git
-pkgver=2.1.0.r9.gc226a96
+pkgver=2.2.0.r0.g6688a42
 pkgrel=1
-_jrever=21
-_jdkver=21
+_jrever=25
+_jdkver=25
 pkgdesc="Advanced PCB autorouter"
 arch=('any')
 url="https://github.com/freerouting/freerouting"
@@ -12,8 +12,13 @@ license=('GPL-3.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=("java-runtime=${_jrever}")
-makedepends=('git' "java-environment-openjdk=${_jdkver}")
+depends=(
+    sh
+    "java-runtime=${_jrever}"
+)
+makedepends=(
+    'git' 
+    "java-environment-openjdk=${_jdkver}")
 optdepends=(
     'eagle'
     'easyeda'
@@ -43,9 +48,6 @@ prepare() {
 }
 
 build() {
-    # don't forget to set active JDK to 21 version before running makepkg:
-    # sudo archlinux-java set java-21-openjdk
-
     cd "${srcdir}/${pkgname%-git}"
     export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
     #     chmod +x gradlew
@@ -55,13 +57,13 @@ build() {
 
 package() {
     cd "${pkgname%-git}"
-    install -Dm0644 design/icon/freerouting_icon_256x256_v2.png "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm0644 build/libs/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable-zh-cn.jar"
+    install -Dm0644 assets/icon/freerouting_icon_256x256_v2.png "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm0644 build/libs/freerouting.jar "${pkgdir}/usr/lib/freerouting/freerouting-zh-cn.jar"
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
 #!/usr/bin/bash
 export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin/:\$PATH"
 
-java -jar /usr/lib/freerouting/freerouting-executable-zh-cn.jar -l zh "\$@"
+java -jar /usr/lib/freerouting/freerouting-zh-cn.jar -l zh "\$@"
 
 exit 0
 
