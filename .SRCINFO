@@ -21,7 +21,7 @@ pkgbase = sing-box-ref1nd-git
 	conflicts = sing-box-ref1nd
 	options = !lto
 	backup = etc/sing-box/config.json
-	source = sing-box::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-stable-next
+	source = sing-box::git+https://github.com/reF1nd/sing-box.git
 	sha256sums = SKIP
 
 pkgname = sing-box-ref1nd-git

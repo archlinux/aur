@@ -1,7 +1,7 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd-git
 _pkgname=sing-box
-pkgver=1.14.0.alpha.18.reF1nd.r55.g7abfcb3cc
+pkgver=1.14.0.alpha.18.reF1nd
 pkgrel=1
 options=(!lto)
 
@@ -13,7 +13,7 @@ license=('GPL3 with name use or association addition')
 makedepends=('go' 'git' 'lld')
 provides=("$_pkgname")
 
-source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-stable-next")
+source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git")
 sha256sums=('SKIP')
 
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-ref1nd")
@@ -40,10 +40,9 @@ pkgver() {
     fi
   done
 
-  _rev=$(git rev-list --count "$_latest_tag..HEAD")
-  _hash=$(git rev-parse --short HEAD)
+  git checkout "$_latest_tag" --quiet
 
-  printf "%s.r%s.g%s" "$(echo "${_latest_tag#v}" | tr '-' '.')" "$_rev" "$_hash"
+  echo "${_latest_tag#v}" | tr '-' '.'
 }
 
 _tags=with_utls,with_gvisor,with_quic,with_wireguard,with_clash_api,with_acme,with_dhcp,with_tailscale,with_naive_outbound
@@ -54,8 +53,8 @@ build(){
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS -fuse-ld=lld"
-    export VERSION=$(go run ./cmd/internal/read_tag)
     export CGO_ENABLED=1
+    local _real_version="$pkgver"
 
     go build \
         -v \
@@ -65,7 +64,7 @@ build(){
         -modcacherw \
         -tags "$_tags" \
         -ldflags "
-            -X \"github.com/sagernet/sing-box/constant.Version=$VERSION\"
+            -X \"github.com/sagernet/sing-box/constant.Version=$_real_version\"
             -s -w -buildid= -linkmode=external" \
         ./cmd/sing-box
 
