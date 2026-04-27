@@ -41,6 +41,7 @@ pkgbase = hyprland-hidpi-xprop-git
 	depends = libxfixes
 	depends = libxkbcommon
 	depends = libxrender
+	depends = lua
 	depends = mesa
 	depends = muparser
 	depends = opengl-driver
