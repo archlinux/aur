@@ -1,8 +1,9 @@
 # Maintainer: Stezkoy
 
 pkgname=vkplay-gamecenter-bin
+pkgdesc='VK Play - online gaming service for game lovers, developers and content creators. The platform combines streaming, esports, a place for communication with like-minded users, a catalog of games and cloud gaming.'
 pkgver=1.15
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="vkplay.ru"
 license=('ISC')
