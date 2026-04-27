@@ -1,7 +1,7 @@
 pkgbase = godot-rc-bin
 	pkgdesc = Advanced cross-platform 2D and 3D game engine
 	pkgver = 4.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://godotengine.org
 	arch = aarch64
 	arch = armv7h
@@ -44,6 +44,6 @@ pkgname = godot-rc-bin
 
 pkgname = godot-mono-rc-bin
 	depends = glibc
-	depends = dotnet-sdk-8.0
+	depends = dotnet-sdk
 	provides = godot-mono-rc=4.6.2
 	conflicts = godot-mono-rc

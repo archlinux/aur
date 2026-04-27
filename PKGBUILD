@@ -14,7 +14,7 @@ pkgver=4.6.2
 # 1. replace text with -text
 # 2. add -stable if not present
 _pkgver="$(printf '%s\n' "${pkgver}" | sed -E 's/^([0-9.]*)([a-z].*)$/\1-\2/; /-/!s/$/-stable/')"
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced cross-platform 2D and 3D game engine"
 arch=(
   'aarch64'
@@ -126,7 +126,7 @@ package_godot-rc-bin() {
 package_godot-mono-rc-bin() {
   depends=(
     'glibc'
-    'dotnet-sdk-8.0' # ?
+    'dotnet-sdk'
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
