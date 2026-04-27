@@ -1,15 +1,15 @@
 pkgbase = advanced-passgen-bin
 	pkgdesc = Advanced Password Generator.(Prebuilt version)
-	pkgver = 2.5.2
-	pkgrel = 2
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://codedead.com/software/advanced-passgen
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
-	provides = advanced-passgen=2.5.2
+	provides = advanced-passgen=2.6.0
 	conflicts = advanced-passgen
-	source = advanced-passgen-2.5.2.rpm::https://github.com/CodeDead/Advanced-PassGen/releases/download/v2.5.2/advanced-passgen-2.5.2-1.x86_64.rpm
-	sha256sums = 82c160287d8f01a644d63bcc005e93013b536c75d2a8da821d0b8845507a998f
+	source = advanced-passgen-2.6.0.rpm::https://github.com/CodeDead/Advanced-PassGen/releases/download/v2.6.0/advanced-passgen-2.6.0-1.x86_64.rpm
+	sha256sums = 1307f28e4b112eff832abe7a7d31ace2918d013f1243aa68c90241cd67223a70
 
 pkgname = advanced-passgen-bin
