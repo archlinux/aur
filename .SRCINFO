@@ -1,0 +1,21 @@
+pkgbase = zc-git
+	pkgdesc = A C/C++ build tool and package manager
+	pkgver = 1.0.r0.g8a2b3c4
+	pkgrel = 1
+	url = https://github.com/Paul272007/ZC
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = clang
+	depends = llvm
+	depends = libarchive
+	depends = curl
+	depends = openssl
+	depends = nlohmann-json
+	provides = zc
+	conflicts = zc
+	source = git+https://github.com/Paul272007/ZC.git#branch=stable
+	sha256sums = SKIP
+
+pkgname = zc-git
