@@ -1,6 +1,6 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang
-pkgver=0.5.10
+pkgver=0.5.10.post1
 pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
@@ -93,7 +93,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         'sglang.env'
         'sglang.sysusers'
         "${_models[@]/%/.conf}")
-sha256sums=('c22459f7c7fbe9540860a4df5b064b6f41029dca93d7f57dc8a221b0b398e2b0')
+sha256sums=('2080e7d8802094ae2b92dead1c6788b7aa2a2ccd06d8ba221bbc5b43d4cb7786')
 for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' "${_models[@]}"; do
   sha256sums+=('SKIP')
 done
