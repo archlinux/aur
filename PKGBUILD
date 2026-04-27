@@ -15,11 +15,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/leestripp/lucidvideo/-/archive/v${pkgver}/lucidvideo-v${pkgver}.tar.gz")
+source=("https://gitlab.com/leestripp/lucidvideo/-/archive/v${pkgver}/lucidvideo-${pkgver#v}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/lucidvideo-${pkgver}"
+    cd "${srcdir}/lucidvideo-${pkgver#v}"
     mkdir -p build
     cd build
     cmake .. \
@@ -30,10 +30,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/lucidvideo-${pkgver}/build"
+    cd "${srcdir}/lucidvideo-${pkgver#v}/build"
     install -Dm755 lucidvideo "${pkgdir}/usr/bin/lucidvideo"
-    install -Dm644 "${srcdir}/lucidvideo-${pkgver}/data/lucid.desktop" \
+    install -Dm644 "${srcdir}/lucidvideo-${pkgver#v}/data/lucid.desktop" \
         "${pkgdir}/usr/share/applications/lucidvideo.desktop"
-    install -Dm644 "${srcdir}/lucidvideo-${pkgver}/resources/icons/lucid-app.svg" \
+    install -Dm644 "${srcdir}/lucidvideo-${pkgver#v}/resources/icons/lucid-app.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lucidvideo.svg"
 }
