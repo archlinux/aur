@@ -1,6 +1,6 @@
 pkgbase = larpshell-git
 	pkgdesc = Convert natural language to shell commands using an LLM
-	pkgver = r126.4d23e6f
+	pkgver = r135.2fa882c
 	pkgrel = 1
 	url = https://github.com/uwuclxdy/larpshell
 	arch = x86_64
