@@ -1,7 +1,7 @@
 # Maintainer: John Oberhauser <j.aur@obez.io>
 pkgname=okshell
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable shell for Hyprland"
 license=('GPL-3.0-only')
 arch=('x86_64')
@@ -18,6 +18,7 @@ depends=(
     'matugen'
     'networkmanager'
     'pam'
+    'pipewire-alsa'
     'power-profiles-daemon'
     'upower'
     'wf-recorder'
