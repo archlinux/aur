@@ -16,24 +16,24 @@ backup=()
 options=()
 install=
 changelog=
-source=("lucid-${pkgver}.tar.gz")
+source=("lucid-${pkgver}.tar.gz::https://gitlab.com/leestripp/lucid/-/archive/v${pkgver}/lucid-v${pkgver}.tar.gz")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
 package() {
     # Install binary
-    install -Dm755 "${srcdir}/usr/bin/lucid" "${pkgdir}/usr/bin/lucid"
+    install -Dm755 "${srcdir}/lucid-${pkgver}/build/lucid" "${pkgdir}/usr/bin/lucid"
     
     # Install bundled libraries (for custom whisper/llama builds)
     install -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/usr/lib/"* "${pkgdir}/usr/lib/"
+    cp -r "${srcdir}/lucid-${pkgver}/build/libs/"* "${pkgdir}/usr/lib/"
     
     # Install desktop file
-    install -Dm644 "${srcdir}/usr/share/applications/lucid.desktop" \
+    install -Dm644 "${srcdir}/lucid-${pkgver}/data/lucid.desktop" \
         "${pkgdir}/usr/share/applications/lucidvideo.desktop"
     
     # Install icon
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/scalable/apps/lucid.svg" \
+    install -Dm644 "${srcdir}/lucid-${pkgver}/resources/icons/lucid-app.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lucidvideo.svg"
 }
