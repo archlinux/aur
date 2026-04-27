@@ -1,6 +1,6 @@
 pkgbase = python-fastmcp
 	pkgdesc = The fast, Pythonic way to build MCP servers and clients.
-	pkgver = 3.2.2
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://github.com/jlowin/fastmcp
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = python-fastmcp
 	depends = python-mcp
 	depends = python-jsonschema-path
 	depends = python-uncalled-for
-	source = https://files.pythonhosted.org/packages/source/f/fastmcp/fastmcp-3.2.2.tar.gz
-	sha256sums = a5351ec8c098844a8d508a53e484b362f5357b890596aaf233ac9686a796a62f
+	source = https://files.pythonhosted.org/packages/source/f/fastmcp/fastmcp-3.2.4.tar.gz
+	sha256sums = 083ecb75b44a4169e7fc0f632f94b781bdb0ff877c6b35b9877cbb566fd4d4d1
 
 pkgname = python-fastmcp
