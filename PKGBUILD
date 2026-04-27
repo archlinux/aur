@@ -12,5 +12,5 @@ source=("https://github.com/zyriu11/sdcc-bin/releases/download/$pkgver/sdcc-$pkg
 sha256sums=('3395722e3f8a31ce6a14c75fc419f586a3573b939f85efee5c88cdd35820a240')
 
 package() {
-	cp $srcdir/* $pkgdir/usr/local
+	 find . -type f | install -Dm 644 {,${pkgdir}/usr/local}{}
 }
