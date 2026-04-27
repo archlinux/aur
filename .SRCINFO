@@ -1,10 +1,16 @@
 pkgbase = vrcft-avalonia-git
 	pkgdesc = Cross-platform VRCFaceTracking made with Avalonia
 	pkgver = r212.1.1.1.0.r21.g4974f8f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dfgHiatus/VRCFaceTracking.Avalonia
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = dotnet-sdk>=10.0
+	provides = vrcft
+	provides = vrcft-avalonia
+	conflicts = vrcft
+	conflicts = vrcft-avalonia
 	source = vrcft::git+https://github.com/dfgHiatus/VRCFaceTracking.Avalonia
 	source = fix-BinaryBaseParameter.patch
 	source = VRCFaceTracking.Avalonia.desktop

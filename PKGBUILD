@@ -2,11 +2,11 @@
 
 pkgname=vrcft-avalonia-git
 pkgver=r212.1.1.1.0.r21.g4974f8f
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform VRCFaceTracking made with Avalonia"
 arch=('x86_64')
 url="https://github.com/dfgHiatus/VRCFaceTracking.Avalonia"
-license=('MIT')
+license=('Apache-2.0')
 source=(
   "vrcft::git+https://github.com/dfgHiatus/VRCFaceTracking.Avalonia"
   "fix-BinaryBaseParameter.patch"
@@ -19,6 +19,12 @@ sha256sums=(
   '3c3b38c08d6bdcc5610def27bb80c9ed0bef8618af94f2a6be6747399bdefc54'
   'f7bd3f98d1938601c69bc94cd4634c01913b826943eaec26546ef62f25047599'
 )
+makedepends=(
+  'git'
+  'dotnet-sdk>=10.0'
+)
+conflicts=('vrcft' 'vrcft-avalonia')
+provides=('vrcft' 'vrcft-avalonia')
 
 detect_platform() {
   if [[ "$(uname -m)" == "aarch64" ]]; then
