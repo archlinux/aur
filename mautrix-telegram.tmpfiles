@@ -1,2 +1,4 @@
-z /etc/mautrix-telegram/* 640 mautrix-telegram mautrix-telegram
-d /var/lib/mautrix-telegram/ 700 mautrix-telegram mautrix-telegram
+d /etc/mautrix-telegram                    0755 mautrix-telegram mautrix-telegram -
+d /var/lib/mautrix-telegram                0700 mautrix-telegram mautrix-telegram -
+z /etc/mautrix-telegram/config.yaml*       0600 mautrix-telegram mautrix-telegram -
+z /etc/mautrix-telegram/registration.yaml  0644 mautrix-telegram mautrix-telegram -

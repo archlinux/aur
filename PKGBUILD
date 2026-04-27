@@ -1,85 +1,64 @@
-# Maintainer: BrainDamage
-pkgname=mautrix-telegram
-pkgver=0.15.3
+pkgname='mautrix-telegram'
+pkgver=0.2605.0
 pkgrel=1
 pkgdesc="Matrix-Telegram hybrid puppeting/relaybot bridge"
-url="https://github.com/tulir/mautrix-telegram"
-# python-tulir-telethon needs exact version matching
-# as long as I maintain both I can just keep the updates in sync myself
-# if someone else were to maintain only one, it'd need explicit version pin
-depends=('python' 'python-asyncpg' 'python-ruamel-yaml'
-	'python-magic' 'python-commonmark' 'python-aiohttp' 'python-yarl'
-	'python-mautrix>=0.20.8' 'python-mautrix<0.21'
-	'python-tulir-telethon'
-	'python-mako')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest-runner')
-optdepends=('ffmpeg: high quality thumbnails'
-	'python-cryptg: faster encryption'
-	'python-cchardet: faster encoding detection'
-	'python-brotli: faster compression'
-	'python-aiodns: asyncronous dns requests'
-	'python-pillow: webp conversion and qr code login'
-	'python-qrcode: qr code login'
-	'python-phonenumbers: formatted numbers'
-	'python-prometheus_client: metrics upload'
-	'python-olm: end-to-bridge encryption support'
-	'python-pycryptodome: end-to-bridge encryption support'
-	'python-unpaddedbase64: end-to-bridge encryption support'
-	'python-aiosqlite: sqlite database support')
-license=('AGPLv3')
-arch=('any')
-source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('e201b9604c04a927d12b7a23d218a32430eb4b721da555f3112e0150811a0572'
-            '5745211f778be7220159f8e23f493cc819dd9290ddd81c6b83a9b5fef2a15547'
+arch=('x86_64' 'aarch64' 'armv7h')
+url="https://github.com/mautrix/telegram"
+license=('AGPL-3.0-or-later')
+depends=(
+  'glibc'
+  'gcc-libs'
+  'libolm'
+)
+makedepends=(
+  'go'
+)
+backup=(
+  "etc/${pkgname}/config.yaml"
+  "etc/${pkgname}/registration.yaml"
+)
+source=(
+  "${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${pkgname}.service"
+  "${pkgname}.sysusers"
+  "${pkgname}.tmpfiles"
+)
+sha256sums=('7826b531b9698f68ac74c518c13703517a6e05c85f040eeb252f44cef3d38f92'
+            'afd12dd5194ca379cfb6db346d098f52d087703fcd6a0f0f89063867dc7cdb0f'
             '83dc721df0451c199d23ea74b60a065d92f98e9026dd779aca30d25195b88cf9'
-            '2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5')
-backup=("etc/${pkgname}/config.yaml" "etc/${pkgname}/registration.yaml")
-install="${pkgname}.install"
-_dirname="${pkgname#mautrix-}-${pkgver}"
-
+            '71f12a1d39f9a08903e2046a02c39a9c21ac0bd2ac7ec38710afea90446fa9e9')
+options=(!debug)
 
 prepare() {
-	cd "${srcdir}/${_dirname}"
-	# the author makes liberal usage of max version for requirements without a real need
-	# we'll strip them and re-introduce in the deps/optdeps array if truly necessary
-	# to prevent a nightmare during updates while tracking stable releases
-	cp requirements.txt ../requirements.txt.orig
-	cp optional-requirements.txt  ../optional-requirements.txt.orig
-	sed -i -E 's/,?<[[:digit:]]*\.?[[:digit:]]+,?//g' requirements.txt
-	sed -i -E 's/,?<[[:digit:]]*\.?[[:digit:]]+,?//g' optional-requirements.txt
-	# create an empty registration file so that permissions get written properly from the get go
-	# this way secret keys are never world readable
-	touch registration.yaml
+  cd "telegram-${pkgver}"
+  go mod tidy
 }
 
 build() {
-	cd "${srcdir}/${_dirname}"
-	export PYTHONHASHSEED=0
-	python -m build --wheel --no-isolation
+  cd "telegram-${pkgver}"
+  export LIBRARY_PATH="${LIBRARY_PATH}:/usr/lib/"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  MAUTRIX_VERSION=$(cat go.mod | grep 'maunium.net/go/mautrix ' | awk '{ print $2 }')
+  GO_LDFLAGS="-X main.Tag=${pkgver} -X 'main.BuildTime=`date '+%b %_d %Y, %H:%M:%S'`' -X 'maunium.net/go/mautrix.GoModVersion=$MAUTRIX_VERSION'"
+  go build -gcflags="$GO_GCFLAGS" -ldflags="$GO_LDFLAGS" -o "${pkgname}" ./cmd/...
+  ./${pkgname} --generate-example-config
 }
 
 package() {
-	cd "${srcdir}/${_dirname}"
+  cd "telegram-${pkgver}"
 
-	_shared_dir="/usr/share/${pkgname}"
+  install -Dvm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-	find dist -name '*.whl' \
-		-exec python -m installer --compile-bytecode 1 --destdir="${pkgdir}" {} \;
+  install -Dvm 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dvm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-	# it's a semi-common failure for python packages to install tests in the main dir
-	# which would make them conflict eachother
-	rm -rf "${pkgdir}$(python -c 'import site; print(site.getsitepackages()[0])')/tests"
-
-	# install the original requirements file, useful as documentation
-	install -Dvm 644 "${srcdir}/requirements.txt.orig" "$(find "${pkgdir}" -name '*.dist-info' -printf '%h/%f')"
-	install -Dvm 644 "${srcdir}/optional-requirements.txt.orig" "$(find "${pkgdir}" -name '*.dist-info' -printf '%h/%f')"
-
-	install -Dvm 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-	install -Dvm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-	install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-
-	mkdir -p "${pkgdir}/etc/${pkgname}"
-	chmod o-rwX "${pkgdir}/usr/example-config.yaml"
-	mv "${pkgdir}/usr/example-config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
-	install -Dvm 640 registration.yaml "${pkgdir}/etc/${pkgname}/registration.yaml"
+  install -dm 750 "${pkgdir}/etc/${pkgname}"
+  install -Dvm 640 "config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
+  touch 'registration.yaml'
+  install -Dvm 640 'registration.yaml' "${pkgdir}/etc/${pkgname}/registration.yaml"
 }
