@@ -1,4 +1,4 @@
-# Maintainer: fa5e4658010be730
+# Maintainer: fkzys <fkzys at proton dot me>
 
 pkgname=gitpkg
 pkgver=0.8.0
