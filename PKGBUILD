@@ -1,6 +1,6 @@
 # Maintainer: Tanay Pant <tanaypant@protonmail.com>
 pkgname=tokyo-notes-git
-pkgver=r3.gxxxxxxx
+pkgver=r5.g0bec769
 pkgrel=1
 pkgdesc="A minimal GTK4 Markdown note-taking app"
 arch=('any')
