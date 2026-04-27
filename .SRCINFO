@@ -1,6 +1,6 @@
 pkgbase = data-peek-bin
 	pkgdesc = A minimal, fast SQL client desktop application for developers
-	pkgver = 0.20.1
+	pkgver = 0.21.2
 	pkgrel = 1
 	url = https://www.datapeek.dev
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = data-peek-bin
 	provides = data-peek
 	conflicts = data-peek
 	options = !strip
-	source = https://github.com/Rohithgilla12/data-peek/releases/download/v0.20.1/data-peek-0.20.1-amd64.deb
-	sha256sums = c9e80107f87947add99a1254e2a609c7eb1e58f9332ebe64308bfe72494ef47f
+	source = https://github.com/Rohithgilla12/data-peek/releases/download/v0.21.2/data-peek-0.21.2-amd64.deb
+	sha256sums = 8554131d7956ace806ac1988a92e308ab120902c73a4291da6cc27e30534139a
 
 pkgname = data-peek-bin
