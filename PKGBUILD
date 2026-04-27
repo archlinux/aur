@@ -6,7 +6,7 @@ pkgname=(
   easyofd
 )
 _name=${pkgname#python-}
-pkgver=0.5.1
+pkgver=20260427
 pkgrel=1
 pkgdesc="Easy operate OFD"
 arch=($CARCH)
@@ -34,8 +34,8 @@ makedepends=(
   nuitka
 )
 # checkdepends=()
-source=("${pkgbase}::git+${url}.git#tag=v${pkgver}")
-sha512sums=('c56f26484a38dde007382ae0ce01fa0ca1ebc4cfb045a0ed574fc3e89c1b457930b6786190aa32cdd7dd07c3bdbed2d2ac9e655c3415afaa7fd3f1cbdf40d1aa')
+source=("${pkgbase}::git+${url}.git#tag=${pkgver}")
+sha512sums=('902fc26df19926a704f8d67ca14f13aed87297cb2c1a85ca429ba79f323d22f1a128d577acfc52e9f635f2cc4766039bc30e2a446bc9f1f6c01c133abd2f29e2')
 
 prepare() {
   git -C "${srcdir}/${pkgbase}" clean -dfx
