@@ -3,8 +3,7 @@ Description=WangYunChuan Service for instance %i
 Documentation=https://wangyunchuan.com
 Wants=network-online.target
 After=network-online.target
-StartLimitIntervalSec=500
-StartLimitBurst=5
+StartLimitIntervalSec=0
 
 [Service]
 Type=simple
@@ -17,9 +16,19 @@ PrivateTmp=yes
 ProtectSystem=no
 ProtectHome=yes
 
+ExecStartPre=/usr/bin/bash -c 'until host api.wangyunchuan.com >/dev/null 2>&1; do sleep 2; done'
 ExecStart=/usr/bin/wyc -token ${WYC_TOKEN} -run
+ExecStartPost=/usr/bin/bash -c '\
+  for i in $(seq 1 15); do \
+    if tail -n1 /var/log/wangyunchuan/${WYCLOG_PREFIX}/$(date +%%Y-%%m-%%d).log 2>/dev/null | grep -q "隧道已建立"; then \
+      exit 0; \
+    fi; \
+    sleep 2; \
+  done; \
+  /usr/bin/kill -TERM "$MAINPID"; \
+  exit 1'
 Restart=always
-RestartSec=10
+RestartSec=5s
 
 StandardOutput=journal
 StandardError=journal
