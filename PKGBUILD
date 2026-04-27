@@ -3,7 +3,7 @@
 _dist=App-Sqitch
 pkgname=sqitch
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Sensible database change management'
 arch=('any')
 url='https://github.com/sqitchers/sqitch'
@@ -46,9 +46,17 @@ depends=(
     perl-namespace-autoclean
 )
 optdepends=(
-    perl-class-xsaccessor
-    perl-template-toolkit
-    perl-type-tiny-xs
+    # Recommends
+    'perl-class-xsaccessor: Fast XS accessors'
+    'perl-template-toolkit: Template Toolkit'
+    'perl-type-tiny-xs: XS boost'
+
+    # Suggests
+    'perl-dbd-mariadb: MariaDB and MySQL driver'
+    'perl-dbd-odbc: ODBC driver'
+    'perl-dbd-oracle: Oracle database driver'
+    'perl-dbd-pg: PostgreSQL database driver'
+    'perl-dbd-sqlite: SQLite driver'
 )
 checkdepends=(
     perl-capture-tiny
