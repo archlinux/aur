@@ -2,7 +2,7 @@
 
 _pkgname=OpenNOW
 pkgname="opennow-appimage"
-pkgver="0.3.6"
+pkgver="0.3.8"
 pkgrel=1
 pkgdesc="Custom GeForce Now Client Named OpenNOW"
 arch=('x86_64' 'aarch64')
