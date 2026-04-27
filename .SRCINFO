@@ -42,16 +42,9 @@ pkgbase = linux-tpm453-rc
 
 pkgname = linux-tpm453-rc
 	pkgdesc = The Hardware-specific CachyOS release-candidate kernel for Acer TMP453-M class hardware kernel and modules
-	depends = binutils
-	depends = glibc
-	depends = libelf
-	depends = libgcc
-	depends = openssl
-	depends = pahole
-	depends = xxhash
-	depends = zlib
-	depends = zstd
-	depends = linux-tpm453-rc
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
@@ -63,12 +56,24 @@ pkgname = linux-tpm453-rc
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
+	provides = linux-cachyos-lto=7.0.rc7-2
+	replaces = linux-cachyos-lto
 
 pkgname = linux-tpm453-rc-headers
 	pkgdesc = Headers and scripts for building modules for the Hardware-specific CachyOS release-candidate kernel for Acer TMP453-M class hardware kernel
+	depends = binutils
+	depends = glibc
+	depends = libelf
+	depends = libgcc
+	depends = openssl
 	depends = pahole
+	depends = xxhash
+	depends = zlib
+	depends = zstd
 	depends = linux-tpm453-rc
 	depends = clang
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
+	provides = linux-cachyos-lto-headers=7.0.rc7-2
+	replaces = linux-cachyos-lto-headers
