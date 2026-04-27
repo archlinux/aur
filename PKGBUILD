@@ -1,4 +1,4 @@
-# Maintainer: fa5e4658010be730
+# Maintainer: fkzys <fkzys at proton dot me>
 
 pkgname=transformers_ocr-git
 pkgver=0.21.0.r0.g148d2b4
