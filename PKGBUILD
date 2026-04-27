@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
-_cranname=brms
-_cranver=2.23.0
+_pkgname=brms
+_pkgver=2.23.0
 pkgname=r-brms
 pkgdesc="Bayesian Regression Models using 'Stan'"
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=("GPL-2.0-only")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=3
 makedepends=("gcc-fortran")
 
 arch=("any")
@@ -64,18 +64,18 @@ optdepends=(
     "r-mirai"
     "r-future.mirai"
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("b5f5bb5604ec3f87b3ad99f0da4e6a37d8c5488221e8abe459171340992c37a5")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('b5f5bb5604ec3f87b3ad99f0da4e6a37d8c5488221e8abe459171340992c37a5')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${srcdir}/build/${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${srcdir}/build/${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${srcdir}/build/${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${srcdir}/build/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }

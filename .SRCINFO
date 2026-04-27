@@ -1,7 +1,7 @@
 pkgbase = r-brms
 	pkgdesc = Bayesian Regression Models using 'Stan'
 	pkgver = 2.23.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=brms
 	arch = any
 	license = GPL-2.0-only
