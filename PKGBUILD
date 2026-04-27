@@ -1,7 +1,7 @@
 # Maintainer: Vasiliy Stelmachenok <ventureo@yandex.ru>
 # Maintainer: so5iso4ka <so5iso4ka@icloud.com>
 pkgname=freesmlauncher
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Minecraft launcher with offline accounts support"
 arch=(x86_64)
@@ -9,8 +9,9 @@ url='https://freesmlauncher.org/'
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
 depends=(
   cmark
-  gcc-libs
   glibc
+  libstdc++
+  libgcc
   hicolor-icon-theme
   java-runtime
   libarchive
@@ -25,7 +26,7 @@ depends=(
   zlib
 )
 options=(!lto)
-makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc ghc-filesystem gamemode)
+makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc gamemode)
 optdepends=(
   'glfw-pure: Native Wayland support'
   'openal: to use system OpenAL libraries'
@@ -34,7 +35,7 @@ optdepends=(
   'flite: minecraft voice narration'
 )
 source=("$pkgname::git+https://github.com/FreesmTeam/FreesmLauncher#tag=$pkgver")
-sha256sums=('1510ac408123422a3404e4e3b66a261c24067a60a4fa486c23aa9768f7ea3266')
+sha256sums=('5248ef6f5a9db5bdcfa2d600b3040a67717cb446026f00fdce1d3af32c24759f')
 
 prepare() {
   cd "$pkgname"
@@ -66,10 +67,6 @@ check() {
 package() {
   cd "$pkgname/build"
   DESTDIR="$pkgdir" cmake --install .
-
-  # Rename to resolve conflict with prismlauncher
-  mv "$pkgdir/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
-    "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }
 
 # vim:set ts=2 sw=2 et:

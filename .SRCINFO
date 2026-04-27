@@ -1,6 +1,6 @@
 pkgbase = freesmlauncher
 	pkgdesc = Minecraft launcher with offline accounts support
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://freesmlauncher.org/
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = freesmlauncher
 	makedepends = jdk17-openjdk
 	makedepends = ninja
 	makedepends = scdoc
-	makedepends = ghc-filesystem
 	makedepends = gamemode
 	depends = cmark
-	depends = gcc-libs
 	depends = glibc
+	depends = libstdc++
+	depends = libgcc
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	depends = libarchive
@@ -34,7 +34,7 @@ pkgbase = freesmlauncher
 	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = flite: minecraft voice narration
 	options = !lto
-	source = freesmlauncher::git+https://github.com/FreesmTeam/FreesmLauncher#tag=2.1.1
-	sha256sums = 1510ac408123422a3404e4e3b66a261c24067a60a4fa486c23aa9768f7ea3266
+	source = freesmlauncher::git+https://github.com/FreesmTeam/FreesmLauncher#tag=2.2.0
+	sha256sums = 5248ef6f5a9db5bdcfa2d600b3040a67717cb446026f00fdce1d3af32c24759f
 
 pkgname = freesmlauncher
