@@ -1,0 +1,23 @@
+pkgbase = gitpane-bin
+	pkgdesc = Multi-repo Git workspace dashboard for the terminal
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/affromero/gitpane
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = patch
+	depends = git
+	provides = gitpane
+	conflicts = gitpane
+	conflicts = gitpane-git
+	options = !debug
+	source = LICENSE::https://raw.githubusercontent.com/affromero/gitpane/refs/tags/v0.5.3/LICENSE
+	sha256sums = 5953e81de31e9fbf77306d93feac10000c25889ec5a35c1e954d0d6efc3fd794
+	source_x86_64 = gitpane-bin::https://github.com/affromero/gitpane/releases/download/v0.5.3/gitpane-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 327a382017e66445ff243ec261e1756466246a102a4d7f3ef03d8fdfbc3212e5
+	source_aarch64 = gitpane-bin::https://github.com/affromero/gitpane/releases/download/v0.5.3/gitpane-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6080c4657e20448a1b758849e18598a9b50b3afe0b67ebe977b867d36580e106
+
+pkgname = gitpane-bin
