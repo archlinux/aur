@@ -1,8 +1,8 @@
 pkgname=motionbox-bin
 _pkgname=motionbox-bin
-pkgver=3.0.0.1
+pkgver=3.0.0.3
 majver=3.0.0
-subver=1
+subver=3
 pkgrel=1
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="http://omega.gg/MotionBox/"
 license=("GPL3")
 provides=("motionbox")
 conflicts=("motionbox")
-depends=(vlc qt5-base libidn11)
+depends=(vlc qt6-base)
 source=(
     https://s3-eu-west-1.amazonaws.com/omega.gg/get/MotionBox/MotionBox-$majver-$subver-linux64.tar.gz
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.desktop
