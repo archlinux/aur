@@ -1,6 +1,6 @@
 # Maintainer: Himalian <Himalian9227@proton.me>, phucvinh57 <npvinh0507@gmail.com>
 pkgname=biopass-bin
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('biopass')
 conflicts=('biopass')
 source_x86_64=("biopass_${pkgver}_amd64.deb::https://github.com/TickLabVN/biopass/releases/download/${pkgver}/biopass_${pkgver}_amd64.deb")
 source_aarch64=("biopass_${pkgver}_arm64.deb::https://github.com/TickLabVN/biopass/releases/download/${pkgver}/biopass_${pkgver}_arm64.deb")
-sha256sums_x86_64=('1521e7c7045047866caa44ab72ad85eaed2cf53b552d8a23ccfff17039112053')
-sha256sums_aarch64=('4d2c9bd464483203dc39638e5484af7ae4fdd4b1251112d7b2209eecb796f27e')
+sha256sums_x86_64=('2faa7e82906bfe1a1b8b7e1b8b60ae58056b0f582997737b8334a78d0588548c')
+sha256sums_aarch64=('f336ba617b3d883178dc43b9d48366a7b54233f071ebdbed78f5f4cd2863e427')
 options=(!strip !debug)
 backup=('etc/ld.so.conf.d/biopass.conf')
 install=biopass-bin.install
