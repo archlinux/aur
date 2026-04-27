@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vis-launcher-bin
 _pkgname=VI-Software-Launcher
-pkgver=2.1.13
-_electronversion=38
+pkgver=2.2.0
+_electronversion=41
 pkgrel=1
 pkgdesc="Modded Minecraft launcher for servers on the VI Software Platform.(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://visoftware.dev/launcher"
 _ghurl="https://github.com/VI-Software/vis-launcher"
 license=('AGPL-3.0-only')
@@ -18,15 +21,33 @@ depends=(
 makedepends=(
     'asar'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-setup-${pkgver}.AppImage"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('be43fc93d619d4dc24cea363b2a3e991b763589d74d5a53f54e93489fd1d77b8'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
+sha256sums=('1966359be43411f26de5dc2cd6bd55bfa9f435bba418756524d2c28864a901d8')
+sha256sums_aarch64=('778c4caa34ce483e7aaad213a8dadf868966f5f83aadf91f06762df646b65ce4')
+sha256sums_x86_64=('af3abd49335c62893ee1096349ba6b5ff5d4629533f79e779cdc327b2efe60d0')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -39,8 +60,11 @@ prepare() {
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    _get_electron_version
+    _check_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${srcdir}/squashfs-root/resources/app.asar"
@@ -50,8 +74,9 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/squashfs-root/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
