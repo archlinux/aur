@@ -4,7 +4,7 @@ pkgver=0.1.9
 pkgrel=1
 pkgdesc="Atomic system upgrades for Arch Linux (Btrfs + UKI + Secure Boot)"
 arch=('any')
-url="https://gitlab.com/fkzys/atomic-upgrade"
+url="https://github.com/fkzys/atomic-upgrade"
 license=('AGPL-3.0-or-later')
 depends=(
     'btrfs-progs'
@@ -19,10 +19,10 @@ optdepends=(
     'bash-completion: bash tab completions'
 )
 backup=('etc/atomic.conf')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('722db85f003fd945e1d4177d27e29e28399e49d2becee86435b9fe33db3a1e77')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('9d9dfb95f65d52fecf9bb135196e17d545642269a61564a74272538b29b6bbe6')
 
 package() {
-    cd "${pkgname}-v${pkgver}"
+    cd "${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
