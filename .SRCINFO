@@ -1,7 +1,7 @@
 pkgbase = vinz-git
 	pkgdesc = Interactive true-color procedural graphics engine for the terminal
-	pkgver = r6.91ddcf8
-	pkgrel = 1
+	pkgver = r8.bb4197f
+	pkgrel = 2
 	url = https://github.com/vinz-ux/VinZ
 	arch = x86_64
 	license = GPL-3.0-only

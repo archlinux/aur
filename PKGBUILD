@@ -1,8 +1,8 @@
 # Maintainer: Axium Ixane <AxiumIxane@protonmail.com>
 
 pkgname=vinz-git
-pkgver=r6.91ddcf8
-pkgrel=1
+pkgver=r8.bb4197f
+pkgrel=2
 pkgdesc="Interactive true-color procedural graphics engine for the terminal"
 arch=('x86_64')
 url="https://github.com/vinz-ux/VinZ"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "VinZ"
-  make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS} -lm"
+  make
 }
 
 package() {
