@@ -1,4 +1,4 @@
-# Maintainer: fa5e4658010be730
+# Maintainer: fkzys <fkzys at proton dot me>
 pkgname=keys-vault
 pkgver=1.0.0
 pkgrel=1
