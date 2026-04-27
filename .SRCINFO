@@ -1,13 +1,13 @@
 pkgbase = mari0_ae
 	pkgdesc = Recreation of Super Mario Bros, with portals
 	pkgver = 13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alesan99/mari0_ae
 	arch = any
 	license = DWTFYWTPL
 	makedepends = git
 	makedepends = zip
-	depends = love10
+	depends = love
 	depends = sh
 	options = !strip
 	options = !debug

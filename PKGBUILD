@@ -1,7 +1,7 @@
 _pkgname=mari0_ae
 pkgname="$_pkgname"
 pkgver=13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Recreation of Super Mario Bros, with portals"
 arch=('any')
 options=("!strip" "!debug")
