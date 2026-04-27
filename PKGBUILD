@@ -18,6 +18,7 @@ sha256sums=('d5f8eeae9e791331949b96423a1ebb33e43b750a7b2442f24bba5ed032c4d397')
 
 build() {
     cd "${pkgname}-${pkgver}"
+    export VERSION="v${pkgver}"
     export GOPATH="${srcdir}/gopath"
     export GOFLAGS="-mod=readonly -modcacherw"
     make build
