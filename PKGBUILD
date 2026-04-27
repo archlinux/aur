@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email>
+# Maintainer: iTrooz_ <aur at itrooz dot fr>
 pkgname=reko-bin
 _pkgname=reko
 pkgver=0.12.2
