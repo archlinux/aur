@@ -1,0 +1,13 @@
+pkgbase = tokenmix-cli
+	pkgdesc = CLI for TokenMix - one API key for GPT-5, Claude, Gemini, DeepSeek and 155+ LLMs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://tokenmix.ai
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = tokenmix-cli-0.1.0.tar.gz::https://crates.io/api/v1/crates/tokenmix-cli/0.1.0/download
+	sha256sums = 3190e67adfb165438a94bf470ecdbadf71a77cdb4a419661669f3c4fba4cd6bd
+
+pkgname = tokenmix-cli
