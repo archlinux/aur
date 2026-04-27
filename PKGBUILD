@@ -2,7 +2,7 @@
 pkgname=python-sgl-kernel-git
 _pkgname=sgl-kernel
 _reponame=sglang
-pkgver=r10744.4c52b7fcc6
+pkgver=r11584.d01b2bf257
 pkgrel=1
 pkgdesc='Compiled CUDA kernels for the SGLang serving framework'
 arch=('x86_64')
