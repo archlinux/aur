@@ -1,7 +1,7 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=milcheck
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A CLI to get pacman mirrorlist status and the Arch Linux latest news"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('milcheck')
 conflicts=('milcheck')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c8e433e790f2ac0eaa4c5a12b0282734901f30deac4cd8552a62e5e2b147fb8')
+sha256sums=('f065b8fe70d770c989f65ac04c7b7bb2a39f2f0cc4d62f3247647bc00dcad777')
 _pkgdir="$pkgname-$pkgver"
 
 build() {
