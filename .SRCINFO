@@ -1,17 +1,17 @@
 pkgbase = betcon
 	pkgdesc = Sports betting management
-	pkgver = 1.8.1
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = http://betcon.eduardoparra.es
-	arch = any
+	arch = x86_64
 	license = GPLv3
-	depends = python
-	depends = python-pyqt5
-	depends = sqlite
-	depends = python-pyexcel-ods3
+	depends = gcc-libs
+	depends = glibc
+	depends = python-numpy
 	depends = python-yaml
 	depends = python-pillow
-	source = https://github.com/soker90/betcon/archive/1.8.1.tar.gz
-	md5sums = 4e4d3ca8b6b0ad3b1f4f2d52f82a0bbf
+	depends = python-pyqtgraph
+	source = https://github.com/soker90/betcon/releases/download/v2.0.0/betcon-2.0.0-linux-x86_64.tar.gz
+	sha256sums = 756661ba8c7b79a0ee9428bf4f093b74bac44209d18d0cb9d4c18a136b0e4488
 
 pkgname = betcon

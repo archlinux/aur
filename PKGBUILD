@@ -1,37 +1,47 @@
 # Maintainer: Eduardo Parra Mazuecos <eduparra90@gmail.com>
 
-# I maintain this on github, feel free to submit a pull request to
-# https://github.com/soker90/paquetes-archinux.git
-
 pkgname=betcon
-pkgver=1.8.1
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Sports betting management"
 url="http://betcon.eduardoparra.es"
-arch=('any')
+arch=('x86_64')
 license=('GPLv3')
-depends=('python' 'python-pyqt5' 'sqlite' 'python-pyexcel-ods3' 'python-yaml' 'python-pillow')
-source=("https://github.com/soker90/betcon/archive/$pkgver.tar.gz")
-md5sums=('4e4d3ca8b6b0ad3b1f4f2d52f82a0bbf')
+depends=('gcc-libs' 'glibc' 'python-numpy' 'python-yaml' 'python-pillow' 'python-pyqtgraph')
+source=("https://github.com/soker90/betcon/releases/download/v$pkgver/betcon-$pkgver-linux-x86_64.tar.gz")
+sha256sums=('756661ba8c7b79a0ee9428bf4f093b74bac44209d18d0cb9d4c18a136b0e4488')
 
 package() {
-	mkdir -p ${pkgdir}/usr/share/betcon/default/
-	mkdir -p ${pkgdir}/usr/share/betcon/resources/
-	mkdir -p ${pkgdir}/usr/share/applications/
-	mkdir -p ${pkgdir}/usr/share/pixmaps/
-	mkdir -p ${pkgdir}/usr/bin/
-	mkdir -p ${pkgdir}/usr/share/locale/
-	cp -r ${srcdir}/${pkgname}-${pkgver}/src ${pkgdir}/usr/share/betcon/
-	cp -r ${srcdir}/${pkgname}-${pkgver}/ui ${pkgdir}/usr/share/betcon/
-	cp -r ${srcdir}/${pkgname}-${pkgver}/resources/bookies/ ${pkgdir}/usr/share/betcon/resources/
-	cp -r ${srcdir}/${pkgname}-${pkgver}/resources/sports/ ${pkgdir}/usr/share/betcon/resources/
-	cp ${srcdir}/${pkgname}-${pkgver}/default/database.sql ${pkgdir}/usr/share/betcon/default/
-	cp ${srcdir}/${pkgname}-${pkgver}/resources/betcon.desktop ${pkgdir}/usr/share/applications/
-	cp ${srcdir}/${pkgname}-${pkgver}/resources/icon.png ${pkgdir}/usr/share/pixmaps/betcon.png
-	cp ${srcdir}/${pkgname}-${pkgver}/resources/betcon ${pkgdir}/usr/bin/
-	chmod +x ${pkgdir}/usr/bin/betcon
-	cp -r ${srcdir}/${pkgname}-${pkgver}/lang/mo/* ${pkgdir}/usr/share/locale/
+	install -dm755 "${pkgdir}/opt/betcon"
+	install -dm755 "${pkgdir}/usr/bin"
+	install -dm755 "${pkgdir}/usr/share/applications"
+	install -dm755 "${pkgdir}/usr/share/pixmaps"
 
+	cp -r "${srcdir}/betcon/"* "${pkgdir}/opt/betcon/"
+
+	cat > "${pkgdir}/usr/bin/betcon" << 'EOF'
+#!/bin/sh
+exec /opt/betcon/betcon "$@"
+EOF
+	chmod +x "${pkgdir}/usr/bin/betcon"
+
+	# Create desktop file
+	cat > "${pkgdir}/usr/share/applications/betcon.desktop" << 'EOF'
+[Desktop Entry]
+Name=Betcon
+Comment=Gestión de apuestas deportivas
+Exec=betcon
+Icon=betcon
+Terminal=false
+Type=Application
+Categories=Office;Finance;
+EOF
+
+	# Install icon if it exists in the package
+	if [ -f "${srcdir}/betcon/_internal/resources/icon.png" ]; then
+		install -Dm644 "${srcdir}/betcon/_internal/resources/icon.png" \
+			"${pkgdir}/usr/share/pixmaps/betcon.png"
+	fi
 }
 
 
