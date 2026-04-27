@@ -2,7 +2,7 @@
 # Contributor: Niko Teressi <nikoteressi@gmail.com>
 
 pkgname=alpaka-desktop-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Native Tauri v2 desktop client for Ollama — Arch Linux / KDE Plasma 6 / Wayland"
 arch=('x86_64')
@@ -36,7 +36,7 @@ options=(!strip)
 _appimage="alpaka-desktop-${pkgver}.AppImage"
 
 source=("${_appimage}::https://github.com/nikoteressi/alpaka-desktop/releases/download/v${pkgver}/alpaka-desktop_${pkgver}_amd64.AppImage")
-sha256sums=('6106fa44697d4f7dfb0758322899cab35a045c7bdf4a01c9cf954766a09e3aad')
+sha256sums=('f02f5b0ff084d2ad3cb96d4fec428e01dea2a605b5c88156ca5ee6447908259c')
 
 noextract=("${_appimage}")
 
@@ -50,7 +50,12 @@ package() {
     local _squash="${srcdir}/squashfs-root"
 
     # --- Binary ---
-    install -Dm755 "${_squash}/AppRun" "${pkgdir}/usr/bin/alpaka-desktop"
+    # Use the actual Tauri binary, not AppRun. AppRun is the AppImage launcher
+    # and expects apprun-hooks/ to be co-located — that path doesn't exist after
+    # extraction and installation to /usr/bin.
+    _bin="${_squash}/usr/bin/alpaka-desktop"
+    [[ ! -f "${_bin}" ]] && _bin="${_squash}/AppRun"
+    install -Dm755 "${_bin}" "${pkgdir}/usr/bin/alpaka-desktop"
 
     # --- Desktop entry ---
     # Use the .desktop shipped inside the AppImage if present, otherwise install
