@@ -1,7 +1,7 @@
 # Maintainer: nikren <superdug000@gmail.com>
 pkgname=anilinux-electron
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Anime viewer for Linux with Shikimori OAuth integration"
 arch=('x86_64')
 url="https://github.com/Nikren2006/anilinux-electron"
@@ -19,11 +19,13 @@ package() {
   install -d "$pkgdir/opt/$pkgname"
   cp -r squashfs-root/* "$pkgdir/opt/$pkgname/"
   
-  # Create wrapper script that sets APPDIR
+  # Create wrapper script that runs anilinux binary directly
   cat > "$pkgdir/opt/$pkgname/anilinux-electron" <<EOF
 #!/bin/bash
-export APPDIR="/opt/$pkgname"
-exec "\$APPDIR/AppRun" "\$@"
+cd /opt/$pkgname
+export PATH="/opt/$pkgname:\$PATH"
+export LD_LIBRARY_PATH="/opt/$pkgname/usr/lib:\$LD_LIBRARY_PATH"
+exec /opt/$pkgname/anilinux "\$@"
 EOF
   chmod +x "$pkgdir/opt/$pkgname/anilinux-electron"
   
