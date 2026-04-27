@@ -13,8 +13,6 @@ optdepends=(
     'fcitx5-lotus-openrc-git: OpenRC init script for fcitx5-lotus'
     'fcitx5-lotus-runit-git: Runit service for fcitx5-lotus'
 )
-provides=('fcitx5-lotus')
-conflicts=('fcitx5-lotus')
 source=(
     'git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev'
     'git+https://github.com/LotusInputMethod/bamboo-core.git'
@@ -57,6 +55,8 @@ prepare_staging() {
 }
 
 package_fcitx5-lotus-git() {
+    provides=('fcitx5-lotus')
+    conflicts=('fcitx5-lotus')
     prepare_staging
     cp -a "$srcdir/staging/usr" "$pkgdir/"
 }
@@ -64,6 +64,8 @@ package_fcitx5-lotus-git() {
 package_fcitx5-lotus-openrc-git() {
     depends=('fcitx5-lotus-git')
     pkgdesc="OpenRC init script for fcitx5-lotus"
+    provides=('fcitx5-lotus-openrc')
+    conflicts=('fcitx5-lotus-openrc')
     prepare_staging
     install -d "$pkgdir/etc/init.d"
     install -m755 "$srcdir/staging/etc/init.d/fcitx5-lotus" "$pkgdir/etc/init.d/"
@@ -72,6 +74,8 @@ package_fcitx5-lotus-openrc-git() {
 package_fcitx5-lotus-runit-git() {
     depends=('fcitx5-lotus-git')
     pkgdesc="Runit service for fcitx5-lotus"
+    provides=('fcitx5-lotus-runit')
+    conflicts=('fcitx5-lotus-runit')
     prepare_staging
     install -d "$pkgdir/etc/runit/sv/fcitx5-lotus"
     install -m755 "$srcdir/staging/etc/runit/sv/fcitx5-lotus/run" "$pkgdir/etc/runit/sv/fcitx5-lotus/"
