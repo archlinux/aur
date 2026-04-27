@@ -1,6 +1,6 @@
 pkgbase = snglrtty
 	pkgdesc = Terminal audio visualizer — singularity in your TTY
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/the-unknown/snglrtty
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = snglrtty
 	makedepends = cargo
 	makedepends = pkg-config
 	depends = libpulse
-	source = snglrtty-0.1.0.tar.gz::https://github.com/the-unknown/snglrtty/archive/v0.1.0.tar.gz
-	sha256sums = d8b87aba60a24feec4775a02c984beaa137330de6fc4aa1ec658786d732becf6
+	source = snglrtty-0.1.1.tar.gz::https://github.com/the-unknown/snglrtty/archive/v0.1.1.tar.gz
+	sha256sums = 06b75cfddedd6b3afcf8c61e12699656a55f64c9e4afc5b7164447c28bc7633a
 
 pkgname = snglrtty
