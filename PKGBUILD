@@ -1,4 +1,4 @@
-# Maintainer: fa5e4658010be730
+# Maintainer: fkzys <fkzys at proton dot me>
 pkgname=subs2srs-mono-git
 pkgver=29.7.r29.52c07ba
 pkgrel=1
