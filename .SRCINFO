@@ -1,6 +1,6 @@
 pkgbase = meza-desktop-bin
 	pkgdesc = Meza desktop client - real-time encrypted chat
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://meza.chat
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = meza-desktop-bin
 	conflicts = meza-desktop
 	options = !strip
 	options = !debug
-	source = meza-desktop-bin-0.3.2.AppImage::https://github.com/mezalabs/meza/releases/download/desktop-v0.3.2/Meza-0.3.2-linux-x86_64.AppImage
-	sha256sums = 426432bf9681982854e0f9f691867c5c47f7e50cadf140477ca9b87a066285b8
+	source = meza-desktop-bin-0.3.3.AppImage::https://github.com/mezalabs/meza/releases/download/desktop-v0.3.3/Meza-0.3.3-linux-x86_64.AppImage
+	sha256sums = 939e9f223e1bbc870b9ffe5a40ac5209612a60353af8f4d435b2d69d7ab320c4
 
 pkgname = meza-desktop-bin
