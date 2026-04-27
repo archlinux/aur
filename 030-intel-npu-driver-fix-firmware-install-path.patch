@@ -7,5 +7,5 @@
 -    DESTINATION /lib/firmware/updates/intel/vpu/
 +    DESTINATION lib/firmware/updates/intel/vpu/
      PERMISSIONS OWNER_READ
-     COMPONENT fw-npu)
- endif()
+     COMPONENT fw-npu
+     EXCLUDE_FROM_ALL)

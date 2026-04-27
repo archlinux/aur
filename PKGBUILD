@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=intel-npu-driver-git
-pkgver=1.30.0.r0.g3897263
+pkgver=1.32.1.r0.g7b13873
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) driver (git version)'
 arch=('x86_64')
@@ -42,7 +42,7 @@ sha256sums=('SKIP'
             '592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe'
             '9eaa858cb35f5320ae3bb89edc1e2c0e3131f73d34ac4e036fa3929173a3a076'
             '861c3872934357048746d308732dd28b880c442702470d0191c9fc01a2aab1b8'
-            'c378987c3da52988402d93f396d4084c86c2ddce9c0e2af3284631e6f1796825'
+            '958f5a8114e9ca51c3819ef26b9ace938a61b39da8da1b8627288c5a8910aaf6'
             'a257456a61d5ec670c26b2c6d23f23f03b68ff6e64f74539c17b2c7e1b074f25')
 
 prepare() {
@@ -83,6 +83,7 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install build --component fw-npu
     chmod 644 "${pkgdir}/usr/lib/firmware/updates/intel/vpu"/vpu_*.bin
     install -D -m644 10-intel-npu.rules -t "${pkgdir}/usr/lib/udev/rules.d"
     install -D linux-npu-driver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
