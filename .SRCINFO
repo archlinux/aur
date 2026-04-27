@@ -1,11 +1,11 @@
 pkgbase = rbackup
 	pkgdesc = Fast incremental backup tool written in Rust
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/umpire274/rbackup
 	arch = x86_64
 	license = MIT
-	source = rbackup-0.6.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/umpire274/rbackup/releases/download/v0.6.1/rbackup-0.6.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = f253bbec68fd3fe9f9531dac22a500639094c6847a65d8640bb89c7605dbb3ce
+	source = rbackup-0.7.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/umpire274/rbackup/releases/download/v0.7.0/rbackup-0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = a3846fc4510bac5a5bd0054003529be7258a53e02f9101c8e718e8ebd29a92c1
 
 pkgname = rbackup
