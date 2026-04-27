@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-arch
-pkgver=202603311
+pkgver=202604271
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://phoenix.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/9a7e49256837ce1928265734be1ea110c76b8aa4/archives/phoenix-linux.zip")
-sha512sums=('f0ad37c618e3d174de9a7b9bb731b8bc58335b5174fbc3a33e49865834c5723f4f0ddd2a558b6aca4e20e81ae61a7932027fd0a47a7cc8041b675c95fbda0197')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/9ad10b5e54831a97a9c01cde09ea2351706d19dc/archives/phoenix-linux.zip")
+sha512sums=('5fafcae190738697f9505dbf48410aa83eae865db1208378e5d3e1c352f4650ab9a6006fb83e068872386bbcc3682d673d13bf3b3ace7a82170013ee78d312c3')
 makedepends=('unzip')
 
 pkgver() {
@@ -44,9 +44,9 @@ package() {
     install -Dm644 "$tmpdir/configs/ui-fix/youtube-music.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/youtube-music.cfg"
     install -Dm644 "$tmpdir/configs/youtube.cfg" "$pkgdir/etc/firefox/phoenix/configs/youtube.cfg"
     install -Dm644 "$tmpdir/configs/youtube-music.cfg" "$pkgdir/etc/firefox/phoenix/configs/youtube-music.cfg"
-    install -Dm644 "$tmpdir/defaults/pref/phoenix-desktop.js" "$pkgdir/etc/firefox/defaults/pref/phoenix-desktop.js"
+    install -Dm644 "$tmpdir/defaults/pref/phoenix.js" "$pkgdir/etc/firefox/defaults/pref/phoenix.js"
     install -Dm644 "$tmpdir/etc/profile.d/phoenix-env-overrides.sh" "$pkgdir/etc/profile.d/phoenix-env-overrides.sh"
-    install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/usr/lib/firefox/phoenix.cfg"
+    install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/etc/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/etc/firefox/policies/policies.json"
     install -Dm644 "$tmpdir/resources/specs/apple-maps/permissions" "$pkgdir/etc/firefox/phoenix/resources/specs/apple-maps/permissions"
     install -Dm644 "$tmpdir/resources/specs/discord/permissions" "$pkgdir/etc/firefox/phoenix/resources/specs/discord/permissions"
@@ -76,5 +76,7 @@ package() {
     install -Dm644 "$tmpdir/COPYING.txt" "$pkgdir/usr/share/doc/phoenix/COPYING.txt"
     install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/phoenix/README.md"
 
+    rm -f "$pkgdir/etc/firefox/defaults/pref/phoenix-desktop.js"
+    rm -f "$pkgdir/usr/lib/firefox/phoenix.cfg"
     rm -rf "$tmpdir"
 }
