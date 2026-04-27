@@ -14,11 +14,11 @@ source=("https://files.pythonhosted.org/packages/source/c/cmd-game-chess/cmd_gam
 sha256sums=('38fa982ecfc8eeb7e9cbdf981a9434d09e933200967510bdc42e87d5f0fe80d4')
 
 build() {
-    cd "$_name-$pkgver"
-    python -m build --wheel --no-isolation
+  cd "cmd_game_chess-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "cmd_game_chess-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
