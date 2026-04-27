@@ -1,0 +1,21 @@
+pkgbase = mari0_ae
+	pkgdesc = Recreation of Super Mario Bros, with portals
+	pkgver = 13.2
+	pkgrel = 1
+	url = https://github.com/alesan99/mari0_ae
+	arch = any
+	license = DWTFYWTPL
+	makedepends = git
+	makedepends = zip
+	depends = love10
+	depends = sh
+	options = !strip
+	options = !debug
+	source = mari0_ae.desktop
+	source = mari0_ae.sh
+	source = git+https://github.com/alesan99/mari0_ae.git#tag=13.2
+	sha256sums = 53be8ffb934a751ec0d7098fcbcf10a67f6a67fef65a9ccdd5811b06d6dab6e8
+	sha256sums = 6d65a423a3496138c996a747135d1030ef463a51d58de1c9986330cf52fe34f3
+	sha256sums = SKIP
+
+pkgname = mari0_ae

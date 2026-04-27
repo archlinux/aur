@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mari0
+Comment=Recreation of Super Mario Bros, with portals
+Exec=/usr/bin/mari0_ae
+Icon=mari0_ae
+Terminal=false
+Categories=Game
+Keywords=Platformer
