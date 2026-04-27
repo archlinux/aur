@@ -2,7 +2,7 @@
 
 _pkgname=muster
 pkgname=$_pkgname-bin
-pkgver=0.1.119 # renovate: datasource=github-releases depName=giantswarm/muster
+pkgver=0.1.121 # renovate: datasource=github-releases depName=giantswarm/muster
 pkgrel=1
 pkgdesc="MCP tool management and workflow proxy"
 url="https://github.com/giantswarm/$_pkgname"
@@ -16,8 +16,8 @@ source_x86_64=(
 source_aarch64=(
   "$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/${_pkgname}_linux_arm64"
 )
-sha512sums_x86_64=('9a7c40f7406c154daea2c30a08227dcf7706b62ea6a5553a2dd381d4c34c09f7c2e4a4d8a606568b6d77ca267c244de59eab2740fc6c40362274fb7d9d8de6b0')
-sha512sums_aarch64=('01f4540ceee12611411177378d21cde95c04122dfbf71e042063e89985eeb5f1f021b1626c889f84fded56d022dbb344d142174115b06b365c9d5e334b660e1e')
+sha512sums_x86_64=('a1cdbb28de5e2ef71abbd05c8119b79dfe80e8453e9ff413f1a392f546da5a034ddf6b59c26e4be8b1ad91e5ac029b5cceab98a8a55568e1ed0371127be3432e')
+sha512sums_aarch64=('0f0cd9278dcfc08a39880c8d07bb4c3f575f957c92a1523e9a4f11de4284fd33c046fe77305d6ee51069e1964a952119d34e1ac927338ed6193a7a156d05ffc0')
 
 package() {
   install -D -m 0755 "$srcdir/$_pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$_pkgname"
