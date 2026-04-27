@@ -1,9 +1,9 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=python-llm-openrouter
 _gitpkgname=llm-openrouter
-pkgver=0.5
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc='LLM plugin for models hosted by OpenRouter'
 arch=('any')
 url='https://github.com/simonw/llm-openrouter'
@@ -30,7 +30,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/simonw/llm-openrouter/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('dbdd755089c6ab8775c851db98c11c44b419b4c7a22bcb03452dec9f8e1bb6077014b799d6c327af7c0c61a25ba7b901d1d3abfc0955ef75a67661ab56f54e2c')
+sha512sums=('3596a45405dc7604273b400eb06546a72cc49e33630a6443f158b883694907886a05bda812f097ae22376325abc10bd900eb0e41b18aadfd0e4cddc61ef092c2')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"

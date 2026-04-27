@@ -1,7 +1,7 @@
 pkgbase = python-llm-openrouter
 	pkgdesc = LLM plugin for models hosted by OpenRouter
-	pkgver = 0.5
-	pkgrel = 2
+	pkgver = 0.6
+	pkgrel = 1
 	url = https://github.com/simonw/llm-openrouter
 	arch = any
 	license = Apache-2.0
@@ -16,7 +16,7 @@ pkgbase = python-llm-openrouter
 	depends = python-httpx
 	depends = python-llm
 	depends = python-pydantic
-	source = llm-openrouter-0.5.tar.gz::https://github.com/simonw/llm-openrouter/archive/0.5.tar.gz
-	sha512sums = dbdd755089c6ab8775c851db98c11c44b419b4c7a22bcb03452dec9f8e1bb6077014b799d6c327af7c0c61a25ba7b901d1d3abfc0955ef75a67661ab56f54e2c
+	source = llm-openrouter-0.6.tar.gz::https://github.com/simonw/llm-openrouter/archive/0.6.tar.gz
+	sha512sums = 3596a45405dc7604273b400eb06546a72cc49e33630a6443f158b883694907886a05bda812f097ae22376325abc10bd900eb0e41b18aadfd0e4cddc61ef092c2
 
 pkgname = python-llm-openrouter
