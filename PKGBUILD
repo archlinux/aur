@@ -18,7 +18,7 @@ optdepends=(
 	'zoxide: zoxide integration')
 source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver)
 
-sha1sums=('1a81e823b3418cc1a21dd909ab147f9c2a92a4eb')
+sha1sums=('377148749f3f6a0c511a44df05a41dada9c9f4d8')
 
 prepare() {
 	cd "$pkgname"
