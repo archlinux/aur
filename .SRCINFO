@@ -1,23 +1,23 @@
 pkgbase = qdl-bin
 	pkgdesc = Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code
-	pkgver = 2.5
+	pkgver = 2.6_31
 	pkgrel = 1
 	url = https://github.com/linux-msm/qdl
 	arch = aarch64
+	arch = armv7h
+	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = glibc
-	depends = libusb
-	depends = libxml2-legacy
-	provides = qdl
+	provides = qdl=2.6
 	conflicts = qdl
-	source = qdl-2.5-README.md::https://github.com/linux-msm/qdl/raw/refs/tags/v2.5/README.md
-	source = qdl-2.5-LICENSE::https://github.com/linux-msm/qdl/raw/refs/tags/v2.5/LICENSE
-	sha256sums = 97072d5a3e790a46f1a71f0cdf6955a704491756b210ede4c9d26651bd34a5a9
-	sha256sums = 85814c88fc75be2523c03551ee2abefc0c30b423edda343197796e0c0e168058
-	source_aarch64 = qdl-2.5-aarch64.tar.gz::https://github.com/linux-msm/qdl/releases/download/v2.5/qdl-binary-ubuntu-24-arm64.zip
-	sha256sums_aarch64 = a3855ccc32cd59c05ccc7b7a290483c45fb627e091f365e3b4f6a04ece036140
-	source_x86_64 = qdl-2.5-x86_64.tar.gz::https://github.com/linux-msm/qdl/releases/download/v2.5/qdl-binary-ubuntu-24-x64.zip
-	sha256sums_x86_64 = 7a1ae1ec4369107e082934b45a4eca6a28b933a7f2007deaa1f5cf95f8b44435
+	source_aarch64 = https://github.com/arduino/qdl-packing/releases/download/v2.6-31/qdl_v2.6-31_Linux_ARM64.tar.gz
+	sha256sums_aarch64 = 777d48162663dc09df0511485fcd7ac099d0235569a48d5f34f993360eb3a67a
+	source_armv7h = https://github.com/arduino/qdl-packing/releases/download/v2.6-31/qdl_v2.6-31_Linux_ARMv6.tar.gz
+	sha256sums_armv7h = c6c84101cd43ecfaf2f7c66f88cd854110de4f1f3aba549fd34f22fbc833828a
+	source_i686 = https://github.com/arduino/qdl-packing/releases/download/v2.6-31/qdl_v2.6-31_Linux_32bit.tar.gz
+	sha256sums_i686 = e7182ea9fa8bebda3dbaba03719ecd8928ca85cd27dbd7af325aa76026e27533
+	source_x86_64 = https://github.com/arduino/qdl-packing/releases/download/v2.6-31/qdl_v2.6-31_Linux_64bit.tar.gz
+	sha256sums_x86_64 = 32d9378b9d7e8c583d8ffcae80982eb4486b54352c1e728024973796d99843b0
 
 pkgname = qdl-bin
