@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -18,7 +18,7 @@ optdepends=(
 	'zoxide: zoxide integration')
 source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver)
 
-sha1sums=('99568d4643efd01451ef3b546a0167d5abd4af5c')
+sha1sums=('1a81e823b3418cc1a21dd909ab147f9c2a92a4eb')
 
 prepare() {
 	cd "$pkgname"
