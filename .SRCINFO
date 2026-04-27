@@ -1,6 +1,6 @@
 pkgbase = intel-npu-driver
 	pkgdesc = Intel Neural Processing Unit (NPU) driver
-	pkgver = 1.32.0
+	pkgver = 1.32.1
 	pkgrel = 1
 	url = https://github.com/intel/linux-npu-driver/
 	install = intel-npu-driver.install
@@ -18,7 +18,7 @@ pkgbase = intel-npu-driver
 	depends = opencv
 	depends = yaml-cpp
 	optdepends = intel-npu-compiler: for compiling OpenVINO IR models
-	source = git+https://github.com/intel/linux-npu-driver.git#tag=v1.32.0
+	source = git+https://github.com/intel/linux-npu-driver.git#tag=v1.32.1
 	source = git+https://github.com/intel/level-zero-vpu-extensions.git
 	source = git+https://github.com/openvinotoolkit/npu_compiler_elf.git
 	source = git+https://github.com/google/perfetto.git
@@ -27,14 +27,14 @@ pkgbase = intel-npu-driver
 	source = 020-intel-npu-driver-disable-gtest-and-yaml.patch
 	source = 030-intel-npu-driver-fix-firmware-install-path.patch
 	source = 040-intel-npu-driver-use-system-level-zero.patch
-	sha256sums = 1e3912db422556e349132d188abeb086a4e41953fd496ca42a582d8de1e462fa
+	sha256sums = c0266641f15f8529fab74ebad313c04b342b7eb5fdc98346b55f356f9b6a514d
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe
 	sha256sums = 9eaa858cb35f5320ae3bb89edc1e2c0e3131f73d34ac4e036fa3929173a3a076
 	sha256sums = 861c3872934357048746d308732dd28b880c442702470d0191c9fc01a2aab1b8
-	sha256sums = c378987c3da52988402d93f396d4084c86c2ddce9c0e2af3284631e6f1796825
+	sha256sums = 958f5a8114e9ca51c3819ef26b9ace938a61b39da8da1b8627288c5a8910aaf6
 	sha256sums = a257456a61d5ec670c26b2c6d23f23f03b68ff6e64f74539c17b2c7e1b074f25
 
 pkgname = intel-npu-driver
