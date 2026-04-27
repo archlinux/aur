@@ -1,0 +1,17 @@
+# makepkg build artifacts
+/src/
+/pkg/
+/dirac/
+
+# Generated packages
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# npm cache used during build
+/npm-cache/
+
+# Log files
+/makepkg.log
+/npm-debug.log
+/_logs/
