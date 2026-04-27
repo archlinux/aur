@@ -1,7 +1,7 @@
 # Maintainer: Drew Carlson <its@drews.website>
 
 pkgname=bwx-cli
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Unofficial Bitwarden CLI with first-class macOS support (renamed fork of rbw)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=('bwx-cli-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Replace `SKIP` with the real sha256 once the tag is pushed.
 # Compute via:  curl -L $source | sha256sum
-sha256sums=('0f85ae6d31675bbab84231e03979560b6fc9c0b84dca2ae91be9a0a1a7cddf75')
+sha256sums=('104e97ce0ed2b819abfe10d93dbad44e40c493da443c1b02b2576138cdc56bdb')
 
 prepare() {
   cd "$pkgname-$pkgver"
