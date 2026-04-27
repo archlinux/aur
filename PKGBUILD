@@ -2,7 +2,7 @@
 
 _name="openxr"
 pkgname="lib32-${_name}"
-pkgver=1.1.57
+pkgver=1.1.58
 pkgrel=1
 pkgdesc="An open standard for virtual reality and augmented reality platforms and devices (32-bit)"
 arch=(
@@ -36,9 +36,9 @@ source=(
   "${_url}/releases/download/release-${pkgver}/${_pkgsrc}.tar.gz"
   "${_url}/releases/download/release-${pkgver}/${_pkgsrc}.tar.gz.asc"
 )
-sha512sums=('c07a5b8a25d22ad8eff136bb9f5c15c7459e45aeddefcbc78cce29d0a730a5d4ab8ada52af71c7e9d8fb7300d77dbaaf20a8b195159520776c0fab90df6d4739'
+sha512sums=('df3f3617e174636a59995a2260846381929f1131d5bca600b83c3cb92f1f5a04fe4ab86b8d7b305110e9234de3f5319e26a278faa219fadc6741553a4a63bd27'
             'SKIP')
-b2sums=('081ffb4688c8f0d1ef5fae07ca1870c677ee33e887c81997d985fe4f6824361073ba0e12705da2955628b9d7a003bed24424b4c428331958d70cb738274d3cd1'
+b2sums=('193a68983e5f1dd9645ea72b1bea9a38d30c21d23cc2676722eb77659d2083f8397696bbe47a3da8a97564ed11a5e922f8560c2ba302fb8595290fca4f8e7983'
         'SKIP')
 validpgpkeys=(
   '45207B2B1E53E1F2755FF63CC5A2D593A61DBC9D' # Rylie Pavlik <rylie.pavlik@collabora.com>
@@ -56,6 +56,8 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local cmake_options=(
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
     -G 'Unix Makefiles'
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='Release' # None
@@ -67,19 +69,21 @@ build() {
   )
 
   cd "${srcdir}"
-  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake "${cmake_options[@]}"
+  cmake --build "${cmake_options[1]}"
 }
 
 # check() {
-#   local excluded_tests=""
-#   local ctest_flags=(
+#   local ctest_exclude_regex=""
+#   local ctest_options=(
+#     --test-dir "${_pkgsrc}/build"
 #     --output-on-failure
 #     --parallel "$(nproc)"
-#     --exclude-regex "${excluded_tests}"
+#     --exclude-regex "${ctest_exclude_regex}"
 #   )
+
 #   cd "${srcdir}"
-#   ctest --test-dir "${_pkgsrc}/build" "${ctest_flags[@]}"
+#   ctest  "${ctest_options[@]}"
 # }
 
 package() {
