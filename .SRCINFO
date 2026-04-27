@@ -1,0 +1,20 @@
+pkgbase = reko-bin
+	pkgdesc = A binary decompiler. Note: this package does not automatically update
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/uxmal/reko
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = curl
+	makedepends = unzip
+	makedepends = jq
+	depends = dotnet-runtime-8.0
+	provides = reko
+	conflicts = reko
+	options = !strip
+	source = reko::https://api.github.com/repos/uxmal/reko/releases/latest
+	source = reko.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = reko-bin
