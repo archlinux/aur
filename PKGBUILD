@@ -1,5 +1,5 @@
 pkgname=rbackup
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Fast incremental backup tool written in Rust"
 arch=("x86_64")
@@ -11,7 +11,7 @@ source=(
 )
 
 sha256sums=(
-	"a3846fc4510bac5a5bd0054003529be7258a53e02f9101c8e718e8ebd29a92c1"
+	"5eb4a293b6202cbdff87639e44f861edcbe64c42b0264e7b96d70db73b44bb85"
 )
 
 package() {
