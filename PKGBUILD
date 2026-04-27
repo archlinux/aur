@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=python-flashinfer
 _pkgname=flashinfer
-pkgver=0.6.7
+pkgver=0.6.9
 pkgrel=1
 pkgdesc='Kernel Library for LLM Serving'
 arch=('x86_64')
