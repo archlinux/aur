@@ -1,6 +1,6 @@
 # Maintainer: Lee Stripp <leestripp@gmail.com>
 pkgname=lucidvideo
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Intelligent video library with AI-powered search and semantic understanding"
 arch=('x86_64')
@@ -31,7 +31,7 @@ build() {
 
 package() {
     cd "${srcdir}/lucid-${pkgver}/build"
-    install -Dm755 lucid "${pkgdir}/usr/bin/lucid"
+    install -Dm755 lucidvideo "${pkgdir}/usr/bin/lucidvideo"
     install -Dm644 "${srcdir}/lucid-${pkgver}/data/lucid.desktop" \
         "${pkgdir}/usr/share/applications/lucidvideo.desktop"
     install -Dm644 "${srcdir}/lucid-${pkgver}/resources/icons/lucid-app.svg" \
