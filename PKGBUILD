@@ -20,7 +20,7 @@ sha256sums=('41741ce797e6faf9ebd0e3d577b5eaf9a648b64d850fbd741c1b9c28d8461017'
 
 latestver() {
     curl -fsSL "$url" |
-        sed -nE 's#.*href="/s/SIGIL_II_V([0-9]+)_([0-9]+)\.zip".*#\1.\2#p' | head -1
+        sed -nE 's#.*[Ff]ree SIGIL II v([0-9]+)\.([0-9]+) Megawad.*#\1.\2#p' | head -1
 }
 
 package() {
