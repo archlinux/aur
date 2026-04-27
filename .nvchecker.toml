@@ -1,0 +1,7 @@
+[godot-bin]
+source = "github"
+github = "godotengine/godot-builds"
+use_max_release = true
+include_prereleases = false
+from_pattern = '-stable'
+to_pattern   = ''

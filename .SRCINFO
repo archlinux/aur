@@ -1,7 +1,7 @@
 pkgbase = godot-bin
 	pkgdesc = Godot Engine - Prebuilt binary from GitHub
 	pkgver = 4.6.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://godotengine.org
 	arch = aarch64
 	arch = armv7h
@@ -23,7 +23,7 @@ pkgbase = godot-bin
 	source_i686 = https://github.com/godotengine/godot-builds/releases/download/4.6.2-stable/Godot_v4.6.2-stable_linux.x86_32.zip
 	source_i686 = https://github.com/godotengine/godot-builds/releases/download/4.6.2-stable/Godot_v4.6.2-stable_mono_linux_x86_32.zip
 	sha256sums_i686 = 5c750b9ad53955f1e54fdf2dd61f75c6074d4972872b12e64046ec2f2b928c12
-	sha256sums_i686 = 388f44c5fab27e69762c8061c290177156b53f63c71e1add01cefd53ed5a1de0
+	sha256sums_i686 = 9d96e2ce7578a6f323a4ab02a7d82c518dd139c802d170270ca59a73a134aa29
 	source_x86_64 = https://github.com/godotengine/godot-builds/releases/download/4.6.2-stable/Godot_v4.6.2-stable_linux.x86_64.zip
 	source_x86_64 = https://github.com/godotengine/godot-builds/releases/download/4.6.2-stable/Godot_v4.6.2-stable_mono_linux_x86_64.zip
 	sha256sums_x86_64 = 30e6b6d141f0cd5bebd629ad1d0ef1324e60091bb20662d026b402ba58c59937
