@@ -1,6 +1,6 @@
 # Maintainer: dmnmsc
 pkgname=kraiser
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Run or raise apps on KDE Plasma Wayland using kdotool"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/dmnmsc/kraiser"
 license=('GPL3')
 depends=('bash' 'kdotool')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4d3c086d26b1fa65e4f1312ee15c9821774e7dc3000d3a51e2a118b2ee15753c')
+sha256sums=('351e10cec67a38b8854016d21d7e5935eb05d6a6770c565d94373466eead5c9e')
 install="$pkgname.install"
 
 package() {
