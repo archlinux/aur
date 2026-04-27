@@ -31,7 +31,8 @@ prepare() {
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
-    cp -r "$srcdir"/* "$pkgdir/opt/$_pkgname/"
+    (cd "$pkgdir/opt/$_pkgname/" && unzip -q "${srcdir}/CmdLine.zip")
+    rm "${pkgdir}/opt/$_pkgname/"*.pdb
 
     install -dm755 "$pkgdir/usr/bin"
     install -Dm755 "$srcdir/reko.sh" "$pkgdir/usr/bin/$_pkgname"
