@@ -1,21 +1,22 @@
 pkgbase = python-munge
 	pkgdesc = Data manipulation client/library
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/20c/munge
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
-	checkdepends = python-toml
+	checkdepends = python-pytest-cov
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
 	depends = python-requests
 	depends = python-click
-	optdepends = python-toml
-	optdepends = python-tomlkit
-	optdepends = python-yaml
+	depends = python-toml
+	depends = python-tomlkit
+	depends = python-yaml
 	source = munge-1.4.1.tar.gz::https://github.com/20c/munge/archive/v1.4.1.tar.gz
 	sha512sums = 9dacf521cffd4779fb5b496ce7e931af32dedd9a0745d783d3c5368c7817fa2471bb02d5f172bd442829efb2754fbd23013d726b8ece9a0be272b4211d7882c0
 

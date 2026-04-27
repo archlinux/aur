@@ -5,15 +5,14 @@
 _base=munge
 pkgname=python-${_base}
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Data manipulation client/library"
 arch=(any)
 url="https://github.com/20c/${_base}"
 license=(Apache-2.0)
-depends=(python python-requests python-click)
-makedepends=(python-build python-installer python-hatchling)
-checkdepends=(python-pytest python-toml)
-optdepends=('python-toml' 'python-tomlkit' 'python-yaml')
+depends=(python python-requests python-click python-toml python-tomlkit python-yaml)
+makedepends=(python-build python-installer python-wheel python-hatchling)
+checkdepends=(python-pytest python-pytest-cov)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('9dacf521cffd4779fb5b496ce7e931af32dedd9a0745d783d3c5368c7817fa2471bb02d5f172bd442829efb2754fbd23013d726b8ece9a0be272b4211d7882c0')
 
