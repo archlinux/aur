@@ -18,9 +18,9 @@ pkgbase = python-sgl-kernel
 	depends = python-pytorch
 	depends = cuda
 	options = !strip
-	source = sglang-0.5.10.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.10.tar.gz
+	source = sglang-0.5.10.post1.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.10.post1.tar.gz
 	source = remove-thc-atomics.patch
-	sha256sums = c22459f7c7fbe9540860a4df5b064b6f41029dca93d7f57dc8a221b0b398e2b0
+	sha256sums = 2080e7d8802094ae2b92dead1c6788b7aa2a2ccd06d8ba221bbc5b43d4cb7786
 	sha256sums = SKIP
 
 pkgname = python-sgl-kernel

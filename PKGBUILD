@@ -37,6 +37,11 @@ prepare() {
 
 build() {
   cd "sglang-${_sglang_ver}/${_pkgname}"
+  # Cap parallel nvcc processes via MAKEFLAGS (set in /etc/makepkg.conf).
+  # Each nvcc job peaks at several GB; uncapped builds OOM on small hosts.
+  [[ $MAKEFLAGS =~ -j[[:space:]]*([0-9]+) ]] && _jobs="${BASH_REMATCH[1]}" || _jobs=1
+  export MAX_JOBS=$_jobs
+  export CMAKE_BUILD_PARALLEL_LEVEL=$_jobs
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
   export CMAKE_ARGS="${CMAKE_ARGS:--DSGL_KERNEL_COMPILE_THREADS=1}"
