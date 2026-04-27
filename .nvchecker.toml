@@ -1,0 +1,5 @@
+[zulip-desktop]
+source = "github"
+github = "zulip/zulip-desktop"
+use_max_tag = true
+prefix = "v"
