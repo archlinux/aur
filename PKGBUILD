@@ -52,15 +52,11 @@ Icon=deadsync
 Categories=Game;
 Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
-Actions=OpenConfigDir;OpenSongsDir;
+Actions=OpenDataDir;
 
-[Desktop Action OpenConfigDir]
-Name=Open Config Directory
-Exec=xdg-open "${HOME}/.deadsync"
-
-[Desktop Action OpenSongsDir]
-Name=Open Songs Directory
-Exec=xdg-open "${HOME}/.deadsync/songs"
+[Desktop Action OpenDataDir]
+Name=Open Data Directory
+Exec=xdg-open "$XDG_DATA_HOME/deadsync"
 EOF
 
     local _icondir="${_src}/assets/graphics/icon"

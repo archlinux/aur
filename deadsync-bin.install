@@ -2,10 +2,28 @@ post_install() {
     echo "DeadSync has been installed to /opt/deadsync."
     echo "Run 'deadsync' from a terminal or launch it from your application menu."
     echo
-    echo "Place song packs and other user content inside ~/.deadsync/"
-    echo "Configuration is also stored in ~/.deadsync/"
+    echo "Game data and configuration can be found in \$XDG_DATA_HOME/deadsync after first launch"
 }
 
 post_upgrade() {
+    local _breaking_ver="0.3.826"
+
+    if [ $(vercmp "$2" "$_breaking_ver") -lt 0 ]; then
+        local _old_dir="$HOME/.deadsync"
+        local _xdg_base="${XDG_DATA_HOME:-$HOME/.local/share}"
+        local _new_dir="$_xdg_base/deadsync"
+  
+        if [ -d "$_old_dir" ] && [ ! -d "$_new_dir" ]; then
+            echo ">>> Deadsync version 0.3.826+ uses XDG_DATA_HOME."
+            echo ">>> Migrating data: $_old_dir -> $_new_dir"
+            mkdir -p "$_xdg_base"
+            mv "$_old_dir" "$_new_dir"
+        elif [ -d "$_old_dir" ] && [ -d "$_new_dir" ]; then
+            echo ">>> WARNING: Both $_old_dir and $_new_dir exist."
+            echo ">>> Automatic migration skipped to prevent data loss."
+            echo ">>> Please manually merge your data into $_new_dir"
+        fi
+    fi
+    
     post_install
 }
