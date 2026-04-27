@@ -1,0 +1,3 @@
+[python-docstring-parser]
+source = "pypi"
+pypi = "docstring-parser"

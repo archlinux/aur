@@ -1,3 +1,4 @@
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 _name=docstring_parser
 pkgname="python-${_name/_/-}"
 pkgdesc="Parse Python docstrings"
