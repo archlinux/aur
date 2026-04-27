@@ -1,0 +1,34 @@
+post_install() {
+    cat <<'EOF'
+==> cryptsetup-beep installed.
+==> Next steps:
+    1. Run `cryptsetup-beep --init` to set up the beep for your hardware.
+    2. The wizard will offer to add `cryptsetup-beep` to HOOKS in
+       /etc/mkinitcpio.conf if it isn't already there.
+    3. Reboot to test the beep at your LUKS prompt.
+==> If you don't have audio: `cryptsetup-beep --test` plays the configured
+    beep on the live system, useful for sanity-checking after install.
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+==> cryptsetup-beep upgraded. If your audio configuration has changed since
+    you last ran the wizard, run `cryptsetup-beep --init` again.
+==> The initramfs is NOT automatically rebuilt on upgrade. If the package
+    contents have changed and you want them in the initramfs, run
+    `cryptsetup-beep --regen`.
+EOF
+}
+
+post_remove() {
+    cat <<'EOF'
+==> cryptsetup-beep removed.
+    The pre-transaction hook stripped `cryptsetup-beep` from HOOKS in
+    /etc/mkinitcpio.conf (a backup was written alongside it). mkinitcpio's
+    own remove hook should have rebuilt your initramfs already.
+    /etc/cryptsetup-beep/config is left behind as a config file; remove it
+    manually with `rm -rf /etc/cryptsetup-beep` if you don't intend to
+    reinstall.
+EOF
+}
