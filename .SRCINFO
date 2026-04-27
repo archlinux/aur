@@ -1,6 +1,6 @@
 pkgbase = plasma-dialer-git
 	pkgdesc = Dialer for Plasma Mobile
-	pkgver = 6.5.90.r56.g638042e
+	pkgver = 6.5.90.r57.gbd5e99e
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/plasma-dialer
 	arch = any
