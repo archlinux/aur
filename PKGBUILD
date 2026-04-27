@@ -2,13 +2,13 @@
 # Contributor: Sematre <sematre at gmx dot de>
 
 pkgname=dvdisaster-speed47-git
-pkgver=0.79.10.pl3.r6.g063ad92
-pkgrel=2
+pkgver=0.79.10.pl6.r0.g5da734a
+pkgrel=1
 pkgdesc="Provides a margin of safety against data loss on CD and DVD media caused by aging or scratches, speed47 fork"
 arch=(x86_64)
 url="https://github.com/speed47/dvdisaster"
 license=(GPL-3.0-or-later)
-depends=(gtk2)
+depends=(gtk3)
 makedepends=(git)
 provides=(dvdisaster)
 conflicts=(dvdisaster)
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd dvdisaster
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --exclude latest --exclude devel | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
