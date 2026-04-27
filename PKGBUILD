@@ -16,8 +16,8 @@
 
 _pkgname=nano-ffmpeg
 pkgname=${_pkgname}
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=3
 pkgdesc="Simple TUI for FFmpeg written in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dgr8akki/nano-ffmpeg"
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}-bin" "${_pkgname}-git")
 
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('08096058eb18ca48c339a1e950ed0d4b6c2138905095fdfba620ba94b15c9586')
+sha256sums=('4dbb79b13055c4d12bfe537285be140e9c816648293ebfe8853a673f3f5e3493')
 options=('!debug')
 
 prepare() {
