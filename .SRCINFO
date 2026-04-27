@@ -1,7 +1,7 @@
 pkgbase = teams-for-linux-electron-bin
 	pkgdesc = Unofficial Microsoft Teams for Linux client.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = aarch64
 	arch = armv7h
@@ -15,7 +15,7 @@ pkgbase = teams-for-linux-electron-bin
 	conflicts = teams-for-linux-bin
 	conflicts = teams-for-linux-electron
 	source = teams-for-linux-electron.sh
-	sha256sums = 3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5
+	sha256sums = 1966359be43411f26de5dc2cd6bd55bfa9f435bba418756524d2c28864a901d8
 	source_aarch64 = teams-for-linux-electron-2.8.1-aarch64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.8.1/teams-for-linux-2.8.1.aarch64.rpm
 	sha256sums_aarch64 = 0f8139ce45a6e11799051af992dc1f3ec54056f5370df4d806c97e3f563b58ca
 	source_armv7h = teams-for-linux-electron-2.8.1-armv7h.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.8.1/teams-for-linux-2.8.1.armv7l.rpm

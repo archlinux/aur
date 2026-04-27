@@ -5,7 +5,7 @@ _appname=teams-for-linux
 pkgname="${_appname}-electron-bin"
 pkgver=2.8.1
 _electronversion=41
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Microsoft Teams for Linux client.(Prebuilt version.Use system-wide electron)"
 arch=(
 	'aarch64'
@@ -29,7 +29,7 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.aarch64.rpm")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.armv7l.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
-sha256sums=('3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5')
+sha256sums=('1966359be43411f26de5dc2cd6bd55bfa9f435bba418756524d2c28864a901d8')
 sha256sums_aarch64=('0f8139ce45a6e11799051af992dc1f3ec54056f5370df4d806c97e3f563b58ca')
 sha256sums_armv7h=('245c54bf9976f6a0d38874277b56148c3c2ebdb6a9ecdc3b464564bb6b46a9f5')
 sha256sums_x86_64=('f4f5bbde6dbe78c8bfdad11d9c0de2679a9976865c1914c8abf6fe7273c7b544')
