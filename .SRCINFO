@@ -13,6 +13,7 @@ pkgbase = miteiru
 	makedepends = git
 	makedepends = jq
 	depends = electron31
+	depends = mecab
 	optdepends = python-jieba
 	optdepends = pypinyin
 	conflicts = miteiru
