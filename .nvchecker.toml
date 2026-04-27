@@ -1,0 +1,8 @@
+[godot-beta-bin]
+source = "github"
+github = "godotengine/godot-builds"
+use_max_release = true
+include_prereleases = true
+include_regex = '.*(beta|rc|stable).*'
+from_pattern = '(-|-stable)'
+to_pattern = ''
