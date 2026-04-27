@@ -1,7 +1,7 @@
 pkgbase = execline-static
 	pkgdesc = A (non-interactive) scripting language, like sh
 	pkgver = 2.9.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://skarnet.org/software/execline
 	arch = aarch64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = execline-static
 	makedepends = skalibs-static>=2.14.5.1
 	makedepends = musl
 	makedepends = gcc
-	makedepends = links
+	optdepends = execline-man-pages
 	provides = execline
 	conflicts = execline
 	replaces = execline-musl
