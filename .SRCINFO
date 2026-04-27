@@ -1,6 +1,6 @@
 pkgbase = sglang-git
 	pkgdesc = A fast serving framework for large language models and vision language models
-	pkgver = r11471.db10f3c19
+	pkgver = r12023.c2ec64f243
 	pkgrel = 1
 	url = https://github.com/sgl-project/sglang
 	arch = x86_64
@@ -31,6 +31,8 @@ pkgbase = sglang-git
 	depends = python-gguf
 	depends = python-msgspec
 	depends = python-einops
+	depends = python-soundfile
+	depends = python-xgrammar
 	depends = ipython
 	optdepends = python-anthropic: Anthropic API backend
 	optdepends = python-datasets: Dataset loading

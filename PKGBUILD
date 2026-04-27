@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r11471.db10f3c19
+pkgver=r12023.c2ec64f243
 pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
@@ -28,6 +28,8 @@ depends=(
   'python-gguf'
   'python-msgspec'
   'python-einops'
+  'python-soundfile'
+  'python-xgrammar'
   'ipython'
 )
 makedepends=(
