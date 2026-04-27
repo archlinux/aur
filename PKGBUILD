@@ -1,5 +1,5 @@
 pkgname=msvc-wine-git
-pkgver=18.4.0
+pkgver=18.5.1
 pkgrel=1
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
@@ -9,21 +9,27 @@ depends=(libunwind wine cmake bash) # libunwind need to work wine64
 makedepends=(git sed python python-simplejson python-six msitools)
 optdepends=(
 	'samba: Need to generate debug symbols (Debug and RelWithDebInfo build types)'
+	'lld: Required by MSVC+LLD CMake toolchains/vcpkg triplets (lld-link); workaround for link.exe hangs under Wine'
+	'llvm: Required by clang-cl and MSVC+LLD CMake toolchains/vcpkg triplets (llvm-lib, llvm-mt, llvm-rc); supports the link.exe-hang workaround under Wine'
 )
 provides=(msvc-x86-cmake msvc-x64-cmake msvc-arm64-cmake)
 conflicts=(msvc-wine)
 source=('git+https://github.com/mstorsjo/msvc-wine.git'
 		'msvc-cmake.sh'
 		'toolchain-msvc.cmake'
+		'toolchain-msvc-lld.cmake'
 		'toolchain-clang-cl.cmake'
 		'triplet-msvc.cmake'
+		'triplet-msvc-lld.cmake'
 		'triplet-clang-cl.cmake'
 		'msvc-vcpkg.sh')
 sha256sums=('SKIP'
 			'f6e7660c2ecf32fedd16dbe7a8765ce902bdad21d7329fa57870b979ad682dd7'
 			'ea2bda01685600ecf044c5685558cb3fea9f20025deb288ba5270b5bb715d97f'
+			'4fdcd74149980bb502a97befac0d5d7dc513b8dcaaf7d899fc1af4e75332da3a'
 			'd87c390b77b99e82dce650fbb9397b2c64af976eb0581eddb94e7874a11afaa5'
 			'7536e54ce31880cff6029e6414a94361998aaa82e7cafecc7d7e25c981736632'
+			'0355c500cf493f4a77c7d3789fc79e701331fd9e9899552da1a0f04e9bf53c7c'
 			'35b91ef0a8f5d19b58729f7028652a14b02bb53d55c0a60ac11b92e3eb8ec032'
 			'c7a10eda1db4b6ef346d64e5e102b3a62e96b5641b79a19e6e27cd8536f79307')
 options=('!strip' 'libtool' 'staticlibs' 'emptydirs')
@@ -45,9 +51,12 @@ prepare() {
 		sed "s|@PROCESSOR@|${_arch}|g" msvc-cmake.sh > msvc-${_arch}-cmake
 		sed "s|@PROCESSOR@|${_arch}|g" toolchain-msvc.cmake > toolchain-${_arch}.cmake
 		sed "s|@CMAKE_PROCESSOR@|${_cmake_architectures[$_arch]}|g" -i toolchain-${_arch}.cmake
+		sed "s|@PROCESSOR@|${_arch}|g" toolchain-msvc-lld.cmake > toolchain-${_arch}-lld.cmake
+		sed "s|@CMAKE_PROCESSOR@|${_cmake_architectures[$_arch]}|g" -i toolchain-${_arch}-lld.cmake
 		sed "s|@PROCESSOR@|${_arch}|g" toolchain-clang-cl.cmake > toolchain-${_arch}-clang.cmake
 		sed "s|@CMAKE_PROCESSOR@|${_cmake_architectures[$_arch]}|g" -i toolchain-${_arch}-clang.cmake
 		sed "s|@PROCESSOR@|${_arch}|g" triplet-msvc.cmake > triplet-${_arch}-msvc.cmake
+		sed "s|@PROCESSOR@|${_arch}|g" triplet-msvc-lld.cmake > triplet-${_arch}-lld.cmake
 		sed "s|@PROCESSOR@|${_arch}|g" triplet-clang-cl.cmake > triplet-${_arch}-clang.cmake
 	done
 }
@@ -79,6 +88,14 @@ package() {
 		# Create toolchains for clang-cl
 		echo "$INCLUDE_DIRS" >> toolchain-${_arch}-clang.cmake
 		echo "link_directories (BEFORE /opt/msvc/vc/tools/msvc/${MSVCVER:8}/lib/${_arch} /opt/msvc/${SDK_UNIX:9}/lib/${SDKVER:7}/ucrt/${_arch} /opt/msvc/${SDK_UNIX:9}/lib/${SDKVER:7}/um/${_arch})" >> toolchain-${_arch}-clang.cmake
+
+		# Create toolchains for cl.exe + lld-link
+		echo "$INCLUDE_DIRS" >> toolchain-${_arch}-lld.cmake
+		echo "link_directories (BEFORE /opt/msvc/vc/tools/msvc/${MSVCVER:8}/lib/${_arch} /opt/msvc/${SDK_UNIX:9}/lib/${SDKVER:7}/ucrt/${_arch} /opt/msvc/${SDK_UNIX:9}/lib/${SDKVER:7}/um/${_arch})" >> toolchain-${_arch}-lld.cmake
+
+		# Create toolchains for IDE's to resolve include dirs in VSCode, QtCreator, etc
+		echo "# NOTE: link.exe can get stuck under Wine; this MSVC+LLD mix is a workaround." > toolchain-${_arch}-lld-ide.cmake
+		echo "include (/opt/msvc/cmake/toolchain-${_arch}-lld.cmake)" >> toolchain-${_arch}-lld-ide.cmake
 	done
 	
 	mkdir -p "${pkgdir}/opt/msvc"
@@ -91,10 +108,13 @@ package() {
 	for _arch in ${_architectures}; do
 		mkdir -p "${pkgdir}/opt/msvc/cmake/find_root/${_arch}"
 		mv "${srcdir}/toolchain-${_arch}.cmake" "${pkgdir}/opt/msvc/cmake/toolchain-${_arch}.cmake"
+		mv "${srcdir}/toolchain-${_arch}-lld.cmake" "${pkgdir}/opt/msvc/cmake/toolchain-${_arch}-lld.cmake"
 		mv "${srcdir}/toolchain-${_arch}-clang.cmake" "${pkgdir}/opt/msvc/cmake/toolchain-${_arch}-clang.cmake"
 		mv "${srcdir}/toolchain-${_arch}-ide.cmake" "${pkgdir}/opt/msvc/cmake/ide/toolchain-${_arch}.cmake"
+		mv "${srcdir}/toolchain-${_arch}-lld-ide.cmake" "${pkgdir}/opt/msvc/cmake/ide/toolchain-${_arch}-lld.cmake"
 		mv "${srcdir}/msvc-${_arch}-cmake" "${pkgdir}/usr/bin/msvc-${_arch}-cmake"
 		mv "${srcdir}/triplet-${_arch}-msvc.cmake" "${pkgdir}/opt/msvc/cmake/vcpkg_triplets/${_arch}-windows.cmake"
+		mv "${srcdir}/triplet-${_arch}-lld.cmake" "${pkgdir}/opt/msvc/cmake/vcpkg_triplets/${_arch}-windows-lld.cmake"
 		mv "${srcdir}/triplet-${_arch}-clang.cmake" "${pkgdir}/opt/msvc/cmake/vcpkg_triplets/${_arch}-windows-clang.cmake"
 		chmod 755 "${pkgdir}/usr/bin/msvc-${_arch}-cmake"
 	done
