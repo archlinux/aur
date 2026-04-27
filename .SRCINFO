@@ -1,6 +1,6 @@
 pkgbase = gitsocial-bin
 	pkgdesc = Git-native cross-forge collaboration: posts, issues, PRs, releases, all in your repo
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://gitsocial.org/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = gitsocial-bin
 	provides = gitsocial
 	conflicts = gitsocial
 	options = !strip
-	source_x86_64 = gitsocial-x86_64-0.8.0.tgz::https://github.com/gitsocial-org/gitsocial/releases/download/v0.8.0/gitsocial_0.8.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 40e5e8102690d99b160acd39390e55519ac03f32d1359a031477e2059e2d17c9
-	source_aarch64 = gitsocial-aarch64-0.8.0.tgz::https://github.com/gitsocial-org/gitsocial/releases/download/v0.8.0/gitsocial_0.8.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = c71b6b8a2c1a648a89b0b9c1d0beb294afeaafd0aa89cd39e612b078e533e4ac
+	source_x86_64 = gitsocial-x86_64-0.9.0.tgz::https://github.com/gitsocial-org/gitsocial/releases/download/v0.9.0/gitsocial_0.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 33f8f9b69ab2cf63cc36c46fa4eee8dfcb2645ad561fa9843cbbd82f2b012519
+	source_aarch64 = gitsocial-aarch64-0.9.0.tgz::https://github.com/gitsocial-org/gitsocial/releases/download/v0.9.0/gitsocial_0.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ecf94d726427e9220a29a973559224e3e90254c320e67d457917d37fb765f173
 
 pkgname = gitsocial-bin
