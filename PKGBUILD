@@ -6,7 +6,7 @@
 _pkgname=typora
 pkgname="$_pkgname-free-bin"
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal markdown editor and reader(free version)."
 arch=('x86_64' 'aarch64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -17,7 +17,7 @@ optdepends=(
 	'pandoc: Import/export for extra file formats')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-download_url=("https://download2.typoraio.cn/linux")
+download_url=("https://downloads.typoraio.cn/linux")
 source_x86_64=("${download_url}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${download_url}/${_pkgname}_${pkgver}_arm64.deb")
 sha1sums_x86_64=('f4780590cf073c14f20e34393d52035a1c3b0da9')

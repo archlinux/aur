@@ -1,7 +1,7 @@
 pkgbase = typora-free-bin
 	pkgdesc = A minimal markdown editor and reader(free version).
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typora.io/
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = typora-free-bin
 	optdepends = pandoc: Import/export for extra file formats
 	provides = typora
 	conflicts = typora
-	source_x86_64 = https://download2.typoraio.cn/linux/typora_1.9.3_amd64.deb
+	source_x86_64 = https://downloads.typoraio.cn/linux/typora_1.9.3_amd64.deb
 	sha1sums_x86_64 = f4780590cf073c14f20e34393d52035a1c3b0da9
-	source_aarch64 = https://download2.typoraio.cn/linux/typora_1.9.3_arm64.deb
+	source_aarch64 = https://downloads.typoraio.cn/linux/typora_1.9.3_arm64.deb
 	sha1sums_aarch64 = 3130eab4cc27cb0c0ab68ba757789b8a9bf4d271
 
 pkgname = typora-free-bin
