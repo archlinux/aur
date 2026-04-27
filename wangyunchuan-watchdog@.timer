@@ -1,0 +1,11 @@
+[Unit]
+Description=WangYunChuan Watchdog Timer for instance %i
+Documentation=https://wangyunchuan.com
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1min
+AccuracySec=10s
+
+[Install]
+WantedBy=timers.target

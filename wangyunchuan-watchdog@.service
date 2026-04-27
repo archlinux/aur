@@ -1,0 +1,12 @@
+[Unit]
+Description=WangYunChuan Watchdog for instance %i
+Documentation=https://wangyunchuan.com
+After=wangyunchuan@%i.service
+
+[Service]
+Type=oneshot
+# 以 root 运行：需要执行 systemctl restart/start 管理服务
+# 写入的文件 chown 为 wangyunchuan 用户保持权限一致
+ExecStart=/usr/bin/wycctl healthcheck %i
+# 日志清理：所有日志保留 7 天，清理空目录
+ExecStartPost=/bin/bash -c 'find /var/log/wangyunchuan -name "*.log" -mtime +7 -delete; find /var/log/wangyunchuan -name ".watchdog_stamp" -mtime +1 -delete; find /var/log/wangyunchuan -empty -type d -delete'

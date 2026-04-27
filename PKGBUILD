@@ -3,7 +3,7 @@
 pkgbase=wyc
 pkgname=wyc
 pkgver=7
-pkgrel=18
+pkgrel=20
 pkgdesc="网云穿最便捷的端口映射"
 license=('LicenseRef-scancode-commercial-license')
 url="https://wangyunchuan.com"
@@ -20,6 +20,8 @@ replaces=()
 install=${pkgname}.install
 source=(
     "wangyunchuan@.service"
+    "wangyunchuan-watchdog@.service"
+    "wangyunchuan-watchdog@.timer"
     "wycctl"
     "wangyunchuan.tmpfiles"
     "wangyunchuan.sysusers"
@@ -29,11 +31,13 @@ source=(
     "${pkgname}-x86_64-${pkgver}::https://api.wangyunchuan.com/app/cms/linux/app_download?cpuArch=x86&osBit=64&type=app"
     "${pkgname}-aarch64-${pkgver}::https://api.wangyunchuan.com/app/cms/arm/app_download?cpuArch=ARM&osBit=64&type=app"
 )
-sha256sums=('31c0cfd59f169cda523507c1318c8048700fdc2ba03973cab8d207a49cf16be4'
-            'ab15fbfce14852b21e5fc3bab9a0ddd125a9bd1dab67efa11bd6ee761af299d5'
+sha256sums=('32a0b3c2b9f8b44e9a43db0708babb01862dea4dd20f2998478a7de19731ec6e'
+            '92a7e0ef4b7f6da103fdd4cd40d316ff9cb5bddf27907ce59968559fe1beb0dd'
+            'da64bca6d4c15fd0bced35db4468ddfefb31163f631c3efb827c8b4e6bcf4bd4'
+            '1b0e0651a2fe6e50c55ad66af8ca106530d7695fa2d518d0b6ebbbd2cdb18536'
             '34990ee4d0f935b0f97f2107fa65a63b9aad8f01fc6aac8f927b8cb4bb56981b'
             '1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523'
-            'a26b4a1ce6f1e59b5a9e0eb87880e5fb8e1472ad302c749a954d1d923a0e941a'
+            'b3831c456d2dc2aa4a8b2dce9f69fc3772a81ba42bd9d84947a159bf0f83ea7b'
             '3f3715937f9e3ae47d4deac0faef7b9072df4048083410454c6dc561688e5824'
             '00529da711eb6b2cc1a1c25dcbcae6307088059aad427383bd38d138f13029ab'
             'a53ad0268f50ed19f996de00d40977b3bd9c070cefeb8d23568ea16b61d43309')
@@ -52,6 +56,8 @@ package() {
 
     install -vDm755 ${srcdir}/wycctl -t ${pkgdir}/usr/bin/
     install -vDm644 ${srcdir}/wangyunchuan@.service -t ${pkgdir}/usr/lib/systemd/system/
+    install -vDm644 ${srcdir}/wangyunchuan-watchdog@.service -t ${pkgdir}/usr/lib/systemd/system/
+    install -vDm644 ${srcdir}/wangyunchuan-watchdog@.timer -t ${pkgdir}/usr/lib/systemd/system/
     install -vdm755 ${pkgdir}/etc/wangyunchuan \
         ${pkgdir}/var/log/wangyunchuan
     install -Dvm644 "${srcdir}/wangyunchuan.sysusers" "${pkgdir}/usr/lib/sysusers.d/wangyunchuan.conf"

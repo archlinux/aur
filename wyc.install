@@ -10,7 +10,7 @@ _help() {
 基本使用:
 1. 添加服务实例:
    wycctl add <实例名> <token>
-   示例: wycctl add web DfmLQ6eDSZ2MXepk
+   示例: wycctl add web token123456789
 
 2. 服务管理命令:
    启动:    wycctl start <实例名>
@@ -25,14 +25,29 @@ _help() {
 
 4. 服务日志查看:
    - 实时日志: sudo journalctl -u wangyunchuan@<实例名> -f
-   - 文件日志: tail -f /var/log/wangyunchuan/<日志前缀>/YYYY-MM-DD.log
+   - 文件日志: wycctl logs <实例名>
+   - 日志路径: /var/log/wangyunchuan/<token前8位>/YYYY-MM-DD.log
 
-5. 常用实例命名:
+5. Watchdog 自动看护（推荐启用）:
+   启用看护:  systemctl enable --now wangyunchuan-watchdog@<实例名>.timer
+   查看状态:  systemctl list-timers wangyunchuan-watchdog@*
+   停止看护:  systemctl disable --now wangyunchuan-watchdog@<实例名>.timer
+   看护日志:  cat /var/log/wangyunchuan/<token前8位>/watchdog.log
+
+   Watchdog 每 1 分钟检查一次隧道状态，当检测到 [FAIL] 时自动重启服务。
+   服务意外停止且已启用时也会自动拉起，网络恢复后可自愈。
+   重启冷却期为 2 分钟，防止日志未更新时反复重启。
+   日志自动清理：保留 7 天，超期自动删除。
+
+6. 常用实例命名:
    web    - 网站服务
    ssh    - SSH远程访问
    mysql  - 数据库访问
    nas    - 网络存储
    api    - API服务
+
+7. 权限修复:
+   wycctl fix-perms
 
 配置文件: /etc/wangyunchuan/<实例名>_token
 日志目录: /var/log/wangyunchuan/<token前8位>/
@@ -49,5 +64,5 @@ post_install() {
 
 post_upgrade() {
     _help
-    echo -e "==== WangYunChuan upgradeed ===="
+    echo -e "==== WangYunChuan upgraded ===="
 }

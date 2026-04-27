@@ -18,11 +18,13 @@ show_usage() {
   logpath <实例名>        查看实例日志路径
   fix-perms               修复权限问题
   logs <实例名>           查看实例日志
+  healthcheck <实例名>    健康检查，隧道异常时自动重启
 
 示例:
   wycctl add web token12345678
   wycctl start web
   wycctl logs web
+  wycctl healthcheck web
 EOF
 }
 
@@ -225,6 +227,62 @@ show_logs() {
     fi
 }
 
+# 健康检查
+healthcheck() {
+    local instance="$1"
+    local token_file="/etc/wangyunchuan/${instance}_token"
+
+    [[ ! -f "$token_file" ]] && exit 0
+
+    source "$token_file" 2>/dev/null || exit 0
+    local log_dir="/var/log/wangyunchuan/${WYCLOG_PREFIX}"
+    local stamp_file="${log_dir}/.watchdog_stamp"
+
+    # 服务未运行：尝试启动（处理网络恢复后 systemd 已放弃重启的情况）
+    if ! systemctl -q is-active "wangyunchuan@${instance}" 2>/dev/null; then
+        if systemctl -q is-enabled "wangyunchuan@${instance}" 2>/dev/null; then
+            echo "$(date '+%Y-%m-%d %H:%M:%S') [WATCHDOG] ${instance}: service inactive but enabled, starting" >> "${log_dir}/watchdog.log"
+            chown wangyunchuan:wangyunchuan "${log_dir}/watchdog.log" 2>/dev/null
+            systemctl start "wangyunchuan@${instance}"
+        fi
+        exit 0
+    fi
+
+    local log_file="${log_dir}/$(date +%Y-%m-%d).log"
+    [[ ! -f "$log_file" ]] && exit 0
+
+    # 检查隧道状态：最后一条 [OK   ]/[FAIL ] 决定隧道是否正常
+    # 注意：日志格式为 [OK   ] 或 [FAIL ]，括号内有空格填充
+    local last_status
+    last_status=$(grep -E '\[OK +\]|\[FAIL +\]' "$log_file" | tail -1)
+
+    if [[ -z "$last_status" ]]; then
+        # 没有状态行，进程可能还在启动中
+        exit 0
+    fi
+
+    if [[ "$last_status" == *"[FAIL"* ]]; then
+        # 冷却期：避免重启后日志未更新而反复重启
+        if [[ -f "$stamp_file" ]]; then
+            local last_restart=$(stat -c %Y "$stamp_file" 2>/dev/null || echo 0)
+            local now=$(date +%s)
+            local cooldown=120  # 2 分钟冷却
+            if (( now - last_restart < cooldown )); then
+                exit 0
+            fi
+        fi
+
+        echo "$(date '+%Y-%m-%d %H:%M:%S') [WATCHDOG] ${instance}: tunnel failed, restarting" >> "${log_dir}/watchdog.log"
+        chown wangyunchuan:wangyunchuan "${log_dir}/watchdog.log" 2>/dev/null
+        touch "$stamp_file"
+        chown wangyunchuan:wangyunchuan "$stamp_file" 2>/dev/null
+        systemctl restart "wangyunchuan@${instance}"
+    else
+        # 隧道正常，清除冷却标记
+        rm -f "$stamp_file"
+    fi
+}
+
 # 主逻辑
 case "${1:-}" in
 add)
@@ -274,6 +332,10 @@ logpath)
     ;;
 logs)
     show_logs "$2"
+    ;;
+healthcheck)
+    set +e
+    healthcheck "$2"
     ;;
 fix-perms)
     fix_permissions
