@@ -1,6 +1,6 @@
 pkgbase = subs2srs-gui
 	pkgdesc = Generate Anki flashcards from media with subtitles (GTK4 port)
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/ajatt-tools/subs2srs
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = subs2srs-gui
 	conflicts = subs2srs
 	conflicts = subs2srs-gui
 	conflicts = subs2srs-mono-git
-	source = subs2srs-gui-0.2.6.tar.gz::https://github.com/ajatt-tools/subs2srs/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = 3fee7d4d7696f07d6cc9105745f4fb098968c9b68dc13f9d3cb7aec199e79879
+	source = subs2srs-gui-0.2.7.tar.gz::https://github.com/ajatt-tools/subs2srs/archive/refs/tags/v0.2.7.tar.gz
+	sha256sums = 07820c92b30cd46d05f13a04dada3399654ba132674857c65b0806af20b06d16
 
 pkgname = subs2srs-gui
