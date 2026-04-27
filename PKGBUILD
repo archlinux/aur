@@ -3,7 +3,7 @@ pkgname=escrcpy-bin
 _pkgname=Escrcpy
 pkgver=2.9.0
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
     'aarch64'
@@ -26,9 +26,9 @@ makedepends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('fe9f238a2531a880f766144187f55e88dd58670fb6330fde60eeda1b5447255a')
-sha256sums_x86_64=('badaa397a8d587cc7b65ab6347aac7ea0ce4948474a1aec2f020bd8c764de08f')
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('6c983d2df8669a2230402474b7f901da4f426611cfab9e99e7ef302268600f27')
+sha256sums_x86_64=('37baaca0aa7139853396778726b946034a726fbafd11ccfcff73eb7b911fde8c')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
@@ -80,7 +80,6 @@ prepare() {
             ln -sf "/usr/bin/scrcpy" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/scrcpy"
             ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/scrcpy-server"
             ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/common/wscrcpy/scrcpy-server"
-
             ;;
     esac
 }
