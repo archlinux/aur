@@ -1,0 +1,4 @@
+[r8152-dkms]
+source = "git"
+git = "https://github.com/wget/realtek-r8152-linux/"
+prefix = "v"
