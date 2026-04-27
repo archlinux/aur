@@ -1,6 +1,6 @@
 pkgbase = circuitjs-electron-git
 	pkgdesc = Falstad circuit simulator (CircuitJS1), git HEAD, with Electron wrapper
-	pkgver = 20260426
+	pkgver = r1907.17c517b
 	pkgrel = 1
 	url = https://www.falstad.com/circuit/
 	arch = any
