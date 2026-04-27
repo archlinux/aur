@@ -1,3 +1,4 @@
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:	Dimitris Kiziridis <ragouel at outlook dot com>
@@ -9,11 +10,10 @@ pkgdesc="Data manipulation client/library"
 arch=(any)
 url="https://github.com/20c/${_base}"
 license=(Apache-2.0)
-depends=(python-requests python-click)
+depends=(python python-requests python-click)
 makedepends=(python-build python-installer python-hatchling)
 checkdepends=(python-pytest python-toml)
 optdepends=('python-toml' 'python-tomlkit' 'python-yaml')
-changelog=CHANGELOG.md
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('9dacf521cffd4779fb5b496ce7e931af32dedd9a0745d783d3c5368c7817fa2471bb02d5f172bd442829efb2754fbd23013d726b8ece9a0be272b4211d7882c0')
 
