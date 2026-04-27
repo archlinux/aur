@@ -1,6 +1,6 @@
 pkgbase = mermaid-ascii-git
 	pkgdesc = Render Mermaid graphs inside your terminal (development version)
-	pkgver = 0.7.0.r0.g14ea0d2
+	pkgver = 1.2.0.r4.g6fffb8e
 	pkgrel = 1
 	url = https://github.com/AlexanderGrooff/mermaid-ascii
 	arch = aarch64

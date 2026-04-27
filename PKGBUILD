@@ -1,10 +1,11 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='mermaid-ascii'
 pkgname="$_pkgname-git"
-pkgver=0.7.0.r0.g14ea0d2
+pkgver=1.2.0.r4.g6fffb8e
 pkgrel=1
 pkgdesc='Render Mermaid graphs inside your terminal (development version)'
 arch=('aarch64' 'x86_64')
@@ -64,15 +65,15 @@ build() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" "$_pkgname"
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0755 -t "$pkgdir/usr/bin" "$_pkgname"
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
-  install -vDm0644 _completion.bash \
+  install -Dm0644 _completion.bash \
     "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  install -vDm0644 _completion.fish \
+  install -Dm0644 _completion.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-  install -vDm0644 _completion.zsh \
+  install -Dm0644 _completion.zsh \
     "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
 
