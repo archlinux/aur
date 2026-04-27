@@ -2,7 +2,7 @@
 
 _pkgname=slipnet
 pkgname=slipnet-bin
-pkgver=2.5.0
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Android VPN client with DNS tunneling (DNSTT, NoizDNS & Slipstream), NaiveProxy, SSH, Tor, and DoH support — featuring a built-in DNS scanner. "
 arch=('aarch64' 'x86_64')
@@ -14,8 +14,8 @@ provides=('slipnet')
 source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 source_aarch64=("${_pkgname}-${pkgver}linux-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64")
 
-sha256sums_aarch64=('6b1e3c3ef141199bc91386ffd6a6fb94c5df566186883fc1859b0c88c40c9d49')
-sha256sums_x86_64=('89247aad68a0cfb89772b6e634fa70b7fdec5695f0c497540364165afbf2a02f')
+sha256sums_aarch64=('f5d4bcbfef8332d24b7b54225d20ecf042f810464b599e137956daa173515293')
+sha256sums_x86_64=('1eb6a66df7a9d15e2260dd28d28655a3d5cebced8504509062ab614097f27534')
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
