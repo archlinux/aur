@@ -1,12 +1,12 @@
 pkgbase = docker-container-healthchecker
 	pkgdesc = Runs healthchecks against local docker containers
-	pkgver = 0.15.0
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/dokku/docker-container-healthchecker
 	arch = x86_64
 	license = BSD
 	makedepends = go
-	source = https://github.com/dokku/docker-container-healthchecker/archive/refs/tags/v0.15.0.tar.gz
-	sha256sums = a4b2354453624a22dcef76adc01ba808afb244fe3535c478a4113163bf479d09
+	source = https://github.com/dokku/docker-container-healthchecker/archive/refs/tags/v0.15.2.tar.gz
+	sha256sums = 1c6c44342f371cfc029ef2ccbaa765e126a3ed0ded463a6ceb3c9a6333ccb996
 
 pkgname = docker-container-healthchecker
