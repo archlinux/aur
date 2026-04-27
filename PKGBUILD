@@ -1,4 +1,4 @@
-# Maintainer: fa5e4658010be730
+# Maintainer: fkzys <fkzys at proton dot me>
 pkgname=verify-lib
 pkgver=0.0.4
 pkgrel=1
