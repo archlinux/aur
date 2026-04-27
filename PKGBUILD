@@ -1,12 +1,12 @@
-# Maintainer: ljoonal <aur at ljoonal.xyz>
+# Maintainer: LJ <aur.lj at munally.com>
 pkgname="resolute-bin"
 pkgver="0.8.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="Mod Manager GUI for Resonite"
 arch=('x86_64')
 url="https://github.com/Gawdl3y/Resolute"
 license=('GPL-3-or-later')
-depends=('gtk3' 'webkit2gtk' 'noto-fonts-emoji')
+depends=('gtk3' 'webkit2gtk-4.1' 'noto-fonts-emoji')
 source=(
   "https://github.com/Gawdl3y/Resolute/releases/download/v$pkgver/resolute_${pkgver}_amd64.deb"
 )
