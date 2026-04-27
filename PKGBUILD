@@ -1,8 +1,8 @@
 # Maintainer: Rockeyxx <ommmar310@gmail.com>
 pkgname=aj179-linux-battery-git
 pkgver=r6.0952c8c
-pkgrel=1
-pkgdesc="A lightweight C daemon to read the battery percentage of Ajazz wireless mice"
+pkgrel=2
+pkgdesc="A lightweight C daemon to read the battery percentage of Ajazz wireless mice puts the result in /tmp/ajazz_battery"
 arch=('x86_64')
 url="https://github.com/Rockeyxx/AJ179-linux-battery"
 license=('MIT')
@@ -11,6 +11,7 @@ makedepends=('git' 'gcc' 'make' 'gawk')
 provides=('aj179-linux-battery')
 conflicts=('aj179-linux-battery')
 source=("git+https://github.com/Rockeyxx/AJ179-linux-battery.git")
+install=aj179-linux-battery.install
 sha256sums=('SKIP')
 
 pkgver() {
