@@ -1,12 +1,13 @@
-# Maintainer: Andreas 'Segaja' Schleifer <segaja at archlinux dot org>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
+# Contributor: Andreas 'Segaja' Schleifer <segaja at archlinux dot org>
 
 _gemname='dry-monads'
 pkgname="ruby-${_gemname}"
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Common monads for Ruby'
 arch=('any')
-url="https://github.com/dry-rb/${_gemname}"
+url='https://github.com/dry-rb/dry-monads'
 license=('MIT')
 depends=(
   ruby
@@ -31,8 +32,8 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('c1a4223b613173c75707fa7788e71c5be7653a17348eb358b71f1c6f8551ff283e668dfd244159388cd9af43febbef52f825dbc64a0d33900cb7b3747e2fe253')
-b2sums=('f666de965bbe2226da4658edb388a5ff528dfdaae25f3deba113ac20401b483df52c1b5006f78ebe29413b8b1489e128e62861c32743fe8c9388f2ba41eeb414')
+sha512sums=('59cbe976658e2b937acd12a5873b55ed369bc84b7adde81803b3f0c1864029463f2becfaefbde67ac11de29b4bf9ebfe92fe7f72a3c47213676639d383284cde')
+b2sums=('6b82674569b0abb5a4c64a7634f7d95129fc83fe274781429cff4e160c5446659e786efd6b0f6879e7b3bf8f689b0453f98414b35f5d3f5620e5cbb0769f6c6b')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
