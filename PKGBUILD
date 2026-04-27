@@ -2,7 +2,7 @@
 
 pkgname=python-kicad-sch-api
 _name=${pkgname#python-}
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Professional KiCAD schematic manipulation library with exact format preservation"
 provides=(${pkgname})
@@ -33,7 +33,7 @@ license=('MIT')
 source=(
     "${_name}::git+${url}.git#tag=v$pkgver"
 )
-sha256sums=('75c7ff8844c36bccc54e1d286e2183bde37254eff010fbf25114426e92a99c02')
+sha256sums=('a81215a99699d56af324a67de1823374c659a8e91b188a0dfcaed21b54e6f50d')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
