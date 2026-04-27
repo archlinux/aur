@@ -2,7 +2,7 @@
 
 pkgname=archon-appimage
 _pkgapp=archon
-pkgver=9.0.131
+pkgver=9.0.144
 pkgrel=1
 pkgdesc="Desktop uploader app for Archon packaged as the upstream AppImage"
 arch=('x86_64')
