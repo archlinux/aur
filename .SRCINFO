@@ -18,8 +18,8 @@ pkgbase = linux-tpm453-stable-bin
 	options = !debug
 	source = linux-tpm453-stable-7.0.1.r20260421.g2a5a214aa4d-1-x86_64.pkg.tar.zst::https://github.com/docker-mobile/linux-tpm453/releases/download/linux-tpm453-stable-7.0.1.r20260421.g2a5a214aa4d-1/linux-tpm453-stable-7.0.1.r20260421.g2a5a214aa4d-1-x86_64.pkg.tar.zst
 	source = linux-tpm453-stable-headers-7.0.1.r20260421.g2a5a214aa4d-1-x86_64.pkg.tar.zst::https://github.com/docker-mobile/linux-tpm453/releases/download/linux-tpm453-stable-7.0.1.r20260421.g2a5a214aa4d-1/linux-tpm453-stable-headers-7.0.1.r20260421.g2a5a214aa4d-1-x86_64.pkg.tar.zst
-	sha256sums = 93f62ef248b8afc0e2d1cadca5aaef69e714f5539c87a1108e7676c8d4ee804a
-	sha256sums = bc183a4b6c3ff114d34317191bf31a9d1ebb9344ab9b38cc0ccfb21d7bd3468e
+	sha256sums = b3734dadf7ce106b89a37b8337a4bbaebf9afe450bf4527df55f7b488e547e24
+	sha256sums = e0383df75b74a996fafe141e8b476a778532b5af5e10d8aa43217c21ac3b3d3c
 
 pkgname = linux-tpm453-stable-bin
 	pkgdesc = Prebuilt TPM453 stable kernel and modules
