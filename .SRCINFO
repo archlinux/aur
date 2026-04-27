@@ -1,7 +1,7 @@
 pkgbase = next-music
 	pkgdesc = Web client for Yandex Music with support for themes, addons, Discord Rich Presence (RPC) and OBS widget
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Web-Next-Music/Next-Music-Client
 	arch = x86_64
 	license = MIT
