@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+koko
+pkg
+src
