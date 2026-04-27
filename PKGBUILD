@@ -1,9 +1,9 @@
 # Maintainer: Mehmet Samet Duman <yongdohyun@projecttick.org>
 
 pkgname=meshmc
-pkgver=7.15.0
+pkgver=7.16.0
 pkgrel=1
-pkgsnapshot=v202604271705
+pkgsnapshot=v202604272058
 pkgdesc="Minecraft launcher with ability to manage multiple instances"
 arch=(x86_64)
 url='https://projecttick.org/p/meshmc'
@@ -44,7 +44,7 @@ optdepends=(
 )
 source=("https://github.com/Project-Tick/Project-Tick/releases/download/$pkgsnapshot/meshmc-$pkgsnapshot.tar.gz"
   {lionshead,batch,mdi}.license)
-b2sums=('27e35b93d1f7ed4a1955dbbaa84908b0d953819d71a2941bd8b84c567533631ede1efd958c71ff58e3fdbd1e309471bd3b2f801ebe604bd8d1474a301a2f05fb'
+b2sums=('00ffb78c5e1a96064184f23b2654eec6c670bdef6992a36c4e815a50c57fb3ce5eb766c1cdfc680063a602edfdccec0c362e938d83434ecc6557c93b3a7b6aee'
   'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
   '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
   'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6')
