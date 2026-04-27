@@ -1,7 +1,7 @@
 # Maintainer: Clayton Kehoe <clayton.j.kehoe at boeing dot com>
 # Contributor : wiz64 <wiz64 dot com>
 pkgname=config-file-validator
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A tool to validate the syntax and schema of configuration files"
 arch=('x86_64')
