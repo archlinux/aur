@@ -1,7 +1,7 @@
 pkgbase = r-tidycmprsk
 	pkgdesc = Competing Risks Estimation
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tidycmprsk
 	arch = any
 	license = AGPL (>= 3)
