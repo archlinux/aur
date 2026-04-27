@@ -1,12 +1,12 @@
 # Maintainer: Tanay Pant <tanaypant@protonmail.com>
 pkgname=tokyo-notes-git
-pkgver=r5.g0bec769
+pkgver=r6.g6c356db
 pkgrel=1
 pkgdesc="A minimal GTK4 Markdown note-taking app"
 arch=('any')
 url="https://github.com/tanay1337/tokyo-notes"
 license=('MIT')
-depends=('python' 'python-gobject' 'gtk4' 'libadwaita')
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'cairo')
 makedepends=('git')
 provides=('tokyo-notes')
 conflicts=('tokyo-notes')
