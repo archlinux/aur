@@ -2,18 +2,19 @@
 
 pkgname=verso-git
 _pkgname=verso
-pkgver=20250324.052031.d567c169
+pkgver=20251008.151739.eb719bdd
 pkgrel=1
 pkgdesc="A web browser that plays old world blues to build new world hope"
 arch=('x86_64')
 url="https://github.com/versotile-org/$_pkgname"
 license=('MIT' 'Apache-2.0')
-makedepends=('cargo')
+makedepends=('cargo' 'git' 'python3' 'libx11' 'fontconfig')
 #source=("git+$url#tag=$pkgver")
 source=("git+$url")
 b2sums=(
     'SKIP'
 )
+options=(!debug !lto)
 
 pkgver() {
   cd "$srcdir/$_pkgname" || exit 1
