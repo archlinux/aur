@@ -1,13 +1,13 @@
 pkgbase = dwarffortress-linuxdwarfpack-appimage
 	pkgdesc = The AppImage of lnp-forge built LinuxDwarfPack appimage
 	pkgver = 0.47.05_r8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/McArcady/lnp-forge
 	arch = x86_64
 	license = mixed
 	depends = ncurses
 	depends = qt5-base
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = tk
 	depends = tcl
 	depends = fuse2
