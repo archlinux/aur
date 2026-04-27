@@ -4,7 +4,7 @@
 # Contributor: piernov <piernov nospamat piernov nospamdot org>
 
 pkgname=flexbv-bin
-pkgver=5.3106
+pkgver=5.3127
 pkgrel=1
 pkgdesc="Paid version of the FlexBV boardview software"
 arch=("x86_64")
@@ -16,8 +16,8 @@ conflicts=("flexbv-free-bin")
 
 source=("flexbv-std-${pkgver}-linux-x86_64.tar.gz::https://pldaniels.com/flexbv5/releases/flexbv-std-${pkgver}-linux-x86_64.tar.gz")
 
-sha512sums=('dfa42346508da4b4eaf117d3ccb6965cb87b2ef617124252db1a997e7f501f98138e3391a419aae4e7eb7d89881e0d68a3fed020f5a0b953c0d773e375aa8017')
-b2sums=('d303b61e173dc505518f2a76743ac61c72d474ecf49ef4c623980ca67e192f0eba887248035337fcbeffed1bf00a3900b62333201ccac93fef7c71e24ed84fe2')
+sha512sums=('dc3e32170cc5ecc1ed62afdbd50ee1585dc427169df8abbc05e8f648265937335af4a054df103ed9d0f813a9fe8e9732536d3cea7f8d51834d8c31085872c3b0')
+b2sums=('f197db94197a77de4282d9f692c17c1843aadd4065e62e7d239d64a77c33a83246b8759663be55642a345f99405369b7928b1e8504408b228f700e13e320fec1')
 
 package() {
 	cd "flexbv-std-${pkgver}-linux-x86_64"
