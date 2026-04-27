@@ -2,7 +2,7 @@
 
 pkgname=discord-launcher-git
 _pkgname=discord-launcher
-pkgver=r0.0000000
+pkgver=r97.10728b3
 pkgrel=1
 pkgdesc="Keeps an up-to-date Discord install in your home directory, so Discord updates don't need root"
 url='https://github.com/vscncls/discord-launcher'
