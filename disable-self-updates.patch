@@ -1,0 +1,72 @@
+ src/app.rs  | 10 ----------
+ src/main.rs | 30 +-----------------------------
+ 2 files changed, 1 insertion(+), 39 deletions(-)
+
+diff --git a/src/app.rs b/src/app.rs
+index a40a8d3..1ef48cd 100644
+--- a/src/app.rs
++++ b/src/app.rs
+@@ -303,16 +303,6 @@ impl App {
+             &self.config.watch.watch_exclude_dirs,
+         )?;
+ 
+-        // Check for updates in the background
+-        if self.config.ui.check_for_updates {
+-            let tx = self.action_tx.clone();
+-            tokio::task::spawn_blocking(move || {
+-                if let Some(version) = crate::update_checker::check_latest() {
+-                    let _ = tx.send(Action::UpdateAvailable(version));
+-                }
+-            });
+-        }
+-
+         // Auto-select the first repo (graph loads once status arrives)
+         self.sync_selection();
+ 
+diff --git a/src/main.rs b/src/main.rs
+index 5df544e..6843b9b 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -6,7 +6,6 @@ mod event;
+ mod git;
+ mod repo_id;
+ mod tui;
+-mod update_checker;
+ mod watcher;
+ 
+ use clap::{Parser, Subcommand};
+@@ -66,33 +65,6 @@ async fn main() -> Result<()> {
+ }
+ 
+ fn self_update() -> Result<()> {
+-    let current = env!("CARGO_PKG_VERSION");
+-    println!("gitpane v{current} — checking for updates...");
+-
+-    if let Some(latest) = update_checker::check_latest() {
+-        println!("New version available: v{latest}");
+-    } else {
+-        println!("Already up to date.");
+-        return Ok(());
+-    }
+-
+-    println!("Running: cargo install gitpane");
+-    let status = std::process::Command::new("cargo")
+-        .args(["install", "gitpane"])
+-        .status();
+-
+-    match status {
+-        Ok(s) if s.success() => println!("Updated successfully."),
+-        Ok(s) => {
+-            eprintln!("cargo install exited with {s}");
+-            std::process::exit(1);
+-        }
+-        Err(e) => {
+-            eprintln!("Failed to run cargo: {e}");
+-            eprintln!("Make sure cargo is installed (https://rustup.rs)");
+-            std::process::exit(1);
+-        }
+-    }
+-
++    println!("Updates is managed by the system package manager (paru, yay, ...)");
+     Ok(())
+ }
