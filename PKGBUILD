@@ -8,7 +8,7 @@ url="https://github.com/Nikren2006/anilinux-electron"
 license=('MIT')
 depends=('mpv')
 source=("$pkgname-$pkgver.AppImage::https://github.com/Nikren2006/anilinux-electron/releases/download/v$pkgver/Anilinux-electron-$pkgver.AppImage")
-sha256sums=('8f4199e099be803d65bca2de1a1ba7d7a8531b1b1b373a2f53c246822a851e64')
+sha256sums=('7993c68d8ca1e43a735cbfe5a358018e0db9ef4b170947f2f4fbddea62616d68')
 
 prepare() {
   chmod +x "$pkgname-$pkgver.AppImage"
