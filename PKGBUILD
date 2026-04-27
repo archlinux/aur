@@ -6,7 +6,7 @@
 # Contributor: Themaister <post@themaister.net>
 
 pkgname=pcsx2-parallel-gs-git
-pkgver=2.7.248.r1.g656b89fc3
+pkgver=2.7.298.r3.gd731c8b176
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator with experimental paraLLEl-GS support'
 arch=(x86_64)
@@ -64,7 +64,7 @@ conflicts=(pcsx2 pcsx2-git)
 options=(!lto)
 
 source=(
-    git+https://github.com/PCSX2/pcsx2.git#tag=v2.7.248
+    git+https://github.com/PCSX2/pcsx2.git
     git+https://github.com/Arntzen-Software/parallel-gs.git
     git+https://github.com/PCSX2/pcsx2_patches.git
     0001-Early-integration-of-parallel-GS.patch

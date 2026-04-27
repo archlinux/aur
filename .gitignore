@@ -3,3 +3,5 @@ pcsx2/
 pcsx2_patches/
 
 pcsx2-parallel-gs-git-*
+
+.vscode/
