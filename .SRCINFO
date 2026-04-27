@@ -1,6 +1,6 @@
 pkgbase = docker-agent-bin
 	pkgdesc = AI Agent Builder and Runtime by Docker Engineering (prebuilt binary)
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://github.com/docker/docker-agent
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = docker-agent-bin
 	provides = docker-agent
 	conflicts = docker-agent
 	noextract = docker-agent
-	source = LICENSE::https://raw.githubusercontent.com/docker/docker-agent/v1.50.0/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/docker/docker-agent/v1.52.0/LICENSE
 	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
-	source_x86_64 = docker-agent::https://github.com/docker/docker-agent/releases/download/v1.50.0/docker-agent-linux-amd64
-	sha256sums_x86_64 = 78805dd2a04998ddd949eeb4a43446b787fb11b75ce5f41ec165d7b0c84976e6
-	source_aarch64 = docker-agent::https://github.com/docker/docker-agent/releases/download/v1.50.0/docker-agent-linux-arm64
-	sha256sums_aarch64 = 78805dd2a04998ddd949eeb4a43446b787fb11b75ce5f41ec165d7b0c84976e6
+	source_x86_64 = docker-agent::https://github.com/docker/docker-agent/releases/download/v1.52.0/docker-agent-linux-amd64
+	sha256sums_x86_64 = 72ce47400b99fd0bd17730bd72decd91128685883499f144ca61058ff7a25010
+	source_aarch64 = docker-agent::https://github.com/docker/docker-agent/releases/download/v1.52.0/docker-agent-linux-arm64
+	sha256sums_aarch64 = 72ce47400b99fd0bd17730bd72decd91128685883499f144ca61058ff7a25010
 
 pkgname = docker-agent-bin
