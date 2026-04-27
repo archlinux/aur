@@ -1,12 +1,12 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mpd_info_screen2
-pkgver=1.20.2
+pkgver=1.21
 pkgrel=1
 pkgdesc="Views graphical info on MPD, the successor to mpd_info_screen, in C++"
 arch=(x86_64)
 url="https://github.com/Stephen-Seo/mpd_info_screen2"
 license=('ISC')
-depends=(glfw fontconfig)
+depends=(glfw fontconfig libx11 libxrandr)
 makedepends=(git cmake)
 options=()
 install=
@@ -14,16 +14,16 @@ changelog=
 _raylib_ver=5.5
 source=(
     "${pkgname}::git+https://github.com/Stephen-Seo/mpd_info_screen2.git#tag=${pkgver}"
-    "raylib-5.5.tar.gz::https://github.com/raysan5/raylib/archive/refs/tags/5.5.tar.gz"
+    "raylib-6.0.tar.gz::https://github.com/raysan5/raylib/archive/refs/tags/6.0.tar.gz"
 )
 sha256sums=(
     SKIP
-    'aea98ecf5bc5c5e0b789a76de0083a21a70457050ea4cc2aec7566935f5e258e'
+    '2b3ee1e2120c7a0796b33062c7e9a694dd8a8caa56a96319ac8c8ecf54a90d0b'
 )
 
 prepare() {
     # Use source provided "Raylib" to prevent re-downloading it when building.
-    install -D -m644 "${srcdir}/raylib-5.5.tar.gz" "${srcdir}/${pkgname}/third_party/raylib-5.5.tar.gz"
+    install -D -m644 "${srcdir}/raylib-6.0.tar.gz" "${srcdir}/${pkgname}/third_party/raylib-6.0.tar.gz"
 
     cd "${srcdir}/${pkgname}"
     cmake -S . -B BuildRel \
