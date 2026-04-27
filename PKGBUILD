@@ -297,8 +297,8 @@ _apply_tpm453_profile() {
         -e X86_NATIVE_CPU \
         -e CACHY \
         -d SCHED_BORE \
-        -e LTO_CLANG_THIN \
-        -d LTO_NONE \
+        -d LTO_CLANG_THIN \
+        -e LTO_NONE \
         -d LTO_CLANG_FULL \
         -d LTO_CLANG_THIN_DIST \
         -d AUTOFDO_CLANG \
@@ -339,8 +339,12 @@ _apply_tpm453_profile() {
         -d NUMA_BALANCING_DEFAULT_ENABLED \
         -d NUMA_KEEP_MEMINFO \
         -d USE_PERCPU_NUMA_NODE_ID \
+        -e LRU_GEN \
+        -e LRU_GEN_ENABLED \
+        -e LRU_GEN_WALKS_MMU \
         -d RUST \
         -d DEBUG_INFO \
+        -e INTEL_IDLE \
         -e EFI \
         -e EFI_STUB \
         -e EFI_PARTITION \
@@ -348,19 +352,47 @@ _apply_tpm453_profile() {
         -e SCSI \
         -e SCSI_MOD \
         -e BLK_DEV_SD \
+        -e PCIEASPM \
+        -e PCIEASPM_DEFAULT \
+        -d PCIEASPM_POWERSAVE \
+        -d PCIEASPM_POWER_SUPERSAVE \
+        -d PCIEASPM_PERFORMANCE \
+        -e MQ_IOSCHED_KYBER \
+        -e IOSCHED_BFQ \
+        -e BFQ_GROUP_IOSCHED \
         -e SATA_AHCI \
+        --set-val SATA_MOBILE_LPM_POLICY 0 \
         -m BLK_DEV_SR \
         -e BLK_DEV_DM \
+        -e TRUSTED_KEYS \
+        -e ENCRYPTED_KEYS \
+        -e CRYPTO \
+        -e CRYPTO_SKCIPHER \
+        -e CRYPTO_MANAGER \
+        -e CRYPTO_AES \
+        -e CRYPTO_CBC \
+        -e CRYPTO_XTS \
+        -e CRYPTO_ESSIV \
+        -e CRYPTO_SHA256 \
         -e DM_CRYPT \
+        -e DM_INTEGRITY \
         -e BTRFS_FS \
         -e EXT4_FS \
+        -e MSDOS_FS \
         -e FAT_FS \
         -e VFAT_FS \
-        -m EXFAT_FS \
-        -m NTFS3_FS \
+        -e EXFAT_FS \
+        -d NTFS_FS \
+        -e NTFS3_FS \
         -m ISO9660_FS \
         -m UDF_FS \
         -e FUSE_FS \
+        -e SQUASHFS \
+        -e NLS_CODEPAGE_437 \
+        -e NLS_ISO8859_1 \
+        -e NLS_UTF8 \
+        -e OVERLAY_FS \
+        -e BLK_DEV_LOOP \
         -e DRM \
         -e DRM_SIMPLEDRM \
         -e DRM_I915 \
@@ -371,13 +403,16 @@ _apply_tpm453_profile() {
         -e SERIO_I8042 \
         -e HID_GENERIC \
         -e USB_HID \
-        -m USB_STORAGE \
-        -m USB_UAS \
+        -e USB_STORAGE \
+        -e USB_UAS \
         -e USB_XHCI_HCD \
         -e USB_EHCI_HCD \
+        -e ATH9K_BTCOEX_SUPPORT \
         -m TUN \
         -m WIREGUARD \
         -m CIFS \
+        -e CRYPTO_LZ4 \
+        -e CRYPTO_LZ4HC \
         -d SYSCTL_EXCEPTION_TRACE \
         -d PM_TRACE \
         -d KPROBES_ON_FTRACE \
@@ -391,6 +426,54 @@ _apply_tpm453_profile() {
         -d TIMERLAT_TRACER \
         -d MMIOTRACE \
         -d BLK_DEV_IO_TRACE
+}
+
+_assert_tpm453_required_features() {
+    local required=(
+        CONFIG_BLK_DEV_DM=y
+        CONFIG_DM_CRYPT=y
+        CONFIG_DM_INTEGRITY=y
+        CONFIG_BTRFS_FS=y
+        CONFIG_MSDOS_FS=y
+        CONFIG_FAT_FS=y
+        CONFIG_VFAT_FS=y
+        CONFIG_EXFAT_FS=y
+        CONFIG_NTFS3_FS=y
+        CONFIG_FUSE_FS=y
+        CONFIG_SQUASHFS=y
+        CONFIG_OVERLAY_FS=y
+        CONFIG_BLK_DEV_LOOP=y
+        CONFIG_USB_STORAGE=y
+        CONFIG_USB_UAS=y
+        CONFIG_TRUSTED_KEYS=y
+        CONFIG_ENCRYPTED_KEYS=y
+        CONFIG_CRYPTO=y
+        CONFIG_CRYPTO_SKCIPHER=y
+        CONFIG_CRYPTO_MANAGER=y
+        CONFIG_CRYPTO_AES=y
+        CONFIG_CRYPTO_CBC=y
+        CONFIG_CRYPTO_XTS=y
+        CONFIG_CRYPTO_ESSIV=y
+        CONFIG_CRYPTO_SHA256=y
+        CONFIG_CRYPTO_LZ4=y
+        CONFIG_CRYPTO_LZ4HC=y
+        CONFIG_NLS_CODEPAGE_437=y
+        CONFIG_NLS_ISO8859_1=y
+        CONFIG_NLS_UTF8=y
+        CONFIG_LRU_GEN=y
+        CONFIG_LRU_GEN_ENABLED=y
+        CONFIG_INTEL_IDLE=y
+        CONFIG_ATH9K_BTCOEX_SUPPORT=y
+        CONFIG_PCIEASPM_DEFAULT=y
+        CONFIG_SATA_MOBILE_LPM_POLICY=0
+        CONFIG_MQ_IOSCHED_KYBER=y
+        CONFIG_IOSCHED_BFQ=y
+        CONFIG_BFQ_GROUP_IOSCHED=y
+    )
+    local entry
+    for entry in "${required[@]}"; do
+        grep -qxF "$entry" .config || _die "Required TPM453 feature missing after config trimming: $entry"
+    done
 }
 
 prepare() {
@@ -609,6 +692,7 @@ prepare() {
     ### Rewrite configuration
     echo "Rewrite configuration..."
     make "${BUILD_FLAGS[@]}" olddefconfig
+    _assert_tpm453_required_features
     make "${BUILD_FLAGS[@]}" prepare
     diff -u ../config .config || :
 
@@ -695,21 +779,17 @@ build() {
 
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
-    depends=(binutils
-      glibc
-      libelf
-      libgcc
-      openssl
-      pahole
-      xxhash
-      zlib
-      zstd
-     "${pkgbase}")
+    depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
                 'scx-scheds: to use sched-ext schedulers')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE V4L2LOOPBACK-MODULE NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
+    # Replace LTO kernel with the default kernel
+    if _is_lto_kernel; then
+        provides+=(linux-cachyos-lto=$_kernver)
+        replaces=(linux-cachyos-lto)
+    fi
 
     cd "$_srcname"
 
@@ -733,10 +813,21 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('pahole' "${pkgbase}")
+    depends=(binutils
+      glibc
+      libelf
+      libgcc
+      openssl
+      pahole
+      xxhash
+      zlib
+      zstd
+     "${pkgbase}")
     provides=(LINUX-HEADERS)
 
     if _is_lto_kernel; then
+        provides+=(linux-cachyos-lto-headers=$_kernver)
+        replaces=(linux-cachyos-lto-headers)
         depends+=(clang llvm lld)
     fi
 
