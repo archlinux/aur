@@ -18,11 +18,6 @@ package() {
     cd "vim-puppet-${_commit}"
     _vimdir="${pkgdir}/usr/share/vim/vimfiles"
 
-    install -dm755 "${_vimdir}/"{after,ctags,compiler,ftdetect,ftplugin,indent,syntax}
-    install -dm755 "${_vimdir}/autoload/puppet"
-    install -dm755 "${_vimdir}/after/"{plugin,ftplugin}
-
-
     install -Dm644 after/plugin/gutentags.vim  "${_vimdir}/after/plugin/gutentags.vim"
     install -Dm644 after/ftplugin/puppet.vim   "${_vimdir}/after/ftplugin/puppet.vim"
     install -Dm644 autoload/puppet/format.vim  "${_vimdir}/autoload/puppet/format.vim"
