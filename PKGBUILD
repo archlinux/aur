@@ -4,25 +4,31 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=pmount
-pkgver=0.9.23
-pkgrel=18
+pkgver=0.9.23_10
+pkgrel=1
 pkgdesc='mount removable devices as normal user'
 arch=(i686 x86_64 armv7h)
 url=https://salsa.debian.org/debian/pmount
 license=('GPL-3.0-or-later')
-_debver=$pkgver-10
-_commit=9646fcb8460b3ec05fc67a442aba152f5e772e92
-_pkgname=$pkgname-$_commit
+_debver=${pkgver/_/-}
+_pkgname=$pkgname-debian-$_debver
 
 depends=('sysfsutils>=2.0.0-1' util-linux)
 makedepends=('intltool>=0.21')
 backup=(etc/pmount.allow)
 source=(
-    $_pkgname.tar.gz::$url/-/archive/$_commit/$_pkgname.tar.gz
+    $_pkgname.tar.gz::$url/-/archive/debian/$_debver/$_pkgname.tar.gz
     0001-fix-debug-segfault.patch
 )
-sha256sums=('8d73169ebbca4aaf44acae81ed4e20ba0a6d76bc4c580563d4cbbda44458732e'
+sha256sums=('a1d027bef40250ed133e34289c8881d05a56438c6f4b5d1ca712a81e9d5c5bed'
             'e19eda4987b41f1b76281b980b56239b386539938d70e5b4a40b286bff789b93')
+
+latestver() {
+    git ls-remote --tags "$url.git" 'refs/tags/debian/*' |
+        sed -nE 's#.*refs/tags/debian/([0-9]+(\.[0-9]+)*)-([0-9]+)(\^\{\})?$#\1_\3#p' |
+        sort -Vu |
+        tail -1
+}
 
 prepare() {
     cd "$srcdir"/$_pkgname
