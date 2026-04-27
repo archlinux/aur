@@ -20,13 +20,16 @@ install=fulcrum.install
 provides=("$pkgname")
 source=(
     "https://github.com/cculianu/Fulcrum/releases/download/v$pkgver/Fulcrum-$pkgver-src.tar.gz"
+    "0001-Fix-for-compile-issue-with-rocksdb-v11-or-greater.patch"
     "fulcrum.conf"
 )
 sha256sums=('394aac930eadd12f5b7eb5f2dcdf4fdb1e2e43d317a1336b077738c2090fa6ba'
+            '6153c9b4f16989e1704c66a78a256ea95b33fba492ccc364373df4fc01ea6cb8'
             '39c732e08ffa4d5b566b49f1e3a6929c8d0a12590e1616ccad1d6d4d8987e3a6')
 
 prepare() {
   cd "Fulcrum-$pkgver-src/"
+  patch -Np1 -i ../0001-Fix-for-compile-issue-with-rocksdb-v11-or-greater.patch
   qmake -makefile CONFIG+=recheck CONFIG+=release Fulcrum.pro
 }
 
