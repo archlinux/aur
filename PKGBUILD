@@ -4,18 +4,17 @@
 
 pkgname=kalu-kde
 _pkgname=${pkgname%-kde}
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news; supports autohide in Wayland / KDE Plasma's panel"
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/Thulinma/kalu'
 license=('GPL3+')
-depends=('dbus' 'polkit' 'gtk3' 'pacman>=7.0.0' 'pacman<8' 'curl' 'libnotify'
-         'notification-daemon' 'libayatana-appindicator')
+depends=('dbus' 'polkit' 'gtk3' 'pacman>=7.0.0' 'pacman<8' 'curl' 'libnotify' 'notification-daemon')
 makedepends=('perl' 'groff')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
 install=kalu.install
-sha256sums=('6143cdafc3f8a0fa10801e59ceef47fa7452cbf5a86f4a9d042f739ca264c154')
+sha256sums=('a70b6765c5ddc1f9f22b52003e8b1be196ffcf080d11e0d406cc9a2cdf265ec0')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 
