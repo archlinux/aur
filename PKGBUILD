@@ -4,7 +4,7 @@ pkgver=0.0.5
 pkgrel=1
 pkgdesc="Reusable bubblewrap sandbox helpers for shell wrappers"
 arch=('any')
-url="https://gitlab.com/fkzys/bwrap-common"
+url="https://github.com/fkzys/bwrap-common"
 license=('AGPL-3.0-or-later')
 depends=(
     'bubblewrap'
@@ -14,10 +14,10 @@ optdepends=(
     'xdg-dbus-proxy: filtered D-Bus access'
     'verify-lib: library integrity verification before sourcing'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('e03ee705e5c090c5b47abbff0d62972b48fa7de21f9d35c2f2c6513e146b9f84')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('1e61f7efe00a7c509c94f7f167d429777d1a0850cc9be0a39ae089a6705a0398')
 
 package() {
-    cd "${pkgname}-v${pkgver}"
+    cd "${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
