@@ -1,7 +1,7 @@
 # Maintainer: Dan <dan361@mailbox.org>
 pkgname=btd700ctl-git
 pkgver=3.14.r7.0fdfe7c
-pkgrel=3
+pkgrel=4
 pkgdesc='Unofficial Linux driver for the Sennheiser BTD 700 USB Bluetooth dongle'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sobalap/btd700ctl'
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     printf '%s.r%s.%s' \
-        "$(grep 'VERSION' CMakeLists.txt | head -1 | grep -oP '[0-9]+(\.[0-9]+)+')" \
+        "$(grep 'project(' -A2 CMakeLists.txt | grep -oP 'VERSION\s+\K[0-9]+(\.[0-9]+)+')" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }
