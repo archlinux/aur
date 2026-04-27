@@ -2,7 +2,7 @@
 
 _pyname=angr
 pkgname=python-${_pyname}
-pkgver=9.2.160
+pkgver=9.2.197
 pkgrel=1
 pkgdesc='A powerful and user-friendly binary analysis platform'
 url='https://github.com/angr/angr'
@@ -17,7 +17,9 @@ depends=(
   'python-capstone'
   'python-cffi'
   'python-claripy'
-  'python-cle'
+  'python-cle>=9.2.197'
+  'python-lmdb'
+  'python-msgspec'
   'python-mulpyplexer'
   'python-networkx'
   'python-protobuf'
@@ -32,7 +34,6 @@ depends=(
   'python-sympy'
   'python-typing_extensions'
   'python-unicorn'
-  'python-unique_log_filter'
 )
 makedepends=(
   'gcc'
@@ -43,24 +44,39 @@ makedepends=(
   'python-setuptools-rust'
   'python-wheel'
 )
+checkdepends=(
+  'python-pytest'
+)
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('ccaa5f0ad56fe528566895ad1f728ca6b9f9a4449c65c0e7dd8e5e5e7d8c168f3ce0ddf3bf605d51dab6d92c235dfac6e10588e89f9b73534b626827eb30ee7a')
-b2sums=('99d45c95cdf90ec9ce1eed26e34f90c4ef87dfc70393f964b613a630dfbb1914e3032610f15df93cad13ccb07a5f6d52788a06e92de3a82a70aa23c7faf3fabb')
+sha512sums=('a197ee6c39fa1672230f5c463902411848d92cae7e7caa964a0c4f7ca1888d10f26e94d40037e09684178998fd210be3891292c1d9f854150b5691289cf1826f')
+b2sums=('ccb9bc09726ac540fc99ace649250bb8dab10346fc61b98d596a4d7852e6cc5bfd21d77677b8f725a4522d3b9503292dbb4dbb304a47f47a2848c1f8631b22d9')
 
 prepare() {
   # we don't support version pinning
-  sed -e 's/==/>=/g' -i $_pyname-$pkgver/{setup.cfg,pyproject.toml}
+  sed -e 's/==/>=/g' -i "${_pyname}-${pkgver}/pyproject.toml"
   # we don't support post-release and developmental-release
-  sed -e 's/\.\(post\|dev\)[0-9]*//g' -i $_pyname-$pkgver/{setup.cfg,pyproject.toml}
+  sed -e 's/\.\(post\|dev\)[0-9]*//g' -i "${_pyname}-${pkgver}/pyproject.toml"
 }
 
 build() {
-  cd ${_pyname}-${pkgver}
-  python -m build --wheel --no-isolation
+  cd "${_pyname}-${pkgver}"
+  python -m build --wheel --no-isolation -x
+}
+
+check() {
+  # curl -LO "https://github.com/angr/binaries/archive/v${pkgver}/binaries-${pkgver}.tar.gz"
+  # tar -xf "binaries-${pkgver}.tar.gz"
+  # ln -sf "binaries-${pkgver}" binaries
+  cd "${_pyname}-${pkgver}"
+  python -m venv --clear --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -Ic 'import angr'
+  # Full pytest might take a long time
+  # test-env/bin/python -Pm pytest -o addopts=''
 }
 
 package() {
-  cd ${_pyname}-${pkgver}
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${_pyname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
