@@ -1,6 +1,6 @@
 pkgbase = tlescope-git
 	pkgdesc = TLEscope is a satellite visualization tool designed to transform Two-Line Element (TLE) sets into intuitive, interactive data.
-	pkgver = 3.7.2.32478fd
+	pkgver = 3.9.2.32478fd
 	pkgrel = 1
 	url = https://github.com/aweeri/TLEscope
 	arch = x86_64
