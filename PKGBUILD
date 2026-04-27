@@ -4,11 +4,12 @@
 pkgname=lib32-openssl-1.1
 _ver=1.1.1w
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=4
+pkgrel=5
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
 license=('OpenSSL')
+makedepends=('lib32-gcc-libs') #Used for test binaries
 depends=('lib32-glibc' 'openssl-1.1')
 source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
         'ca-dir.patch'
@@ -88,6 +89,14 @@ build() {
 
   make MAKEDEPPROG="${CC}" depend
   make
+}
+
+check() {
+  cd openssl-${_ver}
+  patch -p0 -R -i "$srcdir/ca-dir.patch"
+  make test
+  patch -p0 -i "$srcdir/ca-dir.patch"
+  make apps/CA.pl
 }
 
 package() {

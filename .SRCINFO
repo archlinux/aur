@@ -1,10 +1,11 @@
 pkgbase = lib32-openssl-1.1
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
 	pkgver = 1.1.1.w
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.openssl.org
 	arch = x86_64
 	license = OpenSSL
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = openssl-1.1
 	source = https://www.openssl.org/source/openssl-1.1.1w.tar.gz
