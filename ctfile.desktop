@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=CTFile
+Name[zh_CN]=城通网盘
+Exec=ctfile %U
+Terminal=false
+Type=Application
+Icon=ctfile-desktop
+StartupWMClass=ctfile-desktop
+X-AppImage-Version=5.1.7
+Comment=CTFile Desktop App
+Comment[zh_CN]=城通网盘桌面应用
+MimeType=x-scheme-handler/ctfile-desktop;
+Categories=Network;
