@@ -3,6 +3,7 @@
 pkgname=heretic1-wad
 pkgver=1.2
 pkgrel=2
+# manual-hint: historical Heretic shareware IWAD; source is fixed idgames mirror archive htic_v12.zip
 pkgdesc="The Heretic shareware IWAD (game data)"
 arch=('any')
 url="https://web.archive.org/web/20160603151059/https://www.ravensoftware.com/games/heretic/view-game/"
