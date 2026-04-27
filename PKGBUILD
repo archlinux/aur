@@ -2,30 +2,51 @@
 
 pkgname=python-matplotlib-pgfutils
 pkgdesc="Utilities for generating PGF figures from Matplotlib"
-pkgver=1.7.0
+pkgver=2.0.0
 pkgrel=1
 url="https://matplotlib-pgfutils.readthedocs.io/"
+license=('BSD-3-Clause')
 arch=('any')
-depends=('python-matplotlib')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-cov' 'texlive-core')
-license=('BSD')
-source=("matplotlib-pgfutils-${pkgver}.tar.gz::https://github.com/bcbnz/matplotlib-pgfutils/archive/v${pkgver}.tar.gz")
-sha256sums=('70f381e872225c2d08c8f8298ba27803de9ad2cf71c2558764b86394700c75f3')
+
+depends=(
+  'python-matplotlib'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-setuptools-scm'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-cov'
+  'texlive-fontsrecommended'
+  'texlive-latexrecommended'
+  'texlive-pictures'
+  'texlive-xetex'
+)
+
+source=(
+  "git+https://github.com/bcbnz/matplotlib-pgfutils.git#tag=v${pkgver}"
+)
+sha256sums=(
+  'db1339571834503009fed08d8ba1f1f7008867dd12f46ad0fc27ba86f79b99aa'
+)
 
 build() {
-    cd "matplotlib-pgfutils-${pkgver}"
-    python setup.py build
+  cd matplotlib-pgfutils
+  python -m build --no-isolation --wheel
 }
 
 check() {
-    cd "matplotlib-pgfutils-${pkgver}"
-    pytest
+  cd matplotlib-pgfutils
+  pytest -x
 }
 
 package() {
-    cd "matplotlib-pgfutils-${pkgver}"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  cd matplotlib-pgfutils
+  python -m installer --destdir="$pkgdir" "dist/matplotlib_pgfutils-$pkgver"-*.whl
+  install -Dm644 LICENSES/BSD-3-Clause.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
