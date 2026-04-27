@@ -16,6 +16,6 @@ pkgbase = openai-codex-reasoning-bin
 	conflicts = openai-codex-bin
 	conflicts = openai-codex-reasoning
 	source = openai-codex-reasoning-bin-0.125.0-1-x86_64.tar.zst::https://github.com/OneNoted/openai-codex-reasoning-bin/releases/download/v0.125.0-1/openai-codex-reasoning-bin-0.125.0-1-x86_64.tar.zst
-	sha256sums = SKIP
+	sha256sums = 6c45c654083001b1cd4566f1c1a1958ad48fcd9fc307de38edd1745e856ad6fc
 
 pkgname = openai-codex-reasoning-bin

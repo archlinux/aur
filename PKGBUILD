@@ -31,7 +31,7 @@ _asset_name="${pkgname}-${pkgver}-${pkgrel}-x86_64.tar.zst"
 source=(
   "${_asset_name}::${url}/releases/download/v${pkgver}-${pkgrel}/${_asset_name}"
 )
-sha256sums=('SKIP')
+sha256sums=('6c45c654083001b1cd4566f1c1a1958ad48fcd9fc307de38edd1745e856ad6fc')
 
 package() {
   bsdtar -xf "${srcdir}/${_asset_name}" -C "${pkgdir}"
