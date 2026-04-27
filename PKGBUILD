@@ -14,7 +14,7 @@ _securityver=2
 _updatever=9
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 # pkgver=${_majorver}.u${_updatever}
-pkgrel=4
+pkgrel=5
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 # _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -55,7 +55,7 @@ _nonheadless=(lib/libawt_xawt.so
 
 _commondeps=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
            'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
-           'glibc' 'gcc-libs')
+           'glibc' 'libgcc')
 
 prepare() {
   cd ${_jdkdir}
