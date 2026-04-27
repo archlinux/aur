@@ -2,7 +2,7 @@
 
 pkgname=python-protoletariat
 _name=${pkgname#python-}
-pkgver=3.3.9
+pkgver=3.3.10
 pkgrel=1
 pkgdesc="Python protocol buffers for the rest of us"
 provides=(${pkgname})
@@ -29,7 +29,7 @@ optdepends=(
 )
 license=('Apache-2.0')
 source=("${_name}::git+${url}.git#tag=$pkgver")
-sha256sums=('972b9088b4f225f1336b8c778ff646ac04d738547be224bfde81907419aff574')
+sha256sums=('9ba77b3b010bdc203f68937283a3871742076fbca77b4497390b0c01ae24cf63')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
