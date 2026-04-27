@@ -28,7 +28,7 @@ build() {
 
 package() {
     cd TUNA-$pkgver
-    pip install --root="$pkgdir" --optimize=1 -e .
+    pip install --root="$pkgdir" --compile -e .
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
