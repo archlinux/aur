@@ -18,8 +18,8 @@ pkgbase = linux-tpm453-lts-bin
 	options = !debug
 	source = linux-tpm453-lts-6.18.24-1-x86_64.pkg.tar.zst::https://github.com/docker-mobile/linux-tpm453/releases/download/linux-tpm453-lts-6.18.24-1/linux-tpm453-lts-6.18.24-1-x86_64.pkg.tar.zst
 	source = linux-tpm453-lts-headers-6.18.24-1-x86_64.pkg.tar.zst::https://github.com/docker-mobile/linux-tpm453/releases/download/linux-tpm453-lts-6.18.24-1/linux-tpm453-lts-headers-6.18.24-1-x86_64.pkg.tar.zst
-	sha256sums = 38b340d7993f6af9d4be752707de4ef7a12d7ce8da2d8c1e783e8135402cd9e8
-	sha256sums = d5fdf0f4025b29db50663e7e61e4557b95fcdc48df277b3f3ac4afd55d0cfdf3
+	sha256sums = 749e720e2e5792cc3c2943371d0692522b7c00890f46e1f541ed4cde462139a1
+	sha256sums = 65215e11bef39a59200bb72e3fbb3a46384445b7bcd0e579fca6093571af3eb2
 
 pkgname = linux-tpm453-lts-bin
 	pkgdesc = Prebuilt TPM453 lts kernel and modules
