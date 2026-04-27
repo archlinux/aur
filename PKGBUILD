@@ -3,7 +3,7 @@
 _dist=App-Sqitch
 pkgname=sqitch
 pkgver=1.6.1
-pkgrel=0
+pkgrel=1
 pkgdesc='Sensible database change management'
 arch=('any')
 url='https://github.com/sqitchers/sqitch'
@@ -27,8 +27,6 @@ depends=(
     perl-ipc-system-simple
     perl-list-moreutils
     perl-libintl-perl
-    perl-libintl-perl
-    perl-moo
     perl-moo
     perl-path-class
     perl-perlio-utf8-strict
@@ -37,14 +35,10 @@ depends=(
     perl-string-formatter
     perl-string-shellquote
     perl-sub-exporter
-    perl-sub-exporter
     perl-template-tiny
     perl-throwable
     perl-try-tiny
     perl-type-tiny
-    perl-type-tiny
-    perl-type-tiny
-    perl-uri
     perl-uri
     perl-uri-db
     perl-xml-tiny
