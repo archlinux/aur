@@ -1,6 +1,6 @@
 # Maintainer: Paul Maillard <pmaillard27@proton.me>
 pkgname=zc-git
-_pkgname=zc
+_pkgname=ZC
 pkgver=1.0.r0.g8a2b3c4
 pkgrel=1
 pkgdesc="A C/C++ build tool and package manager"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
