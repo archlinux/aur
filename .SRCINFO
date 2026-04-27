@@ -1,6 +1,6 @@
 pkgbase = python-sgl-kernel-git
 	pkgdesc = Compiled CUDA kernels for the SGLang serving framework
-	pkgver = r10744.4c52b7fcc6
+	pkgver = r12019.b7113cadb1
 	pkgrel = 1
 	url = https://github.com/sgl-project/sglang/tree/main/sgl-kernel
 	arch = x86_64
