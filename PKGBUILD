@@ -1,5 +1,5 @@
 # Maintainer: bloxxel64colonthree @ discord
-pkgname=mario0-ae-bin
+pkgname=mari0-ae-bin
 pkgver=13.2
 pkgrel=1
 pkgdesc="A mod/continuation of the original Mari0 with more objects and features, considered the definitive version." 
