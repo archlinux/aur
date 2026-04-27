@@ -1,0 +1,13 @@
+diff --git a/VRCFaceTracking.Core/OSC/DataTypes/BinaryBaseParameter.cs b/VRCFaceTracking.Core/OSC/DataTypes/BinaryBaseParameter.cs
+index 5d1e423..1f384bb 100644
+--- a/VRCFaceTracking.Core/OSC/DataTypes/BinaryBaseParameter.cs
++++ b/VRCFaceTracking.Core/OSC/DataTypes/BinaryBaseParameter.cs
+@@ -55,7 +55,7 @@ public class BinaryBaseParameter : Parameter
+         {
+             var tempName = param.Name;
+             if (!int.TryParse(
+-                    String.Concat(tempName.Replace(_paramName, "").ToArray().Reverse().TakeWhile(char.IsNumber)
++                    String.Concat(tempName.Replace(_paramName, "").Reverse().TakeWhile(char.IsNumber)
+                         .Reverse()), out var index)) continue;
+             // Get the shift steps
+             var binaryIndex = GetBinarySteps(index);

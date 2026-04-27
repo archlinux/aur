@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=VRCFaceTracking.Avalonia
+Comment=Cross-platform VRCFaceTracking made with Avalonia
+Exec=vrcft %U
+Icon=VRCFaceTracking.Avalonia
+Terminal=false
+Categories=Utility;X-WiVRn-VR;
+X-XR-Plugin=true
+X-XR-Plugin-Exec=vrcft

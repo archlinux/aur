@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!VRCFaceTracking.Avalonia.desktop
+!VRCFaceTracking.Avalonia.png
+!fix-BinaryBaseParameter.patch

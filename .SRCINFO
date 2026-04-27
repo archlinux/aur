@@ -1,0 +1,17 @@
+pkgbase = vrcft-avalonia-git
+	pkgdesc = Cross-platform VRCFaceTracking made with Avalonia
+	pkgver = r212.1.1.1.0.r21.g4974f8f
+	pkgrel = 1
+	url = https://github.com/dfgHiatus/VRCFaceTracking.Avalonia
+	arch = x86_64
+	license = MIT
+	source = vrcft::git+https://github.com/dfgHiatus/VRCFaceTracking.Avalonia
+	source = fix-BinaryBaseParameter.patch
+	source = VRCFaceTracking.Avalonia.desktop
+	source = VRCFaceTracking.Avalonia.png
+	sha256sums = SKIP
+	sha256sums = a5871eadbb87f5eb6f9cfb42a0a2311eed05648054dbeef7048494d8f0f5b934
+	sha256sums = 3c3b38c08d6bdcc5610def27bb80c9ed0bef8618af94f2a6be6747399bdefc54
+	sha256sums = f7bd3f98d1938601c69bc94cd4634c01913b826943eaec26546ef62f25047599
+
+pkgname = vrcft-avalonia-git
