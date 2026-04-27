@@ -2,7 +2,7 @@
 
 pkgname=dotenv-sync-bin
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Keep .env files in sync with .env.example and Bitwarden secrets'
 arch=('x86_64' 'aarch64')
 url='https://github.com/mikeboiko/dotenv-sync'
@@ -12,7 +12,7 @@ provides=('dotenv-sync')
 conflicts=('dotenv-sync' 'dotenv-sync-git')
 
 source=("LICENSE::https://raw.githubusercontent.com/mikeboiko/dotenv-sync/v${pkgver}/LICENSE" "README.md::https://raw.githubusercontent.com/mikeboiko/dotenv-sync/v${pkgver}/README.md")
-sha256sums=('6e7c22106722c151ffc66d0faf2035155eca1ad91931f5679c6773891c08deef' 'cd5e65181f1bbdafaf0e0131dc105f9cee55f7d59f85f0f911218c3fc94ea7de')
+sha256sums=('6e7c22106722c151ffc66d0faf2035155eca1ad91931f5679c6773891c08deef' '384b3d21213f5c61a98ec9da220b8756594ffd62aec6b1b1b2d987f22e5ce8bd')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/mikeboiko/dotenv-sync/releases/download/v${pkgver}/ds_v${pkgver}_linux_amd64.tar.gz")
 sha256sums_x86_64=('c54627c36f050cb2c49e92aee8d396374ef9f723482d30149dc2fc8eb88002f5')
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/mikeboiko/dotenv-sync/releases/download/v${pkgver}/ds_v${pkgver}_linux_arm64.tar.gz")
