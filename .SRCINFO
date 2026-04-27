@@ -1,0 +1,16 @@
+pkgbase = flow-control-nightly-bin
+	pkgdesc = a programmer's text editor
+	pkgver = ge704b3ce
+	pkgrel = 1
+	url = https://github.com/neurocyte/flow
+	arch = x86_64
+	license = MIT
+	makedepends = curl
+	makedepends = jq
+	makedepends = tar
+	makedepends = sed
+	optdepends = ripgrep: project-wide search
+	provides = flow-control
+	conflicts = flow-control
+
+pkgname = flow-control-nightly-bin
