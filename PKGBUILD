@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=vex-tui-bin
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A beautiful, fast, and feature-rich terminal-based Excel and CSV viewer"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('vex-tui')
 conflicts=('vex-tui')
 source=("${url}/releases/download/v${pkgver}/vex-tui_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('c79bb2f5d18426372ef46bd5ecb23f8de74c50366a45da9cb4729d8946fcf819')
+sha256sums=('6ab22ba15d47e52f8b66ebd3211688b25fe4eb7d5176ecc6bee5540963657941')
 
 package() {
     install -Dm755 "${srcdir}/vex" "${pkgdir}/usr/bin/vex"
