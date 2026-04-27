@@ -1,6 +1,6 @@
 pkgbase = escrcpy
 	pkgdesc = 📱Graphical Scrcpy to display and control Android devices powered by Electron(Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。
-	pkgver = 2.8.1
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://escrcpy.viarotel.eu.org/
 	arch = aarch64
@@ -18,9 +18,9 @@ pkgbase = escrcpy
 	depends = scrcpy
 	depends = android-tools
 	conflicts = escrcpy
-	source = escrcpy-2.8.1::git+https://github.com/viarotel-org/escrcpy#tag=v2.8.1
+	source = escrcpy-2.9.0::git+https://github.com/viarotel-org/escrcpy#tag=v2.9.0
 	source = escrcpy.sh
-	sha256sums = fe91d4fb3887b16f6aa5a992337daa2ce195784cdebb77a672d3ee65650aa061
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 57d4530b1be5b1feda501c55f1612e9dce5cb344391d0412bf5d1e56f26af4e4
+	sha256sums = 3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5
 
 pkgname = escrcpy

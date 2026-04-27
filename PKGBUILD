@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=2.8.1
+pkgver=2.9.0
 _electronversion=33
 _nodeversion=24
 pkgrel=1
@@ -32,8 +32,8 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('fe91d4fb3887b16f6aa5a992337daa2ce195784cdebb77a672d3ee65650aa061'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums=('57d4530b1be5b1feda501c55f1612e9dce5cb344391d0412bf5d1e56f26af4e4'
+            '3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -126,14 +126,8 @@ package() {
             _os_aarch="linux-unpacked"
         ;;
     esac
-	find "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/${_os_aarch}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
-    if find "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/${_os_aarch}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/${_os_aarch}/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
-            fi
-        done
-    fi
+    local _app_dir="${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/${_os_aarch}"
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/lib"
     ln -sf "/usr/lib/${pkgname}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
         "${pkgdir}/usr/lib/${pkgname}/lib/libvips-cpp.so.8.17.3"
