@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-flatpak
-pkgver=202603311
+pkgver=202604271
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://phoenix.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/9a7e49256837ce1928265734be1ea110c76b8aa4/archives/phoenix-flatpak.zip")
-sha512sums=('afb29ccbbc0ff9dd972f9db4dfd814656efe2b0f37a446885ff6fbbccf9d555e6a631954136859468cc1e2873da939fa6cbed37c4d95743356893541759985cf')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/9ad10b5e54831a97a9c01cde09ea2351706d19dc/archives/phoenix-flatpak.zip")
+sha512sums=('4429d7a1231b281cf2a75c9c53cefafc4f30fe197765bf8b9552cb8e202b604a571438ca8d5846ae30ea10a3799877a2b6f3048120d014ed0f3a7f2af329a62a')
 makedepends=('unzip')
 
 pkgver() {
@@ -44,7 +44,7 @@ package() {
     install -Dm644 "$tmpdir/configs/ui-fix/youtube-music.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/configs/ui-fix/youtube-music.cfg"
     install -Dm644 "$tmpdir/configs/youtube.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/configs/youtube.cfg"
     install -Dm644 "$tmpdir/configs/youtube-music.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/configs/youtube-music.cfg"
-    install -Dm644 "$tmpdir/defaults/pref/phoenix-desktop.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/defaults/pref/phoenix-desktop.js"
+    install -Dm644 "$tmpdir/defaults/pref/phoenix.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/defaults/pref/phoenix.js"
     install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/lib/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/policies/policies.json"
     install -Dm644 "$tmpdir/resources/specs/apple-maps/permissions" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/resources/specs/apple-maps/permissions"
@@ -75,5 +75,6 @@ package() {
     install -Dm644 "$tmpdir/COPYING.txt" "$pkgdir/usr/share/doc/phoenix-flatpak/COPYING.txt"
     install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/phoenix-flatpak/README.md"
 
+    rm -f "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/defaults/pref/phoenix-desktop.js"
     rm -rf "$tmpdir"
 }
