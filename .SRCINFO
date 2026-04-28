@@ -1,0 +1,21 @@
+pkgbase = python-nv-one-logger-core
+	pkgdesc = NVIDIA OneLogger core: structured telemetry primitives for ML training jobs
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nv-one-logger
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python>=3.8
+	depends = python-pydantic
+	depends = python-overrides
+	depends = python-strenum
+	depends = python-toml
+	depends = python-typing_extensions
+	source = nv-one-logger-core-v2.3.0.tar.gz::https://github.com/NVIDIA/nv-one-logger/archive/refs/tags/nv-one-logger-core-v2.3.0.tar.gz
+	sha256sums = e2be7db9f91b4f7ea692e67ec9665b7da00986a648356bd8fb50fa5f6fee22d2
+
+pkgname = python-nv-one-logger-core
