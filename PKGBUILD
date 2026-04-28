@@ -1,5 +1,5 @@
 pkgname=halley
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
@@ -51,6 +51,12 @@ package() {
 
   install -Dm755 "target/release/halleyctl" \
     "$pkgdir/usr/bin/halleyctl"
+
+  install -Dm755 "packaging/wayland-sessions/halley-session" \
+    "$pkgdir/usr/bin/halley-session"
+
+  install -Dm644 "packaging/wayland-sessions/halley.desktop" \
+    "$pkgdir/usr/share/wayland-sessions/halley.desktop"
 
   if [[ -f LICENSE ]]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
