@@ -8,7 +8,7 @@
 # TODO: enable incremental builds, add addarmor
 
 pkgname=mullvad-browser
-pkgver=15.0.10
+pkgver=15.0.11
 _buildver=build1
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
@@ -44,7 +44,7 @@ source=(
     $pkgname.desktop
 )
 sha256sums=('SKIP'
-            'df543bd3a1ede2e3d536c07d5b695795c7bb20b0c058170ac09b9f49bbf3d9c6'
+            '88f5d9e8eb7fd4e721634e6fbf2ca00426ead2bb8af66a13ec5daf5c75233596'
             'SKIP'
             'a7f82f8d89b00bc0ea368299e979b900c87710b86b89eafb7122a502e5b47eaf')
 validpgpkeys=(
