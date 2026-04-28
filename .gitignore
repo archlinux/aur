@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.zst
+*.tar.xz
+*.tar.bz2
+*.zip
+*.7z
