@@ -1,0 +1,19 @@
+pkgbase = python-nv-one-logger-training-telemetry
+	pkgdesc = NVIDIA OneLogger training telemetry: instruments ML training jobs
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nv-one-logger
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-nv-one-logger-core
+	depends = python-strenum
+	depends = python-typing_extensions
+	source = nv-one-logger-training-telemetry-v2.3.0.tar.gz::https://github.com/NVIDIA/nv-one-logger/archive/refs/tags/nv-one-logger-training-telemetry-v2.3.0.tar.gz
+	sha256sums = 85034832aa330c849f2c4d5319e19414f67e383a852b7a88a10e96618fc2ba2c
+
+pkgname = python-nv-one-logger-training-telemetry
