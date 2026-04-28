@@ -1,6 +1,6 @@
 pkgbase = razer-tray-bin
 	pkgdesc = Minimal Linux tray indicator for Razer wireless mouse and keyboard battery level (prebuilt binary)
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/Softer/razer-tray
 	install = razer-tray.install
@@ -9,9 +9,9 @@ pkgbase = razer-tray-bin
 	depends = gcc-libs
 	depends = dbus
 	depends = openrazer-driver-dkms
-	provides = razer-tray=0.4.1
+	provides = razer-tray=0.4.2
 	conflicts = razer-tray
-	source = https://github.com/Softer/razer-tray/releases/download/v0.4.1/razer-tray-0.4.1-x86_64.tar.gz
-	sha256sums = d896ff7f258ebadf373c68e81fe60abe1c87ac63d5cf278864c0be0de099decd
+	source = https://github.com/Softer/razer-tray/releases/download/v0.4.2/razer-tray-0.4.2-x86_64.tar.gz
+	sha256sums = 7da4613e0400eff24a75be5a0795494a0f687e2014ab6a0d99d5aad5a1ef1144
 
 pkgname = razer-tray-bin
