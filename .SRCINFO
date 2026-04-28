@@ -1,0 +1,16 @@
+pkgbase = loriini-bin
+	pkgdesc = A console color picker
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/kolja/loriini
+	arch = x86_64
+	license = MIT
+	provides = loriini
+	conflicts = loriini
+	options = !debug
+	source_x86_64 = loriini-bin-0.1.7.tar.gz::https://github.com/kolja/loriini/releases/download/v0.1.7/loriini-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = LICENSE-0.1.7.md::https://github.com/kolja/loriini/raw/v0.1.7/LICENSE.md
+	sha256sums_x86_64 = 3e4261aa2fba161a53a74774e0d0a5521722e0759da55b18fdfa23ba09348cd0
+	sha256sums_x86_64 = SKIP
+
+pkgname = loriini-bin
