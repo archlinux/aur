@@ -1,6 +1,6 @@
 # Maintainer: CPT_Dawn <dawnsp0456@gmail.com>
 pkgname=arch-sense
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Acer Predator PH16-71 control center for Arch Linux — thermal profiles, fan control, battery management, and keyboard RGB via a Rust TUI"
 arch=('x86_64')
@@ -15,8 +15,8 @@ optdepends=(
 
 install=arch-sense.install
 
-source=("arch-sense-1.3.1.tar.gz::https://github.com/CPT-Dawn/Arch-Sense/archive/refs/tags/v1.3.1.tar.gz")
-sha256sums=('54892f6cd3c4e2a2f87338146cd82d9dbf809011b57eeebd925bc280e67418cf')
+source=("arch-sense-1.3.2.tar.gz::https://github.com/CPT-Dawn/Arch-Sense/archive/refs/tags/v1.3.2.tar.gz")
+sha256sums=('1858e8386a6bd36279e440ab60de1b1a3c6bb104b7433aa8c62f280f09cf4f4a')
 
 prepare() {
   cd "Arch-Sense-${pkgver}"
