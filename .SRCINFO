@@ -1,0 +1,18 @@
+pkgbase = gomuks-web-bin
+	pkgdesc = A Matrix client written in Go using mautrix-go. Web Frontend.
+	pkgver = 0.2604.0
+	pkgrel = 1
+	url = https://github.com/gomuks/gomuks
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = AGPL-3.0-only
+	provides = gomuks-web
+	conflicts = gomuks-web
+	options = !debug
+	source = gomuks-source::https://github.com/gomuks/gomuks/archive/refs/tags/v0.2604.0.tar.gz
+	b2sums = 3b0f2efd05d2aac40d1185e218e9160fb5971c5c4973d5c023cb461886e853f40e311362b18296e69594fe9b8b40b2c5e7322591cbd138acd8e75b413fe2b984
+	source_x86_64 = gomuks.bin::https://github.com/gomuks/gomuks/releases/download/v0.2604.0/gomuks-amd64
+	b2sums_x86_64 = e4b3fc71973c9c4a67247fb60d570929c6fe25f34e94443464543398a1fca81d05361804b7743913b62952d5e7bb91cc8230f8c9bc806cdb88c6b80968e8d329
+
+pkgname = gomuks-web-bin
