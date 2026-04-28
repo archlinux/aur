@@ -1,12 +1,12 @@
 pkgbase = mal-tui
 	pkgdesc = A terminal client for MyAnimeList (integrated with ani-cli) written in rust
-	pkgver = 1.0.5
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/swstl/mal-cli
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = glibc
-	source_x86_64 = mal-tui-1.0.5::https://github.com/swstl/mal-cli/releases/download/v1.0.5/mal-tui-linux-x86_64
-	sha256sums_x86_64 = 5e4026990c4cf1f9216fabd2f6914c1d962a18642c6dfdf8242e6d51ba7cd360
+	source_x86_64 = mal-tui-1.1.0::https://github.com/swstl/mal-cli/releases/download/v1.1.0/mal-tui-linux-x86_64
+	sha256sums_x86_64 = c1b6936711f7a1ef6e1fd77961fd56383430b2ef2d0a60ad4b59f2e07861c5d1
 
 pkgname = mal-tui
