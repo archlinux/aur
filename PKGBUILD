@@ -1,7 +1,7 @@
 # Maintainer: Jussi Eloranta <eloranta@aa6kj.hopto.org>
 pkgname=qk4-git
 pkgver=rv0.5.0.beta.6.0.g5d68e84
-pkgrel=4
+pkgrel=5
 pkgdesc="Remote control software for Elecraft K4 radio."
 arch=('any')
 url="https://github.com/mikeg-dal/QK4"
