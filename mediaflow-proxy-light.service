@@ -1,0 +1,34 @@
+[Unit]
+Description=MediaFlow Proxy Light - high-performance Rust streaming proxy
+Documentation=https://github.com/mhdzumair/mediaflow-proxy-light
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mediaflow-proxy-light
+Group=mediaflow-proxy-light
+EnvironmentFile=/etc/mediaflow-proxy-light/mediaflow-proxy-light.env
+ExecStart=/usr/bin/mediaflow-proxy-light
+WorkingDirectory=/var/lib/mediaflow-proxy-light
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+# Security options
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ReadWritePaths=/var/lib/mediaflow-proxy-light
+
+[Install]
+WantedBy=multi-user.target

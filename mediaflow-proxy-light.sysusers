@@ -1,0 +1,2 @@
+# Create mediaflow-proxy-light system user
+u mediaflow-proxy-light - "MediaFlow Proxy Light daemon user" "/var/lib/mediaflow-proxy-light"

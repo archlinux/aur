@@ -1,0 +1,4 @@
+# Persistent runtime/state directory
+d /var/lib/mediaflow-proxy-light 0750 mediaflow-proxy-light mediaflow-proxy-light -
+# Configuration directory
+d /etc/mediaflow-proxy-light    0750 root mediaflow-proxy-light -
