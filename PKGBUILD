@@ -3,7 +3,8 @@
 _pkgname="epson-pc-fax"
 pkgname="${_pkgname}-bin"
 pkgver=1.1.2_1
-pkgrel=2
+_pkgver="${pkgver//_/-}"
+pkgrel=3
 pkgdesc="Epson PC-FAX driver used with CUPS"
 arch=(
   'x86_64'
@@ -16,10 +17,11 @@ license=(
 )
 depends=(
   'cups'
-  'gcc-libs'
   'ghostscript'
   'glibc'
   'libcups'
+  'libgcc'
+  'libstdc++'
 )
 makedepends=(
   # 'curl'
@@ -31,26 +33,29 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_pkgsrc="${_pkgname}-${pkgver}"
+source_x86_64=(
+  "https://download3.ebz.epson.net/dsc/f/03/00/16/72/91/2f2b533c9f2d7b83d863d45f5d15fdf66dac8b79/${_pkgname}_${_pkgver}_amd64.deb"
+)
+noextract=(
+  "${source_x86_64[@]##*/}"
+)
+sha256sums_x86_64=('c68e5e3cd6e4800212df329326a4f524f2d7c1a61a253be4030e7d25431a2a26')
 # DLAGENTS+=(
 #   'https::/usr/bin/curl -A "Mozilla" -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
 # )
-source_x86_64=(
-  "${_pkgsrc}-x86_64.deb::https://download3.ebz.epson.net/dsc/f/03/00/16/72/91/2f2b533c9f2d7b83d863d45f5d15fdf66dac8b79/${_pkgname}_${pkgver//_/-}_amd64.deb"
-)
-noextract=(
-  "${source_x86_64[@]%%::*}"
-)
-sha256sums_x86_64=('c68e5e3cd6e4800212df329326a4f524f2d7c1a61a253be4030e7d25431a2a26')
 
 prepare() {
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   cd "${srcdir}"
-  mkdir -p "${_pkgsrc}-${CARCH}"
-  bsdtar -xf "${_pkgsrc}-${CARCH}.deb" data.tar.*
-  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
+  mkdir -p "${source_artifact%.deb}"
+  bsdtar -xf "${source_artifact}" data.tar.*
+  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${source_artifact%.deb}"
   rm -f data.tar.*
 
-  cd "${_pkgsrc}-${CARCH}"
+  cd "${source_artifact%.deb}"
   find . -type f -name '*.gz' -exec \
     gzip -fd "{}" \;
 
@@ -60,7 +65,11 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}/opt/${_pkgname}"
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
+  cd "${srcdir}/${source_artifact%.deb}/opt/${_pkgname}"
   find "bin" -type f -exec \
     install -vDm755 "{}" "${pkgdir}/usr/{}" \;
 
