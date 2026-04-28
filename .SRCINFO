@@ -1,6 +1,6 @@
 pkgbase = wallrift
 	pkgdesc = Wayland wallpaper engine with smooth cursor-based parallax effect
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/saber-88/wallrift
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = wallrift
 	depends = libglvnd
 	provides = wallrift
 	conflicts = wallrift-git
-	source = wallrift-1.1.1.tar.gz::https://github.com/saber-88/wallrift/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 66b5f5b6ad60d569e7e78d079165e83a24219ef9345a340f2574a86138a5c62f
+	source = wallrift-1.1.2.tar.gz::https://github.com/saber-88/wallrift/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 1b8c6cbd45914f8275005474e2757de713ade47ad3397b488c7ee9fb6c2667dd
 
 pkgname = wallrift
