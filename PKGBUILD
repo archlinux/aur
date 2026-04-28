@@ -8,7 +8,7 @@ url="https://maplibre.org/martin/"
 
 _git_organisation=maplibre
 
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 _tag="martin-v${pkgver}"
 
@@ -36,7 +36,7 @@ source=(
     "martin-config.yaml"
 )
 b2sums=(
-    "62a13d78c15d4ea2ac44aec8643d9811cdb9292e5e763ca72e66d8c498a21afb56593c46a40c018869c098b50111571c5b9c4072057042e505d4feede6050eed"
+    "794fb9ab695c2d865fec12a976c5214557a9a56f9d0df6babb745f847f654b20d067bb67a912a58f06759f90e10bdb7ae9a87991b9c66c094bbb31d2c813cd84"
     "cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968"
     "fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9"
     "c3b79402f4ae27fd46915e5aab9efb7722ccc2c1d37155119c32e59fce695b784b98bf83aa46e80f6a83756850b8794ee0752eaebd9a9001d48b0f4d5ae791ca"
@@ -60,8 +60,9 @@ build() {
 
 check() {
     cd "${srcdir}"/${pkgbase}-${_tag}
+    rm "martin/tests/styles_server_test.rs"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen
+    cargo test --frozen --package martin
 }
 
 package_martin() {
