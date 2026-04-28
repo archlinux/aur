@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=24
+pkgrel=25
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -21,6 +21,7 @@ optdepends=(
     'noto-fonts: Base fonts' 'noto-fonts-cjk: CJK fonts' 'noto-fonts-emoji: Emoji fonts'
     'ttf-jetbrains-mono-nerd: Nerd fonts' 'ttf-jetbrains-maple-mono-nf-xx-xx: Custom font' 'ttf-lxgw-wenkai-screen: Chinese font'
     'nautilus: File manager' 'thunar: Alternative file manager' 'file-roller: Archive manager'
+    'icoextract: exe thumbnailer' 
     'gvfs-smb: SMB support' 'gvfs-mtp: MTP support' 'gvfs-gphoto2: PTP support'
     'nautilus-open-any-terminal: Nautilus terminal extension' 'gnome-keyring: Keyring service'
     'tumbler: Thumbnail service' 'poppler-glib: PDF rendering' 'ffmpegthumbnailer: Video thumbnails'

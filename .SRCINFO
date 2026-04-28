@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
 	pkgver = r1.1234567
-	pkgrel = 24
+	pkgrel = 25
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
@@ -41,6 +41,7 @@ pkgbase = shorin-niri-git
 	optdepends = nautilus: File manager
 	optdepends = thunar: Alternative file manager
 	optdepends = file-roller: Archive manager
+	optdepends = icoextract: exe thumbnailer
 	optdepends = gvfs-smb: SMB support
 	optdepends = gvfs-mtp: MTP support
 	optdepends = gvfs-gphoto2: PTP support
