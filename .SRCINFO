@@ -9,6 +9,6 @@ pkgbase = apt-fake-ubuntu
 	depends = yay
 	depends = pacman
 	source = apt-fake
-	sha256sums = SKIP
+	sha256sums = 27a144feeb7a45ead095849f18fa5e09309c7d1f1d4d5013df5abcc2ccf3b8bd
 
 pkgname = apt-fake-ubuntu
