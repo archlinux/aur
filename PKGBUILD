@@ -5,7 +5,7 @@
 
 _pkgname=freesurfer
 pkgname=${_pkgname}-bin
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="An open source software suite for processing and analyzing (human) brain MRI images. (Precompiled binary version)"
 arch=("x86_64")
@@ -53,7 +53,7 @@ install=${_pkgname}.install
 options=(!strip)
 source=("https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/${pkgver}/freesurfer-Rocky8-${pkgver}-1.x86_64.rpm"
         "freesurfer.sh")
-b2sums=('6e2dade11aadc159968039259fad3323f9cd91983e4ef912603a56d09187d990cbf17c6d326c6d0f23dad519f3a4a38676656927d92cdcf0ea555193deb71849'
+b2sums=('7c86ef24b7734b616339109cd30cc37252ad270c7caa45f1c136475766d86352db019bf704303414abcc1bb8aea7cd2150b29f7b0981616326634a1d03045c43'
         '43752fe3e8a6ce74ae0638abbfc4c2f5ede96a46220c5114af14b4ffc0ac391359c2440dfd41e6e63518d1e16e3b9e202370182303e5f12ed932c6415bf1fe60')
 
 package() {
