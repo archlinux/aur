@@ -1,7 +1,8 @@
+#Maintainer: Chao Guo <jeffguorg@gmail.com>
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=nutstore
-pkgver=6.4.1
+pkgver=6.4.3
 pkgrel=1
 pkgdesc='a cloud service that lets you sync and share files anywhere.'
 arch=(x86_64 aarch64)
@@ -11,7 +12,7 @@ depends=(
     libappindicator-gtk3
     libnotify
     python-gobject
-    webkit2gtk
+    webkit2gtk-4.1
 )
 optdepends=('nautilus-nutstore: Nautilus plugin')
 source=(nutstore license)
@@ -19,8 +20,8 @@ source_x86_64=("https://pkg-cdn.jianguoyun.com/static/exe/st/$pkgver/nutstore_cl
 source_aarch64=("https://pkg-cdn.jianguoyun.com/static/exe/installer/$pkgver/nutstore_client-$pkgver-linux-aarch64-public.tar.gz")
 sha256sums=('a4aa358d45b306cbeac449f2256f00a5b81a95197394eba7efa96eaae820cf5b'
             'd320e071403cdad44881beb880f5ccfa8ec0a625718a9f572dce0cc9fff81ade')
-sha256sums_x86_64=('c4c4c691ffcbaee7bc69cc116ab104315919923114ed4ce26e3227edeed7a16a')
-sha256sums_aarch64=('c2d6c3ca028b970289370f14995782e8b4151d5834254538fc82e4d42ef5e342')
+sha256sums_x86_64=('b06dcdad64cfd63a0aced90d75dcf3f31d713d583da9920a94a23bb48c3fdb12')
+sha256sums_aarch64=('d95a04abc39a63e7d1500c10d288fafc4ea9f986c23cc87c8f224bfb84161df6')
 
 build() {
     cd $srcdir/gnome-config
