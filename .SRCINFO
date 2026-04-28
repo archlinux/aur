@@ -1,0 +1,18 @@
+pkgbase = hid-pulsar-dkms-git
+	pkgdesc = Linux HID kernel driver for Pulsar gaming mice (X2 V2, X2H, X2A, Xlite V3, Kysona M600, ATK VXE R1 SE+, VXE Dragonfly R1 Pro)
+	pkgver = r3.eb0d9dd
+	pkgrel = 1
+	url = https://gitlab.com/NikolasK-source/hid-pulsar
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	provides = hid-pulsar
+	provides = hid-pulsar-dkms
+	conflicts = hid-pulsar
+	conflicts = hid-pulsar-dkms
+	source = git+https://gitlab.com/NikolasK-source/hid-pulsar.git
+	sha256sums = SKIP
+
+pkgname = hid-pulsar-dkms-git
