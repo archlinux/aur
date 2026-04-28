@@ -1,0 +1,26 @@
+[Unit]
+Description=MCPProxy - Smart proxy for AI agents using Model Context Protocol
+Documentation=https://mcpproxy.app https://github.com/smart-mcp-proxy/mcpproxy-go
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mcpproxy serve --config=%h/.mcpproxy/mcp_config.json --data-dir=%h/.mcpproxy
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=true
+ProtectSystem=strict
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+Environment=HEADLESS=1
+
+[Install]
+WantedBy=default.target
