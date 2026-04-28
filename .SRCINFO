@@ -1,0 +1,14 @@
+pkgbase = mainstream-toolkit
+	pkgdesc = Mainstream OS Toolkit Dependencies
+	pkgver = 1.0
+	pkgrel = 4
+	arch = any
+	groups = mainstream
+	license = None
+	depends = upower
+	depends = wtype
+	depends = ydotool
+	provides = illogical-impulse-toolkit
+	replaces = illogical-impulse-toolkit
+
+pkgname = mainstream-toolkit
