@@ -2,7 +2,7 @@
 pkgname=owasp-core-ruleset
 _name=coreruleset
 pkgver=4.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OWASP ModSecurity Core Rule Set"
 arch=('any')
 url="https://github.com/coreruleset/coreruleset/"
