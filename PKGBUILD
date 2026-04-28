@@ -12,8 +12,8 @@ depends=(
   'glib2'
   'gcc-libs'
 )
-source=("https://github.com/regisx001/worklog/releases/download/app-v0.5.0/worklog_0.5.0_amd64.deb")
-sha256sums=('__SHA256__')
+source=("https://github.com/regisx001/worklog/releases/download/app-v${pkgver}/worklog_${pkgver}_amd64.deb")
+sha256sums=('__PUT_REAL_SHA256_HERE__')
 
 package() {
   cd "$srcdir"
