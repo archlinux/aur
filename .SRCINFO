@@ -1,0 +1,21 @@
+pkgbase = ibm-bobide
+	pkgdesc = IBM Bob Shell - A highly skilled software engineering assistant (Unofficial AUR Package)
+	pkgver = 1.109.5+bob1.0.1
+	pkgrel = 1
+	url = https://bob.ibm.com
+	install = ibm-bobide.install
+	arch = x86_64
+	license = custom:IBM-Proprietary
+	makedepends = rpmextract
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = ibm-bob
+	conflicts = ibm-bob
+	conflicts = ibm-bob-bin
+	source = LICENSE
+	source = README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ibm-bobide
