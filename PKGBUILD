@@ -7,18 +7,9 @@
 _prefix="/opt/comfyui"
 # ──────────────────────────────────────────────────────────────────────
 
-# ── GPU type ─────────────────────────────────────────────────────────
-# pip command to install PyTorch in the venv.
-# Adjust for your GPU:
-#   ROCm (AMD RX 7000+) : torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm7.2
-#   CUDA (NVIDIA)       : torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
-#   CPU only            : torch torchvision torchaudio
-_torch_pkgs="torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm7.2"
-# ──────────────────────────────────────────────────────────────────────
-
 pkgname=comfyui
 pkgver=0.20.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface"
 arch=('x86_64')
 url="https://github.com/Comfy-Org/ComfyUI"
@@ -27,6 +18,7 @@ install=comfyui.install
 
 depends=(
     'python'
+    'pciutils'
 )
 
 makedepends=()
@@ -59,12 +51,10 @@ build() {
         cp --remove-destination "$(readlink -f "$srcdir/$f")" "$srcdir/$f"
     done
 
-    # Generate processed files from templates
-    sed -i "s|_PREFIX_|$_prefix|g; s|_TORCH_PKGS_|$_torch_pkgs|g" \
-        "$srcdir/comfyui.install" \
-        "$srcdir/comfyui.sh"
-
+    # Inject _prefix into source files
     sed -i "s|_PREFIX_|$_prefix|g" \
+        "$srcdir/comfyui.install" \
+        "$srcdir/comfyui.sh" \
         "$srcdir/comfyui.service"
 
     # Swap the .install for pacman, saving the template

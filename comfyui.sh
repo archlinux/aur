@@ -17,10 +17,8 @@ if ! "$_prefix/venv/bin/python" -c "import torch" 2>/dev/null; then
     echo "Error: PyTorch is not installed in the venv."
     echo "The post-install setup may have failed or was interrupted."
     echo ""
-    echo "To retry the installation, run:"
-    echo "  sudo PIP_CACHE_DIR=$_prefix/.pip-cache $_prefix/venv/bin/pip install _TORCH_PKGS_"
-    echo "  sudo PIP_CACHE_DIR=$_prefix/.pip-cache $_prefix/venv/bin/pip install -r $_prefix/requirements.txt"
-    echo "  sudo chown -R comfy:comfy $_prefix"
+    echo "To retry, reinstall the package:"
+    echo "  sudo pacman -S comfyui"
     exit 1
 fi
 

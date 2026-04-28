@@ -1,3 +1,13 @@
+_detect_gpu() {
+    if lspci | grep -i "VGA\|3D" | grep -qi "AMD\|Radeon"; then
+        echo "rocm"
+    elif lspci | grep -i "VGA\|3D" | grep -qi "NVIDIA"; then
+        echo "cuda"
+    else
+        echo "cpu"
+    fi
+}
+
 _comfyui_setup() {
     local pip="_PREFIX_/venv/bin/pip"
     export PIP_CACHE_DIR="_PREFIX_/.pip-cache"
@@ -6,17 +16,35 @@ _comfyui_setup() {
     if "_PREFIX_/venv/bin/python" -c "import torch" 2>/dev/null; then
         echo ":: PyTorch already installed, skipping download."
     else
-        echo ":: Installing PyTorch and dependencies in the venv..."
+        local gpu="${COMFYUI_GPU:-$(_detect_gpu)}"
+        local torch_args="torch torchvision torchaudio"
+
+        if [ -n "$COMFYUI_GPU" ]; then
+            echo ":: GPU override: COMFYUI_GPU=$COMFYUI_GPU"
+        fi
+
+        case "$gpu" in
+            rocm)
+                echo ":: Installing PyTorch with ROCm 7.2 support."
+                torch_args="$torch_args --index-url https://download.pytorch.org/whl/rocm7.2"
+                ;;
+            cuda)
+                echo ":: Installing PyTorch with CUDA 13.0 support."
+                torch_args="$torch_args --extra-index-url https://download.pytorch.org/whl/cu130"
+                ;;
+            *)
+                echo ":: No supported GPU detected, installing CPU-only PyTorch."
+                ;;
+        esac
+
         echo ":: This may take a while (several GB to download)."
 
-        if ! "$pip" install _TORCH_PKGS_; then
+        if ! "$pip" install $torch_args; then
             echo ""
             echo ":: ERROR: PyTorch installation failed."
             echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
-            echo ":: To retry, run:"
-            echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install _TORCH_PKGS_"
-            echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install -r _PREFIX_/requirements.txt"
-            echo "::   sudo chown -R comfy:comfy _PREFIX_"
+            echo ":: To retry, reinstall the package:"
+            echo "::   sudo pacman -S comfyui"
             return 1
         fi
     fi
@@ -26,9 +54,8 @@ _comfyui_setup() {
         echo ""
         echo ":: ERROR: ComfyUI dependencies installation failed."
         echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
-        echo ":: To retry, run:"
-        echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install -r _PREFIX_/requirements.txt"
-        echo "::   sudo chown -R comfy:comfy _PREFIX_"
+        echo ":: To retry, reinstall the package:"
+        echo "::   sudo pacman -S comfyui"
         return 1
     fi
 
@@ -63,6 +90,9 @@ post_install() {
         echo "::   systemctl enable --now comfyui"
         echo "::"
         echo ":: Edit /etc/comfyui/extra_model_paths.yaml to configure model paths."
+        echo "::"
+        echo ":: To override GPU detection (rocm, cuda, cpu):"
+        echo "::   sudo COMFYUI_GPU=cuda pacman -S comfyui"
     fi
 }
 
