@@ -1,6 +1,6 @@
 pkgbase = writers-suite-bin
 	pkgdesc = Writer's Suite desktop shell + helper + WASM UI (prebuilt)
-	pkgver = 0.809
+	pkgver = 0.819
 	pkgrel = 1
 	url = http://softenough.com
 	arch = x86_64
@@ -35,6 +35,6 @@ pkgbase = writers-suite-bin
 	provides = writers-suite
 	conflicts = writers-suite
 	source = WriterSuite-bin.tar.gz::https://softenough.com/download/aur/bin/WriterSuite-bin.tar.gz
-	sha256sums = bc91c4ba03e0bd338b464cc171e24c8f6c2977d390ec43a2a79108f3783db9a0
+	sha256sums = 22beb37deb06c03f5739a1599a0c72efd080429ded523ca9318664dae64c3ddd
 
 pkgname = writers-suite-bin
