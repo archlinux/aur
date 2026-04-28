@@ -1,0 +1,20 @@
+pkgbase = mainstream-microtex-git
+	pkgdesc = MicroTeX for Mainstream OS dotfiles.
+	pkgver = r494.0e3707f
+	pkgrel = 4
+	url = https://github.com/NanoMichael/MicroTeX
+	arch = x86_64
+	groups = mainstream
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = tinyxml2
+	depends = gtkmm3
+	depends = gtksourceviewmm
+	depends = cairomm
+	provides = illogical-impulse-microtex-git
+	replaces = illogical-impulse-microtex-git
+	source = git+https://github.com/NanoMichael/MicroTeX.git
+	sha256sums = SKIP
+
+pkgname = mainstream-microtex-git
