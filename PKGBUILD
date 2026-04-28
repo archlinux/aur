@@ -2,7 +2,7 @@
 
 pkgname=termul-manager
 pkgver=0.3.2
-pkgrel=8
+pkgrel=9
 pkgdesc='Project-aware terminal that treats workspaces as first-class citizens'
 arch=('x86_64')
 url='https://github.com/gnoviawan/termul'
@@ -31,7 +31,7 @@ source=(
 sha256sums=(
   '34883aed783084c4ae25564df09422bed05941eb75175f2644a91a21c342c328'
   'e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9'
-  '80dde8f7abcfbf6d57266f9415b79e363c2c552d35cdadf21c30fb6d1f026359'
+  'ff9fc001c5824d2c889f9a719439d113874724fd5d8940036e7c586a36663afd'
 )
 
 prepare() {
