@@ -2,7 +2,7 @@ pkgbase = zen-adblocker-git
 	pkgdesc = An open-source system-wide ad-blocker and privacy guard.
 	pkgver = 0.21.0
 	pkgrel = 1
-	url = https://zenprivacy.net/
+	url = https://irbis.sh/zen
 	arch = any
 	license = MIT
 	makedepends = npm
@@ -18,7 +18,7 @@ pkgbase = zen-adblocker-git
 	depends = webkit2gtk
 	provides = zen-adblocker=0.21.0
 	conflicts = zen-adblocker
-	source = zen-adblocker.git::git+https://github.com/ZenPrivacy/zen-desktop.git
+	source = zen-adblocker.git::git+https://github.com/irbis-sh/zen-desktop.git
 	sha256sums = SKIP
 
 pkgname = zen-adblocker-git

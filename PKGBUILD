@@ -6,8 +6,8 @@ _nodeversion=22
 pkgrel=1
 pkgdesc="An open-source system-wide ad-blocker and privacy guard."
 arch=('any')
-url="https://zenprivacy.net/"
-_ghurl="https://github.com/ZenPrivacy/zen-desktop"
+url="https://irbis.sh/zen"
+_ghurl="https://github.com/irbis-sh/zen-desktop"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
