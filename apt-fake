@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# --- CONFIGURAZIONE COLORI (STILE DEBIAN) ---
+# --- COLOR CONFIGURATION (DEBIAN STYLE) ---
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-# --- CONTROLLO DIPENDENZE ---
+# --- DEPENDENCY CHECK ---
 if ! command -v yay &> /dev/null && ! command -v pacman &> /dev/null; then
-    echo -e "${RED}E: Sistema di gestione pacchetti non trovato!${NC}"
+    echo -e "${RED}E: Package management system not found!${NC}"
     exit 1
 fi
 
@@ -15,88 +15,88 @@ COMMAND="$1"
 
 case "$COMMAND" in
     update)
-        echo -e "${GREEN}Lettura elenco dei pacchetti... Fatto${NC}"
-        # Sincronizza i database (Repo + AUR)
+        echo -e "${GREEN}Reading package lists... Done${NC}"
+        # Syncing databases (Repos + AUR)
         yay -Sy
         ;;
 
     upgrade|dist-upgrade)
-        echo -e "${GREEN}Lettura elenco dei pacchetti... Fatto${NC}"
-        echo -e "${GREEN}Calcolo dell'aggiornamento... Fatto${NC}"
-        # Aggiorna tutto il sistema
+        echo -e "${GREEN}Reading package lists... Done${NC}"
+        echo -e "${GREEN}Calculating upgrade... Done${NC}"
+        # Full system upgrade
         yay -Syu
         ;;
 
     install)
         shift
         if [ -z "$1" ]; then
-            echo -e "${RED}E: È necessario specificare almeno un pacchetto da installare${NC}"
+            echo -e "${RED}E: You must specify at least one package to install${NC}"
             exit 1
         fi
-        echo -e "${GREEN}Lettura elenco dei pacchetti... Fatto${NC}"
-        echo -e "${GREEN}Generazione albero delle dipendenze... Fatto${NC}"
-        # Prova con pacman, se fallisce (pacchetto non trovato) usa yay
+        echo -e "${GREEN}Reading package lists... Done${NC}"
+        echo -e "${GREEN}Building dependency tree... Done${NC}"
+        # Fallback logic: try pacman first, then yay
         sudo pacman -S "$@" || yay -S "$@"
         ;;
 
     remove)
         shift
-        echo -e "${GREEN}Rimozione in corso...${NC}"
+        echo -e "${GREEN}Removing packages...${NC}"
         sudo pacman -Rs "$@"
         ;;
 
     purge)
         shift
-        echo -e "${GREEN}Rimozione completa (inclusi file di configurazione)...${NC}"
+        echo -e "${GREEN}Purging packages and configuration files...${NC}"
         sudo pacman -Rns "$@"
         ;;
 
     autoremove)
-        echo -e "${GREEN}Lettura elenco dei pacchetti... Fatto${NC}"
+        echo -e "${GREEN}Reading package lists... Done${NC}"
         ORPHANS=$(pacman -Qdtq)
         if [ -n "$ORPHANS" ]; then
             sudo pacman -Rns $ORPHANS
         else
-            echo "0 aggiornati, 0 installati, 0 da rimuovere e 0 non aggiornati."
+            echo "0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded."
         fi
         ;;
 
     search)
         shift
-        # Cerca ovunque (Repo + AUR)
+        # Search everywhere (Repos + AUR)
         yay -Ss "$@"
         ;;
 
     show)
         shift
-        # Mostra info dal database locale o dai repo
+        # Show info from local DB or repos
         pacman -Si "$@" || yay -Si "$@"
         ;;
 
     clean)
-        echo -e "${GREEN}Pulizia della cache...${NC}"
+        echo -e "${GREEN}Cleaning package cache...${NC}"
         sudo pacman -Scc
         ;;
 
     help|--help)
-        echo "apt 2.10.1 (Arch/CachyOS Wrapper) - Licenza GPL"
-        echo "Utilizzo: apt [comando] [pacchetto]"
+        echo "apt 2.10.1 (Arch/CachyOS Wrapper) - GPL License"
+        echo "Usage: apt [command] [package]"
         echo ""
-        echo "Comandi disponibili:"
-        echo "  update      - Sincronizza i repository"
-        echo "  upgrade     - Esegue l'aggiornamento del sistema"
-        echo "  install     - Installa nuovi pacchetti (Repo + AUR)"
-        echo "  remove      - Rimuove pacchetti"
-        echo "  purge       - Rimuove pacchetti e file di configurazione"
-        echo "  autoremove  - Pulisce i pacchetti orfani"
-        echo "  search      - Cerca pacchetti"
-        echo "  show        - Mostra dettagli del pacchetto"
-        echo "  clean       - Svuota la cache dei pacchetti scaricati"
+        echo "Available commands:"
+        echo "  update      - Synchronize repository databases"
+        echo "  upgrade     - Perform a full system upgrade"
+        echo "  install     - Install new packages (Repo + AUR)"
+        echo "  remove      - Remove packages"
+        echo "  purge       - Remove packages and their config files"
+        echo "  autoremove  - Remove unused orphan packages"
+        echo "  search      - Search for packages"
+        echo "  show        - Show package details"
+        echo "  clean       - Clear the local package cache"
         ;;
 
     *)
-        echo -e "${RED}E: Operazione $COMMAND non valida${NC}"
-        echo "Usa 'apt help' per vedere i comandi disponibili."
+        echo -e "${RED}E: Invalid operation $COMMAND${NC}"
+        echo "Use 'apt help' to see available commands."
         exit 1
         ;;
 esac
