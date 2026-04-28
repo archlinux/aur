@@ -8,7 +8,7 @@ pkgname=github-${_pkgname}-bin
 pkgdesc="GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal."
 
 pkgver=1.0.37
-pkgrel=1
+pkgrel=2
 
 arch=('x86_64' 'aarch64')
 
@@ -40,6 +40,18 @@ package() {
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
+	msg2 "Generating autocompletions for Bash"
+	"${pkgdir}/usr/bin/copilot" completion bash > copilot
+	install -Dm644 copilot "${pkgdir}/usr/share/bash-completion/completions/copilot"
+
+	msg2 "Generating autocompletions for Zsh"
+	"${pkgdir}/usr/bin/copilot" completion zsh > _copilot
+	install -Dm644 _copilot "${pkgdir}/usr/share/zsh/site-functions/_copilot"
+
+	msg2 "Generating autocompletions Fish"
+	"${pkgdir}/usr/bin/copilot" completion fish > copilot.fish
+
+	install -Dm644 copilot.fish "${pkgdir}/usr/share/fish/completions/copilot.fish"
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 "CHANGELOG-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 
