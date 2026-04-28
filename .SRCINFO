@@ -1,0 +1,21 @@
+pkgbase = mainstream-widgets
+	pkgdesc = Mainstream OS Widget Dependencies
+	pkgver = 1.0
+	pkgrel = 8
+	arch = any
+	groups = mainstream
+	license = None
+	depends = fuzzel
+	depends = glib2
+	depends = imagemagick
+	depends = hypridle
+	depends = hyprlock
+	depends = hyprpicker
+	depends = songrec
+	depends = translate-shell
+	depends = wlogout
+	depends = libqalculate
+	provides = illogical-impulse-widgets
+	replaces = illogical-impulse-widgets
+
+pkgname = mainstream-widgets
