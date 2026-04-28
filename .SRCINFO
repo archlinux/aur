@@ -1,0 +1,18 @@
+pkgbase = mainstream-python
+	pkgdesc = Mainstream OS Python Dependencies
+	pkgver = 1.1
+	pkgrel = 6
+	arch = any
+	groups = mainstream
+	license = None
+	depends = clang
+	depends = uv
+	depends = gtk4
+	depends = libadwaita
+	depends = libsoup3
+	depends = libportal-gtk4
+	depends = gobject-introspection
+	provides = illogical-impulse-python
+	replaces = illogical-impulse-python
+
+pkgname = mainstream-python
