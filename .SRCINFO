@@ -1,7 +1,7 @@
 pkgbase = termul-manager
 	pkgdesc = Project-aware terminal that treats workspaces as first-class citizens
 	pkgver = 0.3.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/gnoviawan/termul
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,8 @@ pkgbase = termul-manager
 	depends = libsoup3
 	depends = webkit2gtk-4.1
 	source = termul-manager-0.3.2.tar.gz::https://github.com/gnoviawan/termul/archive/refs/tags/v0.3.2.tar.gz
+	source = disable-xterm-webgl.patch
 	sha256sums = 34883aed783084c4ae25564df09422bed05941eb75175f2644a91a21c342c328
+	sha256sums = e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9
 
 pkgname = termul-manager

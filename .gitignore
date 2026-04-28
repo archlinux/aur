@@ -3,3 +3,4 @@
 !/LICENSE
 !/PKGBUILD
 !/.SRCINFO
+!/disable-xterm-webgl.patch

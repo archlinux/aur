@@ -2,7 +2,7 @@
 
 pkgname=termul-manager
 pkgver=0.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Project-aware terminal that treats workspaces as first-class citizens'
 arch=('x86_64')
 url='https://github.com/gnoviawan/termul'
@@ -23,8 +23,14 @@ makedepends=(
   'npm'
   'pkgconf'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('34883aed783084c4ae25564df09422bed05941eb75175f2644a91a21c342c328')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  'disable-xterm-webgl.patch'
+)
+sha256sums=(
+  '34883aed783084c4ae25564df09422bed05941eb75175f2644a91a21c342c328'
+  'e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9'
+)
 
 prepare() {
   cd "termul-$pkgver"
@@ -32,6 +38,8 @@ prepare() {
   export CARGO_HOME="$srcdir/cargo-home"
   export HUSKY=0
   export npm_config_cache="$srcdir/npm-cache"
+
+  patch -Np1 < "$srcdir/disable-xterm-webgl.patch"
 
   npm ci
 
