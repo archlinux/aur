@@ -8,6 +8,7 @@ pkgdesc="A text-based terminal client for Ollama"
 arch=('any')
 url="https://github.com/ggozad/oterm"
 license=('MIT')
+
 depends=(
 	'python'
 	'python-httpx'
@@ -22,6 +23,7 @@ depends=(
 	'python-pyperclip'
 	'python-aiosqlite'
 	'python-aiosql'
+	'python-jsonref'
 	'python-packaging'
 	'python-dotenv'
 	'python-linkify-it-py'
@@ -31,13 +33,15 @@ depends=(
 	'python-fastmcp'
 )
 
-depends=(python-textual-image python-pydantic python-ollama oterm python-fastmcp python-rich python-typer python-mcp python-pillow python-textual python python-packaging python-httpx python-textualeffects python-dotenv python-aiosqlite)
-
 makedepends=(
+	'python-wheel'
+	'python-build'
 	'python-installer'
-	'uv'
-)
+	'python-hatchling'
+	'python-setuptools')
+
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ggozad/oterm/archive/refs/tags/$pkgver.tar.gz")
+b2sums=('508d440859390f6d556d3c9eb6b4ec5f6fce8e87c07f4a4ada6b5caa82ede9cc529833b2e223cddf253ce5518f0f08cd31cae92eb6cbb764ab1204f16889f703')
 
 build() {
 	cd "$pkgname-$pkgver" || exit
@@ -49,4 +53,3 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-b2sums=('508d440859390f6d556d3c9eb6b4ec5f6fce8e87c07f4a4ada6b5caa82ede9cc529833b2e223cddf253ce5518f0f08cd31cae92eb6cbb764ab1204f16889f703')
