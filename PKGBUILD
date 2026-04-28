@@ -1,7 +1,7 @@
 # Maintainer: jcearnal
 
 pkgname=kwin-scripts-magnetile
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="KWin script for snapping windows into zones with connected tile resizing"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('kwin>=6.4')
 makedepends=('kpackage' 'make' 'zip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jcearnal/magnetile/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5c5da717fcc09d3cb5fc10646fec5811c413b3f39a7b6f88cabb1e7543072dc6')
+sha256sums=('31f19161bb539a5fdb4a17f7b48b4267b2fb03e75680844e57e1a98a7309b9cc')
 
 build() {
     cd "magnetile-${pkgver}"
