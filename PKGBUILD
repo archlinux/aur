@@ -1,6 +1,6 @@
 # Maintainer: Bwc9876 <bwc9876@gmail.com>
 pkgname=owmods-cli-bin
-pkgver=0.15.4
+pkgver=0.15.5
 pkgrel=1
 pkgdesc="A CLI To Manage Outer Wilds Mods"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/ow-mods/ow-mod-man/tree/main/owmods_cli"
 license=('GPL3')
 depends=('glibc' 'gcc-libs' 'mono')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ow-mods/ow-mod-man/releases/download/cli_v$pkgver/owmods.tar.zst")
-sha256sums=('cca5710e82e074d546d2024c42f5234f3f05ba0a566925eda7e534a0c6a813fc')
+sha256sums=('a180bc6a3104f42e8c80c963ae383f3d7f1ca884f69d764ec9609792d6e01c4f')
 
 package() {
     cd "$srcdir/"
