@@ -22,11 +22,11 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.3.826
+pkgver=0.3.844
 pkgrel=1
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pnn64/deadsync/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6ceba46a72e8b3f5e5c557b62345bd1465d95de179ef44cb19b6e9fc734ec568')
+sha256sums=('7aaad445fff1d23a760f1779f1545196017222d5c76f12d3211f7c184dca8043')
 
 prepare() {
     cd "${srcdir}/deadsync-${pkgver}"
