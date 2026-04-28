@@ -1,0 +1,4 @@
+[maki-bin]
+source = "git"
+git = "https://github.com/tontinton/maki.git"
+prefix = "v"
