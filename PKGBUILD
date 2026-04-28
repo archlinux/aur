@@ -1,7 +1,7 @@
 # Maintainer: InTeaReable <leyn.the.cat@gmail.com>
 
 pkgname=nyado-git
-pkgver=0.2.0.r0.gaa95909
+pkgver=0.2.1.r0.g565919a
 pkgrel=1
 pkgdesc="A Rust todo-list manager with TUI (git version)"
 arch=('x86_64' 'aarch64')
@@ -18,13 +18,20 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/nyado"
+  export CARGO_TARGET_DIR="$srcdir/target"
+  cargo fetch --locked
+}
+
 build() {
   cd "$srcdir/nyado"
-  cargo build --release
+  export CARGO_TARGET_DIR="$srcdir/target"
+  cargo build --frozen --release --all-features
 }
 
 package() {
   cd "$srcdir/nyado"
-  install -Dm755 target/release/nyado "$pkgdir/usr/bin/nyado"
+  install -Dm755 "$CARGO_TARGET_DIR/release/nyado" "$pkgdir/usr/bin/nyado"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
