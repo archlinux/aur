@@ -12,16 +12,16 @@ provides=('openapi-oathkeeper')
 conflicts=('openapi-oathkeeper')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cerberauth/openapi-oathkeeper/releases/download/v${pkgver}/openapi-oathkeeper_Linux_arm64.tar.gz")
-sha256sums_aarch64=('ee76116436f388ffd5d7b7efcc4e9e77c7bb50f1a114ed9f83052d0d9a00e427')
+sha256sums_aarch64=('b560caacdeb568d1eab9da5e13278fa3a0d2c289d032447694b0ec72ec20c973')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cerberauth/openapi-oathkeeper/releases/download/v${pkgver}/openapi-oathkeeper_Linux_armv7.tar.gz")
-sha256sums_armv7h=('92f5e5425012d672e1a97b9d29fe918592b03f0088566daab3a53d6f5e7c0a36')
+sha256sums_armv7h=('d4e9bf58c1b7f2ba9a062b58550235f6d2084bc909ee0aaa6cf5987a97ad465c')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cerberauth/openapi-oathkeeper/releases/download/v${pkgver}/openapi-oathkeeper_Linux_i386.tar.gz")
-sha256sums_i686=('22d20be449b8157a4f1759792a2a674949c9d8d1e903a7b56db8b0aeaea48287')
+sha256sums_i686=('482daa65337dafd2aad3616039b34bf909bf8c3324b0b985d150be57f4d9653e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cerberauth/openapi-oathkeeper/releases/download/v${pkgver}/openapi-oathkeeper_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('a3673fffb7e390e9d90b5e00354016e7e211c11ca8a7068bb9fbe6f17034dcc5')
+sha256sums_x86_64=('cdba857c1ebfe919f7342d5dc8aabdebee612aa37742919f4a2472857cc4767e')
 
 package() {
   install -Dm755 "./openapi-oathkeeper" "${pkgdir}/usr/bin/openapi-oathkeeper"
