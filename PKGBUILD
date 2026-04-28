@@ -1,4 +1,4 @@
-# Maintainer: Dogfetus <dogfetus@hotmail.com>
+# Maintainer: swstl <swstl@hotmail.com>
 pkgname=mal-tui
 pkgver=1.1.0
 pkgrel=1
