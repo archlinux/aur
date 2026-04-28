@@ -5,7 +5,6 @@ pkgbase = adguard-tray
 	url = https://github.com/RiDDiX/adguard-tray
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -16,7 +15,7 @@ pkgbase = adguard-tray
 	depends = libnotify
 	optdepends = adguard-cli-bin: AdGuard CLI via AUR (alternatively install upstream: curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardCLI/release/install.sh | sh -s -- -v)
 	optdepends = qt6-svg: SVG icon theme support
-	source = adguard-tray::git+https://github.com/RiDDiX/adguard-tray.git#tag=v1.6.4
-	sha256sums = SKIP
+	source = adguard-tray-1.6.4.tar.gz::https://github.com/RiDDiX/adguard-tray/archive/v1.6.4.tar.gz
+	sha256sums = 88a0bf95dc545827904fa664bde664176a3c01d17d960240c0eff8c9de9c96ed
 
 pkgname = adguard-tray
