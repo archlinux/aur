@@ -8,7 +8,7 @@ pkgname=(
   webkit2gtk-docs
 )
 pkgver=2.50.6
-pkgrel=6
+pkgrel=7
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org"
 arch=(x86_64)
