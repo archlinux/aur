@@ -1,6 +1,6 @@
 pkgbase = relation-git
 	pkgdesc = Tiny proxy client based on sing-box
-	pkgver = 0.3.1.r186.g69642c7
+	pkgver = 0.3.2.r211.g5986ca7
 	pkgrel = 1
 	url = https://github.com/snbm1/relation
 	arch = x86_64
