@@ -1,41 +1,71 @@
 # Maintainer: nikren <superdug000@gmail.com>
 pkgname=anilinux-electron
 pkgver=1.0.2
-pkgrel=6
+pkgrel=1
 pkgdesc="Anime viewer for Linux with Shikimori OAuth integration"
 arch=('x86_64')
 url="https://github.com/Nikren2006/anilinux-electron"
 license=('MIT')
-depends=('mpv' 'fuse2')
-source=("$pkgname-$pkgver.AppImage::https://github.com/Nikren2006/anilinux-electron/releases/download/v$pkgver/Anilinux-electron-$pkgver.AppImage")
-sha256sums=('7993c68d8ca1e43a735cbfe5a358018e0db9ef4b170947f2f4fbddea62616d68')
-noextract=("$pkgname-$pkgver.AppImage")
+depends=(
+    gtk3
+    libnotify
+    nss
+    libxss
+    libxtst
+    xdg-utils
+    at-spi2-core
+    util-linux-libs
+    libsecret
+    mpv
+)
+optdepends=(
+    libappindicator-gtk3
+)
+options=('!strip')
+source=("https://github.com/Nikren2006/anilinux-electron/releases/download/v${pkgver}/anilinux-electron_${pkgver}_amd64.deb")
+sha256sums=('')
 
 package() {
-  install -d "$pkgdir/opt/$pkgname"
-  install -m644 "$pkgname-$pkgver.AppImage" "$pkgdir/opt/$pkgname/anilinux-electron.AppImage"
-  
-  # Create wrapper script
-  cat > "$pkgdir/opt/$pkgname/anilinux-electron" <<EOF
-#!/bin/bash
-chmod +x /opt/$pkgname/anilinux-electron.AppImage
-exec /opt/$pkgname/anilinux-electron.AppImage "\$@"
-EOF
-  chmod +x "$pkgdir/opt/$pkgname/anilinux-electron"
-  
-  # Install desktop entry
-  install -d "$pkgdir/usr/share/applications"
-  cat > "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
-[Desktop Entry]
-Name=Anilinux
-Comment=Anime viewer for Linux
-Exec=/opt/$pkgname/anilinux-electron
-Icon=$pkgname
-Type=Application
-Categories=Video;Player;
-EOF
-  
-  # Install symlink to binary
-  install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/anilinux-electron" "$pkgdir/usr/bin/$pkgname"
+    tar -xf data.tar.xz --directory "${pkgdir}"
+}
+
+# Maintainer: dmitrysvd
+
+pkgname=yandex-music
+pkgver=5.97.3
+pkgrel=1
+pkgdesc="Official Yandex Music App for Linux"
+arch=('x86_64')
+url="https://music.yandex.ru/download/"
+license=('unknown')
+depends=(
+    gtk3
+    libnotify
+    nss
+    libxss
+    libxtst
+    xdg-utils
+    at-spi2-core
+    util-linux-libs
+    libsecret
+)
+optdepends=(
+    libappindicator-gtk3
+)
+options=('!strip')
+source=("https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_amd64_${pkgver}.deb")
+sha256sums=('699201a71c487dd0626c41954229605435b476486a736bdb81d2b71834848179')
+
+package() {
+    tar -xf data.tar.xz --directory "${pkgdir}"
+
+    # Remove Cyrillic from the path
+    mv "${pkgdir}/opt/Яндекс Музыка" "${pkgdir}/opt/yandex-music"
+    sed -i 's|/opt/Яндекс Музыка|/opt/yandex-music|g' "${pkgdir}/usr/share/applications/yandexmusic.desktop"
+
+    # Fix menu category
+    sed -i 's|Categories=Audio;|Categories=AudioVideo;Audio;|g' "${pkgdir}/usr/share/applications/yandexmusic.desktop"
+
+    # Fix GTK version error for Gnome users
+    sed -i 's|Exec="/opt/yandex-music/yandexmusic"|Exec="/opt/yandex-music/yandexmusic" --gtk-version=3|' "${pkgdir}/usr/share/applications/yandexmusic.desktop"
 }
