@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'alsa-lib')
 provides=('rusty_keys')
 conflicts=('rusty_keys')
 source=("rusty_keys::${url}/releases/download/v${pkgver}/rusty_keys"
-        "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/main.tar.gz") # Pointing to main branch to get the new SVG immediately
+        "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP'
             'SKIP')
 
