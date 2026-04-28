@@ -1,0 +1,23 @@
+pkgbase = protokol-bin
+	pkgdesc = Free OSC, MIDI and Gamepad monitoring app by Hexler
+	pkgver = 0.6.5.136
+	pkgrel = 1
+	url = https://hexler.net/protokol
+	arch = x86_64
+	license = custom:Hexler-EULA
+	depends = glibc
+	depends = gcc-libs
+	depends = alsa-lib
+	provides = protokol
+	conflicts = protokol
+	options = !strip
+	source = protokol-0.6.5.136.zip::https://hexler.net/pub/protokol/protokol-0.6.5.136-linux-x64.zip
+	source = protokol.svg::https://hexler.net/site/images/logos/hexler_logo-white.svg
+	source = protokol.desktop
+	source = LICENSE
+	sha256sums = fc68d6eb6f7fed716051c2b20e2cf4b173bee2b82e0dbc4642d01190a78731c1
+	sha256sums = 55b858abcb46d071d8a014b9d410dd282bc539b7e29aef0363c9a4f11e0d52c8
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = protokol-bin

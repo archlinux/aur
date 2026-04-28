@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Protokol
+GenericName=OSC/MIDI/Gamepad Monitor
+Comment=Free OSC, MIDI and Gamepad monitoring app by Hexler
+Exec=/opt/protokol/Protokol
+Icon=protokol
+Terminal=false
+Categories=Audio;AudioVideo;Utility;
+Keywords=OSC;MIDI;Gamepad;Monitor;Hexler;
+StartupNotify=true
+StartupWMClass=Protokol
