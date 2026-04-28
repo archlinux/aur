@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonup-rs
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Automate the installation and update of Linux Gaming Compatibility tools"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(
 )
 makedepends=('cargo')
 source=("Protonup-rs-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d87d8b7729feea70b23fc91ec0ca0427be3c52d5c542e9dfa41e6111c648c33')
+sha256sums=('3336bf1453173eb2fe2dbb996c7a1b3690c84d076ebfe8d3a7a76e4f97f3fde8')
 
 prepare() {
   cd "Protonup-rs-$pkgver"
