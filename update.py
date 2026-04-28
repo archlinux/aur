@@ -9,11 +9,7 @@ import urllib.request
 import urllib.error
 import shutil
 
-REQUIRED_ASSET_NAMES = [
-    "omp-linux-x64",
-    "pi_natives.linux-x64-baseline.node",
-    "pi_natives.linux-x64-modern.node",
-]
+REQUIRED_ASSET_NAME = "omp-linux-x64.tar.gz"
 
 
 def fetch_json(url):
@@ -107,15 +103,13 @@ def main():
         sys.exit(0)
 
     assets = release_data.get("assets", [])
-    asset_shas = [
-        get_asset_sha256(assets, asset_name) for asset_name in REQUIRED_ASSET_NAMES
-    ]
+    archive_sha = get_asset_sha256(assets, REQUIRED_ASSET_NAME)
 
     license_bytes = fetch_bytes(
         f"https://raw.githubusercontent.com/can1357/oh-my-pi/v{latest_ver}/LICENSE"
     )
     license_sha = hashlib.sha256(license_bytes).hexdigest()
-    sha256sums = [*asset_shas, license_sha]
+    sha256sums = [archive_sha, license_sha]
 
     content = re.sub(
         r"^pkgver=\S+", f"pkgver={latest_ver}", content, flags=re.MULTILINE
