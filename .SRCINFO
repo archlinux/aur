@@ -1,6 +1,6 @@
 pkgbase = lufus
 	pkgdesc = Physical drive imaging and formatting utility for Linux written in Python
-	pkgver = 1.0.0_beta1
+	pkgver = 1.0.0b1.1
 	pkgrel = 1
 	url = https://github.com/Hog185/Lufus
 	arch = any
@@ -20,9 +20,9 @@ pkgbase = lufus
 	depends = exfatprogs
 	depends = e2fsprogs
 	depends = udftools
-	source = lufus-1.0.0_beta1.tar.gz::https://github.com/Hog185/Lufus/archive/refs/tags/v1.0.0b1.tar.gz
+	source = lufus-1.0.0b1.1.tar.gz::https://github.com/Hog185/Lufus/archive/refs/tags/v1.0.0b1.1.tar.gz
 	source = lufus.desktop
-	sha256sums = 8a711b7c4be1fcd6a1fbb57217f32bc3e5ca7c48baf6454bbbf8956c664dfe46
+	sha256sums = SKIP
 	sha256sums = b883901dc9f8b4baf354976c3782a8c3c14e0fe77b6d744479fa3a6a797d876c
 
 pkgname = lufus
