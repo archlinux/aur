@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=panache
-pkgver=2.38.0
+pkgver=2.40.0
 pkgrel=1
 pkgdesc='A language server, formatter, and linter for Pandoc, Quarto, and R Markdown'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=(gcc-libs libgcc_s.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('c5221c022cc38810ad0696ba2644f22ae4cb5717df9693e8b65305ca2d6678f9')
+sha256sums=('c052d455a23ce891de8c7e98d291b7d7444c79df91c8ce761231b657a7979ef0')
 
 prepare() {
 	cd "$_archive"
