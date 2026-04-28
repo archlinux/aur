@@ -1,0 +1,20 @@
+pkgbase = python-nv-one-logger-pytorch-lightning-integration
+	pkgdesc = NVIDIA OneLogger PyTorch Lightning integration: wires telemetry into Lightning trainers
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nv-one-logger
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.9
+	depends = python-nv-one-logger-core
+	depends = python-nv-one-logger-training-telemetry
+	depends = python-strenum
+	depends = python-lightning
+	source = nv-one-logger-pytorch-lightning-integration-v2.3.0.tar.gz::https://github.com/NVIDIA/nv-one-logger/archive/refs/tags/nv-one-logger-pytorch-lightning-integration-v2.3.0.tar.gz
+	sha256sums = d55275d6bd27cf7bc14d5a3c2d7abecbe630093196af5c4dfdc8af6e75e5680f
+
+pkgname = python-nv-one-logger-pytorch-lightning-integration
