@@ -1,6 +1,6 @@
 # Maintainer: fibsussy <noahlykins@gmail.com>
 pkgname=reaction-time-test
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="A CLI/TUI reaction time test inspired by Human Benchmark"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ elif [ "$_arch" = "aarch64" ]; then
 fi
 
 source=(
-    "reaction-time-test-${pkgver}-linux-${_arch}.tar.gz::https://github.com/fibsussy/reaction-time-test/releases/download/v${pkgver}/reaction-time-test-linux-${_arch}.tar.gz"
+    "reaction-time-test-${pkgver}-${_arch}.tar.gz::https://github.com/fibsussy/reaction-time-test/releases/download/v${pkgver}/reaction-time-test-${pkgver}-${_arch}.tar.gz"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/fibsussy/reaction-time-test/v${pkgver}/LICENSE"
 )
 sha256sums=('SKIP' 'SKIP')

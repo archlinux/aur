@@ -1,14 +1,14 @@
 pkgbase = reaction-time-test
 	pkgdesc = A CLI/TUI reaction time test inspired by Human Benchmark
-	pkgver = 0.0.0
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/fibsussy/reaction-time-test
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	options = !debug
-	source = reaction-time-test-0.0.0-linux-x86_64.tar.gz::https://github.com/fibsussy/reaction-time-test/releases/download/v0.0.0/reaction-time-test-linux-x86_64.tar.gz
-	source = LICENSE-0.0.0::https://raw.githubusercontent.com/fibsussy/reaction-time-test/v0.0.0/LICENSE
+	source = reaction-time-test-0.0.1-x86_64.tar.gz::https://github.com/fibsussy/reaction-time-test/releases/download/v0.0.1/reaction-time-test-0.0.1-x86_64.tar.gz
+	source = LICENSE-0.0.1::https://raw.githubusercontent.com/fibsussy/reaction-time-test/v0.0.1/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
