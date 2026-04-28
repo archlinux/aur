@@ -1,13 +1,13 @@
 pkgbase = kreya-bin
 	pkgdesc = GUI client for gRPC and REST APIs
 	pkgver = 1.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kreya.app/
 	arch = x86_64
 	license = custom
 	depends = hicolor-icon-theme
 	depends = gtk3
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = libx11
 	depends = libxcomposite
 	depends = libxdamage
