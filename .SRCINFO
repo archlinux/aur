@@ -1,6 +1,6 @@
 pkgbase = llama-benchy
 	pkgdesc = A simple CLI tool for benchmarking llama.cpp and other LLM inference engines
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/eugr/llama-benchy
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = llama-benchy
 	depends = python-numpy
 	depends = python-transformers
 	provides = llama-benchy
-	source = llama-benchy-0.3.6.tar.gz::https://github.com/eugr/llama-benchy/archive/refs/tags/v0.3.6.tar.gz
-	sha256sums = f55d4a612f41d2c6536dce42a4c7014aeccedf300b383abb597de932b419967f
+	source = llama-benchy-0.3.7.tar.gz::https://github.com/eugr/llama-benchy/archive/refs/tags/v0.3.7.tar.gz
+	sha256sums = 3d75fb0f45791217e3eb34b5f596c5f93d553b3a61e16fe80d947e13b058df2e
 
 pkgname = llama-benchy
