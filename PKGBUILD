@@ -1,7 +1,7 @@
 # Maintainer: Niklas Schönberg <niklas@foonly.dev>
 
 pkgname=jman
-pkgver=5.0.2
+pkgver=main
 pkgrel=1
 pkgdesc="A command-line utility designed to manage WordPress sites hosted on SpinupWP."
 url="https://github.com/JCO-Digital/${pkgname}"
@@ -13,28 +13,28 @@ depends=("wp-cli")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=(!debug !lto)
-sha256sums=('c8278e83b32f4ef51dd09dbd73b992328220d125902564f02153a33d1b3f636d')
+sha256sums=('40051f8ac46f1f9c6a7a163950176ff3e48063e2bd8250863128cea91845ddff')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-	go build -tags noupdate -ldflags="-s -w -X github.com/JCO-Digital/jman/internal/config.AppVersion=${pkgver}" ./cmd/jman
+    go build -tags noupdate -ldflags="-s -w -X github.com/JCO-Digital/jman/internal/config.AppVersion=${pkgver}" ./cmd/jman
 
-	export XDG_CONFIG_HOME="${srcdir}/config"
-	export XDG_DATA_HOME="${srcdir}/data"
-	export XDG_CACHE_HOME="${srcdir}/cache"
-	export JMAN_TOKENSPINUP="placeholder"
+    export XDG_CONFIG_HOME="${srcdir}/config"
+    export XDG_DATA_HOME="${srcdir}/data"
+    export XDG_CACHE_HOME="${srcdir}/cache"
+    export JMAN_TOKENSPINUP="placeholder"
 
-	./jman completion bash > jman.bash
-	./jman completion zsh > _jman
-	./jman completion fish > jman.fish
+    ./jman completion bash > jman.bash
+    ./jman completion zsh > _jman
+    ./jman completion fish > jman.fish
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-	install -Dm755 jman "${pkgdir}/usr/bin/jman"
-	install -Dm644 jman.bash "${pkgdir}/usr/share/bash-completion/completions/jman"
-	install -Dm644 _jman "${pkgdir}/usr/share/zsh/site-functions/_jman"
-	install -Dm644 jman.fish "${pkgdir}/usr/share/fish/vendor_completions.d/jman.fish"
+    install -Dm755 jman "${pkgdir}/usr/bin/jman"
+    install -Dm644 jman.bash "${pkgdir}/usr/share/bash-completion/completions/jman"
+    install -Dm644 _jman "${pkgdir}/usr/share/zsh/site-functions/_jman"
+    install -Dm644 jman.fish "${pkgdir}/usr/share/fish/vendor_completions.d/jman.fish"
 }

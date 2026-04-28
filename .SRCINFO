@@ -1,6 +1,6 @@
 pkgbase = jman
 	pkgdesc = A command-line utility designed to manage WordPress sites hosted on SpinupWP.
-	pkgver = 5.0.2
+	pkgver = main
 	pkgrel = 1
 	url = https://github.com/JCO-Digital/jman
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = jman
 	options = !debug
 	options = !lto
 	source = jman-5.0.2.tar.gz::https://github.com/JCO-Digital/jman/archive/refs/tags/v5.0.2.tar.gz
-	sha256sums = c8278e83b32f4ef51dd09dbd73b992328220d125902564f02153a33d1b3f636d
+	sha256sums = 40051f8ac46f1f9c6a7a163950176ff3e48063e2bd8250863128cea91845ddff
 
 pkgname = jman
