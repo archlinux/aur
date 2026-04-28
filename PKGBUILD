@@ -1,5 +1,5 @@
 pkgname=alogi
-pkgver=0.1.56
+pkgver=0.1.57
 pkgrel=1
 pkgdesc="AI-powered log viewer"
 arch=("x86_64")
@@ -36,7 +36,7 @@ source=(
   "icon.png"
 )
 sha256sums=(
-  "186d1e69848fab602cbcb20b7433d848da592340b2e63d7165ba418cfcc3a0b1"
+    "b5783f3db2ed2748db319ab71fdf75c0f08c2290c93e08eed2127b29c0c547c1"
   "SKIP"
   "SKIP"
 )
@@ -49,7 +49,11 @@ package() {
   install -d "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/alogi" << 'EOF'
 #!/bin/bash
-/opt/alogi/alogi "$@" &>/dev/null & disown
+LOG_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/alogi"
+LOG_FILE="$LOG_DIR/alogi.log"
+mkdir -p "$LOG_DIR"
+printf '\n[%s] launching /opt/alogi/alogi\n' "$(date --iso-8601=seconds)" >> "$LOG_FILE"
+/opt/alogi/alogi "$@" >> "$LOG_FILE" 2>&1 & disown
 EOF
   chmod 755 "${pkgdir}/usr/bin/alogi"
 
