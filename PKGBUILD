@@ -26,6 +26,7 @@ optdepends=(
 )
 provides=('waft')
 conflicts=('waft')
+options=('!lto')
 source=("$pkgname::git+https://github.com/readyplayernan/waft.git")
 sha256sums=('SKIP')
 

@@ -29,6 +29,7 @@ pkgbase = waft-git
 	optdepends = niri: niri compositor integration (niri plugin)
 	provides = waft
 	conflicts = waft
+	options = !lto
 	source = waft-git::git+https://github.com/readyplayernan/waft.git
 	sha256sums = SKIP
 
