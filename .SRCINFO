@@ -1,0 +1,14 @@
+pkgbase = mainstream-backlight
+	pkgdesc = Mainstream OS Backlight Dependencies
+	pkgver = 1.0
+	pkgrel = 3
+	arch = any
+	groups = mainstream
+	license = None
+	depends = geoclue
+	depends = brightnessctl
+	depends = ddcutil
+	provides = illogical-impulse-backlight
+	replaces = illogical-impulse-backlight
+
+pkgname = mainstream-backlight
