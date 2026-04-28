@@ -54,23 +54,21 @@ options=('!strip')
 backup=("etc/comfyui/extra_model_paths.yaml")
 
 build() {
-    # Replace symlinks with copies to preserve originals in $startdir
+    # Break symlinks so sed does not modify originals in $startdir
     for f in comfyui.install comfyui.sh comfyui.service; do
         cp --remove-destination "$(readlink -f "$srcdir/$f")" "$srcdir/$f"
     done
 
-    # Inject _prefix and _torch_pkgs into source files
+    # Generate processed files from templates
     sed -i "s|_PREFIX_|$_prefix|g; s|_TORCH_PKGS_|$_torch_pkgs|g" \
-        "$srcdir/comfyui.install"
-
-    sed -i "s|_PREFIX_|$_prefix|g" \
-        "$srcdir/comfyui.sh" \
-        "$srcdir/comfyui.service"
-
-    sed -i "s|_TORCH_PKGS_|$_torch_pkgs|g" \
+        "$srcdir/comfyui.install" \
         "$srcdir/comfyui.sh"
 
-    # Copy processed .install back for pacman
+    sed -i "s|_PREFIX_|$_prefix|g" \
+        "$srcdir/comfyui.service"
+
+    # Swap the .install for pacman, saving the template
+    cp "$startdir/comfyui.install" "$srcdir/comfyui.install.tpl"
     cp "$srcdir/comfyui.install" "$startdir/comfyui.install"
 }
 
