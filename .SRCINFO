@@ -1,6 +1,6 @@
 pkgbase = sherlock-launcher-gpui-bin
 	pkgdesc = Application launcher for Wayland.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/Skxxtz/sherlock-gpui
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sherlock-launcher-gpui-bin
 	conflicts = sherlock-launcher-git
 	conflicts = sherlock-launcher-bin
 	conflicts = sherlock-launcher-unstable-git
-	source = https://github.com/Skxxtz/sherlock-gpui/releases/download/v0.2.1/sherlock-v0.2.1-x86_64.tar.gz
-	sha256sums = b89ae425db204b36779e05b8255b66511d4972f757e7cb44a6d284a896091e13
+	source = https://github.com/Skxxtz/sherlock-gpui/releases/download/v0.2.2/sherlock-v0.2.2-x86_64.tar.gz
+	sha256sums = d1a1286bc992c4a33bab7fea638ee824c9fac89f495830a7b418734542525ea1
 
 pkgname = sherlock-launcher-gpui-bin
