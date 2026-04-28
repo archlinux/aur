@@ -2,7 +2,7 @@
 
 pkgname=termul-manager
 pkgver=0.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Project-aware terminal that treats workspaces as first-class citizens'
 arch=('x86_64')
 url='https://github.com/gnoviawan/termul'
@@ -48,6 +48,8 @@ EOF
 
   sed -i '/name = "termul-manager"/{n;s/version = "0.3.0"/version = "0.3.2"/;}' \
     src-tauri/Cargo.lock
+  sed -i '/^\[build-dependencies\]/i [features]\ndefault = ["custom-protocol"]\ncustom-protocol = ["tauri/custom-protocol"]\n' \
+    src-tauri/Cargo.toml
 
   cargo fetch --locked --manifest-path src-tauri/Cargo.toml
 }
@@ -61,7 +63,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   npm run build:frontend:tauri
-  cargo build --frozen --release --manifest-path src-tauri/Cargo.toml
+  cargo build --frozen --release --manifest-path src-tauri/Cargo.toml --features custom-protocol
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = termul-manager
 	pkgdesc = Project-aware terminal that treats workspaces as first-class citizens
 	pkgver = 0.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/gnoviawan/termul
 	arch = x86_64
 	license = MIT
