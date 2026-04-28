@@ -2,7 +2,7 @@
 
 pkgname=('lua-lapis' 'lua51-lapis' 'lua52-lapis' 'lua53-lapis' 'lua54-lapis')
 _pkgbase='lapis'
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 arch=('any')
 url='https://github.com/leafo/lapis'
@@ -15,6 +15,7 @@ _package() {
     LUA_VERSION=$1
 
     cd "$_pkgbase-$pkgver"
+    install -Dm755 -d  "$pkgdir/usr/share/lua/${LUA_VERSION}"
     find lapis -type d | while read dir ; do
       if test -n "$(find $dir -name '*.lua' -print -quit)" ; then
         install -Dm755 -d "$pkgdir/usr/share/lua/${LUA_VERSION}/$dir"
@@ -111,5 +112,5 @@ package_lua54-lapis() {
 }
 
 sha512sums=(
-'90a2f8a94b2efd9f731cb052c40c62a0086d965f713ca44bb06f772b12067717527e615394e6ea8d7a277edadf9d5344f9ae7d912579c616a726f1cf09010aeb'
+'64b375f683890b0becdb554f381f73de8c8dcc95d92c92c344ab48ea2b42ff258850aee446a248d7e6433c6cb5995ceda368fff4d0dfc57d4c01caee2e61aade'
 )

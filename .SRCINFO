@@ -1,11 +1,11 @@
 pkgbase = lua-lapis
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/leafo/lapis
 	arch = any
 	license = MIT
-	source = lapis-1.17.0.tar.gz::https://github.com/leafo/lapis/archive/v1.17.0.tar.gz
-	sha512sums = 90a2f8a94b2efd9f731cb052c40c62a0086d965f713ca44bb06f772b12067717527e615394e6ea8d7a277edadf9d5344f9ae7d912579c616a726f1cf09010aeb
+	source = lapis-1.18.0.tar.gz::https://github.com/leafo/lapis/archive/v1.18.0.tar.gz
+	sha512sums = 64b375f683890b0becdb554f381f73de8c8dcc95d92c92c344ab48ea2b42ff258850aee446a248d7e6433c6cb5995ceda368fff4d0dfc57d4c01caee2e61aade
 
 pkgname = lua-lapis
 	pkgdesc = A web framework for MoonScript & Lua 5.5
