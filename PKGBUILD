@@ -3,8 +3,8 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.23.6.r619.ge9a62f77
-pkgrel=2
+pkgver=4.23.6.r623.g585b8714
+pkgrel=1
 
 pkgver() {
     cd "$srcdir/$_srcname"
