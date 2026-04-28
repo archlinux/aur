@@ -1,7 +1,7 @@
 # Maintainer: nikren <superdug000@gmail.com>
 pkgname=anilinux-electron
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Anime viewer for Linux with Shikimori OAuth integration"
 arch=('x86_64')
 url="https://github.com/Nikren2006/anilinux-electron"
@@ -9,11 +9,6 @@ license=('MIT')
 depends=('mpv' 'fuse2')
 source=("$pkgname-$pkgver.AppImage::https://github.com/Nikren2006/anilinux-electron/releases/download/v$pkgver/Anilinux-electron-$pkgver.AppImage")
 sha256sums=('7993c68d8ca1e43a735cbfe5a358018e0db9ef4b170947f2f4fbddea62616d68')
-
-prepare() {
-  chmod +x "$pkgname-$pkgver.AppImage"
-  ./"$pkgname-$pkgver.AppImage" --appimage-extract
-}
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
@@ -26,10 +21,6 @@ chmod +x /opt/$pkgname/anilinux-electron.AppImage
 exec /opt/$pkgname/anilinux-electron.AppImage "\$@"
 EOF
   chmod +x "$pkgdir/opt/$pkgname/anilinux-electron"
-  
-  # Install icon
-  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  install -m644 squashfs-root/anilinux.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png" 2>/dev/null || true
   
   # Install desktop entry
   install -d "$pkgdir/usr/share/applications"
