@@ -1,0 +1,15 @@
+[Unit]
+Description=ComfyUI - Modular visual AI engine for diffusion models
+After=network.target
+
+[Service]
+Type=simple
+User=comfy
+Group=comfy
+ExecStart=/usr/bin/comfyui --listen 127.0.0.1
+WorkingDirectory=_PREFIX_
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

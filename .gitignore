@@ -1,0 +1,11 @@
+# Artéfacts de construction
+*.pkg.tar.zst
+*.tar.gz
+src/
+pkg/
+
+# Script .install généré par build()
+comfyui.install
+
+# Archives manuelles
+PKGBUILD.v*
