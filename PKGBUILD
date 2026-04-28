@@ -3,11 +3,11 @@
 
 pkgname="stm32cubeide"
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
-depends=('glibc' 'libusb' 'ncurses5-compat-libs' 'webkit2gtk' 'stlink-server')
+depends=('glibc' 'libusb' 'ncurses5-compat-libs' 'webkit2gtk-4.1' 'stlink-server')
 optdepends=('jlink-software-and-documentation' 'stlink' 'arm-none-eabi-gdb' 'stm32cubemx')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"

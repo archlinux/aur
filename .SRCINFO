@@ -1,7 +1,7 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
 	license = custom:SLA0048
@@ -9,7 +9,7 @@ pkgbase = stm32cubeide
 	depends = glibc
 	depends = libusb
 	depends = ncurses5-compat-libs
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = stlink-server
 	optdepends = jlink-software-and-documentation
 	optdepends = stlink
