@@ -1,9 +1,9 @@
 # Working example of Arch Linux PKGBUILD for NsCDE 2.X - Chinese Localization
 pkgname=nscde-zh
-pkgver=2.3.3
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Not so Common Desktop Environment: Modern and functional CDE based on FVWM - Chinese Localization"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/wenyinos/NsCDE-zh"
 license=('GPL')
 depends=('libxext' 'libx11' 'libxpm' 'stalonetray' 'xsettingsd' 'fvwm3' 'glibc' 'ksh93'
@@ -27,7 +27,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/wenyinos/NsCDE-zh/archive/re
 sha256sums=('SKIP')
 
 build() {
-  cd "NsCDE-zh-${pkgver}_zh"
+  cd "$srcdir/NsCDE-zh-${pkgver}_zh"
 
   autoreconf -ivf
   ./configure --prefix=/usr --libexecdir=/usr/lib
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "NsCDE-zh-${pkgver}_zh"
+  cd "$srcdir/NsCDE-zh-${pkgver}_zh"
 
   make DESTDIR="$pkgdir/" install
 }
