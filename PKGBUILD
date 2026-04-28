@@ -2,7 +2,7 @@
 pkgname=lm-studio
 pkgver=0.4.12
 pkgrel=1
-pkgdesc="Discover, download, and run LLMs locally"
+pkgdesc="LM Studio - A desktop app for exploring and running large language models locally"
 arch=('x86_64')
 url="https://lmstudio.ai"
 license=('0BSD')
