@@ -1,0 +1,18 @@
+pkgbase = rencal-bin
+	pkgdesc = A calendar for Omarchy
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/t4t5/rencal
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = rencal
+	conflicts = rencal
+	options = !debug
+	options = !strip
+	source = rencal-0.0.2.deb::https://github.com/t4t5/rencal/releases/download/v0.0.2/renCal_0.0.2_amd64.deb
+	sha256sums = 782edf51333b4adcd32fd86049ba57e2d956781314c3f2ab6cadbe0f5670c41e
+
+pkgname = rencal-bin
