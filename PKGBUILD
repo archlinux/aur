@@ -3,8 +3,8 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.23.6.r623.g585b8714
-pkgrel=2
+pkgver=4.23.6.r633.gc7cfb817
+pkgrel=1
 
 pkgver() {
     cd "$srcdir/$_srcname"
@@ -59,14 +59,25 @@ install=astrbot-git.install
 check() {
     cd "$srcdir/$_srcname"
     local _errcnt=0
+
+    # Syntax check: compile all .py files in key modules
     python -m py_compile astrbot/core/astr_main_agent_resources.py || _errcnt=$((_errcnt + 1))
     python -m py_compile astrbot/dashboard/server.py || _errcnt=$((_errcnt + 1))
     python -m py_compile astrbot/core/astr_agent_tool_exec.py || _errcnt=$((_errcnt + 1))
     python -m py_compile astrbot/core/tools/prompts.py || _errcnt=$((_errcnt + 1))
+    python -m py_compile astrbot/core/core_lifecycle.py || _errcnt=$((_errcnt + 1))
+    python -m py_compile astrbot/core/db/sqlite.py || _errcnt=$((_errcnt + 1))
+
+    # Symbol checks (曾炸过的 import 路径)
     grep -q 'class AstrBotDashboard' astrbot/dashboard/server.py || _errcnt=$((_errcnt + 1))
     grep -q 'BACKGROUND_TASK_WOKE_USER_PROMPT' astrbot/core/tools/prompts.py || _errcnt=$((_errcnt + 1))
     grep -q 'CONVERSATION_HISTORY_INJECT_PREFIX' astrbot/core/tools/prompts.py || _errcnt=$((_errcnt + 1))
-    [ "$_errcnt" -eq 0 ] || exit 1
+    grep -q 'class AstrBotCoreLifecycle' astrbot/core/core_lifecycle.py || _errcnt=$((_errcnt + 1))
+
+    [ "$_errcnt" -eq 0 ] || {
+        echo "❌ check() failed with $_errcnt error(s)"
+        exit 1
+    }
 }
 
 package() {

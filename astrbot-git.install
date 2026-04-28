@@ -37,9 +37,17 @@ _sync_instances_best_effort() {
     command -v astrbotctl >/dev/null 2>&1 || return 0
     _has_instances || return 0
 
-    echo ">>> 检测到现有实例，正在同步虚拟环境..."
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "  检测到现有实例，正在重建虚拟环境..."
+    echo "  (这步自动执行 uv pip install --reinstall)"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
     if ! astrbotctl sync --all; then
-        echo "⚠️  自动同步实例虚拟环境失败，请手动执行: sudo astrbotctl sync --all"
+        echo "⚠️  自动同步实例虚拟环境失败，请手动执行:"
+        echo "   sudo astrbotctl sync --all"
+    else
+        echo "✅ 虚拟环境重建完成！"
     fi
 }
 
