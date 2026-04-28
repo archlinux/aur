@@ -2,7 +2,7 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.1.11.0
+pkgver=3.1.12.1
 pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
@@ -33,12 +33,12 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('992269ed9b24b17d283a2a05dd11dce582886e97b13b1793eca63b96251b095b')
+sha256sums=('1083e8cd219f02d1d9baeeeb79edcc253cabdf318f57da40895acb2eef557cf9')
 
 _srcdir="OpenImageIO-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=(
-	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -fpermissive'
+	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DBUILD_DOCS=OFF
 	-DUSE_EXTERNAL_PUGIXML=ON
 	-DCMAKE_CXX_STANDARD=23
@@ -51,10 +51,11 @@ _flags=(
 	-DSTOP_ON_WARNING=OFF
 	-DOIIO_INTERNALIZE_FMT=OFF )
 
-#prepare() {
-	#cd "${_srcdir}"
+prepare() {
+	cd "${_srcdir}"
+	sed -i 's|/MANIFEST:NO||' 'src/cmake/fancy_add_executable.cmake'
 	#sed -i 's/os.path.join(OIIO_BUILD_ROOT, "bin", app)/os.path.join(OIIO_BUILD_ROOT, "bin", app, ".exe")/' 'testsuite/runtest.py'
-#}
+}
 
 build() {
 	for _arch in ${_architectures}; do
