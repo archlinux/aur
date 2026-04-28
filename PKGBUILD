@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.0.5b1'
+_upstreamver='0.1.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='passtui'
@@ -26,7 +26,7 @@ depends=('python' 'python-pyperclip' 'python-textual' 'python-rich' 'python-clic
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 # source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ca501242b9af7758bc5654d08788a1a1ab7e7bc9c2efafcf0e2f004a37403cd5')
+sha256sums=('5cfb46ef528939851807984d0cc86a43d05bb2fb189196531f0691111c9da3bd')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"

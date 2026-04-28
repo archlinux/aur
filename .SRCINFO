@@ -1,6 +1,6 @@
 pkgbase = passtui
 	pkgdesc = The TUI for pass
-	pkgver = 0.0.5b1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/fjmoralesp/passtui
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = passtui
 	depends = python-passpy
 	provides = passtui
 	conflicts = python-passtui
-	source = https://files.pythonhosted.org/packages/source/p/passtui/passtui-0.0.5b1.tar.gz
-	sha256sums = ca501242b9af7758bc5654d08788a1a1ab7e7bc9c2efafcf0e2f004a37403cd5
+	source = https://files.pythonhosted.org/packages/source/p/passtui/passtui-0.1.1.tar.gz
+	sha256sums = 5cfb46ef528939851807984d0cc86a43d05bb2fb189196531f0691111c9da3bd
 
 pkgname = passtui
