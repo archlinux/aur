@@ -1,39 +1,20 @@
-#!/bin/bash
-set -e
-_APPDIR="/usr/lib/@appname@"
-_RUNNAME="${_APPDIR}/@runname@"
-_OPTIONS="@options@"
-export PATH="${_APPDIR}:${PATH}"
-export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
-export ELECTRON_IS_DEV=0
-export ELECTRON_FORCE_IS_PACKAGED=true
-export ELECTRON_DISABLE_SECURITY_WARNINGS=true
-export NODE_ENV=production
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-_FLAGS_FILE="${XDG_CONFIG_HOME}/@appname@-flags.conf"
-declare -a flags
-if [[ -f "${_FLAGS_FILE}" ]]; then
-    mapfile -t < "${_FLAGS_FILE}"
-fi
-for line in "${MAPFILE[@]}"; do
-    if [[ ! "${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "${line}" ]]; then
-        flags+=("${line}")
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""    
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
     fi
-done
-_WAYLAND_OPTION=false
-for arg in "$@"; do
-    if [[ "${arg}" == "--wayland" ]]; then
-        _WAYLAND_OPTION=true
-        break
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
     fi
-done
-if [[ "${_WAYLAND_OPTION}" == true ]]; then
-    echo "Forcing Wayland"
-    flags+=("--enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL" "--ozone-platform=wayland")
-fi
-cd "${_APPDIR}"
-if [[ "${EUID}" -ne 0 ]] || [[ "${ELECTRON_RUN_AS_NODE}" ]]; then
-    exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" "${flags[@]}" "$@" || exit $?
-else
-    exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" --no-sandbox "${flags[@]}" "$@" || exit $?
-fi
+}

@@ -1,9 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box
 _pkgname=Pandora-Box
-pkgver=1.0.20
-_electronversion=39
-_nodeversion=22
+pkgver=1.0.21
+_electronversion=41
+_nodeversion=25
+export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Use system-wide electron)"
 arch=(
@@ -29,8 +30,8 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('942af7657c39d3df473efcd9433021c1c9607a55db34018edea78ace549d87fd'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums=('9c5e384cd145886249642a7278f670793c93a171786e9f75748dfc84fc2bf175'
+            '92f12b10f4bcc8e26358cfc4fd911c37944302f9f229adfaf7ceb5fee9ba834c')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -44,14 +45,13 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -59,17 +59,18 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-        echo "maxsockets=10"
-    } >> .npmrc
+    local HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-        } >> .npmrc
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
+            export ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/
+            export ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-binaries/
+        }
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
@@ -85,7 +86,7 @@ prepare() {
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export GOPROXY=https://goproxy.cn,direct
-        _DLURL="github.moeyy.xyz/https://github.com"
+        _DLURL="ghfast.top/https://github.com"
     else
         _DLURL="github.com"
     fi
@@ -102,7 +103,6 @@ build() {
         -ldflags "-s -w -X github.com/snakem982/pandora-box/api.Version=${_VERSION}" \
         -o px
     cd "${srcdir}/${pkgname}-${pkgver}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
 	sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
     {\\
@@ -115,8 +115,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*/resources/px -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
