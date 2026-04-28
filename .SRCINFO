@@ -14,6 +14,7 @@ pkgbase = waft-settings-git
 	depends = libadwaita
 	provides = waft-settings
 	conflicts = waft-settings
+	options = !lto
 	source = waft-settings-git::git+https://github.com/readyplayernan/waft.git
 	sha256sums = SKIP
 

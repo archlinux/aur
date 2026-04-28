@@ -9,6 +9,7 @@ depends=('waft-git' 'gtk4' 'libadwaita')
 makedepends=('cargo' 'git' 'rust')
 provides=('waft-settings')
 conflicts=('waft-settings')
+options=('!lto')
 source=("$pkgname::git+https://github.com/readyplayernan/waft.git")
 sha256sums=('SKIP')
 
