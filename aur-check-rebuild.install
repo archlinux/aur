@@ -2,27 +2,19 @@
 
 post_install() {
   SETTINGS_FILE="/etc/aur-check-rebuild"
-  EXEC_FILE="/usr/share/libalpm/scripts/aur-check-rebuild/main.py"
+  EXEC_FILE="/usr/share/libalpm/scripts/aur-check-rebuild"
 
   if [ ! -f "$SETTINGS_FILE" ]; then
-    echo "Creating configuration file..."
+    echo " ==> Creating configuration file..."
     "$EXEC_FILE" --settings
+    echo ""
   fi
 
-  pip list | grep pyalpm > /dev/null 2>&1
-  if [ $? -eq 1 ]; then
-    echo "Installing pyalpm lib..."
-    pip install --root-user-action ignore --break-system-packages pyalpm
-  fi
-
-  echo ""
+  echo " ==> Installation finished"
   echo "This hook will look for AUR packages that requires rebuild to keep working due to ABI changes in shared libraries."
   echo ""
   echo "You can change the behaviour editing the following file"
   echo "    $SETTINGS_FILE"
-  echo ""
-  echo "Logs can be found here"
-  echo "    $($EXEC_FILE --logpath)"
   echo ""
 }
 post_upgrade() {
