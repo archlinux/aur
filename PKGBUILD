@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r11994.f3483862f3
-pkgrel=3
+pkgver=r12005.511e830a8
+pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang'
@@ -102,7 +102,7 @@ _models=(
 )
 
 backup=('etc/sglang/sglang.conf' 'etc/sglang/sglang.env')
-source=("${_pkgname}::git+https://github.com/sgl-project/sglang.git#branch=amd/deepseek_v4"
+source=("${_pkgname}::git+https://github.com/williamjameshandley/sglang.git#branch=wjh/v4-flash-mxfp4-routed-experts"
         'sglang@.service'
         'sglang.conf'
         'sglang.env'
