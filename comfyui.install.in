@@ -1,0 +1,119 @@
+_comfyui_setup() {
+    local pip="_PREFIX_/venv/bin/pip"
+    export PIP_CACHE_DIR="_PREFIX_/.pip-cache"
+
+    # Check if PyTorch is already installed and functional
+    if "_PREFIX_/venv/bin/python" -c "import torch" 2>/dev/null; then
+        echo ":: PyTorch already installed, skipping download."
+    else
+        echo ":: Installing PyTorch and dependencies in the venv..."
+        echo ":: This may take a while (several GB to download)."
+
+        if ! "$pip" install _TORCH_PKGS_; then
+            echo ""
+            echo ":: ERROR: PyTorch installation failed."
+            echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
+            echo ":: To retry, run:"
+            echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install _TORCH_PKGS_"
+            echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install -r _PREFIX_/requirements.txt"
+            echo "::   sudo chown -R comfy:comfy _PREFIX_"
+            return 1
+        fi
+    fi
+
+    echo ":: Installing ComfyUI dependencies..."
+    if ! "$pip" install -r "_PREFIX_/requirements.txt"; then
+        echo ""
+        echo ":: ERROR: ComfyUI dependencies installation failed."
+        echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
+        echo ":: To retry, run:"
+        echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install -r _PREFIX_/requirements.txt"
+        echo "::   sudo chown -R comfy:comfy _PREFIX_"
+        return 1
+    fi
+
+    # Cleanup pip cache on success
+    rm -rf "_PREFIX_/.pip-cache"
+
+    echo ":: Setting ownership to comfy:comfy..."
+    chown -R comfy:comfy "_PREFIX_"
+
+    return 0
+}
+
+post_install() {
+    echo ":: Creating system user comfy..."
+    systemd-sysusers comfyui.conf
+
+    echo ":: Creating data directories..."
+    systemd-tmpfiles --create comfyui.conf 2>/dev/null || true
+
+    if [ -d "_PREFIX_/venv" ] && "_PREFIX_/venv/bin/python" --version >/dev/null 2>&1; then
+        echo ":: Existing Python venv found, reusing it."
+    else
+        echo ":: Creating Python virtual environment..."
+        rm -rf "_PREFIX_/venv"
+        python -m venv "_PREFIX_/venv"
+    fi
+
+    if _comfyui_setup; then
+        echo ""
+        echo ":: ComfyUI installed successfully."
+        echo ":: Run 'comfyui' to start, or enable the systemd service:"
+        echo "::   systemctl enable --now comfyui"
+        echo "::"
+        echo ":: Edit /etc/comfyui/extra_model_paths.yaml to configure model paths."
+    fi
+}
+
+post_upgrade() {
+    systemd-sysusers comfyui.conf
+
+    if [ ! -d "_PREFIX_/venv" ]; then
+        echo ":: Creating Python virtual environment..."
+        python -m venv "_PREFIX_/venv"
+    fi
+
+    export PIP_CACHE_DIR="_PREFIX_/.pip-cache"
+
+    echo ":: Upgrading PyTorch and dependencies in the venv..."
+
+    if ! "_PREFIX_/venv/bin/pip" install --upgrade _TORCH_PKGS_; then
+        echo ""
+        echo ":: ERROR: PyTorch upgrade failed."
+        echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
+        echo ":: To retry, run:"
+        echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install --upgrade _TORCH_PKGS_"
+        echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install --upgrade -r _PREFIX_/requirements.txt"
+        echo "::   sudo chown -R comfy:comfy _PREFIX_"
+        return 1
+    fi
+
+    if ! "_PREFIX_/venv/bin/pip" install --upgrade -r "_PREFIX_/requirements.txt"; then
+        echo ""
+        echo ":: ERROR: ComfyUI dependencies upgrade failed."
+        echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
+        echo ":: To retry, run:"
+        echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install --upgrade -r _PREFIX_/requirements.txt"
+        echo "::   sudo chown -R comfy:comfy _PREFIX_"
+        return 1
+    fi
+
+    rm -rf "_PREFIX_/.pip-cache"
+
+    echo ":: Setting ownership to comfy:comfy..."
+    chown -R comfy:comfy "_PREFIX_"
+
+    echo ":: ComfyUI upgraded successfully."
+}
+
+pre_remove() {
+    rm -rf "_PREFIX_/.pip-cache"
+
+    echo ":: The Python venv at _PREFIX_/venv has been preserved."
+    echo ":: If you reinstall comfyui, dependencies will not be re-downloaded."
+    echo ":: To free disk space, remove it manually:"
+    echo "::   sudo rm -rf _PREFIX_"
+    echo "::"
+    echo ":: Data in /var/lib/comfyui/ has also been preserved."
+}
