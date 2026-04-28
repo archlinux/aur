@@ -2,7 +2,7 @@
 
 _pkgname='lark-cli'
 pkgname="$_pkgname-bin"
-pkgver='1.0.17'
+pkgver='1.0.20'
 pkgrel='1'
 pkgdesc='The official CLI for Lark/Feishu open platform'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/lark-cli-$pkgver-linux-arm64.tar.gz")
 
 sha256sums=('c969fc7e3af68e6bf40b0d8dd9c3dcc377eb685a2139535b203b39fdcad739ee')
-sha256sums_x86_64=('7934b50e40923f7c1d78e34597e8b0510d2e2602e7de6342fd8197ea26ad739b')
-sha256sums_aarch64=('460bd8f2d4bb230f132d2e3a42e9645a7650a44de77ea1e45497854a340362d6')
+sha256sums_x86_64=('eff76bfdac6a3a08f5dc2d59b3317de3d96ce315faa776a9efff299db4f76f79')
+sha256sums_aarch64=('e96c5be179139096bcaeea04b8ae9d32446c9bb06244d43fc4086f3bec58db51')
 
 package() {
   install -Dm755 lark-cli -t "$pkgdir/usr/bin"
