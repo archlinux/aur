@@ -1,6 +1,6 @@
 pkgbase = astap
 	pkgdesc = Astrometric (plate) solver, stacking of images, photometry and FITS viewer (build from source). Qt5 version.
-	pkgver = 2026.03.25
+	pkgver = 2026.04.28
 	pkgrel = 1
 	url = http://www.hnsky.org/astap.htm
 	arch = x86_64
@@ -20,6 +20,6 @@ pkgbase = astap
 	conflicts = astap-bin-qt5
 	conflicts = astap-cli
 	source = https://www.hnsky.org/astap_source.zip
-	sha256sums = 4b658a835ecf84c42b382c615548d6067dad4072daa3f8f3bcd56610b6b5e200
+	sha256sums = c8f0716cbfc5a920c964b6ca3875c09fd1f998f1c171a58502d1fa45fd9cffa2
 
 pkgname = astap
