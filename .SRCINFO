@@ -1,0 +1,16 @@
+pkgbase = wallerd-git
+	pkgdesc = A wayland daemon that can display images as a wallpaper, or in a window, with GLSL shader support, and image switch
+	pkgver = r5.c3cf10c
+	pkgrel = 1
+	url = https://github.com/Remi-Avec-Un-I/wallerd
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = wayland
+	depends = libglvnd
+	options = !debug
+	source = git+https://github.com/Remi-Avec-Un-I/wallerd.git
+	sha256sums = SKIP
+
+pkgname = wallerd-git
