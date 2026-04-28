@@ -1,0 +1,21 @@
+pkgbase = waft-overview-git
+	pkgdesc = Waft GTK4/libadwaita overlay shell for Linux desktops
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/readyplayernan/waft
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = waft-git
+	depends = gtk4
+	depends = libadwaita
+	depends = gtk4-layer-shell
+	provides = waft-overview
+	conflicts = waft-overview
+	source = waft-overview-git::git+https://github.com/readyplayernan/waft.git
+	sha256sums = SKIP
+
+pkgname = waft-overview-git
