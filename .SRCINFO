@@ -5,7 +5,6 @@ pkgbase = vbarch-auditd-config-git
 	arch = any
 	license = MIT
 	depends = audit
-	backup = etc/audit/auditd.conf
 	backup = etc/audit/rules.d/10-general.rules
 	backup = etc/audit/rules.d/99-lock.rules
 	source = vbarch-auditd-config-git::git+https://gitlab.com/vbarch/auditd-configuration.git

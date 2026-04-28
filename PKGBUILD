@@ -6,7 +6,8 @@ pkgdesc="Hardened auditd configuration with broad security event logging for vba
 arch=('any')
 license=('MIT')
 depends=('audit')
-backup=('etc/audit/auditd.conf' 'etc/audit/rules.d/10-general.rules' 'etc/audit/rules.d/99-lock.rules')
+conflicts=('vbarch-auditd-config')
+backup=('etc/audit/rules.d/10-general.rules' 'etc/audit/rules.d/99-lock.rules')
 source=("$pkgname::git+https://gitlab.com/vbarch/auditd-configuration.git")
 sha256sums=('SKIP')
 
@@ -17,7 +18,6 @@ pkgver() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm644 auditd.conf "$pkgdir/etc/audit/auditd.conf"
     install -Dm644 10-general.rules "$pkgdir/etc/audit/rules.d/10-general.rules"
     install -Dm644 99-lock.rules "$pkgdir/etc/audit/rules.d/99-lock.rules"
 }
