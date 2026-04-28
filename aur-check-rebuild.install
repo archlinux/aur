@@ -1,7 +1,7 @@
 #!/bin/sh
 
 post_install() {
-  SETTINGS_FILE="/etc/aur-check-rebuild"
+  SETTINGS_FILE="/etc/aur-check-rebuild.conf"
   EXEC_FILE="/usr/share/libalpm/scripts/aur-check-rebuild"
 
   if [ ! -f "$SETTINGS_FILE" ]; then
