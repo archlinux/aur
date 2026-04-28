@@ -1,16 +1,16 @@
-# Maintainer: Rumata <Rumata01@github.com>
+# Maintainer: YalvacRamazan <YalvacRamazan@github.com>
 pkgname=petbottle-bin
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Yerel not uygulamasi"
 arch=('x86_64')
-url="https://github.com/Rumata01/Petbottle-public"
+url="https://github.com/YalvacRamazan/Petbottle-public"
 license=('Apache-2.0')
 provides=('petbottle')
 conflicts=('petbottle')
 depends=('gtk3' 'webkit2gtk' 'libappindicator-gtk3')
-source=("${pkgname}-${pkgver}.deb::https://github.com/Rumata01/Petbottle-public/releases/download/v${pkgver}/petbottle_${pkgver}_amd64.deb")
-sha256sums=('732bf6946ee5736330af75e37c5041e767e2b1af40a60935cffd0fcd42671e9b')
+source=("${pkgname}-${pkgver}.deb::https://github.com/YalvacRamazan/Petbottle-public/releases/download/v${pkgver}/petbottle_${pkgver}_amd64.deb")
+sha256sums=('dca3ede019323b1fc443d4c3530f89defa5c0910913582025f5c56e63caa5188')
 
 package() {
     
