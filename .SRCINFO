@@ -1,6 +1,6 @@
 pkgbase = rump
 	pkgdesc = Icecast streaming client with GTK4 UI, DJ mic mixing, and auto-ducking
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/slastra/rump
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = rump
 	depends = libadwaita
 	depends = libvorbis
 	depends = libogg
+	depends = opus
 	depends = pipewire
 	depends = playerctl
-	source = rump-0.1.0.tar.gz::https://github.com/slastra/rump/archive/refs/tags/v0.1.0.tar.gz
+	source = rump-0.2.0.tar.gz::https://github.com/slastra/rump/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = rump
