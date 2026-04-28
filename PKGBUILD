@@ -1,17 +1,17 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mediawiki-extension-usermerge
-pkgver=1.44+r1197+g7aef163
+pkgver=1.45+r1229+g437c211
 pkgrel=1
-_mw='1.44'
-_commit='7aef163ea29a638d7fc33ff0ad81525bf7c2fda4' # git rev-parse "REL${_mw/./_}"
+_mw='1.45'
+_commit='437c2119d8de6dc5e83925d81cf3ac50d43406b2' # git rev-parse "REL${_mw/./_}"
 pkgdesc="An extension for MediaWiki that allows to merge one Wiki user's account with another Wiki user's account"
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:UserMerge'
 license=('GPL-2.0-or-later')
 makedepends=('git')
 source=("git+https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge.git#commit=${_commit}")
-sha512sums=('7bccebb9d7ea98b5f816fc9c83290996f57ec833a44fa6947e35dfc31a1e38755a6af4f194d3b627f78c126d2236b2114b94a3e01eaaecb1cb66019417c5e236')
+sha512sums=('5ed8f22cfdcaa6032b7f9535cdb576bbe4c7ea4d0e10143c4cc0bf6e4fd8f61ead33a72b2ba35b6f30f898f0e04ef8bb1439525654371e9fc07081c95d007724')
 
 pkgver() {
 	cd "${srcdir}/UserMerge"
