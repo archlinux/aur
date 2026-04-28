@@ -1,7 +1,18 @@
+<p align="center">
+  <img src="https://img.shields.io/aur/version/astrbot-git?label=AUR&logo=archlinux&color=1793D1">
+  <img src="https://img.shields.io/aur/maintainer/astrbot-git?label=Maintainer&color=blue">
+  <img src="https://img.shields.io/badge/License-AGPL--3.0-blue">
+  <img src="https://img.shields.io/badge/arch-linux?logo=archlinux&label=Arch%20Linux&color=1793D1">
+</p>
+
 # AstrBot (AUR Package)
 
-<details open>
-<summary><b>English</b></summary>
+[📖 English](#english) · [📖 中文说明](#chinese)
+
+---
+
+<details>
+<summary id="english"><b>📖 English</b></summary>
 
 AstrBot is an Agentic IM Chatbot infrastructure. This AUR package (`astrbot-git`) provides a system-level, multi-instance deployment of AstrBot using `uv` for environment isolation.
 
@@ -23,7 +34,7 @@ paru -S astrbot-git
 #### Other Distributions (Debian / Ubuntu / RHEL / Fedora / openSUSE)
 
 ```bash
-bash <(curl -s https://setup.astrbot.men)
+bash <(curl -s https://raw.githubusercontent.com/AstrBotDevs/astrbot-aur/master/setup.sh)
 ```
 
 Or download and inspect manually:
@@ -117,6 +128,11 @@ The `astrbotctl` utility is the main entry point for managing AstrBot instances.
     # or sync all instances
     sudo astrbotctl sync --all
     ```
+	- **Auto-rollback on update failure**:
+	    `astrbotctl update` and `astrbotctl sync` automatically back up the current venv before rebuilding.
+	    If the sync, service start fails, or the instance crashes within the stability monitoring window (default 60s),
+	    the previous venv is restored and the instance restarted with the old code.
+	    Control via `UPDATE_AUTO_ROLLBACK=0` in `/etc/astrbot/update.conf`.
 
 ### Architecture & File Structure
 
@@ -204,6 +220,10 @@ EXTRA_ARGS=""
   sudo systemctl restart astrbot@<instance>
   ```
 
+- **Build-time validation**:
+    The PKGBUILD ships a `check()` function that runs smoke tests (syntax check + critical symbol grep) during `makepkg`,
+    preventing broken AstrBot code from being packaged.
+
 ### Package Information
 
 - **AUR Page**: [astrbot-git](https://aur.archlinux.org/packages/astrbot-git)
@@ -223,7 +243,7 @@ Contributions to the packaging scripts are welcome!
 </details>
 
 <details>
-<summary><b>中文说明</b></summary>
+<summary id="chinese"><b>📖 中文说明</b></summary>
 
 AstrBot 是一个支持多模型、多平台的即时通讯机器人框架。本 AUR 软件包 (`astrbot-git`) 提供了基于系统级服务、多实例部署的 AstrBot 环境，并使用 `uv` 进行环境隔离。
 
@@ -245,7 +265,7 @@ paru -S astrbot-git
 #### 其他发行版（Debian / Ubuntu / RHEL / Fedora / openSUSE）
 
 ```bash
-bash <(curl -s https://setup.astrbot.men)
+bash <(curl -s https://raw.githubusercontent.com/AstrBotDevs/astrbot-aur/master/setup.sh)
 ```
 
 或手动下载查看后执行：
@@ -416,6 +436,16 @@ EXTRA_ARGS=""
   sudo rm -rf /var/lib/astrbot/<instance>/.venv
   sudo systemctl restart astrbot@<instance>
   ```
+
+- **自动回滚**：
+    `astrbotctl update` 和 `astrbotctl sync` 会在重建 venv 前自动备份。
+    如果 sync 失败、服务启动失败、或在稳定性监控窗口（默认 60s）内崩溃，
+    会自动恢复旧 venv 并用旧代码重启。
+    通过 `/etc/astrbot/update.conf` 中的 `UPDATE_AUTO_ROLLBACK=0` 控制。
+
+- **构建时验证**：
+    PKGBUILD 包含 `check()` 函数，在 `makepkg` 时自动执行 smoke test（语法检查 + 关键符号 grep），
+    确保有问题的 AstrBot 代码不会被打包。
 
 ### 软件包信息
 

@@ -85,7 +85,14 @@ else
     git commit -m "update to version $NEW_VER-$NEW_PKGREL"
 fi
 git push origin "$BRANCH"
-git push github "$BRANCH" 2>/dev/null || echo "⚠️ GitHub push failed (check credentials)"
+if command -v gh >/dev/null 2>&1; then
+    gh auth setup-git 2>/dev/null || true
+fi
+if git push github "$BRANCH" 2>&1; then
+    echo ">>> GitHub mirror pushed."
+else
+    echo "⚠️ GitHub push failed. Manual: git push github $BRANCH"
+fi
 
 echo "=== ✅ 完成！版本: $NEW_VER-$NEW_PKGREL ==="
 echo ""
