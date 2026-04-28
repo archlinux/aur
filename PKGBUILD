@@ -1,11 +1,11 @@
 # Maintainer: Wasylq <wasylq@protonmail.com>
 pkgname=fss
-pkgver=VERSION
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='Scrapes all scenes and metadata from a studio URL'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Wasylq/FSS'
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('go>=1.25')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Wasylq/FSS/archive/v${pkgver}.tar.gz")
