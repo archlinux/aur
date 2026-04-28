@@ -7,9 +7,9 @@ pkgname=${_appname}
 pkgdesc="Search and download torrents via the CLI"
 
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 _gitversion=main
-_gitcommit=6db55d878c9c5b2a0cfdc6748c10596a7025c488
+_gitcommit=35f9e954891aa567380e28f8badaa35978e3bbe2
 
 arch=('x86_64' 'aarch64')
 
@@ -30,8 +30,8 @@ options=(!strip)
 
 source=("git+${_ghurl}#commit=${_gitcommit}"
 		"LICENSE")
-sha256sums=('054fcbb913915ff7cca1765adb023da9b760f78062b9ed6ec0f520a27e0366e4'
-            '57764ebae827c1c96dc5c1b74e2579ff34d3abcaabb54f5e5498fb2f612330cc')
+sha256sums=('4350754f66f81b100ba3ef60e86901db8d35abff0d9a4c86f276e24285f84547'
+            '79b001a83730c4e2c57553f5609a458ccdf818a819de1c7f8ff0fbb8c16b9aa2')
 
 
 build() {
