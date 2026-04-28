@@ -1,5 +1,5 @@
 # Maintainer: gearfox98 <gearfox98@gmail.com>
-pkgname=time-admin
+pkgname=time-admin-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A GTK3 tool written in Python to change system time settings. Made with XFCE in mind."

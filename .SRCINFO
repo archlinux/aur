@@ -1,4 +1,4 @@
-pkgbase = time-admin
+pkgbase = time-admin-git
 	pkgdesc = A GTK3 tool written in Python to change system time settings. Made with XFCE in mind.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -14,7 +14,7 @@ pkgbase = time-admin
 	depends = polkit
 	optdepends = xfce4: to integrate with XFCE settings panel
 	conflicts = gnome-system-tools
-	source = time-admin-1.0.0.tar.gz::https://github.com/Archie-Project/time-admin/archive/refs/tags/v1.0.0.tar.gz
+	source = time-admin-git-1.0.0.tar.gz::https://github.com/Archie-Project/time-admin/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = time-admin
+pkgname = time-admin-git
