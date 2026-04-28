@@ -1,24 +1,26 @@
 # Maintainer: InTeaReable <leyn.the.cat@gmail.com>
+# Contributor: Alexey Neverov <leyn.the.cat@gmail.com>
 
 pkgname=nyado-bin
-pkgver=0.1.9
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="A Rust todo-list manager with TUI, inspired by meowdo"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LeynTheCat/nyado"
 license=('MIT')
 provides=("nyado")
 conflicts=("nyado")
+options=(!strip)
 
 if [[ "$CARCH" == "x86_64" ]]; then
     source=("https://github.com/LeynTheCat/nyado/releases/download/v$pkgver/nyado-x86_64-unknown-linux-musl")
-    sha256sums=('7695e1e1491d433b8e7f2081123656d5a3f470883089847fb927d52bbe4701f0')
+    sha256sums=('c82dd4a1ebb2abdbb6ba9fc42d1092a497f273518ec39c705ae7512675c9e2c0')
 elif [[ "$CARCH" == "aarch64" ]]; then
     source=("https://github.com/LeynTheCat/nyado/releases/download/v$pkgver/nyado-aarch64-unknown-linux-musl")
-    sha256sums=('be01ba15971abddb10898c709582051f2890546047b8b0f35255c00318f75547')
+    sha256sums=('8e647c04b7db6ef6320a3f03af7978a3d0851a7ce536414f7e66c3e962aea1cb')
 fi
 
 package() {
     cd "$srcdir"
-    install -Dm755 "$(ls | grep -v '.sig$' | head -n1)" "$pkgdir/usr/bin/nyado"
+    install -Dm755 "${source##*/}" "$pkgdir/usr/bin/nyado"
 }
