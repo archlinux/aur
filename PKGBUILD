@@ -18,7 +18,7 @@ _torch_pkgs="torch torchvision torchaudio --index-url https://download.pytorch.o
 
 pkgname=comfyui
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface"
 arch=('x86_64')
 url="https://github.com/Comfy-Org/ComfyUI"
