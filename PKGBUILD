@@ -2,15 +2,15 @@
 
 pkgname=(otf-annotation-mono ttf-annotation-mono ttf-annotation-mono-variable woff2-annotation-mono woff2-annotation-mono-variable)
 pkgbase=annotation-mono-font
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc='A lovingly crafted handwriting-style monospace font by Qwerasd'
 arch=(any)
 url="https://qwerasd205.github.io/AnnotationMono"
 license=(OFL-1.1-RFN)
 makedepends=(git)
 source=("git+https://github.com/qwerasd205/AnnotationMono.git#tag=v${pkgver}")
-b2sums=('43ca1e7210b5b69e6666f23166e493caa909f0fa11661250f4851bd4b93221f27e7382b2f0c15865a248aa8f4b4d271596270bc7021cca08495445b929c01cff')
+b2sums=('dbd074239c75f353c365e645954df1ea600e891b4a0697f9e0214dd611bac1a2f725bf01cc9bd6fbc2b1ee472d895505319de9ec7b7a5469f68db7b94c2a5764')
 
 package_otf-annotation-mono() {
   pkgdesc+=' (20 static cuts)'
