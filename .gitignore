@@ -1,7 +1,8 @@
-pkg
-src
-*.pkg.tar.*
-*.log
-*.tar.gz
-28d19a99.patch
-682f1b57.patch
+*
+!_constraints
+!_service
+!update-service.sh
+!0001-force-minizip-includes.diff
+!PKGBUILD
+!.nvchecker.toml
+!.SRCINFO
