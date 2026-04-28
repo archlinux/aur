@@ -1,6 +1,6 @@
 pkgbase = typesetter
 	pkgdesc = A minimalist, local-first Typst editor.
-	pkgver = 0.12.5
+	pkgver = 0.12.6
 	pkgrel = 1
 	url = https://codeberg.org/haydn/typesetter
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = typesetter
 	depends = openssl
 	depends = cairo
 	options = !lto
-	source = source::git+https://codeberg.org/haydn/typesetter.git#tag=v0.12.5
-	sha256sums = f03b3c33cc8ddfae000f0f078f31b6791fcdb3febf2998364a082c07a39f6e6d
+	source = source::git+https://codeberg.org/haydn/typesetter.git#tag=v0.12.6
+	sha256sums = 4c5851e42d6319125f3728c648d3cf2e0c736c14b95e38746239a96cc672cef6
 
 pkgname = typesetter
