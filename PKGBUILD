@@ -7,10 +7,10 @@ pkgname=(
 )
 pkgbase=mullvad-vpn-beta
 _pkgver=2026.2
-_channel=beta
+_channel=stable
 _rel=1
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=24
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -35,15 +35,15 @@ makedepends=(
   'typescript'
 )
 source=(
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
   "git+https://github.com/mullvad/wireguard-go.git"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgbase%-beta}.sh"
 )
-sha256sums=('a46c595c3714f60d05d9d818e895e036674b2c58833b4e7400144f700082cfe1'
+sha256sums=('2b5274cef078b6f6cb727c67393c32ad68deff959083f531d1b30a70849ce174'
             'SKIP'
             'SKIP'
             'f3976a76352b09677487569a8538819fd393dbd6c8dbc6345f3022a08054faa9'
