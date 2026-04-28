@@ -1,0 +1,27 @@
+pkgbase = arrr-tray-git
+	pkgdesc = System tray client for the Arrr Linux notification aggregator (built from source)
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/tgiachi/Arrr
+	install = arrr-tray-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=10
+	makedepends = git
+	depends = dbus
+	depends = libnotify
+	depends = libx11
+	depends = libice
+	depends = libsm
+	depends = fontconfig
+	optdepends = arrr-git: Arrr notification aggregator daemon
+	optdepends = arrr-bin: Arrr notification aggregator daemon (pre-built)
+	provides = arrr-tray
+	conflicts = arrr-tray
+	conflicts = arrr-tray-bin
+	source = Arrr::git+https://github.com/tgiachi/Arrr.git
+	source = arrr-tray.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = arrr-tray-git
