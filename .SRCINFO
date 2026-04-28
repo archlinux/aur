@@ -1,6 +1,6 @@
 pkgbase = tuxedo-drivers-nocompatcheck-dkms
 	pkgdesc = TUXEDO Computers kernel module drivers. Compatibility check disabled - works when using identical models from other brands, example being TUXEDO Pulse 14 Gen 4 and Schenker Via 14 Pro (M24)
-	pkgver = 4.21.3
+	pkgver = 4.22.1
 	pkgrel = 1
 	url = https://gitlab.com/kronerm/tuxedo-drivers-nocompatcheck
 	arch = x86_64
@@ -26,11 +26,11 @@ pkgbase = tuxedo-drivers-nocompatcheck-dkms
 	conflicts = tuxedo-keyboard-dkms
 	conflicts = tuxedo-keyboard-ite-dkms
 	options = !debug
-	source = tuxedo-drivers-nocompatcheck-dkms-4.21.3.tar.gz::https://gitlab.com/kronerm/tuxedo-drivers-nocompatcheck/-/archive/v4.21.3-patched.1/tuxedo-drivers-v4.21.3-patched.1.tar.gz
+	source = tuxedo-drivers-nocompatcheck-dkms-4.22.1.tar.gz::https://gitlab.com/kronerm/tuxedo-drivers-nocompatcheck/-/archive/v4.22.1-patched.1/tuxedo-drivers-v4.22.1-patched.1.tar.gz
 	source = dkms.conf
-	sha256sums = 9cb75418c7473ed44e298ffd0777bc96b3a2471b3ab16804d79567075ec37480
+	sha256sums = 739e101123cdd44f619c5533dc6509608be517416a5e19807ca012a9f98e59f2
 	sha256sums = 0b1f2ceb729b1944504d1227e39b202159076846aaa38f8b6237b9535e543a21
-	sha512sums = 3b56757ec500a7dffa8a5ae6a6da6e83c7eb3c6f2e73e12156b56ea1b93d8d57a4b817ad96210e3daa24c8dab95584a5260161ebd54e638275ea4b15c2448127
+	sha512sums = d8fb9a24c8722e27d62267b9e0dfffa131ceaae26e2fc89065badb1fd1545cc617a5be338492592f6a2cd25f8f2ac6cc25b819856b88529e373bb0c8b4bfa145
 	sha512sums = dda443b5966221a355fecdae7a2eb23346666cbcf93707d2fff660a32ec75cee592ae211c8d22e55413d530f59e8667292a0346d8bf6b2d280b45f3bc09efafd
 
 pkgname = tuxedo-drivers-nocompatcheck-dkms
