@@ -1,6 +1,6 @@
 pkgbase = kctop
 	pkgdesc = koktail claude's top — a futuristic TUI system monitor for Linux
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/MahiroJV/kctop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kctop
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = kctop-0.1.0.tar.gz::https://github.com/MahiroJV/kctop/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 926bfb142b6a122c0a78725fa0967f0ac8ba2c025f268ada2fa73283d0fe7a97
+	source = kctop-0.2.0.tar.gz::https://github.com/MahiroJV/kctop/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 3b6ba881051777de0398c126757c18511743b630473e0b15cf846510d6604f49
 
 pkgname = kctop

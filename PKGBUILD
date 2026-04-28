@@ -1,6 +1,6 @@
 # Maintainer: Mahir <koktail on GitHub>
 pkgname=kctop
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="koktail claude's top — a futuristic TUI system monitor for Linux"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MahiroJV/kctop/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('926bfb142b6a122c0a78725fa0967f0ac8ba2c025f268ada2fa73283d0fe7a97')
+sha256sums=('3b6ba881051777de0398c126757c18511743b630473e0b15cf846510d6604f49')
 
 prepare() {
     cd "$pkgname-$pkgver"
