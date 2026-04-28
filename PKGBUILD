@@ -2,7 +2,7 @@
 
 _pkgbase=rime-frost
 pkgname=${_pkgbase}-git
-pkgver=r309.5937873
+pkgver=r311.ab57ec4
 pkgrel=1
 pkgdesc="Rime 配置：白霜词库 | 蒹葭苍苍，白露为霜。基于雾凇拼音重制的，更纯净、词频准确、智能的词库。"
 arch=("any")
@@ -57,7 +57,7 @@ build() {
   _schemas_deps=()
   for _s in "${_schemas[@]}"; do
     _deps=()
-    mapfile -t _deps <<< "$(sed -n '/dependencies:/,/^$/ {/dependencies:/d; /^$/d; s/.*- *//g; s/ *#.*//g; p }' "$_s.schema.yaml")"
+    mapfile -t _deps <<< "$(sed -n '/dependencies:/,/^$/ {/dependencies:/d; /^$/d; s/^ *- *//; s/ *#.*//; p }' "$_s.schema.yaml")"
     _schemas_deps=("${_schemas_deps[@]}" "${_deps[@]}")
   done
 
