@@ -1,9 +1,5 @@
 <services>
   <service name="download_url">
-    <param name="url">0001-force-minizip-includes.diff</param>
-    <param name="filename">0001-force-minizip-includes.diff</param>
-  </service>
-  <service name="download_url">
     <param name="url">https://github.com/AyuGram/AyuGramDesktop/releases/download/v6.7.8/AyuGramDesktop-6.7.8-full.tar.gz</param>
     <param name="filename">AyuGram-6.7.8-full.tar.gz</param>
   </service>
