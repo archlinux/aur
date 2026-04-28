@@ -1,6 +1,6 @@
 pkgname=constrict
-pkgver=26.2
-pkgrel=2
+pkgver=26.4
+pkgrel=1
 pkgdesc="Compress videos to target sizes"
 url="https://gitlab.gnome.org/World/Constrict"
 arch=(x86_64)
