@@ -1,8 +1,8 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgsubn=pwsp
 pkgname=pwsp
-pkgver=1.7.5
-pkgrel=2
+pkgver=1.7.6
+pkgrel=1
 pkgdesc="Lets you play audio files through your microphone"
 arch=('any')
 url="https://github.com/arabianq/pipewire-soundpad"
