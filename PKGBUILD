@@ -2,7 +2,7 @@
 
 pkgname=ymir-emu
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
@@ -26,18 +26,22 @@ prepare() {
 }
 
 build() {
-    export CC=clang
-    export CXX=clang++
+    unset CFLAGS
+    unset CXXFLAGS
+    unset LDFLAGS
+
+    export VCPKG_BINARY_SOURCES="clear"
+
     cd $srcdir/ymir
     local cmake_options=(
         -S .
         -B build
         -G Ninja
+        -D CMAKE_BUILD_TYPE=Release
         -D CMAKE_C_COMPILER=clang
         -D CMAKE_CXX_COMPILER=clang++
         -D CMAKE_MAKE_PROGRAM=ninja
         -D CMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake
-        -D Ymir_AVX2=ON
         -D Ymir_ENABLE_TESTS=OFF
         -D Ymir_ENABLE_DEVLOG=OFF
         -D Ymir_ENABLE_IMGUI_DEMO=OFF
@@ -45,7 +49,7 @@ build() {
         --fresh
     )
     cmake "${cmake_options[@]}"
-    cmake --build build
+    cmake --build build --parallel
 }
 
 package() {
