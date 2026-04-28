@@ -1,0 +1,20 @@
+pkgbase = zcurl
+	pkgdesc = A beautifully colored curl alternative with stunning box-style output. Make HTTP requests that look amazing in your terminal.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/12britz/sysview
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = zcurl
+	noextract = zcurl-1.0.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = zcurl-1.0.0.tgz::https://registry.npmjs.org/@12britz/zcurl/-/zcurl-1.0.0.tgz
+	b2sums = d36bdd2851941f5d117d207931642d369a6e52b36b5081fa983e22bd808be43a70aa514bd8a61ad71276890fb55f73c4fb2d345ddda49bdeee3756b2199b34e1
+
+pkgname = zcurl

@@ -1,0 +1,3 @@
+[zcurl]
+source = "npm"
+npm = "@12britz/zcurl"
