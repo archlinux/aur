@@ -1,0 +1,23 @@
+pkgbase = smog-bin
+	pkgdesc = Turn data into unreadable noise.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/evolvbits/smog
+	install = smog.install
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = gcc-libs
+	options = !strip
+	options = !debug
+	source = smog-0.3.1-linux-x86_64::https://raw.githubusercontent.com/evolvbits/smog/binaries/v0.3.1/smog-0.3.1-linux-x86_64
+	source = SHA256SUMS::https://raw.githubusercontent.com/evolvbits/smog/binaries/v0.3.1/SHA256SUMS
+	source = SHA256SUMS.asc::https://raw.githubusercontent.com/evolvbits/smog/binaries/v0.3.1/SHA256SUMS.asc
+	source = LICENSE::https://raw.githubusercontent.com/evolvbits/smog/main/LICENSE
+	validpgpkeys = 09E5808E5970720142EDFC4FE6A5CC75350F3DCE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c22e966230beaa3e13b78fd849cafa16e15fa95a82d307dd2cf501d06d0cf4a3
+
+pkgname = smog-bin

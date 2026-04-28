@@ -1,0 +1,16 @@
+post_install() {
+  cat << "EOF"
+  smog
+  ------------
+  Turn data into unreadable noise.
+
+  pipe anything into chaos:
+    smog < file > noise
+
+EOF
+
+}
+
+post_upgrade() {
+    echo "Smog updated!"
+}
