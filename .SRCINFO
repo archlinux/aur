@@ -1,6 +1,6 @@
 pkgbase = puzzletea-bin
 	pkgdesc = A collection of puzzle bubbles for BubbleTea
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/FelineStateMachine/puzzletea
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = puzzletea-bin
 	depends = glibc
 	provides = puzzletea
 	conflicts = puzzletea
-	source_x86_64 = puzzletea-x86_64-2.0.0.tgz::https://github.com/FelineStateMachine/puzzletea/releases/download/v2.0.0/puzzletea_2.0.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = bb0e050158e79ff378e3fde11ca885cd79475568aa383ec74c5e27ff0c29c195
-	source_aarch64 = puzzletea-aarch64-2.0.0.tgz::https://github.com/FelineStateMachine/puzzletea/releases/download/v2.0.0/puzzletea_2.0.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = bcab72eebf04a24086c795de71f6c5ed709715ab325516e57b6483777a92ef37
+	source_x86_64 = puzzletea-x86_64-2.0.1.tgz::https://github.com/FelineStateMachine/puzzletea/releases/download/v2.0.1/puzzletea_2.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = cffe8b053a76a0b2b79cf6c09b3fb682a751d32ff8a7510b444ecaa51d6979a3
+	source_aarch64 = puzzletea-aarch64-2.0.1.tgz::https://github.com/FelineStateMachine/puzzletea/releases/download/v2.0.1/puzzletea_2.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5590c93340ce4596cd3496c4c062ff78b3b2dbc5b28bfb0799caf953019c00e6
 
 pkgname = puzzletea-bin
