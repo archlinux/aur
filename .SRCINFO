@@ -1,6 +1,6 @@
 pkgbase = qt-img-viewer
 	pkgdesc = Qt 6 image viewer with directory thumbnails, animated GIF playback, and image-only floating mode
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/jswysnemc/qt-img-viewer
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qt-img-viewer
 	depends = qt6-base
 	depends = qt6-imageformats
 	depends = qt6-svg
-	source = qt-img-viewer-0.1.0.tar.gz::https://github.com/jswysnemc/qt-img-viewer/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 3bbe2051d59c7cab4df2eac113099784159b955d377ad543e4840dc8b9284325
+	source = qt-img-viewer-0.1.1.tar.gz::https://github.com/jswysnemc/qt-img-viewer/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 8ce2f772ab370d3d5d1156f0a5795675f8d60114d0d1747e429c4927426bfc79
 
 pkgname = qt-img-viewer
