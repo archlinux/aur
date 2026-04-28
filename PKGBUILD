@@ -2,7 +2,7 @@
 
 pkgname=termul-manager
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Project-aware terminal that treats workspaces as first-class citizens'
 arch=('x86_64')
 url='https://github.com/gnoviawan/termul'
@@ -42,6 +42,7 @@ const config = JSON.parse(fs.readFileSync(configPath, 'utf8'))
 config.plugins.updater.active = false
 config.plugins.updater.pubkey = ''
 config.plugins.updater.endpoints = []
+config.app.windows[0].visible = true
 fs.writeFileSync(configPath, `${JSON.stringify(config, null, '\t')}\n`)
 EOF
 
