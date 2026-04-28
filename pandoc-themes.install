@@ -1,0 +1,9 @@
+post_install() {
+  echo ""
+  echo "NOTE: To use pandoc-themes, add the following to your shell config:"
+  echo -e "\texport PANDOC_DATA_DIR=/usr/share/pandoc/data"
+  echo ""
+}
+post_upgrade() {
+  post_install
+}

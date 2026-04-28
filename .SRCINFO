@@ -1,0 +1,15 @@
+pkgbase = pandoc-themes
+	pkgdesc = General purpose themes for converting markdown to pdf using pandoc.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/cab-1729/Pandoc-Themes
+	install = pandoc-themes.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = texlive-bin
+	depends = pandoc-bin
+	source = git+https://github.com/cab-1729/Pandoc-Themes
+	sha256sums = SKIP
+
+pkgname = pandoc-themes
