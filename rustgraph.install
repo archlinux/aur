@@ -1,0 +1,37 @@
+post_install() {
+    cat <<'EOF'
+
+  ######################################################################
+  #                                                                    #
+  #  rustgraph installed                                               #
+  #                                                                    #
+  #  Register the MCP server with Claude / Codex / Gemini:             #
+  #      $ rustgraph mcp install                                       #
+  #                                                                    #
+  #  List:      rustgraph mcp list                                     #
+  #  Uninstall: rustgraph mcp uninstall                                #
+  #                                                                    #
+  ######################################################################
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    cat <<'EOF'
+
+  rustgraph removed. MCP entries in
+      ~/.claude.json
+      ~/.codex/config.toml
+      ~/.gemini/settings.json
+  may still reference the (now-missing) rustgraph binary. AI clients
+  will fail to spawn the MCP server until the entries are cleaned up
+  manually. If you reinstall later, run:
+      $ rustgraph mcp uninstall   # removes the dead entries
+  Or edit the config files directly.
+
+EOF
+}
