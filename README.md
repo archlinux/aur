@@ -19,7 +19,7 @@ AstrBot is an Agentic IM Chatbot infrastructure. This AUR package (`astrbot-git`
 ### Features
 
 - **Multi-Instance Support**: Run multiple bots on the same server with isolated data and environments.
-  > 💡 Multiple venvs might seem wasteful, but uv uses a global package cache — each venv is just a symlink farm to cached wheels, so disk usage is minimal.
+  > 💡 Multiple venvs might seem wasteful, but uv reuses a single global cache (`~/.cache/uv/`) — packages are downloaded once and hard-linked into each venv.
 - **Systemd Integration**: Manage bots as system services (`systemctl start astrbot@instance`).
 - **Environment Isolation**: Uses `uv` to manage a per-instance virtualenv under `/var/lib/astrbot/<instance>/.venv`, keeping your system Python clean.
 - **Secure by Default**: Runs as a dedicated `astrbot` user with restricted permissions.
@@ -251,7 +251,7 @@ AstrBot 是一个支持多模型、多平台的即时通讯机器人框架。本
 ### 功能特性
 
 - **多实例支持**: 在同一台服务器上运行多个机器人，数据和环境相互隔离。
-  > 💡 多份环境相同，会不会浪费空间？uv 有一套全局缓存，每个 venv 只是指向缓存 wheel 的符号链接，所以几乎不占额外空间。
+  > 💡 多份环境相同，会不会浪费空间？uv 复用全局缓存（`~/.cache/uv/`），包只下载一次，各 venv 通过硬链接共享，不占额外空间。
 - **Systemd 集成**: 将机器人作为系统服务管理 (`systemctl start astrbot@instance`)。
 - **环境隔离**: 使用 `uv` 为每个实例管理位于 `/var/lib/astrbot/<instance>/.venv` 的独立虚拟环境，保持系统 Python 环境整洁。
 - **默认安全**: 作为专用的 `astrbot` 用户运行，权限受限。
