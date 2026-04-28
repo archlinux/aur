@@ -1,0 +1,19 @@
+pkgbase = enigma-bin
+	pkgdesc = A deobfuscation/remapping tool for Java software.
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/FabricMC/Enigma
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = gettext
+	depends = bash
+	depends = java-runtime=17
+	noextract = enigma-swing-4.0.2-all.jar
+	source = https://maven.fabricmc.net/cuchaz/enigma-swing/4.0.2/enigma-swing-4.0.2-all.jar
+	source = enigma.sh
+	source = enigma.desktop
+	sha512sums = f222709f22a9f7823143b9643900450ad25b905a7d7b757a10c89a8506922d6cd0efbbe5da28618d7c6440300f9a5a544c7a3ea861a2c377a62d6a07a8112c39
+	sha512sums = c419eda244b9aec581d396dafa6fbe33b518c7413da70fd3a19c7d2011cf0f9caf38c7f2945faf9927514131357eba1dd2f5307998ba03be923e2e54bfdb3e9c
+	sha512sums = 18f54cb866b1266b2ed95a34cf5efde660f2b4136319cec15b162ee498678e52628239b50fda15b6c1cce968495f8908e2f11ed99f47a5bbfd173173103f2fbf
+
+pkgname = enigma-bin
