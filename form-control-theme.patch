@@ -1,0 +1,40 @@
+diff --git a/src/renderer/index.css b/src/renderer/index.css
+index 1111111..2222222 100644
+--- a/src/renderer/index.css
++++ b/src/renderer/index.css
+@@ -91,6 +91,35 @@
+   body {
+     @apply bg-background text-foreground font-sans antialiased;
+   }
++
++  select,
++  input,
++  textarea,
++  button {
++    color-scheme: dark;
++  }
++
++  select {
++    background-color: hsl(var(--secondary)) !important;
++    color: hsl(var(--foreground)) !important;
++    border-color: hsl(var(--border)) !important;
++  }
++
++  select:disabled {
++    background-color: hsl(var(--secondary) / 0.5) !important;
++    color: hsl(var(--muted-foreground)) !important;
++  }
++
++  select option,
++  select optgroup {
++    background-color: hsl(var(--secondary));
++    color: hsl(var(--foreground));
++  }
++
++  select option:checked {
++    background-color: hsl(var(--primary));
++    color: hsl(var(--primary-foreground));
++  }
+ 
+   /* Custom scrollbar - Codex style */
+   ::-webkit-scrollbar {

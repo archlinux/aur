@@ -2,7 +2,7 @@
 
 pkgname=termul-manager
 pkgver=0.3.2
-pkgrel=9
+pkgrel=10
 pkgdesc='Project-aware terminal that treats workspaces as first-class citizens'
 arch=('x86_64')
 url='https://github.com/gnoviawan/termul'
@@ -27,11 +27,13 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'disable-xterm-webgl.patch'
   'linux-integration-fixes.patch'
+  'form-control-theme.patch'
 )
 sha256sums=(
   '34883aed783084c4ae25564df09422bed05941eb75175f2644a91a21c342c328'
   'e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9'
   'ff9fc001c5824d2c889f9a719439d113874724fd5d8940036e7c586a36663afd'
+  '01e5030b5add9fc9acfb303e45d4497ff7e2733e2e149dd2b836874edabc2169'
 )
 
 prepare() {
@@ -43,6 +45,7 @@ prepare() {
 
   patch -Np1 < "$srcdir/disable-xterm-webgl.patch"
   patch -Np1 < "$srcdir/linux-integration-fixes.patch"
+  patch -Np1 < "$srcdir/form-control-theme.patch"
 
   npm ci
 

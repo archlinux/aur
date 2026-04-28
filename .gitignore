@@ -5,3 +5,4 @@
 !/.SRCINFO
 !/disable-xterm-webgl.patch
 !/linux-integration-fixes.patch
+!/form-control-theme.patch
