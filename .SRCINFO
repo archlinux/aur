@@ -1,6 +1,6 @@
 pkgbase = recordly-bin
 	pkgdesc = Open-source screen recorder and editor with auto-zoom, cursor effects, and polished video export
-	pkgver = 1.1.24
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/webadderall/Recordly
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = recordly-bin
 	license = MIT
 	depends = fuse2
 	options = !strip
-	source = Recordly-linux-x64-1.1.24.AppImage::https://github.com/webadderall/Recordly/releases/download/v1.1.24/Recordly-linux-x64.AppImage
+	source = Recordly-linux-x64-1.2.0.AppImage::https://github.com/webadderall/Recordly/releases/download/v1.2.0/Recordly-linux-x64.AppImage
 	source = recordly.desktop
-	source = LICENSE-1.1.24::https://raw.githubusercontent.com/webadderall/Recordly/v1.1.24/LICENSE.md
-	sha256sums = 24b9cf55b24f22cd3045b3d4063bfc4cf79dc88279f6db7a98f4ea8cdfab324d
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/webadderall/Recordly/v1.2.0/LICENSE.md
+	sha256sums = 87d813d7df0d5511c4d5b92de1ed43b26e86c3ce44407329f963cfe4e13c1ef2
 	sha256sums = bf499305b338b29beaf6423a7a046e867a3c8bf7262e8d8fecc736fe452e6e66
 	sha256sums = 42541ae775aa9eef582d9d00219a83d00909ceeca8a703f46c470c3f93abbb5e
 
