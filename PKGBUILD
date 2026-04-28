@@ -3,7 +3,7 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=postgresql-jdbc
-pkgver=42.7.10
+pkgver=42.7.11
 pkgrel=1
 pkgdesc='The official JDBC driver for PostgreSQL. Contains JDBC 4.2 drivers.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('java-runtime-headless')
 source=(LICENSE
         https://repo1.maven.org/maven2/org/postgresql/postgresql/${pkgver}/postgresql-${pkgver}.jar{,.asc})
 sha1sums=('98ca35c08254ed04b2f40e01aa5b1d29c2920665'
-          '35100a3f0899551e27af8fed4a3414619a4663b3'
+          '4c21cdd1b3938f400703716d37c4e8ca4d332808'
           'SKIP')
 
 noextract=(postgresql-${pkgver}.jar)
