@@ -10,7 +10,7 @@ provides=('petbottle')
 conflicts=('petbottle')
 depends=('gtk3' 'webkit2gtk' 'libappindicator-gtk3')
 source=("${pkgname}-${pkgver}.deb::https://github.com/YalvacRamazan/Petbottle-public/releases/download/v${pkgver}/petbottle_${pkgver}_amd64.deb")
-sha256sums=('dca3ede019323b1fc443d4c3530f89defa5c0910913582025f5c56e63caa5188')
+sha256sums=('b22d750dcf88872706d0f88db4dbf58c674504afbb20f1f512cc98b42e319473')
 
 package() {
     
