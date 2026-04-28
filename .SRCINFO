@@ -1,6 +1,6 @@
 pkgbase = foonver
 	pkgdesc = A lightweight CLI utility for automated Semantic Versioning (SemVer) management.
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/foonly/foonver
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = foonver
 	conflicts = foonver
 	options = !debug
 	options = !lto
-	source = foonver-0.11.0.tar.gz::https://github.com/foonly/foonver/archive/refs/tags/v0.11.0.tar.gz
+	source = foonver-0.11.1.tar.gz::https://github.com/foonly/foonver/archive/refs/tags/v0.11.1.tar.gz
 	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
 
 pkgname = foonver
