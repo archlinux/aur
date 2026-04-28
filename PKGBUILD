@@ -1,7 +1,7 @@
 # Maintainer: MiguVT <contacto@miguvt.com>
 pkgname=freesmlauncher-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with offline accounts support (binary release)"
 arch=(x86_64 aarch64)
 url='https://freesmlauncher.org/'
@@ -47,23 +47,23 @@ EOF
   chmod 755 "$pkgdir/usr/bin/freesmlauncher"
 
   # Install desktop file
-  install -Dm644 share/applications/org.freesmTeam.freesmlauncher.desktop \
-    "$pkgdir/usr/share/applications/org.freesmTeam.freesmlauncher.desktop"
+  install -Dm644 share/applications/org.freesmlauncher.FreesmLauncher.desktop \
+    "$pkgdir/usr/share/applications/org.freesmlauncher.FreesmLauncher.desktop"
 
   # Install icons
-  install -Dm644 share/icons/hicolor/256x256/apps/org.freesmTeam.freesmlauncher.png \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.freesmTeam.freesmlauncher.png"
+  install -Dm644 share/icons/hicolor/256x256/apps/org.freesmlauncher.FreesmLauncher.png \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.freesmlauncher.FreesmLauncher.png"
 
-  install -Dm644 share/icons/hicolor/scalable/apps/org.freesmTeam.freesmlauncher.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.freesmTeam.freesmlauncher.svg"
+  install -Dm644 share/icons/hicolor/scalable/apps/org.freesmlauncher.FreesmLauncher.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.freesmlauncher.FreesmLauncher.svg"
 
   # Install metainfo
-  install -Dm644 share/metainfo/org.freesmTeam.freesmlauncher.metainfo.xml \
-    "$pkgdir/usr/share/metainfo/org.freesmTeam.freesmlauncher.metainfo.xml"
+  install -Dm644 share/metainfo/org.freesmlauncher.FreesmLauncher.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/org.freesmlauncher.FreesmLauncher.metainfo.xml"
 
   # Install mime type file with renamed package
-  install -Dm644 share/mime/packages/modrinth-mrpack-mime.xml \
-    "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+  # install -Dm644 share/mime/packages/modrinth-mrpack-mime.xml \
+  # "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }
 
 # vim:set ts=2 sw=2 et:
