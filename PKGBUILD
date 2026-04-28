@@ -1,6 +1,6 @@
 # Maintainer: VincentZyu <vincentzyu233@gmail.com>
 pkgname=winload-rust-bin
-pkgver=0.1.8.rc.15
+pkgver=0.1.8.rc.16
 pkgrel=1
 pkgdesc="A lightweight, real-time CLI tool for monitoring network bandwidth and traffic"
 arch=('x86_64' 'aarch64')
@@ -8,13 +8,13 @@ url="https://github.com/VincentZyuApps/winload"
 license=('MIT')
 provides=('winload')
 conflicts=('winload' 'winload-rust')
-_tagver=0.1.8-rc.15
+_tagver=0.1.8-rc.16
 _base_url="https://github.com/VincentZyuApps/winload/releases/download/v${_tagver}"
 source_x86_64=("winload-linux-x86_64-v${_tagver}::${_base_url}/winload-linux-x86_64-v${_tagver}")
 source_aarch64=("winload-linux-aarch64-v${_tagver}::${_base_url}/winload-linux-aarch64-v${_tagver}")
 noextract=()
-sha256sums_x86_64=('386a6d0aa0ef7bc9e7f384d755253b08bdf81696fe898f0745c5eac23cd2572b')
-sha256sums_aarch64=('91dd2c3d5a60524fe25a8809405b7514c5b7ce2d0615edb85e9d6c1e6edd6657')
+sha256sums_x86_64=('e5ab5d07e85f75615916e186c3d63e778b5a0be5e0b04a9a4cde0b460519b3db')
+sha256sums_aarch64=('3a2ab6aea83a00941e59a6d6055c4978b801423727aae39e7a9d611301f74853')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
