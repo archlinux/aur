@@ -28,8 +28,8 @@ sha256sums=('593cf8c5d5f4e8c3a4971f3780eaaad1db0ff9bd16e9adb40d0855ae5f200d9e')
 package() {
     tar -xf data.tar.xz --directory "${pkgdir}"
 
-    mv "${pkgdir}/opt/АниЛинукс" "${pkgdir}/opt/anilinux-electron"
-    sed -i 's|/opt/anilinux-electron|g' "${pkgdir}/usr/share/applications/anilinux-electron.desktop"
+    mv "${pkgdir}/opt/Anilinux-electron" "${pkgdir}/opt/anilinux-electron"
+    sed -i 's|/opt/АниЛинукс|/opt/anilinux-electron|g' "${pkgdir}/usr/share/applications/anilinux-electron.desktop"
 
     sed -i 's|Categories=Audio;|Categories=AudioVideo;Audio;|g' "${pkgdir}/usr/share/applications/anilinux-electron.desktop"
 
