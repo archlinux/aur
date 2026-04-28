@@ -49,6 +49,9 @@ prepare() {
 
   cd steam-game-idler
   pnpm install --frozen-lockfile
+
+  # pacman handles updates; disable Tauri updater artifact generation (requires a signing key)
+  sed -i 's/"createUpdaterArtifacts": "[^"]*"/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
 }
 
 build() {
@@ -65,6 +68,8 @@ build() {
 
   export NEXT_TELEMETRY_DISABLED=1
   export TAURI_CI=1
+  # fat LTO requires 10+ GB RAM; thin LTO is the standard choice for packaged builds
+  export CARGO_PROFILE_RELEASE_LTO=thin
   pnpm tauri build --bundles deb
 }
 
