@@ -1,0 +1,21 @@
+pkgbase = chat-cli-bin
+	pkgdesc = Configurable LLM chat CLI
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/jswysnemc/chat-cli
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = ripgrep
+	optdepends = fzf: shell helper integration and quick switching
+	optdepends = uv: MCP servers and helper scripts that use Python tooling
+	optdepends = wl-clipboard: Wayland clipboard image/text input
+	optdepends = xclip: X11 clipboard image/text input
+	provides = chat-cli=0.1.7
+	conflicts = chat-cli
+	conflicts = chat-cli-git
+	source = chat-cli-bin-0.1.7.tar.gz::https://github.com/jswysnemc/chat-cli/releases/download/v0.1.7/chat-cli-v0.1.7-linux-x86_64.tar.gz
+	sha256sums = cd7be86b9a47438bceee8fb1b201dfd0e93c1c19f66d31795460c2cfb29e6fae
+
+pkgname = chat-cli-bin
