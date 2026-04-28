@@ -4,7 +4,7 @@
 # Contributor: bartus <arch-user-repository]a[bartus.33mail.com
 
 pkgname=djv
-pkgver=3.3.4
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Professional media review software for VFX, animation, and film production"
 arch=("x86_64")
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tgz::https://github.com/grizzlypeak3d/${pkgname^^}
 	"djv.sh"
 	"FindZLIBNG.cmake")
 noextract=()
-sha256sums=('49c7f6516e87998f773cdb025178419a360b6e6187145ad73171ee111f137063'
+sha256sums=('6e6c7b2065d6cc6c0582485909477aefdadb96775de33fc59699e627c4ab8a2b'
             'ca440bc9c1713e9edb17ed5adc0456441e69af25f803c834427f23a6991e2eca'
             'e2bb0b7ebccd1e645d9a62f0c6dadafb94705766c787a2ea38b91b1da4e95cf7'
             '2dd0e684b08cbbf8412129331eb33c61a2df7996bb3cbb6c89842dd27349f1f9')
