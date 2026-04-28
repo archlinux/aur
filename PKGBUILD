@@ -1,5 +1,5 @@
 pkgname=bookokrat-bin
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="Terminal-based EPUB and PDF reader with rich TUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('bookokrat')
 source=(
   "https://github.com/bugzmanov/bookokrat/releases/download/v${pkgver}/bookokrat-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums=('ede14b87b33f0106d7a75c46a89dfb0463f776b3716ca5d27aa94481cfbd53e1')
+sha256sums=('c6eb2e6b96c948f0c7a045771baaad709ecd16cacca7b3da765b8d3b49e3f668')
 
 package() {
   install -Dm755 bookokrat "${pkgdir}/usr/bin/bookokrat"
