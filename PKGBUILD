@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'xdotool' 'cairo' 'gdk-pixbuf2')
 
 options=(!strip)
 
-source=("${_ghurl}/archive/${_gitversion}.tar.gz"
+source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz"
 		"LICENSE")
 sha256sums=('b527e8bf0b1610a8dea47ceffdf413c546eed2a92804879bf504e0589e4910d3'
             '79b001a83730c4e2c57553f5609a458ccdf818a819de1c7f8ff0fbb8c16b9aa2')
