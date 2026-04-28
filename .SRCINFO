@@ -1,0 +1,16 @@
+pkgbase = construct
+	pkgdesc = Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant.
+	pkgver = 2026.4.28
+	pkgrel = 1
+	url = https://github.com/KumihoIO/construct-os
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	source = construct-2026.4.28.tar.gz::https://github.com/KumihoIO/construct-os/archive/refs/tags/v2026.4.28.tar.gz
+	sha256sums = bd4af9b2e5b684a2aeaca622bd5a4291bcbcc048eb1d6667d61b5d4911e0db89
+
+pkgname = construct
