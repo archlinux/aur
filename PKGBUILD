@@ -25,39 +25,7 @@ optdepends=(
   'niri: niri compositor integration (niri plugin)'
 )
 provides=('waft')
-conflicts=(
-  'waft'
-  'waft-plugin-audio-git'
-  'waft-plugin-battery-git'
-  'waft-plugin-bluez-git'
-  'waft-plugin-brightness-git'
-  'waft-plugin-caffeine-git'
-  'waft-plugin-darkman-git'
-  'waft-plugin-eds-git'
-  'waft-plugin-keyboard-layout-git'
-  'waft-plugin-networkmanager-git'
-  'waft-plugin-niri-git'
-  'waft-plugin-notifications-git'
-  'waft-plugin-sunsetr-git'
-  'waft-plugin-syncthing-git'
-  'waft-plugin-weather-git'
-)
-replaces=(
-  'waft-plugin-audio-git'
-  'waft-plugin-battery-git'
-  'waft-plugin-bluez-git'
-  'waft-plugin-brightness-git'
-  'waft-plugin-caffeine-git'
-  'waft-plugin-darkman-git'
-  'waft-plugin-eds-git'
-  'waft-plugin-keyboard-layout-git'
-  'waft-plugin-networkmanager-git'
-  'waft-plugin-niri-git'
-  'waft-plugin-notifications-git'
-  'waft-plugin-sunsetr-git'
-  'waft-plugin-syncthing-git'
-  'waft-plugin-weather-git'
-)
+conflicts=('waft')
 source=("$pkgname::git+https://github.com/readyplayernan/waft.git")
 sha256sums=('SKIP')
 
