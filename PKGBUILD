@@ -41,6 +41,7 @@ optdepends=(
   'lsp-plugins: equalizer, compressor, delay, loudness'
   'zam-plugins: maximizer'
   'mda.lv2: bass loudness'
+  'x42-plugins-lv2: autotune'
   'libdeep_filter_ladspa: noise remover'
 )
 conflicts=("${pkgname%%-git}")

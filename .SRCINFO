@@ -44,6 +44,7 @@ pkgbase = easyeffects-git
 	optdepends = lsp-plugins: equalizer, compressor, delay, loudness
 	optdepends = zam-plugins: maximizer
 	optdepends = mda.lv2: bass loudness
+	optdepends = x42-plugins-lv2: autotune
 	optdepends = libdeep_filter_ladspa: noise remover
 	provides = easyeffects
 	conflicts = easyeffects
