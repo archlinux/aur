@@ -1,7 +1,7 @@
 pkgbase = magelab-bin
 	pkgdesc = Mage Lab is a user-centric AI interface with local reasoning and tools
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/majesticio/magelab
 	arch = x86_64
 	license = MIT
