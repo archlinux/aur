@@ -1,12 +1,11 @@
 pkgbase = ttf-vcr-osd-mono
-	pkgdesc = A font that mimics the on-screen display of VCRs
+	pkgdesc = Retro pixel font resembling on-screen displays and title generators of the analog CRT/VCR era by Riciery Leal
 	pkgver = 1.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dafont.com/vcr-osd-mono.font
 	arch = any
-	license = custom
-	source = vcr_osd_mono.zip::https://dl.dafont.com/dl/?f=vcr_osd_mono
-	sha256sums = b1811c21bb32c89f0268fdbc267f86682a9bfbf0afc8755c9794d9b88062ee89
+	license = LicenseRef-custom
+	source = vcr_osd_mono.zip::https://img.dafont.com/dl/?f=vcr_osd_mono
+	sha512sums = abb0f7c04be2b84906b0a25d20aa611bfc1b862415a1d579fa2f8537a2d99b798e0840c389b5f61f3ca036df423430a6591a8c7e2a0187a44136112742117a63
 
 pkgname = ttf-vcr-osd-mono
-
