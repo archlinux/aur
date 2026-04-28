@@ -1,3 +1,18 @@
+2026.04.28, v19.15.0
+
+feature:
+- 9d97343b cloudcmd: operation: rm useless checks
+- 46a88cfa cloudcmd: client: key: vim: cc, mm
+
+2026.04.28, v19.14.0
+
+feature:
+- 36a8b641 cloudcmd: ponse v8.0.0
+- 1c263c18 docker: io: /usr/src/cloudcmd -> /usr/local/share/cloudcmd
+- ea7b828c docker: io: ubuntu: resolute
+- cd6c11ac docker: io: far2l
+- c4beeec6 docker: io: gdu: add
+
 2026.04.21, v19.13.1
 
 feature:
