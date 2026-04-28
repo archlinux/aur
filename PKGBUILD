@@ -47,7 +47,7 @@ prepare() {
 build() {
     pushd "${_name}-${pkgver}"
     # We intentionally leave out the runtime identifier here to keep the fallback auto updater
-    dotnet publish \
+    DOTNET_CLI_TELEMETRY_OPTOUT=true dotnet publish \
         "${_name}/${_name}.csproj" \
         -c ${_dotnet_configuration} \
         /p:PublishSingleFile=true \
