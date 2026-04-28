@@ -1,5 +1,5 @@
 # Maintainer: Konstantos Jim <konstantosjim@gmail.com>
-pkgname=vbarch-audit-config-git
+pkgname=vbarch-auditd-config-git
 pkgver=r1.0.0
 pkgrel=1
 pkgdesc="Hardened auditd configuration with broad security event logging for vbarch"

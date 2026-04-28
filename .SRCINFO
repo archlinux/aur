@@ -1,4 +1,4 @@
-pkgbase = vbarch-audit-config-git
+pkgbase = vbarch-auditd-config-git
 	pkgdesc = Hardened auditd configuration with broad security event logging for vbarch
 	pkgver = r1.0.0
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = vbarch-audit-config-git
 	backup = etc/audit/auditd.conf
 	backup = etc/audit/rules.d/10-general.rules
 	backup = etc/audit/rules.d/99-lock.rules
-	source = vbarch-audit-config-git::git+https://gitlab.com/vbarch/auditd-configuration.git
+	source = vbarch-auditd-config-git::git+https://gitlab.com/vbarch/auditd-configuration.git
 	sha256sums = SKIP
 
-pkgname = vbarch-audit-config-git
+pkgname = vbarch-auditd-config-git
