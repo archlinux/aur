@@ -1,6 +1,6 @@
 pkgbase = winload-rust-bin
 	pkgdesc = A lightweight, real-time CLI tool for monitoring network bandwidth and traffic
-	pkgver = 0.1.8.rc.14
+	pkgver = 0.1.8.rc.15
 	pkgrel = 1
 	url = https://github.com/VincentZyuApps/winload
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = winload-rust-bin
 	provides = winload
 	conflicts = winload
 	conflicts = winload-rust
-	source_x86_64 = winload-linux-x86_64-v0.1.8-rc.14::https://github.com/VincentZyuApps/winload/releases/download/v0.1.8-rc.14/winload-linux-x86_64-v0.1.8-rc.14
-	sha256sums_x86_64 = 4ac61b63d3144a546a7a392ba26362325096f1d7cab7b639aa47b529f2f5de1d
-	source_aarch64 = winload-linux-aarch64-v0.1.8-rc.14::https://github.com/VincentZyuApps/winload/releases/download/v0.1.8-rc.14/winload-linux-aarch64-v0.1.8-rc.14
-	sha256sums_aarch64 = 7b3f18bbd4ffa559b39d090d540e2fc65ef5c5e6f0cba65761085dc5be6b680c
+	source_x86_64 = winload-linux-x86_64-v0.1.8-rc.15::https://github.com/VincentZyuApps/winload/releases/download/v0.1.8-rc.15/winload-linux-x86_64-v0.1.8-rc.15
+	sha256sums_x86_64 = 386a6d0aa0ef7bc9e7f384d755253b08bdf81696fe898f0745c5eac23cd2572b
+	source_aarch64 = winload-linux-aarch64-v0.1.8-rc.15::https://github.com/VincentZyuApps/winload/releases/download/v0.1.8-rc.15/winload-linux-aarch64-v0.1.8-rc.15
+	sha256sums_aarch64 = 91dd2c3d5a60524fe25a8809405b7514c5b7ce2d0615edb85e9d6c1e6edd6657
 
 pkgname = winload-rust-bin
