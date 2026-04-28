@@ -2,7 +2,7 @@
 pkgname=sglang-git
 _pkgname=sglang
 pkgver=r11994.f3483862f3
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang'
@@ -41,7 +41,7 @@ depends=(
   'python-scipy'
   'python-sentencepiece'
   'python-pyzmq'
-  'python-multipart'
+  'python-python-multipart'
   'uvicorn'
   'python-flashinfer'
 )
