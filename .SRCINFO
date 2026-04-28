@@ -1,0 +1,14 @@
+pkgbase = mainstream-portal
+	pkgdesc = Mainstream OS XDG Desktop Portals
+	pkgver = 1.0
+	pkgrel = 4
+	arch = any
+	groups = mainstream
+	license = None
+	depends = xdg-desktop-portal
+	depends = xdg-desktop-portal-gtk
+	depends = xdg-desktop-portal-hyprland
+	provides = illogical-impulse-portal
+	replaces = illogical-impulse-portal
+
+pkgname = mainstream-portal
