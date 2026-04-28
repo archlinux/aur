@@ -1,6 +1,6 @@
 # Maintainer: hnchengzong
 pkgname=hn-filelock-zig-bin
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Simple file lock tool written in Zig"
 arch=('x86_64')
