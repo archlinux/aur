@@ -2,12 +2,12 @@
 pkgsubn=pwsp
 pkgname=pwsp
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Lets you play audio files through your microphone"
 arch=('any')
 url="https://github.com/arabianq/pipewire-soundpad"
 license=('MIT')
-makedepends=(clang rust cargo pipewire alsa-lib)
+makedepends=(clang rust cargo cmake pipewire alsa-lib)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
