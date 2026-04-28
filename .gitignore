@@ -5,3 +5,6 @@
 !.nvchecker.toml
 !llama.cpp.conf
 !llama.cpp.service
+!llama.cpp.install
+!tmpfiles.conf
+!sysusers.conf
