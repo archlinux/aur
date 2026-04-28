@@ -2,15 +2,15 @@
 
 pkgname=freerouting-zh-cn
 pkgver=2.2.0
-pkgrel=1
+pkgrel=3
 _jrever=25
 _jdkver=25
 pkgdesc="Advanced PCB autorouter"
 arch=('any')
 url="https://github.com/freerouting/freerouting"
 license=('GPL-3.0-only')
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=(${pkgname} ${pkgname%-zh-cn})
+conflicts=(${pkgname} ${pkgname%-zh-cn})
 #replaces=(${pkgname})
 depends=(
     sh
@@ -48,29 +48,30 @@ build() {
 
 package() {
     cd "${pkgname%-zh-cn}"
-    install -Dm0644 assets/icon/freerouting_icon_256x256_v2.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm0644 build/libs/freerouting.jar "${pkgdir}/usr/lib/freerouting/freerouting-zh-cn.jar"
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
+    install -vDm0644 assets/icon/freerouting_icon_256x256_v2.png "${pkgdir}/usr/share/pixmaps/${pkgname%-zh-cn}.png"
+    install -vDm0755 build/libs/freerouting.jar -t "${pkgdir}/usr/lib/freerouting/"
+    install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-zh-cn}" <<EOF
 #!/usr/bin/bash
 export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin/:\$PATH"
 
-java -jar /usr/lib/freerouting/freerouting-zh-cn.jar -l zh "\$@"
+java -jar /usr/lib/freerouting/freerouting.jar -l zh "\$@"
 
 exit 0
 
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
+    install -vDm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-zh-cn}.desktop" <<EOF
 [Desktop Entry]
-Name=${pkgname}
+Name=${pkgname%-zh-cn}
 Name[zh_CN]=自动布线器中文版
 Comment=${pkgdesc}
-Exec=${pkgname}
+Exec=${pkgname%-zh-cn}
 Type=Application
 StartupNotify=true
 Categories=Tool;Electron;PCB;
 Terminal=false
-Icon=${pkgname}.png
+Icon=${pkgname%-zh-cn}.png
 Version=${pkgver}
 EOF
 }

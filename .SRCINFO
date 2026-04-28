@@ -1,7 +1,7 @@
 pkgbase = freerouting-zh-cn
 	pkgdesc = Advanced PCB autorouter
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/freerouting/freerouting
 	arch = any
 	license = GPL-3.0-only
@@ -18,7 +18,9 @@ pkgbase = freerouting-zh-cn
 	optdepends = kicad
 	optdepends = pcb-rnd
 	provides = freerouting-zh-cn
+	provides = freerouting
 	conflicts = freerouting-zh-cn
+	conflicts = freerouting
 	options = !strip
 	options = !debug
 	source = freerouting::git+https://github.com/freerouting/freerouting.git#tag=v2.2.0
