@@ -1,12 +1,12 @@
 pkgbase = hn-randfile-rust-bin
 	pkgdesc = Random file generator CLI tool
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/hnchengzong/hn-randfile-rust
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = hn-randfile-rust-bin-0.2.0.tar.gz::https://github.com/hnchengzong/hn-randfile-rust/releases/download/v0.2.0/hn-randfile-rust-0.2.0-1-x86_64.pkg.tar.zst
-	sha256sums = 8490b0a224769d4874b19274f12b450e7ec7964a74b19433ec1fe707cab0b770
+	source = hn-randfile-rust-bin-0.2.2.tar.gz::https://github.com/hnchengzong/hn-randfile-rust/releases/download/v0.2.2/hn-randfile-rust-0.2.2-1-x86_64.pkg.tar.zst
+	sha256sums = 12b295d219cbcf6b0bdc22ae888e64555a2aa651caf99824d98470b201b87a2f
 
 pkgname = hn-randfile-rust-bin
