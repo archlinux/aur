@@ -1,17 +1,17 @@
 # Maintainer: mindhunter <mindhunter@blinkenshell.org>
 
 pkgname="dark-send"
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="CLI Telegram client written in python"
 arch=('x86_64')
 url="https://github.com/mindhuntr/dark-send"
 license=('GPL')
-depends=('python-telethon' 'python-hachoir' 'python-tqdm' 'python-inquirerpy')
+depends=('python-telethon' 'python-hachoir' 'python-tqdm' 'python-inquirerpy' 'python-rich')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 install=dark-send.install
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/dark-send/dark_send-${pkgver}.tar.gz")
-sha256sums=('09eeb3dd89709e20652a637a77c3a21e58921631a99ebbfbbd20f4915aec3e30')
+sha256sums=('abeba58ca28741670c4c52f11f9dfbfb849d65ff2a4c8d269d3808dfcc087734')
 
 build() {
 	cd "dark_send-$pkgver"

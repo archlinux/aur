@@ -1,7 +1,7 @@
 pkgbase = dark-send
 	pkgdesc = CLI Telegram client written in python
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/mindhuntr/dark-send
 	install = dark-send.install
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = dark-send
 	depends = python-hachoir
 	depends = python-tqdm
 	depends = python-inquirerpy
-	source = dark-send-1.2.1.tar.gz::https://files.pythonhosted.org/packages/source/d/dark-send/dark_send-1.2.1.tar.gz
-	sha256sums = 09eeb3dd89709e20652a637a77c3a21e58921631a99ebbfbbd20f4915aec3e30
+	depends = python-rich
+	source = dark-send-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/d/dark-send/dark_send-1.3.0.tar.gz
+	sha256sums = abeba58ca28741670c4c52f11f9dfbfb849d65ff2a4c8d269d3808dfcc087734
 
 pkgname = dark-send

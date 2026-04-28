@@ -2,3 +2,9 @@ post_install() {
     echo "==> Enable and start dark-send for your user:"
     echo "      systemctl --user enable --now dark-send.service"
 }
+
+post_upgrade() { 
+    echo "==> Restart dark-send for your user after upgrade:"
+    echo "      systemctl --user restart dark-send.service"
+} 
+
