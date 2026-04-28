@@ -1,6 +1,6 @@
 pkgbase = athas-bin
 	pkgdesc = Lightweight code editor built with React, TypeScript, and Tauri
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/athasdev/athas
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = athas-bin
 	depends = hicolor-icon-theme
 	provides = Athas
 	conflicts = Athas
-	source_x86_64 = https://github.com/athasdev/athas/releases/download/v0.4.6/Athas_0.4.6_amd64.deb
-	sha256sums_x86_64 = 46afe38b6116124e02046d00e3b0ec5b209913e66cd2de72e54e31e905e3bef8
+	source_x86_64 = https://github.com/athasdev/athas/releases/download/v0.4.7/Athas_0.4.7_amd64.deb
+	sha256sums_x86_64 = c7502a7fe61acf4d2afcf80147f284b9af6d3bb253878cba5dd0bf2915f1bdfe
 
 pkgname = athas-bin
