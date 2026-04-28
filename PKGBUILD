@@ -1,7 +1,7 @@
 # Maintainer: Ross <git at ross dot ch>
 
 pkgname=forgecode
-pkgver=2.12.9
+pkgver=2.12.10
 pkgrel=1
 pkgdesc="An AI-powered code assistant CLI tool"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ makedepends=(
 )
 optdepends=('git: For git-related operations')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('e227fd465b3ee274a066c0b19d13aad8624b11af1c2f36d59fb24ebc1fa090a3a71929f00894de34c7639105fc25923ccfb55cc856a95d5ea0967543d2efb291')
+b2sums=('773fe59a15cbd932e300c1eaade43d4a5f5f3843e55c4ead10685b9dab12031f729838e83c42a28be5ec69ead0cfa83c1de55d078157a220fad111a64790f32e')
 options=(!lto)
 
 prepare() {
