@@ -1,6 +1,6 @@
 pkgbase = python-chibi-command
 	pkgdesc = run terminal commands
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://pypi.org/project/chibi-command/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-chibi-command
 	depends = python-chibi-hybrid
 	depends = python-chibi-atlas
 	depends = python-chibi-requests
-	source = https://files.pythonhosted.org/packages/source/c/chibi_command/chibi_command-2.5.0.tar.gz
-	sha256sums = ec351a457e72aec941fb8d9eac522a9ca7cd0fec342a66fa6c6a3cfdda0ed627
+	source = https://files.pythonhosted.org/packages/source/c/chibi_command/chibi_command-2.5.1.tar.gz
+	sha256sums = 6c9789d871b5d73c1cdbee3cbbc10c6bc35af18f5462cb5746d88e53bfd8d769
 
 pkgname = python-chibi-command
