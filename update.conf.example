@@ -10,8 +10,8 @@
 # UPDATE_STABILITY_SECS=60
 
 # Enable automatic rollback on update failure.
-# 1 = rollback (unmount overlay, revert to previous state)
-# 0 = leave changes as-is for manual recovery
+# 1 = rollback (restore previous venv from backup, revert to previous state)
+# 0 = leave broken venv in place for manual recovery
 # Default: 1
 # UPDATE_AUTO_ROLLBACK=1
 

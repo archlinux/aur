@@ -53,98 +53,85 @@ pre_upgrade() {
     _ensure_root
 }
 
-post_install() {
-    _ensure_root
-    _ensure_environment
-    systemctl daemon-reload
-    # Write version file for pkgver
-    if [ -f /opt/astrbot/.version ]; then
-        cp /opt/astrbot/.version /var/lib/astrbot/.version
-    fi
-    _sync_instances_best_effort
+# ─── Shared banner (install vs upgrade) ────────────────────────────────────────
+_print_banner() {
+    local mode="$1"  # "install" or "upgrade"
 
     echo "-------------------------------------------------------------------"
-    echo "AstrBot 已安装（多实例支持）"
-    echo ""
-    echo "【创建实例】"
-    echo "  sudo astrbotctl init <实例名>              # 初始化新实例"
-    echo "  sudo astrbotctl init -f <备份> <实例名>   # 从备份初始化"
-    echo ""
-    echo "【运行服务】"
-    echo "  sudo astrbotctl start <实例名>             # 通过 systemd 启动实例"
-    echo "  sudo astrbotctl run <实例名>               # 前台调试运行实例"
-    echo ""
-    echo "【常用管理】"
-    echo "  astrbotctl ls"
-    echo "  sudo astrbotctl stop <实例名>"
-    echo "  astrbotctl status <实例名>"
-    echo "  sudo astrbotctl reset <实例名>            # 重置配置"
-    echo ""
-    echo "【备份与恢复】"
-    echo "  astrbotctl export <实例名>              # 导出"
-    echo "  astrbotctl import <实例名> <备份文件>  # 导入"
-    echo ""
-    echo "【后续更新如未生效】"
-    echo "  包升级后会自动同步实例虚拟环境。若仍像在跑旧代码："
-    echo "  sudo astrbotctl sync <实例名>"
-    echo "  sudo astrbotctl sync --all"
-    echo ""
-    echo "【文件路径】"
-    echo "  代码目录：     /opt/astrbot"
-    echo "  数据目录：     /var/lib/astrbot/<实例名>"
-    echo "  配置文件：     /etc/astrbot/<实例名>.conf"
-    echo "  锁文件：       /var/lib/astrbot/<实例名>/astrbot.lock"
-    echo "  服务日志：     journalctl -u astrbot@<实例名> -f"
-    echo ""
-    echo "【锁文件】"
-    echo "  锁文件位于 ASTRBOT_ROOT/astrbot.lock"
-    echo "  如果实例异常退出后锁文件未删除，可手动执行："
-    echo "  sudo rm -f /var/lib/astrbot/<实例名>/astrbot.lock"
-    echo ""
-    echo "【账号管理】"
-    echo "  sudo astrbotctl admin -u admin -p '<新密码>' <实例名>"
+    case "$mode" in
+    install)
+        echo "AstrBot 已安装（多实例支持）"
+        echo ""
+        echo "【创建实例】"
+        echo "  sudo astrbotctl init <实例名>              # 初始化新实例"
+        echo "  sudo astrbotctl init -f <备份> <实例名>   # 从备份初始化"
+        echo ""
+        echo "【运行服务】"
+        echo "  sudo astrbotctl start <实例名>             # 通过 systemd 启动实例"
+        echo "  sudo astrbotctl run <实例名>               # 前台调试运行实例"
+        echo ""
+        echo "【常用管理】"
+        echo "  astrbotctl ls"
+        echo "  sudo astrbotctl stop <实例名>"
+        echo "  astrbotctl status <实例名>"
+        echo "  sudo astrbotctl reset <实例名>            # 重置配置"
+        echo ""
+        echo "【备份与恢复】"
+        echo "  astrbotctl export <实例名>              # 导出"
+        echo "  astrbotctl import <实例名> <备份文件>  # 导入"
+        echo ""
+        echo "【文件路径】"
+        echo "  代码目录：     /opt/astrbot"
+        echo "  数据目录：     /var/lib/astrbot/<实例名>"
+        echo "  配置文件：     /etc/astrbot/<实例名>.conf"
+        echo "  锁文件：       /var/lib/astrbot/<实例名>/astrbot.lock"
+        echo "  服务日志：     journalctl -u astrbot@<实例名> -f"
+        ;;
+    upgrade)
+        echo "AstrBot 已更新"
+        echo ""
+        echo "【后续更新本包】"
+        echo "  使用你的 AUR helper 更新 astrbot-git"
+        echo "  例如：paru -S astrbot-git"
+        echo ""
+        echo "【如代码似乎没刷新】"
+        echo "  包升级后会自动同步实例虚拟环境。若仍像在跑旧代码："
+        echo "  sudo astrbotctl sync <实例名>"
+        echo "  # 或同步全部实例"
+        echo "  sudo astrbotctl sync --all"
+        echo ""
+        echo "【如遇异常】"
+        echo "  如果环境异常，请用你的 AUR helper 重新构建并安装 astrbot-git"
+        echo ""
+        echo "【锁文件】"
+        echo "  锁文件位于 ASTRBOT_ROOT/astrbot.lock"
+        echo "  如果实例异常退出后锁文件未删除，可手动执行："
+        echo "  sudo rm -f /var/lib/astrbot/<实例名>/astrbot.lock"
+        echo ""
+        echo "【账号管理】"
+        echo "  sudo astrbotctl admin -u admin -p '<新密码>' <实例名>"
+        echo "  若使用 HTTPS 证书：sudo astrbotctl certbot <实例名>"
+        ;;
+    esac
     echo "-------------------------------------------------------------------"
 }
 
-post_upgrade() {
+# ─── Common post-install / post-upgrade logic ─────────────────────────────────
+_post_common() {
+    local mode="$1"
     _ensure_root
     _ensure_environment
     systemctl daemon-reload
-    # Write version file for pkgver
-    if [ -f /opt/astrbot/.version ]; then
-        cp /opt/astrbot/.version /var/lib/astrbot/.version
-    fi
     _sync_instances_best_effort
+    _print_banner "$mode"
+}
 
-    echo "-------------------------------------------------------------------"
-    echo "AstrBot 已更新"
-    echo ""
-    echo "【快速开始】"
-    echo "  sudo astrbotctl init light             # 创建首个实例"
-    echo "  sudo astrbotctl start light            # 通过 systemd 启动实例"
-    echo "  sudo astrbotctl run light              # 前台调试运行实例"
-    echo ""
-    echo "【后续更新本包】"
-    echo "  使用你的 AUR helper 更新 astrbot-git"
-    echo "  例如：paru -S astrbot-git"
-    echo ""
-    echo "【如代码似乎没刷新】"
-    echo "  包升级后会自动同步实例虚拟环境。若仍像在跑旧代码："
-    echo "  sudo astrbotctl sync <实例名>"
-    echo "  # 或同步全部实例"
-    echo "  sudo astrbotctl sync --all"
-    echo ""
-    echo "【锁文件】"
-    echo "  锁文件位于 ASTRBOT_ROOT/astrbot.lock"
-    echo "  如果实例异常退出后锁文件未删除，可手动执行："
-    echo "  sudo rm -f /var/lib/astrbot/<实例名>/astrbot.lock"
-    echo ""
-    echo "【如遇异常】"
-    echo "  如果环境异常，请用你的 AUR helper 重新构建并安装 astrbot-git"
-    echo ""
-    echo "【账号管理】"
-    echo "  sudo astrbotctl admin -u admin -p '<新密码>' <实例名>"
-    echo "-------------------------------------------------------------------"
+post_install() {
+    _post_common install
+}
+
+post_upgrade() {
+    _post_common upgrade
 }
 
 post_remove() {

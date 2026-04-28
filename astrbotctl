@@ -738,12 +738,25 @@ USAGE
 
     _sync_instance() {
         local inst="$1" was_active=0
+        local venv_dir_path venv_backup_path had_backup=0
         instance="$inst"
         load_instance_config
 
         if [ ! -d "$ASTRBOT_ROOT" ]; then
             echo "⚠️  Instance $inst directory missing, skipping."
             return 0
+        fi
+
+        venv_dir_path="$(venv_dir)"
+        venv_backup_path="${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup"
+
+        # Backup current venv before sync
+        if [ "$UPDATE_AUTO_ROLLBACK" = "1" ] && [ -d "$venv_dir_path" ]; then
+            echo ">>> Backing up current venv..."
+            rm -rf "$venv_backup_path" 2>/dev/null || true
+            mkdir -p "$(dirname "$venv_backup_path")"
+            cp -a "$venv_dir_path" "$venv_backup_path"
+            had_backup=1
         fi
 
         if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
@@ -754,8 +767,17 @@ USAGE
 
         if ! ensure_instance_env_synced 2>&1; then
             echo "⚠️  Failed to sync environment for $inst"
+            if [ "$had_backup" -eq 1 ]; then
+                echo ">>> Restoring previous venv from backup..."
+                rm -rf "$venv_dir_path" 2>/dev/null || true
+                cp -a "$venv_backup_path" "$venv_dir_path"
+            fi
+            rm -rf "$venv_backup_path" 2>/dev/null || true
             return 1
         fi
+
+        # Sync succeeded — discard backup
+        rm -rf "$venv_backup_path" 2>/dev/null || true
 
         if [ "$was_active" -eq 1 ]; then
             echo ">>> Restarting service: $inst"
@@ -860,6 +882,7 @@ USAGE
     echo "[2/3] Rebuilding venv and restarting instances..."
     _update_instance() {
         local inst="$1"
+        local venv_dir_path venv_backup_path had_backup=0
         instance="$inst"
         load_instance_config
         if [ ! -d "$ASTRBOT_ROOT" ]; then
@@ -867,8 +890,21 @@ USAGE
             return 0
         fi
 
+        venv_dir_path="$(venv_dir)"
+        venv_backup_path="${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup"
+
         echo ">>> Rebuilding venv for: $inst"
-        rm -rf "$(venv_dir)"
+
+        # Backup current venv before nuking it
+        if [ "$UPDATE_AUTO_ROLLBACK" = "1" ] && [ -d "$venv_dir_path" ]; then
+            echo ">>> Backing up current venv..."
+            rm -rf "$venv_backup_path" 2>/dev/null || true
+            mkdir -p "$(dirname "$venv_backup_path")"
+            cp -a "$venv_dir_path" "$venv_backup_path"
+            had_backup=1
+        fi
+
+        rm -rf "$venv_dir_path"
 
         if [ -L "/opt/astrbot/astrbot/dashboard/dist" ] && [ ! -e "/opt/astrbot/astrbot/dashboard/dist" ]; then
             rm -f "/opt/astrbot/astrbot/dashboard/dist"
@@ -877,6 +913,7 @@ USAGE
 
         if ! ensure_instance_env_synced 2>&1; then
             echo "⚠️  Failed to sync environment for $inst"
+            _restore_venv_backup "$venv_dir_path" "$venv_backup_path"
             return 1
         fi
 
@@ -886,9 +923,29 @@ USAGE
         echo ">>> Starting: $inst"
         if ! systemctl start "astrbot@$inst"; then
             echo "⚠️  Failed to start $inst"
+            _restore_venv_backup "$venv_dir_path" "$venv_backup_path"
             return 1
         fi
+
+        # Keep backup around for stability monitoring; cleaned up after
         return 0
+    }
+
+    _restore_venv_backup() {
+        local dst="$1" src="$2"
+        if [ -d "$src" ]; then
+            echo ">>> Restoring previous venv from backup..."
+            rm -rf "$dst" 2>/dev/null || true
+            cp -a "$src" "$dst"
+        fi
+        rm -rf "$src" 2>/dev/null || true
+    }
+
+    _cleanup_venv_backup() {
+        local inst
+        for inst in "$@"; do
+            rm -rf "${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup" 2>/dev/null || true
+        done
     }
 
     FAILED_INSTANCES=""
@@ -905,8 +962,29 @@ USAGE
         for i in $(seq 1 "$stability_secs"); do
             sleep 1
             for inst in $instances; do
+                if echo "$FAILED_INSTANCES" | grep -qw "$inst"; then
+                    continue
+                fi
                 if ! systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
                     echo "⚠️  Instance $inst crashed at ${i}s."
+                    # Rollback if backup exists
+                    bk_path="${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup"
+                    if [ "$UPDATE_AUTO_ROLLBACK" = "1" ] && [ -d "$bk_path" ]; then
+                        echo ">>> Rolling back venv for $inst..."
+                        vp="${SYSTEM_ROOT}/${inst}/.venv"
+                        rm -rf "$vp" 2>/dev/null || true
+                        cp -a "$bk_path" "$vp"
+                        rm -rf "$bk_path"
+                        echo ">>> Restarting $inst with previous venv..."
+                        systemctl start "astrbot@$inst" 2>/dev/null || true
+                        sleep 5
+                        if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
+                            echo ">>> Rollback succeeded — $inst is running on previous version."
+                            continue
+                        else
+                            echo "⚠️  Rollback also failed for $inst — manual intervention needed."
+                        fi
+                    fi
                     FAILED_INSTANCES="$FAILED_INSTANCES $inst"
                 fi
             done
@@ -915,6 +993,9 @@ USAGE
             fi
         done
     fi
+
+    # Clean up remaining backups for successful instances
+    _cleanup_venv_backup $instances
 
     echo ""
     if [ -n "$FAILED_INSTANCES" ]; then

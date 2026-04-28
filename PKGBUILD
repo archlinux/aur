@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.23.1.r581.ge16e5c76
+pkgver=4.23.6.r613.g49253975
 pkgrel=1
 
 pkgver() {
@@ -27,6 +27,7 @@ url="https://github.com/AstrBotDevs/AstrBot"
 license=('AGPL-3.0-only')
 
 depends=('python>=3.12' 'uv' 'certbot')
+makedepends=('git')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -54,6 +55,32 @@ sha256sums=('SKIP'
     'SKIP')
 
 install=astrbot-git.install
+
+check() {
+    cd "$srcdir/$_srcname"
+    # Smoke test: 验证关键 import 不报错
+    local _errcnt=0
+    python -c "
+from astrbot.core.astr_main_agent_resources import (
+    BACKGROUND_TASK_RESULT_WOKE_SYSTEM_PROMPT,
+    BACKGROUND_TASK_WOKE_USER_PROMPT,
+    CONVERSATION_HISTORY_INJECT_PREFIX,
+)
+print('[check] astr_main_agent_resources OK')
+" || _errcnt=$((_errcnt + 1))
+    python -c "
+from astrbot.dashboard.server import DashboardServer
+print('[check] dashboard.server OK')
+" || _errcnt=$((_errcnt + 1))
+    python -c "
+from astrbot.core.pipeline.process_stage import stage
+print('[check] pipeline process_stage OK')
+" || _errcnt=$((_errcnt + 1))
+    [ "$_errcnt" -eq 0 ] || {
+        echo "❌ check() failed with $_errcnt error(s)"
+        exit 1
+    }
+}
 
 package() {
     install -dm755 "$pkgdir/opt/astrbot"

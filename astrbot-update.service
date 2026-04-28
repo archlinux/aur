@@ -8,11 +8,12 @@ Before=astrbot-update.timer
 Type=oneshot
 # Run as root so we can update venvs and restart services
 # Reads instance list and config from /etc/astrbot/
-# Auto-rollback is enabled by default (controlled by UPDATE_AUTO_ROLLBACK env var)
+# Rollback behavior (controlled by UPDATE_AUTO_ROLLBACK env var):
+#   1 (default) — old venv is backed up before rebuild; restored if sync fails,
+#                 service won't start, or it crashes during the stability window.
+#   0           — no backup taken; on failure the admin must reinstall manually.
 EnvironmentFile=-/etc/astrbot/update.conf
 ExecStart=/usr/bin/astrbotctl update --all --stability-secs ${UPDATE_STABILITY_SECS:-60}
-# If the service fails and AUTO_ROLLBACK=1 (default), rollback has already happened
-# in the update command. If AUTO_ROLLBACK=0, changes are left as-is for manual recovery.
 SyslogIdentifier=astrbot-update
 StandardOutput=journal
 StandardError=journal

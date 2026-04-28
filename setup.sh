@@ -96,7 +96,7 @@ detect_distro() {
 _install_deps_arch() {
   need_cmd pacman
   _log "Installing via pacman..."
-  local pkgs=(python312 python-pip uv git certbot)
+  local pkgs=(python python-pip uv git certbot)
   # rustup provides cargo; do not install rust/cargo from official repos if rustup exists
   if ! command -v rustup >/dev/null 2>&1; then
     pkgs+=(rust cargo)
