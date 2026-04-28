@@ -17,11 +17,12 @@ prepare() {
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
-  install -m755 "$pkgname-$pkgver.AppImage" "$pkgdir/opt/$pkgname/anilinux-electron.AppImage"
+  install -m644 "$pkgname-$pkgver.AppImage" "$pkgdir/opt/$pkgname/anilinux-electron.AppImage"
   
   # Create wrapper script
   cat > "$pkgdir/opt/$pkgname/anilinux-electron" <<EOF
 #!/bin/bash
+chmod +x /opt/$pkgname/anilinux-electron.AppImage
 exec /opt/$pkgname/anilinux-electron.AppImage "\$@"
 EOF
   chmod +x "$pkgdir/opt/$pkgname/anilinux-electron"
