@@ -1,7 +1,7 @@
 # Maintainer: YalvacRamazan <YalvacRamazan@github.com>
 pkgname=petbottle-bin
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Yerel not uygulamasi"
 arch=('x86_64')
 url="https://github.com/YalvacRamazan/Petbottle-public"

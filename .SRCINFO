@@ -1,7 +1,7 @@
 pkgbase = petbottle-bin
 	pkgdesc = Yerel not uygulamasi
 	pkgver = 0.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YalvacRamazan/Petbottle-public
 	arch = x86_64
 	license = Apache-2.0
