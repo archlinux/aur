@@ -2,7 +2,7 @@
 pkgname=dockit-bin
 _pkgname=DocKit
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI clients for elasticsearch, opensearch and etc.(Prebuilt version)"
 arch=('x86_64')
 url="https://dockit.geekfun.club/"
@@ -15,11 +15,10 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('6919a946b53d939b09d168648683e30c472882ad7a746aac9ec69618aa08cf9c')
+sha256sums=('6e8c6954deb6f77120b7afded12ed436871634da4d1c7fc25f67f74154d96b81')
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
