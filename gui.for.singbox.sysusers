@@ -1,0 +1,2 @@
+#Type   Name             ID    GECOS                     Home directory          Shell
+u       guiforsingbox    -     "GUI.for.SingBox Service" /var/lib/gui.for.singbox

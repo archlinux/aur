@@ -1,0 +1,15 @@
+#Type   Path                                             Mode    User            Group           Age     Argument
+d       /var/lib/gui.for.singbox                         0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data                    0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/sing-box           0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/locales            0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/subscribes         0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/plugins            0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/third              0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/third/node-configurator    0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/third/node-convert         0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/third/traffic-statistics   0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/.cache             0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/.cache/imgs        0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/.cache/icons       0775    guiforsingbox   guiforsingbox   -       -
+f       /var/lib/gui.for.singbox/GUI.for.SingBox         0775    guiforsingbox   guiforsingbox   -       -

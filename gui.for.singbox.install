@@ -1,0 +1,31 @@
+_help() {
+    cat << 'EOF'
+================================
+GUI.for.SingBox 快速使用指南 / Quick Start Guide
+================================
+1. GUI.for.SingBox 访问权限 / GUI.for.SingBox Access Permission
+sudo gpasswd -a $USER guiforsingbox
+newgrp guiforsingbox
+
+2. 使 sing-box 不需 root 权限的情况下创建和控制 Tun 设备 /
+  Allows sing-box to create and manage Tun devices without requiring root privileges
+setcap cap_net_admin=+pe /var/lib/gui.for.singbox/data/sing-box/sing-box
+
+3. 配置文件位置 / Configuration file location
+ls -lash /var/lib/gui.for.singbox/data/
+
+4. 文档访问 / Document Access
+在浏览器打开 / Open in browser:
+xdg-open https://gui-for-cores.github.io/zh/guide/
+
+================================
+EOF
+}
+
+post_install() {
+   _help
+}
+
+post_upgrade() {
+  _help
+}
