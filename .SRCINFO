@@ -1,6 +1,6 @@
 pkgbase = ikuai-cli
 	pkgdesc = CLI tool for managing iKuai routers — network, VPN, firewall, users, QoS and more from the terminal.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/ikuaidev/ikuai-cli
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ikuai-cli
 	license = MIT
 	makedepends = go
 	makedepends = unzip
-	source = ikuai-cli-1.0.2.zip::https://github.com/ikuaidev/ikuai-cli/archive/refs/tags/v1.0.2.zip
-	sha256sums = 93171f1a1e36d25602f45d358b71e775af4a00b21f788ce4e0be1d1bfbbd79ee
+	source = ikuai-cli-1.0.3.zip::https://github.com/ikuaidev/ikuai-cli/archive/refs/tags/v1.0.3.zip
+	sha256sums = 17292c0b1483649e0e1b4c577e7ad61cb64a4ab3a53878b266c6af12f56eed6d
 
 pkgname = ikuai-cli

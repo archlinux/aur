@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=ikuai-cli
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="CLI tool for managing iKuai routers — network, VPN, firewall, users, QoS and more from the terminal."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -9,7 +9,7 @@ url="https://github.com/ikuaidev/${pkgname}"
 license=("MIT")
 makedepends=("go" "unzip")
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('93171f1a1e36d25602f45d358b71e775af4a00b21f788ce4e0be1d1bfbbd79ee')
+sha256sums=('17292c0b1483649e0e1b4c577e7ad61cb64a4ab3a53878b266c6af12f56eed6d')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -41,5 +41,5 @@ package() {
     install -Dm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions/${pkgname}.fish"
     install -Dm644 "${pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
     install -Dm644 "LICENSE"         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    find docs scripts skills *.md -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
+    find docs scripts/smoke.sh skills *.md -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }
