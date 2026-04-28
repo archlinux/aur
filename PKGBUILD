@@ -1,7 +1,7 @@
 # Maintainer: Capricornus007 <sihaogang@gmail.com>
 
 pkgbase=linux-cjktty
-pkgver=6.19.14.arch1
+pkgver=7.0.2.arch1
 pkgrel=1
 pkgdesc='Linux (with cjktty-patches)'
 url='https://github.com/archlinux/linux'
@@ -33,7 +33,7 @@ source=(
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config  # the main kernel config file
 )
-source+=("https://github.com/bigshans/cjktty-patches/raw/refs/heads/master/v6.x/cjktty-6.19.patch"
+source+=("https://github.com/bigshans/cjktty-patches/raw/refs/heads/master/v7.x/cjktty-7.0.patch"
          "$_cjktty_repo/raw/master/cjktty-add-cjk32x32-font-data.patch")
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
