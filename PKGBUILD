@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=18
+pkgrel=19
 pkgdesc="Shorin DMS Niri desktop environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -22,6 +22,7 @@ optdepends=(
     'noto-fonts: Fonts' 'noto-fonts-cjk: CJK fonts' 'noto-fonts-emoji: Emoji fonts'
     'niri-sidebar-git: Niri sidebar component'
     'ffmpegthumbnailer: Thumbnails' 'gvfs-smb: SMB support' 'nautilus-open-any-terminal: Nautilus extension'
+    'icoextract: exe thumbnailer'
     'file-roller: Archive manager' 'gnome-keyring: Keyring service' 'gst-plugins-base: GStreamer'
     'gst-plugins-good: GStreamer' 'gst-libav: GStreamer' 'nautilus: File manager'
     'xdg-desktop-portal-gtk: GTK portal' 'thunar: File manager' 'tumbler: Thumbnail service'

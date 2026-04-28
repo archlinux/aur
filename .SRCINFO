@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Core Configs & Installer)
 	pkgver = r4.0dabc1d
-	pkgrel = 18
+	pkgrel = 19
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
@@ -32,6 +32,7 @@ pkgbase = shorin-dms-niri-git
 	optdepends = ffmpegthumbnailer: Thumbnails
 	optdepends = gvfs-smb: SMB support
 	optdepends = nautilus-open-any-terminal: Nautilus extension
+	optdepends = icoextract: exe thumbnailer
 	optdepends = file-roller: Archive manager
 	optdepends = gnome-keyring: Keyring service
 	optdepends = gst-plugins-base: GStreamer
