@@ -1,6 +1,6 @@
 pkgbase = opennow
 	pkgdesc = custom GeForce Now client
-	pkgver = 0.3.6
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://opennow.zortos.me/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = opennow
 	depends = hicolor-icon-theme
 	provides = opennow
 	conflicts = opennow-appimage
-	source = opennow-0.3.6.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v0.3.6.tar.gz
+	source = opennow-0.3.8.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v0.3.8.tar.gz
 	source = opennow.desktop
-	sha256sums = b170874a42e3b9ef24050a75d096aeba73f35facb1f6c593400b0ae54aebbc43
+	sha256sums = 0c64b59c68ea30c0933c4bf874c421d36a2ec90fb6cf64f310676ee7f6ad2164
 	sha256sums = f088c04aff865e71937579c3b56e09e454e31acb7fb5301af217d695947029fd
 
 pkgname = opennow
