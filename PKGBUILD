@@ -2,7 +2,7 @@
 
 _pkgbase=rime-frost
 pkgname=${_pkgbase}-git
-pkgver=r311.ab57ec4
+pkgver=r336.6e8449d
 pkgrel=1
 pkgdesc="Rime 配置：白霜词库 | 蒹葭苍苍，白露为霜。基于雾凇拼音重制的，更纯净、词频准确、智能的词库。"
 arch=("any")
@@ -47,8 +47,8 @@ prepare() {
   cd "${_pkgbase}" &&
     mv ./default.yaml "./${_suggestion}" &&
     # Link essentials.
-    for _f in $(pacman -Qql rime-prelude | grep -v "/$"); do ln -sf "$_f" .; done &&
-    patch --forward --strip=1 --input="../package.patch"
+    for _f in $(pacman -Qql rime-prelude | grep -v "/$"); do ln -sf "$_f" .; done # &&、
+    # patch --forward --strip=1 --input="../package.patch"
 }
 
 build() {
