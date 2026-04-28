@@ -1,0 +1,17 @@
+pkgbase = mainstream-audio
+	pkgdesc = Mainstream OS Audio Dependencies
+	pkgver = 1.0
+	pkgrel = 4
+	arch = any
+	groups = mainstream
+	license = None
+	depends = cava
+	depends = pavucontrol-qt
+	depends = wireplumber
+	depends = pipewire-pulse
+	depends = libdbusmenu-gtk3
+	depends = playerctl
+	provides = illogical-impulse-audio
+	replaces = illogical-impulse-audio
+
+pkgname = mainstream-audio
