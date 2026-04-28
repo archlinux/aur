@@ -4,7 +4,7 @@ pkgname="${_pkgname}-desktop-bin"
 _appname=TidGi
 pkgver=0.13.0
 _electronversion=41
-pkgrel=2
+pkgrel=3
 pkgdesc="An privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -67,7 +67,7 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    _get_electron_version
+    _check_electron_version
     sed -i "s/${_pkgname} %U/${pkgname%-bin} %U/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     asar e "${srcdir}/usr/lib/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${srcdir}/usr/lib/${_pkgname}/resources/app.asar"
