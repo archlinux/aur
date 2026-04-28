@@ -18,10 +18,10 @@ source_riscv64=("pangolin::https://github.com/fosrl/cli/releases/download/${pkgv
 
 # SHA256 Checksums (Generate these using 'updpkgsums')
 sha256sums_x86_64=('9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785')
-sha256sums_aarch64=('9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785')
-sha256sums_armv7h=('9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785')
-sha256sums_armv6h=('9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785')
-sha256sums_riscv64=('9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785')
+sha256sums_aarch64=('5d1cc86bf16a493e3e6a1790e343431bf4d4a2722e1f810a2003d88e92371b09')
+sha256sums_armv7h=('507b95da62d85250ef549a96c90dabae1aaffb10c281bf37eb4050afe6e7eaa4')
+sha256sums_armv6h=('05cc3d28879da8dab76de928517429817b0fd0601a572fc0edb8e6c4b388ad6f')
+sha256sums_riscv64=('097468d580ee67755e14b8bc2f95a4032f3564e16c3f2e91a653b79d7a240078')
 
 package() {
     # Install the binary to /usr/bin and set executable permissions

@@ -15,12 +15,12 @@ pkgbase = pangolin-bin
 	source_x86_64 = pangolin::https://github.com/fosrl/cli/releases/download/0.8.0/pangolin-cli_linux_amd64
 	sha256sums_x86_64 = 9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785
 	source_aarch64 = pangolin::https://github.com/fosrl/cli/releases/download/0.8.0/pangolin-cli_linux_arm64
-	sha256sums_aarch64 = 9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785
+	sha256sums_aarch64 = 5d1cc86bf16a493e3e6a1790e343431bf4d4a2722e1f810a2003d88e92371b09
 	source_armv7h = pangolin::https://github.com/fosrl/cli/releases/download/0.8.0/pangolin-cli_linux_arm32
-	sha256sums_armv7h = 9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785
+	sha256sums_armv7h = 507b95da62d85250ef549a96c90dabae1aaffb10c281bf37eb4050afe6e7eaa4
 	source_armv6h = pangolin::https://github.com/fosrl/cli/releases/download/0.8.0/pangolin-cli_linux_arm32v6
-	sha256sums_armv6h = 9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785
+	sha256sums_armv6h = 05cc3d28879da8dab76de928517429817b0fd0601a572fc0edb8e6c4b388ad6f
 	source_riscv64 = pangolin::https://github.com/fosrl/cli/releases/download/0.8.0/pangolin-cli_linux_riscv64
-	sha256sums_riscv64 = 9ab93a684bfb52ed0ffb1686fd64afbdb0aac0b0e10ce3fae3f1249f0c96f785
+	sha256sums_riscv64 = 097468d580ee67755e14b8bc2f95a4032f3564e16c3f2e91a653b79d7a240078
 
 pkgname = pangolin-bin
