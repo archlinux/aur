@@ -26,6 +26,60 @@ _preserve_or_set_backend() {
     _set_default_backend
 }
 
+# Detect the host's CUDA runtime major version by inspecting libcudart's SONAME.
+# Echoes 12, 13, or empty string if no CUDA runtime found. Used to point the
+# unversioned voxtype-onnx-cuda symlink at the matching variant — cu12 binary
+# needs libcudart.so.12, cu13 needs libcudart.so.13. Mismatched pairings
+# register the EP, then fail at first dlopen and silently fall back to CPU.
+_detect_cuda_major() {
+    local lib
+    for lib in libcudart.so.13 libcudart.so.12; do
+        if /sbin/ldconfig -p 2>/dev/null | grep -q "\b$lib\b"; then
+            echo "${lib##*.so.}"
+            return
+        fi
+    done
+    # Fallback: probe well-known paths
+    if [ -e /usr/lib/libcudart.so.13 ] || [ -e /opt/cuda/lib64/libcudart.so.13 ]; then
+        echo "13"
+    elif [ -e /usr/lib/libcudart.so.12 ] || [ -e /opt/cuda/lib64/libcudart.so.12 ]; then
+        echo "12"
+    fi
+}
+
+_set_onnx_cuda_symlink() {
+    # Point /usr/lib/voxtype/voxtype-onnx-cuda at the variant matching the
+    # host's CUDA runtime. If no CUDA is installed, leave the unversioned
+    # symlink dangling — users running `voxtype setup gpu --enable` later
+    # will set it up after installing CUDA.
+    local cuda_major target
+    cuda_major=$(_detect_cuda_major)
+    case "$cuda_major" in
+        13)
+            target="cuda-13/voxtype-onnx-cuda-13"
+            ;;
+        12)
+            target="cuda-12/voxtype-onnx-cuda-12"
+            ;;
+        *)
+            # No CUDA detected. Prefer cu13 if both binaries are present
+            # (rolling-distro default); fall back to cu12 if only that exists.
+            if [ -f /usr/lib/voxtype/cuda-13/voxtype-onnx-cuda-13 ]; then
+                target="cuda-13/voxtype-onnx-cuda-13"
+            elif [ -f /usr/lib/voxtype/cuda-12/voxtype-onnx-cuda-12 ]; then
+                target="cuda-12/voxtype-onnx-cuda-12"
+            else
+                return
+            fi
+            ;;
+    esac
+
+    if [ -f "/usr/lib/voxtype/$target" ]; then
+        ln -sf "$target" /usr/lib/voxtype/voxtype-onnx-cuda
+        echo "$cuda_major"
+    fi
+}
+
 _detect_gpu() {
     # Detect GPU for acceleration recommendation
     GPU_DETECTED=""
@@ -57,11 +111,19 @@ _detect_gpu() {
         echo "      sudo voxtype setup gpu --enable"
         echo ""
         if [ "$GPU_VENDOR" = "nvidia" ]; then
-            echo "    Whisper: requires vulkan-icd-loader"
-            echo "    ONNX engines: requires cuda package"
+            local cuda_major
+            cuda_major=$(_detect_cuda_major)
+            if [ "$cuda_major" = "13" ]; then
+                echo "    CUDA 13 runtime detected — voxtype-onnx-cuda points to cuda-13 binary"
+            elif [ "$cuda_major" = "12" ]; then
+                echo "    CUDA 12 runtime detected — voxtype-onnx-cuda points to cuda-12 binary"
+            else
+                echo "    Whisper: requires vulkan-icd-loader"
+                echo "    ONNX engines: requires cuda (CUDA 13) or cuda12.6 (CUDA 12) package"
+            fi
         elif [ "$GPU_VENDOR" = "amd" ]; then
             echo "    Whisper: requires vulkan-icd-loader"
-            echo "    ONNX engines: requires rocm-hip-runtime"
+            echo "    ONNX engines: requires rocm-hip-runtime (AMD GPU EP is MIGraphX as of v0.7.0)"
         else
             echo "    Requires: vulkan-icd-loader package"
         fi
@@ -75,6 +137,11 @@ post_install() {
 
     CPU_VARIANT=$(_set_default_backend)
     echo "    CPU backend: $CPU_VARIANT (using voxtype-$CPU_VARIANT)"
+
+    CUDA_PICK=$(_set_onnx_cuda_symlink)
+    if [ -n "$CUDA_PICK" ]; then
+        echo "    CUDA runtime: $CUDA_PICK detected, voxtype-onnx-cuda → cuda-$CUDA_PICK variant"
+    fi
 
     _detect_gpu
 
@@ -104,19 +171,29 @@ pre_upgrade() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.6.6"
+    echo "==> Voxtype upgraded to 0.7.0"
     echo ""
 
     BACKEND=$(_preserve_or_set_backend)
     echo "    Backend: $BACKEND (using voxtype-$BACKEND)"
 
+    # Re-pick the CUDA variant on every upgrade in case the host's CUDA
+    # runtime changed (e.g., user upgraded from CUDA 12 to CUDA 13).
+    CUDA_PICK=$(_set_onnx_cuda_symlink)
+    if [ -n "$CUDA_PICK" ]; then
+        echo "    CUDA runtime: $CUDA_PICK detected, voxtype-onnx-cuda → cuda-$CUDA_PICK variant"
+    fi
+
     echo ""
-    echo "    v0.6.6: Media pause, audio feedback, KDE Plasma support, 7 bug fixes."
-    echo "    New: pause_media = true pauses music during recording (MPRIS/playerctl)."
-    echo "    New: audio feedback plays when transcription completes."
-    echo "    KDE Plasma keybinding docs added to README and user manual."
-    echo "    Fixes: ydotool on Fedora, eitype paste mode, duplicate notifications,"
-    echo "           xclip on X11, text replacement ordering, remote initial_prompt."
+    echo "    v0.7.0 changes for ONNX users:"
+    echo "      - voxtype-onnx-cuda is now a symlink that picks cuda-12 or cuda-13"
+    echo "        based on your CUDA runtime. Install the cuda or cuda12.6 package"
+    echo "        and run 'sudo voxtype setup gpu --enable' if the auto-pick is wrong."
+    echo "      - voxtype-onnx-rocm renamed to voxtype-onnx-migraphx (the AMD GPU EP"
+    echo "        changed). The old name still works as a symlink for one release."
+    echo "      - Each GPU binary now ships its companion ONNX Runtime .so files"
+    echo "        alongside it. If you previously saw silent CPU fallback, that's"
+    echo "        the cause — should be fixed now."
     echo ""
     echo "    Restart the daemon to apply updates:"
     echo "      systemctl --user restart voxtype"
@@ -125,4 +202,5 @@ post_upgrade() {
 
 post_remove() {
     rm -f /usr/bin/voxtype
+    rm -f /usr/lib/voxtype/voxtype-onnx-cuda
 }
