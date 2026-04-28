@@ -1,6 +1,6 @@
 pkgbase = luvtter-desktop-git
 	pkgdesc = Luvtter — slow-mail letter writing client (Compose Desktop, built from git HEAD)
-	pkgver = 0.0.0.r0.g0000000
+	pkgver = 0.0.1b.r0.g4c0082f
 	pkgrel = 1
 	url = https://github.com/Emiya173/luvtter
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = luvtter-desktop-git
 	depends = libxrender
 	depends = libxtst
 	depends = libxi
-	provides = luvtter-desktop=0.0.0.r0.g0000000
+	provides = luvtter-desktop=0.0.1b.r0.g4c0082f
 	conflicts = luvtter-desktop
 	conflicts = luvtter-desktop-bin
 	options = !strip

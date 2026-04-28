@@ -4,12 +4,15 @@
 # 从 GitHub HEAD 拉源码,本机用 Gradle 跑 :composeApp:createDistributable 自构。
 # 适合追新 / 验证开发版。
 #
+# pkgver() 从 git 描述生成形如 0.1.0.r5.gabcdef0 的滚动版本(最近 tag.r提交数.g短SHA)。
+# 没有 tag 时回退成 r<count>.g<sha>,符合 AUR -git 包惯例。
+#
 # 注意:Gradle 首次构建会下载所有依赖,需要数分钟 + 良好网络。
 # 输出在 composeApp/build/compose/binaries/main/app/letter-app/,布局同 -bin 包。
 
 pkgname=luvtter-desktop-git
 _pkgname=luvtter-desktop
-pkgver=0.0.0.r0.g0000000
+pkgver=0.0.1b.r0.g4c0082f
 pkgrel=1
 pkgdesc="Luvtter — slow-mail letter writing client (Compose Desktop, built from git HEAD)"
 arch=('x86_64')
@@ -30,17 +33,18 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" 'luvtter-desktop-bin')
 options=(!strip !debug)
 source=("$_pkgname::git+${url}.git"
-  "luvtter-desktop.desktop")
+        "luvtter-desktop.desktop")
 sha256sums=('SKIP'
-  'SKIP')
+            'SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  # 优先用最近 tag(如 v0.1.0)+ 距其的提交数 + 短 SHA;无 tag 时只用 r<count>.g<sha>
+  # 形如 vX.Y.Z-N-gSHA → X.Y.Z.rN.gSHA(去 v 前缀,把第一个 - 换成 .r,第二个换成 .)
+  # 无 tag 时回退成 r<count>.g<sha>。set -o pipefail 让 git 失败能被 || 捕获。
   (
-    git describe --long --tags 2>/dev/null |
-      sed 's/^v//; s/-/.r/; s/-/./'
-  ) || printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+  ) || printf "r%s.g%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
