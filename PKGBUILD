@@ -1,7 +1,7 @@
 # Maintainer: schultz-dev0 <your.email@example.com>
 pkgname=rusty_keys-bin
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A mechanical keyboard sound emulator (GTK4/Libadwaita)"
 arch=('x86_64')
 url="https://github.com/schultz-dev0/RustyKeys"
@@ -10,26 +10,23 @@ depends=('gtk4' 'libadwaita' 'alsa-lib')
 provides=('rusty_keys')
 conflicts=('rusty_keys')
 source=("rusty_keys::${url}/releases/download/v${pkgver}/rusty_keys"
-        "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+        "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/main.tar.gz") # Pointing to main branch to get the new SVG immediately
 sha256sums=('SKIP'
-            '48b47d04aec96300e04c151303b87e9600207e1c4e430b2e98a881366d455df8')
+            'SKIP')
 
 package() {
     # 1. Install binary
     install -Dm755 "${srcdir}/rusty_keys" "${pkgdir}/usr/bin/rusty_keys"
     
-    local src_dir="RustyKeys-${pkgver}"
+    # GitHub tarball from branch 'main' extracts to 'RustyKeys-main'
+    local src_dir="RustyKeys-main"
     
-    # 2. Install shared assets (sounds and css)
+    # 2. Install shared assets
     install -d "${pkgdir}/usr/share/rusty_keys/assets"
     cp -r "${srcdir}/${src_dir}/assets/"* "${pkgdir}/usr/share/rusty_keys/assets/"
     
-    # 3. Install Icon (Fallback to preview image if main icon is missing in assets/)
-    if [ -f "${srcdir}/${src_dir}/assets/rustykeys.png" ]; then
-        install -Dm644 "${srcdir}/${src_dir}/assets/rustykeys.png" "${pkgdir}/usr/share/pixmaps/rustykeys.png"
-    else
-        install -Dm644 "${srcdir}/${src_dir}/assets/Rustykeys_preview.png" "${pkgdir}/usr/share/pixmaps/rustykeys.png"
-    fi
+    # 3. Install Icon (SVG)
+    install -Dm644 "${srcdir}/${src_dir}/assets/rustykeys.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/rustykeys.svg"
     
     # 4. Create and Install Desktop Entry
     install -d "${pkgdir}/usr/share/applications"
@@ -40,7 +37,7 @@ Type=Application
 Name=Rusty Keys
 Comment=Mechanical keyboard sound daemon
 Exec=/usr/bin/rusty_keys
-Icon=rustykeys.png
+Icon=rustykeys
 Terminal=false
 Categories=Utility;
 StartupNotify=false
