@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!fix-force-blur-rendering.patch
+!kwin-effects-better-blur-dx-patched.install

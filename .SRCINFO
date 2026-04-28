@@ -1,0 +1,29 @@
+pkgbase = kwin-effects-better-blur-dx-patched
+	pkgdesc = KWin Better Blur DX — patched to fix force blur covering entire opaque windows
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/xarblu/kwin-effects-better-blur-dx
+	install = kwin-effects-better-blur-dx-patched.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = kwin
+	depends = kio
+	depends = knotifications
+	depends = kcrash
+	depends = kglobalaccel
+	depends = kcmutils
+	depends = libepoxy
+	depends = kwin
+	provides = kwin-effects-better-blur-dx=2.3.0
+	conflicts = kwin-effects-better-blur-dx
+	conflicts = kwin-effects-forceblur
+	replaces = kwin-effects-forceblur
+	source = kwin-effects-better-blur-dx-2.3.0.tar.gz::https://github.com/xarblu/kwin-effects-better-blur-dx/archive/refs/tags/v2.3.0.tar.gz
+	source = fix-force-blur-rendering.patch
+	sha256sums = 4f9945a05e0e6fffc9cc5f0bb012046e2b0fe6f848af07a8b5b3f94b7b4a2fca
+	sha256sums = SKIP
+
+pkgname = kwin-effects-better-blur-dx-patched
