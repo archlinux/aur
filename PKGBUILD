@@ -1,6 +1,6 @@
 # Maintainer: Grigory Romodanovskiy <greg2008200@gmail.com>
 pkgname=eddiscovery
-pkgver=19.1.3
+pkgver=19.1.4
 pkgrel=1
 epoch=
 pkgdesc="Captains log and 3d star map for Elite Dangerous"
@@ -22,7 +22,7 @@ changelog=
 source=("${pkgname}-${pkgver}::git+${url}#tag=Release_$pkgver"
         "eddiscovery"
         "eddiscovery.desktop")
-md5sums=('05f238149bc6e999fd8651c44e349adf'
+md5sums=('ce229d02a75caea291ffe52bf1c6128a'
          '764d0276476fb60618d87c918baca9e3'
          'a81a935726d655d8369897dae396ea53')
 noextract=()
