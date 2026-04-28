@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=envd
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Tiny server that stores per-project environment variables"
 arch=('x86_64' 'aarch64')
@@ -8,12 +8,13 @@ url="https://github.com/skorotkiewicz/envd"
 license=('MIT')
 depends=('gcc-libs')
 options=(!strip)
+install=envd.install
 
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/envd-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/envd-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('047a23923a272180ab9da47e9450eca4ac268f3e150e8fb903d878374e107e47')
-sha256sums_aarch64=('612e5d4fae797082998bd42815c6737621daf3bc52edc14dabb8dea5fe066d82')
+sha256sums_x86_64=('760cb58e6f0c8611cbcecc19fa27048fa574dc2164ae811fe5f6e2f74480d998')
+sha256sums_aarch64=('9546847046c92f9ac0c253872f241759c00b67abe80ff57f76af6d1077f1eb61')
 
 package() {
   install -Dm755 "envd" "$pkgdir/usr/bin/envd"
@@ -23,4 +24,7 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "server.yml.example" "$pkgdir/usr/share/doc/$pkgname/server.yml.example"
   install -Dm644 "client.yml.example" "$pkgdir/usr/share/doc/$pkgname/client.yml.example"
+
+  install -Dm644 "systemd/envd.service" "$pkgdir/usr/lib/systemd/system/envd.service"
+  install -Dm644 "systemd/envd-user.service" "$pkgdir/usr/lib/systemd/user/envd.service"
 }
