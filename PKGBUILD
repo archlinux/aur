@@ -87,4 +87,16 @@ package() {
   mkdir -p "$srcdir/deb-extract"
   bsdtar -xf "$deb" -C "$srcdir/deb-extract"
   bsdtar -xf "$srcdir/deb-extract"/data.tar.* -C "$pkgdir"
+
+  # .pdb files embed absolute $srcdir paths; not needed at runtime
+  find "$pkgdir" -name '*.pdb' -delete
+
+  # Tauri emits a 256x256@2 directory (macOS HiDPI convention); rename to standard 256x256
+  # so gtk-update-icon-cache does not reject the hicolor theme
+  local icon_hi="$pkgdir/usr/share/icons/hicolor"
+  if [[ -d "$icon_hi/256x256@2" && ! -d "$icon_hi/256x256" ]]; then
+    mv "$icon_hi/256x256@2" "$icon_hi/256x256"
+  else
+    rm -rf "$icon_hi/256x256@2"
+  fi
 }
