@@ -1,6 +1,6 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=enzyme
-pkgver=0.0.132
+pkgver=0.0.256
 pkgrel=1
 pkgdesc="High-performance automatic differentiation of LLVM and MLIR."
 arch=(any)
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/EnzymeAD/Enzyme/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('3fb829f59da6e180721c3c6ffc0cbf95906d4705037cea9d6c06230b09656a22')
+sha256sums=('9334895dc805bf9089709587d66212a96d7612bc2d6ad0c670d95fcc904496d7')
 
 build() {
     cmake -B build -S "Enzyme-$pkgver/enzyme" \

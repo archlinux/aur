@@ -1,6 +1,6 @@
 pkgbase = enzyme
 	pkgdesc = High-performance automatic differentiation of LLVM and MLIR.
-	pkgver = 0.0.132
+	pkgver = 0.0.256
 	pkgrel = 1
 	url = https://enzyme.mit.edu
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = enzyme
 	makedepends = cmake
 	depends = llvm
 	depends = clang
-	source = https://github.com/EnzymeAD/Enzyme/archive/v0.0.132.tar.gz
-	sha256sums = 3fb829f59da6e180721c3c6ffc0cbf95906d4705037cea9d6c06230b09656a22
+	source = https://github.com/EnzymeAD/Enzyme/archive/v0.0.256.tar.gz
+	sha256sums = 9334895dc805bf9089709587d66212a96d7612bc2d6ad0c670d95fcc904496d7
 
 pkgname = enzyme
