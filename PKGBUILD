@@ -3,7 +3,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.112.01907
+pkgver=1.116.02821
 _electronversion=39
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)"
@@ -52,12 +52,28 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '7222e3026ab0eda7d60698a036354a2bae4d0878b1d75fc893c91e30b60804bf'
             'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('e97e07b81565f0fe6558cdc57f37b71377dcaf6ac47b1604e1e751516c549b97')
-sha256sums_armv7h=('1849e99038079fa6dbaabf1ac09cdb3e5847af3c049073218f60facf5d1ca7b1')
-sha256sums_x86_64=('bf0f88e7370e8c22a169f936dd80aee70534b683fc3e282ff31a83a09840b233')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/usr/share/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+sha256sums_aarch64=('81507e5129835b8884579d6db695188f59f9ff106959004e4aa903da986c97ab')
+sha256sums_armv7h=('0c72bc0618912ab05a5ed898feeaa4df4e4ea22e79994e523e7fa689cdc49be9')
+sha256sums_x86_64=('dd9c592f2f173c3ee803df3cc5ef49bbf7cba188c82a4d7fe3acf4b9b598d4ef')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""    
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -67,7 +83,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    _get_electron_version
+    _check_electron_version
     sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
     sed -i "s/${_appname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_appname}.appdata.xml"
     sed -i -e "
@@ -87,14 +103,8 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    find "${srcdir}/usr/share/${_appname}/resources/app" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/usr/share/${_appname}/resources/app" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/usr/share/${_appname}/resources/app/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    cp -a "${_app_dir}/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/appdata/${_appname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-url-handler.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
