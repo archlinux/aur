@@ -5,7 +5,7 @@ _pkgname="${pkgname//-bin/""}"
 __pkgname=konform
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=140.10.0_100
+pkgver=140.10.1_100
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
 pkgrel=1
@@ -51,7 +51,7 @@ depends=(
 makedepends=(git)
 optdepends=(
   'hunspell-dictionary: Spell checking'
-  'ffmpeg4.4: additional video and audio codec support'
+  'ffmpeg: additional video and audio codec support'
   'openh264: H264 video decoding support'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
@@ -83,12 +83,12 @@ source=(
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums=('ceace80dfd50161e75cffc98faa805449dc1297e96f4bb413d14b48855bb2a27'
+sha256sums=('bdf2c8a566eb751ed719ed06114563c8e804c92351748301258f59aef5077095'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4')
-sha256sums_x86_64=('78bafacc8ac2c3f72a422ea1e553ed379322a083433eb6e5dbf99cc883b6b672'
+sha256sums_x86_64=('a838d28c8afab91db16fd34e8dadbdd2cb6635a63ca32d21ae96dfb8b581b35a'
                    'SKIP')
-sha256sums_aarch64=('00811f7700e1ad836be9a42ee701ef805c9f0abcd83bc9c81d46d4b2c674c258'
+sha256sums_aarch64=('e4bd334670e4eca898dd131751ac589ecd1a4632bd8800f65cdbcbd96caf74b3'
                     'SKIP')
 
 package() {
