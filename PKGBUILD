@@ -49,9 +49,6 @@ prepare() {
 
   cd steam-game-idler
   pnpm install --frozen-lockfile
-
-  # pacman handles updates; disable Tauri updater artifact generation (requires a signing key)
-  sed -i 's/"createUpdaterArtifacts": "[^"]*"/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
 }
 
 build() {
@@ -65,6 +62,9 @@ build() {
 
   cd "$srcdir/SGI/steam-game-idler"
   printf 'KEY=""\n' > .env.prod
+
+  # pacman handles updates; disable Tauri updater artifact generation (requires a signing key)
+  sed -i 's/"createUpdaterArtifacts": "[^"]*"/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
 
   export NEXT_TELEMETRY_DISABLED=1
   export TAURI_CI=1
