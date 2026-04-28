@@ -69,42 +69,17 @@ post_install() {
 post_upgrade() {
     systemd-sysusers comfyui.conf
 
-    if [ ! -d "_PREFIX_/venv" ]; then
+    if [ -d "_PREFIX_/venv" ] && "_PREFIX_/venv/bin/python" --version >/dev/null 2>&1; then
+        echo ":: Existing Python venv found, reusing it."
+    else
         echo ":: Creating Python virtual environment..."
+        rm -rf "_PREFIX_/venv"
         python -m venv "_PREFIX_/venv"
     fi
 
-    export PIP_CACHE_DIR="_PREFIX_/.pip-cache"
-
-    echo ":: Upgrading PyTorch and dependencies in the venv..."
-
-    if ! "_PREFIX_/venv/bin/pip" install --upgrade _TORCH_PKGS_; then
-        echo ""
-        echo ":: ERROR: PyTorch upgrade failed."
-        echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
-        echo ":: To retry, run:"
-        echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install --upgrade _TORCH_PKGS_"
-        echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install --upgrade -r _PREFIX_/requirements.txt"
-        echo "::   sudo chown -R comfy:comfy _PREFIX_"
-        return 1
+    if _comfyui_setup; then
+        echo ":: ComfyUI upgraded successfully."
     fi
-
-    if ! "_PREFIX_/venv/bin/pip" install --upgrade -r "_PREFIX_/requirements.txt"; then
-        echo ""
-        echo ":: ERROR: ComfyUI dependencies upgrade failed."
-        echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
-        echo ":: To retry, run:"
-        echo "::   sudo PIP_CACHE_DIR=_PREFIX_/.pip-cache _PREFIX_/venv/bin/pip install --upgrade -r _PREFIX_/requirements.txt"
-        echo "::   sudo chown -R comfy:comfy _PREFIX_"
-        return 1
-    fi
-
-    rm -rf "_PREFIX_/.pip-cache"
-
-    echo ":: Setting ownership to comfy:comfy..."
-    chown -R comfy:comfy "_PREFIX_"
-
-    echo ":: ComfyUI upgraded successfully."
 }
 
 pre_remove() {

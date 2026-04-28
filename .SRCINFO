@@ -1,7 +1,7 @@
 pkgbase = comfyui
 	pkgdesc = The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface
 	pkgver = 0.20.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Comfy-Org/ComfyUI
 	install = comfyui.install
 	arch = x86_64
