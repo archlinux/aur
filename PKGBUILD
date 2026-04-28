@@ -1,11 +1,12 @@
 pkgname=neuro-karaoke-app
 _pkgname=neuro-karaoke-app
 _execname=neuro-karaoke-player
+_reponame=neuro-karaoke-wrapper
 pkgver=1.5.2
-pkgrel=0
+pkgrel=1
 pkgdesc='Desktop wrapper for neurokaraoke.com with media controls and tray support.'
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/aferil-neuro/$_pkgname"
+url="https://github.com/AferilVT/$_reponame"
 license=('MIT')
 depends=('electron')
 makedepends=('git' 'yarn')
@@ -17,7 +18,7 @@ sha256sums=('SKIP')
 options=(!strip)
 
 build() {
-  cd "$_pkgname"
+  cd "$_reponame"
   
   # delete inferior icon formats to save a little space
   rm -f ./assets/*.ico
@@ -37,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$_reponame"
 
   # install .asar and wrapper script
   install -Dm644 dist/linux-unpacked/resources/app.asar "$pkgdir/usr/lib/$_pkgname/app.asar"

@@ -1,8 +1,8 @@
 pkgbase = neuro-karaoke-app
 	pkgdesc = Desktop wrapper for neurokaraoke.com with media controls and tray support.
 	pkgver = 1.5.2
-	pkgrel = 0
-	url = https://gitlab.com/aferil-neuro/neuro-karaoke-app
+	pkgrel = 1
+	url = https://github.com/AferilVT/neuro-karaoke-wrapper
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = neuro-karaoke-app
 	conflicts = neuro-karaoke-wrapper-git
 	replaces = neuro-karaoke-wrapper-git
 	options = !strip
-	source = git+https://gitlab.com/aferil-neuro/neuro-karaoke-app.git#tag=v1.5.2
+	source = git+https://github.com/AferilVT/neuro-karaoke-wrapper.git#tag=v1.5.2
 	sha256sums = SKIP
 
 pkgname = neuro-karaoke-app
