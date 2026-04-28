@@ -1,6 +1,6 @@
 # Maintainer: Aaron Plattner <aplattner@nvidia.com>
 pkgname=git-credential-msal
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Git credential helper for Microsoft Azure authentication'
 arch=(any)
@@ -9,7 +9,7 @@ license=(MIT)
 makedepends=(python-build python-installer python-wheel python-setuptools-scm)
 depends=(python-pyjwt python-keyring python-pyxdg python-msal 'git>=2.46')
 source=("git+https://github.com/Binary-Eater/git-credential-msal#tag=v${pkgver}")
-b2sums=('48454e9521fd43af2f471c5a636e93acb974d6d036211e4c67b6ff938551b67bd58348a85938abc31829676d83f5d804c4a6a1ebd9f6c1fa4948f1493227f12e')
+b2sums=('429bcbe861ca5249ddba13ed08016152fca3b8ba608ce5854d24bf416d0ab001845012082ceebdf62fafd5ff676c5f7006bd3f6f78381634039059016561fd53')
 
 build() {
     cd "$srcdir/$pkgname"
