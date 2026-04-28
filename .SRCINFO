@@ -1,6 +1,6 @@
 pkgbase = trusttunnel
 	pkgdesc = Modern, open-source VPN protocol endpoint by AdGuard
-	pkgver = 0.9.115
+	pkgver = 1.0.33
 	pkgrel = 1
 	url = https://github.com/TrustTunnel/TrustTunnel
 	install = trusttunnel.install
@@ -11,9 +11,10 @@ pkgbase = trusttunnel
 	depends = glibc
 	provides = trusttunnel-endpoint
 	conflicts = trusttunnel-endpoint
-	source_x86_64 = trusttunnel-v0.9.115-linux-x86_64-0.9.115.tar.gz::https://github.com/TrustTunnel/TrustTunnel/releases/download/v0.9.115/trusttunnel-v0.9.115-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 772e4af5b406e1a0a1ad29904f281bf932cb91228a27f6f0b19614b9dd6a4ee1
-	source_aarch64 = trusttunnel-v0.9.115-linux-aarch64-0.9.115.tar.gz::https://github.com/TrustTunnel/TrustTunnel/releases/download/v0.9.115/trusttunnel-v0.9.115-linux-aarch64.tar.gz
-	sha256sums_aarch64 = bff555389f42b1b233c048c57ec896afdc1f7c56434efa2aa9816085fb4ae606
+	options = !strip
+	source_x86_64 = trusttunnel-v1.0.33-linux-x86_64-1.0.33.tar.gz::https://github.com/TrustTunnel/TrustTunnel/releases/download/v1.0.33/trusttunnel-v1.0.33-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 48802662bc745aed60207c6ed6465d9fed428b1e53532045689d89bcad19bdd9
+	source_aarch64 = trusttunnel-v1.0.33-linux-aarch64-1.0.33.tar.gz::https://github.com/TrustTunnel/TrustTunnel/releases/download/v1.0.33/trusttunnel-v1.0.33-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 8b0d13d11f607c1da18be921096de3f85af67520b305aad425c74dd4f6775697
 
 pkgname = trusttunnel
