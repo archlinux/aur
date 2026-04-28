@@ -2,28 +2,29 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='charm-pop-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Send emails from your terminal. 📬'
-url='https://charm.sh/'
+url='https://charm.land/'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('pop')
 conflicts=('pop')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.2.0/pop_0.2.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('dee977361fda3023e7c80af3bc30959e04cd1e003f976737d7914642d3b9a410')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v${pkgver}/pop_${pkgver}_Linux_arm64.tar.gz")
+sha256sums_aarch64=('7d146df9ab479a6376bd3f64ed6e652a0c3015b26bc9714664e21a7af28cf2dc')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.2.0/pop_0.2.0_Linux_arm.tar.gz")
-sha256sums_armv7h=('8d744fde3583b504dc42f6b2f302381eb6428f1bd7664354f43e67c48af3c2d0')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/pop/releases/download/v${pkgver}/pop_${pkgver}_Linux_armv7.tar.gz")
+sha256sums_armv7h=('95e6648f9b7aff9b4376f1cd8d695ce827ee3b899afc8615e59790a1aef735da')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.2.0/pop_0.2.0_Linux_i386.tar.gz")
-sha256sums_i686=('7663934e8bb32e6e17f6a647a350d92a8cf9be8b6cfd774d14591a92632b44ec')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/pop/releases/download/v${pkgver}/pop_${pkgver}_Linux_i386.tar.gz")
+sha256sums_i686=('6220184d1e2afa37903e8402fcc0e546079426cd5c79a7bc4bb99096d3175332')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.2.0/pop_0.2.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('6ca76d6554dbe6c6cee6d18ef042c4900c7ba46254b7f971dacd8b664ccbfada')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v${pkgver}/pop_${pkgver}_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('db6ff5197986a9e8bef72f9279361d186f2518d028f5ff69c0d50b3834232526')
 
 package() {
+  cd "${srcdir}/pop_${pkgver}_Linux_${CARCH}"
   # bin
   install -Dm755 "./pop" "${pkgdir}/usr/bin/pop"
   # license
@@ -38,5 +39,7 @@ package() {
   install -Dm644 "./completions/pop.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/pop.fish"
   # man pages
   install -Dm644 "./manpages/pop.1.gz" "${pkgdir}/usr/share/man/man1/pop.1.gz"
+  # readme
+  mkdir -pv "${pkgdir}/usr/share/doc/pop/"
+  install -Dm644 README* "${pkgdir}/usr/share/doc/pop/"
 }
-
