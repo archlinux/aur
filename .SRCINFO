@@ -1,0 +1,19 @@
+pkgbase = asfy-bright
+	pkgdesc = Controlador de brillo usando GTK4 y Layer Shell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/HectorAlejandro26/asfy-bright
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = glibc
+	depends = gcc-libs
+	depends = brightnessctl
+	options = !debug
+	source = asfy-bright::git+https://github.com/HectorAlejandro26/asfy-bright.git#tag=v0.1.0
+	md5sums = SKIP
+
+pkgname = asfy-bright
