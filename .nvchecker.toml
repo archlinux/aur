@@ -1,4 +1,5 @@
 [ictree-bin]
-source = "git"
-git = "https://github.com/NikitaIvanovV/ictree.git"
+source = "github"
+github = "NikitaIvanovV/ictree"
+use_latest_release = true
 prefix = "v"
