@@ -1,6 +1,6 @@
 pkgbase = nvidia-535xx-utils
 	pkgdesc = NVIDIA drivers for Linux, 535 branch, dkms
-	pkgver = 535.288.01
+	pkgver = 535.309.01
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = nvidia-535xx-utils
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils.sysusers
 	source = nvidia.rules
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/535.288.01/NVIDIA-Linux-x86_64-535.288.01.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/535.309.01/NVIDIA-Linux-x86_64-535.309.01.run
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
 	sha512sums = a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989
-	sha512sums = 8ccd90cc37cef6591412c9c0d3a48af9fe08bf5d715a2e8a9c0adab1fb8e72b716ec75c8b81bc0ac9d09d6f82fa8e01af144bfba5d58cfe7a524c47aa97ae6e1
+	sha512sums = 16a505fb053d514b98bed816559279cbe2962eef8a3d64cce7aaf859b2d27602ac9018bb099a56ab4223532f70e00984e5468a4ba9c2914dc68dcbe0d8b2d64d
 
 pkgname = nvidia-535xx-utils
 	pkgdesc = NVIDIA drivers utilities, 535 branch
@@ -25,7 +25,7 @@ pkgname = nvidia-535xx-utils
 	optdepends = xorg-server: Xorg support
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = opencl-nvidia: OpenCL support
-	provides = nvidia-utils=535.288.01
+	provides = nvidia-utils=535.309.01
 	provides = vulkan-driver
 	provides = opengl-driver
 	provides = nvidia-libgl
@@ -45,9 +45,9 @@ pkgname = opencl-nvidia-535xx
 pkgname = nvidia-535xx-dkms
 	pkgdesc = NVIDIA drivers - module sources, 535 branch
 	depends = dkms
-	depends = nvidia-utils=535.288.01
+	depends = nvidia-utils=535.309.01
 	depends = libglvnd
-	provides = nvidia-dkms=535.288.01
+	provides = nvidia-dkms=535.309.01
 	provides = NVIDIA-MODULE
 	provides = nvidia
 	conflicts = nvidia-dkms

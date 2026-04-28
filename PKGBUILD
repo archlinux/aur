@@ -3,7 +3,7 @@
 _pkgmainbranch=nvidia-utils
 pkgbase=nvidia-535xx-utils
 pkgname=('nvidia-535xx-utils' 'opencl-nvidia-535xx' 'nvidia-535xx-dkms')
-pkgver=535.288.01
+pkgver=535.309.01
 pkgrel=1
 pkgdesc="NVIDIA drivers for Linux, 535 branch, dkms"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=('nvidia-drm-outputclass.conf'
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
-            '8ccd90cc37cef6591412c9c0d3a48af9fe08bf5d715a2e8a9c0adab1fb8e72b716ec75c8b81bc0ac9d09d6f82fa8e01af144bfba5d58cfe7a524c47aa97ae6e1')
+            '16a505fb053d514b98bed816559279cbe2962eef8a3d64cce7aaf859b2d27602ac9018bb099a56ab4223532f70e00984e5468a4ba9c2914dc68dcbe0d8b2d64d')
 
 
 create_links() {
