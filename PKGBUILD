@@ -1,7 +1,7 @@
 # Maintainer: Taha YVR <taha@noiserandom.com>
 pkgname=omarchist-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI app for Omarchy Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/tahayvr/omarchist"
@@ -13,9 +13,9 @@ depends=(
     'libxkbcommon-x11'
     'wayland'
     'vulkan-icd-loader'
+    'vulkan-driver'
     'libx11'
     'libxi'
-    'mesa'
     'openssl'
     'fontconfig'
     'alsa-lib'
