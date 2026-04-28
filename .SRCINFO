@@ -1,0 +1,23 @@
+pkgbase = comfyui
+	pkgdesc = The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://github.com/Comfy-Org/ComfyUI
+	install = comfyui.install
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = python
+	options = !strip
+	backup = etc/comfyui/extra_model_paths.yaml
+	source = comfyui-0.20.1.tar.gz::https://github.com/Comfy-Org/ComfyUI/archive/refs/tags/v0.20.1.tar.gz
+	source = comfyui.sh
+	source = comfyui.service
+	source = comfyui.sysusers
+	source = comfyui.tmpfiles
+	sha256sums = 58b5336002b0b2350ac50f17997e8468562bfd4da61fc3361ec28993acfc0165
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = comfyui
