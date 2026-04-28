@@ -1,6 +1,6 @@
 pkgbase = session-lock-qt
 	pkgdesc = session-lock-qt
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/waycrate/qt-session-lock
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = session-lock-qt
 	depends = qt6-wayland
 	provides = session-lock-qt
 	conflicts = session-lock-qt-git
-	source = session-lock-qt-v2.0.1.tar.gz::https://github.com/waycrate/qt-session-lock/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 88e8d48c3edc94dedf4015d885ba57925936bb297235be3e17905aa8132d4520
+	source = session-lock-qt-v2.1.0.tar.gz::https://github.com/waycrate/qt-session-lock/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = e5dd5680e0d6c7d23d7d72e804fb1790a05373ca2cbd505b618d0aed622d7050
 
 pkgname = session-lock-qt

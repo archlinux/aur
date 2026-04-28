@@ -1,6 +1,6 @@
 pkgname=session-lock-qt
 _reponame=qt-session-lock
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="session-lock-qt"
 url="https://github.com/waycrate/qt-session-lock"
@@ -13,7 +13,7 @@ conflicts=('session-lock-qt-git')
 source=(
     "${pkgname}-v${pkgver}.tar.gz::https://github.com/waycrate/$_reponame/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('88e8d48c3edc94dedf4015d885ba57925936bb297235be3e17905aa8132d4520')
+sha256sums=('e5dd5680e0d6c7d23d7d72e804fb1790a05373ca2cbd505b618d0aed622d7050')
 
 build() {
   cd "${_reponame}-$pkgver"
