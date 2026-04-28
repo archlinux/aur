@@ -1,5 +1,5 @@
 pkgname=codex-native-git
-pkgver=r1.8aa815a
+pkgver=r1.7e46076
 pkgrel=1
 pkgdesc="Native Linux Codex desktop shell built with Rust, GTK, WebKitGTK, and Codex CLI"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '30850eafbcb30aee1e38d475235d01519d5264ef048238abbb7db1168df9dc63'
+  'a549f217c5d84ac7581c7f762b97ca4e0976797d56b206c4e4ee9d1c33faa635'
 )
 
 pkgver() {
