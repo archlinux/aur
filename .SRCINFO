@@ -1,0 +1,14 @@
+pkgbase = vbarch-audit-config-git
+	pkgdesc = Hardened auditd configuration with broad security event logging for vbarch
+	pkgver = r1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = audit
+	backup = etc/audit/auditd.conf
+	backup = etc/audit/rules.d/10-general.rules
+	backup = etc/audit/rules.d/99-lock.rules
+	source = vbarch-audit-config-git::git+https://gitlab.com/vbarch/auditd-configuration.git
+	sha256sums = SKIP
+
+pkgname = vbarch-audit-config-git
