@@ -1,7 +1,7 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 # Maintainer: SFN
 pkgname=tl-render
-pkgver=0.16.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="tlRender is an open source library for building playback and review applications for visual effects, film, and animation."
 arch=("x86_64")
@@ -15,7 +15,7 @@ backup=()
 options=()
 source=("tlRender-${pkgver}.tar.gz::https://github.com/grizzlypeak3d/tlRender/archive/refs/tags/${pkgver}.tar.gz" "zlibng-config.cmake")
 noextract=()
-sha256sums=('0c1cb3c799a0fc41acd432cc3dbdc5e421ed769bf900824820038fd5b387df6a'
+sha256sums=('2ec7b088e3b89a856db2f4045619b44ecf85ae8998afa71a8188d91415467a98'
             '72d993ec6dceff21552f22c25aff2bc8ceea4cb7315029e0ab6bf7878af9ec21')
 
 CFLAGS+=" -ffat-lto-objects" # lto problems with static libs
@@ -39,5 +39,5 @@ package() {
 	cd "$srcdir/tlRender-${pkgver}/build"
 	make DESTDIR="$pkgdir/" install
 	mkdir -p ${pkgdir}/usr/share/licenses/tl-render
-	mv ${pkgdir}/usr/etc/tlRender ${pkgdir}/usr/share/licenses/tl-render
+  mv ${pkgdir}/usr/share/tlRender/Legal/LICENSE_*.txt ${pkgdir}/usr/share/licenses/tl-render
 }
