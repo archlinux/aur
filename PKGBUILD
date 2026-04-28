@@ -2,22 +2,24 @@
 # Co-maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler
-pkgver='3.16.0'
-pkgrel=3
+pkgver='3.17.0'
+pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
-url="https://github.com/facontidavide/PlotJuggler"
+url="https://github.com/PlotJuggler/PlotJuggler"
 license=('MPL-2.0')
 depends=(
     'arrow'
     'binutils'
     'fmt'
-    'lua54'
+    'lua'
     'mosquitto'
     'nlohmann-json'
     'protobuf'
+    'python'
     'qt5-base'
     'qt5-multimedia'
+    'qt5-serialport'
     'qt5-svg'
     'qt5-websockets'
     'qt5-x11extras'
@@ -27,16 +29,8 @@ makedepends=(
     'cmake'
     'clang'
 )
-source=(
-    "${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
-    '0001-lua54.patch'
-)
-sha256sums=('cc7a14649acfba629b111118a4f0b8b509603365ad6945c2b598efab7c160388'
-            '3783f1e19f8bc6d64d48a7d68899d43df30fe23c577f4e4cf25c151c25e653fc')
-
-prepare() {
-    patch -Np1 -i "${srcdir}/0001-lua54.patch" -d "${srcdir}/PlotJuggler-${pkgver}"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/PlotJuggler/PlotJuggler/archive/${pkgver}.tar.gz")
+sha256sums=('82c039b500bfe8d172357ce10800c1dc26f9119479b6fb334864f1c3db0eb657')
 
 build() {
     cd "PlotJuggler-${pkgver}"
