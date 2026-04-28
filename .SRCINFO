@@ -1,6 +1,6 @@
 pkgbase = puzzletea
 	pkgdesc = A collection of puzzle bubbles for BubbleTea
-	pkgver = 1.9.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/FelineStateMachine/puzzletea
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = puzzletea
 	checkdepends = just
 	makedepends = go
 	depends = glibc
-	source = https://github.com/FelineStateMachine/puzzletea/archive/refs/tags/v1.9.0.tar.gz
-	sha256sums = d4a3cbe93b91bbd093203d49222d15ef745ef46fda54c45a385e6cf045b8cb34
+	source = https://github.com/FelineStateMachine/puzzletea/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 165eacd7738b31c02f3a01d3aa7074215404ddd5d1793e31d579811b057643f3
 
 pkgname = puzzletea
