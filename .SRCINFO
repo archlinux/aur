@@ -1,0 +1,13 @@
+pkgbase = alacritty-wrapper
+	pkgdesc = A wrapper for Alacritty, ensuring compatibility with applications expecting gnome-terminal.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alacritty/alacritty
+	arch = any
+	license = GPL
+	depends = bash
+	depends = alacritty
+	provides = gnome-terminal
+	conflicts = gnome-terminal
+
+pkgname = alacritty-wrapper
