@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=envd
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Tiny server that stores per-project environment variables"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ install=envd.install
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/envd-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/envd-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('4fdc78fa55191788347b0c1d81e8cfca0028a5cc0dd764d4aeb3ef29bd4d14dc')
-sha256sums_aarch64=('2b599f7dbd2c67d535a6146feddf2aa9fcb4f02a2d1380c453c9a222de090df3')
+sha256sums_x86_64=('c87bc28259976690a53881f57690b236afac1e0e543cae396c587362f602d5ab')
+sha256sums_aarch64=('0448fb8a6ae6701e35c2fc0032e613579a9b0f72f9744530eaec16b29c34ae03')
 
 package() {
   install -Dm755 "envd" "$pkgdir/usr/bin/envd"
