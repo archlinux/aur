@@ -21,33 +21,40 @@ depends=(
 # makedepends=(
 #   'curl'
 # )
-_pkgsrc="${pkgname}-${pkgver}"
-# DLAGENTS+=(
-#   'https::/usr/bin/curl -A "Mozilla" -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
-# )
 source_i686=(
-  "${_pkgsrc}-i686.deb::https://download3.ebz.epson.net/dsc/f/03/00/15/14/03/75cca41028d85de671a802d8a5c6d36b3945dc0f/${_pkgsrc}i386.deb"
+  "https://download3.ebz.epson.net/dsc/f/03/00/15/14/03/75cca41028d85de671a802d8a5c6d36b3945dc0f/${pkgname}-${pkgver}i386.deb"
 )
 source_x86_64=(
-  "${_pkgsrc}-x86_64.deb::https://download3.ebz.epson.net/dsc/f/03/00/15/14/02/23d720c4f51c39c9012f607fce736063b1815c88/${_pkgsrc}x86_64.deb"
+  "https://download3.ebz.epson.net/dsc/f/03/00/15/14/02/23d720c4f51c39c9012f607fce736063b1815c88/${pkgname}-${pkgver}x86_64.deb"
 )
 noextract=(
-  "${source_i686[@]%%::*}"
-  "${source_x86_64[@]%%::*}"
+  "${source_i686[@]##*/}"
+  "${source_x86_64[@]##*/}"
 )
 sha256sums_i686=('bd100fb0be5b1b72120d6d232e866322de9b067e2ca984433d841f263ebd938f')
 sha256sums_x86_64=('74d2dc3c0eeac490f4551daa4a0dac37c110a3101dd47e75e49feaa142c86236')
+# DLAGENTS+=(
+#   'https::/usr/bin/curl -A "Mozilla" -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
+# )
 
 prepare() {
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   cd "${srcdir}"
-  mkdir -p "${_pkgsrc}-${CARCH}"
-  bsdtar -xf "${_pkgsrc}-${CARCH}.deb" data.tar.*
-  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
+  mkdir -p "${source_artifact%.deb}"
+  bsdtar -xf "${source_artifact}" data.tar.*
+  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${source_artifact%.deb}"
   rm -f data.tar.*
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
+  cd "${srcdir}/${source_artifact%.deb}"
   find . -type f -name '*.ppd' -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
 
