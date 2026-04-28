@@ -1,0 +1,25 @@
+pkgbase = mainstream-fonts-themes
+	pkgdesc = Mainstream OS Fonts and Theming Dependencies
+	pkgver = 1.0
+	pkgrel = 7
+	arch = any
+	groups = mainstream
+	license = None
+	depends = adw-gtk-theme-git
+	depends = papirus-icon-theme
+	depends = eza
+	depends = fish
+	depends = fontconfig
+	depends = kitty
+	depends = matugen
+	depends = otf-space-grotesk
+	depends = starship
+	depends = ttf-jetbrains-mono-nerd
+	depends = ttf-material-symbols-variable-git
+	depends = ttf-readex-pro
+	depends = ttf-rubik-vf
+	depends = ttf-twemoji
+	provides = illogical-impulse-fonts-themes
+	replaces = illogical-impulse-fonts-themes
+
+pkgname = mainstream-fonts-themes
