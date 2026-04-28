@@ -1,7 +1,7 @@
 pkgbase = termul-manager
 	pkgdesc = Project-aware terminal that treats workspaces as first-class citizens
 	pkgver = 0.3.2
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/gnoviawan/termul
 	arch = x86_64
 	license = MIT
@@ -21,9 +21,11 @@ pkgbase = termul-manager
 	source = disable-xterm-webgl.patch
 	source = linux-integration-fixes.patch
 	source = form-control-theme.patch
+	source = aur-update-check.patch
 	sha256sums = 34883aed783084c4ae25564df09422bed05941eb75175f2644a91a21c342c328
 	sha256sums = e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9
 	sha256sums = ff9fc001c5824d2c889f9a719439d113874724fd5d8940036e7c586a36663afd
 	sha256sums = 01e5030b5add9fc9acfb303e45d4497ff7e2733e2e149dd2b836874edabc2169
+	sha256sums = 2498a883247694f90888ff2fa54270017d67699cb7788e7694d64749e2056e5f
 
 pkgname = termul-manager

@@ -6,3 +6,4 @@
 !/disable-xterm-webgl.patch
 !/linux-integration-fixes.patch
 !/form-control-theme.patch
+!/aur-update-check.patch
