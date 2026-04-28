@@ -2,7 +2,7 @@
 
 pkgname=steam-game-idler-git
 _pkgname=steam-game-idler
-pkgver=5.0.4.r1709.g40d6a453
+pkgver=5.0.4.r1711.g56b6b4d2
 pkgrel=1
 pkgdesc='Idle Steam games and farm trading cards with Linux support'
 arch=('x86_64')
@@ -49,6 +49,13 @@ prepare() {
 
   cd steam-game-idler
   pnpm install --frozen-lockfile
+
+  # AUR builds have no embedded Steam API key; remove the production panic so the app
+  # starts normally. API features will fail gracefully until the user sets the key in
+  # Settings or launches with KEY=<steam_web_api_key> in the environment.
+  sed -i \
+    's/panic!("No obfuscated API key available in production build");/\/\/ no embedded key — user configures via Settings/' \
+    src-tauri/src/lib.rs
 }
 
 build() {
@@ -61,7 +68,6 @@ build() {
     -o "$srcdir/SGI/steam-game-idler/src-tauri/libs"
 
   cd "$srcdir/SGI/steam-game-idler"
-  printf 'KEY=""\n' > .env.prod
 
   # pacman handles updates; disable Tauri updater artifact generation (requires a signing key)
   sed -i 's/"createUpdaterArtifacts": "[^"]*"/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
