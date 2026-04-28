@@ -1,30 +1,22 @@
 pkgbase = dataloader
 	pkgdesc = An easy to use graphical tool that helps you to get your data into Salesforce objects
-	pkgver = 54.0.0
+	pkgver = 64.1.0
 	pkgrel = 1
-	url = https://developer.salesforce.com/page/Data_Loader
-	install = dataloader.install
-	arch = i686
+	url = https://github.com/forcedotcom/dataloader
 	arch = x86_64
-	license = GPL2
+	license = BSD-3
 	makedepends = git
 	makedepends = maven
-	makedepends = java-runtime>=11
-	depends = java-runtime>=11
-	depends = gtk2
-	depends = gtk-update-icon-cache
-	depends = swt
-	source = dataloader.desktop
-	source = dataloader.install
-	source = dataloader.svg
-	source = dataloader.sh
-	md5sums = b519f96b515793fa80cd820e25d70d68
-	md5sums = 94f2b99bb9af44899cd4d2ded981fd54
-	md5sums = 0b9294d4865f364681a79fbbc73dd88a
-	md5sums = ebb31a3cebd05829384f1fc1dcdb352e
-	source_i686 = git+https://github.com/forcedotcom/dataloader.git
-	md5sums_i686 = SKIP
-	source_x86_64 = git+https://github.com/forcedotcom/dataloader.git
-	md5sums_x86_64 = SKIP
+	makedepends = java-runtime>=17
+	depends = java-runtime>=17
+	depends = swt-bin
+	source = dataloader-64.1.0::git+https://github.com/forcedotcom/dataloader.git#tag=v64.1.0
+	source = salesforce-dataloader.sh
+	source = salesforce-dataloader.desktop
+	source = salesforce-dataloader.svg
+	sha256sums = 46ac72905a861a8dad639cde59a171fca81991173796b05e398e0f433e108aa4
+	sha256sums = 1f65612f9bfd972b98d68c193b92e0f30a5e6615d637d13ddf3d7904c91bc0d3
+	sha256sums = ab68d07dd315e426780631bc34251db03c50926e685db2d4f5674d8cc7d3a09a
+	sha256sums = a3139c41db1a8202bd67893b2de25f149b383bea1604a275806348e2dd3a8e22
 
 pkgname = dataloader

@@ -1,60 +1,62 @@
+# Maintainer: zocker_160 <zocker1600 at posteo dot net>
 # Maintainer: Benedikt Rumpf <beru@posteo.de>
 # Maintainer: Egidio Caprino <egidio.caprino@gmail.com>
 
 pkgname=dataloader
-pkgver=54.0.0
+_pkgname=salesforce-dataloader
+pkgver=64.1.0
 pkgrel=1
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
-arch=('i686' 'x86_64')
-url="https://developer.salesforce.com/page/Data_Loader"
-license=("GPL2")
-depends=('java-runtime>=11' 'gtk2' 'gtk-update-icon-cache' 'swt')
-makedepends=('git' 'maven' 'java-runtime>=11')
-install=dataloader.install
-source=(dataloader.desktop dataloader.install dataloader.svg dataloader.sh)
-source_i686=(git+https://github.com/forcedotcom/dataloader.git)
-source_x86_64=(git+https://github.com/forcedotcom/dataloader.git)
-md5sums=('b519f96b515793fa80cd820e25d70d68'
-         '94f2b99bb9af44899cd4d2ded981fd54'
-         '0b9294d4865f364681a79fbbc73dd88a'
-         'ebb31a3cebd05829384f1fc1dcdb352e')
-md5sums_i686=('SKIP')
-md5sums_x86_64=('SKIP')
+arch=('x86_64')
+url="https://github.com/forcedotcom/dataloader"
+license=("BSD-3")
+depends=('java-runtime>=17' 'swt-bin')
+#depends=('java-runtime>=17' 'gtk2' 'swt-bin')
+makedepends=('git' 'maven' 'java-runtime>=17')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git checkout "tags/v$pkgver"
-  git submodule init
-  git submodule update
-  echo "$pkgver"
-}
+source=(
+  "$pkgname-$pkgver::git+https://github.com/forcedotcom/dataloader.git#tag=v$pkgver"
+  "salesforce-dataloader.sh"
+  "salesforce-dataloader.desktop"
+  "salesforce-dataloader.svg"
+)
+
+sha256sums=('46ac72905a861a8dad639cde59a171fca81991173796b05e398e0f433e108aa4'
+            '1f65612f9bfd972b98d68c193b92e0f30a5e6615d637d13ddf3d7904c91bc0d3'
+            'ab68d07dd315e426780631bc34251db03c50926e685db2d4f5674d8cc7d3a09a'
+            'a3139c41db1a8202bd67893b2de25f149b383bea1604a275806348e2dd3a8e22')
+
 
 build() {
-  cd "$srcdir/$pkgname"
-  latest_version="$(archlinux-java status | grep "java-[0-9][0-9]" | sort --reverse | head --lines 1 | sed 's/(.*)//g')"
-  sudo archlinux-java set "${latest_version}"
-  mvn clean package -D skipTests -D targetOS=linux_x86_64
+  cd "$srcdir/$pkgname-$pkgver"
+  mvn clean
+  mvn -DskipTests -Dmaven.test.skip -Dtests.skip=false package
 }
 
 package() {
-  mkdir -p "$pkgdir/opt/"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/applications"
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/48x48/apps"
+  cd "$srcdir"
 
-  swt_jar="$(readlink --canonicalize /usr/share/java/swt.jar)"
+  mkdir -p "$pkgdir/opt/$_pkgname"
+  mkdir -p "$pkgdir/usr/bin/"
 
-  cp -r "$srcdir/$pkgname" "$pkgdir/opt/"
-  cp "${srcdir}/dataloader.sh" "${pkgdir}/opt/${pkgname}/"
-  cp "$srcdir/dataloader.svg" "$pkgdir/usr/share/icons/hicolor/48x48/apps/dataloader.svg"
-  cp "${swt_jar}" "${pkgdir}/opt/${pkgname}/swt.jar"
+  install -D -m755 "salesforce-dataloader.sh" -t "$pkgdir/opt/$_pkgname"
+  ln -s "/opt/$_pkgname/salesforce-dataloader.sh" "$pkgdir/usr/bin/$_pkgname"
 
-  chmod +x "${pkgdir}/opt/$pkgname/dataloader.sh"
-  chmod g+x "${pkgdir}/opt/${pkgname}/swt.jar"
-  chmod o+x "${pkgdir}/opt/${pkgname}/swt.jar"
+  install -D -m644 "salesforce-dataloader.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  install -D -m644 "salesforce-dataloader.desktop" -t "$pkgdir/usr/share/applications/"
 
+  cd "$srcdir/$pkgname-$pkgver"
 
-  ln -s "/opt/$pkgname/dataloader.sh" "$pkgdir/usr/bin/dataloader"
+  install -D -m644 "license.txt" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -D -m644 "target/dataloader-$pkgver.jar" "$pkgdir/opt/$_pkgname/dataloader.jar"
 
-  install -m 644 "$srcdir/dataloader.desktop" "$pkgdir/usr/share/applications/"
+  # required because otherwise this fucking app thinks it needs to be installed first!!!
+  # fucking Windows smoothbrain programming
+  cp -r "src/main/resources/samples" "$pkgdir/opt/$_pkgname"
+  ln -s /usr/share/java/swt.jar "$pkgdir/opt/$_pkgname/swtlinux_aarch64-4.36.jar" # yes yes I know fk stupid
+  ln -s /usr/share/java/swt.jar "$pkgdir/opt/$_pkgname/swtlinux_x86_64-4.36.jar"
+  ln -s /usr/share/java/swt.jar "$pkgdir/opt/$_pkgname/swt.jar" # the one that actually matters
+
+  # YES I know this is fucking stupid
+  touch "$pkgdir/opt/$_pkgname/dataloader.sh"
 }
