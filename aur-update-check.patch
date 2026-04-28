@@ -1,5 +1,5 @@
 diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
-index 1111111..2222222 100644
+index 1144ae1..e517149 100644
 --- a/src-tauri/tauri.conf.json
 +++ b/src-tauri/tauri.conf.json
 @@ -27,7 +27,7 @@
@@ -11,8 +11,45 @@ index 1111111..2222222 100644
  		}
  	},
  	"plugins": {
+diff --git a/src/renderer/components/UpdateAvailableToast.tsx b/src/renderer/components/UpdateAvailableToast.tsx
+index 249ea66..6db2676 100644
+--- a/src/renderer/components/UpdateAvailableToast.tsx
++++ b/src/renderer/components/UpdateAvailableToast.tsx
+@@ -1,6 +1,6 @@
+ import { useEffect, useRef } from 'react'
+ import { toast } from 'sonner'
+-import { Download, X, Clock } from 'lucide-react'
++import { Download, Terminal, Clock } from 'lucide-react'
+ import {
+   updaterStore,
+   useUpdaterState,
+@@ -44,18 +44,18 @@ export function showUpdateToast(version: string, releaseNotes?: string): void {
+     duration: 30000,
+     description: releaseNotes
+       ? `What's new:\n${releaseNotes.slice(0, 100)}${releaseNotes.length > 100 ? '...' : ''}`
+-      : 'A new version is available for download.',
++      : 'A new version is available. Update with yay.',
+     action: {
+       label: (
+         <div className="flex items-center gap-2">
+-          <Download size={14} />
+-          <span>Download</span>
++          <Terminal size={14} />
++          <span>Use yay</span>
+         </div>
+       ),
+       onClick: () => {
+-        // Trigger download via global store
+-        const { downloadUpdate } = updaterStore.getState()
+-        downloadUpdate()
++        toast.info('Run in terminal', {
++          description: 'yay -S termul-manager'
++        })
+       }
+     },
+     cancel: {
 diff --git a/src/renderer/lib/tauri-updater-api.ts b/src/renderer/lib/tauri-updater-api.ts
-index 1111111..2222222 100644
+index 7313a4c..3768ad0 100644
 --- a/src/renderer/lib/tauri-updater-api.ts
 +++ b/src/renderer/lib/tauri-updater-api.ts
 @@ -1,6 +1,5 @@
@@ -23,7 +60,7 @@ index 1111111..2222222 100644
  import type { IpcResult } from '@shared/types/ipc.types'
  import {
    UpdaterErrorCodes,
-@@ -8,23 +7,20 @@ import {
+@@ -8,23 +7,19 @@ import {
    type UpdateInfo,
    type UpdateState
  } from '@shared/types/updater.types'
@@ -48,12 +85,12 @@ index 1111111..2222222 100644
 +let pendingUpdate: UpdateInfo | null = null
  let autoUpdateEnabled = true
  let lastCheckedAt: string | null = null
- let downloadedVersion: string | null = null
+-let downloadedVersion: string | null = null
 -let preparedUpdateVersion: string | null = null
  
  export interface TauriUpdaterEventHandlers {
    onUpdateAvailable?: (update: Update) => void
-@@ -56,7 +52,7 @@ function getErrorMessage(error: unknown, fallback: string): string {
+@@ -56,7 +51,7 @@ function getErrorMessage(error: unknown, fallback: string): string {
  
  function createUpdaterCheckError(error: unknown): Error {
    const details = getErrorMessage(error, 'Unknown updater error')
@@ -62,7 +99,7 @@ index 1111111..2222222 100644
  }
  
  async function syncRecoveryVersionMetadata(): Promise<string> {
-@@ -65,43 +61,6 @@ async function syncRecoveryVersionMetadata(): Promise<string> {
+@@ -65,43 +60,6 @@ async function syncRecoveryVersionMetadata(): Promise<string> {
    return currentVersion
  }
  
@@ -106,7 +143,7 @@ index 1111111..2222222 100644
  export function isUpdateAvailable(update: Update | null): update is Update {
    return Boolean(update)
  }
-@@ -115,62 +74,74 @@ export function mapTauriUpdateToInfo(update: Update): UpdateInfo {
+@@ -115,62 +73,73 @@ export function mapTauriUpdateToInfo(update: Update): UpdateInfo {
    }
  }
  
@@ -137,13 +174,18 @@ index 1111111..2222222 100644
 +  draft?: boolean
 +  prerelease?: boolean
 +}
++
++function normalizeVersion(version: string): string {
++  return version.trim().replace(/^v/i, '').split(/[+-]/)[0] ?? version
++}
  
 -  if (event.event === 'Progress') {
 -    const nextDownloaded = downloadedSoFar + event.data.chunkLength
 -    const percent = totalBytes > 0 ? Math.min(100, (nextDownloaded / totalBytes) * 100) : 0
-+function normalizeVersion(version: string): string {
-+  return version.trim().replace(/^v/i, '').split(/[+-]/)[0] ?? version
-+}
++function compareVersions(a: string, b: string): number {
++  const partsA = normalizeVersion(a).split('.').map((part) => Number.parseInt(part, 10) || 0)
++  const partsB = normalizeVersion(b).split('.').map((part) => Number.parseInt(part, 10) || 0)
++  const length = Math.max(partsA.length, partsB.length, 3)
  
 -    return {
 -      progress: {
@@ -155,11 +197,6 @@ index 1111111..2222222 100644
 -      downloadedSoFar: nextDownloaded,
 -      totalBytes
 -    }
-+function compareVersions(a: string, b: string): number {
-+  const partsA = normalizeVersion(a).split('.').map((part) => Number.parseInt(part, 10) || 0)
-+  const partsB = normalizeVersion(b).split('.').map((part) => Number.parseInt(part, 10) || 0)
-+  const length = Math.max(partsA.length, partsB.length, 3)
-+
 +  for (let index = 0; index < length; index += 1) {
 +    const diff = (partsA[index] ?? 0) - (partsB[index] ?? 0)
 +    if (diff !== 0) return diff
@@ -215,7 +252,7 @@ index 1111111..2222222 100644
 +      : null
 +
      pendingUpdate = update
-     downloadedVersion = update && downloadedVersion === update.version ? downloadedVersion : null
+-    downloadedVersion = update && downloadedVersion === update.version ? downloadedVersion : null
 -    preparedUpdateVersion =
 -      update && preparedUpdateVersion === update.version ? preparedUpdateVersion : null
      lastCheckedAt = new Date().toISOString()
@@ -224,7 +261,7 @@ index 1111111..2222222 100644
    } catch (error) {
      lastCheckedAt = new Date().toISOString()
      throw createUpdaterCheckError(error)
-@@ -189,19 +160,6 @@ export async function downloadUpdate(
+@@ -189,19 +158,6 @@ export async function downloadUpdate(
    }
  
    try {
@@ -244,7 +281,7 @@ index 1111111..2222222 100644
      if (onProgress) {
        onProgress({
          bytesPerSecond: 0,
-@@ -211,48 +169,28 @@ export async function downloadUpdate(
+@@ -211,54 +167,34 @@ export async function downloadUpdate(
        })
      }
  
@@ -304,17 +341,38 @@ index 1111111..2222222 100644
  export async function getUpdaterState(): Promise<IpcResult<UpdateState>> {
    return {
      success: true,
-@@ -293,13 +231,11 @@ export function registerUpdateEventHandlers(handlers: TauriUpdaterEventHandlers)
+     data: {
+       updateAvailable: pendingUpdate !== null,
+-      downloaded: pendingUpdate !== null && downloadedVersion === pendingUpdate.version,
++      downloaded: false,
+       version: pendingUpdate?.version ?? null,
+       isChecking: false,
+       isDownloading: false,
+@@ -292,14 +228,10 @@ export function registerUpdateEventHandlers(handlers: TauriUpdaterEventHandlers)
+ 
  export async function clearPendingUpdate(): Promise<void> {
    pendingUpdate = null
-   downloadedVersion = null
+-  downloadedVersion = null
 -  preparedUpdateVersion = null
  }
  
  export function _resetUpdaterStateForTesting(): void {
    pendingUpdate = null
-   downloadedVersion = null
+-  downloadedVersion = null
 -  preparedUpdateVersion = null
    lastCheckedAt = null
    autoUpdateEnabled = true
  }
+diff --git a/src/renderer/pages/AppPreferences.tsx b/src/renderer/pages/AppPreferences.tsx
+index 96a82c0..2fb0226 100644
+--- a/src/renderer/pages/AppPreferences.tsx
++++ b/src/renderer/pages/AppPreferences.tsx
+@@ -492,7 +492,7 @@ export default function AppPreferences(): React.JSX.Element {
+                       <div className="flex-1">
+                         <div className="text-sm font-medium text-foreground">Version {version} is available!</div>
+                         <div className="text-xs text-muted-foreground mt-0.5">
+-                          A new version is ready to download.
++                          Update through AUR with: yay -S termul-manager
+                         </div>
+                       </div>
+                     </div>
