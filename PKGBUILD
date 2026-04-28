@@ -2,7 +2,7 @@
 
 _reponame=ChatLab
 pkgname="${_reponame,,}"
-pkgver=0.18.3
+pkgver=0.18.4
 pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('63901468de59bcb75d82aede238cbb8169636ee5313cb483299d7b007545c313'
+sha256sums=('b71a4cbc3f4aae1856f72a0435379becbb76a77149fdb214b4777739847de229'
             '7623be40b49f98301c1b5685f4e911aff107cd20354433214266cd892abea4f5'
             '5ba8b6c5772f2c76500e1fcc5232d67df71d8e6e50e95292c4b98d1cc8dd1788')
 
