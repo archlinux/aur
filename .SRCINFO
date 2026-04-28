@@ -1,6 +1,6 @@
 pkgbase = custom-songs-manager-bin
 	pkgdesc = Custom songs manager for Beat Saber
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://codeberg.org/InnocentThief/custom-songs-manager
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = custom-songs-manager-bin
 	depends = glib2
 	provides = custom-songs-manager
 	conflicts = custom-songs-manager
-	source = custom-songs-manager-0.2.0.deb::https://codeberg.org/InnocentThief/custom-songs-manager/releases/download/v0.2.0/Custom%20Songs%20Manager_0.2.0_amd64.deb
-	sha256sums = 1d5b628f9137d4e21e0c378521100587640a031b797b51d19c66e09d4fa18d24
+	source = custom-songs-manager-0.3.0.deb::https://codeberg.org/InnocentThief/custom-songs-manager/releases/download/v0.3.0/Custom%20Songs%20Manager_0.3.0_amd64.deb
+	sha256sums = b2e4cc3d3514d27921ceadd5d438cb91717d689a39888aaa660f2fa16f25b2d2
 
 pkgname = custom-songs-manager-bin
