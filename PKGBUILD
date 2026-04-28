@@ -1,4 +1,4 @@
-# Maintainer: Simon <simon@example.com>
+# Maintainer: Simon Désaulniers <sim.desaulniers@gmail.com>
 
 # ── Installation prefix ──────────────────────────────────────────────
 # Change this variable to set the installation directory.
