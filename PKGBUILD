@@ -13,7 +13,7 @@ makedepends=('cargo')
 provides=("nyado")
 conflicts=("nyado-bin" "nyado-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LeynTheCat/nyado/archive/v$pkgver.tar.gz")
-sha256sums=('ec415a77fe0e3800f72fb983dce3d63596d93d4ce5d7d53bc9c35fcfdb18c2af')
+sha256sums=('3cc1a29bca7b998e59a0c914277e6b44b9cc109c1d07246e87b28281b1d55a39')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
