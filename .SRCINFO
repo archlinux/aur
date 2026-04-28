@@ -1,7 +1,7 @@
 pkgbase = github-copilot-cli
 	pkgdesc = GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal.
 	pkgver = 1.0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/github/copilot-cli
 	arch = x86_64
 	license = LicenseRef-GitHub-Copilot

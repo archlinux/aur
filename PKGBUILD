@@ -7,7 +7,7 @@ pkgname=github-copilot-cli
 _pkgexec=copilot
 
 pkgver=1.0.37
-pkgrel=1
+pkgrel=2
 
 pkgdesc="GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal."
 
@@ -62,6 +62,18 @@ package() {
 		mv "${tmppackage}" "${pkgjson}"
 		chmod 644 "${pkgjson}"
 	done
+
+	msg2 "Generating autocompletions for Bash"
+	"${pkgdir}/usr/bin/copilot" completion bash > copilot
+	install -Dm644 copilot "${pkgdir}/usr/share/bash-completion/completions/copilot"
+
+	msg2 "Generating autocompletions for Zsh"
+	"${pkgdir}/usr/bin/copilot" completion zsh > _copilot
+	install -Dm644 _copilot "${pkgdir}/usr/share/zsh/site-functions/_copilot"
+
+	msg2 "Generating autocompletions Fish"
+	"${pkgdir}/usr/bin/copilot" completion fish > copilot.fish
+	install -Dm644 copilot.fish "${pkgdir}/usr/share/fish/completions/copilot.fish"
 
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
