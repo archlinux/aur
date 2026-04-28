@@ -1,17 +1,16 @@
 pkgbase = pgxcli-bin
-	pkgdesc = An interactive PostgreSQL CLI written in Go
+	pkgdesc = Interactive PostgreSQL command-line client written in Go.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Balaji01-4D/pgxcli
 	license = MIT
-	depends = less
 	conflicts = pgxcli
 	provides = pgxcli
 	arch = aarch64
-	source_aarch64 = https://github.com/Balaji01-4D/pgxcli/releases/download/v0.1.0/pgxcli_Linux_arm64.tar.gz
-	sha256sums_aarch64 = ebbeb28de09733b23cbb1614cfa251ead201daccebf0a8b6afe1fd0542b94c74
+	source_aarch64 = https://github.com/Balaji01-4D/pgxcli/releases/download/v0.1.0/pgxcli_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 71f49308666e060035d505e27d2cec5309c30d1be1d13c571050dddcedd975e5
 	arch = x86_64
-	source_x86_64 = https://github.com/Balaji01-4D/pgxcli/releases/download/v0.1.0/pgxcli_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 4a86b55dbe247ce51fbca4cea8acfb89428e464b3aebcfebb87846cb7197cbc6
+	source_x86_64 = https://github.com/Balaji01-4D/pgxcli/releases/download/v0.1.0/pgxcli_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4ad6f7bc64c905323e99d417cceb6b6ed570332456e05a124eff114e0455538c
 	
 pkgname = pgxcli-bin
