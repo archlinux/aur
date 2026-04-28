@@ -9,7 +9,7 @@
 pkgbase = helium-browser-bin
 	pkgdesc = Private, fast, and honest web browser based on Chromium (Latest/Stable)
 	pkgver = 0.11.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/imputnet/helium-linux
 	arch = x86_64
 	arch = aarch64
@@ -23,8 +23,6 @@ pkgbase = helium-browser-bin
 	depends = libva
 	depends = libxss
 	depends = nss
-	depends = qt5-base
-	depends = qt6-base
 	depends = ttf-liberation
 	depends = udev
 	depends = xdg-utils
@@ -32,6 +30,7 @@ pkgbase = helium-browser-bin
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
+	optdepends = qt5-base: support for Qt themes
 	optdepends = upower: Battery Status API support
 	provides = helium-browser-beta-bin=0.11.5.1
 	conflicts = helium-browser-beta-bin

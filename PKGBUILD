@@ -10,18 +10,19 @@ _pkgname="helium"
 pkgname="${_pkgname}-browser-bin"
 _binaryname="helium-browser"
 pkgver=0.11.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Private, fast, and honest web browser based on Chromium (Latest/Stable)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imputnet/helium-linux"
 license=('GPL-3.0-only AND BSD-3-Clause')
 options=('!strip')
 depends=('alsa-lib' 'dbus' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libpulse' 'libva'
-	'libxss' 'nss' 'qt5-base' 'qt6-base' 'ttf-liberation' 'udev' 'xdg-utils')
+	'libxss' 'nss' 'ttf-liberation' 'udev' 'xdg-utils')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 	'kdialog: support for native dialogs in Plasma'
 	'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
 	'kwallet: support for storing passwords in KWallet on Plasma'
+	'qt5-base: support for Qt themes'
 	'upower: Battery Status API support')
 conflicts=('helium-browser-beta-bin')
 provides=("helium-browser-beta-bin=${pkgver}")
