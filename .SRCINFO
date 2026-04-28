@@ -1,6 +1,6 @@
 pkgbase = libmodsecurity2
 	pkgdesc = Cross platform web application firewall module for Apache httpd (v2)
-	pkgver = 2.9.12
+	pkgver = 2.9.13
 	pkgrel = 1
 	url = https://github.com/owasp-modsecurity/ModSecurity/tree/v2/master
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = libmodsecurity2
 	depends = perl
 	depends = gdbm
 	depends = yajl
-	provides = libmodsecurity
 	provides = modsecurity
 	conflicts = libmodsecurity
-	source = https://github.com/owasp-modsecurity/ModSecurity/releases/download/v2.9.12/modsecurity-v2.9.12.tar.gz
-	sha256sums = 79ada8693303be3490201397344bf66900a45f07ae328bf6cf01ca99e5d135fa
+	conflicts = libmodsecurity<3
+	source = https://github.com/owasp-modsecurity/ModSecurity/releases/download/v2.9.13/modsecurity-v2.9.13.tar.gz
+	sha256sums = 7fa925289a2e0cb5415ba82626cf0495607a4ab09f78831ace5bbd8d81496cc2
 
 pkgname = libmodsecurity2

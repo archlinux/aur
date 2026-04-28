@@ -7,7 +7,7 @@
 
 pkgname=libmodsecurity2
 _name=modsecurity
-pkgver=2.9.12
+pkgver=2.9.13
 pkgrel=1
 pkgdesc='Cross platform web application firewall module for Apache httpd (v2)'
 arch=('x86_64')
@@ -30,12 +30,12 @@ depends=(
   'yajl'
 )
 makedepends=('gcc')
-provides=('libmodsecurity' 'modsecurity')
-conflicts=("libmodsecurity")
+provides=('modsecurity')
+conflicts=("libmodsecurity" "libmodsecurity<3")
 source=(
   "https://github.com/owasp-modsecurity/ModSecurity/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz" 
 )
-sha256sums=('79ada8693303be3490201397344bf66900a45f07ae328bf6cf01ca99e5d135fa')
+sha256sums=('7fa925289a2e0cb5415ba82626cf0495607a4ab09f78831ace5bbd8d81496cc2')
 
 prepare() {
   cd "${srcdir}/${_name}-v${pkgver}"
@@ -52,10 +52,10 @@ build() {
   sed -ri 's|(hardcode_into_libs)=.*|\1=no|' libtool
   # Fix lua version check
   # This seems stupid, but the --with-lua option to ./configure doesn't seem to be
-  # able to impose the version, and it "just works" with 5.4 so lets go…
+  # able to impose the version, and it "just works" with 5.5 so lets go…
   echo "Fixing apache2/msc_lua.c to accept lua 5.4"
-  sed -i 's#LUA_VERSION_NUM == 502 || LUA_VERSION_NUM == 503#LUA_VERSION_NUM == 502 || LUA_VERSION_NUM == 503 || LUA_VERSION_NUM == 504#' "apache2/msc_lua.c"
-  sed -ri 's/We are only tested under Lua 5.0, 5.1, 5.2, or 5.3./We are only tested under Lua 5.0, 5.1, 5.2, or 5.3 (and faking 5.4)./' "apache2/msc_lua.c"
+  sed -i  's#LUA_VERSION_NUM == 504#LUA_VERSION_NUM == 504 || LUA_VERSION_NUM == 505#' "apache2/msc_lua.c"
+  sed -ri 's#We are only tested under Lua 5.0, 5.1, 5.2, 5.3, or 5.4#We are only tested under Lua 5.0, 5.1, 5.2, 5.3, or 5.4 (+ 5.5).#' "apache2/msc_lua.c"
   make
   echo "Stripping unneeded symbols from shared objects"
   find ./ -name '*.so' -exec strip --strip-unneeded {} \+
