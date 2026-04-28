@@ -8,7 +8,7 @@ pkgname=(
   webkit2gtk-docs
 )
 pkgver=2.50.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -147,7 +147,9 @@ build() {
 
   # Limit parallel builds to what the user configured in /etc/makepkg.conf, also MAKEFLAGS
   # might contains more than just -j<N>
-  export CMAKE_BUILD_PARALLEL_LEVEL=$(echo "$MAKEFLAGS" | sed 's/.*-j\([0-9]\+\).*/\1/')
+  export CMAKE_BUILD_PARALLEL_LEVEL=$(echo "$MAKEFLAGS" | sed 's/.*\(-j[ =]\?\|--jobs[ =]\)\([0-9]\+\).*/\2/' )
+  # If CMAKE_BUILD_PARALLEL_LEVEL is still empty assign half of nproc as default value
+  export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:=$(( $(nproc) / 2 ))}
 
   # Upstream prefers Clang
   # https://gitlab.archlinux.org/archlinux/packaging/packages/webkitgtk-6.0/-/issues/4
