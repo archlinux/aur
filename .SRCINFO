@@ -1,0 +1,26 @@
+pkgbase = keepawake
+	pkgdesc = Prevents your machine from going to sleep
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/keepawake
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = openssl
+	depends = glibc
+	depends = libgcc
+	depends = glib2
+	depends = gtk3
+	depends = xdotool
+	depends = cairo
+	depends = gdk-pixbuf2
+	provides = keepawake
+	conflicts = keepawake
+	options = !strip
+	source = https://github.com/cesarferreira/keepawake/archive/v0.2.0.tar.gz
+	source = LICENSE
+	sha256sums = b527e8bf0b1610a8dea47ceffdf413c546eed2a92804879bf504e0589e4910d3
+	sha256sums = 79b001a83730c4e2c57553f5609a458ccdf818a819de1c7f8ff0fbb8c16b9aa2
+
+pkgname = keepawake

@@ -1,0 +1,5 @@
+[keepawake]
+source = "github"
+github = "cesarferreira/keepawake"
+use_latest_release = true
+prefix = "v"
