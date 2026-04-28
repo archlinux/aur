@@ -2,7 +2,7 @@
 # Contributor: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=oterm
-pkgver=0.14.7
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A text-based terminal client for Ollama"
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
 	'python-textual'
 	'python-textual-image'
 	'python-textualeffects'
+	'python-pydantic-ai-slim'
 	'python-exceptiongroup'
 	'python-pyperclip'
 	'python-aiosqlite'
@@ -29,6 +30,9 @@ depends=(
 	'python-pydantic'
 	'python-mcp'
 	'python-fastmcp'
+	'python-mistralai'
+	'python-anthropic'
+	'python-google-genai'
 )
 
 depends=(python-textual-image python-pydantic python-ollama oterm python-fastmcp python-rich python-typer python-mcp python-pillow python-textual python python-packaging python-httpx python-textualeffects python-dotenv python-aiosqlite)
@@ -49,4 +53,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-b2sums=('508d440859390f6d556d3c9eb6b4ec5f6fce8e87c07f4a4ada6b5caa82ede9cc529833b2e223cddf253ce5518f0f08cd31cae92eb6cbb764ab1204f16889f703')
+b2sums=('d7ee719cca6548aab94e7ed08e90dd94b9a803416cc874685b51a3e04b1fd1876904736d409ffd7d4b1a17387466a84660915d59a5ce6c0a7c96c9be7c837cac')
