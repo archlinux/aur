@@ -1,5 +1,5 @@
 pkgname=soundcloud-desktop-bin
-pkgver=6.8.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Native desktop app for Soundcloud.(unofficial)"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ fi
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_${_deb_arch}.deb"
 	"LICENSE::${url}/raw/refs/heads/main/LICENSE")
 
-sha256sums=('a6b202d0a5dd425d13b0ee52a63756db0b18a513f58826c6e3ccd9ceb08d3972'
+sha256sums=('2cc547a248f9637b8d03f031f5bfdc19dd18524b1081472b66abb6be0a6ad0a7'
             '3bed3331b7048bac17cf50e249d560ccc9508c970da8d7b9283bf4f2e633a91d')
 
 build() {
