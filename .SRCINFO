@@ -1,0 +1,17 @@
+pkgbase = mainstream-screencapture
+	pkgdesc = Mainstream OS Screenshot and Recording Dependencies
+	pkgver = 1.0
+	pkgrel = 3
+	arch = any
+	groups = mainstream
+	license = None
+	depends = hyprshot
+	depends = slurp
+	depends = swappy
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = wf-recorder
+	provides = illogical-impulse-screencapture
+	replaces = illogical-impulse-screencapture
+
+pkgname = mainstream-screencapture
