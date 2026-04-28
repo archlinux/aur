@@ -12,10 +12,10 @@ conflicts=("nyado")
 
 if [[ "$CARCH" == "x86_64" ]]; then
     source=("https://github.com/LeynTheCat/nyado/releases/download/v$pkgver/nyado-x86_64-unknown-linux-musl")
-    sha256sums=('be01ba15971abddb10898c709582051f2890546047b8b0f35255c00318f75547')
+    sha256sums=('7695e1e1491d433b8e7f2081123656d5a3f470883089847fb927d52bbe4701f0')
 elif [[ "$CARCH" == "aarch64" ]]; then
     source=("https://github.com/LeynTheCat/nyado/releases/download/v$pkgver/nyado-aarch64-unknown-linux-musl")
-    sha256sums=('7695e1e1491d433b8e7f2081123656d5a3f470883089847fb927d52bbe4701f0')
+    sha256sums=('be01ba15971abddb10898c709582051f2890546047b8b0f35255c00318f75547')
 fi
 
 package() {
