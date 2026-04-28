@@ -1,7 +1,7 @@
 # Maintainer: InTeaReable <leyn.the.cat@gmail.com>
 
 pkgname=nyado-git
-pkgver=0.2.1.r0.g565919a
+pkgver=0.2.1.r0.g25204bb
 pkgrel=1
 pkgdesc="A Rust todo-list manager with TUI (git version)"
 arch=('x86_64' 'aarch64')
