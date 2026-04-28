@@ -1,7 +1,7 @@
 # Maintainer: Stefan Gehr <stefan@gehr.xyz>
 
 pkgname=supmover-bin
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Shift timings and Screen Area of PGS/Sup subtitle"
 arch=("x86_64")
@@ -9,10 +9,10 @@ url="https://github.com/MonoS/SupMover/"
 license=("AGPL-3.0-only")
 depends=(glibc gcc-libs)
 
-source=("https://github.com/MonoS/SupMover/releases/download/v${pkgver}/SupMover-linux")
+source=("https://github.com/MonoS/SupMover/releases/download/v${pkgver}/supmover-linux.zip")
 
-b2sums=("adffbf47d91967eea51ff3a54c5b7b780385d8bead36e00d3da2ffb72e17518b451133973d2fe8614d8bc63d571bd4b4eb75d1bcbbb971627f6a037cd7560139")
+b2sums=("88b734d80f76852473141be718a504004258c9cf2e273fc0a0c71721db7c5f6eebfbd1c31e43699f81e0f5cd5a8e4feb910f591f926866a3acb611e77a310de0")
 
 package() {
-  install -D -m0755 "${srcdir}/SupMover-linux" "${pkgdir}/usr/bin/SupMover"
+  install -D -m0755 "${srcdir}/supmover" "${pkgdir}/usr/bin/supmover"
 }
