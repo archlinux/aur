@@ -36,6 +36,7 @@ pkgbase = nekobox-git
 	makedepends = patchelf
 	makedepends = ccache
 	makedepends = lmdb
+	makedepends = cpr
 
 pkgname = nekobox-git
 
