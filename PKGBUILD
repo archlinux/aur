@@ -1,26 +1,34 @@
 # Maintainer: CreamSodass <greatvaluecreamsoda@gmail.com>
 
-_plug=vship
 pkgname=vapoursynth-plugin-vship-cuda-git
-pkgrel=3
-pkgver=4.0.0.21.g5308ad8
+pkgrel=4
+pkgver=5.0.1.4.gdc0f1ba
 pkgdesc="Plugin for Vapoursynth: vship for nvidia gpus (GIT version)"
 arch=('x86_64')
-url='https://github.com/Line-fr/Vship'
+url='https://codeberg.org/Line-fr/Vship'
 license=('MIT')
 depends=('cuda')
-makedepends=('git' 'make')
+makedepends=('git')
 optdepends=('vapoursynth: vapoursynth plugin usage')
 provides=("vapoursynth-plugin-vship" "libvship")
 conflicts=("vapoursynth-plugin-vship" "libvship")
-source=("vship::git+https://github.com/Line-fr/Vship.git")
+source=("vship::git+https://codeberg.org/Line-fr/Vship.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "vship"
+  cd "$srcdir/vship"
   export PATH="/opt/cuda/bin:$PATH"
 
-  make buildcudaall
+  nvcc -x cu src/VshipLib.cpp \
+    -t "$(nproc)" \
+    -ccbin "${CXX:-g++}" \
+    -std=c++17 \
+    -I include \
+    -arch=all \
+    --shared \
+    -Xcompiler "${CXXFLAGS} -fPIC" \
+    -O3 \
+    -o libvship.so
 }
 
 pkgver() {
@@ -31,5 +39,10 @@ pkgver() {
 
 package(){
   cd "vship"
-  make PREFIX="/usr" DESTDIR="${pkgdir}" install
+  install -Dm755 libvship.so "$pkgdir/usr/lib/libvship.so"
+  install -d "$pkgdir/usr/lib/vapoursynth"
+  ln -s /usr/lib/libvship.so "$pkgdir/usr/lib/vapoursynth/libvship.so"
+
+  install -Dm644 src/VshipAPI.h "$pkgdir/usr/include/VshipAPI.h"
+  install -Dm644 src/VshipColor.h "$pkgdir/usr/include/VshipColor.h"
 }
