@@ -1,7 +1,7 @@
 pkgbase = chataigne-stable-bin
 	pkgdesc = Artist-friendly Modular Machine for Art and Technology.
 	pkgver = 1.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://benjamin.kuperberg.fr/chataigne/en
 	arch = x86_64
 	license = GPL3

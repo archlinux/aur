@@ -6,7 +6,7 @@ _Pkgname=Chataigne
 
 pkgname="${_pkgname}"-stable-bin
 pkgver=1.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Artist-friendly Modular Machine for Art and Technology."
 arch=('x86_64')
 url="https://benjamin.kuperberg.fr/chataigne/en"
