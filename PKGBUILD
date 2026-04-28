@@ -2,7 +2,7 @@
 # Maintainer: Chris Werner Rau <aur@cwrau.io>
 
 pkgname=nova
-pkgver=3.11.15 # renovate: datasource=github-releases depName=FairwindsOps/nova
+pkgver=3.12.0 # renovate: datasource=github-releases depName=FairwindsOps/nova
 pkgrel=1
 pkgdesc='A cli tool to find outdated Helm charts running in your Kubernetes cluster'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/FairwindsOps/$pkgname"
 license=(Apache)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('9ad0a8ba872754a2a56f76150f4fbd02')
+md5sums=('b2c4e81948d8642300cd9544b45c5b65')
 
 build() {
   cd nova-$pkgver
