@@ -1,6 +1,6 @@
 _pkgname=yavta
 pkgname=${_pkgname}-git
-pkgver=r134.547e499
+pkgver=r140.3bf1c3b
 pkgrel=1
 pkgdesc='Yet Another V4L2 Test Application'
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
