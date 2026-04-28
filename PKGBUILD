@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=donutbrowser-bin
 _pkgname=Donut
-pkgver=0.22.2
+pkgver=0.22.3
 pkgrel=1
 pkgdesc="A powerful browser orchestrator that puts you in control of your browsing experience. 🍩(Prebuilt version)"
 arch=(
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('5268819bb2ad880d74f1f2e93cab1de18336f3e422cd92e69649970b0b87885c')
-sha256sums_x86_64=('db930e41d8939401df3302d0c40cdcc902dda2a779410e8f2fefd73720bad399')
+sha256sums_aarch64=('4783412028f189f124139418a7dd02eebf2b30897a1469b18d3824b68332dbcf')
+sha256sums_x86_64=('bbf31636dc899c7ab79a4504fbf9f5d1bf264b00cd9ff5996d466f42b09d6d10')
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/lib"
