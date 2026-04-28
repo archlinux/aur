@@ -1,0 +1,5 @@
+[envocabulary-bin]
+source = "github"
+github = "sreckoskocilic/envocabulary"
+use_latest_release = true
+prefix = "v"

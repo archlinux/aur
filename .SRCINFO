@@ -1,0 +1,22 @@
+pkgbase = envocabulary-bin
+	pkgdesc = Forensics and audit toolkit for shell environments
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sreckoskocilic/envocabulary
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = envocabulary
+	conflicts = envocabulary
+	options = !strip
+	source = README-0.3.0.md::https://raw.githubusercontent.com/sreckoskocilic/envocabulary/v0.3.0/README.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/sreckoskocilic/envocabulary/v0.3.0/LICENSE
+	sha256sums = ef0ca3d10cf5d643863486443cf935f2eec53918f5e5032dc27e7392b91ed2ee
+	sha256sums = 9ff9f3810963da568c194ffa007b480c9c66dfc44cbde49c2efcc1fc5508bc37
+	source_x86_64 = envocabulary-x86_64-0.3.0.tzst::https://github.com/sreckoskocilic/envocabulary/releases/download/v0.3.0/envocabulary_0.3.0_linux_amd64.pkg.tar.zst
+	sha256sums_x86_64 = 08ede5027add2da486ed0fd1e69f78e6fda64b8625d5f985e16f3a210924ce79
+	source_aarch64 = envocabulary-aarch64-0.3.0.tzst::https://github.com/sreckoskocilic/envocabulary/releases/download/v0.3.0/envocabulary_0.3.0_linux_arm64.pkg.tar.zst
+	sha256sums_aarch64 = 7237c919941b61732f3f6587f311004c27cc668bb0d56688ea468fe222ece089
+
+pkgname = envocabulary-bin
