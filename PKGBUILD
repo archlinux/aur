@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=python-nvidia-cudnn-frontend
 _pkgname=cudnn-frontend
-pkgver=1.20.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='Python frontend for NVIDIA cuDNN Graph API and open-source kernels'
 arch=('x86_64')
