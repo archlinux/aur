@@ -1,0 +1,14 @@
+pkgbase = vbarch-sysctl-network-settings-git
+	pkgdesc = Hardens the Linux network stack via sysctl kernel parameters
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/vbarch/sysctl-network-settings
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = procps-ng
+	conflicts = vbarch-sysctl-network-settings
+	source = vbarch-sysctl-network-settings-git::git+https://gitlab.com/vbarch/sysctl-network-settings.git
+	sha256sums = SKIP
+
+pkgname = vbarch-sysctl-network-settings-git
