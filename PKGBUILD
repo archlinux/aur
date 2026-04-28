@@ -2,7 +2,7 @@
 
 pkgname="epson-pc-fax"
 pkgver=1.1.2_1
-pkgrel=3
+pkgrel=4
 pkgdesc="Epson PC-FAX driver used with CUPS"
 arch=(
   # 'i686'
@@ -16,11 +16,12 @@ license=(
 )
 depends=(
   'cups'
-  'gcc-libs'
   'ghostscript'
   'glibc'
   # 'icu55'
   'libcups'
+  'libgcc'
+  'libstdc++'
   'opencflite'
   # 'util-linux-libs'
 )
@@ -28,9 +29,6 @@ depends=(
 #   'curl'
 # )
 _pkgsrc="${pkgname}-${pkgver%_*}"
-# DLAGENTS+=(
-#   'https::/usr/bin/curl -A "Mozilla" -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
-# )
 source=(
   "https://download3.ebz.epson.net/dsc/f/03/00/16/72/92/465165eb827848c10080bfda6e9980dcdbea518f/${pkgname}-${pkgver//_/-}.src.rpm"
   "${pkgname}_cups_deprecated_ppd_api.patch"
@@ -39,6 +37,9 @@ source=(
 sha256sums=('5a939770c44d91b14b7aa55f3ba4a6edc89be7018ecfdcd8dfe40efd09c933ed'
             '97bea9de793faed5607ff660ea5647d89d1d5d588772b5380d74e824a6613c39'
             '93b1a9cc223d941bbaa50651b17181bb6ac586bbaf96cf66bd1ba793a8779ad2')
+# DLAGENTS+=(
+#   'https::/usr/bin/curl -A "Mozilla" -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
+# )
 
 prepare() {
   cd "${srcdir}"
@@ -82,8 +83,8 @@ package() {
   # install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.EPSON"
   install -vDm644 "COPYING.LIB"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.LIB"
 
-  find "ppd" -type f -name '*.ppd' \
-    -execdir install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
+  find "ppd" -type f -name '*.ppd' -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
 
   cd "${pkgdir}/usr/lib"
   install -vDm755 "epfax" "${pkgdir}/usr/bin/epfax"
