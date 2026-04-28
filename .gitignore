@@ -4,3 +4,4 @@
 !/PKGBUILD
 !/.SRCINFO
 !/disable-xterm-webgl.patch
+!/linux-integration-fixes.patch

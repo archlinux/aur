@@ -2,7 +2,7 @@
 
 pkgname=termul-manager
 pkgver=0.3.2
-pkgrel=7
+pkgrel=8
 pkgdesc='Project-aware terminal that treats workspaces as first-class citizens'
 arch=('x86_64')
 url='https://github.com/gnoviawan/termul'
@@ -26,10 +26,12 @@ makedepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'disable-xterm-webgl.patch'
+  'linux-integration-fixes.patch'
 )
 sha256sums=(
   '34883aed783084c4ae25564df09422bed05941eb75175f2644a91a21c342c328'
   'e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9'
+  '80dde8f7abcfbf6d57266f9415b79e363c2c552d35cdadf21c30fb6d1f026359'
 )
 
 prepare() {
@@ -40,6 +42,7 @@ prepare() {
   export npm_config_cache="$srcdir/npm-cache"
 
   patch -Np1 < "$srcdir/disable-xterm-webgl.patch"
+  patch -Np1 < "$srcdir/linux-integration-fixes.patch"
 
   npm ci
 
