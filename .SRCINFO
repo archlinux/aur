@@ -1,6 +1,6 @@
 pkgbase = thinlinc-server
 	pkgdesc = Cendio ThinLinc Linux remote desktop server
-	pkgver = 4.20.0
+	pkgver = 4.20.1
 	pkgrel = 1
 	url = https://cendio.com
 	install = thinlinc-server.install
@@ -31,7 +31,7 @@ pkgbase = thinlinc-server
 	optdepends = openssh: native client support
 	optdepends = python-ldap: LDAP integration
 	options = !debug
-	source = https://www.cendio.com/downloads/server/tl-4.20.0-server.zip
-	sha256sums = 9dd537fb3b95018888affbd4431672308c433e7f5611143e060462190ed768d3
+	source = https://www.cendio.com/downloads/server/tl-4.20.1-server.zip
+	sha256sums = 4a7f217ccff9ff58606e3867e1fd0c951762752d2623bfedc3282d653803e9ac
 
 pkgname = thinlinc-server
