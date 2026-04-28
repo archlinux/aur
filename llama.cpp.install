@@ -1,0 +1,18 @@
+post_install() {
+  echo ":: llama.cpp now runs as a dedicated unprivileged user."
+  echo ":: To allow your user to access the API socket:"
+  echo "   sudo usermod -aG llama-cpp \$USER"
+  echo "   (Log out and back in for group changes to apply)"
+}
+
+post_upgrade() {
+  if [ -d /var/lib/llama-cpp ] && [ "$(stat -c '%U' /var/lib/llama-cpp 2>/dev/null)" = "root" ]; then
+    chown -R llama-cpp:llama-cpp /var/lib/llama-cpp 2>/dev/null || true
+    echo ":: Migrated /var/lib/llama-cpp ownership to llama-cpp user"
+  fi
+}
+
+post_remove() {
+  echo ":: The llama-cpp system user/group remains on the system."
+  echo ":: To fully remove: sudo gpasswd -d \$USER llama-cpp && sudo userdel llama-cpp"
+}

@@ -4,7 +4,7 @@
 
 pkgname=llama.cpp
 pkgver=b8953 # renovate: datasource=github-releases depName=ggml-org/llama.cpp
-pkgrel=4
+pkgrel=6
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -32,14 +32,21 @@ provides=(${pkgname})
 conflicts=(${pkgname} libggml ggml)
 options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
+install='llama.cpp.install'
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
-  llama.cpp.conf
-  llama.cpp.service
+  'llama.cpp.conf'
+  'llama.cpp.service'
+  'llama.cpp.install'
+  'sysusers.conf'
+  'tmpfiles.conf'
 )
 sha256sums=('6fe34078d80b7edcd6347f029d7b6c43d6b109fee442768d9ebf6eeb3f5d39ee'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
+            '48d6b261315c9175b4b4cea4900bd4d76f2f27112804934db656537485510cd2'
+            'fbb8ed942adfe3722bb46ec18b95c2e0320c087dcf996d29a14e4b5587093994'
+            '8b7e4ba31a27a27c611d94b8ec99a39eaea0e8ef2afaea53f06795d950fc346d'
+            '4730d43503457ac393770df1beb4a740b1bfaa7f6eadd0f5f9920309af7155d7')
 
 prepare() {
   ln -sf "${pkgname}-${pkgver}" llama.cpp
@@ -88,5 +95,7 @@ package() {
   install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
   install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
+  install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/llama-cpp.conf"
+  install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/llama-cpp.conf"
 }
 # vim:set ts=2 sw=2 et:
