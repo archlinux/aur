@@ -1,6 +1,6 @@
 pkgbase = typora-plugin
 	pkgdesc = A minimal markdown editor and reader. with obgnail/typora_plugin plugin.
-	pkgver = 1.12.4+plugin+1.16.2
+	pkgver = 1.13.4+plugin+1.17.8
 	pkgrel = 1
 	url = https://typora.io/
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = typora-plugin
 	provides = typora
 	conflicts = typora
 	source = typora.sh
-	source = https://github.com/obgnail/typora_plugin/releases/download/1.16.2/typora-plugin@v1.16.2.zip
+	source = https://github.com/obgnail/typora_plugin/releases/download/1.17.8/typora-plugin@v1.17.8.zip
 	sha512sums = 108cb69c5ada4e06dcd9995f4c45f9e5566a4ac41002af1d7cc22ecdc54f1186e43920019e54657be8b91b132dd60919241e135560d3d85d60f9618f4112095c
-	sha512sums = 8f3ec017bd4a4ae4c6ee732b3ce0dfed2d41efe5b2f03e5fb162d00ea7a2e8c3f8d4beea743fb407e9d202efe66a29c69b24609cdfdf0fee23b5fd96b82494fe
-	source_x86_64 = https://download.typora.io/linux/typora_1.12.4_amd64.deb
-	sha512sums_x86_64 = f2504c5ab4c80a1b4927b5498a7d8cb15509b1485111a886add75db35984daf49485db49e0fce9ec251be76b08ddf0dc7fd1150de4b7ffd284f67db60905c47a
-	source_aarch64 = https://download.typora.io/linux/typora_1.12.4_arm64.deb
-	sha512sums_aarch64 = 1bc6808b574f0073856daf2471a592cbee374384a60c6cc8f11fed4a6a80eab7512343e86083f60b995c439b323dc1c82582576d611dcd07072e7cf6507aa7eb
+	sha512sums = b38264ccad23e260de1673e7617517920a9ecb4064f4a6ac7caa54c3b1e4ac8df7d68def2a1d7b96000a4abd50d36cbf8a2f64c34783c42c312a4b0630646620
+	source_x86_64 = https://download.typora.io/linux/typora_1.13.4_amd64.deb
+	sha512sums_x86_64 = 5471ee6e18482b1ec25b259cdb1926252715db75175e08c506deaad0baf1ee833b9cfd7f1225acad3e0e8db350b154b300e78107d4b634ee31fb183f0b96a520
+	source_aarch64 = https://download.typora.io/linux/typora_1.13.4_arm64.deb
+	sha512sums_aarch64 = d889c9beb726f5bd46b588800b32cc64224259fc3412df758dd4f225b0b87bad057927bebf14651ed20b939df81e8ebd266ea36d89b32a0868ef704a766236dc
 
 pkgname = typora-plugin
