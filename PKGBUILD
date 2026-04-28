@@ -1,7 +1,7 @@
 # Maintainer: CreamSodass <greatvaluecreamsoda@gmail.com>
 
 pkgname=ffvship
-pkgver=4.1.0
+pkgver=5.0.1
 pkgrel=2
 pkgdesc="CLI tool for computing the metric difference between two videos"
 arch=('x86_64')

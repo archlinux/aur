@@ -1,6 +1,6 @@
 pkgbase = ffvship
 	pkgdesc = CLI tool for computing the metric difference between two videos
-	pkgver = 4.1.0
+	pkgver = 5.0.1
 	pkgrel = 2
 	url = https://codeberg.org/Line-fr/Vship
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ffvship
 	makedepends = clang
 	depends = ffms2
 	depends = libvship
-	source = https://codeberg.org/Line-fr/Vship/archive/v4.1.0.tar.gz
+	source = https://codeberg.org/Line-fr/Vship/archive/v5.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = ffvship
