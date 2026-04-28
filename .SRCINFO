@@ -1,0 +1,23 @@
+pkgbase = termul-manager
+	pkgdesc = Project-aware terminal that treats workspaces as first-class citizens
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/gnoviawan/termul
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = npm
+	makedepends = pkgconf
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	source = termul-manager-0.3.2.tar.gz::https://github.com/gnoviawan/termul/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 34883aed783084c4ae25564df09422bed05941eb75175f2644a91a21c342c328
+
+pkgname = termul-manager
