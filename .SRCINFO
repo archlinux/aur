@@ -1,7 +1,7 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cherry-ai.com/
 	arch = aarch64
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = cherry-studio-electron-bin
 	source = LICENSE-1.9.3::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.9.3/LICENSE
 	source = cherry-studio-electron.sh
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	sha256sums = 3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 	source_aarch64 = cherry-studio-electron-1.9.3-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.9.3/Cherry-Studio-1.9.3-aarch64.rpm
 	sha256sums_aarch64 = d6be1dfdb877aae1b3a7a9913d8e58798dfdb67750d82a6adae5d18998fe7145
 	source_x86_64 = cherry-studio-electron-1.9.3-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.9.3/Cherry-Studio-1.9.3-x86_64.rpm
