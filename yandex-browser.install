@@ -40,14 +40,19 @@ store_partner_data() {
       ["master_preferences"]=""
       ["Extensions"]="*.*"
       ["resources"]="clids*.xml tablo* *.png *.svg"
+      ["resources/configs"]="all_zip"
       ["resources/wallpapers"]="*"
     )
 
     for key in "${!partner_items[@]}"; do
-      local patterns=${partner_items[$key]}
-      for pattern in $patterns; do
-        process_partner_data "$base_source/$key" "$base_destination/$key" "$pattern"
-      done
+      local patterns="${partner_items[$key]}"
+      if [ -z "$patterns" ]; then
+        process_partner_data "$base_source/$key" "$base_destination/$key" ""
+      else
+        for pattern in $patterns; do
+          process_partner_data "$base_source/$key" "$base_destination/$key" "$pattern"
+        done
+      fi
     done
   fi
 }
@@ -117,6 +122,49 @@ remove_legacy_files() {
   done
 }
 
+installAppArmorProfiles() {
+  local apparmor_source_dir="/opt/yandex/browser/apparmor"
+  local apparmor_dest_dir="/etc/apparmor.d/yandex-browser"
+
+  if [ ! -d "$apparmor_source_dir" ]; then
+    echo "Warning: AppArmor source directory not found: $apparmor_source_dir" >&2
+    return 1
+  fi
+
+  mkdir -p "$apparmor_dest_dir" || {
+    echo "Error: Failed to create directory $apparmor_dest_dir" >&2
+    return 1
+  }
+
+  cp "$apparmor_source_dir"/opt.yandex.browser*.* "$apparmor_dest_dir/" || {
+    echo "Warning: Failed to copy AppArmor profiles to $apparmor_dest_dir" >&2
+    return 1
+  }
+
+  return 0
+}
+
+reloadAppArmorProfiles() {
+  apparmor_parser -r /etc/apparmor.d/yandex-browser/ >/dev/null 2>&1 || {
+    echo "Warning: Failed to reload AppArmor profiles" >&2
+  }
+}
+
+setupAppArmor() {
+  if [ -d /sys/kernel/security/apparmor ] && command -v apparmor_parser >/dev/null 2>&1; then
+    installAppArmorProfiles && reloadAppArmorProfiles
+  fi
+}
+
+removeAppArmorProfiles() {
+  local apparmor_dest_dir="/etc/apparmor.d/yandex-browser"
+  [ -d "$apparmor_dest_dir" ] || return 0
+  if command -v apparmor_parser >/dev/null 2>&1; then
+    apparmor_parser -R "$apparmor_dest_dir/" >/dev/null 2>&1 || true
+  fi
+  rm -rf "$apparmor_dest_dir"
+}
+
 post_install() {
   #Cleanup
   remove_legacy_files
@@ -135,7 +183,8 @@ post_install() {
   update-desktop-database -q
   #Install external ffmpeg library for more compatability
   /opt/yandex/browser/update_codecs /opt/yandex/browser || true
-
+  # Setup AppArmor profiles if AppArmor is active
+  setupAppArmor || true
 }
 
 post_remove() {
@@ -151,6 +200,8 @@ post_remove() {
   update-desktop-database -q
   # remove legacy files
   remove_legacy_files
+  # Remove AppArmor profiles if AppArmor is active
+  removeAppArmorProfiles || true
 }
 
 pre_install() {
