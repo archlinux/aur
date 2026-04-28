@@ -2,7 +2,7 @@
 # Contributor: Niko Teressi <nikoteressi@gmail.com>
 
 pkgname=alpaka-desktop-bin
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Native Tauri v2 desktop client for Ollama — Arch Linux / KDE Plasma 6 / Wayland"
 arch=('x86_64')
@@ -36,7 +36,7 @@ options=(!strip)
 _appimage="alpaka-desktop-${pkgver}.AppImage"
 
 source=("${_appimage}::https://github.com/nikoteressi/alpaka-desktop/releases/download/v${pkgver}/alpaka-desktop_${pkgver}_amd64.AppImage")
-sha256sums=('effb470b94e4015021ec80c5247d753d5479475b2be79dda2e1850e3bf9f42f9')
+sha256sums=('63edbed58d146e2e86c9041c53920d552914ea34ebb2008604addbedf93c7dfd')
 
 noextract=("${_appimage}")
 
