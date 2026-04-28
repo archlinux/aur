@@ -22,11 +22,20 @@ optdepends=(
     libappindicator-gtk3
 )
 options=('!strip')
-source=("https://github.com/Nikren2006/anilinux-electron/releases/download/v${pkgver}/anilinux-electron_${pkgver}_amd64.deb")
-sha256sums=('035e97e0b6ae59b048ab7db90e0ec582cc50a22a03b841c0079c54e3816a6c6a')
+source=("https://github.com/Nikren2006/anilinux-electron/releases/download/v${pkgver}/anilinux_${pkgver}_amd64.deb")
+sha256sums=('593cf8c5d5f4e8c3a4971f3780eaaad1db0ff9bd16e9adb40d0855ae5f200d9e')
 
 package() {
     tar -xf data.tar.xz --directory "${pkgdir}"
+
+    mv "${pkgdir}/opt/АниЛинукс" "${pkgdir}/opt/anilinux-electron"
+    sed -i 's|/opt/АниЛинукс|/opt/anilinux-electron|g' "${pkgdir}/usr/share/applications/anilinux-electron.desktop"
+
+    sed -i 's|Categories=Audio;|Categories=AudioVideo;Audio;|g' "${pkgdir}/usr/share/applications/anilinux-electron.desktop"
+
+    # Install symlink to binary
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/opt/anilinux-electron/anilinux-electron" "${pkgdir}/usr/bin/anilinux-electron"
 }
 
 # Maintainer: dmitrysvd
