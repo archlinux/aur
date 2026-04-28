@@ -1,13 +1,13 @@
 # Maintainer: buj <buj351@outlook.com>
 pkgname=voidsprite-bin
-_pkgver=31.01.2026
+_pkgver=10.04.2026
 pkgver="$(echo $_pkgver | tr '.' $'\n' | tac | paste -s -d '.')"+alpha
 pkgrel=6
 pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
 #_zip=voidsprite-${_pkgver}-linux-x86_64.flatpak.zip
 # Hardcoding it temporarily. Will switch back to proper releases when those come out.
-_appimage=https://github.com/counter185/voidsprite/releases/download/alpha31.01.2026/voidsprite-31.01.2026-linux-appimage-x64.zip
+_appimage=https://github.com/counter185/voidsprite/releases/download/alpha10.04.2026/voidsprite-alpha10.04.2026-linux-appimage-x64.AppImage
 #source=("https://github.com/counter185/voidsprite/releases/download/alpha${_pkgver}/${_zip}")
 _root=https://raw.githubusercontent.com/counter185/voidsprite/95d7c427a09b77e9a364033c49577b9abcc1ba01
 source=("voidsprite::$_appimage" "voidsprite.desktop::$_root/freesprite/linux/com.github.counter185.voidsprite.desktop" "license::$_root/LICENSE"
@@ -21,7 +21,7 @@ done
 arch=('x86_64')
 conflicts=('voidsprite')
 provides=("voidsprite=$(echo $_pkgver | tr '.' $'\n' | tac | paste -s -d '.')")
-sha256sums=('cd65abd730069a3da911debe7af07be39f565e7540feea8ab6ac5108a5617763'  # voidsprite
+sha256sums=('6da3c456606991e6553e31ac456980652d0af3d9500700d100914e2fc2bf7e41'  # voidsprite
             '08dda56f5cad7861a9508d35238c5ece6d2287d5c89796683b23131a967fb527'  # voidsprite.desktop
             '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'  # license
             '23ff809ac82b1eec7d7da1168204ef8bb087b130a4dfac17c2163faba27d6c5c'  # metainfo.xml
@@ -57,9 +57,9 @@ options+=('!strip')
 #     sed -i -E 's/\/app\/share\/voidsprite/\/usr\/share\/voidsprite/g' ${_src}/files/bin/voidsprite
 # }
 
-build() {
-    unzip "$srcdir"/voidsprite voidsprite-latest-x86_64.AppImage
-}
+#build() {
+#    #unzip "$srcdir"/voidsprite voidsprite-latest-x86_64.AppImage
+#}
 
 package() {
     # _src=${srcdir}/voidsprite-src
@@ -75,7 +75,8 @@ package() {
     # done
 
     mkdir -p "$pkgdir"/usr/{bin,share/{applications,licenses/voidsprite,metainfo,mime/packages,icons/hicolor,voidsprite,thumbnailers}}
-    install -m755 voidsprite-latest-x86_64.AppImage "$pkgdir"/usr/bin/voidsprite
+    #install -m755 voidsprite-latest-x86_64.AppImage "$pkgdir"/usr/bin/voidsprite
+    install -m755 "$srcdir"/voidsprite "$pkgdir"/usr/bin/voidsprite
     install -m644 "$srcdir"/voidsprite.desktop "$pkgdir"/usr/share/applications/voidsprite.desktop
 
     cat "$srcdir"/voidsprite.desktop | \
