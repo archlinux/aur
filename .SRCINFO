@@ -11,6 +11,7 @@ pkgbase = waytator
 	depends = gtk4
 	depends = libadwaita
 	optdepends = tesseract: OCR support
+	optdepends = wl-clipboard: niri screenshot clipboard support
 	options = !debug
 	source = waytator-1.2.3.tar.gz::https://github.com/faetalize/waytator/archive/refs/tags/v1.2.3.tar.gz
 	sha256sums = 78ba4970df73b532c4dd046c8438d255070be6e6192be6371a5a4e24553e81d3
