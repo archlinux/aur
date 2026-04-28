@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=StartWine
 Exec=env startwine %F
-Comment[en_GB]=Launch Windows applications on Linux operating systems
 Comment[ru]=Запуск приложений Windows в операционных системах Linux
+Comment[en_GB]=Launch Windows applications on Linux operating systems
 Comment[zh_CN]=在Linux操作系统上启动Windows应用程序
 Comment[pt_PT]=Executando aplicativos do Windows em sistemas operacionais Linux
 Type=Application
