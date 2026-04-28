@@ -1,12 +1,17 @@
 pkgbase = ttf-inter
-	pkgdesc = The Inter font family.
-	pkgver = 4.0
+	pkgdesc = Inter is a variable font family carefully crafted & designed for computer screens.
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/rsms/inter
 	arch = any
-	license = OFL
-	depends = fontconfig
-	source = https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip
-	md5sums = 7a198bd4c103c01dc09f7b6abf92a06a
+	license = OFL-1.1
+	source = https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip
+	sha256sums = 9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e
 
-pkgname = ttf-inter
+pkgname = ttf-inter-variable
+	provides = ttf-inter=4.1
+
+pkgname = ttf-inter-static
+	provides = ttf-inter=4.1
+
+pkgname = otf-inter-static
