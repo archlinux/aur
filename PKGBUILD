@@ -2,7 +2,7 @@
 pkgname=sglang-git
 _pkgname=sglang
 pkgver=r11994.f3483862f3
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang'
@@ -74,6 +74,7 @@ _models=(
   'gemma_4_e4b'
   'gemma_4_26b_a4b'
   'gemma_4_31b'
+  'gemma_4_31b_fp8'
   'qwen3.5_0.8b'
   'qwen3.5_2b'
   'qwen3.5_4b'
@@ -90,6 +91,14 @@ _models=(
   'qwen3.5_397b_a17b'
   'qwen3.5_397b_a17b_fp8'
   'qwen3.5_397b_a17b_gptq_int4'
+  'qwen3.6_27b'
+  'qwen3.6_27b_fp8'
+  'qwen3.6_27b_awq_int4'
+  'qwen3.6_27b_gptq_int4'
+  'qwen3.6_27b_autoround_int4'
+  'qwen3.6_35b_a3b'
+  'qwen3.6_35b_a3b_fp8'
+  'qwen3.6_35b_a3b_nvfp4'
 )
 
 backup=('etc/sglang/sglang.conf' 'etc/sglang/sglang.env')
