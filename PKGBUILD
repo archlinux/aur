@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=prql
 pkgname=prql-bin
-pkgver=0.13.11
+pkgver=0.13.12
 pkgrel=1
 pkgdesc='PRQL is a modern language for transforming data — a simple, powerful, pipelined SQL replacement'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(Apache-2.0)
 provides=($_pkg)
 conflicts=($_pkg)
 source_x86_64=("$_git/releases/download/$pkgver/prqlc-$pkgver-$arch-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('9b1851274d7a75c083a09b7441463d9e790e14ab6d59334bb7d31240545db2e6')
+sha256sums_x86_64=('ecd3cb280c594620093c355d9f5633a7f199f0775a65a5dff31a08b8c4f25f42')
 
 package() {
     install -Dm755 prqlc -t "$pkgdir/usr/bin/"
@@ -25,7 +25,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
 	./prqlc shell-completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/prqlc.fish"
 	mkdir -p "${pkgdir}/usr/share/nushell/vendor/autoload"
-	./prqlc shell-completion nushell > "$pkgdir/usr/share/nushell/vendor/autoload/$_pkg.nu"
+	./prqlc shell-completion nushell > "$pkgdir/usr/share/nushell/vendor/autoload/prqlc.nu"
 	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
 	./prqlc shell-completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_$_pkg"
 }
