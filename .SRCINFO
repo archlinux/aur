@@ -1,6 +1,6 @@
 pkgbase = lazyagent-bin
 	pkgdesc = See what your ai agents are doing
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/chojs23/lazyagent
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lazyagent-bin
 	provides = lazyagent
 	conflicts = lazyagent
 	options = !strip
-	source_x86_64 = lazyagent-x86_64-0.4.0.tgz::https://github.com/chojs23/lazyagent/releases/download/v0.4.0/lazyagent_0.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3d0aca110f865f1328c1fc2a5e9b204cc533a692bdd0d643abdf2ff9c31bc503
-	source_aarch64 = lazyagent-aarch64-0.4.0.tgz::https://github.com/chojs23/lazyagent/releases/download/v0.4.0/lazyagent_0.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 76fc3d731bdb43772e5065b35418d47f12773f94cb6d401e18b5d23101b49da8
+	source_x86_64 = lazyagent-x86_64-0.5.0.tgz::https://github.com/chojs23/lazyagent/releases/download/v0.5.0/lazyagent_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = aa5a25f3cff85af24c23fe54a96584fd99a2d8480332fea39831dc794d824d32
+	source_aarch64 = lazyagent-aarch64-0.5.0.tgz::https://github.com/chojs23/lazyagent/releases/download/v0.5.0/lazyagent_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e9d3d89035f741bf6286443a54aafa065b7b0bf91debb2b3f2db865a8da4abd8
 
 pkgname = lazyagent-bin
