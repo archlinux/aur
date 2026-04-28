@@ -9,7 +9,7 @@ url='https://github.com/Necrom4/sbb-tui'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ec426ba25083b97093a1045196f189ba453582b468484ffaacecf18ba4a4a708')
+sha256sums=('209af4b44a381b2eeb3dcdab0808e3a727088856b1a739ca8b5c12802776b85d')
 
 build() {
   cd "${pkgname}-${pkgver}"
