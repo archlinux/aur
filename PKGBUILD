@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r11993.d773133086
+pkgver=r11994.f3483862f3
 pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
@@ -31,6 +31,19 @@ depends=(
   'python-soundfile'
   'python-xgrammar'
   'ipython'
+  'python-fastapi'
+  'python-starlette'
+  'python-openai'
+  'python-huggingface-hub'
+  'python-pillow'
+  'python-packaging'
+  'python-psutil'
+  'python-scipy'
+  'python-sentencepiece'
+  'python-pyzmq'
+  'python-multipart'
+  'uvicorn'
+  'python-flashinfer'
 )
 makedepends=(
   'python-build'
@@ -43,25 +56,13 @@ makedepends=(
 optdepends=(
   'python-anthropic: Anthropic API backend'
   'python-datasets: Dataset loading'
-  'python-fastapi: API server'
   'python-grpcio: gRPC support'
-  'python-huggingface-hub: Model hub access'
   'python-modelscope: ModelScope model hub'
   'ninja: Build system for JIT compilation'
-  'python-openai: OpenAI-compatible API'
   'python-outlines: Structured generation'
-  'python-packaging: Version utilities'
-  'python-pillow: Image processing'
-  'python-psutil: Process monitoring'
-  'python-multipart: Multipart form parsing'
-  'python-pyzmq: ZeroMQ messaging'
-  'python-scipy: Scientific computing'
-  'python-sentencepiece: Tokenization'
-  'python-soundfile: Audio file support'
   'python-tiktoken: OpenAI tokenizer'
   'python-tilelang: DeepSeek V4 model support'
   'python-timm: Vision model library'
-  'uvicorn: ASGI server'
   'python-uvloop: Fast event loop'
 )
 provides=('sglang')
