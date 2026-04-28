@@ -1,0 +1,17 @@
+pkgbase = mainstream-bibata-modern-classic-bin
+	pkgdesc = Material Based Cursor Theme, packaged for Mainstream OS dotfiles
+	pkgver = 2.0.6
+	pkgrel = 3
+	url = https://github.com/ful1e5/Bibata_Cursor
+	arch = any
+	groups = mainstream
+	license = GPL-3.0-or-later
+	provides = illogical-impulse-bibata-modern-classic-bin
+	conflicts = bibata-cursor-theme
+	conflicts = bibata-cursor-theme-bin
+	replaces = illogical-impulse-bibata-modern-classic-bin
+	options = !strip
+	source = mainstream-bibata-modern-classic-2.0.6.tar.xz::https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.6/Bibata-Modern-Classic.tar.xz
+	sha256sums = SKIP
+
+pkgname = mainstream-bibata-modern-classic-bin
