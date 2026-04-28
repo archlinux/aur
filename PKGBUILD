@@ -1,7 +1,7 @@
 # Maintainer: Archisman Panigrahi <apandada1 AT gmail DOT com>
 
 pkgname=wombat
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc=" High-precision scientific calculator with full unit support, powered by Numbat"
 arch=('any')
