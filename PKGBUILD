@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang
 pkgver=0.5.10.post1
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang'
@@ -90,8 +90,12 @@ _models=(
   'qwen3.5_397b_a17b_gptq_int4'
   'qwen3.6_27b'
   'qwen3.6_27b_fp8'
+  'qwen3.6_27b_awq_int4'
+  'qwen3.6_27b_gptq_int4'
+  'qwen3.6_27b_autoround_int4'
   'qwen3.6_35b_a3b'
   'qwen3.6_35b_a3b_fp8'
+  'qwen3.6_35b_a3b_nvfp4'
 )
 
 backup=('etc/sglang/sglang.conf' 'etc/sglang/sglang.env')
