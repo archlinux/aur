@@ -1,6 +1,6 @@
 pkgbase = kubevpn-bin
 	pkgdesc = Access kubernetes via VPN
-	pkgver = 2.2.16
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://github.com/KubeNetworks/kubevpn
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = kubevpn-bin
 	license = MIT
 	provides = kubevpn
 	conflicts = kubevpn
-	source_x86_64 = https://github.com/KubeNetworks/kubevpn/releases/download/v2.2.16/kubevpn_v2.2.16_linux_amd64.zip
-	sha256sums_x86_64 = 411c325480d321b33e95b1f0644c5faa335af3c7b9e9ecf68f236a6345f0fc9a
-	source_aarch64 = https://github.com/KubeNetworks/kubevpn/releases/download/v2.2.16/kubevpn_v2.2.16_linux_arm64.zip
-	sha256sums_aarch64 = 198cebbc31c2f4eb01e5cb32ea7fe04c6dd518e62944dbad8c4e2ff80ec6ffa5
-	source_armv7h = https://github.com/KubeNetworks/kubevpn/releases/download/v2.2.16/kubevpn_v2.2.16_linux_arm64.zip
-	sha256sums_armv7h = 198cebbc31c2f4eb01e5cb32ea7fe04c6dd518e62944dbad8c4e2ff80ec6ffa5
+	source_x86_64 = https://github.com/KubeNetworks/kubevpn/releases/download/v2.10.2/kubevpn_v2.10.2_linux_amd64.zip
+	sha256sums_x86_64 = d9629704a540d9d174d32fc703202b34164e5784d42bd15e801ccd53909694b9
+	source_aarch64 = https://github.com/KubeNetworks/kubevpn/releases/download/v2.10.2/kubevpn_v2.10.2_linux_arm64.zip
+	sha256sums_aarch64 = b7c51f2090f9d4720b02b0619461dbc77c74da5c69cdc0e18498bf50c69d95da
+	source_armv7h = https://github.com/KubeNetworks/kubevpn/releases/download/v2.10.2/kubevpn_v2.10.2_linux_arm64.zip
+	sha256sums_armv7h = b7c51f2090f9d4720b02b0619461dbc77c74da5c69cdc0e18498bf50c69d95da
 
 pkgname = kubevpn-bin
