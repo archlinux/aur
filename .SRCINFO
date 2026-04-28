@@ -1,0 +1,12 @@
+pkgbase = aqueous-configs
+	pkgdesc = Seafoam Labs Noctalia colorschemes (SeafoamLabs & SeafoamLabs AMOLED)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Seafoam-Labs/SeafoamLabsDotFiles
+	install = seafoamlabs-dotfiles.install
+	arch = any
+	license = MIT
+	source = git+https://github.com/Seafoam-Labs/SeafoamLabsDotFiles.git
+	sha256sums = SKIP
+
+pkgname = aqueous-configs

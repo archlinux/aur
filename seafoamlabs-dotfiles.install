@@ -1,0 +1,20 @@
+post_install() {
+    COLORSCHEMES_SRC="/usr/share/seafoamlabs-dotfiles/colorschemes"
+
+    for user_home in /home/*; do
+        username=$(basename "$user_home")
+        dest="$user_home/.config/noctalia/colorschemes"
+
+        install -Dm644 -o "$username" \
+            "$COLORSCHEMES_SRC/SeafoamLabs/SeafoamLabs.json" \
+            "$dest/SeafoamLabs/SeafoamLabs.json"
+
+        install -Dm644 -o "$username" \
+            "$COLORSCHEMES_SRC/SeafoamLabs AMOLED/SeafoamLabs AMOLED.json" \
+            "$dest/SeafoamLabs AMOLED/SeafoamLabs AMOLED.json"
+    done
+}
+
+post_upgrade() {
+    post_install
+}
