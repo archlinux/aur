@@ -1,13 +1,13 @@
 # Maintainer: Cametendo cameronmathis08@gmail.com
 pkgname=cflash
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Small and lightweight image and iso flasher build on dd."
+pkgdesc="A small and lightweight wrapper for dd that strips away the complexity of CLI flashing."
 arch=('any')
 url="https://github.com/cametendo/cflash-git"
 license=('MIT') 
 depends=('java-runtime>=21')
-makedepends=('java-environment>=21' 'maven')
+makedepends=('java-environment>=21' 'maven' 'git')
 source=("cflash::git+https://github.com/cametendo/cflash-git.git")
 sha256sums=('SKIP')
 
@@ -21,7 +21,7 @@ package() {
   cd "$srcdir/cflash"
   
   # for some reason MAKEPKD won't accept my version, using the wildcard for literally anything if may find
-  install -Dm644 target/cflash-*-jar-with-dependencies.jar \
+  install -Dm644 target/cflash-1.0.1-jar-with-dependencies.jar \
     "$pkgdir/usr/share/java/cflash/cflash.jar"
 
   # Create the executable
