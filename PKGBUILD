@@ -2,7 +2,7 @@
 
 pkgname=termul-manager
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Project-aware terminal that treats workspaces as first-class citizens'
 arch=('x86_64')
 url='https://github.com/gnoviawan/termul'
@@ -77,7 +77,7 @@ package() {
 [Desktop Entry]
 Name=Termul Manager
 Comment=Project-aware terminal manager
-Exec=env GDK_BACKEND=x11 termul-manager
+Exec=env GDK_BACKEND=x11 WEBKIT_DISABLE_COMPOSITING_MODE=1 termul-manager
 Icon=termul-manager
 Terminal=false
 Type=Application
