@@ -3,7 +3,7 @@
 # Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libqsi
-pkgver=2.2.0
+pkgver=2.2.1.1
 pkgrel=1
 pkgdesc="libqsi used by INDI QSI drivers. Please note that for sake of simplicity package version follows libindi versionning."
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -12,7 +12,7 @@ arch=(i686 x86_64 aarch64)
 depends=(gcc-libs glibc libftdi)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("2f5f329326bf6e468e6313724679e2934314dcee234715cbc5cac39279142f04")
+sha256sums=("b336df05a4e4313b02264e6cd59ecc78f0b37ac68eb895ffb617ae553a7db12a")
 
 prepare() {
   mkdir -p build
