@@ -1,6 +1,6 @@
 # Maintainer: Sofian Jafar <skjafar@gmail.com>
 pkgname=dshub-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Desktop application for monitoring and controlling industrial devices via TCP/UDP"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=(
     "dshub-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    '5e5e055365abfcf78c0d7657ccff5efeff46b0b29d7a2cb6c5ef9a86434d66d2'
-    'f55f618cac0e27c4ac1161212213b417cef2ab01de8ec0581c48aa762252b9bb'
+    '0002fcc95323903f89fedbd99e93543ebcd053494358767fdf6925656087457f'
+    '21c6fb3a66d5f7a2785700912ea90dccac683d79a3a5c0eb7256144c32616c04'
 )
 
 package() {
@@ -31,11 +31,26 @@ package() {
 
     cd "${srcdir}/dshub-${pkgver}"
 
-    # Desktop entry
-    install -Dm644 "aur/dshub.desktop" \
-        "${pkgdir}/usr/share/applications/dshub.desktop"
+    # Desktop entry (generated inline; bundled separately from the source tarball)
+    install -d "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/dshub.desktop" <<EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DSHub
+GenericName=Device Monitor
+Comment=Monitor and control industrial devices via TCP/UDP
+Icon=dshub
+Exec=dshub
+Terminal=false
+Categories=Development;Electronics;Engineering;
+Keywords=device;monitor;embedded;tcp;udp;registers;industrial;
+StartupNotify=true
+StartupWMClass=dshub
+EOF
+    chmod 644 "${pkgdir}/usr/share/applications/dshub.desktop"
 
-    # Icons
+    # Icons (from source tarball)
     install -Dm644 "src-tauri/icons/32x32.png" \
         "${pkgdir}/usr/share/icons/hicolor/32x32/apps/dshub.png"
     install -Dm644 "src-tauri/icons/128x128.png" \
