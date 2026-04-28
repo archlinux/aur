@@ -6,7 +6,7 @@ _cratename=${_pkgname}-cli
 pkgname=${_cratename}
 pkgdesc="TUI that highlights the GitHub PRs that need you"
 
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -24,7 +24,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('b8697eb9e2f665688443272946ac8c0dc4fa4b373f32b7e0320f6af372a203dd')
+sha256sums=('883e5b2f22e6e1c6efbe4d915bdb18ae5dc6c6e04c318ab048ca535af593f2fe')
 
 
 build() {
