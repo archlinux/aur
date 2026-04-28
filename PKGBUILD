@@ -1,7 +1,7 @@
 # Maintainer: gi1242 <gi1242+arch at gmail dot com>
 
 pkgname=md-to-html2
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='Convert Markdown to HTML using Jinja2 templates'
 url='https://codeberg.org/gi1242/md-to-html'
@@ -14,18 +14,21 @@ depends=(python
 	python-pyxdg
 	python-markupsafe
   python-pillow
-	python-pygments)
+	python-pygments
+	python-beautifulsoup4)
 makedepends=(python-build python-installer python-wheel)
-source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('bec4ca0da6299c81e3d4beddf1403e793ff3c9e713edc98872b54b5caa966d4f')
+_name=${pkgname#python-}
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
+sha256sums=('5facf86fcbed97d4b5bd0ddbb0932d74f94b339c0baed02d1ca0320cd85183e7')
 
+_name=${_name//-/_}
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${_name}-${pkgver}
   python -m build --wheel --no-isolation
 }
 
 package(){
-  cd ${pkgname}-${pkgver}
+  cd ${_name}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
