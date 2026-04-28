@@ -1,5 +1,5 @@
 pkgname=warp-ai-terminal-bin
-pkgver=0.2026.04.22.08.46.stable_03
+pkgver=0.2026.04.27.15.32.stable_02
 pkgrel=1
 pkgdesc="Blazingly fast, AI-powered terminal with modern UX"
 arch=(x86_64 aarch64)
@@ -10,8 +10,8 @@ depends=("fuse2")
 options=(!strip !debug)
 
 _appimage="Warp-x86_64.AppImage"
-source=("${_appimage}::https://releases.warp.dev/stable/v0.2026.04.22.08.46.stable_03/Warp-x86_64.AppImage")
-sha256sums=('eb929d853b022680e02832964fb41756005779709de910fc16f1229c8a36a28b')
+source=("${_appimage}::https://releases.warp.dev/stable/v0.2026.04.27.15.32.stable_02/Warp-x86_64.AppImage")
+sha256sums=('8c240a2095e4a51d7c8612317d7be3944cf5e237b7b657a6c529fc2a88c34ac3')
 noextract=("${_appimage}")
 
 prepare() {
