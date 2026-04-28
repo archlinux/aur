@@ -1,7 +1,7 @@
 pkgbase = rusty_keys-bin
 	pkgdesc = A mechanical keyboard sound emulator (GTK4/Libadwaita)
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/schultz-dev0/RustyKeys
 	arch = x86_64
 	license = MIT

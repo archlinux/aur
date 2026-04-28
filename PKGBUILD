@@ -1,7 +1,7 @@
 # Maintainer: schultz-dev0 <your.email@example.com>
 pkgname=rusty_keys-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A mechanical keyboard sound emulator (GTK4/Libadwaita)"
 arch=('x86_64')
 url="https://github.com/schultz-dev0/RustyKeys"
@@ -24,8 +24,12 @@ package() {
     install -d "${pkgdir}/usr/share/rusty_keys/assets"
     cp -r "${srcdir}/${src_dir}/assets/"* "${pkgdir}/usr/share/rusty_keys/assets/"
     
-    # 3. Install Icon
-    install -Dm644 "${srcdir}/${src_dir}/assets/rustykeys.png" "${pkgdir}/usr/share/pixmaps/rustykeys.png"
+    # 3. Install Icon (Fallback to preview image if main icon is missing in assets/)
+    if [ -f "${srcdir}/${src_dir}/assets/rustykeys.png" ]; then
+        install -Dm644 "${srcdir}/${src_dir}/assets/rustykeys.png" "${pkgdir}/usr/share/pixmaps/rustykeys.png"
+    else
+        install -Dm644 "${srcdir}/${src_dir}/assets/Rustykeys_preview.png" "${pkgdir}/usr/share/pixmaps/rustykeys.png"
+    fi
     
     # 4. Create and Install Desktop Entry
     install -d "${pkgdir}/usr/share/applications"
