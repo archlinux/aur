@@ -1,7 +1,7 @@
 pkgbase = goofcord-bin
 	pkgdesc = Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Milkshiift/GoofCord
 	arch = aarch64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = goofcord-bin
 	source = LICENSE-2.2.1::https://raw.githubusercontent.com/Milkshiift/GoofCord/v2.2.1/LICENSE
 	source = goofcord.sh
 	sha256sums = 4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51
-	sha256sums = 3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 	source_aarch64 = goofcord-2.2.1-aarch64.rpm::https://github.com/Milkshiift/GoofCord/releases/download/v2.2.1/GoofCord-2.2.1-linux-aarch64.rpm
 	sha256sums_aarch64 = bf07bea484cfaa7fe3bbd59de87f6331e3448ad3b956ee910d218b31e8fd9868
 	source_armv7h = goofcord-2.2.1-armv7h.rpm::https://github.com/Milkshiift/GoofCord/releases/download/v2.2.1/GoofCord-2.2.1-linux-armv7l.rpm
