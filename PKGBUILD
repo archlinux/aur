@@ -2,7 +2,7 @@
 
 _pkgname="hyprism"
 pkgname="hyprism-bin"
-pkgver="3.0.2"
+pkgver="3.0.3"
 pkgrel="1"
 pkgdesc="A multiplatform Hytale launcher with mod manager and more! (binary version)"
 arch=("x86_64")
@@ -31,7 +31,7 @@ source=(
     "LICENSE"
 )
 sha256sums=(
-    "59c637a64d0c7161141559353ac5af23c3fcfabe47405f60cc58b45377274d0a"
+    "ca45a874dd4e0d3b399e9ea4d06823a7a58aa81b6da5512a30f1526b9323e484"
     "89837ddd1c7dba01d6ac9e22b686fd7311986f2a49c1cd98c82fe72060dda679"
     "da29f0d435a6f790eba5a635ace043404eff44cb726a627673d5d3830d4a615d"
     "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
