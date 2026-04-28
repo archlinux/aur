@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.23.6.r613.g49253975
+pkgver=4.23.6.r618.g71ce6b04
 pkgrel=1
 
 pkgver() {
@@ -69,7 +69,7 @@ from astrbot.core.astr_main_agent_resources import (
 print('[check] astr_main_agent_resources OK')
 " || _errcnt=$((_errcnt + 1))
     python -c "
-from astrbot.dashboard.server import DashboardServer
+from astrbot.dashboard.server import AstrBotDashboard
 print('[check] dashboard.server OK')
 " || _errcnt=$((_errcnt + 1))
     python -c "
