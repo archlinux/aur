@@ -33,7 +33,7 @@ makedepends=()
 
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Comfy-Org/ComfyUI/archive/refs/tags/v$pkgver.tar.gz"
-    'comfyui.install.in'
+    'comfyui.install'
     'comfyui.sh'
     'comfyui.service'
     'comfyui.sysusers'
@@ -54,17 +54,24 @@ options=('!strip')
 backup=("etc/comfyui/extra_model_paths.yaml")
 
 build() {
-    # Generate .install script from template
-    sed "s|_PREFIX_|$_prefix|g; s|_TORCH_PKGS_|$_torch_pkgs|g" \
-        "$srcdir/comfyui.install.in" > "$startdir/comfyui.install"
+    # Replace symlinks with copies to preserve originals in $startdir
+    for f in comfyui.install comfyui.sh comfyui.service; do
+        cp --remove-destination "$(readlink -f "$srcdir/$f")" "$srcdir/$f"
+    done
 
-    # Inject _prefix and _torch_pkgs into the launcher and service file
+    # Inject _prefix and _torch_pkgs into source files
+    sed -i "s|_PREFIX_|$_prefix|g; s|_TORCH_PKGS_|$_torch_pkgs|g" \
+        "$srcdir/comfyui.install"
+
     sed -i "s|_PREFIX_|$_prefix|g" \
         "$srcdir/comfyui.sh" \
         "$srcdir/comfyui.service"
 
     sed -i "s|_TORCH_PKGS_|$_torch_pkgs|g" \
         "$srcdir/comfyui.sh"
+
+    # Copy processed .install back for pacman
+    cp "$srcdir/comfyui.install" "$startdir/comfyui.install"
 }
 
 package() {
