@@ -1,0 +1,23 @@
+pkgbase = luvtter-desktop-bin
+	pkgdesc = Luvtter — slow-mail letter writing client (Compose Desktop, prebuilt self-contained)
+	pkgver = 0.0.1c
+	pkgrel = 1
+	url = https://github.com/Emiya173/luvtter
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	depends = freetype2
+	depends = libxrender
+	depends = libxtst
+	depends = libxi
+	provides = luvtter-desktop
+	conflicts = luvtter-desktop
+	conflicts = luvtter-desktop-git
+	options = !strip
+	options = !debug
+	source = luvtter-desktop-v0.0.1c-linux-x86_64.tar.gz::https://github.com/Emiya173/luvtter/releases/download/v0.0.1c/luvtter-desktop-v0.0.1c-linux-x86_64.tar.gz
+	source = luvtter-desktop.desktop
+	sha256sums = 72174154229c4027678c7ec54b5e616087dc1eb32e7527a3bb80e5c419a15e37
+	sha256sums = SKIP
+
+pkgname = luvtter-desktop-bin

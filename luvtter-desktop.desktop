@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Luvtter
+Comment=Slow-mail letter writing client
+Exec=/usr/bin/luvtter-desktop
+Terminal=false
+Categories=Network;Office;
+StartupWMClass=com-luvtter-app-MainKt
