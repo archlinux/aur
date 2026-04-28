@@ -1,9 +1,10 @@
 pkgbase = flameget
 	pkgdesc = A GTK4 Download Manager wrapping Aria2, Curl, and YT-DLP
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/C-Yassin/FlameGet
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	license = LGPL3
 	makedepends = git
@@ -19,7 +20,11 @@ pkgbase = flameget
 	depends = python-waitress
 	depends = aria2p
 	depends = ffmpeg
-	source = flameget-1.0.tar.gz::https://github.com/C-Yassin/FlameGet/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 92ea587e37b7286c65b9d8a1f9bebfc4b848010af998d45cfd9a27243972617e
+	source = flameget-1.1.tar.gz::https://github.com/C-Yassin/FlameGet/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 31040c56993404e57bd82e301b8ad634c6f5a4f590a486abad2e8192e7a39dce
+	source_x86_64 = https://codeberg.org/ThetaDev/rustypipe-botguard/releases/download/v0.1.2/rustypipe-botguard-v0.1.2-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 4f2ec561e8f9fadece7deadc6ce0624fbdedd852222c3eb194c22153b1323129
+	source_aarch64 = https://codeberg.org/ThetaDev/rustypipe-botguard/releases/download/v0.1.2/rustypipe-botguard-v0.1.2-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 4d038857374a69aea9be8ded981d93a776dc88d4e254f5c6d292746099abf69a
 
 pkgname = flameget
