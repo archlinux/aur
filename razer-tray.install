@@ -1,0 +1,39 @@
+post_install() {
+    systemctl --global enable razer-tray.service >/dev/null 2>&1 || true
+
+    started=()
+    while read -r user; do
+        [[ -z "$user" || "$user" == "root" ]] && continue
+        uid=$(id -u "$user" 2>/dev/null) || continue
+        if runuser -u "$user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+            systemctl --user start razer-tray.service >/dev/null 2>&1; then
+            started+=("$user")
+        fi
+    done < <(loginctl --no-legend list-users 2>/dev/null | awk '{print $2}')
+
+    echo "==> razer-tray enabled globally for all current and future users"
+    echo "==> Will auto-start on next graphical login"
+    if (( ${#started[@]} )); then
+        echo "==> Started immediately for: ${started[*]}"
+    else
+        echo "==> To start now without re-login:"
+        echo "==>   systemctl --user enable --now razer-tray.service"
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    while read -r user; do
+        [[ -z "$user" || "$user" == "root" ]] && continue
+        uid=$(id -u "$user" 2>/dev/null) || continue
+        runuser -u "$user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+            systemctl --user stop razer-tray.service >/dev/null 2>&1 || true
+    done < <(loginctl --no-legend list-users 2>/dev/null | awk '{print $2}')
+}
+
+post_remove() {
+    systemctl --global disable razer-tray.service >/dev/null 2>&1 || true
+}
