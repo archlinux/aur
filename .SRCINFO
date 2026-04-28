@@ -1,0 +1,14 @@
+pkgbase = xonispam
+	pkgdesc = Herramienta educativa de automatización de teclado para pruebas de spam
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/XONIDU/xonispam
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyautogui
+	source = xonispam-1.0.0.tar.gz::https://github.com/XONIDU/xonispam/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = xonispam
