@@ -1,6 +1,6 @@
 pkgbase = v2ray-rules-dat
 	pkgdesc = Enhanced edition of V2Ray rules dat files.
-	pkgver = 202604262232
+	pkgver = 202604272244
 	pkgrel = 1
 	url = https://github.com/Loyalsoldier/v2ray-rules-dat
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = v2ray-rules-dat
 	conflicts = v2ray-geoip
 	conflicts = xray-geoip
 	conflicts = xray-geosite
-	source = geoip-202604262232.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202604262232/geoip.dat
-	source = geosite-202604262232.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202604262232/geosite.dat
+	source = geoip-202604272244.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202604272244/geoip.dat
+	source = geosite-202604272244.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202604272244/geosite.dat
 	sha256sums = b4120c887f2c812e5f57551c83417ec6f668ee16999cb2c620221d0c063ccdf4
-	sha256sums = 58a861aa28dea10f2635e7a042e8749120ea348a9191e6a247cddf3955085b46
+	sha256sums = ace8ba82b7b8b981625b49e0d9e3d58c67da3c83424bf958d165aec07e5b35cc
 
 pkgname = v2ray-rules-dat
