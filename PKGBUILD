@@ -1,7 +1,7 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 # Maintainer: SFN
 pkgname=feather-tk
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A lightweight toolkit for building cross-platform applications"
 arch=("x86_64")
@@ -15,7 +15,7 @@ backup=()
 options=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grizzlypeak3d/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('c2ae836209838c7b5c397d9b349c53bb2fd09eb7c6bb77d59ddaf88885b94ed2')
+sha256sums=('bb995bba15a2bbb179e103ca67e4d9e92c25c5c912dec04f21916fabdc57c87f')
 
 CFLAGS+=" -ffat-lto-objects" #lto problems with static libs
 CXXFLAGS+=" -ffat-lto-objects" #lto problems with static libs
@@ -34,5 +34,5 @@ package() {
 	make DESTDIR="$pkgdir/" install
 
 	mkdir -p ${pkgdir}/usr/share/licenses/ftk/
-	mv ${pkgdir}/usr/share/ftk/LICENSE.txt ${pkgdir}/usr/share/licenses/ftk/
+	mv ${pkgdir}/usr/share/ftk/Legal/LICENSE_*.txt ${pkgdir}/usr/share/licenses/ftk/
 }

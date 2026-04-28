@@ -1,6 +1,6 @@
 pkgbase = feather-tk
 	pkgdesc = A lightweight toolkit for building cross-platform applications
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/grizzlypeak3d/feather-tk
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = feather-tk
 	depends = freetype2
 	depends = libglvnd
 	depends = sdl2
-	source = feather-tk-0.8.0.tar.gz::https://github.com/grizzlypeak3d/feather-tk/archive/refs/tags/0.8.0.tar.gz
-	sha256sums = c2ae836209838c7b5c397d9b349c53bb2fd09eb7c6bb77d59ddaf88885b94ed2
+	source = feather-tk-0.9.0.tar.gz::https://github.com/grizzlypeak3d/feather-tk/archive/refs/tags/0.9.0.tar.gz
+	sha256sums = bb995bba15a2bbb179e103ca67e4d9e92c25c5c912dec04f21916fabdc57c87f
 
 pkgname = feather-tk
