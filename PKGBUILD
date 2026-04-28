@@ -24,7 +24,7 @@ makedepends=(
 )
 provides=('steam-game-idler')
 conflicts=('steam-game-idler')
-options=('!lto')
+options=('!lto' '!strip' '!debug')
 source=('git+https://github.com/bernardopg/SGI.git#branch=master')
 sha256sums=('SKIP')
 
@@ -65,6 +65,8 @@ build() {
     -r linux-x64 \
     --self-contained true \
     -p:PublishSingleFile=true \
+    -p:DebugType=None \
+    -p:DebugSymbols=false \
     -o "$srcdir/SGI/steam-game-idler/src-tauri/libs"
 
   cd "$srcdir/SGI/steam-game-idler"
@@ -105,4 +107,8 @@ package() {
   else
     rm -rf "$icon_hi/256x256@2"
   fi
+
+  # gtk-update-icon-cache rejects icon basenames containing spaces.
+  find "$icon_hi" -type f -name 'Steam Game Idler.png' -execdir mv 'Steam Game Idler.png' 'steam-game-idler.png' \;
+  sed -i 's/^Icon=.*/Icon=steam-game-idler/' "$pkgdir/usr/share/applications/Steam Game Idler.desktop"
 }
