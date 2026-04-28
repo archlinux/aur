@@ -2,3 +2,4 @@
 source = "git"
 git = "https://iris.radicle.xyz/z3gqcJUoA1n9HaHKufZs5FCSGazv5.git"
 prefix = "releases/"
+exclude_regex = ".*rc.*"
