@@ -1,4 +1,4 @@
 #!/bin/sh
 
-exec electron37 /usr/lib/elecwhat/app.asar "$@"
+exec electron40 /usr/lib/elecwhat/app.asar "$@"
 
