@@ -1,0 +1,15 @@
+pkgbase = neon2sse-git
+	pkgdesc = The platform independent header allowing to compile any C/C++ code containing ARM NEON intrinsic functions for x86 target systems using SIMD up to AVX2 intrinsic functions
+	pkgver = r88.ed59be8
+	pkgrel = 1
+	url = https://github.com/intel/ARM_NEON_2_x86_SSE
+	arch = any
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	provides = neon2sse
+	conflicts = neon2sse
+	source = neon2sse::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git
+	md5sums = SKIP
+
+pkgname = neon2sse-git
