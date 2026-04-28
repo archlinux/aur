@@ -43,7 +43,7 @@ Name=kctop
 GenericName=System Monitor
 Comment=koktail claude's top — futuristic TUI system monitor
 Exec=kctop
-Icon=utilities-system-monitor
+Icon=kctop.svg
 Terminal=true
 Categories=System;Monitor;
 Keywords=cpu;memory;disk;network;monitor;top;
@@ -53,6 +53,9 @@ DESKTOP
     # icon
     if [[ -f "assets/kctop.svg" ]]; then
         install -Dm644 "assets/kctop.svg" \
-            "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+            "$pkgdir/usr/share/icons/hicolor/scalable/apps/kctop.svg"
+    elif [[ -f "kctop.svg" ]] then
+        install -Dm644 "kctop.svg" \
+            "$pkgdir/usr/share/icons/hicolor/scalable/apps/kctop.svg"
     fi
 }
