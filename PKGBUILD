@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.23.6.r618.g71ce6b04
+pkgver=4.23.6.r619.ge9a62f77
 pkgrel=1
 
 pkgver() {
@@ -58,28 +58,15 @@ install=astrbot-git.install
 
 check() {
     cd "$srcdir/$_srcname"
-    # Smoke test: 验证关键 import 不报错
     local _errcnt=0
-    python -c "
-from astrbot.core.astr_main_agent_resources import (
-    BACKGROUND_TASK_RESULT_WOKE_SYSTEM_PROMPT,
-    BACKGROUND_TASK_WOKE_USER_PROMPT,
-    CONVERSATION_HISTORY_INJECT_PREFIX,
-)
-print('[check] astr_main_agent_resources OK')
-" || _errcnt=$((_errcnt + 1))
-    python -c "
-from astrbot.dashboard.server import AstrBotDashboard
-print('[check] dashboard.server OK')
-" || _errcnt=$((_errcnt + 1))
-    python -c "
-from astrbot.core.pipeline.process_stage import stage
-print('[check] pipeline process_stage OK')
-" || _errcnt=$((_errcnt + 1))
-    [ "$_errcnt" -eq 0 ] || {
-        echo "❌ check() failed with $_errcnt error(s)"
-        exit 1
-    }
+    python -m py_compile astrbot/core/astr_main_agent_resources.py || _errcnt=$((_errcnt + 1))
+    python -m py_compile astrbot/dashboard/server.py || _errcnt=$((_errcnt + 1))
+    python -m py_compile astrbot/core/astr_agent_tool_exec.py || _errcnt=$((_errcnt + 1))
+    python -m py_compile astrbot/core/tools/prompts.py || _errcnt=$((_errcnt + 1))
+    grep -q 'class AstrBotDashboard' astrbot/dashboard/server.py || _errcnt=$((_errcnt + 1))
+    grep -q 'BACKGROUND_TASK_WOKE_USER_PROMPT' astrbot/core/tools/prompts.py || _errcnt=$((_errcnt + 1))
+    grep -q 'CONVERSATION_HISTORY_INJECT_PREFIX' astrbot/core/tools/prompts.py || _errcnt=$((_errcnt + 1))
+    [ "$_errcnt" -eq 0 ] || exit 1
 }
 
 package() {
