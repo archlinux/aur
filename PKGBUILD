@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r12014.86e3391fc
+pkgver=r12032.a4f63b6ca
 pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
@@ -112,9 +112,10 @@ source=("${_pkgname}::git+https://github.com/williamjameshandley/sglang.git#bran
         'sglang.conf'
         'sglang.env'
         'sglang.sysusers'
+        'deepseek_v4.jinja'
         "${_models[@]/%/.conf}")
 sha256sums=('SKIP')
-for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' "${_models[@]}"; do
+for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' 'deepseek_v4.jinja' "${_models[@]}"; do
   sha256sums+=('SKIP')
 done
 
@@ -142,4 +143,9 @@ package() {
   for model in "${_models[@]}"; do
     install -Dm644 "${srcdir}/${model}.conf" "${pkgdir}/etc/sglang/${model}.conf"
   done
+  # Workaround: deepseek-ai/DeepSeek-V4-Flash ships tokenizer_config.json
+  # without a chat_template field, and sglang has no built-in deepseek-v4
+  # template. Lifted from DeepSeek-V3.2-Exp, which uses the same special
+  # tokens. Remove once upstream ships a chat_template for V4-Flash.
+  install -Dm644 "${srcdir}/deepseek_v4.jinja" "${pkgdir}/etc/sglang/deepseek_v4.jinja"
 }
