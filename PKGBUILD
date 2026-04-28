@@ -1,8 +1,8 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgname=pwsp-bin
 _pkgname=pipewire-soundpad
-pkgver=1.7.5
-pkgrel=2
+pkgver=1.7.6
+pkgrel=1
 pkgdesc="Lets you play audio files through your microphone (Pre-built binaries)"
 arch=('x86_64')
 url="https://github.com/arabianq/pipewire-soundpad"
