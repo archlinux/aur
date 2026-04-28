@@ -1,7 +1,7 @@
 # Maintainer: Jason Landbridge & mcpproxy
 
 pkgname=mcpproxy-bin
-pkgver=0.27.1 # renovate: datasource=github-tags depName=smart-mcp-proxy/mcpproxy-go
+pkgver=0.28.0 # renovate: datasource=github-tags depName=smart-mcp-proxy/mcpproxy-go
 pkgrel=7
 pkgdesc="Smart proxy for AI agents using the Model Context Protocol"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ sha256sums=('f07d24f77cf4e69feec20282ff443fe1f83607495b1d03d0306342b00ddb1a61'
             '897cd80d344a5570fcd3526834fffdb0b9bd8087632455dd393f5f2d43c94d47'
             '47220bfb076e34a1d349307679b7d4707fbe1426f1355049e69bced26568fea0'
             '90e257e7ed1be526356a57110e99c6d04039ff80b4b0e426bb8e8898cf657551')
-sha256sums_x86_64=('d2a35cbdd62de85f2b05513056611138283e2900e9c9b15651c2c409ec23152a')
-sha256sums_aarch64=('03af160b6319cfca8a64375217244686452ba005a352267a816de1b69e05dd52')
+sha256sums_x86_64=('f0ea6e942617a5774c4767f71a56f25c5dc35180381952621aa19c4e4ca7c867')
+sha256sums_aarch64=('4c1f7cc48170b61252115b379cd4f5725082fccff9b1b154e88ad190be89012a')
 
 package() {
   install -Dm755 "$srcdir/mcpproxy" \
