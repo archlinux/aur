@@ -1,0 +1,24 @@
+From 2f3fc2d5ec7ceea69e26caa97b03028bf133770e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?= <torleif.skaar@gmail.com>
+Date: Tue, 28 Apr 2026 23:19:26 +0200
+Subject: [PATCH] fix: Device env for Latex
+
+---
+ doc/Reference_Guide/Xyce_RG_macros.tex | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/doc/Reference_Guide/Xyce_RG_macros.tex b/doc/Reference_Guide/Xyce_RG_macros.tex
+index 87cada31..f1f1c781 100644
+--- a/doc/Reference_Guide/Xyce_RG_macros.tex
++++ b/doc/Reference_Guide/Xyce_RG_macros.tex
+@@ -38,6 +38,7 @@
+ 
+ \newenvironment{Device}
+                {\begin{basedescript}{
++		     \partokencontext=0
+                      \desclabelstyle{\multilinelabel}
+                      \desclabelwidth{1.2in}
+                      \renewcommand{\makelabel}[1]{\normalfont\bfseries ##1\hfill}}
+-- 
+2.54.0
+

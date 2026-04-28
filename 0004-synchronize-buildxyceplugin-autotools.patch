@@ -1,0 +1,218 @@
+From adcd1571801c3c00d62092ee5d9e31743267f1fe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?=
+ <16509259+tskaar@users.noreply.github.com>
+Date: Mon, 16 Feb 2026 18:44:31 +0100
+Subject: [PATCH 1/5] buildxyceplugin.cmake.in: remove `cd $DESTDIR`
+
+This makes relative source files path to fail
+---
+ utils/buildxyceplugin.cmake.in | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/utils/buildxyceplugin.cmake.in b/utils/buildxyceplugin.cmake.in
+index a543d02c..cecd9995 100755
+--- a/utils/buildxyceplugin.cmake.in
++++ b/utils/buildxyceplugin.cmake.in
+@@ -139,8 +139,6 @@ then
+     exit 1
+ fi
+ 
+-cd $DESTDIR
+-
+ echo "buildxyceplugin is building a plugin from the Verilog-A files:"
+ echo ${VAFILES}
+ if [ "${pluginname}x" = "x" ]
+
+From eb6a14ee19c473297b9007e77719067c84b5733b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?=
+ <16509259+tskaar@users.noreply.github.com>
+Date: Mon, 16 Feb 2026 18:47:19 +0100
+Subject: [PATCH 2/5] XycePluginProject.cmake.in: remove lib prefix
+
+CMake automatically prefixes libraries with "lib".
+To ensure that `buildxyceplugin.sh` and CMake
+produces the correct name, we remove the prefix.
+---
+ utils/XycePluginProject.cmake.in | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/utils/XycePluginProject.cmake.in b/utils/XycePluginProject.cmake.in
+index 6755ac62..5a3173bb 100644
+--- a/utils/XycePluginProject.cmake.in
++++ b/utils/XycePluginProject.cmake.in
+@@ -22,8 +22,13 @@ link_directories("${XYCE_INSTALL}/lib")
+ # Build shared library.
+ add_compile_options("$<IF:$<CXX_COMPILER_ID:IntelLLVM>,-fp-model=precise,>")
+ add_library("${library_name}" SHARED ${src_files})
++# remove "lib" prefix
++set_target_properties("${library_name}" PROPERTIES
++  PREFIX ""
++)
+ target_include_directories("${library_name}" PUBLIC
+   ${CMAKE_CURRENT_SOURCE_DIR}
+   ${XYCE_INSTALL}/include
+   "@Trilinos_INCLUDE_DIRS@")
+   target_link_libraries("${library_name}" xyce)
++
+
+From 6975092e409f123e78688685dac1b98e3b0009be Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?=
+ <16509259+tskaar@users.noreply.github.com>
+Date: Mon, 16 Feb 2026 19:30:20 +0100
+Subject: [PATCH 3/5] Cmake(XycePlugin): install target
+
+Install the library into `$DESTDIR` after compilation
+---
+ utils/XycePluginProject.cmake.in | 3 +++
+ utils/buildxyceplugin.cmake.in   | 4 +++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/utils/XycePluginProject.cmake.in b/utils/XycePluginProject.cmake.in
+index 5a3173bb..e0177492 100644
+--- a/utils/XycePluginProject.cmake.in
++++ b/utils/XycePluginProject.cmake.in
+@@ -32,3 +32,6 @@ target_include_directories("${library_name}" PUBLIC
+   "@Trilinos_INCLUDE_DIRS@")
+   target_link_libraries("${library_name}" xyce)
+ 
++install(TARGETS "${library_name}"
++  LIBRARY DESTINATION "."
++)
+diff --git a/utils/buildxyceplugin.cmake.in b/utils/buildxyceplugin.cmake.in
+index cecd9995..f0cfa727 100755
+--- a/utils/buildxyceplugin.cmake.in
++++ b/utils/buildxyceplugin.cmake.in
+@@ -219,8 +219,10 @@ rm -f .headerstring_$$ .registerstring_$$
+ # Use CMake to build this plugin.
+ echo "Building plugin..."
+ cp ${XyceInstDir}/share/XycePluginProject.cmake ./CMakeLists.txt
+-cmake -DCMAKE_CXX_COMPILER="@CMAKE_CXX_COMPILER@" -DPLUGIN_NAME="$pluginname" -DXYCE_INSTALL="$XyceInstDir" .
++cmake -DCMAKE_CXX_COMPILER="@CMAKE_CXX_COMPILER@" -DPLUGIN_NAME="$pluginname" -DXYCE_INSTALL="$XyceInstDir" -DCMAKE_INSTALL_PREFIX="$DESTDIR" .
+ cmake --build .
++# install library
++make install
+ 
+ echo "Done!  Your plugin may now be used by running Xyce with the option '-plugin ${pluginname}.so'"
+ echo "This plugin provides the Verilog-A modules: $modules"
+
+From d0ee06b7ccce58d53aafa5963dfd505e45f8cef2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?=
+ <16509259+tskaar@users.noreply.github.com>
+Date: Mon, 16 Feb 2026 20:00:04 +0100
+Subject: [PATCH 4/5] XycePluginProject.cmake.in: make an explicit build
+ directory
+
+---
+ utils/buildxyceplugin.cmake.in | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/utils/buildxyceplugin.cmake.in b/utils/buildxyceplugin.cmake.in
+index f0cfa727..92211a32 100755
+--- a/utils/buildxyceplugin.cmake.in
++++ b/utils/buildxyceplugin.cmake.in
+@@ -218,11 +218,19 @@ rm -f .headerstring_$$ .registerstring_$$
+ 
+ # Use CMake to build this plugin.
+ echo "Building plugin..."
++BUILDDIR="buildxyceplugin"
+ cp ${XyceInstDir}/share/XycePluginProject.cmake ./CMakeLists.txt
+-cmake -DCMAKE_CXX_COMPILER="@CMAKE_CXX_COMPILER@" -DPLUGIN_NAME="$pluginname" -DXYCE_INSTALL="$XyceInstDir" -DCMAKE_INSTALL_PREFIX="$DESTDIR" .
+-cmake --build .
++cmake \
++    -DCMAKE_CXX_COMPILER="@CMAKE_CXX_COMPILER@" \
++    -DPLUGIN_NAME="$pluginname" \
++    -DXYCE_INSTALL="$XyceInstDir" \
++    -DCMAKE_INSTALL_PREFIX="$DESTDIR" \
++    -S . \
++    -B "$BUILDDIR"
++
++cmake --build "$BUILDDIR"
+ # install library
+-make install
++make -C "$BUILDDIR" install
+ 
+ echo "Done!  Your plugin may now be used by running Xyce with the option '-plugin ${pluginname}.so'"
+ echo "This plugin provides the Verilog-A modules: $modules"
+
+From c33ae203d9dbc5114bfda8f799ff7576a464e23a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?=
+ <16509259+tskaar@users.noreply.github.com>
+Date: Mon, 16 Feb 2026 20:19:11 +0100
+Subject: [PATCH 5/5] XycePluginProject.cmake.in: add cleanup
+
+---
+ utils/buildxyceplugin.cmake.in | 36 ++++++++++++++++++++++++----------
+ 1 file changed, 26 insertions(+), 10 deletions(-)
+
+diff --git a/utils/buildxyceplugin.cmake.in b/utils/buildxyceplugin.cmake.in
+index 92211a32..c6bf4c9c 100755
+--- a/utils/buildxyceplugin.cmake.in
++++ b/utils/buildxyceplugin.cmake.in
+@@ -45,6 +45,15 @@ usage ()
+     return
+ }
+ 
++cleanup ()
++{
++    while [ $# -gt 0 ]
++    do
++        rm -f $1
++        shift
++    done
++}
++
+ runadms()
+ {
+     admsXml -D__XYCE__ -x -e ${xmldir}/adms.implicit.xml -e ${xmldir}/xyceVersion_nosac.xml  -e ${xmldir}/xyceBasicTemplates_nosac.xml \
+@@ -130,7 +139,6 @@ shift `echo $OPTIND-1 | bc`
+ headerstring=""
+ registerstring=""
+ CLEANFILES=""
+-OBJFILES=""
+ 
+ scanargs $@
+ if [ $? != 0  -o "${VAFILES}x" = "x" ]
+@@ -176,15 +184,8 @@ do
+        modules=${module}" "${modules}
+        echo "#include <N_DEV_ADMS${module}.h>" >> .headerstring_$$
+        echo "Xyce::Device::ADMS${module}::registerDevice();" >> .registerstring_$$
+-       if [ $? -ne 0 ]
+-       then
+-           echo "Compilation of N_DEV_ADMS${module}.C failed"
+-           echo "See buildxyceplugin.log for details"
+-           exit 1
+-       else
+-           CLEANFILES="${CLEANFILES} ${CXXFIL} ${OBJFIL} N_DEV_ADMS${module}.h"
+-       fi
+-       OBJFILES="$OBJFILES N_DEV_ADMS${module}.lo"
++       # add all ADMS files to CLEANFILES
++       CLEANFILES="${CLEANFILES} N_DEV_ADMS${module}.h N_DEV_ADMS${module}.C buildxyceplugin.log"
+ 
+        count=`echo $count+1|bc`
+     else
+@@ -215,6 +216,7 @@ echo "};" >>   ${pluginname}_bootstrap.C
+ echo "Bootstrap s_bootstrap;" >>   ${pluginname}_bootstrap.C
+ 
+ rm -f .headerstring_$$ .registerstring_$$
++CLEANFILES="${CLEANFILES} ${pluginname}_bootstrap.C"
+ 
+ # Use CMake to build this plugin.
+ echo "Building plugin..."
+@@ -234,3 +236,17 @@ make -C "$BUILDDIR" install
+ 
+ echo "Done!  Your plugin may now be used by running Xyce with the option '-plugin ${pluginname}.so'"
+ echo "This plugin provides the Verilog-A modules: $modules"
++
++# cleanup ADMS files and CMakeLists.txt
++cleanup "${CLEANFILES} CMakeLists.txt"
++cleanup .adms*.xml .interface*.xml .*.adms constants.vams disciplines.vams discipline.h
++
++# cleanup CMake build folder if we have installed the target successfully
++if [ -f "${DESTDIR}/${pluginname}.so" ]; then
++    if [ -d "$BUILDDIR" ]; then
++        rm -rf "$BUILDDIR"
++    fi
++else
++    echo "Installation of plugin to directory: '$(realpath $DESTDIR)' - failed"
++    echo "You can find the plugin in build directory: '$(realpath $BUILDDIR)'"
++fi

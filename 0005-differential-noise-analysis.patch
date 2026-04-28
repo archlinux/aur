@@ -1,0 +1,34 @@
+diff --git a/src/AnalysisPKG/N_ANP_NOISE.C b/src/AnalysisPKG/N_ANP_NOISE.C
+index 8b9c421e..61bcc36b 100644
+--- a/src/AnalysisPKG/N_ANP_NOISE.C
++++ b/src/AnalysisPKG/N_ANP_NOISE.C
+@@ -2041,6 +2041,7 @@ bool extractNOISEData(
+   Util::OptionBlock option_block("NOISE", Util::OptionBlock::NO_EXPRESSIONS, netlist_filename, parsed_line[0].lineNumber_);
+ 
+   int numFields = parsed_line.size();
++  bool hasRefSignal=false;
+ 
+   // check for "DATA" first.
+   bool dataFound=false;
+@@ -2114,6 +2115,7 @@ bool extractNOISEData(
+       option_block.addParam( parameter );
+ 
+       linePosition += 6;
++      hasRefSignal=true;
+     }
+     else
+     {
+@@ -2174,7 +2176,12 @@ bool extractNOISEData(
+ 
+   // pts_per_summary is optional.  If value is negative, assume it wasn't set.
+   parameter.setTag( "PTS_PER_SUMMARY" );
+-  if ( (!dataFound && numFields >= 11) || (dataFound && numFields >= 10) )
++  if (
++      (hasRefSignal  && !dataFound  && numFields >= 13)  ||
++      (hasRefSignal  && dataFound   && numFields >= 12)  ||
++      (!hasRefSignal && !dataFound  && numFields >= 11)  ||
++      (!hasRefSignal && dataFound   && numFields >= 10) 
++    )
+   {
+     ++linePosition;     // Advance to next parameter.
+     parameter.setVal( parsed_line[linePosition].string_ );

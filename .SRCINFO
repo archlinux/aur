@@ -1,7 +1,7 @@
 pkgbase = xyce-shylu
 	pkgdesc = Open-Source, SPICE-compatible, high-performance analog circuit simulator - ShyLU/OpenMP/Parallel support
 	pkgver = 7.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Xyce/xyce
 	install = xyce.install
 	arch = x86_64
@@ -20,12 +20,16 @@ pkgbase = xyce-shylu
 	conflicts = xyce
 	options = !debug
 	source = xyce-shylu::git+https://github.com/Xyce/xyce#tag=Release-7.10.0
+	source = 0001-fix-Device-env-for-Latex.patch
 	source = 0002-multiple-plugin-fix.patch
 	source = 0003-fix-latex-doc-build.patch
-	source = 0004-fix-buildxyceplugin-remove-DESTDIR.patch
+	source = 0004-synchronize-buildxyceplugin-autotools.patch
+	source = 0005-differential-noise-analysis.patch
 	b2sums = 6e51120fd8ba481bfd4a226f0a208eefc4511b4e666235a8715f1fa41d28329ce5ad467708d5081a93af2599b94eb4639dd0271dc8f8ecc34242f5bfaba57dc5
+	b2sums = c909334855940362f0a015acd3090b57ea7ab6a9f043f32ded8cfc51a246f42eef810200430e2d5a76263a33d3f1a941855dc85dcdece81c938a9db6e3bd9ae8
 	b2sums = 9651017d9f1548f27db0a73230a75aa404b3d2353cd229803056232cf9e3f985660553503cbf46de5435c129a40dac4ace38feb5e501ddb7c7f485edf2efea08
 	b2sums = 5e34211b9e43acfe25bad80fd8a70c624f49cd9802fe70b30977a02a75f00799c443eea21494b488e9f0ca777211bce88e9b3a981b4d1f992f984768a2b35bda
-	b2sums = 54f379684e29281d64bf414616a6e6d358d3c71736f2da992e252f2cb2b4795efa716e7e4a703c4739d37b550bf9185cf7d5ee6448def90dbd6531b4082406a6
+	b2sums = fe67b289cc4c2055ca8c0ce4f666d6b206e4105afb156a3579742be65acec951af30dcdb6d921e84eb11de03368e284e9a207574ad1e6e28653c754395fcd048
+	b2sums = e922743799763cdf91f48ef3dd14a266ab1ec3701e1654cd681a97bd4517c6882065d52528c4189abb1a301652125969e9d0e2f5803564765818c7db03f0acf0
 
 pkgname = xyce-shylu
