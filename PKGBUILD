@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r12005.511e830a8
+pkgver=r12007.86009e851
 pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
@@ -101,7 +101,12 @@ _models=(
   'qwen3.6_35b_a3b_nvfp4'
 )
 
+# Mark every shipped conf as backup so pacman preserves user edits and
+# emits .pacnew on package-side changes instead of silently overwriting.
 backup=('etc/sglang/sglang.conf' 'etc/sglang/sglang.env')
+for _m in "${_models[@]}"; do
+  backup+=("etc/sglang/${_m}.conf")
+done
 source=("${_pkgname}::git+https://github.com/williamjameshandley/sglang.git#branch=wjh/v4-flash-mxfp4-routed-experts"
         'sglang@.service'
         'sglang.conf'
