@@ -3,7 +3,7 @@
 _Name="CrealityPrint"
 _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
-pkgver=7.0.1.4212
+pkgver=7.1.0.4414
 _pkgver="${pkgver%.*}"
 pkgrel=1
 epoch=1
@@ -75,7 +75,7 @@ source_x86_64=(
 sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
             'a087787e8a3239bfbc0dc051565236dad4ff34ead1a3396c9cd17984fe898884'
             '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
-sha256sums_x86_64=('33eba684c5c5ca9c35fac8d33ead6daf5597a960521692c3dc3b1a45de5ed782')
+sha256sums_x86_64=('0101b5578b26a81107cb20ce20d264779b95b8d630e042d0f6d3633ae37fed8f')
 
 prepare() {
   local source_array="source_${CARCH}[0]"

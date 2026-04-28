@@ -1,5 +1,9 @@
 [creality-print-bin]
-source = "github"
-github = "CrealityOfficial/CrealityPrint"
-use_latest_release = true
-prefix = "v"
+source = "jq"
+url = "https://api.github.com/repos/CrealityOfficial/CrealityPrint/releases/latest"
+filter = ".assets[] | select(.name | test(\"AppImage$\")) | .name | capture(\"-V(?<ver>.*?)-x86_64-\") | .ver"
+
+# source = "github"
+# github = "CrealityOfficial/CrealityPrint"
+# use_latest_release = true
+# prefix = "v"
