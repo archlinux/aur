@@ -32,6 +32,7 @@ depends=(
 	'python-pydantic'
 	'python-mcp'
 	'python-fastmcp'
+	'python-cohere'
 	'python-mistralai'
 	'python-anthropic'
 	'python-google-genai'
