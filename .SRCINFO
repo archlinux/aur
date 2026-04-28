@@ -1,7 +1,7 @@
 pkgbase = blahaj-rs-git
 	pkgdesc = Gay sharks at your local terminal - but in rust! lolcat-like CLI tool
-	pkgver = 1
-	pkgrel = 1
+	pkgver = r124.9c0e565
+	pkgrel = 0
 	url = https://github.com/Doctor-Coomer/BLAHAJ-rs
 	arch = x86_64
 	arch = arm
