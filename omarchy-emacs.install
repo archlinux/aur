@@ -1,0 +1,19 @@
+post_install() {
+  cat <<EOF
+==> Run 'omarchy-emacs-setup' to install the user-side config in
+    ~/.config/emacs/. The package itself only ships files under
+    /usr/share/omarchy-emacs/.
+EOF
+}
+
+post_upgrade() {
+  cat <<EOF
+==> omarchy-emacs was upgraded. Run 'omarchy-restart-emacs' to reload the
+    integration in any running Emacs daemon — the user-side omarchy.el is
+    a shim that loads the package-installed code, so the new code is
+    already on disk; only in-memory state needs to refresh.
+
+    If you upgraded from < 1.8.5, also run 'omarchy-emacs-setup' once to
+    convert your ~/.config/emacs/omarchy.el into the shim.
+EOF
+}
