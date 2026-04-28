@@ -39,5 +39,8 @@ package() {
     install -Dm644 assets/org.nokkvi.nokkvi.svg \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.nokkvi.nokkvi.svg"
 
+    install -Dm644 assets/org.nokkvi.nokkvi.png \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/org.nokkvi.nokkvi.png"
+
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
