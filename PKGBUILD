@@ -2,7 +2,7 @@
 # Contributor: DeepSeek TUI by Hmbown <https://github.com/Hmbown/DeepSeek-TUI>
 
 pkgname=deepseek-tui-bin
-pkgver=0.6.5
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="A terminal coding agent for DeepSeek models with file editing, shell execution, web browsing, git operations, and MCP server integration"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('openssl' 'brotli' 'zstd')
 provides=('deepseek-tui')
 conflicts=('deepseek-tui')
 source=("https://github.com/Hmbown/DeepSeek-TUI/releases/download/v${pkgver}/deepseek-tui-linux-x64")
-sha256sums=('e63aa11a3228f7e74f073ef5a1d804fe7497e662a88efa5793745a322e9aaabe')
+sha256sums=('306eb032288e8c3f57a791436beceb763bf9237e1b1504edf0ed6de0be30afd9')
 
 package() {
   cd "${srcdir}"
