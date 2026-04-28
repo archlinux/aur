@@ -1,7 +1,7 @@
 pkgbase = freesmlauncher-bin
 	pkgdesc = Minecraft launcher with offline accounts support (binary release)
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freesmlauncher.org/
 	arch = x86_64
 	arch = aarch64
