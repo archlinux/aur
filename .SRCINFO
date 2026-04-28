@@ -1,0 +1,27 @@
+pkgbase = python-lhotse
+	pkgdesc = Tools for handling speech data in machine-learning projects (NVIDIA / Lhotse Speech)
+	pkgver = 1.33.0
+	pkgrel = 1
+	url = https://github.com/lhotse-speech/lhotse
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-audioread
+	depends = python-soundfile
+	depends = python-click
+	depends = python-cytoolz
+	depends = python-intervaltree
+	depends = python-numpy
+	depends = python-packaging
+	depends = python-yaml
+	depends = python-tabulate
+	depends = python-pytorch
+	depends = python-tqdm
+	source = https://files.pythonhosted.org/packages/source/l/lhotse/lhotse-1.33.0.tar.gz
+	sha256sums = 3e91fca8531fc4c1798d0a6de1b3c7ea6bf2e181df70e5985927a131761c67f5
+
+pkgname = python-lhotse
