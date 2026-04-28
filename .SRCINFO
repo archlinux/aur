@@ -1,0 +1,22 @@
+pkgbase = arrr-git
+	pkgdesc = Linux desktop notification aggregator daemon — aggregates RSS, IMAP, Teams and more into one place (built from source)
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/tgiachi/Arrr
+	install = arrr-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=10
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = dbus
+	depends = libnotify
+	optdepends = libnotify: desktop popup notifications via D-Bus
+	provides = arrr
+	conflicts = arrr
+	conflicts = arrr-bin
+	source = Arrr::git+https://github.com/tgiachi/Arrr.git
+	sha256sums = SKIP
+
+pkgname = arrr-git
