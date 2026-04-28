@@ -1,0 +1,102 @@
+#!/bin/bash
+
+# --- CONFIGURAZIONE COLORI (STILE DEBIAN) ---
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+# --- CONTROLLO DIPENDENZE ---
+if ! command -v yay &> /dev/null && ! command -v pacman &> /dev/null; then
+    echo -e "${RED}E: Sistema di gestione pacchetti non trovato!${NC}"
+    exit 1
+fi
+
+COMMAND="$1"
+
+case "$COMMAND" in
+    update)
+        echo -e "${GREEN}Lettura elenco dei pacchetti... Fatto${NC}"
+        # Sincronizza i database (Repo + AUR)
+        yay -Sy
+        ;;
+
+    upgrade|dist-upgrade)
+        echo -e "${GREEN}Lettura elenco dei pacchetti... Fatto${NC}"
+        echo -e "${GREEN}Calcolo dell'aggiornamento... Fatto${NC}"
+        # Aggiorna tutto il sistema
+        yay -Syu
+        ;;
+
+    install)
+        shift
+        if [ -z "$1" ]; then
+            echo -e "${RED}E: È necessario specificare almeno un pacchetto da installare${NC}"
+            exit 1
+        fi
+        echo -e "${GREEN}Lettura elenco dei pacchetti... Fatto${NC}"
+        echo -e "${GREEN}Generazione albero delle dipendenze... Fatto${NC}"
+        # Prova con pacman, se fallisce (pacchetto non trovato) usa yay
+        sudo pacman -S "$@" || yay -S "$@"
+        ;;
+
+    remove)
+        shift
+        echo -e "${GREEN}Rimozione in corso...${NC}"
+        sudo pacman -Rs "$@"
+        ;;
+
+    purge)
+        shift
+        echo -e "${GREEN}Rimozione completa (inclusi file di configurazione)...${NC}"
+        sudo pacman -Rns "$@"
+        ;;
+
+    autoremove)
+        echo -e "${GREEN}Lettura elenco dei pacchetti... Fatto${NC}"
+        ORPHANS=$(pacman -Qdtq)
+        if [ -n "$ORPHANS" ]; then
+            sudo pacman -Rns $ORPHANS
+        else
+            echo "0 aggiornati, 0 installati, 0 da rimuovere e 0 non aggiornati."
+        fi
+        ;;
+
+    search)
+        shift
+        # Cerca ovunque (Repo + AUR)
+        yay -Ss "$@"
+        ;;
+
+    show)
+        shift
+        # Mostra info dal database locale o dai repo
+        pacman -Si "$@" || yay -Si "$@"
+        ;;
+
+    clean)
+        echo -e "${GREEN}Pulizia della cache...${NC}"
+        sudo pacman -Scc
+        ;;
+
+    help|--help)
+        echo "apt 2.10.1 (Arch/CachyOS Wrapper) - Licenza GPL"
+        echo "Utilizzo: apt [comando] [pacchetto]"
+        echo ""
+        echo "Comandi disponibili:"
+        echo "  update      - Sincronizza i repository"
+        echo "  upgrade     - Esegue l'aggiornamento del sistema"
+        echo "  install     - Installa nuovi pacchetti (Repo + AUR)"
+        echo "  remove      - Rimuove pacchetti"
+        echo "  purge       - Rimuove pacchetti e file di configurazione"
+        echo "  autoremove  - Pulisce i pacchetti orfani"
+        echo "  search      - Cerca pacchetti"
+        echo "  show        - Mostra dettagli del pacchetto"
+        echo "  clean       - Svuota la cache dei pacchetti scaricati"
+        ;;
+
+    *)
+        echo -e "${RED}E: Operazione $COMMAND non valida${NC}"
+        echo "Usa 'apt help' per vedere i comandi disponibili."
+        exit 1
+        ;;
+esac

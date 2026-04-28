@@ -1,0 +1,14 @@
+pkgbase = apt-fake-ubuntu
+	pkgdesc = Simulate apt command
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/castielloangela512-ai/apt-fake
+	arch = any
+	license = GPL
+	depends = bash
+	depends = yay
+	depends = pacman
+	source = apt-fake
+	sha256sums = SKIP
+
+pkgname = apt-fake-ubuntu
