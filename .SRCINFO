@@ -1,6 +1,6 @@
 pkgbase = driverctl
 	pkgdesc = Device driver control utility
-	pkgver = 0.115
+	pkgver = 0.121
 	pkgrel = 1
 	url = https://gitlab.com/driverctl/driverctl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = driverctl
 	makedepends = systemd
 	depends = bash
 	optdepends = bash-completion: bash completion
-	source = https://gitlab.com/driverctl/driverctl/-/archive/0.115/driverctl-0.115.tar.bz2
-	sha256sums = 6939c98527ce11ac2c5d740199ac91392ebd8f0577471d6b45d8a4b8750a40dd
+	source = https://gitlab.com/driverctl/driverctl/-/archive/0.121/driverctl-0.121.tar.bz2
+	sha256sums = 3d1e87cbcf22a1ed548f0fb0bdb9a1dbd3b4dcea0d23fd84444bd1673050b201
 
 pkgname = driverctl
