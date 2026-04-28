@@ -1,6 +1,6 @@
 # Maintainer: Gerhard Schwanzer <geri@sdf.org>
 pkgname=pw-duck
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Linux tray app that ducks non-voice audio while remote voice is active"
 arch=('x86_64')
@@ -24,9 +24,9 @@ optdepends=(
   'gnome-shell-extension-appindicator: tray support on GNOME Shell'
 )
 conflicts=('pw-duck-git')
-options=('!lto')
+options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6040fc7d0506817d061315ef70b32ce8aa87c389eda1f3489abc34a2b3b2d667')
+sha256sums=('6ce941e5f690d3e7601bc2fea9ce5ac33094c58111e1732b84f21c327fabf2dc')
 
 prepare() {
   cd "$pkgname-$pkgver"
