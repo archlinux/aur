@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang
 pkgver=0.5.10.post1
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang'
@@ -40,7 +40,7 @@ depends=(
   'python-sentencepiece'
   'python-soundfile'
   'python-pyzmq'
-  'python-multipart'
+  'python-python-multipart'
   'uvicorn'
   'python-flashinfer'
 )

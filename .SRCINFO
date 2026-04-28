@@ -1,7 +1,7 @@
 pkgbase = sglang
 	pkgdesc = A fast serving framework for large language models and vision language models
 	pkgver = 0.5.10.post1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sgl-project/sglang
 	arch = x86_64
 	license = Apache-2.0
@@ -43,7 +43,7 @@ pkgbase = sglang
 	depends = python-sentencepiece
 	depends = python-soundfile
 	depends = python-pyzmq
-	depends = python-multipart
+	depends = python-python-multipart
 	depends = uvicorn
 	depends = python-flashinfer
 	optdepends = python-anthropic: Anthropic API backend
