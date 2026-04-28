@@ -1,0 +1,14 @@
+pkgbase = imount
+	pkgdesc = Script that allows to mount iOS devices on Linux to manage their files, built around ifuse.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alvaniss/imount
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = ifuse
+	depends = xdg-utils
+	source = git+https://github.com/alvaniss/imount.git
+	sha256sums = SKIP
+
+pkgname = imount
