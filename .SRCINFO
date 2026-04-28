@@ -1,6 +1,6 @@
 pkgbase = python-sbi
 	pkgdesc = sbi: simulation-based inference
-	pkgver = 0.26.0
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = https://github.com/sbi-dev/sbi
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-sbi
 	depends = python-zuko
 	provides = lsbi
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/s/sbi/sbi-0.26.0.tar.gz
-	sha256sums = 92e69f0a8ab59c9fe6ca635c5946024fbcd5ca539f7cf7191bf834d424062a34
+	source = https://files.pythonhosted.org/packages/source/s/sbi/sbi-0.26.1.tar.gz
+	sha256sums = bcdcd9f19318815e8e6314523f23b727b509f02c8e657cf3696c30231d23fc07
 
 pkgname = python-sbi

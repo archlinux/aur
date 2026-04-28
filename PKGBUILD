@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-sbi
 _name=${pkgname#python-}
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="sbi: simulation-based inference"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('92e69f0a8ab59c9fe6ca635c5946024fbcd5ca539f7cf7191bf834d424062a34')
+sha256sums=('bcdcd9f19318815e8e6314523f23b727b509f02c8e657cf3696c30231d23fc07')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
