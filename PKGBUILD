@@ -36,7 +36,7 @@ source=(
   "icon.png"
 )
 sha256sums=(
-    "186d1e69848fab602cbcb20b7433d848da592340b2e63d7165ba418cfcc3a0b1"
+  "186d1e69848fab602cbcb20b7433d848da592340b2e63d7165ba418cfcc3a0b1"
   "SKIP"
   "SKIP"
 )
