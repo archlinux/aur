@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=classfi
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A simple classical music player'
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('classfi')
 conflicts=('classfi-git' 'classfi-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a52e7398fd4c7cabb8566214aedda543d820f55750d6c62cb35877fad52176fb')
+sha256sums=('7fb434015cda05adbeb92871118a2d716af049f2ede1700f9f7b74ae352cbc84')
 
 prepare() {
     cd "$pkgname-$pkgver"
