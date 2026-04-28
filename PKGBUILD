@@ -1,5 +1,5 @@
 pkgname='python-calc'
-pkgver=27.6fa2bae
+pkgver=28.b407b4b
 pkgrel=1
 pkgdesc='A minimalist scientific calculator for python.'
 arch=('any')
@@ -7,7 +7,7 @@ url='https://codeberg.org/triteraflops/python-calc'
 license=("MIT")
 depends=('python')
 makedepends=('python-setuptools')
-source=('git+https://codeberg.org/triteraflops/python-calc.git')
+source=('git+https://git.sr.ht/~ewtoombs/python-calc')
 md5sums=('SKIP')
 
 pkgver () {
