@@ -5,15 +5,10 @@ pkgbase = qnote
 	url = https://github.com/Omibranch/qnote
 	arch = x86_64
 	license = MIT
-	makedepends = rust
-	makedepends = cargo
-	makedepends = nodejs
-	makedepends = pnpm
-	makedepends = base-devel
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
-	source = qnote-0.2.0.tar.gz::https://github.com/Omibranch/qnote/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 34c2bb390575aa67f17099558eaf776eb4a83839f83a9b8612b84cf0788140fc
+	source = qnote-0.2.0::https://github.com/Omibranch/qnote/releases/download/v0.2.0/qnote-linux-x86_64
+	sha256sums = 15a53b63b241cca138455ce3d1f425c673589bb364d86dc15463463dacca7481
 
 pkgname = qnote

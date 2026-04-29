@@ -7,35 +7,21 @@ arch=('x86_64')
 url="https://github.com/Omibranch/qnote"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk-4.1' 'xdg-utils')
-makedepends=('rust' 'cargo' 'nodejs' 'pnpm' 'base-devel')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Omibranch/qnote/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('34c2bb390575aa67f17099558eaf776eb4a83839f83a9b8612b84cf0788140fc')
-
-build() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR="target"
-    pnpm install --frozen-lockfile
-    pnpm tauri build --bundles none
-}
+source=("${pkgname}-${pkgver}::https://github.com/Omibranch/qnote/releases/download/v${pkgver}/qnote-linux-x86_64")
+sha256sums=('15a53b63b241cca138455ce3d1f425c673589bb364d86dc15463463dacca7481')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 "src-tauri/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "src-tauri/icons/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
 
-    # Desktop entry
-    install -dm755 "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
+    install -dm755 "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
 [Desktop Entry]
 Name=qnote
 Comment=Minimal note editor with Markdown support
-Exec=$pkgname
-Icon=$pkgname
+Exec=${pkgname}
+Icon=text-editor
 Type=Application
 Categories=Office;TextEditor;
 Keywords=notes;markdown;editor;text;
 EOF
-
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
 }
