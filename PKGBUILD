@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNAnorm
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ec48c85c7eae0238dd5988deb172a47d')
-b2sums=('dd5c13540ccf00437735f598c64b625eb48e271571f3afceb6130854ad5cbe5cb76eaf25ba5b458690ef7ac1bc8b8b1e27ec025c17057de63c7bd06a6ff55faa')
+md5sums=('e60749235e443e0926f1625d2fcc6501')
+b2sums=('d47d993cae590b5f1fbf6d9fe843ca3b14b87e9427364b90fa93a0d30a9a2d8c6eb439f647f534ee00b6297fca9cedc56f009b963bf3db4d216a24615f61d071')
 
 build() {
   mkdir build
