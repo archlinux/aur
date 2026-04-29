@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hypergraph
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a57b27694959050d343b081363931c7e')
-b2sums=('7b0c67a63dec788d6cd97fdcb042b9e092bc0ecf4656e1ed1be8186388a8668fa3ec58d0fb51dd9c7de1e38ae128d71f83955c87f9aafb2b980aa2615a36245c')
+md5sums=('384a74ab51baac6557aae23d52975c08')
+b2sums=('008e2f5019614aa4f3ddcbc1bcdb77fc203db8ab1e802ecaeac026baf1146cbc410f13c0f27b98a76238b58572985e3b0127310ba4892ff4c0368c2b3ec32e7d')
 
 build() {
   mkdir build
