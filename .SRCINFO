@@ -1,7 +1,7 @@
 pkgbase = ani-cli-mx
 	pkgdesc = Command-line anime streaming helper for Mexico-oriented provider support
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gildedboy/ani-cli-mx
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = ani-cli-mx
 	depends = curl
 	depends = gawk
 	depends = grep
+	depends = openssl
 	depends = sed
 	depends = fzf
 	depends = mpv
