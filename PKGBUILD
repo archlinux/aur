@@ -2,7 +2,7 @@
 pkgbase=yade
 pkgname=(yade yade-cuda yade-doc)
 pkgver=2026.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
@@ -19,6 +19,7 @@ depends=(
     'python-mpi4py'
     'fmt'     # needed by `boot.so`
     'verdict' # needed by `boot.so`
+    'boost-libs'
 )
 makedepends=(
     'suitesparse'
@@ -29,6 +30,7 @@ makedepends=(
     'python-numpy'
     'cuda'
     'openmp'
+    'fast_float'
     'ninja'
     'nlohmann-json'
     'python-sphinx'
@@ -116,7 +118,7 @@ build() {
         -DENABLE_PARTIALSAT=ON
         -DENABLE_POTENTIAL_BLOCKS=ON
         -DVECTORIZE=ON
-        -DENABLE_USEFUL_ERRORS=ON
+        -DENABLE_USEFUL_ERRORS=OFF
         -DCMAKE_BUILD_TYPE=None
         -DDISABLE_SAVE_TEMPS=ON
         # -DCHOLMOD_GPU=OFF
