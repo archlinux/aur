@@ -25,6 +25,7 @@ pkgbase = yass-proxy
 	depends = c-ares
 	depends = gperftools
 	depends = jsoncpp
+	depends = mbedtls
 	optdepends = gtk-update-icon-cache
 	provides = yass-proxy
 	conflicts = yass-proxy-git
