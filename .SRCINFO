@@ -10,6 +10,6 @@ pkgbase = flatpak-enhanced
 	depends = flatpak
 	source = git+https://github.com/JiiB1/flatpak-enhanced.git#tag=v0.1.0?signed
 	validpgpkeys = 927C6C7589E345D30D71367B483D974BE8CD1C27
-	md5sums = 60a4fa16c4cf34e992e3b4d7879444bb
+	md5sums = SKIP
 
 pkgname = flatpak-enhanced
