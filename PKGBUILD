@@ -3,7 +3,7 @@
 _name=tree-sitter-objc
 pkgname=python-tree-sitter-objc
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Objective-C grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-objc/"
