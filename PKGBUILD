@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KCsmart
-_pkgver=2.68.0
+_pkgver=2.70.0
 pkgname=r-${_pkgname,,}
-pkgver=2.68.0
+pkgver=2.70.0
 pkgrel=1
 pkgdesc='Multi sample aCGH analysis package using kernel convolution'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-cghbase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b013029e0d7b2b14640b10e06e22cc95dad8614bc155ed23f162bfa2179c21ce')
+sha256sums=('667a5ab15228d98b9e338e4f99559b43e2c597e3aef29cd56d9ca8519cc4e51d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
