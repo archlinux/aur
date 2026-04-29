@@ -5,7 +5,7 @@ pkgbase = gnome-pomodoro-extension
 	url = https://github.com/focustimerhq/FocusTimer
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = vala
 	depends = glib2
@@ -20,6 +20,8 @@ pkgbase = gnome-pomodoro-extension
 	depends = json-glib
 	depends = cairo
 	depends = gobject-introspection
+	depends = dconf
+	depends = hicolor-icon-theme
 	source = gnome-pomodoro-extension-1.1.0.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/1.1.0.tar.gz
 	sha256sums = 844a04039fedad6e6d8c4920f6c414fd31e70486b8792cd641c479896a59c97e
 
