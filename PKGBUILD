@@ -1,6 +1,6 @@
 # Maintainer: schultz-dev0 <your.email@example.com>
 pkgname=rustykeys
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A mechanical keyboard sound emulator (GTK4/Libadwaita)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ provides=('rusty_keys' 'rustykeys-bin')
 conflicts=('rusty_keys' 'rustykeys-bin')
 source=("rustykeys::${url}/releases/download/v${pkgver}/rusty_keys"
         "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/heads/main.tar.gz")
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('697ae5e4c2151b2788a43a96147a1a99e9e4e0272d08694e5370e50c4ec2015a'
+            '19976b37a749ac97109ba3880355963893ccd72075145a589e7dbebce9838e0d')
 
 package() {
     # 1. Install binary

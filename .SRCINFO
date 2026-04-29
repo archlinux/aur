@@ -1,6 +1,6 @@
 pkgbase = rustykeys
 	pkgdesc = A mechanical keyboard sound emulator (GTK4/Libadwaita)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/schultz-dev0/RustyKeys
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rustykeys
 	provides = rustykeys-bin
 	conflicts = rusty_keys
 	conflicts = rustykeys-bin
-	source = rustykeys::https://github.com/schultz-dev0/RustyKeys/releases/download/v1.0.0/rusty_keys
-	source = rustykeys-1.0.0.tar.gz::https://github.com/schultz-dev0/RustyKeys/archive/refs/heads/main.tar.gz
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = rustykeys::https://github.com/schultz-dev0/RustyKeys/releases/download/v1.1.0/rusty_keys
+	source = rustykeys-1.1.0.tar.gz::https://github.com/schultz-dev0/RustyKeys/archive/refs/heads/main.tar.gz
+	sha256sums = 697ae5e4c2151b2788a43a96147a1a99e9e4e0272d08694e5370e50c4ec2015a
+	sha256sums = 19976b37a749ac97109ba3880355963893ccd72075145a589e7dbebce9838e0d
 
 pkgname = rustykeys
