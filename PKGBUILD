@@ -1,8 +1,8 @@
 # Maintainer: Nareg der Levonean <naregderlevonean@gmail.com>
 pkgname=hyprmousetrap-git
-pkgver=0.5.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="A high-performance hot-corner and edge-action daemon for Hyprland"
+pkgdesc="Hot-corner and edge-action daemon for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/naregderlevonean/hyprmousetrap"
 license=('GPL3')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo' 'git')
 provides=('hyprmousetrap')
 conflicts=('hyprmousetrap')
 source=("git+$url.git"
-        "hyprmousetrap.conf")
+        "hyprmousetrap.lua")
 sha256sums=('SKIP' 'SKIP')
 
 build() {

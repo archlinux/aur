@@ -1,6 +1,6 @@
 pkgbase = hyprmousetrap-git
-	pkgdesc = A high-performance hot-corner and edge-action daemon for Hyprland
-	pkgver = 0.5.0
+	pkgdesc = Hot-corner and edge-action daemon for Hyprland
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/naregderlevonean/hyprmousetrap
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hyprmousetrap-git
 	provides = hyprmousetrap
 	conflicts = hyprmousetrap
 	source = git+https://github.com/naregderlevonean/hyprmousetrap.git
-	source = hyprmousetrap.conf
+	source = hyprmousetrap.lua
 	sha256sums = SKIP
 	sha256sums = SKIP
 
