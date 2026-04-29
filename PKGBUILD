@@ -3,7 +3,7 @@
 _name=tree-sitter-verilog
 pkgname=python-tree-sitter-verilog
 pkgver=1.0.3
-pkgrel=2
+pkgrel=5
 pkgdesc="Verilog grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-verilog/"
@@ -21,12 +21,13 @@ sha256sums=('d4043cba50e1ba8402396e3106e17de755c86eca311b23ab826e018ea9818984')
 
 prepare() {
     cd "${_name//-/_}-${pkgver}"
-    if [ ! -f src/tree_sitter/parser.h ]; then
-        mkdir -p src/tree_sitter
-        curl -sLo src/tree_sitter/parser.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-        curl -sLo src/tree_sitter/alloc.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-        curl -sLo src/tree_sitter/array.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-    fi
+
+    sed -i \
+        -e 's/^license\.text = "MIT"$/license = "MIT"/' \
+        -e 's/^license\.text = "Apache-2.0"$/license = "Apache-2.0"/' \
+        -e 's/^license = "LICENSE"$/license = "MIT"/' \
+        -e '/License :: OSI Approved/d' \
+        pyproject.toml
 }
 
 build() {
