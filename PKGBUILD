@@ -1,8 +1,8 @@
 # Maintainer: Eduardo Parra Mazuecos <eduparra90@gmail.com>
 
 pkgname=betcon
-pkgver=2.0.1
-pkgrel=6
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Sports betting management"
 url="http://betcon.eduardoparra.es"
 arch=('x86_64')
