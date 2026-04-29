@@ -1,0 +1,18 @@
+pkgbase = python-graspologic-native
+	pkgdesc = Python native companion module to the graspologic library
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/graspologic-org/graspologic-native
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = maturin
+	makedepends = python-installer
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	depends = python
+	source = python-graspologic-native-1.2.5.tar.gz::https://files.pythonhosted.org/packages/source/g/graspologic-native/graspologic_native-1.2.5.tar.gz
+	sha256sums = 27ea7e01fa44466c0b4cdd678d4561e5d3dc0cb400015683b7ae1386031257a0
+
+pkgname = python-graspologic-native
