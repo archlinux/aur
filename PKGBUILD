@@ -46,10 +46,10 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-bin}/share"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    find "${srcdir}/usr/share/icons" -type f \( -name "*.png" -o -name "*.svg" \) \
-        | while read -r _i; do
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
-        _target_dir=$(dirname "${_i#$srcdir}")
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
 }
