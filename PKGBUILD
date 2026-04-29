@@ -1,11 +1,11 @@
 # Source: https://launcher.hytale.com/version/release/launcher.json
 # Maintainer: SCDevel <root@scdevel.net>
 
-_version=2026.04.24-b97c38b
+_version=2026.04.28-d3d25ae
 
 pkgname=hytale-launcher-bin
 pkgver=${_version%-*}
-pkgrel=2
+pkgrel=1
 pkgdesc="Hytale Launcher (Native Linux, Self-Updating) [${_version}]"
 url="https://hytale.com"
 license=('LicenseRef-custom')
@@ -25,7 +25,7 @@ source=("hytale-launcher-${_version}.zip::https://launcher.hytale.com/builds/rel
         "com.hypixel.HytaleLauncher.desktop"
         "LICENSE")
 
-_sha256_linux_amd64='f042e851d713b0533b54fb3446ff54ef3a470ff6e6efef493e33519e9ee1cd03'
+_sha256_linux_amd64='7eef6ca7e84e8b9b7fc2c41a48f01fce29cb52ba5d8397b6f9be12fa7bf30201'
 
 sha256sums=("$_sha256_linux_amd64"
             '0835afe0aec4f086c72518512bf64bfa55679242f3214ca6542fb0fcadd150b9'
