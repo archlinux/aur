@@ -6,7 +6,7 @@
 
 pkgname=azure-ddns-git
 _pkgname=azure-ddns
-pkgver=0.2.0.r0.g28b3dfa
+pkgver=0.2.0.r1.g88355e1
 pkgrel=1
 pkgdesc='Dynamic DNS updater for Azure DNS (A + AAAA records) — HEAD of main'
 arch=('any')
