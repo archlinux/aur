@@ -18,6 +18,17 @@ makedepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/55/bc/5f0735a5836fab553c13673897988d2782d52cb0ca0541f47032b2c63e27/tree_sitter_powershell-0.26.3.tar.gz")
 sha256sums=('9f349e60a55f29e98bbe12b19d16e95d5956f9816d7df974d57b806787389330')
 
+
+prepare() {
+    cd "${_name//-/_}-${pkgver}"
+    if [ ! -f src/tree_sitter/parser.h ]; then
+        mkdir -p src/tree_sitter
+        curl -sLo src/tree_sitter/parser.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.23.0/lib/src/parser.h
+        curl -sLo src/tree_sitter/alloc.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.23.0/lib/src/alloc.h
+        curl -sLo src/tree_sitter/array.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.23.0/lib/src/array.h
+    fi
+}
+
 build() {
     cd "${_name//-/_}-${pkgver}"
     python -m build --wheel --no-isolation
