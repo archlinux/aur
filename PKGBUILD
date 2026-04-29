@@ -2,7 +2,7 @@
 
 pkgname=twitch-cli
 pkgver=1.1.24
-pkgrel=1
+pkgrel=2
 pkgdesc='The official Twitch CLI to make developing on Twitch easier'
 arch=(x86_64)
 url=https://github.com/twitchdev/twitch-cli
@@ -26,7 +26,7 @@ build () {
 
 package() {
     cd "$srcdir"/$pkgname-$pkgver
-    install -Dm755 -t "$pkgdir"/usr/bin $pkgname
+    install -Dm755 $pkgname "$pkgdir"/usr/bin/${pkgname%-cli}
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname README.md docs/*.md
 }
