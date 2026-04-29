@@ -1,0 +1,17 @@
+pkgbase = skix-git
+	pkgdesc = Small skiing game (terminal + SDL) inspired by SkiFree
+	pkgver = r1.daddf91
+	pkgrel = 1
+	url = https://codeberg.org/nickknight/Skix
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pygame
+	optdepends = python-numpy: enables procedural sound effects in the SDL version
+	provides = skix
+	conflicts = skix
+	source = git+https://codeberg.org/nickknight/Skix.git
+	sha256sums = SKIP
+
+pkgname = skix-git
