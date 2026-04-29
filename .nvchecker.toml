@@ -1,0 +1,3 @@
+[ssh-crypt]
+source = "pypi"
+pypi = "ssh-crypt"
