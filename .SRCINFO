@@ -1,0 +1,18 @@
+pkgbase = sys-perf-prof-tray-git
+	pkgdesc = Manages CPU boost, CPU governors, LACT profiles from tray icon
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/zaps166/sys-perf-prof-tray
+	arch = x86_64
+	license = MIT
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = fakeroot
+	depends = qt6-base
+	optdepends = lact
+	optdepends = cpupower
+	optdepends = sudo
+	source = git+https://github.com/zaps166/sys-perf-prof-tray.git
+	sha256sums = SKIP
+
+pkgname = sys-perf-prof-tray-git

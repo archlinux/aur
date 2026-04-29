@@ -1,0 +1,4 @@
+pkg/*
+src/*
+sys-perf-prof-tray/*
+*.tar*
