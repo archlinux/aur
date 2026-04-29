@@ -1,6 +1,6 @@
 pkgbase = r-asset
 	pkgdesc = An R package for subset-based association analysis of heterogeneous traits and subtypes
-	pkgver = 2.28.0
+	pkgver = 2.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ASSET
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-asset
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASSET_2.28.0.tar.gz
-	sha256sums = f0749eceb270e66c6122786f74a262f0575f32f37dce8d8ca13c532e64ade155
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASSET_2.30.0.tar.gz
+	sha256sums = f8b957aa3960d9e10f5c3fde58c48a3d79260305982a7123c703b2e6ba9d2613
 
 pkgname = r-asset
