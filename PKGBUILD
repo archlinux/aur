@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GIGSEA
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e3ee70ae0dfb103328c92a153ddc634c')
-b2sums=('156169d3d4e47fd6fd74209b139f49d655120d16c18bafb9f26a2e889feaeb068eaae72613fc89fbe8b59ec566dee775159c6362b5d868fabea1d2a4ecbf0d23')
+md5sums=('fa7951aed448d48237ea08a6f8921139')
+b2sums=('25325cb70b8c8a1b1c756bf3056223342d5255acdb937804e10028180230cd261673ffc3deb1131d36927f830da799f66e98afebfc86c3be530c464c482ca426')
 
 build() {
   mkdir build
