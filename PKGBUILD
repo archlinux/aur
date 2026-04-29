@@ -3,7 +3,7 @@
 _name=tree-sitter-zig
 pkgname=python-tree-sitter-zig
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Zig grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-zig/"
