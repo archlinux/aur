@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=annotationTools
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('097b9c49b28c643a81c89dedf6560ff1')
-b2sums=('3581d44e14317ddade571be23cf407a4a39d2e8183d326b4568673e886b59cbe32e4566e7bf8483486af2fa87ecb1e4f2459175648e356aa774a05fe6197db75')
+md5sums=('a8f58d245afeee5bed906ac932e21cba')
+b2sums=('7bb7a4e7d2c0f3709db5d2f676c04be0e3d4371bf2ad8deeb8651905a2b88d3f216d8c0045249d5a64508fee8c9e46204049bd7ad051600e279ab8fcf3d86b66')
 
 build() {
   mkdir build
