@@ -1,0 +1,15 @@
+pkgbase = even-terminal
+	pkgdesc = CLI component for Even Realities G2 smart glasses Terminal Mode
+	pkgver = 0.6.5
+	pkgrel = 2
+	url = https://www.evenrealities.com/
+	arch = any
+	license = custom:proprietary
+	makedepends = npm
+	depends = nodejs>=20
+	source = https://registry.npmjs.org/@evenrealities/even-terminal/-/even-terminal-0.6.5.tgz
+	source = even-terminal.service
+	sha256sums = 184a57ce5e9469f7ff670774e0f4e6e28ab5093af4dce9ab3484283640b07733
+	sha256sums = 2638fa61f2893a957b58aa0844b315e815bb9126bac2b8ccb0905934f72ceb2d
+
+pkgname = even-terminal

@@ -1,0 +1,5 @@
+pkg/
+src/
+even-terminal-*.tgz
+*.pkg.tar.zst
+*.log
