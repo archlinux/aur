@@ -1,4 +1,5 @@
 [radiogogo-bin]
-source = "git"
-git = "https://github.com/matteo-pacini/radiogogo.git"
+source = "github"
+github = "matteo-pacini/radiogogo"
+use_latest_release = true
 prefix = "v"

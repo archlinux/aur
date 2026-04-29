@@ -1,33 +1,58 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_name="RadioGoGo"
-_pkgname="${_name,,}"
+_pkgname="radiogogo"
 pkgname="${_pkgname}-bin"
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Go-powered CLI to surf global radio waves via a sleek TUI."
-arch=('x86_64' 'aarch64' 'i686' 'armv7h')
-url="https://github.com/matteo-pacini/${_name}"
-license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+arch=(
+  'aarch64'
+  'armv6h'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
+url="https://github.com/matteo-pacini/RadioGoGo"
+license=(
+  'MIT'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("README-${pkgver}.md::${url}/raw/refs/tags/v${pkgver}/README.md"
-        "LICENSE-${pkgver}::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-source_x86_64=("${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_amd64.zip")
-source_aarch64=("${_pkgsrc}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_arm64.zip")
-source_i686=("${_pkgsrc}-i686.zip::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_386.zip")
-source_armv7h=("${_pkgsrc}-armv7h.zip::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_arm.zip")
-sha256sums=('a97e241f232d9be3a8a8ed8241b03e3e8cb977d7a9f5f2d4dc79a8c4a590df34'
-            '4540d32521736ca767f366cf07d64fefa02d9fe93b7e30e42925a00b9a7e2f7c')
-sha256sums_x86_64=('567f711a98cf38325ec9d37507f7e6dcf878f7eeb916ccde28408c4ae45e422e')
-sha256sums_aarch64=('36e60e76f8e0bd69fe3689c71bba373e200277ea37b61d301f6b32fd04173789')
-sha256sums_i686=('b7c73a5928a0891d07f03e9a52ff0009b39a1bd5628de69628fd31b1c0535bd3')
-sha256sums_armv7h=('808f2275f87a0b84210e38dd6874d7530df485a89f5464bac97f727e0086829e')
+source=(
+  "${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
+  "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
+)
+source_aarch64=(
+  "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip"
+)
+source_armv6h=(
+  "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.zip"
+)
+source_armv7h=(
+  "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv7.zip"
+)
+source_i686=(
+  "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.zip"
+)
+source_x86_64=(
+  "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip"
+)
+sha256sums=('1f0822bd042789976313ee09b475e0799ac8d2f9402aa193c10fb5b31cfd5ceb'
+            '133e7fe753e0ab27fa19a01aa7710821442c19e80024642b190adbdd2d9c97d2')
+sha256sums_aarch64=('a98155c82e813d74e3df4bdeabe753db884f9de298f9e5fcfd426d467bebeba5')
+sha256sums_armv6h=('25e56890d5f3a9e1623bc79a17ddbb7a2eb468508014a5aca20c0c257018f7ff')
+sha256sums_armv7h=('38b0978a12d52ef0efcdfe8928ce1a1e15d230b8c7b76e3eeac986f884b9bdc7')
+sha256sums_i686=('880e48c9f0ab3ebcd0a543c9b6aa3be5096548a9f7da2ad5b9dab0153d27723d')
+sha256sums_x86_64=('4676c40ad109a6c18a93296aca64c54ebeb96f0dbec6bba5803a28db68b15add')
 
 package() {
   cd "${srcdir}"
   install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
