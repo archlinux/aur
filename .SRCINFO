@@ -1,6 +1,6 @@
 pkgbase = mine-core-bin
 	pkgdesc = A full-featured, TUI-based IDE for Coalton and Common Lisp
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	epoch = 0
 	url = https://coalton-lang.github.io/mine
@@ -9,9 +9,9 @@ pkgbase = mine-core-bin
 	depends = glibc
 	provides = mine
 	options = !strip
-	source = https://github.com/coalton-lang/coalton/releases/download/mine-v0.1.3/mine-core-linux-x86_64-v0.1.3.zip
+	source = https://github.com/coalton-lang/coalton/releases/download/mine-v0.1.4/mine-core-linux-x86_64-v0.1.4.zip
 	source = https://raw.githubusercontent.com/coalton-lang/coalton/refs/heads/main/LICENSE.txt
-	sha256sums = f98c557076af019b899277763d30330902b55dec1c84fd8ceea401b51aab600b
+	sha256sums = 7fd44004a0d785ab4db2dab0f7875b6759dee951b83803564ee764d96d5b09ad
 	sha256sums = cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d
 
 pkgname = mine-core-bin

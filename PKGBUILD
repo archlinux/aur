@@ -3,7 +3,7 @@
 _appname=mine
 _refname=coalton
 pkgname=${_appname}-core-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 epoch=0
 pkgdesc="A full-featured, TUI-based IDE for Coalton and Common Lisp"
@@ -18,7 +18,7 @@ provides=("${_appname}")
 options=('!strip')
 source=("${_url}/releases/download/${_appname}-v${pkgver}/${_appname}-core-linux-${arch[0]}-v${pkgver}.zip"
   "${_rawurl}/LICENSE.txt")
-sha256sums=('f98c557076af019b899277763d30330902b55dec1c84fd8ceea401b51aab600b'
+sha256sums=('7fd44004a0d785ab4db2dab0f7875b6759dee951b83803564ee764d96d5b09ad'
             'cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d')
 
 package() {
