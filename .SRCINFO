@@ -1,0 +1,19 @@
+pkgbase = python-pyannote.database
+	pkgdesc = Reproducible experimental protocols for audio databases (pyannote.database)
+	pkgver = 6.1.1
+	pkgrel = 1
+	url = https://github.com/pyannote/pyannote-database
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.10
+	depends = python-pandas
+	depends = python-pyannote.core
+	depends = python-yaml
+	source = https://files.pythonhosted.org/packages/source/p/pyannote_database/pyannote_database-6.1.1.tar.gz
+	sha256sums = bbe76da738257a9e64061123d9694ad7e949c4f171d91a9269606d873528cd10
+
+pkgname = python-pyannote.database
