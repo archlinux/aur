@@ -6,7 +6,7 @@ _pkgname=mvtnorm
 _pkgver=1.3-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Multivariate Normal and t Distributions"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,13 +14,12 @@ license=('GPL-2.0-only')
 depends=(
   blas
   lapack
-  r
+  r-bibtex
 )
 makedepends=(
   gcc-fortran
 )
 optdepends=(
-  r-bibtex
   r-numderiv
   r-qrng
 )
