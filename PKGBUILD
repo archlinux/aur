@@ -39,7 +39,7 @@ _target_arch=(
 )
 pkgname=("zephyr-sdk-gnu-bin")
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
@@ -53,7 +53,7 @@ optdepends=('ninja' 'make' 'ccache' 'python-pyelftools'
           'python-west: Zephyr RTOS Project meta-tool')
 
 for _target in ${_target_arch[@]};do
-  depends+=("zephyr-sdk-gnu-toolchain-${_target}-bin=${pkgver}")
+  depends+=("zephyr-sdk-gnu-toolchain-${_target}-bin>=${pkgver}")
 done
 
 options=(!strip)
