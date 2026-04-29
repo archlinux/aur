@@ -1,0 +1,19 @@
+pkgbase = qnote
+	pkgdesc = Minimal Tauri desktop note editor with Markdown support, PDF export, OCR, version history
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Omibranch/qnote
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = base-devel
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = xdg-utils
+	source = qnote-0.2.0.tar.gz::https://github.com/Omibranch/qnote/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 34c2bb390575aa67f17099558eaf776eb4a83839f83a9b8612b84cf0788140fc
+
+pkgname = qnote
