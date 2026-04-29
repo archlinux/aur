@@ -1,6 +1,6 @@
 pkgbase = arrr-tray-bin
 	pkgdesc = System tray client for the Arrr Linux notification aggregator
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/tgiachi/Arrr
 	install = arrr-tray-bin.install
@@ -24,10 +24,10 @@ pkgbase = arrr-tray-bin
 	provides = arrr-tray
 	conflicts = arrr-tray
 	conflicts = arrr-tray-git
-	noextract = arrr-tray-1.9.0-1-x86_64.pkg.tar.zst
-	source = arrr-tray-1.9.0-1-x86_64.pkg.tar.zst::https://github.com/tgiachi/Arrr/releases/download/v1.9.0/arrr-tray-1.9.0-1-x86_64.pkg.tar.zst
+	noextract = arrr-tray-1.10.0-1-x86_64.pkg.tar.zst
+	source = arrr-tray-1.10.0-1-x86_64.pkg.tar.zst::https://github.com/tgiachi/Arrr/releases/download/v1.10.0/arrr-tray-1.10.0-1-x86_64.pkg.tar.zst
 	source = arrr-tray.desktop
-	sha256sums = cd3ead8afb69e708bb50ffb409355cc1e32cf630e167724bacbba43e46f89c2a
+	sha256sums = 809cd0b7bf1fb9e99281d478a9a00b970401798fd7c0ea7d41cf3a12ea9fbdc2
 	sha256sums = SKIP
 
 pkgname = arrr-tray-bin

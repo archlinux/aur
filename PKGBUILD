@@ -1,6 +1,6 @@
 # Maintainer: tgiachi <tom@orivega.io>
 pkgname=arrr-tray-bin
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="System tray client for the Arrr Linux notification aggregator"
 arch=('x86_64')
@@ -12,13 +12,14 @@ optdepends=(
 )
 provides=('arrr-tray')
 conflicts=('arrr-tray' 'arrr-tray-git')
+options=('!strip')
 install=arrr-tray-bin.install
 source=(
     "arrr-tray-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/tgiachi/Arrr/releases/download/v${pkgver}/arrr-tray-${pkgver}-1-x86_64.pkg.tar.zst"
     "arrr-tray.desktop"
 )
 sha256sums=(
-    'cd3ead8afb69e708bb50ffb409355cc1e32cf630e167724bacbba43e46f89c2a'
+    '809cd0b7bf1fb9e99281d478a9a00b970401798fd7c0ea7d41cf3a12ea9fbdc2'
     'SKIP'
 )
 noextract=("arrr-tray-${pkgver}-1-x86_64.pkg.tar.zst")
@@ -31,4 +32,6 @@ package() {
     install -Dm755 usr/local/bin/arrr-tray "${pkgdir}/usr/bin/arrr-tray"
     install -Dm644 arrr-tray.desktop \
         "${pkgdir}/etc/xdg/autostart/arrr-tray.desktop"
+    install -Dm644 arrr-tray.desktop \
+        "${pkgdir}/usr/share/applications/arrr-tray.desktop"
 }
