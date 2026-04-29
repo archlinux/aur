@@ -1,4 +1,4 @@
-# Maintainer: Monjaris <ziyanovruzlu750@gmail.com>
+# Maintainer: Monjaris <ziyanobruzlu750@gmail.com>
 pkgname=edex
 pkgver=0.1.0
 pkgrel=4
@@ -14,7 +14,9 @@ sha256sums=('SKIP')
 build() {
     cd "Edex-main"
     mkdir -p bin
-    g++ $(find src -name "*.cpp") -std=c++20 -O2 \
+    g++ $(find src -name "*.cpp") -Iinclude -std=c++20 -O2 \
+        -DEDEX_DEFAULT_BUFFER_FONT=\"/usr/share/edex/fonts/JetBrainsMono/JetBrainsMono-Regular.ttf\" \
+        -DEDEX_DEFAULT_UI_FONT=\"/usr/share/edex/fonts/InterVariable/InterVariable.ttf\" \
         -lraylib -lGL -lm -lpthread -ldl -lrt \
         -o bin/main
 }

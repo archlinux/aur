@@ -1,13 +1,14 @@
 pkgbase = edex
-	pkgdesc = A minimal GUI text editor written in C++ with raylib
-	pkgver = 0.1.0
-	pkgrel = 4
-	url = https://github.com/Monjaris/Edex
-	arch = x86_64
-	license = custom:unlicensed
-	makedepends = gcc
-	depends = raylib
-	source = edex-0.1.0.zip::https://github.com/Monjaris/Edex/archive/refs/heads/main.zip
-	sha256sums = SKIP
+    pkgdesc = A minimal GUI text editor written in C++ with raylib
+    pkgver = 0.1.0
+    pkgrel = 5
+    url = https://github.com/Monjaris/Edex
+    arch = x86_64
+    license = custom:unlicensed
+    makedepends = gcc
+    depends = raylib
+    source = yyyy
+    edex-0.1.0.zip::https://github.com/Monjaris/Edex/archive/refs/heads/main.zip
+    sha256sums = SKIP
 
 pkgname = edex
