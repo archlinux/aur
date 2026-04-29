@@ -73,16 +73,6 @@ sha256sums=('c8de66c5568dfc3e4e309275cc858e84a61f781fe93ed967290c31b70c770b00'
 
 prepare() {
     cd "$srcdir/AyuGramDesktop-$pkgver-full"
-    #/usr/bin/ld: /usr/lib/libprotobuf-lite.so: undefined reference to symbol '_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIllEEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc'
-    #/usr/bin/ld: /usr/lib/libabsl_log_internal_check_op.so.2308.0.0: error adding symbols: DSO missing from command line
-    #collect2: error: ld returned 1 exit status
-    #
-    #https://github.com/telegramdesktop/tdesktop/issues/26489#issuecomment-1627535022
-    sed -i 's/find_package(protobuf REQUIRED)/find_package(protobuf REQUIRED CONFIG)/' \
-        Telegram/ThirdParty/cld3/CMakeLists.txt
-    #https://github.com/telegramdesktop/tdesktop/issues/26489#issuecomment-1627555107
-    #CMAKE_BUILD_TYPE must match libtg_owt's
-
     # minizip seems setting its include directory to /usr/include in pkg-config script...
     patch -Np1 -d Telegram/lib_base -i "$srcdir/0001-force-minizip-includes.diff"
 }
