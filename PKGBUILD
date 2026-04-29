@@ -1,5 +1,5 @@
 pkgname=android-cli
-pkgver=0.7.15232955
+pkgver=0.7.15303877
 pkgrel=1
 pkgdesc='Google Android CLI prebuilt binary'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source_x86_64=(
   'LICENSE'
 )
 sha256sums_x86_64=(
-  '79ed4be64cb2e524a84491471339c98ead2e48ab16364ae4a8dbd724297825e7'
+  '631afc8c92e0406706cfea875d5eba61d2d18c71fc2194da554b6ea82c5d7ce9'
   '65c32078048f3fdb0ab70bd7d287d78c45a0d8e20a71b23b7ac1bf5e2e87729e'
 )
 
