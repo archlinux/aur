@@ -1,11 +1,11 @@
-# Maintainer: Jose <tu_email@ejemplo.com>
+# Maintainer: Jose <josrebe333@gmail.com>
 pkgname=bookos-settings
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="BookOS Settings — aplicación de ajustes para KDE Plasma con BookOS (o otros sistemas)"
 arch=('x86_64')
 url="https://github.com/Evelynx08/BookOS-Settings"
-license=('GPL v3')
+license=('GPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3')
 optdepends=(
     'colord: soporte de perfiles ICC'
@@ -16,23 +16,13 @@ optdepends=(
     'python-dbus: plugin KRunner búsqueda semántica'
     'python-gobject: plugin KRunner búsqueda semántica'
 )
-# Añadimos nodejs y npm porque Tauri los necesita para el frontend
-makedepends=('rust' 'cargo' 'protobuf' 'nodejs' 'npm')
 
 # Ahora el código se baja de GitHub automáticamente
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Evelynx08/BookOS-Settings/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9592b9b0caab0853e6d8261a7d7d0071ff3f9a830ea0aec5e5ab4ee8f3a6cc3f')
 
-build() {
-    # Entramos a la carpeta que se crea al descomprimir el source
-    cd "BookOS-Settings-${pkgver}"
-
-    # Instalamos dependencias de node si son necesarias
-    # npm install
-
-    # Construimos usando el directorio relativo
-    cargo tauri build --no-bundle
-}
+# NOTA: La función build() y makedepends han sido eliminadas.
+# De esta forma no compila nada y se instala en un segundo.
 
 package() {
     # Definimos las rutas relativas al directorio de compilación
@@ -42,7 +32,7 @@ package() {
     local _search="${_builddir}/src-tauri/extra/search"
     local _src="${_builddir}/src"
 
-    # Binary
+    # Binary (Coge directamente el que ya subiste a tu GitHub)
     install -Dm755 "$_bin/bookos-settings" \
         "$pkgdir/usr/bin/bookos-settings"
 
