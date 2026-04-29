@@ -4,7 +4,7 @@
 
 pkgname=trae-cn-desktop-bin
 _pkgname=trae-cn
-pkgver=2.3.21082
+pkgver=2.3.23677
 pkgrel=1
 pkgdesc="字节跳动推出的AI编程IDE（Trae CN）"
 arch=('x86_64' 'aarch64')
@@ -42,10 +42,10 @@ source_aarch64=(
     "${_pkgname}-startup.sh"
 )
 
-sha256sums_x86_64=('9b73c5f4682b7a8dc142babc793b74aaab3f0305f655a8f7e406fa028dbd1520'
+sha256sums_x86_64=('35cdac5ee28d5fada97388c69800cdc06dcb51f854542218669ddbb2a1d4ff36'
                    'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
                    'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
-sha256sums_aarch64=('9b73c5f4682b7a8dc142babc793b74aaab3f0305f655a8f7e406fa028dbd1520'
+sha256sums_aarch64=('35cdac5ee28d5fada97388c69800cdc06dcb51f854542218669ddbb2a1d4ff36'
                     'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
                     'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
 
@@ -58,7 +58,7 @@ package() {
     chmod 4755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "${srcdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-    install -Dm644 "${srcdir}/resources/app/licenses/LICENSE-TRAE-CN.rtf"  "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-TRAE-CN.rtf"
+    install -Dm644 "${srcdir}/resources/app/LICENSE.txt"  "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
     install -Dm644 "${srcdir}/resources/completions/bash/${_pkgname}"  "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
     install -Dm644 "${srcdir}/resources/completions/zsh/_${_pkgname}"  "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
     install -m755 "${srcdir}/${_pkgname}-startup.sh" "${pkgdir}/usr/bin/${_pkgname}"
