@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=INPower
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fb6609549052104c95cbf2113e6d8692')
-b2sums=('8902f71303d99e1d6045a3944dcb03e7eb26bb27e8b083f034c4c3d8f7d20bad35875ce3d7d90ca5f0c3bca5b0ed7b9a6f5258ca89e938a360ecff2551da6c2b')
+md5sums=('1068371ffe75fcfbe1c9656205f0c2f6')
+b2sums=('76a738a75b6ed0e391eb4acfa505ced3357ba4d38fc5eb7fbb4087b79af4bd1567e1e89d1db062508b041ead6b07634c97d0a03ee6c26a0bfe71a799548c5c23')
 
 build() {
   mkdir build
