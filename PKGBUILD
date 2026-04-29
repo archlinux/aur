@@ -1,12 +1,13 @@
 # Maintainer: Serhii <serhiidev88@gmail.com>
 pkgname=manjaro-gaming-control-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Exclusive optimization and hardware control utility for Manjaro Linux gamers."
 arch=('x86_64')
 url="https://github.com/serhiidev88/ManjaroGamingControl"
-license=('GPL')
-depends=('polkit' 'gamemode' 'mangohud') 
+license=('GPL-3.0-or-later')
+depends=('polkit' 'gamemode' 'mangohud')
+optdepends=('nvidia-utils: for NVIDIA GPU temperature and driver monitoring') 
 provides=('manjaro-gaming-control')
 conflicts=('manjaro-gaming-control')
 

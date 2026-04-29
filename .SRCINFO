@@ -1,13 +1,14 @@
 pkgbase = manjaro-gaming-control-bin
 	pkgdesc = Exclusive optimization and hardware control utility for Manjaro Linux gamers.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/serhiidev88/ManjaroGamingControl
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = polkit
 	depends = gamemode
 	depends = mangohud
+	optdepends = nvidia-utils: for NVIDIA GPU temperature and driver monitoring
 	provides = manjaro-gaming-control
 	conflicts = manjaro-gaming-control
 	source = https://github.com/serhiidev88/ManjaroGamingControl/releases/download/v1.0.0/ManjaroGamingControl
