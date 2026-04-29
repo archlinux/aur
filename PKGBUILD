@@ -1,4 +1,4 @@
-# Maintainer: bhyoo <isac@runbear.io>
+# Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 _name=hyppo
 pkgname=python-hyppo
