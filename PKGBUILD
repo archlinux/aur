@@ -5,8 +5,13 @@ pkgdesc="Moon Child FE (Friend Edition) is a modern source port of the 1997 Wind
 arch=('x86_64')
 url='https://github.com/MorsGames/MoonChildFE'
 license=('MIT')
-source=("${pkgname}-${pkgver}.zip::https://github.com/MorsGames/MoonChildFE/releases/download/v1.0.5/MoonChildFE-LinuxX64.tar.gz")
-sha256sums=(a1938fee8a2ab420d73fee85a393c21a752ae2ce5caa1c497039a89d1432f8d3)
+source=(
+    "${pkgname}.desktop"
+    "${pkgname}.png"
+    "${pkgname}-${pkgver}.zip::https://github.com/MorsGames/MoonChildFE/releases/download/v1.0.5/MoonChildFE-LinuxX64.tar.gz")
+sha256sums=(e74f0e2acd28ae040ae939f9fad102aebce351b3db8e90af1bd727d049912311
+    c93852e775304a9a31dcb62d0150edef6cc83c44f66d7bd9300ca1592444d4d6
+    a1938fee8a2ab420d73fee85a393c21a752ae2ce5caa1c497039a89d1432f8d3)
 
 package(){
     install -Dm755 "${srcdir}/MoonChildFE" "$pkgdir/usr/share/${pkgname}/MoonChildFE"
