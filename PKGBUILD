@@ -1,6 +1,6 @@
 # Maintainer: swstl <swstl@hotmail.com>
 pkgname=mal-tui
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A terminal client for MyAnimeList (integrated with ani-cli) written in rust"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -11,10 +11,10 @@ source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/mal-tui-linux-
 source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/mal-tui-linux-aarch64")
 source_armv7h=("$pkgname-$pkgver::$url/releases/download/v$pkgver/mal-tui-linux-armv7")
 source_i686=("$pkgname-$pkgver::$url/releases/download/v$pkgver/mal-tui-linux-i686")
-sha256sums_x86_64=('8f930c2a81eb18aacad59f3152a1fa47ca26fc7393020b77a710492eccc8ed69')
-sha256sums_aarch64=('801b54cb2bd6b32b7b58fc2f3247c18ccd102b8d562944b244d19cba0f0ca521')
-sha256sums_armv7h=('26d76ad65dae8e3f0502c76357353119107182fd6d98cb6e6687b21e00f95baf')
-sha256sums_i686=('9d3e2152f5eebb29342fdca120b198675f9a07085d571337a5b0a5aa717604ec')
+sha256sums_x86_64=('7da96b1185f256a3bed7745cce3bc37536144397a56ef3a0f638bb29ca7fa7eb')
+sha256sums_aarch64=('d1b0513da86dfa4898cb17da96292a3864d8a45a9ea880022ba9ed939d9ec415')
+sha256sums_armv7h=('9165f414994d79d0725c64685b39c2da82a558301a44872a92dc2deab7261a44')
+sha256sums_i686=('ca828669186e22f25cb912cc18df532fef66a99dd4c89d3ff9464d4a40cc870a')
 
 package() {
   install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
