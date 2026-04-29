@@ -1,6 +1,6 @@
 pkgbase = wj-markdown-editor-git
 	pkgdesc = An open-source desktop markup editor that supports webdav.(Use system-wide electron)一款支持webdav的开源桌面端markdown编辑器
-	pkgver = 2.13.0.r0.g8f1b01e
+	pkgver = 2.19.6.r0.g37ec2a7
 	pkgrel = 1
 	url = https://github.com/nlbwqmz/wj-markdown-editor
 	arch = any
@@ -12,12 +12,12 @@ pkgbase = wj-markdown-editor-git
 	makedepends = curl
 	makedepends = jq
 	depends = electron39
-	provides = wj-markdown-editor=2.13.0
+	provides = wj-markdown-editor=2.19.6
 	conflicts = wj-markdown-editor
 	conflicts = wj-markdown-editor-bin
 	source = wj-markdown-editor.git::git+https://github.com/nlbwqmz/wj-markdown-editor.git
 	source = wj-markdown-editor.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = wj-markdown-editor-git
