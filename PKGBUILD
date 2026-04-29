@@ -6,7 +6,7 @@ pkgver=0.33.0
 pkgrel=3
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
-url='https://pypi.org/project/tidal-dl-ng/'
+url='https://archive.org/details/tidal_dl_ng-0.33.0.tar'
 license=(AGPL-3.0-only)
 depends=(
     'python'
