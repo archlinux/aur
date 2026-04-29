@@ -1,0 +1,32 @@
+pkgbase = noctalia-v5-git
+	pkgdesc = Noctalia Shell (v5 development branch)
+	pkgver = 5.0.0.r1133.gfbe4867ef
+	pkgrel = 1
+	url = https://github.com/noctalia-dev/noctalia-shell
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	makedepends = just
+	depends = sdbus-cpp
+	depends = wayland
+	depends = freetype2
+	depends = fontconfig
+	depends = cairo
+	depends = pango
+	depends = libxkbcommon
+	depends = glib2
+	depends = polkit
+	depends = pipewire
+	depends = curl
+	depends = libwebp
+	depends = libepoxy
+	provides = noctalia-shell
+	conflicts = noctalia-shell
+	conflicts = noctalia-shell-git
+	source = noctalia-shell::git+https://github.com/noctalia-dev/noctalia-shell.git#branch=v5
+	sha256sums = SKIP
+
+pkgname = noctalia-v5-git
