@@ -1,6 +1,6 @@
 pkgbase = qnote
 	pkgdesc = Minimal Tauri desktop note editor with Markdown support, PDF export, OCR, version history
-	pkgver = 0.2.1
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/Omibranch/qnote
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = qnote
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = tesseract-data-rus
 	optdepends = typst: PDF export
-	optdepends = tesseract: OCR text extraction from images
-	optdepends = tesseract-data-eng: English OCR language data
-	optdepends = tesseract-data-rus: Russian OCR language data
-	source = qnote-0.2.1::https://github.com/Omibranch/qnote/releases/download/v0.2.1/qnote-linux-x86_64
-	sha256sums = 0c84b4f96dbbbcae129dd81f9af1519f4695e649f54fa7c01c3b2790cb4b50ff
+	source = qnote-0.2.4::https://github.com/Omibranch/qnote/releases/download/v0.2.4/qnote-linux-x86_64
+	sha256sums = 0d29e01b141b8ee2a283ef1217818b6470b7c10832cd28979b19e44b742febfe
 
 pkgname = qnote
