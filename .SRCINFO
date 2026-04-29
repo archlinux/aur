@@ -1,6 +1,6 @@
 pkgbase = apm-bin
 	pkgdesc = Agent Package Manager by Microsoft
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/microsoft/apm
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = apm-bin
 	license = MIT
 	provides = apm
 	conflicts = apm
-	source = LICENSE::https://raw.githubusercontent.com/microsoft/apm/v0.9.3/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/microsoft/apm/v0.10.0/LICENSE
 	sha256sums = 7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322
-	source_x86_64 = https://github.com/microsoft/apm/releases/download/v0.9.3/apm-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d8e95c7cbc5d1e74f1320904a1e705f38f5d1f95e0f491d6f509d99c3554f86f
-	source_aarch64 = https://github.com/microsoft/apm/releases/download/v0.9.3/apm-linux-arm64.tar.gz
-	sha256sums_aarch64 = bc3129821708de3d1002858182f0388fcb340e1400175df88a03b0480af1e171
+	source_x86_64 = https://github.com/microsoft/apm/releases/download/v0.10.0/apm-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 26fe68ccfac0c8896eb048a8ab3575de64d8d8b9b61293ae6b72e012ed280e93
+	source_aarch64 = https://github.com/microsoft/apm/releases/download/v0.10.0/apm-linux-arm64.tar.gz
+	sha256sums_aarch64 = dc80d356776aef7d158c352ed5f577950250b2c861e3806c44e9b4c4b9c6bb73
 
 pkgname = apm-bin
