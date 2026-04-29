@@ -1,6 +1,6 @@
 pkgbase = worktrunk-bin
 	pkgdesc = CLI for git worktree management, designed for running AI agents in parallel
-	pkgver = 0.45.2
+	pkgver = 0.46.0
 	pkgrel = 1
 	url = https://github.com/max-sixty/worktrunk
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = worktrunk-bin
 	depends = git
 	provides = worktrunk
 	conflicts = worktrunk
-	source_x86_64 = worktrunk-bin-0.45.2.tar.gz::https://github.com/max-sixty/worktrunk/releases/download/v0.45.2/worktrunk-x86_64-unknown-linux-musl.tar.xz
-	sha256sums_x86_64 = ec61c6880de1367156e4d3738634f049fb0ee085af774ddc751bb48b132c691b
-	source_aarch64 = worktrunk-bin-0.45.2.tar.gz::https://github.com/max-sixty/worktrunk/releases/download/v0.45.2/worktrunk-aarch64-unknown-linux-musl.tar.xz
-	sha256sums_aarch64 = ec61c6880de1367156e4d3738634f049fb0ee085af774ddc751bb48b132c691b
+	source_x86_64 = worktrunk-bin-0.46.0.tar.gz::https://github.com/max-sixty/worktrunk/releases/download/v0.46.0/worktrunk-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 7ce23abe6c63edf206357f6955b6d1a29bcea26355246885365511205f0ddce8
+	source_aarch64 = worktrunk-bin-0.46.0.tar.gz::https://github.com/max-sixty/worktrunk/releases/download/v0.46.0/worktrunk-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 7ce23abe6c63edf206357f6955b6d1a29bcea26355246885365511205f0ddce8
 
 pkgname = worktrunk-bin
