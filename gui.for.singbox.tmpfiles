@@ -3,6 +3,8 @@ d       /var/lib/gui.for.singbox                         0775    guiforsingbox  
 d       /var/lib/gui.for.singbox/data                    0775    guiforsingbox   guiforsingbox   -       -
 d       /var/lib/gui.for.singbox/data/sing-box           0775    guiforsingbox   guiforsingbox   -       -
 d       /var/lib/gui.for.singbox/data/locales            0775    guiforsingbox   guiforsingbox   -       -
+d       /var/lib/gui.for.singbox/data/rolling-release    0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.singbox/data/rulesets           0775    guiforclash   guiforclash   -       -
 d       /var/lib/gui.for.singbox/data/subscribes         0775    guiforsingbox   guiforsingbox   -       -
 d       /var/lib/gui.for.singbox/data/plugins            0775    guiforsingbox   guiforsingbox   -       -
 d       /var/lib/gui.for.singbox/data/third              0775    guiforsingbox   guiforsingbox   -       -

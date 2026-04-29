@@ -3,8 +3,8 @@
 pkgname=gui.for.singbox
 _name=GUI.for.SingBox
 pkgver=1.23.2
-pkgrel=1
-pkgdesc="Modern, lightweight desktop app built with Wails (Go) and Vue 3. Efficient, cross-platform, and fast"
+pkgrel=4
+pkgdesc="GUI.for.SingBox A GUI program developed by vue3 + wails."
 arch=($CARCH)
 url="https://github.com/GUI-for-Cores/GUI.for.SingBox"
 license=('GPL-3.0-or-later')
@@ -39,7 +39,7 @@ source=(
     "${pkgname}.install"
 )
 sha256sums=('0f832709052caad2df1f7e9b236fa0e368dae998ffbde7e5b1d986f306082fd3'
-            'c38c57820998d24ffcb74ccadf832502e7dbb6766bcabb728eea7b6e3c79a932'
+            'c89a7b9740039857f57d6294d28a39854067ddd8469c7f1b5efc62b91cdf772a'
             '8d51fea0925c08e33150be47b4100d145dee7998f241b02f5de42770cf5dfbb2'
             'feb47230c930ff09fc2fdebdf07aa0f76692bda24eeab32727b2286a93516671')
 
@@ -89,16 +89,16 @@ package() {
 Version=1.0
 Name=${pkgname}
 Comment=${pkgdesc}
-StartupWMClass=GUI.for.SingBox
+StartupWMClass=${_name}
 Exec=${_name}
 Icon=${_name}.png
 Terminal=false
 Type=Application
-Categories=Application;GUI.for.SingBox;
+Categories=Application;${_name};
 StartupNotify=true
 
 EOF
-    install -dvm775 ${pkgdir}/var/lib/${pkgname}/data/{sing-box,locales,subscribes,plugins,third} \
+    install -dvm775 ${pkgdir}/var/lib/${pkgname}/data/{sing-box,locales,rolling-release,rulesets,subscribes,plugins,third} \
         ${pkgdir}/var/lib/${pkgname}/data/third/{node-configurator,node-convert,traffic-statistics} \
         ${pkgdir}/var/lib/${pkgname}/data/.cache/{imgs,icons}
 

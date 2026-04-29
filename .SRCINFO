@@ -1,7 +1,7 @@
 pkgbase = gui.for.singbox
-	pkgdesc = Modern, lightweight desktop app built with Wails (Go) and Vue 3. Efficient, cross-platform, and fast
+	pkgdesc = GUI.for.SingBox A GUI program developed by vue3 + wails.
 	pkgver = 1.23.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/GUI-for-Cores/GUI.for.SingBox
 	install = gui.for.singbox.install
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = gui.for.singbox
 	source = gui.for.singbox.sysusers
 	source = gui.for.singbox.install
 	sha256sums = 0f832709052caad2df1f7e9b236fa0e368dae998ffbde7e5b1d986f306082fd3
-	sha256sums = c38c57820998d24ffcb74ccadf832502e7dbb6766bcabb728eea7b6e3c79a932
+	sha256sums = c89a7b9740039857f57d6294d28a39854067ddd8469c7f1b5efc62b91cdf772a
 	sha256sums = 8d51fea0925c08e33150be47b4100d145dee7998f241b02f5de42770cf5dfbb2
 	sha256sums = feb47230c930ff09fc2fdebdf07aa0f76692bda24eeab32727b2286a93516671
 
