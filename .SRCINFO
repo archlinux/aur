@@ -1,6 +1,6 @@
 pkgbase = r-masigpro
 	pkgdesc = Significant Gene Expression Profile Differences in Time Course Gene Expression Data
-	pkgver = 1.82.0
+	pkgver = 1.84.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/maSigPro
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-masigpro
 	depends = r-biobase
 	depends = r-mclust
 	depends = r-venn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/maSigPro_1.82.0.tar.gz
-	sha256sums = 0aceba675f0cf4b9f111813096cf97f09653e21c9cedec39f696f8cfb4b2878e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/maSigPro_1.84.0.tar.gz
+	sha256sums = da5ed8b4c42e612d5c5148d947ae3515c7b9ae24d8e6aa5920a09bfe16369d9f
 
 pkgname = r-masigpro

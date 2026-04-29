@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=maSigPro
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
-pkgver=1.82.0
+pkgver=1.84.0
 pkgrel=1
 pkgdesc='Significant Gene Expression Profile Differences in Time Course Gene Expression Data'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-venn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0aceba675f0cf4b9f111813096cf97f09653e21c9cedec39f696f8cfb4b2878e')
+sha256sums=('da5ed8b4c42e612d5c5148d947ae3515c7b9ae24d8e6aa5920a09bfe16369d9f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
