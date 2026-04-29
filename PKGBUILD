@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=octa-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A modular multi-format data viewer and editor (pre-compiled)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('octa')
 conflicts=('octa')
 options=(!debug)
 source=("octa-$pkgver-linux-x86_64.tar.gz::$url/releases/download/$pkgver/octa-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('4d549a683a94bd086d156e07ea6bb20a4d098defea914dca4236986cd2061570')
+sha256sums=('1b9c70913d14dda255bd4d0bf1a9065349fb08ed78a4a4b772b01aefb1163f0a')
 
 package() {
     cd "octa-$pkgver-linux-x86_64"
