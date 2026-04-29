@@ -1,6 +1,6 @@
 pkgbase = filebot-cli
 	pkgdesc = The ultimate TV and Movie Renamer
-	pkgver = 5.1.6
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://www.filebot.net/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = filebot-cli
 	conflicts = filebot47
 	conflicts = filebot
 	options = !strip
-	source = https://get.filebot.net/filebot/FileBot_5.1.6/FileBot_5.1.6-aur.tar.xz
-	sha256sums = 7b729146cf9f295eb505d789e4c30688626e21aa750f712ae8e85f28de3a91b0
+	source = https://get.filebot.net/filebot/FileBot_5.2.1/FileBot_5.2.1-aur.tar.xz
+	sha256sums = da5bd7f4025033a485adbcfcaa12fc8250ccb25b027c78ea051e18601f569b05
 
 pkgname = filebot-cli
