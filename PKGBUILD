@@ -1,7 +1,7 @@
 # Maintainer: silver hikari <kerrickethan@gmail.com>
 pkgname=gridmonger-git
 pkgver=1.2.0.r38.0cde3f8
-pkgrel=2
+pkgrel=1
 pkgdesc="Your trusty old-school cRPG mapping companion"
 arch=('x86_64')
 url="https://gridmonger.johnnovak.net/"
@@ -10,8 +10,8 @@ depends=('zenity' 'libxxf86vm' 'libglvnd' 'libxi' 'libxrandr' 'libx11' 'libxiner
 makedepends=('git' 'nim' 'dart-sass' 'python-sphinx' 'gendesk')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/johnnovak/gridmonger' 'git+https://github.com/nim-lang/atlas')
-md5sums=('SKIP' 'SKIP')
+source=('git+https://github.com/johnnovak/gridmonger')
+md5sums=('SKIP')
 install=gridmonger.install
 
 pkgver() {
@@ -22,18 +22,10 @@ pkgver() {
 prepare() {
 	gendesk -n -f --pkgname="${pkgname%-git}" --pkgdesc="$pkgdesc" --exec="/opt/gridmonger/gridmonger" --icon="/usr/share/pixmaps/gridmonger.png"
 
-	#stop gap until arch update release
-	cd "atlas"
-	atlas init
-	atlas use sat
-	nim c -d:release src/atlas.nim
-	mv src/atlas atlas
-	cd ..
-	./atlas/atlas init --deps=deps
+	atlas init --deps=deps
 	cd "${pkgname%-git}"
 	echo -e "requires \"https://github.com/zevv/with\"\n\nrequires \"https://github.com/johnnovak/nim-osdialog\"\n\nrequires \"https://github.com/johnnovak/nim-riff\"\n\nrequires \"https://github.com/euantorano/semver.nim\"\n\nrequires \"https://github.com/johnnovak/koi\"" > 'gridmonger.nimble'
-	#../atlas/atlas
-	../atlas/atlas install gridmonger.nimble
+	atlas install gridmonger.nimble
 }
 
 build() {
