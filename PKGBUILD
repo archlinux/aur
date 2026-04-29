@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ctc
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-amap
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2734b1b3dc55fe8995632a6ea268b53f')
-b2sums=('d723377eab0a279a4728fc29fe5f8963421e28dfc951a6c9f30216ff707c9dfcdc971b9a1eb1ebecb6982fe26eb3fd38d3149d79d4217b5268d720de27a88b7e')
+md5sums=('891c73338182584f008479b14456f09d')
+b2sums=('5b8aa3b1efc3559afc6bc0c738abff4d49dc03dfd2c93c882ce0fd10b5df028b1a545ecab20529c631d19c7f4303893064d886d48ce9766ca154a82f7fe3fa82')
 
 build() {
   mkdir build
