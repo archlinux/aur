@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-quota
 _npmname=@slkiser/opencode-quota
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="OpenCode plugin for quota & token usage tracking with zero context window pollution"
 arch=('any')
@@ -13,7 +13,7 @@ options=('!debug')
 install=$pkgname.install
 
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz")
-sha256sums=('3a0c4a80c00da0bf139e0c2bb2092c07eb35b1e3b226c543beed14bfeddd07b2')
+sha256sums=('e0c1b8486d99e335c3db43f74ea6c23991e913e82859e73c2c1ba4d1b2adcd00')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/$_npmname/latest" | jq -r '.version'
