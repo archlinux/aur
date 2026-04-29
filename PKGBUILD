@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.26.3
+pkgver=1.26.5
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -9,20 +9,18 @@ _giturl="https://github.com/OpenModelica/OpenModelica.git"
 groups=(openmodelica)
 conflicts=(openmodelica)
 depends=('lapack' 'java-environment')
-makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
+makedepends=('gcc-fortran' 'cmake' 'boost')
 options=('!lto')
-source=("git+${_giturl}#tag=v${pkgver}")
-sha1sums=('SKIP')
+source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-src-with-submodules.zip")
+sha256sums=('8c26ae68db79e2ac5445fa400ec1a06cb3286d1d368d3e2f0cacf1caaadee9c3')
 
 prepare() {
   cd "$srcdir/OpenModelica"
-  git remote set-url origin ${_giturl}
-  git submodule update --force --init --recursive OMCompiler/3rdParty
 }
 
 build() {
   cd "$srcdir/OpenModelica"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -DBLA_VENDOR=Generic -B build .
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
   make -C build
 }
 
