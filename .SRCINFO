@@ -1,0 +1,14 @@
+pkgbase = cjules
+	pkgdesc = Crystal CLI for the Jules API with multi-account support, bulk ops, watch mode, and gitPatch extraction.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hahwul/cjules
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source_x86_64 = cjules-0.1.0-x86_64::https://github.com/hahwul/cjules/releases/download/v0.1.0/cjules-v0.1.0-linux-x86_64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = cjules-0.1.0-aarch64::https://github.com/hahwul/cjules/releases/download/v0.1.0/cjules-v0.1.0-linux-arm64
+	sha256sums_aarch64 = SKIP
+
+pkgname = cjules
