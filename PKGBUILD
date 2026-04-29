@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=daMA
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('49a5609f637db120fafb17e8ed99ee56')
-b2sums=('56d96fb533be96167601cd61bc9490afe2bcb3bfc92df1383312463663183ff1c3a91bbb428744d92973077b10b95c3955ab7490a9f39d6bbdaa6ca1f2a9078b')
+md5sums=('507bb284ad6a03a04dc64adae0b2812f')
+b2sums=('d1d50e77bf0505bf3fee90f9cab0397c3c7b426472ca6abc645af079115c7d894ebdebbf986ede920a3409e1247497fb8cabaf235647756962e80ec2ff1add58')
 
 build() {
   mkdir build
