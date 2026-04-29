@@ -34,7 +34,7 @@ build() {
 
 package() {
     cd "$srcdir"/$_pkgname
-    install -Dm755 -t "$pkgdir"/usr/bin ${_pkgname%-cli}
+    install -Dm755 $_pkgname "$pkgdir"/usr/bin/${_pkgname%-cli}
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
     install -Dm644 -t "$pkgdir"/usr/share/doc/$_pkgname README.md docs/*.md
 }
