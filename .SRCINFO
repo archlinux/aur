@@ -1,0 +1,24 @@
+pkgbase = lolka-bin
+	pkgdesc = Lolka - voice chat and screen sharing application
+	pkgver = 1.0.85
+	pkgrel = 1
+	url = https://lolka.app
+	install = lolka-bin.install
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = util-linux-libs
+	depends = libsecret
+	depends = pipewire
+	depends = pipewire-pulse
+	optdepends = libappindicator: for system tray icon
+	provides = lolka
+	source = Lolka_1.0.85_amd64.deb::https://storage.yandexcloud.net/lolka-electron/releases/Lolka_1.0.85_amd64.deb
+	sha256sums = a808ffdefbeb8449a9f770ac129d3df2ae59c1cf1261190b66f2356e52896555
+
+pkgname = lolka-bin
