@@ -1,0 +1,9 @@
+post_install() {
+    echo "SISR: To use without rebooting, run:"
+    echo "    sudo modprobe vhci-hcd"
+    echo "    sudo udevadm control --reload-rules && sudo udevadm trigger"
+}
+
+post_upgrade() {
+    post_install
+}
