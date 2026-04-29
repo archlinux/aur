@@ -17,17 +17,24 @@ source=(git+$url)
 sha512sums=(SKIP)
 
 pkgver() {
-    cd "$srcdir/twitch-cli"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir"/$_pkgname
+    git describe --tags --long --abbrev=7 |\
+        sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^production\///'
 }
 
 build() {
-    cd "$srcdir/twitch-cli"
-    go build --ldflags "-X main.buildVersion=source" -o twitch
+    cd "$srcdir"/$_pkgname
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
+    export CGO_LDFLAGS="$LDFLAGS"
+    export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
+    make build
 }
 
 package() {
-    cd "$srcdir/twitch-cli"
-    install -Dm 755 twitch "$pkgdir/usr/bin/twitch"
-    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir"/$_pkgname
+    install -Dm755 -t "$pkgdir"/usr/bin ${_pkgname%-cli}
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$_pkgname README.md docs/*.md
 }
