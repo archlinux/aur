@@ -4,10 +4,14 @@ pkgbase = eta-touchdrv-git
 	pkgrel = 1
 	url = https://github.com/vrdons/eta-touchdrv
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	depends = dkms
+	depends = usbutils
 	depends = systemd
+	optdepends = touchegg: Touchscreen configuraton
+	optdepends = touche: Touchscreen configuraton tool
 	source = eta-touchdrv-git::git+https://github.com/vrdons/eta-touchdrv.git
 	sha256sums = SKIP
 

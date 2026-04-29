@@ -3,11 +3,13 @@ pkgver=0.4.2.rc5.r89.g3a85f93
 pkgrel=1
 pkgdesc='Non-HID touchscreen drivers for Fatih IWBs but source code of server daemons are
 unavailable. They are provided by Vestel.'
-arch=('x86_64')
+arch=('x86_64', 'aarch64')
 url='https://github.com/vrdons/eta-touchdrv'
 license=('GPL3')
 
-depends=('dkms' 'systemd')
+depends=('dkms' 'usbutils' 'systemd')
+optdepends=('touchegg: Touchscreen configuraton'
+            'touche: Touchscreen configuraton tool')
 makedepends=('git')
 
 source=("${pkgname}::git+${url}.git")
