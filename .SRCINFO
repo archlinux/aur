@@ -1,0 +1,18 @@
+pkgbase = hashreaper
+	pkgdesc = Fast hash cracker with network distribution, Russian charsets, and cross-platform
+	pkgver = 3.52
+	pkgrel = 1
+	url = https://github.com/yourusername/hashreaper
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	depends = openssl
+	optdepends = nmap: faster network scan
+	optdepends = traceroute: automatic network detection
+	source = https://github.com/yourusername/hashreaper/archive/v3.52.tar.gz
+	sha256sums = SKIP
+
+pkgname = hashreaper
