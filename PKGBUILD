@@ -9,7 +9,7 @@ pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
 pkgver=4.6.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Godot Engine - Prebuilt binary from GitHub"
 arch=(
   'aarch64'
@@ -67,6 +67,9 @@ prepare(){
   cp -f "org.godotengine.Godot.desktop" "org.godotengine.Godot-mono.desktop"
 
   desktop-file-edit --set-key="Exec" --set-value="godot-mono %f" "org.godotengine.Godot-mono.desktop"
+
+  desktop-file-edit --set-key="Icon" --set-value="godot-mono" "org.godotengine.Godot-mono.desktop"
+
 
 
   desktop-file-edit --set-name="Godot Engine Mono" "org.godotengine.Godot-mono.desktop"

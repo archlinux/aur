@@ -1,7 +1,7 @@
 pkgbase = godot-bin
 	pkgdesc = Godot Engine - Prebuilt binary from GitHub
 	pkgver = 4.6.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://godotengine.org
 	arch = aarch64
 	arch = armv7h
