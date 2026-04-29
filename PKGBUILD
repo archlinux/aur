@@ -4,7 +4,7 @@ pkgbase=nvidia-open-git
 pkgname=(
     'nvidia-open-git'
     'nvidia-open-dkms-git')
-pkgver=595.58.03.r0.gdb0c4e65c
+pkgver=595.71.05.r0.g51edebee7
 pkgrel=1
 pkgdesc='NVIDIA open kernel modules (git version)'
 arch=('x86_64')
@@ -18,21 +18,18 @@ source=('git+https://github.com/NVIDIA/open-gpu-kernel-modules.git'
         '110-nvidia-open-change-dkms-conf.patch'
         '120-nvidia-open-linux-rt-gift.patch'
         '130-nvidia-open-reproducible-build.patch'
-        '140-nvidia-open-gcc-sls.patch'
-        '150-nvidia-open-kernel-7.0.patch')
+        '140-nvidia-open-gcc-sls.patch')
 sha256sums=('SKIP'
             '009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
-            'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916'
-            '54f765d28020cee170d18229e58c46966a19efd4f0bb2053efaf88ba5204d281')
+            'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916')
 
 prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/120-nvidia-open-linux-rt-gift.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/130-nvidia-open-reproducible-build.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
-    patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/150-nvidia-open-kernel-7.0.patch"
     
     sed -i "s/__VERSION_STRING/${pkgver%%.r*}/" open-gpu-kernel-modules/kernel-open/dkms.conf
     
