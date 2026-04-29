@@ -2,7 +2,7 @@
 pkgname=flatpak-enhanced
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A lightweight wrapper for the flatpak tool. Main feature : aliases for applications and runtimes"
+pkgdesc="A lightweight wrapper for the flatpak tool. Main feature : aliases for applications and runtimes."
 url="https://github.com/JiiB1/flatpak-enhanced"
 arch=(x86_64)
 license=(MIT)
@@ -20,22 +20,26 @@ validpgpkeys=(
 )
 
 prepare() {
+    cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked
 }
 
 build() {
+    cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
+    cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
+    cd "$srcdir/$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
