@@ -2,18 +2,18 @@
 
 _target="xtensa-espressif_esp32s2_zephyr-elf"
 pkgname=("zephyr-sdk-gnu-${_target}-bin" "zephyr-sdk-gnu-toolchain-${_target}-bin")
-pkgver=1.0.0
-pkgrel=6
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
 license=('Apache')
 
-source_x86_64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_gnu_linux-x86_64_${_target}.tar.xz")
-source_aarch64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_gnu_linux-aarch64_${_target}.tar.xz")
+source_x86_64+=(zephyr-sdk-${pkgver}_toolchain_gnu_linux-x86_64_${_target}.tar.xz::"https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_gnu_linux-x86_64_${_target}.tar.xz")
+source_aarch64+=(zephyr-sdk-${pkgver}_toolchain_gnu_linux-aarch64_${_target}.tar.xz::"https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_gnu_linux-aarch64_${_target}.tar.xz")
 
-sha256sums_x86_64=('380aaf0d033042edaf7ab091eb4ac7b958f89745181e4d389d5be49f95ec7189')
-sha256sums_aarch64=('613bd543d0ba57a2c75555f6ce1f73b1f1a23d7d57ffe2c864978c9cb8509fac')
+sha256sums_x86_64=('816cef42c9ff6548e2c4efd526969610ba8e853c26978f0288b0ea83b4467d42')
+sha256sums_aarch64=('c3e7778e200653d2ea35877de688d99724711760c29b86c63371255e40debf83')
 
 options=(!strip)
 
