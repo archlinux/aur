@@ -1,6 +1,6 @@
 # Maintainer: dmnmsc
 pkgname=pywebsearch
-pkgver=3.6.5
+pkgver=3.6.6
 pkgrel=2
 pkgdesc="Customizable web search tool with aliases, !bangs and GUI (PyQt6)"
 arch=('any')
@@ -11,7 +11,7 @@ provides=('pywebsearch')
 conflicts=('pywebsearch-git')
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c35963846b172235147ca94586918833b9c13ad271b91e07aca9028b92526e57')
+sha256sums=('ef886b7fff78eff667aaa9d6a13f407a5221c204f14d7a9c49a2fda61bf04574')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
