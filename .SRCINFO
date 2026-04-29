@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-rc-bin
 	pkgver = 10.0.7.sdk203
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dotnet.microsoft.com
 	arch = aarch64
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgname = dotnet-runtime-rc-bin
 
 pkgname = aspnet-runtime-rc-bin
 	pkgdesc = The ASP.NET Core runtime
-	depends = dotnet-runtime-rc-bin>=10.0.7.sdk203-1
+	depends = dotnet-runtime-rc-bin>=10.0.7.sdk203-2
 	provides = aspnet-runtime-rc=10.0.7.sdk203
 	provides = aspnet-runtime-10.0=10.0.7.sdk203
 	conflicts = aspnet-runtime-rc
@@ -61,7 +61,7 @@ pkgname = dotnet-targeting-pack-rc-bin
 
 pkgname = aspnet-targeting-pack-rc-bin
 	pkgdesc = The ASP.NET Core targeting pack
-	depends = dotnet-targeting-pack-rc-bin>=10.0.7.sdk203-1
+	depends = dotnet-targeting-pack-rc-bin>=10.0.7.sdk203-2
 	provides = aspnet-targeting-pack-rc=10.0.7.sdk203
 	provides = aspnet-targeting-pack-10.0=10.0.7.sdk203
 	conflicts = aspnet-targeting-pack-rc
@@ -69,9 +69,9 @@ pkgname = aspnet-targeting-pack-rc-bin
 
 pkgname = dotnet-sdk-rc-bin
 	pkgdesc = The .NET Core SDK
-	depends = dotnet-runtime-rc-bin>=10.0.7.sdk203-1
-	depends = dotnet-targeting-pack-rc-bin>=10.0.7.sdk203-1
-	optdepends = dotnet-aspnet-targeting-pack-rc-bin: Build ASP.NET Core applications
+	depends = dotnet-runtime-rc-bin>=10.0.7.sdk203-2
+	depends = dotnet-targeting-pack-rc-bin>=10.0.7.sdk203-2
+	optdepends = aspnet-targeting-pack-rc-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk-rc=10.0.7.sdk203
 	provides = dotnet-sdk-10.0=10.0.7.sdk203
 	conflicts = dotnet-sdk-rc

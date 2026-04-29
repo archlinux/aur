@@ -14,7 +14,7 @@ pkgver=10.0.7.sdk203
 _runtimever="$(sed -E 's/\.sdk[0-9]+([A-Za-z]+)/-\1./g; s/\.sdk.*//' <<< "${pkgver}")"
 _dotnetver="$(cut -d. -f1,2 <<< "${_runtimever%%-*}")"
 _sdkver="$(sed -E 's/([0-9]+)\.sdk([0-9]+)([A-Za-z]+)/\2-\3./g; s/[0-9]+\.sdk//g' <<< "${pkgver}")"
-pkgrel=1
+pkgrel=2
 declare -Ag _arch=(
   ['aarch64']='arm64'
   ['armv7h']='arm'
@@ -198,7 +198,7 @@ package_dotnet-sdk-rc-bin() {
     "${pkgname//sdk/targeting-pack}>=${pkgver}-${pkgrel}"
   )
   optdepends=(
-    "${pkgname//sdk/aspnet-targeting-pack}: Build ASP.NET Core applications"
+    "${pkgname//dotnet-sdk/aspnet-targeting-pack}: Build ASP.NET Core applications"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
