@@ -1,13 +1,13 @@
 # Maintainer: Nareg der Levonean <naregderlevonean@gmail.com>
 pkgname=hyprspin-git
 _pkgname=hyprspin
-pkgver=r2.40e51df
+pkgver=r3.023fb5d
 pkgrel=1
 pkgdesc="A lightweight, automated screen rotation daemon for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/naregderlevonean/hyprspin"
 license=('GPL3')
-depends=('gcc-libs' 'glibc' 'dbus')
+depends=('gcc-libs' 'glibc' 'dbus' 'lua')
 makedepends=('rust' 'cargo' 'git')
 optdepends=('iio-sensor-proxy: required for accelerometer sensing')
 provides=("$_pkgname")
@@ -26,13 +26,13 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
     export CARGO_HOME="$srcdir/cargo-home"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$srcdir/$_pkgname"
     export CARGO_HOME="$srcdir/cargo-home"
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
