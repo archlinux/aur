@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fdrame
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6870046d24259cf94750e22f11d6609a')
-b2sums=('108b2c96a5a777bf0b9be0d8f5851aa41e31a6037036b3dab484892866f8058c9dab81e251c515b5e997a049ecab649621980069dd4ca46dc9fba8ff9a7c53e2')
+md5sums=('04bd913a4a1dd814acbc08eaf9379295')
+b2sums=('f8752876c224ec30fb452131f2e57ccba8bd865814921f350ffe020682ef0e2a32668d904dca960e5a049b8b132d18edf107b6ad54513c21b87f221075ded4e7')
 
 build() {
   mkdir build
