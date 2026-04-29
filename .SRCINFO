@@ -1,6 +1,6 @@
 pkgbase = uac-launch-control-bin
 	pkgdesc = A launcher for managing Doom mods and configurations
-	pkgver = 0.2.420
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/mikkelrask/uaclaunchcontrol
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = uac-launch-control-bin
 	depends = libxss
 	depends = libxtst
 	depends = xdg-utils
-	source = uac-launch-control-bin-0.2.420.tar.gz::https://github.com/mikkelrask/uaclaunchcontrol/releases/download/v0.2.420/uac-launch-control-0.2.420-linux-x64.tar.gz
+	source = uac-launch-control-bin-0.2.5.tar.gz::https://github.com/mikkelrask/uaclaunchcontrol/releases/download/v0.2.5/uac-launch-control-0.2.5-linux-x64.tar.gz
 	sha256sums = SKIP
 
 pkgname = uac-launch-control-bin
