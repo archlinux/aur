@@ -2,7 +2,7 @@
 
 _name=banks
 pkgname=python-${_name}
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="LLM prompt language based on Jinja"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('8cbf1553f14c44d4f7e9c2064ad9212ce53ee4da000b2f8308d548b60db56655')
+sha256sums=('cda6013bd377ea7b701933578bfb9370fc21ad70bc13cedfc3f5cb2c034ca3dc')
 
 build() {
     cd "${srcdir}"/${_name//-/_}-${pkgver}
