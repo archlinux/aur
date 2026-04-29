@@ -1,8 +1,8 @@
 # Maintainer: Koutheir Attouchi <koutheir@gmail.com>
 pkgname=weave-bin
 pkgver=0.3.2
-pkgrel=1
-pkgdesc='Entity-level semantic merge driver for Git'
+pkgrel=2
+pkgdesc='Entity-level semantic merge driver for Git. Resolves merge conflicts that Git cannot by understanding code structure via tree-sitter'
 url="https://github.com/Ataraxy-Labs/weave/tree/v${pkgver}"
 license=('Apache-2.0' 'MIT')
 arch=('x86_64')
