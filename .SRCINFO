@@ -9,6 +9,7 @@ pkgbase = moulti
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-hatchling
 	depends = bash
 	depends = python
 	depends = python-argcomplete
