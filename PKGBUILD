@@ -2,7 +2,7 @@
 # Maintainer: sukanka
 
 _pkgname=linuxqq
-_base_pkgver=3.2.27_260401
+_base_pkgver=3.2.28_260429
 _update_pkgver=${_base_pkgver}
 #_md5=08c52833
 pkgname=linuxqq-nt-bwrap
@@ -32,15 +32,15 @@ source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_${_base_pkgver}_a
 source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_${_base_pkgver}_loongarch64_01.deb")
 source=('start.sh' 'start_normal.sh' 'start_mac_fix.sh' 'start_inner.sh' 'config.json' 'resolv.conf' 'xdg-open.sh')
 sha256sums=('2748a351259d378ab9773000cbf1ea0448de5ae92f28bb9e366fa795e1715739'
-            '46958947a35bde1cea2a2f2da6e8296fcb6752d84b6c62b2a49f6959d3235912'
-            '801d778cb2cecca21cc294651ac5c85ad1c8cdd8c805c9d491740dd13bb9c7dc'
-            '3c78b576aa5d07e4cacde95d1088530503478bb0d43d19371c5da56f675d9861'
-            'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'
-            'cc002ee0eb2e8702c97d16f4ce628841cd5fe10195875a075432e92248741424'
-            'f1c778b5a8b23bc77fd8e5e89056fea07309794c9a44ec38134a176cf1f7b675')
-sha256sums_x86_64=('888e60734552640cda6f607ec3523fea27520ffcf1e393aefaecaa489cc20be7')
-sha256sums_aarch64=('b062d83c075999cc46cbedcba3b3047845f2b2a3f6e174d669063f88cf5b44b5')
-sha256sums_loong64=('3a2cf18c53975373ca8460d29512b6ccdf1497e3001abb264384bfd27de987de')
+	'46958947a35bde1cea2a2f2da6e8296fcb6752d84b6c62b2a49f6959d3235912'
+	'801d778cb2cecca21cc294651ac5c85ad1c8cdd8c805c9d491740dd13bb9c7dc'
+	'3c78b576aa5d07e4cacde95d1088530503478bb0d43d19371c5da56f675d9861'
+	'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'
+	'cc002ee0eb2e8702c97d16f4ce628841cd5fe10195875a075432e92248741424'
+	'f1c778b5a8b23bc77fd8e5e89056fea07309794c9a44ec38134a176cf1f7b675')
+sha256sums_x86_64=('68e79d74acdc0c5a70efa8ea1d8b6410b51a21906843774d382f32e0e3a1f0d7')
+sha256sums_aarch64=('80c49f4f2ee631cb9b730db737bc48983736a0776c5ae1a5b2702acc0eeb2428')
+sha256sums_loong64=('6bc61d0883af0c1162e7e28a06c21db531d8266888412e4af546f3feabb7af42')
 
 prepare() {
 	local base_ver=${_base_pkgver}
@@ -69,7 +69,7 @@ package() {
 	ln -s "/opt/QQ/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
 
 	# 删除原生库
-	rm -f "${pkgdir}"/opt/QQ/resources/app/{libssh2.so.1,libunwind*,sharp-lib/libvips-cpp.so.42}
+	rm -f "${pkgdir}"/opt/QQ/resources/app/{libssh2.so.1,libunwind*}
 
 	# 对 desktop 文件做处理，使其使用正确的图标，启动 start.sh
 	cp "${srcdir}/start"*".sh" "${pkgdir}/opt/QQ/"
