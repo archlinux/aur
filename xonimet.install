@@ -1,0 +1,18 @@
+post_install() {
+    echo ":: XONIMET instalado correctamente"
+    echo ":: Para usar:"
+    echo "   xonimet                    # Modo interactivo"
+    echo "   xonimet foto.jpg           # Analizar imagen"
+    echo "   xonimet video.mp4 --pdf    # Generar reporte PDF"
+    echo ""
+    echo ":: Configuracion en: ~/.xonimet/"
+}
+
+post_upgrade() {
+    echo ":: XONIMET actualizado"
+}
+
+pre_remove() {
+    echo ":: Eliminando XONIMET"
+    echo ":: Los archivos en ~/.xonimet/ se conservan"
+}

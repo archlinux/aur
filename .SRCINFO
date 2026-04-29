@@ -1,0 +1,21 @@
+pkgbase = xonimet
+	pkgdesc = Extractor universal de metadatos para fotos, audio, video y documentos. Genera reportes PDF.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/XONIDU/xonimet
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pillow
+	depends = python-mutagen
+	depends = python-pypdf2
+	depends = python-python-docx
+	depends = python-openpyxl
+	depends = python-python-pptx
+	depends = python-exifread
+	depends = python-reportlab
+	optdepends = ffmpeg: necesario para extraer metadatos de videos
+	source = xonimet-2.1.0.tar.gz::https://github.com/XONIDU/xonimet/archive/v2.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = xonimet
