@@ -1,7 +1,7 @@
 pkgbase = python-tree-sitter-swift
 	pkgdesc = Swift grammar for tree-sitter
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 5
 	url = https://pypi.org/project/tree-sitter-swift/
 	arch = any
 	license = MIT
