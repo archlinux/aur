@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DNAcopy
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2f6ecfaf23882e5d8fc23759dad5e876')
-b2sums=('89ab4316448e5e75c106ccdd40ce3c11a7c3ef7cab6a30a49d9e2974e12528841fb9d3ca5296245e6de43471328da011099aed7c23df7e9d947fb3890d0e90d0')
+md5sums=('e4ca419dc4356852a35d8a590d6a2ab3')
+b2sums=('87dbe20940574d29decd9aa223bcf486207979cab0f22ec093c970a4a92c0f44d4994236d3e72bcaaeaf866f2480971a21c0d8d38fa44badce29da8a02699741')
 
 build() {
   mkdir build
