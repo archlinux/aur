@@ -1,6 +1,6 @@
 pkgbase = r-orderedlist
 	pkgdesc = Similarities of Ordered Gene Lists
-	pkgver = 1.82.0
+	pkgver = 1.84.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OrderedList
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-orderedlist
 	depends = r
 	depends = r-biobase
 	depends = r-twilight
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OrderedList_1.82.0.tar.gz
-	sha256sums = be0f586cfa4e344f897cec37f9641e9e1ea4f7907a243e1385dffa799d4fcb83
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OrderedList_1.84.0.tar.gz
+	sha256sums = ad7e2196ea0cac1612b67b5419325112c91f1013859f76f75f101b36d5401496
 
 pkgname = r-orderedlist
