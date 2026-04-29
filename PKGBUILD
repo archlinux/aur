@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rbsurv
-_pkgver=2.68.0
+_pkgver=2.70.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c3debb33bc59b1a4e1c71904091c7f91')
-b2sums=('1a4b2a3b7fca381776184f18f18c42ccea66d98793eda89a4b31d473a764232bdc82a762ad70d0d531a00123a924eea57a1910aeeb10b298ccfd8d679b921d6b')
+md5sums=('f6b5ee1098c4ae85f55a2281666b5793')
+b2sums=('be45347a590915df1587161b9c985305b20bde6d43e98cfc8c3f72204162461d2906a6045c3b63cdf65c87e6ca6d3581108da06c9af45b17261728114f779037')
 
 build() {
   mkdir build

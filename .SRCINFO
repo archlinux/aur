@@ -1,13 +1,13 @@
 pkgbase = r-rbsurv
 	pkgdesc = Robust likelihood-based survival modeling with microarray data
-	pkgver = 2.68.0
+	pkgver = 2.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rbsurv
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rbsurv_2.68.0.tar.gz
-	md5sums = c3debb33bc59b1a4e1c71904091c7f91
-	b2sums = 1a4b2a3b7fca381776184f18f18c42ccea66d98793eda89a4b31d473a764232bdc82a762ad70d0d531a00123a924eea57a1910aeeb10b298ccfd8d679b921d6b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rbsurv_2.70.0.tar.gz
+	md5sums = f6b5ee1098c4ae85f55a2281666b5793
+	b2sums = be45347a590915df1587161b9c985305b20bde6d43e98cfc8c3f72204162461d2906a6045c3b63cdf65c87e6ca6d3581108da06c9af45b17261728114f779037
 
 pkgname = r-rbsurv
