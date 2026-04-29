@@ -1,7 +1,7 @@
 pkgbase = pixora-icons-git
 	pkgdesc = 16-bit icons theme for Linux desktops. (GIT version)
 	pkgver = 1.0.0.r302.g8359016
-	pkgrel = 12
+	pkgrel = 13
 	url = https://github.com/tsora1603/pixora-icons
 	arch = any
 	license = GPL-3.0-or-later
