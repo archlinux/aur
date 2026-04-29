@@ -1,10 +1,10 @@
 pkgname=gnome-shell-extension-bing-wallpaper
-pkgver=52
+pkgver=53
 pkgrel=1
 pkgdesc="Changes your wallpaper daily to the bing.com background image"
 arch=(any)
 url="https://github.com/neffo/bing-wallpaper-gnome-extension"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=('gnome-shell>=40.0')
 makedepends=(
 glib2
@@ -15,7 +15,7 @@ git
 )
 #_commit=b3f1357de10fc8c12c0eea6eb574a4b9c2716409
 source=("git+https://github.com/neffo/bing-wallpaper-gnome-extension.git#tag=v${pkgver}")
-sha256sums=('e64c4fc53e8b04fffaea31440dea7f676256e0758c3bec337720bb13659c8e2a')
+b2sums=('c87fc951422516fd8b7037d7e7bb6eb114c6999f660f1dc26e38d45403a048d8d381cd08c4250c4d22ffeb02432f5a5ceba89603b6794f242e74380c88e5a26f')
 
 prepare() {
   cd bing-wallpaper-gnome-extension
@@ -25,8 +25,11 @@ build() {
   cd bing-wallpaper-gnome-extension
   glib-compile-schemas schemas/
   intltool-extract --type=gettext/glade ui/prefsadw.ui
-  intltool-extract --type=gettext/glade ui/carousel4.ui
-  xgettext -k -k_ -kN_ --omit-header -o locale/BingWallpaper.pot ui/prefsadw.ui.h ui/carousel4.ui.h extension.js prefs.js blur.js utils.js --from-code=UTF-8
+  xgettext -k -k_ -kN_ --omit-header -o locale/BingWallpaper.pot \
+	  ui/prefsadw.ui.h \
+	  ui/intervals.utils.js.h \
+	  extension.js prefs.js \
+	  --from-code=UTF-8
 
   for D in locale/*; do
       if [ -d "${D}" ]; then
