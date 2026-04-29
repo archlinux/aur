@@ -1,7 +1,7 @@
 pkgbase = tracy
 	pkgdesc = Real-time, nanosecond resolution frame profiler
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wolfpld/tracy
 	arch = i686
 	arch = x86_64
