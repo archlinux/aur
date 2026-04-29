@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TCGAbiolinksGUI.data
-_pkgver=1.30.0
+_pkgver=1.31.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9bc34b80673f6e1e25a5435bcc7b4a1a')
-b2sums=('b156f6a69f7cd56c13bd45dcc270add79fca9b7a9b87bafa732df2c7667ce6b4686de45583bc016cb5568056d3266c811046de5fc0b45751c01a791f3c24ac4d')
+md5sums=('8ec56927bc8a720a3aef41efbc68f5c3')
+b2sums=('ac71d8e10c1147e72df4153358af60ec226faf1569bcf521933d92cee7457266418d8bbdb1c92ad16a5a1fb8aa7f0f575bf490c15edf685c9533d29e54c3e39d')
 
 build() {
   mkdir build
