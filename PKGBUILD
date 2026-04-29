@@ -7,7 +7,7 @@
 
 pkgname=spotdl
 pkgver=4.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Download your Spotify playlists and songs along with album art and metadata (from YouTube if a match is found).'
 arch=('any')
 url='https://github.com/spotDL/spotify-downloader'
@@ -18,10 +18,7 @@ license=('MIT')
 depends=(
 	'ffmpeg'
 	'python'
-	'python-bandcamp-api'
 	'python-beautifulsoup4'
-	'python-dacite'
-	'python-demjson3'
 	'python-fastapi'
 	'python-jinja'
 	'python-mutagen'
