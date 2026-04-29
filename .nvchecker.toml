@@ -1,0 +1,6 @@
+[citron-neo]
+source = "github"
+github = "citron-neo/emulator"
+use_max_release = true
+from_pattern = "-"
+to_pattern = "."
