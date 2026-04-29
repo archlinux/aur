@@ -1,6 +1,6 @@
 pkgbase = graphify
 	pkgdesc = AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph
-	pkgver = 0.5.0
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/safishamsi/graphify
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = graphify
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = python>=3.10
+	depends = python
 	depends = python-networkx
 	depends = python-tree-sitter>=0.23.0
 	depends = python-tree-sitter-python
@@ -44,9 +44,10 @@ pkgbase = graphify
 	optdepends = python-openpyxl: Office document support
 	optdepends = python-faster-whisper: Video transcription support
 	optdepends = yt-dlp: Video download support
+	optdepends = python-openai: Kimi K2 LLM support
 	provides = graphifyy
 	conflicts = graphifyy
-	source = graphify-0.5.0.tar.gz::https://github.com/safishamsi/graphify/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 6383f17d1f23d653d15bc22ad638b3f263ab4f8d91cc656dc36e31c9fb9a48c9
+	source = graphify-0.5.5.tar.gz::https://github.com/safishamsi/graphify/archive/refs/tags/v0.5.5.tar.gz
+	sha256sums = 8be6ac0d2b0f28b4d8992aa2ac7df82ce530ff1b97488c9c54be5bb3d55e5df0
 
 pkgname = graphify
