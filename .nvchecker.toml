@@ -1,0 +1,6 @@
+[usque]
+source = "github"
+github = "Diniboy1123/usque"
+use_latest_release = true
+include_prereleases = false
+prefix = "v"
