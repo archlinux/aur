@@ -1,6 +1,6 @@
 pkgbase = oh-my-pi
 	pkgdesc = AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more
-	pkgver = 14.5.5
+	pkgver = 14.5.6
 	pkgrel = 1
 	url = https://github.com/can1357/oh-my-pi
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = oh-my-pi
 	depends = icu
 	depends = zlib
 	options = !strip
-	source = oh-my-pi-14.5.5.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v14.5.5.tar.gz
-	sha256sums = 9ca675c5076fe2992182bde377c86e555ff93bc516e9fb573ec7d954a92819e3
+	source = oh-my-pi-14.5.6.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v14.5.6.tar.gz
+	sha256sums = 5a5ce0730020c5f7d98dbdf2096c8cc2fe604bbebd346a8eccece29638ca4e0d
 
 pkgname = oh-my-pi
