@@ -1,6 +1,6 @@
 pkgbase = r-olin
 	pkgdesc = Optimized local intensity-dependent normalisation of two-color microarrays
-	pkgver = 1.88.0
+	pkgver = 1.90.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OLIN
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-olin
 	depends = r-locfit
 	depends = r-marray
 	optdepends = r-convert
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OLIN_1.88.0.tar.gz
-	sha256sums = 4eea903f3d509e113cf06bdebb9673f75c4b039607ffd734adcc6976bc61a4ed
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OLIN_1.90.0.tar.gz
+	sha256sums = ec39a08b1a6c3197c551d443de779adce2f25233990708b6697b7d3b0ef37f66
 
 pkgname = r-olin
