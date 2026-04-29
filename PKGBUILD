@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seq2pathway.data
-_pkgver=1.42.0
+_pkgver=1.43.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3e34561167f4db5731cc8778cbe3b75e')
-b2sums=('1260e9ce53969373dea23a9e071c3e27662798f3b6d8a40b38c1de43dc95faf975fda068b30f7a26ac2ebb6f6395e2ffcb871fc624533b540e89b4529bad7309')
+md5sums=('cd7c4e56ecf40bc3f05f53c813459602')
+b2sums=('a15d77a30b2e37216215ecc71762a2ad4723796253e4878b21b262819989dd97bfa1bc11da6a765417a21b5094fda7ad86dcb999b37ca6c5117accffc5af5449')
 
 build() {
   mkdir build
