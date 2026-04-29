@@ -1,16 +1,16 @@
 pkgbase = zephyr-sdk-gnu-xtensa-intel_ace30_ptl_zephyr-elf-bin
 	pkgdesc = SDK for Zephyr real-time operating system
-	pkgver = 1.0.0
-	pkgrel = 6
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	options = !strip
-	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-intel_ace30_ptl_zephyr-elf.tar.xz
-	sha256sums_x86_64 = 3781cdf5be2bce9982095e73b6f0f6414eb896e6b9dfaa7cd673a38c0ed78f5b
-	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-intel_ace30_ptl_zephyr-elf.tar.xz
-	sha256sums_aarch64 = 65c90739f23f6bd8487a9273f415c7c006b889964056e164bdca0a6aefac184b
+	source_x86_64 = zephyr-sdk-1.0.1_toolchain_gnu_linux-x86_64_xtensa-intel_ace30_ptl_zephyr-elf.tar.xz::https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/toolchain_gnu_linux-x86_64_xtensa-intel_ace30_ptl_zephyr-elf.tar.xz
+	sha256sums_x86_64 = 98a4416e9ec43483fca2c3810d1554da7fd4aa01fd84fa7da86883db4c3463d3
+	source_aarch64 = zephyr-sdk-1.0.1_toolchain_gnu_linux-aarch64_xtensa-intel_ace30_ptl_zephyr-elf.tar.xz::https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/toolchain_gnu_linux-aarch64_xtensa-intel_ace30_ptl_zephyr-elf.tar.xz
+	sha256sums_aarch64 = 3e830f65e6690f3c8cf0f192bc8fac0ee6bfcca7fa081f861e6fad1222ba76f1
 
 pkgname = zephyr-sdk-gnu-xtensa-intel_ace30_ptl_zephyr-elf-bin
 	depends = cmake
@@ -19,10 +19,10 @@ pkgname = zephyr-sdk-gnu-xtensa-intel_ace30_ptl_zephyr-elf-bin
 	depends = dtc
 	depends = tk
 	depends = xz
-	depends = zephyr-sdk-cmake-modules=1.0.0
-	depends = zephyr-sdk-profile=1.0.0
-	depends = zephyr-sdk-hosttools-bin=1.0.0
-	depends = zephyr-sdk-gnu-toolchain-xtensa-intel_ace30_ptl_zephyr-elf-bin=1.0.0
+	depends = zephyr-sdk-cmake-modules=1.0.1
+	depends = zephyr-sdk-profile=1.0.1
+	depends = zephyr-sdk-hosttools-bin=1.0.1
+	depends = zephyr-sdk-gnu-toolchain-xtensa-intel_ace30_ptl_zephyr-elf-bin=1.0.1
 	optdepends = ninja
 	optdepends = make
 	optdepends = ccache
