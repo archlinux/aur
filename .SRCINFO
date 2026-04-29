@@ -1,0 +1,14 @@
+pkgbase = komitoto
+	pkgdesc = A CLI assistant for HAM
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/IRendy/komitoto
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/IRendy/komitoto.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = komitoto
