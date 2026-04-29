@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.9.23.r1.g23c1fb2
+pkgver=0.9.27.r4.g7bed9c6
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -43,7 +43,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/desktop/package.json" | tr -d '^')
+    _elec_ver=$(find "${srcdir}" -maxdepth 3 -name "package.json" ! -name "node_modules" \
+        -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
+    _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
@@ -55,7 +57,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -65,27 +66,28 @@ prepare() {
         --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
+    local HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-        } >> .yarnrc
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
-        echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> "${srcdir}/${pkgname//-/.}/app/.gitconfig"
-        echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname//-/.}/app/.gitconfig"
-        echo app lib desktop desktop/backend runner | xargs -n 1 cp .yarnrc
+        export YARN_REGISTRY="https://registry.npmmirror.com"
+        export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+        export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+        export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        export NODIST_URL_BASE="https://npmmirror.com/mirrors/node/"
+        export npm_config_disturl="https://npmmirror.com/mirrors/node/"
+        export npm_config_devdir="${srcdir}/.node-gyp"
+        export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+        export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
+        export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
+        export YARN_USE_HARDLINKS=true
+        # export YARN_BUILD_FROM_SOURCE=true
+        export YARN_LINK_WORKSPACE_PACKAGES=true
+        export YARN_FETCH_RETRIES=3
+        export YARN_FETCH_RETRY_TIMEOUT=10000
+        export YARN_NETWORK_CONCURRENCY=32
+        yarn config set registry "https://registry.npmmirror.com"
+        npm config set registry "https://registry.npmmirror.com"
     fi
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}/app/build"
@@ -112,15 +114,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    find "${srcdir}/${pkgname//-/.}/desktop/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/${pkgname//-/.}/desktop/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${pkgname//-/.}/desktop/dist/linux-"*"/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/desktop/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
