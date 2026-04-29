@@ -1,6 +1,6 @@
 pkgbase = arksigner-pub
 	pkgdesc = ArkSigner e-Imza ve AKİS Akıllı Kart Uygulaması
-	pkgver = 2.3.13
+	pkgver = 2.3.15
 	pkgrel = 2
 	url = https://www.arksigner.com
 	install = arksigner-pub.install
@@ -12,7 +12,7 @@ pkgbase = arksigner-pub
 	depends = qt5-base
 	depends = qt5-websockets
 	depends = nss
-	source = https://downloads.arksigner.com/files/arksigner-pub-2.3.13.deb
+	source = https://downloadark.com/arksigner-pub-2.3.15.deb
 	source = arksigner.service
 	sha256sums = SKIP
 	sha256sums = SKIP

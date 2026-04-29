@@ -1,6 +1,6 @@
 # Maintainer: Mete ÇİFTÇİ <e.meteciftci@gmail.com>
 pkgname=arksigner-pub
-pkgver=2.3.13
+pkgver=2.3.15
 pkgrel=2
 pkgdesc="ArkSigner e-Imza ve AKİS Akıllı Kart Uygulaması"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('pcsclite' 'ccid' 'openssl-1.0' 'qt5-base' 'qt5-websockets' 'nss')
 install="arksigner-pub.install"
 
-source=("https://downloads.arksigner.com/files/arksigner-pub-${pkgver}.deb"
+source=("https://downloadark.com/arksigner-pub-${pkgver}.deb"
         "arksigner.service")
 sha256sums=('SKIP'
             'SKIP')
