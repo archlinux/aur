@@ -13,7 +13,7 @@ makedepends=(
   'git'
 )
 depends=()
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 build() {
@@ -34,9 +34,7 @@ package() {
 
   cargo install --root "$pkgdir" --path . --locked
 
-
   install -Dm644 -t "$pkgdir/usr/share/$pkgname/" "hamradio-zones-geojson-main/"*
-
 
   # 4. 安装许可证
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
