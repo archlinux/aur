@@ -1,6 +1,6 @@
 pkgbase = i3ipc-python-git
 	pkgdesc = An improved Python library to control i3wm
-	pkgver = r268
+	pkgver = r404.1662929327.9de8e88
 	pkgrel = 1
 	url = https://github.com/acrisci/i3ipc-python
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = i3ipc-python-git
 	depends = python
 	depends = python-xlib
 	provides = i3ipc-python
+	provides = python-i3ipc
 	conflicts = i3ipc-python
 	source = i3ipc-python::git+https://github.com/acrisci/i3ipc-python.git
 	sha512sums = SKIP
 
 pkgname = i3ipc-python-git
-
