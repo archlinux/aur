@@ -8,6 +8,7 @@ pkgbase = rencal-bin
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
+	depends = libnotify
 	provides = rencal
 	conflicts = rencal
 	options = !debug
