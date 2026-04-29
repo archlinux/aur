@@ -1,7 +1,7 @@
 pkgbase = twitch-cli
 	pkgdesc = The official Twitch CLI to make developing on Twitch easier
 	pkgver = 1.1.24
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/twitchdev/twitch-cli
 	arch = x86_64
 	license = Apache-2.0
