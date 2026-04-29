@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=vineflower-bin
-pkgver=1.11.2
-pkgrel=2
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='Vineflower Java decompiler (prebuilt jar)'
 arch=('any')
 url='https://vineflower.org/'
@@ -13,7 +13,7 @@ options=('!debug')
 source=(
   "vineflower-${pkgver}.jar::https://github.com/Vineflower/vineflower/releases/download/${pkgver}/vineflower-${pkgver}.jar"
 )
-sha256sums=('e1e2415e7f78b34960402c4beddfc88e033d7842a23ecd132a8ec2eadd54f6bf')
+sha256sums=('1dfcfe974395734fa467ce620661c7623d05ba83670de0529b1fbd63ff548b9d')
 
 noextract=(
   "vineflower-${pkgver}.jar"
