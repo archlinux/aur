@@ -26,10 +26,10 @@ package() {
     bsdtar -xf data.tar.* -C "${srcdir}/data"
     cp -dr --no-preserve=ownership "${srcdir}/data/usr" "${pkgdir}/"
     mv "${pkgdir}/usr/bin/psysonic" "${pkgdir}/usr/bin/psysonic-bin-rc"
-    cat <<WRAPPER > "${pkgdir}/usr/bin/psysonic"
+    cat <<EOF > "${pkgdir}/usr/bin/psysonic"
 #!/bin/sh
 exec /usr/bin/psysonic-bin-rc "\$@"
-WRAPPER
+EOF
     chmod +x "${pkgdir}/usr/bin/psysonic"
     local df=$(find "${pkgdir}/usr/share/applications" -name "*.desktop")
     if [ -f "$df" ]; then
