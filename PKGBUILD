@@ -1,10 +1,10 @@
 # Maintainer: Chair <sergeyponomorev0@gmail.com>
 pkgname=hashreaper
 pkgver=3.52
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast hash cracker with network distribution, Russian charsets, and cross-platform"
-arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/yourusername/hashreaper"
+arch=('x86_64' 'aarch64')
+url="https://github.com/xZxZxPussyslayer228xZxZx/HashReaper"
 license=('GPL3')
 depends=('openssl')
 makedepends=('gcc' 'make')
@@ -13,11 +13,11 @@ source=("https://github.com/xZxZxPussyslayer228xZxZx/HashReaper/archive/Stable.t
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/HashReaper-Stable"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/HashReaper-Stable"
   make install DESTDIR="$pkgdir" PREFIX="/usr"
 }

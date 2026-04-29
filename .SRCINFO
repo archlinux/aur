@@ -1,11 +1,10 @@
 pkgbase = hashreaper
 	pkgdesc = Fast hash cracker with network distribution, Russian charsets, and cross-platform
 	pkgver = 3.52
-	pkgrel = 1
-	url = https://github.com/yourusername/hashreaper
+	pkgrel = 2
+	url = https://github.com/xZxZxPussyslayer228xZxZx/HashReaper
 	arch = x86_64
 	arch = aarch64
-	arch = armv7h
 	license = GPL3
 	makedepends = gcc
 	makedepends = make
