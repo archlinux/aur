@@ -1,5 +1,5 @@
 pkgbase = radiogogo-bin
-	pkgdesc = Go-powered CLI to surf global radio waves via a sleek TUI.
+	pkgdesc = Go-powered CLI to surf global radio waves via a sleek TUI
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/matteo-pacini/RadioGoGo

@@ -4,7 +4,7 @@ _pkgname="radiogogo"
 pkgname="${_pkgname}-bin"
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="Go-powered CLI to surf global radio waves via a sleek TUI."
+pkgdesc="Go-powered CLI to surf global radio waves via a sleek TUI"
 arch=(
   'aarch64'
   'armv6h'
