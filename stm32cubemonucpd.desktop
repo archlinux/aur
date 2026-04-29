@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=STM32CubeMonUCPD
-Comment=STM32CubeMonUCPD 1.3.0
+Comment=STM32CubeMonUCPD 1.4.0
 GenericName=STM32CubeMonUCPD
 Exec=stm32cubemonucpd
 Icon=stm32cubemonucpd

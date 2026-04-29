@@ -4,7 +4,7 @@ pkgname=stm32cubemonucpd
 _pkgname=STM32CubeMonUCPD
 _pkg_file_name=en.stm32cubemonucpd-lin.zip
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Monitoring and configuration software tool for STM32 USB-C and Power Delivery 3.0 applications"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemonucpd.html"
@@ -13,23 +13,17 @@ depends=('stlink')
 #depends=('java-runtime=8' 'java8-openjfx')
 options=('!strip')
 
-# Extract actual direct download link */
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/stm32cubemonucpd/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
-_curl_req="$(curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$_curl_req_url" )"
+if [ ! -f ${PWD}/${_pkg_file_name} ]; then
+	echo ""
+	echo "Package not found!"
+	echo "The ${pkgname} can be downloaded here: ${url}"
+	echo "Please remember to put a downloaded package ${_pkg_file_name} into the build directory (${PWD}) before build."
+	echo ""
+fi
 
-# Extract actual download link to the desired file
-_pkg_url="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
-_pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
-_download_path="https://www.st.com""$_pkg_url"
-#echo $_download_path
+DLAGENTS=("https::/usr/bin/curl -gqb '' --retry 3 --retry-delay 3 -H "@${srcdir}http_headers" -o %o -L --compressed %u")
 
-DLAGENTS=("https::/usr/bin/curl \
-              -gqb '' --retry 3 --retry-delay 3 \
-              --cookie "${srcdir}http_cookies" \
-              -H "@${srcdir}http_headers" \
-              -o %o --compressed %u")
-
-source=("${_pkg_file_name}"::"https://www.st.com""$_pkg_url"
+source=("local://${_pkg_file_name}"
 	"http_headers"
 	"stm32cubemonucpd.desktop"
 	"stm32cubemonucpd")

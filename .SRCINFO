@@ -1,13 +1,13 @@
 pkgbase = stm32cubemonucpd
 	pkgdesc = Monitoring and configuration software tool for STM32 USB-C and Power Delivery 3.0 applications
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.st.com/en/development-tools/stm32cubemonucpd.html
 	arch = x86_64
 	license = custom:SLA0048
 	depends = stlink
 	options = !strip
-	source = en.stm32cubemonucpd-lin.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group1/51/65/16/70/bb/a5/41/8e/stm32cubemonucpd-lin/files/stm32cubemonucpd-lin.zip/jcr:content/translations/en.stm32cubemonucpd-lin.zip
+	source = local://en.stm32cubemonucpd-lin.zip
 	source = http_headers
 	source = stm32cubemonucpd.desktop
 	source = stm32cubemonucpd
