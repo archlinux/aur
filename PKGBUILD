@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BridgeDbR
-_pkgver=2.20.0
+_pkgver=2.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c6fe3d37ebcfc47442a0f46cd921ab18')
-b2sums=('842ef8aa17e20b21cb25d2614f0c60edec07f693245497f7617734a6219253b09d6d954483d662b2c34bffb9a70cb0a1ea7f30308e9623301f7887a343ed45a2')
+md5sums=('2e0080b4ac172b4b1a23ff4fc82cb5e1')
+b2sums=('24b4f824752cefa40e397933fab3a5903ea6472e519647dfc1e3ed80fafa2f0163a967a888cc56742a54464b971ab159de099ba223e7748efe2c5ce8b2caa530')
 
 build() {
   mkdir build
