@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PathNet
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dcc69467d6eb510148612c7330b2db6d')
-b2sums=('4ea10bfaeef151b37fc289bfb242ab50fba79c6a3ec38eada499713a93cbb197c0291a85f5f51081d5dcc582dc5cd833ead5812a742bc23882c437447f9ee6d8')
+md5sums=('b02488a354a81ad33c20c1f9fa0f4bce')
+b2sums=('e3c36298388b2bb1fdceab615ae064d960ecf9e01295eededb3873d1d771e9607d187a89a68e11f38dc0ee1c7ca1f2753439da69e91156b87b1a85a64e3986f6')
 
 build() {
   mkdir build

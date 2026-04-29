@@ -1,6 +1,6 @@
 pkgbase = r-pathnet
 	pkgdesc = An R package for pathway analysis using topological information
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PathNet
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-pathnet
 	optdepends = r-biocgenerics
 	optdepends = r-pathnetdata
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PathNet_1.50.0.tar.gz
-	md5sums = dcc69467d6eb510148612c7330b2db6d
-	b2sums = 4ea10bfaeef151b37fc289bfb242ab50fba79c6a3ec38eada499713a93cbb197c0291a85f5f51081d5dcc582dc5cd833ead5812a742bc23882c437447f9ee6d8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PathNet_1.52.0.tar.gz
+	md5sums = b02488a354a81ad33c20c1f9fa0f4bce
+	b2sums = e3c36298388b2bb1fdceab615ae064d960ecf9e01295eededb3873d1d771e9607d187a89a68e11f38dc0ee1c7ca1f2753439da69e91156b87b1a85a64e3986f6
 
 pkgname = r-pathnet
