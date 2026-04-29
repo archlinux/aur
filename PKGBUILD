@@ -3,7 +3,7 @@
 pkgname=slskdn
 _pkgname=slskd
 pkgver=2026042900.slskdn.193
-pkgrel=1
+pkgrel=2
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
@@ -53,8 +53,12 @@ build() {
 
     rm -rf src/slskd/obj src/slskd/bin publish
     _version="${pkgver//.slskdn/-slskdn}"
-    _assembly_ver="${pkgver%.slskdn.*}.${pkgver##*.}"
-    dotnet publish src/slskd/slskd.csproj         -c Release         -o publish         --self-contained false         -r "${_rid}"         -p:Version="$_assembly_ver"         -p:InformationalVersion="$_version"         -p:PackageVersion="$_version"
+    if [[ "${pkgver}" =~ ^([0-9]{10})\.slskdn\.([0-9]+)$ ]]; then
+        _dotnet_version="0.0.0-slskdn.${BASH_REMATCH[1]}.${BASH_REMATCH[2]}"
+    else
+        _dotnet_version="${_version}"
+    fi
+    dotnet publish src/slskd/slskd.csproj         -c Release         -o publish         --self-contained false         -r "${_rid}"         -p:Version="$_dotnet_version"         -p:InformationalVersion="$_version"         -p:PackageVersion="$_dotnet_version"
 }
 
 package() {
