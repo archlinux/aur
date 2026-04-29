@@ -1,10 +1,10 @@
 pkgbase = pondidle-git
 	pkgdesc = Simulates a little pond, complete with lilypads and frogs jumping around.
 	pkgver = r41.6f76209
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/alice-lefebvre/pond
 	arch = x86_64
-	license = license=(GPL-3.0-or-later)
+	license = GPL-3.0-or-later
 	makedepends = make
 	makedepends = gcc
 	depends = ncurses
