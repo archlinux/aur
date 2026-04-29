@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GPA
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='GPA (Genetic analysis incorporating Pleiotropy and Annotation)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-gpaexample
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d99293d1aea39d6e25b96bef54ddf054cd828f9a5b79a403523d461f3a7b1571')
+sha256sums=('229c2adf43085c39072dfa9e9e5ec2dd23526df762a1c79f834c10838e8288cc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
