@@ -1,0 +1,11 @@
+[Unit]
+Description=VIIPER - Virtual Input over IP Emulator
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/viiper
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target
