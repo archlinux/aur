@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=graper
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Adaptive penalization in high-dimensional regression and classification with external covariates using variational Bayes'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6e92b1d3ca700d78f26ea9d9884ea8d597a2a6d2e2362170a6de2773a23d3f59')
+sha256sums=('4afb373a0c9f17ddc039b78e9814659c0071dddaf586a650564617dfc7cf1b68')
 
 prepare() {
   sed -i $_pkgname/src/Makevars \
