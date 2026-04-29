@@ -1,6 +1,6 @@
 pkgbase = r-pepsnmr
 	pkgdesc = Pre-process 1H-NMR FID signals
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PepsNMR
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-pepsnmr
 	optdepends = r-markdown
 	optdepends = r-pepsnmrdata
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PepsNMR_1.28.0.tar.gz
-	sha256sums = cfa13ba6d280753559e0ecd3f5f1e971c029fcc8c59d6aec0087fbc721a7d599
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PepsNMR_1.30.0.tar.gz
+	sha256sums = a95cc2b069f18878583d170e22652d949786b60b247d866dcebb371fe265e0e2
 
 pkgname = r-pepsnmr
