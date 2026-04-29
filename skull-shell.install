@@ -1,0 +1,13 @@
+post_install() {
+    if ! grep -qxF /usr/bin/skull /etc/shells; then
+        echo /usr/bin/skull >> /etc/shells
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    sed -i '\|^/usr/bin/skull$|d' /etc/shells
+}

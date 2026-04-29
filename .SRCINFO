@@ -1,0 +1,21 @@
+pkgbase = skull-shell-git
+	pkgdesc = Tiny POSIX-style shell written in C++20
+	pkgver = 0.1.0.r4.g41a9834
+	pkgrel = 1
+	url = https://codeberg.org/SkullOS/skull-shell
+	install = skull-shell.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = xmake
+	depends = gcc-libs
+	depends = glibc
+	provides = skull-shell
+	provides = skull
+	conflicts = skull-shell
+	conflicts = skull
+	source = git+https://codeberg.org/SkullOS/skull-shell.git
+	sha256sums = SKIP
+
+pkgname = skull-shell-git
