@@ -3,7 +3,7 @@
 _name=tree-sitter-go
 pkgname=python-tree-sitter-go
 pkgver=0.25.0
-pkgrel=2
+pkgrel=5
 pkgdesc="Go grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-go/"
@@ -21,12 +21,13 @@ sha256sums=('a7466e9b8d94dda94cae8d91629f26edb2d26166fd454d4831c3bf6dfa2e8d68')
 
 prepare() {
     cd "${_name//-/_}-${pkgver}"
-    if [ ! -f src/tree_sitter/parser.h ]; then
-        mkdir -p src/tree_sitter
-        curl -sLo src/tree_sitter/parser.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-        curl -sLo src/tree_sitter/alloc.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-        curl -sLo src/tree_sitter/array.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-    fi
+
+    sed -i \
+        -e 's/^license\.text = "MIT"$/license = "MIT"/' \
+        -e 's/^license\.text = "Apache-2.0"$/license = "Apache-2.0"/' \
+        -e 's/^license = "LICENSE"$/license = "MIT"/' \
+        -e '/License :: OSI Approved/d' \
+        pyproject.toml
 }
 
 build() {
