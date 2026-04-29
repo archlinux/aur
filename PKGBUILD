@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DCATS
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8e3c3bd1ec6a0808d9e9731ae523a1a1')
-b2sums=('7f4a3588ff5b8cac058caf8c599c4fe6d6e45c049b54fcbe81afbf2ec931afe5d1ad47d5d802714c6f5fab111db15302f001ef72010e199c39d2daf7da068efc')
+md5sums=('d1f81ca2ae40bf674d4f88824fe9646f')
+b2sums=('a5dbef8d0c8a128393dea054dbd0e41422ebb3fb14bd6065c93ae93d0cd33651480b20b5c0beb1b10b279abf49613057517ef6c9e6df22c7b0cc9f5fae657c1d')
 
 build() {
   mkdir build
