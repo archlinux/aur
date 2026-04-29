@@ -1,11 +1,10 @@
 pkgbase = steam-game-idler-git
 	pkgdesc = Idle Steam games and farm trading cards with Linux support
-	pkgver = 5.0.4.r1713.gac0fe8ac
+	pkgver = 5.0.4.r1714.gaa88ad15
 	pkgrel = 1
 	url = https://github.com/bernardopg/SGI
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = cargo
 	makedepends = dotnet-sdk
 	makedepends = git
 	makedepends = nodejs

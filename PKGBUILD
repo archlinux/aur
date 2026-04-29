@@ -2,7 +2,10 @@
 
 pkgname=steam-game-idler-git
 _pkgname=steam-game-idler
-pkgver=5.0.4.r1713.gac0fe8ac
+# pkgver is a placeholder — the real version is computed by pkgver() at build
+# time from the upstream tauri.conf.json + the steam-game-idler submodule's
+# commit history. The AUR publish workflow updates this line before pushing.
+pkgver=5.0.4.r1714.gaa88ad15
 pkgrel=1
 pkgdesc='Idle Steam games and farm trading cards with Linux support'
 arch=('x86_64')
@@ -15,7 +18,6 @@ depends=(
   'webkit2gtk-4.1'
 )
 makedepends=(
-  'cargo'
   'dotnet-sdk'
   'git'
   'nodejs'
@@ -32,10 +34,7 @@ pkgver() {
   cd "$srcdir/SGI"
   git submodule update --init --recursive
 
-  local appver
-  local rev
-  local hash
-
+  local appver rev hash
   appver=$(grep -m1 '"version"' steam-game-idler/src-tauri/tauri.conf.json | sed -E 's/.*"version": "([^"]+)".*/\1/')
   rev=$(git -C steam-game-idler rev-list --count HEAD)
   hash=$(git -C steam-game-idler rev-parse --short HEAD)
@@ -99,6 +98,45 @@ package() {
   # .pdb files embed absolute $srcdir paths; not needed at runtime
   find "$pkgdir" -name '*.pdb' -delete
 
+  # Tauri's .deb names paths after productName ("Steam Game Idler"), which embeds
+  # spaces into /usr/bin/ and /usr/lib/. Rename to a shell-friendly lowercase form
+  # so the binary is tab-completable and follows Linux packaging conventions.
+  local branded='Steam Game Idler'
+  local lower='steam-game-idler'
+
+  if [[ -d "$pkgdir/usr/lib/$branded" ]]; then
+    mv "$pkgdir/usr/lib/$branded" "$pkgdir/usr/lib/$lower"
+  fi
+
+  # Two upstream Linux bugs make the app misbehave when the binary lives in
+  # /usr/bin/ and resources in /usr/lib/<app>/:
+  #
+  #   1. is_portable() in src-tauri/src/utils.rs treats `<exe_dir>/.installed`
+  #      as the install marker. With the binary at /usr/bin/, the marker is
+  #      never found and is_portable() returns true → the app then tries to
+  #      write its cache to /usr/bin/cache/ (read-only) and stores window
+  #      state next to the binary.
+  #   2. get_lib_path() resolves SteamUtility.Cli relative to the binary as
+  #      `<exe_dir>/libs/SteamUtility.Cli`, which becomes
+  #      /usr/bin/libs/SteamUtility.Cli — wrong location.
+  #
+  # Move the actual ELF into /usr/lib/<lower>/ alongside .installed and libs/,
+  # and replace /usr/bin/<lower> with a relative symlink. std::env::current_exe()
+  # on Linux reads /proc/self/exe, which resolves through the symlink to the
+  # real path under /usr/lib/<lower>/. After this, both helpers find what they
+  # expect:
+  #   - is_portable() finds /usr/lib/<lower>/.installed  → returns false
+  #   - get_lib_path() returns /usr/lib/<lower>/libs/SteamUtility.Cli
+  if [[ -f "$pkgdir/usr/bin/$branded" ]]; then
+    install -Dm755 "$pkgdir/usr/bin/$branded" "$pkgdir/usr/lib/$lower/$lower"
+    rm -f "$pkgdir/usr/bin/$branded"
+    ln -sf "../lib/$lower/$lower" "$pkgdir/usr/bin/$lower"
+  elif [[ -f "$pkgdir/usr/bin/$lower" && ! -L "$pkgdir/usr/bin/$lower" ]]; then
+    install -Dm755 "$pkgdir/usr/bin/$lower" "$pkgdir/usr/lib/$lower/$lower"
+    rm -f "$pkgdir/usr/bin/$lower"
+    ln -sf "../lib/$lower/$lower" "$pkgdir/usr/bin/$lower"
+  fi
+
   # Tauri emits a 256x256@2 directory (macOS HiDPI convention); rename to standard 256x256
   # so gtk-update-icon-cache does not reject the hicolor theme
   local icon_hi="$pkgdir/usr/share/icons/hicolor"
@@ -109,6 +147,34 @@ package() {
   fi
 
   # gtk-update-icon-cache rejects icon basenames containing spaces.
-  find "$icon_hi" -type f -name 'Steam Game Idler.png' -execdir mv 'Steam Game Idler.png' 'steam-game-idler.png' \;
-  sed -i 's/^Icon=.*/Icon=steam-game-idler/' "$pkgdir/usr/share/applications/Steam Game Idler.desktop"
+  find "$icon_hi" -type f -name "$branded.png" -execdir mv "$branded.png" "$lower.png" \;
+
+  # Rewrite the .desktop: rename the file, fix Icon, fix Exec to point at the new
+  # binary path, and strip the literal double-quotes that tauri-bundler places
+  # around StartupWMClass and Exec values — those quotes break WM_CLASS matching
+  # on most desktops and prevent the launcher from grouping windows correctly.
+  # The runtime WM_CLASS is the productName, so we keep "Steam Game Idler" as
+  # the StartupWMClass value (without quotes).
+  local desktop_old="$pkgdir/usr/share/applications/$branded.desktop"
+  local desktop_new="$pkgdir/usr/share/applications/$lower.desktop"
+  if [[ -f "$desktop_old" ]]; then
+    mv "$desktop_old" "$desktop_new"
+    sed -i \
+      -e "s|^Icon=.*|Icon=$lower|" \
+      -e "s|^Exec=.*|Exec=/usr/bin/$lower|" \
+      -e "s|^StartupWMClass=.*|StartupWMClass=$branded|" \
+      "$desktop_new"
+  fi
+
+  # Tauri ships /usr/lib/<app>/ with mode d--x--x--x on some build hosts (a known
+  # tauri-bundler quirk that breaks `ls` for non-root users). Force directories to
+  # 755 and regular files to a readable mode so the package is well-formed.
+  if [[ -d "$pkgdir/usr/lib/$lower" ]]; then
+    chmod 755 "$pkgdir/usr/lib/$lower"
+    find "$pkgdir/usr/lib/$lower" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr/lib/$lower" -type f -exec chmod a+r {} +
+    if [[ -x "$pkgdir/usr/lib/$lower/libs/SteamUtility.Cli" ]]; then
+      chmod 755 "$pkgdir/usr/lib/$lower/libs/SteamUtility.Cli"
+    fi
+  fi
 }
