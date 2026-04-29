@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 _name=tree-sitter-elixir
 pkgname=python-tree-sitter-elixir
