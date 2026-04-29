@@ -1,0 +1,26 @@
+pkgbase = opencode-desktop-electron
+	pkgdesc = OpenCode Electron desktop app (built from source, runs on system electron41)
+	pkgver = 1.14.29
+	pkgrel = 1
+	url = https://github.com/anomalyco/opencode
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun
+	makedepends = git
+	depends = electron41
+	depends = hicolor-icon-theme
+	optdepends = opencode: matching CLI for terminal use
+	conflicts = opencode-desktop-electron-bin
+	options = !strip
+	options = !debug
+	source = opencode-desktop-electron::git+https://github.com/anomalyco/opencode.git#tag=v1.14.29
+	source = opencode-desktop-electron.desktop
+	source = opencode-desktop-electron.sh
+	source = relax-bun-version.patch
+	sha256sums = SKIP
+	sha256sums = edc055d5450c54f94b47000ed4cc7a26bf3a625307054b5a2328134945d565db
+	sha256sums = 7d021d37b0d305967babfe189320911db281d2fdc49ace2b4b25061f0c31d606
+	sha256sums = 82b5dcd7c56955af41982d8df7828b11907e58ef0199bb9d2e1edac0a9fbbe21
+
+pkgname = opencode-desktop-electron
