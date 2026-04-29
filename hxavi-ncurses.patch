@@ -1,0 +1,14 @@
+diff -uprN old/hxavi.h new/hxavi.h
+--- old/hxavi.h	2026-02-26 19:24:54.000000000 +0900
++++ new/hxavi.h	2026-04-28 00:39:43.341891421 +0900
+@@ -2,8 +2,8 @@
+ /* vim:set fileencoding=utf-8 expandtab tabstop=4 shiftwidth=4: */
+ 
+ #if defined(__linux__)
+-    #include <ncursesw/ncurses.h>   /* (stdio.h),TRUE/FALSE,many functions    */
+-    #include <ncursesw/term.h>      /* tgetent(),tgetstr(),ERR                */
++    #include <ncurses.h>            /* (stdio.h),TRUE/FALSE,many functions    */
++    #include <term.h>               /* tgetent(),tgetstr(),ERR                */
+     #include <sys/sysinfo.h>        /* sysinfo()                              */
+     #define __USE_XOPEN             /* wcswidth() in <wchar.h> for linux      */
+ #else                               

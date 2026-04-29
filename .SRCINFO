@@ -1,0 +1,15 @@
+pkgbase = hxavi
+	pkgdesc = A binary editor for vi and Vim users
+	pkgver = 1.2.1.20260309
+	pkgrel = 1
+	url = https://hxavi.net/en/en-home/
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = ncurses
+	source = https://hxavi.net/files/hxavi-1.2.1.20260309.tar.gz
+	source = hxavi-ncurses.patch
+	sha256sums = d9751231e930404372ebfd9278b04ee74c4356012600e4ef216a973b12d86f22
+	sha256sums = 5d4690395523ce566c3f82d5d7d2f38c32468e88c139a496e430526b40516f4d
+
+pkgname = hxavi
