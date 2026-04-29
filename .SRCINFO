@@ -1,6 +1,6 @@
 pkgbase = r-rcyjs
 	pkgdesc = Display and manipulate graphs in cytoscape.js
-	pkgver = 2.32.0
+	pkgver = 2.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RCyjs
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-rcyjs
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCyjs_2.32.0.tar.gz
-	sha256sums = d51d64b244b93e48197705f364dd9cf1435966bb58d75a00373c5b51c7a7ae75
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCyjs_2.34.0.tar.gz
+	sha256sums = 8629e1292b4e1a4082460805cc61bd6638e359b127640d8cb781f2dd04a9b031
 
 pkgname = r-rcyjs
