@@ -2,14 +2,14 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.0.1.r2.ge02d3af
-pkgrel=1
+pkgver=0.0.1.r4.gf159bda
+pkgrel=3
 pkgdesc="Aqueous Wayland window manager (River-based) with Noctalia bar"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
 license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
-         'pixman' 'libdrm' 'libevdev' 'river'
+         'pixman' 'libdrm' 'libevdev' 'river' 'wlr-randr'
          'noctalia-shell' 'libdecor' 'grim')
 optdepends=('tuigreet: TUI greeter for greetd (recommended login path)'
             'greetd: minimal login manager for tuigreet'
@@ -45,7 +45,7 @@ pkgver() {
 build() {
     local rid; rid=$(_rid_map)
     cd "$srcdir/aqueous"
-    for proj in Aqueous/Aqueous.csproj Aqueous.InputDaemon/Aqueous.InputDaemon.csproj; do
+    for proj in Aqueous/Aqueous.csproj Aqueous.InputDaemon/Aqueous.InputDaemon.csproj Aqueous.OutputDaemon/Aqueous.OutputDaemon.csproj; do
         local name; name=$(basename "$proj" .csproj)
         dotnet publish "$proj" \
             -c Release \
@@ -63,6 +63,13 @@ package() {
         "$pkgdir/usr/bin/aqueous"
     install -Dm755 "$srcdir/publish/Aqueous.InputDaemon/aqueous-inputd" \
         "$pkgdir/usr/bin/aqueous-inputd"
+    install -Dm755 "$srcdir/publish/Aqueous.OutputDaemon/aqueous-outputd" \
+        "$pkgdir/usr/bin/aqueous-outputd"
+
+    # River `-c` init wrapper: applies persisted output config before
+    # Aqueous draws its first frame, then forks the output daemon.
+    install -Dm755 "$srcdir/aqueous/packaging/aqueous-init" \
+        "$pkgdir/usr/bin/aqueous-init"
 
     # Session launcher.
     install -Dm755 "$srcdir/aqueous/packaging/aqueous-wm.sh" \
@@ -85,6 +92,13 @@ package() {
         "$pkgdir/usr/lib/systemd/user/aqueous-inputd.service"
     install -Dm644 "$srcdir/aqueous/packaging/aqueous-inputd.socket" \
         "$pkgdir/usr/lib/systemd/user/aqueous-inputd.socket"
+    install -Dm644 "$srcdir/aqueous/packaging/aqueous-outputd.service" \
+        "$pkgdir/usr/lib/systemd/user/aqueous-outputd.service"
+
+    # Quickshell/Noctalia bridge for the output daemon. Imported as
+    #   import "file:///usr/share/aqueous/quickshell" as Aqueous
+    install -Dm644 "$srcdir/aqueous/packaging/quickshell/OutputControl.qml" \
+        "$pkgdir/usr/share/aqueous/quickshell/OutputControl.qml"
 
     # Documented greetd example (not auto-installed to /etc).
     install -Dm644 "$srcdir/aqueous/packaging/greetd/config.toml.example" \

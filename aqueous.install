@@ -8,6 +8,16 @@ post_install() {
     To enable the input daemon as a systemd user service:
         systemctl --user enable --now aqueous-inputd.socket
     Otherwise the session launcher will spawn it automatically.
+
+    The output daemon (aqueous-outputd) drives wlr-randr from inside
+    River's control context. It is started automatically by
+    /usr/bin/aqueous-init at session start, which also applies the
+    persisted display configuration before Aqueous draws its first
+    frame (this is what makes the screen come up at the right
+    resolution under greetd). To run it as a systemd user service
+    instead:
+        systemctl --user enable --now aqueous-outputd.service
+    Requires the 'wlr-randr' package.
 EOF
     systemd-tmpfiles --create 2>/dev/null || true
 }
