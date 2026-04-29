@@ -1,0 +1,15 @@
+pkgbase = xsh-git
+	pkgdesc = ye dawg
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://github.com/ediwq14/xsh
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://github.com/ediwq14/xsh.git
+	sha256sums = SKIP
+
+pkgname = xsh-git
