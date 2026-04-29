@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/vinkoplay/hsf"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('git' 'rust' 'cargo' 'nasm')
+makedepends=('rust' 'cargo' 'nasm')
 options=('!lto')
 provides=()
 conflicts=()
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('93c18f53822c774e3a433fe2935dd8031630729bb0dd6d405cd6b63a78dc1a5e')
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname}-${pkgver}" 
     export CARGO_HOME="$srcdir/cargo-home"
     export CC=gcc
     export CFLAGS="$CFLAGS -fPIC"
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname}-${pkgver}" 
     
     install -Dm755 "target/release/hsf" "$pkgdir/usr/bin/hsf"
     install -Dm644 "hsf.1" "$pkgdir/usr/share/man/man1/hsf.1"
