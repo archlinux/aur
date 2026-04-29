@@ -12,7 +12,7 @@ pkgbase = hashreaper
 	depends = openssl
 	optdepends = nmap: faster network scan
 	optdepends = traceroute: automatic network detection
-	source = https://github.com/yourusername/hashreaper/archive/v3.52.tar.gz
+	source = https://github.com/xZxZxPussyslayer228xZxZx/HashReaper/archive/Stable.tar.gz
 	sha256sums = SKIP
 
 pkgname = hashreaper

@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('openssl')
 makedepends=('gcc' 'make')
 optdepends=('nmap: faster network scan' 'traceroute: automatic network detection')
-source=("https://github.com/yourusername/hashreaper/archive/v$pkgver.tar.gz")
+source=("https://github.com/xZxZxPussyslayer228xZxZx/HashReaper/archive/Stable.tar.gz")
 sha256sums=('SKIP')
 
 build() {
