@@ -12,5 +12,5 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/uzki69/MakeJFNF/releases/do
 sha256sums=('37d1bec1547d736a437c06cbcfd3c499b755f4c91f6d9195a7e3d6a78ab75117')
 package() {
 	install -D -m755 "${srcdir}/${pkgname}-${pkgver}/main.py" "${pkgdir}/usr/bin/jfnf"
-	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"	
+	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
