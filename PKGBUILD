@@ -3,7 +3,7 @@
 _name=tree-sitter-powershell
 pkgname=python-tree-sitter-powershell
 pkgver=0.26.3
-pkgrel=2
+pkgrel=5
 pkgdesc="A Powershell grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-powershell/"
@@ -21,12 +21,13 @@ sha256sums=('9f349e60a55f29e98bbe12b19d16e95d5956f9816d7df974d57b806787389330')
 
 prepare() {
     cd "${_name//-/_}-${pkgver}"
-    if [ ! -f src/tree_sitter/parser.h ]; then
-        mkdir -p src/tree_sitter
-        curl -sLo src/tree_sitter/parser.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-        curl -sLo src/tree_sitter/alloc.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-        curl -sLo src/tree_sitter/array.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-    fi
+
+    sed -i \
+        -e 's/^license\.text = "MIT"$/license = "MIT"/' \
+        -e 's/^license\.text = "Apache-2.0"$/license = "Apache-2.0"/' \
+        -e 's/^license = "LICENSE"$/license = "MIT"/' \
+        -e '/License :: OSI Approved/d' \
+        pyproject.toml
 }
 
 build() {
