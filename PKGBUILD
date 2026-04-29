@@ -3,7 +3,7 @@
 _name=tree-sitter-objc
 pkgname=python-tree-sitter-objc
 pkgver=3.0.2
-pkgrel=2
+pkgrel=5
 pkgdesc="Objective-C grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-objc/"
@@ -21,12 +21,13 @@ sha256sums=('ac55aefe8a4f3ea6f1da2a2e05372a4f37100001934e36a81e0f96c4c6252809')
 
 prepare() {
     cd "${_name//-/_}-${pkgver}"
-    if [ ! -f src/tree_sitter/parser.h ]; then
-        mkdir -p src/tree_sitter
-        curl -sLo src/tree_sitter/parser.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-        curl -sLo src/tree_sitter/alloc.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-        curl -sLo src/tree_sitter/array.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-    fi
+
+    sed -i \
+        -e 's/^license\.text = "MIT"$/license = "MIT"/' \
+        -e 's/^license\.text = "Apache-2.0"$/license = "Apache-2.0"/' \
+        -e 's/^license = "LICENSE"$/license = "MIT"/' \
+        -e '/License :: OSI Approved/d' \
+        pyproject.toml
 }
 
 build() {
