@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASEB
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a35458bb56b49cd145565773e7948db5')
-b2sums=('7adfeb4199543915e0e0ac6479461767dd3b2651536e1688d7d44a084e718ea3b3af26a317bb1b31ff1d9aa617f4eaf4e73b05a113a4923b8d17167a11386ceb')
+md5sums=('2c3e1e7b94248f48af152bd6d648413e')
+b2sums=('5b559d446344b4b0d53f331b94f0c45add8ddef05da5580fc6adeaabe97253c7bf6cc43212a30e11d8caadb806ac260c5990964a841d83d32abf19b6b1816781')
 
 build() {
   mkdir build
