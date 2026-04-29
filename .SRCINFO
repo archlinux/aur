@@ -25,6 +25,7 @@ pkgbase = yass-proxy-gtk3
 	depends = c-ares
 	depends = gperftools
 	depends = jsoncpp
+	depends = mbedtls
 	optdepends = gtk-update-icon-cache
 	optdepends = libappindicator-gtk3
 	optdepends = libayatana-appindicator
