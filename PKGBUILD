@@ -1,7 +1,7 @@
 # Maintainer: Koutheir Attouchi <koutheir@gmail.com>
 pkgname=llvm-bolt-bin
 pkgver=22.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Post-link optimizer developed to speed up large applications'
 url="https://github.com/llvm/llvm-project/tree/llvmorg-${pkgver}/bolt"
 license=('Apache-2.0 WITH LLVM-exception')
@@ -36,9 +36,10 @@ check() {
 package () {
     mkdir -p "$pkgdir/usr"/{bin,share/licenses/${pkgname}}
 
-    install --preserve-timestamps -D \
+    install -D --preserve-timestamps --mode=644 \
         "--target-directory=$pkgdir/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE.TXT"
 
     cp --archive --no-dereference "--target-directory=$pkgdir/usr/bin" \
         "${srcdir}/LLVM-${pkgver}-Linux-X64/bin"/{llvm-bolt*,perf2bolt,merge-fdata}
+    chmod --no-dereference 755 "$pkgdir/usr/bin"/*
 }

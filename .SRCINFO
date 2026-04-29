@@ -1,7 +1,7 @@
 pkgbase = llvm-bolt-bin
 	pkgdesc = Post-link optimizer developed to speed up large applications
 	pkgver = 22.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/llvm/llvm-project/tree/llvmorg-22.1.4/bolt
 	arch = x86_64
 	license = Apache-2.0 WITH LLVM-exception
