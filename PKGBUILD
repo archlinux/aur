@@ -11,6 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('git' 'gcc')
 provides=('skull-shell' 'skull')
 conflicts=('skull-shell' 'skull')
+options=('!debug')
 install='skull-shell.install'
 source=('git+https://codeberg.org/SkullOS/skull-shell.git')
 sha256sums=('SKIP')

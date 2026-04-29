@@ -15,6 +15,7 @@ pkgbase = skull-shell-git
 	provides = skull
 	conflicts = skull-shell
 	conflicts = skull
+	options = !debug
 	source = git+https://codeberg.org/SkullOS/skull-shell.git
 	sha256sums = SKIP
 
