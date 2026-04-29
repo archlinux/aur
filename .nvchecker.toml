@@ -1,0 +1,4 @@
+[ganv]
+source = "git"
+git = "https://gitlab.com/drobilla/ganv.git"
+prefix = "v"
