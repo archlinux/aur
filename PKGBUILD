@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HEM
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('72ff71e5cae74145120758b61835852c')
-b2sums=('341108c0251e95ed4787fb53853d022f579ee977baa67720e48f669406a9ac1caad4b7ec5bda9fa60a8ec9523f9701a2da03863c9fae49adc22a7eb3ba0bf570')
+md5sums=('bf0726ff70cae5bc39c13f521441144c')
+b2sums=('05077a6dc0fd628651e7d8b344c98dedec0aba03fa01f37fec70cd7f94d4fe7d695e616defec379176b2377b79473bc0f6e11c664702cb77b85666ecf85ae44b')
 
 build() {
   mkdir build
