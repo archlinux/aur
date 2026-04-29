@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=logicFS
-_pkgver=2.30.0
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-siggenes
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('19c936e15bf37930722b0b570f63b0ee')
-b2sums=('14ecbf9bfae4c3f08d811660011fca7d2d56de4c46e506780163f72c5da2ba102f8d14fe55ecee3cd172a83e87ac3ec7e49f2e1fa5230345e6d42527cc289302')
+md5sums=('9ffa6da33c86bfd5c99cc3533f625298')
+b2sums=('75f1568c92ae2093ab69976f2bfa11d91586d34b31e5b4611a8b200c57bd20a8516c4f37ab8b87cabb4bf3bee48722ba5fcd34cb2785d50f311a7489ffdc31df')
 
 build() {
   mkdir build
