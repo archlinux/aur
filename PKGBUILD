@@ -2,12 +2,12 @@
 
 pkgname=betcon
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Sports betting management"
 url="http://betcon.eduardoparra.es"
 arch=('x86_64')
 license=('GPLv3')
-depends=('python' 'pyside6' 'qt6-tools' 'python-numpy' 'python-yaml' 'python-pillow' 'python-pyqtgraph' 'python-colorama')
+depends=('python' 'pyside6' 'qt6-tools' 'python-numpy' 'python-yaml' 'python-pillow' 'python-pyqtgraph' 'python-colorama' 'python-pyexcel-ods')
 source=("https://github.com/soker90/betcon/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
