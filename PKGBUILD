@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-picard
 _name=${pkgname/-/_}
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Preconditioned ICA for Real Data"
 arch=('any')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$_name-$pkgver.tar.gz)
 noextract=()
-sha1sums=('f47547f902335129ed2cecee01025cd2f7b1691c')
+sha1sums=('fc11aeafb0bf9501f8e75040782421723d2f1ace')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
