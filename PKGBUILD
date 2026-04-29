@@ -2,7 +2,7 @@
 
 pkgname=docker-sandbox-bin
 pkgdesc="Docker Sandboxes run AI coding agents in isolated microVM sandboxes"
-pkgver=0.28.2 # renovate: datasource=github-tags depName=docker/sbx-releases
+pkgver=0.28.3 # renovate: datasource=github-tags depName=docker/sbx-releases
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/docker/sbx-releases"
@@ -10,7 +10,7 @@ license=('custom:Proprietary')
 provides=('sbx')
 conflicts=('sbx')
 source=("docker-sandbox::${url}/releases/download/v${pkgver}/DockerSandboxes-linux.tar.gz")
-sha256sums=('533ac8fae548c946fd726cb08726a6b656ee95f01cc74a71a9afd04890592aa2')
+sha256sums=('bc8000d99d0d8d25dc0d393bd5dfc21d67fa3bf08e086ba70b294de9156a5831')
 
 package() {
   install -Dm755 "${srcdir}/docker-sbx/sbx" "${pkgdir}/usr/bin/sbx"
