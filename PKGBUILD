@@ -1,28 +1,19 @@
+# Maintainer: Gildedboy
 pkgname=ani-cli-mx
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-_tag="v$pkgver"
-pkgdesc='Spanish-first anime CLI'
+pkgdesc='Command-line anime streaming helper for Mexico-oriented provider support'
 arch=('any')
 url='https://github.com/Gildedboy/ani-cli-mx'
-license=('GPL3')
-depends=('curl' 'sed' 'grep' 'fzf' 'openssl' 'mpv')
-optdepends=(
-  'vlc: alternative player backend'
-  'aria2: direct-file downloads'
-  'yt-dlp: extra extractor coverage and download handling'
-  'ffmpeg: HLS/m3u8 download fallback'
-  'patch: self-update support with -U'
-  'ani-skip: intro skipping with mpv'
-)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('83e102b8cd0b79fef6c1b87e86ac368c2c4b153a3b30687a6ba5f8d77b802663')
+license=('GPL')
+depends=('bash' 'curl' 'gawk' 'grep' 'sed' 'fzf' 'mpv' 'yt-dlp')
+optdepends=('aria2: parallel video downloads')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Gildedboy/ani-cli-mx/archive/refs/tags/v1.1.0.tar.gz")
+sha256sums=('110806f2a5af5b6facfdf502a55b0249788d84a3b0278362396c7ad457cdf8df')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}"/ani-cli-mx-*/
 
-  install -Dm755 ani-cli-mx-core "$pkgdir/usr/libexec/ani-cli-mx"
-  install -Dm755 ani-cli-mx "$pkgdir/usr/bin/ani-cli-mx"
-  install -Dm644 ani-cli-mx.1 "$pkgdir/usr/share/man/man1/ani-cli-mx.1"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 ani-cli "${pkgdir}/usr/lib/ani-cli-mx/ani-cli"
+  install -Dm755 ani-cli-mx "${pkgdir}/usr/bin/ani-cli-mx"
 }
