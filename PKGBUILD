@@ -1,0 +1,33 @@
+# shellcheck disable=SC2034,SC2154,SC2164
+pkgname=('python-i3ipc-git')
+_srcname='i3ipc-python'
+pkgver=r404.1662929327.9de8e88
+pkgrel=1
+pkgdesc='An improved Python library to control i3wm'
+arch=('any')
+url="https://github.com/acrisci/${_srcname}"
+license=('custom:BSD')
+
+depends=('python' 'python-xlib')
+makedepends=('git' 'python-setuptools')
+provides=("${pkgname[0]%-git}" "i3ipc-python-git" "i3ipc-python")
+replaces=("i3ipc-python-git")
+conflicts=("${pkgname[0]%-git}")
+
+source=("${_srcname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${_srcname}"
+
+    printf 'r%s.%s.%s\n' \
+        "$( git rev-list --count 'HEAD' )" \
+        "$( git log --max-count='1' --pretty='format:%ct' )" \
+        "$( git rev-parse --short 'HEAD' )"
+}
+
+package() {
+    cd "${srcdir}/${_srcname}"
+
+    python setup.py install --root="${pkgdir}" --optimize=1
+}
