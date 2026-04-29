@@ -19,8 +19,6 @@ sha256sums=('SKIP')
 build() {
   cd "$pkgname"
 
-  cp -r "$srcdir/$pkgname/hamradio-zones-geojson-main" "./"
-
   cargo build --release --locked
 }
 
