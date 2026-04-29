@@ -1,0 +1,17 @@
+[Desktop Entry]
+Comment[en_US]=Moon Child FE (Friend Edition) is a modern source port of the 1997 Windows 95 classic, Moon Child. It's designed to be the definitive way to experience the game on modern hardware.
+Comment=Moon Child FE (Friend Edition) is a modern source port of the 1997 Windows 95 classic, Moon Child. It's designed to be the definitive way to experience the game on modern hardware.
+Exec=/usr/share/moon-child-fe-bin/MoonChildFE
+GenericName[en_US]=Moon Child: FE
+GenericName=Moon Child: FE
+Icon=system-run
+MimeType=
+Name[en_US]=Moon Child: FE
+Name=Moon Child: FE
+Path=/usr/share/moon-child-fe-bin/
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
