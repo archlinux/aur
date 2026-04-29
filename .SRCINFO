@@ -1,0 +1,24 @@
+pkgbase = pyrefly-git
+	pkgdesc = A fast type checker and language server for Python
+	pkgver = 0.63.1.r0.e765bc6
+	pkgrel = 1
+	url = https://github.com/facebook/pyrefly
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = maturin
+	makedepends = python-installer
+	depends = gcc-libs
+	depends = glibc
+	provides = pyrefly
+	conflicts = pyrefly
+	options = !lto
+	source = git+https://github.com/facebook/pyrefly
+	sha256sums = SKIP
+
+pkgname = pyrefly-git
+
+pkgname = python-pyrefly-git
+	depends = python
+	depends = pyrefly
