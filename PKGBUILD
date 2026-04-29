@@ -3,7 +3,7 @@
 _name=tree-sitter-go
 pkgname=python-tree-sitter-go
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Go grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-go/"

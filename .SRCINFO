@@ -1,7 +1,7 @@
 pkgbase = python-tree-sitter-go
 	pkgdesc = Go grammar for tree-sitter
 	pkgver = 0.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/tree-sitter-go/
 	arch = any
 	license = MIT
