@@ -1,6 +1,6 @@
 pkgbase = r-roastgsa
 	pkgdesc = Rotation based gene set analysis
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/roastgsa
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = r-roastgsa
 	optdepends = r-knitr
 	optdepends = r-preprocesscore
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/roastgsa_1.8.0.tar.gz
-	md5sums = b77431a7ad8c5146899caee9872e601a
-	b2sums = a70d1ca241469762f2f2f2a723de889f39e666d3836815dbb93830ec1bd7e9f62b125c4ec45ef1f0b60617b5489c1554b9f1f1070fd2dbfb2f77d3e4b91afc57
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/roastgsa_1.10.0.tar.gz
+	md5sums = d497a52fe49b61526db8ae90e66db520
+	b2sums = 0c666c710819821b0c72ccacf97e96d603b9719b4643206e57f2c0b019ecdcd31d1fe612c057b646855cb4f6995915894b2baa2671e190e2884bec5c00e3cfd6
 
 pkgname = r-roastgsa
