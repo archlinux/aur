@@ -8,7 +8,7 @@
 readonly _pkgname="NostalgiaForInfinity"
 
 pkgname="python-nostalgiaforinfinity"
-pkgver="17.3.1079"
+pkgver="17.4.37"
 pkgrel="1"
 pkgdesc="Trading strategy for the Freqtrade crypto bot."
 arch=("any")
@@ -17,7 +17,7 @@ license=("GPL-3.0-or-later")
 depends=("bash" "python" "python-attrs" "python-freqtrade" "python-numpy" "python-pandas" "python-pandas-ta" "python-pytest" "python-rapidjson" "python-ta-lib" "python-technical")
 checkdepends=("git" "python-pytest")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("f52a111b6b16a7185f95a310899ed5e532447638b0880e38ac6929af7fad22f4d999642e442f0219b48bad011235eeccf0b5e85883906e72f4ac058580a48367")
+sha512sums=("77e4cd35ff15d9e7b4f3ad4d1c2bd05656b32dc6b67b5f9dd8534344f803ae0f252875f8a14fc54a39a1c8c09b59472391d2fe3f80da66ac87f68bdeaeba49f9")
 
 check()
 {
