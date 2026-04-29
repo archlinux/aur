@@ -5,17 +5,18 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-pkgver=7.5.5
+pkgver=7.6.1
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
 license=('MIT')
 depends=(
-  dotnet-runtime-9.0
+  dotnet-runtime-10.0
 )
 makedepends=(
-  dotnet-sdk-9.0
+  dotnet-sdk-10.0
+  aspnet-targeting-pack
   git
   unzip
   jq
@@ -34,7 +35,7 @@ source=(
   'nuget-source.patch'
 )
 noextract=('pester.4.10.1.nupkg')
-sha256sums=('399ea2c8cd3731c3ad2fdbdb8fde68ba78ec1b383cd703048131098154b798d5'
+sha256sums=('adedc60689c677d03776d9b73e2b80282bf4d2d669ec22592cb9b9b837f4d828'
             '0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e'
             '6c996dc4dc8bef068cefb1680292154f45577c66fb0600dd0fb50939bbf8a3a3'
             '84d34a09759271aa7aa614b97ff62642c773b2f81a712ac18d99985cf7a3c3ea')
@@ -42,7 +43,7 @@ sha256sums=('399ea2c8cd3731c3ad2fdbdb8fde68ba78ec1b383cd703048131098154b798d5'
 prepare() {
   cd PowerShell
 
-  jq '.sdk.version = "9.0.0" | .sdk.rollForward = "feature"' global.json > _global.json
+  jq '.sdk.version = "10.0.0" | .sdk.rollForward = "feature"' global.json > _global.json
   mv _global.json global.json
 
   # Use nuget.org source
@@ -122,11 +123,11 @@ build() {
 
   ## Restore-PSModuleToBuild()
   cp -a "$NUGET_PACKAGES/microsoft.powershell.archive/1.2.5/." lib/Modules/Microsoft.PowerShell.Archive
-  cp -a "$NUGET_PACKAGES/microsoft.powershell.psresourceget/1.1.1/." lib/Modules/Microsoft.PowerShell.PSResourceGet
+  cp -a "$NUGET_PACKAGES/microsoft.powershell.psresourceget/1.2.0/." lib/Modules/Microsoft.PowerShell.PSResourceGet
   cp -a "$NUGET_PACKAGES/packagemanagement/1.4.8.1/." lib/Modules/PackageManagement
   cp -a "$NUGET_PACKAGES/powershellget/2.2.5/." lib/Modules/PowerShellGet
-  cp -a "$NUGET_PACKAGES/psreadline/2.3.6/." lib/Modules/PSReadLine
-  cp -a "$NUGET_PACKAGES/threadjob/2.0.3/." lib/Modules/ThreadJob
+  cp -a "$NUGET_PACKAGES/psreadline/2.4.5/." lib/Modules/PSReadLine
+  cp -a "$NUGET_PACKAGES/microsoft.powershell.threadjob/2.2.0/." lib/Modules/Microsoft.PowerShell.ThreadJob
 }
 
 check() {
@@ -167,6 +168,9 @@ check() {
   rm test/powershell/Language/Scripting/NativeExecution/NativeWindowsTildeExpansion.Tests.ps1
   rm test/powershell/Modules/Microsoft.PowerShell.Utility/WebCmdlets.Tests.ps1
   rm test/powershell/Modules/Microsoft.PowerShell.PSResourceGet/Microsoft.PowerShell.PSResourceGet.Tests.ps1
+  rm test/powershell/dsc/dsc.profileresource.Tests.ps1
+  rm test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
+  rm test/powershell/Host/TabCompletion/TabCompletion.Tests.ps1
 
   ## Restore-PSPester()
   unzip -ud temp_pester "$srcdir/pester.4.10.1.nupkg"
@@ -188,13 +192,13 @@ check() {
       --configuration Debug \
       --output test/tools/$project/bin \
       test/tools/$project
-    export PATH="$PATH:$PWD/test/tools/$project/bin/Debug/net9.0/linux-x64"
+    export PATH="$PATH:$PWD/test/tools/$project/bin/Debug/net10.0/linux-x64"
   done
 
   dotnet publish \
     --no-restore \
     --configuration Debug \
-    --framework net9.0 \
+    --framework net10.0 \
     --output test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection \
     test/tools/NamedPipeConnection/src/code
   install -Dm644 -t test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection \

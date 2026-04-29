@@ -1,6 +1,6 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework
-	pkgver = 7.5.5
+	pkgver = 7.6.1
 	pkgrel = 1
 	url = https://microsoft.com/PowerShell
 	install = powershell.install
@@ -9,17 +9,18 @@ pkgbase = powershell
 	checkdepends = inetutils
 	checkdepends = iputils
 	checkdepends = xdg-utils
-	makedepends = dotnet-sdk-9.0
+	makedepends = dotnet-sdk-10.0
+	makedepends = aspnet-targeting-pack
 	makedepends = git
 	makedepends = unzip
 	makedepends = jq
-	depends = dotnet-runtime-9.0
+	depends = dotnet-runtime-10.0
 	noextract = pester.4.10.1.nupkg
-	source = git+https://github.com/PowerShell/PowerShell.git#tag=v7.5.5
+	source = git+https://github.com/PowerShell/PowerShell.git#tag=v7.6.1
 	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
 	source = https://globalcdn.nuget.org/packages/pester.4.10.1.nupkg
 	source = nuget-source.patch
-	sha256sums = 399ea2c8cd3731c3ad2fdbdb8fde68ba78ec1b383cd703048131098154b798d5
+	sha256sums = adedc60689c677d03776d9b73e2b80282bf4d2d669ec22592cb9b9b837f4d828
 	sha256sums = 0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e
 	sha256sums = 6c996dc4dc8bef068cefb1680292154f45577c66fb0600dd0fb50939bbf8a3a3
 	sha256sums = 84d34a09759271aa7aa614b97ff62642c773b2f81a712ac18d99985cf7a3c3ea
