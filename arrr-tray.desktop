@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Arrr Tray
+Comment=Arrr notification aggregator system tray client
+Exec=/usr/bin/arrr-tray
+Icon=arrr-tray
+Categories=Utility;
+StartupNotify=false
+X-GNOME-Autostart-enabled=true

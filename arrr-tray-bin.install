@@ -1,0 +1,14 @@
+post_install() {
+    echo "arrr-tray has been installed."
+    echo ""
+    echo "It will autostart at the next login (XDG autostart)."
+    echo "Run it manually now with:"
+    echo "  arrr-tray &"
+    echo ""
+    echo "Make sure the arrr daemon is running and that you have set"
+    echo "the API key in arrr-tray's settings (right-click the tray icon)."
+}
+
+post_upgrade() {
+    post_install
+}
