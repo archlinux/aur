@@ -2,9 +2,9 @@
 
 pkgname=sipgate
 pkgdesc="sipgate App - Telephony desktop application for sipgate customers"
-pkgver=2.36.2
+pkgver=2.36.3
 _distfile="sipgate-${pkgver}-amd64.deb"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://sipgate.de/app"
 license=('LicenseRef-custom')
@@ -19,7 +19,7 @@ source=(
 )
 noextract=("${_distfile}")
 b2sums=(
-	'a432b3a622d3304159838b5f7b2202c3c85fe6cb3a9149f44ac16dbc1bde59d06fc8d3cc8e6b5cd5b4f80e216a6e373489c465a3a5d9d79001eea3a2109b373c'
+	'61961b1494683c48c3e1c52669cb9af589e152b32054a7c203f66c91553024ed9e2d9e4105dfff8657cba791a76e5cdfaa32a71f1f71aae8440519ed6bfe5f22'
 	'825df4ee333207915ad1089e25bb752f8699a60f32006366e7c603e5e918e2166ac3b0b3e7a4a02c6c3dc41e026b18cade0b886a029adb0078bc114715a9a853'
 )
 
