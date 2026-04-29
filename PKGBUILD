@@ -1,11 +1,11 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=notify-gnome-shell-update
 pkgdesc="Get a notification when GNOME Shell has updates available"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 arch=(any)
 license=(GPL-3.0-or-later)
-depends=(nvchecker libnotify)
+depends=(nvchecker jq libnotify)
 source=(
   "gnome-shell-archpkg.toml"
   "notify-gnome-shell-update.desktop"
