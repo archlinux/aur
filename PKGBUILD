@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MeasurementError.cor
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a66df8c188f09c71fe445b5599a46a9f')
-b2sums=('d21a41a29291441c962b3f6f6054b72d7abfa92f6fe118a2b3527b3778da70412e76019d8badf64fac9caf5a6545d2b17a7f8c826273d5671eef2dab1ff257da')
+md5sums=('5f836532eba1be8f5db390ac4ac60d03')
+b2sums=('900d3a81aee5ace761c18c6e98a75426792b4b3ca998b7d2c852c8560097c62f26acb77d66ca06fded57b179964c45dc516591efe135dafc9c1f4cbb3ce83035')
 
 build() {
   mkdir build
