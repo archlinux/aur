@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gcspikelite
-_pkgver=1.48.0
+_pkgver=1.49.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d860bbe0d50d3d9d15d8ebb5e5d68f03')
-b2sums=('c8c6f9df20e2f05cda1404897981e38a2599bdc43f216b107887cb2e27e629d19bebd06663fd8a5fbd873cc170a32da371c0c62c0256233b6e631d8c4c14c4cd')
+md5sums=('99b480f37f4c0db11fd9114d64748c66')
+b2sums=('673cc9946f94de07bde2f98293d50f0cf1f0c03842c265bd6e15ca80e363a022c71ac5b0957acb103ab184291e6708acf50dc467cc6adf5ccdbafba77f36286b')
 
 build() {
   mkdir build
