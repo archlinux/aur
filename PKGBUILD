@@ -2,7 +2,7 @@
 pkgname=lotti-bin
 _pkgname=Lotti
 _debname="com.matthiasn.${pkgname%-bin}"
-pkgver=0.9.976_3984
+pkgver=0.9.979_3995
 pkgrel=1
 pkgdesc="Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition.(Prebuilt version)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
-sha256sums=('be2c4bc98edef5e9bb13b55ec4cac10887e184118f1e93e48fabe6e2d214537d'
+sha256sums=('8f174280080e426ac6a5179cee6ba6611ada949cd3697ee670480d1d59795257'
             '6c653ecadf03d9566022c30e03185a6cbfc1ab8de1c9ddec899bac356c4d40d7')
 prepare() {
     sed -i -e "
@@ -46,9 +46,10 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-bin}/share"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/share/icons/hicolor/${_icons}/apps/com.matthiasnehlsen.${pkgname%-bin}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+    find "${srcdir}/usr/share/icons" -type f \( -name "*.png" -o -name "*.svg" \) \
+        | while read -r _i; do
+        _extension="${_i##*.}"
+        _target_dir=$(dirname "${_i#$srcdir}")
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
 }
