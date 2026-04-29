@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=twilight
-_pkgver=1.86.0
+_pkgver=1.88.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a4c454c17157d9538f6d09ea3ba77480')
-b2sums=('f7ec281a540137da51d73821f9e6f449b0f585c213370d589cee0636b7ed3370716f8f0dc4477a1a3ea6f903ec08e3a503b205b96c4b9e83c4129d2ff76a740c')
+md5sums=('5f771693b6ced82c2d13d1526f3efc8d')
+b2sums=('73fb698c42924cac50f2632a536e5cac02e3890d64e24b172d99dceb84c1bb45bd2fbc7a5352a5f26a5953f2c85aeb8da52a33a8db336d64eb924852f92492d1')
 
 build() {
   mkdir build
