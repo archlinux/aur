@@ -1,4 +1,4 @@
-# Maintainer: Julien Coloos <julien.coloos [at] gmail [dot] com>
+# Maintainer: Li hanzhang <me@lihanzhang.cn>
 # The project is based on archlinux-initrd-ssh-cryptsetup by suiryc.
 pkgname=ssh-cryptsetup
 pkgver=1.1
