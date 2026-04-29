@@ -6,3 +6,4 @@ pkg/
 *.log
 warp/
 target/
+update.sh
