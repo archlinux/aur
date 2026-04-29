@@ -1,7 +1,7 @@
 pkgbase = pangolin-bin
 	pkgdesc = Pangolin Client - Secure reverse proxy and tunnel (Binary version)
 	pkgver = 0.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/fosrl/cli
 	install = pangolin-bin.install
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: vbopk9x3 <vbopk9x3@4wrd.cc>
 pkgname=pangolin-bin
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Pangolin Client - Secure reverse proxy and tunnel (Binary version)"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'riscv64')
 url="https://github.com/fosrl/cli"
@@ -26,5 +26,5 @@ sha256sums_riscv64=('097468d580ee67755e14b8bc2f95a4032f3564e16c3f2e91a653b79d7a2
 
 package() {
     # Install the binary to /usr/bin and set executable permissions
-    install -Dm755 "${srcdir}/pangolin" "${pkgdir}/usr/bin/pangolin"
+    install -Dm755 "${srcdir}/pangolin-${pkgver}" "${pkgdir}/usr/bin/pangolin"
 }
