@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/vleerapp/vleer"
 license=('AGPL-3.0')
 depends=('sqlite')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'cmake')
 provides=('vleer')
 conflicts=('vleer')
 source=("git+${url}")
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/vleer"
+  cargo install cargo-packager
   NO_STRIP=1 cargo packager --release
 }
 
