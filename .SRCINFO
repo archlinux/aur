@@ -1,0 +1,23 @@
+pkgbase = forgecode-bin
+	pkgdesc = An AI-powered code assistant CLI tool
+	pkgver = 2.12.10
+	pkgrel = 1
+	url = https://github.com/antinomyhq/forgecode
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = fzf
+	depends = bat
+	depends = fd
+	provides = forge
+	conflicts = forge
+	source_x86_64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.12.10/forge-x86_64-unknown-linux-gnu
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/tailcallhq/forgecode/refs/heads/main/LICENSE
+	sha256sums_x86_64 = 493e016e62818f56e612395019a73a247c8c66cec3d854c982195e187d41b25b
+	sha256sums_x86_64 = 3c9f90350449325ae2b1355d6aae26df25be58f1cfcb8ed6a44b9c4b10c663f9
+	source_aarch64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.12.10/forge-aarch64-unknown-linux-gnu
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/tailcallhq/forgecode/refs/heads/main/LICENSE
+	sha256sums_aarch64 = 6b4b9057185bddcf0a4138fe26790960d6d45c078e342d715e3da14a50196dc7
+	sha256sums_aarch64 = 3c9f90350449325ae2b1355d6aae26df25be58f1cfcb8ed6a44b9c4b10c663f9
+
+pkgname = forgecode-bin

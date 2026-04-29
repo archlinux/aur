@@ -1,0 +1,7 @@
+*.pkg.tar.zst
+*.pkg.tar.xz
+src/
+pkg/
+forge
+LICENSE
+.forgejo/
