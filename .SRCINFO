@@ -8,7 +8,7 @@ pkgbase = moon-child-fe-bin
 	source = moon-child-fe-bin.desktop
 	source = moon-child-fe-bin.png
 	source = moon-child-fe-bin-1.0.5.zip::https://github.com/MorsGames/MoonChildFE/releases/download/v1.0.5/MoonChildFE-LinuxX64.tar.gz
-	sha256sums = e74f0e2acd28ae040ae939f9fad102aebce351b3db8e90af1bd727d049912311
+	sha256sums = c73e087b89ecbb1bb66848cf1bb2f9198fd67930f5042eebf8871deec8d93fa3
 	sha256sums = c93852e775304a9a31dcb62d0150edef6cc83c44f66d7bd9300ca1592444d4d6
 	sha256sums = a1938fee8a2ab420d73fee85a393c21a752ae2ce5caa1c497039a89d1432f8d3
 
