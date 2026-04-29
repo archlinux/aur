@@ -42,6 +42,8 @@ build() {
   # Build frontend
   [ -d "web" ] && cd web && rm -f package-lock.json && npm install && npm run build && cd ..
 
+  # Build TUI (Terminal User Interface)
+  [ -d "tui" ] && cd tui && rm -f package-lock.json && npm install && npm run build && cd ..
   # Install whatsapp-bridge dependencies (kept alongside scripts for same path)
   if [ -f "scripts/whatsapp-bridge/package.json" ]; then
     (cd scripts/whatsapp-bridge && npm install --legacy-peer-deps --omit=dev) || echo "Warning: whatsapp-bridge npm install failed (optional)"
@@ -68,6 +70,7 @@ package() {
   cp -r .venv "$_optdir/"
   cp -r dist "$_optdir/"
   cp -r web "$_optdir/"
+  [ -d "tui" ] && cp -r tui "$_optdir/"
   cp -r scripts "$_optdir/"
 
   # Copy node_modules if present (kept alongside app for same path)
