@@ -13,7 +13,7 @@ makedepends=(
   git
   cargo
 )
-source=("git+$url.git?signed#tag=v$pkgver")
+source=("git+$url.git#tag=v$pkgver?signed")
 md5sum=(
     '887c49e6282dd579d0fe22366b9af47d'
 )

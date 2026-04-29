@@ -8,7 +8,7 @@ pkgbase = flatpak-enhanced
 	makedepends = git
 	makedepends = cargo
 	depends = flatpak
-	source = git+https://github.com/JiiB1/flatpak-enhanced.git?signed#tag=v0.1.0
+	source = git+https://github.com/JiiB1/flatpak-enhanced.git#tag=v0.1.0?signed
 	validpgpkeys = 927C6C7589E345D30D71367B483D974BE8CD1C27
 	md5sums = 887c49e6282dd579d0fe22366b9af47d
 
