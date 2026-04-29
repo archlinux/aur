@@ -5,4 +5,5 @@ post_install() {
         /opt/mycoria/mycoria config generate | tee /opt/mycoria/config.yaml
         echo "New mycoria config is generated. Please check /opt/mycoria/config.yaml"
     fi
+    echo "To start mycoria: systemctl start mycoria. Config is at /opt/mycoria/config.yaml. Check install guide at https://mycoria.org/install/."
 }
