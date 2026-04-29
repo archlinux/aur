@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowCyBar
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Analyze flow cytometric data using gate information'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('948feb5e1a570c5c4cf038a5da3631731a5ce7c3fea248ab18bc4928adac7fb2')
+sha256sums=('9d713017f5d88baf243f24dc71ba0ae72d1c0620e92f057409c0e4484b5c7588')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
