@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gypsum
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f3dd8f91eaf009e2d554e953522c77c4')
-b2sums=('2bc9505005d0f15858478c93bb75ea8d664c7028ff68308f7aa6728c7d8bb957e43b0b4ebadbf1736ce6a58f9befd45de7ee8d7db789b89d9e914ec68963282c')
+md5sums=('b3fcb0d6007d27dc3075e824d5eae2a8')
+b2sums=('8572040be83e4d683b056bd8b133fd88119cd1ac727ad237af0e5302eb3523a8d126465b0ce755a2d98bd7fdcf475d7cb48af09d6d70c3bd0734d848c4605729')
 
 build() {
   mkdir build
