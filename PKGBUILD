@@ -3,7 +3,7 @@
 # Upstream: Bitwig GmbH <support@bitwig.com>
 
 pkgname='bitwig-studio-earlyaccess'
-_pkgver='6.0.4'
+_pkgver='6.0.5'
 pkgver=${_pkgver}
 pkgrel='1'
 pkgdesc='Digital audio workstation for music production, remixing and live performance - early access version'
@@ -20,7 +20,7 @@ options=(!strip)
 source=("bitwig-studio-${_pkgver}.deb::https://www.bitwig.com/dl/Bitwig%20Studio/${_pkgver}/installer_linux/")
 
 
-sha256sums=('700cfb985634813f08f7b8ce7062708ee33727497823f2320b1533938e550a4c')
+sha256sums=('ecd59fc4cd72411608eee27416aef3ae5fdc933752d6f5bd6f12cc8f7159b52e')
 
 package() {
   # Unpack package contents
