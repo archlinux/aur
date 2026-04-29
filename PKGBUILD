@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tkWidgets
-_pkgver=1.88.0
+_pkgver=1.90.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-hgu95av2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('40d66dc82bf369331ddeb768a2e6667c')
-b2sums=('7a4d94c672282fb20b8dd176d1d754cf8be50d65c01fe4fc7d549f2511ee0bf8a790945efd1b2f6ea47f526f1278cf699bd2256f20303326be7e987409f5aa41')
+md5sums=('72c4a99bef0426b0a70bd2d2fd267c65')
+b2sums=('fb92d491662103e0fff5916653bbf78d9c63239aeaeda623839bfebd9ac213f93c439f085b42a4e1655f840d9f4cf3c989a052518c4c52d61bec24c78a13f2e3')
 
 build() {
   mkdir build
