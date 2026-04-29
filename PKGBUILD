@@ -4,7 +4,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.3.2.r0.gd9c5716
+pkgver=3.3.16.r0.gb8fca5c
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -29,6 +29,7 @@ makedepends=(
     'curl'
     'yarn'
     'python-setuptools'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -37,7 +38,7 @@ source=(
 )
 sha256sums=('SKIP'
             'efc8a6cea79ed0203dcbadf17632b5341952a49704f99e3ea0ddc573b06748f4'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -51,8 +52,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname//-/.}/apps/desktop/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/apps/desktop/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -66,21 +68,19 @@ prepare() {
     " "${srcdir}/${pkgname%-git}.sh"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-        echo "maxsockets=32"
-    } >> .npmrc
+    local HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
+            export ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/
+            export ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-binaries/
+        }
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-        echo apps/{desktop,web} extensions/web-clipper packages/{clipper,common,core,crypto,editor,editor-mobile,intl,logger,streamable-fs,theme,ui,sodium} servers/theme | xargs -n 1 cp .npmrc
     fi
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
@@ -103,8 +103,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/output/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/apps/desktop/output/linux-"*/resources/{app.asar.unpacked,assets} "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/assets/icons/${_icons}.png" \
