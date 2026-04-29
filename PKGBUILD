@@ -1,6 +1,6 @@
 # Maintainer: blitzkriegfc <blitzkriegfc@gmail.com>
 pkgname=qbz-bin
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="Native Qobuz client for Linux with bit-perfect hi-res audio, DAC passthrough, Last.fm scrobbling, and Chromecast/DLNA casting"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=('qbz')
 options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz_${pkgver}_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz_${pkgver}_aarch64.tar.gz")
-sha256sums_x86_64=('20963af1b1e071735c75eeed12985a43cfa0ced655aae0b1652ccf56f43b9766')
-sha256sums_aarch64=('9d66c8901cc81745211cd336fdbe61b61c2bf5249b87be68fdd49faeb8ad0907')
+sha256sums_x86_64=('6d258a6632fcb63a5dea2fcbbc71665d7ae97807ae303a44741cef598b723521')
+sha256sums_aarch64=('29b2629a91aebc0849edb70aebfbc3fae12630fdf3d359d255e15fac8dcd54ff')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then
