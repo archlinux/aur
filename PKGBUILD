@@ -2,7 +2,7 @@
 
 pkgname=pix
 pkgver=3.4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL-2.0-or-later')
@@ -35,7 +35,7 @@ optdepends=(
     'libchamplain: Map Viewer'
     'libheif: heif/heic/avif file support'
     'yelp: View help and documentation from the app'
-    'webkitgtk: Web services support'
+    'webkit2gtk-4.1: Web services support'
 )
 provides=($pkgname)
 conflicts=('pix-git')
