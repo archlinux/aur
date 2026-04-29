@@ -8,6 +8,7 @@ pkgbase = plasma-bigscreen-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = plasma-wayland-protocols-git
 	depends = kdeconnect-git
 	depends = plasma-nm-git
 	depends = plasma-pa-git
