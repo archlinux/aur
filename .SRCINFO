@@ -1,16 +1,15 @@
 pkgbase = twitch-cli-git
-	pkgdesc = The official Twitch CLI to make developing on Twitch easier, git version
-	pkgver = r224.b779fcf
+	pkgdesc = The official Twitch CLI to make developing on Twitch easier
+	pkgver = 1.1.25.r8.fd7dac6
 	pkgrel = 1
 	url = https://github.com/twitchdev/twitch-cli
 	arch = x86_64
-	license = Apache
-	makedepends = go
+	license = Apache-2.0
 	makedepends = git
+	makedepends = go
 	provides = twitch-cli
-	conflicts = twitch-cli-bin
-	source = twitch-cli::git+https://github.com/twitchdev/twitch-cli.git
-	sha256sums = SKIP
+	conflicts = twitch-cli
+	source = git+https://github.com/twitchdev/twitch-cli
+	sha512sums = SKIP
 
 pkgname = twitch-cli-git
-
