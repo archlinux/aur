@@ -1,6 +1,6 @@
 pkgbase = hypr-network-manager-git
         pkgdesc = Themeable NetworkManager applet for Hyprland
-        pkgver = 0.1.0.r403.g0a21a7e
+        pkgver = 0.2.0.r492.gae6f029
         pkgrel = 1
         url = https://github.com/hypr-nm/hypr-network-manager
         arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = hypr-network-manager-git
         depends = networkmanager
         provides = hypr-network-manager
         conflicts = hypr-network-manager
+        options = !debug
         source = hypr-network-manager::git+https://github.com/hypr-nm/hypr-network-manager.git
         sha256sums = SKIP
 
 pkgname = hypr-network-manager-git
-
