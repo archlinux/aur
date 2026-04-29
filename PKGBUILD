@@ -19,7 +19,7 @@ sha512sums=(SKIP)
 pkgver() {
     cd "$srcdir"/$_pkgname
     git describe --tags --long --abbrev=7 |\
-        sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^production\///'
+        sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^production\///;s/^v//'
 }
 
 build() {
