@@ -1,6 +1,6 @@
 pkgbase = kwin-scripts-magnetile
 	pkgdesc = KWin script for snapping windows into zones with connected tile resizing
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/jcearnal/magnetile
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = kwin-scripts-magnetile
 	makedepends = make
 	makedepends = zip
 	depends = kwin>=6.4
-	source = kwin-scripts-magnetile-0.2.0.tar.gz::https://github.com/jcearnal/magnetile/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 31f19161bb539a5fdb4a17f7b48b4267b2fb03e75680844e57e1a98a7309b9cc
+	source = kwin-scripts-magnetile-0.2.1.tar.gz::https://github.com/jcearnal/magnetile/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = ff306a049b27d290e8321ff707129612f131f03569b789d3878ed67a878e1cd1
 
 pkgname = kwin-scripts-magnetile
