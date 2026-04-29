@@ -3,7 +3,7 @@
 _name=tree-sitter-java
 pkgname=python-tree-sitter-java
 pkgver=0.23.5
-pkgrel=2
+pkgrel=5
 pkgdesc="Java grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-java/"
@@ -21,12 +21,13 @@ sha256sums=('f5cd57b8f1270a7f0438878750d02ccc79421d45cca65ff284f1527e9ef02e38')
 
 prepare() {
     cd "${_name//-/_}-${pkgver}"
-    if [ ! -f src/tree_sitter/parser.h ]; then
-        mkdir -p src/tree_sitter
-        curl -sLo src/tree_sitter/parser.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-        curl -sLo src/tree_sitter/alloc.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-        curl -sLo src/tree_sitter/array.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-    fi
+
+    sed -i \
+        -e 's/^license\.text = "MIT"$/license = "MIT"/' \
+        -e 's/^license\.text = "Apache-2.0"$/license = "Apache-2.0"/' \
+        -e 's/^license = "LICENSE"$/license = "MIT"/' \
+        -e '/License :: OSI Approved/d' \
+        pyproject.toml
 }
 
 build() {
