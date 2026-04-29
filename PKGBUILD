@@ -9,15 +9,15 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.png"
     "${pkgname}-${pkgver}.zip::https://github.com/MorsGames/MoonChildFE/releases/download/v1.0.5/MoonChildFE-LinuxX64.tar.gz")
-sha256sums=(e74f0e2acd28ae040ae939f9fad102aebce351b3db8e90af1bd727d049912311
+sha256sums=(c73e087b89ecbb1bb66848cf1bb2f9198fd67930f5042eebf8871deec8d93fa3
     c93852e775304a9a31dcb62d0150edef6cc83c44f66d7bd9300ca1592444d4d6
     a1938fee8a2ab420d73fee85a393c21a752ae2ce5caa1c497039a89d1432f8d3)
 
 package(){
-    install -Dm755 "${srcdir}/MoonChildFE" "$pkgdir/usr/share/${pkgname}/MoonChildFE"
-    install -Dm755 "${srcdir}/gamecontrollerdb.txt" "$pkgdir/usr/share/${pkgname}/gamecontrollerdb.txt"
+    install -Dm777 "${srcdir}/MoonChildFE" "$pkgdir/usr/share/${pkgname}/MoonChildFE"
+    install -Dm777 "${srcdir}/gamecontrollerdb.txt" "$pkgdir/usr/share/${pkgname}/gamecontrollerdb.txt"
     cp -rf "${srcdir}/data" "$pkgdir/usr/share/${pkgname}/data"
 
-    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm777 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm755 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
