@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hmdbQuery
-_pkgver=1.30.0
+_pkgver=1.31.1
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.31.1
 pkgrel=1
 pkgdesc='utilities for exploration of human metabolome database'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6a483f96ba0957f09d7a81e408a8d768cdca7f59671f2e7ef725deb12a8a5afd')
+sha256sums=('cb64e6c6ac99d8568bbb6b378f38ee8ac4ac0f30c01f88ea1555b02a466e0dd7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
