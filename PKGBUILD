@@ -38,8 +38,8 @@ _target_arch=(
   'xtensa-sample_controller32_zephyr-elf'
 )
 pkgname=("zephyr-sdk-gnu-bin")
-pkgver=1.0.0
-pkgrel=7
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
