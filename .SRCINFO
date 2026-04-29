@@ -1,0 +1,25 @@
+pkgbase = weave-bin
+	pkgdesc = Entity-level semantic merge driver for Git
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/Ataraxy-Labs/weave/tree/v0.3.2
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = libarchive
+	makedepends = gzip
+	depends = glibc
+	depends = libgcc
+	conflicts = weave-merge
+	source = https://github.com/Ataraxy-Labs/weave/raw/refs/tags/v0.3.2/LICENSE-APACHE
+	source = https://github.com/Ataraxy-Labs/weave/raw/refs/tags/v0.3.2/LICENSE-MIT
+	source = https://github.com/Ataraxy-Labs/weave/releases/download/v0.3.2/weave-cli-x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/Ataraxy-Labs/weave/releases/download/v0.3.2/weave-driver-x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/Ataraxy-Labs/weave/releases/download/v0.3.2/weave-mcp-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 3d5ac2ca3c9e4bcd641e43c5512350cf62e15e527f9b4a720d52b546d9965a5f
+	sha256sums = 0173d0fc0ea38a5124e9cc7eea9db01a14141ce1240508eb497f701394fe49eb
+	sha256sums = 462ae23538c17ee1e9eff45289e28b111f5379642a6e1b5e72c79cead0ae4a14
+	sha256sums = af6cd21d5a5b3c9e71f4cce9b58f06bbf6be2faccf773b962f85a0795cfd2a6f
+	sha256sums = b83476c03cd209ecd960ae08166e795965bb55b3fc715c9a245d547a542073ae
+
+pkgname = weave-bin
