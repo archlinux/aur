@@ -1,13 +1,13 @@
 pkgbase = r-plgem
 	pkgdesc = Detect differential expression in microarray and proteomics datasets with the Power Law Global Error Model (PLGEM)
-	pkgver = 1.82.0
+	pkgver = 1.84.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/plgem
 	arch = any
 	license = GPL-2.0-only
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/plgem_1.82.0.tar.gz
-	md5sums = 3370378aec05cfc2f3f6a44f088aff12
-	b2sums = 5728a1048cde14056988d174c79ae36a2425bf68f67d46489109bfe601b9816512b5a5af48a0e1cd27ea90d32fe7d7b15a45e1dc303630e87d574f7e30274edd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/plgem_1.84.0.tar.gz
+	md5sums = d787be0404cd44b9370237e542a54ca2
+	b2sums = 03f4ccfa88407b7cf566b0ddcfaa300841f7099502912a2fd99e733ec2d2dfc4881dc383b63685f9472f3af606026d173323259b6ce47cde4c757f77b5e3b420
 
 pkgname = r-plgem
