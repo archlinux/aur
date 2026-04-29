@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('control-ofc-daemon>=1.5.0' 'python' 'pyside6' 'python-httpx'
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('64d615da970e615ce97e5a0dbf19b88e8895d9bee14d4ab3a8ed57152797c8c5')
+sha256sums=('84dbc8f04e8876a15cc3de87433006e27e39fe6d366818deada8d785b8c592b8')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -30,10 +30,7 @@ package() {
     # Application icon
     install -Dm644 assets/branding/app_icon/app_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/control-ofc.svg"
 
-    # Branding assets (splash, banner — used at runtime)
-    install -Dm644 assets/branding/splash/splash.png "$pkgdir/usr/share/control-ofc-gui/assets/branding/splash/splash.png"
-    install -Dm644 assets/branding/banner.png "$pkgdir/usr/share/control-ofc-gui/assets/branding/banner.png"
-    install -Dm644 assets/branding/banner_original.png "$pkgdir/usr/share/control-ofc-gui/assets/branding/banner_original.png"
+    # Branding assets — runtime-loaded by the in-app About dialog and sidebar
     install -Dm644 assets/branding/app_icon/app_icon.svg "$pkgdir/usr/share/control-ofc-gui/assets/branding/app_icon/app_icon.svg"
 
     # License
