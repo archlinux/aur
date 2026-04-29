@@ -16,7 +16,6 @@
 # License along with the GNU C Library; if not, see
 # <https://www.gnu.org/licenses/>.
 
-
 # This is the `ldd' command, which lists what shared libraries are
 # used by given dynamically-linked executables.  It works by invoking the
 # run-time dynamic linker as a command and setting the environment
@@ -26,7 +25,7 @@
 TEXTDOMAIN=libc
 TEXTDOMAINDIR=/usr/share/locale
 
-RTLDLIST="/usr/lib/ld.so.1 /usr/lib64/ld.so.1"
+RTLDLIST="/usr/lib/ld-linux-loongarch-lp64d.so.1 /usr/lib64/ld-linux-loongarch-lp64d.so.1"
 warn=
 bind_now=
 verbose=
@@ -57,13 +56,13 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
     exit 0
     ;;
   -d | --d | --da | --dat | --data | --data- | --data-r | --data-re | \
-  --data-rel | --data-relo | --data-reloc | --data-relocs)
+    --data-rel | --data-relo | --data-reloc | --data-relocs)
     warn=yes
     shift
     ;;
   -r | --f | --fu | --fun | --func | --funct | --functi | --functio | \
-  --function | --function- | --function-r | --function-re | --function-rel | \
-  --function-relo | --function-reloc | --function-relocs)
+    --function | --function- | --function-r | --function-re | --function-rel | \
+    --function-relo | --function-reloc | --function-relocs)
     warn=yes
     bind_now=yes
     shift
@@ -80,8 +79,9 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
     echo >&2 $"ldd: option \`$1' is ambiguous"
     exit 1
     ;;
-  --)		# Stop option processing.
-    shift; break
+  --) # Stop option processing.
+    shift
+    break
     ;;
   -*)
     echo >&2 'ldd:' $"unrecognized option" "\`$1'"
@@ -94,10 +94,9 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   esac
 done
 
-nonelf ()
-{
+nonelf() {
   # Maybe extra code for non-ELF binaries.
-  return 1;
+  return 1
 }
 
 add_env="LD_TRACE_LOADED_OBJECTS=1 LD_WARN=$warn LD_BIND_NOW=$bind_now"
@@ -114,7 +113,12 @@ fi
 # subshell compound list (using "(...)") to prevent parameter assignments from
 # affecting the calling shell execution environment.
 try_trace() (
-  output=$(eval $add_env '"$@"' 2>&1; rc=$?; printf 'x'; exit $rc)
+  output=$(
+    eval $add_env '"$@"' 2>&1
+    rc=$?
+    printf 'x'
+    exit $rc
+  )
   rc=$?
   printf '%s' "${output%x}"
   return $rc
@@ -135,14 +139,16 @@ case $# in
 esac
 
 result=0
-for file do
+for file; do
   # We don't list the file name when there is only one.
   test $single_file = t || echo "${file}:"
   case $file in
-  */*) :
-       ;;
-  *) file=./$file
-     ;;
+  */*)
+    :
+    ;;
+  *)
+    file=./$file
+    ;;
   esac
   if test ! -e "$file"; then
     echo "ldd: ${file}:" $"No such file or directory" >&2
@@ -157,22 +163,25 @@ warning: you do not have execution permission for" "\`$file'" >&2
     ret=1
     for rtld in ${RTLDLIST}; do
       if test -x $rtld; then
-	verify_out=`${rtld} --verify "$file"`
-	ret=$?
-	case $ret in
-	[02]) RTLD=${rtld}; break;;
-	esac
+        verify_out=$(${rtld} --verify "$file")
+        ret=$?
+        case $ret in
+        [02])
+          RTLD=${rtld}
+          break
+          ;;
+        esac
       fi
     done
     case $ret in
     1)
       # This can be a non-ELF binary or no binary at all.
       nonelf "$file" || {
-	echo $"	not a dynamic executable" >&2
-	result=1
+        echo $"	not a dynamic executable" >&2
+        result=1
       }
       ;;
-    0|2)
+    0 | 2)
       try_trace "$RTLD" "$file" || result=1
       ;;
     *)
