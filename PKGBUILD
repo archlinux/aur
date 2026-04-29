@@ -2,7 +2,7 @@
 # Contributor: Charlotte <cemetery394@gmail.com>
 pkgname=citron-neo
 pkgver=2026.04.27
-pkgrel=2
+pkgrel=3
 pkgdesc="Nintendo Switch emulator fork from citron-neo (git version)"
 arch=('x86_64')
 url="https://github.com/citron-neo/emulator"
@@ -18,7 +18,7 @@ depends=(
 makedepends=(
   'git' 'cmake' 'ninja' 'python' 'boost' 'nlohmann-json'
   'qt6-tools' 'qt6-svg' 'qt6-multimedia' 'qt6-webengine'
-  'vulkan-headers' 'rapidjson'
+  'vulkan-headers' 'rapidjson' 'clang' 'lld'
 )
 
 provides=('citron' 'citron-git' "${pkgname::-4}")
@@ -63,7 +63,7 @@ source=("git+https://github.com/citron-neo/emulator.git#tag=${pkgver//./-}"
 	#tzdb_to_nx submodules
 	"git+https://github.com/eggert/tz.git"
 	#sirit submodules includes SPIRV-Headers
-
+	"fix.patch::https://github.com/citron-neo/emulator/commit/bb6ca099e7f8ae5dc6de33da52419a4a62b95ada.diff"
 	)
 sha256sums=('725134f15505326c4e175a7789bbdd91021baa5d0e54e6b97a60d4c05af36830'
             'SKIP'
@@ -97,7 +97,8 @@ sha256sums=('725134f15505326c4e175a7789bbdd91021baa5d0e54e6b97a60d4c05af36830'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '1120a1fb92143791127c3516938aaf371ec92ad85adb076b707183d6d2873383')
 
 prepare() {
   cd emulator
@@ -139,10 +140,16 @@ prepare() {
   git submodule init
   git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
   git -c protocol.file.allow=always submodule update
+  popd
+  patch -Np1 < "$srcdir/fix.patch"
 }
 
 build() {
   cd "$srcdir"
+
+  export CFLAGS="${CFLAGS} -DNDEBUG -flto=thin"
+  export CXXFLAGS="${CXXFLAGS} -DNDEBUG -flto=thin"
+  export LDFLAGS="$LDFLAGS -fuse-ld=lld"
 
   cmake -B build -S emulator -G Ninja \
     -DCMAKE_BUILD_TYPE= \
@@ -157,14 +164,17 @@ build() {
     -DENABLE_QT_TRANSLATION=ON \
     -DUSE_DISCORD_PRESENCE=ON \
     -DCITRON_USE_FASTER_LD=OFF \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
-    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+    -DCMAKE_C_FLAGS="${CFLAGS}" \
     -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
     -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
-    -DTITLE_BAR_FORMAT_RUNNING="citron neo | ${pkgver} {}" \
-    -DTITLE_BAR_FORMAT_IDLE="citron neo | ${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_RUNNING="citron-neo | ${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_IDLE="citron-neo | ${pkgver} {}" \
     -DBUILD_ID="archlinux.org" \
-    -DCITRON_TESTS=OFF
+    -DCITRON_TESTS=OFF \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++
+
 
   cmake --build build
 }
