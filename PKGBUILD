@@ -1,9 +1,9 @@
-# Contributor: Ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <gabba.head@gmx.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-starman'
-pkgver='0.4017'
-pkgrel='3'
+pkgver='0.4018'
+pkgrel='1'
 pkgdesc="High-performance preforking PSGI/Plack web server"
 arch=('any')
 license=('Artistic-1.0')
@@ -13,8 +13,8 @@ makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-requires>=0' 'perl-test-tcp>=2.00')
 url='https://metacpan.org/release/Starman'
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Starman-$pkgver.tar.gz")
-md5sums=('2af84f1d1ffa7be3db109ed5f1e73353')
-sha512sums=('04d40d5f4346cd2425516ffd414dc2eca86d241bdc75e9f6cfd3091dab38f3636aebe8e49cc2b8811d06a2332883330f0d85320668ceddd0f9d15d832d609e07')
+md5sums=('15a65eefb14b2e8f89bb7f8e155ae5ed')
+sha512sums=('b839ea13b94ec9556145956a7d3f6973ed99579d30a6102c325e9eac6b306aa6f64f5ac000159a01142fa380a149f5c2be890c6fc3f8846f9922993c489c81fe')
 _distdir="Starman-$pkgver"
 
 build() {
@@ -38,8 +38,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   /usr/bin/perl Build install
-
-  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:
