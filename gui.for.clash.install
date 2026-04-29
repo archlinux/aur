@@ -1,0 +1,31 @@
+_help() {
+    cat << 'EOF'
+================================
+GUI.for.Clash 快速使用指南 / Quick Start Guide
+================================
+1. GUI.for.Clash 访问权限 / GUI.for.Clash Access Permission
+sudo gpasswd -a $USER guiforclash
+newgrp guiforclash
+
+2. 使 mihomo 不需 root 权限的情况下创建和控制 Tun 设备 /
+  Allows mihomo to create and manage Tun devices without requiring root privileges
+setcap cap_net_admin=+pe /var/lib/gui.for.clash/data/mihomo/mihomo
+
+3. 配置文件位置 / Configuration file location
+ls -lash /var/lib/gui.for.clash/data/
+
+4. 文档访问 / Document Access
+在浏览器打开 / Open in browser:
+xdg-open https://gui-for-cores.github.io/zh/guide/
+
+================================
+EOF
+}
+
+post_install() {
+   _help
+}
+
+post_upgrade() {
+  _help
+}

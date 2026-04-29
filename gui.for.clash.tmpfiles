@@ -1,0 +1,17 @@
+#Type   Path                                             Mode    User            Group           Age     Argument
+d       /var/lib/gui.for.clash                         0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data                    0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/mihomo             0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/locales            0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/rolling-release    0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/rulesets           0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/subscribes         0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/plugins            0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/third              0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/third/node-configurator    0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/third/node-convert         0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/third/traffic-statistics   0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/.cache             0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/.cache/imgs        0775    guiforclash   guiforclash   -       -
+d       /var/lib/gui.for.clash/data/.cache/icons       0775    guiforclash   guiforclash   -       -
+f       /var/lib/gui.for.clash/GUI.for.Clash           0775    guiforclash   guiforclash   -       -
