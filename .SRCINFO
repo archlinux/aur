@@ -1,0 +1,14 @@
+pkgbase = aura-emerge
+	pkgdesc = Portage-like wrapper for Arch Linux using Aura
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/Undercat037/aura-emerge
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = aura
+	source = aura-emerge-1.7.0.tar.gz::https://github.com/Undercat037/aura-emerge/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = aura-emerge
