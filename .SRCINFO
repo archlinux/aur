@@ -1,0 +1,78 @@
+pkgbase = dotnet-core-rc-bin
+	pkgver = 10.0.7.sdk203
+	pkgrel = 1
+	url = https://dotnet.microsoft.com
+	arch = aarch64
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	options = staticlibs
+	source = dotnet.sh
+	sha512sums = 768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.203/dotnet-sdk-10.0.203-linux-arm64.tar.gz
+	sha512sums_aarch64 = 7fbc8e8b20b6d6cb40269544ea4b5e919dd7fc7b066b429f32e7fa9087224f17445b90c7807c46745cc42f299dd7ef65abd023bec03fc341ce07a5bb52a59218
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.203/dotnet-sdk-10.0.203-linux-x64.tar.gz
+	sha512sums_x86_64 = fdc36a27285b6f39b625814454f4dd3e76f2259c1279d0317d7fa297514bba607de323290d42caf67f62b9081ab26b6edb079e00f2b8c709c5826d3349a451d9
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.203/dotnet-sdk-10.0.203-linux-arm.tar.gz
+	sha512sums_armv7h = 93c792edaf740018ba5605b9ae2167f01fe63982510b5e438072f63fa214aee95a3fc633cf028a7cc20ab0b60119dacafeeec28e616921766b56f88e218a6b06
+
+pkgname = dotnet-host-rc-bin
+	pkgdesc = A generic driver for the .NET Core Command Line Interface
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = sh
+	provides = dotnet-host-rc=10.0.7.sdk203
+	provides = dotnet-host=10.0.7.sdk203
+	conflicts = dotnet-host-rc
+	conflicts = dotnet-host
+
+pkgname = dotnet-runtime-rc-bin
+	pkgdesc = The .NET Core runtime
+	depends = dotnet-host>=10.0.7.sdk203
+	depends = glibc
+	depends = icu
+	depends = krb5
+	depends = libgcc
+	depends = libstdc++
+	depends = libunwind
+	depends = openssl
+	depends = zlib
+	optdepends = lttng-ust2.12: CoreCLR tracing
+	provides = dotnet-runtime-rc=10.0.7.sdk203
+	provides = dotnet-runtime-10.0=10.0.7.sdk203
+	conflicts = dotnet-runtime-rc
+	conflicts = dotnet-runtime-10.0
+
+pkgname = aspnet-runtime-rc-bin
+	pkgdesc = The ASP.NET Core runtime
+	depends = dotnet-runtime-rc-bin>=10.0.7.sdk203-1
+	provides = aspnet-runtime-rc=10.0.7.sdk203
+	provides = aspnet-runtime-10.0=10.0.7.sdk203
+	conflicts = aspnet-runtime-rc
+	conflicts = aspnet-runtime-10.0
+
+pkgname = dotnet-targeting-pack-rc-bin
+	pkgdesc = The .NET Core targeting pack
+	provides = dotnet-targeting-pack-rc=10.0.7.sdk203
+	provides = dotnet-targeting-pack-10.0=10.0.7.sdk203
+	conflicts = dotnet-targeting-pack-rc
+	conflicts = dotnet-targeting-pack-10.0
+
+pkgname = aspnet-targeting-pack-rc-bin
+	pkgdesc = The ASP.NET Core targeting pack
+	depends = dotnet-targeting-pack-rc-bin>=10.0.7.sdk203-1
+	provides = aspnet-targeting-pack-rc=10.0.7.sdk203
+	provides = aspnet-targeting-pack-10.0=10.0.7.sdk203
+	conflicts = aspnet-targeting-pack-rc
+	conflicts = aspnet-targeting-pack-10.0
+
+pkgname = dotnet-sdk-rc-bin
+	pkgdesc = The .NET Core SDK
+	depends = dotnet-runtime-rc-bin>=10.0.7.sdk203-1
+	depends = dotnet-targeting-pack-rc-bin>=10.0.7.sdk203-1
+	optdepends = dotnet-aspnet-targeting-pack-rc-bin: Build ASP.NET Core applications
+	provides = dotnet-sdk-rc=10.0.7.sdk203
+	provides = dotnet-sdk-10.0=10.0.7.sdk203
+	conflicts = dotnet-sdk-rc
+	conflicts = dotnet-sdk-10.0
