@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.16.25
+pkgver=1.16.26
 pkgrel=1
 _nodeversion=24
 _electronversion=41
@@ -15,9 +15,10 @@ makedepends=(
   'nvm'
   'python'
 )
+checkdepends=('appstream')
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('956619ab368d26a6ef6c16a7cf31382ecf50480c008ab9b4c4d06fda79babf1d'
+sha256sums=('afac42e1c4060507be9bd1f74bf1ccf1d9971b9eca0c7fe86fe9dcd78b7316e9'
             'ae23af6865ab1638d46df5158fa09d41357f57068f1676af86e1a0e6e00459ed')
 
 _ensure_local_nvm() {
@@ -63,6 +64,12 @@ build() {
   npm run build
   npx electron-builder build --linux dir -c ./electron-builder.config.json \
     -c.electronDist=$electronDist -c.electronVersion=$electronVer
+}
+
+check() {
+  cd "Materialious-$pkgver/$pkgname/electron"
+  appstreamcli validate --no-net "$pkgname.metainfo.xml" || :
+  desktop-file-validate "$pkgname.desktop"
 }
 
 package() {
