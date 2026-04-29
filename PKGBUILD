@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ibh
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-yeastcc
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('02a9f5f43219c04f87a84f6ace3b8663')
-b2sums=('f8a2b429c5efe799ccdef9ba211d47509b5bec8cc65bfd7926283b39e56dcac93d00c0bfffe89adfd5114d5705598880fca78122adf5dd4b02b2fffd0bdfe4d1')
+md5sums=('d48593f196a7750a2bb55ed717b78061')
+b2sums=('5e469e02cd4a2c78df83f378e165dc68ea25f7e4e72cfe3e9e7b74c04f7a7e9d46abaa0915f4236ddf85edbb9435952f330bf336b75f09ed4d9ad6b1d3547d03')
 
 build() {
   mkdir build
