@@ -8,18 +8,20 @@ license=('OSMC-PL')
 arch=('x86_64')
 depends=('java-environment' 'lapack' 'openscenegraph' 'boost-libs' 'qt6-webengine' 'qt6-svg' 'qt6-tools' 'qt6-5compat')
 provides=('openmodelica-omc')
-makedepends=('gcc-fortran' 'cmake' 'boost')
+makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 options=('!lto')
-source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-src-with-submodules.zip")
-sha256sums=('8c26ae68db79e2ac5445fa400ec1a06cb3286d1d368d3e2f0cacf1caaadee9c3')
+source=("${pkgname}::git+${_giturl}#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
   cd "${pkgname}"
+  git remote set-url origin ${_giturl}
+  git submodule update --force --init --recursive
 }
 
 build() {
   cd "${pkgname}"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_QT_MAJOR_VERSION=6 -DBLA_VENDOR=Generic -B build .
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_QT_MAJOR_VERSION=6 -B build .
   make -C build
 }
 

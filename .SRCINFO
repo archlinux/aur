@@ -7,6 +7,7 @@ pkgbase = openmodelica
 	license = OSMC-PL
 	makedepends = gcc-fortran
 	makedepends = cmake
+	makedepends = git
 	makedepends = boost
 	depends = java-environment
 	depends = lapack
@@ -18,7 +19,7 @@ pkgbase = openmodelica
 	depends = qt6-5compat
 	provides = openmodelica-omc
 	options = !lto
-	source = https://github.com/OpenModelica/OpenModelica/releases/download/v1.26.5/OpenModelica-src-with-submodules.zip
-	sha256sums = 8c26ae68db79e2ac5445fa400ec1a06cb3286d1d368d3e2f0cacf1caaadee9c3
+	source = openmodelica::git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.26.5
+	sha256sums = SKIP
 
 pkgname = openmodelica
