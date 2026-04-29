@@ -1,6 +1,6 @@
 # Maintainer: lee <loyalpartner@163.com>
 pkgname=fcitx5-anytalk
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Voice input addon for fcitx5 with a Qt6 Aurora overlay"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 )
 makedepends=('cmake' 'pkgconf' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('640440c3aa986ee17c145955260c7bae379030c217c30a4dad97b5a56a3df6cf')
+sha256sums=('62e08019da354ddfd586534699797d2f8bb6149fb1024f35e02e6e2e7bee0856')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
