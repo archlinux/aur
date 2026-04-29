@@ -12,6 +12,6 @@ pkgbase = betcon
 	depends = python-pillow
 	depends = python-pyqtgraph
 	source = https://github.com/soker90/betcon/releases/download/v2.0.0/betcon-2.0.0-linux-x86_64.tar.gz
-	sha256sums = 4d220aa6321b85d2a588796aec6640ac7d795aa4157193cc4606a0ff4fdfae5f
+	sha256sums = 4cb9a98a2c26c660fa8bf94d3bfe3f4de4cca0c3f21f03418fccb07235885d7a
 
 pkgname = betcon

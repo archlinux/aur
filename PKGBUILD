@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPLv3')
 depends=('gcc-libs' 'glibc' 'python-numpy' 'python-yaml' 'python-pillow' 'python-pyqtgraph')
 source=("https://github.com/soker90/betcon/releases/download/v$pkgver/betcon-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('4d220aa6321b85d2a588796aec6640ac7d795aa4157193cc4606a0ff4fdfae5f')
+sha256sums=('4cb9a98a2c26c660fa8bf94d3bfe3f4de4cca0c3f21f03418fccb07235885d7a')
 
 package() {
 	install -dm755 "${pkgdir}/opt/betcon"
