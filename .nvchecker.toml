@@ -1,0 +1,4 @@
+[patchage]
+source = "git"
+git = "https://gitlab.com/drobilla/patchage.git"
+prefix = "v"

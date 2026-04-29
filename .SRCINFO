@@ -1,27 +1,27 @@
 pkgbase = patchage
 	pkgdesc = A modular patch bay for audio and MIDI systems based on Jack and Alsa
 	pkgver = 1.0.10
-	pkgrel = 4
+	pkgrel = 5
 	url = https://drobilla.net/software/patchage.html
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = dbus-glib
-	makedepends = meson>=0.56
-	makedepends = reuse
+	makedepends = meson>=0.56.0
 	depends = alsa-lib
 	depends = atkmm
-	depends = ganv
-	depends = gcc-libs
-	depends = glib2
+	depends = ganv>=1.5.2
+	depends = glib2>=2.14.0
 	depends = glibc
-	depends = glibmm
+	depends = glibmm>=2.14.0
 	depends = gtk2
 	depends = gtkmm
 	depends = hicolor-icon-theme
 	depends = jack
+	depends = libgcc
+	depends = libstdc++
 	depends = libsigc++
-	source = patchage-1.0.10.tar.xz::https://download.drobilla.net/patchage-1.0.10.tar.xz
-	source = patchage-1.0.10.tar.xz.sig::https://download.drobilla.net/patchage-1.0.10.tar.xz.sig
+	source = https://download.drobilla.net/patchage-1.0.10.tar.xz
+	source = https://download.drobilla.net/patchage-1.0.10.tar.xz.sig
 	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
 	b2sums = db7e17acc483b1fec27c80a3bedf3b546d303d8ce4f90f7f7669a4e4e1dcb526881d949d91edfdd6283dff3d9382c4c3534972065e2769a43e9e4b982b0dfbec
 	b2sums = SKIP
