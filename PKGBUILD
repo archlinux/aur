@@ -1,7 +1,7 @@
 # Maintainer: Chair <sergeyponomorev0@gmail.com>
 pkgname=hashreaper
 pkgver=3.52
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast hash cracker with network distribution, Russian charsets, and cross-platform"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xZxZxPussyslayer228xZxZx/HashReaper"
@@ -20,4 +20,6 @@ build() {
 package() {
   cd "$srcdir/HashReaper-Stable"
   make install DESTDIR="$pkgdir" PREFIX="/usr"
+  # Переименовываем бинарник в нижний регистр
+  mv "$pkgdir/usr/bin/HashReaper" "$pkgdir/usr/bin/hashreaper"
 }
