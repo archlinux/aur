@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Mfuzz
-_pkgver=2.70.0
+_pkgver=2.72.0
 pkgname=r-${_pkgname,,}
-pkgver=2.70.0
+pkgver=2.72.0
 pkgrel=1
 pkgdesc='Soft clustering of time series gene expression data'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-marray
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('859e6e80acbfdea1b423d0406273fbc99e879aa6b028146adacb013224744d3a')
+sha256sums=('5bfbb25fca1709d8270e65b2e0db76c380e57cc1825de7f81fb35e972f33ba87')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
