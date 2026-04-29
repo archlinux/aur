@@ -1,13 +1,13 @@
 pkgbase = supmover-bin
 	pkgdesc = Shift timings and Screen Area of PGS/Sup subtitle
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/MonoS/SupMover/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/MonoS/SupMover/releases/download/v2.5.0/supmover-linux.zip
-	b2sums = 88b734d80f76852473141be718a504004258c9cf2e273fc0a0c71721db7c5f6eebfbd1c31e43699f81e0f5cd5a8e4feb910f591f926866a3acb611e77a310de0
+	source = https://github.com/MonoS/SupMover/releases/download/v2.5.1/supmover-linux.zip
+	b2sums = 7ae16d58f9b070ef6eccda24842e116ba9d4b6e5988728885a17e37a07008f26130594bc0bf89ff4701bb8a31f3804e97e6852ed7ad840363069997fe446e572
 
 pkgname = supmover-bin
