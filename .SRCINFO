@@ -1,10 +1,10 @@
 pkgbase = python-tree-sitter-elixir
 	pkgdesc = Elixir grammar for tree-sitter
 	pkgver = 0.3.5
-	pkgrel = 2
+	pkgrel = 5
 	url = https://pypi.org/project/tree-sitter-elixir/
 	arch = any
-	license = MIT
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

@@ -3,11 +3,11 @@
 _name=tree-sitter-elixir
 pkgname=python-tree-sitter-elixir
 pkgver=0.3.5
-pkgrel=2
+pkgrel=5
 pkgdesc="Elixir grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-elixir/"
-license=('MIT')
+license=('Apache-2.0')
 depends=('python' 'python-tree-sitter')
 makedepends=(
     'python-build'
@@ -21,12 +21,13 @@ sha256sums=('ead089393b1ce732304e6b6fb0bc0ab79e3295663d697be025bd49f0f367b74d')
 
 prepare() {
     cd "${_name//-/_}-${pkgver}"
-    if [ ! -f src/tree_sitter/parser.h ]; then
-        mkdir -p src/tree_sitter
-        curl -sLo src/tree_sitter/parser.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-        curl -sLo src/tree_sitter/alloc.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-        curl -sLo src/tree_sitter/array.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-    fi
+
+    sed -i \
+        -e 's/^license\.text = "MIT"$/license = "MIT"/' \
+        -e 's/^license\.text = "Apache-2.0"$/license = "Apache-2.0"/' \
+        -e 's/^license = "LICENSE"$/license = "MIT"/' \
+        -e '/License :: OSI Approved/d' \
+        pyproject.toml
 }
 
 build() {
