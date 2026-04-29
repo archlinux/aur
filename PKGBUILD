@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DFP
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bc022331c6124157e1112936d48d1d1c')
-b2sums=('4d3285b2c2a0217a7da2a3d4b261625fa5f738eb7aab170522917abc7efa109e7b8a5765f7ced7036c8dff726d74fe84b6f08676ce1c283585bddf70c2e90774')
+md5sums=('01c8e8fef5cfb9a121db1e2b5b023016')
+b2sums=('f9bd675f00aeef962badd508d1c34043e9b9996e57c6ba0d6ddc47e346b5d3da7dee07d14d83512ba67078ad110668f8355b58fbd92a3d136520f1bcd8284803')
 
 build() {
   mkdir build
