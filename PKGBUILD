@@ -2,53 +2,27 @@
 
 pkgname=xonimet
 pkgver=2.1.0
-pkgrel=5
+pkgrel=8
 pkgdesc="Extractor universal de metadatos para fotos, audio, video y documentos. Genera reportes PDF."
 arch=('any')
 url="https://github.com/XONIDU/xonimet"
 license=('MIT')
-depends=(
-    'python'
-    'python-pillow'
-    'python-mutagen'
-    'python-lxml'
-    'python-openpyxl'
-    'ffmpeg'
-)
-makedepends=('python-build' 'python-installer' 'python-wheel')
+depends=('python' 'python-pip' 'ffmpeg')
+makedepends=()
 optdepends=('ffmpeg: necesario para extraer metadatos de videos')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/XONIDU/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    # Crear setup.py para instalar con pip
-    cat > setup.py << EOF
-from setuptools import setup, find_packages
-
-setup(
-    name="$pkgname",
-    version="$pkgver",
-    py_modules=["xonimet"],
-    scripts=["start.py"],
-    data_files=[
-        ("share/$pkgname", ["xonimet.py"]),
-    ],
-)
-EOF
-}
-
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     
-    # Usar pip install sin --target para instalar en el directorio correcto
-    pip install --no-deps --prefix="$pkgdir/usr" .
+    # Instalar binario principal
+    install -Dm755 start.py "$pkgdir/usr/bin/$pkgname"
     
-    # Renombrar start.py a xonimet en /usr/bin
-    mv "$pkgdir/usr/bin/start.py" "$pkgdir/usr/bin/$pkgname"
-    chmod 755 "$pkgdir/usr/bin/$pkgname"
+    # Instalar modulo principal
+    install -Dm755 xonimet.py "$pkgdir/usr/share/$pkgname/$pkgname.py"
     
-    # Crear directorio de documentación
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md" 2>/dev/null || true
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
+    # Crear directorio de documentacion
+    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 }
