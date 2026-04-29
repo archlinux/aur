@@ -8,7 +8,7 @@ _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgdesc='Terminal calculator and advanced math solver using Python, IPython and SymPy (development version)'
 pkgver=0.0.1.r277.gdf061bd
-pkgrel=1
+pkgrel=2
 url="https://github.com/idanpa/$_srcname"
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -66,7 +66,11 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -Dm0644 -t "$pkgdir/usr/share/$pkgname/doc" README.md
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -sr "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
