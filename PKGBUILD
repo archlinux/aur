@@ -4,7 +4,7 @@
 # Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.2.0
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
-pkgver=10.2.0
+pkgver=10.3.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
@@ -24,7 +24,7 @@ tmpfiles.conf
 )
 
 sha256sums=(  
-'0bd24de2108016a5ed758d523ca4313cea26aeaab1f544afa8a543099cd7d2d5'
+'0dec99be993ed4b38678fd2fde22d45fd43dc3aa3ed6711b5275749d9fd4941d'
 '6d38a6b74ea33ac3133b8352f2b55b557c1d42f36e1ed0c01f852e3218329d39'
 '069d5612d570e83128d7eed7ffe4525943d75d22b9c84537d861833157e74b26'
 '2904a5cbdad2ef810f5f0509ad709303541e403a3a52e3d75f1736ed7fbdf69f'
