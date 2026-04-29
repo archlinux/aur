@@ -4,9 +4,9 @@
 # Contributor: Daniel Plank <tyrolyean@semi-professional.net>
 
 pkgname=freerouting
-pkgver=2.1.0
-_jrever=21
-_jdkver=21
+pkgver=2.2.0
+_jrever=25
+_jdkver=25
 pkgrel=1
 pkgdesc="Advanced PCB autorouter"
 arch=('any')
@@ -18,24 +18,34 @@ optdepends=('kicad: for use with PCB editor')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "freerouting.sh"
         "freerouting.desktop")
-sha512sums=('e275ae954a527ac71cff688e20035b3e737c82ab6873485b298c9ef7cdb43b24392f42eb0d31f88a06fc62179b2c40e1d4df87989b096bfca92a4aebac173016'
+sha512sums=('601e2363182253a65fcb123f2ebc1d578f21ddec7111c80d46189f2dbdc515c4a7420727e4df06925b686ddbd9a07766e4327424666d3a2331714377d6bb9efb'
             '994102e3f526fe364920602dfa8f2160eeeeb512194172bdc82f1fb45c261c2da79b8baf58008da9ab56f33d1b047dfe1ccb2f7d4113215cdfc376319b4f9320'
             '1eeacc544cd6081a9cef03424e505177972c65dc13d1379989889c0ed7419ed1b76013d48d160d0b74932aec1170ca1535b103f4266024b7f35e9656a11281f5')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  # disable default telemetry
+  local _file="src/main/java/app/freerouting/settings/UserProfileSettings.java"
+  grep -q 'public Boolean isTelemetryAllowed = true;' "$_file"
+  sed -i 's/public Boolean isTelemetryAllowed = true;/public Boolean isTelemetryAllowed = false;/' "$_file"
+  grep -q 'public Boolean isContactAllowed = true;' "$_file"
+  sed -i 's/public Boolean isContactAllowed = true;/public Boolean isContactAllowed = false;/' "$_file"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
 
   export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
-  ./gradlew assemble
+  ./gradlew dist
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -Dm644 build/libs/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable.jar"
+  install -Dm644 build/dist/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable.jar"
 
   install -Dm755 "${srcdir}/freerouting.sh" "${pkgdir}/usr/bin/freerouting"
 
-  install -Dm644 design/icon/freerouting_icon_256x256_v2.png "${pkgdir}/usr/share/icons/freerouting.png"
+  install -Dm644 assets/icon/freerouting_icon_256x256_v3.png "${pkgdir}/usr/share/icons/freerouting.png"
   install -Dm644 "${srcdir}/freerouting.desktop" "${pkgdir}/usr/share/applications/freerouting.desktop"
 }
