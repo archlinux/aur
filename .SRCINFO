@@ -1,6 +1,6 @@
 pkgbase = slskd-bin
 	pkgdesc = A modern client-server application for the Soulseek file-sharing network.
-	pkgver = 0.24.5
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/slskd/slskd/
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = slskd-bin
 	sha256sums = 535e14574a54723728fd2bddf62e54fa615a846afc0a0e69e249ae3850d503d4
 	sha256sums = 69545412a47b0d60b4af33faf61499168016202cd1a60da0c15f17f6da3c900b
 	sha256sums = 2f1d645115bbcf225be3e585aaeb598f1710277f17c41c64e0308eb25b8ed4f4
-	source_x86_64 = https://github.com/slskd/slskd/releases/download/0.24.5/slskd-0.24.5-linux-x64.zip
-	sha256sums_x86_64 = 32b7a8950f487c6d43afd203d378da28d00f524f296977a93cd273600f7df417
-	source_aarch64 = https://github.com/slskd/slskd/releases/download/0.24.5/slskd-0.24.5-linux-arm64.zip
-	sha256sums_aarch64 = bb908338a1babdba42f46794db111c7d785a0d5fbaafa4fe67423be4b5dbec8a
-	source_armv7h = https://github.com/slskd/slskd/releases/download/0.24.5/slskd-0.24.5-linux-arm.zip
-	sha256sums_armv7h = 02911905fa792268b5e6c650eb0896706fd46849ea882c0aff1c504972ac340e
+	source_x86_64 = https://github.com/slskd/slskd/releases/download/0.25.1/slskd-0.25.1-linux-x64.zip
+	sha256sums_x86_64 = a0235951009cc5376c6afc842aab6625c8bd591ac75857ae9cbf7ff82cac0292
+	source_aarch64 = https://github.com/slskd/slskd/releases/download/0.25.1/slskd-0.25.1-linux-arm64.zip
+	sha256sums_aarch64 = fd6fe85ac4aaf31ff3f6bd0fdd0058585bc87d045e67cc4bb16b072af69f93c9
+	source_armv7h = https://github.com/slskd/slskd/releases/download/0.25.1/slskd-0.25.1-linux-arm.zip
+	sha256sums_armv7h = 380eaea5f83830570a7fcb6b505e33cbf0fbe9da51cb9f7f00008f577b95c31c
 
 pkgname = slskd-bin
