@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=planet
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Placental DNA methylation analysis tools'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8b1ee3f3a654eef3d0fc45d07c1ea9529fb26d008c8042aa8e862e956e5cf573')
+sha256sums=('670791590932c102e06e77003913f75c95ea8560b3ff62b66ec8ff92b457de19')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
