@@ -1,6 +1,6 @@
 pkgbase = fcitx5-anytalk
 	pkgdesc = Voice input addon for fcitx5 with a Qt6 Aurora overlay
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/yizhisec/fcitx5-anytalk
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = fcitx5-anytalk
 	depends = qt6-websockets
 	depends = libpulse
 	optdepends = layer-shell-qt: Wayland-native centering on KDE/Sway/wlroots
-	source = fcitx5-anytalk-0.5.0.tar.gz::https://github.com/yizhisec/fcitx5-anytalk/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 57053067b0a13bc827108e8d10bf1217e861240e41bf40a1da3f544ffb2c0f89
+	source = fcitx5-anytalk-0.5.1.tar.gz::https://github.com/yizhisec/fcitx5-anytalk/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 640440c3aa986ee17c145955260c7bae379030c217c30a4dad97b5a56a3df6cf
 
 pkgname = fcitx5-anytalk
