@@ -1,0 +1,19 @@
+pkgbase = kasetto-bin
+	pkgdesc = A declarative AI agent environment manager, written in Rust
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/pivoshenko/kasetto
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	provides = kasetto
+	conflicts = kasetto
+	source = kasetto-bin-2.4.0.tar.gz::https://github.com/pivoshenko/kasetto/releases/download/v2.4.0/kasetto-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-MIT-2.4.0::https://raw.githubusercontent.com/pivoshenko/kasetto/v2.4.0/LICENSE-MIT
+	source = LICENSE-APACHE-2.4.0::https://raw.githubusercontent.com/pivoshenko/kasetto/v2.4.0/LICENSE-APACHE
+	sha256sums = 34c97c076cb9837c12dcc0ec8df010742355e49191747f2b73435dfa1bc813be
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kasetto-bin
