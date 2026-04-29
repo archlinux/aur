@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Mulcom
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.62.0
 pkgrel=1
 pkgdesc='Calculates Mulcom test'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-fields
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bc46d135baaaa0edddfd390f07802f2572ad69d6ed1062ab202a503ea807c3f3')
+sha256sums=('9f09aa1daccb0a15f193c97e13411f97bf9cd68d68e0b2f718834ec33fd934bc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

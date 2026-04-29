@@ -1,6 +1,6 @@
 pkgbase = r-mulcom
 	pkgdesc = Calculates Mulcom test
-	pkgver = 1.60.0
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Mulcom
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-mulcom
 	depends = r
 	depends = r-biobase
 	depends = r-fields
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Mulcom_1.60.0.tar.gz
-	sha256sums = bc46d135baaaa0edddfd390f07802f2572ad69d6ed1062ab202a503ea807c3f3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Mulcom_1.62.0.tar.gz
+	sha256sums = 9f09aa1daccb0a15f193c97e13411f97bf9cd68d68e0b2f718834ec33fd934bc
 
 pkgname = r-mulcom
