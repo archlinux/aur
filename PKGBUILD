@@ -4,7 +4,7 @@ pkgver=9.0.15.sdk313
 _runtimever="${pkgver%.sdk*}"
 _dotnetver="${_runtimever%.*}"
 _sdkver="${_dotnetver}.${pkgver##"${_runtimever}.sdk"}"
-pkgrel=2
+pkgrel=3
 
 pkgbase="dotnet-core-${_dotnetver}-bin"
 pkgname=(
@@ -146,7 +146,7 @@ package_dotnet-sdk-9.0-bin() {
     "${pkgname//sdk/targeting-pack}>=${pkgver}-${pkgrel}"
   )
   optdepends=(
-    "${pkgname//sdk/aspnet-targeting-pack}: Build ASP.NET Core applications"
+    "${pkgname//dotnet-sdk/aspnet-targeting-pack}: Build ASP.NET Core applications"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
