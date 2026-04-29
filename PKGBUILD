@@ -6,7 +6,7 @@
 _pkgname='rkik'
 pkgname="$_pkgname-git"
 pkgver=2.2.0.r0.gbd9eaf1
-pkgrel=1
+pkgrel=2
 pkgdesc='Rusty Klock Inspection Kit: simple NTP/NTS client (development version)'
 arch=('aarch64' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -49,7 +49,7 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
   for _dir in doc licenses; do
-    cd "$pkgdir/usr/share/$_dir/" && ln -vsrf "$pkgname" "$_pkgname"
+    cd "$pkgdir/usr/share/$_dir/" && ln -srf "$pkgname" "$_pkgname"
   done
 }
 
