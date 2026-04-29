@@ -5,7 +5,7 @@
 # has real sha256sums even though this template uses SKIP.
 
 pkgname=azure-ddns
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Dynamic DNS updater for Azure DNS (A + AAAA records)'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 )
 backup=('etc/azure-ddns.env')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('66ae0f890412cdfd45f220bb4ea1ed3680145f7ad3aa3e20abc085456f24174e')
+sha256sums=('cc388d2eb50a83bbad3a80efbed20c6624570e44fa72ec8ed9201832c9fd171c')
 
 package() {
     cd "$pkgname-$pkgver"
