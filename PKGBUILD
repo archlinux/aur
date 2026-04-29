@@ -1,55 +1,33 @@
-# Maintainer: Max Luebke <maxluebke(at)gmail.com>
+# Maintainer: nardholio <nardholio at gmail dot com>
+# Contributor: Max Luebke <maxluebke(at)gmail.com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: bitwave <aur [aT] oomlu {d.0t} de>
 # Contributor: yochananmarqos
 
 pkgname=notepadnext
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
 url="https://github.com/dail8859/NotepadNext"
 license=('GPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'libxcb' 'qt6-5compat' 'hicolor-icon-theme' 'qt6-base')
-makedepends=('git' 'qt6-tools')
-source=("$pkgname::git+$url#tag=v$pkgver"
-    'git+https://github.com/alex-spataru/QSimpleUpdater'
-    'git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System'
-    'git+https://github.com/editorconfig/editorconfig-core-qt'
-    'git+https://github.com/itay-grudev/SingleApplication'
-    'git+https://gitlab.freedesktop.org/uchardet/uchardet.git/'
-    'missing_stdlib_hdr.patch')
-
-sha256sums=('f733d07021b27e9fa801e99a17f8af1a1f5fd25226c443045381c5f2b0ed0931'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'fc13d8633f55957aad51218548c622a51ada3002a6fcdffeaea00cd5708c1b4a')
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-
-    patch -p1 <"${srcdir}/missing_stdlib_hdr.patch"
-
-    git submodule init
-    git config submodule.src/QSimpleUpdater.url "$srcdir/QSimpleUpdater"
-    git config submodule.src/src/ads.url "$srcdir/Qt-Advanced-Docking-System"
-    git config submodule.src/editorconfig-core-qt.url "$srcdir/editorconfig-core-qt"
-    git config submodule.src/singleapplication.url "$srcdir/SingleApplication"
-    git config submodule.src/uchardet.url "$srcdir/uchardet"
-    git -c protocol.file.allow=always submodule update
-    mkdir -p build
-}
+depends=('libgcc' 'libstdc++' 'glibc' 'libxcb' 'qt6-5compat' 'hicolor-icon-theme' 'qt6-base')
+makedepends=('git' 'cmake' 'qt6-tools')
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha256sums=('7ef52082b9c048716a304d2f8591154739fb5871b4c90f2327460d360bce1946')
 
 build() {
-    cd "${srcdir}/${pkgname}/build"
-    qmake6 ../src/NotepadNext.pro
-    make
+  cd "$srcdir/$pkgname"
+
+  cmake -B build -S . \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON
+
+  cmake --build build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/build"
-    make INSTALL_ROOT="${pkgdir}" install
+  cd "$srcdir/$pkgname"
+  DESTDIR="${pkgdir}" cmake --install build
 }
