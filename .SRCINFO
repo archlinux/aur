@@ -1,0 +1,14 @@
+pkgbase = shrimp-bin
+	pkgdesc = Self-hosted AI productivity assistant — pre-built AppImage
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TheSingularis/shrimp
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	provides = shrimp
+	conflicts = shrimp
+	source = SHRIMP-0.1.0.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v0.1.0/SHRIMP-0.1.0.AppImage
+	sha256sums = SKIP
+
+pkgname = shrimp-bin
