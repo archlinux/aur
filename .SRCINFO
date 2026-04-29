@@ -1,0 +1,20 @@
+pkgbase = greprip-git
+	pkgdesc = Transparent grep/find to rg/fd translators for LLM coding agents
+	pkgver = r36.70908b1
+	pkgrel = 1
+	url = https://github.com/kaofelix/greprip
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python>=3.12
+	depends = ripgrep
+	depends = fd
+	provides = greprip
+	conflicts = greprip
+	source = greprip::git+https://github.com/kaofelix/greprip.git
+	sha256sums = SKIP
+
+pkgname = greprip-git
