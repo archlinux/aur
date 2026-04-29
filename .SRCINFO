@@ -1,14 +1,14 @@
 pkgbase = ros2-jazzy
 	pkgdesc = A set of software libraries and tools for building robot applications
 	pkgver = 2025.04.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.ros.org/en/jazzy/
 	install = ros2-jazzy.install
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = cmake3
+	makedepends = cmake
 	makedepends = git
-	makedepends = gcc13
+	makedepends = gcc
 	depends = ros2-arch-deps
 	depends = qt6-base
 	depends = nvidia-cg-toolkit

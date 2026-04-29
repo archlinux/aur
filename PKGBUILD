@@ -2,7 +2,7 @@
 
 pkgname=ros2-jazzy
 pkgver=2025.04.30
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/jazzy/"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
     'assimp'
     'gmock'
 )
-makedepends=('cmake3' 'git' 'gcc13')
+makedepends=('cmake' 'git' 'gcc')
 optdepends=('gz-harmonic: For Gazebo Simulation support')
 provides=('ros2-jazzy-base')
 conflicts=('ros2-jazzy-base')
@@ -55,12 +55,15 @@ build() {
     ## For people with the new version of makepkg.conf
     CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[23]\s//g" <(echo $CFLAGS))
     CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[23]\s//g" <(echo $CXXFLAGS))
+    ## Fix missing cstdiint headers in many packages
+    CXXFLAGS+=" --include=cstdint"
+
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
     # Build
-    ## Downgrade gcc to fix missing cstdint headers in many packages.
-    export CC=$(command -v gcc-13) CXX=$(command -v g++-13)
     ## To resolve the io_service removal in Asio 1.33.0, build FastRTPS against third-party Asio.
     colcon build --merge-install --packages-up-to fastrtps --cmake-args " -DTHIRDPARTY_Asio=FORCE"
+    ## Build all packages
     colcon build --merge-install ${COLCON_EXTRA_ARGS} --cmake-args " -DBUILD_TESTING=OFF -Wno-dev" --packages-ignore lttngpy qt_gui_cpp rqt_gui_cpp
 }
 
