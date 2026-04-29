@@ -1,6 +1,6 @@
 pkgbase = r-msstatslobd
 	pkgdesc = Assay characterization: estimation of limit of blanc(LoB) and limit of detection(LOD)
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSstatsLOBD
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-msstatslobd
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsLOBD_1.18.0.tar.gz
-	sha256sums = 33fa6bbf6e1f9e7e25b7d8047f5eaddcb395ea3e8272b921b7763c9dc75e9f01
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsLOBD_1.20.0.tar.gz
+	sha256sums = 3d04e78feee2dd41cb4aa80d2f4a1e9d6f3a5f0080aef08662ba6154c5f745b3
 
 pkgname = r-msstatslobd
