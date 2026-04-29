@@ -1,0 +1,18 @@
+pkgbase = ucode-lang
+	pkgdesc = Tiny ECMAScript-like scripting language used in OpenWrt
+	pkgver = 20260227.934bb59
+	pkgrel = 1
+	url = https://github.com/jow-/ucode
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = json-c
+	depends = libmd
+	depends = zlib
+	source = git+https://github.com/jow-/ucode.git#commit=934bb593dba520e84920865703bd4fe94490d11e
+	b2sums = SKIP
+
+pkgname = ucode-lang
