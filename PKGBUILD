@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=quantsmooth
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='Quantile smoothing and genomic visualization of array data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-quantreg
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('851e1947b1794d2ae8fc93bed2cbb833c337a4479992fc85153f2c06a84adeb2')
+sha256sums=('8fe618e4ec7ad8fcc91560abb58ff68cff43a9175a2f2c1a8dd4c9c8de323e87')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
