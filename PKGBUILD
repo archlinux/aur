@@ -13,7 +13,7 @@ optdepends=('python-flask: web framework'
             'python-qrcode: QR code generation'
             'python-pillow: image processing')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/XONIDU/xoniter/archive/v$pkgver.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('b703642871e2ddd3f442f0a555189df670d8df5b24a2fecb2f1b6a0054a93d52')
 
 package() {
     install -d "$pkgdir/usr/share/$pkgname/templates"
