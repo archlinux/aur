@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diffGeneAnalysis
-_pkgver=1.92.0
+_pkgver=1.94.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-minpack.lm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0647db9dff3471d1648345aa5faeb396')
-b2sums=('04faaec19833dff50c16488a21a753b8ed4b30ebd8d7d5abba688dd162c064a96adb03948ccba101c2e050755fdc233f68ea4871e7f989b785573802f84566a5')
+md5sums=('9bcca8097caa182168b19b135941c12a')
+b2sums=('ce49fd3072c34a726abf58d927603a04e0e2a4930c5af319a97c7b116bd2ec8dc84e53553b4778097eb26acd47e2439b041332d9d392d3584f9dca52af942c02')
 
 build() {
   mkdir build
