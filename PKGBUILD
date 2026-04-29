@@ -1,7 +1,7 @@
 # Maintainer: Findlay Feng <findlayfeng@gmail.com>
 
 pkgname="zephyr-sdk-bin"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
