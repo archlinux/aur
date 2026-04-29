@@ -1,102 +1,90 @@
 #!/bin/bash
 
-# --- COLOR CONFIGURATION (DEBIAN STYLE) ---
+# --- CONFIGURATION ---
 GREEN='\033[0;32m'
 RED='\033[0;31m'
-NC='\033[0m' # No Color
+BLUE='\033[0;34m'
+NC='\033[0m'
 
-# --- DEPENDENCY CHECK ---
-if ! command -v yay &> /dev/null && ! command -v pacman &> /dev/null; then
-    echo -e "${RED}E: Package management system not found!${NC}"
-    exit 1
+# Identify AUR helper (Auto-detect)
+if command -v yay &> /dev/null; then
+    HELPER="yay"
+elif command -v paru &> /dev/null; then
+    HELPER="paru"
+else
+    HELPER="pacman"
 fi
 
 COMMAND="$1"
+shift # Remove the first argument to handle packages/options easily
 
 case "$COMMAND" in
-    update)
-        echo -e "${GREEN}Reading package lists... Done${NC}"
-        # Syncing databases (Repos + AUR)
-        yay -Sy
-        ;;
-
-    upgrade|dist-upgrade)
-        echo -e "${GREEN}Reading package lists... Done${NC}"
-        echo -e "${GREEN}Calculating upgrade... Done${NC}"
-        # Full system upgrade
-        yay -Syu
-        ;;
-
-    install)
-        shift
-        if [ -z "$1" ]; then
-            echo -e "${RED}E: You must specify at least one package to install${NC}"
-            exit 1
-        fi
-        echo -e "${GREEN}Reading package lists... Done${NC}"
-        echo -e "${GREEN}Building dependency tree... Done${NC}"
-        # Fallback logic: try pacman first, then yay
-        sudo pacman -S "$@" || yay -S "$@"
-        ;;
-
-    remove)
-        shift
-        echo -e "${GREEN}Removing packages...${NC}"
-        sudo pacman -Rs "$@"
-        ;;
-
-    purge)
-        shift
-        echo -e "${GREEN}Purging packages and configuration files...${NC}"
-        sudo pacman -Rns "$@"
-        ;;
-
-    autoremove)
-        echo -e "${GREEN}Reading package lists... Done${NC}"
-        ORPHANS=$(pacman -Qdtq)
-        if [ -n "$ORPHANS" ]; then
-            sudo pacman -Rns $ORPHANS
-        else
-            echo "0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded."
-        fi
-        ;;
-
-    search)
-        shift
-        # Search everywhere (Repos + AUR)
-        yay -Ss "$@"
-        ;;
-
-    show)
-        shift
-        # Show info from local DB or repos
-        pacman -Si "$@" || yay -Si "$@"
-        ;;
-
-    clean)
-        echo -e "${GREEN}Cleaning package cache...${NC}"
-        sudo pacman -Scc
-        ;;
-
+    # 1. Update lists
+    update) echo -e "${GREEN}Reading package lists... Done${NC}"; $HELPER -Sy ;;
+    
+    # 2. Upgrade system
+    upgrade) echo -e "${GREEN}Upgrading system...${NC}"; $HELPER -Syu ;;
+    
+    # 3. Install packages
+    install) echo -e "${GREEN}Installing packages...${NC}"; sudo pacman -S "$@" || $HELPER -S "$@" ;;
+    
+    # 4. Remove packages
+    remove) echo -e "${GREEN}Removing packages...${NC}"; sudo pacman -Rs "$@" ;;
+    
+    # 5. Purge (Remove + Configs)
+    purge) echo -e "${GREEN}Purging packages and configs...${NC}"; sudo pacman -Rns "$@" ;;
+    
+    # 6. Autoremove (Orphans)
+    autoremove) echo -e "${GREEN}Cleaning orphans...${NC}"; sudo pacman -Rns $(pacman -Qdtq) ;;
+    
+    # 7. Search packages
+    search) $HELPER -Ss "$@" ;;
+    
+    # 8. Show package info
+    show) pacman -Si "$@" || $HELPER -Si "$@" ;;
+    
+    # 9. Clean cache
+    clean) echo -e "${GREEN}Cleaning cache...${NC}"; sudo pacman -Scc ;;
+    
+    # 10. List installed packages
+    list) echo -e "${BLUE}Listing installed packages...${NC}"; pacman -Q ;;
+    
+    # 11. Repair system (Auto-Repair!)
+    repair) 
+        echo -e "${RED}Repairing database and keys...${NC}"
+        sudo rm -f /var/lib/pacman/db.lck
+        sudo pacman-key --init && sudo pacman-key --populate archlinux
+        echo -e "${GREEN}Repair complete.${NC}" ;;
+        
+    # 12. Check for updates (No install)
+    check) echo -e "${BLUE}Checking for available updates...${NC}"; $HELPER -Qu ;;
+    
+    # 13. Download only
+    download) echo -e "${GREEN}Downloading (no install)...${NC}"; sudo pacman -Sw "$@" ;;
+    
+    # 14. System info (Neofetch style)
+    info) echo -e "${BLUE}System Info:${NC}"; uname -a; uptime ;;
+    
+    # 15. Fix dependencies
+    fix-broken) echo -e "${GREEN}Checking for broken dependencies...${NC}"; sudo pacman -D --check ;;
+    
+    # 16. Fast Mirror Update
+    mirrors) echo -e "${GREEN}Updating mirrors for speed...${NC}"; sudo pacman-mirrors -f 5 || echo "Not available on this distro" ;;
+    
+    # 17. Hardware Check (x64/ARM)
+    arch) echo -e "${BLUE}Architecture:${NC} $(uname -m)" ;;
+    
+    # 18. APT Moo (The Cow!)
+    moo) echo "        (__)" ; echo "        (oo)" ; echo "  /------\/ " ; echo " / |    ||  " ; echo "*  /\---/\  " ; echo "   ~~   ~~  " ; echo "...Have you milked your Arch today?" ;;
+    
+    # 19. Battery Status (For your Acer!)
+    battery) upower -i $(upower -e | grep 'BAT') | grep -E "state|to\ full|percentage" || echo "No battery found" ;;
+    
+    # 20. Help
     help|--help)
-        echo "apt 2.10.1 (Arch/CachyOS Wrapper) - GPL License"
-        echo "Usage: apt [command] [package]"
-        echo ""
-        echo "Available commands:"
-        echo "  update      - Synchronize repository databases"
-        echo "  upgrade     - Perform a full system upgrade"
-        echo "  install     - Install new packages (Repo + AUR)"
-        echo "  remove      - Remove packages"
-        echo "  purge       - Remove packages and their config files"
-        echo "  autoremove  - Remove unused orphan packages"
-        echo "  search      - Search for packages"
-        echo "  show        - Show package details"
-        echo "  clean       - Clear the local package cache"
-        ;;
+        echo -e "${GREEN}apt-fake-ubuntu v1.1 - 20 Functions Available${NC}"
+        echo "Commands: update, upgrade, install, remove, purge, autoremove, search, show, clean,"
+        echo "          list, repair, check, download, info, fix-broken, mirrors, arch, moo, battery, help" ;;
 
-    *)
-        echo -e "${RED}E: Invalid operation $COMMAND${NC}"
-        echo "Use 'apt help' to see available commands."
-        exit 1
-        ;;
+    *) echo -e "${RED}E: Invalid command. Use 'apt help'${NC}"; exit 1 ;;
 esac
