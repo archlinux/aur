@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="BookOS Settings — aplicación de ajustes para KDE Plasma con BookOS (o otros sistemas)"
 arch=('x86_64')
 url="https://github.com/Evelynx08/BookOS-Settings"
-license=('MIT')
+license=('GPL v3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3')
 optdepends=(
     'colord: soporte de perfiles ICC'
