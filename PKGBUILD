@@ -7,7 +7,7 @@
 
 pkgname=rambox-pro-bin
 _pkgname=rambox
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
@@ -32,7 +32,7 @@ sha256sums=(
   # eula sum
   '0c94e0c1690afe9414a7ead793bb63417da16b143209d3fed8999370a237d137'
   # deb file sum
-  '85bd1a1998c45b78d5f0f17b2d842c49e6fce0acff7c59554206c1b1391d0eaa'
+  'a2aa80c6a79ffb373315d3f205441ffe8353d5b6753b2d0174a53e494635da01'
 )
 
 build() {
@@ -56,6 +56,7 @@ package() {
   install -m 0644 "${srcdir}/root/usr/share/applications/${_pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
+  chmod 0755 "${pkgdir}/opt/${_pkgname}/${_pkgname}"
   ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   sed -i "s~/opt/Rambox/~/opt/${_pkgname}/~g" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
