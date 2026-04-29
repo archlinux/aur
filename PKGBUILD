@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy-git
-pkgver=v0.13.1.r3.gf1efafe8
+pkgver=v0.13.1.r549.geaf66e7a
 pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
@@ -27,8 +27,6 @@ pkgver() {
 build() {
   cd tracy
 
-  cmake -S . -B build -D CMAKE_BUILD_TYPE=Release
-  make -C build
   cmake -S capture -B capture/build -D CMAKE_BUILD_TYPE=Release
   make -C capture/build
   cmake -S csvexport -B csvexport/build -D CMAKE_BUILD_TYPE=Release
@@ -43,7 +41,6 @@ build() {
 
 package() {
   cd tracy
-  install -Dm644 build/libTracyClient.a $pkgdir/usr/lib/libTracyClient.a
   install -Dm755 capture/build/tracy-capture $pkgdir/usr/bin/tracy-capture
   install -Dm755 csvexport/build/tracy-csvexport $pkgdir/usr/bin/tracy-csvexport
   install -Dm755 import/build/tracy-import-chrome $pkgdir/usr/bin/tracy-import-chrome
