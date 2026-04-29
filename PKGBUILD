@@ -18,6 +18,17 @@ makedepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-php/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0e73ad63dda67ac12c0e012726a4e1a9811c26b020a0a2dea3e889f8246d9cf4')
 
+
+prepare() {
+    cd "${_name}-${pkgver}"
+    if [ ! -f src/tree_sitter/parser.h ]; then
+        mkdir -p src/tree_sitter
+        curl -sLo src/tree_sitter/parser.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.23.0/lib/src/parser.h
+        curl -sLo src/tree_sitter/alloc.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.23.0/lib/src/alloc.h
+        curl -sLo src/tree_sitter/array.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.23.0/lib/src/array.h
+    fi
+}
+
 build() {
     cd "${_name}-${pkgver}"
     # The php grammar has multiple components, typically we build the root package
