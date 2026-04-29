@@ -2,7 +2,7 @@
 
 pkgname=("zephyr-sdk-llvm-bin" "zephyr-sdk-llvm-toolchain-bin")
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
@@ -24,8 +24,8 @@ build() {
 
 package_zephyr-sdk-llvm-bin() {
   depends+=('cmake' 'gperf' 'dfu-util' 'dtc' 'tk' 'xz'
-    "zephyr-sdk-cmake-modules=${pkgver}" "zephyr-sdk-profile=${pkgver}" "zephyr-sdk-hosttools-bin=${pkgver}"
-    "zephyr-sdk-llvm-toolchain-bin=${pkgver}"
+    "zephyr-sdk-cmake-modules>=${pkgver}" "zephyr-sdk-profile>=${pkgver}" "zephyr-sdk-hosttools-bin>=${pkgver}"
+    "zephyr-sdk-llvm-toolchain-bin>=${pkgver}"
   )
   provides=("zephyr-sdk-llvm")
   optdepends=('ninja' 'make' 'ccache' 'python-pyelftools'
