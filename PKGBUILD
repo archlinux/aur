@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNASeqPower
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ad7e1da228ef5f7da71f78779420dd0d')
-b2sums=('7207146bd7fa5e827c4e86a30b0acae25be6cd761315518f33556c42022451606f1463c90e12dc9a3cd0aee0eff15e11eae70634ddac2d6c9ad073bba34d9e18')
+md5sums=('9a11ac0ebb96404d0e6fb9dd5d2e8285')
+b2sums=('5ea987fb57773e24e8c579eda4ee0e3ba8b2c625889c4eabd8576f6b10d11a1e68d1cb4992906324ce55b42b87f67c57d1f29f10448d86c61c1e9b331ddc565f')
 
 build() {
   mkdir build
