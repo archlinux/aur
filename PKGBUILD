@@ -1,4 +1,4 @@
-# Maintainer: Isac Bhyoo <isac@runbear.io>
+# Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop-electron
 pkgver=1.14.29
