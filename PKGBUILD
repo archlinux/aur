@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon
-pkgver=r37.df3aac7
+pkgver=r38.2d48800
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets'
 arch=('x86_64')
