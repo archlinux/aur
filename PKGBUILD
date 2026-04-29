@@ -1,6 +1,6 @@
 # Maintainer: Psychotoxic <psychotoxic@gmx.de>
 pkgname=psysonic
-pkgver=1.43.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc="Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
   'nasm'
   'cmake'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Psychotoxical/psysonic/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Psychotoxical/psysonic/archive/refs/tags/app-v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
