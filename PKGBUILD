@@ -1,18 +1,18 @@
 # Maintainer: Findlay Feng <findlayfeng@gmail.com>
 
 pkgname=("zephyr-sdk-llvm-bin" "zephyr-sdk-llvm-toolchain-bin")
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
 license=('Apache')
 
-source_x86_64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_llvm_linux-x86_64.tar.xz")
-source_aarch64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_llvm_linux-aarch64.tar.xz")
+source_x86_64+=(zephyr-sdk-${pkgver}_toolchain_llvm_linux-x86_64.tar.xz::"https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_llvm_linux-x86_64.tar.xz")
+source_aarch64+=(zephyr-sdk-${pkgver}_toolchain_llvm_linux-aarch64.tar.xz::"https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_llvm_linux-aarch64.tar.xz")
 
-sha256sums_x86_64=('f0c4b60c706c7284aa7c1e0e7208197de4d48563c095dfcae39bd28e8027c14e')
-sha256sums_aarch64=('c578ed57acf835d3c4719c175b798e934ec9a9ee30121305c71f3a9e1066051a')
+sha256sums_x86_64=('6de38597ccab887a9e602db068d1bea374f9bb5a8243d7386722553667ec175c')
+sha256sums_aarch64=('fcb1667c5324799fcc29da976d1262efaf6548ae6ab04d9f8d579b2aacd03667')
 
 options=(!strip)
 
