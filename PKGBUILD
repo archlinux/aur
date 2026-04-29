@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-04-23 23:16:23
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-04-29 21:23:21
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -178,12 +178,12 @@ fi
 
 pkgbase="linux-cachyos-native"
 _major=7.0
-_minor=1
+_minor=2
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=2
-pkgrel=1
+_tagrel=1
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.'
 _kernver="$pkgver-$pkgrel"
@@ -215,7 +215,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=595.58.03
+_nv_ver=595.71.05
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -249,7 +249,6 @@ fi
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
              "0002-Add-IBT-support.patch"
-             "0004-HACK-kernel-open-Makefile-Remove-PAHOLE_VARIABLE.patch"
              "0003-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
              "0004-fix-dsc-use-bits_per_component-for-flatnessDetThresh.patch"
              "0005-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
@@ -822,12 +821,11 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('dae09018438025ff879cdcc79376bbbb45250125dd1912b2d6185993d0a7ff44967f4f79b94d9e61ee52f9b17dcdd6359fd521245faada042d735d4bf72a8b6f'
-        'f6b1b3429abd56bcdaeeec5d5c2e5d45a28080a8d106ffde8e391d2f051b310a056371c10acbca662a25d077a6624fe125a6673d27ff9ac6049afa0f8af63bcd'
+b2sums=('3fa5512aad7edeaf30007b67d2d9dad3f350177cfe5a282da20cfde0862e6aeb9c25d6bb3eeee0957545001be5dc1de596bbf17cab339da4ae7b6e921832c1a6'
+        '389571b71590616652716ffd8da99674c798fe41a18897b8d5d162158247adcdf0fbfebc55627fe5a55081b085ef2db628c81441c572a239f4c2cd52d9990995'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
-        'b58125ff5d71fb45fc30b8128d492c5a91c4df293157a42848f7ba38e91eb284d491fdc6801e514c243330b19b7ece116733d3caa2c1129725c420d4267f3df7'
+        '45361ac9830c16c748688545501124647859c247c5cf7dc6ab4508fe614425715c7299cf88728a3da4111c7fbf6f9eab8a1c77b039ebd868dc7a6367b5e97ff8'
         'bccb4169c43e556f10cddaf8f101cc0b29209f984b9f681f266602a359bc6b4765b48d192006decd23667bd2b899fad9c1fd5b742251014dacc7c077ea023e0f'
-        '66636d34cada5ed99e7ea590873ba1557178a3a53875a5dff4c11b27a843534986fec7d87524c6d148a795b37e2ae461d46f3fa889c35750833f708a63598497'
         'f119d6eb87e5ead55845536a7a96732fffa9ab9a537e66994e0fdee303eb64b2cb445277794e4419b2281d2d7eafc40a72be395ce3239ce7316f89e27cb5f88c'
         'ff13a85ca1f86e24a78956adc7eac0505c8b3be6170f76d1fbe340a7c6e9004a78fe380ef4af51ea9e26ccc4f93a6375cb547febd151073f829369aa2c2ddadd'
         '870fcd01ea0b3a2bc11fe43b2333f30add0067e5f77ee820f771f8e95a0b4e9ba2f7d822e5337d0c51f4a34c843f76b2148c853614e68a024393073fff7d99da'
