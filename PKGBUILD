@@ -50,13 +50,12 @@ build() {
   fi
 
   # Create Python 3.11 venv with uv and install dependencies
-  uv venv --python 3.11 --clear .venv
-  source .venv/bin/activate
+  uv venv --python 3.11 --clear venv
+  source venv/bin/activate
   uv pip install setuptools wheel build
-  python -m build --wheel --no-isolation
 
   # Install the built wheel into the venv
-  uv pip install -e '.[all]'
+  uv pip install -e '.'
 }
 
 package() {
@@ -67,7 +66,7 @@ package() {
   install -d "$_optdir"
 
   # Copy application files
-  cp -r .venv "$_optdir/"
+  cp -r venv "$_optdir/"
   cp -r dist "$_optdir/"
   cp -r web "$_optdir/"
   [ -d "tui" ] && cp -r tui "$_optdir/"
@@ -100,6 +99,6 @@ package() {
   install -d "$pkgdir/usr/bin"
   
   echo '#!/bin/bash' > "$pkgdir/usr/bin/hermes"
-  echo "exec /opt/$pkgname/.venv/bin/python -m hermes_cli.main" '"$@"' >> "$pkgdir/usr/bin/hermes"
+  echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"' >> "$pkgdir/usr/bin/hermes"
   chmod 755 "$pkgdir/usr/bin/hermes"
 }
