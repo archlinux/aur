@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.0.1.r0.g63455cf
+pkgver=0.0.1.r2.ge02d3af
 pkgrel=1
 pkgdesc="Aqueous Wayland window manager (River-based) with Noctalia bar"
 arch=('x86_64' 'aarch64')
@@ -57,12 +57,8 @@ build() {
 }
 
 package() {
-    # AOT runtime layout (private libdir for native side-by-side libs).
-    install -d "$pkgdir/usr/lib/aqueous"
-    cp -a "$srcdir/publish/Aqueous/."             "$pkgdir/usr/lib/aqueous/"
-    cp -a "$srcdir/publish/Aqueous.InputDaemon/." "$pkgdir/usr/lib/aqueous/"
-
-    # User-facing binaries on PATH.
+    # AOT publish output is a single self-contained ELF per project; install
+    # the binaries directly to /usr/bin.
     install -Dm755 "$srcdir/publish/Aqueous/aqueous" \
         "$pkgdir/usr/bin/aqueous"
     install -Dm755 "$srcdir/publish/Aqueous.InputDaemon/aqueous-inputd" \
