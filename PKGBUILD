@@ -3,7 +3,7 @@
 _target="xtensa-espressif_esp32_zephyr-elf"
 pkgname=("zephyr-sdk-gnu-${_target}-bin" "zephyr-sdk-gnu-toolchain-${_target}-bin")
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
@@ -38,8 +38,8 @@ _package_zephyr-sdk-gnu-TARGET-bin() {
 
   depends=(
     'cmake' 'gperf' 'dfu-util' 'dtc' 'tk' 'xz'
-    "zephyr-sdk-cmake-modules=${pkgver}" "zephyr-sdk-profile=${pkgver}" "zephyr-sdk-hosttools-bin=${pkgver}"
-    "zephyr-sdk-gnu-toolchain-TARGET-bin=${pkgver}"
+    "zephyr-sdk-cmake-modules>=${pkgver}" "zephyr-sdk-profile>=${pkgver}" "zephyr-sdk-hosttools-bin>=${pkgver}"
+    "zephyr-sdk-gnu-toolchain-TARGET-bin>=${pkgver}"
   )
   optdepends=('ninja' 'make' 'ccache' 'python-pyelftools'
             'pyocd: programming and debugging ARM MCUs'
