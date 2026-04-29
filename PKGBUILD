@@ -1,10 +1,10 @@
 # Maintainer: snapetech <slskdn@proton.me>
-# 🔋 slskdn - The batteries-included Soulseek web client
+# slskdn - Unofficial slskd fork with batteries-included Soulseek features
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=2026042900.slskdn.192
+pkgver=2026042900.slskdn.193
 pkgrel=1
-pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
+pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64')
 url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
