@@ -1,6 +1,6 @@
 pkgbase = sabiql
 	pkgdesc = A fast, driver-less TUI to browse, query, and edit PostgreSQL databases
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/riii111/sabiql
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sabiql
 	depends = postgresql-libs
 	optdepends = graphviz: for ER diagrams
 	options = !lto
-	source = https://github.com/riii111/sabiql/archive/refs/tags/v1.11.0.tar.gz
-	sha512sums = 0c4855d43f34c3dff1a9dc9044455302d2cb6783ea0092ed71f3127e9b241d974b6664014cbcf254919cc55b0e70d86e039286f0393eb05b61ffc8476d89ea71
+	source = https://github.com/riii111/sabiql/archive/refs/tags/v1.11.1.tar.gz
+	sha512sums = a51d33abd3563bcfe18939b2b525da00341beb768e34fc222a35ee9138899f66b59b79c9dee4b64450a2a2b4ab7b89425a13f0b75f6209f79b4a23bca0a08786
 
 pkgname = sabiql
