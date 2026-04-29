@@ -1,0 +1,30 @@
+From a661aad52eaf73da867beef9f38ac53d889710bd Mon Sep 17 00:00:00 2001
+From: piernov <piernov@piernov.org>
+Date: Wed, 29 Apr 2026 13:38:33 +0200
+Subject: [PATCH] Use __hadd intrinsic for reducePack() specialization for half
+ in CUDA_ARCH < 5.3 path
+
+The OpSum functor calls operator+() of CUDA which is not defined when __CUDA_NO_HALF_OPERATORS__ is defined (by PyTorch) so template specialization fails since only definition for bfloat16 and bfloat162 are available
+---
+ src/include/nccl_device/impl/vector__funcs.h | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/include/nccl_device/impl/vector__funcs.h b/src/include/nccl_device/impl/vector__funcs.h
+index a5af2d9..5b31ee0 100644
+--- a/src/include/nccl_device/impl/vector__funcs.h
++++ b/src/include/nccl_device/impl/vector__funcs.h
+@@ -824,9 +824,8 @@ NCCL_DEVICE_INLINE EltPack<half, 2> reducePack(OpSum<half> const& /* red */, Elt
+     return out.pack;
+   #else
+     EltPack<half, 2> out{};
+-    OpSum<half> red{};
+-    out.elts()[0] = red(a.elts()[0], b.elts()[0]);
+-    out.elts()[1] = red(a.elts()[1], b.elts()[1]);
++    out.elts()[0] = __hadd(a.elts()[0], b.elts()[0]);
++    out.elts()[1] = __hadd(a.elts()[1], b.elts()[1]);
+     return out;
+   #endif
+ }
+-- 
+2.54.0
+
