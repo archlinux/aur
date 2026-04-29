@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fabia
-_pkgver=2.56.0
+_pkgver=2.58.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ec80856950c59c5bdf2678571e9e1336')
-b2sums=('ecfad713457ad1107934b18d3e6219a349d1ed6afc417f08ec9eb212f583916c09a12d88ce759e2e78ce408bf584829dbc5e887aea946055d2209db7c611192f')
+md5sums=('83f5b836b9e29af24fba5fb796f72ea0')
+b2sums=('28c3b2ae9484c3a4b70479a26f3f0f18447519a6353781792af326a548d86be4a462e623e558a06d2ca3965e67f34c7c8cefe381070e822ebf7b21c9079b18ff')
 
 build() {
   mkdir build
