@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler-git
-pkgver=3.16.0.r99.gbca8ea58
+pkgver=3.17.1.r0.gddcbd05b
 pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
     'mosquitto'
     'nlohmann-json'
     'protobuf'
+    'python'
     'qt5-base'
     'qt5-multimedia'
     'qt5-serialport'
