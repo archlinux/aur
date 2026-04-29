@@ -14,12 +14,18 @@ conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('93c18f53822c774e3a433fe2935dd8031630729bb0dd6d405cd6b63a78dc1a5e')
 
+prepare() {
+    cd "$pkgname-$pkgver"
+    export CARGO_HOME="$srcdir/cargo-home"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
     cd "$srcdir/${pkgname}-${pkgver}" 
     export CARGO_HOME="$srcdir/cargo-home"
     export CC=gcc
     export CFLAGS="$CFLAGS -fPIC"
-    cargo build --release --frozen
+    cargo build --release --offline --locked
 }
 
 package() {
