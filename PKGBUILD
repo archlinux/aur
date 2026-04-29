@@ -11,22 +11,23 @@
 # https://git.savannah.gnu.org/gitweb/?p=gnuzilla.git
 
 ## options
-: ${_build_save_source:=true}
-: ${_build_repatch:=false}
+: ${_build_save_source:=true} # save tarball of patched sources
+: ${_build_repatch:=false}    # discard previously saved tarball
+: ${_build_fast_patch:=true}  # patch makeicecat to parallelize patching
 
-: ${_build_pgo:=true}
-: ${_build_pgo_reuse:=try}
-: ${_build_pgo_xvfb:=true}
+: ${_build_pgo:=true}      # profile-guided optimization; ~20% better benchmarks, 3x build time
+: ${_build_pgo_reuse:=try} # reuse previously generated profile
+: ${_build_pgo_xvfb:=true} # use xfvb for profiling, otherwise xwayland-run
 
-: ${_build_lto:=false}
-: ${_build_system_libs:=true}
+: ${_build_lto:=false}        # link-time optimization; may cause spurious errors
+: ${_build_system_libs:=true} # use system libraries, reduces build time
 
-: ${_build_limit_cores:=false}
+: ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
 
 ## update
-_icver="140.10.0"
-_commit="02125f31250c0240ee2ab1aa629ce66d4ffb9f30" # 140.10.0
-_ffsum="c0852a261be3be3c83865ec2c2a4aa65dc1ad6db7c70574926b63a8b48312919"
+_icver="140.10.1"
+_commit="5162cbc74c483c361ad5709c767c5cb2395ff4f9" # 140.10.1
+_ffsum="4e75c0c3e2c5530de9364de388272bf81b2b32209d98fa4a7eb50d268a17a5bb"
 
 ## package
 _pkgname="icecat"
@@ -127,6 +128,9 @@ source=(
   "$_pkgsrc_gnuzilla"::"git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=$_commit"
   "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"
 
+  # speed up patching
+  0000-parallelize-makeicecat.diff
+
   # fix for python 3.14
   5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
   23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
@@ -149,6 +153,7 @@ source=(
 sha256sums=(
   'SKIP'
   "$_ffsum"
+  '1f1b71fcc22fe5e12bd57e7dcc544599e99071eb17b843b261c77fb86f943288'
   '10e928127276c934a51c053d3f7ceb247344afd2e82186e12c4f188dd743bc49'
   '6479aa1df3fda931d0e261edaffdcac2d162c0166c5cfd6adf6f45ccf632b852'
   '7b6f7c2906a4fb4b83c5f8e6be2cd873c3d99b1f1c4e6b98887364d26fee88de'
@@ -197,6 +202,11 @@ _make_icecat() (
     -e '/^verify_sources$/d' \
     -e '/^extract_sources$/d' \
     -i makeicecat
+
+  # speed up patching
+  if [[ "${_build_fast_patch::1}" == "t" ]]; then
+    patch -Np1 -F100 -i "$srcdir"/0000-parallelize-makeicecat.diff
+  fi
 
   # produce icecat sources
   cd output

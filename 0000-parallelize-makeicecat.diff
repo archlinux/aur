@@ -1,0 +1,59 @@
+--- a/makeicecat
++++ b/makeicecat
+@@ -663,12 +663,17 @@
+ 
+ s|www\\.gnu\\.org/software/gnuzilla/icecat-help|libreplanet.org/wiki/Group:IceCat/Help|g;
+ "
++
++    echo ": Rebranding source files..."
+     find . -type f -not -iregex '.*changelog.*' -not -iregex '.*copyright.*' \
+          -not -iregex '.*/third_party/rust/.*' -not -name Cargo.lock \
+          -not -iregex '.*/\.cargo/.*' \
+-         -execdir /bin/sed --follow-symlinks -i "${sed_script}" '{}' ';'
+-
+-    find l10n -type f -execdir /bin/sed --follow-symlinks -i "s/from GNU/from Mozilla/g" '{}' ';'
++         -print0 \
++        | xargs -0 -P"$(nproc)" -I{} /bin/sed --follow-symlinks -i "${sed_script}" "{}"
++  
++    echo ": Updating l10n files..."
++    find l10n -type f -print0 \
++        | xargs -0 -P"$(nproc)" -I{} /bin/sed --follow-symlinks -i "s/from GNU/from Mozilla/g" "{}"
+ 
+     sed_script="
+ s/free and open source software/Free Software/g;
+@@ -680,9 +685,11 @@
+ s/OpenSource/Free Software/g;
+ "
+ 
++    echo ": Rebranding extensions..."
+     local extension
+     for extension in dtd ftl inc properties; do
+-        find . -type f -name "*$extension" -execdir /bin/sed --follow-symlinks -i "${sed_script}" '{}' ';'
++        find . -type f -name "*$extension" -print0 \
++            | xargs -0 -P"$(nproc)" -I{} /bin/sed --follow-symlinks -i "${sed_script}" "{}"
+     done
+ 
+     sed 's/which are both/which are/; s/free<\/a> and/Free Software<\/a>./; />open source</d; s/free and open source licenses/Free Software licenses/ ' -i toolkit/content/license.html
+@@ -695,16 +702,19 @@
+     sed "/mCompatIceCat.AssignLiteral/ s:IceCat/:Firefox/:" -i netwerk/protocol/http/nsHttpHandler.cpp
+     sed "s/IceCat/Firefox/g" -i toolkit/components/resistfingerprinting/nsRFPService.cpp
+ 
+-    find . -name region.properties | xargs -i /bin/sed 's_https://www\.mibbit.*__' -i {}
++    echo ": Cleaning region.properties..."
++    find . -name region.properties -print0 | xargs -0 -P"$(nproc)" -i /bin/sed 's_https://www\.mibbit.*__' -i {}
+ 
+     # Set migrator scripts
+     cp browser/components/migration/IceCatProfileMigrator.sys.mjs browser/components/migration/FirefoxProfileMigrator.sys.mjs
+     sed 's/IceCat/Firefox/g; s/icecat/firefox/g' -i browser/components/migration/FirefoxProfileMigrator.sys.mjs
+ 
+     # Don't mangle crate urls. This invalidates Cargo.lock and causes problems for fetching crates
+-    find . -name Cargo.toml | xargs /bin/sed 's|github.com/IceCatGraphics|github.com/FirefoxGraphics|' -i
++    echo ": Updating Cargo.toml..."
++    find . -name Cargo.toml -print0 | xargs -0 -P"$(nproc)" /bin/sed 's|github.com/IceCatGraphics|github.com/FirefoxGraphics|' -i
+     # Rename local crate that is used in different places. Otherwise you have to tangle it in moz.build as well.
+-    find . -name Cargo.lock | xargs /bin/sed 's|firefox-on-glean|icecat-on-glean|' -i
++    echo ": Updating Cargo.lock..."
++    find . -name Cargo.lock -print0 | xargs -0 -P"$(nproc)" /bin/sed 's|firefox-on-glean|icecat-on-glean|' -i
+ 
+     # Sort the list of DevToolsModules, which becomes unsorted by our rebranding
+     sort_inner_list_in_file "DevToolsModules(" ")" devtools/client/netmonitor/src/connector/moz.build
