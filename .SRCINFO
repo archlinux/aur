@@ -1,7 +1,7 @@
 pkgbase = ringboard
 	pkgdesc = Fast, efficient, and composable clipboard manager for Linux
-	pkgver = 0.14.0
-	pkgrel = 2
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/SUPERCILEX/clipboard-history
 	install = ringboard.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ringboard
 	depends = libxkbcommon-x11
 	depends = libxrender
 	depends = wayland
-	source = ringboard-0.14.0.tar.gz::https://github.com/SUPERCILEX/clipboard-history/archive/refs/tags/0.14.0.tar.gz
-	sha256sums = 8b04cbded7e668c360e55aa139a9e85b2dd531b7f8fbc1becf0ae6632e27162a
+	source = ringboard-0.16.0.tar.gz::https://github.com/SUPERCILEX/clipboard-history/archive/refs/tags/0.16.0.tar.gz
+	sha256sums = 308f109a760990363b05dc4539b542422c344b25476ea38547fe3b61b2cf5436
 
 pkgname = ringboard
