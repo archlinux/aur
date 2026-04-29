@@ -1,6 +1,6 @@
 # Maintainer: tgiachi <tom@orivega.io>
 pkgname=arrr-bin
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Linux desktop notification aggregator daemon — aggregates RSS, IMAP, Teams and more into one place"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "arrr.service"
 )
 sha256sums=(
-    '3bab3aaac895ed96fd4e2fd82347b0c08f0e36a8532798ed5b4c0f394be823f6'
+    '93d80da641c39992ed0887b7b2f489656ca415bcec9384a839c1c293576c97f2'
     'SKIP'
 )
 noextract=("arrr-${pkgver}-1-x86_64.pkg.tar.zst")
