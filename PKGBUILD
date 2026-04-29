@@ -19,7 +19,9 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  RUSTFLAGS="-l sqlite3:static" cargo build --release --target-dir target
+  export SQLITE3_LIB_DIR="/usr/lib"
+  export SQLITE3_INCLUDE_DIR="/usr/include"
+  cargo build --release --locked --target-dir target
 }
 
 check() {
