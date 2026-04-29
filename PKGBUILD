@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=gnome-shell-extension-text-clock
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="A simple text clock for the GNOME Shell top panel"
 arch=('any')
 url="https://github.com/wtbenica/text-clock"
@@ -17,7 +17,7 @@ install='gnome-shell-extension-text-clock.install'
 source=(
     "${pkgname}-${pkgver}.zip::https://github.com/wtbenica/text-clock/releases/download/v${pkgver}/text-clock@benica.dev.zip"
 )
-sha256sums=('5f5e3abc0ced48fefe8f3171ac8304258db6dc5ea66155301b5079474dc29243')
+sha256sums=('07668b9805d5467bf421e919c98c0ab9260749219172bc9cc17d4e9c05b678a8')
 noextract=("${pkgname}-${pkgver}.zip")
 
 prepare() {
