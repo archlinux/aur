@@ -25,6 +25,7 @@ pkgbase = yass-proxy-qt6
 	depends = c-ares
 	depends = gperftools
 	depends = jsoncpp
+	depends = mbedtls
 	optdepends = qt6-wayland
 	provides = yass-proxy
 	conflicts = yass-proxy-git
