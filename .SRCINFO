@@ -7,7 +7,10 @@ pkgbase = nanokvm-usb
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = npm
+	makedepends = typescript
+	makedepends = yarn
 	depends = nodejs-http-server
+	optdepends = chromium: or other browser that supports web-camera and serial port
 	source = git+https://github.com/sipeed/NanoKVM-USB.git#tag=v1.1.4
 	sha256sums = SKIP
 

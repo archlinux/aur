@@ -6,14 +6,15 @@ arch=('x86_64')
 url="https://github.com/sipeed/NanoKVM-USB/"
 license=('GPL-3.0-only')
 depends=('nodejs-http-server')
-makedepends=('git' 'npm')
+makedepends=('git' 'npm' 'typescript' 'yarn')
 optdepends=('chromium: or other browser that supports web-camera and serial port')
 source=("git+https://github.com/sipeed/NanoKVM-USB.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/NanoKVM-USB/browser"
-	npm run build
+	yarn install
+	yarn build
 }
 
 package() {
