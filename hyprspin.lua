@@ -1,13 +1,17 @@
+local HOME = os.getenv("HOME")
+local SCRIPT_PATH = HOME .. "/.config/hypr/script"
+
 function on_spin(ctx)
-    if ctx.orientation == "left-up" or ctx.orientation == "right-up" then
-        return {
-            { action = "exec", args = "wvkbd-mobintl" },
-            { action = "togglespecialworkspace" }
-        }
+    local o = ctx.orientation
+    local m = ctx.monitor
+
+    if o == "normal" or o == "bottom-up" then
+        return { action = "exec", args = SCRIPT_PATH .. "/layout scrolling" }
     end
 
-    return {
-        { action = "exec", args = "killall wvkbd-mobintl" },
-        { action = "workspace", args = "+0" }
-    }
+    if o == "left-up" or o == "right-up" then
+        return { action = "exec", args = SCRIPT_PATH .. "/layout scrolling 100%" }
+    end
+
+    return nil
 end
