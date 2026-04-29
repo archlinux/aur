@@ -2,10 +2,10 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=RPostgres
-_pkgver=1.4.8
+_pkgver=1.4.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="C++ Interface to PostgreSQL"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,9 +22,8 @@ depends=(
 makedepends=(
   boost
   r-cpp11
-  r-plogr
 )
-checkdepends=(
+_checkdepends=(
   postgresql
   r-dbitest
   r-testthat
@@ -40,14 +39,15 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-boost.patch")
-md5sums=('fac5a1458a2bad90efde4f383fe8b14c'
+md5sums=('327dc83cbf75b9edb486699c819d497e'
          '77a2948b75606cdf00a4e6fa280c6ce9')
-b2sums=('b86a70375bc5026e9d66fcda39bf590564a11240d4056b155ea1747abb9c0eeef2ce65d13d42c643c2dc823b6b8d24714cb0789cbe9b3fb79c4768f0f6ea0185'
+b2sums=('298075e9a1712e80bcfa9f891f00f433da6df6a8abbeb637921b94ea8da43c8c910a229ea8374ff535e3de4ccef14ee011c99d9c0a3b56495b4b128cbedd6a0e'
         '6f013b9a2d207e4254eae54459db66ae2e3576c8e9d62fd0cec8c403ec6253d67ef85e316240c8d8e60703cad07201bbb50797edf12a7ca2ddb727e5685c4b9a')
 
 prepare() {
   # use system boost library
-  patch -Np1 -i system-boost.patch
+  #patch -Np1 -i system-boost.patch
+  sed -i 's| -Ivendor||' RPostgres/src/Makevars.in
 }
 
 build() {
