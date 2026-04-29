@@ -1,7 +1,7 @@
 pkgbase = r-memoise
 	pkgdesc = 'Memoisation' of Functions
 	pkgver = 2.0.1
-	pkgrel = 9
+	pkgrel = 11
 	url = https://cran.r-project.org/package=memoise
 	arch = any
 	license = MIT
