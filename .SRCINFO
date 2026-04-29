@@ -1,6 +1,6 @@
 pkgbase = r-iterativebmasurv
 	pkgdesc = The Iterative Bayesian Model Averaging (BMA) Algorithm For Survival Analysis
-	pkgver = 1.68.0
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iterativeBMAsurv
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-iterativebmasurv
 	depends = r
 	depends = r-bma
 	depends = r-leaps
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iterativeBMAsurv_1.68.0.tar.gz
-	sha256sums = 0f9bf38b5f7b41a965ef20b278438afb295b79ee5bf743585e070e8293d7163f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iterativeBMAsurv_1.70.0.tar.gz
+	sha256sums = 9f970807ad5bf538430d3bcbecb6e7c0d0d52e98ae750afbd92bc83e95352a58
 
 pkgname = r-iterativebmasurv

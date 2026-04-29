@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iterativeBMAsurv
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='The Iterative Bayesian Model Averaging (BMA) Algorithm For Survival Analysis'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-leaps
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f9bf38b5f7b41a965ef20b278438afb295b79ee5bf743585e070e8293d7163f')
+sha256sums=('9f970807ad5bf538430d3bcbecb6e7c0d0d52e98ae750afbd92bc83e95352a58')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
