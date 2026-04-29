@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EBarrays
-_pkgver=2.74.0
+_pkgver=2.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f372dcca9e7b41430805b44320d98ae9')
-b2sums=('10f9bd9197980882d80a3c8a60874656e269a34319ab3dd718805a72afa8e5af7f99ebe3db1ffbd10f68dfdfd5e9d97d1261af554d0d76cd6a59f08b2263ac8d')
+md5sums=('2a1305552cd7754aafde58bc3b9edb9a')
+b2sums=('ccd6da7ea57a43b5d0246a07bcc7fa1fa54385c1d03325ba97b945754bdd73fcf1ad0792e1425b36aa721e8596807ea5daae516ad33480cb292c0164145e9f20')
 
 build() {
   mkdir build
