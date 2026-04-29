@@ -1,15 +1,15 @@
 pkgbase = rustgraph-bin
 	pkgdesc = Rust code navigation built for AiDX — AST-aware, MCP-native, token-efficient. (prebuilt)
-	pkgver = 0.7.8
+	pkgver = 0.7.9
 	pkgrel = 1
 	url = https://github.com/ZmoleCristian/rustgraph
 	install = rustgraph.install
 	arch = x86_64
 	license = 0BSD
 	depends = gcc-libs
-	provides = rustgraph=0.7.8
+	provides = rustgraph=0.7.9
 	conflicts = rustgraph
-	source = rustgraph-0.7.8-x86_64.tar.gz::https://github.com/ZmoleCristian/rustgraph/releases/download/v0.7.8/rustgraph-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = bc4a910f2c8c761e0095d095253520e942b64769db40dd3d82af25f14f63fffe
+	source = rustgraph-0.7.9-x86_64.tar.gz::https://github.com/ZmoleCristian/rustgraph/releases/download/v0.7.9/rustgraph-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 0852fabba68f3f8625ad04c921437f6030db0b6ad6cc861ac4b27a7ada544999
 
 pkgname = rustgraph-bin
