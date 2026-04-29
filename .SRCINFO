@@ -8,7 +8,7 @@ pkgbase = komitoto
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/IRendy/komitoto.git#tag=v0.1.0
+	source = git+https://github.com/IRendy/komitoto.git
 	sha256sums = SKIP
 
 pkgname = komitoto
