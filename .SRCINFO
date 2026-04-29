@@ -1,5 +1,5 @@
 pkgbase = gitlogue-bin
-	pkgdesc = Turn your Git history into a living, animated story
+	pkgdesc = A cinematic Git commit replay tool for the terminal
 	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/unhappychoice/gitlogue
