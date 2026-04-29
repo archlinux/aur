@@ -1,7 +1,7 @@
 pkgbase = zephyr-sdk-gnu-xtensa-sample_controller32_zephyr-elf-bin
 	pkgdesc = SDK for Zephyr real-time operating system
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
@@ -19,10 +19,10 @@ pkgname = zephyr-sdk-gnu-xtensa-sample_controller32_zephyr-elf-bin
 	depends = dtc
 	depends = tk
 	depends = xz
-	depends = zephyr-sdk-cmake-modules=1.0.1
-	depends = zephyr-sdk-profile=1.0.1
-	depends = zephyr-sdk-hosttools-bin=1.0.1
-	depends = zephyr-sdk-gnu-toolchain-xtensa-sample_controller32_zephyr-elf-bin=1.0.1
+	depends = zephyr-sdk-cmake-modules>=1.0.1
+	depends = zephyr-sdk-profile>=1.0.1
+	depends = zephyr-sdk-hosttools-bin>=1.0.1
+	depends = zephyr-sdk-gnu-toolchain-xtensa-sample_controller32_zephyr-elf-bin>=1.0.1
 	optdepends = ninja
 	optdepends = make
 	optdepends = ccache
