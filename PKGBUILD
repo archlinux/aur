@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hopach
-_pkgver=2.70.0
+_pkgver=2.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fb6d52fa9f317fd683364b7acfaffcb2')
-b2sums=('db5aa70ab9a45448a1ad4170cc7dd6437c9f251dcda052c24c5cec77afeb5ec728cd4a528e712adae06f26a0c51bb00603029a44c52b1d7f742119d8cc187850')
+md5sums=('c46dcca92ece71d7cb672e53d2a989c3')
+b2sums=('d0c4a9920bd209413c3eb621dbd986fd187b5aa85a254770c05be4c3b3e9bc0a1624f1964d5039846e4610bdc1233e4fad12a2d43eae76dadde9096fadbf9e0b')
 
 build() {
   mkdir build
