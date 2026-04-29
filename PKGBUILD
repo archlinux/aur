@@ -3,7 +3,7 @@
 pkgname=tint2-patched-git
 _pkgname=tint2
 pkgrel=1
-pkgver=r2165.af85ef1
+pkgver=r2168.b287074
 pkgdesc="tint2 is a simple panel/taskbar made for modern X window managers. Git release with patches from https://github.com/korbeljak/tint2."
 arch=('i686' 'x86_64')
 url="https://github.com/korbeljak/tint2"
