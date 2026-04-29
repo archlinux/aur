@@ -2,7 +2,7 @@
 
 pkgname=steam-game-idler-git
 _pkgname=steam-game-idler
-pkgver=5.0.4.r1712.g3e2abafb
+pkgver=5.0.4.r1713.gac0fe8ac
 pkgrel=1
 pkgdesc='Idle Steam games and farm trading cards with Linux support'
 arch=('x86_64')
