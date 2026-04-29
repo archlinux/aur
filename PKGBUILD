@@ -9,7 +9,7 @@ conflicts=(throne throne-git throne-bin nekoray-mahdi-zarei-bin)
 options=(!debug)
 _appver=${pkgver/[a-z]/-&}
 source=(Throne.{desktop,sh})
-source_x86_64=(throne-$_appver-debian-system-qt-x64.deb::$url/releases/download/$_appver/Throne-$_appver-debian-system-qt-x64.deb
+source_x86_64=(throne-$_appver-debian-system-qt-x64.deb::$url/releases/download/$_appver/Throne-$_appver-debian-amd64-system-qt.deb
 )
 sha256sums=('1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d'
             'ba44fe899a7ae34474a497a797299587d1e286e7a574578804083220caefe1bb')
