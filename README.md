@@ -1,4 +1,3 @@
-
 [Cheese](https://github.com/naregderlevonean/hyprmousetrap/blob/main/Cheese.png)
 
 # hyprmousetrap
@@ -10,16 +9,12 @@ A high-performance, DPI-aware hot-corner and edge-action daemon for **Hyprland**
 
 ## Features
 
-- **Programmable Logic (Lua)**: Complete control over execution context via Lua scripting.
 - **DPI Aware**: Automatic logical coordinate scaling for HiDPI displays.
 - **8 Active Zones**: 4 corners and 4 edges (`Top`, `Bottom`, `Left`, `Right`, `TopLeft`, `TopRight`, `BottomLeft`, `BottomRight`).
+- **Programmable Logic (Lua)**: Complete control over execution context via Lua scripting.
 - **Trigger-based Logic**: Distinguish between simple hovering, window dragging, or clicking.
 - **Intent Verification**: Configurable delays with real-time cursor tracking to prevent accidental triggers.
 - **Modifier Key Integration**: Ability to read `SUPER`, `SHIFT`, `CTRL`, and `ALT` keys during zone entry.
-
-Plans:
-
-- **Improved Fractional Scaling Support**: Enhancing the coordinate calculation logic to handle complex scaling factors (like `1.666`, etc.) with pixel-perfect precision.
 
 
 
@@ -76,13 +71,13 @@ Configuration is handled entirely through a Lua script. The daemon calls the `on
 
 ### The Context Object (`ctx`)
 
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `ctx.zone` | string | The active zone (`TopLeft`, `Bottom`, etc.). |
-| `ctx.trigger` | `string\|nil` | Manual trigger name (e.g., "drag") or nil for hover. |
-| `ctx.monitor` | string | The active monitor name (e.g., "eDP-1"). |
-| `ctx.specialWorkspace` | `string\|nil` | Name of the active special workspace. |
-| `ctx.hotkeys` | table | Boolean keys: `ctrl`, `alt`, `shift`, `superKey`. |
+| Property               | Type          | Description                                          |
+| :--------------------- | :------------ | :--------------------------------------------------- |
+| `ctx.zone`             | `string`      | The active zone (`TopLeft`, `Bottom`, etc.).         |
+| `ctx.trigger`          | `string\|nil` | Manual trigger name (e.g., "drag") or nil for hover. |
+| `ctx.monitor`          | `string`      | The active monitor name (e.g., "eDP-1").             |
+| `ctx.specialWorkspace` | `string\|nil` | Name of the active special workspace.                |
+| `ctx.hotkeys`          | `table`       | Boolean keys: `ctrl`, `alt`, `shift`, `superKey`.    |
 
 
 
@@ -172,9 +167,9 @@ exec-once = hyprmousetrap
 
 ### Manual Triggers (Drag/Click)
 
-Integrate with Hyprland mouse bindings. The argument after `hyprmousetrap` is passed to the Lua script as `ctx.trigger`.
+Integrate with Hyprland mouse bindings to enable "Drag to corner" actions. The argument after `hyprmousetrap` is passed to the Lua script as `ctx.trigger`.
 
-```anyhow
+```hyprlang
 bindn = , mouse:272, exec, hyprmousetrap drag
 ```
 
@@ -184,3 +179,4 @@ bindn = , mouse:272, exec, hyprmousetrap drag
 ## License
 
 This project is licensed under the GPL-3.0 License. See the `LICENSE` file for details.
+
