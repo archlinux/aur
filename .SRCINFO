@@ -1,7 +1,7 @@
 pkgbase = betcon
 	pkgdesc = Sports betting management
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://betcon.eduardoparra.es
 	arch = x86_64
 	license = GPLv3
@@ -11,6 +11,8 @@ pkgbase = betcon
 	depends = python-yaml
 	depends = python-pillow
 	depends = python-pyqtgraph
+	options = !strip
+	options = !debug
 	source = https://github.com/soker90/betcon/releases/download/v2.0.0/betcon-2.0.0-linux-x86_64.tar.gz
 	sha256sums = 4cb9a98a2c26c660fa8bf94d3bfe3f4de4cca0c3f21f03418fccb07235885d7a
 
