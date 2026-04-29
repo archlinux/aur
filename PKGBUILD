@@ -4,11 +4,11 @@ pkgname=ibm-bob-bin
 pkgver=1.109.5
 _bobrel=1.0.1
 _upstream_ver="${pkgver}+bob${_bobrel}"
-pkgrel=1
-pkgdesc='IBM Bob editor packaged for Arch Linux from IBM upstream binaries'
+pkgrel=2
+pkgdesc='IBM Bob IDE repackaged from IBM upstream Linux binaries'
 arch=('x86_64')
-url='https://bob.ibm.com'
-license=('custom')
+url='https://bob.ibm.com/download'
+license=('custom:IBM')
 depends=(
   'alsa-lib'
   'at-spi2-core'

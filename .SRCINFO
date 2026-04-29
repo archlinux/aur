@@ -1,10 +1,10 @@
 pkgbase = ibm-bob-bin
-	pkgdesc = IBM Bob editor packaged for Arch Linux from IBM upstream binaries
+	pkgdesc = IBM Bob IDE repackaged from IBM upstream Linux binaries
 	pkgver = 1.109.5
-	pkgrel = 1
-	url = https://bob.ibm.com
+	pkgrel = 2
+	url = https://bob.ibm.com/download
 	arch = x86_64
-	license = custom
+	license = custom:IBM
 	makedepends = curl
 	depends = alsa-lib
 	depends = at-spi2-core
