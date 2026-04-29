@@ -1,4 +1,5 @@
-# Maintainer: zneix <zneix@zneix.eu>
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Contributor: zneix <zneix@zneix.eu>
 
 pkgname=twitch-cli-git
 pkgver=r224.b779fcf
