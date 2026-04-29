@@ -1,7 +1,7 @@
 # Maintainer: HamletDuFromage <https://github.com/HamletDuFromage/slippi-mainline-PKGBUILD/issues>
 
 pkgname="slippi-mainline"
-pkgver='v4.0.0.mainline.beta.14.r0.g9af1bb57e8'
+pkgver='v4.0.0.mainline.beta.15.r0.g8f0730fe46'
 pkgrel=3
 pkgdesc='https://slippi.gg/about'
 arch=('x86_64')
@@ -49,7 +49,7 @@ optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 
 #commit='bdd90056759b59928f21d6e8f21697c4df0ee04d'
-tag='v4.0.0-mainline-beta.14'
+tag='v4.0.0-mainline-beta.15'
 
 source=(
         #"$pkgname::git+https://github.com/project-slippi/dolphin.git#commit=${commit}"
