@@ -1,6 +1,6 @@
 pkgbase = r-rimmport
 	pkgdesc = RImmPort: Enabling Ready-for-analysis Immunology Research Data
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RImmPort
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-rimmport
 	depends = r-rsqlite
 	depends = r-sqldf
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RImmPort_1.38.0.tar.gz
-	sha256sums = d25fb86ff952b5519e050b2b09d0d428d4d4dd878e3314b6a2679570abcf9272
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RImmPort_1.40.0.tar.gz
+	sha256sums = d8f26d9f83f50dd4ccb96569634a76f11c715044132a08b6c2e4be22ee72ea3f
 
 pkgname = r-rimmport
