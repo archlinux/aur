@@ -1,0 +1,11 @@
+post_install() {
+    echo "VIIPER: To enable the virtual controller backend, run:"
+    echo "    sudo systemctl enable --now viiper"
+}
+
+post_upgrade() {
+    if systemctl is-active --quiet viiper; then
+        echo "VIIPER: Restarting service to apply updates..."
+        systemctl restart viiper
+    fi
+}
