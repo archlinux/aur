@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-hy-am
 	pkgdesc = Armenian language pack for Firefox Nightly
-	pkgver = 152.0a1.20260428.214421
+	pkgver = 152.0a1.20260429.091901
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-hy-am
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-hy-AM-152.0a1.20260428.214421.xpi
-	source = firefox-nightly-i18n-hy-AM-152.0a1.20260428.214421.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-152.0a1.hy-AM.langpack.xpi
-	sha256sums = 30ae9ab4e74e5e474e7915c5573cd4d03dd86d4289c505c7f5ed82d88a218886
+	noextract = firefox-nightly-i18n-hy-AM-152.0a1.20260429.091901.xpi
+	source = firefox-nightly-i18n-hy-AM-152.0a1.20260429.091901.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-152.0a1.hy-AM.langpack.xpi
+	sha256sums = 16458391539d30f27f0f7efc236c94e3d49ab490c2cb906bb5ef81186417973e
 
 pkgname = firefox-nightly-i18n-hy-am
