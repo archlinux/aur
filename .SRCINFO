@@ -1,0 +1,27 @@
+pkgbase = python-hyppo
+	pkgdesc = A comprehensive multivariate independence testing package
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/neurodata/hyppo
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-numba
+	depends = python-scikit-learn
+	depends = python-autograd
+	depends = python-statsmodels
+	depends = python-patsy
+	depends = python-pandas
+	depends = python-future
+	depends = python-joblib
+	optdepends = python-pytest: to run the bundled test suite
+	source = python-hyppo-0.5.2.tar.gz::https://files.pythonhosted.org/packages/source/h/hyppo/hyppo-0.5.2.tar.gz
+	sha256sums = 4634d15516248a43d25c241ed18beeb79bb3210360f7253693b3f154fe8c9879
+
+pkgname = python-hyppo
