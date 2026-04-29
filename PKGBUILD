@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nuCpos
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3f8f4904c171abd9177486cd6d500bf4')
-b2sums=('a6ec75f2f447e418d25885f6a05a61eb606dd48795beed8a0688f088c0b00a5fa056b9d185a393db617d3c8509fa40b7b9f9f28fc6c5425e71d60bb0b2b96dc6')
+md5sums=('50e2329427c6a4f8d3ade7bfdc2294db')
+b2sums=('9e233578378214652c3fc8fba7e7f6399b98ab66ff160eedd09d6bcc3327c91bcda7dc83ea99e62aea2afc46ec11d4f37420fe6595c7225a6e1cab7dfab43ae4')
 
 build() {
   mkdir build
