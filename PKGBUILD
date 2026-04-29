@@ -4,10 +4,10 @@
 _gitauthor=matthart1983
 _gitname=netwatch
 _appname=${_gitname}
-pkgname="${_appname}-tui-bin"
+pkgname="netwatch-tui-bin"
 pkgdesc="Real-time network diagnostics TUI — like htop for your network"
 
-pkgver=0.14.0rc3
+pkgver=0.14.1
 pkgrel=1
 _gitversion=v0.14.0-rc.3
 
