@@ -18,7 +18,8 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-
+  CC="cc"
+  LDFLAGS="-lsqlite3"
   cargo build --release --locked
 }
 
