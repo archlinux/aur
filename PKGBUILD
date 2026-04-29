@@ -1,7 +1,7 @@
 # Maintainer: Softer <softer@lin.in.ua>
 pkgname=razer-tray-bin
 _pkgname=razer-tray
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Minimal Linux tray indicator for Razer wireless mouse and keyboard battery level (prebuilt binary)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
 source=("https://github.com/Softer/razer-tray/releases/download/v$pkgver/$_pkgname-$pkgver-$CARCH.tar.gz")
-sha256sums=('bbe6369487b199cd439b8c012b7f6d015c80228d72028f6450e95c432ecff325')
+sha256sums=('ff5e48aa924bf431839c87a59aff9fefbba9b18e03978516b30923163601c68a')
 
 package() {
     cd "$_pkgname-$pkgver"

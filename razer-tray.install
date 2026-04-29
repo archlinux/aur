@@ -22,7 +22,22 @@ post_install() {
 }
 
 post_upgrade() {
-    post_install
+    systemctl --global enable razer-tray.service >/dev/null 2>&1 || true
+
+    restarted=()
+    while read -r user; do
+        [[ -z "$user" || "$user" == "root" ]] && continue
+        uid=$(id -u "$user" 2>/dev/null) || continue
+        if runuser -u "$user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+            systemctl --user restart razer-tray.service >/dev/null 2>&1; then
+            restarted+=("$user")
+        fi
+    done < <(loginctl --no-legend list-users 2>/dev/null | awk '{print $2}')
+
+    echo "==> razer-tray upgraded"
+    if (( ${#restarted[@]} )); then
+        echo "==> Restarted for: ${restarted[*]}"
+    fi
 }
 
 pre_remove() {
