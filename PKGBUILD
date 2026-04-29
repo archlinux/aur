@@ -7,11 +7,11 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=150.0.0_1
+pkgver=150.0.1_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
-pkgrel=2
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
@@ -107,19 +107,19 @@ options=(
 install='librewolf.install'
 source=(
   https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
-  https://codeberg.org/librewolf/source/raw/commit/dacb8a18763458eb247b72bb2f19829eff7a68f6/patches/rust-build.patch
-  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/46fcb2e50f2bd92c640ec57978178b609bba15c2/0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch
-  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/46fcb2e50f2bd92c640ec57978178b609bba15c2/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/46fcb2e50f2bd92c640ec57978178b609bba15c2/0004-Bug-2023597-Use-wasm32-wasip1-target-for-clang-22.1-.patch
+  0001-rust-build.patch::https://codeberg.org/librewolf/source/raw/commit/163cb7eb83b340f0c30ef8832fd72f02a88a1b3e/patches/rust-build.patch
+  0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/79485441f8b5875d618f0a121fd6c4b5e0c9bbd2/0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch
+  0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/79485441f8b5875d618f0a121fd6c4b5e0c9bbd2/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  0004-Bug-2023597-Use-wasm32-wasip1-target-for-clang-22.1-.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/79485441f8b5875d618f0a121fd6c4b5e0c9bbd2/0004-Bug-2023597-Use-wasm32-wasip1-target-for-clang-22.1-.patch
   $pkgname.desktop
   "default192x192.png"
 )
 
-sha256sums=('e93d39180d74ea9e07d9a7cae7a441cc6e790f64e053f2b7e168cc490b043034'
+sha256sums=('d6470f5d93b531b9a20f750f2a2903ce20f5186e5bc4e87e28bbb6f4409fe4fa'
             'SKIP'
-            '547306e19cda7bbadeba9e1989882ff71f30e2bb2dad4441e8ef79d64fb4dc8a'
-            '9f10d9bfcaa3a8dd86a8654431f820716a45a72a885c29fd6359bccc7bcdaefa'
-            'f579e02644ef9c29da5cd61d2c9213ba1c3f7a1aa8abf601bdf07cbbbadb1ce3'
+            '972c400f09b51d1638ca4bc534c84798393cee5aaabad71cd1843e9d4d2d2489'
+            '9baae0f2313efdfdbfce9464e89f1fe21571890fd9746212b54cf56a3391c1c1'
+            '4c958237fa592a9dd299ddc3fe272c8e1da9c2e3e419e595bcb53dc0419913a4'
             'd6e1dbafe56bc52c8ab6cbf9542cf80e89c1857a71ce08bbbd82804909bcb76f'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1')
@@ -198,8 +198,9 @@ fi
   export LDFLAGS+=" -Wl,--no-keep-memory"
 
   # revert LW upstream way to address rust build issues, so Arch upstream's patches can apply cleanly
-  sed -i 's/b9432f9ed39742015f4bb4c3e75c89a2b9a9eef943dd0fd7cd889fddd1e6d39c/9456ca46168ef86c98399a2536f577ef7be3cdde90c0c51392d8ac48519d3fae/g' third_party/rust/encoding_rs/.cargo-checksum.json
-  patch -Rp1 -i ../rust-build.patch
+  sed -i 's/60cd124908737068ab21c7773b3df71d00e186cd605f15bad9977232830aabc0/9456ca46168ef86c98399a2536f577ef7be3cdde90c0c51392d8ac48519d3fae/g' third_party/rust/encoding_rs/.cargo-checksum.json
+  sed -i 's/a066ad881d5a74386e666fc844f7fecbbd70021d0330c1b08a2d7a2a67437ccf/d7405d2bcf99cf9729075473c45f677630f4c1947c8ba9757db607f2025a7da2/g' third_party/rust/encoding_rs/.cargo-checksum.json
+  patch -Rp1 -i ../0001-rust-build.patch
 
   # upstream Arch fixes
 
@@ -207,7 +208,7 @@ fi
   # https://bugzilla.mozilla.org/show_bug.cgi?id=2033279
   patch -Np1 -i ../0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch
 
-    # Fix build with glibc 2.43
+  # Fix build with glibc 2.43
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
   patch -Np1 -i ../0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 
