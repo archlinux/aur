@@ -96,7 +96,7 @@ package() {
   # Create simple wrapper script in /usr/bin
   install -d "$pkgdir/usr/bin"
   
-  echo '#!/bin/bash' > "$pkgdir/usr/bin/hermes" 
-  echo "exec \"/opt/$pkgname/.venv/bin/python\" -m hermes_agent.cli" '"$@"' >> "$pkgdir/usr/bin/hermes"  
-  chmod 755 "$pkgdir/usr/bin/hermes"
+echo '#!/bin/bash' > "$pkgdir/usr/bin/hermes"
+	echo "exec /opt/$pkgname/.venv/bin/python /opt/$pkgname/cli.py" '"$@"' >> "$pkgdir/usr/bin/hermes"
+	chmod 755 "$pkgdir/usr/bin/hermes"
 }
