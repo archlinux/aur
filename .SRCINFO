@@ -1,7 +1,7 @@
 pkgbase = skypaw-bin
 	pkgdesc = Minimal weather CLI for the terminal 🌤️
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sakkkurai/skypaw
 	arch = x86_64
 	arch = aarch64
