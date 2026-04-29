@@ -1,13 +1,14 @@
 pkgname=usque
-pkgver=1.5.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Open-source reimplementation of the Cloudflare WARP client's MASQUE protocol."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Diniboy1123/$pkgname"
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('336d2f1a388cd805fcb01502a4429db47edc4597c2b77ac271d6e8dc723baa43')
+sha256sums=('ecd608977d791e7df173977e7816998d047283d702f778da056c128e664f3ea8')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,4 +23,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
 }

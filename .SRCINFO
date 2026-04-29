@@ -1,6 +1,6 @@
 pkgbase = usque
 	pkgdesc = Open-source reimplementation of the Cloudflare WARP client's MASQUE protocol.
-	pkgver = 1.5.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/Diniboy1123/usque
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = usque
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = usque-1.5.0.tar.gz::https://github.com/Diniboy1123/usque/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 336d2f1a388cd805fcb01502a4429db47edc4597c2b77ac271d6e8dc723baa43
+	depends = glibc
+	source = usque-3.0.0.tar.gz::https://github.com/Diniboy1123/usque/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = ecd608977d791e7df173977e7816998d047283d702f778da056c128e664f3ea8
 
 pkgname = usque
