@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.22.r164.g74f67b8
+pkgver=0.5.22.r289.g9a29a95
 pkgrel=1
 pkgdesc="Open Gaming Platform"
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   'cabextract'
   'curl'
   'glib2'
+  'glib-networking'
   'gnome-desktop'
   'gtk3'
   'hicolor-icon-theme'
@@ -46,7 +47,11 @@ makedepends=(
 )
 checkdepends=(
   'appstream-glib'
-#  'python-pytest'
+#  'pciutils'
+#  'python-nose2'
+#  'procps-ng'
+#  'vulkan-tools'
+#  'xorg-server-xvfb'
 )
 optdepends=(
   'fluidsynth: For games that have MIDI music'
@@ -70,7 +75,7 @@ optdepends=(
   'vkd3d: DirectX 12 support'
   'vulkan-icd-loader: Vulkan support'
   'vulkan-tools: Vulkan support'
-  'wine: easiest way to get all the libraries missing from the Lutris runtime'
+  'wine: Easiest way to get all the libraries missing from the Lutris runtime'
   'winetricks: use system winetricks'
 )
 provides=("${pkgname%-git}")
@@ -93,11 +98,9 @@ check() {
 
   cd "${pkgname%-git}"
 
-  # Python tests: Disabled because either they're querying hardware 
-  # or trying to spawn processes
-#  pytest \
-#    --ignore=tests/_test_{api,dialogs,installer}.py \
-#    -k "not GetNvidiaDriverInfo and not GetNvidiaGpuInfo and not import_module and not options"
+  # Tests pass in chroot, but touch files in user diretory
+#  python -m venv --clear --without-pip --system-site-packages test-env
+#  xvfb-run test-env/bin/python -m nose2 --exclude-ci
 }
 
 package() {
