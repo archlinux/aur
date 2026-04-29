@@ -1,5 +1,5 @@
 pkgname=aura-emerge
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Portage-like wrapper for Arch Linux using Aura"
 arch=('x86_64')
