@@ -4,7 +4,7 @@ pkgver=0.11.0
 _tagver=2026.4.23
 pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
 groups=()
@@ -50,15 +50,15 @@ build() {
   # Create Python 3.11 venv with uv and install dependencies
   uv venv --python 3.11 --clear .venv
   source .venv/bin/activate
- uv pip install setuptools wheel build
-python -m build --wheel --no-isolation
+  uv pip install setuptools wheel build
+  python -m build --wheel --no-isolation
 
-	# Install the built wheel into the venv
-uv pip install dist/*.whl
+  # Install the built wheel into the venv
+  uv pip install -e '.[all]'
 }
 
 package() {
-	cd "${pkgname}-${_tagver}"
+  cd "${pkgname}-${_tagver}"
 
   # Install to /opt
   _optdir="$pkgdir/opt/$pkgname"
@@ -96,7 +96,7 @@ package() {
   # Create simple wrapper script in /usr/bin
   install -d "$pkgdir/usr/bin"
   
-echo '#!/bin/bash' > "$pkgdir/usr/bin/hermes"
-	echo "exec /opt/$pkgname/.venv/bin/python /opt/$pkgname/cli.py" '"$@"' >> "$pkgdir/usr/bin/hermes"
-	chmod 755 "$pkgdir/usr/bin/hermes"
+  echo '#!/bin/bash' > "$pkgdir/usr/bin/hermes"
+  echo "exec /opt/$pkgname/.venv/bin/python -m hermes_cli.main" '"$@"' >> "$pkgdir/usr/bin/hermes"
+  chmod 755 "$pkgdir/usr/bin/hermes"
 }
