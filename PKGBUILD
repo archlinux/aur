@@ -2,7 +2,7 @@
 
 _name=llama-index-workflows
 pkgname=python-${_name}
-pkgver=2.19.1
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="An event-driven, async-first, step-based way to control the execution flow of AI agent"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-llama-index-instrumentation' 'python-pydantic' 'python
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel' 'python-uv-build')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('13328139112bf0f0442e1e87a9c57d94c6f992b14d17546f58e61bcc76546850')
+sha256sums=('df2760fea9e100c97a4e919d255461e344413acac4382d17d8217337806e4772')
 
 prepare() {
     cd "${srcdir}"/${_name//-/_}-${pkgver}
