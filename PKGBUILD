@@ -52,7 +52,7 @@ prepare() {
 
   local download_url
   download_url="$(
-    curl -fsSI -X POST 'https://bob.ibm.com/api/download/bobide' \
+    curl -fsS -D - -o /dev/null -X POST 'https://bob.ibm.com/api/download/bobide' \
       -F 'platform=linux' \
       -F "version=${_upstream_ver}" \
       -F 'architecture=x64' \
