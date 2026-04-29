@@ -33,8 +33,6 @@ _cleanup_all() {
   if [ -n "$real_user" ]; then
     real_home=$(getent passwd "$real_user" | cut -d: -f6)
 
-    rm -f "$real_home/.config/caelestia/templates/sddm-theme.conf"
-    _rmdir_if_empty "$real_home/.config/caelestia/templates"
     rm -rf "$real_home/.cache/sddm-greeter-qt6"
   fi
 
@@ -100,9 +98,13 @@ post_install() {
 
   sudo -u "$real_user" mkdir -p "$real_home/.config/caelestia/templates"
   if [ -f "$theme_dir/theme.conf.template" ]; then
-    sudo -u "$real_user" cp "$theme_dir/theme.conf.template" \
-      "$real_home/.config/caelestia/templates/sddm-theme.conf"
-    echo "==> Template copied to $real_home/.config/caelestia/templates/sddm-theme.conf"
+    if [ ! -f "$real_home/.config/caelestia/templates/sddm-theme.conf" ]; then
+      sudo -u "$real_user" cp "$theme_dir/theme.conf.template" \
+         "$real_home/.config/caelestia/templates/sddm-theme.conf"
+      echo "==> Template copied to $real_home/.config/caelestia/templates/sddm-theme.conf"
+    else
+      echo "==> Existing template found at $real_home/.config/caelestia/templates/sddm-theme.conf, skipping copy."
+    fi
   fi
 
   echo "==> Running initial sync..."
