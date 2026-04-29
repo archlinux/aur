@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname}
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Base ArviZ features and converters"
 arch=('any')
@@ -20,15 +20,17 @@ makedepends=('python-flit-core>=3.4'
              'python-jupyter-sphinx'
              'python-myst-nb'
              'python-numpydoc'
+             'python-tinycss2'
              'python-xarray'
+             'python-lazy-loader'
              'python-h5netcdf'
              'python-linkify-it-py')
 checkdepends=('python-pytest')
-#             'python-pytest-xdist'
-#              )   # xarray, h5netcdf already in makedepends
+#checkdepends=('python-pytest-xdist')
+#             )   # xarray, h5netcdf, lazy-loader already in makedepends
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/arviz-devs/arviz-base/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('c5de8180bdf4ef0229dd059b5c0a95a1')
+md5sums=('d048e6af3205a688406593d2dbfbf288')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -50,7 +52,8 @@ package_python-arviz-base() {
     depends=('python>=3.12'
              'python-numpy>=2'
              'python-xarray>=2024.11.0'
-             'python-typing_extensions>=3.10')
+             'python-typing_extensions>=3.10'
+             'python-lazy-loader>=0.4')
     optdepends=('python-h5netcdf'
                 'python-h5py'
                 'python-netcdf4'
