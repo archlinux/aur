@@ -18,7 +18,7 @@ md5sum=(
     '887c49e6282dd579d0fe22366b9af47d'
 )
 validpgpkeys=(
-  927C6C7589E345D30D71367B483D974BE8CD1C27 # JiiB <jiibbottou@gmail.com>
+  '927C6C7589E345D30D71367B483D974BE8CD1C27' # JiiB <jiibbottou@gmail.com>
 )
 
 prepare() {
