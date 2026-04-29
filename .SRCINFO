@@ -1,7 +1,7 @@
 pkgbase = pcl
 	pkgdesc = A standalone, large scale, open project for 2D/3D image and point cloud processing
 	pkgver = 1.15.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pointclouds.org
 	arch = x86_64
 	license = BSD-3-Clause
@@ -17,6 +17,7 @@ pkgbase = pcl
 	makedepends = libharu
 	makedepends = liblas
 	makedepends = libxcursor
+	makedepends = ninja
 	makedepends = netcdf
 	makedepends = nlohmann-json
 	makedepends = openvr

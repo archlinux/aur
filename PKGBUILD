@@ -10,7 +10,7 @@
 
 pkgname=pcl
 pkgver=1.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=('x86_64')
 url='https://www.pointclouds.org'
@@ -18,7 +18,7 @@ license=("BSD-3-Clause")
 depends=('boost' 'cjson' 'eigen' 'flann' 'freeglut' 'glew' 'vtk' 'libpcap' 'libpng' 'libusb' 'suitesparse' 'zlib')
 optdepends=('cuda' 'openmp' 'openni2' 'qhull')
 makedepends=('adios2' 'anari-sdk' 'cgns' 'cli11' 'cmake' 'fast_float' 'fmt' 'gl2ps' 'libharu' 'liblas' 'libxcursor'
-             'netcdf' 'nlohmann-json' 'openvr' 'ospray' 'pdal' 'python-mpi4py' 'qt6-base' 'utf8cpp' 'verdict')
+             'ninja' 'netcdf' 'nlohmann-json' 'openvr' 'ospray' 'pdal' 'python-mpi4py' 'qt6-base' 'utf8cpp' 'verdict')
 checkdepends=('gtest-src')
 source=("https://github.com/PointCloudLibrary/pcl/archive/${pkgname}-${pkgver}.tar.gz"
         "https://github.com/PointCloudLibrary/pcl/pull/6354.diff")
@@ -29,6 +29,7 @@ b2sums=('39dcb01d4409e3d4bc4241c5f48f0c450fea285cf3eaef5da6808aa4983ae56338a27e3
 
 prepare() {
   cd ${srcdir}/pcl-pcl-${pkgver}
+  sed -i "146i X11" visualization/CMakeLists.txt
   patch -p1 < ${srcdir}/6354.diff
 }
 
@@ -38,6 +39,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_CXX_STANDARD=17 \
         -DCMAKE_CUDA_STANDARD=17 \
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
         -DBUILD_apps=ON \
         -DBUILD_apps_3d_rec_framework=ON \
         -DBUILD_apps_cloud_composer=ON \
@@ -50,7 +52,7 @@ build() {
         -DBUILD_surface_on_nurbs=ON -DUSE_UMFPACK=ON \
         -DBoost_USE_DEBUG_RUNTIME=OFF \
         -DWITH_QT='QT6' \
-        -Wno-dev
+        -GNinja -Wno-dev
   cmake --build build
 }
 
