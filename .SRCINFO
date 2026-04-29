@@ -1,0 +1,21 @@
+pkgbase = epinio-bin
+	pkgdesc = Opinionated platform that runs on Kubernetes that takes you from App to URL in one step
+	pkgver = 1.13.10
+	pkgrel = 1
+	url = https://epinio.io
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = epinio
+	conflicts = epinio
+	noextract = epinio-bin-1.13.10-x86_64
+	noextract = epinio-bin-1.13.10-aarch64
+	source = LICENSE-1.13.10::https://raw.githubusercontent.com/epinio/epinio/v1.13.10/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = epinio-bin-1.13.10-x86_64::https://github.com/epinio/epinio/releases/download/v1.13.10/epinio-linux-x86_64
+	sha256sums_x86_64 = 2d0d6d7adaa2daf35f8a6e5af6d2b0e86babf3fefeee95e7314a070126a713f6
+	source_aarch64 = epinio-bin-1.13.10-aarch64::https://github.com/epinio/epinio/releases/download/v1.13.10/epinio-linux-arm64
+	sha256sums_aarch64 = b2a9a0c64a82f154a512cbcc5b830baef507bf6f7556a6492c88a24a06f36fd7
+
+pkgname = epinio-bin
