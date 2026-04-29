@@ -46,7 +46,7 @@ build() {
   [ -d "tui" ] && cd tui && rm -f package-lock.json && npm install && npm run build && cd ..
   # Install whatsapp-bridge dependencies (kept alongside scripts for same path)
   if [ -f "scripts/whatsapp-bridge/package.json" ]; then
-    (cd scripts/whatsapp-bridge && npm install --legacy-peer-deps --omit=dev) || echo "Warning: whatsapp-bridge npm install failed (optional)"
+    (cd scripts/whatsapp-bridge && npm audit fix && npm install --legacy-peer-deps --omit=dev) || echo "Warning: whatsapp-bridge npm install failed (optional)"
   fi
 
   # Create Python 3.11 venv with uv and install dependencies
