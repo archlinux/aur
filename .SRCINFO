@@ -1,0 +1,14 @@
+pkgbase = make-jfnf
+	pkgdesc = Make Jellyfin Name Format cli
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/uzki69/MakeJFNF
+	arch = x86_64
+	license = custom
+	depends = python
+	depends = coreutils
+	options = !strip
+	source = make-jfnf-1.0.0.tar.gz::https://github.com/uzki69/MakeJFNF/releases/download/v1.0.0/make-jfnf-1.0.0.tar.gz
+	sha256sums = 37d1bec1547d736a437c06cbcfd3c499b755f4c91f6d9195a7e3d6a78ab75117
+
+pkgname = make-jfnf
