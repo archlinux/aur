@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=CGEN
-_pkgver=3.46.0
+_pkgver=3.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9369ca067ed766863f6d355e84e78002')
-b2sums=('f5e551805cbf99951c0ba9f873ee29cc6e40a8816540b4b08557de6413a403a8463ed8785a03f4aa9f6503e7de5465780a95cd45db90e1309edefe4c7c1d6b25')
+md5sums=('c9bf3e0f1a4b453e7921777eeb1b3e16')
+b2sums=('a9bb0d26bb128784f438ca58ef9fbf5a035f4b5992133bada6322049f70c0196a4c11a42c8e920b1eb05680e0fc54d7dbc775920dfe15a3d91046eb7f07cb8c9')
 
 build() {
   mkdir build
