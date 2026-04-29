@@ -1,5 +1,5 @@
 pkgname=forgecode-bin
-pkgver=2.12.10
+pkgver=2.12.9
 pkgrel=1
 pkgdesc="An AI-powered code assistant CLI tool"
 arch=('x86_64' 'aarch64')
