@@ -22,9 +22,8 @@ conflicts=(
   rime-ice-double-pinyin-ziguang-git
 )
 provides=(rime-luna-pinyin)
-source=("${_pkgbase}::git+${url}.git" "package.patch")
-sha512sums=("SKIP" 
-be94577ee610847ecb17aa1a22d4341bb124dd1b50a89a06b512e9b16370340e16284268985bebec7472482a9ee8e3b24a84a066829877d8e9e8307d69b6eb0e)
+source=("${_pkgbase}::git+${url}.git")
+sha512sums=("SKIP")
 
 _schemas=(
   rime_frost
@@ -47,8 +46,7 @@ prepare() {
   cd "${_pkgbase}" &&
     mv ./default.yaml "./${_suggestion}" &&
     # Link essentials.
-    for _f in $(pacman -Qql rime-prelude | grep -v "/$"); do ln -sf "$_f" .; done # &&、
-    # patch --forward --strip=1 --input="../package.patch"
+    for _f in $(pacman -Qql rime-prelude | grep -v "/$"); do ln -sf "$_f" .; done
 }
 
 build() {

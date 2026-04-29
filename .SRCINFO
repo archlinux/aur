@@ -21,8 +21,6 @@ pkgbase = rime-frost-git
 	conflicts = rime-ice-double-pinyin-flypy-git
 	conflicts = rime-ice-double-pinyin-ziguang-git
 	source = rime-frost::git+https://github.com/gaboolic/rime-frost.git
-	source = package.patch
 	sha512sums = SKIP
-	sha512sums = be94577ee610847ecb17aa1a22d4341bb124dd1b50a89a06b512e9b16370340e16284268985bebec7472482a9ee8e3b24a84a066829877d8e9e8307d69b6eb0e
 
 pkgname = rime-frost-git
