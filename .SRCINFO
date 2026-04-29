@@ -1,16 +1,16 @@
 pkgbase = zephyr-sdk-gnu-xtensa-mtk_mt8195_adsp_zephyr-elf-bin
 	pkgdesc = SDK for Zephyr real-time operating system
-	pkgver = 1.0.0
-	pkgrel = 6
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	options = !strip
-	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-mtk_mt8195_adsp_zephyr-elf.tar.xz
-	sha256sums_x86_64 = 91c8a5b0f74ffbacc918786d4d4836344f4471f87c70dbb21d9cbe91372df27f
-	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-mtk_mt8195_adsp_zephyr-elf.tar.xz
-	sha256sums_aarch64 = 9d299d8e14b7c0d6b6b263d3f7d5b8d1398a4926443cbd53e702dd289fe23602
+	source_x86_64 = zephyr-sdk-1.0.1_toolchain_gnu_linux-x86_64_xtensa-mtk_mt8195_adsp_zephyr-elf.tar.xz::https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/toolchain_gnu_linux-x86_64_xtensa-mtk_mt8195_adsp_zephyr-elf.tar.xz
+	sha256sums_x86_64 = b60f15fb92b4ecbe0124b82906b368a36d68ff79c26ce2a89198e3f1d2763e77
+	source_aarch64 = zephyr-sdk-1.0.1_toolchain_gnu_linux-aarch64_xtensa-mtk_mt8195_adsp_zephyr-elf.tar.xz::https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/toolchain_gnu_linux-aarch64_xtensa-mtk_mt8195_adsp_zephyr-elf.tar.xz
+	sha256sums_aarch64 = a4be0772b8f6e86e7b0728d373879984f8f42dcf1e68887f9db7de0785e8e277
 
 pkgname = zephyr-sdk-gnu-xtensa-mtk_mt8195_adsp_zephyr-elf-bin
 	depends = cmake
@@ -19,10 +19,10 @@ pkgname = zephyr-sdk-gnu-xtensa-mtk_mt8195_adsp_zephyr-elf-bin
 	depends = dtc
 	depends = tk
 	depends = xz
-	depends = zephyr-sdk-cmake-modules=1.0.0
-	depends = zephyr-sdk-profile=1.0.0
-	depends = zephyr-sdk-hosttools-bin=1.0.0
-	depends = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8195_adsp_zephyr-elf-bin=1.0.0
+	depends = zephyr-sdk-cmake-modules=1.0.1
+	depends = zephyr-sdk-profile=1.0.1
+	depends = zephyr-sdk-hosttools-bin=1.0.1
+	depends = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8195_adsp_zephyr-elf-bin=1.0.1
 	optdepends = ninja
 	optdepends = make
 	optdepends = ccache
