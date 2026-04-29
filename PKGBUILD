@@ -3,7 +3,7 @@
 _pkgbase=rime-frost
 pkgname=${_pkgbase}-git
 pkgver=r336.6e8449d
-pkgrel=1
+pkgrel=3
 pkgdesc="Rime 配置：白霜词库 | 蒹葭苍苍，白露为霜。基于雾凇拼音重制的，更纯净、词频准确、智能的词库。"
 arch=("any")
 url="https://github.com/gaboolic/rime-frost"
@@ -66,7 +66,7 @@ build() {
   for _s in "${_compile_schemas[@]}"; do rime_deployer --compile "$_s.schema.yaml"; done
 
   # comment ignore schemas
-  _suggestion_schemas=$(sed -n '/^schema_list:/,/^$/ {/^schema_list:/d; /^\s*#.*$/d; /^$/d; s/.*schema:\s*//g; s/\s*#.*//g; p }' "$_suggestion")
+  _suggestion_schemas=$(sed -n '/^\s*- schema:/ { s/.*schema:\s*//; s/\s*#.*//; p }' "$_suggestion")
 
   for _s in $_suggestion_schemas; do
     if [[ ! ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]]; then
@@ -113,5 +113,9 @@ package() {
     if grep -q "${_f/.yaml/:}" build/*.schema.yaml; then
       install -Dm644 "$_f" -t "$_install_base/"
     fi
+  done
+
+  for _f in *.gram; do
+    [ -f "$_f" ] && install -Dm644 "$_f" -t "$_install_base/"
   done
 }
