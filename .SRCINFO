@@ -1,6 +1,6 @@
 pkgbase = r-cghnormaliter
 	pkgdesc = Normalization of array CGH data with imbalanced aberrations.
-	pkgver = 1.64.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CGHnormaliter
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-cghnormaliter
 	depends = r-biobase
 	depends = r-cghbase
 	depends = r-cghcall
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CGHnormaliter_1.64.0.tar.gz
-	sha256sums = 14b127a87f2eaf707af8c5890f7df7f00ce959e442414793af4401edaa736b65
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CGHnormaliter_1.66.0.tar.gz
+	sha256sums = f364f01130ff3faba79ef3b3f045cc5522a5106a333a21da718711019e4cbdbb
 
 pkgname = r-cghnormaliter
