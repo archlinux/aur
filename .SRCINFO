@@ -1,0 +1,19 @@
+pkgbase = ssh-cryptsetup
+	pkgdesc = Allows to remotely unlock LUKS-encrypted devices over SSH
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/uvns/ssh-cryptsetup
+	install = ssh-cryptsetup.install
+	arch = any
+	license = GPL3
+	depends = dropbear
+	depends = cryptsetup
+	depends = mkinitcpio-nfs-utils
+	depends = iproute2
+	depends = ethtool
+	source = ssh-cryptsetup-1.1-1.tar.xz
+	source = ssh-cryptsetup.install
+	sha256sums = bfd3e55ef8d3dd9e0b24f5b6b708a41520ee426ed980366f7ffbd12e30b5230b
+	sha256sums = b84978b3c2ef32208c2b104ee2d3ce8aaec26da0bd4e9e1c83942f373bbf6285
+
+pkgname = ssh-cryptsetup

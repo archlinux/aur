@@ -1,0 +1,39 @@
+#!/bin/bash
+
+post_install() {
+    local sshcs_env="/etc/initcpio/sshcs_env"
+    local sshcs_env_old="/etc/dropbear/initrd.env"
+    local dropbear_authorized_keys="/etc/dropbear/initrd.authorized_keys"
+    local etc_dropbear=$(dirname "${dropbear_authorized_keys}")
+    [ ! -e "${sshcs_env}" ] && [ -e "${sshcs_env_old}" ] && {
+        [ -d $(dirname "${sshcs_env}") ] || mkdir -p $(dirname "${sshcs_env}")
+        mv "${sshcs_env_old}" "${sshcs_env}"
+    cat <<EOF
+    Moved legacy file ${sshcs_env_old} to new path ${sshcs_env}"
+EOF
+    }
+    [ -d "${etc_dropbear}" ] || mkdir -p "${etc_dropbear}"
+    [ -e "${dropbear_authorized_keys}" ] || touch "${dropbear_authorized_keys}"
+    chmod 600 "${dropbear_authorized_keys}"
+
+    cat <<EOF
+    Add the SSH public key to '${dropbear_authorized_keys}'.
+    Add the 'ip=' kernel command parameter to the bootloader configuration
+    (see https://wiki.archlinux.org/index.php/Mkinitcpio#Using_net).
+    In the 'HOOKS' section of '/etc/mkinitcpio.conf', add 'ssh-cryptsetup'
+    before 'filesystems'. And rebuild the initramfs: 'mkinitcpio -p linux'
+EOF
+}
+
+post_remove() {
+    cat <<EOF
+    Remove the 'ip=' kernel command parameter from the bootloader configuration.
+    In the 'HOOKS' section of '/etc/mkinitcpio.conf', remove 'ssh-cryptsetup'.
+    And rebuild the initramfs: 'mkinitcpio -p linux'
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
