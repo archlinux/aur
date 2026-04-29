@@ -1,6 +1,6 @@
 pkgbase = mermaid-cli
-	pkgdesc = Generate images from from Mermaid files
-	pkgver = 11.12.0
+	pkgdesc = Generate images from Mermaid files
+	pkgver = 11.14.0
 	pkgrel = 1
 	url = https://github.com/mermaid-js/mermaid-cli
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = mermaid-cli
 	makedepends = npm
 	depends = nodejs
 	depends = chromium
-	noextract = mermaid-cli-11.12.0.tgz
-	source = https://registry.npmjs.org/@mermaid-js/mermaid-cli/-/mermaid-cli-11.12.0.tgz
-	sha256sums = c59e2b7ec010d7a27a45b4addcde97978c644b1e996609e39714ea52d8926837
+	noextract = mermaid-cli-11.14.0.tgz
+	source = https://registry.npmjs.org/@mermaid-js/mermaid-cli/-/mermaid-cli-11.14.0.tgz
+	sha256sums = fec919124ef10078fcf06357fcec2214a28c52260579d1aaf677cbe37e8120d8
 
 pkgname = mermaid-cli
