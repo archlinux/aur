@@ -1,0 +1,9 @@
+#!/bin/sh
+DRIVE="/dev/sr0"
+
+mpv bd:// --bluray-device="$DRIVE" --vo=null --ao=null --frames=0 2>&1 | \
+grep "idx:" | \
+fzf --header "Select a title (Enter to Play, Esc to Quit)" \
+    --reverse --height 40% \
+    --bind "enter:execute(mpv bd://{3} --bluray-device=$DRIVE)+clear-query"
+
