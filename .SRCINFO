@@ -1,13 +1,22 @@
 pkgbase = loongarch64-linux-gnu-binutils
 	pkgdesc = Assemble and manipulate binary and object files for 64-bit LoongArch
-	pkgver = 2.39
+	pkgver = 2.44
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	groups = loongarch
 	license = GPL
 	makedepends = setconf
-	source = https://github.com/yetist/binutils-gdb/releases/download/v20220807/binutils-2.39-20220807.tar.xz
-	sha256sums = e399f8e780eb1fea1ecd70117c3d188bb799eded194a58bf1fab978b9f1f94d2
+	depends = glibc
+	depends = libelf
+	depends = zlib
+	depends = libz.so
+	depends = zstd
+	depends = libzstd.so
+	source = https://ftpmirror.gnu.org/gnu/binutils/binutils-2.44.tar.bz2
+	source = https://ftpmirror.gnu.org/gnu/binutils/binutils-2.44.tar.bz2.sig
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha256sums = f66390a661faa117d00fab2e79cf2dc9d097b42cc296bf3f8677d1e7b452dc3a
+	sha256sums = SKIP
 
 pkgname = loongarch64-linux-gnu-binutils
