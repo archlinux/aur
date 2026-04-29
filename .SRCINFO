@@ -1,6 +1,6 @@
 pkgbase = splashboard-bin
 	pkgdesc = A customizable terminal splash screen with plugin-based data sources
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/unhappychoice/splashboard
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = splashboard-bin
 	depends = git
 	provides = splashboard
 	conflicts = splashboard
-	source = README-1.1.0.md::https://raw.githubusercontent.com/unhappychoice/splashboard/v1.1.0/README.md
-	source = LICENSE-1.1.0::https://raw.githubusercontent.com/unhappychoice/splashboard/v1.1.0/LICENSE
+	source = README-1.1.1.md::https://raw.githubusercontent.com/unhappychoice/splashboard/v1.1.1/README.md
+	source = LICENSE-1.1.1::https://raw.githubusercontent.com/unhappychoice/splashboard/v1.1.1/LICENSE
 	sha256sums = d1dc133758f29614f280e4bf43adc5fc46425122af5b3dc1a62440fc1a430dfe
 	sha256sums = 16e5a239e6cb767747480dfd5707228219403b7ee0b02b9ea1b1f39f8819b1d7
-	source_x86_64 = splashboard-x86_64-1.1.0.tgz::https://github.com/unhappychoice/splashboard/releases/download/v1.1.0/splashboard-v1.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b745a3c8eae0363a869901ef608ee4ef98f4b2759f855182f32d3734ba4bc21e
-	source_aarch64 = splashboard-aarch64-1.1.0.tgz::https://github.com/unhappychoice/splashboard/releases/download/v1.1.0/splashboard-v1.1.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = fa27370f483a3fb1b54df70e686a727431b3d02b931583826a63cf76a9b41c1b
+	source_x86_64 = splashboard-x86_64-1.1.1.tgz::https://github.com/unhappychoice/splashboard/releases/download/v1.1.1/splashboard-v1.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = db6f53f6181f45424b607c1fc021e057852d60c74c17fb7106bb2d2750a3bd74
+	source_aarch64 = splashboard-aarch64-1.1.1.tgz::https://github.com/unhappychoice/splashboard/releases/download/v1.1.1/splashboard-v1.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3dd808ed9849dd4c2836ed3f490ee8b982e492953ebed9f7d1b109b03c39dbda
 
 pkgname = splashboard-bin
