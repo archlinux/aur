@@ -1,0 +1,15 @@
+pkgbase = flatpak-enhanced
+	pkgdesc = A lightweight wrapper for the flatpak tool. Main feature : aliases for applications and runtimes.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JiiB1/flatpak-enhanced
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = flatpak
+	source = git+https://github.com/JiiB1/flatpak-enhanced.git?signed#tag=v0.1.0
+	validpgpkeys = 927C6C7589E345D30D71367B483D974BE8CD1C27
+	md5sums = 887c49e6282dd579d0fe22366b9af47d
+
+pkgname = flatpak-enhanced
