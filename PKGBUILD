@@ -6,15 +6,20 @@ pkgrel=1
 pkgdesc="Software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
 license=('custom')
-depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'avahi' 'dbus'
-         'e2fsprogs' 'expat' 'flac' 'gcc-libs' 'glib2' 'glibc' 'gmp' 'gnutls'
-         'keyutils' 'krb5' 'libasyncns' 'libcap' 'libcups' 'libdrm' 'libffi'
-         'libgcrypt' 'libgpg-error' 'libidn2' 'libogg' 'libp11-kit' 'libpulse'
-         'libsndfile' 'libtasn1' 'libunistring' 'libvorbis' 'libx11' 'libxau'
-         'libxcb' 'libxcomposite' 'libxdamage' 'libxdmcp' 'libxext' 'libxfixes'
-         'libxi' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxshmfence' 'lz4'
-         'mesa' 'nettle' 'nspr' 'nss' 'opus' 'pcre' 'systemd-libs'
-         'util-linux-libs' 'wayland' 'xz' 'zlib' 'zstd')
+depends=(
+         'alsa-lib' 'aom' 'at-spi2-core' 'avahi' 'brotli' 'bzip2' 'cairo' 'dav1d' 
+         'dbus' 'expat' 'ffmpeg' 'fontconfig' 'freetype2' 'fribidi' 'gdk-pixbuf2' 'glib2' 
+         'glibc' 'glycin' 'gmp' 'gnutls' 'graphite' 'gsm' 'harfbuzz' 'highway' 
+         'icu' 'lame' 'lcms2' 'leancrypto' 'libatomic' 'libcups' 'libdatrie' 'libdrm' 
+         'libffi' 'libgcc' 'libglvnd' 'libgomp' 'libidn2' 'libjxl' 'libnotify' 'libogg' 
+         'libp11-kit' 'libpng' 'librsvg' 'libseccomp' 'libsoxr' 'libstdc++' 'libtasn1' 'libthai' 
+         'libtheora' 'libunistring' 'libva' 'libvdpau' 'libvorbis' 'libvpl' 'libvpx' 'libwebp' 
+         'libx11' 'libxau' 'libxcb' 'libxcomposite' 'libxdamage' 'libxdmcp' 'libxext' 'libxfixes' 
+         'libxi' 'libxkbcommon' 'libxml2' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'mesa' 
+         'mpg123' 'nettle' 'nspr' 'nss' 'ocl-icd' 'opencore-amr' 'openjpeg2' 'opus' 
+         'pango' 'pcre2' 'pixman' 'rav1e' 'snappy' 'speex' 'svt-av1' 'systemd-libs' 
+         'util-linux-libs' 'wayland' 'x264' 'x265' 'xvidcore' 'xz' 'zlib-ng-compat'
+)
 optdepends=('libpulse')
 arch=('x86_64')
 source=("teamspeak-client-$pkgver.tar.gz::https://files.teamspeak-services.com/pre_releases/client/${pkgver/beta/-beta}/teamspeak-client.tar.gz"
