@@ -3,7 +3,7 @@
 _name=tree-sitter-verilog
 pkgname=python-tree-sitter-verilog
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Verilog grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-verilog/"
