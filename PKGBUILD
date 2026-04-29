@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GraphAlignment
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('648901bc2117e51bab5217a7cd73eaef')
-b2sums=('8d16c35ea566590c12b2e828625a77b24c32a1caaeec931f258e6df344ea863e09bfa32e52c97a5e20bdcb7a4b1a009ab83878d23b6a14eded52bc34419cb4cb')
+md5sums=('1ffa4518263c81771456bf0af694e9ed')
+b2sums=('3a60afb8f2a27cbb93b90c9dc47b200626b51b166039d34daf8f03af64686ca9eb0c2b77da1c5df4ca8f960f63511b9fb7c47fdbf1a61c34e762c96101a465dc')
 
 build() {
   mkdir build
