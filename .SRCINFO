@@ -1,6 +1,6 @@
 pkgbase = r-weaver
 	pkgdesc = Tools and extensions for processing Sweave documents
-	pkgver = 1.76.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/weaver
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-weaver
 	depends = r
 	depends = r-digest
 	optdepends = r-codetools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/weaver_1.76.0.tar.gz
-	sha256sums = 4bc3863c5aaee100f6267969e9711c7a78e2ab0ac9c1c17a6d9ab5d51bfaa745
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/weaver_1.78.0.tar.gz
+	sha256sums = 3df28c250f7c8f78452c87a964e69bfb99e4b8e2408f2b9ad03eabdfa7be22e1
 
 pkgname = r-weaver
