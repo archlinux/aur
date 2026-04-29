@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rgraphviz
-_pkgver=2.54.0
+_pkgver=2.56.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7c56d75e456cbb5772ce70e28f252b49')
-b2sums=('2826f155311934a179fac5502d84e42c3f5e36aa89cd7a4d0ea9cef90eb511a1f28ffb0664adc497e4abd322ee69bdeaeabddef593da654efa26e1cf364c05eb')
+md5sums=('420a74712ced183579a1e6f5efcc48de')
+b2sums=('cc400709324f42943f57e702796a1caeee3e4bedf0d1ee9a7529c52e99f0ab33ed1571872f76c5b3fbf53db93eb134aa14a30385a0fae62654d7642359023645')
 
 build() {
   mkdir build
