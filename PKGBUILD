@@ -2,7 +2,7 @@
 # Previous maintainer: j605
 
 pkgname=sccache-bin
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Shared compilation cache"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -14,10 +14,10 @@ source_aarch64=("https://github.com/mozilla/sccache/releases/download/v$pkgver/s
 source_armv7h=("https://github.com/mozilla/sccache/releases/download/v$pkgver/sccache-v$pkgver-armv7-unknown-linux-musleabi.tar.gz")
 source_i686=("https://github.com/mozilla/sccache/releases/download/v$pkgver/sccache-v$pkgver-i686-unknown-linux-musl.tar.gz")
 source_x86_64=("https://github.com/mozilla/sccache/releases/download/v$pkgver/sccache-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums_aarch64=('62a6c942c47c93333bc0174704800cef7edfa0416d08e1356c1d3e39f0b462f2')
-sha256sums_armv7h=('a1a687ba4717ff949a38456a20afc446956f21d6e43d8d5090f514a313d63424')
-sha256sums_i686=('ea7242d422f58300e2c32d8d19ea4ef7b602a517dc15ac84960921181bcf70d9')
-sha256sums_x86_64=('8424b38cda4ecce616a1557d81328f3d7c96503a171eab79942fad618b42af44')
+sha256sums_aarch64=('3a6a3712b49da3d263bf2d30d702de4302793016019e800bfb81c0c69401d8f8')
+sha256sums_armv7h=('c6d7171ee9216ec8035b9b639526f68d27c4a0b5e6f914ac0147d3153c3b2261')
+sha256sums_i686=('cb4a90e7da62517a6595ed438765db1a0fba933c7c91818302130902942437b3')
+sha256sums_x86_64=('782d2b5dd7ae0a55ebe368ab258114d0928d019ac2d949ab85d5d02f3926709e')
 
 
 package() {
