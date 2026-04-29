@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=2026042900.slskdn.189
+pkgver=2026042900.slskdn.190
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64' 'aarch64')
