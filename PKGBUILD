@@ -1,8 +1,8 @@
 # Maintainer: Findlay Feng <findlayfeng@gmail.com>
 
 pkgname=("zephyr-sdk-hosttools-bin" "zephyr-sdk-cmake-modules" "zephyr-sdk-profile")
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
@@ -11,8 +11,8 @@ makedepends=('python' 'patchelf')
 source=("profile-zephyr-sdk.sh" "profile-zephyr-sdk.ash")
 sha256sums=('1f7d3c7246a572964db24c0845f9534b41fcf6769688a3d1ebb46a1158d89a7e'
             '8d723658578f4cd3f8cc884f9b6d2789acd8692f3fd5de4f61c6c6a06e2a413e')
-sha256sums_x86_64=('6b69a4b54b470e3aa21cdaf95cdc808431e8ca73a7b822a33a682e5b5d2c5512')
-sha256sums_aarch64=('ee04f22d2ecb0b3be1b84b563cfb9ee425785ec81e54c81c3f68c1b520c7e8e0')
+sha256sums_x86_64=('ca9bc0ff66fafca1dac9d592a36d953cf16d096a9d09b1c0357f021cf9f6a7eb')
+sha256sums_aarch64=('d79c5bfc68e679488659bea289a4026e52a64f03338875c8c9c850fff13cee30')
 
 source_x86_64=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64_minimal.tar.xz")
 
