@@ -3,7 +3,7 @@
 _name=tree-sitter-julia
 pkgname=python-tree-sitter-julia
 pkgver=0.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Julia grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-julia/"
