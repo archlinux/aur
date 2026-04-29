@@ -1,16 +1,17 @@
 pkgbase = radiogogo
-	pkgdesc = Go-powered CLI to surf global radio waves via a sleek TUI.
-	pkgver = 0.3.2+r5+gefad593
+	pkgdesc = Go-powered CLI to surf global radio waves via a sleek TUI
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/matteo-pacini/RadioGoGo
-	arch = x86_64
 	arch = aarch64
-	arch = i686
+	arch = armv6h
 	arch = armv7h
+	arch = i686
+	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = RadioGoGo-efad593841c4f8ba8b5918763a57ac6757f9b0f2.tar.gz::https://github.com/matteo-pacini/RadioGoGo/archive/efad593841c4f8ba8b5918763a57ac6757f9b0f2.tar.gz
-	b2sums = 30ad7d8f4e8d95d4635970ed6932b52ce5628ba9b3c835abc82a9095f3974f8c5bdc84ed443e43eec1e37d45a2aeecd2dc1bab7ce9f99913befff62e8bad5e64
+	source = https://github.com/matteo-pacini/RadioGoGo/archive/refs/tags/v0.4.0/RadioGoGo-0.4.0.tar.gz
+	b2sums = c68f9826242b07fa13d86f009e8e615e4d1ce696b525c9225f7f5dbca6a1edf669d8fc32f5caa2b8191c16f566e49ffd9b692f40623650cb8a02e0134900ea83
 
 pkgname = radiogogo

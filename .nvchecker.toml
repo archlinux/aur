@@ -1,0 +1,4 @@
+[radiogogo]
+source = "git"
+git = "https://github.com/matteo-pacini/RadioGoGo.git"
+prefix = "v"
