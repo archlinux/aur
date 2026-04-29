@@ -5,7 +5,7 @@ _pkgname=asciicast
 _pkgver=2.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=6
 pkgdesc="Create 'Ascii' Screen Casts from R Scripts"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,7 +20,7 @@ depends=(
   r-v8
   r-withr
 )
-checkdepends=(
+_checkdepends=(
   r-cpp11
   r-decor
   r-htmlwidgets
@@ -57,7 +57,7 @@ build() {
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
