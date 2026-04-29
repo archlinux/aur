@@ -1,16 +1,16 @@
 pkgbase = zephyr-sdk-gnu-xtensa-intel_tgl_adsp_zephyr-elf-bin
 	pkgdesc = SDK for Zephyr real-time operating system
-	pkgver = 1.0.0
-	pkgrel = 6
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	options = !strip
-	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-intel_tgl_adsp_zephyr-elf.tar.xz
-	sha256sums_x86_64 = cff8110a92cee39d83de0abd3979387c4f7e17e996d9040c0d36f6a7423404a7
-	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-intel_tgl_adsp_zephyr-elf.tar.xz
-	sha256sums_aarch64 = 3126c3a71b6b06ca3ec12df43c2efcef575f60f60d646a13c78009b5caf39730
+	source_x86_64 = zephyr-sdk-1.0.1_toolchain_gnu_linux-x86_64_xtensa-intel_tgl_adsp_zephyr-elf.tar.xz::https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/toolchain_gnu_linux-x86_64_xtensa-intel_tgl_adsp_zephyr-elf.tar.xz
+	sha256sums_x86_64 = 3a69c82e1efbdf158b5a57cba633bff398c561fbbf1473138ed51e8ab27bbc6c
+	source_aarch64 = zephyr-sdk-1.0.1_toolchain_gnu_linux-aarch64_xtensa-intel_tgl_adsp_zephyr-elf.tar.xz::https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/toolchain_gnu_linux-aarch64_xtensa-intel_tgl_adsp_zephyr-elf.tar.xz
+	sha256sums_aarch64 = cbdbb90b038c5cfbdd0c0c175d3e295aa688bc2b4be2a3dffc5b2acf4c9710bc
 
 pkgname = zephyr-sdk-gnu-xtensa-intel_tgl_adsp_zephyr-elf-bin
 	depends = cmake
@@ -19,10 +19,10 @@ pkgname = zephyr-sdk-gnu-xtensa-intel_tgl_adsp_zephyr-elf-bin
 	depends = dtc
 	depends = tk
 	depends = xz
-	depends = zephyr-sdk-cmake-modules=1.0.0
-	depends = zephyr-sdk-profile=1.0.0
-	depends = zephyr-sdk-hosttools-bin=1.0.0
-	depends = zephyr-sdk-gnu-toolchain-xtensa-intel_tgl_adsp_zephyr-elf-bin=1.0.0
+	depends = zephyr-sdk-cmake-modules=1.0.1
+	depends = zephyr-sdk-profile=1.0.1
+	depends = zephyr-sdk-hosttools-bin=1.0.1
+	depends = zephyr-sdk-gnu-toolchain-xtensa-intel_tgl_adsp_zephyr-elf-bin=1.0.1
 	optdepends = ninja
 	optdepends = make
 	optdepends = ccache
