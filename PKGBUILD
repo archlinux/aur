@@ -1,7 +1,7 @@
 # Maintainer: Charlotte <cemetery394@gmail.com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron-neo-git
-pkgver=r28610.7b679b992
+pkgver=2026.04.27.r44.g7b679b9
 pkgrel=1
 pkgdesc="Nintendo Switch emulator fork from citron-neo (git version)"
 arch=('x86_64')
@@ -18,6 +18,11 @@ depends=(
 makedepends=(
   'git' 'cmake' 'ninja' 'python' 'boost' 'nlohmann-json'
   'qt6-tools' 'qt6-svg' 'qt6-multimedia' 'vulkan-headers'
+  'clang' 'lld' 'rapidjson' 'gamemode'
+)
+
+optdepends=(
+	'gamemode: gamemode support'
 )
 
 provides=('citron' 'citron-git' "${pkgname::-4}")
@@ -100,7 +105,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd emulator
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -161,10 +166,14 @@ build() {
     -DENABLE_QT_TRANSLATION=ON \
     -DUSE_DISCORD_PRESENCE=ON \
     -DCITRON_USE_FASTER_LD=OFF \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
-    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
-    -DTITLE_BAR_FORMAT_RUNNING="citron | ${pkgver} {}" \
-    -DTITLE_BAR_FORMAT_IDLE="citron | ${pkgver} {}" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG -flto=thin" \
+    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG -flto=thin" \
+    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
+    -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DTITLE_BAR_FORMAT_RUNNING="citron-neo | ${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_IDLE="citron-neo | ${pkgver} {}" \
     -DBUILD_ID="archlinux.org" \
     -DCITRON_TESTS=OFF
 
@@ -175,10 +184,8 @@ package() {
   cd "$srcdir"
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 dist/org.citron_emu.citron.desktop "$pkgdir/usr/share/applications/citron.desktop" 2>/dev/null || true
-  install -Dm644 dist/citron.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/citron.svg" 2>/dev/null || true
+  install -Dm644 "$srcdir/emulator/dist/72-citron-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
+  sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
+  sed -i 's/Name=citron/Name=Citron-Neo/g' "$pkgdir/usr/share/applications/org.citron_emu.citron.desktop"
 
-  if [ -f "$pkgdir/usr/bin/citron" ]; then
-    ln -sf /usr/bin/citron "$pkgdir/usr/bin/citron-neo" 2>/dev/null || true
-  fi
 }
