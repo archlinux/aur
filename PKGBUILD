@@ -1,6 +1,7 @@
 # Maintainer: r3f <r3flector@pm.me>
 
-pkgname=warp-terminal-dev
+pkgname=warp-terminal-dev-bin
+_upstream=warp-terminal-dev
 pkgver=0.2026.04.29.08.57.dev_00
 pkgrel=1
 pkgdesc="Warp, the Rust-based terminal for developers and teams (nightly/dev channel)"
@@ -27,11 +28,13 @@ optdepends=(
     'kdialog: for file dialogs in KDE'
     'org.freedesktop.secrets: for securely storing passwords'
 )
+provides=("${_upstream}=${pkgver}")
+conflicts=("${_upstream}")
 options=('!strip' '!debug')
-source=("${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://releases.warp.dev/dev/v${pkgver}/${pkgname}-v${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=("${_upstream}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://releases.warp.dev/dev/v${pkgver}/${_upstream}-v${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 sha256sums=('f489f2df36816d0107682cdf4124667647a4bcdcbd0aa6a3c9ea716df22e1348')
 
 package() {
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/${_upstream}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}"
     rm -f "${pkgdir}/.BUILDINFO" "${pkgdir}/.MTREE" "${pkgdir}/.PKGINFO"
 }
