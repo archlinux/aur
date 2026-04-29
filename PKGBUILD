@@ -2,7 +2,7 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.12.4
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=(
@@ -24,7 +24,7 @@ _pkgsrc="${pkgname}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('1c4516cd59c0ad18bc4bba8fc2c4711151dbecbc5197d063170a76f524f38f3557cd037f66ebe628ba6b4f82ebbbfa8c0c691a120ac5b2a11715bcc70952e567')
+b2sums=('29c0a26a8b6f7b8657bb5b55abeec2c4f81649b5cd8224fa6165004872916119dd25f96ea133ab160b70df12db83f1cb5093a27ce44bdf5ad0431d43adffd9bc')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -32,8 +32,6 @@ prepare() {
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
   go mod verify
-
-  mkdir -p "build"
 }
 
 build() {
@@ -44,6 +42,7 @@ build() {
   export GOCACHE="${srcdir}/go-cache"
   export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOEXPERIMENT=jsonv2
   local buildDate="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +"%Y-%m-%dT%H:%M:%SZ")"
 
   cd "${srcdir}/${_pkgsrc}"
