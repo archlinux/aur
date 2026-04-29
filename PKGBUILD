@@ -11,7 +11,6 @@ makedepends=(git cmake)
 options=()
 install=
 changelog=
-_raylib_ver=5.5
 source=(
     "${pkgname}::git+https://github.com/Stephen-Seo/mpd_info_screen2.git#tag=${pkgver}"
     "raylib-6.0.tar.gz::https://github.com/raysan5/raylib/archive/refs/tags/6.0.tar.gz"
