@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=0.25.1.slskdn.185
+pkgver=0.24.5.slskdn.186
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64')
@@ -16,9 +16,8 @@ optdepends=(
     'python: for SongID Python tooling'
     'python-torchaudio: optional enhancement for advanced Python-based fingerprint and analysis workflows in SongID'
 )
-provides=('slskd' 'slskd-bin')
+provides=('slskdn')
 conflicts=('slskd' 'slskd-bin' 'slskdN')
-replaces=('slskd' 'slskd-bin' 'slskdN')
 backup=('etc/slskd/slskd.yml')
 options=('!strip')
 install=slskd.install
