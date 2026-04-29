@@ -8,7 +8,7 @@ url="https://maplibre.org/martin/"
 
 _git_organisation=maplibre
 
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 _tag="martin-v${pkgver}"
 
@@ -52,7 +52,7 @@ source=(
     "martin-config.yaml"
 )
 b2sums=(
-    "8df0fd6f7a81e718a5a0b61f1527c5a1f83eedd0ef0a489db2d7e120e5bc85bcdd8e91137794591ff28c9dded190da398a75ecd1356f3f11414fee17f2bd2b8f"
+    "d25e8ef65aa872436ef25bf38994e09a30bbf52379b4e041ae89449a4e6ca217717502f0362b0185c1e9525a63714e7d5053fde731aa37a7faf4dc30218a7176"
     "cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968"
     "fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9"
     "c3b79402f4ae27fd46915e5aab9efb7722ccc2c1d37155119c32e59fce695b784b98bf83aa46e80f6a83756850b8794ee0752eaebd9a9001d48b0f4d5ae791ca"
@@ -73,6 +73,12 @@ build() {
     export CFLAGS=
     cargo build --frozen --release --all-features --package martin
 }
+
+# check() {
+#     cd "${srcdir}"/${pkgbase}-${_tag}
+#     export RUSTUP_TOOLCHAIN=stable
+#     cargo test --frozen
+# }
 
 package_martin() {
     cd "${srcdir}"/${pkgbase}-${_tag}
