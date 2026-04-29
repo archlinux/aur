@@ -1,0 +1,16 @@
+pkgbase = golauncher-git
+	pkgdesc = A minimalist TUI application launcher for Arch Linux (Latest Git)
+	pkgver = 0.1.0.r0.gc450ffa
+	pkgrel = 1
+	url = https://github.com/caiankeller/golauncher
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = golauncher
+	conflicts = golauncher
+	source = golauncher::git+https://github.com/caiankeller/golauncher.git
+	sha256sums = SKIP
+
+pkgname = golauncher-git
