@@ -1,0 +1,20 @@
+pkgbase = l123
+	pkgdesc = A Lotus 1-2-3–style terminal spreadsheet with modern Excel compatibility
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/duane1024/l123
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = bzip2
+	depends = fontconfig
+	depends = freetype2
+	provides = l123
+	source = l123-1.0.0.tgz::https://github.com/duane1024/l123/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = a13bf57c992f95cf174b53f700b2b7643f3ccbf1863a48c20489dfece1d127b6
+
+pkgname = l123

@@ -1,0 +1,5 @@
+[l123]
+source = "github"
+github = "duane1024/l123"
+use_latest_release = true
+prefix = "v"
