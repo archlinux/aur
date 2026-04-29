@@ -13,7 +13,7 @@ optdepends=('python-flask: web framework'
             'python-qrcode: QR code generation'
             'python-pillow: image processing')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/XONIDU/xoniter/archive/v$pkgver.tar.gz")
-sha256sums=('b703642871e2ddd3f442f0a555189df670d8df5b24a2fecb2f1b6a0054a93d52')
+sha256sums=('8c1c5f9e5fc4ca18fca8f7b2992e54e0dd4c610e3f7b412c8f3b0b1f4c037fe9')
 
 package() {
     install -d "$pkgdir/usr/share/$pkgname/templates"
@@ -31,10 +31,10 @@ python3 xoniter.py "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/$pkgname"
     
-    cat > "$pkgdir/usr/bin/xoniter-start" << 'EOF'
+    cat > "$pkgdir/usr/bin/$pkgname-start" << 'EOF'
 #!/bin/bash
 cd /usr/share/xoniter
 python3 start.py "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/xoniter-start"
+    chmod 755 "$pkgdir/usr/bin/$pkgname-start"
 }
