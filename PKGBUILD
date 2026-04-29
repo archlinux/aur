@@ -2,7 +2,7 @@
 # The project is based on archlinux-initrd-ssh-cryptsetup by suiryc.
 pkgname=ssh-cryptsetup
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows to remotely unlock LUKS-encrypted devices over SSH"
 arch=('any')
 url="https://github.com/uvns/ssh-cryptsetup"
