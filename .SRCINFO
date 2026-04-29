@@ -1,6 +1,6 @@
 pkgbase = r-cellmapper
 	pkgdesc = Predict genes expressed selectively in specific cell types
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CellMapper
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-cellmapper
 	optdepends = r-cellmapperdata
 	optdepends = r-experimenthub
 	optdepends = r-humanaffydata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellMapper_1.36.0.tar.gz
-	sha256sums = 73a99a8056e59d0db5911ac9d0d1713b5221d6fbf79e90679031d8bc70ec3c6f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellMapper_1.38.0.tar.gz
+	sha256sums = 03a1c7eb2fb4238f08424675f1d3838cba7eed1bbc1d06456fa1e2a6c6e8d8a9
 
 pkgname = r-cellmapper
