@@ -1,7 +1,7 @@
 pkgbase = citron-neo
 	pkgdesc = Nintendo Switch emulator fork from citron-neo (git version)
 	pkgver = 2026.04.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/citron-neo/emulator
 	arch = x86_64
 	license = GPL-3.0-or-later

@@ -2,7 +2,7 @@
 # Contributor: Charlotte <cemetery394@gmail.com>
 pkgname=citron-neo
 pkgver=2026.04.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator fork from citron-neo (git version)"
 arch=('x86_64')
 url="https://github.com/citron-neo/emulator"
@@ -161,8 +161,8 @@ build() {
     -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
     -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
     -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
-    -DTITLE_BAR_FORMAT_RUNNING="citron | ${pkgver} {}" \
-    -DTITLE_BAR_FORMAT_IDLE="citron | ${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_RUNNING="citron neo | ${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_IDLE="citron neo | ${pkgver} {}" \
     -DBUILD_ID="archlinux.org" \
     -DCITRON_TESTS=OFF
 
@@ -175,4 +175,8 @@ package() {
 
   #install -Dm644 dist/org.citron_emu.citron.desktop "$pkgdir/usr/share/applications/citron.desktop" 2>/dev/null || true
   #install -Dm644 dist/citron.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/citron.svg" 2>/dev/null || true
+  install -Dm644 "$srcdir/emulator/dist/72-citron-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
+  sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
+  sed -i 's/Name=citron/Name=Citron-Neo/g' "$pkgdir/usr/share/applications/org.citron_emu.citron.desktop"
+
 }
