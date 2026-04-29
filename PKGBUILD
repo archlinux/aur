@@ -3,7 +3,7 @@
 _name=tree-sitter-powershell
 pkgname=python-tree-sitter-powershell
 pkgver=0.26.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Powershell grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-powershell/"
