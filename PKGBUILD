@@ -2,7 +2,7 @@
 pkgname=fedistar-bin
 _name="${pkgname%-bin}"
 
-pkgver=1.12.7
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Multi-column Fediverse client for desktop"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('xorg-xwayland: Required for Wayland environments')
 provides=("$_name")
 conflicts=("$_name")
 source=("https://github.com/h3poteto/fedistar/releases/download/v${pkgver}/${_name}_${pkgver}_amd64.deb")
-md5sums=('466107fede8e90194310c0ab0b8c9add')
+md5sums=('bc380db1c388a86833e000521f8309f4')
 
 prepare() {
     ar x "${_name}_${pkgver}_amd64.deb"
