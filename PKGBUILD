@@ -11,7 +11,7 @@ provides=('rencal')
 conflicts=('rencal')
 options=('!debug' '!strip')
 source=("rencal-$pkgver.deb::https://github.com/t4t5/rencal/releases/download/v$pkgver/renCal_${pkgver}_amd64.deb")
-sha256sums=('118dbfca11f0670404ce553ecf59220bd6d38263165da290b8c363fa27304349')
+sha256sums=('0dba21155e859f99ad094882be2a70d64f793e95ead51adcd543fc01bf53dd36')
 
 package() {
     cd "$srcdir"
