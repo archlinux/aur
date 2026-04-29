@@ -18,6 +18,17 @@ makedepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/37/f7/35337caea29e24bb2f55d0499db53bcb879ff0eb2011e1fa567d5edab4b7/tree_sitter_swift-0.0.1.tar.gz")
 sha256sums=('d43b0baf413ba4b049f92eadc074805cb6403655c905d3af24f12fce1c9f561b')
 
+
+prepare() {
+    cd "${_name//-/_}-${pkgver}"
+    if [ ! -f src/tree_sitter/parser.h ]; then
+        mkdir -p src/tree_sitter
+        curl -sLo src/tree_sitter/parser.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.23.0/lib/src/parser.h
+        curl -sLo src/tree_sitter/alloc.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.23.0/lib/src/alloc.h
+        curl -sLo src/tree_sitter/array.h https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.23.0/lib/src/array.h
+    fi
+}
+
 build() {
     cd "${_name//-/_}-${pkgver}"
     python -m build --wheel --no-isolation
