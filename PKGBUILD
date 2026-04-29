@@ -7,6 +7,7 @@ pkgdesc="A CLI assistant for HAM"
 url="https://github.com/IRendy/komitoto"
 arch=("x86_64" "aarch64")
 license=("MIT")
+options=(!debug)
 
 makedepends=(
   'cargo'
@@ -36,6 +37,7 @@ build() {
   cd "$pkgname"
   export SQLITE3_LIB_DIR="/usr/lib"
   export SQLITE3_INCLUDE_DIR="/usr/include"
+  export RUSTFLAGS+=" --remap-path-prefix=$srcdir=/ "
   cargo build --release --locked --target-dir target
 }
 
