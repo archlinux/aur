@@ -1,0 +1,12 @@
+post_install() {
+    printf ':: Setting capabilities on /usr/bin/wg-proxy... '
+    if setcap 'cap_net_admin,cap_sys_admin+ep' /usr/bin/wg-proxy; then
+        echo -e '\e[32mOK\e[0m'
+    else
+        echo -e '\e[31mFAILED\e[0m'
+    fi
+}
+
+post_upgrade() {
+    post_install
+}

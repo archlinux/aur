@@ -1,0 +1,15 @@
+pkgbase = wg-proxy
+	pkgdesc = Per-program WireGuard tunnel
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/krant/wg-proxy
+	install = wg-proxy.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/krant/wg-proxy/archive/0.1.0/wg-proxy-0.1.0.tar.gz
+	sha512sums = adfd928fa9f9f83df638a4800e66a7d1388be925c88625eb70193e3e5a5bd57b2f9abaa61d15c4ccd145501a6c8f5fc460ab4efcf39b00b8714e6a68fa0ef354
+
+pkgname = wg-proxy
