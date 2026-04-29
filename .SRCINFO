@@ -1,0 +1,17 @@
+pkgbase = manuscript-git
+	pkgdesc = A fast, native GNOME Markdown reader and editor written in Rust
+	pkgver = r25.0a5b0d0
+	pkgrel = 1
+	url = https://gitlab.com/ilshat-apps/manuscript
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	provides = manuscript
+	conflicts = manuscript
+	options = !strip
+	options = !lto
+	source = git+https://gitlab.com/ilshat-apps/manuscript
+	sha256sums = SKIP
+
+pkgname = manuscript-git
