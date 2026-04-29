@@ -1,16 +1,16 @@
 pkgbase = zephyr-sdk-gnu-xtensa-dc233c_zephyr-elf-bin
 	pkgdesc = SDK for Zephyr real-time operating system
-	pkgver = 1.0.0
-	pkgrel = 6
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	options = !strip
-	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-dc233c_zephyr-elf.tar.xz
-	sha256sums_x86_64 = d3cc482c4b4920bbaf608224fd203254d2df352bf42b14f11b626fbabd71306a
-	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-dc233c_zephyr-elf.tar.xz
-	sha256sums_aarch64 = ecddfe400a69d8c10f30b0b18f9d86f58bad08e1e35b908ce6ee024225f276b2
+	source_x86_64 = zephyr-sdk-1.0.1_toolchain_gnu_linux-x86_64_xtensa-dc233c_zephyr-elf.tar.xz::https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/toolchain_gnu_linux-x86_64_xtensa-dc233c_zephyr-elf.tar.xz
+	sha256sums_x86_64 = d5dcce629d7cc24b1d0a367447340c1d9fbcedc0a6ed99ee105c8f1fe87060b2
+	source_aarch64 = zephyr-sdk-1.0.1_toolchain_gnu_linux-aarch64_xtensa-dc233c_zephyr-elf.tar.xz::https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.1/toolchain_gnu_linux-aarch64_xtensa-dc233c_zephyr-elf.tar.xz
+	sha256sums_aarch64 = 4331aa614b2b5b84e3595ba635a0d0422c4092662dc0e5b1aceab83486891dae
 
 pkgname = zephyr-sdk-gnu-xtensa-dc233c_zephyr-elf-bin
 	depends = cmake
@@ -19,10 +19,10 @@ pkgname = zephyr-sdk-gnu-xtensa-dc233c_zephyr-elf-bin
 	depends = dtc
 	depends = tk
 	depends = xz
-	depends = zephyr-sdk-cmake-modules=1.0.0
-	depends = zephyr-sdk-profile=1.0.0
-	depends = zephyr-sdk-hosttools-bin=1.0.0
-	depends = zephyr-sdk-gnu-toolchain-xtensa-dc233c_zephyr-elf-bin=1.0.0
+	depends = zephyr-sdk-cmake-modules=1.0.1
+	depends = zephyr-sdk-profile=1.0.1
+	depends = zephyr-sdk-hosttools-bin=1.0.1
+	depends = zephyr-sdk-gnu-toolchain-xtensa-dc233c_zephyr-elf-bin=1.0.1
 	optdepends = ninja
 	optdepends = make
 	optdepends = ccache
