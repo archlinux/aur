@@ -1,7 +1,7 @@
 # Maintainer: ced0180 <countbaster@gmail.com>
 
 pkgname=skull-shell-git
-pkgver=0.1.0.r4.g41a9834
+pkgver=0.1.0.r4.g6e5e28d
 pkgrel=1
 pkgdesc='Tiny POSIX-style shell written in C++20'
 arch=('x86_64' 'aarch64')

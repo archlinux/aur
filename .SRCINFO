@@ -1,6 +1,6 @@
 pkgbase = skull-shell-git
 	pkgdesc = Tiny POSIX-style shell written in C++20
-	pkgver = 0.1.0.r4.g41a9834
+	pkgver = 0.1.0.r4.g6e5e28d
 	pkgrel = 1
 	url = https://codeberg.org/SkullOS/skull-shell
 	install = skull-shell.install
