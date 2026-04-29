@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=calm
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2294475aedb11cf37d5cd8a3bb1c9fd2')
-b2sums=('d052a31a8e27a532ecf5e3b5424f10d74d46bd6d86dead1b7a8c637fb38647f1e63cf11aa80f2be14033ff4f7ff95a713692f4de1ba1d9422531b901e7a1547a')
+md5sums=('99f176be691a69403f3a5ac1706a66c1')
+b2sums=('a2a953d757255f6cfabf637f61dcc69dc42737cce934b7a8b4907676ba329786e4bdd909fbe872877fc05c0abe805f5c6dda0b04c3103eb89656be75053cb3a1')
 
 build() {
   mkdir build
