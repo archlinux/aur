@@ -1,7 +1,7 @@
 pkgbase = perl-xml-tiny
 	pkgdesc = simple lightweight parser for a subset of XML
 	pkgver = 2.07
-	pkgrel = 0
+	pkgrel = 1
 	url = https://metacpan.org/dist/XML-Tiny
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-2.0
