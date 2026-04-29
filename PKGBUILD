@@ -11,7 +11,7 @@ provides=('rusty_keys' 'rustykeys-bin')
 conflicts=('rusty_keys' 'rustykeys-bin')
 source=("rustykeys::${url}/releases/download/v${pkgver}/rusty_keys"
         "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/heads/main.tar.gz")
-sha256sums=('697ae5e4c2151b2788a43a96147a1a99e9e4e0272d08694e5370e50c4ec2015a'
+sha256sums=('076f2b833b6bc6b1f4c58c3c31786dadd2fc57681fbe41dd547585a28a6be946'
             '19976b37a749ac97109ba3880355963893ccd72075145a589e7dbebce9838e0d')
 
 package() {
