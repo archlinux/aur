@@ -1,0 +1,21 @@
+pkgbase = tuitify-bin
+	pkgdesc = Terminal music player
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Hemanth2332/tuitify
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	depends = vlc
+	depends = yt-dlp
+	provides = tuitify
+	conflicts = tuitify
+	source = README-0.1.md::https://raw.githubusercontent.com/Hemanth2332/tuitify/v0.1/README.md
+	source = LICENSE-0.1::https://raw.githubusercontent.com/Hemanth2332/tuitify/v0.1/LICENSE
+	sha256sums = b72178aa990fb77b68c54891f4ca36e25acdb2ae2d28a09fad4d7e23d02d8e91
+	sha256sums = 62f67d6a3de6ea61ff3b5a20d045f49a66b555f7dc904699b69d91468cc38ac9
+	source_x86_64 = tuitify-x86_64-0.1::https://github.com/Hemanth2332/tuitify/releases/download/v0.1/tuitify_linux_mac
+	sha256sums_x86_64 = 08da1bc57e665e8b0d968e876230741b8507c07cbc3a4f1ef298097baab1bb01
+
+pkgname = tuitify-bin

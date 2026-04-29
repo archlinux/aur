@@ -1,0 +1,5 @@
+[tuitify-bin]
+source = "github"
+github = "Hemanth2332/tuitify"
+use_latest_release = true
+prefix = "v"
