@@ -3,7 +3,7 @@
 _name=tree-sitter-java
 pkgname=python-tree-sitter-java
 pkgver=0.23.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Java grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-java/"
