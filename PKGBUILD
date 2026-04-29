@@ -2,14 +2,14 @@
 
 _pkgname=advancely
 pkgname=$_pkgname-git
-pkgver=r713.e30cf72
-pkgrel=2
+pkgver=r974.3865181d
+pkgrel=1
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress beyond just Advancements."
 arch=('x86_64')
 url="https://github.com/LNXSeus/Advancely"
 license=(LicenseRef-Proprietary)
 depends=(sdl3 sdl3_image sdl3_ttf curl)
-makedepends=(git cmake)
+makedepends=(git cmake python-jsonschema python-jinja)
 provides=(advancely)
 conflicts=(advancely advancely-bin)
 source=("git+$url")
