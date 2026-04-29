@@ -1,6 +1,6 @@
 pkgbase = vita-presence-rs
 	pkgdesc = Discord Rich Presence client for the PS Vita VitaPresence plugin
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/krypt0graphy/vita-presence-rs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vita-presence-rs
 	depends = gcc-libs
 	provides = vita-presence-rs
 	conflicts = vita-presence-rs-bin
-	source = vita-presence-rs-0.2.1.tar.gz::https://github.com/krypt0graphy/vita-presence-rs/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = c7409c57fc1f96eb81d7fdf793f689078b4f4213ff8d2a76af87800101d19462
+	source = vita-presence-rs-0.2.2.tar.gz::https://github.com/krypt0graphy/vita-presence-rs/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = a608d1fe74d1f08f02bb3cad6b6d84a238b68821f707e8117939f64fe2cb22db
 
 pkgname = vita-presence-rs
