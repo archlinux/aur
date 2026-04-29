@@ -1,0 +1,17 @@
+pkgbase = azure-ddns
+	pkgdesc = Dynamic DNS updater for Azure DNS (A + AAAA records)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fnrhombus/azure-ddns
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = systemd
+	optdepends = networkmanager: update-on-link-up dispatcher hook
+	backup = etc/azure-ddns.env
+	source = azure-ddns-0.1.0.tar.gz::https://github.com/fnrhombus/azure-ddns/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 66ae0f890412cdfd45f220bb4ea1ed3680145f7ad3aa3e20abc085456f24174e
+
+pkgname = azure-ddns
