@@ -11,7 +11,6 @@ pkgrel=1
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('x86_64' 'aarch64')
 
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 
@@ -52,11 +51,12 @@ package() {
 
 	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -Dm644 "docs/XLSX_IMPORT_PLAN.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
-	install -Dm644 "docs/CONFIG.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
-	install -Dm644 "docs/MENU.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
-	install -Dm644 "docs/PLAN.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
-	install -Dm644 "docs/SPEC.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 "docs/iterm-screenshot.png" -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
+	install -Dm644 "docs/XLSX_IMPORT_PLAN.md" -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
+	install -Dm644 "docs/CONFIG.md" -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
+	install -Dm644 "docs/MENU.md" -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
+	install -Dm644 "docs/PLAN.md" -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
+	install -Dm644 "docs/SPEC.md" -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
