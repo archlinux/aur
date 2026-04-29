@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=preprocessCore
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c288c12d10a9a8b02904140e08aa97bd')
-b2sums=('3528ca895487d58cb7b4d0e7d6669d7da9eb325df5db88f6806ece2ed17e5f5d83e57a6eefa9a2f5e86ccad3a1c8fc52986c0b2d1dd164175271869198147365')
+md5sums=('f7d48eb2367d5df5e980f93512a4e262')
+b2sums=('68669efe9c6bb8bbcd0f0c74ff31f1de0ff23ba9f2115f02ee32dea09a18403d5748b6165f2558596b5f4e247e4b2195412f16d3717cdb407942f76727d2f89b')
 
 build() {
   mkdir build
