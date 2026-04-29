@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel gmail>
 pkgname=meridian
 pkgver=1.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your Claude Max subscription with OpenCode, OpenClaw, Pi, Droid, Aider, Crush, Cline."
 arch=(any)
 url="https://github.com/rynfar/meridian"
@@ -23,7 +23,7 @@ package() {
   cd "$srcdir/$pkgname-${pkgname}-v${pkgver}"
 
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -a dist node_modules package.json "${pkgdir}/usr/lib/${pkgname}/"
+  cp -a dist plugin node_modules package.json "${pkgdir}/usr/lib/${pkgname}/"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/usr/lib/${pkgname}/dist/cli.js" "$pkgdir/usr/bin/${pkgname}"
