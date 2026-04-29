@@ -15,6 +15,7 @@ pkgbase = hypr-wallpaper-git
 	optdepends = kitty: terminal for the TUI (any terminal works)
 	provides = hypr-wallpaper
 	conflicts = hypr-wallpaper
+	options = !lto
 	source = git+https://github.com/jaehho/hypr-tools.git
 	sha256sums = SKIP
 

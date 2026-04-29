@@ -14,6 +14,10 @@ optdepends=(
     'kitty: terminal for the TUI (any terminal works)'
 )
 makedepends=('git' 'rust' 'cargo')
+# rusqlite's bundled sqlite is built via cc-rs; with makepkg's default
+# -flto=auto, GCC emits LTO IR-only objects and rust-lld can't consume
+# them, producing undefined sqlite3_* at link time.
+options=('!lto')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
