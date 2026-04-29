@@ -1,6 +1,6 @@
 pkgbase = r-opweight
 	pkgdesc = Optimal p-value weighting with independent information
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OPWeight
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-opweight
 	optdepends = r-rmarkdown
 	optdepends = r-scales
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OPWeight_1.32.0.tar.gz
-	sha256sums = 632ee35f5d6f19b29387092c2cb9c49ac710b4233b01b73a528ab5f6c3d82393
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OPWeight_1.34.0.tar.gz
+	sha256sums = 1e96537dacb14ed77ff037ee6a1b30e0a6d8ed7f701dc4382a71584e5db1be2f
 
 pkgname = r-opweight
