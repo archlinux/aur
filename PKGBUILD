@@ -3,7 +3,7 @@
 
 pkgname=openai-codex-desktop
 pkgver=26.422.30944
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
@@ -57,16 +57,21 @@ prepare() {
 
   bsdtar -xf "Codex.zip" -C "${srcdir}/dmg"
 
-  icon_icns="$(find dmg -path '*/Contents/Resources/*.icns' ! -path '*/__MACOSX/*' ! -name '._*' | head -n1)"
-  mkdir -p icon
-  icns2png -x -o icon "${icon_icns}"
-
   local appdir
   appdir="$(find dmg -maxdepth 4 -type d -name '*.app' ! -path '*/__MACOSX/*' | head -n1)"
   [[ -n "${appdir}" ]] || {
     echo "Could not find .app bundle in Codex archive"
     return 1
   }
+
+  local icon_icns
+  icon_icns="$(find "${appdir}/Contents/Resources" -maxdepth 1 -type f -name '*.icns' ! -name '._*' -print -quit)"
+  [[ -n "${icon_icns}" ]] || {
+    echo "Could not find application icon in ${appdir}"
+    return 1
+  }
+  mkdir -p icon
+  icns2png -x -o icon "${icon_icns}"
 
   npx --yes asar extract \
     "${appdir}/Contents/Resources/app.asar" \
@@ -146,7 +151,16 @@ package() {
   install -Dm755 codex-desktop.sh \
     "${pkgdir}/usr/bin/codex-desktop"
 
-  install -Dm644 icon/*512x512*.png \
+  local icon_png
+  icon_png="$(find icon -maxdepth 1 -type f -name '*512x512*.png' -print -quit)"
+  [[ -n "${icon_png}" ]] ||
+    icon_png="$(find icon -maxdepth 1 -type f -name '*.png' -print | sort -V | tail -n1)"
+  [[ -n "${icon_png}" ]] || {
+    echo "Could not find an application icon to package"
+    return 1
+  }
+
+  install -Dm644 "${icon_png}" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/openai-codex-desktop.png"
 
   install -Dm644 Codex.desktop \

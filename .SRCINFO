@@ -1,7 +1,7 @@
 pkgbase = openai-codex-desktop
 	pkgdesc = OpenAI Codex desktop app
 	pkgver = 26.422.30944
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developers.openai.com/codex/app/
 	arch = x86_64
 	license = custom
