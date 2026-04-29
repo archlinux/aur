@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DynDoc
-_pkgver=1.88.0
+_pkgver=1.90.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9261437d03e5f20eb32119508ad4a8c4')
-b2sums=('5405ed9cb674bcbcbbd119c68a95833d1767f23e5216ce76663ac5d6b0aff1e401de5a0e77d855a1a574ebc95180214719b5456740d77711ab82f73f573e3b9d')
+md5sums=('6c584666eea5d0e5f49d93cef628d34c')
+b2sums=('c96066b9791f9e77f942c12b1948e47befe81179f176251c02dc7eaed925be904fca26ea8b696e53f069683a611779601e39c9e848b2b9e198b697addfdd777c')
 
 build() {
   mkdir build
