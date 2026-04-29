@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proteinProfiles
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a5a059eef8570cccaf6e3a815ddd0f72')
-b2sums=('0a445f62621cb2fd36d2a95fec1075023ebaa4dec61cfa5474c4328fa30a9205e016cc25cfcbc0d72af92a779d10bd75e6ea64ba7521a7afe35724da1cdf956e')
+md5sums=('2a2a5d52c7a978b2bc64c87dfd90dc38')
+b2sums=('235ffbc9276fbffabda6e58e6d1f64b76acf16556e55424539acc217d83e6b86731380efc604aafce4bd6640e701d013b4a517ee51d36a7e81e570c2b7404553')
 
 build() {
   mkdir build
