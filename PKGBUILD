@@ -3,19 +3,19 @@
 # Source package - builds from source
 
 pkgname=fresh-editor
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
 license=("GPL-2.0-only")
 arch=('x86_64' 'aarch64')
 depends=("gcc-libs" "glibc")
-makedepends=("cargo" "clang" "lld")
+makedepends=("cargo" "clang")
 provides=("fresh-editor")
 conflicts=("fresh-editor-bin")
 options=('!debug')
 source=("fresh-editor-${pkgver}-source.tar.gz::https://github.com/sinelaw/fresh/releases/download/v${pkgver}/fresh-editor-${pkgver}-source.tar.gz")
-sha256sums=("11a878d1170f04eecd15e203e4a9a7df2367c55c881aa4f9508614917d4cacd9")
+sha256sums=("b2872954f5404a4e14bc36e0c6cd69cb04803b8ed8e4a19e416005513a7cb4c2")
 
 prepare() {
     cd "fresh-$pkgver"
@@ -26,10 +26,6 @@ build() {
     cd "fresh-$pkgver"
     export CARGO_TARGET_DIR=target
     export CC=clang
-    # Use system lld so the linker matches system clang's LLVM version.
-    # Otherwise rust-lld (bundled with the pinned rustc, currently LLVM 21)
-    # cannot read LTO bitcode emitted by a newer system clang.
-    export RUSTFLAGS="${RUSTFLAGS} -C linker=clang -C link-arg=-fuse-ld=lld"
     cargo build --locked --release
 }
 
