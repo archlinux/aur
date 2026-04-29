@@ -41,4 +41,4 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('887c49e6282dd579d0fe22366b9af47d')
+md5sums=('60a4fa16c4cf34e992e3b4d7879444bb')
