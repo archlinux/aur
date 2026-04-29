@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export VITE_WORKSPACE_BASE_URL="${VITE_WORKSPACE_BASE_URL:-https://workspace.sipgate.com}"
+
 compare_versions() {
   local VERSIONA=${1%%.*} VERSIONB=${2%%.*}
 

@@ -4,7 +4,7 @@ pkgname=sipgate
 pkgdesc="sipgate App - Telephony desktop application for sipgate customers"
 pkgver=2.36.2
 _distfile="sipgate-${pkgver}-amd64.deb"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://sipgate.de/app"
 license=('LicenseRef-custom')
@@ -20,7 +20,7 @@ source=(
 noextract=("${_distfile}")
 b2sums=(
 	'a432b3a622d3304159838b5f7b2202c3c85fe6cb3a9149f44ac16dbc1bde59d06fc8d3cc8e6b5cd5b4f80e216a6e373489c465a3a5d9d79001eea3a2109b373c'
-	'c9bc2f241256f04ea1f30fc6a79af35927054d09541ab37f96a8374dc1c96cebddf3774d8a9c9fa39cd9f031cde559f670dddc040b815c1106945f7f7e4d4cad'
+	'825df4ee333207915ad1089e25bb752f8699a60f32006366e7c603e5e918e2166ac3b0b3e7a4a02c6c3dc41e026b18cade0b886a029adb0078bc114715a9a853'
 )
 
 pkgver() {
@@ -51,4 +51,8 @@ package() {
 		"${pkgdir}/opt/sipgate/run-sipgate-desktop.sh"
 	ln -s "/opt/sipgate/run-sipgate-desktop.sh" \
 		"${pkgdir}/usr/bin/sipgate-desktop"
+
+	# patch .desktop file to launch via the wrapper so VITE_WORKSPACE_BASE_URL is set
+	sed -i 's|^Exec=/opt/sipgate/sipgate-desktop|Exec=/opt/sipgate/run-sipgate-desktop.sh|' \
+		"${pkgdir}/usr/share/applications/sipgate-desktop.desktop"
 }
