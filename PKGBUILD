@@ -2,7 +2,7 @@
 
 pkgname="zephyr-sdk-bin"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
@@ -11,8 +11,8 @@ license=('Apache')
 provides=('zephyr-sdk')
 conflicts=('zephyr-sdk')
 depends+=('cmake' 'gperf' 'dfu-util' 'dtc' 'tk' 'xz'
-  "zephyr-sdk-gnu-bin=${pkgver}"
-  "zephyr-sdk-llvm-bin=${pkgver}"
+  "zephyr-sdk-gnu-bin>=${pkgver}"
+  "zephyr-sdk-llvm-bin>=${pkgver}"
 )
 optdepends=('ninja' 'make' 'ccache' 'python-pyelftools'
           'pyocd: programming and debugging ARM MCUs'
