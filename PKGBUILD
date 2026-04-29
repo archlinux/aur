@@ -19,10 +19,10 @@ _url_pypi='https://pypi.org/project/ssh-crypt/'
 url="${_url_github}"
 
 provides=("${_pypi_package}")
-replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
+
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
-depends=('bash' 'python' 'python-argcomplete' 'python-pyperclip' 'python-rich' 'python-textual' 'python-typing_extensions' 'python-unidiff' 'ansible-core' 'python-ensurepath')
+depends=('python' 'python-cryptography' 'python-paramiko')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 sha256sums=('c6af598c2e6c9d0183a7c71658dc7c8e9d513be9d3d7a27b829ff4c4debacf88')
