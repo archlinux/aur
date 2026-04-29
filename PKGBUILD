@@ -4,7 +4,7 @@
 _pkgname=twitch-cli
 pkgname=$_pkgname-git
 pkgver=1.1.25.r8.fd7dac6
-pkgrel=1
+pkgrel=2
 pkgdesc='The official Twitch CLI to make developing on Twitch easier'
 arch=(x86_64)
 url=https://github.com/twitchdev/twitch-cli
@@ -28,8 +28,9 @@ build() {
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS"
-    export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
-    make build
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    _ldflags="-s -w -X main.buildVersion=$pkgver -linkmode external -extldflags '$LDFLAGS'"
+    go build -ldflags "$_ldflags" .
 }
 
 package() {
