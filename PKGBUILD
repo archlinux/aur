@@ -1,9 +1,9 @@
 # Maintainer: Artemy Fedotov <catlovescpp@gmail.com>
 
 pkgname=sjconv-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="A simple standalone convolver for JACK."
+pkgdesc="A simple command-line convolver for JACK."
 arch=('x86_64')
 url="https://github.com/fstxz/sjconv"
 license=('MIT')
@@ -12,7 +12,7 @@ options=('!strip')
 provides=('sjconv')
 conflicts=('sjconv')
 source=("https://github.com/fstxz/sjconv/releases/download/v${pkgver}/sjconv-v${pkgver}-linux-x86_64.zip")
-sha256sums=('9c4a41a9aa1c77d4a745d3f18d7613d25bf7a77c4541ccfb29d79dd1e276ecc8')
+sha256sums=('970dc7ca4ddf8f74b25bcf7fead567e16e26667d69b58fe89790ee1651e442ed')
 
 package() {
     install -Dm755 "sjconv" "${pkgdir}/usr/bin/sjconv"
