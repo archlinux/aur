@@ -1,7 +1,7 @@
 pkgbase = python-pytorch-cuda12.9
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)
 	pkgver = 2.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD-3-Clause-Modification
@@ -11,7 +11,6 @@ pkgbase = python-pytorch-cuda12.9
 	makedepends = doxygen
 	makedepends = gcc14
 	makedepends = git
-	makedepends = magma-cuda
 	makedepends = nccl-cuda12.9
 	makedepends = ninja
 	makedepends = onednn
@@ -182,7 +181,6 @@ pkgname = python-pytorch-cuda12.9
 	depends = cuda-12.9
 	depends = nccl-cuda12.9
 	depends = cudnn9.10-cuda12.9
-	depends = magma-cuda
 	depends = onednn
 	provides = python-pytorch=2.11.0
 	provides = python-pytorch-cuda=2.11.0
@@ -220,7 +218,6 @@ pkgname = python-pytorch-opt-cuda12.9
 	depends = cuda-12.9
 	depends = nccl-cuda12.9
 	depends = cudnn9.10-cuda12.9
-	depends = magma-cuda
 	depends = onednn
 	provides = python-pytorch=2.11.0
 	provides = python-pytorch-cuda=2.11.0

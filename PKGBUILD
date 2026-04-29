@@ -10,7 +10,7 @@ pkgname=("${pkgbase}" "python-${_pkgname}-opt-cuda12.9")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -52,7 +52,6 @@ makedepends=(
   doxygen
   gcc14
   git
-  magma-cuda
   nccl-cuda12.9
   ninja
   onednn
@@ -274,7 +273,6 @@ _prepare() {
   export USE_GLOG=ON
   export USE_VULKAN=ON
   export USE_OBSERVERS=ON
-  export USE_MAGMA=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
   # USE_SYSTEM_ONNX=ON does not work and onnx itself should be removed from pytorch: https://github.com/pytorch/pytorch/issues/166546#issuecomment-3463370459
   export USE_NCCL=ON
@@ -337,7 +335,6 @@ build() {
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
-  export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   cd "${srcdir}/${_pkgname}-cuda"
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
@@ -347,7 +344,6 @@ build() {
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
-  export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   _prepare
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
@@ -382,7 +378,7 @@ _package() {
 
 package_python-pytorch-cuda12.9() {
   pkgdesc+=" (with CUDA 12.9)"
-  depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 magma-cuda onednn)
+  depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver})
 
@@ -392,7 +388,7 @@ package_python-pytorch-cuda12.9() {
 
 package_python-pytorch-opt-cuda12.9() {
   pkgdesc+=" (with CUDA 12.9 and AVX2 CPU optimizations)"
-  depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 magma-cuda onednn)
+  depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver} python-pytorch-cuda12.9=${pkgver})
 
