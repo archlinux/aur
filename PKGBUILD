@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Summix
-_pkgver=2.14.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a8b21a6734047ccbce3eed6f0d3ce961')
-b2sums=('cecea815e561d7751cdd1ab4f7c445f07508091085dd48fa3d60e8779e9f59d475567b5f62bcb00514e1d1eb4d34bd3a86b4c9e137ab749f0413378876f21970')
+md5sums=('682491fe14c9c743b2d49c5daa28e968')
+b2sums=('c96090663cd0221f8075dad107bcb6f4b4ae8750b534696e1e5f050d0e4931a19fd6350ff6c12973f9a3b6117b3ff8336ea1abfc91c251104d973a10937ecfed')
 
 build() {
   mkdir build
