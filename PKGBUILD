@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Blazingly fast, AI-powered terminal with modern UX"
 arch=(x86_64 aarch64)
 url="https://www.warp.dev"
-license=(Proprietary)
+license=(AGPL)
 
 depends=("fuse2")
 options=(!strip !debug)
