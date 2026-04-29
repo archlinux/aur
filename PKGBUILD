@@ -1,5 +1,5 @@
 pkgname=ultrapaper
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="GTK4 GUI for hyprpaper (Hyprland wallpaper management)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('hyprland: provides hyprctl command (required)'
 makedepends=('rust' 'cargo' 'git' 'pkgconf' 'gobject-introspection' 'glib2' 'gtk4' 'cairo' 'pango' 'gdk-pixbuf2')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 		"ultrapaper.desktop")
-sha256sums=('4d36b9203374641cae86a20989675485d20c43b2991740aaa0a0b7209287259f'
+sha256sums=('6630caaa0c25a1c3338a49a8ce7364c90e8641f4a5841b266867eb889a9e633e'
             'c3231c3690c1b509ee5b4cd1d83e1dc826ddd115e7b64130ba6cce8c1ffe83b9')
 options=('!strip')
 build() {
