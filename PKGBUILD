@@ -15,7 +15,7 @@ makedepends=(
   'sqlite'
 )
 depends=('gcc-libs' 'sqlite')
-source=("git+$url.git#branch=main")
+source=("git+$url.git#tag=v0.1.0")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -53,7 +53,5 @@ package() {
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-  install -Dm644 -t "$pkgdir/usr/share/$pkgname/" \
-    "hamradio-zones-geojson-main/cqzones.geojson" \
-    "hamradio-zones-geojson-main/ituzones.geojson"
+  install -Dm644 -t "$pkgdir/usr/share/$pkgname/"     "hamradio-zones-geojson-main/cqzones.geojson"     "hamradio-zones-geojson-main/ituzones.geojson"
 }
