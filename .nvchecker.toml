@@ -1,0 +1,5 @@
+[splashboard-bin]
+source = "github"
+github = "unhappychoice/splashboard"
+use_latest_release = true
+prefix = "v"
