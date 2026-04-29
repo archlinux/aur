@@ -6,7 +6,7 @@ _pyname=${_pname}
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 # "python-${_pname}-doc")
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Statistical computation and diagnostics for ArviZ."
 arch=('any')
@@ -33,7 +33,7 @@ checkdepends=('python-pytest'
               'python-einops')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/arviz-devs/arviz-stats/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('4708cccfb095ace55810241102313cff')
+md5sums=('9175f749ab4ae49aef5900dfaf3914fa')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -55,7 +55,7 @@ package_python-arviz-stats() {
     depends=('python>=3.12'
              'python-numpy>=2'
              'python-scipy>=1.13')
-    optdepends=('python-arviz-base>=1.0'
+    optdepends=('python-arviz-base>=1.1'
                 'python-xarray-einstats'
                 'python-xarray>=2024.11.0')
 #               'python-arviz-stats-doc: Documentation for arviz-base')

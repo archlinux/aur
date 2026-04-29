@@ -1,6 +1,6 @@
 pkgbase = python-arviz-stats
 	pkgdesc = Statistical computation and diagnostics for ArviZ.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://python.arviz.org/projects/stats
 	arch = any
@@ -15,13 +15,13 @@ pkgbase = python-arviz-stats
 	makedepends = python-flit-core>=3.4
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://github.com/arviz-devs/arviz-stats/archive/refs/tags/v1.0.0.tar.gz
-	md5sums = 4708cccfb095ace55810241102313cff
+	source = https://github.com/arviz-devs/arviz-stats/archive/refs/tags/v1.1.0.tar.gz
+	md5sums = 9175f749ab4ae49aef5900dfaf3914fa
 
 pkgname = python-arviz-stats
 	depends = python>=3.12
 	depends = python-numpy>=2
 	depends = python-scipy>=1.13
-	optdepends = python-arviz-base>=1.0
+	optdepends = python-arviz-base>=1.1
 	optdepends = python-xarray-einstats
 	optdepends = python-xarray>=2024.11.0
