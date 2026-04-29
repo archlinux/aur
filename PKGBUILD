@@ -1,9 +1,18 @@
 # Maintainer: r3f <r3flector@pm.me>
+#
+# This package is built from upstream main HEAD (OSS channel — no Sentry / no internal config).
+# Because pkgver is computed at build time, paru/yay in normal mode WILL NOT notice new
+# commits to main and will not offer updates. To receive fresh builds, enable devel mode:
+#   paru -Syu --devel               (one-shot)
+# or in ~/.config/paru/paru.conf:
+#   [bin]
+#   Devel = true                    (persistent)
+# yay equivalent: `yay -Syu --devel`.
 
 pkgname=warp-terminal-git
 _srcname=warp
 pkgver=0.2026.04.29.08.56.preview_00.r1.g3f0ac51
-pkgrel=1
+pkgrel=2
 pkgdesc="Warp, the Rust-based terminal for developers and teams (built from source, OSS channel)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/warpdotdev/warp'
@@ -34,14 +43,16 @@ makedepends=(
     'brotli'
     'jq'
     'cargo-about'
+    'mold'
 )
 optdepends=(
     'zenity: for file dialogs in Gnome'
     'kdialog: for file dialogs in KDE'
     'org.freedesktop.secrets: for securely storing passwords'
 )
-provides=('warp-terminal-oss')
+provides=("warp-terminal-oss=${pkgver}")
 options=('!lto' '!debug')
+install="${pkgname}.install"
 source=("${_srcname}::git+https://github.com/warpdotdev/warp.git")
 sha256sums=('SKIP')
 
@@ -59,7 +70,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_srcname}"
-    # Используем системный rust (1.95+) вместо запиненного rustup-toolchain (1.92).
+    # Use the system rust (1.95+) instead of the rustup toolchain pinned upstream (1.92).
     rm -f rust-toolchain.toml
 }
 
@@ -67,7 +78,9 @@ build() {
     cd "${srcdir}/${_srcname}"
     export CARGO_TARGET_DIR="${srcdir}/target"
     export CARGO_HOME="${srcdir}/cargo-home"
-    export RUSTFLAGS="--remap-path-prefix=${srcdir}=/build ${RUSTFLAGS:-}"
+    # Override system RUSTFLAGS instead of appending: avoids portability-breaking
+    # flags like `-C target-cpu=native` (CachyOS) and conflicting linker choices.
+    export RUSTFLAGS="-C opt-level=3 -C link-arg=-fuse-ld=mold --remap-path-prefix=${srcdir}=/build"
     export CFLAGS+=" -ffile-prefix-map=${srcdir}=/build"
     export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=/build"
     cargo build \
@@ -82,28 +95,28 @@ package() {
     local opt_dir="/opt/warpdotdev/${pkgname}"
     cd "${srcdir}/${_srcname}"
 
-    # Бинарник.
+    # Binary.
     install -Dm755 "${srcdir}/target/release/warp-oss" \
         "${pkgdir}${opt_dir}/warp-oss"
 
-    # Bundled-ресурсы (skills, fonts и т. п.). Лицензии и settings schema —
-    # генерируются опционально, скипаем чтобы не плодить лишние cargo-вызовы.
+    # Bundled resources (skills, fonts, etc). Licenses and the settings schema
+    # are generated optionally; skip them to avoid extra cargo invocations.
     SKIP_SETTINGS_SCHEMA=1 NO_LICENSES=1 \
         ./script/prepare_bundled_resources \
         "${pkgdir}${opt_dir}/resources" \
         oss
 
-    # .desktop и иконка из OSS-канала.
+    # .desktop entry and icon from the OSS channel.
     install -Dm644 "app/channels/oss/dev.warp.WarpOss.desktop" \
         "${pkgdir}/usr/share/applications/dev.warp.WarpOss.desktop"
     install -Dm644 "app/channels/oss/icon/no-padding/512x512.png" \
         "${pkgdir}/usr/share/icons/hicolor/512x512/apps/dev.warp.WarpOss.png"
 
-    # Перепишем Exec в .desktop'е, чтобы запускалось через /usr/bin/${pkgname}.
+    # Rewrite Exec= so the menu entry launches via /usr/bin/${pkgname}.
     sed -i "s|^Exec=.*|Exec=/usr/bin/${pkgname} %U|" \
         "${pkgdir}/usr/share/applications/dev.warp.WarpOss.desktop"
 
-    # Launcher: подхватывает ~/.config/${pkgname}-flags.conf, как делает upstream.
+    # Launcher: picks up ~/.config/${pkgname}-flags.conf, mirroring upstream.
     install -d "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/bash
@@ -115,7 +128,7 @@ exec ${opt_dir}/warp-oss \$WARP_USER_FLAGS "\$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
-    # Лицензии.
+    # Licenses.
     install -Dm644 LICENSE-AGPL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-AGPL"
     install -Dm644 LICENSE-MIT  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
