@@ -3,7 +3,7 @@
 _name=tree-sitter-swift
 pkgname=python-tree-sitter-swift
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Swift grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-swift/"
