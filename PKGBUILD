@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=COSNet
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c7fd4e60608e702f5ce248bfa224de04')
-b2sums=('f8c19beaa4289bd416597896330a1e94dc497c642ddf0621c5087957b2a26fd74491ead7ba791f90a629540f49541acaf85ca6cc623daab032f3cad97a956933')
+md5sums=('2884f950d7f702e50dbf65fede384485')
+b2sums=('b0fd6b03da3aeb5af7a6e64291c900d9c7c3c9f24264b191d22f94cafbfabb4971d5a8c8e576659350ec742ebc4505ad209bf021821fa6f49dee4c22e40041d7')
 
 build() {
   mkdir build
