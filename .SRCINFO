@@ -23,6 +23,7 @@ pkgbase = yass-proxy-cli
 	depends = c-ares
 	depends = gperftools
 	depends = jsoncpp
+	depends = mbedtls
 	provides = yass-proxy-cli
 	conflicts = yass-proxy-cli-git
 	source = https://github.com/hukeyue/yass/releases/download/1.24.3/yass-1.24.3.tar.zst
