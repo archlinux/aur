@@ -1,8 +1,8 @@
 # Maintainer: Renat Gorbushin <lis@lis314.ru>
 # Contributor: Lolle2000la
 pkgname=amd-container-toolkit
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Offers tools that streamline the use of AMD GPUs with containers."
 arch=('x86_64')
 url="https://github.com/ROCm/container-toolkit"
@@ -11,7 +11,7 @@ depends=('docker')
 makedepends=('go' 'git')
 _srcname=container-toolkit
 source=("${pkgname}-${pkgver}.tar.gz"::https://github.com/ROCm/container-toolkit/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('1b4a07f4775aa4538db28c5340c1b917355d3ff3c4a427ddeb349368271e4cf1')
+sha256sums=('4eadb33b77ac93be19dd33175d3bb669badf84ca618cb84e9b9f97f7505ba1be')
 
 prepare() {
     mkdir -p "${srcdir}/${_srcname}-${pkgver}/bin/deb"
