@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=matchBox
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ddc92c5cb4bb447720b6a4058209ce25')
-b2sums=('81269aaf93739ae02939b36d66d9f94173df305f973c12c3386a077d164dd8e03d3663ba3512e93ba3919aff37afb30b1469dcbad075bfe09aa02026b2b6d420')
+md5sums=('f556dd37da931a0ce2a93f072be81045')
+b2sums=('b67397c44f0aff8fcda3091866b9c0f22308ffc3e545bced5bfd034c3f670a92be7ea068e9394384144cacc49c2491896d3332bb27f851f69ff83d9da8d7e1c2')
 
 build() {
   mkdir build
