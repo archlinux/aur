@@ -11,16 +11,15 @@ license=("MIT")
 makedepends=(
   'cargo'
   'git'
+  'sqlite'
 )
-depends=()
+depends=('sqlite')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  CC="cc"
-  LDFLAGS="-lsqlite3"
-  cargo build --release --locked
+  RUSTFLAGS="-l sqlite3:static" cargo build --release --target-dir target
 }
 
 check() {
