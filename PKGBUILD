@@ -1,6 +1,6 @@
 # Maintainer: lostmason <lostmason@tutamail.com>
 pkgname=infinipaint
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Infinite canvas with infinite zoom for collaborative sketching"
 arch=('x86_64' 'aarch64')
@@ -52,7 +52,7 @@ makedepends=(
 )
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a15ae1b2948d4db42df7f6f04bab678ddfe33ba0c73c24cd8d4b93e9e16919a7')
+sha256sums=('2213118223e72c57de333ad47491bd9bca68ad11c5f32ae478853f2e41e81f23')
 
 prepare() {
     export CONAN_HOME="${srcdir}/.conan"

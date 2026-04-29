@@ -1,6 +1,6 @@
 pkgbase = infinipaint
 	pkgdesc = Infinite canvas with infinite zoom for collaborative sketching
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/ErrorAtLine0/infinipaint
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = infinipaint
 	depends = libxss
 	depends = libxxf86vm
 	options = !strip
-	source = infinipaint-0.4.1.tar.gz::https://github.com/ErrorAtLine0/infinipaint/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = a15ae1b2948d4db42df7f6f04bab678ddfe33ba0c73c24cd8d4b93e9e16919a7
+	source = infinipaint-0.4.3.tar.gz::https://github.com/ErrorAtLine0/infinipaint/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = 2213118223e72c57de333ad47491bd9bca68ad11c5f32ae478853f2e41e81f23
 
 pkgname = infinipaint
