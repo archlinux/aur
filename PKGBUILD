@@ -3,17 +3,16 @@
 _target_arch=loongarch
 _target=loongarch64-linux-gnu
 pkgname=$_target-linux-api-headers
-pkgver=5.19.0
-_pkgdate=20220709
+pkgver=6.19
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace ($_target)"
 arch=(any)
 url='https://www.kernel.org'
-license=(GPL2)
+license=(GPL-2.0-only)
 groups=(loongarch)
 makedepends=('rsync')
-source=("https://github.com/yetist/linux/releases/download/v${_pkgdate}/linux-${pkgver}-${_pkgdate}.tar.xz")
-md5sums=('0e020a57877af14f8f793e53417394cd')
+source=(https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz)
+sha256sums=('303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357')
 
 build() {
   cd "linux-$pkgver"
@@ -24,5 +23,5 @@ build() {
 package() {
   cd "linux-$pkgver"
 
-  make INSTALL_HDR_PATH="$pkgdir/usr/$_target/" ARCH=$_target_arch V=1 headers_install
+  make INSTALL_HDR_PATH="$pkgdir/usr/$_target/" ARCH=$_target_arch V=0 headers_install
 }

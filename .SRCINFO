@@ -1,13 +1,13 @@
 pkgbase = loongarch64-linux-gnu-linux-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace (loongarch64-linux-gnu)
-	pkgver = 5.19.0
+	pkgver = 6.19
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = any
 	groups = loongarch
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = rsync
-	source = https://github.com/yetist/linux/releases/download/v20220709/linux-5.19.0-20220709.tar.xz
-	md5sums = 0e020a57877af14f8f793e53417394cd
+	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.19.tar.xz
+	sha256sums = 303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357
 
 pkgname = loongarch64-linux-gnu-linux-api-headers
