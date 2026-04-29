@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethylMix
-_pkgver=2.40.0
+_pkgver=2.42.0
 pkgname=r-${_pkgname,,}
-pkgver=2.40.0
+pkgver=2.42.0
 pkgrel=1
 pkgdesc='MethylMix: Identifying methylation driven cancer genes'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1b5f7e981b75d80f1c09458d27b88182dfa9bbf1d5e5a655e66734db24c2b5f1')
+sha256sums=('16ae33ac5d0b512ed98a03127976ee742fb3988443df8ab183f0242b0fd36da9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
