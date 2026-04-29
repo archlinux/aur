@@ -1,6 +1,6 @@
 pkgbase = r-derfinderhelper
 	pkgdesc = derfinder helper package
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/derfinderHelper
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-derfinderhelper
 	optdepends = r-rmarkdown
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/derfinderHelper_1.44.0.tar.gz
-	sha256sums = 769e5efad0664ca023e9e8fa0a073572b8da78019df905f0fcfdc799b3c6ef5e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/derfinderHelper_1.46.0.tar.gz
+	sha256sums = 5751996f928527b1dfd3b6c88ee529b2ded964faf323b90525e1bca8dda1c8a4
 
 pkgname = r-derfinderhelper
