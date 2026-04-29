@@ -1,6 +1,6 @@
 pkgbase = r-alabaster.schemas
 	pkgdesc = Schemas for the Alabaster Framework
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/alabaster.schemas
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-alabaster.schemas
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.schemas_1.10.0.tar.gz
-	md5sums = 8d1caf02385b413a86ba8e068723b977
-	b2sums = b5bd746a078abfed371d6910e3ec78b9c6ff144858d956aae63a469b73bcf20755a59a214387088a6483609d6b7f04892f3fe54976aa8ca732415632f4d077cd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.schemas_1.12.0.tar.gz
+	md5sums = c6981826bbd1b1962d25ff63e77ae545
+	b2sums = dc137761799cd7395eeb07c1bb866de5cb3adbeed7b126344bdfd365bff9fb6e625cb99be091e28d014005f717cf0ba338126297de49bfac0312f7ba96a746fe
 
 pkgname = r-alabaster.schemas
