@@ -1,19 +1,20 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 # Contributor: zneix <zneix@zneix.eu>
 
-pkgname=twitch-cli-git
+_pkgname=twitch-cli
+pkgname=$_pkgname-git
 pkgver=r224.b779fcf
 pkgrel=1
-pkgdesc='The official Twitch CLI to make developing on Twitch easier, git version'
-arch=('x86_64')
+pkgdesc='The official Twitch CLI to make developing on Twitch easier'
+arch=(x86_64)
 url=https://github.com/twitchdev/twitch-cli
-license=('Apache')
-depends=()
-makedepends=('go' 'git')
-provides=('twitch-cli')
-conflicts=('twitch-cli-bin')
-source=("twitch-cli::git+https://github.com/twitchdev/twitch-cli.git")
-sha256sums=('SKIP')
+license=(Apache-2.0)
+
+provides=($_pkgname)
+conflicts=($_pkgname)
+makedepends=(git go)
+source=(git+$url)
+sha512sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/twitch-cli"
