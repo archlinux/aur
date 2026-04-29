@@ -1,21 +1,21 @@
-# Maintainer: killruana <killruana@gmail.com>
+# Maintainer: aisuneko icecat <iceneko@protonmail.ch>
 pkgname=qrouter
-pkgver=1.4.59
+pkgver=1.4.90
 pkgrel=1
-epoch=
 pkgdesc='Multi-level, over-the-cell maze router'
 arch=('i686' 'x86_64')
 url='http://opencircuitdesign.com/qrouter/'
 license=('GPL')
 depends=('tk')
-source=("${url}/archive/${pkgname}-${pkgver}.tgz")
+source=("https://github.com/RTimothyEdwards/qrouter/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    # Solve undefined symbol in qrouter.so
+    sed -i '/static GATE/{N;s/static GATE\nFindGateNode/GATE\nFindGateNode/}' delays.c
     ./configure \
-        --prefix=/usr \
-        --with-libdir=/usr/share/qrouter
+        --prefix=/usr
     make
 }
 
