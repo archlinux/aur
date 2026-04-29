@@ -18,9 +18,6 @@ depends=(
 )
 makedepends=(
     'cargo'
-    'pkgconf'
-    'cmake'
-    'nodejs'
     'clang'
     'patchelf'
 )
