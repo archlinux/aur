@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=massiR
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='massiR: MicroArray Sample Sex Identifier'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f899c9dd899c972b1319959142cf835f1b7b1f6204130c5f77bdb78848a3ff35')
+sha256sums=('c3c7b23267450b6ac790c2352b9f23bf163a732d8d7d5cfdb5006e334728cd74')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
