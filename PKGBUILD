@@ -13,9 +13,9 @@ depends=(
     'python-pillow'
     'python-mutagen'
     'python-pypdf2'
-    'python-python-docx'
+    'python-docx'            # <--- CORRECTO
     'python-openpyxl'
-    'python-python-pptx'
+    'python-pptx'            # <--- CORRECTO
     'python-exifread'
     'python-reportlab'
 )
