@@ -1,0 +1,12 @@
+pkgbase = ventoyisomanager-bin
+	pkgdesc = Ventoy ISO Manager - A tool for easily managing the ISO files you've downloaded
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Dilial/VentoyISOManager
+	arch = x86_64
+	license = MIT
+	noextract = ventoyisomanager_1.1.0_amd64.AppImage
+	source = https://github.com/Dilial/VentoyISOManager/releases/download/v1.1.0/ventoyisomanager_1.1.0_amd64.AppImage
+	sha256sums = 7bb68aa201785a99b50d313ec2c629ffd6a410573b382e9fc0f3ccefda88c899
+
+pkgname = ventoyisomanager-bin
