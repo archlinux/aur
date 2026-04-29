@@ -1,6 +1,6 @@
 pkgbase = r-hiergwas
 	pkgdesc = Asessing statistical significance in predictive GWA studies
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hierGWAS
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-hiergwas
 	optdepends = r-biocgenerics
 	optdepends = r-mass
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hierGWAS_1.40.0.tar.gz
-	sha256sums = cb7608dce535cc46cd8974b37e4c16eaaa93386de6ae97a429ccf6073dbba850
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hierGWAS_1.42.0.tar.gz
+	sha256sums = db072cc2ac398b1ddd38d70844129460998beddb97d801a152ca30b89136a2b1
 
 pkgname = r-hiergwas
