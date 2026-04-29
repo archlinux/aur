@@ -1,7 +1,7 @@
 pkgbase = llvm-bolt-bin
 	pkgdesc = Post-link optimizer developed to speed up large applications
 	pkgver = 22.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/llvm/llvm-project/tree/llvmorg-22.1.4/bolt
 	arch = x86_64
 	license = Apache-2.0 WITH LLVM-exception
@@ -12,6 +12,8 @@ pkgbase = llvm-bolt-bin
 	depends = libstdc++
 	depends = zlib
 	noextract = LLVM-22.1.4-Linux-X64.tar.xz
+	options = !debug
+	options = !strip
 	source = https://github.com/llvm/llvm-project/raw/refs/tags/llvmorg-22.1.4/LICENSE.TXT
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.4/LLVM-22.1.4-Linux-X64.tar.xz
 	sha256sums = 8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee

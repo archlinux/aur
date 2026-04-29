@@ -1,7 +1,7 @@
 # Maintainer: Koutheir Attouchi <koutheir@gmail.com>
 pkgname=llvm-bolt-bin
 pkgver=22.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Post-link optimizer developed to speed up large applications'
 url="https://github.com/llvm/llvm-project/tree/llvmorg-${pkgver}/bolt"
 license=('Apache-2.0 WITH LLVM-exception')
@@ -11,7 +11,7 @@ makedepends=('libarchive' 'xz')
 checkdepends=()
 optdepends=()
 backup=()
-options=()
+options=(!debug !strip)
 install=
 source=("https://github.com/llvm/llvm-project/raw/refs/tags/llvmorg-${pkgver}/LICENSE.TXT"
         "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/LLVM-${pkgver}-Linux-X64.tar.xz")
