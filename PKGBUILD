@@ -1,6 +1,6 @@
 # Maintainer: Witek Adamus <witekadamus@gmail.com>
 pkgname=nv-monitor
-pkgver=1.7.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Local monitoring TUI, CSV logger, and Prometheus exporter for NVIDIA GPU systems"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('ncurses')
 makedepends=('gcc')
 optdepends=('nvidia: For GPU monitoring support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6c5625f68ba5e9a75dbd0af4ddac41bc27d49c5c97b13e17213d0377ced705c1')
+sha256sums=('9b0342507deb9f3359655af08c10acadd388f5bebb3a9305bf3a6d2bc2ac9ccf')
 
 build() {
   cd "$pkgname-$pkgver"
