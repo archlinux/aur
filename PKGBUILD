@@ -3,7 +3,7 @@
 _name=tree-sitter-scala
 pkgname=python-tree-sitter-scala
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scala grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-scala/"
