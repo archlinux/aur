@@ -3,7 +3,7 @@
 _name=tree-sitter-kotlin
 pkgname=python-tree-sitter-kotlin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kotlin grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-kotlin/"
