@@ -1,0 +1,18 @@
+pkgbase = lash-shell-bin
+	pkgdesc = Dual-grammar shell and scripting language with debugger, LSP, and monitor
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://lash.szabobogdan.com/
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = lash
+	provides = lash-shell
+	conflicts = lash
+	conflicts = lash-shell
+	options = !strip
+	options = !debug
+	source = https://gitlab.com/szabobogdan3/lash/-/releases/v0.12.0/downloads/lash-shell-0.12.0-1-x86_64.pkg.tar.zst
+	sha256sums = be8529ed16b4f18a05d82548d8c3e311741aff7cf3462f988376df63c67afb5f
+
+pkgname = lash-shell-bin
