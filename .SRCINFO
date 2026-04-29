@@ -1,0 +1,12 @@
+pkgbase = fairy-stockfish-xiangqi-nnue
+	pkgdesc = Xiangqi NNUE neural network for Fairy-Stockfish
+	pkgver = 20251105
+	pkgrel = 1
+	url = https://github.com/fairy-stockfish/Fairy-Stockfish-NNUE
+	arch = any
+	license = GPL-3.0-or-later
+	options = !strip
+	source = https://github.com/fairy-stockfish/Fairy-Stockfish-NNUE/raw/master/xiangqi-c07e94a5c7cb.nnue
+	sha256sums = c07e94a5c7cbeae443ed79a8fa412875d833a7f8e04333815e39729c59d52e11
+
+pkgname = fairy-stockfish-xiangqi-nnue
