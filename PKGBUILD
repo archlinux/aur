@@ -41,3 +41,4 @@ package() {
   # 4. 安装许可证
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+# Trigger AUR update
