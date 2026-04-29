@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RDRToolbox
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.62.0
 pkgrel=1
 pkgdesc='A package for nonlinear dimension reduction with Isomap and LLE.'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-golubesets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec700af3d291e6040d4f095abd5d420605bf7fda51976ab29c905d7f22e58bef')
+sha256sums=('fafd56124918158cf2ad2b3e9b34b0bbab4025d3d2c529c25ca4f666644e6ec8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
