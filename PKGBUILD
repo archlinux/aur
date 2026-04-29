@@ -4,7 +4,7 @@ pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=1.10.5
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=2
+pkgrel=3
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="https://www.xnview.com/en/xnviewmp/"
 
@@ -93,6 +93,9 @@ package() {
   ln -s /usr/lib/libwebp.so "${pkg_opt_dir}/Plugins/libwebp.so"
   ln -s /usr/lib/libOpenEXR.so "${pkg_opt_dir}/Plugins/libOpenEXR.so"
   ln -s /usr/lib/libopenjp2.so "${pkg_opt_dir}/Plugins/openjp2.so"
+  # This seems to be a custom library that links against libjxl and is required
+  # for opening JPEG XL images, use it as-is.
+  install -D -m644 "Plugins/libJPEGXL.so" -t "${pkg_opt_dir}/Plugins"
 
   # Using the system libraw doesn't seem to work (assertion failure in libc when
   # attempting to view a RAW file), use the one provided.
