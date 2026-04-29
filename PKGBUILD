@@ -2,7 +2,7 @@
 
 pkgname=betcon
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sports betting management"
 url="http://betcon.eduardoparra.es"
 arch=('x86_64')
