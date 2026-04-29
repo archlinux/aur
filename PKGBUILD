@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinydashboardPlus
-_pkgver=2.0.5
+_pkgver=2.0.6
 pkgname=r-${_pkgname,,}
-pkgver=2.0.5
-pkgrel=1
+pkgver=2.0.6
+pkgrel=2
 pkgdesc="Add More 'AdminLTE2' Components to 'shinydashboard'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-styler
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0bc34cd75f6df1d9c6cb8e7e98e18c5c9c4f739ef54c8d79462597dd1cf3a3cc')
+sha256sums=('2681d51d08639aba38e38c14346397f9712696acb762edc017f6c07f8341a038')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
