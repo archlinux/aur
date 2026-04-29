@@ -1,13 +1,13 @@
 # Maintainer: Keith Connolly <streek@mesaro.com>
 pkgname=go-weather
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Console-based weather application"
 arch=('x86_64' 'aarch64')
 url="https://github.com/streek/go-weather"
 license=('GPL3')
 depends=()
-makedepends=('go')
+makedepends=('go>=1.21')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
