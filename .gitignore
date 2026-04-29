@@ -1,0 +1,11 @@
+rkik
+pkg
+src
+*~
+*.bin
+*.md
+*.old
+*.pkg.tar.zst
+*.sh
+*.template
+namcap.txt

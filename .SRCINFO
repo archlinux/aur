@@ -1,18 +1,17 @@
 pkgbase = rkik-git
 	pkgdesc = Rusty Klock Inspection Kit: simple NTP/NTS client (development version)
-	pkgver = 2.0.0.r0.ge5249f1
-	pkgrel = 2
+	pkgver = 2.2.0.r0.gbd9eaf1
+	pkgrel = 1
 	url = https://github.com/aguacero7/rkik
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	provides = rkik
 	conflicts = rkik
-	options = !lto
 	source = git+https://github.com/aguacero7/rkik.git
 	sha256sums = SKIP
 
