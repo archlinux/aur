@@ -1,0 +1,5 @@
+src/
+pkg/
+skull-shell/
+*.pkg.tar.*
+*.src.tar.*
