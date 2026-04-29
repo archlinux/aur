@@ -1,6 +1,6 @@
 pkgbase = r-beaddatapackr
 	pkgdesc = Compression of Illumina BeadArray data
-	pkgver = 1.62.0
+	pkgver = 1.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BeadDataPackR
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = r-beaddatapackr
 	depends = r
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BeadDataPackR_1.62.0.tar.gz
-	md5sums = 6a02231bae47780f26f0f0c753188d35
-	b2sums = 737543c2f0952ba29232f855e7363d983c3ab35c36c7d85f374e1dcd663beca2d4eaa90427becc240f2f0586db1e1b1ca6a6c01d5c31d406a9c72efce9725c8a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BeadDataPackR_1.64.0.tar.gz
+	md5sums = a6ce93a264202066d8b96bb3ad3ebb67
+	b2sums = 22c6ba4d1c3ca71d2eb60b1fb69f91c444e9741aa7e9416db029489d5edd6397c987592a1b65bd627942aa77d990637565506578b2a4be7af169f13b3d9e4353
 
 pkgname = r-beaddatapackr
