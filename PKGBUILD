@@ -3,7 +3,7 @@
 _name=tree-sitter-lua
 pkgname=python-tree-sitter-lua
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-lua/"
