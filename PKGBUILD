@@ -2,7 +2,7 @@
 # #Somos XONIDU
 
 pkgname=xoniter
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Lightweight web-based remote command executor for headless Linux systems"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python-flask: web framework'
             'python-qrcode: QR code generation'
             'python-pillow: image processing')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/XONIDU/xoniter/archive/v$pkgver.tar.gz")
-sha256sums=('b703642871e2ddd3f442f0a555189df670d8df5b24a2fecb2f1b6a0054a93d52')
+sha256sums=('5635c433c7905f03f79ac86843b65ea86bd3f71580223b0b86d0abb80f06aa53')
 
 package() {
     install -d "$pkgdir/usr/share/$pkgname/templates"

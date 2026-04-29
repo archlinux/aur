@@ -1,6 +1,6 @@
 pkgbase = xoniter
 	pkgdesc = Lightweight web-based remote command executor for headless Linux systems
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/XONIDU/xoniter
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = xoniter
 	optdepends = python-flask: web framework
 	optdepends = python-qrcode: QR code generation
 	optdepends = python-pillow: image processing
-	source = xoniter-1.0.0.tar.gz::https://github.com/XONIDU/xoniter/archive/v1.0.0.tar.gz
-	sha256sums = 8c1c5f9e5fc4ca18fca8f7b2992e54e0dd4c610e3f7b412c8f3b0b1f4c037fe9
+	source = xoniter-1.0.1.tar.gz::https://github.com/XONIDU/xoniter/archive/v1.0.1.tar.gz
+	sha256sums = 5635c433c7905f03f79ac86843b65ea86bd3f71580223b0b86d0abb80f06aa53
 
 pkgname = xoniter
