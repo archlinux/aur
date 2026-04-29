@@ -3,7 +3,7 @@
 _name=tree-sitter-elixir
 pkgname=python-tree-sitter-elixir
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Elixir grammar for tree-sitter"
 arch=('any')
 url="https://pypi.org/project/tree-sitter-elixir/"
