@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iSEEindex
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=5
 pkgdesc="iSEE extension for a landing page to a custom collection of data sets"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -34,8 +34,8 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1eebe6478ce84cd14d9ee12be9d17968')
-b2sums=('93311daf54c65ad25a2e61589e7659c09a37a4b648907e3fa5c514da3356b21a8731fdf51a3e241bbb21404247cc8c74775bb41e0ad56b32675c2d70f8889202')
+md5sums=('c8826a870015f12a9b5804a5514090c5')
+b2sums=('83640481bde24e8a363edf778baa75ccc83b3539d8cd9eaeff46571d45ba133516b9f6e6fda89468e8033368069fa161736151c4d0fc072a88c383cb84c2b03c')
 
 build() {
   mkdir build
