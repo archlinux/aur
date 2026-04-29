@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=jdwp-mcp-git
-pkgver=r22.7f41d94
+pkgver=r23.6777051
 pkgrel=1
 pkgdesc="MCP server enabling LLMs to debug Java applications via JDWP protocol"
 arch=('x86_64')
