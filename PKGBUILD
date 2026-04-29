@@ -2,8 +2,8 @@
 
 pkgname=python-jlcpcb-search-mcp
 _name=${pkgname#python-}
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="MCP server for searching JLCPCB components with live stock and pricing"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -26,7 +26,7 @@ makedepends=(
     'python-wheel')
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('cbc779a8d7d3c489dcf3442e710469a5272e55c308ff1f6e832510ab71cd6b9a')
+sha256sums=('2b378e832fc9680f904eaf6030fbd4040338a91a98dfb184a8f4f3557176f356')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

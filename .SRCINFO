@@ -1,7 +1,7 @@
 pkgbase = python-jlcpcb-search-mcp
 	pkgdesc = MCP server for searching JLCPCB components with live stock and pricing
-	pkgver = 1.1.4
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/peterb154/jlcpcb-search-mcp
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-jlcpcb-search-mcp
 	depends = python-requests
 	provides = python-jlcpcb-search-mcp
 	conflicts = python-jlcpcb-search-mcp
-	source = jlcpcb-search-mcp::git+https://github.com/peterb154/jlcpcb-search-mcp.git#tag=v1.1.4
-	sha256sums = cbc779a8d7d3c489dcf3442e710469a5272e55c308ff1f6e832510ab71cd6b9a
+	source = jlcpcb-search-mcp::git+https://github.com/peterb154/jlcpcb-search-mcp.git#tag=v1.2.0
+	sha256sums = 2b378e832fc9680f904eaf6030fbd4040338a91a98dfb184a8f4f3557176f356
 
 pkgname = python-jlcpcb-search-mcp
