@@ -1,6 +1,6 @@
 pkgbase = r-convert
 	pkgdesc = Convert Microarray Data Objects
-	pkgver = 1.86.0
+	pkgver = 1.88.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/convert
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-convert
 	depends = r-biobase
 	depends = r-limma
 	depends = r-marray
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/convert_1.86.0.tar.gz
-	sha256sums = 681d4d5a817d6b2133c685323398074f67f25878537f2b3db9cd91ebad186978
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/convert_1.88.0.tar.gz
+	sha256sums = ebcbc7d786bfa922beb4b00d3c01a63ce4da140bcb8705d1d0b3ae9bf72b0bae
 
 pkgname = r-convert
