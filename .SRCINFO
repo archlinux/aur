@@ -1,6 +1,6 @@
 pkgbase = r-les
 	pkgdesc = Identifying Differential Effects in Tiling Microarray Data
-	pkgver = 1.60.0
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/les
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-les
 	optdepends = r-biobase
 	optdepends = r-limma
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/les_1.60.0.tar.gz
-	sha256sums = 51799bbe2347c38654d04c7b8669c724785eb127ca2829ed1470c6e7e272c59a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/les_1.62.0.tar.gz
+	sha256sums = e8916726a2bd29845ccd93f26d37181e11baeca9a5092f957252d11f929d8f7e
 
 pkgname = r-les
