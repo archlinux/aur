@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=appmanager
 _app_id=com.github.AppManager
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="MacOS style AppImage installer and management application"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
 )
 optdepends=('appimage-thumbnailer: generate thumbnails for AppImages')
 source=("AppManager-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c450a09b7bcd6681fffd2ab7f9089b27c49f1c6a1956cfede3ee53c365ddaf04')
+sha256sums=('f04feb74037ef1cb3f490242b1f2c398e0e7bd1dc6020648952fd791e8b2c1a6')
 
 build() {
   arch-meson "AppManager-$pkgver" build \
