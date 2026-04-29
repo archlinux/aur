@@ -1,17 +1,11 @@
-diff --git a/src/blur.cpp b/src/blur.cpp
-index 7bf7881..3902eb2 100644
---- a/src/blur.cpp
-+++ b/src/blur.cpp
-@@ -599,10 +599,19 @@ void BlurEffect::prePaintWindow(RenderView *view, EffectWindow *w, WindowPrePain
+diff -ruN a/src/blur.cpp b/src/blur.cpp
+--- a/src/blur.cpp	2026-03-17 02:57:56.000000000 +0800
++++ b/src/blur.cpp	2026-04-29 11:17:04.022385910 +0800
+@@ -599,10 +599,14 @@
  
      const QRegion oldOpaque = data.opaque;
      if (data.opaque.intersects(m_currentDeviceBlur)) {
 -        // to blur an area partially we have to shrink the opaque area of a window
-+        // to blur an area partially we have to shrink the opaque area of a window.
-+        // However, for windows that are only force-blurred (did not request blur
-+        // themselves), shrinking the opaque region by m_expandSize pixels creates
-+        // a visible transparent border that makes the blur cover the window content.
-+        // Skip shrinking for such windows since the blur is invisible behind opaque areas.
 +        const bool onlyForceBlurred = m_windowManager.windowIsOnlyForceBlurred(w);
          QRegion newOpaque;
          for (const QRect &rect : data.opaque) {
@@ -24,14 +18,11 @@ index 7bf7881..3902eb2 100644
          }
          data.opaque = newOpaque;
  
-@@ -639,10 +648,17 @@ void BlurEffect::prePaintWindow(RenderView *view, EffectWindow *w, WindowPrePain
+@@ -639,10 +643,14 @@
  
      const Region oldOpaque = data.deviceOpaque;
      if (data.deviceOpaque.intersects(m_currentDeviceBlur)) {
 -        // to blur an area partially we have to shrink the opaque area of a window
-+        // to blur an area partially we have to shrink the opaque area of a window.
-+        // Skip shrinking for force-blurred-only windows (see the KWIN_VERSION < 6.5.80
-+        // branch above for a detailed comment).
 +        const bool onlyForceBlurred = m_windowManager.windowIsOnlyForceBlurred(w);
          Region newOpaque;
          for (const Rect &rect : data.deviceOpaque.rects()) {
@@ -44,16 +35,12 @@ index 7bf7881..3902eb2 100644
          }
          data.deviceOpaque = newOpaque;
  
-@@ -676,9 +692,15 @@ void BlurEffect::prePaintWindow(RenderView *view, EffectWindow *w, WindowPrePain
+@@ -676,9 +684,11 @@
      m_paintedDeviceArea += data.devicePaint;
  #endif
  
 -    // BBDX change
-+    // BBDX change:
-+    // blurred windows should be painted translucent to avoid issues with repainting.
-+    // However, for windows that are only force-blurred (did not request blur themselves),
-+    // marking them fully translucent causes the compositor to treat opaque window content
-+    // as transparent, resulting in the blur visually covering the entire window.
++    // BBDX change: don't mark force-blurred-only windows as translucent
      if (!blurArea.isEmpty()) {
 -        data.mask |= Effect::PAINT_WINDOW_TRANSLUCENT;
 +        if (!m_windowManager.windowIsOnlyForceBlurred(w)) {
@@ -62,57 +49,51 @@ index 7bf7881..3902eb2 100644
      }
  }
  
-diff --git a/src/window.cpp b/src/window.cpp
-index a2543af..e655545 100644
---- a/src/window.cpp
-+++ b/src/window.cpp
-@@ -287,6 +287,34 @@ bool BBDX::Window::neverForceBlur() const {
+@@ -705,6 +715,17 @@
+     }
+     m_windowManager.setWindowIsTransformed(w, false);
+ 
++    // For windows that are only force-blurred (didn't request blur themselves),
++    // skip blur rendering when the window is fully opaque. Opaque force-blurred
++    // windows (Wine apps, Electron apps) have no visible transparency, so the
++    // blur behind them is either invisible or bleeds through content-level alpha,
++    // producing a "frosted glass cover" over the entire window.
++    if (m_windowManager.windowIsOnlyForceBlurred(w)) {
++        if (qFuzzyCompare(w->opacity(), 1.0)) {
++            return false;
++        }
++    }
++
+     return true;
+ }
+ 
+diff -ruN a/src/window.cpp b/src/window.cpp
+--- a/src/window.cpp	2026-03-17 02:57:56.000000000 +0800
++++ b/src/window.cpp	2026-04-29 11:17:04.022460710 +0800
+@@ -287,6 +287,13 @@
          && (layer == KWin::Layer::OverlayLayer || layer == KWin::Layer::ActiveLayer))
          return true;
  
-+    // Tooltips are too small for blur and don't provide useful opaque regions,
-+    // causing them to be fully covered by the blur effect.
-+    if (effectwindow()->isTooltip())
-+        return true;
-+
-+    // Notifications and critical notifications must remain readable;
-+    // blur makes them illegible or completely covers them.
-+    if (effectwindow()->isNotification() || effectwindow()->isCriticalNotification())
-+        return true;
-+
-+    // On-screen displays (volume/brightness popups etc.) should stay clear.
-+    if (effectwindow()->isOnScreenDisplay())
-+        return true;
-+
-+    // ComboBox dropdown lists are too small and opaque;
-+    // force blur creates a visible halo around them.
-+    if (effectwindow()->isComboBox())
-+        return true;
-+
-+    // Drag-and-drop icons have no meaningful background to blur.
-+    if (effectwindow()->isDNDIcon())
-+        return true;
-+
-+    // Splash screens are opaque and short-lived; blurring them
-+    // produces a jarring flash at application startup.
-+    if (effectwindow()->isSplash())
-+        return true;
++    if (effectwindow()->isTooltip()) return true;
++    if (effectwindow()->isNotification() || effectwindow()->isCriticalNotification()) return true;
++    if (effectwindow()->isOnScreenDisplay()) return true;
++    if (effectwindow()->isComboBox()) return true;
++    if (effectwindow()->isDNDIcon()) return true;
++    if (effectwindow()->isSplash()) return true;
 +
      // don't touch KWin internal windows
      // this includes the snapping assistant zones
      // and they don't handle blur well at all
-@@ -322,6 +350,10 @@ void BBDX::Window::reconfigure() {
+@@ -322,6 +329,8 @@
  void BBDX::Window::getFinalBlurRegion(std::optional<KWin::Region> &content, std::optional<KWin::Region> &frame) {
      unsigned int oldBlurOriginMask = m_blurOriginMask;
  
-+    // Record whether the window requested blur BEFORE any force-blur override.
-+    // This is used by isOnlyForceBlurred() to decide rendering behavior.
 +    m_windowSelfRequestedBlur = content.has_value() || frame.has_value();
 +
      // If we already have a blur region at this point
      // the window requested it.
      // This tracker allows us to later decide if we want
-@@ -583,6 +615,10 @@ bool BBDX::Window::isMenu() const {
+@@ -583,6 +592,10 @@
              || effectwindow()->isPopupWindow());
  }
  
@@ -123,69 +104,52 @@ index a2543af..e655545 100644
  namespace BBDX {
  QDebug operator<<(QDebug &debug, const BBDX::Window &window) {
      debug << "\n";
-diff --git a/src/window.hpp b/src/window.hpp
-index 09f63b4..49fb8cd 100644
---- a/src/window.hpp
-+++ b/src/window.hpp
-@@ -79,6 +79,11 @@ private:
+diff -ruN a/src/window.hpp b/src/window.hpp
+--- a/src/window.hpp	2026-03-17 02:57:56.000000000 +0800
++++ b/src/window.hpp	2026-04-29 11:17:04.022422717 +0800
+@@ -79,6 +79,9 @@
      bool m_isFullScreen{false};
      bool m_isMinimized{false};
  
 +    // track whether window originally requested blur itself
-+    // (before any force-blur override is applied).
-+    // Used to decide if the opaque region should be preserved.
 +    bool m_windowSelfRequestedBlur{false};
 +
      // track whether window is currently being transformed
      bool m_isTransformed{false};
  
-@@ -184,6 +189,13 @@ public:
+@@ -184,6 +187,8 @@
       */
      bool isMenu() const;
  
-+    /**
-+     * Whether this window is ONLY force-blurred (did not request blur itself).
-+     * Used to decide rendering behavior: force-blurred opaque windows should
-+     * not have their opaque region shrunk, as the blur is invisible behind them.
-+     */
 +    bool isOnlyForceBlurred() const;
 +
      /**
       * operator to facilitate logging of windows
       */
-diff --git a/src/window_manager.cpp b/src/window_manager.cpp
-index 2b69319..f5d454b 100644
---- a/src/window_manager.cpp
-+++ b/src/window_manager.cpp
-@@ -253,6 +253,16 @@ bool BBDX::WindowManager::windowShouldBlurWhileTransformed(const KWin::EffectWin
+diff -ruN a/src/window_manager.cpp b/src/window_manager.cpp
+--- a/src/window_manager.cpp	2026-03-17 02:57:56.000000000 +0800
++++ b/src/window_manager.cpp	2026-04-29 11:17:04.022524825 +0800
+@@ -253,6 +253,13 @@
      return window->shouldBlurWhileTransformed();
  }
  
 +bool BBDX::WindowManager::windowIsOnlyForceBlurred(const KWin::EffectWindow *w) const {
 +    const auto window = findWindow(w);
-+
-+    // assume false for unmanaged windows
 +    if (!window)
 +        return false;
-+
 +    return window->isOnlyForceBlurred();
 +}
 +
  void BBDX::WindowManager::getFinalBlurRegion(const KWin::EffectWindow *w, std::optional<KWin::Region> &content, std::optional<KWin::Region> &frame) const {
      const auto window = findWindow(w);
      if (!window)
-diff --git a/src/window_manager.hpp b/src/window_manager.hpp
-index cf18c19..8d572b3 100644
---- a/src/window_manager.hpp
-+++ b/src/window_manager.hpp
-@@ -124,6 +124,12 @@ public:
+diff -ruN a/src/window_manager.hpp b/src/window_manager.hpp
+--- a/src/window_manager.hpp	2026-03-17 02:57:56.000000000 +0800
++++ b/src/window_manager.hpp	2026-04-29 11:17:04.022486831 +0800
+@@ -124,6 +124,8 @@
       */
      bool windowShouldBlurWhileTransformed(const KWin::EffectWindow *w) const;
  
-+    /**
-+     * Check if this window is ONLY force-blurred (did not request blur itself).
-+     * Such windows may be opaque and should not have their opaque region shrunk.
-+     */
 +    bool windowIsOnlyForceBlurred(const KWin::EffectWindow *w) const;
 +
      /**
