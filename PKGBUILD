@@ -3,8 +3,8 @@
 # Contributor: envolution
 
 pkgname=llama.cpp
-pkgver=b8981 # renovate: datasource=github-releases depName=ggml-org/llama.cpp
-pkgrel=6
+pkgver=b8984 # renovate: datasource=github-releases depName=ggml-org/llama.cpp
+pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -19,6 +19,7 @@ makedepends=(
   cmake
   git
   shaderc
+  ninja
 )
 optdepends=(
   'python-numpy: needed for convert_hf_to_gguf.py'
@@ -41,18 +42,19 @@ source=(
   'sysusers.conf'
   'tmpfiles.conf'
 )
-sha256sums=('8efb12d269074741eac9f0db751c1e31dbfb24e12764e31c220b72d935f5f846'
+sha256sums=('a943b6f94791b0bc6c75f7f9ffc1bec6e04d146a4c02e78cf5a438b513cd8e7f'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '48d6b261315c9175b4b4cea4900bd4d76f2f27112804934db656537485510cd2'
-            'fbb8ed942adfe3722bb46ec18b95c2e0320c087dcf996d29a14e4b5587093994'
-            '8b7e4ba31a27a27c611d94b8ec99a39eaea0e8ef2afaea53f06795d950fc346d'
-            '4730d43503457ac393770df1beb4a740b1bfaa7f6eadd0f5f9920309af7155d7')
+            '408fe723cad63c09df47d79c12188617132b0beb74270ae3c0d5071539a46e99'
+            'e687106ee9f6a5f0de4f286015f85a60e68d884e8100c67810b709960c354148'
+            '402a44f609785fbabc7afca6e8a486ff517933661e9e7f4955fed6574eac9875')
 
 prepare() {
   ln -sf "${pkgname}-${pkgver}" llama.cpp
 }
 build() {
   local _cmake_options=(
+    -G Ninja
     -B build
     -S "${pkgname}"
     -DCMAKE_BUILD_TYPE=Release

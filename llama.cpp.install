@@ -1,18 +1,19 @@
 post_install() {
   echo ":: llama.cpp now runs as a dedicated unprivileged user."
+  echo ":: NOTE: Model files must now be accessible by the llama-cpp user."
+  echo ":: Previously stored models in your home folder need to be moved to:"
+  echo "   /var/lib/llama-cpp/"
+  echo ":: To move your existing models:"
+  echo "   sudo mv ~/path/to/your/models/* /var/lib/llama-cpp"
+  echo "   sudo chown -R llama-cpp:llama-cpp /var/lib/llama-cpp"
   echo ":: To allow your user to access the API socket:"
   echo "   sudo usermod -aG llama-cpp \$USER"
   echo "   (Log out and back in for group changes to apply)"
 }
 
-post_upgrade() {
-  if [ -d /var/lib/llama-cpp ] && [ "$(stat -c '%U' /var/lib/llama-cpp 2>/dev/null)" = "root" ]; then
-    chown -R llama-cpp:llama-cpp /var/lib/llama-cpp 2>/dev/null || true
-    echo ":: Migrated /var/lib/llama-cpp ownership to llama-cpp user"
-  fi
-}
-
 post_remove() {
   echo ":: The llama-cpp system user/group remains on the system."
   echo ":: To fully remove: sudo gpasswd -d \$USER llama-cpp && sudo userdel llama-cpp"
+  echo ":: Remember to cleanup /var/lib/llama-cpp (contains models and data),"
+  echo "   as it's not automatically removed."
 }
