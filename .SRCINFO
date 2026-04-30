@@ -3,9 +3,13 @@ pkgbase = fcitx5-lotus-bin
 	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
-	install = fcitx5-lotus.install
 	arch = x86_64
 	license = GPL-3.0-or-later
+	source = https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v3.0.1/fcitx5-lotus-v3.0.1-x86_64-archlinux.tar.zst
+	sha256sums = 7305d56ea178d2df27164d66ec5990ffd724062fdc667032f2a0e2f65fd50820
+
+pkgname = fcitx5-lotus-bin
+	install = fcitx5-lotus.install
 	depends = fcitx5
 	depends = libinput
 	depends = hicolor-icon-theme
@@ -17,10 +21,6 @@ pkgbase = fcitx5-lotus-bin
 	depends = python-dbus
 	optdepends = fcitx5-lotus-openrc-bin: OpenRC service for fcitx5-lotus
 	optdepends = fcitx5-lotus-runit-bin: Runit service for fcitx5-lotus
-	source = https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v3.0.1/fcitx5-lotus-v3.0.1-x86_64-archlinux.tar.zst
-	sha256sums = 7305d56ea178d2df27164d66ec5990ffd724062fdc667032f2a0e2f65fd50820
-
-pkgname = fcitx5-lotus-bin
 	provides = fcitx5-lotus
 	conflicts = fcitx5-lotus
 

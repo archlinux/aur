@@ -7,18 +7,18 @@ pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
-depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
-optdepends=(
-    'fcitx5-lotus-openrc-bin: OpenRC service for fcitx5-lotus'
-    'fcitx5-lotus-runit-bin: Runit service for fcitx5-lotus'
-)
 source=("https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v${pkgver}/fcitx5-lotus-v${pkgver}-x86_64-archlinux.tar.zst")
 sha256sums=('7305d56ea178d2df27164d66ec5990ffd724062fdc667032f2a0e2f65fd50820')
-install='fcitx5-lotus.install'
 
 package_fcitx5-lotus-bin() {
     provides=('fcitx5-lotus')
     conflicts=('fcitx5-lotus')
+    depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
+    optdepends=(
+        'fcitx5-lotus-openrc-bin: OpenRC service for fcitx5-lotus'
+        'fcitx5-lotus-runit-bin: Runit service for fcitx5-lotus'
+    )
+    install='fcitx5-lotus.install'
     cp -ra "$srcdir"/usr "$pkgdir/"
 }
 
