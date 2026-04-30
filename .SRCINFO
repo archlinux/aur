@@ -1,0 +1,24 @@
+pkgbase = proton-pass-rofi-git
+	pkgdesc = rofi frontend for the Proton Pass CLI
+	pkgver = r2.g871b137
+	pkgrel = 1
+	url = https://github.com/volysandro/proton-pass-rofi
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = rofi
+	optdepends = pass-cli: required Proton Pass CLI backend; install with Proton upstream installer
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	optdepends = xsel: alternate clipboard support on X11
+	optdepends = wtype: typing support on Wayland
+	optdepends = xdotool: typing support on X11
+	optdepends = libnotify: desktop notifications via notify-send
+	optdepends = rofi-sensible-terminal: default terminal command for login/logout
+	provides = proton-pass-rofi
+	conflicts = proton-pass-rofi
+	source = git+https://github.com/volysandro/proton-pass-rofi.git
+	sha256sums = SKIP
+
+pkgname = proton-pass-rofi-git
