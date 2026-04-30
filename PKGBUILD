@@ -2,7 +2,7 @@
 
 pkgdesc='TUI Bible reader'
 pkgname=christ-cli
-pkgver=0.5.2
+pkgver=0.5.6
 pkgrel=1
 url="https://github.com/whoisyurii/$pkgname"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(libgcc libgcc_s.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('48bf8d5b6a8e0d0f41e8b5c655bb908479c07ef3e3e573a4b184acc33c0d40bd')
+sha256sums=('f31b9828d7f012194a895547d583786dd875a2c68e870cc213fa55e7ed217de3')
 
 prepare() {
 	cd "$_archive"
