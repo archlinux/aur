@@ -1,6 +1,6 @@
 pkgbase = r-dnabarcodecompatibility
 	pkgdesc = A Tool for Optimizing Combinations of DNA Barcodes Used in Multiplexed Experiments on Next Generation Sequencing Platforms
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DNABarcodeCompatibility
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-dnabarcodecompatibility
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DNABarcodeCompatibility_1.26.0.tar.gz
-	sha256sums = 0c88d0620fb250dda4017d4c6468a332619ef7998d781144c487a8a912b64b56
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DNABarcodeCompatibility_1.28.0.tar.gz
+	sha256sums = b0f27b33a5956d623c09d7dbce2ad322ec8c651c852558f9d23cd0385232652f
 
 pkgname = r-dnabarcodecompatibility
