@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BiocHail
-_pkgver=1.11.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9b013cde48925de9108439a0aae58555')
-b2sums=('3b3ff594934d2876dc5b6bcc1d5e8d270101a82a876bf94c3690b467173c65367fdf91970f0694c54d4dd05cf407d4024cacd4d035b6258809d9c23c8e854c51')
+md5sums=('b3397959db5d770efdeab8a2f04f51e2')
+b2sums=('b45c98aad95d65265613d87bce8a49ff6e6a097c11071684d2cef2e0abcfd359fc896ee073f88e0c91e1c7f23056495509ceaec5e8918209cc80d3f3c4b6893f')
 
 build() {
   mkdir build
