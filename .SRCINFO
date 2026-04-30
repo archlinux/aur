@@ -1,6 +1,6 @@
 pkgbase = longbridge-bin
 	pkgdesc = Longbridge Desktop trading platform
-	pkgver = 0.14.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://longbridge.com/desktop/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = longbridge-bin
 	provides = longbridge
 	conflicts = longbridge
 	options = !strip
-	source = longbridge-bin-0.14.0.deb::https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v0.14.0-linux-x86_64.deb
-	sha256sums = 046de77453572322110e7e94840e573385ddf411f5f04346db5d69c958ef0688
+	source = https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v0.15.1-linux-x86_64.deb
+	sha256sums = 81358d7a2f42ac348ffe5de5256405976236d0d9db378b86108e3c44089e872d
 
 pkgname = longbridge-bin
