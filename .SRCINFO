@@ -1,5 +1,5 @@
 pkgbase = serwis-app
-	pkgdesc = Proste Prowadzenie Serwisu - Kompleksowe zarządzanie serwisem
+	pkgdesc = Proste Prowadzenie Serwisu
 	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/KlapkiSzatana/serwis-app

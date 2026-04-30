@@ -2,7 +2,7 @@
 pkgname=serwis-app
 pkgver=2.3.0
 pkgrel=1
-pkgdesc="Proste Prowadzenie Serwisu - Kompleksowe zarządzanie serwisem"
+pkgdesc="Proste Prowadzenie Serwisu"
 arch=('any')
 url="https://github.com/KlapkiSzatana/serwis-app"
 license=('GPL-3.0')
