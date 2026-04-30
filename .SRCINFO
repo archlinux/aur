@@ -1,12 +1,10 @@
 pkgbase = r-tidyr
 	pkgdesc = Tidy Messy Data
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=tidyr
 	arch = x86_64
 	license = MIT
-	checkdepends = r-data.table
-	checkdepends = r-testthat
 	makedepends = r-cpp11
 	depends = r-cli
 	depends = r-dplyr
