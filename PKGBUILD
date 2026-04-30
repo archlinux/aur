@@ -29,7 +29,7 @@ package() {
     tar -xf data.tar.xz --directory "${pkgdir}"
 
     mv "${pkgdir}/opt/Anilinux" "${pkgdir}/opt/anilinux-electron"
-    sed -i 's|/opt/anilinux|/opt/anilinux|g' "${pkgdir}/usr/share/applications/anilinux.desktop"
+    sed -i 's|/opt/anilinux|/opt/anilinux-electron|g' "${pkgdir}/usr/share/applications/anilinux.desktop"
 
     sed -i 's|Categories=Audio;|Categories=AudioVideo;Audio;|g' "${pkgdir}/usr/share/applications/anilinux.desktop"
 
