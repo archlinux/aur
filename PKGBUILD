@@ -1,7 +1,7 @@
 # Maintainer: IRendy <irendy@qq.com>
 
 pkgname="komitoto"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A CLI assistant for HAM"
 url="https://github.com/IRendy/komitoto"
@@ -15,7 +15,7 @@ makedepends=(
   'sqlite'
 )
 depends=('gcc-libs' 'sqlite')
-source=("git+$url.git#tag=v0.1.0")
+source=("git+$url.git#tag=v0.1.1")
 sha256sums=('SKIP')
 
 pkgver() {
