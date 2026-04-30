@@ -6,6 +6,7 @@ pkgbase = ttf-plangothic
 	arch = any
 	license = OFL-1.1
 	depends = fontconfig
+	install = ttf-plangothic.install
 	source = Plangothic-Static-V2.9.5792.zip::https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V2.9.5792/Plangothic-Static-V2.9.5792.zip
 	source = ttf-plangothic-2.9.5792-1-LICENSE::https://raw.githubusercontent.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/V2.9.5792/LICENSE-OFL.txt
 	b2sums = c097350af7f412d8da0880246454da73d17d1b651ead494216c997b77d02e1332b4633b23050793ed5be6ca5433f904ad29cea1a2c12d00f9fd87f1aba247bf3

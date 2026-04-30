@@ -8,6 +8,7 @@ arch=(any)
 url='https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project'
 license=(OFL-1.1)
 depends=(fontconfig)
+install=$pkgname.install
 source=(
     Plangothic-Static-V$pkgver.zip::"https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V$pkgver/Plangothic-Static-V$pkgver.zip"
     $pkgname-$pkgver-$pkgrel-LICENSE::"https://raw.githubusercontent.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/V$pkgver/LICENSE-OFL.txt"

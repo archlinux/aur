@@ -1,0 +1,31 @@
+post_install() {
+    cat <<EOF
+
+Note: To reference Plangothic in your font configuration, use the
+"Plangothic P1" and/or "Plangothic P2" family names.
+
+Example snippet for ~/.config/fontconfig/fonts.conf:
+  <alias>
+    <family>sans-serif</family>
+    <prefer>
+      <family>Noto Sans CJK SC</family>
+      <family>Plangothic P1</family>
+      <family>Plangothic P2</family>
+    </prefer>
+  </alias>
+
+See \`man 5 fonts-conf\` for configuration options.
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    cat <<EOF
+
+Remove Plangothic from your font configuration files if you referenced
+"Plangothic P1" or "Plangothic P2".
+EOF
+}
