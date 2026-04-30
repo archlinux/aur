@@ -1,14 +1,14 @@
 # Maintainer: Burgess Leo <liuxiaopeng731@gmail.com>
 # Contributor: xianii jiyucheng007@gmail.com
 pkgname=ass-shifter
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Shift ASS format Subtitle"
 arch=('x86_64')
 url="https://github.com/Nigh/subtitle-ass-shifter"
 license=('GPL-3.0')
 source=(${pkgname}_${pkgver}-linux-amd64::https://github.com/Nigh/subtitle-ass-shifter/releases/download/v${pkgver}/${pkgname}-linux-amd64)
-sha256sums=('cb8679dd6693dd30d594b2cd7898ee02d8a69e35eabf0782e06044f06d4c71a6')
+sha256sums=('3532e92e20cb4d4ff8b776cb9a7aabc9f599378a6aa9e0b95164baeebbf45d54')
 
 prepare() {
   cd "$srcdir"
