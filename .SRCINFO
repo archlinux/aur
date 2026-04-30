@@ -1,6 +1,6 @@
 pkgbase = hackmatrix-git
 	pkgdesc = HackMatrix is a 3D Linux desktop environment (which can also be a game engine)
-	pkgver = r1117.1.stable.r290.gba01822
+	pkgver = r1123.1.stable.r296.ge38a2aa
 	pkgrel = 1
 	url = https://github.com/collinalexbell/HackMatrix
 	arch = x86_64
@@ -29,7 +29,17 @@ pkgbase = hackmatrix-git
 	depends = fmt
 	depends = spdlog
 	depends = wlroots0.19
+	depends = asio
+	provides = hackmatrix
+	conflicts = hackmatrix
+	conflicts = hackmatrix-bin
 	source = HackMatrix::git+https://github.com/collinalexbell/HackMatrix.git
+	source = wlroots-fix.patch
+	source = HackMatrix.desktop
+	source = matrix-script
 	sha256sums = SKIP
+	sha256sums = d28e18337c55bb5cfd5f6f8f6178e2da2fa1c08ffa50d037efdacf0cb7476ed7
+	sha256sums = db55d2c5e3d828f867d3c5a43e5b95519a0dfcb4ca669c40d467f4395e3ec6e4
+	sha256sums = 6281237d97263d6e575d9ca9833687b4463cece257838676e1fc7b1db3a555a8
 
 pkgname = hackmatrix-git
