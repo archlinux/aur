@@ -1,14 +1,10 @@
 pkgbase = ytm-player-git
-	pkgdesc = A full-featured YouTube Music TUI client with vim-style navigation
 	pkgver = 1.8.0
 	pkgrel = 1
+	pkgdesc = A full-featured YouTube Music TUI client with vim-style navigation
 	url = https://github.com/peternaame-boop/ytm-player
 	arch = any
 	license = MIT
-	makedepends = git
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-hatchling
 	depends = mpv
 	depends = python
 	depends = python-aiosqlite
@@ -18,6 +14,10 @@ pkgbase = ytm-player-git
 	depends = python-textual>=7.0
 	depends = python-ytmusicapi
 	depends = yt-dlp
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
 	optdepends = python-anyascii: lyrics transliteration to ASCII
 	optdepends = python-dbus-next: MPRIS media key support
 	optdepends = python-pylast: Last.fm scrobbling
