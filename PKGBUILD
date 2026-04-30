@@ -1,17 +1,18 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 pkgname=palletizer
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="simple self hosted Cargo registry"
 arch=("x86_64")
-license=(BSD)
+license=(BSD-2-Clause)
 url="https://github.com/de-vri-es/palletizer-rs"
 
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/de-vri-es/palletizer-rs/archive/v$pkgver.tar.gz")
-sha512sums=('9560cc38cab9025790de5589ac34231d574b535ca7c8a2e993dfc6e4d742c4202fad494971c1f1d5a753266f356b127636d9ab701f2c55236281fd92102cded0')
+sha512sums=('490c1b130aea66f1bd9e72390bc14d5151291839186d44c034fd6dbdc1c00102cadc6858282641bef675ba33e1039ff94160f6516d72c1fef33441f77c74de2b')
 
 depends=(openssl zlib)
 makedepends=(rust)
+options=(!lto)
 
 _dir="$pkgname-rs-$pkgver"
 
