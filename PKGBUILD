@@ -2,12 +2,12 @@
 
 pkgname=slopd-git
 pkgver=r147.d5f84dd
-pkgrel=1
+pkgrel=2
 pkgdesc="Claude agent session manager daemon"
 arch=('x86_64')
 url="https://github.com/futpib/slopd"
 license=('custom')
-depends=()
+depends=('tmux')
 makedepends=('rust' 'cargo')
 provides=('slopd' 'slopctl' 'iroh-slopctl' 'iroh-slopd')
 conflicts=('slopd')

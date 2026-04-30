@@ -1,12 +1,13 @@
 pkgbase = slopd-git
 	pkgdesc = Claude agent session manager daemon
 	pkgver = r147.d5f84dd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/futpib/slopd
 	arch = x86_64
 	license = custom
 	makedepends = rust
 	makedepends = cargo
+	depends = tmux
 	provides = slopd
 	provides = slopctl
 	provides = iroh-slopctl
