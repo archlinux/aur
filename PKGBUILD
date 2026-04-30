@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "fmatrix_project"
-  printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
