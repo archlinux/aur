@@ -1,6 +1,6 @@
 pkgbase = mediaflow-proxy-light-bin
 	pkgdesc = High-performance Rust streaming proxy: HLS/DASH/Xtream/Acestream/Telegram, drop-in MediaFlow Proxy reimplementation
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/mhdzumair/mediaflow-proxy-light
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = mediaflow-proxy-light-bin
 	sha256sums = 959aa6e2fd1886352083f64cb0561e3a052380a94ca98e96d01a8a3f77fa4419
 	sha256sums = c7d7a5fdbe91b5097e33f98863acf6a25b036b0a173ccab01944e077c9040430
 	sha256sums = cfc5dfa5ef03b75d79be464d5f0be84c2803b8ba57fd36909c68849938d9061c
-	source_x86_64 = mediaflow-proxy-light-1.0.6-x86_64::https://github.com/mhdzumair/mediaflow-proxy-light/releases/download/1.0.6/mediaflow-proxy-light-linux-x86_64
-	sha256sums_x86_64 = 8013d25a9979fb619c720bcf47a76f0822777aeac6b43746edab417cfcfefdb8
-	source_aarch64 = mediaflow-proxy-light-1.0.6-aarch64::https://github.com/mhdzumair/mediaflow-proxy-light/releases/download/1.0.6/mediaflow-proxy-light-linux-aarch64
-	sha256sums_aarch64 = 4e80d13564a57b2eed70ff99c18e4d9206992e45703e02de319e59e229490e40
+	source_x86_64 = mediaflow-proxy-light-1.0.7-x86_64::https://github.com/mhdzumair/mediaflow-proxy-light/releases/download/1.0.7/mediaflow-proxy-light-linux-x86_64
+	sha256sums_x86_64 = f3e3471808deaa46a9682be78eb5dcfa009faa23096dfe2658313bf1f7ea067c
+	source_aarch64 = mediaflow-proxy-light-1.0.7-aarch64::https://github.com/mhdzumair/mediaflow-proxy-light/releases/download/1.0.7/mediaflow-proxy-light-linux-aarch64
+	sha256sums_aarch64 = f187d8eae0d98e694f4c2b33733e62d294c30bbd1568f5375bc894c19b7cbe9f
 
 pkgname = mediaflow-proxy-light-bin
