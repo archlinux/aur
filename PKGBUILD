@@ -1,7 +1,7 @@
 # Maintainer: wackbyte <im@purring.fyi>
 
 pkgname=asphalt
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Upload and reference Roblox assets in code'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('37b6475118c0d8d3e1d6f5e3571b4f7e95bb3c37f1b68ce68e864d161524f2a942d704c41adda3ff4b1891fa65da457f5f3310f6a56fac4832cf3fc9b8273ce7')
+b2sums=('f6f7120a8f5dea46ba62b36f9c655197a303cd40decf16e30958524874a46b99e504701400faaaffc5d8030ad97674df7291b2f2d26e94ad38b7c226070bab49')
 options=(!lto)
 
 prepare() {
@@ -23,6 +23,9 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+
+    # https://github.com/aws/aws-lc-rs/issues/1097#issuecomment-4236293939
+    export AWS_LC_SYS_NO_JITTER_ENTROPY=1
 
     cd "${pkgname}-${pkgver}"
     cargo build --frozen --release
