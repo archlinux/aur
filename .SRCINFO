@@ -1,6 +1,6 @@
 pkgbase = python-ollama
 	pkgdesc = Ollama Python library
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/ollama/ollama-python
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-ollama
 	depends = python-typing_extensions
 	depends = python-pydantic
 	depends = python-anyio
-	source = https://files.pythonhosted.org/packages/source/o/ollama/ollama-0.6.1.tar.gz
-	sha256sums = 478c67546836430034b415ed64fa890fd3d1ff91781a9d548b3325274e69d7c6
+	source = https://files.pythonhosted.org/packages/source/o/ollama/ollama-0.6.2.tar.gz
+	sha256sums = 936d55daa684f474364c098611c933626f8d6c7d67065c5b7ae0c477b508b07f
 
 pkgname = python-ollama
