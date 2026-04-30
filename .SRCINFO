@@ -1,6 +1,6 @@
 pkgbase = skix-git
 	pkgdesc = Small skiing game (terminal + SDL) inspired by SkiFree
-	pkgver = r5.73d2e14
+	pkgver = r7.cb2fa7b
 	pkgrel = 1
 	url = https://codeberg.org/nickknight/Skix
 	arch = any
