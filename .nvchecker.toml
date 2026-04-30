@@ -1,0 +1,4 @@
+[seetui-bin]
+source = "github"
+github = "NustyFrozen/SEE"
+use_latest_release = true
