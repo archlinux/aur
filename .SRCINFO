@@ -1,0 +1,35 @@
+pkgbase = k230-burning-tool
+	pkgdesc = Kendryte K230 Flash Tool Cpp GUI version
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://github.com/kendryte/k230_burning_tool
+	arch = x86_64
+	license = GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
+	checkdepends = gtest
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = qt6-svg
+	makedepends = openssl
+	makedepends = pkgconf
+	makedepends = sed
+	makedepends = vulkan-headers
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
+	depends = libusb
+	depends = qt6-base
+	provides = k230-burning-tool
+	conflicts = k230-burning-tool
+	source = k230-burning-tool::git+https://github.com/kendryte/k230_burning_tool.git#tag=v2.2.3
+	source = git+https://github.com/arsenm/sanitizers-cmake.git
+	source = git+https://github.com/kendryte747/libusb-cmake.git
+	source = git+https://github.com/libusb/libusb.git
+	sha256sums = 3e898a68853de67a20f4a9f70f7a81a15671933a2e7ebc19c496bfc4b754fd9e
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = k230-burning-tool
