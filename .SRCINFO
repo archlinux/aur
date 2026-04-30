@@ -1,0 +1,13 @@
+pkgbase = pcg-c
+	pkgdesc = PCG random number generation library for C
+	pkgver = 0.94.1
+	pkgrel = 1
+	url = https://github.com/andy5995/pcg-c
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = meson
+	makedepends = ninja
+	source = https://github.com/andy5995/pcg-c/archive/refs/tags/v0.94.1.tar.gz
+	sha256sums = 89a7dee8b511725e2f954d7f750a4515d310386f448d448dbb4737643b8526bb
+
+pkgname = pcg-c
