@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=kapp-bin
-pkgver=0.65.1
+pkgver=0.65.2
 pkgrel=1
 pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label'
 url='https://carvel.dev/kapp'
@@ -13,10 +13,10 @@ license=(apache-2.0)
 install=''
 conflicts=(kapp)
 provides=(kapp)
-source_x86_64=(kapp-v0.65.1::https://github.com/carvel-dev/kapp/releases/download/v0.65.1/kapp-linux-amd64)
-source_aarch64=(kapp-v0.65.1::https://github.com/carvel-dev/kapp/releases/download/v0.65.1/kapp-linux-arm64)
-sha256sums_x86_64=(057d7fe33dd6afeb452a888d37995f789b9de0778ce4908896e37d37c52e6ead)
-sha256sums_aarch64=(1d92b138d8cf93ae627a3b9dbb1f31fc3d6d6298304f90fdbc122acf3b84c13a)
+source_x86_64=(kapp-v0.65.2::https://github.com/carvel-dev/kapp/releases/download/v0.65.2/kapp-linux-amd64)
+source_aarch64=(kapp-v0.65.2::https://github.com/carvel-dev/kapp/releases/download/v0.65.2/kapp-linux-arm64)
+sha256sums_x86_64=(38b0a6eb958210f5db2cf79ee4082adf7b6cf52de983b5364c56d03d898b6439)
+sha256sums_aarch64=(a877a004f8b703218883c3f7140bda216f53b9b9e5b29fecf5cec7d4ad6d85b0)
 package () 
 { 
     set -eo pipefail;
