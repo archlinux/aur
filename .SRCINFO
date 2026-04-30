@@ -1,6 +1,6 @@
 pkgbase = caelestia-shell
 	pkgdesc = The desktop shell for the Caelestia dotfiles
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/shell
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = caelestia-shell
 	depends = qt6-declarative
 	provides = caelestia-shell
 	conflicts = caelestia-shell-git
-	source = https://github.com/caelestia-dots/shell/releases/download/v1.6.1/caelestia-shell-v1.6.1.tar.gz
-	sha256sums = fc6e65ca9a263ba1cc2d54035b76c6442170d98dd9e460a7328865796e7535bc
+	source = https://github.com/caelestia-dots/shell/releases/download/v1.6.2/caelestia-shell-v1.6.2.tar.gz
+	sha256sums = 546078e217422dc2cad6baabd4c4bf31f1cbd9a2f7412ec9c33ff50257d04f6d
 
 pkgname = caelestia-shell
