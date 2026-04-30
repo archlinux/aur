@@ -8,42 +8,28 @@ url="https://github.com/KlapkiSzatana/budget-app"
 license=('GPL-3.0')
 depends=('python' 'pyside6' 'python-matplotlib' 'python-pypdf' 'python-pillow')
 
-# Definiujemy pliki źródłowe, które będą w repozytorium
-source=("budget-app.py"
-        "config.py"
-        "database.py"
-        "dialogs.py"
-        "reports.py"
-        "settings_dialog.py"
-        "shopping.py"
-        "budget.png")
-
-# Sumy kontrolne wygenerujesz potem komendą updpkgsums
-sha256sums=('5f9d57d8a66bb1de9ee22d7d7b40e281e1dc93b4418facce6ad39da2db776934'
-            'c052acdc3789d837ef77dbd92a562ecb74d2e0d03607d431c4f404b24aea4a69'
-            '3d71f5fe03cd683efd9afbab2ddcbb2200baeba6ab57a4724e71e40bc838f3ae'
-            'b74f406ef4b7ff1616140fe40d468e8df6a7f8a9ac60baee4dc3d0f9677679e8'
-            '3145d4a2aa00e7858044fdefccd116a4cb8e0663054a44264480ae7a9bd24c27'
-            '51bb7e0156d6803d095b04a9ee53a435fd0215e2a41187dbb5e63b51edfda896'
-            'c8cac3a60f30584267765a0549e9cc9665719ae7151f8cfe459bb2cc63f6964c'
-            '7919b3aefeb2529d429408fd618a560ea6456e5a163b9bd6afeab4397d6b311a')
+# Pobieranie kodu źródłowego bezpośrednio z GitHuba
+source=("git+https://github.com/KlapkiSzatana/budget-app.git")
+sha256sums=('SKIP')
 
 package() {
-    # 1. Katalog główny aplikacji
+    # Przejście do pobranego katalogu
+    cd "$srcdir/$pkgname"
+
+    # 1. Katalog główny aplikacji w systemie
     install -d "${pkgdir}/usr/share/${pkgname}"
 
-    # 2. Instalacja wszystkich plików .py
-    # Używamy ${srcdir}, bo tam makepkg wypakowuje źródła
-    install -m644 "${srcdir}"/*.py "${pkgdir}/usr/share/${pkgname}/"
+    # 2. Instalacja wszystkich plików projektu (pomijamy ukryte pliki, np. .git)
+    find . -maxdepth 1 ! -name '.' ! -name '.git' -exec cp -r {} "${pkgdir}/usr/share/${pkgname}/" \;
 
-    # 3. Ikona
-    install -Dm644 "${srcdir}/budget.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    # 3. Instalacja ikony w odpowiednim katalogu systemowym
+    install -Dm644 "${pkgdir}/usr/share/${pkgname}/budget.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
     # 4. Skrypt startowy (Wrapper)
     install -d "${pkgdir}/usr/bin"
     cat <<EOF > "${pkgdir}/usr/bin/${pkgname}"
 #!/bin/sh
-# Przejście do katalogu jest KLUCZOWE, by importy w Pythonie (np. import config) działały
+# Przejście do katalogu jest kluczowe, by importy w Pythonie działały
 cd /usr/share/${pkgname}
 exec /usr/bin/python budget-app.py "\$@"
 EOF
