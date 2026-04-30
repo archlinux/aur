@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
 	pkgver = r1.1234567
-	pkgrel = 25
+	pkgrel = 26
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
@@ -105,6 +105,8 @@ pkgbase = shorin-niri-git
 	optdepends = rime-ice-git: Rime dict
 	optdepends = rime-wubi: Rime wubi
 	source = git+https://github.com/SHORiN-KiWATA/shorin-niri.git
+	source = wanxiang-lts-zh-hans.gram::https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = shorin-niri-git
