@@ -1,0 +1,21 @@
+pkgbase = opendoor
+	pkgdesc = Fast CLI for directory discovery, subdomain enumeration, and web asset reconnaissance
+	pkgver = 5.13.2
+	pkgrel = 1
+	url = https://github.com/stanislav-web/OpenDoor
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-packaging
+	depends = python-pysocks
+	depends = python-six
+	depends = python-tabulate
+	depends = python-urllib3
+	source = opendoor-5.13.2.tar.gz::https://github.com/stanislav-web/OpenDoor/archive/refs/tags/v5.13.2.tar.gz
+	sha256sums = 26851c428ed198d03b616a23690db4fbea89271967dd0b1d1bc580502dae70bc
+
+pkgname = opendoor
