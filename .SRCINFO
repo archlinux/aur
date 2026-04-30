@@ -1,6 +1,6 @@
 pkgbase = fcitx5-lotus-bin
 	pkgdesc = Vietnamese input method for fcitx5
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	install = fcitx5-lotus.install
@@ -15,9 +15,23 @@ pkgbase = fcitx5-lotus-bin
 	depends = libudev.so
 	depends = python-qtpy
 	depends = python-dbus
-	provides = fcitx5-lotus
-	conflicts = fcitx5-lotus
-	source = https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v3.0.0/fcitx5-lotus-v3.0.0-x86_64-archlinux.tar.zst
-	sha256sums = a0e7ff93b212437262f83920a044c98479afdc2a6edf2f6bc1ad046fed1a0d82
+	optdepends = fcitx5-lotus-openrc-bin: OpenRC service for fcitx5-lotus
+	optdepends = fcitx5-lotus-runit-bin: Runit service for fcitx5-lotus
+	source = https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v3.0.1/fcitx5-lotus-v3.0.1-x86_64-archlinux.tar.zst
+	sha256sums = 7305d56ea178d2df27164d66ec5990ffd724062fdc667032f2a0e2f65fd50820
 
 pkgname = fcitx5-lotus-bin
+	provides = fcitx5-lotus
+	conflicts = fcitx5-lotus
+
+pkgname = fcitx5-lotus-openrc-bin
+	pkgdesc = OpenRC init script for fcitx5-lotus
+	depends = fcitx5-lotus
+	provides = fcitx5-lotus-openrc
+	conflicts = fcitx5-lotus-openrc
+
+pkgname = fcitx5-lotus-runit-bin
+	pkgdesc = Runit init script for fcitx5-lotus
+	depends = fcitx5-lotus
+	provides = fcitx5-lotus-runit
+	conflicts = fcitx5-lotus-runit

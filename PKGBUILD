@@ -1,18 +1,41 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
-pkgname=fcitx5-lotus-bin
-pkgver=3.0.0
+pkgbase=fcitx5-lotus-bin
+pkgname=('fcitx5-lotus-bin' 'fcitx5-lotus-openrc-bin' 'fcitx5-lotus-runit-bin')
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
 depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
-provides=('fcitx5-lotus')
-conflicts=('fcitx5-lotus')
+optdepends=(
+    'fcitx5-lotus-openrc-bin: OpenRC service for fcitx5-lotus'
+    'fcitx5-lotus-runit-bin: Runit service for fcitx5-lotus'
+)
 source=("https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v${pkgver}/fcitx5-lotus-v${pkgver}-x86_64-archlinux.tar.zst")
-sha256sums=('a0e7ff93b212437262f83920a044c98479afdc2a6edf2f6bc1ad046fed1a0d82')
+sha256sums=('7305d56ea178d2df27164d66ec5990ffd724062fdc667032f2a0e2f65fd50820')
 install='fcitx5-lotus.install'
 
-package() {
-    cp -ra "$srcdir"/{usr,etc} "$pkgdir/"
+package_fcitx5-lotus-bin() {
+    provides=('fcitx5-lotus')
+    conflicts=('fcitx5-lotus')
+    cp -ra "$srcdir"/usr "$pkgdir/"
+}
+
+package_fcitx5-lotus-openrc-bin() {
+    depends=('fcitx5-lotus')
+    pkgdesc="OpenRC init script for fcitx5-lotus"
+    provides=('fcitx5-lotus-openrc')
+    conflicts=('fcitx5-lotus-openrc')
+    install -d "$pkgdir"/etc/init.d
+    install -m755 "$srcdir"/etc/init.d/fcitx5-lotus "$pkgdir"/etc/init.d/fcitx5-lotus
+}
+
+package_fcitx5-lotus-runit-bin() {
+    depends=('fcitx5-lotus')
+    pkgdesc="Runit init script for fcitx5-lotus"
+    provides=('fcitx5-lotus-runit')
+    conflicts=('fcitx5-lotus-runit')
+    install -d "$pkgdir"/etc/runit/sv/fcitx5-lotus
+    install -m755 "$srcdir"/etc/runit/sv/fcitx5-lotus/run "$pkgdir"/etc/runit/sv/fcitx5-lotus/run
 }
