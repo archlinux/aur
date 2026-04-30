@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=28
+pkgrel=29
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -39,7 +39,7 @@ optdepends=(
     'shorin-contrib-git: Shorin tools' 'clipsync-git: Clipboard sync' 'ddcutil-service: DDC util'
     'python-pywalfox: Firefox theming' 'waypaper-git: Wallpaper setter' 'niri-sidebar-git: Sidebar'
     'wl-longshot-git: Screenshot tool' 'shorin-screenrec-menu-git: Screen record menu'
-    'fcitx5: Input method' 'fcitx5-configtool: Fcitx5 config' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT'
+    'fcitx5: Input method' 'rime-wanxiang-gram-zh-hans: better ime model' 'fcitx5-configtool: Fcitx5 config' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT'
     'fcitx5-rime: Fcitx5 Rime' 'rime-ice-git: Rime dict' 'rime-wubi: Rime wubi'
 )
 makedepends=('git')

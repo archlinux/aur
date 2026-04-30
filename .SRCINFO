@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
 	pkgver = r1.1234567
-	pkgrel = 28
+	pkgrel = 29
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
@@ -98,6 +98,7 @@ pkgbase = shorin-niri-git
 	optdepends = wl-longshot-git: Screenshot tool
 	optdepends = shorin-screenrec-menu-git: Screen record menu
 	optdepends = fcitx5: Input method
+	optdepends = rime-wanxiang-gram-zh-hans: better ime model
 	optdepends = fcitx5-configtool: Fcitx5 config
 	optdepends = fcitx5-gtk: Fcitx5 GTK
 	optdepends = fcitx5-qt: Fcitx5 QT
