@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=20
+pkgrel=21
 pkgdesc="Shorin DMS Niri desktop environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -46,11 +46,10 @@ makedepends=('git')
 # 修改点 1：增加 gram 文件直链
 source=(
     "git+https://github.com/SHORiN-KiWATA/shorin-dms-niri.git"
-    "wanxiang-lts-zh-hans.gram::https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram"
 )
 
 # 修改点 2：为新加的 gram 文件增加 SKIP
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/shorin-dms-niri"
@@ -70,11 +69,6 @@ package() {
         echo "Error: 'dotfiles' directory not found in the git repository."
         exit 1
     fi
-
-    # 修改点 3：将 .gram 文件安装到对应的 RIME 配置目录中
-    local rime_dir="$target_dir/.local/share/fcitx5/rime"
-    install -dm755 "$rime_dir"
-    install -Dm644 "$srcdir/wanxiang-lts-zh-hans.gram" "$rime_dir/wanxiang-lts-zh-hans.gram"
 
     # 安装 shorindms CLI 工具
     if [[ -f "shorindms" ]]; then

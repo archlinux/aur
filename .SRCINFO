@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Core Configs & Installer)
 	pkgver = r4.0dabc1d
-	pkgrel = 20
+	pkgrel = 21
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
@@ -89,8 +89,6 @@ pkgbase = shorin-dms-niri-git
 	conflicts = shorin-dms-niri-meta
 	conflicts = shorin-dms-niri-dotfiles-git
 	source = git+https://github.com/SHORiN-KiWATA/shorin-dms-niri.git
-	source = wanxiang-lts-zh-hans.gram::https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = shorin-dms-niri-git
