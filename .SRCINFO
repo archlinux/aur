@@ -1,6 +1,6 @@
 pkgbase = python-chared
 	pkgdesc = Chared is a tool for detecting the character encoding of a text in a known language.
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://corpus.tools/wiki/Chared
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-chared
 	depends = python
 	depends = python-lxml
 	provides = chared
-	source = http://corpus.tools/raw-attachment/wiki/Downloads/chared-2.0.tar.gz
-	sha256sums = bba9faff24671959c385af82bbbf95cba4f83ede01f735bcb9cdc4edb762206e
+	source = http://corpus.tools/raw-attachment/wiki/Downloads/chared-2.1.tar.gz
+	sha256sums = 686c6fbae5e1731a78d6480e19cee589ec9242fe80b3c7f2db60053352046670
 
 pkgname = python-chared
