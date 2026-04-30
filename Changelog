@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 3.6.4 ➙ 3.8.0
-              : 2026-04-21 ➙ 2026-04-24
+ Tags         : 3.6.5 ➙ 3.9.0
+              : 2026-04-21 ➙ 2026-04-30
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-04-30   : 3.9.0
+              - Plugins - simplify getting the loader entry file location
+                Fix efi-tool package remove buglet getting package vers (only impacts memtest86 removal)
+ 2026-04-24   ⋯
+              - update Changelog
 
  2026-04-24   : 3.8.0
               - Tidy up sd-boot-efifs-update a bit
@@ -21,8 +27,4 @@
 
  2026-04-21   : 3.6.5
               - Drop our memtest package from optdepends until we release it
-              - update Changelog
-
- 2026-04-21   : 3.6.4
-              - PKGBUILD should be arch "any"
               - update Changelog
