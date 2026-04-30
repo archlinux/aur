@@ -5,6 +5,7 @@ post_install() {
 
 post_upgrade() {
     post_install
+    systemctl try-restart slskd.service >/dev/null 2>&1 || true
 }
 
 post_remove() {
