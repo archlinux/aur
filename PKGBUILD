@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=27
+pkgrel=28
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -44,12 +44,10 @@ optdepends=(
 )
 makedepends=('git')
 
-# 修改点 1：在 source 数组中添加 gram 文件的下载链接
 source=(
     "git+https://github.com/SHORiN-KiWATA/shorin-niri.git"
 )
-# 修改点 2：为新增的文件添加 SKIP 校验
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/shorin-niri"
