@@ -1,6 +1,6 @@
 pkgbase = openscq30
 	pkgdesc = Cross platform application for controlling settings of Soundcore headphones
-	pkgver = 2.6.2
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/Oppzippy/OpenSCQ30
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = openscq30
 	depends = libsystemd.so
 	depends = cosmic-icon-theme
 	depends = libxkbcommon.so
-	source = OpenSCQ30-2.6.2.tar.gz::https://github.com/Oppzippy/OpenSCQ30/archive/refs/tags/v2.6.2.tar.gz
-	md5sums = ca0249126a9b1810aae58bae5f4582c4
-	sha512sums = bac2f2b59f1cb4177936a06d97731b2a92b4a92e17f680b792b5752666491c1f01385b22bdc91886f6e942f2bc1a97372517ec7fd8d39883bb2cd1e443d48626
-	b2sums = d2ba4fc0ef9745e0118a6d746684fcf7f17717073f441b722c7b5a8f1b10f2689ce16a8f1d4422264eedcaceeeb5f11ce901f1756154640ccaf60be17cd0cf27
+	source = OpenSCQ30-2.7.0.tar.gz::https://github.com/Oppzippy/OpenSCQ30/archive/refs/tags/v2.7.0.tar.gz
+	md5sums = 7c3dba63db50497cdfb91b3149bdeae7
+	sha512sums = c191611aa608af3ed6ffa294420fc97f4bfa4bacb0cea89777d2dfb24e54adf5aa82dfc59ab7df7261c35e7124fe4978138561e116c7b906653eb01984f90fbc
+	b2sums = 6cc49ac0bbe65887b019d6bebea482f8307422486e7ebf793baa646d565ff10111192cf19d9598d0690bd180925ba48cce6c9c766d4cf2bb69fad816e73ad435
 
 pkgname = openscq30-cli
 	pkgdesc = Cross platform application for controlling settings of Soundcore headphones - CLI application
