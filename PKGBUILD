@@ -53,5 +53,4 @@ package() {
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-  install -Dm644 -t "$pkgdir/usr/share/$pkgname/"     "hamradio-zones-geojson-main/cqzones.geojson"     "hamradio-zones-geojson-main/ituzones.geojson"
 }
