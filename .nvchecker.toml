@@ -1,3 +1,4 @@
 [python-uuid-utils]
 source = "git"
 git = "https://github.com/aminalaee/uuid-utils.git"
+include_regex = '^v?[\d.]+$'
