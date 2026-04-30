@@ -1,0 +1,12 @@
+pkgbase = android-signapk
+	pkgdesc = Arch系统 AOSP signapk 支持 -w --min-sdk-version --disable-v2等签名工具
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maoyaotang12/android-signapk
+	arch = any
+	license = MIT
+	depends = java-runtime
+	source = git+https://github.com/maoyaotang12/android-signapk.git
+	sha256sums = SKIP
+
+pkgname = android-signapk
