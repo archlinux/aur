@@ -3,7 +3,7 @@
 pkgbase=python-cdflib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="A python module for reading NASA's Common Data Format (cdf) files Resources"
 arch=('any')
@@ -68,7 +68,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.cdf"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.nc")
 #       'fix-module-import.patch')
-md5sums=('d29ca7e6cfdf0b5a68446bb876538ffa')
+md5sums=('4f8b0913e49a3afab9e16751ec0cbe4d')
 #        'ba680f74500be6839d3fe232e6a22eb1'
 #        '0239191dd5d8400aaf68ff5a6ee4de0d'
 #        '269b0b2dae018ffa3e7442349e65b0ad'
@@ -115,9 +115,9 @@ md5sums=('d29ca7e6cfdf0b5a68446bb876538ffa')
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-   ln -rs ${srcdir}/*.cdf .
-   ln -rs ${srcdir}/*.nc .
-   ln -rs ${srcdir}/*.ncdf .
+#   ln -rs ${srcdir}/*.cdf .
+#   ln -rs ${srcdir}/*.nc .
+#   ln -rs ${srcdir}/*.ncdf .
 ##  sed -i "/language\ = /s/None/'en'/" doc/conf.py
     sed -i '$a use_directory_urls: false' mkdocs.yml
 }
