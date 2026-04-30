@@ -1,18 +1,10 @@
 pkgbase = shrimp-bin
-	pkgdesc = Self-hosted AI productivity assistant — pre-built AppImage
-	pkgver = 0.2.7
-	pkgrel = 1
+	pkgdesc = Self-hosted AI productivity assistant (transitional package, installs shrimp)
+	pkgver = 0.2.8
+	pkgrel = 2
 	url = https://github.com/TheSingularis/shrimp
-	arch = x86_64
+	arch = any
 	license = MIT
-	depends = gcc-libs
-	depends = glibc
-	depends = gtk3
-	depends = nss
-	provides = shrimp
-	conflicts = shrimp
-	options = !strip
-	source = SHRIMP-0.2.7.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v0.2.7/SHRIMP-0.2.7.AppImage
-	sha256sums = 4b65415f5eca1acc3c030f2d3fc79d0c0d5a104eff22becb8e7d900370510036
+	depends = shrimp
 
 pkgname = shrimp-bin

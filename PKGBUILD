@@ -1,41 +1,14 @@
 # Maintainer: Jordan Sluiter <jordan.sluiter@icloud.com>
+# Deprecated: install 'shrimp' instead. This stub exists for upgrade compatibility.
 pkgname=shrimp-bin
-pkgver=0.2.7
-pkgrel=1
-pkgdesc="Self-hosted AI productivity assistant — pre-built AppImage"
-arch=('x86_64')
+pkgver=0.2.8
+pkgrel=2
+pkgdesc="Self-hosted AI productivity assistant (transitional package, installs shrimp)"
+arch=('any')
 url="https://github.com/TheSingularis/shrimp"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'gtk3' 'nss')
-provides=('shrimp')
-conflicts=('shrimp')
-options=('!strip')
-source=("SHRIMP-${pkgver}.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/SHRIMP-${pkgver}.AppImage")
-sha256sums=('4b65415f5eca1acc3c030f2d3fc79d0c0d5a104eff22becb8e7d900370510036')
-
-prepare() {
-    chmod +x "SHRIMP-${pkgver}.AppImage"
-    ./"SHRIMP-${pkgver}.AppImage" --appimage-extract
-}
+depends=('shrimp')
 
 package() {
-    install -dm755 "${pkgdir}/usr/lib/shrimp"
-    cp -a squashfs-root/. "${pkgdir}/usr/lib/shrimp/"
-    chmod 755 "${pkgdir}/usr/lib/shrimp"
-
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/shrimp" <<'EOF'
-#!/usr/bin/env sh
-export APPDIR=/usr/lib/shrimp
-exec /usr/lib/shrimp/AppRun "$@"
-EOF
-
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/shrimp.desktop" <<'EOF'
-[Desktop Entry]
-Name=SHRIMP
-Comment=Self-hosted AI productivity assistant
-Exec=/usr/bin/shrimp %U
-Icon=shrimp
-Type=Application
-Categories=Utility;Office;
-EOF
+    : # all content provided by shrimp
 }
