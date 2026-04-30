@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=guiless-search
-pkgver=r1.20260430.cb74c7e
+pkgver=r1.20260430.3718569
 pkgrel=1
 pkgdesc='Multi-backend headless web search proxy (Google, Bing, DuckDuckGo)'
 arch=('any')
