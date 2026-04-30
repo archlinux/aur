@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2643.cb8bf953
+pkgver=r2657.3aa02b99
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
@@ -20,13 +20,6 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}/"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname}/"
-
-    # Fix the unzip include, see https://gitlab.com/xonotic/netradiant/-/work_items/203
-    sed -i 's|#include <unzip.h>|#include <minizip/unzip.h>|' tools/quake3/common/vfs.c
 }
 
 build() {
