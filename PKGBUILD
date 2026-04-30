@@ -2,7 +2,7 @@
 # New one-run releases: https://github.com/cherio/one-run
 
 pkgname=one-run
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="run-one drop-in alternative, command single instance runner"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 provides=("run-one")
 conflicts=("run-one")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cherio/$pkgname/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8a06833cfc8b440aa25971d224438160bb003d04eaa34cde9a41a1c4404dd924')
+sha256sums=('9b623e358361d5d08ecc8375592c6498accc3f292a244124c3afe6ad6012ea47')
 
 package() {
 	mkdir -p "$pkgdir"
