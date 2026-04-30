@@ -1,6 +1,6 @@
 pkgbase = freerouting-zh-cn
 	pkgdesc = Advanced PCB autorouter
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/freerouting/freerouting
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = freerouting-zh-cn
 	conflicts = freerouting
 	options = !strip
 	options = !debug
-	source = freerouting::git+https://github.com/freerouting/freerouting.git#tag=v2.2.1
-	sha256sums = 795dffb39894072c02bcf12bc90b47c3b7e5c1b6b6b70d0c418e30d9666e5e62
+	source = freerouting::git+https://github.com/freerouting/freerouting.git#tag=v2.2.2
+	sha256sums = ce062c07a388cc00039d395577e0906157111034e8f897503bdf7fac0984ad91
 
 pkgname = freerouting-zh-cn
