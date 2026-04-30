@@ -1,0 +1,17 @@
+pkgbase = python-ko-speech-tools
+	pkgdesc = Korean speech/NLP tools
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/eginhard/ko-speech-tools
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python
+	optdepends = python-mecab-ko: for Korean G2P support
+	source = https://files.pythonhosted.org/packages/source/k/ko_speech_tools/ko_speech_tools-0.1.0.tar.gz
+	sha256sums = dcc5af8bd9f2a9d2260dcc36617d6de65106be625958302525068e81f94b2b1d
+
+pkgname = python-ko-speech-tools
