@@ -4,8 +4,8 @@
 
 _name=elmerfem
 pkgname=elmerfem-gui
-pkgver=26.1
-pkgrel=3
+pkgver=26.2.1
+pkgrel=1
 pkgdesc="Graphical user interface for the Elmer software suit"
 arch=('x86_64')
 url="https://www.elmerfem.org"
@@ -26,7 +26,6 @@ makedepends=(
     'nlohmann-json'
     'utf8cpp'
 )
-
 depends=(
     'boost-libs'
     'freetype2'
@@ -47,18 +46,15 @@ source=(
     'dep_clean.patch'
 )
 b2sums=(
-    'a4bcbfb84a043712f28114087f8a67b47ab2f8b5eeda637e0211eaa96d7ff6928d27ab7e927c8cd2733ffa3e186613ca245ed3bace601ad4f68eec9a8a82efb3'
+    '1f704736b11a652166e212ae09de1bbd7a604da4c726c7d46e1dd2b838461c2a834a046e36b4ec5ce7fbb0aef8c17e70b16978f0a785fd16a322c2e5236a59f5'
     'd1855a061a041f65e035956d4f05e235a381f65b10468294e674f70565b2836c8258b6d7d9d14f3d42bd8155170511aad20042e84ff21d99d4b88fa36f5467fd'
     'c740c0855379e27e5a8e9f7dc9a3c5a62f7cd002fefcc5e33ee4f7a4aaff9b19e9c4721d368652c81f50e5498e25f77bf0a87b6866de36af2195602fc430915b'
 )
-_patches=(
-    # Fix close window
-    3639b508ecaf6a4bb6698aea75144c540e167838
-)
+_patches=()
 
 prepare() {
     cd $_name
-    git cherry-pick -n "${_patches[@]}"
+    # git cherry-pick -n "${_patches[@]}"
     patch -p1 -i ../dep_clean.patch
 }
 
