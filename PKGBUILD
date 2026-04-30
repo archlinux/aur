@@ -1,19 +1,20 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
 url="https://github.com/Plan-B-Development/control-ofc-gui"
 license=('MIT')
 depends=('control-ofc-daemon>=1.5.0' 'python' 'pyside6' 'python-httpx'
-         'python-pyqtgraph' 'python-numpy' 'python-colorama')
+         'python-pyqtgraph' 'python-numpy' 'python-colorama'
+         'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # Placeholder — recomputed post-tag-push. Fix with a follow-up
-# "fix: update PKGBUILD checksum for v1.9.2" commit.
-sha256sums=('f6ff894dfc6ea99701059bd5df3df7abb1cb2adf7a4060666f7801bec5e3e309')
+# "fix: update PKGBUILD checksum for v1.9.3" commit.
+sha256sums=('c30e0f0b4bc7217dcbf4f3897ecd25e908793fed0438563028b52a208b0b2ea4')
 
 build() {
     cd "$pkgname-$pkgver"
