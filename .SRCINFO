@@ -1,0 +1,16 @@
+pkgbase = content_foundry-bin
+	pkgdesc = Content Foundry terminal UI and API CLI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/elpdev/content_foundry-cli
+	license = MIT
+	conflicts = content_foundry
+	provides = content_foundry
+	arch = aarch64
+	source_aarch64 = https://github.com/elpdev/content_foundry-cli/releases/download/v1.0.0/content_foundry_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 17f2c7fa5a5d369b277bb55bda7441b9b8cfbc48ec427134e9c59717b8306467
+	arch = x86_64
+	source_x86_64 = https://github.com/elpdev/content_foundry-cli/releases/download/v1.0.0/content_foundry_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = eaf0e7fc4539f60b3cb4e66385cd956809a99b3a7745ac1c324becca5b41b44e
+	
+pkgname = content_foundry-bin
