@@ -1,14 +1,14 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 
 pkgname=spicat
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="full-duplex SPI transactions from the command line"
-url="https://github.com/fusion-engineering/spicat"
+url="https://github.com/de-vri-es/spicat"
 arch=(x86_64 i686 aarch64)
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/fusion-engineering/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('458a1dfc14ced0b968bb3fbe85ee3977deae135ac0c6f2768165496a3ff8d82e8e2f198fc67fa7c55b1e176b5858a50bee5b5d6fb5e81ceebb2e3af7768d7b23')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/de-vri-es/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('5dc0c901df148896dc18bbd7e7754348420263a6b1e8b9bfb08dde27b36e841ce8d4d0db3f506e495baa8a6d54fe74f688c78be215cd104d5e3ccece80a22a14')
 
 license=(BSD)
 
