@@ -1,0 +1,19 @@
+pkgbase = python-monotonic-alignment-search
+	pkgdesc = Monotonically align text and speech
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/eginhard/monotonic_alignment_search
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-pytorch
+	source = https://files.pythonhosted.org/packages/source/m/monotonic_alignment_search/monotonic_alignment_search-0.2.1.tar.gz
+	sha256sums = 54935e3c5cb82497e5ac81167ef20e95bf62e8b46402eb2936da5e92612b0765
+
+pkgname = python-monotonic-alignment-search
