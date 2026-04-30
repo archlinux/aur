@@ -26,5 +26,5 @@ md5sums=('a1288ac110d8424f39b9eb431a7097b0')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make "DESTDIR=$pkgdir/" install
+	make "DESTDIR=$pkgdir/" install install_systemd_files
 }
