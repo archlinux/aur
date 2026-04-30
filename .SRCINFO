@@ -1,6 +1,6 @@
 pkgbase = openixsuit-bin
 	pkgdesc = Tools to Flash Allwinner Firmware to Devices like PhoenixSuit and LiveSuit
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/YuzukiTsuru/OpenixSuit
 	install = openixsuit-bin.install
@@ -28,9 +28,9 @@ pkgbase = openixsuit-bin
 	replaces = sunxi-livesuite
 	options = !strip
 	options = !debug
-	source = https://github.com/YuzukiTsuru/OpenixSuit/releases/download/v0.4.6/OpenixSuit_0.4.6_amd64.deb
+	source = https://github.com/YuzukiTsuru/OpenixSuit/releases/download/v0.4.7/OpenixSuit_0.4.7_amd64.deb
 	source = openixsuit-bin.install
-	sha256sums = 35f8481cc0afb19cbd764dc56b8e4b42e8ef478028db0c1fcd82cc641a3f9da6
+	sha256sums = 291a4b4dd84b4f776788b9bcb3c8e79fbd69cfcd2a47c88731c4a7dbe22b2503
 	sha256sums = 763f59e338643858260b27c93c510541616de1f81f4b7946c9dc81116bbba33f
 
 pkgname = openixsuit-bin
