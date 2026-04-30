@@ -1,6 +1,6 @@
 # Maintainer: Nareg der Levonean <naregderlevonean@gmail.com>
 pkgname=hyprmousetrap-git
-pkgver=0.2.0
+pkgver=1.00
 pkgrel=1
 pkgdesc="Hot-corner and edge-action daemon for Hyprland"
 arch=('x86_64' 'aarch64')
