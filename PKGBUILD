@@ -2,8 +2,8 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=mingw-w64-crt-msvcrt
-pkgver=13.0.0
-pkgrel=2
+pkgver=14.0.0
+pkgrel=1
 pkgdesc='MinGW-w64 CRT for Windows (w/ MSVCRT as C runtime library)'
 arch=('any')
 url='http://mingw-w64.sourceforge.net'
@@ -15,7 +15,7 @@ conflicts=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 validpgpkeys=('CAF5641F74F7DFBA88AE205693BDB53CD4EBC740')
 source=(https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${pkgver}.tar.bz2{,.sig})
-sha512sums=('39a22bd92465f571df1d90ac80b88dc6846998f71e4b7db79d1c9aa6e04cb3e41b632990a7238fc2c384ea67e4a77d103230db2c0d741869340d24ea79b6dda8'
+sha512sums=('17378a0e2abbbb688468a78cb0ba261f9001a1bc6e7d0270c24c4b8b13e5c6513e8fb8e617d08102fbc772c288ad81ec3a43ca756ed28f17cc5543f717a8bb6d'
             'SKIP')
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
