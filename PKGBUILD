@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-server
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A game about cooking (server)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/a
         "hurrycurry-registry.service"
         "tmpfiles.conf"
         "sysusers.conf")
-sha256sums=('1aad54b7167b528d38febd2366033ea851a2990855d6117296c5eab70127cff7'
+sha256sums=('d0c4fd51128deced60f115e9e3e61c8170be4c3ebd79439b7a9ab3e91e861a64'
             '2e10c8882ef4847586f03ac5feb469294c1b2304928f8df41db12a1d84569eb7'
             'dec75b020f3a0bfc5c22f0fa013fe03d06feab608f9d4a42fb46d05dbed56844'
             '47c6bd933fc96d08322d78a14c7932707b1dd1be2c1bb6eda2d212973f96aac9'
