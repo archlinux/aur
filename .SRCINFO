@@ -1,0 +1,13 @@
+pkgbase = emacs-llama
+	pkgdesc = Compact syntax for short lambda in Emacs Lisp
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/tarsius/llama
+	arch = any
+	license = GPL-3.0-or-later
+	depends = emacs
+	depends = emacs-compat
+	source = emacs-llama-1.0.4.tar::https://elpa.nongnu.org/nongnu/llama-1.0.4.tar
+	sha256sums = f0749ee17da0ec37eb76f6fe54baa73539754554dc6b7d2dc9c4a133995eb94f
+
+pkgname = emacs-llama
