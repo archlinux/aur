@@ -1,6 +1,6 @@
 pkgbase = pointer-rs-bin
 	pkgdesc = Terminal file manager written in Rust
-	pkgver = 0.1.38
+	pkgver = 0.1.42
 	pkgrel = 1
 	url = https://github.com/isene/pointer
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = pointer-rs-bin
 	provides = pointer
 	conflicts = pointer-rs
 	options = !strip
-	source = README-0.1.38.md::https://raw.githubusercontent.com/isene/pointer/v0.1.38/README.md
+	source = README-0.1.42.md::https://raw.githubusercontent.com/isene/pointer/v0.1.42/README.md
 	sha256sums = 35ec3edbd241031a733f32eba9ce9a735e83030a24e0504c13a2e91577fb86f1
-	source_x86_64 = pointer-x86_64-0.1.38::https://github.com/isene/pointer/releases/download/v0.1.38/pointer-linux-x86_64
-	sha256sums_x86_64 = 7ad6b40d56d186b658875a955bb700a6d81d9d638cb45d1fbfd9705561590504
-	source_aarch64 = pointer-aarch64-0.1.38::https://github.com/isene/pointer/releases/download/v0.1.38/pointer-linux-aarch64
-	sha256sums_aarch64 = 1f6bb0879e908db3cc5103d6a66d6d88cb41e80a6140f8874811e8687e4ff84c
+	source_x86_64 = pointer-x86_64-0.1.42::https://github.com/isene/pointer/releases/download/v0.1.42/pointer-linux-x86_64
+	sha256sums_x86_64 = 067294d31098960e4d2c17afceafe4141d2fe0e1142fbd96b98f53ed23987851
+	source_aarch64 = pointer-aarch64-0.1.42::https://github.com/isene/pointer/releases/download/v0.1.42/pointer-linux-aarch64
+	sha256sums_aarch64 = db77fa69d7fb70fa0e359e3c46509d8986f4bc50bce4a47ac7e9f63cc4b0a5ba
 
 pkgname = pointer-rs-bin
