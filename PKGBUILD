@@ -1,7 +1,7 @@
 # Maintainer: BeetleBot <nikarabilla@gmail.com>
 pkgname=fount-bin
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based Fountain screenplay editor (Binary)"
 arch=('x86_64')
 url="https://github.com/BeetleBot/FountCLI"
