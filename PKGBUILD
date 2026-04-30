@@ -1,7 +1,7 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-git
 _repo=Veila
-pkgver=0.1.7.r0.g0000000
+pkgver=0.1.8.r0.g0000000
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker (latest git)"
 arch=('x86_64')
@@ -42,7 +42,6 @@ package() {
     "$pkgdir/usr/lib/systemd/user/veilad.service"
 
   install -d "$pkgdir/usr/share/veila"
-  cp -R assets/bg "$pkgdir/usr/share/veila/"
   cp -R assets/fonts "$pkgdir/usr/share/veila/"
   cp -R assets/icons "$pkgdir/usr/share/veila/"
   cp -R assets/systemd "$pkgdir/usr/share/veila/"
