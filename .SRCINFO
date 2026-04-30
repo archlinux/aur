@@ -1,6 +1,6 @@
 pkgbase = wormix
 	pkgdesc = ASCII artillery game for the terminal — physics, wind, sound, music
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/nickknight/wormix
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = wormix
 	makedepends = make
 	depends = python
 	optdepends = mpv: smoother background music with live volume control
-	source = wormix-0.1.0.tar.gz::https://codeberg.org/nickknight/wormix/archive/v0.1.0.tar.gz
-	sha256sums = 24fc453f408136911dc6c07bcbf23b29c3ebf7a62a0750176e08f4cfd2b4e04d
+	source = wormix-0.2.0.tar.gz::https://codeberg.org/nickknight/wormix/archive/v0.2.0.tar.gz
+	sha256sums = 1e3f08742aacbc29bbf817d3301b7c94c03eaffa51938dc54590849a247ef46f
 
 pkgname = wormix
