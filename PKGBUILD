@@ -47,3 +47,4 @@ package() {
         install -Dm644 "hyprspin.lua" "$pkgdir/usr/share/$_pkgname/hyprspin.lua.example"
     fi
 }
+
