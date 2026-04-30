@@ -1,6 +1,6 @@
 # Maintainer: figr <figr@gmx.de>
 pkgname=music-ratatui-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A terminal musicplayer build with Ratatui."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 
 )
 options=('!lto')
-sha256sums=('669591e264ee47d9673d614bd967704586b4903e18273aede7f6f3f5836c8d06'
+sha256sums=('33db2239c2c79391b5ac9ecdaf1f440cb1b6cdf08e18b583c8d5c04e08cdb40c'
             '7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3')
 
 
