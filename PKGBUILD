@@ -1,7 +1,7 @@
 pkgname=fmatrix-git
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
-pkgdesc="Fast smooth Matrix rain terminal emulator written in C++"
+pkgdesc="Fast smooth Matrix rain written in C++"
 arch=('x86_64')
 url="https://github.com/ffacece/fmatrix_project"
 license=('MIT')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "fmatrix_project"
-  printf "1.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.2.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
