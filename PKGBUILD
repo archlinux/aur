@@ -13,30 +13,32 @@ depends=(
   python-typer
 )
 makedepends=(
-  python-build
+  cargo
   python-installer
-  python-wheel
   python-maturin
   rust
-  cargo
-)
-checkdepends=(
-  python-pytest
 )
 optdepends=(
   'tokount: local directory analysis with ghlang local'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-$pkgver.tar.gz")
 sha256sums=('290c17bef91ce3e46c06eca356643300b21f2cfd39e30b91d3dcbcb846e015ab')
+options=(!lto)
+
+prepare() {
+  cd "$srcdir/$_pypiname-$pkgver"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
   cd "$srcdir/$_pypiname-$pkgver"
-  maturin build --release --strip
+  export CARGO_TARGET_DIR=target
+  maturin build --locked --release --strip
 }
 
 check() {
   cd "$srcdir/$_pypiname-$pkgver"
-  pytest
+  cargo test --frozen
 }
 
 package() {
