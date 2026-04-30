@@ -1,6 +1,6 @@
 pkgbase = rsync-reflink-git
 	pkgdesc = A fast and versatile file copying tool for remote and local files - with reflink support
-	pkgver = 3.4.0.r6.g68e9add
+	pkgver = 3.4.2.r9.g79fd7d5
 	pkgrel = 1
 	url = https://github.com/RsyncProject/rsync
 	arch = x86_64
@@ -13,18 +13,12 @@ pkgbase = rsync-reflink-git
 	depends = popt
 	depends = zstd
 	optdepends = python: for rrsync
-	optdepends = python-braceexpand: for rrsync
-	provides = rsync=3.4.0
+	provides = rsync=3.4.2
 	conflicts = rsync
 	backup = etc/rsyncd.conf
-	backup = etc/xinetd.d/rsync
 	source = rsyncproject.rsync::git+https://github.com/RsyncProject/rsync.git
-	source = reflink-10ab5e5-clone-dest.patch::https://github.com/RsyncProject/rsync-patches/raw/10ab5e57446d10ef641ceb045ef3094e7d2bd439/clone-dest.diff
-	source = reflink-10ab5e5-detect-renamed.patch::https://github.com/RsyncProject/rsync-patches/raw/10ab5e57446d10ef641ceb045ef3094e7d2bd439/detect-renamed.diff
-	source = reflink-10ab5e5-detect-renamed-lax.patch::https://github.com/RsyncProject/rsync-patches/raw/10ab5e57446d10ef641ceb045ef3094e7d2bd439/detect-renamed-lax.diff
+	source = reflink-5376e25-clone-dest.patch::https://github.com/RsyncProject/rsync-patches/raw/5376e25083c0b4d39541bbebddf90e6ab8ffce6b/clone-dest.diff
 	source = rsyncd.conf
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 733ccb571721433c3a6262c58b658253ca6553bec79c2bdd0011810bb4f2156b

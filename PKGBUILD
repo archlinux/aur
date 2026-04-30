@@ -1,13 +1,8 @@
 # Maintainer:
 
-## links
-# https://rsync.samba.org/
-# https://github.com/RsyncProject/rsync
-# https://github.com/RsyncProject/rsync-patches
-
 _pkgname="rsync"
 pkgname="$_pkgname-reflink-git"
-pkgver=3.4.0.r6.g68e9add
+pkgver=3.4.2.r9.g79fd7d5
 pkgrel=1
 pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support'
 url='https://github.com/RsyncProject/rsync'
@@ -23,7 +18,6 @@ depends=(
 )
 optdepends=(
   'python: for rrsync'
-  'python-braceexpand: for rrsync' # AUR
 )
 makedepends=(
   'git'
@@ -33,14 +27,7 @@ makedepends=(
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
-backup=(
-  'etc/rsyncd.conf'
-  'etc/xinetd.d/rsync'
-)
-
-_pkgsrc="rsyncproject.rsync"
-source=("$_pkgsrc"::"git+$url.git")
-sha256sums=('SKIP')
+backup=('etc/rsyncd.conf')
 
 _patch_id() {
   local _url _response _commit
@@ -51,14 +38,13 @@ _patch_id() {
 }
 _patch_id=$(_patch_id)
 
-source+=(
+_pkgsrc="rsyncproject.rsync"
+source=(
+  "$_pkgsrc"::"git+$url.git"
   "reflink-${_patch_id::7}-clone-dest.patch"::"$url-patches/raw/${_patch_id}/clone-dest.diff"
-  "reflink-${_patch_id::7}-detect-renamed.patch"::"$url-patches/raw/${_patch_id}/detect-renamed.diff"
-  "reflink-${_patch_id::7}-detect-renamed-lax.patch"::"$url-patches/raw/${_patch_id}/detect-renamed-lax.diff"
   'rsyncd.conf'
 )
-sha256sums+=(
-  'SKIP'
+sha256sums=(
   'SKIP'
   'SKIP'
   '733ccb571721433c3a6262c58b658253ca6553bec79c2bdd0011810bb4f2156b'
@@ -83,6 +69,10 @@ prepare() {
       echo
     fi
   done
+
+  # For historic reasons we install the systemd unit as `rsyncd.*`, instead of
+  # just `rsync.*`. Let's make it conflict as expected with these names.
+  sed -i '/^Conflicts=/s|rsync.service|rsyncd.service|' packaging/systemd/rsync.socket
 }
 
 build() {
@@ -109,23 +99,14 @@ package() {
   cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 \
-    "$srcdir/rsyncd.conf" \
-    "$pkgdir/etc/rsyncd.conf"
+  # install support scripts to doc
+  for i in support/*; do
+    install -Dm0644 "$i" "$pkgdir/usr/share/doc/rsync/$i"
+  done
+  install -Dm644 "tech_report.tex" "$pkgdir/usr/share/doc/rsync/tech_report.tex"
 
-  install -Dm644 \
-    "packaging/lsb/rsync.xinetd" \
-    "$pkgdir/etc/xinetd.d/rsync"
-
-  install -Dm644 \
-    "packaging/systemd/rsync.service" \
-    "$pkgdir/usr/lib/systemd/system/rsyncd.service"
-
-  install -Dm644 \
-    "packaging/systemd/rsync.socket" \
-    "$pkgdir/usr/lib/systemd/system/rsyncd.socket"
-
-  install -Dm644 \
-    "packaging/systemd/rsync@.service" \
-    "$pkgdir/usr/lib/systemd/system/rsyncd@.service"
+  install -Dm644 ../rsyncd.conf "$pkgdir/etc/rsyncd.conf"
+  install -Dm644 packaging/systemd/rsync.service "$pkgdir/usr/lib/systemd/system/rsyncd.service"
+  install -Dm644 packaging/systemd/rsync.socket "$pkgdir/usr/lib/systemd/system/rsyncd.socket"
+  install -Dm644 packaging/systemd/rsync@.service "$pkgdir/usr/lib/systemd/system/rsyncd@.service"
 }
