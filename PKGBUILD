@@ -2,12 +2,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=10.0-20260424
+_srctag=11.0-20260428
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
-_monover=10.4.1
-_xaliaver=0.4.8
+_monover=11.0.0
+_xaliaver=0.4.9
 pkgrel=1
 epoch=1
 
@@ -30,131 +30,131 @@ arch=(x86_64 x86_64_v3)
 options=(!staticlibs !lto !debug emptydirs pestrip)
 license=('custom')
 depends=(
-  attr            lib32-attr
-#  blas            lib32-blas
+  attr
+#  blas
   cabextract
   desktop-file-utils
-  fontconfig      lib32-fontconfig
-  freetype2       lib32-freetype2
-  gcc-libs        lib32-gcc-libs
-  gettext         lib32-gettext
-  glib2           lib32-glib2
-#  lapack          lib32-lapack
-  libgudev        lib32-libgudev
-  libpcap         lib32-libpcap
-  libsoup         lib32-libsoup
-  libunwind       lib32-libunwind
-  libvpx          lib32-libvpx
-  libxcursor      lib32-libxcursor
-  libxkbcommon    lib32-libxkbcommon
-  libxi           lib32-libxi
-  libxrandr       lib32-libxrandr
-  lzo             lib32-lzo
+  fontconfig
+  freetype2
+  gcc-libs
+  gettext
+  glib2
+#  lapack
+  libgudev
+  libpcap
+  libsoup
+  libunwind
+  libvpx
+  libxcursor
+  libxkbcommon
+  libxi
+  libxrandr
+  lzo
   python
   python-six
-  speex           lib32-speex
+  speex
 # Start of old steam-native-runtime
-  atk             lib32-atk
-  cairo           lib32-cairo
-  curl            lib32-curl
-  dbus-glib       lib32-dbus-glib
-  freeglut        lib32-freeglut
-  gdk-pixbuf2     lib32-gdk-pixbuf2
-  glu             lib32-glu
-  lcms2           lib32-lcms2
-  libcaca         lib32-libcaca
-  libcanberra     lib32-libcanberra
-  dbus            lib32-dbus
-  libdrm          lib32-libdrm
-  libice          lib32-libice
+  atk
+  cairo
+  curl
+  dbus-glib
+  freeglut
+  gdk-pixbuf2
+  glu
+  lcms2
+  libcaca
+  libcanberra
+  dbus
+  libdrm
+  libice
   libibus
-  libnm           lib32-libnm
-  libusb          lib32-libusb
-  libvdpau        lib32-libvdpau
-  libvorbis       lib32-libvorbis
-  libxft          lib32-libxft
-  libxmu          lib32-libxmu
-  libxrender      lib32-libxrender
-  libxtst         lib32-libxtst
-  nspr            lib32-nspr
-  openal          lib32-openal
-  pango           lib32-pango
-  sdl2            lib32-sdl2
-  sdl2_image      lib32-sdl2_image
-  sdl2_mixer      lib32-sdl2_mixer
-  sdl2_ttf        lib32-sdl2_ttf
-  pipewire        lib32-pipewire
+  libnm
+  libusb
+  libvdpau
+  libvorbis
+  libxft
+  libxmu
+  libxrender
+  libxtst
+  nspr
+  openal
+  pango
+  sdl2
+  sdl2_image
+  sdl2_mixer
+  sdl2_ttf
+  pipewire
   librsvg
-  libsm           lib32-libsm
-  libtheora       lib32-libtheora
-  vulkan-driver   lib32-vulkan-driver
+  libsm
+  libtheora
+  vulkan-driver
 # End of old steam-native-runtime
   unzip
-  wayland         lib32-wayland
+  wayland
 )
 makedepends=(
   afdko
-  alsa-lib              lib32-alsa-lib
+  alsa-lib
   clang
   cmake
   ffmpeg
   fontforge
-  giflib                lib32-giflib
+  giflib
   git
   glib2-devel
   glslang 
-  gnutls                lib32-gnutls
-  gtk3                  lib32-gtk3
+  gnutls
+  gtk3
   libgphoto2
-  libpulse              lib32-libpulse
-  libva                 lib32-libva
-  libxcomposite         lib32-libxcomposite
-  libxinerama           lib32-libxinerama
-  libxml2               lib32-libxml2
-  libxxf86vm            lib32-libxxf86vm
+  libpulse
+  libva
+  libxcomposite
+  libxinerama
+  libxml2
+  libxxf86vm
   lld
-  mesa                  lib32-mesa
-  mesa-libgl            lib32-mesa-libgl
+  mesa
+  mesa-libgl
   meson
   mingw-w64-gcc
   mingw-w64-tools
   nasm
   opencl-headers
-  opencl-icd-loader     lib32-opencl-icd-loader
-  pcsclite              lib32-pcsclite
+  opencl-icd-loader
+  pcsclite
   perl
   perl-json
   rsync
-  rust                  lib32-rust-libs
+  rust
   python-pefile
   python-setuptools-scm
   samba
   unixodbc
-  v4l-utils             lib32-v4l-utils
+  v4l-utils
   vulkan-headers
-  vulkan-icd-loader     lib32-vulkan-icd-loader
+  vulkan-icd-loader
   wayland-protocols
   wget
   xorg-util-macros
 )
 optdepends=(
-  alsa-lib              lib32-alsa-lib
-  alsa-plugins          lib32-alsa-plugins
+  alsa-lib
+  alsa-plugins
   ffmpeg
-  gnutls                lib32-gnutls
-  gtk3                  lib32-gtk3
+  gnutls
+  gtk3
   libgphoto2
-  libpulse              lib32-libpulse
-  libva                 lib32-libva
-  libxcomposite         lib32-libxcomposite
-  libxinerama           lib32-libxinerama
-  opencl-icd-loader     lib32-opencl-icd-loader
-  pcsclite              lib32-pcsclite
+  libpulse
+  libva
+  libxcomposite
+  libxinerama
+  opencl-icd-loader
+  pcsclite
   samba
   steam
   unixodbc
-  v4l-utils             lib32-v4l-utils
-  vulkan-icd-loader     lib32-vulkan-icd-loader
+  v4l-utils
+  vulkan-icd-loader
 )
 optdepends+=(
   NTSYNC-MODULE
@@ -225,8 +225,10 @@ prepare() {
         gst-orc
         gst-plugins-rs
         gstreamer
+        libsoup
         libxml2
         meson
+        nghttp2
         nvidia-libs/dxvk-nvapi
         nvidia-libs/nvcuda
         nvidia-libs/nvcuda32
@@ -288,7 +290,8 @@ build() {
         --build-name="${pkgname}" \
         --without-wayland-libs \
         --without-libpcap \
-        --without-tts
+        --without-tts \
+        --enable-wow64
 
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
@@ -334,9 +337,9 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('1afb0a589b4355019c3972c86d43c4f07714dee36ea0367e55d529c3f6d8159bcd99b129688c14d1ef4a0a5485850e07140d4a7436b8e0d957585e1a15cd779a'
+b2sums=('d9a4b8cee87655a3fe09aae0ec6e076a4d8e6ed2ca45a8e8cc8b4f6753e9a8d1ec09a106fe3a889e326da338f8f38d7a6ce7f30681d657e869bd4b47f8734efd'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
-        '9ca53dee272470806432c61587080e6dc04fd9eaafde4f55f5d57d5557ec6859d77a74b74c9e3f472da04b8ace9609f0927573faab368a25249c76b3e37e65c1'
-        '0780740dd2f07de5c00e0c8d1823bc24e31954d6ccb7875678957aea5e095d5eb8dc13ea9cc56a00abfccdcad59e21150e49fe515815f50e0bd38b50f6ec940c'
+        '76bdc625c6c14a6c3e3892649c1fbb7ed127d8ce90079a3f8d317c8e6fd567c763d71dd838f8422c921ed315e9d2735849b223a94a9517ad73d0734d313c1a6f'
+        '5a492e5bd62a8116c2571348f01e1ea9dd70e2a185f0891a27be4091c8f182ce55e48f075fe46badf80e0f5b831a1d5993b2b6e1f130f4d6b00e3ef77254d00d'
         'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b')
