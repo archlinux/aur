@@ -1,7 +1,8 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.8
+_pkgver=13.0.0-rc.9
+_branding=dr460nized
 
 __pkgname=$_pkgname
 
@@ -68,14 +69,13 @@ source_x86_64=(
 source_aarch64=(
   $__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz
 )
-sha256sums=('91137ea548114e1496000e78ee2cf7712df7c00750d5956daba94c04fe8e5891')
-sha256sums_x86_64=('883070c1939d9c1d3f6e6c52e77eeba149146bc8522cfb0844b6154a26d89e39')
-sha256sums_aarch64=('1d1bcedbd1061cec7bbda7fc3a4899255127dbb8cfb16fa25d0bfaeabbdca3cf')
+sha256sums=('d4e3dee763e29d58e2238c2fe8c2883d7d2f8a84298a5060dd2cfbc8d709dcd3')
+sha256sums_x86_64=('382bff5c3a5506c008d9286a43552b2f163db80522f576ee7cfedf683a784528')
+sha256sums_aarch64=('f021eb52b885a69194b53e1250a862b6225c248eee7295f58c95615183ae729d')
 noextract=(
   $__pkgname-v$_pkgver.linux-x64.tar.xz
   $__pkgname-v$_pkgver.linux-arm64.tar.xz
 )
-
 
 package() {
   mkdir -p "$pkgdir/usr/lib"
@@ -118,8 +118,8 @@ END
 
   # Install desktop icons and metadata
   local i
-  for i in 16 32 48 64 128; do
-    install -Dvm644 "$appdir/browser/chrome/icons/default/default$i.png" \
+  for i in 16 22 24 32 48 64 128 256; do
+    install -Dvm644 "$_pkgname/branding/$_branding/default$i.png" \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 
