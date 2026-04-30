@@ -1,7 +1,7 @@
 # Maintainer: Hamza Gbada <hamza.gbada@gmail.com>
 
 pkgname=docker-model-bin
-pkgver=1.1.37
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="Docker CLI plugin for running AI models (prebuilt binary; deprecated, use 'docker-model' source package instead)"
 optdepends=('docker-model: source-built alternative (recommended)')
