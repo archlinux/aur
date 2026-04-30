@@ -1,0 +1,13 @@
+pkgbase = n3426
+	pkgdesc = A neon-themed markdown and media vault
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yourusername/n3426
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pyside6
+	source = n3426-0.1.0.tar.gz::https://github.com/yourusername/n3426/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = n3426
