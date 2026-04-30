@@ -3,8 +3,8 @@
 
 _pkgname=twitch-cli
 pkgname=$_pkgname-git
-pkgver=1.1.25.r8.fd7dac6
-pkgrel=2
+pkgver=1.1.24.r8.fd7dac6
+pkgrel=3
 pkgdesc='The official Twitch CLI to make developing on Twitch easier'
 arch=(x86_64)
 url=https://github.com/twitchdev/twitch-cli
