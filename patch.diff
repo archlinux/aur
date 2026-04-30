@@ -1,0 +1,105 @@
+diff --git a/Makefile b/Makefile
+index 9b3cba5..d75669f 100755
+--- a/Makefile
++++ b/Makefile
+@@ -2227,6 +2227,8 @@ ifeq ($(CONFIG_RTL8822C), y)
+ include $(src)/rtl8822c.mk
+ endif
+ 
++subdir-ccflags-y += $(EXTRA_CFLAGS)
++
+ rtk_core :=	core/rtw_cmd.o \
+ 		core/rtw_security.o \
+ 		core/rtw_debug.o \
+diff --git a/include/osdep_service_linux.h b/include/osdep_service_linux.h
+index 75fbd79..5dda39b 100755
+--- a/include/osdep_service_linux.h
++++ b/include/osdep_service_linux.h
+@@ -353,7 +353,7 @@ static inline void timer_hdl(unsigned long cntx)
+ #endif
+ {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
+-	_timer *ptimer = from_timer(ptimer, in_timer, timer);
++	_timer *ptimer = timer_container_of(ptimer, in_timer, timer);
+ #else
+ 	_timer *ptimer = (_timer *)cntx;
+ #endif
+@@ -382,7 +382,11 @@ __inline static void _set_timer(_timer *ptimer, u32 delay_time)
+ 
+ __inline static void _cancel_timer(_timer *ptimer, u8 *bcancelled)
+ {
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
++	*bcancelled = timer_delete_sync(&ptimer->timer) == 1 ? 1 : 0;
++#else
+ 	*bcancelled = del_timer_sync(&ptimer->timer) == 1 ? 1 : 0;
++#endif
+ }
+ 
+ static inline void _init_workitem(_workitem *pwork, void *pfunc, void *cntx)
+diff --git a/os_dep/linux/ioctl_cfg80211.c b/os_dep/linux/ioctl_cfg80211.c
+index 2996ac9..0e8f646 100755
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -3247,8 +3247,15 @@ exit:
+ 	return ret;
+ }
+ 
+-static int cfg80211_rtw_set_wiphy_params(struct wiphy *wiphy, u32 changed)
++static int cfg80211_rtw_set_wiphy_params(struct wiphy *wiphy,
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 0))
++	int radio_idx,
++#endif
++	u32 changed)
+ {
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 0))
++	(void)radio_idx;
++#endif
+ #if 0
+ 	struct iwm_priv *iwm = wiphy_to_iwm(wiphy);
+ 
+@@ -4143,12 +4150,21 @@ static int cfg80211_rtw_set_txpower(struct wiphy *wiphy,
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
+ 	struct wireless_dev *wdev,
+ #endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 0))
++	int radio_idx,
++#endif
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 36)) || defined(COMPAT_KERNEL_RELEASE)
+ 	enum nl80211_tx_power_setting type, int mbm)
+ #else
+ 	enum tx_power_setting type, int dbm)
+ #endif
+ {
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
++	(void)wdev;
++#endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 0))
++	(void)radio_idx;
++#endif
+ #if 0
+ 	struct iwm_priv *iwm = wiphy_to_iwm(wiphy);
+ 	int ret;
+@@ -4183,11 +4199,23 @@ static int cfg80211_rtw_get_txpower(struct wiphy *wiphy,
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
+ 	struct wireless_dev *wdev,
+ #endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 0))
++	int radio_idx,
++#endif
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0))
+ 	unsigned int link_id,
+ #endif
+ 	int *dbm)
+ {
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
++	(void)wdev;
++#endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 0))
++	(void)radio_idx;
++#endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0))
++	(void)link_id;
++#endif
+ 	RTW_INFO("%s\n", __func__);
+ 
+ 	*dbm = (12);
