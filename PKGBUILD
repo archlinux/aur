@@ -5,7 +5,7 @@ _pkgname=presto
 pkgname=${_pkgname}-bin
 pkgdesc="Presto is a dependency manager for PHP and drop-in-replacement for Composer"
 
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -29,8 +29,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
 sha256sums=('fc776d17dc4517972c9be767e1ec355c324867bc92bfa9b49a9403ad3770a7e6'
             '73496093fa9eb666ddd2b81bde20166ff90a4e68c61f0c7d64c67b2d9cc4022d')
-sha256sums_x86_64=('b6b116665e1ad5df403713e8b586d7eeda30ce86451f07d3d4b84f7412e5bc32')
-sha256sums_aarch64=('265b43462d4048c2408095d1bb59ec3dda2009299879ba0bb6694882786f3ee5')
+sha256sums_x86_64=('783461e7e3e374e607959dcfc3b374386ae03b836c804a191660097688bfa376')
+sha256sums_aarch64=('f8501fa2391af6335c4713f52ab56cc45d1a8184d4e425852768911cf918a966')
 
 
 package() {
