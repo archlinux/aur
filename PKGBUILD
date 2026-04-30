@@ -3,12 +3,12 @@
 _pkgname=openjph
 pkgname=mingw-w64-${_pkgname}
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (mingw-w64)'
 url='https://github.com/aous72/OpenJPH'
 arch=(any)
 license=('BSD-2-Clause')
-depends=('mingw-w64-crt' 'mingw-w64-libtiff')
+depends=('mingw-w64-crt') # 'mingw-w64-libtiff'
 makedepends=('mingw-w64-cmake' 'ninja')
 checkdepends=('mingw-w64-wine' 'python')
 options=('staticlibs' '!buildflags' '!strip')
@@ -22,7 +22,11 @@ sha256sums=('f6768e927d8e4e4884a2efcf500a88d1b6714a48d69516332a9256803a3c8343'
             'a7c57736232b778f77564862495d46be5a7349f379b2330d0342efe7ca7ffdb3')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=None )
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=None
+	-DOJPH_ENABLE_TIFF_SUPPORT=OFF # mingw-w64-libtiff needs to generate cmake targets.
+	-DOJPH_DISABLE_AVX2=ON # Tests crashing.
+	-DOJPH_DISABLE_AVX512=ON # Tests crashing.
+)
 _srcdir="OpenJPH-${pkgver}"
 
 prepare() {

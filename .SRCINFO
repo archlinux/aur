@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-openjph
 	pkgdesc = Open-source implementation of JPEG2000 Part-15 (mingw-w64)
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aous72/OpenJPH
 	arch = any
 	license = BSD-2-Clause
@@ -10,7 +10,6 @@ pkgbase = mingw-w64-openjph
 	makedepends = mingw-w64-cmake
 	makedepends = ninja
 	depends = mingw-w64-crt
-	depends = mingw-w64-libtiff
 	options = staticlibs
 	options = !buildflags
 	options = !strip
