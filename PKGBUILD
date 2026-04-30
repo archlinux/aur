@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=powerTCR
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Model-Based Comparative Analysis of the TCR Repertoire'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cdd976e97af364a08af49e954f477b438072a20a2e7099c30d2dec5f1e43ecc8')
+sha256sums=('488864ce385981a2aa37948758744d1a0a32e08c45948baaf68338f716d3e271')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
