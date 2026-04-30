@@ -1,0 +1,5 @@
+[see-bin]
+source = "github"
+github = "guilhermeprokisch/see"
+use_latest_release = true
+prefix = "v"
