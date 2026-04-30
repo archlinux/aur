@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rpx
-_pkgver=2.18.0
+_pkgver=2.20.0
 pkgname=r-${_pkgname,,}
-pkgver=2.18.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='R Interface to the ProteomeXchange Repository'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6b04445ec08d8301641cac480a3940b10d24ef00c6ed99f8a61592824a2cc295')
+sha256sums=('a7eca702dfeae78e2bb8686ac05d0171b153de71824a1e879873fa627e136adc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

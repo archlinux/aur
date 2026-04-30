@@ -1,6 +1,6 @@
 pkgbase = r-rpx
 	pkgdesc = R Interface to the ProteomeXchange Repository
-	pkgver = 2.18.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rpx
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-rpx
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rpx_2.18.0.tar.gz
-	sha256sums = 6b04445ec08d8301641cac480a3940b10d24ef00c6ed99f8a61592824a2cc295
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rpx_2.20.0.tar.gz
+	sha256sums = a7eca702dfeae78e2bb8686ac05d0171b153de71824a1e879873fa627e136adc
 
 pkgname = r-rpx
