@@ -2,7 +2,7 @@
 _pkgname=zalo
 pkgname=zalo-macos
 provides=(zalo)
-pkgver=26.3.20
+pkgver=26.4.10
 pkgrel=1
 epoch=1
 pkgdesc="Unofficial Zalo client for Linux, ported from MacOS version"
@@ -26,7 +26,7 @@ source=(
 )
 noextract=("zalo.dmg")
 sha256sums=(
-    'a2cdfe5f42990d9d817725a69fe6a2e9e54cdff56d9f3216d2b091807c5393cd'
+    '411768e783cdaea627baac7b591d19d511db5ff211fdef199ac92c9b97f62049'
     '3c54d9828c0e4b763226516ab1d7984c72777e70165983795f5d77c8db93fec9'
     '1d193ab57424a663d0f1180219a7dd8454ba325fdcc75fa0eb4b343e733e32a0'
     '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
