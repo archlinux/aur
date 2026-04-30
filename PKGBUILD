@@ -3,7 +3,7 @@
 
 _pkgname=cvrx
 pkgname=${_pkgname}-appimage
-pkgver=1.0.14
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A standalone companion app for ChilloutVR that expands the user experience! (binary AppImage version)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}.AppImage"
 source=("https://github.com/Malthbern/CVRX-Linux/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('070de02ab69a7f35c62922c11dbd654272fa103ad0c12173835a397a2e05527d')
+sha256sums=("f53ab49ff540701d816ce91610ecac8e4db232c7d286178d1822d2cab8b38655')
 
 prepare() {
     # Copying AppImage in case $SRCDEST is mounted with noexec
