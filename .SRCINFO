@@ -1,6 +1,6 @@
 pkgbase = vigil-baseline
 	pkgdesc = Linux file integrity monitor with BLAKE3 hashing and HMAC-chained audit trail
-	pkgver = 1.6.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/lousclues-labs/vigil
 	install = vigil-baseline.install
@@ -12,7 +12,7 @@ pkgbase = vigil-baseline
 	provides = vigil
 	conflicts = vigil
 	options = !lto
-	source = vigil-baseline-1.6.0.tar.gz::https://github.com/lousclues-labs/vigil/archive/v1.6.0.tar.gz
+	source = vigil-baseline-1.8.1.tar.gz::https://github.com/lousclues-labs/vigil/archive/v1.8.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = vigil-baseline

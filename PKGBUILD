@@ -1,6 +1,6 @@
 # Maintainer: Louis Nelson Jr. <https://lousclues.com>
 pkgname=vigil-baseline
-pkgver=1.6.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Linux file integrity monitor with BLAKE3 hashing and HMAC-chained audit trail"
 arch=('x86_64')
