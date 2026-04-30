@@ -7,7 +7,6 @@ pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
-depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'python-qtpy' 'python-dbus' 'libudev.so')
 makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'libx11' 'python')
 source=(
     'git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev'
@@ -52,6 +51,7 @@ prepare_staging() {
 package_fcitx5-lotus-git() {
     provides=('fcitx5-lotus')
     conflicts=('fcitx5-lotus')
+    depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'python-qtpy' 'python-dbus' 'libudev.so')
     optdepends=(
         'fcitx5-lotus-openrc-git: OpenRC init script for fcitx5-lotus'
         'fcitx5-lotus-runit-git: Runit service for fcitx5-lotus'
