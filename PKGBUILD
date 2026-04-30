@@ -7,7 +7,7 @@ pkgdesc='TinyGo - Go for small spaces'
 arch=('x86_64')
 url='https://tinygo.org'
 license=('BSD-3-Clause AND Apache-2.0 WITH LLVM-exception')
-depends=('go>=1.22.0')
+depends=('go>=1.23.0')
 optdepends=('avr-gcc: Arduino Uno support'
             'avrdude: Arduino Uno support'
             'openocd: BBC Micro:bit support'
