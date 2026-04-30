@@ -17,13 +17,12 @@ build() {
   ./gradlew  :desktopApp:createReleaseDistributable --stacktrace
 }
 
-package() {
+package() {  
   cd "${srcdir}"/Flare-$pkgver/desktopApp/build/compose/binaries/main-release/app/Flare/
   find . -type f -exec install -Dm 755 "{}" ""${pkgdir}"/opt/flareapp/{}" \;
   mkdir -p "${pkgdir}"/usr/bin/
-  ln -s "${pkgdir}"/opt/$pkgname/bin/Flare "${pkgdir}"/usr/bin/$pkgname
+  ln -s /opt/$pkgname/bin/Flare "${pkgdir}"/usr/bin/$pkgname
   install -Dm644 "${srcdir}"/Flare-$pkgver/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
   mkdir -p "${pkgdir}"/usr/share/applications
-  ln -s $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dvm644 "${startdir}"/$pkgname.desktop "${pkgdir}"/usr/share/applications/$pkgname.desktop
 }
-

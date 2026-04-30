@@ -4,4 +4,5 @@ Name=Flare
 Comment=Flare is an open-source, privacy-first social client that brings Mastodon, Misskey, Bluesky, X, Nostr, and RSS.
 Exec=/usr/bin/flareapp
 Icon=/opt/flareapp/lib/Flare.png
-Categories=Internet;
+Terminal=false
+Categories=Network;
