@@ -1,0 +1,5 @@
+[rptui-bin]
+source = "github"
+github = "pdfrg/rptui"
+use_latest_release = true
+prefix = "v"

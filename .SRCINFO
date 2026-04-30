@@ -1,0 +1,22 @@
+pkgbase = rptui-bin
+	pkgdesc = The ultimate (terminal) client for Radio Paradise
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/pdfrg/rptui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = mpv
+	depends = ttf-jetbrains-mono-nerd
+	optdepends = mpv-mpris
+	optdepends = libnotify
+	provides = rptui
+	conflicts = rptui
+	options = !strip
+	source_x86_64 = rptui-x86_64-1.2.0.tgz::https://github.com/pdfrg/rptui/releases/download/v1.2.0/rptui_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ad0422f07455bf67b6d187f15c7936f57bdfd4cf8bc25803f0702efc5e2bc0d7
+	source_aarch64 = rptui-aarch64-1.2.0.tgz::https://github.com/pdfrg/rptui/releases/download/v1.2.0/rptui_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 694fd73ee3f6899e1f0bfd2857f23b355ced43490ac1e83635c497d45c351816
+
+pkgname = rptui-bin
