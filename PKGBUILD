@@ -3,7 +3,7 @@
 _model=mfcl3760cdw
 pkgname=brother-mfc-l3760cdw
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='LPR and CUPS drivers for the Brother MFC-L3760CDW'
 arch=('i686' 'x86_64')
 options=('!debug')
@@ -36,6 +36,15 @@ package() {
     install -Dm755 "lpd/x86_64/brmfcl3760cdwfilter" "${pkgdir}/opt/brother/Printers/${_model}/lpd/brmfcl3760cdwfilter"
     install -Dm755 "lpd/x86_64/brprintconf_mfcl3760cdw" "${pkgdir}/opt/brother/Printers/${_model}/lpd/brprintconf_mfcl3760cdw"
     install -Dm755 "lpd/filter_mfcl3760cdw" "${pkgdir}/opt/brother/Printers/${_model}/lpd/filter_mfcl3760cdw"
+
+    install -d "${pkgdir}/usr/lib/cups/filter/"
+    ln -sf "/opt/brother/Printers/mfcl3760cdw/cupswrapper/brother_lpdwrapper_mfcl3760cdw" \
+           "${pkgdir}/usr/lib/cups/filter/"
+
+    install -d "${pkgdir}/usr/share/cups/model/"
+    ln -sf "/opt/brother/Printers/mfcl3760cdw/cupswrapper/brother_mfcl3760cdw_printer_en.ppd" \
+           "${pkgdir}/usr/share/cups/model/"
+
     cp -r "inf" "${pkgdir}/opt/brother/Printers/${_model}"
     chmod 755 "${pkgdir}/opt/brother/Printers/${_model}/inf"
 
