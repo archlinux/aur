@@ -1,0 +1,18 @@
+pkgbase = discord-no-forced-update
+	pkgdesc = Pacman hook that disables Discord's forced update prompt
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/discord-no-forced-update
+	install = discord-no-forced-update.install
+	arch = any
+	license = MIT
+	depends = discord
+	depends = asar
+	source = discord-patch
+	source = discord-noupdate.hook
+	source = discord-no-forced-update.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = discord-no-forced-update

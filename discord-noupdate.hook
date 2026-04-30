@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = discord
+
+[Action]
+Description = Patching Discord to disable forced updates...
+When = PostTransaction
+Exec = /usr/bin/discord-patch
+

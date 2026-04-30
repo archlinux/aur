@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.SRCINFO
+!discord-patch
+!discord-noupdate.hook
+!discord-no-forced-update.install
+!.gitignore

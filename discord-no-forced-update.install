@@ -1,0 +1,7 @@
+post_install() {
+    /usr/bin/discord-patch
+}
+
+post_upgrade() {
+    /usr/bin/discord-patch
+}

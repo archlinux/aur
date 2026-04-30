@@ -1,0 +1,7 @@
+#!/bin/bash
+cd /opt/discord/resources
+asar extract app.asar app.asar.unpacked_patch
+sed -i "s/this.emit('update-manually', latestVerStr)/this.emit('update-not-available')/g" \
+    app.asar.unpacked_patch/app_bootstrap/hostUpdater.js
+asar pack app.asar.unpacked_patch app.asar
+rm -rf app.asar.unpacked_patch
