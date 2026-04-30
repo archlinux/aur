@@ -1,6 +1,6 @@
 pkgbase = roborev-bin
 	pkgdesc = Continuous background code review database for agents, work faster and smarter with accountability for every line of generated code.
-	pkgver = 0.52.0
+	pkgver = 0.53.0
 	pkgrel = 1
 	url = https://github.com/roborev-dev/roborev
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = roborev-bin
 	license = MIT
 	provides = roborev
 	conflicts = roborev
-	source = README-0.52.0.md::https://raw.githubusercontent.com/roborev-dev/roborev/v0.52.0/README.md
-	source = LICENSE-0.52.0::https://raw.githubusercontent.com/roborev-dev/roborev/v0.52.0/LICENSE
+	source = README-0.53.0.md::https://raw.githubusercontent.com/roborev-dev/roborev/v0.53.0/README.md
+	source = LICENSE-0.53.0::https://raw.githubusercontent.com/roborev-dev/roborev/v0.53.0/LICENSE
 	sha256sums = 9120b858bb353c0017331d78e35cc46821588e72a68c287ce75ff0e759f8fce3
 	sha256sums = f7440e20d28e4a11ed8ede489f90405e038b4da4d9281bcb1540bf9cde5d9c71
-	source_x86_64 = roborev-x86_64-0.52.0.tgz::https://github.com/roborev-dev/roborev/releases/download/v0.52.0/roborev_0.52.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4231663bcbe73f7ce945eaceb37920bbba0eb335a22b2db251973349357e15bc
-	source_aarch64 = roborev-aarch64-0.52.0.tgz::https://github.com/roborev-dev/roborev/releases/download/v0.52.0/roborev_0.52.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8362cdb4ed6e4b9fed2c31414310cade9778525686912c574de7229dee7b2fd1
+	source_x86_64 = roborev-x86_64-0.53.0.tgz::https://github.com/roborev-dev/roborev/releases/download/v0.53.0/roborev_0.53.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 007f69a223ccfa93f25567b5688c9664ef7681d18d0e50a30a540e61456a3cea
+	source_aarch64 = roborev-aarch64-0.53.0.tgz::https://github.com/roborev-dev/roborev/releases/download/v0.53.0/roborev_0.53.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 23b6d768ad371f11fd3c54591a5b871f41425861cd4048174414e1896bc5effe
 
 pkgname = roborev-bin
