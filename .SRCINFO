@@ -1,15 +1,19 @@
 pkgbase = apt-fake-ubuntu
-	pkgdesc = Simulate apt command
+	pkgdesc = A smart APT wrapper for Arch Linux with GUI, Auto-Repair, and ARM support. Perfect for Ubuntu refugees!
 	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/castielloangela512-ai/apt-fake
 	arch = any
 	license = GPL
 	depends = bash
-	depends = yay
 	depends = pacman
 	depends = zenity
+	optdepends = yay: AUR support (recommended)
+	optdepends = paru: alternative AUR support
+	optdepends = upower: for battery status command
 	source = apt-fake
+	source = apt-fake.desktop
 	sha256sums = 14cc1a887206676c234fe3869610fed6a26603c6c5269eee59b63e02404845cd
+	sha256sums = 65aaf1cb417998cb2e10d50efbe0f25dcb9027770c4348735955d5203ee10c4d
 
 pkgname = apt-fake-ubuntu
