@@ -1,7 +1,7 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
 pkgver=1.13.0
-pkgrel=2
+pkgrel=3
 #pkghash=
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
