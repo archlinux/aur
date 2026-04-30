@@ -1,6 +1,6 @@
 pkgbase = snowflake-odbc
 	pkgdesc = ODBC Driver for Snowflake database
-	pkgver = 3.16.0
+	pkgver = 3.17.0
 	pkgrel = 1
 	url = http://www.snowflake.net/
 	install = snowflake-odbc.install
@@ -9,7 +9,7 @@ pkgbase = snowflake-odbc
 	depends = nss
 	depends = gcc-libs
 	depends = unixodbc
-	source = https://sfc-repo.snowflakecomputing.com/odbc/linux/3.16.0/snowflake_linux_x8664_odbc-3.16.0.tgz
-	sha256sums = a1a6fdfc0cbe9573aaad4416d44c668f9758c1ee1dca7952356e356584c74900
+	source = https://sfc-repo.snowflakecomputing.com/odbc/linux/3.17.0/snowflake_linux_x8664_odbc-3.17.0.tgz
+	sha256sums = ac16bc80fafc710f22c81837d17e2e6b3975d5ac01cff1fd052e285d7e32b708
 
 pkgname = snowflake-odbc
