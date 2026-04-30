@@ -1,6 +1,6 @@
 # Maintainer: alvaniss <alvaniss1g@gmail.com>
 pkgname=imount
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Script that allows to mount iOS devices on Linux to manage their files, built around ifuse."
 arch=(
