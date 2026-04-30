@@ -1,6 +1,6 @@
 pkgbase = solidity
 	pkgdesc = Smart contract programming language.
-	pkgver = 0.8.34
+	pkgver = 0.8.35
 	pkgrel = 1
 	url = https://github.com/argotorg/solidity
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = solidity
 	optdepends = z3: SMT checker
 	conflicts = solidity-bin
 	conflicts = solidity-git
-	source = solidity-v0.8.34.tar.gz::https://github.com/argotorg/solidity/releases/download/v0.8.34/solidity_0.8.34.tar.gz
-	sha512sums = 17ce57b7d83198868e9e9a1bd0d2482fd6f6fb0c28013c679438947c69fad227d9a8546ec783564ecab5aaa15a168823dac70c5dd89eb256e3a9b7bf3684509a
+	source = solidity-v0.8.35.tar.gz::https://github.com/argotorg/solidity/releases/download/v0.8.35/solidity_0.8.35.tar.gz
+	sha512sums = b77c4ae57002bce7536ce0309739cd12e0f3687fddb6f9e5cc1c860b88419c838a880ee9a461ab53e2353073d994bd90fc7ccf95088c5bddf7f631af991cb97c
 
 pkgname = solidity
