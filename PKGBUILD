@@ -1,6 +1,6 @@
 # Maintainer: Snemc-s <snemc@snemc.cn>
 pkgname=chat-cli-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Configurable LLM chat CLI"
 arch=('x86_64')
@@ -15,8 +15,8 @@ optdepends=(
 )
 provides=("chat-cli=${pkgver}")
 conflicts=('chat-cli' 'chat-cli-git')
-source=("chat-cli-bin-0.1.7.tar.gz::${url}/releases/download/v${pkgver}/chat-cli-v0.1.7-linux-x86_64.tar.gz")
-sha256sums=('cd7be86b9a47438bceee8fb1b201dfd0e93c1c19f66d31795460c2cfb29e6fae')
+source=("chat-cli-bin-0.1.8.tar.gz::${url}/releases/download/v${pkgver}/chat-cli-v0.1.8-linux-x86_64.tar.gz")
+sha256sums=('fd0883a3c70369d484b51cdf464413e1ba430efb468df8da21233cddacd7e1a7')
 
 package() {
     install -Dm755 chat "${pkgdir}/usr/bin/chat"
