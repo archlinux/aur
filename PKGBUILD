@@ -377,9 +377,9 @@ _copy_defconfig() {
         zcat /proc/config.gz > ./.config
         make ${BUILD_FLAGS[*]} olddefconfig
     else
-        _warning "Your kernel was not compiled with IKCONFIG_PROC."
-        _warning "Unable to read kernel configuration, aborting."
-        exit
+        _error "Your kernel was not compiled with IKCONFIG_PROC."
+        _error "Unable to read kernel configuration, aborting."
+        return 1
     fi
 }
 
