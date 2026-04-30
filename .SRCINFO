@@ -1,0 +1,27 @@
+pkgbase = buffr-bin
+	pkgdesc = Vim-inspired browser. Native, GPU-accelerated. Rust + CEF. (binary release)
+	pkgver = 0.1.22
+	pkgrel = 1
+	url = https://buffr.kryptic.sh/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	depends = mesa
+	depends = libxshmfence
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libglvnd
+	provides = buffr=0.1.22
+	conflicts = buffr
+	options = !strip
+	options = !debug
+	source_x86_64 = buffr-0.1.22-x86_64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v0.1.22/buffr-0.1.22-x86_64.tar.gz
+	sha256sums_x86_64 = 4f7e742ceef3cb93eaa08c7f2ce682c8b765e639c87ba6b84ae7432627091c85
+	source_aarch64 = buffr-0.1.22-aarch64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v0.1.22/buffr-0.1.22-aarch64.tar.gz
+	sha256sums_aarch64 = c24f4bd4eccbcfbecc7eb22127bde6818fc267a5997ba1eeec11c6d789f7d4c1
+
+pkgname = buffr-bin
