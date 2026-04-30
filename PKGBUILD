@@ -1,8 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=sacad
-pkgver=3.0.0.r0
-_pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Smart Automatic Cover Art Downloader'
 arch=('x86_64')
@@ -11,17 +10,17 @@ license=('MPL2')
 depends=('gcc-libs')
 makedepends=('cargo' 'ffmpeg')
 options=(!lto)  # causes issues, fat lto is already enabled for the release profile in Cargo.toml anyway
-source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${_pkgver}.tar.gz")
-sha512sums=('88dec8eaa24dbad5806fce2b4c2df4f07502adb06c858c93c89878f76a54e1cbd799df268f5748daaa8cd446a1ebadf6999ec48ba26eb654728e22bc05ae09b5')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('f7939856a1f38945be942b8e71c350f51f931e9890f76a820b73b1c45e74446c714643cb585e55fdaa911485760d0b06b1fd5f96913b1b01946d0b0f6269d0b6')
 
 prepare() {
-    cd "${pkgname}-${_pkgver}"
+    cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked
 }
 
 build() {
-    cd "${pkgname}-${_pkgver}"
+    cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
 
     mkdir -p target/man
@@ -44,13 +43,13 @@ build() {
 }
 
 check() {
-    cd "${pkgname}-${_pkgver}"
+    cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --features generate-extras,tests-ffmpeg
 }
 
 package() {
-    cd "${pkgname}-${_pkgver}"
+    cd "${pkgname}-${pkgver}"
 
     install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/${pkgname}{,_r}
 
