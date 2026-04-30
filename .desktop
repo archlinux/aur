@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=ForskScope
-Version=0.22.12
+Version=0.22.13
 Type=Application
 GenericName=Diff and merge
 Comment=Diff and merge GUI tool with cross-platform support build with Tauri: Rust and Svelte (Pre-built binary)
