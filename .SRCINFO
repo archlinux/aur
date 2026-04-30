@@ -1,7 +1,7 @@
 pkgbase = ts.net-git
 	pkgdesc = Thunderscope-compatible PC-host software written in C# using high-performing primitives & SIMD.
-	pkgver = r652.c181cd8
-	pkgrel = 5
+	pkgver = r653.b9e65d2
+	pkgrel = 1
 	url = https://github.com/EEVengers/TS.NET
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = ts.net-git
 	depends = scopehal-apps
 	depends = libtslitex
 	depends = ts-litex-driver
+	optdepends = python-litex: Migen/MiSoC based Core/SoC builder that provides the infrastructure to easily create Cores/SoCs
 	provides = ts.net
 	conflicts = ts.net
 	options = !strip

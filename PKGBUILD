@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ts.net-git
-pkgver=r652.c181cd8
-pkgrel=5
+pkgver=r653.b9e65d2
+pkgrel=1
 epoch=
 pkgdesc="Thunderscope-compatible PC-host software written in C# using high-performing primitives & SIMD."
 arch=(x86_64)
@@ -30,6 +30,7 @@ makedepends=(
 )
 optdepends=(
     # "scopehal-apps: ngscopeclient and other client applications for libscopehal"
+    "python-litex: Migen/MiSoC based Core/SoC builder that provides the infrastructure to easily create Cores/SoCs"
 )
 backup=()
 options=('!strip' '!debug' '!lto')
