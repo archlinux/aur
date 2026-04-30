@@ -1,6 +1,6 @@
 pkgbase = intel-sgx-psw-bin
 	pkgdesc = Intel® Software Guard Extensions Platform Software for Linux* OS
-	pkgver = 2.28
+	pkgver = 2.29
 	pkgrel = 1
 	url = https://github.com/intel/linux-sgx
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = intel-sgx-psw-bin
 	optdepends = protobuf-21: required for the AESM service
 	optdepends = nodejs: for running the SGX DCAP PCCS Server
 	optdepends = curl: required for SGX Remote Attestation Service (RA)
-	optdepends = boost183: required by the TDX Quote Generation Service (QGS)
-	provides = intel-sgx-psw=2.28
+	optdepends = boost190: required by the TDX Quote Generation Service (QGS)
+	provides = intel-sgx-psw=2.29
 	conflicts = intel-sgx-psw
 	options = !strip
 	options = !debug
@@ -20,9 +20,9 @@ pkgbase = intel-sgx-psw-bin
 	backup = etc/mpa_registration.conf
 	backup = etc/qgs.conf
 	backup = etc/sgx_default_qcnl.conf
-	source = sgx_2.28_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/2.28/distro/ubuntu24.04-server/sgx_debian_local_repo.tgz
+	source = sgx_2.29_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/2.29/distro/ubuntu26.04-server/sgx_debian_local_repo.tgz
 	source = intel-sgx-sysusers.conf
-	b2sums = 0f341b4ff43d5e131f923796a3edcec47b5ae5bfe3742b19d06d5708ed1cd26d0bada57d3976c6a0326d2e6dc1068cec8973f0fc75d0d4031912bbfb5f6782d2
+	b2sums = 5832a7537c7bb0b50376bf6818e647bd738ba54da6263249ddf7c6a6483b60a0458bc7177c893ea7a364ddfa9c9ab9abcb5925ef12dd30c3f4ab61b9c0d62180
 	b2sums = f0a1415f8e88ffe2fe189c56a701a9756f74947375f142aa3965679129d3182f1b380beea02d70e07cbe7c9443461b8cbb674193ae07f71d543d13a10ecaf7ff
 
 pkgname = intel-sgx-psw-bin
