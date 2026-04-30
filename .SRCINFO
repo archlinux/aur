@@ -1,6 +1,6 @@
 pkgbase = larpshell
 	pkgdesc = Convert natural language to shell commands using an LLM
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/uwuclxdy/larpshell
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = larpshell
 	depends = glibc
 	provides = larpshell
 	conflicts = larpshell-git
-	source = larpshell-0.2.1::https://github.com/uwuclxdy/larpshell/releases/download/v0.2.1/larpshell
-	source = LICENSE-0.2.1::https://raw.githubusercontent.com/uwuclxdy/larpshell/v0.2.1/LICENSE
-	sha256sums = 0e0e1d2d61aefd431a34bc7738ff90bb72cc8adfebc97a911e1574a42055dee9
+	source = larpshell-0.2.2::https://github.com/uwuclxdy/larpshell/releases/download/v0.2.2/larpshell
+	source = LICENSE-0.2.2::https://raw.githubusercontent.com/uwuclxdy/larpshell/v0.2.2/LICENSE
+	sha256sums = d5056341e1200f26f93879546539994c55a184d60d8d9b2d6448f14fda3b5133
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = larpshell
