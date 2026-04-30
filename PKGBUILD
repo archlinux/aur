@@ -2,7 +2,7 @@
 
 pkgname=teamspeak
 pkgver=6.0.0beta4
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
 license=('custom')
@@ -18,7 +18,7 @@ depends=(
          'libxi' 'libxkbcommon' 'libxml2' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'mesa' 
          'mpg123' 'nettle' 'nspr' 'nss' 'ocl-icd' 'opencore-amr' 'openjpeg2' 'opus' 
          'pango' 'pcre2' 'pixman' 'rav1e' 'snappy' 'speex' 'svt-av1' 'systemd-libs' 
-         'util-linux-libs' 'wayland' 'x264' 'x265' 'xvidcore' 'xz' 'zlib-ng-compat'
+         'util-linux-libs' 'wayland' 'x264' 'x265' 'xvidcore' 'xz' 'zlib'
 )
 optdepends=('libpulse')
 arch=('x86_64')

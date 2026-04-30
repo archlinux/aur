@@ -1,7 +1,7 @@
 pkgbase = teamspeak
 	pkgdesc = Software for quality voice communication via the Internet
 	pkgver = 6.0.0beta4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.teamspeak.com
 	arch = x86_64
 	license = custom
@@ -99,7 +99,7 @@ pkgbase = teamspeak
 	depends = x265
 	depends = xvidcore
 	depends = xz
-	depends = zlib-ng-compat
+	depends = zlib
 	optdepends = libpulse
 	source = teamspeak-client-6.0.0beta4.tar.gz::https://files.teamspeak-services.com/pre_releases/client/6.0.0-beta4/teamspeak-client.tar.gz
 	source = teamspeak-client.desktop
