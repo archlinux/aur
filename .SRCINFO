@@ -1,7 +1,7 @@
 pkgbase = clevo-led-control
-	pkgdesc = Monster/Clevo laptoplar için hafif LED kontrol aracı (Parametre ve CLI desteği)
+	pkgdesc = Lightweight LED control tool for Monster/Clevo laptops.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sherit45/clevo-led-control
 	arch = x86_64
 	license = GPL
