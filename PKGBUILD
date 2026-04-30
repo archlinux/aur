@@ -3,15 +3,25 @@
 _name="sudoku"
 pkgname="tdb-${_name}"
 pkgver=20060913
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for solving Sudoku puzzles"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://www.tdb.fi/sudoku.shtml"
-license=('GPL-2.0-only')
-depends=('gcc-libs' 'glibc')
+license=(
+  'GPL-2.0-only'
+)
+depends=(
+  'glibc'
+  'libgcc'
+  'libstdc++'
+)
 _pkgsrc="${_name}-${pkgver}"
-source=("tdb-${_pkgsrc}.tar.gz::https://www.tdb.fi/files/${_pkgsrc}.tar.gz"
-        "${pkgname}_include_unistd.patch")
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://www.tdb.fi/files/${_pkgsrc}.tar.gz"
+  "${pkgname}_include_unistd.patch"
+)
 sha256sums=('b6891a043ecf88cbe83fcaa16474d6fab40df3b1a79cade4ad99a336c4423c12'
             'ab039e23f10775438a635265cd619c1b88b2af22b7285349625a65b06715e797')
 
