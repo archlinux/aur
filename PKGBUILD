@@ -1,6 +1,6 @@
 # Maintainer: Burgess Leo <liuxiaopeng731@gmail.com>
 pkgname=leolock
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="LeoLock - 安全的文件加密解密工具"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('binutils' 'tar' 'zstd')
 source=(leolock_${pkgver}_amd64.deb::https://github.com/lxp731/leolock/releases/download/v${pkgver}/leolock_${pkgver}_amd64.deb)
-sha256sums=('960c09e9f4d3caea6fb24ca3dd69ed9290b6fc982810f0d39b6b24c7031ab3cd')
+sha256sums=('d4c0b3b8604a0892c4a9d510f379d482b707715322691f900622982aea4fa51c')
 prepare() {
   cd "$srcdir"
   # 解压 deb 包
