@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mumps
-pkgver=5.8.2
+pkgver=5.9.0
 pkgrel=1
 pkgdesc='Sparse solver library using Gaussian elimination (mingw-w64)'
 url='https://mumps-solver.org'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-gcc')
 arch=('any')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://mumps-solver.org/MUMPS_${pkgver}.tar.gz")
-sha256sums=('eb515aa688e6dbab414bb6e889ff4c8b23f1691a843c68da5230a33ac4db7039')
+sha256sums=('02c6efdb91749ec0f82351d40f3f860547272a1eb1d899126a4265b4d6bcc4ca')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,6 +19,12 @@ prepare () {
 
   # calling convention
   sed -i "s|define MUMPS_CALL|define MUMPS_CALL __declspec(dllexport)|g" include/mumps_compat.h
+
+  # static inline + __declspec(dllexport) does not make sense
+  sed -i "s|MUMPS_INLINE void MUMPS_CALL|void MUMPS_CALL|g" src/mumps_flytes.h src/mumps_flytes.c
+  sed -i "s|MUMPS_INLINE float MUMPS_CALL|float MUMPS_CALL|g" src/mumps_flytes.h src/mumps_flytes.c
+  sed -i "s|MUMPS_INLINE double MUMPS_CALL|double MUMPS_CALL|g" src/mumps_flytes.h src/mumps_flytes.c
+  sed -i "s|MUMPS_INLINE const char\* MUMPS_CALL|const char\* MUMPS_CALL|g" src/mumps_flytes.h src/mumps_flytes.c
 
   # fortran mangling
   sed -i "s/#if defined(UPPER) || defined(MUMPS_WIN32)/#if defined(UPPER)/g" src/mumps_common.h
@@ -30,7 +36,7 @@ build() {
   for _arch in ${_architectures}; do
     cp -r MUMPS_${pkgver} build-${_arch} && pushd build-${_arch}
     make -C src ../include/mumps_int_def.h
-    make CC=${_arch}-gcc OPTC="-D_FORTIFY_SOURCE=2 -O3 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" FC=${_arch}-gfortran FL=${_arch}-gfortran OPTF="-O2 -fallow-argument-mismatch" AR="${_arch}-ar vr " RANLIB=${_arch}-ranlib LIBOTHERS="-lpthread -lssp" -j1
+    make CC=${_arch}-gcc OPTC="-D_FORTIFY_SOURCE=3 -O2 -pipe -fexceptions --param=ssp-buffer-size=4" FC=${_arch}-gfortran FL=${_arch}-gfortran OPTF="-O2 -fallow-argument-mismatch" AR="${_arch}-ar vr " RANLIB=${_arch}-ranlib LIBOTHERS="-lpthread -lssp" -j1
     popd
   done
 }
