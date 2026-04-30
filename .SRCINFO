@@ -1,0 +1,22 @@
+pkgbase = superzsnes
+	pkgdesc = A GPU-powered SNES Emulator developed in Unity
+	pkgver = 0.100
+	pkgrel = 1
+	url = https://www.zsnes.com/
+	install = superzsnes.install
+	arch = x86_64
+	license = freeware-proprietary
+	depends = hidapi
+	depends = systemd-libs
+	depends = alsa-lib
+	depends = gtk3
+	depends = glib2
+	depends = libdecor
+	source = SUPERZSNES
+	source = SUPERZSNES.desktop
+	source = https://www.zsnes.com/files/SuperZSNES_v0.100.tar.gz
+	sha256sums = 091fc53feea1ae09eb9cf22d1bc98b700dd5441b640586e3c0d75d663d377e43
+	sha256sums = 420f11c4a717d11a955b5bc64238fbd5398c5aae3676d2b531de5da7a409ee27
+	sha256sums = SKIP
+
+pkgname = superzsnes

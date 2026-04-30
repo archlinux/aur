@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SuperZSNES
+GenericName=SNES Emulator
+Comment=A GPU-powered SNES Emulator developed in Unity
+Exec=SUPERZSNES
+Icon=/usr/share/pixmaps/SuperZSNES.png
+Terminal=false
+Type=Application
+Categories=Game;Emulator;
