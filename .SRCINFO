@@ -1,9 +1,9 @@
 pkgbase = r-pkgdepends
 	pkgdesc = Package Dependency Resolution and Downloads
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgdepends
-	arch = any
+	arch = x86_64
 	license = MIT
 	checkdepends = git
 	checkdepends = pandoc
@@ -48,11 +48,11 @@ pkgbase = r-pkgdepends
 	optdepends = r-tibble
 	optdepends = r-webfakes
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/pkgdepends_0.8.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/pkgdepends_0.9.1.tar.gz
 	source = fix-tests.patch
-	md5sums = b54bea40d06af8ded7189c87873d95e7
+	md5sums = a131a873e03bdc18330b5086f81632e6
 	md5sums = 57c4730b99e312aee50f66569c10b222
-	b2sums = 01e87ce3fc471763258a99f49e603cb899e73db764cccddf8afd4b3402096ec67d6dc57bca63e579b52f12b4e80acedb3d5358e55abac9840ac5e33c7964f652
+	b2sums = df7c80e1e05fbf2662e259796118b4e756d334e3e3600edce8716d2a793e616e8121e460bd645eb2e72ae6d15dbad247fbf1e0c6096bafaffa7aff5dad824fc7
 	b2sums = 114a48eda77c3d5f615d8a81c89a809f12e6d8cf249d615b7ae892c8550e58af5b95e1cee4229a054efb6166f7e552f91b7cabc6b3ac78527d7db2465e8fcb1a
 
 pkgname = r-pkgdepends
