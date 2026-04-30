@@ -1,7 +1,7 @@
 pkgbase = time-admin-git
 	pkgdesc = A GTK3 tool written in Python to change system time settings. Made with XFCE in mind.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Archie-Project/time-admin
 	arch = any
 	license = GPL3
