@@ -4,16 +4,16 @@ _pkgname=obs-kmscap
 pkgname=obs-kmscap-git
 pkgver=0
 pkgrel=1
-pkgdesc='A zero-copy screen capture plugin for OBS Studio on Linux.'
+pkgdesc="A zero-copy screen capture plugin for OBS Studio on Linux"
 url=https://github.com/xnqs/obs-kmscap
-license=('GPL-2.0-or-later')
-source=('git+https://github.com/xnqs/obs-kmscap')
-cksums=('SKIP')
-arch=('x86_64')
-depends=('libdrm' 'obs-studio')
-makedepends=('cmake' 'git')
-conflicts=('obs-kmscap')
-provides=('obs-kmscap')
+license=("GPL-2.0-or-later")
+source=("git+https://github.com/xnqs/obs-kmscap")
+cksums=("SKIP")
+arch=("x86_64")
+depends=("libdrm" "obs-studio")
+makedepends=("cmake" "git")
+conflicts=("obs-kmscap")
+provides=("obs-kmscap")
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
