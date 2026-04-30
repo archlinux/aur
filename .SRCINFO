@@ -1,6 +1,6 @@
 pkgbase = buffr-bin
 	pkgdesc = Vim-inspired browser. Native, GPU-accelerated. Rust + CEF. (binary release)
-	pkgver = 0.1.23
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://buffr.kryptic.sh/
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = buffr-bin
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	depends = libglvnd
-	provides = buffr=0.1.23
+	provides = buffr=0.1.24
 	conflicts = buffr
 	options = !strip
 	options = !debug
-	source_x86_64 = buffr-0.1.23-x86_64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v0.1.23/buffr-0.1.23-x86_64.tar.gz
-	sha256sums_x86_64 = e524555a13322256abaa21e85412d72ec281232d29d2bf0e0666489b8cf6cdfd
-	source_aarch64 = buffr-0.1.23-aarch64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v0.1.23/buffr-0.1.23-aarch64.tar.gz
-	sha256sums_aarch64 = 38e2efe4a867e7de2098fb2e6210c7bf42a5e9c55121df5343fd51a871f9130a
+	source_x86_64 = buffr-0.1.24-x86_64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v0.1.24/buffr-0.1.24-x86_64.tar.gz
+	sha256sums_x86_64 = 07e3c47dbb41ab6405272519de792da4c7f219191d6b15535f9829634053e2c9
+	source_aarch64 = buffr-0.1.24-aarch64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v0.1.24/buffr-0.1.24-aarch64.tar.gz
+	sha256sums_aarch64 = 4b074041354ca37e37c1577cb41d08e95cdc7d86266ca189a9db0e7d8e183cba
 
 pkgname = buffr-bin
