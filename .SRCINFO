@@ -1,0 +1,12 @@
+pkgbase = pi-ext-boomerang
+	pkgdesc = Token-efficient autonomous task execution extension for pi coding agent
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/nicobailon/pi-boomerang
+	install = pi-ext.install
+	arch = any
+	license = MIT
+	source = pi-ext-boomerang-0.4.4.tar.gz::https://github.com/nicobailon/pi-boomerang/archive/refs/tags/v0.4.4.tar.gz
+	sha256sums = eaae674550cbe22020f01b198db7102259856f86d5a4161f573f692cd23bdced
+
+pkgname = pi-ext-boomerang

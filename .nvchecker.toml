@@ -1,0 +1,9 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+["pi-ext-boomerang"]
+source = "github"
+github = "nicobailon/pi-boomerang"
+use_latest_release = true
+prefix = "v"
