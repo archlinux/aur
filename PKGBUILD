@@ -2,7 +2,7 @@
 
 pkgbase=kh-ucanfd
 pkgname=(kh-ucanfd kh-ucanfd-dkms)
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 epoch=
 pkgdesc="KunHong UCANFD Linux driver"
@@ -21,6 +21,7 @@ makedepends=(
 )
 optdepends=(
     "can-utils: Linux-CAN / SocketCAN user space applications"
+    "dm-tools: DM-USB2FDCAN (Damiao 达妙) host computer software supports DM-USB2FDCAN series CAN cards"
     "python-can: Controller Area Network support for Python"
     "openarm-can: A C++ library for CAN communication with OpenArm robotic hardware, supporting Damiao motors over CAN/CAN-FD interfaces."
     "python-openarm-can: Python bindings for the OpenArm CAN library, enabling easy integration and communication with OpenArm robotic hardware over CAN/CAN-FD interfaces."
@@ -32,7 +33,7 @@ _name=KH-UCANFD_Linux_SDK
 source=(
     "${_name}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_name}.zip"
 )
-sha256sums=('fb90bc67803421a3fc8f60bf2d446777da9f145ac5c802982433e1e7c19a1bf9')
+sha256sums=('057096569c687502d59049f5722551addba52f1d24b0f88bac48ef6ce44bfff5')
 noextract=()
 
 build() {
@@ -138,6 +139,8 @@ BUILT_MODULE_LOCATION[0]="."
 DEST_MODULE_LOCATION[0]="/updates"
 AUTOINSTALL="yes"
 EOF
-
+    install -Dm644 /dev/stdin "${pkgdir}/etc/modules-load.d/${pkgname}.conf" <<EOF
+${pkgname}
+EOF
     install -Dm644 "${srcdir}"/${_name}-${pkgver}/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
