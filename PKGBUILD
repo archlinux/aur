@@ -1,6 +1,6 @@
 # Maintainer: wedow <wedow@users.noreply.github.com>
 pkgname=harness
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Minimal agent loop in bash"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'curl' 'jq' 'perl')
 source=("harness-$pkgver.tar.gz::https://github.com/wedow/harness/archive/refs/tags/v$pkgver.tar.gz")
 # sha256sums patched at publish time by publish-aur.sh
-sha256sums=('6ddbc110d4521cb63ca1cf65118f279e858b570ed633f16f14e589f84e31c8bf')
+sha256sums=('62ddb0d500fbdb230838cb5cfa68ad37e46c5bfaccd50ab08cb582bd382d7f14')
 
 package() {
     cd "harness-$pkgver"
