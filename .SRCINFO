@@ -1,6 +1,6 @@
 pkgbase = r-mitch
 	pkgdesc = Multi-Contrast Gene Set Enrichment Analysis
-	pkgver = 1.22.1
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mitch
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-mitch
 	depends = r-rmarkdown
 	optdepends = r-stringi
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mitch_1.22.1.tar.gz
-	sha256sums = 5a108c9fd677c737c162995f3ad738dd9c4e6e83e19d922eecd8bf24963f4315
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mitch_1.24.0.tar.gz
+	sha256sums = 5c9e6f39e8a432a6b6416014445cc0ee18e3283008d46d9d3cdfc6e2a4a72ea9
 
 pkgname = r-mitch

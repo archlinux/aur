@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mitch
-_pkgver=1.22.1
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Multi-Contrast Gene Set Enrichment Analysis'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5a108c9fd677c737c162995f3ad738dd9c4e6e83e19d922eecd8bf24963f4315')
+sha256sums=('5c9e6f39e8a432a6b6416014445cc0ee18e3283008d46d9d3cdfc6e2a4a72ea9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
