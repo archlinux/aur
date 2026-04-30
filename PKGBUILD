@@ -2,7 +2,7 @@
 
 pkgname=epass2003-sdk-linux
 pkgver=20141128
-pkgrel=3
+pkgrel=4
 pkgdesc="EnterSafe Castle SDK with Cryptoki (PKCS#11) for Linux, supporting ePass2003 and ePass2003auto USB tokens."
 arch=('x86_64')
 url="https://github.com/marcotuliomatos/ePass2003-SDK-Linux"
