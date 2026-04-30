@@ -16,4 +16,6 @@ post_remove() {
   echo ":: To fully remove: sudo gpasswd -d \$USER llama-cpp && sudo userdel llama-cpp"
   echo ":: Remember to cleanup /var/lib/llama-cpp (contains models and data),"
   echo "   as it's not automatically removed."
+  echo ":: NOTE: Running sudo userdel -r llama-cpp (with '-r' added)"
+  echo "   would nuke /var/lib/llama-cpp."
 }
