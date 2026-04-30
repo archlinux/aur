@@ -1,0 +1,12 @@
+pkgbase = emacs-cond-let
+	pkgdesc = Additional and improved binding conditionals for Emacs Lisp
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/tarsius/cond-let
+	arch = any
+	license = GPL-3.0-or-later
+	depends = emacs
+	source = emacs-cond-let-0.2.2.tar::https://elpa.nongnu.org/nongnu/cond-let-0.2.2.tar
+	sha256sums = fecf17c450d988e207925735a168676608b233ea8a4866d8fc01bf06259ae546
+
+pkgname = emacs-cond-let
