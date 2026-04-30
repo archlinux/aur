@@ -1,6 +1,6 @@
 pkgbase = fluxer-canary-bin
 	pkgdesc = Fluxer Canary Desktop Application
-	pkgver = 0.0.50
+	pkgver = 0.0.86
 	pkgrel = 1
 	url = https://fluxer.app
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = fluxer-canary-bin
 	source = fluxer-canary.png
 	sha256sums = c8b078f761ad3b708f9b89c4b27d8a3a4da03a34c22aa0a9de95ead6d9a1ec03
 	sha256sums = bf29f74512940bb5abfa4cc6579579a2365d78b7a4f6cbf65d58c73cf0202589
-	source_x86_64 = fluxer-0.0.50-x64.tar.gz::https://api.fluxer.app/dl/desktop/canary/linux/x64/0.0.50/tar_gz
-	sha256sums_x86_64 = bde4fa697ed2a0f8dd2dd3e34043b2ceb276afe470261f9b23e8a67f66fb5f79
-	source_aarch64 = fluxer-0.0.50-arm64.tar.gz::https://api.fluxer.app/dl/desktop/canary/linux/arm64/0.0.50/tar_gz
-	sha256sums_aarch64 = 1d78bd3f477ff4050a887bf86dffb8da666a49098d6e408c2015cfa8d696bc87
+	source_x86_64 = fluxer-0.0.86-x64.tar.gz::https://api.fluxer.app/dl/desktop/canary/linux/x64/0.0.86/tar_gz
+	sha256sums_x86_64 = 2462651cdb05f2e331b690ab20910a50979e67a290cba4002dc5a4c4c42a57ba
+	source_aarch64 = fluxer-0.0.86-arm64.tar.gz::https://api.fluxer.app/dl/desktop/canary/linux/arm64/0.0.86/tar_gz
+	sha256sums_aarch64 = 660bc3f18ef2b307a0b358776b5a4ab36bd44ddb9e5b939e15236e85594ceb84
 
 pkgname = fluxer-canary-bin
