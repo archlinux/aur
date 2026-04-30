@@ -195,10 +195,6 @@ _kernel_major=6.19
 _kernel_minor=13
 # Tachyon patches version
 _tachyon=6.19.13-1599
-# kernel_compiler_patch version
-_kernelcompilerpatch="20250818.2"
-# kernel_compiler_patch name
-_kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.16+.patch"
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
@@ -218,7 +214,6 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
     "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
     "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
-    "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
 )
 
 
@@ -230,7 +225,6 @@ sha256sums=(
     "SKIP"
     "71a55ffd4de97d7dd93b082974fff3f70935b7e12eefa1db53b527a949a97dd6"
     "SKIP"
-    "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
 )
 
 # -> Kernel PGP signer fingerprints
@@ -341,12 +335,6 @@ _apply_patches() {
 
         patch -sNp1 -i "${srcdir}/tachyon/patches/${__patch}" || true
     done
-
-    # Patch with kernel_compiler_patch patches.
-    # Do this before any defconfig invocations so we
-    # have all of the extra selectable uarches ready and selectable
-    _info "Applying the kernel compiler patch"
-    patch -sNp1 -i "$srcdir/kernel_compiler_patch-${_kernelcompilerpatch}/${_kernelcompilername}"
 }
 
 
