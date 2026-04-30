@@ -3,14 +3,14 @@
 pkgbase=k230-burning-tool
 pkgname=k230-burning-tool
 pkgver=2.2.4
-pkgrel=1
+pkgrel=3
 groups=()
 pkgdesc="Kendryte K230 Flash Tool Cpp GUI version"
 arch=($CARCH)
 url="https://github.com/kendryte/k230_burning_tool"
 license=('GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT')
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=(${pkgname} ${pkgname}-avalon)
+conflicts=(${pkgname} ${pkgname}-avalon)
 depends=(
     glibc
     hicolor-icon-theme
@@ -75,21 +75,36 @@ build() {
         -Wno-dev
 
     ninja -C build
+
+    cmake -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DTARGET_AVALON_NANO3=ON \
+    -DCMAKE_C_FLAGS="${CFLAGS} -Wno-error=calloc-transposed-args -Wno-error=discarded-qualifiers" \
+    -B build_avalon \
+    -G Ninja \
+    -Wno-dev
+
+    ninja -C build_avalon
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
     # DESTDIR="${pkgdir}" ninja -C build install
     install -vDm0755 build/gui/K230BurningTool ${pkgdir}/usr/bin/${pkgname//-/}
+    install -vDm0755 build_avalon/gui/K230BurningTool ${pkgdir}/usr/bin/${pkgname//-/}-avalon
     install -vDm0755 build/canaan-burn/libkburn.so -t ${pkgdir}/usr/lib/
-
+    install -vDm0644 gui/resources/K230BurningTool.desktop ${pkgdir}/usr/share/applications/${pkgname//-/}.desktop
     sed -i -e 's|K230BurningTool|k230burningtool|g'\
         -e 's|=icon|=k230burningtool.png|g' \
-        gui/resources/*.desktop
+        ${pkgdir}/usr/share/applications/${pkgname//-/}.desktop
+
+    install -vDm0644 gui/resources/K230BurningTool.desktop ${pkgdir}/usr/share/applications/${pkgname//-/}-avalon.desktop
+    sed -i -e 's|K230BurningTool|k230burningtool-avalon|g'\
+        -e 's|=icon|=k230burningtool.png|g' \
+        ${pkgdir}/usr/share/applications/${pkgname//-/}-avalon.desktop
 
     sed -i 's/^#include "\.\//#include "/g' canaan-burn/include/public/*.h
 
-    install -vDm0644 gui/resources/K230BurningTool.desktop ${pkgdir}/usr/share/applications/${pkgname//-/}.desktop
     install -vDm0644 gui/resources/icon.png ${pkgdir}/usr/share/icons/hicolor/256x256/${pkgname//-/}.png
     install -vDm0644 canaan-burn/include/public/*.h -t ${pkgdir}/usr/include/lib${pkgname//-/}/
     install -vDm0644 Licenses/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"

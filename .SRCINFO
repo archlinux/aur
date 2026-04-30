@@ -1,7 +1,7 @@
 pkgbase = k230-burning-tool
 	pkgdesc = Kendryte K230 Flash Tool Cpp GUI version
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/kendryte/k230_burning_tool
 	arch = x86_64
 	license = GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -22,7 +22,9 @@ pkgbase = k230-burning-tool
 	depends = libusb
 	depends = qt6-base
 	provides = k230-burning-tool
+	provides = k230-burning-tool-avalon
 	conflicts = k230-burning-tool
+	conflicts = k230-burning-tool-avalon
 	source = k230-burning-tool::git+https://github.com/kendryte/k230_burning_tool.git#tag=v2.2.4
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
 	source = git+https://github.com/kendryte747/libusb-cmake.git
