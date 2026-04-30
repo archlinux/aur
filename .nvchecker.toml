@@ -1,5 +1,0 @@
-[wakatime]
-source = "git"
-git = "https://github.com/wakatime/wakatime-cli"
-prefix = "v"
-exclude_regex = ".*(alpha|beta|rc).*"

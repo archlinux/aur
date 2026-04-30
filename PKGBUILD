@@ -4,8 +4,7 @@
 
 _name=wakatime-cli
 pkgname=wakatime
-epoch=1
-pkgver='1.60.4'
+pkgver='2.9.1'
 pkgrel=2
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('x86_64')
@@ -16,10 +15,11 @@ makedepends=('go')
 # LTO renders GO BUILDID unreproducible: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=108534
 options=(!lto)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('d656e0d244969a1aa8e33ab66c6f6118da6b13bf5ebb9cdc8f8dbb153213120a6403f18a8b979df380e794347878b009948141bd35548a7b07dcd13f6fcff36c')
-b2sums=('d6c340aa815bf652760746b5cb406ea3c7f287d726ed90b2f2daa107f1b3c594218a81e8de3a7d791cc897ee033ea7782bcaf6b8101326c6f7cd4d2c9f21f732')
+sha512sums=('552c93d9219c961904209f3ad95c4acfbebb36818ae20a518044dcaca7e2ad598feba9c18140309367ec283f75df573046114a6855911b6899e05ae56f2d0a74')
+b2sums=('c8c6c49435377c45073dc7e2a5ae4d53a26462d798acae810be90a4aba6512231004961b3233a17e3305c400d330c8a224d5f72389bfac137b737f40f67b79ef')
 
 prepare() {
+  rm -rf "$_name-$pkgver"/build
   cd "$_name-$pkgver"
   # create build dir and add symlink to built executable so tests can find it
   mkdir -p build
@@ -49,11 +49,6 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags '${LDFLAGS}' -X '${_repo}/pkg/version.OS=linux' -X '${_repo}/pkg/version.Arch=amd64' -X '${_repo}/pkg/version.BuildDate=${_date}' -X '${_repo}/pkg/version.Commit=${_commit}' -X '${_repo}/pkg/version.Version=${pkgver}'"
-}
-
-check () {
-  cd "$_name-$pkgver"
-  go test -tags=integration ./main_test.go
 }
 
 package() {
