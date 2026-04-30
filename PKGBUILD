@@ -2,7 +2,7 @@
 _appname=runjs
 pkgname="${_appname}-electron-bin"
 _pkgname=RunJS
-pkgver=4.0.0
+pkgver=4.0.1
 _electronversion=41
 pkgrel=1
 pkgdesc="A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)"
@@ -33,16 +33,16 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('f8d6f02b4a2fc7cc6ab547a72eb48fbe2cdcc4a70e99d48e554be3acda074d5d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('84316d636815150e94e544ca954a3960ba0fd31ae6eb02f0ca269c124a2b380a')
-sha256sums_x86_64=('d88c67f17ed2bbef60c6531c2445699cffe53920ad198d02084fa0d269b373c2')
+sha256sums_aarch64=('f908334ff36734340af861da852c32e97b34d198fa644a6b8285faeb7770cc76')
+sha256sums_x86_64=('f633f00ad28c6d5092783302edd5d8a6cc5689d8aa91500335fcd7e90c993105')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-    local _main_exe=""    
+    local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
     fi
@@ -66,29 +66,39 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    sed -i "s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
-    asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar"
+    sed -i -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/squashfs-root/${_appname}.desktop"
+    asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar"
     find "${srcdir}/app.asar.unpacked" -not -path "${srcdir}/app.asar.unpacked/node_modules" \
         -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_pkgname}/resources/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/squashfs-root/resources/app.asar"
     case "${CARCH}" in
         aarch64)
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@esbuild/linux-x64"
+            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@esbuild/linux-x64"
             ;;
         x86_64)
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@esbuild/linux-arm64"
+            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@esbuild/linux-arm64"
             ;;
     esac
+    find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
