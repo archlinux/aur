@@ -2,7 +2,7 @@
 
 _pkgname=asphalt
 pkgname=asphalt-git
-pkgver=0.8.4.r1.g2482ba7
+pkgver=2.0.0.r0.gaffcf8a
 pkgrel=1
 pkgdesc='Upload and reference Roblox assets in code'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -31,6 +31,9 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+
+    # https://github.com/aws/aws-lc-rs/issues/1097#issuecomment-4236293939
+    export AWS_LC_SYS_NO_JITTER_ENTROPY=1
 
     cd $_pkgname
     cargo build --frozen --release

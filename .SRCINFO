@@ -1,6 +1,6 @@
 pkgbase = asphalt-git
 	pkgdesc = Upload and reference Roblox assets in code
-	pkgver = 0.8.4.r1.g2482ba7
+	pkgver = 2.0.0.r0.gaffcf8a
 	pkgrel = 1
 	url = https://github.com/jackTabsCode/asphalt
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = asphalt-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	provides = asphalt=0.8.4.r1.g2482ba7
+	provides = asphalt=2.0.0.r0.gaffcf8a
 	conflicts = asphalt
 	options = !lto
 	source = asphalt::git+https://github.com/jackTabsCode/asphalt
