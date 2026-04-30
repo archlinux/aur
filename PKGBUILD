@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=26
+pkgrel=27
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -47,7 +47,6 @@ makedepends=('git')
 # 修改点 1：在 source 数组中添加 gram 文件的下载链接
 source=(
     "git+https://github.com/SHORiN-KiWATA/shorin-niri.git"
-    "wanxiang-lts-zh-hans.gram::https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram"
 )
 # 修改点 2：为新增的文件添加 SKIP 校验
 sha256sums=('SKIP' 'SKIP')
@@ -70,11 +69,6 @@ package() {
         echo "Error: 'dotfiles' directory not found in the git repository."
         exit 1
     fi
-
-    # 修改点 3：将额外下载的 gram 文件安装到目标目录中
-    local rime_dir="$target_dir/.local/share/fcitx5/rime"
-    install -dm755 "$rime_dir"
-    install -Dm644 "$srcdir/wanxiang-lts-zh-hans.gram" "$rime_dir/wanxiang-lts-zh-hans.gram"
 
     # 拷贝 Wallpapers 到独立的共享目录
     local wp_dir="$pkgdir/usr/share/shorin-niri-wallpapers"
