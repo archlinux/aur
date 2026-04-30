@@ -29,7 +29,6 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/tokyo-notes" << 'EOF'
 #!/bin/sh
-cd /usr/share/tokyo-notes
 exec python3 /usr/share/tokyo-notes/main.py "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/tokyo-notes"
