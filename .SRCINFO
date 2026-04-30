@@ -1,0 +1,13 @@
+pkgbase = avutils-git
+	pkgdesc = A utilities library for C
+	pkgver = v0.1.r163.e58aa53
+	pkgrel = 1
+	url = https://github.com/jojo7682345/avUtils.git
+	arch = x86_64
+	license = MIT
+	makedepends = avbuilder-git
+	provides = avutils
+	source = git+https://github.com/jojo7682345/avUtils.git
+	md5sums = SKIP
+
+pkgname = avutils-git
