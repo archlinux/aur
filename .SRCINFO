@@ -1,0 +1,21 @@
+pkgbase = start-messenger-bin
+	pkgdesc = Start Messenger Desktop - Arch Linux Version
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/Vniverse77/start-messenger-arch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libutil-linux
+	depends = nss
+	depends = nspr
+	depends = alsa-lib
+	depends = atk
+	depends = cups
+	depends = gtk3
+	depends = libxss
+	depends = libxtst
+	options = !strip
+	source = https://github.com/Vniverse77/start-messenger-arch/releases/download/1.3.1/start_messenger_arch.tar.zst
+	sha256sums = e72c7205da9f43aa7ffaf8ea9cb861a22fcd72508aacfdbe452c548422680f09
+
+pkgname = start-messenger-bin
