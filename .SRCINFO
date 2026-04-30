@@ -1,9 +1,8 @@
 pkgbase = fcitx5-lotus-git
 	pkgdesc = Vietnamese input method for fcitx5
-	pkgver = 3.0.0.r660.ga9d12d0
+	pkgver = 3.0.1.r661.ge3d9ae0
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
-	install = fcitx5-lotus.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
@@ -22,14 +21,15 @@ pkgbase = fcitx5-lotus-git
 	depends = python-qtpy
 	depends = python-dbus
 	depends = libudev.so
-	optdepends = fcitx5-lotus-openrc-git: OpenRC init script for fcitx5-lotus
-	optdepends = fcitx5-lotus-runit-git: Runit service for fcitx5-lotus
 	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev
 	source = git+https://github.com/LotusInputMethod/bamboo-core.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = fcitx5-lotus-git
+	install = fcitx5-lotus.install
+	optdepends = fcitx5-lotus-openrc-git: OpenRC init script for fcitx5-lotus
+	optdepends = fcitx5-lotus-runit-git: Runit service for fcitx5-lotus
 	provides = fcitx5-lotus
 	conflicts = fcitx5-lotus
 
