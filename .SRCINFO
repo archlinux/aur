@@ -1,0 +1,13 @@
+pkgbase = hid-logishifter-dkms
+	pkgdesc = DKMS kernel driver for the InterBiometrics Logitech@ Shifter USB adapter (1209:f00d)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AngryNui/hid-logishifter
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/AngryNui/hid-logishifter.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = hid-logishifter-dkms
