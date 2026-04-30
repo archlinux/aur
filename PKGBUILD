@@ -2,7 +2,7 @@
 # Co-Maintainer: 67mustard41
 
 pkgname=opera-gx
-pkgver=130.0.5847.89
+pkgver=130.0.5847.108
 pkgrel=1
 pkgdesc='Opera GX The Gaming Browser'
 arch=('x86_64')
@@ -71,7 +71,7 @@ source=(
     "nwjs-ffmpeg-${_ffmpeg_zip}::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${_nwjs_ffmpeg_version}/${_ffmpeg_zip}"
 )
 
-sha256sums=('6d609a4959ad49539a24a37c8e7b5b329dcbca5e102ff6878b894b55db23ef74'
+sha256sums=('3435c3797c72df94dbb485c19257e9afb2cc9c5bf94200eeed5ae8309b221fac'
             'baeb75b7d52f1f75ec46027b05f0df0f4a22d6c47ab5816562f6e183c3af4034'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
             '3c48827275d36f2a38a9ac63ce81875211f11022d390d7ada302d26e475271ea'
