@@ -1,6 +1,6 @@
 # Maintainer: jlucaso <jlucaso at users dot noreply dot github dot com>
 pkgname=jean-bin
-pkgver=0.1.46
+pkgver=0.1.47
 pkgrel=1
 pkgdesc="AI assistant application built with Tauri, React, and TypeScript"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('jean')
 conflicts=('jean')
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/Jean_${pkgver}_amd64.deb")
-sha256sums_x86_64=('fee036708423301767cb258ec02eb348ecdcf61074b57076e7bd9dd5aa8cbb75')
+sha256sums_x86_64=('c3bb5881b8ab65d8e7a12ed59941cd065b9b0834ed82c4ef3ea874068ee77950')
 
 package() {
     tar -xzf data.tar.gz -C "${pkgdir}"
