@@ -1,0 +1,18 @@
+pkgbase = python-construct-classes
+	pkgdesc = Parse your binary data into dataclasses. Pack your dataclasses into binary data.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/matejcik/construct-classes
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-flit
+	makedepends = python-poetry-core
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-construct
+	source = python-construct-classes-0.2.3.tar.gz::https://github.com/matejcik/construct-classes/archive/refs/tags/v0.2.3.tar.gz
+	b2sums = 089af3bc7d304a73bfc4fdc70513907ad7e1eeea54490e4595aeccb1ca3de8284cd4aadd9341ace81862e9e7552b4b11a517c8cc9746411ab57fa68211450c82
+
+pkgname = python-construct-classes
