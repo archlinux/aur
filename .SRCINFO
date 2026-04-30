@@ -1,6 +1,6 @@
 pkgbase = leap-bin
 	pkgdesc = Leap is a ssh connection manager
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/paramientos/leap
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = leap-bin
 	provides = leap
 	conflicts = leap
 	options = !strip
-	source = README-0.6.1.md::https://raw.githubusercontent.com/paramientos/leap/v0.6.1/README.md
+	source = README-0.6.2.md::https://raw.githubusercontent.com/paramientos/leap/v0.6.2/README.md
 	source = LICENSE
-	sha256sums = 8b76f2d476b3c61d3846d7a10213f1769ab46a6140c0a8dc321e88a63b4c19de
+	sha256sums = c67acfa7556f170a75532a86b01dea0f41db192593bde1fe0c3e5eafb33c4bef
 	sha256sums = 57a638c086b10909d752343c9cdb329b38dd1f76922e5e7eed07f627bac494d5
-	source_x86_64 = leap-x86_64-0.6.1.tgz::https://github.com/paramientos/leap/releases/download/v0.6.1/leap-0.6.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 1daae07a9c02a864815a8efdc95a46c324640a211d198fdb88799cec03b090ed
-	source_aarch64 = leap-aarch64-0.6.1.tgz::https://github.com/paramientos/leap/releases/download/v0.6.1/leap-0.6.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = f7b521e41cd86a3ece5acb4d36f3d8fd01c02ed48c6fac761396e7c11bec9490
+	source_x86_64 = leap-x86_64-0.6.2.tgz::https://github.com/paramientos/leap/releases/download/v0.6.2/leap-0.6.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 65dc6f8c6667929ce4d83d3792637d26780e6f020f9c75ffb76d835c19123b63
+	source_aarch64 = leap-aarch64-0.6.2.tgz::https://github.com/paramientos/leap/releases/download/v0.6.2/leap-0.6.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9f9398ee4be66d24ff0e79497d61cb0a95b0eea84f8f4f38480a5dad7afe2d1a
 
 pkgname = leap-bin

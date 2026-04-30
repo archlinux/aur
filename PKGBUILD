@@ -5,7 +5,7 @@ _pkgname=leap
 pkgname=${_pkgname}-bin
 pkgdesc="Leap is a ssh connection manager"
 
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,10 +27,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[1]}.tar.gz")
-sha256sums=('8b76f2d476b3c61d3846d7a10213f1769ab46a6140c0a8dc321e88a63b4c19de'
+sha256sums=('c67acfa7556f170a75532a86b01dea0f41db192593bde1fe0c3e5eafb33c4bef'
             '57a638c086b10909d752343c9cdb329b38dd1f76922e5e7eed07f627bac494d5')
-sha256sums_x86_64=('1daae07a9c02a864815a8efdc95a46c324640a211d198fdb88799cec03b090ed')
-sha256sums_aarch64=('f7b521e41cd86a3ece5acb4d36f3d8fd01c02ed48c6fac761396e7c11bec9490')
+sha256sums_x86_64=('65dc6f8c6667929ce4d83d3792637d26780e6f020f9c75ffb76d835c19123b63')
+sha256sums_aarch64=('9f9398ee4be66d24ff0e79497d61cb0a95b0eea84f8f4f38480a5dad7afe2d1a')
 
 case ${CARCH} in
   ${arch[0]})
