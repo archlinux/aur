@@ -1,11 +1,11 @@
 pkgname=('alfis')
 pkgver=0.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Alternative Free Identity System using blockchain'
 arch=('x86_64')
 url='https://github.com/Revertron/Alfis'
 license=('AGPL3')
-depends=('webkit2gtk-4.1' 'gtk3')
+depends=('webkit2gtk-4.1' 'gtk3' 'xdotool' 'libayatana-appindicator' 'libayatana-indicator')
 makedepends=('cargo' 'rust' 'atk' 'pango')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Revertron/Alfis/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('91e0039bc40d6e3dad8ab3b5cfecc36f23c41693e63ac76fdb8bbac31b2584af')
