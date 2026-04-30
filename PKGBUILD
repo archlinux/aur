@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-cuda-full
 pkgver=8.1
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases'
 arch=('x86_64')
@@ -121,8 +121,12 @@ conflicts=('ffmpeg')
 replaces=('ffmpeg')
 install=ffmpeg-cuda-full.install
 options=('!lto')
-source=("ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git")
-b2sums=('SKIP')
+source=(
+    "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git"
+    "0001-Add-av_stream_get_first_dts-for-Chromium.patch"
+)
+b2sums=('SKIP'
+        'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d')
 
 # Dynamically resolve the latest stable release tag from upstream.
 # This runs at build time so the package always tracks the newest FFmpeg.
@@ -149,6 +153,10 @@ prepare() {
     cd ffmpeg
     # Checkout the exact release tag determined by pkgver()
     git checkout "n${pkgver}" 2>/dev/null || true
+
+    # Restore av_stream_get_first_dts for Chromium-derived consumers
+    # (qt6-webengine, electron, chromium). https://crbug.com/1251779
+    git apply -3 ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
 }
 
 build() {
