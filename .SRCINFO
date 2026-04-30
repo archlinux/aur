@@ -1,0 +1,17 @@
+pkgbase = docker-sbx
+	pkgdesc = Docker sandboxes - isolated VM-based container execution using nerdbox/krun
+	pkgver = 0.28.3
+	pkgrel = 1
+	url = https://docs.docker.com/sandbox/
+	arch = x86_64
+	license = LicenseRef-Docker-Proprietary
+	license = GPL-2.0-only
+	license = Apache-2.0
+	optdepends = apparmor: AppArmor profile for nerdbox shim confinement (recommended)
+	provides = sbx
+	conflicts = sbx
+	options = !debug
+	source = https://download.docker.com/linux/ubuntu/dists/noble/pool/stable/amd64/docker-sbx_0.28.3-1~ubuntu.24.04~noble_amd64.deb
+	sha256sums = 167b4c25222b3e7491be8ac345503778cfd7f0267dab67ba2d6b245131705d68
+
+pkgname = docker-sbx
