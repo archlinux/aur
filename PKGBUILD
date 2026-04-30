@@ -2,7 +2,7 @@
 
 pkgname=moz-phab
 _gitpkgname=review
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Phabricator review submission/management tool'
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   'python-sentry_sdk'
   'python-setuptools'
   'python-packaging'
+  'python-urllib3'
 )
 makedepends=(
   'python-build'
@@ -46,7 +47,7 @@ source=(
   'disable-telemetry.patch'
 )
 
-sha512sums=('5b936c5f126cfa31ff8e380052e788174969e29695861a78a24ca3bbd1f2f77f6603b07da75ba4df9378f8f47d7e4ea892e8f9b91aee4d0bbd8cc8f1e1a197a4'
+sha512sums=('e10052c324020dba8f9c080fedb48f561f7f76a1d4763c73e8e3ac9c143e27099dab3756828e7f30971a2ca5087eab4f4fd7a46c498d2c8b614ea1fed4c4b45d'
             'dd5fd9467261866549596836f72dd7d28519f71bce6e838bb1a0de8f607fa7dd7407abd5ac3a02fd8ab139e8a53affef05a73f8597ba0367be15a4e78811ca54'
             '35087a5d373f7ec1c726204b272454e08b8e43469000eb415f218adeb5606e7f48d603191571f88f23295c15b97275866ac117a5d87d0ea9e7ffefc837fefe43'
             'd8ca129d5441282124599a74e5f0c898d28f4bde574ce0e6c792d492fdcd262c0bb40e3ed79611f603a3dde74fc18659b9b6303abd1022644ebe57031f993ef6')
@@ -82,10 +83,13 @@ check() {
   echo >&2 'Running unit tests'
   # Exclude from pytest’s collection all Git/Mercurial integration
   # tests and submission tests, which rely on an unpackaged,
-  # unmaintained dependency
+  # unmaintained dependency.
+  # Also exclude test_integration_patch.py, which has been racy
+  # since v2.14.0 ("Repository TEST not found").
   test-env/bin/python -m pytest \
     --ignore=tests/test_integration_git.py \
     --ignore=tests/test_integration_hg.py \
+    --ignore=tests/test_integration_patch.py \
     --ignore=tests/test_submit.py \
     -k 'not test_style and not test_telemetry'
 
