@@ -2,8 +2,8 @@
 
 pkgname=noctalia-git
 _pkgname=noctalia
-pkgver=5.0.0.r1029.gb3b0a511d
-pkgrel=3
+pkgver=5.0.0.r1191.g39a4a335c
+pkgrel=2
 pkgdesc='Lightweight Wayland shell built directly on Wayland and OpenGL ES'
 arch=('x86_64')
 url='https://github.com/noctalia-dev/noctalia-shell'
@@ -15,15 +15,20 @@ depends=(
   'fontconfig'
   'freetype2'
   'gcc-libs'
+  'glib2'
   'glibc'
   'libglvnd'
   'libpipewire'
   'libwebp'
   'libxkbcommon'
   'pam'
+  'polkit'
   'pango'
   'sdbus-cpp'
   'wayland'
+)
+optdepends=(
+  'wlsunset: night light support'
 )
 makedepends=(
   'git'
@@ -46,13 +51,8 @@ pkgver() {
 }
 
 build() {
-  meson setup "${_pkgname}" build-release \
-    --prefix=/usr \
-    --buildtype=plain \
-    -Doptimization=3 \
-    -Db_ndebug=true \
-    -Db_lto=true \
-    --wrap-mode=nodownload
+  arch-meson "${_pkgname}" build-release \
+    -Db_ndebug=true
   meson compile -C build-release
 }
 
