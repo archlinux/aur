@@ -22,6 +22,6 @@ pkgbase = nodotify
 	provides = dotify
 	conflicts = dotify
 	source = https://dotify.fun/Dotify.deb
-	sha256sums = 0cc38dd837b3db96f5d88d3fef5e06d7f64e4645a63d77b8afbd07bd94045b15
+	sha256sums = e7f02d7a7b8fee56eac3aad5743e24276c425e2b0b13fece6a41ed810a80ce07
 
 pkgname = nodotify
