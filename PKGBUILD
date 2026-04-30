@@ -1,8 +1,7 @@
 # Maintainer: Adam Schadler (ajschadler at gmail dot com)
 # Previous Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
-_threads=$(nproc)
 pkgname=cmdstan
-pkgver=2.35.0
+pkgver=2.38.0
 pkgrel=1
 pkgdesc="The command line interface to Stan, a C++ library for statistical modeling and high-performance statistical computation"
 arch=('x86_64')
@@ -20,7 +19,7 @@ checkdepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/stan-dev/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-b2sums=('8de5bfa4b6411a486ddc97e2479b6addc9e14a7ffdcc7a35a8733f517740fee4d19408d63b286363a5487ff89e76c016bf1e669d579b4fc2cb3e65f4a37ffd65')
+b2sums=('ea2038131139a239b1a676497d480de5d1a5c7d13fe4a0a9b51ed3bf24ad2b240450751ab75bc4113be2682cf94c469662a8450654745e1b821627b5f1e13d9d')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -30,13 +29,13 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    make -j$_threads build
+    make build
 }
 
 check() {
     cd "${pkgname}-${pkgver}"
-    #python runCmdStanTests.py -j$_threads src/test
-    ./test-all.sh $_threads
+    #python runCmdStanTests.py -jNPROC src/test
+    ./test-all.sh $NPROC
 }
 
 package() {
