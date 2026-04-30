@@ -2,7 +2,7 @@
 
 _pkgname=kube-bench
 pkgname=$_pkgname-bin
-pkgver=0.15.0 # renovate: datasource=github-releases depName=aquasecurity/kube-bench
+pkgver=0.15.3 # renovate: datasource=github-releases depName=aquasecurity/kube-bench
 pkgrel=1
 pkgdesc="Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark"
 url="https://github.com/aquasecurity/$_pkgname"
@@ -12,8 +12,8 @@ source=(
   "https://raw.githubusercontent.com/aquasecurity/kube-bench/v$pkgver/cfg/config.yaml"
 )
 arch=('x86_64')
-sha512sums=('02e3a6cf987d6730492e759eec3e17a2eace833e288d49a7458da962dd909cf6d1dcce0123bfb552c2d26af36c75536105b5c968d5cec621e15ad5a7d5194513'
-            '73de4cb47b31c23c5047c8a0b4746be4f2f7b892722f1a74765349cce755e1bfcf2533a0f396d206b4fb3ef84745b166865a36fae76abe54ab9ce6f49eb1eb0b')
+sha512sums=('81d694e8710271c54e1b6b66b44a5acca60a953e71c08b6c378c70e8a186b88587a0248c42f424c6ecca2a605a425b32a96e197f93bc08938e594d5fd87c09ec'
+            '09f3c31a64d8aef6192c83ea8131a25963aabe7ec6016943384877568d3d15b3ec5ef75653471d584a3d8cb5acc6621af2056b026bd920d678244387734f8df4')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
