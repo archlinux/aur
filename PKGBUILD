@@ -3,7 +3,7 @@
 _name="jule"
 _pkgname="${_name}c"
 pkgname="${_pkgname}-bin"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Jule programming language compiler"
 arch=(
@@ -25,15 +25,15 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_pkgsrc="${_pkgname}-${pkgver}"
+_pkgsrc="${_name}"
 source_aarch64=(
-  "${_pkgsrc}-aarch64.zip::${_url}/releases/download/${_name}${pkgver}/${_name}-linux-arm64.zip"
+  "${_url}/releases/download/${_name}${pkgver}/${_name}${pkgver}-linux-arm64.zip"
 )
 source_x86_64=(
-  "${_pkgsrc}-x86_64.zip::${_url}/releases/download/${_name}${pkgver}/${_name}-linux-amd64.zip"
+  "${_url}/releases/download/${_name}${pkgver}/${_name}${pkgver}-linux-amd64.zip"
 )
-sha256sums_aarch64=('194534665638e13972efaf2a66bf3ab45f3f461a9e4aac83602a294f3ac4ed20')
-sha256sums_x86_64=('3c59592382fbfd491bf111dccc5333f8b7f64e1536b7fa8b91702700d94ddbb6')
+sha256sums_aarch64=('56e12f30e3e292dea33af9a761921d5c5ab6e46b6549aa885f94e693c455d35d')
+sha256sums_x86_64=('3f8ee8680aa94bc6f684221a5710443ace5143c6e4dd406a0388c59f315f6f4f')
 
 package() {
   cd "${srcdir}/${_name}"

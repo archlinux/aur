@@ -1,6 +1,6 @@
 pkgbase = julec-bin
 	pkgdesc = Jule programming language compiler
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://jule.dev
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = julec-bin
 	optdepends = gcc: gcc backend support
 	provides = julec
 	conflicts = julec
-	source_aarch64 = julec-0.2.0-aarch64.zip::https://github.com/julelang/jule/releases/download/jule0.2.0/jule-linux-arm64.zip
-	sha256sums_aarch64 = 194534665638e13972efaf2a66bf3ab45f3f461a9e4aac83602a294f3ac4ed20
-	source_x86_64 = julec-0.2.0-x86_64.zip::https://github.com/julelang/jule/releases/download/jule0.2.0/jule-linux-amd64.zip
-	sha256sums_x86_64 = 3c59592382fbfd491bf111dccc5333f8b7f64e1536b7fa8b91702700d94ddbb6
+	source_aarch64 = https://github.com/julelang/jule/releases/download/jule0.2.1/jule0.2.1-linux-arm64.zip
+	sha256sums_aarch64 = 56e12f30e3e292dea33af9a761921d5c5ab6e46b6549aa885f94e693c455d35d
+	source_x86_64 = https://github.com/julelang/jule/releases/download/jule0.2.1/jule0.2.1-linux-amd64.zip
+	sha256sums_x86_64 = 3f8ee8680aa94bc6f684221a5710443ace5143c6e4dd406a0388c59f315f6f4f
 
 pkgname = julec-bin
