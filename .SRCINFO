@@ -1,7 +1,7 @@
 pkgbase = deta-surf-appimage
 	pkgdesc = Deta Surf browser AppImage
-	pkgver = 1.4.6beta0
-	pkgrel = 3
+	pkgver = 1.4.7beta0
+	pkgrel = 1
 	url = https://github.com/deta/surf
 	arch = x86_64
 	license = Apache-2.0
@@ -16,9 +16,9 @@ pkgbase = deta-surf-appimage
 	depends = fuse2
 	provides = deta-surf
 	conflicts = deta-surf
-	noextract = Surf-1.4.6-beta.0.x86_64.AppImage
+	noextract = Surf-1.4.7-beta.0.x86_64.AppImage
 	options = !strip
-	source_x86_64 = Surf-1.4.6-beta.0.x86_64.AppImage::https://github.com/deta/surf/releases/download/1.4.6-beta.0/Surf-1.4.6-beta.0.x86_64.AppImage
-	sha512sums_x86_64 = 977b11107a7cf3d31cbad6316c3d210403b4d51ecdd8beb9243c8fda0a9275340effe93309e5357b3dece58a2a4c4799195d578500428c052537caea3621995c
+	source_x86_64 = Surf-1.4.7-beta.0.x86_64.AppImage::https://github.com/deta/surf/releases/download/1.4.7-beta.0/Surf-1.4.7-beta.0.x86_64.AppImage
+	sha512sums_x86_64 = 3d8ef503c9915b31bfe9fd870bf1e3d2c63676bb73e549c12ca0eecc60dd192441754984e02cf2537b5f0b64e59be895b85250d1e873930f5df9978dac513de9
 
 pkgname = deta-surf-appimage

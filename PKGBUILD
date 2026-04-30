@@ -2,9 +2,9 @@
 
 pkgname=deta-surf-appimage
 _pkgname=deta-surf
-pkgver="1.4.6beta0"
+pkgver="1.4.7beta0"
 _upstream_pkgver=$(sed -E 's/beta/-beta./; s/rc/-rc./' <<<"$pkgver")
-pkgrel=3
+pkgrel=1
 pkgdesc="Deta Surf browser AppImage"
 arch=('x86_64')
 url='https://github.com/deta/surf'
@@ -13,8 +13,8 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 provides=('deta-surf')
 conflicts=('deta-surf')
 options=('!strip')
-source_x86_64=("Surf-${_upstream_pkgver}.x86_64.AppImage::https://github.com/deta/surf/releases/download/${_upstream_pkgver}/Surf-${_upstream_pkgver}.x86_64.AppImage")
-sha512sums_x86_64=('977b11107a7cf3d31cbad6316c3d210403b4d51ecdd8beb9243c8fda0a9275340effe93309e5357b3dece58a2a4c4799195d578500428c052537caea3621995c')
+source_x86_64=("Surf-1.4.7-beta.0.x86_64.AppImage::https://github.com/deta/surf/releases/download/1.4.7-beta.0/Surf-1.4.7-beta.0.x86_64.AppImage")
+sha512sums_x86_64=('3d8ef503c9915b31bfe9fd870bf1e3d2c63676bb73e549c12ca0eecc60dd192441754984e02cf2537b5f0b64e59be895b85250d1e873930f5df9978dac513de9')
 noextract=("Surf-${_upstream_pkgver}.x86_64.AppImage")
 
 prepare() {
