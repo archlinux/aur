@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=21
+pkgrel=22
 pkgdesc="Shorin DMS Niri desktop environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -35,7 +35,7 @@ optdepends=(
     'fastfetch: System info' 'gdu: Disk usage' 'btop: Resource monitor' 'opencode: Code opener'
     'shorin-screenrec-menu-git: Screen record menu' 'flatpak: Package management' 'bazaar: Version control'
     'matugen: Material You colors' 'adw-gtk-theme: GTK theme' 'python-pywalfox: Firefox theme tool'
-    'nwg-look: GTK settings' 'breeze-cursors: Cursor theme' 'fcitx5: Input method framework'
+    'nwg-look: GTK settings' 'breeze-cursors: Cursor theme' 'fcitx5: Input method framework' 'rime-wanxiang-gram-zh-hans: better ime model'
     'fcitx5-configtool: Fcitx5 GUI' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT' 'fcitx5-rime: Fcitx5 Rime'
     'rime-ice-git: Rime dict' 'rime-wubi: Rime Wubi'
     'clipsync-git: x11 wayland clipboard sync'

@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Core Configs & Installer)
 	pkgver = r4.0dabc1d
-	pkgrel = 21
+	pkgrel = 22
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
@@ -77,6 +77,7 @@ pkgbase = shorin-dms-niri-git
 	optdepends = nwg-look: GTK settings
 	optdepends = breeze-cursors: Cursor theme
 	optdepends = fcitx5: Input method framework
+	optdepends = rime-wanxiang-gram-zh-hans: better ime model
 	optdepends = fcitx5-configtool: Fcitx5 GUI
 	optdepends = fcitx5-gtk: Fcitx5 GTK
 	optdepends = fcitx5-qt: Fcitx5 QT
