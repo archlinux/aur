@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-assimp
 	pkgdesc = Portable Open Source library to import various well-known 3D model formats in an uniform manner (mingw-w64)
-	pkgver = 6.0.4
+	pkgver = 6.0.5
 	pkgrel = 1
 	url = http://www.assimp.org/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-assimp
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = assimp-6.0.4.tar.gz::https://github.com/assimp/assimp/archive/v6.0.4.tar.gz
-	sha256sums = afa5487efdd285661afa842c85187cd8c541edad92e8d4aa85be4fca7476eccc
+	source = assimp-6.0.5.tar.gz::https://github.com/assimp/assimp/archive/v6.0.5.tar.gz
+	sha256sums = edf3749559c2b7d1f758ffb66fc5bec62186221e623b7f2e8969f17ee46ecb6f
 
 pkgname = mingw-w64-assimp
