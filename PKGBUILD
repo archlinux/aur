@@ -1,7 +1,8 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.8
+_pkgver=13.0.0-rc.9
+_branding=dr460nized
 
 __pkgname=$_pkgname
 
@@ -88,7 +89,7 @@ source=(
   fix-wasm32-wasi-target.patch
   0023-bgo-969412-glibc-2.43.patch
 )
-sha256sums=('298b6404e073fccd9f4f5537511c0a658c6dde6d9b5758c19e4f0ee24b818c4c'
+sha256sums=('81741514b8c32000a4f873e49429492ad78e476b2e897f658147981cc8775a02'
             'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124'
             '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae')
 
@@ -105,7 +106,7 @@ prepare() {
   pnpm lerna run --stream build
   cd ../..
 
-  echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-dr460nized.mozconfig\"" > ../mozconfig
+  echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
 
   if [ $CARCH = x86_64 ]; then
     echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/target/linux-x64.mozconfig\"" >> ../mozconfig
@@ -228,8 +229,8 @@ END
 
   # Install desktop icons and metadata
   local i
-  for i in 16 32 48 64 128; do
-    install -Dvm644 "$appdir/browser/chrome/icons/default/default$i.png" \
+  for i in 16 22 24 32 48 64 128 256; do
+    install -Dvm644 "browser/$_pkgname/branding/$_branding/default$i.png" \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 
