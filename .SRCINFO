@@ -1,6 +1,6 @@
 pkgbase = r-netprior
 	pkgdesc = A model for network-based prioritisation of genes
-	pkgver = 1.36.0
+	pkgver = 1.37.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/netprioR
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-netprior
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-pander
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/netprioR_1.36.0.tar.gz
-	sha256sums = 41a15f1db6335cc10c32c49e020681df6c80f3772e939aea74c8de515eb726e2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/netprioR_1.37.0.tar.gz
+	sha256sums = 0fba54ace176c4964acf40afa6964bb2d7d23191b79f897165fe573ea5738583
 
 pkgname = r-netprior
