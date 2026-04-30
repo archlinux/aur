@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=stars
-_pkgver=0.6-8
+_pkgver=0.7-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,6 +27,7 @@ checkdepends=(
 optdepends=(
   r-cairo
   r-clue
+  r-cftime
   r-covr
   r-cubble
   r-cubelyr
@@ -45,11 +46,11 @@ optdepends=(
   r-lwgeom
   r-mapdata
   r-maps
+  r-ncdfcf
   r-ncdfgeom
   r-ncmeta
   r-openstreetmap
   r-pbapply
-  r-pcict
   r-plm
   r-randomforest
   r-raster
@@ -70,8 +71,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cd5c2598b28954f55b94c659275215b5')
-b2sums=('325b026e430a28169a07c7e39f2648ad5432dd39d61d62b39fa7ef143393630e65ee4818cd1736901bb7b769dd0f1cc80f9f2a2e52963423e8761866c73248a2')
+md5sums=('0016cf9d2ba44160eba72d037dc75fc0')
+b2sums=('8463bb44c52ba5938ce554b31184a22a2449624978bba60fcbf4689fb84d6815a4889abb3ee1fab8d361b3edd168498931365bac01c350d53b2ed77748cd5c9a')
 
 build() {
   mkdir build
