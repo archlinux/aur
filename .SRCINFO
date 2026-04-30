@@ -1,6 +1,6 @@
 pkgbase = guiless-search
 	pkgdesc = Multi-backend headless web search proxy (Google, Bing, DuckDuckGo)
-	pkgver = r1.20260430.3718569
+	pkgver = r2.20260430.32d61fe
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/guiless-search
 	arch = any
