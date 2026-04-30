@@ -7,7 +7,7 @@
 pkgname='dasel'
 pkgdesc='Select, put and delete data from JSON, TOML, XML, YAML, HCL, and INI files with a single command-line tool'
 pkgver=3.8.1
-pkgrel=2
+pkgrel=3
 url='https://github.com/TomWright/dasel'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -39,6 +39,7 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
+  export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-$(date --utc '+%s')}"
 
   _opts=(
     -buildmode=pie
