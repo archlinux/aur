@@ -223,4 +223,7 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+# Downloaded corpus artifacts
+tests/corpora/
+
 # End of https://www.toptal.com/developers/gitignore/api/python,archlinuxpackages

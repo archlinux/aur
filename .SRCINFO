@@ -1,6 +1,6 @@
 pkgbase = arabizi-ibus-git
 	pkgdesc = Linux-native IBus input method for real-time Arabizi-to-Arabic transliteration
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/xoity/arabizi-ibus
 	install = arabizi-ibus-git.install

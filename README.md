@@ -59,7 +59,18 @@ Then open GNOME Settings -> Keyboard -> Input Sources and add **Arabizi Translit
 ```bash
 cd /home/xoity/Desktop/projects/arabizi-ibus
 python -m unittest discover -s tests -v
-python tests.py
+python scripts/download_reliable_corpus.py
+python tests.py --dataset tests/corpora/arabizi_parallel_corpus.jsonl
+```
+
+### Corpus-based regression workflow
+
+- The downloaded corpus (`bashartalafha/Arabizi-Transliteration`, 25k+ pairs) is a real Arabizi->Arabic parallel dataset and replaces the previous synthetic-only scoring flow.
+- `tests.py` now runs strict one-pass evaluation (no auto-learning/memorization), so score changes reflect true engine behavior.
+- For release gates, add a minimum score target:
+
+```bash
+python tests.py --dataset tests/corpora/arabizi_parallel_corpus.jsonl --min-pass-rate 25
 ```
 
 ## Notes

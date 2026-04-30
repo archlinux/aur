@@ -2,7 +2,7 @@
 
 _pkgname=arabizi-ibus
 pkgname=arabizi-ibus-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Linux-native IBus input method for real-time Arabizi-to-Arabic transliteration"
 arch=('any')
