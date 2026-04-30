@@ -1,8 +1,8 @@
 pkgbase = python-tree-sitter-elixir
 	pkgdesc = Elixir grammar for tree-sitter
 	pkgver = 0.3.5
-	pkgrel = 6
-	url = https://pypi.org/project/tree-sitter-elixir/
+	pkgrel = 7
+	url = https://github.com/elixir-lang/tree-sitter-elixir
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
@@ -11,13 +11,7 @@ pkgbase = python-tree-sitter-elixir
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-elixir-0.3.5.tar.gz::https://files.pythonhosted.org/packages/e8/83/0501ee426bcd40cf5f765ce66ff2e7136d438ff4e65aeb08991f9826d4e5/tree_sitter_elixir-0.3.5.tar.gz
-	source = tree-sitter-parser.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-	source = tree-sitter-alloc.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-	source = tree-sitter-array.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-	sha256sums = ead089393b1ce732304e6b6fb0bc0ab79e3295663d697be025bd49f0f367b74d
-	sha256sums = a3eb18ef034b3f4255b965a26caa276f9cfe13a79573b402f1a12dc5018052aa
-	sha256sums = c69f97ef0949199ba66157d523bac994c3aa7cab3de8d0e25ef29d74aa502e94
-	sha256sums = 4ff743903dc46f5db6aa54f31c6b4d160a8a9779e5b2ab1ee59ae7ebcd850ea1
+	source = python-tree-sitter-elixir-0.3.5.tar.gz::https://github.com/elixir-lang/tree-sitter-elixir/archive/refs/tags/v0.3.5.tar.gz
+	sha256sums = 7d8bf37949e2bea75a19d38491d7680ed1c9f0f5a41a5235832d718ec174c7c4
 
 pkgname = python-tree-sitter-elixir
