@@ -6,7 +6,7 @@
 
 pkgname=caddy-custom
 pkgver=2.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Caddy web server with plugins'
 url='https://github.com/caddyserver/caddy'
 arch=('x86_64' 'aarch64')
@@ -95,6 +95,7 @@ build() {
         export CGO_CFLAGS="${CFLAGS}"
         export CGO_CXXFLAGS="${CXXFLAGS}"
         export CGO_LDFLAGS="${LDFLAGS} -Wl,-z,shstk -Wl,-z,ibt"
+        export CGO_ENABLED=1
     fi
 
     go build -o "${srcdir}/_caddy"
