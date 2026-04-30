@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=flashmq-git
-pkgver=1.25.0.r5.g400c57d
+pkgver=1.26.1.r2.g381a652
 pkgrel=1
 pkgdesc="FlashMQ is a light-weight MQTT broker/server, designed to take good advantage of multi-CPU environments"
 arch=($CARCH)
@@ -11,8 +11,9 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    gcc-libs
     glibc
+    libgcc
+    libstdc++
     openssl
 )
 makedepends=(
