@@ -1,6 +1,6 @@
 pkgbase = limabean
 	pkgdesc = A new implementation of Beancount using Rust and Clojure and the Lima parser
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/tesujimath/limabean
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = limabean
 	depends = java-runtime
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/tesujimath/limabean/archive/0.4.1/limabean-0.4.1.tar.gz
-	sha256sums = 37c07113162892c3e15e1bc56bf2ad97cfade85cc5ef8e1aee03777df5097340
+	source = https://github.com/tesujimath/limabean/archive/0.5.0/limabean-0.5.0.tar.gz
+	sha256sums = 0c14d77eb16291f43f2723c204735ec6166c96257c650b6946ddfd8c1b3759e5
 
 pkgname = limabean
