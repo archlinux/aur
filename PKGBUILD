@@ -2,7 +2,7 @@
 # Ex-Maintainer:: Nikita Tarasov <nikatar@disroot.org>
 pkgname=krr
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kubernetes requests recommendations"
 arch=('any')
 url="https://github.com/robusta-dev/krr"
@@ -23,5 +23,5 @@ sha256sums=('fd699bd17b1327b6c969d0432ffdaec5481e2f0195d713887fc2a5369459bee0')
 package() {
   unzip $srcdir/krr-ubuntu-latest-v$pkgver.zip -d $pkgdir/opt/
   mkdir -p $pkgdir/usr/local/bin
-  ln -s $pkgdir/opt/krr/krr $pkgdir/usr/local/bin/krr
+  ln -s /opt/krr/krr "$pkgdir/usr/local/bin/krr"
 }

@@ -1,7 +1,7 @@
 pkgbase = krr
 	pkgdesc = Kubernetes requests recommendations
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robusta-dev/krr
 	arch = any
 	license = MIT
