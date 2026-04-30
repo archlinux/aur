@@ -3,13 +3,13 @@
 
 _pkgname=rmw
 pkgname=${_pkgname}-git
-pkgver=0.9.4.r17.ga02b21e
+pkgver=0.9.5.r10.g5b36817
 pkgrel=1
 pkgdesc="trash/recycle bin utility for the command line"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://theimpossibleastronaut.com/rmw-website/"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'ncurses')
+depends=('glib2' 'ncurses')
 makedepends=('git' 'meson' 'ninja')
 optdepends=('gettext' 'canfigger')
 provides=("${_pkgname}")

@@ -1,6 +1,6 @@
 pkgbase = rmw-git
 	pkgdesc = trash/recycle bin utility for the command line
-	pkgver = 0.9.4.r17.ga02b21e
+	pkgver = 0.9.5.r10.g5b36817
 	pkgrel = 1
 	url = https://theimpossibleastronaut.com/rmw-website/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = rmw-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	depends = glibc
+	depends = glib2
 	depends = ncurses
 	optdepends = gettext
 	optdepends = canfigger
