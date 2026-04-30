@@ -7,12 +7,7 @@ pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
-depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
 makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'libx11' 'python')
-optdepends=(
-    'fcitx5-lotus-openrc: OpenRC init script for fcitx5-lotus'
-    'fcitx5-lotus-runit: Runit service for fcitx5-lotus'
-)
 source=(
     "git+https://github.com/LotusInputMethod/fcitx5-lotus.git#tag=v$pkgver"
     'git+https://github.com/LotusInputMethod/bamboo-core.git'
@@ -21,7 +16,6 @@ sha256sums=(
     'c60a67416e21ca3968a40c1e9d11f065ad611cdb786e4583d32d8fdc62b65344'
     'SKIP'
 )
-install='fcitx5-lotus.install'
 
 prepare() {
     cd "$srcdir/fcitx5-lotus"
@@ -49,6 +43,12 @@ prepare_staging() {
 package_fcitx5-lotus() {
     provides=('fcitx5-lotus')
     conflicts=('fcitx5-lotus')
+    depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'libudev.so' 'python-qtpy' 'python-dbus')
+    optdepends=(
+        'fcitx5-lotus-openrc: OpenRC init script for fcitx5-lotus'
+        'fcitx5-lotus-runit: Runit service for fcitx5-lotus'
+    )
+    install='fcitx5-lotus.install'
     prepare_staging
     cp -a "$srcdir/staging/usr" "$pkgdir/"
 }

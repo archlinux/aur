@@ -3,7 +3,6 @@ pkgbase = fcitx5-lotus
 	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
-	install = fcitx5-lotus.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
@@ -13,6 +12,13 @@ pkgbase = fcitx5-lotus
 	makedepends = git
 	makedepends = libx11
 	makedepends = python
+	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#tag=v3.0.1
+	source = git+https://github.com/LotusInputMethod/bamboo-core.git
+	sha256sums = c60a67416e21ca3968a40c1e9d11f065ad611cdb786e4583d32d8fdc62b65344
+	sha256sums = SKIP
+
+pkgname = fcitx5-lotus
+	install = fcitx5-lotus.install
 	depends = fcitx5
 	depends = libinput
 	depends = hicolor-icon-theme
@@ -24,12 +30,6 @@ pkgbase = fcitx5-lotus
 	depends = python-dbus
 	optdepends = fcitx5-lotus-openrc: OpenRC init script for fcitx5-lotus
 	optdepends = fcitx5-lotus-runit: Runit service for fcitx5-lotus
-	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#tag=v3.0.1
-	source = git+https://github.com/LotusInputMethod/bamboo-core.git
-	sha256sums = c60a67416e21ca3968a40c1e9d11f065ad611cdb786e4583d32d8fdc62b65344
-	sha256sums = SKIP
-
-pkgname = fcitx5-lotus
 	provides = fcitx5-lotus
 	conflicts = fcitx5-lotus
 
