@@ -1,0 +1,21 @@
+pkgbase = jasm-git
+	pkgdesc = A JVM assembler for the modern age
+	pkgver = 0.7.0.r11.g0d41f21
+	pkgrel = 1
+	url = https://github.com/roscopeco/jasm
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = jdk11-openjdk
+	depends = java-runtime=11
+	depends = bash
+	provides = jasm-bin
+	conflicts = jasm-bin
+	source = git+https://github.com/roscopeco/jasm
+	source = verification-metadata.xml
+	source = verification-keyring.keys
+	sha256sums = SKIP
+	sha256sums = 9e8df5828002c92a1582d3975cd6897199d26a037aaa6629469a122d75782577
+	sha256sums = b9cb634b3893a0351859dcc8222f8130c55468b07b51830e45907d921e93a8aa
+
+pkgname = jasm-git
