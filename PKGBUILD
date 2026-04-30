@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=repolyze
-_npmver=1.5.0
+_npmver=1.6.0
 
 pkgname=${_npmname}
 pkgdesc="Analyze a git source code repository for health signals and project vitals"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('be7db079de405163c407ed583a254dd4cccb5c35d6d1653b7c0a6c6f32e56841e7d225121176a067645172e51ab51673eef3e3c25f8c98939a53ae0fcb303c83')
+b2sums=('7ca7efb84ddc64937d5ac84e678d8b89ad6492f7d7b1980bb61c14806de3faa3b891014d3447f51a157d968c220ec58b7d12b441f448f85b54008bb34bfde8dd')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
