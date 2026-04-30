@@ -177,12 +177,12 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.0
-_minor=0
+_minor=2
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=2
-pkgrel=2
+_tagrel=1
+pkgrel=1
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='CachyOS Linux kernel with cjktty patches'
 _kernver="$pkgver-$pkgrel"
@@ -215,7 +215,7 @@ makedepends=(
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 _cjktty_source="https://raw.githubusercontent.com/bigshans/cjktty-patches/master"
-_nv_ver=595.58.03
+_nv_ver=595.71.05
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -251,7 +251,6 @@ fi
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
              "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch"
-             "${_patchsource}/misc/nvidia/0004-HACK-kernel-open-Makefile-Remove-PAHOLE_VARIABLE.patch"
              "${_patchsource}/misc/nvidia/0003-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
              "${_patchsource}/misc/nvidia/0004-fix-dsc-use-bits_per_component-for-flatnessDetThresh.patch"
              "${_patchsource}/misc/nvidia/0005-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
@@ -824,8 +823,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('40fefc434872c4ec8af8c780b2926d959ad74f1a3d94ad454d0f889caa67ab913cac3e5109f28c69c27acc4fc033c6c478128ba799447edbb207252923a63943'
-        '82153e11fef1889ec4e5b8dfa4443f247991544543283030c8ace80362ca00ddd47ab59f6faebe376f327f70a77342ea4c8b43135b0a44c4339e0a07280ee7d4'
+b2sums=('3fa5512aad7edeaf30007b67d2d9dad3f350177cfe5a282da20cfde0862e6aeb9c25d6bb3eeee0957545001be5dc1de596bbf17cab339da4ae7b6e921832c1a6'
+        '1280f4cb2f94135ec3b6576bc0bc394ef4989250ec6041a8499770bc68b5e157fcdb45a7d8934413273d6eb1ad6de6c9da65e0cff2a1ee84a0c9cd1d278831d4'
         '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
