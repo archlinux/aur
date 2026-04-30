@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_appname}
 pkgdesc="Track and undo any install command's filesystem changes"
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,7 +24,7 @@ conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.tgz::${url}/archive/${_pkgvername}.tar.gz"
 		"LICENSE")
-sha256sums=('9342baece1f88bfd5ad8796ec2f63ead8a68e444dcaa7e5fcb3f177fed7ec0e5'
+sha256sums=('c47f227cdeb4607aef703e8eb026e168b2ced1687c6f1a88e7935c9305703423'
             '664ff4cbe5fb3630e4cf7348c292c87c2a7671b23cb9b32ae62f9a628418785c')
 
 
