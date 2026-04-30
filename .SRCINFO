@@ -1,8 +1,8 @@
 pkgbase = python-tree-sitter-julia
 	pkgdesc = Julia grammar for tree-sitter
 	pkgver = 0.23.1
-	pkgrel = 6
-	url = https://pypi.org/project/tree-sitter-julia/
+	pkgrel = 7
+	url = https://github.com/tree-sitter/tree-sitter-julia
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -11,13 +11,7 @@ pkgbase = python-tree-sitter-julia
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-julia-0.23.1.tar.gz::https://files.pythonhosted.org/packages/d5/e7/1ff7d38967471f13b77420cdfc58ce170c8ceb83ff4b55ce50744c076e79/tree_sitter_julia-0.23.1.tar.gz
-	source = tree-sitter-parser.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-	source = tree-sitter-alloc.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-	source = tree-sitter-array.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-	sha256sums = 07607c4fc902b21e6821622f56b08aa2321b921fe0644e2ab4aba1747e6c8808
-	sha256sums = a3eb18ef034b3f4255b965a26caa276f9cfe13a79573b402f1a12dc5018052aa
-	sha256sums = c69f97ef0949199ba66157d523bac994c3aa7cab3de8d0e25ef29d74aa502e94
-	sha256sums = 4ff743903dc46f5db6aa54f31c6b4d160a8a9779e5b2ab1ee59ae7ebcd850ea1
+	source = python-tree-sitter-julia-0.23.1.tar.gz::https://github.com/tree-sitter/tree-sitter-julia/archive/refs/tags/v0.23.1.tar.gz
+	sha256sums = 9f6926734e09110dd4792f6c327c6b547834b52b8ce2bc7c1eba2ed4f7f7aba0
 
 pkgname = python-tree-sitter-julia
