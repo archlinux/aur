@@ -1,7 +1,7 @@
 # Maintainer: Stefan Zipproth <s.zipproth@acrion.ch>
 
 pkgname=wayland-display-info
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Daemon that keeps /var/cache/wayland-display-info/display-info up to date using wlr-output-management"
 arch=('any')
