@@ -1,15 +1,15 @@
 # Maintainer: Display-HDMI <wjr2009945@163.com>
 pkgname=ceru-music-appimage
-_pkgname=Ceru-Music               # 用于 .desktop 文件和内部引用
+_pkgname=ceru-music               # 用于 .desktop 文件和内部引用（小写以适配 Wayland）
 pkgver=1.9.11                      # AppImage 版本号，请与 GitHub Release 保持一致
-pkgrel=1
+pkgrel=2
 pkgdesc="Ceru Music 是一个跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。"
 arch=('x86_64')                   # AppImage 通常是 x86_64
 url="https://ceru.docs.shiqianjiang.cn/"
 license=('AGPL-3.0-only')              # 根据实际软件许可证修改，比如 'MIT', 'GPL3', 'AGPL-3.0'
 depends=('zlib' 'fuse2')          # AppImage 通常需要 fuse2 来挂载
-provides=("${_pkgname,,}")        # 提供 ceru-music
-conflicts=("${_pkgname,,}")       # 与 ceru-music 冲突
+provides=("ceru-music")        # 提供 ceru-music
+conflicts=("ceru-music")       # 与 ceru-music 冲突
 options=(!strip)                  # 不要 strip AppImage 中的二进制符号
 
 # 下载来源：Ceru Music 的 GitHub Release 页面
@@ -30,9 +30,9 @@ prepare() {
 package() {
     cd "$srcdir"
 
-    # 1. 安装 AppImage 到 /opt/Ceru-Music/
+    # 1. 安装 AppImage 到 /opt/ceru-music/
     install -Dm755 "ceru-music-${pkgver}-linux-x86_64.AppImage" \
-        "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
+        "${pkgdir}/opt/ceru-music/ceru-music.AppImage"
 
     # 2. 创建启动脚本 /usr/bin/ceru-music，用于直接运行 AppImage（不使用符号链接）
     mkdir -p "${pkgdir}/usr/bin"
@@ -47,7 +47,7 @@ if ! command -v fuse2 >/dev/null 2>&1; then
 fi
 
 # 启动 Ceru Music AppImage
-exec "/opt/Ceru-Music/Ceru-Music.AppImage" "$@"
+exec "/opt/ceru-music/ceru-music.AppImage" "$@"
 EOF
 
     # 添加可执行权限
@@ -59,15 +59,15 @@ EOF
     # 尝试查找并安装 512x512 或 256x256 分辨率的图标
     if [ -f "squashfs-root/usr/share/icons/hicolor/512x512/apps/ceru-music.png" ]; then
         install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/ceru-music.png" \
-            "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+            "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ceru-music.png"
     elif [ -f "squashfs-root/usr/share/icons/hicolor/256x256/apps/ceru-music.png" ]; then
         install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/ceru-music.png" \
-            "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+            "${pkgdir}/usr/share/icons/hicolor/256x256/apps/ceru-music.png"
     else
         echo "未找到标准分辨率的 ceru-music.png 图标，尝试查找其他可能路径..."
         # 通用查找（查找任意 png 图标，优先在 hicolor 目录）
         find squashfs-root -type f \( -iname "*.png" -o -iname "*.svg" \) | grep -i "icon" | head -n 1 | while read -r iconpath; do
-            install -Dm644 "$iconpath" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+            install -Dm644 "$iconpath" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ceru-music.png"
             echo "已安装找到的图标：$iconpath"
             break
         done
@@ -76,17 +76,17 @@ EOF
     # 4. 清理临时解压目录
     rm -rf squashfs-root/
 
-    # 5. 创建 .desktop 桌面入口文件，使应用出现在应用菜单中
+    # 5. 创建 .desktop 桌面入口文件，使应用出现在应用菜单中（小写文件名以适配 Wayland）
     mkdir -p "${pkgdir}/usr/share/applications"
 
-    cat > "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << EOF
+    cat > "${pkgdir}/usr/share/applications/ceru-music.desktop" << EOF
 [Desktop Entry]
 Name[zh_CN]=澜音
 Name=Ceru Music
 GenericName=Music Player
 Comment=${pkgdesc}
 Exec=ceru-music %u
-Icon=${_pkgname}
+Icon=ceru-music
 Type=Application
 Categories=Audio;Music;AudioVideo;
 StartupNotify=true
@@ -94,19 +94,19 @@ MimeType=audio/mpeg;audio/mp3;audio/x-mp3;audio/mpeg3;audio/x-mpeg3;audio/mpg;au
 EOF
 
     # 6. （可选）安装一个 512x512 的图标到 /usr/share/pixmaps/（某些场景可能需要）
-    if [ -f "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png" ]; then
-        install -Dm644 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    if [ -f "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ceru-music.png" ]; then
+        install -Dm644 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ceru-music.png" \
+            "${pkgdir}/usr/share/pixmaps/ceru-music.png"
     fi
 
     # 7. 安装 URL scheme 处理器（支持自定义协议 ceru-music://）
-    cat > "${pkgdir}/usr/share/applications/${_pkgname}-scheme-handler.desktop" << EOF
+    cat > "${pkgdir}/usr/share/applications/ceru-music-scheme-handler.desktop" << EOF
 [Desktop Entry]
 Name[zh_CN]=澜音
 Name=Ceru Music
 Comment=Open ceru-music:// links
 Exec=ceru-music %u
-Icon=${_pkgname}
+Icon=ceru-music
 Type=Application
 Terminal=false
 NoDisplay=true
@@ -116,7 +116,7 @@ EOF
 
     # 8. 创建 MIME 类型关联配置文件
     mkdir -p "${pkgdir}/usr/share/mime/packages"
-    cat > "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml" << EOF
+    cat > "${pkgdir}/usr/share/mime/packages/ceru-music.xml" << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
   <mime-type type="application/x-ceru-music">
@@ -129,17 +129,17 @@ EOF
 
     # 9. 创建应用信息文件（用于 open-xdg）
     mkdir -p "${pkgdir}/usr/share/appdata"
-    cat > "${pkgdir}/usr/share/appdata/${_pkgname}.appdata.xml" << EOF
+    cat > "${pkgdir}/usr/share/appdata/ceru-music.appdata.xml" << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>${_pkgname}.desktop</id>
+  <id>ceru-music.desktop</id>
   <name>Ceru Music</name>
   <name xml:lang="zh_CN">澜音</name>
   <summary>跨平台音乐播放器</summary>
   <description>
     <p>Ceru Music 是一个跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。</p>
   </description>
-  <launchable type="desktop-id">${_pkgname}.desktop</launchable>
+  <launchable type="desktop-id">ceru-music.desktop</launchable>
   <url type="homepage">${url}</url>
   <url type="bugtracker">https://github.com/timeshiftsauce/CeruMusic/issues</url>
   <project_license>AGPL-3.0-only</project_license>
@@ -163,15 +163,15 @@ EOF
 EOF
 
     # 10. 创建安装后脚本用于注册深度链接
-    mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
-    cat > "${pkgdir}/usr/lib/${_pkgname}/register-mime.sh" << 'EOF'
+    mkdir -p "${pkgdir}/usr/lib/ceru-music"
+    cat > "${pkgdir}/usr/lib/ceru-music/register-mime.sh" << 'EOF'
 #!/bin/bash
 # 注册 MIME 类型和深度链接（需要 root 权限）
 
 # 检查是否有 root 权限
 if [ "$(id -u)" -ne 0 ]; then
     echo "警告：更新 MIME 数据库需要 root 权限"
-    echo "请手动运行：sudo /usr/lib/ceru-music-appimage/register-mime.sh"
+    echo "请手动运行：sudo /usr/lib/ceru-music/register-mime.sh"
     exit 0
 fi
 
@@ -193,10 +193,10 @@ fi
 echo "Ceru Music 深度链接已注册完成"
 EOF
 
-    chmod +x "${pkgdir}/usr/lib/${_pkgname}/register-mime.sh"
+    chmod +x "${pkgdir}/usr/lib/ceru-music/register-mime.sh"
 
     # 11. 创建卸载脚本
-    cat > "${pkgdir}/usr/lib/${_pkgname}/unregister-mime.sh" << 'EOF'
+    cat > "${pkgdir}/usr/lib/ceru-music/unregister-mime.sh" << 'EOF'
 #!/bin/bash
 # 注销 MIME 类型和深度链接（需要 root 权限）
 
@@ -219,7 +219,7 @@ fi
 echo "Ceru Music 深度链接已注销"
 EOF
 
-    chmod +x "${pkgdir}/usr/lib/${_pkgname}/unregister-mime.sh"
+    chmod +x "${pkgdir}/usr/lib/ceru-music/unregister-mime.sh"
 
     # 12. 创建 xdg-open 工具脚本（用于统一打开资源）
     cat > "${pkgdir}/usr/bin/xdg-ceru-music" << 'EOF'
@@ -227,11 +227,11 @@ EOF
 # Ceru Music xdg-open wrapper
 # 使用方式：xdg-ceru-music [文件/URL]
 
-SCRIPT_DIR="/usr/lib/ceru-music-appimage"
+SCRIPT_DIR="/usr/lib/ceru-music"
 
 # 如果是首次运行，尝试注册 MIME 类型（仅提示）
 if [ ! -f "$HOME/.local/share/applications/ceru-music-setup-done" ]; then
-    echo "提示：如需完整深度链接支持，请运行：sudo /usr/lib/ceru-music-appimage/register-mime.sh"
+    echo "提示：如需完整深度链接支持，请运行：sudo /usr/lib/ceru-music/register-mime.sh"
     mkdir -p "$HOME/.local/share/applications"
     touch "$HOME/.local/share/applications/ceru-music-setup-done"
 fi

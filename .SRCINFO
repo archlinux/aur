@@ -1,7 +1,7 @@
 pkgbase = ceru-music-appimage
 	pkgdesc = Ceru Music 是一个跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。
 	pkgver = 1.9.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ceru.docs.shiqianjiang.cn/
 	arch = x86_64
 	license = AGPL-3.0-only
