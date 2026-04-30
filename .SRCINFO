@@ -1,6 +1,6 @@
 pkgbase = fmatrix-git
 	pkgdesc = Fast smooth Matrix rain terminal emulator written in C++
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/ffacece/fmatrix_project
 	arch = x86_64

@@ -1,5 +1,5 @@
 pkgname=fmatrix-git
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Fast smooth Matrix rain terminal emulator written in C++"
 arch=('x86_64')
