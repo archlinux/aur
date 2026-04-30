@@ -35,6 +35,7 @@ depends=(
     'freetype2'
     'fontconfig'
     'nlohmann-json'
+    'libpipewire'
 )
 makedepends=(
     'git'
@@ -148,16 +149,28 @@ EOF
     # Fix permissions
     find "$pkgdir/usr/lib" -type f -name "*.so*" -exec chmod 755 {} \;
     find "$pkgdir/usr/bin" -type f -exec chmod 755 {} \;
+
+    # RT scheduling limits
+    install -d "$pkgdir/etc/security/limits.d"
+    cat > "$pkgdir/etc/security/limits.d/50-mayaflux.conf" << 'EOF'
+@mayaflux    -    rtprio     95
+@mayaflux    -    memlock    unlimited
+@mayaflux    -    nice       -19
+EOF
 }
 
 post_install() {
-    echo "MayaFlux development version ${pkgver} installed successfully!"
+    if ! getent group mayaflux > /dev/null 2>&1; then
+        groupadd --system mayaflux
+    fi
+
+    echo "MayaFlux ${pkgver} installed."
     echo ""
-    echo "Environment variables have been set in /etc/profile.d/mayaflux.sh"
-    echo "You may need to restart your shell or run:"
-    echo "  source /etc/profile.d/mayaflux.sh"
+    echo "To enable real-time audio scheduling, add your user to the mayaflux group:"
+    echo "  sudo usermod -aG mayaflux \$USER"
+    echo "Then log out and back in."
     echo ""
-    echo "Documentation: https://github.com/MayaFlux/MayaFlux"
+    echo "Source /etc/profile.d/mayaflux.sh or restart your shell for environment variables."
 }
 
 post_upgrade() {
@@ -165,6 +178,8 @@ post_upgrade() {
 }
 
 post_remove() {
+    groupdel mayaflux 2>/dev/null || true
+    rm -f /etc/security/limits.d/50-mayaflux.conf
     echo "MayaFlux has been removed. You may want to clean up your environment variables."
     echo "Remove or edit /etc/profile.d/mayaflux.sh if desired."
 }
