@@ -2,7 +2,7 @@
 pkgname=flatpak-enhanced
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="A lightweight wrapper for the flatpak tool. Main feature : aliases for applications and runtimes."
+pkgdesc='A lightweight wrapper for the flatpak tool. Features aliases for apps & quick run.'
 url="https://github.com/JiiB1/flatpak-enhanced"
 arch=(x86_64)
 license=(MIT)
