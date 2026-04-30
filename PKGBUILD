@@ -1,6 +1,6 @@
 # Maintained automatically by Beam release automation
 pkgname=beam-launcher-bin
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="A blazing-fast, open-source command launcher for Linux"
 arch=('x86_64')
@@ -12,14 +12,14 @@ provides=('beam')
 conflicts=('beam')
 options=('!strip')
 source=(
-  'beam-x86_64.deb::https://github.com/krishkalaria12/beam/releases/download/v1.0.15/beam_1.0.0_amd64.deb'
+  'beam-x86_64.deb::https://github.com/krishkalaria12/beam/releases/download/v1.0.16/beam_1.0.0_amd64.deb'
   'beam.desktop'
   'beam.png'
   'LICENSE'
 )
 noextract=('beam-x86_64.deb')
 sha256sums=(
-  'fe3e7c855dba7144a1f93a3892c51dd8fbd0a201bf18ed14eaf69083a3e7f4d5'
+  '61069fc562e0a501dbe2489a25b8332764d970c0d917cd4f79c65e1ae6d22bba'
   '7d15c07727daabdfda7d6f9296ee93f8c8f96d843d6c0d43bdcf5ca5b3902851'
   'a2a20586021b840189a4752a46d8a914ec13808d0da19173d165621a6102dd4b'
   'ac8271c92e0705cc6cdfa44336243253a98ef62dc35690c099fdb8597a553907'
