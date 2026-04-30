@@ -16,6 +16,6 @@ pkgbase = data-vantage
 	optdepends = zenity: GTK directory picker
 	optdepends = kdialog: KDE directory picker
 	source = data-vantage-1.0.0.tar.gz::https://github.com/roshanbinoj-iiitk/Data-Vantage/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 13090af58da268f9fb73d7970867d55f43304acb05a53f33dc3e2f7f73c18dc8
+	sha256sums = 0dc84b91d373e638c06a96ea764b3128c1e62c28753facde8718cdd503550bd7
 
 pkgname = data-vantage

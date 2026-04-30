@@ -9,7 +9,7 @@ depends=('sqlite')
 makedepends=('cmake' 'gcc' 'make' 'pkgconf' 'nodejs' 'npm' 'cpp-httplib')
 optdepends=('zenity: GTK directory picker' 'kdialog: KDE directory picker')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/roshanbinoj-iiitk/Data-Vantage/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0dc84b91d373e638c06a96ea764b3128c1e62c28753facde8718cdd503550bd7')
 
 build() {
   cd "$srcdir/Data-Vantage-$pkgver/backend"
@@ -34,4 +34,3 @@ package() {
   install -Dm644 "$srcdir/Data-Vantage-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('13090af58da268f9fb73d7970867d55f43304acb05a53f33dc3e2f7f73c18dc8')
