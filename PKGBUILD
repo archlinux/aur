@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=gh-axi
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="AXI-compliant GitHub CLI wrapper with token-efficient output and suggestions"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'github-cli')
 makedepends=('npm')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha512sums=('96b37c7cb73d1dbbca16e8a8571b8fc903f31a9aca9af5635d0f66bc3137deedc2293417f0767509a5dc7d75091407df9e0711d938582240dc8452913e21c468')
+sha512sums=('8ba122d4dcbe23acc7425a096f5e33f14e21f1a6255611a3ea08f1a9eab6ae647557aaa2da558740976ba643cda80c83009a61924ce0c7b9d7415f36adecfc90')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${pkgname}/latest" | jq -r '.version'
