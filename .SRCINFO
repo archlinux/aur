@@ -1,6 +1,6 @@
 pkgbase = asfy-vol
 	pkgdesc = Controlador de volumen usando GTK4 y Layer Shell
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/HectorAlejandro26/asfy-vol
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = asfy-vol
 	depends = glibc
 	depends = gcc-libs
 	options = !debug
-	source = asfy-vol::git+https://github.com/HectorAlejandro26/asfy-vol.git#tag=v0.1.0
+	source = asfy-vol::git+https://github.com/HectorAlejandro26/asfy-vol.git#tag=v0.1.1
 	md5sums = SKIP
 
 pkgname = asfy-vol

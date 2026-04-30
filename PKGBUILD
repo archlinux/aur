@@ -1,5 +1,5 @@
 pkgname=asfy-vol
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Controlador de volumen usando GTK4 y Layer Shell"
 arch=('x86_64')
