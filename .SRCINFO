@@ -1,8 +1,8 @@
 pkgbase = python-tree-sitter-verilog
 	pkgdesc = Verilog grammar for tree-sitter
 	pkgver = 1.0.3
-	pkgrel = 6
-	url = https://pypi.org/project/tree-sitter-verilog/
+	pkgrel = 7
+	url = https://github.com/tree-sitter/tree-sitter-verilog
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -11,13 +11,7 @@ pkgbase = python-tree-sitter-verilog
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-verilog-1.0.3.tar.gz::https://files.pythonhosted.org/packages/d1/b6/9b3b72c3478caa07c346550c66c6e77759c76785c82d1dd5408230e58e45/tree_sitter_verilog-1.0.3.tar.gz
-	source = tree-sitter-parser.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-	source = tree-sitter-alloc.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-	source = tree-sitter-array.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-	sha256sums = d4043cba50e1ba8402396e3106e17de755c86eca311b23ab826e018ea9818984
-	sha256sums = a3eb18ef034b3f4255b965a26caa276f9cfe13a79573b402f1a12dc5018052aa
-	sha256sums = c69f97ef0949199ba66157d523bac994c3aa7cab3de8d0e25ef29d74aa502e94
-	sha256sums = 4ff743903dc46f5db6aa54f31c6b4d160a8a9779e5b2ab1ee59ae7ebcd850ea1
+	source = python-tree-sitter-verilog-1.0.3.tar.gz::https://github.com/tree-sitter/tree-sitter-verilog/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 2b985c74fa7d0035db7415908935cf1ba7eea3d928ccebfa1d89541d5b6fa7b4
 
 pkgname = python-tree-sitter-verilog
