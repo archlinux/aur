@@ -2,7 +2,7 @@
 pkgname=python-ghlang
 _pypiname=ghlang
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate animated language-stats SVG cards from your GitHub profile or local codebase."
 arch=(x86_64)
 url="https://github.com/MihaiStreames/ghlang"
