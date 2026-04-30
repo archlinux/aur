@@ -15,8 +15,8 @@ options=('!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/batdoc_${pkgver}_x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/batdoc_${pkgver}_aarch64.tar.gz")
 
-sha256sums_x86_64=('43215d47a604c723871206a477384c5f886153d9a90e4d6c691f5ccd9f0498cc')
-sha256sums_aarch64=('3f5f2516627d3f899076cf3796cb164612db9c99fb0b1cf2af5722394cd3fa17')
+sha256sums_x86_64=('3b37d0fed844f656e94e791da973476a04870f1e3d4ce6a3e1b6db62f2f87587')
+sha256sums_aarch64=('3b9a44617ad97903f5fdd67a65d2abc57f25260c78bfb7912d791ceba297c408')
 
 package() {
     install -Dm755 "${srcdir}/batdoc_${pkgver}_${CARCH}/batdoc" "${pkgdir}/usr/bin/batdoc"

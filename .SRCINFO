@@ -11,8 +11,8 @@ pkgbase = batdoc-bin
 	conflicts = batdoc-debug
 	options = !debug
 	source_x86_64 = https://github.com/daemonp/batdoc/releases/download/v1.4.0/batdoc_1.4.0_x86_64.tar.gz
-	sha256sums_x86_64 = 43215d47a604c723871206a477384c5f886153d9a90e4d6c691f5ccd9f0498cc
+	sha256sums_x86_64 = 3b37d0fed844f656e94e791da973476a04870f1e3d4ce6a3e1b6db62f2f87587
 	source_aarch64 = https://github.com/daemonp/batdoc/releases/download/v1.4.0/batdoc_1.4.0_aarch64.tar.gz
-	sha256sums_aarch64 = 3f5f2516627d3f899076cf3796cb164612db9c99fb0b1cf2af5722394cd3fa17
+	sha256sums_aarch64 = 3b9a44617ad97903f5fdd67a65d2abc57f25260c78bfb7912d791ceba297c408
 
 pkgname = batdoc-bin
