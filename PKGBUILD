@@ -1,6 +1,6 @@
 pkgname=data-vantage
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance file scanner and duplicate detector with a modern web UI"
 arch=('x86_64')
 url="https://github.com/roshanbinoj-iiitk/Data-Vantage"
@@ -9,7 +9,7 @@ depends=('sqlite')
 makedepends=('cmake' 'gcc' 'make' 'pkgconf' 'nodejs' 'npm' 'cpp-httplib')
 optdepends=('zenity: GTK directory picker' 'kdialog: KDE directory picker')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/roshanbinoj-iiitk/Data-Vantage/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0dc84b91d373e638c06a96ea764b3128c1e62c28753facde8718cdd503550bd7')
+sha256sums=('872011d26860c8066f83d6a424bb5cc2f5e4d4d5337ff9342a8853093ca6b736')
 
 build() {
   cd "$srcdir/Data-Vantage-$pkgver/backend"
