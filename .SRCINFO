@@ -1,16 +1,16 @@
 pkgbase = telex-bin
 	pkgdesc = Terminal UI and CLI for telex.sh email workflows
-	pkgver = 0.0.7
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/elpdev/telex-cli
 	license = MIT
 	conflicts = telex
 	provides = telex
 	arch = aarch64
-	source_aarch64 = https://github.com/elpdev/telex-cli/releases/download/v0.0.7/telex_0.0.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = ea5a5faec89c82765ee667a219a0662537e7010faa65713d95d2aede05f3dd65
+	source_aarch64 = https://github.com/elpdev/telex-cli/releases/download/v1.0.0/telex_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7386ed4167918ded6ddd0ec6a9cf79b528a974dc5df6ecbded73e979290298b4
 	arch = x86_64
-	source_x86_64 = https://github.com/elpdev/telex-cli/releases/download/v0.0.7/telex_0.0.7_linux_amd64.tar.gz
-	sha256sums_x86_64 = acb2c7590797b4b9889939d20fe859f65989b81fa609d6fed8cbdcc69c816ada
+	source_x86_64 = https://github.com/elpdev/telex-cli/releases/download/v1.0.0/telex_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 05b55a036bc6bc63d5bc8ced486da40833a23a525d70ee3f816a3d2c03198fe8
 	
 pkgname = telex-bin
