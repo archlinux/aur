@@ -1,7 +1,7 @@
 pkgname=fuzzel-ime-git
 pkgver=1.14.1.r4.g02f7346
-pkgrel=1
-pkgdesc="Wayland application launcher (git version with IME patch)"
+pkgrel=2
+pkgdesc="Fuzzel(a wayland launcher) with Input Method support."
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/dnkl/fuzzel"
 license=('MIT')

@@ -1,7 +1,7 @@
 pkgbase = fuzzel-ime-git
-	pkgdesc = Wayland application launcher (git version with IME patch)
+	pkgdesc = Fuzzel(a wayland launcher) with Input Method support.
 	pkgver = 1.14.1.r4.g02f7346
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/fuzzel
 	arch = x86_64
 	arch = aarch64
