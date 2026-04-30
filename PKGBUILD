@@ -10,7 +10,7 @@ depends=('fuse2')
 provides=('shrimp')
 conflicts=('shrimp')
 source=("SHRIMP-${pkgver}.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/SHRIMP-${pkgver}.AppImage")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('933bfd4f979cdbea0b911f8f21f79078d8ffa7640acc54de9e303cee11ddb4b7')
 
 package() {
     install -Dm755 "SHRIMP-${pkgver}.AppImage" "${pkgdir}/usr/lib/shrimp-bin/shrimp.AppImage"
