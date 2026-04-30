@@ -1,6 +1,6 @@
 pkgbase = anilinux-electron
 	pkgdesc = Anime viewer for Linux with Shikimori OAuth integration
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Nikren2006/anilinux-electron
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = anilinux-electron
 	depends = mpv
 	optdepends = libappindicator-gtk3
 	options = !strip
-	source = https://github.com/Nikren2006/anilinux-electron/releases/download/v1.0.3/anilinux_1.0.3_amd64.deb
-	sha256sums = 1b859247d573b63f74cb9c275d7b6d20d5a683ba64b368ea21628a22c21e73fe
+	source = https://github.com/Nikren2006/anilinux-electron/releases/download/v1.0.4/anilinux_1.0.4_amd64.deb
+	sha256sums = d0d926faca3e782ae80836ae22a8c4da13f3263fd21d6f7fcbd0fa6ed1e5d83a
 
 pkgname = anilinux-electron

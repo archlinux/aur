@@ -23,7 +23,7 @@ optdepends=(
 )
 options=('!strip')
 source=("https://github.com/Nikren2006/anilinux-electron/releases/download/v${pkgver}/anilinux_${pkgver}_amd64.deb")
-sha256sums=('1b859247d573b63f74cb9c275d7b6d20d5a683ba64b368ea21628a22c21e73fe')
+sha256sums=('d0d926faca3e782ae80836ae22a8c4da13f3263fd21d6f7fcbd0fa6ed1e5d83a')
 
 package() {
     tar -xf data.tar.xz --directory "${pkgdir}"
