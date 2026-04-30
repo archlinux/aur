@@ -1,7 +1,7 @@
 # Maintainer: Alireza S.N. <alireza6677 at gmail dot com>
 
 pkgname=libkrunfw-git
-pkgver=v5.2.0.r0.g6e404e9
+pkgver=v5.3.0.r4.gfad43a1
 pkgrel=1
 pkgdesc="A dynamic library bundling the guest payload consumed by libkrun"
 arch=("x86_64")
