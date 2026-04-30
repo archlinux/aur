@@ -3,7 +3,8 @@
 # Contributor: Manuel Gugger <mdgdot[at]tutanota[dot]com>
 
 pkgname=act_runner
-pkgver=0.6.0
+_pkgname=runner
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Runner for Gitea based on Gitea fork of act"
 url="https://gitea.com/gitea/act_runner"
@@ -18,13 +19,13 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('01ea17b68ebe43e223ddaf1482e6d76c3dcb063a5cb23e1bf22138868990e375'
+sha256sums=('88f9ca7fdaaf45a9885f0b64eb5d0e06ef86e41e0d6ecdb3b4eba5252f263eca'
             '5d391f0646d24acec4271b9ad769c79f2d6780848aaaa215ea697d61c4d1e895'
             '96abb320d5b0bc2f828f0d34fb9ad1fa3015dc0b31354213fa21771b2fb8f8f6'
             '86885e9226ffb7bc3dbb105dc2e10630c41717212c804e19413acf3974c8b347')
 
 build() {
-	cd "${pkgname}"
+	cd "${_pkgname}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -36,7 +37,7 @@ build() {
 }
 
 package() {
-	cd "${pkgname}"
+	cd "${_pkgname}"
 	install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
