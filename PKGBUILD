@@ -36,5 +36,5 @@ package() {
     # Install symlink to binary
     install -d "${pkgdir}/usr/bin"
     ln -s "/opt/anilinux-electron/anilinux" "${pkgdir}/usr/bin/anilinux-electron"
-}a|/opt/anilinux|g
+}
 
