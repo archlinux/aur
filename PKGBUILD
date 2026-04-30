@@ -1,6 +1,6 @@
 # Maintainer: Jordan Sluiter <jordan.sluiter@icloud.com>
 pkgname=shrimp-bin
-pkgver=0.1.0
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Self-hosted AI productivity assistant — pre-built AppImage"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 provides=('shrimp')
 conflicts=('shrimp')
 source=("SHRIMP-${pkgver}.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/SHRIMP-${pkgver}.AppImage")
-sha256sums=('SKIP')
+sha256sums=('e50c430270d2a9565ed4f50ba922f8b18ef1e7a078f4f30076807a433431a7cf')
 
 package() {
     install -Dm755 "SHRIMP-${pkgver}.AppImage" "${pkgdir}/usr/lib/shrimp-bin/shrimp.AppImage"
