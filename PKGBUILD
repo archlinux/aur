@@ -21,4 +21,6 @@ package() {
     install -Dm755 target/release/aura-emerge "$pkgdir/usr/local/bin/emerge"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.MD "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -dm755 "$pkgdir/etc/emerge"
+    install -Dm644 /dev/null "$pkgdir/etc/emerge/world.set"
 }
