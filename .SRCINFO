@@ -1,0 +1,14 @@
+pkgbase = clevo-led-control
+	pkgdesc = Monster/Clevo laptoplar için hafif LED kontrol aracı (Parametre ve CLI desteği)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sherit45/clevo-led-control
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	depends = tuxedo-drivers-nocompatcheck-dkms
+	source = git+https://github.com/sherit45/clevo-led-control.git
+	sha256sums = SKIP
+
+pkgname = clevo-led-control
