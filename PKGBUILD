@@ -8,7 +8,7 @@ _opt_OpenSSL=''
 set -u
 pkgname='proftpd'
 #pkgname+='-git'
-pkgver=1.3.9
+pkgver=1.3.9a
 pkgrel=1
 epoch='2'
 pkgdesc='High-performance, scalable FTP SSL TLS and SFTP server'
@@ -39,11 +39,11 @@ source=(
   'proftpd.service'
   'proftpd.tmpfiles'
 )
-md5sums=('760b2bf912e4ac26b5f1aa9d25b440c6'
+md5sums=('9333020093faae6f02532c6e27078ebb'
          '4d7a3eedc1852d4fa9faafc072fb8320'
          'f7e0c3a402a845ba8d546b2801f77ed2'
          '907b149a120b046f05647c73502e23c9')
-sha256sums=('4a5f13b666226813b4da0ade34535d325e204ab16cf8008c7353b1b5a972f74b'
+sha256sums=('bc3c7c47033ecff29f010efc18315d5906eb942d2e673ebce0138a96f11af0b4'
             'eaacf8df09c3d267cb08e962910af9cab50d1d5b007b232eb79b5240d8c5a721'
             '3a4558773ed747ab66b51551b6fc1732148e30908edc010f00a5e8675c817e64'
             '359cb8f5b30e66627929f7c50cbdd7dcc6919f7261f36eb617045210caf90abb')
@@ -77,6 +77,7 @@ if [[ "${pkgver}" =~ ^[.0-9]+$ ]]; then
 fi
 
 prepare() {
+  local -
   set -u
   cd "${_srcdir}"
   local _f
@@ -106,10 +107,10 @@ prepare() {
       sed -e '/\btrue\b/! s:\bbool\b:z&:g' -i "${_bool[@]}" # gcc-15 -std=gnu23 https://github.com/proftpd/proftpd/commit/61be7eb14f200b97804a3cfa85fed51661067c62
     fi
   fi
-  set +u
 }
 
 _configure() {
+  local -
   set -u
   cd "${_srcdir}"
   #CFLAGS="${CFLAGS/-march=x86-64/-march=native}"
@@ -168,18 +169,18 @@ _configure() {
   fi
   ./configure "${_conf[@]}"
   cd "${srcdir}"
-  set +u
 }
 
 build() {
+  local -
   _configure
   set -u
   cd "${_srcdir}"
   make -s
-  set +u
 }
 
 package() {
+  local -
   set -u
   cd "${_srcdir}"
 
@@ -194,6 +195,5 @@ package() {
 
   # /run is tmpfs
   rmdir "${pkgdir}"/run/{proftpd,}
-  set +u
 }
 set +u
