@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=mathsat-5
-pkgver=5.6.15
+pkgver=5.6.16
 pkgrel=1
 pkgdesc="An efficient SMT solver supporting a wide range of theories and functionalities"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_aarch64=(
     "$pkgname-$pkgver.tar.gz::${url}release/mathsat-${pkgver}-linux-aarch64.tar.gz"
 )
 
-b2sums_x86_64=('4e7b27ff54bede75e85d15e080a34906c958789655307c5658325e13b8b5d1ca5951ce1ea69fa9d81a109cd9318eccde1bf156c142edacd30b487210b65bc8ed')
-b2sums_aarch64=('c5a58153c8c5bdbfd6f2c3e3189ba5bea34eb0f99f09a417ed47d680ffdc6d0fa8a7043decda3c9d53e338fa675579268714f7a9038ce29d2ec97ba19c7073cf')
+b2sums_x86_64=('2df0ef846361f74cb4703da9630742ca447c22f5ad2990c21a77a57b7efaf432eca15290b40f21e7abcd6b545624b71b99eb6ef71b5cd87f9cff6b02610aa2ba')
+b2sums_aarch64=('a9daf7706babc02e0d493f0087966226d747a8ea21bd97b3623e266494eaa2dbe4272e4956368b1e03e80f5903b176d5aac54b057f2d5a13bcf618c371c96b32')
 
 _dir_name="mathsat-${pkgver}-linux-${CARCH}"
 
