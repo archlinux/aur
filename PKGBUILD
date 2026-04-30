@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Plan-B-Development/control-ofc-daemon"
 license=('MIT')
 depends=('glibc' 'systemd-libs')
 optdepends=('lm_sensors: sensors-detect for hardware not covered by built-in module list')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'scdoc')
 backup=('etc/control-ofc/daemon.toml'
         'etc/control-ofc/profiles/quiet.json'
         'etc/modules-load.d/control-ofc.conf')
@@ -16,8 +16,8 @@ install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # Placeholder — recomputed post-tag-push. Fix with a follow-up
-# "fix: update PKGBUILD checksum for v1.1.5" commit.
-sha256sums=('dfd9cfda0f2cc0650538a89b5b94a801f0c269c78da395c0b852153541d2a73d')
+# "fix: update PKGBUILD checksum for v1.5.5" commit.
+sha256sums=('bac4750ee134280f2720e74cdfc13192226db8e1668d1062a2527ac035227a84')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -30,6 +30,9 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
+
+    # Render man page from scdoc source.
+    scdoc < man/control-ofc-daemon.1.scd > control-ofc-daemon.1
 }
 
 check() {
@@ -78,6 +81,31 @@ package() {
     # for rationale. Covered by backup=() so pacman preserves user edits.
     install -Dm644 packaging/modules-load.d/control-ofc.conf \
         "$pkgdir/etc/modules-load.d/control-ofc.conf"
+
+    # Man page (rendered in build())
+    install -Dm644 control-ofc-daemon.1 \
+        "$pkgdir/usr/share/man/man1/control-ofc-daemon.1"
+
+    # Shell completions — installed unconditionally; missing shells ignore them.
+    install -Dm644 completions/control-ofc-daemon.bash \
+        "$pkgdir/usr/share/bash-completion/completions/control-ofc-daemon"
+    install -Dm644 completions/_control-ofc-daemon \
+        "$pkgdir/usr/share/zsh/site-functions/_control-ofc-daemon"
+    install -Dm644 completions/control-ofc-daemon.fish \
+        "$pkgdir/usr/share/fish/vendor_completions.d/control-ofc-daemon.fish"
+
+    # User-facing documentation. The post_install message points users here,
+    # so they actually find a setup guide instead of just the udev example.
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+    install -Dm644 daemon.md "$pkgdir/usr/share/doc/$pkgname/daemon.md"
+    install -Dm644 docs/USER_GUIDE.md "$pkgdir/usr/share/doc/$pkgname/USER_GUIDE.md"
+    install -Dm644 docs/DEVELOPER_HANDOVER.md \
+        "$pkgdir/usr/share/doc/$pkgname/DEVELOPER_HANDOVER.md"
+    install -Dm644 docs/ADRs/001-ipc-transport.md \
+        "$pkgdir/usr/share/doc/$pkgname/ADRs/001-ipc-transport.md"
+    install -Dm644 docs/ADRs/002-runtime-config-split.md \
+        "$pkgdir/usr/share/doc/$pkgname/ADRs/002-runtime-config-split.md"
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
