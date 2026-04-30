@@ -1,7 +1,7 @@
 # Maintainer: ariurn <admin@ariurn.com>
 
 pkgname=happ-desktop-bin
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Happ — user-friendly GUI client for xray-core with TUN/VPN and anti-censorship"
 arch=('x86_64')
@@ -15,7 +15,7 @@ install="${pkgname}.install"
 options=('!strip')
 _archpkg="Happ.linux.x64.pkg.tar.zst"
 source=("${pkgname}-${pkgver}.pkg.tar.zst::https://github.com/Happ-proxy/happ-desktop/releases/download/${pkgver}/${_archpkg}")
-sha256sums=('f2c9c09fa3bc9f3dbaba7064bd6b49dd8ee646fa60f8352ad62947dbba37c641')
+sha256sums=('fdd7c16f515ecd147d7a254f4c2d8134530c8208b58ef5253074e6109ddb20bb')
 noextract=("${pkgname}-${pkgver}.pkg.tar.zst")
 
 package() {
