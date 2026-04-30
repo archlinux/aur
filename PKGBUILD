@@ -2,9 +2,9 @@
 # Contributor: xpt <user.xpt@gmail.com>
 pkgname=openstudio-bin
 _pkgname=openstudio
-pkgver=3.9.0
+pkgver=3.11.0
 pkgrel=1
-_relvar='c77fbb9569'
+_relvar='241b8abb4d'
 _ubuntuver='24.04'
 pkgdesc="Supports whole building energy modeling using EnergyPlus and Radiance"
 arch=('x86_64')
@@ -18,7 +18,7 @@ license=('BSD-3-Clause')
 options=('!strip')
 source=("https://github.com/NREL/OpenStudio/releases/download/v${pkgver}/OpenStudio-${pkgver}+${_relvar}-Ubuntu-${_ubuntuver}-${CARCH}.deb"
         'openstudio.desktop')
-sha256sums=('ee8059c5cf082e6007753bd528602ae046d3192b1278fa915f2c905f9510b428'
+sha256sums=('0206b02bf610556e54857cb32d1c5104be5588366cb2a4e08dc717bc7295b1d1'
             'SKIP')
 
 prepare() {
