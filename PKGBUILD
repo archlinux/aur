@@ -1,7 +1,7 @@
 # Maintainer: Nick Knight <nickknight@netc.fr>
 pkgname=skix-git
 _pkgname=skix
-pkgver=r1.daddf91
+pkgver=r5.73d2e14
 pkgrel=1
 pkgdesc="Small skiing game (terminal + SDL) inspired by SkiFree"
 arch=('any')
