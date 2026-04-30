@@ -1,0 +1,16 @@
+pkgbase = chess-cat
+	pkgdesc = Visualize chess boards in your terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ptsouchlos/chess-cat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	provides = chess-cat
+	conflicts = chess-cat-git
+	conflicts = chess-cat-bin
+	source = chess-cat-0.1.0.tar.gz::https://github.com/ptsouchlos/chess-cat/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 3a8198d50e83fe7b0b6ac59a86ef6100db1298ca65d9c73d3c0a9405c28701d2
+
+pkgname = chess-cat
