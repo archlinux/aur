@@ -1,7 +1,7 @@
 # Maintainer: IRendy <irendy@qq.com>
 
 pkgname="komitoto"
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A CLI assistant for HAM"
 url="https://github.com/IRendy/komitoto"

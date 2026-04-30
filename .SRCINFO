@@ -1,6 +1,6 @@
 pkgbase = komitoto
 	pkgdesc = A CLI assistant for HAM
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/IRendy/komitoto
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = komitoto
 	makedepends = sqlite
 	depends = gcc-libs
 	depends = sqlite
-	source = https://github.com/IRendy/komitoto/archive/refs/tags/v0.1.2.tar.gz
+	source = https://github.com/IRendy/komitoto/archive/refs/tags/v0.1.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = komitoto
