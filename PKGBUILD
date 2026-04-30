@@ -2,7 +2,7 @@
 
 pkgname=pvz-hybrid-bin
 _reponame=pvz-hybrid
-pkgver=0.19.1
+pkgver=0.20
 pkgrel=1
 pkgdesc="植物大战僵尸杂交版linux版 (基于 Godot 原生运行)"
 arch=('x86_64') 
@@ -17,7 +17,7 @@ source=(
 )
 
 # 校验
-sha256sums=('44b18556e60ccafec5d8c28c92fa4f0149cdb10e434db7e0cb4dc11ebf48d2dd'
+sha256sums=('68f34fe6ea151734a43052fe519a8adb97119bf104ab675808abf94ed2b57c6f'
             '4cd2117b55449b7cbf396edc0b02f323cac2020d60aa44330b204f748e9f8426')
 
 package() {

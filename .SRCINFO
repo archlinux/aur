@@ -1,14 +1,14 @@
 pkgbase = pvz-hybrid-bin
 	pkgdesc = 植物大战僵尸杂交版linux版 (基于 Godot 原生运行)
-	pkgver = 0.19.1
+	pkgver = 0.20
 	pkgrel = 1
 	url = https://www.pvzhe.com
 	arch = x86_64
 	license = unknown
 	depends = godot
-	source = https://github.com/cublueer/pvz-hybrid/releases/download/v0.19.1/pvz-hybrid-v0.19.1.pck
+	source = https://github.com/cublueer/pvz-hybrid/releases/download/v0.20/pvz-hybrid-v0.20.pck
 	source = https://raw.githubusercontent.com/cublueer/pvz-hybrid/main/icon.png
-	sha256sums = 44b18556e60ccafec5d8c28c92fa4f0149cdb10e434db7e0cb4dc11ebf48d2dd
+	sha256sums = 68f34fe6ea151734a43052fe519a8adb97119bf104ab675808abf94ed2b57c6f
 	sha256sums = 4cd2117b55449b7cbf396edc0b02f323cac2020d60aa44330b204f748e9f8426
 
 pkgname = pvz-hybrid-bin
