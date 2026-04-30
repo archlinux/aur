@@ -1,0 +1,17 @@
+pkgbase = parasocial
+	pkgdesc = A CLI-only lightweight Twitch channel points miner.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ruinivist/parasocial
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = parasocial
+	provides = parasocial
+	
+	source = https://github.com/ruinivist/parasocial/releases/download/v0.1.1/parasocial_0.1.1_source.tar.gz
+	sha256sums = 500b7c966b0c54e4e24e5e3d4630962f7e7d2227546ccf879261805b4f6a97df
+	
+pkgname = parasocial
