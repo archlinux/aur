@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=bibtex
-_pkgver=0.5.1
+_pkgver=0.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=2
 pkgdesc="Bibtex Parser"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c74ef856ea66f1c3bf23d2920c64c148')
-b2sums=('32ecb614d4a0bf4c8ab38af7b55270cc62ced0791b1f53ec269c89893fe2fe83b5bfefc7220b84aa2fef909e9cb8478b45e49448a21e487fc5bb2714ee5271b5')
+md5sums=('d825527513d2017da22e72141f184649')
+b2sums=('a57bd2e07e7dcdcf03537b2e1d9bab80828400825f82b0b7ff658f6c79d5080d472006092b4a3ac7d87d71d39cea959809ccb04d8b8b1e18d76ee9f6e41fc39a')
 
 prepare() {
   cd "$_pkgname/tests/testthat"
