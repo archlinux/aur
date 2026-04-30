@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your-email@example.com>
 pkgname=littlesnitch-bin
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Little Snitch for Linux — monitors and controls outgoing network connections using eBPF"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -16,9 +16,9 @@ source_x86_64=("https://obdev.at/downloads/littlesnitch-linux/littlesnitch-${pkg
 source_aarch64=("https://obdev.at/downloads/littlesnitch-linux/littlesnitch-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst")
 source_riscv64=("https://obdev.at/downloads/littlesnitch-linux/littlesnitch-${pkgver}-${pkgrel}-riscv64.pkg.tar.zst")
 
-sha256sums_x86_64=('4ae6dd1ea40485889c8a767d32cfcc5649cf1e3b124f2777dc41cb80da4804a6')
-sha256sums_aarch64=('07cb99c7076cc1f9f284324ae39bc43ae6ba68c1374c3ae6b47b2e3c41e5540d')
-sha256sums_riscv64=('5f9b30b76cc01f7ce63e03278e16f6e72f404ad04a80135767bc74787d4b6dc1')
+sha256sums_x86_64=('58be5938b02358c605edc03a16eb4fc01e1f164a113de16cb4a36e8b48ef2824')
+sha256sums_aarch64=('c77bacb0b1efd36e8909318884accddd9cff06d020b3e4af853dc646e01cf082')
+sha256sums_riscv64=('a9013aec05f0392d3d84a665e8d7813f5e5049ba4e03e74631bda66a73a4a353')
 
 # The official .pkg.tar.zst extracts directly into the working directory
 # with usr/ at the top level. No build step needed.
