@@ -1,23 +1,20 @@
-From 6cb4e7f5f8e42acf5a871e75b6e3b76e879fc7be Mon Sep 17 00:00:00 2001
+From 306e5545261b7d71557a80a45c1f889e7539d3ab Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?D=C4=81vis=20Mos=C4=81ns?=
-Date: Tue, 24 Feb 2026 20:45:20 +0200
+Date: Wed, 29 Apr 2026 22:37:01 +0300
 Subject: [PATCH] Fix LTO build for ROCm when default compiler is GCC
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 
 ---
  CMakeLists.txt | 7 +++++++
  1 file changed, 7 insertions(+)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 55127a514..3e8618c01 100644
+index fb8a1d7e1e1..0b6e5d9e060 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -227,6 +227,13 @@ if(VLLM_GPU_LANG STREQUAL "HIP")
+@@ -230,6 +230,13 @@ if(VLLM_GPU_LANG STREQUAL "HIP")
    #
-   set(CMAKE_${VLLM_GPU_LANG}_FLAGS "${CMAKE_${VLLM_GPU_LANG}_FLAGS} -Wno-unused-result")
-   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-result")
+   set(CMAKE_${VLLM_GPU_LANG}_FLAGS "${CMAKE_${VLLM_GPU_LANG}_FLAGS} -Wno-unused-result -Wno-unused-value")
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-result -Wno-unused-value")
 +
 +  # When using LTO then *.cpp files must be compiled with same compiler as used linker
 +  # So if HIP uses clang linker we also must use it
