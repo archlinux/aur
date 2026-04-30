@@ -1,30 +1,33 @@
-From 8d0bbb8f0f4e901d112be6c50715a6f1a6091e0e Mon Sep 17 00:00:00 2001
+From ed1d33f16fdee0ab9b4e21cd8b93fcf6008cb0c6 Mon Sep 17 00:00:00 2001
 From: xiota <>
-Date: Thu, 25 Dec 2025 02:36:25 +0000
+Date: Thu, 30 Apr 2026 00:46:34 +0000
 Subject: [PATCH] i915-vga-arbiter
 
 ---
- .../drm/i915/display/intel_display_driver.c   | 18 +++++++++--
- .../drm/i915/display/intel_display_driver.h   |  1 +
+ .../drm/i915/display/intel_display_driver.c   | 24 ++++++++++--
+ .../drm/i915/display/intel_display_driver.h   |  4 ++
  .../drm/i915/display/intel_display_params.c   |  3 ++
  .../drm/i915/display/intel_display_params.h   |  1 +
- drivers/gpu/drm/i915/display/intel_vga.c      | 31 +++++++++++++++++++
- drivers/gpu/drm/i915/display/intel_vga.h      |  4 +++
- 6 files changed, 55 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/i915/display/intel_vga.c      | 39 +++++++++++++++++++
+ drivers/gpu/drm/i915/display/intel_vga.h      |  6 +++
+ drivers/gpu/drm/xe/Makefile                   |  1 +
+ i                                             |  0
+ 8 files changed, 75 insertions(+), 3 deletions(-)
+ create mode 100644 i
 
 diff --git a/drivers/gpu/drm/i915/display/intel_display_driver.c b/drivers/gpu/drm/i915/display/intel_display_driver.c
-index cf1c14412..653cb0640 100644
+index 268b1de45..98e1de0ff 100644
 --- a/drivers/gpu/drm/i915/display/intel_display_driver.c
 +++ b/drivers/gpu/drm/i915/display/intel_display_driver.c
-@@ -32,6 +32,7 @@
+@@ -33,6 +33,7 @@
  #include "intel_display_debugfs.h"
  #include "intel_display_driver.h"
  #include "intel_display_irq.h"
 +#include "intel_display_params.h"
  #include "intel_display_power.h"
  #include "intel_display_types.h"
- #include "intel_display_wa.h"
-@@ -220,9 +221,11 @@ int intel_display_driver_probe_noirq(struct intel_display *display)
+ #include "intel_display_utils.h"
+@@ -208,9 +209,11 @@ int intel_display_driver_probe_noirq(struct intel_display *display)
  
  	intel_bios_init(display);
  
@@ -39,45 +42,54 @@ index cf1c14412..653cb0640 100644
  
  	intel_psr_dc5_dc6_wa_init(display);
  
-@@ -553,6 +556,12 @@ int intel_display_driver_probe(struct intel_display *display)
+@@ -538,6 +541,14 @@ int intel_display_driver_probe(struct intel_display *display)
  
  	intel_overlay_setup(display);
  
++#ifndef VGA_ARBITER_BUILD_XE
 +	/*
 +	 * Must do this after fbcon init so that
 +	 * vgacon_save_screen() works during the handover.
 +	 */
 +	intel_vga_disable_mem(display);
++#endif /* VGA_ARBITER_BUILD_XE */
 +
  	/* Only enable hotplug handling once the fbdev is fully set up. */
  	intel_hpd_init(display);
  
-@@ -603,6 +612,8 @@ void intel_display_driver_remove(struct intel_display *display)
+@@ -588,6 +599,10 @@ void intel_display_driver_remove(struct intel_display *display)
  	if (!HAS_DISPLAY(display))
  		return;
  
++#ifndef VGA_ARBITER_BUILD_XE
 +	intel_vga_enable_mem(display);
++#endif /* VGA_ARBITER_BUILD_XE */
 +
  	flush_workqueue(display->wq.flip);
  	flush_workqueue(display->wq.modeset);
  	flush_workqueue(display->wq.cleanup);
-@@ -633,6 +644,7 @@ void intel_display_driver_remove_noirq(struct intel_display *display)
+@@ -618,6 +633,9 @@ void intel_display_driver_remove_noirq(struct intel_display *display)
  	intel_unregister_dsm_handler();
  
  	/* flush any delayed tasks or pending work */
++#ifndef VGA_ARBITER_BUILD_XE
 +	intel_vga_enable_mem(display);
++#endif /* VGA_ARBITER_BUILD_XE */
  	flush_workqueue(display->wq.unordered);
  
  	intel_hdcp_component_fini(display);
 diff --git a/drivers/gpu/drm/i915/display/intel_display_driver.h b/drivers/gpu/drm/i915/display/intel_display_driver.h
-index 2966ff91b..ca0dc7577 100644
+index 2966ff91b..939124c3b 100644
 --- a/drivers/gpu/drm/i915/display/intel_display_driver.h
 +++ b/drivers/gpu/drm/i915/display/intel_display_driver.h
-@@ -13,6 +13,7 @@ struct drm_modeset_acquire_ctx;
+@@ -13,6 +13,10 @@ struct drm_modeset_acquire_ctx;
  struct intel_display;
  struct pci_dev;
  
++#ifndef VGA_ARBITER_BUILD_XE
 +extern void intel_vga_disable_mem(struct intel_display *display);
++#endif /* VGA_ARBITER_BUILD_XE */
++
  bool intel_display_driver_probe_defer(struct pci_dev *pdev);
  void intel_display_driver_init_hw(struct intel_display *display);
  void intel_display_driver_early_probe(struct intel_display *display);
@@ -96,7 +108,7 @@ index 2aed110c5..db4fbf207 100644
  	"Enable verbose logs (ie. WARN_ON()) in case of unexpected hw state conditions.");
  
 diff --git a/drivers/gpu/drm/i915/display/intel_display_params.h b/drivers/gpu/drm/i915/display/intel_display_params.h
-index b01bc5700..27dd77805 100644
+index b95ecf728..6e01bf1b0 100644
 --- a/drivers/gpu/drm/i915/display/intel_display_params.h
 +++ b/drivers/gpu/drm/i915/display/intel_display_params.h
 @@ -41,6 +41,7 @@ struct drm_printer;
@@ -108,24 +120,31 @@ index b01bc5700..27dd77805 100644
  	param(bool, nuclear_pageflip, false, 0400) \
  	param(bool, enable_dp_mst, true, 0600) \
 diff --git a/drivers/gpu/drm/i915/display/intel_vga.c b/drivers/gpu/drm/i915/display/intel_vga.c
-index 6e125564d..dd7e45f89 100644
+index c45c4bbc3..1fef50f2e 100644
 --- a/drivers/gpu/drm/i915/display/intel_vga.c
 +++ b/drivers/gpu/drm/i915/display/intel_vga.c
-@@ -13,8 +13,10 @@
+@@ -12,8 +12,16 @@
+ #include <drm/intel/i915_drm.h>
+ #include <video/vga.h>
  
- #include "soc/intel_gmch.h"
- 
++#ifndef VGA_ARBITER_BUILD_XE
++#warning "Building i915 version — i915 header included"
 +#include "i915_drv.h"
++#else /* VGA_ARBITER_BUILD_XE */
++#warning "Building XE version — i915 header excluded"
++#endif /* VGA_ARBITER_BUILD_XE */
++
  #include "intel_de.h"
  #include "intel_display.h"
 +#include "intel_display_params.h"
+ #include "intel_display_types.h"
  #include "intel_vga.h"
  #include "intel_vga_regs.h"
- 
-@@ -76,6 +78,35 @@ void intel_vga_disable(struct intel_display *display)
+@@ -76,6 +84,37 @@ void intel_vga_disable(struct intel_display *display)
  	intel_de_posting_read(display, vga_reg);
  }
  
++#ifndef VGA_ARBITER_BUILD_XE
 +void intel_vga_enable_mem(struct intel_display *display)
 +{
 +	struct pci_dev *pdev = to_pci_dev(display->drm->dev);
@@ -154,23 +173,41 @@ index 6e125564d..dd7e45f89 100644
 +		vga_put(pdev, VGA_RSRC_LEGACY_IO);
 +	}
 +}
++#endif /* VGA_ARBITER_BUILD_XE */
 +
  void intel_vga_reset_io_mem(struct intel_display *display)
  {
  	struct pci_dev *pdev = to_pci_dev(display->drm->dev);
 diff --git a/drivers/gpu/drm/i915/display/intel_vga.h b/drivers/gpu/drm/i915/display/intel_vga.h
-index 16d699f3b..d91a6cf67 100644
+index 16d699f3b..a20721eb6 100644
 --- a/drivers/gpu/drm/i915/display/intel_vga.h
 +++ b/drivers/gpu/drm/i915/display/intel_vga.h
-@@ -13,4 +13,8 @@ void intel_vga_disable(struct intel_display *display);
+@@ -13,4 +13,10 @@ void intel_vga_disable(struct intel_display *display);
  int intel_vga_register(struct intel_display *display);
  void intel_vga_unregister(struct intel_display *display);
  
++#ifndef VGA_ARBITER_BUILD_XE
 +/* i915 vga arb patch */
 +void intel_vga_enable_mem(struct intel_display *display);
 +void intel_vga_disable_mem(struct intel_display *display);
++#endif /* VGA_ARBITER_BUILD_XE */
 +
  #endif /* __INTEL_VGA_H__ */
+diff --git a/drivers/gpu/drm/xe/Makefile b/drivers/gpu/drm/xe/Makefile
+index b39cbb756..4506996e1 100644
+--- a/drivers/gpu/drm/xe/Makefile
++++ b/drivers/gpu/drm/xe/Makefile
+@@ -199,6 +199,7 @@ endif
+ 
+ # i915 Display compat #defines and #includes
+ subdir-ccflags-$(CONFIG_DRM_XE_DISPLAY) += \
++	-DVGA_ARBITER_BUILD_XE=1 \
+ 	-I$(src)/compat-i915-headers \
+ 	-I$(srctree)/drivers/gpu/drm/i915/display/
+ 
+diff --git a/i b/i
+new file mode 100644
+index 000000000..e69de29bb
 -- 
-2.52.0
+2.54.0
 
