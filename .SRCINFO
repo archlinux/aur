@@ -1,6 +1,6 @@
 pkgbase = apt-fake-ubuntu
 	pkgdesc = Simulate apt command
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/castielloangela512-ai/apt-fake
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = apt-fake-ubuntu
 	depends = bash
 	depends = yay
 	depends = pacman
+	depends = zenity
 	source = apt-fake
-	sha256sums = 58b7c382f30f3d0a08afba492dc653d4845620fd163fc20f0cb8d94886af3e43
+	sha256sums = 14cc1a887206676c234fe3869610fed6a26603c6c5269eee59b63e02404845cd
 
 pkgname = apt-fake-ubuntu

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# --- CONFIGURATION ---
+# --- CONFIGURATION & COLORS ---
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 BLUE='\033[0;34m'
-NC='\033[0m'
+NC='\033[0m' # No Color
 
-# Identify AUR helper (Auto-detect)
+# 1. Auto-detect AUR helper (yay, paru or pacman)
 if command -v yay &> /dev/null; then
     HELPER="yay"
 elif command -v paru &> /dev/null; then
@@ -16,75 +16,70 @@ else
 fi
 
 COMMAND="$1"
-shift # Remove the first argument to handle packages/options easily
+shift # Moves to the next arguments (package names)
 
 case "$COMMAND" in
-    # 1. Update lists
+    # --- CORE FUNCTIONS ---
     update) echo -e "${GREEN}Reading package lists... Done${NC}"; $HELPER -Sy ;;
-    
-    # 2. Upgrade system
     upgrade) echo -e "${GREEN}Upgrading system...${NC}"; $HELPER -Syu ;;
-    
-    # 3. Install packages
     install) echo -e "${GREEN}Installing packages...${NC}"; sudo pacman -S "$@" || $HELPER -S "$@" ;;
-    
-    # 4. Remove packages
     remove) echo -e "${GREEN}Removing packages...${NC}"; sudo pacman -Rs "$@" ;;
-    
-    # 5. Purge (Remove + Configs)
     purge) echo -e "${GREEN}Purging packages and configs...${NC}"; sudo pacman -Rns "$@" ;;
-    
-    # 6. Autoremove (Orphans)
     autoremove) echo -e "${GREEN}Cleaning orphans...${NC}"; sudo pacman -Rns $(pacman -Qdtq) ;;
-    
-    # 7. Search packages
     search) $HELPER -Ss "$@" ;;
-    
-    # 8. Show package info
     show) pacman -Si "$@" || $HELPER -Si "$@" ;;
-    
-    # 9. Clean cache
     clean) echo -e "${GREEN}Cleaning cache...${NC}"; sudo pacman -Scc ;;
-    
-    # 10. List installed packages
     list) echo -e "${BLUE}Listing installed packages...${NC}"; pacman -Q ;;
-    
-    # 11. Repair system (Auto-Repair!)
+
+    # --- ADVANCED FUNCTIONS ---
     repair) 
         echo -e "${RED}Repairing database and keys...${NC}"
         sudo rm -f /var/lib/pacman/db.lck
         sudo pacman-key --init && sudo pacman-key --populate archlinux
         echo -e "${GREEN}Repair complete.${NC}" ;;
-        
-    # 12. Check for updates (No install)
     check) echo -e "${BLUE}Checking for available updates...${NC}"; $HELPER -Qu ;;
-    
-    # 13. Download only
     download) echo -e "${GREEN}Downloading (no install)...${NC}"; sudo pacman -Sw "$@" ;;
-    
-    # 14. System info (Neofetch style)
     info) echo -e "${BLUE}System Info:${NC}"; uname -a; uptime ;;
-    
-    # 15. Fix dependencies
     fix-broken) echo -e "${GREEN}Checking for broken dependencies...${NC}"; sudo pacman -D --check ;;
-    
-    # 16. Fast Mirror Update
-    mirrors) echo -e "${GREEN}Updating mirrors for speed...${NC}"; sudo pacman-mirrors -f 5 || echo "Not available on this distro" ;;
-    
-    # 17. Hardware Check (x64/ARM)
+    mirrors) echo -e "${GREEN}Updating mirrors for speed...${NC}"; sudo pacman-mirrors -f 5 || echo "Not available" ;;
     arch) echo -e "${BLUE}Architecture:${NC} $(uname -m)" ;;
-    
-    # 18. APT Moo (The Cow!)
-    moo) echo "        (__)" ; echo "        (oo)" ; echo "  /------\/ " ; echo " / |    ||  " ; echo "*  /\---/\  " ; echo "   ~~   ~~  " ; echo "...Have you milked your Arch today?" ;;
-    
-    # 19. Battery Status (For your Acer!)
     battery) upower -i $(upower -e | grep 'BAT') | grep -E "state|to\ full|percentage" || echo "No battery found" ;;
     
-    # 20. Help
+    # --- FUN & GUI ---
+    moo) 
+        echo "        (__)"
+        echo "        (oo)"
+        echo "  /------\/ "
+        echo " / |    ||  "
+        echo "*  /\---/\  "
+        echo "   ~~   ~~  "
+        echo "...Have you milked your Arch today?" ;;
+
+    gui)
+        echo -e "${BLUE}Opening APT-GUI...${NC}"
+        # Using Zenity for a lightweight GUI on your 3GB RAM Acer
+        TASK=$(zenity --list --title="APT-Fake v1.2 GUI" --width=400 --height=400 \
+            --column="Action" --column="Description" \
+            "Update" "Refresh package lists" \
+            "Upgrade" "Install all updates" \
+            "Repair" "Fix system & PGP keys" \
+            "Clean" "Clear package cache" \
+            "Moo" "The Magic Cow")
+
+        case $TASK in
+            "Update") kgx -e "apt update" ;;
+            "Upgrade") kgx -e "apt upgrade" ;;
+            "Repair") kgx -e "apt repair" ;;
+            "Clean") kgx -e "apt clean" ;;
+            "Moo") zenity --info --title="Moo!" --text="(__)\n(oo)\n/------\/\n/ |    ||\n*  /\---/\\\n~~   ~~" ;;
+        esac ;;
+
+    # --- HELP ---
     help|--help)
-        echo -e "${GREEN}apt-fake-ubuntu v1.1 - 20 Functions Available${NC}"
+        echo -e "${GREEN}apt-fake-ubuntu v1.2 - 21 Functions Available${NC}"
+        echo "Usage: apt <command> [package]"
         echo "Commands: update, upgrade, install, remove, purge, autoremove, search, show, clean,"
-        echo "          list, repair, check, download, info, fix-broken, mirrors, arch, moo, battery, help" ;;
+        echo "          list, repair, check, download, info, fix-broken, mirrors, arch, battery, moo, gui, help" ;;
 
     *) echo -e "${RED}E: Invalid command. Use 'apt help'${NC}"; exit 1 ;;
 esac
