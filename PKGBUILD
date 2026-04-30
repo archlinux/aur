@@ -1,5 +1,5 @@
 pkgname=worklog-bin
-pkgver=0.6.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Local-first desktop project manager for small dev teams"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   'gcc-libs'
 )
 source=("https://github.com/regisx001/worklog/releases/download/app-v${pkgver}/worklog_${pkgver}_amd64.deb")
-sha256sums=('bc8da36767a9afedd91b8a97e6fef8c9efd315a905c4bb66a9f227f821f38f52')
+sha256sums=('5eff94b549464307621631f98c7a6e674cf23a2d7e2c4707407a759f0ec7c6fc')
 
 package() {
   cd "$srcdir"
