@@ -1,0 +1,14 @@
+pkgbase = img2term
+	pkgdesc = Convert images to terminal art (ASCII or pixel blocks) with automatic background removal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Pyy0tr/img2term
+	arch = any
+	license = MIT
+	depends = imagemagick
+	depends = jp2a
+	depends = chafa
+	source = img2term-1.0.0.tar.gz::https://github.com/Pyy0tr/img2term/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 85fbafbe551284e5bda7d6c89730c7e85bf3da3480e333edd0c86dd92e9a64cd
+
+pkgname = img2term
