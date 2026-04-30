@@ -4,7 +4,7 @@ _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
 _pkgver=32.1.2
 pkgver="${_pkgver//-/_}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -91,11 +91,15 @@ optdepends=(
   "libva-mesa-driver: VAAPI encoder support"
   "v4l2loopback-dkms: V4L2 virtual camera output"
 )
-provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
+provides=(
+  "obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser"
+  "obs-studio-plugin-browser"
+)
 conflicts=(
   "obs-studio" "obs-vst" "obs-websocket" "obs-browser"
   "obs-linuxbrowser" # This plugin is obsolete
   "libva-vdpau-driver" # This driver is abandonned and make OBS segfault if it happen to be loaded, try libva-nvidia-driver is you really need Nvidia decode through VAAPI
+  "obs-studio-plugin-browser"
 )
 options=('debug')
 source=(
