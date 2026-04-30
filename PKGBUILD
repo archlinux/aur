@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biobroom
-_pkgver=1.42.0
+_pkgver=1.43.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.43.0
 pkgrel=1
 pkgdesc='Turn Bioconductor objects into tidy data frames'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da188322daf597e5ea0c52bf1133f0b14d0cb5926e6ad6932ff597c6314e8c34')
+sha256sums=('38355b6f40e327d1a59f0a2539580375d3c9966a5c6a0138f385f2e7392e7f06')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
