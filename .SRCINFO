@@ -1,6 +1,6 @@
 pkgbase = lanchat-bin
 	pkgdesc = A cross-platform LAN chat software that supports file transfer, written in Rust.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/cap153/LANChat
 	arch = x86_64
@@ -14,8 +14,10 @@ pkgbase = lanchat-bin
 	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
+	depends = libappindicator
+	depends = libayatana-appindicator
 	options = !strip
-	source = https://github.com/cap153/LANChat/releases/download/v0.1.2/LANChat_0.1.2_amd64.deb
+	source = https://github.com/cap153/LANChat/releases/download/v0.1.3/LANChat_0.1.3_amd64.deb
 	sha256sums = SKIP
 
 pkgname = lanchat-bin
