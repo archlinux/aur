@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgbase=openfang
 pkgname=('openfang-cli' 'openfang-gui' 'openfang-whatsapp-gateway')
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Open-source Agent Operating System built in Rust'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
     "openfang-desktop.desktop"
     "openfang-whatsapp-gateway.service"
 )
-b2sums=('b58e8479ae5444bc7c678cd551f46ba8316fd8fd6bd49a5aa9bb3216213769d7b86871b98700f7bcd20969e91df2c28c6bb85f370618d55445c79f9126ce9d2e'
+b2sums=('54c5794627422b4b0b27d9a8797c153ef384e251b6a9d69474624028fa5576962812de930317d0042337b172240ffcfb542122dddb009f0e9c31651edb26c2db'
         '0672ef1dd58e435156c01674d2e7ad6182d1f4fd7d94b50cd572f194977238765cf9bcf85076aac08b384df85e0b519b748f3a43a39f9250540d5444b3877033'
         '3857bf85c9486bb42f0c5c5efbb61b0f7ab64d25e88decf1cdb39114f5c3b6ba3ef38a9f12f67f8e6445768c4e6406baf4245bb25ecd850020ca425e1b63e1ac'
         'ee111fbee9536979f7f42acc28f11bf74fdeaea41eea2510de8d2d0cd851bbcf69d53238a373918d79d552e1bedba22a7b78408b42048ab5411b75ec13fce78b'
@@ -56,6 +56,9 @@ build() {
     #    hoisted globals like nopt/tar that aren't self-contained when copied)
     local _gwdir="${srcdir}/${pkgbase}-${pkgver}/packages/whatsapp-gateway"
     cd "${_gwdir}"
+    # Redirect git+ssh to https so npm can resolve GitHub deps in chroot (no ssh).
+    git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+    git config --global url."https://github.com/".insteadOf "git@github.com:"
     npm install --ignore-scripts --omit=dev
     cp -r /usr/lib/node_modules/node-addon-api "${_gwdir}/node_modules/node-addon-api"
     cd "${_gwdir}/node_modules/sharp"
