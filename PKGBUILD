@@ -5,7 +5,7 @@ pkgver=2.5.5
 pkgrel=1
 pkgdesc="Generate pretty charts for your GitHub language stats."
 arch=(any)
-url="https://github.com/velox-sh/ghlang"
+url="https://github.com/MihaiStreames/ghlang"
 license=(MIT)
 depends=(
 	python
