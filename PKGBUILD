@@ -1,6 +1,6 @@
 # Maintainer: Jordan Sluiter <jordan.sluiter@icloud.com>
 pkgname=shrimp
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Self-hosted AI productivity assistant"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc' 'gtk3' 'nss')
 conflicts=('shrimp-bin')
 options=('!strip')
 source=("SHRIMP-${pkgver}.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/SHRIMP-${pkgver}.AppImage")
-sha256sums=('19dbff5ff83ebbaca4770a7d7192a94c8ff0c3bbb5ce2ffc5d09dbb9fd3aa032')
+sha256sums=('cd543374bac5970b3608d09897431b376e06e4ad4a6c14132bdecda2bcd6b1d4')
 
 prepare() {
     chmod +x "SHRIMP-${pkgver}.AppImage"
@@ -20,7 +20,7 @@ prepare() {
 package() {
     install -dm755 "${pkgdir}/usr/lib/shrimp"
     cp -a squashfs-root/. "${pkgdir}/usr/lib/shrimp/"
-    chmod 755 "${pkgdir}/usr/lib/shrimp"
+    chmod -R a+rX "${pkgdir}/usr/lib/shrimp"
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/shrimp" <<'EOF'
 #!/usr/bin/env sh
