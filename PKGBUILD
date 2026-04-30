@@ -1,6 +1,6 @@
 # Maintainer: Zmole Cristian <tragdate@gmail.com>
 pkgname=rustgraph
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="Rust code navigation built for AiDX — AST-aware, MCP-native, token-efficient."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ZmoleCristian/rustgraph/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6c8b109c0ef1012c00928edf70628451caa789e42ed9d1f4dc8432f52702a7cd')
+sha256sums=('e7f2a435e36b1faa6516deb739ea717ee2b94f2b270c16cce074a69da01b743d')
 
 prepare() {
     cd "$pkgname-$pkgver"
