@@ -1,0 +1,17 @@
+pkgbase = octoscope-bin
+	pkgdesc = Terminal dashboard for GitHub
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/gfazioli/octoscope
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = octoscope
+	conflicts = octoscope
+	options = !strip
+	source_x86_64 = octoscope-x86_64-0.8.1.tgz::https://github.com/gfazioli/octoscope/releases/download/v0.8.1/octoscope_0.8.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8b9a33e8629c25232ed98115bfbf7b09915e6cc5e8176d5c39fd91e96349b9ef
+	source_aarch64 = octoscope-aarch64-0.8.1.tgz::https://github.com/gfazioli/octoscope/releases/download/v0.8.1/octoscope_0.8.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d2785fabceb3677820b3196735688d4625c005e44db6e59ee35cc168c496bd01
+
+pkgname = octoscope-bin

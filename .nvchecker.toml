@@ -1,0 +1,5 @@
+[octoscope-bin]
+source = "github"
+github = "gfazioli/octoscope"
+use_latest_release = true
+prefix = "v"
