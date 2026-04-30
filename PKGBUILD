@@ -1,7 +1,7 @@
 # Maintainer: ZorudaRinku <zorudarinku@gmail.com>
 
 pkgname=openchatbox
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Desktop GUI for sending customized OSC chat messages to VRChat"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
     'imagemagick'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dbbe15a1c19164c25c43194c85e77819670b0a57bd574658a815b28a58f8fddc')
+sha256sums=('0cf12e714a69d9343d83f8d444e192edfdcd6dcb6437437e9004849e5e65bad5')
 
 build() {
     cd "OpenChatbox-$pkgver"
@@ -31,8 +31,7 @@ build() {
 
     /usr/lib/qt6/rcc -g python resources.qrc -o resources_rc.py
 
-    # Install app source into a staging lib dir. --no-deps keeps pip from
-    # pulling in PySide6/psutil/websockets — those come from system packages.
+    # Install app source into a staging lib dir.
     PYTHONDONTWRITEBYTECODE=1 python -m pip install \
         --target="$srcdir/lib" \
         --no-compile \
@@ -53,9 +52,9 @@ package() {
 
     install -dm755 "$pkgdir/usr/lib/$pkgname"
     cp -a "$srcdir/lib/." "$pkgdir/usr/lib/$pkgname/"
-    # pip install --target leaves a `bin/` sidecar we don't use (our launcher is /usr/bin/openchatbox)
+    # pip install --target leaves a `bin/` sidecar we don't use
     rm -rf "$pkgdir/usr/lib/$pkgname/bin"
-    # direct_url.json records the build-time srcdir path — strip it to avoid leaking /tmp paths
+    # direct_url.json records the build-time srcdir path but unused
     rm -f "$pkgdir/usr/lib/$pkgname/$pkgname-$pkgver.dist-info/direct_url.json"
 
     install -dm755 "$pkgdir/usr/bin"
