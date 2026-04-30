@@ -1,0 +1,23 @@
+pkgbase = r-keyring
+	pkgdesc = Platform independent 'API' to access the operating system's credential store.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=keyring
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = r
+	depends = r-askpass
+	depends = r-filelock
+	depends = r-utils
+	depends = r-tools
+	depends = r-yaml
+	optdepends = r-callr
+	optdepends = r-covr
+	optdepends = r-openssl
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/keyring_1.4.1.tar.gz
+	sha256sums = fba2451fc8cd4494fc0025264b67be49a58e020e01c65e5d5d2c43f84f53ce84
+
+pkgname = r-keyring
