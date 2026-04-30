@@ -191,10 +191,10 @@
 
 
 # Kernel version
-_kernel_major=6.19
-_kernel_minor=13
+_kernel_major=7.0
+_kernel_minor=3
 # Tachyon patches version
-_tachyon=6.19.13-1599
+_tachyon=7.0.3-1601
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
@@ -210,9 +210,9 @@ license=("GPL-2.0-only")
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
 options=("!strip" "!debug")
 source=(
-    "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
-    "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
-    "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
+    "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-${_kernel_major}.tar.xz"
+    "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-${_kernel_major}.tar.sign"
+    "https://cdn.kernel.org/pub/linux/kernel/v7.x/patch-${_kernel_major}.${_kernel_minor}.xz"
     "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
 )
 
@@ -221,9 +221,9 @@ source=(
 # -> SHA-256 checksums of the package's sources
 #    These need to be updated each release; see the 'source' array 
 sha256sums=(
-    "303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357"
+    "bb7f6d80b387c757b7d14bb93028fcb90f793c5c0d367736ee815a100b3891f0"
     "SKIP"
-    "71a55ffd4de97d7dd93b082974fff3f70935b7e12eefa1db53b527a949a97dd6"
+    "83dd9904de4323211c0cabf78012923980f8d4041dc2dd5dc7c42539a2f4bfd6"
     "SKIP"
 )
 
