@@ -1,6 +1,6 @@
 # Maintainer: john peter sa <johnppetersa@gmail.com>
 pkgname=mainline-arch
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Tool to install and manage mainline kernels from the Arch Linux Archive"
 arch=('x86_64')
