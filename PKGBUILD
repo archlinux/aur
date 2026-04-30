@@ -2,7 +2,7 @@
 
 pkgname=recordbox
 pkgver=0.11.0 # renovate: datasource=git-tags depName=https://codeberg.org/edestcroix/Recordbox
-pkgrel=1
+pkgrel=2
 pkgdesc='A music player and library browser designed primarily to be as simple as possible, and tailored specifically to browsing and playing albums, rather than tracks or playlists.'
 arch=(x86_64)
 url="https://codeberg.org/edestcroix/Recordbox"
@@ -26,6 +26,7 @@ depends=(
 )
 makedepends=(
   appstream
+  blueprint-compiler
   git
   meson
   rust

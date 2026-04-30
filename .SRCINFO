@@ -1,11 +1,12 @@
 pkgbase = recordbox
 	pkgdesc = A music player and library browser designed primarily to be as simple as possible, and tailored specifically to browsing and playing albums, rather than tracks or playlists.
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/edestcroix/Recordbox
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = appstream
+	makedepends = blueprint-compiler
 	makedepends = git
 	makedepends = meson
 	makedepends = rust
