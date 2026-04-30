@@ -1,7 +1,7 @@
 pkgbase = r-devtools
 	pkgdesc = Tools to Make Developing R Packages Easier
-	pkgver = 2.5.1
-	pkgrel = 2
+	pkgver = 2.5.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=devtools
 	arch = any
 	license = MIT
@@ -43,8 +43,8 @@ pkgbase = r-devtools
 	optdepends = r-quarto
 	optdepends = r-remotes
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/devtools_2.5.1.tar.gz
-	md5sums = aabda91d6dccd446803641f390ce9fc3
-	b2sums = 82011ca0dc35d9322b2224afd14e14fe28bb6b08ac03506c00023048cf306359fa445f0af61db5b68ff3deb7dcc1281c11ff429c495bfcfbd021166423719878
+	source = https://cran.r-project.org/src/contrib/devtools_2.5.2.tar.gz
+	md5sums = ea50645bc1402d6c746aff77f0c22c8e
+	b2sums = 5cf74751c4a6852c4f6b01fe3ca72bd1e6d5152ad2a14170f5eaa06caddc6ba147c801a2df2df704a422d92937a1e89f0dc143ad092f5eb85ae1a37d1433a205
 
 pkgname = r-devtools
