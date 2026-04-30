@@ -34,6 +34,7 @@ depends=(
   'fmt'
   'spdlog'
   'wlroots0.19'
+  'asio'
 )
 
 makedepends=(
