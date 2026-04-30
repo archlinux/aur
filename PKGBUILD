@@ -1,6 +1,6 @@
 # Maintainer: Jordan Sluiter <jordan.sluiter@icloud.com>
 pkgname=shrimp
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Self-hosted AI productivity assistant"
 arch=('any')
