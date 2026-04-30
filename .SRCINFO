@@ -1,11 +1,12 @@
 pkgbase = go-foks
 	pkgdesc = CLI for Federated Open Key Service
-	pkgver = 0.1.5
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://foks.pub
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
+	arch = riscv64
 	license = MIT
 	makedepends = go
 	depends = pcsclite
@@ -13,7 +14,7 @@ pkgbase = go-foks
 	depends = libfido2-full
 	depends = glibc
 	options = !lto
-	source = go-foks-0.1.5.tar.gz::https://github.com/foks-proj/go-foks/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 6ef21b2cfd1b6c08846d89d51c9f590cb99a4f29f57d8793db1635a505e232f3
+	source = go-foks-0.1.7.tar.gz::https://github.com/foks-proj/go-foks/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 2cad49165de5347530254000f4cda81ca10564604d2edd3f7d7e071c68989615
 
 pkgname = go-foks
