@@ -1,13 +1,13 @@
 pkgbase = riscv64-gnu-toolchain-glibc-bin
 	pkgdesc = GNU toolchain for riscv64 Linux, including GCC.
-	pkgver = 2026.04.26
+	pkgver = 2026.04.30
 	pkgrel = 1
 	url = https://github.com/riscv-collab/riscv-gnu-toolchain
 	arch = x86_64
 	license = GPL2
 	conflicts = riscv64-gnu-toolchain-glibc-llvm-bin
 	options = !strip
-	source = riscv64-gnu-toolchain-glibc-bin-2026.04.26-riscv64-glibc-ubuntu-24.04-gcc.tar.xz::https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2026.04.26/riscv64-glibc-ubuntu-24.04-gcc.tar.xz
-	sha512sums = de51085a1237ad3c1f14c7f4da1f2c3430f996909eb43ac968b9472c6f71bff8af120c5ad56e6aa0707d643038642142649e9b0f0550542d243d5dbb80e3ea97
+	source = riscv64-gnu-toolchain-glibc-bin-2026.04.30-riscv64-glibc-ubuntu-24.04-gcc.tar.xz::https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2026.04.30/riscv64-glibc-ubuntu-24.04-gcc.tar.xz
+	sha512sums = 2ba08c7ca937d0dd1b31da83e568b6758c8b6166664d513dfa35ce98639f1d17704515a538853c9bb1eb4a9305a99723ba6a4326808884bd1930da154586e8a8
 
 pkgname = riscv64-gnu-toolchain-glibc-bin
