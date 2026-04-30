@@ -1,0 +1,17 @@
+pkgbase = serwis-app
+	pkgdesc = Proste Prowadzenie Serwisu - Kompleksowe zarządzanie serwisem
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/KlapkiSzatana/serwis-app
+	arch = any
+	license = GPL-3.0
+	depends = python
+	depends = pyside6
+	depends = python-cryptography
+	depends = python-pillow
+	depends = python-requests
+	optdepends = python-barcode: obsługa kodów kreskowych na wydrukach
+	source = git+https://github.com/KlapkiSzatana/serwis-app.git
+	sha256sums = SKIP
+
+pkgname = serwis-app
