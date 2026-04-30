@@ -1,6 +1,6 @@
 # Maintainer: Joel Klinghed <the_jk at spawned dot biz>
 pkgname=maestro-dev
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="End-to-end testing for Mobile and Web apps"
 url="https://maestro.dev"
@@ -9,7 +9,7 @@ arch=("any")
 depends=("java-runtime-headless>=17" "bash")
 
 source=("maestro-${pkgver}.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-${pkgver}/maestro.zip")
-sha256sums=("9c9a7617b47e21d4a9add205e0a2ec45f71f9fb0cb651051281afbc3f87158ea")
+sha256sums=("2d924bfd37cccabca438a727213648cbfe4f8bb711559ec8e9d199dc09a5ce52")
 
 package() {
     # Create necessary directories
