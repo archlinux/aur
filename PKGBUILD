@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/aur.yml` republish.
 pkgname=buffr-bin
 _pkgname=buffr
-pkgver=0.1.22
+pkgver=0.1.23
 pkgrel=1
 pkgdesc="Vim-inspired browser. Native, GPU-accelerated. Rust + CEF. (binary release)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ options=(!strip !debug)
 
 source_x86_64=("buffr-${pkgver}-x86_64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v${pkgver}/buffr-${pkgver}-x86_64.tar.gz")
 source_aarch64=("buffr-${pkgver}-aarch64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v${pkgver}/buffr-${pkgver}-aarch64.tar.gz")
-sha256sums_x86_64=('4f7e742ceef3cb93eaa08c7f2ce682c8b765e639c87ba6b84ae7432627091c85')
-sha256sums_aarch64=('c24f4bd4eccbcfbecc7eb22127bde6818fc267a5997ba1eeec11c6d789f7d4c1')
+sha256sums_x86_64=('e524555a13322256abaa21e85412d72ec281232d29d2bf0e0666489b8cf6cdfd')
+sha256sums_aarch64=('38e2efe4a867e7de2098fb2e6210c7bf42a5e9c55121df5343fd51a871f9130a')
 
 package() {
     local _arch
@@ -42,6 +42,12 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     ln -sf /opt/buffr/buffr "$pkgdir/usr/bin/buffr"
 
-    # `.desktop` + icon are deferred until the runtime tarball bundles
-    # them — the upstream `pkg/` dir isn't in the AUR build context.
+    # `.desktop` + icon ship inside the runtime tarball (xtask
+    # `build_tarball`). Hoist them out of /opt/buffr/ into the standard
+    # XDG locations so desktop launchers + icon themes pick them up.
+    install -Dm644 "$pkgdir/opt/buffr/buffr.desktop" \
+        "$pkgdir/usr/share/applications/buffr.desktop"
+    install -Dm644 "$pkgdir/opt/buffr/buffr.png" \
+        "$pkgdir/usr/share/icons/hicolor/512x512/apps/buffr.png"
+    rm "$pkgdir/opt/buffr/buffr.desktop" "$pkgdir/opt/buffr/buffr.png"
 }
