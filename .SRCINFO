@@ -1,6 +1,6 @@
 pkgbase = sqv-bin
 	pkgdesc = A keyboard-first terminal viewer for SQLite databases
-	pkgver = 0.1.5
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/mendrik-private/sqv
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = sqv-bin
 	provides = sqview
 	conflicts = sqview
 	options = !strip
-	source = LICENSE-0.1.5::https://raw.githubusercontent.com/mendrik-private/sqv/v0.1.5/LICENCE.txt
-	source = README-0.1.5.md::https://raw.githubusercontent.com/mendrik-private/sqv/v0.1.5/README.md
-	source = EXAMPLE-0.1.5.db::https://raw.githubusercontent.com/mendrik-private/sqv/v0.1.5/examples/chinook.db
+	source = LICENSE-0.1.7::https://raw.githubusercontent.com/mendrik-private/sqv/v0.1.7/LICENCE.txt
+	source = README-0.1.7.md::https://raw.githubusercontent.com/mendrik-private/sqv/v0.1.7/README.md
+	source = EXAMPLE-0.1.7.db::https://raw.githubusercontent.com/mendrik-private/sqv/v0.1.7/examples/chinook.db
 	sha256sums = d21f768901e1abb761a57da47ab03b3cbc0f6e1725529cd3667ca8b830bc1919
 	sha256sums = 24300f0a2db7720236859cef6e3ddeb7b5a1f29e65d51216f84eb188e908b05b
-	sha256sums = a4ed0a2d4b7034ab6ccd66fe1dcbe61ada337d2bcf6c9cfc419449b1e5143ca4
-	source_x86_64 = sqview-x86_64-0.1.5.tgz::https://github.com/mendrik-private/sqv/releases/download/v0.1.5/sqview-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 3b8cea57e1bacb84def5cd97af369aa2b2f6eb4422116315420d75bab49b0393
+	sha256sums = 5b762bb512134a617eb1d2c3a134325cf15f0135c30f6ef48651b6f169c9325f
+	source_x86_64 = sqview-x86_64-0.1.7.tgz::https://github.com/mendrik-private/sqv/releases/download/v0.1.7/sqview-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f9cddb48a64e4e6e3bbf5299d2a9a5c94ffd706113f4afeec8c03a3ecd7ec4d4
 
 pkgname = sqv-bin
