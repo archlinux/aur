@@ -1,6 +1,6 @@
 pkgbase = nodejs-paperclipai
 	pkgdesc = Paperclip CLI — orchestrate AI agent teams to run a business
-	pkgver = 2026.427.0
+	pkgver = 2026.428.0
 	pkgrel = 1
 	url = https://github.com/paperclipai/paperclip
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = nodejs-paperclipai
 	makedepends = python
 	makedepends = nodejs-addon-api
 	depends = nodejs
-	noextract = paperclipai-2026.427.0.tgz
-	source = https://registry.npmjs.org/paperclipai/-/paperclipai-2026.427.0.tgz
-	sha512sums = 0010f3bba4a2a752870510c3c059b71388d5490e702a0656b00cdf6529ebe52d29095d968f0a7f59e7d9dd227a47c24274679fff71e27db0c123ea4055728d78
+	noextract = paperclipai-2026.428.0.tgz
+	source = https://registry.npmjs.org/paperclipai/-/paperclipai-2026.428.0.tgz
+	sha512sums = 96e30333f44d8b27d38147a72a8363400f75138aab67a1f1b97b4e38926115aeffc7f50336b9ca7e1ffb9caec79087a4434e62aae46670c27e3c9fac6f8bc1da
 
 pkgname = nodejs-paperclipai
