@@ -1,0 +1,14 @@
+--- a/cef/patch/patch.cfg
++++ b/cef/patch/patch.cfg
+@@ -554,11 +554,6 @@
+     'name': 'osr_fling_2745',
+   },
+   {
+-    # libxml access is now limited to targets audited by the Security Team.
+-    # https://chromium-review.googlesource.com/c/chromium/src/+/1884750
+-    'name': 'libxml_visibility',
+-  },
+-  {
+     # Fix unbound AssociatedRemote error in SetBackgroundOpaque.
+     # https://bugs.chromium.org/p/chromium/issues/detail?id=1070713
+     'name': 'renderer_host_1070713',
