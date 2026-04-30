@@ -1,7 +1,7 @@
 pkgbase = llama-swap
 	pkgdesc = Model swapping for llama.cpp (or any local OpenAPI compatible server)
 	pkgver = v209
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/mostlygeek/llama-swap
 	arch = x86_64
 	arch = aarch64
