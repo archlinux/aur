@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('9012a54b4ff960f7f0be2c48006ffb8699e45901120a4de7516a5f1f0345074e7cd577d5b09a4c8b00af7f42b229aa5c9a0c7d08a5198a0e876de583fc4c339b')
+b2sums=('f339aff7b0750d4bb0680a36f89ab2060cd871a479372d892dc9b75acf2f55da785b183d3f9ffb080b2c23b3863c078e48e83543d983a9e15c0bf693b3c2f948')
 
 prepare() {
     cd "$pkgname-$pkgver"
