@@ -7,8 +7,8 @@
 
 _name=elmerfem
 pkgname=elmerfem-base
-pkgver=26.1
-pkgrel=3
+pkgver=26.2.1
+pkgrel=1
 pkgdesc="A finite element software for multiphysical problems (without GUI and Ice)"
 arch=('x86_64')
 url="https://www.elmerfem.org"
@@ -30,24 +30,18 @@ depends=(
 )
 
 source=("${_name}::git+https://github.com/ElmerCSC/elmerfem#tag=release-${pkgver}")
-b2sums=('a4bcbfb84a043712f28114087f8a67b47ab2f8b5eeda637e0211eaa96d7ff6928d27ab7e927c8cd2733ffa3e186613ca245ed3bace601ad4f68eec9a8a82efb3')
-_patches=(
-    # ElmerSolver & ElmerGrid version output
-    91c7147b0aefe2e783b41e121b683d85fcdfd653
-    fbe62695e6e03c8d548a247b96a0229b2aa52ab9
-    # Fix ElmerGrid unv convert segfault
-    85e16d005de298691faeeeaccde685fe5bac4da1
-)
+b2sums=('1f704736b11a652166e212ae09de1bbd7a604da4c726c7d46e1dd2b838461c2a834a046e36b4ec5ce7fbb0aef8c17e70b16978f0a785fd16a322c2e5236a59f5')
+# _patches=()
 
 prepare() {
     cd $_name
-    git cherry-pick -n -m 1 "${_patches[@]}"
+    # git cherry-pick -n -m 1 "${_patches[@]}"
     git submodule update --init
 }
 
 build() {
     # For Zoltan
-    export CFLAGS="${CFLAGS[*]} -Wno-incompatible-pointer-types"
+    export CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types"
 
     local cmake_opts=(
         -W no-dev
@@ -74,6 +68,10 @@ build() {
 }
 
 check() {
+    # TopoOptHeat2DCompMin will fail if OMP_NUM_THREADS>1
+    # https://github.com/ElmerCSC/elmerfem/pull/740#issuecomment-3810794756
+    export OMP_NUM_THREADS=1
+
     # Skip tests
     # - EMWaveBoxHexasEigen: Relative Error to reference norm: 2.656888E-01
     # - DirichletNeumannZoltan_np3: Require CPardiso/Mumps
