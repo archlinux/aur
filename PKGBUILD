@@ -2,17 +2,17 @@
 
 _name=construct-classes
 pkgname=python-construct-classes
-pkgver=0.1.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Parse your binary data into dataclasses. Pack your dataclasses into binary data."
 arch=('any')
 url="https://github.com/matejcik/construct-classes"
 license=('MIT')
 depends=('python' 'python-construct')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
+makedepends=('python-build'  'python-flit' 'python-poetry-core' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/matejcik/$_name/archive/refs/tags/v$pkgver.tar.gz")
 
-b2sums=('d68425b9c9dc0d96fca1560a03a71a9f544adc5e4e67742ecd580e57433a2f147e4041573f95c83d127e98787bc6ee11552d437d073fb288da0eb02f7ed6e9ed')
+b2sums=('089af3bc7d304a73bfc4fdc70513907ad7e1eeea54490e4595aeccb1ca3de8284cd4aadd9341ace81862e9e7552b4b11a517c8cc9746411ab57fa68211450c82')
 
 build() {
     cd "$_name-$pkgver"
