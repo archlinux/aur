@@ -1,31 +1,31 @@
 # Maintainer: Nihal Kumar <2tv8xupqg at mozmail dot com>
 pkgname=smithery-cli
-pkgver=1.6.3
+pkgver=4.11.1
 pkgrel=1
 pkgdesc="Registry installer and manager for Model Context Protocol (MCP) servers"
 arch=('any')
 url="https://smithery.ai/"
 license=('AGPL-3.0-or-later')
 depends=('nodejs>=20')
-makedepends=('npm')
+makedepends=('pnpm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/smithery-ai/cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9282004a7a30ed65895c16869d998b27d7fd168eb22753a06b76421630196a45')
+sha256sums=('4fad3e5d4c222c61081085ef73c6498f6729c4adf8287b3416120ea9b57d6b1f')
 
 build() {
   cd "$srcdir/cli-$pkgver"
 
-  # Use npm ci for reproducible builds (uses package-lock.json)
-  npm ci --cache "$srcdir/npm-cache"
+  # Install dependencies using pnpm
+  pnpm install --frozen-lockfile
 
   # Build the project
-  npm run build
+  pnpm run build
 }
 
 package() {
   cd "$srcdir/cli-$pkgver"
 
-  # Install production dependencies only (skip scripts to avoid rebuild)
-  npm ci --omit=dev --ignore-scripts --cache "$srcdir/npm-cache"
+  # Install production dependencies only (skip postinstall script)
+  pnpm install --frozen-lockfile --prod --ignore-scripts
 
   # Install to /usr/lib/node_modules/@smithery/cli
   install -dm755 "$pkgdir/usr/lib/node_modules/@smithery/cli"
