@@ -6,8 +6,8 @@ pkgbase = flow-control-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = zig>=0.15.0
-	makedepends = zig<0.16.0
+	makedepends = zig>=0.16.0
+	makedepends = zig<0.17.0
 	optdepends = ripgrep: project-wide search
 	provides = flow-control
 	conflicts = flow-control

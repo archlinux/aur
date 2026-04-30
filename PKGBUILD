@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/neurocyte/$__pkgname"
 license=('MIT')
 optdepends=('ripgrep: project-wide search')
-makedepends=('git' 'zig>=0.15.0' 'zig<0.16.0')
+makedepends=('git' 'zig>=0.16.0' 'zig<0.17.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/neurocyte/$__pkgname.git")
