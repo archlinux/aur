@@ -2,9 +2,9 @@
 
 pkgname='dufs'
 pkgver=0.45.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A distinctive utility file server that supports static serving, uploading, searching, accessing control, webdav...'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/sigoden/dufs'
 license=('MIT OR Apache-2.0')
 depends=('bzip2' 'gcc-libs' 'glibc' 'xz')

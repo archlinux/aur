@@ -1,9 +1,10 @@
 pkgbase = dufs
 	pkgdesc = A distinctive utility file server that supports static serving, uploading, searching, accessing control, webdav...
 	pkgver = 0.45.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sigoden/dufs
 	arch = x86_64
+	arch = aarch64
 	license = MIT OR Apache-2.0
 	makedepends = cargo
 	depends = bzip2
