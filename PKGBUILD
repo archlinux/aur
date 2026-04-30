@@ -1,7 +1,7 @@
 # Maintainer: sherit45 <sherit45@sherit45@protonmail.com>
 pkgname=clevo-led-control
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight LED control tool for Monster/Clevo laptops."
 arch=('x86_64')
 url="https://github.com/sherit45/clevo-led-control"
