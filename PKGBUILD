@@ -1,4 +1,5 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Maintainer: NourEddineX
+# Contributor: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: ihipop <ihipop at gmail dot com>
 _pkgname=warp-terminal
 pkgname="${_pkgname}-bin"
