@@ -1,8 +1,8 @@
 pkgbase = python-tree-sitter-kotlin
 	pkgdesc = Kotlin grammar for tree-sitter
 	pkgver = 1.1.0
-	pkgrel = 6
-	url = https://pypi.org/project/tree-sitter-kotlin/
+	pkgrel = 7
+	url = https://github.com/tree-sitter-grammars/tree-sitter-kotlin
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -11,13 +11,7 @@ pkgbase = python-tree-sitter-kotlin
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-kotlin-1.1.0.tar.gz::https://files.pythonhosted.org/packages/58/bb/bdab3665eeca21246130eec79c76e42456cfa72d59606266ecdbf37f9a96/tree_sitter_kotlin-1.1.0.tar.gz
-	source = tree-sitter-parser.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-	source = tree-sitter-alloc.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-	source = tree-sitter-array.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-	sha256sums = 322a35bdae75e25ae64dae6027be609c5422fab282084117816c4ebcda6168da
-	sha256sums = a3eb18ef034b3f4255b965a26caa276f9cfe13a79573b402f1a12dc5018052aa
-	sha256sums = c69f97ef0949199ba66157d523bac994c3aa7cab3de8d0e25ef29d74aa502e94
-	sha256sums = 4ff743903dc46f5db6aa54f31c6b4d160a8a9779e5b2ab1ee59ae7ebcd850ea1
+	source = python-tree-sitter-kotlin-1.1.0.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-kotlin/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 3c36bd5627fff38e4323ebead1f7e86e6d1727f0353618d1c976fea88260ba90
 
 pkgname = python-tree-sitter-kotlin
