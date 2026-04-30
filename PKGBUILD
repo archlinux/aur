@@ -3,13 +3,13 @@
 # Contributor: Dan Nixon <dan@dan-nixon.com>
 
 pkgname=qdmr-git
-pkgver=0.14.0.r12.g7a68bf7
+pkgver=0.14.1.r15.g85d4dfd
 pkgrel=1
 pkgdesc="A GUI application for configuring and programming cheap DMR radios - git version"
 arch=('x86_64')
 url="https://github.com/hmatuschek/qdmr"
 license=('GPL-3.0-or-later')
-depends=('libusb' 'qt6-tools' 'qt6-serialport' 'qt6-location' 'yaml-cpp')
+depends=('libusb' 'qt6-tools' 'qt6-serialport' 'qt6-location' 'yaml-cpp' 'qt6-multimedia')
 makedepends=('cmake' 'git' 'librsvg')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
