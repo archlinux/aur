@@ -1,0 +1,20 @@
+pkgbase = kbd-drive-remap-git
+	pkgdesc = Keyboard key remap via evsieve and systemd
+	pkgver = r0.g0000000
+	pkgrel = 1
+	url = https://github.com/LoveApple14434/gs-3104t-pro-remap
+	install = kbd-drive-remap-git.install
+	arch = any
+	license = custom:unlicensed
+	makedepends = git
+	depends = bash
+	depends = evsieve
+	depends = libinput-tools
+	optdepends = systemd: enable gs3104tpro-remap.service for auto-start
+	provides = kbd-drive-remap
+	conflicts = kbd-drive-remap
+	backup = etc/kbd-drive/remap-gs3104tpro.yaml
+	source = git+https://github.com/LoveApple14434/gs-3104t-pro-remap.git
+	sha256sums = SKIP
+
+pkgname = kbd-drive-remap-git
