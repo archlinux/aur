@@ -2,7 +2,7 @@
 # Maintainer: elpdev <noreply@github.com>
 
 pkgname='telex-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Terminal UI and CLI for telex.sh email workflows'
 url='https://github.com/elpdev/telex-cli'
@@ -12,10 +12,10 @@ provides=('telex')
 conflicts=('telex')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/elpdev/telex-cli/releases/download/v${pkgver}/telex_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7386ed4167918ded6ddd0ec6a9cf79b528a974dc5df6ecbded73e979290298b4')
+sha256sums_aarch64=('0f4777c1535311767c3887cdd15c9fa966eac7eb58d20a8a0b789cfd9aca3fe8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/elpdev/telex-cli/releases/download/v${pkgver}/telex_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('05b55a036bc6bc63d5bc8ced486da40833a23a525d70ee3f816a3d2c03198fe8')
+sha256sums_x86_64=('1b5670364afdccb33313385b9462addccfc4f6859290f132ff5c1dfc54df716b')
 
 package() {
   install -Dm755 telex "${pkgdir}/usr/bin/telex"
