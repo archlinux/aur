@@ -1,0 +1,21 @@
+# Grant `video` group access to the IPU6 PSYS device and the buffer
+# sources libcamera's DmaBufAllocator opens at camera-probe time.
+#
+# Adapted from kervel/libcamera-ipu6 (debian/99-ipu6-psys.rules).
+
+# PSYS char device. The kernel-side name has changed across versions:
+#   ipu-psys          legacy, <= 6.11
+#   intel-ipu6-psys   current
+#   intel-ipu7-psys   forthcoming
+# TAG+="uaccess" grants the active-session user ACL access (same scheme
+# logind uses for /dev/video*), so pipewire/wireplumber work without the
+# user needing to be in the `video` group, and without depending on the
+# user's systemd --user manager having picked up that group at login.
+SUBSYSTEM=="ipu-psys",        GROUP="video", MODE="0660", TAG+="uaccess"
+SUBSYSTEM=="intel-ipu6-psys", GROUP="video", MODE="0660", TAG+="uaccess"
+SUBSYSTEM=="intel-ipu7-psys", GROUP="video", MODE="0660", TAG+="uaccess"
+
+# DmaBufAllocator opens these at libcamera enumeration time; PipeWire's
+# user service can race ahead of seat ACL application and fail probing.
+KERNEL=="udmabuf",     GROUP="video", MODE="0660", TAG+="uaccess"
+KERNEL=="renderD[0-9]*", GROUP="video", MODE="0660"

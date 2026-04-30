@@ -1,0 +1,14 @@
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+pkg/
+src/
+
+### makepkg fetched git source ###
+libcamera/
+
+### accidental in-place extraction artifacts ###
+.BUILDINFO
+.MTREE
+.PKGINFO
+usr/

@@ -1,0 +1,131 @@
+From: Nick Stickney <nstickney@gmail.com>
+Date: Wed, 29 Apr 2026
+Subject: [PATCH] ipu6: process-global libcamhal init plus shm-race wait
+
+Two cooperating problems addressed:
+
+1. Per-instance halInitialized_ guard. libcamera enumerates twice
+   during a single process (probe + match), so kervel's per-instance
+   guard didn't prevent a second camera_hal_init(); mInitTimes climbed
+   to 2; subsequent re-init lost the per-process SHM segment, and
+   later camera_device_open() failed with "No attached camera shared
+   memory!". Fix: process-static std::once_flag and drop the
+   destructor's camera_hal_deinit() entirely (let the OS reclaim
+   libcamhal state at process exit).
+
+2. Boot-time shm key collision with GDM. GDM's greeter spawns its own
+   wireplumber under a DynamicUser= transient uid; that wireplumber
+   loads libcamera-ipu6 and ends up in libcamhal's init, which calls
+   shmget(0x43414d, 8192, 0640). libcamhal hardcodes mode 0640, so
+   the resulting segment is owner+group only. When the user logs in
+   and their wireplumber runs the same shmget, gdm's segment may
+   still be attached (nattch=1) and the user's call returns EACCES.
+   libcamhal logs "Fail to allocate shared memory by shmget" and
+   continues running but in a broken state -- every later
+   camera_device_open fails with "No attached camera shared memory!".
+
+   Fix: before calling camera_hal_init(), poll the shm key directly.
+   On EACCES, sleep 100ms and retry, up to a 5s deadline. Once we
+   see ENOENT (the conflicting segment is gone) or a successful
+   lookup, proceed -- libcamhal's own shmget will then succeed.
+
+Per-camera lifecycle (camera_device_open / camera_device_close in
+IPU6CameraData) is unchanged; those remain correctly paired.
+---
+ src/libcamera/pipeline/ipu6/ipu6.cpp | 50 ++++++++++++++++++++++++----
+ 1 file changed, 44 insertions(+), 6 deletions(-)
+
+--- a/src/libcamera/pipeline/ipu6/ipu6.cpp
++++ b/src/libcamera/pipeline/ipu6/ipu6.cpp
+@@ -10,6 +10,8 @@
+  * the Intel PSYS hardware via libcamhal, producing high-quality NV12 output.
+  */
+ 
++#include <atomic>
++#include <chrono>
+ #include <algorithm>
+ #include <climits>
+ #include <cstring>
+@@ -24,6 +26,9 @@
+ #include <fcntl.h>
+ #include <linux/videodev2.h>
+ #include <sys/mman.h>
++#include <sys/ipc.h>
++#include <sys/shm.h>
++#include <errno.h>
+ #include <unistd.h>
+ 
+ #include <libcamera/base/log.h>
+@@ -151,7 +156,6 @@
+ 	}
+ 
+ 	DmaBufAllocator dmaBufAllocator_;
+-	bool halInitialized_ = false;
+ };
+ 
+ /* --- IPU6CameraData implementation --- */
+@@ -551,10 +555,11 @@
+ 
+ PipelineHandlerIPU6::~PipelineHandlerIPU6()
+ {
+-	if (halInitialized_) {
+-		icamera::camera_hal_deinit();
+-		halInitialized_ = false;
+-	}
++	/*
++	 * Intentionally do not call icamera::camera_hal_deinit() here.
++	 * libcamhal's per-process SHM segment does not survive a
++	 * deinit/reinit cycle; let the OS reclaim it at process exit.
++	 */
+ }
+ 
+ std::unique_ptr<CameraConfiguration>
+@@ -649,13 +654,42 @@
+ 	 * we return false so the 'simple' pipeline handler can fall back
+ 	 * to software ISP.
+ 	 */
+-	if (!halInitialized_) {
+-		int ret = icamera::camera_hal_init();
+-		if (ret < 0) {
+-			LOG(IPU6, Debug) << "Failed to init camera HAL, falling back";
+-			return false;
++	static std::once_flag halInitFlag;
++	static std::atomic<int> halInitResult{ 0 };
++	std::call_once(halInitFlag, [] {
++		/*
++		 * libcamhal uses a fixed SysV shm key (0x43414d == "CAM").
++		 * If another libcamhal-using process (notably GDM's greeter
++		 * wireplumber, running under a DynamicUser= transient uid)
++		 * still holds that segment, our shmget inside camera_hal_init
++		 * will fail with EACCES and libcamhal will silently end up
++		 * in a broken state. Wait up to 5 seconds for the segment
++		 * to be released before letting libcamhal init.
++		 */
++		using namespace std::chrono;
++		auto deadline = steady_clock::now() + seconds(5);
++		for (;;) {
++			int id = shmget(0x43414d, 8192, 0640);
++			int e = errno;
++			if (id >= 0 || e == ENOENT)
++				break;
++			if (e != EACCES) {
++				LOG(IPU6, Warning) << "shmget probe returned errno=" << e
++						   << ", proceeding";
++				break;
++			}
++			if (steady_clock::now() >= deadline) {
++				LOG(IPU6, Warning) << "shm key 0x43414d still held by "
++						      "another uid after 5s, proceeding";
++				break;
++			}
++			std::this_thread::sleep_for(milliseconds(100));
+ 		}
+-		halInitialized_ = true;
++		halInitResult = icamera::camera_hal_init();
++	});
++	if (halInitResult < 0) {
++		LOG(IPU6, Debug) << "Failed to init camera HAL, falling back";
++		return false;
+ 	}
+ 
+ 	int numCameras = icamera::get_number_of_cameras();

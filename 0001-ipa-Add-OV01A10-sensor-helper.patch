@@ -1,0 +1,34 @@
+Description: Add OV01A10 camera sensor helper
+ The OV01A10 is a 1.3MP OmniVision sensor commonly found in Intel IPU6
+ laptops. Standard OmniVision linear gain model: register range
+ 256-65535, real gain = register / 256 (1x..256x).
+Author: kervel (re-targeted for kervel/libcamera ipu6-pipeline-handler)
+Origin: https://github.com/kervel/libcamera-ipu6
+Last-Update: 2026-04-28
+
+--- a/src/ipa/libipa/camera_sensor_helper.cpp
++++ b/src/ipa/libipa/camera_sensor_helper.cpp
+@@ -813,6 +813,23 @@
+ };
+ REGISTER_CAMERA_SENSOR_HELPER("vd56g3", CameraSensorHelperVd56g3)
+ 
++/*
++ * OmniVision OV01A10
++ *
++ * 1.3MP sensor (1280x800), 10-bit Bayer output.
++ * Standard OmniVision linear gain model:
++ * register range 256-65535, real gain = register / 256 (1x..256x).
++ */
++class CameraSensorHelperOv01a10 : public CameraSensorHelper
++{
++public:
++	CameraSensorHelperOv01a10()
++	{
++		gain_ = AnalogueGainLinear{ 1, 0, 0, 256 };
++	}
++};
++REGISTER_CAMERA_SENSOR_HELPER("ov01a10", CameraSensorHelperOv01a10)
++
+ #endif /* __DOXYGEN__ */
+ 
+ } /* namespace ipa */
