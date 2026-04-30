@@ -1,11 +1,23 @@
 post_install() {
-    echo ":: Launch Control-OFC from your application menu, or run:"
-    echo "   control-ofc-gui"
-    echo ""
-    echo ":: Requires the daemon: sudo systemctl enable --now control-ofc-daemon"
-    echo "   Demo mode (no daemon): control-ofc-gui --demo"
-    echo ""
-    echo ":: If motherboard sensors are missing, load modules and restart the daemon:"
-    echo "   sudo systemctl start systemd-modules-load"
-    echo "   sudo systemctl restart control-ofc-daemon"
+    cat <<'EOF'
+:: control-ofc-gui installed.
+
+   Launch:        control-ofc-gui  (or via your application menu)
+   Demo mode:     control-ofc-gui --demo
+
+   The GUI requires control-ofc-daemon to be running. If it isn't yet:
+     sudo systemctl enable --now control-ofc-daemon
+
+   Documentation:
+     man control-ofc-gui
+     /usr/share/doc/control-ofc-gui/manual/getting-started.md
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+:: control-ofc-gui upgraded. Restart any running instance to pick up the new
+   version. Release notes:
+     /usr/share/doc/control-ofc-gui/CHANGELOG.md
+EOF
 }

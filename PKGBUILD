@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=1.9.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
@@ -8,14 +8,19 @@ url="https://github.com/Plan-B-Development/control-ofc-gui"
 license=('MIT')
 depends=('control-ofc-daemon>=1.5.0' 'python' 'pyside6' 'python-httpx'
          'python-pyqtgraph' 'python-numpy' 'python-colorama')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('84dbc8f04e8876a15cc3de87433006e27e39fe6d366818deada8d785b8c592b8')
+# Placeholder — recomputed post-tag-push. Fix with a follow-up
+# "fix: update PKGBUILD checksum for v1.9.2" commit.
+sha256sums=('f6ff894dfc6ea99701059bd5df3df7abb1cb2adf7a4060666f7801bec5e3e309')
 
 build() {
     cd "$pkgname-$pkgver"
     python -m build --wheel --no-isolation
+
+    # Render man page from scdoc source.
+    scdoc < man/control-ofc-gui.1.scd > control-ofc-gui.1
 }
 
 package() {
@@ -32,6 +37,28 @@ package() {
 
     # Branding assets — runtime-loaded by the in-app About dialog and sidebar
     install -Dm644 assets/branding/app_icon/app_icon.svg "$pkgdir/usr/share/control-ofc-gui/assets/branding/app_icon/app_icon.svg"
+
+    # Man page (rendered in build()).
+    install -Dm644 control-ofc-gui.1 \
+        "$pkgdir/usr/share/man/man1/control-ofc-gui.1"
+
+    # Shell completions — installed unconditionally; missing shells ignore them.
+    install -Dm644 completions/control-ofc-gui.bash \
+        "$pkgdir/usr/share/bash-completion/completions/control-ofc-gui"
+    install -Dm644 completions/_control-ofc-gui \
+        "$pkgdir/usr/share/zsh/site-functions/_control-ofc-gui"
+    install -Dm644 completions/control-ofc-gui.fish \
+        "$pkgdir/usr/share/fish/vendor_completions.d/control-ofc-gui.fish"
+
+    # User-facing documentation — README, CHANGELOG, and the full user manual.
+    # The post_install message points users at /usr/share/doc/control-ofc-gui/,
+    # so the directory needs to actually contain something useful.
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+    for guide in manual/*.md; do
+        install -Dm644 "$guide" \
+            "$pkgdir/usr/share/doc/$pkgname/manual/$(basename "$guide")"
+    done
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
