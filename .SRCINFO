@@ -1,6 +1,6 @@
 pkgbase = stax
 	pkgdesc = The fastest stacked-branch workflow for Git
-	pkgver = 0.65.0
+	pkgver = 0.65.1
 	pkgrel = 1
 	url = https://github.com/cesarferreira/stax
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = stax
 	provides = stax
 	provides = st
 	conflicts = stax
-	source = stax-0.65.0.crate::https://crates.io/api/v1/crates/stax/0.65.0/download
-	sha256sums = d26f0f95db44c2b21d8b27bb0a56974bd7df9ada5fe9fe512060f0fc80b5daad
+	source = stax-0.65.1.crate::https://crates.io/api/v1/crates/stax/0.65.1/download
+	sha256sums = f0331823fa6b8199ad1e0ca5145d5862a960b3d83817876ac25a14034253df42
 
 pkgname = stax
