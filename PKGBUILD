@@ -6,8 +6,8 @@
 
 pkgname='dasel'
 pkgdesc='Select, put and delete data from JSON, TOML, XML, YAML, HCL, and INI files with a single command-line tool'
-pkgver=3.8.0
-pkgrel=2
+pkgver=3.8.1
+pkgrel=1
 url='https://github.com/TomWright/dasel'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -48,14 +48,6 @@ build() {
     -trimpath
   )
   go build "${_opts[@]}" -o dasel ./cmd/dasel/main.go
-
-  # Generate man page
-  ./dasel man > dasel.1
-
-  # Generate Shell completions
-  for _shell in bash fish zsh; do
-    ./dasel completion "$_shell" > "_completions.$_shell"
-  done
 }
 
 check() {
@@ -70,20 +62,16 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin" dasel
-  install -Dm0644 -t "$pkgdir/usr/share/man/man1" dasel.1
-  install -Dm0644 _completions.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm0644 _completions.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-  install -Dm0644 _completions.zsh  "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGELOG,CODE_OF_CONDUCT,CONTRIBUTING,README}.md
 }
 
 sha256sums=(
-  '4d09e057c379d9d629e076752bf9ab9f7fab7a48712da4b73a655ea5157246b2'
+  '92711ddecfad9a1e97a41011d12ea88e9bb3c37827e5d5a718c3a8e8eaa88eaa'
 )
 b2sums=(
-  'e70a524d4d56fceed5829c7bd13d669c8a3459f5cca8a39902e59496d3ab71c916046df1ac817e6aea7ceb7488ee116473a440899a640462dc6d34377feb6a9e'
+  'b519b4aaff19e0856a0273579f5a81af7e67161b55d83234a08de73275c9239b3459c872b108bd34994b654cb78774a52b06259af44d166600665e065e047339'
 )
 
 # eof
