@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=compSPOT
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a66384a7a2827f60e4dd871c4c5449f0')
-b2sums=('3bbe0317d678cbd81c26d1d3f2fa6a11e9e6a0edfdb98a941f9d5ce3ab8e75d1b55f65e713b3e251e0c931d08e54872f8cb83a901cffa01757393ec1a36364be')
+md5sums=('a898f86b015bfcd7754a45c6784f8b92')
+b2sums=('ed4ecf08fb6ab945ed7ba875d2c465cf76149ec6c561cb80d79cf47895e2d000e0e089fa9ed14a93f39547d4596b2957ce5c83f9fec3dee917b279e8767e5f97')
 
 build() {
   mkdir build
