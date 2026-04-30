@@ -1,6 +1,6 @@
 # Maintainer: nikren <superdug000@gmail.com>
 pkgname=anilinux-electron
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Anime viewer for Linux with Shikimori OAuth integration"
 arch=('x86_64')
