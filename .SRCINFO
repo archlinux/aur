@@ -1,0 +1,12 @@
+pkgbase = emacs-compat
+	pkgdesc = Emacs Lisp compatibility library
+	pkgver = 30.1.0.1
+	pkgrel = 1
+	url = https://github.com/emacs-compat/compat
+	arch = any
+	license = GPL-3.0-or-later
+	depends = emacs
+	source = emacs-compat-30.1.0.1.tar::https://elpa.gnu.org/packages/compat-30.1.0.1.tar
+	sha256sums = 16fef8c2e47398ed1575898a9639d5659986a67ee11477726e878298c08945e6
+
+pkgname = emacs-compat
