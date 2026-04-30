@@ -1,6 +1,6 @@
 pkgbase = r-compran
 	pkgdesc = Complexome Profiling Analysis package
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ComPrAn
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-compran
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ComPrAn_1.18.0.tar.gz
-	sha256sums = 770ca4d6ded9a376449f4ffc81754edf24744a95320bd65baeb9724a1bdfa8c6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ComPrAn_1.20.0.tar.gz
+	sha256sums = 7d322258ecec0a05f1ccb29cf1a0a4348ecfcc2760f92e58634c6abc197d2fd9
 
 pkgname = r-compran
