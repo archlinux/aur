@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.0.85
+pkgver=1.0.86
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -18,15 +18,27 @@ depends=(
     'wireplumber'
     'libusb'
     'libpulse'
-)
-optdepends=(
-    'noise-suppression-for-voice: ClearCast AI Noise Cancellation (rnnoise)'
-    'swh-plugins: Noise Gate and Compressor for mic processing'
+    # Used by asm-setup to download HRIR (~/.local/share/pipewire/
+    # hrir_hesuvi/EAC_Default.wav) on first run — Spatial Audio is
+    # silent without it. asm-setup falls back to wget but a default
+    # Arch base install ships curl, not wget.
+    'curl'
+    # LADSPA Steve Harris pack — provides plate_1423 used by the HeSuVi
+    # 7.1 surround filter-chain (issue #23). Promoted from optdepends
+    # to depends per the "no soft deps" mandate.
+    'swh-plugins'
+    # rnnoise LADSPA plugin used by the ClearCast / mic noise-suppression
+    # toggle in the Settings page. Lives in the AUR — pacman will refuse
+    # to satisfy this from the official repos, so users installing the
+    # AUR PKGBUILD via paru/yay will be prompted to build it as part of
+    # the same transaction. This is intentional — the alternative
+    # (optdepends) means the toggle silently does nothing.
+    'noise-suppression-for-voice'
 )
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5cce221f534352d2010c42785b6279646100a257d3113ab071e5d38aa4a040cc')
+sha256sums=('1374f8c14cd3809eb09efbb79bab698982d1826ed88ba252275fa434e94cf5d5')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"

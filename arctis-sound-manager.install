@@ -56,13 +56,61 @@ post_upgrade() {
 post_remove() {
     udevadm control --reload-rules 2>/dev/null || true
 
-    echo "==> To clean up user configs:"
-    echo ""
-    echo "    systemctl --user disable --now arctis-manager.service"
-    echo "    systemctl --user disable --now arctis-video-router.service"
-    echo "    rm -rf ~/.config/arctis_manager"
-    echo "    rm -f ~/.config/pipewire/pipewire.conf.d/10-arctis-virtual-sinks.conf"
-    echo "    rm -f ~/.config/pipewire/filter-chain.conf.d/sink-virtual-surround-7.1-hesuvi.conf"
-    echo "    rm -rf ~/.config/pipewire/filter-chain.conf.d/sonar-*.conf"
-    echo ""
+    # Clean up the user-level PipeWire virtual sinks and filter-chain configs
+    # that asm-setup deployed to ~/.config/pipewire/. Without this step the
+    # "ghost" Arctis virtual sinks (Game/Chat/Media) keep being loaded by
+    # PipeWire on every login because the .conf files in pipewire.conf.d/
+    # outlive the package — this is what issue #24 reported.
+    #
+    # Audio profiles in ~/.config/arctis_manager/profiles/ are PRESERVED
+    # (matches the `scripts/uninstall.sh --purge` contract) so a future
+    # reinstall picks them back up. To wipe them too, run the standalone
+    # uninstaller:
+    #   curl -fsSL https://raw.githubusercontent.com/loteran/Arctis-Sound-Manager/main/scripts/uninstall.sh | bash -s -- --all --purge
+
+    REAL_USER="${SUDO_USER:-}"
+    if [ -z "$REAL_USER" ]; then
+        echo "==> No SUDO_USER detected — skipping user-level cleanup."
+        echo "    Run as the regular user to finish removing ghost virtual sinks:"
+        echo "    curl -fsSL https://raw.githubusercontent.com/loteran/Arctis-Sound-Manager/main/scripts/uninstall.sh | bash -s -- --purge --yes"
+        return 0
+    fi
+
+    REAL_UID=$(id -u "$REAL_USER")
+    XDG_RUNTIME_DIR="/run/user/$REAL_UID"
+    DBUS_SOCKET="$XDG_RUNTIME_DIR/bus"
+
+    echo "==> Cleaning up user-level configs for ${REAL_USER} (audio profiles preserved)..."
+
+    # Run as the real user; redirect to /dev/null so makepkg's noisy output
+    # doesn't drown the install summary.
+    su -l "$REAL_USER" -c "
+        XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS=unix:path=$DBUS_SOCKET
+        export XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS
+
+        # Stop services (best-effort — units may already be gone with the package)
+        for unit in arctis-manager.service arctis-video-router.service arctis-gui.service filter-chain.service; do
+            systemctl --user disable --now \"\$unit\" >/dev/null 2>&1 || true
+        done
+
+        # Remove the PipeWire configs that create ghost virtual sinks
+        rm -f \"\$HOME/.config/pipewire/pipewire.conf.d/10-arctis-virtual-sinks.conf\"
+        rm -f \"\$HOME/.config/pipewire/filter-chain.conf.d/sink-virtual-surround-7.1-hesuvi.conf\"
+        rm -f \"\$HOME/.config/pipewire/filter-chain.conf.d\"/sonar-*.conf
+
+        # Stale user-level systemd unit copies left over from older installs
+        rm -f \"\$HOME/.config/systemd/user/arctis-manager.service\"
+        rm -f \"\$HOME/.config/systemd/user/arctis-video-router.service\"
+        rm -f \"\$HOME/.config/systemd/user/arctis-gui.service\"
+
+        # Reload PipeWire so the ghost sinks disappear immediately,
+        # not on next login
+        if [ -S \"\$DBUS_SOCKET\" ]; then
+            systemctl --user daemon-reload >/dev/null 2>&1 || true
+            systemctl --user restart pipewire pipewire-pulse >/dev/null 2>&1 || true
+        fi
+    " 2>/dev/null || echo "  [!] cleanup as ${REAL_USER} returned non-zero (probably already gone) — safe to ignore."
+
+    echo "  [ok] ghost Arctis virtual sinks removed."
+    echo "  Profiles kept in ~/.config/arctis_manager/profiles/ — delete manually if you want a clean slate."
 }
