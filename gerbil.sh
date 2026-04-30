@@ -9,6 +9,7 @@ export ELECTRON_FORCE_IS_PACKAGED=true
 export ELECTRON_DISABLE_SECURITY_WARNINGS=true
 export NODE_ENV=production
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
 
 # 1. Display System Optimization (X11 & Wayland)
 # Use 'auto' to allow modern Electron (v20+) to detect the best platform
@@ -52,18 +53,21 @@ declare -a flags
 for _FLAGS_FILE in "${_FLAG_SOURCES[@]}"; do
     if [[ -f "${_FLAGS_FILE}" ]]; then
         echo "Loading flags from ${_FLAGS_FILE}"
-        while read -r line; do
-            [[ "${line}" =~ ^[[:space:]]*#.* ]] || [[ -z "${line}" ]] || flags+=("${line}")
+        while read -r line || [[ -n "$line" ]]; do
+            [[ "${line}" =~ ^[[:space:]]*#.* ]] || [[ -z "${line}" ]] || {
+                read -ra line_flags <<< "$line"
+                flags+=("${line_flags[@]}")
+            }
         done < "${_FLAGS_FILE}"
     fi
 done
 
 # 4. Sandbox and Execution Permissions
 # Disable sandbox if running as root without ELECTRON_RUN_AS_NODE
-_SANDBOX_ARG=""
+_SANDBOX_ARG=()
 if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
-    _SANDBOX_ARG="--no-sandbox"
+    _SANDBOX_ARG=("--no-sandbox")
 fi
 
 cd "${_APPDIR}"
-exec electron@electronversion@ "${flags[@]}" "${_SANDBOX_ARG}" "${_RUNNAME}" "$@"
+exec electron@electronversion@ "${flags[@]}" "${_SANDBOX_ARG[@]}" "${_RUNNAME}" "$@"
