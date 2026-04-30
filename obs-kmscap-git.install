@@ -1,0 +1,17 @@
+post_install() {
+cat << EOF
+Because the Linux kernel isolates GPU memory framebuffers by their allocator
+processes (typically your Wayland/X11 display server), regular applications are
+blocked from intercepting the handles needed to read them. So this package grants
+the helper binary the system privileges required to read these handles with:
+
+    setcap cap_sys_admin+ep /usr/bin/obs-kmscap-helper
+
+Refer to the obs-kmscap documentation on GitHub for more information.
+EOF
+    setcap cap_sys_admin+ep /usr/bin/obs-kmscap-helper
+}
+
+post_upgrade() {
+    setcap cap_sys_admin+ep /usr/bin/obs-kmscap-helper
+}

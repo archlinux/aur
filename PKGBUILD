@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="A zero-copy screen capture plugin for OBS Studio on Linux"
 url=https://github.com/xnqs/obs-kmscap
 license=("GPL-2.0-or-later")
+install=obs-kmscap-git.install
 source=("git+https://github.com/xnqs/obs-kmscap")
 cksums=("SKIP")
 arch=("x86_64")

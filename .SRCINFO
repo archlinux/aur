@@ -3,6 +3,7 @@ pkgbase = obs-kmscap-git
 	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/xnqs/obs-kmscap
+	install = obs-kmscap-git.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cmake
