@@ -2,8 +2,8 @@
 
 _pkgname='jreleaser'
 pkgname=${_pkgname}-bin
-pkgver='1.23.0'
-pkgrel='3'
+pkgver='1.24.0'
+pkgrel='1'
 pkgdesc='An automation tool for Java and non-Java projects for creating releases and publishing artifacts.'
 url='https://github.com/jreleaser/jreleaser'
 license=('Apache-2.0')
@@ -25,8 +25,8 @@ provides=(${_pkgname})
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-native-${pkgver}-linux-x86_64.zip")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-native-${pkgver}-linux-aarch64.zip")
-sha256sums_x86_64=('0cecc7d88a1645c6b3350e755f618fc8a2a507187012a2f265f6c0880a178ef5')
-sha256sums_aarch64=('e597095746e53a2e69681ee8c1e8e8b8548ced186a3241f9ef2707f8cde033e5')
+sha256sums_x86_64=('fad440b3a7f745d1a3295078fa37648ca92db093d9927b5fb31619e6c5e8387d')
+sha256sums_aarch64=('2ce61a77c2903f154dde827acc75c9b4292805d0ce73c372420133628922a8d6')
 
 # validpgpkeys=('F1D5F6A91C86B0702CD0734BCCC55C5167419ADB') # Andres Almiray <aalmiray@gmail.com>
 
