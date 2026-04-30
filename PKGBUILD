@@ -1,3 +1,4 @@
+# Maintainer: Undercat037 <deltagamesdev037@gmail.com>
 pkgname=aura-emerge
 pkgver=1.8.0
 pkgrel=1
