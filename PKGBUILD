@@ -182,7 +182,7 @@ _minor=2
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
-pkgrel=1
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='CachyOS Linux kernel with cjktty patches'
 _kernver="$pkgver-$pkgrel"
@@ -260,7 +260,7 @@ if [ "$_build_nvidia_open" = "yes" ]; then
              "${_patchsource}/misc/nvidia/0003-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
              "${_patchsource}/misc/nvidia/0004-fix-dsc-use-bits_per_component-for-flatnessDetThresh.patch"
              "${_patchsource}/misc/nvidia/0005-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
-    b2sums+=('b58125ff5d71fb45fc30b8128d492c5a91c4df293157a42848f7ba38e91eb284d491fdc6801e514c243330b19b7ece116733d3caa2c1129725c420d4267f3df7'
+    b2sums+=('45361ac9830c16c748688545501124647859c247c5cf7dc6ab4508fe614425715c7299cf88728a3da4111c7fbf6f9eab8a1c77b039ebd868dc7a6367b5e97ff8'
              'SKIP'
              'SKIP'
              'SKIP'
