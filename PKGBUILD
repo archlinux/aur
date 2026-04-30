@@ -97,7 +97,6 @@ makedepends=(
   alsa-lib
   clang
   cmake
-  ffmpeg
   fontforge
   giflib
   git
@@ -140,7 +139,6 @@ makedepends=(
 optdepends=(
   alsa-lib
   alsa-plugins
-  ffmpeg
   gnutls
   gtk3
   libgphoto2
