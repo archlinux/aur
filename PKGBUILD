@@ -1,5 +1,5 @@
 pkgname=fmatrix-git
-pkgver=1.2.1
+pkgver=1.5.0  # Ставим 1.5.0, чтобы перепрыгнуть старые ошибки
 pkgrel=1
 pkgdesc="Fast smooth Matrix rain written in C++"
 arch=('x86_64')
@@ -14,12 +14,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "fmatrix_project"
-  printf "1.2.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Синхронизируем базу версии
+  printf "1.5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "fmatrix_project"
-  make
+  # Добавляем -lncursesw для корректной поддержки Unicode (японских символов)
+  g++ -O3 fmatrix.cpp -o fmatrix -lncursesw
 }
 
 package() {
