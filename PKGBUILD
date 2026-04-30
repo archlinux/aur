@@ -1,31 +1,34 @@
 # Maintainer: Jordan Sluiter <jordan.sluiter@icloud.com>
 pkgname=shrimp-bin
-pkgver=0.2.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Self-hosted AI productivity assistant — pre-built AppImage"
 arch=('x86_64')
 url="https://github.com/TheSingularis/shrimp"
 license=('MIT')
-depends=()
+depends=('gcc-libs' 'glibc' 'gtk3' 'nss')
 provides=('shrimp')
 conflicts=('shrimp')
+options=('!strip')
 source=("SHRIMP-${pkgver}.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/SHRIMP-${pkgver}.AppImage")
-sha256sums=('e50c430270d2a9565ed4f50ba922f8b18ef1e7a078f4f30076807a433431a7cf')
+sha256sums=('SKIP')
+
+prepare() {
+    chmod +x "SHRIMP-${pkgver}.AppImage"
+    ./"SHRIMP-${pkgver}.AppImage" --appimage-extract
+}
 
 package() {
-    install -Dm755 "SHRIMP-${pkgver}.AppImage" "${pkgdir}/usr/lib/shrimp-bin/shrimp.AppImage"
+    install -dm755 "${pkgdir}/usr/lib/shrimp"
+    cp -a squashfs-root/. "${pkgdir}/usr/lib/shrimp/"
 
-    # Wrapper script so `shrimp` works from PATH
-    install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/shrimp" <<'EOF'
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/shrimp" <<'EOF'
 #!/usr/bin/env sh
-exec /usr/lib/shrimp-bin/shrimp.AppImage --appimage-extract-and-run "$@"
+export APPDIR=/usr/lib/shrimp
+exec /usr/lib/shrimp/AppRun "$@"
 EOF
-    chmod 755 "${pkgdir}/usr/bin/shrimp"
 
-    # Desktop entry
-    install -dm755 "${pkgdir}/usr/share/applications"
-    cat > "${pkgdir}/usr/share/applications/shrimp.desktop" <<'EOF'
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/shrimp.desktop" <<'EOF'
 [Desktop Entry]
 Name=SHRIMP
 Comment=Self-hosted AI productivity assistant
