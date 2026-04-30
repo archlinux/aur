@@ -1,6 +1,6 @@
 pkgbase = docker-model
 	pkgdesc = Docker CLI plugin for running AI models (model-cli; upstream repo version 1.1.17, CLI version differs)
-	pkgver = 1.1.37
+	pkgver = 1.1.38
 	pkgrel = 1
 	url = https://github.com/docker/model-runner
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = docker-model
 	depends = docker
 	provides = docker-model
 	conflicts = docker-model-bin
-	source = git+https://github.com/docker/model-runner.git#tag=v1.1.37
+	source = git+https://github.com/docker/model-runner.git#tag=v1.1.38
 	sha256sums = SKIP
 
 pkgname = docker-model
