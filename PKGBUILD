@@ -11,20 +11,14 @@ options=(!debug)
 
 makedepends=(
   'cargo'
-  'git'
   'sqlite'
 )
 depends=('gcc-libs' 'sqlite')
-source=("git+$url.git#tag=v0.1.1")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  sed -n 's/^version = "\([^"]*\)"/\1/p' Cargo.toml | head -1
-}
-
 prepare() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # Use system SQLite instead of bundled
   sed -i 's/features = \["bundled"\]/features = []/' Cargo.toml
@@ -34,7 +28,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   export SQLITE3_LIB_DIR="/usr/lib"
   export SQLITE3_INCLUDE_DIR="/usr/include"
   export RUSTFLAGS+=" --remap-path-prefix=$srcdir=/ "
@@ -42,15 +36,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   export SQLITE3_LIB_DIR="/usr/lib"
   export SQLITE3_INCLUDE_DIR="/usr/include"
   cargo test --release --locked
 }
 
 package() {
-  cd "$pkgname"
-
+  cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-
 }
