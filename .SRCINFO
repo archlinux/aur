@@ -1,0 +1,20 @@
+pkgbase = guiless-search
+	pkgdesc = Multi-backend headless web search proxy (Google, Bing, DuckDuckGo)
+	pkgver = r1.20260430.cb74c7e
+	pkgrel = 1
+	url = https://github.com/wszqkzqk/guiless-search
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = pyside6
+	depends = qt6-webengine
+	backup = etc/guiless-search.conf
+	source = guiless-search::git+https://github.com/wszqkzqk/guiless-search.git
+	sha256sums = SKIP
+
+pkgname = guiless-search
