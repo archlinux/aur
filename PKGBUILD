@@ -1,20 +1,19 @@
 # Maintainer: Burgess Leo <liuxiaopeng731@gmail.com>
 pkgname=leolock
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="LeoLock - 安全的文件加密解密工具"
 arch=('x86_64')
 url="https://github.com/lxp731/leolock"
 license=('MIT')
 depends=('glibc')
 makedepends=('binutils' 'tar' 'zstd')
-source=(leolock_${pkgver}-${pkgrel}_amd64.deb::https://github.com/lxp731/leolock/releases/download/v${pkgver}-${pkgrel}/leolock_${pkgver}-${pkgrel}_amd64.deb)
-sha256sums=('961d0124c4831944d6107ec1d3bf92b8afc89e7a798097ee0e40bb66d8fd49f0')
-# https://github.com/lxp731/leolock/releases/download/v1.0.3-2/leolock_1.0.3-2_amd64.deb
+source=(leolock_${pkgver}_amd64.deb::https://github.com/lxp731/leolock/releases/download/v${pkgver}/leolock_${pkgver}_amd64.deb)
+sha256sums=('960c09e9f4d3caea6fb24ca3dd69ed9290b6fc982810f0d39b6b24c7031ab3cd')
 prepare() {
   cd "$srcdir"
   # 解压 deb 包
-  ar x leolock_${pkgver}-${pkgrel}_amd64.deb
+  ar x leolock_${pkgver}_amd64.deb
   
   # 查看 deb 包中包含哪些文件
   local data_tar=$(ls data.tar.* | head -n1)

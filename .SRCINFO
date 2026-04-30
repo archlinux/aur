@@ -1,7 +1,7 @@
 pkgbase = leolock
 	pkgdesc = LeoLock - 安全的文件加密解密工具
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/lxp731/leolock
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = leolock
 	makedepends = tar
 	makedepends = zstd
 	depends = glibc
-	source = leolock_1.0.3-2_amd64.deb::https://github.com/lxp731/leolock/releases/download/v1.0.3-2/leolock_1.0.3-2_amd64.deb
-	sha256sums = 961d0124c4831944d6107ec1d3bf92b8afc89e7a798097ee0e40bb66d8fd49f0
+	source = leolock_1.1.0_amd64.deb::https://github.com/lxp731/leolock/releases/download/v1.1.0/leolock_1.1.0_amd64.deb
+	sha256sums = 960c09e9f4d3caea6fb24ca3dd69ed9290b6fc982810f0d39b6b24c7031ab3cd
 
 pkgname = leolock
