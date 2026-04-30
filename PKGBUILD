@@ -1,14 +1,15 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
 url="https://github.com/Plan-B-Development/control-ofc-daemon"
 license=('MIT')
-depends=('glibc' 'systemd-libs')
+depends=('glibc' 'systemd-libs' 'libgcc')
 optdepends=('lm_sensors: sensors-detect for hardware not covered by built-in module list')
-makedepends=('rust' 'cargo' 'scdoc')
+# `rust` provides `cargo`; do not list both.
+makedepends=('rust' 'scdoc')
 backup=('etc/control-ofc/daemon.toml'
         'etc/control-ofc/profiles/quiet.json'
         'etc/modules-load.d/control-ofc.conf')
@@ -16,8 +17,8 @@ install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # Placeholder — recomputed post-tag-push. Fix with a follow-up
-# "fix: update PKGBUILD checksum for v1.5.5" commit.
-sha256sums=('bac4750ee134280f2720e74cdfc13192226db8e1668d1062a2527ac035227a84')
+# "fix: update PKGBUILD checksum for v1.5.6" commit.
+sha256sums=('076f2c8d3e0a0815e3e89393cf16889fe0724ee0afc3aa83788635ca55bac365')
 
 prepare() {
     cd "$pkgname-$pkgver"
