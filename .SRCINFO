@@ -1,0 +1,17 @@
+pkgbase = zephyr-bin
+	pkgdesc = A fast, modern mod manager for all your games
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = https://github.com/Prismo-Studio/Zephyr
+	arch = x86_64
+	license = GPL3
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = zephyr=1.2.11
+	conflicts = zephyr
+	options = !strip
+	options = !debug
+	source = zephyr-1.2.11.deb::https://github.com/Prismo-Studio/Zephyr/releases/download/v1.2.11/Zephyr_1.2.11_amd64.deb
+	sha256sums = 1d0e294d0ec9a74c0010be8c526b776c1265b687b33f72911ce97a44e9adfa2c
+
+pkgname = zephyr-bin
