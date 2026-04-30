@@ -1,7 +1,7 @@
 # Maintainer: Dan <daniel@m8t.io>
 pkgname=btd700ctl-git
 pkgver=0.1.r7.0fdfe7c
-pkgrel=1
+pkgrel=4
 pkgdesc='Unofficial Linux driver for the Sennheiser BTD 700 USB Bluetooth dongle'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sobalap/btd700ctl'
