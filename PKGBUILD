@@ -1,4 +1,5 @@
-# Maintainer: Rubin Simons <me@rubin55.org>
+# Maintainer: Rory Healy <roryhealy@proton.me>
+# Contributor: Rubin Simons <me@rubin55.org>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: David Wu <xdavidwuph@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
@@ -7,21 +8,18 @@
 # Contributor: Schrodinger Zhu <i at zhuyi dot fan>
 # Contributor: Davide Depau <davide at depau dot eu>
 
-# jdk-21.0.7+6_openj9-0.51.0
-# jdk-21.0.8+9_openj9-0.53.0
 pkgname=jdk21-openj9-bin
 _jdkver=21
 _jdkminor=0
-_jdkpatch=10
-_jdksubpatch=1
-_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
-_jdkfullerver=${_jdkver}.${_jdkminor}.${_jdkpatch}.${_jdksubpatch}
-_openj9ver=0.57.0
-_buildvershort=7
-_buildver=${_buildvershort}.${_jdksubpatch}_openj9-${_openj9ver}
-pkgver=${_jdkfullerver}b${_buildver//-/_}
+_jdkpatch=11
+_jdkmainver=${_jdkver}.${_jdkminor}.${_jdkpatch}
+_jdksubpatch=0
+_jdkfullver=${_jdkmainver}.${_jdksubpatch}
+_openj9ver=0.59.0
+_patchver=10
 pkgrel=1
 pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
+pkgver="${_jdkfullver}b${_patchver}_openj9_${_openj9ver}"
 arch=('x86_64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
 license=('custom')
@@ -36,16 +34,16 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullerver}.tar.gz")
+source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}.tar.gz")
 
-sha256sums=('df501befcb3f6b7f47c3557d9887197d78f013beb57b0d56494176b54ad80c19')
+sha256sums=('eca28e31d7be807c7f6afc974f264a2ec2237e7a0119de81e880b29a34d5a912')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
 package() {
   # Install
   install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_jdkfullver}+${_buildvershort}
+  cd jdk-${_jdkmainver}+${_patchver}
   cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
