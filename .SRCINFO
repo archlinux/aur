@@ -1,8 +1,8 @@
 pkgbase = python-tree-sitter-java
 	pkgdesc = Java grammar for tree-sitter
 	pkgver = 0.23.5
-	pkgrel = 6
-	url = https://pypi.org/project/tree-sitter-java/
+	pkgrel = 7
+	url = https://github.com/tree-sitter/tree-sitter-java
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -11,13 +11,7 @@ pkgbase = python-tree-sitter-java
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-java-0.23.5.tar.gz::https://files.pythonhosted.org/packages/fa/dc/eb9c8f96304e5d8ae1663126d89967a622a80937ad2909903569ccb7ec8f/tree_sitter_java-0.23.5.tar.gz
-	source = tree-sitter-parser.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/parser.h
-	source = tree-sitter-alloc.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/alloc.h
-	source = tree-sitter-array.h::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.22.6/lib/src/array.h
-	sha256sums = f5cd57b8f1270a7f0438878750d02ccc79421d45cca65ff284f1527e9ef02e38
-	sha256sums = a3eb18ef034b3f4255b965a26caa276f9cfe13a79573b402f1a12dc5018052aa
-	sha256sums = c69f97ef0949199ba66157d523bac994c3aa7cab3de8d0e25ef29d74aa502e94
-	sha256sums = 4ff743903dc46f5db6aa54f31c6b4d160a8a9779e5b2ab1ee59ae7ebcd850ea1
+	source = python-tree-sitter-java-0.23.5.tar.gz::https://github.com/tree-sitter/tree-sitter-java/archive/refs/tags/v0.23.5.tar.gz
+	sha256sums = cb199e0faae4b2c08425f88cbb51c1a9319612e7b96315a174a624db9bf3d9f0
 
 pkgname = python-tree-sitter-java
