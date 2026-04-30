@@ -223,11 +223,16 @@ source=(
     "config"
     "${_cjktty_source}/v7.x/cjktty-7.0.patch"
     "${_cjktty_source}/cjktty-add-cjk32x32-font-data.patch")
+b2sums=('3fa5512aad7edeaf30007b67d2d9dad3f350177cfe5a282da20cfde0862e6aeb9c25d6bb3eeee0957545001be5dc1de596bbf17cab339da4ae7b6e921832c1a6'
+        '1280f4cb2f94135ec3b6576bc0bc394ef4989250ec6041a8499770bc68b5e157fcdb45a7d8934413273d6eb1ad6de6c9da65e0cff2a1ee84a0c9cd1d278831d4'
+        '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
+        '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
 
 # LLVM makedepends
 if _is_lto_kernel; then
     makedepends+=(clang llvm lld)
     source+=("${_patchsource}/misc/dkms-clang.patch")
+    b2sums+=('c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
     BUILD_FLAGS=(
         CC=clang
         LD=ld.lld
@@ -245,6 +250,7 @@ fi
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
     source+=("git+https://github.com/cachyos/zfs.git#commit=0829cf892b5d7b3a0e8aa76cc7aca02b84f62557")
+    b2sums+=('SKIP')
 fi
 
 
@@ -254,12 +260,18 @@ if [ "$_build_nvidia_open" = "yes" ]; then
              "${_patchsource}/misc/nvidia/0003-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
              "${_patchsource}/misc/nvidia/0004-fix-dsc-use-bits_per_component-for-flatnessDetThresh.patch"
              "${_patchsource}/misc/nvidia/0005-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
+    b2sums+=('b58125ff5d71fb45fc30b8128d492c5a91c4df293157a42848f7ba38e91eb284d491fdc6801e514c243330b19b7ece116733d3caa2c1129725c420d4267f3df7'
+             'SKIP'
+             'SKIP'
+             'SKIP'
+             'SKIP')
 fi
 
 # Use generated AutoFDO Profile
 if [ "$_autofdo" = "yes" ] && [ -n "$_autofdo_profile_name" ]; then
     if [ -e "$_autofdo_profile_name" ]; then
         source+=("$_autofdo_profile_name")
+        b2sums+=('SKIP')
     else
         _die "Failed to find file ${_autofdo_profile_name}"
     fi
@@ -269,22 +281,29 @@ fi
 if [ "$_propeller" = "yes" ] && [ "$_propeller_profiles" = "yes" ]; then
     source+=(propeller_cc_profile.txt
              propeller_ld_profile.txt)
+    b2sums+=('SKIP'
+             'SKIP')
 fi
 
 if [ "$_build_r8125" = "yes" ]; then
     source+=("git+https://github.com/aravance/r8125.git")
+    b2sums+=('SKIP')
 fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
     bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
-        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;&
+        source+=("${_patchsource}/sched/0001-bore-cachy.patch")
+        b2sums+=('SKIP');;&
     bmq) ## Project C Scheduler
-        source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
+        source+=("${_patchsource}/sched/0001-prjc-cachy.patch")
+        b2sums+=('SKIP');;
     hardened) ## Hardened Patches
-        source+=("${_patchsource}/misc/0001-hardened.patch");;
+        source+=("${_patchsource}/misc/0001-hardened.patch")
+        b2sums+=('SKIP');;
     rt|rt-bore) ## RT patches
-        source+=("${_patchsource}/misc/0001-rt-i915.patch");;
+        source+=("${_patchsource}/misc/0001-rt-i915.patch")
+        b2sums+=('SKIP');;
 esac
 
 export KBUILD_BUILD_HOST=cachyos
@@ -822,26 +841,3 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
     }"
 done
-
-b2sums=('3fa5512aad7edeaf30007b67d2d9dad3f350177cfe5a282da20cfde0862e6aeb9c25d6bb3eeee0957545001be5dc1de596bbf17cab339da4ae7b6e921832c1a6'
-        '1280f4cb2f94135ec3b6576bc0bc394ef4989250ec6041a8499770bc68b5e157fcdb45a7d8934413273d6eb1ad6de6c9da65e0cff2a1ee84a0c9cd1d278831d4'
-        '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
-        '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678'
-        'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
-
-if [ "$_build_zfs" = "yes" ]; then
-    b2sums+=('SKIP')
-fi
-
-if [ "$_build_nvidia_open" = "yes" ]; then
-    b2sums+=('b58125ff5d71fb45fc30b8128d492c5a91c4df293157a42848f7ba38e91eb284d491fdc6801e514c243330b19b7ece116733d3caa2c1129725c420d4267f3df7'
-             'SKIP'
-             'SKIP'
-             'SKIP'
-             'SKIP'
-             'SKIP')
-fi
-
-if [ "$_build_r8125" = "yes" ]; then
-    b2sums+=('SKIP')
-fi
