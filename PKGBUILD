@@ -14,13 +14,13 @@
 # yet). When that lands the publish_aur_ui step bumps the arch list.
 #
 # Template substitutions handled by .github/workflows/release-binaries.yml:
-#   0.53.1.alpha.9         pacman-safe version (hyphens → dots)
-#   0.53.1-alpha.9        upstream tag without leading v
-#   1b6930f648e249cad59b06e594f7a1857ff23222c1b4f68dfae9cd25624a511f  sha256 of openzro-ui_${REALVER}_linux_amd64.tar.gz
+#   0.53.1.alpha.10         pacman-safe version (hyphens → dots)
+#   0.53.1-alpha.10        upstream tag without leading v
+#   bc59d4af3d5427fa25178d2659f14ff90cbf3fb8341dcb36c3d3385de0b9ff1c  sha256 of openzro-ui_${REALVER}_linux_amd64.tar.gz
 pkgname=openzro-ui-bin
 _pkgname=openzro-ui
-pkgver=0.53.1.alpha.9
-_realver=0.53.1-alpha.9
+pkgver=0.53.1.alpha.10
+_realver=0.53.1-alpha.10
 pkgrel=1
 pkgdesc="openZro desktop tray UI — system tray client for the daemon (prebuilt binary)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ depends=('openzro' 'gtk3' 'libappindicator-gtk3')
 optdepends=('gnome-shell-extension-appindicator: system-tray icon support on GNOME 44+'
             'kde-appindicator-common: system-tray icon support on KDE Plasma')
 source_x86_64=("openzro-ui-${_realver}-x86_64.tar.gz::https://github.com/openzro/openzro/releases/download/v${_realver}/openzro-ui_${_realver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('1b6930f648e249cad59b06e594f7a1857ff23222c1b4f68dfae9cd25624a511f')
+sha256sums_x86_64=('bc59d4af3d5427fa25178d2659f14ff90cbf3fb8341dcb36c3d3385de0b9ff1c')
 
 package() {
     install -Dm0755 "$srcdir/openzro-ui" "$pkgdir/usr/bin/openzro-ui"
