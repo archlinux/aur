@@ -1,8 +1,8 @@
 # Maintainer: Jason Landbridge & mcpproxy
 
 pkgname=mcpproxy-bin
-pkgver=0.28.0 # renovate: datasource=github-tags depName=smart-mcp-proxy/mcpproxy-go
-pkgrel=7
+pkgver=0.29.2 # renovate: datasource=github-tags depName=smart-mcp-proxy/mcpproxy-go
+pkgrel=8
 pkgdesc="Smart proxy for AI agents using the Model Context Protocol"
 arch=('x86_64' 'aarch64')
 url="https://github.com/smart-mcp-proxy/mcpproxy-go"

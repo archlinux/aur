@@ -7,6 +7,9 @@ Wants=network-online.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/mcpproxy serve --config=%h/.mcpproxy/mcp_config.json --data-dir=%h/.mcpproxy
+Environment=HEADLESS=1
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%U/bus
 Restart=on-failure
 RestartSec=5s
 NoNewPrivileges=true
@@ -20,7 +23,6 @@ RestrictSUIDSGID=true
 LockPersonality=true
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-Environment=HEADLESS=1
 
 [Install]
 WantedBy=default.target
