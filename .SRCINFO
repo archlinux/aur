@@ -1,17 +1,22 @@
 pkgbase = vkplay-gamecenter-bin
 	pkgdesc = VK Play - online gaming service for game lovers, developers and content creators. The platform combines streaming, esports, a place for communication with like-minded users, a catalog of games and cloud gaming.
-	pkgver = 1.15
-	pkgrel = 4
+	pkgver = 1.16
+	pkgrel = 1
 	url = vkplay.ru
 	install = vkplay-gamecenter-bin.install
 	arch = x86_64
 	license = ISC
+	depends = alsa-lib
+	depends = at-spi2-atk
+	depends = cups
 	depends = gtk3
+	depends = mesa
+	depends = nss
 	provides = vkplay
 	provides = GameCenterShowcase
 	options = !strip
 	options = !debug
-	source = vkplay-gamecenter-bin-1.15.deb::https://static.gc.vkplay.ru/gclinux/deb_repo/GameCenterShowcase_amd64.deb
-	sha512sums = 2768d06f804725129acc444f6d3bc434bbe3f18fbaf65569256fab8fac00f5b4d0e3f78b07d7a88b2045a5d9a9aa1b9559814517608ea11bfee52ecdd2ed39d9
+	source = vkplay-gamecenter-bin-1.16.deb::https://static.gc.vkplay.ru/gclinux/deb_repo/GameCenterShowcase_amd64.deb
+	sha512sums = 414b85f284b8327d86f72ec677a7e1762af24c1242dd791404e6f1d01a40231c00681a46737a926877b2b1652b42447ebcfacc450f537fb7e6f58ee35c979798
 
 pkgname = vkplay-gamecenter-bin
