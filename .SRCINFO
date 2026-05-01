@@ -12,6 +12,7 @@ pkgbase = kbd-drive-remap
 	depends = libinput-tools
 	depends = python
 	depends = python-pywebview
+	depends = python-pyqt6
 	optdepends = systemd: enable gs3104tpro-remap.service for auto-start
 	optdepends = pkexec: allow in-page systemd control and config saving without root terminal
 	provides = kbd-drive-remap
