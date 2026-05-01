@@ -1,0 +1,28 @@
+# makepkg build artifacts
+*.pkg.tar*
+*.src.tar*
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.deb
+*.rpm
+*.AppImage
+
+# makepkg working directories
+src/
+pkg/
+
+# Downloaded sources
+*.sig
+*.asc
+LICENSE-*
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+README.md
