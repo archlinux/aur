@@ -1,7 +1,7 @@
 pkgbase = openmvs
 	pkgdesc = open Multi-View Stereo reconstruction library with simple and automatic set of tools
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cdcseacave.github.io/openMVS
 	arch = i686
 	arch = x86_64

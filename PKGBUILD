@@ -3,7 +3,7 @@
 
 pkgname=openmvs
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=(i686 x86_64)
 url="http://cdcseacave.github.io/openMVS"
@@ -34,21 +34,32 @@ prepare() {
 }
 
 build() {
+  extra_opts=()
+  if [ "$_use_cuda" = "ON" ]
+  then
+    extra_opts+=(-DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc)
+  fi
+
   cmake \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINSTALL_BIN_DIR=/usr/bin \
     -DVCG_DIR="${srcdir}/vcglib" \
-    -DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
     -DOpenMVS_USE_CERES=ON \
     -DOpenMVS_USE_BREAKPAD=OFF \
     -DOpenMVS_USE_CUDA="${_use_cuda}" \
+    "${extra_opts[@]}" \
     -S "$srcdir/$pkgname" \
     -B "$srcdir/build"
   make -C "$srcdir/build"
 }
 
+check() {
+  make -C "$srcdir/build" test
+}
+
 package() {
   DESTDIR="$pkgdir/" make -C "$srcdir/build" install
+  mv "$pkgdir"/usr/bin/OpenMVS/* "$pkgdir"/usr/bin
+  rm "$pkgdir"/usr/bin/Tests
+  rmdir "$pkgdir"/usr/bin/OpenMVS
 }
 
