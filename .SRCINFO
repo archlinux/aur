@@ -1,34 +1,30 @@
 pkgbase = openmvs
 	pkgdesc = open Multi-View Stereo reconstruction library with simple and automatic set of tools
-	pkgver = 1.1.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://cdcseacave.github.io/openMVS
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
-	makedepends = cuda
 	makedepends = boost
-	makedepends = gflags
-	makedepends = eigen
 	makedepends = ceres-solver
 	makedepends = cgal
-	makedepends = nvidia-utils
-	depends = glew
-	depends = glfw
-	depends = suitesparse
-	depends = blas
-	depends = google-glog
+	makedepends = nanoflann
+	makedepends = libjxl
+	depends = eigen
+	depends = openmp
 	depends = opencv
 	depends = boost-libs
-	depends = qt5-base
-	optdepends = nvidia-utils: GPU optimized mesh reconstruction code
-	source = openmvs::git+https://github.com/cdcseacave/openMVS.git#tag=v1.1.1
-	source = vcglib::git+https://github.com/cdcseacave/VCG.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	optdepends = ceres-solver
+	optdepends = glfw
+	optdepends = libjxl
+	source = openmvs::git+https://github.com/cdcseacave/openMVS.git#commit=58117204c86bbb11a0b25b26a8987676cf11274d
+	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#commit=c94ef4e12e9ea3ae986d9af91005be8328d13719
+	source = 0001-Fix-boost-and-python3.patch
+	sha256sums = dcacfbd320b12dbc97ec05f6289f71e4ef084f54a2f39136e8bc0d6a0f24682e
+	sha256sums = 256dc102a2a55bb7362181871674c4561e2964e82545838a4efb7312547d4a51
+	sha256sums = 1eefced29c2b48d8376277c1b83ee2962d025aea2cfa6ad2b0bfde3e2264529b
 
 pkgname = openmvs
-
