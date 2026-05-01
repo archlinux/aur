@@ -1,7 +1,7 @@
 # Maintainer: RimuruTemp1421 <daser1421official@gmail.com>
 
 pkgname=anihot-app
-pkgver=6.0.10
+pkgver=6.0.11
 pkgrel=1
 pkgdesc="Linux client for AniHot anime streaming app"
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('custom')
 depends=('glibc' 'gtk3' 'bash' 'sqlite3')
 options=('!debug')
 source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip")
-sha256sums=('7ee7f9c70e7d60f4b663500d0fe2cf34651b17e3a363bc0d6d2a8c9ba546bae8')
+sha256sums=('30dff464f40f13f28c387fbca0ebfc5370f74036731de7e50402265eb93ed5b8')
 
-# Функция, выполняемая перед удалением пакета (очищает остатки)
+# Функция, выполняемая перед удалением пакета (чистим остатки)
 pre_remove() {
     rm -rf /usr/lib/anihot-app
 }
@@ -45,7 +45,7 @@ exec ./anihot-app "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/anihot"
 
-    # Создаём правильный .desktop файл (работает из меню)
+    # Создаём новый .desktop файл, со старым не работало
     cat > "$pkgdir/usr/share/applications/anihot.desktop" << 'EOF'
 [Desktop Entry]
 Version=1.0
@@ -60,7 +60,7 @@ StartupNotify=true
 StartupWMClass=com.anihot.anihot
 EOF
 
-    # Копируем иконку из архива (проверь путь, может отличаться)
+    # Копируем иконку из архива
     # Если иконка лежит в share/icons/hicolor/256x256/apps/com.anihot.anihot.png
     if [ -f "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" ]; then
         cp "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \
