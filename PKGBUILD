@@ -6,7 +6,7 @@ _pkgname=eden
 pkgname=$_pkgname-beta
 pkgver=0.2.0
 _pkgver=v0.2.0-rc2
-pkgrel=3
+pkgrel=4
 pkgdesc="Nintendo Switch emulator forked from yuzu - beta and test releases"
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -18,12 +18,15 @@ makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost
 optdepends=('gamemode: Gamemoded support')
 options=('!lto' '!debug')
 source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/${_pkgver}.tar.gz"
-		"3751.patch")
+		"3751.patch"
+		'bd6dd7ecec.patch')
 sha256sums=('51366a6e3fddc65e6fcf77541fa5d4fd5d647616f8d9db6fc2de65ccf7278693'
-            '106a8f2053c6d52951a312b07a09050423362128a7d26344af0bb0f4495fb856')
+            '106a8f2053c6d52951a312b07a09050423362128a7d26344af0bb0f4495fb856'
+            '8d441c5152211510d4fdd5ea39f99d4ba3d4b86c7126d352872fd36bfb492d43')
 prepare() {
 	cd $srcdir/eden
 	patch -p1 < $srcdir/3751.patch
+	patch -p1 < $srcdir/bd6dd7ecec.patch
 }
 build() {
 	cd "$srcdir"
