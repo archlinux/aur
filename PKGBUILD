@@ -3,9 +3,9 @@
 # Contributer: Bruce Zhang
 
 pkgname=lx-music
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
-_electron=electron37
+_electron=electron40
 pkgdesc='An Electron-based music player'
 arch=('x86_64' 'aarch64')
 url='https://github.com/lyswhut/lx-music-desktop'
@@ -19,17 +19,17 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"$pkgname.desktop"
 	'dev-app-update.yml'
 )
-sha256sums=('2a87668d7f6eb30d3728748ef5418e2d45a787fa54d1d1df4b973d8ae633208b'
-            '1171a3688a136b75aa0493d5737cfb1e8c386a48030c8ca313d4cac48c0630e3'
-            '732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f'
-            'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
+sha256sums=('50cfa196d713760c85cba10adfbd86721769b59a202e4cbf667062c11cdfd70b'
+	'1171a3688a136b75aa0493d5737cfb1e8c386a48030c8ca313d4cac48c0630e3'
+	'732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f'
+	'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
 
 prepare() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
 
 	local electronDist="/usr/lib/${_electron}"
 	local electronVersion="$(<$electronDist/version)"
-	electronVersion="${electronVersion%.*}.0"
+	# electronVersion="${electronVersion%.*}.0"
 	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
 	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
 	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
