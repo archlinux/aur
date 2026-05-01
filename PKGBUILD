@@ -1,124 +1,116 @@
 # Maintainer: joelvaz0x01 <joelvaz dot whitehat at gmail dot com>
 
 _pkgbase=chordpro
-pkgname=${_pkgbase}-gui
-pkgver=6.090.1
-pkgrel=4
-_pkgdownload=App-Music-ChordPro-${pkgver}
-_alienwxrel=0.73
+pkgname=$_pkgbase-gui
+pkgver=6.101.0
+pkgrel=1
+_pkgdownload=App-Music-ChordPro-$pkgver
 _alienwxver=0.73
 _wxver=3.009
 pkgdesc="A lyrics and chords formatting program (CLI and GUI)"
 arch=('x86_64')
 url="https://chordpro.org/"
-_ghurl="https://github.com/ChordPro/chordpro"
-license=('Artistic-2.0')
-depends=(
-    'perl>=5.26.0'                   # JSON::PP, Storable, Pod::Usage, File::Copy, ExtUtils::MakeMaker, Unicode::Collate, Unicode::Normalize
-    'perl-pdf-api2>=2.047'           # PDF::API2
-    'perl-json-xs>=4.03'             # JSON::XS
-    'perl-lwp-protocol-https>=6.14'  # LWP::Protocol::https
-    'perl-mozilla-ca>=20230801'      # Mozilla::CA
-    'perl-file-homedir>=1.004'       # File::HomeDir
-    'perl-image-info>=1.41'          # Image::Info
-    'perl-scalar-list-utils>=1.63'   # Scalar::Util and List::Util
-    'perl-ref-util>=0.204'           # Ref::Util
-    'perl-ipc-run3>=0.049'           # IPC::Run3
-    'wxwidgets-gtk3'
-    'webkit2gtk-4.1'
+license=(Artistic-2.0)
+depends=('perl>=5.26.0'                   # JSON::PP, Storable, Pod::Usage, File::Copy, ExtUtils::MakeMaker, Unicode::Collate, Unicode::Normalize
+         'perl-pdf-api2>=2.047'           # PDF::API2
+         'perl-json-xs>=4.03'             # JSON::XS
+         'perl-lwp-protocol-https>=6.14'  # LWP::Protocol::https
+         'perl-mozilla-ca>=20230801'      # Mozilla::CA
+         'perl-file-homedir>=1.004'       # File::HomeDir
+         'perl-image-info>=1.41'          # Image::Info
+         'perl-scalar-list-utils>=1.63'   # Scalar::Util and List::Util
+         'perl-ref-util>=0.204'           # Ref::Util
+         'perl-ipc-run3>=0.049'           # IPC::Run3
+         'wxwidgets-gtk3'
+         'webkit2gtk-4.1'
 
-    'perl-text-layout>=0.045'               # Text::Layout (AUR)
-    #'perl-string-interpolate-named>=1.060' # String::Interpolate::Named (incompatible version on AUR)
-    'perl-file-loadlines>=1.047'            # File::LoadLines (AUR)
-    'perl-data-printer>=0.001001'           # Data::Printer (AUR)
-    'perl-object-pad>=0.818'                # Object::Pad (AUR)
-    'perl-javascript-quickjs>=0.18'         # JavaScript::QuickJS (AUR)
-)
+         'perl-text-layout>=0.045'               # Text::Layout (AUR)
+         #'perl-string-interpolate-named>=1.060' # String::Interpolate::Named (incompatible version on AUR)
+         'perl-file-loadlines>=1.047'            # File::LoadLines (AUR)
+         'perl-data-printer>=0.001001'           # Data::Printer (AUR)
+         'perl-object-pad>=0.818'                # Object::Pad (AUR)
+         'perl-javascript-quickjs>=0.18')        # JavaScript::QuickJS (AUR)
 makedepends=('cpanminus')
-optdepends=(
-    'perl-template-toolkit>=3.010: LaTeX backend'
-    'perl-latex-encode>=0.092.0: LaTeX backend'
-    'lilypond: Embed LilyPond music writing format'
-)
-provides=(chordpro)
-conflicts=(chordpro)
-install=chordpro.install
-source=(
-    "${_ghurl}/releases/download/R${pkgver}/${_pkgdownload}.tar.gz"
-    "https://github.com/sciurius/perl-Alien-wxWidgets/releases/download/R${_alienwxrel}/Alien-wxWidgets-${_alienwxver}.tar.gz"
-    "https://github.com/sciurius/wxPerl/releases/download/R${_wxver}/Wx-${_wxver}.tar.gz"
-    "${_pkgbase}.install"
-    "${_pkgbase}.sh"
-)
-sha256sums=('6b4c35b664bddf698f44d1f43900c22f56b8fb00044988472bf463f00ca0136f'
+optdepends=('perl-template-toolkit>=3.010: LaTeX backend'
+            'perl-latex-encode>=0.092.0: LaTeX backend'
+            'lilypond: Embed LilyPond music writing format')
+provides=($_pkgbase)
+conflicts=($_pkgbase)
+install=$_pkgbase.install
+source=("https://github.com/ChordPro/chordpro/releases/download/R$pkgver/$_pkgdownload.tar.gz"
+        "https://github.com/sciurius/perl-Alien-wxWidgets/releases/download/R$_alienwxver/Alien-wxWidgets-$_alienwxver.tar.gz"
+        "https://github.com/sciurius/wxPerl/releases/download/R$_wxver/Wx-$_wxver.tar.gz"
+        "$_pkgbase.install"
+        "$_pkgbase.sh")
+sha256sums=('554dfc744b882d8fa05f300dd8d1a06c4c547a4d91edf8bd19ba0c65ce616f9c'
             '4f230858ad7010c05f6bf9e111f686fe7ccc027be9826e9588a68640c3bd4872'
             '18035c52c8bb69f773ec19f2de3d2fa78dac1c8cd5ce114958da8e081fcee19a'
             'b7e60a00ea16e5f49702591c9e2f4146763ade0d312cd2ab6422219700fab311'
             '43e8ae43866b1900824ff862fec1dc41594b9feacb95c1df47bb9bcc427a90ed')
 
 build() {
-    cd "${srcdir}/${_pkgdownload}"
+    cd "$srcdir/$_pkgdownload"
     export PERL_MM_USE_DEFAULT=1
-    export PERL5LIB="${srcdir}/lib/perl5"
-    export PERL_LOCAL_LIB_ROOT="${srcdir}"
-    export PERL_MB_OPT="--install_base ${srcdir}"
-    export PERL_MM_OPT="INSTALL_BASE=${srcdir}"
+    export PERL5LIB="$srcdir/lib/perl5"
+    export PERL_LOCAL_LIB_ROOT="$srcdir"
+    export PERL_MB_OPT="--install_base $srcdir"
+    export PERL_MM_OPT="INSTALL_BASE=$srcdir"
 
     # install Alien-wxWidgets and wxPerl locally
-    cpanm --notest --local-lib="${srcdir}" --verbose "${srcdir}/Alien-wxWidgets-${_alienwxver}.tar.gz"
-    cpanm --notest --local-lib="${srcdir}" --verbose "${srcdir}/Wx-${_wxver}.tar.gz"
+    cpanm --notest --local-lib="$srcdir" --verbose "$srcdir/Alien-wxWidgets-$_alienwxver.tar.gz"
+    cpanm --notest --local-lib="$srcdir" --verbose "$srcdir/Wx-$_wxver.tar.gz"
 
     # build ChordPro
-    cpanm --notest --skip-satisfied --local-lib="${srcdir}" --verbose --installdeps .
-    perl Makefile.PL INSTALL_BASE="${srcdir}"
+    cpanm --notest --skip-satisfied --local-lib="$srcdir" --verbose --installdeps .
+    perl Makefile.PL INSTALL_BASE="$srcdir"
     make install
 }
 
 check() {
-    cd "${srcdir}/${_pkgdownload}"
+    cd "$srcdir/$_pkgdownload"
     export PERL_MM_USE_DEFAULT=1
-    export PERL5LIB="${srcdir}/lib/perl5"
-    export PERL_LOCAL_LIB_ROOT="${srcdir}"
-    export PERL_MB_OPT="--install_base ${srcdir}"
-    export PERL_MM_OPT="INSTALL_BASE=${srcdir}"
+    export PERL5LIB="$srcdir/lib/perl5"
+    export PERL_LOCAL_LIB_ROOT="$srcdir"
+    export PERL_MB_OPT="--install_base $srcdir"
+    export PERL_MM_OPT="INSTALL_BASE=$srcdir"
     make all test
 }
 
 package() {
-    install -d "${pkgdir}/opt/${_pkgbase}/lib"
-    cp -a "${srcdir}/${_pkgdownload}/lib"/* "${pkgdir}/opt/${_pkgbase}/lib"
-    cp -a "${srcdir}/lib/perl5"/* "${pkgdir}/opt/${_pkgbase}/lib"
+    install -d "$pkgdir/opt/$_pkgbase/lib"
+    cp -a "$srcdir/$_pkgdownload/lib"/* "$pkgdir/opt/$_pkgbase/lib"
+    cp -a "$srcdir/lib/perl5"/* "$pkgdir/opt/$_pkgbase/lib"
 
     for cmd in chordpro wxchordpro; do
         # install binary
-        install -Dm755 "${srcdir}/${_pkgdownload}/script/${cmd}.pl" "${pkgdir}/opt/${_pkgbase}/bin/${cmd}"
+        install -Dm755 "$srcdir/$_pkgdownload/script/$cmd.pl" "$pkgdir/opt/$_pkgbase/bin/$cmd"
 
         # install wrapper script
-        install -Dm755 "${srcdir}/chordpro.sh" "${pkgdir}/usr/bin/${cmd}"
-        sed -i "s|/bin/true|/opt/${_pkgbase}/bin/${cmd}|" "${pkgdir}/usr/bin/${cmd}"
+        install -Dm755 "$srcdir/chordpro.sh" "$pkgdir/usr/bin/$cmd"
+        sed -i "s|/bin/true|/opt/$_pkgbase/bin/$cmd|" "$pkgdir/usr/bin/$cmd"
 
         # install application man pages
-        gzip -n -f "${srcdir}/man/man1/${cmd}.1p"
-        install -Dm644 "${srcdir}/man/man1/${cmd}.1p.gz" "${pkgdir}/usr/share/man/man1p/${cmd}.1p.gz"
+        gzip -n -f "$srcdir/man/man1/$cmd.1p"
+        install -Dm644 "$srcdir/man/man1/$cmd.1p.gz" "$pkgdir/usr/share/man/man1p/$cmd.1p.gz"
     done
 
     # install module man pages
     for cmd in ChordPro ChordPro::A2Crd ChordPro::Wx; do
-        gzip -n -f "${srcdir}/man/man3/${cmd}.3pm"
-        install -Dm644 "${srcdir}/man/man3/${cmd}.3pm.gz" "${pkgdir}/usr/share/man/man3p/${cmd}.3pm.gz"
+        gzip -n -f "$srcdir/man/man3/$cmd.3pm"
+        install -Dm644 "$srcdir/man/man3/$cmd.3pm.gz" "$pkgdir/usr/share/man/man3p/$cmd.3pm.gz"
     done
 
     # install desktop file
-    install -Dm644 "${srcdir}/${_pkgdownload}/lib/ChordPro/res/linux/org.chordpro.desktop" "${pkgdir}/usr/share/applications/org.chordpro.desktop"
-    desktop-file-validate "${pkgdir}/usr/share/applications/org.chordpro.desktop"
+    install -Dm644 "$srcdir/$_pkgdownload/lib/ChordPro/res/linux/org.chordpro.desktop" "$pkgdir/usr/share/applications/org.chordpro.desktop"
+    desktop-file-validate "$pkgdir/usr/share/applications/org.chordpro.desktop"
 
     # install icons
-    install -Dm644 "${srcdir}/${_pkgdownload}/lib/ChordPro/res/icons/chordpro.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/chordpro.png"
-    install -Dm644 "${srcdir}/${_pkgdownload}/lib/ChordPro/res/icons/chordpro.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chordpro.svg"
+    install -Dm644 "$srcdir/$_pkgdownload/lib/ChordPro/res/icons/chordpro.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/chordpro.png"
+    install -Dm644 "$srcdir/$_pkgdownload/lib/ChordPro/res/icons/chordpro.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/chordpro.svg"
 
     # install MIME type XML
-    install -Dm644 "${srcdir}/${_pkgdownload}/lib/ChordPro/res/linux/chordpro.xml" "${pkgdir}/usr/share/mime/packages/chordpro.xml"
+    install -Dm644 "$srcdir/$_pkgdownload/lib/ChordPro/res/linux/chordpro.xml" "$pkgdir/usr/share/mime/packages/chordpro.xml"
 
     # install license
-    install -Dm644 "${srcdir}/${_pkgdownload}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
+    install -Dm644 "$srcdir/$_pkgdownload/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 }
