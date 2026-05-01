@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.5354.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -18,10 +18,9 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'scrot: Computer Use screenshots (X11)'
             'imagemagick: Computer Use screenshot fallback and crop (import/convert)'
             'wmctrl: Computer Use running app detection (X11)'
-            'ydotool: Computer Use input automation (all Wayland compositors — requires ydotoold daemon running, v1.0+)'
+            'ydotool: Computer Use input automation (Wayland — GNOME, Sway, Hyprland; requires ydotoold daemon, v1.0+)'
             'grim: Computer Use screenshots (Wayland/wlroots — Sway, Hyprland)'
             'jq: Computer Use window queries on Sway (used with swaymsg)'
-            'spectacle: Computer Use screenshots (KDE Plasma Wayland)'
             'glib2: Computer Use screenshots on GNOME Wayland (gdbus for D-Bus)'
             'python-gobject: Portal screenshots on GNOME Wayland 46+ — no repeated permission dialogs'
             'gst-plugin-pipewire: Portal screenshot PipeWire frame capture on GNOME Wayland 46+'
@@ -30,9 +29,9 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-_electron_ver=41.3.0
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.5354.0-2/claude-desktop-1.5354.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
-sha256sums_x86_64=('d542751f3918e3438b3be3db1d038f9c82910873f9a5e06fbb16bcb2b0e5636b' 'SKIP')
+_electron_ver=41.4.0
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.5354.0-3/claude-desktop-1.5354.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
+sha256sums_x86_64=('91f4cc61d6075dd7851efe704fad0d85e62e80327a7ddaf25753f749dcfd3ec4' 'SKIP')
 options=('!strip')
 
 package() {
