@@ -1,0 +1,4 @@
+[python-cppimport]
+source = "github"
+github = "tbenthompson/cppimport"
+use_latest_release = "true"
