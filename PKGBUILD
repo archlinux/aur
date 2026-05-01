@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pixelviewer-bin
 _pkgname=PixelViewer
-pkgver=3.1.5.811
+pkgver=3.1.6.430
 pkgrel=1
 pkgdesc="A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it.(Prebuilt version)"
 arch=(
@@ -29,8 +29,8 @@ source=(
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
             'f96446b452c48cb8b0306c4f999ab6729927c8b3a27f2355abbb484e3e63cf6f')
-sha256sums_aarch64=('39c5081b8a9d5ebc6f10cdb98627d041ef2ff3e1979ab0669b3e129beab7e6eb')
-sha256sums_x86_64=('2d71cb542ebdb97a1f35fb71fa1d8b4167697e6148f15794478e91a3dd5ca4a8')
+sha256sums_aarch64=('990206f51237260a90738a0a74491a02b8a117148b601ea30ecaaeb6536c9676')
+sha256sums_x86_64=('b0de4d4f14cf950c1e83163c5a8019583586941852902e244f10db09a7a04ca9')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g

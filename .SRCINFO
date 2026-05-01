@@ -1,6 +1,6 @@
 pkgbase = pixelviewer-bin
 	pkgdesc = A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it.(Prebuilt version)
-	pkgver = 3.1.5.811
+	pkgver = 3.1.6.430
 	pkgrel = 1
 	url = https://carina-studio.github.io/PixelViewer/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = pixelviewer-bin
 	license = MIT
 	makedepends = gendesk
 	depends = fontconfig
-	provides = pixelviewer=3.1.5.811
+	provides = pixelviewer=3.1.6.430
 	conflicts = pixelviewer
-	noextract = pixelviewer-3.1.5.811-x86_64.zip
+	noextract = pixelviewer-3.1.6.430-x86_64.zip
 	options = !strip
-	source = LICENSE-3.1.5.811.md::https://raw.githubusercontent.com/carina-studio/PixelViewer/3.1.5.811/LICENSE.md
+	source = LICENSE-3.1.6.430.md::https://raw.githubusercontent.com/carina-studio/PixelViewer/3.1.6.430/LICENSE.md
 	source = pixelviewer.sh
 	sha256sums = 4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea
 	sha256sums = f96446b452c48cb8b0306c4f999ab6729927c8b3a27f2355abbb484e3e63cf6f
-	source_aarch64 = pixelviewer-3.1.5.811-aarch64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.1.5.811/PixelViewer-3.1.5.811-linux-arm64.zip
-	sha256sums_aarch64 = 39c5081b8a9d5ebc6f10cdb98627d041ef2ff3e1979ab0669b3e129beab7e6eb
-	source_x86_64 = pixelviewer-3.1.5.811-x86_64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.1.5.811/PixelViewer-3.1.5.811-linux-x64.zip
-	sha256sums_x86_64 = 2d71cb542ebdb97a1f35fb71fa1d8b4167697e6148f15794478e91a3dd5ca4a8
+	source_aarch64 = pixelviewer-3.1.6.430-aarch64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.1.6.430/PixelViewer-3.1.6.430-linux-arm64.zip
+	sha256sums_aarch64 = 990206f51237260a90738a0a74491a02b8a117148b601ea30ecaaeb6536c9676
+	source_x86_64 = pixelviewer-3.1.6.430-x86_64.zip::https://github.com/carina-studio/PixelViewer/releases/download/3.1.6.430/PixelViewer-3.1.6.430-linux-x64.zip
+	sha256sums_x86_64 = b0de4d4f14cf950c1e83163c5a8019583586941852902e244f10db09a7a04ca9
 
 pkgname = pixelviewer-bin
