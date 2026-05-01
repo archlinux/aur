@@ -1,6 +1,6 @@
 pkgbase = pencil-dev-appimage
 	pkgdesc = Design on canvas. Land in code. Increases engineering speed by bringing designing directly into your IDE. (AppImage)
-	pkgver = 1.1.54
+	pkgver = 1.1.55
 	pkgrel = 1
 	url = https://pencil.dev
 	install = pencil-dev-appimage.install
@@ -12,13 +12,13 @@ pkgbase = pencil-dev-appimage
 	provides = pencil-dev
 	conflicts = pencil-dev
 	conflicts = pencil-dev-bin
-	noextract = Pencil-linux-x86_64-1.1.54.AppImage
+	noextract = Pencil-linux-x86_64-1.1.55.AppImage
 	options = !strip
 	options = !debug
-	source = Pencil-linux-x86_64-1.1.54.AppImage::https://www.pencil.dev/download/Pencil-linux-x86_64.AppImage
+	source = Pencil-linux-x86_64-1.1.55.AppImage::https://www.pencil.dev/download/Pencil-linux-x86_64.AppImage
 	source = LICENSE
 	source = pencil-dev-appimage.install
-	sha256sums = 27b4c20efa64802153ce8502a760c157d0a3af458c3a9b72735bd314b6e0976b
+	sha256sums = a6eeca00451087793fb5cbf2e7c3f7bba2f7c147ffc18d8fc55e9584a4be002d
 	sha256sums = SKIP
 	sha256sums = SKIP
 
