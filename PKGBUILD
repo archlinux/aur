@@ -21,15 +21,14 @@ depends=(
   'libxml2-legacy'
   'mpfr'
   'opencascade'
-  # 'opencollada' # dropped from extra
   'python'
-  'python-numpy'
   'python-jinja'
-  'python-pytz'
-  'python-typing_extensions'
-  'python-requests'
+  'python-numpy'
   'python-platformdirs'
   'python-pytest'
+  'python-pytz'
+  'python-requests'
+  'python-typing_extensions'
 )
 
 optdepends=(
@@ -107,10 +106,12 @@ _iosdir="IfcOpenShell-${_vername}-${_pkgver}"
 _apply_patch() {
   cd "${srcdir}/${_iosdir}"
   for p in $srcdir/*.patch; do
-    patch -p1 -l <$p
+    echo Patch ${p}
+    patch -p1 -l <${p}
   done
 
 }
+
 prepare() {
   mv bpypolyskel-1.1.3 bpypolyskel
   cp -ar svgpp/* svgfill/3rdparty/svgpp
@@ -120,8 +121,8 @@ prepare() {
   )
 
 }
-_build_pymodules() {
 
+_build_pymodules() {
   pushd "${srcdir}/${_iosdir}"
   find src -name '*.py' -o -name '*.toml' | xargs sed -i "/version =/s/0.0.0/${pkgver//_/-}/g"
   for _dir in src/*; do
@@ -136,6 +137,7 @@ _build_pymodules() {
   done
   popd
 }
+
 build() {
   _build_pymodules
   install -d build
