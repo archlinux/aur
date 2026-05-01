@@ -1,6 +1,6 @@
 pkgbase = replicate-cog-bin
 	pkgdesc = Containers for machine learning
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/replicate/cog
@@ -11,9 +11,9 @@ pkgbase = replicate-cog-bin
 	conflicts = cocogitto
 	conflicts = cog
 	conflicts = python-cogapp
-	source_x86_64 = replicate-cog-bin-0.19.0-x86_64.bin::https://github.com/replicate/cog/releases/download/v0.19.0/cog_Linux_x86_64
-	sha256sums_x86_64 = a62ce57274d6b6956fa12c82451ca7e25774183dc9e741e423e1987b7f9d90a7
-	source_aarch64 = replicate-cog-bin-0.19.0-aarch64.bin::https://github.com/replicate/cog/releases/download/v0.19.0/cog_Linux_arm64
-	sha256sums_aarch64 = aad3e7cb39db70f0238f4df35b4cd7aa055ae6025f585c22dc2163ad3602d5ea
+	source_x86_64 = replicate-cog-bin-0.19.1-x86_64.bin::https://github.com/replicate/cog/releases/download/v0.19.1/cog_Linux_x86_64
+	sha256sums_x86_64 = defae54941e055c02e0aa093e77f80f21dfbf0edef47fc76f4913391aff1da38
+	source_aarch64 = replicate-cog-bin-0.19.1-aarch64.bin::https://github.com/replicate/cog/releases/download/v0.19.1/cog_Linux_arm64
+	sha256sums_aarch64 = b5161b14c241ec97cf798bb64dd4e5e3d0477862702fe7bbd61f8feb2d5a3daa
 
 pkgname = replicate-cog-bin
