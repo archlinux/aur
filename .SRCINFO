@@ -1,6 +1,6 @@
 pkgbase = python-words2num2
 	pkgdesc = Inverse of num2words2: convert spoken-form numbers back to numeric values across 100+ languages.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/jqueguiner/words2num2
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-words2num2
 	depends = python
 	depends = python-docopt
 	depends = python-num2words2
-	source = https://files.pythonhosted.org/packages/source/w/words2num2/words2num2-0.2.2.tar.gz
-	sha256sums = b8557179b5bb45b3e3fca21103e116b15ffd4e729001ada786817378b3f9ce8a
+	source = https://files.pythonhosted.org/packages/source/w/words2num2/words2num2-0.2.3.tar.gz
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = python-words2num2
