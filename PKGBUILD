@@ -3,7 +3,7 @@
 _pkgname=inform6lib
 __pkgname=inform-stdlib
 pkgname=inform-stdlib-git
-pkgver=6.12.7.0.ga0d3e3d
+pkgver=6.12.8.0.g4f68343
 pkgrel=1
 pkgdesc="Inform 6 standard library (git version)"
 arch=('any')
