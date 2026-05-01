@@ -10,6 +10,7 @@ pkgbase = yafu-git-gcc9
 	makedepends = gcc9
 	depends = gmp
 	depends = gmp-ecm
+	depends = zlib
 	optdepends = ggnfs
 	provides = yafu-git-gcc9
 	provides = yafu
