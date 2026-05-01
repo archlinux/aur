@@ -1,6 +1,6 @@
 # Maintainer: Thomas Peklak <thomaspeklak@gmail.com>
 pkgname=agent-sandbox
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='Launch AI coding agents inside a rootless Podman sandbox'
 arch=('x86_64')
@@ -10,7 +10,7 @@ install='agent-sandbox.install'
 depends=('git' 'openssh' 'podman')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('46cddfa8ce242b5054171641f56427763797779f0d15a7735bce44a57a530581')
+sha256sums=('f3a9a034601ac56f6d647b4de8ba37ce6e941139ef3586d52885dd848b98af1f')
 
 prepare() {
   cd "agent-sandbox-${pkgver}"
