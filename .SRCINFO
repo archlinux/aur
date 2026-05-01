@@ -1,6 +1,6 @@
 pkgbase = lcl-gui-bin
 	pkgdesc = Linux command reference and cheat sheets - desktop application
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/LinuxCommandLibrary
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = lcl-gui-bin
 	provides = lcl-gui
 	conflicts = lcl-gui
 	options = !strip
-	source = LinuxCommandLibrary-4.0.1-linux-x86_64.tar.gz::https://github.com/SimonSchubert/LinuxCommandLibrary/releases/download/v4.0.1/LinuxCommandLibrary-4.0.1-linux-x86_64.tar.gz
-	sha256sums = e7c3aa3e8185d29c21fe07ef471a81cb8b566d9007ca09d328c221f7ef549101
+	source = LinuxCommandLibrary-4.0.2-linux-x86_64.tar.gz::https://github.com/SimonSchubert/LinuxCommandLibrary/releases/download/v4.0.2/LinuxCommandLibrary-4.0.2-linux-x86_64.tar.gz
+	sha256sums = e851504205b87ba0dd4053efe174a1e43f7e2fdc9f7051594559a94ba5aa181c
 
 pkgname = lcl-gui-bin
