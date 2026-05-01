@@ -1,6 +1,6 @@
 pkgbase = zig-git
 	pkgdesc = General-purpose programming language and toolchain
-	pkgver = 0.17.0.r221.g11fbf78cb317
+	pkgver = 0.17.0.r245.gf7a607ef68c9
 	pkgrel = 1
 	url = https://ziglang.org/
 	arch = aarch64
@@ -28,6 +28,7 @@ pkgbase = zig-git
 	depends = lld
 	depends = llvm-libs
 	depends = ncurses
+	depends = python
 	depends = xz
 	depends = zlib
 	depends = zstd

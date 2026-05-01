@@ -1,5 +1,5 @@
 pkgname=zig-git
-pkgver=0.17.0.r221.g11fbf78cb317
+pkgver=0.17.0.r245.gf7a607ef68c9
 pkgrel=1
 pkgdesc='General-purpose programming language and toolchain'
 arch=('aarch64' 'x86_64')
@@ -7,7 +7,7 @@ url='https://ziglang.org/'
 license=('MIT')
 conflicts=(zig)
 provides=("zig=${pkgver%%.r*}")
-depends=(clang compiler-rt icu libffi libxml2 lld llvm-libs ncurses xz zlib zstd)
+depends=(clang compiler-rt icu libffi libxml2 lld llvm-libs ncurses python xz zlib zstd)
 makedepends=(clang cmake compiler-rt git icu libffi lld libxml2 llvm llvm-libs ncurses xz zlib zstd)
 options=(!emptydirs staticlibs lto)
 source=("git+https://codeberg.org/ziglang/zig.git#branch=master")
@@ -42,4 +42,6 @@ build() {
 
 package() {
   DESTDIR=${pkgdir} cmake --install build
+  install -Dm644 ${srcdir}/zig/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  rm ${pkgdir}/usr/doc/langref.html
 }
