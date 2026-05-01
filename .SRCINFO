@@ -1,6 +1,6 @@
 pkgbase = nvidia-utils
 	pkgver = 595.71.05
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = aarch64
 	arch = x86_64
