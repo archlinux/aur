@@ -1,6 +1,6 @@
 pkgbase = mainline-arch
 	pkgdesc = Tool to install and manage mainline kernels from the Arch Linux Archive
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/johnpetersa19/mainline_arch
 	arch = x86_64
@@ -10,13 +10,14 @@ pkgbase = mainline-arch
 	makedepends = vala
 	depends = gtk4
 	depends = libadwaita
-	depends = vte4
+	depends = vte3
 	depends = json-glib
 	depends = libgee
 	depends = aria2
-	depends = python
+	depends = libsoup3
+	depends = libx11
 	conflicts = mainline
-	source = mainline-arch-1.5.1.tar.gz::https://github.com/johnpetersa19/mainline_arch/archive/refs/tags/1.5.1.tar.gz
-	sha256sums = ba838194e99e75d6ac05fd62a1632712ee548bba6607b71ebd20fd1d4429f4fa
+	source = mainline-arch-1.6.0.tar.gz::https://github.com/johnpetersa19/mainline_arch/archive/refs/tags/1.6.0.tar.gz
+	sha256sums = e53c3d41763f0d34e432a10b179cd4f28bbff965c1d94dba6c136d9276616426
 
 pkgname = mainline-arch
