@@ -2,6 +2,7 @@
 Description=LubeLogger Server
 
 [Service]
+Environment="ASPNETCORE_HTTP_PORTS=5000"
 Type=simple
 WorkingDirectory=/usr/share/webapps/lubelogger
 User=lubelogger
