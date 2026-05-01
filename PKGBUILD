@@ -2,7 +2,7 @@
 pkgname=skypaw-bin
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Minimal weather CLI for the terminal 🌤"
+pkgdesc="Minimal weather CLI for the terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sakkkurai/skypaw"
 license=('MIT')
