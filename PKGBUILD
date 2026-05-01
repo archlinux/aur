@@ -1,15 +1,15 @@
 # Maintainer: Markus <github@marang.dev>
 pkgname=bootrecov
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc='TUI/CLI helper to manage mirrored /boot backups and GRUB recovery entries'
+pkgdesc='TUI/CLI helper for /boot recovery snapshots and bootloader fallback entries'
 arch=('x86_64' 'aarch64')
 url='https://github.com/marang/bootrecov'
 license=('MIT')
 depends=('rclone' 'grub' 'squashfs-tools')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6fa94ff7f3de28bbabd755ece86d6e906f674a4ce2478e1da6a845e154e85989')
+sha256sums=('c833219b5f4f867684983d6b1482ccc7d1033833651a823b5f1824fa72883476')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
