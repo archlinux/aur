@@ -1,7 +1,7 @@
 pkgbase = inform-stdlib
 	pkgdesc = Inform 6 standard library
 	pkgver = 6.12.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/DavidGriffith/inform6lib
 	arch = any
 	groups = inform

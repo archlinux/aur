@@ -3,7 +3,7 @@
 _pkgname=inform6lib
 pkgname=inform-stdlib
 pkgver=6.12.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Inform 6 standard library"
 arch=('any')
 url="https://gitlab.com/DavidGriffith/inform6lib"
