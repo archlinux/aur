@@ -1,6 +1,6 @@
 pkgbase = openzro-bin
 	pkgdesc = openZro client — zero-trust mesh networking (prebuilt binary)
-	pkgver = 0.53.1.alpha.20
+	pkgver = 0.53.1.alpha.21
 	pkgrel = 1
 	url = https://openzro.io
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = openzro-bin
 	optdepends = wireguard-tools: kernel WireGuard interface management
 	provides = openzro
 	conflicts = openzro
-	source_x86_64 = openzro-0.53.1-alpha.20-x86_64.tar.gz::https://github.com/openzro/openzro/releases/download/v0.53.1-alpha.20/openzro_0.53.1-alpha.20_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3720d52fc1ab49b10eb061e661bfeb27c361d6cd3aaa3271437407d3efde3988
-	source_aarch64 = openzro-0.53.1-alpha.20-aarch64.tar.gz::https://github.com/openzro/openzro/releases/download/v0.53.1-alpha.20/openzro_0.53.1-alpha.20_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5e702382e17d81b2f55a80c4a0b60a71d6bbd16cc5ad13619826a2d4ab9bfa6d
+	source_x86_64 = openzro-0.53.1-alpha.21-x86_64.tar.gz::https://github.com/openzro/openzro/releases/download/v0.53.1-alpha.21/openzro_0.53.1-alpha.21_linux_amd64.tar.gz
+	sha256sums_x86_64 = 73334c6f44c30c5a08bfdc23cfc44f53fbf3863eff69466675b0f3fe9b3e72dc
+	source_aarch64 = openzro-0.53.1-alpha.21-aarch64.tar.gz::https://github.com/openzro/openzro/releases/download/v0.53.1-alpha.21/openzro_0.53.1-alpha.21_linux_arm64.tar.gz
+	sha256sums_aarch64 = f5a4c1bb7930f3335670686589de05af7c588e02d9e360cba0bea49de1792f17
 
 pkgname = openzro-bin
