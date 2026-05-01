@@ -1,0 +1,23 @@
+pkgbase = es40-git
+	pkgdesc = AlphaServer ES40 emulator
+	pkgver = 0.50.hotfix.r61.g1ec7805
+	pkgrel = 1
+	url = https://github.com/gdwnldsKSC/es40
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = libxt
+	depends = libpcap
+	depends = sdl3
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libx11
+	provides = es40
+	conflicts = es40
+	source = es40-git::git+https://github.com/gdwnldsKSC/es40.git
+	sha512sums = SKIP
+
+pkgname = es40-git
