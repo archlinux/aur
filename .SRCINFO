@@ -1,6 +1,6 @@
 pkgbase = pytorch-kineto-git
 	pkgdesc = Kineto is part of the PyTorch Profiler
-	pkgver = r888.185fe9c5
+	pkgver = r924.63cc35ed
 	pkgrel = 1
 	url = http://www.pytorch.org
 	arch = x86_64
@@ -10,18 +10,9 @@ pkgbase = pytorch-kineto-git
 	makedepends = python-setuptools
 	depends = fmt
 	source = kineto::git+https://github.com/pytorch/kineto.git
-	source = 3rdparty.patch
-	source = mkstemps.patch
 	sha256sums = SKIP
-	sha256sums = dbedadc2b00acd0611456d704e8cbdab5d24d724b5faa01243d47487f31658aa
-	sha256sums = 3dead63b8d53b326c5614c6af5d688b5581c7913e3d79d13f7df5807912912ad
 
 pkgname = libkineto-git
-	depends = 
-	optdepends = 
-	conflicts = 
-
-pkgname = torch-tb-profiler-git
 	depends = 
 	optdepends = 
 	conflicts = 

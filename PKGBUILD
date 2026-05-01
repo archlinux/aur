@@ -1,8 +1,8 @@
 # Maintainer: Zhirui Dai <daizhirui at hotmail dot com>
 
 pkgbase=pytorch-kineto-git
-pkgname=(libkineto-git torch-tb-profiler-git)
-pkgver=r888.185fe9c5
+pkgname=(libkineto-git)
+pkgver=r924.63cc35ed
 pkgrel=1
 pkgdesc="Kineto is part of the PyTorch Profiler"
 arch=('x86_64')
@@ -17,12 +17,13 @@ makedepends=(
 )
 source=(
     "kineto::git+https://github.com/pytorch/kineto.git"
-    "3rdparty.patch"
-    "mkstemps.patch"
+    #"3rdparty.patch"
+    #"mkstemps.patch"
 )
 sha256sums=('SKIP'
-            'dbedadc2b00acd0611456d704e8cbdab5d24d724b5faa01243d47487f31658aa'
-            '3dead63b8d53b326c5614c6af5d688b5581c7913e3d79d13f7df5807912912ad')
+            #'dbedadc2b00acd0611456d704e8cbdab5d24d724b5faa01243d47487f31658aa'
+            #'3dead63b8d53b326c5614c6af5d688b5581c7913e3d79d13f7df5807912912ad'
+            )
 
 pkgver() {
     cd ${srcdir}/kineto
@@ -33,7 +34,7 @@ prepare() {
     cd "${srcdir}/kineto"
     git submodule update --init --recursive
     # patch -Np1 -i ${srcdir}/3rdparty.patch
-    patch -Np1 -i ${srcdir}/mkstemps.patch
+    # patch -Np1 -i ${srcdir}/mkstemps.patch
     cd "${srcdir}/kineto/libkineto"
     mkdir -p build
 }
@@ -55,12 +56,4 @@ function package_libkineto-git() {
     conflicts=()
     cd ${srcdir}/kineto/libkineto/build
     make DESTDIR=${pkgdir} install
-}
-
-function package_torch-tb-profiler-git() {
-    depends=()
-    optdepends=()
-    conflicts=()
-    cd ${srcdir}/kineto/tb_plugin
-    python setup.py install --root="${pkgdir}/"
 }
