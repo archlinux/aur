@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=152.0a1+20260425.1+hf65c0a7a0ca7
+pkgver=152.0a1+20260501.1+hd0c43f211001
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -237,7 +237,9 @@ END
 package() {
   cd mozilla-central
   DESTDIR="$pkgdir" ./mach install
+
   local appdir="$pkgdir/usr/lib/$pkgname"
+  touch "$appdir/is-packaged-app"
 
   install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" <<END
 // Use LANG environment variable to choose locale
