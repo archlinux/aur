@@ -1,7 +1,7 @@
 pkgbase = aqueous
 	pkgdesc = Aqueous Wayland window manager (River-based) with Noctalia bar
-	pkgver = 0.0.1.r0.g63455cf
-	pkgrel = 1
+	pkgver = 0.0.1.r4.gf159bda
+	pkgrel = 4
 	url = https://github.com/Seafoam-Labs/Aqueous
 	install = aqueous.install
 	arch = x86_64

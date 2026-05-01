@@ -3,7 +3,7 @@
 pkgname=aqueous-git
 pkgbase=aqueous
 pkgver=0.0.1.r4.gf159bda
-pkgrel=3
+pkgrel=4
 pkgdesc="Aqueous Wayland window manager (River-based) with Noctalia bar"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
