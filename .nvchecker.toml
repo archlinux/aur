@@ -1,0 +1,4 @@
+[oscr-ui-bin]
+source = "github"
+github = "STOCD/OSCR-UI"
+use_latest_release = true
