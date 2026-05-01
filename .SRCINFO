@@ -1,0 +1,26 @@
+pkgbase = dynamic-glacier-git
+	pkgdesc = An experimental dynamic-island style widget for Hyprland, built with QML + Quickshell
+	pkgver = r15.gf0e6d20
+	pkgrel = 1
+	url = https://github.com/mavxa/DynamicGlacier
+	install = dynamic-glacier.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fontconfig
+	depends = hyprland
+	depends = libpulse
+	depends = noto-fonts
+	depends = pipewire
+	depends = playerctl
+	depends = psmisc
+	depends = qt6-5compat
+	depends = qt6-declarative
+	depends = quickshell
+	depends = upower
+	provides = dynamic-glacier
+	conflicts = dynamic-glacier
+	source = dynamic-glacier::git+https://github.com/mavxa/DynamicGlacier.git#branch=main
+	sha256sums = SKIP
+
+pkgname = dynamic-glacier-git

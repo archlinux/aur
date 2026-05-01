@@ -1,0 +1,50 @@
+pkgname=dynamic-glacier-git
+pkgver=r15.gf0e6d20
+pkgrel=1
+pkgdesc="An experimental dynamic-island style widget for Hyprland, built with QML + Quickshell"
+arch=('any')
+url="https://github.com/mavxa/DynamicGlacier"
+license=('MIT')
+depends=(
+  'fontconfig'
+  'hyprland'
+  'libpulse'
+  'noto-fonts'
+  'pipewire'
+  'playerctl'
+  'psmisc'
+  'qt6-5compat'
+  'qt6-declarative'
+  'quickshell'
+  'upower'
+)
+makedepends=('git')
+provides=('dynamic-glacier')
+conflicts=('dynamic-glacier')
+install=dynamic-glacier.install
+source=("dynamic-glacier::git+https://github.com/mavxa/DynamicGlacier.git#branch=main")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/dynamic-glacier"
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/dynamic-glacier"
+
+  install -dm755 "$pkgdir/usr/share/dynamic-glacier"
+  cp -r --no-preserve=ownership quickshell "$pkgdir/usr/share/dynamic-glacier/"
+
+  install -dm755 "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/dynamic-glacier" <<'EOF'
+#!/usr/bin/env sh
+exec quickshell --path /usr/share/dynamic-glacier/quickshell "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/dynamic-glacier"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 docs/architecture.md "$pkgdir/usr/share/doc/$pkgname/architecture.md"
+  install -Dm644 docs/development.md "$pkgdir/usr/share/doc/$pkgname/development.md"
+}
