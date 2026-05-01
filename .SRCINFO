@@ -1,0 +1,14 @@
+pkgbase = android-signapk-gui
+	pkgdesc = 简单APK&刷机包图形签名工具
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maoyaotang12/android-signapk-gui
+	arch = any
+	license = LGPL2.1
+	depends = android-signapk
+	depends = python
+	depends = python-pyqt6
+	source = git+https://github.com/maoyaotang12/android-signapk-gui.git
+	sha256sums = SKIP
+
+pkgname = android-signapk-gui
