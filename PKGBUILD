@@ -1,12 +1,14 @@
 # Maintainer: Pablo Palazon <ppalazon@phyxor.com>
 
-: ${_commit:=9eae80c1fe8f937e4f7009629c8248a959735c77}
+: ${_commit:=6e2b703b3df79fecf04cadc9c54ea68459856e50}
 
 _fontname="science-gothic"
 _pkgname="ttf-$_fontname"
 pkgbase="$_pkgname"
 pkgname=("${_pkgname}" "${_pkgname}-variable")
-pkgver=1.035
+epoch=1
+# pkgver: git-pkgver (4th - https://wiki.archlinux.org/title/VCS_package_guidelines#Git)
+pkgver=r964.6e2b703b3d
 pkgrel=1
 pkgdesc="A 4-axis variable font with a wide design range by Google Fonts"
 arch=('any')
