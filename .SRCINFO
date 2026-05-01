@@ -1,7 +1,7 @@
 pkgbase = chordpro-cli
 	pkgdesc = A lyrics and chords formatting program (CLI)
-	pkgver = 6.090.1
-	pkgrel = 2
+	pkgver = 6.101.0
+	pkgrel = 1
 	url = https://chordpro.org/
 	arch = x86_64
 	license = Artistic-2.0
@@ -26,9 +26,9 @@ pkgbase = chordpro-cli
 	optdepends = lilypond: Embed LilyPond music writing format
 	provides = chordpro
 	conflicts = chordpro
-	source = https://github.com/ChordPro/chordpro/releases/download/R6.090.1/App-Music-ChordPro-6.090.1.tar.gz
+	source = https://github.com/ChordPro/chordpro/releases/download/R6.101.0/App-Music-ChordPro-6.101.0.tar.gz
 	source = chordpro.sh
-	sha256sums = 6b4c35b664bddf698f44d1f43900c22f56b8fb00044988472bf463f00ca0136f
+	sha256sums = 554dfc744b882d8fa05f300dd8d1a06c4c547a4d91edf8bd19ba0c65ce616f9c
 	sha256sums = 43e8ae43866b1900824ff862fec1dc41594b9feacb95c1df47bb9bcc427a90ed
 
 pkgname = chordpro-cli

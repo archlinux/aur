@@ -1,15 +1,14 @@
 # Maintainer: joelvaz0x01 <joelvaz dot whitehat at gmail dot com>
 
 _pkgbase=chordpro
-pkgname=${_pkgbase}-cli
-pkgver=6.090.1
-pkgrel=2
-_pkgdownload=App-Music-ChordPro-${pkgver}
+pkgname=$_pkgbase-cli
+pkgver=6.101.0
+pkgrel=1
+_pkgdownload=App-Music-ChordPro-$pkgver
 pkgdesc="A lyrics and chords formatting program (CLI)"
 arch=('x86_64')
 url="https://chordpro.org/"
-_ghurl="https://github.com/ChordPro/chordpro"
-license=('Artistic-2.0')
+license=(Artistic-2.0)
 depends=(
     'perl>=5.26.0'                   # JSON::PP, Storable, Pod::Usage, File::Copy, ExtUtils::MakeMaker, Unicode::Collate, Unicode::Normalize
     'perl-pdf-api2>=2.047'           # PDF::API2
@@ -30,64 +29,60 @@ depends=(
     'perl-javascript-quickjs>=0.18'         # JavaScript::QuickJS (AUR)
 )
 makedepends=('cpanminus')
-optdepends=(
-    'perl-template-toolkit>=3.010: LaTeX backend'
-    'perl-latex-encode>=0.092.0: LaTeX backend'
-    'lilypond: Embed LilyPond music writing format'
-)
-provides=(chordpro)
-conflicts=(chordpro)
-source=(
-    "${_ghurl}/releases/download/R${pkgver}/${_pkgdownload}.tar.gz"
-    "${_pkgbase}.sh"
-)
-sha256sums=('6b4c35b664bddf698f44d1f43900c22f56b8fb00044988472bf463f00ca0136f'
+optdepends=('perl-template-toolkit>=3.010: LaTeX backend'
+            'perl-latex-encode>=0.092.0: LaTeX backend'
+            'lilypond: Embed LilyPond music writing format')
+provides=($_pkgbase)
+conflicts=($_pkgbase)
+source=("https://github.com/ChordPro/chordpro/releases/download/R$pkgver/$_pkgdownload.tar.gz"
+        "$_pkgbase.sh")
+sha256sums=('554dfc744b882d8fa05f300dd8d1a06c4c547a4d91edf8bd19ba0c65ce616f9c'
             '43e8ae43866b1900824ff862fec1dc41594b9feacb95c1df47bb9bcc427a90ed')
 
 build() {
-    cd "${srcdir}/${_pkgdownload}"
+    cd "$srcdir/$_pkgdownload"
     export PERL_MM_USE_DEFAULT=1
-    export PERL5LIB="${srcdir}/lib/perl5"
-    export PERL_LOCAL_LIB_ROOT="${srcdir}"
-    export PERL_MB_OPT="--install_base ${srcdir}"
-    export PERL_MM_OPT="INSTALL_BASE=${srcdir}"
-    cpanm --notest --skip-satisfied --local-lib="${srcdir}" --verbose --installdeps .
-    perl Makefile.PL INSTALL_BASE="${srcdir}"
+    export PERL5LIB="$srcdir/lib/perl5"
+    export PERL_LOCAL_LIB_ROOT="$srcdir"
+    export PERL_MB_OPT="--install_base $srcdir"
+    export PERL_MM_OPT="INSTALL_BASE=$srcdir"
+    cpanm --notest --skip-satisfied --local-lib="$srcdir" --verbose --installdeps .
+    perl Makefile.PL INSTALL_BASE="$srcdir"
     make install
 }
 
 check() {
-    cd "${srcdir}/${_pkgdownload}"
+    cd "$srcdir/$_pkgdownload"
     export PERL_MM_USE_DEFAULT=1
-    export PERL5LIB="${srcdir}/lib/perl5"
-    export PERL_LOCAL_LIB_ROOT="${srcdir}"
-    export PERL_MB_OPT="--install_base ${srcdir}"
-    export PERL_MM_OPT="INSTALL_BASE=${srcdir}"
+    export PERL5LIB="$srcdir/lib/perl5"
+    export PERL_LOCAL_LIB_ROOT="$srcdir"
+    export PERL_MB_OPT="--install_base $srcdir"
+    export PERL_MM_OPT="INSTALL_BASE=$srcdir"
     make test
 }
 
 package() {
-    install -d "${pkgdir}/opt/${_pkgbase}/lib"
-    cp -a "${srcdir}/${_pkgdownload}/lib"/* "${pkgdir}/opt/${_pkgbase}/lib"
-    cp -a "${srcdir}/lib/perl5"/* "${pkgdir}/opt/${_pkgbase}/lib"
+    install -d "$pkgdir/opt/$_pkgbase/lib"
+    cp -a "$srcdir/$_pkgdownload/lib"/* "$pkgdir/opt/$_pkgbase/lib"
+    cp -a "$srcdir/lib/perl5"/* "$pkgdir/opt/$_pkgbase/lib"
 
     # install binary
-    install -Dm755 "${srcdir}/${_pkgdownload}/script/chordpro.pl" "${pkgdir}/opt/${_pkgbase}/bin/chordpro"
+    install -Dm755 "$srcdir/$_pkgdownload/script/chordpro.pl" "$pkgdir/opt/$_pkgbase/bin/chordpro"
 
     # install wrapper script
-    install -Dm755 "${srcdir}/chordpro.sh" "${pkgdir}/usr/bin/chordpro"
-    sed -i "s|/bin/true|/opt/${_pkgbase}/bin/chordpro|" "${pkgdir}/usr/bin/chordpro"
+    install -Dm755 "$srcdir/chordpro.sh" "$pkgdir/usr/bin/chordpro"
+    sed -i "s|/bin/true|/opt/$_pkgbase/bin/chordpro|" "$pkgdir/usr/bin/chordpro"
 
     # install application man page
-    gzip -n -f "${srcdir}/man/man1/chordpro.1p"
-    install -Dm644 "${srcdir}/man/man1/chordpro.1p.gz" "${pkgdir}/usr/share/man/man1p/chordpro.1p.gz"
+    gzip -n -f "$srcdir/man/man1/chordpro.1p"
+    install -Dm644 "$srcdir/man/man1/chordpro.1p.gz" "$pkgdir/usr/share/man/man1p/chordpro.1p.gz"
 
     # install module man pages
     for cmd in ChordPro ChordPro::A2Crd; do
-        gzip -n -f "${srcdir}/man/man3/${cmd}.3pm"
-        install -Dm644 "${srcdir}/man/man3/${cmd}.3pm.gz" "${pkgdir}/usr/share/man/man3p/${cmd}.3pm.gz"
+        gzip -n -f "$srcdir/man/man3/$cmd.3pm"
+        install -Dm644 "$srcdir/man/man3/$cmd.3pm.gz" "$pkgdir/usr/share/man/man3p/$cmd.3pm.gz"
     done
 
     # install license
-    install -Dm644 "${srcdir}/${_pkgdownload}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
+    install -Dm644 "$srcdir/$_pkgdownload/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 }
