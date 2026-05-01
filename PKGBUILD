@@ -18,7 +18,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/bash
-cd /usr/lib/$pkgname && python browser.py
+cd /usr/lib/$pkgname && python browser.py "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
