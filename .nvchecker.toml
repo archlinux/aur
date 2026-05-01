@@ -1,0 +1,4 @@
+[hack-browser-data]
+source = "git"
+git = "https://github.com/moonD4rk/HackBrowserData.git"
+prefix = "v"

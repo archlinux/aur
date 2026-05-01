@@ -1,0 +1,17 @@
+pkgbase = hack-browser-data
+	pkgdesc = Extract and decrypt browser data, supporting multiple data types
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/moonD4rk/HackBrowserData
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = HackBrowserData::git+https://github.com/moonD4rk/HackBrowserData.git#tag=v1.0.0
+	b2sums = d21ceab975d5c7f1746779b6d83da92eeb7e49d59b2a5a99f5758cc829dd79b6d87bb3930d361f3917458b16503f9904c6e8a4d7c17366bdaf10ba6aa8e11b30
+
+pkgname = hack-browser-data
