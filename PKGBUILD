@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Demers <alexandre.f.demers@gmail.com>
 pkgname=ifcopenshell-stable
-_pkgver=0.8.4
+_pkgver=0.8.5
 pkgver=${_pkgver//-/}
 _vername=bonsai
 pkgrel=1
@@ -81,24 +81,34 @@ source=(
   "git+https://github.com/IfcOpenShell/svgfill.git"
   "bpypolyskel-1.1.3.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.3.tar.gz"
 
-  "001-skip-install-python-package-only-install-wrapper.patch::${_patch_url_prefix}/c6657803.patch"
-  # "002-add-shared-libs.patch::${_patch_url_prefix}/053480f.patch"
-  "003-fix-rpath.patch"
-  "004-fix-boost189.patch::${_patch_url_prefix}/66910ae1.patch"
-  "005-fix-eigen5.patch"
+  "001-skip-install-python-wrapper.patch::${_patch_url_prefix}/95bf1194db09a89a6106954bc05b2b62e00e06cd.patch"
+  "002-add-shared-libs.patch::${_patch_url_prefix}/a592a0c2acb5692e988129f26b6d48a0bd180dd6.patch"
+  "003-fix-rpath.patch::${_patch_url_prefix}/5b646d000e6eb7d101f15404aa4f7742aa02c21f.patch"
+
+  # Modified from "${_patch_url_prefix}/21d3dcdab23199aab66c86b35be9e145b98f8450.patch"
+  "004-fix-boost189.patch"
+
+  "005-fix-ifcsverchok-setup.patch::${_patch_url_prefix}/e9618346cb477108ca4850c342729c82124e74eb.patch"
+  "006-use-spdx-license.patch::${_patch_url_prefix}/dec0d6bc2ab3da60a1d6bb1b3359db94695c0af2.patch"
+  "007-fix-ld-eror.patch::${_patch_url_prefix}/ea018ae720a7d575422ed28ffb10f630e7e6420f.patch"
+  "008-fix-for-boost-1.89-explicit-optional.patch::${_patch_url_prefix}/89b3f95c7ffaa90c2c583038fe8c75d0be2e0317.patch"
 )
 
 sha256sums=(
-  '1208525002d23b81c118da15b23d8ac16fa9e63f1e03f2c2d33a9de5221c0c81'
+  'd44c106bc61c4c98171cf84479ab11715534f50d9b4517f80fc33133429117df'
   'SKIP'
   'SKIP'
   'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
 
-  '522021a51b08a944dfed0d72cc0eed8e90db864ab264344d7bafd7627efa773a'
-  # '41912eafef9d9224e01a204393d1481f84dab6131cce1bfcb731eb691e82487e'
+  '790373b719561733d5ba3fbd44c6419828fc0bbe66313ecdb78693e585c0fbcb'
+  'c40dc88578ba8f01b1f07fe084b606df9cc997caac511ab4aedee8b639c8adad'
+  '816f4ec952e02f3ed1c244650db1eabfaf9d70f5675261c6537bb25c8805a580'
   'SKIP'
-  'd3b4e1abb442fb748b217d753c580969a380a29a92e0a6a557cae77da94793f9'
-  'ffbd1f34f4d08caec48c02e592472197320551a1180caf34c202d3550f054113'
+  # 'f78fea790d3b6686a8473c6fc6a07f138352ec84a5e0fca4225bef8ab9959483'
+  '4e705b7cd4711f6a9c6ef61ca6134c952d0a8a8f8ed7550a33ad753f039b96b5'
+  'adc1de9d21a9f1aae06cf88ac00b5093a8e171fd3e69132f98b8a61be60e0cc2'
+  '9b25ef16cb438f50f08dbe6e60201b6ecf157b77326410d5cc10c2d3254d050d'
+  '88e75be92925e4aa11458694aa3d0f86b2c20dd7b0bd0026fcbd5e71e5fc9998'
   )
 
 _iosdir="IfcOpenShell-${_vername}-${_pkgver}"
