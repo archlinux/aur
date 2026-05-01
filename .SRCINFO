@@ -1,6 +1,6 @@
 pkgbase = kbd-drive-remap
 	pkgdesc = Keyboard key remap via evsieve, systemd, and a desktop webview editor (git package)
-	pkgver = r0.g0000000
+	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://github.com/LoveApple14434/gs-3104t-pro-remap
 	install = kbd-drive-remap.install
