@@ -1,18 +1,18 @@
 pkgbase = soundcloud-rpc-bin
 	pkgdesc = 🎵 A SoundCloud Client with Discord Rich Presence, Dark Mode, Last.fm, and AdBlock Support.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/richardhbtz/soundcloud-rpc
 	arch = any
 	license = MIT
 	depends = electron37
-	provides = soundcloud-rpc=0.1.7
+	provides = soundcloud-rpc=0.1.8
 	conflicts = soundcloud-rpc
-	source = soundcloud-rpc-0.1.7-x86_64.AppImage::https://github.com/richardhbtz/soundcloud-rpc/releases/download/v0.1.7/soundcloud-0.1.7-installer-linux.AppImage
-	source = LICENSE-0.1.7::https://raw.githubusercontent.com/richardhbtz/soundcloud-rpc/v0.1.7/LICENSE
+	source = soundcloud-rpc-0.1.8-x86_64.AppImage::https://github.com/richardhbtz/soundcloud-rpc/releases/download/v0.1.8/soundcloud-0.1.8-installer-linux.AppImage
+	source = LICENSE-0.1.8::https://raw.githubusercontent.com/richardhbtz/soundcloud-rpc/v0.1.8/LICENSE
 	source = soundcloud-rpc.sh
-	sha256sums = f75754aae33e811ecbb798c629627b4eddb707512a7d659f3a5b39dc5609ab33
+	sha256sums = 56ac3b1b8f9cf87a4b89064e5a1151268df47c203dd5394e712563bec0e3504e
 	sha256sums = de7ae1038162d14df6bc9ec2a6f717a46d0c57deba4e4fffe4cea07595b0c68d
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = soundcloud-rpc-bin
