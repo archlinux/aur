@@ -33,4 +33,15 @@ Type=Application
 Categories=Network;System;" > pyhotspot.desktop
   
   install -Dm644 pyhotspot.desktop "$pkgdir/usr/share/applications/pyhotspot.desktop"
+
+
+    install -d "$pkgdir/usr/share/pyhotspot"
+  cp -r core ui widgets "$pkgdir/usr/share/pyhotspot/"
+
+  # 2. Создаем "запускалку" в /usr/bin/
+  install -d "$pkgdir/usr/bin"
+  echo -e "#!/bin/sh\nexec python /usr/share/pyhotspot/core/main.py \"\$@\"" > "$pkgdir/usr/bin/pyhotspot"
+  
+  # 3. Даем права на исполнение
+  chmod +x "$pkgdir/usr/bin/pyhotspot"
 }
