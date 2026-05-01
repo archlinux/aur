@@ -1,6 +1,6 @@
 pkgbase = creamlinux-installer-bin
 	pkgdesc = CreamLinux is a GUI application for Linux that simplifies the management of DLC IDs in Steam games. It provides a user-friendly interface to install and configure CreamAPI (for native Linux games) and SmokeAPI (for Windows games running through Proton).
-	pkgver = 1.5.0
+	pkgver = 1.5.5
 	pkgrel = 3
 	url = https://github.com/Novattz/creamlinux-installer
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = creamlinux-installer-bin
 	provides = creamlinux
 	conflicts = creamlinux
 	options = !debug
-	source = https://github.com/Novattz/creamlinux-installer/releases/download/v1.5.0/Creamlinux_1.5.0_amd64.deb
+	source = https://github.com/Novattz/creamlinux-installer/releases/download/v1.5.5/Creamlinux_1.5.5_amd64.deb
 	source = https://raw.githubusercontent.com/Novattz/creamlinux-installer/main/LICENSE.md
-	sha256sums = 4dd2f893d49c79cc9d5aa29acbbe6a3b93ebdb614d0866cebb288127776d546b
+	sha256sums = 413ab8f14cca7a27ebd505107e84a4d8a62ce11c78e6f8ae161436ac2c54906f
 	sha256sums = 3acdaff189f797ae7b160a1e1d32081ba141599afc5a4210eba78ff182003977
 
 pkgname = creamlinux-installer-bin
