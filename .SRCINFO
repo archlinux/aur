@@ -1,6 +1,6 @@
 pkgbase = kiraws
 	pkgdesc = Kira web server, a simple yet flexible and scalable web server written in python
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/kira
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kiraws
 	license = GPL
 	makedepends = unzip
 	depends = python
-	source = https://gitlab.com/linuxbombay/kira/-/archive/1.5/kira-1.5.tar.bz2
-	sha256sums = f115f071518fefa9220d6a123ee5745545e3f98ee595764e5f5f79e066529405
+	source = https://gitlab.com/linuxbombay/kira/-/archive/1.6/kira-1.6.tar.bz2
+	sha256sums = 98978a8699a72084f2bfcaa8e82079058484b20d0ae40bc012d5da238f7d6196
 
 pkgname = kiraws
