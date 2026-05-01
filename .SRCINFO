@@ -1,6 +1,6 @@
 pkgbase = python-poethepoet
 	pkgdesc = A task runner that works well with poetry
-	pkgver = 0.44.0
+	pkgver = 0.45.0
 	pkgrel = 1
 	url = https://github.com/nat-n/poethepoet
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-poethepoet
 	depends = python-tomli
 	depends = python-yaml
 	optdepends = python-poetry
-	source = poethepoet-0.44.0.tar.gz::https://github.com/nat-n/poethepoet/archive/v0.44.0.tar.gz
-	sha512sums = e7abeb99c68152b4c575f395a6148cb24aceae05a493520adb3defb6bae16f1d2e9799c79656010f8d02963216010865ed099294d3b008566d4be04e8eb779e5
+	source = poethepoet-0.45.0.tar.gz::https://github.com/nat-n/poethepoet/archive/v0.45.0.tar.gz
+	sha512sums = aca8fce454e6ed61d2394c34cda66704e305e34f0b5c08cb73644bbb2c4d8cd19dc69d5a94a9954ff59f093b005739e4c5b7925920e048103e24e763153ed787
 
 pkgname = python-poethepoet
