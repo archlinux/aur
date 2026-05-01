@@ -7,8 +7,8 @@ pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
 license=('MIT')
-depends=('nodejs')
-makedepends=('yarn' 'git' 'python' 'python-setuptools' 'npm')
+depends=('nodejs>=22' 'nodejs<25')
+makedepends=('yarn' 'git' 'npm')
 options=('!lto' '!strip')
 conflicts=('thelounge')
 backup=('etc/thelounge/config.js')
@@ -54,10 +54,6 @@ build() {
 		--prod --non-interactive --ignore-scripts \
 		--cache-folder "$srcdir/yarn-cache" --offline \
 		file:"$(readlink -e "./$tarball")"
-
-	# build sqlite3 from source, avoids the binary blob (kinda)
-	cd node_modules/sqlite3 || exit 1
-	yarn --no-default-rc --frozen-lockfile --non-interactive run rebuild
 }
 
 
