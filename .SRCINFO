@@ -1,8 +1,8 @@
 pkgbase = mem-c
 	pkgdesc = mem-c is a simple memory allocator using a heap data structure with the mmap Linux syscall for dynamic memory management. It has a worst-case search time of O(n * log n) and averages O(log n).
-	pkgver = 1.1.3
-	pkgrel = 5
-	url = https://github.com/alecksandr26/mem-c/archive/refs/tags/v1.1.3.tar.gz
+	pkgver = 1.1.4
+	pkgrel = 6
+	url = https://github.com/alecksandr26/mem-c/archive/refs/tags/v1.1.4.tar.gz
 	arch = x86_64
 	license = MIT License
 	makedepends = gcc
@@ -11,7 +11,7 @@ pkgbase = mem-c
 	makedepends = binutils
 	makedepends = coreutils
 	optdepends = except-c
-	source = mem-c-1.1.3.tar.gz::https://github.com/alecksandr26/mem-c/archive/refs/tags/v1.1.3.tar.gz
+	source = mem-c-1.1.4.tar.gz::https://github.com/alecksandr26/mem-c/archive/refs/tags/v1.1.4.tar.gz
 	md5sums = SKIP
 
 pkgname = mem-c
