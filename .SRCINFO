@@ -1,7 +1,7 @@
 pkgbase = python-cppimport
 	pkgdesc = Import C++ files directly from Python!
-	pkgver = 22.08.02
-	pkgrel = 2
+	pkgver = 26.04.17
+	pkgrel = 1
 	url = https://github.com/tbenthompson/cppimport
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-cppimport
 	depends = python-mako
 	depends = pybind11
 	depends = python-filelock
-	source = cppimport-22.08.02.tar.gz::https://github.com/tbenthompson/cppimport/archive/22.08.02.tar.gz
-	sha512sums = 8487672eeaa92ad6711f4328d8b082e2780aaaee2d9cf89560b61f01e95f200c91247db94bf7a07a5b15aff86ce4400d05acce28f19f623b2e62432f97531ef0
+	source = cppimport-26.04.17.tar.gz::https://github.com/tbenthompson/cppimport/archive/26.04.17.tar.gz
+	sha512sums = 71888a3485a278e92a832c2aabbda7deec957f647ff4baad2c6c942c7f6367ca678ee613043f4f814ae4d7a55c1ba9059fc5295abf7c97b24e2f6ad5d7340fa5
 
 pkgname = python-cppimport
