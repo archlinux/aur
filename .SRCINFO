@@ -1,7 +1,7 @@
 pkgbase = mcpproxy-bin
 	pkgdesc = Smart proxy for AI agents using the Model Context Protocol
 	pkgver = 0.29.2
-	pkgrel = 8
+	pkgrel = 1
 	url = https://github.com/smart-mcp-proxy/mcpproxy-go
 	install = mcpproxy-bin.install
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = mcpproxy-bin
 	sha256sums = f07d24f77cf4e69feec20282ff443fe1f83607495b1d03d0306342b00ddb1a61
 	sha256sums = 897cd80d344a5570fcd3526834fffdb0b9bd8087632455dd393f5f2d43c94d47
 	sha256sums = 47220bfb076e34a1d349307679b7d4707fbe1426f1355049e69bced26568fea0
-	sha256sums = 90e257e7ed1be526356a57110e99c6d04039ff80b4b0e426bb8e8898cf657551
+	sha256sums = 0dbb8e1a0431cffe8d739fee40f73e237ed9be37887e285d7524d1a02afa1ce4
 	source_x86_64 = mcpproxy-0.29.2-linux-amd64.tar.gz::https://github.com/smart-mcp-proxy/mcpproxy-go/releases/download/v0.29.2/mcpproxy-0.29.2-linux-amd64.tar.gz
-	sha256sums_x86_64 = f0ea6e942617a5774c4767f71a56f25c5dc35180381952621aa19c4e4ca7c867
+	sha256sums_x86_64 = be8a64089a3a7e56de1e03c25556ef366a99a19d0a169eab8dc1c7a8441a8da8
 	source_aarch64 = mcpproxy-0.29.2-linux-arm64.tar.gz::https://github.com/smart-mcp-proxy/mcpproxy-go/releases/download/v0.29.2/mcpproxy-0.29.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 4c1f7cc48170b61252115b379cd4f5725082fccff9b1b154e88ad190be89012a
+	sha256sums_aarch64 = 0877a25f36968c7f1479df0c15484ac4ad3aacb50701d7995eb3e39736506b97
 
 pkgname = mcpproxy-bin
