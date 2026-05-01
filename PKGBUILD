@@ -3,7 +3,7 @@
 pkgname=zapret2-bin
 _pkgbase=${pkgname%-bin}
 pkgver=0.9.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Anti-DPI software (prebuilt binaries)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bol-van/$_pkgbase"
@@ -47,7 +47,9 @@ package() {
   esac
 
   for i in ip2net mdig; do
-    install -Dm755 "$_bindir/$i" -t "$pkgdir/opt/$_pkgbase/$i/"
+    install -Dm755 "$_bindir/$i" -t "$pkgdir/opt/$_pkgbase/binaries/${_bindir#binaries/}/"
+    install -dm755 "$pkgdir/opt/$_pkgbase/$i"
+    ln -s "/opt/$_pkgbase/binaries/${_bindir#binaries/}/$i" "$pkgdir/opt/$_pkgbase/$i/$i"
   done
 
   install -Dm755 blockcheck2.sh -t "$pkgdir/opt/$_pkgbase/"
@@ -74,7 +76,9 @@ END
   sed -e "1s/\$/\\n\\nWS_USER=$_pkgbase/" -i "$pkgdir/opt/$_pkgbase/init.d/sysv/functions"
   install -Dm644 config.default -T "$pkgdir/opt/$_pkgbase/config"
 
-  install -Dm755 "$_bindir/nfqws2" -T "$pkgdir/opt/$_pkgbase/nfq2/nfqws2"
+  install -Dm755 "$_bindir/nfqws2" -t "$pkgdir/opt/$_pkgbase/binaries/${_bindir#binaries/}/"
+  install -dm755 "$pkgdir/opt/$_pkgbase/nfq2"
+  ln -s "/opt/$_pkgbase/binaries/${_bindir#binaries/}/nfqws2" "$pkgdir/opt/$_pkgbase/nfq2/nfqws2"
   ln -s "/opt/$_pkgbase/nfq2/nfqws2" "$pkgdir/usr/bin/nfqws2"
 
   install -Dm644 docs/*.* -t "$pkgdir/usr/share/doc/$_pkgbase/"
