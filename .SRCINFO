@@ -1,12 +1,12 @@
 pkgbase = rasm
 	pkgdesc = Powerful Z80 assembler
-	pkgver = 2.3.5
+	pkgver = 3.0.9
 	pkgrel = 1
 	url = https://github.com/EdouardBERGE/rasm
 	arch = x86_64
 	license = custom
 	makedepends = upx
-	source = rasm-2.3.5.tar.gz::https://github.com/EdouardBERGE/rasm/archive/refs/tags/v2.3.5.tar.gz
-	sha256sums = 754bf440a3e475bab26a1dbc5fcf195640d6590342fcbb6712762d3d94071fff
+	source = rasm-3.0.9.tar.gz::https://github.com/EdouardBERGE/rasm/archive/refs/tags/v3.0.9.tar.gz
+	sha256sums = 919016fc90d080605f82fddee50ac30f3e9c0d5a2bf73575ca70e9667cb6fe8f
 
 pkgname = rasm
