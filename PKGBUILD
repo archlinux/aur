@@ -1,4 +1,5 @@
 # Maintainer: Issa M. Omais <me0@ioplus.dev>
+
 pkgname=wavetask
 pkgver=1.1
 pkgrel=1
@@ -36,21 +37,19 @@ makedepends=(
   'gcc'
 )
 
+_pkgsrc="org.vicko.$pkgname-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ef7cf0930e9dbc6e687e5239adc5911f45499b2dbe5b9264b06b3cd1187d17bb')
 
 options=('!debug')
 
 build() {
-  cd "$srcdir/org.vicko.$pkgname-$pkgver"
-
-  cmake -B build -S . \
-  -DCMAKE_BUILD_TYPE=Release
-
+  cd "$srcdir/$_pkgsrc"
+  cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
   cmake --build build -j$(nproc)
 }
 
 package() {
-  cd "$srcdir/org.vicko.$pkgname-$pkgver"
+  cd "$srcdir/$_pkgsrc"
   DESTDIR="$pkgdir" cmake --install build
 }
