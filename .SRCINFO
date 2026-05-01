@@ -1,0 +1,14 @@
+pkgbase = hypricing-bin
+	pkgdesc = GUI settings manager for Hyprland (pre-built binary)
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/Esperadoce/Hypricing
+	arch = x86_64
+	license = MIT
+	provides = hypricing
+	conflicts = hypricing
+	conflicts = hypricing-git
+	source = hypricing-0.7-linux-x64.tar.gz::https://github.com/Esperadoce/Hypricing/releases/download/v0.7/hypricing-v0.7-linux-x64.tar.gz
+	sha256sums = SKIP
+
+pkgname = hypricing-bin
