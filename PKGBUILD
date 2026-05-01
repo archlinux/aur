@@ -1,7 +1,7 @@
 # Maintainer: Jean-Louis Queguiner <jlqueguiner@gladia.io>
 pkgname=python-num2words2
 _pkgname=num2words2
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Modules to convert numbers to words. Actively-maintained fork of num2words with 159+ language codes."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-build'
              'python-wheel')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/n/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('01b39b9ae09616d8e904ff718361149c9cb9832818631f46c8901b7277528cf6')
+sha256sums=('4dc2f720979d640903b439e43ac89fd0017e1dbe7bade915516113ffcbb98dc9')
 
 build() {
   cd "${_pkgname}-${pkgver}"
