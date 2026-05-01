@@ -1,7 +1,7 @@
 # Maintainer: qwjyh <urataw421 at gmail dot com>
 
 pkgname=textlint-plugin-typst
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Textlint plugin to lint Typst"
 arch=(any)
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("nodejs" "textlint")
 makedepends=("npm")
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-sha256sums=('4591d616cc3c0d8e8425765d59e57daa2d256ead6d868cb2d37e1a91b0b9573c')
+sha256sums=('82cf81090dee93a21ad069fb315bbf5477034a23390ab088646c4dd768df1ff9')
 
 package() {
 
