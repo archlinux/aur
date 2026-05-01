@@ -183,7 +183,7 @@ _minor=2
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
-pkgrel=3
+pkgrel=4
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='CachyOS Linux kernel with cjktty patches'
 _kernver="$pkgver-$pkgrel"
@@ -274,6 +274,7 @@ if [ "$_propeller" = "yes" ] && [ "$_propeller_profiles" = "yes" ]; then
 fi
 
 if [ "$_build_r8125" = "yes" ]; then
+    makedepends+=(git)
     source+=("git+https://github.com/aravance/r8125.git")
 fi
 
@@ -828,5 +829,10 @@ done
 b2sums=('3fa5512aad7edeaf30007b67d2d9dad3f350177cfe5a282da20cfde0862e6aeb9c25d6bb3eeee0957545001be5dc1de596bbf17cab339da4ae7b6e921832c1a6'
         '1280f4cb2f94135ec3b6576bc0bc394ef4989250ec6041a8499770bc68b5e157fcdb45a7d8934413273d6eb1ad6de6c9da65e0cff2a1ee84a0c9cd1d278831d4'
         '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
-        '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678'
-        'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
+        '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
+if _is_lto_kernel; then
+    b2sums+=('c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
+fi
+while (( ${#b2sums[@]} < ${#source[@]} )); do
+    b2sums+=(SKIP)
+done
