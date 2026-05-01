@@ -1,0 +1,17 @@
+pkgbase = py-cpu-z-git
+	pkgdesc = A sleek, terminal-based CPU-Z clone and hardware monitor.
+	pkgver = r5.5dfa10c
+	pkgrel = 1
+	url = https://github.com/hvhboynixware-ui/cpu-zLINUX.py
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	depends = python-rich
+	provides = pycpuz
+	conflicts = pycpuz
+	source = py-cpu-z-git::git+https://github.com/hvhboynixware-ui/cpu-zLINUX.py.git
+	sha256sums = SKIP
+
+pkgname = py-cpu-z-git
