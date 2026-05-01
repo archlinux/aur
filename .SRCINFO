@@ -1,0 +1,14 @@
+pkgbase = space-dodge
+	pkgdesc = Fast-paced space survival game built with Python and pygame
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/EvansOgala/Space-Dodge
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pygame
+	source = git+https://github.com/EvansOgala/Space-Dodge.git
+	sha256sums = SKIP
+
+pkgname = space-dodge
