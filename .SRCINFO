@@ -1,12 +1,12 @@
 pkgbase = ms-regfx
 	pkgdesc = Digital Forensics tool for parsing Windows Registry hive files (REGF format)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/MS-0x404/ms-regfx
 	arch = any
 	license = GPL3
 	depends = python
-	source = ms-regfx-0.1.1.tar.gz::https://github.com/MS-0x404/ms-regfx/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = a76a2330399c92659bc15a92c580763a6a81d055ab5fb9b1fa8cffe9f23e81b0
+	source = ms-regfx-0.1.2.tar.gz::https://github.com/MS-0x404/ms-regfx/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = a9f39a4b099d174ca7d8f357057271e5bb99903e89ab9ffbfcda36883c7104f7
 
 pkgname = ms-regfx

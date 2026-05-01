@@ -1,6 +1,6 @@
 # Maintainer: msfire <matteosalis04@gmail.com>
 pkgname=ms-regfx
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Digital Forensics tool for parsing Windows Registry hive files (REGF format)"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/MS-0x404/ms-regfx"
 license=('GPL3')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MS-0x404/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a76a2330399c92659bc15a92c580763a6a81d055ab5fb9b1fa8cffe9f23e81b0')
+sha256sums=('a9f39a4b099d174ca7d8f357057271e5bb99903e89ab9ffbfcda36883c7104f7')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
