@@ -1,6 +1,6 @@
 pkgbase = seance
 	pkgdesc = Scrolling terminal multiplexer for running multiple AI coding agents side by side
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/no1msd/seance
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = seance
 	depends = freetype2
 	depends = harfbuzz
 	depends = oniguruma
-	source = seance-0.1.3-src.tar.gz::https://github.com/no1msd/seance/releases/download/v0.1.3/seance-0.1.3-src.tar.gz
-	sha256sums = 37c2dc3949f88e99ed4b7eba312fd2df8476a3aefa753b4506ab88fc5b0584db
+	source = seance-0.1.4-src.tar.gz::https://github.com/no1msd/seance/releases/download/v0.1.4/seance-0.1.4-src.tar.gz
+	sha256sums = e6286ae2e073dece24c505474506d59a10f763fd46f34433ce8b9650be38f739
 
 pkgname = seance
