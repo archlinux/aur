@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=('moshpit-keygen')
 makedepends=('cargo' 'cmake' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('6cb052dc4f041ba5d368de3da97b07a2a82b4da0c5e106ee2c6c879de7b038a6')
+sha256sums=('626179d404b83999dbc5ada72cc1fed83851d51f34c08198e206b269ab470615')
 
 prepare() {
     cd "moshpit-$pkgver"
