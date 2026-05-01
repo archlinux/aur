@@ -1,5 +1,30 @@
 # Release Notes
 
+## 2.93.4
+
+This release is a follow-on to #3164 that fixes the other spot in the code base susceptible to
+hashlib `guaranteed_algorithms` not being available.
+
+* Ensure hash algorithms are available for PEP-691 lookups. (#3166)
+
+## 2.93.3
+
+This release fixes an issue running Pex under certain RedHat FIPS mode CPythons.
+
+* Ensure ranked hash algorithms are available. (#3164)
+
+## 2.93.2
+
+This release speeds up `pex3 lock create`.
+
+* Defer requirement parse-error source to failure path. (#3159)
+
+## 2.93.1
+
+This release updates vendored Pip's vendored certifi's cacert.pem to that from certifi 2026.4.22.
+
+* Update vendored Pip's CA cert bundle. (#3158)
+
 ## 2.93.0
 
 This release adds support for `--pip-version 26.1`.
