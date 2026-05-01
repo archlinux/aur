@@ -1,4 +1,4 @@
-# Maintainer: Paragoumba <paragoumba at protonmail dot com>
+# Maintainer: Paragoumba <aur@paragoumba.fr>
 # Contributor: maniacata <maniaciachao at gmail dot com>
 # Contributor: Martin Thierer <thierer@web.de>
 # Contributor: Amy Wilson <awils_1[at]xsmail[dot]com>
