@@ -38,9 +38,10 @@ package() {
 
     install -Dm755 "target/release/$_gitname" "$pkgdir/usr/bin/$_gitname"
 
-    # Static files needed at runtime
+    # Resource files needed at runtime
     install -d "$pkgdir/usr/share/$_gitname"
     cp -r static "$pkgdir/usr/share/$_gitname/"
+    cp -r locales "$pkgdir/usr/share/$_gitname/"
 
     # Wrapper: cd to shared dir so static/ is found at runtime
     mv "$pkgdir/usr/bin/$_gitname" "$pkgdir/usr/share/$_gitname/$_gitname-bin"
