@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-04-29 21:23:21
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-05-01 22:16:19
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -178,12 +178,12 @@ fi
 
 pkgbase="linux-cachyos-native"
 _major=7.0
-_minor=2
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
-pkgrel=2
+pkgrel=1
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.'
 _kernver="$pkgver-$pkgrel"
@@ -821,7 +821,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('3fa5512aad7edeaf30007b67d2d9dad3f350177cfe5a282da20cfde0862e6aeb9c25d6bb3eeee0957545001be5dc1de596bbf17cab339da4ae7b6e921832c1a6'
+b2sums=('d6ab08acd91f405f36205070cdebab99d244e439ca00d823c4068aeba583818dd3c1fdc0d0b3836406ecb1a93b611c637533b50ae96e9bda3153682bbb9f33bd'
         '389571b71590616652716ffd8da99674c798fe41a18897b8d5d162158247adcdf0fbfebc55627fe5a55081b085ef2db628c81441c572a239f4c2cd52d9990995'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
         '45361ac9830c16c748688545501124647859c247c5cf7dc6ab4508fe614425715c7299cf88728a3da4111c7fbf6f9eab8a1c77b039ebd868dc7a6367b5e97ff8'
