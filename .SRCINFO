@@ -1,0 +1,11 @@
+pkgbase = gnome-shell-extension-executor
+	pkgdesc = Execute multiple shell commands periodically with separate intervals and display the output in gnome top bar
+	pkgver = 30
+	pkgrel = 1
+	url = https://github.com/raujonas/executor
+	arch = any
+	depends = gnome-shell
+	source = executor-30.zip::https://github.com/raujonas/executor/releases/download/v30/executor@raujonas.github.io
+	sha256sums = 0a855c5a35309a1220e40cf8ee0e3b76fb5364ae5e6fc267daa03e25c038551c
+
+pkgname = gnome-shell-extension-executor
