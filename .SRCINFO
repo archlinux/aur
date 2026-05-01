@@ -1,7 +1,7 @@
 pkgbase = vocalinux-git
 	pkgdesc = Voice dictation for Linux with offline speech recognition
 	pkgver = nightly.2026.03.18.r0.g99699f1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jatinkrmalik/vocalinux
 	install = vocalinux-git.install
 	arch = x86_64

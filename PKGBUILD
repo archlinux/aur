@@ -3,7 +3,7 @@
 pkgname=vocalinux-git
 _pkgname=vocalinux
 pkgver=nightly.2026.03.18.r0.g99699f1
-pkgrel=1
+pkgrel=2
 pkgdesc="Voice dictation for Linux with offline speech recognition"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jatinkrmalik/vocalinux"
