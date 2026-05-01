@@ -1,6 +1,6 @@
 pkgbase = azure-ddns
 	pkgdesc = Dynamic DNS updater for Azure DNS (A + AAAA records)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/fnrhombus/azure-ddns
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = azure-ddns
 	depends = systemd
 	optdepends = networkmanager: update-on-link-up dispatcher hook
 	backup = etc/azure-ddns.env
-	source = azure-ddns-0.2.1.tar.gz::https://github.com/fnrhombus/azure-ddns/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = adeaebf1b79de8db03acabf678e0d9d0ea052802cbef36ce3a4ca120de296569
+	source = azure-ddns-0.2.2.tar.gz::https://github.com/fnrhombus/azure-ddns/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = f02a0728e02a65c7f793435f7007f51ada49a2955f4326153ec761784bfd096b
 
 pkgname = azure-ddns
