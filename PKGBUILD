@@ -23,6 +23,14 @@ package() {
   
   echo -e "#!/bin/sh\npython /usr/share/pyhotspot/core/main.py \"\$@\"" > "$pkgdir/usr/bin/pyhotspot"
   chmod +x "$pkgdir/usr/bin/pyhotspot"
+
+  echo "[Desktop Entry]
+Name=PyWiHotspot
+Exec=pyhotspot
+Icon=network-wireless
+Terminal=false
+Type=Application
+Categories=Network;System;" > pyhotspot.desktop
   
   install -Dm644 pyhotspot.desktop "$pkgdir/usr/share/applications/pyhotspot.desktop"
 }
