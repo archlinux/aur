@@ -4,13 +4,13 @@
 # Thanks to Fabio Lolix for the patch.
 
 pkgname=applewin-git
-pkgver=1.30.21.0.b.r184.g0e512c7e
+pkgver=1.30.21.0.b.r289.gbbe80789
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
 url="https://github.com/audetto/AppleWin.git"
 license=('GPL2')
-depends=('boost-libs' 'minizip'  'libslirp' 'sdl2_image' 'qt6-multimedia' 'libyaml' 'xxd')
+depends=('boost-libs' 'minizip'  'libslirp' 'sdl3' 'sdl3_image' 'qt6-multimedia' 'libyaml' 'xxd')
 makedepends=('git' 'cmake' 'boost')
 provide=(applewin)
 conflicts=(applewin)
@@ -53,7 +53,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DSA2_SDL3=ON ..
   make
 }
 
