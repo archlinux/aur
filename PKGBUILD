@@ -44,4 +44,30 @@ Categories=Network;System;" > pyhotspot.desktop
   
   # 3. Даем права на исполнение
   chmod +x "$pkgdir/usr/bin/pyhotspot"
+
+  CURRENT_USER="${SUDO_USER:-$USER}"
+
+echo "Настройка прав для пользователя: $CURRENT_USER"
+
+sudo tee /etc/sudoers.d/pyhotspot > /dev/null << EOF
+$CURRENT_USER ALL=(ALL) NOPASSWD: /usr/bin/nmcli
+$CURRENT_USER ALL=(ALL) NOPASSWD: /usr/sbin/rfkill
+$CURRENT_USER ALL=(ALL) NOPASSWD: /usr/sbin/sysctl -w net.ipv4.ip_forward=1
+$CURRENT_USER ALL=(ALL) NOPASSWD: /bin/systemctl start NetworkManager
+$CURRENT_USER ALL=(ALL) NOPASSWD: /bin/systemctl daemon-reload
+$CURRENT_USER ALL=(ALL) NOPASSWD: /bin/systemctl enable pyhotspot.service
+$CURRENT_USER ALL=(ALL) NOPASSWD: /bin/systemctl disable pyhotspot.service
+$CURRENT_USER ALL=(ALL) NOPASSWD: /bin/rm -f /etc/systemd/system/pyhotspot.service
+EOF
+
+sudo chmod 440 /etc/sudoers.d/pyhotspot
+sudo chown root:root /etc/sudoers.d/pyhotspot
+
+if sudo visudo -c -f /etc/sudoers.d/pyhotspot; then
+    echo "Права настроены успешно"
+else
+    echo "Ошибка в файле sudoers — удаляем"
+    sudo rm /etc/sudoers.d/pyhotspot
+    exit 1
+fi
 }
