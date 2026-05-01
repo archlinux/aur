@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgbase=ollama-bin
-pkgname=(ollama-bin ollama-vulkan-bin)
+pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin ollama-mlx-cuda13-bin ollama-vulkan-bin)
 pkgver=0.22.1
 pkgrel=1
 pkgdesc="Create, run and share large language models (LLMs)"

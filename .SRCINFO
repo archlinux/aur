@@ -33,6 +33,35 @@ pkgbase = ollama-bin
 pkgname = ollama-bin
 	backup = etc/ollama.conf
 
+pkgname = ollama-cuda12-bin
+	pkgdesc = Create, run and share large language models (LLMs) with CUDA 12
+	depends = ollama-bin
+	depends = nvidia-libgl
+	provides = ollama-cuda12
+	conflicts = ollama-cuda
+	conflicts = ollama-cuda13
+	conflicts = ollama-vulkan
+
+pkgname = ollama-cuda13-bin
+	pkgdesc = Create, run and share large language models (LLMs) with CUDA 13
+	depends = ollama-bin
+	depends = nvidia-libgl
+	optdepends = ollama-mlx-cuda13-bin: Image Generation
+	provides = ollama-cuda13
+	conflicts = ollama-cuda
+	conflicts = ollama-cuda12
+	conflicts = ollama-vulkan
+
+pkgname = ollama-mlx-cuda13-bin
+	pkgdesc = Create, run and share large language models (LLMs) with MLX CUDA 13 (Image Generation)
+	depends = glibc
+	depends = gcc-libs
+	depends = ollama-cuda13
+	provides = ollama-mlx
+	conflicts = ollama-cuda
+	conflicts = ollama-cuda12
+	conflicts = ollama-vulkan
+
 pkgname = ollama-vulkan-bin
 	pkgdesc = Create, run and share large language models (LLMs) with Vulkan
 	depends = glibc
