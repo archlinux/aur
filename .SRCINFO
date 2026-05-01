@@ -1,7 +1,7 @@
 pkgbase = firetail-bin
 	pkgdesc = Firetail music player
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kawuchuu/firetail
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,6 @@ pkgbase = firetail-bin
 	options = !strip
 	options = !debug
 	source = firetail-1.0.0::https://github.com/kawuchuu/firetail/releases/download/v1.0.0/Firetail-linux-x64-1.0.0.zip
-	sha256sums = 4d37f554e2da00736ad3561dca710e2b3db9a52779883d506dfac625bbd0c77d
+	sha256sums = 446231f9d0d28de6ff31424c3c20150409fe41904eebb147f670529984cfc0d2
 
 pkgname = firetail-bin
