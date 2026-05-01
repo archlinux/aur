@@ -1,7 +1,7 @@
 pkgbase = yoctofetch-git
-	pkgdesc = Fast system fetch tool for Linux with a low footprint
+	pkgdesc = Fast and low footprint system fetch tool for the Linux UAPI
 	pkgver = 2.0.0.r4.be15fe1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Phosphenius/yoctofetch
 	arch = aarch64
 	arch = x86_64
