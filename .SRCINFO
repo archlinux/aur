@@ -1,0 +1,13 @@
+pkgbase = qorx
+	pkgdesc = Qorx language and runtime for local context resolution
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/bbrainfuckk/qorx
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = rust
+	source = qorx-1.0.2.tar.gz::https://crates.io/api/v1/crates/qorx/1.0.2/download
+	sha256sums = d3d2dae84ba985a1d694c2e9425115ac1c6495e3a716ce9cfe774728ebb00f38
+
+pkgname = qorx
