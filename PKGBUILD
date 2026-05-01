@@ -2,7 +2,7 @@
 
 pkgname=vilearn
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive vi tutorial"
 arch=('any')
 url="https://git.sr.ht/~libele/vilearn"
