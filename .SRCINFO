@@ -1,0 +1,17 @@
+pkgbase = python-tinyoscquery
+	pkgdesc = OSCQuery for Python
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/cyberkitsune/python-tinyoscquery
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-zeroconf
+	depends = python-requests
+	conflicts = python-tinyoscquery
+	conflicts = python-tinyoscquery-git
+	source = https://github.com/cyberkitsune/tinyoscquery/archive/refs/tags/0.1.3.tar.gz
+	sha256sums = e6548c89827fe0dbbf4b2b621aa4e7efeb97890f14ecc0debc1dabec84d16bd3
+
+pkgname = python-tinyoscquery
