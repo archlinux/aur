@@ -1,6 +1,6 @@
 pkgbase = snip-rs
 	pkgdesc = A minimal snippet sharing service with API, CLI, and web frontend
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/snip
 	install = snip.install
@@ -8,9 +8,9 @@ pkgbase = snip-rs
 	arch = aarch64
 	license = MIT
 	options = !strip
-	source_x86_64 = snip-rs-0.1.1-x86_64.tar.gz::https://github.com/skorotkiewicz/snip/releases/download/v0.1.1/snip-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 679aaf4ddc6c34230880cc62cfb622bb6858c5bde0b5a46f9cfebce47154c984
-	source_aarch64 = snip-rs-0.1.1-aarch64.tar.gz::https://github.com/skorotkiewicz/snip/releases/download/v0.1.1/snip-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a04165d368babab18be9caabff26024dbdb2ccf692c0cdbd5b33a940a6ab1937
+	source_x86_64 = snip-rs-0.1.2-x86_64.tar.gz::https://github.com/skorotkiewicz/snip/releases/download/v0.1.2/snip-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 045d98457513b6aeac7246a374814d46b2f82e8d47e7479d5510e4aae3b328f8
+	source_aarch64 = snip-rs-0.1.2-aarch64.tar.gz::https://github.com/skorotkiewicz/snip/releases/download/v0.1.2/snip-v0.1.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 66ec5569a0d4905555420762576554e8782a59ae9c764b16a3810c34e3f40989
 
 pkgname = snip-rs
