@@ -1,6 +1,2 @@
-2.42.3-1 [2026-04-23]
-- [Desktop][Enterprise] Added enterprise logs for policy and download-related activities.
-- [Android][iOS][Enterprise] Introduced Watermark Policy.
-- [Android][iOS][Enterprise] Added support for enrolling mobile devices through MDM.
-- [Android][Enhancements] Added support for userscripts that run at document start.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 147.0.7727.117.
+2.42.4-1 [2026-04-29]
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 147.0.7727.137.
