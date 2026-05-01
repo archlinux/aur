@@ -33,7 +33,7 @@ package() {
     install -Dm755 publish/libHarfBuzzSharp.so    "$pkgdir/usr/lib/hypricing/libHarfBuzzSharp.so"
     install -dm755                                 "$pkgdir/usr/bin"
     ln -s /usr/lib/hypricing/hypricing            "$pkgdir/usr/bin/hypricing"
-    install -Dm644 assets/hypricing.png           "$pkgdir/usr/share/icons/hicolor/256x256/apps/hypricing.png"
+    install -Dm644 assets/hypricing.svg           "$pkgdir/usr/share/icons/hicolor/scalable/apps/hypricing.svg"
     install -Dm644 hypricing.desktop              "$pkgdir/usr/share/applications/hypricing.desktop"
     install -Dm644 LICENSE                        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
