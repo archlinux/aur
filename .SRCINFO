@@ -1,6 +1,6 @@
 pkgbase = kicad-library-nightly
 	pkgdesc = KiCAD component and footprint libraries
-	pkgver = 10.99.0_730_gb519092cc5
+	pkgver = 10.99.0_828_g056ea91911
 	pkgrel = 1
 	url = http://kicad.org/
 	arch = any
