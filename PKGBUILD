@@ -24,7 +24,7 @@ source=("cc-legal::https://code.claude.com/docs/en/legal-and-compliance.md")
 source_x86_64=("claude-${pkgver}-x86_64::https://downloads.claude.ai/claude-code-releases/${pkgver}/linux-x64/claude")
 source_aarch64=("claude-${pkgver}-aarch64::https://downloads.claude.ai/claude-code-releases/${pkgver}/linux-arm64/claude")
 
-sha256sums=('6e2bef1e67b0e0efef6f7707b5795d07cfb0e61f768ca76ad0823d671ab4a64d')
+sha256sums=('SKIP')
 sha256sums_x86_64=('fce96968d275161ff65a4c19fc6434efc6973d9f6d35dc3992a2ba0553cac18e')
 sha256sums_aarch64=('88a6dca613a40559f3bac8a946a2ec6e60a870b91938d3df93dcac1dec4848cb')
 
