@@ -1,6 +1,6 @@
 pkgbase = git-machete
 	pkgdesc = Git repository organizer & rebase/merge workflow automation tool
-	pkgver = 3.40.0
+	pkgver = 3.40.1
 	pkgrel = 1
 	url = https://github.com/VirtusLab/git-machete
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = git-machete
 	optdepends = bash: bash completion
 	optdepends = fish: fish completion
 	optdepends = zsh: zsh completion
-	source = git-machete-3.40.0.tar.gz::https://github.com/VirtusLab/git-machete/archive/v3.40.0.tar.gz
+	source = git-machete-3.40.1.tar.gz::https://github.com/VirtusLab/git-machete/archive/v3.40.1.tar.gz
 	source = setup_packages.patch
-	sha256sums = a6389ca0e36e67898b0b1248121409693ea985395e9cdafd9582cea311399483
+	sha256sums = b50af9ca4506cd7d80150f191959115bd777320a378924e736ce81671170ac47
 	sha256sums = 85d234fb2bdc8cef581056cadbc45003cd2ad36e5feb7330a71f64e7c9ac8dda
 
 pkgname = git-machete
