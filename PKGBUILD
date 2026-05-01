@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop-electron
-pkgver=1.14.29
+pkgver=1.14.31
 pkgrel=1
 pkgdesc='OpenCode Electron desktop app (built from source, runs on system electron41)'
 arch=('x86_64' 'aarch64')
