@@ -3,7 +3,7 @@
 pkgbase='sensu-go'
 pkgname=('sensu-go-agent' 'sensu-go-backend' 'sensu-go-cli')
 pkgdesc="Sensu is an open source monitoring tool for ephemeral infrastructure and distributed applications."
-pkgver=6.13.1
+pkgver=6.14.0
 pkgrel=1
 arch=('x86_64')
 url='https://sensu.io'
@@ -18,7 +18,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/sensu/sensu-go/archive/
         "${pkgbase}-backend-${pkgver%.*}.yml.example::https://docs.sensu.io/sensu-go/${pkgver%.*}/files/backend.yml"
         "${pkgbase/-go/}.sysusers"
         "${pkgbase/-go/}.tmpfiles")
-sha256sums=('e34668a20898f61fcdea2d99205f0c0674f0f10dcf8e821e5d57ba31325b63e2'
+sha256sums=('4bfbfba80e470843c741884a8a20f318519c8c55d696d095b7cec46fd6deccb8'
             '2e512118a12f6e716c9279efd7d48eaa4e5e927a8a80444868808f34223e3c99'
             '57c4e7835da2d58186e8e36518dc9e0b7cee93bd018619ec2a7210bf212d0d27'
             '435ecda655594810f02181fe1b8e5e25a4a90f8cf992a9c6859226fbbad3300c'
