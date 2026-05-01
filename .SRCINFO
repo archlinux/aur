@@ -1,7 +1,7 @@
 pkgbase = spotify-qt-bin
 	pkgdesc = Lightweight Spotify client using Qt
-	pkgver = 4.0.3
-	pkgrel = 2
+	pkgver = 4.0.4
+	pkgrel = 1
 	url = https://github.com/kraxarn/spotify-qt
 	arch = x86_64
 	arch = aarch64
@@ -14,9 +14,9 @@ pkgbase = spotify-qt-bin
 	provides = spotify-qt
 	conflicts = spotify-qt
 	options = !debug
-	source_x86_64 = spotify-qt-v4.0.3-x86_64.AppImage::https://github.com/kraxarn/spotify-qt/releases/download/v4.0.3/spotify-qt-v4.0.3-x86_64.AppImage
-	sha256sums_x86_64 = 759b3468889b65d39c6a20ea1d7237afa2f79f68ee130602ceca4e16fb08fd25
-	source_aarch64 = spotify-qt-v4.0.3-aarch64.AppImage::https://github.com/kraxarn/spotify-qt/releases/download/v4.0.3/spotify-qt-v4.0.3-aarch64.AppImage
-	sha256sums_aarch64 = d333678458a25143e0d794fa2d01830bff5b57d13422b4f40dacee749c9bd4d5
+	source_x86_64 = spotify-qt-v4.0.4-x86_64.AppImage::https://github.com/kraxarn/spotify-qt/releases/download/v4.0.4/spotify-qt-v4.0.4-x86_64.AppImage
+	sha256sums_x86_64 = f92c3e446267bc7e10f1b016232ba3f2d74f05e0be2c5ac132c403ae79a0e21f
+	source_aarch64 = spotify-qt-v4.0.4-aarch64.AppImage::https://github.com/kraxarn/spotify-qt/releases/download/v4.0.4/spotify-qt-v4.0.4-aarch64.AppImage
+	sha256sums_aarch64 = dbe0f455784e33a0acc11d9bf0e5062545f77360e44898f613a4d5bcbc95b668
 
 pkgname = spotify-qt-bin
