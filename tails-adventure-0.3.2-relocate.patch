@@ -1,0 +1,33 @@
+diff --color -Naur tails-adventure-0.3.2.orig/CMakeLists.txt tails-adventure-0.3.2/CMakeLists.txt
+--- tails-adventure-0.3.2.orig/CMakeLists.txt	2026-04-26 18:40:04.000000000 +0200
++++ tails-adventure-0.3.2/CMakeLists.txt	2026-05-01 19:45:15.167434433 +0200
+@@ -149,12 +149,12 @@
+ 
+ if(TA_UNIX_INSTALL)
+     target_compile_options(tails-adventure PRIVATE -DTA_UNIX_INSTALL)
+-    install(TARGETS tails-adventure DESTINATION /usr/local/bin)
+-    install(DIRECTORY assets/ DESTINATION /usr/local/share/tails-adventure)
+-    install(FILES external/SDL_GameControllerDB/gamecontrollerdb.txt DESTINATION /usr/local/share/tails-adventure)
+-    install(FILES res/tails-adventure.png DESTINATION /usr/local/share/icons)
++    install(TARGETS tails-adventure DESTINATION /usr/bin)
++    install(DIRECTORY assets/ DESTINATION /usr/share/tails-adventure)
++    install(FILES external/SDL_GameControllerDB/gamecontrollerdb.txt DESTINATION /usr/share/tails-adventure)
++    install(FILES res/tails-adventure.png DESTINATION /usr/share/icons)
+     if(NOT APPLE)
+-        install(FILES res/tails-adventure.desktop DESTINATION /usr/local/share/applications)
++        install(FILES res/tails-adventure.desktop DESTINATION /usr/share/applications)
+     endif()
+ else()
+     install(TARGETS tails-adventure DESTINATION ${CMAKE_BINARY_DIR}/output)
+diff --color -Naur tails-adventure-0.3.2.orig/src/engine/filesystem.cpp tails-adventure-0.3.2/src/engine/filesystem.cpp
+--- tails-adventure-0.3.2.orig/src/engine/filesystem.cpp	2026-04-26 18:40:04.000000000 +0200
++++ tails-adventure-0.3.2/src/engine/filesystem.cpp	2026-05-01 19:44:43.143921717 +0200
+@@ -58,7 +58,7 @@
+ #ifdef __ANDROID__
+     return "";
+ #elifdef TA_UNIX_INSTALL
+-    return "/usr/local/share/tails-adventure";
++    return "/usr/share/tails-adventure";
+ #else
+     return getExecutableDirectory() / "assets";
+ #endif

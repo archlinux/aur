@@ -1,0 +1,89 @@
+diff --color -Naur tails-adventure-0.3.2.orig/CMakeLists.txt tails-adventure-0.3.2/CMakeLists.txt
+--- tails-adventure-0.3.2.orig/CMakeLists.txt	2026-04-26 18:40:04.000000000 +0200
++++ tails-adventure-0.3.2/CMakeLists.txt	2026-05-01 20:41:41.379492192 +0200
+@@ -34,51 +34,13 @@
+     add_link_options(-fsanitize=address,leak,undefined)
+ endif()
+ 
+-# silence annoying warning inside toml11
+-add_compile_options(-Wno-deprecated-literal-operator)
++set(BUILD_SHARED_LIBS OFF)
+ 
+-if(ANDROID)
+-    set(BUILD_SHARED_LIBS ON)
+-else()
+-    set(BUILD_SHARED_LIBS OFF)
+-    set(SDL_STATIC ON)
+-    set(SDL_DISABLE_INSTALL ON)
+-endif()
++find_package(SDL3 REQUIRED)
++find_package(SDL3_image REQUIRED)
++find_package(toml11 REQUIRED)
+ 
+-add_compile_definitions(SDL_DISABLE_INVALID_PARAMS)
+-add_subdirectory(external/SDL EXCLUDE_FROM_ALL)
+-
+-if(ANDROID)
+-    set(BUILD_SHARED_LIBS OFF)
+-endif()
+-
+-set(SDLIMAGE_VENDORED ON)
+-set(SDLIMAGE_DEPS_SHARED OFF)
+-set(SDLIMAGE_INSTALL OFF)
+-set(SDLIMAGE_BACKEND_STB OFF)
+-set(SDLIMAGE_BACKEND_WIC OFF)
+-set(SDLIMAGE_BACKEND_IMAGEIO OFF)
+-set(SDLIMAGE_ANI OFF)
+-set(SDLIMAGE_PNG ON)
+-set(SDLIMAGE_PNG_LIBPNG OFF)
+-set(SDLIMAGE_AVIF OFF)
+-set(SDLIMAGE_BMP OFF)
+-set(SDLIMAGE_GIF OFF)
+-set(SDLIMAGE_JPG OFF)
+-set(SDLIMAGE_JXL OFF)
+-set(SDLIMAGE_LBM OFF)
+-set(SDLIMAGE_PCX OFF)
+-set(SDLIMAGE_PNM OFF)
+-set(SDLIMAGE_QOI OFF)
+-set(SDLIMAGE_SVG OFF)
+-set(SDLIMAGE_TGA OFF)
+-set(SDLIMAGE_TIF OFF)
+-set(SDLIMAGE_WEBP OFF)
+-set(SDLIMAGE_XCF OFF)
+-set(SDLIMAGE_XPM OFF)
+-set(SDLIMAGE_XV OFF)
+-
+-set(SDLMIXER_VENDORED ON)
++set(SDLMIXER_VENDORED OFF)
+ set(SDLMIXER_DEPS_SHARED OFF)
+ set(SDLMIXER_INSTALL OFF)
+ set(SDLMIXER_AIFF OFF)
+@@ -110,14 +72,10 @@
+ set(TMXPP_BASE64 OFF)
+ set(TMXPP_ZSTD OFF)
+ set(TMXPP_ZLIB OFF)
+-set(TOML11_PRECOMPILE ON)
++set(TMXPP_VENDORED OFF)
+ 
+-add_subdirectory(external/SDL_image EXCLUDE_FROM_ALL)
+ add_subdirectory(external/SDL_mixer EXCLUDE_FROM_ALL)
+ add_subdirectory(external/tmxpp EXCLUDE_FROM_ALL)
+-add_subdirectory(external/toml11 EXCLUDE_FROM_ALL)
+-
+-target_compile_options(toml11 PRIVATE -Wno-error)
+ 
+ if(WIN32)
+     enable_language("RC")
+@@ -151,10 +109,9 @@
+     )
+ else()
+     target_link_libraries(tails-adventure PRIVATE
+-        SDL3::SDL3-static
+-        SDL3_image::SDL3_image-static
++        SDL3_image::SDL3_image
+         SDL3_mixer::SDL3_mixer-static
+-        SDL3::SDL3-static
++        SDL3::SDL3
+         tmxpp
+         toml11::toml11
+     )
