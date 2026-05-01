@@ -44,12 +44,12 @@ sha256sums=('ef7cf0930e9dbc6e687e5239adc5911f45499b2dbe5b9264b06b3cd1187d17bb')
 options=('!debug')
 
 build() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
   cmake --build build -j$(nproc)
 }
 
 package() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   DESTDIR="$pkgdir" cmake --install build
 }
