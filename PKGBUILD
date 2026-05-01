@@ -2,12 +2,12 @@
 
 pkgname=tuxedo-control-center-bin
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops. "
 arch=(x86_64)
 url="https://github.com/tuxedocomputers/tuxedo-control-center"
 license=('GPL3')
-depends=('tuxedo-drivers-dkms' 'libxss' 'nss' 'gtk3')
+depends=('tuxedo-drivers-dkms' 'libxss' 'nss' 'gtk3' 'upower')
 optdepends=('libayatana-appindicator' 'libappindicator-gtk3')
 conflicts=('tuxedo-control-center' 'auto-cpufreq')
 options=(!strip !debug)
