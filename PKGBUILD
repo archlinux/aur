@@ -1,6 +1,6 @@
 # Maintainer: shbernal <shbernal.01@gmail.com>
 pkgname=och
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Helper script for some OpenClaw TUI gaps'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/shbernal/och'
 license=('MIT')
 depends=('bash' 'jq' 'moreutils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dad412bfc58e1d13b01660277c9b53f61f722a5134b175bc069893bb8b064885')
+sha256sums=('2178d965138f783c24a91fb2812dd43fca94b45b3a44c75980950a9c99fc348c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
