@@ -2,7 +2,7 @@
 # ex-maintainer: Arthur Deierlein <arthur.deierlein@adfinis.com>
 _pkgname="rich-argparse"
 pkgname="python-$_pkgname"
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Rich help formatters for argparse and optparse"
 url="https://github.com/hamdanal/$_pkgname"
@@ -12,7 +12,7 @@ depends=("python>=3.0" "python-rich")
 makedepends=("python-build" "python-installer" "python-hatchling")
 _pkgtag="$_pkgname-$pkgver"
 source=("$_pkgtag.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a906ef1682324c4897c967ff843cea710dfa2dbbaff508e7404f9f60ea3cffa2')
+sha256sums=('3d201d0d377e6dfac04215880ee1ba144af0cf449d27a1ca26a194a505965b07')
 
 build() {
   cd "$_pkgtag"
