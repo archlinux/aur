@@ -1,11 +1,12 @@
-From c331a4ec7a5f10927d45499f26d056c0a37aa768 Mon Sep 17 00:00:00 2001
+From 1331dbdb1f71a78d21ee4b114867d02ec4430eba Mon Sep 17 00:00:00 2001
 From: Phillip Schichtel <phillip@schich.tel>
 Date: Fri, 1 May 2026 18:07:15 +0200
-Subject: [PATCH] Fix boost and python3
+Subject: [PATCH] Fix boost, python3 and imgui
 
 ---
- CMakeLists.txt | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ CMakeLists.txt     | 3 ++-
+ apps/Viewer/UI.cpp | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 6d8a46e..27aaf0d 100644
@@ -28,6 +29,19 @@ index 6d8a46e..27aaf0d 100644
  if(Boost_FOUND)
  	ADD_DEFINITIONS(${Boost_DEFINITIONS})
  	LIST(APPEND OpenMVS_EXTRA_LIBS ${Boost_LIBRARIES})
+diff --git a/apps/Viewer/UI.cpp b/apps/Viewer/UI.cpp
+index 919e97b..9b402a9 100644
+--- a/apps/Viewer/UI.cpp
++++ b/apps/Viewer/UI.cpp
+@@ -1482,7 +1482,7 @@ void UI::ShowCameraInfoDialog(Window& window) {
+ 						// Highlight and make the entire row clickable by using Selectable
+ 						const bool isSelected(window.selectedNeighborCamera == neighbor.ID);
+ 						String rowLabel = String::FormatString("%u/%u##neighbor_%u", neighbor.ID, neighborImage.ID, neighbor.ID);
+-						bool rowClicked = ImGui::Selectable(rowLabel.c_str(), isSelected, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowItemOverlap);
++						bool rowClicked = ImGui::Selectable(rowLabel.c_str(), isSelected, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowOverlap);
+ 						// Handle row click
+ 						if (rowClicked) {
+ 							// Deselect if already selected, or select it otherwise
 -- 
 2.54.0
 
