@@ -9,8 +9,6 @@ license=('custom:unlicensed')
 depends=('bash' 'evsieve' 'libinput-tools' 'python' 'python-pywebview' 'python-pyqt6' 'python-pyqt6-webengine')
 makedepends=('git')
 optdepends=('systemd: enable gs3104tpro-remap.service for auto-start' 'pkexec: allow in-page systemd control and config saving without root terminal')
-provides=('kbd-drive-remap')
-conflicts=('kbd-drive-remap')
 backup=('etc/kbd-drive/remap-gs3104tpro.yaml')
 install="${pkgname}.install"
 source=("git+${url}.git")
@@ -25,7 +23,7 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/gs-3104t-pro-remap"
+    cd "${srcdir}/gs-3104t-pro-remap" || return 1
 
     install -Dm755 remap-gs3104tpro.sh "${pkgdir}/usr/lib/kbd-drive/remap-gs3104tpro.sh"
     install -Dm755 kbd-drive-config-ui.py "${pkgdir}/usr/lib/kbd-drive/kbd-drive-config-ui.py"
