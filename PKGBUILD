@@ -7,7 +7,7 @@
 pkgname=hop-openhwp-bin
 _pkgname=hop-openhwp
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Open desktop editor for HWP and HWPX documents"
 arch=('x86_64')
 url="https://github.com/golbin/hop"
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 
 source=(
   "$pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/HOP-linux-x64.deb"
-  "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
+  "${url}/raw/v${pkgver}/LICENSE"
 )
 noextract=("$pkgname-$pkgver.deb")
 sha256sums=('2563efd611a1174e02797ff203f53c4febc7d64107a602238933ae48a52e9891'
@@ -30,5 +30,5 @@ package() {
   bsdtar -xf "$pkgname-$pkgver.deb"
   bsdtar -xf data.tar.gz -C "$pkgdir/"
 
-  install -Dm644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = hop-openhwp-bin
 	pkgdesc = Open desktop editor for HWP and HWPX documents
 	pkgver = 0.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/golbin/hop
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = hop-openhwp-bin
 	options = !strip
 	options = !debug
 	source = hop-openhwp-bin-0.1.10.deb::https://github.com/golbin/hop/releases/download/v0.1.10/HOP-linux-x64.deb
-	source = LICENSE-0.1.10::https://github.com/golbin/hop/raw/v0.1.10/LICENSE
+	source = https://github.com/golbin/hop/raw/v0.1.10/LICENSE
 	sha256sums = 2563efd611a1174e02797ff203f53c4febc7d64107a602238933ae48a52e9891
 	sha256sums = 1c3a7d5643b163a3ead4965e1bea33b832caee5bfca265efe42afcd7bc696b5b
 
