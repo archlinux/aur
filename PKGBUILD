@@ -5,7 +5,7 @@ pkgver=0.1
 pkgver() {
     sed -nr '/PACKAGE_VERSION/s/^.*="(.*)"$/\1/p' ${srcdir}/snd_hda_macbookpro/dkms.conf
 }
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel driver for sound on Macs with Cirrus 8409 HDA chips"
 arch=(any)
 url="https://github.com/davidjo/snd_hda_macbookpro"
