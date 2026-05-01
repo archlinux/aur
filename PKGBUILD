@@ -10,7 +10,7 @@ arch=('x86_64')
 conflicts=('yafu-git' 'yafu')
 provides=('yafu-git-gcc9' 'yafu' 'ysieve')
 makedepends=('git' 'subversion' 'gcc9')
-depends=('gmp' 'gmp-ecm')
+depends=('gmp' 'gmp-ecm' 'zlib')
 optdepends=('ggnfs')
 source=(
 	"git+https://github.com/bbuhrow/yafu.git"
@@ -49,7 +49,7 @@ build() {
 	cp libysieve.a ${srcdir}/yafu/
 
 	cd ${srcdir}/msieve
-	make all NO_ZLIB=1 CC=gcc-9
+	make all CC=gcc-9
 
 	cd ${srcdir}/yafu
 	make yafu CC=gcc-9 NFS=1 CFLAGS="$CFLAGS -g -m64 -std=gnu99 -DUSE_SSE2 -fno-common -DUSE_NFS -O2 -fomit-frame-pointer -Wall  -I. -Iinclude -Itop/aprcl -Itop/cmdParser -Itop/ -Ims_include/ -Ifactor/gmp-ecm   -I../ysieve -I../ytools -I../msieve/zlib -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -DVBITS=64 -Iaprcl -Ignfs/poly/stage1 -Ignfs/poly"
