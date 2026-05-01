@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=snip-rs
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A minimal snippet sharing service with API, CLI, and web frontend"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ install=snip.install
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/snip-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/snip-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('e410082e30ba2102020de91dd958daccc9a4ac9d32ee92d216aa96d989c28b9f')
-sha256sums_aarch64=('08ae33978ec70bd38ab4072fefcd97d94f7fc634fc8aba3e78476169ea4f883e')
+sha256sums_x86_64=('1084311bf02f6caf6d339469b2975e0a2a67402d1f67ca48464f583db79f4ef2')
+sha256sums_aarch64=('f34819233897ea0adca835183cb8bd29e54297fd2cebae4c3f595765c10ab06e')
 
 package() {
     install -Dm755 snipped "${pkgdir}/usr/bin/snipped"
