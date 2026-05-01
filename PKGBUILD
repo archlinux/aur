@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-keygen
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="ed25519 key generation and inspection tool for moshpit"
 arch=('x86_64')

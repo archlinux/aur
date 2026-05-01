@@ -1,6 +1,6 @@
 pkgbase = moshpit-keygen
 	pkgdesc = ed25519 key generation and inspection tool for moshpit
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = moshpit-keygen
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = gcc
-	source = moshpit-keygen-0.2.0.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.2.0.tar.gz
+	source = moshpit-keygen-0.3.0.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.3.0.tar.gz
 	sha256sums = 6cb052dc4f041ba5d368de3da97b07a2a82b4da0c5e106ee2c6c879de7b038a6
 
 pkgname = moshpit-keygen
