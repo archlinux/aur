@@ -1,0 +1,15 @@
+pkgbase = extend-cli-git
+	pkgdesc = CLI for the Extend document processing platform
+	pkgver = v0.1.14.r1.3b1eed1
+	pkgrel = 1
+	url = https://github.com/extend-hq/extend-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = extend-cli
+	conflicts = extend-cli
+	source = git+https://github.com/extend-hq/extend-cli.git
+	sha256sums = SKIP
+
+pkgname = extend-cli-git
