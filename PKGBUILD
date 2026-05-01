@@ -1,7 +1,7 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop
-pkgver=1.32.0
+pkgver=1.33.1
 pkgrel=1
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
@@ -23,7 +23,7 @@ options=("!lto" "!debug")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/aaif-goose/goose/archive/refs/tags/v${pkgver}.tar.gz"
 )
-b2sums=('3378005479229e277a4063e1dd5b92f7680804ce9e84e9815d0be849612b25e98e5c3bad10db396c85d6245d91d31f6e3ea5fd1420e283a9a664ff3d1295ea76')
+b2sums=('cbb41196444147e2e60528f0252fef4ab1e2c6348845705121acef05cd0bf67ce8d3a9646225d57660e3df13305574c38989e06a9cdfb6f5eae16845fea17623')
 conflicts=("goose-desktop-bin")
 provides=("goose-desktop")
 
