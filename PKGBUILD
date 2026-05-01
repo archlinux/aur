@@ -125,7 +125,7 @@ prepare()
         fi
 
         ## Put a "0" at the beginning again.
-        if [[ "${#_current_month}" -eq "2" ]]; then
+        if [[ "${#_current_month}" -eq "1" ]]; then
             _current_month="0${_current_month}"
         fi
     done
