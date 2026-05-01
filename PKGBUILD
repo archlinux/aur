@@ -1,51 +1,55 @@
 # Maintainer: zyxisme <d0116u@gmail.com>
-pkgname=sshkeyman
-pkgver=0.1.0_787f0ce
+pkgname=sshkeyman-git
+pkgver=0.1.0.r0.gcee85a6
 pkgrel=1
-pkgdesc="Web-based SSH key & config manager"
+pkgdesc="Web-based SSH key & config manager (VCS version)"
 arch=('x86_64')
 url="https://github.com/zyxisme/sshkeyman"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo')
-_tag=v${pkgver%%_*}
-_srcdir=$pkgname-${pkgver%%_*}
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
+makedepends=('cargo' 'git')
+_gitname=sshkeyman
+source=("$_gitname::git+$url.git")
 sha256sums=('SKIP')
 options=('!lto')
 
+pkgver() {
+    cd "$_gitname"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-    cd "$_srcdir"
+    cd "$_gitname"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$_srcdir"
+    cd "$_gitname"
     cargo build --frozen --release
 }
 
 check() {
-    cd "$_srcdir"
+    cd "$_gitname"
     cargo test --frozen --release
 }
 
 package() {
-    cd "$_srcdir"
+    cd "$_gitname"
 
-    install -Dm755 target/release/sshkeyman "$pkgdir/usr/bin/sshkeyman"
+    install -Dm755 "target/release/$_gitname" "$pkgdir/usr/bin/$_gitname"
 
     # Static files needed at runtime
-    install -d "$pkgdir/usr/share/$pkgname"
-    cp -r static "$pkgdir/usr/share/$pkgname/"
+    install -d "$pkgdir/usr/share/$_gitname"
+    cp -r static "$pkgdir/usr/share/$_gitname/"
 
-    # Wrapper: run from /usr/share/sshkeyman so static/ is found
-    mv "$pkgdir/usr/bin/sshkeyman" "$pkgdir/usr/share/$pkgname/sshkeyman-bin"
-    cat > "$pkgdir/usr/bin/sshkeyman" << 'EOF'
+    # Wrapper: cd to shared dir so static/ is found at runtime
+    mv "$pkgdir/usr/bin/$_gitname" "$pkgdir/usr/share/$_gitname/$_gitname-bin"
+    cat > "$pkgdir/usr/bin/$_gitname" << 'WRAPPER'
 #!/bin/sh
-exec /usr/share/sshkeyman/sshkeyman-bin "$@"
-EOF
-    chmod 755 "$pkgdir/usr/bin/sshkeyman"
+cd /usr/share/sshkeyman && exec ./sshkeyman-bin "$@"
+WRAPPER
+    chmod 755 "$pkgdir/usr/bin/$_gitname"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_gitname/LICENSE" 2>/dev/null || true
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$_gitname/README.md"
 }
