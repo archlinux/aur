@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=A modern Rust + wgpu renderer for Resonite
+Exec=/opt/renderide/bootstrapper
+Name=renderide
+Path=/opt/renderide
+Type=Games

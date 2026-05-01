@@ -27,5 +27,6 @@ package() {
 	cd "$pkgname"
 	install -Dm0755 -t "${pkgdir}/opt/${_pkgname}" "target/release/bootstrapper"
 	install -Dm0755 -t "${pkgdir}/opt/${_pkgname}" "target/release/${_pkgname}"
+	install -Dm0755 -t "${pkgdir}/usr/share/applications" "../../renderide.desktop"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
