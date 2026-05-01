@@ -4,7 +4,7 @@ pkgname=handy
 pkgver=0.8.3
 # git rev-parse "v$pkgver"
 _tag=085cd530a30db479822125c758613c38fe0771b0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source and extensible speech-to-text application that works completely offline"
 arch=(x86_64 aarch64)
 url="https://github.com/cjpais/Handy"
@@ -63,6 +63,7 @@ build() {
   bun tauri signer generate -w "${pkgname}.key" -p "$password" > /dev/null
   export TAURI_SIGNING_PRIVATE_KEY="$(pwd)/${pkgname}.key"
   export TAURI_SIGNING_PRIVATE_KEY_PASSWORD="$password"
+  export RUSTUP_TOOLCHAIN=stable
 
   # Build and bundle deb package
   bun tauri build --bundles deb
