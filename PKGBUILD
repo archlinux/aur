@@ -2,16 +2,14 @@
 # Companion -git package. Tracks the main branch HEAD.
 # Submit as the AUR package "sentinel-git" alongside "sentinel".
 pkgname=sentinel-git
-pkgver=0.3.1.r0.gd04dabd
+pkgver=0.2.1.r0.g656b327
 pkgrel=1
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (git HEAD)"
-install=sentinel.install
 arch=('x86_64' 'aarch64')
 url="https://github.com/atayozcan/sentinel"
 license=('GPL-3.0-or-later')
 depends=(
     'pam'
-    'polkit'
     'wayland'
     'libxkbcommon'
     'fontconfig'
@@ -41,7 +39,7 @@ pkgver() {
     cd sentinel
     # 0.2.0.r{commits-since-tag}.g{shortsha}
     git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-        || printf '0.3.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+        || printf '0.2.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -79,15 +77,6 @@ package() {
     # /etc/pam.d/sudo automatically.
     install -Dm644 config/sudo \
         "$pkgdir/usr/share/doc/sentinel/sudo"
-
-    install -Dm755 target/release/sentinel-polkit-agent \
-        "$pkgdir/usr/lib/sentinel-polkit-agent"
-
-    install -Dm644 packaging/systemd/sentinel-polkit-agent.service \
-        "$pkgdir/usr/lib/systemd/user/sentinel-polkit-agent.service"
-
-    install -Dm644 packaging/xdg-autostart/sentinel-polkit-agent.desktop \
-        "$pkgdir/etc/xdg/autostart/sentinel-polkit-agent.desktop"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/sentinel/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/sentinel/README.md"
