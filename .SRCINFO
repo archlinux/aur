@@ -1,0 +1,21 @@
+pkgbase = iron-heart-git
+	pkgdesc = A BLE Heart Rate Monitor bridge for Social VR, OBS, Data Logging, and more
+	pkgver = r196.784c364
+	pkgrel = 1
+	url = https://github.com/nullstalgia/iron-heart
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = dbus
+	depends = openssl
+	provides = iron-heart
+	conflicts = iron-heart
+	options = !debug
+	source = iron-heart-git::git+https://github.com/nullstalgia/iron-heart.git
+	sha256sums = SKIP
+
+pkgname = iron-heart-git
