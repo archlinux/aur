@@ -1,19 +1,21 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-quota
 _npmname=@slkiser/opencode-quota
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="OpenCode plugin for quota & token usage tracking with zero context window pollution"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/slkiser/opencode-quota"
 license=('MIT')
-depends=('opencode')
+depends=('gcc-libs' 'nodejs' 'opencode')
 makedepends=('npm')
 options=('!debug')
 install=$pkgname.install
 
-source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz")
-sha256sums=('e0c1b8486d99e335c3db43f74ea6c23991e913e82859e73c2c1ba4d1b2adcd00')
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz"
+        "$pkgname-$pkgver-package-lock.json::https://raw.githubusercontent.com/slkiser/opencode-quota/v$pkgver/package-lock.json")
+sha256sums=('b9039cd49ede707bf02f50ce467ff7ec115ae96dd9e28f03c7b32d837d0cc224'
+            'a6b6770709280caeddeb1cf2193efff7987363565029d2dcde88963898546099')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/$_npmname/latest" | jq -r '.version'
@@ -21,14 +23,22 @@ latestver() {
 
 package() {
     cd "$srcdir/package"
-    npm install --omit=dev --ignore-scripts
 
-    mapfile -t _peerdeps < <(python3 - <<'PY'
-import json
+    cp "$srcdir/$pkgname-$pkgver-package-lock.json" package-lock.json
+    npm ci --omit=dev --ignore-scripts
 
-for name, version in json.load(open('package.json')).get('peerDependencies', {}).items():
-    print(f"{name}@{version}")
-PY
+    mapfile -t _peerdeps < <(node <<'JS'
+const fs = require("node:fs")
+
+const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"))
+const lock = JSON.parse(fs.readFileSync("package-lock.json", "utf8"))
+
+for (const name of Object.keys(pkg.peerDependencies ?? {})) {
+  const locked = lock.packages?.[`node_modules/${name}`]?.version
+  if (!locked) throw new Error(`package-lock.json does not pin ${name}`)
+  console.log(`${name}@${locked}`)
+}
+JS
     )
     if ((${#_peerdeps[@]})); then
         rm -rf "$srcdir/peer-root"
@@ -38,6 +48,9 @@ PY
 
     # Remove build tools pulled in by npm resolution (not needed at runtime)
     rm -rf node_modules/typescript node_modules/.bin
+    rm -f node_modules/@msgpackr-extract/msgpackr-extract-linux-x64/*.musl.node
+    rm -rf node_modules/@opentui/core/lib/tree-sitter/assets
+    rm -rf node_modules/jsesc/man node_modules/marked/man
 
     install -d "$pkgdir/usr/lib/opencode/plugins/$pkgname"
     cp -r . "$pkgdir/usr/lib/opencode/plugins/$pkgname/"
