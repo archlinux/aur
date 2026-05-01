@@ -1,7 +1,7 @@
 # Maintainer: Undercat037 <deltagamesdev037@gmail.com>
 pkgname=aura-emerge
-pkgver=1.8.0
-pkgrel=1
+pkgver=1.11.0
+pkgrel=2
 pkgdesc="Portage-like wrapper for Arch Linux using Aura"
 arch=('x86_64')
 url="https://github.com/Undercat037/aura-emerge"
