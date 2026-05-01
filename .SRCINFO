@@ -1,0 +1,23 @@
+pkgbase = runny-bin
+	pkgdesc = A tool for running things
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/simonwhitaker/runny
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = LicenseRef-UNLICENSE
+	depends = bash
+	provides = runny
+	conflicts = runny
+	options = !strip
+	source = README-0.2.1.md::https://raw.githubusercontent.com/simonwhitaker/runny/v0.2.1/README.md
+	sha256sums = cc8eee50aa319de86bd79b0ca4d5a5e08abc288f805cf31ab7675851d3df0c99
+	source_x86_64 = runny-x86_64-0.2.1.tgz::https://github.com/simonwhitaker/runny/releases/download/v0.2.1/runny_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 05dfb01f9ab743a8485d4784e5a2f3aae6ea1e6b3ef9cc3a9a011e5899b84685
+	source_i686 = runny-i686-0.2.1.tgz::https://github.com/simonwhitaker/runny/releases/download/v0.2.1/runny_Linux_i386.tar.gz
+	sha256sums_i686 = ac2f18c0716d098f0cb2fb4053af4c6ce398da3c06c569f76530f8c0b9de386c
+	source_aarch64 = runny-aarch64-0.2.1.tgz::https://github.com/simonwhitaker/runny/releases/download/v0.2.1/runny_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 85940703395967fba287eb3df5c4e26c73f9ab34c090d798dcbc5e2ec03f9da5
+
+pkgname = runny-bin

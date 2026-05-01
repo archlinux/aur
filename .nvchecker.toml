@@ -1,0 +1,5 @@
+[runny-bin]
+source = "github"
+github = "simonwhitaker/runny"
+use_latest_release = true
+prefix = "v"
