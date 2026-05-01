@@ -1,0 +1,25 @@
+post_install() {
+  echo ""
+  echo "==> Athena installed."
+  echo ""
+  echo "    Before starting, copy and configure the environment file:"
+  echo "      sudo cp /opt/athena/.env.example /opt/athena/.env"
+  echo "      sudo nano /opt/athena/.env"
+  echo ""
+  echo "    Then start Athena:"
+  echo "      athena start"
+  echo ""
+  echo "    Or enable it to start on boot:"
+  echo "      sudo systemctl enable --now athena"
+  echo ""
+  echo "    Frontend: http://localhost:5173"
+  echo "    API:      http://localhost:8000"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "==> Athena upgraded. Pull the latest images:"
+  echo "      athena update"
+  echo ""
+}

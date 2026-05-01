@@ -1,0 +1,20 @@
+pkgbase = athena
+	pkgdesc = Self-hosted AI research intelligence feed
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Thisen-Ekanayake/Athena
+	install = athena.install
+	arch = any
+	license = MIT
+	depends = docker
+	depends = docker-compose
+	source = docker-compose.yml::https://raw.githubusercontent.com/Thisen-Ekanayake/Athena/main/docker-compose.release.yml
+	source = .env.example::https://raw.githubusercontent.com/Thisen-Ekanayake/Athena/main/.env.example
+	source = athena
+	source = athena.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = athena

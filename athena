@@ -1,0 +1,42 @@
+#!/bin/bash
+set -e
+
+ATHENA_DIR="/opt/athena"
+
+if [[ ! -f "$ATHENA_DIR/.env" ]]; then
+  echo "Error: $ATHENA_DIR/.env not found."
+  echo "Copy the example and add your API keys first:"
+  echo "  sudo cp /opt/athena/.env.example /opt/athena/.env"
+  echo "  sudo nano /opt/athena/.env"
+  exit 1
+fi
+
+cd "$ATHENA_DIR"
+
+case "$1" in
+  start)
+    docker compose up -d
+    echo "Athena running at http://localhost:5173"
+    ;;
+  stop)
+    docker compose down
+    ;;
+  restart)
+    docker compose restart
+    ;;
+  logs)
+    docker compose logs -f "${@:2}"
+    ;;
+  update)
+    docker compose pull
+    docker compose up -d
+    echo "Athena updated."
+    ;;
+  status)
+    docker compose ps
+    ;;
+  *)
+    echo "Usage: athena {start|stop|restart|logs [service]|update|status}"
+    exit 1
+    ;;
+esac
