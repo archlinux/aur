@@ -7,10 +7,9 @@ pkgdesc="Vulkan post-processing layer with in-game ImGui overlay (32-bit)"
 arch=('x86_64')
 url="https://github.com/Boux/vkBasalt_overlay"
 license=('zlib')
-depends=('lib32-gcc-libs' 'lib32-libx11' 'lib32-libxi' 'lib32-vkbasalt')
-makedepends=('meson' 'ninja' 'glslang' 'spirv-headers' 'vulkan-headers')
+depends=('lib32-gcc-libs' 'lib32-libx11' 'lib32-libxi')
+makedepends=('meson' 'ninja' 'glslang' 'lib32-glibc' 'spirv-headers' 'vulkan-headers')
 provides=('lib32-vkbasalt-overlay')
-conflicts=('lib32-vkbasalt')
 options=('!libtool')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Boux/vkBasalt_overlay/archive/refs/tags/v${pkgver}.tar.gz")
