@@ -1,0 +1,16 @@
+pkgbase = omarchy-wled
+	pkgdesc = Sync Omarchy theme accent or wallpaper color to a WLED device
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ericdahl-dev/omarchy-wled
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-watchdog
+	depends = python-pillow
+	source = omarchy-wled-0.1.0.tar.gz::https://github.com/ericdahl-dev/omarchy-wled/archive/v0.1.0.tar.gz
+	sha256sums = c419dec9d7cded783e5ac169748e862bc48e9767d42321e431c88d725f27d4d7
+
+pkgname = omarchy-wled
