@@ -3,7 +3,7 @@
 pkgname=jellyfin-desktop-libmpv-git
 epoch=1
 pkgver=0.r55016.6242788
-pkgrel=2
+pkgrel=3
 pkgdesc='libmpv for jellyfin-desktop'
 arch=('x86_64')
 license=('GPL-2.0-or-later AND LGPL-2.1-or-later')
@@ -16,13 +16,15 @@ depends=('alsa-lib' 'desktop-file-utils' 'ffmpeg' 'glibc' 'hicolor-icon-theme'
          'libxss' 'libxv' 'luajit' 'mesa' 'mujs' 'libpipewire' 'rubberband' 'sdl2'
          'openal' 'uchardet' 'vapoursynth' 'vulkan-icd-loader' 'wayland' 'zlib')
 makedepends=('git' 'meson' 'python-docutils' 'ladspa' 'wayland-protocols'
-             'ffnvcodec-headers' 'vulkan-headers')
+             'ffnvcodec-headers' 'vulkan-headers' 'pacman-contrib')
 optdepends=('yt-dlp: for video-sharing websites playback')
 provides=('jellyfin-desktop-libmpv')
 replaces=('jellyfin-desktop-cef-libmpv-git')
 options=('!emptydirs')
-source=('git+https://github.com/andrewrabert/mpv#branch=cef-mpv')
-sha256sums=('SKIP')
+source=('git+https://github.com/andrewrabert/mpv#branch=cef-mpv'
+        'find-deps.py')
+sha256sums=('SKIP'
+            '1ba780ede4a28b68ae5b7ab839958ff91ed01d3c6c1d24cce8a5dd24492f8d2b')
 
 pkgver() {
   cd "$srcdir/mpv"
@@ -64,6 +66,7 @@ package() {
             'libva-wayland.so' 'libva-x11.so' 'libxkbcommon.so' 'librubberband.so')
 
   install -Dm755 build/libmpv.so.2 "${pkgdir}/opt/jellyfin-desktop/libmpv/lib/libmpv.so.2"
+
   ln -s libmpv.so.2 "${pkgdir}/opt/jellyfin-desktop/libmpv/lib/libmpv.so"
 
   install -Dm644 -t "${pkgdir}/opt/jellyfin-desktop/libmpv/include/mpv" \
@@ -71,4 +74,10 @@ package() {
     mpv/include/mpv/render.h \
     mpv/include/mpv/render_gl.h \
     mpv/include/mpv/stream_cb.h
+
+  # Update dependencies automatically based on dynamic libraries
+  _detected_depends=($(python3 "$srcdir"/find-deps.py "$pkgdir"/opt/jellyfin-desktop/libmpv/lib/libmpv.so.2))
+  echo 'Auto-detected dependencies:'
+  echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
+  depends+=("${_detected_depends[@]}")
 }
