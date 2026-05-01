@@ -1,4 +1,4 @@
-pkgname=openbangla-keyboard-git
+pkgname=openbangla-keyboard-fcitx-git
 pkgver=2.0.0.develop
 pkgrel=1
 pkgdesc="OpenBangla Keyboard with Fcitx5 support (Develop Branch)"
