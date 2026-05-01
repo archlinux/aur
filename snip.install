@@ -1,0 +1,15 @@
+post_install() {
+    echo "==> snip installed."
+    echo "==> snipped - snippet server (systemd service)"
+    echo "==> snip - CLI tool"
+    echo ""
+    echo "==> To start the service:"
+    echo "    sudo systemctl enable --now snip"
+    echo ""
+    echo "==> The server runs on http://localhost:3000 by default"
+    echo "==> Data is stored in /var/lib/snip/"
+}
+
+post_upgrade() {
+    post_install "$@"
+}
