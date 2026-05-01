@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Lynx DevTool
+Exec=/opt/lynx-devtool/LynxDevTool.AppImage %U
+Comment=Debug Lynx On-the-Fly
+Terminal=false
+Icon=lynx-devtool
+Type=Application
+StartupNotify=true
+StartupWMClass=LynxDevTool
+Categories=Network;Development;Utility;
