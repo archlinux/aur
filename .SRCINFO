@@ -1,7 +1,7 @@
 pkgbase = python-comfyui-frontend-package
 	pkgdesc = Official front-end implementation of ComfyUI
 	pkgver = 1.43.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Comfy-Org/ComfyUI_frontend/
 	arch = any
 	license = GPL-3.0
