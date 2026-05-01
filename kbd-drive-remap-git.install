@@ -1,5 +1,10 @@
 post_install() {
     cat <<'EOF'
+打开配置前端编辑器：
+  kbd-drive-config-web
+或者在命令行启动：
+  /usr/lib/kbd-drive/kbd-drive-config-ui.py
+
 启用开机自启动：
   sudo systemctl enable --now gs3104tpro-remap.service
 

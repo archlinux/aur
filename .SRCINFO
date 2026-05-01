@@ -1,6 +1,6 @@
 pkgbase = kbd-drive-remap-git
 	pkgdesc = Keyboard key remap via evsieve, systemd, and a desktop webview editor (git package)
-	pkgver = 0.0.0
+	pkgver = r0.g0000000
 	pkgrel = 1
 	url = https://github.com/LoveApple14434/gs-3104t-pro-remap
 	install = kbd-drive-remap-git.install
@@ -16,6 +16,8 @@ pkgbase = kbd-drive-remap-git
 	depends = python-pyqt6-webengine
 	optdepends = systemd: enable gs3104tpro-remap.service for auto-start
 	optdepends = pkexec: allow in-page systemd control and config saving without root terminal
+	provides = kbd-drive-remap
+	conflicts = kbd-drive-remap
 	backup = etc/kbd-drive/remap-gs3104tpro.yaml
 	source = git+https://github.com/LoveApple14434/gs-3104t-pro-remap.git
 	sha256sums = SKIP
