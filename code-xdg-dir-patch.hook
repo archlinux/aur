@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = code
+Target = visual-studio-code-bin
+
+[Action]
+Description = Patching product.json for code
+Exec = /usr/bin/code-xdg-dir-patch
+When = PostTransaction

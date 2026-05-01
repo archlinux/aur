@@ -1,0 +1,15 @@
+pkgbase = code-xdg-dir-patch
+	pkgdesc = Patch for Code to store data in ~/.local/share/
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = post.install
+	arch = any
+	license = GPL-3.0-only
+	depends = code
+	depends = bash
+	source = code-xdg-dir-patch.sh
+	source = code-xdg-dir-patch.hook
+	sha256sums = 1be05776ec5e8da0e932ca0e54d6c2a21786c5227ea4751e503ba19d7831efa4
+	sha256sums = 91144ebc95ea9e767b3a08ac1b66e7bd36c7c9a310fcd13e104f9ac8050e4165
+
+pkgname = code-xdg-dir-patch
