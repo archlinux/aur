@@ -1,0 +1,16 @@
+pkgbase = focuslock
+	pkgdesc = Lock a window fullscreen for focus sessions on KDE Wayland
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/Tamim180/focus_lock
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = qt5-tools
+	depends = kwin
+	source = focuslock-1.0.6.tar.gz::https://github.com/Tamim180/focus_lock/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = focuslock
