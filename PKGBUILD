@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note-git
 _pkgname='Yank Note'
-pkgver=3.76.1.r362.g6450c4b
+pkgver=3.87.1.r62.gccf3ffd
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -24,13 +24,14 @@ makedepends=(
     'git'
     'curl'
     'python'
+    'jq'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -44,8 +45,11 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname%-git}.git/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -name "node_modules" \
+        -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
+    _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
@@ -55,7 +59,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/
         s/@runname@/app.asar/
         s/@cfgdirname@/yank.note/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -65,27 +68,24 @@ prepare() {
         --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
+    local HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i "/yarnpkg/d" .yarnrc
         {
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-            echo 'networkConcurrency 10'
-        } >> .yarnrc
+            export YARN_REGISTRY="https://registry.npmmirror.com"
+            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+            export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
+            export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
+            export YARN_USE_HARDLINKS=true
+            # export YARN_BUILD_FROM_SOURCE=true
+            export YARN_LINK_WORKSPACE_PACKAGES=true
+            export YARN_FETCH_RETRIES=3
+            export YARN_FETCH_RETRY_TIMEOUT=10000
+            export YARN_NETWORK_CONCURRENCY=32
+        }
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
-        sed -i "s/github.com/ghproxy.net\/https:\/\/github.com/g" scripts/{download-pandoc.js,download-plantuml.js}
     fi
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
@@ -104,8 +104,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/out/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
