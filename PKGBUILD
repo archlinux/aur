@@ -1,7 +1,7 @@
 # Maintainer: Mohamad Obeid <mobeid nine nine nine nine at gmail dot com>
 
 pkgname=signal-styler
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Add custom CSS to Signal Desktop"
 arch=('any')
