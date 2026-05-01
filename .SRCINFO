@@ -1,6 +1,6 @@
 pkgbase = lcevcdec
 	pkgdesc = Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC)
-	pkgver = 4.0.5
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/v-novaltd/LCEVCdec/
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = lcevcdec
 	makedepends = python
 	makedepends = range-v3
 	makedepends = rapidjson
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	options = !emptydirs
-	source = git+https://github.com/v-novaltd/LCEVCdec.git#tag=4.0.5
-	sha256sums = 0d3f43dfdf3c46da6b54e10af36dc9225968c64baa68b44461218ada77d4b1dc
+	source = git+https://github.com/v-novaltd/LCEVCdec.git#tag=4.1.0
+	sha256sums = 125766f07cbef281b8638efe35f8d439e3ce25f96ed6fd611f9849189b9da868
 
 pkgname = lcevcdec
