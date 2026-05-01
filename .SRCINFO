@@ -1,16 +1,16 @@
 pkgbase = bubbleplate-bin
 	pkgdesc = Opinionated generator for Go terminal UI projects built with the Charm stack
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/elpdev/bubbleplate
 	license = MIT
 	conflicts = bubbleplate
 	provides = bubbleplate
 	arch = aarch64
-	source_aarch64 = https://github.com/elpdev/bubbleplate/releases/download/v0.4.0/bubbleplate_0.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = cb01f698505ffa4e7197b9f3c1adf075831c487961a864c40bb001f42310fada
+	source_aarch64 = https://github.com/elpdev/bubbleplate/releases/download/v0.4.1/bubbleplate_0.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 40fbef1e8af1ee0a9153d4e45b180ca4b7ac0d0757daf8bcc70e7907280a62a9
 	arch = x86_64
-	source_x86_64 = https://github.com/elpdev/bubbleplate/releases/download/v0.4.0/bubbleplate_0.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 96aed6626771ed64b9c6ce3478fba9348d355daef1eb1570b348bf19ce7a9de1
+	source_x86_64 = https://github.com/elpdev/bubbleplate/releases/download/v0.4.1/bubbleplate_0.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5002a32436803cbf0a335fd38956d9a8e007fed1b09452e5b79850d33def2876
 	
 pkgname = bubbleplate-bin
