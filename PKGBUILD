@@ -2,8 +2,8 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.9.2
-_electron=electron39
+pkgver=1.9.4
+_electron=electron41
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('x86_64')
@@ -33,8 +33,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('946d99c13a621a107af390b1119e0fecf3b688427674c1a12e4363a922d34339'
-            '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
+sha256sums=('2530e6d5cc9f734a7d5cc36637f7c335276c54dea2d76e13c4df89d5d208ddbe'
+    '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
     sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
@@ -75,6 +75,11 @@ _clean() {
     rm -rf "@libsql/linux-x64-musl"
     rm -rf "@anthropic-ai/claude-agent-sdk/vendor/ripgrep"/{*-darwin,*-win32,arm64-linux}
     ln -sf /usr/bin/rg "@anthropic-ai/claude-agent-sdk/vendor/ripgrep/x64-linux/rg"
+    find . -type d \( -name '*darwin*' -o -name '*musl*' \) -print -exec rm -r {} +
+
+    if [[ $CARCH != "arm64" ]]; then
+        find . -type d \( -name '*arm64*' \) -print -exec rm -r {} +
+    fi
 }
 package() {
 
