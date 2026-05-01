@@ -1,18 +1,18 @@
 pkgbase = dida-bin
 	pkgdesc = Official Dida client, a todo list.
-	pkgver = 8.0.0
+	pkgver = 8.0.10
 	pkgrel = 1
 	url = https://dida365.com/home
 	arch = any
 	license = LicenseRef-Proprietary
 	makedepends = asar
 	makedepends = yarn
-	depends = electron39
+	depends = electron41
 	optdepends = noto-fonts-emoji: for emoji support
 	provides = dida
-	source = dida_8.0.0.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-8.0.0-amd64.deb
+	source = dida_8.0.10.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-8.0.10-amd64.deb
 	source = dida.sh
-	sha512sums = f4a43d9b0b3bff24b3effc6348953910d43b711847a6016aa40258ca488ab9f61a566f8a516dd0feeee544e49ab3d91a41d78a5405c6fe5e74ec5435ce5cceef
+	sha512sums = cadcd108c8df7d682ef9752a2d34c2e51b0f16e667a35ee9208a00e7e7266583f3b1d5fa16ac28abe4264682fd6a6a65992e3b5c1572e38654032dc0316f158d
 	sha512sums = 218ff1e8c89d1567c214d0fec91745606ab48077bb24168a2b18b28f9c69a6918d34c38fe6a70e8aeaee3b6df448e7174c343924e6fa875ba1a583cc656c91ba
 
 pkgname = dida-bin
