@@ -1,0 +1,21 @@
+pkgbase = openbangla-keyboard
+	pkgdesc = An OpenSource, Unicode compliant Bengali Input Method
+	pkgver = 2.0.0
+	pkgrel = 9
+	url = http://openbangla.github.io
+	install = openbangla-keyboard.install
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = rust
+	makedepends = git
+	depends = ibus
+	depends = qt5-base
+	optdepends = ttf-indic-otf: fonts for Bangla and other Indic scripts
+	optdepends = ttf-freebanglafont: miscellaneous fonts for Bangla script
+	source = openbangla-keyboard::git+https://github.com/OpenBangla/OpenBangla-keyboard.git#tag=2.0.0
+	source = riti::git+https://github.com/OpenBangla/riti.git
+	sha256sums = 7d590d3336cdfe40ea72772ceb2f51feb69ca6d97762e065e9c16070a26067a0
+	sha256sums = SKIP
+
+pkgname = openbangla-keyboard
