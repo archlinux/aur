@@ -1,4 +1,4 @@
-# Maintainer: Nicholas Wang <me at nicho1as dot wang>
+# Maintainer: Nicholas Wang <i at nw.ci>
 # Contributor: Sumit Sahrawat <archlinux at sums dot rs>
 # Contributor: Yusuf Aktepe <yusuf@yusufaktepe.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
@@ -9,12 +9,12 @@
 
 pkgname=surf
 pkgver=2.1
-pkgrel=6
+pkgrel=7
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('x86_64')
 url='https://surf.suckless.org/'
 license=('MIT')
-depends=('webkit2gtk' 'gcr' 'xorg-xprop')
+depends=('webkit2gtk-4.1' 'gcr' 'xorg-xprop')
 optdepends=('dmenu: URL-bar'
             'ca-certificates: SSL verification'
             'xterm: default download handler'
