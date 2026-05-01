@@ -1,0 +1,13 @@
+pkgbase = ledger-cli
+	pkgdesc = A lightweight local CLI task tracker
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/striberry/ledger
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	source = ledger-cli-1.0.0.tar.gz::https://github.com/striberry/ledger/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 8287eaa015537005352578c09c00f244cb415e594461c6bb2e2aed1aebab3f4f
+
+pkgname = ledger-cli
