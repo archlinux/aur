@@ -39,7 +39,7 @@ validpgpkeys=(
 )
 
 prepare() {
-  gendesk --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories=Network PKGBUILD
+  gendesk --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories=Network -f PKGBUILD
 }
 
 package() {
