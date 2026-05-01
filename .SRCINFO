@@ -1,6 +1,6 @@
 pkgbase = sfpi-bin
 	pkgdesc = Tenstorrent SFPU programming interface
-	pkgver = 7.44.0
+	pkgver = 7.45.0
 	pkgrel = 1
 	url = https://github.com/tenstorrent/sfpi
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = sfpi-bin
 	makedepends = tar
 	makedepends = xz
 	depends = glibc
-	provides = sfpi=7.43.0
+	provides = sfpi=7.44.0
 	conflicts = sfpi
 	options = !strip
-	source = https://github.com/tenstorrent/sfpi/releases/download/7.44.0/sfpi_7.44.0_x86_64_fedora.txz
-	b2sums = 47460c969aa86864dd5b8bb94f35a307333a0453a495d211f68004d1e8a2898688611c518c2db4ec3c788310267c87917cf4458267422903549ec1b918b39135
+	source = https://github.com/tenstorrent/sfpi/releases/download/7.45.0/sfpi_7.45.0_x86_64_fedora.txz
+	b2sums = 872a0ff5162823d07f8fa2510780982069077c0ea26f9df3b0bd54451fe4e756da302b65acb36b02d11bedf225990be9cb0ced7e11faf4421c6e8919a8213233
 
 pkgname = sfpi-bin
