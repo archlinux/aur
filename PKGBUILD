@@ -6,7 +6,7 @@
 
 pkgname=caddy-custom
 pkgver=2.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Caddy web server with plugins'
 url='https://github.com/caddyserver/caddy'
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ makedepends=('go')
 provides=('caddy')
 conflicts=('caddy')
 backup=('etc/caddy/Caddyfile')
+options=('strip' '!debug')
 source=("plugin-list"
         "caddy.sysusers"
         "caddy.tmpfiles"

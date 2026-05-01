@@ -1,7 +1,7 @@
 pkgbase = caddy-custom
 	pkgdesc = Caddy web server with plugins
 	pkgver = 2.11.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,8 @@ pkgbase = caddy-custom
 	depends = glibc
 	provides = caddy
 	conflicts = caddy
+	options = strip
+	options = !debug
 	backup = etc/caddy/Caddyfile
 	source = plugin-list
 	source = caddy.sysusers
