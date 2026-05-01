@@ -1,6 +1,6 @@
 pkgbase = modoboa
 	pkgdesc = Mail hosting made simple
-	pkgver = 2.7.0
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://modoboa.org/
 	arch = any
@@ -19,14 +19,14 @@ pkgbase = modoboa
 	makedepends = python-asgiref
 	makedepends = python-chardet
 	makedepends = python-django-reversion>=6.1
-	makedepends = python-django-rest-framework>=3.13
+	makedepends = python-django-rest-framework>=3.16
 	makedepends = python-dnspython
 	makedepends = python-redis>=7.1
 	makedepends = python-passlib
 	makedepends = python-uritemplate
 	makedepends = python-feedparser
 	makedepends = python-django-jsonfield
-	makedepends = python-django-rq
+	makedepends = python-django-rq>=4.0
 	makedepends = python-django-xforwardedfor-middleware
 	makedepends = python-django-filter
 	makedepends = python-greenlet
@@ -67,7 +67,7 @@ pkgbase = modoboa
 	optdepends = python-factory-boy
 	provides = modoboa
 	conflicts = modoboa-git
-	source = https://files.pythonhosted.org/packages/source/m/modoboa/modoboa-2.7.0.tar.gz
-	sha512sums = 188b9deba813d67d6c4ed18a3c62c9eb184a677fdcb29c0afdd90554a5b933f90283b079afc1902058697b365a24809ea6aa43e893e4fd89b7f303fda3fea5e7
+	source = https://files.pythonhosted.org/packages/source/m/modoboa/modoboa-2.8.2.tar.gz
+	sha512sums = 3151729624a263849528ad0225da558901f448382d4bacc8e44996da632e1ecae9fe91e7ecfdb2d20c5d3f68e74648cdc0708d38c72b20630c9193584fdee2d0
 
 pkgname = modoboa
