@@ -12,7 +12,7 @@
 
 _pkgname="apollo"
 pkgname="$_pkgname-cuda-git"
-pkgver=0.4.8.r14.g41bacbd
+pkgver=0.4.8.r20.gdd99a82
 pkgrel=1
 pkgdesc="A self-hosted game stream server with CUDA support (nvenc) for best performance"
 url="https://github.com/ClassicOldSong/Apollo"
