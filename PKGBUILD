@@ -27,7 +27,7 @@ source=(
 )
 noextract=()
 sha256sums=('00520919fa42c81bbf090c36a5509690ba1e98b9ef8e8f1000137a41b2a5ba87'
-            '37b77224dd7e98cf3bb73a606a12da4990143e37ba78109f87706003cfdf427f'
+            '740017595f194a2d0663fd4be29d8c040cf8931fa4ddf37bf98832c0b0be3bd1'
             'a638ea4b0652e78b2f1cbdb46f160c9d5b10e31f09fdd0a64ed80cbf6fb8209d'
             'ca5a4b6b6c2bf761b5e7b767e401e9bf99452eaba078affff8ab65e73ce5baae')
 
