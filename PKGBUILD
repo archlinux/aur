@@ -1,6 +1,6 @@
 # Maintainer: Esperadoce <https://github.com/Esperadoce>
 pkgname=hypricing-bin
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="GUI settings manager for Hyprland (pre-built binary)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('hypricing')
 conflicts=('hypricing' 'hypricing-git')
 source=("hypricing-${pkgver}-linux-x64.tar.gz::https://github.com/Esperadoce/Hypricing/releases/download/v${pkgver}/hypricing-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('d52e2a2f618f2853e2908784fc41c3c3396a321810490df432e71197fffd69ca')
+sha256sums=('07e7d86c366de325a32c34fc4094700650d5f86be7e5bf06bac3e541aac80afc')
 
 package() {
     cd "$srcdir"
