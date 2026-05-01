@@ -2,7 +2,7 @@
 # Maintainer: AlexMa <i at fur dot im>
 
 pkgname='composia-bin'
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Self-hosted Docker Compose control plane and CLI.'
 url='https://docs.composia.xyz'
@@ -12,16 +12,16 @@ provides=('composia')
 conflicts=('composia')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('5d62f8c4a78a7350a55b11bb35cde2291864558a01f7cf94101fcdca258b9404')
+sha256sums_aarch64=('7de1c7fb0a8049535a41d55ea04c742fd748ade536f770f55aa636a5bbf0cd85')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('d1c45304b0a61604c47fcf62e18980631b71e6e9a1f5689567c6c99be05d0d0f')
+sha256sums_armv7h=('7c6df7e79ee32034aca376b70b68d551b4677291a39e0395ee497636093df77b')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('825e1f5a4ba5be0ea5d95eddd3f5a91c12395aae9102b89aae9a9a3d88aaee23')
+sha256sums_i686=('0cd429a97207db5c6c36a33695f15658c1dcdca1a9428d757480e8bd0f55dbfe')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('5eb0e89282d45a80746296065ffb7a956ca740f9d0e2299802dd6b3be57b677f')
+sha256sums_x86_64=('55eb123c0003e7fd4284d7a75290da8bacdd9d08c25129efa27ab2a69a3a570e')
 
 package() {
   install -Dm755 "./composia" "${pkgdir}/usr/bin/composia"
