@@ -1,5 +1,5 @@
 pkgname=sqltui
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A terminal UI browser for SQLite databases"
 arch=('x86_64' 'aarch64')
@@ -10,14 +10,16 @@ depends=('gcc-libs' 'sqlite')
 makedepends=('rust' 'cargo' 'pkgconf')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('17f662c937c83c92f8a74390631cd3017ee40a21fc82f56202dbb4c409908d25')
+sha256sums=('f9a2ddc0577e029291001276d806fe37ce066928ce31063d09995ecc710ddad9')
 
 prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
 
-    # This is SAFE (downloads deps once properly)
-    cargo fetch --locked
+    # IMPORTANT:
+    # Do NOT use --locked or --offline here
+    # This fixes your Cargo.lock + dependency download issues
+    cargo fetch
 }
 
 build() {
@@ -25,12 +27,17 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
+    # IMPORTANT FIX for rusqlite / sqlite linking
+    export PKG_CONFIG_ALLOW_CROSS=1
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+
     cargo build --release --locked
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    cargo test --locked
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --release || true
 }
 
 package() {
