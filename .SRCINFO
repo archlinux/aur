@@ -1,0 +1,15 @@
+pkgbase = apk-installer-gui
+	pkgdesc = 简单的图形 APK 安装器，支持右键APK直接安装
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maoyaotang12/apk-installer
+	arch = any
+	license = MIT
+	depends = android-tools
+	depends = python
+	depends = python-pyqt6
+	conflicts = apk-installer
+	source = git+https://github.com/maoyaotang12/apk-installer.git
+	sha256sums = SKIP
+
+pkgname = apk-installer-gui
