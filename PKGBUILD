@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=github-store-bin
 _pkgname=GitHub-Store
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A free, open-source app store for GitHub releases — browse, discover, and install apps with one click. Powered by Kotlin and Compose Multiplatform for Android & Desktop.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.github-store.org/"
-_ghurl="https://github.com/rainxchzed/Github-Store"
+_ghurl="https://github.com/OpenHub-Store/GitHub-Store"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -22,10 +22,10 @@ depends=(
     'fontconfig'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.x86_64.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7b657dfe569e366e7e02786637a829847f393f640dd77f3e235f15976bca1b36'
+sha256sums=('a9eb787b43876faa48e510b229a55a588d588d9df1cc66e9aeee1c53f24bdb03'
             '81266c37f90d6eef62471250c3c906d0dec1f1c3041f22b7b45f7a3be612f9c1')
 prepare() {
     sed -i -e "
