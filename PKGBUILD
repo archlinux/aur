@@ -15,7 +15,7 @@ optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
-"tee.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11458.patch"
+"tee.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11943.patch"
 "${url}/releases/download/latest-commit/docs.tar.zst")
 b2sums=('SKIP' 'SKIP' 'SKIP')
 pkgver() {
