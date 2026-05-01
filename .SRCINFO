@@ -1,6 +1,6 @@
 pkgbase = pw-duck
 	pkgdesc = Linux tray app that ducks non-voice audio while remote voice is active
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/geri1701/pw-duck
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = pw-duck
 	conflicts = pw-duck-git
 	options = !lto
 	options = !debug
-	source = pw-duck-0.2.3.tar.gz::https://github.com/geri1701/pw-duck/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = cb74f183c5c69fcd15af1caadfaf4bb0eaaea1e896a1d8edd1b7fd115572ace7
+	source = pw-duck-0.2.4.tar.gz::https://github.com/geri1701/pw-duck/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = 1d1fb11f642618cf5c2d7809ecfeb8acee877f89af09f11687689cd1b15043c1
 
 pkgname = pw-duck
