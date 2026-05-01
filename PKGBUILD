@@ -2,13 +2,13 @@
 pkgname=opennow
 _pkgname=OpenNOW
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
-depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-icon-theme')
+depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-icon-theme' 'nss' 'nspr' 'alsa-lib')
 # TODO: use system electron once the version 41 is available
-makedepends=('npm' 'imagemagick')
+makedepends=('npm' 'imagemagick' 'libxcrypt-compat')
 provides=('opennow')
 conflicts=('opennow-appimage')
 arch=('x86_64')
