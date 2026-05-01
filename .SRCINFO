@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-geckodriver
 	pkgdesc = Appium driver for Gecko-based browsers and web views
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://www.npmjs.com/package/appium-geckodriver
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-geckodriver-2.2.1.tgz
-	source = nodejs-appium-geckodriver-2.2.1.tgz::https://registry.npmjs.org/appium-geckodriver/-/appium-geckodriver-2.2.1.tgz
-	sha256sums = dc7010c2588c4408d3667a5a382871c31fa40d098bc72507e5beefc4f213cfdb
+	noextract = nodejs-appium-geckodriver-2.2.2.tgz
+	source = nodejs-appium-geckodriver-2.2.2.tgz::https://registry.npmjs.org/appium-geckodriver/-/appium-geckodriver-2.2.2.tgz
+	sha256sums = c80cda135aedde2cc9cb2205e54d36f386f7df22a6195e834f0ac0d28b11b9b4
 
 pkgname = nodejs-appium-geckodriver
