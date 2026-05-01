@@ -1,0 +1,14 @@
+pkgbase = radio-browser-zig
+	pkgdesc = A native Zig client for the Radio Browser API
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://codeberg.org/Yumana/radio-browser
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = zig
+	depends = mpv
+	source = radio-browser-zig-0.0.1.tar.gz::https://codeberg.org/Yumana/radio-browser/archive/master.tar.gz
+	sha256sums = 2c2d84220fbed2fbd784bac27ef7576a2a82bfbb38d97bd4273205a58afdfd61
+
+pkgname = radio-browser-zig
