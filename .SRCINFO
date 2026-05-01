@@ -18,7 +18,7 @@ pkgbase = codex-app-unofficial
 	install = codex-app-unofficial.install
 	source = codex-app-linux-26.429.20946-launcher.24-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.429.20946-launcher.24/codex-app-linux-26.429.20946-launcher.24-x64-linux-unpacked.tar.gz
 	source = codex-app-linux-26.429.20946-launcher.24-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.429.20946-launcher.24/codex-app-linux-26.429.20946-launcher.24-x64.png
-	sha256sums = 2e30c45aae40038b2a02059edaf43296745cd8e0fab5e547253361a8369e3cba
+	sha256sums = d89bdabf7e36c7e600fef585cfe86b00e752898276e2d0bba04a87831722ee1b
 	sha256sums = 1c926e380bfe6a50f40648dd9bc5de88da7271546491adf99ec72172e17df6a0
 
 pkgname = codex-app-unofficial
