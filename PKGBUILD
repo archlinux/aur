@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r76835.b544e42809e
+pkgver=r77575.a6499b621e6
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -58,7 +58,7 @@ pkgver() {
 
 prepare() {
   sed -e '/march=/d' -i ladybird/Meta/CMake/compile_options.cmake
-  sed -e 's/78\.2 EXACT/78.2/' -i ladybird/Libraries/LibUnicode/CMakeLists.txt
+  sed -e 's/78\.2 EXACT/78.2/' -i ladybird/Meta/CMake/check_for_dependencies.cmake
 }
 
 build() {
