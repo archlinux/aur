@@ -1,6 +1,6 @@
 # Maintainer: viewerofal <joemomanugget@gmail.com>
 pkgname=woven-shell-git
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Complete Wayland shell for Sway — bar, launcher, lock, wallpaper, power menu, control center, config manager, OSD, screenshot, workspace switcher, and session daemon"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sway' 'wireplumber' 'brightnessctl' 'playerctl' 'swaync' 'pam' 'slurp' 'grim')
 makedepends=('rust' 'cargo')
 source=("woven-shell-$pkgver.tar.gz::https://github.com/viewerofall/woven-shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5a5837aeee256a4dbbaa5dfaebf94ca435c9341f3cf4a5ed53e02011a399a9a2')
+sha256sums=('c16542eae816ed87bdeee79be2b312c094b4577369dbe61f9dc76e58981d0b36')
 
 build() {
     cd "woven-shell-$pkgver"
