@@ -1,8 +1,9 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
+# Co-maintainer: Evert <evorster at gmail dot com>
 pkgname=hermes-agent
 pkgver=0.12.0
 _tagver=2026.4.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -51,10 +52,12 @@ build() {
   fi
 
   echo "==> Building TUI..."
-  if [ -d "tui" ]; then
-    cd tui
-    rm -f package-lock.json
-    npm install || return 1
+  # hermes_cli.main sets PROJECT_ROOT to its installed site-packages parent and
+  # expects the modern TUI at PROJECT_ROOT/ui-tui. Build that directory here and
+  # package it into the venv's site-packages below.
+  if [ -d "ui-tui" ]; then
+    cd ui-tui
+    npm install --no-fund --no-audit --progress=false || return 1
     npm run build || return 1
     cd ..
   fi
@@ -81,8 +84,17 @@ package() {
   # Copy application files
   cp -r venv "$_optdir/"
   cp -r web "$_optdir/"
-  [ -d "tui" ] && cp -r tui "$_optdir/"
   cp -r scripts "$_optdir/"
+
+  # The TUI launcher uses PROJECT_ROOT/ui-tui, where PROJECT_ROOT is the venv's
+  # site-packages directory (/opt/hermes-agent/venv/lib/python3.11/site-packages
+  # for this package). Put the prebuilt ui-tui tree there so hermes --tui does
+  # not try to npm-install from a missing directory at runtime.
+  if [ -d "ui-tui" ]; then
+    _site_packages="$(find "$_optdir/venv/lib" -type d -name site-packages -print -quit)"
+    install -d "$_site_packages"
+    cp -a ui-tui "$_site_packages/"
+  fi
 
   # Copy node_modules if present (kept alongside app for same path)
   if [ -d "node_modules" ]; then
