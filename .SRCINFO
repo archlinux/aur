@@ -38,7 +38,7 @@ pkgbase = nekobox
 	makedepends = lmdb
 	makedepends = cpr
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.11.2/nekobox-unified-source-5.11.2.tar.xz
-	sha256sums = 469d1aa22373c6d2f00e86fb6e9e28ad4c3afe04f00a05716244114dab925cf3
+	sha256sums = cab34abc6a868229702f2849608581f1999c56ddad1b985cfbebf6ddbc591a9a
 
 pkgname = nekobox
 
