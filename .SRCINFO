@@ -1,0 +1,15 @@
+pkgbase = ps4-discord
+	pkgdesc = PS4 Discord integration tool using Discord Rich Presence and FTP
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Marhau-devoloper/PS4-Discord
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-pypresence
+	source = git+https://github.com/Marhau-devoloper/PS4-Discord.git
+	sha256sums = SKIP
+
+pkgname = ps4-discord
