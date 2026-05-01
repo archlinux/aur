@@ -3,7 +3,7 @@
 
 pkgname='pgremapper'
 pkgver='1.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="CLI tool for manipulating Ceph's upmap exception table"
 arch=('x86_64' 'aarch64')
 _uri="github.com/digitalocean"
@@ -11,7 +11,7 @@ url="https://${_uri}/${pkgname}"
 license=('Apache 2.0')
 depends=('ceph')
 makedepends=('go' 'git')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgname}/tar.gz/refs/tags/v${pkgver}")
 sha256sums=('c43e5e13bdb204012816dca6219ba37c470a7cb959e2b4536a400dcb4c70f8d4')
 
 prepare() {
@@ -39,8 +39,13 @@ build() {
     -ldflags "-linkmode external -extldflags '${LDFLAGS}'"
 }
 
+check() {
+  cd "${GOPATH}/src/${_uri}/${pkgname}"
+  go test -modcacherw -race ./...
+}
+
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm0755 "${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm0644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
