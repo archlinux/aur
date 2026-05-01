@@ -175,7 +175,10 @@ build() {
   )
   cmake "${CMAKE_ARGS[@]}"
 
-  ninja -C build -j 8
+  # If your system becomes unresponsive while building, let it be known that this code is memory hungry. On my system, I had to limit the number of parallel build processes to 8.
+  # Over 10 parallel build processes, it would sometime eat out all the RAM (32GB), making the system unresponsive and breaking the build.
+  # Add "-j X" option at the end of "ninja -C build", where X is the number of parallel processes to build with.
+  ninja -C build
 }
 
 package() {
