@@ -1,0 +1,7 @@
+post_install() {
+  ln -s /opt/renderide/renderide /opt/renderide/Renderite.Renderer
+}
+
+pre_remove() {
+  rm -rf /opt/renderide/
+}
