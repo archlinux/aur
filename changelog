@@ -1,3 +1,10 @@
+2026-04-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.5.1-1:
+    Added support for parsing steam launch URL format in selected ASF commands (@Nuklon #3579).
+    ASF is now also available under stable docker tag (@JustArchi #3576).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2026-03-27 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.4.2-1:
     Added support for BotName.keys.invalid file in BGR, as well as ensured that Botname.keys file is always being removed (@JustArchi #3572).
