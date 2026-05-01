@@ -3,12 +3,11 @@ pkgname=neo-mofox-launcher-git
 _pkgname='Neo-MoFox Launcher'
 _appname=neo-mofox-launcher
 _zhsname='Neo-MoFox 启动器'
-pkgver=r141.25053f6
+pkgver=r143.c7b87dd
 _electronversion=39
 pkgrel=1
 pkgdesc="An elegant instance management launcher for Neo-MoFox QQ Bot. - 一个优雅的 Neo-MoFox QQ 机器人实例管理启动器"
 arch=(
-    'aarch64'
     'x86_64'
 )
 url="https://github.com/MoFox-Studio/Neo-MoFox-Launcher"
