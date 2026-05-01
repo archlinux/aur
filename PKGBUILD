@@ -2,7 +2,7 @@
 pkgname=ship162-bin
 pkgver=0.1.3
 pkgrel=1
-pkgdesc="Decode and demodulate Mode S and ADS-B in Rust/Python"
+pkgdesc="Decode and demodulate AIS data in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xoolive/ship162"
 license=('MIT')
