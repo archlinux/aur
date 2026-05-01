@@ -1,6 +1,6 @@
 pkgbase = babeleo
 	pkgdesc = KDE Plasma 6 applet for quick lookups in translation services or other web services
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/tryptophane/babeleo-plasma
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = babeleo
 	depends = qt6-base
 	depends = wl-clipboard
 	options = !debug
-	source = babeleo-0.12.0.tar.gz::https://github.com/tryptophane/babeleo-plasma/archive/refs/tags/0.12.0.tar.gz
-	sha256sums = b8a13b3602941207a6ba5e97f824e17be1034e777c709462095864183f3400a1
+	source = babeleo-0.13.0.tar.gz::https://github.com/tryptophane/babeleo-plasma/archive/refs/tags/0.13.0.tar.gz
+	sha256sums = 82f6936c2764bf057ee591710dd2936b6c40dec0ddbbf5b90b0c5a36380718f5
 
 pkgname = babeleo
