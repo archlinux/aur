@@ -21,10 +21,7 @@ prepare () {
   sed -i "s|define MUMPS_CALL|define MUMPS_CALL __declspec(dllexport)|g" include/mumps_compat.h
 
   # static inline + __declspec(dllexport) does not make sense
-  sed -i "s|MUMPS_INLINE void MUMPS_CALL|void MUMPS_CALL|g" src/mumps_flytes.h src/mumps_flytes.c
-  sed -i "s|MUMPS_INLINE float MUMPS_CALL|float MUMPS_CALL|g" src/mumps_flytes.h src/mumps_flytes.c
-  sed -i "s|MUMPS_INLINE double MUMPS_CALL|double MUMPS_CALL|g" src/mumps_flytes.h src/mumps_flytes.c
-  sed -i "s|MUMPS_INLINE const char\* MUMPS_CALL|const char\* MUMPS_CALL|g" src/mumps_flytes.h src/mumps_flytes.c
+  sed -i "s|define MUMPS_INLINE static inline|define MUMPS_INLINE|g" include/mumps_compat.h
 
   # fortran mangling
   sed -i "s/#if defined(UPPER) || defined(MUMPS_WIN32)/#if defined(UPPER)/g" src/mumps_common.h
