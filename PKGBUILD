@@ -1,7 +1,7 @@
 # Maintainer: blobii <realblobii@proton.me>
 
 pkgname=wandoo
-pkgver=1.0.2b
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A simple and sturdy tree-based todo software in pure C using ncurses."
 arch=('x86_64')

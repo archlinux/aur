@@ -1,6 +1,6 @@
 pkgbase = wandoo
 	pkgdesc = A simple and sturdy tree-based todo software in pure C using ncurses.
-	pkgver = 1.0.2b
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/realblobii/wandoo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wandoo
 	makedepends = gcc
 	makedepends = cmake
 	depends = ncurses
-	source = wandoo-1.0.2b.tar.gz::https://github.com/realblobii/wandoo/archive/refs/tags/1.0.2b.tar.gz
+	source = wandoo-1.0.3.tar.gz::https://github.com/realblobii/wandoo/archive/refs/tags/1.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = wandoo
