@@ -1,46 +1,54 @@
-#!/hint/bash
-# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Maintainer: Phillip Schichtel <phillip@schich.tel>
+# Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 
-_name=openmvs
-_tag=v1.1.1
-_fragment="#tag=${_tag}"
-pkgname=${_name}
-pkgver=${_tag#v}
+pkgname=openmvs
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=(i686 x86_64)
 url="http://cdcseacave.github.io/openMVS"
-license=(GPL)
-depends=(glew glfw suitesparse blas google-glog opencv boost-libs qt5-base)
-makedepends=(git cmake ninja cuda boost gflags eigen ceres-solver cgal nvidia-utils)
-optdepends=('nvidia-utils: GPU optimized mesh reconstruction code')
+license=(AGPL-3.0-only)
+depends=(eigen openmp opencv boost-libs)
+makedepends=(git cmake boost ceres-solver cgal nanoflann libjxl)
+optdepends=(ceres-solver glfw libjxl)
 options=()
-source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git${_fragment}"
-        "vcglib::git+https://github.com/cdcseacave/VCG.git"
+# vcglib version: 2025.07
+source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git#commit=58117204c86bbb11a0b25b26a8987676cf11274d"
+        "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#commit=c94ef4e12e9ea3ae986d9af91005be8328d13719"
+        0001-Fix-boost-and-python3.patch
         )
-sha256sums=('SKIP'
-            'SKIP'
-           )
+sha256sums=('dcacfbd320b12dbc97ec05f6289f71e4ef084f54a2f39136e8bc0d6a0f24682e'
+            '256dc102a2a55bb7362181871674c4561e2964e82545838a4efb7312547d4a51'
+            '1eefced29c2b48d8376277c1b83ee2962d025aea2cfa6ad2b0bfde3e2264529b')
 
-pkgver() {
-  # cutting off 'v' prefix that presents in the git tag
-  git -C "$srcdir"/$pkgname describe --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+_use_cuda="${BUILD_CUDA:-OFF}"
+if [ "$_use_cuda" = "ON" ]
+then
+  makedepends+=(cuda)
+  optdepends+=(cuda)
+fi
+
+prepare() {
+  cd "$pkgname"
+  git apply "$srcdir/0001-Fix-boost-and-python3.patch"
 }
 
 build() {
-  CMAKE_FALGS+=(
-                -DCMAKE_BUILD_TYPE=Release
-                -DCMAKE_INSTALL_PREFIX=/usr
-                -DINSTALL_BIN_DIR=/usr/bin
-                -DVCG_ROOT="${srcdir}/vcglib"
-               )
-  cmake "${CMAKE_FALGS[@]}" -S "$srcdir"/$pkgname -B build -G Ninja
-# shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
-  ninja -C "$srcdir"/build $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}")
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DINSTALL_BIN_DIR=/usr/bin \
+    -DVCG_DIR="${srcdir}/vcglib" \
+    -DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
+    -DOpenMVS_USE_CERES=ON \
+    -DOpenMVS_USE_BREAKPAD=OFF \
+    -DOpenMVS_USE_CUDA="${_use_cuda}" \
+    -S "$srcdir/$pkgname" \
+    -B "$srcdir/build"
+  make -C "$srcdir/build"
 }
 
 package() {
-  DESTDIR="$pkgdir/" ninja -C "$srcdir"/build install
+  DESTDIR="$pkgdir/" make -C "$srcdir/build" install
 }
 
-# vim:set ts=2 sw=2 et:

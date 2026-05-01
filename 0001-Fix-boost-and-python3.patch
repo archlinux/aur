@@ -1,0 +1,33 @@
+From c331a4ec7a5f10927d45499f26d056c0a37aa768 Mon Sep 17 00:00:00 2001
+From: Phillip Schichtel <phillip@schich.tel>
+Date: Fri, 1 May 2026 18:07:15 +0200
+Subject: [PATCH] Fix boost and python3
+
+---
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6d8a46e..27aaf0d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -227,6 +227,7 @@ SET(Boost_EXTRA_COMPONENTS "")
+ if(OpenMVS_USE_PYTHON)
+ 	FIND_PACKAGE(Python3 COMPONENTS Interpreter Development REQUIRED)
+ 	if(Python3_FOUND)
++		include_directories(${Python3_INCLUDE_DIRS})
+ 		LIST(APPEND OpenMVS_EXTRA_LIBS ${Python3_LIBRARIES})
+ 		LIST(APPEND Boost_EXTRA_COMPONENTS python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR})
+ 		MESSAGE(STATUS "Python ${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR} found (include: ${Python3_INCLUDE_DIRS})")
+@@ -235,7 +236,7 @@ if(OpenMVS_USE_PYTHON)
+ 	endif()
+ endif()
+ 
+-FIND_PACKAGE(Boost REQUIRED COMPONENTS iostreams program_options system serialization OPTIONAL_COMPONENTS ${Boost_EXTRA_COMPONENTS})
++FIND_PACKAGE(Boost REQUIRED COMPONENTS iostreams program_options serialization OPTIONAL_COMPONENTS ${Boost_EXTRA_COMPONENTS})
+ if(Boost_FOUND)
+ 	ADD_DEFINITIONS(${Boost_DEFINITIONS})
+ 	LIST(APPEND OpenMVS_EXTRA_LIBS ${Boost_LIBRARIES})
+-- 
+2.54.0
+
