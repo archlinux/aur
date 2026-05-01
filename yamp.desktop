@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=YAMP
+GenericName=Music Player
+Comment=yet another music player
+Exec=/usr/bin/appyamp
+Icon=multimedia-audio-player
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Player;Qt;
