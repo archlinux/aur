@@ -1,6 +1,6 @@
 pkgbase = sqltui
 	pkgdesc = A terminal UI browser for SQLite databases
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/nettproxy/sqltui
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = sqltui
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = sqltui-0.2.1.tar.gz::https://github.com/nettproxy/sqltui/archive/v0.2.1.tar.gz
-	sha256sums = 59bcad4d2c613b9d69d94534fd80b8c74b1512a4712aba87eeb8b1e7b29b1f63
+	depends = sqlite
+	source = sqltui-0.2.2.tar.gz::https://github.com/nettproxy/sqltui/archive/v0.2.2.tar.gz
+	sha256sums = 4ee468efe444ec5dd9265e8a8463f780a6e8c81b64518536dd7415dd1a61015f
 
 pkgname = sqltui
