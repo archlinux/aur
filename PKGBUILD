@@ -1,38 +1,45 @@
-# Maintainer: Diego Parra <diegoparranava@protonmail.com>
+# Maintainer: 0bCdian <diegoparranava@protonmail.com>
 pkgname='waypaper-engine-git'
-pkgver=2.0.4.r1.82eb64d
+pkgver=3.0.0.r0.g0000000
 pkgrel=1
-pkgdesc="A pleasant gui frontend for swww with batteries included!"
+pkgdesc="A wallpaper setter GUI with playlist functionality for Wayland and X11 (git)"
 arch=('x86_64')
 url="https://github.com/0bCdian/Waypaper-Engine"
-license=('GLP')
-depends=('swww' 'nodejs-lts-iron' 'socat' 'hicolor-icon-theme' 'fzf' 'jq' 'wlr-randr')
-makedepends=('npm' 'git')
+license=('GPL-3.0-or-later')
+depends=('hicolor-icon-theme')
+makedepends=('go' 'npm' 'nodejs' 'git')
 conflicts=('waypaper-engine')
 provides=('waypaper-engine')
+optdepends=(
+  'awww: animated wallpapers on Wayland'
+  'hyprpaper: static image wallpapers on Hyprland'
+  'mpvpaper: video wallpapers on wlroots compositors'
+  'feh: static image wallpapers on X11'
+  'wayland-utauri: HTML/web wallpapers on Wayland (first-party)'
+  'xorg-xrandr: monitor detection on X11'
+)
 _archive="Waypaper-Engine"
 source=("git+$url.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_archive"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_archive"
+  make deps
 }
 
 build() {
   cd "$_archive"
-  npm run build
+  make electron
 }
 
 package() {
   cd "$_archive"
-  local pkgname="waypaper-engine"
-  install -Dm755 ./cli/waypaper-engine "$pkgdir/usr/bin/${pkgname}"
-  for _icons in 16x16 32x32 64x64 128x128 256x256 512x512; do
-    install -Dm755 "./release/linux-unpacked/resources/icons/${_icons}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
-  done
-  install -dm755 "$pkgdir/opt/${pkgname}"
-  install -Dm644 ./waypaper-engine.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/${pkgname}"
-  cp ./release/linux-unpacked/* -rt "$pkgdir/opt/${pkgname}"
+  make install-system DESTDIR="$pkgdir" INSTALL_PREFIX_SYSTEM=/usr \
+    ICON_DIR="$pkgdir/usr/share/icons/hicolor/512x512/apps"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/waypaper-engine/LICENSE"
 }
