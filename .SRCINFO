@@ -1,0 +1,31 @@
+pkgbase = sentinel-git
+	pkgdesc = UAC-style confirmation dialog for Linux privilege escalation (git HEAD)
+	pkgver = 0.2.0.r1.g75c9681
+	pkgrel = 1
+	url = https://github.com/atayozcan/sentinel
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = wayland-protocols
+	makedepends = git
+	depends = pam
+	depends = wayland
+	depends = libxkbcommon
+	depends = fontconfig
+	depends = freetype2
+	depends = mesa
+	depends = vulkan-icd-loader
+	depends = gcc-libs
+	depends = glibc
+	optdepends = sudo-rs: memory-safe sudo replacement
+	optdepends = polkit: for graphical privilege prompts
+	provides = sentinel=0.2.0.r1.g75c9681
+	conflicts = sentinel
+	backup = etc/security/sentinel.conf
+	backup = etc/pam.d/polkit-1
+	source = sentinel::git+https://github.com/atayozcan/sentinel.git#branch=main
+	sha256sums = SKIP
+
+pkgname = sentinel-git
