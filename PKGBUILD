@@ -3,7 +3,7 @@
 # Contributor: Aaron Coach <aur at ezpz dot cz>
 
 _pkgname="powershell-editor-services"
-pkgname="$_pkgname"
+pkgname="$_pkgname-bin"
 pkgver=4.5.0
 pkgrel=1
 pkgdesc='A common platform for PowerShell development support in any editor or application'
@@ -12,6 +12,9 @@ arch=('x86_64')
 license=('MIT')
 
 depends=('powershell')
+
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 
 install="$_pkgname.install"
 

@@ -1,4 +1,4 @@
-pkgbase = powershell-editor-services
+pkgbase = powershell-editor-services-bin
 	pkgdesc = A common platform for PowerShell development support in any editor or application
 	pkgver = 4.5.0
 	pkgrel = 1
@@ -7,10 +7,12 @@ pkgbase = powershell-editor-services
 	arch = x86_64
 	license = MIT
 	depends = powershell
+	provides = powershell-editor-services=4.5.0
+	conflicts = powershell-editor-services
 	noextract = PowerShellEditorServices-4.5.0.zip
 	source = PowerShellEditorServices-4.5.0.zip::https://github.com/PowerShell/PowerShellEditorServices/releases/download/v4.5.0/PowerShellEditorServices.zip
 	source = LICENSE-4.5.0::https://github.com/PowerShell/PowerShellEditorServices/raw/v4.5.0/LICENSE
 	sha256sums = a4e2988328963d4ee6008a68a39484d7de2f9698ed1ec264a344566fdaa6464e
 	sha256sums = 99bc3308d3b5f2018c5d7af9239548c6853a01f08db0a1d9247d16be647c5658
 
-pkgname = powershell-editor-services
+pkgname = powershell-editor-services-bin
