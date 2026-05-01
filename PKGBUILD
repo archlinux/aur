@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BaseSpaceR
-_pkgver=1.55.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.55.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='R SDK for BaseSpace RESTful API'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dca4acec0205d872ac228a0d61753e8c83c5f8c33a57239c96da4b97f7f7d8a4')
+sha256sums=('88fdf3785cfc73bae208fbd7dcabcbfad3ecc64763af5b56d0f1906b2ca848f5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
