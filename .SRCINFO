@@ -1,0 +1,17 @@
+pkgbase = python-comfy-aimdo
+	pkgdesc = AI Model Demand Offloading Allocator
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Comfy-Org/comfy-aimdo/
+	arch = any
+	license = GPL-3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python-pytorch
+	source = comfy-aimdo-0.3.0.tar.gz::https://github.com/Comfy-Org/comfy-aimdo/archive/refs/tags/v0.3.0.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-comfy-aimdo
