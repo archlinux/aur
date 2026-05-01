@@ -3,8 +3,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=nedit
-pkgver=5.7
-pkgrel=4
+pkgver=5.8
+pkgrel=1
 pkgdesc="A Unix text editor for programmers and general users"
 arch=('x86_64')
 url="https://sourceforge.net/projects/${pkgname}"
@@ -14,8 +14,8 @@ makedepends=('pod2man')
 options=('!makeflags')
 source=(${url}/files/${pkgname}-source/${pkgname}-${pkgver}-src.tar.gz
   ${pkgname}.desktop)
-sha512sums=('cf242d2f8eea4c78649dbeb741f545a3dc8ffaf5bb36239794a4b2635420e5445fa1c77472add79c05ec081d71a0b9df4431f48db365a71692e43869fd4e7932'
-  'c0f5390ffe7aa58940ee4beffdc9d568d46de8c191e71aae1051586eadf179313f80d9a7b760bb9678ee3a4ead099d52c896e9b0c90d05991b26cd8fb404dae4')
+sha512sums=('89806dbcce0abdb8bde823d1a140fcfad3aff2012c00f6aad24f6c2ec27db9aabe5fdf87c8508f3596b7df99bf25e5e3cfbbba9290506eca6fabc73c44580144'
+            'c0f5390ffe7aa58940ee4beffdc9d568d46de8c191e71aae1051586eadf179313f80d9a7b760bb9678ee3a4ead099d52c896e9b0c90d05991b26cd8fb404dae4')
 
 prepare() {
   cd ${pkgname}-${pkgver}
