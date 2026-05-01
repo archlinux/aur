@@ -1,6 +1,6 @@
 pkgbase = yamp-git
 	pkgdesc = Yet Another Music Player - a QML based music player.
-	pkgver = r1.0000000
+	pkgver = r9.g360c0d0
 	pkgrel = 1
 	url = https://github.com/Wu28ri/yamp
 	arch = x86_64
