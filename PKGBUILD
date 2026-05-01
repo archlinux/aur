@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpits
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="moshpits server — SSH and Mosh inspired remote terminal server written in Rust"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
     '6cb052dc4f041ba5d368de3da97b07a2a82b4da0c5e106ee2c6c879de7b038a6'
-    'SKIP'
+    'd08b5d53d639190be89f39c248d9d8262b58f59ab8a4ce16eab8260ec049e9e3'
 )
 
 prepare() {
