@@ -1,6 +1,6 @@
 pkgbase = azure-ddns-git
 	pkgdesc = Dynamic DNS updater for Azure DNS (A + AAAA records) — HEAD of main
-	pkgver = 0.2.3.r0.ge4d52ca
+	pkgver = 0.2.3.r1.g61c5e9e
 	pkgrel = 1
 	url = https://github.com/fnrhombus/azure-ddns
 	arch = any
