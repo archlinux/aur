@@ -1,9 +1,9 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=guiless-search
-pkgver=r3.20260501.d3067a3
+pkgver=r4.20260501.7f26766
 pkgrel=1
-pkgdesc='Multi-backend headless web search proxy (Google, Bing, DuckDuckGo)'
+pkgdesc='Multi-backend headless web search proxy'
 arch=('any')
 url='https://github.com/wszqkzqk/guiless-search'
 license=('GPL-3.0-or-later')
