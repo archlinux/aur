@@ -1,6 +1,6 @@
 pkgbase = gitopolis
-	pkgdesc = CLI tool to manage multiple git repositories; run commands, clone, and organize repos with tags
-	pkgver = 1.17.0
+	pkgdesc = CLI tool to manage multiple git repositories
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = https://github.com/timabell/gitopolis
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gitopolis
 	depends = openssl
 	depends = libcrypto.so
 	depends = libssl.so
-	source = https://github.com/timabell/gitopolis/archive/v1.17.0/gitopolis-1.17.0.tar.gz
-	sha256sums = 26676178513f12ecb78fa7b99a0cbd7309c681d8883086c0782a821ebc12bd5f
+	source = https://github.com/timabell/gitopolis/archive/v1.17.1/gitopolis-1.17.1.tar.gz
+	sha256sums = a1649c5ff3deeb78f6b438d235188d33d65b110f6ced1fd55492ba961874df25
 
 pkgname = gitopolis
