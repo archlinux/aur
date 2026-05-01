@@ -1,14 +1,14 @@
 pkgbase = depk-sensitivity-matcher
 	pkgdesc = Match mouse sensitivity between 3D games on Linux (Rust version). Works on X11 and Wayland.
 	pkgver = 2.0.0
-	pkgrel = 1
-	url = https://github.com/deliriouspork/DePk-Sensitivity-Matcher-Rust
+	pkgrel = 2
+	url = https://codeberg.org/deliriouspork/DePk-Sensitivity-Matcher-Rust
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = depk-sensitivity-matcher-2.0.0.tar.gz::https://github.com/deliriouspork/DePk-Sensitivity-Matcher-Rust/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = f91a5418ce28ff85b2962d89a132f7170a47850872e5f1fc25478cae290fa87f
+	source = depk-sensitivity-matcher-2.0.0.tar.gz::https://codeberg.org/deliriouspork/DePk-Sensitivity-Matcher-Rust/archive/v2.0.0.tar.gz
+	sha256sums = b1a02f7612b042ee0b4c588c9e8502c10b03f91300ca29805d4e67ebc0732433
 
 pkgname = depk-sensitivity-matcher
