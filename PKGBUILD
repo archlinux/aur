@@ -1,7 +1,7 @@
 # Maintainer: Carneiro <gabriel dot chaves dot carneiro at gmail dot com>
 pkgname=pulsemeeter-git
 _pkgname=pulsemeeter
-pkgver=2.0.0.r24.e822a2b
+pkgver=2.0.1.r3.19c0757
 pkgrel=1
 pkgdesc="A pulseaudio and pipewire audio routing application"
 url="https://github.com/theRealCarneiro/pulsemeeter"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver(){
 	cd $_pkgname
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g; s/.//')"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g; s/.//')"
 }
 
 build () {
