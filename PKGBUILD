@@ -1,6 +1,6 @@
 # Maintainer: cleboost
 pkgname=kibo-appimage
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Kibo Anime AppImage - Application for watching anime"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "kibo.svg::https://www.kiboanime.app/group-2.svg"
 )
 
-sha256sums=('3a79f9364d3da21967aa8c0b8b8b251cf06341721c132ce1e350593a53b5082d'
+sha256sums=('389bde34622f5b8469ad72ca7d26ff0de60012981bf9876a80cfa2c57a0a5b7d'
             'bbe7aef71d090ed5eabc7b2933431990ce8e5253ea3123d3695cd2264434bbd6')
 
 prepare() {
