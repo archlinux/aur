@@ -2,7 +2,7 @@
 pkgname=skypaw-bin
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Weather in your terminal with beautiful Bubble Tea UI"
+pkgdesc="Minimal weather CLI for the terminal 🌤"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sakkkurai/skypaw"
 license=('MIT')
