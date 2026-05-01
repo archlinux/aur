@@ -1,6 +1,6 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-awsdocs
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='pi-coding-agent extension for AWS documentation'
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
   'python-markdownify'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dougefresher/pi-ext-awsdocs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('15b96db2e2206c73408147609ab3492d5e94ac41010b081d22d77f3df2100589')
+sha256sums=('ba68cc54d85fb8150bddba8816ed79088658e41e639a7190b78deb2683651980')
 
 package() {
   install -d "${pkgdir}/usr/share/pi/extensions/awsdocs"
