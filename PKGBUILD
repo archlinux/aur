@@ -18,6 +18,7 @@ depends=(
   'python-cairo'
   'python-pynput'
   'python-pywhispercpp-cpu'
+  'python-pyaudio'
   'portaudio'
   'python-virtualenv'
   'pkg-config'
@@ -52,7 +53,7 @@ conflicts=('vocalinux')
 source=("$_pkgname::git+https://github.com/jatinkrmalik/vocalinux.git"
   "vocalinux.service")
 sha256sums=('SKIP'
-            '39879abfc03b057e202d014695c52339f02627a3fc6f508958673c4964b0b0a8')
+  '39879abfc03b057e202d014695c52339f02627a3fc6f508958673c4964b0b0a8')
 install="$pkgname.install"
 
 pkgver() {
