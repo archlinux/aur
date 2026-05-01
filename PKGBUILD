@@ -5,11 +5,11 @@
 
 pkgname=zsa-zapp-git
 pkgver=1.0.0.r1.gaaffabf
-pkgrel=1
+pkgrel=2
 pkgdesc="Flash ZSA keyboards from your terminal."
 arch=('x86_64')
 url="https://github.com/zsa/zapp"
-license=('MIT')
+license=('custom:MIT-Commons-Clause')
 depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 provides=("${pkgname%-git}=${pkgver}")
