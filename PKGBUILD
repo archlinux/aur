@@ -1,7 +1,7 @@
 # Maintainer: orange-guo
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/claude-code-stable-bin
 pkgname=claude-code-stable-bin
-pkgver=2.1.116
+pkgver=2.1.118
 pkgrel=1
 pkgdesc=Claude\ Code\ terminal-based\ AI\ coding\ assistant\ \(stable\ binary\ release\)
 arch=(x86_64 )
@@ -16,13 +16,13 @@ provides=(claude-code claude-code-stable )
 conflicts=(claude-code claude-code-bin claude-code-stable claude-code-latest claude-code-latest-bin )
 validpgpkeys=()
 install=claude-code-stable-bin.install
-source=(claude-wrapper LICENSE.md::https://raw.githubusercontent.com/anthropics/claude-code/v2.1.116/LICENSE.md )
+source=(claude-wrapper LICENSE.md::https://raw.githubusercontent.com/anthropics/claude-code/v2.1.118/LICENSE.md )
 sha256sums=('91374907d431d091be80078090fb30dfb6e341b68f6dc73b74a4d9ffbf93a354'
             '728158fd1037143fad6907e8fa34804177e598b7326519503fe83cafdef849e6')
-sha256sums_x86_64=('0d1aea5ce056a5ce491da7e9bbe63f992585e5c24852f023a07c8f18cf292cc5')
-source_x86_64=(claude-code-stable-bin-2.1.116-x86_64::https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.116/linux-x64/claude )
+sha256sums_x86_64=('ba363b2410a47120d2d4b8ece2e11fe0bbc5d59adb1329e8fb87ea0f370f4e46')
+source_x86_64=(claude-code-stable-bin-2.1.118-x86_64::https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.118/linux-x64/claude )
 
-_binary_source_path=claude-code-stable-bin-2.1.116-x86_64
+_binary_source_path=claude-code-stable-bin-2.1.118-x86_64
 _install_bin_path=/usr/lib/claude-code-stable-bin/claude
 _wrapper_source_path=claude-wrapper
 _wrapper_install_path=/usr/bin/claude
