@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=seetui
-pkgver=0.1.5
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='see (Service Event Extraction) is a TUI based tool to lookup logs from services (systemd)'
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -9,14 +9,11 @@ license=('GPL-3.0')
 makedepends=('cargo')
 provides=('seetui')
 conflicts=('seetui-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-    'Cargo.lock')
-sha256sums=('be9caaa085548a1d863766cd448f28cb8ad3d2b2d35a1bd57b0a6d681a7fdbae'
-            'fa822d7c5efe12d6f9ed191c24d999bb521a8c37cd47cefcf4137a23e8caa418')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('2e1b82a5dc74df72a61d2ad4c1d117d8f1789472c88b3896dc80f5d84d703655')
 
 prepare() {
     cd "SEE-$pkgver/"
-    mv ../Cargo.lock .
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 

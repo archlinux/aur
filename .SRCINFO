@@ -1,6 +1,6 @@
 pkgbase = seetui
 	pkgdesc = see (Service Event Extraction) is a TUI based tool to lookup logs from services (systemd)
-	pkgver = 0.1.5
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/NustyFrozen/SEE
 	arch = x86_64
@@ -10,9 +10,7 @@ pkgbase = seetui
 	makedepends = cargo
 	provides = seetui
 	conflicts = seetui-git
-	source = seetui-0.1.5.tar.gz::https://github.com/NustyFrozen/SEE/archive/refs/tags/0.1.5.tar.gz
-	source = Cargo.lock
-	sha256sums = be9caaa085548a1d863766cd448f28cb8ad3d2b2d35a1bd57b0a6d681a7fdbae
-	sha256sums = fa822d7c5efe12d6f9ed191c24d999bb521a8c37cd47cefcf4137a23e8caa418
+	source = seetui-0.1.7.tar.gz::https://github.com/NustyFrozen/SEE/archive/refs/tags/0.1.7.tar.gz
+	sha256sums = 2e1b82a5dc74df72a61d2ad4c1d117d8f1789472c88b3896dc80f5d84d703655
 
 pkgname = seetui
