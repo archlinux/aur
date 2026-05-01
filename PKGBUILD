@@ -42,6 +42,8 @@ build() {
 }
 
 check() {
+  # Fix for some tests
+  export NO_COLOR=1
   cd ${_pkgname}-${pkgver}
   test-env/bin/python -m unittest discover -vs .
 }
