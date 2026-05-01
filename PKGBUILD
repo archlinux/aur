@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=guiless-search
-pkgver=r4.20260501.7f26766
+pkgver=r5.20260501.a814bfd
 pkgrel=1
 pkgdesc='Multi-backend headless web search proxy'
 arch=('any')
