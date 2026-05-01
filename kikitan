@@ -1,0 +1,2 @@
+#!/bin/sh
+KIKITAN_NOT_APPIMAGE=true /opt/kikitan-translator/usr/bin/KikitanTranslator.Photino "$@"

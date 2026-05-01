@@ -1,0 +1,36 @@
+pkgbase = kikitan-translator
+	pkgdesc = Kikitan Translator, a realtime VRChat Translator
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/YusufOzmen01/kikitan-translator
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dotnet-sdk-9.0
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = squashfs-tools
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = gst-plugins-good
+	depends = gst-plugins-base
+	depends = fuse2
+	depends = libnotify
+	depends = libsoup3
+	depends = libsecret
+	depends = at-spi2-core
+	depends = xdg-utils
+	depends = pipewire
+	depends = pipewire-audio
+	depends = aspnet-runtime-9.0
+	depends = dotnet-runtime-9.0
+	options = !strip
+	source = kikitan-translator::git+https://github.com/YusufOzmen01/kikitan-translator.git#branch=dotnet
+	source = kikitan-translator.desktop
+	source = kikitan
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kikitan-translator
