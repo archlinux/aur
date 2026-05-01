@@ -2,7 +2,7 @@
 # Maintainer: AlexMa <i at fur dot im>
 
 pkgname='composia'
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Self-hosted Docker Compose control plane and CLI.'
 url='https://docs.composia.xyz'
@@ -12,7 +12,7 @@ provides=('composia')
 conflicts=('composia-bin')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia-${pkgver}.tar.gz")
-sha256sums=('c8cf6491d7fefac3619f8565c62a8e790342a81394a70512f32f337750a5519d')
+sha256sums=('8e5fa1ad273c99c454b2513926d1f06d50f420b8c805c83b7f871e544ec8ae0d')
 build() {
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=0

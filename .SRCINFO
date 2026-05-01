@@ -1,6 +1,6 @@
 pkgbase = composia
 	pkgdesc = Self-hosted Docker Compose control plane and CLI.
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://docs.composia.xyz
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = composia
 	conflicts = composia-bin
 	provides = composia
 	
-	source = https://forgejo.alexma.top/alexma233/composia/releases/download/v0.1.4/composia-0.1.4.tar.gz
-	sha256sums = c8cf6491d7fefac3619f8565c62a8e790342a81394a70512f32f337750a5519d
+	source = https://forgejo.alexma.top/alexma233/composia/releases/download/v0.1.5/composia-0.1.5.tar.gz
+	sha256sums = 8e5fa1ad273c99c454b2513926d1f06d50f420b8c805c83b7f871e544ec8ae0d
 	
 pkgname = composia
