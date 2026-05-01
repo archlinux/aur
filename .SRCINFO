@@ -15,6 +15,7 @@ pkgbase = deadbeef-plugins-kode54-git
 	depends = libopenmpt
 	depends = vgmstream-git
 	depends = libmgba
+	optdepends = soundfont-generaluserxg: Suggested default MIDI sound banks
 	source = git+https://bitbucket.org/losnoco/deadbeef_plugins.git
 	md5sums = SKIP
 

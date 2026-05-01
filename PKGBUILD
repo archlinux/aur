@@ -11,6 +11,7 @@ license=('GPL-2.0-only'
 makedepends=('cmake' 'git')
 depends=('deadbeef' 'zlib' 'libspessasynth'
          'libopenmpt' 'vgmstream-git' 'libmgba')
+optdepends=('soundfont-generaluserxg: Suggested default MIDI sound banks')
 source=('git+https://bitbucket.org/losnoco/deadbeef_plugins.git')
 md5sums=('SKIP')
 
