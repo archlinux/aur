@@ -1,6 +1,6 @@
 pkgbase = mount-manager
 	pkgdesc = Manage disk partitions and automount configurations via /etc/fstab
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://gitlab.com/sanchitsamuel/mount-manager
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mount-manager
 	depends = qt6-base
 	depends = polkit
 	depends = util-linux
-	source = mount-manager-0.2.tar.gz::https://gitlab.com/sanchitsamuel/mount-manager/-/archive/v0.2/mount-manager-v0.2.tar.gz
+	source = mount-manager-0.3.tar.gz::https://gitlab.com/sanchitsamuel/mount-manager/-/archive/v0.3/mount-manager-v0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = mount-manager
