@@ -1,0 +1,19 @@
+pkgbase = llamaman-bin
+	pkgdesc = TUI manager for llama-server (llama.cpp). Pre-built binary release.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/cmoro-deusto/llamaman
+	license = MIT
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	optdepends = llama.cpp: provides the llama-server binary
+	conflicts = llamaman
+	provides = llamaman
+	arch = aarch64
+	source_aarch64 = https://github.com/cmoro-deusto/llamaman/releases/download/v0.5.0/llamaman_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 22ab286ef99fe4314e95d7042e9f1bbbb6b75a3549bea573f99a3ab0e392c9a7
+	arch = x86_64
+	source_x86_64 = https://github.com/cmoro-deusto/llamaman/releases/download/v0.5.0/llamaman_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e28c79480ca8d25e921176b9ffe4fd6e5a01cf49a26dbc98cf786f592d6262c4
+	
+pkgname = llamaman-bin
