@@ -2,7 +2,7 @@
 
 _pkgname=pi-mono
 pkgname=pi
-pkgver=0.70.6
+pkgver=0.71.0
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
   'ripgrep: system-provided backend for the grep tool'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9085b2669b543279209b4f1812e9cd25555572348b4951e4f823b60c04d9dd50')
+sha256sums=('7660b02efd53dc77fbae5db820efe01037263109fff49806252f5b18c2f58cc5')
 
 build() {
   cd "${_pkgname}-${pkgver}"
