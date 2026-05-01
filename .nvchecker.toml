@@ -1,0 +1,3 @@
+[easy-seccomp]
+source = "git"
+git = "https://github.com/giuseppe/easyseccomp.git"

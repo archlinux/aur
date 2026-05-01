@@ -1,0 +1,16 @@
+pkgbase = easyseccomp
+	pkgdesc = DSL language to write seccomp filters
+	pkgver = 20240405
+	pkgrel = 1
+	url = https://www.scrivano.org/posts/2021-01-30-easyseccomp/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	checkdepends = bats
+	makedepends = git
+	makedepends = automake
+	depends = libseccomp
+	source = git+https://github.com/giuseppe/easyseccomp#commit=94422be00da71ff44c8ad1fe3455587c62ca29d3?signed
+	validpgpkeys = AC404C1C0BF735C63FF4D562263D6DF2E163E1EA
+	sha256sums = 8247fb7fde9e5093580c0b58ac46317faeae792879851d16ba6fd8f969b7d904
+
+pkgname = easyseccomp
