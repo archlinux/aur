@@ -36,25 +36,42 @@ build() {
   # .gitignore files. Creating an empty .git directory stops the scan at this level.
   [ ! -d .git ] && mkdir .git
 
-  # Install Node.js dependencies (kept alongside web for same path)
-  [ -f "package.json" ] && npm install
-
-  # Build frontend
-  [ -d "web" ] && cd web && rm -f package-lock.json && npm install && npm run build && cd ..
-
-  # Build TUI (Terminal User Interface)
-  [ -d "tui" ] && cd tui && rm -f package-lock.json && npm install && npm run build && cd ..
-  # Install whatsapp-bridge dependencies (kept alongside scripts for same path)
-  if [ -f "scripts/whatsapp-bridge/package.json" ]; then
-    (cd scripts/whatsapp-bridge && npm audit fix && npm install --legacy-peer-deps --omit=dev) || echo "Warning: whatsapp-bridge npm install failed (optional)"
+  echo "==> Installing Node.js dependencies..."
+  if [ -f "package.json" ]; then
+    npm install || return 1
   fi
 
-  # Create Python 3.11 venv with uv and install dependencies
-  uv venv --python 3.11 --clear venv
-  source venv/bin/activate
-  uv pip install setuptools wheel build
+  echo "==> Building frontend..."
+  if [ -d "web" ]; then
+    cd web
+    rm -f package-lock.json
+    npm install || return 1
+           npm run build || return 1
+           cd ..
+         fi
+  echo "==> Building TUI..."
+  if [ -d "tui" ]; then
+    cd tui
+    rm -f package-lock.json
+    npm install || return 1
+    npm run build || return 1
+    cd ..
+  fi
 
-  # Install the built wheel into the venv
+  echo "==> Installing whatsapp-bridge dependencies..."
+  # Install whatsapp-bridge dependencies (kept alongside scripts for same path)
+  if [ -f "scripts/whatsapp-bridge/package.json" ]; then
+    (cd scripts/whatsapp-bridge && rm -f package-lock.json && npm install --legacy-peer-deps --omit=dev) || return 1
+  fi
+
+  echo "==> Creating Python 3.11 venv and installing dependencies..."
+  uv venv --python 3.11 --clear venv || return 1
+  source venv/bin/activate
+ uv pip install setuptools wheel build || return 1
+  #python -m build --wheel --no-isolation || return 1
+  #uv pip install dist/*.whl || return 1
+
+  # Install the package directly
   uv pip install -e '.'
 }
 
@@ -97,8 +114,9 @@ package() {
 
   # Create simple wrapper script in /usr/bin
   install -d "$pkgdir/usr/bin"
-  
-  echo '#!/bin/bash' > "$pkgdir/usr/bin/hermes"
-  echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"' >> "$pkgdir/usr/bin/hermes"
+  cat > "$pkgdir/usr/bin/hermes" << 'EOF'
+#!/bin/bash
+exec /opt/$pkgname/venv/bin/python -m hermes_cli.main "$@"
+EOF
   chmod 755 "$pkgdir/usr/bin/hermes"
 }
