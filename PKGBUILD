@@ -1,13 +1,13 @@
 # Maintainer: xtexecute <none@none>
 
 pkgname=fleshfetch
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Very early development clicker game based on GTK4, written in Python with modding support. This is a complete joke, if you couldn't tell."
 arch=('x86_64')
 url="https://github.com/xtexecute/fleshfetch-aur"
 license=('MIT')
-depends=('python' 'python-gobject' 'gtk4' 'python-requests')
+depends=('python' 'python-gobject' 'gtk4' 'python-requests' 'python-pygame')
 source=("git+https://github.com/xtexecute/fleshfetch-aur.git#branch=main")
 sha256sums=('SKIP')
 
@@ -21,8 +21,9 @@ package() {
     # Default config
     install -Dm644 default.conf "$pkgdir/usr/share/fleshfetch/default.conf"
 
-    # Place flesh.png next to fleshfetch.py
+    # Assets
     install -Dm644 flesh.png "$pkgdir/usr/share/fleshfetch/flesh.png"
+    install -Dm644 click.wav "$pkgdir/usr/share/fleshfetch/click.wav"
 
     # Desktop entry
     install -Dm644 dev.xtexecute.fleshfetch.desktop \

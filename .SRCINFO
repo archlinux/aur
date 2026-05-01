@@ -1,6 +1,6 @@
 pkgbase = fleshfetch
 	pkgdesc = Very early development clicker game based on GTK4, written in Python with modding support. This is a complete joke, if you couldn't tell.
-	pkgver = 1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/xtexecute/fleshfetch-aur
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = fleshfetch
 	depends = python-gobject
 	depends = gtk4
 	depends = python-requests
+	depends = python-pygame
 	source = git+https://github.com/xtexecute/fleshfetch-aur.git#branch=main
 	sha256sums = SKIP
 
