@@ -1,7 +1,7 @@
 # Maintainer: Fabio Fontana (fabifont) <me@fabifont.dev>
 
 pkgname=claude-code-bin
-pkgver=2.1.123
+pkgver=2.1.126
 pkgrel=1
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
@@ -29,8 +29,8 @@ source_x86_64=("claude-${pkgver}-x86_64::https://downloads.claude.ai/claude-code
 source_aarch64=("claude-${pkgver}-aarch64::https://downloads.claude.ai/claude-code-releases/${pkgver}/linux-arm64/claude")
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('5a78139b679a86a88a0ac5476c706a64c3105bf6a6d435ba10f3aa3fb635bdb2')
-sha256sums_aarch64=('825c526035d1d75ff0bc1eebf18c887f98d07ea49ea80bd312ff416fe61a39b3')
+sha256sums_x86_64=('fce96968d275161ff65a4c19fc6434efc6973d9f6d35dc3992a2ba0553cac18e')
+sha256sums_aarch64=('88a6dca613a40559f3bac8a946a2ec6e60a870b91938d3df93dcac1dec4848cb')
 
 package() {
 	install -Dm755 "${srcdir}/claude-${pkgver}-${CARCH}" "${pkgdir}/opt/claude-code/bin/claude"

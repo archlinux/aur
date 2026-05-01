@@ -1,6 +1,6 @@
 pkgbase = claude-code-bin
 	pkgdesc = An agentic coding tool that lives in your terminal
-	pkgver = 2.1.123
+	pkgver = 2.1.126
 	pkgrel = 1
 	url = https://github.com/anthropics/claude-code
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = claude-code-bin
 	optdepends = tmux: agent team split panes
 	optdepends = bubblewrap: sandboxing
 	optdepends = socat: sandboxing
-	provides = claude-code=2.1.123
+	provides = claude-code=2.1.126
 	conflicts = claude-code
 	options = !strip
 	source = cc-legal::https://code.claude.com/docs/en/legal-and-compliance.md
 	sha256sums = SKIP
-	source_x86_64 = claude-2.1.123-x86_64::https://downloads.claude.ai/claude-code-releases/2.1.123/linux-x64/claude
-	sha256sums_x86_64 = 5a78139b679a86a88a0ac5476c706a64c3105bf6a6d435ba10f3aa3fb635bdb2
-	source_aarch64 = claude-2.1.123-aarch64::https://downloads.claude.ai/claude-code-releases/2.1.123/linux-arm64/claude
-	sha256sums_aarch64 = 825c526035d1d75ff0bc1eebf18c887f98d07ea49ea80bd312ff416fe61a39b3
+	source_x86_64 = claude-2.1.126-x86_64::https://downloads.claude.ai/claude-code-releases/2.1.126/linux-x64/claude
+	sha256sums_x86_64 = fce96968d275161ff65a4c19fc6434efc6973d9f6d35dc3992a2ba0553cac18e
+	source_aarch64 = claude-2.1.126-aarch64::https://downloads.claude.ai/claude-code-releases/2.1.126/linux-arm64/claude
+	sha256sums_aarch64 = 88a6dca613a40559f3bac8a946a2ec6e60a870b91938d3df93dcac1dec4848cb
 
 pkgname = claude-code-bin
