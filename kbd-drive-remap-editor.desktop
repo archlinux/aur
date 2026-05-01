@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Kbd Drive Remap Editor
+Comment=Open GS3104TPRO remap editor in a desktop window
+Exec=python3 /usr/lib/kbd-drive/kbd-drive-desktop-app.py
+Terminal=false
+Categories=Settings;Utility;
