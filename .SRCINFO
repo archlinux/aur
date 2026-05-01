@@ -1,0 +1,15 @@
+pkgbase = dedupe-episodes-bin
+	pkgdesc = Dedupe TV episodes by quality (resolution + PROPER/REPACK). Keep best, delete worse + sidecars.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/asm0dey/dedupe-episodes
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = dedupe-episodes
+	conflicts = dedupe-episodes
+	conflicts = python-dedupe-episodes
+	source_x86_64 = dedupe-episodes-0.1.2-x86_64::https://github.com/asm0dey/dedupe-episodes/releases/download/v0.1.2/dedupe-episodes-linux-x86_64
+	sha512sums_x86_64 = f4af065dcc146cc403de4650f6f016876afbfc4f2226c91f173042ff84996153de0cccda7d32a2516cb296cd2e845b50e5acf16bab2bb5e8cb274efca4d1385c
+
+pkgname = dedupe-episodes-bin
