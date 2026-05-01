@@ -1,21 +1,21 @@
 pkgbase = formidable-bin
 	pkgdesc = A modular Electron desktop application for creating, managing, and rendering dynamic forms and Markdown documents from YAML-based templates.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.2
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/petervdpas/Formidable
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron41
-	provides = formidable=2.0.2
+	provides = formidable=2.0.4
 	conflicts = formidable
 	options = !emptydirs
 	options = !strip
 	source = formidable.sh
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = formidable-2.0.2-aarch64.deb::https://github.com/petervdpas/Formidable/releases/download/v2.0.2/formidable_2.0.2_arm64.deb
-	sha256sums_aarch64 = 5211a435a57f020ffbe6ab71cc6c5733fb4d7694519d4e16620f7509ce4f0722
-	source_x86_64 = formidable-2.0.2-x86_64.deb::https://github.com/petervdpas/Formidable/releases/download/v2.0.2/formidable_2.0.2_amd64.deb
-	sha256sums_x86_64 = 8a089840ede6142b4ead0e3c00361607ff6adbe49386cb116f68c1b14d872709
+	source_aarch64 = formidable-2.0.4-aarch64.deb::https://github.com/petervdpas/Formidable/releases/download/v2.0.4/formidable_arm64.deb
+	sha256sums_aarch64 = c855839851ad4390a6f142b87f9ff92de29b82bc470f126eec59e99c58c7feb9
+	source_x86_64 = formidable-2.0.4-x86_64.deb::https://github.com/petervdpas/Formidable/releases/download/v2.0.4/formidable_amd64.deb
+	sha256sums_x86_64 = c088efafcbd53dd1b47d091d9a3c0c7577e37f5b650026e7e64daef6597068d9
 
 pkgname = formidable-bin
