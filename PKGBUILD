@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=clive
-pkgver=0.12.16
-pkgrel=3
+pkgver=0.12.17
+pkgrel=1
 pkgdesc="⚡ Automates terminal operations."
 arch=('x86_64' 'aarch64')
 url="https://github.com/koki-develop/clive"
