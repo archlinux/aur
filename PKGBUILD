@@ -1,13 +1,15 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
+install=sentinel.install
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (COSMIC + sudo-rs friendly)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/atayozcan/sentinel"
 license=('GPL-3.0-or-later')
 depends=(
     'pam'
+    'polkit'
     'wayland'
     'libxkbcommon'
     'fontconfig'
@@ -28,7 +30,7 @@ optdepends=(
 )
 backup=('etc/security/sentinel.conf' 'etc/pam.d/polkit-1')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0505fe31ebabcac7c392794be3af09bcb76a2f111993fca19451e9d2207c09cc')
+sha256sums=('2ab8585d93a52e3d48344a4c373958980be5e606f65092b11eef4ef28bf80d88')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -66,6 +68,15 @@ package() {
     # it under /usr/share/doc/ for users to copy in manually.
     install -Dm644 config/sudo \
         "$pkgdir/usr/share/doc/$pkgname/sudo"
+
+    install -Dm755 target/release/sentinel-polkit-agent \
+        "$pkgdir/usr/lib/sentinel-polkit-agent"
+
+    install -Dm644 packaging/systemd/sentinel-polkit-agent.service \
+        "$pkgdir/usr/lib/systemd/user/sentinel-polkit-agent.service"
+
+    install -Dm644 packaging/xdg-autostart/sentinel-polkit-agent.desktop \
+        "$pkgdir/etc/xdg/autostart/sentinel-polkit-agent.desktop"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
