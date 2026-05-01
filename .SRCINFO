@@ -1,0 +1,17 @@
+pkgbase = ratatui-gamepad-tester-git
+	pkgdesc = TUI app for visualizing gamepad input
+	pkgver = 0.1.1.r0.gf1ae2de
+	pkgrel = 1
+	url = https://github.com/sermuns/ratatui-gamepad-tester
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = git
+	provides = ratatui-gamepad-tester
+	conflicts = ratatui-gamepad-tester
+	conflicts = ratatui-gamepad-tester-bin
+	source = ratatui-gamepad-tester-main::git+https://github.com/sermuns/ratatui-gamepad-tester.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ratatui-gamepad-tester-git
