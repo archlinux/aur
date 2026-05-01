@@ -8,7 +8,7 @@ url="https://localmail.dev"
 license=('custom:proprietary')
 depends=('fuse2' 'hicolor-icon-theme')
 source=("https://download.localmail.dev/releases/${pkgver}/LocalMail.AppImage")
-sha256sums=('446ec74ba039c036361e74d3f4e616a461c461bb4ce6edaf428c520580820821')
+sha256sums=('6bd57c4212e2ca93a5728ee6efc6c503dfb71185a2285226a45632cd85e45fd0')
 
 prepare() {
   chmod +x "${srcdir}/LocalMail.AppImage"
