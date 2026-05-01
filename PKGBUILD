@@ -2,7 +2,7 @@
 
 pkgname=ttf-uiua386
 pkgver=0.18.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Uiua font with language glyphs, inspired by APL386"
 arch=(any)
 url="https://www.uiua.org/"
