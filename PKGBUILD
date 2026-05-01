@@ -1,5 +1,5 @@
 pkgname=sqltui
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A terminal UI browser for SQLite databases"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('09c34b3b7e6dcedbcd57328c1e3ebb0de54755efe2141c3a6a93f9b71d506eae')
+sha256sums=('59bcad4d2c613b9d69d94534fd80b8c74b1512a4712aba87eeb8b1e7b29b1f63')
 
 prepare() {
     cd "$pkgname-$pkgver"
