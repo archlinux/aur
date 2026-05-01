@@ -1,6 +1,6 @@
 pkgbase = niri-notify-focus
 	pkgdesc = Focus source window on notification click for the niri Wayland compositor
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Oaklight/niri-notify-focus
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = niri-notify-focus
 	depends = python-dbus
 	depends = python-gobject
 	optdepends = niri: required Wayland compositor
-	source = niri-notify-focus-0.1.0.tar.gz::https://github.com/Oaklight/niri-notify-focus/archive/v0.1.0.tar.gz
-	sha256sums = a6b3f3dd1b153bba5ff0a7ad73f7d43dabde8cde58611bcb4dfe7a9cb9701f43
+	source = niri-notify-focus-0.2.0.tar.gz::https://github.com/Oaklight/niri-notify-focus/archive/v0.2.0.tar.gz
+	sha256sums = 48c214d5ac5a52ee5badcab85b45dc9c93b615749bc12b0e68184d5bfbbb34da
 
 pkgname = niri-notify-focus
