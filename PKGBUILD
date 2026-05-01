@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hwatch
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A modern alternative to the watch command"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d2d7ade81e31ae6584ccf0f65bea7fe1a6dc5c79b9d149c2f3b00cd71650ac2e')
+sha256sums=('b13a492ac1fded05ee072c904f61f227a1a5119c6767c2dbed03eb2e7c261a1f')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -31,7 +31,7 @@ check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo test --frozen -- --skip "exec"
+  env -u HWATCH cargo test --frozen -- --skip "exec"
 }
 
 package() {
