@@ -2,7 +2,7 @@
 
 _pkgname=PunyInform
 pkgname=punyinform
-pkgver=6.3.1
+pkgver=6.5
 _pkgver="${pkgver//./_}"
 pkgrel=1
 pkgdesc="A fast and compact Inform 6 library"
@@ -13,7 +13,7 @@ groups=('inform')
 checkdepends=('inform' 'ruby')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/johanberntsson/PunyInform/archive/refs/tags/v$_pkgver.tar.gz"
 	'punyinform.sh')
-sha256sums=('9583ef6005bf29a4e76b3058c4fff437cb6d9f807226c3f26cf55cc18ab31974'
+sha256sums=('c207bcacdb5c1835b9f2d12c809f87048bc7f5be6cec951b0affa79110b7ce40'
             'b2fafaddc1100ae9bda1b3ddb0bd269cee292fabedcaff123aa9928daed85b92')
 
 prepare() {
