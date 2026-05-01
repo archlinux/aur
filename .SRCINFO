@@ -1,6 +1,6 @@
 pkgbase = field-monitor
 	pkgdesc = Remote-desktop client designed for the GNOME platform. Access virtual machines and other external screens.
-	pkgver = 49.1
+	pkgver = 50.0
 	pkgrel = 1
 	url = https://github.com/theCapypara/field-monitor
 	arch = x86_64
@@ -27,12 +27,13 @@ pkgbase = field-monitor
 	depends = python-pyparsing
 	depends = libcacard
 	depends = spice
-	depends = freerdp2
+	depends = gcr-4
+	depends = freerdp
 	depends = vte4
 	depends = json-c
 	depends = libtirpc
 	depends = gtk-vnc
-	source = git+https://github.com/theCapypara/field-monitor#tag=v49.1
-	sha256sums = 781897cc978fa5283f8ccb2127786df92a37353ac4bc7a14a1650da87adc8b14
+	source = git+https://github.com/theCapypara/field-monitor#tag=v50.0
+	sha256sums = 64534f2fee55dcbea43167c7c4d14975fbcbee5376763ae2b824770afe873983
 
 pkgname = field-monitor
