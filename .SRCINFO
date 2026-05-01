@@ -1,0 +1,14 @@
+pkgbase = plasma6-applets-panel-colorizer-islands-separator-git
+	pkgdesc = Simple separator widget to create Panel Colorizer widget islands (visible only in Edit Mode).
+	pkgver = 0.1.0.r0.9d68153
+	pkgrel = 1
+	url = https://github.com/luisbocanegra/plasma-panel-colorizer-islands-separator
+	arch = any
+	license = GPL-3.0
+	depends = libplasma
+	provides = plasma6-applets-panel-colorizer-islands-separator
+	conflicts = plasma6-applets-panel-colorizer-islands-separator
+	source = plasma-panel-colorizer-islands-separator::git+https://github.com/luisbocanegra/plasma-panel-colorizer-islands-separator
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-panel-colorizer-islands-separator-git
