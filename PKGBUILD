@@ -1,8 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: gamestime102 < >
+
 pkgname=duolingo-desktop-bin
 _appname=dl-desktop
 _pkgname=ro.go.hmlendea.DL-Desktop
-pkgver=4.1.1
+pkgver=4.2.0
 _electronversion=36
 pkgrel=1
 pkgdesc="Desktop client for the Duolingo language learning application.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/v${pkgver}/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bda7e2dcf4bdf9e72998130784768de3705a546ce53774c66f52ec3072e99c28'
+sha256sums=('7c83a3ebebbbb4f54793eac8a277853aa7cd2df3f41d15e305d9dad56ecdda4a'
             '67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
