@@ -1,39 +1,42 @@
 pkgname=sqltui
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A terminal UI browser for SQLite databases"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nettproxy/sqltui"
 license=('MIT')
 
-depends=('gcc-libs')
-makedepends=('rust' 'cargo')
+depends=('gcc-libs' 'sqlite')
+makedepends=('rust' 'cargo' 'pkgconf')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('18c4270d26f77697c4eebb8f9492e8c7d34bcdacd7151211a1bc325b573e2eeb')
+sha256sums=('a09578458cb52a8c45325c25c000ec88f226a44cc89fb59543ec9717a1ed61cc')
 
 prepare() {
     cd "$pkgname-$pkgver"
+
     export RUSTUP_TOOLCHAIN=stable
 
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    # IMPORTANT: avoid locked network issues
+    cargo fetch --offline
 }
 
 build() {
     cd "$pkgname-$pkgver"
+
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    export RUSTFLAGS="-C link-arg=-lsqlite3"
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+    export PKG_CONFIG_ALLOW_CROSS=1
 
-    cargo build --release --all-features
+    cargo build --release --locked
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-
-    cargo test --release
+    cargo test --release --locked
 }
 
 package() {
