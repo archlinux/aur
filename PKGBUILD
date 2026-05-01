@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Mayrink <vncsmyrnk@gmail.com>
 pkgname=shell-utils-git
-pkgver=r194.0d9663f # This gets auto-updated by the pkgver() function
+pkgver=r217.8ebcd0f # This gets auto-updated by the pkgver() function
 pkgrel=1
 pkgdesc="An attempt to be a shell-agnostic custom utilities tool."
 arch=('x86_64')
@@ -33,7 +33,7 @@ build() {
   CGO_ENABLED=0 go build \
     -ldflags="-s -w -X 'shellutils/internal.BaseDefaultScriptsPath=/usr/share/shell-utils/scripts'" \
     -trimpath \
-    -o ./dist/util-complete \
+    -o ./dist/compsuggest \
     ./cmd/completion/main.go
 }
 
@@ -42,7 +42,7 @@ package() {
   install -d -m755 "${pkgdir}/usr/share/shell-utils/scripts/"
   install -d -m755 "${pkgdir}/usr/share/man/man1"
   install -Dm755 ./dist/util "${pkgdir}/usr/bin/util"
-  install -Dm755 ./dist/util-complete "${pkgdir}/usr/bin/util-complete"
+  install -Dm755 ./dist/compsuggest "${pkgdir}/usr/share/shell-utils/scripts/"
   install -Dm755 ./dist/config "${pkgdir}/usr/share/shell-utils/scripts/"
   install -Dm644 ./completions/zsh/_util "${pkgdir}/usr/share/zsh/site-functions/_util"
   install -Dm644 ./completions/zsh/*.completions.zsh "${pkgdir}/usr/share/zsh/site-functions/"
