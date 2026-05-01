@@ -1,6 +1,6 @@
 # Maintainer: metaneutrons
 pkgname=pfs3
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="PFS3 (Amiga Professional File System III) tools"
 arch=('x86_64' 'aarch64')
