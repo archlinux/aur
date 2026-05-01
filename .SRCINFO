@@ -1,6 +1,6 @@
 pkgbase = pycharm-eap
 	pkgdesc = Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition.
-	pkgver = 261.23567.80_2026.1.1
+	pkgver = 261.23567.174_2026.1.1
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm/nextversion/
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = pycharm-eap
 	optdepends = python-tox: Python environments for testing tool with Python
 	optdepends = jupyter-notebook: For support Jupyter Notebook
 	options = !strip
-	source = https://download-cf.jetbrains.com/python/pycharm-professional-261.23567.80.tar.gz
+	source = https://download-cf.jetbrains.com/python/pycharm-professional-2026.1.1.tar.gz
 	source = pycharm-eap.desktop
-	sha256sums = 35dc40707fb0ff657583124d9568ea187612f9816436c2624a17320e2b22c5b9
+	sha256sums = 6f81c5874438965f2566001ad265e727c02e4db7d0b57287d86f3479fd647891
 	sha256sums = b76e9b0a64a62d0775b4fa98313f6cbc2c3a2306da3715cb1f855dea5736ece0
 
 pkgname = pycharm-eap
