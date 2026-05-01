@@ -11,7 +11,7 @@ source=(
   "rclone-python-gui-$pkgver.tar.gz::https://github.com/xlordnoro/rclone_python_GUI/archive/refs/tags/v$pkgver.tar.gz"
   "rclone-python-gui.desktop"
 )
-sha256sums=('ac4c2d5275a5f32a6776f08f3bc17afeebe2b9e4f690c1aec34ea5d0f27b9743'
+sha256sums=('eefbb04152c18ec04edc316baae8ee087aad0ce6bc109ba851b1a9242f23b3d2'
             '7d8a8b05397829082e71a891fdeb4a636fd28aa9105cf671f2878627500b9aa5')
 
 package() {
