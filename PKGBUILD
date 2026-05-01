@@ -4,7 +4,7 @@
 _pkgname=Inform6
 pkgname=inform
 pkgver=6.44
-pkgrel=1
+pkgrel=2
 pkgdesc="The Inform 6 compiler"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/DavidKinder/Inform6"
