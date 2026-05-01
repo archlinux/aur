@@ -1,7 +1,7 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (COSMIC + sudo-rs friendly)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/atayozcan/sentinel"
@@ -28,7 +28,7 @@ optdepends=(
 )
 backup=('etc/security/sentinel.conf' 'etc/pam.d/polkit-1')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('23794399c98d9211e2f146d458c2052fa754d513e1facda95f42d6f847f8b03d')
+sha256sums=('0505fe31ebabcac7c392794be3af09bcb76a2f111993fca19451e9d2207c09cc')
 
 prepare() {
     cd "$pkgname-$pkgver"
