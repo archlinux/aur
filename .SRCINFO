@@ -1,16 +1,16 @@
 pkgbase = kotofetch
 	pkgdesc = Minimalist fetch tool for Japanese quotes (written in Rust)
-	pkgver = 0.2.20
+	pkgver = 0.2.21
 	pkgrel = 1
 	url = https://github.com/hxpe-dev/kotofetch
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	options = !debug
-	source = https://github.com/hxpe-dev/kotofetch/releases/download/v0.2.20/kotofetch-v0.2.20-x86_64-unknown-linux-gnu.tar.gz
-	source = https://raw.githubusercontent.com/hxpe-dev/kotofetch/v0.2.20/README.md
-	source = https://raw.githubusercontent.com/hxpe-dev/kotofetch/v0.2.20/LICENSE
-	sha256sums = 17d6723f600c2e7c4e5a7e85a2833b0c77ddcf3d0d98675dc80ce7500ef1cf2e
+	source = https://github.com/hxpe-dev/kotofetch/releases/download/v0.2.21/kotofetch-v0.2.21-x86_64-unknown-linux-gnu.tar.gz
+	source = https://raw.githubusercontent.com/hxpe-dev/kotofetch/v0.2.21/README.md
+	source = https://raw.githubusercontent.com/hxpe-dev/kotofetch/v0.2.21/LICENSE
+	sha256sums = 83e12e338dc6143ba11bfb685d34e3343c0dd1191100d6161e5e9839c21411bf
 	sha256sums = SKIP
 	sha256sums = SKIP
 
