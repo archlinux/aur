@@ -1,7 +1,7 @@
 pkgbase = hermes-agent
 	pkgdesc = Locally-run AI agent with tool use, web browsing, and automation
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	install = hermes-agent.install
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = hermes-agent
 	depends = pango
 	depends = cairo
 	depends = alsa-lib
-	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.4.23.tar.gz
-	sha256sums = 1ee1be80a2112b7edc581770cee8858e725ba110cc423979cd7102492504bc6b
+	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.4.30.tar.gz
+	sha256sums = 3743db721cf6c93631f8446bdc8b77fd53e0c439ee8c42ec821ebfd6874c3949
 
 pkgname = hermes-agent

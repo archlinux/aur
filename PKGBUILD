@@ -1,8 +1,8 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 pkgname=hermes-agent
-pkgver=0.11.0
-_tagver=2026.4.23
-pkgrel=2
+pkgver=0.12.0
+_tagver=2026.4.30
+pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -25,7 +25,7 @@ depends=(
 
 makedepends=('uv' 'nodejs' 'npm')
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('1ee1be80a2112b7edc581770cee8858e725ba110cc423979cd7102492504bc6b')
+sha256sums=('3743db721cf6c93631f8446bdc8b77fd53e0c439ee8c42ec821ebfd6874c3949')
 validpgpkeys=()
 install=hermes-agent.install
 
@@ -46,9 +46,10 @@ build() {
     cd web
     rm -f package-lock.json
     npm install || return 1
-           npm run build || return 1
-           cd ..
-         fi
+    npm run build || return 1
+    cd ..
+  fi
+
   echo "==> Building TUI..."
   if [ -d "tui" ]; then
     cd tui
@@ -67,12 +68,7 @@ build() {
   echo "==> Creating Python 3.11 venv and installing dependencies..."
   uv venv --python 3.11 --clear venv || return 1
   source venv/bin/activate
- uv pip install setuptools wheel build || return 1
-  #python -m build --wheel --no-isolation || return 1
-  #uv pip install dist/*.whl || return 1
-
-  # Install the package directly
-  uv pip install -e '.'
+  uv pip install .[all] 
 }
 
 package() {
@@ -84,7 +80,6 @@ package() {
 
   # Copy application files
   cp -r venv "$_optdir/"
-  cp -r dist "$_optdir/"
   cp -r web "$_optdir/"
   [ -d "tui" ] && cp -r tui "$_optdir/"
   cp -r scripts "$_optdir/"
@@ -114,9 +109,7 @@ package() {
 
   # Create simple wrapper script in /usr/bin
   install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/hermes" << 'EOF'
-#!/bin/bash
-exec /opt/$pkgname/venv/bin/python -m hermes_cli.main "$@"
-EOF
+  echo "#!/bin/bash" > "$pkgdir/usr/bin/hermes"
+  echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"' >> "$pkgdir/usr/bin/hermes"
   chmod 755 "$pkgdir/usr/bin/hermes"
 }
