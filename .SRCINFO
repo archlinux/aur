@@ -1,0 +1,25 @@
+pkgbase = horizon-terminal-bin
+	pkgdesc = GPU-accelerated terminal board that puts all your sessions on an infinite canvas
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/peters/horizon
+	arch = x86_64
+	license = MIT
+	provides = horizon-terminal
+	conflicts = horizon-terminal
+	source = horizon-linux-x64.tar.gz::https://github.com/peters/horizon/releases/download/v0.2.5/horizon-linux-x64.tar.gz
+	source = horizon.desktop::https://raw.githubusercontent.com/peters/horizon/v0.2.5/packaging/linux/horizon.desktop
+	source = horizon-64.png::https://raw.githubusercontent.com/peters/horizon/v0.2.5/assets/icons/icon-64.png
+	source = horizon-128.png::https://raw.githubusercontent.com/peters/horizon/v0.2.5/assets/icons/icon-128.png
+	source = horizon-256.png::https://raw.githubusercontent.com/peters/horizon/v0.2.5/assets/icons/icon-256.png
+	source = horizon-512.png::https://raw.githubusercontent.com/peters/horizon/v0.2.5/assets/icons/icon-512.png
+	source = horizon.svg::https://raw.githubusercontent.com/peters/horizon/v0.2.5/assets/icons/logo.svg
+	sha256sums = d6804aa5acb9e0b48c26ed093ce2ef3e4efd136425e7f07a27afccec31013726
+	sha256sums = cd243e063b827ac762feab1e234df11f6a691b0e416adc21ba51be7345e4e1d0
+	sha256sums = 56cbcb784228e2850bd5c85057423a8ad2792b5acab87ee603d6347886b24665
+	sha256sums = 74806339a680f55f5f9dd411a7ed53493e01e349a44c56dac0e81be1ba7d0fb4
+	sha256sums = 8ab2c37c2a0b56a884429afb91cbb2bc7ee70474b47ebb849cf05e8eb030df52
+	sha256sums = 6df95f6ba983e2530f78630bccca65b104b2f6a44617edade49bfeb0a9778f83
+	sha256sums = 3a1c63d497cc2ac70e9654e6cf9aa564cb8dd6d0a2670e35c25792ac0cf23c80
+
+pkgname = horizon-terminal-bin
