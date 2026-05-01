@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=handbook-bin
 _pkgname=Handbook
-pkgver=1.4.0
+pkgver=1.4.1
 _electronversion=41
 pkgrel=1
 pkgdesc="Create small, movable, and easily concealable windows for quick use. (Prebuilt version. Use system-wide electron)"
@@ -17,14 +17,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ECRomaneli/Handbook/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9367be8554c46f08215c51e3cd1ead44b76b99e8667da4265a8f11c8817558b0'
+sha256sums=('7fb2f2f8409e7cdc13b9e4a523f76b67413648b9d63bd9323e8e76bf72cbb932'
             'f0cf8bd391f773dca303159de1b19dbb8626d86f4aae45a548320031f113283b'
-            '3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
     local _main_exe=""
-    
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
     fi
@@ -43,11 +42,12 @@ _check_electron_version() {
     fi
 }
 prepare() {
-    sed -i -e "s/@electronversion@/${_electronversion}/g" \
-           -e "s/@appname@/${pkgname%-bin}/g" \
-           -e "s/@runname@/app.asar/g" \
-           -e "s/@cfgdirname@/${_pkgname}/g" \
-           "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
