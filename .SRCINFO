@@ -1,7 +1,7 @@
 pkgbase = mopidy4
 	pkgdesc = An extensible music server written in Python
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mopidy.com
 	arch = any
 	license = Apache-2.0
@@ -20,7 +20,7 @@ pkgbase = mopidy4
 	makedepends = python-setuptools-scm
 	makedepends = python-sphinx-autodoc-typehints
 	depends = python
-	depends = python-cyclopts
+	depends = python-cyclopts>=4.3.0
 	depends = python-httpx
 	depends = python-platformdirs
 	depends = python-pydantic
