@@ -1,0 +1,16 @@
+post_install() {
+    echo ":: Theme installed to /usr/share/sddm/themes/dog-samurai"
+    echo ":: To enable this theme, please edit /etc/sddm.conf:"
+    echo "::"
+    echo ":: [Theme]"
+    echo ":: Current=dog-samurai"
+    echo "::"
+    echo ":: It is also recommended to disable the virtual keyboard in the [General] section:"
+    echo "::"
+    echo ":: [General]"
+    echo ":: InputMethod="
+}
+
+post_upgrade() {
+    post_install
+}

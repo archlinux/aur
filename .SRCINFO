@@ -1,0 +1,23 @@
+pkgbase = dog-samurai
+	pkgdesc = Dog Samurai SDDM theme
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Darkkal44/qylock/tree/main/themes/dog-samurai
+	install = dog-samurai.install
+	arch = any
+	license = GPL3
+	depends = sddm
+	depends = qt6-declarative
+	depends = qt6-5compat
+	depends = qt6-svg
+	depends = qt6-multimedia
+	depends = qt6-multimedia-ffmpeg
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = fzf
+	source = dog-samurai::git+https://github.com/sidgwick/dog-samurai.git
+	md5sums = SKIP
+
+pkgname = dog-samurai
