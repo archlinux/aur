@@ -1,0 +1,18 @@
+pkgbase = prek-git
+	pkgdesc = A framework to run git hooks
+	pkgver = 0.3.11.r5.gc4113c88
+	pkgrel = 1
+	url = https://prek.j178.dev/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = prek=0.3.11.r5.gc4113c88
+	conflicts = prek
+	source = git+https://github.com/j178/prek.git
+	sha256sums = SKIP
+
+pkgname = prek-git
