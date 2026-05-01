@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=sem-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Semantic version control CLI — entity-level diff, blame, graph, and impact analysis via tree-sitter'
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!debug')
 source_x86_64=("sem-${pkgver}-x86_64.tar.gz::https://github.com/Ataraxy-Labs/sem/releases/download/v${pkgver}/sem-linux-x86_64.tar.gz"
                "LICENSE-APACHE-${pkgver}::https://raw.githubusercontent.com/Ataraxy-Labs/sem/v${pkgver}/LICENSE-APACHE"
                "LICENSE-MIT-${pkgver}::https://raw.githubusercontent.com/Ataraxy-Labs/sem/v${pkgver}/LICENSE-MIT")
-sha256sums_x86_64=('5666db10db3374518ecf992a934f9b2ef0f4c20fc582f5ca3666259b9628a6c7'
+sha256sums_x86_64=('92185587af8de3a94eb871eed403f297e2eb08c5310baa3a1b893cd301e9bca8'
                    '3d5ac2ca3c9e4bcd641e43c5512350cf62e15e527f9b4a720d52b546d9965a5f'
                    '0173d0fc0ea38a5124e9cc7eea9db01a14141ce1240508eb497f701394fe49eb')
 
