@@ -1,7 +1,7 @@
 pkgbase = inform-git
 	pkgdesc = The Inform 6 compiler (git version)
-	pkgver = 6.42.167.g5885e84
-	pkgrel = 2
+	pkgver = 6.44.228.gd1066bc
+	pkgrel = 1
 	url = https://github.com/DavidKinder/Inform6
 	arch = aarch64
 	arch = arm
