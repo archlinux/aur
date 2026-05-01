@@ -12,16 +12,16 @@ provides=('composia')
 conflicts=('composia')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('9911c54e647a759949550b00ae8e8a85a74fb6066307ca52bc67536b790983db')
+sha256sums_aarch64=('5d62f8c4a78a7350a55b11bb35cde2291864558a01f7cf94101fcdca258b9404')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('047656f2b35633f49f6fef5266ca0b58f97d2b4ef199fe682ee2bb318f73704b')
+sha256sums_armv7h=('d1c45304b0a61604c47fcf62e18980631b71e6e9a1f5689567c6c99be05d0d0f')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('7684281422d54f0ee7c69598ed32b08acf6d7f762b64c78dbfb510ac9ae915de')
+sha256sums_i686=('825e1f5a4ba5be0ea5d95eddd3f5a91c12395aae9102b89aae9a9a3d88aaee23')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://forgejo.alexma.top/alexma233/composia/releases/download/v${pkgver}/composia_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('45c045f9b0aa7ec2bee255d8d0b59bc8f3dbed35bca97f2c97f21ef6c34690d3')
+sha256sums_x86_64=('5eb0e89282d45a80746296065ffb7a956ca740f9d0e2299802dd6b3be57b677f')
 
 package() {
   install -Dm755 "./composia" "${pkgdir}/usr/bin/composia"
