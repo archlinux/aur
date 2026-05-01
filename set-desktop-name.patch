@@ -1,0 +1,14 @@
+Add `desktopName` to packages/desktop-electron/package.json so Electron's
+ozone-wayland sets the running window's app_id to "opencode-desktop-electron"
+(matching the .desktop entry's StartupWMClass). This is the Electron API
+surfaced by https://github.com/electron/electron/pull/51426; without it
+chromium 41 leaves wm_class empty (issue #51375) and KDE Plasma falls back
+to a generic icon for the running window.
+
+--- a/packages/desktop-electron/package.json
++++ b/packages/desktop-electron/package.json
+@@ -1,3 +1,4 @@
+ {
+   "name": "@opencode-ai/desktop-electron",
++  "desktopName": "opencode-desktop-electron",
+   "private": true,
