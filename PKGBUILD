@@ -8,7 +8,7 @@ url="https://localmail.dev"
 license=('custom:proprietary')
 depends=('fuse2' 'hicolor-icon-theme')
 source=("https://download.localmail.dev/releases/${pkgver}/LocalMail.AppImage")
-sha256sums=('d4b9d423c33d38e3771b9c7f220a0df4ff120148003839a2dbc21867c1867d8a')
+sha256sums=('446ec74ba039c036361e74d3f4e616a461c461bb4ce6edaf428c520580820821')
 
 prepare() {
   chmod +x "${srcdir}/LocalMail.AppImage"
@@ -35,5 +35,15 @@ DESKTOP_EOF
 
   if [ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/localmail.png" ]; then
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/localmail.png"       "${pkgdir}/usr/share/icons/hicolor/512x512/apps/localmail.png"
+  fi
+
+  # Fallback: use root icon from AppImage
+  if [ ! -f "${pkgdir}/usr/share/icons/hicolor/512x512/apps/localmail.png" ]; then
+    for fallback in "${srcdir}/squashfs-root/localmail.png" "${srcdir}/squashfs-root/.DirIcon"; do
+      if [ -f "$fallback" ]; then
+        install -Dm644 "$fallback" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/localmail.png"
+        break
+      fi
+    done
   fi
 }
