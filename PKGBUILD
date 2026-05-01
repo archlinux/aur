@@ -1,7 +1,7 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (COSMIC + sudo-rs friendly)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/atayozcan/sentinel"
@@ -60,6 +60,12 @@ package() {
 
     install -Dm644 config/polkit-1 \
         "$pkgdir/etc/pam.d/polkit-1"
+
+    # config/sudo is *not* installed to /etc/pam.d/sudo automatically —
+    # silently rewriting /etc/pam.d/sudo is a notorious foot-gun. Ship
+    # it under /usr/share/doc/ for users to copy in manually.
+    install -Dm644 config/sudo \
+        "$pkgdir/usr/share/doc/$pkgname/sudo"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
