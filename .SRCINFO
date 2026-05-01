@@ -1,6 +1,6 @@
 pkgbase = dotbackup
 	pkgdesc = Dotfile backup utility
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/jaxvanyang/dotbackup.rs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dotbackup
 	makedepends = scdoc
 	depends = gcc-libs
 	depends = glibc
-	source = dotbackup.rs-2.1.0.tar.gz::https://github.com/jaxvanyang/dotbackup.rs/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 6a3b54932044c8dbc3f5fa4c7cb2b2a6d1d90d46c11168b74234e757c93f553b
+	source = dotbackup.rs-2.2.0.tar.gz::https://github.com/jaxvanyang/dotbackup.rs/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = ee0a5e562f3fa08495988bb53a8f8b9ce6d692140f7dae628c2eb4699ee320bb
 
 pkgname = dotbackup
