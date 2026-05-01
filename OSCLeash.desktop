@@ -1,0 +1,16 @@
+[Desktop Entry]
+Comment=Get pulled around in vrchat
+Exec=/usr/bin/oscleash
+GenericName=OSCLeash
+Name=OSCLeash
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Icon=oscleash
+Categories=Utilities;Network;

@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /opt/OSCLeash
+/usr/bin/python /opt/OSCLeash/OSCLeash.py
