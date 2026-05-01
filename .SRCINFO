@@ -1,6 +1,6 @@
 pkgbase = python-num2words2
 	pkgdesc = Modules to convert numbers to words. Actively-maintained fork of num2words with 159+ language codes.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/jqueguiner/num2words2
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-num2words2
 	makedepends = python-wheel
 	depends = python
 	depends = python-docopt
-	source = https://files.pythonhosted.org/packages/source/n/num2words2/num2words2-1.0.3.tar.gz
-	sha256sums = 32388edf7e783f64f3476c6ff259e950a9d1709ff57d6100cd43099f6d09675f
+	source = https://files.pythonhosted.org/packages/source/n/num2words2/num2words2-1.0.4.tar.gz
+	sha256sums = a87e45b6b7ee557e14a7c3ea12a0017ec2e76c17ee812d3db35860ada4b56dc2
 
 pkgname = python-num2words2
