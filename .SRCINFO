@@ -1,0 +1,17 @@
+pkgbase = deepseek-tui
+	pkgdesc = A terminal-native coding agent for DeepSeek V4 models with 1M-token context
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/Hmbown/DeepSeek-TUI
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = openssl
+	depends = libxcb
+	depends = wayland
+	source = deepseek-tui-0.8.2.tar.gz::https://github.com/Hmbown/DeepSeek-TUI/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 74a6b7761d15dc6cde7e09e2b4a6022987ad73371a6c29bd3a0df6fb485c49df
+
+pkgname = deepseek-tui
