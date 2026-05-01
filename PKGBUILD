@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=banocc
-_pkgver=1.35.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.35.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Bayesian ANalysis Of Compositional Covariance'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed0c28588f7c79f10507fc54c9c87114ee55c6e14e790fee202b974298fc364a')
+sha256sums=('61b24106751fb2620c9b352219bbc3af1e144053f42f4634854bec156312bf5d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
