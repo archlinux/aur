@@ -16,5 +16,7 @@ package() {
   cp -a "opt" "${pkgdir}/"
   cp -a "usr" "${pkgdir}/"
 
-  chmod 755 "${pkgdir}/usr/bin/oscr-ui"
+  if [[ -f "$pkgdir/usr/bin/oscr-ui" ]]; then
+    chmod 755 "$pkgdir/usr/bin/oscr-ui"
+  fi
 }
