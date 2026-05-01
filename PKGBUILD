@@ -3,9 +3,10 @@
 
 pkgname=wstunnel
 pkgver=10.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="tunnel all your traffic over Websocket or HTTP2"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+options=('!lto')
 url="https://github.com/erebe/wstunnel"
 license=('BSD-3-Clause')
 provides=('wstunnel')
