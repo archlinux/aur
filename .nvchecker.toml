@@ -1,0 +1,4 @@
+[python-openwakeword]
+source = "git"
+git = "https://github.com/dscripka/openWakeWord.git"
+prefix = "v"

@@ -1,7 +1,7 @@
 pkgbase = python-openwakeword
 	pkgdesc = OpenWakeWord
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dscripka/openWakeWord
 	arch = any
 	license = MIT
@@ -10,9 +10,12 @@ pkgbase = python-openwakeword
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-wyoming
 	depends = python-onnxruntime
 	depends = python-tflite-runtime
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = speexdsp
+	depends = python-tqdm
 	source = https://github.com/dscripka/openWakeWord/archive/refs/tags/v0.6.0.tar.gz
 	sha256sums = 927b8188f94140b16fc07e8916e735cac987fa8f73ed54a656932ae9e581e85f
 

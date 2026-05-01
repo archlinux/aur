@@ -4,11 +4,11 @@ pkgname=python-openwakeword
 _pkgname=openWakeWord
 pkgdesc="OpenWakeWord"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/dscripka/openWakeWord"
 license=('MIT')
-depends=(python python-wyoming python-onnxruntime python-tflite-runtime)
+depends=(python python-onnxruntime python-tflite-runtime python-scikit-learn python-scipy speexdsp python-tqdm)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 source=(https://github.com/dscripka/$_pkgname/archive/refs/tags/v$pkgver.tar.gz)
