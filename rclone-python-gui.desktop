@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=Utility;
+Comment[en_CA]=PyQt6 GUI frontend for rclone
+Comment=PyQt6 GUI frontend for rclone
+Exec=rclone-python-gui
+GenericName[en_CA]=
+GenericName=
+Icon=rclone-python-gui
+MimeType=
+Name[en_CA]=Rclone Python GUI
+Name=Rclone Python GUI
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

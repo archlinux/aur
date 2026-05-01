@@ -1,0 +1,16 @@
+pkgbase = rclone-python-gui
+	pkgdesc = PyQt6 GUI frontend for rclone
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/xlordnoro/rclone_python_GUI
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt6
+	depends = rclone
+	source = rclone-python-gui-1.1.tar.gz::https://github.com/xlordnoro/rclone_python_GUI/archive/refs/tags/v1.1.tar.gz
+	source = rclone-python-gui.desktop
+	sha256sums = ac4c2d5275a5f32a6776f08f3bc17afeebe2b9e4f690c1aec34ea5d0f27b9743
+	sha256sums = 7d8a8b05397829082e71a891fdeb4a636fd28aa9105cf671f2878627500b9aa5
+
+pkgname = rclone-python-gui
