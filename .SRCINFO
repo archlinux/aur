@@ -9,6 +9,6 @@ pkgbase = hypricing-bin
 	conflicts = hypricing
 	conflicts = hypricing-git
 	source = hypricing-0.7-linux-x64.tar.gz::https://github.com/Esperadoce/Hypricing/releases/download/v0.7/hypricing-v0.7-linux-x64.tar.gz
-	sha256sums = SKIP
+	sha256sums = d52e2a2f618f2853e2908784fc41c3c3396a321810490df432e71197fffd69ca
 
 pkgname = hypricing-bin

@@ -9,7 +9,7 @@ license=('MIT')
 provides=('hypricing')
 conflicts=('hypricing' 'hypricing-git')
 source=("hypricing-${pkgver}-linux-x64.tar.gz::https://github.com/Esperadoce/Hypricing/releases/download/v${pkgver}/hypricing-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d52e2a2f618f2853e2908784fc41c3c3396a321810490df432e71197fffd69ca')
 
 package() {
     cd "$srcdir"
