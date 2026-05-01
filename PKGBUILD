@@ -2,7 +2,7 @@
 # Companion -git package. Tracks the main branch HEAD.
 # Submit as the AUR package "sentinel-git" alongside "sentinel".
 pkgname=sentinel-git
-pkgver=0.2.0.r1.g75c9681
+pkgver=0.2.0.r2.g134ee7f
 pkgrel=1
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (git HEAD)"
 arch=('x86_64' 'aarch64')
@@ -72,6 +72,11 @@ package() {
 
     install -Dm644 config/polkit-1 \
         "$pkgdir/etc/pam.d/polkit-1"
+
+    # See sentinel/PKGBUILD for why config/sudo is *not* installed to
+    # /etc/pam.d/sudo automatically.
+    install -Dm644 config/sudo \
+        "$pkgdir/usr/share/doc/sentinel/sudo"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/sentinel/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/sentinel/README.md"
