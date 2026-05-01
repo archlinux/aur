@@ -1,0 +1,21 @@
+pkgbase = shellsnake-bin
+	pkgdesc = Play Snake on the command line!
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/simonwhitaker/shellsnake
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = LicenseRef-UNLICENSE
+	depends = bash
+	provides = shellsnake
+	conflicts = shellsnake
+	options = !strip
+	source_x86_64 = shellsnake-x86_64-1.0.4.tgz::https://github.com/simonwhitaker/shellsnake/releases/download/v1.0.4/shellsnake_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5ff859689a7993b88bedd9e49b0d899d82063446c9cd09a849e34436b77ab0e5
+	source_i686 = shellsnake-i686-1.0.4.tgz::https://github.com/simonwhitaker/shellsnake/releases/download/v1.0.4/shellsnake_Linux_i386.tar.gz
+	sha256sums_i686 = 4c56dbda3ae9c5da55e5799a41ab32e8c4abfb5d36f56628029a8e827a6e143a
+	source_aarch64 = shellsnake-aarch64-1.0.4.tgz::https://github.com/simonwhitaker/shellsnake/releases/download/v1.0.4/shellsnake_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 7827f9eae9ddb166c0c84c0cd5445f3b4806b0f4e6261348dd4ae423901067b3
+
+pkgname = shellsnake-bin

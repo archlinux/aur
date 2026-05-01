@@ -1,0 +1,5 @@
+[shellsnake-bin]
+source = "github"
+github = "simonwhitaker/shellsnake"
+use_latest_release = true
+prefix = "v"
