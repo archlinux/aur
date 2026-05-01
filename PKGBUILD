@@ -11,13 +11,10 @@ source=("https://github.com/STOCD/OSCR-UI/releases/download/v${pkgver}/oscr-ui-$
 sha256sums=('439af44281ef151fbc96e7d510d03b7dcbded73b65a177de6879096df6d41c8a')
 
 package() {
-  install -d "${pkgdir}/opt/oscr-ui"
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  cd "${srcdir}"
 
-  cp -r "${srcdir}/opt/" "${pkgdir}/"
-  cp -r "${srcdir}/usr/" "${pkgdir}/"
+  cp -a "opt" "${pkgdir}/"
+  cp -a "usr" "${pkgdir}/"
 
   chmod 755 "${pkgdir}/usr/bin/oscr-ui"
 }
