@@ -1,0 +1,17 @@
+pkgbase = phub-cli-git
+	pkgdesc = CLI tool for browsing pornhub.com content (phub-cli)
+	pkgver = 0.4.0.3.gede080b
+	pkgrel = 1
+	url = https://github.com/curtosis-org/phub-cli
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = mpv
+	depends = fzf
+	depends = yt-dlp
+	depends = python
+	depends = python-beautifulsoup4
+	source = git+https://github.com/curtosis-org/phub-cli
+	sha256sums = SKIP
+
+pkgname = phub-cli-git
