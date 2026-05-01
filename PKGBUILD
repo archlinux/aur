@@ -8,21 +8,19 @@ pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
 url='https://firmaelectronica.gob.es/'
 license=('GPL-2.0-or-later AND EUPL-1.1')
-depends=('java-runtime=17')
-makedepends=('git' 'java-environment=17' 'maven')
+depends=('java-runtime=25')
+makedepends=('git' 'java-environment=25' 'maven')
 conflicts=('autofirma' 'autofirma-bin')
 provides=('autofirma')
 source=("${_pkgname}::git+https://github.com/ctt-gob-es/${_pkgname}.git#branch=develop"
         "${_pkgname}-external::git+https://github.com/ctt-gob-es/${_pkgname}-external.git"
         "jmulticard::git+https://github.com/ctt-gob-es/jmulticard.git#branch=develop"
-        "Java-WebSocket::git+https://github.com/TooTallNate/Java-WebSocket.git"
         "autofirma"
         "autofirma.desktop"
         "autofirma.js"
         "autofirma.svg"
         "EUPL-1.1.txt")
 b2sums=('SKIP'
-        'SKIP'
         'SKIP'
         'SKIP'
         'f949f754a43b7836e5c5f919ca9eeede064db08fcd78857e04fb0c635d6bf4b7abfe37ccf36215abaf75426fc158920a80ebd24038c9efd46061c9f25f105061'
@@ -42,8 +40,7 @@ prepare() {
   git cherry-pick -n db069d9e38dc66a9558240bc90b0f737e4527726
   cd ..
   # FIX: end 479
-  # FIX: https://github.com/ctt-gob-es/clienteafirma/issues/320
-  export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
+  export PATH="/usr/lib/jvm/java-25-openjdk/bin/:$PATH"
   # Build external libraries
   msg2 "Building ${_pkgname}-external..."
   cd "${_pkgname}-external"
@@ -52,16 +49,11 @@ prepare() {
   msg2 "Building jmulticard..."
   cd "jmulticard"
   mvn clean install -Dmaven.test.skip=true
-  cd ..
-  msg2 "Building Java-WebSocket..."
-  cd "Java-WebSocket"
-  mvn clean install -Dmaven.test.skip=true
-  # FIX: end 320
 }
 
 build() {
   cd "${_pkgname}"
-  export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
+  export PATH="/usr/lib/jvm/java-25-openjdk/bin/:$PATH"
   mvn clean install -Dmaven.test.skip=true
   mvn clean install -Denv=install -Dmaven.test.skip=true
 }
