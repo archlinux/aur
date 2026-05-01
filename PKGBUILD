@@ -5,12 +5,12 @@ pkgdesc="Featureful Matrix homeserver"
 url="https://github.com/matrix-construct/tuwunel"
 license=("Apache-2.0")
 arch=("x86_64")
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 makedepends=("rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
 depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/matrix-construct/tuwunel#tag=v${pkgver}")
-sha256sums=('60c9679d939a49983db8cdf99de0e89aa60cb6c1b02485b3fe5c303f717dc6a5')
+sha256sums=('ca1222c6278ebeac96cbc55b8612157e844bb566e92f905751f7aa290998990b')
 provides=("tuwunel")
 options=(!lto)
 backup=("etc/tuwunel/tuwunel.toml")
