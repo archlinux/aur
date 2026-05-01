@@ -1,0 +1,16 @@
+pkgbase = mste
+	pkgdesc = a small nano-like terminal text editor in Python
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/markart25/mste
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = mste-0.1.0.tar.gz::https://github.com/markart25/mste/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 56b8c14da6d738d526acbdd107252b34d3d7d4809cdb7c9a680dccc329f809f0
+
+pkgname = mste
