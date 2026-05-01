@@ -1,6 +1,6 @@
 # Maintainer: Ansel Hayashi <Telegram: @sym_ansel>
 pkgname=kemulatornnmod-bin
-pkgver=2.21.2
+pkgver=2.21.4
 pkgrel=1
 pkgdesc="Emulator for j2me, CLDC, MIDP applications and games"
 arch=('x86_64')
@@ -17,9 +17,9 @@ optdepends=('vlc-cli: for MMAPI/JSR135 support'
 	'wget: for Intellij IDEA integration'
 	'proguard: for Intellij IDEA integration'
 	'intellij-idea-community-edition: compatible Intellij IDEA package')
-source=(pkg_${pkgver}.zip::"https://github.com/shinovon/KEmulator/releases/download/v2.21.2/kemnnx64.v2.21.2.zip"
+source=(pkg_${pkgver}.zip::"https://github.com/shinovon/KEmulator/releases/download/v${pkgver}/kemnnx64.v${pkgver}.zip"
     "icon.png")
-sha256sums=('82e071c00a6930151e031d22a32129654a0a111cfad30292c4864ade1c52f20e'
+sha256sums=('56d552cbb9ec590ed9f9eff5c7835a71fd75f8889d24830322a30d2974071641'
 	'b6215676e6550a4472bbabe238ad55daaa52a7efe0f7475de58a109755f470ab')
 
 prepare() {
