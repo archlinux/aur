@@ -4,7 +4,7 @@ _gitauthor=simonwhitaker
 _gitname=runny
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="A tool for running things "
+pkgdesc="A tool for running things"
 
 pkgver=0.2.1
 pkgrel=1
