@@ -9,6 +9,7 @@ pkgbase = oscleash
 	depends = python
 	depends = python-osc
 	depends = python-inputs
+	depends = python-tinyoscquery
 	conflicts = oscleash
 	conflicts = oscleash-git
 	conflicts = oscleash-nuitka
