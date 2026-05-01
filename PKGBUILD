@@ -2,11 +2,11 @@
 pkgname=pmount-modern
 _tag=0.10.0-dbus
 pkgver=${_tag//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Modernized pmount with D-Bus, PolicyKit, and systemd integration'
 arch=('x86_64')
 url='https://github.com/zHappySnake/pmount-modern'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'dbus'
   'dbus-glib'
@@ -17,6 +17,7 @@ depends=(
   'util-linux-libs'
 )
 makedepends=(
+  'cmake'
   'meson'
   'pkgconf'
 )

@@ -1,10 +1,11 @@
 pkgbase = pmount-modern
 	pkgdesc = Modernized pmount with D-Bus, PolicyKit, and systemd integration
 	pkgver = 0.10.0_dbus
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zHappySnake/pmount-modern
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = cmake
 	makedepends = meson
 	makedepends = pkgconf
 	depends = dbus
