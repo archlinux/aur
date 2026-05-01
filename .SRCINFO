@@ -1,5 +1,5 @@
-pkgbase = sshkeyman-git
-	pkgdesc = Web-based SSH key & config manager (VCS version)
+pkgbase = sshkeyman
+	pkgdesc = Web-based SSH key & config manager
 	pkgver = 0.1.0.r0.gcee85a6
 	pkgrel = 1
 	url = https://github.com/zyxisme/sshkeyman
@@ -12,4 +12,4 @@ pkgbase = sshkeyman-git
 	source = sshkeyman::git+https://github.com/zyxisme/sshkeyman.git
 	sha256sums = SKIP
 
-pkgname = sshkeyman-git
+pkgname = sshkeyman

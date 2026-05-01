@@ -1,8 +1,8 @@
 # Maintainer: zyxisme <d0116u@gmail.com>
-pkgname=sshkeyman-git
+pkgname=sshkeyman
 pkgver=0.1.0.r0.gcee85a6
 pkgrel=1
-pkgdesc="Web-based SSH key & config manager (VCS version)"
+pkgdesc="Web-based SSH key & config manager"
 arch=('x86_64')
 url="https://github.com/zyxisme/sshkeyman"
 license=('MIT')
