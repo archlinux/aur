@@ -1,0 +1,15 @@
+BACKEND=/usr/lib/shrimp/resources/backend
+VENV=$BACKEND/.venv
+
+post_install() {
+    echo "==> Setting up SHRIMP Python environment..."
+    rm -rf "$VENV"
+    python3 -m venv "$VENV"
+    "$VENV/bin/pip" install --quiet --no-warn-script-location \
+        -r "$BACKEND/requirements.txt"
+    echo "==> SHRIMP setup complete."
+}
+
+post_upgrade() {
+    post_install
+}

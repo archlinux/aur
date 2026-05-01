@@ -1,16 +1,17 @@
 # Maintainer: Jordan Sluiter <jordan.sluiter@icloud.com>
 pkgname=shrimp
-pkgver=0.2.9
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="Self-hosted AI productivity assistant"
 arch=('x86_64')
 url="https://github.com/TheSingularis/shrimp"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'gtk3' 'nss')
+depends=('gcc-libs' 'glibc' 'gtk3' 'nss' 'python')
 conflicts=('shrimp-bin')
+install=shrimp.install
 options=('!strip')
 source=("SHRIMP-${pkgver}.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/SHRIMP-${pkgver}.AppImage")
-sha256sums=('cd543374bac5970b3608d09897431b376e06e4ad4a6c14132bdecda2bcd6b1d4')
+sha256sums=('1eb80e526578f2d3241849682197e979b3973d97d6ba05f80f0cc471ecd377ae')
 
 prepare() {
     chmod +x "SHRIMP-${pkgver}.AppImage"
@@ -27,6 +28,9 @@ package() {
 export APPDIR=/usr/lib/shrimp
 exec /usr/lib/shrimp/AppRun "$@"
 EOF
+
+    install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/shrimp.png \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/shrimp.png"
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/shrimp.desktop" <<'EOF'
 [Desktop Entry]
