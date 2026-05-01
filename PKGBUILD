@@ -1,7 +1,7 @@
 # Maintainer: Rudolf Schmidt <info@rudolfschmidt.com>
 pkgname=accounting
 _cratename=acc
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="plaintext double-entry accounting command line tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 conflicts=('acc')
 source=("$_cratename-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_cratename/$pkgver/download")
-sha256sums=('40259d59c05e929f3425763c89ebc31fd93a846ee13eea2f798d1c647f052fbc')
+sha256sums=('0c57378160020be97b0fe3fa7a54268734804b06dd462c757d5eca37c5426b82')
 
 prepare() {
     cd "$_cratename-$pkgver"

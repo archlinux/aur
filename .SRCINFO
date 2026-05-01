@@ -1,6 +1,6 @@
 pkgbase = accounting
 	pkgdesc = plaintext double-entry accounting command line tool
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/rudolfschmidt/acc
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = accounting
 	depends = gcc-libs
 	depends = openssl
 	conflicts = acc
-	source = acc-0.4.0.tar.gz::https://crates.io/api/v1/crates/acc/0.4.0/download
-	sha256sums = 40259d59c05e929f3425763c89ebc31fd93a846ee13eea2f798d1c647f052fbc
+	source = acc-0.4.1.tar.gz::https://crates.io/api/v1/crates/acc/0.4.1/download
+	sha256sums = 0c57378160020be97b0fe3fa7a54268734804b06dd462c757d5eca37c5426b82
 
 pkgname = accounting
