@@ -1,0 +1,16 @@
+pkgbase = python-pysolarmanv5
+	pkgdesc = Python library for interacting with Solarman (IGEN-Tech) v5 based solar data loggers
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = https://github.com/jmccrohan/pysolarmanv5
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-umodbus
+	source = https://files.pythonhosted.org/packages/source/p/pysolarmanv5/pysolarmanv5-3.0.6.tar.gz
+	sha256sums = ec3c6c03ec47bd0ee811f32ee4da272a28cc53141ab1113b5dbec55834c8afb5
+
+pkgname = python-pysolarmanv5
