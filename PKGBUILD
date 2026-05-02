@@ -64,11 +64,9 @@ source=(
     'extra_model_paths.yaml'
 )
 
-sha256sums=(
-    '58b5336002b0b2350ac50f17997e8468562bfd4da61fc3361ec28993acfc0165'
-    'SKIP'
-    'SKIP'
-)
+sha256sums=('58b5336002b0b2350ac50f17997e8468562bfd4da61fc3361ec28993acfc0165'
+            'edda27b534912b97049c38233488c7154c652485b41a9c49fe5b996fb72740d6'
+            'd37f7739f9a927ec5aa73cf78ce8dd01cc4febb3a5b27ed458d9966710d1addf')
 
 package() {
     install -dm755 "$pkgdir/$_prefix"
