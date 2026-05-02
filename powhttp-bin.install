@@ -1,0 +1,29 @@
+post_install() {
+  if command -v gtk-update-icon-cache >/dev/null; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  fi
+  if command -v update-desktop-database >/dev/null; then
+    update-desktop-database -q
+  fi
+  printf '%s\n' \
+    'Optional: set Powhttp as the handler for powhttp:// links:' \
+    '  xdg-mime default powhttp.desktop x-scheme-handler/powhttp'
+}
+
+post_upgrade() {
+  if command -v gtk-update-icon-cache >/dev/null; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  fi
+  if command -v update-desktop-database >/dev/null; then
+    update-desktop-database -q
+  fi
+}
+
+post_remove() {
+  if command -v gtk-update-icon-cache >/dev/null; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  fi
+  if command -v update-desktop-database >/dev/null; then
+    update-desktop-database -q
+  fi
+}

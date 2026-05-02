@@ -1,0 +1,25 @@
+version = 1
+
+[[annotations]]
+path = "PKGBUILD"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "powhttp-bin.install"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = ".SRCINFO"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "LICENSE"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "REUSE.toml"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "upstream-license"
+SPDX-License-Identifier = "LicenseRef-Powhttp"

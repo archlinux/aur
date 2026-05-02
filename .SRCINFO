@@ -1,0 +1,27 @@
+pkgbase = powhttp-bin
+	pkgdesc = A desktop HTTP client and API testing tool
+	pkgver = 0.141.0
+	pkgrel = 1
+	url = https://powhttp.com
+	install = powhttp-bin.install
+	arch = x86_64
+	license = LicenseRef-Powhttp
+	depends = cairo
+	depends = fontconfig
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	optdepends = xdg-utils: register powhttp:// links (xdg-mime default powhttp.desktop x-scheme-handler/powhttp)
+	provides = powhttp
+	conflicts = powhttp
+	options = !debug
+	source = https://releases.powhttp.com/0.141.0/linux/x86_64/powhttp_0.141.0_amd64.deb
+	source = LICENSE
+	source = upstream-license
+	sha256sums = 218201b47066f7fae75b1566a00e924611349469932d31f6b9f0e23664af9efb
+	sha256sums = febc00dc5a0557ca8afbcdc6d3896731dc42f4cecabd87e6c98326212f8dbf36
+	sha256sums = 2d075bcf302c1ead55d926ab30ec66994a1115b9e163085961dda151b00d0f5e
+
+pkgname = powhttp-bin
