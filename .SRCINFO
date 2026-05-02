@@ -1,6 +1,6 @@
 pkgbase = mnt-reform-qcacld2-dkms
 	pkgver = 20260421.c54d3e59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://source.mnt.re/reform/qcacld2
 	arch = aarch64
 	arch = x86_64

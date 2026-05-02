@@ -7,7 +7,7 @@ _qcacld2_commit=c54d3e596f0e0ffa918e9f5e8f8dbb990cd4d428
 _qcacld2_short=${_qcacld2_commit:0:8}
 
 pkgver=20260421.${_qcacld2_short}
-pkgrel=1
+pkgrel=2
 
 arch=('aarch64' 'x86_64')
 url="https://source.mnt.re/reform/qcacld2"
@@ -57,26 +57,23 @@ package_mnt-reform-qcacld2-firmware() {
   depends=()
   backup=('etc/modprobe.d/reform-qcacld2.conf')
 
-  cd "${srcdir}/qcacld2/debian-meta"
+  local _d="${srcdir}/qcacld2/debian"
 
+  # Firmware binaries — driver looks in both qcacld2/ and directly under firmware/
   install -dm755 "$pkgdir/usr/lib/firmware/qcacld2"
-  install -Dm644 usr/lib/firmware/qcacld2/* \
+  install -m644 "$_d/bdwlan30.bin" "$_d/otp30.bin" "$_d/qwlan30.bin" \
     "$pkgdir/usr/lib/firmware/qcacld2/"
-  # Also install to the directory where the driver looks
-  # Not sure why this happens on Arch and not Debian
-  install -dm755 "$pkgdir/usr/lib/firmware"
-  install -Dm644 usr/lib/firmware/qcacld2/* \
+  install -m644 "$_d/bdwlan30.bin" "$_d/otp30.bin" "$_d/qwlan30.bin" \
     "$pkgdir/usr/lib/firmware/"
 
+  # Config/cal files — driver looks in both wlan/qcacld2/ and directly under wlan/
   install -dm755 "$pkgdir/usr/lib/firmware/wlan/qcacld2"
-  install -Dm644 usr/lib/firmware/wlan/qcacld2/* \
+  install -m644 "$_d/cfg.dat" "$_d/qcom_cfg.ini" \
     "$pkgdir/usr/lib/firmware/wlan/qcacld2/"
-  # Also install to the directory where the driver looks
-  # Not sure why this happens on Arch and not Debian
   install -dm755 "$pkgdir/usr/lib/firmware/wlan"
-  install -Dm644 usr/lib/firmware/wlan/qcacld2/* \
+  install -m644 "$_d/cfg.dat" "$_d/qcom_cfg.ini" \
     "$pkgdir/usr/lib/firmware/wlan/"
 
-  install -Dm644 etc/modprobe.d/reform-qcacld2.conf \
+  install -Dm644 "$_d/reform-qcacld2.conf" \
     "$pkgdir/etc/modprobe.d/reform-qcacld2.conf"
 }
