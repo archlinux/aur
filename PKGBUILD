@@ -3,14 +3,19 @@
 _basename="libkar"
 pkgname="${_basename}-qt5"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely simple Qt based archiver"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/kipr/${_basename}"
-license=('GPL-2.0-or-later')
+license=(
+  'GPL-2.0-or-later'
+)
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libstdc++'
   'qt5-base'
 )
 makedepends=(
@@ -20,7 +25,9 @@ provides=(
   "${pkgname//-/_}.so"
 )
 _pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=(
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+)
 b2sums=('4318d76885b440625d978c5bd9c195c12febc1ee56c094a50605a20a54bf0356c625dd7cb2f20c4798afde364e7c0ab80bfbe1b64938a879a21ab6a31b170998')
 
 prepare() {
@@ -35,9 +42,9 @@ prepare() {
 
 build() {
   local cmake_options=(
-    -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
+    -G 'Unix Makefiles'
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
@@ -46,7 +53,7 @@ build() {
 
   cd "${srcdir}"
   cmake "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake --build "${cmake_options[1]}"
 }
 
 package() {
