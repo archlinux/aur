@@ -1,6 +1,6 @@
 pkgbase = spawnhere
 	pkgdesc = Draw a gesture on Hyprland, spawn a floating window exactly where you drew
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/revmnds/spawnhere
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = spawnhere
 	depends = hyprland
 	depends = wayland
 	depends = libxkbcommon
-	source = spawnhere-0.2.0.tar.gz::https://github.com/revmnds/spawnhere/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = f3d1c163c220ee2a0c37e3429b308fb022c5c19c6af168085651dda2109bf89b
+	source = spawnhere-0.2.1.tar.gz::https://github.com/revmnds/spawnhere/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = d685e5107166aafbd26c78383719e93438a54ad2e582a4156153b9d43e39cef8
 
 pkgname = spawnhere

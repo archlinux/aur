@@ -1,6 +1,6 @@
 # Maintainer: mapache <mastersuv@gmail.com>
 pkgname=spawnhere
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Draw a gesture on Hyprland, spawn a floating window exactly where you drew"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3d1c163c220ee2a0c37e3429b308fb022c5c19c6af168085651dda2109bf89b')
+sha256sums=('d685e5107166aafbd26c78383719e93438a54ad2e582a4156153b9d43e39cef8')
 
 prepare() {
   cd "$pkgname-$pkgver"
