@@ -13,7 +13,7 @@ pkgbase = bangla-typer-bin
 	conflicts = bangla-typer
 	source = https://github.com/mehad605/Bangla_Typer/releases/download/v1.1.0/bangla-typer-1.1.0.tar.gz
 	source = LICENSE::https://github.com/mehad605/Bangla_Typer/raw/v1.1.0/LICENSE
-	sha256sums = e9fc326430ccc59498f97e8b0eb7915f10143d1e30163125ea56cea435d8fab7
+	sha256sums = 4f20e9482a9f796ba7bc972d635619c965bf744ef9298146c2ef227f307e8540
 	sha256sums = 674c75a8fa913a320d31f9afd27a34a27216a9b64627042a49cabe672aa107a2
 
 pkgname = bangla-typer-bin

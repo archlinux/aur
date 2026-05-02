@@ -15,7 +15,7 @@ source=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
   "LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
-sha256sums=('e9fc326430ccc59498f97e8b0eb7915f10143d1e30163125ea56cea435d8fab7'
+sha256sums=('4f20e9482a9f796ba7bc972d635619c965bf744ef9298146c2ef227f307e8540'
             '674c75a8fa913a320d31f9afd27a34a27216a9b64627042a49cabe672aa107a2')
 
 package() {
