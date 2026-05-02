@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=system-monitoring-center
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Multi-featured system monitor"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   'xorg-xrandr: for more accurate screen resolution and refresh rate detection'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5f316a884cc5e87e344b8dc2f3db08c881fc404fece75afa5fa138edfb303fc5')
+sha256sums=('f451031d31a51c4289409c9e6a4e17dea3e0873fd206d2b9484d80aa1f66959b')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
