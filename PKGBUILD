@@ -6,30 +6,39 @@ pkgdesc="Self-hosted AI productivity assistant"
 arch=('x86_64')
 url="https://github.com/TheSingularis/shrimp"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'gtk3' 'nss' 'python')
+depends=(
+    'electron39'
+    'python'
+    'python-numpy'
+    'python-pillow'
+    'python-sqlalchemy'
+    'python-networkx'
+    'python-fastapi'
+    'python-aiohttp'
+    'python-pydantic'
+    'python-httpx'
+    'python-grpcio'
+    'python-requests'
+    'python-rich'
+)
 conflicts=('shrimp-bin')
 install=shrimp.install
-options=('!strip')
-source=("SHRIMP-${pkgver}.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/SHRIMP-${pkgver}.AppImage")
-sha256sums=('4c3c2499a5348bfbe207b2dfa1aa9cefa902c532f4786855d9b3c0478c4f36b3')
-
-prepare() {
-    chmod +x "SHRIMP-${pkgver}.AppImage"
-    ./"SHRIMP-${pkgver}.AppImage" --appimage-extract
-}
+source=("shrimp-${pkgver}.tar.gz::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/shrimp-${pkgver}.tar.gz")
+sha256sums=('875d54ca0b1f26f5dc8003d1b6866ebdde2967d1a656c00b2c6eca4161c30d6d')
 
 package() {
+    cd "shrimp-${pkgver}"
+
     install -dm755 "${pkgdir}/usr/lib/shrimp"
-    cp -a squashfs-root/. "${pkgdir}/usr/lib/shrimp/"
-    chmod -R a+rX "${pkgdir}/usr/lib/shrimp"
+    cp -r electron frontend backend plugins package.json "${pkgdir}/usr/lib/shrimp/"
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/shrimp" <<'EOF'
 #!/usr/bin/env sh
-export APPDIR=/usr/lib/shrimp
-exec /usr/lib/shrimp/AppRun "$@"
+export SHRIMP_APP_PATH=/usr/lib/shrimp
+exec /usr/bin/electron39 /usr/lib/shrimp/electron/main.js "$@"
 EOF
 
-    install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/shrimp.png \
+    install -Dm644 "frontend/public/icons/shrimp(1).png" \
         "${pkgdir}/usr/share/icons/hicolor/512x512/apps/shrimp.png"
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/shrimp.desktop" <<'EOF'
