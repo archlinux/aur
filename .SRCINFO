@@ -1,0 +1,22 @@
+pkgbase = qwen3-tts.cpp
+	pkgdesc = C++ inference for Qwen3-TTS using the GGML tensor library (Vulkan)
+	pkgver = 0+37+2a41916
+	pkgrel = 1
+	url = https://github.com/khimaros/qwen3-tts.cpp
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = unknown
+	makedepends = cmake
+	makedepends = git
+	makedepends = shaderc
+	makedepends = spirv-headers
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	options = lto
+	source = git+https://github.com/khimaros/qwen3-tts.cpp.git
+	source = git+https://github.com/ggml-org/ggml.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = qwen3-tts.cpp
