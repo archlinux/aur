@@ -25,6 +25,7 @@ pkgbase = sentinel-git
 	optdepends = polkit: for graphical privilege prompts
 	provides = sentinel=0.4.1.r0.g0000000
 	conflicts = sentinel
+	options = !debug
 	backup = etc/security/sentinel.conf
 	backup = etc/pam.d/polkit-1
 	source = sentinel::git+https://github.com/atayozcan/sentinel.git#branch=main

@@ -6,6 +6,10 @@ pkgver=0.4.1.r0.g0000000
 pkgrel=1
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (git HEAD)"
 install=sentinel.install
+# Cargo.toml's release profile strips symbols at link time, so makepkg's
+# debug-package generator has nothing to index — opt out to silence the
+# noisy gdb-add-index errors.
+options=('!debug')
 arch=('x86_64' 'aarch64')
 url="https://github.com/atayozcan/sentinel"
 license=('GPL-3.0-or-later')
