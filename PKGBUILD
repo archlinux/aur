@@ -23,9 +23,11 @@ depends=(
     'libjpeg-turbo'
     'libtiff'
     'libraw'
+    'libxext'
+    'libxrender'
+    'libxtst'
 )
 makedepends=('java-environment>=17'
-    'ant'
     'autoconf'
     'gcc'
     'make'
@@ -36,9 +38,9 @@ makedepends=('java-environment>=17'
 )
 
 _git_url=${url}
-_git_rev=eb1eb292e9a70e297ad1b2ae13263371d19d9e1c
+_git_rev=dcd9a3ff46e761db5af3db4b7553e3187c5ced23
 source=("${_git_url}/archive/${_git_rev}.zip")
-sha256sums=('22d8c879ac5af6b771d7b665ec6d320f1fe4cfecb919a58b0c0e774f45d94b5f')
+sha256sums=('c7ef4b706cda7432a42571c1400cd1c42328a63b1dada1d2911ef424e47c5b9b')
 
 prepare() {
   cd "${srcdir}/LightZone-${_git_rev}/"
@@ -49,7 +51,7 @@ build() {
   MAKEFLAGS="-j1"
 
   cd "${srcdir}/LightZone-${_git_rev}/"
-  JAVA_HOME=/usr/lib/jvm/default ant -f linux/build.xml jar
+  JAVA_HOME=/usr/lib/jvm/default ./gradlew jpackageImage -x test
 }
 
 package() {
@@ -58,9 +60,19 @@ package() {
   _libexecdir=/usr/lib
   install -dm 0755 "${pkgdir}/${_libexecdir}/${pkgname}"
   cp -pH linux/products/*.so "${pkgdir}/${_libexecdir}/${pkgname}"
+
   _javadir=/usr/share/java
-  install -dm 0755 "${pkgdir}/${_javadir}/${pkgname}"
-  cp -pH linux/products/*.jar "${pkgdir}/${_javadir}/${pkgname}"
+  _jardir="${pkgdir}/${_javadir}/${pkgname}"
+  install -dm 0755 "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/ejml-*.jar "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/flatlaf-*.jar "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/imagen-*.jar "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/jiconfont-*.jar "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/lightcrafts-*.jar "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/linux-*.jar "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/logback-*.jar "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/openjson-*.jar "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/slf4j-*.jar "${_jardir}"
 
   # create icons and shortcuts
   _datadir=/usr/share

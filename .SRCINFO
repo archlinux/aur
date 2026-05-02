@@ -6,7 +6,6 @@ pkgbase = lightzone
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = java-environment>=17
-	makedepends = ant
 	makedepends = autoconf
 	makedepends = gcc
 	makedepends = make
@@ -23,9 +22,12 @@ pkgbase = lightzone
 	depends = libjpeg-turbo
 	depends = libtiff
 	depends = libraw
+	depends = libxext
+	depends = libxrender
+	depends = libxtst
 	provides = lightzone
 	conflicts = lightzone-git
-	source = https://github.com/ktgw0316/LightZone//archive/eb1eb292e9a70e297ad1b2ae13263371d19d9e1c.zip
-	sha256sums = 22d8c879ac5af6b771d7b665ec6d320f1fe4cfecb919a58b0c0e774f45d94b5f
+	source = https://github.com/ktgw0316/LightZone//archive/dcd9a3ff46e761db5af3db4b7553e3187c5ced23.zip
+	sha256sums = c7ef4b706cda7432a42571c1400cd1c42328a63b1dada1d2911ef424e47c5b9b
 
 pkgname = lightzone
