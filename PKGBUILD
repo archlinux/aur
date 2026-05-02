@@ -3,7 +3,7 @@
 # Contributor: Stephen Gregoratto <dev at sgregoratto dot me>
 
 pkgname=doas
-pkgver=6.3p13
+pkgver=6.4
 pkgrel=1
 pkgdesc="A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos, macOS and MidnightBSD"
 license=('BSD')
@@ -22,7 +22,7 @@ conflicts=('opendoas' 'opendoas-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'doas-pam'
 	'doas.conf')
-sha256sums=('2cca9003856e92ec0a50b3e559b7f3132bf8293dc8302613933f8ed06c8c7fc5'
+sha256sums=('33e1fba4346db7f3578b1c7ed75c9a42f2b90fe1dfdea60d5af23c248f0997d4'
             'b064704fb3448c3511904c3963b0e167ecf6274aea48afb9c42d452447dfd042'
             '1f28802fad6ae0eaa5b94bb8d945ada923631ddfb7ae63e934962dbe41774976')
 

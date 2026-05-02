@@ -2,3 +2,11 @@ doas-*.pkg.*
 doas-*.tar.gz
 pkg/
 src/
+.claude/
+claude.md
+GEMINI.md
+.gemini/
+COPILOT-INSTRUCTIONS.md
+.github/copilot-instructions.md
+.cursorrules
+.cursor/
