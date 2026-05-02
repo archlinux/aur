@@ -229,7 +229,7 @@ echo_v -e "${GR}Checking dynamic linking consistency...${NO}"
 set_trap "$LIST.3_rebuild"
 LD_MASK="\\(	$(echo "$LD_LIBRARY_MASK" | sed 's/\./\\./g;s/ / \\|	/g') \\)"
 echo -n > $LIST.3_rebuild
-cat $LIST.1_files | egrep -v '*\.la$' | while read FILE ; do
+cat $LIST.1_files | grep -Ev '.*\.la$' | while read FILE ; do
 	# Note: double checking seems to be faster than single
 	# with complete path (special add-ons are rare).
 	if ldd "$FILE" 2>/dev/null | grep -v "$LD_MASK" | $SONAME_GREP -q "$SONAME_SEARCH" ; then
@@ -252,7 +252,7 @@ cat $LIST.1_files | egrep -v '*\.la$' | while read FILE ; do
 	fi
 done
 # Not sure if *.la files should even be checked
-cat $LIST.1_files | egrep '*\.la$' | while read FILE ; do
+cat $LIST.1_files | grep -E '.*\.la$' | while read FILE ; do
 	for depend in $(grep '^dependency_libs' $FILE | awk -F'=' '{print $2}' | sed "s/'//g") ; do
 		[ ${depend:0:1} != '/' ] && continue
 		if [ ! -e $depend ] ; then

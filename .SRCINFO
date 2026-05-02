@@ -1,14 +1,13 @@
 pkgbase = findbrokenpkgs
 	pkgdesc = Broken package identifier for Arch Linux, based on Gentoo's revdep-rebuild
 	pkgver = 1.1
-	pkgrel = 1
-	url = http://bbs.archlinux.org/viewtopic.php?id=13882
+	pkgrel = 2
+	url = https://bbs.archlinux.org/viewtopic.php?id=13882
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = binutils
 	depends = pacman
 	source = findbrokenpkgs-1.1.sh
-	md5sums = ee683c467e4881736ed60a15ebbcc7a5
+	sha256sums = 78c0d99689437d3b0832554724ea4dd80768d35c456c911d8bc662bbbcb4cc80
 
 pkgname = findbrokenpkgs
-
