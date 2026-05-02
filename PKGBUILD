@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=mediaflow-proxy-light-bin
-pkgver=1.0.7 # renovate: datasource=github-releases depName=mhdzumair/mediaflow-proxy-light
+pkgver=1.0.8 # renovate: datasource=github-releases depName=mhdzumair/mediaflow-proxy-light
 pkgrel=1
 pkgdesc="High-performance Rust streaming proxy: HLS/DASH/Xtream/Acestream/Telegram, drop-in MediaFlow Proxy reimplementation"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ sha256sums=('5b630d98a792a00632fe526bb4ba8bb9bd957e4a2a55da3d3eed6c04ed13ac60'
             '959aa6e2fd1886352083f64cb0561e3a052380a94ca98e96d01a8a3f77fa4419'
             'c7d7a5fdbe91b5097e33f98863acf6a25b036b0a173ccab01944e077c9040430'
             'cfc5dfa5ef03b75d79be464d5f0be84c2803b8ba57fd36909c68849938d9061c')
-sha256sums_x86_64=('f3e3471808deaa46a9682be78eb5dcfa009faa23096dfe2658313bf1f7ea067c')
-sha256sums_aarch64=('f187d8eae0d98e694f4c2b33733e62d294c30bbd1568f5375bc894c19b7cbe9f')
+sha256sums_x86_64=('04d4bccaf7aa29ecdd53c07053ac77bd8d0b8cd33d37e7e01394c2afde0d80be')
+sha256sums_aarch64=('d903c6c4557363556c59d37289e465fb7bc2feb663d46fcc1569bf29072027e9')
 
 package() {
   # Install binary
