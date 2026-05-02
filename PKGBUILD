@@ -1,6 +1,6 @@
 # Maintainer: Darian Alberto Camacho Salas <xonidu@gmail.com>
 pkgname=xonichat
-pkgver=4.2.7
+pkgver=4.2.8
 pkgrel=1
 pkgdesc="A terminal-based Gemini client optimized for low-resource devices (ASUS Eee PC, etc.)"
 arch=('any')
@@ -34,3 +34,6 @@ sha256sums=('d6efbf650f02645af9d311c07aad6aa663e243103b5334cf60b1cd3b836c06be')
 sha256sums=('b7974fd4fbc2c07f50232ba5b2c10ee02b67bf0c2002351b8f92dbcb9e0c1a29')
 sha256sums=('d0c2579590e066d0c69a2be45e6f21b87cc6de9b99c516f16a1463e7b3b5baee')
 sha256sums=('01c67b5ba687155efe353716fcb67662a34294a6cc80395205077ca88501958c')
+sha256sums=('a9f1f5c418a1bdf03e5f07dbfa9f4441339fcdcb0e8563f54def70862fe52238')
+
+sha256sums=('a9f1f5c418a1bdf03e5f07dbfa9f4441339fcdcb0e8563f54def70862fe52238')
