@@ -1,8 +1,12 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 install=sentinel.install
+# Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
+# so makepkg's debug-package generator has nothing to index — opt out to
+# avoid noisy gdb-add-index "No debugging symbols" errors.
+options=('!debug')
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (COSMIC + sudo-rs friendly)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/atayozcan/sentinel"
