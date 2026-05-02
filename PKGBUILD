@@ -2,7 +2,7 @@
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine
-pkgver=4.04.02
+pkgver=4.05.04
 pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
@@ -11,9 +11,11 @@ license=('GPL3')
 depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'zlib')
 makedepends=('git' 'cmake')
 source=("eternity::git+https://github.com/team-eternity/eternity.git#tag=${pkgver}"
-        'git+https://github.com/Wohlstand/libADLMIDI.git')
+        'git+https://github.com/Wohlstand/libADLMIDI.git'
+        "0001-Backport-updated-CMake-versions-to-4.05.04.patch")
 b2sums=('SKIP'
-        'SKIP')
+        'SKIP'
+        'f4fd463125387979df36cc42c20e623c89d475be718b7a57e55666e613604088be1f2df89f0b62b8097d81e9698f06816346cbf7ed8b7ac9112b3b48844f4129')
 
 prepare() {
   cd "${srcdir}/eternity"
