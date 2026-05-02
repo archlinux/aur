@@ -1,16 +1,16 @@
 pkgbase = whalebird-bin
 	pkgdesc = Single-column Fediverse client for desktop.(Prebuilt version.Use system-wide electron)
-	pkgver = 6.2.7
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://whalebird.social/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron37
-	provides = whalebird=6.2.7
+	depends = electron39
+	provides = whalebird=6.3.0
 	conflicts = whalebird
-	source = whalebird-6.2.7.rpm::https://github.com/h3poteto/whalebird-desktop/releases/download/v6.2.7/Whalebird-6.2.7-linux-x86_64.rpm
+	source = whalebird-6.3.0.rpm::https://github.com/h3poteto/whalebird-desktop/releases/download/v6.3.0/Whalebird-6.3.0-linux-x86_64.rpm
 	source = whalebird.sh
-	sha256sums = a8d61cc33a21e35da5ba491ab75bc6323edb1c6067a53a98455c3e29ed8662cf
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = fc8f957913cf1dc6dd63c85ccc7cc2d10b2d24022594978fb002ef7542175499
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = whalebird-bin
