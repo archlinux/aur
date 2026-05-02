@@ -2,7 +2,7 @@
 # AUR package for hamr-bin - pre-built binaries
 
 pkgname=hamr-bin
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="A fast, extensible desktop launcher for Linux (pre-built binaries)"
 arch=('x86_64')
