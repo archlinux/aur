@@ -1,0 +1,5 @@
+[scrollti-bin]
+source = "github"
+github = "luislve17/scrollti"
+use_latest_release = true
+prefix = "scrollti-v"

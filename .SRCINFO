@@ -1,0 +1,17 @@
+pkgbase = scrollti-bin
+	pkgdesc = Tiny tool to make stdout scroll
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/luislve17/scrollti
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = scrollti
+	conflicts = scrollti
+	options = !strip
+	source = README-1.0.md::https://raw.githubusercontent.com/luislve17/scrollti/scrollti-v1.0/README.md
+	sha256sums = d0e2fe6826737f84c84fb8149a8c77a7461661ce56eef4f3aa71ec859aed7ef6
+	source_x86_64 = scrollti-x86_64-1.0::https://github.com/luislve17/scrollti/releases/download/scrollti-v1.0/scrollti
+	sha256sums_x86_64 = eed6a735b55786a3fbda3171b9c6345f25277a536dd019a8784a6d399aabdb44
+
+pkgname = scrollti-bin
