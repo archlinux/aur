@@ -60,5 +60,7 @@ package() {
 
 	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
 
+	chmod 700 "$pkgdir/etc/ssl/private"
+
 	install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
