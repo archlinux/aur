@@ -2,7 +2,7 @@
 # Contributor: gilcu3
 
 pkgname=near-cli-rs
-pkgver=0.24.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="Your human-friendly companion that helps to interact with NEAR Protocol from command line"
 url="https://github.com/near/near-cli-rs"
@@ -11,7 +11,7 @@ arch=("any")
 makedepends=(cargo)
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::https://github.com/near/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('fa97f1523867db61fead486225355fc2ceaebe11eb6f623dcce7a35e9add7e96')
+sha256sums=('5b7d06238ba01db0b199d4c53ad00329ec9b38e86271512ec15ebc4e2134fd51')
 
 prepare() {
     cd $srcdir/$pkgname-$pkgver
