@@ -1,18 +1,17 @@
 pkgbase = uutils-tar-git
 	pkgdesc = Rust implementation of tar
-	pkgver = 0.0.1.r150.1578d39
+	pkgver = 0.0.1.r338.1afcb44
 	pkgrel = 1
 	url = https://github.com/uutils/tar
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	makedepends = tar
 	makedepends = git
 	depends = gcc-libs
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
-	source = uutils-tar::git+https://github.com/uutils/tar.git
-	sha256sums = SKIP
-
-pkgname = uutils-tar-git
 	provides = tar
 	conflicts = tar
+	source = uutils-tar::git+https://github.com/uutils/tar.git
+	b2sums = SKIP
+
+pkgname = uutils-tar-git
