@@ -1,6 +1,6 @@
 pkgbase = hamr
 	pkgdesc = A fast, extensible desktop launcher for Linux
-	pkgver = 1.0.23
+	pkgver = 1.0.24
 	pkgrel = 1
 	url = https://github.com/Stewart86/hamr
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = hamr
 	optdepends = bitwarden-cli: Bitwarden password manager integration
 	replaces = hamr-qml
 	install = hamr.install
-	source = hamr-1.0.23::git+https://github.com/Stewart86/hamr.git#tag=v1.0.23
+	source = hamr-1.0.24::git+https://github.com/Stewart86/hamr.git#tag=v1.0.24
 	sha256sums = SKIP
 
 pkgname = hamr
