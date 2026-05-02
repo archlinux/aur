@@ -1,17 +1,17 @@
 pkgbase = one-run
 	pkgdesc = run-one drop-in alternative, command single instance runner
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/cherio/one-run
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-or-later
 	depends = findutils
 	depends = grep
 	depends = perl
 	depends = util-linux
 	provides = run-one
 	conflicts = run-one
-	source = one-run-1.0.4.tar.gz::https://github.com/cherio/one-run/archive/refs/tags/1.0.4.tar.gz
-	sha256sums = d4c75f0401c96f57819644abd6adfa02c23c6312ac5de59b760efd7b6a808f2e
+	source = one-run-1.0.5.tar.gz::https://github.com/cherio/one-run/archive/refs/tags/1.0.5.tar.gz
+	sha256sums = 2c91e3c11956771c6204715637ac924f4ba40d14eb7652cef11dd749d1b2a1ab
 
 pkgname = one-run
