@@ -6,7 +6,7 @@ pkgdesc="Lightweight system monitor"
 arch=('x86_64')
 url="https://github.com/JackpotMachine777/rusty-monitor"
 license=('GPL')
-depends=('glibc' 'webkit2gtk' 'gtk3' 'libayatana-appindicator' 'hicolor-icon-theme')
+depends=('glibc' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'hicolor-icon-theme' 'nvidia-utils')
 makedepends=('nodejs' 'npm' 'rust' 'pkg-config' 'gcc' 'make' 'git' 'clang' 'lld' 'llvm')
 options=(!strip)
 source=("git+https://github.com/JackpotMachine777/rusty-monitor#branch=main")

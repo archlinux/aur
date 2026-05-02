@@ -16,10 +16,11 @@ pkgbase = rusty-monitor
 	makedepends = lld
 	makedepends = llvm
 	depends = glibc
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
+	depends = nvidia-utils
 	options = !strip
 	source = git+https://github.com/JackpotMachine777/rusty-monitor#branch=main
 	sha256sums = SKIP
