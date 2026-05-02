@@ -5,50 +5,69 @@ _Name="KISS"
 pkgname="${_Name,,}"
 _commit="9a886c0987b7a9d6ab938d3dc909191e583a8c9d" # 5.2.2
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDE for the KIPR's Instructional Software System platform"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/kipr/${pkgname}"
-license=('GPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'libkar' 'libkovanserial' 'pcompiler'
-         'qscintilla-qt5' 'qt5-base' 'qt5-quick1')
-makedepends=('cmake>=2.8.12' 'gendesk' 'qt5-tools')
-_pkgsrc="${pkgname}-${_commit}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
+license=(
+  'GPL-3.0-only'
+)
+depends=(
+  'glibc'
+  'libgcc'
+  'libkar-qt5'
+  'libkovanserial'
+  'libstdc++'
+  'pcompiler-qt5'
+  'qscintilla-qt5'
+  'qt5-base'
+  'qt5-quick1'
+)
+makedepends=(
+  'cmake>=2.8.12'
+  'gendesk'
+  'qt5-tools'
+)
+_pkgsrc="${url##*/}-${_commit}"
+source=(
+  "${url}/archive/${_commit}/${_pkgsrc}.tar.gz"
+)
 b2sums=('804534e38bd5b8debfdf8809b3d13813617ae4e37c8181a3ce52a52e4681e397cb99e1f6908b502eb02b676b36ca2b26446a1b70bdac6a17ae0ba823573d480f')
 
 prepare() {
-  cd "${srcdir}"
-  gendesk -f -n \
-    --name "${_Name}" \
-    --exec "${_Name}" \
-    --icon "${pkgname}" \
-    --comment "${pkgdesc}" \
-    --categories "Development" \
-    "${pkgname}"
-
-  cd "${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   # respect build flags
   # adjust for qscintilla-qt5 naming changes
   sed -e '/^add_definitions(/d' \
       -e 's/ qscintilla2 / qscintilla2_qt5 /g' \
+      -e 's/ pcompiler / pcompiler_qt5 /g' \
+      -e 's/ kar / kar_qt5 /g' \
       -i 'CMakeLists.txt'
 }
 
 build() {
   local cmake_options=(
-    -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
-    -Wno-dev
-    -DCMAKE_BUILD_TYPE:STRING='None'
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -G 'Unix Makefiles'
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
   )
 
   cd "${srcdir}"
+  gendesk -f -n \
+    --pkgname "${pkgname}" \
+    --pkgdesc "${pkgesc}" \
+    --name "${_Name}" \
+    --exec "${_Name}" \
+    --categories "Development"
+
   cmake "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake --build "${cmake_options[1]}"
 }
 
 package() {

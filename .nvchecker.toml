@@ -1,4 +1,6 @@
 [kiss]
-source = "git"
-git = "https://github.com/kipr/kiss.git"
-prefix = "v"
+source = "manual"
+
+# source = "git"
+# git = "https://github.com/kipr/kiss.git"
+# prefix = "v"
