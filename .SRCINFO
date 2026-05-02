@@ -1,4 +1,4 @@
-pkgbase = python-browsers-git
+pkgbase = python-pybrowsers-git
 	pkgdesc = Python library for detecting and launching browsers (git version)
 	pkgver = 1.4.0.r5.g53e6ddf
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = python-browsers-git
 	source = git+https://github.com/roniemartinez/browsers.git
 	sha256sums = SKIP
 
-pkgname = python-browsers-git
+pkgname = python-pybrowsers-git

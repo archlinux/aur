@@ -1,6 +1,6 @@
 # Maintainer: dmnmsc
 
-pkgname=python-browsers-git
+pkgname=python-pybrowsers-git
 _name=browsers
 pkgver=1.4.0.r5.g53e6ddf
 pkgrel=1
