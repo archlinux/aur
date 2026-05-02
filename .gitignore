@@ -1,0 +1,9 @@
+# Build artefacts that updpkgsums / makepkg leave behind. They
+# don't belong in the AUR repo — only PKGBUILD + .SRCINFO + the
+# install hook do.
+*.tar.gz
+*.tar.zst
+*.tar.xz
+src/
+pkg/
+sentinel-*/
