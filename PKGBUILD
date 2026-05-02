@@ -4,6 +4,7 @@ pkgname=('hyprland-focused-booster')
 pkgver=0.1.2
 pkgrel=1
 arch=('x86_64')
+url='https://github.com/tumrin/hyprland-focused-booster'
 license=('MIT')
 pkgdesc='Active window VRAM booster for Hyprland'
 makedepends=('cargo')
