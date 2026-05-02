@@ -1,8 +1,8 @@
 # Maintainer: Doridian <archlinux at doridian dot net>
 
 pkgname=dimland-git
-pkgver=r36.3934c32
-pkgrel=5
+pkgver=r40.76c653f
+pkgrel=1
 pkgdesc='Wayland screen dimmer'
 arch=('x86_64' 'aarch64')
 url='https://github.com/keifufu/dimland.git'
@@ -24,6 +24,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   install -Dm755 target/release/dimland "${pkgdir}/usr/bin/dimland"
+  install -Dm755 src/dim "${pkgdir}/usr/bin/dim"
 }
 
 # vim:set ts=2 sw=2 et:
