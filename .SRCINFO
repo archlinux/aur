@@ -1,8 +1,8 @@
 pkgbase = afetch-git
 	pkgdesc = Fast and simple system info written in C, that can be configured at compile time by editing the config.h file
-	pkgver = 1
+	pkgver = v2.2.0
 	pkgrel = 1
-	url = https://github.com/13-CF/afetch
+	url = https://gitlab.com/gamestime102/afetch/afetch
 	arch = any
 	license = GPL
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = afetch-git
 	makedepends = make
 	provides = afetch
 	conflicts = afetch
-	source = git+https://github.com/13-CF/afetch
+	source = git+https://gitlab.com/gamestime102/afetch/afetch
 	md5sums = SKIP
 
 pkgname = afetch-git

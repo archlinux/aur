@@ -1,12 +1,13 @@
 # Maintainer: Fronkles McFranko <mrelfranko@disroot.org>
+# Maintainer: gamestime102 < >
 pkgname=afetch-git
 _pkgname=afetch
-pkgver=1
+pkgver=v2.2.0
 pkgrel=1
 epoch=
 pkgdesc="Fast and simple system info written in C, that can be configured at compile time by editing the config.h file"
 arch=("any")
-url="https://github.com/13-CF/afetch"
+url="https://gitlab.com/gamestime102/afetch/afetch"
 license=('GPL')
 groups=()
 depends=()
@@ -20,7 +21,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/13-CF/afetch"
+source=("git+https://gitlab.com/gamestime102/afetch/afetch"
 )
 noextract=()
 md5sums=("SKIP")
