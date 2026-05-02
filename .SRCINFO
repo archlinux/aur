@@ -1,6 +1,6 @@
 pkgbase = wax-clipboard
 	pkgdesc = Clipboard manager for Wayland / Hyprland
-	pkgver = 0.1.0
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/NBAFrigge/wax
 	arch = x86_64

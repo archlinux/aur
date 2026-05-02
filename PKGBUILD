@@ -1,6 +1,6 @@
 # Maintainer: NBAFrigge
 pkgname=wax-clipboard
-pkgver=0.1.0
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Clipboard manager for Wayland / Hyprland"
 arch=('x86_64')
@@ -22,7 +22,7 @@ package() {
   cd "$pkgname"
 
   install -Dm755 "target/release/wax-daemon" "$pkgdir/usr/bin/wax-daemon"
-  install -Dm755 "target/release/wax-cli" "$pkgdir/usr/bin/wax"
+  install -Dm755 "target/release/wax" "$pkgdir/usr/bin/wax"
 
   install -Dm644 "contrib/wax.service" \
     "$pkgdir/usr/lib/systemd/user/wax.service"
