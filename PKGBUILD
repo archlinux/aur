@@ -114,6 +114,7 @@ package_aescrypt_gui-bin() {
   replaces=(
     'aescrypt-gui-bin<=4.4.0-2'
   )
+
   local source_array="source_${CARCH}[0]"
   local source_url="${!source_array}"
   local source_artifact="${source_url##*/}"
