@@ -1,7 +1,7 @@
 # Maintainer: Serene-Arc <https://aur.archlinux.org/account/serene-arc>
 
 _cranname=otelsdk
-_cranver=0.2.2
+_cranver=0.2.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -29,7 +29,7 @@ optdepends=(
     r-withr
     )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('51ba34bb853666c773258a203d0afcbd00c6be86f3100e1cb6230f2532c8c7fd')
+sha256sums=('e4839bf6f3dd934f9c8d61d8d646a00c04447b6b304d531def40efab5a8ffab8')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
