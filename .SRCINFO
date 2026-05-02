@@ -1,6 +1,6 @@
 pkgbase = python-genio-bootrom
 	pkgdesc = Tool to bootstrap the flashing on MediaTek Genio SoCs
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://pypi.org/project/genio-bootrom
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-genio-bootrom
 	optdepends = python-genio-tools: Tools for flashing boards using MediaTek Genio SoCs
 	options = !strip
 	options = !debug
-	source = https://files.pythonhosted.org/packages/py3/g/genio-bootrom/genio_bootrom-1.2.1-py3-none-any.whl
-	sha256sums = 5d0b8043757b16fd00bec889f1a7579c066530e0fdc0b1dd7a3f59d5b9b0c0e9
+	source = https://files.pythonhosted.org/packages/py3/g/genio-bootrom/genio_bootrom-1.2.2-py3-none-any.whl
+	sha256sums = 595e908bf1977a6a41a984a2bbfa8257eb754ef8f0d68c1076e4559827f0573d
 
 pkgname = python-genio-bootrom
