@@ -1,0 +1,20 @@
+pkgbase = python-comfy-kitchen
+	pkgdesc = Fast kernel library for Diffusion inference with multiple compute backends.
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/Comfy-Org/comfy-kitchen
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-tomli
+	makedepends = nanobind
+	depends = python
+	depends = cuda
+	noextract = comfy_kitchen-0.2.8-cp312-abi3-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp312/c/comfy-kitchen/comfy_kitchen-0.2.8-cp312-abi3-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+	sha512sums = 5ba882a2244e80d362b40281cd9e973ff8bbcce3988a257aaaa8a3ea1d50c63a2789e52f9d2fe5314a9da23def5c711b616e875eb093930e2e68c29c9364b535
+
+pkgname = python-comfy-kitchen
