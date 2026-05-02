@@ -3,6 +3,7 @@ pkgbase = m913-ctl
 	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Qehbr/m913-ctl
+	install = m913-ctl.install
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cmake
