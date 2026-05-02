@@ -5,14 +5,14 @@ pkgver=rolling.r78.gf156614
 pkgrel=1
 pkgdesc='Fast and native Spotify client'
 arch=('x86_64' 'aarch64')
-url='https://github.com/YummierGravy/spotix'
+url='https://github.com/skyline69/spotix'
 license=('MIT')
 depends=('alsa-lib' 'cairo' 'dbus' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'openssl' 'pango')
 makedepends=('cargo' 'clang' 'git' 'pkgconf')
 provides=('spotix')
 conflicts=('spotix')
 options=('!lto')
-source=('spotix::git+https://github.com/YummierGravy/spotix.git')
+source=('spotix::git+https://github.com/skyline69/spotix.git')
 sha256sums=('SKIP')
 
 pkgver() {

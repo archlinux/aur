@@ -2,7 +2,7 @@ pkgbase = spotix-git
 	pkgdesc = Fast and native Spotify client
 	pkgver = rolling.r78.gf156614
 	pkgrel = 1
-	url = https://github.com/YummierGravy/spotix
+	url = https://github.com/skyline69/spotix
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -24,7 +24,7 @@ pkgbase = spotix-git
 	provides = spotix
 	conflicts = spotix
 	options = !lto
-	source = spotix::git+https://github.com/YummierGravy/spotix.git
+	source = spotix::git+https://github.com/skyline69/spotix.git
 	sha256sums = SKIP
 
 pkgname = spotix-git
