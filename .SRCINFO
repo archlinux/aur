@@ -1,0 +1,18 @@
+pkgbase = lyrical-git
+	pkgdesc = A rust tool to display synced lyrics in your waybar (or any other bar)!
+	pkgver = 0.4.4.47.g25f3723
+	pkgrel = 1
+	url = https://github.com/tblelrd/lyrical
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = openssl
+	depends = glibc
+	depends = playerctl
+	provides = lyrical
+	conflicts = lyrical
+	source = lyrical-git::git+https://github.com/tblelrd/lyrical.git
+	sha256sums = SKIP
+
+pkgname = lyrical-git
