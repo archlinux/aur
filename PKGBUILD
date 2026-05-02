@@ -1,4 +1,5 @@
-# Maintainer: Sławomir Śpiewak <slawekwaga@gmail.com>
+# Maintainer: Layne Pedersen <layne dot pedersen at gmail dot com>
+# Contributor: Sławomir Śpiewak <slawekwaga@gmail.com>
 # Contributor: Difarem <difarem@gmail.com>
 # Contributor: David Runge <dave@sleepmap.de>
 # Contributor: Xyne
@@ -7,8 +8,8 @@
 
 _name=lmms
 pkgname=lmms-git
-pkgver=1.3.0.alpha.1.r857.gbbdfeff5e
-pkgrel=2
+pkgver=1.3.0.alpha.1.r974.g38236a851
+pkgrel=1
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('x86_64')
 url="https://lmms.io"
@@ -19,7 +20,7 @@ optdepends=('pulseaudio: pulseaudio support'
             'wine: VST plugin support'
             'carla: carla support')
 makedepends=('cmake' 'doxygen' 'extra-cmake-modules' 'freetype2' 'git'
-'ladspa' 'qt5-tools' 'wine' 'perl-list-moreutils' 'perl-xml-parser')
+'ladspa' 'qt5-tools' 'qt5-svg' 'wine' 'perl-list-moreutils' 'perl-xml-parser')
 provides=('lmms')
 conflicts=('lmms')
 source=("git+https://github.com/${_name}/${_name}.git"
