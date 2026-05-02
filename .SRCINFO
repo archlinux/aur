@@ -1,0 +1,13 @@
+pkgbase = affinity-appimage-bin
+	pkgdesc = Affinity Studio via AppImage
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/ryzendew/Linux-Affinity-Installer
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	options = !strip
+	source = Affinity.AppImage::https://github.com/ryzendew/Linux-Affinity-Installer/releases/download/Affinity-wine-10.10-Appimage/Affinity-3-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = affinity-appimage-bin
