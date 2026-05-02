@@ -1,93 +1,93 @@
-diff --git a/src/renderer/components/terminal/ConnectedTerminal.tsx b/src/renderer/components/terminal/ConnectedTerminal.tsx
-index 1111111..2222222 100644
---- a/src/renderer/components/terminal/ConnectedTerminal.tsx
-+++ b/src/renderer/components/terminal/ConnectedTerminal.tsx
-@@ -30,6 +30,7 @@ const WEBGL_CONTEXT_LOSS_RECOVERY_DELAY_MS = 100 // GPU driver recovery time
- const VISIBILITY_RECOVERY_DELAY_MS = 150 // DOM reflow after tab becomes visible
- const POWER_RESUME_RECOVERY_DELAY_MS = 300 // System stabilize after wake
- const ACTIVITY_DEBOUNCE_MS = 1000 // Debounce activity updates to max 1 per second
-+const XTERM_WEBGL_DISABLED = true // Avoid intermittent WebKitGTK/NVIDIA Wayland input stalls
- const CLIPBOARD_RATE_LIMIT_MS = 100 // Minimum ms between clipboard operations
+diff -ruN termul-0.3.4.orig/src/renderer/components/terminal/ConnectedTerminal.tsx termul-0.3.4/src/renderer/components/terminal/ConnectedTerminal.tsx
+--- termul-0.3.4.orig/src/renderer/components/terminal/ConnectedTerminal.tsx	2026-05-02 15:49:57.750116475 +0700
++++ termul-0.3.4/src/renderer/components/terminal/ConnectedTerminal.tsx	2026-05-02 15:50:11.844459082 +0700
+@@ -50,6 +50,7 @@
+ const VISIBILITY_RECOVERY_DELAY_MS = 150; // DOM reflow after tab becomes visible
+ const POWER_RESUME_RECOVERY_DELAY_MS = 300; // System stabilize after wake
+ const ACTIVITY_DEBOUNCE_MS = 1000; // Debounce activity updates to max 1 per second
++const XTERM_WEBGL_DISABLED = true; // Avoid intermittent WebKitGTK/NVIDIA Wayland input stalls
+ const CLIPBOARD_RATE_LIMIT_MS = 100; // Minimum ms between clipboard operations
  
  export interface TerminalSearchHandle {
-@@ -418,6 +419,11 @@ function ConnectedTerminalComponent({
- 
-     // WebGL addon loading with context loss recovery
-     const loadWebglAddon = (term: Terminal, isRecovery: boolean = false): void => {
-+      if (XTERM_WEBGL_DISABLED) {
-+        webglAddonRef.current = null
-+        return
-+      }
+@@ -457,6 +458,11 @@
+ 			term: Terminal,
+ 			isRecovery: boolean = false,
+ 		): void => {
++			if (XTERM_WEBGL_DISABLED) {
++				webglAddonRef.current = null;
++				return;
++			}
 +
-       if (webglRecoveryAttemptsRef.current >= MAX_WEBGL_RECOVERY_ATTEMPTS) {
-         console.warn('WebGL recovery attempts exhausted, falling back to canvas renderer')
-         return
-diff --git a/src/renderer/components/terminal/TauriTerminal.tsx b/src/renderer/components/terminal/TauriTerminal.tsx
-index 1111111..2222222 100644
---- a/src/renderer/components/terminal/TauriTerminal.tsx
-+++ b/src/renderer/components/terminal/TauriTerminal.tsx
-@@ -15,6 +15,7 @@ import '@xterm/xterm/css/xterm.css'
+ 			if (webglRecoveryAttemptsRef.current >= MAX_WEBGL_RECOVERY_ATTEMPTS) {
+ 				console.warn(
+ 					"WebGL recovery attempts exhausted, falling back to canvas renderer",
+diff -ruN termul-0.3.4.orig/src/renderer/components/terminal/TauriTerminal.tsx termul-0.3.4/src/renderer/components/terminal/TauriTerminal.tsx
+--- termul-0.3.4.orig/src/renderer/components/terminal/TauriTerminal.tsx	2026-05-02 15:49:57.750116475 +0700
++++ termul-0.3.4/src/renderer/components/terminal/TauriTerminal.tsx	2026-05-02 15:50:17.339369259 +0700
+@@ -13,6 +13,7 @@
+ import "@xterm/xterm/css/xterm.css";
  
- const CONPTY_MIN_BUILD_NUMBER = 21376
- const MAX_WEBGL_RETRIES = 3
-+const XTERM_WEBGL_DISABLED = true // Avoid intermittent WebKitGTK/NVIDIA Wayland input stalls
+ const MAX_WEBGL_RETRIES = 3;
++const XTERM_WEBGL_DISABLED = true; // Avoid intermittent WebKitGTK/NVIDIA Wayland input stalls
  
- type TerminalStatus = 'loading' | 'ready' | 'exited' | 'error'
+ type TerminalStatus = "loading" | "ready" | "exited" | "error";
  
-@@ -63,6 +64,10 @@ export function TauriTerminal(): React.JSX.Element {
-       // WebGL addon with fallback
-       let webglAttempts = 0
-       const loadWebgl = (): void => {
-+        if (XTERM_WEBGL_DISABLED) {
-+          webglAddonRef.current = null
-+          return
-+        }
-         if (disposedRef.current || webglAttempts >= MAX_WEBGL_RETRIES) {
-           if (webglAttempts >= MAX_WEBGL_RETRIES) {
-             console.warn('[TauriTerminal] WebGL failed after max retries, using canvas renderer')
-diff --git a/src/renderer/components/terminal/XTerminal.tsx b/src/renderer/components/terminal/XTerminal.tsx
-index 1111111..2222222 100644
---- a/src/renderer/components/terminal/XTerminal.tsx
-+++ b/src/renderer/components/terminal/XTerminal.tsx
-@@ -37,6 +37,8 @@ const TERMINAL_OPTIONS = {
-   convertEol: true
- }
+@@ -56,6 +57,10 @@
+ 			// WebGL addon with fallback
+ 			let webglAttempts = 0;
+ 			const loadWebgl = (): void => {
++				if (XTERM_WEBGL_DISABLED) {
++					webglAddonRef.current = null;
++					return;
++				}
+ 				if (disposedRef.current || webglAttempts >= MAX_WEBGL_RETRIES) {
+ 					if (webglAttempts >= MAX_WEBGL_RETRIES) {
+ 						console.warn(
+diff -ruN termul-0.3.4.orig/src/renderer/components/terminal/XTerminal.tsx termul-0.3.4/src/renderer/components/terminal/XTerminal.tsx
+--- termul-0.3.4.orig/src/renderer/components/terminal/XTerminal.tsx	2026-05-02 15:49:57.750116475 +0700
++++ termul-0.3.4/src/renderer/components/terminal/XTerminal.tsx	2026-05-02 15:50:27.977195334 +0700
+@@ -19,6 +19,8 @@
+ 	convertEol: true,
+ };
  
-+const XTERM_WEBGL_DISABLED = true // Avoid intermittent WebKitGTK/NVIDIA Wayland input stalls
++const XTERM_WEBGL_DISABLED = true; // Avoid intermittent WebKitGTK/NVIDIA Wayland input stalls
 +
  function XTerminalComponent({
-   onData,
-   onResize,
-@@ -75,14 +77,16 @@ function XTerminalComponent({
+ 	onData,
+ 	onResize,
+@@ -45,16 +47,18 @@
  
-     terminal.open(containerRef.current)
+ 		terminal.open(containerRef.current);
  
--    try {
--      const webglAddon = new WebglAddon()
--      webglAddon.onContextLoss(() => {
--        webglAddon.dispose()
--      })
--      terminal.loadAddon(webglAddon)
--    } catch {
--      console.warn('WebGL addon failed to load, falling back to canvas renderer')
-+    if (!XTERM_WEBGL_DISABLED) {
-+      try {
-+        const webglAddon = new WebglAddon()
-+        webglAddon.onContextLoss(() => {
-+          webglAddon.dispose()
-+        })
-+        terminal.loadAddon(webglAddon)
-+      } catch {
-+        console.warn('WebGL addon failed to load, falling back to canvas renderer')
-+      }
-     }
+-		try {
+-			const webglAddon = new WebglAddon();
+-			webglAddon.onContextLoss(() => {
+-				webglAddon.dispose();
+-			});
+-			terminal.loadAddon(webglAddon);
+-		} catch {
+-			console.warn(
+-				"WebGL addon failed to load, falling back to canvas renderer",
+-			);
++		if (!XTERM_WEBGL_DISABLED) {
++			try {
++				const webglAddon = new WebglAddon();
++				webglAddon.onContextLoss(() => {
++					webglAddon.dispose();
++				});
++				terminal.loadAddon(webglAddon);
++			} catch {
++				console.warn(
++					"WebGL addon failed to load, falling back to canvas renderer",
++				);
++			}
+ 		}
  
-     fitAddon.fit()
-diff --git a/src/renderer/hooks/use-xterm.ts b/src/renderer/hooks/use-xterm.ts
-index 1111111..2222222 100644
---- a/src/renderer/hooks/use-xterm.ts
-+++ b/src/renderer/hooks/use-xterm.ts
-@@ -5,6 +5,8 @@ import { WebglAddon } from '@xterm/addon-webgl'
+ 		fitAddon.fit();
+diff -ruN termul-0.3.4.orig/src/renderer/hooks/use-xterm.ts termul-0.3.4/src/renderer/hooks/use-xterm.ts
+--- termul-0.3.4.orig/src/renderer/hooks/use-xterm.ts	2026-05-02 15:49:57.756689327 +0700
++++ termul-0.3.4/src/renderer/hooks/use-xterm.ts	2026-05-02 15:50:40.957983060 +0700
+@@ -5,6 +5,8 @@
  import { WebLinksAddon } from '@xterm/addon-web-links'
  import { TERMINAL_THEME } from '../components/terminal/terminal-config'
  
@@ -96,7 +96,7 @@ index 1111111..2222222 100644
  export interface UseXtermOptions {
    onData?: (data: string) => void
    onResize?: (cols: number, rows: number) => void
-@@ -110,14 +112,16 @@ export function useXterm(options: UseXtermOptions = {}): UseXtermReturn {
+@@ -109,14 +111,16 @@
  
      terminal.open(containerRef.current)
  

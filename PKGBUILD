@@ -28,13 +28,11 @@ source=(
   'disable-xterm-webgl.patch'
   'linux-integration-fixes.patch'
   'form-control-theme.patch'
-  'aur-update-check.patch'
 )
 sha256sums=('6f782e369f0595c49c4e039171aadc69211343f841616cd07e555c65c97441f1'
-            'e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9'
+            'f1eb85aacb293e1f72e7c68d156e733185081b92c2d1ae44a62966041a629e78'
             'ff9fc001c5824d2c889f9a719439d113874724fd5d8940036e7c586a36663afd'
-            '01e5030b5add9fc9acfb303e45d4497ff7e2733e2e149dd2b836874edabc2169'
-            'c6dace0649e247b29a9adfbe80a9cbd6ff1d8c855e142cca976559afb9a26987')
+            '01e5030b5add9fc9acfb303e45d4497ff7e2733e2e149dd2b836874edabc2169')
 
 prepare() {
   cd "termul-$pkgver"
@@ -46,7 +44,7 @@ prepare() {
   patch -Np1 < "$srcdir/disable-xterm-webgl.patch"
   patch -Np1 < "$srcdir/linux-integration-fixes.patch"
   patch -Np1 < "$srcdir/form-control-theme.patch"
-  patch -Np1 < "$srcdir/aur-update-check.patch"
+  # aur-update-check.patch removed: upstream now supports VITE_TERMUL_UPDATE_MODE=aur natively
 
   npm ci
 
@@ -61,7 +59,7 @@ config.app.windows[0].visible = true
 fs.writeFileSync(configPath, `${JSON.stringify(config, null, '\t')}\n`)
 EOF
 
-  sed -i '/name = "termul-manager"/{n;s/version = "0.3.0"/version = "0.3.2"/;}' \
+  sed -i '/name = "termul-manager"/{n;s/version = "0.3.3"/version = "0.3.4"/;}' \
     src-tauri/Cargo.lock
   sed -i '/^\[build-dependencies\]/i [features]\ndefault = ["custom-protocol"]\ncustom-protocol = ["tauri/custom-protocol"]\n' \
     src-tauri/Cargo.toml

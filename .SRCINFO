@@ -21,11 +21,9 @@ pkgbase = termul-manager
 	source = disable-xterm-webgl.patch
 	source = linux-integration-fixes.patch
 	source = form-control-theme.patch
-	source = aur-update-check.patch
 	sha256sums = 6f782e369f0595c49c4e039171aadc69211343f841616cd07e555c65c97441f1
-	sha256sums = e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9
+	sha256sums = f1eb85aacb293e1f72e7c68d156e733185081b92c2d1ae44a62966041a629e78
 	sha256sums = ff9fc001c5824d2c889f9a719439d113874724fd5d8940036e7c586a36663afd
 	sha256sums = 01e5030b5add9fc9acfb303e45d4497ff7e2733e2e149dd2b836874edabc2169
-	sha256sums = c6dace0649e247b29a9adfbe80a9cbd6ff1d8c855e142cca976559afb9a26987
 
 pkgname = termul-manager
