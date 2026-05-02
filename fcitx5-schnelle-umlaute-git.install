@@ -1,0 +1,36 @@
+post_install() {
+    cat <<'EOM'
+
+==> Schnelle Umlaute installed.
+==>
+==> First install on this user account? Run as your normal user (not root):
+==>     schnelle-umlaute-setup
+==>
+==> This writes ~/.config/environment.d/fcitx5.conf so GTK, Qt, and X11
+==> apps know to use fcitx5 — no system files are touched.
+==>
+==> Then logout and login.
+==>
+==> KDE Wayland: also set System Settings → Virtual Keyboard → "Fcitx 5".
+==>
+==> Add the addon to your input methods via fcitx5-config-qt.
+
+EOM
+}
+
+post_upgrade() {
+    : # Nothing to do on upgrade — env-vars persist across rebuilds.
+}
+
+post_remove() {
+    cat <<'EOM'
+
+==> Schnelle Umlaute removed.
+==>
+==> User configuration was kept. To remove it:
+==>     rm ~/.config/fcitx5/conf/schnelle-umlaute.conf
+==>     rm -r ~/.config/fcitx5/schnelle-umlaute
+==>     rm ~/.config/environment.d/fcitx5.conf   # only if no other fcitx5 use
+
+EOM
+}

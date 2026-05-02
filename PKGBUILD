@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-schnelle-umlaute-git
 _pkgname=fcitx5-schnelle-umlaute
-pkgver=1.2.0.r367.g42884dd
+pkgver=1.2.0.r369.g0eb07e6
 pkgrel=1
 pkgdesc="Quick Accent equivalent for Linux/Fcitx5 — map any Unicode character"
 arch=('x86_64' 'aarch64')
@@ -28,6 +28,7 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+install="$pkgname.install"
 source=("$_pkgname::git+$url.git#branch=dev")
 sha256sums=('SKIP')
 
