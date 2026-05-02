@@ -1,7 +1,7 @@
 pkgbase = doas
 	pkgdesc = A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos, macOS and MidnightBSD
 	pkgver = 6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/thejessesmith/doas/
 	install = doas.install
 	changelog = doas.changelog
@@ -12,7 +12,6 @@ pkgbase = doas
 	license = BSD
 	makedepends = bison
 	optdepends = vi: default editor for vidoas
-	provides = opendoas
 	conflicts = opendoas
 	conflicts = opendoas-git
 	options = !lto
