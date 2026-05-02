@@ -1,6 +1,6 @@
 # Maintainer: Meron Bossin Meronbssn@gmail.com
 pkgname=mcat-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Terminal image, video, and Markdown viewer"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('mcat')
 source_x86_64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-v$pkgver-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-v$pkgver-aarch64-unknown-linux-gnu.tar.xz")
 
-sha256sums_x86_64=('4b9a42afb8b9e3960c61dd1c77be9b6a249fe4bea57a8d0c5b364e71186cfb81')
-sha256sums_aarch64=('716843bd756a8eef22b697a1d65b79108267736b50775319596a8951c7f6f760')
+sha256sums_x86_64=('9ebe10f15d86c63aed1dd5f78128b90cb8148eb0f9b35cb35301922058ce2a83')
+sha256sums_aarch64=('d51b9814be43dec97751b1de04f9f75e33265b633c0cd7098ea94f5a870cc37b')
 
 package() {
     cd "$srcdir/mcat-v$pkgver-$CARCH-unknown-linux-gnu"
