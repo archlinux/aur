@@ -3,7 +3,7 @@
 
 pkgname=dosbox-staging
 pkgver=0.82.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('meson' 'ninja' 'cmake')
 provides=("dosbox")
 conflicts=("dosbox")
 source=("https://github.com/dosbox-staging/dosbox-staging/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('387c97b373c3164ab5abbbc2b210bf94b5567057abe44ee1e8b4d4e725bd422c')
 
 build() {
   arch-meson \
