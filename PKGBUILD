@@ -1,6 +1,6 @@
 # Maintainer: anirbanfaith <your@email.com>
 pkgname=commitdog-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Zero-dependency git workflow CLI — commit, branch, PR, release"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('commitdog')
 source_x86_64=("commitdog-linux-amd64::https://github.com/aysdog/commitdog/releases/download/v${pkgver}/commitdog-linux-amd64")
 source_aarch64=("commitdog-linux-arm64::https://github.com/aysdog/commitdog/releases/download/v${pkgver}/commitdog-linux-arm64")
 
-sha256sums_x86_64=('edc5020083423ed4bbaf4568aacaf7fcd4c8f0cfb86603a5e9b6b1164546f4e7')
-sha256sums_aarch64=('b0b92a3f3f341b2cd080949d149f007b72e2e1cbb3499d741d62247b0fb5b4f5')
+sha256sums_x86_64=('a21eadefc4f5c5e05f26f68eeb9e488dce023f98a2d53fa1a3bd8907dc4a21f0')
+sha256sums_aarch64=('43d4b05d4a121f8dd29e11200d503523b0b6391523c13346b1216592d3046aad')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then
