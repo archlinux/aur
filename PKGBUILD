@@ -7,12 +7,12 @@
 # Bitwarden (PM and SM), GNOME Keyring, and custom WASM plugins.  It includes
 # an SSH agent with FUSE-mounted key files and PAM auto-unlock support.
 #
-# The release workflow renders this file by substituting 0.0.25.
+# The release workflow renders this file by substituting 0.0.27.
 # At build time, pkgver() overrides the static version with the actual
 # git-derived version.
 
 pkgname=rosec-git
-pkgver=0.0.25
+pkgver=0.0.27
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)"
 arch=('x86_64' 'aarch64')
@@ -43,6 +43,7 @@ provides=(
     'rosec-provider-bitwarden-pm'
     'rosec-provider-bitwarden-sm'
     'rosec-provider-gnome-keyring'
+    'rosec-provider-keepassxc-file'
 )
 conflicts=(
     'rosec'
@@ -56,6 +57,9 @@ conflicts=(
     'rosec-provider-gnome-keyring'
     'rosec-provider-gnome-keyring-bin'
     'rosec-provider-gnome-keyring-git'
+    'rosec-provider-keepassxc-file'
+    'rosec-provider-keepassxc-file-bin'
+    'rosec-provider-keepassxc-file-git'
 )
 install=rosec.install
 
@@ -107,6 +111,9 @@ prepare() {
 
     cd "${srcdir}/${pkgname}/rosec-gnome-keyring"
     cargo fetch --locked 2>/dev/null || cargo fetch
+
+    cd "${srcdir}/${pkgname}/rosec-keepassxc-file"
+    cargo fetch --locked 2>/dev/null || cargo fetch
 }
 
 build() {
@@ -129,6 +136,10 @@ build() {
     cargo build --target wasm32-wasip1 --release
 
     cd "${srcdir}/${pkgname}/rosec-gnome-keyring"
+    cargo build --target wasm32-wasip1 --release --locked 2>/dev/null || \
+    cargo build --target wasm32-wasip1 --release
+
+    cd "${srcdir}/${pkgname}/rosec-keepassxc-file"
     cargo build --target wasm32-wasip1 --release --locked 2>/dev/null || \
     cargo build --target wasm32-wasip1 --release
 }
@@ -166,6 +177,8 @@ package() {
         "${pkgdir}/usr/lib/rosec/providers/rosec_bitwarden_sm.wasm"
     install -Dm644 rosec-gnome-keyring/target/wasm32-wasip1/release/rosec_gnome_keyring.wasm \
         "${pkgdir}/usr/lib/rosec/providers/rosec_gnome_keyring.wasm"
+    install -Dm644 rosec-keepassxc-file/target/wasm32-wasip1/release/rosec_keepassxc_file.wasm \
+        "${pkgdir}/usr/lib/rosec/providers/rosec_keepassxc_file.wasm"
 
     # Service activation files are generated at runtime by `rosec enable`
     # with the correct binary paths — no static copies shipped.
