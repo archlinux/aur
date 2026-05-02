@@ -1,6 +1,6 @@
 pkgbase = redisinsight-bin
 	pkgdesc = Redis Insight is an intuitive and efficient GUI for Redis, allowing you to interact with your databases and manage your data.
-	pkgver = 3.2.0
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://redis.io/insight/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = redisinsight-bin
 	depends = xdg-utils
 	provides = redisinsight
 	conflicts = redisinsight
-	source = Redis-Insight-linux-x86_64-3.2.0.AppImage::https://download.redisinsight.redis.com/releases/3.2.0/Redis-Insight-linux-x86_64.AppImage
-	sha512sums = 0f7c858bc017e276b1fd37fdce28219b9f763d54f71a1e9a434eee00158eac1769ea003510d2257b2a50ceb80eaa91b227735732636383399009d0861d950bde
+	source = Redis-Insight-linux-x86_64-3.4.2.AppImage::https://download.redisinsight.redis.com/releases/3.4.2/Redis-Insight-linux-x86_64.AppImage
+	sha512sums = c6a5d057399785414cecb61f7bdb85c3c6128e121ac197a51cfbe73470885d6a670ce01f521660d9f65fe27876e636a64b7057ddc9a125b74aeeed6796cdd832
 
 pkgname = redisinsight-bin
