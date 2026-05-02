@@ -1,7 +1,7 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
-pkgver=0.4.1
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 install=sentinel.install
 # Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
 # so makepkg's debug-package generator has nothing to index — opt out to
@@ -34,7 +34,7 @@ optdepends=(
 )
 backup=('etc/security/sentinel.conf' 'etc/pam.d/polkit-1')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # update with: makepkg -g >> PKGBUILD
+sha256sums=('b2d6451225ea25be232c45e71816377bdba972967262e86e376b1b4822840ce9')
 
 prepare() {
     cd "$pkgname-$pkgver"
