@@ -2,7 +2,7 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.5.5
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
     'python-mcp: Model Context Protocol (MCP) support'
     'python-neo4j: Neo4j export support'
     'python-pypdf: PDF extraction support'
-    'python-html2text: PDF/HTML extraction support'
+    'python-markdownify: PDF/HTML extraction support'
     'python-watchdog: File watching support'
     'python-matplotlib: SVG output support'
     'python-graspologic: Leiden community detection support (Python < 3.13)'
@@ -49,6 +49,8 @@ optdepends=(
     'python-faster-whisper: Video transcription support'
     'yt-dlp: Video download support'
     'python-openai: Kimi K2 LLM support'
+    'python-anthropic: Claude direct extraction support'
+    'python-tree-sitter-sql: SQL indexing support'
 )
 
 makedepends=(
@@ -62,14 +64,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/safishamsi/graphify/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8be6ac0d2b0f28b4d8992aa2ac7df82ce530ff1b97488c9c54be5bb3d55e5df0')
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-
-    # Remove the strict <3.14 python version bound for Arch Linux (rolling python)
-    sed -i 's/<3.14//g' pyproject.toml
-}
+sha256sums=('e9be48ba25d5f5379425670abb6a93edc61fd521b4d4478d3a7950bde4740dad')
 
 build() {
     cd "${pkgname}-${pkgver}"
