@@ -1,0 +1,19 @@
+# Build artifacts
+pkg/
+src/
+
+# Compiled packages
+*.pkg.tar.*
+*.src.tar.zst
+
+# Source archives (downloaded)
+*-*.tar.gz
+
+# Debug package
+*-debug-*.pkg.tar.zst
+
+# Temporary files
+*.tar
+
+# Build metadata
+.BUILDINFO
