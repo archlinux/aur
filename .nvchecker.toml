@@ -1,0 +1,4 @@
+[libkovanserial]
+source = "manual"
+# source = "git"
+# git = "https://github.com/kipr/libkovanserial.git"
