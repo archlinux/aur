@@ -8,7 +8,7 @@ pkgname=grafana-bin
 _pkgname=grafana
 pkgver=13.0.1
 _build_id=24542347077
-pkgrel=1
+pkgrel=2
 pkgdesc='Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version'
 url='https://grafana.com/grafana/download?edition=oss'
 conflicts=('grafana')
@@ -49,8 +49,6 @@ package() {
   install -Dm644 grafana.service "$pkgdir/usr/lib/systemd/system/grafana.service"
 
   cd ${_pkgname}-${pkgver}
-  install -Dm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
-  install -Dm755 bin/grafana-cli "$pkgdir/usr/bin/grafana-cli"
   install -Dm755 bin/grafana "$pkgdir/usr/bin/grafana"
   install -Dm640 -o207 -g207 conf/sample.ini "$pkgdir/etc/grafana.ini"
   install -Dm644 conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
@@ -59,4 +57,9 @@ package() {
 
   # Remove unit tests
   rm -r "$pkgdir/usr/share/grafana/public/test"
+
+  # Source maps are only useful for frontend debugging and add substantial size.
+  find "$pkgdir/usr/share/grafana/public" -type f -name '*.js.map' -delete
+  find "$pkgdir/usr/share/grafana/public" -type f -name '*.js' -exec \
+    sed -i '/^\/\/# sourceMappingURL=.*\.js\.map$/d' {} +
 }
