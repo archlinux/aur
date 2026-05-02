@@ -1,7 +1,7 @@
 pkgbase = zc-git
 	pkgdesc = A C/C++ build tool and package manager
 	pkgver = 1.0.r0.g8a2b3c4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Paul272007/ZC
 	arch = x86_64
 	license = MIT

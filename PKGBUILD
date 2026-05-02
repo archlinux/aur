@@ -2,7 +2,7 @@
 pkgname=zc-git
 _pkgname=ZC
 pkgver=1.0.r0.g8a2b3c4
-pkgrel=1
+pkgrel=2
 pkgdesc="A C/C++ build tool and package manager"
 arch=('x86_64')
 url="https://github.com/Paul272007/ZC"
