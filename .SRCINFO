@@ -1,7 +1,7 @@
 pkgbase = passkeyd
 	pkgdesc = Opinionated WebAuthn authenticator backed by a TPM
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bjn7/passkeyd
 	arch = x86_64
 	license = GPL3
