@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.112.r0.ga030a834
+pkgver=1.2.113.r0.gd57a8674
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -79,7 +79,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=('SKIP'
-            '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
+            '4f618a2fd96bca7359a6d52a0ae996d08ab30d94d9d2717f1e353f2296ee0fd7'
             'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade')
 provides=('openwebrx' 'openwebrx-plus')
 conflicts=('openwebrx' 'openwebrx-plus')
@@ -103,11 +103,14 @@ package() {
     cd "$srcdir/$_pkgname"
     python setup.py install --prefix=/usr --root="$pkgdir" --skip-build --optimize=1
 
-    for config in bands.json bands-*.json openwebrx.conf; do
-        install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
+    for config in bands.json bands-*.json openwebrx.conf bookmarks.json bookmarks.txt; do
+        [ -f "${config}" ] && install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
     done
-
-    cp -rv bookmarks.d "${pkgdir}"/etc/openwebrx/
+    if [ -d bookmarks.d ]; then
+        cp -rv bookmarks.d "${pkgdir}"/etc/openwebrx/
+        find "${pkgdir}"/etc/openwebrx/bookmarks.d -type f -exec chmod 0644 {} +
+        find "${pkgdir}"/etc/openwebrx/bookmarks.d -type d -exec chmod 0755 {} +
+    fi
 
     install -Dm 0644 ${srcdir}/openwebrx-plus.sysusers ${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf
     install -Dm 0644 ${srcdir}/openwebrx-plus.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf
