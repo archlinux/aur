@@ -1,7 +1,7 @@
 # Maintainer: damachin3 (damachine3 at proton dot me)
 # website: https://github.com/damachine/tkginstaller
 pkgname=tkginstaller-git
-pkgver=0.52.1
+pkgver=0.52.2
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
