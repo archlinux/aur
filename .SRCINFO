@@ -1,0 +1,21 @@
+pkgbase = apktool-toolbox
+	pkgdesc = APK全能工具箱 - 解包/打包/签名/查壳/刷机包签名/ADB设备管理
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maoyaotang12/apktool-toolbox
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = android-tools
+	depends = android-sdk-build-tools
+	depends = unzip
+	depends = java-runtime-common
+	depends = android-signapk
+	depends = android-apktool-git
+	source = git+https://github.com/maoyaotang12/apktool-toolbox.git
+	sha256sums = SKIP
+
+pkgname = apktool-toolbox
