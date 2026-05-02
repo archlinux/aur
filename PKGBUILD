@@ -1,5 +1,5 @@
 # Maintainer: Luis Vervaet <luisvervaet@gmail.com>
-# Maintainer: Peter Jung <admin@ptr1337.dev>
+# Contributor: Peter Jung <admin@ptr1337.dev>
 # Contributor: NextWorks <nextworks@protonmail.com>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Luna Jernberg <droidbittin@gmail.com>
