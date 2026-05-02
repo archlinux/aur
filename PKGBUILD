@@ -1,6 +1,6 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-cli-nightly-bin
-pkgver=nightly.20260502.020331
+pkgver=nightly.20260502.222213
 pkgrel=1
 pkgdesc="Command-line interface for unbill (nightly)"
 arch=('x86_64')
