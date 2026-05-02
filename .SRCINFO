@@ -1,6 +1,6 @@
 pkgbase = shrimp
 	pkgdesc = Self-hosted AI productivity assistant
-	pkgver = 0.2.14
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/TheSingularis/shrimp
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = shrimp
 	conflicts = shrimp-bin
 	install = shrimp.install
 	options = !strip
-	source = SHRIMP-0.2.14.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v0.2.14/SHRIMP-0.2.14.AppImage
-	sha256sums = 9c4a71d6331457c2c626a1f73bef9d0123bb9f5ecce392fa168c72891e9f33c2
+	source = SHRIMP-0.1.1.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v0.1.1/SHRIMP-0.1.1.AppImage
+	sha256sums = aadbd53bc100214d99fd7a5e53e11aef437e99392f5cb4892af1b2047330fc6f
 
 pkgname = shrimp
