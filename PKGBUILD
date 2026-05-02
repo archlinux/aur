@@ -14,7 +14,7 @@
 
 pkgname=crocotile3d
 pkgver=2.6.9
-pkgrel=1
+pkgrel=2
 
 source=("local://Crocotile3D_v${pkgver}_linux64.tar.gz"
     "${pkgname}.desktop"
@@ -40,7 +40,7 @@ package() {
 
     # Symlink executable
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "${pkgdir}/usr/local/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # Install desktop entry
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
