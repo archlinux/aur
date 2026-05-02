@@ -1,0 +1,13 @@
+pkgbase = scryu-bin
+	pkgdesc = SCRYU terminal client
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://scryu.com
+	install = scryu-bin.install
+	arch = x86_64
+	provides = scryu
+	conflicts = scryu
+	source = https://install.scryu.com/releases/v0.0.1/scryu_v0.0.1_linux_amd64.tar.gz
+	sha256sums = 5b9e9d482ee9d4b1439a2a44ddac28106a23623d753c435621c588c69a26aeb2
+
+pkgname = scryu-bin

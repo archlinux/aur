@@ -1,0 +1,11 @@
+post_install() {
+  cat <<'MSG'
+SCRYU installed.
+
+First run:
+  scryu login
+  scryu
+
+Installed scryu stores local objective run state under ~/.scryu.
+MSG
+}
