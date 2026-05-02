@@ -1,0 +1,15 @@
+pkgbase = wuwa-moma-bin
+	pkgdesc = Wuthering Waves Mod Manager (Tauri)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AymanLyesri/wuwa-mod-manager
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libappindicator-gtk3
+	provides = wuwa-moma
+	conflicts = wuwa-moma
+	source = wuwa-moma-bin-0.1.0.AppImage::https://github.com/AymanLyesri/wuwa-mod-manager/releases/download/app-v0.1.32/WuwaMoMa_0.1.32_amd64.AppImage
+	sha256sums = SKIP
+
+pkgname = wuwa-moma-bin
