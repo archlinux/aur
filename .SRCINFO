@@ -1,6 +1,6 @@
 pkgbase = truckers-tool-linux-bin
 	pkgdesc = A web-based save editor for ETS2 and ATS on Linux (Desktop App)
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/efzynx/truckers-tool-linux
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = truckers-tool-linux-bin
 	provides = truckers-tool-linux
 	conflicts = truckers-tool-linux
 	options = !strip
-	source = https://github.com/efzynx/truckers-tool-linux/releases/download/v1.2.3/truckers-tool-linux-1.2.3.deb
+	source = https://github.com/efzynx/truckers-tool-linux/releases/download/v1.2.4/truckers-tool-linux-1.2.4.deb
 	sha256sums = SKIP
 
 pkgname = truckers-tool-linux-bin
