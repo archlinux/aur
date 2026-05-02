@@ -1,9 +1,9 @@
 # Maintainer: derolezv <derolezv@gmail.com>
 pkgname=zephyr-bin
 _pkgname=zephyr
-pkgver=1.2.11
+pkgver=1.2.12
 pkgrel=1
-pkgdesc="A fast, modern mod manager for all your games"
+pkgdesc="A modern mod manager for all your games with built-in Archipelago support."
 arch=('x86_64')
 url="https://github.com/Prismo-Studio/Zephyr"
 license=('GPL3')
