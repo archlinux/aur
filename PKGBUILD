@@ -1,5 +1,5 @@
 pkgname=yamp-git
-pkgver=r60.gbaf921e
+pkgver=r61.ga71d149
 pkgrel=1
 pkgdesc="Yet Another Music Player - a QML based music player."
 arch=('x86_64')
