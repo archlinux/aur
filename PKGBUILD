@@ -1,4 +1,4 @@
-# Maintainer: Daniel <193309918+danielfrrrr@users.noreply.github.com>
+# Maintainer: Daniel <6887-danielfrrrr@users.noreply.gitlab.archlinux.org>
 
 _pkgname=obs-kmscap
 pkgname=obs-kmscap-git
