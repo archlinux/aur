@@ -1,6 +1,6 @@
 #Maintainer: korn201234 <aaronzschauer@gmail.com>
 pkgname=apac
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A simple arch aur helper."
 arch=('any')
