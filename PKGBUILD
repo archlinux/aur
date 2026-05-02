@@ -1,6 +1,6 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=yay-sys-tray-git
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Arch Linux system tray update checker using yay"
 arch=('any')
@@ -29,6 +29,7 @@ pkgver() {
 
 build() {
     cd yay-sys-tray
+    sed -i "s/^version = \".*\"/version = \"${pkgver}\"/" pyproject.toml
     python -m build --wheel --no-isolation
 }
 
