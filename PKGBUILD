@@ -3,12 +3,12 @@
 pkgname=stm32cubemx2
 _pkgname=stm32cubemx2
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="STM32CubeMX2 - new flavor of STM32CubeMX tool"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemx.html"
 license=('custom:SLA0048')
-depends=()
+groups=('stm32cube')
 makedepends=('gendesk')
 options=('!strip' '!debug')
 
