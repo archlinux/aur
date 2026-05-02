@@ -4,12 +4,12 @@
 
 pkgname=mu
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Maildir indexer/searcher and Emacs client (mu4e)"
 arch=("x86_64" "armv7h" "aarch64")
 url="http://www.djcbsoftware.nl/code/mu"
 license=("GPL-3.0-or-later")
-depends=("fmt" "libfmt.so" "glib2" "gmime3" "guile" "readline" "xapian-core")
+depends=("fmt" "libfmt.so" "glib2" "gmime3" "guile" "readline" "libreadline.so" "xapian-core" "libxapian.so")
 makedepends=("emacs" "meson" "cli11")
 optdepends=(
 	"emacs: mu4e support"
