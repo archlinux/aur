@@ -1,7 +1,7 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 install=sentinel.install
 # Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
 # so makepkg's debug-package generator has nothing to index — opt out to

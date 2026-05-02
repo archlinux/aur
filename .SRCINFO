@@ -1,7 +1,7 @@
 pkgbase = sentinel
 	pkgdesc = UAC-style confirmation dialog for Linux privilege escalation (COSMIC + sudo-rs friendly)
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/atayozcan/sentinel
 	install = sentinel.install
 	arch = x86_64
