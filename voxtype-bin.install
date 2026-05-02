@@ -23,17 +23,27 @@ _install_active_binary() {
     rm -f /usr/bin/voxtype
     local target_dir
     target_dir=$(dirname "$target")
-    case "${target_dir##*/}" in
+    local subdir="${target_dir##*/}"
+    case "$subdir" in
         cuda-12|cuda-13|migraphx)
-            cat > /usr/bin/voxtype <<EOF
-#!/bin/sh
-# voxtype dispatch wrapper.
-# Execs the GPU/ONNX binary by canonical path so ORT's argv[0]
-# based provider .so lookup resolves to the right subdirectory.
-# Managed by \`voxtype setup onnx --enable\` and the AUR package's
-# post_install / post_upgrade hooks; do not edit by hand.
-exec $target "\$@"
-EOF
+            local migraphx_env=""
+            if [ "$subdir" = "migraphx" ]; then
+                # MIGraphX needs a writeable model-cache directory or its
+                # runtime fails to save compiled graphs and inference
+                # errors out. Default to $XDG_CACHE_HOME/voxtype/migraphx,
+                # honoring user override.
+                migraphx_env=': "${ORT_MIGRAPHX_MODEL_CACHE_PATH:=${XDG_CACHE_HOME:-$HOME/.cache}/voxtype/migraphx}"\nmkdir -p "$ORT_MIGRAPHX_MODEL_CACHE_PATH"\nexport ORT_MIGRAPHX_MODEL_CACHE_PATH\n'
+            fi
+            {
+                printf '#!/bin/sh\n'
+                printf '# voxtype dispatch wrapper.\n'
+                printf '# Execs the GPU/ONNX binary by canonical path so ORT'\''s argv[0]\n'
+                printf '# based provider .so lookup resolves to the right subdirectory.\n'
+                printf '# Managed by `voxtype setup onnx --enable` and the AUR package'\''s\n'
+                printf '# post_install / post_upgrade hooks; do not edit by hand.\n'
+                printf '%b' "$migraphx_env"
+                printf 'exec %s "$@"\n' "$target"
+            } > /usr/bin/voxtype
             chmod 755 /usr/bin/voxtype
             ;;
         *)
