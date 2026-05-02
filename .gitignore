@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.zst
+*.tar.xz
+src/
+pkg/
+sentinel/
