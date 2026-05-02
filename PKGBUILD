@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gpu-t
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A lightweight GPU-Z clone for Linux"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   'opencl-driver: packaged OpenCL driver'
 )
 source=("GPU-T-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eef389e0c0fe833d41493c798dc41aefca1f25d158cfdbb185d8ed63192e7a9f')
+sha256sums=('4eba531e59e22a0a971db460d59a452c8e25b30cd96fc60c548101f5e5ffe5ff')
 
 prepare() {
   cd "GPU-T-$pkgver"
@@ -40,7 +40,7 @@ build() {
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
   export DOTNET_NOLOGO=1
 
-  dotnet publish \
+  dotnet publish GPU-T.csproj \
     --configuration Release \
     --runtime linux-x64 \
     --no-self-contained \
