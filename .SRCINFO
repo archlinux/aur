@@ -1,0 +1,17 @@
+pkgbase = hjkl-bin
+	pkgdesc = Vim-modal terminal editor: standalone TUI built on the hjkl engine. (binary release)
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://hjkl.kryptic.sh/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = libxcb
+	provides = hjkl=0.4.4
+	conflicts = hjkl
+	source_x86_64 = hjkl-v0.4.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v0.4.4/hjkl-v0.4.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e7a1aab7d24178df2e38d7cc845b0be003d9adfe321704f7b55ed21d4daddb73
+	source_aarch64 = hjkl-v0.4.4-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v0.4.4/hjkl-v0.4.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5081268d42d93f1c2251a5d99b36c745157bf7211ac987ef09348a8ba63c6095
+
+pkgname = hjkl-bin
