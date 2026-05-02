@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=8f925d7bbeaf358298869a6bf24e78d42d802391} # daily-863
+: ${_runtime_commit:=5d47b2682e9770468f795b3a71f64f48b21edd5a} # daily-878
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.12.2
+pkgver=12.13.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -125,7 +125,7 @@ source=(
   0004-encoding_rs-rust-1.95.patch
 )
 sha256sums=(
-  '55385ba99e63a1080745f95088146f13060e5caabf5e8863337db0560a211ff7'
+  '709dd25190fa6416ec459c1dde257d182fa262ca705c45d52a89b0f035b37bfc'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
