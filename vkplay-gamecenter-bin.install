@@ -8,13 +8,14 @@ post_install() {
   if [ -n "$USER_NAME" ] && [ "$USER_NAME" != "root" ]; then
     su - "$USER_NAME" -c "xdg-mime default GameCenterShowcase.desktop x-scheme-handler/vkplay" 2>/dev/null || true
 
-    DESKTOP_DIR=$(su - "$USER_NAME" -c 'xdg-user-dir DESKTOP' 2>/dev/null)
-    [ -d "$DESKTOP_DIR" ] && {
+    HOME_DIR=$(getent passwd "$USER_NAME" | cut -d: -f6)
+    DESKTOP_DIR=$(HOME="$HOME_DIR"; . "$HOME_DIR/.config/user-dirs.dirs" 2>/dev/null; echo "${XDG_DESKTOP_DIR:-$HOME_DIR/Desktop}")
+    if [ -d "$DESKTOP_DIR" ]; then
       cp /usr/share/applications/GameCenterShowcase.desktop "$DESKTOP_DIR/" 2>/dev/null || true
-      chown "$USER_NAME:$USER_NAME" "$DESKTOP_DIR/GameCenterShowcase.desktop" 2>/dev/null || true
+      chown "$USER_NAME:" "$DESKTOP_DIR/GameCenterShowcase.desktop" 2>/dev/null || true
       chmod +x "$DESKTOP_DIR/GameCenterShowcase.desktop" 2>/dev/null || true
       su - "$USER_NAME" -c "gio set '$DESKTOP_DIR/GameCenterShowcase.desktop' meta:trusted true" 2>/dev/null || true
-    }
+    fi
   fi
 }
 
@@ -26,15 +27,21 @@ post_remove() {
   update-desktop-database /usr/share/applications 2>/dev/null || true
   gtk-update-icon-cache -f -q /usr/share/icons/hicolor 2>/dev/null || true
 
-  # Clean up user cache and desktop shortcuts for all users
-  while IFS=: read -r USER_NAME _ UID HOME_DIR _; do
-    [ "$UID" -ge 1000 ] && [ "$UID" -lt 65534 ] && [ "$USER_NAME" != "root" ] && {
-      [ -d "$HOME_DIR/.local/share/GameCenterShowcase" ] &&
-        rm -rf "$HOME_DIR/.local/share/GameCenterShowcase" 2>/dev/null || true
+  # Clean up user cache, desktop shortcuts and MIME handler for all users
+  while IFS=: read -r USER_NAME _ USER_UID _ _ HOME_DIR _; do
+    [ "$USER_UID" -ge 1000 ] && [ "$USER_UID" -lt 65534 ] && [ "$USER_NAME" != "root" ] || continue
 
-      DESKTOP_DIR=$(su - "$USER_NAME" -c 'xdg-user-dir DESKTOP' 2>/dev/null)
-      [ -f "$DESKTOP_DIR/GameCenterShowcase.desktop" ] &&
-        rm -f "$DESKTOP_DIR/GameCenterShowcase.desktop" 2>/dev/null || true
-    }
+    if [ -d "$HOME_DIR/.local/share/GameCenterShowcase" ]; then
+      rm -rf "$HOME_DIR/.local/share/GameCenterShowcase" 2>/dev/null || true
+    fi
+
+    DESKTOP_DIR=
+    DESKTOP_DIR=$(HOME="$HOME_DIR"; . "$HOME_DIR/.config/user-dirs.dirs" 2>/dev/null; echo "${XDG_DESKTOP_DIR:-$HOME_DIR/Desktop}")
+    if [ -f "$DESKTOP_DIR/GameCenterShowcase.desktop" ]; then
+      rm -f "$DESKTOP_DIR/GameCenterShowcase.desktop" 2>/dev/null || true
+    fi
+
+    sed -i '/^x-scheme-handler\/vkplay=/d' \
+      "$HOME_DIR/.config/mimeapps.list" 2>/dev/null || true
   done < /etc/passwd
 }
