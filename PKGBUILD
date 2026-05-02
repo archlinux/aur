@@ -2,7 +2,7 @@
 # https://github.com/axpdev-lab/aeroftp
 
 pkgname=aeroftp-bin
-pkgver=3.6.10
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 26 protocols)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/axpdev-lab/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.deb"
         "aeroftp.desktop"
         "aeroftp.png::https://raw.githubusercontent.com/axpdev-lab/aeroftp/main/src-tauri/icons/128x128.png")
-sha256sums=('fba1f4d3f80752dfbbbcd0e01109727a1515521cfb16a8f6c2f36d841bd99597'
+sha256sums=('7a268046c5e73fc3ef46c4728b171a40f7285f29e9f719963475e96072d93828'
             'cb8a1a0ad00c587fba5ab64e3c8d50ea8391b7a170ae83172a9dddcc6dd829a0'
             '2ccf82e6bfdf22ec5a8d0735acf1e02bd00c44cb4ffab3895d46dc941c4a7cb6')
 
