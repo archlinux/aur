@@ -1,0 +1,27 @@
+pkgbase = python-vllm-omni
+	pkgdesc = A framework for efficient model inference with omni-modality models
+	pkgver = 0.20.0rc1
+	pkgrel = 1
+	url = https://github.com/vllm-project/vllm-omni
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-aenum
+	depends = python-janus
+	depends = python-omegaconf
+	depends = python-pydub
+	depends = python-python-multipart
+	depends = python-torchaudio
+	depends = python-vllm
+	depends = python-x-transformers
+	optdepends = python-vllm-rocm: For ROCm
+	optdepends = onnxruntime-rocm: For ROCm
+	optdepends = python-torchaudio-rocm: For ROCm
+	source = git+https://github.com/vllm-project/vllm-omni.git#tag=v0.20.0rc1
+	sha256sums = 231461443d4adf32deafc868a3077e5b32e6308662422b2aede43dd4be00320a
+
+pkgname = python-vllm-omni
