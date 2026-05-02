@@ -4,7 +4,7 @@
 
 pkgname=webkit2gtk-bin
 pkgver=2.50.6
-pkgrel=5
+pkgrel=7
 pkgdesc="Web content engine for GTK (prebuilt binary)"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -94,14 +94,14 @@ provides=(
   webkit2gtk
 )
 conflicts=(webkit2gtk)
-source=("webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst::https://github.com/Brodino96/webkit2gtk-automator/releases/download/v2.50.6-5/webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst")
-sha256sums=('d8b41108c65b2392aeb6a00745d7044b22ccfc6674731a649f8f2943ddcc8343')
+source=("webkit2gtk-2.50.6-7-x86_64.pkg.tar.zst::https://github.com/Brodino96/webkit2gtk-automator/releases/download/v2.50.6-7/webkit2gtk-2.50.6-7-x86_64.pkg.tar.zst")
+sha256sums=('fd9d5fc113d4d4377bbda7ecc98fe67c4db3931d7821fa5e46b09220d5436c19')
 
 package() {
   # The .pkg.tar.zst is a pre-built Arch package.
   # bsdtar extracts it; we relocate its contents into $pkgdir.
   cd "${srcdir}"
-  bsdtar -xf "webkit2gtk-2.50.6-5-x86_64.pkg.tar.zst" -C "${pkgdir}"
+  bsdtar -xf "webkit2gtk-2.50.6-7-x86_64.pkg.tar.zst" -C "${pkgdir}"
   # Remove the embedded .PKGINFO and .MTREE metadata files that
   # bsdtar includes – they are not part of the installed file tree.
   rm -f "${pkgdir}"/.PKGINFO "${pkgdir}"/.MTREE "${pkgdir}"/.BUILDINFO
