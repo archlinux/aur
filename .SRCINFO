@@ -7,6 +7,7 @@ pkgbase = woven-shell-git
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = git
 	depends = sway
 	depends = wireplumber
 	depends = brightnessctl
@@ -15,7 +16,7 @@ pkgbase = woven-shell-git
 	depends = pam
 	depends = slurp
 	depends = grim
-	source = woven-shell-1.4.0.tar.gz::https://github.com/viewerofall/woven-shell/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = c16542eae816ed87bdeee79be2b312c094b4577369dbe61f9dc76e58981d0b36
+	source = git+https://github.com/viewerofall/woven-shell.git
+	sha256sums = SKIP
 
 pkgname = woven-shell-git
