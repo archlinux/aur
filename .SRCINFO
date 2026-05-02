@@ -1,0 +1,14 @@
+pkgbase = rosec-provider-keepassxc-file-bin
+	pkgdesc = KeePassXC (file) read-only provider for rosec (prebuilt, experimental)
+	pkgver = 0.0.27
+	pkgrel = 1
+	url = https://github.com/jmylchreest/rosec
+	arch = any
+	license = MIT
+	depends = rosec
+	provides = rosec-provider-keepassxc-file
+	conflicts = rosec-provider-keepassxc-file
+	source = rosec-provider-keepassxc-file-0.0.27.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.27/rosec-provider-keepassxc-file-0.0.27.wasm.tar.gz
+	sha256sums = c81f5216fc1bd20fc5343420702717f8603164061918d150a9bdf1da3bfa05a2
+
+pkgname = rosec-provider-keepassxc-file-bin
