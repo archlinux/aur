@@ -1,23 +1,29 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
-# Contributor: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
 
-pkgname=vim-r
-pkgver=1.3.1
+pkgname=nvim-r
+pkgver=0.9.21
 pkgrel=1
-pkgdesc="Improves Vim's support for editing R code and integrates Vim with R"
+pkgdesc="Vim plugin to work with R"
 arch=('any')
-url="http://www.vim.org/scripts/script.php?script_id=2628"
-license=('unknown')
-depends=('vim>=7.4.1529' 'r-vimcom=1.3_1' 'tmux')
-optdepends=('pandoc: render output from markup files'
+url="https://github.com/jalvesaq/${pkgname}"
+license=('GPL-2.0-or-later')
+groups=('vim-plugins')
+depends=('vim-plugin-runtime')
+optdepends=('vim>=8.2.84: either vim or neovim'
+            'tmux>=2.0: if using vim and running R in an external terminal emulator, necessary for sending commands to R'
+            'neovim>=0.6.0: either neovim or vim'
+            'r>=3.0.0: for integration with R'
+	    'pandoc: render output from markup files'
             'vim-csv: inspect data.frames and matrices')
-source=("${pkgname}-${pkgver}.vmb::http://www.vim.org/scripts/download_script.php?src_id=24107")
-sha256sums=('15b3aa763da16bdb90912546e08282e02ebdfb8ac8a89279136ccbd3c420d137')
+conflicts=('vim-r' 'r-vimcom')
+replaces=('vim-r')
+install='nvim-r.install'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jalvesaq/Nvim-R/archive/v${pkgver}.tar.gz")
+sha256sums=('2b7e3efd9fe35d3f1d0358178304c1d56ff6cbf9c92d964ae8d241556191b417')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/vim/vimfiles"
-  vim -c "UseVimball ${pkgdir}/usr/share/vim/vimfiles" -c q \
-    "${srcdir}/${pkgname}-${pkgver}.vmb"
-  rm "${pkgdir}/usr/share/vim/vimfiles/.VimballRecord"
-  rm "${pkgdir}/usr/share/vim/vimfiles/doc/tags"
+  cd "Nvim-R-${pkgver}"
+  _installpath="${pkgdir}/usr/share/vim/vimfiles"
+  mkdir -p "${_installpath}"
+  cp -r {R,doc,ftdetect,ftplugin,syntax} "${_installpath}"
 }

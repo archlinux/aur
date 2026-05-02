@@ -1,0 +1,3 @@
+post_remove() {
+  echo 'You may also want to delete ~/R/*/*/nvimcom'
+}
