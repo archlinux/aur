@@ -10,6 +10,7 @@ depends=('gcc-libs' 'alsa-lib' 'libxkbcommon')
 makedepends=('cargo' 'clang' 'cmake' 'git')
 provides=('whisrs')
 conflicts=('whisrs')
+options=('!lto')
 source=("git+https://github.com/y0sif/whisrs.git")
 sha256sums=('SKIP')
 

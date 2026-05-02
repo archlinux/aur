@@ -14,6 +14,7 @@ pkgbase = whisrs-git
 	depends = libxkbcommon
 	provides = whisrs
 	conflicts = whisrs
+	options = !lto
 	source = git+https://github.com/y0sif/whisrs.git
 	sha256sums = SKIP
 
