@@ -1,6 +1,6 @@
 pkgbase = axiom-axle
 	pkgdesc = Lean evaluation and metaprogramming utilities for provers
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/AxiomMath/axiom-lean-engine
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = axiom-axle
 	depends = python-aiohttp
 	depends = python-requests
 	depends = python-tenacity
-	source = https://files.pythonhosted.org/packages/source/a/axiom_axle/axiom_axle-1.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/axiom_axle/axiom_axle-1.2.1.tar.gz
 	source = LICENSE
-	sha256sums = d593709d1dffdeb2c28fb4c39025a047d10519bcbdac0ad87a6451131db79850
+	sha256sums = 38796c205553049e989ede7c2f637cb2d4f79071bfe2db5c64671a30a1a98691
 	sha256sums = c7ad081bf14c9ebc3a308177dfe877fb79fb319b64577cda8be1c15fedb97458
 
 pkgname = axiom-axle
