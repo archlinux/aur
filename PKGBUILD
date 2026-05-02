@@ -19,7 +19,8 @@ install=
 changelog=
 source=("$_pkgname.tar.gz::$url/releases/download/8.0.0-beta5/HedgeModManager-linux-x64.tar.gz"
 	"$_pkgname.desktop::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.desktop"
-	"$_pkgname.png::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.png")
+	"$_pkgname.png::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.png"
+	"LICENSE.md::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/LICENSE.md")
 noextract=()
 sha256sums=('cdeb5c7bca2bba5842ae389afbab7ff41fef8eefe0a0f7a08dc84c09452e7241'
 	"SKIP"
@@ -27,6 +28,7 @@ sha256sums=('cdeb5c7bca2bba5842ae389afbab7ff41fef8eefe0a0f7a08dc84c09452e7241'
 validpgpkeys=()
 
 package() {
+	install -Dm644 $srcdir/LICENSE.md $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 	mkdir -p $pkgdir/opt/HedgeModManager
 	mkdir -p $pkgdir/usr/bin
 	sed -i "s|/app/bin/HedgeModManager\.UI|/opt/HedgeModManager/HedgeModManager\.UI|" $srcdir/hedgemodmanager.desktop

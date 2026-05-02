@@ -10,6 +10,7 @@ pkgbase = hedgemodmanager-bin
 	source = hedgemodmanager.tar.gz::https://github.com/hedge-dev/HedgeModManager/releases/download/8.0.0-beta5/HedgeModManager-linux-x64.tar.gz
 	source = hedgemodmanager.desktop::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.desktop
 	source = hedgemodmanager.png::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.png
+	source = LICENSE.md::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/LICENSE.md
 	sha256sums = cdeb5c7bca2bba5842ae389afbab7ff41fef8eefe0a0f7a08dc84c09452e7241
 	sha256sums = SKIP
 	sha256sums = SKIP
