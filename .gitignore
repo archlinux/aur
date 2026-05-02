@@ -1,0 +1,8 @@
+# makepkg
+/pkg/
+/src/
+*.pkg.tar.*
+*.pkg.tar.*.sig
+
+# git sources sometimes land in the package dir root if cloned manually
+/spotix/
