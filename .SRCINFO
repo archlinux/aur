@@ -1,0 +1,19 @@
+pkgbase = sandhole
+	pkgdesc = Expose HTTP/SSH/TCP services through SSH port forwarding
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://sandhole.com.br
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = cargo-nextest
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = clang
+	makedepends = perl
+	provides = sandhole
+	conflicts = sandhole-bin
+	source = sandhole-0.9.3.tar.gz::https://github.com/EpicEric/sandhole/archive/refs/tags/v0.9.3.tar.gz
+	sha256sums = 848354bb3870459ad0dd1e7d684b31f53913bc109a3ac293c56164d724b8566e
+
+pkgname = sandhole
