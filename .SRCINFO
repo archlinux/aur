@@ -1,6 +1,6 @@
 pkgbase = rosec-bin
 	pkgdesc = Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock
-	pkgver = 0.0.25
+	pkgver = 0.0.27
 	pkgrel = 1
 	url = https://github.com/jmylchreest/rosec
 	install = rosec.install
@@ -15,12 +15,13 @@ pkgbase = rosec-bin
 	optdepends = rosec-provider-bitwarden-pm-bin: Bitwarden Password Manager provider (sync, SSH keys)
 	optdepends = rosec-provider-bitwarden-sm-bin: Bitwarden Secrets Manager provider (sync)
 	optdepends = rosec-provider-gnome-keyring-bin: GNOME Keyring read-only provider
+	optdepends = rosec-provider-keepassxc-file-bin: KeePassXC (.kdbx file) read-only provider (experimental)
 	provides = rosec
 	provides = org.freedesktop.secrets
 	conflicts = rosec
-	source_x86_64 = rosec-0.0.25-x86_64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.25/rosec-0.0.25-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 1cb9a2f6edf3a67d1bedc59b151ad0b1ec25e1546fa0a7850b316fd64b0bbb35
-	source_aarch64 = rosec-0.0.25-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.25/rosec-0.0.25-aarch64-unknown-linux-gnu.tar.gz
+	source_x86_64 = rosec-0.0.27-x86_64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.27/rosec-0.0.27-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 904ad7c744f2d70a99737c3f108046ca4f31fc6af6fe91005c50d1a6a749e97b
+	source_aarch64 = rosec-0.0.27-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.27/rosec-0.0.27-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = @AARCH64_SHA256@
 
 pkgname = rosec-bin

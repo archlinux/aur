@@ -3,13 +3,13 @@
 # AUR package: rosec-bin
 #
 # This PKGBUILD installs pre-built binaries from the GitHub release.
-# The release workflow renders this file by substituting 0.0.25 and
-# 1cb9a2f6edf3a67d1bedc59b151ad0b1ec25e1546fa0a7850b316fd64b0bbb35 / @AARCH64_SHA256@ before committing to the AUR.
+# The release workflow renders this file by substituting 0.0.27 and
+# 904ad7c744f2d70a99737c3f108046ca4f31fc6af6fe91005c50d1a6a749e97b / @AARCH64_SHA256@ before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-bin
-pkgver=0.0.25
+pkgver=0.0.27
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock"
 arch=('x86_64' 'aarch64')
@@ -28,6 +28,7 @@ optdepends+=(
     'rosec-provider-bitwarden-pm-bin: Bitwarden Password Manager provider (sync, SSH keys)'
     'rosec-provider-bitwarden-sm-bin: Bitwarden Secrets Manager provider (sync)'
     'rosec-provider-gnome-keyring-bin: GNOME Keyring read-only provider'
+    'rosec-provider-keepassxc-file-bin: KeePassXC (.kdbx file) read-only provider (experimental)'
 )
 provides=('rosec' 'org.freedesktop.secrets')
 conflicts=('rosec')
@@ -40,7 +41,7 @@ source_aarch64=(
     "rosec-${pkgver}-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 
-sha256sums_x86_64=('1cb9a2f6edf3a67d1bedc59b151ad0b1ec25e1546fa0a7850b316fd64b0bbb35')
+sha256sums_x86_64=('904ad7c744f2d70a99737c3f108046ca4f31fc6af6fe91005c50d1a6a749e97b')
 sha256sums_aarch64=('@AARCH64_SHA256@')
 
 package() {
