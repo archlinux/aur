@@ -102,7 +102,7 @@ package_oh-my-rime-mint-git() {
     provides=('rime-stroke')
     depends+=(
         'oh-my-rime-common-git'
-        'oh-my-rime-wubi98-mint-git'
+        'oh-my-rime-wubi98_mint-git'
     )
     inatall=oh-my-rime.install
 
@@ -121,7 +121,7 @@ package_oh-my-rime-mint_flypy-git() {
     provides=('rime-stroke')
     depends+=(
         'oh-my-rime-common-git'
-        'oh-my-rime-wubi98-mint-git'
+        'oh-my-rime-wubi98_mint-git'
     )
     inatall=oh-my-rime.install
 
@@ -165,7 +165,7 @@ package_oh-my-rime-double_pinyin_flypy-git() {
     provides=('rime-stroke')
     depends+=(
         'oh-my-rime-common-git'
-        'oh-my-rime-wubi98-mint-git'
+        'oh-my-rime-wubi98_mint-git'
     )
     inatall=oh-my-rime.install
 
@@ -229,7 +229,7 @@ package_oh-my-rime-terra_pinyin-git() {
     )
     depends+=(
         'oh-my-rime-common-git'
-        'oh-my-rime-wubi98-mint-git'
+        'oh-my-rime-wubi98_mint-git'
     )
     inatall=oh-my-rime.install
 

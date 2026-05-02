@@ -31,7 +31,7 @@ pkgname = oh-my-rime-mint-git
 	pkgdesc = Rime配置：薄荷拼音-全拼輸入
 	depends = librime-data
 	depends = oh-my-rime-common-git
-	depends = oh-my-rime-wubi98-mint-git
+	depends = oh-my-rime-wubi98_mint-git
 	provides = rime-stroke
 	conflicts = rime-stroke
 
@@ -39,7 +39,7 @@ pkgname = oh-my-rime-mint_flypy-git
 	pkgdesc = Rime配置：薄荷拼音-小鹤混輸
 	depends = librime-data
 	depends = oh-my-rime-common-git
-	depends = oh-my-rime-wubi98-mint-git
+	depends = oh-my-rime-wubi98_mint-git
 	provides = rime-stroke
 	conflicts = rime-stroke
 
@@ -57,7 +57,7 @@ pkgname = oh-my-rime-double_pinyin_flypy-git
 	pkgdesc = Rime配置：小鹤雙拼-薄荷定製
 	depends = librime-data
 	depends = oh-my-rime-common-git
-	depends = oh-my-rime-wubi98-mint-git
+	depends = oh-my-rime-wubi98_mint-git
 	provides = rime-stroke
 	conflicts = rime-stroke
 
@@ -80,7 +80,7 @@ pkgname = oh-my-rime-terra_pinyin-git
 	pkgdesc = Rime配置：地球拼音-薄荷定製
 	depends = librime-data
 	depends = oh-my-rime-common-git
-	depends = oh-my-rime-wubi98-mint-git
+	depends = oh-my-rime-wubi98_mint-git
 	provides = rime-terra-pinyin
 	provides = rime-stroke
 	conflicts = rime-terra-pinyin
