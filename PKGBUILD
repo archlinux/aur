@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-schnelle-umlaute-git
 _pkgname=fcitx5-schnelle-umlaute
-pkgver=1.1.0.r323.gf67b16e
+pkgver=1.2.0.r367.g42884dd
 pkgrel=1
 pkgdesc="Quick Accent equivalent for Linux/Fcitx5 — map any Unicode character"
 arch=('x86_64' 'aarch64')
@@ -10,9 +10,11 @@ url="https://github.com/Maik-0000FF/schnelle-umlaute"
 license=('GPL-3.0-or-later')
 depends=(
     'fcitx5'
-    'fcitx5-qt'
     'qt6-base'
+    'qt6-declarative'
+    'layer-shell-qt'
     'libxkbcommon'
+    'hicolor-icon-theme'
 )
 makedepends=(
     'git'
