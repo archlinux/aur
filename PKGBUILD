@@ -1,6 +1,6 @@
 # Maintainer: Marvin Sarreal Villanueva <marvin@orin.work>
 pkgname=qorx
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Qorx language and runtime for local context resolution"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/bbrainfuckk/qorx"
 license=('AGPL-3.0-only')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha256sums=('d3d2dae84ba985a1d694c2e9425115ac1c6495e3a716ce9cfe774728ebb00f38')
+sha256sums=('7555e336f95eaa982f5bac4bb3b138cdac78742b6c1c0232558ac366cda0bcaa')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
