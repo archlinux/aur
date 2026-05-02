@@ -1,6 +1,6 @@
 # Maintainer: Denis Gordenin <support@yutovo.ru>
 pkgname=yutovo
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Arbitrary precision graphical WYSIWYG calculator inside a text editor"
 arch=(x86_64)
@@ -13,20 +13,20 @@ makedepends=('git' 'cmake' 'base-devel' 'qt5-base' 'qt5-tools')
 
 source=(
     "spdlog::git+https://github.com/gabime/spdlog.git#commit=6fa36017cfd5731d617e1a934f0e5ea9c4445b13"
-    "yutovo-logger::git+https://github.com/denprog/yutovo-logger.git#commit=d81ca0d8cb1ef46b7d2586d5509691a35479c8d1"
+    "yutovo-logger::git+https://github.com/denprog/yutovo-logger.git#commit=879105f09f816b38971049fc7ae0178b0d9788c4"
     "boost_1_83_0::https://archives.boost.io/release/1.83.0/source/boost_1_83_0.zip"
     "libgmp::https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz"
     "libmpfr::https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.gz"
-    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=32076d02dc87ee7a030aca28cf2bff011384ed52"
+    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=87054b4665d5046bb54b1ebf002ae94f2ca40049"
     "rapidjson::git+https://github.com/Tencent/rapidjson.git#commit=f54b0e47a08782a6131cc3d60f94d038fa6e0a51"
-    "yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#commit=d8545b9d156970e3f651abea70e1a34bffd35e2d"
+    "yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#commit=fa936d23b22e3612dc7184734fb11d4ce8ac4ae3"
     "mathgl-8.0.3.tar.gz::https://downloads.sourceforge.net/mathgl/mathgl-8.0.3.tar.gz"
     "libharu::git+https://github.com/libharu/libharu.git#commit=0c598becaadaef8e3d12b883f9fc2864a118c12d"
     "stb_image.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image.h"
     "stb_image_write.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image_write.h"
-    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=45677ad3be44f189b3aa2daa1f7bd5f56e0ae1d9"
-    "yutovo-library::git+https://github.com/denprog/yutovo-library.git#commit=4eed75ca5a845f4c978931af7a62e58a36894070"
-    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=f6139c122a1190e0b520cd838b2d273f1aa3ee5d"
+    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=13f746f835fbbb3b6bd7832e1aac48d30f3325ad"
+    "yutovo-library::git+https://github.com/denprog/yutovo-library.git#commit=dc7e56c26d90cdf9641ed05d06fb35a87c0a3edc"
+    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=7eb01a7884441ba86342e93b7694c2e08d41a905"
 )
 
 sha256sums=(
