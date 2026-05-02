@@ -1,0 +1,14 @@
+pkgbase = gitway-bin
+	pkgdesc = Pure-Rust SSH toolkit for Git: transport, keys, signing, agent
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/steelbore/gitway
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = gitway
+	conflicts = gitway
+	conflicts = gitway-git
+	source = gitway-bin-0.9.0.tar.gz::https://github.com/steelbore/gitway/releases/download/v0.9.0/gitway-v0.9.0-linux-x86_64.tar.gz
+	sha256sums = b54e51c7d686cd45ff13989f04a8036882d4ec67d08998986e7f39804a4e9f3c
+
+pkgname = gitway-bin
