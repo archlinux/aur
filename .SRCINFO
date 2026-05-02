@@ -1,7 +1,7 @@
 pkgbase = libkar
 	pkgdesc = An extremely simple Qt based archiver
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kipr/libkar
 	arch = x86_64
 	license = GPL-2.0-or-later
