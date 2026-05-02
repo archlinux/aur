@@ -1,6 +1,6 @@
 pkgbase = oh-my-rime-git
 	pkgver = r327.a8b7555
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mintimate/oh-my-rime
 	arch = any
 	license = GPLv3
@@ -15,16 +15,16 @@ pkgname = oh-my-rime-common-git
 	pkgdesc = Rime配置：薄荷輸入法-Common Data
 	provides = rime-emoji
 	provides = rime-prelude
+	provides = rime-stroke
 	conflicts = rime-emoji
 	conflicts = rime-prelude
+	conflicts = rime-stroke
 
 pkgname = oh-my-rime-all-git
 	pkgdesc = Rime配置：薄荷輸入法
 	depends = librime-data
 	depends = oh-my-rime-common-git
-	provides = rime-stroke
 	provides = rime-terra-pinyin
-	conflicts = rime-stroke
 	conflicts = rime-terra-pinyin
 
 pkgname = oh-my-rime-mint-git
@@ -32,16 +32,12 @@ pkgname = oh-my-rime-mint-git
 	depends = librime-data
 	depends = oh-my-rime-common-git
 	depends = oh-my-rime-wubi98_mint-git
-	provides = rime-stroke
-	conflicts = rime-stroke
 
 pkgname = oh-my-rime-mint_flypy-git
 	pkgdesc = Rime配置：薄荷拼音-小鹤混輸
 	depends = librime-data
 	depends = oh-my-rime-common-git
 	depends = oh-my-rime-wubi98_mint-git
-	provides = rime-stroke
-	conflicts = rime-stroke
 
 pkgname = oh-my-rime-double_pinyin-git
 	pkgdesc = Rime配置：自然碼雙拼-薄荷定製
@@ -58,8 +54,6 @@ pkgname = oh-my-rime-double_pinyin_flypy-git
 	depends = librime-data
 	depends = oh-my-rime-common-git
 	depends = oh-my-rime-wubi98_mint-git
-	provides = rime-stroke
-	conflicts = rime-stroke
 
 pkgname = oh-my-rime-double_pinyin_mspy_git
 	pkgdesc = Rime配置：微軟雙拼-薄荷定製
@@ -82,9 +76,7 @@ pkgname = oh-my-rime-terra_pinyin-git
 	depends = oh-my-rime-common-git
 	depends = oh-my-rime-wubi98_mint-git
 	provides = rime-terra-pinyin
-	provides = rime-stroke
 	conflicts = rime-terra-pinyin
-	conflicts = rime-stroke
 
 pkgname = oh-my-rime-wubi86_jidian-git
 	pkgdesc = Rime配置：五筆86-極點五筆

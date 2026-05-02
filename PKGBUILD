@@ -17,7 +17,7 @@ pkgname=(
     oh-my-rime-wubi98_mint-git
 )
 pkgver=r327.a8b7555
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/Mintimate/oh-my-rime"
 license=('GPLv3')
@@ -45,10 +45,12 @@ package_oh-my-rime-common-git() {
     conflicts=(
         'rime-emoji'
         'rime-prelude'
+        'rime-stroke'
     )
     provides=(
         'rime-emoji'
         'rime-prelude'
+        'rime-stroke'
     )
 
     install -Dm644 "${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
@@ -72,11 +74,9 @@ package_oh-my-rime-common-git() {
 package_oh-my-rime-all-git() {
     pkgdesc="Rime配置：薄荷輸入法"
     conflicts=(
-        'rime-stroke'
         'rime-terra-pinyin'
     )
     provides=(
-        'rime-stroke'
         'rime-terra-pinyin'
     )
     depends+=('oh-my-rime-common-git')
@@ -87,6 +87,8 @@ package_oh-my-rime-all-git() {
     cp -rf "${pkgbase}/default.yaml" "${pkgdir}/usr/share/rime-data/oh_my_rime_suggestion.yaml"
     sed -i 's/^[[:space:]]*#[[:space:]]*- schema:/  - schema:/g' "${pkgdir}/usr/share/rime-data/oh_my_rime_suggestion.yaml"
     rm -rf "${pkgdir}/usr/share/rime-data/ibus_rime.yaml"
+    rm -rf "${pkgdir}/usr/share/rime-data/weasel.yaml"
+    rm -rf "${pkgdir}/usr/share/rime-data/squirrel.yaml"
     rm -rf "${pkgdir}/usr/share/rime-data/melt_eng.dict.yaml"
     rm -rf "${pkgdir}/usr/share/rime-data/melt_eng.schema.yaml"
     rm -rf "${pkgdir}/usr/share/rime-data/radical_pinyin.dict.yaml"
@@ -98,8 +100,6 @@ package_oh-my-rime-all-git() {
 
 package_oh-my-rime-mint-git() {
     pkgdesc="Rime配置：薄荷拼音-全拼輸入"
-    conflicts=('rime-stroke')
-    provides=('rime-stroke')
     depends+=(
         'oh-my-rime-common-git'
         'oh-my-rime-wubi98_mint-git'
@@ -117,8 +117,6 @@ package_oh-my-rime-mint-git() {
 
 package_oh-my-rime-mint_flypy-git() {
     pkgdesc="Rime配置：薄荷拼音-小鹤混輸"
-    conflicts=('rime-stroke')
-    provides=('rime-stroke')
     depends+=(
         'oh-my-rime-common-git'
         'oh-my-rime-wubi98_mint-git'
@@ -161,8 +159,6 @@ package_oh-my-rime-double_pinyin_abc-git() {
 
 package_oh-my-rime-double_pinyin_flypy-git() {
     pkgdesc="Rime配置：小鹤雙拼-薄荷定製"
-    conflicts=('rime-stroke')
-    provides=('rime-stroke')
     depends+=(
         'oh-my-rime-common-git'
         'oh-my-rime-wubi98_mint-git'
@@ -219,14 +215,8 @@ package_oh-my-rime-double_pinyin_ziguang-git() {
 
 package_oh-my-rime-terra_pinyin-git() {
     pkgdesc="Rime配置：地球拼音-薄荷定製"
-    conflicts=(
-        'rime-terra-pinyin'
-        'rime-stroke'
-    )
-    provides=(
-        'rime-terra-pinyin'
-        'rime-stroke'
-    )
+    conflicts=('rime-terra-pinyin')
+    provides=('rime-terra-pinyin')
     depends+=(
         'oh-my-rime-common-git'
         'oh-my-rime-wubi98_mint-git'
