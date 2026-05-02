@@ -1,0 +1,22 @@
+pkgbase = whatcable-linux
+	pkgdesc = KDE Plasma 6 widget and CLI that shows what each USB cable and device can do
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Zetaphor/whatcable-linux
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = systemd-libs
+	depends = kirigami
+	depends = ki18n
+	depends = kcoreaddons
+	depends = kpackage
+	depends = plasma-workspace
+	depends = libplasma
+	source = whatcable-linux-0.1.1.tar.gz::https://github.com/Zetaphor/whatcable-linux/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 206677b650b05a1cf2e9ef8f892165685b985075517068a87a407d82cb90eb96
+
+pkgname = whatcable-linux
