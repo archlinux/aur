@@ -1,13 +1,12 @@
 pkgbase = apac
 	pkgdesc = A simple arch aur helper.
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.aaronhosting.xyz/korn20123/apac
 	arch = any
 	license = GPL-3-or-later
-	makedepends = git
 	makedepends = go
-	source = git+https://git.aaronhosting.xyz/korn20123/apac
-	sha256sums = SKIP
+	source = https://git.aaronhosting.xyz/korn20123/apac/archive/0.9.2.tar.gz
+	sha256sums = a5667a593d545db1c8a78596be20f8c196866c4f19add57294be7d4aa463f0b4
 
 pkgname = apac
