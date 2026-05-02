@@ -1,14 +1,14 @@
 # Maintainer: vvch
 
 pkgname=rexuiz-bin
-pkgver=2.5.5_250817
+pkgver=2.5.5_260419
 pkgrel=1
 pkgdesc="Fast-paced multiplayer first-person shooter"
 arch=('x86_64')
 url="https://sourceforge.net/projects/rexuiz/"
 license=('GPL')
 source=("https://downloads.sourceforge.net/rexuiz/Rexuiz-${pkgver//_/-}.zip")
-sha256sums=('8406e8859e6883d5202d1743381a49702c56ccd636ab77cf2c8c7242d4f451e1')
+sha256sums=('5aa906da5569beacdc0afbca2ab21dbe37e4105bbaeec70cd7563f4dac769635')
 
 prepare() {
     cd Rexuiz
