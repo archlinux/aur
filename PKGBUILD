@@ -4,7 +4,7 @@
 
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="High dynamic range (HDR) image viewer for people who care about colors"
 arch=("i686" "x86_64" "arm")
