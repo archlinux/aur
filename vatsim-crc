@@ -4,10 +4,17 @@ winepfxSaved=$WINEPREFIX
 pwdSaved=$PWD
 progName="vatsim-crc"
 export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
+savedFiles=$HOME/.$progName
 
 CURRVER=$(LC_ALL=C pacman -Qi vatsim-crc | grep Version | awk '{print $3}')
+LATESTVER=$(curl -s https://crc.virtualnas.net/LatestVersion.json | jq -r '.version')
 
-mkdir -p $HOME/.$progName
+if [[ $CURRVER != "$LATESTVER"* ]]; then
+  notify-send --app-name=$progName --icon=$progName "A new version of CRC is available." "A new version of CRC is available, please re-build the PKGBUILD."
+  exit 1
+fi
+
+mkdir -p $savedFiles
 
 if [[ $1 == "clean" ]] ; then
   rm -rf $WINEPREFIX
@@ -21,15 +28,15 @@ if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
   wine wineboot -ru
   notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
   winetricks -q arial tahoma
-  if [[ $1 == "nicfonts" ]] ; then
-    winetricks -q /usr/share/vatsim-crc/nicfonts.verb
-  else
+  if [[ $1 == "msfonts" ]] ; then
     winetricks -q courier
+  else
+    winetricks -q /usr/share/vatsim-crc/nicfonts.verb
   fi
   winetricks -q /usr/share/vatsim-crc/segmdl2.verb /usr/share/vatsim-crc/webview2.verb
   winetricks -q fontsmooth=rgb
   wine reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
-  ln -svf $HOME/.$progName $WINEPREFIX/drive_c/$progName
+  ln -svf $savedFiles $WINEPREFIX/drive_c/$progName
   for i in $(ls /usr/share/$progName); do
     ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
   done
@@ -40,7 +47,7 @@ if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
   wine wineboot -e
 fi
 
-cd $HOME/.$progName && WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
+cd $savedFiles && WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
 
 unset WINEPREFIX
 export WINEPREFIX=$winepfxSaved
