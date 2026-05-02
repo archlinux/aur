@@ -1,0 +1,15 @@
+pkgbase = dav2d
+	pkgdesc = dav2d is an AV2 cross-platform decoder
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/dav2d
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = meson
+	makedepends = ninja
+	makedepends = nasm
+	depends = glibc
+	source = dav2d-0.0.1.tar.gz::https://code.videolan.org/videolan/dav2d/-/archive/0.0.1/dav2d-0.0.1.tar.gz?ref_type=tags
+	sha256sums = 1b0874984cb29b96f59c8b24f109a5707e4917d2e7d45d57d482ae0473d8c627
+
+pkgname = dav2d
