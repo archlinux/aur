@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpits-bin
-pkgver=0.3.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="moshpits server — SSH and Mosh inspired remote terminal server (pre-compiled binary)"
 arch=('x86_64')
@@ -17,8 +17,8 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 
 source=("${_base}/dist-mps.tar.gz" "mps.service")
 source_x86_64=("mps-x86_64::${_base}/mps-x86_64-unknown-linux-musl")
-sha256sums=('e7ebad8472f3074dc927461123c65e53e3d688912d94a54623e33d0cc529b747' 'd08b5d53d639190be89f39c248d9d8262b58f59ab8a4ce16eab8260ec049e9e3')
-sha256sums_x86_64=('0197b9857b314d55f24138800c128d972ce553a5a5cb0173202327cafaee38db')
+sha256sums=('da8958a33ce1b78a23f3145a6b2be419a1927f4f5f4fcd9e6eec5466577c82e1' 'd08b5d53d639190be89f39c248d9d8262b58f59ab8a4ce16eab8260ec049e9e3')
+sha256sums_x86_64=('af14325cf988b3d895cfc415d725185caf5507ec0301d64bdb89c79126f3c870')
 
 package() {
     install -Dm755 mps-x86_64 "$pkgdir/usr/bin/mps"
