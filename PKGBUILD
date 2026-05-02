@@ -3,7 +3,7 @@
 pkgname=noctalia-git
 _pkgname=noctalia
 pkgver=5.0.0.r1191.g39a4a335c
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight Wayland shell built directly on Wayland and OpenGL ES'
 arch=('x86_64')
 url='https://github.com/noctalia-dev/noctalia-shell'
@@ -61,5 +61,4 @@ package() {
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${_pkgname}/CONFIG.md" "${pkgdir}/usr/share/doc/${pkgname}/CONFIG.md"
 }
