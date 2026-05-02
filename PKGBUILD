@@ -5,7 +5,7 @@
 # shellcheck disable=SC2154  # srcdir/pkgdir/startdir set by makepkg
 
 pkgname=superhuman
-pkgver=1038.0.33
+pkgver=1041.0.1
 pkgrel=1
 pkgdesc="The fastest email experience ever made (unofficial)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 sha256sums=('SKIP' 'SKIP')
 noextract=("Superhuman-${pkgver}.exe")
 
-_electron_version="38.7.1"
+_electron_version="41.2.0"
 _patch_failures=0
 
 # Automatically detect version from the downloaded exe
