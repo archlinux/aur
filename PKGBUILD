@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="run-one drop-in alternative, command single instance runner"
 arch=('x86_64')
 url="https://github.com/cherio/one-run"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=(
 	'findutils'
 	'grep'
