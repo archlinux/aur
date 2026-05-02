@@ -27,7 +27,7 @@ source=("$_pkgname.sh"
         "$_desktopname.desktop"
         "policies.json")
 sha256sums=('b26c2221dc9ee8b6041aea31ae7b030bf9de5facc9933109f829559bd1bdb4fb'
-            '837bfee0672d9548d92da125e28e05089bbd722f0cf48d6d9765a832c610b32c'
+            '3c8dfd8d12a6ac0c106b7d738718df37e979275c1dc85aa678f6b10b9ca8603c'
             'e977c3d690224dd727d8761d2c0a66ba41bfd02ae0fd7850c4545d06b5a8e63c')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
