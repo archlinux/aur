@@ -1,0 +1,16 @@
+pkgbase = comfyui-gguf
+	pkgdesc = GGUF Quantization support for native ComfyUI models
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/city96/ComfyUI-GGUF
+	arch = any
+	license = Apache-2.0
+	depends = python
+	depends = python-gguf
+	depends = python-sentencepiece
+	depends = python-protobuf
+	depends = comfyui-system
+	source = comfyui-gguf-2.0.0.zip::https://github.com/city96/ComfyUI-GGUF/archive/6ea2651e7df66d7585f6ffee804b20e92fb38b8a.zip
+	sha512sums = cd9e8b56fa0c377e51f3994f973ff8c84fb60bc79191bf68306c96b4853d59019973a90e9e2f8b06442a12753b67ed5c1b125517860b510326ff8aa8f03b56b2
+
+pkgname = comfyui-gguf
