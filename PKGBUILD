@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 ## Based on mambaforge aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
 pkgname=miniforge
-pkgver=26.1.0.0
+pkgver=26.1.1.3
 _pkgver=${pkgver%.*}-${pkgver##*.}
 pkgrel=1
 pkgdesc="Conda and Mamba package managers configured to use conda-forge"
@@ -15,9 +15,9 @@ source_x86_64=(${url}/releases/download/${_pkgver}/Miniforge3-${_pkgver}-Linux-x
 source_aarch64=(${url}/releases/download/${_pkgver}/Miniforge3-${_pkgver}-Linux-aarch64.sh)
 source_powerpc64le=(${url}/releases/download/${_pkgver}/Miniforge3-${_pkgver}-Linux-ppc64le.sh)
 options=(!strip libtool staticlibs)
-sha256sums_x86_64=('127b5e14cfe6c83b787f624487cdc2168645ed82fdca1b0c1937caa086aed6d5')
-sha256sums_aarch64=('8baf8844ecf13e1458f81659ea286251d04b2d5ed90040efb77f158adedb2d95')
-sha256sums_powerpc64le=('902190ad825b74b78a6a2816364453bb4d6989a599172aa3785d4afd0ebeb917')
+sha256sums_x86_64=('b25b828b702df4dd2a6d24d4eb56cfa912471dd8e3342cde2c3d86fe3dc2d870')
+sha256sums_aarch64=('83280e4ee71a5bd547d6b318f96e9ababe1054911ff6cc2b8801ce5493fe67e5')
+sha256sums_powerpc64le=('5711fd69219bc9746389ef751ee4c2549d40d9b1626a0ea93cc63db1a739eee6')
 install="${pkgname}.install"
 
 package() {
