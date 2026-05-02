@@ -1,14 +1,14 @@
 # Maintainer: steffeno <steffeno dash etc at protonmail dot com>
 _pkgname=ly
 pkgname="$_pkgname"-git
-pkgver=1.3.0.r1.gc6446db
+pkgver=1.4.0.r6.g864f5f2
 pkgrel=1
 pkgdesc="TUI display manager"
 arch=(i686 x86_64 aarch64)
-url="https://codeberg.org/AnErrupTion/ly.git"
-license=('custom:WTFPL')
+url="https://codeberg.org/fairyglade/ly.git"
+license=('WTFPL')
 depends=(pam)
-makedepends=('zig>=0.14.0' git libxcb)
+makedepends=('zig>=0.16' 'zig<0.17' git libxcb)
 optdepends=('xorg-xauth: for X server sessions' 'durdraw: for animations')
 conflicts=(ly)
 provides=(ly)
@@ -24,12 +24,17 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    zig build
+    zig build \
+        --cache-dir "$srcdir/zig-cache" \
+        --global-cache-dir "$srcdir/zig-global-cache" \
+        -Doptimize=ReleaseSafe
 }
 
 package() {
     cd "$_pkgname"
     zig build installexe \
+        --cache-dir "$srcdir/zig-cache" \
+        --global-cache-dir "$srcdir/zig-global-cache" \
         -Ddest_directory="$pkgdir" \
         -Dname="ly-dm" \
         -Dinit_system=systemd
