@@ -1,0 +1,8 @@
+post_install() {
+  systemctl --user --global enable hyprland-focused-booster.service
+  echo "Restart your PC or start the service now with systemctl --user start hyprland-focused-booster.service"
+}
+
+pre_remove() {
+  systemctl --user --global disable hyprland-focused-booster.service
+}
