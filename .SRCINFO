@@ -1,6 +1,6 @@
 pkgbase = sentinel-git
 	pkgdesc = UAC-style confirmation dialog for Linux privilege escalation (git HEAD)
-	pkgver = 0.4.0.r0.g0000000
+	pkgver = 0.4.1.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/atayozcan/sentinel
 	install = sentinel.install
@@ -23,7 +23,7 @@ pkgbase = sentinel-git
 	depends = glibc
 	optdepends = sudo-rs: memory-safe sudo replacement
 	optdepends = polkit: for graphical privilege prompts
-	provides = sentinel=0.4.0.r0.g0000000
+	provides = sentinel=0.4.1.r0.g0000000
 	conflicts = sentinel
 	backup = etc/security/sentinel.conf
 	backup = etc/pam.d/polkit-1

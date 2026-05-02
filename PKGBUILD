@@ -2,7 +2,7 @@
 # Companion -git package. Tracks the main branch HEAD.
 # Submit as the AUR package "sentinel-git" alongside "sentinel".
 pkgname=sentinel-git
-pkgver=0.4.0.r0.g0000000
+pkgver=0.4.1.r0.g0000000
 pkgrel=1
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (git HEAD)"
 install=sentinel.install
@@ -41,7 +41,7 @@ pkgver() {
     cd sentinel
     # 0.2.0.r{commits-since-tag}.g{shortsha}
     git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-        || printf '0.4.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+        || printf '0.4.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
