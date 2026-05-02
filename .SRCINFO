@@ -1,0 +1,14 @@
+pkgbase = zrythm-bin
+	pkgdesc = Zrythm DAW (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/IRRatium/zrythm-aur-bin
+	arch = x86_64
+	license = AGPL3
+	depends = gtk4
+	depends = libadwaita
+	depends = pipewire-jack
+	provides = zrythm
+	conflicts = zrythm
+
+pkgname = zrythm-bin
