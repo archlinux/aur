@@ -7,8 +7,9 @@ arch=('x86_64')
 url="https://animecix.net/"
 license=('GPL')
 depends=('electron' 'libxss' 'nss' 'atk')
-source=("animecix.desktop")
-sha256sums=('SKIP')
+source=("animecix.desktop"
+        "https://github.com/ayberk/dosyalar/raw/main/animecix-v1.tar.gz"\)
+sha256sums=('SKIP' 'SKIP')
 
 package() {
     # Dizinleri oluştur
@@ -16,10 +17,10 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/pixmaps"
 
-    # Dosyaları kopyala (Nativefier klasörünün bir üst dizinde olduğunu varsayıyoruz)
-    cp -r "${srcdir}/../Animecix-linux-x64/"* "${pkgdir}/opt/animecix/"
+    # Dosyaları kopyala (İnternetten inen arşiv src içine açılır)
+    cp -r "${srcdir}/Animecix-linux-x64/"* "${pkgdir}/opt/animecix/"
 
-    # Logoyu sisteme tanıt (İsim çakışmaması için pixmaps altına atıyoruz)
+    # Logoyu sisteme tanıt
     cp "${pkgdir}/opt/animecix/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/animecix.png"
 
     # Çalıştırılabilir linki oluştur

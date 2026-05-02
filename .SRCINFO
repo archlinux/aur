@@ -9,7 +9,5 @@ pkgbase = animecix-bin
 	depends = libxss
 	depends = nss
 	depends = atk
-	source = animecix.desktop
-	sha256sums = SKIP
 
 pkgname = animecix-bin
