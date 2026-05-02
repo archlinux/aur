@@ -29,11 +29,14 @@ _build_id=(
   [date]="${_build_id_raw:0:8}"
   [time]="${_build_id_raw:8:6}"
 )
+_build_id_date=${_build_id[date]}
+_build_id_time=${_build_id[time]}
 
 pkgver=135.0a1.20241128.042549
-
+pkgver() {
+  printf "%s.%s.%s" ${_version} ${_build_id_date} ${_build_id_time}
+}
 pkgrel=1
-
 arch=('x86_64' 'aarch64')
 license=('MPL' 'GPL' 'LGPL')
 conflicts=('firefox-nightly')
@@ -56,11 +59,8 @@ optdepends=(
   'startup-notification: support for FreeDesktop Startup Notification'
 )
 _url="${_base_url}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central"
-
 _src="${_name}-${_version}.${_lang}.linux-${CARCH}"
-
 _filename="${_build_id[date]}-${_build_id[time]}-${_src}"
-
 source=('firefox-nightly.desktop'
   'policies.json'
   "${_filename}.tar.xz::${_url}/${_src}.tar.xz"
