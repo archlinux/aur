@@ -1,6 +1,6 @@
 pkgbase = openchamber-desktop
 	pkgdesc = Desktop app for OpenChamber AI coding interface (Tauri)
-	pkgver = 1.9.8
+	pkgver = 1.9.10
 	pkgrel = 1
 	url = https://github.com/openchamber/openchamber
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = openchamber-desktop
 	depends = gtk3
 	depends = libayatana-appindicator
 	options = !strip
-	source = openchamber-desktop-1.9.8.tar.gz::https://github.com/openchamber/openchamber/archive/refs/tags/v1.9.8.tar.gz
+	source = openchamber-desktop-1.9.10.tar.gz::https://github.com/openchamber/openchamber/archive/refs/tags/v1.9.10.tar.gz
 	source = openchamber-desktop.desktop
-	sha256sums = 8620f2fd73b0d1abb0d4723b96670a6c6382f177e339439aab508f288ee5f6c6
+	sha256sums = 8ca1d2533f0b5e03e3c02d221cdf0993330be8dc88f8441fd6bb5033cc53fff6
 	sha256sums = 4ccadb9cb92fb28d9e5a7ca7e9a2c75a19e4cae2164fd6e43d7a7829fe6c9c43
 
 pkgname = openchamber-desktop
