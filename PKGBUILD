@@ -1,4 +1,4 @@
-# Maintainer: Nathanael <nathanael@d10s.me>
+# Maintainer: Nathanael Bonfim <dev@nathabonfim59.com>
 
 pkgname=dpcode-bin
 pkgver=0.0.40
