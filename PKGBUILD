@@ -1,5 +1,5 @@
 pkgname=passkeyd
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Opinionated WebAuthn authenticator backed by a TPM"
 arch=('x86_64')
@@ -8,7 +8,7 @@ depends=("tpm2-tss")
 makedepends=()
 url="https://github.com/bjn7/passkeyd"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v$pkgver/passkeyd-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('39512cf8464658660d31987e91c5a48724879b28002a01036a0b1ee76c0deeea')
+sha256sums=('c61ffd4902fc701191a81c1d274e701a5b0cae8451c0c1ed3a1e3fbfdfdad268')
 options=('!debug')
 backup=('etc/passkeyd.conf' 'usr/share/passkeyd/theme.conf')
 
@@ -20,6 +20,7 @@ package() {
   install -Dm755 passkeyd-manager "$pkgdir/usr/bin/passkeyd-manager"
   install -Dm755 passkeyd-enroll "$pkgdir/usr/lib/passkeyd/passkeyd-enroll"
   install -Dm755 passkeyd-select "$pkgdir/usr/lib/passkeyd/passkeyd-select"
+  install -Dm755 passkeyd-migrate "$pkgdir/usr/lib/passkeyd/passkeyd-migrate"
   install -Dm755 passkeyd-selection "$pkgdir/usr/lib/passkeyd/passkeyd-selection"
 
   # Database directory
