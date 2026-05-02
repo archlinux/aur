@@ -20,7 +20,7 @@ optdepends=(
 )
 backup=('etc/atomic.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7ee28ca75e2ea58a0fc34c7b0f355f2d7d614db920e8560645576fff6f1eb72a')
+sha256sums=('d75257e564fe0f118036747d55e52e0d27b10210927a84cc449b60267bb2ae73')
 
 package() {
     cd "${pkgname}-${pkgver}"
