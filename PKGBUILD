@@ -1,6 +1,6 @@
 # Maintainer: Tamim Bhuyan <rxtamim30@gmail.com>
 pkgname=focuslock
-pkgver=1.0.6
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Lock a window fullscreen for focus sessions on KDE Wayland"
 arch=('any')
@@ -19,16 +19,12 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir/focus_lock-$pkgver"
 
-    install -dm755 "$pkgdir/usr/lib/focuslock"
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
-    # launcher.py goes directly to /usr/bin/focuslock — no shell script needed
-    install -m755 launcher.py "$pkgdir/usr/bin/focuslock"
-
-    # timer.py stays in /usr/lib/focuslock
-    install -m755 timer.py "$pkgdir/usr/lib/focuslock/timer.py"
+    # Single script goes directly to /usr/bin/focuslock
+    install -m755 focuslock.py "$pkgdir/usr/bin/focuslock"
 
     install -m644 focuslock.desktop "$pkgdir/usr/share/applications/focuslock.desktop"
     install -m644 focuslock.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/focuslock.svg"
