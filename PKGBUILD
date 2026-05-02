@@ -2,7 +2,7 @@
 
 pkgname=hemtt-bin
 _pkgname=hemtt
-pkgver=1.18.3
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="powerful, opinionated and modern build system for Arma 3 mod development"
 url="https://github.com/brettmayson/HEMTT"
@@ -11,7 +11,7 @@ license=('GPL2')
 provides=("hemtt=${pkgver}")
 conflicts=('hemtt' 'hemtt-git')
 source=("${_pkgname}-${pkgver}::https://github.com/brettmayson/HEMTT/releases/download/v${pkgver}/linux-x64")
-sha256sums=('99fb4db50c52e6e912ce968c00cd1c4fe3b253d5676bb147fc8939a8a1b20092')
+sha256sums=('430e319d611b4dbcdcbd68cb58eef80ca05961a84eee8f2ffef8bffdd1b30a88')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/hemtt"
