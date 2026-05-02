@@ -7,62 +7,40 @@ pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
-makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost' 'pkgconfig' 'ccache' 'ninja' 'jq' 'curl' 'coreutils' 'git' 'cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'boost-libs' 'acl' 'patchelf' 'ccache' 'lmdb' 'cpr')
+
+makedepends=('boost' 'pkgconfig' 'ccache' 'ninja' 'jq' 'curl' 'coreutils' 'git' 'cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'boost' 'patchelf' 'ccache')
+depends=('acl' 'bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost-libs' 'lmdb' 'libunistring' 'zstd' 'curl' 'openssl')
+
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("cab34abc6a868229702f2849608581f1999c56ddad1b985cfbebf6ddbc591a9a")
+sha256sums=("714485aed78a663700eb3613691faa400b5c519ee94ea8631313b55ffdd9e8ff")
 
 nekobox_source_directory="nekobox-unified-source-${pkgver}"
 
 build() {
-    export NEKOBOX_QT_BUILD=$PWD/build
-    export NEKOBOX_CORE_BUILD=$PWD/build_go
-    pushd "${nekobox_source_directory}"
+    export NEKOBOX_BUILD=$PWD/build
+
+    cd "${nekobox_source_directory}"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOARCH=""
-    export GOOS=linux
-
-    if [[ -d "core/server/vendor" ]]
-    then
-      export GO_MOD_TIDY=OFF
-    else
-      export GO_MOD_TIDY=ON
-    fi
-
-
-    cmake -B "${NEKOBOX_CORE_BUILD}" -S ./core  \
-        -D SKIP_UPDATER=ON                      \
-        -D GO_MOD_TIDY="${GO_MOD_TIDY}"
         
-    cmake -B "${NEKOBOX_QT_BUILD}" -S .         \
-        -D BUILD_GO_PARTS=OFF                   \
-        -D SKIP_UPDATER=ON                      \
-        -D "NKR_DEFAULT_VERSION=${pkgver}"      \
-        -W no-dev -GNinja
-
-    for i in "${NEKOBOX_CORE_BUILD}" "${NEKOBOX_QT_BUILD}"
-    do
-        cmake --build "${i}" -j "$(nproc)" -v
-    done
-
-    popd
+    cmake -B "${NEKOBOX_BUILD}" -S . -D "NKR_DEFAULT_VERSION=${pkgver}"
 }
 
 packagecore() {
     depends=('gcc-libs' 'glibc')
     provides=('sing-box')
     conflicts=('sing-box')
-    DESTDIR="${pkgdir}" cmake --install "${NEKOBOX_CORE_BUILD}"
+    DESTDIR="${pkgdir}" cmake --install "${NEKOBOX_BUILD}" --component core
 }
 
 packageapp() {
-    depends=('acl' 'bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' "$1" 'thrift' 'boost-libs' 'lmdb' 'cpr')
+    depends+=("$1")
     provides=('nekoray')
     conflicts=('nekoray')
-    DESTDIR="${pkgdir}" cmake --install "${NEKOBOX_QT_BUILD}"
+    DESTDIR="${pkgdir}" cmake --install "${NEKOBOX_BUILD}" --component gui
 }
 
 clearsources(){
