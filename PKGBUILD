@@ -17,7 +17,6 @@ backup=('etc/doas.conf'
         'etc/pam.d/doas')
 install="doas.install"
 changelog="doas.changelog"
-provides=('')
 conflicts=('opendoas' 'opendoas-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'doas-pam'
