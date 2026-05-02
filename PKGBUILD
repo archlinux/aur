@@ -2,11 +2,11 @@
 # Contributor: Martino Pilia <martino.pilia@gmail.com>
 pkgname=hadolint
 pkgver=2.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Dockerfile linter, validate inline bash, written in Haskell'
 url='https://github.com/hadolint/hadolint/'
 arch=('x86_64')
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('gmp')
 makedepends=('stack')
 conflicts=('hadolint-bin' 'hadolint-git')
