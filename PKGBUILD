@@ -1,7 +1,7 @@
 # Maintainer: Mike Cuche <mike@cuche.cc>
 
 pkgname=dosbox-x
-pkgver=2026.03.29
+pkgver=2026.05.02
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64 aarch64)
@@ -13,7 +13,7 @@ optdepends=('openglide-git: Third-party 3dfx Glide API support')
 conflicts=(dosbox-x-git)
 source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz)
 
-sha256sums=('c244c1910444a0ad886d9bae05cc72b3ef036e340d5e2fc33edf364c0dce344e')
+sha256sums=('5ab3584870bec378b495242f20f03ecbef2cd032a128ee3394a88ff7a53cd914')
 
 build() {
   cd $srcdir/dosbox-x-dosbox-x-v${pkgver}
