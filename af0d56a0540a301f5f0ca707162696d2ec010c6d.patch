@@ -1,0 +1,75 @@
+From af0d56a0540a301f5f0ca707162696d2ec010c6d Mon Sep 17 00:00:00 2001
+From: Kainoa Kanter <kainoa@t1c.dev>
+Date: Fri, 17 Apr 2026 23:47:38 -0700
+Subject: [PATCH] Writing to /etc from data_files is not allowed anymore
+Co-authored-by: kpcyrd <git@rxv.cc>
+---
+ setup.py | 26 --------------------------
+ 1 file changed, 26 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 2cbba59..b7f920d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -29,16 +29,11 @@ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ import os
+ import sys
+-import distro
+ import subprocess
+ from setuptools import setup
+ 
+ SHARE = "share"
+ 
+-# detect linux distribution
+-distro = distro.name()
+-
+-
+ def file_list(path):
+     files = []
+     for filename in os.listdir(path):
+@@ -46,7 +41,6 @@ def file_list(path):
+             files.append(path + "/" + filename)
+     return files
+ 
+-
+ def create_mo_files():
+     po_dir = "po/"
+     if not os.path.exists(po_dir):
+@@ -66,7 +60,6 @@ def create_mo_files():
+         mo_files.append(mo_dir + mo_file)
+     return mo_files
+ 
+-
+ with open(os.path.join(SHARE, "torbrowser-launcher/version")) as buf:
+     version = buf.read().strip()
+ 
+@@ -75,25 +68,6 @@ for root, dirs, files in os.walk(SHARE):
+     if files:
+         datafiles.append((root, [os.path.join(root, f) for f in files]))
+ 
+-# disable shipping apparmor profiles until they work in ubuntu (#128)
+-if distro != "Ubuntu":
+-    if not hasattr(sys, "real_prefix"):
+-        # we're not in a virtualenv, so we can probably write to /etc
+-        datafiles += [
+-            (
+-                "/etc/apparmor.d/",
+-                ["apparmor/torbrowser.Browser.firefox", "apparmor/torbrowser.Tor.tor"],
+-            ),
+-            (
+-                "/etc/apparmor.d/local/",
+-                [
+-                    "apparmor/local/torbrowser.Browser.firefox",
+-                    "apparmor/local/torbrowser.Tor.tor",
+-                ],
+-            ),
+-            ("/etc/apparmor.d/tunables/", ["apparmor/tunables/torbrowser"]),
+-        ]
+-
+ datafiles += [(os.path.dirname(f), [f]) for f in create_mo_files()]
+ 
+ setup(
+-- 
+2.53.0
+
