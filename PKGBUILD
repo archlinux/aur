@@ -1,6 +1,6 @@
 # Maintainer: y0sif <https://github.com/y0sif>
 pkgname=whisrs-git
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='Linux-first voice-to-text dictation tool, written in Rust'
 arch=('x86_64')
