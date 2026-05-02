@@ -1,3 +1,5 @@
+# Maintainer: Junho <your-email at domain dot com>
+
 pkgname=pjecalc-cidadao-bin
 pkgver=2.15.1
 pkgrel=2
