@@ -1,12 +1,11 @@
 pkgbase = apple_hyprcursor
 	pkgdesc = Hyprcursor version of https://github.com/ful1e5/apple_cursor
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/6ooker/apple_hyprcursor
 	arch = any
-	license = GPL3
-	noextract = macOS-hypr.tar.xz
+	license = GPL-3.0-only
 	source = macOS-hypr_0.1.tar.xz::https://github.com/6ooker/apple_hyprcursor/releases/download/0.1/macOS-hypr.tar.xz
-	sha256sums = e217e683f4c4f02d0709ec8f902686acc91030abc64f42dfd511fde148da83fb
+	sha256sums = 5e8809b54c7341bab31ba122114a04774d6beb9673a991e6e12965ab580676e2
 
 pkgname = apple_hyprcursor
