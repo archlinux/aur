@@ -3,8 +3,8 @@
 
 pkgname=librespeed-cli
 _pkgname=speedtest-cli
-pkgver=1.0.12
-pkgrel=2
+pkgver=1.0.13
+pkgrel=1
 pkgdesc="Command line client for LibreSpeed"
 arch=(x86_64 aarch64 armv6h armv7h)
 url="https://github.com/librespeed/speedtest-cli"
@@ -12,7 +12,7 @@ license=(LGPL-3.0-only)
 makedepends=(git go)
 depends=(glibc)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2813ff49a8bc99687e70599212e05f0d995cd7f685e1202e80eea4ff58767301')
+sha256sums=('5ad938b61e3edc0ca95e2ccff0c06e97a69383f3cbb0243bd47b21b9865f9f55')
 
 build() {
     cd "$_pkgname-$pkgver"
