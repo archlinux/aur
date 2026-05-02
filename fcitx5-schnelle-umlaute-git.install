@@ -19,7 +19,19 @@ EOM
 }
 
 post_upgrade() {
-    echo "==> First-time install on this user account? Run once: schnelle-umlaute-setup"
+    cat <<'EOM'
+
+==> ─────────────────────────────────────────────────────────────
+==>  First-time install on this user account?
+==>      Run once as your normal user (not root):
+==>
+==>          schnelle-umlaute-setup
+==>
+==>  This writes ~/.config/environment.d/fcitx5.conf (env-vars)
+==>  and the autostart entry. Then logout and login.
+==> ─────────────────────────────────────────────────────────────
+
+EOM
 }
 
 post_remove() {
