@@ -1,0 +1,15 @@
+pkgbase = animecix-bin
+	pkgdesc = Animecix Masaüstü Uygulaması
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://animecix.net/
+	arch = x86_64
+	license = GPL
+	depends = electron
+	depends = libxss
+	depends = nss
+	depends = atk
+	source = animecix.desktop
+	sha256sums = SKIP
+
+pkgname = animecix-bin

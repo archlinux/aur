@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Animecix
+Comment=Animecix Masaüstü Uygulaması
+Exec=/usr/bin/animecix --enable-features=UseOzonePlatform --ozone-platform=wayland
+Icon=animecix
+Type=Application
+Categories=Video;AudioVideo;
+Terminal=false
