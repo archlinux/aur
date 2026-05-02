@@ -1,0 +1,16 @@
+pkgbase = firefox-extension-synclair-bin
+	pkgdesc = Customizable home page/new tab using html, css and sheets of links
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://codeberg.org/MorsMortium/Synclair
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = zip
+	depends = firefox
+	provides = firefox-extension-synclair
+	conflicts = firefox-extension-synclair
+	source = https://codeberg.org/MorsMortium/Synclair/releases/download/1.4.3/Synclair@morsmortium.codeberg.page.xpi
+	sha512sums = 8dd3cf6fdbb2b4ee89a3f7854abe3ceb1b8841259971b55c1db62e9d9700927fee9374607a56b0e882e47b16e3fede2bf4b40293b81e2db672c6674e7c66adb7
+
+pkgname = firefox-extension-synclair-bin
