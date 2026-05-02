@@ -1,14 +1,18 @@
 pkgbase = ax-git
-	pkgdesc = Smart archiving and extracting utility
-	pkgver = 0
+	pkgdesc = A fast, unified, and feature-complete wrapper for pacman and the AUR
+	pkgver = 1.1.0.r0.g7b657b5
 	pkgrel = 1
-	url = https://github.com/rahmerh/ax
+	url = https://github.com/Manpreet113/ax
 	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = rust
 	makedepends = cargo
-	source = git+https://github.com/rahmerh/ax.git
+	makedepends = git
+	depends = pacman
+	depends = git
+	provides = ax
+	conflicts = ax
+	conflicts = ax-bin
+	source = git+https://github.com/Manpreet113/ax.git
 	sha256sums = SKIP
 
 pkgname = ax-git

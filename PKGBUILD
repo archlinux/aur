@@ -1,29 +1,31 @@
+# Maintainer: Manpreet <manpreet@example.com>
 pkgname=ax-git
-pkgver=0
+pkgver=1.1.0.r0.g7b657b5
 pkgrel=1
-pkgdesc="Smart archiving and extracting utility"
+pkgdesc="A fast, unified, and feature-complete wrapper for pacman and the AUR"
 arch=('x86_64')
-url="https://github.com/rahmerh/ax"
+url="https://github.com/Manpreet113/ax"
 license=('MIT')
-depends=()
-makedepends=('git' 'rust' 'cargo')
-
-source=("git+$url.git")
+depends=('pacman' 'git')
+makedepends=('cargo' 'git')
+provides=('ax')
+conflicts=('ax' 'ax-bin')
+source=("git+https://github.com/Manpreet113/ax.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ax
-  git describe --long --tags --dirty 2>/dev/null \
-    | sed 's/^v//; s/-/./g'
+  cd "$srcdir/ax"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ax
+  cd "$srcdir/ax"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --release --locked
 }
 
 package() {
-  cd ax
-  install -Dm755 target/release/ax "$pkgdir/usr/bin/ax"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/ax"
+  install -Dm755 "target/release/ax" "${pkgdir}/usr/bin/ax"
 }
