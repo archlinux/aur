@@ -1,0 +1,16 @@
+pkgbase = python-comfyui-workflow-templates-media-api
+	pkgdesc = Media bundle containing API-driven workflow assets
+	pkgver = 0.3.73
+	pkgrel = 1
+	url = https://github.com/Comfy-Org/workflow_templates
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates-media-api/comfyui_workflow_templates_media_api-0.3.73.tar.gz
+	sha512sums = 1961c961c92fc24cf76935b63806f13f91c098a8648d6f0e0aa6c17e198dac60efb1868213e460375cd9c689b566c3bb60eeacaa4b94500029d0f199bdc03aee
+
+pkgname = python-comfyui-workflow-templates-media-api
