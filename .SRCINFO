@@ -1,12 +1,20 @@
 pkgbase = ventoyisomanager-bin
-	pkgdesc = Ventoy ISO Manager - A tool for easily managing the ISO files you've downloaded
-	pkgver = 1.1.0
+	pkgdesc = A Tauri-based application for managing Ventoy ISO images
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Dilial/VentoyISOManager
 	arch = x86_64
 	license = MIT
-	noextract = ventoyisomanager_1.1.0_amd64.AppImage
-	source = https://github.com/Dilial/VentoyISOManager/releases/download/v1.1.0/ventoyisomanager_1.1.0_amd64.AppImage
-	sha256sums = 7bb68aa201785a99b50d313ec2c629ffd6a410573b382e9fc0f3ccefda88c899
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	provides = ventoyisomanager
+	conflicts = ventoyisomanager-git
+	options = !strip
+	source = VentoyISOManager_1.3.0_amd64.AppImage::https://github.com/Dilial/VentoyISOManager/releases/download/v1.3.0/VentoyISOManager_1.3.0_amd64.AppImage
+	sha256sums = 3a9de83332d444b824a114d4050037166e63e3cd7f6d78593625d2916312e2ae
 
 pkgname = ventoyisomanager-bin
