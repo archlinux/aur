@@ -1,6 +1,6 @@
 # Maintainer: Your Name <mehad605@gmail.com>
 pkgname=bangla-typer-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Desktop Bangla typing trainer"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
   "LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
-sha256sums=('4f20e9482a9f796ba7bc972d635619c965bf744ef9298146c2ef227f307e8540'
+sha256sums=('bcedec53c25fc10e6da6a3aeee7ac0562c839ab9e0bd7cdc240927f6ebba5a64'
             '674c75a8fa913a320d31f9afd27a34a27216a9b64627042a49cabe672aa107a2')
 
 package() {
