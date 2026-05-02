@@ -1,38 +1,56 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ioxclient"
-pkgver=1.17.0.0
+pkgver=1.18.0.0
 pkgrel=1
 pkgdesc="CLI tool meant for assisting application development for Cisco's IOx platforms"
-arch=('aarch64' 'i686' 'x86_64')
+declare -A _arch=(
+  ['aarch64']='arm64'
+  ['i686']='386'
+  ['x86_64']='amd64'
+)
+arch=(
+  "${!_arch[@]}"
+)
 url="https://developer.cisco.com/docs/iox/what-is-ioxclient/"
-license=('custom:Cisco EULA')
-depends=('glibc')
-_pkgsrc="${pkgname}-${pkgver}"
-source_aarch64=("${_pkgsrc}-aarch64.tar.gz::https://pubhub.devnetcloud.com/media/iox/docs/artifacts/${pkgname}/${pkgname}-v${pkgver}/${_pkgsrc//-/_}_linux_arm64.tar.gz")
-source_i686=("${_pkgsrc}-i686.tar.gz::https://pubhub.devnetcloud.com/media/iox/docs/artifacts/${pkgname}/${pkgname}-v${pkgver}/${_pkgsrc//-/_}_linux_386.tar.gz")
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::https://pubhub.devnetcloud.com/media/iox/docs/artifacts/${pkgname}/${pkgname}-v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz")
-sha512sums_aarch64=('fbba9a5d68cf569b664ebf29a4c6ec0ec0471628e738c5b69683c33fda16799dd96431f07792831bf4e9a42bb83c82a5006c63977bb21dde33234a5306e915ea')
-sha512sums_i686=('9bc48dbc86d62352342a6e7f43001f41a45a291594d5ae4f48afb2e2ecb7cba6445ad043c43c318fbe9399b75b8539128d7c3845051fb44043c70cbbeb49eefb')
-sha512sums_x86_64=('30ae95e692534c1875864e830f7a183978e0e30d630a7aad52455fabe1a94d382b5395e49ea8f0f0eb38e6cac229c6d7406afdcf059a1be8d5996fd5746c9043')
-
-if   [ "${CARCH}" = 'aarch64' ]; then _arch=arm64;
-elif [ "${CARCH}" = 'i686'    ]; then _arch=386;
-elif [ "${CARCH}" = 'x86_64'  ]; then _arch=amd64; fi
+license=(
+  'custom:Cisco EULA'
+)
+for _carch in "${!_arch[@]}"; do
+  eval "
+source_${_carch}=(
+  'https://pubhub.devnetcloud.com/media/iox/docs/artifacts/${pkgname}/${pkgname}-v${pkgver}/${pkgname}_${pkgver}_linux_${_arch[${_carch}]}.tar.gz'
+)"
+done
+sha512sums_aarch64=('bb062c0b0de0f69741e0f62248280423782a4d0de8afa83a9554f0f38007a400a19a881945106f646670965915744b91a9894694c6a37b0481469019c320cf39')
+sha512sums_i686=('504943e55b3c9d3b9e291c25fa2373faa5b17e42eff0c151e2b61569025c4bb81d7003d4394b1ea56d0714bc44f21e19420946127eecbbd5ac66012fa73a6aaf')
+sha512sums_x86_64=('716589ece24aa891d0cbc00460e9cf73ef783a8f1eb6b0f615f886eccf0c1c8252d8490918e353a5e358138eac2805fc53d5bf6fe7022606cde9b143ff3f2d59')
 
 # prepare() {
-#   cd "${srcdir}/${_pkgsrc//-/_}_linux_${_arch}"
+#   local source_array="source_${CARCH}[0]"
+#   local source_url="${!source_array}"
+#   local source_artifact="${source_url##*/}"
+
+#   cd "${srcdir}/${source_artifact%.tar*}"
 #   chmod +x ./"${pkgname}"
 #   mkdir -p "completions" 
 # }
 
 # build() {
-#   cd "${srcdir}/${_pkgsrc//-/_}_linux_${_arch}"
+#   local source_array="source_${CARCH}[0]"
+#   local source_url="${!source_array}"
+#   local source_artifact="${source_url##*/}"
+
+#   cd "${srcdir}/${source_artifact%.tar*}"
 #   ./"${pkgname}" --generate-bash-completion > "completions/${pkgname}.bash"
 # }
 
 package() {
-  cd "${srcdir}/${_pkgsrc//-/_}_linux_${_arch}"
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
+  cd "${srcdir}/${source_artifact%.tar*}"
   install -vDm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 

@@ -1,18 +1,17 @@
 pkgbase = ioxclient
 	pkgdesc = CLI tool meant for assisting application development for Cisco's IOx platforms
-	pkgver = 1.17.0.0
+	pkgver = 1.18.0.0
 	pkgrel = 1
 	url = https://developer.cisco.com/docs/iox/what-is-ioxclient/
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = custom:Cisco EULA
-	depends = glibc
-	source_aarch64 = ioxclient-1.17.0.0-aarch64.tar.gz::https://pubhub.devnetcloud.com/media/iox/docs/artifacts/ioxclient/ioxclient-v1.17.0.0/ioxclient_1.17.0.0_linux_arm64.tar.gz
-	sha512sums_aarch64 = fbba9a5d68cf569b664ebf29a4c6ec0ec0471628e738c5b69683c33fda16799dd96431f07792831bf4e9a42bb83c82a5006c63977bb21dde33234a5306e915ea
-	source_i686 = ioxclient-1.17.0.0-i686.tar.gz::https://pubhub.devnetcloud.com/media/iox/docs/artifacts/ioxclient/ioxclient-v1.17.0.0/ioxclient_1.17.0.0_linux_386.tar.gz
-	sha512sums_i686 = 9bc48dbc86d62352342a6e7f43001f41a45a291594d5ae4f48afb2e2ecb7cba6445ad043c43c318fbe9399b75b8539128d7c3845051fb44043c70cbbeb49eefb
-	source_x86_64 = ioxclient-1.17.0.0-x86_64.tar.gz::https://pubhub.devnetcloud.com/media/iox/docs/artifacts/ioxclient/ioxclient-v1.17.0.0/ioxclient_1.17.0.0_linux_amd64.tar.gz
-	sha512sums_x86_64 = 30ae95e692534c1875864e830f7a183978e0e30d630a7aad52455fabe1a94d382b5395e49ea8f0f0eb38e6cac229c6d7406afdcf059a1be8d5996fd5746c9043
+	source_aarch64 = https://pubhub.devnetcloud.com/media/iox/docs/artifacts/ioxclient/ioxclient-v1.18.0.0/ioxclient_1.18.0.0_linux_arm64.tar.gz
+	sha512sums_aarch64 = bb062c0b0de0f69741e0f62248280423782a4d0de8afa83a9554f0f38007a400a19a881945106f646670965915744b91a9894694c6a37b0481469019c320cf39
+	source_i686 = https://pubhub.devnetcloud.com/media/iox/docs/artifacts/ioxclient/ioxclient-v1.18.0.0/ioxclient_1.18.0.0_linux_386.tar.gz
+	sha512sums_i686 = 504943e55b3c9d3b9e291c25fa2373faa5b17e42eff0c151e2b61569025c4bb81d7003d4394b1ea56d0714bc44f21e19420946127eecbbd5ac66012fa73a6aaf
+	source_x86_64 = https://pubhub.devnetcloud.com/media/iox/docs/artifacts/ioxclient/ioxclient-v1.18.0.0/ioxclient_1.18.0.0_linux_amd64.tar.gz
+	sha512sums_x86_64 = 716589ece24aa891d0cbc00460e9cf73ef783a8f1eb6b0f615f886eccf0c1c8252d8490918e353a5e358138eac2805fc53d5bf6fe7022606cde9b143ff3f2d59
 
 pkgname = ioxclient
