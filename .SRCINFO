@@ -1,0 +1,19 @@
+pkgbase = azbuka-git
+	pkgdesc = A versatile Russian Cyrillic transliteration tool (GTK4/Libadwaita)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/naregderlevonean/azbuka
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = libadwaita
+	depends = gtk4
+	provides = azbuka
+	conflicts = azbuka
+	source = git+https://github.com/naregderlevonean/azbuka.git
+	sha256sums = SKIP
+
+pkgname = azbuka-git
