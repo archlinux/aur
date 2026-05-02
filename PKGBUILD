@@ -1,4 +1,4 @@
-# Maintainer: Heisenberg (KlapkiSzatana)
+# Maintainer: KlapkiSzatana
 pkgname=budget-app
 pkgver=1.3.10
 pkgrel=1
@@ -9,7 +9,7 @@ license=('GPL-3.0')
 depends=('python' 'pyside6' 'python-matplotlib' 'python-pypdf' 'python-pillow')
 
 # Pobieranie kodu źródłowego bezpośrednio z GitHuba
-source=("git+https://github.com/KlapkiSzatana/budget-app.git")
+source=("git+https://github.com/KlapkiSzatana/budget-app.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 package() {

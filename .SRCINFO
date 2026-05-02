@@ -10,7 +10,7 @@ pkgbase = budget-app
 	depends = python-matplotlib
 	depends = python-pypdf
 	depends = python-pillow
-	source = git+https://github.com/KlapkiSzatana/budget-app.git
+	source = git+https://github.com/KlapkiSzatana/budget-app.git#tag=v1.3.10
 	sha256sums = SKIP
 
 pkgname = budget-app
