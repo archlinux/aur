@@ -3,9 +3,9 @@
 # Contributor: bcc <ben at copeland dot me dot uk>
 
 pkgname=smatch
-pkgver=1.74
+pkgver=1.75
 _fedora_spec_url="https://src.fedoraproject.org/rpms/smatch/raw/rawhide/f/smatch.spec"
-pkgrel=2
+pkgrel=1
 pkgdesc="Static analysis tool for C programs that performs semantic analysis to detect bugs and vulnerabilities."
 arch=(x86_64)
 url="https://github.com/error27/smatch"
@@ -15,7 +15,7 @@ source=("smatch-${pkgver}.tar.gz::https://github.com/error27/smatch/archive/refs
         "use-distribution-ldflags.patch"
         "preserve-install-timestamps.patch"
         "add-BSD-3-license.patch")
-sha256sums=('0c3ee7214e81c6ba506c1886a110d5406ee080d49a17c1e7e673b62b28b213d6'
+sha256sums=('de16ff10452869cbdc056aedbfeadc612a612e97d35a1c75d0cef7bcd7ed9673'
             '387d033fdd7889e7d7c330a9bd4c3304ccfca14be9bf7467b447680997e75d42'
             '74a71a0317407ef54a839f429c2fbe1b103c415954a08a34cef34ade694874f1'
             '199db07678e7b099f3ea5c4eb38d9aac199d7829ed832b042b7f4bcedef44e55')
