@@ -1,0 +1,18 @@
+pkgbase = sandhole-bin
+	pkgdesc = Expose HTTP/SSH/TCP services through SSH port forwarding (binary release)
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://sandhole.com.br
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sandhole
+	conflicts = sandhole
+	source = LICENSE-0.9.3::https://raw.githubusercontent.com/EpicEric/sandhole/refs/tags/v0.9.3/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = sandhole-bin-0.9.3-x86_64::https://github.com/EpicEric/sandhole/releases/download/v0.9.3/sandhole-linux-amd64
+	sha256sums_x86_64 = dbf1a835aa87909cc1e42adb6cd81ea92cffab0ffcf46cfe79c5d7b5b79fa90d
+	source_aarch64 = sandhole-bin-0.9.3-aarch64::https://github.com/EpicEric/sandhole/releases/download/v0.9.3/sandhole-linux-arm64
+	sha256sums_aarch64 = 3da018b219a17b7aa5cdafe5396494b2acfc7d97cf817a23d1e941e2608f7a12
+
+pkgname = sandhole-bin
