@@ -39,7 +39,9 @@ package() {
 EOF
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+  if [[ -f NOTICE ]]; then
+    install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+  fi
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -dm755 "${pkgdir}/usr/bin"
