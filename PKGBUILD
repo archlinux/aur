@@ -1,14 +1,14 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=portable-packer-git
-pkgver=0.1.5.r0.geebf092f
-pkgrel=2
+pkgver=0.1.9.r7.g01193730
+pkgrel=1
 pkgdesc="Packaging utility for Portable"
 arch=("x86_64")
 url="https://github.com/Kimiblock/stashpak"
 license=("GPL-3.0-or-later")
 depends=("glibc" coreutils desktop-file-utils git)
-
+provides+=(portable-packer)
 makedepends=('go' 'git')
 backup=()
 source=("source::git+https://github.com/Kimiblock/portable-packer.git")
