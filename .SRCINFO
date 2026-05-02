@@ -1,7 +1,7 @@
 pkgbase = dpcode-bin
 	pkgdesc = DP Code desktop app packaged from the upstream AppImage
 	pkgver = 0.0.40
-	pkgrel = 10
+	pkgrel = 16
 	url = https://dpcode.cc
 	arch = x86_64
 	license = MIT
@@ -33,6 +33,7 @@ pkgbase = dpcode-bin
 	depends = xdg-utils
 	depends = zlib
 	optdepends = openai-codex: use the system-installed Codex CLI
+	optdepends = sqlite: repair imported T3 Code state with dpcode-repair-t3-import
 	provides = dpcode=0.0.40
 	conflicts = dpcode
 	options = !debug
