@@ -1,13 +1,14 @@
-# Maintainer: Christoph Haag <christoph.haag@collabora.com>
+# Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
+# Contributor: Christoph Haag <christoph.haag@collabora.com>
  
 pkgname="monado-multilib-git"
 _dirname="monado"
-pkgver=25.0.0.r317.gbf6080c3b
+pkgver=25.1.0.r441.gfea2ceb6f
 pkgrel=1
 pkgdesc='The open source OpenXR runtime. (32 bit support)'
 arch=('i686' 'x86_64')
 url='https://monado.dev'
-depends=('openxr' 'vulkan-icd-loader' 'libgl' 'wayland' 'xr-hardware' 'libcap' 'libbsd' 'libdrm' 'openvr')
+depends=('glibc' 'lib32-glibc' 'libgcc' 'lib32-gcc-libs' 'openxr' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'libgl' 'lib32-libglvnd' 'wayland' 'xr-hardware' 'libcap' 'libbsd' 'libdrm' 'openvr')
 conflicts=('monado')
 #'doxygen' #When building docs
 makedepends=('eigen' 'ninja' 'shaderc' 'cmake' 'git' 'vulkan-headers' 'python' 'wayland-protocols')
