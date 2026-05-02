@@ -8,7 +8,7 @@
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx' 'nvidia-390xx-dkms')
 pkgver=390.157
-pkgrel=21
+pkgrel=22
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -36,6 +36,7 @@ source=('nvidia-drm-outputclass.conf'
         kernel-6.17.patch
         kernel-6.19.patch
         kernel-6.18-nv_workqueue_flush.patch
+        kernel-7.0.patch
         kernel-4.16+-memory-encryption.patch)
 b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9'
         'c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be'
@@ -59,6 +60,7 @@ b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1
         'efaed80af94533496ea77293ce48e383d836559316b8a2c9dd36a73c5ea3170f8ee61ec9a4151db13e4a28a167d3b9d7773baad9c082596e8f043de92b4c1932'
         '81bcb76be322badb3e06f34a9002de3df2c5ca260fa839b8a0bb0831ccd2278102612247fa086d7d4ac9003ca8c58800f6e51fb4c76b379c7fd707a5b6f96e5d'
         '628b626a3e8d22bc4fd6b12ee7c6b18fefd1aa23d40d5e415b065817ec9a1b15e48766e28d28e291ac6212b8d8dcccb5326bb81b9b825b61de0eea2f6cd3a26f'
+        '6b07e090110c9d4de654b4cd082ab1fb3b78261630db52c468abdbe402d427b65876e16568aae6cb6504e8b5b6be536e02c35d7c7501bad9ea2c1563f1c43fe6'
         'a8234f542c2324ad698443e3decf7b6eacf3cb420b7aded787f102a8d32b64c2a8d45ea58e37a5e3b6f2f060f0cccd63d3a182065f57c606006d0ff8c7f6bb05')
 
 create_links() {
@@ -132,6 +134,9 @@ prepare() {
 
     # From drankinatty (https://bbs.archlinux.org/viewtopic.php?id=312658)
     patch -Np1 -i ../kernel-6.18-nv_workqueue_flush.patch
+
+    # From drankinatty (https://paste.opensuse.org/pastes/d7e7411344a8)
+    patch -Np1 -i ../kernel-7.0.patch
 
     cd kernel
 

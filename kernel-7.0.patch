@@ -1,0 +1,126 @@
+diff --git a/kernel/common/inc/nv-linux.h b/kernel/common/inc/nv-linux.h
+index 37cb593..7b23f91 100644
+--- a/kernel/common/inc/nv-linux.h
++++ b/kernel/common/inc/nv-linux.h
+@@ -204,6 +204,9 @@ static inline uid_t __kuid_val(kuid_t uid)
+ #endif
+ #if defined(NV_LINUX_SCREEN_INFO_H_PRESENT)
+ #include <linux/screen_info.h>      /* screen_info                      */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 20, 0)
++#include <linux/sysfb.h>            /* sysfb_primary_display            */
++#endif
+ #else
+ #include <linux/tty.h>              /* screen_info                      */
+ #endif
+diff --git a/kernel/conftest.sh b/kernel/conftest.sh
+index fe2a7b9..3d11fc4 100755
+--- a/kernel/conftest.sh
++++ b/kernel/conftest.sh
+@@ -4659,6 +4659,27 @@ compile_test() {
+ 
+             compile_check_conftest "$CODE" "NV_ACPI_VIDEO_BACKLIGHT_USE_NATIVE" "" "functions"
+         ;;
++
++        is_export_symbol_present_screen_info)
++            #
++            # Determine if the export of screen_info is present.
++            #
++            # added:   2026-04-30  Archlinux AUR nvidia-390xx-utils kernel 7.0
++            #          patch that removed screen_info and replaced it with
++            #          sysfb_primary_display.
++            #
++            CODE="
++            #include <linux/types.h>
++            #include <linux/export.h>
++            #include <linux/fb.h>
++            #if defined(NV_LINUX_SCREEN_INFO_H_PRESENT)
++            #include <linux/screen_info.h>
++            #endif
++            void conftest(void) {
++                struct screen_info *si = &screen_info;
++            }"
++            compile_check_conftest "$CODE" "NV_EXPORT_SYMBOL_SCREEN_INFO" "" "symbols"
++        ;;
+     esac
+ }
+ 
+diff --git a/kernel/nvidia-drm/nvidia-dma-fence-helper.h b/kernel/nvidia-drm/nvidia-dma-fence-helper.h
+index a09ab76..6221bf2 100644
+--- a/kernel/nvidia-drm/nvidia-dma-fence-helper.h
++++ b/kernel/nvidia-drm/nvidia-dma-fence-helper.h
+@@ -89,11 +89,12 @@ nv_dma_fence_default_wait(nv_dma_fence_t *fence,
+ #endif
+ }
+ 
+-static inline int nv_dma_fence_signal(nv_dma_fence_t *fence) {
++// Rel. commit "dma-buf/dma-fence: Remove return code of signaling-functions" (Philipp Stanner, 1 Dec 2025)
++static inline void nv_dma_fence_signal(nv_dma_fence_t *fence) {
+ #if defined(NV_LINUX_FENCE_H_PRESENT)
+-    return fence_signal(fence);
++    fence_signal(fence);
+ #else
+-    return dma_fence_signal(fence);
++    dma_fence_signal(fence);
+ #endif
+ }
+ 
+diff --git a/kernel/nvidia/nvidia.Kbuild b/kernel/nvidia/nvidia.Kbuild
+index d2c8410..bec0ddf 100644
+--- a/kernel/nvidia/nvidia.Kbuild
++++ b/kernel/nvidia/nvidia.Kbuild
+@@ -174,6 +174,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += acpi_video_backlight_use_native
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_gpl_of_node_to_nid
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_swiotlb_map_sg_attrs
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_swiotlb_dma_ops
++NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_screen_info
+ 
+ NV_CONFTEST_TYPE_COMPILE_TESTS += i2c_adapter
+ NV_CONFTEST_TYPE_COMPILE_TESTS += pm_message_t
+diff --git a/kernel/nvidia/os-interface.c b/kernel/nvidia/os-interface.c
+index dd65432..87780ad 100644
+--- a/kernel/nvidia/os-interface.c
++++ b/kernel/nvidia/os-interface.c
+@@ -1126,6 +1126,14 @@ void NV_API_CALL os_get_screen_info(
+ )
+ {
+ #if (defined(NVCPU_X86) || defined(NVCPU_X86_64))
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 20, 0)
++    // Rel. commit "sysfb: Replace screen_info with sysfb_primary_display" (Thomas Zimmermann, 26 Nov 2025)
++    const struct screen_info *si = &sysfb_primary_display.screen;
++#elif defined (NV_IS_EXPORT_SYMBOL_PRESENT_screen_info)
++    const struct screen_info *si = &screen_info;
++#endif
++
+     //
+     // If there is not a framebuffer console, return 0 size.
+     //
+@@ -1133,21 +1141,21 @@ void NV_API_CALL os_get_screen_info(
+     // initialization, and then will be set to a value, such as
+     // VIDEO_TYPE_VLFB or VIDEO_TYPE_EFI if an fbdev console is used.
+     //
+-    if (screen_info.orig_video_isVGA <= 1)
++    if (si->orig_video_isVGA <= 1)
+     {
+         *pPhysicalAddress = 0;
+         *pFbWidth = *pFbHeight = *pFbDepth = *pFbPitch = 0;
+         return;
+     }
+ 
+-    *pPhysicalAddress = screen_info.lfb_base;
++    *pPhysicalAddress = si->lfb_base;
+ #if defined(VIDEO_CAPABILITY_64BIT_BASE)
+-    *pPhysicalAddress |= (NvU64)screen_info.ext_lfb_base << 32;
++    *pPhysicalAddress |= (NvU64)si->ext_lfb_base << 32;
+ #endif
+-    *pFbWidth = screen_info.lfb_width;
+-    *pFbHeight = screen_info.lfb_height;
+-    *pFbDepth = screen_info.lfb_depth;
+-    *pFbPitch = screen_info.lfb_linelength;
++    *pFbWidth = si->lfb_width;
++    *pFbHeight = si->lfb_height;
++    *pFbDepth = si->lfb_depth;
++    *pFbPitch = si->lfb_linelength;
+ #else
+     *pPhysicalAddress = 0;
+     *pFbWidth = *pFbHeight = *pFbDepth = *pFbPitch = 0;
