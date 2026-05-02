@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=('base-devel')
 optdepends=(
-	'grim: wlroots-based screen capture'
+	'grim: wlroots-based compositor screen capture'
 	'wl-clipboard: Wayland clipboard'
 )
 conflicts=('oshot' 'oshot-bin')
