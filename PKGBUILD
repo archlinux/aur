@@ -3,14 +3,19 @@
 _basename="pcompiler"
 pkgname="${_basename}-qt5"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Precedence compiler will attempt to automatically compile source code"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/kipr/${_basename}"
-license=('GPL-3.0-only')
+license=(
+  'GPL-3.0-only'
+)
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libstdc++'
   'libkar-qt5'
   'qt5-base'
 )
@@ -21,21 +26,23 @@ provides=(
   "lib${pkgname//-/_}.so"
 )
 _pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${_basename}_qt5.patch")
+source=(
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+  "${pkgname}.patch"
+)
 b2sums=('0c1a00b1e1ae31eb00a4070ed49e5a371af4b8645902e74cc1ec8a019b004b6abb109f46528f64ac9428a9f4bc582b1901c72de92dc6fdb7df67f290ed55bd82'
         '6a4b12be396f5c42619dcec2b40c24942cbe991227c9fc5f811e33a392cfec765ac3def9856cdd31b461ad80237fc1f1e9dfa78269814c53b84a10aa837ae299')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${pkgname//-/_}.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}.patch"
 }
 
 build() {
   local cmake_options=(
-    -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
+    -G 'Unix Makefiles'
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
@@ -44,7 +51,7 @@ build() {
 
   cd "${srcdir}"
   cmake "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake --build "${cmake_options[1]}"
 }
 
 package() {
