@@ -1,7 +1,9 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Izu <ccatdev@proton.me>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
-pkgname=virtiofsd
-pkgver=1.13.3
+pkgname=virtiofsd-git
+_pkgname="${pkgname%-git}"
+pkgver=1.13.3.r15.g4786298
 pkgrel=1
 pkgdesc="Vhost-user virtio-fs device backend written in Rust"
 arch=(x86_64)
@@ -17,33 +19,38 @@ depends=(
   libseccomp
 )
 makedepends=(cargo)
-replaces=(qemu-virtiofsd)
-source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('b11b244ff98d1e96dcf1a960e33d5f0c08514946df1fc96de37fc76b3958daea7f1bc560adcce771841dc5e6447773f2764b36184d29ccb831ec9b86ec2fd8fc')
-b2sums=('6d8ba4da210086d5a53cf02d9980ec56dd8edc0ef0b2421e3a69fc7ea348b5bcf96044f78fd71e011308e79e555ee0bf03cf84f63f048f3f0211759d0249be12')
+provides=('virtiofsd')
+conflicts=('virtiofsd')
+source=("git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd $pkgname-v$pkgver
+  cd $_pkgname
   # use /usr/lib instead of /usr/libexec: https://gitlab.com/virtio-fs/virtiofsd/-/issues/86
-  sed 's/libexec/lib/' -i 50-$pkgname.json
+  sed 's/libexec/lib/' -i 50-$_pkgname.json
 
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
-  cd $pkgname-v$pkgver
+  cd $_pkgname
   cargo build --frozen --release
 }
 
 check() {
-  cd $pkgname-v$pkgver
+  cd $_pkgname
   cargo test --frozen
 }
 
 package() {
-  cd $pkgname-v$pkgver
-  install -vDm 755 target/release/$pkgname -t "$pkgdir/usr/lib/"
-  install -vDm 644 50-$pkgname.json -t "$pkgdir/usr/share/qemu/vhost-user/"
-  install -vDm 644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -vDm 644 README.md doc/*.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd $_pkgname
+  install -vDm 755 target/release/$_pkgname -t "$pkgdir/usr/lib/"
+  install -vDm 644 50-$_pkgname.json -t "$pkgdir/usr/share/qemu/vhost-user/"
+  install -vDm 644 LICENSE* -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -vDm 644 README.md doc/*.md -t "$pkgdir/usr/share/doc/$_pkgname/"
 }

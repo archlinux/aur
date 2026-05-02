@@ -1,6 +1,6 @@
-pkgbase = virtiofsd
+pkgbase = virtiofsd-git
 	pkgdesc = Vhost-user virtio-fs device backend written in Rust
-	pkgver = 1.13.3
+	pkgver = 1.13.3.r15.g4786298
 	pkgrel = 1
 	url = https://gitlab.com/virtio-fs/virtiofsd
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = virtiofsd
 	depends = glibc
 	depends = libcap-ng
 	depends = libseccomp
-	replaces = qemu-virtiofsd
-	source = https://gitlab.com/virtio-fs/virtiofsd/-/archive/v1.13.3/virtiofsd-v1.13.3.tar.gz
-	sha512sums = b11b244ff98d1e96dcf1a960e33d5f0c08514946df1fc96de37fc76b3958daea7f1bc560adcce771841dc5e6447773f2764b36184d29ccb831ec9b86ec2fd8fc
-	b2sums = 6d8ba4da210086d5a53cf02d9980ec56dd8edc0ef0b2421e3a69fc7ea348b5bcf96044f78fd71e011308e79e555ee0bf03cf84f63f048f3f0211759d0249be12
+	provides = virtiofsd
+	conflicts = virtiofsd
+	source = git+https://gitlab.com/virtio-fs/virtiofsd.git
+	sha512sums = SKIP
 
-pkgname = virtiofsd
+pkgname = virtiofsd-git
