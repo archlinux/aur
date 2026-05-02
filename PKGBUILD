@@ -1,6 +1,6 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=pipette-desktop-keychron-bin
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Pipette — Vial-compatible keyboard configurator (AppImage). Keychron fork"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'mesa' 'libappindicator-gtk3
 options=('!strip')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/Tymon3310/pipette-desktop/releases/download/v${pkgver}/Pipette-linux-x86_64.AppImage")
-sha256sums=('9c1e1d0682474dcf86d3852cabbc68a94a4a272755a0908d281957e97107f174')
+sha256sums=('5a4299c7ba896013c48367790d06196db5e458914988212bffd9d9dbeabe73a0')
 
 prepare() {
   cd "$srcdir"
