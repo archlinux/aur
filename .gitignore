@@ -1,0 +1,6 @@
+**/*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!comfyui.sh
+!extra_model_paths.yaml
