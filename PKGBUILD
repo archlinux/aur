@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "mutop-$pkgver"
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
