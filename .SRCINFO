@@ -1,0 +1,18 @@
+pkgbase = python-umodbus
+	pkgdesc = Implementation of the Modbus protocol in pure Python
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/AdvancedClimateSystems/umodbus
+	arch = any
+	license = MPL-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pyserial
+	source = https://files.pythonhosted.org/packages/source/u/uModbus/uModbus-1.0.4.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/AdvancedClimateSystems/umodbus/1.0.4/LICENSE
+	sha256sums = 26bbbeff02d6d8a3e29bb0f9d9044c672d55fc1687afe4297a2f7d68175103a7
+	sha256sums = af175b9d96ee93c21a036152e1b905b0b95304d4ae8c2c921c7609100ba8df7e
+
+pkgname = python-umodbus
