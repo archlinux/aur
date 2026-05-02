@@ -1,8 +1,8 @@
 # Maintainer: David Yusaku <davidyusaku13 at gmail dot com>
 
 pkgname=termul-manager
-pkgver=0.3.2
-pkgrel=12
+pkgver=0.3.4
+pkgrel=1
 pkgdesc='Project-aware terminal that treats workspaces as first-class citizens'
 arch=('x86_64')
 url='https://github.com/gnoviawan/termul'
@@ -30,13 +30,11 @@ source=(
   'form-control-theme.patch'
   'aur-update-check.patch'
 )
-sha256sums=(
-  '34883aed783084c4ae25564df09422bed05941eb75175f2644a91a21c342c328'
-  'e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9'
-  'ff9fc001c5824d2c889f9a719439d113874724fd5d8940036e7c586a36663afd'
-  '01e5030b5add9fc9acfb303e45d4497ff7e2733e2e149dd2b836874edabc2169'
-  'c6dace0649e247b29a9adfbe80a9cbd6ff1d8c855e142cca976559afb9a26987'
-)
+sha256sums=('6f782e369f0595c49c4e039171aadc69211343f841616cd07e555c65c97441f1'
+            'e85a219b574e898ba6f871bb4ec7ec210e49271b62325bb6791fe0be6c00e3c9'
+            'ff9fc001c5824d2c889f9a719439d113874724fd5d8940036e7c586a36663afd'
+            '01e5030b5add9fc9acfb303e45d4497ff7e2733e2e149dd2b836874edabc2169'
+            'c6dace0649e247b29a9adfbe80a9cbd6ff1d8c855e142cca976559afb9a26987')
 
 prepare() {
   cd "termul-$pkgver"
