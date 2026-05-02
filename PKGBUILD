@@ -1,19 +1,19 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
-pkgver=6.2.7
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Single-column Fediverse client for desktop "
 arch=('x86_64')
 url="https://whalebird.social"
 license=('GPL-3.0')
-depends=('electron37>=37.0.0' 'electron37<38.0.0')
+depends=('electron39>=39.0.0' 'electron39<40.0.0')
 makedepends=('yarn' 'tar' 'nodejs>=22.0.0' 'node-gyp' 'git')
 provides=('whalebird')
 conflicts=('whalebird-bin' 'whalebird-desktop-git')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v$pkgver.tar.gz"
         whalebird.desktop
         electron-builder.yml)
-md5sums=('401fd2bb1424cd114a584308a9adf69f'
+md5sums=('5fe7ebfba895bd1f655555e281085ae6'
          '6ab525c54c6e91871d0d6f05a76f5289'
          '480286196dc0614fd14b0d906c00b228')
 
@@ -21,7 +21,7 @@ prepare() {
   cd "whalebird-desktop-${pkgver}"
   rm -f electron-builder.yml
   rm .tool-versions
-  _electronVersion="$(</usr/lib/electron37/version)"
+  _electronVersion="$(</usr/lib/electron39/version)"
   yarn up "electron@$_electronVersion"
 }
 
@@ -36,7 +36,7 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share"
   mv "whalebird-desktop-${pkgver}/dist/linux-unpacked" "${pkgdir}/usr/share/${pkgname}"
-  ln -sf "/usr/share/${pkgname}/Whalebird" "${pkgdir}/usr/bin/whalebird"
+  ln -sf "/usr/share/${pkgname}/whalebird" "${pkgdir}/usr/bin/whalebird"
 
   for i in 16 32 128 256 512; do
     install -Dm 644 "whalebird-desktop-${pkgver}/resources/icons/icon.iconset/icon_${i}x${i}.png" \
