@@ -5,7 +5,7 @@ _pkgname=treehouse
 pkgname=${_pkgname}-bin
 pkgdesc="Manage worktrees without managing worktrees"
 
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
-sha256sums=('21ecaca53063d708ade1e2c964f83a3c639c8f01da892f6c1832b74004c8f93b'
+sha256sums=('b3ea97d3275fd7f1b73469e9e71116b173a397476f1afd8a1f37bd26d4b36b88'
             '1b962d20f826f6a758c737f8aa4e8e76dc719b8aa78fcfacdfb46681bb36c2f4')
-sha256sums_x86_64=('d68cefbd8986ce63c06cf221aaab359387e82530d403ddf868237867acf25a54')
-sha256sums_aarch64=('15a693c95782f159f8f2aaf2f8121cd35af27e862c6e2d81e5c4c8d848bfc35a')
+sha256sums_x86_64=('f5c8c626c0de7557518c3b203f64a5db056ab261f59c56ffa93baed7d956cfd6')
+sha256sums_aarch64=('76c4803e99920712c679e3828d162859db4e992e36cdadd3d270b224aa64b174')
 
 
 package() {
