@@ -1,6 +1,6 @@
 pkgbase = gitmun-bin
   pkgdesc = A cross-platform Git GUI built with Tauri
-  pkgver = 0.3.3
+  pkgver = 0.4.0
   pkgrel = 1
   url = https://github.com/cst8t/gitmun
   install = gitmun.install
@@ -20,8 +20,8 @@ pkgbase = gitmun-bin
   depends = pango
   depends = webkit2gtk-4.1
   source = LICENSE.gitmun
-  source_x86_64 = https://github.com/cst8t/gitmun/releases/download/v0.3.3/Gitmun_0.3.3_amd64.deb
+  source_x86_64 = https://github.com/cst8t/gitmun/releases/download/v0.4.0/Gitmun_0.4.0_amd64.deb
   sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-  sha256sums_x86_64 = be7ec047a3bc991dfa403b35f64dc7f344b864f0a3e4e23274f361936e718eb9
+  sha256sums_x86_64 = 3df5f04a99dd8fa0922572a98154ef6eb8c2e80e4e50e0e932f8a67d305cea96
 
 pkgname = gitmun-bin
