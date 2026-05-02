@@ -1,14 +1,16 @@
 pkgbase = deepcool-digital-linux-git
 	pkgdesc = Linux version for the DeepCool Digital Windows software.
-	pkgver = r48.d80f346
+	pkgver = r146.6c25be6
 	pkgrel = 1
 	url = https://github.com/Nortank12/deepcool-digital-linux
+	install = deepcool-digital-linux-git.install
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
 	makedepends = cargo
 	provides = deepcool-digital-linux
 	conflicts = deepcool-digital-linux
+	options = !lto
 	source = git+https://github.com/Nortank12/deepcool-digital-linux.git
 	source = 99-deepcool-digital.rules
 	source = deepcool-digital.service
