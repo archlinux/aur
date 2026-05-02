@@ -12,6 +12,6 @@ pkgbase = tongfang-control-git
 	provides = tongfang-control=r24.365d515-1
 	conflicts = tongfang-control
 	source = git+https://gitlab.com/siphomateke/tongfang-control.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = tongfang-control-git
