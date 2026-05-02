@@ -1,0 +1,284 @@
+--- tomcat/webapps/pjecalc/WEB-INF/classes/relatorios/calculo/consolidado/consolidado.jrxml
++++ tomcat/webapps/pjecalc/WEB-INF/classes/relatorios/calculo/consolidado/consolidado.jrxml
+@@ -255,22 +255,22 @@
+ 		<band height="114" splitType="Stretch">
+ 			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default" x="628" y="6" width="175" height="13"/>
++				<reportElement style="default" x="628" y="6" width="175" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.numeroDoProcesso]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default-bold" x="573" y="23" width="55" height="13"/>
++				<reportElement style="default-bold" x="573" y="23" width="55" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<text><![CDATA[Cálculo:]]></text>
+ 			</staticText>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default" x="629" y="23" width="97" height="13"/>
++				<reportElement style="default" x="629" y="23" width="97" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.numeroDoCalculo]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default-bold" x="572" y="6" width="55" height="13"/>
++				<reportElement style="default-bold" x="572" y="6" width="55" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<text><![CDATA[Processo:]]></text>
+ 			</staticText>
+@@ -279,57 +279,57 @@
+ 				<imageExpression class="java.io.InputStream"><![CDATA[$P{logo}]]></imageExpression>
+ 			</image>
+ 			<staticText>
+-				<reportElement style="default" x="0" y="59" width="60" height="13"/>
++				<reportElement style="default" x="0" y="59" width="60" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Reclamante:]]></text>
+ 			</staticText>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="96" y="87" width="174" height="13"/>
++				<reportElement style="default-bold" x="96" y="87" width="174" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.periodoDeCalculo.formatInicial("dd/MM/yyyy") + " a " + $P{consolidado}.periodoDeCalculo.formatFinal("dd/MM/yyyy")]]></textFieldExpression>
+ 			</textField>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="60" y="73" width="733" height="13"/>
++				<reportElement style="default-bold" x="60" y="73" width="733" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.reclamado]]></textFieldExpression>
+ 			</textField>
+ 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="626" y="87" width="150" height="13"/>
++				<reportElement style="default-bold" x="626" y="87" width="150" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.util.Date"><![CDATA[$P{consolidado}.dataDaLiquidacao]]></textFieldExpression>
+ 			</textField>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="60" y="59" width="733" height="13"/>
++				<reportElement style="default-bold" x="60" y="59" width="733" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.reclamante]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default" x="537" y="87" width="90" height="13"/>
++				<reportElement style="default" x="537" y="87" width="90" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Data Liquidação:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="default" x="0" y="73" width="60" height="13"/>
++				<reportElement style="default" x="0" y="73" width="60" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Reclamado:]]></text>
+ 			</staticText>
+ 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="367" y="87" width="149" height="13"/>
++				<reportElement style="default-bold" x="367" y="87" width="149" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.util.Date"><![CDATA[$P{consolidado}.dataDeAjuizamento]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default" x="270" y="87" width="97" height="13"/>
++				<reportElement style="default" x="270" y="87" width="97" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Data Ajuizamento:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="default" x="0" y="87" width="98" height="13"/>
++				<reportElement style="default" x="0" y="87" width="98" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Período do Cálculo:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="titulo" x="0" y="41" width="802" height="16"/>
++				<reportElement style="titulo" x="0" y="40" width="802" height="18"/>
+ 				<textElement textAlignment="Center">
+ 					<font size="12"/>
+ 				</textElement>
+@@ -400,77 +400,77 @@
+ 		<band height="114">
+ 			<printWhenExpression><![CDATA[$P{consolidado}.mostrarResumoPrecatorio && ($P{consolidado}.mostrarResumo || $P{consolidado}.mostrarJustificativas || $P{consolidado}.mostrarAlgoAlemDoResumoEJustificativa)]]></printWhenExpression>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default" x="628" y="6" width="175" height="13"/>
++				<reportElement style="default" x="628" y="6" width="175" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.numeroDoProcesso]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default-bold" x="573" y="23" width="55" height="13"/>
++				<reportElement style="default-bold" x="573" y="23" width="55" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<text><![CDATA[Cálculo:]]></text>
+ 			</staticText>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default" x="629" y="23" width="97" height="13"/>
++				<reportElement style="default" x="629" y="23" width="97" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.numeroDoCalculo]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default-bold" x="573" y="6" width="55" height="13"/>
++				<reportElement style="default-bold" x="573" y="6" width="55" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<text><![CDATA[Processo:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="default" x="0" y="59" width="60" height="13"/>
++				<reportElement style="default" x="0" y="59" width="60" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Reclamante:]]></text>
+ 			</staticText>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="96" y="87" width="174" height="13"/>
++				<reportElement style="default-bold" x="96" y="87" width="174" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.periodoDeCalculo.formatInicial("dd/MM/yyyy") + " a " + $P{consolidado}.periodoDeCalculo.formatFinal("dd/MM/yyyy")]]></textFieldExpression>
+ 			</textField>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="60" y="73" width="733" height="13"/>
++				<reportElement style="default-bold" x="60" y="73" width="733" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.reclamado]]></textFieldExpression>
+ 			</textField>
+ 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="626" y="87" width="150" height="13"/>
++				<reportElement style="default-bold" x="626" y="87" width="150" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.util.Date"><![CDATA[$P{consolidado}.dataDaLiquidacao]]></textFieldExpression>
+ 			</textField>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="60" y="59" width="733" height="13"/>
++				<reportElement style="default-bold" x="60" y="59" width="733" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.reclamante]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default" x="537" y="87" width="90" height="13"/>
++				<reportElement style="default" x="537" y="87" width="90" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Data Liquidação:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="default" x="0" y="73" width="60" height="13"/>
++				<reportElement style="default" x="0" y="73" width="60" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Reclamado:]]></text>
+ 			</staticText>
+ 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="367" y="87" width="149" height="13"/>
++				<reportElement style="default-bold" x="367" y="87" width="149" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.util.Date"><![CDATA[$P{consolidado}.dataDeAjuizamento]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default" x="270" y="87" width="97" height="13"/>
++				<reportElement style="default" x="270" y="87" width="97" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Data Ajuizamento:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="default" x="0" y="87" width="98" height="13"/>
++				<reportElement style="default" x="0" y="87" width="98" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Período do Cálculo:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="titulo" x="0" y="43" width="802" height="16"/>
++				<reportElement style="titulo" x="0" y="40" width="802" height="18"/>
+ 				<textElement textAlignment="Center">
+ 					<font size="12"/>
+ 				</textElement>
+@@ -544,77 +544,77 @@
+ 		<band height="114">
+ 			<printWhenExpression><![CDATA[$P{consolidado}.mostrarResumo && $P{consolidado}.mostrarAlgoAlemDoResumoEJustificativa && ($V{PAGE_NUMBER} > 1)]]></printWhenExpression>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default" x="628" y="6" width="175" height="13"/>
++				<reportElement style="default" x="628" y="6" width="175" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.numeroDoProcesso]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default-bold" x="573" y="23" width="55" height="13"/>
++				<reportElement style="default-bold" x="573" y="23" width="55" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<text><![CDATA[Cálculo:]]></text>
+ 			</staticText>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default" x="629" y="23" width="97" height="13"/>
++				<reportElement style="default" x="629" y="23" width="97" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.numeroDoCalculo]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default-bold" x="573" y="6" width="55" height="13"/>
++				<reportElement style="default-bold" x="573" y="6" width="55" height="16"/>
+ 				<textElement textAlignment="Right"/>
+ 				<text><![CDATA[Processo:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="default" x="0" y="59" width="60" height="13"/>
++				<reportElement style="default" x="0" y="59" width="60" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Reclamante:]]></text>
+ 			</staticText>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="96" y="87" width="174" height="13"/>
++				<reportElement style="default-bold" x="96" y="87" width="174" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.periodoDeCalculo.formatInicial("dd/MM/yyyy") + " a " + $P{consolidado}.periodoDeCalculo.formatFinal("dd/MM/yyyy")]]></textFieldExpression>
+ 			</textField>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="60" y="73" width="733" height="13"/>
++				<reportElement style="default-bold" x="60" y="73" width="733" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.reclamado]]></textFieldExpression>
+ 			</textField>
+ 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="626" y="87" width="150" height="13"/>
++				<reportElement style="default-bold" x="626" y="87" width="150" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.util.Date"><![CDATA[$P{consolidado}.dataDaLiquidacao]]></textFieldExpression>
+ 			</textField>
+ 			<textField isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="60" y="59" width="733" height="13"/>
++				<reportElement style="default-bold" x="60" y="59" width="733" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.lang.String"><![CDATA[$P{consolidado}.reclamante]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default" x="537" y="87" width="90" height="13"/>
++				<reportElement style="default" x="537" y="87" width="90" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Data Liquidação:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="default" x="0" y="73" width="60" height="13"/>
++				<reportElement style="default" x="0" y="73" width="60" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Reclamado:]]></text>
+ 			</staticText>
+ 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+-				<reportElement style="default-bold" x="367" y="87" width="149" height="13"/>
++				<reportElement style="default-bold" x="367" y="87" width="149" height="16"/>
+ 				<textElement/>
+ 				<textFieldExpression class="java.util.Date"><![CDATA[$P{consolidado}.dataDeAjuizamento]]></textFieldExpression>
+ 			</textField>
+ 			<staticText>
+-				<reportElement style="default" x="270" y="87" width="97" height="13"/>
++				<reportElement style="default" x="270" y="87" width="97" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Data Ajuizamento:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="default" x="0" y="87" width="98" height="13"/>
++				<reportElement style="default" x="0" y="87" width="98" height="16"/>
+ 				<textElement/>
+ 				<text><![CDATA[Período do Cálculo:]]></text>
+ 			</staticText>
+ 			<staticText>
+-				<reportElement style="titulo" x="0" y="43" width="802" height="16"/>
++				<reportElement style="titulo" x="0" y="40" width="802" height="18"/>
+ 				<textElement textAlignment="Center">
+ 					<font size="12"/>
+ 				</textElement>

@@ -1,6 +1,6 @@
 pkgname=pjecalc-cidadao-bin
 pkgver=2.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='PJe-Calc Cidadao packaged for Arch Linux with a bundled Temurin JRE 8'
 arch=('x86_64')
 url='https://www.trt8.jus.br/pjecalc-cidadao/instalando-o-pje-calc-cidadao'
@@ -18,12 +18,14 @@ _jre_archive='OpenJDK8U-jre_x64_linux_hotspot_8u482b08.tar.gz'
 source=(
   "${_upstream_installer}::https://www.trt8.jus.br/sites/portal/files/roles/pje-calc/${_upstream_installer}"
   "${_jre_archive}::https://download.eclipse.org/temurin-compliance/temurin/8/jdk8u482-b08/${_jre_archive}"
+  'consolidado-header-linux-font-metrics.patch'
   'pjecalc-cidadao.sh'
   'pjecalc-cidadao.desktop'
 )
 sha256sums=(
   '119b59c87a98c3f0e973c0390d098fa594c360b1119d7ea0a8278159819b3838'
   '01672ca52509f4cb1ffa8aed905808fed7b984f3e279cb13d90a6e865ff6199f'
+  '0e8a5c614b95dfafd60cd7f50e3498f1ded297e4a18fbfc3164cb288d5a2fe7b'
   'SKIP'
   'SKIP'
 )
@@ -51,6 +53,7 @@ package() {
 
   install -d "${appdir}"
   cp -r --no-preserve=ownership "upstream/${_upstream_dir}/." "${appdir}/"
+  patch -d "${appdir}" -p0 < "${srcdir}/consolidado-header-linux-font-metrics.patch"
 
   rm -rf "${appdir}/bin/jre" "${appdir}/navegador"
   rm -f \

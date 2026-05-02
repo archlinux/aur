@@ -1,7 +1,7 @@
 pkgbase = pjecalc-cidadao-bin
 	pkgdesc = PJe-Calc Cidadao packaged for Arch Linux with a bundled Temurin JRE 8
 	pkgver = 2.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.trt8.jus.br/pjecalc-cidadao/instalando-o-pje-calc-cidadao
 	arch = x86_64
 	license = custom
@@ -14,10 +14,12 @@ pkgbase = pjecalc-cidadao-bin
 	options = !strip
 	source = pjecalc-2.15.1-instalador-x64.exe::https://www.trt8.jus.br/sites/portal/files/roles/pje-calc/pjecalc-2.15.1-instalador-x64.exe
 	source = OpenJDK8U-jre_x64_linux_hotspot_8u482b08.tar.gz::https://download.eclipse.org/temurin-compliance/temurin/8/jdk8u482-b08/OpenJDK8U-jre_x64_linux_hotspot_8u482b08.tar.gz
+	source = consolidado-header-linux-font-metrics.patch
 	source = pjecalc-cidadao.sh
 	source = pjecalc-cidadao.desktop
 	sha256sums = 119b59c87a98c3f0e973c0390d098fa594c360b1119d7ea0a8278159819b3838
 	sha256sums = 01672ca52509f4cb1ffa8aed905808fed7b984f3e279cb13d90a6e865ff6199f
+	sha256sums = 0e8a5c614b95dfafd60cd7f50e3498f1ded297e4a18fbfc3164cb288d5a2fe7b
 	sha256sums = SKIP
 	sha256sums = SKIP
 
