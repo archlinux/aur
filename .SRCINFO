@@ -2,6 +2,7 @@ pkgbase = hyprland-focused-booster
 	pkgdesc = Active window VRAM booster for Hyprland
 	pkgver = 0.1.2
 	pkgrel = 1
+	url = https://github.com/tumrin/hyprland-focused-booster
 	install = hyprland-focused-booster.install
 	arch = x86_64
 	license = MIT
