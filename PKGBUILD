@@ -13,7 +13,7 @@ optdepends=('noto-fonts-cjk: CJK font support')
 provides=('subs2srs' 'subs2srs-gui')
 conflicts=('subs2srs' 'subs2srs-gui' 'subs2srs-mono-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('07820c92b30cd46d05f13a04dada3399654ba132674857c65b0806af20b06d16')
+sha256sums=('4f4d60858faf310d650f4e9fb50f79af51968146e8c010c3a431f1ce2b8dafa7')
 
 build() {
     cd "${_pkgname}-${pkgver}"
