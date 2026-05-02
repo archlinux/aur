@@ -1,0 +1,9 @@
+post_install() {
+    echo "==> m913-ctl: udev rule installed."
+    echo "==> Replug the mouse receiver, or run:"
+    echo "==>   sudo udevadm trigger"
+}
+
+post_upgrade() {
+    post_install
+}
