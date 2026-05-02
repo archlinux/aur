@@ -1,0 +1,16 @@
+pkgbase = python-comfyui-embedded-docs
+	pkgdesc = ComfyUI help pages
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/Comfy-Org/embedded-docs/
+	arch = any
+	license = GPL-3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/comfyui-embedded-docs/comfyui_embedded_docs-0.4.4.tar.gz
+	sha512sums = d39554af6b9aefe1221a138825d938b16230b722febafe54090ae10919bc677c066ab3d810d7340823ebf0d3e25bc3424a76d4a1a2e9aff98546a5258307d8bd
+
+pkgname = python-comfyui-embedded-docs
