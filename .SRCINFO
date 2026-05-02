@@ -1,0 +1,17 @@
+pkgbase = dav2d-git
+	pkgver = 0.0.1.r3.ge4a4fb2
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/dav2d
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = meson
+	makedepends = ninja
+	makedepends = nasm
+	makedepends = git
+	depends = glibc
+	provides = dav2d
+	conflicts = dav2d
+	source = git+https://code.videolan.org/videolan/dav2d.git
+	sha256sums = SKIP
+
+pkgname = dav2d-git
