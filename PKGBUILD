@@ -1,6 +1,6 @@
 # Maintainer: Konrad Wasowicz <exaroth@gmail.com>
 pkgname=liveboat
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Static page generator for Newsboat feeds"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=("https://github.com/exaroth/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 # Non standard
 _newsboat_githash="1ea89e860553634e37daf1cc6de2e00a379d6378"
 _target="x86_64-unknown-linux-gnu"
-md5sums=('59052e65645a267d1b2edc2c5f9f33b4')
+md5sums=('c415e56878e134aa7be13f2cab2ce5fd')
 
 prepare() {
     cd "$pkgname-$pkgver"
