@@ -2,12 +2,13 @@
 
 pkgname=fence
 pkgver=0.1.54
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, container-free sandbox for running untrusted commands"
 arch=('x86_64')
 url="https://github.com/Use-Tusk/fence"
 license=('Apache-2.0')
 depends=('bubblewrap' 'socat')
+optdepends=('bpftrace: filesystem violation visibility when monitoring with -m')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Use-Tusk/fence/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('5bb6064189e154e3223c3afb28cc12d28aae88f7f6efbd4c1b87d2452df5c16c')
