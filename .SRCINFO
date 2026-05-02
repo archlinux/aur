@@ -1,0 +1,19 @@
+pkgbase = dark-dream
+	pkgdesc = SDL2 and OpenGL for wirite FPS games: Dark-Dream
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/gamestime102/Dark-Dream/Dark-Dream
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = glu
+	depends = libgl
+	provides = dark-dream
+	conflicts = dark-dream
+	source = git+https://gitlab.com/gamestime102/Dark-Dream/Dark-Dream.git
+	sha256sums = SKIP
+
+pkgname = dark-dream
