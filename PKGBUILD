@@ -4,7 +4,7 @@
 
 pkgname=doas
 pkgver=6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos, macOS and MidnightBSD"
 license=('BSD')
 url="https://codeberg.org/thejessesmith/doas/"
@@ -17,7 +17,7 @@ backup=('etc/doas.conf'
         'etc/pam.d/doas')
 install="doas.install"
 changelog="doas.changelog"
-provides=('opendoas')
+provides=('')
 conflicts=('opendoas' 'opendoas-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'doas-pam'
