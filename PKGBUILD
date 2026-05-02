@@ -1,8 +1,8 @@
 # Maintainer: dougy147 <luc@dougy147.com>
 pkgname=mcbash
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
-pkgdesc="scan for valid MAC addresses on some IPTV platforms"
+pkgdesc="Customizable and user-friendly MAC scanner."
 arch=(x86_64 i686)
 url="https://github.com/dougy147/mcbash.git"
 license=('GPL')

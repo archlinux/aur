@@ -1,6 +1,6 @@
 pkgbase = mcbash
-	pkgdesc = scan for valid MAC addresses on some IPTV platforms
-	pkgver = 0.8.6
+	pkgdesc = Customizable and user-friendly MAC scanner.
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://github.com/dougy147/mcbash.git
 	arch = x86_64
