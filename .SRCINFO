@@ -1,0 +1,15 @@
+pkgbase = whoneeds
+	pkgdesc = Show explicitly installed Arch packages that depend on a package
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/RubenKelevra/whoneeds
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cargo
+	depends = pacman-contrib
+	conflicts = pkgtools
+	conflicts = pkgtools-git
+	source = whoneeds-1.0.tar.gz::https://github.com/RubenKelevra/whoneeds/archive/v1.0.tar.gz
+	b2sums = cf74cdf3b7b30a7b0064d94beb7880b4248bad82e8aefba3eea60fe4c9b8e7482c0b0897693e9d4a37518d9f40968a8941f87bda34326e57ea33e377de3fa9b0
+
+pkgname = whoneeds
