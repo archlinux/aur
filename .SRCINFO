@@ -1,0 +1,22 @@
+pkgbase = blutter-git
+	pkgdesc = Flutter/Dart reverse engineering tool — disassembles libapp.so with symbol recovery and Frida script generation
+	pkgver = r111.528acbe
+	pkgrel = 1
+	url = https://github.com/worawit/blutter
+	arch = x86_64
+	license = MIT
+	depends = capstone
+	depends = cmake
+	depends = gcc
+	depends = icu
+	depends = git
+	depends = ninja
+	depends = python
+	depends = python-pyelftools
+	depends = python-requests
+	provides = blutter
+	conflicts = blutter
+	source = git+https://github.com/worawit/blutter.git
+	sha256sums = SKIP
+
+pkgname = blutter-git
