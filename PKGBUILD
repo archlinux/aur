@@ -1,6 +1,6 @@
 # Maintainer: Heisenberg (KlapkiSzatana)
 pkgname=budget-app
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="Zarządzanie Budżetem Domowym"
 arch=('any')
