@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=14.5.11
+pkgver=14.5.14
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
@@ -11,15 +11,18 @@ depends=('gcc-libs' 'glibc' 'icu' 'zlib')
 makedepends=('bun' 'rustup' 'zig')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5b45fb5f16593f7e45f6b0bc72aa303b46afa0e52a24fbb3e1f6ce254bca6e7d')
+sha256sums=('56d87db59d220863bd841e6fac4da16d207c5b1083408515da32196843bca03e')
 
 build() {
     cd "${srcdir}/oh-my-pi-${pkgver}"
 
-    local _toolchain='nightly-2026-03-27'
-    local _rust_target='x86_64-unknown-linux-gnu'
-    local _baseline_target="${srcdir}/target-baseline"
-    local _modern_target="${srcdir}/target-modern"
+    local _toolchain
+
+    _toolchain="$(awk -F'\"' '/^channel = / { print $2; exit }' rust-toolchain.toml)"
+    if [[ -z "${_toolchain}" ]]; then
+        msg2 "Unable to determine rustup toolchain from rust-toolchain.toml"
+        return 1
+    fi
 
     if ! rustup run "${_toolchain}" rustc --version >/dev/null 2>&1; then
         msg2 "Installing rustup toolchain ${_toolchain}..."
@@ -30,31 +33,17 @@ build() {
     export RUSTUP_TOOLCHAIN="${_toolchain}"
     unset CI CC CXX CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
 
-    bun install
+    bun install --frozen-lockfile
 
-    if [ -e "${_baseline_target}" ]; then rm -r "${_baseline_target}"; fi
-    if [ -e "${_modern_target}" ]; then rm -r "${_modern_target}"; fi
+    CI=1 TARGET_PLATFORM='linux' TARGET_ARCH='x64' TARGET_VARIANTS='baseline modern' \
+        bun run ci:build:native
 
-    CARGO_TARGET_DIR="${_baseline_target}" RUSTFLAGS='-C target-cpu=x86-64-v2' \
-        cargo build --release --target "${_rust_target}" -p pi-natives
-    install -Dm755 "${_baseline_target}/${_rust_target}/release/libpi_natives.so" \
-        "packages/natives/native/pi_natives.linux-x64-baseline.node"
-
-    CARGO_TARGET_DIR="${_modern_target}" RUSTFLAGS='-C target-cpu=x86-64-v3' \
-        cargo build --release --target "${_rust_target}" -p pi-natives
-    install -Dm755 "${_modern_target}/${_rust_target}/release/libpi_natives.so" \
-        "packages/natives/native/pi_natives.linux-x64-modern.node"
-
-    bun --cwd=packages/coding-agent run build
+    RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
 }
 
 package() {
     cd "${srcdir}/oh-my-pi-${pkgver}"
 
-    install -Dm755 "packages/coding-agent/dist/omp" "${pkgdir}/usr/bin/omp"
-    install -Dm755 "packages/natives/native/pi_natives.linux-x64-baseline.node" \
-        "${pkgdir}/usr/bin/pi_natives.linux-x64-baseline.node"
-    install -Dm755 "packages/natives/native/pi_natives.linux-x64-modern.node" \
-        "${pkgdir}/usr/bin/pi_natives.linux-x64-modern.node"
+    install -Dm755 "packages/coding-agent/binaries/omp-linux-x64" "${pkgdir}/usr/bin/omp"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

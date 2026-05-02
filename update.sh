@@ -41,13 +41,20 @@ tmp_files=()
 
 cleanup() {
     if ((${#tmp_files[@]})); then
-        rm -f -- "${tmp_files[@]}"
+        rm -rf -- "${tmp_files[@]}"
     fi
 }
 
 new_tmp() {
     local tmp
     tmp="$(mktemp)" || fail "unable to create temporary file"
+    tmp_files+=("$tmp")
+    printf '%s\n' "$tmp"
+}
+
+new_tmp_dir() {
+    local tmp
+    tmp="$(mktemp -d)" || fail "unable to create temporary directory"
     tmp_files+=("$tmp")
     printf '%s\n' "$tmp"
 }
@@ -155,7 +162,14 @@ cmd mv "$pkgbuild_tmp" PKGBUILD
 
 cmd makepkg || fail "makepkg failed"
 cmd makepkg --printsrcinfo >.SRCINFO  || fail "failed to regenerate .SRCINFO"
-cmd pkg/oh-my-pi/usr/bin/omp --version || fail "failed to run omp --version"
+
+if compgen -G 'pkg/oh-my-pi/usr/bin/pi_natives*.node' >/dev/null; then
+    fail "standalone pi_natives addon files were packaged unexpectedly"
+fi
+
+runtime_dir="$(new_tmp_dir)"
+cmd env HOME="${runtime_dir}/home" XDG_DATA_HOME="${runtime_dir}/xdg" \
+    pkg/oh-my-pi/usr/bin/omp --version || fail "failed to run omp --version"
 cmd git add PKGBUILD .SRCINFO
 cmd git --no-pager diff --cached
 
