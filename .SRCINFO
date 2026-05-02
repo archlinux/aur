@@ -1,13 +1,14 @@
 pkgbase = arrowkeyoracle
 	pkgdesc = Predict if the user is going to press the left or the right arrow key
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/xyproto/arrowkeyoracle
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/xyproto/arrowkeyoracle#commit=cb09f2066ca67f23f81bae4ae54f5c4ba3cea73b
-	b2sums = SKIP
+	depends = glibc
+	source = git+https://github.com/xyproto/arrowkeyoracle#tag=v1.0.2
+	b2sums = 3d5cfa60f97ceeaea4962c4fbf138b5bcee536d1e0b167256ee43485b90061626dba431518e5971c39cc22c71d50e1d1ba53f94ef66bdfc881b35bc4c4a10f43
 
 pkgname = arrowkeyoracle

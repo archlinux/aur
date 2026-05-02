@@ -1,19 +1,20 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=arrowkeyoracle
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Predict if the user is going to press the left or the right arrow key'
 arch=(x86_64)
 url='https://github.com/xyproto/arrowkeyoracle'
-license=(BSD)
+license=(BSD-3-Clause)
+depends=(glibc)
 makedepends=(git go)
-source=("git+$url#commit=cb09f2066ca67f23f81bae4ae54f5c4ba3cea73b") # tag: v1.0.0
-b2sums=('SKIP')
+source=("git+$url#tag=v$pkgver")
+b2sums=('3d5cfa60f97ceeaea4962c4fbf138b5bcee536d1e0b167256ee43485b90061626dba431518e5971c39cc22c71d50e1d1ba53f94ef66bdfc881b35bc4c4a10f43')
 
 build() {
   cd $pkgname
-  go build -v -mod=vendor -trimpath -buildmode=pie -ldflags="-s -w -extldflags $LDFLAGS"
+  go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags="-s -w -linkmode=external -extldflags '$LDFLAGS'"
 }
 
 package() {
