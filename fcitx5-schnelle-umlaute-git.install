@@ -19,7 +19,7 @@ EOM
 }
 
 post_upgrade() {
-    : # Nothing to do on upgrade — env-vars persist across rebuilds.
+    echo "==> First-time install on this user account? Run once: schnelle-umlaute-setup"
 }
 
 post_remove() {
