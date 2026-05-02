@@ -1,0 +1,17 @@
+pkgbase = rime-llm-translator-git
+	pkgdesc = 给Rime输入法接入大模型进行云拼音、联想候选词
+	pkgver = r16.903403e
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/rime-llm-translator
+	install = rime-llm-translator-git.install
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = python
+	depends = fcitx5-rime
+	provides = rime-llm-translator
+	conflicts = rime-llm-translator
+	source = git+https://github.com/SHORiN-KiWATA/rime-llm-translator.git
+	sha256sums = SKIP
+
+pkgname = rime-llm-translator-git
