@@ -1,0 +1,5 @@
+[magisk-elf-cleaner]
+source = "github"
+github = "topjohnwu/Magisk"
+use_latest_release = true
+prefix = "v"

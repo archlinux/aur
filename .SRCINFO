@@ -1,0 +1,14 @@
+pkgbase = magisk-elf-cleaner
+	pkgdesc = Utility to remove unused ELF sections causing warnings
+	pkgver = 30.7
+	pkgrel = 1
+	url = https://github.com/topjohnwu/Magisk/tree/master/tools/elf-cleaner
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/topjohnwu/Magisk/archive/refs/tags/v30.7/Magisk-30.7.tar.gz
+	b2sums = dcf7655ac54033caca2df446c06845e759c8ee88f2c47cbc1e292d00135ddd6820646db6733c9ee439bd1eb6c56fb65eb449ca92280b45d33cb8122eb07ac598
+
+pkgname = magisk-elf-cleaner
