@@ -1,10 +1,11 @@
 pkgbase = jj-bin
 	pkgdesc = JSON Stream Editor (command line utility)
 	pkgver = 1.9.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tidwall/jj
 	arch = x86_64
 	license = MIT
+	provides = jj
 	conflicts = jujutsu
 	source = https://github.com/tidwall/jj/raw/master/LICENSE
 	source = https://github.com/tidwall/jj/releases/download/v1.9.2/jj-1.9.2-linux-amd64.tar.gz
