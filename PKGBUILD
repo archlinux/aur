@@ -17,6 +17,10 @@ sha256sums=('f3c59b6393065aa03658b037ce9e58978845fea86bafe7315306868065353d5a')
 
 build() {
     cd "wshowlyrics-v$pkgver"
+    # Ensure a fresh meson setup. Without this, a cached build/ from an
+    # older meson minor version (e.g. 1.10 -> 1.11) refuses to compile
+    # for users who pass `makepkg -e` (skip extract).
+    rm -rf build
     arch-meson . build
     meson compile -C build
 }
