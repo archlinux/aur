@@ -1,22 +1,2 @@
 # Arch makepkg install hook for sentinel / sentinel-git.
-
-post_install() {
-    cat <<'EOM'
-
-==> Sentinel is installed. The polkit agent ships as an XDG autostart
-==> entry at /etc/xdg/autostart/sentinel-polkit-agent.desktop.
-==> It will activate the next time you log into a graphical session
-==> (cosmic-comp, Hyprland, Sway, Wayfire — desktops listed in
-==> OnlyShowIn). On GNOME/KDE/XFCE it is suppressed by NotShowIn so
-==> their built-in agents stay in charge.
-==>
-==> To verify after re-login:
-==>     pgrep -af sentinel-polkit-agent
-==>     pkexec true       # should pop the Sentinel dialog (only)
-
-EOM
-}
-
-post_upgrade() {
-    post_install
-}
+# Intentionally empty — keep pacman output quiet on install / upgrade.
