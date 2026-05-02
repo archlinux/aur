@@ -1,0 +1,39 @@
+[Unit]
+Description=moshpits remote terminal server
+Documentation=man:mps(1)
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=moshpits
+Group=moshpits
+
+ExecStart=/usr/bin/mps
+Restart=on-failure
+RestartSec=5s
+
+# Override the config file location so mps reads from /etc/moshpits/moshpits.toml
+# when a system-wide config is desired.  Comment out to fall back to the user
+# config at ~/.config/moshpits/moshpits.toml (inside the moshpits home dir).
+# Environment=MOSHPITS_CONFIG_ABSOLUTE_PATH=/etc/moshpits/moshpits.toml
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,66 @@
+post_install() {
+    # Create the moshpits system user if it does not already exist
+    if ! id moshpits &>/dev/null; then
+        useradd \
+            --system \
+            --no-create-home \
+            --shell /usr/bin/nologin \
+            --comment "moshpits server daemon" \
+            moshpits
+    fi
+
+    echo ""
+    echo "  ── moshpits post-install notes ──────────────────────────────────────────"
+    echo ""
+    echo "  1. Generate a server host key pair (run once as the moshpits user):"
+    echo ""
+    echo "       sudo -u moshpits mp-keygen generate"
+    echo "       # Accept the suggested path:  ~/.mp/mps_host_ed25519_key"
+    echo "       # Set a strong passphrase when prompted."
+    echo ""
+    echo "  2. Create a config file at one of these locations:"
+    echo ""
+    echo "       /home/moshpits/.config/moshpits/moshpits.toml  (user config)"
+    echo "       /etc/moshpits/moshpits.toml                    (system config)"
+    echo ""
+    echo "     An annotated example is at:"
+    echo "       /usr/share/doc/moshpits/examples/moshpits.toml.example"
+    echo ""
+    echo "  3. Open the required ports in your firewall:"
+    echo ""
+    echo "       TCP inbound:  40404  (control / key-exchange channel)"
+    echo "       UDP inbound:  50000–59999  (encrypted terminal data)"
+    echo ""
+    echo "  4. Enable and start the service:"
+    echo ""
+    echo "       systemctl enable --now mps"
+    echo ""
+    echo "  ─────────────────────────────────────────────────────────────────────────"
+    echo ""
+}
+
+post_upgrade() {
+    # Reload and restart to pick up the new binary
+    if systemctl is-enabled --quiet mps; then
+        systemctl daemon-reload
+        systemctl restart mps
+        echo "  mps restarted."
+    fi
+}
+
+pre_remove() {
+    # Stop and disable the service before removing files
+    if systemctl is-active --quiet mps; then
+        systemctl stop mps
+    fi
+    if systemctl is-enabled --quiet mps; then
+        systemctl disable mps
+    fi
+}
+
+post_remove() {
+    # Remove the system user created during installation
+    if id moshpits &>/dev/null; then
+        userdel moshpits
+    fi
+}
