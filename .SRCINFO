@@ -1,6 +1,6 @@
 pkgbase = nvidia-470xx-utils
 	pkgver = 470.256.02
-	pkgrel = 8.01
+	pkgrel = 8.02
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -23,6 +23,9 @@ pkgbase = nvidia-470xx-utils
 	source = nvidia-470xx-fix-linux-6.17.patch
 	source = nvidia-470xx-fix-linux-6.19-part1.patch
 	source = nvidia-470xx-fix-linux-6.19-part2.patch
+	source = nvidia-470xx-fix-linux-7.0.patch
+	source = disable-objtool-override.patch
+	source = enable-drm-modeset-by-default.patch
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
 	sha512sums = 4e870d1ec819e74757a65762484a44fea2c71d090f0898c7f8c193fc8539c29f3b14ecec9d1216ed23d6978ade9e7376f81c7d8242b7005c8c067171eb6df40a
@@ -41,6 +44,9 @@ pkgbase = nvidia-470xx-utils
 	sha512sums = 7d68cfc8d088e53a7724104d4093c7b43b863caa0a937598cc4ad22161d69f2e2c15e0c9fc65813c05685d0995966a9f40cdfe86949bb921acfb3de51200453f
 	sha512sums = 9267dfcefbfd1e4e0f7a6661c151aa1626c15b6091766876a23e7e0dd20068a7279b0af2b38153f6ab219ccd5239ee7df0eeecaf754b5ab5dd8286508cb3be34
 	sha512sums = 9962feaf22b32b3fe7e3125eaafe7319a2bb45ab11482260701b06c6994104e64110466156b22ecc6cd9f493f18575ca56365ede90162b6f7d03877e7c679167
+	sha512sums = e66049ce8928359059d7c278b4d71b8706455ddf4397e12f43bd3781bc3451c9320268e46f99c6420743aa8accaae7fac89c7c85099971a69cb977f0fbcdee70
+	sha512sums = 2ced920b879b9c64e3f57269bda5803f25109bd9d0bfeb53a780329beeccb974dac614e9915d798a9678136eee3415b27b7027a7da4b1889fe1286b64ccbeafc
+	sha512sums = b753ccf7ee39231e07aad908f907e1a8314f4c055af317b21add6a438dcc1c8b21da027debe5ddda5229f5c250a724a2bb46b739bd2e70633dd08dca19ea7d99
 
 pkgname = nvidia-470xx-utils
 	pkgdesc = NVIDIA drivers utilities

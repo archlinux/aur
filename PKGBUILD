@@ -9,7 +9,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.256.02
-pkgrel=8.01
+pkgrel=8.02
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -33,6 +33,9 @@ source=('nvidia-drm-outputclass.conf'
         "nvidia-470xx-fix-linux-6.17.patch"
         "nvidia-470xx-fix-linux-6.19-part1.patch"
         "nvidia-470xx-fix-linux-6.19-part2.patch"
+        "nvidia-470xx-fix-linux-7.0.patch"
+        "disable-objtool-override.patch"
+        "enable-drm-modeset-by-default.patch"
         )
 
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
@@ -52,7 +55,10 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             '556c6575f413a7e877d40de2533e65b80857d38f26cd31c2257cdde08818293e761105ac689f006829f8d18387ffbf72f5d5c9d03cb57ccab7a620bb98dbe033'
             '7d68cfc8d088e53a7724104d4093c7b43b863caa0a937598cc4ad22161d69f2e2c15e0c9fc65813c05685d0995966a9f40cdfe86949bb921acfb3de51200453f'
             '9267dfcefbfd1e4e0f7a6661c151aa1626c15b6091766876a23e7e0dd20068a7279b0af2b38153f6ab219ccd5239ee7df0eeecaf754b5ab5dd8286508cb3be34'
-            '9962feaf22b32b3fe7e3125eaafe7319a2bb45ab11482260701b06c6994104e64110466156b22ecc6cd9f493f18575ca56365ede90162b6f7d03877e7c679167')
+            '9962feaf22b32b3fe7e3125eaafe7319a2bb45ab11482260701b06c6994104e64110466156b22ecc6cd9f493f18575ca56365ede90162b6f7d03877e7c679167'
+            'e66049ce8928359059d7c278b4d71b8706455ddf4397e12f43bd3781bc3451c9320268e46f99c6420743aa8accaae7fac89c7c85099971a69cb977f0fbcdee70'
+            '2ced920b879b9c64e3f57269bda5803f25109bd9d0bfeb53a780329beeccb974dac614e9915d798a9678136eee3415b27b7027a7da4b1889fe1286b64ccbeafc'
+            'b753ccf7ee39231e07aad908f907e1a8314f4c055af317b21add6a438dcc1c8b21da027debe5ddda5229f5c250a724a2bb46b739bd2e70633dd08dca19ea7d99')
 
 create_links() {
     # create soname links
@@ -78,18 +84,22 @@ prepare() {
      #patch -p1 -i "${srcdir}/0006-Fix-CFLAGS-set-std-gnu17-for-all-compilation-flags.patch"
 
 #    patch -p1 -i "${srcdir}/kernel-6.1.76_6.6.15_6.7.3.patch"
-    patch -p1 -i "${srcdir}/nvidia-470xx-fix-gcc-15.patch"
 #    patch -p1 -i "${srcdir}/kernel-6.4.patch"
 #    patch -p1 -i "${srcdir}/kernel-6.5.patch"
 #    patch -p1 -i "${srcdir}/kernel-6.6.patch"
     patch -p1 -i "${srcdir}/kernel-6.10.patch"
     patch -p1 -i "${srcdir}/kernel-6.12.patch"
+    patch -p1 -i "${srcdir}/nvidia-470xx-fix-gcc-15.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.13.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.14.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.15.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.17.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.19-part1.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.19-part2.patch"
+    patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-7.0.patch"
+    
+    patch -p1 -i "${srcdir}/disable-objtool-override.patch"
+    patch -p1 -i "${srcdir}/enable-drm-modeset-by-default.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
