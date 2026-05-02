@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("agtop-${pkgver}.tar.gz::https://github.com/mbrassey/agtop/archive/v${pkgver}.tar.gz")
-sha256sums=('34ec4480ba8180edb2c009677bc8e1ebe29ee8d5d112275bfae4c7407b238967')
+sha256sums=('d167742d3607d37f6c4c30f517d3ef34d15c3abf1c10891e91aec08319990f69')
 options=('!debug')
 
 prepare() {
