@@ -1,6 +1,6 @@
 pkgbase = monado-multilib-git
 	pkgdesc = The open source OpenXR runtime. (32 bit support)
-	pkgver = 25.0.0.r317.gbf6080c3b
+	pkgver = 25.1.0.r441.gfea2ceb6f
 	pkgrel = 1
 	url = https://monado.dev
 	install = monado.install
@@ -15,9 +15,15 @@ pkgbase = monado-multilib-git
 	makedepends = vulkan-headers
 	makedepends = python
 	makedepends = wayland-protocols
+	depends = glibc
+	depends = lib32-glibc
+	depends = libgcc
+	depends = lib32-gcc-libs
 	depends = openxr
 	depends = vulkan-icd-loader
+	depends = lib32-vulkan-icd-loader
 	depends = libgl
+	depends = lib32-libglvnd
 	depends = wayland
 	depends = xr-hardware
 	depends = libcap
@@ -33,7 +39,7 @@ pkgbase = monado-multilib-git
 	optdepends = basalt-monado-git: experimental SLAM tracking through basalt
 	optdepends = percetto: tracing support for performance debugging (must be present at build time)
 	provides = openxr-runtime
-	provides = monado=25.0.0.r317.gbf6080c3b
+	provides = monado=25.1.0.r441.gfea2ceb6f
 	conflicts = monado
 	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git#branch=main
 	md5sums = SKIP
