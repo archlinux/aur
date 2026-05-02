@@ -2,7 +2,7 @@
 
 pkgname=m3u8-downloader-colzry-bin
 _pkgname=m3u8-downloader
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="A concise m3u8 video downloader / 一款简洁的 m3u8 视频下载器"
 arch=('x86_64')
