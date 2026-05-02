@@ -1,0 +1,15 @@
+pkgbase = uutils-awk-git
+	pkgdesc = Rust implementation of gawk
+	pkgver = 0.1.0.r18.9ce8327
+	pkgrel = 1
+	url = https://github.com/uutils/awk
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
+	source = uutils-awk::git+https://github.com/uutils/awk.git
+	b2sums = SKIP
+
+pkgname = uutils-awk-git
