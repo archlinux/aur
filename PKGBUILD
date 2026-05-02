@@ -124,10 +124,10 @@ package_aescrypt_cli() {
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
   cd "${pkgdir}/usr"
-  rm "bin/aescrypt-gui"
+  rm -f "bin/aescrypt-gui"
 
   find "share" -mindepth 1 -maxdepth 1 -type d ! -name 'man' -exec \
-    rm -vrf "{}" +
+    rm -rf "{}" +
 
   cd "${srcdir}/${_pkgsrc}"
   install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
@@ -165,7 +165,7 @@ package_aescrypt_gui() {
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
   cd "${pkgdir}/usr"
-  rm "bin/aescrypt"
+  rm -f "bin/aescrypt"
 
   cd "share"
   rm -rf "licenses" "man"
