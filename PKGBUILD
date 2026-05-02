@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'zlib')
 makedepends=('git' 'cmake')
 source=("eternity::git+https://github.com/team-eternity/eternity.git#tag=${pkgver}"
