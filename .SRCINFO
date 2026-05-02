@@ -1,0 +1,16 @@
+pkgbase = python-comfyui-workflow-templates-media-other
+	pkgdesc = Media bundle containing audio/3D/misc workflow assets
+	pkgver = 0.3.187
+	pkgrel = 1
+	url = https://github.com/Comfy-Org/workflow_templates/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates-media-other/comfyui_workflow_templates_media_other-0.3.187.tar.gz
+	sha512sums = 696a7c3acfb3be045acefc2fd1cb8a974b8312001d962a09cdaec3a450128f04155493e303218845c2ceb2bb21ca4d774d5ec01ebdd644f75efc530c3ca2e73d
+
+pkgname = python-comfyui-workflow-templates-media-other
