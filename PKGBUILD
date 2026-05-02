@@ -2,7 +2,7 @@
 
 pkgname=omniroute-bin
 pkgver=3.7.8 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
-pkgrel=3
+pkgrel=1
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
@@ -18,7 +18,7 @@ source=(
   'omniroute.service'
   '.env.example'
 )
-sha512sums=('bdc506626b33854d1d334ca438c184c0743b070590ab2a49340c6bc0582a06c016e1206830b8e93ce578ca5c96c3b1a3e151b6900e4c0ad7479fd49971388189'
+sha512sums=('10f33c4a1cbea2e0855aa5f58c40d7d4d1bc0a3231fa0830d7a21bf33663088c1a5dc1be70f124ccb8162c8532121ead71386342965cb997ac17c01b097ff4c5'
             '1ea7cea23b87ea3eeb4a204ce54d9a32f666a365570b40d5b7c5a1bb2b85820f40d49b29d91bc1774351b4c82a83cdaa26a693e2f3a23752da3b53bea758e8fe'
             'f0097170061b862d53f82efa17534e10ad2d8e5666b25ad1011f0908a688099f374c8fb752fe313d12b7523886b4b5b11247c04b2850f08edbb88f1cf7a71502'
             '50256ea8d6eaed68e90c877776df8203954af174d9dabe451b1e23543f7704bf90be785dcf62b34f9cf6afc4e2702fee68109d60686e3343575b78605034f685')
