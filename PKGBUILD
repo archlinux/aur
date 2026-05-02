@@ -1,6 +1,6 @@
 # Maintainer: Arsenii Sahalianov <aywski@gmail.com>
 pkgname=orbitty
-pkgver=0.1.0
+pkgver=0.1
 pkgrel=1
 pkgdesc="Terminal idle screensaver with spinning planets"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/aywski/orbitty"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('ef4183b7ab95fc3f243e811684577b8f1143684924a2415f26c3ea0d438071f3')
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = orbitty
 	pkgdesc = Terminal idle screensaver with spinning planets
-	pkgver = 0.1.0
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/aywski/orbitty
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = orbitty
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = orbitty-0.1.0.tar.gz::https://github.com/aywski/orbitty/archive/refs/tags/v0.1.0.tar.gz
+	source = orbitty-0.1.tar.gz::https://github.com/aywski/orbitty/archive/refs/tags/0.1.tar.gz
 	sha256sums = ef4183b7ab95fc3f243e811684577b8f1143684924a2415f26c3ea0d438071f3
 
 pkgname = orbitty
