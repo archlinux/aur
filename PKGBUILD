@@ -6,13 +6,13 @@ provides=(coolreader crqt-ng crqt-ng-git)
 conflicts=(coolreader crqt-ng-git)
 pkgver=1.0.15
 _pkgver=${pkgver//_/-}
-pkgrel=4
+pkgrel=5
 pkgdesc='Cross-platform open source e-book reader using crengine-ng.'
 arch=('x86_64')
 url='https://gitlab.com/coolreader-ng/crqt-ng'
 license=('GPL-2')
 depends=('crengine-ng' 'fribidi' 'hicolor-icon-theme' 'libunibreak' 'qt6-base' 'qt6-declarative')
-makedepends=('cmake' 'qt6-tools' 'clang')
+makedepends=('cmake' 'qt6-tools' 'clang' 'libunibreak')
 source=("https://gitlab.com/coolreader-ng/${pkgname}/-/archive/${_pkgver}/${pkgname}-${_pkgver}.tar.gz")
 sha256sums=('bbcfdece9b72958c3b9d8b894ffcf1e944d39b283d268984774dc32d8c45068d')
 
@@ -24,6 +24,7 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D USE_QT=QT6 \
 		-D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		-D CMAKE_EXE_LINKER_FLAGS="-lunibreak" \
 		-D CMAKE_BUILD_TYPE=Release
 	make -C "build" all
 }
@@ -33,5 +34,5 @@ package() {
 	install -D -m644 "${pkgname}-${_pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
 	mkdir -p "${pkgdir}/usr/lib/" # temp fix
-	ln -s "/usr/lib/libunibreak.so" "${pkgdir}/usr/lib/libunibreak.so.5" # temp fix
+	ln -s "/usr/lib/libunibreak.so" "${pkgdir}/usr/lib/libunibreak.so.6" # temp fix
 }
