@@ -1,6 +1,6 @@
 pkgbase = rdr-bin
 	pkgdesc = Terminal RSS/Atom feed reader built with Go
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/iRootPro/rdr
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = rdr-bin
 	provides = rdr
 	conflicts = rdr
 	options = !strip
-	source = README-0.9.0.md::https://raw.githubusercontent.com/iRootPro/rdr/v0.9.0/README.en.md
+	source = README-0.9.1.md::https://raw.githubusercontent.com/iRootPro/rdr/v0.9.1/README.en.md
 	sha256sums = cd00bd35c1334a0708d8c7cb3b0473c53a7aa6bf403eee38a60c395fbc6220bb
-	source_x86_64 = rdr-x86_64-0.9.0.tgz::https://github.com/iRootPro/rdr/releases/download/v0.9.0/rdr_linux_amd64.tar.gz
-	sha256sums_x86_64 = 778ee134387d612dece64a70b92177b79c8b0bf30049feb076405bcc095d195c
-	source_aarch64 = rdr-aarch64-0.9.0.tgz::https://github.com/iRootPro/rdr/releases/download/v0.9.0/rdr_linux_arm64.tar.gz
-	sha256sums_aarch64 = 41714fd3d95119d6af12689a96657a52dbe23af30314db5c68b8ab84bcf1ce82
+	source_x86_64 = rdr-x86_64-0.9.1.tgz::https://github.com/iRootPro/rdr/releases/download/v0.9.1/rdr_linux_amd64.tar.gz
+	sha256sums_x86_64 = e7e934ca7bbbdd9e478a175fca666927fbf798f48d50c25dc254d7c6b7796c56
+	source_aarch64 = rdr-aarch64-0.9.1.tgz::https://github.com/iRootPro/rdr/releases/download/v0.9.1/rdr_linux_arm64.tar.gz
+	sha256sums_aarch64 = 912dac6a3adf183a857abb39a8b7a955e02d13d99cd884ef923ad4b5f9d53f42
 
 pkgname = rdr-bin
