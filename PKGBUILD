@@ -35,6 +35,7 @@ build() {
 
 	cd "$srcdir/$_pkgname"
 	make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" build
+	chmod -R u+w "$srcdir"/gopath # allow proper cleanup
 }
 
 package() {
