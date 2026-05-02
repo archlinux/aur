@@ -11,7 +11,7 @@ pkgbase = serwis-app
 	depends = python-pillow
 	depends = python-requests
 	optdepends = python-barcode: obsługa kodów kreskowych na wydrukach
-	source = git+https://github.com/KlapkiSzatana/serwis-app.git
+	source = git+https://github.com/KlapkiSzatana/serwis-app.git#tag=v2.3.1
 	sha256sums = SKIP
 
 pkgname = serwis-app

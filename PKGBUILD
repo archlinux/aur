@@ -1,4 +1,4 @@
-# Maintainer: Heisenberg (KlapkiSzatana)
+# Maintainer: KlapkiSzatana
 pkgname=serwis-app
 pkgver=2.3.1
 pkgrel=1
@@ -11,7 +11,7 @@ depends=('python' 'pyside6' 'python-cryptography' 'python-pillow' 'python-reques
 optdepends=('python-barcode: obsługa kodów kreskowych na wydrukach')
 
 # Pobieranie kodu źródłowego bezpośrednio z GitHuba
-source=("git+https://github.com/KlapkiSzatana/serwis-app.git")
+source=("git+https://github.com/KlapkiSzatana/serwis-app.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 package() {
