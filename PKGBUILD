@@ -1,6 +1,6 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 pkgname=swaybeam-bin
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Miracast source implementation for wlroots-based compositors written in Rust (binary)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('swaybeam')
 conflicts=('swaybeam')
 
 source_x86_64=("swaybeam-${pkgver}-x86_64.tar.gz::https://github.com/forkline/swaybeam/releases/download/v${pkgver}/swaybeam-${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('0237e828455daa1c3e2fd22c2110026ec3e29a3fe9bc03b98fcc510a8136c79f')
+sha256sums_x86_64=('0ee1a2a0d9ba7a94fa4a7478f13f74d19d0b001981c546b41478ea2839c83da0')
 
 package() {
     tar -xzf swaybeam-${pkgver}-x86_64.tar.gz
