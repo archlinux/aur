@@ -2,7 +2,7 @@
 pkgname=ventoyisomanager-bin
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="A Tauri-based application for managing Ventoy ISO images"
+pkgdesc="Ventoy ISO Manager - A tool for easily managing the ISO files you've downloaded"
 arch=('x86_64')
 url="https://github.com/Dilial/VentoyISOManager"
 license=('MIT')
