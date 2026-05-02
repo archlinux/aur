@@ -1,7 +1,7 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="All-in-one Arch Linux helper for system setup and package management with compiler-optimized builds"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(
     'uv'
-    'python-pip'
+    'python-installer'
     'python-argparse-manpage'
 )
 optdepends=(
@@ -29,8 +29,15 @@ optdepends=(
 )
 conflicts=('sysforge-git')
 provides=('sysforge')
+backup=(
+    'etc/sysforge/sysforge.toml'
+    'etc/sysforge/profiles.toml'
+    'etc/sysforge/packages.toml'
+    'etc/sysforge/kernel.toml'
+    'etc/sysforge/toolchain.toml'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f8763cd58680e10752ed893e5432e0de38ae3df6c8ea92fe944614453cab1914')
+sha256sums=('4d7ffc98cba7f5f28781724b4afe7ce239368813577b885514bb116451aff216')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -47,7 +54,7 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    python -m pip install --no-deps --root="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Man page
     install -Dm644 man/sysforge.1 "$pkgdir/usr/share/man/man1/sysforge.1"
@@ -63,7 +70,12 @@ package() {
     install -Dm644 etc/sysforge/packages.toml               "$_conf/packages.toml"
     install -Dm644 etc/sysforge/kernel.toml                 "$_conf/kernel.toml"
     install -Dm644 etc/sysforge/toolchain.toml              "$_conf/toolchain.toml"
-    install -Dm644 etc/sysforge/bootstrap.toml              "$_conf/bootstrap.toml"
+
+    # bootstrap.toml is per-host (device, hostname, passwords) — ship as an
+    # example template under /usr/share so iso-install.sh can detect a true
+    # prior run instead of always seeing the package-installed default.
+    install -Dm644 etc/sysforge/bootstrap.toml \
+        "$pkgdir/usr/share/sysforge/bootstrap.toml.example"
 
     # State directory (pipeline state, build state, logs)
     install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/sysforge.conf"
