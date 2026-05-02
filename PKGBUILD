@@ -1,5 +1,5 @@
 pkgname=uac-launch-control-bin
-pkgver=0.2.500
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A launcher for managing Doom mods and configurations"
 arch=('x86_64')
