@@ -29,4 +29,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm644 "$srcdir/etc/completions/_zc" "$pkgdir/usr/share/zsh/site-functions/_zc"
 }
