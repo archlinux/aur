@@ -8,7 +8,7 @@ license=('custom:FSL-1.1-MIT')
 depends=()
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marang/franz-agent/archive/refs/tags/v0.1.2.tar.gz")
-sha256sums=('6551e01db1f7ff02d5a2e6b5d034b35bdaa73c98d1d787ec55b83ef3b6627c79')
+sha256sums=('9a9cda914df127113c85bf1e83ac70b3a8a31c271b0f859701acb9c206686da8')
 
 build() {
   cd "${pkgname}-${pkgver}"
