@@ -14,5 +14,6 @@ pkgbase = hedgemodmanager-bin
 	sha256sums = cdeb5c7bca2bba5842ae389afbab7ff41fef8eefe0a0f7a08dc84c09452e7241
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hedgemodmanager-bin

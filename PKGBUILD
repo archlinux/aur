@@ -24,6 +24,7 @@ source=("$_pkgname.tar.gz::$url/releases/download/8.0.0-beta5/HedgeModManager-li
 noextract=()
 sha256sums=('cdeb5c7bca2bba5842ae389afbab7ff41fef8eefe0a0f7a08dc84c09452e7241'
 	"SKIP"
+	"SKIP"
 	"SKIP")
 validpgpkeys=()
 
