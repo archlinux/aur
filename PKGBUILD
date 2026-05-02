@@ -1,6 +1,6 @@
 # Maintainer: Heisenberg (KlapkiSzatana)
 pkgname=serwis-app
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Proste Prowadzenie Serwisu"
 arch=('any')
