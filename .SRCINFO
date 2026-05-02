@@ -1,13 +1,10 @@
 pkgbase = stm32cubemx
-	pkgdesc = graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code
 	pkgver = 6.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.st.com/en/development-tools/stm32cubemx.html
-	arch = any
+	arch = x86_64
 	license = custom
-	depends = java-runtime>=21
-	depends = archlinux-java-run>=10
-	depends = bash
+	makedepends = rsync
 	options = !strip
 	options = !debug
 	source = https://sw-center.st.com/packs/resource/library/stm32cube_mx_v6170-lin.zip
@@ -15,6 +12,30 @@ pkgbase = stm32cubemx
 	source = stm32cubemx.sh
 	sha512sums = a4ea1f481b37afd68d4e4ef904224329972bd33f6038854009effc776f9a931c9ad057a9be927cb354fc4e99639804896553923c58f2c27c123c36b2af1cb60c
 	sha512sums = 83c67bef3e8f8434903fe0c067442cc7473459386fdcb0225af1b3a75fd75e2be393f91f877c8410f1055ca4ec531b2df707fcab10663cae382a7f4066c8548b
-	sha512sums = 031f4b55414e53ffd4ae6bca76d260629f92553ee66fe52e233de1032892925f626a3d29974976b9e5289282fc4fc0459cda47436f71ed8d3258f408562a2f6c
+	sha512sums = c28bf62bef34ed5469eb5852907d1b52215705434bb9daa15dd11ba8cbf44e910bddcc1b6784397c32287dde9dde148f6485db3c0c3fb505e4f1c2e0bc58bf51
 
 pkgname = stm32cubemx
+	pkgdesc = Graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code
+	groups = stm32cube
+	optdepends = stm32cubemx-jre: ST packaged Java Runtime
+	optdepends = java-runtime>=21: System Java Runtime (Required if stm32cubemx-jre is not installed)
+	optdepends = archlinux-java-run>=10: Required to launch with system Java runtime
+
+pkgname = stm32cubemx-jre
+	pkgdesc = ST packaged custom Java Runtime for STM32CubeMX
+	depends = stm32cubemx=6.17.0-3
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = glibc
+	depends = harfbuzz
+	depends = hicolor-icon-theme
+	depends = lcms2
+	depends = libelf
+	depends = libgcc
+	depends = giflib
+	depends = libjpeg-turbo
+	depends = libnet
+	depends = libpng
+	depends = libstdc++
+	depends = nss
+	depends = gtk3
