@@ -1,6 +1,6 @@
 # Maintainer: Qehbr <qehbr@yahoo.com>
 pkgname=m913-ctl
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Linux configuration tool for the Redragon M913 Impact Elite wireless mouse'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libusb')
 makedepends=('cmake')
 install=m913-ctl.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bff67b4422c3606f1737cba7673c6f9abe3d5c3816cb42a61c01bf851b885942')
+sha256sums=('cf1fa835143f9190aba24f537c995343ba07eb3bb4691173ca1d8d0f8ea9f4d5')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \

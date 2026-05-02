@@ -6,6 +6,11 @@ post_install() {
 
 post_upgrade() {
     echo "==> m913-ctl: udev rule updated."
+    local old=/etc/udev/rules.d/99-m913.rules
+    if [ -f "$old" ]; then
+        rm -f "$old"
+        echo "==> Removed legacy $old (now managed by package)."
+    fi
     echo "==> Replug the mouse, or run:"
     echo "==>   sudo udevadm trigger"
 }
