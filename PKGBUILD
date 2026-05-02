@@ -1,14 +1,14 @@
 #Maintainer: korn201234 <aaronzschauer@gmail.com>
 pkgname=apac
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="A simple arch aur helper."
 arch=('any')
 url="https://git.aaronhosting.xyz/korn20123/apac"
 license=('GPL-3-or-later')
 makedepends=(go)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('a5667a593d545db1c8a78596be20f8c196866c4f19add57294be7d4aa463f0b4')
+sha256sums=('6359b28a6bc822a5befaed03b56c2fe41c3ba4da9fa54c16b8d76e3613c65966')
 build() {
     cd "$srcdir/$pkgname"
     go build
