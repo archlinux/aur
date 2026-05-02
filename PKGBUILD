@@ -7,7 +7,7 @@ set -u
 pkgname='zoiper-bin'
 _pkgname='zoiper'
 pkgver='5.6.13'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='a SIP and IAX2 VoIP softphone'
 arch=('i686' 'x86_64')
 url='https://www.zoiper.com/'
@@ -40,7 +40,7 @@ package() {
   install -d "${pkgdir}/usr/lib"
   pushd "${pkgdir}/usr/lib" > /dev/null
   set +u; msg2 "Unpack ${_srcfil}"; set -u
-  bsdtar --no-same-owner -xf "${startdir}/${_srcfil}"
+  bsdtar --no-same-owner -xf "${srcdir}/${_srcfil}"
   mv "Zoiper${pkgver%%.*}" "${_pkgname}"
   pushd "${_pkgname}" > /dev/null
   chmod 755 "${_pkgname}"
@@ -51,7 +51,7 @@ package() {
   ln -s "../lib/${_pkgname}/${_pkgname}" -t "${pkgdir}/usr/bin/"
   install -Dpm644 "${_pkgname}.png" "${_pkgname}-24.png" "${_pkgname}-48.png" "${_pkgname}-96.png" -t "${pkgdir}/usr/share/pixmaps/"
   install -Dpm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-  install -Dpm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  install -Dpm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   set +u
 }
 
