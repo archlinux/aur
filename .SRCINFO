@@ -1,6 +1,6 @@
 pkgbase = r-magrittr
 	pkgdesc = A Forward-Pipe Operator for R
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=magrittr
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = r-magrittr
 	optdepends = r-rlang
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/magrittr_2.0.4.tar.gz
-	b2sums = 3324d54f49929d4a8b20ebacbed04042e24bc5c7916bd09aa52257b826e333645c8df8f70fb3631d184993c486f0d67523c29412861208fbe42f3ebb9f6d909d
+	source = https://cran.r-project.org/src/contrib/magrittr_2.0.5.tar.gz
+	b2sums = 74d89eb51fe582997b68094ce982c658f00618e1024b1755d4a091306458ebf7ad941a103f3fa8e3d2b071718f92e6c2d7fdb1f49361c76777826a0b9fddc8a2
 
 pkgname = r-magrittr
