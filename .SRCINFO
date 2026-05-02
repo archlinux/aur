@@ -1,6 +1,6 @@
 pkgbase = proxelar-bin
 	pkgdesc = Programmable MITM proxy that intercepts HTTP/HTTPS traffic. With a TUI, terminal, and web GUI interface
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/emanuele-em/proxelar
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = proxelar-bin
 	conflicts = proxelar
 	options = !lto
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/emanuele-em/proxelar/refs/tags/v0.4.3/LICENSE-MIT
+	source = LICENSE::https://raw.githubusercontent.com/emanuele-em/proxelar/refs/tags/v0.4.4/LICENSE-MIT
 	sha256sums = 7beed5740a54fe01210a251507d55576e32522b292af5eb9d74a4fbd5545d365
-	source_x86_64 = proxelar-bin-0.4.3.tar.gz::https://github.com/emanuele-em/proxelar/releases/download/v0.4.3/proxelar-v0.4.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 873877a14762a8e5e81c2db3c9c1f175b73a4b3287ddedd27affce890453eb28
-	source_aarch64 = proxelar-bin-0.4.3.tar.gz::https://github.com/emanuele-em/proxelar/releases/download/v0.4.3/proxelar-v0.4.3-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = fd2b7d72a76b02004a5ba83b3a630c66e03819ea6fe4749d355291a1421ef28a
+	source_x86_64 = proxelar-bin-0.4.4.tar.gz::https://github.com/emanuele-em/proxelar/releases/download/v0.4.4/proxelar-v0.4.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 900383e3db8a0c96f7000c1f3ba23c3dbe680b85e59f747592795a133bc6d1cb
+	source_aarch64 = proxelar-bin-0.4.4.tar.gz::https://github.com/emanuele-em/proxelar/releases/download/v0.4.4/proxelar-v0.4.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 304ff2959feef83c6b813d502696535a982dcba4a5aace4783eef7de13635c01
 
 pkgname = proxelar-bin
