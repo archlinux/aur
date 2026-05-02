@@ -14,8 +14,8 @@
 # - paru: /home/<user>/.cache/paru/clone/pianoteq-stage/ 
 
 pkgname=pianoteq-stage
-pkgver=9.1.0
-pkgrel=2
+pkgver=9.1.2
+pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=(x86_64 aarch64)
 url="https://www.pianoteq.com/pianoteq"
@@ -51,7 +51,7 @@ fi
 
 source=("local://pianoteq_setup_v${pkgver//./}.tar.xz"
   'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('e03f6d15f74f292fa7c54e91c68d5709724c4efa3d3ab4604589a51014f0a858bb93c6de39459f0ac410e33916609c073d40b1bedaa924901e334f38f3018b04'
+b2sums=('cbccd618315c47d86613019c2f1677e7c97ffcf56aa35771c4863301f0397cbf086a72997495c86ee2ea7555dc89d1319eb14a65a815499634c3d7f982ba8019'
         'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare() {
