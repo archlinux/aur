@@ -1,6 +1,6 @@
 pkgbase = shpool
 	pkgdesc = Think tmux, then aim... lower
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/shell-pool/shpool
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = shpool
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = shpool-0.9.7.tar.gz::https://github.com/shell-pool/shpool/archive/v0.9.7.tar.gz
-	sha512sums = 7ea68795d27a632b7b9600dfc83122ff47aac599c784666a92fd915340e6c276c1d9ff4be67f9a4d770ea337620ae66fcebe5f90f83227e106b1be2adfeaa6d1
+	source = shpool-0.9.8.tar.gz::https://github.com/shell-pool/shpool/archive/v0.9.8.tar.gz
+	sha512sums = 75bc807e373bb9ecb0333b4b16816287f4498ef73eb61844c9dfb9cbb0d36ac17ccff91264c0379ed31f29807a87029c1918b7c112e9e3c6d340052a775d81d1
 
 pkgname = shpool
