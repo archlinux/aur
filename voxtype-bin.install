@@ -1,10 +1,54 @@
+# Resolve the canonical real binary that /usr/bin/voxtype dispatches to,
+# regardless of whether /usr/bin/voxtype is a symlink (CPU variant) or a
+# wrapper script (GPU/ONNX variant whose binary lives next to companion
+# .so files). Echoes the real path or empty string if not present.
+_resolve_active_binary() {
+    if [ -L /usr/bin/voxtype ]; then
+        readlink -f /usr/bin/voxtype
+    elif [ -f /usr/bin/voxtype ]; then
+        # Wrapper script — extract the `exec /path` line.
+        sed -n 's/^exec \([^ ]*\).*/\1/p' /usr/bin/voxtype | head -1
+    fi
+}
+
+# Install /usr/bin/voxtype dispatching to $1 (a path under /usr/lib/voxtype/).
+# Uses a thin shell wrapper when $1 lives in a GPU subdirectory next to its
+# companion ONNX Runtime provider .so files (cuda-12/, cuda-13/, migraphx/).
+# Without the wrapper, ORT's argv[0]-based provider lookup hits /usr/bin/
+# which doesn't have the .so files and silently falls back to CPU. The
+# wrapper `exec`s the real path so argv[0] becomes the canonical location
+# and ORT finds the .so files alongside.
+_install_active_binary() {
+    local target="$1"
+    rm -f /usr/bin/voxtype
+    local target_dir
+    target_dir=$(dirname "$target")
+    case "${target_dir##*/}" in
+        cuda-12|cuda-13|migraphx)
+            cat > /usr/bin/voxtype <<EOF
+#!/bin/sh
+# voxtype dispatch wrapper.
+# Execs the GPU/ONNX binary by canonical path so ORT's argv[0]
+# based provider .so lookup resolves to the right subdirectory.
+# Managed by \`voxtype setup onnx --enable\` and the AUR package's
+# post_install / post_upgrade hooks; do not edit by hand.
+exec $target "\$@"
+EOF
+            chmod 755 /usr/bin/voxtype
+            ;;
+        *)
+            ln -sf "$target" /usr/bin/voxtype
+            ;;
+    esac
+}
+
 _set_default_backend() {
     # Set the default CPU backend based on CPU capabilities
     if grep -q avx512f /proc/cpuinfo 2>/dev/null; then
-        ln -sf /usr/lib/voxtype/voxtype-avx512 /usr/bin/voxtype
+        _install_active_binary /usr/lib/voxtype/voxtype-avx512
         echo "avx512"
     else
-        ln -sf /usr/lib/voxtype/voxtype-avx2 /usr/bin/voxtype
+        _install_active_binary /usr/lib/voxtype/voxtype-avx2
         echo "avx2"
     fi
 }
@@ -16,8 +60,10 @@ _preserve_or_set_backend() {
         target=$(cat "$saved")
         rm -f "$saved"
         if [ -f "$target" ]; then
-            ln -sf "$target" /usr/bin/voxtype
-            echo "${target##*/voxtype-}"
+            _install_active_binary "$target"
+            # Strip the /usr/lib/voxtype/[<subdir>/]voxtype- prefix for the echo
+            local short=${target##*/voxtype-}
+            echo "${short%/*}"
             return
         fi
     fi
@@ -163,9 +209,15 @@ post_install() {
 }
 
 pre_upgrade() {
-    # Save the current backend so post_upgrade can restore it
-    if [ -L /usr/bin/voxtype ]; then
-        readlink /usr/bin/voxtype > /tmp/.voxtype-backend-upgrade
+    # Save the current backend's canonical real path so post_upgrade can
+    # re-install /usr/bin/voxtype pointing at the same binary. Handles
+    # both the legacy symlink form (CPU variants, pre-0.7) and the
+    # wrapper-script form (GPU/ONNX variants from 0.7+ that need argv[0]
+    # to canonicalize for ORT's provider .so lookup).
+    local target
+    target=$(_resolve_active_binary)
+    if [ -n "$target" ]; then
+        echo "$target" > /tmp/.voxtype-backend-upgrade
     fi
 }
 
