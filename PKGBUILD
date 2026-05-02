@@ -10,10 +10,10 @@ url="https://gitlab.com/siphomateke/tongfang-control"
 license=('MIT')
 depends=('python' 'acpi_call')
 makedepends=('git' 'python-setuptools')
-provides=("tongfang-control=${pkgver}-${pkgrel}")
-conflicts=('tongfang-control')
-source=("git+https://gitlab.com/siphomateke/tongfang-control.git")
-md5sums=('SKIP')
+provides=("${_pkgname}=${pkgver}-${pkgrel}")
+conflicts=("${_pkgname}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -24,13 +24,13 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/tongfang-control"
+  cd "$srcdir/$_pkgname"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/tongfang-control"
-  python setup.py install --root="${pkgdir}" --optimize=1 --prefix=/usr
+  cd "$srcdir/$_pkgname"
+  python setup.py install --root="${pkgdir}" --optimize=1 --prefix=/usr --skip-build
 
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
