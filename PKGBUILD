@@ -1,4 +1,5 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
+# Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine
 pkgver=4.04.02
