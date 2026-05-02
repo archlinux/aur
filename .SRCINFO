@@ -1,6 +1,6 @@
 pkgbase = oolite-git
 	pkgdesc = Open Source remake of Elite with many, many enhancements, git version
-	pkgver = 1.93.0.7802.260419.099b74b.r0.099b74b4f
+	pkgver = 1.93.0.7809.260501.626c8d9.r0.626c8d98a
 	pkgrel = 1
 	url = https://oolite.space/
 	arch = x86_64
@@ -29,17 +29,7 @@ pkgbase = oolite-git
 	depends = libpng
 	options = !strip
 	source = oolite-git::git+https://github.com/OoliteProject/oolite
-	source = git+https://github.com/OoliteProject/oolite-binary-resources.git
-	source = git+https://github.com/OoliteProject/oolite-linux-dependencies.git
-	source = git+https://github.com/OoliteProject/oolite-sdl-dependencies.git
-	source = git+https://github.com/OoliteProject/spidermonkey-ff4.git
-	source = git+https://github.com/OoliteProject/oolite-windows-dependencies.git
 	source = oolite-git.sh
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = c76629108a3c2bc3975208e4d9a1b51fb6688b59c08c4cd1b189b317492fe08b7d78b77076baafd550cec9c64ab083b52035a1b7244c7776149927e2294c3d18
 
