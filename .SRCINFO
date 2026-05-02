@@ -1,6 +1,6 @@
 pkgbase = kazumi-bin
 	pkgdesc = 基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://github.com/Predidit/Kazumi
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kazumi-bin
 	depends = webkit2gtk-4.1
 	provides = kazumi
 	conflicts = kazumi
-	source = kazumi-2.0.8.deb::https://github.com/Predidit/Kazumi/releases/download/2.0.8/Kazumi_linux_2.0.8_amd64.deb
-	sha512sums = 985681ea4421fd295c1fc67f1ae3f5cae26b7700a22ad6784fa016f41c5d1c1f8b8abe0b404654223d5bb02f9777468ce2de96b952b67cb2c84924ec37a411f7
+	source = kazumi-2.0.9.deb::https://github.com/Predidit/Kazumi/releases/download/2.0.9/Kazumi_linux_2.0.9_amd64.deb
+	sha512sums = dbc774ad34e0bf938971cbda82b2bbf6b042f1b71a3d6f0f3c629a41c4d58ee1e360d29e3e32dcda310767deedc41b2bd0a140756fbce88eff4211bc0bfde79d
 
 pkgname = kazumi-bin
