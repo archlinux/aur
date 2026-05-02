@@ -1,16 +1,16 @@
 pkgbase = hackernews-bin
 	pkgdesc = Terminal UI for browsing Hacker News, reading articles, comments, and saved stories
-	pkgver = 0.5.0
+	pkgver = 0.5.4
 	pkgrel = 1
-	url = https://github.com/elpdev/hackernews
+	url = https://forge.lbp.dev/lbp/hackernews
 	license = MIT
 	conflicts = hackernews
 	provides = hackernews
 	arch = aarch64
-	source_aarch64 = https://github.com/elpdev/hackernews/releases/download/v0.5.0/hackernews_0.5.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3685158b806053e8e703bfbf471485ba3ff57a13bd6e2909c20dd68ead283ea1
+	source_aarch64 = https://forge.lbp.dev/lbp/hackernews/releases/download/v0.5.4/hackernews_0.5.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2d476c0fd2be7f5678a589109ab094e073168c42083bc5fabac1529e745f3ca3
 	arch = x86_64
-	source_x86_64 = https://github.com/elpdev/hackernews/releases/download/v0.5.0/hackernews_0.5.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 074d28681dee277c705c012b5f88ab5b8915bdbee549f79cd0680c2357ca354b
+	source_x86_64 = https://forge.lbp.dev/lbp/hackernews/releases/download/v0.5.4/hackernews_0.5.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = ff1a41a0a9e8c0734cee93ff5d5d6975e861abe0447b1889e76919ac692f04ca
 	
 pkgname = hackernews-bin
