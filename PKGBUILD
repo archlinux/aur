@@ -2,7 +2,7 @@
 pkgname=steamcommunity302
 pkgver=14.0.02
 pkgdate=2026/02
-pkgrel=4
+pkgrel=5
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
 url="https://www.dogfight360.com/blog/18682/"
@@ -61,10 +61,20 @@ prepare() {
 
   # --- 1. 派生 s302 ---
   # 把上游 launcher 的动态路径探测替换为硬编码,保留所有提权逻辑
+  # 同时删除运行时 chmod(普通用户无权修改 /opt 下文件)并注入 xhost 配置
   sed -E \
     -e 's|^[[:space:]]*LAUNCHER_DIR=.*|LAUNCHER_DIR="'"${_install_dir}"'/.launcher"|' \
     -e 's|^[[:space:]]*SCRIPT_DIR=.*|SCRIPT_DIR="'"${_install_dir}"'"|' \
+    -e '/^[[:space:]]*chmod \+x/d' \
     "${_launcher}" > "${srcdir}/s302"
+
+  # 在主程序检查前注入 xhost 配置(解决 root 无法连接 X11 的问题)
+  sed -i '/^# 检查主程序/i\
+# xhost 配置(允许 root 访问当前用户 X11 会话)\
+if command -v xhost >/dev/null 2>&1; then\
+    xhost +SI:localuser:root >/dev/null 2>&1 || true\
+fi\
+' "${srcdir}/s302"
   chmod +x "${srcdir}/s302"
 
   # --- 2. 派生 .desktop ---
