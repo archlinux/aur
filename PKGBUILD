@@ -8,7 +8,7 @@
 _Name="oneTBB"
 _name="${_Name,,}"
 pkgname="lib32-${_name}"
-pkgver=2022.3.0
+pkgver=2023.0.0
 pkgrel=1
 pkgdesc="oneAPI Threading Building Blocks - a high level abstract threading library (32-bit)"
 arch=(
@@ -46,7 +46,7 @@ source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
   '010-onetbb-fix-linkage-of-test-malloc-pure-c.patch'
 )
-sha512sums=('fdc50589785b1949ca1dd4429bbcedb180be4b8966da5243ddd1f8e9f97310dd603681e0bb83c1d6c2d3e27932f577ef6739e4e82f3c54af147f4d6d906b39f1'
+sha512sums=('7db4a41e3b0e34a559299451f7eef633190e7e4be1819f609f773ac6b7f3d31ff5e45f3cfabd3606e280adb930d47a77a31377e5ef72c85dcb37a354d8b87e55'
             '155dca8391571f8790e77de4f6b76491e07c982b87826fbca8ab084a3f8786e55bf1fb64331fa3e9704dbf8c9c6f94547533b47845bdb50bf7f33a0294a3cd2b')
 
 prepare() {
