@@ -80,7 +80,7 @@ package_aescrypt_cli-bin() {
   install -vDm644 "share/licenses/${_pkgbase}_gui/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
 
   cd "share"
-  cp -va --parents --no-preserve=ownership "man" -t "${pkgdir}/usr/share"
+  cp -va --no-preserve=ownership "man" -t "${pkgdir}/usr/share"
 }
 
 package_aescrypt_gui-bin() {
@@ -117,5 +117,5 @@ package_aescrypt_gui-bin() {
   install -vDm755 "bin/${_pkgbase}-gui" -t "${pkgdir}/usr/bin"
 
   cd "share"
-  cp -va --parents --no-preserve=ownership "applications" "icons" "mime" -t "${pkgdir}/usr/share"
+  cp -va --no-preserve=ownership "applications" "icons" "mime" -t "${pkgdir}/usr/share"
 }
