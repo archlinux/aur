@@ -15,38 +15,19 @@ optdepends=(
     'cava: audio spectrum visualizer widget'
     'niri: primary compositor target'
 )
-makedepends=(
-    'rust'
-    'cargo'
-    'pkg-config'
-    'cmake'             # mlua vendored Lua build
-)
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/viewerofall/woven/releases/download/v$pkgver/v$pkgver.tar.gz")
 sha256sums=('9cac024dd4220f4c35882d6f598e2bf3dce337c01ec59482600b9ef23e2cc00e')
 
-prepare() {
-    cd "$srcdir/$pkgname-v$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
 build() {
-    cd "$srcdir/$pkgname-v$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build \
-        --frozen \
-        --release \
-        --bin woven \
-        --bin woven-ctrl
+    : # Binaries are prebuilt in release tarball
 }
 
 package() {
     cd "$srcdir/$pkgname-v$pkgver"
 
-    # Binaries
-    install -Dm755 target/release/woven        "$pkgdir/usr/bin/woven"
-    install -Dm755 target/release/woven-ctrl   "$pkgdir/usr/bin/woven-ctrl"
+    # Binaries (prebuilt in exec/)
+    install -Dm755 exec/woven        "$pkgdir/usr/bin/woven"
+    install -Dm755 exec/woven-ctrl   "$pkgdir/usr/bin/woven-ctrl"
 
     # Systemd user service
     install -Dm644 woven.service \
@@ -72,6 +53,6 @@ package() {
     install -dm755 "$pkgdir/usr/share/woven/plugins"
     cp -r plugins/. "$pkgdir/usr/share/woven/plugins/"
 
-    # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # License (optional, create symlink to repo if available)
+    [ -f LICENSE ] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" || true
 }
