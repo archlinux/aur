@@ -1,6 +1,6 @@
 pkgbase = hayase-desktop-bin
 	pkgdesc = Torrent streaming made simple. Watch anime torrents, real-time with no waiting for downloads (prebuilt binary), successor to miru-bin
-	pkgver = 6.4.60
+	pkgver = 6.4.61
 	pkgrel = 1
 	url = https://github.com/hayase-app
 	install = hayase-desktop-bin.install
@@ -13,10 +13,10 @@ pkgbase = hayase-desktop-bin
 	options = !strip
 	options = !emptydirs
 	options = !debug
-	source = hayase-6.4.60.deb::https://api.hayase.watch/files/linux-hayase-6.4.60-linux.deb
-	source = LICENSE-6.4.60::https://raw.githubusercontent.com/hayase-app/electron/main/LICENSE
+	source = hayase-6.4.61.deb::https://api.hayase.watch/files/linux-hayase-6.4.61-linux.deb
+	source = LICENSE-6.4.61::https://raw.githubusercontent.com/hayase-app/electron/main/LICENSE
 	source = hayase-desktop-bin.install
-	sha512sums = de025a2327368c52a2cb5d5e0a26520ed4404db72005523b9e7a0ea9975203f48591fd19265fd208b10f52f739603986257904df24ab18f2739badbb80c4017b
+	sha512sums = a078bcd1e9188b89d80a79b98f9ba9aa369938419eaf53e27e27768e22b358dbab4055b3354547dd6e9612d70b6789940a6f4339b287458cf5d9c6d4b4da09db
 	sha512sums = 28eb0f95d44512e9b901dbcf6c75d9d1fd21d60728d0958f3936f7071a16d62b4999470462b637fc5ba4a35b5fe99838510289f8ba017255e0f13a8dad2e9f29
 	sha512sums = 67b9bf7da2fc891442b8bfd441a12203717c1f9e96ef94eae62c53138b4e4442b26da9ad4a41a40f79de5f5c93383e092db3629e249c9a04e3f24c415a6a1ba1
 
