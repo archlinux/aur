@@ -3,7 +3,7 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=lib32-sdl2_image
-pkgver=2.8.10
+pkgver=2.8.12
 pkgrel=1
 pkgdesc='A simple library to load images of various formats as SDL surfaces'
 arch=(x86_64)
@@ -19,7 +19,7 @@ depends=(
   sdl2_image
 )
 source=("https://github.com/libsdl-org/SDL_image/releases/download/release-${pkgver}/SDL2_image-${pkgver}.tar.gz"{,.sig})
-sha512sums=('2a35d4dd453e0393d9366d81ac1a8337b0d30ab28b2fe7a0bc899a76546c9a6b034fe910bd3f4aa9a011858ac8a15081ef4340191db78f84f1a07d2ce9ebdf30'
+sha512sums=('c2574d83f8ee89b97cc992fe6a579c87a1b9a1aa7a8a3cfb6bf58f10d3880a157d70cd053767cc2ade1bd124e102356a50274d688e24b2e04a375588e54114ac'
             'SKIP')
 validpgpkeys=('0900104363B4C9D4223DE149D913FE7D4B61D39B')
 
