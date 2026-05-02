@@ -42,7 +42,7 @@ pkgbase = nekobox
 	depends = curl
 	depends = openssl
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.11.2/nekobox-unified-source-5.11.2.tar.xz
-	sha256sums = 714485aed78a663700eb3613691faa400b5c519ee94ea8631313b55ffdd9e8ff
+	sha256sums = a0dee0dc5b44796b61844944b7c4ed888849826c0bf32fc52244af072960926d
 
 pkgname = nekobox
 
