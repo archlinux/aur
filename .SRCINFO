@@ -1,6 +1,6 @@
 pkgbase = nyado-bin
 	pkgdesc = A Rust todo-list manager with TUI, inspired by meowdo
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/LeynTheCat/nyado
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nyado-bin
 	provides = nyado
 	conflicts = nyado
 	options = !strip
-	source = https://github.com/LeynTheCat/nyado/releases/download/v0.2.8/nyado-x86_64-unknown-linux-musl
-	sha256sums = 32b63c797e4e3ec333de5be6547251a5aa230182c384c9bcaef2f9bb9722eb1d
+	source = https://github.com/LeynTheCat/nyado/releases/download/v0.2.9/nyado-x86_64-unknown-linux-musl
+	sha256sums = cc647372769de492ccd35e146b6e77a980f660ab6ea0a40ba36f643513f481b3
 
 pkgname = nyado-bin
