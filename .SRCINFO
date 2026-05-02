@@ -1,0 +1,99 @@
+pkgbase = oh-my-rime-git
+	pkgver = r327.a8b7555
+	pkgrel = 1
+	url = https://github.com/Mintimate/oh-my-rime
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = librime-data
+	source = oh-my-rime-git::git+https://github.com/Mintimate/oh-my-rime.git
+	source = rime-prelude::git+https://github.com/rime/rime-prelude.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = oh-my-rime-common-git
+	pkgdesc = Rime配置：薄荷輸入法-Common Data
+	provides = rime-emoji
+	provides = rime-prelude
+	conflicts = rime-emoji
+	conflicts = rime-prelude
+
+pkgname = oh-my-rime-all-git
+	pkgdesc = Rime配置：薄荷輸入法
+	depends = librime-data
+	depends = oh-my-rime-common-git
+	provides = rime-stroke
+	provides = rime-terra-pinyin
+	conflicts = rime-stroke
+	conflicts = rime-terra-pinyin
+
+pkgname = oh-my-rime-mint-git
+	pkgdesc = Rime配置：薄荷拼音-全拼輸入
+	depends = librime-data
+	depends = oh-my-rime-common-git
+	depends = oh-my-rime-wubi98-mint-git
+	provides = rime-stroke
+	conflicts = rime-stroke
+
+pkgname = oh-my-rime-mint_flypy-git
+	pkgdesc = Rime配置：薄荷拼音-小鹤混輸
+	depends = librime-data
+	depends = oh-my-rime-common-git
+	depends = oh-my-rime-wubi98-mint-git
+	provides = rime-stroke
+	conflicts = rime-stroke
+
+pkgname = oh-my-rime-double_pinyin-git
+	pkgdesc = Rime配置：自然碼雙拼-薄荷定製
+	depends = librime-data
+	depends = oh-my-rime-common-git
+
+pkgname = oh-my-rime-double_pinyin_abc-git
+	pkgdesc = Rime配置：智能ABC雙拼-薄荷定製
+	depends = librime-data
+	depends = oh-my-rime-common-git
+
+pkgname = oh-my-rime-double_pinyin_flypy-git
+	pkgdesc = Rime配置：小鹤雙拼-薄荷定製
+	depends = librime-data
+	depends = oh-my-rime-common-git
+	depends = oh-my-rime-wubi98-mint-git
+	provides = rime-stroke
+	conflicts = rime-stroke
+
+pkgname = oh-my-rime-double_pinyin_mspy_git
+	pkgdesc = Rime配置：微軟雙拼-薄荷定製
+	depends = librime-data
+	depends = oh-my-rime-common-git
+
+pkgname = oh-my-rime-double_pinyin_sogou-git
+	pkgdesc = Rime配置：搜狗雙拼-薄荷定製
+	depends = librime-data
+	depends = oh-my-rime-common-git
+
+pkgname = oh-my-rime-double_pinyin_ziguang-git
+	pkgdesc = Rime配置：紫光雙拼-薄荷定製
+	depends = librime-data
+	depends = oh-my-rime-common-git
+
+pkgname = oh-my-rime-terra_pinyin-git
+	pkgdesc = Rime配置：地球拼音-薄荷定製
+	depends = librime-data
+	depends = oh-my-rime-common-git
+	depends = oh-my-rime-wubi98-mint-git
+	provides = rime-terra-pinyin
+	provides = rime-stroke
+	conflicts = rime-terra-pinyin
+	conflicts = rime-stroke
+
+pkgname = oh-my-rime-wubi86_jidian-git
+	pkgdesc = Rime配置：五筆86-極點五筆
+	depends = librime-data
+	depends = oh-my-rime-common-git
+	depends = oh-my-rime-mint-git
+
+pkgname = oh-my-rime-wubi98_mint-git
+	pkgdesc = Rime配置：五筆98-五筆小築
+	depends = librime-data
+	depends = oh-my-rime-common-git
+	depends = oh-my-rime-mint-git
