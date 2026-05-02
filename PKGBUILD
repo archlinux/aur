@@ -1,7 +1,7 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Woof <woofy1231@hotmail.com>
 # Contributor: catwell <catwell@archlinux.us>
-# Contributor: Joan Bruguera Micó <joanbrugueram@gmail.com>
 
 pkgname=ltsa
 pkgver=3.0
