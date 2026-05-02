@@ -1,0 +1,18 @@
+pkgbase = mayflash-w012-linux-updater-git
+	pkgdesc = A Linux GUI firmware updater and analysis tool for the Mayflash W012 GameCube Controller Adapter
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/cmdada/mayflash-w012-linux-updater
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-hidapi
+	depends = python-pyusb
+	depends = tk
+	provides = mayflash-w012-linux-updater
+	conflicts = mayflash-w012-linux-updater
+	source = git+https://github.com/cmdada/mayflash-w012-linux-updater.git
+	md5sums = SKIP
+
+pkgname = mayflash-w012-linux-updater-git
