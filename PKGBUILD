@@ -9,7 +9,7 @@
 # Contributor: Christer Edwards <christer.edwards@gmail.com>
 
 pkgname=salt
-pkgver=3007.13
+pkgver=3007.14
 pkgrel=1
 pkgdesc='Portable, distributed, remote execution and configuration management system'
 arch=('any')
@@ -68,23 +68,19 @@ install=salt.install
 source=(
     "https://pypi.io/packages/source/s/salt/salt-$pkgver.tar.gz"
     salt.logrotate
-    urllib.patch
     utilspycrypto.patch
     httprequests.patch
-    salt-68327.patch
     foudfou-codecs-open.patch
 )
-sha256sums=('c663a7386cbd47afe94a6d8b0b1af1fccdc35059ccec2b93310e7920705344fb'
+sha256sums=('9fcc89154fab351d0a875661972b79f0555caa75f80efafa2d42885a7025f075'
     'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-    '65794b45a1eee65b83589d4900f50f500cf8cdc8177e8a1c826ca5452625cf47'
-    '632dfb02dde6bbd00bcebd0b444ad2d1236042229ffdee0cad4f02e62fdcb8f8'
+    '6ba4ff71017823074d69fb83e9a8eab657066b3d21294fd194f2fdeee55029cf'
     'e8ad0830dc48325790b6d13e4128085a82b48396475233a6ab1ad22e5f3df0f9'
-    '9389b30aacd9117a1341ed1d67b951654f92b2a07a14f80eda5e368243947a06'
     '2eb49808123f80c53db1a96a34c1cad2d66b3363110f8c800273f6a675763363')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    for i in urllib utilspycrypto httprequests salt-68327 foudfou-codecs-open; do
+    for i in utilspycrypto httprequests foudfou-codecs-open; do
         patch -N -p1 -i "${srcdir}/${i}.patch"
     done
     for i in contextvars rpm-vercmp; do

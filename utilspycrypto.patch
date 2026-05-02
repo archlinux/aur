@@ -15,7 +15,7 @@
 +HAS_CRYPT = False
 +
  try:
--    import crypt
+-    import crypt  # pylint: disable=deprecated-module
 +    import bcrypt
  
 -    HAS_CRYPT = True
