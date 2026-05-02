@@ -1,6 +1,6 @@
 pkgbase = sentinel
 	pkgdesc = UAC-style confirmation dialog for Linux privilege escalation (COSMIC + sudo-rs friendly)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/atayozcan/sentinel
 	install = sentinel.install
@@ -25,7 +25,7 @@ pkgbase = sentinel
 	options = !debug
 	backup = etc/security/sentinel.conf
 	backup = etc/pam.d/polkit-1
-	source = sentinel-0.5.0.tar.gz::https://github.com/atayozcan/sentinel/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = b2d6451225ea25be232c45e71816377bdba972967262e86e376b1b4822840ce9
+	source = sentinel-0.5.1.tar.gz::https://github.com/atayozcan/sentinel/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 8b5f241297a7cc50c45d031e34bbe5a079daa96b0cbab847b950258347906594
 
 pkgname = sentinel

@@ -1,6 +1,6 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 install=sentinel.install
 # Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
@@ -34,7 +34,7 @@ optdepends=(
 )
 backup=('etc/security/sentinel.conf' 'etc/pam.d/polkit-1')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b2d6451225ea25be232c45e71816377bdba972967262e86e376b1b4822840ce9')
+sha256sums=('8b5f241297a7cc50c45d031e34bbe5a079daa96b0cbab847b950258347906594')
 
 prepare() {
     cd "$pkgname-$pkgver"
