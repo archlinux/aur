@@ -11,7 +11,7 @@ conflicts=('shrimp-bin')
 install=shrimp.install
 options=('!strip')
 source=("SHRIMP-${pkgver}.AppImage::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/SHRIMP-${pkgver}.AppImage")
-sha256sums=('aadbd53bc100214d99fd7a5e53e11aef437e99392f5cb4892af1b2047330fc6f')
+sha256sums=('4c3c2499a5348bfbe207b2dfa1aa9cefa902c532f4786855d9b3c0478c4f36b3')
 
 prepare() {
     chmod +x "SHRIMP-${pkgver}.AppImage"
