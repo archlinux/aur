@@ -1,7 +1,7 @@
 # Maintainer: Magnus Reid <magnus at msareid dot com>
 
 pkgname=zsh-patina-bin
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A blazingly fast Zsh syntax highlighter'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -14,10 +14,10 @@ source_aarch64=("$url/releases/download/$pkgver/zsh-patina-v$pkgver-$CARCH-unkno
 source_armv7h=("$url/releases/download/$pkgver/zsh-patina-v$pkgver-arm-unknown-linux-gnueabihf.tar.gz")
 source_i686=("$url/releases/download/$pkgver/zsh-patina-v$pkgver-$CARCH-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('6d8fb8ce033cc219497fd219fa4ae8636a7576555b02e22e9194df4e7a19b642')
-sha256sums_aarch64=('9e85a7bd25784bb5a4fdfba374eeeb30390e089bb60373c1b2b13c21ec3c15cc')
-sha256sums_armv7h=('d14c0f31e347812a8fa4be3b7e67cb53245254e1f37ca4d4f1454e5eadda76b8')
-sha256sums_i686=('544aaad87aa982c2759a128e10ac1e37ed46ac986d9eccd3d2fd2243a5e27aba')
+sha256sums_x86_64=('0769ce846658fb7116d2b464421ee2d50a2fa45b79d6dd335ca6bc7772a79145')
+sha256sums_aarch64=('2baa6da8d949fbce95de536f4ed08e75c7a34265f6dfc9c7b884f75ee82f33a2')
+sha256sums_armv7h=('b1047a925528f0e63abb26d28f29531c39a617382249b90b9f73423ac4a65e4b')
+sha256sums_i686=('f927da6006ed7ceba0d7907b75e834f9e9e19405f57f5e80376946ea5b554a23')
 
 package() {
     local _srcdir
