@@ -38,6 +38,9 @@ pkgver() {
 
 build() {
     cd "$srcdir/wshowlyrics"
+    # Ensure a fresh meson setup. Without this, a cached build/ from an
+    # older meson minor version (e.g. 1.10 -> 1.11) refuses to compile.
+    rm -rf build
     arch-meson . build
     meson compile -C build
 }
