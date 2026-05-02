@@ -1,6 +1,6 @@
 # Maintainer: Tamim Bhuyan <rxtamim30@gmail.com>
 pkgname=focuslock
-pkgver=1.0.9
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Lock a window fullscreen for focus sessions on KDE Wayland"
 arch=('any')
