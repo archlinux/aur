@@ -2,8 +2,8 @@
 
 pkgname=rime-llm-translator-git
 pkgver=r16.903403e
-pkgrel=2
-pkgdesc="给Rime输入法接入大模型进行云拼音联想，支持TUI图形化配置"
+pkgrel=3
+pkgdesc="给Rime输入法接入大模型进行拼音联想，支持TUI图形化配置"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/rime-llm-translator"
 license=('AGPL3') 
