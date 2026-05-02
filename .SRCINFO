@@ -1,7 +1,7 @@
 pkgbase = dpcode-bin
 	pkgdesc = DP Code desktop app packaged from the upstream AppImage
 	pkgver = 0.0.40
-	pkgrel = 1
+	pkgrel = 10
 	url = https://dpcode.cc
 	arch = x86_64
 	license = MIT

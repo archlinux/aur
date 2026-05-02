@@ -2,7 +2,7 @@
 
 pkgname=dpcode-bin
 pkgver=0.0.40
-pkgrel=1
+pkgrel=10
 pkgdesc='DP Code desktop app packaged from the upstream AppImage'
 arch=('x86_64')
 _upstream_tag='v0.0.40'
@@ -69,7 +69,7 @@ prepare() {
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
-  cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgname/"
+  cp -a --no-preserve=ownership "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgname/"
 
   chmod -R a+rX "$pkgdir/opt/$pkgname"
 
@@ -85,12 +85,31 @@ if [[ -z "${CODEX_CLI_PATH-}" ]] && command -v codex >/dev/null 2>&1; then
 fi
 
 export PATH="$appdir:$appdir/usr/bin:$appdir/usr/sbin:$PATH"
-export XDG_DATA_DIRS="$appdir/usr/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}"
-export GSETTINGS_SCHEMA_DIR="$appdir/usr/share/glib-2.0/schemas${GSETTINGS_SCHEMA_DIR:+:$GSETTINGS_SCHEMA_DIR}"
+export XDG_DATA_DIRS="$appdir/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+if [[ -d "$appdir/usr/share/glib-2.0/schemas" ]]; then
+  export GSETTINGS_SCHEMA_DIR="$appdir/usr/share/glib-2.0/schemas${GSETTINGS_SCHEMA_DIR:+:$GSETTINGS_SCHEMA_DIR}"
+fi
 
-extra_flags=()
-if [[ -n "${WAYLAND_DISPLAY-}" || "${XDG_SESSION_TYPE-}" == "wayland" ]]; then
+# Chromium/Electron tries to register a hard-coded
+# app-org.chromium.Chromium-$pid.scope with systemd. In some sessions that
+# scope already exists, causing a noisy StartTransientUnit failure before the
+# app starts. This environment variable makes Chromium skip that optional
+# registration path.
+export FLATPAK_SANDBOX_DIR="${FLATPAK_SANDBOX_DIR:-/run/host}"
+
+extra_flags=(
+  --disable-vulkan
+  --disable-features=Vulkan,DefaultANGLEVulkan,VulkanFromANGLE
+)
+if [[ "${DPCODE_DISABLE_GPU-}" == "1" ]]; then
+  extra_flags+=(--disable-gpu --disable-gpu-compositing)
+fi
+if [[ "${DPCODE_USE_WAYLAND-}" == "1" && ( -n "${WAYLAND_DISPLAY-}" || "${XDG_SESSION_TYPE-}" == "wayland" ) ]]; then
   extra_flags+=(--enable-features=UseOzonePlatform --ozone-platform=wayland --ozone-platform-hint=wayland)
+elif [[ -n "${DISPLAY-}" ]]; then
+  export GDK_BACKEND=x11
+  unset WAYLAND_DISPLAY
+  extra_flags+=(--ozone-platform=x11 --ozone-platform-hint=x11)
 else
   extra_flags+=(--ozone-platform-hint=auto)
 fi
