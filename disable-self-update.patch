@@ -1,0 +1,36 @@
+diff --git a/packages/coding-agent/src/config.ts b/packages/coding-agent/src/config.ts
+index 6f89183..bd61014 100644
+--- a/packages/coding-agent/src/config.ts
++++ b/packages/coding-agent/src/config.ts
+@@ -222,8 +222,20 @@ function isManagedByGlobalPackageManager(method: InstallMethod, packageName: str
+ 	);
+ }
+ 
++function isSelfUpdateDisabled(): boolean {
++	const value = process.env.PI_DISABLE_SELF_UPDATE;
++	if (!value) {
++		return false;
++	}
++
++	return /^(1|true|yes|on)$/i.test(value);
++}
++
+ export function getSelfUpdateCommand(packageName: string, npmCommand?: string[]): SelfUpdateCommand | undefined {
++	if (isSelfUpdateDisabled()) {
++		return undefined;
++	}
++
+ 	const method = detectInstallMethod();
+ 	const command = getSelfUpdateCommandForMethod(method, packageName, npmCommand);
+ 	if (!command || !isManagedByGlobalPackageManager(method, packageName, npmCommand) || !isSelfUpdatePathWritable()) {
+@@ -233,6 +245,10 @@ export function getSelfUpdateCommand(packageName: string, npmCommand?: string[])
+ }
+ 
+ export function getSelfUpdateUnavailableInstruction(packageName: string, npmCommand?: string[]): string {
++	if (isSelfUpdateDisabled()) {
++		return "Self-update is disabled for this installation. Update it with your system package manager.";
++	}
++
+ 	const method = detectInstallMethod();
+ 	if (method === "bun-binary") {
+ 		return `Download from: https://github.com/badlogic/pi-mono/releases/latest`;
