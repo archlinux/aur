@@ -1,19 +1,20 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 # Contributor: éclairevoyant
 # Contributor: Sefa Eyeoglu <contact at scrumplex dot net>
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A feature-rich digital audio workstation with support for various plugin formats and advanced audio processing capabilities"
 arch=('x86_64' 'aarch64')
 url="https://www.zrythm.org/"
 license=('AGPL-3.0-or-later')
 depends=(
   'bash'
-  'carla-git'
+  'boost-libs'
   'cairo'
+  'carla-git'
   'curl'
   'dconf'
   'fftw'
@@ -46,9 +47,9 @@ depends=(
   'pcre2'
   'pipewire-jack'
   'qt5-base'
-  'rubberband'
   'rtaudio'
   'rtmidi'
+  'rubberband'
   'sdl2'
   'vamp-plugin-sdk'
   'xxhash'
@@ -59,6 +60,7 @@ depends=(
 makedepends=(
   'blueprint-compiler'
   'boost'
+  'cmake'
   'glib2-devel'
   'guile'
   'help2man'
@@ -91,21 +93,28 @@ build() {
     -Dgraphviz=disabled  # Enable/Disable Graphviz support
     -Dportaudio=disabled # Enable/Disable PortAudio support
     -Dsoundio=disabled   # Enable/Disable libsoundio support
+    -Dstatic_deps=false
+    -Dcompletions=true
   )
 
   arch-meson build "${meson_options[@]}"
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Install the package
-  DESTDIR="${pkgdir}" ninja -C build install
+  meson install -C build --destdir "${pkgdir}"
 
   # Install the custom license file
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSES/LicenseRef-ZrythmLicense.txt" \
+  install -Dm644 LICENSES/LicenseRef-ZrythmLicense.txt \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Scrub $srcdir reference out of the fish completion file
+  if [[ -f "${pkgdir}/usr/share/fish/vendor_completions.d/zrythm.fish" ]]; then
+    sed -i "s|${srcdir}||g" "${pkgdir}/usr/share/fish/vendor_completions.d/zrythm.fish"
+  fi
 }
 
 # vim:set ts=2 sw=2 et:
