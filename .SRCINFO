@@ -1,0 +1,24 @@
+pkgbase = print-ease
+	pkgdesc = Find and use printers and scanners instantly - zero config required
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/MrHaku81/print-ease
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	makedepends = gettext
+	depends = python
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-pycups
+	depends = cups
+	depends = avahi
+	optdepends = python-pillow: PDF assembly for software duplex ADF scanning
+	source = print-ease-0.1.2.tar.gz::https://github.com/MrHaku81/print-ease/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 01b32855c83881f136291515803632a9126a602083154d0daf7ad706105b65c4
+
+pkgname = print-ease
