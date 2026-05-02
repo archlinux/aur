@@ -1,0 +1,11 @@
+pkgbase = zen-browser-url-to-desktop
+	pkgdesc = 将浏览器 URL 转换为桌面应用的工具
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/eon-ic/zen-browser-url-to-desktop
+	arch = any
+	license = MIT
+	depends = zen-browser
+	source = zen-browser-url-to-desktop-0.1.0.tar.gz::https://github.com/eon-ic/zen-browser-url-to-desktop/archive/v0.1.0.tar.gz
+
+pkgname = zen-browser-url-to-desktop
