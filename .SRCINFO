@@ -1,0 +1,18 @@
+pkgbase = sonixy-bin
+	pkgdesc = Lightweight audio collection manager
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://codeberg.org/sker/sonixy
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libnm
+	depends = libappindicator-gtk3
+	depends = librsvg
+	provides = sonixy
+	conflicts = sonixy
+	source = sonixy-0.2.1.deb::https://codeberg.org/sker/sonixy/releases/download/0.2.1/sonixy_0.2.1_amd64.deb
+	sha256sums = a70cc27a0ba35d43d49f92b80e302ea1732ac7e6426bd9a1afcf0a6fd9e18905
+
+pkgname = sonixy-bin
