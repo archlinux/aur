@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=mutop
+Comment=A beautiful orange-themed TUI process manager
+Exec=mutop
+Terminal=true
+Type=Application
+Categories=Utility;System;Monitor;
+Icon=utilities-terminal
