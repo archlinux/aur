@@ -1,5 +1,5 @@
 pkgname=catgirldownloader
-pkgver=0.3.1
+pkgver=0.5
 pkgrel=1
 pkgdesc="GTK4 application that downloads images from nekos.moe"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 source=(
   "${pkgname}-v${pkgver}.tar.gz::https://github.com/NyarchLinux/CatgirlDownloader/releases/download/${pkgver}/catgirldownloader-v${pkgver}.tar.gz"
 )
-sha256sums=('1c74c08bd77f421e146dfa4a3dfc46049f05bf3b141aba8caac66b18bd2947f6')
+sha256sums=('f27f2a42b294dedea7afb673adc08634433c4c52d55e0350b208bb2a7250a81a')
 
 package() {
   # Install the whole filesystem tree from the tarball
