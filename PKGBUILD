@@ -1,6 +1,6 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 install=sentinel.install
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (COSMIC + sudo-rs friendly)"
