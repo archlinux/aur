@@ -1,0 +1,18 @@
+[Unit]
+Description=Vykar backup REST server
+Documentation=https://vykar.borgbase.com/server-setup
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+Environment=VYKAR_TOKEN=some-secret-token
+ExecStart=/usr/bin/vykar-server --data-dir /var/lib/vykar --append-only
+Restart=on-failure
+RestartSec=2
+StateDirectory=vykar
+
+[Install]
+WantedBy=multi-user.target
+
