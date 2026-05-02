@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 
 pkgname=gnome-shell-extension-gsconnect
-pkgver=71
+pkgver=72
 pkgrel=1
 epoch=2
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
@@ -17,7 +17,7 @@ optdepends=(
   'python-nautilus: Nautilus integration'
 )
 source=(https://github.com/GSConnect/$pkgname/archive/v$pkgver.tar.gz)
-b2sums=('37bfac3495e02e147df497ba52d5c20bf0fad1265951d01d75902dc0d053c42f57bec7b5d0a64f63de58184a1c5e311e77b5f48738a095b8696c76de59150663')
+b2sums=('8d83a2f4624f0db3da25ba7e625f110a1a8142370a2ebe96dac51d59762067147c27de125a62163e1ed545bb04f75607b36896214dc43ad78177441171e97673')
 _uuid='gsconnect@andyholmes.github.io'
 
 build() {
