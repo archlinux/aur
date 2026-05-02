@@ -33,14 +33,17 @@ prepare() {
 }
 
 build() {
-  # Cannot do in-tree build.
-  mkdir ee-build
-  cd ee-build
-  cmake ../eternity -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  local cmake_options=(
+    -B build
+    -S eternity
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd ee-build
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
