@@ -2,7 +2,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='golangci-lint-bin'
-pkgver=2.12.0
+pkgver=2.12.1
 pkgrel=1
 pkgdesc='Fast linters runner for Go.'
 url='https://golangci.com'
@@ -12,16 +12,16 @@ provides=('golangci-lint-bin')
 conflicts=('golangci-lint')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v${pkgver}/golangci-lint-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('d45e927875a58abdd11b4d923cd8e4f191f8457260d9bb2f9f4cb7e7de5fec55')
+sha256sums_aarch64=('23c8e14f42b288d11d46ef52c622e2481d92901edfb263c2cf10875f38d386c4')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v${pkgver}/golangci-lint-${pkgver}-linux-armv7.tar.gz")
-sha256sums_armv7h=('8a9302dcdf5b4b5bd1b2516357063e3bcbf5fcdbf2c7ded1ba61acfc88249d6b')
+sha256sums_armv7h=('d483d947b8bed1137d9acb5713dec2849ab30d190de0b3b5cf2a7cac3650e24e')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v${pkgver}/golangci-lint-${pkgver}-linux-386.tar.gz")
-sha256sums_i686=('ccc8de03efe9c32dd2f9ac5ab547015e0e4ac952e011b676e094f9ef129eb527')
+sha256sums_i686=('049602754ef5f78fdbc192c9c850e14d54f827600dfe498ebd261e83123d021f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v${pkgver}/golangci-lint-${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('6b89d77b6396f81decee882f20473486bda5ef28b160f9a13b08f24848d9003c')
+sha256sums_x86_64=('82c7932d9aa10c34e22ef56961ac5aad71d4a14806a1a31b06931add2688b368')
 
 package() {
   local x86_64=amd64 i686=386 aarch64=arm64 armv6h=armv6 armv7h=armv7
