@@ -1,3 +1,6 @@
+# Creator:  https://github.com/DirtBagXon @ github@pani.cx
+# Maintainer:  Nick Bilbrey (beelzebud) <beelzebud@gmail.com>
+
 pkgname=hypseus-singe
 pkgver=2.12.0
 pkgrel=1
