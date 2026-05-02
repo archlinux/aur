@@ -9,7 +9,7 @@
 _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
-pkgver=0.0.134
+pkgver=0.0.135
 pkgrel=1
 epoch=1
 pkgdesc="Discord using system provided ${_electron} for increased security and performance"
@@ -29,7 +29,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'discord-launcher.sh'
         'krisp-patcher.py') # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
-sha512sums=('ae902a313acd8b98bd4689b39fb2105d07b04f9922afa166e28935528298ba2aa801eec61114319c4fd8d56059533ec6d2fcc00fd10406af29b6e961703eb7b0'
+sha512sums=('7be159b69fe322939fccfbe82c2c15b0dffb2ee2106a19824d7cc1ccb6b5f87b90446ba1915dfb81bbc59dab56561c104645d969acca5e9a95ac5b4c7afbd2ba'
             '5e2b4bc955606c23d3f788d73e81fbd6e6278b618ad85c5a3edc722428bbb6460c5dc874ad9b6ab893f658e669e1a0aa1a0d0830ddbfc019d01596425903dd57'
             '42cef68c1f7d574b4fbe859a4dc616e8994c7d16f62bcae3ff1f88e1edc58ac37b39c238d7defa9c97ceda417fcd6224cf0a0fd2608b8d18d0877e3c1befa59c')
 
@@ -54,7 +54,7 @@ build() {
   # use system electron
   asar e resources/app.asar resources/app
   rm resources/app.asar
-  sed -i -e "s|resourcesPath = _path.*;|resourcesPath = '/usr/share/${_pkgname}/resources';|" resources/app/common/paths.js
+  sed -i -e "s|resourcesPath = path.*;|resourcesPath = '/usr/share/${_pkgname}/resources';|" resources/app/common/paths.js
   sed -i -e "s|process.resourcesPath|'/usr/share/${_pkgname}/resources'|" resources/app/app_bootstrap/buildInfo.js
   sed -i -e "/^const appName/d" -e "/^const exePath/d" -e "/^const exeDir/d" -e "/^const iconPath/d" \
     -e "s|^Exec=\${exePath}$|Exec=/usr/bin/${_pkgname}|" \
