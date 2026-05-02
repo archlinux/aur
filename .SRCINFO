@@ -1,0 +1,16 @@
+pkgbase = moshpit-keygen-bin
+	pkgdesc = ed25519 key generation and inspection tool for moshpit (pre-compiled binary)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/rustyhorde/moshpit
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	provides = moshpit-keygen
+	conflicts = moshpit-keygen
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.3.0/dist-mp-keygen.tar.gz
+	sha256sums = b3d12603263cab0255235f2e6c0f3170896f0f5420fdd305e331e09d142456f7
+	source_x86_64 = mp-keygen-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.3.0/mp-keygen-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 36b9dc6d10b8450212fed8b0eb4b50aa350331ecac6bc89945be094a12b9b54d
+
+pkgname = moshpit-keygen-bin
