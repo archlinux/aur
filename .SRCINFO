@@ -24,6 +24,6 @@ pkgbase = alpaka-desktop-bin
 	noextract = alpaka-desktop-1.2.0.AppImage
 	options = !strip
 	source = alpaka-desktop-1.2.0.AppImage::https://github.com/nikoteressi/alpaka-desktop/releases/download/v1.2.0/alpaka-desktop_1.2.0_amd64.AppImage
-	sha256sums = 24dc67247cced5a0478fbf4c18b5943dc345b716321cf8267d1d329832d873e1
+	sha256sums = 53d32f79c374d6e0545abca4810b63c862df7990cf7bc719c6b5824f24e55f86
 
 pkgname = alpaka-desktop-bin
