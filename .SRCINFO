@@ -1,12 +1,12 @@
 pkgbase = openwebrx-plus
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 1.2.112
+	pkgver = 1.2.113
 	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
 	install = openwebrx-plus.install
 	arch = any
 	license = AGPL-3.0-only
-	depends = python-csdr-luarvique>=0.18.35
+	depends = python-csdr-luarvique>=0.18.36
 	depends = rtl-sdr
 	depends = owrx_connector-luarvique
 	depends = python-setuptools
@@ -16,7 +16,7 @@ pkgbase = openwebrx-plus
 	optdepends = codecserver: decode audio data from digital voice modes using the AMBE codec, leagally trustworthy
 	optdepends = codecserver-softmbe: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec
 	optdepends = codecserver-mbelib-module: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec
-	optdepends = codec2: demodulate FreeDV digital transmissions
+	optdepends = codec2: demodulate classic FreeDV digital transmissions
 	optdepends = radae-decoder-git: demodulate FreeDV RADEv1 digital voice transmissions
 	optdepends = m17-cxx-demod: demodulate M17 digital voice signals
 	optdepends = wsjtx: decode FT8, FST4, FST4, Q65 digital modes
@@ -63,11 +63,11 @@ pkgbase = openwebrx-plus
 	optdepends = soapysddc: interfacing with SDDC SDR devices such as the RX666, RX888, HF103, etc
 	provides = openwebrx
 	conflicts = openwebrx
-	source = openwebrx-plus-1.2.112.tar.gz::https://github.com/luarvique/openwebrx/archive/1.2.112.tar.gz
+	source = openwebrx-plus-1.2.113.tar.gz::https://github.com/luarvique/openwebrx/archive/1.2.113.tar.gz
 	source = openwebrx-plus.sysusers
 	source = openwebrx-plus.tmpfiles
-	sha256sums = da6c2e77df9980b10dfab5edee12754f0ec99e05e15ad8e73750610fa38d3301
-	sha256sums = 4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997
+	sha256sums = 2f848326cc5b84293f5cabe0a1740b39a140bc37e0c188c5b3994e4a7d7ee665
+	sha256sums = 4f618a2fd96bca7359a6d52a0ae996d08ab30d94d9d2717f1e353f2296ee0fd7
 	sha256sums = eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade
 
 pkgname = openwebrx-plus
