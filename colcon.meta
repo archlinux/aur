@@ -1,0 +1,10 @@
+names:
+  fastrtps:
+    cmake-args:
+      - "-DTHIRDPARTY_Asio=FORCE"
+  fastdds:
+    cmake-args:
+      - "-DTHIRDPARTY_Asio=FORCE"
+  zenoh_cpp_vendor:
+    cmake-args:
+      - "-DUSE_SYSTEM_ZENOH=ON"
