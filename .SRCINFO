@@ -1,6 +1,6 @@
 pkgbase = ipfs-desktop
 	pkgdesc = Desktop client for the InterPlanetary File System
-	pkgver = 0.48.0
+	pkgver = 0.49.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ipfs/ipfs-desktop
@@ -8,15 +8,13 @@ pkgbase = ipfs-desktop
 	license = MIT
 	makedepends = nodejs
 	makedepends = npm
-	depends = electron39
-	source = ipfs-desktop-0.48.0.tar.gz::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v0.48.0.tar.gz
+	depends = electron41
+	source = ipfs-desktop-0.49.0.tar.gz::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v0.49.0.tar.gz
 	source = ipfs-desktop.desktop
 	source = ipfs-desktop-startup.sh
-	source = ipfs-desktop-autostart-system-electron.patch
-	b2sums = 1356120d97de6f1c2aae8a56711a694fdf4dc42225b50be11afba1a15ba57085bb884d9e3d6e9098ca697dabc1af7f5bf8713fa22d9bd160d7ab3469950c60a3
+	b2sums = 2294eff390fb073a5d9ad76610e33cc2408991d7a6918ff4a9de3c38ca9a7e8e5a6ae3d11623d62ae086c6d77fcaa9abbeb6d4e02118d5fab015fccdeb527daf
 	b2sums = 849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785
 	b2sums = 2d7bfa3be33c0199cbe18889e477dc0c207c52d801f52a8b24ae09646f9bb3bf77046d1137dedc08d1481a6995071c4a480bf3884123d356fcd8af69fbfb554f
-	b2sums = 4a5a2e649b88766c9ae2f26ae5c1373c4e3a6d980f000c271c0acc57fb46fe38d6313fded32675a2e8a645c5af1af89045644fdf3e74f5589160d2f5836ad1d8
 
 pkgname = ipfs-desktop
-	depends = electron39
+	depends = electron41

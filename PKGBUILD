@@ -1,12 +1,12 @@
 # Maintainer: @RubenKelevra
 # Contributor: Alex Henrie <alexhenrie24@gmail.com>
 
-_electron_pkg=electron39
+_electron_pkg=electron41
 
 _archive_extension="tar.gz"
 
 pkgname=ipfs-desktop
-pkgver=0.48.0
+pkgver=0.49.0
 pkgrel=1
 epoch=1
 pkgdesc="Desktop client for the InterPlanetary File System"
@@ -25,13 +25,11 @@ source=(
 	"$pkgname-$pkgver.$_archive_extension::$url/archive/refs/tags/v$pkgver.$_archive_extension"
 	"$pkgname.desktop"
 	"$pkgname-startup.sh"
-	"$pkgname-autostart-system-electron.patch"
 )
-b2sums=('1356120d97de6f1c2aae8a56711a694fdf4dc42225b50be11afba1a15ba57085bb884d9e3d6e9098ca697dabc1af7f5bf8713fa22d9bd160d7ab3469950c60a3'
+b2sums=('2294eff390fb073a5d9ad76610e33cc2408991d7a6918ff4a9de3c38ca9a7e8e5a6ae3d11623d62ae086c6d77fcaa9abbeb6d4e02118d5fab015fccdeb527daf'
         '849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785'
         '2d7bfa3be33c0199cbe18889e477dc0c207c52d801f52a8b24ae09646f9bb3bf77046d1137dedc08d1481a6995071c4a480bf3884123d356fcd8af69fbfb554f'
-        '4a5a2e649b88766c9ae2f26ae5c1373c4e3a6d980f000c271c0acc57fb46fe38d6313fded32675a2e8a645c5af1af89045644fdf3e74f5589160d2f5836ad1d8')
-
+)
 _pkgsrc="$pkgname-$pkgver"
 
 _electron_env() {
@@ -57,10 +55,6 @@ _warn_if_electron_outdated() {
 	if [[ $_installed != "$_latest_local" ]]; then
 		echo "==> WARNING: Packaging uses not the latest major version of electron installed. ${_electron_pkg} ${_installed} is used, but a newer local Electron version (${_latest_local}) is available on the system." >&2
 	fi
-}
-
-prepare() {
-	patch -d "$_pkgsrc" -Np1 -i "$srcdir/$pkgname-autostart-system-electron.patch"
 }
 
 build() {
