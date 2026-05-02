@@ -1,6 +1,6 @@
 pkgbase = zeroclaw-bin
 	pkgdesc = Private AI Assistant that runs entirely on your machine (prebuilt binary).
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/zeroclaw-labs/zeroclaw
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = zeroclaw-bin
 	conflicts = zeroclaw-git
 	options = !strip
 	options = !debug
-	source = LICENSE-MIT::https://raw.githubusercontent.com/zeroclaw-labs/zeroclaw/v0.7.3/LICENSE-MIT
-	source = LICENSE-APACHE::https://raw.githubusercontent.com/zeroclaw-labs/zeroclaw/v0.7.3/LICENSE-APACHE
+	source = LICENSE-MIT::https://raw.githubusercontent.com/zeroclaw-labs/zeroclaw/v0.7.4/LICENSE-MIT
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/zeroclaw-labs/zeroclaw/v0.7.4/LICENSE-APACHE
 	sha256sums = 69ad6d0b3c96424e823dd77c3625682fefbf7cc2871a624fa38f5d762c4bcc94
 	sha256sums = 62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a
-	source_x86_64 = zeroclaw-0.7.3-x86_64.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/releases/download/v0.7.3/zeroclaw-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 1036ab4c01b9ed9e397795454c03d376dbb6288ee722eef5d2bc6b807a3b0a01
-	source_aarch64 = zeroclaw-0.7.3-aarch64.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/releases/download/v0.7.3/zeroclaw-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 5dbe0991914fdf29b6f3f29364aad5de20eca4bb92dd9c1491b89aef0676bcf5
+	source_x86_64 = zeroclaw-0.7.4-x86_64.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/releases/download/v0.7.4/zeroclaw-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 03004e8f3c65106246fcbbf1ce4677f574cfba506a178afbfa217adbe162730e
+	source_aarch64 = zeroclaw-0.7.4-aarch64.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/releases/download/v0.7.4/zeroclaw-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9d49e89f74e066f85dca2e1f7f96432a7f1ce73f9ee87f64bc6e6929c273b277
 
 pkgname = zeroclaw-bin
