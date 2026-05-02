@@ -4,4 +4,4 @@
 # or softlocks with the log pointing to IOExceptions refering to "too many open
 # files".
 ulimit -Sn 8192
-exec '/opt/clonehero/clonehero' "$@"
+exec '/usr/lib/clonehero/clonehero' "$@"
