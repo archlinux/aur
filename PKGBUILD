@@ -4,24 +4,43 @@
 # Contributor: AudioLinux <audiolinux AT fastmail DOT fm>
 # Contributor: almack
 
-_name="quick1"
-pkgname="qt5-${_name}"
+_qtname="quick1"
+pkgname="qt5-${_qtname}"
 _commit_rel="92c847e56d94c9032f3fa83922742e455233e4f3" # 5.8.0
 _commit="fa02271a18837f20e82006de23c2af1899294aa1" # r31
 pkgver="5.8.0+r31+g${_commit::7}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Deprecated Qt Quick Controls module for creating legacy Qt Quick user interfaces"
-arch=('i686' 'x86_64')
+arch=(
+  'i686'
+  'x86_64'
+)
 url="https://www.qt.io"
-_url="https://github.com/qt/qt${_name}"
-license=('LGPL-2.1-only AND LGPL-3.0-only AND GPL-3.0-only AND custom:Qt-GPL-exception-1.1')
-depends=('gcc-libs' 'glibc' 'qt5-base' 'qt5-script' 'qt5-xmlpatterns')
-optdepends=('qt5-declarative'
-            'qt5-webkit')
-provides=('libQt5Declarative.so')
-# groups=('qt5')
-_pkgsrc="qt${_name}-${_commit}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
+_url="https://github.com/qt/qt${_qtname}"
+license=(
+  'LGPL-2.1-only AND LGPL-3.0-only AND GPL-3.0-only AND custom:Qt-GPL-exception-1.1'
+)
+depends=(
+  'glibc'
+  'libstdc++'
+  'qt5-base'
+  'qt5-script'
+  'qt5-xmlpatterns'
+)
+optdepends=(
+  'qt5-declarative'
+  'qt5-webkit'
+)
+provides=(
+  'libQt5Declarative.so'
+)
+# groups=(
+#   'qt5'
+# )
+_pkgsrc="${_url##*/}-${_commit}"
+source=(
+  "${_url}/archive/${_commit}/${_pkgsrc}.tar.gz"
+)
 b2sums=('1e6e13d1f069f1ef6d23e0023efbc0c8f10b6a02b266159604ae9bd1e6ee1090fb64f1e54ae637a05c25223982b362fd8e8c20b751da473d07bbb6ce0209d30b')
 
 prepare() {
@@ -68,7 +87,7 @@ package() {
     sed -i '/^QMAKE_PRL_BUILD_DIR/d' "{}" +
   # -e 's/\(QMAKE_PRL_LIBS =\).*/\1/' \
 
-  # Create some symlinks in /usr/bin/, postfixed with '-qt5'
+  # Create some symlinks in /usr/bin/, prefixed with '-qt5'
   find "bin" -type f -execdir \
-    ln -vsf "/usr/bin/{}" "{}-qt5" \;
+    ln -vsf "{}" "{}-qt5" \;
 }

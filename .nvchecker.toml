@@ -1,0 +1,6 @@
+[qt5-quick1]
+source = "manual"
+
+# source = "git"
+# git = "https://github.com/qt/qtquick1.git"
+# prefix = "v"
