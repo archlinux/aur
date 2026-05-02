@@ -1,6 +1,6 @@
 # Maintainer: Dilial <tu@email.com>
 pkgname=ventoyisomanager-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Tauri-based application for managing Ventoy ISO images"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 _appimage="VentoyISOManager_${pkgver}_amd64.AppImage"
 
 source=("${_appimage}::https://github.com/Dilial/VentoyISOManager/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('82ddaa6ff4e7944707cfe86bd10c5a3553d7d112fbeb3a45e6792188cc272b93')
+sha256sums=('3a9de83332d444b824a114d4050037166e63e3cd7f6d78593625d2916312e2ae')
 
 prepare() {
     chmod +x "${srcdir}/${_appimage}"
