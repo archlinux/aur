@@ -1,6 +1,6 @@
 pkgname=passkeyd
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Opinionated WebAuthn authenticator backed by a TPM"
 arch=('x86_64')
 license=('GPL3')
@@ -18,9 +18,11 @@ package() {
   # Binary installation
   install -Dm755 passkeyd "$pkgdir/usr/bin/passkeyd"
   install -Dm755 passkeyd-manager "$pkgdir/usr/bin/passkeyd-manager"
+  install -Dm755 passkeyd-migrate "$pkgdir/usr/bin/passkeyd/passkeyd-migrate"
+
+  # UI binary installation
   install -Dm755 passkeyd-enroll "$pkgdir/usr/lib/passkeyd/passkeyd-enroll"
   install -Dm755 passkeyd-select "$pkgdir/usr/lib/passkeyd/passkeyd-select"
-  install -Dm755 passkeyd-migrate "$pkgdir/usr/lib/passkeyd/passkeyd-migrate"
   install -Dm755 passkeyd-selection "$pkgdir/usr/lib/passkeyd/passkeyd-selection"
 
   # Database directory
