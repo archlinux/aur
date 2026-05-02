@@ -1,0 +1,21 @@
+pkgbase = syswatch-bin
+	pkgdesc = Single-host system diagnostics TUI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/matthart1983/syswatch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = syswatch
+	conflicts = syswatch
+	options = !strip
+	source = README-0.1.1.md::https://raw.githubusercontent.com/matthart1983/syswatch/v0.1.1/README.md
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/matthart1983/syswatch/v0.1.1/LICENSE
+	sha256sums = 9bc81b068b70356dadd1d887755d8dca9be60705ec92a5a1a7f6bd904e39bee0
+	sha256sums = e78d969849862ac5abf431de8929c62759311a0cc58fd404eaf30996ab3f9162
+	source_x86_64 = syswatch-x86_64-0.1.1.tgz::https://github.com/matthart1983/syswatch/releases/download/v0.1.1/syswatch-linux-x86_64-static.tar.gz
+	sha256sums_x86_64 = cf6360b395e58f9d6fa421e8cb21299a030dcf6cff263837e4370bc407827357
+	source_aarch64 = syswatch-aarch64-0.1.1.tgz::https://github.com/matthart1983/syswatch/releases/download/v0.1.1/syswatch-linux-aarch64-static.tar.gz
+	sha256sums_aarch64 = 0ba7c30b5792aea4db189f231e199f6c95d634fc5172e4fe0cbde3accbb21780
+
+pkgname = syswatch-bin

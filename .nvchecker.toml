@@ -1,0 +1,5 @@
+[syswatch-bin]
+source = "github"
+github = "matthart1983/syswatch"
+use_latest_release = true
+prefix = "v"
