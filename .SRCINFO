@@ -1,6 +1,6 @@
 pkgbase = tolaria-bin
 	pkgdesc = Personal knowledge and life management app
-	pkgver = 2026.4.30
+	pkgver = 2026.5.2
 	pkgrel = 1
 	url = https://github.com/refactoringhq/tolaria
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tolaria-bin
 	depends = webkit2gtk-4.1
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/refactoringhq/tolaria/releases/download/stable-v2026.4.30/Tolaria_2026.4.30_amd64.deb
-	sha256sums = 84a3eb50ac7c6e084614f2a19bf7f2c49fa9037975cd1827942e6ccf11711b0b
+	source = https://github.com/refactoringhq/tolaria/releases/download/stable-v2026.5.2/Tolaria_2026.5.2_amd64.deb
+	sha256sums = f4fa7129c35e0cb73933b81f4f1bfd40ed1c289860879717de344d5f907a532f
 
 pkgname = tolaria-bin
