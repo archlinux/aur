@@ -5,7 +5,7 @@
 # brent s. <bts[at]square-r00t[dot]net>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=iozone
-pkgver=3.508
+pkgver=3.510
 _pkgver=${pkgver/./_}
 pkgrel=1
 pkgdesc="A filesystem benchmark tool"
@@ -15,8 +15,8 @@ license=('custom')
 depends=('sh')
 optdepends=('gnuplot: for generating graph reports')
 install=$pkgname.install
-source=("https://www.${pkgname}.org/src/current/${pkgname}${_pkgver}.tar")
-sha512sums=('98ff2dafa154c25aad94c6e34bfc438392a01aec98cf76b742b2b3b6b828d358793c1aa093ebfb93ef484052b3c562987f66c841c7aeb22c9b856bf234836618')
+source=("http://www.${pkgname}.org/src/current/${pkgname}${_pkgver}.tar")
+sha512sums=('7dca6608350b8ee50f98da08d48d75276d1a3cc730673a031ee9065160eb8b79f5662d3ae33bd610a398ea6b945a7f73abd945e7971de25c609cef190d2b5605')
 
 build() {
 	cd "${srcdir}/${pkgname}${_pkgver}/src/current"
