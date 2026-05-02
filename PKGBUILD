@@ -16,7 +16,7 @@ provides=('lash' 'lash-shell')
 conflicts=('lash' 'lash-shell')
 options=('!strip' '!debug')
 source=("https://gitlab.com/szabobogdan3/lash/-/releases/v${pkgver}/downloads/lash-shell-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('25e3b4e3876678729bd643926ec561f5dc16a2f660506c6034150909d9ee91b1')
+sha256sums=('ae4b96af89408ea0ce37f2148305496283ac42b0ccbdb1f32da113f672c76109')
 
 package() {
   cd "$srcdir"
