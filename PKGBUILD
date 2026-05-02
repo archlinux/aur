@@ -1,5 +1,5 @@
 pkgname=ktls-utils
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="TLS handshake utilities for NFSv4, NVMe-oF, and other in-kernel TLS consumers"
 url="https://github.com/oracle/ktls-utils"
@@ -10,10 +10,11 @@ depends=(
   gnutls
   keyutils          # libkeyutils.so
   libnl             # libnl-3.so libnl-genl-3.so
+  libyaml           # for --enable-session-tags, requires new kernel
 )
 makedepends=(gcc git make pkg-config)
 source=("git+https://github.com/oracle/ktls-utils#tag=ktls-utils-$pkgver?signed")
-sha256sums=('38bafb09c22d90929c3d4462cef5342815ef8abb39cd42283181a27431a741fa')
+sha256sums=('c0661faa0ec5081a6d0ab3cad45c171d013bc9db0b981a9fb870c7c44b7098cb')
 validpgpkeys=('28B2E5B01286DF243CF23EFE336AB3336F667F97')
 install=$pkgname.install
 backup=(etc/tlshd/config)
@@ -30,6 +31,7 @@ build() {
     --sbindir=/usr/bin        \
     --sysconfdir=/etc         \
     --with-systemd            \
+    --enable-session-tags     \
     ;
   make
 }
@@ -53,6 +55,13 @@ package() {
   # works, it's better to have nfs-server explicitly depend on tlshd.
   echo 'WantedBy=nfs-server.service' >> "$pkgdir"/usr/lib/systemd/system/tlshd.service
   echo 'WantedBy=nfsv4-server.service' >> "$pkgdir"/usr/lib/systemd/system/tlshd.service
+
+  # Add support for 'systemctl reload'.
+  mkdir "$pkgdir"/usr/lib/systemd/system/tlshd.service.d
+  cat > "$pkgdir"/usr/lib/systemd/system/tlshd.service.d/20-reload.conf <<!
+[Service]
+ExecReload=/usr/bin/kill -HUP \$MAINPID
+!
 }
 
 # vim: ft=sh:ts=2:sw=2:et
