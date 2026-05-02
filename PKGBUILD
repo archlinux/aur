@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.12.8
+pkgver=0.12.9
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -51,7 +51,7 @@ optdepends=(
   'waypipe: Wayland application forwarding for SSH connections'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bbc4f14ea9c0f95a364738f2942a0bfbfde90173519a19294bc01cc810eebf49')
+sha256sums=('a623a6440d35f068c5cb13dc2f56b5ef7d302f4f9072b936c1a8c35466527b3d')
 
 prepare() {
   cd "RustConn-$pkgver"
@@ -85,7 +85,7 @@ package() {
     "$pkgdir/usr/share/applications/"
   install -Dm644 "$pkgname/assets/${_app_id}.metainfo.xml" -t \
     "$pkgdir/usr/share/metainfo/"
-  install -Dm644 "$pkgname/assets/${_app_id}-rdp.xml" -t \
+  install -Dm644 "$pkgname/assets/${_app_id}"-{rdp,vv}.xml -t \
     "$pkgdir/usr/share/mime/packages/"
   install -Dm644 "$pkgname/assets/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
       "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
