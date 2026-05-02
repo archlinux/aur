@@ -1,0 +1,21 @@
+pkgbase = gitway-git
+	pkgdesc = Pure-Rust SSH toolkit for Git: transport, keys, signing, agent — git HEAD
+	pkgver = r0.HEAD
+	pkgrel = 1
+	url = https://github.com/steelbore/gitway
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = perl
+	makedepends = gcc
+	makedepends = pkg-config
+	provides = gitway
+	conflicts = gitway
+	conflicts = gitway-bin
+	source = gitway-git::git+https://github.com/steelbore/gitway.git
+	sha256sums = SKIP
+
+pkgname = gitway-git
