@@ -1,0 +1,25 @@
+pkgbase = oshot
+	pkgdesc = A fast and lightweight screenshot tool for extracting text on the fly
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/Toni500github/oshot
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = base-devel
+	depends = libx11
+	depends = libxcb
+	depends = libpng
+	depends = glfw
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = zbar
+	depends = libappindicator-gtk3
+	optdepends = grim: wlroots-based compositor screen capture
+	optdepends = wl-clipboard: Wayland clipboard
+	conflicts = oshot-git
+	conflicts = oshot-bin
+	source = git+https://github.com/Toni500github/oshot.git
+	sha256sums = SKIP
+
+pkgname = oshot
