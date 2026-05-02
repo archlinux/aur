@@ -9,6 +9,7 @@ post_install() {
         -r "$BACKEND/requirements.txt"
     "$VENV/bin/pip" uninstall -y kubernetes openai hf_xet 2>/dev/null || true
     echo "==> SHRIMP setup complete."
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
 }
 
 post_upgrade() {
@@ -17,4 +18,5 @@ post_upgrade() {
 
 post_remove() {
     rm -rf "$VENV"
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
 }
