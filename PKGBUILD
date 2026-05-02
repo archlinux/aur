@@ -10,7 +10,7 @@ pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A file encryption software that uses the Advanced Encryption Standard (AES)"
 arch=(
   'x86_64'
@@ -62,9 +62,14 @@ package_aescrypt_cli-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    "aescrypt-bin=${pkgver}"
   )
   conflicts=(
     "${pkgname%-bin}"
+    'aescrypt-bin'
+  )
+  replaces=(
+    'aescrypt-bin<=4.4.0-2'
   )
 
   local source_array="source_${CARCH}[0]"
@@ -100,11 +105,15 @@ package_aescrypt_gui-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    "aescrypt-gui-bin=${pkgver}"
   )
   conflicts=(
     "${pkgname%-bin}"
+    'aescrypt-gui-bin'
   )
-
+  replaces=(
+    'aescrypt-gui-bin<=4.4.0-2'
+  )
   local source_array="source_${CARCH}[0]"
   local source_url="${!source_array}"
   local source_artifact="${source_url##*/}"

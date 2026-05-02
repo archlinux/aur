@@ -1,7 +1,7 @@
 pkgbase = aescrypt-bin
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES)
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aescrypt.com
 	arch = x86_64
 	license = custom:Commercial
@@ -26,15 +26,21 @@ pkgname = aescrypt_cli-bin
 	depends = libgcc
 	depends = libstdc++
 	provides = aescrypt_cli=4.5.0
+	provides = aescrypt-bin=4.5.0
 	conflicts = aescrypt_cli
+	conflicts = aescrypt-bin
+	replaces = aescrypt-bin<=4.4.0-2
 
 pkgname = aescrypt_gui-bin
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES) (GUI)
 	arch = any
-	depends = aescrypt_cli-bin>=4.5.0-1
+	depends = aescrypt_cli-bin>=4.5.0-2
 	depends = hicolor-icon-theme
 	depends = perl
 	optdepends = kdialog: Qt-based password prompt
 	optdepends = zenity: GTK-based password prompt
 	provides = aescrypt_gui=4.5.0
+	provides = aescrypt-gui-bin=4.5.0
 	conflicts = aescrypt_gui
+	conflicts = aescrypt-gui-bin
+	replaces = aescrypt-gui-bin<=4.4.0-2
