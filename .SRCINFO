@@ -1,6 +1,6 @@
 pkgbase = franz-agent
 	pkgdesc = A powerful terminal-based AI assistant for developers.
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/marang/franz-agent
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = franz-agent
 	license = custom:FSL-1.1-MIT
 	makedepends = go
 	makedepends = git
-	source = franz-agent-0.1.0.tar.gz::https://github.com/marang/franz-agent/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 61efbc4889720d1b545b3a76ff5668c5d615ab6505c7daabc40b35fbe10deafa
+	source = franz-agent-0.1.2.tar.gz::https://github.com/marang/franz-agent/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 7a3f6eba97228a7e65c9c68c177a5259c93608d76d91ada7a649894420dc30c3
 
 pkgname = franz-agent
