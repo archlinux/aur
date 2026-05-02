@@ -12,20 +12,19 @@ source=("animecix.desktop"
 sha256sums=('SKIP' 'SKIP')
 
 package() {
-    # Dizinleri oluştur
     mkdir -p "${pkgdir}/opt/animecix"
     mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/pixmaps"
 
-    # Dosyaları kopyala (İnternetten inen arşiv src içine açılır)
+    # Dosyaları kopyala
     cp -r "${srcdir}/Animecix-linux-x64/"* "${pkgdir}/opt/animecix/"
 
-    # Logoyu sisteme tanıt
-    cp "${pkgdir}/opt/animecix/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/animecix.png"
+    # Logoyu sisteme çek (Nativefier'ın koyduğu ikonu kullanıyoruz)
+    if [ -f "${pkgdir}/opt/animecix/resources/app/icon.png" ]; then
+        cp "${pkgdir}/opt/animecix/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/animecix.png"
+    fi
 
-    # Çalıştırılabilir linki oluştur
+    # Link ve Masaüstü dosyası
     ln -s "/opt/animecix/Animecix" "${pkgdir}/usr/bin/animecix"
-
-    # Masaüstü kısayolunu yerleştir
     install -Dm644 "${srcdir}/animecix.desktop" "${pkgdir}/usr/share/applications/animecix.desktop"
 }
