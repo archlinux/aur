@@ -12,7 +12,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.deb::https://github.com/Prismo-Studio/Zephyr/releases/download/v${pkgver}/Zephyr_${pkgver}_amd64.deb")
-sha256sums=('1d0e294d0ec9a74c0010be8c526b776c1265b687b33f72911ce97a44e9adfa2c')
+sha256sums=('a39f7d24065d6f815691344b55304215f123b1b1da2bff200f4a0cb8294c9742')
 
 package() {
     cd "$srcdir"
