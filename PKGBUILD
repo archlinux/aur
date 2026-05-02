@@ -1,9 +1,9 @@
 # Maintainer: Kimiblock Moe
-# Maintainer: arenekosreal
+# Contributor: arenekosreal
 
 pkgname=autopush-rs
 pkgver=1.81.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Push Server in Rust"
 arch=('x86_64')
 provides=('autopush' 'autopush-rs' 'sunup-server')
