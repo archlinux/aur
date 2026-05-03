@@ -1,5 +1,7 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
+# Maintainer: Fabio Fontana (fabifont) <me@fabifont.dev>
+
 pkgname=claude-code
 pkgver=2.1.126
 pkgrel=2
@@ -10,6 +12,7 @@ license=('LicenseRef-claude-code')
 depends=('bash')
 # Binary is a self-contained Bun executable with embedded JS/resources - stripping breaks it
 options=('!strip')
+
 optdepends=(
 	'git: allow Claude to use git'
 	'github-cli: interact with GitHub'
@@ -31,11 +34,11 @@ sha256sums_aarch64=('88a6dca613a40559f3bac8a946a2ec6e60a870b91938d3df93dcac1dec4
 package() {
 	install -Dm755 "${srcdir}/claude-${pkgver}-${CARCH}" "${pkgdir}/opt/claude-code/bin/claude"
 
-	# Create wrapper script to disable autoupdater
+	# Create wrapper script to disable upstream update paths
 	install -dm755 "${pkgdir}/usr/bin"
 	cat > "${pkgdir}/usr/bin/claude" << 'EOF'
 #!/bin/sh
-export DISABLE_AUTOUPDATER=1
+export DISABLE_UPDATES=1
 exec /opt/claude-code/bin/claude "$@"
 EOF
 	chmod 755 "${pkgdir}/usr/bin/claude"
