@@ -1,5 +1,5 @@
-# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
-# Co-maintainer: Spike29 <leguen.yannick@gmail.com>
+# Maintainer: Spike29 <leguen.yannick@gmail.com>
+# Contributor: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-gtk2-git
