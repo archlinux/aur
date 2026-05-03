@@ -2,7 +2,7 @@
 
 _pkgname=docmancer
 pkgname=$_pkgname-git
-pkgver=r26.408eda7
+pkgver=r106.566bfd5
 pkgrel=1
 pkgdesc="Fetch docs, embed locally, expose to AI agents via skills"
 arch=('any')
@@ -18,12 +18,21 @@ depends=(
   'python-click'
   'python-yaml'
   'python-filelock'
+  'python-trafilatura'
   'python-markdownify'
   'python-w3lib'
   'python-ultimate-sitemap-parser'
   'python-beautifulsoup4'
+  'python-jsonschema'
+  'python-mcp'
 )
-optdepends=('python-trafilatura: web content extraction')
+optdepends=(
+  'python-playwright: browser extraction'
+  'python-datasets: benchmark datasets'
+  'python-openai: OpenAI benchmark provider'
+  'python-anthropic: Anthropic benchmark provider'
+  'python-google-genai: Gemini benchmark provider'
+)
 makedepends=('git' 'python-build' 'python-installer')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
