@@ -1,6 +1,6 @@
 pkgbase = reminders-git
 	pkgdesc = Reminds about events stored in YAML.
-	pkgver = v0.2.0.r4.gb081959
+	pkgver = v0.2.0.r21.g4b9f45c
 	pkgrel = 1
 	url = https://github.com/danisztls/reminders
 	install = reminders.install
@@ -10,6 +10,7 @@ pkgbase = reminders-git
 	depends = python
 	depends = python-yaml
 	depends = python-dateutil
+	depends = python-rich
 	provides = reminders
 	conflicts = reminders
 	source = git+https://github.com/danisztls/reminders

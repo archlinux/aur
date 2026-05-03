@@ -4,13 +4,13 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v0.2.0.r4.gb081959
+pkgver=v0.2.0.r21.g4b9f45c
 pkgrel=1
 pkgdesc="Reminds about events stored in YAML."
 arch=('any')
 url="https://github.com/danisztls/reminders"
 license=('GPLv3')
-depends=('python' 'python-yaml' 'python-dateutil')
+depends=('python' 'python-yaml' 'python-dateutil' 'python-rich')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

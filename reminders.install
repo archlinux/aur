@@ -15,12 +15,12 @@ _stop_service() {
   su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user stop $basename"
 }
 
-_enable_service() {
-  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user enable $basename"
+_enable_timer() {
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user enable --now ${basename}.timer"
 }
 
-_disable_service() {
-  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user disable $basename"
+_disable_timer() {
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user disable --now ${basename}.timer"
 }
 
 _is_service_active() {
@@ -31,8 +31,8 @@ _is_service_active() {
   fi
 }
 
-_is_service_enabled() {
-  if su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user is-enabled $basename" &>/dev/null; then
+_is_timer_enabled() {
+  if su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user is-enabled ${basename}.timer" &>/dev/null; then
     return 0
   else
     return 1
@@ -46,8 +46,7 @@ pre_install() {
 post_install() {
   for user in "${users[@]}"; do
     _refresh_daemon "$user"
-    _start_service "$user"
-    _enable_service "$user"
+    _enable_timer "$user"
   done
 }
 
@@ -62,15 +61,14 @@ pre_upgrade() {
 post_upgrade() {
   for user in "${users[@]}"; do
     _refresh_daemon "$user"
-    _start_service "$user"
+    _enable_timer "$user"
   done
 }
 
 pre_remove() {
   for user in "${users[@]}"; do
-    if _is_service_active "$user"; then
-      _stop_service "$user"
-      _disable_service "$user"
+    if _is_timer_enabled "$user"; then
+      _disable_timer "$user"
     fi
   done
 }
