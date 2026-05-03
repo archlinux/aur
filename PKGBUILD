@@ -3,7 +3,7 @@
 
 pkgname=dftd4
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/dftd4/dftd4'
 depends=('blas'
@@ -25,7 +25,7 @@ build() {
     -Db_pie=true
     -Dwarning_level=0  # avoid comilation error due to -Wall, see https://github.com/dftd4/dftd4/issues/294
   )
-  meson setup _build_${CARCH} . "${options[@]}"
+  meson setup _build_${CARCH} . "${options[@]}" --wipe
   meson compile -C _build_${CARCH}
 }
 
