@@ -18,12 +18,12 @@ noextract=("${pkgname}-${pkgver}.jar")
 # Alternative faster source from CDN, 
 # From line 422 (might change), view-source:https://portswigger.net/burp/releases <input id="CdnBaseUrl" name="CdnBaseUrl" type="hidden" value="https://portswigger-cdn.net">
 # Fixes #1 on aur-burpsuite
-source=("${pkgname}-${pkgver}.jar::https://portswigger-cdn.net/burp/releases/download?product=community&version=${pkgver}&type=Jar"
+source=("${pkgname}-${pkgver}.jar::https://portswigger-cdn.net/burp/releases/download?product=desktop&version=${pkgver}&type=Jar"
         LICENSE
         burpsuite.desktop
         icon64.png)
 install=burpsuite.install
-sha256sums=('c0d5ae3019a7e2bdd92f781c8ff1d3be3e6a0e779754432d9190c43554b82f0e'
+sha256sums=('c1f89a64f0904ac4fa08ece90fb876fbe46eb9ad8f2e2b4bd96bea3005a3a9ad'
             'a1146672de7084a1cddc5b7dab4d18b3530c194bd6e45a2b0ac04b579751ca30'
             '950c61d7ce1257c21a4152abebb8da320d0206ceb59247d6c912903d1ed39fc8'
             'd31232a7dbdab9d5723f12aa25c52d13fd46ef2e8837a85fb9a08c3a7f151541')
