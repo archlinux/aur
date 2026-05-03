@@ -1,0 +1,5 @@
+[diagon-bin]
+source = "github"
+github = "ArthurSonzogni/Diagon"
+use_latest_release = true
+prefix = "v"
