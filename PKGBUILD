@@ -2,17 +2,15 @@
 pkgname=kira
 _pkgname=kira
 pkgver=0.1.0.r20.ge9bfb8b
-pkgrel=2
+pkgrel=3
 pkgdesc="kira: a specialized expert in Arch Linux and Hyprland"
 arch=('any')
 url="https://github.com/eliakimrosil/kira"
 license=('MIT')
-depends=('python' 'python-pyaudio')
+depends=('python' 'python-pyaudio' 'python-dotenv' 'python-google-genai')
 optdepends=('grim: for screenshot support'
             'hyprland: for window management integration'
-            'mpv: for music playback'
-            'python-dotenv: for environment variable support'
-            'python-google-genai: for Gemini AI integration')
+            'mpv: for music playback')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$_pkgname-repo::git+$url.git")
 md5sums=('SKIP')

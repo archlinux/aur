@@ -1,7 +1,7 @@
 pkgbase = kira
 	pkgdesc = kira: a specialized expert in Arch Linux and Hyprland
 	pkgver = 0.1.0.r20.ge9bfb8b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eliakimrosil/kira
 	arch = any
 	license = MIT
@@ -12,11 +12,11 @@ pkgbase = kira
 	makedepends = python-wheel
 	depends = python
 	depends = python-pyaudio
+	depends = python-dotenv
+	depends = python-google-genai
 	optdepends = grim: for screenshot support
 	optdepends = hyprland: for window management integration
 	optdepends = mpv: for music playback
-	optdepends = python-dotenv: for environment variable support
-	optdepends = python-google-genai: for Gemini AI integration
 	source = kira-repo::git+https://github.com/eliakimrosil/kira.git
 	md5sums = SKIP
 
