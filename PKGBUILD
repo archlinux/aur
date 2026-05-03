@@ -5,7 +5,7 @@
 
 pkgname=claude-code
 pkgver=2.1.126
-pkgrel=2
+pkgrel=3
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
