@@ -1,5 +1,5 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
-# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Co-Maintainer: Chih-Hsuan Yen <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 # Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=libqtxdg
