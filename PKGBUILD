@@ -1,6 +1,6 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=omarchy-prayer
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Muslim prayer-time notifier for Omarchy: mako + adhan, waybar countdown, themed TUI, qibla, hijri, adhan catalog"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ruby' 'ruby-tomlrb' 'ruby-racc' 'libnotify' 'mako' 'waybar' 'mpv' 'cur
 optdepends=('hyprland: reference window manager for bundled waybar integration')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e56c1629d0d1eaea22c5728339ffb4b16c014f3cf347a6555290cae02229e588')
+sha256sums=('b968dff28a7f25f938dd2d798eafb311522fa754b10907af5e7f149ec0605cce')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -55,6 +55,12 @@ package() {
   sed -i 's|%h/\.local/bin/|/usr/bin/|g' \
     "${unitdir}/omarchy-prayer-schedule.service" \
     "${unitdir}/omarchy-prayer-resume.service"
+
+  # NetworkManager dispatcher — fires omarchy-prayer-schedule.service on every
+  # connection-up event so auto-relocate runs as soon as the user joins a new
+  # network. Falls back to the daily/startup/resume triggers if NM is absent.
+  install -Dm755 share/networkmanager/90-omarchy-prayer \
+    "${pkgdir}/etc/NetworkManager/dispatcher.d/90-omarchy-prayer"
 
   # License + docs
   install -Dm644 LICENSE   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

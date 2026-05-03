@@ -27,6 +27,14 @@ post_upgrade() {
     default adhans, systemd units) if you haven't already.
   - If the waybar module's JSON shape changed, reload waybar:
       pkill -SIGUSR2 waybar
+
+v0.1.5 — auto-relocate is enabled by default. Each schedule rebuild now
+re-detects via IP and updates [location] when the country changes or
+coords drift > 50 km. To pin (e.g. on VPN/Starlink), set in config.toml:
+    [location]
+    auto_update = false
+A NetworkManager dispatcher at /etc/NetworkManager/dispatcher.d/ fires
+the rebuild on every connection-up.
 EOF
 }
 
