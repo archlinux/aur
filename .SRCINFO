@@ -1,0 +1,13 @@
+pkgbase = spores
+	pkgdesc = Interactive TUI explorer for Arch Linux package dependencies
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mossware/spores
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-textual
+	source = git+https://github.com/mossware/spores.git
+	md5sums = SKIP
+
+pkgname = spores
