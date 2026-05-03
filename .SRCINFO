@@ -1,21 +1,21 @@
 pkgbase = doh-server-bin
 	pkgdesc = Fast, mature, secure DoH and ODoH server proxy written in Rust.
-	pkgver = 0.9.15
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://github.com/DNSCrypt/doh-server
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = doh-server=0.9.15
-	conflicts = doh-server=0.9.15
+	provides = doh-server=0.9.16
+	conflicts = doh-server=0.9.16
 	backup = usr/lib/systemd/system/doh-server.service
 	source = doh-server.sysusers
 	source = doh-server.service
 	sha256sums = 56ffc1c5331aa6b372c84d345f6a352d5321ab2787eea92449b6c3776b9c4711
 	sha256sums = b6694724f01666bf49096bbb78d52186b5a3fe5364615adb66df7f96ab6b490b
-	source_x86_64 = doh-server-bin-0.9.15.tar.bz2::https://github.com/DNSCrypt/doh-server/releases/download/0.9.15/doh-proxy_0.9.15_linux-x86_64.tar.bz2
-	sha256sums_x86_64 = bcb34fe1cdc919fdf88c6e428eb70700fc13255fd3d24335349d801571013079
-	source_aarch64 = doh-server-bin-0.9.15.tar.bz2::https://github.com/DNSCrypt/doh-server/releases/download/0.9.15/doh-proxy_0.9.15_linux-aarch64.tar.bz2
-	sha256sums_aarch64 = e3c480af82d9dc939d5a37c43999f6be754da8ea07ca42772834ff6a83009a9a
+	source_x86_64 = doh-server-bin-0.9.16.tar.bz2::https://github.com/DNSCrypt/doh-server/releases/download/0.9.16/doh-proxy_0.9.16_linux-x86_64.tar.bz2
+	sha256sums_x86_64 = 7b99114a1d1b9a26b8a1a7280d9005fd8c088149ae349740bde3829ebcbc3049
+	source_aarch64 = doh-server-bin-0.9.16.tar.bz2::https://github.com/DNSCrypt/doh-server/releases/download/0.9.16/doh-proxy_0.9.16_linux-aarch64.tar.bz2
+	sha256sums_aarch64 = e69e2d4bd160653ec4b5250e73ee461e71e6842d2d1acc0ef404d125c4d47c86
 
 pkgname = doh-server-bin
