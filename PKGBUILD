@@ -1,6 +1,6 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
-pkgver=0.5.2
+pkgver=0.6.1
 pkgrel=1
 install=sentinel.install
 # Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
@@ -34,7 +34,11 @@ optdepends=(
 )
 backup=('etc/security/sentinel.conf' 'etc/pam.d/polkit-1')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e2b463441c15ceececfa8d8dc631ff0819ac4588f191f561b5ba8f9998940099')
+# Regenerated to a real value by the AUR-publish CI workflow before
+# the PKGBUILD lands on the AUR repo. The in-repo copy stays at
+# 'SKIP' so dependabot-style updates don't churn this file every
+# release; never commit a real hash here.
+sha256sums=('8e89c76de88fcb3100dea7f40dc98c5707c49c3363d9c34fc788570d534e5ce4')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -59,6 +63,12 @@ build() {
         target/release/$bin completions zsh  > target/release/share/_$bin
         target/release/$bin man              > target/release/share/$bin.1
     done
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --release --workspace --locked
 }
 
 package() {
