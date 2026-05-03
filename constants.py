@@ -31,27 +31,23 @@ QEMU_BIN = "qemu-system-x86_64"
 
 
 def get_base_path():
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    if "/usr/share/broslauncher" in script_dir:
+        return "/usr/share/broslauncher"
+    return os.path.abspath(os.path.join(script_dir, ".."))
 
 
 def get_iso_path():
     possible_paths = []
 
-    if hasattr(sys, "_MEIPASS"):
-        bundle_dir = sys._MEIPASS
-        possible_paths.append(os.path.join(bundle_dir, "bros.iso"))
-
-    if getattr(sys, "frozen", False):
-        bundle_dir = os.path.dirname(sys.executable)
-        possible_paths.append(os.path.join(bundle_dir, "bros.iso"))
-        possible_paths.append(
-            os.path.join(bundle_dir, "usr", "share", "broslauncher", "bros.iso")
-        )
-
     script_dir = os.path.dirname(os.path.abspath(__file__))
     possible_paths.append(os.path.join(script_dir, "bros.iso"))
-
     possible_paths.append("/usr/share/broslauncher/bros.iso")
+
+    home = os.path.expanduser("~")
+    possible_paths.append(
+        os.path.join(home, "Desktop", "BROS", "C1", "V1.0.5C", "build", "bros.iso")
+    )
 
     for path in possible_paths:
         if os.path.exists(path):
