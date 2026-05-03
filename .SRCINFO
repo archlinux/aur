@@ -1,0 +1,14 @@
+pkgbase = awob-listeners-all
+	pkgdesc = awob listeners — meta-package pulling every official listener.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/jmylchreest/awob
+	arch = any
+	license = MIT
+	depends = awob-listener-pipewire-bin
+	depends = awob-listener-battery-bin
+	depends = awob-listener-backlight-bin
+	depends = awob-listener-keyboard-backlight-bin
+	depends = awob-listener-wob-bin
+
+pkgname = awob-listeners-all
