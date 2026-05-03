@@ -11,7 +11,7 @@ license=('custom:MIT-Commons-Clause')
 groups=()
 depends=('glibc' 'libgcc')
 makedepends=('cargo')
-source=("https://github.com/zsa/$_name/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zsa/$_name/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('93a35cd47d2e341e26da3038ac3e5e8f8e26d6b65f27130682fc7a95da4556c5')
 
 
