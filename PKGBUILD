@@ -1,12 +1,12 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
-_pkgbase=asus-hub
+_pkgbase=ayuz
 pkgname="$_pkgbase-bin"
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
-url='https://github.com/Traciges/Asus-Hub'
+url='https://github.com/Traciges/Ayuz'
 license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita')
 optdepends=('libkscreen: OLED flicker-free dimming'
@@ -15,13 +15,17 @@ optdepends=('libkscreen: OLED flicker-free dimming'
 						'iio-sensor-proxy: Ambient light sensor for auto backlight'
 						'swayidle: Keyboard backlight idle timer'
 						'asusctl: Battery care, fan profiles, FN key mod'
+						'supergfxctl: GPU mode switching'
 						'wireplumber: Volume control & boost'
 						'easyeffects: Audio sound profiles'
+						'brightnessctl: Smart Gestures'
+						'playerctl: Media playback control'
 						'glib2: Touchpad toggle on GNOME')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-source_x86_64=("$_pkgbase-$pkgver.deb::https://github.com/Traciges/Asus-Hub/releases/download/v$pkgver/asus-hub_$pkgver-1_amd64.deb")
-sha256sums_x86_64=('f87e44f3fe02a0f62740765e1783d7fb1632576fc3f4377258e79473234e90df')
+replaces=('asus-hub-bin')
+source_x86_64=("$_pkgbase-$pkgver.deb::https://github.com/Traciges/Ayuz/releases/download/v$pkgver/ayuz_$pkgver-1_amd64.deb")
+sha256sums_x86_64=('e50525171d8d0ec8493910ab171c83d533ba1c16c92b0f7ca8ac0890512364b3')
 
 prepare() {
 	bsdtar -xf "$_pkgbase-$pkgver.deb"
