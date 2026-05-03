@@ -1,10 +1,10 @@
-# Maintainer: Mohamed Hammad <mj 0x40 s3cure 0x2e me>
+# Maintainer: Mohamed Hammad <Mohamed 0x2e Hammad 0x40 Steelbore 0x2e com>
 # Contributor: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 # Contributor: Stephen Gregoratto <dev at sgregoratto dot me>
 
 pkgname=doas
 pkgver=6.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos, macOS and MidnightBSD"
 license=('BSD')
 url="https://codeberg.org/thejessesmith/doas/"
