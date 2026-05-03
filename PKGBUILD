@@ -1,4 +1,4 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 # Forked from community/ibus-chewing; original contributors:
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
