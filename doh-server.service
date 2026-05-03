@@ -7,10 +7,10 @@ User=doh-server
 Group=doh-server
 PrivateTmp=true
 # NOTE: You may want to manually set hostname/domain below
-ExecStart=/usr/sbin/doh-proxy \
-    -H $(hostname -f) \
+ExecStart=/bin/sh -c '/usr/sbin/doh-proxy \
+    -H "$(hostname -f)" \
     -l 127.0.0.1:3000 \
-    -u 127.0.0.1:53
+    -u 127.0.0.1:53'
 Type=exec
 Restart=always
 
