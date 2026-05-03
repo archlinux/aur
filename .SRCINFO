@@ -1,8 +1,8 @@
 pkgbase = husky-panel-git
         pkgdesc = A monolithic bar for Linux desktop.
-        pkgver = 1.0.1
+        pkgver = 1.0.2
         pkgrel = 1
-        url = https://github.com/MarcusPy827/Husky-Panel
+        url = https://github.com/CharOfString/Husky-Panel
         arch = x86_64
         arch = aarch64
         license = GPL-3.0-only
@@ -23,7 +23,7 @@ pkgbase = husky-panel-git
         optdepends = libxcb: X11/Xorg session support
         provides = husky-panel
         conflicts = husky-panel
-        source = husky-panel-git::git+https://github.com/MarcusPy827/Husky-Panel.git
+        source = husky-panel-git::git+https://github.com/CharOfString/Husky-Panel.git
         sha256sums = SKIP
 
 pkgname = husky-panel-git

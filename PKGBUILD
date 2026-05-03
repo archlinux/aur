@@ -1,11 +1,11 @@
-# Maintainer: MarcusPy827 <https://github.com/MarcusPy827>
+# Maintainer: CharOfString <markus_verify@126.com>
 
 pkgname=husky-panel-git
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="A monolithic bar for Linux desktop"
 arch=('x86_64' 'aarch64')
-url="https://github.com/MarcusPy827/Husky-Panel"
+url="https://github.com/CharOfString/Husky-Panel"
 license=('GPL-3.0-only')
 depends=(
     'qt6-base'
@@ -30,7 +30,7 @@ optdepends=(
 )
 provides=('husky-panel')
 conflicts=('husky-panel')
-source=("$pkgname::git+https://github.com/MarcusPy827/Husky-Panel.git")
+source=("$pkgname::git+https://github.com/CharOfString/Husky-Panel.git")
 sha256sums=('SKIP')
 
 pkgver() {
