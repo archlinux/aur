@@ -1,4 +1,4 @@
-# Maintainer: Massimo Pavoni <real.damax@gmail.com>
+# Maintainer: Massimo Pavoni (damax) <real dot damax at gmail dot com>
 
 _pkgname=wb32-dfu-updater_cli
 pkgname="$_pkgname-git"
