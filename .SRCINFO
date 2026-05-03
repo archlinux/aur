@@ -1,18 +1,26 @@
 pkgbase = jdk21-graalvm-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 21 version
 	pkgver = 21.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.graalvm.org/
 	install = jdk21-graalvm-bin.install
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = GPL-2.0-only WITH Classpath-exception-2.0
 	depends = java-runtime-common
 	depends = java-environment-common
+	depends = alsa-lib
+	depends = freetype2
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxrender
+	depends = libxtst
 	provides = java-runtime=21
 	provides = java-environment=21
 	replaces = native-image-jdk21-bin
 	options = staticlibs
+	options = !debug
 	source = graalvm-rebuild-libpolyglot.hook
 	sha256sums = eae72b5a2a2826eed7e4be5710d33f82934622a390ab6a9f009ed7753359e02e
 	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.2/graalvm-community-jdk-21.0.2_linux-x64_bin.tar.gz

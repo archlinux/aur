@@ -1,23 +1,30 @@
-# Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Lucas Werkmeister <mail@lucaswerkmeister.de>
 # Contributor: <asamk(at)gmx.de>
 
 pkgver=21.0.2
-graal_=${pkgver}+13.1
-java_=${pkgver%%.*}
-pkgname="jdk${java_}-graalvm-bin"
-pkgrel=1
-pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
+_java=${pkgver%%.*}
+pkgname="jdk${_java}-graalvm-bin"
+pkgrel=2
+pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_java} version"
 arch=('x86_64'
       'aarch64')
 url='https://www.graalvm.org/'
-license=('custom')
+license=('GPL-2.0-only WITH Classpath-exception-2.0')
 depends=('java-runtime-common'
-         'java-environment-common')
+         'java-environment-common'
+         'alsa-lib'
+         'freetype2'
+         'libx11'
+         'libxext'
+         'libxi'
+         'libxrender'
+         'libxtst')
 makedepends=()
-provides=("java-runtime=${java_}"
-          "java-environment=${java_}")
-replaces=("native-image-jdk${java_}-bin")
-options=('staticlibs')
+provides=("java-runtime=${_java}"
+          "java-environment=${_java}")
+replaces=("native-image-jdk${_java}-bin")
+options=('staticlibs' '!debug')
 install="$pkgname.install"
 source=('graalvm-rebuild-libpolyglot.hook')
 sha256sums=('eae72b5a2a2826eed7e4be5710d33f82934622a390ab6a9f009ed7753359e02e')
@@ -26,11 +33,18 @@ sha256sums_aarch64=('a34be691ce68f0acf4655c7c6c63a9a49ed276a11859d7224fd94fc2f65
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${pkgver}/graalvm-community-jdk-${pkgver}_linux-x64_bin.tar.gz")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${pkgver}/graalvm-community-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
 
+latestver() {
+    gh api --paginate repos/graalvm/graalvm-ce-builds/releases --jq '.[] | select(.draft == false and .prerelease == false) | .tag_name' |
+        sed -nE "s/^jdk-(${_java//./\\.}\\.[0-9]+\\.[0-9]+)$/\\1/p" |
+        sort -V |
+        tail -1
+}
+
 package() {
-    cd "graalvm-community-openjdk-${graal_}"
-    mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" *
+    cd graalvm-community-openjdk-${pkgver}+*
+    mkdir -p "$pkgdir/usr/lib/jvm/java-${_java}-graalvm/"
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${_java}-graalvm/" *
     install -DTm644 LICENSE_NATIVEIMAGE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    sed "s/JAVA/${java_}/g" < "../graalvm-rebuild-libpolyglot.hook" > "graalvm-jdk${java_}-rebuild-libpolyglot.hook"
-    install -DTm644 "graalvm-jdk${java_}-rebuild-libpolyglot.hook" "$pkgdir/usr/share/libalpm/hooks/graalvm-jdk${java_}-rebuild-libpolyglot.hook"
+    sed "s/JAVA/${_java}/g" < "../graalvm-rebuild-libpolyglot.hook" > "graalvm-jdk${_java}-rebuild-libpolyglot.hook"
+    install -DTm644 "graalvm-jdk${_java}-rebuild-libpolyglot.hook" "$pkgdir/usr/share/libalpm/hooks/graalvm-jdk${_java}-rebuild-libpolyglot.hook"
 }
