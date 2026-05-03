@@ -3,7 +3,8 @@
 pkgname=slskdn
 _pkgname=slskd
 pkgver=2026050100.slskdn.218
-pkgrel=2
+pkgrel=3
+_archive_root="slskdN-${pkgver//.slskdn/-slskdn}"
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
@@ -30,7 +31,7 @@ source=(
 sha256sums=('SKIP' '9724a9ad5790fa011868c3777cbdb9e41224c3b612e7c47990c524f8659ab278' '6d60a8a8ec79b1df0f5839e9a5ba8a77a021cc457fa138a62b58f4321b3a16df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
 
 build() {
-    cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
+    cd "${srcdir}/${_archive_root}"
 
     local _rid
     case "${CARCH}" in
@@ -62,7 +63,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
+    cd "${srcdir}/${_archive_root}"
 
     local app_root="${pkgdir}/usr/lib/${_pkgname}"
     local release_root="${app_root}/releases/${pkgver}"
