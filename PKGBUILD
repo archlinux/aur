@@ -1,7 +1,7 @@
 pkgname=samba-util
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="A graphical tool for managing Samba"
+pkgdesc="A simple and modern GUI for managing Samba."
 
 arch=('x86_64')
 license=('MIT')
