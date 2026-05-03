@@ -1,7 +1,7 @@
 # Maintainer: Lotte V
 # Contributor: Lotte V
 pkgname=ultrakiss
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc="Full featured IDE for creating, editing and viewing online KiSS sets"
 arch=('any')
@@ -12,9 +12,9 @@ depends=('java-runtime=17' 'hicolor-icon-theme' 'jre17-openjdk')
 makedepends=('java-environment=17')
 source=("$pkgname-$pkgver.sh::https://github.com/kisekae/${pkgname}/releases/download/V${pkgver}/${pkgname}_unix_${pkgver//./_}.sh"
 		"ultrakiss.desktop")
-md5sums=('dc0e13b947d2cd35cf77a4aeb8c1b0d3'
+md5sums=('8659f7e754af77a8d9b238cb4cc712ba'
          '486a3c20a3cba0e344a0f794d7afea94')
-sha256sums=('2734328309fa5ae2d55e1287b030c4665c5d5ee5689c2cdaa6aa19ada56b7c57'
+sha256sums=('b9b0c99fe4ad135f4629d1ac600b74d43cab0d36744691e6818ee543fb1e7eed'
             'a7850eda7f44532e3446dbf01c20b4d98b63ce6bd5e3cfefa00113438774d45a')
 
 package() {

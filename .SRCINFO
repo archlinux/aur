@@ -1,6 +1,6 @@
 pkgbase = ultrakiss
 	pkgdesc = Full featured IDE for creating, editing and viewing online KiSS sets
-	pkgver = 5.1
+	pkgver = 5.3
 	pkgrel = 1
 	url = https://github.com/kisekae/UltraKiss
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = ultrakiss
 	depends = java-runtime=17
 	depends = hicolor-icon-theme
 	depends = jre17-openjdk
-	source = ultrakiss-5.1.sh::https://github.com/kisekae/ultrakiss/releases/download/V5.1/ultrakiss_unix_5_1.sh
+	source = ultrakiss-5.3.sh::https://github.com/kisekae/ultrakiss/releases/download/V5.3/ultrakiss_unix_5_3.sh
 	source = ultrakiss.desktop
-	md5sums = b849b7105c32a276483e709a82336ff0
+	md5sums = 8659f7e754af77a8d9b238cb4cc712ba
 	md5sums = 486a3c20a3cba0e344a0f794d7afea94
-	sha256sums = 5e3496dce3d61c2e7cfdb0aca9873e0b182ceadb0373519ca22f5bad2d5e83d5
+	sha256sums = b9b0c99fe4ad135f4629d1ac600b74d43cab0d36744691e6818ee543fb1e7eed
 	sha256sums = a7850eda7f44532e3446dbf01c20b4d98b63ce6bd5e3cfefa00113438774d45a
 
 pkgname = ultrakiss
