@@ -1,7 +1,7 @@
 pkgbase = ogre-next2
 	pkgdesc = Scene-oriented, flexible 3D engine written in C++
 	pkgver = 2.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.ogre3d.org
 	install = ogre-next2.install
 	arch = x86_64

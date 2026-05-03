@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=ogre-next2
 pkgver=2.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Scene-oriented, flexible 3D engine written in C++'
 arch=('x86_64')
 url='http://www.ogre3d.org'
@@ -23,17 +23,14 @@ sha512sums=('52ed2d2a3375c0d35f0dc695b986514484ad1d47966c5c18351d3b09913123b2487
 
 prepare() {
   cd ogre-next-${pkgver}
-  patch -p1 < ${srcdir}/mesa-gl3.patch
-  patch -p1 < ${srcdir}/stlallocator-explicit.patch
+  patch -p1 --forward < ${srcdir}/mesa-gl3.patch || [[ $? -eq 1 ]]
+  patch -p1 --forward < ${srcdir}/stlallocator-explicit.patch || [[ $? -eq 1 ]]
 }
 
 build() {
-  cd ogre-next-${pkgver}
-
-  cmake \
-    -Bbuild \
-    -GNinja \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -B build -GNinja -S ogre-next-${pkgver} \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
     -DOGRE_USE_NEW_PROJECT_NAME=ON \
     -DOGRE_CONFIG_ENABLE_JSON=ON \
     -DOGRE_CONFIG_THREADS=1 \
@@ -44,15 +41,16 @@ build() {
     -DOGRE_BUILD_COMPONENT_HLMS_UNLIT=ON \
     -DOGRE_BUILD_TESTS=OFF \
     -DOGRE_INSTALL_SAMPLES_SOURCE=OFF \
-    -DOGRE_BUILD_SAMPLES2=OFF
+    -DOGRE_BUILD_SAMPLES2=OFF \
+    -DCMAKE_CXX_FLAGS="-w" \
+    -Wno-dev
 
-  ninja -C build
+  cmake --build build
 }
 
 package() {
-  cd ogre-next-${pkgver}
-  DESTDIR="${pkgdir}" ninja -C build install
-  install -Dm644 Docs/License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 $srcdir/ogre-next-${pkgver}/Docs/License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
 }
 
 # vim:set ts=2 sw=2 et:
