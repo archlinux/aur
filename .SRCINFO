@@ -1,0 +1,14 @@
+pkgbase = ccmeter
+	pkgdesc = Terminal dashboard for monitoring Claude Code usage analytics
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/hmenzagh/CCMeter
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = ccmeter-2.0.0.tar.gz::https://github.com/hmenzagh/CCMeter/archive/v2.0.0.tar.gz
+	sha256sums = c9227016fc3ccbf3a2a087372a8031f7c0942368bb5a1d4591262a8a29e85ae6
+
+pkgname = ccmeter
