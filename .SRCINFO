@@ -1,0 +1,24 @@
+pkgbase = termbox-glib-git
+	pkgdesc = GLib/GObject wrapper around termbox2
+	pkgver = 0.0.1.r12.ab2245d
+	pkgrel = 1
+	url = https://dolt.ch/projects/termbox-glib/
+	arch = x86_64
+	license = LGPL-2.1-or-later AND MIT
+	makedepends = git
+	makedepends = meson>=1.7.0
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2>=2.84
+	provides = termbox-glib
+	provides = libtermbox-glib.so
+	conflicts = termbox-glib
+	source = termbox-glib::git+https://git.sr.ht/~samdolt/termbox-glib
+	source = termbox2::git+https://github.com/termbox/termbox2.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = termbox-glib-git

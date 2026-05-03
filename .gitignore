@@ -1,0 +1,7 @@
+pkg/
+src/
+build/
+termbox-glib/
+termbox2/
+*.pkg.tar*
+*.src.tar*
