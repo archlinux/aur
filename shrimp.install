@@ -5,7 +5,7 @@ post_install() {
     echo "==> Installing SHRIMP Python dependencies..."
     rm -rf "$VENV"
     python3 -m venv --system-site-packages "$VENV"
-    "$VENV/bin/pip" install --quiet --no-warn-script-location \
+    "$VENV/bin/pip" install --no-warn-script-location \
         -r "$BACKEND/requirements.txt"
     "$VENV/bin/pip" uninstall -y kubernetes openai hf_xet 2>/dev/null || true
     echo "==> SHRIMP setup complete."

@@ -1,6 +1,6 @@
 # Maintainer: Jordan Sluiter <jordan.sluiter@icloud.com>
 pkgname=shrimp
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Self-hosted AI productivity assistant"
 arch=('x86_64')
@@ -20,17 +20,19 @@ depends=(
     'python-grpcio'
     'python-requests'
     'python-rich'
+    'python-keyring'
 )
 conflicts=('shrimp-bin')
 install=shrimp.install
 source=("shrimp-${pkgver}.tar.gz::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/shrimp-${pkgver}.tar.gz")
-sha256sums=('f58dd8351da64867e92debc6b9621c4db8bb1e664a139d0c22bb74f59caa2bc6')
+sha256sums=('bab37d5258b0b4aa100b6fe710d271329758fe7591081b3ba34b0ff4f610ecd3')
 
 package() {
     cd "shrimp-${pkgver}"
 
     install -dm755 "${pkgdir}/usr/lib/shrimp"
     cp -r electron frontend backend plugins package.json "${pkgdir}/usr/lib/shrimp/"
+    chmod -R a+rX "${pkgdir}/usr/lib/shrimp/"
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/shrimp" <<'EOF'
 #!/usr/bin/env sh
