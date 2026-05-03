@@ -1,11 +1,45 @@
+_torrcli_detect_user() {
+    if [[ -n "${SUDO_USER:-}" && "${SUDO_USER}" != "root" ]]; then
+        printf '%s\n' "${SUDO_USER}"
+        return 0
+    fi
+
+    local login_name
+    login_name=$(logname 2>/dev/null || true)
+    if [[ -n "${login_name}" && "${login_name}" != "root" ]]; then
+        printf '%s\n' "${login_name}"
+        return 0
+    fi
+
+    local first_uid_user
+    first_uid_user=$(getent passwd 1000 2>/dev/null | cut -d: -f1)
+    if [[ -n "${first_uid_user}" ]]; then
+        printf '%s\n' "${first_uid_user}"
+        return 0
+    fi
+
+    return 1
+}
+
 post_install() {
-    sed -i "s/__USER__/$(logname)/" /usr/lib/systemd/system/torrcli.service
+    local torrcli_user
+    if ! torrcli_user=$(_torrcli_detect_user); then
+        torrcli_user=root
+        echo "Warning: could not detect a non-root login user; configuring torrcli.service to run as root."
+    fi
+    sed -i "s|__USER__|${torrcli_user}|" /usr/lib/systemd/system/torrcli.service
     echo "Enabling and starting torrcli service..."
     systemctl daemon-reload
     systemctl enable --now torrcli.service
 }
 
 post_upgrade() {
+    local torrcli_user
+    if ! torrcli_user=$(_torrcli_detect_user); then
+        torrcli_user=root
+        echo "Warning: could not detect a non-root login user; configuring torrcli.service to run as root."
+    fi
+    sed -i "s|__USER__|${torrcli_user}|" /usr/lib/systemd/system/torrcli.service
     echo "Reloading daemon and restarting torrcli service..."
     systemctl daemon-reload
     systemctl restart torrcli.service

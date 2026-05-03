@@ -1,7 +1,7 @@
 # Maintainer: Aayush Kumar <aayush214.kumar@gmail.com>
 pkgname=torrcli
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli based torrent client built with libtorrent"
 arch=('x86_64')
 url="https://github.com/aayushkdev/torrcli"
@@ -24,7 +24,8 @@ package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    install -Dm644 "$srcdir/torrcli.service" "$pkgdir/usr/lib/systemd/system/torrcli.service"
+    sed 's|__PYTHON__|/usr/bin/python|' "$srcdir/torrcli.service" > torrcli.service.patched
+    install -Dm644 torrcli.service.patched "$pkgdir/usr/lib/systemd/system/torrcli.service"
 
     install -Dm644 torrcli.conf.example "$pkgdir/usr/share/torrcli/torrcli.conf.example"
 }
