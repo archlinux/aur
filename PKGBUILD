@@ -6,7 +6,7 @@
 
 pkgname=nethack-git
 _pkgname=NetHack
-pkgver=5.0.0
+pkgver=5.0.0_Release+r18672+g1947eb98a
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -72,6 +72,7 @@ build() {
   cd "NetHack/sys/unix"
   sh setup.sh hints/linux.500
   cd "$srcdir/$_pkgname"
+	make fetch-lua
   make
 }
 
