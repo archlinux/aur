@@ -1,13 +1,13 @@
 # Maintainer: nardholio <nardholio@gmail.com>
 
 pkgname=x11-multimonitor-center
-pkgver=2
-pkgrel=3
+pkgver=3
+pkgrel=1
 pkgdesc="X11 tray app to move newly spawned windows to the monitor with the mouse cursor if they spawn somewhere else"
 arch=('any')
 url="none"
 license=('GPL3')
-depends=('gtk3' 'libwnck3' 'libayatana-appindicator')
+depends=('gtk3' 'libwnck3' 'libappindicator-gtk3')
 makedepends=('pkgconf')
 
 prepare() {
@@ -21,7 +21,7 @@ prepare() {
 #include <libwnck/libwnck.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <libayatana-appindicator/app-indicator.h>
+#include <libappindicator/app-indicator.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -33,14 +33,14 @@ static gboolean enabled = TRUE;
 static AppIndicator *indicator = NULL;
 static GtkWidget *menu = NULL;
 static WnckScreen *screen = NULL;
-static GtkWidget *toggle_item = NULL;
 static WnckHandle *wnck_handle = NULL;
 static GApplication *global_app = NULL;
 
 static void update_tray_icon(void)
 {
     if (!indicator) return;
-    app_indicator_set_icon_full(indicator, enabled ? ICON_ENABLED : ICON_DISABLED, NULL);
+    const char *icon_path = enabled ? ICON_ENABLED : ICON_DISABLED;
+    app_indicator_set_icon(indicator, icon_path);
 }
 
 static gboolean delayed_move_cb(gpointer user_data)
@@ -63,7 +63,6 @@ static gboolean delayed_move_cb(gpointer user_data)
 
     int mouse_x, mouse_y;
     gdk_device_get_position(pointer, NULL, &mouse_x, &mouse_y);
-
     GdkMonitor *mouse_monitor = gdk_display_get_monitor_at_point(display, mouse_x, mouse_y);
     if (!mouse_monitor) goto cleanup;
 
@@ -73,71 +72,63 @@ static gboolean delayed_move_cb(gpointer user_data)
 
     int win_center_x = win_x + win_w / 2;
     int win_center_y = win_y + win_h / 2;
-
     GdkMonitor *win_monitor = gdk_display_get_monitor_at_point(display, win_center_x, win_center_y);
+
     if (win_monitor == mouse_monitor) goto cleanup;
 
     GdkRectangle geom;
+    gdk_monitor_get_geometry(mouse_monitor, &geom);
+    int new_x = geom.x + (geom.width - win_w) / 2;
+    int new_y = geom.y + (geom.height - win_h) / 2;
 
-    if (wnck_window_is_fullscreen(window)) {
-        gdk_monitor_get_geometry(mouse_monitor, &geom);
-        wnck_window_set_geometry(window,
-                                 WNCK_WINDOW_GRAVITY_CURRENT,
-                                 WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
-                                 geom.x, geom.y, 0, 0);
-        printf("MOVED fullscreen window → to mouse monitor @ (%d,%d)\n", geom.x, geom.y);
-    } else {
-        gdk_monitor_get_workarea(mouse_monitor, &geom);
-        int target_w = (win_w > geom.width) ? geom.width : win_w;
-        int target_h = (win_h > geom.height) ? geom.height : win_h;
-        int new_x = geom.x + (geom.width - target_w) / 2;
-        int new_y = geom.y + (geom.height - target_h) / 2;
-        wnck_window_set_geometry(window,
-                                 WNCK_WINDOW_GRAVITY_CURRENT,
-                                 WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y |
-                                 WNCK_WINDOW_CHANGE_WIDTH | WNCK_WINDOW_CHANGE_HEIGHT,
-                                 new_x, new_y, target_w, target_h);
-        printf("MOVED window → centered on mouse monitor @ (%d,%d) size %dx%d\n", new_x, new_y, target_w, target_h);
-    }
+    wnck_window_set_geometry(window,
+                             WNCK_WINDOW_GRAVITY_CURRENT,
+                             WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
+                             new_x, new_y, win_w, win_h);
+
+    printf("MOVED window → centered on mouse monitor @ (%d,%d)\n", new_x, new_y);
 
 cleanup:
     g_object_unref(window);
     return FALSE;
 }
 
-static void window_opened_cb(WnckScreen *scr, WnckWindow *window, gpointer user_data)
+static void
+window_opened_cb(WnckScreen *scr, WnckWindow *window, gpointer user_data)
 {
     (void)scr; (void)user_data;
     if (!enabled) return;
     g_timeout_add(MOVE_DELAY_MS, delayed_move_cb, g_object_ref(window));
 }
 
-static void toggle_enabled_cb(GtkCheckMenuItem *item, gpointer data)
+static void
+toggle_enabled_cb(GtkCheckMenuItem *item, gpointer data)
 {
     enabled = gtk_check_menu_item_get_active(item);
     update_tray_icon();
 }
 
-static void quit_cb(GtkMenuItem *item, gpointer data)
+static void
+quit_cb(GtkMenuItem *item, gpointer data)
 {
     (void)item; (void)data;
     if (global_app)
         g_application_quit(global_app);
 }
 
-static void create_tray_icon(void)
+static void
+create_tray_icon(void)
 {
     indicator = app_indicator_new("x11-multimonitor-center",
                                   ICON_ENABLED,
                                   APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
     app_indicator_set_status(indicator, APP_INDICATOR_STATUS_ACTIVE);
+    update_tray_icon();
 
     menu = gtk_menu_new();
-
     GtkWidget *toggle = gtk_check_menu_item_new_with_label("Enabled");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(toggle), enabled);
     g_signal_connect(toggle, "toggled", G_CALLBACK(toggle_enabled_cb), NULL);
-    toggle_item = toggle;
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), toggle);
 
     GtkWidget *separator = gtk_separator_menu_item_new();
@@ -148,11 +139,11 @@ static void create_tray_icon(void)
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), quit);
 
     gtk_widget_show_all(menu);
-
     app_indicator_set_menu(indicator, GTK_MENU(menu));
 }
 
-static void app_activate_cb(GApplication *app, gpointer user_data)
+static void
+app_activate_cb(GApplication *app, gpointer user_data)
 {
     (void)user_data;
     if (!screen) {
@@ -168,7 +159,6 @@ static void app_activate_cb(GApplication *app, gpointer user_data)
 int main(int argc, char **argv)
 {
     gtk_init(&argc, &argv);
-
 #if GTK_CHECK_VERSION(3,10,0)
     if (!GDK_IS_X11_DISPLAY(gdk_display_get_default())) {
         g_print("Error: This tool requires an X11 display\n");
@@ -178,7 +168,6 @@ int main(int argc, char **argv)
 
     global_app = g_application_new("org.x11multimonitor.center", G_APPLICATION_DEFAULT_FLAGS);
     g_signal_connect(global_app, "activate", G_CALLBACK(app_activate_cb), NULL);
-
     int status = g_application_run(global_app, argc, argv);
     g_object_unref(global_app);
     return status;
@@ -224,7 +213,7 @@ SVG
 build() {
   gcc -Wall -O2 \
     -o x11-multimonitor-center x11-multimonitor-center.c \
-    $(pkg-config --cflags --libs gtk+-3.0 libwnck-3.0 ayatana-appindicator3-0.1)
+    $(pkg-config --cflags --libs gtk+-3.0 libwnck-3.0 appindicator3-0.1)
 }
 
 package() {
