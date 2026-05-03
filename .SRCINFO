@@ -1,7 +1,7 @@
 pkgbase = hyprmod
 	pkgdesc = Native GTK4/libadwaita settings app for Hyprland
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BlueManCZ/hyprmod
 	arch = x86_64
 	license = GPL-3.0-only
@@ -19,6 +19,6 @@ pkgbase = hyprmod
 	depends = python-hyprland-socket
 	depends = python-hyprland-state
 	source = hyprmod-0.1.0.tar.gz::https://github.com/BlueManCZ/hyprmod/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = ffbc6f109f7f4045699ffef63175764612b2eef894bfcf807f7ad2efff74c582
 
 pkgname = hyprmod
