@@ -1,11 +1,12 @@
-# Maintainer: envolution
+# Maintainer: slondr <slondr@icloud.com>
+# Contributor: envolution
 # Contributor: Joshua Ward <joshuaward@myoffice.net.au>
 # Contributor: Eric Biggers <ebiggers3@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=nethack-git
 _pkgname=NetHack
-pkgver=3.6.7_Released+r17565+g55561da63
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ url='https://github.com/NetHack/NetHack'
 license=('LicenseRef-custom')
 depends=('ncurses' 'gzip' 'gdb')
 makedepends=(git)
-_branch=NetHack-3.6 #3.7 is not ready yet
+_branch=NetHack-5.0
 source=("git+https://github.com/NetHack/NetHack.git#branch=${_branch}" nethack.tmpfiles)
 sha256sums=('SKIP'
             '5c68417ff1cf76705a2bf7dc9fa1900156792808cb528d62f53e337030c40ea4')
