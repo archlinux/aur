@@ -11,7 +11,7 @@ pkgver=7.0.3.zen1
 pkgrel=1
 pkgdesc='Linux ZEN (with cjktty patch)'
 url="https://github.com/zen-kernel/zen-kernel"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL-2.0-ONLY)
 makedepends=(
   bc
@@ -47,7 +47,7 @@ b2sums=('51eebd3aa3c64779308b0781818fd91921c1a7b0c3ffd361dbff01f8853f1cea7d4c70f
         'SKIP'
         '59a5ec7b06e0bbd587a0f25f83dccdee41c2964ccc5167804c5f4148c97d2b0a34d9679e6814a6dec6d6a81f273f7f6ee2162a8526dc64d825bf9f9c117644e7'
         'SKIP'
-        'ced8aedd351088cd9f721ceae2b38823b1dac3b5346de19fe2681c84d2a3de444aed5eeaed8d2cf6f7c9c547ed5c6ee3441e03ac0e8d239c35b781b640dc1764'
+        '957b90bcefbf859974bae78a1845a2b2cea8731c03a3bf04ba6296053a62ac8a87aae1490f3910a992e98a57506286ee53a00afe1a9d8c157c37e1d75ec3faff'      
         '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
 
