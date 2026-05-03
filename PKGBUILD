@@ -2,7 +2,7 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=nyrna
-pkgver=2.27.0
+pkgver=2.27.1
 pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'clang' 'cmake' 'ninja' 'unzip' 'fvm')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('8b1ccfd4347c7c02a222a56c4ec4a525a98135f59d313ae3add417c0c6926415')
+sha256sums=('cc8e6dfcf3ffc94f0742fb9e9cd2512d0590a13cf79b31c52e057d053cd1934f')
 
 _setpath() {
     export FVM_CACHE_PATH="$srcdir/.fvm-cache"
