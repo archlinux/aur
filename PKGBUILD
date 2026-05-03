@@ -1,6 +1,6 @@
 # Maintainer: Om <omaku2006@gmail.com>
 pkgname=vivid-engine
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Lightweight, daemon-driven Wayland wallpaper engine with smooth animations & video support"
 arch=('x86_64')
