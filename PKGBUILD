@@ -85,6 +85,11 @@ package() {
     install -Dm644 packaging/flatpak/io.github.cushycush.wflow.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.cushycush.wflow.svg"
 
+    # Systemd user unit for the trigger daemon. `systemctl --user
+    # enable --now wflow-daemon` after install.
+    install -Dm644 packaging/systemd/wflow-daemon.service \
+        "$pkgdir/usr/lib/systemd/user/wflow-daemon.service"
+
     # Docs
     install -Dm644 README.md   "$pkgdir/usr/share/doc/$_pkgname/README.md"
     install -Dm644 docs/KDL.md "$pkgdir/usr/share/doc/$_pkgname/KDL.md"
