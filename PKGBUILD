@@ -4,18 +4,26 @@
 _pkgname=goobook
 pkgname="$_pkgname-git"
 pkgver=3.5.3.r11.g30b05c5
-pkgrel=1
+pkgrel=2
 pkgdesc="Search your google contacts from the command-line or mutt."
 arch=('any')
 url="https://gitlab.com/goobook/goobook"
 license=('GPL-3.0-only')
 conflicts=('goobook')
 provides=('goobook')
-depends=('python' 'python-simplejson' 'python-google-api-core'
-  'python-google-api-python-client' 'python-google-auth-oauthlib'
-  'python-googleapis-common-protos' 'python-oauth2client' 'python-pyxdg')
-makedepends=('git' 'python-installer' 'python-build' 'python-docutils'
-  'python-pdm-backend' 'python-poetry')
+depends=('python'
+  'python-simplejson'
+  'python-google-api-python-client'
+  'python-google-auth'
+  'python-google-auth-oauthlib'
+  'python-google-auth-httplib2'
+  'python-pyxdg')
+makedepends=('git'
+  'python-installer'
+  'python-build'
+  'python-docutils'
+  'python-pdm-backend'
+  'python-setuptools')
 _pkgsrc="goobook"
 source=("git+https://gitlab.com/goobook/goobook.git")
 md5sums=('SKIP')
