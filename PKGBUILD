@@ -2,7 +2,7 @@
 
 pkgname=python-migate
 _name=${pkgname#python-}
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="migate is a simplified Xiaomi authentication gateway for Python projects"
 provides=(${pkgname})
@@ -24,7 +24,7 @@ makedepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('7bf481bfba6f6272200bf7bff8cf8ddedb04603e7fd0b0859b7e114d0d98b88b')
+sha256sums=('0f6dee0ed4ce26706492ee3c6eee931faed63d867f4d3c1e9b1d53ab1bde0230')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
