@@ -1,10 +1,10 @@
 # Maintainer: Kristopher James Kent <kris@kjkent.dev>
 pkgname='imsprog'
 _pkgname='IMSProg'
-depends=('libusb>=1.0.20' 'qt5-base' 'wget' 'zenity')
+depends=('libusb>=1.0.20' 'qt5-base' 'wget')
 makedepends=('cmake>=3.10.0', 'qt5-tools')
 url="https://github.com/bigbigmdm/$pkgname"
-pkgver='1.8.2'
+pkgver='1.8.3'
 pkgrel='1'
 arch=('x86_64')
 license=('GPL-3.0-only')
@@ -12,8 +12,8 @@ pkgdesc='I2C, SPI and MicroWire EEPROM/flash chip programmer for CH341a devices.
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
 # Used in lieu of upstream hash
-# curl -L https://github.com/bigbigmdm/IMSProg/archive/refs/tags/v$pkgver.tar.gz | b2sum | cut -d ' ' -f 1
-b2sums=('c21698a618a6ebeba28cbc0b4b1495b03a8d070e895d55d358e89a6b0f01eeec71cc7b885d731316d132a759ce850126faa5217260a88460c6a7940bccd0a142')
+# curl -Ls https://github.com/bigbigmdm/IMSProg/archive/refs/tags/v$pkgver.tar.gz | b2sum | cut -d ' ' -f 1
+b2sums=('7af16b4f415ced3ebe742317431e75cd8613d7958ca2ce32a0caa611ee7564eeacfe796729bbb6712e66ad41bebfb5edbbb9874ae835fa97cad3b0c18faacf5f')
 
 _srcprefix="$_pkgname-$pkgver/$_pkgname"
 _srcdirs=("${_srcprefix}_editor" "${_srcprefix}_programmer")
