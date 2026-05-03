@@ -1,7 +1,7 @@
 # Maintainer: Rootly <arbuzek1488337@gmail.com>
 pkgname=dotmaster-git
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Interactive dotfiles installer written in Rust"
 arch=('x86_64')
 url="https://github.com/Minish777/dotmaster"
