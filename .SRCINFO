@@ -5,6 +5,7 @@ pkgbase = libabort
 	url = https://codeberg.org/maandree/libabort
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = ISC
 	source = libabort-1.0.tar.gz::https://codeberg.org/maandree/libabort/archive/1.0.tar.gz
 	sha256sums = 043f7da8d3c12d7b5395033398b218addd791b82072f0e2938333703b3013a11
