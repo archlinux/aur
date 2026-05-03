@@ -17,6 +17,7 @@ noextract=("launcher_wrapper.py" "launcher.py" "schematic.py" "constants.py" "br
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
 package() {
+    install -d "$pkgdir/usr/bin"
     cp launcher_wrapper.py "$pkgdir/usr/bin/broslauncher"
     chmod +x "$pkgdir/usr/bin/broslauncher"
     
