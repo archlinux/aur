@@ -1,7 +1,7 @@
 pkgbase = torrcli
 	pkgdesc = A cli based torrent client built with libtorrent
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aayushkdev/torrcli
 	install = torrcli.install
 	arch = x86_64
