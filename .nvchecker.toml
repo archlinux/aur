@@ -1,0 +1,3 @@
+[python-jackclient]
+source = "git"
+git = "https://github.com/spatialaudio/jackclient-python.git"
