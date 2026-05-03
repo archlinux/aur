@@ -3,19 +3,19 @@
 
 pkgname=superproductivity
 _name=super-productivity
-pkgver=18.3.0
+pkgver=18.4.4
 pkgrel=1
 pkgdesc="An advanced todo list app with timeboxing and time tracking capabilities"
 arch=('x86_64')
 url="https://super-productivity.com"
 license=('MIT')
-_electron=electron38
+_electron=electron41
 depends=('bash' "${_electron}" 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++')
 makedepends=('nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/super-productivity/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('2342eb2dda60946f98783dc194cf6eb85fdeccd8267f39ad7f8bc1c1d6527281'
+sha256sums=('f538f0ca6a0eda4fbb74e135700ccedde340e1092ae6f7a6a66d99a912d386e1'
             'a8945d93cacbe189b538da601b3f6ace0588c3b126236e763e8f2010005513bb'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
@@ -41,8 +41,8 @@ build() {
     npm install
     npm run build
     npx electron-builder --linux --dir \
-        -c.electronDist="/usr/lib/${_electron}" \
-        -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
+        --config.electronDist="/usr/lib/${_electron}" \
+        --config.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
 
 package() {
