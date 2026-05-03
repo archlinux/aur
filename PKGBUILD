@@ -3,7 +3,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore-git
-pkgver=r2753.d17ce65
+pkgver=r3139.ee1bb3b
 pkgrel=1
 pkgdesc="A rewrite of Highscore, formerly gnome-games"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ url="https://gitlab.gnome.org/World/highscore"
 license=('GPL-3.0-or-later')
 depends=(
   'feedbackd'
+  'glycin'
   'glycin-gtk4'
   'gtk4'
   'hicolor-icon-theme'
@@ -38,12 +39,12 @@ makedepends=(
   'vulkan-headers'
 )
 optdepends=(
-  'blastem-highscore-git: BlastEm core'
+ # 'blastem-highscore-git: BlastEm core'
   'bsnes-highscore-git: bsnes JG core'
-  'desmume-highscore-git: DeSmuME core'
-  'gearsystem-highscore-git: Gearsystem core'
+#  'desmume-highscore-git: DeSmuME core'
+#  'gearsystem-highscore-git: Gearsystem core'
   'genesis-plus-gx-highscore-git: Genesis Plus GX core'
-  'kronos-highscore-git: Kronos core'
+#  'kronos-highscore-git: Kronos core'
   'mednafen-highscore-git: Mednafen core'
   'melonds-highscore-git: melonDS core'
   'mgba-highscore-git: mGBA core'
