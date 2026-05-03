@@ -3,28 +3,43 @@
 pkgname=flow-control-nightly-bin
 _pkgname=flow-control
 __pkgname=flow
-pkgver=ge704b3ce
+# for new nightly builds update the line below with:
+#   PKGVER=${VERSION#v}; sed -i "s/^pkgver=.*/pkgver=${PKGVER//-/.}/" PKGBUILD
+# where VERSION is the upstream nightly build tag
+pkgver=0.7.2.154.g505a6f34
 pkgrel=1
 pkgdesc="a programmer's text editor"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/neurocyte/$__pkgname"
 license=('MIT')
 optdepends=('ripgrep: project-wide search')
-makedepends=('curl' 'jq' 'tar' 'sed')
+makedepends=('tar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=()
-sha256sums=()
+validpgpkeys=('4E6CF7234FFC4E14531074F98EB1E1BB660E3FB9')
 
-pkgver() {
-    curl -s https://api.github.com/repos/neurocyte/flow-nightly/releases/latest | jq '.tag_name' | sed 's/".*-\(.*\)"/\1/'
+_tag="v$(echo "$pkgver" | sed 's/\.\([0-9]*\)\.g/-\1-g/')"
+
+_arch_map() {
+    case "$CARCH" in
+        x86_64)  echo "linux-x86_64"  ;;
+        i686)    echo "linux-x86"     ;;
+        aarch64) echo "linux-aarch64" ;;
+        armv7h)  echo "linux-arm"     ;;
+    esac
 }
 
-build() {
-    curl -Lo ${pkgname}.tar.gz $(curl -s https://api.github.com/repos/neurocyte/flow-nightly/releases/latest | jq -r '.assets[] | select(.name | test("^flow-v.*-linux-x86\\.tar\\.gz$")) | .browser_download_url')
-    tar -xf ${pkgname}.tar.gz
+_tarball() {
+    echo "flow-${_tag}-$(_arch_map)-debug.tar.gz"
 }
+
+source=(
+    "https://github.com/neurocyte/flow-nightly/releases/download/${_tag}/flow-${_tag}-$(_arch_map)-debug.tar.gz"
+    "https://github.com/neurocyte/flow-nightly/releases/download/${_tag}/flow-${_tag}-$(_arch_map)-debug.tar.gz.sig"
+)
+sha256sums=('SKIP' 'SKIP')
 
 package() {
+    tar -xf "$(_tarball)"
     install -Dm755 "${__pkgname}" "${pkgdir}/usr/bin/${__pkgname}"
 }
