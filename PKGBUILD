@@ -24,7 +24,7 @@ optdepends=('libkscreen: OLED flicker-free dimming'
 makedepends=('git' 'cargo')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-replaces=(asus-hub)
+replaces=('asus-hub')
 source=("$_pkgbase::git+https://github.com/Traciges/Ayuz.git#tag=v$pkgver")
 sha256sums=('5996e115ef0c5535f8c9debca46bcbb7394140d741d523adf33374f2db663cef')
 
