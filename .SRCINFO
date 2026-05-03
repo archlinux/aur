@@ -1,6 +1,6 @@
 pkgbase = r2repo
 	pkgdesc = take package files from vcs releases and turn them into a repo that pacman can use
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/greyltc/releases2repo
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r2repo
 	makedepends = python-hatch
 	depends = caddy
 	depends = python
-	source = git+https://github.com/greyltc/releases2repo.git#tag=v0.1.5
-	b2sums = 6165fd44f105c4346f7ae18eab29cfad14741535e73376dffc1fbbd3974c27282f6855f0f4b3d8c1ed9a33def7dc2394fbaa8b03b2eaf322832f4da4708db3cc
+	source = git+https://github.com/greyltc/releases2repo.git#tag=v0.1.6
+	b2sums = a1f8872361a588495b19350b7c652c8dc21f0a822df653b55f8ca599d03a160544fefe9677707c1c0b2ba4b3fabe2c53a5c47a0af1f3fc0335b278f6a9541498
 
 pkgname = r2repo
