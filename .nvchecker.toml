@@ -1,0 +1,16 @@
+[viper4linux-gui-bin]
+source = "regex"
+url = "https://raw.githubusercontent.com/timschneeb/PPA-Repository/master/Packages"
+regex = "Package: viper4linux-gui[\\s\\S]*?Version: ([0-9A-Za-z.+~-]+)"
+from_pattern = '-'
+to_pattern = '_'
+
+# source = "jq"
+# url = "https://api.github.com/repos/Audio4Linux/Viper4Linux-GUI/releases/latest"
+# filter = '.assets[] | select(.name | test("deb$")) | .name | sub("^viper4linux-gui_"; "") | sub("\\.deb$"; "")'
+# from_pattern = '-'
+# to_pattern = '_'
+
+# source = "github"
+# github = "Audio4Linux/Viper4Linux-GUI"
+# use_latest_release = true
