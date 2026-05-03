@@ -2,12 +2,12 @@
 
 pkgname=x11-multimonitor-center
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="X11 tray app to move newly spawned windows to the monitor with the mouse cursor if they spawn somewhere else"
 arch=('any')
 url="none"
 license=('GPL3')
-depends=('gtk3' 'libwnck3' 'libappindicator-gtk3')
+depends=('gtk3' 'libwnck3')
 makedepends=('pkgconf')
 
 prepare() {
@@ -30,7 +30,7 @@ prepare() {
 #define MOVE_DELAY_MS 10
 
 static gboolean enabled = TRUE;
-static AppIndicator *indicator = NULL;
+static GtkStatusIcon *status_icon = NULL;
 static GtkWidget *menu = NULL;
 static WnckScreen *screen = NULL;
 static GtkWidget *toggle_item = NULL;
@@ -39,9 +39,8 @@ static GApplication *global_app = NULL;
 
 static void update_tray_icon(void)
 {
-    if (!indicator) return;
-    const char *icon_path = enabled ? ICON_ENABLED : ICON_DISABLED;
-    app_indicator_set_icon(indicator, icon_path);
+    if (!status_icon) return;
+    gtk_status_icon_set_from_file(status_icon, enabled ? ICON_ENABLED : ICON_DISABLED);
 }
 
 static gboolean delayed_move_cb(gpointer user_data)
@@ -127,14 +126,23 @@ toggle_enabled_cb(GtkCheckMenuItem *item, gpointer data)
 }
 
 static void
-indicator_activate_cb(AppIndicator *ind, gpointer user_data)
+icon_activate_cb(GtkStatusIcon *icon, gpointer user_data)
 {
-    (void)ind; (void)user_data;
+    (void)icon; (void)user_data;
     enabled = !enabled;
     if (toggle_item) {
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(toggle_item), enabled);
     }
     update_tray_icon();
+}
+
+static void
+show_popup_menu_cb(GtkStatusIcon *icon, guint button, guint activate_time, gpointer user_data)
+{
+    (void)icon; (void)user_data;
+    gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
+                   gtk_status_icon_position_menu,
+                   status_icon, button, activate_time);
 }
 
 static void
@@ -148,13 +156,11 @@ quit_cb(GtkMenuItem *item, gpointer data)
 static void
 create_tray_icon(void)
 {
-    indicator = app_indicator_new("x11-multimonitor-center",
-                                  ICON_ENABLED,
-                                  APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
-    app_indicator_set_status(indicator, APP_INDICATOR_STATUS_ACTIVE);
-    update_tray_icon();
+    status_icon = gtk_status_icon_new_from_file(ICON_ENABLED);
+    gtk_status_icon_set_tooltip_text(status_icon, "x11-multimonitor-center");
 
     menu = gtk_menu_new();
+
     GtkWidget *toggle = gtk_check_menu_item_new_with_label("Enabled");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(toggle), enabled);
     g_signal_connect(toggle, "toggled", G_CALLBACK(toggle_enabled_cb), NULL);
@@ -169,9 +175,9 @@ create_tray_icon(void)
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), quit);
 
     gtk_widget_show_all(menu);
-    app_indicator_set_menu(indicator, GTK_MENU(menu));
 
-    g_signal_connect(indicator, "activate", G_CALLBACK(indicator_activate_cb), NULL);
+    g_signal_connect(status_icon, "activate", G_CALLBACK(icon_activate_cb), NULL);
+    g_signal_connect(status_icon, "popup-menu", G_CALLBACK(show_popup_menu_cb), NULL);
 }
 
 static void
@@ -245,7 +251,7 @@ SVG
 build() {
   gcc -Wall -O2 \
     -o x11-multimonitor-center x11-multimonitor-center.c \
-    $(pkg-config --cflags --libs gtk+-3.0 libwnck-3.0 appindicator3-0.1)
+    $(pkg-config --cflags --libs gtk+-3.0 libwnck-3.0)
 }
 
 package() {
