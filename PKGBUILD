@@ -1,6 +1,6 @@
 pkgname=r2repo
 _build_fragment="tag=v0.1.5"
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="take package files from vcs releases and turn them into a repo that pacman can use"
 arch=('x86_64')
