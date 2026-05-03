@@ -1,0 +1,20 @@
+pkgbase = nah-git
+	pkgdesc = Context-aware safety guard for Claude Code (git version)
+	pkgver = 0.7.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/manuelschipper/nah
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-yaml: YAML config file support
+	provides = nah=0.7.1.r0.g0000000
+	conflicts = nah
+	source = nah::git+https://github.com/manuelschipper/nah.git
+	sha256sums = SKIP
+
+pkgname = nah-git
