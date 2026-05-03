@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=rv
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A declarative R package manager"
 url="https://github.com/a2-ai/rv"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('a2bf6858ac51ad7623101f2c6d3e34deb0dc980c9d21eb3901407ab0e3d719db46f23ebc710d326679887a4f837772c08bee6c8000b5ab3c610729c62ccb4f72')
+sha512sums=('f1354188f6016c0ef0a0601c74943d8b1a35aa6ca5d52c4d0b1bc439b1127aa4cf846e3e391ee6ae3aa7551cf1c2eda49a5d5681f734ca9a38975c112fc2204b')
