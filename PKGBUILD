@@ -19,7 +19,7 @@ makedepends=(
     'python-wheel'
 )
 source=("https://github.com/ohxa/aspect/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b3cf014272b31fb32d9c12ead61482ee9bf207be5f1ef542cb47ce097687fa42')
 
 build() {
     cd "${pkgname}-${pkgver}"
