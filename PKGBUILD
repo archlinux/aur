@@ -1,62 +1,30 @@
-_libressl_ver='2.8.0'
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
+# Maintainer: Jaume Delclòs Coll <aur@cosarara.me>
 pkgname=acme-client
-pkgdesc="Secure Let's Encrypt client"
-pkgver=0.1.16
-pkgrel=2
-license=('custom:ISC')
-url='https://kristaps.bsd.lv/acme-client/'
-arch=('x86_64' 'i686')
-depends=('libbsd')
-source=("https://kristaps.bsd.lv/acme-client/snapshots/${pkgname}-portable-${pkgver}.tgz"
-	"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
-	README.archlinux LICENSE.md)
-sha512sums=('730c20bdf9d72b24e66c54b009a282e04da3ea8ce3b9eb053750672c53c9586b2879d87a565ddbab033d7ba6a577dd6399313b20cf654b185905db4de988b6b7'
-            '3004cd78a9d52dece9f24272389778d6afca549de245852004ddd57b01a0c3a6fa1cee2d56980d067d23b3ead7f7a4aa6bcf4e0c57a56f5f7d9fd3f8d23f3ca2'
-            '0a1d1baad45510687e66fafb44459a503f6688a73f7ceb402c204b096dee4e56ea2e9f71ed6f59421b81acf854a3d39395739a5a063c1536d557e3eccac6cee4'
-            'b3580f1332469005c03b695ba1c5bc4d36accd2983f8d59f9fe6ce5616b208f1a7c65ad9c3d6a28d4b196ee765d07753e9c1308b5428408ccb3d5049b69c970c')
-replaces=('letskencrypt')
-provides=('letskencrypt')
+pkgver=1.3.7
+pkgrel=1
+pkgdesc="Portable version of OpenBSD's ACME client"
+arch=(x86_64 aarch64)
+url="https://wolfsden.cz/project/acme-client.html"
+license=('GPL-2.0-only')
+depends=(openssl glibc)
+makedepends=(gcc make)
+source=("https://files.wolfsden.cz/releases/acme-client/acme-client-$pkgver.tar.gz")
+sha256sums=('32afba7a92dc8049e54342403d80b1190bbb10cd154b4637d8f62ebc4ba58801')
 
-prepare () {
-	cd "${srcdir}/${pkgname}-portable-${pkgver}"
-	# Remove this definition, we'll pass a value below.
-	sed -i -e '/^#define[[:space:]]\+WWW_DIR\b/d' main.c
+build() {
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr \
+    --sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var
+	make
 }
 
-build () {
-	# LibreSSL
-	cd "${srcdir}/libressl-${_libressl_ver}"
-	./configure --disable-shared --enable-static --prefix=/usr --sysconfdir=/etc
-	make install DESTDIR="$(pwd)/prefix"
-
-	cd "${srcdir}/${pkgname}-portable-${pkgver}"
-	local wwwdir='-DWWW_DIR=\""/srv/http/acme\""'
-	make PREFIX=/usr \
-		CFLAGS="${CFLAGS} -pthread" \
-		CPPFLAGS="${CPPFLAGS} -I${srcdir}/libressl-${_libressl_ver}/prefix/usr/include ${wwwdir}" \
-		LDFLAGS="${LDFLAGS} -L${srcdir}/libressl-${_libressl_ver}/prefix/usr/lib -pthread"
-}
-
-package () {
-	cd "${srcdir}/${pkgname}-portable-${pkgver}"
-	make PREFIX="${pkgdir}/usr" install
-
-	# Fix manual page location
-	if [[ -d ${pkgdir}/usr/man ]] ; then
-		mkdir -p "${pkgdir}/usr/share"
-		mv "${pkgdir}/usr/man" "${pkgdir}/usr/share"
-	fi
-
-	# Custom license
-	install -Dm644 "${srcdir}/LICENSE.md" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	# Additional documentation
-	install -Dm644 "${srcdir}/README.archlinux" \
-		"${pkgdir}/usr/share/doc/${pkgname}/README.archlinux"
-
-	# Ensure that the default directories for certificates and challenges exist
-	mkdir -p "${pkgdir}/etc/acme" \
-		"${pkgdir}/etc/ssl/acme/private" \
-		"${pkgdir}/srv/http/acme"
+package() {
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }

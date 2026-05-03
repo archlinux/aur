@@ -1,22 +1,15 @@
 pkgbase = acme-client
-	pkgdesc = Secure Let's Encrypt client
-	pkgver = 0.1.16
-	pkgrel = 2
-	url = https://kristaps.bsd.lv/acme-client/
+	pkgver = 1.3.7
+	pkgrel = 1
+	url = https://wolfsden.cz/project/acme-client.html
 	arch = x86_64
-	arch = i686
-	license = custom:ISC
-	depends = libbsd
-	provides = letskencrypt
-	replaces = letskencrypt
-	source = https://kristaps.bsd.lv/acme-client/snapshots/acme-client-portable-0.1.16.tgz
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.0.tar.gz
-	source = README.archlinux
-	source = LICENSE.md
-	sha512sums = 730c20bdf9d72b24e66c54b009a282e04da3ea8ce3b9eb053750672c53c9586b2879d87a565ddbab033d7ba6a577dd6399313b20cf654b185905db4de988b6b7
-	sha512sums = 3004cd78a9d52dece9f24272389778d6afca549de245852004ddd57b01a0c3a6fa1cee2d56980d067d23b3ead7f7a4aa6bcf4e0c57a56f5f7d9fd3f8d23f3ca2
-	sha512sums = 0a1d1baad45510687e66fafb44459a503f6688a73f7ceb402c204b096dee4e56ea2e9f71ed6f59421b81acf854a3d39395739a5a063c1536d557e3eccac6cee4
-	sha512sums = b3580f1332469005c03b695ba1c5bc4d36accd2983f8d59f9fe6ce5616b208f1a7c65ad9c3d6a28d4b196ee765d07753e9c1308b5428408ccb3d5049b69c970c
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = gcc
+	makedepends = make
+	depends = openssl
+	depends = glibc
+	source = https://files.wolfsden.cz/releases/acme-client/acme-client-1.3.7.tar.gz
+	sha256sums = 32afba7a92dc8049e54342403d80b1190bbb10cd154b4637d8f62ebc4ba58801
 
 pkgname = acme-client
-
