@@ -1,6 +1,6 @@
 pkgbase = flux-operator-bin
 	pkgdesc = GitOps on Autopilot Mode
-	pkgver = 0.47.0
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://fluxoperator.dev
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = flux-operator-bin
 	provides = flux-operator
 	conflicts = flux-operator
 	options = !debug
-	source_x86_64 = https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.47.0/flux-operator_0.47.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d7cb3a5cb576337738e45137f6bae525b5e48d3581042dad8618cb7d0fb0c642
-	source_aarch64 = https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.47.0/flux-operator_0.47.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = db829fdbe19304c84538ca099f0ed8ad90a86e1cb5060f36696d9a9d893d6afc
+	source_x86_64 = https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.48.0/flux-operator_0.48.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = febc30806053d028f9e10f5572966ed28ede07c4912ff998936f724d1f693909
+	source_aarch64 = https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v0.48.0/flux-operator_0.48.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8391fc4503f63a5b4c2e392e1a741d9c54e969e32f8a2d4c073591e03c3f0fd8
 
 pkgname = flux-operator-bin
