@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-cmake3
-pkgver=3.5.5
-pkgrel=2
+pkgver=3.5.6
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="A set of CMake modules that are used by the C++-based Gazebo projects."
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 makedepends=('cmake' 'doxygen')
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('95c8733a4488d1858ad4efa5ebb9cd04e0d2126bfe168c8cb6e5d418db9326ea')
+sha256sums=('0b49b7391bf874533585447b1a3959d0438418ec32b8a7c2b784fd503f514ecc')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
