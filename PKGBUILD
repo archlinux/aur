@@ -1,5 +1,5 @@
 pkgname=openmodelica
-pkgver=1.26.5
+pkgver=1.26.7
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
@@ -8,25 +8,23 @@ license=('OSMC-PL')
 arch=('x86_64')
 depends=('java-environment' 'lapack' 'openscenegraph' 'boost-libs' 'qt6-webengine' 'qt6-svg' 'qt6-tools' 'qt6-5compat')
 provides=('openmodelica-omc')
-makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
+makedepends=('gcc-fortran' 'cmake' 'boost')
 options=('!lto')
-source=("${pkgname}::git+${_giturl}#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-src-with-submodules.zip")
+sha256sums=('d10452033473333e216d0a9e4fa2c1e2ef24ffa9c1bfde0acd4c045f2107b613')
 
 prepare() {
-  cd "${pkgname}"
-  git remote set-url origin ${_giturl}
-  git submodule update --force --init --recursive
+  cd "OpenModelica-v${pkgver}"
 }
 
 build() {
-  cd "${pkgname}"
+  cd "OpenModelica-v${pkgver}"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_QT_MAJOR_VERSION=6 -B build .
   make -C build
 }
 
 package() {
-  cd "${pkgname}"
+  cd "OpenModelica-v${pkgver}"
   make install -C build DESTDIR="${pkgdir}"
   rm -r "${pkgdir}"/usr/share/zmq
   rm -r "${pkgdir}"/usr/share/cminpack
