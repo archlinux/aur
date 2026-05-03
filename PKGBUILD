@@ -1,15 +1,14 @@
-pkgname=pycalc-git
+pkgname=pycalc
 pkgver=1.5
 pkgrel=1
 pkgdesc="Python console calculator"
 arch=('any')
-url="https://github.com" # Ссылка на ваш код
+url="https://github.com/banka450/pycalc"
 license=('MIT')
 depends=('python')
-source=("pycalc.py") # Имя вашего файла
-
+source=("pycalc.py")
 package() {
-    # Создаем папку в "виртуальной" системе и копируем туда файл
+
     install -Dm755 "${srcdir}/pycalc.py" "${pkgdir}/usr/bin/pycalc"
 }
 
