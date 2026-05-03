@@ -1,7 +1,7 @@
 pkgbase = libseexpr2
 	pkgdesc = An embeddable expression evaluation engine (main library only)
 	pkgver = 2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.disneyanimation.com/technology/seexpr.html
 	arch = i686
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = libseexpr2
 	md5sums = SKIP
 
 pkgname = libseexpr2
-

@@ -4,7 +4,7 @@
 pkgname=libseexpr2
 _fragment="#tag=v2.11"
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="An embeddable expression evaluation engine (main library only)"
 arch=('i686' 'x86_64')
 url="http://www.disneyanimation.com/technology/seexpr.html"
@@ -28,7 +28,10 @@ build() {
   cd SeExpr
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib' ..
+  cmake -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        ..
   make
 }
 
