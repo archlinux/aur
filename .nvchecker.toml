@@ -1,0 +1,4 @@
+[octofetch-bin]
+source = "github"
+github = "azur1s/octofetch"
+use_latest_release = true
