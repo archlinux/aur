@@ -1,13 +1,17 @@
 pkgbase = perl-sub-delete
 	pkgdesc = Perl module enabling one to delete subroutines
 	pkgver = 1.00003
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Sub-Delete
+	pkgrel = 3
+	url = https://metacpan.org/dist/Sub-Delete
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
 	depends = perl
+	depends = perl-constant
+	depends = perl-exporter>=5.57
+	depends = perl-test-simple
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/D/DJ/DJERIUS/Sub-Delete-1.00003.tar.gz
-	md5sums = 3fcb8711ab4f7bf4fc6b7da6eb507e34
+	sha256sums = 296a0036c5610faeaeb2c1545c89e9994150e8c889fa2eac79fe1ba4dc2d128a
 
 pkgname = perl-sub-delete
