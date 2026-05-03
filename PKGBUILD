@@ -1,5 +1,5 @@
 pkgname=filey-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A fast, local md files management tool built with Flutter/C++"
 arch=('x86_64')
