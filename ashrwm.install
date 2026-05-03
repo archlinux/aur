@@ -1,0 +1,8 @@
+post_install() {
+  echo ">>> Example configuration has been installed to /etc/ashrwm/config.janet"
+  echo ">>> Copy it to ~/.config/ashrwm/config.janet to start customizing."
+}
+
+post_upgrade() {
+  post_install
+}
