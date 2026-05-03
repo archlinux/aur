@@ -1,9 +1,9 @@
 # Maintainer: shiyi
 pkgname=fd-rdd-git
 _pkgname=vcp-fd-rdd
-pkgver=0.5.9.r121.g66d9ca5
-pkgrel=1
-pkgdesc="Event-driven elastic file indexer with RDD lineage and glob support"
+pkgver=0.6.15
+pkgrel=2
+pkgdesc="Linux file indexing daemon with instant search, tiered watcher and crash recovery"
 arch=('x86_64')
 options=(!lto)
 url="https://github.com/awei807-wei/vcp-fd-rdd"
