@@ -1,4 +1,5 @@
-# Maintainer: Evert Vorster <evorster@gmail.com>
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Contributor: Evert Vorster <evorster@gmail.com>
 # Contributor: Emir-Eins <emir-eins@outlook.com>
 # Contributor: Wuxxin <wuxxin@gmail.com>
 
