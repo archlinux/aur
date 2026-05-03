@@ -1,13 +1,13 @@
 pkgbase = qorx
-	pkgdesc = Qorx language and runtime for local context resolution
-	pkgver = 1.0.3
+	pkgdesc = Qorx Community Edition source CLI for local context-resolution research
+	pkgver = 1.0.4_a.0
 	pkgrel = 1
 	url = https://github.com/bbrainfuckk/qorx
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-only
-	makedepends = rust
-	source = qorx-1.0.3.tar.gz::https://crates.io/api/v1/crates/qorx/1.0.3/download
-	sha256sums = 7555e336f95eaa982f5bac4bb3b138cdac78742b6c1c0232558ac366cda0bcaa
+	makedepends = cargo
+	source = qorx-1.0.4-a.0.tar.gz::https://crates.io/api/v1/crates/qorx/1.0.4-a.0/download
+	sha256sums = a0f2e317eca3980346348ef7fcdbb7b7982d76785e766d586cf646b3c1f14bde
 
 pkgname = qorx
