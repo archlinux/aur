@@ -1,12 +1,14 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Maintainer: UnbreakableMJ <mj@steelbore.com>
+# Maintainer: Mohamed Hammad <Mohamed.Hammad@Steelbore.com>
 #
 # gitway-git — builds gitway from the latest git HEAD.
 # Use this package if you want the cutting edge, or if your architecture
 # is not covered by the pre-built binary (gitway-bin).
 #
 # Build dependencies: rust (stable), cargo, perl (required by aws-lc-rs),
-#                     gcc, pkg-config
+#                     gcc, pkg-config, git
+#
+# Project page: https://gitway.steelbore.com/
 
 pkgname=gitway-git
 pkgver=r0.HEAD
