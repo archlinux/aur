@@ -14,7 +14,7 @@ source=("https://github.com/Surya-Raghuram/GraphFS/releases/download/v${pkgver}/
         "filey.desktop")
 
 # We will generate the real security hashes with 'updpkgsums'
-sha256sums=('44575ab9edef58080c54230c632e3ef8457fece44dbd2a6acf4ecabd7f9706d9'
+sha256sums=('1372216a504bdb62a1ee1b40062041f1f13440748cc11c9f8dc5793fd92a468c'
             '5a0c3e5e67205d21178dc5d448976d1e800edcbd9d73612ee2a402db7a7deecc')
 
 package() {

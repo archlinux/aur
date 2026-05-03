@@ -13,7 +13,7 @@ pkgbase = filey-bin
 	conflicts = filey
 	source = https://github.com/Surya-Raghuram/GraphFS/releases/download/v1.0.1/filey-linux-x64.tar.gz
 	source = filey.desktop
-	sha256sums = 44575ab9edef58080c54230c632e3ef8457fece44dbd2a6acf4ecabd7f9706d9
+	sha256sums = 1372216a504bdb62a1ee1b40062041f1f13440748cc11c9f8dc5793fd92a468c
 	sha256sums = 5a0c3e5e67205d21178dc5d448976d1e800edcbd9d73612ee2a402db7a7deecc
 
 pkgname = filey-bin
