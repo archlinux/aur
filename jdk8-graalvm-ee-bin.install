@@ -52,6 +52,7 @@ pre_remove() {
 	case ${default} in
 		${THIS_JDK}/jre | ${THIS_JDK_LEGACY} | ${THIS_JDK})
 			/usr/bin/archlinux-java unset
+			;;
 		*)
 			# Nothing
 			;;

@@ -8,7 +8,7 @@
 _majorver=8
 _jvmdir=/usr/lib/jvm/java-${_majorver}-graalvm-ee/
 pkgname="jdk${_majorver}-graalvm-ee-bin"
-pkgver=21.3.17
+pkgver=21.3.18
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_majorver} version"
 arch=('x86_64')
@@ -26,7 +26,7 @@ install="$pkgname.install"
 # tarball must be manually downloaded from https://www.oracle.com/downloads/graalvm-downloads.html
 source=("local://graalvm-ee-java${_majorver}-linux-amd64-${pkgver}.tar.gz"
         'graalvm-ee-rebuild-libpolyglot.hook')
-sha256sums=('e3cabdc8b5f2f48fcf4b676f961bfc1ba15a65465732af885c154abf764b4c73'
+sha256sums=('0ecd37de4d16b704bffa4c5ef15a16bee0b6a960c25f78dc512b500420b208c6'
             '7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca')
 
 package() {
