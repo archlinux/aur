@@ -1,0 +1,3 @@
+[perl-module-signature]
+source = "cpan"
+cpan = "Module-Signature"
