@@ -8,13 +8,23 @@ arch=("x86_64")
 url="https://github.com/berkeoruc/bros"
 license=("PROPRIETARY")
 depends=("python3" "tk" "qemu-full")
+source=("launcher_wrapper.py"
+        "launcher.py"
+        "schematic.py"
+        "constants.py"
+        "bros-logo.png")
+noextract=("launcher_wrapper.py" "launcher.py" "schematic.py" "constants.py" "bros-logo.png")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
 package() {
-    install -Dm755 launcher_wrapper.py "$pkgdir/usr/bin/broslauncher"
-    install -Dm644 launcher.py "$pkgdir/usr/share/broslauncher/launcher.py"
-    install -Dm644 schematic.py "$pkgdir/usr/share/broslauncher/schematic.py"
-    install -Dm644 constants.py "$pkgdir/usr/share/broslauncher/constants.py"
-    install -Dm644 bros-logo.png "$pkgdir/usr/share/broslauncher/bros-logo.png"
+    cp launcher_wrapper.py "$pkgdir/usr/bin/broslauncher"
+    chmod +x "$pkgdir/usr/bin/broslauncher"
+    
+    install -d "$pkgdir/usr/share/broslauncher"
+    cp launcher.py "$pkgdir/usr/share/broslauncher/launcher.py"
+    cp schematic.py "$pkgdir/usr/share/broslauncher/schematic.py"
+    cp constants.py "$pkgdir/usr/share/broslauncher/constants.py"
+    cp bros-logo.png "$pkgdir/usr/share/broslauncher/bros-logo.png"
     
     mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
     cp bros-logo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/broslauncher.png"
