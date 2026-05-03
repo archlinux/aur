@@ -51,9 +51,6 @@ StateDirectory=lockdown
 [Install]
 WantedBy=multi-user.target
 EOF
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/39-rusbmux.rules" <<'EOF'
-ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="05ac", TAG+="systemd", ENV{SYSTEMD_WANTS}+="rusbmux.service"
-EOF
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
