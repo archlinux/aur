@@ -1,5 +1,7 @@
 [tcli-bin]
-source = "github"
-github = "Tectone23/tcli"
-use_latest_release = true
-prefix = "v"
+source = "manual"
+
+# source = "github"
+# github = "Tectone23/tcli"
+# use_latest_release = true
+# prefix = "v"
