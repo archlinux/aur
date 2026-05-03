@@ -219,6 +219,8 @@ package() {
   cd "$srcdir"
   install -d -m755 "$pkgdir"/opt/"${pkgname//-opt}"/share/xalia
   unzip xalia-${_xaliaver}-net48-mono.zip -d "$pkgdir"/opt/"${pkgname//-opt}"/share/xalia
+  # Fix permissions
+  chmod -R go-w "$pkgdir"/opt/"${pkgname//-opt}"/share/xalia
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
