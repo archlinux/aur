@@ -1,7 +1,7 @@
 pkgbase = qlcplus
 	pkgdesc = Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures.
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qlcplus.org/
 	install = qlcplus.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = qlcplus
 	makedepends = qt6-3d
 	makedepends = qt6-svg
 	makedepends = qt5-tools
+	makedepends = qt6-3d
 	depends = qt6-multimedia
 	depends = libftdi-compat
 	depends = libsndfile
