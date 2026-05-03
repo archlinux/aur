@@ -1,20 +1,23 @@
-# Maintainer: lf (the_lf) <lf at lfcode dot ca>
+# Maintainer: Capricornus007 <sihaogang at gmail dot com>
+# Co-Maintainer: jade1 <email hidden>
+# Co-Maintainer: lf (the_lf) <lf at lfcode dot ca>
 # Contributor: lygaret
 pkgname=lighthouse-git
 pkgrel=1
 pkgdesc='A simple scriptable popup dialog to run on X'
-pkgver=r269.069b07b
+pkgver=r270.e32ff2e
 arch=('any') # I haven't tested it on ARM but it most likely works
 url='https://github.com/emgram769/lighthouse'
 license=('MIT')
 depends=('libx11' 'libxcb' 'cairo' 'gtk3')
 makedepends=('git')
 optdepends=('python2: for the included cmd.py')
-source=('git://github.com/emgram769/lighthouse.git' lighthouse-git.install)
+source=("git+${url}" lighthouse-git.install)
 md5sums=('SKIP'
          'a661ca82623dfb7dcda2bf48ed078ebd')
 provides=('lighthouse')
 conflicts=('lighthouse') # in case someone makes a stable package
+options=(!lto)
 
 pkgver() {
     cd "lighthouse"
@@ -23,7 +26,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/lighthouse"
-    make lighthouse
+    CFLAGS+=" -fcommon -fno-lto" LDFLAGS="-fuse-ld=bfd -fno-lto" make lighthouse
 }
 
 package() {
