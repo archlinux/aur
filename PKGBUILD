@@ -4,7 +4,7 @@
 _gitname=minirc-ng
 _version=1.2
 pkgname=${_gitname}-git
-pkgver=${_version}.d4494ca
+pkgver=${_version}.850e49a
 pkgrel=1
 pkgdesc="Minimalistic init script (ng)"
 arch=('any')
@@ -34,6 +34,7 @@ package() {
   install -Dm755 "src/rc" "${pkgdir}/usr/bin/rc"
   install -Dm755 "src/minirc.local" "${pkgdir}/etc/minirc.local"
   install -Dm755 "src/minirc.local.shutdown" "${pkgdir}/etc/minirc.local.shutdown"
+  install -Dm755 "src/kill.sh" "${pkgdir}/usr/lib/minirc/kill.sh"
   install -Dm644 "src/minirc.json" "${pkgdir}/etc/minirc.json"
   install -Dm644 "src/inittab" "${pkgdir}/etc/inittab"
 
