@@ -4,6 +4,7 @@ pkgbase = asroot-libpassphrase
 	pkgrel = 1
 	url = https://codeberg.org/maandree/asroot
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	makedepends = sed
 	depends = libpassphrase
