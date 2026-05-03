@@ -1,0 +1,21 @@
+pkgbase = mterminal-git
+	pkgdesc = Custom terminal emulator with grouped tabs and warm dark UI
+	pkgver = 0.1.0.r0.gHEAD
+	pkgrel = 1
+	url = https://github.com/arthurr0/mTerminal
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = mterminal
+	conflicts = mterminal
+	source = mterminal::git+https://github.com/arthurr0/mTerminal.git
+	sha256sums = SKIP
+
+pkgname = mterminal-git
