@@ -1,0 +1,16 @@
+pkgbase = nufmt-git
+	pkgdesc = Formatter for Nushell source code
+	pkgver = 0.1.0.r75.gf178d80
+	pkgrel = 1
+	url = https://github.com/nushell/nufmt
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = nufmt
+	conflicts = nufmt
+	source = git+https://github.com/nushell/nufmt.git
+	sha256sums = SKIP
+
+pkgname = nufmt-git
