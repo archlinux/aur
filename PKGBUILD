@@ -73,8 +73,8 @@ prepare() {
   done
   
   # --- 加入這行：強制覆蓋 Zen 內核中衝突的文件 ---
-  echo "Applying manual fix for Zen fbcon.c..."
-  cp "$startdir/fbcon.c.backup" drivers/video/fbdev/core/fbcon.c
+  #echo "Applying manual fix for Zen fbcon.c..."
+  #cp "$startdir/fbcon.c.backup" drivers/video/fbdev/core/fbcon.c
   # ------------------------------------------
 
   echo "Setting config..."
