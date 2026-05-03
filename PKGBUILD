@@ -2,11 +2,11 @@
 
 pkgbase=libblake
 pkgname=($pkgbase $pkgbase-musl)
-pkgver=3.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 _pkgdesc="Library for the BLAKE-family of hashing functions"
 pkgdesc="${_pkgdesc}"
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url="https://codeberg.org/maandree/libblake"
 license=('custom:ISC')
 depends=()
@@ -14,7 +14,7 @@ checkdepends=(glibc musl)
 _compiler=gcc
 makedepends=(glibc musl ${_compiler})
 source=($pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(b6c185f43dbbc58687c5f71ea356c6618fe0643e48cdc62d4d530339918a2114)
+sha256sums=(e2fb93671a5731f40f60ddbc8d68d1da5b3a3d813136f32815cff0998c2e56b3)
 
 build() {
   cd -- "$srcdir"
