@@ -18,8 +18,8 @@ depends=('libxcb')
 
 source_x86_64=("hjkl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v${pkgver}/hjkl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("hjkl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v${pkgver}/hjkl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('1e1446747b5f1a4315baf1bc19f34634da1359b5033c082cc0f2851ef931bc9d')
-sha256sums_aarch64=('4d6a67ac3e105debde40464d4ebe89b1c09ea856c167e521dd7ffed4aa202089')
+sha256sums_x86_64=('6da4de0ff7221a7f846aa292a39cab31058563475237782f8353bcb5f0acb8a6')
+sha256sums_aarch64=('fc95164ae80cc674f549890c4b058e4f5f3d621dfe254995bf2e245387bf04c2')
 
 package() {
     install -Dm755 "$srcdir/hjkl" "$pkgdir/usr/bin/hjkl"
