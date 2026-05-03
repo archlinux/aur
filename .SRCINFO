@@ -1,0 +1,16 @@
+pkgbase = arch-bounce
+	pkgdesc = Bouncing Arch Linux logo terminal screensaver
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sushihead46/arch-bounce
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = arch-bounce-1.0.0.tar.gz::https://github.com/sushihead46/arch-bounce/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 48b93677201037acafc0e761d26ac400477b71434ed4f7f26d917a4d9a1a25e8
+
+pkgname = arch-bounce
