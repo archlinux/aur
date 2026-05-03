@@ -8,7 +8,6 @@ pkgbase = astraeditor-git
 	arch = armv7h
 	license = GPL-3.0-only
 	makedepends = nodejs
-	makedepends = npm
 	makedepends = pnpm
 	makedepends = git
 	makedepends = python
