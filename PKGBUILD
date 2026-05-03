@@ -15,12 +15,13 @@ pkgname=(
 	'ledspicer-dev'
 )
 
-pkgver=0.7.3
-pkgrel=6
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="LED controller daemon for arcade cabinets and RGB lighting"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/meduzapat/LEDSpicer"
 license=('GPL3')
+options=(docs)
 
 makedepends=(
 	'cmake>=3.10'
@@ -33,7 +34,7 @@ makedepends=(
 )
 
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/meduzapat/LEDSpicer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('10cae9d87608ecf7c36acefb18eee8ab59197415f54ffa71ae0bf6916a3cf3a7')
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 
 build() {
 	cd "${srcdir}/LEDSpicer-${pkgver}"
@@ -52,6 +53,8 @@ build() {
 		-DENABLE_LEDWIZ32=ON
 		-DENABLE_HOWLER=ON
 		-DENABLE_ADALIGHT=ON
+		-DCMAKE_SKIP_BUILD_RPATH=ON
+		-DCMAKE_INSTALL_RPATH=""
 	)
 
 	cmake -S . -B build "${cmake_opts[@]}"
@@ -104,6 +107,11 @@ package_ledspicer() {
 
 	DESTDIR="${pkgdir}" cmake --install "${srcdir}/LEDSpicer-${pkgver}/build"
 
+	# Move examples to /usr/share/ledspicer/examples for robustness (avoids any doc stripping)
+	install -dm755 "${pkgdir}/usr/share/ledspicer/examples"
+	mv "${pkgdir}/usr/share/doc/ledspicer/examples/"* "${pkgdir}/usr/share/ledspicer/examples/" 2>/dev/null || true
+	rm -rf "${pkgdir}/usr/share/doc/ledspicer/examples"
+
 	# Remove library artifacts (handled by libledspicer)
 	rm -f "${pkgdir}/usr/lib/libledspicer.so"*
 	rm -rf "${pkgdir}/usr/include"
@@ -112,6 +120,9 @@ package_ledspicer() {
 	# Remove plugins (handled by subpackages)
 	rm -rf "${pkgdir}/usr/lib/ledspicer/devices"
 	install -dm755 "${pkgdir}/usr/lib/ledspicer/devices"
+
+	# Install license per Arch guidelines
+	install -Dm644 "${srcdir}/LEDSpicer-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 
 # =============================================================================
@@ -182,4 +193,3 @@ package_ledspicer-dev() {
 
 	ln -s libledspicer.so.1 "${pkgdir}/usr/lib/libledspicer.so"
 }
-
