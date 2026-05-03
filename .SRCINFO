@@ -1,0 +1,15 @@
+pkgbase = opal-tui
+	pkgdesc = Beautiful terminal music player built with Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/stevenx65/opal-tui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	depends = glib2
+	source = opal-tui::git+https://github.com/stevenx65/opal-tui.git
+	sha256sums = SKIP
+
+pkgname = opal-tui
