@@ -2,7 +2,7 @@
 
 _npmname=agent-skill-manager
 pkgname=asm
-pkgver=1.19.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Universal CLI/TUI for managing AI coding agent skills across 17+ platforms"
 arch=('x86_64')
@@ -12,11 +12,12 @@ depends=('nodejs>=18')
 makedepends=('npm')
 provides=('agent-skill-manager')
 conflicts=('agent-skill-manager')
+options=('!strip' '!debug')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
         "LICENSE::https://raw.githubusercontent.com/luongnv89/asm/v$pkgver/LICENSE")
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('a22ae1b470286be28df6bf053302eba146d1e61e'
-          'SKIP')
+sha1sums=('a402286f051595734c8049e152a7b5cef16153d3'
+          '90e650c62d02d417e91302bfc5ab0ca50f165043')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
