@@ -21,7 +21,6 @@ prepare() {
 #include <libwnck/libwnck.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <libappindicator/app-indicator.h>
 #include <stdio.h>
 #include <stdlib.h>
 
