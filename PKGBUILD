@@ -1,10 +1,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Maintainer: UnbreakableMJ <mj@steelbore.com>
+# Maintainer: Mohamed Hammad <Mohamed.Hammad@Steelbore.com>
 #
 # gitway-bin — installs the pre-built static musl binary from the GitHub
 # Release page.  This is the recommended package for most users.
 #
 # To build from source instead, use the companion gitway-git AUR package.
+#
+# Project page: https://gitway.steelbore.com/
 
 pkgname=gitway-bin
 pkgver=0.9.0
