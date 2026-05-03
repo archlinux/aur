@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("BrosLauncher-${pkgver}-x86_64.AppImage::https://github.com/berkeai/bros/releases/download/v${pkgver}/BrosLauncher-${pkgver}-x86_64.AppImage")
+source=("BrosLauncher-${pkgver}-x86_64.AppImage")
 noextract=()
 validpgpkeys=()
 

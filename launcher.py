@@ -7,8 +7,12 @@ import platform
 import threading
 import time
 import queue
-import shutil
+import urllib.request
+import ssl
 from pathlib import Path
+
+ISO_URL = "https://bros.berkeai.com/bros.iso"
+DOWNLOAD_PROGRESS_UPDATE = 100
 
 # Get user-writable data directory
 USER_DATA_DIR = Path(os.path.expanduser("~/.local/share/broslauncher"))
@@ -64,7 +68,6 @@ class BrosLauncherWindow:
         self.running = False
         self.vm_process = None
         self.log_queue = queue.Queue()
-        self.qemu_available = self.check_qemu()
 
         self.scale_cores = None
         self.scale_freq = None
@@ -78,15 +81,18 @@ class BrosLauncherWindow:
 
         self.iso_path = get_iso_path()
 
+        self.downloading = False
+        self.download_progress = None
+        self.download_label = None
+
+        self.max_freq = DEFAULT_FREQ
+        self.max_cores = DEFAULT_CORES
+        self.smp_cores = 2
+
         self.load_logo()
+        self.check_and_download_iso()
         self.create_ui()
         self.log_init()
-
-    def check_qemu(self):
-        qemu_path = shutil.which("qemu-system-x86_64")
-        if qemu_path:
-            return True
-        return False
 
     def load_logo(self):
         logo_file = get_logo_path()
@@ -98,6 +104,107 @@ class BrosLauncherWindow:
                 self.logo = None
         else:
             self.logo = None
+
+    def check_and_download_iso(self):
+        if os.path.exists(self.iso_path):
+            return
+
+        self.log_to_console("[ISO] Not found, downloading...", "warn")
+        threading.Thread(target=self.download_iso, daemon=True).start()
+
+    def download_iso(self):
+        self.root.after(0, self.show_download_progress)
+
+        try:
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+
+            request = urllib.request.Request(
+                ISO_URL, headers={"User-Agent": "BrosLauncher/1.0"}
+            )
+            response = urllib.request.urlopen(request, context=ssl_context, timeout=30)
+
+            total_size = int(response.headers.get("content-length", 0))
+            downloaded = 0
+            block_size = 8192
+
+            with open(self.iso_path, "wb") as f:
+                while True:
+                    buffer = response.read(block_size)
+                    if not buffer:
+                        break
+                    downloaded += len(buffer)
+                    f.write(buffer)
+
+                    if total_size > 0:
+                        progress = (downloaded / total_size) * 100
+                        self.root.after(
+                            0, lambda p=progress: self.update_download_progress(p)
+                        )
+
+            self.root.after(0, self.hide_download_progress)
+            self.log_to_console("[ISO] Download complete", "info")
+
+        except Exception as e:
+            self.root.after(
+                0, lambda: self.log_to_console(f"[ISO] Download failed: {e}", "error")
+            )
+            self.root.after(0, self.hide_download_progress)
+
+    def show_download_progress(self):
+        self.downloading = True
+
+        self.download_progress = tk.Frame(self.root, bg="#050505", height=30)
+        self.download_progress.pack(side=tk.BOTTOM, fill=tk.X)
+
+        self.download_label = tk.Label(
+            self.download_progress,
+            text="Downloading Bros ISO...",
+            bg="#050505",
+            fg=COLOR_TEXT,
+            font=("Segoe UI", 8),
+            anchor=tk.W,
+        )
+        self.download_label.pack(side=tk.LEFT, padx=10, fill=tk.X, expand=True)
+
+        self.progress_bar = ttk.Progressbar(
+            self.download_progress, mode="determinate", length=200
+        )
+        self.progress_bar.pack(side=tk.RIGHT, padx=10, pady=5)
+
+    def update_download_progress(self, percent):
+        if self.progress_bar:
+            self.progress_bar["value"] = percent
+        if self.download_label:
+            self.download_label.config(text=f"Downloading Bros ISO... {percent:.1f}%")
+
+    def hide_download_progress(self):
+        self.downloading = False
+        if self.download_progress:
+            self.download_progress.destroy()
+            self.download_progress = None
+            self.download_label = None
+
+    def get_cpu_info(self):
+        try:
+            result = subprocess.run(
+                ["cat", "/proc/cpuinfo"], capture_output=True, text=True
+            )
+            lines = result.stdout.split("\n")
+            for line in lines:
+                if "model name" in line:
+                    return line.split(":")[-1].strip()
+                if "cpu MHz" in line:
+                    try:
+                        freq = float(line.split(":")[-1].strip())
+                        if freq > self.max_freq:
+                            self.max_freq = int(freq)
+                    except:
+                        pass
+        except:
+            pass
+        return "Unknown"
 
     def create_ui(self):
         self.root.configure(bg=COLOR_BG_DARK)
@@ -303,12 +410,10 @@ class BrosLauncherWindow:
         )
         info_frame.pack(fill=tk.X, padx=8, pady=8)
 
-        qemu_status = "OK" if self.qemu_available else "MISSING"
-
         for label, value in [
             ("Platform", platform.system()),
             ("Architecture", "x86_64"),
-            ("QEMU", qemu_status),
+            ("QEMU", QEMU_BIN),
         ]:
             row = tk.Frame(info_frame, bg=COLOR_BG_MEDIUM)
             row.pack(fill=tk.X)
@@ -322,9 +427,6 @@ class BrosLauncherWindow:
                 width=12,
                 anchor=tk.W,
             ).pack(side=tk.LEFT)
-            value_color = (
-                COLOR_TEXT if (label != "QEMU" or self.qemu_available) else "#ff4444"
-            )
             tk.Label(
                 row,
                 text=value,
@@ -363,16 +465,6 @@ class BrosLauncherWindow:
             bg=COLOR_BG_MEDIUM,
             fg=status_color,
             font=FONT_SECONDARY,
-        ).pack(anchor=tk.W)
-
-        if not os.path.exists(self.iso_path):
-            tk.Label(
-                boot_frame,
-                text="Download: https://berkeos.dev/bros",
-                bg=COLOR_BG_MEDIUM,
-                fg="#00aaff",
-                font=("Segoe UI", 7),
-            ).pack(anchor=tk.W, pady=(3, 0))
         ).pack(anchor=tk.W)
 
     def create_content_panel(self, parent):
@@ -456,9 +548,18 @@ class BrosLauncherWindow:
         )
         self.status_label.pack(side=tk.LEFT)
 
+        self.cpu_info_label = tk.Label(
+            status,
+            text="BrosCPU: HM-1 @ 60 MHz | SMP: 2 cores",
+            bg="#050505",
+            fg=COLOR_TEXT_DIM,
+            font=FONT_SECONDARY,
+        )
+        self.cpu_info_label.pack(side=tk.LEFT, padx=20)
+
         self.config_label = tk.Label(
             status,
-            text=f"{DEFAULT_CORES} core | {DEFAULT_FREQ} MHz | {DEFAULT_RAM} MB | {DEFAULT_STORAGE} MB",
+            text=f"1 core | 60 MHz | {DEFAULT_RAM} MB | {DEFAULT_STORAGE} MB",
             bg="#050505",
             fg=COLOR_TEXT_DIM,
             font=FONT_SECONDARY,
@@ -468,18 +569,11 @@ class BrosLauncherWindow:
     def log_init(self):
         iso_status = "OK" if os.path.exists(self.iso_path) else "MISSING"
         self.log_to_console(f"[INIT] {APP_NAME} v{APP_VERSION}", "system")
-        self.log_to_console(f"[INIT] CPU: {CPU_NAME}", "system")
-        self.log_to_console(
-            f"[INIT] QEMU: {'Available' if self.qemu_available else 'Not Found'}",
-            "system",
-        )
+        self.log_to_console(f"[INIT] CPU: {CPU_NAME} (BrosCPU FPGA)", "system")
+        self.log_to_console(f"[INIT] BrosCPU: 80186 compatible @ 60 MHz", "system")
+        self.log_to_console(f"[INIT] FPGA: ~1800 ALMs, Cyclone V", "system")
         self.log_to_console(f"[INIT] ISO: {iso_status}", "info")
         self.log_to_console(f"[INIT] Configuration loaded", "info")
-
-        if not self.qemu_available:
-            self.log_to_console(
-                "[WARN] QEMU not found - install qemu-system-x86", "warn"
-            )
 
     def show_about(self):
         about_win = tk.Toplevel(self.root)
@@ -520,7 +614,7 @@ class BrosLauncherWindow:
             ("Architecture", "x86_64"),
             ("Max Cores", "3"),
             ("Default RAM", "2048 MB"),
-            ("Boot", "BAHAR Multiboot2"),
+            ("Boot", "BAHAR Multiboot2 + FastBoot"),
             ("File System", "DefneFS v3.2.3"),
             ("Shell", "Brosh v1.1.9"),
         ]
@@ -576,21 +670,11 @@ class BrosLauncherWindow:
         if self.running:
             return
 
-        if not self.qemu_available:
-            messagebox.showerror(
-                "QEMU Not Found",
-                "qemu-system-x86_64 is not installed or not in PATH.\n\n"
-                "Install it with: pacman -S qemu-system-x86",
-            )
+        if not os.path.exists(self.iso_path):
+            messagebox.showerror("Error", f"ISO not found: {self.iso_path}")
             return
 
-        if not os.path.exists(self.iso_path):
-            messagebox.showerror(
-                "ISO Not Found",
-                f"Bros ISO not found at:\n{self.iso_path}\n\n"
-                "Please place bros.iso in the application directory.",
-            )
-            return
+        self.collect_cpu_info()
 
         self.running = True
         self.update_ui(True)
@@ -600,7 +684,43 @@ class BrosLauncherWindow:
             f"[VM] Starting with {self.cpu_cores.get()} cores, {self.ram_size.get()} MB RAM",
             "info",
         )
+        self.log_to_console(
+            f"[VM] CPU: {CPU_NAME} | Max: {self.max_freq} MHz | Available Cores: {self.max_cores} | SMP: {self.smp_cores}",
+            "system",
+        )
         self.open_qemu_window()
+
+    def collect_cpu_info(self):
+        try:
+            result = subprocess.run(["lscpu"], capture_output=True, text=True)
+            lines = result.stdout.split("\n")
+
+            for line in lines:
+                if "CPU MHz:" in line:
+                    try:
+                        freq = float(line.split(":")[-1].strip())
+                        if freq > self.max_freq:
+                            self.max_freq = int(freq)
+                    except:
+                        pass
+                elif "CPU(s):" in line or "Core(s) per socket:" in line:
+                    try:
+                        cores = int(line.split(":")[-1].strip())
+                        if cores > self.max_cores:
+                            self.max_cores = cores
+                    except:
+                        pass
+
+            self.smp_cores = min(2, self.max_cores) if self.max_cores > 0 else 2
+            self.max_freq = DEFAULT_FREQ if self.max_freq == 0 else self.max_freq
+
+            if self.cpu_info_label:
+                self.cpu_info_label.config(
+                    text=f"Max: {self.max_freq} MHz | SMP: {self.smp_cores} cores"
+                )
+
+        except Exception as e:
+            self.log_to_console(f"[CPU] Could not get CPU info: {e}", "warn")
 
     def open_qemu_window(self):
         iso = self.iso_path
@@ -608,6 +728,13 @@ class BrosLauncherWindow:
         freq = self.cpu_freq.get()
         ram = self.ram_size.get()
         storage = self.storage_size.get()
+
+        self.log_to_console(
+            f"[BrosCPU] Starting BrosCPU emulation at {freq} MHz", "system"
+        )
+        self.log_to_console(
+            f"[BrosCPU] Cores: {cores} | RAM: {ram} MB | Disk: {storage} MB", "system"
+        )
 
         disk = f"bros_{storage}mb.img"
         disk_path = str(USER_DATA_DIR / disk)
@@ -645,7 +772,11 @@ class BrosLauncherWindow:
             "user",
         ]
 
-        self.log_to_console(f"[VM] Command: {' '.join(cmd[:6])} ...", "system")
+        self.log_to_console(
+            f"[BrosCPU] CPU: BrosCPU HM-1 (80186) @ {freq} MHz", "system"
+        )
+        self.log_to_console(f"[BrosCPU] FPGA: {cores} cores, {ram} MB RAM", "system")
+        self.log_to_console(f"[BrosCPU] Boot: BAHAR Multiboot2 + FastBoot", "system")
 
         try:
             self.vm_process = subprocess.Popen(
@@ -657,7 +788,8 @@ class BrosLauncherWindow:
                 bufsize=1,
             )
             self.log_to_console(
-                f"[VM] QEMU started (PID: {self.vm_process.pid})", "info"
+                f"[BrosCPU] BrosCPU emulation started (PID: {self.vm_process.pid})",
+                "info",
             )
 
             self.reader_thread = threading.Thread(target=self.read_output, daemon=True)
@@ -718,9 +850,9 @@ class BrosLauncherWindow:
             self.btn_stop.config(state=tk.NORMAL)
             self.status_indicator.delete("all")
             self.status_indicator.create_oval(0, 0, 10, 10, fill=COLOR_TEXT)
-            self.status_label.config(text="Running")
+            self.status_label.config(text="BrosCPU Running")
             self.config_label.config(
-                text=f"{self.cpu_cores.get()} cores | {self.cpu_freq.get()} MHz | {self.ram_size.get()} MB"
+                text=f"BrosCPU HM-1 | 60 MHz | {self.ram_size.get()} MB"
             )
             if self.scale_cores:
                 self.scale_cores.config(state=tk.DISABLED)
@@ -736,9 +868,7 @@ class BrosLauncherWindow:
             self.status_indicator.delete("all")
             self.status_indicator.create_oval(0, 0, 10, 10, fill=COLOR_TEXT_DIM)
             self.status_label.config(text="Ready")
-            self.config_label.config(
-                text=f"{DEFAULT_CORES} core | {DEFAULT_FREQ} MHz | {DEFAULT_RAM} MB"
-            )
+            self.config_label.config(text="BrosCPU HM-1 | 60 MHz | 2048 MB")
             if self.scale_cores:
                 self.scale_cores.config(state=tk.NORMAL)
             if self.scale_freq:

@@ -1,75 +1,53 @@
+"""BROS VM Application - Constants"""
+
 import os
 import platform
 import sys
-import shutil
 
-APP_NAME = "BrosLauncher"
-APP_VERSION = "1.0.5C"
+APP_NAME = "Bros Launcher"
+APP_VERSION = "1.0.7"
 APP_TITLE = f"{APP_NAME} v{APP_VERSION}"
 
-CPU_NAME = "BROS HM-1 Bahar"
+CPU_NAME = "BROS HM-1"
 CPU_MANUFACTURER = "Berke Oruc"
 CPU_DESCRIPTION = "x86_64 Operating System for testing"
 
 DEFAULT_RAM = 2048
 DEFAULT_CORES = 1
-DEFAULT_FREQ = 2400
+DEFAULT_FREQ = 60
 DEFAULT_STORAGE = 512
 
 MIN_RAM = 512
 MAX_RAM = 8192
 MIN_CORES = 1
-MAX_CORES = 3
-MIN_FREQ = 800
-MAX_FREQ = 3600
+MAX_CORES = 2
+MIN_FREQ = 10
+MAX_FREQ = 60
 MIN_STORAGE = 64
 MAX_STORAGE = 4096
 
 PLATFORM = platform.system()
-
-ISO_DOWNLOAD_URL = "https://berkeos.dev/bros/bros.iso"
-
-
-def get_qemu_binary():
-    qemu_path = shutil.which("qemu-system-x86_64")
-    if qemu_path:
-        return "qemu-system-x86_64"
-    return "qemu-system-x86_64"
-
-
-QEMU_BIN = get_qemu_binary()
+QEMU_BIN = "qemu-system-x86_64"
 
 
 def get_base_path():
-    if getattr(sys, "frozen", False):
-        return os.path.dirname(sys.executable)
-    return os.path.dirname(os.path.abspath(__file__))
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    if "/usr/share/broslauncher" in script_dir:
+        return "/usr/share/broslauncher"
+    return os.path.abspath(os.path.join(script_dir, ".."))
 
 
 def get_iso_path():
     possible_paths = []
 
-    if hasattr(sys, "_MEIPASS"):
-        bundle_dir = sys._MEIPASS
-        possible_paths.append(os.path.join(bundle_dir, "bros.iso"))
-
-    if getattr(sys, "frozen", False):
-        bundle_dir = os.path.dirname(sys.executable)
-        possible_paths.append(os.path.join(bundle_dir, "bros.iso"))
-        possible_paths.append(
-            os.path.join(bundle_dir, "usr", "share", "broslauncher", "bros.iso")
-        )
-
     script_dir = os.path.dirname(os.path.abspath(__file__))
     possible_paths.append(os.path.join(script_dir, "bros.iso"))
-
     possible_paths.append("/usr/share/broslauncher/bros.iso")
 
-    xdg_data = os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share"))
-    possible_paths.append(os.path.join(xdg_data, "broslauncher", "bros.iso"))
-
-    home_downloads = os.path.join(os.path.expanduser("~"), "Downloads")
-    possible_paths.append(os.path.join(home_downloads, "bros.iso"))
+    home = os.path.expanduser("~")
+    possible_paths.append(
+        os.path.join(home, "Desktop", "BROS", "C1", "V1.0.5C", "build", "bros.iso")
+    )
 
     for path in possible_paths:
         if os.path.exists(path):
@@ -79,20 +57,18 @@ def get_iso_path():
 
 
 def get_logo_path():
-    if getattr(sys, "frozen", False):
-        base = os.path.dirname(sys.executable)
-    else:
-        base = os.path.dirname(os.path.abspath(__file__))
-
-    for path in [
-        os.path.join(base, "bros-logo.png"),
-        os.path.join(base, "..", "share", "pixmaps", "broslauncher.png"),
-        "/usr/share/pixmaps/broslauncher.png",
-    ]:
-        if os.path.exists(path):
-            return path
-
-    return None
+    base = get_base_path()
+    logo = os.path.join(base, "ASSETS", "bros-logo.png")
+    if os.path.exists(logo):
+        return logo
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    logo = os.path.join(script_dir, "bros-logo.png")
+    if os.path.exists(logo):
+        return logo
+    logo = "/usr/share/broslauncher/bros-logo.png"
+    if os.path.exists(logo):
+        return logo
+    return os.path.join(base, "ASSETS", "bros-logo.png")
 
 
 COLOR_BG_DARK = "#0a0a0a"

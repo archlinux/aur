@@ -104,7 +104,7 @@ class CPUSchematic(tk.Canvas):
         self.create_text(
             w // 2,
             20,
-            text="BROS HM-1 BAHAR CPU",
+            text="BROS HM-1 CPU",
             fill=COLOR_TEXT,
             font=("Consolas", 12, "bold"),
         )
