@@ -1,0 +1,26 @@
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+pkgname=codesight
+pkgver=1.13.1
+pkgrel=1
+pkgdesc='AI context generator - codebase mapping, token optimization, and MCP server for Claude Code, Cursor, and Codex'
+arch=('any')
+url='https://github.com/Houseofmvps/codesight'
+license=('MIT')
+depends=('nodejs')
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+sha256sums=('1d0e6e1a5ac764fa22ff2fdb549c3a3f897e53f32f39800b44ad4927fc046eda')
+
+package() {
+    cd "${srcdir}/package"
+
+    local _destdir="${pkgdir}/usr/lib/${pkgname}"
+    install -dm755 "${_destdir}"
+    cp -a dist package.json "${_destdir}/"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/${pkgname}/dist/index.js" "${pkgdir}/usr/bin/${pkgname}"
+}
+
+latestver() {
+    npm view codesight dist-tags.latest
+}
