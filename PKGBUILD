@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=pathaction
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="A file execution router that uses YAML rules to determine which commands to execute on files and directories"
 arch=('any')
