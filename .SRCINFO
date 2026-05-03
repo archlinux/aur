@@ -1,7 +1,7 @@
 pkgbase = fence
 	pkgdesc = Lightweight, container-free sandbox for running untrusted commands
 	pkgver = 0.1.54
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Use-Tusk/fence
 	arch = x86_64
 	license = Apache-2.0

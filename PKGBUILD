@@ -2,7 +2,7 @@
 
 pkgname=fence
 pkgver=0.1.54
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight, container-free sandbox for running untrusted commands"
 arch=('x86_64')
 url="https://github.com/Use-Tusk/fence"
@@ -27,7 +27,7 @@ build() {
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -ldflags "-s -w -X main.version=$pkgver" -o "$pkgname" ./cmd/fence
+    go build -ldflags "-linkmode=external -s -w -X main.version=$pkgver" -o "$pkgname" ./cmd/fence
 }
 
 check() {
