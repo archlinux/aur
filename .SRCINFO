@@ -1,0 +1,23 @@
+pkgbase = clin-rs-bin
+	pkgdesc = Encrypted terminal note-taking app
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/reekta92/clin-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = clin
+	conflicts = clin
+	options = !strip
+	source = README-0.4.4.md::https://raw.githubusercontent.com/reekta92/clin-rs/v0.4.4/README.md
+	source = LICENSE-0.4.4::https://raw.githubusercontent.com/reekta92/clin-rs/v0.4.4/LICENSE
+	sha256sums = cb09803d44579de684e4cd268f50ba1986c4f965c240f9fb013f545238a9a512
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = clin-x86_64-0.4.4.txz::https://github.com/reekta92/clin-rs/releases/download/v0.4.4/clin-rs-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1d02f63b5d6ea0742916eea235dc364ce28eaacf337215c078a753352d13fa52
+	source_aarch64 = clin-aarch64-0.4.4.txz::https://github.com/reekta92/clin-rs/releases/download/v0.4.4/clin-rs-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = da07f28bc2f684ae1022ac268832488996b5d6a1784eb42ae2f9965140ac20fe
+
+pkgname = clin-rs-bin

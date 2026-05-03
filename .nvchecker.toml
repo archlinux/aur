@@ -1,0 +1,5 @@
+[clin-rs-bin]
+source = "github"
+github = "reekta92/clin-rs"
+use_latest_release = true
+prefix = "v"
