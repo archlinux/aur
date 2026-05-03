@@ -1,13 +1,13 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=arf-bin
-pkgver=0.2.7
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A modern R console"
 arch=('x86_64')
 url="https://github.com/eitsupi/arf"
 license=('MIT')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 conflicts=('arf')
 options=('!debug')
 provides_x86_64=("arf=${pkgver}")
@@ -22,5 +22,5 @@ package() {
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
-sha256sums_x86_64=('e143799590c456b37287ffb028ba2d3527afd8a48ffef27f9c3721386443c8f1'
+sha256sums_x86_64=('32f90ea91b685e2383e3a63e389ece96a35eb7c8bdd3348810d6ce2e45764c95'
                    'b9ee24794ec15953578fd5d07bb323b47a01f03b6fd206429dbe34b1c638fa0f')
