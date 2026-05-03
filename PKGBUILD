@@ -11,7 +11,7 @@ makedepends=('git')
 
 # Use explicit tag for source
 source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v${pkgver}")
-sha256sums=('fb895bebdec19f8c771a7e60d14c4faee48e6cf4614ffe9a2c76fac1b251347f')
+sha256sums=('0114a2da3adf68b62c509c49d9608a46cb2e369e15e48838f530b5b760e872be')
 
 # pkgver() is used in CI to override version from git tag
 pkgver() {
