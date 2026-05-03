@@ -1,5 +1,5 @@
 pkgname=my-niri-desk
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Opinionated niri + QuickShell desktop preset with bundled wayscrollshot"
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
   'bluez'
   'bluez-utils'
   'wl-clipboard'
+  'cliphist'
   'grim'
   'slurp'
   'hyprpicker'
@@ -55,6 +56,8 @@ optdepends=(
   'playerctl: better media control integration'
   'cava: audio visualizer for lyrics/media panels'
   'noto-fonts-cjk: fallback CJK font set'
+  'wtype: inject Ctrl+V into native Wayland apps from clipboard history'
+  'xdotool: inject Ctrl+V into X11 and some XWayland apps from clipboard history'
 )
 makedepends=(
   'cargo'
@@ -68,7 +71,7 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=(
-  '5b10a6ed4ecf843627c650c6a245d95749ab1d1d550480088e6f31385069ff47'
+  'e9f5a1f14ebbdb58665159d698cd27f8e6ceb4582f4561d1e407ddd68adb2d61'
   'SKIP'
   '1635fc07adbccdf91c2243ea9fbb74612844ca0c288d09d796eb21d1cf0b7676'
 )
