@@ -1,0 +1,23 @@
+pkgbase = mterminal-bin
+	pkgdesc = Custom terminal emulator with grouped tabs and warm dark UI (binary release)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/arthurr0/mTerminal
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = mterminal
+	conflicts = mterminal
+	conflicts = mterminal-git
+	source = mterminal-0.1.0.AppImage::https://github.com/arthurr0/mTerminal/releases/download/v0.1.0/mTerminal_0.1.0_amd64.AppImage
+	source = https://raw.githubusercontent.com/arthurr0/mTerminal/v0.1.0/packaging/mterminal.desktop
+	source = https://raw.githubusercontent.com/arthurr0/mTerminal/v0.1.0/src-tauri/icons/icon.png
+	source = https://raw.githubusercontent.com/arthurr0/mTerminal/v0.1.0/LICENSE
+	sha256sums = 7c13cb32b9b97fdba78cd01358ef25c67b4c0dfddd82ca8c22e962ffa5fe4e89
+	sha256sums = ce584f217c3d7bd5b34248ba2587fe91f5e92ccf973e9877afeab0ec8fba57f2
+	sha256sums = d513c9acb0f7b49ab7bed67289653b309cb95568d5c1801204e1a0178a7cf73a
+	sha256sums = 1699e3455f860d7875bb9791ec4f5926348722ca98bb834832a0bacddcbd12d6
+
+pkgname = mterminal-bin
