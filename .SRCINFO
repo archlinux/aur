@@ -1,0 +1,21 @@
+pkgbase = crossplane-gixy
+	pkgdesc = Reliable and fast NGINX configuration file parser
+	pkgver = 0.5.16
+	pkgrel = 1
+	url = https://github.com/dvershinin/crossplane
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-tox
+	checkdepends = pypy
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pkg_resources
+	depends = python-simplejson
+	depends = python-importlib-metadata
+	provides = crossplane
+	conflicts = crossplane
+	options = !debug
+	source = https://github.com/dvershinin/crossplane/archive/refs/tags/v0.5.16.tar.gz
+	sha256sums = c0037122835d0e1eead275abcc416f688986fd7028ce4a918fc28f81ff6b27da
+
+pkgname = crossplane-gixy
