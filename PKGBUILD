@@ -2,7 +2,7 @@
 _base_pkgname="doh-server"
 pkgname="${_base_pkgname}-bin"
 pkgver=0.9.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, mature, secure DoH and ODoH server proxy written in Rust."
 arch=('x86_64' 'aarch64')
 url="https://github.com/DNSCrypt/doh-server"
