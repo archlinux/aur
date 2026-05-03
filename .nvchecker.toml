@@ -1,0 +1,3 @@
+[perl-net-ping]
+source = "cpan"
+cpan = "Net-Ping"
