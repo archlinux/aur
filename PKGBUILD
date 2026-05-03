@@ -1,7 +1,7 @@
 # Maintainer: nardholio <nardholio@gmail.com>
 
 pkgname=x11-multimonitor-center
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="X11 tray app to move newly spawned windows to the monitor with the mouse cursor if they spawn somewhere else"
 arch=('any')
@@ -33,6 +33,7 @@ static gboolean enabled = TRUE;
 static AppIndicator *indicator = NULL;
 static GtkWidget *menu = NULL;
 static WnckScreen *screen = NULL;
+static GtkWidget *toggle_item = NULL;
 static WnckHandle *wnck_handle = NULL;
 static GApplication *global_app = NULL;
 
@@ -63,6 +64,7 @@ static gboolean delayed_move_cb(gpointer user_data)
 
     int mouse_x, mouse_y;
     gdk_device_get_position(pointer, NULL, &mouse_x, &mouse_y);
+
     GdkMonitor *mouse_monitor = gdk_display_get_monitor_at_point(display, mouse_x, mouse_y);
     if (!mouse_monitor) goto cleanup;
 
@@ -72,21 +74,37 @@ static gboolean delayed_move_cb(gpointer user_data)
 
     int win_center_x = win_x + win_w / 2;
     int win_center_y = win_y + win_h / 2;
-    GdkMonitor *win_monitor = gdk_display_get_monitor_at_point(display, win_center_x, win_center_y);
 
+    GdkMonitor *win_monitor = gdk_display_get_monitor_at_point(display, win_center_x, win_center_y);
     if (win_monitor == mouse_monitor) goto cleanup;
 
     GdkRectangle geom;
-    gdk_monitor_get_geometry(mouse_monitor, &geom);
-    int new_x = geom.x + (geom.width - win_w) / 2;
-    int new_y = geom.y + (geom.height - win_h) / 2;
 
-    wnck_window_set_geometry(window,
-                             WNCK_WINDOW_GRAVITY_CURRENT,
-                             WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
-                             new_x, new_y, win_w, win_h);
-
-    printf("MOVED window → centered on mouse monitor @ (%d,%d)\n", new_x, new_y);
+    if (wnck_window_is_fullscreen(window)) {
+        /* Fullscreen windows: move only (do not resize) so the window manager
+         * can automatically resize them to the new monitor's full geometry. */
+        gdk_monitor_get_geometry(mouse_monitor, &geom);
+        int new_x = geom.x;
+        int new_y = geom.y;
+        wnck_window_set_geometry(window,
+                                 WNCK_WINDOW_GRAVITY_CURRENT,
+                                 WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
+                                 new_x, new_y, 0, 0);
+        printf("MOVED fullscreen window → to mouse monitor @ (%d,%d)\n", new_x, new_y);
+    } else {
+        /* Normal windows: use workarea (respects systray/panels/taskbars) and clamp/center */
+        gdk_monitor_get_workarea(mouse_monitor, &geom);
+        int target_w = (win_w > geom.width) ? geom.width : win_w;
+        int target_h = (win_h > geom.height) ? geom.height : win_h;
+        int new_x = geom.x + (geom.width - target_w) / 2;
+        int new_y = geom.y + (geom.height - target_h) / 2;
+        wnck_window_set_geometry(window,
+                                 WNCK_WINDOW_GRAVITY_CURRENT,
+                                 WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y |
+                                 WNCK_WINDOW_CHANGE_WIDTH | WNCK_WINDOW_CHANGE_HEIGHT,
+                                 new_x, new_y, target_w, target_h);
+        printf("MOVED window → centered on mouse monitor @ (%d,%d) size %dx%d\n", new_x, new_y, target_w, target_h);
+    }
 
 cleanup:
     g_object_unref(window);
@@ -105,6 +123,17 @@ static void
 toggle_enabled_cb(GtkCheckMenuItem *item, gpointer data)
 {
     enabled = gtk_check_menu_item_get_active(item);
+    update_tray_icon();
+}
+
+static void
+indicator_activate_cb(AppIndicator *ind, gpointer user_data)
+{
+    (void)ind; (void)user_data;
+    enabled = !enabled;
+    if (toggle_item) {
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(toggle_item), enabled);
+    }
     update_tray_icon();
 }
 
@@ -129,6 +158,7 @@ create_tray_icon(void)
     GtkWidget *toggle = gtk_check_menu_item_new_with_label("Enabled");
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(toggle), enabled);
     g_signal_connect(toggle, "toggled", G_CALLBACK(toggle_enabled_cb), NULL);
+    toggle_item = toggle;
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), toggle);
 
     GtkWidget *separator = gtk_separator_menu_item_new();
@@ -140,6 +170,8 @@ create_tray_icon(void)
 
     gtk_widget_show_all(menu);
     app_indicator_set_menu(indicator, GTK_MENU(menu));
+
+    g_signal_connect(indicator, "activate", G_CALLBACK(indicator_activate_cb), NULL);
 }
 
 static void
@@ -174,7 +206,7 @@ int main(int argc, char **argv)
 }
 EOF
 
-  # === .desktop FILE ===
+  # .desktop FILE
   cat > x11-multimonitor-center.desktop << 'EOF'
 [Desktop Entry]
 Type=Application
