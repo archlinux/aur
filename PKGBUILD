@@ -1,44 +1,39 @@
-# Maintainer: Berke Oruc <berke@berkeos.dev>
-# Generator: Sisyphus
+# Maintainer: Berke Oruc <berke@berkeai.com>
+# Contributor: Berke Oruc <berke@berkeai.com>
 
 pkgname=broslauncher
-pkgver=1.0.5C
+pkgver=1.0.7
 pkgrel=1
-pkgdesc="BrosLauncher - Virtual machine launcher for Bros OS testing with QEMU"
+epoch=
+pkgdesc="Bros Virtual Machine Launcher - Bros HM-1 CPU Emulator"
 arch=('x86_64')
-url="https://github.com/berkeoruc/BrosLauncher"
+url="https://bros.berkeai.com"
 license=('MIT')
-depends=('python' 'tk' 'qemu-system-x86')
-optdepends=('bros-iso: Bros OS ISO image for virtual machine')
-provides=('broslauncher')
-source=('launcher.py'
-        'schematic.py'
-        'constants.py'
-        'broslauncher.desktop'
-        'broslauncher.png'
-        'com.berkeos.broslauncher.appdata.xml')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=('python-tk: For GUI')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("BrosLauncher-${pkgver}-x86_64.AppImage::https://github.com/berkeai/bros/releases/download/v${pkgver}/BrosLauncher-${pkgver}-x86_64.AppImage")
 noextract=()
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+validpgpkeys=()
+
+sha256sums=('SKIP')
 
 package() {
-    install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/share/broslauncher"
-    install -d "${pkgdir}/usr/share/applications"
-    install -d "${pkgdir}/usr/share/pixmaps"
-    install -d "${pkgdir}/usr/share/metainfo"
-    install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  install -Dm755 "${startdir}/BrosLauncher-${pkgver}-x86_64.AppImage" "${pkgdir}/usr/bin/BrosLauncher"
+  chmod +x "${pkgdir}/usr/bin/BrosLauncher"
 
-    cat > "${pkgdir}/usr/bin/broslauncher" << 'WRAPPER'
-#!/bin/bash
-exec python3 /usr/share/broslauncher/launcher.py "$@"
-WRAPPER
-    chmod +x "${pkgdir}/usr/bin/broslauncher"
+  mkdir -p "${pkgdir}/usr/share/applications"
+  cp "${startdir}/broslauncher.desktop" "${pkgdir}/usr/share/applications/"
 
-    cp launcher.py "${pkgdir}/usr/share/broslauncher/"
-    cp schematic.py "${pkgdir}/usr/share/broslauncher/"
-    cp constants.py "${pkgdir}/usr/share/broslauncher/"
-    cp broslauncher.desktop "${pkgdir}/usr/share/applications/"
-    cp broslauncher.png "${pkgdir}/usr/share/pixmaps/"
-    cp com.berkeos.broslauncher.appdata.xml "${pkgdir}/usr/share/metainfo/"
-    cp broslauncher.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/broslauncher.png"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  cp "${startdir}/broslauncher.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/broslauncher.png"
 }
