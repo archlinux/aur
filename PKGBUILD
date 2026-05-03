@@ -1,5 +1,5 @@
 pkgname=fuck-netease-music-git
-pkgver=0.1.0.r20.g8372673
+pkgver=0.1.0.r21.g017d8c8
 pkgrel=1
 pkgdesc="Rolling NetEase Cloud Music Linux port packaged from the GitHub Release AppImage"
 arch=('x86_64')
@@ -9,13 +9,15 @@ depends=('fuse2' 'gtk3' 'nss' 'libxss')
 optdepends=('xdg-utils: desktop integration helpers')
 provides=('fuck-netease-music')
 conflicts=('fuck-netease-music' 'fuck-netease-music-bin')
+options=('!strip' '!debug')
 source=(
   "https://github.com/fucknetease/Fuck-Netease-Music/releases/download/rolling-main/fuck-netease-music-x64.AppImage"
   "fuck-netease-music.sh"
   "fuck-netease-music.desktop"
 )
+noextract=('fuck-netease-music-x64.AppImage')
 sha256sums=(
-  '551d1bd2bac95f149dc6d9dddf034ba7d44c742eb0583b32c7a654b6500257dc'
+  '0b6556e515822eea3e90bd9c7555b3ccd49164675692ba135708030583977a1c'
   'SKIP'
   'SKIP'
 )

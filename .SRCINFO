@@ -1,6 +1,6 @@
 pkgbase = fuck-netease-music-git
 	pkgdesc = Rolling NetEase Cloud Music Linux port packaged from the GitHub Release AppImage
-	pkgver = 0.1.0.r20.g8372673
+	pkgver = 0.1.0.r21.g017d8c8
 	pkgrel = 1
 	url = https://github.com/fucknetease/Fuck-Netease-Music
 	arch = x86_64
@@ -13,10 +13,13 @@ pkgbase = fuck-netease-music-git
 	provides = fuck-netease-music
 	conflicts = fuck-netease-music
 	conflicts = fuck-netease-music-bin
+	noextract = fuck-netease-music-x64.AppImage
+	options = !strip
+	options = !debug
 	source = https://github.com/fucknetease/Fuck-Netease-Music/releases/download/rolling-main/fuck-netease-music-x64.AppImage
 	source = fuck-netease-music.sh
 	source = fuck-netease-music.desktop
-	sha256sums = 551d1bd2bac95f149dc6d9dddf034ba7d44c742eb0583b32c7a654b6500257dc
+	sha256sums = 0b6556e515822eea3e90bd9c7555b3ccd49164675692ba135708030583977a1c
 	sha256sums = SKIP
 	sha256sums = SKIP
 
