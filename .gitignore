@@ -3,6 +3,7 @@
 !_service
 !update-service.sh
 !0001-force-minizip-includes.diff
+!0002-fix-missing-cstdint.diff
 !PKGBUILD
 !.nvchecker.toml
 !.SRCINFO
