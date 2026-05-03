@@ -1,7 +1,7 @@
 pkgbase = dotmaster-git
 	pkgdesc = Interactive dotfiles installer written in Rust
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Minish777/dotmaster
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = dotmaster-git
 	depends = git
 	provides = dotmaster
 	conflicts = dotmaster
-	source = git+https://github.com/Minish777/dotmaster/tree/main/dotmaster-git
+	source = git+https://github.com/Minish777/dotmaster.git
 	sha256sums = SKIP
 
 pkgname = dotmaster-git
