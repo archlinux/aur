@@ -1,7 +1,7 @@
-# Maintainer: envolution
+# Maintainer: Vitaliy VVS Star <vitaliy <dot> star <at> Gmail-DOT-Com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=librechat
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Open-source ChatGPT clone fully customizable and compatible with any AI provider"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/danny-avila/LibreChat/archive/refs/tags/v$pkgver.tar.gz"
   librechat.install librechat.env librechat.service librechat.sysusers librechat-server.sh
 )
-sha256sums=('43746153061ebb4120a9609194cf91a5beda14e6e06fdb5b1af4012b5e3ab65a'
+sha256sums=('346756609a457c28a26a781fe8dc1c85de85497333c624aa38553dd6f557fee9'
             '8e5b58ecbbf5b68f31b83a0e0e4a8ffeb46410f0794eec061f6510c98d611ddc'
             'c1996fb6baa3f6decfdf27cac916ab6a9eb49bd9ff28e5a350dc9396c96ff0e4'
             '6d8d9cbf687b9978ca33be6ae270fe2a6a65938ee945d3dca5435531ba5cadf8'
@@ -35,6 +35,13 @@ prepare(){
 # @langchain/community has a number of peerOptional deps that are not
 # explicitly set in package.json
   npm install --save @smithy/signature-v4@^2.0.10 @smithy/eventstream-codec @smithy/protocol-http@^3.0.6
+
+# data-schemas: rollup's sanitizeFileName replaces '+' with '_' in module IDs
+# (INVALID_CHAR_REGEX includes '+'), but preserveModulesRoot is not sanitized,
+# so the startsWith check fails when $srcdir contains '+' (AUR convention).
+# Disable sanitizeFileName since output module names are clean.
+  local _dsdir="$PWD/packages/data-schemas"
+  sed -i "/entryFileNames:/a\\      sanitizeFileName: false," "$_dsdir/rollup.config.js"
 }
 build() {
   cd "LibreChat-$pkgver"
