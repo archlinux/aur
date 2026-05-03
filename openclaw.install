@@ -1,0 +1,19 @@
+post_install() {
+    printf "%s\n" \
+        "==> Install gateway service: openclaw gateway install --force" \
+        "==> Perform onboarding once: openclaw onboard"
+}
+
+post_upgrade() {
+    if systemctl is-active --quiet openclaw.service
+    then
+        printf "%s\n" "==> Restarting the gateway service..."
+        systemctl restart openclaw.service
+    fi
+
+    printf "%s\n" \
+        "==> Refresh loaded gateway service:" \
+        "    openclaw gateway install --force && openclaw gateway restart" \
+        "==> Check outdated plugin dependencies:" \
+        "    openclaw doctor"
+}
