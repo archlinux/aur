@@ -15,20 +15,33 @@ makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+
+  local latest_tag
+  latest_tag="$(git tag --sort=-version:refname | head -n1)"
+
+  if [[ -z "${latest_tag}" ]]; then
+    echo 'No git tag found for release build.' >&2
+    return 1
+  fi
+
+  git checkout --force "${latest_tag}"
+}
+
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  local tag rev hash
-
-  tag="$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')"
+  local tag hash
+  tag="$(git describe --tags --exact-match 2>/dev/null || git tag --sort=-version:refname | head -n1)"
+  tag="${tag#v}"
   tag="$(echo "${tag}" | sed 's/[^[:alnum:]._]/./g')"
-  rev="$(git rev-list --count HEAD)"
   hash="$(git rev-parse --short HEAD)"
 
   if [[ -n "${tag}" ]]; then
-    echo "${tag}.r${rev}.g${hash}"
+    echo "${tag}.g${hash}"
   else
-    echo "0.0.0.r${rev}.g${hash}"
+    echo "0.0.0.g${hash}"
   fi
 }
 
