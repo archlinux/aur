@@ -1,0 +1,5 @@
+[azimuth-bin]
+source = "snapcraft"
+snap = "azimuth"
+channel = "stable"
+prefix = "v"
