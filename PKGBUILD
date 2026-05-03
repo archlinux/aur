@@ -1,8 +1,8 @@
 # Maintainer: Kostiantyn Kushnir <...>
 pkgname=openusage-cli
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
-pkgdesc="HTTP daemon for executing OpenUsage plugins and exposing local usage snapshots"
+pkgdesc="Local daemon and CLI for AI provider usage/quota via OpenUsage plugins"
 arch=('x86_64' 'aarch64')
 url="https://github.com/chpock/openusage-cli"
 license=('MIT')
@@ -13,7 +13,7 @@ optdepends=('opencode: AI assistant integration')
 provides=("$pkgname=$pkgver")
 conflicts=('openusage-cli-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chpock/openusage-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b9a8d841c8bf5b0e49304e77fddb92a12d9340b45294b7aa6e0c3d6da47b5c92')
+sha256sums=('40c4f1ecf174ff2f4cb47a7a8caf3fe28c6333e79f6d5b66959ccaec2ce09540')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -31,6 +31,7 @@ package() {
     # Install plugins
     install -dm755 "$pkgdir/usr/share/openusage-cli/openusage-plugins"
     cp -a vendor/openusage/plugins/. "$pkgdir/usr/share/openusage-cli/openusage-plugins/"
+    rm -rf "$pkgdir/usr/share/openusage-cli/openusage-plugins/mock"
 
     # Install plugin overrides
     install -dm755 "$pkgdir/usr/share/openusage-cli/plugin-overrides"
