@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=arrowdl
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
 url="https://www.arrow-dl.com"
@@ -9,6 +9,7 @@ license=('LGPL-3.0-or-later AND CC-BY-SA-3.0')
 depends=(
   'hicolor-icon-theme'
   'libtorrent-rasterbar'
+  'openssl'
   'qt6-base'
   'yt-dlp'
 )
@@ -40,25 +41,29 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S "ArrowDL-$pkgver" \
-    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_SKIP_RPATH='YES' \
-    -DBUILD_TESTS='OFF' \
-    -DLibtorrentRasterbar_LIBRARIES='/usr/lib/libtorrent-rasterbar.so' \
-    -DOPENSSL_INCLUDE_DIRS='/usr/include/openssl' \
-    -DOPENSSL_CRYPTO_LIBRARY='/usr/lib/libcrypto.so' \
-    -DOPENSSL_SSL_LIBRARY='/usr/lib/libssl.so' \
-    -Wno-dev
+  local cmake_options=(
+    -B build
+    -S "ArrowDL-$pkgver"
+    -W no-dev
+    -D CMAKE_BUILD_TYPE='RelWithDebInfo'
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    -D CMAKE_SKIP_RPATH='YES'
+    -D BUILD_TESTS='OFF'
+    -D LibtorrentRasterbar_LIBRARIES='/usr/lib/libtorrent-rasterbar.so'
+    -D OPENSSL_INCLUDE_DIRS='/usr/include/openssl'
+    -D OPENSSL_CRYPTO_LIBRARY='/usr/lib/libcrypto.so'
+    -D OPENSSL_SSL_LIBRARY='/usr/lib/libssl.so'
+  )
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  cd "ArrowDL-$pkgver"
-  install -Dm755 ../build/src/ArrowDL -t "$pkgdir/opt/$pkgname/"
-  install -Dm755 ../build/web-extension/launcher/launcher -t "$pkgdir/opt/$pkgname/"
-  install -Dm644 ../build/src/*.qm -t "$pkgdir/opt/$pkgname/locale/"
+  install -Dm755 build/src/ArrowDL -t "$pkgdir/opt/$pkgname/"
+  install -Dm755 build/web-extension/launcher/launcher -t "$pkgdir/opt/$pkgname/"
+  install -Dm644 build/src/*.qm -t "$pkgdir/opt/$pkgname/locale/"
 
+  cd "ArrowDL-$pkgver"
   install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
     "$pkgdir/etc/chromium/native-messaging-hosts/com.arrowdl.extension.json"
   install -Dm644 web-extension/launcher/unix/launcher-manifest-firefox.json \
