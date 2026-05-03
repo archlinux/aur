@@ -1,47 +1,94 @@
-# Maintainer: syntheit <daniel@matv.io>
+# Maintainer: Edgar <Edgar{at}AnotherFoxGuy.com>
+# Contributor: syntheit <daniel@matv.io>
 
 _pkgname=rigsofrods
 _gitname=rigs-of-rods
+_depsver=2baee9c21dcd67655bf2f86d4c9f3bd6715f05da
 
 pkgname=rigsofrods
-pkgver=2022.12
+pkgver=2026.01
 pkgrel=1
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="https://rigsofrods.org"
 license=('GPL')
-depends=('boost>=1.50' 'curl' 'openssl' 'gtk2' 'mygui>=3.2.2' 'ogre' 'ois>=1.3' 'openal' 'rapidjson>=1.1.0')
-optdepends=('angelscript' 'caelum>=0.6.2' 'nvidia-cg-toolkit')
-makedepends=('gcc' 'cmake>=2.8' 'ninja' 'git' 'conan')
+depends=('angelscript'
+         'curl'
+         'fmt'
+         'freeimage'
+         'freetype2'
+         'ois'
+         'nvidia-cg-toolkit'
+         'openal'
+         'rapidjson'
+         #'socketw' broken at the moment
+         'zlib'
+         'zziplib')
+makedepends=('gcc' 'cmake' 'python')
 conflicts=('rigsofrods-git' 'rigsofrods-hg' 'rigsofrods-bin')
 source=("https://github.com/RigsOfRods/rigs-of-rods/archive/${pkgver}.tar.gz"
+    "https://github.com/RigsOfRods/ror-dependencies/archive/${_depsver}.tar.gz"
 	"plugins.cfg"
 	"rigsofrods.png"
-	"RoRConfig.desktop"
-	"RoR.desktop")
-sha256sums=('d4fc9ec2f7e9154e21ec79d39201c5bb3823e5f2fdf641f99c612ef69275ba90'
-            '6bf5a1a890047b93b551a1a48dac3bf66089416b2a2db93e3d62c09db97760d4'
+	"RoR.desktop"
+	"FindOIS.cmake"
+	"install.cmake")
+sha256sums=('e191ac878d905d898c82bc3610ee811a9bc63db76f883a2bf294b74ea3767c81'
+            'c2a78d1338e8b4c305d358e75d99ee0e285621c66304a4f7ede58b360df25ec4'
+            '25b5c06eb3249b23b2595f57d5305ab1b18301a651d4836bb3a12e2bb55e31d9'
             'aef6a25da69bc8b5b06160d402a612255a3ba0f653115873a3f7eb7b33964c73'
-            '48fb1bae34a02baca5d93789efe50d51b55533f5f513910f87adcd38accc8271'
-            'c6b0bfd1f282da88f7b581ec8bc877ba9d45cf5968be389b5fe2119ff2377cf7')
-
+            '6644cdc33ed48cd5d70154e6b87b97b47e6cdc5b3c6eb8d2b0c7cd9ef797b665'
+            'c9b6258830bf7caed2262df099722af80528205af5f9099aa297bbc8e4425d4b'
+            '46804f8965963c93144c6d1636f52d00b89e999b6595319c0d3653cbb8dd207b')
 build() {
+    # Build deps first
+    cd "$srcdir/ror-dependencies-$_depsver"
+    cmake . -DCMAKE_BUILD_TYPE=Release \
+            -DBUILD_ANGELSCRIPT=ON \
+            -DBUILD_CAELUM=ON \
+            -DBUILD_CURL=OFF \
+            -DBUILD_FMT=OFF \
+            -DBUILD_MYGUI=ON \
+            -DBUILD_OGRE=ON \
+            -DBUILD_OIS=OFF \
+            -DBUILD_OPENAL=OFF \
+            -DBUILD_PAGEDGEOMETRY=ON \
+            -DBUILD_RAPIDJSON=OFF \
+            -DBUILD_SOCKETW=ON
+    make
+
     cd "$srcdir/$_gitname-$pkgver"
-    
+
+    cp "../FindOIS.cmake" "cmake/find-modules/FindOIS.cmake"
+
     # get a clean build dir
     [[ -d build ]] && rm -rf build
-    mkdir build && cd build
 
-    cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
-    ninja
+    export CFLAGS=${CFLAGS/-Werror=format-security/}
+    export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
+    cmake . -DCMAKE_BUILD_TYPE=Release \
+        -Bbuild \
+        -DROR_BUILD_DEV_VERSION=OFF \
+        -DROR_CUSTOM_VERSION="$pkgver" \
+        -DCMAKE_INSTALL_PREFIX=/opt/rigsofrods/ \
+        -DROR_DEPENDENCY_DIR="$srcdir/ror-dependencies-$_depsver/Dependencies_Linux/"
+
+    cd build
+    make
 }
 
 package() {
-    mkdir -p "$pkgdir/opt/$_pkgname"
-    cp -r $srcdir/$_gitname-$pkgver/bin/* "$pkgdir/opt/$_pkgname/"
-    
+    cd "$srcdir/$_gitname-$pkgver/build"
+
+    DESTDIR="$pkgdir" make install
+
+    cd "$srcdir"
+
+    # Copy over ogre libraries
+    cmake -Dsrcdir="$srcdir/ror-dependencies-$_depsver/Dependencies_Linux/lib" -Dpkgdir="$pkgdir" -P "$srcdir/install.cmake"
+
     install -Dm755 rigsofrods.png "$pkgdir/usr/share/pixmaps/rigsofrods.png"
     install -Dm755 RoR.desktop "$pkgdir/usr/share/applications/RoR.desktop"
-    install -Dm755 RoRConfig.desktop "$pkgdir/usr/share/applications/RoRConfig.desktop"
     install -Dm755 plugins.cfg "$pkgdir/opt/$_pkgname/plugins.cfg"
 }

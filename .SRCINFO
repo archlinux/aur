@@ -1,40 +1,41 @@
 pkgbase = rigsofrods
 	pkgdesc = An open source vehicle simulator based on soft-body physics
-	pkgver = 2022.12
+	pkgver = 2026.01
 	pkgrel = 1
 	url = https://rigsofrods.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = gcc
-	makedepends = cmake>=2.8
-	makedepends = ninja
-	makedepends = git
-	makedepends = conan
-	depends = boost>=1.50
+	makedepends = cmake
+	makedepends = python
+	depends = angelscript
 	depends = curl
-	depends = openssl
-	depends = gtk2
-	depends = mygui>=3.2.2
-	depends = ogre
-	depends = ois>=1.3
+	depends = fmt
+	depends = freeimage
+	depends = freetype2
+	depends = ois
+	depends = nvidia-cg-toolkit
 	depends = openal
-	depends = rapidjson>=1.1.0
-	optdepends = angelscript
-	optdepends = caelum>=0.6.2
-	optdepends = nvidia-cg-toolkit
+	depends = rapidjson
+	depends = zlib
+	depends = zziplib
 	conflicts = rigsofrods-git
 	conflicts = rigsofrods-hg
 	conflicts = rigsofrods-bin
-	source = https://github.com/RigsOfRods/rigs-of-rods/archive/2022.12.tar.gz
+	source = https://github.com/RigsOfRods/rigs-of-rods/archive/2026.01.tar.gz
+	source = https://github.com/RigsOfRods/ror-dependencies/archive/2baee9c21dcd67655bf2f86d4c9f3bd6715f05da.tar.gz
 	source = plugins.cfg
 	source = rigsofrods.png
-	source = RoRConfig.desktop
 	source = RoR.desktop
-	sha256sums = d4fc9ec2f7e9154e21ec79d39201c5bb3823e5f2fdf641f99c612ef69275ba90
-	sha256sums = 6bf5a1a890047b93b551a1a48dac3bf66089416b2a2db93e3d62c09db97760d4
+	source = FindOIS.cmake
+	source = install.cmake
+	sha256sums = e191ac878d905d898c82bc3610ee811a9bc63db76f883a2bf294b74ea3767c81
+	sha256sums = c2a78d1338e8b4c305d358e75d99ee0e285621c66304a4f7ede58b360df25ec4
+	sha256sums = 25b5c06eb3249b23b2595f57d5305ab1b18301a651d4836bb3a12e2bb55e31d9
 	sha256sums = aef6a25da69bc8b5b06160d402a612255a3ba0f653115873a3f7eb7b33964c73
-	sha256sums = 48fb1bae34a02baca5d93789efe50d51b55533f5f513910f87adcd38accc8271
-	sha256sums = c6b0bfd1f282da88f7b581ec8bc877ba9d45cf5968be389b5fe2119ff2377cf7
+	sha256sums = 6644cdc33ed48cd5d70154e6b87b97b47e6cdc5b3c6eb8d2b0c7cd9ef797b665
+	sha256sums = c9b6258830bf7caed2262df099722af80528205af5f9099aa297bbc8e4425d4b
+	sha256sums = 46804f8965963c93144c6d1636f52d00b89e999b6595319c0d3653cbb8dd207b
 
 pkgname = rigsofrods

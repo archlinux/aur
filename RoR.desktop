@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=Rigs of Rods
 Comment=An open source vehicle simulator based on soft-body physics
 Icon=rigsofrods.png
-Exec=/opt/rigsofrods/RoR
+Exec=env LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rigsofrods/lib/ /opt/rigsofrods/RoR
 Terminal=false
 Categories=Application;Game;
