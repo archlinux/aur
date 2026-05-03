@@ -1,7 +1,7 @@
 # Maintainer: guglovich <https://github.com/guglovich>
 # Created with assistance from Gemini 3.1 Pro.
 pkgname=transmission-remote-slint
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Lightweight Transmission BitTorrent GUI built with Slint (no GTK)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ provides=("$pkgname")
 conflicts=('transmission-remote-slint-bin')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guglovich/Transmission-Remote-Slint/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('91eeb5be9a3dc83eef4772f605cb585305e442bf11f402db38aa1822978ac049')
+sha256sums=('c9c28bde2033d2f6fd4edfaf93c715be255d095e2147e45d3c434e9dc5329587')
 
 prepare() {
     cd "Transmission-Remote-Slint-${pkgver}"
