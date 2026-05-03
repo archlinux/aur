@@ -1,7 +1,7 @@
 pkgbase = doas
 	pkgdesc = A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos, macOS and MidnightBSD
 	pkgver = 6.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/thejessesmith/doas/
 	install = doas.install
 	changelog = doas.changelog
