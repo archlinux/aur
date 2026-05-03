@@ -14,6 +14,7 @@ depends=('bash' 'cairo' 'gdk-pixbuf2' 'glibc' 'glib2' 'gtk3' 'libgcc' 'libglvnd'
 makedepends=('cmake' 'git' 'make' 'svn' 'unzip' 'wget')
 optdepends=('xorg-xwayland: required to use the application on a Wayland session')
 provides=('netradiant' 'h2data' 'q2map' 'q3data' 'q3map2' 'qdata3')
+conflicts=('netradiant-gtk2-git')
 source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git")
 sha256sums=('SKIP')
 

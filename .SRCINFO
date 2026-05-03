@@ -42,6 +42,7 @@ pkgbase = netradiant-git
 	provides = q3data
 	provides = q3map2
 	provides = qdata3
+	conflicts = netradiant-gtk2-git
 	source = netradiant-git::git+https://gitlab.com/xonotic/netradiant.git
 	sha256sums = SKIP
 
