@@ -7,6 +7,7 @@ pkgbase = libpassphrase
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = aarch64
 	license = GPL3
 	makedepends = make
 	makedepends = coreutils
