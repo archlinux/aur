@@ -1,0 +1,4 @@
+[pigami-bin]
+source = "snapcraft"
+snap = "pigami"
+channel = "stable"
