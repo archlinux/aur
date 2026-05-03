@@ -1,0 +1,71 @@
+# Maintainer: Abdullah Al-Banna
+
+pkgname=rusbmux-git
+pkgver=0.1.0.r143.gdfef992
+pkgrel=1
+pkgdesc="A usbmuxd replacement in pure Rust"
+arch=('x86_64' 'aarch64')
+url="https://github.com/abdullah-albanna/rusbmux"
+license=('MIT' 'Apache-2.0')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo' 'git')
+provides=('rusbmux' 'usbmuxd')
+conflicts=('rusbmux' 'usbmuxd')
+options=('!lto' '!debug')
+source=('git+https://github.com/abdullah-albanna/rusbmux.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd rusbmux
+  local version
+  version="$(cargo metadata --format-version 1 --no-deps | sed -n 's/.*"version":"\([^"]*\)".*/\1/p')"
+  printf '%s.r%s.g%s' "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  cd rusbmux
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+  cd rusbmux
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_LTO=false
+  cargo build --release --features bin --locked --frozen
+}
+
+check() {
+  cd rusbmux
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_LTO=false
+  cargo test --features bin --locked --frozen
+}
+
+package() {
+  cd rusbmux
+
+  install -Dm755 "target/release/rusbmux" "$pkgdir/usr/bin/rusbmux"
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/rusbmux.service" <<'EOF'
+[Unit]
+Description=rusbmux usbmuxd-compatible daemon
+Documentation=https://github.com/abdullah-albanna/rusbmux
+After=network.target
+Conflicts=usbmuxd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rusbmux
+Restart=on-failure
+RestartSec=2s
+StateDirectory=lockdown
+
+[Install]
+WantedBy=multi-user.target
+EOF
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+  install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+}
