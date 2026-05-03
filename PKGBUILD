@@ -1,4 +1,4 @@
-# Maintainer: Massimo Pavoni <real.damax@gmail.com>
+# Maintainer: Massimo Pavoni (damax) <real dot damax at gmail dot com>
 # Contributor: Scott Hansen (firecat53) tech at firecat53 dot net
 
 _pkgname=goobook
