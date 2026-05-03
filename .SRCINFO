@@ -1,3 +1,4 @@
+pkgbase = rustick
 pkgname = rustick
 pkgdesc = A minimalist productivity timer with system tray support
 pkgver = 0.2.0
