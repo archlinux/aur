@@ -50,6 +50,12 @@ package() {
     install -d "$pkgdir/usr/share/man/man1"
     install -m644 "$stage/man/"*.1 "$pkgdir/usr/share/man/man1/"
 
+    # Systemd user unit for the trigger daemon. Drops into the
+    # system-wide user-unit dir so `systemctl --user enable
+    # wflow-daemon` finds it without a per-user copy.
+    install -Dm644 "$stage/systemd/wflow-daemon.service" \
+        "$pkgdir/usr/lib/systemd/user/wflow-daemon.service"
+
     # Desktop entry + icon (pulled separately above).
     install -Dm644 "$srcdir/io.github.cushycush.wflow.desktop" \
         "$pkgdir/usr/share/applications/io.github.cushycush.wflow.desktop"
