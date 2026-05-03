@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-common6
-pkgver=6.2.1
+pkgver=6.3.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -28,7 +28,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('e6d6b1f4bb174366ad8cc237ff0e33b6bcde2e16c3f9350665881e28eedb8ad8')
+sha256sums=('42b84acd4101a66ca9b08436e2b3368f0cd7dae4ea7335524f2c65d75121397b')
 
 prepare() {
   cd "${_pkgbase}-${pkgname}_${pkgver}"
