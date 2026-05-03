@@ -1,0 +1,13 @@
+/*
+
+!/.gitignore
+
+!/PKGBUILD
+!/.SRCINFO
+
+!/REUSE.toml
+!/LICENSES/
+!/LICENSES/**
+
+!/archiso_ventoy_hook
+!/archiso_ventoy_install

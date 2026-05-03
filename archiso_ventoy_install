@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# SPDX-FileCopyrightText: 2026 ShinKouyo <i@0x0f.dev>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+build() {
+    add_runscript
+
+    add_binary dd
+    add_binary grep
+    add_binary sed
+    add_binary tr
+    add_binary head
+    add_binary blkid
+    add_binary mount
+    add_binary umount
+    add_binary sleep
+    add_binary mknod
+    add_binary mkdir
+}
+
+help() {
+    cat <<HELPEOF
+  Detect Ventoy boot metadata and prepare img_dev/img_loop for archiso loop mounting.
+HELPEOF
+}

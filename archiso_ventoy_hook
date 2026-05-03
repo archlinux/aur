@@ -1,0 +1,195 @@
+#!/usr/bin/ash
+# shellcheck shell=dash
+#
+# SPDX-FileCopyrightText: 2026 ShinKouyo <i@0x0f.dev>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+vtoy_msg() {
+    msg ":: archiso_ventoy: $*"
+}
+
+vtoy_read_path_uefi() {
+    local efivar_new='/sys/firmware/efi/efivars/VentoyOsParam-77772020-2e77-6576-6e74-6f792e6e6574'
+    local efivar_old='/sys/firmware/efi/vars/VentoyOsParam-77772020-2e77-6576-6e74-6f792e6e6574/data'
+
+    if [ -d /sys/firmware/efi/efivars ]; then
+        mount -t efivarfs efivarfs /sys/firmware/efi/efivars 2>/dev/null || true
+    fi
+
+    if [ -r "${efivar_new}" ]; then
+        dd if="${efivar_new}" bs=1 skip=49 count=384 2>/dev/null |
+            tr '\000' '\n' |
+            sed -n '1p'
+        return 0
+    fi
+
+    if [ -r "${efivar_old}" ]; then
+        dd if="${efivar_old}" bs=1 skip=45 count=384 2>/dev/null |
+            tr '\000' '\n' |
+            sed -n '1p'
+        return 0
+    fi
+
+    return 1
+}
+
+vtoy_read_path_bios() {
+    local dump='/run/archiso/ventoy_lowmem.bin'
+    local line off start pathoff
+
+    [ -c /dev/mem ] || mknod -m 0600 /dev/mem c 1 1 2>/dev/null || true
+    [ -r /dev/mem ] || return 1
+
+    mkdir -p /run/archiso
+
+    dd if=/dev/mem of="${dump}" bs=1 skip=524288 count=131072 2>/dev/null || return 1
+
+    line=$(grep -aob 'www[.]ventoy[.]net' "${dump}" 2>/dev/null | head -n1)
+    [ -n "${line}" ] || return 1
+
+    off=${line%%:*}
+    [ "${off}" -ge 2 ] 2>/dev/null || return 1
+
+    start=$((off - 2))
+    pathoff=$((start + 45))
+
+    dd if="${dump}" bs=1 skip="${pathoff}" count=384 2>/dev/null |
+        tr '\000' '\n' |
+        sed -n '1p'
+}
+
+vtoy_clean_path() {
+    local path="${1}"
+
+    case "${path}" in
+        /*.[iI][sS][oO])
+            printf '%s\n' "${path}"
+            return 0
+            ;;
+    esac
+
+    return 1
+}
+
+vtoy_try_mount_dev() {
+    local dev="${1}"
+    local path="${2}"
+    local mnt="${3}"
+    local fstype mount_type
+
+    fstype=$(blkid -o value -s TYPE "${dev}" 2>/dev/null || true)
+
+    case "${fstype}" in
+        exfat)
+            mount_type=exfat
+            ;;
+        ntfs)
+            mount_type=ntfs3
+            ;;
+        vfat)
+            mount_type=vfat
+            ;;
+        ext2 | ext3 | ext4)
+            mount_type=ext4
+            ;;
+        xfs)
+            mount_type=xfs
+            ;;
+        udf)
+            mount_type=udf
+            ;;
+        btrfs)
+            mount_type=btrfs
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+
+    mount -r -t "${mount_type}" "${dev}" "${mnt}" 2>/dev/null || return 1
+
+    if [ -f "${mnt}${path}" ]; then
+        umount "${mnt}" 2>/dev/null || true
+        printf '%s\n' "${dev}"
+        return 0
+    fi
+
+    umount "${mnt}" 2>/dev/null || true
+    return 1
+}
+
+vtoy_find_img_dev() {
+    local path="${1}"
+    local mnt='/run/archiso/ventoy_probe'
+    local dev found
+
+    mkdir -p "${mnt}"
+
+    for dev in \
+        /dev/disk/by-uuid/* \
+        /dev/disk/by-label/* \
+        /dev/sd*[0-9] \
+        /dev/vd*[0-9] \
+        /dev/nvme*n*p* \
+        /dev/mmcblk*p*; do
+        [ -b "${dev}" ] || continue
+
+        found=$(vtoy_try_mount_dev "${dev}" "${path}" "${mnt}" 2>/dev/null || true)
+        if [ -n "${found}" ]; then
+            printf '%s\n' "${found}"
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+run_hook() {
+    local raw_path path dev i
+
+    [ -n "${img_dev:-}" ] && [ -n "${img_loop:-}" ] && return 0
+
+    raw_path=$(vtoy_read_path_uefi 2>/dev/null || true)
+
+    if [ -z "${raw_path}" ]; then
+        raw_path=$(vtoy_read_path_bios 2>/dev/null || true)
+    fi
+
+    path=$(vtoy_clean_path "${raw_path}" 2>/dev/null || true)
+
+    [ -n "${path}" ] || return 0
+
+    vtoy_msg "detected Ventoy ISO path: ${path}"
+
+    i=0
+    while [ "${i}" -lt 10 ]; do
+        dev=$(vtoy_find_img_dev "${path}" 2>/dev/null || true)
+
+        if [ -n "${dev}" ]; then
+            img_dev="${dev}"
+            img_loop="${path}"
+            img_flags="${img_flags:-defaults}"
+            mount_handler="archiso_loop_mount_handler"
+
+            export img_dev img_loop img_flags mount_handler
+
+            mkdir -p /run/archiso
+            {
+                printf '%s\n' "img_dev=${img_dev}"
+                printf '%s\n' "img_loop=${img_loop}"
+                printf '%s\n' "img_flags=${img_flags}"
+                printf '%s\n' "mount_handler=${mount_handler}"
+            } >/run/archiso/ventoy.env
+
+            vtoy_msg "using img_dev=${img_dev} img_loop=${img_loop}"
+            vtoy_msg "using mount_handler=${mount_handler}"
+            return 0
+        fi
+
+        sleep 1
+        i=$((i + 1))
+    done
+
+    vtoy_msg "ERROR: backing partition not found for Ventoy ISO path: ${path}"
+    return 0
+}
