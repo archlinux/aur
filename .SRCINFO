@@ -5,6 +5,7 @@ pkgbase = exec-as
 	url = https://codeberg.org/maandree/exec-as
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	source = exec-as-1.2.3.tar.gz::https://codeberg.org/maandree/exec-as/archive/1.2.3.tar.gz
 	sha256sums = 3813e2975216e3c332d69e6d9ff118efbf65eb3cabc87ea50cf33079540c5d44
