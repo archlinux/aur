@@ -1,0 +1,21 @@
+pkgbase = graf-rs-bin
+	pkgdesc = Terminal-based force-directed graph visualizer for markdown wikilinks
+	pkgver = 0.4.16
+	pkgrel = 1
+	url = https://github.com/reekta92/graf
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	optdepends = clin
+	provides = graf
+	conflicts = graf-rs
+	options = !strip
+	source = LICENSE-0.4.16::https://raw.githubusercontent.com/reekta92/graf/v0.4.16/LICENSE
+	source = README-0.4.16.md::https://raw.githubusercontent.com/reekta92/graf/v0.4.16/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 26a5f10047204671ede536d81504fe90994880dfc6586962e912650b1881cc3e
+	source_x86_64 = graf-x86_64-0.4.16.tgz::https://github.com/reekta92/graf/releases/download/v0.4.16/graf-rs-0.4.16-x86_64.tar.gz
+	sha256sums_x86_64 = 7454a01b10329cee65e702d4adc0a2c5a5812f34098b5a9e7bcce4798ef523cf
+
+pkgname = graf-rs-bin

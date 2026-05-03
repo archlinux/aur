@@ -1,0 +1,5 @@
+[graf-rs-bin]
+source = "github"
+github = "reekta92/graf"
+use_latest_release = true
+prefix = "v"
