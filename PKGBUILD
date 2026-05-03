@@ -1,7 +1,7 @@
 pkgbase='python-muzlib'
 pkgname=('python-muzlib')
 _module='muzlib'
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Muzlib is a Python script that allows you to create your own music library."
 url="https://github.com/ezvezdov/muzlib"
@@ -21,7 +21,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 license=('GPL-3.0-or-later')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('cef6bc820010981c2f984429e810579894df0d292228b999febdd8f0901f46d7')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
