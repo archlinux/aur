@@ -1,0 +1,3 @@
+[perl-cgi-simple]
+source = "cpan"
+cpan = "CGI-Simple"
