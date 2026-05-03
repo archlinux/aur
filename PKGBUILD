@@ -1,7 +1,7 @@
 # Maintainer: Andersmmg <andersmmg at duck dot com>
 pkgname=python-hyprland-config
 _module=${pkgname#python-}
-pkgver='0.4.3'
+pkgver='0.4.5'
 pkgrel=1
 pkgdesc="Round-trip parser and editor for Hyprland configuration files"
 url="https://github.com/BlueManCZ/hyprland-config"
@@ -10,7 +10,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b63f98b4469e422e9f7e467f998277fc274de23dee6ec3b23b74fda2ad3d1d3a')
+sha256sums=('ce6bf791e4681df3515af768a8225d9d44b3dc84fb2e9eabded126955bda1bb8')
 
 build() {
   cd "$_module-$pkgver"
