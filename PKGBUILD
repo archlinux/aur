@@ -1,9 +1,9 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="clai"
-pkgver=1.7.4
+pkgver=1.10.8
 pkgrel=1
-pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
+pkgdesc="Command line artificial intelligence - Your local LLM context-feeder"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/baalimago/${pkgname}"
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('glow: for formatted markdown output when querying text responses')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e29a3fadfdb72db9978d41b58e5734d10343f801b18c94856488cb0ebc236293')
+sha256sums=('e646a49b22522420d39f73d5f1131ae26b6637507faa226e81948ce26ea32918')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
