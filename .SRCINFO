@@ -1,17 +1,17 @@
 pkgbase = hjkl-bin
 	pkgdesc = Vim-modal terminal editor: standalone TUI built on the hjkl engine. (binary release)
-	pkgver = 0.8.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://hjkl.kryptic.sh/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = libxcb
-	provides = hjkl=0.8.1
+	provides = hjkl=0.9.2
 	conflicts = hjkl
-	source_x86_64 = hjkl-v0.8.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v0.8.1/hjkl-v0.8.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6da4de0ff7221a7f846aa292a39cab31058563475237782f8353bcb5f0acb8a6
-	source_aarch64 = hjkl-v0.8.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v0.8.1/hjkl-v0.8.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = fc95164ae80cc674f549890c4b058e4f5f3d621dfe254995bf2e245387bf04c2
+	source_x86_64 = hjkl-v0.9.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v0.9.2/hjkl-v0.9.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5678e00390a34526cac3f9cf8022bebb9eb37bd0053068e65e529ad227d98fbe
+	source_aarch64 = hjkl-v0.9.2-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v0.9.2/hjkl-v0.9.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 96c00e78a29f0af18797fc7dad03a8637bbeb12ddcd1bb3f7b392ee94a863f07
 
 pkgname = hjkl-bin
