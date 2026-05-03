@@ -1,6 +1,6 @@
-# Maintainer: Gabriele Granato <tuo-email-se-vuoi@esempio.com>
+# Maintainer: Gabriele Granato castielloangela512@gmail.com
 pkgname=apt-fake-ubuntu
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A smart APT wrapper for Arch Linux with GUI, Auto-Repair, and ARM support. Perfect for Ubuntu refugees!"
 arch=('any')
