@@ -1,0 +1,25 @@
+post_install() {
+    local real_user="${SUDO_USER:-}"
+    # Skip when installed directly as root (no SUDO_USER)
+    if [ -z "$real_user" ] || [ "$real_user" = "root" ]; then
+        echo "  -> Example configs installed to /usr/share/doc/kabekami-git/"
+        echo "     Copy config.toml (or config.ja.toml) to ~/.config/kabekami/config.toml to get started."
+        return
+    fi
+
+    local user_home
+    user_home=$(getent passwd "$real_user" | cut -d: -f6) || return
+    local config_file="$user_home/.config/kabekami/config.toml"
+
+    if [ ! -f "$config_file" ]; then
+        install -Dm644 -o "$real_user" \
+            /usr/share/doc/kabekami-git/config.toml \
+            "$config_file"
+        echo "  -> Installed default config for $real_user: $config_file"
+        echo "     Japanese reference: /usr/share/doc/kabekami-git/config.ja.toml"
+    fi
+}
+
+post_upgrade() {
+    :
+}
