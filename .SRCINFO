@@ -20,7 +20,7 @@ pkgbase = linux-zencjk
 	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.3.tar.sign
 	source = https://github.com/zen-kernel/zen-kernel/releases/download/v7.0.3-zen1/linux-v7.0.3-zen1.patch.zst
 	source = https://github.com/zen-kernel/zen-kernel/releases/download/v7.0.3-zen1/linux-v7.0.3-zen1.patch.zst.sig
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/7.0.3.zen1-1/config
+	source = config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/f348650ed7eabbd10a4bc6fbb3c7858b4c370094/config.x86_64?inline=false
 	source = 0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.0.patch
 	source = 0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
