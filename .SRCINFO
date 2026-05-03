@@ -1,0 +1,15 @@
+pkgbase = typd-bin
+	pkgdesc = Wayland virtual keyboard with draggable chrome and key highlighting
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/revanthlol/typd
+	arch = x86_64
+	depends = wayland
+	depends = cairo
+	depends = libxkbcommon
+	provides = typd
+	conflicts = typd
+	source = typd-v0.1.0.tar.gz::https://github.com/revanthlol/typd/releases/download/v0.1.0/typd-v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = typd-bin
