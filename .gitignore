@@ -1,0 +1,6 @@
+src/
+pkg/
+picoforge-git/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log
