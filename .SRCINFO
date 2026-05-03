@@ -1,12 +1,11 @@
 pkgbase = easytier-connector
 	pkgdesc = EasyTier Web Connector based on Qt6
 	pkgver = 0.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitee.com/myqfeng/et-connector
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
-	makedepends = git
 	depends = qt6-base
 	depends = qt6-svg
 	source = easytier-connector-0.3.3.tar.gz::https://gitee.com/viah6341/etc-download/releases/download/0.3.3/v0.3.3.tar.gz
