@@ -1,7 +1,7 @@
 pkgbase = opencode-quota
 	pkgdesc = OpenCode plugin for quota & token usage tracking with zero context window pollution
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slkiser/opencode-quota
 	install = opencode-quota.install
 	arch = x86_64

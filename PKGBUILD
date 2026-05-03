@@ -2,7 +2,7 @@
 pkgname=opencode-quota
 _npmname=@slkiser/opencode-quota
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode plugin for quota & token usage tracking with zero context window pollution"
 arch=('x86_64')
 url="https://github.com/slkiser/opencode-quota"
@@ -54,6 +54,9 @@ JS
 
     install -d "$pkgdir/usr/lib/opencode/plugins/$pkgname"
     cp -r . "$pkgdir/usr/lib/opencode/plugins/$pkgname/"
+    chmod 755 "$pkgdir/usr/lib/opencode/plugins/$pkgname/dist/bin/opencode-quota.js"
+    install -d "$pkgdir/usr/bin"
+    ln -s "/usr/lib/opencode/plugins/$pkgname/dist/bin/opencode-quota.js" "$pkgdir/usr/bin/opencode-quota"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

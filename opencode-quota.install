@@ -10,8 +10,9 @@ post_install() {
   echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-quota\"]"
   echo "  }"
   echo ""
+  echo "Terminal CLI: opencode-quota show"
   echo "Commands: /quota, /quota_status, /tokens_today, /tokens_session, etc."
-  echo "Supports: GitHub Copilot, OpenAI, Qwen, Chutes, Firmware, Antigravity, Z.ai"
+  echo "Supports: GitHub Copilot, OpenAI, Claude, Qwen, Cursor, Gemini CLI, OpenCode Go, and more"
   echo "=========================================================================="
 }
 
