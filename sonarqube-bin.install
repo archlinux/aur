@@ -1,7 +1,6 @@
 post_install() {
   echo ":: SonarQube is installed in /usr/share/webapps/sonarqube"
-  echo ":: Logs are in /var/log/sonarqube"
-  echo ":: Configuration is in /etc/webapps/sonarqube/sonar.properties"
+  echo ":: Configuration: /etc/webapps/sonarqube/sonar.properties"
   echo ""
   echo ":: To start the service:"
   echo "   systemctl start sonarqube"
@@ -9,13 +8,23 @@ post_install() {
   echo ""
   echo ":: Access the web interface at http://localhost:9000"
   echo ":: Default credentials: admin / admin"
+  echo ""
 }
 
 post_upgrade() {
-  echo ":: IMPORTANT: After upgrading SonarQube, you MUST perform the database migration."
-  echo ":: 1. Start the service: systemctl start sonarqube"
-  echo ":: 2. Go to: http://localhost:9000/setup"
-  echo ":: 3. Click 'Upgrade'"
-  echo ""
-  echo ":: See https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/upgrade-the-server/upgrade/"
+  systemctl daemon-reload
+  if systemctl is-active --quiet sonarqube; then
+    systemctl restart sonarqube
+    echo ":: sonarqube.service restarted"
+  fi
+  echo ":: After a major version upgrade, navigate to http://localhost:9000/setup to run database migration"
+}
+
+pre_remove() {
+  if systemctl is-active --quiet sonarqube; then
+    systemctl stop sonarqube
+  fi
+  if systemctl is-enabled --quiet sonarqube; then
+    systemctl disable sonarqube
+  fi
 }
