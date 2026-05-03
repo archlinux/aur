@@ -6,7 +6,7 @@
 
 pkgname=nethack-git
 _pkgname=NetHack
-pkgver=5.0.0_Release+r18672+g1947eb98a
+pkgver=5.0.0_Release+r18679+gb6482d09f
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -79,22 +79,23 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  install -dm755 "$pkgdir"/usr/share/{man/man6,doc/nethack}
-  install -dm775 "$pkgdir"/var/games/
-  make PREFIX="$pkgdir" -j1 install manpages # Multi-threaded builds fail.
-  sed -e "s|HACKDIR=$pkgdir/|HACKDIR=/|" \
-    -e 's|HACK=$HACKDIR|HACK=/usr/lib/nethack|' \
-    -i "$pkgdir"/usr/bin/nethack
+  # install -dm755 "$pkgdir"/usr/share/{man/man6,doc/nethack}
+  # install -dm775 "$pkgdir"/var/games/
+  # make PREFIX="$pkgdir" -j1 install manpages # Multi-threaded builds fail.
+  # sed -e "s|HACKDIR=$pkgdir/|HACKDIR=/|" \
+  #   -e 's|HACK=$HACKDIR|HACK=/usr/lib/nethack|' \
+  #   -i "$pkgdir"/usr/bin/nethack
 
-  install -dm755 "$pkgdir"/usr/lib/nethack
-  mv "$pkgdir"/var/games/nethack/{nethack,recover} "$pkgdir"/usr/lib/nethack/
+  # install -dm755 "$pkgdir"/usr/lib/nethack
+  # mv "$pkgdir"/var/games/nethack/{nethack,recover} "$pkgdir"/usr/lib/nethack/
 
-  install -vDm 644 ../nethack.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/nethack.conf"
+  # install -vDm 644 ../nethack.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/nethack.conf"
 
-  install -Dm644 doc/Guidebook.txt "$pkgdir"/usr/share/doc/nethack/Guidebook.txt
-  install -Dm644 dat/license "$pkgdir"/usr/share/licenses/nethack/LICENSE
+  # install -Dm644 doc/Guidebook.txt "$pkgdir"/usr/share/doc/nethack/Guidebook.txt
+  # install -Dm644 dat/license "$pkgdir"/usr/share/licenses/nethack/LICENSE
 
-  cd "$pkgdir/var/games/nethack/"
-  chmod o+w logfile perm record
+  # cd "$pkgdir/var/games/nethack/"
+  # chmod o+w logfile perm record
+	make install
 }
 # vim:set ts=2 sw=2 et:
