@@ -4,6 +4,7 @@ pkgbase = libparser
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libparser
 	arch = x86_64
+	arch = aarch64
 	license = ISC
 	source = libparser-1.1.2.tar.gz::https://codeberg.org/maandree/libparser/archive/1.1.2.tar.gz
 	sha256sums = 6610809e88d0ca7d3bf3cd2597fa95a8ba235b9c1d3a0a4502831010ec553e15
