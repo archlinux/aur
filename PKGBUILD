@@ -40,7 +40,7 @@ md5sums=('SKIP'
          'aa2367c3f759632473824fabcc3544ff'
          '1ee66acee6c42aca9160b9ccfe534bc3'
          '50233354ac78d52280a93092b809f7aa'
-         '91501ebe32a2f3f9f6463703a1ca427f')
+         '9fdedbb1b4b64698cc2d017f3dc1e603')
 backup=('etc/mtproxy.conf')
 
 pkgver() {
