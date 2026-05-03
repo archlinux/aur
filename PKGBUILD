@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=chrome-devtools-axi
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="AXI-compliant chrome-devtools-mcp wrapper with contextual suggestions"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'chrome-devtools-mcp')
 makedepends=('npm')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha512sums=('db4d4cba03cbdb9e613ed1c85a2706745264ebea2ffea2c58df4964504b138c0983bb8ab51dcd03a5fe8cf4231ae6e9afb7ce2499f26f4a6b38acee169f1a3e3')
+sha512sums=('433eb3b882d26f63eee4526e4ab7993f60c5d85c69d75bb16b7f5d6fb2b6e7aaaa22495faaa7104cd1cbe93eeaccca9558f72e31348fc70eed2d1327ebe85698')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${pkgname}/latest" | jq -r '.version'
@@ -37,18 +37,14 @@ _literal_replace() {
 prepare() {
   cd "${srcdir}/package"
 
-  # Route the bridge at the system chrome-devtools-mcp instead of fetching it
-  # through npx at runtime — otherwise our chrome-devtools-mcp depends= is a lie
-  # and each call re-downloads an unpinned copy from the npm registry.
+  # Route the bridge at the system chrome-devtools-mcp binary instead of
+  # probing npm globals or falling back to npx at runtime.
   _literal_replace dist/src/bridge.js \
-    'const args = ["-y", "chrome-devtools-mcp@latest"];' \
-    'const args = [];'
-  _literal_replace dist/src/bridge.js \
-    'command: "npx", args: buildTransportArgs()' \
-    'command: "chrome-devtools-mcp", args: buildTransportArgs()'
+    'return { command: "npx", args: mcpArgs };' \
+    'return { command: "chrome-devtools-mcp", args: mcpArgs };'
   _literal_replace dist/src/client.js \
-    'npx chrome-devtools-mcp@latest --help' \
-    'chrome-devtools-mcp --help'
+    'Check that chrome-devtools-mcp is installed: npx chrome-devtools-mcp@latest --help' \
+    'Check that chrome-devtools-mcp is installed: chrome-devtools-mcp --help'
 
   # Upstream ships the built bridge script with a tsx shebang; no Arch user has
   # global tsx, and the bridge is a plain .js after build.
