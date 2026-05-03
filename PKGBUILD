@@ -8,7 +8,7 @@ url="https://github.com/gabutakut/gabutytb"
 license=('LGPL2.1')
 depends=(
   'python3'
-  'gtk-4'
+  'gtk4'
 )
 makedepends=(
   'meson'
@@ -17,7 +17,7 @@ makedepends=(
   'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gabutakut/gabutytb/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1936a8d9c5777075c2f26d1d73d91367aff337d2f6d64b8d0360797a184c8889')
+sha256sums=('3371286b8e885dea0c1f828833d552ead25cf02a223f46d68097838cb1ce748f')
 
 build() {
   cd "$pkgname-$pkgver"
