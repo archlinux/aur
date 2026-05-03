@@ -1,0 +1,20 @@
+pkgbase = checkasm-git
+	pkgdesc = A tool for verifying the correctness of assembly code, as well as performance benchmarking
+	pkgver = 1.1.0.r98.g3f3c74c
+	pkgrel = 1
+	url = https://checkasm.videolan.me/
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = meson
+	makedepends = nasm
+	depends = glibc
+	provides = checkasm=1.1.0.r98.g3f3c74c
+	provides = libcheckasm.so
+	conflicts = checkasm
+	options = staticlibs
+	source = git+https://code.videolan.org/videolan/checkasm.git
+	sha256sums = SKIP
+
+pkgname = checkasm-git
