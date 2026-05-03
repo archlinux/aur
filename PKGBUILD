@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=sdformat15
-pkgver=15.3.0
-pkgrel=2
+pkgver=15.4.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Simulation Description Format (SDFormat) parser and description files."
@@ -25,7 +25,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('b187da7a21a6e0f5e2a45f6b4026a1a69fd39e3f50de26f028313595a1c10cfd')
+sha256sums=('8133bc8c3fd10e5445b6e7e44e25fd5c0cfceb362c12e06d8794f45a5d2bf06e')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
