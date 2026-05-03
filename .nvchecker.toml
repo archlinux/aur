@@ -1,0 +1,3 @@
+[perl-cpan-uploader]
+source = "cpan"
+cpan = "CPAN-Uploader"
