@@ -1,22 +1,23 @@
 pkgbase = jamesdsp
 	pkgdesc = An audio effect processor for PipeWire clients
 	pkgver = 2.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Audio4Linux/JDSP4Linux
 	arch = x86_64
 	license = GPL-3.0-or-later
 	checkdepends = appstream
-	checkdepends = desktop-file-utils
+	makedepends = desktop-file-utils
 	makedepends = git
 	depends = glibmm
 	depends = hicolor-icon-theme
 	depends = libarchive
 	depends = libpipewire
+	depends = libxcb
+	depends = qt6-base
 	depends = qt6-svg
 	conflicts = jdsp4linux
 	conflicts = jdsp4linux-gui
 	conflicts = gst-plugin-jamesdsp
-	options = !strip
 	source = git+https://github.com/Audio4Linux/JDSP4Linux.git#tag=2.7.0
 	source = git+https://github.com/ThePBone/GraphicEQWidget.git
 	source = git+https://github.com/ThePBone/FlatTabWidget.git
