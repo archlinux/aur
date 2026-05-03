@@ -90,8 +90,8 @@ class BrosLauncherWindow:
         self.smp_cores = 2
 
         self.load_logo()
-        self.check_and_download_iso()
         self.create_ui()
+        self.check_and_download_iso()
         self.log_init()
 
     def load_logo(self):
