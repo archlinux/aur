@@ -1,0 +1,10 @@
+pkgbase = rustick
+pkgdesc = A minimalist productivity timer with system tray support
+pkgver = 0.2.0
+pkgrel = 1
+url = https://github.com/rottioris/rst-timer
+arch = x86_64
+license = MIT
+depends = libappindicator3-1
+depends = libwebkit2gtk-4.1-0
+depends = libgtk-3-0
