@@ -1,7 +1,7 @@
 # Maintainer: Ayman Lyesri <ayman.lyesri.99@gmail.com>
 
 pkgname=wuwa-moma-bin
-pkgver=0.1.0
+pkgver=0.1.39
 pkgrel=1
 pkgdesc="Wuthering Waves Mod Manager (Tauri)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('gtk3' 'libappindicator-gtk3')
 provides=('wuwa-moma')
 conflicts=('wuwa-moma')
 
-source=("$pkgname-$pkgver.AppImage::https://github.com/AymanLyesri/wuwa-mod-manager/releases/download/app-v0.1.32/WuwaMoMa_0.1.32_amd64.AppImage")
-sha256sums=('SKIP')
+source=("wuwa-moma-bin-0.1.39.AppImage::https://github.com/AymanLyesri/wuwa-mod-manager/releases/download/app-v0.1.39/WuwaMoMa_0.1.39_amd64.AppImage")
+sha256sums=('0f9ee88a0c6c6b7a17bd685aa17ae2716d9e7bd74d33277c71336ef0ad938373')
 
 prepare() {
   chmod +x "$srcdir/$pkgname-$pkgver.AppImage"
