@@ -1,0 +1,12 @@
+pkgbase = broslauncher
+	pkgdesc = Bros Launcher - Virtual Machine for Bros OS Testing
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/berkeoruc/bros
+	arch = x86_64
+	license = PROPRIETARY
+	depends = python3
+	depends = tk
+	depends = qemu-full
+
+pkgname = broslauncher
