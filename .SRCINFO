@@ -1,7 +1,7 @@
 pkgbase = e-modules-extra-git
 	pkgdesc = Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere
 	pkgver = 20260502
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.enlightenment.org/
 	arch = i686
 	arch = x86_64

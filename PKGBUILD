@@ -8,7 +8,6 @@ _module_list=(
   'diskio'               # not compatible with EFL >= 1.13
   'eenvader.fractal'
 # 'elfe'                 # not compatible with Enlightenemnt >= 0.19.0
-# 'empris'               # not compatible with Enlightenment >= 0.19.0, adds dep on e_dbus
   'everything-places' 
   'everything-websearch'
 #  'eweather'		# libeweather(?), not compatible with E >= 0.18.0
@@ -35,7 +34,7 @@ containsElement () {
 
 pkgname=e-modules-extra-git
 pkgver=20260502
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
 url="https://git.enlightenment.org/"
@@ -65,11 +64,6 @@ pkgver() {
 }
 
 prepare() {
-  if containsElement "empris" "${_module_list[@]}"; then
-    sed -i '/PKG_CHECK_MODULES(E,/ s/enlightenment/& edbus/' "$srcdir/empris/configure.ac"
-    sed -i '1a #include <E_DBus.h>' "$srcdir/empris/src/e_mod_main.c"
-  fi
-
   if containsElement "diskio" "${_module_list[@]}"; then
       cd ${srcdir}/enlightenment-module-diskio/src
       patch --verbose e_mod_main.c < ${srcdir}/e_mod_main.patch
