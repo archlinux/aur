@@ -1,7 +1,7 @@
 pkgbase = dotmaster-git
 	pkgdesc = Interactive dotfiles installer written in Rust
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Minish777/dotmaster
 	arch = x86_64
 	license = MIT
