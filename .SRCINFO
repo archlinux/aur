@@ -1,6 +1,6 @@
 pkgbase = jdk11-graalvm-ee-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 11 version
-	pkgver = 21.3.17
+	pkgver = 21.3.18
 	pkgrel = 1
 	epoch = 1
 	url = https://www.graalvm.org/
@@ -19,9 +19,9 @@ pkgbase = jdk11-graalvm-ee-bin
 	options = !debug
 	source = graalvm-ee-rebuild-libpolyglot.hook
 	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca
-	source_x86_64 = local://graalvm-ee-java11-linux-amd64-21.3.17.tar.gz
-	sha256sums_x86_64 = 2d4a3cd5800806c300a201e8d55b34727a2907ba01686418efff6d393c2e8815
-	source_aarch64 = local://graalvm-ee-java11-linux-aarch64-21.3.17.tar.gz
-	sha256sums_aarch64 = 9c98b94558c5c98f7123de298ec83a9ffeed0eec251873345d8c9b37426973bf
+	source_x86_64 = local://graalvm-ee-java11-linux-amd64-21.3.18.tar.gz
+	sha256sums_x86_64 = b5b543e407453742a0aafed715c9fe1d5dc55ab359a3ecb9e770401253fe5a01
+	source_aarch64 = local://graalvm-ee-java11-linux-aarch64-21.3.18.tar.gz
+	sha256sums_aarch64 = 719bd2aa57fd13c85396769d53f9c34b506682e00a1e86c5c40bfe9e712f4670
 
 pkgname = jdk11-graalvm-ee-bin
