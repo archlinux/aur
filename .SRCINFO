@@ -5,9 +5,9 @@ pkgbase = rescuezilla-iso
 	url = https://github.com/rescuezilla/rescuezilla
 	arch = any
 	license = custom
-	noextract = rescuezilla-2.6.1-64bit.oracular.iso
+	noextract = rescuezilla-2.6.1.iso
 	options = !strip
-	source = https://github.com/rescuezilla/rescuezilla/releases/download/2.6.1/rescuezilla-2.6.1-64bit.oracular.iso
+	source = rescuezilla-2.6.1.iso::https://github.com/rescuezilla/rescuezilla/releases/download/2.6.1/rescuezilla-2.6.1-64bit.oracular.iso
 	sha256sums = SKIP
 
 pkgname = rescuezilla-iso
