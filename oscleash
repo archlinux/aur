@@ -1,3 +1,24 @@
 #!/bin/bash
+##Create oscleash config user dir
+if [ ! -d "$HOME/.config/OSCLeash" ];
+then
+	mkdir -p $HOME/.config/OSCLeash
+fi
+##check if the user config is there
+if [ ! -f "$HOME/.config/OSCLeash/Config.json" ];
+then
+	cp /opt/OSCLeash/Config.json.example $HOME/.config/OSCLeash/Config.json
+fi
+##check if the symlink is attached to the current user running this script
+confSym=$(ls -la | grep "$HOME")
+if [ -z "$confSym" ];
+then
+	if [ -f "/opt/OSCLeash/Config.json" ];
+	then
+		rm -f /opt/OSCLeash/Config.json
+	fi
+	ln -s $HOME/.config/OSCLeash/Config.json /opt/OSCLeash/
+fi
+
 cd /opt/OSCLeash
 /opt/OSCLeash/OSCLeash.bin

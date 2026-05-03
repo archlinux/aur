@@ -4,7 +4,7 @@ pkgname=oscleash-nuitka
 _pkgname=OSCLeash
 _pkgname2=oscleash
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Get pulled around in VRChat (built with nuitka)"
 arch=("any")
 url="https://github.com/ZenithVal/$_pkgname"
@@ -21,8 +21,10 @@ options=(!strip)
 sha256sums=('ced2294cd4245c37ac77969dd17d9819a0d197a40fdbda7913c33551524aae88'
             '984dda198cf1417327b959055941c7adea86932c3cdb0a462738644cfd8a7e59'
             '6183c816b8b5ff4a2f60ed8becae841c481c2d3ca60d2580ebd601abfd43835e'
-            '8250ce45a10e9915c233fe2157fa76ae6ff896f65f7f133855d541bb4c2e35d4')
-
+            '9a34c193dc36395c631e8fa977281695be581d286041b679b5cf87384dc77284')
+prepare() {
+	sed  -i 's/UseOSCQuery.*/UseOSCQuery\"\: true\,/' $srcdir/$_pkgname-$pkgver/Config.json
+}
 build () {
 	cd $srcdir/$_pkgname-$pkgver/
 	nuitka OSCLeash.py --mode=onefile
@@ -31,6 +33,7 @@ package() {
     # Extract and copy everything to /opt
     install -dm757 "$pkgdir/opt/$_pkgname"
     cp "$srcdir/$_pkgname-$pkgver/OSCLeash.bin" "$pkgdir/opt/$_pkgname/OSCLeash.bin"
+    cp "$srcdir/$_pkgname-$pkgver/Config.json" "$pkgdir/opt/$_pkgname/Config.json.example"
     
     # Install desktop file
     install -Dm644 "$srcdir/OSCLeash.desktop" \
