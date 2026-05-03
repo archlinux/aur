@@ -5,7 +5,7 @@ pkgver=r404.1662929327.9de8e88
 pkgrel=1
 pkgdesc='An improved Python library to control i3wm'
 arch=('any')
-url="https://github.com/acrisci/${_srcname}"
+url="https://github.com/altdesktop/${_srcname}"
 license=('custom:BSD')
 
 depends=('python' 'python-xlib')
