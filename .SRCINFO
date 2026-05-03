@@ -1,0 +1,17 @@
+pkgbase = checkasm
+	pkgdesc = A tool for verifying the correctness of assembly code, as well as performance benchmarking
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://checkasm.videolan.me/
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = meson
+	makedepends = nasm
+	depends = glibc
+	provides = libcheckasm.so
+	options = staticlibs
+	source = checkasm-1.1.0-src.tar.gz::https://code.videolan.org/videolan/checkasm/-/archive/v1.1.0/checkasm-v1.1.0.tar.gz
+	sha256sums = 0f98f70629bf3bf2514becd60e09f949f6dda74737f87926ba0eca87ada246fb
+
+pkgname = checkasm
