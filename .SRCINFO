@@ -1,0 +1,10 @@
+pkgbase = gspca_aveo-dkms
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/kswit/USB_driver.git
+	sha256sums = SKIP
+
+pkgname = gspca_aveo-dkms
