@@ -6,9 +6,9 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern, intuitive, terminal text editor. Single file. No dependencies. No config."
 
-pkgver=2026.04.24
+pkgver=2026.05.03
 pkgrel=2
-_gitversion=00f6fb6
+_gitversion=414fa14
 
 arch=('any')
 
@@ -41,8 +41,14 @@ sha256sums=('9f3273e5e01858ed10ab7a253cbd6b1abd7259bd9b4b3fd1dfafc3bf902e89c3'
             '2c1d40500aec7391a4a692bdfb121b5bedbac96789387cac34519a530fe1c33f'
             'b69a054e50829ddbc1f1d7aaa8aa6d3cfac9eb52c2ac85463e488bc30dc9bc46'
             '81d9daf0d01d40a842c7cba277c93a39a3467572e122badc5b1206892670b0e4'
-            '9589e7a254ed89e1d8284bb3ac7610ffa39e41e243bfa9d3b40b576baab0aca9')
+            '3c35bc42cbbb33954ad5764db4acb30ccb0e8a9497c78f438b868d49a4becfd7')
 
+
+prepare() {
+	cd "${srcdir}/" || exit
+
+	chmod +x "${_appname}-${pkgver}"
+}
 
 package() {
 	cd "${srcdir}/" || exit
