@@ -5,7 +5,7 @@ _epsonscan2_non_free_plugin_version='1.0.0.6'
 pkgname=epsonscan2
 pkgver=6.7.87.0
 _pkgver="$pkgver-1"
-pkgrel=1
+pkgrel=2
 arch=('armv7h' 'x86_64')
 pkgdesc="Epson scanner management utility"
 url="https://download-center.epson.com/"
@@ -82,6 +82,14 @@ prepare() {
   # Fix compilation failure caused by GCC 15
   sed -i '/SET.*FLAGS/ s/")/ -Wno-template-body")/' \
          "$srcdir/$pkgname-$_pkgver/src/ES2Command/Linux/CMakeLists.txt"
+
+  # Change directory references from "/usr/libexec" to "/usr/lib" in the source code
+  for file in Controller/Src/Scanner/Engine.cpp \
+              Controller/Src/Filter/GetOrientation.cpp
+  do
+    sed -i 's/libexec/lib/' \
+           "$srcdir/$pkgname-$_pkgver/src/$file"
+  done
 
   # Prepare plugin files
   cd "$srcdir"/epsonscan2-bundle*/plugins

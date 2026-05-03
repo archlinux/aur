@@ -1,7 +1,7 @@
 pkgbase = epsonscan2
 	pkgdesc = Epson scanner management utility
 	pkgver = 6.7.87.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download-center.epson.com/
 	arch = armv7h
 	arch = x86_64
