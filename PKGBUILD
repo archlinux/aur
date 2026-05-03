@@ -4,7 +4,7 @@
 pkgname=runa-bin
 _name=runa
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and lightweight console file browser written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexm-dev/runa"
@@ -22,7 +22,7 @@ package() {
     cd "runa-linux-$CARCH-gnu"
     install -Dm755 rn -t "$pkgdir/usr/bin/"
     install -Dm644 LICENSE-{MIT,APACHE} -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 README.md docs/config/configuration.md -t "$pkgdir/usr/share/doc/$pkgname/"
-    install -Dm644 docs/config/config-reference/{display,editor,general,keys,theme}.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    install -Dm644 README.md docs/configuration.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    install -Dm644 docs/config-reference/{display,editor,general,keys,theme}.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
