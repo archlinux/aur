@@ -1,0 +1,7 @@
+pkg/
+src/
+*.pkg.tar.*
+*.tar.gz
+nitrokeyapp-*-x86_64
+nitrokeyapp-*-aarch64
+com.nitrokey.nitrokey-app2.*

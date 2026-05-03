@@ -1,0 +1,26 @@
+pkgbase = nitrokey-app2-bin
+	pkgdesc = Nitrokey management application for Nitrokey 3 devices (prebuilt binary)
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/Nitrokey/nitrokey-app2
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = pcsclite
+	depends = hicolor-icon-theme
+	provides = nitrokey-app2=2.7.0
+	conflicts = nitrokey-app2
+	options = !strip
+	options = !debug
+	source = com.nitrokey.nitrokey-app2.desktop::https://github.com/Nitrokey/nitrokey-app2/raw/v2.7.0/meta/com.nitrokey.nitrokey-app2.desktop
+	source = com.nitrokey.nitrokey-app2.svg::https://github.com/Nitrokey/nitrokey-app2/raw/v2.7.0/meta/nk-app2.svg
+	source = com.nitrokey.nitrokey-app2.metainfo.xml::https://github.com/Nitrokey/nitrokey-app2/raw/v2.7.0/meta/com.nitrokey.nitrokey-app2.metainfo.xml
+	sha256sums = 998e95da01257458b52236746d18036254fd292b63d6d5f4b839d1b82fe94a4e
+	sha256sums = e49609f53b375f9eb69d7024699e403ad6913f40453bfe2bdf1bab362e78206e
+	sha256sums = ad66ee8cd11f0336a8b3621583aa0d382305609dbafb4e415c581e6ea6bfb9ef
+	source_x86_64 = nitrokeyapp-2.7.0-x86_64::https://github.com/Nitrokey/nitrokey-app2/releases/download/v2.7.0/nitrokey-app-v2.7.0-x64-linux-binary
+	sha256sums_x86_64 = 7c662b313c42789d5bfbcfaa6f74eca315e6eb2c83f19ef3858532a456418b9d
+	source_aarch64 = nitrokeyapp-2.7.0-x86_64::https://github.com/Nitrokey/nitrokey-app2/releases/download/v2.7.0/nitrokey-app-v2.7.0-arm64-linux-binary
+	sha256sums_aarch64 = 3c350255b4e618388795ff911a2bf75050de98e273555a880f7c59501d8b26cf
+
+pkgname = nitrokey-app2-bin
