@@ -1,22 +1,54 @@
 post_install() {
-  echo ""
-  echo ">>> Snry Shell has been installed!"
-  echo ">>> Run 'snry-shell' to apply the setup."
-  echo ""
+	# Detect the installing user (not root)
+	local user
+	user=$(logname 2>/dev/null || awk -F: '$3>=1000 && $3<65534 {print $1; exit}' /etc/passwd)
+
+	if [ -z "$user" ]; then
+		echo ">>> Could not detect installing user. Run 'snry-daemon setup' manually."
+		return 0
+	fi
+
+	local uid
+	uid=$(id -u "$user")
+
+	echo ">>> Setting up Snry Shell for user: $user"
+
+	# Phase 1: System setup (we are root — groups, services, PAM, logind)
+	snry-daemon setups 2>/dev/null || true
+
+	# Phase 2: Config sync + daemon binary (as the user)
+	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		snry-daemon files 2>/dev/null || true
+
+	echo ""
+	echo ">>> Snry Shell installed and configured!"
+	echo ">>> Log out and log back in (or reboot) to start."
 }
 
 post_upgrade() {
-  echo ""
-  echo ">>> Snry Shell updated!"
-  echo ">>> Run 'snry-shell' to apply updates."
-  echo ""
+	local user
+	user=$(logname 2>/dev/null || awk -F: '$3>=1000 && $3<65534 {print $1; exit}' /etc/passwd)
+
+	if [ -z "$user" ]; then
+		echo ">>> Could not detect installing user. Run 'snry-daemon setup' manually."
+		return 0
+	fi
+
+	echo ">>> Syncing Snry Shell configs for user: $user"
+
+	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$(id -u "$user")" \
+		snry-daemon files 2>/dev/null || true
+
+	echo ""
+	echo ">>> Snry Shell updated!"
+	echo ">>> Log out and log back in (or reboot) to apply changes."
 }
 
 post_remove() {
-  echo ""
-  echo ">>> Snry Shell has been removed."
-  echo ">>> Config files in ~/.config/ were NOT deleted."
-  echo ">>> To fully clean up, run (before removing this package):"
-  echo ">>>   snry-shell --tags uninstall"
-  echo ""
+	echo ""
+	echo ">>> Snry Shell has been removed."
+	echo ">>> Config files in ~/.config/ were NOT deleted."
+	echo ">>> To fully clean up, run (before removing this package):"
+	echo ">>>   snry-daemon uninstall"
+	echo ""
 }

@@ -1,38 +1,141 @@
 # Maintainer: Snry Shell <snry@shell.dev>
+# Release: tag as v<version> and push tag, then create GitHub release.
+# The AUR publish workflow will update pkgver and publish automatically.
 pkgname=snry-shell-qs
-pkgver=1.0.0
+pkgver=2.0.1
 pkgrel=1
-pkgdesc='Snry Shell - Hyprland dotfiles managed by Ansible'
+pkgdesc='Snry Shell - Hyprland dotfiles managed by snry-daemon'
 arch=('any')
-url='https://github.com/sonroyaalmerol/dots-hyprland'
+url='https://github.com/sonroyaalmerol/snry-shell'
 license=('MIT')
-depends=('ansible-core' 'git' 'rsync' 'python' 'uv' 'sudo' 'findutils' 'which')
-makedepends=('git' 'go')
-source=("git+https://github.com/sonroyaalmerol/dots-hyprland.git")
+depends=(
+	# Audio
+	cava
+	pavucontrol-qt
+	wireplumber
+	pipewire-pulse
+	libdbusmenu-gtk3
+	playerctl
+	# Backlight
+	geoclue
+	brightnessctl
+	ddcutil
+	# Basic
+	bc
+	coreutils
+	cliphist
+	curl
+	wget
+	ripgrep
+	jq
+	socat
+	xdg-user-dirs
+	rsync
+	go-yq
+	qt6-5compat
+	qt6-avif-image-plugin
+	qt6-imageformats
+	qt6-positioning
+	kirigami
+	kdialog
+	syntax-highlighting
+	# Cursor themes
+	bibata-cursor-theme-bin
+	# Fonts & Themes
+	adw-gtk-theme-git
+	breeze
+	breeze-plus
+	darkly-bin
+	eza
+	bash-completion
+	fzf
+	fontconfig
+	ghostty
+	matugen
+	otf-space-grotesk
+	starship
+	ttf-jetbrains-mono-nerd
+	ttf-material-symbols-variable-git
+	ttf-readex-pro
+	ttf-rubik-vf
+	ttf-twemoji
+	# Hyprland
+	hyprland
+	hyprsunset
+	wl-clipboard
+	# KDE
+	bluedevil
+	gnome-keyring
+	networkmanager
+	plasma-nm
+	polkit-kde-agent
+	dolphin
+	systemsettings
+	# Portal
+	xdg-desktop-portal
+	xdg-desktop-portal-kde
+	xdg-desktop-portal-gtk
+	xdg-desktop-portal-hyprland
+	# Python
+	clang
+	uv
+	gtk4
+	libadwaita
+	libsoup3
+	libportal-gtk4
+	gobject-introspection
+	# Screencapture
+	hyprshot
+	slurp
+	swappy
+	tesseract
+	tesseract-data-eng
+	wf-recorder
+	# Toolkit
+	upower
+	wtype
+	# Widgets
+	fuzzel
+	glib2
+	imagemagick
+	hypridle
+	hyprlock
+	hyprpicker
+	songrec
+	translate-shell
+	wlogout
+	libqalculate
+	# Quickshell
+	quickshell
+)
+makedepends=('git' 'go' 'base-devel')
+optdepends=(
+	'plasma-browser-integration: KDE browser integration support'
+)
+source=("git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v$pkgver")
 sha256sums=('SKIP')
 backup=()
 install=snry-shell-qs.install
 
 package() {
-  cd "$srcdir/dots-hyprland"
-  install -dm755 "$pkgdir/usr/share/snry-shell"
-  cp -a ansible.cfg inventory.ini requirements.yml setup.yml uninstall.yml diagnose.yml checkdeps.yml group_vars roles data files files-extra "$pkgdir/usr/share/snry-shell/"
+	cd "$srcdir/snry-shell"
 
-  # Build and ship snry-daemon
-  cd "$srcdir/dots-hyprland/scripts/snry-daemon"
-  go build -o snry-daemon .
-  install -dm755 "$pkgdir/usr/share/snry-shell/scripts/snry-daemon"
-  install -Dm755 snry-daemon "$pkgdir/usr/share/snry-shell/scripts/snry-daemon/snry-daemon"
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
+	# Build snry-daemon binary
+	go build -o snry-daemon ./cmd/snry-daemon
+
+	# Install snry-daemon binary
+	install -Dm755 snry-daemon "$pkgdir/usr/bin/snry-daemon"
+
+	# Install snry-shell wrapper (convenience alias)
+	install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
 #!/bin/bash
-BASE=/usr/share/snry-shell
-ansible-galaxy collection install -r $BASE/requirements.yml "$@"
-
-case "${1:-}" in
-  uninstall)  exec ansible-playbook --ask-become-pass $BASE/uninstall.yml "${@:2}" ;;
-  diagnose)   exec ansible-playbook --ask-become-pass $BASE/diagnose.yml "${@:2}" ;;
-  checkdeps)  exec ansible-playbook --ask-become-pass $BASE/checkdeps.yml "${@:2}" ;;
-  *)          exec ansible-playbook --ask-become-pass $BASE/setup.yml "$@" ;;
-esac
+exec /usr/bin/snry-daemon setup "$@"
 SCRIPT
+
+	# Install shared data
+	install -dm755 "$pkgdir/usr/share/snry-shell"
+	cp -a configs data frontend "$pkgdir/usr/share/snry-shell/"
+
+	# Install systemd user unit
+	install -Dm644 configs/systemd/user/snry-daemon.service "$pkgdir/usr/lib/systemd/user/snry-daemon.service"
 }
