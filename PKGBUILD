@@ -7,7 +7,7 @@ pkgbase=mini-eq
 _app_id="io.github.bhack.$pkgbase"
 _uuid=mini-eq@bhack.github.io
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Compact PipeWire system-wide parametric EQ"
 arch=('any')
 url="https://github.com/bhack/mini-eq"
@@ -61,7 +61,7 @@ check() {
 }
 
 package_mini-eq() {
-  optdepends=('gnome-shell-extension-mini_eq: Control Mini EQ from the panel')
+  optdepends=('gnome-shell-extension-mini-eq: Control Mini EQ from the panel')
 
   cd "$pkgbase-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
