@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b8895.r7.550d684bd1
+pkgver=b9010.r0.d05fe1d7da
 pkgrel=1
 _build_number=0
 _commit_id=
@@ -19,9 +19,10 @@ depends=(
   nvidia-utils
   openssl
 )
-makedepends=(  
+makedepends=(
   cmake
   cudnn
+  gcc15   # (CUDA does not yet support GCC 16)
   git
   ninja
 )
@@ -75,13 +76,13 @@ prepare() {
 }
 
 build() {
-  # Ensure CUDA environment is set up
-  if [[ -z "${NVCC_CCBIN}" ]]; then
-    export NVCC_CCBIN=/usr/bin/g++
-  fi
   if ! type -P nvcc &>/dev/null && [[ -d /opt/cuda/bin ]]; then
     export PATH="/opt/cuda/bin:$PATH"
   fi
+
+  # Use GCC 15 as host compiler for nvcc (CUDA does not yet support GCC 16)
+  # Override via: aur_llamacpp_cmakeopts="-DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-XX"
+  local _nvcc_host_cxx="${CUDAHOSTCXX:-/usr/bin/g++-15}"
 
   local _cmake_options=(
     -G Ninja
@@ -89,6 +90,7 @@ build() {
     -S "${_pkgname}"
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_CUDA_HOST_COMPILER="${_nvcc_host_cxx}"
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_BUILD_TESTS=OFF
     -DLLAMA_USE_SYSTEM_GGML=OFF
