@@ -61,7 +61,18 @@ def get_iso_path():
 
 
 def get_logo_path():
-    return os.path.join(get_base_path(), "ASSETS", "bros-logo.png")
+    base = get_base_path()
+    logo = os.path.join(base, "ASSETS", "bros-logo.png")
+    if os.path.exists(logo):
+        return logo
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    logo = os.path.join(script_dir, "bros-logo.png")
+    if os.path.exists(logo):
+        return logo
+    logo = "/usr/share/broslauncher/bros-logo.png"
+    if os.path.exists(logo):
+        return logo
+    return os.path.join(base, "ASSETS", "bros-logo.png")
 
 
 COLOR_BG_DARK = "#0a0a0a"
