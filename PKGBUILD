@@ -1,6 +1,7 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 # Maintainer: Fabio Fontana (fabifont) <me@fabifont.dev>
+# Automation repository: https://github.com/fabifont/claude-code-aur
 
 pkgname=claude-code
 pkgver=2.1.126
