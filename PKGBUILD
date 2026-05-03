@@ -1,7 +1,7 @@
 # Maintainer: Ellis Clayton <ellis@ellis.codes>
 pkgname=ha-localizer-bin
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Provide timezone and geolocation information to Linux systems via Home Assistant"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ellsclytn/ha-localizer"
@@ -19,9 +19,9 @@ source_x86_64=("${pkgname%-bin}-ha-geoip-${pkgver}-x86_64.tar.gz::${url}/release
     "${pkgname%-bin}-ha-timezone-sync-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/ha-timezone-sync-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname%-bin}-ha-geoip-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/ha-geoip-aarch64-unknown-linux-gnu.tar.gz"
     "${pkgname%-bin}-ha-timezone-sync-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/ha-timezone-sync-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums=('4ff5d0c58c44779554eb74b4191427667048679940efc10eecd6a83c1a27c864')
-sha256sums_x86_64=('6cab3a92c6889362d5373bd4a53c13646c1a5fc6576a2d9744fe4a645b76803d' '30f10e46a03350b45a37797fa5c5c3d6bbd5ae1367644938693d5c1b56020eb0')
-sha256sums_aarch64=('f06f56b98095ba09354fdb2f28d259a4d8fee9eac206de3603d985632626c862' '4edf46e2556ab76bfa9e2530b65382f938ac8697480ffeb98ae4af5e8f4a45df')
+sha256sums=('9caa25ec560c47a69d0c8f0a1dd891c94c0eb689d155685772e1dc7f3198c07f')
+sha256sums_x86_64=('f04ec54d059f99f30dde4a908057d4d05fe296089c37d78b3a28851bee7d14a1' 'd3caab76ddce5d78fe12474ab1f96f07e844508bb3b457d51c20a48f98e4f8ba')
+sha256sums_aarch64=('e045f0bb50691e511fcaf34b2367b5fe37787fa3e5f2e901c09a8852cecc6f40' '72536be43ed8282897cde0de809a0ddb62d28e44450e4c2d9f50d3652641b475')
 
 package() {
     cd "${srcdir}/${pkgname%-bin}-${pkgver}"
