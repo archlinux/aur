@@ -1,7 +1,7 @@
 # Maintainer: Paul Maillard <pmaillard27@proton.me>
 pkgname=zc-git
 _pkgname=ZC
-pkgver=1.0.r0.g8a2b3c4
+pkgver=1.0.r67.c5ddce9
 pkgrel=2
 pkgdesc="A C/C++ build tool and package manager"
 arch=('x86_64')
@@ -30,5 +30,5 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 "$srcdir/etc/completions/_zc" "$pkgdir/usr/share/zsh/site-functions/_zc"
+  install -Dm644 "$srcdir/$_pkgname/etc/completions/_zc" "$pkgdir/usr/share/zsh/site-functions/_zc"
 }
