@@ -17,7 +17,7 @@ groups=('vim-plugins')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/tpope/vim-surround/archive/v${pkgver}.tar.gz
         LICENCE)
 sha512sums=('ef0bac868ca30cc5606f12898f131debaff3b42ad178ab83b363e46210edb8e084658505f28ba46e24012dfc1843e22603bb2c4f40b5010db13aacf07b0bd970'
-            'd16902e9e25d60dd60404b08e8c6d035e230e695e47c2af6ff319cbc1e035fa5aad2c334d68e2ff01038ed32c5e59470f678aa938fb4b644b7e673587a2c7db7')
+            '163c27fa3a8af7592062685d6db6f6d32e839f99b78cad54479ada3d1fbd70cf2e93e4bc65a2c383742e111eecb7061ed7fd858f1095a0edf97de8b4c8b81c0a')
 
 package() {
   cd ${pkgname}-${pkgver}
