@@ -6,7 +6,7 @@ pkgname="blaadpapers"
 pkgdesc="Fast & clean wallpaper manager"
 license=("GPL-3.0-only")
 pkgver="0.4.0"
-pkgrel=1
+pkgrel=2
 arch=("any")
 depends=(
     "qt6-base"
@@ -42,7 +42,7 @@ package() {
     install -Dm755 "./cmake-build/cli/${pkgname}cli" "$pkgdir/usr/bin/${pkgname}cli"
     install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "./resource/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "./resource/$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+    install -Dm644 "./resource/${pkgname}cli.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}cli.fish"
     install -Dm644 "./resource/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 
     for size in 8 16 18 22 24 32 36 42 44 48 64 72 84 96 128 256 512 1024; do
