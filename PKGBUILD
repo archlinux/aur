@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=rv-bin
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A declarative R package manager"
 arch=('x86_64')
@@ -22,5 +22,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('78cb8b9df923681d746cc6854062e2ddf9933165ff1f55c696cdd395c45bb28a'
+sha256sums_x86_64=('de258947c254389c3ef97aa8fe4cfc82236eb44697908b81b6bd712965eec677'
                    '74fe1333138eafb27da61b5066f2f8039448ab87df0ce2d07982629c2195a520')
