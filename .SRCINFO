@@ -1,6 +1,6 @@
 pkgbase = freeshow-electron-bin
 	pkgdesc = FreeShow with system-wide Electron
-	pkgver = 1.5.9
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/ChurchApps/FreeShow
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = freeshow-electron-bin
 	depends = libsecret
 	depends = electron37
 	optdepends = libappindicator-gtk3
-	provides = freeshow=1.5.9
+	provides = freeshow=1.6.0
 	conflicts = freeshow
 	conflicts = freeshow-bin
 	conflicts = freeshow-git
 	source = freeshow-electron.sh
-	source = freeshow-electron-1.5.9-amd64.deb::https://github.com/ChurchApps/FreeShow/releases/download/v1.5.9/FreeShow-1.5.9-amd64.deb
+	source = freeshow-electron-1.6.0-amd64.deb::https://github.com/ChurchApps/FreeShow/releases/download/v1.6.0/FreeShow-1.6.0-amd64.deb
 	sha256sums = e08b8699c47bfa38365f7194d2dce675b3f36ef36235be993579db8647a8b307
-	sha256sums = 700791fceb82912b29c056cfb2561940fc2b9375c684850b3d07036b47632cb5
+	sha256sums = e866ba83aa9e4fc5996378641398a7f9668de231569e7e55436eace74e1644fd
 
 pkgname = freeshow-electron-bin
