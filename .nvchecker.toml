@@ -1,0 +1,5 @@
+[huhnitor-bin]
+source = "github"
+github = "SpacehuhnTech/Huhnitor"
+use_latest_release = true
+prefix = "v"
