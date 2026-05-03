@@ -42,16 +42,16 @@ prepare() {
   # to allow full access for groups
 
   # With thanks to bugtracker user loqs for the CFLAGS and LDFLAGS adjustments
-  sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/games/nethack/|' \
+  sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/games/lib/nethackdir/|' \
     -e '/^SHELLDIR/ s|/games|/usr/bin|' \
     -e '/^VARDIRPERM/ s|0755|0775|' \
     -e '/^VARFILEPERM/ s|0600|0664|' \
     -e '/^GAMEPERM/ s|0755|02755|' \
     -e '/-DTIMED_DELAY/d' \
-    -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/games/nethack/sysconf\\"|' \
+    -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/games/lib/nethackdir/sysconf\\"|' \
     -e 's|CFLAGS=-g -O -I../include -DNOTPARMDECL|CFLAGS+= $(CPPFLAGS) -I../include -DNOTPARMDECL|' \
     -e 's/LFLAGS=-rdynamic/LFLAGS=$(LDFLAGS) -rdynamic/' \
-    -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/nethack/\\"|' \
+    -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/games/lib/nethackdir/\\"|' \
     -i sys/unix/hints/linux.500
 
   # Fix the way they disable __warn_unused_result__
@@ -87,14 +87,14 @@ package() {
     -i "$pkgdir"/usr/bin/nethack
 
   install -dm755 "$pkgdir"/usr/lib/nethack
-  mv "$pkgdir"/var/games/nethack/{nethack,recover} "$pkgdir"/usr/lib/nethack/
+  mv "$pkgdir"/games/lib/nethackdir/{nethack,recover} "$pkgdir"/usr/lib/nethack/
 
   install -vDm 644 ../nethack.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/nethack.conf"
 
   install -Dm644 doc/Guidebook.txt "$pkgdir"/usr/share/doc/nethack/Guidebook.txt
   install -Dm644 dat/license "$pkgdir"/usr/share/licenses/nethack/LICENSE
 
-  cd "$pkgdir/var/games/nethack/"
+  cd "$pkgdir/games/lib/nethackdir/"
   chmod o+w logfile perm record
 }
 # vim:set ts=2 sw=2 et:
