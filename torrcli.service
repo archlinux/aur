@@ -1,14 +1,18 @@
 [Unit]
 Description=torrcli torrent daemon
-After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 -m torrcli.daemon.daemon
+ExecStart=__PYTHON__ -m torrcli.daemon.daemon
 Restart=on-failure
+RestartSec=2s
 User=__USER__
-StandardOutput=syslog
-StandardError=syslog
+KillSignal=SIGINT
+TimeoutStopSec=30s
+StandardOutput=journal
+StandardError=journal
 SyslogIdentifier=torrcli
 
 [Install]
