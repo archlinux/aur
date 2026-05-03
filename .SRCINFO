@@ -1,6 +1,6 @@
 pkgbase = shrimp-bin
 	pkgdesc = Self-hosted AI productivity assistant (transitional package, installs shrimp)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/TheSingularis/shrimp
 	arch = any
