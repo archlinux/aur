@@ -4,6 +4,7 @@ pkgbase = sshexec
 	pkgrel = 1
 	url = https://codeberg.org/maandree/sshexec
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	source = sshexec-1.2.2.tar.gz::https://codeberg.org/maandree/sshexec/archive/1.2.2.tar.gz
 	sha256sums = ef82d1f1c5dfb5ad1d2dc89149d9bffdb657867e14d34e1eb9bd8b811ed6cfff
