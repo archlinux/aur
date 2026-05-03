@@ -11,6 +11,6 @@ pkgbase = moshpit
 	makedepends = gcc
 	depends = moshpit-keygen
 	source = moshpit-0.3.0.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.3.0.tar.gz
-	sha256sums = edcdef736c92abc60f574821258385e58a8c698ee5573d91fee993953d200c48
+	sha256sums = 5c15e9f22d7ca59420d2e895c695b7725a944bedcd6317de9553994950a2c970
 
 pkgname = moshpit
