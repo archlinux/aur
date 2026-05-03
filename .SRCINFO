@@ -1,13 +1,12 @@
 pkgbase = sparta-plugins-bin
 	pkgdesc = A collection of open-source VST, VST3, AU, LV2 and AAX audio plug-ins for the production and playback of spatial sound scenes
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://leomccormack.github.io/sparta-site/
 	arch = x86_64
 	groups = pro-audio
 	license = GPL-3.0-or-later
 	depends = bubblewrap
-	depends = webkit2gtk
 	provides = sparta-plugins
 	conflicts = sparta-plugins
 	source = https://github.com/leomccormack/SPARTA/releases/download/v1.8.2/Linux_SPARTA_VST3_2026_01_25_v1.8.2.zip
