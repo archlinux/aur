@@ -13,7 +13,7 @@ install="${pkgname}.install"
 # add UA and Referer in order to download Official Driver
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A Mozilla/5.0 -e https://www.gaomon.cn/download -o %o %u')
 
-source=("https://driver.gaomon.cn/download/Driver/Linux/GaomonTablet_LinuxDriver_v${pkgver}.x86_64.tar.xz"
+source=("https://driver.gaomon.cn/download/Driver/Linux/GaomonTablet_LinuxDriver_v${pkgver}.${CARCH}.tar.xz"
         "LICENSE")
 sha256sums=('d3db3cad152049e6913ae744f497686a8c4b61ef91fe664c84ffe55ebc96bd01'
             '150b7f86555bd68e638ababa1895ba2e5caed4efaa380235b00db6f5b59ac1d9')
