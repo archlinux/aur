@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.26.5
+pkgver=1.26.7
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -12,20 +12,20 @@ depends=('lapack' 'java-environment')
 makedepends=('gcc-fortran' 'cmake' 'boost')
 options=('!lto')
 source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-src-with-submodules.zip")
-sha256sums=('8c26ae68db79e2ac5445fa400ec1a06cb3286d1d368d3e2f0cacf1caaadee9c3')
+sha256sums=('d10452033473333e216d0a9e4fa2c1e2ef24ffa9c1bfde0acd4c045f2107b613')
 
 prepare() {
-  cd "$srcdir/OpenModelica"
+  cd "$srcdir/OpenModelica-v${pkgver}"
 }
 
 build() {
-  cd "$srcdir/OpenModelica"
+  cd "$srcdir/OpenModelica-v${pkgver}"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
   make -C build
 }
 
 package() {
-  cd "$srcdir/OpenModelica"
+  cd "$srcdir/OpenModelica-v${pkgver}"
   make install -C build DESTDIR="${pkgdir}"
   rm -r "${pkgdir}"/usr/share/zmq
   rm -r "${pkgdir}"/usr/share/cminpack
