@@ -7,12 +7,7 @@ import platform
 import threading
 import time
 import queue
-import urllib.request
-import ssl
 from pathlib import Path
-
-ISO_URL = "https://bros.berkeai.com/bros.iso"
-DOWNLOAD_PROGRESS_UPDATE = 100
 
 # Get user-writable data directory
 USER_DATA_DIR = Path(os.path.expanduser("~/.local/share/broslauncher"))
@@ -109,32 +104,9 @@ class BrosLauncherWindow:
         if os.path.exists(self.iso_path):
             return
 
-        self.log_to_console("[ISO] Not found, downloading...", "warn")
-        threading.Thread(target=self.download_iso, daemon=True).start()
-
-    def download_iso(self):
-        self.root.after(0, self.show_download_progress)
-
-        try:
-            ssl_context = ssl.create_default_context()
-            ssl_context.check_hostname = False
-            ssl_context.verify_mode = ssl.CERT_NONE
-
-            request = urllib.request.Request(
-                ISO_URL, headers={"User-Agent": "BrosLauncher/1.0"}
-            )
-            response = urllib.request.urlopen(request, context=ssl_context, timeout=30)
-
-            total_size = int(response.headers.get("content-length", 0))
-            downloaded = 0
-            block_size = 8192
-
-            with open(self.iso_path, "wb") as f:
-                while True:
-                    buffer = response.read(block_size)
-                    if not buffer:
-                        break
-                    downloaded += len(buffer)
+        self.log_to_console("[ISO] Bros ISO not found!", "error")
+        self.log_to_console("[ISO] Please download from: https://bros.berkeai.com/bros.iso", "info")
+        self.log_to_console("[ISO] Or contact developer: @BerkeOruc", "warn")
                     f.write(buffer)
 
                     if total_size > 0:
