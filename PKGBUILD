@@ -1,7 +1,7 @@
 # Maintainer: kabeuchi-bird <https://github.com/kabeuchi-bird>
 pkgname=kabekami-git
 pkgver=r125.69935d8
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Plasma wallpaper rotation daemon with multi-monitor support, online sources, and global shortcuts"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kabeuchi-bird/kabekami"
@@ -20,11 +20,9 @@ source=(
     "kabekami-config.desktop"
     "kabekami.install"
 )
-sha256sums=(
-    'SKIP'
-    'aadec7cb6e6bff5a008936578905beb8fbf18feb794b8decd3b3e8ad90023b27'
-    '98f2a4c185312a68910e300ce428ad793481b893194ecbf86f12f5fec91313e1'
-)
+sha256sums=('SKIP'
+            'aadec7cb6e6bff5a008936578905beb8fbf18feb794b8decd3b3e8ad90023b27'
+            '98f2a4c185312a68910e300ce428ad793481b893194ecbf86f12f5fec91313e1')
 
 pkgver() {
     cd "$pkgname"
@@ -41,6 +39,9 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # ring 0.17 の .a 静的ライブラリは lld + LTO と非互換のため、
+    # makepkg.conf のグローバル LTO 設定を無効化する。
+    export CARGO_PROFILE_RELEASE_LTO=false
     cargo build --release --locked
 }
 
@@ -48,6 +49,7 @@ check() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CARGO_PROFILE_RELEASE_LTO=false
     cargo test --release --locked
 }
 

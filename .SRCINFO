@@ -1,7 +1,7 @@
 pkgbase = kabekami-git
 	pkgdesc = KDE Plasma wallpaper rotation daemon with multi-monitor support, online sources, and global shortcuts
 	pkgver = r125.69935d8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kabeuchi-bird/kabekami
 	arch = x86_64
 	arch = aarch64
