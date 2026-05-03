@@ -11,6 +11,6 @@ pkgbase = somafm_tui
 	depends = python-mpv
 	depends = python-dbus-next
 	source = git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v0.6.16
-	sha256sums = 0114a2da3adf68b62c509c49d9608a46cb2e369e15e48838f530b5b760e872be
+	sha256sums = 578cbcf2acd9da80658faf09ac668fc886973bc11fc35bf8841ce2106ed5a281
 
 pkgname = somafm_tui
