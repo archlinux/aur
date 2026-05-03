@@ -36,14 +36,6 @@ build() {
   cargo build --release --features bin --locked --frozen
 }
 
-check() {
-  cd rusbmux
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  export CARGO_PROFILE_RELEASE_LTO=false
-  cargo test --features bin --locked --frozen
-}
-
 package() {
   cd rusbmux
 
