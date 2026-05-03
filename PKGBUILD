@@ -4,7 +4,7 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2604.g9968e6f
+pkgver=4.3.r2653.ge48cdd3
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
@@ -37,7 +37,7 @@ sha256sums=(
 _print_libav_option() {
   local ffmpeg_supported ffmpeg_installed libav_option
 
-  # Compare major version numbers of ffmpeg
+  # Compare major version numbers of FFmpeg
   ffmpeg_supported="$(awk '$1 == "FFMPEG" { print $3 }' Makefile.ffmpeg | sed 's/^ffmpeg-//' | cut -d'.' -f1)"
   ffmpeg_installed="$(pacman -Q ffmpeg | awk '{ print $2 }' | sed 's/^ *//;s/r.*[.]//;s/.*://' | cut -d'.' -f1)"
 
@@ -59,11 +59,12 @@ pkgver() {
 build() {
   cd $pkgname
 
-  export CFLAGS+=' -Wno-error=discarded-qualifiers'
+  #export CFLAGS+=' -w -Wno-error'
+  export CFLAGS+=' -Wno-error=discarded-qualifiers -Wno-error=format-truncation -Wno-error=unused-but-set-variable'
 
   local libav_option
   libav_option="$(_print_libav_option)"
-  printf 'Checking for libav (ffmpeg transcoding) support: %s\n' "$libav_option"
+  printf 'Checking for libav (FFmpeg transcoding) support: %s\n' "$libav_option"
 
   local libhdhomerun_option=
   if pacman -Q libhdhomerun >/dev/null 2>&1; then
