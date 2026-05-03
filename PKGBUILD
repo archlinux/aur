@@ -8,36 +8,22 @@
 pkgname=freeciv-sdl2
 _pkgname=freeciv
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A multiuser clone of the famous Microprose game of Civilization - SDL2 Client"
 arch=('i686' 'x86_64')
 url="https://www.freeciv.org"
 license=('GPL')
 depends=(
-  'bzip2'
-  'curl'
+  'freeciv-common'
   'hicolor-icon-theme'
-  'icu'
-  'lua54'
-  'qt6-base'
-  'qt6-svg'
   'readline'
   'sdl2'
   'sdl2_gfx'
   'sdl2_image'
   'sdl2_mixer'
   'sdl2_ttf'
-  'sqlite'
-  'xz'
-  'zlib'
-  'zstd'
 )
-makedepends=(
-  'meson'
-  'python'
-  'git'
-  'qt6-tools'
-)
+makedepends=('meson' 'python' 'git')
 conflicts=('freeciv' 'freeciv-git')
 options=('!libtool')
 
@@ -50,7 +36,8 @@ build() {
   arch-meson build \
     -Dsyslua=true \
     -Dclients=sdl2 \
-    -Dfcmp=cli
+    -Dfcmp=[] \
+    -Dtools=[]
 
   meson compile -C build
 }
@@ -58,5 +45,39 @@ build() {
 package() {
   cd "$srcdir"/$_pkgname
 
-  meson install -C build --destdir="$pkgdir"
+  # Install everything normally
+  DESTDIR="$pkgdir" meson install -C build --no-rebuild
+
+  # Files we want to keep
+  local keep=(
+    usr/bin/freeciv-sdl2
+    usr/share/applications/org.freeciv.sdl2.desktop
+    usr/share/metainfo/org.freeciv.sdl2.metainfo.xml
+  )
+
+  # Delete everything except the files we want to keep
+  find "$pkgdir" -mindepth 1 -type f | while read -r file; do
+    local relpath="${file#"$pkgdir"/}"
+    local should_keep=0
+
+    # Check exact matches
+    for k in "${keep[@]}"; do
+      if [[ "$relpath" == "$k" ]]; then
+        should_keep=1
+        break
+      fi
+    done
+
+    # Additional check for theme files
+    if [[ "$relpath" == usr/share/freeciv/themes/gui-sdl2/* ]]; then
+      should_keep=1
+    fi
+
+    if (( should_keep == 0 )); then
+      rm -f "$file"
+    fi
+  done
+
+  # Clean up any now-empty directories
+  find "$pkgdir" -mindepth 1 -type d -empty -delete
 }
