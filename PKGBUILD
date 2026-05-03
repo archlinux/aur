@@ -6,12 +6,12 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-cachyos
-_srctag=10.0-20260407
+_srctag=10.0-20260425
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.4.1
 _xaliaver=0.4.8
-pkgrel=2
+pkgrel=1
 epoch=2
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -149,7 +149,7 @@ build() {
 
   # From Proton
   OPTIMIZE_FLAGS="-O2 -march=$march -mtune=$mtune -mfpmath=sse -pipe"
-  OPTIMIZE_FLAGS+=" -mprefer-avx128 -fvect-cost-model=cheap -fipa-pta"
+  OPTIMIZE_FLAGS+=" -mno-avx -mno-avx2 -mno-avx512f -fvect-cost-model=cheap -fipa-pta"
   SANITY_FLAGS="-fwrapv -fno-strict-aliasing -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64"
   DEBUG_FLAGS="-ffunction-sections -fdata-sections -fno-omit-frame-pointer"
   WARNING_FLAGS="-Wno-incompatible-pointer-types"
@@ -207,7 +207,7 @@ package() {
   x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.{dll,exe,cpl}
 
   # Load ntsync module
-  install -Dm644 "$srcdir/ntsync.conf" "$pkgdir/usr/lib/modules-load.d/10-ntsync.conf"
+  install -Dm644 "$srcdir/ntsync.conf" "$pkgdir/usr/lib/modules-load.d/10-$pkgname.conf"
 
   # Install wine-gecko
   cd "$srcdir"
@@ -226,7 +226,7 @@ package() {
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
-b2sums=('24e31082f653f91a5a39af27058e106ee4ed6ee52eefc1308022d066c143fc09ecaad5f9b374e678a832e2f3bc8250ebb7c9ea2dcd802c39b5edabd7d5963908'
+b2sums=('0b3f2fcc68b5f1922f4bd3381f9affdd985b06759ed9402a3685659ccc693b615842a5b70317aa98341871fa942263442ba539f33bfe6cbfd7f0db53c7b05778'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '9ca53dee272470806432c61587080e6dc04fd9eaafde4f55f5d57d5557ec6859d77a74b74c9e3f472da04b8ace9609f0927573faab368a25249c76b3e37e65c1'
