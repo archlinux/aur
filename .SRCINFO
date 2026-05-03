@@ -1,25 +1,38 @@
 pkgbase = java-openjfx-bin
-	pkgdesc = Java OpenJFX 24.0.2 client application platform (Gluon build).
-	pkgver = 24.0.2
+	pkgdesc = Java OpenJFX 26.0.1 client application platform (Gluon build).
+	pkgver = 26.0.1
 	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only WITH Classpath-exception-2.0
+	depends = java-environment>=24
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = cairo
 	depends = ffmpeg
+	depends = ffmpeg4.4
+	depends = fontconfig
+	depends = freetype2
+	depends = gdk-pixbuf2
+	depends = glib2
 	depends = gstreamer
-	depends = java-environment>=11
+	depends = gtk3
+	depends = libglvnd
+	depends = libx11
 	depends = libxtst
+	depends = libxxf86vm
+	depends = pango
 	depends = qt5-base
-	depends = webkit2gtk
-	provides = java-openjfx=24.0.2
-	conflicts = java24.0.2-openjfx
-	conflicts = java-openjfx=24.0.2
+	depends = webkit2gtk-4.1
+	provides = java-openjfx=26.0.1
+	conflicts = java-openjfx
 	options = !strip
-	source = https://download2.gluonhq.com/openjfx/24.0.2/openjfx-24.0.2_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/24.0.2/openjfx-24.0.2_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/24.0.2/openjfx-24.0.2-javadoc.zip
-	sha256sums = d419c2b6e0053ee184530e39448e6abb5962a5c18143201db4adbf40db817420
-	sha256sums = 20f3d03022f28039e6da2f8dce3fe42fb81e3984bbc63cc732663074fc2ecb1d
-	sha256sums = 52b714a1f67f4dc04d0e481cb4c4c0d2b61e893bfcd8b1c8ea43b9a706823c0b
+	options = !debug
+	source = https://download2.gluonhq.com/openjfx/26.0.1/openjfx-26.0.1_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/26.0.1/openjfx-26.0.1_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/26.0.1/openjfx-26.0.1-javadoc.zip
+	sha256sums = af7bd9585d14fe6341b0bb6fec1c9c3a93d987c8b8aea4bf97c594714e3d1e31
+	sha256sums = 27f476c4628e14084af79bfef693f534351113bd793043412637dabd32ee35c7
+	sha256sums = db4e8e28cc6b3f02fa20461ed54bea273c574c327b27340acd8d37e1237d2fad
 
 pkgname = java-openjfx-bin
