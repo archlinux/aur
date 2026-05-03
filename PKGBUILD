@@ -12,8 +12,12 @@ url="https://wolfsden.cz/project/acme-client.html"
 license=('GPL-2.0-only')
 depends=(openssl glibc)
 makedepends=(gcc make)
-source=("https://files.wolfsden.cz/releases/acme-client/acme-client-$pkgver.tar.gz")
-sha256sums=('32afba7a92dc8049e54342403d80b1190bbb10cd154b4637d8f62ebc4ba58801')
+source=(
+  "https://files.wolfsden.cz/releases/acme-client/acme-client-$pkgver.tar.gz"{,.asc}
+)
+sha256sums=('32afba7a92dc8049e54342403d80b1190bbb10cd154b4637d8f62ebc4ba58801'
+            'SKIP')
+validpgpkeys=('92C05C30F5E5A772B04D459150248D1A100E6AE6')
 
 build() {
 	cd "$pkgname-$pkgver"
