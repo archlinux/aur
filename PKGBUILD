@@ -2,7 +2,7 @@
 
 pkgname=cargo-chef
 pkgver=0.1.77
-pkgrel=1
+pkgrel=2
 pkgdesc='A cargo-subcommand to speed up Rust Docker builds using Docker layer caching'
 arch=('aarch64' 'x86_64')
 url="https://github.com/LukeMathWalker/$pkgname"
