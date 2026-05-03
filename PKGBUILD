@@ -1,7 +1,7 @@
 # Maintainer: Origin Security <support@originhq.com>
 pkgname=praxis
 pkgver=0.9.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Praxis - Semantic Command & Control Framework for Agents'
 arch=('x86_64')
 url='https://github.com/originsec/praxis'
@@ -56,6 +56,10 @@ package() {
     install -Dm755 target/release/praxis_service "$pkgdir/usr/bin/praxis_service"
     install -Dm755 target/release/praxis_web "$pkgdir/usr/bin/praxis_web"
     install -Dm755 target/release/praxis_cli "$pkgdir/usr/bin/praxis_cli"
+
+    # Convenience symlink: `praxis` -> `praxis_cli` so users can invoke the
+    # CLI by its short name without typing the workspace-qualified binary.
+    ln -s praxis_cli "$pkgdir/usr/bin/praxis"
 
     # Node binary (for distribution to targets, filename must match web UI expectations)
     install -Dm755 target/release/praxis_node "$pkgdir/usr/share/praxis/nodes/praxis_node_linux"

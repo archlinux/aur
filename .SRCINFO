@@ -1,7 +1,7 @@
 pkgbase = praxis
 	pkgdesc = Praxis - Semantic Command & Control Framework for Agents
 	pkgver = 0.9.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/originsec/praxis
 	install = praxis.install
 	arch = x86_64
