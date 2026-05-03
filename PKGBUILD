@@ -2,20 +2,23 @@
 # Maintainer: Sebastian Ehlert  <awvwgk at gmail dot com>
 
 pkgname=dftd4
-pkgver=4.1.0
-pkgrel=3
+pkgver=4.1.1
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/dftd4/dftd4'
 depends=('blas'
          'lapack')
-makedepends=('meson'
-             'ninja'
+makedepends=('asciidoctor'
              'gcc-fortran'
-             'asciidoctor')
+             'git'
+             'meson'
+             'ninja'
+             'python-cffi'
+             'python-setuptools')
 license=('LGPL-3.0')
 pkgdesc='A Generally Applicable Atomic-Charge Dependent London Dispersion Correction'
-source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-source.tar.xz")
-sha256sums=('a61bc0c8e8a7db5302ef4f4f1ebc834bb9dcf2896b0e2af746f25a0d4177d8d0')
+source=("dftd4-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c41404350f18ddcf23343f7c7a3786cd2a8b8e242a9673d87b1236048f1311a5')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -27,12 +30,12 @@ build() {
   local options=(
     --buildtype=plain
     --prefix=/usr
-    --wrap-mode=nodownload
+    # --wrap-mode=nodownload
     --auto-features=enabled
     -Db_pie=true
     -Dwarning_level=0  # avoid comilation error due to -Wall, see https://github.com/dftd4/dftd4/issues/294
   )
-  meson setup _build_${CARCH} . "${options[@]}" --wipe
+  meson setup _build_${CARCH} . "${options[@]}"
   meson compile -C _build_${CARCH}
 }
 

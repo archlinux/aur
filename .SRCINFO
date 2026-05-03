@@ -1,17 +1,20 @@
 pkgbase = dftd4
 	pkgdesc = A Generally Applicable Atomic-Charge Dependent London Dispersion Correction
-	pkgver = 4.1.0
-	pkgrel = 3
+	pkgver = 4.1.1
+	pkgrel = 1
 	url = https://github.com/dftd4/dftd4
 	arch = x86_64
 	license = LGPL-3.0
+	makedepends = asciidoctor
+	makedepends = gcc-fortran
+	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = gcc-fortran
-	makedepends = asciidoctor
+	makedepends = python-cffi
+	makedepends = python-setuptools
 	depends = blas
 	depends = lapack
-	source = https://github.com/dftd4/dftd4/releases/download/v4.1.0/dftd4-4.1.0-source.tar.xz
-	sha256sums = a61bc0c8e8a7db5302ef4f4f1ebc834bb9dcf2896b0e2af746f25a0d4177d8d0
+	source = dftd4-4.1.1.tar.gz::https://github.com/dftd4/dftd4/archive/refs/tags/v4.1.1.tar.gz
+	sha256sums = c41404350f18ddcf23343f7c7a3786cd2a8b8e242a9673d87b1236048f1311a5
 
 pkgname = dftd4
