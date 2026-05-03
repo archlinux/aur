@@ -52,7 +52,7 @@ prepare() {
     -e 's|CFLAGS=-g -O -I../include -DNOTPARMDECL|CFLAGS+= $(CPPFLAGS) -I../include -DNOTPARMDECL|' \
     -e 's/LFLAGS=-rdynamic/LFLAGS=$(LDFLAGS) -rdynamic/' \
     -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/nethack/\\"|' \
-    -i sys/unix/hints/linux
+    -i sys/unix/hints/linux.500
 
   # Fix the way they disable __warn_unused_result__
   sed '/^#define __warn_unused_result__/ s,/\*empty\*/,__unused__,' \
@@ -70,7 +70,7 @@ prepare() {
 
 build() {
   cd "NetHack/sys/unix"
-  sh setup.sh hints/linux
+  sh setup.sh hints/linux.500
   cd "$srcdir/$_pkgname"
   make
 }
