@@ -1,11 +1,10 @@
-pkgbase = hyprmod-git
-	pkgdesc = A native GTK4/libadwaita settings app for Hyprland.
-	pkgver = r43.83b9838
+pkgbase = hyprmod
+	pkgdesc = Native GTK4/libadwaita settings app for Hyprland
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/BlueManCZ/hyprmod
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
@@ -19,8 +18,7 @@ pkgbase = hyprmod-git
 	depends = python-hyprland-schema
 	depends = python-hyprland-socket
 	depends = python-hyprland-state
-	depends = hyprland
-	source = hyprmod::git+https://github.com/BlueManCZ/hyprmod.git
+	source = hyprmod-0.1.0.tar.gz::https://github.com/BlueManCZ/hyprmod/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = hyprmod-git
+pkgname = hyprmod
