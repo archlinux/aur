@@ -1,7 +1,7 @@
 pkgbase = python-coveralls
 	pkgdesc = Python integration with coveralls.io
-	pkgver = 4.0.1
-	pkgrel = 1
+	pkgver = 4.1.0
+	pkgrel = 2
 	url = https://github.com/thekevjames/coveralls-python
 	arch = any
 	license = MIT
@@ -13,10 +13,10 @@ pkgbase = python-coveralls
 	makedepends = python-wheel
 	makedepends = python-poetry-core
 	depends = python-coverage
-	depends = python-docopt
+	depends = python-typer
 	depends = python-requests
 	optdepends = python-yaml
-	source = coveralls-python-4.0.1.tar.gz::https://github.com/TheKevJames/coveralls-python/archive/refs/tags/4.0.1.tar.gz
-	sha256sums = 066f5e775359dda1c8e4b152f49ce6e2ea1f1e36738c08333af1bb3abc697bf5
+	source = coveralls-python-4.1.0.tar.gz::https://github.com/TheKevJames/coveralls-python/archive/refs/tags/4.1.0.tar.gz
+	sha256sums = c1e8e3da7704df6cde5cd5dee6b72da79a8101687b44b5b09e55f6baa870c915
 
 pkgname = python-coveralls
