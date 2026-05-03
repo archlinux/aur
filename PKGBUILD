@@ -5,7 +5,7 @@ _pkgname=xfr
 pkgname=${_pkgname}-bin
 pkgdesc="A modern iperf3 alternative with a live TUI, multi-client server, and QUIC support"
 
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -32,12 +32,12 @@ source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/
 sha256sums=('eba4e98471cdfbf2a56c401545d79fe175728d8f74dd26cee41bd4686d7b8881'
             '63837ff5a6ce70b34a2033d55c56e03ed3a1afca0ed49cbd28c9609a7ba8ede2'
             '64c4c2cd4a506833c956deaae8382a8fef761b2e42f3ee5303cfffc427f2b927'
-            'ea4411ae92f68217955a350708e6aa1fa767755994e8c623ddaca0d367f37408'
+            '6c7858189e2c6191f225f3236301cabcb50f5b51a4794f407160ded09b87191a'
             '476f73c677be9226a9b0b6e098ae7d952e4cacc22698ec0099052bc22303d67e'
             'b3699bdf3129bcb12f559d6dcfa597cfae1e3d2b793e90de297f90c4d25cdea0'
             'a2b22ab13af7492f75197a7e5ce71ba8e0ae01f8f27154f8383c8e8ded29c9e0')
-sha256sums_x86_64=('041166b3d346cf7ec95cacc8a2d31f22b9507683a5c84c2e7e68475b5b324869')
-sha256sums_aarch64=('041166b3d346cf7ec95cacc8a2d31f22b9507683a5c84c2e7e68475b5b324869')
+sha256sums_x86_64=('cb977d2d324916af1442322bdd44567c6735c201bb449330f2d200335f31aca2')
+sha256sums_aarch64=('cb977d2d324916af1442322bdd44567c6735c201bb449330f2d200335f31aca2')
 
 build() {
 	cd "${srcdir}/" || exit
