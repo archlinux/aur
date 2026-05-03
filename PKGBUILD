@@ -19,58 +19,22 @@ options=(!debug !strip)
 install=$pkgname.install
 noextract=($pkgname-$pkgver.tgz)
 
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  export CI=1
-  export NODE_ENV=production
-
-  pnpm install --frozen-lockfile
-  pnpm build
-  pnpm ui:build || true
-}
-
-check() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  test -f openclaw.mjs
-  test -f docs/reference/templates/AGENTS.md
-  test -f dist/entry.js || test -f dist/entry.mjs
-}
-
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=1
+    npm install --silent --global --cache "$srcdir"/npm-cache \
+        --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
 
-  install -dm755 "$pkgdir/usr/lib/$pkgname"
-  install -dm755 "$pkgdir/usr/lib/$pkgname/docs/reference"
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-
-  cp -a \
-    openclaw.mjs \
-    package.json \
-    dist \
-    dist-runtime \
-    assets \
-    skills \
-    scripts \
-    packages \
-    extensions \
-    vendor \
-    node_modules \
-    "$pkgdir/usr/lib/$pkgname/"
-
-  cp -a \
-    docs/reference/templates \
-    "$pkgdir/usr/lib/$pkgname/docs/reference/"
-
-  install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-
-  cat > "$pkgdir/usr/bin/openclaw" <<'EOF'
+    cat > $pkgname <<'EOF'
 #!/bin/sh
-exec node /usr/lib/openclaw/openclaw.mjs "$@"
+export SHARP_IGNORE_GLOBAL_LIBVIPS=1
+exec node /usr/lib/node_modules/openclaw/openclaw.mjs "$@"
 EOF
-  chmod 755 "$pkgdir/usr/bin/openclaw"
+    install -Dm755 -t "$pkgdir"/usr/bin $pkgname
+
+    cd "$pkgdir"/usr/lib/node_modules/$pkgname
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname README.md CHANGELOG.md
+    for f in docs/*
+    do ln -s /usr/lib/node_modules/$pkgname/"$f" "$pkgdir"/usr/share/doc/$pkgname/
+    done
 }
