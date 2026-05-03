@@ -9,7 +9,7 @@
 
 _proj=curl
 pkgname=curl-c-ares
-pkgver=8.19.0
+pkgver=8.20.0
 _git_tag="curl-${pkgver//./_}"
 pkgrel=1
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
@@ -36,7 +36,7 @@ replaces=('wcurl')
 conflicts=('curl' 'wcurl')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 source=("git+https://github.com/curl/${_proj}.git#tag=${_git_tag}?signed")
-sha512sums=('a10e4408f1e89462880646a29b4f947d6b8eaf81d323a86046fe5eb8622005e4499684609f7c352729f5f88933275b650e7285cf2e8299ff966df03f70a33637')
+sha512sums=('e97541789fb3f5e00ecb41c867f8440e651fdb7be922cddfea70e9462b40ed33d7ca4d29039025584afb11ade8ce389ae25fc41200e3a38706a6fc265cd0c29b')
 
 prepare() {
   cd $_proj
