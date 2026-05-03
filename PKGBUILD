@@ -1,8 +1,10 @@
+# Maintainer: Christopher Cooper <christopher@cg505.com>
+# Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 # Maintainer: Fabio Fontana (fabifont) <me@fabifont.dev>
 
 pkgname=claude-code-bin
 pkgver=2.1.126
-pkgrel=1
+pkgrel=2
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
@@ -40,7 +42,6 @@ package() {
 	cat > "${pkgdir}/usr/bin/claude" << 'EOF'
 #!/bin/sh
 export DISABLE_UPDATES=1
-export DISABLE_AUTOUPDATER=1
 exec /opt/claude-code/bin/claude "$@"
 EOF
 	chmod 755 "${pkgdir}/usr/bin/claude"
