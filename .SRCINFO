@@ -1,6 +1,6 @@
 pkgbase = fooyin
 	pkgdesc = A customisable music player.
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://www.fooyin.org/
 	arch = x86_64
@@ -35,8 +35,8 @@ pkgbase = fooyin
 	optdepends = libebur128: For the ReplayGain scanner plugin
 	optdepends = libsoxr: For the SoX-based DSP plugin
 	optdepends = soundtouch: For the SoundTouch-based DSP plugin
-	source = fooyin-0.10.3.tar.gz::https://github.com/ludouzi/fooyin/archive/refs/tags/v0.10.3.tar.gz
-	sha256sums = 3ba96386c12acacb7b73a637bf2a57690516814e862868e340505a3804551cda
+	source = fooyin-0.10.4.tar.gz::https://github.com/ludouzi/fooyin/archive/refs/tags/v0.10.4.tar.gz
+	sha256sums = 2c011a23fb46d5d8112ae0f55039ed0260808e7c4e0cc40c405751b7035d7325
 
 pkgname = fooyin
 	depends = icu
