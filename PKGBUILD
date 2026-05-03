@@ -3,7 +3,7 @@
 
 pkgname=hunspell-eo
 pkgver=20100216
-pkgrel=2
+pkgrel=3
 pkgdesc="Esperanto hunspell dictionary"
 arch=(any)
 url="http://www.esperantilo.org/"
@@ -16,8 +16,8 @@ md5sums=('a190ad0995cb13b307ba968e7662ee9c')
 package() {
   cd "${srcdir}"
   install -dm755 ${pkgdir}/usr/share/hunspell
-  install -m644 literumilo-fontoj/eo_cxorig.dic ${pkgdir}/usr/share/hunspell/eo.dic
-  install -m644 literumilo-fontoj/eo_cxorig.aff ${pkgdir}/usr/share/hunspell/eo.aff
+  install -m644 literumilo-fontoj/eo_ilo.dic ${pkgdir}/usr/share/hunspell/eo.dic
+  install -m644 literumilo-fontoj/eo_ilo.aff ${pkgdir}/usr/share/hunspell/eo.aff
 
   # the symlinks
   install -dm755 ${pkgdir}/usr/share/myspell/dicts
