@@ -1,5 +1,5 @@
-# Maintainer: Capricornus007 <sihaogang at gmail dot com>
-# Co-Maintainer: Hei Piao <heipiao233 at outlook dot com>
+# Maintainer: eeeeei <2187409610@qq.com>
+# Co-Maintainer: Capricornus007 <sihaogang at gmail dot com>
 # Contributor: "huyz" on aur.archlinux.org, E-Mail hidden.
 # Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
