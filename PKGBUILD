@@ -2,7 +2,7 @@
 # Contributor: Maxime “pep” Buquet <archlinux@bouah.net>
 
 pkgname="python-slixmpp-omemo"
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Slixmpp OMEMO plugin"
 arch=("any")
@@ -25,7 +25,7 @@ makedepends=(
 )
 checkdepends=("python-pytest" "python-pytest-asyncio")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Syndace/slixmpp-omemo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("d48c80b702b590a7821f2477c3fa2508ca5ffffd328ca57140557219e757eb75")
+sha256sums=("ddf1ee0fbccfe1e3a93bdf69791e91402c7e16e36ec299cd2a729a791dd5b221")
 
 prepare() {
     mv "slixmpp-omemo-${pkgver}" "${pkgname}-${pkgver}"

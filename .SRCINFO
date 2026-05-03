@@ -1,6 +1,6 @@
 pkgbase = python-slixmpp-omemo
 	pkgdesc = Slixmpp OMEMO plugin
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Syndace/slixmpp-omemo
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-slixmpp-omemo
 	depends = python-twomemo
 	depends = python-xmlschema
 	depends = python-typing_extensions
-	source = python-slixmpp-omemo-2.1.0.tar.gz::https://github.com/Syndace/slixmpp-omemo/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = d48c80b702b590a7821f2477c3fa2508ca5ffffd328ca57140557219e757eb75
+	source = python-slixmpp-omemo-2.2.0.tar.gz::https://github.com/Syndace/slixmpp-omemo/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = ddf1ee0fbccfe1e3a93bdf69791e91402c7e16e36ec299cd2a729a791dd5b221
 
 pkgname = python-slixmpp-omemo
