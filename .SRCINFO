@@ -1,14 +1,14 @@
 pkgbase = hedgemodmanager-bin
 	pkgdesc = (UNOFFICIAL PACKAGE) A mod manager for Hedgehog Engine games on PC.
 	pkgver = 8.0.0.beta5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hedge-dev/HedgeModManager
 	arch = x86_64
 	license = MIT
 	depends = dotnet-runtime-8.0
 	provides = hedgemodmanager
 	conflicts = hedgemodmanager
-	source = hedgemodmanager.tar.gz::https://github.com/hedge-dev/HedgeModManager/releases/download/8.0.0-beta5/HedgeModManager-linux-x64.tar.gz
+	source = hedgemodmanager-8.0.0.beta5.tar.gz::https://github.com/hedge-dev/HedgeModManager/releases/download/8.0.0-beta5/HedgeModManager-linux-x64.tar.gz
 	source = hedgemodmanager.desktop::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.desktop
 	source = hedgemodmanager.png::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.png
 	source = LICENSE.md::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/LICENSE.md
