@@ -1,4 +1,4 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 # Contributor: Yushin Huang <hyslion AT gmail.com>
 
 _pkgname=libchewing
