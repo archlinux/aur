@@ -13,6 +13,7 @@ depends=('assimp' 'boost' 'eigen' 'fcl' 'libccd' 'bullet' 'coin-or-ipopt'
 optdepends=('pagmo: pagmo optimizer support')
 makedepends=('cmake' 'git')
 provides=('libdart')
+conflicts=('libdart')
 source=("git+https://github.com/dartsim/dart.git")
 sha256sums=('SKIP')
 
