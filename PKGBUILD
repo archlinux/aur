@@ -2,13 +2,13 @@
 # Maintainer: ShinKouyo <i@0x0f.dev>
 pkgname=astraeditor-git
 _binname=astraeditor-desktop
-pkgver=1.1.4.10.ga040bbf
+pkgver=v1.1.4.r43.gfa4a4a4
 pkgrel=1
 pkgdesc='AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AstraEditor/'
 license=('GPL-3.0-only')
-makedepends=('nodejs' 'npm' 'git' 'python')
+makedepends=('nodejs' 'npm' 'pnpm' 'git' 'python' 'jre-openjdk')
 depends=('alsa-lib' 'gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'hicolor-icon-theme' 'at-spi2-core' 'libdrm' 'mesa' 'libxcb' 'libnotify')
 provides=('astraeditor')
 conflicts=('astraeditor' 'astraeditor-bin')
@@ -23,10 +23,18 @@ pkgver() {
 build() {
   cd "$pkgname"
   rm -f package-lock.json
-  npm install --loglevel=info
-  npm run fetch
-  npm run webpack:prod
-
+  cp -f package.json package.json.bak
+  sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#snapshot",|' package.json
+  cp -f pnpm-lock.yaml pnpm-lock.yaml.bak
+  sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#snapshot",|' pnpm-lock.yaml
+  rm -f pnpm-lock.yaml
+  pnpm install
+  pnpm run fetch
+  pnpm run webpack:prod
+  cp -f package.json.bak package.json
+  rm -f package.json.bak
+  cp -f pnpm-lock.yaml.bak pnpm-lock.yaml
+  rm -f pnpm-lock.yaml.bak
   local _target_arch="x64"
   [[ "$CARCH" == "aarch64" ]] && _target_arch="arm64"
   [[ "$CARCH" == "armv7h" ]] && _target_arch="armv7l"
@@ -59,7 +67,6 @@ StartupWMClass=$_binname
 Categories=Development;Education;
 Keywords=scratch;
 EOT
-
   local _res
   for _res in 48 64 128 256 512; do
     local _icon_path="build/icons/${_res}x${_res}.png"
