@@ -1,6 +1,6 @@
 pkgbase = cpp-httplib-compiled
 	pkgdesc = A C++ HTTP/HTTPS server and client library (compiled version)
-	pkgver = 0.43.1
+	pkgver = 0.43.2
 	pkgrel = 1
 	url = https://github.com/yhirose/cpp-httplib
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = cpp-httplib-compiled
 	depends = zlib
 	depends = brotli
 	depends = zstd
-	provides = cpp-httplib=0.43.1
+	provides = cpp-httplib=0.43.2
 	provides = libcpp-httplib.so
 	conflicts = cpp-httplib
-	source = cpp-httplib-compiled-0.43.1.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v0.43.1.tar.gz
-	sha512sums = 65b770da7dd22f672ddae849f42c9fdb545e000004f825c3776fe29512ca12a47f78c72f9934c4562f4168ce37081ec40f5fb25de797e7fb99e70cb5946e12d4
+	source = cpp-httplib-compiled-0.43.2.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v0.43.2.tar.gz
+	sha512sums = 265355b86a798f628932b76402cba108f17402f573c79b00dbe54fa93e8b8ce4bb03adbc090b773c77fd175b6d108cd84481b10bb31f4fe60171d5d4bc3b74af
 
 pkgname = cpp-httplib-compiled
