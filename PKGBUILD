@@ -2,7 +2,7 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname="poezio-omemo"
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="OMEMO plugin for poezio"
 arch=("any")
@@ -23,7 +23,7 @@ makedepends=(
     "python-wheel"
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/poezio/poezio-omemo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("67a5a0a3c6bbd4c8b7b032639c5ed0c9a74fbc3e6911f95f179ffaf527224b8c")
+sha256sums=("47bdcb8d6336ead9cfef6943741743a95ae6d91c2d9c1df64d66ef7d0adbe32c")
 
 prepare() {
     mv "${pkgname}" "${pkgname}-${pkgver}"
