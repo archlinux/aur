@@ -1,0 +1,13 @@
+diff --git a/src/e_mod_main.c b/src/e_mod_main.c
+index 27c2c7f..ce941cd 100644
+--- a/src/e_mod_main.c
++++ b/src/e_mod_main.c
+@@ -423,7 +423,7 @@ _diskio_conf_free(void)
+ static Eina_Bool 
+ _diskio_conf_timer(void *data) 
+ {
+-   e_util_dialog_show( D_("DiskIO Configuration Updated"), data);
++   e_util_dialog_show( D_("DiskIO Configuration Updated"), ("DiskIO Configuration Updated"));
+    return EINA_FALSE;
+ }
+ 

@@ -5,7 +5,7 @@ _module_list=(
 #  'alarm'		# fails to compile (implicit-funcion-declaration)
   'cpu'
   'desksanity'
-# 'diskio'               # not compatible with EFL >= 1.13
+  'diskio'               # not compatible with EFL >= 1.13
   'eenvader.fractal'
 # 'elfe'                 # not compatible with Enlightenemnt >= 0.19.0
 # 'empris'               # not compatible with Enlightenment >= 0.19.0, adds dep on e_dbus
@@ -34,7 +34,7 @@ containsElement () {
 }
 
 pkgname=e-modules-extra-git
-pkgver=20260221
+pkgver=20260502
 pkgrel=1
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
@@ -50,8 +50,14 @@ depends=('enlightenment' 'efl' 'glibc')
 makedepends=('git')
 provides=("${pkgname%-*}")
 for _module in ${_module_list[@]}; do
-  source+=("git+https://git.enlightenment.org/enlightenment/enlightenment-module-$_module.git")
-  sha256sums+=('SKIP')
+  source+=(
+      "git+https://git.enlightenment.org/enlightenment/enlightenment-module-$_module.git"
+      e_mod_main.patch
+  )
+  sha256sums+=(
+      'SKIP'
+      '08142da0466d91519f5fa80a6b055e923076e982d748c660251c24741c4579e7'
+  )
 done
 
 pkgver() {
@@ -62,6 +68,11 @@ prepare() {
   if containsElement "empris" "${_module_list[@]}"; then
     sed -i '/PKG_CHECK_MODULES(E,/ s/enlightenment/& edbus/' "$srcdir/empris/configure.ac"
     sed -i '1a #include <E_DBus.h>' "$srcdir/empris/src/e_mod_main.c"
+  fi
+
+  if containsElement "diskio" "${_module_list[@]}"; then
+      cd ${srcdir}/enlightenment-module-diskio/src
+      patch --verbose e_mod_main.c < ${srcdir}/e_mod_main.patch
   fi
 }
 
