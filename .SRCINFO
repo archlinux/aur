@@ -1,15 +1,15 @@
 pkgbase = voidsprite-bin
 	pkgdesc = Free pixelart editor made in SDL3 C++
-	pkgver = 2026.04.10+alpha
+	pkgver = 2026.04.30+alpha
 	pkgrel = 6
 	url = https://github.com/counter185/voidsprite
 	arch = x86_64
 	license = GPL-2.0-only
-	provides = voidsprite=2026.04.10
+	provides = voidsprite=2026.04.30
 	conflicts = voidsprite
 	noextract = voidsprite
 	options = !strip
-	source = voidsprite::https://github.com/counter185/voidsprite/releases/download/alpha10.04.2026/voidsprite-alpha10.04.2026-linux-appimage-x64.AppImage
+	source = voidsprite::https://github.com/counter185/voidsprite/releases/download/alpha30.04.2026/voidsprite-alpha30.04.2026-linux-appimage-x64.AppImage
 	source = voidsprite.desktop::https://raw.githubusercontent.com/counter185/voidsprite/95d7c427a09b77e9a364033c49577b9abcc1ba01/freesprite/linux/com.github.counter185.voidsprite.desktop
 	source = license::https://raw.githubusercontent.com/counter185/voidsprite/95d7c427a09b77e9a364033c49577b9abcc1ba01/LICENSE
 	source = metainfo.xml::https://raw.githubusercontent.com/counter185/voidsprite/95d7c427a09b77e9a364033c49577b9abcc1ba01/freesprite/linux/com.github.counter185.voidsprite.metainfo.xml
@@ -22,7 +22,7 @@ pkgbase = voidsprite-bin
 	source = icon-128x128.png::https://raw.githubusercontent.com/counter185/voidsprite/95d7c427a09b77e9a364033c49577b9abcc1ba01/freesprite/linux/icons/128x128.png
 	source = icon-256x256.png::https://raw.githubusercontent.com/counter185/voidsprite/95d7c427a09b77e9a364033c49577b9abcc1ba01/freesprite/linux/icons/256x256.png
 	source = icon-512x512.png::https://raw.githubusercontent.com/counter185/voidsprite/95d7c427a09b77e9a364033c49577b9abcc1ba01/freesprite/linux/icons/512x512.png
-	sha256sums = 6da3c456606991e6553e31ac456980652d0af3d9500700d100914e2fc2bf7e41
+	sha256sums = ddd2e39ac9eb78fc0cc7ef23f752b26a1285235020e95992788d3b1f9909ac7e
 	sha256sums = 08dda56f5cad7861a9508d35238c5ece6d2287d5c89796683b23131a967fb527
 	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
 	sha256sums = 23ff809ac82b1eec7d7da1168204ef8bb087b130a4dfac17c2163faba27d6c5c

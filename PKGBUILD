@@ -1,14 +1,12 @@
 # Maintainer: buj <buj351@outlook.com>
 pkgname=voidsprite-bin
-_pkgver=10.04.2026
+_pkgver=30.04.2026
 pkgver="$(echo $_pkgver | tr '.' $'\n' | tac | paste -s -d '.')"+alpha
 pkgrel=6
 pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
 #_zip=voidsprite-${_pkgver}-linux-x86_64.flatpak.zip
-# Hardcoding it temporarily. Will switch back to proper releases when those come out.
-_appimage=https://github.com/counter185/voidsprite/releases/download/alpha10.04.2026/voidsprite-alpha10.04.2026-linux-appimage-x64.AppImage
-#source=("https://github.com/counter185/voidsprite/releases/download/alpha${_pkgver}/${_zip}")
+_appimage="https://github.com/counter185/voidsprite/releases/download/alpha30.04.2026/voidsprite-alpha30.04.2026-linux-appimage-x64.AppImage"
 _root=https://raw.githubusercontent.com/counter185/voidsprite/95d7c427a09b77e9a364033c49577b9abcc1ba01
 source=("voidsprite::$_appimage" "voidsprite.desktop::$_root/freesprite/linux/com.github.counter185.voidsprite.desktop" "license::$_root/LICENSE"
         "metainfo.xml::$_root/freesprite/linux/com.github.counter185.voidsprite.metainfo.xml"
@@ -21,7 +19,7 @@ done
 arch=('x86_64')
 conflicts=('voidsprite')
 provides=("voidsprite=$(echo $_pkgver | tr '.' $'\n' | tac | paste -s -d '.')")
-sha256sums=('6da3c456606991e6553e31ac456980652d0af3d9500700d100914e2fc2bf7e41'  # voidsprite
+sha256sums=('ddd2e39ac9eb78fc0cc7ef23f752b26a1285235020e95992788d3b1f9909ac7e'  # voidsprite
             '08dda56f5cad7861a9508d35238c5ece6d2287d5c89796683b23131a967fb527'  # voidsprite.desktop
             '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'  # license
             '23ff809ac82b1eec7d7da1168204ef8bb087b130a4dfac17c2163faba27d6c5c'  # metainfo.xml
