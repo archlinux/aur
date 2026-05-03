@@ -3,7 +3,7 @@
 
 _pkgname=llm-checker
 pkgname=llm-checker
-pkgver=3.5.11
+pkgver=3.5.13
 pkgrel=1
 pkgdesc="CLI tool that scans hardware and recommends optimal LLM models for local inference with Ollama integration"
 arch=('any')
