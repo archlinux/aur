@@ -5,6 +5,7 @@ pkgbase = libar2
 	url = https://codeberg.org/maandree/libar2
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	checkdepends = glibc
 	checkdepends = musl
