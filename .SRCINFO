@@ -1,6 +1,6 @@
 pkgbase = stutter-git
 	pkgdesc = Focus-aware process priority daemon
-	pkgver = 0.3.1.r1.gaaf8913
+	pkgver = 0.3.1.r1.g806d146
 	pkgrel = 1
 	url = https://github.com/Kleshzz/stutter
 	arch = x86_64
