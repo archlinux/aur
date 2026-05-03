@@ -1,0 +1,15 @@
+pkgbase = mdslw-bin
+	pkgdesc = MarkDown Sentence Line Wrapper
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/razziel89/mdslw
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = mdslw
+	conflicts = mdslw
+	source = mdslw-0.17.1-x86_64-unknown-linux-musl::https://github.com/razziel89/mdslw/releases/download/0.17.1/mdslw_x86_64-unknown-linux-musl
+	source = LICENCE-0.17.1::https://github.com/razziel89/mdslw/raw/0.17.1/LICENCE
+	sha256sums = ed442f0785b9e33b145bb45b0a5efcce58be8372c0f4ad55eb5d2ad7849cd61a
+	sha256sums = e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052
+
+pkgname = mdslw-bin
