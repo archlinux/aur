@@ -73,7 +73,7 @@ build() {
   sh setup.sh hints/linux.500
   cd "$srcdir/$_pkgname"
 	make fetch-lua
-  make
+  make all
 }
 
 package() {
@@ -87,14 +87,14 @@ package() {
     -i "$pkgdir"/usr/bin/nethack
 
   install -dm755 "$pkgdir"/usr/lib/nethack
-  mv "$pkgdir"/var/games/nethack/{nethack,recover} "$pkgdir"/usr/lib/nethack/
+  mv "$pkgdir"/games/lib/nethackdir/{nethack,recover} "$pkgdir"/usr/lib/nethack/
 
   install -vDm 644 ../nethack.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/nethack.conf"
 
   install -Dm644 doc/Guidebook.txt "$pkgdir"/usr/share/doc/nethack/Guidebook.txt
   install -Dm644 dat/license "$pkgdir"/usr/share/licenses/nethack/LICENSE
 
-  cd "$pkgdir/var/games/nethack/"
+  cd "$pkgdir/games/lib/nethackdir/"
   chmod o+w logfile perm record
 }
 # vim:set ts=2 sw=2 et:
