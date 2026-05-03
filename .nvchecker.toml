@@ -1,0 +1,5 @@
+[wiper-bin]
+source = "github"
+github = "ikebastuz/wiper"
+use_latest_release = true
+prefix = "v"
