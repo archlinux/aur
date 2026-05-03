@@ -19,8 +19,9 @@ source=("zRescuezilla.iso::https://github.com/rescuezilla/rescuezilla/releases/d
 sha256sums=('SKIP')
 
 package() {
-    install -d "${pkgdir}/var/lib/libvirt/images"
 
-    install -m644 "${srcdir}/zRescuezilla.iso" \
+    install -Dm644 "${srcdir}/zRescuezilla.iso" \\
+
         "${pkgdir}/var/lib/libvirt/images/zRescuezilla.iso"
+
 }
