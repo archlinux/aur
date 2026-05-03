@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-compat-55
 pkgver=2.3.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Compatibility package for ffmpeg to provide versions 55 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
@@ -20,7 +20,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"{,.asc}
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 sha256sums=('cf1be1c5c3973b8db16b6b6e8e63a042d414fb5d47d3801a196cbba21a0a624a'
             'SKIP'
-            '1e4a01ed62db525607f9d0c708ef7889474222f9ae31aac057c5bb67edf7e38f'
+            'ee336adcddc56aeb98db5c17fbad9a32d17825f6e7799a46a56a1edcfc282248'
             '8fad5f253bcda7a17523dbfcbfcfd60b3db23783dcdb65998005cddc7c7776c3')
 
 prepare() {
