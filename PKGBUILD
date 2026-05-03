@@ -3,7 +3,7 @@
 _pkgname=celestia
 pkgname=$_pkgname-bin
 pkgver=1.7.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Real-time space simulation"
 arch=('x86_64')
 url="https://celestiaproject.space/"
@@ -16,13 +16,13 @@ makedepends=(libappimage)
 
 _qtver=6
 _target="celestia-latest-x86_64.AppImage"
-_download_url="https://download.opensuse.org/repositories/home:/munix9:/unstable/AppImage/"
+_download_url="https://download.opensuse.org/repositories/home:/munix9:/celestia:/1.7/AppImage/"
 
 source=(
 	"$_download_url/$_target"
 	"$_pkgname.bash"
 )
-sha256sums=('ad354626dfa4d274c2874560dd8e789401da24bdb66c81cbafee6c5b778b28bf'
+sha256sums=('c669cfe5b60c0284bb64b79e9e52126fb15b0cb4b12c51abb1049faba7bdfd09'
             '58672bcc02b5f50eb5dee22264b4ddb629a3927779941e359257927261021830')
 
 _squashfs_root="squashfs-root"
