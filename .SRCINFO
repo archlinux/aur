@@ -1,0 +1,52 @@
+pkgbase = gcc15
+	pkgdesc = The GNU Compiler Collection (15.x.x)
+	pkgver = 15.2.1+r604+g0b99615a8aef
+	pkgrel = 1
+	url = https://gcc.gnu.org
+	arch = x86_64
+	license = GPL-3.0-or-later WITH GCC-exception-3.1
+	license = GFDL-1.3-or-later
+	checkdepends = dejagnu
+	checkdepends = expect
+	checkdepends = inetutils
+	checkdepends = python-pytest
+	checkdepends = tcl
+	makedepends = binutils
+	makedepends = doxygen
+	makedepends = git
+	makedepends = libisl
+	makedepends = libmpc
+	makedepends = python
+	makedepends = zstd
+	options = !emptydirs
+	options = !lto
+	source = gcc15::git+https://github.com/gcc-mirror/gcc.git#commit=0b99615a8aef011cff76c6caa8c09434f46598b3
+	source = c89
+	source = c99
+	sha256sums = fda170be6da777107c74ad322d51a508edf448b86ce8247755eb0eb1524f38b6
+	sha256sums = 9afb0195be5b5730f3550c46cc2a5a5f9170ce68557e5080e733f0d9a695021b
+	sha256sums = 332c6b7d63e36ce8a944180a5b00c931d56f13a572e917a9fe9266b0c2d8a8b5
+	b2sums = 933be03bc3fb9714ae311ccef1b00a6dc77098fb8df5fc9b0245dd621284ac44601e3f8bfc259808e84283044cb7a48a3a95a258507475e6fd61ccb71f592add
+	b2sums = 587ebe5c75c5abf444270f1cbd86a9199e2fdb503bcdc3cd159190f8169a6a9b0cd0e4f3dd4ef0676d3d9912df7ab18858fae8c8ab8a1b0df37a449e1ed1edd1
+	b2sums = de8caebaeddda549c7680fde933378cbae23de7fe7e90ba56fa2b8715edc32a3b372ea6be80aad83a74de70da7e41c8f79e48061546f69cdbac40f4287ca3937
+
+pkgname = gcc15
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends (15.x.x)
+	depends = gcc15-libs
+	depends = binutils>=2.28
+	depends = libmpc
+	depends = zstd
+	depends = libisl.so
+	options = !emptydirs
+	options = staticlibs
+
+pkgname = gcc15-libs
+	pkgdesc = Runtime libraries shipped by GCC (15.x.x)
+	depends = glibc>=2.27
+	options = !emptydirs
+	options = !strip
+
+pkgname = gcc15-fortran
+	pkgdesc = Fortran front-end for GCC (15.x.x)
+	depends = gcc15
+	depends = libisl.so
