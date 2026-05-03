@@ -1,5 +1,5 @@
 # Maintainer:  Peter Mattern <pmattern@arcor.de>
-# Contributor: Yen Chi Hsuan <yan12125@gmail.com>
+# Contributor: Yen Chi Hsuan <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lxqt-panel
