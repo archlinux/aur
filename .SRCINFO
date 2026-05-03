@@ -1,0 +1,12 @@
+pkgbase = rescuezilla-iso
+	pkgdesc = Clonezilla GUI
+	pkgver = 2.6.1_oracular
+	pkgrel = 1
+	url = https://github.com/rescuezilla/rescuezilla
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = zRescuezilla.iso::https://github.com/rescuezilla/rescuezilla/releases/download/2.6.1/rescuezilla-2.6.1-64bit.oracular.iso
+	sha256sums = SKIP
+
+pkgname = rescuezilla-iso
