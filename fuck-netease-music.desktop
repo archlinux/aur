@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Fuck Netease Music
+Comment=NetEase Cloud Music Linux port
+Exec=fuck-netease-music %U
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+StartupNotify=true
+Icon=audio-x-generic
