@@ -2,7 +2,7 @@
 
 pkgname=rusbmux-git
 pkgver=0.1.0.r143.gdfef992
-pkgrel=1
+pkgrel=2
 pkgdesc="A usbmuxd replacement in pure Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/abdullah-albanna/rusbmux"
@@ -58,7 +58,7 @@ StateDirectory=lockdown
 WantedBy=multi-user.target
 EOF
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/39-rusbmux.rules" <<'EOF'
-ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="05ac", TAG+="systemd", ENV{SYSTEMD_WANTS}="rusbmux.service"
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="05ac", TAG+="systemd", ENV{SYSTEMD_WANTS}+="rusbmux.service"
 EOF
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
