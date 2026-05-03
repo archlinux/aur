@@ -2,7 +2,7 @@
 # Companion -git package. Tracks the main branch HEAD.
 # Submit as the AUR package "sentinel-git" alongside "sentinel".
 pkgname=sentinel-git
-pkgver=0.5.2.r1.g08f184a
+pkgver=0.6.1.r0.g0000000
 pkgrel=1
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (git HEAD)"
 install=sentinel.install
@@ -39,13 +39,15 @@ optdepends=(
 )
 backup=('etc/security/sentinel.conf' 'etc/pam.d/polkit-1')
 source=("sentinel::git+$url.git#branch=main")
+# Always SKIP for VCS packages; makepkg validates the git ref instead
+# of a tarball checksum.
 sha256sums=('SKIP')
 
 pkgver() {
     cd sentinel
     # 0.2.0.r{commits-since-tag}.g{shortsha}
     git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-        || printf '0.5.2.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+        || printf '0.6.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -70,6 +72,12 @@ build() {
         target/release/$bin completions zsh  > target/release/share/_$bin
         target/release/$bin man              > target/release/share/$bin.1
     done
+}
+
+check() {
+    cd sentinel
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --release --workspace --locked
 }
 
 package() {
