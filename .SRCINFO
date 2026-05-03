@@ -1,0 +1,22 @@
+pkgbase = pulsegate-git
+	pkgdesc = Neon SSH Control Center TUI for managing SSH servers and quick commands
+	pkgver = 0.1.0.r8.ge9a6c57
+	pkgrel = 1
+	url = https://git.pepe44.dev/Pepe44DEV/PulseGate
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = openssh
+	depends = sshpass
+	depends = gnome-keyring
+	depends = libsecret
+	optdepends = seahorse: manage stored keyring passwords
+	optdepends = kitty: recommended terminal
+	provides = pulsegate
+	conflicts = pulsegate
+	source = PulseGate::git+https://git.pepe44.dev/Pepe44DEV/PulseGate
+	sha256sums = SKIP
+
+pkgname = pulsegate-git
