@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Filey
+Comment=A fast local notes manager
+Exec=filey
+Icon=filey
+Terminal=false
+Categories=Utility;Filesystem;

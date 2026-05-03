@@ -1,0 +1,19 @@
+pkgbase = filey-bin
+	pkgdesc = A fast, local md files management tool built with Flutter/C++
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Surya-Raghuram/GraphFS.git
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = glib2
+	depends = gcc-libs
+	depends = glibc
+	provides = filey
+	conflicts = filey
+	source = https://github.com/Surya-Raghuram/GraphFS/releases/download/v1.0.0/filey-linux-x64.tar.gz
+	source = filey.desktop
+	sha256sums = 44575ab9edef58080c54230c632e3ef8457fece44dbd2a6acf4ecabd7f9706d9
+	sha256sums = 5a0c3e5e67205d21178dc5d448976d1e800edcbd9d73612ee2a402db7a7deecc
+
+pkgname = filey-bin
