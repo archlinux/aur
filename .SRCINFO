@@ -4,12 +4,15 @@ pkgbase = async-profiler-bin
 	pkgrel = 1
 	url = https://github.com/async-profiler/async-profiler
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	depends = java-environment
 	provides = async-profiler
 	conflicts = async-profiler
 	options = !strip
-	source = https://github.com/async-profiler/async-profiler/releases/download/v4.4/async-profiler-4.4-linux-x64.tar.gz
-	sha256sums = 1233f26fc95753e75ce32733bbcaf8f0bedc2c098b0e798af87935b08a63b24e
+	source_x86_64 = https://github.com/async-profiler/async-profiler/releases/download/v4.4/async-profiler-4.4-linux-x64.tar.gz
+	sha256sums_x86_64 = 1233f26fc95753e75ce32733bbcaf8f0bedc2c098b0e798af87935b08a63b24e
+	source_aarch64 = https://github.com/async-profiler/async-profiler/releases/download/v4.4/async-profiler-4.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 86ff97b4436accdb6d7bb65c1cf6e38a756f2037a921994d8fa1dcb97d1dc53c
 
 pkgname = async-profiler-bin

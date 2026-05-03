@@ -5,7 +5,7 @@ _pkgname=async-profiler
 pkgver=4.4
 pkgrel=1
 pkgdesc='Sampling CPU and HEAP profiler for Java featuring AsyncGetCallTrace + perf_events (prebuilt binaries)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/async-profiler/async-profiler'
 license=('Apache')
 depends=('java-environment')
@@ -13,11 +13,21 @@ provides=('async-profiler')
 conflicts=('async-profiler')
 options=('!strip')
 
-source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/async-profiler-${pkgver}-linux-x64.tar.gz")
-sha256sums=('1233f26fc95753e75ce32733bbcaf8f0bedc2c098b0e798af87935b08a63b24e')
+source_x86_64=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/async-profiler-${pkgver}-linux-x64.tar.gz")
+source_aarch64=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/async-profiler-${pkgver}-linux-arm64.tar.gz")
+sha256sums_x86_64=('1233f26fc95753e75ce32733bbcaf8f0bedc2c098b0e798af87935b08a63b24e')
+sha256sums_aarch64=('86ff97b4436accdb6d7bb65c1cf6e38a756f2037a921994d8fa1dcb97d1dc53c')
 
 package() {
-    cd "${_pkgname}-${pkgver}-linux-x64"
+    local _upstream_arch
+
+    case "${CARCH}" in
+        x86_64) _upstream_arch='x64' ;;
+        aarch64) _upstream_arch='arm64' ;;
+        *) printf 'Unsupported architecture: %s\n' "${CARCH}" >&2; return 1 ;;
+    esac
+
+    cd "${_pkgname}-${pkgver}-linux-${_upstream_arch}"
 
     # upstream layout
     install -d "${pkgdir}/opt/async-profiler"
