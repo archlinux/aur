@@ -4,6 +4,7 @@ pkgbase = libterminput
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libterminput
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	source = libterminput-1.1.1.tar.gz::https://codeberg.org/maandree/libterminput/archive/1.1.1.tar.gz
 	sha256sums = 46158316ea5b2bd956016e68b476250586c0b12f8df1ef944a1c3f2d44f3dc9d
