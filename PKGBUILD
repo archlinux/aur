@@ -31,42 +31,42 @@ pkgver() {
   echo "${_version#'NetHack.'}+r${_commits}+g${_short_commit_hash}"
 }
 
-prepare() {
-  cd "${_pkgname}"
+# prepare() {
+#   cd "${_pkgname}"
 
-  sed -e 's|^/\* \(#define LINUX\) \*/|\1|' \
-    -e 's|^/\* \(#define TIMED_DELAY\) \*/|\1|' \
-    -i include/unixconf.h
+#   sed -e 's|^/\* \(#define LINUX\) \*/|\1|' \
+#     -e 's|^/\* \(#define TIMED_DELAY\) \*/|\1|' \
+#     -i include/unixconf.h
 
-  # we are setting up for setgid games, so modify all necessary permissions
-  # to allow full access for groups
+#   # we are setting up for setgid games, so modify all necessary permissions
+#   # to allow full access for groups
 
-  # With thanks to bugtracker user loqs for the CFLAGS and LDFLAGS adjustments
-  sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/games/nethack/|' \
-    -e '/^SHELLDIR/ s|/games|/usr/bin|' \
-    -e '/^VARDIRPERM/ s|0755|0775|' \
-    -e '/^VARFILEPERM/ s|0600|0664|' \
-    -e '/^GAMEPERM/ s|0755|02755|' \
-    -e '/-DTIMED_DELAY/d' \
-    -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/games/nethack/sysconf\\"|' \
-    -e 's|CFLAGS=-g -O -I../include -DNOTPARMDECL|CFLAGS+= $(CPPFLAGS) -I../include -DNOTPARMDECL|' \
-    -e 's/LFLAGS=-rdynamic/LFLAGS=$(LDFLAGS) -rdynamic/' \
-    -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/nethack/\\"|' \
-    -i sys/unix/hints/linux.500
+#   # With thanks to bugtracker user loqs for the CFLAGS and LDFLAGS adjustments
+#   sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/games/nethack/|' \
+#     -e '/^SHELLDIR/ s|/games|/usr/bin|' \
+#     -e '/^VARDIRPERM/ s|0755|0775|' \
+#     -e '/^VARFILEPERM/ s|0600|0664|' \
+#     -e '/^GAMEPERM/ s|0755|02755|' \
+#     -e '/-DTIMED_DELAY/d' \
+#     -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/games/nethack/sysconf\\"|' \
+#     -e 's|CFLAGS=-g -O -I../include -DNOTPARMDECL|CFLAGS+= $(CPPFLAGS) -I../include -DNOTPARMDECL|' \
+#     -e 's/LFLAGS=-rdynamic/LFLAGS=$(LDFLAGS) -rdynamic/' \
+#     -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/nethack/\\"|' \
+#     -i sys/unix/hints/linux.500
 
-  # Fix the way they disable __warn_unused_result__
-  sed '/^#define __warn_unused_result__/ s,/\*empty\*/,__unused__,' \
-    -i include/tradstdc.h
+#   # Fix the way they disable __warn_unused_result__
+#   sed '/^#define __warn_unused_result__/ s,/\*empty\*/,__unused__,' \
+#     -i include/tradstdc.h
 
-  sed -e 's|^#GAMEUID.*|GAMEUID = root|' \
-    -e 's|^#GAMEGRP.*|GAMEGRP = games|' \
-    -e '/^FILEPERM\s*=/ s|0644|0664|' \
-    -e '/^DIRPERM\s*=/ s|0755|0775|' \
-    -i sys/unix/Makefile.top
+#   sed -e 's|^#GAMEUID.*|GAMEUID = root|' \
+#     -e 's|^#GAMEGRP.*|GAMEGRP = games|' \
+#     -e '/^FILEPERM\s*=/ s|0644|0664|' \
+#     -e '/^DIRPERM\s*=/ s|0755|0775|' \
+#     -i sys/unix/Makefile.top
 
-  sed -e "/^MANDIR\s*=/s|/usr/man/man6|$pkgdir/usr/share/man/man6|" \
-    -i sys/unix/Makefile.doc
-}
+#   sed -e "/^MANDIR\s*=/s|/usr/man/man6|$pkgdir/usr/share/man/man6|" \
+#     -i sys/unix/Makefile.doc
+# }
 
 build() {
   cd "NetHack/sys/unix"
