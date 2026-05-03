@@ -1,5 +1,5 @@
 pkgname=multica-bin
-pkgver=0.2.23
+pkgver=0.2.24
 pkgrel=1
 pkgdesc="The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills"
 arch=(x86_64 aarch64)
@@ -11,8 +11,8 @@ options=(!strip !debug)
 conflicts=("multica")
 provides=(multica)
 
-source=("https://github.com/multica-ai/multica/releases/download/v0.2.23/multica-cli-0.2.23-linux-amd64.tar.gz")
-sha256sums=('6e0ce64a9eaf44d01ae0f0a85cd0da8eeedca55facc447ea9ce72941a719eac3')
+source=("https://github.com/multica-ai/multica/releases/download/v0.2.24/multica-cli-0.2.24-linux-amd64.tar.gz")
+sha256sums=('058386f695f5d4ecec18b13a278080a22e6edd9ef25c831debb23a1a43d398c0')
 
 prepare() {
     tar -xf "${srcdir}/$(basename "${source}")"
