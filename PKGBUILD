@@ -1,6 +1,6 @@
-# Maintainer: Om <your.email@example.com>
+# Maintainer: Om <omaku2006@gmail.com>
 pkgname=vivid-engine
-pkgver=0.4.0.3.g233f8f8
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Lightweight, daemon-driven Wayland wallpaper engine with smooth animations & video support"
 arch=('x86_64')
@@ -13,7 +13,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --tags --long | sed 's/^v//;s/-/./g'
+  # --always = tag na hoy toh commit hash thi version banave
+  git describe --tags --long --always 2>/dev/null | sed 's/^v//;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

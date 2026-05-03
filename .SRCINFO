@@ -1,6 +1,6 @@
 pkgbase = vivid-engine
 	pkgdesc = Lightweight, daemon-driven Wayland wallpaper engine with smooth animations & video support
-	pkgver = 0.4.0.3.g233f8f8
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/omaku2006/vivid-engine
 	arch = x86_64
