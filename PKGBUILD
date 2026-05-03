@@ -2,7 +2,7 @@
 
 pkgname=t3code-nightly-bin
 pkgver=0.0.21_nightly.20260417.58
-pkgrel=1
+pkgrel=2
 pkgdesc='T3 Code nightly desktop app packaged from the upstream AppImage'
 arch=('x86_64')
 _upstream_tag='nightly-v0.0.21-nightly.20260417.58'
@@ -117,6 +117,7 @@ Exec=t3code-nightly %U
 Terminal=false
 Type=Application
 Icon=t3code-nightly
+StartupWMClass=t3code
 Categories=Development;
 EOF
 
