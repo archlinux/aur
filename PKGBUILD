@@ -1,8 +1,8 @@
 # Maintainer: Kostiantyn Kushnir <...>
 pkgname=openusage-cli-git
-pkgver=0.0.8.r46.geac6925
+pkgver=0.0.9.r67.ge628c04
 pkgrel=1
-pkgdesc="HTTP daemon for executing OpenUsage plugins and exposing local usage snapshots"
+pkgdesc="Local daemon and CLI for AI provider usage/quota via OpenUsage plugins"
 arch=('x86_64' 'aarch64')
 url="https://github.com/chpock/openusage-cli"
 license=('MIT')
@@ -63,6 +63,7 @@ package() {
     # Install plugins
     install -dm755 "$pkgdir/usr/share/openusage-cli/openusage-plugins"
     cp -a vendor/openusage/plugins/. "$pkgdir/usr/share/openusage-cli/openusage-plugins/"
+    rm -rf "$pkgdir/usr/share/openusage-cli/openusage-plugins/mock"
 
     # Install plugin overrides
     install -dm755 "$pkgdir/usr/share/openusage-cli/plugin-overrides"
