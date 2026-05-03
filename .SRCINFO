@@ -5,6 +5,7 @@ pkgbase = orphan-reaper
 	url = https://codeberg.org/maandree/orphan-reaper
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	source = orphan-reaper-2.3.5.tar.gz::https://codeberg.org/maandree/orphan-reaper/archive/2.3.5.tar.gz
 	sha256sums = 4e6f470b61188c6984e694eb17860ee9e7f55ff012e4d8665d6d4e884831d121
