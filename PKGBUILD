@@ -1,27 +1,17 @@
 pkgname=rescuezilla-iso
-
-pkgver=2.6.1_oracular
-
+pkgver=2.6.1
 pkgrel=1
-
-pkgdesc="Clonezilla GUI"
-
-arch=('x86_64')
-
+pkgdesc="Rescuezilla live ISO (Clonezilla GUI)"
+arch=('any')
 url="https://github.com/rescuezilla/rescuezilla"
-
 license=('custom')
-
 options=('!strip')
 
-source=("zRescuezilla.iso::https://github.com/rescuezilla/rescuezilla/releases/download/2.6.1/rescuezilla-2.6.1-64bit.oracular.iso")
-
+source=("https://github.com/rescuezilla/rescuezilla/releases/download/${pkgver}/rescuezilla-${pkgver}-64bit.oracular.iso")
+noextract=("rescuezilla-${pkgver}-64bit.oracular.iso")
 sha256sums=('SKIP')
 
 package() {
-
-    install -Dm644 "${srcdir}/zRescuezilla.iso" \\
-
+    install -Dm644 "${srcdir}/rescuezilla-${pkgver}-64bit.oracular.iso" \
         "${pkgdir}/var/lib/libvirt/images/zRescuezilla.iso"
-
 }
