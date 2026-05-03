@@ -1,6 +1,8 @@
+# SPDX-FileCopyrightText: 2025 Atay Özcan <atay@oezcan.me>
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 install=sentinel.install
 # Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
@@ -38,7 +40,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # the PKGBUILD lands on the AUR repo. The in-repo copy stays at
 # 'SKIP' so dependabot-style updates don't churn this file every
 # release; never commit a real hash here.
-sha256sums=('8e89c76de88fcb3100dea7f40dc98c5707c49c3363d9c34fc788570d534e5ce4')
+sha256sums=('3df07eef0128d4101ecb0b84e665f57ca5b7bb0c6b4c8f188b67766fa014f41e')
 
 prepare() {
     cd "$pkgname-$pkgver"
