@@ -1,7 +1,7 @@
 # Maintainer: Pasqual Troncone <pasqualtroncone at gmail dot com>
 
 pkgname=ai-jail
-pkgver=0.9.0
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='Sandbox for AI coding agents (bubblewrap on Linux, sandbox-exec on macOS)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/akitaonrails/ai-jail/archive/refs/tags/v$pkgver.tar.gz"
 )
 b2sums=(
-    '87de70a9281ec08237877efa74d0ddb9939a73aa0f28b79e181760c825c6b3fa08fcd3ee21de79dbe1133fb94cdf105aa2542267b44e4e7351a756f68f59ddf3'
+    '762aa7907e5e70d4272181144716bc9e6b908421a31a3d5c863d0b61d16a71f0d3cfb37db7891c33e592b2055d85fe340affc44f292bf4e07592a182cbb0e042'
 )
 
 prepare() {
