@@ -13,11 +13,10 @@ depends=(
 makedepends=(
   'meson'
   'ninja'
-  'vala'
   'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gabutakut/gabutytb/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3371286b8e885dea0c1f828833d552ead25cf02a223f46d68097838cb1ce748f')
+sha256sums=('a6716de4cfb5f5414d1770574a30fb597264b35150bfdec1e68cbbb7bb798d3d')
 
 build() {
   cd "$pkgname-$pkgver"

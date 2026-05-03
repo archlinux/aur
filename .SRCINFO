@@ -7,11 +7,10 @@ pkgbase = gabutytb
 	license = LGPL2.1
 	makedepends = meson
 	makedepends = ninja
-	makedepends = vala
 	makedepends = pkg-config
 	depends = python3
 	depends = gtk4
 	source = gabutytb-1.0.1.tar.gz::https://github.com/gabutakut/gabutytb/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = 3371286b8e885dea0c1f828833d552ead25cf02a223f46d68097838cb1ce748f
+	sha256sums = a6716de4cfb5f5414d1770574a30fb597264b35150bfdec1e68cbbb7bb798d3d
 
 pkgname = gabutytb
