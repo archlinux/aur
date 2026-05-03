@@ -7,6 +7,7 @@ import platform
 import threading
 import time
 import queue
+import shutil
 from pathlib import Path
 
 # Get user-writable data directory
@@ -63,6 +64,7 @@ class BrosLauncherWindow:
         self.running = False
         self.vm_process = None
         self.log_queue = queue.Queue()
+        self.qemu_available = self.check_qemu()
 
         self.scale_cores = None
         self.scale_freq = None
@@ -79,6 +81,12 @@ class BrosLauncherWindow:
         self.load_logo()
         self.create_ui()
         self.log_init()
+
+    def check_qemu(self):
+        qemu_path = shutil.which("qemu-system-x86_64")
+        if qemu_path:
+            return True
+        return False
 
     def load_logo(self):
         logo_file = get_logo_path()
@@ -295,10 +303,12 @@ class BrosLauncherWindow:
         )
         info_frame.pack(fill=tk.X, padx=8, pady=8)
 
+        qemu_status = "OK" if self.qemu_available else "MISSING"
+
         for label, value in [
             ("Platform", platform.system()),
             ("Architecture", "x86_64"),
-            ("QEMU", QEMU_BIN),
+            ("QEMU", qemu_status),
         ]:
             row = tk.Frame(info_frame, bg=COLOR_BG_MEDIUM)
             row.pack(fill=tk.X)
@@ -312,6 +322,9 @@ class BrosLauncherWindow:
                 width=12,
                 anchor=tk.W,
             ).pack(side=tk.LEFT)
+            value_color = (
+                COLOR_TEXT if (label != "QEMU" or self.qemu_available) else "#ff4444"
+            )
             tk.Label(
                 row,
                 text=value,
@@ -446,8 +459,17 @@ class BrosLauncherWindow:
         iso_status = "OK" if os.path.exists(self.iso_path) else "MISSING"
         self.log_to_console(f"[INIT] {APP_NAME} v{APP_VERSION}", "system")
         self.log_to_console(f"[INIT] CPU: {CPU_NAME}", "system")
+        self.log_to_console(
+            f"[INIT] QEMU: {'Available' if self.qemu_available else 'Not Found'}",
+            "system",
+        )
         self.log_to_console(f"[INIT] ISO: {iso_status}", "info")
         self.log_to_console(f"[INIT] Configuration loaded", "info")
+
+        if not self.qemu_available:
+            self.log_to_console(
+                "[WARN] QEMU not found - install qemu-system-x86", "warn"
+            )
 
     def show_about(self):
         about_win = tk.Toplevel(self.root)
@@ -544,8 +566,20 @@ class BrosLauncherWindow:
         if self.running:
             return
 
+        if not self.qemu_available:
+            messagebox.showerror(
+                "QEMU Not Found",
+                "qemu-system-x86_64 is not installed or not in PATH.\n\n"
+                "Install it with: pacman -S qemu-system-x86",
+            )
+            return
+
         if not os.path.exists(self.iso_path):
-            messagebox.showerror("Error", f"ISO not found: {self.iso_path}")
+            messagebox.showerror(
+                "ISO Not Found",
+                f"Bros ISO not found at:\n{self.iso_path}\n\n"
+                "Please place bros.iso in the application directory.",
+            )
             return
 
         self.running = True

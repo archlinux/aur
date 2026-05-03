@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=BrosLauncher
+GenericName=Bros OS Virtual Machine Launcher
+Comment=Launch Bros OS in QEMU virtual machine
+Exec=broslauncher
+Icon=broslauncher
+Terminal=false
+Type=Application
+Categories=System;Emulator;Virtualization;
+Keywords=Bros;OS;QEMU;Virtual;Machine;VM;
+StartupNotify=true
