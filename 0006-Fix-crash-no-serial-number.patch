@@ -1,0 +1,30 @@
+--- a/src/Controller/Src/Finder/UsbFinder.cpp	2025-04-24 07:44:37.000000000 +0200
++++ b/src/Controller/Src/Finder/UsbFinder.cpp	2025-11-02 21:05:21.997045897 +0100
+@@ -144,14 +144,19 @@
+                                 }
+                                 else
+                                 {
+-                                sprintf((char*)strDescWithAddress, "%s:%s", strDesc, serialNumber);
+-
+-                                 strncpy(const_cast<char*>(devInfo.displayName),(const char*)strDescWithAddress, MAX_DISPLAYNAME - 1);
+-
+-                                 if (strlen(devInfo.displayName) != 0 || searchSecondDevice)
+-                                 {
+-                                     isValidDeviceInfo = true;
+-                                 }
++                                    if (dd.iSerialNumber == 0)
++                                    {
++                                        sprintf((char*)strDescWithAddress, "%s", strDesc);
++                                    } 
++                                    else
++                                    {
++                                        sprintf((char*)strDescWithAddress, "%s:%s", strDesc, serialNumber);
++                                    }
++                                    strncpy(const_cast<char*>(devInfo.displayName),(const char*)strDescWithAddress, MAX_DISPLAYNAME - 1);
++                                    if (strlen(devInfo.displayName) != 0 || searchSecondDevice)
++                                    {
++                                        isValidDeviceInfo = true;
++                                    }
+                                 }
+                                 libusb_close (devHandle);
+                                 devHandle = nullptr;
