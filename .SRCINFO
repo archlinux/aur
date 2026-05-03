@@ -1,0 +1,15 @@
+pkgbase = spotify-dl-bin
+	pkgdesc = A command-line utility to download songs and playlists directly from Spotify
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/dcordonu/spotify-dl
+	arch = x86_64
+	license = MIT
+	depends = openssl
+	provides = spotify-dl
+	source = spotify-dl-bin::https://github.com/dcordonu/spotify-dl/releases/download/v0.10.2/spotify-dl
+	source = https://raw.githubusercontent.com/dcordonu/spotify-dl/v0.10.2/LICENSE
+	sha256sums = ed1a05e935784988a57cd583a1d824675efdf71c5fbe033797fc90bee334dcb8
+	sha256sums = SKIP
+
+pkgname = spotify-dl-bin
