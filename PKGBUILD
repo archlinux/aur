@@ -2,7 +2,7 @@
 
 pkgname=rusbmux-git
 pkgver=0.1.0.r143.gdfef992
-pkgrel=2
+pkgrel=3
 pkgdesc="A usbmuxd replacement in pure Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/abdullah-albanna/rusbmux"
@@ -22,18 +22,12 @@ pkgver() {
   printf '%s.r%s.g%s' "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-prepare() {
-  cd rusbmux
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
 build() {
   cd rusbmux
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export CARGO_PROFILE_RELEASE_LTO=false
-  cargo build --release --features bin --locked --frozen
+  cargo build --release --features bin --locked
 }
 
 package() {
