@@ -1,8 +1,9 @@
 pkgbase = cargo-pgo
 	pkgdesc = Cargo subcommand for optimizing Rust binaries with PGO and BOLT.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kobzol/cargo-pgo
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = cargo

@@ -2,7 +2,7 @@
 
 pkgname=cargo-pgo
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cargo subcommand for optimizing Rust binaries with PGO and BOLT."
 url="https://github.com/kobzol/cargo-pgo"
 depends=('gcc-libs')
