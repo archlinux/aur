@@ -1,11 +1,11 @@
 pkgbase = clai
-	pkgdesc = Command line artificial intelligence - Multi-vendor generation in your terminal
+	pkgdesc = Command line artificial intelligence - Your local LLM context-feeder
 	pkgver = 1.10.8
 	pkgrel = 1
 	url = https://github.com/baalimago/clai
-	arch = aarch64
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	depends = glibc
