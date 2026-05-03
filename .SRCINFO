@@ -5,6 +5,7 @@ pkgbase = sleep-until
 	url = https://codeberg.org/maandree/sleep-until
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	makedepends = glibc>=2.8
 	makedepends = gcc

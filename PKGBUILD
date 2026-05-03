@@ -4,7 +4,7 @@ pkgname=sleep-until
 pkgver=2.0.1
 pkgrel=1
 pkgdesc='Sleep until a specified time'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64 aarch64)
 url='https://codeberg.org/maandree/sleep-until'
 license=('custom:ISC')
 depends=('linux>=2.6.25' 'glibc>=2.8')
