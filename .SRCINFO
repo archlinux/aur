@@ -1,6 +1,6 @@
 pkgbase = cheatbreaker
 	pkgdesc = CheatBreaker is a modpack and FPS booster combined! In most cases, CheatBreaker more than doubles your normal Minecraft frames!
-	pkgver = 3.1.2
+	pkgver = 2026.5.0
 	pkgrel = 1
 	url = https://cheatbreaker.net
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = cheatbreaker
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
-	source_x86_64 = cheatbreaker-3.1.2-x86_64.AppImage::https://r2.cheatbreaker.net/Launcher/master/Linux/amd64/CheatBreaker.AppImage
-	md5sums_x86_64 = 42b1db15b389e5381b6af086ac4a29aa
-	source_arm64 = cheatbreaker-3.1.2-arm64.AppImage::https://r2.cheatbreaker.net/Launcher/master/Linux/arm64/CheatBreaker-ARM64.AppImage
-	md5sums_arm64 = 7ffedea12cdace83bacccb1ac2d329a1
+	source_x86_64 = cheatbreaker-2026.5.0-x86_64.AppImage::https://r2.cheatbreaker.net/Launcher/master/Linux/amd64/CheatBreaker.AppImage
+	md5sums_x86_64 = c54c6fe5390946750dce2a961c8511b6
+	source_arm64 = cheatbreaker-2026.5.0-arm64.AppImage::https://r2.cheatbreaker.net/Launcher/master/Linux/arm64/CheatBreaker-ARM64.AppImage
+	md5sums_arm64 = 35c6bf9f3985235604b87ddc9aa41912
 
 pkgname = cheatbreaker
