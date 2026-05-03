@@ -1,9 +1,9 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=15.0.beta.r14.g723cf136
+pkgver=16.0.r9.g28af9c1e
 pkgrel=1
-epoch=
+epoch=1
 pkgdesc="Portable Sandboxing framework"
 arch=('x86_64' 'aarch64' 'loongarch64')
 url="https://github.com/Kraftland/portable"
