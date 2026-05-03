@@ -1,6 +1,6 @@
 pkgbase = asus-hub
 	pkgdesc = The unofficial MyAsus alternative for Linux
-	pkgver = 1.0.2
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/Traciges/Asus-Hub
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = asus-hub
 	optdepends = glib2: Touchpad toggle on GNOME
 	provides = asus-hub
 	conflicts = asus-hub
-	source = asus-hub::git+https://github.com/Traciges/Asus-Hub.git#tag=v1.0.2
-	sha256sums = b310824b1622c37abf7686eb090c51efe8010e05513ca15b50adabc5cd6ac14e
+	source = asus-hub::git+https://github.com/Traciges/Asus-Hub.git#tag=v1.0.9
+	sha256sums = 5996e115ef0c5535f8c9debca46bcbb7394140d741d523adf33374f2db663cef
 
 pkgname = asus-hub
