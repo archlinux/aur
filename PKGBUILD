@@ -6,12 +6,12 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-cachyos-opt
-_srctag=10.0-20260407
+_srctag=10.0-20260425
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.4.1
 _xaliaver=0.4.8
-pkgrel=2
+pkgrel=1
 epoch=2
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -23,7 +23,8 @@ source=(wine-cachyos::git+https://github.com/CachyOS/wine-cachyos.git#tag=cachyo
         https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
         https://github.com/madewokherd/xalia/releases/download/xalia-${_xaliaver}/xalia-${_xaliaver}-net48-mono.zip
         30-win32-aliases.conf
-        wine-binfmt.conf)
+        wine-binfmt.conf
+        ntsync.conf)
 source+=(
 )
 noextract=(
@@ -146,7 +147,7 @@ build() {
 
   # From Proton
   OPTIMIZE_FLAGS="-O2 -march=$march -mtune=$mtune -mfpmath=sse -pipe"
-  OPTIMIZE_FLAGS+=" -mprefer-avx128 -fvect-cost-model=cheap -fipa-pta"
+  OPTIMIZE_FLAGS+=" -mno-avx -mno-avx2 -mno-avx512f -fvect-cost-model=cheap -fipa-pta"
   SANITY_FLAGS="-fwrapv -fno-strict-aliasing -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64"
   DEBUG_FLAGS="-ffunction-sections -fdata-sections -fno-omit-frame-pointer"
   WARNING_FLAGS="-Wno-incompatible-pointer-types"
@@ -201,6 +202,9 @@ package() {
   find "$pkgdir"/opt/"${pkgname//-opt}"/lib/wine -iname "*.a" -delete
   find "$pkgdir"/opt/"${pkgname//-opt}"/lib/wine -iname "*.def" -delete
 
+  # Load ntsync module
+  install -Dm644 "$srcdir/ntsync.conf" "$pkgdir/usr/lib/modules-load.d/10-$pkgname.conf"
+
   # Install wine-gecko
   cd "$srcdir"
   install -d -m755 "$pkgdir"/opt/"${pkgname//-opt}"/share/wine/gecko/
@@ -218,10 +222,11 @@ package() {
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
-b2sums=('24e31082f653f91a5a39af27058e106ee4ed6ee52eefc1308022d066c143fc09ecaad5f9b374e678a832e2f3bc8250ebb7c9ea2dcd802c39b5edabd7d5963908'
+b2sums=('0b3f2fcc68b5f1922f4bd3381f9affdd985b06759ed9402a3685659ccc693b615842a5b70317aa98341871fa942263442ba539f33bfe6cbfd7f0db53c7b05778'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '9ca53dee272470806432c61587080e6dc04fd9eaafde4f55f5d57d5557ec6859d77a74b74c9e3f472da04b8ace9609f0927573faab368a25249c76b3e37e65c1'
         '0780740dd2f07de5c00e0c8d1823bc24e31954d6ccb7875678957aea5e095d5eb8dc13ea9cc56a00abfccdcad59e21150e49fe515815f50e0bd38b50f6ec940c'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
-        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
+        '964a3ba277821e570aec2127f0d1ae9898da6976c360deb6b196345a50bd3c2c55cb399527507006d8fddef868069032a30b083f23987d5050f185c74dd9de35')
