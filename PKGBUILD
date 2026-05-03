@@ -77,7 +77,7 @@ replaces=(
 groups=(gnome)
 install=gvfs-nfs.install
 source=(
-  "git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=9940efa1aa30d0e88766598743a5dacbc6aeee19"
+  "git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=e2c6f7f3bbcdeaaf23227494fa76c7a88caa4b77"
   gvfsd.hook
 )
 b2sums=('SKIP'

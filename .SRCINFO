@@ -81,7 +81,7 @@ pkgbase = gvfs-googledrive
 	replaces = gvfs-onedrive
 	replaces = gvfs-smb
 	replaces = gvfs-wsdd
-	source = git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=9940efa1aa30d0e88766598743a5dacbc6aeee19
+	source = git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=e2c6f7f3bbcdeaaf23227494fa76c7a88caa4b77
 	source = gvfsd.hook
 	b2sums = SKIP
 	b2sums = a0356a49c419dc69466c591d5e69701b865bb97ca336ea6d8bca0f0d9173b832b73d9f2c701d572a0245957d39c9a38ab6dff4ea7c737c34f2a1a28d93c0427f
