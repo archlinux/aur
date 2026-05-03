@@ -1,7 +1,7 @@
 pkgbase = python-benedict
 	pkgdesc = Dict subclass with keylist/keypath support, built-in I/O operations (base64, csv, html, ini, json, pickle, plist, query-string, toml, xls, xml, yaml), s3 support and many utilities.
 	pkgver = 0.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fabiocaccamo/python-benedict
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-benedict
 	depends = python
 	depends = python-slugify
 	depends = python-typing_extensions
+	depends = python-useful-types
 	depends = python-ftfy
 	depends = python-mailchecker
 	depends = python-phonenumbers

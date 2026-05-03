@@ -3,7 +3,7 @@
 
 pkgname=python-benedict
 pkgver=0.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dict subclass with keylist/keypath support, built-in I/O operations (base64, csv, html, ini, json, pickle, plist, query-string, toml, xls, xml, yaml), s3 support and many utilities."
 arch=('any')
 url="https://github.com/fabiocaccamo/python-benedict"
@@ -14,6 +14,7 @@ depends=(
 	# regular dependencies
 	'python-slugify'
 	'python-typing_extensions'
+	'python-useful-types'
 
 	# needed for "parse" target
 	'python-ftfy'
