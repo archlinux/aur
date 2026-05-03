@@ -1,6 +1,6 @@
 pkgbase = openzro-ui-bin
 	pkgdesc = openZro desktop tray UI — system tray client for the daemon (prebuilt binary)
-	pkgver = 0.53.1.alpha.33
+	pkgver = 0.53.1.alpha.34
 	pkgrel = 1
 	url = https://openzro.io
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = openzro-ui-bin
 	optdepends = kde-appindicator-common: system-tray icon support on KDE Plasma
 	provides = openzro-ui
 	conflicts = openzro-ui
-	source_x86_64 = openzro-ui-0.53.1-alpha.33-x86_64.tar.gz::https://github.com/openzro/openzro/releases/download/v0.53.1-alpha.33/openzro-ui_0.53.1-alpha.33_linux_amd64.tar.gz
-	sha256sums_x86_64 = 50c18c9d7dd778a2df00f4fa22daf2804a1ef9ea4aa0972e766c63e3c9e8b006
+	source_x86_64 = openzro-ui-0.53.1-alpha.34-x86_64.tar.gz::https://github.com/openzro/openzro/releases/download/v0.53.1-alpha.34/openzro-ui_0.53.1-alpha.34_linux_amd64.tar.gz
+	sha256sums_x86_64 = bd229a03e784b71c735aca42e613c50cfe825bea6ff06c2b22c7d809d9aab57e
 
 pkgname = openzro-ui-bin
