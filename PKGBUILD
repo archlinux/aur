@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=arf
-pkgver=0.2.7
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A modern R console"
 url="https://github.com/eitsupi/arf"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/arf-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('6ad978dacfee9ca512658b1ec2cfd7eeb78826df3505ea98062dc6d7192be8b06f8c26ef18b2320207f0efae3ecb92321fbca93c7aa5a9940957ac7695797660')
+sha512sums=('4c6917a28f2c2325cca0682661f777e9e57b06a8707857e9b4b5996863f429b71d1b31eaf8a9e4844480c55199c2f5a14ef6de8775a31c326befd39e4c143018')
