@@ -1,25 +1,19 @@
+# shellcheck disable=SC2034,SC2086,SC2128,SC2148,SC2154,SC2164,SC2291
 # Based on vscodium-marketplace
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
 pkgname=vscodium-all-marketplace
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Enable vscode marketplace in all vscodium versions.'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
 license=('unknown')
-depends=('vscodium' 'python')
+depends=('python')
+optdepends=('vscodium: VSCodium')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
         'patch.py')
-sha256sums=('c0b99dcb58f998239789746a2dcefe1e2a0a340a55e4b01b3d9fe41b194770e0'
-            '56d10b38dcef57f8d5bda2be66a2fedae4ed39823352958a4d680da68d414e70')
-sha384sums=('0f3adb43b428735c37d981bfc3b137d4552d939922a593f36bb53d82716bfa76b8a342f02cb032dafc97f932a5e9c287'
-            '83bb0c9c14b97ddc91467823bd22ea5fb9724074d88bbbc85d3512ae2ce60a20a3b42e5e7d4f3c060d1b371fffbcf7ed')
-sha512sums=('7a441ccba1c39f4ca1eeeecd9c1c434ac478bcebe0666d45bfd860ef47e6e4f8f24ff7f70f00fa7cc06efa49a706535a449ea5a1dddbd6658c930aff6ad66d95'
-            '04c03597487201b4e1b5132a42b369d7cdd93823153c1956bcaf9e57846aad800eaf927e5931858739a1d6fed3882ff2873ba0278c9007701f6f26504930c943')
-b2sums=('bfa712e05ab0fac28a390dc4610f13cd65b74e166f613da835dbd9cdb2523aa3d2bd16b16d42a35875ef23af02389b1f4d2bed14b4d380d99f7886b5a8db98d9'
-        '339648fca2ff536eaba70da726e96b4c13794678c900a6de98c90e6d2b9b835ffbf4379ac7b50a7b6c4c5301668c846dabdac870d35ed26b81207523778d90a2')
 conflicts=(
     vscodium-marketplace
     vscodium-bin-marketplace
@@ -31,6 +25,23 @@ conflicts=(
 )
 
 package() {
-  install -Dm 644 "${srcdir}"/${pkgname}.hook "${pkgdir}"/usr/share/libalpm/hooks/${pkgname}.hook
-  install -Dm 755 "${srcdir}"/patch.py "${pkgdir}"/usr/share/vscodium/resources/app/patch.py
+    install -Dm 644 "${srcdir}"/${pkgname}.hook "${pkgdir}"/usr/share/libalpm/hooks/${pkgname}.hook
+    install -Dm 755 "${srcdir}"/patch.py        "${pkgdir}"/usr/share/vscodium/resources/app/patch.py
 }
+
+sha256sums=(
+    'c0b99dcb58f998239789746a2dcefe1e2a0a340a55e4b01b3d9fe41b194770e0'
+    '56d10b38dcef57f8d5bda2be66a2fedae4ed39823352958a4d680da68d414e70'
+)
+sha384sums=(
+    '0f3adb43b428735c37d981bfc3b137d4552d939922a593f36bb53d82716bfa76b8a342f02cb032dafc97f932a5e9c287'
+    '83bb0c9c14b97ddc91467823bd22ea5fb9724074d88bbbc85d3512ae2ce60a20a3b42e5e7d4f3c060d1b371fffbcf7ed'
+)
+sha512sums=(
+    '7a441ccba1c39f4ca1eeeecd9c1c434ac478bcebe0666d45bfd860ef47e6e4f8f24ff7f70f00fa7cc06efa49a706535a449ea5a1dddbd6658c930aff6ad66d95'
+    '04c03597487201b4e1b5132a42b369d7cdd93823153c1956bcaf9e57846aad800eaf927e5931858739a1d6fed3882ff2873ba0278c9007701f6f26504930c943'
+)
+b2sums=(
+    'bfa712e05ab0fac28a390dc4610f13cd65b74e166f613da835dbd9cdb2523aa3d2bd16b16d42a35875ef23af02389b1f4d2bed14b4d380d99f7886b5a8db98d9'
+    '339648fca2ff536eaba70da726e96b4c13794678c900a6de98c90e6d2b9b835ffbf4379ac7b50a7b6c4c5301668c846dabdac870d35ed26b81207523778d90a2'
+)

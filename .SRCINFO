@@ -1,13 +1,13 @@
 pkgbase = vscodium-all-marketplace
 	pkgdesc = Enable vscode marketplace in all vscodium versions.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://marketplace.visualstudio.com/vscode
 	install = vscodium-all-marketplace.install
 	arch = any
 	license = unknown
-	depends = vscodium
 	depends = python
+	optdepends = vscodium: VSCodium
 	conflicts = vscodium-marketplace
 	conflicts = vscodium-bin-marketplace
 	conflicts = vscodium-git-marketplace
