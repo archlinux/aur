@@ -1,12 +1,11 @@
-# Maintainer: slondr <slondr@icloud.com>
-# Contributor: envolution
+# Maintainer: envolution
 # Contributor: Joshua Ward <joshuaward@myoffice.net.au>
 # Contributor: Eric Biggers <ebiggers3@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=nethack-git
 _pkgname=NetHack
-pkgver=5.0.0_Release+r18679+gb6482d09f
+pkgver=3.6.7_Released+r17565+g55561da63
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -14,7 +13,7 @@ url='https://github.com/NetHack/NetHack'
 license=('LicenseRef-custom')
 depends=('ncurses' 'gzip' 'gdb')
 makedepends=(git)
-_branch=NetHack-5.0
+_branch=NetHack-3.6 #3.7 is not ready yet
 source=("git+https://github.com/NetHack/NetHack.git#branch=${_branch}" nethack.tmpfiles)
 sha256sums=('SKIP'
             '5c68417ff1cf76705a2bf7dc9fa1900156792808cb528d62f53e337030c40ea4')
@@ -31,49 +30,48 @@ pkgver() {
   echo "${_version#'NetHack.'}+r${_commits}+g${_short_commit_hash}"
 }
 
-# prepare() {
-#   cd "${_pkgname}"
+prepare() {
+  cd "${_pkgname}"
 
-#   sed -e 's|^/\* \(#define LINUX\) \*/|\1|' \
-#     -e 's|^/\* \(#define TIMED_DELAY\) \*/|\1|' \
-#     -i include/unixconf.h
+  sed -e 's|^/\* \(#define LINUX\) \*/|\1|' \
+    -e 's|^/\* \(#define TIMED_DELAY\) \*/|\1|' \
+    -i include/unixconf.h
 
-#   # we are setting up for setgid games, so modify all necessary permissions
-#   # to allow full access for groups
+  # we are setting up for setgid games, so modify all necessary permissions
+  # to allow full access for groups
 
-#   # With thanks to bugtracker user loqs for the CFLAGS and LDFLAGS adjustments
-#   sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/games/nethack/|' \
-#     -e '/^SHELLDIR/ s|/games|/usr/bin|' \
-#     -e '/^VARDIRPERM/ s|0755|0775|' \
-#     -e '/^VARFILEPERM/ s|0600|0664|' \
-#     -e '/^GAMEPERM/ s|0755|02755|' \
-#     -e '/-DTIMED_DELAY/d' \
-#     -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/games/nethack/sysconf\\"|' \
-#     -e 's|CFLAGS=-g -O -I../include -DNOTPARMDECL|CFLAGS+= $(CPPFLAGS) -I../include -DNOTPARMDECL|' \
-#     -e 's/LFLAGS=-rdynamic/LFLAGS=$(LDFLAGS) -rdynamic/' \
-#     -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/nethack/\\"|' \
-#     -i sys/unix/hints/linux.500
+  # With thanks to bugtracker user loqs for the CFLAGS and LDFLAGS adjustments
+  sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/games/nethack/|' \
+    -e '/^SHELLDIR/ s|/games|/usr/bin|' \
+    -e '/^VARDIRPERM/ s|0755|0775|' \
+    -e '/^VARFILEPERM/ s|0600|0664|' \
+    -e '/^GAMEPERM/ s|0755|02755|' \
+    -e '/-DTIMED_DELAY/d' \
+    -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/games/nethack/sysconf\\"|' \
+    -e 's|CFLAGS=-g -O -I../include -DNOTPARMDECL|CFLAGS+= $(CPPFLAGS) -I../include -DNOTPARMDECL|' \
+    -e 's/LFLAGS=-rdynamic/LFLAGS=$(LDFLAGS) -rdynamic/' \
+    -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/nethack/\\"|' \
+    -i sys/unix/hints/linux
 
-#   # Fix the way they disable __warn_unused_result__
-#   sed '/^#define __warn_unused_result__/ s,/\*empty\*/,__unused__,' \
-#     -i include/tradstdc.h
+  # Fix the way they disable __warn_unused_result__
+  sed '/^#define __warn_unused_result__/ s,/\*empty\*/,__unused__,' \
+    -i include/tradstdc.h
 
-#   sed -e 's|^#GAMEUID.*|GAMEUID = root|' \
-#     -e 's|^#GAMEGRP.*|GAMEGRP = games|' \
-#     -e '/^FILEPERM\s*=/ s|0644|0664|' \
-#     -e '/^DIRPERM\s*=/ s|0755|0775|' \
-#     -i sys/unix/Makefile.top
+  sed -e 's|^#GAMEUID.*|GAMEUID = root|' \
+    -e 's|^#GAMEGRP.*|GAMEGRP = games|' \
+    -e '/^FILEPERM\s*=/ s|0644|0664|' \
+    -e '/^DIRPERM\s*=/ s|0755|0775|' \
+    -i sys/unix/Makefile.top
 
-#   sed -e "/^MANDIR\s*=/s|/usr/man/man6|$pkgdir/usr/share/man/man6|" \
-#     -i sys/unix/Makefile.doc
-# }
+  sed -e "/^MANDIR\s*=/s|/usr/man/man6|$pkgdir/usr/share/man/man6|" \
+    -i sys/unix/Makefile.doc
+}
 
 build() {
   cd "NetHack/sys/unix"
-  sh setup.sh hints/linux.500
+  sh setup.sh hints/linux
   cd "$srcdir/$_pkgname"
-	make fetch-lua
-  make all
+  make
 }
 
 package() {
@@ -94,8 +92,7 @@ package() {
   install -Dm644 doc/Guidebook.txt "$pkgdir"/usr/share/doc/nethack/Guidebook.txt
   install -Dm644 dat/license "$pkgdir"/usr/share/licenses/nethack/LICENSE
 
-  # cd "$pkgdir/var/games/nethack/"
-  # chmod o+w logfile perm record
-	make install
+  cd "$pkgdir/var/games/nethack/"
+  chmod o+w logfile perm record
 }
 # vim:set ts=2 sw=2 et:
