@@ -12,13 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Maintainer: Lisa White <lisa.rsfp+dev@gmail.com>
+# Maintainer: Sergey Zarechnev <da_kurlzzzzz@mail.ru>
+# Contributor: Lisa White <lisa.rsfp+dev@gmail.com>
 # Contributor: Yaroslav Dronskiy <jaroslav@dronsky.ru>
 # Contributor: Aleksey Filippov <sarum9in@gmail.com>
 
 pkgname=mtproxy-git
-pkgver=47.dc0c7f3
-pkgrel=2
+pkgver=50.cafc338
+pkgrel=1
 pkgdesc="Proxy server for Telegram messaging app"
 arch=('i686' 'x86_64')
 url='https://github.com/TelegramMessenger/MTProxy'
