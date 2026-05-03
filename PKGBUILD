@@ -2,12 +2,12 @@
 
 pkgname=x11-multimonitor-center
 pkgver=2
-pkgrel=2
+pkgrel=3
 pkgdesc="X11 tray app to move newly spawned windows to the monitor with the mouse cursor if they spawn somewhere else"
 arch=('any')
 url="none"
 license=('GPL3')
-depends=('gtk3' 'libwnck3')
+depends=('gtk3' 'libwnck3' 'libayatana-appindicator')
 makedepends=('pkgconf')
 
 prepare() {
@@ -21,6 +21,7 @@ prepare() {
 #include <libwnck/libwnck.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <libayatana-appindicator/app-indicator.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,7 +30,7 @@ prepare() {
 #define MOVE_DELAY_MS 10
 
 static gboolean enabled = TRUE;
-static GtkStatusIcon *status_icon = NULL;
+static AppIndicator *indicator = NULL;
 static GtkWidget *menu = NULL;
 static WnckScreen *screen = NULL;
 static GtkWidget *toggle_item = NULL;
@@ -38,8 +39,8 @@ static GApplication *global_app = NULL;
 
 static void update_tray_icon(void)
 {
-    if (!status_icon) return;
-    gtk_status_icon_set_from_file(status_icon, enabled ? ICON_ENABLED : ICON_DISABLED);
+    if (!indicator) return;
+    app_indicator_set_icon_full(indicator, enabled ? ICON_ENABLED : ICON_DISABLED, NULL);
 }
 
 static gboolean delayed_move_cb(gpointer user_data)
@@ -79,18 +80,13 @@ static gboolean delayed_move_cb(gpointer user_data)
     GdkRectangle geom;
 
     if (wnck_window_is_fullscreen(window)) {
-        /* Fullscreen windows: move only (do not resize) so the window manager
-         * can automatically resize them to the new monitor's full geometry. */
         gdk_monitor_get_geometry(mouse_monitor, &geom);
-        int new_x = geom.x;
-        int new_y = geom.y;
         wnck_window_set_geometry(window,
                                  WNCK_WINDOW_GRAVITY_CURRENT,
                                  WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
-                                 new_x, new_y, 0, 0);
-        printf("MOVED fullscreen window → to mouse monitor @ (%d,%d)\n", new_x, new_y);
+                                 geom.x, geom.y, 0, 0);
+        printf("MOVED fullscreen window → to mouse monitor @ (%d,%d)\n", geom.x, geom.y);
     } else {
-        /* Normal windows: use workarea (respects systray/panels/taskbars) and clamp/center */
         gdk_monitor_get_workarea(mouse_monitor, &geom);
         int target_w = (win_w > geom.width) ? geom.width : win_w;
         int target_h = (win_h > geom.height) ? geom.height : win_h;
@@ -109,54 +105,32 @@ cleanup:
     return FALSE;
 }
 
-static void
-window_opened_cb(WnckScreen *scr, WnckWindow *window, gpointer user_data)
+static void window_opened_cb(WnckScreen *scr, WnckWindow *window, gpointer user_data)
 {
     (void)scr; (void)user_data;
     if (!enabled) return;
     g_timeout_add(MOVE_DELAY_MS, delayed_move_cb, g_object_ref(window));
 }
 
-static void
-toggle_enabled_cb(GtkCheckMenuItem *item, gpointer data)
+static void toggle_enabled_cb(GtkCheckMenuItem *item, gpointer data)
 {
     enabled = gtk_check_menu_item_get_active(item);
     update_tray_icon();
 }
 
-static void
-icon_activate_cb(GtkStatusIcon *icon, gpointer user_data)
-{
-    (void)icon; (void)user_data;
-    enabled = !enabled;
-    if (toggle_item) {
-        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(toggle_item), enabled);
-    }
-    update_tray_icon();
-}
-
-static void
-show_popup_menu_cb(GtkStatusIcon *icon, guint button, guint activate_time, gpointer user_data)
-{
-    (void)icon; (void)user_data;
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
-                   gtk_status_icon_position_menu,
-                   status_icon, button, activate_time);
-}
-
-static void
-quit_cb(GtkMenuItem *item, gpointer data)
+static void quit_cb(GtkMenuItem *item, gpointer data)
 {
     (void)item; (void)data;
     if (global_app)
         g_application_quit(global_app);
 }
 
-static void
-create_tray_icon(void)
+static void create_tray_icon(void)
 {
-    status_icon = gtk_status_icon_new_from_file(ICON_ENABLED);
-    gtk_status_icon_set_tooltip_text(status_icon, "x11-multimonitor-center");
+    indicator = app_indicator_new("x11-multimonitor-center",
+                                  ICON_ENABLED,
+                                  APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
+    app_indicator_set_status(indicator, APP_INDICATOR_STATUS_ACTIVE);
 
     menu = gtk_menu_new();
 
@@ -175,12 +149,10 @@ create_tray_icon(void)
 
     gtk_widget_show_all(menu);
 
-    g_signal_connect(status_icon, "activate", G_CALLBACK(icon_activate_cb), NULL);
-    g_signal_connect(status_icon, "popup-menu", G_CALLBACK(show_popup_menu_cb), NULL);
+    app_indicator_set_menu(indicator, GTK_MENU(menu));
 }
 
-static void
-app_activate_cb(GApplication *app, gpointer user_data)
+static void app_activate_cb(GApplication *app, gpointer user_data)
 {
     (void)user_data;
     if (!screen) {
@@ -196,6 +168,7 @@ app_activate_cb(GApplication *app, gpointer user_data)
 int main(int argc, char **argv)
 {
     gtk_init(&argc, &argv);
+
 #if GTK_CHECK_VERSION(3,10,0)
     if (!GDK_IS_X11_DISPLAY(gdk_display_get_default())) {
         g_print("Error: This tool requires an X11 display\n");
@@ -205,6 +178,7 @@ int main(int argc, char **argv)
 
     global_app = g_application_new("org.x11multimonitor.center", G_APPLICATION_DEFAULT_FLAGS);
     g_signal_connect(global_app, "activate", G_CALLBACK(app_activate_cb), NULL);
+
     int status = g_application_run(global_app, argc, argv);
     g_object_unref(global_app);
     return status;
@@ -250,7 +224,7 @@ SVG
 build() {
   gcc -Wall -O2 \
     -o x11-multimonitor-center x11-multimonitor-center.c \
-    $(pkg-config --cflags --libs gtk+-3.0 libwnck-3.0)
+    $(pkg-config --cflags --libs gtk+-3.0 libwnck-3.0 ayatana-appindicator3-0.1)
 }
 
 package() {
