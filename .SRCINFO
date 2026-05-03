@@ -13,7 +13,6 @@ pkgbase = rusbmux-git
 	depends = glibc
 	provides = rusbmux
 	provides = usbmuxd
-	conflicts = rusbmux
 	conflicts = usbmuxd
 	options = !lto
 	options = !debug
