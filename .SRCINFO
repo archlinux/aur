@@ -1,16 +1,16 @@
 pkgbase = tsshd
-	pkgdesc = trzsz-ssh(tssh) udp server that supports connection migration for roaming.
-	pkgver = 0.1.6
+	pkgdesc = UDP-based SSH server with roaming support
+	pkgver = 0.1.7
 	pkgrel = 1
 	epoch = 0
-	url = https://trzsz.github.io/ssh
+	url = https://trzsz.github.io/tsshd
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = MIT
 	makedepends = go>=1.25.3
 	provides = tsshd
-	source = https://github.com/trzsz/tsshd/archive/refs/tags/v0.1.6.tar.gz
-	md5sums = f1c838befa98ff5e5419a7d820e62152
+	source = https://github.com/trzsz/tsshd/archive/refs/tags/v0.1.7.tar.gz
+	md5sums = ec8cc93cc10b29bb18ccb1be727d17d5
 
 pkgname = tsshd

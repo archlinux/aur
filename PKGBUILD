@@ -1,11 +1,11 @@
 # Maintainer: Lonny Wong <lonnywong@qq.com>
 pkgname="tsshd"
-pkgver="0.1.6"
+pkgver="0.1.7"
 pkgrel=1
 epoch=0
-pkgdesc="trzsz-ssh(tssh) udp server that supports connection migration for roaming."
+pkgdesc="UDP-based SSH server with roaming support"
 arch=("x86_64" "i686" "aarch64")
-url="https://trzsz.github.io/ssh"
+url="https://trzsz.github.io/tsshd"
 license=("MIT")
 groups=()
 depends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/trzsz/tsshd/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('f1c838befa98ff5e5419a7d820e62152')
+md5sums=('ec8cc93cc10b29bb18ccb1be727d17d5')
 validpgpkeys=()
 
 build() {
