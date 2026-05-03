@@ -5,6 +5,7 @@ pkgbase = alarm
 	url = https://codeberg.org/maandree/alarm
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	source = alarm-1.2.4.tar.gz::https://codeberg.org/maandree/alarm/archive/1.2.4.tar.gz
 	sha256sums = 33630fa2a0eb3c3d43962c1defac25af31333c507c8f7d103be75ea79e41ae96
