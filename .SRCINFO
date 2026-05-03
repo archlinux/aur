@@ -5,6 +5,7 @@ pkgbase = libenv
 	url = https://codeberg.org/maandree/libenv
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	source = libenv-1.0.3.tar.gz::https://codeberg.org/maandree/libenv/archive/1.0.3.tar.gz
 	sha256sums = 7d42dd6376cdc1cc81ea4afa59f8e0d1e11b80d9fc0cdd7a94ccc6f4d06d0a07
