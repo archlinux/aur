@@ -1,6 +1,6 @@
 # makepkg --printsrcinfo > .SRCINFO
 pkgname=worklog-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Local-first desktop project manager for small dev teams"
 arch=('x86_64')
