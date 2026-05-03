@@ -365,6 +365,16 @@ class BrosLauncherWindow:
             font=FONT_SECONDARY,
         ).pack(anchor=tk.W)
 
+        if not os.path.exists(self.iso_path):
+            tk.Label(
+                boot_frame,
+                text="Download: https://berkeos.dev/bros",
+                bg=COLOR_BG_MEDIUM,
+                fg="#00aaff",
+                font=("Segoe UI", 7),
+            ).pack(anchor=tk.W, pady=(3, 0))
+        ).pack(anchor=tk.W)
+
     def create_content_panel(self, parent):
         content = tk.Frame(parent, bg=COLOR_BG_DARK)
         content.pack(fill=tk.BOTH, expand=True, padx=8, pady=8)

@@ -2,7 +2,7 @@
 # Generator: Sisyphus
 
 pkgname=broslauncher
-pkgver=1.1.0
+pkgver=1.0.5C
 pkgrel=1
 pkgdesc="BrosLauncher - Virtual machine launcher for Bros OS testing with QEMU"
 arch=('x86_64')

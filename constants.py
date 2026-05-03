@@ -4,7 +4,7 @@ import sys
 import shutil
 
 APP_NAME = "BrosLauncher"
-APP_VERSION = "1.1.0"
+APP_VERSION = "1.0.5C"
 APP_TITLE = f"{APP_NAME} v{APP_VERSION}"
 
 CPU_NAME = "BROS HM-1 Bahar"
@@ -26,6 +26,8 @@ MIN_STORAGE = 64
 MAX_STORAGE = 4096
 
 PLATFORM = platform.system()
+
+ISO_DOWNLOAD_URL = "https://berkeos.dev/bros/bros.iso"
 
 
 def get_qemu_binary():
@@ -65,6 +67,9 @@ def get_iso_path():
 
     xdg_data = os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share"))
     possible_paths.append(os.path.join(xdg_data, "broslauncher", "bros.iso"))
+
+    home_downloads = os.path.join(os.path.expanduser("~"), "Downloads")
+    possible_paths.append(os.path.join(home_downloads, "bros.iso"))
 
     for path in possible_paths:
         if os.path.exists(path):
