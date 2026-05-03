@@ -1,6 +1,6 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=es40-git
-pkgver=0.50.hotfix.r61.g1ec7805
+pkgver=0.50.hotfix.r65.g3e62637
 pkgrel=1
 pkgdesc='AlphaServer ES40 emulator'
 arch=('x86_64' 'aarch64') # aarch64 not tested but there's a macOS version
@@ -30,8 +30,6 @@ build() {
 }
 
 package() {
-	cd $pkgname
-	make DESTDIR="$pkgdir/" install
-# empty /usr/share/aclocal folder is created
-	rm -rf "$pkgdir/usr/share"
+# make install compiles alternative versions
+	install -Dt "$pkgdir/usr/bin" $pkgname/src/es40{,_cfg}
 }

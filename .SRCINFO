@@ -1,6 +1,6 @@
 pkgbase = es40-git
 	pkgdesc = AlphaServer ES40 emulator
-	pkgver = 0.50.hotfix.r61.g1ec7805
+	pkgver = 0.50.hotfix.r65.g3e62637
 	pkgrel = 1
 	url = https://github.com/gdwnldsKSC/es40
 	arch = x86_64
