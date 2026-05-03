@@ -1,6 +1,6 @@
 # Maintainer: Kleshzz <vasyapulopapik@gmail.com>
 pkgname=stutter-git
-pkgver=0.1.0.r0.g0000000
+pkgver=0.3.0.r1.gc5c72cc
 pkgrel=1
 pkgdesc="Focus-aware process priority daemon"
 arch=('x86_64')
