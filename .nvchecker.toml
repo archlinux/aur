@@ -1,0 +1,4 @@
+[as-tree-bin]
+source = "github"
+github = "jez/as-tree"
+use_latest_release = true
