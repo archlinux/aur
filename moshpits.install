@@ -9,31 +9,41 @@ post_install() {
             moshpits
     fi
 
+    # Create the configuration directory and install a starter config if absent
+    install -d -m 750 -o moshpits -g moshpits /etc/moshpits
+    if [[ ! -f /etc/moshpits/moshpits.toml ]]; then
+        install -m 640 -o moshpits -g moshpits \
+            /usr/share/doc/moshpits-bin/examples/moshpits.toml.example \
+            /etc/moshpits/moshpits.toml
+    fi
+
+    # Create the log directory
+    install -d -m 750 -o moshpits -g moshpits /var/log/moshpits
+
+    # Generate a passwordless host key pair on first install (non-interactive, service-safe)
+    _key_dir=/etc/moshpits/keys
+    install -d -m 700 -o moshpits -g moshpits "$_key_dir"
+    if [[ ! -f "$_key_dir/mps_host_ed25519_key" ]]; then
+        sudo -u moshpits mp-keygen generate \
+            --no-passphrase <<< "$_key_dir/mps_host_ed25519_key"
+    fi
+
     echo ""
     echo "  ── moshpits post-install notes ──────────────────────────────────────────"
     echo ""
-    echo "  1. Generate a server host key pair (run once as the moshpits user):"
+    echo "  A passwordless host key pair has been generated at:"
+    echo "    $_key_dir/mps_host_ed25519_key"
+    echo "    $_key_dir/mps_host_ed25519_key.pub"
     echo ""
-    echo "       sudo -u moshpits mp-keygen generate"
-    echo "       # Accept the suggested path:  ~/.mp/mps_host_ed25519_key"
-    echo "       # Set a strong passphrase when prompted."
+    echo "  Review (and customise) the config file at:"
+    echo "    /etc/moshpits/moshpits.toml"
     echo ""
-    echo "  2. Create a config file at one of these locations:"
+    echo "  Open the required ports in your firewall:"
+    echo "    TCP inbound:  40404  (control / key-exchange channel)"
+    echo "    UDP inbound:  50000–59999  (encrypted terminal data)"
     echo ""
-    echo "       /home/moshpits/.config/moshpits/moshpits.toml  (user config)"
-    echo "       /etc/moshpits/moshpits.toml                    (system config)"
-    echo ""
-    echo "     An annotated example is at:"
-    echo "       /usr/share/doc/moshpits/examples/moshpits.toml.example"
-    echo ""
-    echo "  3. Open the required ports in your firewall:"
-    echo ""
-    echo "       TCP inbound:  40404  (control / key-exchange channel)"
-    echo "       UDP inbound:  50000–59999  (encrypted terminal data)"
-    echo ""
-    echo "  4. Enable and start the service:"
-    echo ""
-    echo "       systemctl enable --now mps"
+    echo "  Enable and start the service:"
+    echo "    systemctl enable --now mps"
     echo ""
     echo "  ─────────────────────────────────────────────────────────────────────────"
     echo ""
@@ -63,4 +73,8 @@ post_remove() {
     if id moshpits &>/dev/null; then
         userdel moshpits
     fi
+    # Note: /etc/moshpits and /var/log/moshpits are intentionally preserved
+    # to avoid destroying user configuration and logs on uninstall.
+    # Remove them manually if no longer needed:
+    #   rm -rf /etc/moshpits /var/log/moshpits
 }

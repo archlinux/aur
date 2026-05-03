@@ -9,21 +9,22 @@ Type=simple
 User=moshpits
 Group=moshpits
 
-ExecStart=/usr/bin/mps
+# Read config from /etc/moshpits/moshpits.toml (system-wide default).
+# Override the host key and tracing log paths to the locations set up on install.
+ExecStart=/usr/bin/mps \
+    --config-absolute-path /etc/moshpits/moshpits.toml \
+    --private-key-path /etc/moshpits/keys/mps_host_ed25519_key \
+    --public-key-path /etc/moshpits/keys/mps_host_ed25519_key.pub \
+    --tracing-absolute-path /var/log/moshpits/mps.log
 Restart=on-failure
 RestartSec=5s
-
-# Override the config file location so mps reads from /etc/moshpits/moshpits.toml
-# when a system-wide config is desired.  Comment out to fall back to the user
-# config at ~/.config/moshpits/moshpits.toml (inside the moshpits home dir).
-# Environment=MOSHPITS_CONFIG_ABSOLUTE_PATH=/etc/moshpits/moshpits.toml
 
 # Hardening
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=read-only
-ReadWritePaths=/home
+ReadWritePaths=/var/log/moshpits
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true
