@@ -1,0 +1,16 @@
+pkgbase = awob-listener-pipewire-bin
+	pkgdesc = awob listener — PipeWire volume / mute → OSD.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/jmylchreest/awob
+	arch = x86_64
+	license = MIT
+	depends = awob-bin
+	depends = pipewire
+	provides = awob-listener-pipewire
+	conflicts = awob-listener-pipewire
+	conflicts = awob-git
+	source = awob-0.0.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.0.2/awob-0.0.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = bbfb40d27b36496546b36d4bc4bfcc2450c11f7b61223c39a1c59848eebe9608
+
+pkgname = awob-listener-pipewire-bin
