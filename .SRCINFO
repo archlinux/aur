@@ -1,0 +1,16 @@
+pkgbase = qml-niri
+	pkgdesc = QML plugin for interacting with niri via IPC
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/imiric/qml-niri
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = patchelf
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = niri: Wayland compositor backend used by this plugin
+	source = qml-niri-0.1.4.tar.gz::https://github.com/imiric/qml-niri/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 0c536883ffe7a449500faf1aa66aada867aadd404ba748a4de6f33591ab2319c
+
+pkgname = qml-niri
