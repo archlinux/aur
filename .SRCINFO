@@ -1,6 +1,6 @@
 pkgbase = agtop
 	pkgdesc = Terminal UI for monitoring AI coding agents (Claude Code, Codex, Aider, Cursor, Gemini, Goose, ...) — like top, but for agents.
-	pkgver = 2.4.8
+	pkgver = 2.4.9
 	pkgrel = 1
 	url = https://github.com/mbrassey/agtop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = agtop
 	makedepends = cargo
 	depends = gcc-libs
 	options = !debug
-	source = agtop-2.4.8.tar.gz::https://github.com/mbrassey/agtop/archive/v2.4.8.tar.gz
-	sha256sums = e452024aac77208313f3828bf709cb8cc1be1eae6005b49c4d3fa180672ac345
+	source = agtop-2.4.9.tar.gz::https://github.com/mbrassey/agtop/archive/v2.4.9.tar.gz
+	sha256sums = 8b5e94d9cc00eac07ada4c7c9bf4181422eaf7922af8c47d6cb3de009a2e0977
 
 pkgname = agtop
