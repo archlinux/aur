@@ -1,0 +1,4 @@
+[icemaze-bin]
+source = "snapcraft"
+snap = "icemaze"
+channel = "stable"
