@@ -1,0 +1,21 @@
+pkgbase = checksec-anywhere-git
+	pkgdesc = Analyze binary security features instantly in your browser
+	pkgver = r146.gf7f65f3
+	pkgrel = 1
+	url = https://checksec-anywhere.com/
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust-wasm
+	makedepends = wasm-bindgen
+	makedepends = wasm-pack
+	depends = glibc
+	depends = libgcc
+	provides = checksec-anywhere=r146.gf7f65f3
+	conflicts = checksec-anywhere
+	source = git+https://github.com/trailofbits/checksec-anywhere.git
+	sha256sums = SKIP
+
+pkgname = checksec-anywhere-git
