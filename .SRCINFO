@@ -1,15 +1,18 @@
 pkgbase = openclaw
-	pkgdesc = Personal AI assistant / multi-channel gateway
+	pkgdesc = Multi-channel AI gateway with extensible messaging integrations
 	pkgver = 2026.4.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openclaw/openclaw
+	install = openclaw.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = pnpm
+	makedepends = npm
 	depends = nodejs>=22
-	depends = npm
-	source = https://github.com/openclaw/openclaw/archive/refs/tags/v2026.4.27.tar.gz
-	sha256sums = 3a8dc1452269ab321fbda795a1de71bd7864c5a8df03a1739e7015d58f6a6182
+	noextract = openclaw-2026.4.27.tgz
+	options = !debug
+	options = !strip
+	source = https://registry.npmjs.org/openclaw/-/openclaw-2026.4.27.tgz
+	sha256sums = a45fb32d94caa1cf52a48a9a71701b63f58ca8f375094031000bfabe01231c0a
 
 pkgname = openclaw
