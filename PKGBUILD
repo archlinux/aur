@@ -1,8 +1,3 @@
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Jaume Delclòs Coll <aur@cosarara.me>
 pkgname=acme-client
 pkgver=1.3.7
 pkgrel=1
