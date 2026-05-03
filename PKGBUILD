@@ -12,8 +12,8 @@ pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="https://rigsofrods.org"
 license=('GPL')
-depends=('angelscript'
-         'curl'
+depends=('curl'
+         #'angelscript'
          'fmt'
          'freeimage'
          'freetype2'
@@ -26,6 +26,7 @@ depends=('angelscript'
          'zziplib')
 makedepends=('gcc' 'cmake' 'python')
 conflicts=('rigsofrods-git' 'rigsofrods-hg' 'rigsofrods-bin')
+options=('!debug')
 source=("https://github.com/RigsOfRods/rigs-of-rods/archive/${pkgver}.tar.gz"
     "https://github.com/RigsOfRods/ror-dependencies/archive/${_depsver}.tar.gz"
 	"plugins.cfg"
