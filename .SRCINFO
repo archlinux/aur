@@ -1,6 +1,6 @@
 pkgbase = librtprocess
 	pkgdesc = Library for raw image processing
-	pkgver = 0.12.0
+	pkgver = 0.12.0.r1724
 	pkgrel = 1
 	url = https://github.com/CarVac/librtprocess
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = librtprocess
 	makedepends = cmake
 	makedepends = openmp
 	depends = gcc-libs
-	source = librtprocess-0.12.0.tar.gz::https://github.com/CarVac/librtprocess/archive/0.12.0.tar.gz
-	sha512sums = 2eaaff9d9365b97cfb76cef36c0ba53d9b556f45d49bdcc84947ef3bf513240cec13d763ae7fc78589c2b68a739ed23477f6953a7329d8177275f81e5e588ddf
+	source = librtprocess-9a858270acb2096e2e403d932760ee688fcac425.tar.gz::https://github.com/CarVac/librtprocess/archive/9a858270acb2096e2e403d932760ee688fcac425.tar.gz
+	b2sums = SKIP
 
 pkgname = librtprocess
