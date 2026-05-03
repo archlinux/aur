@@ -1,6 +1,6 @@
 # Maintainer: temidaradev <temidaradev@proton.me>
 pkgname=kopuz
-pkgver=0.4.2
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A modern music player"
 arch=('x86_64')
@@ -15,6 +15,8 @@ depends=(
     'openssl'
     'xdotool'
     'dbus'
+    'cmake'
+    'libopus'
 )
 makedepends=(
     'rust'
@@ -24,7 +26,7 @@ makedepends=(
 # dioxus-cli must be installed manually or from AUR at version matching dioxus 0.7.x:
 #   cargo install dioxus-cli --version "^0.7"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/temidaradev/kopuz/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0935d1e7ea1e5377ea669ed460f530ca48f45d0448da88518951a1cf45705aeb')
+sha256sums=('a6b74e86b9a3b31793a94411b3cb71b991af57de28670bab46494d26f2fd7870')
 
 build() {
     cd "$pkgname-$pkgver"
