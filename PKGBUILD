@@ -1,44 +1,54 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
-pkgname='perl-cgi-simple'
-epoch='1'
-pkgver='1.282'
-pkgrel='2'
-pkgdesc="A Simple totally OO CGI interface that is CGI.pm compliant"
+_author=MANWAR
+_dist=CGI-Simple
+pkgname=perl-${_dist@L}
+pkgver=1.282
+pkgrel=3
+epoch=1
+pkgdesc='A Simple totally OO CGI interface that is CGI.pm compliant'
 arch=('any')
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
-options=('!emptydirs')
 depends=('perl')
-checkdepends=('perl-test-nowarnings' 'perl-test-exception' 'perl-http-message' 'perl-test-version')
-url='https://metacpan.org/dist/CGI-Simple'
-_distdir="CGI-Simple-$pkgver"
-source=(https://cpan.metacpan.org/authors/id/M/MA/MANWAR/$_distdir.tar.gz)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-file-temp'
+    'perl-test-exception'
+    'perl-test-nowarnings'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('c57f0f3e32cdd80612645155c1b829b4ccbe4ced655de833ab93005989c27f2f')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
