@@ -3,7 +3,7 @@
 
 pkgname=gvfs-googledrive
 pkgver=1.60.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual filesystem implementation for GIO (with Google Drive backend) - all backends"
 url="https://gitlab.gnome.org/fluhus/gvfs"
 arch=(x86_64)
