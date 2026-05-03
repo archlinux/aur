@@ -2,7 +2,7 @@
 # Maintainer: alcxyz <alcxyz@users.noreply.github.com>
 
 pkgname='grove-tui-bin'
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Terminal UI for monitoring git forge repositories'
 url='https://github.com/alcxyz/grove'
@@ -13,10 +13,10 @@ conflicts=('grove')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/alcxyz/grove/releases/download/v${pkgver}/grove_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('476b6b34a6d3a9af9f4384301a44cd14a7333aee44a35ec414dc364a63c4076f')
+sha256sums_aarch64=('22e4b42b8af9ceca446218afaa1f48422d3acd5bd4588e77f9c9fc151a13a6d0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/alcxyz/grove/releases/download/v${pkgver}/grove_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('5e54f5eec2782ac34f6b7e9b9063775b90d2b92b340c218c4e0cee1ff89c1486')
+sha256sums_x86_64=('c0af19565f5d39e394d1e35544147d08857e114af6b1619aec409f018430dbbc')
 
 package() {
   install -Dm755 "./grove" "${pkgdir}/usr/bin/grove"
