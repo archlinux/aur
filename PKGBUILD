@@ -1,6 +1,6 @@
 # Maintainer: Aayush Kumar <aayush214.kumar@gmail.com>
 pkgname=python-torrfetch
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A Python package to fetch torrent metadata from multiple sources"
 arch=('any')
