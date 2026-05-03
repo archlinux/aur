@@ -2,7 +2,7 @@
 # Contributor: SZanko szanko at protonmail dot com
 
 pkgname=python-benedict
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Dict subclass with keylist/keypath support, built-in I/O operations (base64, csv, html, ini, json, pickle, plist, query-string, toml, xls, xml, yaml), s3 support and many utilities."
 arch=('any')
@@ -10,30 +10,40 @@ url="https://github.com/fabiocaccamo/python-benedict"
 license=('MIT')
 depends=(
 	'python'
-	'python-beautifulsoup4'
-	'python-boto3'
+
+	# regular dependencies
+	'python-slugify'
+	'python-typing_extensions'
+
+	# needed for "parse" target
 	'python-ftfy'
 	'python-mailchecker'
 	'python-phonenumbers'
 	'python-dateutil'
+
+	# needed for all "io" targets
 	'python-fsutil'
-	'python-openpyxl'
-	'python-slugify'
-	'python-toml'
-	'python-xlrd'
-	'python-xmltodict'
-	'python-useful-types'
-	'python-typing_extensions'
-	'python-yaml'
+	'python-requests'
 )
+optdepends=(
+	'python-beautifulsoup4: HTML support'
+	'python-openpyxl: XLS support'
+	'python-xlrd: XLS support'
+	'python-boto3: S3 support'
+	'python-xmltodict: HTML & XML support'
+	'python-yaml: YAML support',
+	'python-toml: TOML support'
+	'python-pydantic: Schema support'
+)
+
 makedepends=(
 	'python-build'
 	'python-installer'
 	'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=(
-	'93a0fda49d817cc92c7c72fa6ab29b9581f5bc86e8e4892069e730304bd3d180'
+sha512sums=(
+	'2524a1ac342a27523875c1dcbc9ba2808dc8802e7f91159a594320529b88303ac1d7f4cc80982fdde77c6ba1d4980fefae6b4ea0fd79aab07846f16141bffa67'
 )
 
 build() {
