@@ -2,14 +2,14 @@
 pkgname=stutter-git
 pkgver=0.1.0.r0.g0000000
 pkgrel=1
-pkgdesc="Focus-aware process priority daemon for Hyprland"
+pkgdesc="Focus-aware process priority daemon"
 arch=('x86_64')
 url="https://github.com/Kleshzz/stutter"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 provides=('stutter')
-conflicts=('stutter' 'stutter-daemon')
+conflicts=('stutter-daemon')
 source=("stutter::git+$url.git")
 sha256sums=('SKIP')
 
@@ -46,7 +46,7 @@ package() {
   install -Dm755 "target/release/stutter" "$pkgdir/usr/bin/stutter"
 
   # systemd user service
-  install -Dm644 "stutter.service" "$pkgdir/usr/lib/systemd/user/stutter.service"
+  install -Dm644 "pkg/stutter.service" "$pkgdir/usr/lib/systemd/user/stutter.service"
 
   # license
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
