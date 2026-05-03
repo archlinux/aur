@@ -1,0 +1,18 @@
+pkgbase = qobine-git
+	pkgdesc = High resolution audio player backed by Qobuz (git-version). Formaly known as qobuz-player
+	pkgver = v0.4.5.r6.g889c61b
+	pkgrel = 1
+	url = https://github.com/SofusA/qobine
+	arch = x86_64
+	license = GPL-3
+	makedepends = git
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = alsa-lib
+	conflicts = qobine
+	options = !lto
+	source = qobine-git::git+https://github.com/SofusA/qobine.git
+	sha256sums = SKIP
+
+pkgname = qobine-git
