@@ -25,7 +25,9 @@ post_install() {
     install -d -m 700 -o moshpits -g moshpits "$_key_dir"
     if [[ ! -f "$_key_dir/mps_host_ed25519_key" ]]; then
         sudo -u moshpits mp-keygen generate \
-            --no-passphrase <<< "$_key_dir/mps_host_ed25519_key"
+            --no-passphrase \
+            --output-path "$_key_dir/mps_host_ed25519_key" \
+            --force
     fi
 
     echo ""
