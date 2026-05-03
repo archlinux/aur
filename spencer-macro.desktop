@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Spencer Macro Utilities
+Exec=spencer-macro
+Icon=spencer-macro
+Categories=Utility;
+Comment=Spencer Macro Utilities
+Terminal=false

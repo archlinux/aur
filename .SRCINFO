@@ -1,0 +1,23 @@
+pkgbase = spencer-macro
+	pkgdesc = Spencer Macro Utilities
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Spencer0187/Spencer-Macro-Utilities
+	arch = x86_64
+	license = GPL3
+	makedepends = base-devel
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = libx11
+	depends = libxext
+	depends = libxkbcommon
+	depends = mesa
+	depends = dbus
+	depends = systemd-libs
+	source = spencer-macro::git+https://github.com/Spencer0187/Spencer-Macro-Utilities.git
+	source = spencer-macro.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = spencer-macro
