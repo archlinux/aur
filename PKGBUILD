@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-common5
-pkgver=5.7.1
-pkgrel=3
+pkgver=5.8.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases."
@@ -29,7 +29,7 @@ makedepends=(
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
         "https://github.com/gazebosim/${_pkgbase}/pull/672.patch")
-sha256sums=('85e7e334d2ce76ea25a6f912f64c0e462ee4fa0e5661588024e8d34a1187070c'
+sha256sums=('777503f584f8691bfb62826ecb5a7a6d42571822a446916a17729e229e0004cf'
             '923fb973b93b0e71f814bf499ddf29d6412a82d4ba768eeb3efaefcaea1d9fff')
 
 prepare() {
