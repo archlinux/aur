@@ -1,10 +1,15 @@
 pkgname=hiresti
-pkgver=1.9.2
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="High-Res TIDAL player for Linux with bit-perfect playback support"
 arch=('x86_64')
 url="https://github.com/yelanxin/hiresTI"
 license=('GPL-3.0-or-later')
+# Disable makepkg's LTO option: ring 0.17 ships C code via cc-rs; when
+# CachyOS-style makepkg.conf appends -flto=auto to CFLAGS, ring's bitcode
+# objects fail to merge into the cdylib, leaving ring_core_* symbols
+# undefined at runtime ("undefined symbol: ring_core_0_17_14__LIMBS_*").
+options=('!lto')
 _tag="v${pkgver}"
 _srcdir="hiresTI-${pkgver}"
 depends=(
@@ -56,7 +61,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/yelanxin/hiresTI/archive/refs/tags/${_tag}.tar.gz"
 )
 sha256sums=(
-  '6e5f3d7b311c06655f3f11e06de714ed59fa4ac508368d129cb62b8d88081feb'
+  '00e042447bfd0c0d56118f3118c018b114862bb818350c09a136aeadc01dd502'
 )
 
 build() {
