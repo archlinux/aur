@@ -9,21 +9,18 @@ Type=simple
 User=moshpits
 Group=moshpits
 
-ExecStart=/usr/bin/mps
+# Pass -c to read from /etc/moshpits/moshpits.toml instead of the default user
+# config at ~/.config/moshpits/moshpits.toml.  Remove the flag to use the default.
+ExecStart=/usr/bin/mps -c /etc/moshpits/moshpits.toml
 Restart=on-failure
 RestartSec=5s
-
-# Override the config file location so mps reads from /etc/moshpits/moshpits.toml
-# when a system-wide config is desired.  Comment out to fall back to the user
-# config at ~/.config/moshpits/moshpits.toml (inside the moshpits home dir).
-# Environment=MOSHPITS_CONFIG_ABSOLUTE_PATH=/etc/moshpits/moshpits.toml
 
 # Hardening
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=read-only
-ReadWritePaths=/home
+ReadWritePaths=/home /var/log/moshpits
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true
