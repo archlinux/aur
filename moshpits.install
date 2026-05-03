@@ -2,7 +2,7 @@ post_install() {
 
     # Create the configuration directory and install a starter config if absent
     install -d -m 755 -o root -g root /etc/moshpits
-    if [[ ! -f /etc/moshpits/moshpits.toml ]]; then
+    if [ ! -f /etc/moshpits/moshpits.toml ]; then
         install -m 644 -o root -g root \
             /usr/share/doc/moshpits-bin/examples/moshpits.toml.example \
             /etc/moshpits/moshpits.toml
@@ -14,7 +14,7 @@ post_install() {
     # Generate a passwordless host key pair on first install (non-interactive, service-safe)
     _key_dir=/etc/moshpits/keys
     install -d -m 700 -o root -g root "$_key_dir"
-    if [[ ! -f "$_key_dir/mps_host_ed25519_key" ]]; then
+    if [ ! -f "$_key_dir/mps_host_ed25519_key" ]; then
         mp-keygen generate \
             --server \
             --no-passphrase \
@@ -67,4 +67,5 @@ post_remove() {
     # to avoid destroying user configuration and logs on uninstall.
     # Remove them manually if no longer needed:
     #   rm -rf /etc/moshpits /var/log/moshpits
+    :
 }
