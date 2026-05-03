@@ -1,8 +1,8 @@
-pkgbase = asus-hub
+pkgbase = ayuz
 	pkgdesc = The unofficial MyAsus alternative for Linux
 	pkgver = 1.0.9
 	pkgrel = 1
-	url = https://github.com/Traciges/Asus-Hub
+	url = https://github.com/Traciges/Ayuz
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -15,12 +15,16 @@ pkgbase = asus-hub
 	optdepends = iio-sensor-proxy: Ambient light sensor for auto backlight
 	optdepends = swayidle: Keyboard backlight idle timer
 	optdepends = asusctl: Battery care, fan profiles, FN key mod
+	optdepends = supergfxctl: GPU mode switching
 	optdepends = wireplumber: Volume control & boost
 	optdepends = easyeffects: Audio sound profiles
+	optdepends = brightnessctl: Smart Gestures
+	optdepends = playerctl: Media playback control
 	optdepends = glib2: Touchpad toggle on GNOME
-	provides = asus-hub
-	conflicts = asus-hub
-	source = asus-hub::git+https://github.com/Traciges/Asus-Hub.git#tag=v1.0.9
+	provides = ayuz
+	conflicts = ayuz
+	replaces = asus-hub
+	source = ayuz::git+https://github.com/Traciges/Ayuz.git#tag=v1.0.9
 	sha256sums = 5996e115ef0c5535f8c9debca46bcbb7394140d741d523adf33374f2db663cef
 
-pkgname = asus-hub
+pkgname = ayuz

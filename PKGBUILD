@@ -1,12 +1,12 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
-_pkgbase=asus-hub
+_pkgbase=ayuz
 pkgname="$_pkgbase"
 pkgver=1.0.9
 pkgrel=1
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
-url='https://github.com/Traciges/Asus-Hub'
+url='https://github.com/Traciges/Ayuz'
 license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita')
 optdepends=('libkscreen: OLED flicker-free dimming'
@@ -15,13 +15,17 @@ optdepends=('libkscreen: OLED flicker-free dimming'
 						'iio-sensor-proxy: Ambient light sensor for auto backlight'
 						'swayidle: Keyboard backlight idle timer'
 						'asusctl: Battery care, fan profiles, FN key mod'
+						'supergfxctl: GPU mode switching'
 						'wireplumber: Volume control & boost'
 						'easyeffects: Audio sound profiles'
+						'brightnessctl: Smart Gestures'
+						'playerctl: Media playback control'
 						'glib2: Touchpad toggle on GNOME')
 makedepends=('git' 'cargo')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-source=("$_pkgbase::git+https://github.com/Traciges/Asus-Hub.git#tag=v$pkgver")
+replaces=(asus-hub)
+source=("$_pkgbase::git+https://github.com/Traciges/Ayuz.git#tag=v$pkgver")
 sha256sums=('5996e115ef0c5535f8c9debca46bcbb7394140d741d523adf33374f2db663cef')
 
 prepare() {
@@ -40,8 +44,8 @@ build() {
 package() {
 	cd "$_pkgbase"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgbase"
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/de.guido.asus-hub.desktop"
-	install -Dm0644 -T "assets/trayicon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/de.guido.asus-hub.png"
-	install -Dm0644 -t "$pkgdir/usr/share/metainfo/" "packaging/de.guido.asus-hub.metainfo.xml"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/de.guido.ayuz.desktop"
+	install -Dm0644 -T "assets/trayicon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/de.guido.ayuz.png"
+	install -Dm0644 -t "$pkgdir/usr/share/metainfo/" "packaging/de.guido.ayuz.metainfo.xml"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgbase/" LICENSE
 }
