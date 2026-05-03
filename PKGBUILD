@@ -1,7 +1,7 @@
 # Maintainer: Hufflez <jackattacker518@gmail.com>
 pkgname=t3code-git
 _pkgname=t3code
-pkgver=0.0.22.nightly.20260502.184.r0.g460d9c3
+pkgver=0.0.22.nightly.20260503.185.r1.g0ce7e56
 pkgrel=1
 pkgdesc='T3 Code desktop app (git version, built from source)'
 arch=('x86_64')
