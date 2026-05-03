@@ -11,7 +11,7 @@ makedepends=('git')
 
 # Use tarball for source
 source=("https://github.com/zsh-ncursed/somafm_tui/archive/v${pkgver}.tar.gz")
-sha256sums=('ca7ac218dba8cf30e544e3dcbe2265ce47317cd183256b3844607a465a53813c')
+sha256sums=('28223194f9ac48714bf7fd3fa19c1a7798baa366676ec7c7d639e20f985c3ca4')
 
 # pkgver() is used in CI to override version from git tag
 pkgver() {
