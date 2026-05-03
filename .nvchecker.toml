@@ -1,0 +1,4 @@
+[inthecube-bin]
+source = "snapcraft"
+snap = "inthecube"
+channel = "stable"
