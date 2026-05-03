@@ -1,0 +1,13 @@
+pkgbase = samba-util
+	pkgdesc = A graphical tool for managing Samba
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mijocecr/samba-util
+	arch = x86_64
+	license = MIT
+	depends = samba
+	depends = systemd
+	source = https://github.com/mijocecr/samba-util/releases/download/samba-util_v1.0/SAMBA-Util.tar.gz
+	sha256sums = SKIP
+
+pkgname = samba-util
