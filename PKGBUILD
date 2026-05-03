@@ -4,7 +4,7 @@
 # Contributor: Raphael Amorim <rapha850@gmail.com>
 
 pkgname=rio
-pkgver=0.3.11
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64')
@@ -28,9 +28,10 @@ makedepends=(
   'libxcb'
   'libxkbcommon'
   'python'
+  'glslang'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('67c073f583ab5bc01f98ac3ef191dc752be228f6dfadb5d1845392a3a295408f9c83878c41357e0d5a3fa9ea940f0741f4825c5edb5f3ecc71f8edff7dc323e5')
+sha512sums=('6f6d2f61f9bfdbb555e023522446ddac06fc08ad34e4b636d4fd2b0ae8893d040ff691203de84649f6e2e0c7ecb9f3ebd29534a06f2158ce47bec998a58ac91c')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -53,7 +54,6 @@ package() {
   install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "README.md"
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE"
   desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "misc/${pkgname}.desktop"
-  install -Dm0644 "docs/static/assets/${pkgname}-logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 }
 
 # vim: ts=2 sw=2 et:
