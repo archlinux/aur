@@ -1,6 +1,6 @@
 pkgbase = usacloud
 	pkgdesc = CLI client for the Sakura Cloud
-	pkgver = 1.22.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/sacloud/usacloud
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = usacloud
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = usacloud::git+https://github.com/sacloud/usacloud.git#tag=v1.22.0
-	sha256sums = 52bf6c44b51f61b0b70df5bb098df5e77d946ed2a201b03de4375a4abfe02fb4
+	source = usacloud::git+https://github.com/sacloud/usacloud.git#tag=v1.22.1
+	sha256sums = 58a734d009416a0d2a07713b8543fafcde26cc33691db7bdc327e9acb5e8b2d9
 
 pkgname = usacloud
