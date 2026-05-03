@@ -1,35 +1,56 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Eduardo Reveles <me@osiux.ws>
 
-pkgname=perl-net-ping
-_cpanname=Net-Ping
-_module=Net::Ping
-pkgver=2.41
-pkgrel=2
-pkgdesc="$_module - check a remote host for reachability"
+_author=RURBAN
+_dist=Net-Ping
+pkgname=perl-${_dist@L}
+pkgver=2.76
+pkgrel=1
+pkgdesc='check a remote host for reachability'
 arch=('any')
-url="https://metacpan.org/release/$_cpanname"
-license=('unknown')
-source=("http://cpan.metacpan.org/authors/id/S/SM/SMPETERS/${_cpanname}-${pkgver}.tar.gz")
-depends=('perl-test')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-socket>=2.007'
+    'perl-test-simple'
+    'perl-time-hires'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-test-pod>=1.22'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-md5sums=('e8e1709d3ec8f697e7aa5ca481b1317a')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('07b52126a529c3231ae82c4e43961713ecbdccff6813e27d57ddde8865064f9b')
 
-build() {
-  cd "$srcdir/$_cpanname-$pkgver"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-check() {
-  cd "$srcdir/$_cpanname-$pkgver"
-  make test
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-package() {
-  cd "$srcdir/$_cpanname-$pkgver"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}

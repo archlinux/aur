@@ -1,14 +1,19 @@
 pkgbase = perl-net-ping
-	pkgdesc = Net::Ping - check a remote host for reachability
-	pkgver = 2.41
-	pkgrel = 2
-	url = https://metacpan.org/release/Net-Ping
+	pkgdesc = check a remote host for reachability
+	pkgver = 2.76
+	pkgrel = 1
+	url = https://metacpan.org/dist/Net-Ping
 	arch = any
-	license = unknown
-	depends = perl-test
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-pod>=1.22
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-socket>=2.007
+	depends = perl-test-simple
+	depends = perl-time-hires
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/S/SM/SMPETERS/Net-Ping-2.41.tar.gz
-	md5sums = e8e1709d3ec8f697e7aa5ca481b1317a
+	source = https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Net-Ping-2.76.tar.gz
+	sha256sums = 07b52126a529c3231ae82c4e43961713ecbdccff6813e27d57ddde8865064f9b
 
 pkgname = perl-net-ping
-
