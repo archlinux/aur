@@ -1,5 +1,5 @@
 # Maintainer: spiritomb <spiritomb@protonmail.com>
-# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
+# Contributor: Chih-Hsuan Yen <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 # Contributor: YuutaW <i@yuuta.moe>
 
 pkgname=rsshub-git
