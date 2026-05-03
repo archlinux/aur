@@ -1,15 +1,21 @@
 pkgbase = perl-moosex-types-perl
 	pkgdesc = Moose types that check against Perl syntax
 	pkgver = 0.101344
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/MooseX-Types-Perl
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	checkdepends = perl-moose
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.78
 	depends = perl-moosex-types
+	depends = perl-params-util
+	depends = perl-version>=0.82
+	depends = perl>=5.12.0
+	optdepends = perl-cpan-meta>=2.120900
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/MooseX-Types-Perl-0.101344.tar.gz
-	md5sums = d4cdcae30d6cbc6c7dc66e01539eecc5
+	sha256sums = 87644354f74fa65235cb2bfca44277930a7eabe51acc5f81fb631530a8355e24
 
 pkgname = perl-moosex-types-perl
