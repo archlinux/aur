@@ -1,7 +1,7 @@
 # Maintainer: qr243vbi
 
 pkgname=(nekobox nekobox-core)
-pkgver=5.11.2
+pkgver=5.11.3
 pkgrel=10
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
@@ -27,6 +27,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
         
     cmake -B "${NEKOBOX_BUILD}" -S . -D "NKR_DEFAULT_VERSION=${pkgver}"
+    cmake --build "${NEKOBOX_BUILD}"
 }
 
 packagecore() {
