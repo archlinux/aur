@@ -1,0 +1,25 @@
+pkgbase = pulsegate-gui-git
+	pkgdesc = Graphical desktop SSH manager for PulseGate
+	pkgver = 0.r1.gdcafc1e
+	pkgrel = 1
+	url = https://git.pepe44.dev/Pepe44DEV/PulseGate-GUI
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = openssh
+	depends = python
+	depends = python-yaml
+	depends = tk
+	optdepends = kitty: preferred terminal emulator for SSH sessions
+	optdepends = alacritty: alternative terminal emulator for SSH sessions
+	optdepends = konsole: alternative terminal emulator for SSH sessions
+	optdepends = gnome-terminal: alternative terminal emulator for SSH sessions
+	optdepends = xfce4-terminal: alternative terminal emulator for SSH sessions
+	optdepends = xterm: fallback terminal emulator for SSH sessions
+	optdepends = go: run the optional local web UI
+	provides = pulsegate-gui
+	conflicts = pulsegate-gui
+	source = git+https://git.pepe44.dev/Pepe44DEV/PulseGate-GUI.git
+	sha256sums = SKIP
+
+pkgname = pulsegate-gui-git
