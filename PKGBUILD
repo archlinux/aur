@@ -1,7 +1,7 @@
 # Maintainer: kabeuchi-bird <https://github.com/kabeuchi-bird>
 pkgname=kabekami-git
 pkgver=r125.69935d8
-pkgrel=3
+pkgrel=4
 pkgdesc="KDE Plasma wallpaper rotation daemon with multi-monitor support, online sources, and global shortcuts"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kabeuchi-bird/kabekami"
@@ -14,6 +14,9 @@ optdepends=(
 )
 provides=('kabekami' 'kabekami-config')
 conflicts=('kabekami' 'kabekami-config')
+# ring 0.17 のバンドル C/asm は LTO 化されたオブジェクトでは
+# シンボル解決できない（lld/bfd ともに NG）ため LTO を全面無効化する。
+options=('!lto')
 install=kabekami.install
 source=(
     "$pkgname::git+https://github.com/kabeuchi-bird/kabekami.git"
@@ -39,10 +42,6 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # ring 0.17 の .a 静的ライブラリは lld の --gc-sections と非互換のため、
-    # bfd リンカーを使用する。
-    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
-    export CARGO_PROFILE_RELEASE_LTO=false
     cargo build --release --locked
 }
 
@@ -50,8 +49,6 @@ check() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
-    export CARGO_PROFILE_RELEASE_LTO=false
     cargo test --release --locked
 }
 
