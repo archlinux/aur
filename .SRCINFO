@@ -1,6 +1,6 @@
 pkgbase = bookos-settings
 	pkgdesc = BookOS Settings — settings application for KDE Plasma (Samsung Galaxy Book / BookOS)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Evelynx08/BookOS-Settings
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = bookos-settings
 	optdepends = inotify-tools: watcher for semantic search
 	optdepends = python-dbus: KRunner semantic search plugin
 	optdepends = python-gobject: KRunner semantic search plugin
-	noextract = bookos-settings-0.4.0-1-x86_64.pkg.tar.zst
-	source = bookos-settings-0.4.0-1-x86_64.pkg.tar.zst::https://github.com/Evelynx08/BookOS-Settings/releases/download/v0.4.0/bookos-settings-0.4.0-1-x86_64.pkg.tar.zst
-	sha256sums = b17689ed3b52eb089c1e1da986306b1b0a8aee42bda02348d2e7542afa2b7d7c
+	noextract = bookos-settings-0.4.1-1-x86_64.pkg.tar.zst
+	source = bookos-settings-0.4.1-1-x86_64.pkg.tar.zst::https://github.com/Evelynx08/BookOS-Settings/releases/download/v0.4.1/bookos-settings-0.4.1-1-x86_64.pkg.tar.zst
+	sha256sums = e8847ba25799cf6a9b07e8cec9bf091588aaef573eaf024375f592dd3aaa4d25
 
 pkgname = bookos-settings

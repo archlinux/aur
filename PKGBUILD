@@ -20,7 +20,7 @@ optdepends=(
 # Pre-built binary package published as a GitHub Release asset.
 # We unpack it and reinstall its contents into $pkgdir — no compilation step.
 source=("${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('b17689ed3b52eb089c1e1da986306b1b0a8aee42bda02348d2e7542afa2b7d7c')
+sha256sums=('e8847ba25799cf6a9b07e8cec9bf091588aaef573eaf024375f592dd3aaa4d25')
 noextract=("${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
 
 package() {
