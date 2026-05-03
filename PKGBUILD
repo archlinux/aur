@@ -1,49 +1,54 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
-pkgname='perl-module-signature'
-pkgver='0.93'
-pkgrel='1'
-pkgdesc="Module signature file manipulation"
+_author=TIMLEGGE
+_dist=Module-Signature
+pkgname=perl-${_dist@L}
+pkgver=0.96
+pkgrel=1
+pkgdesc='Module signature file manipulation'
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later' 'CC0-1.0')
+url=https://metacpan.org/dist/$_dist
+license=('CC0-1.0 OR Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-file-temp'
+    'perl>=5.10.0'
+)
+makedepends=(
+    'perl-extutils-makemaker>=6.36'
+    'perl-ipc-run'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl>=5.005')
-makedepends=('perl-ipc-run')
-url='https://metacpan.org/dist/Module-Signature'
-source=("https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Module-Signature-$pkgver.tar.gz")
-md5sums=('4ff16085d07556549d96905c006cc218')
-_distdir="Module-Signature-$pkgver"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('461fe5f6a189e6dc85f8776f7534fdb9821ecb3e04d839268d31353f9b429d7e')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:

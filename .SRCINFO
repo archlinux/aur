@@ -1,16 +1,17 @@
 pkgbase = perl-module-signature
 	pkgdesc = Module signature file manipulation
-	pkgver = 0.93
+	pkgver = 0.96
 	pkgrel = 1
 	url = https://metacpan.org/dist/Module-Signature
 	arch = any
-	license = Artistic-1.0-Perl
-	license = GPL-1.0-or-later
-	license = CC0-1.0
+	license = CC0-1.0 OR Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.36
 	makedepends = perl-ipc-run
-	depends = perl>=5.005
+	makedepends = perl-test-simple
+	depends = perl-file-temp
+	depends = perl>=5.10.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Module-Signature-0.93.tar.gz
-	md5sums = 4ff16085d07556549d96905c006cc218
+	source = https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Module-Signature-0.96.tar.gz
+	sha256sums = 461fe5f6a189e6dc85f8776f7534fdb9821ecb3e04d839268d31353f9b429d7e
 
 pkgname = perl-module-signature
