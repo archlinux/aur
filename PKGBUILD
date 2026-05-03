@@ -5,6 +5,7 @@ sha256sums=('SKIP')
 pkgname=gspca_aveo-dkms
 pkgver=1.0
 pkgrel=1
+pkgdesc="AVEO Cheetah3 USB camera driver (DKMS)"
 arch=('x86_64')
 depends=('dkms')
 
