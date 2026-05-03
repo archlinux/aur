@@ -1,3 +1,16 @@
+2026.05.03, v19.16.0
+
+feature:
+- d82d0335 client: vim: rr for rename file
+- acfa27cf docker: io: nvchad: add
+- 14f009f8 docker: io: bash-completion: add
+- c6c60146 docker: io: f4
+- 9a6b8935 docker: io: GOPATH
+- a9bc22ce cloudcmd: operation: rm useless checks
+- 36bacfe9 cloudcmd: client: key: vim: cc, mm
+- 591da25c cloudcmd: ponse v8.0.0
+- 1e1b073c docker: io: /usr/src/cloudcmd -> /usr/local/share/cloudcmd
+
 2026.04.28, v19.15.0
 
 feature:
