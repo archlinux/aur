@@ -1,6 +1,6 @@
 # Maintainer: MrHaku81 <haku81.kk@gmail.com>
 pkgname=print-ease
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Find and use printers and scanners instantly - zero config required"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
     'python-pillow: PDF assembly for software duplex ADF scanning'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MrHaku81/print-ease/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01b32855c83881f136291515803632a9126a602083154d0daf7ad706105b65c4')
+sha256sums=('95a000bc5baa73772b2d8f2f61d08f7ca3de39ed2c18d62c99a634add10101dc')
 
 build() {
     cd "$pkgname-$pkgver"
