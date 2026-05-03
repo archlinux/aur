@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=tern
-pkgver=2.3.2
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='A standalone migration tool for PostgreSQL'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('postgresql: for local instance of PostgreSQL')
 options=('!lto')
-_commit='264a5156033e46a937907458bebdcc4091bb70f4'
+_commit='53bb5f2c3807397bc040544e53053f4ba98a2a0d'
 source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
