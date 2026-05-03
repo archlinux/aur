@@ -1,0 +1,12 @@
+pkgbase = pycalc-git
+	pkgdesc = Python console calculator
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com
+	arch = any
+	license = MIT
+	depends = python
+	source = pycalc.py
+	sha256sums = dd5e2495c154cb3029739824799caad8aff44377316f82350f89c7f1efb416ec
+
+pkgname = pycalc-git
