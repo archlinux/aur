@@ -1,30 +1,21 @@
 post_install() {
-    # Create the moshpits system user if it does not already exist
-    if ! id moshpits &>/dev/null; then
-        useradd \
-            --system \
-            --no-create-home \
-            --shell /usr/bin/nologin \
-            --comment "moshpits server daemon" \
-            moshpits
-    fi
 
     # Create the configuration directory and install a starter config if absent
-    install -d -m 750 -o moshpits -g moshpits /etc/moshpits
+    install -d -m 755 -o root -g root /etc/moshpits
     if [[ ! -f /etc/moshpits/moshpits.toml ]]; then
-        install -m 640 -o moshpits -g moshpits \
+        install -m 644 -o root -g root \
             /usr/share/doc/moshpits-bin/examples/moshpits.toml.example \
             /etc/moshpits/moshpits.toml
     fi
 
     # Create the log directory
-    install -d -m 750 -o moshpits -g moshpits /var/log/moshpits
+    install -d -m 755 -o root -g root /var/log/moshpits
 
     # Generate a passwordless host key pair on first install (non-interactive, service-safe)
     _key_dir=/etc/moshpits/keys
-    install -d -m 700 -o moshpits -g moshpits "$_key_dir"
+    install -d -m 700 -o root -g root "$_key_dir"
     if [[ ! -f "$_key_dir/mps_host_ed25519_key" ]]; then
-        sudo -u moshpits mp-keygen generate \
+        mp-keygen generate \
             --server \
             --no-passphrase \
             --output-path "$_key_dir/mps_host_ed25519_key" \
@@ -72,10 +63,6 @@ pre_remove() {
 }
 
 post_remove() {
-    # Remove the system user created during installation
-    if id moshpits &>/dev/null; then
-        userdel moshpits
-    fi
     # Note: /etc/moshpits and /var/log/moshpits are intentionally preserved
     # to avoid destroying user configuration and logs on uninstall.
     # Remove them manually if no longer needed:

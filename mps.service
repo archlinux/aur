@@ -6,8 +6,8 @@ Wants=network.target
 
 [Service]
 Type=simple
-User=moshpits
-Group=moshpits
+User=root
+Group=root
 
 # Read config from /etc/moshpits/moshpits.toml (system-wide default).
 # Override the host key and tracing log paths to the locations set up on install.
@@ -19,22 +19,17 @@ ExecStart=/usr/bin/mps \
 Restart=on-failure
 RestartSec=5s
 
-# Hardening
-NoNewPrivileges=true
+# Hardening (relaxed for multi-user root daemon)
+NoNewPrivileges=false
 PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=read-only
-ReadWritePaths=/var/log/moshpits
+ProtectSystem=full
+ProtectHome=false
+ReadWritePaths=/var/log/moshpits /etc/moshpits/keys
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true
-RestrictSUIDSGID=true
-RestrictNamespaces=true
-RestrictRealtime=true
-LockPersonality=true
-MemoryDenyWriteExecute=true
-SystemCallFilter=@system-service
-SystemCallErrorNumber=EPERM
+# Root daemons spawning shells need broad syscall access
+# SystemCallFilter=@system-service is too restrictive for arbitrary user shells
 
 [Install]
 WantedBy=multi-user.target
