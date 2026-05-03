@@ -10,7 +10,7 @@ depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'polkit')
 optdepends=('reflector: generate optimized mirrorlists'
             'gdk-pixbuf2: PNG icon in About tab')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/victorsosaMx/vsReflector-Manager/archive/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('4421601f3ca55a62a214f8fbfe62513dc9f08f4969a55f5c78da3b0c99f92b4f')
 
 package() {
     cd "$srcdir/vsReflector-Manager-$pkgver"
