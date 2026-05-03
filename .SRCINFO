@@ -1,6 +1,6 @@
 pkgbase = dexed-git
 	pkgdesc = A software synth closely modelled on the Yamaha DX7 (git version)
-	pkgver = 1.0.1.r0.gbce5dee
+	pkgver = 1.0.1.r2.g2e182b3
 	pkgrel = 1
 	url = https://asb2m10.github.io/dexed
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = dexed-git
 	makedepends = libxrandr
 	makedepends = libxinerama
 	makedepends = libxcursor
-	makedepends = webkit2gtk
 	makedepends = libpng
 	makedepends = gendesk
 	depends = alsa-lib

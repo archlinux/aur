@@ -3,7 +3,7 @@
 
 _pkgname=dexed
 pkgname=$_pkgname-git
-pkgver=1.0.1.r0.gbce5dee
+pkgver=1.0.1.r2.g2e182b3
 pkgrel=1
 pkgdesc='A software synth closely modelled on the Yamaha DX7 (git version)'
 arch=(x86_64)
@@ -26,7 +26,6 @@ makedepends=(
   libxrandr
   libxinerama
   libxcursor
-  webkit2gtk
   libpng
   gendesk
 )
