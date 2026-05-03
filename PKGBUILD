@@ -4,14 +4,14 @@
 pkgbase=socalabs-wavetable
 pkgname=($pkgbase-lv2-bin $pkgbase-vst-bin $pkgbase-vst3-bin)
 pkgver=1.0.32
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://socalabs.com/synths/wavetable/'
 license=(BSD-3-Clause)
 groups=(pro-audio)
 depends=(fontconfig freetype2 glibc gcc-libs)
 makedepends=(unzip)
-source=("LICENSE-socalabs-wavetable::https://raw.githubusercontent.com/FigBug/Wavetable/$pkgver/LICENSE")
+source=("LICENSE-socalabs-wavetable::https://github.com/FigBug/Wavetable/raw/refs/tags/v$pkgver/LICENSE")
 source_x86_64=("$pkgbase-$pkgver.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip")
 sha256sums=('65723088b243ad18fdd0417c911deac03593ded0b7a089b0d100a988528c8af3')
 sha256sums_x86_64=('df62945366ae782e1f068b3b2b67137e31683a20553437bec8beca5a123ee23f')
