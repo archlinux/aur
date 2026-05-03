@@ -1,5 +1,6 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Minimalist <stefanguen@gmail.com>
 
 _author=REHSACK
 _dist=Hash-MoreUtils
