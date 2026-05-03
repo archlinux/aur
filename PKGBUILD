@@ -14,8 +14,8 @@ depends=("postgresql-libs" "zstd" "libgcc")
 makedepends=("git" "jq" "rustup" "clang" "wasm-pack" "just" "esbuild" "minify")
 options=(!debug !lto)
 
-pkgrel=2
-pkgver=0.1.0.r92e8804
+pkgrel=1
+pkgver=0.1.0.r6c626bb
 pkgver() {
 	cd "${srcdir}/kittehlist"
 	ver=$(cargo metadata --frozen --no-deps --format-version 1 | jq -r '.packages | map(select(.name == "kittehlist"))[0].version')
@@ -27,6 +27,7 @@ prepare() {
 	cd "${srcdir}/kittehlist"
 
 	rustup install stable
+	rustup target add wasm32-unknown-unknown
 	cargo --version
 	cargo --locked fetch
 }
@@ -38,9 +39,10 @@ build() {
 
 package() {
 	cd "${srcdir}/kittehlist"
-	install -D target/releash/kittehlist_server "${pkgdir}/usr/bin/kittehlist"
+	install -vD target/releash/kittehlist_server "${pkgdir}/usr/bin/kittehlist"
+	install -vDm644 -t "${pkgdir}/usr/share/licenses/kittehlist-git" LICENSE-MIT LICENSE-APACHE
 	pushd target
-	find frontend -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/kittehlist/{}" \;
+	find frontend -type f -exec install -vDm644 "{}" "${pkgdir}/usr/share/kittehlist/{}" \;
 	popd
 	# TODO: example config, systemd files
 }

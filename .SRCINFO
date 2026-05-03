@@ -1,7 +1,7 @@
 pkgbase = kittehlist-git
 	pkgdesc = todo list for kittehs - development version
-	pkgver = 0.1.0.r92e8804
-	pkgrel = 2
+	pkgver = 0.1.0.r6c626bb
+	pkgrel = 1
 	url = https://codeberg.org/annaaurora/kittehlist
 	arch = x86_64
 	arch = aarch64
