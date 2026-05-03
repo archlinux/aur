@@ -10,8 +10,8 @@ pkgbase = hjkl-bin
 	provides = hjkl=0.8.0
 	conflicts = hjkl
 	source_x86_64 = hjkl-v0.8.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v0.8.0/hjkl-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = a383d31f7b4f8001dd16aadd22cdce805ba59d884f6649c96c0a15a09890e059
+	sha256sums_x86_64 = 6a5da1b25e1535acd317825907c201366966776cf3531305fd08c158150923ac
 	source_aarch64 = hjkl-v0.8.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hjkl/releases/download/v0.8.0/hjkl-v0.8.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 2bf0373849ec2864cad7434e9c0f18e39515c32286790fbfa9b11193ed713f7f
+	sha256sums_aarch64 = 08f082564495bbaa9340be38042a29cb240a32f76f64bb17004cfd8f4fb73327
 
 pkgname = hjkl-bin
