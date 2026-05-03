@@ -1,0 +1,4 @@
+[mini-eq]
+source = "git"
+git = "https://github.com/bhack/mini-eq.git"
+prefix = "v"
