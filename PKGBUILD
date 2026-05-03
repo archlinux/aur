@@ -17,7 +17,7 @@ depends=(
   'zbar'
   'libappindicator-gtk3'
 )
-makedepends=('base-devel')
+makedepends=('base-devel' 'cmake')
 optdepends=(
 	'grim: wlroots-based compositor screen capture'
 	'wl-clipboard: Wayland clipboard'
