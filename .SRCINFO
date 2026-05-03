@@ -1,0 +1,13 @@
+pkgbase = fast-systemctl
+	pkgdesc = simplify common systemctl commands
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/CaSilicate-dev/fast_systemctl
+	arch = x86_64
+	license = CC0
+	makedepends = cargo
+	options = !debug
+	source = fast-systemctl-1.2.0.tar.gz::https://github.com/CaSilicate-dev/fast_systemctl/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = b5ac18036f0c4cd57f4c20d1ba70c7b835315e08b6af5d4af2577dbe1fd85da4
+
+pkgname = fast-systemctl
