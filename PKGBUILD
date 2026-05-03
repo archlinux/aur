@@ -1,5 +1,5 @@
 pkgname=bgfx-git
-pkgver=1.115.8109
+pkgver=1.143.9245
 pkgrel=1
 pkgdesc="Cross-platform, graphics API agnostic, \"Bring Your Own Engine/Framework\" style rendering library."
 arch=('x86_64')
@@ -14,7 +14,9 @@ provides=("${pkgname%-git}")
 source=('git+https://github.com/bkaradzic/bx.git'
         'git+https://github.com/bkaradzic/bimg.git'
         'git+https://github.com/bkaradzic/bgfx.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   # From bgfx.cpp source:
@@ -33,9 +35,9 @@ build() {
   cd "${srcdir}/${pkgname%-git}"
   if [ `check_option debug`=y ]
   then
-    make linux-debug64
+    make linux-gcc-debug64
   else
-    make linux-release64
+    make linux-gcc-release64
   fi
 }
 
