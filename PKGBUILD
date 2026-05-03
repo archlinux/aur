@@ -1,46 +1,41 @@
-# $Id$
-# Maintainer: Quentin Retornaz <quentin dot retornaz at yahoo dot fr>
+# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Bartłomiej Piotrowski
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
+# Contributor: Manuel Linares <mbarriolinares at gmail dot com>
 
-pkgname=ristretto-git
 _pkgname=ristretto
-pkgver=0.8.2.r9.g6cc891d
+pkgname=$_pkgname-git
+pkgver=0.14.0.r15.g19c0832b
 pkgrel=1
-pkgdesc='Fast and lightweight picture-viewer for Xfce4 (git version)'
-arch=('x86_64' 'i686')
-url='http://docs.xfce.org/apps/ristretto/start'
-license=('GPL')
-depends=('libxfce4ui' 'libexif' 'file')
-makedepends=('intltool' 'git' 'xfce4-dev-tools')
-optdepends=('librsvg: SVG support'
-            'tumbler: thumbnailing support')
+pkgdesc="A fast and lightweight picture viewer for Xfce (git version)"
+arch=('x86_64')
+url="https://docs.xfce.org/apps/ristretto/start"
+license=('GPL-2.0-or-later')
+groups=('xfce4-goodies')
+depends=('exo' 'libxfce4ui' 'xfconf' 'tumbler' 'libexif' 'file')
+makedepends=('git' 'glib2-devel' 'meson' 'python' 'xfce4-dev-tools')
 provides=('ristretto')
 conflicts=('ristretto')
-source=(git+"git://git.xfce.org/apps/ristretto")
-md5sums=('SKIP')
+
+source=("git+https://gitlab.xfce.org/apps/${_pkgname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long | sed -r "s/^${_pkgname}-//;s/([^-]*-g)/r\1/;s/-/./g"
+  cd $_pkgname
+  git describe --long --tags | sed 's/^ristretto-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_pkgname"
-
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-debug
-  make
+  arch-meson $_pkgname build \
+    --localstatedir=/var
+  meson compile -C build
 }
 
 package() {
-  make -C "$_pkgname" DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
 
-# getver: git.xfce.org/apps/ristretto/plain/NEWS
 # vim:set ts=2 sw=2 et:
