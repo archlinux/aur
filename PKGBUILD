@@ -9,9 +9,9 @@ license=('MIT')
 depends=('python' 'python-requests' 'python-mpv' 'python-dbus-next')
 makedepends=('git')
 
-# Use tarball for source
-source=("https://github.com/zsh-ncursed/somafm_tui/archive/v${pkgver}.tar.gz")
-sha256sums=('28223194f9ac48714bf7fd3fa19c1a7798baa366676ec7c7d639e20f985c3ca4')
+# Use git for source
+source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v${pkgver}")
+sha256sums=('916975e15b23502b7a5cd46ead7d1a4943eb33a440c43654a7eda722b3f0026a')
 
 # pkgver() is used in CI to override version from git tag
 pkgver() {
