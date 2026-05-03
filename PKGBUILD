@@ -1,4 +1,4 @@
-# Maintainer: Massimo Pavoni <real.damax@gmail.com>
+# Maintainer: Massimo Pavoni (damax) <real dot damax at gmail dot com>
 
 pkgname=ttf-uiua386
 pkgver=0.18.1
