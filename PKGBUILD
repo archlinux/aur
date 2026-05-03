@@ -1,7 +1,7 @@
 # Maintainer: random-tm <lucia at luciaesmith dot com>
 pkgname="apx-git"
 _pkgname="apx"
-pkgver=2.0.0.r54.gd2c156a
+pkgver=3.1.0.r0.ga2ef18d
 pkgrel=1
 pkgdesc="Vanilla OS package manager"
 arch=('x86_64')
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  go build -o apx main.go
+  make build
 }
 
 package() {
