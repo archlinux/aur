@@ -1,6 +1,7 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
+# Contributor: alexey-p <alexey-p@uralweb.ru>
 
 _author=DJERIUS
 _dist=Sub-Delete
