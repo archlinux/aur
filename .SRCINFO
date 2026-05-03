@@ -1,6 +1,6 @@
 pkgbase = metacubexd
 	pkgdesc = Mihomo Dashboard, The Official One, XD
-	pkgver = 1.246.2
+	pkgver = 1.246.3
 	pkgrel = 1
 	url = https://github.com/MetaCubeX/metacubexd
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = metacubexd
 	optdepends = sing-box: The universal proxy platform
 	provides = metacubexd
 	conflicts = metacubexd
-	source = metacubexd-1.246.2.tar.gz::https://github.com/MetaCubeX/metacubexd/archive/refs/tags/v1.246.2.tar.gz
-	sha256sums = 244bb7b457adf3d8536a04cee6a32a175348991e7dd1ffa60d8e8dd738d3c2b6
+	source = metacubexd-1.246.3.tar.gz::https://github.com/MetaCubeX/metacubexd/archive/refs/tags/v1.246.3.tar.gz
+	sha256sums = 179cec4e5cb4553d90397eadd25be3a2850cf11db59fdf19d33cd489fe90a37c
 
 pkgname = metacubexd
