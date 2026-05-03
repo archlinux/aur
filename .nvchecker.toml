@@ -1,0 +1,7 @@
+[jamulus]
+source = "github"
+github = "jamulussoftware/jamulus"
+use_max_tag = true
+include_regex = '^r(\d+)_(\d+)_(\d+)$'
+from_pattern = '^r(\d+)_(\d+)_(\d+)$'
+to_pattern = '\1.\2.\3'
