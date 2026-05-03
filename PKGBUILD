@@ -17,10 +17,13 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
   make build
+  cmake -S browser/qt -B browser/qt/build
+  cmake --build browser/qt/build
 }
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
   make DESTDIR="${pkgdir}" install
+  install -Dm755 browser/qt/build/vx6-browser "$pkgdir/usr/bin/vx6-browser"
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
