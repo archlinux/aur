@@ -85,7 +85,7 @@ package() {
   install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   
-  cd "${srcdir}/${source_artifact%.snap}"
+  cd "${source_artifact%.snap}"
   install -vDm755 "usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   cp -va --parents --no-preserve=ownership "usr/share/${_pkgname}" -t "${pkgdir}"
