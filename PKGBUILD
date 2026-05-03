@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.20.0.760.gfb85095a83
+pkgver=v0.20.0.879.g1b29f3d4af
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
 	"open-space"
 	"update-cfg.patch")
 sha256sums=('SKIP'
-		    56c958c21b0dc0cd2dc822f24788cd5889a222acd82407e6800b167e6c277681
-		    e1309772e3c67192235ae1ca6ab48c9a9ed8a691fd964e816d2ddc875f3c616a
+			48f9ad3ab1ffc9ef6172cdba1b7bf1d0c36127723d3e73bb7beb273f1d0a54af
+		    776d986d6592fbedddaaa79385d3e42b39e1bd1ae9480404559410bcc930c963
 		    )
 
 options=(!debug)
@@ -106,10 +106,6 @@ package() {
 	cp -R "${srcdir}/${_pkgname}/modules/space/shaders"  "$pkgdir/opt/OpenSpace/modules/space"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/spacecraftinstruments/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/spacecraftinstruments/shaders"  "$pkgdir/opt/OpenSpace/modules/spacecraftinstruments"
-	mkdir -p "$pkgdir/opt/OpenSpace/modules/touch/shaders"
-	cp -R "${srcdir}/${_pkgname}/modules/touch/shaders"  "$pkgdir/opt/OpenSpace/modules/touch"
-	mkdir -p "$pkgdir/opt/OpenSpace/modules/toyvolume/shaders"
-	cp -R "${srcdir}/${_pkgname}/modules/toyvolume/shaders"  "$pkgdir/opt/OpenSpace/modules/toyvolume"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/volume/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/volume/shaders"  "$pkgdir/opt/OpenSpace/modules/volume"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/debugging/scripts"
@@ -118,12 +114,10 @@ package() {
 	cp -R "${srcdir}/${_pkgname}/modules/webgui/ext/nodejs"  "$pkgdir/opt/OpenSpace/modules/webgui/ext"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/webbrowser/ext"
 	cp -R "${srcdir}/${_pkgname}/build/modules/webbrowser/ext/cef/cef_binary_127.3.5+g114ea2a+chromium-127.0.6533.120_linux64/Release"  "$pkgdir/opt/OpenSpace/modules/webbrowser/ext"
-	rm "$pkgdir/opt/OpenSpace/modules/webbrowser/ext/Release/libvulkan.so.1"
 	mkdir -p "$pkgdir/opt/OpenSpace/bin"
 	cp -R "${srcdir}/${_pkgname}/bin"  "$pkgdir/opt/OpenSpace"
 	install ${srcdir}/open-space "$pkgdir/opt/OpenSpace/bin/open-space"
 	mkdir -p "$pkgdir/opt/OpenSpace/lib"
-	cp "${srcdir}/${_pkgname}/build/ext/ghoul/ext/lua/libLua.a" "$pkgdir/opt/OpenSpace/lib/."
 	cp "${srcdir}/${_pkgname}/openspace.cfg"  "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/ACKNOWLEDGMENTS.md" "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/CITATION.cff" "$pkgdir/opt/OpenSpace/."

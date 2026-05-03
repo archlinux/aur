@@ -1,6 +1,6 @@
 --- a/src/OpenSpace/openspace.cfg
 +++ b/src/OpenSpace/openspace.cfg
-@@ -56,7 +56,8 @@ Paths = {
+@@ -56,7 +56,8 @@
    DATA = "${BASE}/data",
    ASSETS = "${DATA}/assets",
    PROFILES = "${DATA}/profiles",
@@ -10,12 +10,7 @@
    USER_ASSETS = "${USER}/data/assets",
    USER_PROFILES = "${USER}/data/profiles",
    USER_CONFIG = "${USER}/config",
-@@ -70,19 +71,19 @@ Paths = {
-   -- value.  Otherwise, fall back to the ${BASE}/sync folder instead.  This allows a
-   -- reuse of the sync folder between multiple OpenSpace installations by simply setting
-   -- that environment variable
--  SYNC = os.getenv("OPENSPACE_SYNC") or "${BASE}/sync",
-+  SYNC = os.getenv("OPENSPACE_SYNC") or "${USER}/../sync",
+@@ -75,15 +76,15 @@
    SCREENSHOTS = "${USER}/screenshots",
    WEB = "${DATA}/web",
    RECORDINGS = "${USER}/recordings",

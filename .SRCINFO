@@ -1,6 +1,6 @@
 pkgbase = openspace-git
 	pkgdesc = OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos
-	pkgver = v0.20.0.760.gfb85095a83
+	pkgver = v0.20.0.879.g1b29f3d4af
 	pkgrel = 1
 	url = https://github.com/OpenSpace/OpenSpace
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = openspace-git
 	source = open-space
 	source = update-cfg.patch
 	sha256sums = SKIP
-	sha256sums = 56c958c21b0dc0cd2dc822f24788cd5889a222acd82407e6800b167e6c277681
-	sha256sums = e1309772e3c67192235ae1ca6ab48c9a9ed8a691fd964e816d2ddc875f3c616a
+	sha256sums = 48f9ad3ab1ffc9ef6172cdba1b7bf1d0c36127723d3e73bb7beb273f1d0a54af
+	sha256sums = 776d986d6592fbedddaaa79385d3e42b39e1bd1ae9480404559410bcc930c963
 
 pkgname = openspace-git
