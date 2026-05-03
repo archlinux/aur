@@ -6,14 +6,18 @@
 pkgname=openclaw
 pkgver=2026.4.27
 pkgrel=1
-pkgdesc='Personal AI assistant / multi-channel gateway'
-arch=('x86_64' 'aarch64')
-url='https://github.com/openclaw/openclaw'
-license=('MIT')
-depends=('nodejs>=22' 'npm')
-makedepends=('pnpm')
-source=("https://github.com/openclaw/openclaw/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3a8dc1452269ab321fbda795a1de71bd7864c5a8df03a1739e7015d58f6a6182')
+pkgdesc='Multi-channel AI gateway with extensible messaging integrations'
+arch=(x86_64 aarch64)
+url=https://github.com/openclaw/openclaw
+license=(MIT)
+
+depends=('nodejs>=22')
+makedepends=(npm)
+source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
+sha256sums=(a45fb32d94caa1cf52a48a9a71701b63f58ca8f375094031000bfabe01231c0a)
+options=(!debug !strip)
+install=$pkgname.install
+noextract=($pkgname-$pkgver.tgz)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
