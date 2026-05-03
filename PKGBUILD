@@ -73,7 +73,7 @@ build() {
   sh setup.sh hints/linux.500
   cd "$srcdir/$_pkgname"
 	make fetch-lua
-  make
+  make all
 }
 
 package() {
