@@ -2,7 +2,7 @@
 pkgname=jamesdsp-pulse
 _app_id=me.timschneeberger.jdsp4linux.pulse
 pkgver=2.7.0
-pkgrel=5
+pkgrel=6
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -13,16 +13,17 @@ depends=(
   'hicolor-icon-theme'
   'libarchive'
   'libpulse'
+  'libxcb'
+  'qt6-base'
   'qt6-svg'
 )
-makedepends=('git')
-checkdepends=(
-  'appstream'
+makedepends=(
   'desktop-file-utils'
+  'git'
 )
+checkdepends=('appstream')
 provides=('jamesdsp')
 conflicts=('jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
-options=('!strip')
 source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#tag=$pkgver"
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
         'git+https://github.com/ThePBone/FlatTabWidget.git'
@@ -48,6 +49,10 @@ prepare() {
 
   mkdir -p build
 
+  # Add StartupWMClass to desktop file
+  desktop-file-edit --set-key=StartupWMClass --set-value=jamesdsp \
+    "meta/flatpak/${_app_id}.desktop"
+
   # https://github.com/Audio4Linux/JDSP4Linux/pull/191 (merged)
   patch -Np1 -i ../gcc14.patch
 
@@ -60,9 +65,12 @@ build() {
   CFLAGS+=" -Wno-error=incompatible-pointer-types"
 
   pushd build
-  qmake6 .. "CONFIG += USE_PULSEAUDIO"
+  qmake6 \
+    QMAKE_CFLAGS="${CFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS}" \
+    QMAKE_LFLAGS="${LDFLAGS}" \
+    .. "CONFIG += USE_PULSEAUDIO"
   make
-  strip --strip-unneeded src/jamesdsp
   popd
 }
 
