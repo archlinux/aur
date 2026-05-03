@@ -1,7 +1,7 @@
 # Maintainer: Rootly <arbuzek1488337@gmail.com>
 pkgname=dotmaster-git
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive dotfiles installer written in Rust"
 arch=('x86_64')
 url="https://github.com/Minish777/dotmaster"
@@ -14,13 +14,14 @@ source=('git+https://github.com/Minish777/dotmaster.git')
 sha256sums=('SKIP')
 
 build() {
-  # В git-репозиториях папка обычно называется по имени репо
+  # Заходим в папку, которую скачал git
   cd "$srcdir/dotmaster/dotmaster-git"
-  cargo build --release --locked
+  # Собираем без --locked, чтобы cargo сам скачал зависимости
+  cargo build --release
 }
 
 package() {
   cd "$srcdir/dotmaster/dotmaster-git"
-  # Бинарник лежит в папке target/release внутри подпапки проекта
+  # Устанавливаем скомпилированный бинарник в систему
   install -Dm755 "target/release/dotmaster" "$pkgdir/usr/bin/dotmaster"
 }
