@@ -1,6 +1,6 @@
 # Maintainer: Jose <josrebe333@gmail.com>
 pkgname=bookos-settings
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="BookOS Settings — settings application for KDE Plasma (Samsung Galaxy Book / BookOS)"
 arch=('x86_64')
