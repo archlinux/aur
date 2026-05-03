@@ -2,7 +2,7 @@
 
 pkgname=tfswitch-bin
 _pkgname=tfswitch
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='A command line tool to switch between different versions of terraform. Pre-compiled.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 provides=('tfswitch')
 conflicts=('tfswitch')
 source=("$url/releases/download/v$pkgver/terraform-switcher_v${pkgver}_linux_amd64.tar.gz")
-sha256sums=('4e90ca05be69f5f13a6a367a39d2fdaaa40cd35a0b540077ab266532c594e532')
+sha256sums=('2342542c0898720b4421a934c22ba3368fec09f83f4b4edbc426129c5317e5cb')
 
 package() {
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
