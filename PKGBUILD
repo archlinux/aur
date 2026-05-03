@@ -4,36 +4,34 @@
 pkgname=broslauncher
 pkgver=1.0.7
 pkgrel=1
-epoch=
-pkgdesc="Bros Virtual Machine Launcher - Bros HM-1 CPU Emulator"
+pkgdesc="BrosLauncher - Bros HM-1 CPU Emulator with QEMU"
 arch=('x86_64')
 url="https://bros.berkeai.com"
 license=('MIT')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=('python-tk: For GUI')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("BrosLauncher-${pkgver}-x86_64.AppImage")
+depends=('python' 'tk' 'qemu-system-x86')
+source=('launcher.py'
+        'schematic.py'
+        'constants.py'
+        'broslauncher.desktop'
+        'broslauncher.png')
 noextract=()
-validpgpkeys=()
-
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
-  install -Dm755 "${startdir}/BrosLauncher-${pkgver}-x86_64.AppImage" "${pkgdir}/usr/bin/BrosLauncher"
-  chmod +x "${pkgdir}/usr/bin/BrosLauncher"
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/broslauncher"
+    install -d "${pkgdir}/usr/share/applications"
+    install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
 
-  mkdir -p "${pkgdir}/usr/share/applications"
-  cp "${startdir}/broslauncher.desktop" "${pkgdir}/usr/share/applications/"
+    cat > "${pkgdir}/usr/bin/BrosLauncher" << 'WRAPPER'
+#!/bin/bash
+exec python3 /usr/share/broslauncher/launcher.py "$@"
+WRAPPER
+    chmod +x "${pkgdir}/usr/bin/BrosLauncher"
 
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-  cp "${startdir}/broslauncher.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/broslauncher.png"
+    cp launcher.py "${pkgdir}/usr/share/broslauncher/"
+    cp schematic.py "${pkgdir}/usr/share/broslauncher/"
+    cp constants.py "${pkgdir}/usr/share/broslauncher/"
+    cp broslauncher.desktop "${pkgdir}/usr/share/applications/"
+    cp broslauncher.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/broslauncher.png"
 }
