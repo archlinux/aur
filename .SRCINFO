@@ -1,13 +1,13 @@
 pkgbase = nihongo
 	pkgdesc = JLPT Japanese learning app - SRS, quiz, kanji, grammar
-	pkgver = 1.5.7
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/rapoyrazoglu/nihongo
 	arch = x86_64
 	license = MIT
 	depends = espeak-ng
 	optdepends = fcitx5-mozc: Japanese input
-	source = nihongo-1.5.7::https://github.com/rapoyrazoglu/nihongo/releases/download/v1.5.7/nihongo-linux
-	sha256sums = adf2e44075e015fa02a862c101261cf48d117a37cc93f506ac4964ff05723ec9
+	source = nihongo-1.6.0::https://github.com/rapoyrazoglu/nihongo/releases/download/v1.6.0/nihongo-linux
+	sha256sums = 0092310cbd0034ba2882af5ca17550e627cfd3fa4c14a760525fa0761a23deb3
 
 pkgname = nihongo
