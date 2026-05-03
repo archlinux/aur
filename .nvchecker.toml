@@ -1,0 +1,5 @@
+[sqeel-bin]
+source = "github"
+github = "kryptic-sh/sqeel"
+use_latest_release = true
+prefix = "v"
