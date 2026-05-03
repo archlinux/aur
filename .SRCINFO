@@ -4,6 +4,7 @@ pkgbase = editasroot
 	pkgrel = 1
 	url = https://codeberg.org/maandree/editasroot
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	depends = asroot
 	source = editasroot-1.0.3.tar.gz::https://codeberg.org/maandree/editasroot/archive/1.0.3.tar.gz
