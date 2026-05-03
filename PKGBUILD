@@ -2,7 +2,7 @@
 
 pkgname=netscli-bin
 _binname=netscli
-pkgver=0.2.0
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Network scanner with CLI, TUI, desktop app, and MCP server"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=("${_binname}")
 conflicts=("${_binname}")
 source_x86_64=("${_binname}-${pkgver}-x86_64::https://github.com/fstubner/netscli/releases/download/v${pkgver}/netscli-linux-x86_64")
 source_aarch64=("${_binname}-${pkgver}-aarch64::https://github.com/fstubner/netscli/releases/download/v${pkgver}/netscli-linux-aarch64")
-sha256sums_x86_64=('94513c4aa989001ebeb4b32db063e92e09e5dbf5314bc41582859d4201b01f37')
-sha256sums_aarch64=('a4016dd46f3f0de4a097f8ea035e432e8e4079838c45faa1145cf1ff8125b17c')
+sha256sums_x86_64=('1478d63b0a650a3071071fa144d942677e7320c003adeb8b40b0dde209732c55')
+sha256sums_aarch64=('118e35329d4bfcd628ccfc2aa5141bc6b8236c7a29b82d006bf0e32a513e9d86')
 
 package() {
   local src
