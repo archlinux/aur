@@ -1,0 +1,16 @@
+pkgbase = f5-tts
+	pkgdesc = F5-TTS text-to-speech CLI and Gradio tools
+	pkgver = 1.1.20
+	pkgrel = 6
+	url = https://github.com/SWivid/F5-TTS
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-pip
+	depends = python-virtualenv
+	depends = ffmpeg
+	optdepends = cuda: NVIDIA CUDA runtime support
+	options = !debug
+	options = !strip
+
+pkgname = f5-tts
