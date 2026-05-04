@@ -11,7 +11,7 @@ groups=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 options=('!debug')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
-sha256sums=('11d55c167e840752f6d6ff03c08cbe0e3ed0cc4d52134bb91a7f076c2e1e11a1')
+sha256sums=('bfc79a16387b091b031626e7f7ee8fb19ed9da855935cf3b2d0becdd53fc9242')
 depends=(
     'qt6-base'
     'qt6-svg'
