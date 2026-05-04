@@ -10,6 +10,6 @@ pkgbase = moshpit-keygen
 	makedepends = cmake
 	makedepends = gcc
 	source = moshpit-keygen-0.3.0.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.3.0.tar.gz
-	sha256sums = 5c15e9f22d7ca59420d2e895c695b7725a944bedcd6317de9553994950a2c970
+	sha256sums = 729de269a5cd00d697f941b5a6c76804866d7ab74966a193429290b41d7db00c
 
 pkgname = moshpit-keygen
