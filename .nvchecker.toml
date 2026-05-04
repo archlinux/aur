@@ -1,0 +1,5 @@
+[gloss-bin]
+source = "github"
+github = "Architeg/gloss"
+use_latest_release = true
+prefix = "v"
