@@ -40,6 +40,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/campus-lms"
+    export CARGO_HOME="$srcdir/cargo-home"
     cargo build --release
 }
 
