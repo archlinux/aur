@@ -1,0 +1,18 @@
+pkgbase = magnet-git
+	pkgdesc = A unified package management wrapper for Arch Linux with Distrobox support
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/hewlett26/magnet
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = distrobox
+	depends = podman
+	depends = yay
+	optdepends = fish: fish shell tab completion
+	provides = magnet
+	conflicts = magnet
+	source = magnet-git::git+https://github.com/hewlett26/magnet.git
+	sha256sums = SKIP
+
+pkgname = magnet-git
