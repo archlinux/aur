@@ -5,7 +5,7 @@
 _pkgname=langchain-core
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=1.2.27
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Building applications with LLMs through composability"
 arch=('any')
@@ -26,7 +26,7 @@ makedepends=('python-build'
 'python-hatchling'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('c18372e4c4c1454d49bf23a2e484431e71bd39b64173a0f621f0fc283d7183a4')
+sha256sums=('fd7a50b2f28ba561fd9d7f5d2760bc9e06cf00cdf820a3ccafe88a94ffa8d5b7')
 
 build() {
     cd "${_pipname}-${pkgver}"
