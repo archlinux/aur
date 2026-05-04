@@ -30,10 +30,6 @@ build() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/bin"
-    install -dm755 "${pkgdir}/usr/lib/systemd/system"
-    install -dm755 "${pkgdir}/etc/conf.d"
-
     install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/"
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.conf" "${pkgdir}/etc/conf.d/${pkgname}"
@@ -41,6 +37,5 @@ package() {
     cd "${srcdir}/${_reponame}-${pkgver}"
 
     install -Dm755 build/fakesip "${pkgdir}/usr/bin/${pkgname}"
-    install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
