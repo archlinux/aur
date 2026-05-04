@@ -7,7 +7,7 @@ pkgbase = wfetch
 	license = MIT
 	makedepends = zig
 	makedepends = git
-	source = git+https://codeberg.org/slowy07/wfetch.git#branch=main
+	source = git+https://codeberg.org/slowy07/wfetch.git#tag=0.1.0
 	sha256sums = SKIP
 
 pkgname = wfetch
