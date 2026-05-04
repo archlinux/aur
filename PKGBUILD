@@ -25,7 +25,7 @@ package() {
 Name=Batch Beatmap Downloader
 Comment=An easy way to mass download osu! beatmaps 
 Exec=/usr/bin/batch-beatmap-downloader
-Icon=/opt/${pkgname}/resources/bbd.png
+Icon=/opt/batch-beatmap-downloader/resources/bbd.png
 Type=Application
 Categories=Game;Utility;
 EOF
