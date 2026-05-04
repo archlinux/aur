@@ -1,0 +1,13 @@
+pkgbase = openusage-waybar
+	pkgdesc = Waybar module for tracking AI coding subscription usage
+	pkgver = 0.6.9
+	pkgrel = 1
+	url = https://github.com/benwyrosdick/openusage-waybar
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = openusage-waybar-0.6.9.tar.gz::https://github.com/benwyrosdick/openusage-waybar/archive/refs/tags/v0.6.9.tar.gz
+	sha256sums = SKIP
+
+pkgname = openusage-waybar
