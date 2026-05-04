@@ -1,6 +1,6 @@
 # Maintainer: Carlos Prieto <cprieto.ortiz@gmail.com>
 pkgname=murmur
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A native, opinionated IRC client. Subtle by default.'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/prietus/murmur/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4eb5177085479114feb9cb9350d294eb2b895846c7c504507ea4474b846e96c9')
+sha256sums=('33c69a8ccd402e0878cfb4a2c83f94885cb098058d25cdfc13d18fc3ce69470f')
 
 prepare() {
   cd "$pkgname-$pkgver"
