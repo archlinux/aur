@@ -4,11 +4,11 @@
 # ship as separate per-listener packages (see PKGBUILD-listener-*-bin)
 # or via the meta-package `awob-listeners-all`.
 #
-# 0.1.1 and e6be729055c13ac5f37b64f39a9ee41d44ad01afb35cb2b4a97be5b342c167dc are filled in at publish time by the release
+# 0.1.2 and 8f344b5f63c15e1c826375317ad83f42f8da5d5742e910750fe779b595a41ca5 are filled in at publish time by the release
 # workflow (see .github/workflows/release.yml).
 
 pkgname=awob-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Another Wayland Overlay Bar — daemon + CLI."
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('MIT')
 provides=('awob' 'awob-daemon')
 conflicts=('awob' 'awob-git')
 source=("awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v${pkgver}/awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('e6be729055c13ac5f37b64f39a9ee41d44ad01afb35cb2b4a97be5b342c167dc')
+sha256sums=('8f344b5f63c15e1c826375317ad83f42f8da5d5742e910750fe779b595a41ca5')
 
 package() {
     cd "awob-${pkgver}-x86_64-unknown-linux-gnu"
