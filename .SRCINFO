@@ -1,7 +1,7 @@
 pkgbase = kangentic-bin
 	pkgdesc = Desktop Kanban board for orchestrating AI coding agents
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kangentic/kangentic
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -12,6 +12,7 @@ pkgbase = kangentic-bin
 	depends = alsa-lib
 	depends = libdrm
 	depends = libxshmfence
+	depends = hicolor-icon-theme
 	optdepends = libappindicator-gtk3: tray/status indicator support
 	provides = kangentic
 	conflicts = kangentic
