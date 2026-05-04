@@ -1,0 +1,13 @@
+pkgbase = otf-stardew-valley
+	pkgdesc = This OpenType Font is /a/ Stardew Valley Font recreated by RRDome
+	pkgver = 1
+	pkgrel = 1
+	url = https://fontstruct.com/fontstructions/show/1254619/stardew_valley
+	arch = any
+	license = custom
+	source = otf-stardew-valley-1.otf::https://raw.githubusercontent.com/paris1111q1q1q1/StardewValley_Font/refs/heads/main/stardew-valley.otf
+	source = LICENSE::https://raw.githubusercontent.com/paris1111q1q1q1/StardewValley_Font/refs/heads/main/LICENCE
+	sha256sums = 47a1b9d80fd17c486021fa43400a2d24cf7d9aae555189c0ce6d60418c24560d
+	sha256sums = de01e436d6c1cb001a503967bb6669d18c5ec3e7d2f4944d7ed6036584c760bd
+
+pkgname = otf-stardew-valley
