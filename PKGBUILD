@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/p-ranav/indicators.git"
 	"git+https://github.com/Tencent/rapidjson.git"
 	)
-sha256sums=('53c5dd318216d7f9abaab225dcf3682feb3bd503061800e2a50f59968acd5d7b'
+sha256sums=('8e5d0bc170938fbe4b43d2abaabc82667f98bdf1aab48df7ef5f06098a1d88b0'
             'SKIP'
             'SKIP'
             'SKIP'
