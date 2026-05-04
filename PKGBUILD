@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=harmony
-_pkgver=1.2.4
+_pkgver=2.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,8 +10,7 @@ arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
 depends=(
-  blas
-  lapack
+  r-cli
   r-cowplot
   r-dplyr
   r-ggplot2
@@ -19,6 +18,8 @@ depends=(
   r-rhpcblasctl
   r-rlang
   r-tibble
+  blas
+  lapack
 )
 makedepends=(
   r-rcpparmadillo
@@ -41,8 +42,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('433148e2c258590bfcf15937aee34ff7')
-b2sums=('1ff29e88a30660dc67b45ff2f2d6a973024e59d0038ddff0cbaa43cce064fe5d9343fee491eecac63fd148cb5e79b13ad228f03e3414fd5a0e6f135053d4782d')
+md5sums=('40b97a7e84c31da3e70590c16c03863d')
+b2sums=('680fc3f1e70a27a06f8250436f366c976d206d215c82f2f1072b50d91fe70f568691c71f1392a97da16bc7e0a45c3a8ecced3098c3528da5c491446e1d90428b')
 
 build() {
   mkdir build
