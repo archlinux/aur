@@ -1,37 +1,50 @@
-# Maintainer: Alad Wenter <alad@mailbox.org>
-# Contributor:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Maintainer: Hajos Attila <linux[dot]alucard[at]gmail[dot]com>
+# Contributor: alpharde
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
 
-pkgname=udevil
-pkgver=0.4.4
-pkgrel=4
-_commit=77a61806fadbf19f02072df1aa67191fc375c35d
-arch=('x86_64')
-pkgdesc='Mount and unmount without password'
-url='https://ignorantguru.github.com/udevil/'
+pkgname=udevil-git
+pkgver=2024.master
+pkgrel=1
+pkgdesc="Mount without password (Fixed for CasaOS on Modern Arch)"
+arch=('i686' 'x86_64')
+url="https://github.com/IgnorantGuru/udevil"
 license=('GPL3')
-makedepends=('intltool' 'gettext' 'git')
+makedepends=('intltool' 'gettext')
 depends=('udev' 'glib2')
-optdepends=('davfs2:     mount WebDAV shares'
-            'nfs-utils:  mount nfs shares'
-            'sshfs:      mount sftp shares'
-            'curlftpfs:  mount ftp shares'
-            'cifs-utils: mount samba shares'
-            'zenity:     devmon popups'
-            'udisks2:    devmon mount without suid udevil')
-provides=('devmon')
+optdepends=(
+    'nfs-utils:  mount nfs shares'
+    'sshfs:      mount sftp shares'
+    'curlftpfs:  mount ftp shares'
+    'cifs-utils: mount samba shares'
+    'davfs2:     mount WebDAV shares'
+)
+conflicts=('udevil' 'devmon' 'devmon-git')
+provides=('udevil' 'devmon')
 backup=('etc/udevil/udevil.conf' 'etc/conf.d/devmon')
-install=$pkgname.install
-source=("$pkgname-$pkgver::git+https://github.com/IgnorantGuru/udevil.git#commit=$_commit")
+options=(!strip !debug)
+
+# Menggunakan ZIP dari upstream publik untuk bypass login GitHub
+source=("https://github.com/IgnorantGuru/udevil/archive/refs/heads/master.zip")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr
+    cd "$srcdir/udevil-master"
+    
+    # FIX: Tambahkan header untuk fungsi 'stat' agar tidak error saat compile
+    sed -i '1i #include <sys/stat.h>' src/device-info.c
+    
+    # FIX: Penyesuaian signal handling untuk compiler modern
+    sed -i -e "s/finalize(/finalize(int sig/" src/udevil.c
+    sed -i -e "s/interrupt(/interrupt(int sig/" src/udevil.c
+    
+    ./configure --prefix=/usr --sysconfdir=/etc
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+    cd "$srcdir/udevil-master"
+    make DESTDIR="$pkgdir/" install
+    
+    # Set SUID bit agar udevil bisa mount tanpa password (penting untuk CasaOS)
+    chmod +s "$pkgdir/usr/bin/udevil"
 }
