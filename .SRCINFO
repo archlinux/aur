@@ -1,7 +1,7 @@
 pkgbase = broslauncher
 	pkgdesc = Bros Launcher - Virtual Machine for Bros OS Testing
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/berkeoruc/bros
 	arch = x86_64
 	license = PROPRIETARY
