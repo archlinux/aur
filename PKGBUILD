@@ -1,7 +1,7 @@
 # Maintainer: arthurr0 <koeckiartur@gmail.com>
 pkgname=mterminal-bin
 _pkgname=mterminal
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Custom terminal emulator with grouped tabs and warm dark UI (binary release)"
 arch=('x86_64')
@@ -23,11 +23,41 @@ source=(
   "https://raw.githubusercontent.com/arthurr0/mTerminal/v$pkgver/build/icon.png"
   "https://raw.githubusercontent.com/arthurr0/mTerminal/v$pkgver/LICENSE"
 )
-sha256sums=('2e243c409655b771501bd331f5479c64d147ec396a46decd2fb59df227f6acc4' 'a1fe75b856e69edb2dd883279a53ed886e76603e24d0ea638bcc47efe457ca50' '25bb2bf785d51e6a4a075006b97d3742e5ce88b2b7933e871e1834df3785a4b5' '1699e3455f860d7875bb9791ec4f5926348722ca98bb834832a0bacddcbd12d6')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' '43c8d753ee939ec0077890ecb4bd359dde3609b0bb5b2b1183cb570836db6034' '25bb2bf785d51e6a4a075006b97d3742e5ce88b2b7933e871e1834df3785a4b5' '1699e3455f860d7875bb9791ec4f5926348722ca98bb834832a0bacddcbd12d6')
+
+prepare() {
+  cd "$srcdir"
+  chmod +x "$_pkgname-$pkgver.AppImage"
+  rm -rf squashfs-root
+  # Extract without FUSE so the package contains plain files.
+  "./$_pkgname-$pkgver.AppImage" --appimage-extract >/dev/null
+}
 
 package() {
-  install -Dm755 "$_pkgname-$pkgver.AppImage" \
-    "$pkgdir/usr/bin/$_pkgname"
+  cd "$srcdir"
+
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  cp -a squashfs-root/. "$pkgdir/opt/$_pkgname/"
+
+  # Strip AppImage runtime cruft we don't need installed.
+  rm -f "$pkgdir/opt/$_pkgname/AppRun" \
+        "$pkgdir/opt/$_pkgname/.DirIcon" \
+        "$pkgdir/opt/$_pkgname"/*.desktop \
+        "$pkgdir/opt/$_pkgname"/*.png \
+        "$pkgdir/opt/$_pkgname"/*.svg 2>/dev/null || true
+
+  # Chromium sandbox helper requires SUID root.
+  if [[ -f "$pkgdir/opt/$_pkgname/chrome-sandbox" ]]; then
+    chmod 4755 "$pkgdir/opt/$_pkgname/chrome-sandbox"
+  fi
+
+  install -dm755 "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/$_pkgname" <<'EOF'
+#!/bin/sh
+exec /opt/mterminal/mterminal "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+
   install -Dm644 "$_pkgname.desktop" \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
   install -Dm644 "icon.png" \
