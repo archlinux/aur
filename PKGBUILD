@@ -1,7 +1,7 @@
 # # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=musicfetch
 _app_id="net.fhannenheim.$pkgname"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Download and tag music from YouTube"
 arch=('x86_64' 'aarch64')
@@ -18,14 +18,17 @@ depends=(
   'yt-dlp'
   'yt-dlp-ejs'
 )
-makedepends=('cargo')
+makedepends=(
+  'cargo'
+  'just'
+)
 checkdepends=(
   'appstream'
   'desktop-file-utils'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('f9d712264732340224ab71af94a9a0a54065eea53bd27e59f4e7d81cd7971781')
+sha256sums=('c96c67b5559e893837aab8f854cb90fa57b7ff60bd5a4bfd351150d504704d7d')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
@@ -33,7 +36,7 @@ prepare() {
 
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -41,7 +44,7 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  just build-release --frozen
 }
 
 check() {
@@ -52,9 +55,5 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/${pkgname}_gui" -t "$pkgdir/usr/bin/"
-  install -Dm644 "resources/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "resources/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-  install -Dm644 "resources/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  just rootdir="$pkgdir" install
 }
