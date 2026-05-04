@@ -1,5 +1,5 @@
 pkgname=tether-git
-pkgver=r118.a5041e4
+pkgver=0.1.0.r0.g84a2b1c
 pkgrel=1
 pkgdesc="A Wayland-native local file transfer and clipboard sync tool over mDNS"
 arch=('x86_64')
@@ -7,20 +7,21 @@ url="https://github.com/zackb/tether"
 license=('MIT')
 depends=('gtk3' 'libnotify' 'openssl' 'wayland' 'avahi')
 makedepends=('cmake' 'ninja' 'git')
-provides=('tether' 'tether-bin')
+provides=('tether')
 conflicts=('tether' 'tether-bin')
-source=("git+https://github.com/zackb/tether.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd tether
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${pkgname%-git}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cmake -B build -S tether -G Ninja \
+    cmake -B build -S "${pkgname%-git}" -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DTETHER_BUILD_EXTENSIONS=OFF
     cmake --build build
 }
 
