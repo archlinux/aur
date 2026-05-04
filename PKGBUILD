@@ -3,7 +3,7 @@
 pkgname=async-profiler-bin
 _pkgname=async-profiler
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Sampling CPU and HEAP profiler for Java featuring AsyncGetCallTrace + perf_events (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/async-profiler/async-profiler'
