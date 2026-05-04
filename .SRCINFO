@@ -12,9 +12,9 @@ pkgbase = moshpits-bin
 	conflicts = moshpits
 	source = https://github.com/rustyhorde/moshpit/releases/download/v0.3.0/dist-mps.tar.gz
 	source = mps.service
-	sha256sums = 3bc5dbaea0ef7949d645ff8bf19ac88f3d233713cf4d96e081fdf920d71d78e3
+	sha256sums = 07e3fd1a9840ff31374e0fb09c0fc26b3cb3f527660e77b7aa81bbf92c684123
 	sha256sums = SKIP
 	source_x86_64 = mps-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.3.0/mps-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = d0f958d3c7de6cbea4dbfd20db3308b5b9c220f2dc821273369f51ea39d76a79
+	sha256sums_x86_64 = 1318aff044b070798d18deb0e1206b679f711acb322102b915bdc56761bcb867
 
 pkgname = moshpits-bin
