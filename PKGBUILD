@@ -73,11 +73,27 @@ md5sums=('SKIP')
 
 pkgver() {
   cd FreeCAD
-  read -d$'/n' -r major minor patch suffix < <(grep -Po "\"version_(major|minor|patch|suffix)\": (\"?)\K[^, \"]*(?=\2,?)" version.json) || true
+  # retrieve version, valid across recent changes in FreeCAD source
+  # which store version information in changing locations
+  if [ -f version.json ] #true only since commit 011cc7e6 (April 22nd 2026)
+  then
+    read -d$'/n' -r major minor patch suffix < <(grep -Po "\"version_(major|minor|patch|suffix)\": (\"?)\K[^, \"]*(?=\2,?)" version.json) || true
+    # for future use consider also version_patch_note and version_suffix_note
+    # actually defined in the new file version.json
+  else
+    # before FreeCAD source commit 011cc7e6fd27a87fece4c1fbb946a9e91d9e17cd
+    # dated Wed Apr 22 16:36:42 2026 -0500
+    read -d$'/n' -r major minor patch suffix < <(grep -Po "set\(PACKAGE_VERSION_(MAJOR|MINOR|PATCH|SUFFIX) \"\K[^, \"]*" CMakeLists.txt) || true
+    # suffix values looks like "dev", "RC1", ""
+    # suffix and patch are present since
+    # FreeCAD source commit 4a6656d979aee4aaa701c2ad302863aa68f97312 on Feb 2020
+    # before in CMakeLists.txt then with lower case names moved to version.json
+    # While checking version convention history, PACKAGE_VERSION_NAME seems
+    # lost since FreeCAD source commit 0026a35886cf7b62d5fa5861ba1e52f7434f84e2
+  fi
   hash=$(git rev-parse --short HEAD)
   weekdate=$(git tag -l weekly\*|tail -1|cut -d- -f2) # remove dots: |tr -d .
-  #printf "%d.%d.%d.%s" "$major" "$minor" "$patch" "$weekdate" # "$hash"
-  printf "%d.%d.%d%s.%s" $major $minor $patch $suffix $weekdate
+  printf "%d.%d.%d%s.%s" $major $minor $patch $suffix $weekdate # "$hash"
 }
 
 prepare() {
