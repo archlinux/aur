@@ -4,7 +4,7 @@ pkgname=radharc
 pkgver=1.2
 pkgrel=1
 pkgdesc="Adjusts the colour temperature of according to the Sun's position"
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url="https://codeberg.org/maandree/radharc"
 license=('ISC')
 depends=(libcoopgamma 'libred>=1.1')

@@ -5,6 +5,7 @@ pkgbase = radharc
 	url = https://codeberg.org/maandree/radharc
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = ISC
 	makedepends = libcoopgamma
 	makedepends = libclut
