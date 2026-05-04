@@ -1,0 +1,6 @@
+[palemoon-gtk3-bin]
+source = "httpheader"
+url = "https://www.palemoon.org/download.php?mirror=eu&bits=64&type=linuxgtk3"
+header = "Location"
+regex = 'palemoon-([0-9\.]+)\.linux-x86_64-gtk3\.tar\.xz'
+
