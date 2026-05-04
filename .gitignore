@@ -1,0 +1,5 @@
+pkg
+src
+ghui-*
+LICENSE-*
+*.tar.zst

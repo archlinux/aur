@@ -1,0 +1,21 @@
+pkgbase = ghui-bin
+	pkgdesc = Terminal UI for GitHub pull requests
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/kitlangton/ghui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = ghui
+	conflicts = ghui
+	conflicts = ghui-git
+	options = !strip
+	source = LICENSE-0.5.0::https://github.com/kitlangton/ghui/raw/v0.5.0/LICENSE
+	sha256sums = 4994c24b5bbb85529407e8cd0211efcf819236899d2c911cbdb18c00f231273a
+	source_x86_64 = ghui-0.5.0-linux-x64.tar.gz::https://github.com/kitlangton/ghui/releases/download/v0.5.0/ghui-linux-x64.tar.gz
+	sha256sums_x86_64 = 2fc08b71d91d9e7ae58d1966e6885f4a2a403a72f9319eb5d48a31152257059f
+	source_aarch64 = ghui-0.5.0-linux-arm64.tar.gz::https://github.com/kitlangton/ghui/releases/download/v0.5.0/ghui-linux-arm64.tar.gz
+	sha256sums_aarch64 = 21e7164f7182164f7c23dda2370d0727d0929ffecfb18c796f5b3ef72d04671a
+
+pkgname = ghui-bin
