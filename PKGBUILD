@@ -1,4 +1,4 @@
-pkgname=batman
+pkgname=batman-rs
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='Battery manager daemon that monitors hardware power events and executes user-defined rules'
