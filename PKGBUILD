@@ -1,9 +1,9 @@
-# Maintainer: Hajos Attila <linux[dot]alucard[at]gmail[dot]com>
-# Contributor: alpharde
+# Maintainer: Babahong <linux[dot]Troval[at]gmail[dot]com>
+# Contributor: IgnorantGuru
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
 
-pkgname=udevil-git
-pkgver=2024.master
+pkgname=udevil
+pkgver=2026.master
 pkgrel=1
 pkgdesc="Mount without password (Fixed for CasaOS on Modern Arch)"
 arch=('i686' 'x86_64')
