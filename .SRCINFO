@@ -2,13 +2,13 @@ pkgbase = fafinder
 	pkgdesc = A fast, verb-driven file finder — powered by the NEMESIS ENGINE
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/ghost/fafinder
+	url = https://github.com/VanHoney-ltd/fafinder
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = fafinder-0.1.0.tar.gz
-	sha256sums = 86e6adbba1eb41065d618e32746e19e4223870986ad833a4de7d345b3a8420e8
+	source = fafinder-0.1.0.tar.gz::https://github.com/VanHoney-ltd/fafinder/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 381026140d4f2e97eb33448190f588e0e2b91eb3556facee8e073df51df7248b
 
 pkgname = fafinder

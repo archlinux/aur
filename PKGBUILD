@@ -1,14 +1,14 @@
-# Maintainer: ghost <ghost@example.com>
+# Maintainer: VanHoney-ltd <ghost@example.com>
 pkgname=fafinder
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A fast, verb-driven file finder — powered by the NEMESIS ENGINE"
 arch=('x86_64' 'aarch64')
-url="https://github.com/ghost/fafinder"
+url="https://github.com/VanHoney-ltd/fafinder"
 license=('MIT')
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('86e6adbba1eb41065d618e32746e19e4223870986ad833a4de7d345b3a8420e8')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('381026140d4f2e97eb33448190f588e0e2b91eb3556facee8e073df51df7248b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
