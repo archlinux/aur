@@ -1,0 +1,21 @@
+pkgbase = stellarfiles-git
+	pkgdesc = A minimalist, fast native Linux file manager built for the Cosmic Desktop Environment.
+	pkgver = v0.3.0.r0.gca09f02
+	pkgrel = 1
+	url = https://github.com/TanF12/stellarfiles
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	makedepends = clang
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = ffmpeg
+	provides = stellarfiles
+	conflicts = stellarfiles
+	source = stellarfiles::git+https://github.com/TanF12/stellarfiles.git
+	sha256sums = SKIP
+
+pkgname = stellarfiles-git
