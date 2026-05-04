@@ -1,7 +1,7 @@
 # Maintainer: IlNinjaDiBattipaglia <fogliadonato2@gmail.com>
 pkgname=abs-flutter-bin
 pkgver=1.8.5
-pkgrel=8
+pkgrel=9
 pkgdesc="Unofficial cross-platform client for Audiobookshelf (Buchable)"
 arch=('x86_64')
 url="https://github.com/Vito0912/abs_flutter"
@@ -31,7 +31,7 @@ package() {
 [Desktop Entry]
 Name=Buchable
 Comment=Audiobookshelf client
-Exec=env GDK_BACKEND=x11 /opt/abs-flutter/abs_flutter
+Exec=/opt/abs-flutter/abs_flutter
 Icon=abs-flutter
 Type=Application
 Categories=Audio;
