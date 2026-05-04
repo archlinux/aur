@@ -1,0 +1,25 @@
+pkgbase = chwd-arch-git
+	pkgdesc = CachyOS Hardware Detection Tool Forked for standard Arch Linux
+	pkgver = 1.21.0.r2.g156025b
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/chwd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = lld
+	makedepends = clang
+	makedepends = llvm
+	depends = gcc-libs
+	depends = pciutils
+	depends = lua
+	depends = pacman
+	depends = libusb
+	provides = chwd
+	provides = chwd-db
+	conflicts = chwd
+	conflicts = chwd-db
+	source = chwd-arch-git::git+https://github.com/SHORiN-KiWATA/chwd.git
+	sha256sums = SKIP
+
+pkgname = chwd-arch-git
