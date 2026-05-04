@@ -1,6 +1,6 @@
 pkgbase = python-kajson
 	pkgdesc = Powerful universal JSON encoder/decoder for Python objects
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/pipelex/kajson
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-kajson
 	depends = python
 	depends = python-pydantic
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/k/kajson/kajson-0.4.2.tar.gz
-	sha256sums = a8db97020d0e6c868eb4f2e999baeee477f410d8afc47fc91247745c725c271d
+	source = https://files.pythonhosted.org/packages/source/k/kajson/kajson-0.5.0.tar.gz
+	sha256sums = 029b6a1b60ea28ec95b6f614656d1e48600e27c1f27a39c6e5681cd721854f64
 
 pkgname = python-kajson
