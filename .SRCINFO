@@ -1,0 +1,15 @@
+pkgbase = batman
+	pkgdesc = Battery manager daemon that monitors hardware power events and executes user-defined rules
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DavidMANZI-093/batman-rs
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = systemd
+	optdepends = libnotify: desktop notifications via notify-send
+	optdepends = power-profiles-daemon: power profile switching via powerprofilesctl
+	source = batman-1.0.0.tar.gz::https://github.com/DavidMANZI-093/batman-rs/archive/v1.0.0.tar.gz
+	sha256sums = 9b6bbee5d7a0fcb201732cc7e53dc990445022afd1248b5291711c463a52081
+
+pkgname = batman
