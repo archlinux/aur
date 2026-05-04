@@ -1,6 +1,6 @@
 # Maintainer: tgiachi <tom@orivega.io>
 pkgname=arrr-tray-bin
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="System tray client for the Arrr Linux notification aggregator"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "arrr-tray.desktop"
 )
 sha256sums=(
-    '809cd0b7bf1fb9e99281d478a9a00b970401798fd7c0ea7d41cf3a12ea9fbdc2'
+    'a57b0c5c9797c1b1caecb091a5976abc5575165602dfb2f58cda5b6ce224b8c1'
     'SKIP'
 )
 noextract=("arrr-tray-${pkgver}-1-x86_64.pkg.tar.zst")
