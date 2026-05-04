@@ -1,0 +1,18 @@
+pkgbase = swiftpeek
+	pkgdesc = Lightning-fast universal file previewer for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/orelbi/swiftpeek
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = tauri-cli
+	makedepends = imagemagick
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = file-manager: Open files from graphical file manager
+	source = swiftpeek-0.1.0.tar.gz::https://github.com/orelbi/swiftpeek/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = swiftpeek
