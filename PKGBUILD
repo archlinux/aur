@@ -1,7 +1,7 @@
 # Maintainer: Eduardo J. Becker <147226263+TanF12@users.noreply.github.com>
 pkgname=stellarfiles-git
 _pkgname=stellarfiles
-pkgver=v0.3.0.r0.gca09f02
+pkgver=v0.4.0.r5.g2f99f19
 pkgrel=1
 pkgdesc="A minimalist, fast native Linux file manager built for the Cosmic Desktop Environment."
 arch=('x86_64')
