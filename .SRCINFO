@@ -9,8 +9,8 @@ pkgbase = moshpit-keygen-bin
 	provides = moshpit-keygen
 	conflicts = moshpit-keygen
 	source = https://github.com/rustyhorde/moshpit/releases/download/v0.3.0/dist-mp-keygen.tar.gz
-	sha256sums = 7575f5612243c15b0f72676110ebf10972cb4e27660e08d5fb51f0d5345a5dbd
+	sha256sums = 3db5bb4e45c15d29efe3f3a9fd2f513e2db038ad194f66144c1bba21dca8fe7b
 	source_x86_64 = mp-keygen-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.3.0/mp-keygen-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 7078fb06a64baa40ce2751af262c087bc49e4852f66656d2cb4680c6a5434db7
+	sha256sums_x86_64 = da63887d4ff2ac520f69fd7c3679386b366c6f3a5aa7e537ea0afb22aa9e367e
 
 pkgname = moshpit-keygen-bin
