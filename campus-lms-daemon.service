@@ -1,0 +1,14 @@
+[Unit]
+Description=Campus LMS notification daemon
+Documentation=https://github.com/Kenura-R-Gunarathna/campus-lms
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/campus-lms --background
+Restart=on-failure
+RestartSec=30s
+
+[Install]
+WantedBy=default.target
