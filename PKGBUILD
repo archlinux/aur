@@ -2,7 +2,7 @@
 pkgname=otf-stardew-valley
 pkgver=1
 pkgrel=1
-pkgdesc="This OpenType Font is /a/ Stardew Valley Font recreated by RRDome"
+pkgdesc="This OpenType Font is a Stardew Valley Font recreated by RRDome"
 arch=(any)
 url="https://fontstruct.com/fontstructions/show/1254619/stardew_valley"
 license=('custom')
