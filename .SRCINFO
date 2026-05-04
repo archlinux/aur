@@ -5,6 +5,7 @@ pkgbase = libcoopgamma
 	url = https://codeberg.org/maandree/libcoopgamma
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	depends = coopgammad
 	source = libcoopgamma-1.2.5.tar.gz::https://codeberg.org/maandree/libcoopgamma/archive/1.2.5.tar.gz
