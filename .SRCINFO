@@ -1,7 +1,7 @@
 pkgbase = r-ebmaforecast
 	pkgdesc = Estimate Ensemble Bayesian Model Averaging Forecasts using Gibbs Sampling or EM-Algorithms
-	pkgver = 1.0.32
-	pkgrel = 2
+	pkgver = 1.0.33
+	pkgrel = 1
 	url = https://cran.r-project.org/package=EBMAforecast
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -12,8 +12,8 @@ pkgbase = r-ebmaforecast
 	depends = r-plyr
 	depends = r-rcpp
 	depends = r-separationplot
-	source = https://cran.r-project.org/src/contrib/EBMAforecast_1.0.32.tar.gz
-	md5sums = 9d0a24db4680ec2bc5a8261c9ae7a5be
-	b2sums = 65c6bdf6069b2b62f98d4d5fdf8107f2a53b453f386833b90b6cede8d2374f0ca67e9d7b14057bf2c991b2530fa43fcc20670734ef9b81157df551e543839b68
+	source = https://cran.r-project.org/src/contrib/EBMAforecast_1.0.33.tar.gz
+	md5sums = 99db73ead6d8e2bceeb4ccbac10b13d8
+	b2sums = 1b6262bc892ae261a15aa692ed12eff5d8a504d0a5a0012ae3138c590227fa9def440573e92f2bc35ce41c208a3a9db7a92b500e59a6e68c355a253c524ddddf
 
 pkgname = r-ebmaforecast
