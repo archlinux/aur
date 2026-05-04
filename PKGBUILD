@@ -1,5 +1,5 @@
 pkgname=alogi
-pkgver=0.1.58
+pkgver=0.1.59
 pkgrel=1
 pkgdesc="AI-powered log viewer"
 arch=("x86_64")
@@ -30,13 +30,14 @@ depends=(
   "dbus"
   "glib2"
 )
+options=("!strip")
 source=(
   "https://github.com/allisonhere/alogi/releases/download/v${pkgver}/alogi-${pkgver}-linux-unpacked.tar.gz"
   "alogi.desktop"
   "icon.png"
 )
 sha256sums=(
-  "48898acf852999b7915bfb40cfc9f7bcd39974dfcd5b793e113b65785dfd6f62"
+    "31177736d32922eb0644ac33026408dc89c051de65536d08053fe02257b360d6"
   "SKIP"
   "SKIP"
 )
