@@ -1,0 +1,8 @@
+[kikitan-translator-bin]
+source = "github"
+github = "YusufOzmen01/kikitan-translator"
+use_latest_release = true
+include_prereleases = true
+prefix = "v"
+from_pattern = '-'
+to_pattern = ''

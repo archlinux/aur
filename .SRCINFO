@@ -1,0 +1,22 @@
+pkgbase = kikitan-translator-bin
+	pkgdesc = VRChat Live Translation Application
+	pkgver = 2.0.0alpha1
+	pkgrel = 1
+	url = https://github.com/YusufOzmen01/kikitan-translator
+	arch = x86_64
+	license = MIT
+	depends = aspnet-runtime-9.0
+	depends = glib2
+	depends = gtk3
+	depends = libnotify
+	depends = webkit2gtk-4.1
+	provides = kikitan-translator
+	conflicts = kikitan-translator
+	source = kikitan-translator-2.0.0-alpha1-LICENSE.md::https://github.com/YusufOzmen01/kikitan-translator/raw/refs/tags/v2.0.0-alpha1/LICENSE.md
+	source = kikitan-translator-2.0.0-alpha1-README.md::https://github.com/YusufOzmen01/kikitan-translator/raw/refs/tags/v2.0.0-alpha1/README.md
+	sha256sums = edfc2dce27e3ce366ae07f95298da8378b241708444ed9e18996a3f195426dd6
+	sha256sums = 7a24d010fffd2773c8bef649f512b6aead909bdee4154673f6c97d7db92057c8
+	source_x86_64 = com.github.yusufozmen01.kikitan-translator-2.0.0-alpha1.AppImage::https://github.com/YusufOzmen01/kikitan-translator/releases/download/v2.0.0-alpha1/com.github.yusufozmen01.kikitan-translator.AppImage
+	sha256sums_x86_64 = 1112a7460248cfedf85fcbc6ae9059774d7eb941399b2cd30e80df9d531d168c
+
+pkgname = kikitan-translator-bin
