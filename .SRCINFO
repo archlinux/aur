@@ -1,17 +1,16 @@
 pkgbase = smenu-git
 	pkgdesc = A powerful and versatile selection tool for interactive or scripting use
-	pkgver = 0.9.17.r13.gab186c4
+	pkgver = 1.5.0.r26.gc8040eb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/p-gen/smenu
 	arch = x86_64
-	license = GPL
+	license = MPL-2.0
 	makedepends = git
 	depends = ncurses
 	provides = smenu
 	conflicts = smenu
 	source = smenu-git::git+https://github.com/p-gen/smenu
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = smenu-git
-
