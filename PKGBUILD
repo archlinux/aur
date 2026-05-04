@@ -1,6 +1,6 @@
 # Maintainer: Dejan Noveski <deko@duck.com>
 pkgname=vermouth
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A no-frills Wine/Proton game launcher for Linux"
 arch=('x86_64')
