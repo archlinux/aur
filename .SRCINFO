@@ -1,0 +1,17 @@
+pkgbase = python-tree-sitter-fortran
+	pkgdesc = Fortran grammar for tree-sitter
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/stadelmanma/tree-sitter-fortran
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tree-sitter
+	source = python-tree-sitter-fortran-0.6.0.tar.gz::https://github.com/stadelmanma/tree-sitter-fortran/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = d917f56a27c6b8e5edb71ba6ea7155a8ec007d4c1376d1b759882d1a7fdd5248
+
+pkgname = python-tree-sitter-fortran
