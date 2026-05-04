@@ -5,7 +5,7 @@
 pkgname=keymasq
 pkgver=0.13.2
 pkgrel=1
-pkgdesc="A key remapping tool for Linux using evdev and uinput"
+pkgdesc="Keyboard and mouse remapper with GUI configuration, per-window profiles, and macros"
 arch=(
     'any'
 )
