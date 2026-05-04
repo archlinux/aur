@@ -1,6 +1,6 @@
 pkgbase = tether-bin
 	pkgdesc = A Wayland-native local file transfer and clipboard sync tool over mDNS (Binary Release)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/zackb/tether
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tether-bin
 	provides = tether
 	conflicts = tether
 	conflicts = tether-git
-	source = https://github.com/zackb/tether/releases/download/v0.1.1/tether-0.1.1.tar.gz
-	sha256sums = 3d86aab1183b1fee66dfd3057997274b44a011ef6ff234991466b65307bad6a5
+	source = https://github.com/zackb/tether/releases/download/v0.1.2/tether-0.1.2.tar.gz
+	sha256sums = b24befdcce376716f0019d4f6cbe2ae0b2fb87a96af6bf74faa407c93bcb05e8
 
 pkgname = tether-bin
