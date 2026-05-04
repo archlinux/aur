@@ -1,7 +1,7 @@
 # Maintainer: kkernick <kkernick at protonmail dot com>
 pkgname=antimony-sandbox
 pkgdesc="Sandbox Applications"
-pkgver=4.2.1
+pkgver=5.0.0
 pkgrel=1
 
 install=antimony.install
@@ -37,9 +37,7 @@ package() {
   cd $srcdir/antimony
   install -Dm755 "target/release/antimony" "$pkgdir/usr/bin/antimony"
 
-  install -Dm755 "target/release/notify" "$pkgdir/usr/share/antimony/utilities/antimony-notify"
-
-  for binary in antimony-monitor antimony-spawn antimony-dumper antimony-open antimony-tracer; do
+  for binary in antimony-monitor antimony-spawn antimony-dumper antimony-open antimony-tracer antimony-notify; do
     install -Dm755 "target/release/$binary" "$pkgdir/usr/share/antimony/utilities/$binary"
   done
 
@@ -54,6 +52,9 @@ package() {
   install -Dm644 "config/default.toml" "$pkgdir/usr/share/antimony/config/profiles/default.toml"
   install -Dm644 "config/profile.toml" "$pkgdir/usr/share/antimony/config/profile.toml"
   install -Dm644 "config/feature.toml" "$pkgdir/usr/share/antimony/config/feature.toml"
+
+  install -Dm644 "config/config.toml" "$pkgdir/etc/antimony.toml"
+  install -Dm644 "config/config.d/base.toml" "$pkgdir/etc/antimony.d/base.toml"
 
 
   # Build the shell completions
