@@ -1,7 +1,7 @@
 # Maintainer: IlNinjaDiBattipaglia <fogliadonato2@gmail.com>
 pkgname=abs-flutter-bin
 pkgver=1.8.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Unofficial cross-platform client for Audiobookshelf (Buchable)"
 arch=('x86_64')
 url="https://github.com/Vito0912/abs_flutter"
