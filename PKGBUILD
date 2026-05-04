@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=edgeR
-_pkgver=4.8.2
+_pkgver=4.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,10 +10,10 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
-  blas
-  lapack
   r-limma
   r-locfit
+  blas
+  lapack
 )
 optdepends=(
   r-annotationdbi
@@ -21,16 +21,17 @@ optdepends=(
   r-biocstyle
   r-jsonlite
   r-knitr
+  r-nanoparquet
   r-org.hs.eg.db
   r-readr
   r-rhdf5
+  r-s4vectors
   r-seuratobject
   r-summarizedexperiment
-  r-arrow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5fde3f422aba2f92441e604eefb6cc55')
-b2sums=('7b6766402fc070d3846644a049a6e8f70b22fe6dc66fbe14f38127e61a6f0e2d440b3f7f233b264d7f0e6ee58b4ae26c7de539b6e165dac3ff0df0bbb0a1fc37')
+md5sums=('bded2bf3598da824388c31586406319c')
+b2sums=('09aaa889daa5684f1cf236959200020e29f14f1cc20325d02b37bb7e1f7d18a8694ea14b24c42bf755818d2f66f533cdfd197e837d527ba677a2137df5621565')
 
 build() {
   mkdir build
