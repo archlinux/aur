@@ -1,7 +1,7 @@
 # Maintainer: arthurr0 <koeckiartur@gmail.com>
 pkgname=mterminal-bin
 _pkgname=mterminal
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Custom terminal emulator with grouped tabs and warm dark UI (binary release)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "https://raw.githubusercontent.com/arthurr0/mTerminal/v$pkgver/src-tauri/icons/icon.png"
   "https://raw.githubusercontent.com/arthurr0/mTerminal/v$pkgver/LICENSE"
 )
-sha256sums=('7c13cb32b9b97fdba78cd01358ef25c67b4c0dfddd82ca8c22e962ffa5fe4e89' 'ce584f217c3d7bd5b34248ba2587fe91f5e92ccf973e9877afeab0ec8fba57f2' 'd513c9acb0f7b49ab7bed67289653b309cb95568d5c1801204e1a0178a7cf73a' '1699e3455f860d7875bb9791ec4f5926348722ca98bb834832a0bacddcbd12d6')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' 'a1fe75b856e69edb2dd883279a53ed886e76603e24d0ea638bcc47efe457ca50' '25bb2bf785d51e6a4a075006b97d3742e5ce88b2b7933e871e1834df3785a4b5' '1699e3455f860d7875bb9791ec4f5926348722ca98bb834832a0bacddcbd12d6')
 
 package() {
   install -Dm755 "$_pkgname-$pkgver.AppImage" \
