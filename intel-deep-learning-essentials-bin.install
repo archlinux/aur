@@ -1,0 +1,8 @@
+post_install() {
+    echo ""
+    echo "Intel Deep Learning Essentials installed to /opt/intel/oneapi"
+    echo "To activate the environment, run:"
+    echo "  source /opt/intel/oneapi/setvars.sh"
+    echo ""
+}
+post_upgrade() { post_install; }
