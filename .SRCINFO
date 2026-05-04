@@ -1,4 +1,4 @@
-pkgbase = apt-fake
+pkgbase = apt-fake-ubuntu
 	pkgdesc = A simple wrapper to use APT syntax on Arch Linux with Zenity GUI
 	pkgver = 1.4
 	pkgrel = 2
@@ -15,4 +15,4 @@ pkgbase = apt-fake
 	sha256sums = 65aaf1cb417998cb2e10d50efbe0f25dcb9027770c4348735955d5203ee10c4d
 	sha256sums = f2d0fb0bff185cc62bcaf383cadf63dddd1d527804c34757b87c422249063b15
 
-pkgname = apt-fake
+pkgname = apt-fake-ubuntu
