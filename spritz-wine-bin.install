@@ -1,0 +1,11 @@
+post_install() {
+    echo ""
+    echo "spritz-wine-tkg can be used as a runner in applications such as Lutris:"
+    echo "  mkdir -p ~/.local/share/lutris/runners/wine"
+    echo "  ln -s /opt/spritz-wine-tkg ~/.local/share/lutris/runners/wine"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
