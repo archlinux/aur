@@ -2,9 +2,9 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos-slr
-_srctag=11.0-20260428
+_srctag=11.0-20260429
 pkgver=${_srctag//-/.}
-pkgrel=2
+pkgrel=1
 epoch=1
 
 _package_name="proton-cachyos-${_srctag}-slr-x86_64"
@@ -27,10 +27,10 @@ depends=(
   desktop-file-utils
   diffutils
   freetype2
-  gcc-libs
   gdk-pixbuf2
   glibc
   hicolor-icon-theme
+  libgcc
   libxcrypt
   libxcrypt-compat
   libxkbcommon-x11
@@ -105,6 +105,6 @@ package() {
     install -Dm644 "$srcdir/ntsync.conf" "$pkgdir/usr/lib/modules-load.d/10-$pkgname.conf"
 }
 
-b2sums=('00c3ccccf42169d36c56698848714ebac4b2da75b55bbfe50b704c9e64403c5f3a1e777c817d5167b20167cbffa057b4e1a0fdd343d2c51f0a188e53f312b413'
+b2sums=('575d51fa6229b68a03cf54ff032e0b8ac728314b7e0b2a174a9d877c0f9d021098941854454b4c9610bfd2979855532b3f773a1a5a821fa404f560cae36c09cc'
         'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b'
         '964a3ba277821e570aec2127f0d1ae9898da6976c360deb6b196345a50bd3c2c55cb399527507006d8fddef868069032a30b083f23987d5050f185c74dd9de35')
