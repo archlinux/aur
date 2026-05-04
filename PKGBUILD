@@ -1,9 +1,9 @@
+# Maintainer: ynnsn
 # Contributor: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=microsip
 pkgver=3.22.5
 pkgrel=1
-#_wrapperver=1.3
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 arch=(x86_64)
 url=https://www.microsip.org
