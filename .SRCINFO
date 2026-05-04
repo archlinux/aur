@@ -1,7 +1,7 @@
 pkgbase = python-vllm-cuda
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
-	pkgver = 0.19.0
-	pkgrel = 2
+	pkgver = 0.20.1
+	pkgrel = 1
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
@@ -64,11 +64,9 @@ pkgbase = python-vllm-cuda
 	optdepends = python-xgrammar: flexible structured generation
 	provides = python-vllm
 	conflicts = python-vllm
-	source = git+https://github.com/vllm-project/vllm#tag=v0.19.0
+	source = git+https://github.com/vllm-project/vllm#tag=v0.20.1
 	source = 121.patch
-	source = 34770.patch
-	sha256sums = 815859b4cd87081b7b100c041de29e1c5c0b74547f4c7da21e075cfe38f52f4f
-	sha256sums = 41d19b77ca787dfabb4754141981780e6c761e63235fbcda7726c96535f83132
-	sha256sums = b7616c4c911e85cb8aa8791e5b41317714d32e34fc9aef7ac847260aec0ad5d9
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-vllm-cuda
