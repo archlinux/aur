@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=gsconnect
-pkgver=71
+pkgver=72
 pkgrel=1
 pkgdesc="KDE Connect implementation. CLI usage without Gnome environment"
 arch=(x86_64)
@@ -17,6 +17,7 @@ depends=(
   hicolor-icon-theme
   libpulse
   python
+  sh
 )
 makedepends=(
   appstream
@@ -47,7 +48,7 @@ source=(
   $pkgname.service
   gvc::git+https://github.com/JingMatrix/gvc.git
 )
-b2sums=('37bfac3495e02e147df497ba52d5c20bf0fad1265951d01d75902dc0d053c42f57bec7b5d0a64f63de58184a1c5e311e77b5f48738a095b8696c76de59150663'
+b2sums=('8d83a2f4624f0db3da25ba7e625f110a1a8142370a2ebe96dac51d59762067147c27de125a62163e1ed545bb04f75607b36896214dc43ad78177441171e97673'
         'ecd31b50393dbbf23b5f33d16d11573200ce28fd818b99e3f54f269287c505b724fc55f0135809c679629842448b29f7986bed309baa6193aaf1211f144171b4'
         'SKIP')
 
