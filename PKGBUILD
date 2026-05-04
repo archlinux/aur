@@ -1,5 +1,5 @@
 pkgname=batman-rs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Battery manager daemon that monitors hardware power events and executes user-defined rules'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9b6bbee5d7a0fcb201732cc7e53dc990445022afd1248b5291711c463a520813')
+sha256sums=('389ceee8eae20a40197a62d9bac5af726b24e6c3401f87eab76cbb697a99f37c')
 
 prepare() {
   cd "batman-rs-$pkgver"
@@ -29,6 +29,7 @@ package() {
 
   install -Dm755 "target/release/batman-rs" "$pkgdir/usr/bin/batman"
   install -Dm644 "batman.service" "$pkgdir/usr/lib/systemd/user/batman.service"
+  install -Dm644 "config.toml.sample" "$pkgdir/etc/batman/config.toml"
   install -Dm644 "config.toml.sample" "$pkgdir/usr/share/doc/$pkgname/config.toml.sample"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
