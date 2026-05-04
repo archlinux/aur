@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Type=Application
 Name=VapourSynth Editor
-Comment=VapourSynth script editor
+Comment=Editor for VapourSynth scripts
 Exec=vsedit
 MimeType=text/x-vpy
 Icon=vsedit
