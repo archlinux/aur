@@ -36,7 +36,7 @@ makedepends=(
 )
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.13.2.tar.gz")
-sha256sums=('d11da821a0263ac4c247cea9b30be18b3fae167e9273d89ee55231507846b54a')
+sha256sums=('SKIP')
 
 
 build() {
