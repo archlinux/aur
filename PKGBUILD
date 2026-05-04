@@ -9,8 +9,8 @@
 pkgname=niri-shorin-fork-git
 _pkgname=niri
 pkgver=26.04.r18.g69215eb
-pkgrel=1
-pkgdesc="Shorin's fork of Niri ( A Scrollable-tiling Wayland Compositor)"
+pkgrel=2
+pkgdesc="Shorin's fork of Niri. New features such as shake cursor to enlarge and magnifier"
 arch=(x86_64 aarch64)
 url="https://github.com/SHORiN-KiWATA/niri"
 license=(GPL-3.0-or-later)

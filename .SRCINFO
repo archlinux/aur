@@ -1,7 +1,7 @@
 pkgbase = niri-shorin-fork-git
-	pkgdesc = Shorin's fork of Niri ( A Scrollable-tiling Wayland Compositor)
+	pkgdesc = Shorin's fork of Niri. New features such as shake cursor to enlarge and magnifier
 	pkgver = 26.04.r18.g69215eb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/niri
 	arch = x86_64
 	arch = aarch64
