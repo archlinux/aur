@@ -2,7 +2,7 @@
 pkgname=idescriptor-git
 _pkgname=iDescriptor
 pkgver=r263.6d86243
-pkgrel=3
+pkgrel=4
 pkgdesc="A free, open-source, and cross-platform iDevice management tool."
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
@@ -66,6 +66,9 @@ prepare() {
 
 build() {
   cd "$_pkgname"
+  export CFLAGS+=" -ffat-lto-objects"
+  export CXXFLAGS+=" -ffat-lto-objects"
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
