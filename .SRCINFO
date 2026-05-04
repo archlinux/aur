@@ -1,6 +1,6 @@
 pkgbase = packmol
 	pkgdesc = Creates an initial point for molecular dynamics simulations by packing molecules in defined regions of space.
-	pkgver = 20.3.5
+	pkgver = 21.2.1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.ime.unicamp.br/~martinez/packmol/
@@ -8,7 +8,7 @@ pkgbase = packmol
 	license = MIT
 	makedepends = gcc-fortran
 	depends = tcl
-	source = packmol-20.3.5.tar.gz::https://github.com/mcubeg/packmol/archive/v20.3.5.tar.gz
-	sha256sums = cde64dbe212ea6569d656f4800af7cba3e40f1492b5e51195b4ce9fc7040c0c0
+	source = packmol-21.2.1.tar.gz::https://github.com/mcubeg/packmol/archive/v21.2.1.tar.gz
+	sha256sums = 6b8275be64e425fd578e7606ac22bb586108bc6b5c17d417873bd108928f830f
 
 pkgname = packmol
