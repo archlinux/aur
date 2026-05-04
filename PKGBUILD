@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/prietus/murmur/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eb530d2e7f5f0e9df570bf34a2d00ca58481c7aa15e2a1d8107e3b5f1a7dd6d7')
+sha256sums=('7802c7cc2788893499acd208255c254ad384d7ac4c163791f9cad1c22d854e38')
 
 prepare() {
   cd "$pkgname-$pkgver"
