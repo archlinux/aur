@@ -1,7 +1,7 @@
 pkgbase = python-iniparse
 	pkgdesc = Better INI parser library for Python
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/candlepin/python-iniparse
 	arch = any
 	license = custom:MIT
@@ -10,7 +10,8 @@ pkgbase = python-iniparse
 	depends = python
 	depends = python-six
 	source = https://github.com/candlepin/python-iniparse/archive/refs/tags/0.5.1.tar.gz
+	source = fix-test-multiprocessing-pickling.patch
 	md5sums = 0646a83586cde2a8289915287ba28f94
-	md5sums = 89935a71e05dc16444c1fb8398b74a5c
+	md5sums = 41b1c1775079c5438833069140332ddc
 
 pkgname = python-iniparse

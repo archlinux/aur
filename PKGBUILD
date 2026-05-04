@@ -5,7 +5,7 @@ pkgname=python-iniparse
 _name=${pkgname#python-}
 pkgver=0.5.1
 _pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Better INI parser library for Python"
 arch=('any')
 license=('custom:MIT')
@@ -15,8 +15,10 @@ makedepends=('python-setuptools')
 checkdepends=('python-tests')
 source=(
 	"https://github.com/candlepin/$pkgname/archive/refs/tags/$pkgver.tar.gz"
+	"fix-test-multiprocessing-pickling.patch"
 )
-md5sums=('0646a83586cde2a8289915287ba28f94')
+md5sums=('0646a83586cde2a8289915287ba28f94'
+         '41b1c1775079c5438833069140332ddc')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -24,6 +26,8 @@ prepare() {
 	# Avoid conflict with doc files from python2-iniparse
 	sed -e "s|share/doc/$_name-|share/doc/$pkgname-|" \
 	    -i setup.py
+
+	patch -p1 < "$srcdir/fix-test-multiprocessing-pickling.patch"
 }
 
 build() {
