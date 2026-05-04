@@ -28,6 +28,7 @@ provides=(
     'awob-listener-backlight'
     'awob-listener-keyboard-backlight'
     'awob-listener-wob'
+    'awob-listener-power-profile'
 )
 conflicts=(
     'awob'
@@ -37,6 +38,7 @@ conflicts=(
     'awob-listener-backlight-bin'
     'awob-listener-keyboard-backlight-bin'
     'awob-listener-wob-bin'
+    'awob-listener-power-profile-bin'
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -72,6 +74,7 @@ package() {
                awob-listener-battery \
                awob-listener-backlight \
                awob-listener-keyboard-backlight \
+               awob-listener-power-profile \
                awob-listener-wob; do
         install -Dm755 "target/release/${bin}" "${pkgdir}/usr/bin/${bin}"
     done

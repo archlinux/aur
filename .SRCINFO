@@ -20,6 +20,7 @@ pkgbase = awob-git
 	provides = awob-listener-backlight
 	provides = awob-listener-keyboard-backlight
 	provides = awob-listener-wob
+	provides = awob-listener-power-profile
 	conflicts = awob
 	conflicts = awob-bin
 	conflicts = awob-listener-pipewire-bin
@@ -27,6 +28,7 @@ pkgbase = awob-git
 	conflicts = awob-listener-backlight-bin
 	conflicts = awob-listener-keyboard-backlight-bin
 	conflicts = awob-listener-wob-bin
+	conflicts = awob-listener-power-profile-bin
 	source = git+https://github.com/jmylchreest/awob.git
 	sha256sums = SKIP
 
