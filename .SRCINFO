@@ -1,0 +1,23 @@
+pkgbase = figaro-bin
+	pkgdesc = Real-time voice modification program and soundboard
+	pkgver = 0.3.0_alpha
+	pkgrel = 1
+	url = https://github.com/MattMoony/figaro
+	arch = x86_64
+	license = GPL3
+	depends = alsa-lib
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = figaro
+	conflicts = figaro
+	options = !debug
+	options = !strip
+	source = figaro-bin-0.3.0-alpha.tar.gz::https://github.com/MattMoony/figaro/releases/download/v0.3-alpha/figaro-gui-0.3.0-alpha.tar.gz
+	source = figaro-LICENSE::https://raw.githubusercontent.com/MattMoony/figaro/v0.3-alpha/LICENSE
+	source = figaro.desktop
+	sha256sums = 41676fe8fa2c16233c058bd353b14c68c4eb7d8d338c2606bcd7dfd7c1bf8b6f
+	sha256sums = 1e015eada034fa442daeedaf147fdc5e6284fc6f6b5da7be4600d7f189fe1076
+	sha256sums = a9c3eb6c418842fb92d1aef7be9959ae843f4ddca132197a73ed550e4034747f
+
+pkgname = figaro-bin
