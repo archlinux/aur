@@ -11,6 +11,6 @@ pkgbase = gabutytb
 	depends = python3
 	depends = gtk4
 	source = gabutytb-1.0.1.tar.gz::https://github.com/gabutakut/gabutytb/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = 6776f6d0f1a555237996d0a9c3eb8f8141c00e74715fb2dd87d0c63ac3f41aaa
+	sha256sums = 5fc8d211a96c84e402690dff257ca5c2e3aa12bc027d4c85a551ebf6a849a9a6
 
 pkgname = gabutytb
