@@ -2,6 +2,21 @@
 
 All the changes made to runa are documented here.
 
+## [0.11.2] - 2026-05-04
+
+#### Patch to documentation and configuration file.
+
+### Fixed
+- **Documentation**: Updated documentation and `runa.toml` to use the latest `theme.filename` setting
+    - `rn --init-full` generated a broken `runa.toml`.
+
+### Changed
+- **Cargo update**: Updated dependencies
+
+
+---
+
+
 ## [0.11.1] - 2026-05-03
 
 #### Config reload, online documentation and more.
