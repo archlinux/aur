@@ -1,7 +1,7 @@
 # Maintainer: Agustín Carrasco <asermax at gmail dot com>
 pkgname=seemux-bin
 _pkgname=seemux
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A GTK4 terminal multiplexer for Linux with Claude Code integration"
 arch=('x86_64')
@@ -14,8 +14,8 @@ conflicts=('seemux' 'seemux-git')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-bin-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64"
                 "${_pkgname}-tmux-shim-bin-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-tmux-shim-linux-x86_64")
-sha256sums=('6320d7db94a9c23dc85ff61a45d16c59765ff8a86511fa27248fcd29b04f19d8')
-sha256sums_x86_64=('b7ae639d0a92bfe0a32f70fe7874fd4eae1363cc22072893512589edff81cf81' '77a3a6145d361fd3887c68e2b50be243011187347ecc54f69179506e90a84109')
+sha256sums=('49b503d804e0eb2f44053a303b3c16f2dd1ece2dbb586dd8f34a8ede4789f1f8')
+sha256sums_x86_64=('9a1c012bf6c0575ffaf8c53a7baf26afb7a9ddb0dca397a3724108827dee6e5a' 'cb4826efaf28d32ffe15bebf93228710086d93623585168831c787bd0b4f12b9')
 
 latestver() {
   curl -s "https://api.github.com/repos/asermax/seemux/releases/latest" | \
