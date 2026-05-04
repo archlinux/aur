@@ -1,24 +1,24 @@
 # Maintainer: futpib <futpib@gmail.com>
 
-_pkgname=choomd
+_pkgname=cdgcd
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.r0.gbd01a50
+pkgver=r5.b86633a
 pkgrel=1
-pkgdesc="Adjust process OOM-killer scores based on process names and other attributes"
+pkgdesc="Allow-list garbage collector for systemd-coredump dumps"
 arch=('x86_64')
-url="https://github.com/futpib/choomd"
+url="https://github.com/futpib/cdgcd"
 license=('GPL3')
 depends=()
-backup=('etc/choomd.toml')
+backup=('etc/cdgcd.toml')
 makedepends=('rust' 'cargo' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=('git+https://github.com/futpib/choomd.git')
+source=('git+https://github.com/futpib/cdgcd.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -40,7 +40,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/lib/systemd/system/" "etc/choomd.service"
-  install -Dm644 -t "${pkgdir}/etc" "etc/choomd.toml"
+  install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}" "target/release/cdgcctl"
+  install -Dm644 -t "${pkgdir}/usr/lib/systemd/system/" "etc/${_pkgname}.service"
+  install -Dm644 -t "${pkgdir}/etc" "etc/${_pkgname}.toml"
 }

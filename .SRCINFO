@@ -1,17 +1,17 @@
-pkgbase = choomd-git
-	pkgdesc = Adjust process OOM-killer scores based on process names and other attributes
-	pkgver = 1.0.0.r0.gbd01a50
+pkgbase = cdgcd-git
+	pkgdesc = Allow-list garbage collector for systemd-coredump dumps
+	pkgver = r5.b86633a
 	pkgrel = 1
-	url = https://github.com/futpib/choomd
+	url = https://github.com/futpib/cdgcd
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	provides = choomd
-	conflicts = choomd
-	backup = etc/choomd.toml
-	source = git+https://github.com/futpib/choomd.git
+	provides = cdgcd
+	conflicts = cdgcd
+	backup = etc/cdgcd.toml
+	source = git+https://github.com/futpib/cdgcd.git
 	sha256sums = SKIP
 
-pkgname = choomd-git
+pkgname = cdgcd-git
