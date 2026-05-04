@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=spData
-_pkgver=2.3.4
+_pkgver=2.3.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-spdep
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0739960d1dfd343666c6eb9b0f2f5ce9')
-b2sums=('2462173e2b97fd9a70a738b134df937321a87cccd2c0d7cba37e29f199a7f41544b43f47da5e7834241f1b386c232d600338efed63a69f4cdab557cbe3fcb6db')
+md5sums=('62a3899b6e84ac07e04e9a5999e59d6c')
+b2sums=('4571b8f56bbc4b41073010e82ec2be1f9fd4d85b258f2aa5dd7a1061fcb89c23ac6aa0550c07069d44ceb7aa90b9a8134ff2c3467ccdb9518b1053db391a38de')
 
 build() {
   mkdir build
