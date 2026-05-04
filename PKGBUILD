@@ -41,17 +41,13 @@ sha256sums=(
 
 package() {
   local debdir="${srcdir}/deb"
-  local lyx_data
-  local lyx_common_data
+  local pkg
 
   rm -rf "${debdir}/lyx" "${debdir}/lyx-common"
   mkdir -p "${debdir}/lyx" "${debdir}/lyx-common"
-  bsdtar --no-same-owner -xf "${srcdir}/lyx_${_debver}_amd64.deb" -C "${debdir}/lyx"
-  bsdtar --no-same-owner -xf "${srcdir}/lyx-common_${_debver}_all.deb" -C "${debdir}/lyx-common"
 
-  lyx_data=("${debdir}/lyx"/data.tar.*)
-  lyx_common_data=("${debdir}/lyx-common"/data.tar.*)
-
-  bsdtar --no-same-owner -xf "${lyx_data[0]}" -C "${pkgdir}"
-  bsdtar --no-same-owner -xf "${lyx_common_data[0]}" -C "${pkgdir}"
+  for pkg in lyx lyx-common; do
+    bsdtar --no-same-owner -xf "${srcdir}/${pkg}_${_debver}_"*.deb -C "${debdir}/${pkg}"
+    bsdtar --no-same-owner -xf "${debdir}/${pkg}/data.tar."* -C "${pkgdir}"
+  done
 }
