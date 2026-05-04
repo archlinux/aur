@@ -1,7 +1,7 @@
 # Maintainer: Edwar Diaz <edwardiaz.dev@gmail.com>
 
 pkgname=cliprithm-bin
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Prebuilt Cliprithm AppImage packaged for Arch Linux"
 arch=('x86_64')
@@ -11,12 +11,12 @@ depends=('ffmpeg' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 
 optdepends=('xdg-desktop-portal: improved desktop integration for file dialogs and portals')
 provides=('cliprithm')
 conflicts=('cliprithm')
-source=("Cliprithm_1.2.1_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.2.1/Cliprithm_1.2.1_amd64.AppImage" "cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.2.1/src-tauri/icons/128x128.png" "LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.2.1/LICENSE")
-sha256sums=('f65c110352d8d7294cf4c10bb23e21bde86e5eea49eda8343babda658fff9b19' 'c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80' 'd90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c')
-noextract=('Cliprithm_1.2.1_amd64.AppImage')
+source=("Cliprithm_1.2.2_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.2.2/Cliprithm_1.2.2_amd64.AppImage" "cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.2.2/src-tauri/icons/128x128.png" "LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.2.2/LICENSE")
+sha256sums=('99c526f63b4a19b6a9b1977c618ac86a0416ee792552635d59a56301b40759b7' 'c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80' 'd90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c')
+noextract=('Cliprithm_1.2.2_amd64.AppImage')
 
 package() {
-  install -Dm755 "$srcdir/Cliprithm_1.2.1_amd64.AppImage" "$pkgdir/opt/cliprithm/cliprithm.AppImage"
+  install -Dm755 "$srcdir/Cliprithm_1.2.2_amd64.AppImage" "$pkgdir/opt/cliprithm/cliprithm.AppImage"
   install -Dm644 "$srcdir/cliprithm.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/cliprithm.png"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
