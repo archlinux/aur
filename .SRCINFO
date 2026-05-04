@@ -1,12 +1,13 @@
 pkgbase = libsha2
 	pkgdesc = SHA-2-family hashing library
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libsha2
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
-	source = libsha2-1.1.3.tar.gz::https://codeberg.org/maandree/libsha2/archive/1.1.3.tar.gz
-	sha256sums = ed2998010d3f71f8796cc66a90fc99fed660fc6ccb3c8f384f631a572c1ada24
+	source = libsha2-1.1.4.tar.gz::https://codeberg.org/maandree/libsha2/archive/1.1.4.tar.gz
+	sha256sums = 1807a0afd4148012bbf882be03173db39cd12e6651d140c03aeded3456c03fb7
 
 pkgname = libsha2
