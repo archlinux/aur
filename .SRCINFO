@@ -1,6 +1,6 @@
 pkgbase = shvspy-bin
 	pkgdesc = SHV Spy (AppImage)
-	pkgver = 1.14.7
+	pkgver = 1.14.17
 	pkgrel = 1
 	url = https://github.com/silicon-heaven/shvspy
 	arch = x86_64
