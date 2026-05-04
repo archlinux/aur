@@ -6,7 +6,7 @@
 _pkgname=langchain
 _pipname=${_pkgname//-/_}
 pkgname="python-${_pkgname}"
-pkgver=1.2.15
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Building applications with LLMs through composability"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('python-build'
 'python-installer'
 'python-hatchling')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('1717b6719daefae90b2728314a5e2a117ff916291e2862595b6c3d6fba33d652')
+sha256sums=('c30b578c0eebbde8bec9247dbbbae1a791128557b99b65c8be1e007040975d09')
 
 build() {
     cd "${_pipname}-${pkgver}"
