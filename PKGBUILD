@@ -118,7 +118,7 @@ package() {
 
     msg2 "Installing vcpkg libraries..."
     if [ -d "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib" ]; then
-        cp -a -n "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib/libav"*.so.* "$pkgdir/usr/lib/"
+        #cp -a -n "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib/libav"*.so.* "$pkgdir/usr/lib/"
         cp -a -n "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib/libwolf-midi.so" "$pkgdir/usr/lib/"
         cp -a -n "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib/libowcrypt.so.1" "$pkgdir/usr/lib/"
         cp -a -n "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib/libxcrypt.so" "$pkgdir/usr/lib/"
