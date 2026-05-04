@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <me@uyani.de>
 pkgname=oavif-git
 pkgver=0.1.3.r18.gd1fc680
-pkgrel=1
+pkgrel=2
 pkgdesc='Target quality AVIF encoding (git)'
 arch=('x86_64')
 url='https://github.com/gianni-rosato/oavif'
@@ -35,8 +35,13 @@ prepare() {
 	sed -i 's|b\.installArtifact(bin);|bin.pie = true;\n    b.installArtifact(bin);|' build.zig
 }
 
+build() {
+	cd "${pkgname%-git}"
+	zig build --release=fast --prefix "$srcdir/dist"
+}
+
 package() {
 	cd "${pkgname%-git}"
-	zig build --release=fast --prefix "$pkgdir/usr"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 "$srcdir/dist/bin/${pkgname%-git}" -t "$pkgdir/usr/bin"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
