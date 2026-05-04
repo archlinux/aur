@@ -1,12 +1,12 @@
 # Maintainer: OneZ3r0 <onez3r0@outlook.com>
 pkgname=yakit-bin
 pkgver=1.4.7_0429
-pkgrel=1
+pkgrel=2
 pkgdesc="Cyber Security ALL-IN-ONE Platform (official AppImage release)"
 arch=('x86_64')
 url="https://github.com/yaklang/yakit"
 license=('AGPL-3.0-only')
-depends=('sh' 'glibc' 'hicolor-icon-theme' 'zlib')
+depends=('sh' 'glibc' 'fuse2' 'hicolor-icon-theme' 'zlib')
 provides=('yakit')
 conflicts=('yakit' 'yakit-appimage')
 options=('!strip')
@@ -36,7 +36,7 @@ package() {
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/yakit" <<'EOF'
 #!/bin/sh
-exec env APPIMAGE_EXTRACT_AND_RUN=1 /opt/yakit-bin/Yakit.AppImage --no-sandbox "$@"
+exec /opt/yakit-bin/Yakit.AppImage --no-sandbox "$@"
 EOF
 
     install -Dm644 "${srcdir}/yakit.desktop" \

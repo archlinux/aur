@@ -1,12 +1,13 @@
 pkgbase = yakit-bin
 	pkgdesc = Cyber Security ALL-IN-ONE Platform (official AppImage release)
 	pkgver = 1.4.7_0429
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yaklang/yakit
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = sh
 	depends = glibc
+	depends = fuse2
 	depends = hicolor-icon-theme
 	depends = zlib
 	provides = yakit
