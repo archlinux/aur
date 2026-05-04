@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rols
-_pkgver=3.4.0
+_pkgver=3.7.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,7 +11,6 @@ url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-2.0-only')
 depends=(
   r-biobase
-  r-biocgenerics
   r-httr2
   r-jsonlite
 )
@@ -25,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3cd91882391035473c19de350a04dfb0')
-b2sums=('05bc04790ba9750b60a9281100d74feaffece977b7882bb7eb9a09ceb12970727ac594137f8ded93eb8898a8bcae210c0308865735a4bd6d44cdb29a0f735e31')
+md5sums=('fdc2288f32c6631e0b77db07fadff012')
+b2sums=('6462996a81cc36cf88de91402d8cbd90c287f9bcfceac85ae10ca7ec11c68755f46dd66c03e2f308b86f4242c9035d3216e6df7bebf147e3d5bc1a975db9054f')
 
 build() {
   mkdir build
