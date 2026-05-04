@@ -14,10 +14,6 @@ source=(
 )
 sha256sums=('ed1a05e935784988a57cd583a1d824675efdf71c5fbe033797fc90bee334dcb8' 'SKIP')
 
-prepare() {
-	chmod +x "$pkgname"
-}
-
 package() {
 	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/spotify-dl"
         install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
