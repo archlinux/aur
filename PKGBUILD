@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=zCompositions
-_pkgver=1.5.0-4
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,12 +10,11 @@ arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
-  r-nada
   r-truncnorm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b0276e195b69aa82ee5bf1a8e5647257')
-b2sums=('3900619aa040e9e587ae8a19059048e11672f25256ce3e688c9c42840b453bd51f253d4739494b832bb8bbf0a9c88a0487ab9f68219ce5fcfb58b9de7e45a3b7')
+md5sums=('dc7a3a246d86c1c9873b31e0d8496935')
+b2sums=('dbabdfffa3fb4b92708ddb9c68326da2136294a87b44bd3d972e75b0d2aa13d6126a6fc290e9e98aedbb7d02474a0586e5f0e55fba44e4b25cbca5a1b64ffca5')
 
 build() {
   mkdir build
