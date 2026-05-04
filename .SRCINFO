@@ -1,0 +1,17 @@
+pkgbase = ionguard-bin
+	pkgdesc = Real-time LAN device monitor with dark UI — NEMESIS ENGINE (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/VanHoney-ltd/ionguard
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk
+	depends = fping
+	optdepends = fping: for active network sweeps
+	provides = ionguard
+	conflicts = ionguard
+	source = ionguard-bin-0.1.0.tar.gz::https://github.com/VanHoney-ltd/ionguard/releases/download/v0.1.0/ionguard-0.1.0-linux-amd64.tar.gz
+	sha256sums = a731b6803e819a4d8bf2c4ef0aa5bc40d17bc397c76529dd31453c799041bd63
+
+pkgname = ionguard-bin
