@@ -14,7 +14,7 @@ optdepends=('systemd: enable the bundled user service with systemctl --user')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/naurissteins/Veila/releases/download/$pkgver/veila-$pkgver-x86_64-linux.tar.gz"
 )
-sha256sums=('56b782d631f5012cb9d351095e44b78f926ebfc8a86c5567585e2e8c996289b9')
+sha256sums=('1d3e18cbd2c472fdc7654ffd5e6ef2111b0f2671905c65f47dae51eec331e670')
 
 package() {
   cd "veila-$pkgver-x86_64-linux"
