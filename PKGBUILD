@@ -4,7 +4,7 @@
 # Contributor: msilvoso
 
 pkgname=xmount
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Tool to crossmount between multiple input and output harddisk image files"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('fuse')
 makedepends=('make' 'cmake' 'gcc')
 options=(!makeflags)
 source=(https://code.sits.lu/foss/xmount/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('2feae8004dfd846ffa8c1ab13254bb9ccd0df597c05c15be26237ec2f75d295c')
+sha256sums=('080c2a715af294fe723bf7df6fdaf4a07fe0db69d876350001928af2884b9cd9')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
