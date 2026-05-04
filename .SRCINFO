@@ -1,12 +1,13 @@
 pkgbase = r-logger
 	pkgdesc = A Lightweight, Modern and Flexible Logging Utility
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=logger
 	arch = any
 	license = MIT
 	depends = r
 	optdepends = r-botor
+	optdepends = r-cli
 	optdepends = r-covr
 	optdepends = r-crayon
 	optdepends = r-devtools
@@ -26,8 +27,8 @@ pkgbase = r-logger
 	optdepends = r-telegram
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/logger_0.4.0.tar.gz
-	md5sums = 7b27620ac3f2bd4e927d608199cae758
-	b2sums = 50422fc9ec3f49e48cd5a762293196e6477cb48fe6d4ad7bf2fe29caa1fefc1e33e77efcc85672815ce04c88794ccef7f1e987272de60a812190d654167f723f
+	source = https://cran.r-project.org/src/contrib/logger_0.4.1.tar.gz
+	md5sums = fcec3cd7d63f2fd84f357e4e9a444e90
+	b2sums = 2cfb77828be6a738f0ccb844d34ca7c19605738953467bf590315384f617dc7a6fc59bd73003e4a5e3ccfd8fe0850f3409947e71d5f888d83ae714bff93b8d04
 
 pkgname = r-logger
