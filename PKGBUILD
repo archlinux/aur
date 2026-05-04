@@ -1,6 +1,6 @@
 # Maintainer: Aleksei Aleinikov <alexey.aleynikov@telekom.com>
 pkgname=clawsec
-pkgver=2.7.0
+pkgver=2.7.1-rc1
 pkgrel=1
 pkgdesc="Encrypted netcat with SOCKS5, reverse tunnels, port scanning, and post-quantum crypto"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('openssl')
 makedepends=('gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LF3551/ClawSec/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('3ca0d0e08dd926a714f88b9dabfa9f2803990809f894d6d61d0dd30e38ed072c')
 
 build() {
     cd "ClawSec-${pkgver}/src"
