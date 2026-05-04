@@ -11,7 +11,7 @@
 # listeners follow.
 
 pkgname=awob-listeners-all
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="awob listeners — meta-package pulling every official listener."
 arch=('any')
@@ -23,6 +23,7 @@ depends=(
     'awob-listener-backlight-bin'
     'awob-listener-keyboard-backlight-bin'
     'awob-listener-wob-bin'
+    'awob-listener-power-profile-bin'
 )
 
 # No source / no install — depends-only meta-package.
