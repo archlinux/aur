@@ -1,6 +1,6 @@
-pkgbase = udevil-git
+pkgbase = udevil
 	pkgdesc = Mount without password (Fixed for CasaOS on Modern Arch)
-	pkgver = 2024.master
+	pkgver = 2026.master
 	pkgrel = 1
 	url = https://github.com/IgnorantGuru/udevil
 	arch = i686
@@ -27,4 +27,4 @@ pkgbase = udevil-git
 	source = https://github.com/IgnorantGuru/udevil/archive/refs/heads/master.zip
 	sha256sums = SKIP
 
-pkgname = udevil-git
+pkgname = udevil

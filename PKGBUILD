@@ -23,17 +23,16 @@ provides=('udevil' 'devmon')
 backup=('etc/udevil/udevil.conf' 'etc/conf.d/devmon')
 options=(!strip !debug)
 
-# Menggunakan ZIP dari upstream publik untuk bypass login GitHub
 source=("https://github.com/IgnorantGuru/udevil/archive/refs/heads/master.zip")
 sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/udevil-master"
     
-    # FIX: Tambahkan header untuk fungsi 'stat' agar tidak error saat compile
+    
     sed -i '1i #include <sys/stat.h>' src/device-info.c
     
-    # FIX: Penyesuaian signal handling untuk compiler modern
+    
     sed -i -e "s/finalize(/finalize(int sig/" src/udevil.c
     sed -i -e "s/interrupt(/interrupt(int sig/" src/udevil.c
     
@@ -45,6 +44,6 @@ package() {
     cd "$srcdir/udevil-master"
     make DESTDIR="$pkgdir/" install
     
-    # Set SUID bit agar udevil bisa mount tanpa password (penting untuk CasaOS)
+    
     chmod +s "$pkgdir/usr/bin/udevil"
 }
