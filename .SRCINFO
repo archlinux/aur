@@ -1,0 +1,13 @@
+pkgbase = vettel
+	pkgdesc = A cli tool to gather different statistics and info from f1db
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cebem1nt/vettel
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	source = https://github.com/cebem1nt/vettel/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = ecaf2a3674f6c3f6fbaed2a86d802f6e03170c85742dbdc8d3408881abd3cdf0
+
+pkgname = vettel
