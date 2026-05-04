@@ -2,8 +2,8 @@
 # Maintainer: ShinKouyo <i@0x0f.dev>
 pkgname=astraeditor-git
 _binname=astraeditor-desktop
-pkgver=v1.1.4.r43.gfa4a4a4
-pkgrel=2
+pkgver=v1.1.4.r44.ga2af2c1
+pkgrel=1
 pkgdesc='AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AstraEditor/'
@@ -22,19 +22,11 @@ pkgver() {
 }
 build() {
   cd "$pkgname"
-  rm -f package-lock.json
-  cp -f package.json package.json.bak
   sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#snapshot",|' package.json
   cp -f pnpm-lock.yaml pnpm-lock.yaml.bak
   sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#snapshot",|' pnpm-lock.yaml
   rm -f pnpm-lock.yaml
   pnpm install
-  pnpm run fetch
-  pnpm run webpack:prod
-  cp -f package.json.bak package.json
-  rm -f package.json.bak
-  cp -f pnpm-lock.yaml.bak pnpm-lock.yaml
-  rm -f pnpm-lock.yaml.bak
   local _target_arch="x64"
   [[ "$CARCH" == "aarch64" ]] && _target_arch="arm64"
   [[ "$CARCH" == "armv7h" ]] && _target_arch="armv7l"
