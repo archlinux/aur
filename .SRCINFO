@@ -1,0 +1,13 @@
+pkgbase = omadoctor-bin
+	pkgdesc = Interactive TUI wizard that diagnoses and fixes common Omarchy Linux issues
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ZeroiJ/omarchy-doctor
+	arch = x86_64
+	license = MIT
+	provides = omadoctor
+	conflicts = omadoctor
+	source = omadoctor-bin-0.1.0.tar.gz::https://github.com/ZeroiJ/omarchy-doctor/releases/download/v0.1.0/omadoctor-v0.1.0-x86_64.tar.gz
+	sha256sums = b9b944f3d41ac633d5f1dfefca4f2fb5cb85db663842432f0a33c221c554eaaf
+
+pkgname = omadoctor-bin
