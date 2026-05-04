@@ -2,7 +2,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Paris Atticus Keech Doherty <Paris.Doherty@icloud.com>
-pkgname=ttf-JunimoAlphabet
+pkgname=ttf-junimoalphabet
 pkgdesc="TrueType font for the Junimo language from Stardew Valley"
 pkgver=1
 pkgrel=1

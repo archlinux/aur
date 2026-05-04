@@ -1,13 +1,13 @@
-pkgbase = ttf-JunimoAlphabet
+pkgbase = ttf-junimoalphabet
 	pkgdesc = TrueType font for the Junimo language from Stardew Valley
 	pkgver = 1
 	pkgrel = 1
 	url = https://2ttf.com/AlwrCyFmXuC
 	arch = any
 	license = CC0-1.0
-	source = ttf-JunimoAlphabet-1-1.ttf::https://raw.githubusercontent.com/paris1111q1q1q1/StardewValley_JunimoFont/refs/heads/main/junimoalphabet.ttf
+	source = ttf-junimoalphabet-1-1.ttf::https://raw.githubusercontent.com/paris1111q1q1q1/StardewValley_JunimoFont/refs/heads/main/junimoalphabet.ttf
 	source = LICENSE::https://raw.githubusercontent.com/paris1111q1q1q1/StardewValley_JunimoFont/refs/heads/main/LICENSE
 	sha256sums = 12fb77d0884271ff76c7d19da18f2e1d4c7fcf66ed32103a971b4432ffc0ee7c
 	sha256sums = bd4beb44668e36d94b795d1572d5afe67a5f8834295e847fe6a821fd9f4b1523
 
-pkgname = ttf-JunimoAlphabet
+pkgname = ttf-junimoalphabet
