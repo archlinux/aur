@@ -1,0 +1,4 @@
+[laser]
+source = "git"
+git = "https://codeberg.org/andreasknoben/Laser.git"
+prefix = "v"
