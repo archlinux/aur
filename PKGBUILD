@@ -1,13 +1,13 @@
 pkgname='wago-app-bin'
-pkgver='2.9.10'
+pkgver='2.9.11'
 pkgrel='1'
 pkgdesc='Wago App built from DEB release'
 license=('custom:Wago-License')
 arch=('x86_64')
 depends=(gtk3 libnotify nss libxss libxtst xdg-utils at-spi2-core util-linux-libs libsecret)
 optdepends=(libappindicator-gtk3)
-source=(WagoApp_2.9.10.deb::https://wago-addons.ams3.digitaloceanspaces.com/wagoapp/WagoApp_2.9.10.deb)
-sha512sums=('3f07a3e2ab6fc9af4091939ddc359d5310c5b23709fdf5f680d0e2944636e26f2a7f395a3aad72608ed8b3564b1bf9262f79c0e1196aa76eaa40f9783af35f0a')
+source=(WagoApp_2.9.11.deb::https://cdn.wago.io/wagoapp/WagoApp_2.9.11.deb)
+sha512sums=('fc000be0a1eac70f402f445afc8fc7ad288dcd08a75f85b2d15943979809ae82af7312cb6badf0393e4a8462018fea6387156c29acbedd47bcc7ee72a9403903')
 
 package() {
   echo 'All Rights Reserved The Wago Dev Team <support@wago.io>' >> LICENSE
