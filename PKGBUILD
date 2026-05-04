@@ -1,5 +1,5 @@
 pkgname=tether-git
-pkgver=0.1.0.r0.g84a2b1c
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Wayland-native local file transfer and clipboard sync tool over mDNS"
 arch=('x86_64')
