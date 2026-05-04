@@ -1,7 +1,7 @@
 pkgbase = abs-flutter-bin
 	pkgdesc = Unofficial cross-platform client for Audiobookshelf (Buchable)
 	pkgver = 1.8.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Vito0912/abs_flutter
 	arch = x86_64
 	license = GPL-3.0-only

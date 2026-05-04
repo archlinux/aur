@@ -1,7 +1,7 @@
 # Maintainer: IlNinjaDiBattipaglia <fogliadonato2@gmail.com>
 pkgname=abs-flutter-bin
 pkgver=1.8.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial cross-platform client for Audiobookshelf (Buchable)"
 arch=('x86_64')
 url="https://github.com/Vito0912/abs_flutter"
@@ -23,7 +23,7 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/abs-flutter" << 'EOF'
 #!/bin/bash
-GDK_BACKEND=x11 /opt/abs-flutter/abs_flutter "$@"
+/opt/abs-flutter/abs_flutter "$@"
 EXIT_CODE=$?
 pkill -f "/opt/abs-flutter/abs_flutter" 2>/dev/null
 exit $EXIT_CODE
