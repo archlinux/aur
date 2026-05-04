@@ -1,7 +1,7 @@
 # Maintainer: kawuchuu <kawuchuu at gmail dot com>
 pkgname=firetail-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Firetail music player"
 arch=('x86_64')
 url="https://github.com/kawuchuu/firetail"
@@ -10,7 +10,7 @@ depends=('electron')
 options=('!strip' '!debug')
 
 source=("firetail-$pkgver"::"https://github.com/kawuchuu/firetail/releases/download/v$pkgver/Firetail-linux-x64-$pkgver.zip")
-sha256sums=('446231f9d0d28de6ff31424c3c20150409fe41904eebb147f670529984cfc0d2')
+sha256sums=('43971758e56a147ea06d62715918eaa355007cce6a96363154a28392e452e907')
 
 package() {
   install -dm755 "$pkgdir/usr/lib/$pkgname"
