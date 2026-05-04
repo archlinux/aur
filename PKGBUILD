@@ -1,16 +1,16 @@
+# Merged with official ABS ktextaddons PKGBUILD by João, 2026/05/04 (all respective contributors apply herein)
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ktextaddons-git
-pkgver=1.5.45_r1256.g3936a38
-pkgrel=3
-pkgdesc="KDE text addons"
+pkgver=2.0.56_r5836.gb957221cb
+pkgrel=1
+pkgdesc='Various text handling addons'
 arch=($CARCH)
-url="https://kontact.kde.org"
 license=(GPL)
+url='https://invent.kde.org/libraries/ktextaddons-git'
 depends=(gcc-libs glibc karchive-git kcolorscheme-git kconfig-git kconfigwidgets-git ki18n-git kio-git kwidgetsaddons-git qt6-base qt6-speech qtkeychain-qt6 sonnet-git syntax-highlighting-git)
-makedepends=(git doxygen extra-cmake-modules-git ktextaddons-git kxmlgui-git qt6-tools)
-groups=(kdepim-git)
+makedepends=(git doxygen extra-cmake-modules-git karchive-git kconfig-git kconfigwidgets-git ki18n-git kio-git ktextaddons-git kwidgetsaddons-git kxmlgui-git qt6-base qt6-doc qt6-speech qt6-tools qtkeychain-qt6 sonnet-git syntax-highlighting-git)
 optdepends=('languagetool: Grammar checking'
             'grammalecte: French grammar checking'
             'libreoffice: Use autocorrection data from LibreOffice')
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S ${pkgname%-git} \
+  cmake -B build -S $pkgbase-$pkgver \
     -DBUILD_TESTING=OFF \
     -DBUILD_DESIGNERPLUGIN=ON \
     -DBUILD_QCH=ON \
@@ -37,3 +37,4 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
+
