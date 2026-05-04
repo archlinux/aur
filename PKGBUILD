@@ -10,7 +10,7 @@
 _pkgname=resolve
 pkgname=davinci-resolve-studio-beta
 pkgver=21.0b2
-pkgrel=2
+pkgrel=3
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -54,37 +54,39 @@ prepare() {
   done < <(find "squashfs-root" -type f -print0)
 
   # Prepare list of paths for patchelf
-  _patchelf_paths=("libs"
-                   "libs/plugins/sqldrivers"
-                   "libs/plugins/xcbglintegrations"
-                   "libs/plugins/imageformats"
-                   "libs/plugins/platforms"
-                   "libs/Fusion"
-                   "plugins"
-                   "bin"
-                   "BlackmagicRAWSpeedTest/BlackmagicRawAPI"
-                   "BlackmagicRAWSpeedTest/plugins/platforms"
-                   "BlackmagicRAWSpeedTest/plugins/imageformats"
-                   "BlackmagicRAWSpeedTest/plugins/mediaservice"
-                   "BlackmagicRAWSpeedTest/plugins/audio"
-                   "BlackmagicRAWSpeedTest/plugins/xcbglintegrations"
-                   "BlackmagicRAWSpeedTest/plugins/bearer"
-                   "BlackmagicRAWPlayer/BlackmagicRawAPI"
-                   "BlackmagicRAWPlayer/plugins/mediaservice"
-                   "BlackmagicRAWPlayer/plugins/imageformats"
-                   "BlackmagicRAWPlayer/plugins/audio"
-                   "BlackmagicRAWPlayer/plugins/platforms"
-                   "BlackmagicRAWPlayer/plugins/xcbglintegrations"
-                   "BlackmagicRAWPlayer/plugins/bearer"
-                   "Onboarding/plugins/xcbglintegrations"
-                   "Onboarding/plugins/qtwebengine"
-                   "Onboarding/plugins/platforms"
-                   "Onboarding/plugins/imageformats"
-                   "DaVinci Control Panels Setup/plugins/platforms"
-                   "DaVinci Control Panels Setup/plugins/imageformats"
-                   "DaVinci Control Panels Setup/plugins/bearer"
-                   "DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciKeyboards"
-                   "DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciPanels")
+  _patchelf_paths=(
+      "libs"
+      "libs/plugins/sqldrivers"
+      "libs/plugins/xcbglintegrations"
+      "libs/plugins/imageformats"
+      "libs/plugins/platforms"
+      "libs/Fusion"
+      "plugins"
+      "bin"
+      "BlackmagicRAWSpeedTest/BlackmagicRawAPI"
+      "BlackmagicRAWSpeedTest/plugins/platforms"
+      "BlackmagicRAWSpeedTest/plugins/imageformats"
+      "BlackmagicRAWSpeedTest/plugins/mediaservice"
+      "BlackmagicRAWSpeedTest/plugins/audio"
+      "BlackmagicRAWSpeedTest/plugins/xcbglintegrations"
+      "BlackmagicRAWSpeedTest/plugins/bearer"
+      "BlackmagicRAWPlayer/BlackmagicRawAPI"
+      "BlackmagicRAWPlayer/plugins/mediaservice"
+      "BlackmagicRAWPlayer/plugins/imageformats"
+      "BlackmagicRAWPlayer/plugins/audio"
+      "BlackmagicRAWPlayer/plugins/platforms"
+      "BlackmagicRAWPlayer/plugins/xcbglintegrations"
+      "BlackmagicRAWPlayer/plugins/bearer"
+      "Onboarding/plugins/xcbglintegrations"
+      "Onboarding/plugins/qtwebengine"
+      "Onboarding/plugins/platforms"
+      "Onboarding/plugins/imageformats"
+      "DaVinci Control Panels Setup/plugins/platforms"
+      "DaVinci Control Panels Setup/plugins/imageformats"
+      "DaVinci Control Panels Setup/plugins/bearer"
+      "DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciKeyboards"
+      "DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciPanels"
+  )
   for _index in "${!_patchelf_paths[@]}"
   do
     _patchelf_paths[${_index}]="/opt/${_pkgname}/${_patchelf_paths[${_index}]}"
@@ -98,9 +100,9 @@ prepare() {
     sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${_file}"
   done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
-  rm "squashfs-root/libs/libglib-2.0.so.0" \
-     "squashfs-root/libs/libgio-2.0.so.0" \
-     "squashfs-root/libs/libgmodule-2.0.so.0"
+  rm "squashfs-root/libs/libglib-2.0.so.0"
+  rm "squashfs-root/libs/libgio-2.0.so.0"
+  rm "squashfs-root/libs/libgmodule-2.0.so.0"
   ln -s "../BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
   ln -s /usr/lib/libglib-2.0.so.0 "squashfs-root/libs/libglib-2.0.so.0"
   ln -s /usr/lib/libgio-2.0.so.0 "squashfs-root/libs/libgio-2.0.so.0"
