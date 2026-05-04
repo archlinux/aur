@@ -19,7 +19,7 @@ _buildflags="NOUPX=1 NOOBJDUMP=1 "
 
 _name=srb2kart-saturn
 pkgname=${_name}-git
-pkgver=r9224.cda74750
+pkgver=r14715.7f4804f98
 _dataver=1.6
 pkgrel=1
 pkgdesc="A SRB2Kart-Galaxy like Build for people that are missing some of its features."
@@ -63,8 +63,7 @@ build() {
 }
 
 package() {
-  [ "$CARCH" == "x86_64" -o "$CARCH" == "aarch64" ] && IS64BIT="64" || IS64BIT=""
-  install -Dm755 "$srcdir"/SRB2Kart-Saturn/bin/Linux$IS64BIT/Release/lsdl2srb2kart \
+  install -Dm755 "$srcdir"/SRB2Kart-Saturn/bin/lsdl2srb2kart \
     "$pkgdir"/usr/bin/srb2kart-saturn
 
   # icon + .desktop
