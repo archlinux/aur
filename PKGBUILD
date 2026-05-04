@@ -2,7 +2,7 @@
 
 _plug=zoomvtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r368.550f87b
+pkgver=r379.7d049c2
 pkgrel=1
 pkgdesc='Zoomy reimplementation of VapourSynth MVTools'
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
 	echo 'If the build fails with “no default toolchain configured”, you may need to set up rust.
 When using rustup, this can be done via
 rustup install stable && rustup default stable'
-	RUSTFLAGS="$RUSTFLAGS -C target-cpu=native" cargo build --release --features static_simd --locked
+	RUSTFLAGS="$RUSTFLAGS -C target-cpu=native" cargo build --release --no-default-features --features avx512,static_simd,system_fftw --locked
 }
 
 package() {
