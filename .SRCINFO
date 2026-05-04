@@ -1,0 +1,13 @@
+pkgbase = wfetch
+	pkgdesc = system information fetch tool written with zig
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/slowy07/wfetch
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	makedepends = git
+	source = git+https://codeberg.org/slowy07/wfetch.git#tag=0.1.0
+	sha256sums = SKIP
+
+pkgname = wfetch
