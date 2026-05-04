@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-headless
 	pkgdesc = Complete solution to record, convert and stream audio and video; optimised for server (headless) systems
-	pkgver = 8.1
-	pkgrel = 2
+	pkgver = 8.1.1
+	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = i686
@@ -97,9 +97,9 @@ pkgbase = ffmpeg-headless
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = ffmpeg-headless::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=a65b3bfe9dacc3b20597ef199d0afdd8bc8128e2
+	source = ffmpeg-headless::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=150ba6ddfabb5c433bb2fb3ee546d2a96e59066d
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
-	b2sums = 8e5818da4965fdd2dc7de521a2f20013a05bd4e9d6fc3eecb6ed261f91c3e4ed4b64687654bee190b0e3b702dc8184f86bfe1941a58cd0b002843c81f70fa904
+	b2sums = f0725f1156a5fa34fb5ee617c0c02dd3615c91ea1fd6f94c7d622106ecaedeee0ce74d68b9965ceb6aa70ee1c539b409bc2102c3cf2309a85340af63d2a3e03e
 
 pkgname = ffmpeg-headless
 	depends = aom

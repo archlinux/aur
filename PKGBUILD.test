@@ -9,8 +9,8 @@
 # shellcheck disable=SC2148,SC2034,SC2154,SC2164
 
 pkgname=ffmpeg-headless
-pkgver=8.1.1
-pkgrel=1
+pkgver=8.0
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -31,7 +31,6 @@ depends=(
   gsm
   harfbuzz
   lame
-  lcms2
   libass
   libavc1394
   libbluray
@@ -63,7 +62,6 @@ depends=(
   rav1e
   rubberband
   snappy
-  sndio
   speex
   srt
   svt-av1
@@ -111,13 +109,49 @@ provides=(
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag='150ba6ddfabb5c433bb2fb3ee546d2a96e59066d'
-_git_base="https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
-_git_mirror="https://github.com/FFmpeg/FFmpeg.git#tag=n${pkgver}"
-source=(
-  "$pkgname::git+${_git_base}"
+_tag='a4044e04486d1136022498891088a90baf5b2775'
+_git_mirrors=(
+  "https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
+  "https://github.com/FFmpeg/FFmpeg.git#tag=n${pkgver}"
 )
-b2sums=('f0725f1156a5fa34fb5ee617c0c02dd3615c91ea1fd6f94c7d622106ecaedeee0ce74d68b9965ceb6aa70ee1c539b409bc2102c3cf2309a85340af63d2a3e03e')
+
+# _test_mirror: Tests a list of URLs to find the first accessible mirror.
+#
+# Arguments:
+#   $1 - The name of the array (passed by reference) containing the URLs.
+#
+# Output:
+#   Prints the first accessible URL to stdout upon success.
+#   Prints WARNINGs/ERRORs to stderr upon failure.
+_test_mirror() {
+  local -n url_list="$1"
+  local url_item
+  local found=0
+  local timeout=60
+
+  for url_item in "${url_list[@]}"; do
+    if curl --output /dev/null --connect-timeout "${timeout}" --silent --head --fail "${url_item}"; then
+      printf '%s' "$url_item"
+      found=1
+      break
+    else
+      printf 'WARNING: Mirror "%s" could not be reached or timed out after %s seconds.\n' "$url_item" "${timeout}" >&2
+    fi
+  done
+
+  if [[ "$found" -eq 1 ]]; then
+    return 0
+  else
+    printf 'ERROR: All configured mirror servers are unreachable. You may be offline or the servers are down.\n' >&2
+    return 1
+  fi
+}
+
+source=(
+  # "$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
+  "$pkgname::git+$(_test_mirror _git_mirrors)"
+)
+b2sums=('7c71ec5f098e248b584fd3e28e7f648e5929ff7c5a6cfc5dcce8300a8a0b91de804cd92ef72963ef86dc57a73d15ab03aeab61d99d1872baad1163462730d7d6')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
 # prepare() {
@@ -147,7 +181,6 @@ build() {
     --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
-    --enable-lcms2 \
     --enable-libaom \
     --enable-libass \
     --enable-libbluray \
