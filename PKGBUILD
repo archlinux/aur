@@ -8,7 +8,7 @@ pkgdesc="A modern, intuitive, terminal text editor. Single file. No dependencies
 
 pkgver=2026.05.04
 pkgrel=1
-_gitversion=8039139
+_gitversion=6fa1c0d
 
 arch=('any')
 
