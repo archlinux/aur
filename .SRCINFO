@@ -10,6 +10,7 @@ pkgbase = netradio
 	depends = yt-dlp
 	depends = python
 	depends = youtube-search-python
+	depends = python-textual
 	source = git+https://github.com/saydut/netradio.git#branch=master
 	md5sums = SKIP
 

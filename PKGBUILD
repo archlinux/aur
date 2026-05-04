@@ -5,7 +5,7 @@ pkgdesc="YouTube ve internet radyolarını oynatan ve indiren Python tabanlı bi
 arch=('x86_64')
 url="https://github.com/saydut/netradio"
 license=('GPL3')
-depends=('mpv' 'yt-dlp' 'python' 'youtube-search-python')
+depends=('mpv' 'yt-dlp' 'python' 'youtube-search-python' 'python-textual')
 makedepends=('git')
 source=("git+https://github.com/saydut/netradio.git#branch=master")
 md5sums=('SKIP')
