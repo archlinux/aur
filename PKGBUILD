@@ -2,7 +2,8 @@
 
 pkgbase=python-acstools
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgname=("python-${_pyname}")
+#"python-${_pyname}-doc")
 pkgver=3.8.0
 pkgrel=1
 pkgdesc="Python Tools for ACS (Advanced Camera for Surveys) Data"
@@ -10,13 +11,12 @@ arch=('any')
 url="https://acstools.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
-             'python-installer'
-             'python-sphinx-automodapi'
-             'python-sphinx_rtd_theme'
-             'python-numpydoc'
-             'python-astropy')
+             'python-installer')
+#            'python-sphinx-automodapi'
+#            'python-sphinx_rtd_theme'
+#            'python-numpydoc'
+#            'python-astropy')
 # conftest.py
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-remotedata'
@@ -57,11 +57,11 @@ package_python-acstools() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
-package_python-acstools-doc() {
-    pkgdesc="Documentation for Python ACS Tools"
-    cd ${srcdir}/${_pyname}-${pkgver}/doc//build
-
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.md
-}
+#package_python-acstools-doc() {
+#    pkgdesc="Documentation for Python ACS Tools"
+#    cd ${srcdir}/${_pyname}-${pkgver}/doc//build
+#
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.md
+#}

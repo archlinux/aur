@@ -10,13 +10,8 @@ pkgbase = python-acstools
 	checkdepends = python-ci_watson
 	checkdepends = python-scikit-image
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-sphinx-automodapi
-	makedepends = python-sphinx_rtd_theme
-	makedepends = python-numpydoc
-	makedepends = python-astropy
 	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.8.0.tar.gz
 	md5sums = 2035c4cc467ac15f7e06ca8acbb32e41
 
@@ -32,6 +27,3 @@ pkgname = python-acstools
 	optdepends = python-photutils
 	optdepends = python-dask
 	optdepends = python-acstools-doc: Documentation for Python ACS Tools
-
-pkgname = python-acstools-doc
-	pkgdesc = Documentation for Python ACS Tools
