@@ -1,0 +1,17 @@
+diff --git a/bubblewrap.c b/bubblewrap.c
+index 9039ddf..9204890 100644
+--- a/bubblewrap.c
++++ b/bubblewrap.c
+@@ -3228,6 +3228,12 @@ main (int    argc,
+           close (opt_userns_block_fd);
+         }
+ 
++      {
++        struct sigaction sa_ign = { .sa_handler = SIG_IGN };
++        sigaction(SIGINT, &sa_ign, NULL);
++        sigaction(SIGQUIT, &sa_ign, NULL);
++      }
++
+       /* Let child run now that the uid maps are set up */
+       val = 1;
+       res = TEMP_FAILURE_RETRY (write (child_wait_fd, &val, 8));

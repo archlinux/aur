@@ -1,0 +1,4 @@
+/bubblewrap
+*.pkg.tar.zst
+/src
+/pkg

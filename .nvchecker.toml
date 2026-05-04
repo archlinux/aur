@@ -1,0 +1,4 @@
+[bubblewrap]
+source = "git"
+git = "https://github.com/containers/bubblewrap.git"
+prefix = "v"
