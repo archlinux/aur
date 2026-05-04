@@ -37,12 +37,12 @@ depends=(
 makedepends=('appstream' 'cmake' 'extra-cmake-modules' 'git' 'intltool' 'ladspa' 'ninja')
 optdepends=(
   'breeze: KDE breeze style'
-  'calf: limiter, exciter, bass enhancer and others'
-  'lsp-plugins: equalizer, compressor, delay, loudness'
-  'zam-plugins: maximizer'
+  'calf: exciter, bass enhancer and others'
+  'lsp-plugins-lv2: limiter, equalizer, compressor, loudness and others'
+  'zam-plugins-lv2: maximizer'
   'mda.lv2: bass loudness'
   'x42-plugins-lv2: autotune'
-  'libdeep_filter_ladspa: noise remover'
+  'libdeep_filter_ladspa: deep noise remover'
 )
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
