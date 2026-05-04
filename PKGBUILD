@@ -1,6 +1,6 @@
 # Maintainer: stevenx65 <stevenxy35@gmail.com>
 pkgname=opal-player
-pkgver=1.0.1.r20.g67bba08 # 会自动生成，不用改
+pkgver=1.0.1.r21.gebbba14 # 会自动生成，不用改
 pkgrel=1
 pkgdesc="A modern, minimal, fully-featured TUI music player"
 arch=('x86_64')
