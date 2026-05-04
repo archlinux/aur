@@ -1,6 +1,6 @@
 pkgbase = python-rad
 	pkgdesc = Nancy Grace Roman Space Telescope shared attributes for processing and archive
-	pkgver = 0.30.0
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://rad.readthedocs.io
 	arch = any
@@ -16,12 +16,13 @@ pkgbase = python-rad
 	makedepends = python-sphinx-astropy
 	makedepends = python-sphinx-asdf
 	makedepends = python-sphinx_rtd_theme
-	source = https://files.pythonhosted.org/packages/source/r/rad/rad-0.30.0.tar.gz
-	md5sums = 7c7557844d58cee24a8e871549ea08b2
+	source = https://files.pythonhosted.org/packages/source/r/rad/rad-0.31.0.tar.gz
+	md5sums = 09b2a35516c0f051413c38db9fe91785
 
 pkgname = python-rad
 	depends = python>=3.11
 	depends = python-asdf-astropy>=0.8.0
+	depends = python-deepdiff>=8.1
 	optdepends = python-rad-doc: Documentation for RAD
 
 pkgname = python-rad-doc
