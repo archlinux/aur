@@ -1,8 +1,9 @@
 #!/bin/sh
 # Open WebUI desktop wrapper — uses system Electron with Wayland support
 # --ozone-platform-hint=auto: native Wayland when available, X11 fallback
-# --no-sandbox: required for system Electron (app sets this too, but CLI flag
-#   takes effect before GPU process spawn, preventing shared-memory FATAL)
+# --no-sandbox: the renderer sandbox blocks shared memory in /tmp on some
+#   systems, causing the webview to render blank. (As of v0.0.15 upstream
+#   also ships --disable-gpu which handles GPU-process crashes separately.)
 # --enable-features=GlobalShortcutsPortal: use D-Bus portal for global
 #   shortcuts on Wayland (works on KDE/Hyprland, no-op elsewhere)
 # --enable-features=WaylandTextInput: enables zwp_text_input_v3 protocol
