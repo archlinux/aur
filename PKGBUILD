@@ -1,6 +1,6 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-boomerang
-pkgver=0.6.3
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Token-efficient autonomous task execution extension for pi coding agent'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/nicobailon/pi-boomerang/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('9e89b07d820e3b0032a06080e18e7e10e81fbee2969a228f2403be2a9f726867')
+sha256sums=('595b6916a27589a3fa641d2e66ba9ed28282ffbeb98db44adeba1187d219c423')
 install=pi-ext.install
 
 package() {
