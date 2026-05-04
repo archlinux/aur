@@ -1,12 +1,14 @@
 pkgbase = mask-bin
 	pkgdesc = A CLI task runner defined by a simple markdown file
 	pkgver = 0.11.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jakedeichert/mask
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
+	provides = mask
+	conflicts = mask
 	source = https://github.com/jakedeichert/mask/releases/download/mask/0.11.7/mask-0.11.7-x86_64-unknown-linux-gnu.zip
 	source = https://github.com/jakedeichert/mask/releases/download/mask/0.11.7/mask-0.11.7-x86_64-unknown-linux-gnu.zip.sha256
 	sha256sums = f6e02669d5d68c474f17d47cf4e833df77b4298255c5b32bd3a87e91c04f53b9
