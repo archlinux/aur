@@ -1,15 +1,15 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libj2
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Double-max precision integers"
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url="https://codeberg.org/maandree/libj2"
 license=('custom:ISC')
 depends=()
 source=(libj2-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(c25ab4cd79d5483aaed32edf70ce7232e4e81790710003a396af6cb1ace1b912)
+sha256sums=(9e3c33991e5fd2cbd2a0a258ad2d7f2ebb09c228069b898768f0a2a9fad62b02)
 
 
 build() {
