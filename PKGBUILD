@@ -8,6 +8,7 @@ pkgdesc="A lightweight approach to removing Google web service dependency (with 
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
 license=('BSD')
+options=('!strip')
 depends=(
   'alsa-lib' 'brotli' 'dbus' 'desktop-file-utils' 'flac' 'fontconfig' 'freetype2' 'gtk3'
   'harfbuzz' 'hicolor-icon-theme' 'icu' 'libcups' 'libffi' 'libgcrypt' 'libjpeg-turbo' 'libpng'
