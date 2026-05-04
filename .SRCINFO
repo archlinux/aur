@@ -1,0 +1,12 @@
+pkgbase = muhtar-dil
+	pkgdesc = Türkçe sözdizimine sahip samimi bir programlama dili motoru.
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/muhtar-projesi/muhtar
+	arch = any
+	license = GPL
+	depends = python
+	source = muhtar_motoru.py
+	sha256sums = 8d898e5b712a16168b29cbbcf0b552edfab96596d0a57c91b551351f13880f7e
+
+pkgname = muhtar-dil
