@@ -4,7 +4,7 @@
 pkgname=virtiofsd-git
 _pkgname="${pkgname%-git}"
 pkgver=1.13.3.r15.g4786298
-pkgrel=1
+pkgrel=2
 pkgdesc="Vhost-user virtio-fs device backend written in Rust"
 arch=(x86_64)
 url="https://gitlab.com/virtio-fs/virtiofsd"
@@ -18,7 +18,7 @@ depends=(
   libcap-ng
   libseccomp
 )
-makedepends=(cargo)
+makedepends=(cargo git)
 provides=('virtiofsd')
 conflicts=('virtiofsd')
 source=("git+${url}.git")

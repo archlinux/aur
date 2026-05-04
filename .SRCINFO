@@ -1,12 +1,13 @@
 pkgbase = virtiofsd-git
 	pkgdesc = Vhost-user virtio-fs device backend written in Rust
 	pkgver = 1.13.3.r15.g4786298
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/virtio-fs/virtiofsd
 	arch = x86_64
 	license = Apache-2.0
 	license = BSD-3-Clause
 	makedepends = cargo
+	makedepends = git
 	depends = gcc-libs
 	depends = glibc
 	depends = libcap-ng
