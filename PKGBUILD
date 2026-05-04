@@ -2,7 +2,7 @@ pkgdesc="This package provides Moomoo desktop client"
 url='https://www.moomoo.com/'
 
 pkgname='moomoo'
-pkgver='15.44.14308'
+pkgver='16.13.15808'
 arch=('x86_64')
 pkgrel=1
 license=("HTML Tidy")
@@ -13,13 +13,14 @@ depends=(
 provides=(moomoo)
 options=(!debug !strip)
 source=("${pkgname}-${pkgver}.deb::https://softwaredownload.futustatic.com/moomoo_desktop_${pkgver}_amd64.deb")
-sha256sums=('ad8f3057781a7326c5ac8e8fca941aed3f45d215017b29fab8dafbd4600b764f')
+sha256sums=('37984f3948a9c4bb2ab15b3260ae1cf2c232017a35927e7b7dbad0d6655512aa')
 
 package() {
     # Extract data
     bsdtar -xf data.tar.xz -C "$pkgdir/"
     rm -rf "$pkgdir/usr/share/doc"
 
+    APP_NAME="MooMoo"
     APP_TYPE="moomoo"
     DESKTOP_NAME="$APP_NAME"
     INSTALL_DIR="/opt/$APP_TYPE"
@@ -30,8 +31,8 @@ Exec=$INSTALL_DIR/Launch
 Icon=$INSTALL_DIR/app.png
 Type=Application
 Categories=Finance;
-Comment=$APP_NAME $PRODUCT_EXTERNAL_VERSION
-Version=$PRODUCT_EXTERNAL_VERSION"
+Comment=$APP_NAME $pkgver
+Version=$pkgver"
 
     mkdir -p "${pkgdir}/usr/share/applications"
     USER_DESKTOP_FILE="${pkgdir}/usr/share/applications/$APP_TYPE.desktop"
