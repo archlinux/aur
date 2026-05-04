@@ -1,12 +1,12 @@
 # Maintainer: Oshgnacknak <osh@oshgnacknak.de>
 pkgname=vegalinux64
 pkgver=20260204
-pkgrel=1
+pkgrel=2
 pkgdesc="Chess tournament administration sorfware"
 arch=('x86_64')
 url="https://www.vegachess.com"
 license=('Custom')
-depends=('jre-openjdk'
+depends=('java-runtime'
          'libmariadbclient')
 makedepends=()
 source=('vegachess.desktop'

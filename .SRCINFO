@@ -1,11 +1,11 @@
 pkgbase = vegalinux64
 	pkgdesc = Chess tournament administration sorfware
 	pkgver = 20260204
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vegachess.com
 	arch = x86_64
 	license = Custom
-	depends = jre-openjdk
+	depends = java-runtime
 	depends = libmariadbclient
 	source = vegachess.desktop
 	source = vegateam.desktop
