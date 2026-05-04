@@ -1,5 +1,5 @@
 pkgname=qt-notes
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Qt 6 desktop sticky notes application with per-note encryption'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('qt6-base' 'libsodium' 'libsecret')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9115873fbb72e3c08d14b823af31da3bd54e4c421e9997f024cf2c21b1842dfa')
+sha256sums=('d59aafbb536c3a3ea427526d6a8edb9a28830cf7f9d6946d770209069e1a0c64')
 
 build() {
     cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \

@@ -1,6 +1,6 @@
 pkgbase = qt-notes
 	pkgdesc = Qt 6 desktop sticky notes application with per-note encryption
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/jswysnemc/qt-notes
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qt-notes
 	depends = qt6-base
 	depends = libsodium
 	depends = libsecret
-	source = qt-notes-0.1.1.tar.gz::https://github.com/jswysnemc/qt-notes/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 9115873fbb72e3c08d14b823af31da3bd54e4c421e9997f024cf2c21b1842dfa
+	source = qt-notes-0.1.2.tar.gz::https://github.com/jswysnemc/qt-notes/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = d59aafbb536c3a3ea427526d6a8edb9a28830cf7f9d6946d770209069e1a0c64
 
 pkgname = qt-notes
