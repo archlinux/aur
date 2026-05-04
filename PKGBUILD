@@ -1,19 +1,25 @@
 # Contributor: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=microsip
-pkgver=3.22.3
-pkgrel=2
-_wrapperver=1.3
+pkgver=3.22.5
+pkgrel=1
+#_wrapperver=1.3
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 arch=(x86_64)
 url=https://www.microsip.org
 license=(GPL-2.0-or-later)
 
 source=("MicroSIP-Lite-${pkgver}.zip"::"https://www.microsip.org/downloads/?file=MicroSIP-Lite-${pkgver}.zip"
-		"microsip-${_wrapperver}.tar.gz"::"https://codeberg.org/pf-graveyard/microsip/archive/v${_wrapperver}.tar.gz")
+				"microsip"
+				"microsip.desktop"
+				"microsip.png"
+				"microsip.reg")
 
-sha256sums=('ef49f608e03019f3ebc274c25228b286ff41b963202c1e8ec82570290884fa8f'
-            'a956fc39e86c01738fd9d1a9d51538c438fcbfbd3258caee68e03ec7cf78511b')
+sha256sums=('4015b1952b1e19ea161b75af0c6cb64a05545b08bc3bfe98729ad4eb1d574c0a'
+            '1281b272d173d9ade5f31915804fbb953f61425c0b303af6c097332fbb240a2c'
+            '3e505193aba33ca68d9ca0e64624ae0dfe415a6b7e1252b11aaf45d4628f72bf'
+            '4d33d040f772c4b1f1652b8af59342bdec600fd3de875e7ef6ee1a43fc3415cf'
+            'c97cde99004dbee5cb9b05a7b6bad117e5ec63cb1032fa56efdf07a4b27e3c1d')
 
 package() {
 	depends=(wine libpulse)
@@ -22,10 +28,11 @@ package() {
 	install -Dt "${pkgdir}"/usr/share/microsip -m0644 {hangup,msgin,msgout,ringing,ringing2,ringtone}.wav
 	install -Dt "${pkgdir}"/usr/lib/microsip -m0644 lame_enc.dll
 
-	install -Dt "${pkgdir}"/usr/lib/microsip -m0644 microsip.exe
+	install -Dt "${pkgdir}"/usr/lib/microsip -m0644 MicroSIP.exe
+	mv "${pkgdir}"/usr/lib/microsip/MicroSIP.exe  "${pkgdir}"/usr/lib/microsip/microsip.exe 
 
-	install -Dt "${pkgdir}"/usr/bin -m0755 microsip/microsip
-	install -Dt "${pkgdir}"/usr/share/microsip -m0644 microsip/microsip.reg
-	install -Dt "${pkgdir}"/usr/share/applications -m0644 microsip/microsip.desktop
-	install -Dt "${pkgdir}"/usr/share/icons/hicolor/256x256/apps -m0644 microsip/microsip.png
+	install -Dt "${pkgdir}"/usr/bin -m0755 microsip
+	install -Dt "${pkgdir}"/usr/share/microsip -m0644 microsip.reg
+	install -Dt "${pkgdir}"/usr/share/applications -m0644 microsip.desktop
+	install -Dt "${pkgdir}"/usr/share/icons/hicolor/256x256/apps -m0644 microsip.png
 }

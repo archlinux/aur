@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+__REV=4
+__APPNAME=$(basename $0)
+__WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wine/${__APPNAME}"
+__WINEARCH="wow64"
+__APPDIR="${__WINEPREFIX}/dosdevices/c:/${__APPNAME}"
+__INSTALLED="${__APPDIR}/.installed.${__REV}"
+__APPCFG="${XDG_CONFIG_HOME:-$HOME/.config}/${__APPNAME}"
+__APPLOG="${XDG_CACHE_HOME:-$HOME/.cache}/${__APPNAME}"
+__REGFILE="${__APPDIR}/${__APPNAME}.reg"
+__TMPREGFILE=$(mktemp)
+# must contain a single hex number
+__DPI_FILE="${__APPCFG}"/dpi.conf
+
+# force 32-bit prefix
+__QUIRK1="${__APPDIR}/.quirk.1"
+
+# force WoW64 prefix and setting DPI manually
+__QUIRK2="${__APPDIR}/.quirk.2"
+
+__symlink() {
+	ln -sf "$1" "${__APPDIR}/${1##*/}"
+}
+
+# https://aur.archlinux.org/packages/microsip#comment-1029787
+if [[ -d "${HOME}/.local/wine/${__APPNAME}" ]]; then
+	mkdir -p $(dirname "${__WINEPREFIX}")
+	mv "${HOME}/.local/wine/${__APPNAME}" "${__WINEPREFIX}"
+fi
+
+if [[ -d "${__WINEPREFIX}" ]] && ( [[ ! -f "${__QUIRK1}" ]] || [[ ! -f "${__QUIRK2}" ]] ) ; then
+	rm -rf "${__WINEPREFIX}"
+fi
+
+if [[ ! -f "${__INSTALLED}" ]]; then
+	mkdir -p "${__WINEPREFIX}"
+	WINEPREFIX="${__WINEPREFIX}" WINEARCH="${__WINEARCH}" wineboot -u
+
+	mkdir -p "${__APPDIR}"
+
+	if [[ -f "${__DPI_FILE}" ]]; then
+		__DPI=$(cat "${__DPI_FILE}")
+		cp "/usr/share/${__APPNAME}/${__APPNAME}.reg" "${__TMPREGFILE}"
+		sed -i "s/{DPI}/${__DPI}/g" "${__TMPREGFILE}"
+		iconv -f utf-8 -t utf-16le "${__TMPREGFILE}" >"${__REGFILE}"
+		rm -f "${__TMPREGFILE}"
+		WINEPREFIX="${__WINEPREFIX}" WINEARCH="${__WINEARCH}" regedit "${__REGFILE}"
+		rm -f "${__REGFILE}"
+	else
+		echo "A custom DPI value can be put into ${__DPI_FILE} as a hex number"
+	fi
+
+	__symlink "/usr/share/licenses/${__APPNAME}/License.txt"
+	__symlink "/usr/share/doc/${__APPNAME}/MicroSIP Website.url"
+	__symlink "/usr/share/${__APPNAME}/hangup.wav"
+	__symlink "/usr/share/${__APPNAME}/msgin.wav"
+	__symlink "/usr/share/${__APPNAME}/msgout.wav"
+	__symlink "/usr/share/${__APPNAME}/ringing.wav"
+	__symlink "/usr/share/${__APPNAME}/ringing2.wav"
+	__symlink "/usr/share/${__APPNAME}/ringtone.wav"
+	__symlink "/usr/lib/${__APPNAME}/microsip.exe"
+	__symlink "/usr/lib/${__APPNAME}/lame_enc.dll"
+
+	mkdir -p "${__APPCFG}"
+	touch "${__APPCFG}/Contacts.xml"
+	touch "${__APPCFG}/microsip.ini"
+	__symlink "${__APPCFG}/Contacts.xml"
+	__symlink "${__APPCFG}/microsip.ini"
+
+	mkdir -p "${__APPLOG}"
+	touch "${__APPLOG}/microsip_log.txt"
+	__symlink "${__APPLOG}/microsip_log.txt"
+
+	touch "${__INSTALLED}"
+fi
+
+if [[ ! -f "${__QUIRK1}" ]]; then
+	touch "${__QUIRK1}"
+fi
+
+if [[ ! -f "${__QUIRK2}" ]]; then
+	touch "${__QUIRK2}"
+fi
+
+WINEPREFIX="${__WINEPREFIX}" WINEARCH="${__WINEARCH}" wine "${__APPDIR}/microsip.exe" ${@}
+
