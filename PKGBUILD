@@ -3,10 +3,10 @@
 # Contributor: Pranav K Anupam <pranavanupam@yahoo.com>
 
 _pkgname=googledrive
-_pkgver=2.1.1
+_pkgver=2.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="An Interface to Google Drive"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -36,14 +36,13 @@ optdepends=(
   r-curl
   r-dplyr
   r-knitr
-  r-mockr
   r-rmarkdown
   r-spelling
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2741deb58d88bacd81489316df7cf9e2')
-b2sums=('39ec06e696788ae0c4a1a5a6fb39e71010b5f79b54237e9c75556a6bd012bd3575a5b64d3ce73b9689bd48038704d74bfc0abe66227844e20186fb5a41090e67')
+md5sums=('8aeb39196ae48307a903bba1e5d73fa5')
+b2sums=('620dc264b9c7b97ed2cf8059dfcdad09e011fa50aee7a39e0448c25c64028cabe9e4b940619089eb93c3e3518c6e616bbd39f800ba956318f3476422d4f89d89')
 
 build() {
   mkdir build
