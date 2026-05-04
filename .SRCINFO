@@ -4,13 +4,17 @@ pkgbase = gephi-git
 	pkgrel = 1
 	url = https://gephi.org/
 	arch = any
-	license = CDDL
-	license = GPL3
+	license = CDDL-1.0 AND GPL-3.0-only
 	makedepends = git
 	makedepends = maven
+	makedepends = gendesk
 	makedepends = jdk17-openjdk
 	depends = java-runtime=17
-	provides = gephi
+	depends = java-environment=17
+	depends = libxxf86vm
+	depends = libnet
+	depends = freetype2
+	provides = gephi=0.11.1
 	conflicts = gephi
 	options = !strip
 	source = gephi-git::git+https://github.com/gephi/gephi.git
