@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r70801.c23cbf3705b
+pkgver=r71059.f14577b96df
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -209,7 +209,7 @@ package_kodi-git() {
     'pipewire: PipeWire support'
     'upower: Display battery level'
   )
-  provides=("kodi-common=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  provides=("kodi-common=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm' 'kodi')
   conflicts=('kodi' 'kodi-gles' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
