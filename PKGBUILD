@@ -9,7 +9,7 @@
 _pkgname="forkgram"
 pkgname="$_pkgname"
 pkgver=6.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -97,6 +97,12 @@ prepare() {
   # force system minizip-ng
   rm -rf "$_pkgsrc/Telegram/ThirdParty/minizip"
   sed -E -e '/pkg_check_modules/s&\bminizip\b&minizip-ng&' -i "$_pkgsrc/cmake/external/minizip/CMakeLists.txt"
+
+  # add missing headers for gcc 16
+  sed -E -e '1i #include <cstdint>' -i \
+    "$_pkgsrc/Telegram/ThirdParty/tgcalls/tgcalls/DirectConnectionChannel.h" \
+    "$_pkgsrc/Telegram/ThirdParty/tgcalls/tgcalls/third-party/json11.cpp" \
+    "$_pkgsrc/Telegram/ThirdParty/tgcalls/tgcalls/v2/SignalingConnection.h"
 }
 
 build() {
