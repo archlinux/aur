@@ -73,11 +73,11 @@ md5sums=('SKIP')
 
 pkgver() {
   cd FreeCAD
-  read -d$'/n' -r major minor patch < <(grep -Po "set\(PACKAGE_VERSION_(MAJOR|MINOR|PATCH) \"\K[0-9]*" CMakeLists.txt) || true
+  read -d$'/n' -r major minor patch suffix < <(grep -Po "\"version_(major|minor|patch|suffix)\": (\"?)\K[^, \"]*(?=\2,?)" version.json) || true
   hash=$(git rev-parse --short HEAD)
   weekdate=$(git tag -l weekly\*|tail -1|cut -d- -f2) # remove dots: |tr -d .
   #printf "%d.%d.%d.%s" "$major" "$minor" "$patch" "$weekdate" # "$hash"
-  printf "%d.%d.%ddev.%s" $major $minor $patch $weekdate
+  printf "%d.%d.%d%s.%s" $major $minor $patch $suffix $weekdate
 }
 
 prepare() {
