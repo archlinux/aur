@@ -4,7 +4,7 @@
 
 pkgname=kiconthemes-git
 pkgver=6.27.0_r1013.g60d530a
-pkgrel=1
+pkgrel=2
 pkgdesc='Support for icon themes'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
@@ -14,6 +14,7 @@ makedepends=(git doxygen extra-cmake-modules-git qt6-tools)
 optdepends=('qt6-declarative: QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
