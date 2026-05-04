@@ -1,6 +1,6 @@
 pkgbase = mterminal-git
 	pkgdesc = Custom terminal emulator with grouped tabs and warm dark UI
-	pkgver = 0.1.0.r0.gHEAD
+	pkgver = 0.3.0.r0.gHEAD
 	pkgrel = 1
 	url = https://github.com/arthurr0/mTerminal
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = mterminal-git
 	depends = alsa-lib
 	provides = mterminal
 	conflicts = mterminal
+	conflicts = mterminal-bin
 	source = mterminal::git+https://github.com/arthurr0/mTerminal.git
 	sha256sums = SKIP
 

@@ -1,7 +1,7 @@
 # Maintainer: arthurr0 <koeckiartur@gmail.com>
 pkgname=mterminal-git
 _pkgname=mterminal
-pkgver=0.1.0.r0.gHEAD
+pkgver=0.3.0.r0.gHEAD
 pkgrel=1
 pkgdesc="Custom terminal emulator with grouped tabs and warm dark UI"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
   'base-devel'
 )
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "mterminal-bin")
 source=("$_pkgname::git+https://github.com/arthurr0/mTerminal.git")
 sha256sums=('SKIP')
 
@@ -49,9 +49,25 @@ build() {
 package() {
   cd "$_pkgname"
 
-  local appimage
-  appimage=$(find release -maxdepth 2 -type f -name '*.AppImage' | head -n1)
-  install -Dm755 "$appimage" "$pkgdir/usr/bin/$_pkgname"
+  local unpacked="release/linux-unpacked"
+  if [[ ! -d "$unpacked" ]]; then
+    echo "missing $unpacked — electron-builder did not produce unpacked dir" >&2
+    return 1
+  fi
+
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  cp -a "$unpacked"/. "$pkgdir/opt/$_pkgname/"
+
+  # Chromium sandbox helper requires SUID root.
+  chmod 4755 "$pkgdir/opt/$_pkgname/chrome-sandbox"
+
+  # Wrapper in PATH.
+  install -dm755 "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/$_pkgname" <<'EOF'
+#!/bin/sh
+exec /opt/mterminal/mterminal "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 "packaging/$_pkgname.desktop" \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
