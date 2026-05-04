@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidytree
-_pkgver=0.4.6
+_pkgver=0.4.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A Tidy Tool for Phylogenetic Tree Data Manipulation"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -27,14 +27,11 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
-  r-knitr
-  r-prettydoc
-  r-rmarkdown
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0b27b0d945a7fb845ca9d8d1d57a1d2b')
-b2sums=('c3de340b952341d25239d9bfa7de20276b435e32153e3b51c728d423097e9188991052d3e0e2253d53f41e3d770adfd8f00716033ac19fdda25e60ca4bd540f0')
+md5sums=('6930428f859016b631e6292e1b7984f9')
+b2sums=('512daacd2060e1bd792d96de444fa38dfd5b5ecd04e11c01d4b49fdd5796833f4f46bd72e4c8523e8a8626328b3f82605d9fc67e6b25bb3d9ea20123eced34c6')
 
 build() {
   mkdir build
