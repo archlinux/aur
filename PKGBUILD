@@ -1,7 +1,7 @@
 # Maintainer: myuki <mioki dot cinnamon650 at 8shield dot net>
 
 pkgname=ttf-lxgw-neo-xihei-code
-pkgver=1.242
+pkgver=1.300
 pkgrel=1
 pkgdesc='A monospaced CJK font merged from LXGW NeoXiHei and legacy M+ for programming use.'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/lxgw/NeoXiHei-Code'
 license=('IPA')
 source=("$pkgname-$pkgver.ttf::$url/raw/v$pkgver/NeoXiHeiCode-Regular.ttf"
         "IPA_Font_License_Agreement_v1.0-$pkgver.txt::$url/raw/v$pkgver/IPA_Font_License_Agreement_v1.0.txt")
-sha256sums=('a5d054290907f1a86e124704ad8d4aacd7c2f1d719a98c057d7ec2785b9db6e9'
+sha256sums=('0da5cc589908070d390cd5978ae6f04e57eadbec6bd3c1c5a48b67cd59060b16'
             'daf91386d6f9a6a78e4e736c0c00375cae30214ac5c1dab2479f0a05fcb63edd')
 
 package() {
