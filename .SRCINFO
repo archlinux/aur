@@ -1,16 +1,17 @@
 pkgbase = starkli
 	pkgdesc = A blazing fast CLI tool for Starknet powered by starknet-rs
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://book.starkli.rs
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0 OR MIT
 	makedepends = cargo
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = libusb
-	source = starkli-0.4.1.tar.gz::https://github.com/xJonathanLEI/starkli/archive/refs/tags/v0.4.1.tar.gz
-	b2sums = 3764bbe2b41101097f5f9bc6e54c5200a9fa2a9f0fc64e46a6f3bedaa8bc506158708903e0d732946ede983b3a2c123bb9034365701fc15e40f01424b6cf68ea
+	options = !lto
+	source = https://github.com/xJonathanLEI/starkli/archive/refs/tags/v0.4.2/starkli-0.4.2.tar.gz
+	b2sums = bbb6afc811270ef4e785db0641259cea5b9023d43e1c31d5824324caee264310f9d8a3b687ff3f7596781251b6d65d543082cfe770b77986d32f7d0337c004ed
 
 pkgname = starkli
