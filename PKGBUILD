@@ -17,7 +17,7 @@ package() {
   cp -r "${srcdir}/Batch Beatmap Downloader-linux-x64/"* "${pkgdir}/opt/batch-beatmap-downloader/"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/batch-beatmap-downloader" "${pkgdir}/usr/bin/batch-beatmap-downloader"
+  ln -s "/opt/batch-beatmap-downloader/batch-beatmap-downloader" "${pkgdir}/usr/bin/batch-beatmap-downloader"
 
   install -dm755 "${pkgdir}/usr/share/applications"
   cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
