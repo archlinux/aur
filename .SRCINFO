@@ -1,0 +1,14 @@
+pkgbase = internetometer-cli
+	pkgdesc = Unofficial CLI for Yandex Internetometer (speed test)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Master290/internetometer-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = internetometer-cli-0.1.0.tar.gz::https://github.com/Master290/internetometer-cli/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 2f7888956d8a74a7178dd5b24656c2175e417e152dc31f7264168beb1d981433
+
+pkgname = internetometer-cli
