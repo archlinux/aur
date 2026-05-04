@@ -1,0 +1,4 @@
+pkg/
+src/
+normalize-*.pkg.tar.zst
+normalize-*.tar.bz2

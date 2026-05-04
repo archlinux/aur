@@ -4,7 +4,7 @@
 
 pkgname=normalize
 pkgver=0.7.7
-pkgrel=7
+pkgrel=8
 pkgdesc="A tool for adjusting the volume of WAV files to a standard level"
 arch=('x86_64')
 url="http://normalize.nongnu.org"
@@ -27,7 +27,7 @@ prepare() {
   touch AUTHORS NEWS ChangeLog
   #libtoolize --force --copy
   #aclocal -I m4
-  autoreconf -vi
+  autoreconf -fiv
   #automake --add-missing
 }
 
@@ -38,7 +38,8 @@ build() {
               --mandir=/usr/share/man \
               --with-audiofile \
               --with-mad
-  make
+  
+  make CFLAGS="${CFLAGS} -std=gnu89 -Wno-implicit-function-declaration -Wno-builtin-declaration-mismatch"
 }
 
 package() {
