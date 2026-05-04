@@ -1,6 +1,6 @@
 pkgbase = gz-math8
 	pkgdesc = General purpose math library for robot applications.
-	pkgver = 8.2.0
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-math
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gz-math8
 	depends = gz-utils=3
 	provides = gz-math=8
 	conflicts = gz-math
-	source = https://github.com/gazebosim/gz-math/archive/gz-math8_8.2.0.tar.gz
-	sha256sums = 6a6e9af99378b4ab81392bd8ad58be1c611f917c669c981b39cf20fc03d412f4
+	source = https://github.com/gazebosim/gz-math/archive/gz-math8_8.3.0.tar.gz
+	sha256sums = 011012d3c5108b07584744b82a1c6e81c152fd64b4b585bc98cd95101d36f8a8
 
 pkgname = gz-math8
