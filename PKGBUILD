@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=args
-pkgver=6.4.13
+pkgver=6.4.15
 pkgrel=1
 pkgdesc="Simple header-only C++ argument parser library"
 arch=(any)
@@ -9,23 +9,21 @@ url="https://github.com/Taywee/args"
 license=(MIT)
 makedepends=(cmake)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Taywee/args/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('96a41db97ae6ee3e065b26ad3b1bd4c63a20d57121004c560a4f008ebcb0884f')
+sha256sums=('02652a69953cd91d8c8accef88e8bdf54e909850d1a6f6f47924d0cc6fe974f7')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  cmake . \
+  cmake -B build -S "args-${pkgver}" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+
+  cmake --build build
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
-  ./argstest
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
-  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -D "${pkgname}-${pkgver}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
