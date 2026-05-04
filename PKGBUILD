@@ -22,11 +22,12 @@ package() {
     install -Dm755 src/dolphin-shortcut-dialog.py \
         "$pkgdir/usr/local/share/create-shortcut/dolphin-shortcut-dialog.py"
 
+    install -dm755 "$pkgdir/usr/share/kio/servicemenus"
     sed "s|PREFIX|/usr/local|g" src/create-shortcut.desktop \
         > "$pkgdir/usr/share/kio/servicemenus/create-shortcut.desktop"
-    chmod 755 "$pkgdir/usr/share/kio/servicemenus/create-shortcut.desktop"
+    chmod 644 "$pkgdir/usr/share/kio/servicemenus/create-shortcut.desktop"
 
     sed "s|PREFIX|/usr/local|g" src/edit-shortcut.desktop \
         > "$pkgdir/usr/share/kio/servicemenus/edit-shortcut.desktop"
-    chmod 755 "$pkgdir/usr/share/kio/servicemenus/edit-shortcut.desktop"
+    chmod 644 "$pkgdir/usr/share/kio/servicemenus/edit-shortcut.desktop"
 }
