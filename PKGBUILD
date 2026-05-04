@@ -3,8 +3,8 @@
 
 pkgname=sillytavern
 _pkgname=SillyTavern
-pkgver=1.17.0
-pkgrel=3
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Locally installed user interface for LLMs, image generation, and TTS voice models"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SillyTavern/$_pkgname"
@@ -15,7 +15,7 @@ conflicts=('sillytavern-git')
 options=('!strip' '!debug')
 backup=('usr/share/sillytavern/config.yaml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('e7168da6703eb5739a83dd466b11e4ae5687b01e0007d06d729f48de4fe24a4f5544fc17927e42fdc4ef3e963f91c75b50c6367387ec9c4b8f0c510fc1653387')
+b2sums=('f73d7b37fe91aba709e7f8ed69b3d09beb89e2503f4e7b55b68b120c36587b21a7fc7890260c30f3e0460db05aa6291d06229dd33acbe804451231c9e684a554')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
