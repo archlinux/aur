@@ -32,6 +32,8 @@ package() {
         install -Dm644 bros-logo.png "$pkgdir/usr/share/broslauncher/bros-logo.png"
     fi
     
+    mkdir -p "$pkgdir/usr/bin"
+    
     cat > "$pkgdir/usr/bin/broslauncher" << 'EOF'
 #!/bin/bash
 cd /usr/share/broslauncher
