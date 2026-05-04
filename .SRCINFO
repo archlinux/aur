@@ -1,6 +1,6 @@
 pkgbase = encrpter
 	pkgdesc = Saydut Encrypter - XChaCha20-Poly1305 + Argon2id ile dosya/klasor sifreleme (.saydut)
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/saydut/encrypter
 	arch = any

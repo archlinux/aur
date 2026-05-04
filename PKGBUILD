@@ -1,5 +1,5 @@
 pkgname=encrpter
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Saydut Encrypter - XChaCha20-Poly1305 + Argon2id ile dosya/klasor sifreleme (.saydut)"
 arch=('any')
