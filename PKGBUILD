@@ -48,6 +48,9 @@ package() {
   chown root "$pkgdir/usr/lib/chromium/chrome-sandbox"
   chmod 4755 "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
+  echo "Fixing license directory name..."
+  mv "$pkgdir/usr/share/licenses/chromium" "$pkgdir/usr/share/licenses/$pkgname"
+
   echo "Injecting WidevineCdm..."
   mkdir -p "$pkgdir/usr/lib/chromium/"
   cp -r "$srcdir/chrome_extract/opt/google/chrome/WidevineCdm" "$pkgdir/usr/lib/chromium/"
