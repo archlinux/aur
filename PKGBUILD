@@ -6,8 +6,8 @@ arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
 license=(MIT)
 depends=(libgcc libstdc++ glibc qt6-base qt6-declarative)
-makedepends=(cmake vulkan-headers libglvnd)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
+makedepends=(cmake vulkan-headers vulkan-icd-loader libglvnd)
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
         "0001-install-kde-wallpaper-to-correct-path.diff")
 sha256sums=('fed010472d38c477d466a2138742ede90ebcc0ed57adb53e2a9e5cea55212ad2'
             '6485388b5c171f732a7add7f1453c05813a3436573610a93b59738973fa0ec30')

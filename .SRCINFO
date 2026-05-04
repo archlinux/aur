@@ -6,6 +6,7 @@ pkgbase = waywallen-display
 	license = MIT
 	makedepends = cmake
 	makedepends = vulkan-headers
+	makedepends = vulkan-icd-loader
 	makedepends = libglvnd
 	depends = libgcc
 	depends = libstdc++
