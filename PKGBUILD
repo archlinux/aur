@@ -5,7 +5,7 @@ pkgdesc="Saydut Encrypter - XChaCha20-Poly1305 + Argon2id ile dosya/klasor sifre
 arch=('any')
 url="https://github.com/saydut/encrypter"
 license=('GPL3')
-depends=('python' 'python-pynacl' 'python-customtkinter' 'python-requests' 'python-typer')
+depends=('python' 'tk' 'python-pynacl' 'python-customtkinter' 'python-requests' 'python-typer')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 source=("git+https://github.com/saydut/encrypter.git#branch=master")
 md5sums=('SKIP')

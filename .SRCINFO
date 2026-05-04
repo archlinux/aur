@@ -11,6 +11,7 @@ pkgbase = encrpter
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
+	depends = tk
 	depends = python-pynacl
 	depends = python-customtkinter
 	depends = python-requests
