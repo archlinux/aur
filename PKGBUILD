@@ -1,6 +1,6 @@
 # Maintainer: ericdahl-dev
 pkgname=omarchy-wled
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Sync Omarchy theme accent or wallpaper color to a WLED device"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('88d2c2163d00b32d7bc540bf8a26ad314dfb2abeebb4bf3788a4dc138f5a62e9')
+sha256sums=('0dcce31de5866c26e705f662fa9c0f841a38b9bf797cf1be3a9afc67fe5cb02b')
 
 build() {
     cd "$pkgname-$pkgver"
