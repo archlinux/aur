@@ -1,4 +1,5 @@
 [speedtest-go-bin]
-source = "git"
-git = "https://github.com/showwin/speedtest-go.git"
+source = "github"
+github = "showwin/speedtest-go"
+use_latest_release = true
 prefix = "v"
