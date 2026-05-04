@@ -1,7 +1,7 @@
 pkgbase = nbis
 	pkgdesc = NIST Biometric Image Software
 	pkgver = 5.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.nist.gov/services-resources/software/nist-biometric-image-software-nbis
 	arch = x86_64
 	license = custom
