@@ -3,10 +3,9 @@ pkgbase = moon-lander
 	pkgver = 1.0
 	pkgrel = 8
 	url = https://packages.debian.org/source/sid/moon-lander
-	arch = i686
 	arch = x86_64
-	arch = aarch64
 	license = BSD-2-Clause
+	depends = glibc
 	depends = sdl
 	depends = sdl_mixer>=1.2.10
 	depends = sdl_image
