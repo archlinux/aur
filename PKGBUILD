@@ -1,22 +1,22 @@
 # Maintainer: Uyanide <me@uyani.de>
 pkgname=oavif-git
 pkgver=0.1.3.r18.gd1fc680
-pkgrel=4
+pkgrel=5
 pkgdesc='Target quality AVIF encoding (git)'
 arch=('x86_64')
 url='https://github.com/gianni-rosato/oavif'
 license=('Apache-2.0')
 depends=(
-	'glibc'
-	'libavif'
-	'libwebp'
-	'libjpeg-turbo'
-	'libspng'
-	'libheif'
+    'glibc'
+    'libavif'
+    'libwebp'
+    'libjpeg-turbo'
+    'libspng'
+    'libheif'
 )
 makedepends=(
-	'git'
-	'zig'
+    'git'
+    'zig'
 )
 provides=('oavif')
 conflicts=('oavif')
@@ -31,21 +31,21 @@ pkgver() {
 }
 
 prepare() {
-	cd "${pkgname%-git}"
-	sed -i 's/\.preferred_link_mode = \.static/.preferred_link_mode = .dynamic/g' build.zig
-	sed -i 's|b\.installArtifact(bin);|bin.pie = true;\n    b.installArtifact(bin);|' build.zig
-	export ZIG_GLOBAL_CACHE_DIR="${srcdir}/.zig-cache"
-	zig build --fetch
+    cd "${pkgname%-git}"
+    sed -i 's/\.preferred_link_mode = \.static/.preferred_link_mode = .dynamic/g' build.zig
+    sed -i 's|b\.installArtifact(bin);|bin.pie = true;\n    b.installArtifact(bin);|' build.zig
+    export ZIG_GLOBAL_CACHE_DIR="${srcdir}/.zig-cache"
+    zig build --fetch
 }
 
 build() {
-	cd "${pkgname%-git}"
-	export ZIG_GLOBAL_CACHE_DIR="${srcdir}/.zig-cache"
-	zig build --release=fast --prefix "$srcdir/dist"
+    cd "${pkgname%-git}"
+    export ZIG_GLOBAL_CACHE_DIR="${srcdir}/.zig-cache"
+    zig build --release=fast --prefix "${srcdir}/dist"
 }
 
 package() {
-	cd "${pkgname%-git}"
-	install -Dm755 "$srcdir/dist/bin/${pkgname%-git}" -t "$pkgdir/usr/bin"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+    cd "${pkgname%-git}"
+    install -Dm755 "$srcdir/dist/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
