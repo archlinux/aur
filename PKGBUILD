@@ -1,7 +1,7 @@
 # Maintainer: dcordonu <dcordonu@gmail.com>
 pkgname=spotify-dl-bin
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line utility to download songs and playlists directly from Spotify"
 arch=('x86_64')
 url="https://github.com/dcordonu/spotify-dl"
