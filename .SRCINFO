@@ -1,18 +1,18 @@
 pkgbase = ttf-lxgw-neo-zhisong
 	pkgdesc = 霞鹜新致宋。一款衍生于「IPAmj明朝」的中文宋体字型。A Chinese serif font derived from IPAmj Mincho.
-	pkgver = 1.062
+	pkgver = 1.063
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwNeoZhiSong
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-neo-zhisong
-	source = ttf-lxgw-neo-zhisong-1.062-1.ttf::https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v1.062/LXGWNeoZhiSong.ttf
-	source = ttf-lxgw-neo-zhisong-plus-1.062-1.ttf::https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v1.062/LXGWNeoZhiSongPlus.ttf
+	source = ttf-lxgw-neo-zhisong-1.063-1.ttf::https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v1.063/LXGWNeoZhiSong.ttf
+	source = ttf-lxgw-neo-zhisong-plus-1.063-1.ttf::https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v1.063/LXGWNeoZhiSongPlus.ttf
 	source = LICENSE_CHS.md
 	source = LICENSE.md
-	sha256sums = 61af186b0e9c83bf7514bc91f32681bdf1ff7111696a0534def90f8664c05504
-	sha256sums = 28e8fab02c3097c5549374c30089461a07d5290805c08d32ca4c62d18e0fb0d5
+	sha256sums = bfd54d7899976bd6f8dede885ed69e4ce89a5b6d95221d0451cf3ab8a84ce97b
+	sha256sums = eedf175adec92404db8b542af0fb0e81b52ee9109f0660d940c68f75dbaf7bda
 	sha256sums = bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1
 	sha256sums = 1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf
 
