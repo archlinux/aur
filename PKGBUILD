@@ -9,7 +9,7 @@ pkgdesc="A key remapping tool for Linux using evdev and uinput"
 arch=(
     'any'
 )
-url="https://github.com/nyrda/keymasq"
+url="https://keymasq.tools"
 license=(
     'MIT'
 )

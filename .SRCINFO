@@ -2,7 +2,7 @@ pkgbase = keymasq
 	pkgdesc = A key remapping tool for Linux using evdev and uinput
 	pkgver = 0.13.2
 	pkgrel = 1
-	url = https://github.com/nyrda/keymasq
+	url = https://keymasq.tools
 	arch = any
 	license = MIT
 	makedepends = python-setuptools>=61.0
