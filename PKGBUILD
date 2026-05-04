@@ -2,7 +2,7 @@
 
 pkgname=deepseek-responses-proxy-git
 _pkgname=deepseek-responses-proxy
-pkgver=0.1.0.r14.gddf9c15
+pkgver=0.1.0.r16.gb328277
 pkgrel=1
 pkgdesc="Local Responses API shim for Codex custom providers backed by Chat Completions upstreams"
 arch=("any")
@@ -12,6 +12,7 @@ depends=("python")
 makedepends=("git" "python-installer" "uv")
 provides=("deepseek-responses-proxy")
 conflicts=("deepseek-responses-proxy")
+install="${_pkgname}.install"
 source=("git+${url}.git")
 sha256sums=("SKIP")
 

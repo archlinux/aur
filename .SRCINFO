@@ -1,8 +1,9 @@
 pkgbase = deepseek-responses-proxy-git
 	pkgdesc = Local Responses API shim for Codex custom providers backed by Chat Completions upstreams
-	pkgver = 0.1.0.r14.gddf9c15
+	pkgver = 0.1.0.r16.gb328277
 	pkgrel = 1
 	url = https://github.com/holo-q/deepseek-responses-proxy
+	install = deepseek-responses-proxy.install
 	arch = any
 	license = LicenseRef-All-Rights-Reserved
 	makedepends = git
