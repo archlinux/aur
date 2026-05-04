@@ -1,6 +1,6 @@
 pkgname=r2repo
-_build_fragment="tag=v0.1.7"
-pkgver=0.1.7
+_build_fragment="tag=v0.1.8"
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="take package files from vcs releases and turn them into a repo that pacman can use"
 arch=('x86_64')
@@ -12,21 +12,18 @@ python
 )
 makedepends=(
 git
-python-build
-python-installer
-python-wheel
+python-{build,installer,wheel}
 python-hatchling
 python-hatch-vcs
-python-hatch
 )
 source=(
 git+https://github.com/greyltc/releases2repo.git#${_build_fragment}
 )
-b2sums=('d8368d2017034a1ecb38a042aa2a7a30c997b88376d8d3bc8b663f0836dcc0bf66eb859d12881d8660ba57b0e9f7ea9f1178362ee5902658be76f469489c5ee6')
+b2sums=('f4e9e0bf7523102dbe933f49e09cefda9e5d9498c41753d35477e2755e40f63860496c9de1f4559cadd5d0154f60862df51e674437a4b096395864c861cf54b3')
 
 pkgver() {
   cd releases2repo
-  hatch version
+  hatchling version
 }
 
 build() {
