@@ -31,7 +31,7 @@ if [ "${_use_discordrpc}" = "y" ]; then
   depends+=('discord-rpc-git')
 fi
 
-options=(!buildflags)
+options=(!buildflags !strip)
 provides=("${_name}")
 conflicts=("${_name}")
 source=("git+https://github.com/Indev450/SRB2Kart-Saturn.git"
