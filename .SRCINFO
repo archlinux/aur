@@ -1,11 +1,11 @@
 pkgbase = python-roman-datamodels
 	pkgdesc = Datamodel support for the roman calibration pipeline
-	pkgver = 0.30.0
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://roman-datamodels.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = python-pytest
+	checkdepends = python-pytest-doctestplus
 	checkdepends = python-gwcs
 	checkdepends = python-pyarrow
 	checkdepends = python-pandas
@@ -19,15 +19,15 @@ pkgbase = python-roman-datamodels
 	makedepends = python-pytest-doctestplus
 	makedepends = python-rad
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/r/roman_datamodels/roman_datamodels-0.30.0.tar.gz
-	md5sums = 0bfabfc7f5cb45a97dd89ad634775e48
+	source = https://files.pythonhosted.org/packages/source/r/roman_datamodels/roman_datamodels-0.31.0.tar.gz
+	md5sums = 6b019a79732342dd9daf6e7e12b8ab5d
 
 pkgname = python-roman-datamodels
 	depends = python>=3.11
 	depends = python-asdf-astropy>=0.8.0
-	depends = python-gwcs>=0.19.0
+	depends = python-gwcs>=0.20.0
 	depends = python-lz4>=4.3.0
-	depends = python-rad>=0.30.0
+	depends = python-rad>=0.31.0
 	depends = python-pyarrow>=10.0.1
 	optdepends = python-roman-datamodels-doc: Documentation for Roman Datamodels
 
