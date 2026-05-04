@@ -1,5 +1,5 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
-# Maintainer: DeepChirp <DeepChirp#outlook.com>
+# Contributor: DeepChirp <deepchirp@archlinuxcn.org>
 
 _pkgbase=rime-ice
 pkgbase=rime-ice-git
@@ -15,7 +15,7 @@ pkgname=(
   ${_pkgbase}-double-pinyin-jiajia-git
 )
 
-pkgver=r845.0d85dd5
+pkgver=r928.b4f7804
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
