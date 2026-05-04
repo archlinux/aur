@@ -81,6 +81,11 @@ package() {
 
     install -Dm644 contrib/systemd/awob.service \
         "${pkgdir}/usr/lib/systemd/user/awob.service"
+    # The shipped unit defaults to %h/.cargo/bin/awob-daemon for users
+    # who `cargo install`. The Arch package installs to /usr/bin, so
+    # rewrite the path here.
+    sed -i 's|^ExecStart=%h/.cargo/bin/awob-daemon$|ExecStart=/usr/bin/awob-daemon|' \
+        "${pkgdir}/usr/lib/systemd/user/awob.service"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
