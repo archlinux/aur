@@ -2,7 +2,7 @@
 pkgname=plasma-shortcut
 pkgver=1.0
 pkgrel=1
-pkgdesc="Minimalistic Plasma GUI Dolphin service menu for creating/editing .desktop shortcuts. Any file/folder, .exe with Wine/Proton, auto-extracts icons. Built into standard Plasma context menu / Минималистичное Plasma GUI сервисное меню для создания/редактирования .desktop ярлыков. Любые файлы, .exe через Wine/Proton, авто-извлечение иконок. Встроено в стандартное контекстное меню Plasma"
+pkgdesc="Plasma GUI service menu for creating/editing .desktop shortcuts. Supports any file, .exe with Wine/Proton, auto-extracts icons / Plasma GUI сервисное меню для создания .desktop ярлыков. Любые файлы, .exe через Wine/Proton, авто-извлечение иконок"
 arch=('any')
 url="https://github.com/Matvel007/Plasma-Shortcut"
 license=('GPL2')
