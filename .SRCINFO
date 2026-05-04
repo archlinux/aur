@@ -1,13 +1,13 @@
 pkgbase = broslauncher
 	pkgdesc = Bros Launcher - Virtual Machine for Bros OS Testing
-	pkgver = 1.0.8
-	pkgrel = 2
+	pkgver = 1.0.9
+	pkgrel = 1
 	url = https://github.com/berkeoruc/bros
 	arch = x86_64
 	license = PROPRIETARY
 	depends = python3
 	depends = tk
-	source = broslauncher-1.0.8.tar.gz
+	source = broslauncher-1.0.9.tar.gz
 	sha256sums = SKIP
 
 pkgname = broslauncher

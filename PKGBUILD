@@ -1,14 +1,14 @@
 # Maintainer: Berke Oruc <berke3oruc@gmail.com>
 
 pkgname="broslauncher"
-pkgver="1.0.8"
-pkgrel="2"
+pkgver="1.0.9"
+pkgrel="1"
 pkgdesc="Bros Launcher - Virtual Machine for Bros OS Testing"
 arch=("x86_64")
 url="https://github.com/berkeoruc/bros"
 license=("PROPRIETARY")
 depends=("python3" "tk")
-source=("broslauncher-1.0.8.tar.gz")
+source=("broslauncher-1.0.9.tar.gz")
 sha256sums=("SKIP")
 
 package() {
