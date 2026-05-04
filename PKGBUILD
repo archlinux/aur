@@ -17,5 +17,5 @@ build() {
 package() {
   cd "$pkgname"
   install -Dm755 "zig-out/bin/wfetch" "$pkgdir/usr/bin/wfetch"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/license/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
