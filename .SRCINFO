@@ -45,6 +45,7 @@ pkgbase = ungoogled-chromium-widevine-bin
 	conflicts = chromium
 	conflicts = chromedriver
 	noextract = google-chrome-stable_147.0.7727.137-1_amd64.deb
+	options = !strip
 	source = ungoogled-chromium-147.0.7727.137-1-x86_64.pkg.tar.zst::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/147.0.7727.137-1/ungoogled-chromium-147.0.7727.137-1-x86_64.pkg.tar.zst
 	source = google-chrome-stable_147.0.7727.137-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_147.0.7727.137-1_amd64.deb
 	sha256sums = f3b0af264ec4f93a3bd1c64243b343239ef8fd576907244a7b4d245d3013f1dd
