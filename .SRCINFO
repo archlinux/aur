@@ -1,6 +1,6 @@
 pkgbase = awob-listener-backlight-bin
 	pkgdesc = awob listener — display backlight → OSD.
-	pkgver = 0.0.2
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/jmylchreest/awob
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = awob-listener-backlight-bin
 	provides = awob-listener-backlight
 	conflicts = awob-listener-backlight
 	conflicts = awob-git
-	source = awob-0.0.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.0.2/awob-0.0.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = bbfb40d27b36496546b36d4bc4bfcc2450c11f7b61223c39a1c59848eebe9608
+	source = awob-0.1.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.1/awob-0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 6742b61b6279fd7fc37b6be3c5fdb717fe4221eb7eba0a2c3f55945a3e173a10
 
 pkgname = awob-listener-backlight-bin
