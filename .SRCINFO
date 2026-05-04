@@ -1,0 +1,21 @@
+pkgbase = glimpse-desktop-bin
+	pkgdesc = Wayland shell, status panel, and wallpaper daemon for the Glimpse ecosystem
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alex-oleshkevich/glimpse
+	arch = x86_64
+	license = custom:unknown
+	depends = gtk4
+	depends = libadwaita
+	depends = gtk4-layer-shell
+	depends = libheif
+	provides = glimpse-panel
+	provides = glimpse-shell
+	provides = glimpse-wallpaper
+	conflicts = glimpse-panel
+	conflicts = glimpse-shell
+	conflicts = glimpse-wallpaper
+	source_x86_64 = glimpse-0.1.0-x86_64.tar.zst::https://github.com/alex-oleshkevich/glimpse/releases/download/v0.1.0/glimpse-0.1.0-x86_64.tar.zst
+	b2sums_x86_64 = 1b9c6c5ff02705ef863c3309d313d13b34122c17e581a2abbf47a047d26a45acb6f58304105345f3c8e4b8f08dbfae2faa3fd5b2e22c1c958a65d099c5982661
+
+pkgname = glimpse-desktop-bin
