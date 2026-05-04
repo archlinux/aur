@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libsha1
-pkgver=1.1.5
+pkgver=1.1.5.1
 pkgrel=1
 pkgdesc="SHA-1 and SHA-0 hashing library"
 arch=(i686 x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=()
 source=(libsha1-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(79d37140ca3da46830947bd2569fa3e21aeb90a6df3d7418f0138b5658d3b2dd)
+sha256sums=(8ad304dade348ca223602ba32f8d6df3ba1efc657ce7a936e948969cfb8b6450)
 
 _config=config-portable.mk
 if test "$(uname -m)" = x86_64; then
