@@ -26,7 +26,7 @@ optdepends=(
 )
 _commit='1b4ac95d62185e8cba7ec263c7434c5980638e13'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
-sha256sums=('f4f02c6da2c8f381e03508cdf0cbb00c093e4eb27d813b761fc1761a5c48cff8')
+sha256sums=('7694c0d25d0446faec39416564a31391f5b5938bd6b9e7b54a02a770415226bc')
 
 build() {
   arch-meson "screenshot-${_commit}" build
