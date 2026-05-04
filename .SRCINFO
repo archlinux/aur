@@ -1,12 +1,12 @@
 pkgbase = muhtar-dil
-	pkgdesc = Türkçe sözdizimine sahip samimi bir programlama dili motoru (Liste Desteği Eklendi).
-	pkgver = 1.8
+	pkgdesc = Hata düzeltmeleri eklendi.
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/KaliciArkadas/muhtar-dil
 	arch = any
 	license = GPL
 	depends = python
 	source = muhtar_motoru.py
-	sha256sums = 140ca716d050a3034f8a304671e313ac680c9267fbd213d628bee889ff200cdd
+	sha256sums = 0681a78211be759ccc7d0b08b5764a6db7a718b9da01bff955e5ff6b29dcc8e5
 
 pkgname = muhtar-dil

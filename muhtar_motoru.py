@@ -20,67 +20,48 @@ def muhtar_sistemini_calistir(dosya_yolu):
         yardim_menusu()
         return
     if dosya_yolu == "--versiyon":
-        print("Muhtar Dili V1.8 - Açık Kaynak Çekirdek (Anonim)")
+        print("Muhtar Dili V1.8.1 - Açık Kaynak Çekirdek (Anonim)")
         return
 
     try:
         with open(dosya_yolu, 'r', encoding='utf-8') as f:
             turkce_kod = f.read()
 
-        sozluk = {
-            r'\bdizla\b': 'import',
-            r'\byaz\b': 'print',
-            r'\bsor\b': 'input',
-            r'\beger\b': 'if',
-            r'\begerdegil\b': 'elif',
-            r'\bdegilse\b': 'else',
-            r'\bgorev\b': 'def',
-            r'\bdondur\b': 'return',
-            r'\bdongu\b': 'while',
-            r'\bicin\b': 'for',
-            r'\bicinde\b': 'in',
-            r'\baralik\b': 'range',
-            r'\bdogru\b': 'True',
-            r'\byanlis\b': 'False',
-            r'\bve\b': 'and',
-            r'\bveya\b': 'or',
-            r'\btam_sayi\b': 'int',
-            r'\byazi\b': 'str',
-            r'\buyu\b': 'time.sleep',
-            r'\bdene\b': 'try',
-            r'\bdenebozuldu\b': 'except',
-            r'\bondalik\b': 'float',
-            r'\btamsayi\b': 'int',
-            r'\bmetin\b': 'str',
-            r'\bkirmizi\b': '"\\033[91m"',
-            r'\byesil\b': '"\\033[92m"',
-            r'\bsari\b': '"\\033[93m"',
-            r'\bmavi\b': '"\\033[94m"',
-            r'\brenk_bitir\b': '"\\033[0m"',
-            r'\.buyult\(\)': '.upper()',
-            r'\.kucult\(\)': '.lower()',
-            r'\bliste\b': 'list',
-            r'\bekle\b': 'append',
-            r'\bcikar\b': 'remove',
-            r'\bsirala\b': 'sort',
-            r'\bters_cevir\b': 'reverse',
-            r'\buzunluk\b': 'len',
+        # Sözlük: Artık Regex değil, düz kelime eşleşmesi kullanacağız
+        temiz_sozluk = {
+            'dizla': 'import', 'yaz': 'print', 'sor': 'input',
+            'eger': 'if', 'egerdegil': 'elif', 'degilse': 'else',
+            'gorev': 'def', 'dondur': 'return', 'dongu': 'while',
+            'icin': 'for', 'icinde': 'in', 'aralik': 'range',
+            'dogru': 'True', 'yanlis': 'False', 've': 'and',
+            'veya': 'or', 'tam_sayi': 'int', 'tamsayi': 'int',
+            'yazi': 'str', 'metin': 'str', 'uyu': 'time.sleep',
+            'dene': 'try', 'denebozuldu': 'except', 'ondalik': 'float',
+            'liste': 'list', 'ekle': 'append', 'cikar': 'remove',
+            'sirala': 'sort', 'ters_cevir': 'reverse', 'uzunluk': 'len',
+            'kirmizi': '"\\033[91m"', 'yesil': '"\\033[92m"',
+            'sari': '"\\033[93m"', 'mavi': '"\\033[94m"',
+            'renk_bitir': '"\\033[0m"'
         }
 
-        # Tokenizer: Tırnak içindekileri koruyarak çevir
-        parcalar = re.split(r'(\"[^\"]*\"|\'[^\']*\')', turkce_kod)
-        yeni_parcalar = []
-
-        for parca in parcalar:
-            if parca.startswith(('"', "'")):
-                yeni_parcalar.append(parca)
-            else:
-                gecici = parca
-                for turkce, pythonca in sozluk.items():
-                    gecici = re.sub(turkce, pythonca, gecici)
-                yeni_parcalar.append(gecici)
-
-        cevrilmis_kod = "".join(yeni_parcalar)
+        # KÖKTEN ÇÖZÜM: Yeni Tokenizer Mantığı
+        # Bu satır; tırnak içindekileri, kelimeleri, boşlukları ve sembolleri birbirinden ayırır.
+        cevrilmis_kod = ""
+        # Satır satır işleyerek boşlukları (indentation) koruyoruz
+        for satir in turkce_kod.splitlines():
+            # Regex: Tırnaklı metinler OR Kelimeler OR Boşluklar OR Geri kalan her şey
+            parcalar = re.findall(r'(\"[^\"]*\"|\'[^\']*\'|\b\w+\b|\s+|[^\w\s])', satir)
+            yeni_satir = ""
+            for parca in parcalar:
+                # Eğer parça sözlüğümüzde tam olarak varsa çevir, yoksa olduğu gibi bırak
+                if parca in temiz_sozluk:
+                    yeni_satir += temiz_sozluk[parca]
+                # Noktalı metotlar için özel kontrol (.buyult() gibi)
+                elif parca == "buyult": yeni_satir += "upper"
+                elif parca == "kucult": yeni_satir += "lower"
+                else:
+                    yeni_satir += parca
+            cevrilmis_kod += yeni_satir + "\n"
 
         import time, math, random, os
         muhtar_globals = {
@@ -95,10 +76,8 @@ def muhtar_sistemini_calistir(dosya_yolu):
     except FileNotFoundError:
         print(f"Muhtar diyor ki: '{dosya_yolu}' mahallede yok kanka!")
     except Exception as hata:
-        # Satır numarasını da veren gelişmiş hata yakalayıcı
         import traceback
         _, _, tb = sys.exc_info()
-        # Son hata karesini al (kullanıcının yazdığı kodun satırı)
         satir = traceback.extract_tb(tb)[-1].lineno
         print(f"Muhtar Çöktü! Satır {satir} Detay: {hata}")
 
