@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine
 _pkgname=AFFiNE
-pkgver=0.26.2
+pkgver=0.26.3
 _electronversion=39
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
@@ -35,7 +35,7 @@ source=(
     "${pkgname}.sh"
     "${pkgname}.desktop"
 )
-sha256sums=('07247235f785be4fc36d6c498374920c7e672b3743dd10fd6d1047dadf4b2bfa'
+sha256sums=('d2e42f1cd58f4e0656f506fcc47398dcb16c902d49c45e49552ffd3662dda708'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
             '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
 
@@ -97,7 +97,7 @@ build() {
     find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
     yarn install
     SKIP_WEB_BUILD=1 SKIP_BUNDLE=1 HOIST_NODE_MODULES=1 DEBUG='*' yarn affine @affine/electron make --platform=linux --arch="${_arch}"
-    unzip packages/frontend/apps/electron/out/stable/make/zip/linux/${_arch}/${_pkgname}-linux-${_arch}-${pkgver}.zip
+    unzip "packages/frontend/apps/electron/out/stable/make/zip/linux/${_arch}/${_pkgname}-linux-${_arch}-${pkgver}.zip"
 }
 
 package() {
