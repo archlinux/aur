@@ -4,17 +4,18 @@
 
 pkgname=kguiaddons-git
 pkgver=6.27.0_r761.g6b5fdeb
-pkgrel=1
+pkgrel=2
 pkgdesc='Addons to QtGui'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL-2.0-only LGPL-3.0-only)
 depends=(gcc-libs glibc libx11 qt6-base wayland)
 makedepends=(git doxygen extra-cmake-modules-git plasma-wayland-protocols-git pyside6 python-build python-setuptools qt6-declarative qt6-tools wayland-protocols)
-conflicts=(${pkgname%-git})
-provides=(${pkgname%-git})
 optdepends=('pyside6: Python bindings'
             'qt6-declarative: QML bindings')
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
