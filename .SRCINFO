@@ -1,6 +1,6 @@
 pkgbase = opal-player
 	pkgdesc = A modern, minimal, fully-featured TUI music player
-	pkgver = 1.0.1
+	pkgver = 1.0.1.r20.g67bba08
 	pkgrel = 1
 	url = https://github.com/stevenx65/opal-player
 	arch = x86_64
@@ -11,8 +11,6 @@ pkgbase = opal-player
 	depends = glib2
 	provides = opal-tui
 	provides = opal-player
-	conflicts = opal-tui
-	conflicts = opal-player-bin
 	replaces = opal-tui
 	source = opal-player::git+https://github.com/stevenx65/opal-player.git
 	sha256sums = SKIP

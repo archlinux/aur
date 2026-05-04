@@ -1,6 +1,6 @@
 # Maintainer: stevenx65 <stevenxy35@gmail.com>
 pkgname=opal-player
-pkgver=1.0.1
+pkgver=1.0.1.r20.g67bba08 # 会自动生成，不用改
 pkgrel=1
 pkgdesc="A modern, minimal, fully-featured TUI music player"
 arch=('x86_64')
@@ -8,11 +8,16 @@ url="https://github.com/stevenx65/opal-player"
 license=('MIT')
 depends=('alsa-lib' 'glib2')
 makedepends=('cargo' 'git')
-conflicts=('opal-tui' 'opal-player-bin')
 replaces=('opal-tui')
 provides=('opal-tui' 'opal-player')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
+
+# 【修改】不用 git describe，直接用 commit 哈希值
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "1.0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "$srcdir/$pkgname"
@@ -22,14 +27,13 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
 
-  # 自动检测二进制名
   local bin_name
   if [ -f "target/release/opal-player" ]; then
     bin_name="opal-player"
   elif [ -f "target/release/opal-tui" ]; then
     bin_name="opal-tui"
   else
-    error "No binary found in target/release/"
+    error "No binary found"
     return 1
   fi
 
