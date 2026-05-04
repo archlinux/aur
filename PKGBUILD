@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/junamat/batch-beatmap-down
 sha256sums=('d5065a000422f239f8f2b078ffddf25f657ef90203eaeeaaf85c686387d9fbcd')
 
 package() {
-  install -dm755 "${pkgdir}/opt/${pkgname}"
+  install -dm755 "${pkgdir}/opt/batch-beatmap-downloader"
   cp -r "${srcdir}/Batch Beatmap Downloader-linux-x64/"* "${pkgdir}/opt/batch-beatmap-downloader/"
 
   install -dm755 "${pkgdir}/usr/bin"
