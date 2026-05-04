@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=args-git
-pkgver=6.4.6.r2.gb7d6723
+pkgver=6.4.15.r2.g0bedb27
 pkgrel=1
 pkgdesc="Simple header-only C++ argument parser library"
 arch=(any)
@@ -19,20 +19,18 @@ pkgver() {
 }
 
 build() {
-  cd args
-  cmake . \
+  cmake -B build -S "args" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+
+  cmake --build build
 }
 
 check() {
-  cd args
-  ./argstest
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd args
-  make DESTDIR="${pkgdir}" install
-  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -D args/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
