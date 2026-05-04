@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://codeberg.org/slowy07/wfetch"
 license=('MIT')
 makedepends=('zig' 'git')
-source=("git+https://codeberg.org/slowy07/wfetch.git")
+source=("git+https://codeberg.org/slowy07/wfetch.git#branch=main")
 sha256sums=('SKIP')
 
 build() {
