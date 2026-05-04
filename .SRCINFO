@@ -1,6 +1,6 @@
 pkgbase = murmur
 	pkgdesc = A native, opinionated IRC client. Subtle by default.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/prietus/murmur
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = murmur
 	depends = freetype2
 	depends = vulkan-icd-loader
 	depends = wayland
-	source = murmur-0.1.0.tar.gz::https://github.com/prietus/murmur/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = c9402e348b4e5e66f3af6c64a4d6fadc954d9f0eb16f74dfe5c368158a64503c
+	source = murmur-0.1.1.tar.gz::https://github.com/prietus/murmur/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = eb530d2e7f5f0e9df570bf34a2d00ca58481c7aa15e2a1d8107e3b5f1a7dd6d7
 
 pkgname = murmur
