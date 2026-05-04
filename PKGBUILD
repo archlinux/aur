@@ -2,7 +2,7 @@
 # Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="crc"
-pkgver=2.60.0
+pkgver=2.60.1
 pkgrel=1
 pkgdesc="CRC is a tool to help you run containers. It manages local VMs to run a OpenShift 4.x cluster, Microshift or Podman optimized for testing and development purposes"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
     'go'
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-b2sums=('2944486c052d89a9870c1f81e9865fd80b3e917ea8c42d021459c0d7025756b649df6244d5edb5a395abcf222ecdd9367761531aa546c779cf7f5c999136819b')
+b2sums=('35fa135ad86a62de3171ecc7125fad83bd70389b95904252268d903dd1678cf7d004a3f101a0303eeda13a59b7181c9675ad839c0ff4631f68cadc647cc59faa')
 
 build() {
     cd "$pkgname"
