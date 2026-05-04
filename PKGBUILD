@@ -1,6 +1,6 @@
 # Maintainer: iciclejj
 pkgname=scran
-pkgver=0.8.1
+pkgver='0.9.0'
 pkgrel=1
 pkgdesc='Image and video capture for Wayland'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iciclejj/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c84b7eaf4d15d376e3814f69e5a065dd4c281a1d100ffa814a899b010d659619')
+sha256sums=('f8ecd4945a542cb6d98d94bd14b20ee02c5efb30fc15a6f91a3b50374014a3e4')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
