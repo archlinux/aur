@@ -1,6 +1,6 @@
 # Maintainer: gabrielearchapt <tua-email>
 
-pkgname=apt-fake
+pkgname=apt-fake-ubuntu
 pkgver=1.4
 pkgrel=1
 pkgdesc="A simple wrapper to use APT syntax on Arch Linux with Zenity GUI"
