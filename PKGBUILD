@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=insight
-_pkgver=1.4.6
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,7 +23,6 @@ optdepends=(
   r-bdsmatrix
   r-betareg
   r-bh
-  r-lcmm
   r-biglm
   r-blavaan
   r-blme
@@ -70,6 +69,7 @@ optdepends=(
   r-knitr
   r-lavaan
   r-lavasearch2
+  r-lcmm
   r-lfe
   r-lme4
   r-lmertest
@@ -85,8 +85,8 @@ optdepends=(
   r-metadat
   r-metafor
   r-metaplus
-  r-mice
   r-mhurdle
+  r-mice
   r-mlogit
   r-mmrm
   r-modelbased
@@ -110,17 +110,20 @@ optdepends=(
   r-rcpp
   r-rcppeigen
   r-recipes
+  r-reformulas
   r-rmarkdown
   r-rms
   r-robustbase
   r-robustlmm
   r-rstanarm
   r-rstantools
+  r-rstpm2
   r-rstudioapi
+  r-rwiener
   r-sampleselection
   r-sandwich
-  r-serp
   r-sdmtmb
+  r-serp
   r-speedglm
   r-statmod
   r-survey
@@ -130,17 +133,16 @@ optdepends=(
   r-tinytable
   r-tmb
   r-truncreg
+  r-tune
   r-tweedie
   r-vgam
   r-weightit
   r-withr
   r-workflows
-  r-tune
-  r-rwiener
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f5037931436cb1a98245875642030f02')
-b2sums=('25e1f7813647c4a0cde26f048abeb4b59eda3188a659987a7ee423373343e463604116f8c68a80e8f6751ba2506e2877a6f35e9256038deed75043095c8741ac')
+md5sums=('51ab0a4a428fdca829787279e2564b21')
+b2sums=('f72fae74735d27da1c6adbfca0035c9fb65c567fef79d1dc49c81b8506342336468ade63f653b13c944f002ea1588d27f8e83e3d9fa626cdde1a4c9a24232a40')
 
 build() {
   mkdir build
