@@ -1,9 +1,11 @@
 pkgbase = cg-tools
 	pkgdesc = Cooperative gamma tools
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/maandree/cg-tools
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	makedepends = libcoopgamma
 	makedepends = libclut

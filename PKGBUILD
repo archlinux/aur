@@ -2,9 +2,9 @@
 
 pkgname=cg-tools
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cooperative gamma tools"
-arch=(any)
+arch=(i686 x86_64 aarch64)
 url="https://codeberg.org/maandree/cg-tools"
 license=('custom:ISC')
 depends=(libcoopgamma)
