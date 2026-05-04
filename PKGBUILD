@@ -1,19 +1,23 @@
-# Maintainer: Your Name <your.email@example.com>
 pkgname=encrypter
-pkgver=1.2.8
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Dosya ve klasör şifreleme uygulaması"
+pkgdesc="Saydut Encrypter - XChaCha20-Poly1305 + Argon2id ile dosya/klasor sifreleme (.saydut)"
 arch=('any')
-url="https://gitlab.com/saydut/encrypter"
+url="https://github.com/saydut/encrypter"
 license=('GPL3')
-depends=('python' 'tk' 'python-cryptography')
-source=("git+https://gitlab.com/saydut/encrypter.git#branch=master")
+depends=('python' 'python-pynacl' 'python-customtkinter' 'python-requests' 'python-typer')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
+source=("git+https://github.com/saydut/encrypter.git#branch=master")
 md5sums=('SKIP')
 
+build() {
+    cd "$srcdir/encrypter"
+    python -m build --wheel --no-isolation
+}
+
 package() {
-  cd "$srcdir/encrypter"
-  install -Dm755 encrypter.py "$pkgdir/usr/bin/encrypter"
-  install -Dm644 encryption-app.desktop "$pkgdir/usr/share/applications/encryption-app.desktop"
-  install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/icon.png"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/encrypter/LICENSE"
+    cd "$srcdir/encrypter"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
