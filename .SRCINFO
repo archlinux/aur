@@ -5,7 +5,9 @@ pkgbase = zkode
 	url = https://github.com/tmih06/zkode
 	arch = x86_64
 	license = MIT
-	source = https://github.com/tmih06/zkode/releases/download/v0.1.0/zkode-linux-x86_64.tar.gz
+	makedepends = cargo
+	makedepends = git
+	source = zkode-0.1.0.tar.gz::https://github.com/tmih06/zkode/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = zkode
