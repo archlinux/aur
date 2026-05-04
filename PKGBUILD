@@ -2,33 +2,52 @@
 
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
-pkgver=1.2.13
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
 url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
 license=('GPL-3.0-only')
 depends=(
-    'python-customtkinter'
+    ## UI
     'python-gobject'
-    'python-importlib-metadata'
-    'python-keyring'
-    'python-libarchive-c'
-    'python-libloot'
-    'python-lz4'
-    'python-msgpack'
+    'python-customtkinter'
+    'python-cairo'
+    'gdk-pixbuf2'
+    'gtk3'
     'python-pillow'
-    'python-py7zr'
-    'python-requests'
+
+    # Networking
     'python-websocket-client'
+    'python-requests'
+
+    # Secret store
+    'python-keyring'
+
+    # Cryptography
+    'python-cryptography'
+
+    # DBus
+    'python-jeepney'
+
+    # Serialization
+    'python-msgpack'
+
+    # Archive
+    'python-rarfile'
+    'python-lz4'
+    'python-py7zr'
     'python-zstandard'
+
+    # Modding tools
+    'python-libloot'
 )
 optdepends=(
     'zenity: native dialog'
     'kdialog: native dialog'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dec9fdc44debd0696ba455c196b1816426efcae2438c633783504fcba958395c')
+sha256sums=('778e8b1dd4ff533201ff828fd5f16fc9cc5a57abc6fcf13f32391e936dc1ca2e')
 
 build() {
     cd "${_pkgname}-${pkgver}"
@@ -50,9 +69,14 @@ package() {
     popd > /dev/null
 
     install -d "$pkgdir/usr/bin/"
+
     echo '#!/bin/sh' > "$pkgdir/usr/bin/${pkgname}"
-    echo 'python /usr/share/'"${pkgname}"'/gui.py "$@"' >> "$pkgdir/usr/bin/${pkgname}"
+    echo 'exec /usr/bin/python3 /usr/share/'"${pkgname}"'/gui.py "$@"' >> "$pkgdir/usr/bin/${pkgname}"
     chmod +x "$pkgdir/usr/bin/${pkgname}"
+
+    echo '#!/bin/sh' > "$pkgdir/usr/bin/${pkgname}-cli"
+    echo 'exec /usr/bin/python3 /usr/share/'"${pkgname}"'/cli.py "$@"' >> "$pkgdir/usr/bin/${pkgname}-cli"
+    chmod +x "$pkgdir/usr/bin/${pkgname}-cli"
 
     install -Dm644 "flatpak/io.github.Amethyst.ModManager.desktop" "$pkgdir/usr/share/applications/io.github.Amethyst.ModManager.desktop"
     install -Dm644 "src/appimage/mod-manager.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.Amethyst.ModManager.png"
