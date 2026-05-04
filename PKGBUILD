@@ -8,7 +8,7 @@ url="https://github.com/MedCy1/wayinhibit"
 license=('MIT')
 depends=('wayland')
 source=(
-    "wayinhibit-$pkgver::https://github.com/MedCy1/wayinhibit/releases/download/v$pkgver/wayinhibit-x86_64"
+    "wayinhibit-$pkgver::https://github.com/MedCy1/wayinhibit/releases/download/v$pkgver/wayinhibit-$CARCH"
     "LICENSE::https://raw.githubusercontent.com/MedCy1/wayinhibit/v$pkgver/LICENSE"
 )
 sha256sums=(
