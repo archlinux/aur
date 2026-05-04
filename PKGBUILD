@@ -1,7 +1,7 @@
 # Maintainer: Lotte V
 # Contributor: Lotte V
 pkgname=dataset-tools-git
-pkgver=linux.v0.0.1.r25.g9f8e405
+pkgver=linux.v0.0.8.r0.g80268d9
 pkgrel=1
 pkgdesc="DiffSinger dataset processing tools, including audio processing, labeling."
 arch=('x86_64')
@@ -17,7 +17,6 @@ depends=(
     'libsndfile'
     'fftw'
     'onnxruntime'
-    'ffmpeg5.1'
 )
 makedepends=(
     'git'
@@ -118,12 +117,16 @@ package() {
     ln -s "$pkgdir/usr/bin/libonnxruntime.so.1.17.3" "$pkgdir/usr/lib/libonnxruntime.so.1.17.3"
 
     msg2 "Installing vcpkg libraries..."
-    if [ -d "$srcdir/vcpkg/installed/x64-linux/lib" ]; then
-        cp -a "$srcdir/vcpkg/installed/x64-linux/lib"/*.so* "$pkgdir/usr/lib/"
+    if [ -d "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib" ]; then
+        cp -a -n "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib/libav"*.so.* "$pkgdir/usr/lib/"
+        cp -a -n "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib/libwolf-midi.so" "$pkgdir/usr/lib/"
+        cp -a -n "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib/libowcrypt.so.1" "$pkgdir/usr/lib/"
+        cp -a -n "$srcdir/dataset-tools/src/vcpkg_installed/x64-linux/lib/libxcrypt.so" "$pkgdir/usr/lib/"
     fi
 
+
     if [ -d "$srcdir/build/lib" ]; then
-        cp -a "$srcdir/build/lib"/*.so* "$pkgdir/usr/lib/"
+        cp -a "$srcdir/build/lib/" "$pkgdir/usr/lib/"
     fi
 
     local appIcons=(
