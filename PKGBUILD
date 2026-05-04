@@ -1,6 +1,6 @@
 # Maintainer: Jesse Hills <3060199+jesserockz@users.noreply.github.com>
 pkgname=esphome-desktop-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Desktop application for ESPHome (pre-built binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
 )
 conflicts=('esphome-desktop')
 source=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver}/ESPHome.Builder_${pkgver}_amd64.deb")
-sha256sums=('f887c728f8d1124aa8bfef82032afa8d41394951e11c9a0001b31835957bfdea')
+sha256sums=('2182670ae6579137602a1308700c89e9595dc6b4bc24b2803ab7c2ad9f5c4f6c')
 options=('!strip')
 
 package() {
