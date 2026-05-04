@@ -10,10 +10,11 @@ url="https://github.com/ungoogled-software/ungoogled-chromium"
 license=('BSD')
 options=('!strip')
 depends=(
-  'alsa-lib' 'brotli' 'dbus' 'desktop-file-utils' 'flac' 'fontconfig' 'freetype2' 'gtk3'
-  'harfbuzz' 'hicolor-icon-theme' 'icu' 'libcups' 'libffi' 'libgcrypt' 'libjpeg-turbo' 'libpng'
-  'libpulse' 'libva' 'libwebp' 'libxml2' 'libxslt' 'libxss' 'minizip' 'nss'
-  'opus' 'pciutils' 'systemd' 'ttf-liberation' 'xdg-utils'
+  'alsa-lib' 'brotli' 'dbus' 'desktop-file-utils' 'flac' 'fontconfig'
+  'freetype2' 'gtk3' 'harfbuzz' 'hicolor-icon-theme' 'icu' 'libcups'
+  'libffi' 'libgcrypt' 'libjpeg-turbo' 'libpng' 'libpulse' 'libva'
+  'libwebp' 'libxml2' 'libxslt' 'libxss' 'minizip' 'nss' 'opus'
+  'pciutils' 'systemd' 'ttf-liberation' 'xdg-utils'
 )
 optdepends=(
   'pipewire: WebRTC desktop sharing under Wayland'
