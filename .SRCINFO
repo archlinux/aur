@@ -1,14 +1,16 @@
 pkgbase = reqable-appimage
-	pkgdesc = Reqable is a new generation API debugging and testing one-stop solution. Reqable fully supports HTTP1 and HTTP2 and partially supports HTTP3(QUIC). Now available on Windows, Mac, Linux, Android and iOS.
-	pkgver = 2.33.12
+	pkgdesc = Reqable is a new generation API debugging and testing solution (HTTP1/2/3).
+	pkgver = 3.0.40
 	pkgrel = 1
 	url = https://reqable.com
 	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = reqable
 	conflicts = reqable
-	noextract = reqable-2.33.12.AppImage
 	options = !strip
 	options = !debug
-	source = reqable-2.33.12.AppImage::https://api.reqable.com/download?platform=linux&arch=x86_64&ext=AppImage
-	sha256sums = 23f79387b6cfe8ea114de4894fcb065dc47094efb38e2a96c3656136a42d1578
 
 pkgname = reqable-appimage
