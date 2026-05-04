@@ -1,13 +1,13 @@
 pkgbase = fishnet-bin
 	pkgdesc = Distributed Stockfish analysis for lichess.org
-	pkgver = 2.12.0
+	pkgver = 2.13.2
 	pkgrel = 1
 	url = https://github.com/lichess-org/fishnet
 	arch = x86_64
 	license = GPL-3.0-only
 	provides = fishnet
 	conflicts = fishnet
-	source = fishnet-bin-2.12.0::https://github.com/lichess-org/fishnet/releases/download/v2.12.0/fishnet-x86_64-unknown-linux-musl
-	sha256sums = bbe08d82eb30516d25305ce7a058b3b106dca3a3859867211a218d924781a8ce
+	source = fishnet-bin-2.13.2::https://github.com/lichess-org/fishnet/releases/download/v2.13.2/fishnet-x86_64-unknown-linux-musl
+	sha256sums = 470ad86524fb3fedc4445e6d8e2f1808a8b1cbd53fbc8d30574ee65225f898c2
 
 pkgname = fishnet-bin
