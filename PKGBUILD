@@ -16,8 +16,8 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 
 source=("${_base}/dist-mp.tar.gz")
 source_x86_64=("mp-x86_64::${_base}/mp-x86_64-unknown-linux-musl")
-sha256sums=('53d725ecaf8e124fc6db153698f4e7f396a22b3416414b6a56e8d65e7f586648')
-sha256sums_x86_64=('326485190cffc74a464c623df348fe4c4635eab8dd702d110ea8ef4d35fa3fa6')
+sha256sums=('cbeebd621b585ba9bdd7786f616c55929193fbd6b6d255c68665cfae870acbf7')
+sha256sums_x86_64=('fb809a495ede4e901ce07faa19c7114f941cb97d57223deedd96ab7995ae1e8a')
 
 package() {
     install -Dm755 mp-x86_64 "$pkgdir/usr/bin/mp"
