@@ -2,7 +2,7 @@
 # Maintainer: Belphemur <obsidian-sync@admincmd.com>
 
 pkgname='obsidian-headless-go-bin'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Headless Go client for Obsidian Sync and Publish.'
 url='https://belphemur.github.io/obsidian-headless/'
@@ -12,10 +12,10 @@ provides=('obsidian-headless')
 conflicts=('obsidian-headless')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Belphemur/obsidian-headless/releases/download/v${pkgver}/obsidian-headless_Linux_arm64.tar.gz")
-sha256sums_aarch64=('834956f76db3885f46cf1bbeb825c6197a0b35e465a4c803aaa8a3d9fbfaf039')
+sha256sums_aarch64=('0c4b816a25ffc3f27fea5d8adfc5fc5ca60c8b06e26b04201e51555e0c439723')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Belphemur/obsidian-headless/releases/download/v${pkgver}/obsidian-headless_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d1fbbc66219c34a3d5c905d7bc79b7f7ca816475d1e07eb6e615e2ded0ca8c8a')
+sha256sums_x86_64=('46d752fd131d8ce86a41f6c04131b4d5973cb4093f42f8867cc8bdf8e7136414')
 
 package() {
   install -Dm755 "./ob" "${pkgdir}/usr/bin/ob"
