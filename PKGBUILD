@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RnaSeqSampleSizeData
-_pkgver=1.42.0
+_pkgver=1.43.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.43.0
 pkgrel=1
 pkgdesc='RnaSeqSampleSizeData'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('43bacb84a2c32f8ca0c70c808e162df4248f94d7c85741d5bdd599d71f7d2408')
+sha256sums=('5ba2c59313a108555e0ffafabef64b83b113927106df3e4a2804ece80c9b4585')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
