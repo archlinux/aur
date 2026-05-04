@@ -1,0 +1,16 @@
+pkgbase = hodl-bin
+	pkgdesc = Light crypto wallet for the terminal — multi-chain TUI built on ratatui. (binary release)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://hodl.kryptic.sh/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hodl=0.3.1
+	conflicts = hodl
+	source_x86_64 = hodl-v0.3.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hodl/releases/download/v0.3.1/hodl-v0.3.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c5c691c02de63264a1745cc70706cbb966c5fc11799487d564c1a81d28db7cf2
+	source_aarch64 = hodl-v0.3.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hodl/releases/download/v0.3.1/hodl-v0.3.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f66a821d62a817b3498f34818319dcf7cdfc4f2961e51af6488affefc431776b
+
+pkgname = hodl-bin
