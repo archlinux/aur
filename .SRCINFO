@@ -1,0 +1,22 @@
+pkgbase = dataset-tools-bin
+	pkgdesc = DiffSinger dataset processing tools, including audio processing, labeling.
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/openvpi/dataset-tools
+	arch = x86_64
+	groups = dataset-tools
+	license = Apache-2.0
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-declarative
+	depends = libsndfile
+	depends = fftw
+	depends = onnxruntime
+	provides = dataset-tools
+	conflicts = dataset-tools
+	conflicts = dataset-tools-git
+	options = !debug
+	source = dataset-tools-v0.0.8.tar.xz::https://github.com/lottev1991/dataset-tools/releases/download/linux-v0.0.8/dataset-tools-bin-v0.0.8-aur.tar.xz
+	sha256sums = 11d55c167e840752f6d6ff03c08cbe0e3ed0cc4d52134bb91a7f076c2e1e11a1
+
+pkgname = dataset-tools-bin
