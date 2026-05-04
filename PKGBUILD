@@ -60,7 +60,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir"/SRB2Kart-Saturn/bin/lsdl2srb2kart \
+  install -Dm755 "$srcdir"/SRB2Kart-Saturn/bin/lsdl2srb2kart.debug \
     "$pkgdir"/usr/bin/srb2kart-saturn
 
   # icon + .desktop
