@@ -1,4 +1,5 @@
-# Maintainer: Maddie Mewmews <maddie at mewmews dot gay>
+# Maintainer: Indev <bdmitry450 at gmail dot com>
+# Contributor: Maddie Mewmews <maddie at mewmews dot gay>
 # Contributor: second2050 <aur at second2050 dot me>
 # Contributor: steeltitanium <steeltitanium1 at gmail dot com>
 
