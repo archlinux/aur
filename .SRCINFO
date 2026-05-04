@@ -1,0 +1,27 @@
+pkgbase = codex-switcher-git
+	pkgdesc = A multi-account manager for OpenAI Codex CLI
+	pkgver = 0.2.2.r0.g279e33d
+	pkgrel = 1
+	url = https://github.com/Lampese/codex-switcher
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = webkit2gtk-4.1
+	makedepends = gtk3
+	makedepends = libsoup3
+	makedepends = openssl
+	makedepends = appmenu-gtk-module
+	makedepends = libappindicator-gtk3
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = codex-switcher
+	conflicts = codex-switcher
+	conflicts = codex-switcher-bin
+	source = git+https://github.com/Lampese/codex-switcher.git
+	sha256sums = SKIP
+
+pkgname = codex-switcher-git
