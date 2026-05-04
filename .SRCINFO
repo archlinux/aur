@@ -1,0 +1,18 @@
+pkgbase = flowshield-bin
+	pkgdesc = Cross-platform productivity tracker that pairs with the FlowShield web dashboard
+	pkgver = 3.2.1.alpha.0
+	pkgrel = 1
+	url = https://flowshield.app
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = gtk3
+	provides = flowshield
+	conflicts = flowshield
+	noextract = flowshield-3.2.1.alpha.0.AppImage
+	options = !strip
+	source = flowshield-3.2.1.alpha.0.AppImage::https://github.com/asifthewebguy/FlowShield/releases/download/v3.2.1-alpha.0/FlowShield_3.2.1-alpha.0_amd64.AppImage
+	sha256sums = 9123f91f0da1dcd249f45d7b395665cb08252539c6c397486f3f0d83fd71dab3
+
+pkgname = flowshield-bin
