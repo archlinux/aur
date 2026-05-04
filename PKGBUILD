@@ -1,7 +1,7 @@
 # Maintainer: Jordan Sluiter <jordan.sluiter@icloud.com>
 # Deprecated: install 'shrimp' instead. This stub exists for upgrade compatibility.
 pkgname=shrimp-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Self-hosted AI productivity assistant (transitional package, installs shrimp)"
 arch=('any')
