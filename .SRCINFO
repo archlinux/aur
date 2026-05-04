@@ -1,6 +1,6 @@
 pkgbase = drawy-git
 	pkgdesc = an infinite whiteboard tool
-	pkgver = r1123.84d5c47e
+	pkgver = r1255.22d8693d
 	pkgrel = 1
 	url = https://invent.kde.org/graphics/drawy
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: nathan marchiori <nathan.marchiori@gmail.com>
 pkgname="drawy-git"
-pkgver=r1123.84d5c47e
+pkgver=r1255.22d8693d
 pkgrel=1
 pkgdesc="an infinite whiteboard tool"
 arch=("x86_64")
@@ -26,6 +26,7 @@ build() {
 package() {
 	cd "$pkgname"
 	cmake --install build-release --prefix "$pkgdir/usr"
+	rm -rf "$pkgdir/usr/share/mime"
 	if [ -d "$pkgdir/usr/DrawyCore" ]; then
 		mkdir -p "$pkgdir/usr/include"
 		mv "$pkgdir/usr/DrawyCore" "$pkgdir/usr/include/"
