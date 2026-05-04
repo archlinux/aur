@@ -10,8 +10,8 @@ pkgbase = moshpit-bin
 	provides = moshpit
 	conflicts = moshpit
 	source = https://github.com/rustyhorde/moshpit/releases/download/v0.3.0/dist-mp.tar.gz
-	sha256sums = cbeebd621b585ba9bdd7786f616c55929193fbd6b6d255c68665cfae870acbf7
+	sha256sums = 9d6572cae084738ed130d0ba064f665887278790fb0e0de04eb6cec66c6963f9
 	source_x86_64 = mp-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.3.0/mp-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = fb809a495ede4e901ce07faa19c7114f941cb97d57223deedd96ab7995ae1e8a
+	sha256sums_x86_64 = 5ea57284615c2897ffe59783f310344c2be16c0220ca285ca6a4c520b67a342c
 
 pkgname = moshpit-bin
