@@ -7,7 +7,6 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/MedCy1/wayinhibit"
 license=('MIT')
 depends=('wayland')
-makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MedCy1/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('05b6d901e1cd02e3fa6f384facd653fa50ec605a1e24cb3b4957716b74514587')
 

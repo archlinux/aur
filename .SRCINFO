@@ -6,7 +6,6 @@ pkgbase = wayinhibit
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = cargo
 	depends = wayland
 	source = wayinhibit-0.2.0.tar.gz::https://github.com/MedCy1/wayinhibit/archive/v0.2.0.tar.gz
 	sha256sums = 05b6d901e1cd02e3fa6f384facd653fa50ec605a1e24cb3b4957716b74514587
