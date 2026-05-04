@@ -1,0 +1,15 @@
+pkgbase = ionscout
+	pkgdesc = Async LAN reconnaissance tool — NEMESIS ENGINE
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/VanHoney-ltd/ionscout
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	optdepends = arping: for active ARP probing
+	source = ionscout-0.1.0.tar.gz::https://github.com/VanHoney-ltd/ionscout/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0ec0fbeea0b14f47035b7d8df4f24abaf80552f284d431f7dd17a3213deb8918
+
+pkgname = ionscout
