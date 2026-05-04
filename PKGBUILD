@@ -1,6 +1,6 @@
 pkgname=nbis
 pkgver=5.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="NIST Biometric Image Software"
 arch=('x86_64')
 url="https://www.nist.gov/services-resources/software/nist-biometric-image-software-nbis"
@@ -16,6 +16,7 @@ sha256sums=('0adf8ab0f6b0e4208de50ca00ba21d3d77112ecd66288757ddfed21f6bee92c3'
             '27458d182ba946c31c7f06bfefde9696460c269e2837a07f6690102f521f1445')
 
 package() {
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   cd "${srcdir}/Rel_${pkgver}"
   patch -p0 < "${srcdir}/0000-use-extern-header-an2k.patch"
   patch -p0 < "${srcdir}/0001-include-unistd-header-linux.patch"
