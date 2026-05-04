@@ -1,7 +1,7 @@
 # Maintainer: Matthias Meulien <orontee@gmail.com>
 
 pkgname=argos
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="Light weight front-end for Mopidy music server"
 url="https://github.com/orontee/argos"
@@ -26,7 +26,7 @@ makedepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/orontee/argos/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('2dad6b24b40b9beeae57d79f69308a27124890c4f7362dcce9037aabf0e861fc')
+sha256sums=('6d76c7af7807a62c8aa462f0ec7699cc2bb4474ce5e4323c2827e456f816cf87')
 
 install=argos.install
 
