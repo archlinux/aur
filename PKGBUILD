@@ -4,11 +4,11 @@
 # ship as separate per-listener packages (see PKGBUILD-listener-*-bin)
 # or via the meta-package `awob-listeners-all`.
 #
-# 0.0.2 and bbfb40d27b36496546b36d4bc4bfcc2450c11f7b61223c39a1c59848eebe9608 are filled in at publish time by the release
+# 0.1.1 and 6742b61b6279fd7fc37b6be3c5fdb717fe4221eb7eba0a2c3f55945a3e173a10 are filled in at publish time by the release
 # workflow (see .github/workflows/release.yml).
 
 pkgname=awob-bin
-pkgver=0.0.2
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Another Wayland Overlay Bar — daemon + CLI."
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('MIT')
 provides=('awob' 'awob-daemon')
 conflicts=('awob' 'awob-git')
 source=("awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v${pkgver}/awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('bbfb40d27b36496546b36d4bc4bfcc2450c11f7b61223c39a1c59848eebe9608')
+sha256sums=('6742b61b6279fd7fc37b6be3c5fdb717fe4221eb7eba0a2c3f55945a3e173a10')
 
 package() {
     cd "awob-${pkgver}-x86_64-unknown-linux-gnu"
@@ -38,6 +38,11 @@ package() {
     #   systemctl --user daemon-reload
     #   systemctl --user enable --now awob.service
     install -Dm644 lib/systemd/user/awob.service \
+        "${pkgdir}/usr/lib/systemd/user/awob.service"
+    # The shipped unit defaults to %h/.cargo/bin/awob-daemon for users
+    # who `cargo install`. The Arch package installs to /usr/bin, so
+    # rewrite the path here.
+    sed -i 's|^ExecStart=%h/.cargo/bin/awob-daemon$|ExecStart=/usr/bin/awob-daemon|' \
         "${pkgdir}/usr/lib/systemd/user/awob.service"
 
     # Licence + readme.
