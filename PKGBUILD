@@ -2,7 +2,7 @@
 # Contributor: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-git
-pkgver=18.5.r13.g51c0b4daf
+pkgver=19.9.rc1.r66.ga824c745a
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
@@ -31,15 +31,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd ddnet
-    v=$(echo '#include "src/game/version.h"
-              #include <iostream>
-              int main() {
-                  std::cout << GAME_RELEASE_VERSION << std::endl;
-              }' | g++ -xc++ - && ./a.out)
-    _commit=$(git log --pretty=oneline | grep "Version $v" | cut -d' ' -f1)
-    r=$(git log $_commit..HEAD --pretty=oneline | wc -l)
-    h=$(git rev-parse --short HEAD)
-    printf $v.r$r.g$h
+    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
