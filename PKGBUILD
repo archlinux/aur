@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e98ee61a9e71474adec85dddc6c722049b5e34ccf60f330fbfb595f25186116')
+sha256sums=('16365299cb8c1e73d55b49bcf747496e36c4bda2b5c8e79dc4b01d10dafbf06b')
 
 prepare() {
   cd "batman-rs-$pkgver"
