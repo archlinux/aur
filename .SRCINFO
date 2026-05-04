@@ -1,14 +1,21 @@
 pkgbase = encrpter
-	pkgdesc = A simple file encryption tool
-	pkgver = 1.5
+	pkgdesc = Saydut Encrypter - XChaCha20-Poly1305 + Argon2id ile dosya/klasor sifreleme (.saydut)
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://gitlab.com/saydut/encrpter
+	url = https://github.com/saydut/encrypter
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
 	depends = python
-	depends = tk
-	depends = python-cryptography
-	source = encrpter-1.5.tar.gz::https://gitlab.com/saydut/encrpter/archive/v1.5.tar.gz
-	sha256sums = SKIP
+	depends = python-pynacl
+	depends = python-customtkinter
+	depends = python-requests
+	depends = python-typer
+	source = git+https://github.com/saydut/encrypter.git#branch=master
+	md5sums = SKIP
 
 pkgname = encrpter

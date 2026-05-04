@@ -1,20 +1,23 @@
-# PKGBUILD for encrpter
-
 pkgname=encrpter
-pkgver=1.5
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="A simple file encryption tool"
+pkgdesc="Saydut Encrypter - XChaCha20-Poly1305 + Argon2id ile dosya/klasor sifreleme (.saydut)"
 arch=('any')
-url="https://gitlab.com/saydut/encrpter"
+url="https://github.com/saydut/encrypter"
 license=('GPL3')
-depends=('python' 'tk' 'python-cryptography')
-source=("encrpter-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+depends=('python' 'python-pynacl' 'python-customtkinter' 'python-requests' 'python-typer')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
+source=("git+https://github.com/saydut/encrypter.git#branch=master")
+md5sums=('SKIP')
+
+build() {
+    cd "$srcdir/encrypter"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  install -Dm755 "$srcdir/encrpter.py" "$pkgdir/usr/bin/encrpter"
-  install -Dm644 "$srcdir/encrpter.desktop" "$pkgdir/usr/share/applications/encrpter.desktop"
-  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/encrpter.png"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    cd "$srcdir/encrypter"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
