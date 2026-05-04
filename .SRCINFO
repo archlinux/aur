@@ -1,13 +1,13 @@
 pkgbase = murglar-desktop
 	pkgdesc = Listen and download music from your favorite music services — VK, Yandex Music, SoundCloud, Deezer, Zvuk and WebDAV
-	pkgver = 5.3.150
+	pkgver = 5.4.151
 	pkgrel = 1
 	url = https://github.com/badmannersteam/murglar-downloads
 	arch = any
 	license = custom
 	depends = java-runtime
-	noextract = Murglar-Desktop-5.3.150-all-platforms.jar
-	source = https://github.com/badmannersteam/murglar-downloads/releases/download/Murglar-Desktop-5.3.150/Murglar-Desktop-5.3.150-all-platforms.jar
+	noextract = Murglar-Desktop-5.4.151-all-platforms.jar
+	source = https://github.com/badmannersteam/murglar-downloads/releases/download/Murglar-Desktop-5.4.151/Murglar-Desktop-5.4.151-all-platforms.jar
 	source = murglar.png
 	source = murglar-desktop.sh
 	source = murglar-desktop.desktop
