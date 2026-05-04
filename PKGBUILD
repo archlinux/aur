@@ -1,6 +1,6 @@
 # Maintainer: Dejan Noveski <deko@duck.com>
 pkgname=vermouth
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A no-frills Wine/Proton game launcher for Linux"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
     'sdl2: gamepad support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dekomote/vermouth/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4a330ad44cea58d82cac3994e19a0033f5395b0135505984532bdd7de373fecb')
+sha256sums=('af357d8588f0ef5ed8755941910539b8db2116134ac47f6c29ae9fdec1ddcd9c')
 
 build() {
     cd "${pkgname}-${pkgver}"
