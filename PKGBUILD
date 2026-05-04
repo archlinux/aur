@@ -1,5 +1,5 @@
 pkgname=netradio
-pkgver=1.6.5
+pkgver=1.7
 pkgrel=1
 pkgdesc="YouTube ve internet radyolarını oynatan ve indiren Python tabanlı bir uygulama"
 arch=('x86_64')
