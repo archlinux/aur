@@ -1,13 +1,13 @@
 pkgbase = inbx-bin
 	pkgdesc = inbx — modal-vim email client (binary release)
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://inbx.kryptic.sh/
 	arch = x86_64
 	license = MIT
-	provides = inbx=0.3.1
+	provides = inbx=0.3.2
 	conflicts = inbx
-	source_x86_64 = inbx-v0.3.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/inbx/releases/download/v0.3.1/inbx-v0.3.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4de3bf581fe555c804a72f8041449cb785f284f70cd0114319f317cf82837c43
+	source_x86_64 = inbx-v0.3.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/inbx/releases/download/v0.3.2/inbx-v0.3.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7223f0052b06cb3c76eb95d9bea0daeb7251551b298b2d7cb51813128b2b13e0
 
 pkgname = inbx-bin
