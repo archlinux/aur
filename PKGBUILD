@@ -2,8 +2,8 @@
 
 _pkgname=gitte
 pkgname="$_pkgname-git"
-pkgver=r245.g560a757
-pkgrel=1
+pkgver=r274.g023ab14
+pkgrel=2
 pkgdesc="A GTK4/libadwaita Git client for the GNOME desktop"
 arch=(x86_64 aarch64)
 url="https://codeberg.org/ckruse/Gitte"
@@ -12,13 +12,8 @@ depends=(git libgit2 gtk4 libadwaita glib2)
 makedepends=(cargo meson ninja)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-install="$pkgname.install"
-source=(
-  "git+$url.git"
-  "$pkgname.install"
-)
-sha256sums=('SKIP'
-            '1b15cd611f5e0a8e2eeb1de64b6cc7ae8ab790d2c90219dfd968a38eb80912d7')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/Gitte"
