@@ -1,15 +1,15 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: sushihead46 <fredferridge@gmail.com>
 pkgname=arch-bounce
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Bouncing Arch Linux logo terminal screensaver"
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/YOURUSERNAME/arch-bounce"
+url="https://github.com/sushihead46/arch-bounce"
 license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('gcc' 'make')
-source=("$pkgname::git+file://$PWD")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sushihead46/arch-bounce/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c000e4b2aab2d9e8b9cfbe22e10d7eac246270708e52a0f5826ac77d0b5dc0d1')
 
 build() {
     cd "$pkgname-$pkgver"
