@@ -1,6 +1,6 @@
 pkgbase = cronboard
 	pkgdesc = A terminal-based dashboard for managing cron jobs
-	pkgver = 0.5.2
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/antoniorodr/cronboard
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = cronboard
 	depends = python-tomlkit
 	depends = cronie
 
-	source = cronboard-0.5.2.tar.gz::https://github.com/antoniorodr/cronboard/archive/v0.5.2.tar.gz
-	sha256sums = 0ce4b902e9f4e4d00518fc76a4f4587d5eaaac8e92ea5b982a380eb2dc496ff5
+	source = cronboard-0.5.4.tar.gz::https://github.com/antoniorodr/cronboard/archive/v0.5.4.tar.gz
+	sha256sums = f27991025385adb0b7aed3cc03fd5ee186e2a8aaa584cdcc0701d10a1921b4fd
 
 pkgname = cronboard
