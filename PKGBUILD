@@ -5,11 +5,11 @@
 # mute change.
 #
 # Pulls the same release tarball as awob-bin and installs the single
-# listener binary. 0.0.2 and bbfb40d27b36496546b36d4bc4bfcc2450c11f7b61223c39a1c59848eebe9608 are filled in at publish
+# listener binary. 0.1.1 and 6742b61b6279fd7fc37b6be3c5fdb717fe4221eb7eba0a2c3f55945a3e173a10 are filled in at publish
 # time by the release workflow.
 
 pkgname=awob-listener-pipewire-bin
-pkgver=0.0.2
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="awob listener — PipeWire volume / mute → OSD."
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('awob-bin' 'pipewire')
 provides=('awob-listener-pipewire')
 conflicts=('awob-listener-pipewire' 'awob-git')
 source=("awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v${pkgver}/awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('bbfb40d27b36496546b36d4bc4bfcc2450c11f7b61223c39a1c59848eebe9608')
+sha256sums=('6742b61b6279fd7fc37b6be3c5fdb717fe4221eb7eba0a2c3f55945a3e173a10')
 
 package() {
     cd "awob-${pkgver}-x86_64-unknown-linux-gnu"
