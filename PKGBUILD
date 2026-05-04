@@ -11,9 +11,9 @@ arch=(any)
 url="https://2ttf.com/AlwrCyFmXuC"
 license=('CC0-1.0')
 source=("$pkgname-$pkgver-$pkgrel.ttf"::"https://raw.githubusercontent.com/paris1111q1q1q1/StardewValley_JunimoFont/refs/heads/main/junimoalphabet.ttf"
-	"LICENSE"::"https://github.com/paris1111q1q1q1/StardewValley_JunimoFont/blob/58e82e4336e643ca06e95372149aef267951302a/LICENCE")
+	"LICENSE"::"https://raw.githubusercontent.com/paris1111q1q1q1/StardewValley_JunimoFont/refs/heads/main/LICENCE")
 sha256sums=('12fb77d0884271ff76c7d19da18f2e1d4c7fcf66ed32103a971b4432ffc0ee7c'
-            'f895ad3412359a613ec1c52f4316185956066c7eb46242ae3333a1d577494584')
+            '03697f286d2343ed77feeef34bc3c0eb2e0ec845dae86f7020ad0a092d0aea0c')
 package() {
   install -Dm644 $pkgwhole "$pkgdir/usr/share/fonts/StardewFonts/$pkgwhole"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
