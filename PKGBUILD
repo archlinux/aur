@@ -2,9 +2,9 @@
 pkgname=docker-sbx
 pkgver=0.28.3
 pkgrel=1
-pkgdesc="Docker sandboxes - isolated VM-based container execution using nerdbox/krun"
+pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64')
-url="https://docs.docker.com/sandbox/"
+url="https://docs.docker.com/ai/sandboxes/"
 license=('LicenseRef-Docker-Proprietary' 'GPL-2.0-only' 'Apache-2.0')
 depends=()
 optdepends=(
