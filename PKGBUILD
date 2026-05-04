@@ -25,7 +25,7 @@ depends=(
 conflicts=('shrimp-bin')
 install=shrimp.install
 source=("shrimp-${pkgver}.tar.gz::https://github.com/TheSingularis/shrimp/releases/download/v${pkgver}/shrimp-${pkgver}.tar.gz")
-sha256sums=('b52b37259a1e27b9e40e04610e4e87f45654e6e5f34245403d78943b6db93058')
+sha256sums=('874a4df9cf4ae8f1f03e2230c7a6397df30db1e7bd7c317d0dbb0c8512316254')
 
 package() {
     cd "shrimp-${pkgver}"
