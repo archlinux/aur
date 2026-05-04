@@ -1,12 +1,13 @@
 pkgbase = kgamma-git
 	pkgdesc = Adjust your monitor gamma settings
-	pkgver = 14.12.3_r267.gfe1ff51
+	pkgver = 6.6.80_r720.g57078d5
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
+	groups = plasma-git
 	license = LGPL-2.0-or-later
 	makedepends = git
-	makedepends = extra-cmake-modules-git
+	makedepends = extra-cmake-modules
 	makedepends = kdoctools-git
 	depends = gcc-libs
 	depends = glibc
