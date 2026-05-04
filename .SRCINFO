@@ -1,0 +1,17 @@
+pkgbase = webdump-static
+	pkgdesc = HTML to plain-text converter tool
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://codemadness.org/webdump.html
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = musl
+	makedepends = gcc
+	makedepends = make
+	provides = webdump
+	conflicts = webdump-git
+	source = https://codemadness.org/releases/webdump/webdump-0.2.tar.gz
+	sha512sums = 852439534388e323f287a0f5510bc12ed8b4e094354ed01fb0430bcaf40b5c8615552dd229eda50b0050ae433dbf3a3155010aa400d5046b38e00767bf85fe86
+
+pkgname = webdump-static
