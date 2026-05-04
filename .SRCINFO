@@ -17,6 +17,8 @@ pkgbase = dataset-tools-bin
 	conflicts = dataset-tools-git
 	options = !debug
 	source = dataset-tools-v0.0.8.tar.xz::https://github.com/lottev1991/dataset-tools/releases/download/linux-v0.0.8/dataset-tools-bin-v0.0.8-aur.tar.xz
+	source = LICENSE
 	sha256sums = bfc79a16387b091b031626e7f7ee8fb19ed9da855935cf3b2d0becdd53fc9242
+	sha256sums = e210361628b563427eb2adc242a18e0decacf847daab83b8b202c78a793c50ac
 
 pkgname = dataset-tools-bin

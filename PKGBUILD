@@ -11,7 +11,8 @@ groups=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 options=('!debug')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
-sha256sums=('bfc79a16387b091b031626e7f7ee8fb19ed9da855935cf3b2d0becdd53fc9242')
+sha256sums=('bfc79a16387b091b031626e7f7ee8fb19ed9da855935cf3b2d0becdd53fc9242'
+            'e210361628b563427eb2adc242a18e0decacf847daab83b8b202c78a793c50ac')
 depends=(
     'qt6-base'
     'qt6-svg'
@@ -22,6 +23,7 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-v${pkgver}.tar.xz::https://github.com/lottev1991/${pkgname%-bin}/releases/download/linux-v${pkgver}/$pkgname-v${pkgver}-aur.tar.xz"
+    "LICENSE"
 )
 package() {
 	cd "$srcdir"
@@ -30,9 +32,11 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/config"
 	install -dm755 "$pkgdir/usr/lib"
 	install -dm755 "$pkgdir/usr/share/applications"
+	install -dm755 "$pkgdir/usr/share/licenses"
+
+    cp -a LICENSE "$pkgdir/usr/share/licenses/${pkgname%-bin}"
 
     cp -a "$srcdir/usr/bin/." "$pkgdir/usr/bin/"
     cp -a "$srcdir/usr/lib/." "$pkgdir/usr/lib/"
     cp -a "$srcdir/usr/share/applications/." "$pkgdir/usr/share/applications"
-    cp -a "$srcdir/usr/share/licenses/dataset-tools/LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
