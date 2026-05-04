@@ -7,8 +7,8 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=isolate
-pkgver=2.3
-pkgrel=2
+pkgver=2.5
+pkgrel=1
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/ioi/isolate"
@@ -22,7 +22,7 @@ install=$pkgname.install
 source=("isolate-$pkgver.tar.gz::https://github.com/ioi/isolate/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha512sums=('9292bbdfa195fe2dbc57520431087292f802f45afb4e64b8940859d7d4939405d7c304614d7de1c84930f0a44303988cce6ad1fcab7c44e29211b50a677047f3'
+sha512sums=('9f6c70b5d72135c8d6550ed6aa30686f8ab43c581b85f7fb634b48f4c4e7fc8d058ea2b0847865b9ced8e2767589c0615680ab95c22c23a9e428f1fa897d29fd'
             '7d2f306a0dcba8b5adcb3bf4ca322c8f9d7cc10cb8ced7010ab22c78209769fa3feaa77ea26d5785f0bf4a9e102283ef34b58a8920d26c13e1e5b06a8a9253b5'
             '60166f126538ba4d6ddeb7256636db915e565c86d866a1f3fe5285cf8a52aaeb246696eb87f748a78d9adf0106d1d8db6ae9aafaf6e11ca6a310db00bcde50dd')
 
