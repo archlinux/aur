@@ -125,56 +125,55 @@ prepare() {
 }
 
 package() {
+  # Install binary launchers
+  install -D -m0755 "${srcdir}/davinci-control-panels-setup.sh" \
+    "${pkgdir}/usr/bin/davinci-control-panels-setup"
+  ln -s "/opt/${_pkgname}/bin/resolve" "${pkgdir}/usr/bin/${pkgname}"
+  # Install other files
+  install -d -m0755 "${pkgdir}/opt/${_pkgname}"
+  cp -rf squashfs-root/* "${pkgdir}/opt/${_pkgname}"
+
   # Fix requested directories for license activation
   install -d -m0777 "${pkgdir}/opt/${_pkgname}/.license"
   install -d -m0777 "${pkgdir}/opt/${_pkgname}/logs"
   install -d -m0777 "${pkgdir}/opt/${_pkgname}/configs"
   install -d -m0777 "${pkgdir}/opt/${_pkgname}/Extras"
   touch "${pkgdir}/opt/${_pkgname}/.license/.keep"
- 
-  # Install binary launchers
-  install -D -m 0755 "${srcdir}/davinci-control-panels-setup.sh" \
-    "${pkgdir}/usr/bin/davinci-control-panels-setup"
-  ln -s "/opt/resolve/bin/resolve" "${pkgdir}/usr/bin/${pkgname}"
-  # Install other files
-  install -d -m 0755 "${pkgdir}/opt/${_pkgname}"
-  cp -rf squashfs-root/* "${pkgdir}/opt/${_pkgname}"
 
   # Distribute files into other directories
   pushd "${pkgdir}/opt/${_pkgname}"
-  install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/configs" \
+  install -D -m0644 -t "${pkgdir}/opt/${_pkgname}/configs" \
     "share/default-config.dat" \
     "share/log-conf.xml"
-  install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" \
+  install -D -m0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" \
     "share/default_cm_config.bin"
-  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
-  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Apple Immersive/Calibration"
+  install -d -m0755 "${pkgdir}/opt/${_pkgname}/Apple Immersive/Calibration"
   # Install Desktop files and menu
-  install -D -m 0644 -t "${pkgdir}/usr/share/applications" \
+  install -D -m0644 -t "${pkgdir}/usr/share/applications" \
     "share/DaVinciResolve.desktop" \
     "share/DaVinciControlPanelsSetup.desktop" \
     "share/blackmagicraw-player.desktop" \
     "share/blackmagicraw-speedtest.desktop"
-  install -D -m 0644 -t "${pkgdir}/usr/share/desktop-directories" \
+  install -D -m0644 -t "${pkgdir}/usr/share/desktop-directories" \
     "share/DaVinciResolve.directory"
-  install -D -m 0644 -t "${pkgdir}/etc/xdg/menus" \
+  install -D -m0644 -t "${pkgdir}/etc/xdg/menus" \
     "share/DaVinciResolve.menu"
   # Install icons
-  install -D -m 0644 -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps" \
+  install -D -m0644 -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps" \
     "graphics/DV_Resolve.png" \
     "graphics/DV_ResolveProj.png"
-  install -D -m 0644 "graphics/DV_Resolve.png" \
+  install -D -m0644 "graphics/DV_Resolve.png" \
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/davinci-resolve.png"
-  install -D -m 0644 "graphics/DV_Panels.png" \
+  install -D -m0644 "graphics/DV_Panels.png" \
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/davinci-resolve-panels-setup.png"
-  install -D -m 0644 "graphics/blackmagicraw-player_256x256_apps.png" \
+  install -D -m0644 "graphics/blackmagicraw-player_256x256_apps.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/blackmagicraw-player.png"
-  install -D -m 0644 "graphics/blackmagicraw-speedtest_256x256_apps.png" \
+  install -D -m0644 "graphics/blackmagicraw-speedtest_256x256_apps.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/blackmagicraw-speedtest.png"
   # Install other files
-  install -D -m 0644 -t "${pkgdir}/usr/share/mime/packages" \
+  install -D -m0644 -t "${pkgdir}/usr/share/mime/packages" \
     "share/resolve.xml"
-  install -D -m 0644 -t "${pkgdir}/usr/lib/udev/rules.d" \
+  install -D -m0644 -t "${pkgdir}/usr/lib/udev/rules.d" \
     "share/etc/udev/rules.d"/{99-BlackmagicDevices.rules,99-ResolveKeyboardHID.rules,99-DavinciPanel.rules}
   popd
 }
