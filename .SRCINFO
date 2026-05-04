@@ -1,6 +1,6 @@
 pkgbase = clawsec
 	pkgdesc = Encrypted netcat with SOCKS5, reverse tunnels, port scanning, and post-quantum crypto
-	pkgver = 2.7.1-rc1
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/LF3551/ClawSec
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = clawsec
 	makedepends = gcc
 	makedepends = make
 	depends = openssl
-	source = clawsec-2.7.1-rc1.tar.gz::https://github.com/LF3551/ClawSec/archive/refs/tags/v2.7.1-rc1.tar.gz
-	sha256sums = 3ca0d0e08dd926a714f88b9dabfa9f2803990809f894d6d61d0dd30e38ed072c
+	source = clawsec-2.7.0.tar.gz::https://github.com/LF3551/ClawSec/archive/refs/tags/v2.7.0.tar.gz
+	sha256sums = 2997cc0587624ec979a0ebedf3afa0ee12ccba604150f43ec7726fefc7a84383
 
 pkgname = clawsec
