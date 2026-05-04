@@ -1,7 +1,7 @@
 pkgbase = normalize
 	pkgdesc = A tool for adjusting the volume of WAV files to a standard level
 	pkgver = 0.7.7
-	pkgrel = 7
+	pkgrel = 8
 	url = http://normalize.nongnu.org
 	arch = x86_64
 	license = GPL
