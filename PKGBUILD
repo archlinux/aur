@@ -2,8 +2,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm-cuda
 _pkgname=vllm
-pkgver=0.19.0
-pkgrel=2
+pkgver=0.20.1
+pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -80,17 +80,14 @@ optdepends=(
 source=(
   "git+${url}#tag=v${pkgver}"
   "121.patch"
-  "34770.patch"
 )
 sha256sums=(
-  '815859b4cd87081b7b100c041de29e1c5c0b74547f4c7da21e075cfe38f52f4f'
-  '41d19b77ca787dfabb4754141981780e6c761e63235fbcda7726c96535f83132'
-  'b7616c4c911e85cb8aa8791e5b41317714d32e34fc9aef7ac847260aec0ad5d9'
+  'SKIP'
+  'SKIP'
 )
 
 prepare() {
   cd $_pkgname
-  patch -Np1 -i ${srcdir}/34770.patch
   cd .deps/vllm-flash-attn-src
   git checkout .
   patch -Np1 -i ${srcdir}/121.patch
