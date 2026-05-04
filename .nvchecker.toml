@@ -1,4 +1,5 @@
 [caps-log-bin]
-source = "git"
-git = "https://github.com/NikolaDucak/caps-log.git"
+source = "github"
+github = "NikolaDucak/caps-log"
+use_latest_release = true
 prefix = "v"
