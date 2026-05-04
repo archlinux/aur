@@ -31,9 +31,8 @@ package() {
 	install -dm755 "$pkgdir/usr/lib"
 	install -dm755 "$pkgdir/usr/share/applications"
 
-    install -dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
     cp -a "$srcdir/usr/bin/." "$pkgdir/usr/bin/"
     cp -a "$srcdir/usr/lib/." "$pkgdir/usr/lib/"
     cp -a "$srcdir/usr/share/applications/." "$pkgdir/usr/share/applications"
+    cp -a "$srcdir/usr/share/licenses/dataset-tools/LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
