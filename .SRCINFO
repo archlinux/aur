@@ -1,7 +1,7 @@
 pkgbase = brother-dcp-t430w-bin
 	pkgdesc = LPR and CUPS driver for the Brother DCP-T430W
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	install = brother-dcp-t430w.install
 	arch = x86_64

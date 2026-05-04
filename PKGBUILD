@@ -1,7 +1,7 @@
 # Maintainer: Joaquín I. Aramendía <samsagax@gmail.com>
 pkgname=brother-dcp-t430w-bin
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother DCP-T430W"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 license=('CUSTOM')
@@ -17,7 +17,7 @@ options=(!strip !debug)
 package() {
     tar -xf data.tar.gz -C "${pkgdir}"
     install -Dm 644 -T "${pkgdir}"/opt/brother/Printers/dcpt430w/LICENSE_ENG.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-    ln -s "${pkgdir}"/opt/brother/Printers/dcpt430w/lpd/x86_64/brdcpt430wfilter "${pkgdir}"/opt/brother/Printers/dcpt430w/lpd/brdcpt430wfilter
-    ln -s "${pkgdir}"/opt/brother/Printers/dcpt430w/lpd/x86_64/brprintconf_dcpt430w "${pkgdir}"/opt/brother/Printers/dcpt430w/lpd/brprintconf_dcpt430w
+    ln -s x86_64/brdcpt430wfilter "${pkgdir}"/opt/brother/Printers/dcpt430w/lpd/brdcpt430wfilter 
+    ln -s x86_64/brprintconf_dcpt430w "${pkgdir}"/opt/brother/Printers/dcpt430w/lpd/brprintconf_dcpt430w
     chmod 755 "${pkgdir}"/opt/brother/Printers/dcpt430w/cupswrapper
 }
