@@ -4,7 +4,7 @@ _pkgexec=mpm
 _pkgauthor=kdeldycke
 _pkgname=meta-package-manager
 pkgname=${_pkgname}-bin
-pkgver=6.3.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -18,13 +18,13 @@ options=('!strip')
 source=("LICENSE-${pkgver}::${_urlraw}/license"
         "README-${pkgver}.md::${_urlraw}/readme.md"
         "CHANGELOG-${pkgver}.md::${_urlraw}/changelog.md")
-source_x86_64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.bin")
-source_aarch64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.bin")
+source_x86_64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgexec}-${pkgver}-linux-x64.bin")
+source_aarch64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgexec}-${pkgver}-linux-arm64.bin")
 sha256sums=('8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
-            'f32dca6e1fc50e12a7651ea9a5e77dcdfd18a79eb8173c92ae841e8ae7681972'
-            '7bdacda1e9dd48f2741a67438b34fdeddf70fc1b3a8f55cb9c0b31b243c43361')
-sha256sums_x86_64=('5236f33e9172e5ab3830a73826191aac9a7a4a946888210d832f4e414e08ed1b')
-sha256sums_aarch64=('5236f33e9172e5ab3830a73826191aac9a7a4a946888210d832f4e414e08ed1b')
+            '764b4cf4b0732de24cb97a680ff0c29ba263ff98546d75ffba869a65c2f4fcff'
+            '2cc157163fabd4545325c266c3816c98c7bf6fb50cf55976f19129355831712b')
+sha256sums_x86_64=('eea91183e36d253d5207eba56db0dce39919d1b7721c0ff7c2fee521066af0ee')
+sha256sums_aarch64=('eea91183e36d253d5207eba56db0dce39919d1b7721c0ff7c2fee521066af0ee')
 
 package() {
   cd "${srcdir}/" || exit
