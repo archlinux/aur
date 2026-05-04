@@ -1,0 +1,4 @@
+[qashib-font]
+source = "git"
+git = "https://github.com/aliftype/qashib.git"
+prefix = "v"

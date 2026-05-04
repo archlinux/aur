@@ -1,0 +1,12 @@
+pkgbase = qashib-font
+	pkgdesc = A manuscript Kufic typeface
+	pkgver = 2.00
+	pkgrel = 1
+	url = https://aliftype.com/qashib/
+	arch = any
+	license = AGPL-3.0-only
+	provides = qashib-font
+	source = https://github.com/aliftype/qashib/releases/download/v2.00/Qashib-2.00.zip
+	sha256sums = f8eafdd4b53f060c447c0dc1dfed21fe97b8d493c8e8ae10ab07ace48a3b492e
+
+pkgname = ttf-qashib
