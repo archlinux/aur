@@ -1,14 +1,14 @@
 pkgbase = gz-cmake3
 	pkgdesc = A set of CMake modules that are used by the C++-based Gazebo projects.
-	pkgver = 3.5.5
-	pkgrel = 2
+	pkgver = 3.5.6
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-cmake
 	arch = any
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = doxygen
 	provides = gz-cmake=3
-	source = https://github.com/gazebosim/gz-cmake/archive/gz-cmake3_3.5.5.tar.gz
-	sha256sums = 95c8733a4488d1858ad4efa5ebb9cd04e0d2126bfe168c8cb6e5d418db9326ea
+	source = https://github.com/gazebosim/gz-cmake/archive/gz-cmake3_3.5.6.tar.gz
+	sha256sums = 0b49b7391bf874533585447b1a3959d0438418ec32b8a7c2b784fd503f514ecc
 
 pkgname = gz-cmake3
