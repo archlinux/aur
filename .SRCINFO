@@ -1,6 +1,6 @@
 pkgbase = h5v-bin
 	pkgdesc = Terminal HDF5 viewer with matrix/chart/image previews
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/DanielHauge/h5v
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = h5v-bin
 	depends = gcc-libs
 	optdepends = wl-clipboard: Wayland clipboard integration
 	optdepends = xclip: X11 clipboard helper
-	source = h5v-0.4.3.tar.gz::https://github.com/DanielHauge/h5v/releases/download/v0.4.3/h5v-x86_64-unknown-linux-gnu-v0.4.3.tar.gz
-	sha256sums = ac2f31527f2ebc4b946315a0690fd66d8a9245c30e0ca276c480eb8a5e527354
+	source = h5v-0.4.4.tar.gz::https://github.com/DanielHauge/h5v/releases/download/v0.4.4/h5v-x86_64-unknown-linux-gnu-v0.4.4.tar.gz
+	sha256sums = 61e572c9afe2d67125c59099c9bb51ad97348f431ed18c24a28cfd30994b95ae
 
 pkgname = h5v-bin
