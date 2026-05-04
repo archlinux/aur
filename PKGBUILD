@@ -2,7 +2,7 @@
 
 pkgname=ros2-kilted-base
 pkgver=2025.07.28
-pkgrel=8
+pkgrel=9
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -90,11 +90,13 @@ build() {
     # Remove D_FORTIFY_SOURCE to avoid compilation errors
     CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CFLAGS))
     CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
+    CXXFLAGS+=" -w"
 
     export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
     # Build
-    colcon build --metas $srcdir/colcon.meta --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -DCMAKE_IGNORE_PATH="/usr/share/orocos_kdl/cmake/"
+    colcon build --metas $srcdir/colcon.meta --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} \
+        --cmake-args -DBUILD_TESTING=OFF -DCMAKE_IGNORE_PATH="/usr/share/orocos_kdl/cmake/" -Wno-dev
 
     # Replace all references to srcdir in colcon shell files
      printf "Replace references to srcdir in colcon shell files\n"
@@ -107,4 +109,11 @@ package() {
     mkdir -p "${pkgdir}/opt/ros"
     cp -r "${srcdir}/install" "${pkgdir}/opt/ros/${_rosdist_short}"
 
+    # Merge packages installed into opt into regular installation
+    if [ -d "${pkgdir}/opt/ros/${_rosdist_short}/opt" ]; then
+        for dir in ${pkgdir}/opt/ros/${_rosdist_short}/opt/*; do
+            [ -d "$dir" ] && cp -r "$dir"/* "${pkgdir}/opt/ros/${_rosdist_short}/"
+        done
+    fi
+    rm -rf ${pkgdir}/opt/ros/${_rosdist_short}/opt
 }
