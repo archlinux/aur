@@ -1,6 +1,6 @@
 # Maintainer: HAHWUL <hahwul@gmail.com>
 pkgname=hwaro
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Lightweight and fast Static Site Generator(SSG) written in Crystal."
 arch=('x86_64')
