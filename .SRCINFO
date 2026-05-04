@@ -1,0 +1,15 @@
+pkgbase = plasma-shortcut
+	pkgdesc = Dolphin service menu to create and edit .desktop shortcuts for any file or folder
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Matvel007/Plasma-Shortcut
+	install = plasma-shortcut.install
+	arch = any
+	license = GPL2
+	depends = kio
+	depends = icoutils
+	depends = pyside6
+	source = plasma-shortcut-1.0.tar.gz::https://github.com/Matvel007/Plasma-Shortcut/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 7604cfe7f186358a65a97362603192e2e72383033fa32cbe75fe221eba19ed86
+
+pkgname = plasma-shortcut
