@@ -8,16 +8,19 @@ arch=('x86_64')
 url="https://github.com/arthurr0/mTerminal"
 license=('MIT')
 depends=(
-  'webkit2gtk-4.1'
   'gtk3'
-  'libayatana-appindicator'
+  'nss'
+  'libnotify'
+  'libxss'
+  'libxtst'
+  'alsa-lib'
 )
 makedepends=(
   'git'
-  'rust'
   'nodejs'
   'pnpm'
-  'pkgconf'
+  'python'
+  'base-devel'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -27,7 +30,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
   printf '%s.r%s.g%s' \
-    "$(grep '^version' src-tauri/Cargo.toml | head -1 | cut -d'"' -f2)" \
+    "$(node -p "require('./package.json').version")" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
@@ -35,24 +38,25 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   pnpm install --frozen-lockfile
+  pnpm exec electron-rebuild -f -w node-pty
 }
 
 build() {
   cd "$_pkgname"
-  export WEBKIT_DISABLE_DMABUF_RENDERER=1
-  pnpm tauri build --no-bundle
+  pnpm package:linux
 }
 
 package() {
   cd "$_pkgname"
 
-  install -Dm755 "src-tauri/target/release/$_pkgname" \
-    "$pkgdir/usr/bin/$_pkgname"
+  local appimage
+  appimage=$(find release -maxdepth 2 -type f -name '*.AppImage' | head -n1)
+  install -Dm755 "$appimage" "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 "packaging/$_pkgname.desktop" \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  install -Dm644 "src-tauri/icons/icon.png" \
+  install -Dm644 "build/icon.png" \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 
   install -Dm644 "LICENSE" \
