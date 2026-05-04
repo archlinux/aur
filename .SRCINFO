@@ -1,0 +1,23 @@
+pkgbase = librepods-rust-git
+	pkgdesc = Apple exclusive AirPods Pro features for Linux (Rust Rewrite Branch)
+	pkgver = r526.4a9a2e7
+	pkgrel = 1
+	url = https://github.com/kavishdevar/librepods
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = bluez
+	depends = libpulse
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = librepods
+	conflicts = librepods
+	conflicts = librepods-git
+	source = git+https://github.com/kavishdevar/librepods.git#branch=linux/rust
+	sha256sums = SKIP
+
+pkgname = librepods-rust-git
