@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 install=sentinel.install
 # Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
@@ -40,7 +40,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # the PKGBUILD lands on the AUR repo. The in-repo copy stays at
 # 'SKIP' so dependabot-style updates don't churn this file every
 # release; never commit a real hash here.
-sha256sums=('3df07eef0128d4101ecb0b84e665f57ca5b7bb0c6b4c8f188b67766fa014f41e')
+sha256sums=('a30767dbef692bb7f112d0b9257031e49339cedb20bfbfbb65281d5c723f3dd5')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -55,6 +55,15 @@ build() {
     export SENTINEL_PREFIX=/usr
     export SENTINEL_SYSCONFDIR=/etc
     export SENTINEL_LIBEXECDIR=lib
+    # Microarch baseline: x86-64-v3 (Haswell/Zen 1+ — AVX2, BMI1/2, FMA, F16C).
+    # Arch officially baselined to v2 in 2024 but virtually all hardware
+    # capable of running a modern Wayland compositor is v3+. ALHP /
+    # CachyOS users get a v3-tuned binary; everyone else still on a
+    # pre-Haswell CPU should use the .deb/.rpm or build from source.
+    # Append rather than overwrite so makepkg's CFLAGS-equivalent layer
+    # (if a user sets RUSTFLAGS in /etc/makepkg.conf via cargo-rustflags)
+    # composes cleanly.
+    export RUSTFLAGS="${RUSTFLAGS:-} -C target-cpu=x86-64-v3"
     cargo build --frozen --release --workspace
 
     # Generate shell completions + man pages from the freshly-built binaries.
