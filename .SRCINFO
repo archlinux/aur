@@ -1,6 +1,6 @@
 pkgbase = r-clubsandwich
 	pkgdesc = Cluster-Robust (Sandwich) Variance Estimators with Small-Sample Corrections
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=clubSandwich
 	arch = any
@@ -31,13 +31,14 @@ pkgbase = r-clubsandwich
 	optdepends = r-metadat
 	optdepends = r-metafor
 	optdepends = r-mlmrev
+	optdepends = r-mmrm
 	optdepends = r-plm
 	optdepends = r-rmarkdown
 	optdepends = r-robumeta
 	optdepends = r-testthat
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/clubSandwich_0.6.2.tar.gz
-	md5sums = 8bc1fb7ac9da2ba09c10006b87bf89eb
-	b2sums = 5206790426b461ec8170d55e0f37b7edc6117667046132d146e003fadd74350119091b7227601da76bf7de23281005f03bfa7e5e2d76613d84677829749252f4
+	source = https://cran.r-project.org/src/contrib/clubSandwich_0.7.0.tar.gz
+	md5sums = 08f806bfdb8a5117a8aabaaf6264eb52
+	b2sums = 93e2ba97708cbde8d3c3e33bde8840009a27ce8f0bae87a4ddf90bc00195b08bf55831bb462dfda89e8a40ecda635c00d0554b434528be90c9427db7d4969704
 
 pkgname = r-clubsandwich
