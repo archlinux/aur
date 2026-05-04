@@ -4,7 +4,7 @@
 
 pkgname=gtk2-ng-git
 pkgver=r22068.0675b80da
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (community-maintained fork)"
 url="https://www.gtk.org/"
 arch=(x86_64)
