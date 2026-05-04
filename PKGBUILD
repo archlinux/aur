@@ -2,7 +2,7 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.6.2
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
@@ -34,6 +34,7 @@ depends=(
     'python-tree-sitter-objc'
     'python-tree-sitter-julia'
     'python-tree-sitter-verilog'
+    'python-tree-sitter-fortran'
 )
 
 optdepends=(
@@ -49,6 +50,7 @@ optdepends=(
     'python-faster-whisper: Video transcription support'
     'yt-dlp: Video download support'
     'python-openai: Kimi K2 LLM support'
+    'python-tiktoken: Kimi K2 token counting support'
     'python-anthropic: Claude direct extraction support'
     'python-tree-sitter-sql: SQL indexing support'
 )
@@ -63,16 +65,16 @@ makedepends=(
 provides=("${_name}")
 conflicts=("${_name}")
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/safishamsi/graphify/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e9be48ba25d5f5379425670abb6a93edc61fd521b4d4478d3a7950bde4740dad')
+source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('c6767823da4e40c42da0897aed7f584700b1ce2171aa89d069986f38521673a7')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_name}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_name}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
