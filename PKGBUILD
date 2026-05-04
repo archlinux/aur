@@ -1,7 +1,7 @@
 pkgname=lyx-bin
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
-pkgdesc="Document processor (Ubuntu resolute binary build)"
+pkgdesc="Document processor (Debian testing binary build)"
 arch=('x86_64')
 url="https://www.lyx.org/"
 license=('GPL-2.0-or-later')
@@ -29,21 +29,29 @@ provides=('lyx')
 conflicts=('lyx')
 options=('!strip')
 
-_debver=2.5.0-1
+_debver=2.5.1-1
 source=(
-  "https://mirrors.kernel.org/ubuntu/pool/universe/l/lyx/lyx_${_debver}_amd64.deb"
-  "https://mirrors.kernel.org/ubuntu/pool/universe/l/lyx/lyx-common_${_debver}_all.deb"
+  "https://deb.debian.org/debian/pool/main/l/lyx/lyx_${_debver}_amd64.deb"
+  "https://deb.debian.org/debian/pool/main/l/lyx/lyx-common_${_debver}_all.deb"
 )
 sha256sums=(
-  '21ce81ac0e94d3906cf42e86fca4802effb97713cef7293ba52f50a36b8f0d4b'
-  '9740b2c74742102503373641e0e32af6ec2d805f09c8f48230825999f812d6f0'
+  '529bca4034933caab943282b21883b5aa03a1caeb7017ece8e9d6e37598d1bf2'
+  '54c64013bb8f523ed5dbd2d5b201cebad06a841a5a8267199b81e21800254e03'
 )
 
 package() {
   local debdir="${srcdir}/deb"
+  local lyx_data
+  local lyx_common_data
+
+  rm -rf "${debdir}/lyx" "${debdir}/lyx-common"
   mkdir -p "${debdir}/lyx" "${debdir}/lyx-common"
-  bsdtar -xf "${srcdir}/lyx_${_debver}_amd64.deb" -C "${debdir}/lyx"
-  bsdtar -xf "${srcdir}/lyx-common_${_debver}_all.deb" -C "${debdir}/lyx-common"
-  bsdtar -xf "${debdir}/lyx/data.tar."* -C "${pkgdir}"
-  bsdtar -xf "${debdir}/lyx-common/data.tar."* -C "${pkgdir}"
+  bsdtar --no-same-owner -xf "${srcdir}/lyx_${_debver}_amd64.deb" -C "${debdir}/lyx"
+  bsdtar --no-same-owner -xf "${srcdir}/lyx-common_${_debver}_all.deb" -C "${debdir}/lyx-common"
+
+  lyx_data=("${debdir}/lyx"/data.tar.*)
+  lyx_common_data=("${debdir}/lyx-common"/data.tar.*)
+
+  bsdtar --no-same-owner -xf "${lyx_data[0]}" -C "${pkgdir}"
+  bsdtar --no-same-owner -xf "${lyx_common_data[0]}" -C "${pkgdir}"
 }
