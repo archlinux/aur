@@ -1,0 +1,13 @@
+[Unit]
+Description=Internetometer Prometheus Exporter
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/internetometer-exporter
+Restart=on-failure
+Environment=IM_DELAY=1h
+Environment=IM_ADDR=:9112
+
+[Install]
+WantedBy=multi-user.target

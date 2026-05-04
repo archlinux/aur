@@ -1,0 +1,16 @@
+pkgbase = internetometer-exporter
+	pkgdesc = Prometheus exporter for Yandex Internetometer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Master290/internetometer-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = internetometer-cli-0.1.0.tar.gz::https://github.com/Master290/internetometer-cli/archive/refs/tags/0.1.0.tar.gz
+	source = internetometer-exporter.service
+	sha256sums = 2f7888956d8a74a7178dd5b24656c2175e417e152dc31f7264168beb1d981433
+	sha256sums = 6e9e898218a66cb1aca02cfa08ea5b82573514367095432ba1a4fc556f17f112
+
+pkgname = internetometer-exporter
