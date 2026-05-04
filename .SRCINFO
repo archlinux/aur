@@ -1,6 +1,6 @@
 pkgbase = dataset-tools-git
 	pkgdesc = DiffSinger dataset processing tools, including audio processing, labeling.
-	pkgver = linux.v0.0.1.r0.g07d4f2e
+	pkgver = linux.v0.0.8.r0.g80268d9
 	pkgrel = 1
 	url = https://github.com/openvpi/dataset-tools
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = dataset-tools-git
 	depends = libsndfile
 	depends = fftw
 	depends = onnxruntime
-	depends = ffmpeg5.1
 	provides = dataset-tools
 	conflicts = dataset-tools
 	options = !emptydirs
