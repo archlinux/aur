@@ -1,0 +1,24 @@
+--- a/nixd/tools/nixd.cpp
++++ b/nixd/tools/nixd.cpp
+@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
+   });
+ 
+   HideUnrelatedOptions(NixdCatogories);
+   ParseCommandLineOptions(argc, argv, "nixd language server", nullptr,
+-                          "NIXD_FLAGS");
++                          nullptr, "NIXD_FLAGS");
+ 
+   if (LitTest) {
+     InputStyle = JSONStreamStyle::LitTest;
+--- a/nixd/tools/nixd-attrset-eval.cpp
++++ b/nixd/tools/nixd-attrset-eval.cpp
+@@ -59,7 +59,7 @@ int main(int Argc, const char *Argv[]) {
+   });
+ 
+   HideUnrelatedOptions(Catogories);
+   ParseCommandLineOptions(Argc, Argv, "nixd nixpkgs evaluator", nullptr,
+-                          "NIXD_NIXPKGS_EVAL_FLAGS");
++                          nullptr, "NIXD_NIXPKGS_EVAL_FLAGS");
+ 
+   if (LitTest) {
+     InputStyle = JSONStreamStyle::LitTest;
