@@ -1,0 +1,12 @@
+pkgbase = osc-theimpostor-git
+	pkgdesc = Access the system clipboard from anywhere using the ANSI OSC52 sequence
+	pkgver = 0.4.8.r1.g954461a
+	pkgrel = 1
+	url = https://github.com/theimpostor/osc
+	arch = any
+	license = MIT
+	makedepends = go
+	source = osc::git+https://github.com/theimpostor/osc
+	sha256sums = SKIP
+
+pkgname = osc-theimpostor-git
