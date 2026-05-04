@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hash
-_pkgver=2.2.6.3
+_pkgver=2.2.6.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Full Featured Implementation of Hash Tables/Associative Arrays/Dictionaries"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,11 +13,12 @@ depends=(
   r
 )
 optdepends=(
+  r-rbenchmark
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('69665bf3e3706b0186b585a3537878d2')
-b2sums=('200acb8a70c1739f73fa729909a7723b7e4f9ed16e7d338112c11562edaf68639f02a028b342f8bd8dbbcf56cf22db9670758feac9e23789f1981a5a462f23be')
+md5sums=('d1802e126c3532e00ca7ad56e124480b')
+b2sums=('3c335ac9f570072eea88fd1363d49ae94c335b6204bb0d630eaadc4c68f0b171758bc2dd3ec313786a9e05a791b6e680902d313c3540ed2fde6fb35b9f2ce685')
 
 build() {
   mkdir build
