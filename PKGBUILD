@@ -5,19 +5,31 @@
 pkgname=alephone
 _pkgdate=20250829
 pkgver=1.11_$_pkgdate
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="https://alephone.lhowon.org/"
 license=('GPL3')
-depends=('sdl2_ttf' 'sdl2_image' 'sdl2_net' 'libmad' 'glu' 'zziplib'
-         'ffmpeg4.4' 'boost-libs' 'curl' 'openal' 'asio')
-optdepends=('alephone-eternalx: community-made scenario'
-            'alephone-evil: community-made scenario'
-            'alephone-infinity: original data for Marathon Infinity'
-            'alephone-marathon: M1A1 data converted for AlephOne'
-            'alephone-marathon2: original data for Marathon 2: Durandal')
-makedepends=('boost' 'mesa' 'icoutils')
+depends=('boost-libs' 'sdl2_image' 'sdl2_ttf' 'openal' 'libsndfile' 'glu')
+optdepends=(
+  'curl: for stats upload to lhowon.org'
+  'miniupnpc: for opening router ports'
+  'zziplib: for using zipped plugins'
+  'libvpx: for film export'
+  'libmatroska: for film export'
+  'libebml: for film export'
+  'libvorbis: for film export'
+  'libyuv: for film export and video playback'
+  'alephone-eternalx: community-made scenario'
+  'alephone-evil: community-made scenario'
+  'alephone-infinity: original data for Marathon Infinity'
+  'alephone-marathon: M1A1 data converted for AlephOne'
+  'alephone-marathon2: original data for Marathon 2: Durandal')
+makedepends=(
+  'asio' 'boost' 'mesa'
+  'curl' 'miniupnpc' 'zziplib'
+  'libvpx' 'libmatroska' 'libebml' 'libvorbis' 'libyuv'
+  'icoutils')
 source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2")
 sha256sums=('e7c447034aa35dd85ca6836dd8367034c4f4512aa0d14e9781d7033946098806')
 
@@ -37,7 +49,7 @@ build() {
   cd AlephOne-$_pkgdate
 
   export CXXFLAGS="$CXXFLAGS -fsanitize=undefined" #Issue#518
-  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 
