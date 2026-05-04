@@ -2,7 +2,7 @@
 
 pkgname=screenshot-cpp
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive wlroots/Hyprland region screenshot tool with file-manager clipboard support'
 arch=('x86_64')
 url='https://github.com/xander-lin/screenshot'
@@ -24,7 +24,7 @@ optdepends=(
   'hyprland: tested wlroots compositor environment'
   'sway: alternative wlroots compositor environment'
 )
-_commit='0e6e5293c9b42e9ace974268e2e5a9f27e7cddaa'
+_commit='1b4ac95d62185e8cba7ec263c7434c5980638e13'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
 sha256sums=('f4f02c6da2c8f381e03508cdf0cbb00c093e4eb27d813b761fc1761a5c48cff8')
 
