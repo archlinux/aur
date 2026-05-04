@@ -1,10 +1,9 @@
 pkgbase = kscreenlocker-git
 	pkgdesc = Library and components for secure lock screen architecture
-	pkgver = 6.0.80_r1288.g2c17bd6
-	pkgrel = 2
+	pkgver = 6.6.80_r1650.g1cd8c2cc
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
-	groups = plasma-git
 	license = LGPL-2.0-or-later
 	makedepends = git
 	makedepends = extra-cmake-modules-git
@@ -41,6 +40,12 @@ pkgbase = kscreenlocker-git
 	provides = kscreenlocker
 	conflicts = kscreenlocker
 	source = git+https://github.com/KDE/kscreenlocker.git
+	source = kde.pam
+	source = kde-fingerprint.pam
+	source = kde-smartcard.pam
 	sha256sums = SKIP
+	sha256sums = adba7bb7c27eb3a572e5e9d3cea0dbeebe59d3634472d1863d14fe892cb13b2b
+	sha256sums = 32734b4e1ec8b7f7e32b6cb2d68285c5c4f15f53736bba085096e76095181241
+	sha256sums = 5d9c31cbf66e8e455b9559c929f184efd598f714743d5a1e6ce20adb44dc4b2d
 
 pkgname = kscreenlocker-git
