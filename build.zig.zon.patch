@@ -1,0 +1,12 @@
+diff -Npur a/falcond/build.zig.zon b/falcond/build.zig.zon
+--- a/falcond/build.zig.zon	2026-04-21 12:53:33.000000000 -0600
++++ b/falcond/build.zig.zon	2026-05-04 14:15:50.766170114 -0600
+@@ -22,7 +22,7 @@
+     .dependencies = .{
+         .otter_conf = .{
+             .url = "git+https://git.pika-os.com/otter-shell/otter-conf#v0.10.2",
+-            .hash = "otter_conf-1.0.0-d7vdxA1KAgBoH7Iep3g616vLN4mQqiYRKoBhnmTz4aNT",
++            .hash = "otter_conf-1.0.0-d7vdxA1KAgBS8QrVFX8BovYbXCkA0hoiX66IJQBQZ75w",
+         },
+         .otter_desktop = .{
+             .url = "git+https://git.pika-os.com/otter-shell/otter-desktop#v0.10.0",
