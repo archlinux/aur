@@ -2,7 +2,7 @@
 
 pkgname=pins
 _pkgname=Pins
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="Create your own application shortcuts"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('libadwaita' 'python-gobject')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('8a0cd6f2a8edbe194e3163209718e95c655aa44d735a2e2ea71aae62083f4389fad3d4a14d57b7368651bf63b6d9341e2a365e2d6ac6b25a3a33aed27ae50c8d')
+b2sums=('91acf8d4aefde4247c723e69b678603933d03547f053a040e3cc20a430c0aa454eb1b53fe5f9202a0e67bdcfcfadb4d17dcc7e58add083883a7171b531ea9cdf')
 
 build() {
   arch-meson "${_pkgname%-git}-$pkgver" build

@@ -9,7 +9,7 @@ pkgbase = pins
 	makedepends = meson
 	depends = libadwaita
 	depends = python-gobject
-	source = https://github.com/fabrialberio/Pins/archive/v2.4.5.tar.gz
-	b2sums = 8a0cd6f2a8edbe194e3163209718e95c655aa44d735a2e2ea71aae62083f4389fad3d4a14d57b7368651bf63b6d9341e2a365e2d6ac6b25a3a33aed27ae50c8d
+	source = https://github.com/fabrialberio/Pins/archive/v2.4.6.tar.gz
+	b2sums = 91acf8d4aefde4247c723e69b678603933d03547f053a040e3cc20a430c0aa454eb1b53fe5f9202a0e67bdcfcfadb4d17dcc7e58add083883a7171b531ea9cdf
 
 pkgname = pins
