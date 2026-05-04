@@ -1,7 +1,7 @@
 pkgbase = gixy-next
 	pkgdesc = Nginx configuration static analyzer
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gixy.io
 	arch = any
 	license = MPL-2.0
@@ -10,7 +10,7 @@ pkgbase = gixy-next
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = crossplane
+	depends = crossplane-gixy
 	depends = python-configargparse
 	depends = python-jinja
 	depends = python-tldextract
