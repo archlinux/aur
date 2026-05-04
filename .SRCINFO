@@ -1,7 +1,7 @@
 pkgbase = nocturne
 	pkgdesc = Bring your music library together
-	pkgver = 0.9.7
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/Jeffser/Nocturne
 	arch = any
 	license = GPL-3.0-or-later
@@ -14,7 +14,8 @@ pkgbase = nocturne
 	depends = python-mpris_server
 	depends = python-pillow
 	depends = python-tinytag
-	source = nocturne-0.9.7.tar.gz::https://github.com/Jeffser/Nocturne/archive/refs/tags/0.9.7.tar.gz
-	sha256sums = debdda29b1fb81d98769419d8349a8b0520b9c921649f06325c57eb9060b5424
+	depends = python-syncedlyrics
+	source = nocturne-1.0.0.tar.gz::https://github.com/Jeffser/Nocturne/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 5516930fa4199af575325b8f5919b707116575782976acf2957cac04a968aa8a
 
 pkgname = nocturne

@@ -2,8 +2,8 @@
 
 pkgname=nocturne
 _name=Nocturne
-pkgver=0.9.7
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 
 pkgdesc="Bring your music library together"
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
   'python-mpris_server'
   'python-pillow'
   'python-tinytag'
+  'python-syncedlyrics'
 )
 
 makedepends=(
@@ -26,7 +27,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Jeffser/$_name/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('debdda29b1fb81d98769419d8349a8b0520b9c921649f06325c57eb9060b5424')
+sha256sums=('5516930fa4199af575325b8f5919b707116575782976acf2957cac04a968aa8a')
 
 build() {
   cd "$_name-$pkgver"
