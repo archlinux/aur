@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf-bin
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
@@ -13,8 +13,8 @@ provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}" "vtf-thumbnailer")
 source=("MareTF-Linux-Standalone-gcc-release-${pkgver}.zip::$url/releases/download/v${pkgver}/MareTF-Linux-Standalone-gcc-release.zip"
 	"$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a6fdc8d4d633fde4718f60982f2214ed3eab7f3addb616c31896cdf580079a20'
-            '3ab8f552d8c828e4b967037e8f33dc59f08cc5d383e49c26e4de8ec94a6c844d')
+sha256sums=('5399552bd2dfaf13524220f95c1fe7e938be835eed2b1da6f1fb444cb1be32f4'
+            'c6ebc62c43cc3a697167f1e1ec13de245e140254865a749c651d0c7389339934')
 
 package() {
 	cd "$srcdir"
@@ -27,6 +27,7 @@ package() {
 	install -Dm644 "$srcdir/MareTF-${pkgver}/install/linux/thumbnailer.in" "$pkgdir/usr/share/thumbnailers/${pkgname::-4}.thumbnailer"
 	patchelf --remove-rpath "$pkgdir/usr/bin/${pkgname::-4}"
 	patchelf --remove-rpath "$pkgdir/usr/bin/${pkgname::-4}_gui"
+	patchelf --remove-rpath "$pkgdir/usr/bin/${pkgname::-4}_thumbnailer"
 
 	pushd "$pkgdir/usr/share"
 	sed -i 's/${PROJECT_NAME_PRETTY}/MareTF/g;s/${PROJECT_DESCRIPTION}/A work in progress command-line utility to work with VTF files./g;s/${PROJECT_NAME}/maretf/g' applications/${pkgname::-4}.desktop
