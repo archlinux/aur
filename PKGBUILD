@@ -3,19 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kiconthemes-git
-pkgver=6.0.0_r782.g3aeeeac
-pkgrel=2
+pkgver=6.27.0_r1013.g60d530a
+pkgrel=1
 pkgdesc='Support for icon themes'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL-2.0-only LGPL-3.0-only)
-depends=(gcc-libs glibc karchive-git kcolorscheme-git kconfig-git kconfigwidgets-git ki18n-git kwidgetsaddons-git qt6-base qt6-svg)
-makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
-optdepends=('breeze-icons-git: fallback icon theme'
-            'qt6-declarative: QML bindings')
+depends=(breeze-icons-git libstdc++ glibc karchive-git kcolorscheme-git kconfig-git ki18n-git kwidgetsaddons-git qt6-base qt6-svg)
+makedepends=(git doxygen extra-cmake-modules-git qt6-tools)
+optdepends=('qt6-declarative: QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
@@ -27,9 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
-    -DQT_MAJOR_VERSION=6 \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_TESTING=OFF
   cmake --build build
 }
 
