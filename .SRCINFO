@@ -1,3 +1,4 @@
+pkgbase = intel-deep-learning-essentials-bin
 pkgname = intel-deep-learning-essentials-bin
 pkgver = 2026.0.0.624
 pkgrel = 1
