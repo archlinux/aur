@@ -1,6 +1,3 @@
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Paris Atticus Keech Doherty <Paris.Doherty@icloud.com>
 pkgname=ttf-junimoalphabet
 pkgdesc="TrueType font for the Junimo language from Stardew Valley"
