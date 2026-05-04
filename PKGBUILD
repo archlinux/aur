@@ -8,13 +8,11 @@ url="https://github.com/stevenx65/opal-player"
 license=('MIT')
 depends=('alsa-lib' 'glib2')
 makedepends=('cargo' 'git')
-# 【优化】添加对 -bin 包的冲突声明
-#conflicts=('opal-tui' 'opal-player-bin')
-#replaces=('opal-tui')
-#provides=('opal-tui' 'opal-player')
-#source=("$pkgname::git+$url.git")
-#sha256sums=('SKIP')
-#警告⚠️：opal-player-bin并不属于该作者
+conflicts=('opal-tui' 'opal-player-bin')
+replaces=('opal-tui')
+provides=('opal-tui' 'opal-player')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
@@ -24,7 +22,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
 
-  # 自动检测二进制名（兼容新旧仓库）
+  # 自动检测二进制名
   local bin_name
   if [ -f "target/release/opal-player" ]; then
     bin_name="opal-player"
@@ -35,12 +33,7 @@ package() {
     return 1
   fi
 
-  # 安装主程序
   install -Dm755 "target/release/$bin_name" "$pkgdir/usr/bin/opal-player"
-
-  # 兼容旧命令
   ln -s /usr/bin/opal-player "$pkgdir/usr/bin/opal-tui"
-
-  # 安装许可证
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

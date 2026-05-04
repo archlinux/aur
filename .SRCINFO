@@ -9,5 +9,12 @@ pkgbase = opal-player
 	makedepends = git
 	depends = alsa-lib
 	depends = glib2
+	provides = opal-tui
+	provides = opal-player
+	conflicts = opal-tui
+	conflicts = opal-player-bin
+	replaces = opal-tui
+	source = opal-player::git+https://github.com/stevenx65/opal-player.git
+	sha256sums = SKIP
 
 pkgname = opal-player
