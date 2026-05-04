@@ -1,20 +1,20 @@
 pkgbase = kalc-bin
 	pkgdesc = A complex numbers, 2D/3D graphing, arbitrary precision, vector/matrix, CLI calculator with real-time output and support for units
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bgkillas/kalc
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	optdepends = gnuplot: for plotting support
 	provides = kalc
 	conflicts = kalc
-	source = kalc-1.5.1-README.md::https://github.com/bgkillas/kalc/raw/refs/tags/v1.5.1/README.md
 	source = kalc-1.5.1-LICENSE::https://github.com/bgkillas/kalc/raw/refs/tags/v1.5.1/LICENSE
-	sha256sums = c609575cee4b42a102b27fa8208503dcc2fc469f8b7a142f7e9636e52b207937
+	source = kalc-1.5.1-README.md::https://github.com/bgkillas/kalc/raw/refs/tags/v1.5.1/README.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	source_x86_64 = kalc-1.5.1-x86_64.zip::https://github.com/bgkillas/kalc/releases/download/v1.5.1/kalc-linux.zip
+	sha256sums = c609575cee4b42a102b27fa8208503dcc2fc469f8b7a142f7e9636e52b207937
+	source_x86_64 = kalc-1.5.1-linux.zip::https://github.com/bgkillas/kalc/releases/download/v1.5.1/kalc-linux.zip
 	sha256sums_x86_64 = 2ee54bd51f4ec8a63b1fe5a95b0f7c4c43725448110fe240a7879a6736b496f6
 
 pkgname = kalc-bin
