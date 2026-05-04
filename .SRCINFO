@@ -5,6 +5,7 @@ pkgbase = pylibcoopgamma
 	url = https://codeberg.org/maandree/pylibcoopgamma
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	makedepends = python>=3.4
 	makedepends = libcoopgamma

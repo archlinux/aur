@@ -4,7 +4,7 @@ pkgname=pylibcoopgamma
 pkgver=1.1.4
 pkgrel=1
 pkgdesc="Cooperative gamma Python 3 library"
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url="https://codeberg.org/maandree/pylibcoopgamma"
 license=('custom:ISC')
 depends=('python>=3.4' libcoopgamma)
