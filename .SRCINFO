@@ -1,5 +1,6 @@
 pkgbase = dav2d-git
-	pkgver = 0.0.1.r3.ge4a4fb2
+	pkgdesc = dav2d is an AV2 cross-platform decoder
+	pkgver = 0.0.1.r7.g5bc54a8
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/dav2d
 	arch = x86_64

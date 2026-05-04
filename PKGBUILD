@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=dav2d-git
-pkgver=0.0.1.r3.ge4a4fb2
+pkgver=0.0.1.r7.g5bc54a8
 pkgrel=1
-#pkgdesc="dav2d is an AV2 cross-platform decoder"
+pkgdesc="dav2d is an AV2 cross-platform decoder"
 arch=('x86_64')
 url="https://code.videolan.org/videolan/dav2d"
 license=('BSD-2-Clause')
@@ -11,9 +11,7 @@ conflicts=("${pkgname::-4}")
 depends=('glibc')
 makedepends=('meson' 'ninja' 'nasm' 'git')
 source=("git+https://code.videolan.org/videolan/dav2d.git")
-noextract=()
 sha256sums=('SKIP')
-validpgpkeys=()
 
 pkgver() {
 	cd "${srcdir}/${pkgname::-4}"
@@ -27,7 +25,10 @@ prepare() {
 
 build() {
 	cd "${srcdir}"
-	arch-meson build "${pkgname::-4}"
+	arch-meson build "${pkgname::-4}" \
+	-Denable_docs=false \
+	-Denable_examples=false \
+	-Denable_tests=false
 	meson compile -C build
 }
 
