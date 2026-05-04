@@ -14,7 +14,7 @@ depends=(
     'openssl'
     'wayland'
 )
-makedepends=('rust' 'cargo' 'git')
+makedepends=('rust' 'cargo' 'git' 'gcc')
 optdepends=(
     'dunst: desktop notifications on X11'
     'mako: desktop notifications on Wayland'
@@ -38,15 +38,9 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "$srcdir/campus-lms"
-    cargo fetch --locked 2>/dev/null || cargo fetch
-}
-
 build() {
     cd "$srcdir/campus-lms"
-    export RUSTFLAGS="-C opt-level=3"
-    cargo build --release --frozen 2>/dev/null || cargo build --release
+    cargo build --release
 }
 
 package() {
