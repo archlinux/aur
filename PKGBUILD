@@ -1,4 +1,4 @@
-# Maintainer: Aleksei Aleinikov <your-email@example.com>
+# Maintainer: Aleksei Aleinikov <alexey.aleynikov@telekom.com>
 pkgname=clawsec
 pkgver=2.7.0
 pkgrel=1
