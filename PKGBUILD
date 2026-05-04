@@ -1,9 +1,9 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgbase=rubymine-eap
 pkgname=(rubymine-eap rubymine-eap-jre)
-pkgver=261.23567.142
+pkgver=261.24374.27
 _pkgname=RubyMine
-_pkgver=2026.1.1
+_pkgver=2026.1.2
 pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)."
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk-update-icon-cache')
 optdepends=('ruby: Ruby run/debug support')
 install=rubymine.install
-source=(https://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}.tar.gz
+source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
   rubymine-eap.desktop
   rubymine.install)
-sha512sums=('df07cb674493c02ea07aeb44268ce2eaca32106672f2555dfb645fcd08114d1c7494fbe066097b2af23cd58e05fb884b7c6c5c4c16b086192ab765b4275a716c'
+sha512sums=('5ac192298321f737a3ec8acfa900fb6892d3d095c6df03fbf559842c16ff3bc7a62343457410fa6d216c4c25e74b0d66c59c07986df974b5a3bdba8384a04905'
   'e568e1aeb7541dc23fa7506f175df57ee1963de59bd64d0016de73ac1e2bb77c2a80542638d09ac972db7e034388c88cf850b3bfb09c759fce4844761f939c64'
   '38fb6b24a7d0e44deb8ae473bbbb4fa4a6c18544f12063dd6ff186be68a500ad50a6ce89c3765bc7d82da3f9735c17648b17c233911df696bc71a34b5ef40f8f')
 
