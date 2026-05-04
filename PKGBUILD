@@ -1,6 +1,6 @@
 # run pgo build or not; with X(vfb) or wayland
-: ${_build_profiled:=true}
-: ${_build_profiled_xvfb:=false}
+: ${_build_profiled:=false}
+: ${_build_profiled_xvfb:=true}
 
 epoch=1
 # Maintainer: konvix <busybeaver@2mail.co>
@@ -14,7 +14,7 @@ _ffbuild=1
 _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _lwrelver=100
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
