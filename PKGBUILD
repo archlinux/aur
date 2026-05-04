@@ -43,8 +43,8 @@ package() {
   cd "${_pkgname}"
   install -Dm755 "target/release/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
   
-  sed -i 's|Exec=.*|Exec=stellarfiles %U|' stellarfiles.desktop
-  install -Dm644 "stellarfiles.desktop" "$pkgdir/usr/share/applications/stellarfiles.desktop"
+  sed -i 's|Exec=.*|Exec=stellarfiles %U|' org.freedesktop.impl.portal.desktop.stellarfiles.desktop
+  install -Dm644 "org.freedesktop.impl.portal.desktop.stellarfiles.desktop" "$pkgdir/usr/share/applications/org.freedesktop.impl.portal.desktop.stellarfiles.desktop"
   
   sed -i 's|Exec=.*|Exec=/usr/bin/stellarfiles|' org.freedesktop.impl.portal.desktop.stellarfiles.service
   install -Dm644 "org.freedesktop.impl.portal.desktop.stellarfiles.service" \
