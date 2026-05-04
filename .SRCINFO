@@ -1,6 +1,6 @@
 pkgbase = python-acstools
 	pkgdesc = Python Tools for ACS (Advanced Camera for Surveys) Data
-	pkgver = 3.7.2
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://acstools.readthedocs.io
 	arch = any
@@ -8,21 +8,30 @@ pkgbase = python-acstools
 	checkdepends = python-pytest-astropy-header
 	checkdepends = python-pytest-remotedata
 	checkdepends = python-ci_watson
-	checkdepends = python-scikit-image>=0.11
+	checkdepends = python-scikit-image
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.7.2.tar.gz
-	md5sums = 0fa024a07f40b7878581578b242fa02f
+	makedepends = python-sphinx-automodapi
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-numpydoc
+	makedepends = python-astropy
+	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.8.0.tar.gz
+	md5sums = 2035c4cc467ac15f7e06ca8acbb32e41
 
 pkgname = python-acstools
-	depends = python>=3.8
-	depends = python-astropy>=3.1
+	depends = python>=3.10
+	depends = python-astropy
 	depends = python-requests
 	depends = python-yaml
 	optdepends = python-matplotlib
 	optdepends = python-scipy
 	optdepends = python-scikit-image
 	optdepends = python-stsci.imagestats
+	optdepends = python-photutils
+	optdepends = python-dask
 	optdepends = python-acstools-doc: Documentation for Python ACS Tools
+
+pkgname = python-acstools-doc
+	pkgdesc = Documentation for Python ACS Tools

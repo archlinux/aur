@@ -2,9 +2,8 @@
 
 pkgbase=python-acstools
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-#"python-${_pyname}-doc")
-pkgver=3.7.2
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Python Tools for ACS (Advanced Camera for Surveys) Data"
 arch=('any')
@@ -13,39 +12,43 @@ license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
-             'python-installer')
-#'python-pandas' 'python-astropy' 'python-beautifulsoup4' 'python-sphinx-automodapi' 'python-sphinx_rtd_theme' 'python-matplotlib')
+             'python-installer'
+             'python-sphinx-automodapi'
+             'python-sphinx_rtd_theme'
+             'python-numpydoc'
+             'python-astropy')
+# conftest.py
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-remotedata'
-#             'python-astropy'
-#             'python-stsci.tools'
-##            'python-beautifulsoup4'
-#             'python-requests'
+##            'python-stsci.tools'
+###           'python-beautifulsoup4'
               'python-ci_watson'
-              'python-scikit-image>=0.11')  # stsci.tools, {ci_watson -> crds} -> astropy, requests skimage -> matplotlib, scipy
+              'python-scikit-image')  # stsci.tools, {ci_watson -> crds} -> astropy, requests skimage -> matplotlib, scipy
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0fa024a07f40b7878581578b242fa02f')
+md5sums=('2035c4cc467ac15f7e06ca8acbb32e41')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
-#   msg "Building Docs"
-#   PYTHONPATH="../build/lib" make -C doc html
+    msg "Building Docs"
+    PYTHONPATH="../build/lib" make SPHINXOPTS="" -C doc html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
-package() {
-    depends=('python>=3.8' 'python-astropy>=3.1' 'python-requests' 'python-yaml')
+package_python-acstools() {
+    depends=('python>=3.10' 'python-astropy' 'python-requests' 'python-yaml')
     optdepends=('python-matplotlib'
                 'python-scipy'
                 'python-scikit-image'
                 'python-stsci.imagestats'
+                'python-photutils'
+                'python-dask'
                 'python-acstools-doc: Documentation for Python ACS Tools')
     cd ${srcdir}/${_pyname}-${pkgver}
 
@@ -54,10 +57,11 @@ package() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
-#package_python-acstools-doc() {
-#    pkgdesc="Documentation for Python ACS Tools"
-#    cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
-#
-#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-#}
+package_python-acstools-doc() {
+    pkgdesc="Documentation for Python ACS Tools"
+    cd ${srcdir}/${_pyname}-${pkgver}/doc//build
+
+    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.md
+}
