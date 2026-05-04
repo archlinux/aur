@@ -1,0 +1,5 @@
+[waywallen]
+source = "github"
+github = "waywallen/waywallen"
+prefix = "v"
+use_latest_release = true

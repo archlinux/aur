@@ -1,0 +1,24 @@
+diff --git a/ui/deps.json b/ui/deps.json
+index aa71583..b85f875 100644
+--- a/ui/deps.json
++++ b/ui/deps.json
+@@ -8,7 +8,8 @@
+     "url": "https://github.com/chriskohlhoff/asio.git",
+     "x-cmake": {
+       "name": "asio",
+-      "exclude_from_all": true
++      "exclude_from_all": true,
++      "find_package_args": "GLOBAL"
+     }
+   },
+   {
+@@ -20,7 +21,8 @@
+     "url": "https://github.com/taocpp/PEGTL.git",
+     "x-cmake": {
+       "name": "pegtl",
+-      "exclude_from_all": true
++      "exclude_from_all": true,
++      "find_package_args": "GLOBAL"
+     }
+   },
+   {
