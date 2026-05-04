@@ -5,16 +5,17 @@
 
 pkgbase=marble-git
 pkgname=(marble-git
+         marble-behaim-git
          marble-common-git
          marble-maps-git
          marble-qt-git)
-pkgver=24.04.70_r13851.gab23c211a
-pkgrel=2
+pkgver=26.07.70_r14655.g19c3ab319
+pkgrel=1
 pkgdesc='Desktop Globe'
 arch=($CARCH)
 url="https://github.com/KDE/${pkgbase%-git}"
 license=(GPL-2.0-or-later)
-makedepends=(git extra-cmake-modules-git gpsd kdoctools5 knewstuff5 kparts5 krunner5 libwlocate phonon-qt5-git protobuf qt5-serialport qt5-tools qt5-webengine shapelib kirigami2-git)
+makedepends=(git extra-cmake-modules-git gpsd kdoctools-git knewstuff-git kparts-git krunner-git libplasma-git libwlocate phonon-qt6-git protobuf qt6-serialport qt6-tools qt6-webengine shapelib)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -27,15 +28,15 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S ${pkgbase%-git} \
+  cmake -B build -S $pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_CXX_STANDARD=17 \
-    -DQT_PLUGINS_DIR=lib/qt/plugins \
+    -DQT_PLUGINS_DIR=lib/qt6/plugins \
+    -DBUILD_QT_AND_KDE=ON \
     -DBUILD_TESTING=OFF \
     -DBUILD_TOUCH=ON \
     -DBUILD_MARBLE_EXAMPLES=OFF \
-    -DBUILD_MARBLE_TESTS=OFF \
     -DMOBILE=OFF
   cmake --build build
 }
@@ -46,27 +47,28 @@ package_marble-common-git() {
   provides=(marble-common)
   depends=(gcc-libs
            glibc
-           phonon-qt5-git
+           phonon-qt6-git
            protobuf
-           qt5-base
-           qt5-declarative
-           qt5-location
-           qt5-svg
-           qt5-webchannel
-           qt5-webengine
+           qt6-5compat
+           qt6-base
+           qt6-declarative
+           qt6-positioning
+           qt6-svg
+           qt6-webchannel
+           qt6-webengine
            zlib)
   optdepends=('gpsd: GPS based geolocation'
               'libwlocate: WLAN based geolocation'
-              'qt5-serialport: APRS plugin'
+              'qt6-serialport: APRS plugin'
               'shapelib: SHP plugin')
 
   DESTDIR="$pkgdir" cmake --install build
-  rm -r "$pkgdir"/usr/share/{config.kcfg,kxmlgui5,metainfo,plasma} \
+  rm -r "$pkgdir"/usr/share/{config.kcfg,kxmlgui5,metainfo} \
         "$pkgdir"/usr/bin \
-        "$pkgdir"/usr/lib/qt/{qml,plugins/*.so,plugins/kf5} \
-        "$pkgdir"/usr/share/applications/{marble_geo.desktop,marble_worldwind.desktop,org.kde.marble*.desktop} \
-        "$pkgdir"/usr/share/kservices5/{plasma-*,marble_part.desktop} \
-        "$pkgdir"/usr/share/locale/*/LC_MESSAGES/*.mo
+        "$pkgdir"/usr/lib/qt6/plugins/{kf6,*.so} \
+        "$pkgdir"/usr/share/applications/org.kde.marble*.desktop \
+        "$pkgdir"/usr/share/icons/hicolor/scalable/apps/org.kde.marble*.svg \
+        "$pkgdir"/usr/share/plasma
 }
 
 package_marble-qt-git() {
@@ -76,29 +78,29 @@ package_marble-qt-git() {
   depends=(gcc-libs
            glibc
            marble-common-git
-           qt5-base)
+           qt6-base)
 
   DESTDIR="$pkgdir" cmake --install build/src/apps/marble-qt
 }
 
 package_marble-git() {
-  depends=(gcc-libs
-           glibc
-           kconfig5
-           kconfigwidgets5
-           kcoreaddons5
-           kcrash5
-           ki18n5
-           kio5
-           kparts5
-           kwidgetsaddons5
-           kxmlgui5
-           marble-common-git
-           qt5-base
-           qt5-declarative)
   conflicts=(marble)
   provides=(marble)
-  optdepends=('krunner5: Krunner plugin')
+  depends=(gcc-libs
+           glibc
+           kconfig-git
+           kconfigwidgets-git
+           kcoreaddons-git
+           kcrash-git
+           ki18n-git
+           kparts-git
+           kwidgetsaddons-git
+           kxmlgui-git
+           marble-common-git
+           qt6-base)
+  optdepends=('kcmutils-git: Plasma applets'
+              'kirigami-addons-git: Plasma applets'
+              'libplasma-git: Plasma applets')
   groups=(kde-applications-git
           kde-education-git)
 
@@ -106,7 +108,7 @@ package_marble-git() {
   DESTDIR="$pkgdir" cmake --install build/src/plasma
   DESTDIR="$pkgdir" cmake --install build/src/plasmarunner
   DESTDIR="$pkgdir" cmake --install build/src/thumbnailer
-  rm -r "$pkgdir"/usr/share/{icons,doc}
+  rm -r "$pkgdir"/usr/share/{icons,doc,locale}
 }
 
 package_marble-maps-git() {
@@ -115,10 +117,35 @@ package_marble-maps-git() {
   provides=(marble-maps)
   depends=(gcc-libs
            glibc
-           kirigami2-git
+           kconfig-git
+           kcoreaddons-git
+           kcrash-git
+           ki18n-git
+           kirigami-git
+           kirigami-addons-git
            marble-common-git
-           qt5-base
-           qt5-declarative)
+           qt6-base
+           qt6-declarative
+           qt6-webengine)
 
   DESTDIR="$pkgdir" cmake --install build/src/apps/marble-maps
+}
+
+package_marble-behaim-git() {
+  pkgdesc='Behaim Globe'
+  url='https://apps.kde.org/marble.behaim/'
+  conflicts=(marble-behaim)
+  provides=(marble-behaim)
+  depends=(gcc-libs
+           glibc
+           kcoreaddons-git
+           kcrash-git
+           ki18n-git
+           kirigami-addons-git
+           marble-common-git
+           qt6-base
+           qt6-declarative
+           qt6-webengine)
+
+  DESTDIR="$pkgdir" cmake --install build/src/apps/behaim
 }
