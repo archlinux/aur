@@ -3,8 +3,8 @@
 # Contributor: archlinux.info:tdy
 
 pkgname=vitables
-pkgver=3.0.3
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="A GUI browser and editor for PyTables/HDF5 files"
 arch=(any)
 url=https://vitables.org
@@ -43,6 +43,6 @@ package() {
   install -m644 "$srcdir"/vitables.svg "$pkgdir"/usr/share/pixmaps/
 }
 
-sha256sums=('9f1747ff3ccc2963ece3252519bbc88216c85b66c12c819e96b8d71d92aab31e'
+sha256sums=('5397e5143dd2153a57c099375a483340fd6ad701a9b972080226836b4b1bdaf9'
             'dd793f85d81591edd837a5fb94642dbf3ba488c69c605cbc2c87f74baea8676c'
             '0be6fdeb2c1f40fe2c478b0a6b9f99bad170d69f1210300d736bb98a5b9edcd8')
