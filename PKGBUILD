@@ -4,7 +4,7 @@ pkgname=libhashsum
 pkgver=1.1.2
 pkgrel=1
 pkgdesc="Library for calculating the cryptographic hashes"
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url="https://codeberg.org/maandree/libhashsum"
 license=('custom:ISC')
 depends=(libsha1 libsha2 'libkeccak>=1.3' 'libblake>=3.0')

@@ -5,6 +5,7 @@ pkgbase = libhashsum
 	url = https://codeberg.org/maandree/libhashsum
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	depends = libsha1
 	depends = libsha2
