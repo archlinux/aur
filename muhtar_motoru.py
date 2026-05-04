@@ -20,7 +20,7 @@ def muhtar_sistemini_calistir(dosya_yolu):
         yardim_menusu()
         return
     if dosya_yolu == "--versiyon":
-        print("Muhtar Dili V1.6 - Açık Kaynak Çekirdek (Anonim)")
+        print("Muhtar Dili V1.7 - Açık Kaynak Çekirdek (Anonim)")
         return
 
     try:
@@ -59,6 +59,12 @@ def muhtar_sistemini_calistir(dosya_yolu):
             r'\brenk_bitir\b': '"\\033[0m"',
             r'\.buyult\(\)': '.upper()',
             r'\.kucult\(\)': '.lower()',
+            r'\bliste\b': 'list',
+            r'\bekle\b': 'append',
+            r'\bcikar\b': 'remove',
+            r'\bsirala\b': 'sort',
+            r'\bters_cevir\b': 'reverse',
+            r'\buzunluk\b': 'len',
         }
 
         cevrilmis_kod = turkce_kod
