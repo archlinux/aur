@@ -1,6 +1,6 @@
 pkgbase = discord-latest-bin
 	pkgdesc = Discord - All-in-one voice, video and text communication (latest upstream .deb release)
-	pkgver = 0.0.135
+	pkgver = 1.0.136
 	pkgrel = 1
 	url = https://discord.com
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = discord-latest-bin
 	conflicts = discord
 	options = !strip
 	options = !debug
-	source = discord-0.0.135.deb::https://stable.dl2.discordapp.net/apps/linux/0.0.135/discord-0.0.135.deb
-	sha256sums = 802c0121bba21e8088f9e63f178beebd9ee9f8d9b561ecbcdacbfec990b66606
+	source = discord-1.0.136.deb::https://stable.dl2.discordapp.net/apps/linux/1.0.136/discord-1.0.136.deb
+	sha256sums = b5cf66221b46f3f744ea571fbf774def8425e791a491f3b01874305e2d307715
 
 pkgname = discord-latest-bin
