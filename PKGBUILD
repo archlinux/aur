@@ -10,7 +10,7 @@
 _pkgname=resolve
 pkgname=davinci-resolve-studio-beta
 pkgver=21.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -126,10 +126,12 @@ prepare() {
 
 package() {
   # Fix requested directories for license activation
-  install -d -m 0777 "${pkgdir}/opt/${_pkgname}/.license"
-  install -d -m 0777 "${pkgdir}/opt/${_pkgname}/logs"
-  install -d -m 0777 "${pkgdir}/opt/${_pkgname}/configs"
-
+  install -d -m0777 "${pkgdir}/opt/${_pkgname}/.license"
+  install -d -m0777 "${pkgdir}/opt/${_pkgname}/logs"
+  install -d -m0777 "${pkgdir}/opt/${_pkgname}/configs"
+  install -d -m0777 "${pkgdir}/opt/${_pkgname}/Extras"
+  touch "${pkgdir}/opt/${_pkgname}/.license/.keep"
+ 
   # Install binary launchers
   install -D -m 0755 "${srcdir}/davinci-control-panels-setup.sh" \
     "${pkgdir}/usr/bin/davinci-control-panels-setup"
