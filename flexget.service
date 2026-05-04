@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Type=simple
 RemainAfterExit=yes
-ExecStart=/usr/bin/flexget daemon start --autoreload-config
+ExecStart=/usr/bin/flexget daemon start
 ExecStop=/usr/bin/flexget daemon stop
 ExecReload=/usr/bin/flexget daemon reload
 KillMode=process
