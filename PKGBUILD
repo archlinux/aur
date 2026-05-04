@@ -4,8 +4,8 @@
 pkgname=v2rayn
 _pkgname=v2rayN
 pkgver=7.20.4
-_bin_commit=c58533aca0c90bd269ac90bd9fdfe03ee4450b30
-pkgrel=1
+_bin_commit=bc23807df776ac53bc51056ababa451b93d957ee
+pkgrel=2
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('aarch64' 'x86_64')
 url="https://github.com/2dust/v2rayN"
@@ -20,7 +20,7 @@ source=("git+${url}#tag=${pkgver}"
         "${pkgname}.sh")
 sha256sums=('0d108da1e86d96202edfca3cd66d646987b7599cee93a9928cd7610b13713719'
             'SKIP'
-            'df588b9b80a1888dab6e0376c77938bae223e8e8dc8b23abccec373da3256897'
+            '80a8cb20a98067dc49bfb67109c4fed83e4521aeeb65156383a27b834e33e4d9'
             '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390')
 
 prepare() {
