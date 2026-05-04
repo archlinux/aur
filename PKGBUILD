@@ -1,7 +1,7 @@
 # Maintainer: Koutheir Attouchi <koutheir at gmail dot com>
 _github_user_name='sevaa'
 pkgname=dwex
-pkgver=4.70
+pkgver=4.80
 pkgrel=1
 pkgdesc='GUI viewer for DWARF debug information'
 arch=('x86_64')
@@ -17,13 +17,13 @@ install=
 source=("https://github.com/${_github_user_name}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz" \
         "${pkgname}.png" "${pkgname}.desktop")
 noextract=()
-sha256sums=(2a00f4a4b95d63b7ccc6a1ce5187eeb35ad1e35a0ba4253ea88cf9c4554e99a3 \
+sha256sums=(a4ee32a394ab111786d1d296ad611a4cda4fdb56d9470531d71b3c7f8b922a2d \
             d92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f \
             155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d)
 validpgpkeys=()
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    true
 }
 
 build() {
