@@ -1,24 +1,20 @@
 # Maintainer: Ersin Can Karaca <canersinkaraca@gmail.com>
 pkgname=lapse-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Native screen recording application in Rust for Wayland/X11 (Pre-compiled binary)"
+pkgdesc="Modern and lightweight game clipper for Linux (Pre-compiled version)"
 arch=('x86_64')
-url="https://github.com/canersin/lapse"
-license=('custom')
-depends=('gtk3' 'wayland')
-provides=("lapse")
-conflicts=("lapse")
+url="https://github.com/canersin/Lapse"
+license=('GPLv3')
+depends=('gtk3' 'gpu-screen-recorder' 'libappindicator-gtk3')
+provides=('lapse')
+conflicts=('lapse' 'lapse-git')
 
-source=("https://github.com/canersin/lapse/releases/download/v${pkgver}/lapse-${pkgver}-x86_64.tar.gz")
-
-sha256sums=('17b71f8e3e09bed7e080631f2cbf5988b922d578d4cada31b4cea9f75f478cd5')
+# Using the .deb package as source is the easiest way for -bin packages
+source=("https://github.com/canersin/Lapse/releases/download/v${pkgver}/lapse_${pkgver}-1_amd64.deb")
+sha256sums=('SKIP')
 
 package() {
-  cd "lapse-${pkgver}"
-  install -Dm755 "lapse" "$pkgdir/usr/bin/lapse"
-  install -Dm644 "lapse.desktop" "$pkgdir/usr/share/applications/lapse.desktop"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "icon.png" "$pkgdir/usr/share/pixmaps/lapse.png"
-  install -Dm644 "shutter.ogg" "$pkgdir/usr/share/sounds/lapse/shutter.ogg"
+  # Extract the data.tar.xz from the debian package
+  tar -xvf data.tar.xz -C "${pkgdir}/"
 }
