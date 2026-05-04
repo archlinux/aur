@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=Kiru
 Comment=Transcription-driven video editing
-Exec=kiru %F
+Exec=kiru %U
 Icon=kiru
 Terminal=false
 Type=Application
 Categories=AudioVideo;Video;AudioVideoEditing;
-MimeType=video/mp4;video/quicktime;video/x-matroska;video/webm;
+MimeType=video/mp4;video/quicktime;video/x-matroska;video/webm;x-scheme-handler/kiru;
 Keywords=video;editing;transcription;subtitles;
 StartupWMClass=kiru
