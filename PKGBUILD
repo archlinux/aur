@@ -4,11 +4,11 @@
 # `/sys/class/backlight/*/brightness` via inotify and fires an OSD on
 # brightness change. Reads `wl_output.description` for friendly names.
 #
-# 0.1.1 and e6be729055c13ac5f37b64f39a9ee41d44ad01afb35cb2b4a97be5b342c167dc are filled in at publish time by the release
+# 0.1.4 and d8df821431eae3886028d1fb88d48df7f749ac73ee9d3a4daa14bb8713e95f11 are filled in at publish time by the release
 # workflow.
 
 pkgname=awob-listener-backlight-bin
-pkgver=0.1.1
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="awob listener — display backlight → OSD."
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('awob-bin')
 provides=('awob-listener-backlight')
 conflicts=('awob-listener-backlight' 'awob-git')
 source=("awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v${pkgver}/awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('e6be729055c13ac5f37b64f39a9ee41d44ad01afb35cb2b4a97be5b342c167dc')
+sha256sums=('d8df821431eae3886028d1fb88d48df7f749ac73ee9d3a4daa14bb8713e95f11')
 
 package() {
     cd "awob-${pkgver}-x86_64-unknown-linux-gnu"
