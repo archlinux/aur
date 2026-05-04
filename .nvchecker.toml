@@ -1,0 +1,4 @@
+[qahiri-font]
+source = "git"
+git = "https://github.com/aliftype/qahiri.git"
+prefix = "v"
