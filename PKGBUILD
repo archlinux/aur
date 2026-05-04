@@ -3,7 +3,7 @@
 pkgname=restic-box
 pkgver=0.3.4
 pkgrel=1
-pkgdesc="GTK3 AppIndicator tray applet for restic backups over SSH"
+pkgdesc="GTK3 AppIndicator tray applet for restic backups over SSH or local/mounted directory"
 arch=('any')
 url="https://github.com/Shikaku2/restic-box"
 license=('BSD-3-Clause')
