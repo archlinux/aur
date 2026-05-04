@@ -1,0 +1,13 @@
+pkgbase = batch-beatmap-downloader-bin
+	pkgdesc = A way to mass download osu! beatmaps with a user friendly query builder.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/junamat/batch-beatmap-downloader
+	arch = x86_64
+	license = MIT
+	provides = batch-beatmap-downloader-bin
+	conflicts = batch-beatmap-downloader-bin
+	source = batch-beatmap-downloader-bin-1.3.0.zip::https://github.com/junamat/batch-beatmap-downloader/releases/download/v1.3.0/Batch.Beatmap.Downloader-linux-x64-1.3.0.zip
+	sha256sums = d5065a000422f239f8f2b078ffddf25f657ef90203eaeeaaf85c686387d9fbcd
+
+pkgname = batch-beatmap-downloader-bin
