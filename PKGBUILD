@@ -1,37 +1,58 @@
-# Maintainer: Berke Oruc <berke@berkeai.com>
-# Contributor: Berke Oruc <berke@berkeai.com>
+# Maintainer: Berke Oruc <berke3oruc@gmail.com>
 
-pkgname=broslauncher
-pkgver=1.0.7
-pkgrel=1
-pkgdesc="BrosLauncher - Bros HM-1 CPU Emulator with QEMU"
-arch=('x86_64')
-url="https://bros.berkeai.com"
-license=('MIT')
-depends=('python' 'tk' 'qemu-system-x86')
-source=('launcher.py'
-        'schematic.py'
-        'constants.py'
-        'broslauncher.desktop'
-        'broslauncher.png')
-noextract=()
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+pkgname="broslauncher"
+pkgver="1.0.8"
+pkgrel="1"
+pkgdesc="Bros Launcher - Virtual Machine for Bros OS Testing"
+arch=("x86_64")
+url="https://github.com/berkeoruc/bros"
+license=("PROPRIETARY")
+depends=("python3" "tk" "qemu-system-x86_64")
+source=("broslauncher-1.0.8.tar.gz")
+sha256sums=("SKIP")
 
 package() {
-    install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/share/broslauncher"
-    install -d "${pkgdir}/usr/share/applications"
-    install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-
-    cat > "${pkgdir}/usr/bin/BrosLauncher" << 'WRAPPER'
+    cd "$srcdir"
+    
+    mkdir -p "$pkgdir/usr/share/broslauncher"
+    
+    if [ -f "launcher.py" ]; then
+        install -Dm755 launcher.py "$pkgdir/usr/share/broslauncher/launcher.py"
+    fi
+    
+    if [ -f "constants.py" ]; then
+        install -Dm644 constants.py "$pkgdir/usr/share/broslauncher/constants.py"
+    fi
+    
+    if [ -f "schematic.py" ]; then
+        install -Dm644 schematic.py "$pkgdir/usr/share/broslauncher/schematic.py"
+    fi
+    
+    if [ -f "bros-logo.png" ]; then
+        install -Dm644 bros-logo.png "$pkgdir/usr/share/broslauncher/bros-logo.png"
+    fi
+    
+    cat > "$pkgdir/usr/bin/broslauncher" << 'EOF'
 #!/bin/bash
-exec python3 /usr/share/broslauncher/launcher.py "$@"
-WRAPPER
-    chmod +x "${pkgdir}/usr/bin/BrosLauncher"
-
-    cp launcher.py "${pkgdir}/usr/share/broslauncher/"
-    cp schematic.py "${pkgdir}/usr/share/broslauncher/"
-    cp constants.py "${pkgdir}/usr/share/broslauncher/"
-    cp broslauncher.desktop "${pkgdir}/usr/share/applications/"
-    cp broslauncher.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/broslauncher.png"
+cd /usr/share/broslauncher
+echo "Downloading Bros OS ISO..."
+if [ ! -f bros.iso ]; then
+    echo "Download from: https://github.com/berkeoruc/bros/releases"
+    echo "Place bros.iso in /usr/share/broslauncher/"
+fi
+exec python3 launcher.py "$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/broslauncher"
+    
+    mkdir -p "$pkgdir/usr/share/applications"
+    cat > "$pkgdir/usr/share/applications/broslauncher.desktop" << 'EOF'
+[Desktop Entry]
+Name=Bros Launcher
+Comment=Virtual Machine for Bros OS Testing
+Exec=broslauncher
+Icon=broslauncher
+Terminal=false
+Type=Application
+Categories=System;Utility;
+EOF
 }
