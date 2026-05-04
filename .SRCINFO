@@ -18,7 +18,6 @@ pkgbase = upscayl
 	depends = vulkan-icd-loader
 	depends = bash
 	depends = hicolor-icon-theme
-	provides = upscayl
 	conflicts = upscayl-git
 	conflicts = upscayl-bin
 	conflicts = upscayl-appimage
