@@ -126,7 +126,7 @@ package() {
 
 
     if [ -d "$srcdir/build/lib" ]; then
-        cp -a "$srcdir/build/lib/" "$pkgdir/usr/lib/"
+        cp -a "$srcdir/build/lib/"*.so "$pkgdir/usr/lib/"
     fi
 
     local appIcons=(
