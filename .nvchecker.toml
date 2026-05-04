@@ -1,0 +1,5 @@
+[linux-wifi-hotspot-bin]
+source = "github"
+github = "lakinduakash/linux-wifi-hotspot"
+use_latest_release = true
+prefix = "v"
