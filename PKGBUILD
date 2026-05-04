@@ -37,10 +37,10 @@ provides=("${_name}")
 conflicts=("${_name}")
 source=("git+https://github.com/Indev450/SRB2Kart-Saturn.git"
         "srb2kart-saturn.desktop"
-        "https://github.com/Indev450/SRB2Kart-Saturn/releases/download/v7/Just-Extra-Files.zip")
+        "https://github.com/Indev450/SRB2Kart-Saturn/releases/download/v9.2/Saturn-Extra-Files-v9.zip")
 b2sums=('SKIP'
         '3faa48479e69064df03c260e8deecb0bd68eade36f20ea16d32688ea62dadf2c465a9c2fdd365e8a237855ebe8a32a349d908dc79b36822994e2128077b7ddd8'
-        'c1cdfe28621bd4c08d71f170ba76c4036538d595eb3f41a10392507f40b35ca032bf0b3d70541caf6609f46bff1bb698c1c39f3031919e843399df5f0ede8e38')
+        '1afdf6e97890384a65182ee147fadeb166df067d6e2693a6db0d014be3fb33c817fc0c95b5bc2aebea83997ec155902ce3fffd42063de21999b9327dce7ca1bd')
 
 pkgver() {
   cd "$srcdir"/SRB2Kart-Saturn
