@@ -1,28 +1,20 @@
-# Maintainer: Gabriele Granato castielloangela512@gmail.com
-pkgname=apt-fake-ubuntu
-pkgver=1.3
+# Maintainer: gabrielearchapt <tua-email>
+
+pkgname=apt-fake
+pkgver=1.4
 pkgrel=1
-pkgdesc="A smart APT wrapper for Arch Linux with GUI, Auto-Repair, and ARM support. Perfect for Ubuntu refugees!"
+pkgdesc="A simple wrapper to use APT syntax on Arch Linux with Zenity GUI"
 arch=('any')
-url="https://github.com/castielloangela512-ai/apt-fake"
-license=('GPL')
+url="https://aur.archlinux.org/packages/apt-fake"
+license=('GPL-3.0-or-later')
 depends=('bash' 'pacman' 'zenity')
-optdepends=('yay: AUR support (recommended)' 
-            'paru: alternative AUR support'
-            'upower: for battery status command')
-source=("apt-fake" 
-        "apt-fake.desktop")
-sha256sums=('14cc1a887206676c234fe3869610fed6a26603c6c5269eee59b63e02404845cd'
+source=("apt-fake" "apt-fake.desktop")
+sha256sums=('f74765deead50cf030592eea24797d60a5ff38c38163b7ed09c51a44ffb08061'
             '65aaf1cb417998cb2e10d50efbe0f25dcb9027770c4348735955d5203ee10c4d')
 
 package() {
-    # 1. Installa lo script principale in /usr/bin/apt
-    # Così puoi scrivere semplicemente 'apt' nel terminale
-    install -Dm755 "${srcdir}/apt-fake" "${pkgdir}/usr/bin/apt"
 
-    # 2. Installa il file Desktop per far apparire l'icona nel menu GNOME
-    install -Dm644 "${srcdir}/apt-fake.desktop" "${pkgdir}/usr/share/applications/apt-fake.desktop"
-    
-    # 3. (Opzionale) Se vuoi aggiungere un'icona specifica, dovresti aggiungerla qui
-    # Per ora usiamo un'icona di sistema standard chiamata 'system-software-install'
+  install -Dt "$pkgdir/usr/bin" -m755 apt-fake
+  
+  install -Dt "$pkgdir/usr/share/applications" -m644 apt-fake.desktop
 }

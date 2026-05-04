@@ -1,85 +1,30 @@
 #!/bin/bash
 
-# --- CONFIGURATION & COLORS ---
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
-# 1. Auto-detect AUR helper (yay, paru or pacman)
-if command -v yay &> /dev/null; then
-    HELPER="yay"
-elif command -v paru &> /dev/null; then
-    HELPER="paru"
-else
-    HELPER="pacman"
+if [[ $EUID -ne 0 ]]; then
+   zenity --error --text="Questo comando deve essere eseguito come root (sudo)." --width=300
+   exit 1
 fi
 
-COMMAND="$1"
-shift # Moves to the next arguments (package names)
-
-case "$COMMAND" in
-    # --- CORE FUNCTIONS ---
-    update) echo -e "${GREEN}Reading package lists... Done${NC}"; $HELPER -Sy ;;
-    upgrade) echo -e "${GREEN}Upgrading system...${NC}"; $HELPER -Syu ;;
-    install) echo -e "${GREEN}Installing packages...${NC}"; sudo pacman -S "$@" || $HELPER -S "$@" ;;
-    remove) echo -e "${GREEN}Removing packages...${NC}"; sudo pacman -Rs "$@" ;;
-    purge) echo -e "${GREEN}Purging packages and configs...${NC}"; sudo pacman -Rns "$@" ;;
-    autoremove) echo -e "${GREEN}Cleaning orphans...${NC}"; sudo pacman -Rns $(pacman -Qdtq) ;;
-    search) $HELPER -Ss "$@" ;;
-    show) pacman -Si "$@" || $HELPER -Si "$@" ;;
-    clean) echo -e "${GREEN}Cleaning cache...${NC}"; sudo pacman -Scc ;;
-    list) echo -e "${BLUE}Listing installed packages...${NC}"; pacman -Q ;;
-
-    # --- ADVANCED FUNCTIONS ---
-    repair) 
-        echo -e "${RED}Repairing database and keys...${NC}"
-        sudo rm -f /var/lib/pacman/db.lck
-        sudo pacman-key --init && sudo pacman-key --populate archlinux
-        echo -e "${GREEN}Repair complete.${NC}" ;;
-    check) echo -e "${BLUE}Checking for available updates...${NC}"; $HELPER -Qu ;;
-    download) echo -e "${GREEN}Downloading (no install)...${NC}"; sudo pacman -Sw "$@" ;;
-    info) echo -e "${BLUE}System Info:${NC}"; uname -a; uptime ;;
-    fix-broken) echo -e "${GREEN}Checking for broken dependencies...${NC}"; sudo pacman -D --check ;;
-    mirrors) echo -e "${GREEN}Updating mirrors for speed...${NC}"; sudo pacman-mirrors -f 5 || echo "Not available" ;;
-    arch) echo -e "${BLUE}Architecture:${NC} $(uname -m)" ;;
-    battery) upower -i $(upower -e | grep 'BAT') | grep -E "state|to\ full|percentage" || echo "No battery found" ;;
-    
-    # --- FUN & GUI ---
-    moo) 
-        echo "        (__)"
-        echo "        (oo)"
-        echo "  /------\/ "
-        echo " / |    ||  "
-        echo "*  /\---/\  "
-        echo "   ~~   ~~  "
-        echo "...Have you milked your Arch today?" ;;
-
-    gui)
-        echo -e "${BLUE}Opening APT-GUI...${NC}"
-        # Using Zenity for a lightweight GUI on your 3GB RAM Acer
-        TASK=$(zenity --list --title="APT-Fake v1.2 GUI" --width=400 --height=400 \
-            --column="Action" --column="Description" \
-            "Update" "Refresh package lists" \
-            "Upgrade" "Install all updates" \
-            "Repair" "Fix system & PGP keys" \
-            "Clean" "Clear package cache" \
-            "Moo" "The Magic Cow")
-
-        case $TASK in
-            "Update") kgx -e "apt update" ;;
-            "Upgrade") kgx -e "apt upgrade" ;;
-            "Repair") kgx -e "apt repair" ;;
-            "Clean") kgx -e "apt clean" ;;
-            "Moo") zenity --info --title="Moo!" --text="(__)\n(oo)\n/------\/\n/ |    ||\n*  /\---/\\\n~~   ~~" ;;
-        esac ;;
-
-    # --- HELP ---
-    help|--help)
-        echo -e "${GREEN}apt-fake-ubuntu v1.2 - 21 Functions Available${NC}"
-        echo "Usage: apt <command> [package]"
-        echo "Commands: update, upgrade, install, remove, purge, autoremove, search, show, clean,"
-        echo "          list, repair, check, download, info, fix-broken, mirrors, arch, battery, moo, gui, help" ;;
-
-    *) echo -e "${RED}E: Invalid command. Use 'apt help'${NC}"; exit 1 ;;
+case "$1" in
+    update)
+        pacman -Sy | zenity --text-info --title="Update" --width=400 --height=300 --auto-scroll
+        ;;
+    upgrade)
+        pacman -Syu | zenity --text-info --title="Upgrade" --width=400 --height=300 --auto-scroll
+        ;;
+    install)
+        shift
+        pacman -S "$@" | zenity --text-info --title="Install" --width=400 --height=300 --auto-scroll
+        ;;
+    remove|purge)
+        shift
+        pacman -Rs "$@" | zenity --text-info --title="Remove" --width=400 --height=300 --auto-scroll
+        ;;
+    autoremove)
+        pacman -Rns $(pacman -Qdtq) | zenity --text-info --title="Autoremove" --width=400 --height=300 --auto-scroll
+        ;;
+    *)
+        echo "Usage: apt-fake {update|upgrade|install|remove|autoremove}"
+        exit 1
+        ;;
 esac
