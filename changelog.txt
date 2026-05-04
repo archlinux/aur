@@ -1,3 +1,8 @@
+v1.062:
+新增以下汉字：𫪩𫱖𧗩𠀾𠁞𲓖𤡯𡿒𳁩𥾺𧵈𨋌𩝎𫎓𮗻𮷍𲁰；
+新增即将于 Unicode 18.0 加入的下标 w、y、z（码位分别为 U+209D～U+209F），以及平假名 koto（U+1B123）、片假名 yori（U+1B126）；
+调整部分汉字字形。
+
 v1.061:
 将 openTypeVheaVertTypoAscender 和 openTypeVheaVertTypoDescender 值分别调整为
 1024 和 -1024，以修复某些环境下竖排行距过宽的问题。(参见 lxgw/LxgwWenKai#182)
