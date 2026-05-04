@@ -3,7 +3,7 @@
 
 _pkgname=guitarix.vst
 pkgname=$_pkgname-git
-pkgver=0.3.r7.gb2c2e3d
+pkgver=v0.5.r4.ga8d7bbd
 pkgrel=1
 pkgdesc='A versatile (guitar) amplifier VST3 plugin (git version)'
 arch=(x86_64)
@@ -11,27 +11,30 @@ url='https://github.com/brummer10/guitarix.vst'
 license=(GPL-3.0-or-later)
 groups=(vst3-plugins pro-audio)
 depends=(
+  alsa-lib
+  avahi
+  boost-libs
+  curl
+  fftw
+  freetype2
   gcc-libs
   glib2
   glibc
   glibmm
   graphite
   libsigc++
+  libsndfile
+  lilv
+  webkit2gtk-4.1
 )
 makedepends=(
   boost
-  curl
   eigen
-  fftw
-  freetype2
   git
   gperf
   intltool
-  lilv
-  libsndfile
   sassc
   waf
-  webkit2gtk
 )
 optdepends=(
   'vst3-host: for VST3 plugins'
@@ -44,17 +47,13 @@ source=("$_pkgname::git+https://github.com/brummer10/guitarix.vst"
         'NAM::git+https://github.com/sdatkinson/NeuralAmpModelerCore.git'
         'eigen::git+https://gitlab.com/libeigen/eigen.git'
         'RTNeural::git+https://github.com/jatinchowdhury18/RTNeural.git')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd $_pkgname
   (
     set -o pipefail
-    git describe --long --tag --match 'v*' | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
+    git describe --long --tag --match 'v*' | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
@@ -83,18 +82,6 @@ build() {
 }
 
 package() {
-  depends+=(
-    libcurl.so
-    libfftw3f.so
-    libfreetype.so
-    libgio-2.0.so
-    libglib-2.0.so
-    libglibmm-2.4.so
-    libgobject-2.0.so
-    liblilv-0.so
-    libsigc-2.0.so
-    libsndfile.so
-  )
   cd $_pkgname
   make JUCE_VST3DESTDIR="$pkgdir"/usr/lib/vst3 install
 }
