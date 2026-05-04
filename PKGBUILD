@@ -1,7 +1,7 @@
 # Maintainer: Solavoy <solavoy@qq.com>
 
 pkgname=geekgeekrun-bin
-pkgver=0.17.2
+pkgver=0.17.4
 _pkgver="ui-v${pkgver}"
 pkgrel=1
 pkgdesc='牛人快跑 - GeekGeekRun，求职找工作自动化工具，基于 Puppeteer、Electron。界面友好，简单易用！开源，免费！快速海投、自动开聊、已读不回提醒、职位信息抓取、不合适职位标记、僵尸职位清理；让你即刻变身成为一台冇得感情的求职机器🤖，找工作不内耗。宝宝不用动，妈妈全自动~祝你收获好Offer！'
@@ -11,7 +11,7 @@ url='https://github.com/geekgeekrun/geekgeekrun'
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.deb::https://github.com/geekgeekrun/geekgeekrun/releases/download/${_pkgver}/geekgeekrun-ui_${pkgver}_amd64.deb")
-sha256sums=('4a63393397ff8a1594637fa79092dc28b688fe490e8087af5f9498012e3eee68')
+sha256sums=('184b9b79b3ad6886121ed7dfbe5bf83f8f14b4e33be313638a231a4d20379373')
 
 prepare() {
 	mkdir -p rootfs
