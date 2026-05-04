@@ -1,0 +1,41 @@
+pkgbase = waywallen-display
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/waywallen/waywallen-display
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = vulkan-headers
+	makedepends = libglvnd
+	depends = libgcc
+	depends = libstdc++
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-declarative
+	source = waywallen-display-0.1.2.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v0.1.2.tar.gz
+	source = 0001-install-kde-wallpaper-to-correct-path.diff
+	sha256sums = fed010472d38c477d466a2138742ede90ebcc0ed57adb53e2a9e5cea55212ad2
+	sha256sums = 6485388b5c171f732a7add7f1453c05813a3436573610a93b59738973fa0ec30
+
+pkgname = waywallen-display
+	pkgdesc = Desktop integration for the waywallen wallpaper daemon.
+	depends = libgcc
+	depends = libstdc++
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = waywallen
+	optdepends = libglvnd: EGL backend
+	optdepends = vulkan-icd-loader: Vulkan backend
+
+pkgname = plasma-wallpaper-waywallen
+	pkgdesc = Plasma 6 Wallpaper plugin for waywallen.
+	depends = libgcc
+	depends = libstdc++
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = waywallen-display=0.1.2
+	depends = kdeclarative
+	depends = libplasma
+	depends = kirigami

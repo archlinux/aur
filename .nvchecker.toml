@@ -1,0 +1,5 @@
+[waywallen-display]
+source = "github"
+github = "waywallen/waywallen-display"
+prefix = "v"
+use_latest_release = true

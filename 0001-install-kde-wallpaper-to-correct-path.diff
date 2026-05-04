@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1fac1b6..c485f44 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -311,7 +311,7 @@ if(WAYWALLEN_DISPLAY_PLUGIN_QML)
+     # qmldir + .so lives in plugins/qml/CMakeLists.txt (where the relevant
+     # CMAKE_CURRENT_BINARY_DIR resolves correctly).
+     install(DIRECTORY extensions/kde/package/
+-        DESTINATION org.waywallen.kde
++        DESTINATION ${CMAKE_INSTALL_DATADIR}/plasma/wallpapers/org.waywallen.kde
+         COMPONENT kde_extension
+         EXCLUDE_FROM_ALL)
+ 
+diff --git a/plugins/qml/CMakeLists.txt b/plugins/qml/CMakeLists.txt
+index 3fa77c1..d272dad 100644
+--- a/plugins/qml/CMakeLists.txt
++++ b/plugins/qml/CMakeLists.txt
+@@ -69,6 +69,6 @@ install(
+ # system prefix from also writing this kpackage-shaped path.
+ install(
+     DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Waywallen/Display/
+-    DESTINATION org.waywallen.kde/contents/ui/WaywallenDisplay
++    DESTINATION ${CMAKE_INSTALL_DATADIR}/plasma/wallpapers/org.waywallen.kde/contents/ui/WaywallenDisplay
+     COMPONENT kde_extension
+     EXCLUDE_FROM_ALL)
