@@ -71,7 +71,7 @@ package() {
 	"${pkgdir}/usr/bin/copilot" completion zsh > _copilot
 	install -Dm644 _copilot "${pkgdir}/usr/share/zsh/site-functions/_copilot"
 
-	msg2 "Generating autocompletions Fish"
+	msg2 "Generating autocompletions for Fish"
 	"${pkgdir}/usr/bin/copilot" completion fish > copilot.fish
 	install -Dm644 copilot.fish "${pkgdir}/usr/share/fish/vendor_completions.d/copilot.fish"
 
