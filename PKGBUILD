@@ -8,7 +8,7 @@ pkgdesc="A modern, intuitive, terminal text editor. Single file. No dependencies
 
 pkgver=2026.05.04
 pkgrel=1
-_gitversion=c8a4725
+_gitversion=92baf2a
 
 arch=('any')
 
@@ -41,7 +41,7 @@ sha256sums=('9f3273e5e01858ed10ab7a253cbd6b1abd7259bd9b4b3fd1dfafc3bf902e89c3'
             '2c1d40500aec7391a4a692bdfb121b5bedbac96789387cac34519a530fe1c33f'
             'b69a054e50829ddbc1f1d7aaa8aa6d3cfac9eb52c2ac85463e488bc30dc9bc46'
             '81d9daf0d01d40a842c7cba277c93a39a3467572e122badc5b1206892670b0e4'
-            '81506eb16fb0d4478d40599a4098ef9f4800a0ebecbbf11c251b863e2c97cb65')
+            '203a2e58e47778cefcdb4127f7f2815e32c53df6ed360aa096f68ce5859ecbe9')
 
 
 prepare() {
