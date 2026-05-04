@@ -7,7 +7,7 @@ pkgdesc="Bros Launcher - Virtual Machine for Bros OS Testing"
 arch=("x86_64")
 url="https://github.com/berkeoruc/bros"
 license=("PROPRIETARY")
-depends=("python3" "tk" "qemu-system-x86_64")
+depends=("python3" "tk")
 source=("broslauncher-1.0.8.tar.gz")
 sha256sums=("SKIP")
 
