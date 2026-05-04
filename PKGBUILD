@@ -2,27 +2,32 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.0.1.r4.gf159bda
-pkgrel=4
-pkgdesc="Aqueous Wayland window manager (River-based) with Noctalia bar"
+pkgver=0.1.0 # Will be updated by pkgver()
+pkgrel=2
+pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
 license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
-         'pixman' 'libdrm' 'libevdev' 'river' 'wlr-randr'
-         'noctalia-shell' 'libdecor' 'grim')
+         'pixman' 'libdrm' 'libevdev' 'wlr-randr'
+         'noctalia-shell' 'libdecor' 'grim' 'xwayland-satellite'
+         'xdg-desktop-portal-wlr' 'swaylock' 'swayidle')
+makedepends=('dotnet-sdk-10.0' 'clang' 'zlib' 'krb5' 'git' 'wayland-protocols')
 optdepends=('tuigreet: TUI greeter for greetd (recommended login path)'
             'greetd: minimal login manager for tuigreet'
             'aqueous-greetd-config: opinionated greetd+tuigreet preset for Aqueous'
             'ghostty: recommended terminal emulator'
             'nemo: recommended file manager'
             'firefox: web browser')
-makedepends=('dotnet-sdk-10.0' 'clang' 'zlib' 'krb5' 'git')
-provides=('aqueous')
-conflicts=('aqueous')
+provides=('aqueous' 'riverdelta')
+conflicts=('aqueous' 'riverdelta')
 install=aqueous.install
-source=("aqueous::git+${url}.git")
-sha256sums=('SKIP')
+source=(
+    "aqueous::git+${url}.git"
+    "riverdelta::git+https://github.com/Seafoam-Labs/RiverDelta.git"
+)
+sha256sums=('SKIP'
+            'SKIP')
 
 _rid_map() {
     case "$CARCH" in
@@ -43,48 +48,60 @@ pkgver() {
 }
 
 build() {
+    # Verify zig is new enough (RiverDelta requires >= 0.16.0).
+    # We enforce this here instead of via a pacman version constraint because
+    # the repo `zig` package is currently 0.15.x and Zig 0.16 is only available
+    # via `zig-master-bin` (AUR), which provides unversioned `zig`.
+    if ! command -v zig >/dev/null 2>&1; then
+        error "zig not found. Install zig-master-bin from the AUR (or another zig >= 0.16.0)."
+        return 1
+    fi
+    local zig_ver zig_base
+    zig_ver=$(zig version)
+    # Strip any -dev.NNN+hash pre-release suffix so we compare the numeric base
+    # version with sort -V (which has inconsistent semantics around bare `-`).
+    zig_base="${zig_ver%%-*}"
+    if ! printf '0.16.0\n%s\n' "$zig_base" | sort -V -C; then
+        error "Zig >= 0.16.0 required, found $zig_ver. Install zig-master-bin from the AUR."
+        return 1
+    fi
+    msg2 "Using zig $zig_ver"
+
+    # Build Aqueous components
     local rid; rid=$(_rid_map)
     cd "$srcdir/aqueous"
     for proj in Aqueous/Aqueous.csproj Aqueous.InputDaemon/Aqueous.InputDaemon.csproj Aqueous.OutputDaemon/Aqueous.OutputDaemon.csproj; do
         local name; name=$(basename "$proj" .csproj)
-        dotnet publish "$proj" \
-            -c Release \
-            -r "$rid" \
-            --self-contained true \
-            /p:PublishAot=true \
-            -o "$srcdir/publish/$name"
+        dotnet publish "$proj" -c Release -r "$rid" --self-contained true /p:PublishAot=true -o "$srcdir/publish/$name"
     done
+
+    # Build RiverDelta
+    msg2 "Building RiverDelta..."
+    cd "$srcdir/riverdelta"
+    zig build -Doptimize=ReleaseSafe -Dxwayland --prefix "$srcdir/river-dist" install
 }
 
 package() {
-    # AOT publish output is a single self-contained ELF per project; install
-    # the binaries directly to /usr/bin.
-    install -Dm755 "$srcdir/publish/Aqueous/aqueous" \
-        "$pkgdir/usr/bin/aqueous"
-    install -Dm755 "$srcdir/publish/Aqueous.InputDaemon/aqueous-inputd" \
-        "$pkgdir/usr/bin/aqueous-inputd"
-    install -Dm755 "$srcdir/publish/Aqueous.OutputDaemon/aqueous-outputd" \
-        "$pkgdir/usr/bin/aqueous-outputd"
+    # Install Aqueous binaries
+    install -Dm755 "$srcdir/publish/Aqueous/aqueous" "$pkgdir/usr/bin/aqueous"
+    install -Dm755 "$srcdir/publish/Aqueous.InputDaemon/aqueous-inputd" "$pkgdir/usr/bin/aqueous-inputd"
+    install -Dm755 "$srcdir/publish/Aqueous.OutputDaemon/aqueous-outputd" "$pkgdir/usr/bin/aqueous-outputd"
 
-    # River `-c` init wrapper: applies persisted output config before
-    # Aqueous draws its first frame, then forks the output daemon.
-    install -Dm755 "$srcdir/aqueous/packaging/aqueous-init" \
-        "$pkgdir/usr/bin/aqueous-init"
+    # Install RiverDelta binary as 'riverdelta' instead of 'river'
+    install -Dm755 "$srcdir/river-dist/bin/riverdelta" "$pkgdir/usr/bin/riverdelta"
 
-    # Session launcher.
-    install -Dm755 "$srcdir/aqueous/packaging/aqueous-wm.sh" \
-        "$pkgdir/usr/bin/aqueous-wm"
+    # Install RiverDelta share data (man pages, etc.)
+    if [ -d "$srcdir/river-dist/share" ]; then
+        install -d "$pkgdir/usr/share"
+        cp -dr --no-preserve=ownership "$srcdir/river-dist/share/"* "$pkgdir/usr/share/"
+    fi
 
-    # Wayland session entry (DM/greeter picks this up).
-    install -Dm644 "$srcdir/aqueous/aqueous.desktop" \
-        "$pkgdir/usr/share/wayland-sessions/aqueous.desktop"
-
-    # Default config — system-wide. The launcher seeds the user copy on
-    # first login if ~/.config/aqueous/wm.toml is absent.
-    install -Dm644 "$srcdir/aqueous/wm.toml" \
-        "$pkgdir/etc/xdg/aqueous/wm.toml"
-    install -Dm644 "$srcdir/aqueous/wm.toml" \
-        "$pkgdir/usr/share/aqueous/wm.toml"
+    # Install Aqueous packaging scripts and config
+    install -Dm755 "$srcdir/aqueous/packaging/aqueous-init" "$pkgdir/usr/bin/aqueous-init"
+    install -Dm755 "$srcdir/aqueous/packaging/aqueous-wm.sh" "$pkgdir/usr/bin/aqueous-wm"
+    install -Dm644 "$srcdir/aqueous/aqueous.desktop" "$pkgdir/usr/share/wayland-sessions/aqueous.desktop"
+    install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/etc/xdg/aqueous/wm.toml"
+    install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/usr/share/aqueous/wm.toml"
 
     # systemd user units for the input daemon (optional; launcher falls
     # back to spawning the daemon directly if the unit is inactive).
