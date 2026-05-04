@@ -3,7 +3,7 @@
 pkgbase=python-mike
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Manage multiple versions of your MkDocs-powered documentation"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest'
               'git')  # jinja <- mkdocs
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/jimporter/mike/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('0d3c8fc3d7a86a89551f0f9d1561a5f5')
+md5sums=('4e6d9cdad71a898b115ca8eb95491aa1')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \

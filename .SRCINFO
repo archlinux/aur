@@ -1,6 +1,6 @@
 pkgbase = python-mike
 	pkgdesc = Manage multiple versions of your MkDocs-powered documentation
-	pkgver = 2.1.4
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/jimporter/mike
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-mike
 	checkdepends = mkdocs
 	checkdepends = git
 	makedepends = python-setuptools
-	source = https://github.com/jimporter/mike/archive/refs/tags/v2.1.4.tar.gz
-	md5sums = 0d3c8fc3d7a86a89551f0f9d1561a5f5
+	source = https://github.com/jimporter/mike/archive/refs/tags/v2.2.0.tar.gz
+	md5sums = 4e6d9cdad71a898b115ca8eb95491aa1
 
 pkgname = python-mike
 	depends = python>=3.8
