@@ -1,15 +1,15 @@
 # Maintainer: sker <skippiepie@pm.me>
 pkgname=sonixy-git
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Lightweight audio collection manager"
 arch=('x86_64')
-url="https://codeberg.org/sker/sonixy"
+url="https://github.com/devsker/sonixy-mirror"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libnm' 'libappindicator-gtk3' 'librsvg' 'sqlite')
 makedepends=('cargo' 'nodejs' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('24a1e42144950c5e466c4f52b05ed81231980591bde2dce239a67f95f98ab37e')
+sha256sums=('49c707a21876204435eeed1620a701ed89a9789223b5e7f7602bb01dda44dc3e')
 
 build() {
   cd sonixy

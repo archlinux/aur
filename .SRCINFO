@@ -1,8 +1,8 @@
 pkgbase = sonixy-git
 	pkgdesc = Lightweight audio collection manager
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
-	url = https://codeberg.org/sker/sonixy
+	url = https://github.com/devsker/sonixy-mirror
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
@@ -14,7 +14,7 @@ pkgbase = sonixy-git
 	depends = libappindicator-gtk3
 	depends = librsvg
 	depends = sqlite
-	source = sonixy-git-0.2.1.tar.gz::https://codeberg.org/sker/sonixy/archive/0.2.1.tar.gz
-	sha256sums = 24a1e42144950c5e466c4f52b05ed81231980591bde2dce239a67f95f98ab37e
+	source = sonixy-git-0.2.2.tar.gz::https://github.com/devsker/sonixy-mirror/archive/0.2.2.tar.gz
+	sha256sums = 49c707a21876204435eeed1620a701ed89a9789223b5e7f7602bb01dda44dc3e
 
 pkgname = sonixy-git
