@@ -1,6 +1,6 @@
 pkgbase = pins
 	pkgdesc = Create your own application shortcuts
-	pkgver = 2.4.5
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://github.com/fabrialberio/Pins
 	arch = any
