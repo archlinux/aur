@@ -1,7 +1,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=AnVILBase
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -21,14 +21,15 @@ optdepends=(
   r-anvilaz
   r-anvilgcp
   r-biocstyle
+  r-gcptools
   r-knitr
   r-rmarkdown
   r-testthat
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('14d636c9cc9f4fcbdb7751b8d70233e2')
-b2sums=('e30de6f8410d3db4876cf895f690c8feeca3df7f1237036a6dd4b17025d05760ce50e475f68e4f0254fb57aa7b14f30d5d5d765784769b37370e6d6387888105')
+md5sums=('b59133c286cd7c4a4385b74675aad9c2')
+b2sums=('3aab830ef9848043aa8e48c88a208be0bd34dc095510c63620ef657ed600a3627c232315189af3d31d9304000e78ec9a80e520ea02ff68b8e779a3eedb41a88d')
 
 build() {
   mkdir build
