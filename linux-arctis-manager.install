@@ -7,34 +7,39 @@ post_install() {
     echo ""
     echo -e "${_y}:: ARCTIS MANAGER: READY TO USE${_r}"
     echo -e "${_y}::${_r} -----------------------------------------------------------------------"
-    echo -e "${_y}::${_r} TIP: To autostart the system tray icon on login, run:"
+    echo -e "${_y}::${_r} TIP: To autostart the system tray app on login, run:"
     echo -e "${_y}::${_r}"
-    echo -e "${_y}::${_r}    ${_b}lam-cli setup --systray-autostart${_r}"
+    echo -e "${_y}::${_r}    ${_b}cp ~/.local/share/applications/lam-gui-tray.desktop ~/.config/autostart/${_r}"
     echo -e "${_y}::${_r} -----------------------------------------------------------------------"
     echo ""
 }
 
 post_upgrade() {
-    echo ""
-    echo -e "${_y}:: ARCTIS MANAGER: UPDATE COMPLETED${_r}"
-    echo -e "${_y}::${_r} -----------------------------------------------------------------------"
-    echo -e "${_y}::${_r} Setup is fully automated. No further action required."
-    echo -e "${_y}::${_r}"
-    echo -e "${_y}::${_r} Some user files may remain from previous versions of this package."
-    if [ -e ~/.config/systemd/user/arctis-manager.service ]; then
-        echo -e "${_y}::${_r} Old user-level service file detected. Remove it to avoid conflicts:"
+    local _needs_cleanup=0
+    [ -e ~/.config/systemd/user/arctis-manager.service ] && _needs_cleanup=1
+    [ -e /etc/udev/rules.d/91-steelseries-arctis.rules ] && _needs_cleanup=1
+
+    if [ "$_needs_cleanup" -eq 1 ]; then
+        echo ""
+        echo -e "${_y}:: ARCTIS MANAGER: UPDATE COMPLETED${_r}"
+        echo -e "${_y}::${_r} -----------------------------------------------------------------------"
+        echo -e "${_y}::${_r} Leftover files from a previous install were detected:"
         echo -e "${_y}::${_r}"
-        echo -e "${_y}::${_r}    ${_b}rm ~/.config/systemd/user/arctis-manager.service${_r}"
-        echo -e "${_y}::${_r}"
+        if [ -e ~/.config/systemd/user/arctis-manager.service ]; then
+            echo -e "${_y}::${_r} Old user-level service file detected. Remove it to avoid conflicts:"
+            echo -e "${_y}::${_r}"
+            echo -e "${_y}::${_r}    ${_b}rm ~/.config/systemd/user/arctis-manager.service${_r}"
+            echo -e "${_y}::${_r}"
+        fi
+        if [ -e /etc/udev/rules.d/91-steelseries-arctis.rules ]; then
+            echo -e "${_y}::${_r} Old user-level udev rules detected. Remove them to avoid conflicts:"
+            echo -e "${_y}::${_r}"
+            echo -e "${_y}::${_r}    ${_b}sudo rm -f /etc/udev/rules.d/91-steelseries-arctis.rules${_r}"
+            echo -e "${_y}::${_r}"
+        fi
+        echo -e "${_y}::${_r} -----------------------------------------------------------------------"
+        echo ""
     fi
-    if [ -e /etc/udev/rules.d/91-steelseries-arctis.rules ]; then
-        echo -e "${_y}::${_r} Old user-level udev rules detected. Remove them to avoid conflicts:"
-        echo -e "${_y}::${_r}"
-        echo -e "${_y}::${_r}    ${_b}sudo rm -f /etc/udev/rules.d/91-steelseries-arctis.rules${_r}"
-        echo -e "${_y}::${_r}"
-    fi
-    echo -e "${_y}::${_r} -----------------------------------------------------------------------"
-    echo ""
 }
 
 post_remove() {
