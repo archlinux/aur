@@ -1,6 +1,6 @@
 pkgbase = awob-listener-wob-bin
 	pkgdesc = awob listener — wob-protocol FIFO bridge.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/jmylchreest/awob
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = awob-listener-wob-bin
 	provides = awob-listener-wob
 	conflicts = awob-listener-wob
 	conflicts = awob-git
-	source = awob-0.1.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.2/awob-0.1.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 8f344b5f63c15e1c826375317ad83f42f8da5d5742e910750fe779b595a41ca5
+	source = awob-0.1.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.3/awob-0.1.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = b1fbe5544824e901bbb4cefee13608bf93ae0928f09d75114a462d96dfe2747a
 
 pkgname = awob-listener-wob-bin

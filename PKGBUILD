@@ -4,11 +4,11 @@
 # (and optional " <bg>" / " <bg> <border>" suffixes) from a named pipe
 # and fires an OSD per line. Drop-in for existing wob keybinds.
 #
-# 0.1.2 and 8f344b5f63c15e1c826375317ad83f42f8da5d5742e910750fe779b595a41ca5 are filled in at publish time by the release
+# 0.1.3 and b1fbe5544824e901bbb4cefee13608bf93ae0928f09d75114a462d96dfe2747a are filled in at publish time by the release
 # workflow.
 
 pkgname=awob-listener-wob-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="awob listener — wob-protocol FIFO bridge."
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('awob-bin')
 provides=('awob-listener-wob')
 conflicts=('awob-listener-wob' 'awob-git')
 source=("awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v${pkgver}/awob-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('8f344b5f63c15e1c826375317ad83f42f8da5d5742e910750fe779b595a41ca5')
+sha256sums=('b1fbe5544824e901bbb4cefee13608bf93ae0928f09d75114a462d96dfe2747a')
 
 package() {
     cd "awob-${pkgver}-x86_64-unknown-linux-gnu"
