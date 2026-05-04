@@ -20,7 +20,7 @@ def muhtar_sistemini_calistir(dosya_yolu):
         yardim_menusu()
         return
     if dosya_yolu == "--versiyon":
-        print("Muhtar Dili V1.7 - Açık Kaynak Çekirdek (Anonim)")
+        print("Muhtar Dili V1.8 - Açık Kaynak Çekirdek (Anonim)")
         return
 
     try:
@@ -67,11 +67,22 @@ def muhtar_sistemini_calistir(dosya_yolu):
             r'\buzunluk\b': 'len',
         }
 
-        cevrilmis_kod = turkce_kod
-        for turkce, pythonca in sozluk.items():
-            cevrilmis_kod = re.sub(turkce, pythonca, cevrilmis_kod)
+        # Tokenizer: Tırnak içindekileri koruyarak çevir
+        parcalar = re.split(r'(\"[^\"]*\"|\'[^\']*\')', turkce_kod)
+        yeni_parcalar = []
 
-        import time, math, random
+        for parca in parcalar:
+            if parca.startswith(('"', "'")):
+                yeni_parcalar.append(parca)
+            else:
+                gecici = parca
+                for turkce, pythonca in sozluk.items():
+                    gecici = re.sub(turkce, pythonca, gecici)
+                yeni_parcalar.append(gecici)
+
+        cevrilmis_kod = "".join(yeni_parcalar)
+
+        import time, math, random, os
         muhtar_globals = {
             "time": time,
             "math": math,
@@ -84,7 +95,12 @@ def muhtar_sistemini_calistir(dosya_yolu):
     except FileNotFoundError:
         print(f"Muhtar diyor ki: '{dosya_yolu}' mahallede yok kanka!")
     except Exception as hata:
-        print(f"Muhtar Çöktü! Detay: {hata}")
+        # Satır numarasını da veren gelişmiş hata yakalayıcı
+        import traceback
+        _, _, tb = sys.exc_info()
+        # Son hata karesini al (kullanıcının yazdığı kodun satırı)
+        satir = traceback.extract_tb(tb)[-1].lineno
+        print(f"Muhtar Çöktü! Satır {satir} Detay: {hata}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
