@@ -1,5 +1,5 @@
 pkgname=batman-rs
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Battery manager daemon that monitors hardware power events and executes user-defined rules'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('389ceee8eae20a40197a62d9bac5af726b24e6c3401f87eab76cbb697a99f37c')
+sha256sums=('4e98ee61a9e71474adec85dddc6c722049b5e34ccf60f330fbfb595f25186116')
 
 prepare() {
   cd "batman-rs-$pkgver"
