@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=lrcget
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility for mass-downloading LRC synced lyrics for your offline music library.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tranxuanthang/lrcget'
@@ -36,6 +36,9 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 src-tauri/target/release/lrcget "$pkgdir/usr/bin/lrcget-bin"
     install -Dm0755 ../lrcget "$pkgdir/usr/bin/lrcget"
+    install -Dm644 packaging/linux/LRCGET.desktop "$pkgdir/usr/share/applications/LRCGET.desktop"
+    sed -i 's|Exec=LRCGET|Exec=lrcget|g' "$pkgdir/usr/share/applications/LRCGET.desktop"
+    install -Dm644 src-tauri/icons/icon.png "$pkgdir/usr/share/pixmaps/LRCGET.png"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
