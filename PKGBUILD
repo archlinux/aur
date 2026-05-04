@@ -14,10 +14,10 @@ sha256sums=('d5065a000422f239f8f2b078ffddf25f657ef90203eaeeaaf85c686387d9fbcd')
 
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
-  cp -r "${srcdir}/Batch Beatmap Downloader-linux-x64/"* "${pkgdir}/opt/${pkgname}/"
+  cp -r "${srcdir}/Batch Beatmap Downloader-linux-x64/"* "${pkgdir}/opt/batch-beatmap-downloader/"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/batch-beatmap-downloader" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/batch-beatmap-downloader" "${pkgdir}/usr/bin/batch-beatmap-downloader"
 
   install -dm755 "${pkgdir}/usr/share/applications"
   cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
