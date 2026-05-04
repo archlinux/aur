@@ -6,12 +6,13 @@
 
 pkgname=gephi
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive graph visualization and exploration platform"
 arch=('x86_64')
 url="https://gephi.org"
 license=('CDDL-1.0 AND GPL-3.0-only')
-depends=('java-runtime=17' 'java-environment=17' 'libxxf86vm' 'libnet' 'freetype2')
+_jdk=17
+depends=("java-runtime=$_jdk" "java-environment=$_jdk" 'libxxf86vm' 'libnet' 'freetype2')
 makedepends=('gendesk')
 options=(!strip)
 source=("https://github.com/gephi/gephi/releases/download/v$pkgver/gephi-$pkgver-linux-x64.tar.gz")
@@ -20,30 +21,34 @@ b2sums=('2732808c268ac2002e535cb4e9051c1f3e9cfd9de56aad9d055ab85eb8ef5359930e001
 prepare() {
   gendesk -n --name "Gephi - The Open Graph Viz Platform" \
     --pkgname "$pkgname" \
-    --pkgdesc "$pkgdesc"
+    --pkgdesc "$pkgdesc" \
+    --categories "Graphics;Education;Science;Network;DataVisualization" \
+    --exec "gephi %F" \
+    --genericname "Network Visualization"
 }
 
 package() {
-  cd "$srcdir/gephi-${pkgver}"
+  cd "$srcdir/gephi-$pkgver"
 
-  install -d "${pkgdir}/usr/share/java/${pkgname}"
-  cp -r * "${pkgdir}/usr/share/java/${pkgname}"
+  install -d "$pkgdir/usr/share/gephi"
+  cp -r * "$pkgdir/usr/share/gephi"
 
-  # Fix config file permissions so users can read it
-  chmod 644 "${pkgdir}/usr/share/java/${pkgname}/etc/gephi.conf"
+  chmod 644 "$pkgdir/usr/share/gephi/etc/gephi.conf"
 
-  find "${pkgdir}" -type f -iname \*.dll -delete
-  find "${pkgdir}" -type f -iname \*.exe -delete
-  find "${pkgdir}" -type f -name .lastModified -delete
+  find "$pkgdir" -type f \( -iname '*.dll' -o -iname '*.exe' \
+    -o -name '.lastModified' \) -delete
 
-  install -d "${pkgdir}/usr/bin"
-  cat >"${pkgdir}/usr/bin/gephi" <<'EOF'
+  install -d "$pkgdir/usr/bin"
+  cat >"$pkgdir/usr/bin/gephi" <<EOF
 #!/bin/sh
-export GEPHI_JDK=/usr/lib/jvm/java-17-openjdk
-exec /usr/share/java/gephi/bin/gephi "$@"
+export GEPHI_JDK=/usr/lib/jvm/java-${_jdk}-openjdk
+exec /usr/share/gephi/bin/gephi "\$@"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/gephi"
+  chmod 755 "$pkgdir/usr/bin/gephi"
 
-  # Install the desktop file
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "$srcdir/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  install -Dm644 "$srcdir/$pkgname-$pkgver/flathub/gephi.png" \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/gephi.png"
 }
