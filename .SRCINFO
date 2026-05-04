@@ -1,6 +1,6 @@
 pkgbase = mhrv-rs-bin
 	pkgdesc = Free DPI bypass via a Google Apps Script relay with TLS SNI concealment
-	pkgver = 1.9.9
+	pkgver = 1.9.10
 	pkgrel = 1
 	url = https://github.com/therealaleph/MasterHttpRelayVPN-RUST
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = mhrv-rs-bin
 	license = MIT
 	provides = mhrv-rs
 	conflicts = mhrv-rs
-	source_aarch64 = mhrv-rs-1.9.9-linux-aarch64.tar.gz::https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/download/v1.9.9/mhrv-rs-linux-arm64.tar.gz
-	sha256sums_aarch64 = cd76b48d74341d15b858ef5f8774359ba37be8df9d8e7956ab42e2e0df8cfa51
-	source_x86_64 = mhrv-rs-1.9.9-linux-x86_64.tar.gz::https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/download/v1.9.9/mhrv-rs-linux-amd64.tar.gz
-	sha256sums_x86_64 = ead93b1b5e68c7ece097d7400cecdc294f613742824f7906db36290647b957d2
+	source_aarch64 = mhrv-rs-1.9.10-linux-aarch64.tar.gz::https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/download/v1.9.10/mhrv-rs-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7a303de8acfba0d995ab584ab3bfd5da7bf56fd09af79f03e4ec832677c65693
+	source_x86_64 = mhrv-rs-1.9.10-linux-x86_64.tar.gz::https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/download/v1.9.10/mhrv-rs-linux-amd64.tar.gz
+	sha256sums_x86_64 = f6f5d1a538d9ae2f26cfec219c21ebad8dbf94d9676de3c05d2a9be57eb96d73
 
 pkgname = mhrv-rs-bin
