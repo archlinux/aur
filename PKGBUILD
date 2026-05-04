@@ -4,14 +4,20 @@ _Name="DemBones"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated algorithm to extract the linear blend skinning (LBS) from a set of example poses "
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/electronicarts/dem-bones"
-license=('BSD-3-Clause')
+license=(
+  'BSD-3-Clause'
+)
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libgomp'
+  'libstdc++'
   'libxml2-legacy'
   'zlib'
 )
@@ -22,11 +28,15 @@ conflicts=(
   "${_pkgname}"
 )
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE.md::${url}/raw/refs/tags/v${pkgver}/LICENSE.md")
-source_x86_64=("${_pkgsrc}-x86_64::${url}/raw/refs/tags/v${pkgver}/bin/Linux/${_Name}")
-sha256sums=('7758db85285ac15664fabeb0756c906b12790b161d2c7dd34db21a871c01abb3'
-            '8a65a1d8189b678b7da090ca257fa9aef0d6f4a00a2710005e0ac40c9634d9d8')
+source=(
+  "${_pkgsrc}-LICENSE.md::${url}/raw/refs/tags/v${pkgver}/LICENSE.md"
+  "${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64::${url}/raw/refs/tags/v${pkgver}/bin/Linux/${_Name}"
+)
+sha256sums=('8a65a1d8189b678b7da090ca257fa9aef0d6f4a00a2710005e0ac40c9634d9d8'
+            '7758db85285ac15664fabeb0756c906b12790b161d2c7dd34db21a871c01abb3')
 sha256sums_x86_64=('27797f67f404ed8d454e547aa79b0a736198742d9897b3e802b0c46424767572')
 
 package() {
