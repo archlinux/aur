@@ -43,6 +43,32 @@ declare -r -a ORIGIN_LINKS=(
     https://colorfulstage.com/upload_images/media/Download/Honami%20Static%20Cursor.zip
     https://colorfulstage.com/upload_images/media/Download/Shiho%20Animated%20Cursor.zip
     https://colorfulstage.com/upload_images/media/Download/Shiho%20Static%20Cursor.zip
+
+    # Updated on 2026-05-04, the following links are added.
+    https://colorfulstage.com/upload_images/media/Download/Airi%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Airi%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Akito%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Akito%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/An%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/An%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Emu%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Emu%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Ena%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Ena%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Haruka%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Haruka%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Mafuyu%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Mafuyu%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Mizuki%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Mizuki%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Nene%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Nene%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Rui%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Rui%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Shizuku%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Shizuku%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Toya%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Toya%20Static%20Cursor.zip
 )
 
 # https://github.com/SystemRage/Metamorphosis/blob/master/Metamorphosis.py#L111-L205
