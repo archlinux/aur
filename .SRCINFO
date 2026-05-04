@@ -1,0 +1,16 @@
+pkgbase = python-timesaw
+	pkgdesc = A smart and friendly time-tracking library for Python developers.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/timesaw/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/timesaw/timesaw-1.0.0.tar.gz
+	sha256sums = f9f648bd6f62fc8a09ca565ccdb25cf07bf9174b589fa16cf97d13509e8d20e1
+
+pkgname = python-timesaw
