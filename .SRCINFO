@@ -1,0 +1,14 @@
+pkgbase = ionlog
+	pkgdesc = Log analysis and anomaly detection — NEMESIS ENGINE
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/VanHoney-ltd/ionlog
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = ionlog-0.1.0.tar.gz::https://github.com/VanHoney-ltd/ionlog/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = edacafef261108f09b32cc8276c09e65534f8fc28106fca2357f6b2a4d376ce6
+
+pkgname = ionlog
