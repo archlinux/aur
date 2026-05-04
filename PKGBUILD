@@ -3,7 +3,7 @@
 _pkgauthor=ralsina
 _pkgname=grafito
 pkgname=${_pkgname}-bin
-pkgver=0.16.3
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A linux logs web frontend"
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_barch[1]}")
 sha256sums=('811bf1c965009017d9dfc3d6a3a62018fce8c5343ba4a37aa71c248ac255815b'
             '5e12cdb77daa2372d7232dc9ceeec7084f14afee0cf2db28e5ed2df9bb0e1cbf'
-            '571079ea2b4337c0c55a3b86a70227c2850e676ad9f7fa750f7cd98f9ad5e9f7'
-            '1e104a703032ab075c735901e289e43b347f96a200c01391040db9484062a392')
-sha256sums_x86_64=('ac0791b813cb8c5d3ecae1a8f1b2fffbc3b59287fa03651c9c3fa37f74e796d1')
-sha256sums_aarch64=('e70ca8a3b3acb27b256745d1473e612ac8a45f28503de91b3b9be196a4a53d88')
+            'baa7cb32a74f55b71158bdbc2282c9b7a2f589bb945611cf80d4ca6736aed805'
+            '3f680ceb7957f2ef61a3dea28e2cd02ab8ae0bc3293f87d676b6bdbbb601fd3a')
+sha256sums_x86_64=('ab0d5b281a7486a705acfbe9b92d0127031af60b6b56eaa778fb05ace81eb01f')
+sha256sums_aarch64=('8c15b797f3654ca50d02e8f8ccadc0868fcb1b1831f1bf43ddd37d7af2d82744')
 
 
 package() {
