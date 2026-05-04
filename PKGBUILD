@@ -11,8 +11,8 @@ source=("$pkgname-$pkgver-CL-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWZh
         *.md)
 changelog='changelog.txt'
 conflicts=('ttf-lxgw-zhisong')
-sha256sums=('d23e4a82d3658c116eb063696006ed9f89cc07e7a2c847fd53e3449ef0c8bbb7'
-            '3669212f03c6722346aea641bc36c4b6007b824980a6ed2bb41646fc12f73394'
+sha256sums=('a557deb093a6066155a0653b751db6ed7746e21c46c28e1f074d55002a1f104b'
+            '22cb5628c9fa94c518de6140dc0874e8b1d0df5ead51855e61d5604a7e5bf942'
             'e33bc6a5f48e8fef08f7ab74b24b199c2d6b1495d7a6fc5cc285c1e44d768877'
             '18e639e1d5d575cb92694c79b2aed1781a234eb5be4200c1479a6c27e11fddcc')
 
