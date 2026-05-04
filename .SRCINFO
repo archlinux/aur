@@ -1,8 +1,8 @@
 pkgbase = frzr
 	pkgdesc = A deployment and update system for read-only btrfs subvolume based operating systems
-	pkgver = 0.15.6
+	pkgver = 0.16.0
 	pkgrel = 1
-	url = https://github.com/gamer-os/frzr
+	url = https://github.com/chimeraos/frzr
 	arch = any
 	license = MIT
 	depends = btrfs-progs
@@ -11,7 +11,9 @@ pkgbase = frzr
 	depends = dosfstools
 	depends = jq
 	depends = util-linux
-	source = frzr-0.15.6.tar.gz::https://github.com/gamer-os/frzr/archive/0.15.6.tar.gz
-	md5sums = 01e158bf103ac8871af30a663cb1d7fa
+	depends = expect
+	depends = oras
+	source = frzr-0.16.0.tar.gz::https://github.com/chimeraos/frzr/archive/0.16.0.tar.gz
+	md5sums = acfadc3b0b635d90fee3ea39ac2dcbe1
 
 pkgname = frzr
