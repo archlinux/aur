@@ -4,23 +4,48 @@ pkgname="playedit"
 _commit_rel="f1b69def2d34e850f8526ffb606f73948d43bcf9" # 0.1.6
 _commit="bf09f692f151be776efcb72703f9b9b5f6a54419" # r198
 pkgver="0.1.6+r198+g${_commit::7}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK GUI for creating and editing playlists on an MTP (Media Transfer Protocol) device"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://playedit.sourceforge.net"
-license=('GPL-3.0-or-later')
-depends=('atkmm' 'cairomm' 'gcc-libs' 'glibmm' 'glib2' 'glibc' 'gtkmm3>=3.10'
-         'libgudev' 'libsigc++' 'libusb' 'mpg123' 'pangomm')
-makedepends=('git' 'intltool') # 'gnome-common' 'gnome-doc-utils'
+license=(
+  'GPL-3.0-or-later'
+)
+depends=(
+  'atkmm'
+  'cairomm'
+  'glibmm'
+  'glib2'
+  'glibc'
+  'gtkmm3>=3.10'
+  'libgcc'
+  'libgudev'
+  'libsigc++'
+  'libstdc++'
+  'libusb'
+  'mpg123'
+  'pangomm'
+)
+makedepends=(
+  'git'
+  # 'gnome-common'
+  # 'gnome-doc-utils'
+  'intltool'
+)
 _pkgsrc="${pkgname}"
-source=("${_pkgsrc}::git+https://git.code.sf.net/p/${pkgname}/code#commit=${_commit}"
-        "${pkgname}_include_string.patch")
+source=(
+  "${_pkgsrc}::git+https://git.code.sf.net/p/${pkgname}/code#commit=${_commit}"
+  "${pkgname}_include_string.patch"
+)
 b2sums=('7a7ec83e627757478fa74e58a84902b50170d0d926d70bb84b758ecd9bbaa4617e9fa9fb42b9e1dcd8aba5a6bc6ff23f78d100256105bc1099ab43578d335c81'
         '7f8feb796563f24f0eda4da408e689050c57ec65571e63b87d6ba7b7d8af7fc87d5de1f68e8e61cd6683ccdc35930baaba8db7c29ffd5973e26b03c8ace01b2c')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${pkgname}_include_string.patch"
+
   sed -e 's/ -O2//g' \
       -e '/GNOME_DOC_INIT/d' \
       -e '/help\//d' \

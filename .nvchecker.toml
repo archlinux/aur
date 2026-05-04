@@ -1,4 +1,6 @@
 [playedit]
-source = "git"
-git = "https://git.code.sf.net/p/playedit/code"
-prefix = "v"
+source = "manual"
+
+# source = "git"
+# git = "https://git.code.sf.net/p/playedit/code"
+# prefix = "v"

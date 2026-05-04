@@ -1,7 +1,7 @@
 pkgbase = playedit
 	pkgdesc = A GTK GUI for creating and editing playlists on an MTP (Media Transfer Protocol) device
 	pkgver = 0.1.6+r198+gbf09f69
-	pkgrel = 2
+	pkgrel = 3
 	url = https://playedit.sourceforge.net
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,13 +9,14 @@ pkgbase = playedit
 	makedepends = intltool
 	depends = atkmm
 	depends = cairomm
-	depends = gcc-libs
 	depends = glibmm
 	depends = glib2
 	depends = glibc
 	depends = gtkmm3>=3.10
+	depends = libgcc
 	depends = libgudev
 	depends = libsigc++
+	depends = libstdc++
 	depends = libusb
 	depends = mpg123
 	depends = pangomm
