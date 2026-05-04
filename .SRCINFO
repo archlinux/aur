@@ -1,6 +1,6 @@
 pkgbase = xilinx-qdma-git
 	pkgdesc = Xilinx PCI Express Multi Queue DMA (QDMA) driver for high-performance direct memory access (DMA) via PCI Express with UltraScale+ devices and beyond
-	pkgver = 20260226
+	pkgver = 20260504
 	pkgrel = 1
 	url = https://xilinx.github.io/dma_ip_drivers/master/QDMA/linux-kernel/html/index.html
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = xilinx-qdma-git
 	makedepends = git
 	depends = linux=6.19.11.arch1-1
 	depends = libaio
-	options = !lto
 	source = git+https://github.com/Xilinx/dma_ip_drivers.git
 	source = patch_access_common_h
 	source = patch_app_dmaxfer

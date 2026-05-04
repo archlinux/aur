@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=xilinx-qdma-git
-pkgver=20260226
+pkgver=20260504
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Xilinx PCI Express Multi Queue DMA (QDMA) driver for high-performance direct memory access (DMA) via PCI Express with UltraScale+ devices and beyond'
@@ -41,9 +41,6 @@ sha256sums=(
 	'395d581f1bd23ae35aab0a627292703f489aa094eddbab89a80b0bfd20dd4e7e'
 )
 
-# LTO triggers errors, disable it
-options=('!lto')
-
 prepare() {
 	cd "${srcdir}/dma_ip_drivers"
 
@@ -66,29 +63,39 @@ pkgver() {
 build() {
 	cd "${srcdir}/dma_ip_drivers/QDMA/linux-kernel"
 
-	# FIXME Remove some default makepkg CFLAGS that make compilation fail
-	# Observed with : gcc 15.2.1, linux 6.19.11
-
-	CFLAGS=${CFLAGS/-fno-plt/}
-	CFLAGS=${CFLAGS/-fexceptions/}
-
-	msg "Using CFLAGS ... $CFLAGS"
-	msg "Using LDFLAGS .. $LDFLAGS"
-
 	# Important : the Makefiles do not support parallel jobs
 	# Note : Not sure at this stage if specifying future install paths are necessary
+
 	make -j 1 \
 		PREFIX=/usr \
 		kernel_install_path="/usr/lib/modules/$(uname -r)/kernel/drivers/qdma" \
 		dev_install_path="/usr/include/qdma" \
-		apps_install_path="/usr/bin"
+		apps_install_path="/usr/bin" \
+		apps
+
+	# Kernel build system sets required compiler flags by itsel
+	# So, clear makepkg default CFLAGS and LDFLAGS for this step
+	# See https://bbs.archlinux.org/viewtopic.php?pid=2295317#p2295317
+	CFLAGS= LDFLAGS= make -j 1 \
+		PREFIX=/usr \
+		kernel_install_path="/usr/lib/modules/$(uname -r)/kernel/drivers/qdma" \
+		dev_install_path="/usr/include/qdma" \
+		apps_install_path="/usr/bin" \
+		driver
+
+	# Not sure what this recipe does but it is present in default recipe
+	make -j 1 \
+		PREFIX=/usr \
+		kernel_install_path="/usr/lib/modules/$(uname -r)/kernel/drivers/qdma" \
+		dev_install_path="/usr/include/qdma" \
+		apps_install_path="/usr/bin" \
+		post
 
 }
 
 package() {
 	cd "${srcdir}/dma_ip_drivers/QDMA/linux-kernel"
 
-	# Important : the Makefiles do not support parallel jobs
 	make -j 1 \
 		PREFIX=/usr \
 		kernel_install_path="${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/qdma" \
