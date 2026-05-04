@@ -6,12 +6,12 @@
 pkgname=micromamba
 _pkgname=${pkgname/micro/}
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The fast cross-platform package manager"
 arch=(i686 x86_64)
 url="https://github.com/${_pkgname}-org/${_pkgname}"
 license=(BSD-3-Clause)
-depends=(python fmt libsolv reproc yaml-cpp simdjson)
+depends=(python fmt libsolv reproc yaml-cpp simdjson msgpack-c)
 makedepends=(cli11 spdlog tl-expected nlohmann-json cmake pybind11 ninja
   python-build python-installer python-scikit-build-core)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
@@ -48,6 +48,7 @@ build() {
     -D BUILD_SHARED=ON \
     -D CMAKE_BUILD_WITH_INSTALL_RPATH=ON
   cmake --build build --parallel "$(nproc)"
+  # temporary install for use by libmambapy’s build via `-Dlibmamba_ROOT=…`
   cmake --install build --prefix install
 
   cd "${_pkgname}-${pkgver}/libmambapy"

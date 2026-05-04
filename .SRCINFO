@@ -1,7 +1,7 @@
 pkgbase = micromamba
 	pkgdesc = The fast cross-platform package manager
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mamba-org/mamba
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = micromamba
 	depends = reproc
 	depends = yaml-cpp
 	depends = simdjson
+	depends = msgpack-c
 	provides = libmamba=2.6.0
 	provides = python-libmambapy=2.6.0
 	conflicts = micromamba-bin
