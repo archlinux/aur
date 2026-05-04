@@ -5,6 +5,7 @@ pkgbase = coopgammad
 	url = https://codeberg.org/maandree/coopgammad
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	makedepends = libgamma
 	makedepends = libclut
