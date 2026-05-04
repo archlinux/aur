@@ -3,17 +3,22 @@
 pkgname="ica-securestore"
 pkgver=6.3.3_1
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage I.CA Starcos smart cards"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://ca.ica.cz/pub/SecureStore/linux/"
-license=('custom:Proprietary')
+license=(
+  'custom:Proprietary'
+)
 depends=(
   'curl'
-  'gcc-libs'
   'glibc'
   'ica-securestore-pkcs11>=5.1.8'
+  'libgcc'
   'libgl'
+  'libstdc++'
   'pcsclite'
   'qt5-base>=5.9.0'
   'qt5-declarative>=5.9.0'
@@ -23,31 +28,38 @@ depends=(
 backup=(
   "etc/ICA/cz.ica.SecureStore.ini"
 )
-_pkgsrc="${pkgname}-${_pkgver}"
-source_x86_64=("${_pkgsrc}-x86_64.deb::${url}${pkgname}_${_pkgver}_amd64.deb")
-noextract=("${source_x86_64[@]%%::*}")
+source_x86_64=(
+  "${url}${pkgname}_${_pkgver}_amd64.deb"
+)
+noextract=(
+  "${source_x86_64[@]##*/}"
+)
 sha256sums_x86_64=('9bfa4fe89d8eacf3e79b40b886c5199c0f850d814ef9cecb0236dd75102deb31')
 
 prepare() {
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   cd "${srcdir}"
-  mkdir -p "${_pkgsrc}-${CARCH}"
-  bsdtar -xf "${_pkgsrc}-${CARCH}.deb" data.tar.*
-  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
+  mkdir -p "${source_artifact%.deb}"
+  bsdtar -xf "${source_artifact}" data.tar.*
+  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${source_artifact%.deb}"
   rm -f data.tar.*
 
-  cd "${_pkgsrc}-${CARCH}/usr/share/applications"
+  cd "${source_artifact%.deb}/usr/share/applications"
   sed -e "s/=securestore/=${pkgname}/g" \
       -e "s/=SecureStore/=ICA SecureStore/g" \
       -i 'securestore.desktop'
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  cp -va --no-preserve=ownership "etc" -t "${pkgdir}"
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
+  cd "${srcdir}/${source_artifact%.deb}"
+  cp -va --parents --no-preserve=ownership "etc" "usr/share" -t "${pkgdir}"
 
   install -vDm755 "opt/ICASecureStore/bin/SecureStore" "${pkgdir}/usr/bin/ICASecureStore"
-
-  cd "usr/share"
-  install -vDm644 "applications/securestore.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -vDm644 "pixmaps/securestore.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
