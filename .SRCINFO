@@ -1,6 +1,6 @@
 pkgbase = poezio-omemo
 	pkgdesc = OMEMO plugin for poezio
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://codeberg.org/poezio/poezio-omemo
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = poezio-omemo
 	depends = python-omemo
 	depends = python-slixmpp
 	depends = python-slixmpp-omemo
-	source = poezio-omemo-0.9.0.tar.gz::https://codeberg.org/poezio/poezio-omemo/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 47bdcb8d6336ead9cfef6943741743a95ae6d91c2d9c1df64d66ef7d0adbe32c
+	source = poezio-omemo-0.9.1.tar.gz::https://codeberg.org/poezio/poezio-omemo/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = a6ec15acebc478cee61fcf48ab786faaef71869297290ed55fabc2b232532b3b
 
 pkgname = poezio-omemo
