@@ -1,6 +1,6 @@
 # Maintainer: Torikul Habib <torik.habib@gmail.com>
 pkgname=gabutdm-master
-pkgver=2.8.8
+pkgver=2.9.3
 pkgrel=2
 pkgdesc="Simple, fast, and powerful Download Manager built with GTK4"
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
   'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gabutakut/gabutdm/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('baaaa739ffab8487bd549265403485d551e375eb62ef1ac9ed658ebe87855b1b')
+sha256sums=('5560e53940992cd9981b74ca8cc33b22e26307db8830ac6aef76417774f9e81e')
 
 build() {
   cd "$pkgname-$pkgver"

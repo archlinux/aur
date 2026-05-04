@@ -1,6 +1,6 @@
 pkgbase = gabutdm-master
 	pkgdesc = Simple, fast, and powerful Download Manager built with GTK4
-	pkgver = 2.8.8
+	pkgver = 2.9.3
 	pkgrel = 2
 	url = https://github.com/gabutakut/gabutdm
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = gabutdm-master
 	depends = libadwaita
 	depends = ffmpeg
 	depends = aria2
-	source = gabutdm-master-2.8.8.tar.gz::https://github.com/gabutakut/gabutdm/archive/refs/tags/2.8.8.tar.gz
-	sha256sums = baaaa739ffab8487bd549265403485d551e375eb62ef1ac9ed658ebe87855b1b
+	source = gabutdm-master-2.9.3.tar.gz::https://github.com/gabutakut/gabutdm/archive/refs/tags/2.9.3.tar.gz
+	sha256sums = 5560e53940992cd9981b74ca8cc33b22e26307db8830ac6aef76417774f9e81e
 
 pkgname = gabutdm-master
