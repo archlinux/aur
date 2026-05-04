@@ -14,8 +14,6 @@ if [ -z ${_use_discordrpc+x} ]; then
     _use_discordrpc=n
   fi
 fi
-# Don't compress with UPX, don't dump symbols to speed up compiling
-_buildflags="NOUPX=1 NOOBJDUMP=1 "
 
 _name=srb2kart-saturn
 pkgname=${_name}-git
@@ -27,8 +25,7 @@ arch=('i686' 'x86_64' 'aarch64')
 license=('GPL2')
 url='https://github.com/Indev450/SRB2Kart-Saturn'
 depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver" 'curl' 'libbacktrace')
-makedepends=('mesa' 'glu' 'git')
-makedepends_i686=('nasm')
+makedepends=('mesa' 'git')
 
 if [ "${_use_discordrpc}" = "y" ]; then
   depends+=('discord-rpc-git')
