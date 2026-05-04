@@ -17,8 +17,8 @@
 
 pkgname=warp-terminal-git
 _srcname=warp
-pkgver=0.2026.04.29.08.56.preview_00.r26.gca42aac
-pkgrel=2
+pkgver=0.2026.05.04.09.01.dev_00.r11.gc65ae25
+pkgrel=1
 pkgdesc="Warp, the Rust-based terminal for developers and teams (built from source, OSS channel)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/warpdotdev/warp'
