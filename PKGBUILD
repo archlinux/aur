@@ -1,33 +1,21 @@
-# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Contributor: Filipe Nascimento <flipee at tuta dot io>
+# Maintainer: tee < teeaur at duck dot com >
 
-pkgname=mask
-pkgver=0.11.4
+pkgname=mask-bin
+pkgver=0.11.7
 pkgrel=1
 pkgdesc='A CLI task runner defined by a simple markdown file'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=(x86_64)
 url="https://github.com/jakedeichert/mask"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/mask/$pkgver.tar.gz")
-sha256sums=('65ac7b5798bc717a2a0c3fb933afab45fc901eeb3ff299e03695bf3204d4f37a')
-
-prepare() {
-    cd mask-$pkgname-$pkgver
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
-build() {
-    cd mask-$pkgname-$pkgver
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
-}
+source=("$url/releases/download/mask/$pkgver/mask-$pkgver-$arch-unknown-linux-gnu.zip"
+"$url/releases/download/mask/$pkgver/mask-$pkgver-$arch-unknown-linux-gnu.zip.sha256")
+sha256sums=('f6e02669d5d68c474f17d47cf4e833df77b4298255c5b32bd3a87e91c04f53b9'
+            '124d1033dc726e2b2f1922fe2ada530266acc64ed4cf745f88a5f6e407c96b84')
 
 package() {
-    cd mask-$pkgname-$pkgver
-    install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    cd "mask-$pkgver-$arch-unknown-linux-gnu"
+    install -Dm755 mask -t "$pkgdir/usr/bin"
 }
