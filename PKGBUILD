@@ -2,9 +2,9 @@
 pkgname=oavif
 pkgver=0.1.3
 _fssimu2_ver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Target quality AVIF encoding'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/gianni-rosato/oavif'
 license=('Apache-2.0')
 depends=(
@@ -30,7 +30,7 @@ sha256sums=(
 prepare() {
     cd "${pkgname}-${pkgver}"
     # Bake version
-    sed -i 's/"unknown"/"'"${pkgver}"'"/g' build.zig
+    sed -i 's|getVersionString(b) catch [^;]*|"'"${pkgver}"'"|' build.zig
     # Prefer dynamic
     sed -i 's/\.preferred_link_mode = \.static/.preferred_link_mode = .dynamic/g' build.zig
     # Enable PIE
