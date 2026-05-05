@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cedilla
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A markdown text editor for the COSMIC™ desktop"
 arch=('x86_64' 'aarch64')
@@ -20,12 +20,12 @@ checkdepends=(
   'desktop-file-utils'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e3633eb93760553e008bb11a66ea040489e52984f5e2971320de3630be0cb91c')
+sha256sums=('e5e62bca288a8920bba39d1c8c55fcb3ab5833e1571d78bdcc44dbf48ce0ca5a')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
