@@ -1,0 +1,5 @@
+[prex]
+source = "github"
+github = "eyenalxai/prex"
+use_max_tag = true
+prefix = "v"
