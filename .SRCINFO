@@ -1,7 +1,7 @@
 pkgbase = rcal
 	pkgdesc = Responsive terminal calendar with local events and Microsoft Graph sync
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tenseleyFlow/rcal
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = rcal
 	depends = glibc
 	optdepends = dbus: for desktop notifications and Secret Service keyring integration
 	optdepends = systemd: for reminder daemon user service commands
+	options = !lto
 	source = rcal-0.3.1.tar.gz::https://github.com/tenseleyFlow/rcal/archive/refs/tags/v0.3.1.tar.gz
 	sha256sums = 5abfdb8412ee8a7e794aa4e62d3d0dbd10931b0a0f2f3899a6cd91ab76d6ba20
 

@@ -2,11 +2,15 @@
 
 pkgname=rcal
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Responsive terminal calendar with local events and Microsoft Graph sync'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tenseleyFlow/rcal'
 license=('GPL-3.0-only')
+# Ring's assembly archive is incompatible with -flto=auto (CFLAGS/LDFLAGS
+# from makepkg with lto option enabled); the static lib's symbols become
+# bitcode-only and the final link fails with undefined references.
+options=('!lto')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'rust')
 optdepends=(
@@ -26,9 +30,6 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # Disable rust-lld (default on x86_64-unknown-linux-gnu since 1.84);
-    # it fails to link ring's static assembly archive.
-    export RUSTFLAGS="${RUSTFLAGS} -C linker-features=-lld"
     cargo build --frozen --release --all-features
 }
 
