@@ -3,7 +3,7 @@
 pkgname=restic-box
 pkgver=0.3.4
 pkgrel=1
-pkgdesc="GTK3 AppIndicator tray applet for restic backups over SSH or local/mounted directory"
+pkgdesc="A simple GTK3 tray applet for restic backups over SSH or local/mounted directory"
 arch=('any')
 url="https://github.com/Shikaku2/restic-box"
 license=('BSD-3-Clause')
@@ -24,7 +24,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Shikaku2/restic-box/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dc20c3c4703cbb642aa3cbdcd85f113f74239508c18a369ff2a62caed8cdf536')
+sha256sums=('01fd27f39fe33457e549c1084322ff2132da9a3a34d9d924c565dac5bc4c3f58')
 
 build() {
   cd "$pkgname-$pkgver"
