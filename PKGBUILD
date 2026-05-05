@@ -12,7 +12,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.44.9
+pkgver=3.44.10
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 arch=(x86_64)
@@ -85,7 +85,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$url/downloads/$_pkgname-$pkgver.tar.bz2"
         https://github.com/JanCaha/QGIS/commit/67af3cdf8bfd8c482c718beb1452ac7dc0d3bd0c.patch)
-sha256sums=('0a6783ee3eb11cc63a36bde0666302b5b670c585ac08b3e451742a3a243daa4d'
+sha256sums=('9c2f129c0de0a01d3cd56bf7b27bae0cb37bafb6bf6ff63963f7f5964ac29a6e'
             '9cc3cc824792d5a3ede3ff499b77c81241a5451952c6e9ae8104c02b37737827')
 
 prepare() {
