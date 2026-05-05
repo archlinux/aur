@@ -3,8 +3,8 @@
 
 pkgname=nexis-git
 _pkgname=Nexis
-pkgver=2.3.3.r19.g305436b
-pkgrel=2
+pkgver=2.3.3.r32.g9c55203
+pkgrel=1
 pkgdesc="Linux & macOS System Optimizer and Monitoring (Qt6)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/s4solutionsllc/Nexis"
