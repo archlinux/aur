@@ -1,0 +1,21 @@
+pkgbase = eyewitness-git
+	pkgdesc = Take screenshots of websites, provide server header info, and identify default credentials
+	pkgver = r1229.c3286fb
+	pkgrel = 1
+	url = https://github.com/RedSiege/EyeWitness
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = chromium
+	depends = xorg-server-xvfb
+	optdepends = python-virtualenv: for isolated virtual environment installation
+	provides = eyewitness
+	conflicts = eyewitness
+	source = eyewitness-git::git+https://github.com/RedSiege/EyeWitness.git
+	sha256sums = SKIP
+
+pkgname = eyewitness-git
