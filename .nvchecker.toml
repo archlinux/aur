@@ -1,0 +1,4 @@
+[searchtool-gtk]
+source = "git"
+git = "https://github.com/v--/searchtool-gtk.git"
+prefix = "v"
