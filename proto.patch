@@ -1,0 +1,20 @@
+--- pcimk2_kernel.c	2026-05-05 15:50:28.778469983 +0200
++++ ./src/tmp/driver_src/pci_driver/pcimk2_kernel.c	2026-05-05 15:50:38.475048679 +0200
+@@ -1329,6 +1329,7 @@
+ }
+ 
+ 
++long spw_pci_common_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
+ long spw_pci_common_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ {
+     void *pFile = filp->private_data;   /* 2.6.0 - latest (for ->private_data) */
+--- spwusb_kernel.c	2026-05-05 15:52:09.813976758 +0200
++++ ./src/tmp/driver_src/usb_driver/spwusb_kernel.c	2026-05-05 15:52:23.056563061 +0200
+@@ -962,6 +962,7 @@
+ }
+ 
+ 
++long spw_usb_common_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
+ long spw_usb_common_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ {
+     void *file = filp->private_data;   /* 2.6.0 - latest (for ->private_data) */

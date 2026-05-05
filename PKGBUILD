@@ -1,8 +1,8 @@
 #Maintainer: Armin Luntzer <armin.luntzer@univie.ac.at>
 
 pkgname=star-system
-pkgver=6.00
-pkgrel=2
+pkgver=6.01
+pkgrel=1
 pkgdesc="STAR-System is the new driver and API system provided with all new and future STAR-Dundee interface and router devices."
 arch=('x86_64')
 url="http://www.star-dundee.com"
@@ -14,6 +14,7 @@ source=("file://star-system_linux_x86-64_v6.00.tgz"
 	"star-system.service"
 	"kbuild.patch"
 	"version.patch"
+	"proto.patch"
 	"99-star_spw_usb.rules"
 	"99-star_spw_pci.rules"
 	"99-star_ultra_pcie.rules")
@@ -33,6 +34,7 @@ prepare() {
 	cd ${srcdir}/tmp
 	patch -Np0 -i ${srcdir}/kbuild.patch
 	patch -Np3 -i ${srcdir}/version.patch
+	patch -Np3 -i ${srcdir}/proto.patch
 }
 
 
@@ -44,7 +46,7 @@ build() {
 		mv -- "$file" "${file%.o_shipped}.o"
 	done
 
-	make -f Kbuild EXTRA_CFLAGS=-DSTAR_TRY_NEWER_KERNEL CONFIG_WERROR=n
+	make -f Kbuild CONFIG_WERROR=n
 	cp star_spw_pci.ko ../
 
 	# pcie
@@ -54,7 +56,7 @@ build() {
 		mv -- "$file" "${file%.o_shipped}.o"
 	done
 
-	make -f Kbuild EXTRA_CFLAGS=-DSTAR_TRY_NEWER_KERNEL CONFIG_WERROR=n
+	make -f Kbuild CONFIG_WERROR=n
 	cp star_ultra_pcie.ko ../
 
 	#usb
@@ -64,7 +66,7 @@ build() {
 		mv -- "$file" "${file%.o_shipped}.o"
 	done
 
-	make -f Kbuild EXTRA_CFLAGS=-DSTAR_TRY_NEWER_KERNEL CONFIG_WERROR=n
+	make -f Kbuild CONFIG_WERROR=n
 	cp star_spw_usb.ko ../
 }
 
@@ -111,7 +113,8 @@ package() {
 sha256sums=('5deb178ac143ad36f478f1ed01375608a23b7e8f1e04d9ef0b39033ade975c83'
             '842d55fd08515bbec1882f80c20fc29a9c28e32aa222718280e37f07794386da'
             'a6f626e79014761d4d86359b7ed08a5f41add4d8d2a04e0c111b83406e97e465'
-            '23529acb5a7bc2a6ee9a5370f658dbff1822960daf8257ca940d8c2dbec50f42'
+            '049d35db604e7404ea280e56880c196b1151f186779055419b4d907974125a1b'
+            '2d84f99f53a2bfd508009fffcefdefb0c5ace7f80240a1f59dbfbe77239ca418'
             'ad92ae049b9c6ac3c9a39a23b66b523f970e28aae0348f78dd2362ac5dd15fa7'
             'a8ff051b5ccb1dfbfe4a74c4213a93f8bb81760e6dee4144ab5c300521959947'
             'af73cda3af22bf2e2fa16e3790ca56693c6a18d6ea7d159bc47faace694307f4')
