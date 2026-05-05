@@ -1,7 +1,7 @@
 # Maintainer: Ben Davison <nimijneb.bd@gmail.com>
 pkgname=imx471-dkms-git
 _pkgbase=imx471
-pkgver=r6.fea9d24
+pkgver=r10.2dcdd1e
 pkgrel=1
 pkgdesc="IMX471 sensor driver via DKMS"
 arch=('x86_64')
