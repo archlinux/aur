@@ -1,6 +1,6 @@
 # Maintainer: Juan Roa <hello@juanroa.dev>
 pkgname=athas
-pkgver=0.5.0
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Lightweight code editor built with React, TypeScript, and Tauri"
 arch=('x86_64' 'aarch64')
@@ -13,15 +13,16 @@ _source_name=athas
 source=("${_source_name}-${pkgver}.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v${pkgver}.tar.gz"
         '0001-add-missing-js-deps-and-swift-cli-override.patch'
         '0002-add-packaging-tree-sitter-bootstrap-script.patch')
-sha256sums=('ff52f61aab25a6d4a6d398fac2d27f1177a4cd895066c99ab966494d21ae1634'
+sha256sums=('11fd129f03f54652fc4886333e96518c42200186a7f155eb8e8925cc1dcfea7e'
             '8f74e00d2051ff1a330b8cb18757ce29742c6c228b888e32d02eb7b821355e89'
             'bc65eec041814fbab5b7e4336d633abe6975227cd630e92ddf07f69a3624e492')
 
 _builddir="${_source_name}-${pkgver}"
 
 latestver() {
-	gh api --paginate repos/athasdev/athas/tags --jq '.[].name' |
-		sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p' |
+	gh api --paginate repos/athasdev/athas/releases --jq \
+		'.[] | select(.prerelease == false and .draft == false) | .tag_name' |
+		sed -nE 's/^v?([0-9]+(\.[0-9]+)*)$/\1/p' |
 		sort -V |
 		tail -1
 }
