@@ -2,7 +2,7 @@
 
 pkgname="asm-processor"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pre-process .c files and post-process .o files to enable embedding MIPS assembly into IDO-compiled C"
 arch=(
   'aarch64'
@@ -13,15 +13,15 @@ license=(
   'Unlicense'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
 )
 makedepends=(
   'cargo'
 )
 _pkgsrc="${url##*/}-${pkgver}"
 source=(
-  "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
 b2sums=('9f1427e046e60dcda29679af0ccf1b9cabcb06db0e28eacbffc45f4f6a55aba785883b3d8b1295cbf41305ddbd81cdd6ef0bb7856369a048eb7260bd534ac86d')
 
@@ -35,7 +35,7 @@ prepare() {
   _source
 
   cd "${srcdir}/${_pkgsrc}/rust"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -53,10 +53,12 @@ build() {
 # }
 
 package() {
+  _source
+
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cd "rust"
-  install -vDm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm755 "${CARGO_TARGET_DIR}/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
