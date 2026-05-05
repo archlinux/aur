@@ -1,6 +1,6 @@
 pkgbase = tuitab-bin
 	pkgdesc = Terminal tabular data explorer — CSV/JSON/Parquet/Excel/SQLite viewer (pre-built binary)
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/denisotree/tuitab
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tuitab-bin
 	license = Apache-2.0
 	provides = tuitab
 	conflicts = tuitab
-	source_x86_64 = tuitab-bin-0.4.1-x86_64.tar.gz::https://github.com/denisotree/tuitab/releases/download/v0.4.1/tuitab-v0.4.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 42c7a32539fbcf999b6a26f094a6b84d6fbd481fefba84ad7c7d4468626d0ea5
-	source_aarch64 = tuitab-bin-0.4.1-aarch64.tar.gz::https://github.com/denisotree/tuitab/releases/download/v0.4.1/tuitab-v0.4.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 267fa961cab1367315206d4e566561a2be38ef52521a3ff1ba7e67ee6be45f20
+	source_x86_64 = tuitab-bin-0.4.2-x86_64.tar.gz::https://github.com/denisotree/tuitab/releases/download/v0.4.2/tuitab-v0.4.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2889311efd8e107d6e83786e17f88b74671eec5db41173edce43be8d8c45f158
+	source_aarch64 = tuitab-bin-0.4.2-aarch64.tar.gz::https://github.com/denisotree/tuitab/releases/download/v0.4.2/tuitab-v0.4.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3ee41e29639cfae3d8c78d17687775caff72e226b57dd227a7d79c5742c7a29c
 
 pkgname = tuitab-bin
