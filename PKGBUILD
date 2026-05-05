@@ -3,7 +3,7 @@
 _pkgname=fflogs-uploader
 pkgname=${_pkgname}-bin
 pkgver=9.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="FFLogs Uploader - pre-built binary AppImage"
 arch=('x86_64')
 url="https://github.com/RPGLogs/Uploaders-fflogs"
