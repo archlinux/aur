@@ -8,13 +8,16 @@ pkgname=(
   "java-${pkgbase}"
   "r-${pkgbase}"
 )
-pkgver=13.0.1
+pkgver=13.0.2
 _pkgver="${pkgver%.*}"
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
+declare -Ag _arch=(
+  ['aarch64']='armlinux64'
+  ['x86_64']='linux64'
+)
 arch=(
-  'aarch64' # armlinux64
-  'x86_64'  # linux64
+  "${!_arch[@]}"
 )
 url="https://www.gurobi.com/products/gurobi-optimizer"
 license=(
@@ -24,28 +27,22 @@ makedepends=(
   'r'
 )
 _pkgsrc="${pkgbase}${pkgver//.}"
-source_aarch64=(
-  "https://packages.gurobi.com/${_pkgver}/${pkgbase}${pkgver}_armlinux64.tar.gz"
-)
-source_x86_64=(
-  "https://packages.gurobi.com/${_pkgver}/${pkgbase}${pkgver}_linux64.tar.gz"
-)
-md5sums_aarch64=('92ec10aedf90286d8d2e647240427ff7')
-md5sums_x86_64=('46d62f83205c4bf9ea52a1d07eadca46')
-b2sums_aarch64=('6fa702b691ec2ce6dd61258a3e2f16fa5154078e6fb5ad7d2d36227b61ca2a96e29e737826d94555306383af190f09dbcae7fc3a0383b4928be250547ab6c549')
-b2sums_x86_64=('5c9c68bb8e2a72d3a4683488a3e66fc29d82ee4019b11b125b8da32b70e4649b3ade63fbeb7aaedb409361fed05a3c382142daf2dba1875bc12308664fb8e87f')
-
-if [ "${CARCH}" = 'aarch64' ]; then
-  _arch=armlinux64
-elif [ "${CARCH}" = 'x86_64' ]; then
-  _arch=linux64
-else _arch=DUMMY; fi
+for _carch in "${!_arch[@]}"; do
+  eval "
+source_${_carch}=(
+  'https://packages.gurobi.com/${_pkgver}/${pkgbase}${pkgver}_${_arch[${_carch}]}.tar.gz'
+)"
+done
+md5sums_aarch64=('9b2766ad534ac9220d0505a458735499')
+md5sums_x86_64=('f12dcad337ae1d8f9b8c2b3f51b92bb5')
+b2sums_aarch64=('974b7492d0f8acf222d83a119425b397bd0ae1fb6bd3f95ea758d08a43740a8af8cc5787a66f595ef196d00fc8c64707135cc17f5470bf7452e2967938ed8c2b')
+b2sums_x86_64=('24d3676740308144793806ed46c1ba9da1a886249c6ad6061f50c970eadac969e0867d59db1a90af6e815a734c5c80a254a456d9291a2c400accdc969452ef88')
 
 build() {
-  cd "${srcdir}/${_pkgsrc}/${_arch}/src/build"
+  cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}/src/build"
   make C++FLAGS="${CXXFLAGS} -fPIC"
 
-  cd "${srcdir}/${_pkgsrc}/${_arch}/R"
+  cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}/R"
   mkdir -p "build"
   R CMD INSTALL "${pkgbase}"*.tar.gz -l ./"build"
 }
@@ -53,7 +50,6 @@ build() {
 package_gurobi() {
   depends=(
     'glibc'
-    'sh'
   )
   optdepends=(
     "java-${pkgbase}: Java bindings"
@@ -66,7 +62,7 @@ package_gurobi() {
   # )
   install="${pkgbase}.install"
 
-  cd "${srcdir}/${_pkgsrc}/${_arch}"
+  cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}"
   install -vd "${pkgdir}/usr"
   cp -va --no-preserve=ownership -t "${pkgdir}/usr" \
     "bin" "include"
@@ -77,10 +73,10 @@ package_gurobi() {
 
   install -vDm644 "EULA.pdf" "${pkgdir}/usr/share/licenses/${pkgbase}/EULA.pdf"
 
-  cd "${srcdir}/${_pkgsrc}/${_arch}/src/build"
+  cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}/src/build"
   install -vDm644 "libgurobi_c++.a" "${pkgdir}/usr/lib/libgurobi_g++8.5.a"
 
-  cd "${srcdir}/${_pkgsrc}/${_arch}/examples"
+  cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}/examples"
   install -vd "${pkgdir}/usr/share/doc/${pkgbase}/examples"
   cp -va --no-preserve=ownership -t "${pkgdir}/usr/share/doc/${pkgbase}/examples" \
     "build" "c" "c#" "c++" "data" "python" "vb"
@@ -97,16 +93,14 @@ package_gurobi() {
 
 package_java-gurobi() {
   pkgdesc+=" (Java bindings)"
-  arch=(
-    'any'
-  )
   depends=(
     "${pkgbase}>=${pkgver}-${pkgrel}"
-    'java-runtime<=21'
-    'java-runtime>=8'
+    'glibc'
+    'java-runtime-headless<=21'
+    'java-runtime-headless>=8'
   )
 
-  cd "${srcdir}/${_pkgsrc}/${_arch}/lib"
+  cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}/lib"
   find . -type f -name '*.jar' -exec \
     install -vDm644 "{}" "${pkgdir}/usr/share/java/${pkgbase}/{}" \;
 
@@ -114,7 +108,7 @@ package_java-gurobi() {
   cp -va --no-preserve=ownership -t "${pkgdir}/usr/lib" \
     "libGurobiJni${_pkgver//.}.so"
 
-  cd "${srcdir}/${_pkgsrc}/${_arch}/examples"
+  cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}/examples"
   install -vd "${pkgdir}/usr/share/doc/${pkgbase}/examples"
   cp -va --no-preserve=ownership -t "${pkgdir}/usr/share/doc/${pkgbase}/examples" \
     "java"
@@ -128,15 +122,15 @@ package_r-gurobi() {
   depends=(
     "${pkgbase}>=${pkgver}-${pkgrel}"
     'glibc'
-    'r>=4.5'
-    'r-slam>=0.1.9'
+    'r>=4.5.0'
+    'r-slam>=0.1_9'
   )
 
-  cd "${srcdir}/${_pkgsrc}/${_arch}/R"
+  cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}/R"
   install -vd "${pkgdir}/usr/lib/R/library"
   cp -vaT --no-preserve=ownership "build" "${pkgdir}/usr/lib/R/library"
 
-  cd "${srcdir}/${_pkgsrc}/${_arch}/examples"
+  cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}/examples"
   install -vd "${pkgdir}/usr/share/doc/${pkgbase}/examples"
   cp -va --no-preserve=ownership -t "${pkgdir}/usr/share/doc/${pkgbase}/examples" \
     "R"
