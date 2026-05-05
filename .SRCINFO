@@ -1,0 +1,21 @@
+pkgbase = penguin-burner
+	pkgdesc = NVIDIA GPU automatic undervolting tool
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/jpietek/PenguinBurner
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = nvidia-utils>=580
+	depends = pyside6>=6.7
+	depends = python
+	depends = python-pyqtgraph>=0.13
+	source = penguin-burner-0.1.5.tar.gz::https://github.com/jpietek/PenguinBurner/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 7c2405564ba9e0f44ed90b9db2c3ae793556d3ed3002ed7c507d76af702ac768
+
+pkgname = penguin-burner
