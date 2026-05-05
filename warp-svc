@@ -1,0 +1,42 @@
+#!/sbin/openrc-run
+
+name="Cloudflare Zero Trust Client Daemon"
+description="Cloudflare WARP service"
+
+command="/usr/bin/warp-svc"
+command_background="yes"
+pidfile="/run/cloudflare-warp/warp-svc.pid"
+
+depend() {
+    need net
+    after firewall
+}
+
+start_pre() {
+    checkpath --directory --owner root:root --mode 0755 /run/cloudflare-warp
+    checkpath --directory --owner root:root --mode 0755 /var/lib/cloudflare-warp
+    checkpath --directory --owner root:root --mode 0755 /var/log/cloudflare-warp
+}
+
+start() {
+    ebegin "Starting ${name}"
+    start-stop-daemon \
+        --start \
+        --exec ${command} \
+        --background \
+        --make-pidfile \
+        --pidfile ${pidfile} \
+        -- \
+        || eend 1
+    eend 0
+}
+
+stop() {
+    ebegin "Stopping ${name}"
+    start-stop-daemon \
+        --stop \
+        --pidfile ${pidfile} \
+        --retry 5 \
+        || eend 1
+    eend 0
+}

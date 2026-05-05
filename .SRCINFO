@@ -1,0 +1,13 @@
+pkgbase = warp-svc-openrc
+	pkgdesc = OpenRC service script for Cloudflare WARP (cloudflare-warp-bin)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/warp-svc-openrc
+	arch = any
+	license = MIT
+	depends = openrc
+	depends = cloudflare-warp-bin
+	source = warp-svc
+	sha256sums = 29e1282c98fd6b2c2eca664eb866907933b8dec741a83745a56c6c7cefe66a1c
+
+pkgname = warp-svc-openrc
