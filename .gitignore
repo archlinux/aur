@@ -1,0 +1,20 @@
+# makepkg working directories
+/src/
+/pkg/
+
+# upstream source clone (from the source=("ffmpeg::git+...") VCS source)
+/ffmpeg/
+
+# built packages and signatures
+*.pkg.tar
+*.pkg.tar.gz
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+
+# stale source tarballs and VCS sources downloaded into the AUR repo
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.tar.zst
+*.tar
