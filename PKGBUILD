@@ -1,7 +1,7 @@
 # Maintainer: KlapkiSzatana
 pkgname=archive-app
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Zarządzanie Domowymi Dokumentami"
 arch=('any')
 url="https://github.com/KlapkiSzatana/archive-app"
@@ -18,15 +18,15 @@ package() {
 
     # 1. Katalog główny aplikacji w systemie
     install -d "${pkgdir}/usr/share/${pkgname}"
-    install -m644 "${srcdir}/archive-app.py" "${pkgdir}/usr/share/${pkgname}/"
-    install -m644 "${srcdir}/logic.py" "${pkgdir}/usr/share/${pkgname}/"
+    install -m644 archive-app.py "${pkgdir}/usr/share/${pkgname}/"
+    install -m644 logic.py "${pkgdir}/usr/share/${pkgname}/"
 
     # 2. Instalacja wszystkich plików projektu (pomijamy ukryte pliki, np. .git)
     find . -maxdepth 1 ! -name '.' ! -name '.git' -exec cp -r {} "${pkgdir}/usr/share/${pkgname}/" \;
 
     # 3. Instalacja ikony w odpowiednim katalogu systemowym
-    install -Dm644 "${srcdir}/archive.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -m644 "${srcdir}/archive.png" "${pkgdir}/usr/share/${pkgname}/archive.png"
+    install -Dm644 archive.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -m644 archive.png "${pkgdir}/usr/share/${pkgname}/archive.png"
 
     # 4. Skrypt startowy (Wrapper)
     install -d "${pkgdir}/usr/bin"
