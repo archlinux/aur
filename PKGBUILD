@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/purplehippo911/lockin-today"
 license=('MIT')
 groups=()
-depends=('glibc' 'webkit2gtk' 'gtk3') # Tauri runtime
+depends=('glibc' 'webkit2gtk-4.1' 'gtk3') # Tauri runtime
 makedepends=('rust' 'rustup' 'cargo' 'deno' 'tauri-cli') # Build deps
 checkdepends=()
 optdepends=()
@@ -32,12 +32,13 @@ build() {
 	cd "lockin-today" 
   export CARGO_HOME="$PWD/cargo-home"
   rustup toolchain install stable
-  cargo tauri build --release
+  deno install
+  deno task tauri build
 }
 
 package() {
 	cd "lockin-today"
   install -Dm755 "src-tauri/target/release/lockin-today" "$pkgdir/usr/bin/lockin-today"
   install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/lockin-today.png" 2>/dev/null || true
-cp lockin-today.desktop "$pkgdir/usr/share/applications/lockin-today.desktop"
+install -Dm644 "lockin-today.desktop" "$pkgdir/usr/share/applications/lockin-today.desktop"
 }
