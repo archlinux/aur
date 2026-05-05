@@ -15,7 +15,7 @@ depends=(
     'fuse2'
     'fuse3'
 )
-makedepends=('fuse' 'breeze-icons')
+makedepends=()
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
 source_x86_64=("${_filename}::https://cdn.jsdelivr.net/musescore/v4.6.5/MuseScore-Studio-${pkgver}-x86_64.AppImage")
 #                             https://cdn.jsdelivr.net/musescore/v4.6.5/MuseScore-Studio-4.6.5.253511702-x86_64.AppImage
