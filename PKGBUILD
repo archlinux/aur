@@ -1,6 +1,6 @@
 # Maintainer: Clément Le Goffic <legoffic.clement@gmail.com>
 pkgname=unwind-baremetal-compiler-rt
-pkgver=21.1.8
+pkgver=22.1.3
 pkgrel=1
 pkgdesc="libunwind for bare-metal ARM Cortex-M targets (armv7m, armv7em, armv8m.main, armv8.1m.main)"
 arch=('x86_64')
@@ -12,16 +12,17 @@ _arches=(armv7m armv7em armv8m.main armv8.1m.main)
 source=(
   "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
 )
-sha256sums=('4633a23617fa31a3ea51242586ea7fb1da7140e426bd62fc164261fe036aa142')
+sha256sums=('2488c33a959eafba1c44f253e5bbe7ac958eb53fa626298a3a5f4b87373767cd')
 
 build() {
   local _clang_major="${pkgver%%.*}"
   local _resourcedir="/usr/lib/clang/${_clang_major}"
 
   for _arch in "${_arches[@]}"; do
-    cmake -S "${srcdir}/llvm-project-${pkgver}.src/libunwind" \
+    cmake -S "${srcdir}/llvm-project-${pkgver}.src/runtimes" \
           -B "${srcdir}/build-${_arch}" \
           -G Ninja \
+          -DLLVM_ENABLE_RUNTIMES=libunwind \
           -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY \
           -DLIBUNWIND_IS_BAREMETAL=ON \
           -DLIBUNWIND_ENABLE_SHARED=OFF \
