@@ -1,0 +1,4 @@
+d /var/lib/slskd 0775 slskd slskd -
+d /var/lib/slskd/downloads 0775 slskd slskd -
+d /var/lib/slskd/incomplete 0775 slskd slskd -
+z /etc/slskd/slskd.yml 0664 slskd slskd -
