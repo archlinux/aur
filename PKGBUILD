@@ -1,4 +1,4 @@
-# Maintainer: Murat <dev at yamahi dot eu>
+# Maintainer: Murat <dev at oezel dot foo>
 
 pkgname="swayrst-git"
 _pkgname="swayrst"
@@ -8,7 +8,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/Nama/swayrst"
 license=(MIT)
-depends=("python-sh" "i3ipc-python")
+depends=("python-sh" "python-i3ipc-git")
 makedepends=(
     "git"
     "python-build"
