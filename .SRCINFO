@@ -1,8 +1,8 @@
 pkgbase = sc
 	pkgdesc = Ncurses-based spreadsheet program
 	pkgver = 7.16_1.2.0
-	pkgrel = 1
-	url = https://ibiblio.org/pub/linux/apps/financial/spreadsheet/!INDEX.html
+	pkgrel = 2
+	url = https://github.com/n-t-roff/sc
 	arch = x86_64
 	license = Public Domain
 	depends = ncurses
