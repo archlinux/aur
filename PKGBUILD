@@ -75,7 +75,7 @@ package_python-pyvideokit-gui() {
     pkgdesc="GUI for PyVideoKit — FFmpeg-based video processing"
     depends=(
         'python'
-        'python-pyside6'
+        'pyside6'
         'python-pyvideokit-libs'
     )
 
