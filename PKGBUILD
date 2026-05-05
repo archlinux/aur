@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/aur.yml` republish.
 pkgname=buffr-bin
 _pkgname=buffr
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Vim-inspired browser. Native, GPU-accelerated. Rust + CEF. (binary release)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ options=(!strip !debug)
 
 source_x86_64=("buffr-${pkgver}-x86_64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v${pkgver}/buffr-${pkgver}-x86_64.tar.gz")
 source_aarch64=("buffr-${pkgver}-aarch64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v${pkgver}/buffr-${pkgver}-aarch64.tar.gz")
-sha256sums_x86_64=('09d98e074003d86f26702a3d08c6d4ff3210d91b3785e7cdd18323c958d88f2d')
-sha256sums_aarch64=('0eb9a2b6d85a58ba99d77e89b8359a9b58f6a40e2af0ea98dc445fa84a449a00')
+sha256sums_x86_64=('75066e0114d3454ccc9217fbf1d3f90ad8c1a87652199472aaa5638666f7753c')
+sha256sums_aarch64=('b2fcad7287450695de2bc73d136903483956208deb6b225e295410c9ebae2339')
 
 package() {
     local _arch
@@ -35,12 +35,14 @@ package() {
 
     # Whole runtime tree drops into /opt/buffr (libcef.so resolves via
     # rpath/$ORIGIN, and the CEF paks/locales must sit beside the
-    # binary). /usr/bin/buffr is a thin symlink for $PATH.
+    # binaries). /usr/bin symlinks expose all three binaries to $PATH.
     cd "$srcdir/buffr-${pkgver}-${_arch}"
     install -dm755 "$pkgdir/opt/buffr"
     cp -a . "$pkgdir/opt/buffr/"
     install -dm755 "$pkgdir/usr/bin"
     ln -sf /opt/buffr/buffr "$pkgdir/usr/bin/buffr"
+    ln -sf /opt/buffr/buffr-app "$pkgdir/usr/bin/buffr-app"
+    ln -sf /opt/buffr/buffr-helper "$pkgdir/usr/bin/buffr-helper"
 
     # `.desktop` + icon ship inside the runtime tarball (xtask
     # `build_tarball`). Hoist them out of /opt/buffr/ into the standard
