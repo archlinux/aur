@@ -2,7 +2,7 @@
 # Contributor: Alexey Neverov <leyn.the.cat@gmail.com>
 
 pkgname=nyado-bin
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A Rust todo-list manager with TUI, inspired by meowdo"
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ options=(!strip)
 
 if [[ "$CARCH" == "x86_64" ]]; then
     source=("https://github.com/LeynTheCat/nyado/releases/download/v$pkgver/nyado-x86_64-unknown-linux-musl")
-    sha256sums=('cc647372769de492ccd35e146b6e77a980f660ab6ea0a40ba36f643513f481b3')
+    sha256sums=('f1a15cc7d74560b04f77fb17f20d038a93cbb459720e9bf1458ef694e27b17e8')
 elif [[ "$CARCH" == "aarch64" ]]; then
     source=("https://github.com/LeynTheCat/nyado/releases/download/v$pkgver/nyado-aarch64-unknown-linux-musl")
-    sha256sums=('b152f55e786a6c192f19da8cf1eb850e98479023a8a8be60ff5940b0d381c11b')
+    sha256sums=('440e7fb6fe00e9fb9d5403e5aa1e8e6dd8f92c34b015617af9bb6435402156b4')
 fi
 
 package() {
