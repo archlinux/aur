@@ -1,14 +1,14 @@
 
 pkgname=gwyddion-no-python2
 _pkgname=gwyddion
-pkgver=2.70
+pkgver=2.71
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="https://gwyddion.net/"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=(gtkglext fftw minizip)
-makedepends=('pkgconf')
+makedepends=('pkgconf' 'minizip')
 optdepends=('libxml2: import of SPML and APE DAX data files'
             'zlib: import of SPML data files and import of gzip-compressed data from other file formats (Createc, NRRD, RHK SM4 PRM metadata)'
             'perl: development of plug-in'
@@ -24,13 +24,17 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
 provides=('gwyddion')
 conflicts=('gwyddion')
 source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$_pkgname-$pkgver.tar.xz)
-sha256sums=('942f4e041945a850bc32d05193a115ac8a5118a6f841afa6d4dea510f9913f59')
+sha256sums=('2df721befccbe4d5ee2ba564b32e69341f8ce1de637e2045838a09a2d46b5dba')
 
 build() {
   cd $_pkgname-$pkgver
+  
+  # Ensure compiler can find unzip.h from minizip
+  export CPPFLAGS="-I/usr/include/minizip ${CPPFLAGS}"
+  export CFLAGS="-I/usr/include/minizip ${CFLAGS}"
 
   ./configure --prefix=/usr --sysconfdir=/etc \
-              --localstatedir=/var --libexecdir=/usr/lib \
+              --localstatedir=/var --libexecdir=/usr/lib --with-minizip \
               --with-python=no --enable-pygwy=no
   make
 }
