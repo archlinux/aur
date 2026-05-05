@@ -1,10 +1,10 @@
 # Maintainer: Shira Nguyen <sn3446409@gmail.com>
 
 pkgname=mkbrr-gui-bin
-_srcver="v1.19.0-rc.1"
+_srcver="v1.23.0"
 pkgver="${_srcver#v}"
 pkgver="${pkgver/-rc./_rc}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A tool to create, modify and inspect torrent files. GUI version"
 arch=('x86_64')
 url="https://github.com/autobrr/mkbrr/"
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}releases/download/${_srcver}/mkbrr-g
         "mkbrr-gui-license::https://raw.githubusercontent.com/autobrr/mkbrr/${_srcver}/LICENSE"
         mkbrr.png
         mkbrr.desktop)
-sha256sums=('ba0ee8e714e36bcf1d5ab7fb060884881838f9421ac4de4283b133c417bf8998'
+sha256sums=('b761203cf1588418fa23cfeca1a2a67fc2a538d8924214499a8d236e71125480'
             'SKIP'
             '3d2ae1c183781e2fab4008b42f7d2004bbefe363f3e965e95b7b4e00bb67b93d'
             'ae73ca45fc81e322750454725b5c315b5566625511854ced2716b0c19a4d1515')
