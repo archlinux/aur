@@ -7,10 +7,10 @@
 
 pkgname=sc
 pkgver=7.16_1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ncurses-based spreadsheet program"
 arch=('x86_64')
-url="https://ibiblio.org/pub/linux/apps/financial/spreadsheet/!INDEX.html"
+url="https://github.com/n-t-roff/sc"
 license=('Public Domain')
 depends=('ncurses')
 source=(https://github.com/n-t-roff/$pkgname/archive/refs/tags/$pkgver.tar.gz)

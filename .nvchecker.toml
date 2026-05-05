@@ -1,0 +1,4 @@
+[sc]
+source = "github"
+github = "n-t-roff/sc"
+use_latest_release = true
