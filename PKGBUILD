@@ -4,7 +4,7 @@
 pkgname=nexis-git
 _pkgname=Nexis
 pkgver=2.3.3.r19.g305436b
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux & macOS System Optimizer and Monitoring (Qt6)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/s4solutionsllc/Nexis"
@@ -13,7 +13,10 @@ depends=('qt6-base' 'qt6-charts' 'qt6-svg' 'hicolor-icon-theme' 'polkit')
 makedepends=('git' 'cmake' 'qt6-tools')
 optdepends=('psmisc: for killall support'
             'smartmontools: for disk health monitoring'
-            'systemd: for service management')
+            'systemd: for service management'
+            'timeshift: for pre-clean snapshots'
+            'util-linux: for SSD TRIM support (fstrim)'
+            'nvidia-utils: for NVIDIA GPU monitoring')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
