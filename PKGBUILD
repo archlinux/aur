@@ -5,8 +5,8 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-flatpak
-pkgver=11.7.4
-_commit=188905011b64f385c72c5c8f795237bf894390fa            
+pkgver=11.7.5
+_commit=f94121cf99a4b1e10eb5ccd83098a08ba029c40e            
 pkgrel=1
 pkgdesc="A GUI frontend for libalpm. With Flatpak support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -42,7 +42,7 @@ conflicts=(
 )
 options=(!emptydirs)
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('465f0bfa3aa0ac536c9838ffc934f2ee9bbf0ee403ed202fa86ce2ecfd601707')
+sha256sums=('a1e82520739403d1b769c87731355ac5f5710b5626fbf77dce8eabea8506c4c1')
 
 #_srcdir="$_pkgname-$pkgver"
 _srcdir="$_pkgname"
