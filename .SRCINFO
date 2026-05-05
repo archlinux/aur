@@ -1,6 +1,6 @@
 pkgbase = rgx-cli
 	pkgdesc = A terminal regex tester with real-time matching and multi-engine support
-	pkgver = 0.10.2
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/brevity1swos/rgx
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rgx-cli
 	provides = rgx
 	conflicts = rgx
 	options = !lto
-	source = rgx-cli-0.10.2.tar.gz::https://github.com/brevity1swos/rgx/archive/refs/tags/v0.10.2.tar.gz
-	sha512sums = 19636ad79481a99f5fbd09856b899610c8720909d3b681be167a4824ee3c750e6cebe625d94ba4b02737c4127ddffbb4d1b08fd05a6640dcc5e799c069bf0427
+	source = rgx-cli-0.12.1.tar.gz::https://github.com/brevity1swos/rgx/archive/refs/tags/v0.12.1.tar.gz
+	sha512sums = b8d2f8389a0295ca50700a1847d7995822810723de657a3aa932541ab4923880fa7acd844d00814fde4ace6f22d467191899b3859985eda4308292f7cf57656b
 
 pkgname = rgx-cli
