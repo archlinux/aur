@@ -1,12 +1,10 @@
 pkgbase = musescore-studio-appimage
 	pkgdesc = Create and share sheet music
 	pkgver = 4.6.5.253511702
-	pkgrel = 2
+	pkgrel = 3
 	url = https://musescore.org/en/download
 	arch = x86_64
 	license = GPL-v3
-	makedepends = fuse
-	makedepends = breeze-icons
 	depends = fuse-common
 	depends = fuse2
 	depends = fuse3
