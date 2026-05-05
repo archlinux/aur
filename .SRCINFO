@@ -1,0 +1,13 @@
+pkgbase = open-design-bin
+	pkgdesc = Local-first design product – Electron desktop (prebuilt AppImage)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nexu-io/open-design
+	arch = x86_64
+	license = Apache-2.0
+	depends = fuse2
+	optdepends = open-design: daemon + web UI (CLI-only companion package)
+	source = open-design-bin-0.3.0.AppImage
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = open-design-bin
