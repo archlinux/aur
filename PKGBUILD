@@ -2,7 +2,7 @@
 pkgname=oavif
 pkgver=0.1.3
 _fssimu2_ver=0.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Target quality AVIF encoding'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gianni-rosato/oavif'
@@ -15,7 +15,7 @@ depends=(
     'libspng'
 )
 makedepends=(
-    'zig0.15-bin'
+    'zig0.15'
 )
 options=('!debug')
 source=(
