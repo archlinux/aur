@@ -1,33 +1,42 @@
-# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=pumba
-pkgver=1.1.4
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Chaos testing, network emulation and stress testing tool for containers"
 arch=('x86_64')
 url="https://github.com/alexei-led/pumba"
 license=('Apache-2.0')
-makedepends=('go' 'git' 'golangci-lint')
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d8506369411ed64eba882eb8bef68d667e5a5788ac1718d1b9571e8e5425a01d')
+depends=('glibc')
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('99938ad3e3e248ef46e046ee78b45fd7157daf837059ed966d6e2fce0ba0c8f2')
 
-build() {
-  cd "$pkgname-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-trimpath"
-  make
+prepare() {
+    cd "$pkgname-$pkgver"
+    export GOPATH="$srcdir"
+    mkdir -p build
+    go mod download -modcacherw
 }
 
-test() {
-  cd "$pkgname-$pkgver"
-  make test-coverage
+build() {
+    cd "$pkgname-$pkgver"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    go build -o "build/$pkgname" -ldflags "-linkmode=external -X main.version=$pkgver" ./cmd
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    go test ./...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make release
-  install -Dm755 .bin/${pkgname}_linux_amd64 "$pkgdir"/usr/bin/$pkgname
+    cd "$pkgname-$pkgver"
+    install -Dm755 -t "$pkgdir/usr/bin/" "build/$pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/docs/$pkgname/"
 }
