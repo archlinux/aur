@@ -12,6 +12,8 @@ pkgbase = pyvideokit
 	makedepends = python-wheel
 	source = PyVideoKit-Libs::git+https://github.com/Evilchuck666/PyVideoKit-Libs.git
 	source = PyVideoKit-CLI::git+https://github.com/Evilchuck666/PyVideoKit-CLI.git
+	source = PyVideoKit-GUI::git+https://github.com/Evilchuck666/PyVideoKit-GUI.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
@@ -26,4 +28,10 @@ pkgname = python-pyvideokit-cli
 	depends = python
 	depends = python-click
 	depends = python-rich
+	depends = python-pyvideokit-libs
+
+pkgname = python-pyvideokit-gui
+	pkgdesc = GUI for PyVideoKit — FFmpeg-based video processing
+	depends = python
+	depends = pyside6
 	depends = python-pyvideokit-libs
