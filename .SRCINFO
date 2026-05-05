@@ -1,0 +1,19 @@
+pkgbase = formatfactory
+	pkgdesc = 万能格式转换器 - 视频/音频/图片/字体 一键转换
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/maoyaotang12/FormatFactory
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = ffmpeg
+	depends = opencv
+	depends = fontforge
+	source = git+https://github.com/maoyaotang12/FormatFactory.git
+	sha256sums = SKIP
+
+pkgname = formatfactory
