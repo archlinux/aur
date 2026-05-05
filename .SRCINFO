@@ -1,0 +1,22 @@
+pkgbase = omarchy-workspace-profiles
+	pkgdesc = Named workspace profiles for Omarchy on Hyprland — per-profile browser, mako rules, waybar widget, and SUPER+1..5 slots
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alansikora/omarchy-workspace-profiles
+	install = omarchy-workspace-profiles.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = python
+	depends = hyprland
+	depends = waybar
+	depends = mako
+	depends = xdg-utils
+	depends = libnotify
+	depends = jq
+	optdepends = chromium: per-profile browser backend
+	optdepends = google-chrome: per-profile browser backend
+	source = omarchy-workspace-profiles-0.1.0.tar.gz::https://github.com/alansikora/omarchy-workspace-profiles/archive/v0.1.0.tar.gz
+	sha256sums = b09eef2caf15c3fe3ac8ad21aa8f50ee003704959cb69704a512edab60780821
+
+pkgname = omarchy-workspace-profiles

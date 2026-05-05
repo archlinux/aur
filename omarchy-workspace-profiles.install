@@ -1,0 +1,37 @@
+post_install() {
+  cat <<'EOF'
+==> omarchy-workspace-profiles installed.
+==> To enable the feature for your user account, run:
+==>
+==>     omarchy-setup-workspace-profiles
+==>
+==> This registers the default-browser shim, waybar widget,
+==> Hyprland binds, and seeds a `default` profile. Idempotent.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> omarchy-workspace-profiles upgraded.
+==> Re-run `omarchy-setup-workspace-profiles` to refresh the
+==> keybindings, browser .desktop, and waybar sidecar.
+==> Your profile config (~/.config/omarchy/workspace-profiles.conf)
+==> is preserved.
+EOF
+}
+
+pre_remove() {
+  cat <<'EOF'
+==> omarchy-workspace-profiles will be removed.
+==> User-side artifacts under ~/.config and ~/.local/share/applications
+==> remain. To fully clean up:
+==>
+==>     xdg-mime default chromium.desktop x-scheme-handler/{http,https}
+==>     xdg-settings set default-web-browser chromium.desktop
+==>     rm -f ~/.local/share/applications/workspace-profile-browser.desktop
+==>     rm -f ~/.config/hypr/workspace-profiles.conf \
+==>           ~/.config/hypr/workspace-profiles-autostart.conf \
+==>           ~/.config/waybar/workspace-profiles.{jsonc,css} \
+==>           ~/.config/omarchy/extensions/workspace-profiles.sh
+EOF
+}
