@@ -1,50 +1,64 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=opencode-desktop-bin
-pkgver=1.14.33
+pkgver=1.14.39
 pkgrel=1
 pkgdesc="OpenCode desktop client"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://opencode.ai"
 license=('MIT')
-provides=('opencode-desktop' 'opencode')
-conflicts=('opencode-desktop' 'opencode')
-depends=('gtk3' 'webkit2gtk-4.1' 'hicolor-icon-theme' 'gst-plugins-good')
-optdepends=('wl-clipboard: clipboard support on Wayland'
-            'xclip: clipboard support on X11')
-# Stripping breaks the bundled CLI payload and leaves a bare Bun runtime.
-options=('!strip' '!debug')
+provides=('opencode-desktop')
+conflicts=('opencode-desktop')
+depends=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify' 'xdg-utils')
+optdepends=('libappindicator-gtk3: tray icon support')
+options=('!debug')
 
 latestver() {
-  gh api --paginate repos/anomalyco/opencode/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "opencode-desktop-linux-amd64.deb") and any(.assets[]; .name == "opencode-desktop-linux-arm64.deb")) | .tag_name' |
+  gh api --paginate repos/anomalyco/opencode/releases --jq \
+    '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "opencode-desktop-linux-amd64.deb")) | .tag_name' |
     head -1 | sed -E 's/^v//'
 }
 
 source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE")
 source_x86_64=("opencode-desktop-${pkgver}-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-amd64.deb")
-source_aarch64=("opencode-desktop-${pkgver}-linux-arm64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-arm64.deb")
 sha256sums=('625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
-sha256sums_x86_64=('814d729ce302bef5fb2053b9d3cb0cda01fc11e14ba96f78d98c919a36ba1534')
-sha256sums_aarch64=('42235d3d47405b85c6f235413c9728f4a379f91f1dd137e89c7a0347a6f779cc')
+sha256sums_x86_64=('3d81c39bfb9de69abb5dd27976501800d7d46fc3d132ad4c225f072ffbd334e8')
 
 package() {
-  local debfile
-  case "$CARCH" in
-    x86_64) debfile="opencode-desktop-${pkgver}-linux-amd64.deb" ;;
-    aarch64) debfile="opencode-desktop-${pkgver}-linux-arm64.deb" ;;
-  esac
+  bsdtar -xf "${srcdir}/opencode-desktop-${pkgver}-linux-amd64.deb" data.tar.xz
+  bsdtar -xf data.tar.xz -C "${pkgdir}"
 
-  bsdtar -xf "${srcdir}/${debfile}" -C "${srcdir}" data.tar.gz control.tar.gz
-  bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+  # Prune Debian/Ubuntu-specific and dead files
+  rm -rf "${pkgdir}/usr/share/doc"
+  rm -f "${pkgdir}/opt/OpenCode/resources/apparmor-profile"
+  rm -f "${pkgdir}/opt/OpenCode/resources/app-update.yml"
 
-  # Rename binaries
-  mv "${pkgdir}/usr/bin/OpenCode" "${pkgdir}/usr/bin/opencode-desktop"
-  mv "${pkgdir}/usr/bin/opencode-cli" "${pkgdir}/usr/bin/opencode"
-  # Sidecar symlink: Tauri GUI resolves sidecar as "opencode-cli" next to itself
-  ln -s opencode "${pkgdir}/usr/bin/opencode-cli"
+  # Prune musl native modules (useless on glibc Arch)
+  find "${pkgdir}/opt/OpenCode" -name '*.musl.node' -delete
 
-  # Patch desktop file
-  sed -i 's|Exec=OpenCode|Exec=opencode-desktop|' "${pkgdir}/usr/share/applications/OpenCode.desktop"
+  # Launcher script (supports user flags and Wayland)
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/opencode-desktop" <<'EOF'
+#!/bin/bash
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+if [[ -f "$XDG_CONFIG_HOME/opencode-desktop-flags.conf" ]]; then
+  OPENCODE_USER_FLAGS="$(grep -v '^#' "$XDG_CONFIG_HOME/opencode-desktop-flags.conf")"
+fi
+exec /opt/OpenCode/@opencode-aidesktop $OPENCODE_USER_FLAGS "$@"
+EOF
+
+  # Desktop file: fix Exec/Icon, rename to a sane filename
+  local desktop="${pkgdir}/usr/share/applications/@opencode-aidesktop.desktop"
+  sed -i \
+    -e 's|Exec="/opt/OpenCode/@opencode-aidesktop"|Exec=opencode-desktop|' \
+    -e 's|Icon=@opencode-aidesktop|Icon=opencode-desktop|' \
+    "$desktop"
+  mv "$desktop" "${pkgdir}/usr/share/applications/opencode-desktop.desktop"
+
+  # Rename icons to match Icon= field
+  for dir in "${pkgdir}"/usr/share/icons/hicolor/*/apps; do
+    [ -f "${dir}/@opencode-aidesktop.png" ] || continue
+    mv "${dir}/@opencode-aidesktop.png" "${dir}/opencode-desktop.png"
+  done
 
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
