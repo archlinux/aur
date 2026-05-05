@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Huang <jeremyhuang55555@gmail.com>
 pkgname=jcode-bin
-pkgver=0.11.13
+pkgver=0.11.15
 pkgrel=1
 pkgdesc="AI coding agent powered by Claude and ChatGPT"
 arch=('x86_64')
@@ -8,9 +8,14 @@ url="https://github.com/1jehuang/jcode"
 license=('MIT')
 provides=('jcode')
 conflicts=('jcode')
-source=("https://github.com/1jehuang/jcode/releases/download/v0.11.13/jcode-linux-x86_64.tar.gz")
-sha256sums=('447e52a277511494879d10c371570d162fda6df10fe7cd268b22e2cf06c3c6e1')
+source=("https://github.com/1jehuang/jcode/releases/download/v0.11.15/jcode-linux-x86_64.tar.gz")
+sha256sums=('c42f2ddda67c0e0d104c051d53b014f7f02fe3828e28e4759918843a35427b4a')
 
 package() {
-    install -Dm755 "${srcdir}/jcode-linux-x86_64" "${pkgdir}/usr/bin/jcode"
+    install -Dm755 "${srcdir}/jcode-linux-x86_64" "${pkgdir}/usr/lib/jcode/jcode-linux-x86_64"
+    install -Dm755 "${srcdir}/jcode-linux-x86_64.bin" "${pkgdir}/usr/lib/jcode/jcode-linux-x86_64.bin"
+    install -Dm644 "${srcdir}"/libssl.so* "${pkgdir}/usr/lib/jcode/"
+    install -Dm644 "${srcdir}"/libcrypto.so* "${pkgdir}/usr/lib/jcode/"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s /usr/lib/jcode/jcode-linux-x86_64 "${pkgdir}/usr/bin/jcode"
 }
