@@ -1,7 +1,7 @@
 # Maintainer: bnema <b at bnema dot dev>
 pkgname=dumber-browser-git
 pkgver=0.28.0.r367.g6066b2a7
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal keyboard-driven browser for tiling WMs (git version)"
 arch=('x86_64')
 url="https://github.com/bnema/dumber"
@@ -36,7 +36,9 @@ pkgver() {
 build() {
     cd dumber
     export CGO_ENABLED=0
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    # Do not set -buildmode=pie globally: the build also compiles js/wasm
+    # systemview assets, and Go does not support PIE for GOOS=js/GOARCH=wasm.
+    export GOFLAGS="-trimpath -mod=readonly -modcacherw"
     make build
 }
 
