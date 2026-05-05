@@ -1,6 +1,6 @@
 # Maintainer: Morgan <morgan@mordup.com>
 pkgname=ctfl
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Claude Tracker For Linux — system tray monitor for Claude usage"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mordup/ctfl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('97b628f3f17f6b03c58b89c88b8d309094ba3bc7fb1e762497ccda01d62f8482')
+sha256sums=('f00654671ecfb3ebf430651982175f1710c024bac6b7618b3a97a3eaf07d320f')
 
 build() {
     cd "$pkgname-$pkgver"
