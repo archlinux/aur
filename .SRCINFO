@@ -1,0 +1,14 @@
+pkgbase = archive-app
+	pkgdesc = Zarządzanie Domowymi Dokumentami
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/KlapkiSzatana/archive-app
+	arch = any
+	license = GPL-3.0
+	depends = python
+	depends = pyside6
+	depends = python-pillow
+	source = git+https://github.com/KlapkiSzatana/archive-app.git#tag=v1.1.2
+	sha256sums = SKIP
+
+pkgname = archive-app
