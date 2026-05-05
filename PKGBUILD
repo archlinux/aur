@@ -1,5 +1,5 @@
 pkgname=rtimelogger
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="Rust program to track working hours and calculate surplus using SQLite"
 arch=("x86_64")
@@ -11,7 +11,7 @@ source=(
 )
 
 sha256sums=(
-	"529b6000223c75854d518f1a41a25bc54efd141a5555dd96a1855fc695f68865"
+	"9fc985a3e09b4a4fca33f5ec80e0a9affbdc847f07dad739811891cfa8203207"
 )
 
 package() {
