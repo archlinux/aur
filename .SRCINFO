@@ -1,5 +1,5 @@
 pkgbase = wflow-git
-	pkgdesc = A workflow engine for Wayland automation — Shortcuts-style GUI + CLI on top of wdotool (git build)
+	pkgdesc = A workflow engine for Wayland automation, Shortcuts-style GUI + CLI on top of wdotool (git build)
 	pkgver = 0.3.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/cushycush/wflow

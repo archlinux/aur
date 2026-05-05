@@ -3,7 +3,7 @@ pkgname=wflow-git
 _pkgname=wflow
 pkgver=0.3.0.r0.g0000000
 pkgrel=1
-pkgdesc="A workflow engine for Wayland automation — Shortcuts-style GUI + CLI on top of wdotool (git build)"
+pkgdesc="A workflow engine for Wayland automation, Shortcuts-style GUI + CLI on top of wdotool (git build)"
 arch=('x86_64')
 url="https://github.com/cushycush/wflow"
 license=('MIT' 'Apache-2.0')
@@ -74,7 +74,7 @@ package() {
     "$bin" completions fish | install -Dm644 /dev/stdin \
         "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
 
-    # Man pages — wflow(1) plus one page per subcommand.
+    # Man pages, wflow(1) plus one page per subcommand.
     install -d "$pkgdir/usr/share/man/man1"
     "$bin" man --output "$pkgdir/usr/share/man/man1" >/dev/null
 
