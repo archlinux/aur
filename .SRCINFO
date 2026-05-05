@@ -1,7 +1,7 @@
 pkgbase = osiris
 	pkgdesc = A graphical toolkit for X11-based Linux and Unix platforms forked from Qt 2.3.2
 	pkgver = 2.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libranext.com/home/osiris
 	arch = aarch64
 	arch = i686
@@ -11,11 +11,12 @@ pkgbase = osiris
 	makedepends = glu>=9
 	makedepends = meson>=1.1
 	depends = fontconfig
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = libgl
 	depends = libjpeg
 	depends = libpng>=1.6
+	depends = libstdc++
 	depends = libx11
 	depends = libxext
 	depends = libxft

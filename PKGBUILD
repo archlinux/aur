@@ -2,7 +2,7 @@
 
 pkgname="osiris"
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical toolkit for X11-based Linux and Unix platforms forked from Qt 2.3.2"
 arch=(
   'aarch64'
@@ -16,14 +16,15 @@ license=(
 )
 depends=(
   'fontconfig'
-  'gcc-libs'
   'glibc'
+  'libgcc'
   'libgl'
   # 'libice'
   'libjpeg'
   # 'libmng'
   'libpng>=1.6'
   # 'libsm'
+  'libstdc++'
   'libx11'
   'libxext'
   'libxft'
@@ -40,7 +41,7 @@ provides=(
   "lib${pkgname}-mt.so"
   'libqutil.so'
 )
-_pkgsrc="${url##*/}-${pkgver}"
+_pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/-/archive/${pkgver}/${_pkgsrc}.tar.gz"
   "${pkgname}_meson_format_security.patch"
@@ -88,7 +89,7 @@ build() {
 
   cd "${srcdir}"
   arch-meson "${meson_options[@]}"
-  meson compile -C "${_pkgsrc}/build"
+  meson compile -C "${meson_options[1]}"
 }
 
 package() {
