@@ -1,0 +1,13 @@
+pkgbase = upower-openrc
+	pkgdesc = OpenRC service script for UPower
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/upower-openrc
+	arch = any
+	license = MIT
+	depends = openrc
+	depends = upower
+	source = upower
+	sha256sums = 02d8479a3eaad0b321489f64a492aaa4030ccc6ac51604cea8243118aa18a0cb
+
+pkgname = upower-openrc

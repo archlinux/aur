@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+
+description="UPower daemon"
+command="/usr/lib/upowerd"
+command_background=true
+pidfile="/run/upowerd.pid"
+
+depend() {
+    need dbus
+    use elogind
+}
