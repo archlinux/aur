@@ -1,0 +1,17 @@
+pkgbase = ssmp-git
+	pkgdesc = TUI music player
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TheBlandit/ssmp
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	source = ssmp-git::git+https://github.com/TheBlandit/ssmp.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = ssmp-git
