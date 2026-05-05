@@ -1,6 +1,6 @@
 pkgbase = osmium
 	pkgdesc = A globally distributed community messaging and voice/video platform
-	pkgver = 0.0.16
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://osmium.chat/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = osmium
 	optdepends = libpulse: Pulseaudio support
 	optdepends = xdg-utils: Open files
 	options = !strip
-	source = https://updater.osmium.chat/Osmium-0.0.16-alpha-x64.tar.gz
-	sha512sums = 54a46c646388fcfe1c631023eb628b9c712cba0218184b77224bd7552db2678a3fa5e8a64979b1c960e3da610214533a5a487f9de877b676245a038913425d7d
+	source = https://updater.osmium.chat/Osmium-0.0.20-alpha-x64.tar.gz
+	sha512sums = c9e6397519f9369ec0885e67d242c87595c1add27b4e3e18d60407c49088c0f0792fac935744b65f79797967d0ba41c0150500c6fd6f0d68be88029a67cbbb02
 
 pkgname = osmium
