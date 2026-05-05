@@ -1,11 +1,11 @@
 # Maintainer: iciclejj
 pkgname=scran
-pkgver='0.9.0'
+pkgver='0.9.1'
 pkgrel=1
 pkgdesc='Image and video capture for Wayland'
 arch=('x86_64')
 url='https://github.com/iciclejj/scran'
-license=('MIT')
+license=('MIT AND OFL-1.1')
 makedepends=('wayland-protocols')
 depends=(
     'wayland>=1.14.91'
@@ -17,7 +17,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iciclejj/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f8ecd4945a542cb6d98d94bd14b20ee02c5efb30fc15a6f91a3b50374014a3e4')
+sha256sums=('2d91eee7b0dcf4a80aa20430537e31e1bea5150f40e492d5464193ee6d1f5236')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -28,4 +28,6 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -D -m 755 "./build/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -D -m 644 "./LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m 644 "./assets/Iosevka.license" "$pkgdir/usr/share/licenses/$pkgname/Iosevka.license"
+    install -D -m 644 "./assets/NerdFontsSymbolsOnly.license" "$pkgdir/usr/share/licenses/$pkgname/NerdFontsSymbolsOnly.license"
 }

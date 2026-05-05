@@ -1,10 +1,10 @@
 pkgbase = scran
 	pkgdesc = Image and video capture for Wayland
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/iciclejj/scran
 	arch = x86_64
-	license = MIT
+	license = MIT AND OFL-1.1
 	makedepends = wayland-protocols
 	depends = wayland>=1.14.91
 	depends = libxkbcommon
@@ -12,7 +12,7 @@ pkgbase = scran
 	depends = libpipewire
 	depends = ffmpeg
 	depends = blend2d
-	source = scran-0.9.0.tar.gz::https://github.com/iciclejj/scran/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = f8ecd4945a542cb6d98d94bd14b20ee02c5efb30fc15a6f91a3b50374014a3e4
+	source = scran-0.9.1.tar.gz::https://github.com/iciclejj/scran/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 2d91eee7b0dcf4a80aa20430537e31e1bea5150f40e492d5464193ee6d1f5236
 
 pkgname = scran
