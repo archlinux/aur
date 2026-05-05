@@ -1,6 +1,6 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=marina
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A dataset manager for robotics to organize, share, and discover datasets and metadata across storage backends."
 arch=('x86_64' 'aarch64')
