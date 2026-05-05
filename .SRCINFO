@@ -1,6 +1,6 @@
 pkgbase = python-json2xml
 	pkgdesc = Simple Python Library to convert JSON to XML
-	pkgver = 6.0.7
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://json2xml.readthedocs.io/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-json2xml
 	depends = python-defusedxml
 	depends = python-urllib3
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/j/json2xml/json2xml-6.0.7.tar.gz
-	sha512sums = c22c777d530150a025759624fda63047d9a5ab8c8c0b3998b80b95019cf45708dc9aa133b68f27853c350f2ce1294b4c086c94d1cacb0c5c0d5fb41a7012bff2
+	source = https://files.pythonhosted.org/packages/source/j/json2xml/json2xml-6.1.0.tar.gz
+	sha512sums = ed6a61a06e84ab60f63d8602cf152620fac6bad1a4a1c00b45366c8be1d7593e1aa58e412d03e9304cdf77d384fecbfb338208ac07e141831f0807fbae661571
 
 pkgname = python-json2xml
