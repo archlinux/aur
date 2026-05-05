@@ -3,7 +3,7 @@
 pkgname=f5-tts-rocm
 _pkgname=f5-tts
 pkgver=1.1.20
-pkgrel=7
+pkgrel=8
 pkgdesc='F5-TTS text-to-speech CLI and Gradio tools with bundled ROCm PyTorch'
 arch=('x86_64')
 url='https://github.com/SWivid/F5-TTS'
@@ -115,7 +115,7 @@ package() {
       "safetensors" \
       "soundfile" \
       "tomli" \
-      "torchcodec" \
+      "torchcodec==0.9.1" \
       "torchdiffeq" \
       "tqdm>=4.65.0" \
       "transformers" \

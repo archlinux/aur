@@ -1,7 +1,7 @@
 pkgbase = f5-tts-rocm
 	pkgdesc = F5-TTS text-to-speech CLI and Gradio tools with bundled ROCm PyTorch
 	pkgver = 1.1.20
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/SWivid/F5-TTS
 	arch = x86_64
 	license = MIT
