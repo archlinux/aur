@@ -1,5 +1,5 @@
 pkgbase = wflow-bin
-	pkgdesc = A workflow engine for Wayland automation — Shortcuts-style GUI + CLI (prebuilt binary)
+	pkgdesc = A workflow engine for Wayland automation, Shortcuts-style GUI + CLI (prebuilt binary)
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/cushycush/wflow

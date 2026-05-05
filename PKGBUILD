@@ -3,7 +3,7 @@ pkgname=wflow-bin
 _pkgname=wflow
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="A workflow engine for Wayland automation — Shortcuts-style GUI + CLI (prebuilt binary)"
+pkgdesc="A workflow engine for Wayland automation, Shortcuts-style GUI + CLI (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/cushycush/wflow"
 license=('MIT' 'Apache-2.0')
@@ -24,7 +24,7 @@ optdepends=(
 # The release tarball ships the binary, completions, and man pages.
 # The desktop entry and scalable icon live in the source tree under
 # packaging/flatpak/, so we pull those two files individually from
-# the matching git tag — cheaper than fetching the whole source
+# the matching git tag, cheaper than fetching the whole source
 # archive for two text files.
 source=(
     "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz"
@@ -46,7 +46,7 @@ package() {
     install -Dm644 "$stage/completions/wflow.fish" \
         "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
 
-    # Man pages — one wflow.1 plus one wflow-<sub>.1 per subcommand.
+    # Man pages, one wflow.1 plus one wflow-<sub>.1 per subcommand.
     install -d "$pkgdir/usr/share/man/man1"
     install -m644 "$stage/man/"*.1 "$pkgdir/usr/share/man/man1/"
 
