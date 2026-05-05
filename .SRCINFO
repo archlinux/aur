@@ -1,15 +1,16 @@
 pkgbase = uqm-megamod-data
 	pkgdesc = Base content for the Ur-Quan Masters MegaMod by JHGuitarFreak (Kohr-Ah Death).
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/JHGuitarFreak/UQM-MegaMod-Content
 	arch = any
 	license = custom:CC BY-NC-SA 2.5
-	noextract = mm-0.8.3-content.uqm
-	source = mm-0.8.3-content.uqm::https://gigenet.dl.sourceforge.net/project/uqm-mods/MegaMod/0.8.3/Content/mm-0.8.3-content.uqm
+	optdepends = sdl-gamecontrollerdb: for game controller bindings. Game is hardcoded to look in contentdir!
+	noextract = mm-0.8.4-content.uqm
+	source = mm-0.8.4-content.uqm::https://sourceforge.net/projects/uqm-mods/files/MegaMod/0.8.4/Content/mm-0.8.4-content.uqm/download
 	source = LICENSE
 	source = version.in
-	md5sums = 0f65b232dec915fa17fdec70a85a00ae
+	md5sums = f1ef90667572094ce5a59e21bfb1f53f
 	md5sums = 4f30efe3d129bd9a8bddd0d455c849f7
 	md5sums = c97a84d6a166d2e3a8815694162b80a8
 
