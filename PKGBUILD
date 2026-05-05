@@ -1,6 +1,6 @@
 pkgname=r2repo
-_build_fragment="tag=v0.1.8"
-pkgver=0.1.8
+_build_fragment="tag=v0.1.9"
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="take package files from vcs releases and turn them into a repo that pacman can use"
 arch=('x86_64')
@@ -19,7 +19,7 @@ python-hatch-vcs
 source=(
 git+https://github.com/greyltc/releases2repo.git#${_build_fragment}
 )
-b2sums=('f4e9e0bf7523102dbe933f49e09cefda9e5d9498c41753d35477e2755e40f63860496c9de1f4559cadd5d0154f60862df51e674437a4b096395864c861cf54b3')
+b2sums=('6c5ce708c85f88715a1589e8aed5fcd111f576c5863a38937c6cb984a0306cd14cf6726d0a3f89661f43cffa751aa02af41e748c4579e734455f40358e26cf28')
 
 pkgver() {
   cd releases2repo
