@@ -3,7 +3,7 @@
 # Contributor: Tommy Li <ttoo74@gmail.com>
 
 pkgname=python-certipy
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A simple python tool for creating certificate authorities and certificates on the fly"
 arch=(any)
@@ -31,7 +31,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'fef1f3d8819ee29c4c67719171c988302823dfe0b6cfbb47d249f374809ba05e'
+  '4e8701e6a2f281e7a154c2f368cff4edf374009084d29788cbe8c3838897784f'
 )
 
 build() {
