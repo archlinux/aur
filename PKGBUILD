@@ -1,7 +1,7 @@
 # Maintainer: Fell <fell@fellr.net>
 
 pkgname=plasticscm-client-gui
-pkgver=11.0.16.9546
+pkgver=11.0.16.10042
 pkgrel=1
 pkgdesc="Unity Version Control (formerly Plastic SCM) originally developed by Códice Software (Graphical utilities)"
 arch=('x86_64')
@@ -14,10 +14,8 @@ source=(
     "https://plastic-releases.s3.eu-west-2.amazonaws.com/releases/${pkgver}/plasticscm/linux/PlasticSCM-${pkgver}-linux-client-gui.tar.gz"
     "https://plastic-releases.s3.eu-west-2.amazonaws.com/releases/${pkgver}/plasticscm/linux/PlasticSCM-${pkgver}-linux-theme.tar.gz"
 )
-b2sums=(
-    '93f41bff38323ecfb09c0cb54464bc3a1ede93f219a0a540f74a97c8412b33887f454776578c00a4f58b24c21c0989ee6fbb86d0bbb10d4134db3db7ee59be0d'
-    'c83c7c2e3b0345f8ce58e705f780235142dccc10555f918dbf5c6b11bf45795081f6b2dc2f88de3ade116dfc6be6b985369424a15673e1ad3529a36008d40ea1'
-)
+b2sums=('57ece899f3cfd957c6329bd5553223459425d92ea4c65c8a859530c6c264fc14eb8eaa35eaa9d98530fbecf12daaabc12b7d44d5ca28248cb2dd6edb5f5357ee'
+        'a89f6e5033332db7498587a0a1143daaf9d1efcf4c9c808c1753c870fa76ade54b6ad7c579f82749707ccf7f4d6ff47be973eddca9a434700bd840f94254146e')
 
 prepare() {
     # these files are already provided by plasticscm-client-core
