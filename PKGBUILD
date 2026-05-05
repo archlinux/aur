@@ -4,7 +4,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname="wsjtx"
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
 url="https://sourceforge.net/projects/wsjt/"
@@ -44,7 +44,7 @@ options=('!lto')
 
 _pkgsrc="$pkgname-$pkgver"
 source=("$_pkgsrc.tar.gz"::"https://github.com/WSJTX/wsjtx/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('eb8b72941b574f1ad16aa0b50ae8b0cc7eaa2943f9b7d4797ff910bf518042a7')
+sha256sums=('4f67a2a1e595ec6c9826eaee013d96673ddd084f7ab7db9bca1d7cf8b15a5ed6')
 
 build() {
   local _cmake_options=(
@@ -54,6 +54,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_CXX_FLAGS='-Wno-error=maybe-uninitialized'
     -Wno-dev
   )
 
