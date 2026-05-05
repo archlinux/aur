@@ -10,7 +10,7 @@ license=('custom')
 optdepends=('qt5-multimedia')
 makedepends=('linux-headers' 'fakeroot')
 
-source=("file://star-system_linux_x86-64_v6.00.tgz"
+source=("file://star-system_linux_x86-64_v6.01.tgz"
 	"star-system.service"
 	"kbuild.patch"
 	"version.patch"
