@@ -1,6 +1,6 @@
 # Maintainer: Clément Le Goffic <legoffic.clement@gmail.com>
 pkgname=baremetal-compiler-rt
-pkgver=22.1.1
+pkgver=22.1.3
 pkgrel=1
 pkgdesc="compiler-rt builtins for bare-metal ARM Cortex-M targets (armv7m, armv7em, armv8m.main, armv8.1m.main)"
 arch=('x86_64')
@@ -13,18 +13,17 @@ source=(
   "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
 )
 
-sha256sums=('9c6f37f6f5f68d38f435d25f770fc48c62d92b2412205767a16dac2c942f0c95')
+sha256sums=('2488c33a959eafba1c44f253e5bbe7ac958eb53fa626298a3a5f4b87373767cd')
 
 build() {
   local _sysroot=/usr/arm-none-eabi
   local _llvm_srcdir="${srcdir}/llvm-project-${pkgver}.src"
 
   for _arch in "${_arches[@]}"; do
-    cmake -S "${_llvm_srcdir}/compiler-rt" \
+    cmake -S "${_llvm_srcdir}/runtimes" \
           -B "${srcdir}/build-${_arch}" \
           -G Ninja \
-          -DLLVM_COMMON_CMAKE_UTILS="${_llvm_srcdir}/cmake" \
-          -DLLVM_MAIN_SRC_DIR="${_llvm_srcdir}/llvm" \
+          -DLLVM_ENABLE_RUNTIMES=compiler-rt \
           -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY \
           -DCOMPILER_RT_OS_DIR=baremetal \
           -DCOMPILER_RT_BUILD_BUILTINS=ON \
@@ -55,7 +54,7 @@ package() {
 
   for _arch in "${_arches[@]}"; do
     install -Dm644 \
-      "${srcdir}/build-${_arch}/lib/baremetal/libclang_rt.builtins-${_arch}.a" \
+      "${srcdir}/build-${_arch}/compiler-rt/lib/baremetal/libclang_rt.builtins-${_arch}.a" \
       "${pkgdir}${_resourcedir}/lib/baremetal/libclang_rt.builtins-${_arch}.a"
   done
 
