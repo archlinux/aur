@@ -9,7 +9,7 @@ arch=('x86_64')
 url=https://www.transcreen.pro
 license=('unknown')
 options=(!strip)
-source=("https://transcreen.app/ubuntu/x86/Transcreen_${pkgver}_amd64.deb")
+source=("https://toofifi.cn/apkPath/Transcreen_${pkgver}_amd64.deb")
 sha256sums=('9cf6bbd15435be8143c5b03bc3df069db4abaa7cb3420ea0fd74548f34979802')
 
 prepare() {
