@@ -1,7 +1,7 @@
-PKGNAME := f5-tts
+PKGNAME := f5-tts-rocm
 AUR_REMOTE := ssh://aur@aur.archlinux.org/$(PKGNAME).git
 BRANCH := master
-TORCH_BACKEND ?= cuda
+TORCH_BACKEND ?= rocm
 BUILDDIR ?= $(HOME)/makepkg-build
 PIP_CACHE_DIR ?= $(HOME)/pip-cache
 TMPDIR ?= $(HOME)/tmp
