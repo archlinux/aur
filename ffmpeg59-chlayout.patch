@@ -1,0 +1,332 @@
+diff --git a/code/cutscene/ffmpeg/AudioDecoder.cpp b/code/cutscene/ffmpeg/AudioDecoder.cpp
+index 37b6766760..117cf89680 100644
+--- a/code/cutscene/ffmpeg/AudioDecoder.cpp
++++ b/code/cutscene/ffmpeg/AudioDecoder.cpp
+@@ -3,13 +3,39 @@
+ #include "tracing/tracing.h"
+ 
+ namespace {
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++const int OUT_SAMPLE_RATE = 48000;
++const AVSampleFormat OUT_SAMPLE_FORMAT = AV_SAMPLE_FMT_S16;
++const int OUT_NUM_CHANNELS = 2;
++
++SwrContext* getSWRContext(const AVChannelLayout* in_layout, int rate, AVSampleFormat inFmt)
++{
++	SwrContext* swr = nullptr;
++	AVChannelLayout out_layout;
++	if (av_channel_layout_from_mask(&out_layout, AV_CH_LAYOUT_STEREO) != 0) {
++		return nullptr;
++	}
++
++	int ret = swr_alloc_set_opts2(&swr, &out_layout, OUT_SAMPLE_FORMAT, OUT_SAMPLE_RATE, in_layout, inFmt, rate, 0,
++								  nullptr);
++	av_channel_layout_uninit(&out_layout);
++	if (ret < 0 || swr == nullptr) {
++		return nullptr;
++	}
++
++	if (swr_init(swr) < 0) {
++		swr_free(&swr);
++		return nullptr;
++	}
++
++	return swr;
++}
++#else
+ const int OUT_CH_LAYOUT = AV_CH_LAYOUT_STEREO;
+ const int OUT_SAMPLE_RATE = 48000;
+ const AVSampleFormat OUT_SAMPLE_FORMAT = AV_SAMPLE_FMT_S16;
+ const int OUT_NUM_CHANNELS = av_get_channel_layout_nb_channels(OUT_CH_LAYOUT);
+ 
+-const int DEFAULT_SRC_NUM_SAMPLES = 1024;
+-
+ SwrContext* getSWRContext(uint64_t layout, int rate, AVSampleFormat inFmt) {
+ 	auto swr = swr_alloc();
+ 
+@@ -25,6 +51,9 @@ SwrContext* getSWRContext(uint64_t layout, int rate, AVSampleFormat inFmt) {
+ 
+ 	return swr;
+ }
++#endif
++
++const int DEFAULT_SRC_NUM_SAMPLES = 1024;
+ 
+ int alloc_array_and_samples(uint8_t*** outData, int* linesize, int channels, int samples, AVSampleFormat format) {
+ 	auto planes = av_sample_fmt_is_planar(format) ? channels : 1;
+@@ -69,8 +98,13 @@ AudioDecoder::AudioDecoder(DecoderStatus* status)
+ 	: FFMPEGStreamDecoder(status) {
+ 	m_audioBuffer.reserve(static_cast<size_t>(OUT_SAMPLE_RATE * OUT_NUM_CHANNELS / 2));
+ 
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	m_resampleCtx = getSWRContext(&m_status->audioCodecPars.ch_layout, m_status->audioCodecPars.sample_rate,
++								  m_status->audioCodecPars.audio_format);
++#else
+ 	m_resampleCtx = getSWRContext(m_status->audioCodecPars.channel_layout, m_status->audioCodecPars.sample_rate,
+ 								  m_status->audioCodecPars.audio_format);
++#endif
+ 
+ 	/*
+     * compute the number of converted samples: buffering is avoided
+diff --git a/code/cutscene/ffmpeg/FFMPEGDecoder.cpp b/code/cutscene/ffmpeg/FFMPEGDecoder.cpp
+index bbb1a02d94..58bd38178d 100644
+--- a/code/cutscene/ffmpeg/FFMPEGDecoder.cpp
++++ b/code/cutscene/ffmpeg/FFMPEGDecoder.cpp
+@@ -69,7 +69,11 @@ CodecContextParameters getCodecParameters(AVStream* stream) {
+ 	paras.height       = stream->codecpar->height;
+ 	paras.pixel_format = (AVPixelFormat)stream->codecpar->format;
+ 
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	av_channel_layout_copy(&paras.ch_layout, &stream->codecpar->ch_layout);
++#else
+ 	paras.channel_layout = stream->codecpar->channel_layout;
++#endif
+ 	paras.sample_rate    = stream->codecpar->sample_rate;
+ 	paras.audio_format   = (AVSampleFormat)stream->codecpar->format;
+ 
+@@ -79,7 +83,11 @@ CodecContextParameters getCodecParameters(AVStream* stream) {
+ 	paras.height       = stream->codec->height;
+ 	paras.pixel_format = stream->codec->pix_fmt;
+ 
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	av_channel_layout_copy(&paras.ch_layout, &stream->codec->ch_layout);
++#else
+ 	paras.channel_layout = stream->codec->channel_layout;
++#endif
+ 	paras.sample_rate    = stream->codec->sample_rate;
+ 	paras.audio_format   = stream->codec->sample_fmt;
+ 
+diff --git a/code/cutscene/ffmpeg/internal.cpp b/code/cutscene/ffmpeg/internal.cpp
+index be0920a506..d52a91fbe6 100644
+--- a/code/cutscene/ffmpeg/internal.cpp
++++ b/code/cutscene/ffmpeg/internal.cpp
+@@ -12,7 +12,9 @@ DecoderStatus::~DecoderStatus() {
+ 	videoCodec = nullptr;
+ 
+ 	if (videoCodecCtx != nullptr) {
++#if LIBAVCODEC_VERSION_MAJOR < 60
+ 		avcodec_close(videoCodecCtx);
++#endif
+ #if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(57, 24, 255)
+ 		avcodec_free_context(&videoCodecCtx);
+ #endif
+@@ -24,7 +26,9 @@ DecoderStatus::~DecoderStatus() {
+ 	audioCodec = nullptr;
+ 
+ 	if (audioCodecCtx != nullptr) {
++#if LIBAVCODEC_VERSION_MAJOR < 60
+ 		avcodec_close(audioCodecCtx);
++#endif
+ #if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(57, 24, 255)
+ 		avcodec_free_context(&audioCodecCtx);
+ #endif
+@@ -36,12 +40,20 @@ DecoderStatus::~DecoderStatus() {
+ 	subtitleCodec = nullptr;
+ 
+ 	if (subtitleCodecCtx != nullptr) {
++#if LIBAVCODEC_VERSION_MAJOR < 60
+ 		avcodec_close(subtitleCodecCtx);
++#endif
+ #if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(57, 24, 255)
+ 		avcodec_free_context(&subtitleCodecCtx);
+ #endif
+ 		subtitleCodecCtx = nullptr;
+ 	}
++
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	av_channel_layout_uninit(&videoCodecPars.ch_layout);
++	av_channel_layout_uninit(&audioCodecPars.ch_layout);
++	av_channel_layout_uninit(&subtitleCodecPars.ch_layout);
++#endif
+ }
+ 
+ } // namespace ffmpeg
+diff --git a/code/cutscene/ffmpeg/internal.h b/code/cutscene/ffmpeg/internal.h
+index 91388f69d8..7737e0c2f7 100644
+--- a/code/cutscene/ffmpeg/internal.h
++++ b/code/cutscene/ffmpeg/internal.h
+@@ -13,7 +13,11 @@ struct CodecContextParameters {
+ 	int height = -1;
+ 	AVPixelFormat pixel_format = AV_PIX_FMT_NONE;
+ 
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	AVChannelLayout ch_layout{};
++#else
+ 	uint64_t channel_layout = 0;
++#endif
+ 	int sample_rate = -1;
+ 	AVSampleFormat audio_format = AV_SAMPLE_FMT_NONE;
+ 
+diff --git a/code/sound/ffmpeg/FFmpegWaveFile.cpp b/code/sound/ffmpeg/FFmpegWaveFile.cpp
+index 4cade1bc6e..aa80625540 100644
+--- a/code/sound/ffmpeg/FFmpegWaveFile.cpp
++++ b/code/sound/ffmpeg/FFmpegWaveFile.cpp
+@@ -20,8 +20,17 @@ AudioProperties getAudioProps(AVStream* stream)
+ 
+ 	int channels;
+ #if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(57, 24, 255)
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	channels = stream->codecpar->ch_layout.nb_channels;
++	if (av_channel_layout_copy(&props.ch_layout, &stream->codecpar->ch_layout) < 0
++		|| props.ch_layout.nb_channels == 0) {
++		av_channel_layout_uninit(&props.ch_layout);
++		av_channel_layout_default(&props.ch_layout, channels > 0 ? channels : 2);
++	}
++#else
+ 	channels             = stream->codecpar->channels;
+ 	props.channel_layout = stream->codecpar->channel_layout;
++#endif
+ 	props.sample_rate    = stream->codecpar->sample_rate;
+ 	props.format         = (AVSampleFormat)stream->codecpar->format;
+ #else
+@@ -31,10 +40,12 @@ AudioProperties getAudioProps(AVStream* stream)
+ 	props.format         = stream->codec->sample_fmt;
+ #endif
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 59
+ 	if (props.channel_layout == 0) {
+ 		// Use a default channel layout value
+ 		props.channel_layout = av_get_default_channel_layout(channels);
+ 	}
++#endif
+ 
+ 	return props;
+ }
+@@ -44,10 +55,21 @@ AudioProperties getAdjustedAudioProps(const AudioProperties& baseProps)
+ 	AudioProperties adjusted;
+ 	adjusted.sample_rate = baseProps.sample_rate; // Don't adjust sample rate
+ 
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	if (av_channel_layout_copy(&adjusted.ch_layout, &baseProps.ch_layout) < 0) {
++		av_channel_layout_uninit(&adjusted.ch_layout);
++		av_channel_layout_default(&adjusted.ch_layout, baseProps.ch_layout.nb_channels);
++	}
++	if (baseProps.ch_layout.nb_channels > 2) {
++		av_channel_layout_uninit(&adjusted.ch_layout);
++		av_channel_layout_from_mask(&adjusted.ch_layout, AV_CH_LAYOUT_STEREO);
++	}
++#else
+ 	adjusted.channel_layout = baseProps.channel_layout;
+ 	if (av_get_channel_layout_nb_channels(baseProps.channel_layout) > 2) {
+ 		adjusted.channel_layout = AV_CH_LAYOUT_STEREO;
+ 	}
++#endif
+ 
+ 	int max_bytes_per_sample;
+ 	switch (Ds_sound_quality) {
+@@ -90,10 +112,19 @@ AudioProperties getAdjustedAudioProps(const AudioProperties& baseProps)
+ SwrContext* getSWRContext(const AudioProperties& base, const AudioProperties& adjusted)
+ {
+ 	SwrContext* swr = nullptr;
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	int err = swr_alloc_set_opts2(&swr, &adjusted.ch_layout, adjusted.format, adjusted.sample_rate,
++								  &base.ch_layout, base.format, base.sample_rate, 0, nullptr);
++	if (err < 0 || swr == nullptr) {
++		return nullptr;
++	}
++#else
+ 	swr = swr_alloc_set_opts(swr, adjusted.channel_layout, adjusted.format, adjusted.sample_rate, base.channel_layout,
+ 							 base.format, base.sample_rate, 0, nullptr);
++#endif
+ 
+ 	if (swr_init(swr) < 0) {
++		swr_free(&swr);
+ 		return nullptr;
+ 	}
+ 
+@@ -114,10 +145,16 @@ FFmpegWaveFile::FFmpegWaveFile()
+ 
+ FFmpegWaveFile::~FFmpegWaveFile()
+ {
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	av_channel_layout_uninit(&m_baseAudioProps.ch_layout);
++	av_channel_layout_uninit(&m_audioProps.ch_layout);
++#endif
+ 	av_frame_free(&m_decodeFrame);
+ 
+ 	if (m_audioCodecCtx) {
++#if LIBAVCODEC_VERSION_MAJOR < 60
+ 		avcodec_close(m_audioCodecCtx);
++#endif
+ #if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(57, 24, 255)
+ 		avcodec_free_context(&m_audioCodecCtx);
+ #endif
+@@ -296,7 +333,16 @@ void FFmpegWaveFile::setAdjustedAudioProperties(const AudioProperties& props)
+ 	if (m_resampleCtx) {
+ 		swr_free(&m_resampleCtx);
+ 	}
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	av_channel_layout_uninit(&m_audioProps.ch_layout);
++	m_audioProps.sample_rate = props.sample_rate;
++	m_audioProps.format = props.format;
++	if (av_channel_layout_copy(&m_audioProps.ch_layout, &props.ch_layout) < 0) {
++		av_channel_layout_default(&m_audioProps.ch_layout, props.ch_layout.nb_channels);
++	}
++#else
+ 	m_audioProps  = props;
++#endif
+ 	m_resampleCtx = getSWRContext(m_baseAudioProps, m_audioProps);
+ 
+ 	Assertion(m_resampleCtx != nullptr, "Resample context creation failed! This should not happen!");
+@@ -375,7 +421,14 @@ int FFmpegWaveFile::getTotalSamples() const
+ 	return samples;
+ }
+ 
+-int FFmpegWaveFile::getNumChannels() const { return av_get_channel_layout_nb_channels(m_audioProps.channel_layout); }
++int FFmpegWaveFile::getNumChannels() const
++{
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	return m_audioProps.ch_layout.nb_channels;
++#else
++	return av_get_channel_layout_nb_channels(m_audioProps.channel_layout);
++#endif
++}
+ 
+ AudioFileProperties FFmpegWaveFile::getFileProperties()
+ {
+@@ -392,7 +445,16 @@ void FFmpegWaveFile::setResamplingProperties(const ResampleProperties& resampleP
+ {
+ 	using namespace libs::ffmpeg;
+ 
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	AudioProperties current;
++	current.sample_rate = m_audioProps.sample_rate;
++	current.format = m_audioProps.format;
++	if (av_channel_layout_copy(&current.ch_layout, &m_audioProps.ch_layout) < 0) {
++		av_channel_layout_default(&current.ch_layout, m_audioProps.ch_layout.nb_channels);
++	}
++#else
+ 	auto current = m_audioProps;
++#endif
+ 
+ 	if (getNumChannels() == resampleProps.num_channels) {
+ 		// No need to resample
+@@ -400,7 +462,12 @@ void FFmpegWaveFile::setResamplingProperties(const ResampleProperties& resampleP
+ 	}
+ 
+ 	if (resampleProps.num_channels == 1) {
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++		av_channel_layout_uninit(&current.ch_layout);
++		av_channel_layout_from_mask(&current.ch_layout, AV_CH_LAYOUT_MONO);
++#else
+ 		current.channel_layout = AV_CH_LAYOUT_MONO;
++#endif
+ 
+ 		setAdjustedAudioProperties(current);
+ 	} else {
+diff --git a/code/sound/ffmpeg/FFmpegWaveFile.h b/code/sound/ffmpeg/FFmpegWaveFile.h
+index 3800821896..61262d200e 100644
+--- a/code/sound/ffmpeg/FFmpegWaveFile.h
++++ b/code/sound/ffmpeg/FFmpegWaveFile.h
+@@ -13,7 +13,11 @@ namespace ffmpeg {
+ struct AudioProperties
+ {
+ 	int sample_rate = -1;
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	AVChannelLayout ch_layout{};
++#else
+ 	int64_t channel_layout = -1;
++#endif
+ 	AVSampleFormat format = AV_SAMPLE_FMT_NONE;
+ };
+ 

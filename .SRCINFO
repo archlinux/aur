@@ -1,7 +1,7 @@
 pkgbase = fs2_open
 	pkgdesc = An enhancement of the FreeSpace 2 engine, need game data
 	pkgver = 23_2_0_RC1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scp.indiegames.us/
 	install = fs2_open.install
 	arch = i686
@@ -27,11 +27,13 @@ pkgbase = fs2_open
 	source = fs2_open.sh
 	source = fs2_open.desktop
 	source = options
+	source = ffmpeg59-chlayout.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = b79e907883949e7fe3a9b10ca3053d87b3e7f393deb41ecd905a823ef60d77e1
 	sha256sums = cac8914fb96eb4f09d8dec0005ccb3626499ab9f3f4c5f64c11bd8d2e913e372
 	sha256sums = c593dacd19705f1aaf23170d7b65b4621945200d3a496e256f77e3f1f0279741
+	sha256sums = 84ed83906f69d00bee7ada626c1c29317d701215331502deb99b17222de3fead
 
 pkgname = fs2_open

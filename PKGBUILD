@@ -15,7 +15,7 @@
 
 pkgname=fs2_open
 pkgver=23_2_0_RC1
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhancement of the FreeSpace 2 engine, need game data"
 url="https://scp.indiegames.us/"
 arch=(i686 x86_64)
@@ -31,13 +31,15 @@ source=("fs2open::git+https://github.com/scp-fs2open/fs2open.github.com.git#tag=
         "git+https://github.com/asarium/libRocket.git"
         'fs2_open.sh'
         'fs2_open.desktop'
-        'options')
+        'options'
+        'ffmpeg59-chlayout.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'b79e907883949e7fe3a9b10ca3053d87b3e7f393deb41ecd905a823ef60d77e1'
             'cac8914fb96eb4f09d8dec0005ccb3626499ab9f3f4c5f64c11bd8d2e913e372'
-            'c593dacd19705f1aaf23170d7b65b4621945200d3a496e256f77e3f1f0279741')
+            'c593dacd19705f1aaf23170d7b65b4621945200d3a496e256f77e3f1f0279741'
+            '84ed83906f69d00bee7ada626c1c29317d701215331502deb99b17222de3fead')
 
 prepare() {
   cd "fs2open"
@@ -45,11 +47,31 @@ prepare() {
   git config submodule.cmake/external/rpavlik-cmake-modules.url "${srcdir}/asarium-cmake-modules"
   git config submodule.lib/libRocket.url "${srcdir}/libRocket"
   git -c protocol.file.allow=always submodule update
+
+  # CMake 4+ no longer allows CMP_* OLD for these; bundled antlr4 still requests them.
+  sed -i \
+    -e 's/CMAKE_POLICY(SET CMP0054 OLD)/CMAKE_POLICY(SET CMP0054 NEW)/g' \
+    -e 's/CMAKE_POLICY(SET CMP0045 OLD)/CMAKE_POLICY(SET CMP0045 NEW)/g' \
+    -e 's/CMAKE_POLICY(SET CMP0042 OLD)/CMAKE_POLICY(SET CMP0042 NEW)/g' \
+    -e 's/CMAKE_POLICY(SET CMP0059 OLD)/CMAKE_POLICY(SET CMP0059 NEW)/g' \
+    lib/antlr4-cpp-runtime/CMakeLists.txt
+
+  # GCC 15: const members make this assignment ill-formed; match upstream rapidjson fix.
+  sed -i 's|GenericStringRef& operator=(const GenericStringRef& rhs) { s = rhs.s; length = rhs.length; }|GenericStringRef\& operator=(const GenericStringRef\& rhs) = delete;|' \
+    lib/discord/thirdparty/rapidjson/document.h
+
+  patch -p1 -i "${srcdir}/ffmpeg59-chlayout.patch"
 }
 
 build() {
+  # Strip build-machine paths from DWARF, __FILE__, and macros (avoids makepkg $srcdir warning).
+  local _pm="-ffile-prefix-map=${srcdir}=. -fmacro-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
+  export CFLAGS+=" ${_pm}"
+  export CXXFLAGS+=" ${_pm}"
+
   cmake -B build -S "fs2open" -Wno-dev \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake --build build
 }
