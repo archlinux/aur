@@ -1,7 +1,7 @@
 # Maintainer: flossbud <flossbud27@gmail.com>
 pkgname=toontown-multitool
-pkgver=2.1.1
-pkgrel=3
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="Multiboxing input control for Toontown Rewritten and Corporate Clash"
 arch=('any')
 url="https://github.com/flossbud/ToonTown-MultiTool"
