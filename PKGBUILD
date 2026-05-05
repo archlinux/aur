@@ -15,7 +15,7 @@ declare -Ag _arch=(
 
 _pkgname="zls"
 pkgname="${_pkgname}-bin"
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A language server for Zig"
 arch=(
@@ -44,28 +44,28 @@ source_${_carch}=(
   'https://builds.zigtools.org/${_pkgname}-${_arch[${_carch}]}-linux-${pkgver}.tar.xz.minisig'
 )"
 done
-sha256sums_aarch64=('a2daa860a0e0cd1410491ff9703c6aaca96defd833b88af6a9811d6ff04fc13b'
+sha256sums_aarch64=('430cd293d201eb70ae2519dbc96c854bf8791b8df7fc9392e8d2dc9680a2bed7'
                     'SKIP')
-sha256sums_i686=('b0a2fd145bd19ed274a4cd523cd682ba00894c549a083aef95cbbde7fa1a2c45'
+sha256sums_i686=('2f7965da884d74d9f7e8b8ef1208ae137084680ddf8580473ff412f62a4051a8'
                  'SKIP')
-sha256sums_riscv64=('6ffd523b08b3b1c18ef061653e29e08e7561633c60dcd41f4af2e9985aa32daf'
+sha256sums_riscv64=('2764ac1303a5b398569df0e8702c6f6ef86da915aeff4bf9dd0c22bc55324288'
                     'SKIP')
-sha256sums_x86_64=('3bb38f522cb23213e8c075ac6b170273fe49b4274b8c12b034cc496407400067'
+sha256sums_x86_64=('ded6d562a0b86ee878b1ddf70ffab2797ce3cdca3b02d6077548f9d56dff96b6'
                    'SKIP')
-sha256sums_powerpc64le=('3b1a55f3e811426f0845f9ea3e16246ecc2896f0e602e87b2959166a5e42aa63'
+sha256sums_powerpc64le=('d51289187aaa892eb266baaa6c1d7f2a30f6d195eaa295c6f54eef17214f03fa'
                         'SKIP')
-sha256sums_loong64=('01cd9378af1a4ab3c06984800d041d4b5005ba1bfc3c2d4ca47fdff4eb23fa1c'
+sha256sums_loong64=('91128eb73e475cb85f81c40182cb6ce24457b29c857ceb8619205e6cc4bc7b96'
                     'SKIP')
-sha256sums_armv7h=('4c57284eb605e51ed895e30a07c40579473f56390338af2caa35ce25a2264c8c'
+sha256sums_armv7h=('7cf8d11f914127809b89254ad97e4b96d84294370418954a49b78bd623d3c55e'
                    'SKIP')
 
 verify() {
   # https://github.com/zigtools/release-worker?tab=readme-ov-file#build-artifacts
   # https://github.com/zigtools/zls/releases/latest
   local zls_minisign="RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex"
-  local source_carch="source_${CARCH}[0]"
-  local source_arch="${!source_carch}"
-  local source_artifact="${source_arch##*/}"
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
 
   minisign -V \
     -P "${zls_minisign}" \
