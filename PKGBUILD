@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=craft-agents-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Claude Code-like agent for Craft documents'
 url='https://github.com/lukilabs/craft-agents-oss'
 arch=(
@@ -57,10 +57,15 @@ package() {
 
     cp -a "$_appdir/." "$pkgdir/opt/craft-agents/"
 
+    chmod 4755 "$pkgdir/opt/craft-agents/chrome-sandbox"
+
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/craft-agents" <<'EOF'
 #!/bin/sh
 export APPDIR=/opt/craft-agents
-exec "$APPDIR/AppRun" --no-sandbox "$@"
+exec "$APPDIR/AppRun" \
+    --enable-wayland-ime \
+    --wayland-text-input-version=3 \
+    "$@"
 EOF
 
     sed \

@@ -1,7 +1,7 @@
 pkgbase = craft-agents-bin
 	pkgdesc = Claude Code-like agent for Craft documents
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lukilabs/craft-agents-oss
 	arch = x86_64
 	license = Apache-2.0
