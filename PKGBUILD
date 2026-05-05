@@ -1,16 +1,18 @@
-# Maintainer: Anonim Muhtar <anon@muhtar.lan>
+# Maintainer: KaliciArkadas <anon@muhtar.lan>
 pkgname=muhtar-dil
 pkgver=1.8.2
 pkgrel=1
-pkgdesc="Hata düzeltmeleri eklendi."
+pkgdesc="Muhtar dili v1.8.2 - Break yerine Kir guncellemesi"
 arch=('any')
 url="https://github.com/KaliciArkadas/muhtar-dil"
 license=('GPL')
 depends=('python')
-source=('muhtar_motoru.py')
-sha256sums=('0681a78211be759ccc7d0b08b5764a6db7a718b9da01bff955e5ff6b29dcc8e5')
+# Dosyayı senin GitHub repondan çekmesi için URL ekledik
+source=("${pkgname}-${pkgver}.py::https://raw.githubusercontent.com/KaliciArkadas/muhtar-dil/main/muhtar_motoru.py")
+# sha256sums kısmını 'SKIP' yaparsan her seferinde hash hesaplamakla uğraşmazsın (şimdilik)
+sha256sums=('SKIP')
 
 package() {
-    install -Dm755 "${srcdir}/muhtar_motoru.py" "${pkgdir}/usr/local/bin/muhtar_motoru.py"
-    ln -s /usr/local/bin/muhtar_motoru.py "${pkgdir}/usr/local/bin/muhtar1"
+    # Dosyayı /usr/bin altına atarsak herkes 'muhtar1' diyerek çalıştırabilir
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.py" "${pkgdir}/usr/bin/muhtar1"
 }
