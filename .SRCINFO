@@ -1,13 +1,13 @@
 pkgbase = relspec
 	pkgdesc = RelSpec is a comprehensive database relations management tool that reads, transforms, and writes database table specifications across multiple formats and ORMs.
-	pkgver = 1.0.55
+	pkgver = 1.0.56
 	pkgrel = 1
 	url = https://git.warky.dev/wdevs/relspecgo
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = relspec-1.0.55.zip::https://git.warky.dev/wdevs/relspecgo/archive/v1.0.55.zip
-	sha256sums = 399221a2efc02e3ee6fb43aa9b81258a5d034cfd99b435fce0040764df09cac9
+	source = relspec-1.0.56.zip::https://git.warky.dev/wdevs/relspecgo/archive/v1.0.56.zip
+	sha256sums = 1d51d61bd37d480baaccc3bb865fa0350194e350de7a9db20cd520a226833153
 
 pkgname = relspec
