@@ -1,0 +1,14 @@
+pkgbase = synaps
+	pkgdesc = Terminal-native AI agent runtime built in Rust
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/HaseebKhalid1507/SynapsCLI
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = https://github.com/HaseebKhalid1507/SynapsCLI/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 29729f0d60226fade58b3f01cd6ae476fb255b780f5b57ace80a4be0966734af
+
+pkgname = synaps
