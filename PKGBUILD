@@ -2,7 +2,7 @@
 
 _pkgname="kikitan-translator"
 pkgname="${_pkgname}-bin"
-pkgver=2.0.0alpha1
+pkgver=2.0.0alpha2
 _pkgver="${pkgver//alpha/-alpha}"
 pkgrel=1
 pkgdesc="VRChat Live Translation Application"
@@ -36,7 +36,7 @@ source_x86_64=(
 )
 sha256sums=('edfc2dce27e3ce366ae07f95298da8378b241708444ed9e18996a3f195426dd6'
             '7a24d010fffd2773c8bef649f512b6aead909bdee4154673f6c97d7db92057c8')
-sha256sums_x86_64=('1112a7460248cfedf85fcbc6ae9059774d7eb941399b2cd30e80df9d531d168c')
+sha256sums_x86_64=('71b74e87171f980f2ee93d3372fba3986f864992df2445a22e49d96a2225a640')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
