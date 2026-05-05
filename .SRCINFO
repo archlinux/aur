@@ -1,0 +1,12 @@
+pkgbase = donkeytype
+	pkgdesc = DonkeyType — simple terminal typing game
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://example.com/donkeytype
+	arch = any
+	license = MIT
+	depends = python
+	source = donkeytype-0.1.0.tar.gz
+	sha256sums = 2d84f24c73f7b8997c42f0cd453a8501ff56173520a29fffdabec247ce36eeae
+
+pkgname = donkeytype
