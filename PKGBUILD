@@ -3,7 +3,7 @@
 pkgname=penguin-burner
 pkgver=0.1.5
 pkgrel=1
-pkgdesc='NVIDIA GPU automatic undervolting tool'
+pkgdesc='NVIDIA GPU automatic undervolting and fine tuning tool'
 arch=('x86_64')
 url='https://github.com/jpietek/PenguinBurner'
 license=('GPL-3.0-or-later')
