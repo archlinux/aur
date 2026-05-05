@@ -2,41 +2,61 @@
 
 pkgname="safecloset"
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Secure TUI Secret Locker"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://dystroy.org/safecloset/"
 _url="https://github.com/Canop/${pkgname}"
-license=('AGPL-3.0-only')
-depends=('gcc-libs' 'glibc')
-makedepends=('cargo')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+license=(
+  'AGPL-3.0-only'
+)
+depends=(
+  'glibc'
+  'libgcc'
+)
+makedepends=(
+  'cargo'
+)
+_pkgsrc="${_url##*/}-${pkgver}"
+source=(
+  "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+)
 sha256sums=('8059c48fc008c6d9b941290d76380145c6ff6b8a0484004763e478bf95e37c92')
 
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
+_source() {
+  export CARGO_HOME="${srcdir}/.cargo"
+  export CARGO_TARGET_DIR=target
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+prepare() {
+  _source
+
+  cd "${srcdir}/${_pkgsrc}"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
+  _source
+
   cd "${srcdir}/${_pkgsrc}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
+  _source
+
   cd "${srcdir}/${_pkgsrc}"
-  export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 
 package() {
+  _source
+
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "${CARGO_TARGET_DIR}/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "CHANGELOG.md" "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
