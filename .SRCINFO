@@ -1,6 +1,6 @@
 pkgbase = modfetch-bin
 	pkgdesc = Robust CLI/TUI downloader for LLM and Stable Diffusion assets
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/jxwalker/modfetch
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = modfetch-bin
 	license = MIT
 	provides = modfetch
 	conflicts = modfetch
-	source = LICENSE::https://raw.githubusercontent.com/jxwalker/modfetch/v0.7.0/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/jxwalker/modfetch/v0.7.1/LICENSE
 	sha256sums = 73be8e0a20ff3b0a6991d6405d4d485e5ffc8dfb07a13a1f1b7afb081f57ee54
-	source_x86_64 = modfetch-0.7.0-linux-amd64::https://github.com/jxwalker/modfetch/releases/download/v0.7.0/modfetch_linux_amd64
-	sha256sums_x86_64 = 7fe79e9ac38961e9bc7238b268388b36af98a7a2b6c6891fc94397ac504e7118
-	source_aarch64 = modfetch-0.7.0-linux-arm64::https://github.com/jxwalker/modfetch/releases/download/v0.7.0/modfetch_linux_arm64
-	sha256sums_aarch64 = 398c2d3d1d9cc7a83b5d9dc99ca2c0176a3ee5b4db3b73f4b9b9e6c9a55da1eb
+	source_x86_64 = modfetch-0.7.1-linux-amd64::https://github.com/jxwalker/modfetch/releases/download/v0.7.1/modfetch_linux_amd64
+	sha256sums_x86_64 = c7db15650986c32cf4b1550699e624a929e21b926194a2523896fbacec95276c
+	source_aarch64 = modfetch-0.7.1-linux-arm64::https://github.com/jxwalker/modfetch/releases/download/v0.7.1/modfetch_linux_arm64
+	sha256sums_aarch64 = 893e51802932381bc14d472d94002813c491c5170f14e50573e0b30cf873c868
 
 pkgname = modfetch-bin
