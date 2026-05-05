@@ -2,7 +2,7 @@
 
 _pkgname=obs-kmscap
 pkgname=obs-kmscap-git
-pkgver=0
+pkgver=r11.bf16162
 pkgrel=1
 pkgdesc="A zero-copy screen capture plugin for OBS Studio on Linux"
 url=https://github.com/xnqs/obs-kmscap
