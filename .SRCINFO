@@ -1,7 +1,7 @@
 pkgbase = con-bin
 	pkgdesc = The Native Terminal Emulator with a builtin AI Harness
-	pkgver = 0.1.0.beta.60
-	pkgrel = 2
+	pkgver = 0.1.0.beta.61
+	pkgrel = 1
 	url = https://con.nowledge.co
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = con-bin
 	provides = con
 	conflicts = con
 	options = !strip
-	source_x86_64 = con-0.1.0-beta.60-linux-x86_64.tar.gz::https://github.com/nowledge-co/con-terminal/releases/download/v0.1.0-beta.60/con-0.1.0-beta.60-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 3f0481208778a92e6e1ea29223f17d4b3fe22f8947e7eb703e5626041798d3cb
+	source_x86_64 = con-0.1.0-beta.61-linux-x86_64.tar.gz::https://github.com/nowledge-co/con-terminal/releases/download/v0.1.0-beta.61/con-0.1.0-beta.61-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3d7fb4da6922fb284fda81409f5f0288446809685c01b3eba91beb3855f1cf12
 
 pkgname = con-bin
