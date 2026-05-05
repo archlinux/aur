@@ -2,7 +2,7 @@
 
 pkgname="thelasteichhof"
 pkgver="2.11W"
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A game from 1993, Allegro4 port with experimental minor improvements."
 
@@ -14,7 +14,7 @@ arch=('x86_64')
 
 depends=('allegro4' 'glibc')
 
-source=("https://gitea.com/WildPenguin/TheLastEichhof/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver-src.tar.gz"::"https://gitea.com/WildPenguin/TheLastEichhof/archive/v${pkgver}.tar.gz")
 
 sha256sums=('acc69cae7ea77d4f759b838535d316448f6fe47c555a78b22949af396b8853db')
 
