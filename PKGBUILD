@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/release.yml` republish.
 pkgname=inbx-bin
 _pkgname=inbx
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="inbx — modal-vim email client (binary release)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=("$_pkgname")
 depends=()
 
 source_x86_64=("inbx-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/inbx/releases/download/v${pkgver}/inbx-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8c4363ddde9bb57b2f3f4f54f9be312e3349935e99d5278c62ab62c70d8b17ce')
+sha256sums_x86_64=('21f63c40ffd214f2b425b82f427486b503241093a9f296a1aa279edabdd05d8a')
 
 package() {
     install -Dm755 "$srcdir/inbx" "$pkgdir/usr/bin/inbx"
