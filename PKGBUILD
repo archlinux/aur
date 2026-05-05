@@ -5,7 +5,7 @@ pkgname=(
     'python-pyvideokit-cli'
     'python-pyvideokit-gui'
 )
-pkgver=r2.1150087
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="FFmpeg-based video processing tools"
 arch=('any')
@@ -28,8 +28,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-    cd "$srcdir/PyVideoKit-Libs"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    python -c "import tomllib; f=open('$srcdir/PyVideoKit-Libs/pyproject.toml','rb'); print(tomllib.load(f)['project']['version'])"
 }
 
 build() {
