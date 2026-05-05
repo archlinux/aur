@@ -34,10 +34,13 @@ check() {
 }
 
 package() {
-  cd "bifrost/bifrost"
+  cd "bifrost"
 
   install -Dm755 bin/bf "$pkgdir/usr/bin/bf"
   install -Dm755 bin/bifrost-server "$pkgdir/usr/bin/bifrost-server"
+  
+  # into the monorepo folder
+  cd "bifrost"
 
   install -Dm644 pkg/arch/bifrost.service "$pkgdir/usr/lib/systemd/system/bifrost.service"
   install -Dm644 pkg/arch/server.yaml "$pkgdir/etc/bifrost/server.yaml"
