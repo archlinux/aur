@@ -4,7 +4,7 @@
 pkgname=youtube-downloader-bin
 _pkgname=youtube-downloader
 pkgver=3.9.19
-pkgrel=2
+pkgrel=3
 build=2600413
 pkgdesc='YouTube Downloader by MediaHuman'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('ffmpeg'
          'qt5-networkauth'
          'qt5-quickcontrols'
          'qt5-webengine'
-         'taglib1')
+         'taglib')
 provides=('youtube-downloader')
 conflicts=('youtube-downloader')
 source_x86_64=("${pkgname}-${pkgver}-${build}-${pkgrel}.amd64.deb::https://schinfo.de/MediaHuman/YouTubeDownloader.amd64.deb")
