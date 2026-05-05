@@ -6,7 +6,7 @@
 _pkgname='icann-rdap'
 pkgname="$_pkgname-bin"
 pkgdesc='ICANN implementation of RDAP: the Registry Data Access Protocol (pre-compiled)'
-pkgver=0.0.28
+pkgver=0.0.29
 pkgrel=1
 url="https://github.com/icann/$_pkgname"
 arch=('aarch64' 'x86_64')
@@ -17,21 +17,17 @@ provides=('rdap' "$_pkgname")
 conflicts=('openrdap-client' "${provides[@]}")
 source_aarch64=(
   "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu.tar.gz"
-  "$_rawurl/LICENSE-APACHE"
-  "$_rawurl/LICENSE-MIT"
   "README-$pkgver.md::$_rawurl/README.md"
   "README-cli-$pkgver.md::$_rawurl/$_pkgname-cli/README.md"
   "README-srv-$pkgver.md::$_rawurl/$_pkgname-srv/README.md"
 )
 source_x86_64=(
   "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu.tar.gz"
-  "$_rawurl/LICENSE-APACHE"
-  "$_rawurl/LICENSE-MIT"
   "README-$pkgver.md::$_rawurl/README.md"
   "README-cli-$pkgver.md::$_rawurl/$_pkgname-cli/README.md"
   "README-srv-$pkgver.md::$_rawurl/$_pkgname-srv/README.md"
 )
-_skip=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+_skip=('SKIP' 'SKIP' 'SKIP')
 
 package() {
   # Binaries
@@ -49,7 +45,7 @@ package() {
 
   # Licenses (only the MIT license is actually required here)
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
-    LICENSE-*
+    ../LICENSES/{Apache-2.0,MIT}.txt
 
   for _dir in doc licenses; do
     cd "$pkgdir/usr/share/$_dir" && {
@@ -60,11 +56,11 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '044da8b1f628be0daf77e54602cfa0fdb15712609d81e61df769c58cc9b97ee8'
+  '813d30b911943cd28feae5e802bc3ef8006beb2f35afc7b8336c7d67a117928c'
   "${_skip[@]}"
 )
 sha256sums_x86_64=(
-  '9826f12ec4c969c44ad0fc3f1f5967a718f095a18157e54e67c51f99f401b949'
+  '91831afa75bddf2237a641728ddd5dbe5fb535427050adaf90a4c1f75e7342fd'
   "${_skip[@]}"
 )
 
