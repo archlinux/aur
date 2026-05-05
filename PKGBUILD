@@ -1,6 +1,6 @@
 # Maintainer: Peter <peternaame@gmail.com>
 pkgname=ytm-player-git
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="A full-featured YouTube Music TUI client with vim-style navigation"
 arch=('any')
@@ -28,6 +28,8 @@ optdepends=(
 )
 provides=('ytm-player')
 conflicts=('ytm-player')
+# url is the package homepage (AUR display). source is the build fetch location.
+# They intentionally differ. Do not collapse them via "git+${url}.git".
 source=("git+https://github.com/peternaame-boop/ytm-player.git")
 sha256sums=('SKIP')
 
