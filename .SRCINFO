@@ -1,6 +1,6 @@
 pkgbase = oh-my-pi-bin
 	pkgdesc = AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)
-	pkgver = 14.6.1
+	pkgver = 14.7.0
 	pkgrel = 1
 	url = https://github.com/can1357/oh-my-pi
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = oh-my-pi-bin
 	provides = oh-my-pi
 	conflicts = oh-my-pi
 	options = !strip
-	source = omp-14.6.1::https://github.com/can1357/oh-my-pi/releases/download/v14.6.1/omp-linux-x64
-	source = LICENSE-14.6.1::https://raw.githubusercontent.com/can1357/oh-my-pi/v14.6.1/LICENSE
-	sha256sums = 7c9d9778c1131317c9ce282955a5d7f1cab36275c684099fd437c85bcd643427
+	source = omp-14.7.0::https://github.com/can1357/oh-my-pi/releases/download/v14.7.0/omp-linux-x64
+	source = LICENSE-14.7.0::https://raw.githubusercontent.com/can1357/oh-my-pi/v14.7.0/LICENSE
+	sha256sums = bf7e38d162c7bdf31d4319cbfafb2eeb1b71b78f26a807150c0da8e900d88a3e
 	sha256sums = 545636e19386d3d4e0ae6d77354527499999c3ebfbca61b9fa5aa4ead7c0b308
 
 pkgname = oh-my-pi-bin
