@@ -4,9 +4,9 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.5354.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
 license=('custom:Claude')
 depends=('alsa-lib' 'gtk3' 'nss')
@@ -29,17 +29,24 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-_electron_ver=41.4.0
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.5354.0-4/claude-desktop-1.5354.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
-sha256sums_x86_64=('763fec9f33843f781c49199e6bee695d3e56bc0828b02ae1eac9d13c866861b5' 'SKIP')
+_electron_ver=41.5.0
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.5354.0-5/claude-desktop-1.5354.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
+sha256sums_x86_64=('6709cfba43cd3c339e4eb5c7385408f24da8d944b2075bcb1bdd2c575f2d361f' 'SKIP')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.5354.0-5/claude-desktop-1.5354.0-linux-aarch64.tar.gz" "electron-v${_electron_ver}-linux-arm64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-arm64.zip")
+sha256sums_aarch64=('0916c43bd6b27b7f3230379166e00ef52f91430b71c28cd733cd07a38d3cd96c' 'SKIP')
 options=('!strip')
 
 package() {
     cd "$srcdir"
 
+    case "$CARCH" in
+        x86_64)  _electron_arch="x64" ;;
+        aarch64) _electron_arch="arm64" ;;
+    esac
+
     # Install bundled Electron runtime
     install -dm755 "$pkgdir/usr/lib/$pkgname"
-    unzip -q "$srcdir/electron-v${_electron_ver}-linux-x64.zip" -d "$pkgdir/usr/lib/$pkgname"
+    unzip -q "$srcdir/electron-v${_electron_ver}-linux-${_electron_arch}.zip" -d "$pkgdir/usr/lib/$pkgname"
 
     # Rename the Electron binary to APP_ID. Electron reads /proc/self/exe for
     # Wayland app_id / X11 WM_CLASS, so the binary name must match the .desktop
