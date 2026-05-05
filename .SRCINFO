@@ -1,7 +1,7 @@
 pkgbase = kira
 	pkgdesc = kira: a specialized expert in Arch Linux and Hyprland
-	pkgver = 0.1.0.r20.ge9bfb8b
-	pkgrel = 3
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/eliakimrosil/kira
 	arch = any
 	license = MIT
@@ -13,10 +13,13 @@ pkgbase = kira
 	depends = python
 	depends = python-pyaudio
 	depends = python-dotenv
-	depends = python-google-genai
+	depends = python-rich
+	depends = python-distro
 	optdepends = grim: for screenshot support
+	optdepends = slurp: for region selection in screenshots
 	optdepends = hyprland: for window management integration
 	optdepends = mpv: for music playback
+	optdepends = bluez-utils: for bluetooth management
 	source = kira-repo::git+https://github.com/eliakimrosil/kira.git
 	md5sums = SKIP
 
