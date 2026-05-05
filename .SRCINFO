@@ -1,17 +1,15 @@
 pkgbase = g-helper
-	pkgdesc = A professional and beautiful AUR helper with security auditing
+	pkgdesc = A powerful and lightweight AUR helper designed to work with apt-fake-ubuntu
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/g-helper
 	arch = any
 	license = GPL3
-	depends = jq
-	depends = curl
+	depends = bash
 	depends = git
 	depends = pacman
+	depends = curl
 	source = g-helper
-	source = install.sh
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 01c2670bfef9984ec2e4984d2c4420493d1700f8d90f3f23ee2e608029f5fc21
 
 pkgname = g-helper

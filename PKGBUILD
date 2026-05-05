@@ -1,20 +1,16 @@
-# Maintainer: gabrielearchapt <tua-email@esempio.com>
+# Maintainer: gabrielearchapt <castielloangela512@gmail.com>
 pkgname=g-helper
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A professional and beautiful AUR helper with security auditing"
+pkgdesc="A powerful and lightweight AUR helper designed to work with apt-fake-ubuntu"
 arch=('any')
 url="https://aur.archlinux.org/packages/g-helper"
 license=('GPL3')
-depends=('jq' 'curl' 'git' 'pacman')
-source=('g-helper' 'install.sh')
-sha256sums=('e004442cb420d6603ce309d825db61d09016204e553211fa9b4c1d61915245c0'
-            '3b50a706028b90be99fd837370a5ad280e01d5abbedc3abd05387dffa8bff873')
+depends=('bash' 'git' 'pacman' 'curl')
+source=('g-helper')
+sha256sums=('01c2670bfef9984ec2e4984d2c4420493d1700f8d90f3f23ee2e608029f5fc21')
 
 package() {
-  # Install the main script
+  # Install the script to /usr/bin/g-helper
   install -Dm755 "${srcdir}/g-helper" "${pkgdir}/usr/bin/g-helper"
-  
-  # Install the bootstrap script in a documentation folder or as a utility
-  install -Dm755 "${srcdir}/install.sh" "${pkgdir}/usr/share/doc/${pkgname}/install.sh"
 }
