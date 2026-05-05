@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-raccoon
-pkgver=3.3.1
+pkgver=4.0
 pkgrel=1
 pkgdesc="Python DataFrame with fast insert and appends"
 url="https://raccoon.readthedocs.io"
@@ -23,7 +23,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'f5dc300b84c6609406892f55c6cb1747f38768b50c444e50115298d71f2c6487'
+  'eac80953f2f5ecbbe683e30891f920924fc6315e185ff9a4a3df0c1320c3e524'
 )
 
 build() {
