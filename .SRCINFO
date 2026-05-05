@@ -1,6 +1,6 @@
 pkgbase = imagecompare-bin
 	pkgdesc = Image Comparison Program with various helpful features and tools.
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/gimletlove/imagecompare
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = imagecompare-bin
 	optdepends = libheif: HEIF and HEIC image support
 	provides = imagecompare
 	conflicts = imagecompare
-	noextract = imagecompare-bin-1.1.1-x86_64.zip
-	source = imagecompare-bin-1.1.1-x86_64.zip::https://github.com/gimletlove/imagecompare/releases/download/1.1.1/imagecompare-linux-1.1.1.zip
-	sha256sums = d9a271ca34b16d458bbb0e121d9de26bae5764e271740afce5e8dc093be1ba50
+	noextract = imagecompare-bin-1.1.2-x86_64.zip
+	source = imagecompare-bin-1.1.2-x86_64.zip::https://github.com/gimletlove/imagecompare/releases/download/1.1.2/imagecompare-linux-1.1.2.zip
+	sha256sums = c079d38ede5b08da857399ab1974dbc2b9e9fe60b19f8842390f2848ddcbc44e
 
 pkgname = imagecompare-bin
