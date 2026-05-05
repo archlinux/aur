@@ -1,7 +1,7 @@
 # Maintainer: flossbud <flossbud27@gmail.com>
 pkgname=toontown-multitool
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiboxing input control for Toontown Rewritten and Corporate Clash"
 arch=('any')
 url="https://github.com/flossbud/ToonTown-MultiTool"
@@ -27,7 +27,7 @@ package() {
 
     # Install Python source
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
-    cp -r main.py tabs/ utils/ services/ "${pkgdir}/usr/share/${pkgname}/"
+    cp -r main.py tabs/ utils/ services/ assets/ "${pkgdir}/usr/share/${pkgname}/"
 
     # Install launcher script
     install -dm755 "${pkgdir}/usr/bin"
