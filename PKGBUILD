@@ -3,8 +3,8 @@
 
 pkgname=simpmusic-bin
 pkgver=1.1.1
-pkgrel=1
-pkgdesc="A cross-platform music app using YouTube Music for backend"
+pkgrel=2
+pkgdesc="A simple free music player app based on YouTube Music"
 arch=('x86_64')
 url="https://github.com/maxrave-dev/SimpMusic"
 license=('GPL-3.0-or-later')
