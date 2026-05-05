@@ -3,7 +3,7 @@
 
 pkgname=ladybug-bin
 _gitname=ladybug
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 epoch=
 pkgdesc="In-process property graph database management system (GDBMS) built for query speed and scalability"
@@ -23,8 +23,8 @@ install=
 changelog=
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/ladybugdb/ladybug/releases/download/v${pkgver}/lbug_cli-linux-x86_64.tar.gz"
         "lib${pkgname}-v${pkgver}.tar.gz::https://github.com/ladybugdb/ladybug/releases/download/v${pkgver}/liblbug-linux-x86_64.tar.gz")
-sha256sums=('e63bcf4af8ffcc0b3e8d3ff705320074018f3dacb4df7c9f4d44f1904effd290'
-            'c5bb02be2598271fda548e5bd5f8e0a136e7e4b941494fdd0d3162fee2bc56fa')
+sha256sums=('55376880b3387b83a369d50a1859466c5cd02dd22f5cd8e664dcb5872b9049f2'
+            '86e7faaf19f00e332e6527bf6fa3a234a870eebfdb41a86927a76bd15af3432b')
 
 package() {
   mkdir -p "$pkgdir/usr/include" "$pkgdir/usr/lib" "$pkgdir/usr/bin"
