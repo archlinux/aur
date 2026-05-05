@@ -1,6 +1,6 @@
 # Maintainer: Yuzu <aur at vitayuzu dot day>
 pkgname=mateengine
-pkgver=3.2.0_4_hotfix
+pkgver=3.2.0_5
 pkgrel=1
 pkgdesc="Unofficial Linux port of MateEngine - A free Desktop Mate alternative with custom VRM support"
 arch=('x86_64')
@@ -18,17 +18,9 @@ depends=(
     'libxrandr'
     'libxcomposite'
     'libayatana-appindicator'
-    'libayatana-appindicator'
-    'libdecor'
     'vulkan-icd-loader'
     'libpulse'
-    'pango'
-    'cargo'
-    'wayland'
     'bash'
-    'glibc'
-    'gcc-libs'
-    'zlib'
     'dbus'
     'glxinfo'
 )
@@ -39,7 +31,7 @@ _srcdir="MateEngineX"
 source=("${_archive}.tar.gz::${url}/releases/download/Public-Release-X${pkgver}/${_archive}.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/Marksonthegamer/Mate-Engine-Linux-Port/main/LICENSE"
         "mateengine.desktop")
-sha256sums=('3c03556f51672644e97ce13ae190ba65634f4ddf864b72f190d58331b056768c'
+sha256sums=('1798226bb13e1a1d3927adc79a8a19ace87086841517db0226c9852232dee6b0'
             '305feaea992c5c1c4c666939e04fec751e04cf37bdfeb844358600900ea0acd8'
             '063cf3a5c67b290ff7fcc99443a8b67f573331be0fad9f1ba4d80a053506d023')
 
