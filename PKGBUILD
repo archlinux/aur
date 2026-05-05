@@ -1,7 +1,7 @@
 # Maintainer: Kyler Clay <kylerclay@proton.me>
 
 pkgname=shed-sh
-pkgver=0.12.0
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="A Linux shell with a powerful line editor and IPC socket extensibility"
 arch=('x86_64')
@@ -25,7 +25,6 @@ build()
 {
   cd "shed-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  export SHED_DOC_DIR="/usr/share/shed/doc"
   cargo build --release
 }
 
