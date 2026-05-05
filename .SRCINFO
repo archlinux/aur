@@ -12,11 +12,10 @@ pkgbase = dealers-choice
 	depends = sdl2
 	depends = sdl2_ttf
 	depends = sdl2_image
-	depends = sdl2_net
 	depends = protobuf-c
 	depends = hicolor-icon-theme
 	optdepends = canfigger: use system-installed version
-	source = https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v0.0.13/dealers-choice-0.0.13.tar.xz
+	source = https://github.com/Dealer-s-Choice/dealers-choice/releases/download/v0.0.13/dealers-choice-0.0.13.tar.xz
 	sha256sums = ad9f927eee79f0264fb3d99a258dc0e377ba41507d679066110e388be8dfd8d8
 
 pkgname = dealers-choice

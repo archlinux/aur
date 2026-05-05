@@ -13,7 +13,6 @@ depends=(
   'sdl2'
   'sdl2_ttf'
   'sdl2_image'
-  'sdl2_net'
   'protobuf-c'
   'hicolor-icon-theme'
 )
@@ -23,16 +22,16 @@ makedepends=(
   'ninja'
 )
 
-source=("https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+source=("https://github.com/Dealer-s-Choice/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('ad9f927eee79f0264fb3d99a258dc0e377ba41507d679066110e388be8dfd8d8')
 
 build() {
-  arch-meson $pkgname-$pkgver build -Db_sanitize=none
+  arch-meson "${pkgname}-${pkgver}" build -Db_sanitize=none
   meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="${pkgdir}" meson install -C build
   install -Dm 644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
