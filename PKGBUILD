@@ -1,5 +1,5 @@
 pkgname=gwyddion
-pkgver=2.70
+pkgver=2.71
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="https://gwyddion.net/"
@@ -21,43 +21,23 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'openexr: import and export of OpenEXR HDR images'
             'hdf5: import of Ergo data files')
 source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
-sha256sums=('942f4e041945a850bc32d05193a115ac8a5118a6f841afa6d4dea510f9913f59')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  # Make sure core_perl is available
-  export PATH="/usr/bin/core_perl:$PATH"
-
-  # Generate the missing manpage so install doesn't fail
-  (
-    cd perl
-    pod2man Gwyddion/dump.pm Gwyddion::dump.3pm
-  )
-
-  # Also remove the broken install target just in case
-  sed -i '/install-data-local:/,+3d' perl/Makefile
-}
+sha256sums=('2df721befccbe4d5ee2ba564b32e69341f8ce1de637e2045838a09a2d46b5dba')
 
 build() {
   cd "$pkgname-$pkgver"
 
   # Ensure compiler can find unzip.h from minizip
-  export CPPFLAGS="-I/usr/include/minizip"
-  export CFLAGS="-I/usr/include/minizip $CFLAGS"
+  export CPPFLAGS="-I/usr/include/minizip {$CPPFLAGS}"
+  export CFLAGS="-I/usr/include/minizip ${CFLAGS}"
 
   ./configure --prefix=/usr --sysconfdir=/etc \
-              --localstatedir=/var --libexecdir=/usr/lib \
-              --with-minizip \
+              --localstatedir=/var --libexecdir=/usr/lib --with-minizip \
               PYTHON=python2
   make PYTHON=python2
 }
 
 package() {
   cd "$pkgname-$pkgver"
-
-  # Again ensure pod2man is in PATH when installing
-  export PATH="/usr/bin/core_perl:$PATH"
 
   make DESTDIR="$pkgdir" GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 \
        PYTHON=python2 install
