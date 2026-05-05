@@ -3,7 +3,7 @@
 
 _pkgname=onetalker
 pkgname=$_pkgname-git
-pkgver=2026.3.1.r1.gdd05952
+pkgver=2026.4.r8.g44df400
 pkgrel=1
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
@@ -27,20 +27,21 @@ makedepends=(
 options=('!lto' '!debug')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+install="onetalker.install"
 source=(
   "$_pkgname::git+https://codeberg.org/OneTalker/OneTalker"
   "onetalker.sh"
 )
 sha256sums=(
   'SKIP'
-  'd568614f8a667d67e59dddab079d24ca988632f739c5e98c2f539e4a1c540a24'
+  '53b84e88eedc5ce120b9fb7b4a14de7b5cbe181820c69007bb6782dbb1ee7aaa'
 )
 
 prepare() {
   cd "${_pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 pkgver() {
