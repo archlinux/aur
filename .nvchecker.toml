@@ -1,4 +1,0 @@
-[dpsprep]
-source = "git"
-git = "https://github.com/kcroker/dpsprep.git"
-use_commit = true
