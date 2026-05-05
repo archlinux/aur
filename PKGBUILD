@@ -1,5 +1,5 @@
 pkgname=triginta-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A local-first TUI Pomodoro timer and task manager.'
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,10 @@ license=('GPL-3.0-only')
 depends=()
 provides=('triginta')
 conflicts=('triginta')
-source_x86_64=("triginta-${pkgver}-x86_64.tar.xz::https://github.com/jeansimeoni/triginta/releases/download/v0.1.2/triginta-x86_64-unknown-linux-musl.tar.xz")
-source_aarch64=("triginta-${pkgver}-aarch64.tar.xz::https://github.com/jeansimeoni/triginta/releases/download/v0.1.2/triginta-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('445102dc19f9ac42af9933270d4b813ab26181dbe98c12aed908b3d9de4b14ce')
-sha256sums_aarch64=('fa7fab9d228418ffedea7f2ba5ba3592a9a881927826771823deede174ea25d5')
+source_x86_64=("triginta-${pkgver}-x86_64.tar.xz::https://github.com/jeansimeoni/triginta/releases/download/v0.1.3/triginta-x86_64-unknown-linux-musl.tar.xz")
+source_aarch64=("triginta-${pkgver}-aarch64.tar.xz::https://github.com/jeansimeoni/triginta/releases/download/v0.1.3/triginta-aarch64-unknown-linux-musl.tar.xz")
+sha256sums_x86_64=('097693eb4c1bb2774bca2cbf20c9fd310e8ddd20af7eaec7c716ba04c497f80a')
+sha256sums_aarch64=('dd074e6b424dada133b73bffac26aaecb0b3c60977792f7bbcd9df62bfb1c749')
 
 package() {
     local archive=''
