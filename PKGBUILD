@@ -2,7 +2,7 @@
 # Contributor: Sergey A <murlakatamenka@disroot.org>
 pkgname=falcond
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Linux gaming performance daemon"
 arch=('x86_64')
 url="https://git.pika-os.com/general-packages/falcond"
@@ -13,7 +13,7 @@ depends=(
   'power-profiles-daemon'
   'sudo'
 )
-makedepends=('zig-0.16-bin')
+makedepends=('zig>=0.16.0')
 optdepends=('scx-tools: SCX Scheduler Integration')
 conflicts=('gamemode')
 install="$pkgname.install"
@@ -34,13 +34,13 @@ prepare() {
 
   cd "$pkgname"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache"
-	zig-0.16 build --fetch
+	zig build --fetch
 }
 
 build() {
   cd "$pkgname-$pkgver/$pkgname"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache"
-  DESTDIR=build zig-0.16 build \
+  DESTDIR=build zig build \
     --summary all \
     --prefix /usr \
     -Doptimize=ReleaseFast

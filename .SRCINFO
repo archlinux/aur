@@ -1,12 +1,12 @@
 pkgbase = falcond
 	pkgdesc = Advanced Linux gaming performance daemon
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.pika-os.com/general-packages/falcond
 	install = falcond.install
 	arch = x86_64
 	license = MIT
-	makedepends = zig-0.16-bin
+	makedepends = zig>=0.16.0
 	depends = dbus
 	depends = falcond-profiles
 	depends = power-profiles-daemon
