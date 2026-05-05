@@ -3,7 +3,7 @@
 
 pkgname=motrix-next
 pkgver=3.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AnInsomniacy/motrix-next"
@@ -25,12 +25,13 @@ makedepends=(
     openssl
     appmenu-gtk-module
 )
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('dba2c75493f30a32a16798ab0ef28af689c341f515f7a689f83f31674947b149')
 
 
 prepare() {
-    cd "motrix-next-$pkgver"
+    cd "$pkgname-$pkgver"
 
     # Create the Tauri-expected sidecar symlink pointing to the system aria2c.
     # Tauri's externalBin resolves "binaries/aria2c" to
@@ -46,7 +47,7 @@ prepare() {
 }
 
 build() {
-    cd "motrix-next-$pkgver"
+    cd "$pkgname-$pkgver"
 
     export CARGO_HOME="${srcdir}/cargo-home"
     export CC=gcc
@@ -55,8 +56,8 @@ build() {
 
     # Strip -flto from system CFLAGS — LTO produces GIMPLE IR objects that
     # the Rust linker cannot resolve when linking ring's static C/ASM library.
-    export CFLAGS="${CFLAGS//-flto=auto/}"
-    export CFLAGS="${CFLAGS//-flto/}"
+    # export CFLAGS="${CFLAGS//-flto=auto/}"
+    # export CFLAGS="${CFLAGS//-flto/}"
 
     rm -rf src-tauri/target/release/build/ring-*
 
@@ -67,15 +68,10 @@ package() {
     cd "$pkgname-$pkgver"
 
     # Extract the built .deb and repackage its contents
-    local deb=$(find src-tauri/target/release/bundle/deb -name "*.deb" | head -1)
-
     local tmpdir="${srcdir}/deb-extract"
     mkdir -p "$tmpdir"
-    ar x "$deb" --output="$tmpdir"
-
-    local data_tar=$(find "$tmpdir" -name "data.tar*" | head -1)
-    [[ -z "$data_tar" ]] && { echo "ERROR: data.tar not found in .deb"; return 1; }
-    tar -xf "$data_tar" -C "$pkgdir"
+    ar x src-tauri/target/release/bundle/deb/*.deb --output="$tmpdir"
+    tar -xf "$tmpdir/data.tar.gz" -C "$pkgdir"
 
     rm -f "$pkgdir/usr/bin/aria2c"
 
@@ -83,11 +79,8 @@ package() {
 
     # Replace the bundled aria2c sidecar copy with a symlink to the system package.
     local target_triple=$(rustc -vV | awk '/^host:/{print $2}')
-    local install_dir=$(find "$pkgdir/usr/lib" -maxdepth 1 -type d \( -name "*motrix*" -o -name "*MotrixNext*" \) 2>/dev/null | head -1)
-    if [[ -n "$install_dir" ]]; then
-        find "$install_dir" -name "aria2c-*" -delete
-        ln -sf /usr/bin/aria2c "$install_dir/aria2c-${target_triple}"
-    fi
+    find "$pkgdir/usr/lib/MotrixNext/" -name "aria2c-*" -delete
+    ln -sf /usr/bin/aria2c "$pkgdir/usr/lib/MotrixNext/aria2c-${target_triple}"
 
     # Fix empty Categories so KDE launcher can display the app
     sed -i '/^Categories=/c\Categories=Network;FileTransfer;' \
