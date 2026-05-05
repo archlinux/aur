@@ -1,0 +1,36 @@
+diff --git a/unidbg-android/src/main/java/com/github/unidbg/linux/AndroidElfLoader.java b/unidbg-android/src/main/java/com/github/unidbg/linux/AndroidElfLoader.java
+index f38510c..dfae55b 100644
+--- a/unidbg-android/src/main/java/com/github/unidbg/linux/AndroidElfLoader.java
++++ b/unidbg-android/src/main/java/com/github/unidbg/linux/AndroidElfLoader.java
+@@ -1,6 +1,7 @@
+ package com.github.unidbg.linux;
+ 
+ import com.github.unidbg.*;
++import com.github.unidbg.Module;
+ import com.github.unidbg.arm.ARM;
+ import com.github.unidbg.arm.ARMEmulator;
+ import com.github.unidbg.arm.backend.Backend;
+diff --git a/unidbg-api/src/main/java/com/github/unidbg/arm/AbstractARMDebugger.java b/unidbg-api/src/main/java/com/github/unidbg/arm/AbstractARMDebugger.java
+index fb29a1b..919b4bd 100644
+--- a/unidbg-api/src/main/java/com/github/unidbg/arm/AbstractARMDebugger.java
++++ b/unidbg-api/src/main/java/com/github/unidbg/arm/AbstractARMDebugger.java
+@@ -4,6 +4,7 @@ import capstone.api.Instruction;
+ import capstone.api.RegsAccess;
+ import com.alibaba.fastjson.JSONObject;
+ import com.github.unidbg.*;
++import com.github.unidbg.Module;
+ import com.github.unidbg.arm.backend.*;
+ import com.github.unidbg.debugger.*;
+ import com.github.unidbg.mcp.McpServer;
+diff --git a/unidbg-ios/src/main/java/com/github/unidbg/ios/MachOLoader.java b/unidbg-ios/src/main/java/com/github/unidbg/ios/MachOLoader.java
+index 8f947ac..b0c2f89 100644
+--- a/unidbg-ios/src/main/java/com/github/unidbg/ios/MachOLoader.java
++++ b/unidbg-ios/src/main/java/com/github/unidbg/ios/MachOLoader.java
+@@ -1,6 +1,7 @@
+ package com.github.unidbg.ios;
+ 
+ import com.github.unidbg.*;
++import com.github.unidbg.Module;
+ import com.github.unidbg.arm.ARM;
+ import com.github.unidbg.arm.Arm64Hook;
+ import com.github.unidbg.arm.Arm64Svc;
