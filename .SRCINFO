@@ -1,0 +1,17 @@
+pkgbase = build-tools-android
+	pkgdesc = Set of prebuilt tools for compiling Android components, by Google for Android NDK.
+	pkgver = 2026.04.24
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/build-tools
+	arch = x86_64
+	arch = aarch64
+	license = custom:none
+	provides = build-tools-android
+	conflicts = build-tools-android
+	replaces = build-tools-android
+	options = !strip
+	options = !debug
+	source = build-tools::shallowclone+https://android.googlesource.com/platform/prebuilts/build-tools?branch=main-kernel
+	sha256sums = SKIP
+
+pkgname = build-tools-android-bin
