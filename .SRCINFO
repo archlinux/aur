@@ -1,11 +1,11 @@
 pkgbase = pdfapps-bin
 	pkgdesc = Fast, offline, subscription-free PDF editor (PyInstaller binary)
-	pkgver = 1.13.6
+	pkgver = 1.13.7
 	pkgrel = 1
 	url = https://nelsonduarte.github.io/PDFApps/
 	arch = x86_64
 	license = MIT
-	provides = pdfapps=1.13.6
+	provides = pdfapps=1.13.7
 	conflicts = pdfapps
 	depends = glibc
 	depends = fontconfig
@@ -18,13 +18,13 @@ pkgbase = pdfapps-bin
 	optdepends = tesseract-data-fra: French OCR
 	optdepends = tesseract-data-deu: German OCR
 	optdepends = ghostscript: advanced PDF compression
-	source = pdfapps-1.13.6.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v1.13.6/PDFApps-Linux.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.6/LICENSE
-	source = pdfapps.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.6/flatpak/io.github.nelsonduarte.PDFApps.desktop
-	source = pdfapps.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.6/flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml
-	source = pdfapps.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.6/icon_512.png
-	source = pdfapps.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.6/pdfapps.svg
-	sha256sums = 06e0abf8bd3ad13da6a4a8b4ad883eb1ba8abfc00beb85fe4beb26a9f4b86682
+	source = pdfapps-1.13.7.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v1.13.7/PDFApps-Linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.7/LICENSE
+	source = pdfapps.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.7/flatpak/io.github.nelsonduarte.PDFApps.desktop
+	source = pdfapps.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.7/flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml
+	source = pdfapps.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.7/icon_512.png
+	source = pdfapps.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.7/pdfapps.svg
+	sha256sums = 47aafd606f8a373b5d1b33e8ed35d05d34953e47418aec5c7b635caeef5d8be4
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
