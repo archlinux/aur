@@ -1,6 +1,6 @@
 pkgbase = daed-edge-git
 	pkgdesc = A modern dashboard for dae, bundled with latest dae-wing (backend API server) and dae (core).
-	pkgver = v1.27.0.r817.215.838
+	pkgver = 1.27.0.r13.gf655b35.w223.gdc50308.d842.g0a4de9d
 	pkgrel = 1
 	url = https://github.com/daeuniverse/daed
 	install = daed.install
@@ -15,9 +15,11 @@ pkgbase = daed-edge-git
 	conflicts = daed
 	conflicts = daed-git
 	options = !debug
-	source = git+https://github.com/daeuniverse/daed.git
-	source = git+https://github.com/daeuniverse/dae-wing.git
-	source = git+https://github.com/daeuniverse/dae.git
+	source = daed::git+https://github.com/daeuniverse/daed.git#branch=main
+	source = dae-wing::git+https://github.com/daeuniverse/dae-wing.git#branch=main
+	source = dae::git+https://github.com/daeuniverse/dae.git#branch=main
+	source = dae_bpf_headers::git+https://github.com/daeuniverse/dae_bpf_headers.git#branch=main
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
