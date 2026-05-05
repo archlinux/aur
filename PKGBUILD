@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <me@uyani.de>
 pkgname=oavif-git
 pkgver=0.1.3.r18.gd1fc680
-pkgrel=6
+pkgrel=7
 pkgdesc='Target quality AVIF encoding (git)'
 arch=('x86_64')
 url='https://github.com/gianni-rosato/oavif'
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=(
     'git'
-    'zig0.15-bin'
+    'zig0.15'
 )
 provides=('oavif')
 conflicts=('oavif')
