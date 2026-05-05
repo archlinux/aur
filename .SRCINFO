@@ -1,0 +1,17 @@
+pkgbase = go-android
+	pkgdesc = Go toolchain prebuilt for compiling Android components, prebuilt by Google for Android NDK.
+	pkgver = 1.23.4
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/go
+	arch = x86_64
+	arch = aarch64
+	license = custom:BSD-like
+	provides = go-android
+	conflicts = go-android
+	replaces = go-android
+	options = !strip
+	options = !debug
+	source = go::shallowclone+https://android.googlesource.com/platform/prebuilts/go/linux-x86?branch=main
+	sha256sums = SKIP
+
+pkgname = go-android-bin

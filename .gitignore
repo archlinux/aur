@@ -1,0 +1,6 @@
+go
+go.part
+src/
+pkg/
+DLAGENTS
+*.tar.*
