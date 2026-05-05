@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="又一款 Mihomo 核心的代理工具"
 arch=("x86_64")
 url="https://github.com/KaringX/clashmi/"
-license=("GPL3")
+license=("GPL-3.0-only")
 depends=("gcc-libs"
         "gtk3"
         "hicolor-icon-theme"
