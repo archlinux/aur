@@ -14,9 +14,10 @@ provides=("$_pkgname")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
+prepare() {
+	ln -s /usr/include/sndfile.h "${srcdir}/${_pkgname}/src/include/sndfile-64.h"
+}
 build() {
-	echo ${srcdir}
-	ln -s /usr/lib/libsndfile.h "${srcdir}/hrmp/src/include/sndfile-64.h"
 	cd "$_pkgname"
 	mkdir build
 	cd build
@@ -27,4 +28,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	DESTDIR="${pkgdir}" cmake --build "${srcdir}/$_pkgname/build" --target install
+	rm -rf "${srcdir}/${pkgname}/src/include/sndfile-64.h"
 }
