@@ -1,13 +1,13 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.8.2'
+_upstreamver='0.8.2.post1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='rovr'
 
 pkgname="${_pypi_package}"
-pkgver="${_upstreamver}"
-pkgrel=1
+pkgver="${_upstreamver%%.post*}"
+pkgrel=2
 pkgdesc="A post-modern terminal file explorer"
 
 license=('MIT')
@@ -21,22 +21,22 @@ provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build')
-depends=('python' 'python-textual-autocomplete' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-textual' 'python-jsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-textual-image' 'python-pathvalidate')
+depends=('python' 'python-textual-autocomplete' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-textual' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-textual-image' 'python-pathvalidate')
 
-# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3298036f1dee47ff60d80c10db6f5c6276e33894c811f71eefecf7c591cd5e84')
+# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_upstreamver}.tar.gz")
+source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${_upstreamver}.tar.gz")
+sha256sums=('b9dabd1a623c59b1ff3a8832fe68b21756c637bb06cc5b965428996b2cad0093')
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_upstreamver}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_upstreamver}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
