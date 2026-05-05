@@ -11,6 +11,8 @@ pkgbase = trayplay-bin
 	depends = xdg-desktop-portal-impl
 	depends = kdialog
 	depends = kirigami
+	provides = trayplay=1.1.1
+	conflicts = trayplay
 	source = trayplay-bin-1.1.1.pkg.tar.zst::https://github.com/kabuspl/trayplay/releases/download/v1.1.1/trayplay-1.1.1-1-x86_64.pkg.tar.zst
 	sha256sums = 8edcde3776d1114de6d205ad03801479e89fa83923c8414a27e5122a6e0b079b
 
