@@ -1,14 +1,14 @@
 # Maintainer: Gerald Bischof gBischof at gebix dot com
 pkgname=pdfmerger
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple Qt frontend for pdfunite"
 arch=(x86_64)
 url="https://gitlab.com/gBischof/pdfmerger/releases"
 license=('GPL3')
 groups=()
-depends=(poppler qt5-base)
+depends=(poppler qt6-base)
 makedepends=(qt5-tools)
 checkdepends=()
 optdepends=(xdg-utils imagemagick)

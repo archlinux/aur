@@ -1,13 +1,13 @@
 pkgbase = pdfmerger
 	pkgdesc = A simple Qt frontend for pdfunite
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gBischof/pdfmerger/releases
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
 	depends = poppler
-	depends = qt5-base
+	depends = qt6-base
 	optdepends = xdg-utils
 	optdepends = imagemagick
 	source = pdfmerger::git+https://gitlab.com/gBischof/pdfmerger.git
