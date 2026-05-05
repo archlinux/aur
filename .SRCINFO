@@ -1,0 +1,16 @@
+pkgbase = leetui-git
+	pkgdesc = A terminal UI for browsing and solving LeetCode problems (development version)
+	pkgver = 0.0.4.r0.g1f28c5a
+	pkgrel = 1
+	url = https://github.com/lbarto12/leetui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = leetui
+	conflicts = leetui
+	source = leetui::git+https://github.com/lbarto12/leetui.git
+	sha256sums = SKIP
+
+pkgname = leetui-git
