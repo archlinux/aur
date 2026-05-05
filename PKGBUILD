@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 pkgname=protontricks-git
-pkgver=1.13.1.r1.gb72e306
-pkgrel=2
+pkgver=1.14.1.r6.g28cfc0c
+pkgrel=1
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
@@ -23,6 +23,7 @@ makedepends=(
 checkdepends=(
   'appstream'
   'desktop-file-utils'
+  'python-pytest'
 )
 optdepends=(
   'yad: for GUI'
@@ -49,6 +50,10 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
+
   desktop-file-validate "src/${pkgname%-git}/data/share/applications"/*.desktop
   appstreamcli validate --no-net "data/com.github.Matoking.${pkgname%-git}.metainfo.xml"
 }
