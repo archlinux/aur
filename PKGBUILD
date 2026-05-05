@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=psychTools
-_pkgver=2.5.7.22
+_pkgver=2.6.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,7 +11,6 @@ url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
   r-psych
-  r-rtf
 )
 optdepends=(
   r-gparotation
@@ -19,8 +18,8 @@ optdepends=(
   r-lavaan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('57d6512a2a9e979085ea1ad144fa61e7')
-b2sums=('f9d51264c4ac2266aa401fed51c01ab9ab7485592fb92105d89e32f9cc5fa5366e135191ebfe39ff83eede9e5983ca26cd1ca16e7c78c81b9243d6588a2b59b8')
+md5sums=('c15f6a3993ff2313702970acec5319ca')
+b2sums=('a525ea93b3035c6782cf68e0f833611d5b9da293dff30ff61f080822a9cdc4e3c515fa1763cddbae0e87134c0a4d879a98456d83bbaa7dee3ee3055ae39717f3')
 
 build() {
   mkdir build
