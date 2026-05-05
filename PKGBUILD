@@ -1,8 +1,8 @@
 # Maintainer: Helmut Januschka <helmut@januschka.com>
 
 pkgname=omarchy-chromium-bin
-pkgver=147.0.7727.137
-pkgrel=20
+pkgver=148.0.7778.96
+pkgrel=21
 pkgdesc="A web browser built for speed, simplicity, and security, with patches for Omarchy (binary package)"
 arch=('x86_64' 'aarch64')
 url="https://www.chromium.org/Home"
@@ -14,16 +14,16 @@ provides=('chromium')
 conflicts=('chromium' 'omarchy-chromium')
 
 # Architecture-specific sources
-source_x86_64=("https://github.com/omacom-io/omarchy-chromium/releases/download/v147.0.7727.137-20/omarchy-chromium-147.0.7727.137-20-x86_64.pkg.tar.zst")
-source_aarch64=("https://github.com/omacom-io/omarchy-chromium/releases/download/v147.0.7727.137-20/omarchy-chromium-147.0.7727.137-20-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('3d14343e97b054c3e39a9c372b148062060e3915797743b3af98f5d13863fd46')
-sha256sums_aarch64=('b4f10d91b3e49fa1776b2ff087f8c3949928723f5f76756a89eb16662c940d74')
+source_x86_64=("https://github.com/omacom-io/omarchy-chromium/releases/download/v148.0.7778.96-21/omarchy-chromium-148.0.7778.96-21-x86_64.pkg.tar.zst")
+source_aarch64=("https://github.com/omacom-io/omarchy-chromium/releases/download/v148.0.7778.96-21/omarchy-chromium-148.0.7778.96-21-aarch64.pkg.tar.zst")
+sha256sums_x86_64=('f3f65950edb50722bbc99dde3beffa65a23e06593dcbe8ed7f17e92cc2613259')
+sha256sums_aarch64=('30aa14f35a06f03eae5442e845245614c374ffa13dc7a3c367ed4c65e68b7856')
 
 package() {
     cd "$srcdir"
     
     # Extract the package (filename varies by architecture)
-    tar -xf omarchy-chromium-147.0.7727.137-20-${CARCH}.pkg.tar.zst
+    tar -xf omarchy-chromium-148.0.7778.96-21-${CARCH}.pkg.tar.zst
     
     # Copy everything to the target directory
     cp -r usr "$pkgdir/"
