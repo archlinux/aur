@@ -1,41 +1,51 @@
 # Maintainer: Blair Bonnett <blair dot bonnett @ gmail dot com>
 
 pkgname=dust3d
-_pkgver=1.0.0-rc.9
-pkgver="${_pkgver//-/}"
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="3D watertight modeling software"
 url="https://dust3d.org/"
 license=('MIT')
-depends=('qt5-base' 'qt5-svg')
-makedepends=('boost' 'cmake' 'qt5-tools')
 arch=('x86_64')
 
+depends=(
+  glibc
+  libgcc
+  libglvnd
+  libstdc++
+  qt6-base
+  qt6-multimedia
+  qt6-svg
+)
+makedepends=(
+  git
+)
+
 source=(
-  "dust3d-$_pkgver.tar.gz::https://github.com/huxingyi/dust3d/archive/$_pkgver.tar.gz"
-  'dust3d.desktop'
+  "git+https://github.com/huxingyi/dust3d.git#tag=$pkgver"
   'cstdint.patch'
 )
 sha256sums=(
-  '266c70166c96de550f504387cfe34c870ea2fbb376560511a38114e17836869b'
-  'f4742bc1a2795b435f8343f20516763522b8f710fefbb3e75ce7a02ea634a691'
-  '1c3522dbd6e90cdda7c9572c35ed0f57a5c310e2dc0a2d8affafded9401b0612'
+  '9fde3cb5e7b1ca96f58f4eddfb01b88cd3591568c12b8e8e87875ec1aa3210aa'
+  '8ab39f70a629a4d1e82dfa5a4c88b9dc71bc555da4fca986a362387c7128880e'
 )
 
 prepare() {
-  cd "$srcdir/dust3d-$_pkgver"
+  cd dust3d
   patch -p0 -i "$srcdir/cstdint.patch"
 }
 
 build() {
-  cd "dust3d-$_pkgver/application"
+  cd dust3d/application
+  export PATH="/usr/lib/qt6/bin/:$PATH"
   qmake
   make
 }
 
 package() {
-  install -t "$pkgdir/usr/share/applications" -Dm644 dust3d.desktop
-  cd "$srcdir/dust3d-$_pkgver"
+  cd dust3d
   install -t "$pkgdir/usr/bin" -D application/dust3d
+  install -t "$pkgdir/usr/share/applications" -Dm644 ci/appimage/dust3d.desktop
+  install -t "$pkgdir/usr/share/pixmaps" -Dm644 ci/appimage/dust3d.png
   install -t "$pkgdir/usr/share/licenses/dust3d" -Dm644 LICENSE
 }

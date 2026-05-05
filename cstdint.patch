@@ -24,6 +24,16 @@
  
  class FBXNode
 
+--- application/third_party/fbx/src/fbxproperty.h
++++ application/third_party/fbx/src/fbxproperty.h
+@@ -4,6 +4,7 @@
+ #include <memory>
+ #include <iostream>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace fbx {
+ 
 --- dust3d/base/ds3_file.h
 +++ dust3d/base/ds3_file.h
 
@@ -47,3 +57,14 @@
  #include <map>
  #include <unordered_map>
  #include <unordered_set>
+
+--- third_party/earcut.hpp/include/mapbox/earcut.hpp
++++ third_party/earcut.hpp/include/mapbox/earcut.hpp
+@@ -27,6 +27,7 @@
+ #include <cmath>
+ #include <memory>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace mapbox {
+ 
