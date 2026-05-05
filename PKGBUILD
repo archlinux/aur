@@ -4,7 +4,7 @@ _pkgname=yandex-browser
 pkgname=yandex-browser-corporate
 pkgver=26.3.5.855
 _pkgver=26.3.5.855-1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The web browser from Yandex.
  Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
@@ -19,15 +19,15 @@ depends=("binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "curl" "dbus"
 "vulkan-icd-loader" "libxcomposite")
 optdepends=("speech-dispatcher" "gstreamer-meta" "cryptopro-csp-k1")
 
-source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/${_pkgname}/deb/pool/main/y/${pkgname}/${pkgname}_${_pkgver}_amd64.deb"
-        "wayland.patch")
-sha256sums=("5aa5989a24a7931a7fa2d48528f30958f68c0c88145a60e99e73a8df71297956"
-            "86e4267e8b08e66d2227db41afe1b3d301f14579a76c9664e29645a49c26664d")
+source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/${_pkgname}/deb/pool/main/y/${pkgname}/${pkgname}_${_pkgver}_amd64.deb")
+#        "wayland.patch")
+sha256sums=("5aa5989a24a7931a7fa2d48528f30958f68c0c88145a60e99e73a8df71297956")
+#            "86e4267e8b08e66d2227db41afe1b3d301f14579a76c9664e29645a49c26664d")
 install=${pkgname}.install
 
 prepare() {
     tar -xf data.tar.xz
-    patch -p1 < "${srcdir}/wayland.patch"
+#    patch -p1 < "${srcdir}/wayland.patch"
 }
 
 package() {
