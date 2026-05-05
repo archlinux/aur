@@ -1,0 +1,18 @@
+pkgbase = fast64
+	pkgdesc = Blender based editor for scenes, meshes, and more in first-party N64 games
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://github.com/Fast-64/fast64
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = blender
+	depends = python
+	source = fast64::git+https://github.com/Fast-64/fast64#tag=v2.5.3
+	source = blender_manifest.toml.template
+	sha512sums = 7421c8f4313a2c268d6dba5e41b2f2820f930202009bd510e1d42b8d6c3a61cd7b4150a28ba421ede589d0e6b6f0679bd135cebff2b46e7e7244f0962b3bdcf1
+	sha512sums = f24a30ca6d01b1d9c897bfcaf1215608728a1d3a24b14a1a9d79bbc252dd40bc972ebddd8b37ac404777ef205ec19b20142757618528ea6cc6d9c87e7b8f3873
+	b2sums = 71d9b7604b02c6e69804adeea07b6c0b9018fdd36cfd41e700e05d49c6d36ab5d1ec4664088e327f8b03ded50a18280f1178516cdfc3a08b544dfd279dd12334
+	b2sums = a6a321f5fc41aea1c13cd83eba867c56f7ebec66d11243efcbbef5ec6e5290814b6da2c4be0d4ccbc7da14e6d89d2abddafca867829daefb5ac3254874ecf593
+
+pkgname = fast64

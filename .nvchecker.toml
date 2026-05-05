@@ -1,0 +1,4 @@
+[fast64]
+source = 'git'
+git = 'https://github.com/Fast-64/fast64.git'
+prefix = 'v'

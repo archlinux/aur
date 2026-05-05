@@ -1,0 +1,33 @@
+schema_version = "1.0.0"
+
+# Example of manifest file for a Blender extension
+# Change the values according to your extension
+id = "fast64"
+version = "@pkgver@"
+name = "Fast64"
+tagline = "Export F3D display lists and data related to Nintendo 64 games"
+maintainer = "Fast-64"
+type = "add-on"
+
+# # Optional: link to documentation, support, source files, etc
+website = "https://github.com/Fast-64/fast64/"
+
+# # Optional: tag list defined by Blender and server, see:
+# # https://docs.blender.org/manual/en/dev/advanced/extensions/tags.html
+tags = ["3D View", "Import-Export"]
+
+blender_version_min = "3.2.0"
+# # Optional: Blender version that the extension does not support, earlier versions are supported.
+# # This can be omitted and defined later on the extensions platform if an issue is found.
+# blender_version_max = "5.1.0"
+
+# License conforming to https://spdx.org/licenses/ (use "SPDX: prefix)
+# https://docs.blender.org/manual/en/dev/advanced/extensions/licenses.html
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+# Optional: add-ons can list which resources they will require:
+[permissions]
+files = "Import/export from/to disk"
+clipboard = "Copy and paste to/from system clipboard"
