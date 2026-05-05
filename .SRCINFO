@@ -1,0 +1,23 @@
+pkgbase = felixweb-ide-bin
+	pkgdesc = FelixWeb IDE — desktop IDE for the FelixWeb language (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/benzenma123/felixweb-ide
+	arch = x86_64
+	license = MIT
+	depends = nss
+	depends = libxtst
+	depends = gtk3
+	depends = libxss
+	depends = alsa-lib
+	depends = at-spi2-atk
+	depends = libdrm
+	depends = mesa
+	depends = xdg-utils
+	depends = xdg-user-dirs
+	provides = felixweb-ide
+	conflicts = felixweb-ide
+	source_x86_64 = felixweb-ide-bin-1.0.0-x86_64.tar.gz::https://github.com/benzenma123/felixweb-ide/releases/download/v1.0.0/felixweb-ide-1.0.0.tar.gz
+	sha256sums_x86_64 = 754913949fd61042f4acd527dfffa8674062903d5510f3e1a9201841beb26f5d
+
+pkgname = felixweb-ide-bin
