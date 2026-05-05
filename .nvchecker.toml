@@ -1,0 +1,4 @@
+[dpsprep]
+source = "git"
+git = "https://github.com/kcroker/dpsprep.git"
+prefix = "v"
