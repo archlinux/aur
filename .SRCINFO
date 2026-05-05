@@ -1,7 +1,7 @@
 pkgbase = budget-app
 	pkgdesc = Zarządzanie Budżetem Domowym
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KlapkiSzatana/budget-app
 	arch = any
 	license = GPL-3.0

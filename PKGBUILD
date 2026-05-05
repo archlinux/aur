@@ -1,7 +1,7 @@
 # Maintainer: KlapkiSzatana
 pkgname=budget-app
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zarządzanie Budżetem Domowym"
 arch=('any')
 url="https://github.com/KlapkiSzatana/budget-app"
