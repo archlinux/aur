@@ -1,0 +1,5 @@
+[zesh-bin]
+source = "github"
+github = "roberte777/zesh"
+use_latest_release = true
+prefix = "zesh-v"
