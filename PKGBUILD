@@ -1,4 +1,4 @@
-# Maintainer: Neolux Lee <neolux.lee+aur.>
+# Maintainer: Neolux Lee <aur.neoluxlee@neolux.cn.eu.org>
 
 pkgname=tasker
 pkgver=0.1
