@@ -1,6 +1,6 @@
 pkgbase = lolka-bin
 	pkgdesc = Lolka - voice chat and screen sharing application
-	pkgver = 1.0.85
+	pkgver = 1.0.86
 	pkgrel = 1
 	url = https://lolka.app
 	install = lolka-bin.install
@@ -18,7 +18,7 @@ pkgbase = lolka-bin
 	depends = pipewire-pulse
 	optdepends = libappindicator: for system tray icon
 	provides = lolka
-	source = Lolka_1.0.85_amd64.deb::https://storage.yandexcloud.net/lolka-electron/releases/Lolka_1.0.85_amd64.deb
-	sha256sums = a808ffdefbeb8449a9f770ac129d3df2ae59c1cf1261190b66f2356e52896555
+	source = Lolka_1.0.86_amd64.deb::https://storage.yandexcloud.net/lolka-electron/releases/Lolka_1.0.86_amd64.deb
+	sha256sums = 419cc5bd37beb6d016c8112750dbc7c60c6d491be23500e913e19add4f871729
 
 pkgname = lolka-bin
