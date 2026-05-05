@@ -1,0 +1,16 @@
+pkgbase = lute-bin
+	pkgdesc = A standalone Luau runtime for general-purpose programming
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/luau-lang/lute
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = lute
+	conflicts = lute
+	source = https://github.com/luau-lang/lute/releases/download/v1.0.0/lute-linux-x86_64.zip
+	source = https://github.com/luau-lang/lute/raw/v1.0.0/LICENSE
+	b2sums = 54b930d30226abffb2362125b8113e0a352fa64dab6438dc59aa7fa69dacee513d7b74bf89afda07ca6227ea2cecd4175574fca3993b55acb0e606aae060e47e
+	b2sums = 127cb4fccb74c073c4feebb8b68bf95db29455500987121146c6a1397bd1ba7ec4fe199c8ceac119b169a622db5f913a9d4f7335f32e8b262a2269a9295843e5
+
+pkgname = lute-bin
