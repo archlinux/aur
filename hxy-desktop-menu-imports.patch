@@ -1,0 +1,19 @@
+--- a/crates/hxy/src/app/desktop.rs
++++ b/crates/hxy/src/app/desktop.rs
+@@ -40,6 +40,7 @@
+ use super::drain_entropy_runs;
+ use super::drain_external_open_requests;
+ use super::drain_file_watch_events;
++#[cfg(target_os = "macos")]
+ use super::drain_native_menu;
+ use super::drain_pending_vfs_opens;
+ use super::drain_strings_runs;
+@@ -55,6 +56,8 @@
+ use super::register_user_plugins;
+ use super::spawn_checksums_with_panel_config;
+ use super::spawn_strings_with_panel_config;
++use super::top_menu_bar;
++#[cfg(target_os = "macos")]
+ use super::sync_native_menu_state;
+ use super::vfs_pref_key_for;
+ use crate::files::FileId;
