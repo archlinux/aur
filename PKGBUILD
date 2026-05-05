@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname="certbot-dns-gandi-modern-git"
 pkgdesc="Certbot plugin for authentication using Gandi LiveDNS - modern"
-pkgver=1.5.0.r15.gd77259d
+pkgver=r83.d77259d
 pkgrel=1
 arch=("any")
 url="https://github.com/Kriechi/certbot-dns-gandi-modern"
@@ -14,7 +14,7 @@ backup=(
   "etc/letsencrypt/gandi.ini"
 )
 source=(
-  "certbot-dns-gandi::git+https://github.com/Kriechi/certbot-dns-gandi-modern.git"
+  "certbot-dns-gandi::git+https://github.com/Kriechi/certbot-dns-gandi-modern.git#branch=modernize-certbot-v5"
   "gandi.ini"
 )
 sha256sums=('SKIP'
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname%-modern-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
