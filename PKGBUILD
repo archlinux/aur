@@ -1,6 +1,6 @@
 # Maintainer: Edvin Nilsson  <aur at edvinnilsson dot se>
 pkgname=davinci-ffmpeg-encoder-plugin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="FFmpeg Encoder Plugin for DaVinci Resolve Studio"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('ffmpeg')
 makedepends=('cmake')
 optdepends=('davinci-resolve-studio')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/EdvinNilsson/ffmpeg_encoder_plugin/archive/v${pkgver}.tar.gz")
-sha256sums=('887619cf5226480b52fa3f87d8a32e00c31536e6b10e4f4891f2563155caceb6')
+sha256sums=('e1de2da02ce08727ba66144986f29f46d2ca97aebb57d2fc2c62f232c1ae323e')
 
 build() {
 	cd "$srcdir/ffmpeg_encoder_plugin-$pkgver"
