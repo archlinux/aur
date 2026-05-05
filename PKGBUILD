@@ -1,0 +1,155 @@
+# Maintainer: Terrabade <terrabade@protonmail.com>
+pkgname=shelly-gnome
+pkgver=2.2.3.gnome1
+pkgrel=1
+pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
+arch=('x86_64')
+url="https://github.com/Terrabade/Shelly-ALPM"
+license=('GPL-3.0-only')
+provides=('shelly')
+conflicts=('shelly' 'shelly-bin' 'shelly-git')
+depends=(
+    'pacman'
+    'gtk4'
+    'libadwaita'
+    'glib2'
+    'sudo'
+    'tar'
+    'bash'
+    'git'
+    'hicolor-icon-theme'
+    'dbus'
+    'glibc'
+    'libarchive'
+    'dconf'
+)
+optdepends=(
+    'flatpak: For supporting flatpak implementation.'
+    'archlinux-appstream-data: package icons and metadata'
+    'fish: Fish shell completions'
+)
+makedepends=('dotnet-sdk-10.0' 'clang')
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM/archive/v${pkgver}.tar.gz")
+
+sha256sums=('e355d230f147114241e3a1c0d73c5d967623c8ba7b50629a7847774d3e1d4e31')
+
+build() {
+  cd "$srcdir/Shelly-ALPM-${pkgver}"
+
+  dotnet publish Shelly-CLI/Shelly-CLI.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  dotnet publish Shelly.Gtk/Shelly.Gtk.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  dotnet publish Shelly-Notifications/Shelly-Notifications.csproj -c Release -r linux-x64 -o out-notify --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+}
+
+package() {
+  cd "$srcdir/Shelly-ALPM-${pkgver}"
+
+  # Install Shelly.Gtk binary
+  install -Dm755 out/shelly-ui "$pkgdir/usr/bin/shelly-ui"
+
+  # Install Shelly-Notifications binary
+  install -Dm755 out-notify/Shelly-Notifications "$pkgdir/usr/bin/shelly-notifications"
+
+  # Install Shelly-CLI binary
+  install -Dm755 out-cli/shelly "$pkgdir/usr/bin/shelly"
+
+  # Install desktop entry
+  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
+[Desktop Entry]
+Name=Shelly
+Comment=A Modern Arch Package Manager
+Exec=/usr/bin/shelly-ui
+Icon=shelly
+Type=Application
+Categories=System;Utility;
+Terminal=false
+Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
+
+[Desktop Action FlatpakInstall]
+Name=Flatpak Install
+Icon=flatpak-symbolic
+Exec=/usr/bin/shelly-ui --page flatpak-install
+
+[Desktop Action FlatpakUpdate]
+Name=Flatpak Update
+Icon=flatpak-symbolic
+Exec=/usr/bin/shelly-ui --page flatpak-update
+
+[Desktop Action FlatpakRemove]
+Name=Flatpak Remove
+Icon=flatpak-symbolic
+Exec=/usr/bin/shelly-ui --page flatpak-remove
+EOF
+
+  # Install desktop entry for notification service
+  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly-notifications.desktop"
+[Desktop Entry]
+Name=Shelly Notifications
+Comment=Notification service for Shelly package manager
+Exec=/usr/bin/shelly-notifications
+Icon=shelly-tray
+Type=Application
+Categories=System;Utility;
+Terminal=false
+NoDisplay=true
+EOF
+
+  # Install icon
+  install -Dm644 Shelly.Gtk/Assets/shellylogo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
+  install -Dm644 Shelly.Gtk/Assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
+  install -Dm644 Shelly.Gtk/Assets/shellylogo-update.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
+  install -Dm644 Shelly.Gtk/Assets/svg/flatpak-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/flatpak-symbolic.svg"
+  install -Dm644 Shelly.Gtk/Assets/svg/arch-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/arch-symbolic.svg"
+  install -Dm644 Shelly.Gtk/Assets/svg/shelly-updates-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-updates-symbolic.svg"
+  install -Dm644 Shelly.Gtk/Assets/svg/shelly-shell-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/shelly-shell-symbolic.svg"
+
+  # Install fish shell completions
+  install -Dm644 shelly.fish "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
+
+  # Install Flatpak integration script
+  cat <<'SCRIPT' | install -Dm755 /dev/stdin "$pkgdir/usr/bin/shelly-flatpak-integrate"
+#!/bin/bash
+# Adds "Manage in Shelly" right-click action to all Flatpak .desktop files
+FLATPAK_DIRS=(
+    "/var/lib/flatpak/exports/share/applications"
+    "$HOME/.local/share/flatpak/exports/share/applications"
+)
+LOCAL_APPS_DIR="$HOME/.local/share/applications"
+mkdir -p "$LOCAL_APPS_DIR"
+
+for dir in "${FLATPAK_DIRS[@]}"; do
+    [ -d "$dir" ] || continue
+    for desktop_file in "$dir"/*.desktop; do
+        [ -f "$desktop_file" ] || continue
+        filename=$(basename "$desktop_file")
+        app_id="${filename%.desktop}"
+        dest="$LOCAL_APPS_DIR/$filename"
+
+        # Copy if override doesn't exist yet
+        [ -f "$dest" ] || cp "$desktop_file" "$dest"
+
+        # Skip if already patched
+        grep -q "ShellyManage" "$dest" && continue
+
+        # Add action to existing Actions= line or insert one
+        if grep -q "^Actions=" "$dest"; then
+            sed -i 's/^Actions=\(.*\)/Actions=\1ShellyManage;/' "$dest"
+        else
+            sed -i '/^\[Desktop Entry\]/a Actions=ShellyManage;' "$dest"
+        fi
+
+        cat >> "$dest" << EOF
+
+[Desktop Action ShellyManage]
+Name=Manage in Shelly
+Icon=shelly
+Exec=/usr/bin/shelly-ui --page flatpak-install
+EOF
+    done
+done
+
+update-desktop-database "$LOCAL_APPS_DIR" 2>/dev/null || true
+echo "Flatpak desktop entries patched with Shelly integration."
+SCRIPT
+}
