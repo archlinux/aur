@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Freecut
+Comment=Optimize rectangular panel cuts
+Exec=freecut
+Icon=freecut
+Terminal=false
+Categories=Graphics;Engineering;
+Keywords=cut;cutting;optimizer;panel;sheet;woodworking;
+StartupNotify=true
