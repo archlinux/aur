@@ -1,27 +1,17 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=sigviewer
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A viewing application for biosignals"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/cbrnr/sigviewer"
 license=('GPL')
-groups=()
 depends=('qt6-base' 'libbiosig' 'libxdf')
 makedepends=('cmake')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=(https://github.com/cbrnr/sigviewer/archive/v$pkgver.zip
         sigviewer.desktop)
-noextract=()
-sha1sums=('8c6e8005a6cfb0e4fd3a057a6559b01256d136db'
-          '72fc9741a985ef783c2c3e7ea5b51655ebc94d84')
+sha256sums=('1e8a95fa3b711a4a9ad3058f60f7266358c88f1f7dd791e2cc64621d272870ea'
+            'd6c1f691429d97876607bbd56ac6387ab11bef3f700b236a9504d04ad1728333')
 
 build() {
   cd "$srcdir/sigviewer-$pkgver"
@@ -37,10 +27,7 @@ EOF
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/applications"
-  mkdir -p "$pkgdir/usr/share/icons"
-  install -Dm755 "$srcdir/sigviewer-$pkgver/build/sigviewer" "$pkgdir/usr/bin"
-  install -Dm644 sigviewer.desktop "$pkgdir/usr/share/applications"
-  install -Dm644 "$srcdir/sigviewer-$pkgver/sigviewer.svg" "$pkgdir/usr/share/icons"
+  install -Dm755 "$srcdir/sigviewer-$pkgver/build/sigviewer" "$pkgdir/usr/bin/sigviewer"
+  install -Dm644 sigviewer.desktop "$pkgdir/usr/share/applications/sigviewer.desktop"
+  install -Dm644 "$srcdir/sigviewer-$pkgver/sigviewer.svg" "$pkgdir/usr/share/icons/sigviewer.svg"
 }
