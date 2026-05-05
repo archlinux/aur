@@ -1,0 +1,3 @@
+[python-multiarchive]
+source = "pypi"
+pypi = "multiarchive"
