@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-cuda-full
 	pkgdesc = Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases
-	pkgver = 8.1
-	pkgrel = 2
+	pkgver = 8.1.1
+	pkgrel = 1
 	epoch = 2
 	url = https://ffmpeg.org/
 	install = ffmpeg-cuda-full.install
@@ -22,6 +22,7 @@ pkgbase = ffmpeg-cuda-full
 	makedepends = vulkan-headers
 	depends = alsa-lib
 	depends = aom
+	depends = aribb24
 	depends = bzip2
 	depends = cairo
 	depends = cuda
@@ -44,6 +45,8 @@ pkgbase = ffmpeg-cuda-full
 	depends = libavc1394
 	depends = libbluray
 	depends = libbs2b
+	depends = libcdio
+	depends = libcdio-paranoia
 	depends = libdrm
 	depends = libdvdnav
 	depends = libdvdread
@@ -57,6 +60,7 @@ pkgbase = ffmpeg-cuda-full
 	depends = libplacebo
 	depends = libpulse
 	depends = libraw1394
+	depends = librist
 	depends = librsvg
 	depends = libsoxr
 	depends = libssh
@@ -80,6 +84,7 @@ pkgbase = ffmpeg-cuda-full
 	depends = rav1e
 	depends = rubberband
 	depends = sdl2
+	depends = smbclient
 	depends = snappy
 	depends = sndio
 	depends = speex
@@ -98,10 +103,13 @@ pkgbase = ffmpeg-cuda-full
 	depends = zimg
 	depends = zlib
 	optdepends = frei0r-plugins: Frei0r video effects support
+	optdepends = intel-media-driver: VAAPI driver for Intel Broadwell and newer GPUs
 	optdepends = intel-media-sdk: Intel QuickSync support (legacy)
 	optdepends = ladspa: LADSPA filters
+	optdepends = libva-utils: VAAPI diagnostics including vainfo
+	optdepends = mesa: VAAPI driver for AMD/older Intel GPUs
 	optdepends = onevpl-intel-gpu: Intel QuickSync support
-	provides = ffmpeg=8.1
+	provides = ffmpeg=8.1.1
 	provides = libavcodec.so=62-64
 	provides = libavdevice.so=62-64
 	provides = libavfilter.so=11-64

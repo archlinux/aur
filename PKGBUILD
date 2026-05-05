@@ -1,8 +1,8 @@
 # Maintainer: Jay Man <jhollis.ga@gmail.com>
 
 pkgname=ffmpeg-cuda-full
-pkgver=8.1
-pkgrel=2
+pkgver=8.1.1
+pkgrel=1
 epoch=2
 pkgdesc='Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases'
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('GPL-3.0-only' 'custom:nonfree')
 depends=(
     'alsa-lib'
     'aom'
+    'aribb24'
     'bzip2'
     'cairo'
     'cuda'
@@ -33,6 +34,8 @@ depends=(
     'libavc1394'
     'libbluray'
     'libbs2b'
+    'libcdio'
+    'libcdio-paranoia'
     'libdrm'
     'libdvdnav'
     'libdvdread'
@@ -46,6 +49,7 @@ depends=(
     'libplacebo'
     'libpulse'
     'libraw1394'
+    'librist'
     'librsvg'
     'libsoxr'
     'libssh'
@@ -69,6 +73,7 @@ depends=(
     'rav1e'
     'rubberband'
     'sdl2'
+    'smbclient'
     'snappy'
     'sndio'
     'speex'
@@ -103,8 +108,11 @@ makedepends=(
 )
 optdepends=(
     'frei0r-plugins: Frei0r video effects support'
+    'intel-media-driver: VAAPI driver for Intel Broadwell and newer GPUs'
     'intel-media-sdk: Intel QuickSync support (legacy)'
     'ladspa: LADSPA filters'
+    'libva-utils: VAAPI diagnostics including vainfo'
+    'mesa: VAAPI driver for AMD/older Intel GPUs'
     'onevpl-intel-gpu: Intel QuickSync support'
 )
 provides=(
@@ -186,6 +194,7 @@ build() {
         --enable-pic \
         --enable-amf \
         --enable-avisynth \
+        --enable-bzlib \
         --enable-cuda-nvcc \
         --enable-cuda-llvm \
         --enable-cuvid \
@@ -193,11 +202,15 @@ build() {
         --enable-gmp \
         --enable-gnutls \
         --enable-gpl \
+        --enable-iconv \
         --enable-ladspa \
+        --enable-lcms2 \
         --enable-libaom \
+        --enable-libaribb24 \
         --enable-libass \
         --enable-libbluray \
         --enable-libbs2b \
+        --enable-libcdio \
         --enable-libdav1d \
         --enable-libdrm \
         --enable-libfdk-aac \
@@ -222,8 +235,10 @@ build() {
         --enable-libplacebo \
         --enable-libpulse \
         --enable-librav1e \
+        --enable-librist \
         --enable-librsvg \
         --enable-librubberband \
+        --enable-libsmbclient \
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
@@ -245,16 +260,20 @@ build() {
         --enable-libzimg \
         --enable-libzmq \
         --enable-lv2 \
+        --enable-lzma \
         --enable-nonfree \
         --enable-nvdec \
         --enable-nvenc \
         --enable-opencl \
         --enable-opengl \
         --enable-pthreads \
+        --enable-sdl2 \
         --enable-shared \
+        --enable-vaapi \
         --enable-vapoursynth \
         --enable-version3 \
         --enable-vulkan \
+        --enable-zlib \
         --extra-cflags="-I/opt/cuda/include" \
         --extra-ldflags="-L/opt/cuda/lib64"
 
