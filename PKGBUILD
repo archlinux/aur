@@ -1,7 +1,7 @@
 # Maintainer: MedCy1 <mederick.roge@gmail.com>
 pkgname=wayinhibit
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="A small Wayland idle inhibitor written in Rust"
 arch=('x86_64')
 url="https://github.com/MedCy1/wayinhibit"
@@ -12,7 +12,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/MedCy1/wayinhibit/v$pkgver/LICENSE"
 )
 sha256sums=(
-    '0638666139be58fa54fc7d8729a4561958a526ddc9447ed4d11229daf25a3ce3'
+    'a97e513d09ca23a9c740df15384d661bc41283f932b4ce14e1efc3b26089c8f1'
     'c6f47d3c350962a79fc1501510e8e1cc8fbcc6502d8421505ba1b9fbd1ef6237'
 )
 
