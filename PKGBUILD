@@ -2,7 +2,7 @@
 pkgname=oavif
 pkgver=0.1.3
 _fssimu2_ver=0.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Target quality AVIF encoding'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gianni-rosato/oavif'
