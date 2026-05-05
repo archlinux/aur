@@ -1,18 +1,20 @@
 pkgbase = valkyrie-qt6
 	pkgdesc = a GUI for the Memcheck and Helgrind tools in Valgrind (Qt5/Qt6 version)
 	pkgver = 2.0.1.SVN
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.valgrind.org/downloads/guis.html
 	arch = x86_64
 	license = GPL2
 	makedepends = gendesk
+	makedepends = git
 	depends = valgrind>=3.6.0
 	depends = qt6-base
+	depends = qt6-5compat
 	conflicts = valkyrie
 	replaces = valkyrie
 	source = git+https://github.com/barsnick/valkyrie#branch=valkyrie-qt5-qt6
 	source = valkyrie-qmake-qt6-version-deprecation.patch
 	sha512sums = SKIP
-	sha512sums = e6afd0422189b9c7fbaef8a2e9e568ce4d2aa6b26f1a4fb2efe7258389241bd7aac02b3166f199a91db388abc0c3627885f81aaef242bb2e65c74f2743622b0b
+	sha512sums = 4cfdc28337e4cefc2518c8b03efcea49fc083085d0bdb4ddaac496461ddc6f537cebe9b80d4dee77b53780dda6b308dff25ae02bbb76b385cb651bc0912dbabb
 
 pkgname = valkyrie-qt6

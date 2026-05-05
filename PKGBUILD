@@ -1,8 +1,9 @@
-# Maintainer: Sean Anderson <seanga2@gmail.com>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Sean Anderson <seanga2@gmail.com>
 pkgname=valkyrie-qt6
 _pkgname=valkyrie
 pkgver=2.0.1.SVN
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="a GUI for the Memcheck and Helgrind tools in Valgrind (Qt5/Qt6 version)"
 arch=(x86_64)
@@ -12,8 +13,9 @@ groups=()
 depends=(
 	'valgrind>=3.6.0'
 	'qt6-base'
+        'qt6-5compat'
 )
-makedepends=('gendesk')
+makedepends=('gendesk' 'git')
 checkdepends=()
 optdepends=()
 provides=()
@@ -29,7 +31,7 @@ source=(
 )
 noextract=()
 sha512sums=('SKIP'
-            'e6afd0422189b9c7fbaef8a2e9e568ce4d2aa6b26f1a4fb2efe7258389241bd7aac02b3166f199a91db388abc0c3627885f81aaef242bb2e65c74f2743622b0b')
+            '4cfdc28337e4cefc2518c8b03efcea49fc083085d0bdb4ddaac496461ddc6f537cebe9b80d4dee77b53780dda6b308dff25ae02bbb76b385cb651bc0912dbabb')
 validpgpkeys=()
 
 prepare() {
