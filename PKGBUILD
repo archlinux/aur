@@ -1,8 +1,8 @@
 pkgname=netlify-application
 _pkgname=Netlify
 pkgrlname=netlify
-pkgver=1.1.4.aurpatch
-pkgrel=2
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="Unofficial Netlify desktop application"
 arch=('x86_64' 'aarch64')
 license=('GPL')
@@ -10,7 +10,7 @@ url="https://gitlab.com/linuxbombay/netlify-desktop//application"
 depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('fab686bd89b6590858ce3848946ed88737497c8988d7d56efd28450f08c8818f')
+sha256sums=('a39fddf8d55b0ae7dbc756d273600d1a2630a303eac6ba8a59bb7d4bb59afd34')
 
 
 package() {
