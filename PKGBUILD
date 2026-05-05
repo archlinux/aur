@@ -1,24 +1,24 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Cross-platform mouse and keyboard macro automation tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alper-han/CrossMacro"
 license=('GPL-3.0-only')
-depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'systemd-libs' 'libxkbcommon')
+depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'systemd-libs' 'libxkbcommon' 'icu')
 makedepends=('dotnet-sdk>=10.0' 'clang' 'zlib')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v1.0.1.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v1.1.0.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('a3441768f6f297fb7f2f5dccdcea20204002eefcb242dbd8f98391cbf22654eb'
+sha256sums=('60a3f051abb8e1397b1e55088555c744c02bd20e586bc59bc8ee3c1dcfcb182e'
             'SKIP'
             'SKIP')  # sysusers and modules config checksums (local files)
 install=crossmacro.install
 
 build() {
-    cd "CrossMacro-1.0.1"
+    cd "CrossMacro-1.1.0"
     local target_rid
     case "${CARCH}" in
         x86_64)
@@ -43,7 +43,7 @@ build() {
         --self-contained true \
         -p:PublishSingleFile=true \
         -p:PublishTrimmed=true \
-        -p:PublishReadyToRun=true \
+        -p:PublishReadyToRun=false \
         -p:PublishAot=false \
         -p:DebugType=None \
         -p:DebugSymbols=false \
@@ -57,7 +57,7 @@ build() {
 }
 
 package() {
-    cd "CrossMacro-1.0.1"
+    cd "CrossMacro-1.1.0"
     
     # Install UI files
     install -dm755 "$pkgdir/usr/lib/$pkgname"
