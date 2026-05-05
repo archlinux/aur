@@ -1,0 +1,28 @@
+post_install() {
+	echo ""
+	echo "  ┌─────────────────────────────────────────────────────┐"
+	echo "  │  Unsloth Studio — first-time setup required         │"
+	echo "  └─────────────────────────────────────────────────────┘"
+	echo ""
+	echo "  Unsloth Studio needs a per-user Python environment with"
+	echo "  PyTorch and other heavy ML dependencies. Run as your"
+	echo "  regular user:"
+	echo ""
+	echo "    unsloth-setup"
+	echo ""
+	echo "  This creates ~/.unsloth/studio/unsloth_studio with PyTorch,"
+	echo "  llama.cpp, and all required dependencies."
+	echo ""
+	echo "  Once complete, launch the Studio with:"
+	echo ""
+	echo "    unsloth studio -p 8888"
+	echo ""
+}
+
+post_upgrade() {
+	echo ""
+	echo "  Unsloth has been upgraded. Update the Studio environment with:"
+	echo ""
+	echo "    unsloth-setup"
+	echo ""
+}

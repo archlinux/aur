@@ -1,0 +1,26 @@
+pkgbase = unsloth-git
+	pkgdesc = Web UI for training and running open models locally
+	pkgver = 0.1.37.beta.r41.g726abd5
+	pkgrel = 1
+	url = https://github.com/unslothai/unsloth
+	install = setup.install
+	arch = x86_64
+	license = Apache-2.0
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = npm
+	depends = python
+	depends = python-typer
+	depends = python-pydantic
+	depends = python-yaml
+	depends = python-nest-asyncio
+	provides = unsloth
+	conflicts = unsloth
+	source = unsloth::git+https://github.com/unslothai/unsloth.git
+	source = unsloth-setup
+	sha256sums = SKIP
+	sha256sums = 14444b022bd50269d474df655e74c3309959c1bd312214b7b431ed341b26a222
+
+pkgname = unsloth-git
