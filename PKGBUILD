@@ -3,7 +3,7 @@
 _Name="CCGraphiteP11"
 pkgname="${_Name,,}"
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="PKCS#11 CryptoCard Graphite library"
 arch=(
   'x86_64'
@@ -13,8 +13,8 @@ license=(
   'LicenseRef-CryptoTech'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
   'pcsclite'
 )
 makedepends=(
