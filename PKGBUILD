@@ -2,17 +2,23 @@
 
 pkgname=odb
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Object-Relational Mapping compiler"
 url="https://www.codesynthesis.com/products/odb/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('build2' 'libcutl' 'libstudxml' 'cli')
 options=('!libtool')
 license=('GPL3')
-source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9151172907f8d0116a6429b259dcc900ced0a2992a5eb6144b8e4ca0525fc648')
+source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+"https://github.com/codesynthesis-com/odb/commit/9a82046aeef6b9b4deee08ee7b7ee5214b9556de.patch")
+sha256sums=('9151172907f8d0116a6429b259dcc900ced0a2992a5eb6144b8e4ca0525fc648'
+            'ebdd9a26b4e9f45d5d9ade29c39febe7020419643fed00464e9981dc9c402dbf')
 
 prepare() {
+
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -p2 < ../9a82046aeef6b9b4deee08ee7b7ee5214b9556de.patch
+	cd "${srcdir}"
 
 	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
 
@@ -23,19 +29,17 @@ prepare() {
 	config.install.root=${pkgdir}/usr \
 	config.install.relocatable=true
 
-	mv ${pkgname}-${pkgver}.tar.gz odb-gcc-${GPPVER}
+	mv ${pkgname}-${pkgver} odb-gcc-${GPPVER}/${pkgname}
 }
 
 build() {
-
 	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
 	cd "${srcdir}/odb-gcc-${GPPVER}"
 
-	bpkg build ${pkgname}-${pkgver}.tar.gz ?sys:libcutl/* ?sys:libstudxml/* ?sys:cli/*
+	bpkg build ${pkgname}/ ?sys:libcutl/* ?sys:libstudxml/* ?sys:cli/*
 }
 
 package() {
-
 	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
 	cd "${srcdir}/odb-gcc-${GPPVER}"
 

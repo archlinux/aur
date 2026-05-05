@@ -1,9 +1,8 @@
 pkgbase = odb
 	pkgdesc = C++ Object-Relational Mapping compiler
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.codesynthesis.com/products/odb/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = build2
@@ -12,6 +11,8 @@ pkgbase = odb
 	depends = cli
 	options = !libtool
 	source = https://www.codesynthesis.com/download/odb/2.5.0/odb-2.5.0.tar.gz
+	source = https://github.com/codesynthesis-com/odb/commit/9a82046aeef6b9b4deee08ee7b7ee5214b9556de.patch
 	sha256sums = 9151172907f8d0116a6429b259dcc900ced0a2992a5eb6144b8e4ca0525fc648
+	sha256sums = ebdd9a26b4e9f45d5d9ade29c39febe7020419643fed00464e9981dc9c402dbf
 
 pkgname = odb
