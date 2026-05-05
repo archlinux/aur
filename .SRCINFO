@@ -1,7 +1,7 @@
 pkgbase = r-fd
 	pkgdesc = Measuring Functional Diversity (FD) from Multiple Traits, and Other Tools for Functional Ecology
-	pkgver = 1.0.12.3
-	pkgrel = 2
+	pkgver = 1.0.12.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=FD
 	arch = x86_64
 	license = GPL-2.0-only
@@ -10,8 +10,8 @@ pkgbase = r-fd
 	depends = r-ape
 	depends = r-geometry
 	depends = r-vegan
-	source = https://cran.r-project.org/src/contrib/FD_1.0-12.3.tar.gz
-	md5sums = 8f1ed234859f08334e3cd5dab8ce58f1
-	b2sums = 1a9f239518d998b895018c6ae0b4a96cb24abbad5003082bfeee7df3262a98193a205503bc040c0cfabc188d261fe8ce9279b307eddd47709335a0458dfd4844
+	source = https://cran.r-project.org/src/contrib/FD_1.0-12.5.tar.gz
+	md5sums = 8d5319fb0ec766992376375cd1bd5a8a
+	b2sums = f24242f6bd13cdb671e671fc322548d8a4d8205c356e921604202f4e316f871f405b15ad684a3d0e8ced61357ecaf7b548e110b5123e026c1baff98c8ab2cd30
 
 pkgname = r-fd
