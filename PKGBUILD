@@ -5,9 +5,9 @@
 # Contributor: Filip Brcic <brcha at gna dot org>
 
 pkgname=mingw-w64-sqlite
-pkgver=3.53.0
+pkgver=3.53.1
 _srcver=$(echo "$pkgver" | awk -F. '{ printf "%d%02d%02d00", $1, $2, $3 }')
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
 arch=('any')
 groups=(mingw-w64)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
 source=(https://www.sqlite.org/2026/sqlite-src-${_srcver}.zip)
-sha256sums=('fbc30cdbfcfa42c78fe7bddd3fd37ab8995369a31d39097a5d0633296c0b6e65')
+sha256sums=('1b2b5755d9064c4d5d1b0bf5307b48b089963e291c40cc7351318aa1b61c460e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _cflags=(
@@ -47,6 +47,7 @@ build() {
 
     # remove '--target=...' from mingw's configure
     bash <(sed 's/--target[^ ]* //' $(command -v "${_arch}-configure")) \
+      --enable-session \
       --enable-fts3 \
       --disable-tcl \
       --fts4 \
