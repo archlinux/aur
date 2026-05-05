@@ -2,7 +2,7 @@
 
 pkgname="code2prompt"
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to convert your codebase into a single LLM prompt"
 arch=(
   'x86_64'
@@ -13,8 +13,8 @@ license=(
   'MIT'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
   'zlib'
 )
 makedepends=(
@@ -22,7 +22,7 @@ makedepends=(
 )
 _pkgsrc="${pkgname}-${pkgver}"
 source=(
-  # "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+  # "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
   "https://static.crates.io/crates/${pkgname}/${_pkgsrc}.crate"
 )
 sha256sums=('e6b5b194027bfc72f356ecb5d80773bfbe558e5e786384123cf5bf12388cadd5')
@@ -37,7 +37,7 @@ prepare() {
   _source
 
   cd "${srcdir}/${_pkgsrc}"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
