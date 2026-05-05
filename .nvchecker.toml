@@ -1,0 +1,6 @@
+[gdlmm]
+source = "manual"
+
+# source = "git"
+# git = "https://gitlab.gnome.org/Archive/gdlmm.git"
+# prefix = "gdlmm-"
