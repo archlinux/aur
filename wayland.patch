@@ -1,0 +1,25 @@
+--- a/opt/yandex/browser/yandex-browser
++++ b/opt/yandex/browser/yandex-browser
+@@ -37,18 +37,10 @@
+ 	YANDEX_BROWSER_ARGS=( $YANDEX_BROWSER_FLAGS )
+ fi
+ 
+-# Enable native Wayland support on alt linux and astra linux if the env var
+-# YANDEX_DISABLE_WAYLAND isn't set and the current session is running on a
+-# Wayland display server.
+-if [ "" == "alt_linux" ] ||
+-   [ "" == "astra_linux" ]; then
+-  if [ -z "${YANDEX_DISABLE_WAYLAND-}" ] &&
+-     [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+-    YANDEX_BROWSER_ARGS+=("--ozone-platform=wayland")
+-    if [ "" == "astra_linux" ]; then
+-      YANDEX_BROWSER_ARGS+=("--enable-wayland-ime")
+-    fi
+-  fi
++# Enable native Wayland support if not explicitly disabled
++if [ -z "${YANDEX_DISABLE_WAYLAND-}" ] &&
++   [ "$XDG_SESSION_TYPE" = "wayland" ]; then
++  YANDEX_BROWSER_ARGS+=("--ozone-platform=wayland" "--enable-features=WaylandWindowDecorations")
+ fi
+ 
+ 
