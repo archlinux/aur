@@ -13,6 +13,7 @@ depends=(
     'libsecret'
     'openssl'
     'wayland'
+    'sqlite'
 )
 makedepends=('rust' 'cargo' 'git' 'gcc')
 optdepends=(

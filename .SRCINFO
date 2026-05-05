@@ -15,6 +15,7 @@ pkgbase = campus-lms-git
 	depends = libsecret
 	depends = openssl
 	depends = wayland
+	depends = sqlite
 	optdepends = dunst: desktop notifications on X11
 	optdepends = mako: desktop notifications on Wayland
 	optdepends = xdg-desktop-portal: notification support
