@@ -1,9 +1,10 @@
-# Maintainer : Victor Savcenco <victor dot sav at linux dot com>
+# Maintainer: Ville Aakko <wpenguin <AT> kapsi DOT fi> 
+# Contributor : Victor Savcenco <victor dot sav at linux dot com>
 
 pkgname=uqm-megamod
-pkgver=0.8.3
-_pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+_pkgver=0.8.4
+pkgrel=1
 pkgdesc="A fork of The Ur-Quan Masters that remasters the HD mod with a veritable smorgasbord of extra features and options by JHGuitarFreak (Kohr-Ah Death)."
 arch=("x86_64")
 url="https://github.com/JHGuitarFreak/UQM-MegaMod"
@@ -29,14 +30,12 @@ source=(
   fix_userdir_location.diff
 )
 
-md5sums=(
-  "66692e926521a418589f6a27ea760cdf"
-  "b0387306700c3c853b13876fa13e45fd"
-  "123544d70ae98cb3037f9595cc427b72"
-  "16019d6775329f5d4a57f9280b4559f1"
-  "c6a3026f3a42c24f47d9ceacf86d1d83"
-  "39e1cde3ef631535c2fb2b9155cd9e21"
-)
+md5sums=('6dbef0600bb6891e371ad14321e29939'
+         'b0387306700c3c853b13876fa13e45fd'
+         '123544d70ae98cb3037f9595cc427b72'
+         '16019d6775329f5d4a57f9280b4559f1'
+         'c6a3026f3a42c24f47d9ceacf86d1d83'
+         '39e1cde3ef631535c2fb2b9155cd9e21')
 
 noextract=("mm-${_pkgver}-content.uqm")
 
