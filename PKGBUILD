@@ -1,6 +1,6 @@
 # Maintainer: KlapkiSzatana
 pkgname=budget-app
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Zarządzanie Budżetem Domowym"
 arch=('any')
@@ -47,5 +47,7 @@ Icon=${pkgname}
 Terminal=false
 Type=Application
 Categories=Office;Finance;
+StartupWMClass=budget-app
+StartupNotify=false
 EOF
 }
