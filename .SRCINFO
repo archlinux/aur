@@ -1,13 +1,14 @@
 pkgbase = kanban
 	pkgdesc = Terminal-based kanban board with MCP server integration
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/fulsomenko/kanban
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = rust
 	makedepends = cargo
-	source = kanban-0.3.5.tar.gz::https://github.com/fulsomenko/kanban/archive/v0.3.5.tar.gz
-	sha256sums = bee0a6d589665101fbc7d68c448230dd18be8f0f0887ae91f88718f2dcc94041
+	source = kanban-0.4.0.tar.gz::https://github.com/fulsomenko/kanban/archive/v0.4.0.tar.gz
+	sha256sums = ff63ba280edc0a7de45ceb8fd7d14ab2356f5af328201e431fd60bb77a74907c
 
 pkgname = kanban

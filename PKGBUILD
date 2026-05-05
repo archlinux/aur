@@ -1,18 +1,28 @@
 # Maintainer: Max Emil Yoon Blomstervall <max.blomstervall@gmail.com>
 pkgname=kanban
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Terminal-based kanban board with MCP server integration"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/fulsomenko/kanban"
 license=("Apache-2.0")
 makedepends=("rust" "cargo")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fulsomenko/kanban/archive/v$pkgver.tar.gz")
-sha256sums=("bee0a6d589665101fbc7d68c448230dd18be8f0f0887ae91f88718f2dcc94041")
+sha256sums=("ff63ba280edc0a7de45ceb8fd7d14ab2356f5af328201e431fd60bb77a74907c")
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
     cd "$pkgname-$pkgver"
     cargo build --release --locked --bin kanban --bin kanban-mcp
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    cargo test --release --locked
 }
 
 package() {
