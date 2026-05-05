@@ -1,7 +1,7 @@
 pkgbase = codemux-bin
 	pkgdesc = The Agentic Development Environment for Builders
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zeus-Deus/codemux
 	arch = x86_64
 	license = custom:Elastic-2.0
@@ -16,7 +16,6 @@ pkgbase = codemux-bin
 	depends = fd
 	depends = github-cli
 	optdepends = chromium: browser panes (or google-chrome, brave)
-	optdepends = agent-browser: browser automation CLI (bundled in AppImage, AUR package optional)
 	provides = codemux
 	conflicts = codemux
 	options = !strip
