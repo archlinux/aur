@@ -1,12 +1,12 @@
 pkgbase = donkeytype
 	pkgdesc = DonkeyType — simple terminal typing game
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/rumyp/donkeytype
 	arch = any
 	license = MIT
 	depends = python
-	source = donkeytype-0.1.0.tar.gz
-	sha256sums = 2d84f24c73f7b8997c42f0cd453a8501ff56173520a29fffdabec247ce36eeae
+	source = donkeytype-0.1.1.tar.gz
+	sha256sums = d32e0fcdacf87c10c76303a924b4d266b320435342ae2d1199412153f7134df4
 
 pkgname = donkeytype
