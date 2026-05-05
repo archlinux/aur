@@ -2,7 +2,7 @@
 
 pkgname=openai-codex-reasoning
 pkgver=0.128.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenAI Codex CLI fork with inline reasoning traces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OneNoted/codex"
@@ -29,7 +29,7 @@ conflicts=(
 replaces=('openai-codex-reasoning-bin')
 options=('!lto')
 
-_fork_tag='aur-v0.128.0-reasoning.1'
+_fork_tag='aur-v0.128.0-reasoning.2'
 _source_dir='codex'
 source=(
   "${_source_dir}::git+https://github.com/OneNoted/codex.git#tag=${_fork_tag}"
