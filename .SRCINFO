@@ -17,6 +17,12 @@ pkgbase = pyvideokit
 	sha256sums = SKIP
 	sha256sums = SKIP
 
+pkgname = python-pyvideokit
+	pkgdesc = FFmpeg-based video processing tools (meta-package)
+	depends = python-pyvideokit-libs
+	depends = python-pyvideokit-cli
+	depends = python-pyvideokit-gui
+
 pkgname = python-pyvideokit-libs
 	pkgdesc = Python library for FFmpeg-based video processing
 	depends = python

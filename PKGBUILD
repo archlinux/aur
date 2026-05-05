@@ -1,6 +1,7 @@
 # Maintainer: Evilchuck666 <carlos.martinez.medina1992@gmail.com>
 pkgbase=pyvideokit
 pkgname=(
+    'python-pyvideokit'
     'python-pyvideokit-libs'
     'python-pyvideokit-cli'
     'python-pyvideokit-gui'
@@ -40,6 +41,15 @@ build() {
 
     cd "$srcdir/PyVideoKit-GUI"
     python -m build --wheel --no-isolation
+}
+
+package_python-pyvideokit() {
+    pkgdesc="FFmpeg-based video processing tools (meta-package)"
+    depends=(
+        'python-pyvideokit-libs'
+        'python-pyvideokit-cli'
+        'python-pyvideokit-gui'
+    )
 }
 
 package_python-pyvideokit-libs() {
