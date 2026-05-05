@@ -8,7 +8,7 @@ url="https://github.com/sbyrnes321/trianglesolver"
 license=('MIT')
 depends=(
 python
-	)
+)
 makedepends=(
 git
 python-build
