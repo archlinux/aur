@@ -14,6 +14,7 @@ pkgbase = hls-livecam-server
 	depends = smartmontools
 	depends = v4l-utils
 	depends = wget
+	depends = ttf-dejavu
 	install = hls-livecam-server.install
 	source = hls-livecam-server-2.8.14.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v2.8.14.tar.gz
 	source = hls-livecam-server.install
