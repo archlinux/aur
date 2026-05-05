@@ -1,50 +1,40 @@
-# Maintainer: Daniel Alejandro <dalejan051@gmail.com>
-
+# Maintainer: Satyam Jha <satyam_jha at zohomail dot in>
+#Past Contributor: Daniel Alejandro <dalejan051@gmail.com>
 
 pkgname=simpmusic-bin
-pkgver=1.0.3
-appver=1.0.3
-pkgrel=2
-pkgdesc="A FOSS YouTube Music client for Android and Desktop with many features from
-Spotify, SponsorBlock, ReturnYouTubeDislike using Compose Multiplatform to develop."
-arch=(x86_64)
-url="https://www.simpmusic.org"
-license=("GPL-3.0")
-
-depends=("gstreamer" "gst-plugins-good" "gst-plugins-bad" "yt-dlp")
-conflicts=("${pkgname%}")
-options=("!strip" "!debug")
-
-source=(
-  "https://github.com/maxrave-dev/SimpMusic/releases/download/v${pkgver}/simpmusic_${appver}_amd64.deb"
-)
-sha256sums=('4d3259db72de4ca66db4f70ecf4910cb157416a108e39ecbe17c58b8cf3d2cc1')
+pkgver=1.1.1
+pkgrel=1
+pkgdesc="A cross-platform music app using YouTube Music for backend"
+arch=('x86_64')
+url="https://github.com/maxrave-dev/SimpMusic"
+license=('GPL-3.0-or-later')
+depends=('hicolor-icon-theme' )
+depends=('hicolor-icon-theme' 'gstreamer' 'gst-plugins-good' 'gst-plugins-bad' 'yt-dlp')
+options=('!strip')
+provides=('simpmusic')
+conflicts=('simpmusic')
+_appimage="SimpMusic-x86_64.AppImage"
+source=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}")
+sha256sums=('65c2868458bef9144f963c5542b256d0d61bbc2c85210c615311ef91790ac28b')
 
 prepare() {
-    bsdtar -xf data.tar.xz
+    chmod +x "${_appimage}"
+    ./"${_appimage}" --appimage-extract > /dev/null
+}
 
-    _basepath="${srcdir}/opt/simpmusic"
-    # Add icon entry to .desktop
-    grep -qf "StartupWMClass=com-maxrave-simpmusic-MainKt" "${_basepath}/lib/simpmusic-SimpMusic.desktop" || \
-    echo "StartupWMClass=com-maxrave-simpmusic-MainKt" >> "${_basepath}/lib/simpmusic-SimpMusic.desktop"
+build() {
+    sed -i \
+        -e "s|^Exec=.*|Exec=/usr/bin/simpmusic|" \
+        -e "s|^TryExec=.*|TryExec=simpmusic|" \
+        -e "s|^Icon=.*|Icon=simpmusic|" \
+        squashfs-root/simpmusic.desktop
 }
 
 package() {
-    # Install app
-    cp -r --preserve=mode,timestamps opt/ "${pkgdir}/"
+    install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm644 squashfs-root/simpmusic.desktop "${pkgdir}/usr/share/applications/com-maxrave-simpmusic-MainKt.desktop"
+    install -Dm644 squashfs-root/simpmusic.png "${pkgdir}/usr/share/pixmaps/simpmusic.png"
 
-    _basepath="${pkgdir}/opt/simpmusic"
-
-    # Install the icon
-    if [[ -f "${srcdir}/opt/simpmusic/lib/SimpMusic.png" ]]; then
-        install -Dm644 "${srcdir}/opt/simpmusic/lib/SimpMusic.png" \
-            "${pkgdir}/usr/share/pixmaps/SimpMusic.png"
-    fi
-
-    # Install .desktop
-    install -Dm644 "${_basepath}/lib/simpmusic-SimpMusic.desktop" \
-        "${pkgdir}/usr/share/applications/simpmusic.desktop"
-
-    # Permissions
-    chmod 755 "${_basepath}/bin/SimpMusic" 2>/dev/null || true
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/simpmusic"
 }
