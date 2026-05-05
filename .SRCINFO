@@ -1,13 +1,13 @@
 pkgbase = dxfl
 	pkgdesc = A CLI tool to manage your Deuxfleurs account.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/dxfl
 	arch = any
 	license = EUPL
 	makedepends = npm
 	depends = nodejs
-	source = https://git.deuxfleurs.fr/Deuxfleurs/dxfl/archive/v0.6.1.tar.gz
-	sha512sums = a51842aadbaa932d47322a87df2f7556d941a754d7c2a9b1bea5c60e2f6d7bbd7d86fd0fe2eb47a5dbecfeda922cc5f1299451f4be387e3b5753a6e1adba5d9c
+	source = https://git.deuxfleurs.fr/Deuxfleurs/dxfl/archive/v0.7.0.tar.gz
+	sha512sums = c2770398a0ac8f915c00b7305a66f19020d176ba5c2e676fe60de43d1e1a12d28bc2092fef4a998ab24d6c2b5c2f20b92907dd6f9792934b8d852ddf1faa9377
 
 pkgname = dxfl
