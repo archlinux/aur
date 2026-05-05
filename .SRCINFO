@@ -1,7 +1,7 @@
 pkgbase = screenshot-cpp
-	pkgdesc = Interactive wlroots/Hyprland region screenshot tool with file-manager clipboard support
+	pkgdesc = Interactive wlroots/Hyprland region screenshot tool with image and file clipboard support
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xander-lin/screenshot
 	arch = x86_64
 	license = MIT
@@ -13,10 +13,10 @@ pkgbase = screenshot-cpp
 	depends = grim
 	depends = libxkbcommon
 	depends = wayland
-	optdepends = wl-clipboard: copy screenshots as file references from compositor keybindings
+	optdepends = wl-clipboard: inspect clipboard MIME types with wl-paste
 	optdepends = hyprland: tested wlroots compositor environment
 	optdepends = sway: alternative wlroots compositor environment
-	source = screenshot-cpp-0.1.0.tar.gz::https://github.com/xander-lin/screenshot/archive/9c00f795fff0d8d5fe62277235b4d1e6ab1f0476.tar.gz
-	sha256sums = 3b5af82b95c18a43fa397b1df66056daa4bf5119995212132f3e218874391037
+	source = screenshot-cpp-0.1.0-537793791e7b308468daedbcdfddcd0ccc02cbba.tar.gz::https://codeload.github.com/xander-lin/screenshot/tar.gz/537793791e7b308468daedbcdfddcd0ccc02cbba
+	sha256sums = 9ae739d8b788e5877c5f39ba3a852ad28cb3d4a3210edf335aa8c472eacf4ad4
 
 pkgname = screenshot-cpp

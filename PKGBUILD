@@ -2,8 +2,8 @@
 
 pkgname=screenshot-cpp
 pkgver=0.1.0
-pkgrel=3
-pkgdesc='Interactive wlroots/Hyprland region screenshot tool with file-manager clipboard support'
+pkgrel=4
+pkgdesc='Interactive wlroots/Hyprland region screenshot tool with image and file clipboard support'
 arch=('x86_64')
 url='https://github.com/xander-lin/screenshot'
 license=('MIT')
@@ -20,26 +20,26 @@ makedepends=(
   'wlr-protocols'
 )
 optdepends=(
-  'wl-clipboard: copy screenshots as file references from compositor keybindings'
+  'wl-clipboard: inspect clipboard MIME types with wl-paste'
   'hyprland: tested wlroots compositor environment'
   'sway: alternative wlroots compositor environment'
 )
-_commit='9c00f795fff0d8d5fe62277235b4d1e6ab1f0476'
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
-sha256sums=('3b5af82b95c18a43fa397b1df66056daa4bf5119995212132f3e218874391037')
+_commit='537793791e7b308468daedbcdfddcd0ccc02cbba'
+source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://codeload.github.com/xander-lin/screenshot/tar.gz/${_commit}")
+sha256sums=('9ae739d8b788e5877c5f39ba3a852ad28cb3d4a3210edf335aa8c472eacf4ad4')
 
 build() {
-  arch-meson "screenshot-${_commit}" build
-  meson compile -C build
+  arch-meson "${srcdir}/screenshot-${_commit}" "${srcdir}/build"
+  meson compile -C "${srcdir}/build"
 }
 
 package() {
-  meson install -C build --destdir "${pkgdir}"
+  meson install -C "${srcdir}/build" --destdir "${pkgdir}"
 
-  install -Dm644 "screenshot-${_commit}/LICENSE" \
+  install -Dm644 "${srcdir}/screenshot-${_commit}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "screenshot-${_commit}/README.md" \
+  install -Dm644 "${srcdir}/screenshot-${_commit}/README.md" \
     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "screenshot-${_commit}/README.en.md" \
+  install -Dm644 "${srcdir}/screenshot-${_commit}/README.en.md" \
     "${pkgdir}/usr/share/doc/${pkgname}/README.en.md"
 }
