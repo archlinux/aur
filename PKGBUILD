@@ -3,14 +3,14 @@ _pkgname=r3ctl
 pkgname=${_pkgname}-git
 
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cmdline tool to control the r3 (for integration in any desktop environment)"
 
 arch=('any')
 url="https://github.com/0xFEEDC0DE64/${_pkgname}"
 license=('GPL-3.0-or-later')
-depends=('qt5-base' 'qt5-websockets')
-makedepends=('git' 'qt5-base' 'qt5-websockets')
+depends=('qt5-base' 'qt5-websockets' 'qt5-multimedia')
+makedepends=('git' 'qt5-base' 'qt5-websockets' 'qt5-multimedia')
 
 source=(
   "git+${url}.git"
