@@ -12,6 +12,7 @@ pkgbase = rovr
 	makedepends = python-uv-build
 	depends = python
 	depends = python-textual-autocomplete
+	depends = python-pygments
 	depends = python-rich
 	depends = python-ujson
 	depends = python-tomli
