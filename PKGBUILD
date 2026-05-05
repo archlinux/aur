@@ -2,7 +2,7 @@
 
 pkgname=hxy-git
 pkgver=0.0.1.r486.g243bb3b
-pkgrel=1
+pkgrel=2
 pkgdesc="Hex editor built with Rust and egui (git snapshot)"
 arch=('x86_64')
 url="https://github.com/landaire/hxy"
@@ -23,8 +23,8 @@ optdepends=('xdg-desktop-portal: native file dialogs via the portal backend')
 makedepends=('cargo' 'git' 'pkgconf')
 provides=('hxy')
 conflicts=('hxy')
-source=("git+$url.git" "hxy-desktop-menu-imports.patch")
-sha256sums=('SKIP' 'e5012d8050f4f1d15bc7660dc8e8cb22f582f7a1c7c627cd8aac2f37409e8cae')
+source=("git+$url.git" "hxy-desktop-menu-imports.patch" "hxy.desktop")
+sha256sums=('SKIP' 'e5012d8050f4f1d15bc7660dc8e8cb22f582f7a1c7c627cd8aac2f37409e8cae' '1e0e9b4b76e666a4db372f93da79996b2214b2a09450b397934c79a3e43eacbd')
 
 pkgver() {
   cd "$srcdir/hxy"
@@ -55,6 +55,7 @@ package() {
   cd "$srcdir/hxy"
 
   install -Dm755 "target/release/hxy" "$pkgdir/usr/bin/hxy"
+  install -Dm644 "$srcdir/hxy.desktop" "$pkgdir/usr/share/applications/hxy.desktop"
   install -Dm644 "$srcdir/hxy/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 "$srcdir/hxy/LICENSE-APACHE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }

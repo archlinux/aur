@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=hxy
+Comment=A hex editor built with Rust and egui
+Exec=/usr/bin/hxy
+Icon=accessories-text-editor
+Type=Application
+Categories=System;
+StartupNotify=true

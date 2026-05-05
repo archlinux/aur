@@ -1,7 +1,7 @@
 pkgbase = hxy-git
 	pkgdesc = Hex editor built with Rust and egui (git snapshot)
-	pkgver = 0.0.1
-	pkgrel = 1
+	pkgver = 0.0.1.r486.g243bb3b
+	pkgrel = 2
 	url = https://github.com/landaire/hxy
 	arch = x86_64
 	license = MIT
@@ -24,7 +24,9 @@ pkgbase = hxy-git
 	conflicts = hxy
 	source = git+https://github.com/landaire/hxy.git
 	source = hxy-desktop-menu-imports.patch
+	source = hxy.desktop
 	sha256sums = SKIP
 	sha256sums = e5012d8050f4f1d15bc7660dc8e8cb22f582f7a1c7c627cd8aac2f37409e8cae
+	sha256sums = 1e0e9b4b76e666a4db372f93da79996b2214b2a09450b397934c79a3e43eacbd
 
 pkgname = hxy-git
