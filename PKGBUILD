@@ -1,9 +1,9 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
-pkgname=opencode-desktop-electron
-pkgver=1.14.35
+pkgname=opencode-desktop
+pkgver=1.14.39
 pkgrel=1
-pkgdesc='OpenCode Electron desktop app (built from source, runs on system electron41)'
+pkgdesc='OpenCode desktop app (built from source, runs on system electron41)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/anomalyco/opencode'
 license=('MIT')
@@ -18,7 +18,14 @@ makedepends=(
 optdepends=(
   'opencode: standalone terminal CLI (independent of the desktop app, which embeds its own server)'
 )
-conflicts=("$pkgname-bin")
+# Renamed from opencode-desktop-electron after upstream renamed
+# packages/desktop-electron → packages/desktop in v1.14.39.
+replaces=('opencode-desktop-electron')
+conflicts=(
+  "$pkgname-bin"
+  'opencode-desktop-electron'
+  'opencode-desktop-electron-bin'
+)
 options=('!strip' '!debug')
 # Use git source (not the GitHub tag tarball): Tailwind v4's @tailwindcss/oxide
 # scanner enumerates source files via the git index when .git is present, and
@@ -31,9 +38,9 @@ source=(
   'set-desktop-name.patch'
 )
 sha256sums=('SKIP'
-            '7d021d37b0d305967babfe189320911db281d2fdc49ace2b4b25061f0c31d606'
+            '84924177801958340d9d06c4f433e8818f1a7119babcfa56384133c7ce59e65f'
             '82b5dcd7c56955af41982d8df7828b11907e58ef0199bb9d2e1edac0a9fbbe21'
-            '63914eda480b3e0b64f7875c0c326bdc0c1982140c183f4859b840e7b6c1ec20')
+            '32640e478f139cf1658f6948627b14b3e386acf5c589e116a5745ef7c1f0b986')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -50,19 +57,19 @@ build() {
 
   bun install
 
-  bun run --cwd packages/desktop-electron build
+  bun run --cwd packages/desktop build
 
   # Strip $srcdir absolute paths leaked into Vite-bundled chunks (CommonJS
   # interop inlines __dirname/__filename). Not dereferenced at runtime, but
   # both namcap and basic hygiene reject packages that contain build-host paths.
-  find packages/desktop-electron/out -type f \
+  find packages/desktop/out -type f \
     \( -name '*.js' -o -name '*.cjs' -o -name '*.mjs' \) \
     -exec sed -i "s|$srcdir/$pkgname|/usr/lib/$pkgname|g" {} +
 
   # Force app.isPackaged → true. System electron treats an externally-passed
   # main as a "default app" and sets isPackaged=false, which makes the app
   # pick its dev appId / userData / resourcesPath instead of prod ones.
-  sed -i 's/app\.isPackaged/true/g' packages/desktop-electron/out/main/index.js
+  sed -i 's/app\.isPackaged/true/g' packages/desktop/out/main/index.js
 
   local sysver
   sysver=$(< /usr/lib/electron41/version)
@@ -74,7 +81,7 @@ build() {
   # → hicolor/<size>/apps/...). Re-extracting them into our package keeps us
   # in sync with whatever upstream defines without us hand-maintaining a
   # parallel copy.
-  ( cd packages/desktop-electron && bun run package -- \
+  ( cd packages/desktop && bun run package -- \
       --linux pacman \
       -c.asar=false \
       -c.electronDist=/usr/lib/electron41 \
@@ -83,7 +90,7 @@ build() {
 }
 
 package() {
-  local _bld="$srcdir/$pkgname/packages/desktop-electron"
+  local _bld="$srcdir/$pkgname/packages/desktop"
 
   # Install the unpacked app/ directory to /usr/lib/$pkgname/.
   install -d "$pkgdir/usr/lib/$pkgname"
@@ -104,7 +111,7 @@ package() {
   rm -rf "$_eb" && mkdir -p "$_eb"
   bsdtar -xf "$_bld"/dist/*.pacman -C "$_eb"
 
-  local _ebname='@opencode-aidesktop-electron'
+  local _ebname='@opencode-aidesktop'
   sed -e "s|^Exec=.*|Exec=$pkgname %U|" \
       -e "s|^Icon=.*|Icon=$pkgname|" \
       -e "s|^StartupWMClass=.*|StartupWMClass=$pkgname|" \

@@ -1,6 +1,6 @@
-pkgbase = opencode-desktop-electron
-	pkgdesc = OpenCode Electron desktop app (built from source, runs on system electron41)
-	pkgver = 1.14.35
+pkgbase = opencode-desktop
+	pkgdesc = OpenCode desktop app (built from source, runs on system electron41)
+	pkgver = 1.14.39
 	pkgrel = 1
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
@@ -11,16 +11,19 @@ pkgbase = opencode-desktop-electron
 	depends = electron41
 	depends = hicolor-icon-theme
 	optdepends = opencode: standalone terminal CLI (independent of the desktop app, which embeds its own server)
+	conflicts = opencode-desktop-bin
+	conflicts = opencode-desktop-electron
 	conflicts = opencode-desktop-electron-bin
+	replaces = opencode-desktop-electron
 	options = !strip
 	options = !debug
-	source = opencode-desktop-electron::git+https://github.com/anomalyco/opencode.git#tag=v1.14.35
-	source = opencode-desktop-electron.sh
+	source = opencode-desktop::git+https://github.com/anomalyco/opencode.git#tag=v1.14.39
+	source = opencode-desktop.sh
 	source = relax-bun-version.patch
 	source = set-desktop-name.patch
 	sha256sums = SKIP
-	sha256sums = 7d021d37b0d305967babfe189320911db281d2fdc49ace2b4b25061f0c31d606
+	sha256sums = 84924177801958340d9d06c4f433e8818f1a7119babcfa56384133c7ce59e65f
 	sha256sums = 82b5dcd7c56955af41982d8df7828b11907e58ef0199bb9d2e1edac0a9fbbe21
-	sha256sums = 63914eda480b3e0b64f7875c0c326bdc0c1982140c183f4859b840e7b6c1ec20
+	sha256sums = 32640e478f139cf1658f6948627b14b3e386acf5c589e116a5745ef7c1f0b986
 
-pkgname = opencode-desktop-electron
+pkgname = opencode-desktop
