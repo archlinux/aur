@@ -11,6 +11,7 @@ depends=(
   'glibc'
   'libsodium'
   'sdl2'
+  'sdl2_net'
   'sdl2_ttf'
   'sdl2_image'
   'protobuf-c'

@@ -10,6 +10,7 @@ pkgbase = dealers-choice
 	depends = glibc
 	depends = libsodium
 	depends = sdl2
+	depends = sdl2_net
 	depends = sdl2_ttf
 	depends = sdl2_image
 	depends = protobuf-c
