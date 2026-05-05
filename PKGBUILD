@@ -1,9 +1,8 @@
 # Maintainer: bbaa <bbaa@bbaa.me>
 
 pkgname=i915-sriov-dkms
-pkgver=2026.03.05
-_commit=0f2527cd4043a44ad8fa984e0c1ae2e56a93d49a
-pkgrel=2
+pkgver=2026.05.03
+pkgrel=1
 pkgdesc="Linux i915 module patched with SR-IOV support"
 arch=('x86_64')
 url="https://github.com/strongtz/i915-sriov-dkms"
@@ -13,11 +12,11 @@ makedepends=('git')
 conflicts=("${pkgname}-git")
 backup=("etc/tmpfiles.d/i915-set-sriov-numvfs.conf")
 install=${pkgname}.install
-source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/strongtz/i915-sriov-dkms/tar.gz/$_commit")
-sha256sums=('66c825dfddba968bd51a3d88443d3ffc2a26061a43114457537d10e93c9312e2')
+source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/strongtz/i915-sriov-dkms/tar.gz/$pkgver")
+sha256sums=('7fd179ccf503ee6c985fdf2eb044c003e975c8e26f6c361ef199a91341e43874')
 
 package() {
-	cd "$srcdir/$pkgname-$_commit"
+	cd "$srcdir/$pkgname-$pkgver"
 
 	echo "* Copying module into /usr/src..."
 	install -dm755 "${pkgdir}/usr/src/${pkgname}-${pkgver}"
