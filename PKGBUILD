@@ -1,7 +1,7 @@
 # Maintainer: Damian Miller <rysas@mail.naimad.dev>
 pkgname=lumoria
 pkgver=0.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux installer and launcher for Final Fantasy XI"
 arch=('x86_64')
 url="https://github.com/Windower/Lumoria"
@@ -17,10 +17,12 @@ depends=(
   'libsoup3'
   'libmanette'
   'libportal'
+  'libportal-gtk4'
   'vte4'
   'libxml2'
 )
 makedepends=(
+  'cmake'
   'meson'
   'vala'
 )
