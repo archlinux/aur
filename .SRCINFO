@@ -1,24 +1,31 @@
 pkgbase = open-design-git
 	pkgdesc = Local-first design product: design skills and design systems with your code-agent CLI
-	pkgver = 0.4.0.r260.g74f1a18b
+	pkgver = 0.4.0.r264.gc69dee74
 	pkgrel = 1
 	url = https://github.com/nexu-io/open-design
 	arch = x86_64
-	arch = aarch64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = npm
 	makedepends = python
 	makedepends = make
 	makedepends = gcc
-	depends = nodejs
+	depends = alsa-lib
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
 	provides = open-design
 	conflicts = open-design
 	conflicts = open-design-bin
 	options = !strip
 	source = open-design-git::git+https://github.com/nexu-io/open-design.git#branch=main
 	source = open-design
+	source = open-design.desktop
 	sha256sums = SKIP
-	sha256sums = 3e7815eab88d3b359d0617cbf1777ae234988eb9e3365d35387f564af3042fde
+	sha256sums = 68117e26248e675c9a544332cabf943f76477b41f953106ae7323ab737323e40
+	sha256sums = 0245ea0484c1bb89b74093abc3c77ce421e793dd06c5a8e36c203971bfd7f919
 
 pkgname = open-design-git

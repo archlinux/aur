@@ -1,20 +1,21 @@
 # Maintainer: motherofmilk <iulian.dita@gmail.com>
 
 pkgname=open-design-git
-pkgver=0.4.0.r260.g74f1a18b
+pkgver=0.4.0.r264.gc69dee74
 pkgrel=1
 pkgdesc='Local-first design product: design skills and design systems with your code-agent CLI'
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url='https://github.com/nexu-io/open-design'
 license=('Apache-2.0')
-depends=('nodejs')
+depends=('alsa-lib' 'gtk3' 'libnotify' 'libxss' 'libxtst' 'nss' 'xdg-utils')
 makedepends=('git' 'npm' 'python' 'make' 'gcc')
 provides=('open-design')
 conflicts=('open-design' 'open-design-bin')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/nexu-io/open-design.git#branch=main" 'open-design')
+source=("${pkgname}::git+https://github.com/nexu-io/open-design.git#branch=main" 'open-design' 'open-design.desktop')
 sha256sums=('SKIP'
-            '3e7815eab88d3b359d0617cbf1777ae234988eb9e3365d35387f564af3042fde')
+            '68117e26248e675c9a544332cabf943f76477b41f953106ae7323ab737323e40'
+            '0245ea0484c1bb89b74093abc3c77ce421e793dd06c5a8e36c203971bfd7f919')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -27,30 +28,25 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
   _pnpm() { npx --yes pnpm@10.33.2 "$@"; }
 
   _pnpm install --frozen-lockfile
-  _pnpm --filter @open-design/sidecar-proto build
-  _pnpm --filter @open-design/sidecar build
-  _pnpm --filter @open-design/platform build
-  _pnpm --filter @open-design/web build
-  _pnpm --filter @open-design/daemon build
+  _pnpm tools-pack linux build --to appimage --namespace aur --portable --dir "${srcdir}/tools-pack"
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  local _dest="${pkgdir}/usr/lib/open-design"
+  local _appimage
+  _appimage="$(find "${srcdir}/tools-pack/out/linux/namespaces/aur/builder" -maxdepth 1 -type f -name '*.AppImage' -print -quit)"
+  if [[ -z "${_appimage}" ]]; then
+    echo "no AppImage found under ${srcdir}/tools-pack/out/linux/namespaces/aur/builder" >&2
+    return 1
+  fi
 
-  install -dm755 "${_dest}"
-  cp -a . "${_dest}/"
-  rm -rf "${_dest}/.git" "${_dest}/e2e" "${_dest}/apps/web/.next"
-  rm -f "${_dest}/node_modules/.pnpm-workspace-state-v1.json"
-  find "${_dest}" -type d -name .bin -prune -exec rm -rf {} +
-
+  install -Dm755 "${_appimage}" "${pkgdir}/opt/open-design/open-design.AppImage"
   install -Dm755 "${srcdir}/open-design" "${pkgdir}/usr/bin/open-design"
-  chmod 755 "${_dest}/apps/daemon/dist/cli.js"
-
+  install -Dm644 "${srcdir}/open-design.desktop" "${pkgdir}/usr/share/applications/open-design.desktop"
+  install -Dm644 tools/pack/resources/linux/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/open-design.png"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

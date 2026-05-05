@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Open Design
+GenericName=Design Agent
+Comment=Local-first design product with code-agent workflows
+Exec=open-design %U
+Icon=open-design
+Terminal=false
+Categories=Development;Graphics;
+StartupWMClass=Open Design
