@@ -3,7 +3,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname='notesmd-cli-bin'
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='Interact with Obsidian vaults from the terminal. Open, search, create, update and move notes!'
 url='https://github.com/Yakitrak/notesmd-cli'
@@ -13,10 +13,10 @@ provides=('notesmd-cli')
 conflicts=('notesmd-cli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Yakitrak/notesmd-cli/releases/download/v${pkgver}/notesmd-cli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7dc3a619d029fd7bb240a6aa3902ef288838038f30001f00c2eca2bd93dc2f75')
+sha256sums_aarch64=('2a7d662816859a1b8f0ad25ebaadeafd7e284b0173b85ec547cb6c7b18603366')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Yakitrak/notesmd-cli/releases/download/v${pkgver}/notesmd-cli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('8d41ffb2343ae85bab27be510d82b72518ffdf5d470a7968a9c34f391ef756ab')
+sha256sums_x86_64=('e9c484adca59d46365d27a52a6a2e82f2c50b932457bef86e4972c73ccc209c2')
 
 package() {
   install -Dm755 "./notesmd-cli" "${pkgdir}/usr/bin/notesmd-cli"
