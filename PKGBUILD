@@ -3,7 +3,7 @@
 
 _pkgname=openvpn3-linux
 pkgname=openvpn3
-pkgver=26
+pkgver=27
 pkgrel=1
 pkgdesc='OpenVPN 3 Linux client'
 arch=('x86_64' 'aarch64')
@@ -24,16 +24,19 @@ source=(
   "https://swupdate.openvpn.net/community/releases/${_pkgname}-${pkgver}.tar.xz"
   'openvpn3.rule'
   'sysusers-openvpn3.conf'
+  'netcfg-dco.patch'
 )
 sha256sums=(
-  '80e35615ae913fbdbdda53495b27934a3bbb21d8b15c49a624d4992c15e196e1'
+  'd8c474032546bdd90b5b7f67e40c57b4b6030253f07bda7bb6ad0db84b9eed73'
   'ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01'
   '045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a'
+  '6c6b34a37c033e57aa4d699e09fd0089b0fe0d0e801f5045b172509b2661afe3'
 )
 install=openvpn3.install
 
 prepare() {
   meson subprojects download --sourcedir="${_pkgname}-${pkgver}"
+  patch -d "${_pkgname}-${pkgver}" --verbose  -Np1 -i ../netcfg-dco.patch
 }
 
 build() {
