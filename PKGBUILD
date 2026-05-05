@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-rosettasciio
 pkgshort=rosettasciio
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Rosetta Scientific Input Output library"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
          'python-matplotlib-scalebar: scalebar in images'
          'python-scikit-image>=0.20: blockfile'
          'python-sparse: eds-stream'
-         'python-tifffile>=2022.7.28: tiff'
+         'python-tifffile>2026.2.24: tiff'
          'python-imagecodecs: tiff'
          'python-zarr<3: zspy'
          'python-msgpack: zspy'
@@ -51,4 +51,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('e02575d451e9c3d301fcb68c319ce0728175df9940feff5b09b855e18945a093')
+sha256sums=('59bf2834c4ecb84132b1f89380bc95375d170b48cf59a5608e3bed684caf52c9')
