@@ -1,0 +1,5 @@
+[scrawl-bin]
+source = "github"
+github = "dasunNimantha/scrawl"
+use_latest_release = true
+prefix = "v"

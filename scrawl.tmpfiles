@@ -1,0 +1,2 @@
+d /var/lib/scrawl 0750 scrawl scrawl -
+d /etc/scrawl 0755 scrawl scrawl -
