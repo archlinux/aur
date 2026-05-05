@@ -16,8 +16,13 @@ build() {
 
 package() {
   install -d "$pkgdir/usr/share/$pkgname"
-  # copy all files into /usr/share/donkeytype
-  cp -r "$srcdir"/* "$pkgdir/usr/share/$pkgname/"
+  # copy package files into /usr/share/donkeytype
+  # If tarball extracts into a subdirectory (donkeytype-0.1.0), copy its contents
+  if [ -d "$srcdir/${pkgname}-${pkgver}" ]; then
+    cp -r "$srcdir/${pkgname}-${pkgver}/"* "$pkgdir/usr/share/$pkgname/"
+  else
+    cp -r "$srcdir"/* "$pkgdir/usr/share/$pkgname/"
+  fi
   # make main script executable and install wrapper to /usr/bin
-  install -m755 "$pkgdir/usr/share/$pkgname/game.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$pkgdir/usr/share/$pkgname/game.py" "$pkgdir/usr/bin/$pkgname"
 }
