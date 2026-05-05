@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=r169.8a8f568
+pkgver=r180.8f2f814
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -41,6 +41,7 @@ build() {
     cd "$_pkgname"
     cargo build --release -j ${_nproc}
     cd indielinks-fe
+    npx @tailwindcss/cli -i style.css -o tailwind.css
     INDIELINKS_FE_API="http://localhost:20676" INDIELINKS_BASE="/fe" INDIELINKS_PAGE_SIZE="20" trunk build --release
 }
 
