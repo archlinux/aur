@@ -2,8 +2,8 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-orix
 pkgshort=orix
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.14.2
+pkgrel=1
 pkgdesc="Python library for analysing orientations and crystal symmetry."
 arch=('any')
 url="https://orix.rtfd.io/"
@@ -46,4 +46,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('0ef7b7fa957064223ccee4dac0858bad')
+sha256sums=('364f4a01d7cb12638827b565be7718b4a00ad855e762e72de6f3907c33b252d4')
