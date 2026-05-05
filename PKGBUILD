@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Hoang Ky <nhktmdzhg at gmail dot com>
 pkgname=coccoc-browser-stable
 _pkgname=coccoc-browser
-pkgver=143.0.7499.184
+pkgver=145.0.7632.176
 pkgrel=1
 _pkgrel=1
 pkgdesc="The web browser from Coc Coc. Coc Coc is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
@@ -15,13 +15,12 @@ depends=(
     'cairo'
     'dbus'
     'expat'
-    'gcc-libs'
     'glib2'
     'glibc'
-    'gtk3'
     'hicolor-icon-theme'
     'libcups'
-    'libdrm'
+    'libgcc'
+    'libstdc++'
     'libx11'
     'libxcb'
     'libxcomposite'
@@ -30,8 +29,6 @@ depends=(
     'libxfixes'
     'libxkbcommon'
     'libxrandr'
-    'libxss'
-    'libxtst'
     'mesa'
     'nspr'
     'nss'
@@ -58,7 +55,7 @@ source=(
     "LICENSE.html"
 )
 sha256sums=(
-    '04247ced3a030226e515eccee1faa2f3209b1e1995c5445ccb78c896b142ad6e'
+    'f42d6b27e94dae5d803006add43c339b3cae4de4ca2f1e554ca0c1f1ef383040'
     'fae326b92e97b28dafc9e1ed3958486bb0455cb5cebe3cad3484f92bde30b804'
     '22bf4605260a7432eee169b0afbfae6782b9812c2bc776fdc1a887f6e2b10ec6'
 )
