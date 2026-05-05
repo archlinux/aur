@@ -36,7 +36,7 @@ prepare() {
   cd "${pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -58,12 +58,12 @@ package() {
   install -Dm644 "assets/linux/org.onetalker.${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 "assets/linux/org.onetalker.${pkgname}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
 
-  mkdir -p "${pkgdir}/opt/${pkgname}/assets"
-  cp -dr assets/audio "${pkgdir}/opt/${pkgname}/assets"
-  cp -dr assets/config "${pkgdir}/opt/${pkgname}/assets"
-  cp -dr assets/images "${pkgdir}/opt/${pkgname}/assets"
-  cp -dr assets/symbols "${pkgdir}/opt/${pkgname}/assets"
-  cp -dr assets/tts "${pkgdir}/opt/${pkgname}/assets"
+  mkdir -p "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/audio "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/config "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/images "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/symbols "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/tts "${pkgdir}/usr/share/onetalker/assets"
 
   cp -dr assets/linux/icons "${pkgdir}/usr/share"
 }
