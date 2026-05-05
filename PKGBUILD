@@ -1,9 +1,9 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=report
-_pkgver=0.6.3
+_pkgver=0.6.4
 pkgname=r-${_pkgname,,}
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Automated Reporting of Results and Statistical Models'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("${_pkgname}_${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5d6849fe42ac263820be812b4b73e2994b7bee520cf206ae8cd9a9fc56e8d06d')
+sha256sums=('a8f0d4863ba08f17944ed8540aa099659adab5eb179f5d543062f27f0d6fee92')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
