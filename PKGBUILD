@@ -3,7 +3,7 @@
 _pkgname=MuseScore-Studio
 pkgname=musescore-studio-appimage
 pkgver=4.6.5.253511702
-pkgrel=1
+pkgrel=2
 pkgdesc="Create and share sheet music"
 arch=('x86_64')
 url=https://musescore.org/en/download
