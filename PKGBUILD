@@ -1,8 +1,8 @@
 # Maintainer: Ben Davison <nimijneb.bd@gmail.com>
 pkgname=imx471-dkms-git
 _pkgbase=imx471
-pkgver=r8.293a166
-pkgrel=2
+pkgver=r6.fea9d24
+pkgrel=1
 pkgdesc="IMX471 sensor driver via DKMS"
 arch=('x86_64')
 url="https://github.com/BenBJD/imx471-dkms"
@@ -24,7 +24,7 @@ package() {
 
   install -d "$install_dir"
 
-  install -m644 imx471.c Makefile dkms.conf "$install_dir/"
+  install -m644 imx471.c ipu-bridge.c Makefile dkms.conf "$install_dir/"
 
   sed -i "s/^PACKAGE_VERSION=.*/PACKAGE_VERSION=\"$pkgver\"/" "$install_dir/dkms.conf"
   sed -i "s/^PACKAGE_NAME=.*/PACKAGE_NAME=\"$_pkgbase\"/" "$install_dir/dkms.conf"
