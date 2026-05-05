@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gale
 pkgver=1.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern mod manager for Thunderstore"
 arch=('x86_64')
 url="https://kesomannen.com/gale"
@@ -48,12 +48,12 @@ package() {
   install -Dm755 "src-tauri/target/release/$pkgname" -t "$pkgdir/usr/bin/"
 
   for i in 32x32 128x128 128x128@2x; do
-    install -Dm644 "src-tauri/icons/${i}.png" -t \
+    install -Dm644 "src-tauri/icons/${i}.png" \
       "$pkgdir/usr/share/icons/hicolor/${i}/apps/$pkgname.png"
   done
   install -Dm644 images/icons/app-icon@0,25x.png \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-  install -Dm644 src-tauri/icons/icon.png -t \
+  install -Dm644 src-tauri/icons/icon.png \
       "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"

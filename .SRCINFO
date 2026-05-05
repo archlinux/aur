@@ -1,7 +1,7 @@
 pkgbase = gale
 	pkgdesc = A modern mod manager for Thunderstore
 	pkgver = 1.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kesomannen.com/gale
 	arch = x86_64
 	license = GPL-3.0-or-later
