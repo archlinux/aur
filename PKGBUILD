@@ -1,8 +1,8 @@
 # Maintainer: BarbUk <julien.virey@gmail.com>
 
 pkgname=cleanuparr
-pkgver=2.9.10
-_pkgver_qbittorrent=1.0.2
+pkgver=2.9.11
+_pkgver_qbittorrent=1.0.3
 _pkgver_transmission=1.0.3
 pkgrel=1
 pkgdesc='Tool for automating the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.'
@@ -28,7 +28,7 @@ source=(
   cleanuparr.tmpfiles
   cleanuparr.install
 )
-sha256sums=('015c79c8045a12dde5f7115f66645164a5210a636d0aeeeeae6bfa89a3b77da1'
+sha256sums=('8d2d25550165385582944b2ba2ecd7bdeb78aa44f6c1c2853305ec2de927004f'
             'SKIP'
             'SKIP'
             'e64633347d71185ef886314a74881f81ea70cbb896f285547dfd7739ecbe0188'
