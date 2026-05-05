@@ -1,6 +1,6 @@
 # Maintainer: Anonim Muhtar <anon@muhtar.lan>
 pkgname=muhtar-dil
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Hata düzeltmeleri eklendi."
 arch=('any')

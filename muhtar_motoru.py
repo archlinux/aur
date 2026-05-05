@@ -39,6 +39,7 @@ def muhtar_sistemini_calistir(dosya_yolu):
             'dene': 'try', 'denebozuldu': 'except', 'ondalik': 'float',
             'liste': 'list', 'ekle': 'append', 'cikar': 'remove',
             'sirala': 'sort', 'ters_cevir': 'reverse', 'uzunluk': 'len',
+             'kir': 'break',
             'kirmizi': '"\\033[91m"', 'yesil': '"\\033[92m"',
             'sari': '"\\033[93m"', 'mavi': '"\\033[94m"',
             'renk_bitir': '"\\033[0m"'
