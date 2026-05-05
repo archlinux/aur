@@ -1,7 +1,7 @@
 # Maintainer: cohae <cohae@cohae.dev>
 
 pkgname=sharey
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Modern screen capturing tool'
 url='https://codeberg.org/cohae/ShareY'
@@ -10,7 +10,7 @@ makedepends=('git' 'cargo')
 depends=('pipewire' 'ffmpeg')
 arch=('x86_64')
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('50fe311820db4d4bff04e1a4fdecf43a6a2f8374614af3ac02de64e2b67bb514')
+sha256sums=('a4c91206201d95e4ee6a2db4704aba4f7529e44c35ea3d2c8216cedcbe786701')
 options=(!lto)
 
 prepare() {
