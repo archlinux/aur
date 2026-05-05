@@ -23,7 +23,6 @@ pkgver() {
 build() {
   cd "$pkgname"
   sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#snapshot",|' package.json
-  cp -f pnpm-lock.yaml pnpm-lock.yaml.bak
   sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#snapshot",|' pnpm-lock.yaml
   rm -rf node_modules
   rm -f pnpm-lock.yaml
