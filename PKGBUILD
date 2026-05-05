@@ -4,7 +4,7 @@ pkgdesc='Unofficial OpenWork binary package with Arch-specific launcher fixes'
 arch=('x86_64')
 url='https://github.com/different-ai/openwork'
 license=('MIT')
-pkgrel=2
+pkgrel=3
 options=('!strip')
 depends=(
   'dbus'
@@ -25,14 +25,11 @@ package() {
     'OpenWork-Dev'
     'chrome-devtools-mcp'
     'opencode'
-    'opencode-router'
     'openwork-orchestrator'
     'openwork-server'
-    'versions.json'
   )
   local exposed_bins=(
     'chrome-devtools-mcp'
-    'opencode-router'
     'openwork-orchestrator'
     'openwork-server'
   )
@@ -45,6 +42,8 @@ package() {
   for file in "${sidecars[@]}"; do
     mv "${pkgdir}/usr/bin/${file}" "${pkgdir}/opt/openwork-bin/"
   done
+  mv "${pkgdir}/usr/lib/OpenWork/versions.json" "${pkgdir}/opt/openwork-bin/"
+  rmdir --ignore-fail-on-non-empty "${pkgdir}/usr/lib/OpenWork" "${pkgdir}/usr/lib"
 
   cat > "${pkgdir}/usr/bin/OpenWork-Dev" <<'EOF'
 #!/usr/bin/env bash

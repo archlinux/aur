@@ -1,7 +1,7 @@
 pkgbase = openwork-bin
 	pkgdesc = Unofficial OpenWork binary package with Arch-specific launcher fixes
 	pkgver = 0.13.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/different-ai/openwork
 	arch = x86_64
 	license = MIT
