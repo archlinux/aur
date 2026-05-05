@@ -1,7 +1,7 @@
 pkgbase = clash-mi
 	pkgdesc = 又一款 Mihomo 核心的代理工具
-	pkgver = 1.0.21.703
-	pkgrel = 2
+	pkgver = 1.0.22.802
+	pkgrel = 1
 	url = https://github.com/KaringX/clashmi/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = clash-mi
 	depends = libayatana-appindicator
 	depends = libkeybinder3
 	depends = libsecret
-	source = https://github.com/KaringX/clashmi/releases/download/v1.0.21.703/clashmi_1.0.21.703_linux_amd64.deb
-	sha256sums = 5b37e014ede2e8d86bc642df2e5d20e467b0315b9f4776e4620ee8b594a61f21
+	source = https://github.com/KaringX/clashmi/releases/download/v1.0.22.802/clashmi_1.0.22.802_linux_amd64.deb
+	sha256sums = 54cba2d9e375033f80f18abc32a66244eb1e5cd8aa02ed84633733479566dceb
 
 pkgname = clash-mi
