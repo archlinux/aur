@@ -1,0 +1,16 @@
+pkgbase = lens-shot
+	pkgdesc = Select a screen region and instantly open it in Google Lens using Chromium (Wayland)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/crisxdwars/lens-shot
+	arch = any
+	license = MIT
+	depends = grim
+	depends = slurp
+	depends = wl-clipboard
+	depends = python
+	depends = python-requests
+	source = lens-shot
+	sha256sums = SKIP
+
+pkgname = lens-shot
