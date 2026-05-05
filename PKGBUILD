@@ -35,6 +35,8 @@ package() {
   install -Dm755 bin/bf "$pkgdir/usr/bin/bf"
   install -Dm755 bin/bifrost-server "$pkgdir/usr/bin/bifrost-server"
 
+  cd "bifrost"
+
   install -Dm644 pkg/arch/bifrost.service "$pkgdir/usr/lib/systemd/system/bifrost.service"
   install -Dm644 pkg/arch/server.yaml "$pkgdir/etc/bifrost/server.yaml"
   install -Dm644 pkg/arch/bifrost.sysusers "$pkgdir/usr/lib/sysusers.d/bifrost.conf"
