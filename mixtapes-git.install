@@ -1,0 +1,31 @@
+_check_webkitgtk() {
+    if ! pacman -Q webkitgtk-6.0 &>/dev/null; then
+        return 0
+    fi
+
+    local installed_ver extra_ver
+    installed_ver=$(pacman -Q webkitgtk-6.0 2>/dev/null | awk '{print $2}')
+    extra_ver=$(pacman -Si extra/webkitgtk-6.0 2>/dev/null | awk -F': +' '/^Version/ {print $2; exit}')
+
+    if [[ -n "$extra_ver" && -n "$installed_ver" && "$installed_ver" != "$extra_ver" ]]; then
+        cat <<EOF
+
+>>> WARNING: webkitgtk-6.0 ($installed_ver) does not match the version in the
+>>> 'extra' repository ($extra_ver). The CachyOS build of webkitgtk-6.0 is
+>>> known to malfunction with Mixtapes (buttons unresponsive).
+>>>
+>>> If issues arise, reinstall it from the 'extra' repo:
+>>>     sudo pacman -S extra/webkitgtk-6.0
+>>>
+
+EOF
+    fi
+}
+
+post_install() {
+    _check_webkitgtk
+}
+
+post_upgrade() {
+    _check_webkitgtk
+}

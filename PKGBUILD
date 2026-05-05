@@ -6,10 +6,13 @@ pkgdesc="A modern, Linux-first YouTube Music player"
 arch=('any')
 url="https://github.com/m-obeid/Mixtapes"
 license=('GPL3')
+# Note: webkitgtk-6.0 must come from the 'extra' repository. The CachyOS build
+# is known to malfunction with Mixtapes - see the install hook below.
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'nodejs' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'yt-dlp' 'yt-dlp-ejs' 'python-requests' 'python-ytmusicapi' 'python-mprisify' 'python-mutagen')
 makedepends=('git')
 provides=("mixtapes")
 conflicts=("mixtapes")
+install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/m-obeid/Mixtapes.git")
 sha256sums=('SKIP')
 
@@ -34,7 +37,8 @@ package() {
   # Install desktop file, metainfo and icons
   install -Dm644 com.pocoguy.Muse.desktop "$pkgdir/usr/share/applications/com.pocoguy.Muse.desktop"
   install -Dm644 com.pocoguy.Muse.metainfo.xml "$pkgdir/usr/share/metainfo/com.pocoguy.Muse.metainfo.xml"
-  install -Dm644 assets/icons/hicolor/scalable/actions/compass2-symbolic.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.pocoguy.Muse.svg"
+  install -Dm644 assets/icons/hicolor/scalable/apps/com.pocoguy.Muse.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.pocoguy.Muse.svg"
+  install -Dm644 assets/icons/hicolor/symbolic/apps/com.pocoguy.Muse-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/com.pocoguy.Muse-symbolic.svg"
 
   # Launcher
   install -d "$pkgdir/usr/bin"

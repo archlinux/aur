@@ -3,6 +3,7 @@ pkgbase = mixtapes-git
 	pkgver = 2026.23.04.0
 	pkgrel = 1
 	url = https://github.com/m-obeid/Mixtapes
+	install = mixtapes-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
