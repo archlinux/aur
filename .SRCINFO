@@ -1,0 +1,20 @@
+pkgbase = musescore-studio-appimage
+	pkgdesc = Create and share sheet music
+	pkgver = 4.6.5.253511702
+	pkgrel = 1
+	url = https://musescore.org/en/download
+	arch = x86_64
+	license = GPL-v3
+	makedepends = fuse
+	makedepends = breeze-icons
+	depends = fuse-common
+	depends = fuse2
+	depends = fuse3
+	provides = mscore
+	conflicts = musescore-bin
+	conflicts = musescore-git
+	options = !strip
+	source_x86_64 = MuseScore-Studio-4.6.5.253511702-x86_64.AppImage::https://cdn.jsdelivr.net/musescore/v4.6.5/MuseScore-Studio-4.6.5.253511702-x86_64.AppImage
+	sha256sums_x86_64 = 193daa0ea18bcfa90a47145a842275b8069b7b2b8d153e562b15fab5fe50fcaf
+
+pkgname = musescore-studio-appimage
