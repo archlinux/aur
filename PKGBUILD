@@ -2,8 +2,8 @@
 
 pkgname=tasker
 pkgver=0.1
-pkgrel=1
-pkgdesc='A task management system'
+pkgrel=2
+pkgdesc='A lightweight, easy-to-use task management utility for linux'
 arch=(x86_64)
 url=https://github.com/neoluxis/tasker
 license=(MIT)

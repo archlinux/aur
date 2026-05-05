@@ -1,5 +1,5 @@
 pkgbase = tasker
-	pkgdesc = A task management system
+	pkgdesc = A lightweight, easy-to-use task management utility for linux
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/neoluxis/tasker
