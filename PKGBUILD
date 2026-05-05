@@ -1,35 +1,27 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=libxdf
 pkgver=0.99.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library for loading XDF files"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/xdf-modules/libxdf"
 license=('GPL')
-groups=()
-depends=()
 makedepends=('cmake')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!strip)
-install=
-changelog=
+options=(staticlibs)
 source=(https://github.com/xdf-modules/libxdf/archive/v$pkgver.zip)
-noextract=()
-sha1sums=('3e684e6553ea723331bae2e7c73221113dc90553')
+sha256sums=('7cb28224b924b811d62f68e40b38f65502d876b1f0a079f48d9e2d7ee697f9f6')
 
 build() {
   cd "$srcdir/libxdf-$pkgver"
   cmake -B build -DCMAKE_BUILD_TYPE=Release
   cmake --build build
+  cmake -B build_shared -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON
+  cmake --build build_shared
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/include"
-  mkdir -p "$pkgdir/usr/lib"
-  cp "$srcdir/libxdf-$pkgver/xdf.h" "$pkgdir/usr/include"
-  cp "$srcdir/libxdf-$pkgver/build/libxdf.a" "$pkgdir/usr/lib"
+  cd "$srcdir/libxdf-$pkgver"
+  install -Dm644 xdf.h "$pkgdir/usr/include/xdf.h"
+  install -Dm644 build/libxdf.a "$pkgdir/usr/lib/libxdf.a"
+  install -Dm755 build_shared/libxdf.so "$pkgdir/usr/lib/libxdf.so"
 }
