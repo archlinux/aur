@@ -1,25 +1,22 @@
 # Maintainer: gabrielearchapt <castielloangela512@gmail.com>
-
 pkgname=apt-fake-ubuntu
-pkgver=1.4
-pkgrel=2
-pkgdesc="A simple wrapper to use APT syntax on Arch Linux with Zenity GUI"
+pkgver=1.5
+pkgrel=1
+pkgdesc="Ubuntu's apt wrapper for Arch, features g-helper integration and custom icon"
 arch=('any')
-url="https://aur.archlinux.org/packages/apt-fake"
-license=('GPL-3.0-or-later')
-depends=('bash' 'pacman' 'zenity')
-source=("apt-fake" "apt-fake.desktop" "LICENSE")
-sha256sums=('f74765deead50cf030592eea24797d60a5ff38c38163b7ed09c51a44ffb08061'
-            '65aaf1cb417998cb2e10d50efbe0f25dcb9027770c4348735955d5203ee10c4d'
-            'f2d0fb0bff185cc62bcaf383cadf63dddd1d527804c34757b87c422249063b15')
+url="https://aur.archlinux.org/packages/apt-fake-ubuntu"
+license=('GPL3')
+depends=('pacman' 'bash' 'g-helper')
+source=('apt' 'apt-fake.desktop' 'apt-fake.png')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
-  # Install the script
-  install -Dt "$pkgdir/usr/bin" -m755 apt-fake
+  # 1. Install apt script
+  install -Dm755 "${srcdir}/apt" "${pkgdir}/usr/bin/apt"
   
-  # Install the desktop entry
-  install -Dt "$pkgdir/usr/share/applications" -m644 apt-fake.desktop
+  # 2. Install the icon with Arch/Ubuntu logo
+  install -Dm644 "${srcdir}/apt-fake.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/apt-fake.png"
   
-  # Install the license file
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
+  # 3. Installa the desktop icon for (XFCE/KDE Plasma/GNOME or a different WM or DE)
+  install -Dm644 "${srcdir}/apt-fake.desktop" "${pkgdir}/usr/share/applications/apt-fake.desktop"
 }

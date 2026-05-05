@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# --- Colori GabrieleArch ---
+G_PURPLE='\033[1;35m'
+G_CYAN='\033[1;36m'
+G_GREEN='\033[1;32m'
+G_RED='\033[1;31m'
+NC='\033[0m'
+
+# Controllo se l'utente ha fornito un comando
+if [ -z "$1" ]; then
+    echo -e "${G_PURPLE}APT-Fake Ubuntu v1.5${NC}"
+    echo "Utilizzo: apt [install|update|upgrade|remove|search]"
+    exit 1
+fi
+
+case "$1" in
+    install)
+        shift
+        # Pulizia dei flag tipici di Ubuntu (es: -y) per pacman
+        packages=${*//-y/}
+        
+        echo -e "${G_CYAN}::${NC} Ricerca nei repository ufficiali di Arch..."
+        if sudo pacman -S --needed $packages; then
+            echo -e "${G_GREEN}::${NC} Installazione completata con successo."
+        else
+            echo -e "${G_CYAN}::${NC} Pacchetto non trovato. Lancio ${G_PURPLE}G-HELPER${NC}..."
+            
+            # Switch su g-helper
+            if command -v g-helper &> /dev/null; then
+                g-helper $packages
+            else
+                echo -e "${G_RED}Errore:${NC} g-helper non è installato. Installalo dall'AUR."
+            fi
+        fi
+        ;;
+
+    update)
+        echo -e "${G_CYAN}::${NC} Sincronizzazione database..."
+        sudo pacman -Sy
+        ;;
+
+    upgrade|dist-upgrade)
+        echo -e "${G_CYAN}::${NC} Aggiornamento sistema..."
+        sudo pacman -Syu
+        ;;
+
+    remove|purge)
+        shift
+        sudo pacman -Rs $@
+        ;;
+
+    search)
+        shift
+        pacman -Ss $@
+        ;;
+
+    *)
+        echo -e "${G_RED}Comando non riconosciuto.${NC}"
+        ;;
+esac

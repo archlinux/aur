@@ -2,7 +2,7 @@
 Name=APT Fake GUI
 Comment=Manage your Arch Linux with APT syntax
 Exec=apt gui
-Icon=system-software-install
+Icon=apt-fake
 Terminal=false
 Type=Application
 Categories=System;Settings;
