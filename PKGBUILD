@@ -8,7 +8,7 @@
 
 _pkgname="moonlight-qt"
 pkgname="$_pkgname-git"
-pkgver=6.1.0.r83.g1bf86f5
+pkgver=6.1.0.r449.g8cc3b30
 pkgrel=1
 pkgdesc='GameStream client for PCs'
 url="https://github.com/moonlight-stream/moonlight-qt"
@@ -46,7 +46,6 @@ pkgver() {
 
 prepare() {
   cd "$_pkgsrc"
-  git rm -r libs # don't use prebuilt binaries
   git submodule update --init --recursive --depth=1
 }
 
