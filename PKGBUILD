@@ -2,7 +2,7 @@
 
 pkgname=open-design-git
 pkgver=0.4.0.r264.gc69dee74
-pkgrel=4
+pkgrel=5
 pkgdesc='VCS build of Open Design installed from an extracted Linux AppImage AppDir'
 arch=('x86_64')
 url='https://github.com/nexu-io/open-design'
@@ -59,6 +59,7 @@ package() {
 
   mkdir -p "${pkgdir}/opt/open-design/appdir"
   cp -a "${_extract_dir}/squashfs-root/." "${pkgdir}/opt/open-design/appdir/"
+  chmod -R u+rwX,go+rX "${pkgdir}/opt/open-design/appdir"
   install -Dm755 "${srcdir}/open-design" "${pkgdir}/usr/bin/open-design"
   install -Dm644 "${srcdir}/open-design.desktop" "${pkgdir}/usr/share/applications/open-design.desktop"
   install -Dm644 tools/pack/resources/linux/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/open-design.png"

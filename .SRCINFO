@@ -1,7 +1,7 @@
 pkgbase = open-design-git
 	pkgdesc = VCS build of Open Design installed from an extracted Linux AppImage AppDir
 	pkgver = 0.4.0.r264.gc69dee74
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/nexu-io/open-design
 	arch = x86_64
 	license = Apache-2.0
