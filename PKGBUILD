@@ -1,7 +1,7 @@
 # Maintainer: flossbud <flossbud27@gmail.com>
 pkgname=toontown-multitool
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multiboxing input control for Toontown Rewritten and Corporate Clash"
 arch=('any')
 url="https://github.com/flossbud/ToonTown-MultiTool"
@@ -41,10 +41,14 @@ EOF
     ln -s "${pkgname}" "${pkgdir}/usr/bin/ttmt"
 
     # Install desktop entry
-    install -Dm644 toontown-multitool.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 io.github.flossbud.ToonTownMultiTool.desktop \
+        "${pkgdir}/usr/share/applications/io.github.flossbud.ToonTownMultiTool.desktop"
 
     # Install icon
-    install -Dm644 AppDir/ToonTownMultiTool.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 AppDir/io.github.flossbud.ToonTownMultiTool.png \
+        "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/io.github.flossbud.ToonTownMultiTool.png"
+    install -Dm644 flatpak/icon-512.png \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.flossbud.ToonTownMultiTool.png"
 
     # Install license
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
