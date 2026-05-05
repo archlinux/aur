@@ -3,7 +3,7 @@
 # Maintainer: l5yth <aur@l5y.tech>
 
 pkgname=psn-git
-pkgver=0.1.2.r0.g7df4e2d
+pkgver=0.1.3.r1.ge50a356
 pkgrel=1
 pkgdesc="Terminal UI for process status navigation and control"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
