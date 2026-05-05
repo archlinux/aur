@@ -1,0 +1,18 @@
+pkgbase = gpu-hotswitch-vfio
+	pkgdesc = Hot-switch discrete GPU between host and VFIO passthrough without reboot
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ParticleG/gpu-hotswitch-vfio
+	arch = any
+	license = MIT
+	depends = bash
+	depends = util-linux
+	depends = pciutils
+	depends = kmod
+	optdepends = qemu-desktop: KVM virtual machine manager
+	optdepends = libvirt: VM management daemon
+	optdepends = looking-glass: low-latency VM display client
+	source = gpu-hotswitch-vfio-1.0.0.tar.gz::https://github.com/ParticleG/gpu-hotswitch-vfio/archive/v1.0.0.tar.gz
+	sha256sums = c138f45c36064993faea2d0aafd5cf82d9a77b372f915f2697c8e5fc40841026
+
+pkgname = gpu-hotswitch-vfio
