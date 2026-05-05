@@ -1,6 +1,7 @@
 # Maintainer: Evilchuck666 <carlos.martinez.medina1992@gmail.com>
 pkgbase=pyvideokit
 pkgname=(
+    'pyvideokit'
     'python-pyvideokit-libs'
     'python-pyvideokit-cli'
     'python-pyvideokit-gui'
