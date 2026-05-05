@@ -1,6 +1,6 @@
 # Maintainer: Nelson Duarte <nelsonduarte@github.com>
 pkgname=pdfapps
-pkgver=1.13.6
+pkgver=1.13.7
 pkgrel=1
 pkgdesc="Fast, offline, subscription-free PDF editor with 13 built-in tools"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
     'ghostscript: advanced PDF compression'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nelsonduarte/PDFApps/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('df6871a3b762b2e4278abc2e5efe7364657c99870019da3f941eee03ca66244b')
+sha256sums=('f4bd9c798bd8e816b36deee8e8eb8aa8185d0fdc81d65c8728b85dd41e304162')
 
 package() {
     cd "$srcdir/PDFApps-$pkgver"
