@@ -1,6 +1,6 @@
 # Maintainer: VanHoney-ltd <ghost@example.com>
 pkgname=ionprobe
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Async security reconnaissance scanner — powered by the NEMESIS ENGINE"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/VanHoney-ltd/ionprobe"
 license=('MIT')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('729d15f9f9480d33e9d03c681bc246dcc34609641c2023591517117a57455d4f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -18,7 +18,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 target/release/ionprobe "$pkgdir/usr/bin/ionprobe"
-    for verb in probe audit hunt watch; do
+    for verb in probe audit strike watch; do
         ln -sf ionprobe "$pkgdir/usr/bin/$verb"
     done
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
