@@ -1,7 +1,7 @@
 # Maintainer: Andres Morey <andres@kubetail.com>
 
 pkgname=kubetail-bin
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Real-time logging dashboard for Kubernetes"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=('kubetail')
 source_x86_64=("https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv${pkgver}/kubetail-linux-amd64")
 source_aarch64=("https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv${pkgver}/kubetail-linux-arm64")
 
-sha256sums_x86_64=('6b6a198c28d5c9118bd39ff8e6e92e792d9e550ae4a0c6ba9f275200d29a7f74')
-sha256sums_aarch64=('9a793e68f0ab3a7eeb21c865863447d691492fd0ad35a6a3dee442cbfe557885')
+sha256sums_x86_64=('5eef79fd5ee01c17f8c348f96c02ac668244e5c4896dc9e41837d8053489788e')
+sha256sums_aarch64=('8f9fa2a6ed32022e786ea6ebd22f88e34186120b3b2028a6db9a09bf2f9212e6')
 
 package() {
   # Map Arch → filename in release assets
