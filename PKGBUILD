@@ -2,7 +2,7 @@
 
 pkgname=rcal
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Responsive terminal calendar with local events and Microsoft Graph sync'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tenseleyFlow/rcal'
@@ -26,6 +26,9 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Disable rust-lld (default on x86_64-unknown-linux-gnu since 1.84);
+    # it fails to link ring's static assembly archive.
+    export RUSTFLAGS="${RUSTFLAGS} -C linker-features=-lld"
     cargo build --frozen --release --all-features
 }
 

@@ -1,7 +1,7 @@
 pkgbase = rcal
 	pkgdesc = Responsive terminal calendar with local events and Microsoft Graph sync
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tenseleyFlow/rcal
 	arch = x86_64
 	arch = aarch64
