@@ -2,7 +2,7 @@
 
 pkgname=openai-codex-reasoning
 pkgver=0.128.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI Codex CLI fork with inline reasoning traces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OneNoted/codex"
@@ -24,7 +24,9 @@ provides=('openai-codex')
 conflicts=(
   'openai-codex'
   'openai-codex-bin'
+  'openai-codex-reasoning-bin'
 )
+replaces=('openai-codex-reasoning-bin')
 options=('!lto')
 
 _fork_tag='aur-v0.128.0-reasoning.1'
@@ -75,6 +77,11 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CARGO_PROFILE_RELEASE_DEBUG="${CARGO_PROFILE_RELEASE_DEBUG:-0}"
+  export CARGO_PROFILE_RELEASE_LTO="${CARGO_PROFILE_RELEASE_LTO:-thin}"
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS="${CARGO_PROFILE_RELEASE_CODEGEN_UNITS:-8}"
+  export CARGO_BUILD_JOBS="${CARGO_BUILD_JOBS:-2}"
+  export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-2}"
 
   cargo build --release \
     -p codex-cli \
