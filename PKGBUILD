@@ -4,17 +4,17 @@
 
 # Maintainer: Štěpán Němec <stepnem@smrk.net>
 pkgname='tree-sitter-svelte'
-pkgver=0.11.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Svelte grammar for tree-sitter'
 arch=('x86_64')
-url='https://github.com/Himujjal/tree-sitter-svelte/'
+url='https://github.com/tree-sitter-grammars/tree-sitter-svelte'
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
 provides=("lib$pkgname.so")
-source=("$pkgname-$pkgver-src.tar.gz::https://github.com/Himujjal/tree-sitter-svelte/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('65a082849220f8c0623cda88f01f4c0f619cc26e894232d133489c48f081f56c')
+source=("$pkgname-$pkgver-src.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5fbca1c9857ea9af125ab43ea417b33e81b8268ef8003286bbd4fa9519bd4f23')
 
 _soname=lib$pkgname.so.14.0
 
