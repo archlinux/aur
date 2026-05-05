@@ -17,9 +17,9 @@ pkgbase = grafito-bin
 	sha256sums = 5e12cdb77daa2372d7232dc9ceeec7084f14afee0cf2db28e5ed2df9bb0e1cbf
 	sha256sums = baa7cb32a74f55b71158bdbc2282c9b7a2f589bb945611cf80d4ca6736aed805
 	sha256sums = 3f680ceb7957f2ef61a3dea28e2cd02ab8ae0bc3293f87d676b6bdbbb601fd3a
-	source_x86_64 = https://github.com/ralsina/grafito/releases/download/v0.17.0/grafito-static-linux-amd64
+	source_x86_64 = grafito-x86_64-0.17.0::https://github.com/ralsina/grafito/releases/download/v0.17.0/grafito-static-linux-amd64
 	sha256sums_x86_64 = ab0d5b281a7486a705acfbe9b92d0127031af60b6b56eaa778fb05ace81eb01f
-	source_aarch64 = https://github.com/ralsina/grafito/releases/download/v0.17.0/grafito-static-linux-arm64
+	source_aarch64 = grafito-aarch64-0.17.0::https://github.com/ralsina/grafito/releases/download/v0.17.0/grafito-static-linux-arm64
 	sha256sums_aarch64 = 8c15b797f3654ca50d02e8f8ccadc0868fcb1b1831f1bf43ddd37d7af2d82744
 
 pkgname = grafito-bin
