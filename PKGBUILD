@@ -2,8 +2,8 @@
 
 _pkgname="fineftp-server"
 pkgname="${_pkgname}-bin"
-pkgver=1.5.1
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Minimal FTP server library for Windows and Unix flavors"
 arch=(
   'aarch64'
@@ -41,9 +41,9 @@ noextract=(
   "${source_x86_64[@]##*/}"
 )
 sha256sums=('ebd76f02867ea8fceeb0b2df629243395551f7d7519055d33c3a3a3ca72e2e25'
-            'cdf2b56c32888ba397fdf99af8650394a2fccdaa83d204310adc55f9bc50cfcd')
-sha256sums_aarch64=('5abd76a15c3a0bc9e3982ca664e0a41f970e4ddbd79c24e682df044d135f1b47')
-sha256sums_x86_64=('ad8945efc8b23661e4f2eb49e9f08375bc75fc3abb092ded86beb18c835ee448')
+            '667c112ec5f73bbbc6de0c87495b37d4ca68d52ff9a7f13af10858b93ae88438')
+sha256sums_aarch64=('779312ed95a16b58a165bd3482c4431f54532ba3d17e1addf7d75b6062529ac9')
+sha256sums_x86_64=('c60cb01f287ee2a8926e632f37153c02508c692db090670862f05c4ce1c06449')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
