@@ -1,6 +1,6 @@
 pkgbase = zorg
 	pkgdesc = A TUI SSH connection manager and orchestrator
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Zwielichtig/zorg
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = zorg
 	depends = glibc
 	provides = zorg
 	conflicts = zorg-bin
-	source = zorg-1.4.0.tar.gz::https://github.com/Zwielichtig/zorg/archive/refs/tags/zorg-v1.4.0-proxyjump-part-2.tar.gz
-	b2sums = 6c7a749bfc1198c54b4b71daf7056817188e05e80f87042e053c1ff821f9d3cf9596653a3d55f815b94eb4a02aac6be532a26eac3a20afdadac6455ba78f9d82
+	source = zorg-1.5.0.tar.gz::https://github.com/Zwielichtig/zorg/archive/refs/tags/zorg-v1.5.0.tar.gz
+	b2sums = f34aa25e693990504fa7d2def67681d0db1aca2f70047e6911bfc7e91155bc28e606be014a1620079fbb3da604bc87522ced435565bc4bc020b7f37fa32061a8
 
 pkgname = zorg
