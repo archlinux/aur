@@ -1,6 +1,6 @@
 pkgbase = jellyfin-vue-git
 	pkgdesc = A modern web client for Jellyfin based on Vue
-	pkgver = r5325.32fb1c7f
+	pkgver = r5881.be8b8858
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin-vue
 	install = jellyfin-vue.install
@@ -8,7 +8,7 @@ pkgbase = jellyfin-vue-git
 	license = GPL3
 	makedepends = nodejs>=24.11.0
 	makedepends = nodejs<25.0.0
-	makedepends = npm>=10.9.0
+	makedepends = corepack>=0.34.6
 	makedepends = git
 	conflicts = jellyfin-vue
 	backup = usr/share/jellyfin-vue/config.json
