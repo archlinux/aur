@@ -25,12 +25,14 @@ makedepends=(
     'qt6-tools'
     'ninja'
     'cmake'
+    'sdl2'
     'libpipewire'
     'libopenmpt'
-    'libsndfile'
-    'libebur128'
-    'libarchive'
     'libgme'
+    'libsndfile'
+    'libarchive'
+    'libebur128'
+    'libsoxr'
     'soundtouch'
 )
 optdepends=(
