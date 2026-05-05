@@ -6,7 +6,7 @@
 
 _pkgname="libggml"
 pkgname="$_pkgname"
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Tensor library for machine learning"
 url="https://github.com/ggml-org/ggml"
@@ -31,7 +31,7 @@ provides=("$_pkgname-git")
 _pkgsrc="ggml-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('4681bea29b9760aae1e5e53aea8a3d203b36c7e4ca209a6df5891dc5410848fd')
+sha256sums=('079d3549588b7b66c577b9921b8caa9971b732b95970837fcb5098b51a2935c5')
 
 prepare() {
   cd "$_pkgsrc"
