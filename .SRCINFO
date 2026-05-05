@@ -1,0 +1,21 @@
+pkgbase = lufux-git
+	pkgdesc = Minimalist GUI tool to create bootable USB drives
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/Advnirr/lufux
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = wimlib
+	depends = rsync
+	depends = parted
+	depends = polkit
+	depends = libarchive
+	provides = lufux
+	source = git+https://github.com/Advnirr/lufux.git
+	sha256sums = SKIP
+
+pkgname = lufux-git
