@@ -1,0 +1,15 @@
+pkgbase = libudb
+	pkgdesc = Universal DataBase library
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ProfessorNavigator/libudb
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = doxygen
+	provides = libudb
+	source = https://github.com/ProfessorNavigator/libudb/archive/refs/tags/v1.0.tar.gz
+	sha256sums = e4b4217d2f0b9ba7918a4809d0a80510438c66eaa92440957d64c7fb0d311f7f
+
+pkgname = libudb
