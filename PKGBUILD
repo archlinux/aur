@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=custom-toolbox
-pkgver=26.03
+pkgver=26.05
 pkgrel=1
 pkgdesc="A customizable toolbox application built with Qt"
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('qt6-base')
 provides=('custom-toolbox')
 conflicts=('custom-toolbox')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/26.03.tar.gz")
-sha256sums=('8b4a46643f524df4531f2c5416f2df0119a6c314f0dd3f81b16cba2b567db3a6')
+source=("https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/26.05.tar.gz")
+sha256sums=('500eb8c8ff2829812f92c9b1af55ee0501c19b035a037c7f37ca83eb41554702')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
