@@ -1,6 +1,6 @@
-# Maintainer: remi-avec-un-i <avocat.remi13@gmail.com>
+# Maintainer: remi-avec-un-i
 pkgname=wallerd-git
-pkgver=r5.c3cf10c
+pkgver=0.1.0.1.geccddeb
 pkgrel=1
 pkgdesc="A wayland daemon that can display images as a wallpaper, or in a window, with GLSL shader support, and image switch"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --long --tags --abbrev=7 2>/dev/null || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
