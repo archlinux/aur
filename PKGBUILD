@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/release.yml` republish.
 pkgname=hodl-bin
 _pkgname=hodl
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Light crypto wallet for the terminal — multi-chain TUI built on ratatui. (binary release)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=("$_pkgname")
 
 source_x86_64=("hodl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hodl/releases/download/v${pkgver}/hodl-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("hodl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hodl/releases/download/v${pkgver}/hodl-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('98dcb67a95718f29dcccd1e9cabc410c0fbc3c9e35ddb992cb62c185aa932da1')
-sha256sums_aarch64=('d9d5d36be7b54fd45af64279bac7068253bf6b6f69556f2c9d6fe992a752705e')
+sha256sums_x86_64=('271576b54134d3664b678390506f37831e66064c871000984d6aa14d44d53336')
+sha256sums_aarch64=('bda743d4a1205355863d9bc6a1ac89cfd8b5c5f99d789dd1dbe085db93b8162e')
 
 package() {
     install -Dm755 "$srcdir/hodl" "$pkgdir/usr/bin/hodl"
