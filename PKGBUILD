@@ -50,6 +50,8 @@ package_python-pyvideokit() {
         'python-pyvideokit-cli'
         'python-pyvideokit-gui'
     )
+    install -Dm644 "$srcdir/PyVideoKit-Libs/LICENSE" \
+        "$pkgdir/usr/share/licenses/python-pyvideokit/LICENSE"
 }
 
 package_python-pyvideokit-libs() {
