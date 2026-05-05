@@ -1,12 +1,12 @@
 # Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
 
 pkgname=organicmaps
-pkgver=2026.04.07_8
+pkgver=2026.05.04_13
 _tag="${pkgver%%_*}-${pkgver##*_}-android"
 pkgrel=1
 pkgdesc="Offline Maps"
 arch=(x86_64)
-makedepends=(cmake git jq gcc ninja mold)
+makedepends=(cmake jq gcc ninja mold)
 depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
   qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor hicolor-icon-theme libxinerama python)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
