@@ -1,7 +1,7 @@
 pkgbase = rovr
 	pkgdesc = A post-modern terminal file explorer
 	pkgver = 0.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NSPC911/rovr
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = rovr
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-uv-build
+	makedepends = python-hatchling
 	depends = python
 	depends = python-textual-autocomplete
 	depends = python-pygments
@@ -34,7 +35,7 @@ pkgbase = rovr
 	provides = rovr
 	conflicts = python-rovr
 	replaces = python-rovr
-	source = rovr-0.8.2.post1.tar.gz::https://github.com/NSPC911/rovr/archive/refs/tags/v0.8.2.post1.tar.gz
-	sha256sums = b9dabd1a623c59b1ff3a8832fe68b21756c637bb06cc5b965428996b2cad0093
+	source = https://files.pythonhosted.org/packages/source/r/rovr/rovr-0.8.2.post2.tar.gz
+	sha256sums = d8c2bfd8bbfb6c3aeacc1bb480a66c005a5a242a8434f58f5d8920091e5588ba
 
 pkgname = rovr
