@@ -2,8 +2,8 @@
 
 pkgname=open-design-git
 pkgver=0.4.0.r264.gc69dee74
-pkgrel=3
-pkgdesc='VCS build of Open Design packaged as a Linux AppImage'
+pkgrel=4
+pkgdesc='VCS build of Open Design installed from an extracted Linux AppImage AppDir'
 arch=('x86_64')
 url='https://github.com/nexu-io/open-design'
 license=('Apache-2.0')
@@ -14,7 +14,7 @@ conflicts=('open-design' 'open-design-bin')
 options=('!strip')
 source=("${pkgname}::git+https://github.com/nexu-io/open-design.git#branch=main" 'open-design' 'open-design.desktop' 'contracts-dist-runtime.patch')
 sha256sums=('SKIP'
-            '68117e26248e675c9a544332cabf943f76477b41f953106ae7323ab737323e40'
+            '8c076f4471bc20f457effb61c847ae1e80eb7861638a5b78f65613179ff39311'
             '0245ea0484c1bb89b74093abc3c77ce421e793dd06c5a8e36c203971bfd7f919'
             '8da1d3aea89618df21a15f41981366478f15d4dfe0c8051a97ab2d0a8288e32c')
 
@@ -45,14 +45,20 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  local _appimage
+  local _appimage _extract_dir
   _appimage="$(find "${srcdir}/tools-pack/out/linux/namespaces/aur/builder" -maxdepth 1 -type f -name '*.AppImage' -print -quit)"
   if [[ -z "${_appimage}" ]]; then
     echo "no AppImage found under ${srcdir}/tools-pack/out/linux/namespaces/aur/builder" >&2
     return 1
   fi
 
-  install -Dm755 "${_appimage}" "${pkgdir}/opt/open-design/open-design.AppImage"
+  _extract_dir="${srcdir}/open-design-appdir"
+  rm -rf "${_extract_dir}"
+  mkdir -p "${_extract_dir}"
+  (cd "${_extract_dir}" && "${_appimage}" --appimage-extract > /dev/null)
+
+  mkdir -p "${pkgdir}/opt/open-design/appdir"
+  cp -a "${_extract_dir}/squashfs-root/." "${pkgdir}/opt/open-design/appdir/"
   install -Dm755 "${srcdir}/open-design" "${pkgdir}/usr/bin/open-design"
   install -Dm644 "${srcdir}/open-design.desktop" "${pkgdir}/usr/share/applications/open-design.desktop"
   install -Dm644 tools/pack/resources/linux/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/open-design.png"

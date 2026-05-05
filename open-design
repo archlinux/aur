@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Use extraction mode so the AppImage works on systems without FUSE support.
-exec /opt/open-design/open-design.AppImage --appimage-extract-and-run "$@"
+exec /opt/open-design/appdir/AppRun "$@"
