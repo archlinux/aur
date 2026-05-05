@@ -1,17 +1,16 @@
-# Maintainer: enzomtp <contact@enzomtp.party>
+# Maintainer: enzomtp
 pkgname=pawtop
 _pkgname=Pawtop
-pkgdesc="Pawtop is a custom Discord desktop app"
-pkgver=3.1.2
+pkgdesc="A custom Discord desktop app with PawsomeVencord pre-installed"
+pkgver=3.2.0
 # Reminder for devs: don't forget to update the electron version on pawtop.sh
 pkgrel=1
-electron=electron
+electron=electron40
 arch=('x86_64' 'aarch64')
 url="https://github.com/enzomtpYT/Pawtop"
 license=('GPL3')
-install=pawtop.install
 depends=("${electron}")
-makedepends=('cmake' 'gcc' 'nodejs' 'npm')
+makedepends=('bun' 'cmake' 'gcc' 'nodejs' 'npm')
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
@@ -20,22 +19,17 @@ optdepends=(
 options=('!strip')
 conflicts=('pawtop-bin')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
-        'io.github.enzomtpyt.pawtop.desktop'
-        'pawtop.sh'
-        'pawtop.install')
-sha256sums=('5948ca532121e4d1ff98893f30bc22281fb3c41ac8b694ab261fca4d41bb31bd'
-            'fbe5a63a2233fb21d14d9f2a66e991aa0395670964f853497566b20fc36867e5'
-            '6ba1d7bc3343acb6bfad85b7edea6d8e49805221b136fc9890e0a5c607423bba'
-            '79c7b3772ad2344b49a4cda0537e3f6daca6a1c2865cafea9569a9de2fad9cee')
+        'pawtop.desktop'
+        'pawtop.sh')
+sha256sums=('f08f7f0ec78f331fcd788bd0d574d650a0fb28cfc9d4f77be4b7da176e6aca75'
+            'b6541e8fc4dbdf55371aa1a9dc6e1ccf92b1248a06ef5399fccdb302e195c839'
+            'c0b3a927c8cb457387e92345702bf213a332c3c5558f583fef2dc47de2b89445')
 
 prepare() {
   cd "$_pkgname-$pkgver"
 
   # Use system's electron
   #  sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/${electron}\",\n/" package.json
-  
-  # Fix git hash retrieval
-  sed -i "s/const gitHash = execSync(\"git rev-parse HEAD\", { encoding: \"utf-8\" }).trim();/const gitHash = \"v${pkgver}\";/" scripts/build/build.mts
 }
 
 build() {
@@ -58,8 +52,7 @@ package() {
   cp -r "$_pkgname-$pkgver/dist/linux-unpacked/resources/arrpc" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm755 "./pawtop.sh" "$pkgdir/usr/bin/pawtop"
 
-  install -Dm 644 "io.github.enzomtpyt.pawtop.desktop" "$pkgdir/usr/share/applications/io.github.enzomtpyt.pawtop.desktop"
+  install -Dm 644 "pawtop.desktop" "$pkgdir/usr/share/applications/pawtop.desktop"
   install -Dm 644 "$_pkgname-$pkgver/static/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
-  install -Dm 644 "$_pkgname-$pkgver/static/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
   install -Dm 644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
