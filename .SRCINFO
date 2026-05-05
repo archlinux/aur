@@ -5,10 +5,13 @@ pkgbase = python-trianglesolver
 	url = https://github.com/sbyrnes321/trianglesolver
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = https://files.pythonhosted.org/packages/source/t/trianglesolver/trianglesolver-1.2.tar.gz
-	sha256sums = 4af18aade579d5c0d64389b3e65aeaf06cff26319762ccd859e3268559a76aea
+	depends = python
+	source = git+https://github.com/sbyrnes321/trianglesolver.git#commit=bdd013471ad7d171f19f8ac81e1b9748a6a717c4
+	b2sums = 4e77ddadbc5961b7612e866dfac927664b321e360bdb693f50c6cf510864693ac01ffa456568ffdb4b81b9ff30806cd27ee56e656b9d86f48c3b508a64d357d6
 
 pkgname = python-trianglesolver
