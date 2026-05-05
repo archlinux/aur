@@ -1,0 +1,3 @@
+[oxlint-bin]
+source = "npm"
+npm = "oxlint"
