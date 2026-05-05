@@ -1,6 +1,6 @@
 pkgbase = mlfbdplugin
 	pkgdesc = MyLibrary plugin for fbd format files creation
-	pkgver = 1.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/mlfbdplugin
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = mlfbdplugin
 	makedepends = pkgconf
 	makedepends = gcc
 	depends = mylibrary
-	depends = imagemagick
 	provides = mlfbdplugin
-	source = https://github.com/ProfessorNavigator/mlfbdplugin/archive/refs/tags/v1.1.tar.gz
-	sha256sums = 17b62bffd8fa2765b48796d25874df4af04868b5510d39524ed460782c56903d
+	source = https://github.com/ProfessorNavigator/mlfbdplugin/archive/refs/tags/v2.0.tar.gz
+	sha256sums = ce92f8b249f278e0517224b5c3278a200a3d50f479c8610b845a157284602b75
 
 pkgname = mlfbdplugin
