@@ -15,7 +15,7 @@ pkg/
 # Downloaded sources
 *.sig
 *.asc
-LICENSE-*
+LICENSE
 
 # Editor / OS
 .vscode/
