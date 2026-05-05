@@ -1,7 +1,7 @@
 # Maintainer: Mateusz Gałażyn <carbolymer@gmail.com
 pkgname=kmonad-static
-pkgver=0.4.4
-pkgrel=3
+pkgver=0.4.5
+pkgrel=1
 pkgdesc="An advanced keyboard manager - static binary version"
 arch=('x86_64')
 url="https://github.com/kmonad/kmonad"
@@ -13,8 +13,8 @@ provides=("${pkgname%-static}")
 conflicts=("${pkgname%-static}" "${pkgname%-static}-bin")
 source=("https://github.com/kmonad/${pkgname%-static}/releases/download/$pkgver/${pkgname%-static}"
 	"https://github.com/kmonad/${pkgname%-static}/archive/$pkgver.tar.gz")
-md5sums=('c7808524001cb7083be270ccc48ef7bc'
-         '638608a766eceebcb3dfdedee62dd6af')
+md5sums=('7eadcd29371d791e0291ff8b30d067d8'
+         '23bebe0b0adcabaf8b4c3930174cc54a')
 
 package() {
 	cd "$srcdir"
