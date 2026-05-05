@@ -2,7 +2,7 @@
 
 pkgname=python-matplotlib-pgfutils
 pkgdesc="Utilities for generating PGF figures from Matplotlib"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 url="https://matplotlib-pgfutils.readthedocs.io/"
 license=('BSD-3-Clause')
@@ -31,7 +31,7 @@ source=(
   "git+https://github.com/bcbnz/matplotlib-pgfutils.git#tag=v${pkgver}"
 )
 sha256sums=(
-  'db1339571834503009fed08d8ba1f1f7008867dd12f46ad0fc27ba86f79b99aa'
+  '693911ba651bdf491a9dd8be69ec553f46cf022d113de6b2a24d9b3a3b1f451e'
 )
 
 build() {
@@ -41,7 +41,7 @@ build() {
 
 check() {
   cd matplotlib-pgfutils
-  pytest -x
+  pytest
 }
 
 package() {
