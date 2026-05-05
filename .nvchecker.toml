@@ -1,0 +1,4 @@
+[searchmonkey]
+source = "git"
+git = "https://github.com/cottrela/searchmonkey-III.git"
+prefix = "v"

@@ -1,35 +1,63 @@
-# Maintainer:  TDY <tdy@archlinux.info>
-# Contributor: Dmitry N. Shilov aka StormBlast <stormblast@land.ru>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=searchmonkey
-pkgver=2.0.0
-pkgrel=2
-pkgdesc="A powerful GUI search utility for matching regex patterns"
-arch=('i686' 'x86_64')
-url="http://searchmonkey.sourceforge.net/"
-license=('GPL3')
-depends=('qt4')
-source=(http://downloads.sourceforge.net/$pkgname/${pkgname}_v$pkgver.zip
-        $pkgname-$pkgver-gcc47.diff
-        patch.txt
-        $pkgname.desktop)
-md5sums=('239a8171d54c10810da6b131ba5fbd64'
-         '86841c3796e149cd12e5b3a27cdfc170'
-         'SKIP'
-         '5535ab5a696309d44cc68c8d15f59693')
+pkgver=0.2.2
+pkgrel=1
+pkgdesc="Real-time search for real files. No index. No daemon. No stale results."
+arch=('x86_64')
+url="https://searchmonkey.dev"
+license=('MIT')
+depends=(
+  'gtk3'
+  'libsoup3'
+  'ripgrep'
+  'webkit2gtk-4.1'
+)
+makedepends=(
+  'cargo'
+  'cargo-tauri'
+  'pnpm'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/cottrela/searchmonkey-III/archive/refs/tags/v$pkgver.tar.gz"
+        "$pkgname.desktop")
+sha256sums=('b401a49ea14ee94f461b1270deddc9e1e2d6dbc136b41a80da733d91ee59834a'
+            '0d0ff90ae4de6eee27b57a3e7706da86fb89df80f3b693554428d76ac797144a')
+
+prepare() {
+  cd "$pkgname-III-$pkgver"
+  export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm install --frozen-lockfile
+
+  # Replace generic name
+  sed -i 's/name = "tauri-app"/name = "searchmonkey"/g' src-tauri/Cargo.{lock,toml}
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --manifest-path src-tauri/Cargo.toml --locked --target host-tuple
+}
 
 build() {
-  cd "$srcdir/${pkgname}_v$pkgver"
-  patch -Np1 -i ../$pkgname-$pkgver-gcc47.diff
-  patch -p1 mainwindow.cpp -i ../patch.txt
-  qmake-qt4 && make
+  cd "$pkgname-III-$pkgver"
+  export PNPM_HOME="$srcdir/pnpm-home"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  # Symlink system ripgrep binary
+  mkdir -p "src-tauri/binaries/rg-${CARCH}-unknown-linux-gnu/"
+  ln -s /usr/bin/rg "src-tauri/binaries/rg-${CARCH}-unknown-linux-gnu/"
+
+  cargo tauri build --no-bundle -- --frozen
 }
 
 package() {
-  cd "$srcdir/${pkgname}_v$pkgver"
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 ../$pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
-}
+  cd "$pkgname-III-$pkgver"
+  install -Dm755 "src-tauri/target/release/$pkgname" -t "$pkgdir/usr/bin/"
 
-# vim:set ts=2 sw=2 et:
+  for i in 32x32 64x64 128x128 128x128@2x; do
+    install -Dm644 "src-tauri/icons/${i}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}/apps/$pkgname.png"
+  done
+  install -Dm644 src-tauri/icons/icon.png \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+
+  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
