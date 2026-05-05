@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 
 pkgname=zune-bin
-pkgver=0.5.4
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='A Luau runtime, similar to Lune, Node, or Bun.'
 url='https://github.com/Scythe-Technology/zune'
@@ -13,9 +13,9 @@ arch=('x86_64' 'aarch64')
 source=("https://raw.githubusercontent.com/Scythe-Technology/zune/v$pkgver/LICENSE.md")
 source_x86_64=("$url/releases/download/v$pkgver/zune-$pkgver-linux-x86_64.zip")
 source_aarch64=("$url/releases/download/v$pkgver/zune-$pkgver-linux-aarch64.zip")
-sha256sums=('569b9fb6be4ae1b2fa4e28ea4fdd1b384f7f0958847b0cdf34f97cadf97ad269')
-sha256sums_x86_64=('8feec2f05be28e403a8bf6db734704f699af5a21100ecd8f059ac0e20308914a')
-sha256sums_aarch64=('9ab264dee4907819d5460b2fc78fa684766f134ba58fa659233b4b012ea29f9e')
+sha256sums=('565a37ce713028576fa564b10174afb9560a94af69164767307c29ef2711ecbb')
+sha256sums_x86_64=('123521861ba15a949c138626cb578bfc24f5faa864d7c8d00b1f6d9be45f3d91')
+sha256sums_aarch64=('1303445fade4109eb41521d8f404bd907e846c878608a51ff0ccedb6fb0f7803')
 
 package() {
   install -Dm755 zune "$pkgdir/usr/bin/zune"
