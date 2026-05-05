@@ -21,18 +21,14 @@ sha256sums=('9fd9c5ba0c8814ca72ca33a07a4282c04aa83e52c021b72dafe51087e6a484cf')
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-
-  # https://github.com/aws/aws-lc-rs/issues/1008#issuecomment-3774105038
-  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
-
-  cargo build --release
+  cargo build --frozen --release
 }
 
 package() {
