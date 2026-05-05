@@ -5,7 +5,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=sdrangel-bin
-pkgver=7.23.2
+pkgver=7.25.1
 pkgrel=1
 conflicts=(sdrangel-git)
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
@@ -29,7 +29,7 @@ optdepends=('mbelib: Required for Digital Speech Decoder (DSD) demodulator'
 	    'libsdrplay: SDRplay support')
 provides=('sdrangel')
 source=(https://github.com/f4exb/sdrangel/releases/download/v${pkgver}/sdrangel_${pkgver}_ubuntu-24.04_amd64.deb)
-sha256sums=('4900680176ccd60d5503a3ba36ca110c49af95a389beeada3f6e483904261711')
+sha256sums=('45d65096522c71c01b412f41b53c8ae9ed9b1e4b53f317a52e5b3030e71e3330')
 
 prepare() {
   mkdir -p "${srcdir}"/sdrangel-${pkgver}
