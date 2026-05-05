@@ -1,12 +1,14 @@
 pkgbase = lkrg-dkms-git
 	pkgdesc = Linux Kernel Runtime Guard (DKMS)
-	pkgver = r751.5dae254
+	pkgver = r784.e18822f
 	pkgrel = 1
 	url = https://lkrg.org
 	arch = any
 	license = GPL-2.0-only
 	makedepends = git
+	depends = bash
 	depends = dkms
+	depends = make
 	provides = lkrg-dkms
 	conflicts = lkrg-dkms
 	backup = etc/sysctl.d/01-lkrg.conf
