@@ -25,18 +25,19 @@ makedepends=(
 options=('!lto' '!debug')
 provides=("$pkgname")
 conflicts=("$pkgname")
+install="onetalker.install"
 source=(
   "$pkgname::https://codeberg.org/OneTalker/OneTalker/archive/v${pkgver}.tar.gz"
   "onetalker.sh"
 )
 sha256sums=('e4c1741082acc6f7ef88685cf3b7023cab46d77f7e99863f0e1f513b7d4484e4'
-            '4243aaabe21c117f37dea70c5d253b9f09eb2d474813174bf9883d053afe17e4')
+            '53b84e88eedc5ce120b9fb7b4a14de7b5cbe181820c69007bb6782dbb1ee7aaa')
 
 prepare() {
   cd "${pkgname}"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {

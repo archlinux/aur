@@ -3,6 +3,7 @@ pkgbase = onetalker
 	pkgver = 2026.4
 	pkgrel = 1
 	url = https://onetalker.org
+	install = onetalker.install
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
@@ -22,6 +23,6 @@ pkgbase = onetalker
 	source = onetalker::https://codeberg.org/OneTalker/OneTalker/archive/v2026.4.tar.gz
 	source = onetalker.sh
 	sha256sums = e4c1741082acc6f7ef88685cf3b7023cab46d77f7e99863f0e1f513b7d4484e4
-	sha256sums = 4243aaabe21c117f37dea70c5d253b9f09eb2d474813174bf9883d053afe17e4
+	sha256sums = 53b84e88eedc5ce120b9fb7b4a14de7b5cbe181820c69007bb6782dbb1ee7aaa
 
 pkgname = onetalker
