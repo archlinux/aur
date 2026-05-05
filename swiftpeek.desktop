@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=SwiftPeek
+GenericName=File Previewer
+Comment=Lightning-fast universal file previewer
+Exec=swiftpeek %F
+Icon=swiftpeek
+Terminal=false
+Categories=Utility;FileTools;Graphics;
+Keywords=preview;file;viewer;quicklook;
+MimeType=text/plain;text/markdown;text/x-markdown;text/csv;application/json;application/xml;text/xml;image/png;image/jpeg;image/gif;image/svg+xml;image/webp;
+StartupNotify=true
+StartupWMClass=SwiftPeek

@@ -1,7 +1,7 @@
 pkgbase = swiftpeek-bin
 	pkgdesc = Ultralight file previewer written in Rust (precompiled binary)
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/acosta-dev/SwiftPeek
 	arch = x86_64
 	license = MIT
@@ -10,9 +10,14 @@ pkgbase = swiftpeek-bin
 	depends = cairo
 	depends = pango
 	depends = glib2
+	depends = hicolor-icon-theme
 	provides = swiftpeek
 	conflicts = swiftpeek
 	source = https://pub-a604c65ec55d4555ba01a5dab3d0e2b4.r2.dev/swiftpeek-0.1.0-x86_64.tar.gz
+	source = swiftpeek.desktop
+	source = swiftpeek.svg
 	sha256sums = bcf0d0a6d4fca7af1ed4072bcbbad076cbdad0a2311633e5ddaad86974c676b8
+	sha256sums = 3eaeaffd9037899ec947dc7f7083d7714f589aad00a95b65633b82bf299d671e
+	sha256sums = 71682ead9e9ae62f0617026a7a0bb78483b0ca0531c7a2798fe26eea932a4a12
 
 pkgname = swiftpeek-bin
