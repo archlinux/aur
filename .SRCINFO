@@ -1,0 +1,17 @@
+pkgbase = drm-colortemp
+	pkgdesc = DRM color temperature control for COSMIC DE (wlr-gamma-control workaround)
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/jjo/drm-colortemp
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = make
+	depends = libdrm
+	optdepends = libnotify: desktop notifications
+	backup = etc/default/drm-colortemp.conf
+	source = drm-colortemp-0.2.10.tar.gz::https://github.com/jjo/drm-colortemp/archive/refs/tags/v0.2.10.tar.gz
+	sha256sums = c7da86b2bc5fa7ab50968d5c44c502850885cb30900b8700242ea5ce76ff4fde
+
+pkgname = drm-colortemp
