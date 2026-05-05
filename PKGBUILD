@@ -22,8 +22,8 @@ source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
         'pawtop.desktop'
         'pawtop.sh')
 sha256sums=('f08f7f0ec78f331fcd788bd0d574d650a0fb28cfc9d4f77be4b7da176e6aca75'
-            'b6541e8fc4dbdf55371aa1a9dc6e1ccf92b1248a06ef5399fccdb302e195c839'
-            'c0b3a927c8cb457387e92345702bf213a332c3c5558f583fef2dc47de2b89445')
+            'a95ff89d3fd1767cb9144ddebb90094bb3d2cdea2c9b0943514ec1cca8716fbf'
+            'dda94a9d7934b7f146106521aa9117fa2357fc1cc22fa92b1d86a1aaf578ba04')
 
 prepare() {
   cd "$_pkgname-$pkgver"
