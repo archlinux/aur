@@ -1,15 +1,31 @@
-# Maintainer: David Grisham <dmgrisham@gmail.com>
+# Maintainer: CHONKY <r4mdhn2003@gmail.com>
 pkgname=bbmp
-pkgver=v0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Based Black Music Player"
-arch=(x86_64)
-url="https://github.com/dgrisham/bbmp"
-license=('GPL')
-source=("https://github.com/dgrisham/bbmp/releases/download/${pkgver}/bbmp")
-depends=('mpd')
-md5sums=(4cfbf49907748458211aa23cf3855678)
+pkgdesc="A minimal TUI music player for MP3 and FLAC files"
+arch=('any')
+url="https://github.com/chonkyy/bbmp"
+license=('MIT')
+depends=(
+    'python'
+    'python-pygame'
+    'python-mutagen'
+)
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-wheel'
+)
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('cfaebe8d6f63cd5a04c3fcd7510607e3728ce6aec7bbadcc0638d8abd929491a')
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-	install -Dm0755 $pkgname "$pkgdir/usr/bin/$pkgname"
+    cd "${pkgname}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

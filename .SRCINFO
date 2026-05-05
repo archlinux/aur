@@ -1,12 +1,17 @@
 pkgbase = bbmp
-	pkgdesc = Based Black Music Player
-	pkgver = v0.1.0
+	pkgdesc = A minimal TUI music player for MP3 and FLAC files
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/dgrisham/bbmp
-	arch = x86_64
-	license = GPL
-	depends = mpd
-	source = https://github.com/dgrisham/bbmp/releases/download/v0.1.0/bbmp
-	md5sums = 4cfbf49907748458211aa23cf3855678
+	url = https://github.com/chonkyy/bbmp
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pygame
+	depends = python-mutagen
+	source = https://files.pythonhosted.org/packages/source/b/bbmp/bbmp-0.2.0.tar.gz
+	sha256sums = cfaebe8d6f63cd5a04c3fcd7510607e3728ce6aec7bbadcc0638d8abd929491a
 
 pkgname = bbmp
