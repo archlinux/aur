@@ -1,0 +1,26 @@
+pkgbase = vermouth-git
+	pkgdesc = A game and app launcher for Linux - native, Windows, and retro
+	pkgver = r1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/dekomote/vermouth
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = sdl2
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	depends = ki18n
+	depends = kcoreaddons
+	depends = qqc2-desktop-style
+	optdepends = icoutils: Windows icon extraction
+	optdepends = sdl2: gamepad support
+	provides = vermouth
+	conflicts = vermouth
+	source = vermouth-git::git+https://github.com/dekomote/vermouth.git
+	sha256sums = SKIP
+
+pkgname = vermouth-git
