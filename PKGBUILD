@@ -3,8 +3,8 @@
 
 _pkgname=onetalker
 pkgname=$_pkgname-bin
-pkgver=2026.4
-_pkgver=$(echo "$pkgver" | sed -E 's/^([0-9]+\.[0-9]+)(\.[0-9]+)?$/\1/')
+_pkgver=2026.4
+pkgver=$_pkgver
 pkgrel=1
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
@@ -22,12 +22,13 @@ depends=(
 options=('!lto' '!debug')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+install="onetalker.install"
 source=(
   "https://downloads.onetalker.org/v${_pkgver}/OneTalker-${_pkgver}-x86_64-linux.tar.gz"
   "onetalker.sh"
 )
 sha256sums=('4772262e870088fa0c6b0431870b831fc0eee5c6264ae96158906c1b3e0025d0'
-            'd568614f8a667d67e59dddab079d24ca988632f739c5e98c2f539e4a1c540a24')
+            '53b84e88eedc5ce120b9fb7b4a14de7b5cbe181820c69007bb6782dbb1ee7aaa')
 
 package() {
   install -Dm755 "${_pkgname}" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
