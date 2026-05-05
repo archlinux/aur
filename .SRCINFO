@@ -15,6 +15,7 @@ pkgbase = opencode-desktop-bin
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: tray icon support
 	provides = opencode-desktop
+	provides = opencode
 	conflicts = opencode-desktop
 	options = !debug
 	source = LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v1.14.39/LICENSE
