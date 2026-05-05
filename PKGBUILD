@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.37.9
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=("${url}/archive/v${pkgver}.zip"
         "builder-pack-core-post-extract-fix.patch"
         "builder-railpack-core-post-extract-fix.patch"
         "fix_go_work_missing_storage.patch")
-sha256sums=('1644ae7cb8147748404557a16c715dc8dd164d997cf33cdf0b8cf9c669a7e708'
+sha256sums=('e066c758b053ba88428c7f3f108ac7115d99dbdb68301eb6ef6774a1db45f4fd'
             'dba725cb3d0009b6fb1134a53ab566c2125627c0aa8c5bee931beb650c5ed633'
             'fd979a3d612396316603f7677cdcdb7d25c7fecf99c97a8d1458262684913fdd'
             'bae0fa706e39f5491df96ec81ebd0f5ad60c3e9843dd1c88e01a761731f20d3a'
