@@ -1,10 +1,10 @@
 # Maintainer: Damian Miller <rysas@mail.naimad.dev>
 pkgname=lumoria
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux installer and launcher for Final Fantasy XI"
 arch=('x86_64')
-url="https://lumoria.windower.net"
+url="https://github.com/Windower/Lumoria"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
