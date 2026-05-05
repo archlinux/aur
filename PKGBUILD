@@ -1,0 +1,23 @@
+# Maintainer: Neolux Lee <neolux.lee+aur.>
+
+pkgname=tasker
+pkgver=0.1
+pkgrel=1
+pkgdesc='A task management system'
+arch=(x86_64)
+url=https://github.com/neoluxis/tasker
+license=(MIT)
+depends=()
+makedepends=()
+#source=($pkgname-$pkgver.tar.gz)
+source=(source_holder)
+sha256sums=('SKIP')
+
+build() {
+    echo this is build
+}
+
+package() {
+    echo this is package
+}
+
