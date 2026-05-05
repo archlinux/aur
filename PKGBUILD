@@ -2,8 +2,8 @@
 # slskdn - Unofficial slskd fork with batteries-included Soulseek features (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=2026050500.slskdn.223
-pkgrel=3
+pkgver=2026050500.slskdn.224
+pkgrel=5
 _archive_root="slskdN-${pkgver//.slskdn/-slskdn}"
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64' 'aarch64')
@@ -26,9 +26,10 @@ source=(
     "slskd.service"
     "slskd.yml"
     "slskd.sysusers"
+    "slskd.tmpfiles"
 )
 # Note: First hash is SKIP (tarball changes each release), others are static file hashes
-sha256sums=('SKIP' '9724a9ad5790fa011868c3777cbdb9e41224c3b612e7c47990c524f8659ab278' '6d60a8a8ec79b1df0f5839e9a5ba8a77a021cc457fa138a62b58f4321b3a16df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
+sha256sums=('SKIP' '123cb6af52ee33d04f308751929f662c1437221937eeca9a896a60f746074177' '6d60a8a8ec79b1df0f5839e9a5ba8a77a021cc457fa138a62b58f4321b3a16df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056' '949f950aeb0f24725c901ed9d73a4f679ae8eb4abdfaf108b80e62e6247b85e5')
 
 build() {
     cd "${srcdir}/${_archive_root}"
@@ -59,7 +60,15 @@ build() {
     else
         _dotnet_version="${_version}"
     fi
-    dotnet publish src/slskd/slskd.csproj         -c Release         -o publish         --self-contained false         -r "${_rid}"         -p:Version="$_dotnet_version"         -p:InformationalVersion="$_version"         -p:PackageVersion="$_dotnet_version"
+    dotnet publish src/slskd/slskd.csproj \
+        -c Release \
+        -o publish \
+        --self-contained false \
+        -r "${_rid}" \
+        -p:Version="$_dotnet_version" \
+        -p:InformationalVersion="$_version" \
+        -p:PackageVersion="$_dotnet_version" \
+        -p:AllowMissingPrunePackageData=true
 }
 
 package() {
@@ -89,6 +98,7 @@ EOF
 
     install -Dm644 "${srcdir}/slskd.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
     install -Dm644 "${srcdir}/slskd.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+    install -Dm644 "${srcdir}/slskd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
     install -Dm644 "${srcdir}/slskd.yml" "${pkgdir}/etc/${_pkgname}/${_pkgname}.yml"
 
     install -dm755 "${pkgdir}/var/lib/${_pkgname}"

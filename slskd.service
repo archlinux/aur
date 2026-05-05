@@ -12,6 +12,7 @@ Group=slskd
 ExecStart=/usr/lib/slskd/slskd --config /etc/slskd/slskd.yml
 WorkingDirectory=/var/lib/slskd
 Environment="HOME=/var/lib/slskd"
+UMask=0002
 Restart=on-failure
 RestartSec=10
 
