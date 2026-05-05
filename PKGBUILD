@@ -3,7 +3,7 @@
 
 pkgname=dftd4
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/dftd4/dftd4'
 depends=('blas'
@@ -14,14 +14,21 @@ makedepends=('meson'
              'asciidoctor')
 license=('LGPL-3.0')
 pkgdesc='A Generally Applicable Atomic-Charge Dependent London Dispersion Correction'
-source=("https://github.com/dftd4/dftd4/releases/download/v${pkgver}/${pkgname}-${pkgver}-source.tar.xz")
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-source.tar.xz")
 sha256sums=('a61bc0c8e8a7db5302ef4f4f1ebc834bb9dcf2896b0e2af746f25a0d4177d8d0')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  meson subprojects download --sourcedir=.
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   local options=(
-    --buildtype=release
+    --buildtype=plain
     --prefix=/usr
+    --wrap-mode=nodownload
+    --auto-features=enabled
     -Db_pie=true
     -Dwarning_level=0  # avoid comilation error due to -Wall, see https://github.com/dftd4/dftd4/issues/294
   )
