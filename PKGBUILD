@@ -1,5 +1,5 @@
 pkgname=yamp-git
-pkgver=r96.g16e4c47
+pkgver=r97.g3d6ae7d
 pkgrel=1
 pkgdesc="Yet Another Music Player - a QML based music player."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('yamp')
 source=("git+https://github.com/Wu28ri/yamp.git"
         "yamp.desktop")
 sha256sums=('SKIP'
-            'e77e30f520c06a20f980efcb1dbf59ba2490129f7a301b5e5ef7e6ff31ef5127')
+            'e96bcb3ccb068a55e61aea3f695c86f71e61b03b460788de91dfff0d97eb5b6e')
 
 pkgver() {
   cd "$srcdir/yamp"
@@ -30,6 +30,17 @@ build() {
 package() {
   cd "$srcdir/yamp"
   DESTDIR="$pkgdir" cmake --install build
-  
+
   install -Dm644 "$srcdir/yamp.desktop" "$pkgdir/usr/share/applications/yamp.desktop"
+
+  for size in 16 22 24 32 48 64 96 128 192 256 512; do
+    install -Dm644 "icons/yamp-${size}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/yamp.png"
+  done
+
+  install -Dm644 "icons/yamp.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/yamp.svg"
+
+  install -Dm644 "icons/yamp-symbolic.svg" \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/yamp-symbolic.svg"
 }
