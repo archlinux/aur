@@ -1,0 +1,4 @@
+[unicodeit-gtk]
+source = "git"
+git = "https://github.com/v--/unicodeit-gtk.git"
+prefix = "v"
