@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : nginx_passwd
- Tags         : 3.1.0 ➙ 3.3.1
-              : 2025-12-22 ➙ 2026-01-04
+ Tags         : 3.2.0 ➙ 3.3.2
+              : 2025-12-22 ➙ 2026-05-05
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-05   : 3.3.2
+              - Fix goofy typo in installer - thanks to @solsticedhiver in the aur
+ 2026-01-04   ⋯
+              - update Docs/Changelogs
 
  2026-01-04   : 3.3.1
               - Small non-code tidy ups
@@ -24,9 +29,3 @@
 
  2025-12-22   : 3.2.0
               - * Little doc cleanups
-
- 2025-12-22   : 3.1.0
-              - * Remove os.getlogin() in tests (ENOTTY reported by @ccharabaruk on AUR package).
-                * Small tidy ups
- 2025-10-15   ⋯
-              - update Docs/Changelogs Docs/${my_name}.pdf

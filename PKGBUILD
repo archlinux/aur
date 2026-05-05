@@ -10,7 +10,7 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver="3.3.1"
+pkgver="3.3.2"
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
@@ -64,10 +64,16 @@ build() {
     /usr/bin/uv build --wheel --no-build-isolation
 
     # To build Docs - uncomment these and sphinx makedepends above
-#    echo "Build docs"
-#    cd ./Docs
-#    make html
-#    make latexpdf
+    # echo "Build docs"
+    # pdf='nginx_passwd.pdf'
+    # cd ./Docs
+    # make latexpdf >/dev/null 2>&1
+    # make latexpdf >/dev/null
+    #  /usr/bin/rm -f $pdf
+    #  /usr/bin/cp _build/latex/$pdf .
+    #  make html
+    #  make html
+    #  /usr/bin/rm -rf _build/doctrees _build/latex
 }
 
 check() {
