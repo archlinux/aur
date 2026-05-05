@@ -1,6 +1,6 @@
 pkgbase = tylax
 	pkgdesc = A bi-directional converter between Typst and LaTeX
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/scipenai/tylax
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tylax
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/scipenai/tylax/archive/v0.3.5/tylax-0.3.5.tar.gz
-	sha256sums = 881cb14e1afeaca5bd937634fc2105a21ac224c0dcf5e83fd6ebc49b233a67c3
+	source = https://github.com/scipenai/tylax/archive/v0.3.6/tylax-0.3.6.tar.gz
+	sha256sums = 2573e8286f9cee4b57be475e52922a828490c8f53cd63f66cbc8d57bd9a87d2e
 
 pkgname = tylax

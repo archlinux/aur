@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=tylax
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='A bi-directional converter between Typst and LaTeX'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('881cb14e1afeaca5bd937634fc2105a21ac224c0dcf5e83fd6ebc49b233a67c3')
+sha256sums=('2573e8286f9cee4b57be475e52922a828490c8f53cd63f66cbc8d57bd9a87d2e')
 
 prepare() {
 	cd "$_archive"
