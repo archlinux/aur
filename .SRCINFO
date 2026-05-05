@@ -1,0 +1,18 @@
+pkgbase = makko-bin
+	pkgdesc = A simple, lightweight, and portable Static Site Generator written in Zig.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://makko.starlightnet.work/
+	arch = x86_64
+	arch = aarch64
+	license = Zlib
+	options = !strip
+	options = !debug
+	source = https://forge.starlightnet.work/Team/Makko/raw/branch/main/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = makko-2.1.2-x86_64::https://forge.starlightnet.work/Team/Makko/releases/download/2.1.2/makko-x86_64-linux
+	sha256sums_x86_64 = ef838bbcea1295a66a8315f6204d364d2bfa24a5570e4c86f426757b292b1e9c
+	source_aarch64 = makko-2.1.2-aarch64::https://forge.starlightnet.work/Team/Makko/releases/download/2.1.2/makko-aarch64-linux
+	sha256sums_aarch64 = 5b8bea05120c43315b0a102f3b53010d80f113026445c328d938092ef9684600
+
+pkgname = makko-bin
