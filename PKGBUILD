@@ -2,12 +2,12 @@
 
 pkgname=opencode-desktop-bin
 pkgver=1.14.39
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode desktop client"
 arch=('x86_64')
 url="https://opencode.ai"
 license=('MIT')
-provides=('opencode-desktop' 'opencode')
+provides=('opencode-desktop')
 conflicts=('opencode-desktop')
 depends=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify' 'xdg-utils')
 optdepends=('libappindicator-gtk3: tray icon support')
