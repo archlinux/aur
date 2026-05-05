@@ -1,6 +1,6 @@
 # Maintainer: Tháles de Oliveira <oliveiraethales@gmail.com>
 pkgname=torrential
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A sleek Linux TIDAL client with Hi-Res FLAC support (24-bit/192kHz)'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/oliveiraethales/torrential'
 license=('MIT')
 depends=('gtk3' 'mpv')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oliveiraethales/torrential/releases/download/v${pkgver}/torrential-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('39d538ce4af803ecf84c59cfefaa4b818a8dcda8ab074b364e43539f1d668721')
+sha256sums=('435f6f7b3cdb96bce7157d22eeadc12e9cbd42b324d87b1987c21a62a8542fe3')
 
 package() {
   cd "${pkgname}-${pkgver}-linux-x86_64"
