@@ -1,0 +1,3 @@
+[oxfmt-bin]
+source = "npm"
+npm = "oxfmt"
