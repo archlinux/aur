@@ -2,8 +2,8 @@
 
 pkgname=open-design-git
 pkgver=0.4.0.r264.gc69dee74
-pkgrel=1
-pkgdesc='Local-first design product: design skills and design systems with your code-agent CLI'
+pkgrel=2
+pkgdesc='VCS build of Open Design packaged as a Linux AppImage'
 arch=('x86_64')
 url='https://github.com/nexu-io/open-design'
 license=('Apache-2.0')
@@ -32,6 +32,7 @@ build() {
   _pnpm() { npx --yes pnpm@10.33.2 "$@"; }
 
   _pnpm install --frozen-lockfile
+  # Build upstream's Linux AppImage locally; the released Linux artifact is not published yet.
   _pnpm tools-pack linux build --to appimage --namespace aur --portable --dir "${srcdir}/tools-pack"
 }
 
