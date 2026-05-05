@@ -1,6 +1,6 @@
 pkgbase = hrmp
 	pkgdesc = High resolution music player for Linux
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/HighResMusicPlayer/hrmp
 	arch = x86_64
@@ -16,8 +16,7 @@ pkgbase = hrmp
 	optdepends = pandoc
 	optdepends = texlive-basic
 	provides = hrmp
-	conflicts = hrmp-git
-	source = https://github.com/HighResMusicPlayer/hrmp/releases/download/0.14.0/hrmp-0.14.0.tar.gz
-	sha256sums = 99428097f92203f25ccd295cc4bb86d79754f87406115bc847be0694ea2b98d1
+	source = git+https://github.com/HighResMusicPlayer/hrmp.git
+	sha256sums = 3fed633f720e832372d7cd339f57ba5684f33aa6cdcf3110a0b58a8d8ca4f695
 
 pkgname = hrmp
