@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=CoverUP
+GenericName=PDF Redaction Tool
+Comment=Redact PDF files and images
+Exec=coverup %F
+Icon=coverup
+Terminal=false
+Categories=Office;Graphics;
+MimeType=application/pdf;image/png;image/jpeg;
+StartupNotify=true

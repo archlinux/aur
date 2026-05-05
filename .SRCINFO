@@ -1,0 +1,25 @@
+pkgbase = coverup-pdf
+	pkgdesc = Tool for redacting PDF files and images
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/digidigital/CoverUP
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = hicolor-icon-theme
+	depends = python
+	depends = python-appdirs
+	depends = python-fpdf2
+	depends = python-freesimplegui
+	depends = python-pillow
+	depends = python-pypdfium2
+	depends = tk
+	source = coverup-pdf-0.4.2.tar.gz::https://github.com/digidigital/CoverUP/archive/refs/tags/0.4.2.tar.gz
+	source = coverup.desktop
+	sha256sums = 9971d5ca4e6d7eedf627509c9f9f11274bd5dd1ca86fab4a835213f33432ce99
+	sha256sums = 0af4a552be004092539ac2c2a361d64732c3e7138d68869f36128d6047cd3054
+
+pkgname = coverup-pdf
