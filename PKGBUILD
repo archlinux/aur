@@ -3,8 +3,8 @@
 
 _pkgname="flying-carpet"
 pkgname="${_pkgname}-bin"
-pkgver=9.0.9
-pkgrel=2
+pkgver=9.0.10
+pkgrel=1
 pkgdesc="File transfer between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi"
 arch=(
   'x86_64'
@@ -43,8 +43,8 @@ noextract=(
   "${source_x86_64[@]##*/}"
 )
 sha256sums=('68fc3b3e41307c4fb2f0174896f9549240e84b60865064f8dd70dffa65f7b5b1'
-            '02926e6f66a22662379baadc51b93993e03187bf3b21cb12a278f60230d5ab7e')
-sha256sums_x86_64=('861145598eb50aece47044bec4027b129a8daf2055d3f6583f3f31714eeed499')
+            'd0ff57d40637314cd2834be84642d741b23f96b1b2e67b9d7bc2449d271c663b')
+sha256sums_x86_64=('827f49b73b262ffcf74dc7512980e7463e139d80b62a9855553a67c5afef2848')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
