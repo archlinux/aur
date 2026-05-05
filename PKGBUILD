@@ -3,7 +3,7 @@ pkgname=virtdev-git
 pkgver=r221.5ff934b
 pkgrel=1
 pkgdesc='Isolated virtual development machines on KVM/QEMU'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/matheusmoreira/virtdev'
 license=('AGPL-3.0-or-later')
 depends=(
@@ -35,11 +35,18 @@ pkgver() {
   fi
 }
 
+build() {
+  make -C "${pkgname}"
+}
+
 package() {
   cd "${pkgname}"
 
-  # Install commands
-  install -Dm755 -t "${pkgdir}/usr/bin/" bin/virtdev bin/virtdev-*
+  # Install commands (exclude C source)
+  local _cmd
+  while IFS= read -rd '' _cmd; do
+    install -Dm755 "${_cmd}" "${pkgdir}/usr/bin/${_cmd##*/}"
+  done < <(find bin/ -maxdepth 1 -type f ! -name '*.c' -print0)
 
   # Install shared bash libraries (sourced via the bin/ scripts'
   # bootstrap; not executable).
