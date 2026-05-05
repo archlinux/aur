@@ -2,7 +2,7 @@
 pkgname=oavif
 pkgver=0.1.3
 _fssimu2_ver=0.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Target quality AVIF encoding'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gianni-rosato/oavif'
@@ -15,7 +15,7 @@ depends=(
     'libspng'
 )
 makedepends=(
-    'zig'
+    'zig0.15-bin'
 )
 options=('!debug')
 source=(
@@ -37,13 +37,13 @@ prepare() {
     sed -i 's|b\.installArtifact(bin);|bin.pie = true;\n    b.installArtifact(bin);|' build.zig
     # Use prefetched fssimu2
     export ZIG_GLOBAL_CACHE_DIR="${srcdir}/.zig-cache"
-    zig fetch --save=fssimu2 "${srcdir}/fssimu2-${_fssimu2_ver}.tar.gz"
+    zig-0.15 fetch --save=fssimu2 "${srcdir}/fssimu2-${_fssimu2_ver}.tar.gz"
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
     export ZIG_GLOBAL_CACHE_DIR="${srcdir}/.zig-cache"
-    zig build --release=fast --prefix "$srcdir/dist"
+    zig-0.15 build --release=fast --prefix "$srcdir/dist"
 }
 
 package() {
