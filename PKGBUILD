@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.0.95
+pkgver=1.0.96
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -38,7 +38,7 @@ depends=(
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('47c792ffc5b4d9890f7eb219ddba3093cd2169534392d9f6954b8a2fa2b2e1f6')
+sha256sums=('8a0a04dd5a2fde478d7841d41c1357f8a56ef604613c492bb6f72e1c10bb1520')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
@@ -73,6 +73,20 @@ package() {
         "$pkgdir/usr/lib/systemd/user/arctis-video-router.service"
     install -Dm644 systemd/arctis-gui.service \
         "$pkgdir/usr/lib/systemd/user/arctis-gui.service"
+
+    # dinit user service templates (Artix Linux / dinit init systems)
+    install -Dm644 dinit/arctis-manager \
+        "$pkgdir/usr/share/$pkgname/dinit/arctis-manager"
+    install -Dm644 dinit/arctis-video-router \
+        "$pkgdir/usr/share/$pkgname/dinit/arctis-video-router"
+    install -Dm644 dinit/arctis-gui \
+        "$pkgdir/usr/share/$pkgname/dinit/arctis-gui"
+    install -Dm644 dinit/pipewire-filter-chain \
+        "$pkgdir/usr/share/$pkgname/dinit/pipewire-filter-chain"
+
+    # dinit diagnostic script
+    install -Dm755 scripts/asm-diag-dinit.py \
+        "$pkgdir/usr/bin/asm-diag-dinit"
 
     # PipeWire configs (shared, copied to user dir on first run by asm-setup)
     install -Dm644 scripts/pipewire/10-arctis-virtual-sinks.conf \

@@ -103,6 +103,13 @@ post_remove() {
         rm -f \"\$HOME/.config/systemd/user/arctis-video-router.service\"
         rm -f \"\$HOME/.config/systemd/user/arctis-gui.service\"
 
+        # Disable dinit services if on a dinit system
+        if command -v dinitctl >/dev/null 2>&1; then
+            for svc in arctis-manager arctis-video-router arctis-gui pipewire-filter-chain; do
+                dinitctl disable "$svc" 2>/dev/null || true
+            done
+        fi
+
         # Reload PipeWire so the ghost sinks disappear immediately,
         # not on next login
         if [ -S \"\$DBUS_SOCKET\" ]; then
