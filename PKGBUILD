@@ -4,7 +4,7 @@ pkgver=2.2.3.gnome1
 pkgrel=2
 pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
 arch=('x86_64')
-url="https://github.com/Terrabade/Shelly-ALPM"
+url="https://github.com/Terrabade/Shelly-ALPM-GNOME"
 license=('GPL-3.0-only')
 provides=('shelly')
 conflicts=('shelly' 'shelly-bin' 'shelly-git')
@@ -30,12 +30,12 @@ optdepends=(
 )
 makedepends=('dotnet-sdk-10.0' 'clang')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
 sha256sums=('ed7fcd99f734d366453725b7c031a205bb2529325c16239ef79d56271c50ff67')
 
 build() {
-  cd "$srcdir/Shelly-ALPM-${pkgver}"
+  cd "$srcdir/Shelly-ALPM-GNOME-${pkgver}"
 
   dotnet publish Shelly-CLI/Shelly-CLI.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly.Gtk/Shelly.Gtk.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/Shelly-ALPM-${pkgver}"
+  cd "$srcdir/Shelly-ALPM-GNOME-${pkgver}"
 
   # Install Shelly.Gtk binary
   install -Dm755 out/shelly-ui "$pkgdir/usr/bin/shelly-ui"
