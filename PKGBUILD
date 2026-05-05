@@ -4,7 +4,7 @@
 # Fork of Arch Firefox package
 
 pkgname=librewolf-noscript
-pkgver=13.0.9
+pkgver=13.6.6
 pkgrel=1
 pkgdesc="Extension for librewolf which disables javascript"
 arch=('any')
@@ -14,8 +14,10 @@ checkdepends=('jq')
 groups=('librewolf-addons')
 source=("noscript-${pkgver}.xpi::https://noscript.net/download/releases/noscript-$pkgver.xpi")
 noextract=("noscript-${pkgver}.xpi")
-sha256sums=('525ab61aff21f67d10c3e20965a86ed479631549908a658f54692adc47d771f5')
-b2sums=('88cfab7daeb0287b4ccbf80875e41ca57969cfa92d575f83e253c1294719d4162f25e0499bfab8feb8838df93e0a2576ec5bcb6513dcd2d8e8117bcf3aa1a60a')
+sha256sums=('2059e638f3944cc323e76a3c0d727af530192bd5e425f0f6ea740c0b2e7054b1')
+b2sums=('debb2dfdb69476e79f4fd7b5eb723ce2409748f42e19c2e61c4186232c0b813b2939a113acfdf205f516b9eef110b661d51f456a0c8b9d5be661bca35ba90a30')
+
+
 
 check() {
   bsdtar xf noscript-$pkgver.xpi manifest.json
