@@ -1,11 +1,11 @@
 pkgbase = trayplay
 	pkgdesc = Instant Replay (DVR) app for KDE using gpu-screen-recorder in the background
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/kabuspl/trayplay
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = qt6-tools
 	depends = gcc-libs
@@ -14,7 +14,7 @@ pkgbase = trayplay
 	depends = xdg-desktop-portal-impl
 	depends = kdialog
 	depends = kirigami
-	source = trayplay-1.1.0.tar.gz::https://github.com/kabuspl/trayplay/archive/v1.1.0.tar.gz
-	sha256sums = 95da67f71d0ea66dd51f7991ce30c7dfe1635486fbe3b33c3a166e17ca6eeaf4
+	source = trayplay-1.1.1.tar.gz::https://github.com/kabuspl/trayplay/archive/v1.1.1.tar.gz
+	sha256sums = 6a364fb717a70f3664b3e33afc7d1e202bf41c6ac788170b7897b5d7127d06bc
 
 pkgname = trayplay
