@@ -1,6 +1,6 @@
 pkgbase = nginx-mainline-mod-cache_purge
 	pkgdesc = Nginx mainline module with ability to purge content from FastCGI, proxy, SCGI and uWSGI caches
-	pkgver = 2.5.6
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/nginx-modules/ngx_cache_purge
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = nginx-mainline-mod-cache_purge
 	license = CUSTOM
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline
-	source = https://github.com/nginx-modules/ngx_cache_purge/archive/2.5.6/ngx_cache_purge-2.5.6.tar.gz
-	sha256sums = bbad4277b8b70a98ba04ba9a1af78d1363266da56683da55a2d46ba97880206d
+	source = https://github.com/nginx-modules/ngx_cache_purge/archive/3.0.2/ngx_cache_purge-3.0.2.tar.gz
+	sha256sums = 627f60bfd514bbe6de7af1bfcb4c69271d4588348d5e359cbd26679adf0f2fb0
 
 pkgname = nginx-mainline-mod-cache_purge
