@@ -2,7 +2,7 @@
 
 pkgname=tasker
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight, easy-to-use task management utility for linux'
 arch=(x86_64)
 url=https://github.com/neoluxis/tasker
@@ -10,7 +10,7 @@ license=(MIT)
 depends=()
 makedepends=()
 #source=($pkgname-$pkgver.tar.gz)
-source=(source_holder)
+source=(tasker)
 sha256sums=('SKIP')
 
 build() {
@@ -18,6 +18,7 @@ build() {
 }
 
 package() {
-    echo this is package
+    install -Dm 755 tasker $pkgdir/usr/bin/tasker
+    install -Dm 755 tasker $pkgdir/usr/bin/tkr    
 }
 

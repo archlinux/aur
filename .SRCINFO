@@ -1,11 +1,11 @@
 pkgbase = tasker
 	pkgdesc = A lightweight, easy-to-use task management utility for linux
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/neoluxis/tasker
 	arch = x86_64
 	license = MIT
-	source = source_holder
+	source = tasker
 	sha256sums = SKIP
 
 pkgname = tasker
