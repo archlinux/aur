@@ -1,0 +1,19 @@
+pkgbase = wiim-tui-git
+	pkgdesc = Keyboard-driven terminal UI for WiiM (LinkPlay) audio streamers
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/sdistefano/wiim-tui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	provides = wiim-tui
+	conflicts = wiim-tui
+	options = !lto
+	source = wiim-tui::git+https://github.com/sdistefano/wiim-tui.git
+	sha256sums = SKIP
+
+pkgname = wiim-tui-git
