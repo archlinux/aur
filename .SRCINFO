@@ -1,0 +1,16 @@
+pkgbase = cockpit-dockermanager-git
+	pkgdesc = Cockpit application for managing Docker containers (git)
+	pkgver = 1.0.8.r26.g435f014
+	pkgrel = 1
+	url = https://github.com/chrisjbawden/cockpit-dockermanager
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = cockpit
+	depends = docker
+	provides = cockpit-dockermanager
+	conflicts = cockpit-dockermanager
+	source = git+https://github.com/chrisjbawden/cockpit-dockermanager.git
+	sha256sums = SKIP
+
+pkgname = cockpit-dockermanager-git
