@@ -1,16 +1,16 @@
 pkgbase = uqm-megamod-addon-classic-hd
 	pkgdesc = Classic HD-mod styled textures and UI for the Ur-Quan Masters MegaMod's HD mode by JHGuitarFreak (Kohr-Ah Death).
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://sourceforge.net/projects/uqm-mods/
 	arch = any
 	license = custom:CC BY-NC-SA 2.5
 	depends = uqm-megamod-addon-hd
-	noextract = mm-0.8.3-hd.uqm
-	source = mm-0.8.3-hd-classic-pack.uqm::https://sourceforge.net/projects/uqm-mods/files/MegaMod/0.8.3/Content/mm-0.8.3-hd-classic-pack.uqm
+	noextract = mm-0.8.4-hd.uqm
+	source = mm-0.8.4-hd-classic-pack.uqm::https://sourceforge.net/projects/uqm-mods/files/MegaMod/0.8.4/Content/mm-0.8.4-hd-classic-pack.uqm
 	source = ATTRIBUTION.txt::https://raw.githubusercontent.com/JHGuitarFreak/UQM-MegaMod-Content/master/addons/mm-hd/ATTRIBUTION.txt
 	source = LICENSE
-	md5sums = 19fdae7ed126cbb067cdfae0954cab6e
+	md5sums = 5c52d314d3c2c00d28d0159897c2a398
 	md5sums = ff908319ce20057293c3c350854b390d
 	md5sums = 4f30efe3d129bd9a8bddd0d455c849f7
 

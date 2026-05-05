@@ -1,8 +1,9 @@
-# Maintainer : Victor Savcenco <victor dot sav at linux dot com>
+# Maintainer : Ville Aakko <wpenguin <AT> kapsi DOT fi>
+# Contributor : Victor Savcenco <victor dot sav at linux dot com>
 
 pkgname=uqm-megamod-addon-classic-hd
 _pkgname=uqm-megamod
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Classic HD-mod styled textures and UI for the Ur-Quan Masters MegaMod's HD mode by JHGuitarFreak (Kohr-Ah Death)."
 arch=("any")
@@ -17,11 +18,9 @@ source=(
   LICENSE
 )
 
-md5sums=(
-  "19fdae7ed126cbb067cdfae0954cab6e"
-  "ff908319ce20057293c3c350854b390d"
-  "4f30efe3d129bd9a8bddd0d455c849f7"
-)
+md5sums=('5c52d314d3c2c00d28d0159897c2a398'
+         'ff908319ce20057293c3c350854b390d'
+         '4f30efe3d129bd9a8bddd0d455c849f7')
 
 noextract=("mm-${pkgver}-hd.uqm")
 
