@@ -58,6 +58,9 @@ package() {
   install -dm755 "$pkgdir/opt/$_pkgname"
   cp -a "$unpacked"/. "$pkgdir/opt/$_pkgname/"
 
+  chmod -R u=rwX,go=rX "$pkgdir/opt/$_pkgname"
+  chmod 0755 "$pkgdir/opt/$_pkgname/$_pkgname"
+
   # Chromium sandbox helper requires SUID root.
   chmod 4755 "$pkgdir/opt/$_pkgname/chrome-sandbox"
 
