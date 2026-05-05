@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=nw
+GenericName=Film Picker
+Comment=TUI utility for selecting films to watch from Letterboxd
+Icon=utilities-terminal
+Exec=nw
+Terminal=true
+Categories=Utility;ConsoleOnly;
