@@ -1,32 +1,26 @@
-# Maintainer: Jonathan Steel <jsteel at archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Ido Rosen <ido@kernel.org>
 # Contributor: Army
 # Contributor: Jay Tanzman <jay at jt512 dot dynddns dot ort>
 # Contributor: Ray Kohler <ataraxia937 at gmail dot com>
 
 pkgname=sc
-pkgver=7.16
-pkgrel=10
+pkgver=7.16_1.2.0
+pkgrel=1
 pkgdesc="Ncurses-based spreadsheet program"
 arch=('x86_64')
 url="https://ibiblio.org/pub/linux/apps/financial/spreadsheet/!INDEX.html"
 license=('Public Domain')
 depends=('ncurses')
-source=(https://ibiblio.org/pub/linux/apps/financial/spreadsheet/$pkgname-$pkgver.tar.gz
-        https://launchpadlibrarian.net/1281150/${pkgname}_$pkgver-2.diff.gz
-        sc-7.16-compilation.patch)
-sha256sums=('1997a00b6d82d189b65f6fd2a856a34992abc99e50d9ec463bbf1afb750d1765'
-            '37116b9619790564650c4090b4a6264c08aa59fa1e24c63ca073011cd70507cb'
-            '2b36b7c7078dfa6a15025a01089d154ec407ddf8200846c350805503ed1657a1')
+source=(https://github.com/n-t-roff/$pkgname/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=('c53285a6a6f30d37e0bab21563e3e2c5c01ee62da63efeb2219029cde1c01ace')
 
 build() {
   cd $pkgname-$pkgver
 
-  patch -p1 -i "$srcdir"/${pkgname}_$pkgver-2.diff
-  patch -Np1 -i "$srcdir"/sc-7.16-compilation.patch
-
+  ./configure
   make
-  make sc.1 psc.1
 }
 
 package() {
