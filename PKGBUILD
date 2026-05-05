@@ -1,49 +1,29 @@
-# Maintainer: Gian
-
 pkgname=cockpit-tools-appimage
-_pkgname=Cockpit.Tools
-pkgver=0.20.3
+_pkgname='Cockpit.Tools'
+pkgver=0.22.19
 pkgrel=1
 pkgdesc='Universal AI IDE account manager repackaged from the upstream AppImage release'
-arch=('x86_64' 'aarch64')
-url='https://github.com/jlcodes99/cockpit-tools'
-license=('LicenseRef-CC-BY-NC-SA-4.0')
-depends=()
+arch=('x86_64')
+url='https://github.com/ark3us/cockpit-tools'
+license=('CC-BY-NC-SA-4.0')
+depends=('fuse2')
+provides=('cockpit-tools')
+conflicts=('cockpit-tools' 'cockpit-tools-bin')
 options=(!strip)
-source_x86_64=(
-  "${_pkgname}_${pkgver}_amd64.AppImage::https://github.com/jlcodes99/cockpit-tools/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
+source=(
+  "${_pkgname}_${pkgver}_amd64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
   'cockpit-tools.desktop'
-  'LICENSE-CC-BY-NC-SA-4.0.txt'
-  'cockpit-tools.png'
+  "cockpit-tools.png::${url}/raw/v${pkgver}/src-tauri/icons/512x512.png"
 )
-source_aarch64=(
-  "${_pkgname}_${pkgver}_aarch64.AppImage::https://github.com/jlcodes99/cockpit-tools/releases/download/v${pkgver}/${_pkgname}_${pkgver}_aarch64.AppImage"
-  'cockpit-tools.desktop'
-  'LICENSE-CC-BY-NC-SA-4.0.txt'
-  'cockpit-tools.png'
-)
-sha256sums_x86_64=('bbc1f15629f2626db3d646eed8b8b28102bb1facac7083650a37d284c37535e7'
-                   '3061937fe6ba4c054dab38c349db7f8b5359226ff8c6ed0e1d60d2ffc65bf510'
-                   'e66c269d4819aaab34b49ef5220c4ddab6756f21bb5180761a4eb8561f2b7bbd'
-                   'adf31f26511a09fd60f76e099fd13e4761880138bb942153046c2ce261a9071c')
-sha256sums_aarch64=('68a80012f28a35c562ec7192fea8d7806a76d82aecdd15769fa8aced1ae60388'
-                    '3061937fe6ba4c054dab38c349db7f8b5359226ff8c6ed0e1d60d2ffc65bf510'
-                    'e66c269d4819aaab34b49ef5220c4ddab6756f21bb5180761a4eb8561f2b7bbd'
-                    'adf31f26511a09fd60f76e099fd13e4761880138bb942153046c2ce261a9071c')
+sha256sums=('729b083904163bb33b1ec57f6c694674fdaf2b7976984d4f2368fbc48d30e612'
+            '917d28f2ce5770ff23d87e493173e4ca770697251e3f948bfa53a993d792397a'
+            'b7a6b0237cd752ee3829271557557b839b3e0a92a6bfd8f7c22b36a591077f49')
 
 package() {
-  local _appimage
-  case "$CARCH" in
-    x86_64)
-      _appimage="${srcdir}/${_pkgname}_${pkgver}_amd64.AppImage"
-      ;;
-    aarch64)
-      _appimage="${srcdir}/${_pkgname}_${pkgver}_aarch64.AppImage"
-      ;;
-  esac
-
   install -d "${pkgdir}/opt/${pkgname}"
-  install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/cockpit-tools.AppImage"
+  install -Dm755 \
+    "${srcdir}/${_pkgname}_${pkgver}_amd64.AppImage" \
+    "${pkgdir}/opt/${pkgname}/cockpit-tools.AppImage"
 
   install -d "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/cockpit-tools" <<'WRAPPER'
@@ -53,6 +33,5 @@ WRAPPER
   chmod 755 "${pkgdir}/usr/bin/cockpit-tools"
 
   install -Dm644 "${srcdir}/cockpit-tools.desktop" "${pkgdir}/usr/share/applications/cockpit-tools.desktop"
-  install -Dm644 "${srcdir}/cockpit-tools.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/cockpit-tools.png"
-  install -Dm644 "${srcdir}/LICENSE-CC-BY-NC-SA-4.0.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/cockpit-tools.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cockpit-tools.png"
 }
