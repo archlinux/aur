@@ -1,12 +1,12 @@
 pkgbase = nvidia_oc-bin
 	pkgdesc = A simple CLI tool to overclock Nvidia GPUs using the NVML library on both X11 and Wayland
 	pkgver = 0.1.24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Dreaming-Codes/nvidia_oc
 	arch = x86_64
 	license = MIT
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = nvidia-utils
 	provides = nvidia_oc
 	conflicts = nvidia_oc

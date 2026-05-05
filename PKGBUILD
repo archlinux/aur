@@ -3,7 +3,7 @@
 _pkgname="nvidia_oc"
 pkgname="${_pkgname}-bin"
 pkgver=0.1.24
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple CLI tool to overclock Nvidia GPUs using the NVML library on both X11 and Wayland"
 arch=(
   'x86_64'
@@ -13,8 +13,8 @@ license=(
   'MIT'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
   'nvidia-utils'
 )
 provides=(
