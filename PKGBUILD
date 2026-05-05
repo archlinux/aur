@@ -2,7 +2,7 @@
 pkgname=wflow
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="A workflow engine for Wayland automation — Shortcuts-style GUI + CLI"
+pkgdesc="A workflow engine for Wayland automation, Shortcuts-style GUI + CLI"
 arch=('x86_64')
 url="https://github.com/cushycush/wflow"
 license=('MIT' 'Apache-2.0')
@@ -60,7 +60,7 @@ package() {
     "$bin" completions fish | install -Dm644 /dev/stdin \
         "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 
-    # Man pages — wflow(1) plus one page per subcommand.
+    # Man pages, wflow(1) plus one page per subcommand.
     install -d "$pkgdir/usr/share/man/man1"
     "$bin" man --output "$pkgdir/usr/share/man/man1" >/dev/null
 
@@ -82,7 +82,7 @@ package() {
     install -Dm644 README.md     "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 docs/KDL.md   "$pkgdir/usr/share/doc/$pkgname/KDL.md"
 
-    # License files — only install if upstream has them; the dual
+    # License files, only install if upstream has them; the dual
     # MIT/Apache-2.0 declaration in Cargo.toml is authoritative either
     # way.
     for f in LICENSE-MIT LICENSE-APACHE LICENSE; do
