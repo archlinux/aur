@@ -1,6 +1,6 @@
 pkgbase = swayrst-git
 	pkgdesc = Restore workspaces in sway to displays and move applications to saved workspaces
-	pkgver = 1.1
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/Nama/swayrst
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = swayrst-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-sh
-	depends = i3ipc-python-git
-	provides = swayrst=1.1
+	depends = python-i3ipc-git
+	provides = swayrst=1.3
 	conflicts = swayrst
 	replaces = swayrst
 	source = swayrst::git+https://github.com/Nama/swayrst.git

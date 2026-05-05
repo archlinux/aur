@@ -3,7 +3,7 @@
 pkgname="swayrst-git"
 _pkgname="swayrst"
 pkgdesc="Restore workspaces in sway to displays and move applications to saved workspaces"
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 arch=(any)
 url="https://github.com/Nama/swayrst"
