@@ -1,0 +1,22 @@
+pkgbase = lufus-git
+	pkgdesc = Minimalist GUI tool to create bootable USB drives
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/Advnirr/lufus
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = wimlib
+	depends = rsync
+	depends = parted
+	depends = polkit
+	depends = libarchive
+	provides = lufus
+	conflicts = lufus
+	source = git+https://github.com/Advnirr/lufus.git
+	sha256sums = SKIP
+
+pkgname = lufus-git
