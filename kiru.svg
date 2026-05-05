@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded corner background -->
+  <rect x="0" y="0" width="32" height="32" rx="7" ry="7" fill="#09090b"/>
+
+  <!-- Kiru logo in teal -->
+  <path d="M16 6C10.477 6 6 10.477 6 16s4.477 10 10 10 10-4.477 10-10"
+        stroke="#14b8a6"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        fill="none"/>
+</svg>
