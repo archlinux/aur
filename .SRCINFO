@@ -1,6 +1,6 @@
 pkgbase = python-gurobipy
 	pkgdesc = State-of-the-art solver for mathematical programming (Python bindings)
-	pkgver = 13.0.1
+	pkgver = 13.0.2
 	pkgrel = 1
 	url = https://www.gurobi.com/products/gurobi-optimizer
 	arch = aarch64
@@ -8,14 +8,14 @@ pkgbase = python-gurobipy
 	license = custom:Gurobi EULA
 	makedepends = python-installer
 	depends = glibc
-	depends = gurobi>=13.0.1
+	depends = gurobi>=13.0.2
 	depends = python>=3.14
 	optdepends = python-numpy: create a new optimization model
-	noextract = gurobipy-13.0.1-cp314-cp314-manylinux_2_26_aarch64.whl
-	noextract = gurobipy-13.0.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-	source_aarch64 = https://files.pythonhosted.org/packages/cp314/g/gurobipy/gurobipy-13.0.1-cp314-cp314-manylinux_2_26_aarch64.whl
-	sha256sums_aarch64 = a8700e549c2667aa235034a6149af16a2138ba7c1f9ecd15b55754704ab6ceaf
-	source_x86_64 = https://files.pythonhosted.org/packages/cp314/g/gurobipy/gurobipy-13.0.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-	sha256sums_x86_64 = 5944820a3278b964f0c48b1ab083a2cc4999f47b99068595574177c0f8973826
+	noextract = gurobipy-13.0.2-cp314-cp314-manylinux_2_26_aarch64.whl
+	noextract = gurobipy-13.0.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+	source_aarch64 = https://files.pythonhosted.org/packages/cp314/g/gurobipy/gurobipy-13.0.2-cp314-cp314-manylinux_2_26_aarch64.whl
+	sha256sums_aarch64 = f7714d69d778af882d756e222340920e8dbfc004a509998604cb9b4cb1d43242
+	source_x86_64 = https://files.pythonhosted.org/packages/cp314/g/gurobipy/gurobipy-13.0.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+	sha256sums_x86_64 = f82340708955c24ab20f5d41b4d7fbd0e94cf4e7740841360e2024c9d222961f
 
 pkgname = python-gurobipy
