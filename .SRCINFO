@@ -1,0 +1,16 @@
+pkgbase = leetui-bin
+	pkgdesc = A terminal UI for browsing and solving LeetCode problems (prebuilt binary)
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/lbarto12/leetui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = leetui
+	conflicts = leetui
+	source_x86_64 = leetui-0.0.4-linux-amd64.tar.gz::https://github.com/lbarto12/leetui/releases/download/v0.0.4/leetui-0.0.4-linux-amd64.tar.gz
+	sha256sums_x86_64 = dcf0e80e024e6951bae3ceb77babe1e35d5902b62d245218203c3838623da925
+	source_aarch64 = leetui-0.0.4-linux-arm64.tar.gz::https://github.com/lbarto12/leetui/releases/download/v0.0.4/leetui-0.0.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 980114650f52b14dc1c5f660cd92598513ea17f55052e514acbd74c7b493884f
+
+pkgname = leetui-bin
