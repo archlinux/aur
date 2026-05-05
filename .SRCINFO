@@ -1,16 +1,16 @@
 pkgbase = hodl-bin
 	pkgdesc = Light crypto wallet for the terminal — multi-chain TUI built on ratatui. (binary release)
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://hodl.kryptic.sh/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = hodl=0.5.0
+	provides = hodl=0.6.0
 	conflicts = hodl
-	source_x86_64 = hodl-v0.5.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hodl/releases/download/v0.5.0/hodl-v0.5.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 971d59b724808a14be52fa9c864b7db1775b3ebe13d2a22e34e8b84100428705
-	source_aarch64 = hodl-v0.5.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hodl/releases/download/v0.5.0/hodl-v0.5.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 4984fd75dd7f28c1f34b00cd41ab646ec8a41428b707d5e3f6c57ef65ff6e0b0
+	source_x86_64 = hodl-v0.6.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hodl/releases/download/v0.6.0/hodl-v0.6.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 98dcb67a95718f29dcccd1e9cabc410c0fbc3c9e35ddb992cb62c185aa932da1
+	source_aarch64 = hodl-v0.6.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hodl/releases/download/v0.6.0/hodl-v0.6.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d9d5d36be7b54fd45af64279bac7068253bf6b6f69556f2c9d6fe992a752705e
 
 pkgname = hodl-bin
