@@ -34,7 +34,7 @@ check() {
 }
 
 package() {
-  cd "bifrost"
+  cd "bifrost/bifrost"
 
   install -Dm755 bin/bf "$pkgdir/usr/bin/bf"
   install -Dm755 bin/bifrost-server "$pkgdir/usr/bin/bifrost-server"
