@@ -2,12 +2,12 @@
 
 pkgname=faugus-launcher
 pkgver=1.18.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
 arch=('any')
 url="https://github.com/Faugus/faugus-launcher"
 license=('MIT')
-depends=('python' 'python-gobject' 'python-requests' 'python-pillow' 'python-vdf' 'python-psutil' 'python-pygame' 'libcanberra' 'imagemagick' 'icoextract' 'libayatana-appindicator')
+depends=('python' 'python-gobject' 'python-requests' 'python-pillow' 'python-vdf' 'python-psutil' 'python-pygame' 'libcanberra' 'imagemagick' 'icoextract' 'libayatana-appindicator' 'vulkan-tools')
 makedepends=('meson')
 provides=('faugus-launcher')
 conflicts=('faugus-launcher')
