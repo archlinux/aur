@@ -1,11 +1,12 @@
 pkgname=netradio
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="YouTube ve internet radyolarını oynatan ve indiren Python tabanlı bir uygulama"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/saydut/netradio"
 license=('GPL3')
-depends=('mpv' 'yt-dlp' 'python' 'youtube-search-python' 'python-textual')
+depends=('mpv' 'yt-dlp' 'python' 'youtube-search-python' 'python-textual' 'python-httpx')
+optdepends=('mpv-mpris: sistem medya tuşları ve KDE/GNOME ses paneli entegrasyonu')
 makedepends=('git')
 source=("git+https://github.com/saydut/netradio.git#branch=master")
 md5sums=('SKIP')
