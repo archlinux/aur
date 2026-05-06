@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A lightning-fast, keyboard-focused, yazi-inspired terminal user interface for navigating and managing Kubernetes clusters"
 
-pkgver=0.9.38
+pkgver=0.10.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('ef5e5edbe7209a25534b241abd5ebba775acfcec0953952a32ef35d9cb5d2886')
-sha256sums_aarch64=('a0a1276bc210ddc6920999f0bd8f17b5451cbbb78eb4a2eebc00ffa69a083f71')
+sha256sums_x86_64=('05159887004ec5c8a3f31df374fd735105c1647dfd3fb574d6d958c82fe7d43b')
+sha256sums_aarch64=('5ab7cb7b6c1d69e2be7756eb9570d9436a6cd9f3dee94f1698af75388eb7e57e')
 
 
 package() {
