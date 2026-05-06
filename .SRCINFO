@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-rife-ncnn-vulkan
 	pkgdesc = Plugin for Vapoursynth: Real-Time Intermediate Flow Estimation for Video Frame Interpolation
 	pkgver = 9_mod_v33
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan
 	arch = x86_64
 	license = MIT
