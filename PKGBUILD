@@ -1,7 +1,8 @@
-#Maintainer: Błażej Dymek <dymekblazej@outlook.com>
+# Maintainer: Błażej Dymek <dymekblazej@outlook.com>
+# Contributor: Swiatoslaw Bilalow <sbilalow@gmail.com>
 
 pkgname=brother-dcpl2622dw
-pkgver=4.1.0_1
+pkgver=4.1.0_2
 pkgrel=1
 pkgdesc="CUPS and LPR drivers for the Brother DCP-L2622DW"
 arch=("x86_64" "i686")
@@ -18,7 +19,7 @@ source=(
     "https://download.brother.com/welcome/dlf106013/dcpl2622dwpdrv-${pkgver/_/-}.i386.rpm"
 )
 sha256sums=(
-    "a884d3ac2cb94f90c9cce2535252468cf8d88ab5389d9b1a9630af2c1e227b7b"
+    "b1f61b1ec7bec4d191329c5e33d303b9311e12093717ffbadb4c3a3e1cfdadb7"
 )
 
 prepare() {
@@ -33,7 +34,7 @@ package() {
   cp ${srcdir}/opt/brother/Printers/DCPL2622DW/cupswrapper/lpdwrapper ${pkgdir}/usr/lib/cups/filter/brother_lpdwrapper_DCPL2622DW
 
   mkdir -p ${pkgdir}/opt/brother/Printers/DCPL2622DW/lpd/
-  cp -r ${srcdir}/opt/brother/Printers/DCPL2622DW/inf ${pkgdir}/opt/brother/Printers/DCPL2640DW/
+  cp -r ${srcdir}/opt/brother/Printers/DCPL2622DW/inf ${pkgdir}/opt/brother/Printers/DCPL2622DW/
   cp ${srcdir}/opt/brother/Printers/DCPL2622DW/lpd/lpdfilter ${pkgdir}/opt/brother/Printers/DCPL2622DW/lpd/
   cp ${srcdir}/opt/brother/Printers/DCPL2622DW/lpd/${CARCH}/* ${pkgdir}/opt/brother/Printers/DCPL2622DW/lpd/
   cp -r ${srcdir}/var ${pkgdir}/
