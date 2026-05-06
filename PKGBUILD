@@ -3,7 +3,7 @@
 # Revived package with updated upstream tarball
 pkgname=windsurf-bin
 pkgver=2.1.32
-pkgrel=1
+pkgrel=2
 pkgdesc="The new purpose-built IDE to harness magic (binary pre-built version)"
 arch=('x86_64')
 url="https://windsurf.com/"
@@ -35,6 +35,8 @@ optdepends=(
 options=('!strip')
 conflicts=('windsurf')
 provides=('windsurf')
+replaces=('windsurf')
+install=windsurf-bin.install
 
 # Download URL from Windsurf API
 # To update: curl -s https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest | jq -r '.url'
@@ -68,9 +70,9 @@ Name=Windsurf
 Comment=The new purpose-built IDE to harness magic
 GenericName=Text Editor
 Exec=/usr/bin/windsurf %U
-Icon=/usr/share/pixmaps/windsurf.svg
+Icon=windsurf
 Type=Application
-MimeType=text/html;text/xml;application/xhtml+xml;text/mml;x-scheme-handler/http;x-scheme-handler=https;
+MimeType=x-scheme-handler/windsurf;x-scheme-handler/codeium;
 Categories=Development;IDE;TextEditor;
 StartupNotify=true
 StartupWMClass=Windsurf
@@ -78,9 +80,9 @@ EOF
     
     # Install icon
     install -Dm644 "$pkgdir/opt/windsurf/resources/app/out/media/code-icon.svg" \
-        "$pkgdir/usr/share/pixmaps/windsurf.svg"
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/windsurf.svg"
     
     # Fix permissions
     chmod 755 "$pkgdir/opt/windsurf/windsurf"
-    chmod 4755 "$pkgdir/opt/windsurf/chrome-sandbox" 2>/dev/null || true
+    # chmod 4755 "$pkgdir/opt/windsurf/chrome-sandbox" 2>/dev/null || true
 }

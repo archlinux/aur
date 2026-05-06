@@ -1,0 +1,12 @@
+post_install() {
+    update-desktop-database -q
+
+    xdg-mime default windsurf.desktop x-scheme-handler/windsurf
+    xdg-mime default windsurf.desktop x-scheme-handler/codeium
+
+    echo "✔ Windsurf protocol handlers registered"
+}
+
+post_upgrade() {
+    post_install
+}

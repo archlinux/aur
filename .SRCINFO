@@ -1,7 +1,7 @@
 pkgbase = windsurf-bin
 	pkgdesc = The new purpose-built IDE to harness magic (binary pre-built version)
 	pkgver = 2.1.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://windsurf.com/
 	arch = x86_64
 	license = LicenseRef-Windsurf Editor
