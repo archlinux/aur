@@ -1,7 +1,7 @@
 # Maintainer: Refutationalist <archlinux@sammulvey.com>
 pkgname=xen-qemu
 _srcname=qemu
-pkgver=10.2.2
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="A xen-specific QEMU, built to qemu-builtin standards"
 arch=("x86_64")
@@ -14,12 +14,20 @@ conflicts=(xen-qemu-builtin)
 replaces=(xen-qemu-builtin)
 source=(
 	https://download.qemu.org/qemu-${pkgver}.tar.xz{,.sig}
+	qemu-create-xenfv-alias.patch
 )
-sha512sums=('c5409530505c2d1e69a80f1750e377261cea8fee42516a0a89d0343b19d55f9d33579cef181d7cc04d51519e50a55dff1b89175e7685bb803468c8ce03929591'
-            'SKIP')
+sha512sums=('3a047385374cce2fc0d58abbe0d52531ca629f3d25d60b107e1c97372e7ed9caaa5337719d140d0f936b0425d872c0fd77048ef2c13d89295a4c1e650d9daa60'
+            'SKIP'
+            '1c926a949c3450849a946c7782e5fe2a29a6db769ced32c4c32e991050dbb3b537d2db170dd77ddbeea8d8ad8880248c406f90c7401e9c4bb46139b41b0a5a02')
 
 
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584') # Michael Roth <flukshun@gmail.com>
+
+prepare() {
+	cd "${srcdir}/${_srcname}-${pkgver}"
+	patch -p1 < ../qemu-create-xenfv-alias.patch
+
+}
 
 
 build() {

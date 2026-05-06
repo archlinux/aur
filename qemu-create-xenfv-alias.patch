@@ -1,0 +1,11 @@
+diff -Naur orig.qemu-11.0.0/hw/i386/pc_piix.c qemu-11.0.0/hw/i386/pc_piix.c
+--- orig.qemu-11.0.0/hw/i386/pc_piix.c	2026-05-05 19:36:51.852960129 -0700
++++ qemu-11.0.0/hw/i386/pc_piix.c	2026-05-05 19:37:40.800500447 -0700
+@@ -649,6 +649,7 @@
+ {
+     pc_i440fx_machine_4_2_options(m);
+     m->desc = "Xen Fully-virtualized PC";
++	m->alias = "xenfv";
+     m->max_cpus = HVM_MAX_VCPUS;
+     m->default_machine_opts = "accel=xen,suppress-vmdesc=on";
+ }
