@@ -3,14 +3,14 @@
 _pkgauthor=BinaryHarbinger
 _pkgname=riftbar
 
-pkgname=${_pkgname}-bin
+pkgname=${_pkgname}-aarch64-bin
 pkgver=0.2.1
 pkgrel=0
 _pkgvername=v${pkgver}
 
 pkgdesc='Highly customizable GTK4 bar for Wayland written in Rust'
 
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('GPL-3.0')
 
@@ -24,13 +24,13 @@ depends=(
 
 # Binary + license + readme
 source=(
-  "riftbar::https://codeberg.org/${_pkgauthor}/${_pkgname}/releases/download/${_pkgvername}/riftbar-x86_64"
+  "riftbar::https://codeberg.org/${_pkgauthor}/${_pkgname}/releases/download/${_pkgvername}/riftbar-aarch64"
   "LICENSE::https://codeberg.org/${_pkgauthor}/${_pkgname}/raw/tag/${_pkgvername}/LICENSE"
   "README.md::https://codeberg.org/${_pkgauthor}/${_pkgname}/raw/tag/${_pkgvername}/README.md"
 )
 
 
-sha256sums=('8028f6a8233bfb1946398b3c5c8fb3c62c4fbf01248edc6829f5383600226533'
+sha256sums=('a2c40489c56196fc28a45fb4ffbe7364774e19e5ff3eaadc38ccf89db5b8d3f6'
             'SKIP'
             'SKIP')
 
