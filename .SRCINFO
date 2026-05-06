@@ -1,0 +1,13 @@
+pkgbase = icecc3
+	pkgdesc = Centro de Control para IceWM (herramientas gráficas de configuración)
+	pkgver = 1.0
+	pkgrel = 3
+	arch = any
+	license = GPL-2.0-or-later
+	depends = python
+	depends = gtk4
+	depends = python-gobject
+	source = https://raw.githubusercontent.com/debwuoldirty/icecc3/main/icecc3.tar.gz
+	sha256sums = 582a11c1c7d8363b87b886c18ce57982ebf2d668656c7a02943ebb685fbf8387
+
+pkgname = icecc3
