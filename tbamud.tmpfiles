@@ -1,1 +1,5 @@
 d /var/lib/tbamud 0750 tbamud tbamud -
+d /var/lib/tbamud/bin 0755 tbamud tbamud -
+d /var/lib/tbamud/log 0755 tbamud tbamud -
+f /var/lib/tbamud/syslog 0644 tbamud tbamud -
+L /var/lib/tbamud/bin/circle - - - - /usr/bin/tbamud

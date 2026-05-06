@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!configure-implicit-int.patch
+!tbamud.install
+!tbamud.service
+!tbamud.sysusers
+!tbamud.tmpfiles

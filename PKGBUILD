@@ -1,13 +1,12 @@
 # Maintainer: MaximGun <maximgun69@proton.me>
 pkgname=tbamud-git
 _pkgname=tbamud
-pkgver=r610.be8de64
-pkgrel=2
+pkgver=r642.a049fdd
+pkgrel=1
 pkgdesc="A DikuMUD derivative, multiplayer text-based RPG server (development version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tbamud/tbamud"
 license=('LicenseRef-custom')
-depends=('perl')
 makedepends=('git' 'gcc' 'make')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -20,9 +19,9 @@ source=(
   "configure-implicit-int.patch"
 )
 md5sums=('SKIP'
-         '05c12efb9d605e762d2891d783e0563f'
-         'a63c63792fcdd47f567875009b28a6e5'
-         '8c5ac07515b1453230de0b8f0116b657'
+         '914641699bef561360256677ccc34217'
+         '232761a54e402c49810bec5f99deb52d'
+         'a0763e3f1001849bd633bf161541aa67'
          '024dd6d75c54d7a63a819d7d5f8bf0f4'
          '71fb0be440b453ce669559dfa64bbf62')
 install=$_pkgname.install
@@ -53,9 +52,13 @@ package() {
   # Install binary
   install -Dm755 "$srcdir/$_pkgname/bin/circle" "$pkgdir/usr/bin/$_pkgname"
 
-  # Install game data
+  # Install stock runtime data. Upstream expects the runtime root to contain
+  # lib/, log/, syslog, and changelog, then chdir(3) into lib/.
   install -d "$pkgdir/usr/share/$_pkgname"
   cp -r lib "$pkgdir/usr/share/$_pkgname/"
+  cp -r log "$pkgdir/usr/share/$_pkgname/"
+  install -Dm644 changelog "$pkgdir/usr/share/$_pkgname/changelog"
+  : > "$pkgdir/usr/share/$_pkgname/syslog"
 
   # Install docs
   install -Dm644 "$srcdir/$_pkgname/doc/README" "$pkgdir/usr/share/doc/$_pkgname/README"

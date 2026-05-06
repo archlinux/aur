@@ -1,8 +1,20 @@
 post_install() {
-  echo "=> Ensuring /var/lib/tbamud contains game data..."
-  if [ ! -e /var/lib/tbamud/lib ]; then
-    cp -r /usr/share/tbamud/lib /var/lib/tbamud
+  echo "=> Ensuring /var/lib/tbamud contains tbaMUD runtime data..."
+
+  install -d -o tbamud -g tbamud -m 0750 /var/lib/tbamud
+
+  for path in lib log changelog syslog; do
+    if [ ! -e "/var/lib/tbamud/$path" ]; then
+      cp -a "/usr/share/tbamud/$path" /var/lib/tbamud/
+    fi
+  done
+
+  install -d -o tbamud -g tbamud -m 0755 /var/lib/tbamud/bin
+  if [ ! -e /var/lib/tbamud/bin/circle ]; then
+    ln -s /usr/bin/tbamud /var/lib/tbamud/bin/circle
   fi
+
+  chown -hR tbamud:tbamud /var/lib/tbamud
 }
 
 post_upgrade() {
@@ -14,4 +26,3 @@ pre_remove() {
   systemctl stop tbamud.service >/dev/null 2>&1 || true
   systemctl disable tbamud.service >/dev/null 2>&1 || true
 }
-

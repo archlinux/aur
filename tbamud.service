@@ -6,14 +6,12 @@ Requires=network.target
 [Service]
 Type=simple
 WorkingDirectory=/var/lib/tbamud
-ExecStartPre=/usr/bin/chown -R tbamud:tbamud /var/lib/tbamud
 ExecStart=/usr/bin/tbamud -q 4000
 Restart=always
 RestartSec=5
 
 User=tbamud
 Group=tbamud
-PermissionsStartOnly=true
 
 # Logging
 StandardOutput=journal
@@ -43,8 +41,7 @@ ProtectKernelModules=yes
 ProtectKernelLogs=yes
 
 # Capabilities
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=
 NoNewPrivileges=yes
 
 # Misc hardening
@@ -68,4 +65,3 @@ LimitCORE=infinity
 
 [Install]
 WantedBy=multi-user.target
-
