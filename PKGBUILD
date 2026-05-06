@@ -27,7 +27,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	rm -r "$srcdir/${pkgname%-git}"/src-tauri/target/release/bundle
+	rm -rf "$srcdir/${pkgname%-git}"/src-tauri/target/release/bundle
     npm run -- tauri build -b deb
 }
 
