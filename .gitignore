@@ -3,4 +3,5 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
+!/fix_python_meson_req.diff
 !/useful_types.diff

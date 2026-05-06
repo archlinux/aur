@@ -1,0 +1,13 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 775744b1..18ce3a95 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,7 +1,7 @@
+ [build-system]
+ requires = [
+ 	"meson >= 1.8.0",
+-	"meson-python == 0.18.0",
++	"meson-python >= 0.18.0",
+ 	"cython >= 3.2.0",
+ 	]
+ build-backend = "mesonpy"
