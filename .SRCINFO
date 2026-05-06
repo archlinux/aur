@@ -1,10 +1,11 @@
 pkgbase = screenshot-cpp
 	pkgdesc = Interactive wlroots/Hyprland region screenshot tool with image clipboard and optional file-reference mode
 	pkgver = 0.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/xander-lin/screenshot
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols
@@ -16,7 +17,5 @@ pkgbase = screenshot-cpp
 	optdepends = wl-clipboard: inspect clipboard MIME types with wl-paste
 	optdepends = hyprland: tested wlroots compositor environment
 	optdepends = sway: alternative wlroots compositor environment
-	source = screenshot-cpp-0.1.0-404fe3f82a80b341542c4e13428b4eb0b4361d3c.tar.gz::https://codeload.github.com/xander-lin/screenshot/tar.gz/404fe3f82a80b341542c4e13428b4eb0b4361d3c
-	sha256sums = 8bab80570d775d70625150e9acfb53f2935317d243d2051e54560bc88c5ac720
 
 pkgname = screenshot-cpp
