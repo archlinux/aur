@@ -1,18 +1,22 @@
 pkgbase = hyprwave-hifi
-	pkgdesc = HyprWave Hi-Fi Edition - Enhanced MPRIS media controller for Wayland with interactive seek, player switching, and notifications
-	pkgver = 0.6.0
+	pkgdesc = HyprWave HiFi - GTK4 Wayland music overlay with PipeWire visualization and per-application volume
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/godlyfast/hyprwave-hifi
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = gcc
 	makedepends = pkgconf
+	depends = gdk-pixbuf2
 	depends = gtk4
 	depends = gtk4-layer-shell
+	depends = libpipewire
+	optdepends = libpulse: pactl support for per-application PipeWire/Pulse volume control
+	optdepends = pipewire: PipeWire daemon for audio visualization
 	provides = hyprwave
 	conflicts = hyprwave
 	conflicts = hyprwave-hifi-git
-	source = hyprwave-hifi-0.6.0.tar.gz::https://github.com/godlyfast/hyprwave-hifi/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 759d7808c4767363446d47b46c8103c77a31d995e86d9338f016dea959cfb673
+	source = hyprwave-hifi-0.6.1.tar.gz::https://github.com/godlyfast/hyprwave-hifi/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = a189f1c0a44c1c6f85bccf9f103c4d233b330dc0e5d821ba35613dd0e2419235
 
 pkgname = hyprwave-hifi
