@@ -10,7 +10,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=4.3.2.r38.g0a23a7852
+pkgver=4.7.0.r1.gfb29c85a6
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -18,9 +18,8 @@ arch=('i686' 'x86_64' 'arm')
 url="https://github.com/fish-shell/fish-shell"
 license=('GPL-2.0-only AND BSD-3-Clause AND ISC AND MIT AND PSF-2.0')
 depends=(
-  'gcc-libs'
   'glibc'
-  'ncurses'
+  'libgcc'
   'pcre2'
 )
 optdepends=(
@@ -31,7 +30,6 @@ optdepends=(
   'xsel: X11 clipboard integration'
   'xclip: X11 clipboard integration (alternative)'
   'wl-clipboard: Wayland clipboard integration'
-
 )
 makedepends=(
   'cargo'
@@ -43,7 +41,7 @@ makedepends=(
 checkdepends=(
   'expect'
   'procps-ng'
-  'ruff'
+  'python-pexpect'
 )
 options=(!lto)
 provides=(
