@@ -1,6 +1,6 @@
 pkgname=cockpit-tools-appimage
 _pkgname='Cockpit.Tools'
-pkgver=0.22.19
+pkgver=0.22.20
 pkgrel=1
 pkgdesc='Universal AI IDE account manager repackaged from the upstream AppImage release'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   'cockpit-tools.desktop'
   "cockpit-tools.png::${url}/raw/v${pkgver}/src-tauri/icons/512x512.png"
 )
-sha256sums=('729b083904163bb33b1ec57f6c694674fdaf2b7976984d4f2368fbc48d30e612'
+sha256sums=('857384834d1938ebc9c963cd57070915f3f7ea3ed9a35886383eb4a9dcb55222'
             '917d28f2ce5770ff23d87e493173e4ca770697251e3f948bfa53a993d792397a'
             'b7a6b0237cd752ee3829271557557b839b3e0a92a6bfd8f7c22b36a591077f49')
 
