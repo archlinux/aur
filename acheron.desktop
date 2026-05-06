@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Acheron
+GenericName=Discord Client
+Comment=Alternative Discord client made in C++ with Qt 6
+Exec=acheron %U
+Icon=acheron
+Terminal=false
+Categories=Network;InstantMessaging;Qt;
+StartupWMClass=acheron
+Keywords=discord;chat;
