@@ -102,8 +102,92 @@ function printIndices() {
   yq -ers 'map(select(.kind == "HelmRelease")) | . as $hrs | keys[] | "\(.): \($hrs[.] | "\(.metadata.namespace)/\(.metadata.name)")"' >&2
 }
 
+function _show_help() {
+  local subCommand="$1"
+  if [[ -z "$subCommand" ]]; then
+    cat >&2 <<'EOF'
+Usage: helmrelease <command> [options]
+       hr [yaml] [source] [options]
+
+Commands:
+  template      Template a HelmRelease (default)
+  diff          Diff an upgrade
+  install       Install a HelmRelease
+  upgrade       Upgrade a HelmRelease
+  uninstall     Uninstall a HelmRelease
+
+Input:
+  <yaml>        Path to HelmRelease YAML file (or stdin with -)
+  <source>      Optional chart source: directory, URL, or OCI ref
+  -N            Index of HelmRelease in multi-document YAML
+  --            Separator before helm options
+EOF
+  elif [[ "$subCommand" == "template" ]]; then
+    cat >&2 <<'EOF'
+Usage: hr [yaml] [source] [-N] [--] [helm options]
+
+Template a HelmRelease from flux YAML.
+
+When connected to a cluster, uses --dry-run=server for accurate results.
+Pass -- to forward options directly to helm template.
+
+EOF
+    helm template --help 2>&1 | sed 's/^/  /' >&2
+  elif [[ "$subCommand" == "diff" ]]; then
+    cat >&2 <<'EOF'
+Usage: hrDiff [yaml] [-N] [--] [helm options]
+
+Diff the changes that an upgrade would apply, using helm-diff.
+
+Pass -- to forward options directly to helm.
+
+EOF
+    helm diff upgrade --help 2>&1 | sed 's/^/  /' >&2
+  elif [[ "$subCommand" == "install" ]]; then
+    cat >&2 <<'EOF'
+Usage: hrInstall yaml [source] [-N] [--] [helm options]
+
+Install a HelmRelease from flux YAML.
+
+Only one HelmRelease can be installed at a time. Use -N to select
+which HelmRelease if the input contains multiple.
+
+Pass -- to forward options directly to helm.
+
+EOF
+    helm install --help 2>&1 | sed 's/^/  /' >&2
+  elif [[ "$subCommand" == "upgrade" ]]; then
+    cat >&2 <<'EOF'
+Usage: hrUpgrade [yaml] [source] [-N] [--] [helm options]
+
+Upgrade a HelmRelease from flux YAML.
+
+Pass -- to forward options directly to helm.
+
+EOF
+    helm upgrade --help 2>&1 | sed 's/^/  /' >&2
+  elif [[ "$subCommand" == "uninstall" ]]; then
+    cat >&2 <<'EOF'
+Usage: hrUninstall [yaml] [-N] [--] [helm options]
+
+Uninstall a HelmRelease from flux YAML.
+
+Pass -- to forward options directly to helm.
+
+EOF
+    helm uninstall --help 2>&1 | sed 's/^/  /' >&2
+  else
+    echo "Unknown command '$subCommand'" >&2
+    return 1
+  fi
+}
+
 function helmrelease() {
   local subCommand="${1?You need to set the command}"
+  if [[ "$subCommand" == "--help" || "$subCommand" == "-h" ]]; then
+    _show_help "${2:-}"
+    exit 0
+  fi
   shift
   local commands=()
   local clusterConnected=false

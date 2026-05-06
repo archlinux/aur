@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+HELMRELEASE="$(dirname "$0")/helmrelease"
+
 if [[ -o xtrace ]]; then
   export XTRACE=true
 fi
-exec helmrelease "install" "$@"
+
+if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+  "$HELMRELEASE" --help install
+  exit 0
+fi
+exec "$HELMRELEASE" "install" "$@"

@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
+HELMRELEASE="$(dirname "$0")/helmrelease"
+
 if [[ -o xtrace ]]; then
   export XTRACE=true
+fi
+
+if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+  "$HELMRELEASE" --help diff
+  exit 0
 fi
 
 # this flag doesn't work with the dry-run switch
@@ -11,4 +18,4 @@ fi
 export HELM_DIFF_USE_UPGRADE_DRY_RUN="${HELM_DIFF_USE_UPGRADE_DRY_RUN:-true}"
 export HELM_DIFF_USE_INSECURE_SERVER_SIDE_DRY_RUN="${HELM_DIFF_USE_INSECURE_SERVER_SIDE_DRY_RUN:-true}"
 export HELM_DIFF_COLOR="${HELM_DIFF_COLOR:-true}"
-exec helmrelease "diff" "$@"
+exec "$HELMRELEASE" "diff" "$@"

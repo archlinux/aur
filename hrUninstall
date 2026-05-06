@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+HELMRELEASE="$(dirname "$0")/helmrelease"
+
 if [[ -o xtrace ]]; then
   export XTRACE=true
 fi
-exec helmrelease "uninstall" "$@"
+
+if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+  "$HELMRELEASE" --help uninstall
+  exit 0
+fi
+exec "$HELMRELEASE" "uninstall" "$@"
