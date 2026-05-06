@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.zip::https://github.com/junamat/batch-beatmap-downloader/releases/download/v${pkgver}/Batch.Beatmap.Downloader-linux-x64-${pkgver}.zip")
-sha256sums=('d5065a000422f239f8f2b078ffddf25f657ef90203eaeeaaf85c686387d9fbcd')
+sha256sums=('c2975088cba24444610bb9ab8466e858b20e6a7dbf25ea6dae01e7041193c897')
 
 package() {
   install -dm755 "${pkgdir}/opt/batch-beatmap-downloader"
