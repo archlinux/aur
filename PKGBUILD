@@ -14,7 +14,7 @@ license=("AGPL3")
 options=("!strip" "!debug")
 _archive="${_pkgname}-${pkgver}.AppImage"
 source=(
-  "${_archive}::https://github.com/${_srcmntr}/${_srcname}/releases/download/app-v${pkgver}/Open.Video.Downloader_${pkgver}_amd64.AppImage"
+  "${_archive}::https://github.com/${_srcmntr}/${_srcname}/releases/download/v${pkgver}/reflex-${pkgver}-linux-x86_64.AppImage"
   "${_pkgname}.desktop"
   "${_pkgname}.png"
 )
