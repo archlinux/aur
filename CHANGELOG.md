@@ -1,3 +1,8 @@
+## v0.4.2 (07 May 2026)
+
+* `[8241250](https://github.com/opentofu/tofu-ls/commit/82412504046b7f26f7ea6f6f7234c111bc513caa)` Bump version to 0.4.2 ([#166](https://github.com/opentofu/tofu-ls/pull/166))
+* `[f9a0b87](https://github.com/opentofu/tofu-ls/commit/f9a0b874fddacc501769aee66e1cb17e9be73551)` feat: add a new providers bundled command ([#164](https://github.com/opentofu/tofu-ls/pull/164))
+
 ## v0.4.1 (24 April 2026)
 
 * `[4fb20c2](https://github.com/opentofu/tofu-ls/commit/4fb20c280494b3d17bf1dd516308318d48c6001f)` Bump to 0.4.1 ([#162](https://github.com/opentofu/tofu-ls/pull/162))
