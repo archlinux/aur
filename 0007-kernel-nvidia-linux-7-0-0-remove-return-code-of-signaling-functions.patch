@@ -1,0 +1,119 @@
+diff --git a/kernel/common/inc/nv-linux.h b/kernel/common/inc/nv-linux.h
+index a8ad838..5e381e2 100644
+--- a/kernel/common/inc/nv-linux.h
++++ b/kernel/common/inc/nv-linux.h
+@@ -224,6 +224,10 @@
+ #include <linux/fb.h>               /* fb_info struct                   */
+ #include <linux/screen_info.h>      /* screen_info                      */
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 20, 0)
++#include <linux/sysfb.h>            /* sysfb_primary_display            */
++#endif
++
+ #if !defined(CONFIG_PCI)
+ #warning "Attempting to build driver for a platform with no PCI support!"
+ #include <asm-generic/pci-dma-compat.h>
+diff --git a/kernel/nvidia-drm/nvidia-dma-fence-helper.h b/kernel/nvidia-drm/nvidia-dma-fence-helper.h
+index 731f6a7..e4b8970 100644
+--- a/kernel/nvidia-drm/nvidia-dma-fence-helper.h
++++ b/kernel/nvidia-drm/nvidia-dma-fence-helper.h
+@@ -40,6 +40,8 @@
+ #include <linux/dma-fence.h>
+ #endif
+ 
++#include <linux/version.h>
++
+ #if defined(NV_LINUX_FENCE_H_PRESENT)
+ typedef struct fence nv_dma_fence_t;
+ typedef struct fence_ops nv_dma_fence_ops_t;
+@@ -93,22 +95,34 @@ nv_dma_fence_default_wait(nv_dma_fence_t *fence,
+ #endif
+ }
+ 
+-static inline int nv_dma_fence_signal(nv_dma_fence_t *fence) {
++// Rel. commit "dma-buf/dma-fence: Remove return code of signaling-functions" (Philipp Stanner, 1 Dec 2025)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 20, 0)
++    #define DMA_FENCE_RETURN_TYPE void
++    #define DMA_FENCE_RETURNING
++#else
++    #define DMA_FENCE_RETURN_TYPE int
++    #define DMA_FENCE_RETURNING return
++#endif
++
++static inline DMA_FENCE_RETURN_TYPE nv_dma_fence_signal(nv_dma_fence_t *fence) {
+ #if defined(NV_LINUX_FENCE_H_PRESENT)
+-    return fence_signal(fence);
++    DMA_FENCE_RETURNING fence_signal(fence);
+ #else
+-    return dma_fence_signal(fence);
++    DMA_FENCE_RETURNING dma_fence_signal(fence);
+ #endif
+ }
+ 
+-static inline int nv_dma_fence_signal_locked(nv_dma_fence_t *fence) {
++static inline DMA_FENCE_RETURN_TYPE nv_dma_fence_signal_locked(nv_dma_fence_t *fence) {
+ #if defined(NV_LINUX_FENCE_H_PRESENT)
+-    return fence_signal_locked(fence);
++    DMA_FENCE_RETURNING fence_signal_locked(fence);
+ #else
+-    return dma_fence_signal_locked(fence);
++    DMA_FENCE_RETURNING dma_fence_signal_locked(fence);
+ #endif
+ }
+ 
++#undef DMA_FENCE_RETURN_TYPE
++#undef DMA_FENCE_RETURNING
++
+ static inline u64 nv_dma_fence_context_alloc(unsigned num) {
+ #if defined(NV_LINUX_FENCE_H_PRESENT)
+     return fence_context_alloc(num);
+diff --git a/kernel/nvidia/nv.c b/kernel/nvidia/nv.c
+index 3532b9c..7231db0 100644
+--- a/kernel/nvidia/nv.c
++++ b/kernel/nvidia/nv.c
+@@ -6070,7 +6070,15 @@ void NV_API_CALL nv_get_screen_info(
+      * in v6.7, 'screen_info' is exported as GPL licensed symbol for ARM64.
+      */
+ 
+-#if NV_CHECK_EXPORT_SYMBOL(screen_info)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 20, 0)
++    // Rel. commit "sysfb: Replace screen_info with sysfb_primary_display" (Thomas Zimmermann, 26 Nov 2025)
++    const struct screen_info *si = &sysfb_primary_display.screen;
++#elif NV_CHECK_EXPORT_SYMBOL(screen_info)
++    const struct screen_info *si = &screen_info;
++#endif
++
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 20, 0)) || \
++    NV_CHECK_EXPORT_SYMBOL(screen_info)
+     /*
+      * If there is not a framebuffer console, return 0 size.
+      *
+@@ -6078,21 +6086,21 @@ void NV_API_CALL nv_get_screen_info(
+      * initialization, and then will be set to a value, such as
+      * VIDEO_TYPE_VLFB or VIDEO_TYPE_EFI if an fbdev console is used.
+      */
+-    if (screen_info.orig_video_isVGA > 1)
++    if (si->orig_video_isVGA > 1)
+     {
+-        NvU64 physAddr = screen_info.lfb_base;
++        NvU64 physAddr = si->lfb_base;
+ #if defined(VIDEO_CAPABILITY_64BIT_BASE)
+-        physAddr |= (NvU64)screen_info.ext_lfb_base << 32;
++        physAddr |= (NvU64)si->ext_lfb_base << 32;
+ #endif
+ 
+         /* Make sure base address is mapped to GPU BAR */
+         if (NV_IS_CONSOLE_MAPPED(nv, physAddr))
+         {
+             *pPhysicalAddress = physAddr;
+-            *pFbWidth = screen_info.lfb_width;
+-            *pFbHeight = screen_info.lfb_height;
+-            *pFbDepth = screen_info.lfb_depth;
+-            *pFbPitch = screen_info.lfb_linelength;
++            *pFbWidth = si->lfb_width;
++            *pFbHeight = si->lfb_height;
++            *pFbDepth = si->lfb_depth;
++            *pFbPitch = si->lfb_linelength;
+             *pFbSize = (NvU64)(*pFbHeight) * (NvU64)(*pFbPitch);
+         }
+     }

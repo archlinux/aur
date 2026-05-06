@@ -7,7 +7,7 @@
 pkgbase=nvidia-550xx-dkms
 pkgname=('nvidia-550xx-utils' 'opencl-nvidia-550xx' 'nvidia-550xx-dkms')
 pkgver=550.163.01
-pkgrel=5
+pkgrel=6
 pkgdesc="NVIDIA drivers for Linux, 550 branch"
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -25,6 +25,7 @@ source=('nvidia-drm-outputclass.conf'
 		'0004-kernel-open-nvidia-Use-new-timer-functions-for-6.15.patch'
 		'0005-kernel-nvidia-Fulfill-6.17-fb_create-contract.patch'
 		'0006-kernel-nvidia-use-new-helper-macros-and-post-removal-in_irq-for-6.19.patch'
+		'0007-kernel-nvidia-linux-7-0-0-remove-return-code-of-signaling-functions.patch'
 		"https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
 			'4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
@@ -36,8 +37,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
 			'eb5cfdb4ccaea5aee8626009b66c9024929fd921784080fb34b6db0f222c2908ea7c4932e492c24afb570de79c78489d67e4e07312dc67ce6415ad0b5f38e008'
 			'0c724767bb4300d354dadca5f020f99958624c33dcaf54ec1ac7678832ae42608a0320d03d1c0efa3c0a386d79330f2b1902ca543e04e3a3efc7c6289edf9e47'
 			'14538d5981d1055fd60f9071cdd38815f34f6975cea9700a8c928c3b3a4479b30ebeeb6b3b8ea0219ce22fcaac22a03404faf00e7d424e3fee188d9efee8028c'
+			'851f798bbd93e99a4ca8f3dad83f4f93a432f0980da809d4a33b7e1b8094d9f00a50c1696b562bb20ba47d203f4703ac7bbf4fe3fe17c13594380795359f5325'
 			'676b1de35d21e80091528a49080c114e0870ea90b3f3721265ae8071abbc2183c851e6f11ba96a332c743fedfaf4ec9a014ad6ceed586fdbb03d94d33405e356')
-
 
 create_links() {
 	# create soname links
@@ -67,6 +68,9 @@ prepare() {
 
 	# Linux 6.19
 	patch -Np1 -i "${srcdir}/0006-kernel-nvidia-use-new-helper-macros-and-post-removal-in_irq-for-6.19.patch" -d "${srcdir}/${_pkg}"
+
+	# Linux 7.00
+	patch -Np1 -i "${srcdir}/0007-kernel-nvidia-linux-7-0-0-remove-return-code-of-signaling-functions.patch" -d "${srcdir}/${_pkg}"
 
 	cd kernel
 
