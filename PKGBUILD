@@ -1,6 +1,6 @@
 # Maintainer: zwielichtig <zwielichtig@users.noreply.github.com>
 pkgname=zorg-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A TUI SSH connection manager and orchestrator'
 arch=('x86_64')
