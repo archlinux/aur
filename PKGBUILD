@@ -7,6 +7,7 @@ pkgdesc='Qt/QML based wine apps launcher for Linux (development version)'
 arch=('x86_64')
 url='https://github.com/reakjra/omikuji'
 license=('GPL-3.0-or-later')
+options=('!lto' '!strip')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg')
@@ -28,7 +29,9 @@ prepare() {
 build() {
     cd "$_pkgname"
     export CARGO_HOME="$srcdir/.cargo"
-    cargo build --release --locked --frozen
+    unset CFLAGS LTOFLAGS
+    export CXXFLAGS="-Wno-sfinae-incomplete"
+    cargo build --release --frozen
 }
 
 package() {
