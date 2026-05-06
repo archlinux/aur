@@ -1,7 +1,7 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-viewer
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='ASE TECH & DESIGN Documentation Viewer — Native GTK4 Markdown renderer'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-viewer'
@@ -90,6 +90,18 @@ build() {
 package() {
     cd "${srcdir}/ase-root/clients/ase-client-viewer"
     DESTDIR="${pkgdir}" cmake --install build
+
+    # Strip dev artifacts of transitively-built dependencies — the end-user
+    # only needs the ase-viewer binary + assets. Headers, static libs, cmake
+    # configs and pkgconfig files would otherwise conflict with ase-explorer
+    # (same shared deps) and the system muparser package.
+    rm -rf "${pkgdir}/usr/include"
+    rm -rf "${pkgdir}/usr/lib/cmake"
+    rm -rf "${pkgdir}/usr/lib/cmake-gfm-extensions"
+    rm -rf "${pkgdir}/usr/lib/pkgconfig"
+    rm -rf "${pkgdir}/usr/share/man"
+    rm -f "${pkgdir}/usr/lib"/*.a
+    rm -f "${pkgdir}/usr/bin/cmark-gfm"
 
     install -Dm644 packaging/ase-viewer.desktop \
         "${pkgdir}/usr/share/applications/ase-viewer.desktop"
