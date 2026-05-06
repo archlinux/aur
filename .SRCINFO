@@ -1,6 +1,6 @@
 pkgbase = kmcp
 	pkgdesc = CLI tool and Kubernetes controller for building, testing and deploying MCP servers
-	pkgver = 0.2.8
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/kagent-dev/kmcp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kmcp
 	depends = glibc
 	provides = kmcp
 	conflicts = kmcp-bin
-	source = kmcp-0.2.8.tar.gz::https://github.com/kagent-dev/kmcp/archive/v0.2.8.tar.gz
-	sha256sums = 8c19df2ffdafd440c3104aa2a41b2164b4e6fd8599d5931c8572c5adf5db5a4f
+	source = kmcp-0.3.0.tar.gz::https://github.com/kagent-dev/kmcp/archive/v0.3.0.tar.gz
+	sha256sums = ffd27fa4b3c1257c8820bfbecf38a37d7753196f1c94180e571c13ab11d42443
 
 pkgname = kmcp
