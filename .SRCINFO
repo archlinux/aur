@@ -1,7 +1,7 @@
 pkgbase = omni-code-bridge
 	pkgdesc = Rust bridge for Omni Code — connects mobile clients to local coding agents
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/omni-stream-ai/omni-code-bridge
 	arch = x86_64
 	arch = aarch64

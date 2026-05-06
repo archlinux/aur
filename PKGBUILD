@@ -1,7 +1,7 @@
 # Maintainer: Junjie <junjie@omni-stream.ai>
 pkgname=omni-code-bridge
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust bridge for Omni Code — connects mobile clients to local coding agents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/omni-stream-ai/omni-code-bridge"
