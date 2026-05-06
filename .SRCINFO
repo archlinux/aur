@@ -1,7 +1,7 @@
 pkgbase = deskflow-bin
 	pkgdesc = Share a single keyboard and mouse between multiple computers
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deskflow/deskflow
 	arch = x86_64
 	license = AGPL3
@@ -9,7 +9,6 @@ pkgbase = deskflow-bin
 	conflicts = deskflow
 	options = !strip
 	options = !debug
-	source = deskflow-1.26.0.deb::https://github.com/deskflow/deskflow/releases/download/v1.26.0/deskflow-1.26.0-debian-trixie-x86_64.AppImage
-	sha256sums = 4760d432cd414539df029d1bf0776ebe9069f3c39193845badc52f36dcb27563
+	source = deskflow-1.26.0.deb::https://github.com/deskflow/deskflow/releases/download/v1.26.0/deskflow-1.26.0-debian-trixie-x86_64.deb
 
 pkgname = deskflow-bin
