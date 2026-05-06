@@ -1,19 +1,19 @@
 pkgbase = projscope-music-player-bin
 	pkgdesc = Projscope MP3 player is free desktop, cross platform tool (Winamp you are remembered)!(Prebuilt version.Use system-wide electron)
-	pkgver = 0.0.3
-	pkgrel = 10
-	url = https://projscope.com/
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://projscope.com/portfolio-single-music-player.html
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron17
-	provides = projscope-music-player=0.0.3
+	provides = projscope-music-player=1.1.1
 	conflicts = projscope-music-player
-	source = projscope-music-player-0.0.3.rpm::https://github.com/jviaches/projscope-music-player/releases/download/v0.0.3/projscope-music-player-0.0.1.x86_64.rpm
-	source = LICENSE-0.0.3::https://raw.githubusercontent.com/jviaches/projscope-music-player/v0.0.3/LICENSE
+	source = projscope-music-player-1.1.1.rpm::https://github.com/jviaches/projscope-music-player/releases/download/v1.1.1/Projscope.MP3.Player-1.1.1-x86_64.rpm
+	source = LICENSE-1.1.1::https://raw.githubusercontent.com/jviaches/projscope-music-player/v1.1.1/LICENSE
 	source = projscope-music-player.sh
-	sha256sums = 79493043f2ab40b625fe2f8e936cdc5779a5a86e15d458cde4709e92e12881e5
+	sha256sums = e6588ceae2c906014ead79359ba8f6982e3862d1e15fb82db0a039cb227ec93f
 	sha256sums = 1aa2a3326e734bc2595f638283ed58576d5358bf403f228b48d275b98abe1f3c
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = projscope-music-player-bin
