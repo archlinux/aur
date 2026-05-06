@@ -7,8 +7,8 @@
 
 pkgbase=nvidia-580xx-utils
 pkgname=('nvidia-580xx-utils' 'opencl-nvidia-580xx' 'nvidia-580xx-dkms')
-pkgver=580.142
-pkgrel=3
+pkgver=580.159.03
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -24,7 +24,6 @@ source=('nvidia-drm-outputclass.conf'
         "https://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         '0001-Enable-atomic-kernel-modesetting-by-default.patch'
         '0002-Fix-hardware-cursor-crash.patch'
-        '0003-kernel-7.0.patch'
         'limit-vram-usage')
 
 sha256sums=(
@@ -34,10 +33,9 @@ sha256sums=(
     'c5aa7b8abe69e72bfdc6b9ee8afbfd350bcc557e894558f2e6e4087fa9aa0dd8'
     '1d053c5078387021338cfc3a732bed61be1a20a549775573788e9134775c8149'
     '12d31a5425aba66be9e9129012cde82755ad4d5b7ce9933df8fc398c4fa8d631'
-    '20915fcf3ffe89c3550cf93b60a04a285453150d92e2468e1911a43620447563'
+    '32c85d99b0f640c9501f61b39ddad208fd0288d015c4fbc5fd0435c07783fa77'
     '163c57160cc1033020680f638b44ebd94b496152dcd8951e87d5077d4d5c2009'
     'c1a1cf05dd12efd67858180461ad97a6ebe206b55b56df207854b322ce734613'
-    '856a04794d44063ba98a4dd5fca198bc45042d203773b9659f178bb6c73ac9f3'
     'b14f7a65359c05c373ddfc750cd4cf086a48e815489d93ad5cbe1dbf84bf8f5a'
 )
 
@@ -66,9 +64,6 @@ prepare() {
     # Author: thesword53
     # https://forums.developer.nvidia.com/t/580-release-feedback-discussion/341205/1058
     patch -Np1 -i "${srcdir}/0002-Fix-hardware-cursor-crash.patch" -d "${srcdir}/${_pkg}/kernel"
-
-    # Fix compilation for 7.0
-    patch -Np1 -i "${srcdir}/0003-kernel-7.0.patch" -d "${srcdir}/${_pkg}/kernel"
 
     shopt -s globstar
     for conf in "${srcdir}"/**/dkms.conf; do

@@ -1,6 +1,6 @@
 pkgbase = nvidia-580xx-utils
-	pkgver = 580.142
-	pkgrel = 3
+	pkgver = 580.159.03
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -11,10 +11,9 @@ pkgbase = nvidia-580xx-utils
 	source = systemd-homed-override.conf
 	source = systemd-suspend-override.conf
 	source = nvidia-sleep.conf
-	source = https://download.nvidia.com/XFree86/Linux-x86_64/580.142/NVIDIA-Linux-x86_64-580.142.run
+	source = https://download.nvidia.com/XFree86/Linux-x86_64/580.159.03/NVIDIA-Linux-x86_64-580.159.03.run
 	source = 0001-Enable-atomic-kernel-modesetting-by-default.patch
 	source = 0002-Fix-hardware-cursor-crash.patch
-	source = 0003-kernel-7.0.patch
 	source = limit-vram-usage
 	sha256sums = be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d
 	sha256sums = f77a5247a3ba63e9fad3a3b2822d0fcfa51e0f79b5a90bd79bf08ea34b64ab07
@@ -22,10 +21,9 @@ pkgbase = nvidia-580xx-utils
 	sha256sums = c5aa7b8abe69e72bfdc6b9ee8afbfd350bcc557e894558f2e6e4087fa9aa0dd8
 	sha256sums = 1d053c5078387021338cfc3a732bed61be1a20a549775573788e9134775c8149
 	sha256sums = 12d31a5425aba66be9e9129012cde82755ad4d5b7ce9933df8fc398c4fa8d631
-	sha256sums = 20915fcf3ffe89c3550cf93b60a04a285453150d92e2468e1911a43620447563
+	sha256sums = 32c85d99b0f640c9501f61b39ddad208fd0288d015c4fbc5fd0435c07783fa77
 	sha256sums = 163c57160cc1033020680f638b44ebd94b496152dcd8951e87d5077d4d5c2009
 	sha256sums = c1a1cf05dd12efd67858180461ad97a6ebe206b55b56df207854b322ce734613
-	sha256sums = 856a04794d44063ba98a4dd5fca198bc45042d203773b9659f178bb6c73ac9f3
 	sha256sums = b14f7a65359c05c373ddfc750cd4cf086a48e815489d93ad5cbe1dbf84bf8f5a
 
 pkgname = nvidia-580xx-utils
@@ -57,7 +55,7 @@ pkgname = opencl-nvidia-580xx
 pkgname = nvidia-580xx-dkms
 	pkgdesc = NVIDIA kernel modules - module sources (580xx)
 	depends = dkms
-	depends = nvidia-580xx-utils=580.142
+	depends = nvidia-580xx-utils=580.159.03
 	depends = libglvnd
 	provides = NVIDIA-MODULE
 	provides = nvidia
