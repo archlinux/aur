@@ -1,0 +1,11 @@
+# Arch Linux build artifacts
+/src/
+/pkg/
+/openclaw/
+/fs-safe/
+/*.pkg.tar.*
+/*.src.tar.gz
+/*.log
+
+# Project specific
+/openclaw-commit-382fe80.patch

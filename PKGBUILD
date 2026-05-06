@@ -3,7 +3,7 @@
 # Maintainer: Solomon <shlomochoina@gmail.com>
 pkgname=openclaw-bun-git
 _pkgver=2026.4.19.beta.2
-pkgver=2026.4.19.beta.2.r8493.geb3922f1a58
+pkgver=2026.4.19.beta.2.r9424.gafc46e92335
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices (Bun build, highly optimized)"
 arch=('x86_64')
@@ -20,6 +20,7 @@ optdepends=('bubblewrap: for experimental additional sandboxed execution'
 provides=('openclaw')
 conflicts=('openclaw' 'openclaw-git')
 source=('git+https://github.com/openclaw/openclaw.git'
+        'git+https://github.com/openclaw/fs-safe.git'
         'openclaw-bwrap'
         'openclaw-agent-bwrap'
         'openclaw-bwrap-install-as-systemd-user-service'
@@ -29,10 +30,11 @@ source=('git+https://github.com/openclaw/openclaw.git'
         'openclaw-restart.hook'
         'README.md')
 sha256sums=('SKIP'
+            'SKIP'
             '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
             '44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            '96a4c61b9ce3452f48f168b8b00dcaac8d7e5eed77df789ab6eeecb6451e3173'
+            'd11e563b21cd164b333393a898e6918bccd5b8915a51e6ccdd952df858665976'
             '7f7dc1a6d0c96c018de6c73b7594dc15c268c4152a0ade8001406055962c89a7'
             'cdaf01acb58af62348c6f669f8b77675f66428a8ae41b4b4e371739492fb05c6'
             '76ed2119685ad98af2823f6c0d96e258b93af689c5bee0b572fd9f82d032093a'
@@ -55,10 +57,20 @@ prepare() {
     # Dynamically patch the install script with the correct package name
     sed -i "s/@PKGNAME@/$pkgname/g" "${srcdir}/openclaw.install"
 
+    # 1. Build @openclaw/fs-safe from source
+    echo "Building @openclaw/fs-safe from source..."
+    cd "$srcdir/fs-safe"
+    bun install
+    bun run build
+
+    # 2. Run the main openclaw patch script (performs bun install)
     cd "$srcdir/openclaw"
-    
-    # Run the robust patching script (handles reset, hoisting, and Bun compatibility)
     bash "${srcdir}/openclaw-patch.sh"
+
+    # 3. Surgically install built fs-safe into openclaw node_modules AFTER bun install
+    echo "Surgically installing local @openclaw/fs-safe build..."
+    mkdir -p "$srcdir/openclaw/node_modules/@openclaw/fs-safe"
+    cp -rv "$srcdir/fs-safe/dist" "$srcdir/fs-safe/package.json" "$srcdir/openclaw/node_modules/@openclaw/fs-safe/"
 
     if [ -n "$OPENCLAW_REVERT_382fe80" ]; then
         echo "Reverting commit 382fe80 (restoring Google Antigravity)..."
@@ -66,7 +78,6 @@ prepare() {
         patch -R -p1 < "$srcdir/openclaw-commit-382fe80.patch"
     fi
 
-    bun install
     node scripts/ui.js install || true
 }
 
