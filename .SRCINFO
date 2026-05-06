@@ -1,19 +1,19 @@
 pkgbase = soulfire-bin
-	pkgdesc = A frontend for the SoulFire server. It mainly targets the web, but uses native APIs using Tauri.(Prebuilt version)
-	pkgver = 2.8.1
+	pkgdesc = A frontend for the SoulFire server , with Electron while still using the official SoulFire gRPC API.(Prebuilt version. Use system-wide electron)
+	pkgver = 2.8.6
 	pkgrel = 1
 	url = https://app.soulfiremc.com/
 	arch = aarch64
 	arch = x86_64
-	license = GPL-3.0-or-later
-	depends = gtk3
-	depends = gdk-pixbuf2
-	depends = webkit2gtk-4.1
-	provides = soulfire=2.8.1
+	license = AGPL-3.0-or-later
+	depends = electron41
+	provides = soulfire=2.8.6
 	conflicts = soulfire
-	source_aarch64 = soulfire-2.8.1-aarch64.deb::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/2.8.1/soulfire_2.8.1_arm64.deb
-	sha256sums_aarch64 = b5eaa0d7ba664af325dfe6c64b5d24b13d8737bd8fd15e771633ead4515474df
-	source_x86_64 = soulfire-2.8.1-x86_64.deb::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/2.8.1/soulfire_2.8.1_amd64.deb
-	sha256sums_x86_64 = 645a8d933dacecafac612edaeb9b4bd6ef1a2c80c3d5d2ac7c6dbfe985212e43
+	source = soulfire.sh
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = soulfire-2.8.6-aarch64.rpm::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/2.8.6/SoulFire-2.8.6-aarch64.rpm
+	sha256sums_aarch64 = b242bd0eacd22f31ec90face1cf4bdb69503f3b7177149311cd353fdf8e74f41
+	source_x86_64 = soulfire-2.8.6-x86_64.rpm::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/2.8.6/SoulFire-2.8.6-x86_64.rpm
+	sha256sums_x86_64 = f79631d039099f06cd78f4a39ebee294b1d216d8a7beebd98b9e67aebb8ae1cb
 
 pkgname = soulfire-bin
