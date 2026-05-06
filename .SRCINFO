@@ -1,7 +1,7 @@
 pkgbase = brave-origin-nightly-bin
 	pkgdesc = The minimalist browser from the makers of Brave (nightly binary release).
 	pkgver = 1.92.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://brave.com/origin/download-nightly
 	arch = x86_64
 	arch = aarch64

@@ -2,7 +2,7 @@
 
 pkgname=brave-origin-nightly-bin
 pkgver=1.92.24
-pkgrel=1
+pkgrel=2
 pkgdesc='The minimalist browser from the makers of Brave (nightly binary release).'
 arch=(x86_64 aarch64)
 url='https://brave.com/origin/download-nightly'
@@ -34,7 +34,7 @@ package() {
     cp -a --reflink=auto brave/usr "$pkgdir/usr"
     rm -f "$pkgdir/usr/bin/${pkgname%-bin}"
     install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
-    install -Dm0644 "brave/opt/brave.com/${pkgname%-bin}/product_logo_128.png" "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm0644 "brave/opt/brave.com/${pkgname%-bin}/product_logo_128_nightly.png" "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "brave/opt/brave.com/${pkgname%-bin}/LICENSE"
     chmod 4755 "$pkgdir/opt/brave.com/${pkgname%-bin}/chrome-sandbox"
 }
