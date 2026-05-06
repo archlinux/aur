@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=con-bin
 pkgver=0.1.0.beta.63
-pkgrel=1
+pkgrel=2
 pkgdesc="The Native Terminal Emulator with a builtin AI Harness"
 arch=('x86_64')
 url="https://con.nowledge.co"
@@ -22,7 +22,7 @@ package() {
     install -Dm644 con.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/con.png"
 
     # Fix Exec path in desktop entry (upstream ships /usr/local/bin)
-    sed 's|Exec=/usr/local/bin/con|Exec=/usr/bin/con|' con.desktop \
+    sed 's|Exec=/usr/local/bin/con|Exec=/usr/bin/con|' co.nowledge.con.desktop \
         | install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/con.desktop"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/con-bin/LICENSE"
