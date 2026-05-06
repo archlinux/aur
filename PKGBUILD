@@ -1,5 +1,5 @@
 pkgname=filey-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A fast, local md files management tool built with Flutter/C++"
 arch=('x86_64')
@@ -10,12 +10,13 @@ provides=('filey')
 conflicts=('filey')
 
 # This tells Arch where to download your files
-source=("https://github.com/Surya-Raghuram/GraphFS/releases/download/v${pkgver}/filey-linux-x64.tar.gz"
-        "filey.desktop")
-
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Surya-Raghuram/GraphFS/releases/download/v${pkgver}/filey-linux-v1.0.2.tar.gz"
+        "filey.desktop"
+        "icon.png")
 # We will generate the real security hashes with 'updpkgsums'
-sha256sums=('1372216a504bdb62a1ee1b40062041f1f13440748cc11c9f8dc5793fd92a468c'
-            '5a0c3e5e67205d21178dc5d448976d1e800edcbd9d73612ee2a402db7a7deecc')
+sha256sums=('96ba8cf556942853a23e7179a1092f5de41d84d44a48e092c2d4afa75c15a9e5'
+            '9172ab52667ae49009425f74afc92d245387a93b2941f23434f71f39803283d5'
+            '260a076e962bc0bb2c275d7671ca2e4b3391437fadf8538ee1198c37793193f5')
 
 package() {
     # 1. Create the system directories we need
@@ -39,4 +40,7 @@ package() {
 
     # 5. Install the desktop shortcut
     install -Dm644 "$srcdir/filey.desktop" "$pkgdir/usr/share/applications/filey.desktop"
+
+    # 6. Install the application icon
+    install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/filey.png"
 }
