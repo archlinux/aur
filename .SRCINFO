@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-clientblocker
 	pkgdesc = A client blocker compatible with qBittorrent/Transmission (Beta)/BitComet (Beta, Partial) which is prohibited to include but not limited to clients such as Xunlei.
 	pkgver = 3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Simple-Tracker/qBittorrent-ClientBlocker
 	arch = i686
 	arch = pentium4
@@ -22,14 +22,16 @@ pkgbase = qbittorrent-clientblocker
 	backup = etc/qbittorrent-clientblocker/config.toml
 	backup = etc/qbittorrent-clientblocker/ipBlockList.txt
 	source = qbittorrent-clientblocker-3.7.tar.gz::https://github.com/Simple-Tracker/qBittorrent-ClientBlocker/archive/3.7.tar.gz
+	source = qbittorrent-clientblocker-0001.patch::https://github.com/Simple-Tracker/qBittorrent-ClientBlocker/commit/1dc035bca4f70ace35f4f16e85b7a280729073a9.patch
 	source = qbittorrent-clientblocker.service
 	source = qbittorrent-clientblocker.sysusers
 	source = qbittorrent-clientblocker.tmpfiles
 	source = qbittorrent-clientblocker.user.service
 	sha256sums = 3b774c0cb91dca5e2317944c3166608f73a7eff2bdcad0c74095a7cab277c26a
-	sha256sums = c30c581577715838254ae7a5a07cd29df2fd75b9b59aefdb834906c5556f444e
+	sha256sums = beccfb6f63640356734494955f9f6658ba356df46d69179eaf7d6f0d6b89f0fb
+	sha256sums = ad67b1a1149fdc797e77786557b6bf2a66e0c34e0e622a593c95c6c617fa70d9
 	sha256sums = b419f001a0e45fa19776cd255170fd12ac19dc878683a98006ff53a6984bf417
 	sha256sums = 57f5a17c4a36b8fed9503e2ed1b6b60b43cd9f10fa249807a084de5744d7aed2
-	sha256sums = 6a136341031208f12adf1fc7a711f1f5af7519bd00635616b267c50f0a8eb843
+	sha256sums = 3ec6e39cdfceac6b58c75e995d2f41d15479a9b3f5f5e244ad4b5cfee8f7ac5f
 
 pkgname = qbittorrent-clientblocker
