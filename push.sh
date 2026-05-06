@@ -84,7 +84,6 @@ makepkg --printsrcinfo > .SRCINFO
 
 # Create git message with correct variable
 if [ -n "$_pkgname" ]; then
-  echo "$pkgname"
   commit_msg="Updated ${pkgname//\$\{_pkgname\}/_pkgname} to ${pkgver}-${pkgrel}"
 else
   commit_msg="Updated ${pkgname} to ${pkgver}-${pkgrel}"
