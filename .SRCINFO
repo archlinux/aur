@@ -1,0 +1,25 @@
+pkgbase = surrealql-language-server-git
+	pkgdesc = SurrealQL Language Server
+	pkgver = 0.1.2
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = jq
+	makedepends = grep
+	options = !lto
+	source = surql::git+https://github.com/surrealdb/surrealql-language-server.git
+	source = surql-ts::git+https://github.com/surrealdb/surrealql-tree-sitter.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = surrealql-language-server-git
+	provides = surrealql-language-server
+	conflicts = surrealql-language-server
+
+pkgname = surrealql-tree-sitter-git
+	provides = surrealql-tree-sitter
+	conflicts = surrealql-tree-sitter
