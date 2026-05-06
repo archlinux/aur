@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bcellViper
-_pkgver=1.47.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a64306bdcea3bbf98968d337a19aeb2c')
-b2sums=('9809734ae277e772bc002a921c70aafb06eb824d21087777a8febf34f8cb194533dadac863a7155351f011b7ab1a8472d6e4a7b7df77f4a1f4c558373c0e96b6')
+md5sums=('0c8344b998da0a7717db7d69bc97ee14')
+b2sums=('67e4828e6a78e2ddcfdf0ea80a3ab1af6337216acff0ccab506d9ff06680412a9de28cdb8286c55306121382e0e8c73ad584517636aa0f956f2ee7ec137d8efd')
 
 build() {
   mkdir build
