@@ -1,7 +1,7 @@
 pkgbase = equicord-openasar
 	pkgdesc = The other cutest Discord client mod (with OpenAsar)
 	pkgver = 1.0.137.r7277gd7a841f1b.r860g6232c4f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://equicord.org/
 	arch = x86_64
 	license = custom
@@ -27,10 +27,12 @@ pkgbase = equicord-openasar
 	source = discord-pkgbuild::https://gitlab.archlinux.org/archlinux/packaging/packages/discord/-/raw/main/PKGBUILD
 	source = equicord.desktop
 	source = equicord.png
+	source = equicord.sh
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 25c3e3cbef8c981a42ba059f589ffc9ebe8c81406fa6cd6b000ed7b4e3c7b95ae96108df2a29096a8c527153b3becf98b1769b2af75d5f6cf0fe69edd2b3da3a
 	sha512sums = 94f091c05c365986d556616404e00344a1d8e4ba93ad1875c0d3d96b1d0a643a799343fe6b84dcf7013ea3f9d47a3380540d8212bbf3fb6f5ddf39840ffe38d5
+	sha512sums = 0fa583c0ea3645298afd34d598a9745095e44eac04ee4327d6e484ebeeeebb942cd6267ef7b706c40408419b560537bde6413c9b046c8d262028a79bef843d70
 
 pkgname = equicord-openasar

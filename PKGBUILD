@@ -6,7 +6,7 @@
 pkgname=equicord-openasar
 _pkgname=equicord
 pkgver=1.0.137.r7277gd7a841f1b.r860g6232c4f
-pkgrel=1
+pkgrel=2
 pkgdesc='The other cutest Discord client mod (with OpenAsar)'
 arch=('x86_64')
 url='https://equicord.org/'
@@ -25,12 +25,14 @@ source=(
     'discord-pkgbuild::https://gitlab.archlinux.org/archlinux/packaging/packages/discord/-/raw/main/PKGBUILD'
     'equicord.desktop'
     'equicord.png'
+    'equicord.sh'
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             '25c3e3cbef8c981a42ba059f589ffc9ebe8c81406fa6cd6b000ed7b4e3c7b95ae96108df2a29096a8c527153b3becf98b1769b2af75d5f6cf0fe69edd2b3da3a'
-            '94f091c05c365986d556616404e00344a1d8e4ba93ad1875c0d3d96b1d0a643a799343fe6b84dcf7013ea3f9d47a3380540d8212bbf3fb6f5ddf39840ffe38d5')
+            '94f091c05c365986d556616404e00344a1d8e4ba93ad1875c0d3d96b1d0a643a799343fe6b84dcf7013ea3f9d47a3380540d8212bbf3fb6f5ddf39840ffe38d5'
+            '0fa583c0ea3645298afd34d598a9745095e44eac04ee4327d6e484ebeeeebb942cd6267ef7b706c40408419b560537bde6413c9b046c8d262028a79bef843d70')
 
 pkgver() {
     local discord_ver=$(grep -oE '^pkgver=(.*?)$' discord-pkgbuild)
@@ -89,11 +91,10 @@ prepare() {
     pushd openasar-source
         sed -i -e "s|nightly|nightly-$(git rev-parse HEAD | cut -c 1-7)|" src/index.js
         sed -i -e "/config.setup = true/a\  config.autoupdate = false;" src/config/index.js
-        sed -i -e "s|process.resourcesPath|'/usr/lib/${_pkgname}/resources'|" src/utils/buildInfo.js
         sed -i -e "s|^Exec=\${exec}$|Exec=/usr/bin/${_pkgname}|" \
         		-e "s|^Name=\${basename(exec)}$|Name=${_pkgname^}|" src/autoStart.js
         node scripts/strip.js
-        asar pack src app.asar
+        asar pack src openasar.asar
     popd
 }
 
@@ -109,56 +110,47 @@ build() {
     rm -rf "discord-$discord_ver"; mkdir "discord-$discord_ver"
     tar -xzvf "discord-$discord_ver.tar.gz" -C "discord-$discord_ver" --strip-components=1
 
-    pushd "discord-$discord_ver"
-        # replace desktop file
-        cp ../equicord.{desktop,png} .
-        cp {equicord,discord}.png
-        rm discord.desktop
+    pushd equicord-source
+        _ensure_local_nvm
+        EQUICORD_REMOTE="Equicord/Equicord" pnpm buildStandalone
 
-        # setuid on chrome-sandbox
-        chmod u+s chrome-sandbox
-        chmod 755 Discord
-
-        rm postinst.sh
-
-        pushd resources
-            rm app.asar
+        pushd dist
             mkdir app
-
             echo '{"name": "discord", "main": "index.js"}' > app/package.json
-            echo 'require("/usr/lib/equicord/dist/desktop.asar");' > app/index.js
+            echo 'require(require("path").resolve(require("electron").app.getAppPath(), "..", "equicord.asar"));' > app/index.js
             asar pack app app.asar
             rm -rf app
         popd
     popd
 
-    pushd openasar-source
-        cp app.asar "../discord-${discord_ver}/resources/_app.asar"
-    popd
-    
-    pushd equicord-source
-        _ensure_local_nvm
-        EQUICORD_REMOTE="Equicord/Equicord" pnpm buildStandalone
-        cp -a dist "../discord-$discord_ver"
+    local entry_hash="$(sha256sum equicord-source/dist/app.asar | awk '{print $1}')"
+    local openasar_hash="$(sha256sum openasar-source/openasar.asar | awk '{print $1}')"
+    local equicord_hash="$(sha256sum equicord-source/dist/desktop.asar | awk '{print $1}')"
 
-        rm -rf "../discord-$discord_ver/dist/Installer"
-        rm -rf "../discord-$discord_ver/dist/equibop"
-        rm -f "../discord-$discord_ver/dist/equibop.asar"
-    popd
+    sed -i \
+        -e 's/INSERT_ENTRYPOINT_HASH_HERE/'"$entry_hash"'/' \
+        -e 's/INSERT_OPENASAR_HASH_HERE/'"$openasar_hash"'/' \
+        -e 's/INSERT_EQUICORD_HASH_HERE/'"$equicord_hash"'/' \
+        equicord.sh
 }
 
 package() {
-  local discord="discord-${pkgver%%.r*}"
+  local discord="$(pwd)/discord-${pkgver%%.r*}"
+  local equicord="$(pwd)/equicord-source"
+  local openasar="$(pwd)/openasar-source"
 
-  install -d "$pkgdir/usr/lib/$_pkgname"
-  cp -a "$discord/." "$pkgdir/usr/lib/$_pkgname"
+  install -Dm755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
+  install -Dm644 $_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+  install -Dm644 $_pkgname.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$_pkgname.png
 
-  install -d "$pkgdir/usr/bin"
-  ln -s "/usr/lib/${_pkgname}/Discord" "$pkgdir/usr/bin/${_pkgname}"
+  cd "$discord"
+  install -Dm755 updater_bootstrap "$pkgdir"/usr/share/$_pkgname/updater_bootstrap
 
-  install -d "$pkgdir/usr/share/applications"
-  ln -s "/usr/lib/${_pkgname}/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
-  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  ln -s "/usr/lib/${_pkgname}/${_pkgname}.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+  cd "$equicord"
+  install -Dm644 dist/app.asar "$pkgdir"/usr/share/$_pkgname/app.asar
+  install -Dm644 dist/desktop.asar "$pkgdir"/usr/share/$_pkgname/equicord.asar
+
+  cd "$openasar"
+  install -Dm644 openasar.asar "$pkgdir"/usr/share/$_pkgname/openasar.asar
 }
