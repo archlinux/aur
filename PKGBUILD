@@ -1,6 +1,6 @@
 # Maintainer: @kjlsai <zhangjian@sipeed.com>
 pkgname=picoclaw
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Ultra-Efficient AI Assistant in Go"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64' 'loong64')
@@ -14,7 +14,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/sipeed/picoclaw/archive/refs/tags/v${pkgver}.tar.gz"
     'picoclaw.service'
 )
-sha256sums=('e3ecda2a7382c7236fb95e6236b369de0c0be9d60bc834d05fa3ef6396b0f7c8'
+sha256sums=('1e75f68d12a70a6ba5c79c578d0ec52cca491aa2a3f553cead89c8e2ae054418'
             '4a982c31b007b6c787b14d05f60b01aaf242d5dd73fa3e273df895c9115f0ec8')
 
 build() {
@@ -38,7 +38,6 @@ build() {
 
     go build -buildvcs=false -trimpath -tags stdjson -ldflags "$ldflags" -o picoclaw ./cmd/picoclaw
     go build -buildvcs=false -trimpath -tags stdjson -ldflags "-s -w" -o picoclaw-launcher ./web/backend
-    go build -buildvcs=false -trimpath -tags stdjson -ldflags "-s -w" -o picoclaw-launcher-tui ./cmd/picoclaw-launcher-tui
 }
 
 package() {
@@ -46,7 +45,6 @@ package() {
 
     install -Dm755 picoclaw "$pkgdir/usr/bin/picoclaw"
     install -Dm755 picoclaw-launcher "$pkgdir/usr/bin/picoclaw-launcher"
-    install -Dm755 picoclaw-launcher-tui "$pkgdir/usr/bin/picoclaw-launcher-tui"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
