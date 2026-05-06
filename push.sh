@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Variables
-gui=true
+gui=false
 desktop="deskflow.desktop"
 icon="deskflow.png"
 

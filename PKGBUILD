@@ -6,7 +6,7 @@ _srcmntr="deskflow"
 
 pkgname="${_pkgname}-bin"
 pkgver="1.26.0"
-pkgrel="1"
+pkgrel="3"
 pkgdesc="Share a single keyboard and mouse between multiple computers"
 url="https://github.com/${_srcmntr}/${_srcname}"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=("${_archive}::https://github.com/${_srcmntr}/${_srcname}/releases/downlo
 conflicts=("deskflow")
 provides=("deskflow")
 
-sha256sums=("4760d432cd414539df029d1bf0776ebe9069f3c39193845badc52f36dcb27563")
+sha256sums=("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
