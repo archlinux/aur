@@ -2,7 +2,7 @@
 # 'stalwart-mail.service' 'stalwart-mail.tmpfiles' 'stalwart-mail.sysusers' are copy and modified from 'https://gitlab.archlinux.org/archlinux/packaging/packages/stalwart-mail-server'
 
 pkgname=stalwart-cli-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Stalwart Command Line Interface'
 arch=('x86_64' 'aarch64' 'arm' 'armv7')
@@ -13,7 +13,7 @@ _platform=linux-gnu
 source=(
   "stalwart-cli-v$pkgver-${CARCH}-unknown-${_platform}.tar.xz::${_download_url}/stalwart-cli-${CARCH}-unknown-${_platform}.tar.xz"
 )
-sha512sums=('cea2d4ff2ea1bed1f24abf458daa960688adf53984194f36c76ad164531b72d296f4b3c8dced622fbc069a55bd874d84229c2e6edd640520b655cc56d24aa0d8')
+sha512sums=('44327f55294b6ab75a132970d38b37e67685e1d677a9e102d3b882c4be10aa7c31d1613a3c7645e37bf8ab932dc70cf7acb3b2ad2526789a7a765ef3c7892bbc')
 provides=('stalwart-cli')
 conflicts=('stalwart-cli' 'stalwart-mail-server')
 
