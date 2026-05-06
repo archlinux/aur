@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
-pkgver=2.5.4+6.r183.4824493
+pkgver=2.6.1.r201.9da0255
 pkgrel=1
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
@@ -32,7 +32,7 @@ _fullsrcdir() {
 prepare() {
     cd "$(_fullsrcdir)"
     git submodule init
-    git config submodule.ruff-config.url "$srcdir/ruff-config"
+    git config submodule.ruff_config.url "$srcdir/ruff-config"
     git -c protocol.file.allow=always submodule update
 }
 
