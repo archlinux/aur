@@ -8,8 +8,7 @@ pkgbase = pt-depiler
 	makedepends = git
 	makedepends = nodejs
 	makedepends = pnpm
-	optdepends = edge-stable
-	optdepends = google-chrome
+	optdepends = ptd-cli: Command-line interface for the PT-Depiler
 	provides = pt-depiler
 	conflicts = pt-depiler
 	source = pt-depiler::git+https://github.com/pt-plugins/PT-depiler.git#tag=v0.0.6.1662

@@ -11,7 +11,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 license=("MIT")
 makedepends=("git" "nodejs" "pnpm")
-optdepends=('edge-stable' 'google-chrome')
+optdepends=("ptd-cli: Command-line interface for the PT-Depiler")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('e6abffcc77bb27f2759672ede075626d7a63ea012e92951cb976347010d2d796')
 
