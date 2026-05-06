@@ -1,0 +1,5 @@
+[sshoosh-bin]
+source = "github"
+github = "puemos/sshoosh"
+use_latest_release = true
+prefix = "v"

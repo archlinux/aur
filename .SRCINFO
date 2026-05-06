@@ -1,0 +1,23 @@
+pkgbase = sshoosh-bin
+	pkgdesc = Tiny self-hosted SSH/TUI workspace chat for small teams and operators who want real-time collaboration over SSH
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/puemos/sshoosh
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = sshoosh
+	conflicts = sshoosh
+	options = !strip
+	source = README-0.1.5.md::https://raw.githubusercontent.com/puemos/sshoosh/v0.1.5/README.md
+	source = LICENSE
+	sha256sums = 32d42aefe9d450991c523fd4706cae67bfb01610aff680f7731858929d5b64df
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = sshoosh-x86_64-0.1.5.tgz::https://github.com/puemos/sshoosh/releases/download/v0.1.5/sshoosh-v0.1.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a769550f82bc28b20582ff3824ffd27573c6ed1c9f70003e6cc35114639dbe7d
+	source_aarch64 = sshoosh-aarch64-0.1.5.tgz::https://github.com/puemos/sshoosh/releases/download/v0.1.5/sshoosh-v0.1.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d9327444fd9ef951243f1c99088091695fd0add25ef17ac6607a8db8d7b52420
+
+pkgname = sshoosh-bin
