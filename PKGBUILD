@@ -1,6 +1,6 @@
 # Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=neve-bin
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Standalone language for system configuration, builds, and shell automation (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ conflicts=('neve' 'neve-git')
 
 source_x86_64=("neve-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v${pkgver}/neve-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("neve-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v${pkgver}/neve-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('58ab2ba2d0f4ee8acf133be96ea2856a0e8ad41d77c24fed19c23100d766dc49')
+sha256sums_x86_64=('1a4a6649d3af79e11afb7f9ecdf37dd6788cc6620e8fae9a06ff232a80d74e4d')
 sha256sums_aarch64=('dbe0c7fe11c1243d64db1ff31c98bb553a05735a631c14940a3f1c9228afce59')
 
 package() {
