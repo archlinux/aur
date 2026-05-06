@@ -1,7 +1,7 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 pkgname=p4lang-pi
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An implementation framework for a P4Runtime server"
 arch=('x86_64')
 url="https://github.com/p4lang/PI"
@@ -25,6 +25,7 @@ options=(!debug)
 prepare() {
     cd PI
     git submodule update --init
+    sed -i 's/this->allocate(new_capacity, FMT_NULL)/std::allocator_traits<Allocator>::allocate(*this, new_capacity)/' proto/third_party/fmt/format.h
 }
 
 build() {
