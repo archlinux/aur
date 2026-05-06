@@ -1,0 +1,24 @@
+diff --git a/bindings/java/CMakeLists.txt b/bindings/java/CMakeLists.txt
+index d72013dd..26e23f61 100644
+--- a/bindings/java/CMakeLists.txt
++++ b/bindings/java/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5)
+ project(unicorn_java C)
+ 
+ find_package(JNI REQUIRED)
+@@ -20,12 +20,8 @@ target_compile_options(unicorn_java PRIVATE -O3 -DNDEBUG)
+ 
+ target_link_libraries(unicorn_java PRIVATE
+     ${UNICORN_BUILD}/libunicorn.a
+-    ${UNICORN_BUILD}/libarm-softmmu.a
+-    ${UNICORN_BUILD}/libarmeb-softmmu.a
+-    ${UNICORN_BUILD}/libaarch64-softmmu.a
+-    ${UNICORN_BUILD}/libaarch64eb-softmmu.a
+ )
+ 
+ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+-    target_link_libraries(unicorn_java PRIVATE rt)
++    target_link_libraries(unicorn_java PRIVATE m rt pthread dl)
+ endif()

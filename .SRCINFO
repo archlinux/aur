@@ -1,16 +1,23 @@
 pkgbase = unidbg
 	pkgdesc = Android native library emulator with experimental iOS emulation
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/zhkl0228/unidbg
-	arch = any
+	arch = x86_64
 	license = Apache-2.0
+	license = GPL-2.0-only
+	makedepends = cmake
 	makedepends = java-environment>=17
 	makedepends = maven
+	depends = gcc-libs
 	depends = java-runtime>=8
 	source = unidbg-0.9.9.tar.gz::https://github.com/zhkl0228/unidbg/archive/refs/tags/v0.9.9.tar.gz
+	source = unicorn-1.0.15-99b54f90095ce27d5490be702dd8db5df175cfb5.tar.gz::https://github.com/zhkl0228/unicorn/archive/99b54f90095ce27d5490be702dd8db5df175cfb5.tar.gz
 	source = java-module-ambiguity.patch
+	source = fix-unicorn-java-link.patch
 	sha256sums = 155412c3f65adf7170ce21250f8641023c204f71ef72207fa5a47cfc2650d988
+	sha256sums = e99658fa4ca42bb179c468ad6808bf75ec225b237edc3b1b871b105f03a510bf
 	sha256sums = 951e4900542437416c50bea90e18fc4e3f432fc00d57d9e4e114ec6cf421fbd1
+	sha256sums = 4d81bf48949a6e2ea7d8e45c8281dc946c2942e6b05c8c7d07e20f2ae1ea2a5d
 
 pkgname = unidbg
