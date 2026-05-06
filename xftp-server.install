@@ -2,13 +2,23 @@ post_install() {
     systemd-sysusers xftp-server.conf 2>/dev/null || true
     systemd-tmpfiles --create xftp-server.conf 2>/dev/null || true
 
+    # Создаём директорию если нет
+    mkdir -p /etc/opt/simplex-xftp 2>/dev/null || true
+    mkdir -p /var/opt/simplex-xftp 2>/dev/null || true
+    mkdir -p /srv/xftp 2>/dev/null || true
+
     # Не перезаписываем конфиг если он уже существует
     if [[ ! -f /etc/opt/simplex-xftp/file-server.ini ]]; then
-        mv /etc/opt/simplex-xftp/file-server.ini.new \
-           /etc/opt/simplex-xftp/file-server.ini 2>/dev/null || true
-    else
-        rm -f /etc/opt/simplex-xftp/file-server.ini.new
+        # Пробуем восстановить из pacsave
+        if [[ -f /etc/opt/simplex-xftp/file-server.ini.pacsave ]]; then
+            mv /etc/opt/simplex-xftp/file-server.ini.pacsave \
+               /etc/opt/simplex-xftp/file-server.ini 2>/dev/null || true
+        elif [[ -f /etc/opt/simplex-xftp/file-server.ini.new ]]; then
+            mv /etc/opt/simplex-xftp/file-server.ini.new \
+               /etc/opt/simplex-xftp/file-server.ini 2>/dev/null || true
+        fi
     fi
+    rm -f /etc/opt/simplex-xftp/file-server.ini.new
 
     # Исправляем права на конфиги и ключи
     if [[ -d /etc/opt/simplex-xftp ]]; then
@@ -68,6 +78,24 @@ post_install() {
 }
 
 post_upgrade() {
+    # Создаём директории если нет
+    mkdir -p /etc/opt/simplex-xftp 2>/dev/null || true
+    mkdir -p /var/opt/simplex-xftp 2>/dev/null || true
+    mkdir -p /srv/xftp 2>/dev/null || true
+
+    # Восстанавливаем конфиг из pacsave если нет текущего
+    if [[ ! -f /etc/opt/simplex-xftp/file-server.ini ]]; then
+        if [[ -f /etc/opt/simplex-xftp/file-server.ini.pacsave ]]; then
+            mv /etc/opt/simplex-xftp/file-server.ini.pacsave \
+               /etc/opt/simplex-xftp/file-server.ini 2>/dev/null || true
+        elif [[ -f /etc/opt/simplex-xftp/file-server.ini.new ]]; then
+            mv /etc/opt/simplex-xftp/file-server.ini.new \
+               /etc/opt/simplex-xftp/file-server.ini 2>/dev/null || true
+        fi
+    fi
+    rm -f /etc/opt/simplex-xftp/file-server.ini.new
+
+    # Исправляем права
     if [[ -d /etc/opt/simplex-xftp ]]; then
         chown -R xftp:xftp /etc/opt/simplex-xftp/ 2>/dev/null || true
         chmod 600 /etc/opt/simplex-xftp/*.key 2>/dev/null || true
