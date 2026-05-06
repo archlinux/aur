@@ -20,7 +20,7 @@ def check_dependencies():
             
     if missing:
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", file=sys.stderr)
-        print(" ❌ ERROR: Missing Required System Dependencies", file=sys.stderr)
+        print(" ERROR: Missing Required System Dependencies", file=sys.stderr)
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", file=sys.stderr)
         print("This tool requires a Wayland compositor and the following utilities:", file=sys.stderr)
         for item in missing:

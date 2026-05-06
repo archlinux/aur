@@ -2,7 +2,7 @@
 pkgname=lens-shot
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Select a screen region and instantly open it in Google Lens using Chromium (Wayland)"
+pkgdesc="Select a screen region and instantly open it in Google Lens using Web Browser (Wayland)"
 arch=('any')
 url="https://github.com/crisxdwars/lens-shot"
 license=('MIT')
