@@ -47,8 +47,6 @@ build(){
   cd "$srcdir/$pkgname-${tagged_ver}"
   cmake -B build_dir -S . -G Ninja \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DUSE_SYSTEM_FMT=ON \
-    -DUSE_SYSTEM_TOML=ON \
     -DWITH_FFMPEG_PLAYER=OFF \
     -Wno-dev
   cmake --build build_dir
