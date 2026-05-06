@@ -1,27 +1,29 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=astc-encoder
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc='A tool for compressing and decompressing images using the ASTC texture compression standard'
 arch=('x86_64')
 url='https://github.com/ARM-software/astc-encoder/'
 license=('Apache-2.0')
-depends=('gcc-libs' 'glibc')
-makedepends=('cmake' 'git' 'python')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++')
+makedepends=(
+    'cmake'
+    'git'
+    'python')
 source=("git+https://github.com/ARM-software/astc-encoder.git#tag=${pkgver}"
-        'git+https://github.com/google/googletest.git'
-        '010-astc-encoder-remove-flags-unsupported-by-gcc14.patch')
-sha256sums=('3c361d06d232db2b356ae51e9e70d7fa9a81f0f09c4e0d42cb9c848ba1e60ceb'
-            'SKIP'
-            'd7803c17c2d80f94f0e967db01a454d6640df212ba84168e99a3d9d3718d1950')
+        'git+https://github.com/google/googletest.git')
+sha256sums=('69aea22e547cd3d8eda38bd3fafc4c16fd54ac6382c17ad41b484b276536f76d'
+            'SKIP')
 
 prepare() {
     git -C astc-encoder submodule init
     git -C astc-encoder config --local submodule.Source/GoogleTest.url "${srcdir}/googletest"
     git -C astc-encoder -c protocol.file.allow='always' submodule update
-    
-    patch -d astc-encoder -Np1 -i "${srcdir}/010-astc-encoder-remove-flags-unsupported-by-gcc14.patch"
 }
 
 build() {
