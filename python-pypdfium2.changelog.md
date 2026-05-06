@@ -6,6 +6,110 @@
 
 # Changelog
 
+## 5.8.0 (2026-05-04)
+
+- Updated pdfium-binaries from `7802` to `7825`. Native and toolchained sourcebuild use pdfium `7191`.
+- Autoclose machinery update.
+  + Encapsulate finalizer state in a mutable object.
+  + Objects now remove themselves from their parent's kids cache on garbage collection / closing, to avoid accumulation.
+  + Global `ObjectTracker` added (objects are grouped by type and remove themselves from the tracker on finalization likewise). This may allow to destroy and re-initalize the library during a session.
+  + Fixed some issues and inconsistencies in autoclose hooks that were unmasked by the above changes.
+    * `PdfDocument.page_as_xobject()` now registers the XObject as a child of `dest_pdf` rather than `self`.
+    * Mark pageobjects (`PdfObject`) as untracked.
+    * For pages registered as kids of a formenv, `PdfPage.parent` now points at the formenv.
+      This means the `.parent` property should be seen as purely an autoclose hook and not something to use for other purposes.
+    * Fixed a test case to use `_detach_finalizer()` instead of `_finalizer.detach()`.
+  + Changed `DEBUG_AUTOCLOSE` to hold a loglevel rather than just a bool. This lets us distinguish between noisy debug messages and actual warnings. The default level is now `logging.WARNING`.
+  + Should any issues surface with these changes (e.g. hitting assertions, or performance concerns), please let us know. Provide logs with autoclose debugging enabled if applicable.
+- `PdfPage.get_objects()`: Added `textpage` passthrough parameter. This is required for `PdfTextObj.extract()`. Raise a meaningful exception if the textpage is missing. Demonstrate `.extract()` in pageobjects CLI.
+- `PdfFont.get_base_name()`, `.get_family_name()`: decoding `errors` option added, now defaults to `"replace"`.
+- New helpers `PdfFont.load_standard()`, `.STANDARD_FONTS` and `PdfDefaultTTFMap` added.
+- Errchecks added to `PdfPage.get_rotation()`, `.insert_obj()` and `PdfUnspHandler.setup()`.
+- New font diagnostic CLIs added (`pypdfium2 fonts` and `default-fonts`). Optional dependency `tabulate`.
+- In the CLI dispatcher, try to load only the module that is actually used.
+- CLI / `setup_logging()`: Fix warnings to be shown by removing an incorrect `logging.captureWarnings(True)` (that would require configuring the `py.warnings` logger or root logger). Instead, use just `warnings.simplefilter("always")` for now.
+  Also, fix `DEBUG_SYSFONTS` being a boolean option. Share streamhandler across loggers.
+
+
+## 5.7.1 (2026-04-20)
+
+- Updated pdfium-binaries from `7776` to `7802`. Native and toolchained sourcebuild use pdfium `7191`.
+- The pdfium update fixes a regression in `FPDFText_GetLooseCharBox()` / `PdfTextPage.get_charbox(i, loose=True)` results introduced in the previous release.
+  (Since conda pdfium-binaries are updated only once a month, this release downgrades to pdfium `7713` on conda)
+- Fixed an oversight in the CLI that caused `pypdfium2.__init__` to run before preparation after all. This had regressed shortly before the previous release.
+ `DEBUG_AUTOCLOSE=1 pypdfium2 -h` should now show `Initialize PDFium` at first.
+- Changed output string handling once more, as even slicing the buffer directly still implies a copy – so let's use `memoryview` and `codecs.decode()` instead.
+  Also, we now create buffers of the expected type directly to avoid casts, and convert number of bytes to units via ceil division where needed.
+  Updated the Readme's raw API examples accordingly.
+- `PdfTextPage.get_text_bounded()` no longer unconditionally calls `page.get_bbox()` each time. Instead, call it only if needed, when at least one of the boundary values is None.
+  If all bounds are given, skip the call. This eliminates extra overhead when `get_text_bounded()` is called many times on given rectangles, like from `PdfTextPage.get_rect()`. Though the API probably is not meant to be used this way.
+  Consider `PdfPage.get_objects(filter=(FPDF_PAGEOBJ_TEXT,))` and `textobj.extract()` as a possible alternative.
+- Added `PdfFont.is_embedded` property.
+
+
+## 5.7.0 (2026-04-08)
+
+- Updated pdfium-binaries from `7713` to `7776`. Native and toolchained sourcebuild use pdfium `7191`.
+- `PdfDocument`: When encoding input filepath to `UTF-8`, use the `surrogateescape` error handler (except on Windows).
+  This fixes loading some garbled filenames, where a default `.encode("utf-8")` call would raise `UnicodeEncodeError`. Thanks to Filipe Litaiff for the report.
+- Simplified output string handling. Access `buffer` directly instead of `buffer.raw`.
+- The CLI has moved from `pypdfium2._cli` to `pypdfium2_cli`, i.e. an own submodule.
+  `pypdfium2.__main__` and `python3 -m pypdfium2` are deprecated. Use `pypdfium2_cli.__main__` and `python3 -m pypdfium2_cli` or the `pypdfium2` entrypoint instead.
+  This has been necessary since a module's `__main__.py` implies its `__init__.py`, which gives us no chance to prepare before library init if `__main__.py` lives in the `pypdfium2` module itself.
+- Added new helper `PdfSysfontBase`. Wraps `FPDF_SYSFONTINFO` and related APIs.
+  Callers can subclass from `PdfSysfontBase` to inspect or alter the way PDFium uses system fonts.
+  This is a first step towards implementing a warning mechanism for missing system fonts or substitution.
+  Thanks to `scyyh11` for related proposals, and especially a hint on passing the right pointer in callbacks.
+- Added `PdfiumWarning` (subclass of `Warning`). A `PdfiumWarning` is now issued on XFA forms load failure, with programmatic error code info, rather than just a log message.
+- Added new submodule stub `pypdfium2_cfg`, which can be imported before `pypdfium2` for init-time configuration. The `DEBUG_AUTOCLOSE` setting has been moved to this module.
+  In the future, `pypdfium2_cfg` may be extended to give callers control over how pypdfium2 initializes PDFium (e.g. custom font paths).
+- Split off `pypdfium2_raw/version.py` from `pypdfium2/version.py`, so that `PDFIUM_INFO` is now available from within `pypdfium2_raw`.
+  This has been necessary to implement a target-specific workaround (see below).
+- `build_native.py`: When GCC is used, we now declare a `custom_toolchain`, with environment passthrough.
+   * First, this avoids inconsistency across different platforms in pdfium's build config, with some expecting just `gcc` and others an arch-prefixed variant.
+     This makes `build_native.py` more likely to work out of the box, relieving callers from the necessity to create symlinks, including our internal cibuildwheel callers.
+   * Second, this allows you to use a different version of GCC, or in fact any other compatible compiler, including clang, by setting `CC`, `CXX` and `TOOLPREFIX`.
+     This makes `--clang-as-gcc` more straightforward to implement.
+   * Also, extra `CFLAGS`, `CPPFLAGS`, `CXXFLAGS` and `LDFLAGS` are now honored in this build mode.
+- Basic FreeBSD CI added (powered by `cross-platform-actions`), testing installation with libreoffice-pdfium.
+  - On (Free)BSD with libreoffice-pdfium, pre-load implicit dependency libraries with `mode=RTLD_GLOBAL` to fix library load.
+
+
+## 5.6.0 (2026-03-08)
+
+- Updated pdfium-binaries from `7690` to `7713`. Native and toolchained sourcebuild use pdfium `7191`.
+- In our cibuildwheel workflow, all targets now exercise pypdfium2's test suite. This is implemented as a custom post-cibuildwheel step, using Debian 13 or Alpine 3 containers, respectively. Note, there are known test failures on s390x and musllinux_armv7l (but we still provide builds). In particular, on s390x, opening password-protected PDFs is broken. s390x is "use at own risk"; there is absolutely no warranty.
+- Other workflow and cibuildwheel config improvements.
+
+
+## 5.5.0 (2026-02-18)
+
+- Updated pdfium-binaries from `7665` to `7690`. Native and toolchained sourcebuild use pdfium `7191`.
+- Windows-only members are now included in bindings where applicable. Thanks to `NullYing` for an incentive to fix this.
+  Callers who want to use this API, note: it is strongly recommended that you `ctypes.cast()` the HDC object created on your side to our internal `pypdfium2.raw.HDC` before passing it into `FPDF_RenderPage()` to ensure compatible types regardless of how the bindings were generated.
+- `build_native.py` improvements
+  * `--reset` now does `git restore .` rather than `git reset --hard`. This might be more efficient.
+  * When `--test` is given, honor the unittests' return code. Suppress a musl-specific failure. Fixed `pdfium_unittests` not running on musl with clang by applying a build patch.
+  * Added `--clang-as-gcc` option to build with clang while pretending to pdfium's build system it were gcc. This mode is now used to build for `s390x` with static clang.
+- Bumped static clang from `21.1.6.0` to `21.1.8.1`.
+- On Windows and macOS, fallback setup now uses the toolchained sourcebuild.
+- Made a textpage test case more tolerant, as pdfium update has changed the result.
+
+
+## 5.4.0 (2026-02-08)
+
+- Updated pdfium-binaries from `7616` to `7665`. Native and toolchained sourcebuild use pdfium `7191`.
+
+
+## 5.3.0 (2026-01-05)
+
+- Updated pdfium-binaries from `7568` to `7616`. Native and toolchained sourcebuild use pdfium `7191`.
+- Fixed inclusion of `loongarch64` build in GH attestation. This was an oversight in the workflow.
+- `ppc64le (glibc)` is now built at pdfium-binaries using upstream's tooling.
+  This means pypdfium2's conda builds now also support this platform.
+  Updated pypdfium2's setup/workflow accordingly to use the pdfium-binaries.
+
+
 ## 5.2.0 (2025-12-12)
 
 - Updated pdfium-binaries from `7557` to `7568`. Native and toolchained sourcebuild use pdfium `7191`.
