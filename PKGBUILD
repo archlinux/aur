@@ -1,37 +1,94 @@
 pkgname=python-ocp-vscode
-_name=ocp_vscode
-pkgdesc="OCP CAD Viewer for VSCode (also for Jupyter and standalone)"
-pkgver=3.1.2
+_build_fragment="tag=v3.3.4"
+pkgver=3.3.4
 pkgrel=1
-arch=('any')
+pkgdesc="A viewer for OCP based Code-CAD (CadQuery, build123d) integrated into VS Code"
+arch=(any)
 url="https://github.com/bernhard-42/vscode-ocp-cad-viewer"
-license=('Apache-2.0')
-depends=('python-ocp-tessellate' 'python-requests' 'python-ipykernel' 'python-orjson'
-    'python-websockets' 'python-pyaml' 'python-flask' 'python-flask-sock' 'python-click'
-    'python-pyperclip' 'python-questionary')
-makedepends=('python-build' 'python-installer' 'python-wheel')
-#checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/o/$_name/$_name-$pkgver.tar.gz"
-    "ocp-vscode")
-sha256sums=('540f66f26c13249a698a0032eaa869f6675ec71ab34c293c5a084b4cf00ec376'
-            '4fd564ab59d38072be61cfa5159a297e7222879265ffea94684296bfe550aa26')
+license=(Apache-2.0)
+depends=(
+ipython
+jupyter-console
+python-click
+python-ocp
+python-ocp-tessellate
+python-orjson
+python-websockets
+python-flask
+python-numpy
+python-orjson
+python-pyperclip
+python-questionary
+python-threejs_materials
+python-flask-sock
+python-pygltflib
+python-pillow
+python-matplotlib
+python-webcolors
+python-yaml
+)
+checkdepends=(
+python-pytest
+python-build123d
+)
+makedepends=(
+git
+make
+npm
+vsce
+python-setuptools-scm
+python-build
+python-installer
+python-wheel
+yarn
+)
+optdepends=(
+"python-cadquery: for working with cadquery"
+"python-build123d: for working with build123d"
+)
+
+install=python-ocp-vscode.install
+
+source=("git+https://github.com/bernhard-42/vscode-ocp-cad-viewer#${_build_fragment}")
+
+b2sums=('7f12bdc82b41c6f8cf2f8fe23f949353aa04290e3d441803fea203e586988947df8f6ec45db15c635f263c5fb63edc168cee369f68436fe2b52238f45be5ed17')
+
+pkgver() {
+  cd vscode-ocp-cad-viewer
+  git describe --tags | rev | cut -d- -f2- | rev | sed 's/-/.r/' | sed 's/^v//'
+}
+
+prepare() {
+  cd vscode-ocp-cad-viewer
+  #sed '/^[ \t]*vsce package/s/^/#/' -i Makefile
+  sed '/^[ \t]*@python -m build/s/^/#/' -i Makefile
+  sed '/^[ \t]*@ls -l dist/s/^/#/' -i Makefile
+  mkdir -p ocp_vscode/static/css
+}
 
 build() {
-    cd $_name-$pkgver
-    python -m build --wheel --no-isolation
+  cd vscode-ocp-cad-viewer
+  npm install --cache "${srcdir}/npm-cache"
+  make dist
+  python -m build --wheel --no-isolation
+}
 
+check() {
+  python -m venv --without-pip --system-site-packages --clear venv
+  source venv/bin/activate
+
+  cd vscode-ocp-cad-viewer
+  python -m installer dist/*.whl
+
+  NATIVE_TESSELLATOR=0 OCP_VSCODE_PYTEST=1 python -m pytest -v -s tests/ --ignore=tests/test_show.py --ignore=tests/test_viewer_config.py
+  #NATIVE_TESSELLATOR=1 OCP_VSCODE_PYTEST=1 python -m pytest -v -s tests/
+  #--ignore=tests/test_show.py --ignore=tests/test_viewer_config.py
+
+  deactivate
 }
 
 package() {
-    cd $_name-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
-
-    # install python executable to simplify running as standalone
-    install -Dm755 -t "$pkgdir/usr/bin" "../ocp-vscode"
+  cd vscode-ocp-cad-viewer
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m644 -t "${pkgdir}/usr/share/${pkgname}" *.vsix
 }
-
-# The test files aren't actually using pytest, and fail to load
-#check() {
-#    cd $_name-$pkgver
-#    pytest
-#}
