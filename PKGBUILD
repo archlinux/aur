@@ -5,7 +5,7 @@
 # (aur.archlinux.org:komai.git) is kept in sync from the upstream file above.
 # Patches are welcome at the upstream repository, not against the AUR copy.
 pkgname=komai
-pkgver=2026.05.06.2
+pkgver=2026.05.06.3
 pkgrel=1
 pkgdesc="A fine Matrix chat app you can get to love"
 arch=('x86_64')
@@ -51,6 +51,14 @@ optdepends=(
 )
 source=("git+https://github.com/etkecc/komai.git#tag=v${pkgver}")
 sha256sums=('SKIP')
+
+prepare() {
+	# Build against the distro Rust toolchain rather than upstream's
+	# rustup channel pin. The removal opts out of both surfaces (Komai's
+	# CMake glue and rustup's shim auto-install); see README.md for why
+	# both matter.
+	rm -f "$pkgname/rust-toolchain.toml"
+}
 
 build() {
 	cmake \
