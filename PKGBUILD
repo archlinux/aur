@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 _pkgname="evdi"
 pkgname="$_pkgname-dkms"
-pkgver=1.14.15
+pkgver=1.14.16
 pkgrel=1
 pkgdesc="Kernel module to enable management of multiple screens"
 url="https://github.com/DisplayLink/evdi"
@@ -34,7 +34,7 @@ conflicts=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('3f2f602cf8c3944e5b5f62e2649601185b3c3abac70f6f8941c2449a642f3bff')
+sha256sums=('4f0e3d3cfc44c8371ae4f0a21ff01f97e46466cbb878c4e6307e97fc48318094')
 
 prepare() {
   sed -E -e '/^CLEAN=/d' -i "$_pkgsrc/module/dkms.conf"

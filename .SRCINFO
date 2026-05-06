@@ -1,6 +1,6 @@
 pkgbase = evdi-dkms
 	pkgdesc = Kernel module to enable management of multiple screens
-	pkgver = 1.14.15
+	pkgver = 1.14.16
 	pkgrel = 1
 	url = https://github.com/DisplayLink/evdi
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = evdi-dkms
 	makedepends = python-setuptools
 	depends = dkms
 	optdepends = python: for pyevdi
-	provides = evdi=1.14.15
+	provides = evdi=1.14.16
 	conflicts = evdi
 	conflicts = python-pyevdi
-	source = evdi-1.14.15.tar.gz::https://github.com/DisplayLink/evdi/archive/v1.14.15/evdi-1.14.15.tar.gz
-	sha256sums = 3f2f602cf8c3944e5b5f62e2649601185b3c3abac70f6f8941c2449a642f3bff
+	source = evdi-1.14.16.tar.gz::https://github.com/DisplayLink/evdi/archive/v1.14.16/evdi-1.14.16.tar.gz
+	sha256sums = 4f0e3d3cfc44c8371ae4f0a21ff01f97e46466cbb878c4e6307e97fc48318094
 
 pkgname = evdi-dkms
