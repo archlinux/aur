@@ -1,0 +1,5 @@
+[lareview-bin]
+source = "github"
+github = "puemos/lareview"
+use_latest_release = true
+prefix = "v"
