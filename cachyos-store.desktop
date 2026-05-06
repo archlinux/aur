@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CachyOS Store
+Exec=cachyos-store %U
+Terminal=false
+Type=Application
+Icon=cachyos-store
+StartupWMClass=cachyos-store
+Comment=Modern community store for CachyOS and Arch Linux
+Categories=System;Settings;
+MimeType=x-scheme-handler/cachyos-store;
