@@ -1,5 +1,5 @@
 pkgbase = makko-bin
-	pkgdesc = A simple, lightweight, and portable Static Site Generator written in Zig.
+	pkgdesc = A simple Static Site Generator written in Zig (stable version).
 	pkgver = 2.1.2
 	pkgrel = 2
 	url = https://makko.starlightnet.work/
