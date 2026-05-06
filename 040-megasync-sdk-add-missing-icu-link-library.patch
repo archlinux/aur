@@ -1,6 +1,6 @@
 --- a/cmake/modules/sdklib_libraries.cmake
 +++ b/cmake/modules/sdklib_libraries.cmake
-@@ -110,8 +110,8 @@ macro(load_sdklib_libraries)
+@@ -121,8 +121,8 @@ macro(load_sdklib_libraries)
          pkg_check_modules(curl REQUIRED IMPORTED_TARGET libcurl)
          target_link_libraries(SDKlib PRIVATE PkgConfig::curl)
  

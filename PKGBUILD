@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=6.2.2.0
+pkgver=6.3.0.1
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -46,20 +46,28 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         '020-megasync-app-fix-cmake-dependencies-detection.patch'
         '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch'
         '040-megasync-sdk-add-missing-icu-link-library.patch')
-sha256sums=('fb6a10a4755be84fa1ff4d662005bb7e6edb2874258f6c45eeda4c9ebd9e6d50'
+sha256sums=('b79056faf3d321cbc992258fc22b844952b342dc42a6e6ab24ecab8f20a8a3e6'
             'SKIP'
-            'ceedf9b236b3f65f796e389b2c6ef33d71348d8be3c517cc59c423f1f354d092'
+            '5219537875385e9399b1a76a5775722053880cdfc0c33b5726504e020e11ad70'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
             '6a2b12ac8f210ece16216168aa699e57218577e7fea6e971d0e9b398ad78c89f'
-            '3c61fb8d266d2c12d9a30d6cc0884d3bdda33ed5dc5f9c32ada12ab8d56322bc')
+            'badfbb3f2107d8af2d6754dad9696aa62fa8e5030b6319086549c6f7a15d39ad')
 
 prepare() {
     # https://github.com/meganz/MEGAsync/issues/1010#issuecomment-2726028797
     git -C MEGAsync rm --cached src/DesignTokensImporter/megadesignassets
     
-    git -C MEGAsync submodule init
-    git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
-    git -C MEGAsync -c protocol.file.allow='always' submodule update
+    #git -C MEGAsync submodule init
+    #git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
+    #git -C MEGAsync -c protocol.file.allow='always' submodule update
+    # sdk is set to be at commit eb773dc10b00745b3e01ad71fb72f862fcfb2087 (v10.12.0) but it does not exist, using sdk v10.11.0
+    # https://github.com/meganz/MEGAsync/commit/f4504895006414de3983f79478ab9ec5ed9b082e
+    # https://github.com/meganz/sdk/tree/v10.11.0/
+    git -C meganz-sdk config --local advice.detachedHead false
+    git -C meganz-sdk checkout 6c963c89593f712ec561ea9058e3c0d006f53d5f
+    rm -r MEGAsync/src/MEGASync/mega
+    ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
+
     
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-sdk-fix-cmake-dependencies-detection.patch"
     patch -d MEGAsync -Np1 -i "${srcdir}/020-megasync-app-fix-cmake-dependencies-detection.patch"
