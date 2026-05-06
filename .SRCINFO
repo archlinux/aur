@@ -1,6 +1,6 @@
 pkgbase = cloudflare-speed-cli-bin
 	pkgdesc = CLI for internet speed test via cloudflare
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/kavehtehrani/cloudflare-speed-cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = cloudflare-speed-cli-bin
 	license = GPL-3.0
 	provides = cloudflare-speed-cli
 	conflicts = cloudflare-speed-cli
-	source_x86_64 = cloudflare-speed-cli-x86_64-0.6.6.tgz::https://github.com/kavehtehrani/cloudflare-speed-cli/releases/download/v0.6.6/cloudflare-speed-cli-x86_64-unknown-linux-musl.tar.xz
-	sha256sums_x86_64 = e6c7a2d78866dc761b25ee57058a03486715b5b779750b7e80811bc9bb10291f
-	source_aarch64 = cloudflare-speed-cli-aarch64-0.6.6.tgz::https://github.com/kavehtehrani/cloudflare-speed-cli/releases/download/v0.6.6/cloudflare-speed-cli-aarch64-unknown-linux-musl.tar.xz
-	sha256sums_aarch64 = 1d6875865c64e22d89c7782a50ec8873eed81f612952f8ba89e35569dfbf3838
+	source_x86_64 = cloudflare-speed-cli-x86_64-0.6.7.tgz::https://github.com/kavehtehrani/cloudflare-speed-cli/releases/download/v0.6.7/cloudflare-speed-cli-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = d812e22e3292446262dd0aee985ae57d11f61bcf5ad95c65054fb550b5fddb9a
+	source_aarch64 = cloudflare-speed-cli-aarch64-0.6.7.tgz::https://github.com/kavehtehrani/cloudflare-speed-cli/releases/download/v0.6.7/cloudflare-speed-cli-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 05dfecd25056cbe312603179e68f1c36aa4b3c233a1ded6cc9abe1711c50c36d
 
 pkgname = cloudflare-speed-cli-bin
