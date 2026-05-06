@@ -1,13 +1,13 @@
 pkgbase = tuicr-bin
 	pkgdesc = Terminal-based code review tool for AI-generated changes
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/agavra/tuicr
 	arch = x86_64
 	license = MIT
 	provides = tuicr
 	conflicts = tuicr
-	source = tuicr-bin-0.10.0.tar.gz::https://github.com/agavra/tuicr/releases/download/v0.10.0/tuicr-0.10.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 22cd66ba6aa7b816c0e3c7f2416191b399023853dd2af08edf30cd0400fadc8e
+	source = tuicr-bin-0.11.0.tar.gz::https://github.com/agavra/tuicr/releases/download/v0.11.0/tuicr-0.11.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 98631c04a793ab68e6e755c181d783fb89dfeb36ec27b8895f0a6b882214b0c7
 
 pkgname = tuicr-bin
