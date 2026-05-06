@@ -6,7 +6,7 @@ _srcmntr="jely2002"
 
 pkgname="${_pkgname}-bin"
 pkgver="3.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A cross-platform GUI for youtube-dl made in Rust with Tauri and Vue + Typescript"
 url="https://github.com/${_srcmntr}/${_srcname}"
 arch=("x86_64")
