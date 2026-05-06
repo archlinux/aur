@@ -1,0 +1,27 @@
+pkgbase = praxis-bin
+	pkgdesc = Praxis - Semantic Command & Control Framework for Agents (pre-built)
+	pkgver = 0.9.23
+	pkgrel = 2
+	url = https://github.com/originsec/praxis
+	install = praxis.install
+	arch = x86_64
+	license = Apache-2.0
+	depends = rabbitmq
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	backup = etc/praxis/env
+	source = praxis-0.9.23-x86_64-linux.tar.gz::https://github.com/originsec/praxis/releases/download/v0.9.23/praxis-0.9.23-x86_64-linux.tar.gz
+	source = praxis-service.service
+	source = praxis-sysusers.conf
+	source = praxis-tmpfiles.conf
+	source = praxis.env
+	source = praxis.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = praxis-bin
