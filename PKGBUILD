@@ -17,5 +17,6 @@ sha256sums=('5dfa4a22469c805f7eef6a0a32006db99936cb84a96f8400b1a1179f6e73b4f0')
 install='netchi.install'
 
 package() {
-    tar -xf data.tar.xz -C "$pkgdir/"
+    cd "$srcdir"
+    tar -xf data.tar.* -C "$pkgdir/"
 }
