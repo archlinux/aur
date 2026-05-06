@@ -1,4 +1,5 @@
-# Maintainer: Oskar Gerlciz Kowalczuk
+# Maintainer: NourEddine Y.
+# Contributor: Oskar Gerlciz Kowalczuk
 # Contributor: StaticNullException <aurcontact@teto.party>
 
 pkgname=zen-browser
