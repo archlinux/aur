@@ -1,0 +1,16 @@
+pkgbase = sandlock
+	pkgdesc = A process-based sandbox for Linux, no container, no VM, no root.
+	pkgver = 0.7.0
+	pkgrel = 0
+	url = https://github.com/multikernel/sandlock
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = sandlock-0.7.0.tar.gz::https://github.com/multikernel/sandlock/archive/refs/tags/v0.7.0.tar.gz
+	sha512sums = 6cd37e503b0202ec98025bbd5e42f635240eb11c1b76a655abe0d306bdf2c8aee39a42646b6e26e93ead093abd2cd20e279902db1bba9363eda8fe6402be6076
+	b2sums = 663d79ab13400d48ab5d66bff867032cfa6affc8b8a27e2679018e5310beb97126be33cd6a2ac092fc684fb5cb73c404b5c788d90a129d86f285c45a06527678
+
+pkgname = sandlock
