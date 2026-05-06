@@ -30,6 +30,6 @@ pre_remove() {
     systemctl daemon-reload      2>/dev/null || true
     rm -f /etc/sudoers.d/hls-livecam-dark
     rm -f /etc/sudoers.d/hls-livecam-services
-    rm -f /etc/sudoers.d/camstack-smart
+    rm -f /etc/sudoers.d/camdash-smart
     rm -f /etc/nginx/conf.d/hls-livecam.conf
 }
