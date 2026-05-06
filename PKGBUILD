@@ -2,7 +2,7 @@
 
 _pkgname=libloot
 pkgname="python-${_pkgname}"
-pkgver=0.29.4
+pkgver=0.29.5
 pkgrel=1
 pkgdesc='An experimental Python wrapper around libloot'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/loot/${_pkgname}/archive/${pkgver}.tar.gz")
 depends=('python>=3.8')
 makedepends=('cargo' 'maturin' 'python-installer')
-sha256sums=('c91c8c77cf0c72110538e058eea04261db657a30cfaf6db96a23cd2d1b56b70f')
+sha256sums=('013a9056b14469aa250080edd9894b5ed71f478b04eaef85fc92bee91bd8eac7')
 
 prepare() {
     cd "${_pkgname}-${pkgver}/python"
