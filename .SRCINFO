@@ -1,7 +1,7 @@
 pkgbase = ocaml-stdcompat
 	pkgdesc = Compatibility module for OCaml standard library
 	pkgver = 21.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thierry-martinez/stdcompat
 	arch = x86_64
 	license = LGPL-2.1-or-later
