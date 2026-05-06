@@ -1,0 +1,35 @@
+# Sources
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.deb
+*.zip
+*.rpm
+
+# Build directories
+src/
+pkg/
+
+# Extracted sources
+Windsurf/
+windsurf/
+
+# Generated packages
+*.pkg.tar.xz
+*.pkg.tar.zst
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
