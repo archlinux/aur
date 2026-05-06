@@ -1,0 +1,25 @@
+pkgbase = klear-bar-git
+	pkgdesc = A minimal Hyprland status bar in Kotlin/Native (tray, popup menus, battery, glassy refraction)
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://codeberg.org/goal10der/klearShell
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = kotlin-native-bin
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = mesa
+	depends = libglvnd
+	depends = glibc
+	optdepends = hyprland: the compositor klear is designed for
+	optdepends = ttf-dejavu: fallback font if AdwaitaSans is unavailable
+	provides = klear
+	conflicts = klear
+	source = klearShell::git+https://codeberg.org/goal10der/klearShell.git
+	source = nanovg::git+https://github.com/memononen/nanovg.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = klear-bar-git
