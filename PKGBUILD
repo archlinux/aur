@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('d6b77c35f617b48b927cc42d1456942ed893270fe5969db7678f43bf016d6653'
+sha256sums=('8067e1444645649d5d0bcd38640295154f985f9027b5910b0e5e5ee3313bcc1d'
             'SKIP')
 
 package() {
