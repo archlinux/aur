@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "libgcc" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango" "systemd-libs")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("c8e5678c733968b87b0eaf6240d0d355fd95ef32e95b4d35695f24277a171e849f952f9f68f3d011d74e53a5595795e692f5a8759dd5eebdb524e0d74d1ef1ab")
+sha512sums=("ddd03e2a5b49bb082725207d648fa188e16fc8f303b546413d08defa920ec4fa624c52252a2f296cd579135d370bde0258859b428798b5f4d211c1f3edf0c36c")
 
 package() {
     # Extract package data
@@ -65,6 +65,7 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/bulk-delete.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/bulk-merge.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/calendar.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/checkbox-checked.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/checked.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/checkednew.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/circle_1.svg"
