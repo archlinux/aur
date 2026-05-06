@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=marimo
-pkgver=0.23.4
+pkgver=0.23.5
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -58,6 +58,12 @@ optdepends=(
     'python-mcp: MCP support'
     'python-pydantic: MCP support'
 
+    # OpenTelemetry
+    'python-opentelemetry-api: For tracing debugging'
+    'python-opentelemetry-sdk: For tracing debugging'
+    'python-opentelemetry-exporter-otlp-proto-http: For tracing debugging'
+    'python-opentelemetry-exporter-otlp-proto-grpc: For tracing debugging'
+
     # Others
     'python-altair: Plotting in datasource viewer'
     'python-pydantic-ai-slim: AI features'
@@ -71,7 +77,7 @@ optdepends=(
 
 # PyPI source release
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-b2sums=('489703c3cfa9a5c4e7b2afd370cdc914cf85efa237d31e906cd44455e58ce6fb4ac595801b8f2f3fe26dffc67d27d277add29c11ea8d8bc34916ab085517c3e1')
+b2sums=('da4d962c98a667a605c46901921752ac094e72ee2e9361d5d17a5b9ed6928fea8412fb00071f493bf38dad0df2c5ec2d79574aa5f1cc96ac0b1552080f12d430')
 
 build() {
     cd $pkgname-$pkgver
