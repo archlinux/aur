@@ -4,10 +4,10 @@
 # pkgver is set to 5.0.0+dev is replaced in the update-aur.sh script
 
 pkgname=system-bridge-git
-pkgver=5.4.5.r5637.g5bfb400
+pkgver=5.4.5.r5638.g65ff141
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
-makedepends=('git' 'go' 'pnpm')
+makedepends=('git' 'mise')
 source=("$pkgname::git+https://github.com/timmo001/system-bridge.git")
 md5sums=('SKIP')
 conflicts=('system-bridge' 'system-bridge-debug')
@@ -21,12 +21,18 @@ provides=('system-bridge')
 
 build() {
   cd "$pkgname"
+  export MISE_DATA_DIR="${srcdir}/.mise"
+  export MISE_CACHE_DIR="${srcdir}/.cache/mise"
+  export PATH="${MISE_DATA_DIR}/shims:${PATH}"
   export STATIC_EXPORT=true
   export CGO_ENABLED=1
-  make build_web_client
+  mise trust -a
+  mise install
+  mise exec -C web-client -- pnpm install --frozen-lockfile
+  mise exec -- make build_web_client
   local version
   version="$(cd "$srcdir/$pkgname" && git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)")"
-  go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${version}'" -o "system-bridge" .
+  mise exec -- go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${version}'" -o "system-bridge" .
 }
 
 package() {
