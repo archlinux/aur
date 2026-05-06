@@ -1,6 +1,6 @@
 # Maintainer: AmarBego <begovicamar@proton.me>
 pkgname=gittop-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A lightweight GitHub notifications client. Why spin up a browser just to check your GitHub notifications?"
 arch=('x86_64')
@@ -11,11 +11,11 @@ conflicts=('gittop')
 depends=('gcc-libs')
 options=('!strip' '!debug')
 install=gittop.install
-source=("gittop-${pkgver}-linux-x86_64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v${pkgver}/gittop-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('25639a81a7c7e9644799cde087842337090234e02d4c2b60de8167bcb08743b7')
+source=("gittop-${pkgver}-linux-gnu-x86_64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v${pkgver}/gittop-${pkgver}-linux-gnu-x86_64.tar.gz")
+sha256sums=('d994f67a049c0cb1992b114effc5c5431d5640147d6dce6a373726e921dda253')
 
 package() {
-    cd "${srcdir}/gittop-${pkgver}-linux-x86_64"
+    cd "${srcdir}/gittop-${pkgver}-linux-gnu-x86_64"
     install -Dm755 "gittop" "${pkgdir}/usr/bin/gittop"
     install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "README.txt" "${pkgdir}/usr/share/doc/${pkgname}/README.txt"
