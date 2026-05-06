@@ -3,7 +3,7 @@ _pkgname=@appium/execute-driver-plugin
 _scope="${_pkgname%%/*}"
 _name="${_pkgname##*/}"
 pkgname="nodejs-${_scope//@/}-$_name"
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="Plugin for batching and executing driver commands with Appiums"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_name-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('3ea658fa3bc451249da97e5bf0c8a19144fc56428f8a632e6b43db3fe54e9bc6')
+sha256sums=('0a62fda7b5a96d8ffb4744d9b03c9fc623bad89c417ec499919ab9084ab034ae')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
