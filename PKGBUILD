@@ -1,13 +1,12 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=nightlight-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Experience a new way of connecting with like-minded people on Nightlight, a free social media platform that values inclusivity, customization, and an ad-free environment."
 
 arch=('x86_64')
 
 url="https://nightlightapp.net/"
-license=('Proprietary')
 
 # Electron's dependencies, as Nightlight ships with a vendored
 depends=(
