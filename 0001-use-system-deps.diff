@@ -1,7 +1,7 @@
-diff --git a/ui/deps.json b/ui/deps.json
-index aa71583..b85f875 100644
---- a/ui/deps.json
-+++ b/ui/deps.json
+diff --git a/deps.json b/deps.json
+index 452fb5e..2d37d28 100644
+--- a/deps.json
++++ b/deps.json
 @@ -8,7 +8,8 @@
      "url": "https://github.com/chriskohlhoff/asio.git",
      "x-cmake": {
@@ -16,6 +16,16 @@ index aa71583..b85f875 100644
      "url": "https://github.com/taocpp/PEGTL.git",
      "x-cmake": {
        "name": "pegtl",
+-      "exclude_from_all": true
++      "exclude_from_all": true,
++      "find_package_args": "GLOBAL"
+     }
+   },
+   {
+@@ -31,7 +33,8 @@
+     "url": "https://github.com/mozilla/cubeb.git",
+     "x-cmake": {
+       "name": "cubeb",
 -      "exclude_from_all": true
 +      "exclude_from_all": true,
 +      "find_package_args": "GLOBAL"
