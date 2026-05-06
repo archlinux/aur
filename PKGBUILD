@@ -1,5 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+_name=LaReview
 _gitauthor=puemos
 _gitname=lareview
 _appname=${_gitname}
@@ -38,6 +39,8 @@ package() {
 
 	# this extracts all into the pkgdir
 	tar -xf "${srcdir}/data.tar.gz"
+
+	sed -i -e 's/Categories=/Categories=Development;Utility;/g' "${pkgdir}/usr/share/applications/${_name}.desktop"
 
 	install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
