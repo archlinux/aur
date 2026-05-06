@@ -15,11 +15,9 @@ pkgbase = klear
 	depends = glibc
 	optdepends = hyprland: the compositor klear is designed for
 	optdepends = ttf-dejavu: fallback font if AdwaitaSans is unavailable
-	provides = klear
-	conflicts = klear
-	source = klearShell::git+https://codeberg.org/goal10der/klearShell.git
+	source = klear::git+https://codeberg.org/goal10der/klearShell.git
 	source = nanovg::git+https://github.com/memononen/nanovg.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = klear-bar-git
+pkgname = klear

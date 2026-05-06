@@ -23,8 +23,6 @@ makedepends=(
   'kotlin-native-bin'
   'wayland-protocols'
 )
-provides=('klear')
-conflicts=('klear')
 source=(
   "$_pkgname::git+$url.git"
   'nanovg::git+https://github.com/memononen/nanovg.git'
