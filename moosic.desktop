@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Moosic
+GenericName=Audio Player
+Comment=Retro inspired audio player with Subsonic streaming support
+Exec=moosic
+Icon=moosic
+Terminal=false
+Categories=Audio;Player;
+Keywords=music;audio;player;subsonic;navidrome;
+StartupNotify=true
+StartupWMClass=moosic
