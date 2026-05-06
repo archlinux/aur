@@ -2,7 +2,7 @@
 # Maintainer: Sebastian Ehlert  <awvwgk at gmail dot com>
 
 pkgname=dftd4
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/dftd4/dftd4'
@@ -18,7 +18,7 @@ makedepends=('asciidoctor'
 license=('LGPL-3.0')
 pkgdesc='A Generally Applicable Atomic-Charge Dependent London Dispersion Correction'
 source=("dftd4-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c41404350f18ddcf23343f7c7a3786cd2a8b8e242a9673d87b1236048f1311a5')
+sha256sums=('e1255317b33af5326faf605e6135d0e0b15935a36304b8d59b7142ca15110959')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
