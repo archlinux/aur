@@ -1,7 +1,7 @@
 pkgbase = xftp-server
 	pkgdesc = XFTP relay server for SimpleX Chat - private file transfer without metadata
 	pkgver = 6.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://simplex.chat/docs/xftp-server.html
 	install = xftp-server.install
 	arch = x86_64

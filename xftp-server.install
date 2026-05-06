@@ -10,7 +10,13 @@ post_install() {
         rm -f /etc/opt/simplex-xftp/file-server.ini.new
     fi
 
-    chown -R xftp:xftp /etc/opt/simplex-xftp/ 2>/dev/null || true
+    # Исправляем права на конфиги и ключи
+    if [[ -d /etc/opt/simplex-xftp ]]; then
+        chown -R xftp:xftp /etc/opt/simplex-xftp/ 2>/dev/null || true
+        chmod 600 /etc/opt/simplex-xftp/*.key 2>/dev/null || true
+        chmod 644 /etc/opt/simplex-xftp/*.crt 2>/dev/null || true
+        chmod 644 /etc/opt/simplex-xftp/*.ini 2>/dev/null || true
+    fi
     chown -R xftp:xftp /var/opt/simplex-xftp/ 2>/dev/null || true
     chown -R xftp:xftp /srv/xftp/ 2>/dev/null || true
 
@@ -62,7 +68,12 @@ post_install() {
 }
 
 post_upgrade() {
-    chown -R xftp:xftp /etc/opt/simplex-xftp/ 2>/dev/null || true
+    if [[ -d /etc/opt/simplex-xftp ]]; then
+        chown -R xftp:xftp /etc/opt/simplex-xftp/ 2>/dev/null || true
+        chmod 600 /etc/opt/simplex-xftp/*.key 2>/dev/null || true
+        chmod 644 /etc/opt/simplex-xftp/*.crt 2>/dev/null || true
+        chmod 644 /etc/opt/simplex-xftp/*.ini 2>/dev/null || true
+    fi
     chown -R xftp:xftp /var/opt/simplex-xftp/ 2>/dev/null || true
     chown -R xftp:xftp /srv/xftp/ 2>/dev/null || true
     echo ""
