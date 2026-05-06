@@ -3,11 +3,11 @@
 _appname=proxy-pin
 pkgname=proxypin-bin-fixed
 _pkgname=ProxyPin
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="ProxyPin binary with KDE6 compatibility fixes and runtime fixes (unofficial)"
 arch=('x86_64')
-url="https://github.com/wanghongenpin/network_proxy_flutter"
+url="https://github.com/wanghongenpin/proxypin"
 license=('Apache-2.0')
 
 conflicts=('proxypin-bin' 'proxypin-bin-debug')
@@ -27,7 +27,7 @@ source=(
     "proxypin.sh"
 )
 
-sha256sums=('d030cb5cd770270c0d4825ff5eaa41f4cf27d4244192f15aca3e4cd3c9889729'
+sha256sums=('afe1431eb7ca5d1d28bb46636d89534620f5fc3ea2ca5f129a9c81b409da1b23'
             'fced32536801d7664c542f9f37bc8978a12c3d4342ee424ff23353c4e9a1251d')
 
 prepare() {
