@@ -1,0 +1,13 @@
+# makepkg working directories
+src/
+pkg/
+
+# downloaded sources (named via the source=() arrays)
+LICENSE-*
+schale-pick-*-x86_64
+schale-pick-*-aarch64
+
+# built packages
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.src.tar.gz
