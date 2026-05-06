@@ -1,0 +1,4 @@
+[teller]
+source = "git"
+git = "https://github.com/tellerops/teller.git"
+prefix = "v"
