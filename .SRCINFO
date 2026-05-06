@@ -1,0 +1,22 @@
+pkgbase = picobat-git
+	pkgdesc = Free, cross-platform batch script interpreter
+	pkgver = 226.05.r585.g78b0273
+	pkgrel = 1
+	url = https://github.com/darkbatcher/picobat
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = flex
+	makedepends = bison
+	makedepends = gettext
+	depends = glibc
+	depends = xdg-utils
+	provides = picobat
+	conflicts = picobat
+	source = git+https://github.com/darkbatcher/picobat.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = picobat-git
