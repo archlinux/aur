@@ -1,8 +1,8 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-rose-db-object"
-pkgver="0.822"
-pkgrel='2'
+pkgver="0.823"
+pkgrel='1'
 pkgdesc="Extensible, high performance object-relational mapper (ORM)"
 arch=(any)
 license=('Artistic-2.0')
@@ -10,7 +10,7 @@ url="https://metacpan.org/dist/Rose-DB-Object"
 depends=('perl-bit-vector' 'perl-clone>=0.29' 'perl-datetime' 'perl-datetime-timezone' 'perl-dbi>=1.40' 'perl-list-moreutils-xs' 'perl-rose-datetime>=0.532' 'perl-rose-db>=0.782' 'perl-rose-object>=0.854' 'perl-scalar-list-utils' 'perl-time-clock>=1.00')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/J/JS/JSIRACUSA/Rose-DB-Object-${pkgver}.tar.gz")
-sha512sums=('ec466606dacf68c3157d9e1d8f32df62acc284055de0c9ab43e6ba5b240ea8e26dec12851148847b6eeef2dc46370430263bddd86d9b99d3cc46922bdd29b753')
+sha512sums=('0b3c21d558ea1ae3ffc33aa069cb53544a03c7af78b25bb9e7c7d2c1d656141efd5565ede4d2c7ba0dc98b4eb6ed68b03eb37bedf39c8f515423dd7db1aa5a9c')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
