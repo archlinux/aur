@@ -1,6 +1,6 @@
 pkgbase = smp-server
 	pkgdesc = SMP relay server for SimpleX Chat - private messaging without user identifiers
-	pkgver = 6.4.5
+	pkgver = 6.5.0
 	pkgrel = 1
 	url = https://simplex.chat/docs/server.html
 	install = smp-server.install
@@ -15,7 +15,7 @@ pkgbase = smp-server
 	depends = openssl
 	optdepends = caddy: reverse proxy for automated Let's Encrypt TLS certificates
 	optdepends = tor: Tor/onion address support and SOCKS proxy for .onion SMP servers
-	source = simplexmq-6.4.5.tar.gz::https://github.com/simplex-chat/simplexmq/archive/refs/tags/v6.4.5.tar.gz
+	source = simplexmq-6.5.0.tar.gz::https://github.com/simplex-chat/simplexmq/archive/refs/tags/v6.5.0.tar.gz
 	source = smp-server.service
 	source = smp-server.sysusers
 	source = smp-server.tmpfiles
