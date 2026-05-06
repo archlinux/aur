@@ -1,0 +1,16 @@
+post_install() {
+    echo ""
+    echo "Wallhaven 壁纸浏览器已安装成功！"
+    echo ""
+    echo "使用方法："
+    echo "  运行应用：wallhaven"
+    echo "  查看文档：https://github.com/xiaobili/wallhaven"
+    echo ""
+    echo "如果遇到问题，请访问："
+    echo "  https://github.com/xiaobili/wallhaven/issues"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

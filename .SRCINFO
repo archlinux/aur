@@ -1,0 +1,20 @@
+pkgbase = wallhaven-bin
+	pkgdesc = 一款优雅的跨平台桌面壁纸浏览与下载应用
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/xiaobili/wallhaven
+	install = wallhaven-bin.install
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = at-spi2-core
+	depends = libdrm
+	depends = libxkbcommon
+	depends = mesa
+	source = wallhaven-2.7.0.pacman::https://github.com/xiaobili/wallhaven/releases/download/v2.7.0/wallhaven-2.7.0.pacman
+	sha256sums = fcf470e78f99845e02ac91bb9c8df2c092e4062a6c4262a186131ae0779ee66e
+
+pkgname = wallhaven-bin
