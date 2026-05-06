@@ -1,0 +1,22 @@
+pkgbase = aero-sync-git
+	pkgdesc = Zero-Wattage Sovereign RGB Screen Synchronization for ASUS TUF/ROG Laptops
+	pkgver = 1.1.0.r6.g7a3cd0c
+	pkgrel = 1
+	url = https://github.com/sathwik4444/aerosync
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugin-pipewire
+	depends = asusctl
+	provides = aero-sync
+	conflicts = aero-sync
+	source = aero-sync-git::git+https://github.com/sathwik4444/aerosync.git
+	source = aero-sync.service
+	md5sums = SKIP
+	md5sums = 1a36523651cb913315d8a43c6fc4c132
+
+pkgname = aero-sync-git

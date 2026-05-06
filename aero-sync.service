@@ -1,0 +1,12 @@
+[Unit]
+Description=Aero-Sync Universal ASUS RGB Engine
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aero-sync
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
