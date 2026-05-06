@@ -4,7 +4,7 @@
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=romvault
-pkgver=3.7.4
+pkgver=3.7.5
 pkgrel=1
 pkgdesc="A tool for managing your ROMs and DATs for emulators"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 	"$pkgname.desktop"
 	"$pkgname.png"
 	'tmpfiles.d.conf')
-sha256sums=('6773d87062c797a4ae76d02a8fa47c269405f891887bf4305e2cb75240359bf9'
+sha256sums=('e102cf50853acff339ea09481f765f80b643a48b7a9ce049623680be1df6e8d2'
             '996bf0d32dc11506ea2635d64474c24399fab25933463f27d70cfa1d50431a16'
             'ad758b4064853620e2e213cb2af8d05caa3d7b6e4096f3223bf7ebd48d5abef5'
             'e289bf838cf51eacfcee48bbe468139ea6b4df3fff97ac1618bb7ba0ac9afd7d'
