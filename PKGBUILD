@@ -1,7 +1,7 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=llmfit-bin
 _pkgname=llmfit
-pkgver=0.9.20
+pkgver=0.9.21
 pkgrel=1
 pkgdesc="CLI tool to tell which LLM models will run best on your hardware"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=("${_pkgname}-${pkgver}-linux.tar.gz::https://github.com/AlexsJones/llmfit/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('e0ab7a8bd0eab84b6e9bec1f948b4f0f831c7d2d249c39dfe2f45476858b4293')
+sha256sums=('680d9f0139a1e395ee97fa8418216ef0489a6e7be424750007302947a0858033')
 
 
 package() {
