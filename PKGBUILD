@@ -3,7 +3,7 @@
 
 pkgname=smp-server
 pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SMP relay server for SimpleX Chat - private messaging without user identifiers"
 arch=('x86_64' 'aarch64')
 url="https://simplex.chat/docs/server.html"
