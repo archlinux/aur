@@ -1,6 +1,6 @@
 # Maintainer: mizorewww <aac6fef@icloud.com>
 pkgname=arkloop-git
-pkgver=26.3.27.r0.g0000000
+pkgver=26.3.27.r2277.g681aa79
 pkgrel=1
 pkgdesc="Desktop app for building conversational AI agents"
 arch=('x86_64' 'aarch64')
@@ -29,9 +29,6 @@ options=('!strip' '!debug')
 source=('git+https://github.com/qqqqqf-q/Arkloop.git')
 sha256sums=('SKIP')
 
-_pkgsrc="${srcdir}/Arkloop"
-_app_dir="${_pkgsrc}/src/apps/desktop"
-
 _pnpm() {
   pnpm --config.manage-package-manager-versions=false "$@"
 }
@@ -41,7 +38,7 @@ _pnpm_install() {
 }
 
 pkgver() {
-  cd "${_pkgsrc}"
+  cd "${srcdir}/Arkloop"
   local app_version commit_count commit_hash
   app_version="$(node -p "require('./src/apps/desktop/package.json').version")"
   commit_count="$(git rev-list --count HEAD)"
@@ -58,27 +55,29 @@ _electron_arch() {
 }
 
 prepare() {
-  cd "${_pkgsrc}"
+  cd "${srcdir}/Arkloop"
   _pnpm_install install --frozen-lockfile
 }
 
 build() {
-  cd "${_pkgsrc}"
+  cd "${srcdir}/Arkloop"
   local electron_arch
+  local app_dir="${srcdir}/Arkloop/src/apps/desktop"
   electron_arch="$(_electron_arch)"
 
   _pnpm --filter @arkloop/desktop run build:web
   _pnpm --filter @arkloop/desktop run build:electron
   node src/apps/desktop/scripts/build-sidecar.mjs --platform linux --arch "${electron_arch}"
 
-  rm -rf "${_app_dir}/release/linux-unpacked"
+  rm -rf "${app_dir}/release/linux-unpacked"
   _pnpm --filter @arkloop/desktop exec electron-builder \
     --linux dir \
     -c.extraMetadata.version="${pkgver}"
 }
 
 package() {
-  local release_dir="${_app_dir}/release/linux-unpacked"
+  local app_dir="${srcdir}/Arkloop/src/apps/desktop"
+  local release_dir="${app_dir}/release/linux-unpacked"
   local app_bin=''
 
   if [[ ! -d "${release_dir}" ]]; then
@@ -117,9 +116,9 @@ Categories=Development;
 StartupWMClass=Arkloop
 EOF
 
-  install -Dm644 "${_app_dir}/resources/icon.png" \
+  install -Dm644 "${app_dir}/resources/icon.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/arkloop.png"
-  install -Dm644 "${_pkgsrc}/LICENSE" \
+  install -Dm644 "${srcdir}/Arkloop/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   if [[ -f "${pkgdir}/opt/arkloop/chrome-sandbox" ]]; then
