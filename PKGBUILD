@@ -15,7 +15,7 @@ pkgname=(
 	'ledspicer-dev'
 )
 
-pkgver=0.7.4
+pkgver=0.7.4.1
 pkgrel=1
 pkgdesc="LED controller daemon for arcade cabinets and RGB lighting"
 arch=('x86_64' 'aarch64' 'armv7h')
