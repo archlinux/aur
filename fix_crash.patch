@@ -1,0 +1,13 @@
+--- a/src/align/global_ranking/extend.cpp
++++ b/src/align/global_ranking/extend.cpp
+@@ -213,6 +213,10 @@ void extend(Search::Config& cfg, Consumer& out) {
+ 	timer.go("Computing alignments");
+ 	OutputWriter writer{ &out };
+ 	output_sink.reset(new ReorderQueue<TextBuffer*, OutputWriter>(0, writer));
++	if (!cfg.thread_pool) {
++		cfg.thread_pool.reset(new ThreadPool());
++		cfg.thread_pool->run(1);
++	}
+ 
+ 	std::atomic<BlockId> next_query(0);
+ 	const BlockId query_count = cfg.query->seqs().size() / align_mode.query_contexts;

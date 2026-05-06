@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=diamond
-pkgver=2.1.24
+pkgver=2.1.25
 pkgrel=1
 pkgdesc="High performance sequence aligner for protein and translated DNA searches with big sequence data. https://doi.org/10.1038/s41592-021-01101-x"
 arch=('x86_64')
@@ -12,11 +12,13 @@ license=('GPL-3.0-only')
 depends=('gcc-libs' 'zlib' 'zstd' 'glibc' 'sqlite')
 makedepends=('cmake' 'mold')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bbuchfink/diamond/archive/v$pkgver.tar.gz"
-        )
-sha256sums=('4879c27a8fc96d84793c3239a314cc3ff78f3b26ee6a3f228cddab6338bc0990')
+        "fix_crash.patch")
+sha256sums=('4d65c2cc796c158f3a315af14f2a1cfe0a0917326bc2bf394da235bb7159f9d4'
+            '44de13da6132aaac050eb1e0988e658999e99540e6ff55ed5a1d0816529c9112')
 
 prepare() {
     cd $pkgname-$pkgver
+    patch -p1 -i "$srcdir/fix_crash.patch"
     # set correct documentation link.
     sed -i 's|http://www.diamondsearch.org|https://github.com/bbuchfink/diamond/|g' src/basic/config.cpp
     sed -i 's|http://www.diamondsearch.org|https://github.com/bbuchfink/diamond/wiki/3.-Command-line-options|g' src/util/command_line_parser.cpp
@@ -36,10 +38,10 @@ build() {
   cmake --build build
 }
 
-#check() {
- #   cd $pkgname-$pkgver
-   # ctest --test-dir build --output-on-failure
-#}
+check() {
+    cd $pkgname-$pkgver
+    ctest --test-dir build --output-on-failure
+}
 
 package() {
   cd $pkgname-$pkgver
