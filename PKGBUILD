@@ -10,7 +10,7 @@ depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugin-pipewire'
 makedepends=('cargo' 'git')
 provides=('aero-sync')
 conflicts=('aero-sync')
-source=("${pkgname}::git+https://github.com/sathwik4444/aerosync.git"
+source=("${pkgname}::git+https://github.com/sathwik4444/aerosync.git#branch=main"
         "aero-sync.service")
 md5sums=('SKIP'
          '1a36523651cb913315d8a43c6fc4c132')
