@@ -1,6 +1,6 @@
 pkgbase = equicord
 	pkgdesc = The other cutest Discord client mod
-	pkgver = 1.0.136.r7277gd7a841f1b
+	pkgver = 1.0.137.r7277gd7a841f1b
 	pkgrel = 1
 	epoch = 2
 	url = https://equicord.org/
