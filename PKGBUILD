@@ -1,6 +1,6 @@
 # Maintainer: godlyfast <godlyfast@gmail.com>
 pkgname=hyprwave-hifi-git
-pkgver=r170.d907552
+pkgver=r172.fa92871
 pkgrel=1
 pkgdesc="HyprWave HiFi - GTK4 Wayland music overlay with PipeWire visualization and per-application volume (git version)"
 arch=('x86_64')

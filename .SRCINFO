@@ -1,6 +1,6 @@
 pkgbase = hyprwave-hifi-git
 	pkgdesc = HyprWave HiFi - GTK4 Wayland music overlay with PipeWire visualization and per-application volume (git version)
-	pkgver = r170.d907552
+	pkgver = r172.fa92871
 	pkgrel = 1
 	url = https://github.com/godlyfast/hyprwave-hifi
 	arch = x86_64
