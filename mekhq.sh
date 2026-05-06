@@ -2,7 +2,7 @@
 
 export script_name="${0##*/}"
 
-conf_name=mekhq
+conf_name=mekhq-0.50.12
 if [[ -n "$MEKHQ_CONF_NAME" ]]
 then
     conf_name="$MEKHQ_CONF_NAME"
@@ -21,18 +21,18 @@ then
     rsync -avc /usr/lib/mekhq/ "$conf/"
 fi
 
-startup_name="hq"
+startup_name="MekHQ"
 
 case "${script_name}" in
     
     "megamek")
-        startup_name="mm-startup"
+        startup_name="MegaMek"
         ;;
     "megameklab")
-        startup_name="lab"
+        startup_name="MegaMekLab"
         ;;
 esac    
 
 cd "${conf}"
 
-exec env MEGAMEK_CONFPATH="$conf" "${conf}/${startup_name}"
+exec env MEGAMEK_CONFPATH="$conf" _JAVA_AWT_WM_NONREPARENTING=1 "${conf}/bin/${startup_name}"
