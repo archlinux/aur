@@ -2,8 +2,8 @@
 _pkggroupname="HBuilderX"
 _pkgname="hbuilderx-alpha"
 pkgname="hbuilderx-alpha-bin"
-pkgver="4.87.2025112602"
-pkgrel=2
+pkgver="5.07.2026041610"
+pkgrel=1
 epoch=1
 provides=('HBuilderX-alpha')
 pkgdesc="cli的用途是让开发者可以在linux服务器上调用HBuilderX cli，来实现程序化操作打包app、上传unicloud云函数。"
@@ -14,7 +14,7 @@ source=(
 "https://download1.dcloud.net.cn/download/$_pkggroupname.$pkgver-alpha.linux_x64.full.tar.gz"
 "${_pkgname}.service"
 )
-sha256sums=('481117427df0acb96767dd0c62b1fe626e5f020e11f3fb9ce947eeef4d5f90b8'
+sha256sums=('e9a8a7579819a6293e0cd24daaec4e9158b2ac04c063bf686375d47052a53b39'
             'f7aff3457c19ee0b27a864d9147b64c53b43ab2186a96f29ede685fdbcca57df')
 options=(!strip !debug)
 
