@@ -1,7 +1,7 @@
 # Maintainer: Petr Spacek <pspacek at isc dot org>
 
 pkgname=dnsperf-git
-pkgver=2.8.0.r6.7afc0d3
+pkgver=2.15.1.r1.873ca00
 _pkgsubver=1
 pkgrel=1
 pkgdesc="Tools that measure performance of authoritative Domain Name services"
@@ -11,7 +11,7 @@ license=('GPL')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=('ldns' 'libck' 'libnghttp2')
-source=("git+https://github.com/DNS-OARC/dnsperf.git")
+source=("git+https://codeberg.org/DNS-OARC/dnsperf.git")
 sha512sums=('SKIP')
 
 prepare() {
