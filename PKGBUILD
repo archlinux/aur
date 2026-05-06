@@ -12,9 +12,9 @@ license=('GPL-3.0-or-later')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'mihomo')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-makedepends=('pnpm' 'cargo' 'jq' 'moreutils')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-	"${_pkgname}-service-ipc.tar.gz::https://github.com/${pkgname}/${_pkgname}-service-ipc/archive/refs/tags/${CARCH}-unknown-linux-gnu.tar.gz")
+makedepends=('pnpm' 'rust' 'jq' 'moreutils')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+	"${_pkgname}-service-ipc.tar.gz::https://github.com/${pkgname}/${_pkgname}-service-ipc/archive/${CARCH}-unknown-linux-gnu.tar.gz")
 sha512sums=('7bb62dc57a04a524bebcfa7e8c9cbb3c0ec4c4158494148c360abad9dfeaed4df4beaaa13afd851efe131583613d0a07783a7ccb2ff1c3f575ce38522ff64786'
             '7766dee3e4fdc3242c0f98348de2a174521343586e7f89af3783c605eaac50fcc5bdb4000406b0b721640a40a1e8361d0ce939f3058571936b688eedb63b1790')
 
@@ -28,19 +28,20 @@ prepare() {
 	pnpm i
 
 	cd src-tauri
-	cargo fetch --locked --target $(rustc --print host-tuple)
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
-	cd "${_pkgname}-service-ipc-${CARCH}-unknown-linux-gnu/"
+	pushd "${_pkgname}-service-ipc-${CARCH}-unknown-linux-gnu/"
 	export CFLAGS+=" -ffat-lto-objects"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export AWS_LC_SYS_NO_JITTER_ENTROPY=1
 	_build_service
 	_package_service
+	popd
 
-	cd "../${pkgname}-${pkgver}/"
-	install -d ./src-tauri/sidecar/
+	cd "${pkgname}-${pkgver}/"
 
 	# Use empty files as placeholders
 	touch ./src-tauri/sidecar/verge-mihomo{,-alpha}-${CARCH}-unknown-linux-gnu
@@ -56,7 +57,7 @@ package() {
 
 _prepare_service() {
 	echo "==> Starting ${FUNCNAME[0]}()..."
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target host-tuple
 }
 
 _build_service() {
@@ -68,9 +69,10 @@ _package_service() {
 	echo "==> Starting ${FUNCNAME[0]}()..."
 
 	pushd target/release
+	local _sidecar_dir="${srcdir}/${pkgname}-${pkgver}/src-tauri/sidecar"
 	local _suffix="${CARCH}-unknown-linux-gnu"
-	install -Dm755 "${_pkgname}-service" "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/${_pkgname}-service-${_suffix}"
-	install -Dm755 clash-verge-service-install "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/${_pkgname}-service-install-${_suffix}"
-	install -Dm755 clash-verge-service-uninstall "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/${_pkgname}-service-uninstall-${_suffix}"
+	install -Dm755 "${_pkgname}-service" "${_sidecar_dir}/${_pkgname}-service-${_suffix}"
+	install -Dm755 "${_pkgname}-service-install" "${_sidecar_dir}/${_pkgname}-service-install-${_suffix}"
+	install -Dm755 "${_pkgname}-service-uninstall" "${_sidecar_dir}/${_pkgname}-service-uninstall-${_suffix}"
 	popd
 }
