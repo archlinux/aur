@@ -1,7 +1,7 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-explorer
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='ASE Hierarchical Project Explorer with NerdFont Icons'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-explorer'
@@ -62,4 +62,11 @@ package() {
     DESTDIR="${pkgdir}" ninja -C build install
     install -Dm644 packaging/ase-explorer.desktop \
         "${pkgdir}/usr/share/applications/ase-explorer.desktop"
+
+    # Brand icons (committed in tool repo's packaging/icons/, sourced from
+    # sha-web-resources/generated/ase/ via build.sh on dev machines)
+    for size in 16 32 48 192 512; do
+        install -Dm644 "packaging/icons/icon-${size}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/ase-explorer.png"
+    done
 }
