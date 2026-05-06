@@ -12,67 +12,70 @@ _bldtype='Release'
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20251218
+_utdicdate=20260503
 _dict=(alt-cannadic
-    edict2
-    jawiki
-    neologd
-    personal-names
-    place-names
-    skk-jisyo
-    sudachidict)
+       edict2
+       jawiki
+       neologd
+       personal-names
+       place-names
+       skk-jisyo
+       sudachidict)
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.32.5994.102.20251218
+pkgver=3.33.6133.102.20260503
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'qt6-base' 'clang' 'fcitx5' 'emacs' 'ibus')
-source=(git+https://github.com/fcitx/mozc.git#commit=a02a2846ffaee7e5e71324b522fa0ea0b7723002
-    #         2023-07-13: osdn.net is unstable due to Amazon
-    "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/ken_all.zip"
-    "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/jigyosyo.zip"
-    #        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/x-ken-all-${_zipcode_rel}.zip"
-    #        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/jigyosyo-${_zipcode_rel}.zip"
-    git+https://github.com/abseil/abseil-cpp.git
-    git+https://chromium.googlesource.com/breakpad/breakpad
-    git+https://github.com/google/googletest.git
-    git+https://chromium.googlesource.com/external/gyp
-    git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git
-    git+https://github.com/open-source-parsers/jsoncpp.git
-    git+https://github.com/google/protobuf.git
-    git+https://github.com/utuhiro78/merge-ut-dictionaries.git
-    jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-pages-articles-multistream-index.txt.bz2)
+source=(git+https://github.com/fcitx/mozc.git#commit=a897811b9865e084963dd7ca81e2186ddc7f6403
+        #         2023-07-13: osdn.net is unstable due to Amazon
+        "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/ken_all.zip"
+        "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/jigyosyo.zip"
+        #        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/x-ken-all-${_zipcode_rel}.zip"
+        #        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/jigyosyo-${_zipcode_rel}.zip"
+        git+https://github.com/abseil/abseil-cpp.git
+        git+https://chromium.googlesource.com/breakpad/breakpad
+        git+https://github.com/google/googletest.git
+        git+https://chromium.googlesource.com/external/gyp
+        git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git
+        git+https://github.com/open-source-parsers/jsoncpp.git
+        git+https://github.com/google/protobuf.git
+        git+https://github.com/utuhiro78/merge-ut-dictionaries.git
+        jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-pages-articles-multistream-index.txt.bz2)
 noextract=(jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2)
 for dict in "${_dict[@]}"; do
     source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.bz2")
+    noextract+=("mozcdic-ut-${dict}-${_utdicdate}.txt.bz2")
 done
-sha512sums=('e1dca88e784a78fd890d42172f38ed26f4745bf0a1dc98d239b97072854a3bc08c145de8350d964acf00235ac698dabb84eed4a4aa5fd801d1fa9d3639343db2'
-    '00aef90b785a703d536813616eeec7057eeaf681b83bc35c6c4b597df298ccb6bbd97f97845c7570788e7f063d94b4c62e359ccc698fcaeff17ce472bc1b9225'
-    'ec76f0c9b02a8f0a8633d752ebdb80ac7c4d5c71dfd9916cc9140d446bae8e09755db8d40eca87fbb08d21c31db80ec977f307c497f0d731087c73a1df9ea0c7'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    '8c1d315b6b5410c40017c3d552e3a87cbf1a294f16603aa6f2f5fe7d3286210be55dee5f86857a1b4825ff97cbc63ce6325ebd12f53f1b309754b7b578e0114a'
-    '8a91bc01402aee8dc1bc3d572da20d4e787b714b1d4ef8c9fb7fbe56dbc25c3f956e508a663f67bf685af3ef913ec68b0b991116f44d846afdd130251f4a6ba7'
-    '09b86b7527d45423090645a6763bb5d2d2bfe105a1db3736a2b7d48edf73dd2a6a4da4ae8ceb62bf26da210d07a6e6f7260dea7e01539e7746731d898793a07b'
-    'd743123b0a2b5d647ba78b2c8d28a19024e03f80cf4702a47cc3226f2de63afa07fd3822a903c7b124157918e4c3572ac9a91e5cd82cecbee5051f09f1b18618'
-    '3d29498b27328b7cb5f6e9394ed280316c5d5b775bb07ca58ee661813941eac3fc3d1f6f7782877b59b8bb878b7913c1b5af3c4bd70abf4a0acdeaed38d54a01'
-    '2c3317d00faa52980c0069f0655e83681606b6e259044129149bff2ba1b7f17dbfdeeaad832b6d0b2f4935c7fd40bfefec54bbfe04bf189c5868847cc63065f6'
-    '7e6c0fac0b1a926ca8edd95f48cc80ee0adb22fda6bddcce330d0d01d56e509f1cb914d3b5b767aadc4ce35ef360229ea10269318387222039690466c31b902a'
-    'cc32f65d0ba4fd8c3cdbae3acb5780c723c4e091f08fd12adec3d6a3ad0a2bace0c2e7bd58ff6cb5a4991bbd32fd59dd973f80aa47a303ae94968bc9c82c5949'
-    '4841eeee6c073f9d40cb0ca16798918b8a535491b166f3e024228261e7c2d597910c40f5c611205fd17e88034cedbe0298363778007a4c2c254762b40398ec3d')
+sha512sums=('312e94e71bc2445ab8593d96a4311adddedbbf4e9bcf3a36deb95fac93ed74853e2cbe210593cb2cc859c18885d8e52dcac4183703f91bb43b9250747413941b'
+            'd893c137569f008202ec7f7d1871c35641b9c5d502cf35c588ea0a95950af9e2dff891181d5c76ed905201016da6aa855d74c99267d739bd4a966ccda10d6b53'
+            'b99066b666e77babb34d09622261ce2df9ac92d030302487c9873babaf7d25d5519639484a619b87fef1db299ff3f288c63ad04e2b8ae34a81a30d68311c1da4'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '68fafd5ad35656b4a7819a3fe15d8c8bdd7d93be57feec7632d6ac3cbb2bbd44dbc57255c74c14f8a38f699bf73f57630e0874c4e317e73eade1353e8034c206'
+            '258549a55dc6d6f8331c08940de7d5784430efe27d64efb66b0b07888d686b5ba72cad95fe8ff836d68a90a5a919493a4fd7c36bb682e8734fa2884369831da6'
+            'd4570230fbec418e6c8dfe16e92d3582768ee6025f0c942a35b605445ed2a2b481c5db0b768feb152b04c5f7b63ec42b0ef01964b0cd4b433a760e344321afae'
+            '4fd70121cdfa9bd3af9b478e953f89bbdea569df2b7c7650543589b71f88aa820e8c8d00a26885b45e3440b48b3bcd0986465203f15daa77cccd1b6911d4b3d1'
+            '2c3317d00faa52980c0069f0655e83681606b6e259044129149bff2ba1b7f17dbfdeeaad832b6d0b2f4935c7fd40bfefec54bbfe04bf189c5868847cc63065f6'
+            '9507bcce1739b97be8cb3164caeab8600f71e53a1b63e55f89815ab2e0cc79aff4b466509613e8bba6f6fae64a99e17f523d5fd75c395893d4b8cfe8bbdad7d2'
+            'fc1a778174f6f2220769dd611fe1669d282f66a0365b6c1b766602554166fbaf61aa3d2b3f19c408984541fa703ad4accd04a85f1e02c101cc41aa805e0cd736'
+            '4841eeee6c073f9d40cb0ca16798918b8a535491b166f3e024228261e7c2d597910c40f5c611205fd17e88034cedbe0298363778007a4c2c254762b40398ec3d'
+            '39faea2085c88f91fd2efbed79bb235979319299dd028b41e5f2b9be613b273828a12af1416907f88cfa9feeb0a74ba46059ae03e4e9b6b1d6100195edf6b74a')
 
 pkgver() {
     cd "${srcdir}/mozc" || exit
-    source <(grep = src/data/version/mozc_version_template.bzl | tr -d ' ')
+    # comment out shell-incompatible code, revert at build()
+    sed 's,DEFAULT_BUILD_LABEL_MACOS,#DEFAULT_BUILD_LABEL_MACOS,' -i src/version.bzl
+    source <(grep = src/version.bzl | tr -d ' ')
     printf "%s.%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION + 2))" "$_utdicdate"
 }
 
@@ -94,45 +97,27 @@ prepare() {
     PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >>data/dictionary_oss/dictionary09.txt
     echo 'Done.'
 
-    # disable fcitx4 target
-    rm unix/fcitx/fcitx.gyp
-
     # fix mozc icon for kimpanel
     sed -i 's|PREFIX|/usr|' unix/fcitx5/mozc.conf
 
-    # use libstdc++ instead of libc++
-    sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
-
     # UT Dictionary steps, rewrite of `sh make.sh`
-    msg 'UT Dictionary steps, rewrite of `sh make.sh`'
-    (
-        cd "${srcdir}/merge-ut-dictionaries/src/merge" || exit
-        # Use our local copy of the Mozc repo
-        sed -i -e '124,127d' merge_dictionaries.py
-        sed -i -e "65s|os\.path\.exists(f'mozc-{date}.zip')|False|" merge_dictionaries.py
-        sed -i -e '71s|zip_ref\.||' merge_dictionaries.py
-        sed -i -e "72s|mozc-master/src/data/dictionary_oss/id\.def|${srcdir}/mozc/src/data/dictionary_oss/id\.def|" merge_dictionaries.py
-        sed -i -e '74s|id_mozc\.|file\.read()\.|' merge_dictionaries.py
-        sed -i -e '80s|zip_ref\.||' merge_dictionaries.py
-        sed -i -e "81s|mozc-master/src/data/dictionary_oss/|${srcdir}/mozc/src/data/dictionary_oss/|" merge_dictionaries.py
-        sed -i -e '83s|decode()\.||' merge_dictionaries.py
-        sed -i -e '53,64d;66,69d;73d' merge_dictionaries.py
-    )
     cd "${srcdir}/merge-ut-dictionaries/src/merge" || exit
-    msg '1. Append dictionaries'
+    # disable unsuitable_words filter
+    echo '' >../common/unsuitable_words.txt
+    # do things offline
+    mv -v "$srcdir/jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2" jawiki-20260501-pages-articles-multistream-index.txt.bz2
     for dict in "${_dict[@]}"; do
-        cat "$srcdir/mozcdic-ut-${dict}-${_utdicdate}.txt" >>mozcdic-ut.txt
+        sed "/^\#${dict/-/_}/ s,\#${dict/-/_},${dict/-/_}," -i make.sh
+        sed "s,git clone --depth 1 https://github.com/utuhiro78/mozcdic-ut-${dict}.git,install -Dm644 \"${srcdir}/mozcdic-ut-${dict}-${_utdicdate}.txt.bz2\" \"mozcdic-ut-${dict}/mozcdic-ut-${dict}.txt.bz2\",g" -i make.sh
     done
-    msg '2. Patch python scripts to avoid downloading'
-    mv -v "$srcdir/jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2" jawiki-latest-pages-articles-multistream-index.txt.bz2
-    cp -a "$srcdir/mozc" "./mozc-master"
-    msg '3. Run the python scripts as in original make.sh, it may take some time...'
-    python merge_dictionaries.py mozcdic-ut.txt
-    msg '4. Finally add UT dictionary to mozc source'
+    sh make.sh
+    # Add the UT dictionary to original Mozc dictionary tree
     cat mozcdic-ut.txt >>"$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
 }
 
 build() {
+    # revert prior inline replace in pkgver()
+    sed 's,#DEFAULT_BUILD_LABEL_MACOS,DEFAULT_BUILD_LABEL_MACOS,' -i mozc/src/version.bzl
     # Fix compatibility with google-glog 0.3.3 (symbol conflict)
     CFLAGS="${CFLAGS} -fvisibility=hidden"
     CXXFLAGS="${CXXFLAGS} -fvisibility=hidden"
@@ -146,8 +131,7 @@ build() {
     export JAVA_HOME='/usr/lib/jvm/java-21-openjdk/'
     export QT_BASE_PATH=/usr/include/qt
 
-    bazel build --compilation_mode opt --config oss_linux $_targets
-
+    bazel build --compilation_mode opt --config stable_channel --config release_build --config oss_linux $_targets
 }
 
 package_mozc-ut-full-common() {
