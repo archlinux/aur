@@ -2,27 +2,30 @@
 
 pkgname=xbyak
 pkgver=7.37
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ JIT assembler for x86 (IA32), x64 (AMD64, x86-64)'
 arch=('any')
 url='https://github.com/herumi/xbyak'
 license=('BSD')
-makedepends=('git' 'cmake')
+makedepends=(
+  # 'git'
+  'cmake'
+)
 # tests require multilib repository
 #checkdepends=('nasm' 'yasm' 'boost')
-source=("$pkgname::git+$url#tag=v$pkgver")
-b2sums=('023e19ba935c1e4c94581206681a3b80b51d4737eea9d2bd1400c1f58791a23dfe0de3a087f016d3205e5b0ca703b0c037eb21c0f36e0b544899afd5eb2ae19b')
+source=("$pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('a1098c042f02d0fe80ce64549beacc44eecaa0474548d84a59b1377151261d0fb23625ccd75e174e245e43c721f5e4564d4cee3bef660695e8ae435b84d5af34')
 
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+# pkgver() {
+#   cd "$pkgname"
+#
+#   git describe --tags | sed 's/^v//'
+# }
 
 build() {
   cmake \
     -B build \
-    -S "$pkgname" \
+    -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -Wno-dev
@@ -41,7 +44,7 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" readme.{md,txt}

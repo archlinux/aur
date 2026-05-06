@@ -1,13 +1,12 @@
 pkgbase = xbyak
 	pkgdesc = A C++ JIT assembler for x86 (IA32), x64 (AMD64, x86-64)
 	pkgver = 7.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/herumi/xbyak
 	arch = any
 	license = BSD
-	makedepends = git
 	makedepends = cmake
-	source = xbyak::git+https://github.com/herumi/xbyak#tag=v7.37
-	b2sums = 023e19ba935c1e4c94581206681a3b80b51d4737eea9d2bd1400c1f58791a23dfe0de3a087f016d3205e5b0ca703b0c037eb21c0f36e0b544899afd5eb2ae19b
+	source = xbyak-7.37::https://github.com/herumi/xbyak/archive/refs/tags/v7.37.tar.gz
+	b2sums = a1098c042f02d0fe80ce64549beacc44eecaa0474548d84a59b1377151261d0fb23625ccd75e174e245e43c721f5e4564d4cee3bef660695e8ae435b84d5af34
 
 pkgname = xbyak
