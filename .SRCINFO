@@ -1,6 +1,6 @@
 pkgbase = netscli-gui-bin
 	pkgdesc = Network scanner desktop app (Tauri 2 + React) — discover hosts, scan ports, DNS, ARP
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://netscli.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = netscli-gui-bin
 	depends = libayatana-appindicator
 	provides = netscli-gui
 	conflicts = netscli-gui
-	source_x86_64 = netscli-gui-bin-0.2.5.AppImage::https://github.com/fstubner/netscli/releases/download/v0.2.5/netscli-gui-linux-x86_64.AppImage
-	sha256sums_x86_64 = 03780d0f98c30081366d03314b439091b4ac9bafc80c4e671dad77a95d10ccac
+	source_x86_64 = netscli-gui-bin-0.2.6.AppImage::https://github.com/fstubner/netscli/releases/download/v0.2.6/netscli-gui-linux-x86_64.AppImage
+	sha256sums_x86_64 = bfd48226a173ee5997530e5b6fd211fc39d2c5cd6b9b2d0c054185b054a85e60
 
 pkgname = netscli-gui-bin

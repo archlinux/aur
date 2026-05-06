@@ -7,7 +7,7 @@
 
 pkgname=netscli-gui-bin
 _appname=netscli-gui
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Network scanner desktop app (Tauri 2 + React) — discover hosts, scan ports, DNS, ARP"
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=("${_appname}")
 # Tauri's window manager needs that aren't always pre-installed.
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/fstubner/netscli/releases/download/v${pkgver}/netscli-gui-linux-x86_64.AppImage")
-sha256sums_x86_64=('03780d0f98c30081366d03314b439091b4ac9bafc80c4e671dad77a95d10ccac')
+sha256sums_x86_64=('bfd48226a173ee5997530e5b6fd211fc39d2c5cd6b9b2d0c054185b054a85e60')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
