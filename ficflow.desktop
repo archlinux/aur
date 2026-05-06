@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Ficflow
+GenericName=Fanfiction Tracker
+Comment=Track and organize your fanfiction reading list
+Exec=ficflow
+Icon=ficflow
+Terminal=false
+Categories=Utility;Office;
+Keywords=fanfiction;ao3;reading;tracker;library;
+StartupNotify=true
+StartupWMClass=ficflow
