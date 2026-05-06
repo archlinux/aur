@@ -1,5 +1,5 @@
-# Maintainer: stickynotememo <samk26633@gmail.com>
-# Contributor: Evan Edwards <evan@ejedev.com>
+# Maintainer: Evan Edwards <evan@ejedev.com>
+# Co-maintainer: stickynotememo <samk26633@gmail.com>
 
 pkgname=python-boltons
 pkgver=25.0.0
@@ -22,11 +22,11 @@ build() {
 
 check() {
   cd boltons
-  pytest -W ignore::pytest.PytestRemovedIn9Warning
+  python -m pytest -W ignore::pytest.PytestRemovedIn9Warning
 }
 
 package() {
   cd boltons
-  python -m pip install --target="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
