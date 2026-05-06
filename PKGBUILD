@@ -6,7 +6,7 @@ pkgdesc="Autonomous AI-driven network reconnaissance cyberdeck (Pre-compiled)"
 arch=('x86_64')
 url="https://github.com/404mon/netchi"
 license=('GPL3')
-depends=('nmap' 'libpcap' 'webkit2gtk' 'gtk3')
+depends=('nmap' 'libpcap' 'webkit2gtk-4.1' 'gtk3')
 provides=('netchi')
 conflicts=('netchi')
 
