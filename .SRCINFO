@@ -1,10 +1,9 @@
 pkgbase = nightlight-bin
 	pkgdesc = Experience a new way of connecting with like-minded people on Nightlight, a free social media platform that values inclusivity, customization, and an ad-free environment.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nightlightapp.net/
 	arch = x86_64
-	license = Proprietary
 	depends = c-ares
 	depends = gcc-libs
 	depends = glibc
