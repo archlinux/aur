@@ -1,0 +1,22 @@
+pkgbase = ytuff-bin
+	pkgdesc = Terminal music player for local files and YouTube Music
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/life2harsh/rustplayer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = alsa-lib
+	depends = ffmpeg
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = openssl
+	depends = webkit2gtk-4.1
+	provides = ytuff
+	conflicts = ytuff
+	source = https://github.com/life2harsh/rustplayer/releases/download/v1.0.1/rustplayer-linux-x86_64-arch.tar.gz
+	sha256sums = 112476ff45880924512881c0501594d7f49bcd38bf6894df2398acc2a8414a06
+
+pkgname = ytuff-bin
