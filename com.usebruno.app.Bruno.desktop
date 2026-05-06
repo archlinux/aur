@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Bruno
 Comment=Opensource API Client for Exploring and Testing APIs
-Exec=/usr/bin/bruno %u
+Exec=/usr/bin/bruno %U
 Terminal=false
 Type=Application
-Icon=com.usebruno.app.Bruno
-StartupWMClass=Bruno
+Icon=bruno
+StartupWMClass=bruno
+MimeType=x-scheme-handler/bruno;
 Categories=Development;
