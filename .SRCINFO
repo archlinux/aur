@@ -2,7 +2,7 @@ pkgbase = arkloop-git
 	pkgdesc = Desktop app for building conversational AI agents
 	pkgver = 26.3.27.r0.g0000000
 	pkgrel = 1
-	url = https://github.com/mizorewww/Arkloop
+	url = https://github.com/qqqqqf-q/Arkloop
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
@@ -30,7 +30,7 @@ pkgbase = arkloop-git
 	conflicts = arkloop-desktop
 	options = !strip
 	options = !debug
-	source = git+https://github.com/mizorewww/Arkloop.git
+	source = git+https://github.com/qqqqqf-q/Arkloop.git
 	sha256sums = SKIP
 
 pkgname = arkloop-git

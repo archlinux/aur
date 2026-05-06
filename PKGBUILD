@@ -4,7 +4,7 @@ pkgver=26.3.27.r0.g0000000
 pkgrel=1
 pkgdesc="Desktop app for building conversational AI agents"
 arch=('x86_64' 'aarch64')
-url="https://github.com/mizorewww/Arkloop"
+url="https://github.com/qqqqqf-q/Arkloop"
 license=('Apache-2.0')
 depends=(
   'alsa-lib'
@@ -26,7 +26,7 @@ makedepends=('git' 'go' 'nodejs' 'pnpm')
 provides=('arkloop' 'arkloop-desktop')
 conflicts=('arkloop' 'arkloop-desktop')
 options=('!strip' '!debug')
-source=('git+https://github.com/mizorewww/Arkloop.git')
+source=('git+https://github.com/qqqqqf-q/Arkloop.git')
 sha256sums=('SKIP')
 
 _pkgsrc="${srcdir}/Arkloop"
