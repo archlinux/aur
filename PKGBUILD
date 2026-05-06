@@ -20,7 +20,7 @@ depends=(
 )
 install="$pkgname.install"
 source=("wallhaven-$pkgver.pacman::https://github.com/xiaobili/wallhaven/releases/download/v$pkgver/wallhaven-$pkgver.pacman")
-sha256sums=('fcf470e78f99845e02ac91bb9c8df2c092e4062a6c4262a186131ae0779ee66e')
+sha256sums=('2de4cf3a2c5f2792798cc7562b0e0914ad58ff753b8ce60196d0aeaf46c1038f')
 
 package() {
     # 解压 .pacman 文件到临时目录
