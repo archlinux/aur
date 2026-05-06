@@ -2,8 +2,7 @@
 
 _pkgname=vkd3d-proton
 pkgname=$_pkgname-bin
-_pkgver=3.0b
-pkgver=3.0.b
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Direct3D 12 to Vulkan translation library (Windows DLL binary files)"
 url="https://github.com/HansKristian-Work/vkd3d-proton"
@@ -15,13 +14,13 @@ optdepends=('lib32-vulkan-icd-loader: 32-bit Windows application support')
 provides=('vkd3d-proton')
 conflicts=('vkd3d-proton')
 options=(!strip)
-source=("https://github.com/HansKristian-Work/$_pkgname/releases/download/v$_pkgver/$_pkgname-$_pkgver.tar.zst")
-sha256sums=('a21f5e511063b7fe80123910f1b54f75541f2edfef7106c461293f08982e9ad2')
+source=("https://github.com/HansKristian-Work/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.tar.zst")
+sha256sums=('3cf2315522af5e43605ef6d3c41dad91387040bf97199934f3f7ab76caaa2f0c')
 
 package() {
-	install -D "$_pkgname-$_pkgver"/x86/* -t "$pkgdir/usr/share/vkd3d-proton/x86"
-	install -D "$_pkgname-$_pkgver"/x64/* -t "$pkgdir/usr/share/vkd3d-proton/x64"
-	install "$_pkgname-$_pkgver"/setup_vkd3d_proton.sh -t "$pkgdir/usr/share/vkd3d-proton/"
+	install -D "$_pkgname-$pkgver"/x86/* -t "$pkgdir/usr/share/vkd3d-proton/x86"
+	install -D "$_pkgname-$pkgver"/x64/* -t "$pkgdir/usr/share/vkd3d-proton/x64"
+	install "$_pkgname-$pkgver"/setup_vkd3d_proton.sh -t "$pkgdir/usr/share/vkd3d-proton/"
 	install -d "$pkgdir/usr/bin"
 	ln -s /usr/share/vkd3d-proton/setup_vkd3d_proton.sh "$pkgdir/usr/bin/setup_vkd3d_proton"
 }
