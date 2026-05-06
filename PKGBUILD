@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw
-pkgver=3.0b
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
@@ -101,7 +101,7 @@ package() {
     install -Dm 755 -t "$pkgdir/usr/bin" setup_vkd3d_proton
 }
 
-sha256sums=('78cdda50f8fa7a4114aa78998223f0afa466267474a6ca974fce6b30a67d0746'
+sha256sums=('9778a7229d199555a42f2eb81e2d93ba31ae9db6679d163861113581def07651'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             '3ae59cc84ef70fa54df9809bba789382909d87c4d0b8d1fd278c3b25f75e69d8'
             '67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323')
