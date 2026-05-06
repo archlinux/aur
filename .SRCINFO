@@ -1,6 +1,6 @@
 pkgbase = flyenv-git
 	pkgdesc = All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment.(Use system-wide electron)
-	pkgver = 4.14.2.r2.g2c99db6
+	pkgver = 4.15.0.r1.g41a378c
 	pkgrel = 1
 	url = https://www.flyenv.com/
 	arch = aarch64
@@ -48,6 +48,6 @@ pkgbase = flyenv-git
 	source = flyenv.git::git+https://github.com/xpf0000/FlyEnv.git
 	source = flyenv.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = flyenv-git

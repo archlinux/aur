@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flyenv-git
 _pkgname=FlyEnv
-pkgver=4.14.2.r2.g2c99db6
+pkgver=4.15.0.r1.g41a378c
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -63,7 +63,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -77,7 +77,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -name "node_modules" \
+        -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
+    _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
@@ -167,8 +169,8 @@ package() {
             _builddir=linux-unpacked
             ;;
     esac
-    install -Dm644 "${srcdir}/${pkgname//-/.}/release/${_builddir}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/release/${_builddir}/resources/"{app.asar.unpacked,helper} "${pkgdir}/usr/lib/${pkgname%-git}"
+    local _app_dir="${srcdir}/${pkgname//-/.}/release/${_builddir}"
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(16x16 32x32 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/build/icons/${_icons}.png" \
