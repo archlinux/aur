@@ -1,0 +1,22 @@
+pkgbase = refrain-git
+	pkgdesc = Discord Rich Presence for Apple Music on Linux (git)
+	pkgver = 0.1.0.r0.gunknown
+	pkgrel = 1
+	url = https://github.com/Rockykln/refrain
+	arch = any
+	license = custom:Refrain
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python-pypresence
+	depends = python-dbus
+	depends = pyside6
+	provides = refrain
+	conflicts = refrain
+	source = refrain::git+https://github.com/Rockykln/refrain.git
+	sha256sums = SKIP
+
+pkgname = refrain-git
