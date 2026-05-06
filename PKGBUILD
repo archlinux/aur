@@ -1,18 +1,16 @@
 # Maintainer: lanxia <lanxia@gmail>
 
 pkgname=intel-oneapi-basekit-2025
-pkgver=2025.3.1
-# Get magic number and magic url from
-# https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html
-_pkgmagic=36
-_urlmagic=6caa93ca-e10a-4cc5-b210-68f385feea9e
-pkgrel=6
+pkgver=2025.3.2
+_pkgver=2025.3.2.21
+_urlmagic=99f4837a-25b7-425d-a897-60af022676ea
+pkgrel=1
 pkgdesc="Intel oneAPI Base Toolkit for Linux"
 arch=('x86_64')
 url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
 license=('LicenseRef-Intel-EULA-Developer-Tools AND LicenseRef-Intel-Simplified')
-source=("${pkgname}-${pkgver}.sh::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/${_urlmagic}/intel-oneapi-base-toolkit-${pkgver}.${_pkgmagic}_offline.sh")
-sha256sums=('c5757a14fe2dd428528bf6dc0c5a6498c7b135e8cf4ed93635acbf3e64a90850')
+source=("${pkgname}-${pkgver}.sh::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/${_urlmagic}/intel-oneapi-base-toolkit-${_pkgver}_offline.sh")
+sha256sums=('fbca4d913f0afc73c8de1408a07e7d9cd12c68648c51c72802b709232f13f39c')
 depends=(level-zero-loader)
 options=(!strip staticlibs)
 install="intel-oneapi-base-toolkit.install"
@@ -23,7 +21,7 @@ optdepends=('libnotify: VTune GUI'
             'at-spi2-atk: VTune GUI'
             'libdrm: VTune GUI'
             'libxcb: VTune GUI'
-            'libxcrypt-comapt: VTune GUI'
+            'libxcrypt-compat: VTune GUI'
             'xdg-utils: VTune GUI'
             'nss: Advisor GUI')
 conflicts=('intel-oneapi-base-toolkit' 'intel-oneapi-basekit')
@@ -47,11 +45,14 @@ package() {
   # we have to run as a user different from root
   # otherwise the installer wants to write to /opt, /var
   # which is not possible in fakeroot
-  LD_PRELOAD="" "intel-oneapi-base-toolkit-${pkgver}.${_pkgmagic}_offline"/install.sh \
+  LD_PRELOAD="" "intel-oneapi-base-toolkit-${_pkgver}_offline"/install.sh \
     --silent --eula accept \
     --components all \
     --install-dir "${pkgdir}"/opt/intel/oneapi \
     --log-dir "${srcdir}"/ --ignore-errors
+
+  # Remove install logs to make package reproducible.
+  rm -r "${pkgdir}/opt/intel/oneapi/logs"
 
   # allow low level compiler libs to be found
   local _lib_path='/opt/intel/oneapi/compiler'
