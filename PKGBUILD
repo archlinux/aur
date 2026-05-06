@@ -28,7 +28,7 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('f334260edf0508041280b534ca9d0abd5a02a9626c1d2e20a556ac4eb72b07f9'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 sha256sums_aarch64=('e97462cba4c8952d01c377cd0506b05dae41649f45cbfb5d7dbbbf3418be673c')
 sha256sums_x86_64=('2d60e69852a4f514db7d01053ed4eff6fa5b804b74b042e2f1cc4ddf2866aede')
 _get_electron_version() {
