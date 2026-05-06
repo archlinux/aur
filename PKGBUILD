@@ -6,7 +6,7 @@ _srcmntr="Sunhaiy"
 
 pkgname="${_pkgname}-appimage"
 pkgver="1.0.10"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A next-generation, modern, and lightweight SSH client engineered for absolute efficiency"
 url="https://github.com/${_srcmntr}/${_srcname}"
 arch=("x86_64")
