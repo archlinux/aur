@@ -1,6 +1,6 @@
 pkgbase = hihat-git
 	pkgdesc = A minimalist offline music library player for desktop, built on Electron, React, and Material UI.(Use system-wide electron)
-	pkgver = 2.0.1.r5.g4cbb570
+	pkgver = 2.2.2.r1.g8b7b6c5
 	pkgrel = 1
 	url = https://github.com/johnnyshankman/hihat
 	arch = any
@@ -17,6 +17,6 @@ pkgbase = hihat-git
 	source = hihat.git::git+https://github.com/johnnyshankman/hihat.git
 	source = hihat.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = hihat-git
