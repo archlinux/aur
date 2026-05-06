@@ -1,7 +1,7 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="dfba37e6986661e98a07c17b1c0fb81883ee3223"
+_commit="a5d7ee43039729f3b6218504ca7fd0d7d974159a"
 _solarxr_commit="fa2895b19a53d9b1686de8c2a6efe2b3e9ca4fc6"
 _pkgname="slimevr-server"
 pkgbase="${_pkgname}"
@@ -9,8 +9,8 @@ pkgname=(
   "slimevr-server"
   "slimevr-gui"
 )
-pkgver="19.0.0"
-pkgrel="2"
+pkgver="19.1.0"
+pkgrel="1"
 pkgdesc="Server for SlimeVR Full Body Tracking System"
 arch=("x86_64")
 url="https://github.com/SlimeVR/SlimeVR-Server"
