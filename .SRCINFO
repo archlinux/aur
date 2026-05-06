@@ -1,6 +1,6 @@
 pkgbase = python-firecrawl-py
 	pkgdesc = Python SDK for Firecrawl API
-	pkgver = 4.24.1
+	pkgver = 4.25.0
 	pkgrel = 1
 	url = https://github.com/mendableai/firecrawl
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-firecrawl-py
 	depends = python-pydantic
 	depends = python-requests
 	depends = python-websockets
-	source = firecrawl-py-4.24.1.tar.gz::https://files.pythonhosted.org/packages/source/f/firecrawl-py/firecrawl_py-4.24.1.tar.gz
-	sha256sums = a7f1f6528b39ba8a7a1bfd02b364986ce7e4947f4bac6d1fa09804b420653a0a
+	source = firecrawl-py-4.25.0.tar.gz::https://files.pythonhosted.org/packages/source/f/firecrawl-py/firecrawl_py-4.25.0.tar.gz
+	sha256sums = 29172c43b317b497dc94a0ee55b596ffb39027041d1476c44cb56d66062f297c
 
 pkgname = python-firecrawl-py
