@@ -1,0 +1,26 @@
+pkgbase = stegx
+	pkgdesc = Authenticated LSB steganography with Argon2id, AES-GCM/ChaCha20-Poly1305, Shamir quorum and panic mode
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Delta-Sec/StegX
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python>=3.12
+	depends = python-pillow
+	depends = python-cryptography
+	depends = python-tqdm
+	depends = python-argon2-cffi
+	optdepends = python-zstandard: zstd compression
+	optdepends = python-brotli: brotli compression
+	optdepends = python-zxcvbn: password strength meter
+	optdepends = python-numpy: faster cover-image preprocessing
+	optdepends = yubikey-manager: YubiKey challenge-response 2FA
+	source = stegx-2.0.1.tar.gz::https://github.com/Delta-Sec/StegX/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = a643ab691dafce4c058a5f8b92eef56409ad87d1246ed58d8a7f5bd6bf02fdca
+
+pkgname = stegx
