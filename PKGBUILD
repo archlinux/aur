@@ -6,12 +6,13 @@ _srcmntr="Sunhaiy"
 
 pkgname="${_pkgname}-appimage"
 pkgver="1.0.10"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A next-generation, modern, and lightweight SSH client engineered for absolute efficiency"
 url="https://github.com/${_srcmntr}/${_srcname}"
 arch=("x86_64")
 license=("AGPL3")
 options=("!strip" "!debug")
+depends=("fuse2")
 _archive="${_pkgname}-${pkgver}.AppImage"
 source=(
   "${_archive}::https://github.com/${_srcmntr}/${_srcname}/releases/download/v${pkgver}/reflex-${pkgver}-linux-x86_64.AppImage"
@@ -23,7 +24,7 @@ provides=("reflex")
 
 sha256sums=(
   "4760d432cd414539df029d1bf0776ebe9069f3c39193845badc52f36dcb27563"
-  "86d73c5ab1b998ba5ac6e9d866139a6bc456bf8de8f66e01ecc7ce996143724e"
+  "e956f9c0be9e39aedf28c31a75ab5a00468e42d57ec2117f96d8a05fb0e27325"
   "90a0628bd8b3628609e7965d792478cf9f4fcc74a31ef450d0d47148eeb2da0a"
 )
 

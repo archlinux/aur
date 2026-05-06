@@ -5,6 +5,5 @@ Terminal=false
 Type=Application
 Icon=reflex
 StartupWMClass=Reflex
-X-AppImage-Version=1.0.10
 Comment=Reflex is a modern SSH workspace with terminal, file, Docker, monitoring, and agent workflows.
 Categories=Utility;
