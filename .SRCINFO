@@ -1,6 +1,6 @@
 pkgbase = tsduck
 	pkgdesc = An extensible toolkit for MPEG/DVB transport streams
-	pkgver = 3.41_4299
+	pkgver = 3.43_4549
 	pkgrel = 1
 	url = https://tsduck.io/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = tsduck
 	depends = srt
 	depends = python
 	depends = jdk-openjdk
-	source = tsduck-3.41-4299.tar.gz::https://github.com/tsduck/tsduck/archive/v3.41-4299.tar.gz
-	sha256sums = 1940946f5d15b9c1fea941e91d4685eb60cf4857a77f55eb3ad71d4e7e79ce65
+	source = tsduck-3.43-4549.tar.gz::https://github.com/tsduck/tsduck/archive/v3.43-4549.tar.gz
+	sha256sums = a3399661d21e0d965dfef3750d4af7da61eb2924e7b48ee3edaae194ffa5203c
 
 pkgname = tsduck
