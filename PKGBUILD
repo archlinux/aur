@@ -1,7 +1,7 @@
 # Maintainer: KlapkiSzatana
 pkgname=archive-app
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Zarządzanie Domowymi Dokumentami"
 arch=('any')
 url="https://github.com/KlapkiSzatana/archive-app"
