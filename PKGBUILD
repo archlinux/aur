@@ -4,7 +4,7 @@
 
 _appname=oxlint
 pkgname=${_appname}-bin
-pkgver=1.62.0
+pkgver=1.63.0
 oxlint_pkgver=${pkgver}
 pkgrel=1
 pkgdesc="A high-performance linter for JavaScript and TypeScript built on the Oxc compiler stack"
@@ -32,8 +32,8 @@ source_aarch64=("${_binary_aarch64}-$pkgver.tar.gz::${_github_url}/${_binary_aar
 
 sha256sums=('3e11d3daddc6b07430c47fab27c0c82741560acd70851d44968a7bd18612f259'
             '95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3')
-sha256sums_x86_64=('29f315c3525a1047b894e4e1a938676086a67f250386b6d86c57f995fca40bac')
-sha256sums_aarch64=('af2214d07ef190987456e55772480017d7f3ec64fc408b8397d1e763cd3d49d8')
+sha256sums_x86_64=('79a3b7b6e153687ad30d596fc4e16af9f0b63517a8d69462d5661f76924420b8')
+sha256sums_aarch64=('eaebd0718de3288d6ae832dc1b87ab54707d4b35ff7a7d4e0c337c1ca5940782')
 
 package() {
     local _binary_var="_binary_${CARCH}"
