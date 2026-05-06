@@ -1,7 +1,7 @@
 pkgname=psst-bin
-pkgver=2025.12.20_ae4f16d
+pkgver=2026.05.05_b9c4cab
 pkgrel=0
-pkgdesc="Fast and multi-platform Spotify client with native GUI"
+pkgdesc="Fast and multi-platform Spotify client with native GUI (binary git version)"
 arch=('x86_64')
 url="https://github.com/jpochyla/psst"
 license=('MIT')
