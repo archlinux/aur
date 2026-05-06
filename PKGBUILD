@@ -2,13 +2,14 @@
 
 pkgname=labelme
 pkgver=6.1.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Image Polygonal Annotation with Python (polygon, rectangle, circle, line, point and image-level flag annotation).'
 arch=('any')
 url='https://github.com/wkentaro/labelme'
 license=('GPL-3.0-or-later')
 depends=(
   gdown
+  python-cmap
   python-imgviz
   python-loguru
   python-matplotlib
