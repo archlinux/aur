@@ -1,6 +1,6 @@
 pkgbase = ubercursor-git
 	pkgdesc = This is a hack based fork of swcursor to replicate mouse overlays on linux.
-	pkgver = r17.1e22fd6
+	pkgver = r24.919c226
 	pkgrel = 1
 	url = https://github.com/BangL/ubercursor
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = ubercursor-git
 	depends = libxext
 	provides = ubercursor
 	conflicts = ubercursor
-	options = !lto
 	source = git+https://github.com/BangL/ubercursor.git
 	sha256sums = SKIP
 
