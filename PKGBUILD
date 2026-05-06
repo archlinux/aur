@@ -6,7 +6,7 @@ _srcmntr="Sunhaiy"
 
 pkgname="${_pkgname}-appimage"
 pkgver="1.0.10"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="A next-generation, modern, and lightweight SSH client engineered for absolute efficiency"
 url="https://github.com/${_srcmntr}/${_srcname}"
 arch=("x86_64")
@@ -24,7 +24,7 @@ provides=("reflex")
 
 sha256sums=(
   "4760d432cd414539df029d1bf0776ebe9069f3c39193845badc52f36dcb27563"
-  "e956f9c0be9e39aedf28c31a75ab5a00468e42d57ec2117f96d8a05fb0e27325"
+  "ee0633f7f8b9d6996eed77120d41c31839891c0177217d38885245491a3156ea"
   "90a0628bd8b3628609e7965d792478cf9f4fcc74a31ef450d0d47148eeb2da0a"
 )
 

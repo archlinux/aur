@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Reflex
-Exec=AppRun --no-sandbox %U
+Exec=reflex %U
 Terminal=false
 Type=Application
 Icon=reflex
