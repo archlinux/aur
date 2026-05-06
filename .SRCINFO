@@ -1,6 +1,6 @@
 pkgbase = xen-edk2
 	pkgdesc = UEFI firmware for xen hypervisor from edk2
-	pkgver = 202508
+	pkgver = 202602
 	pkgrel = 1
 	url = https://github.com/tianocore/edk2
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = xen-edk2
 	license = BSD-2-Clause-Patent
 	license = MIT
 	makedepends = git
-	makedepends = nasm=2.16.03
+	makedepends = nasm
 	makedepends = python
 	makedepends = acpica
 	source = Makefile
-	source = git+https://github.com/tianocore/edk2#tag=edk2-stable202508
+	source = git+https://github.com/tianocore/edk2#tag=edk2-stable202602
 	source = openssl::git+https://github.com/openssl/openssl.git
 	source = pyca-cryptography::git+https://github.com/pyca/cryptography.git
 	source = krb5::git+https://github.com/krb5/krb5.git
@@ -39,7 +39,7 @@ pkgbase = xen-edk2
 	source = tlsfuzzer::git+https://github.com/tlsfuzzer/tlsfuzzer
 	source = tlslite-ng::git+https://github.com/tlsfuzzer/tlslite-ng
 	sha256sums = 53f8b4499acbfd7fe14fdab67df321faabcb97c2964ee5ac90d01e1434942224
-	sha256sums = 9488fe87180e3c0c2c4505c1e319bc34ac6944a65a062328d413ddf03e5a7115
+	sha256sums = 0d35069345f7d63e833d6a5133d8a066d001730c194ce8ad7fc74918881486cc
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

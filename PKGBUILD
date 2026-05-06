@@ -1,6 +1,6 @@
 # Maintainer: Sam Mulvey <archlinux@sammulvey.com>
 pkgname=xen-edk2
-pkgver=202508
+pkgver=202602
 pkgrel=1
 pkgdesc="UEFI firmware for xen hypervisor from edk2"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=(
   MIT
 )
 #'git+https://xenbits.xen.org/git-http/ovmf.git'
-makedepends=('git' 'nasm=2.16.03' 'python' 'acpica')
+makedepends=('git' 'nasm' 'python' 'acpica')
 _projname=edk2
 
 # The makefile is pulled from the Xen source in tools/firmware/ovmf-makefile
@@ -47,7 +47,7 @@ source=(
 )
 
 sha256sums=('53f8b4499acbfd7fe14fdab67df321faabcb97c2964ee5ac90d01e1434942224'
-            '9488fe87180e3c0c2c4505c1e319bc34ac6944a65a062328d413ddf03e5a7115'
+            '0d35069345f7d63e833d6a5133d8a066d001730c194ce8ad7fc74918881486cc'
             'SKIP'
             'SKIP'
             'SKIP'
