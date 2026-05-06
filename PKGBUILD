@@ -14,10 +14,6 @@ depends=('ldns' 'libck' 'libnghttp2')
 source=("git+https://codeberg.org/DNS-OARC/dnsperf.git")
 sha512sums=('SKIP')
 
-prepare() {
-  cd "${srcdir}/dnsperf"
-}
-
 pkgver() {
   cd "${srcdir}/dnsperf"
   printf "%s" "$(git describe --match 'v*' --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
