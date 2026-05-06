@@ -1,0 +1,64 @@
+--- a/rollup.config.mjs	2026-05-06 12:24:30.701626047 +0800
++++ b/rollup.config.mjs	2026-05-06 12:24:55.805204268 +0800
+@@ -7,7 +7,7 @@
+ import nodeResolve from '@rollup/plugin-node-resolve';
+ import replace from '@rollup/plugin-replace';
+ import builtinModules from 'builtin-modules';
+-import electron from 'electron';
++const electron = { path: process.env.ELECTRON_PATH || '/usr/lib/electron40/electron' };
+ import copy from 'rollup-plugin-copy';
+ 
+ import appManifest from './package.json' with { type: 'json' };
+@@ -56,25 +56,27 @@
+ 
+   return {
+     writeBundle: async () => {
+-      const response = await fetch(apiUrl);
+-      if (!response.ok) {
+-        throw new Error(
+-          `Failed to fetch supported versions from ${apiUrl}: ${response.status} ${response.statusText}`
+-        );
++      try {
++        const response = await fetch(apiUrl);
++        if (!response.ok) {
++          console.warn(`Failed to fetch supported versions from ${apiUrl}: ${response.status} ${response.statusText}`);
++          return;
++        }
++
++        const json = await response.json();
++        const signedContent = json?.signed;
++
++        if (!signedContent) {
++          console.warn('JSON response does not contain the expected "signed" field.');
++          return;
++        }
++
++        await mkdir('./app', { recursive: true });
++        await writeFile('./app/supportedVersions.jwt', signedContent);
++        console.info('Downloaded supported versions.');
++      } catch (error) {
++        console.warn(`Failed to download supported versions: ${error.message}`);
+       }
+-
+-      const json = await response.json();
+-      const signedContent = json?.signed;
+-
+-      if (!signedContent) {
+-        throw new Error(
+-          'JSON response does not contain the expected "signed" field.'
+-        );
+-      }
+-
+-      await mkdir('./app', { recursive: true });
+-      await writeFile('./app/supportedVersions.jwt', signedContent);
+-      console.info('Downloaded supported versions.');
+     },
+   };
+ };
+@@ -324,4 +326,4 @@
+       interop: 'auto',
+     },
+   },
+-];
++];
+

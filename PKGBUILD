@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rocketchat-desktop-git
 _pkgname=Rocket.Chat
-pkgver=4.12.0.r8.g6c95653
+pkgver=4.14.1.r1.gc2b584b
 _electronversion=40
 _nodeversion=25
 pkgrel=1
@@ -23,6 +23,7 @@ makedepends=(
     'curl'
     'yarn'
     'jq'
+    'patch'
 )
 optdepends=(
     'libnotify: For sending desktop notifications'
@@ -30,10 +31,12 @@ optdepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}"
+    "${pkgname%-git}-rollup.patch"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            '1c186ddc7dc31bf46c92c58e235f2d5b99ef309b0b81663e38778ef397bdd41a'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -47,7 +50,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname%-git}.git/package.json" | tr -d '^')
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -name "node_modules" \
+        -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
+    _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
@@ -67,31 +72,63 @@ prepare() {
         --categories="Network" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export PUPPETEER_SKIP_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ELECTRON_PATH="/usr/lib/electron${_electronversion}"
+    export PATH="/usr/lib/electron${_electronversion}:$PATH"
+    local HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'npmRegistryServer: "https://registry.npmmirror.com"'
-            echo "cacheFolder: "${srcdir}"/.yarn/cache"
-            echo "globalFolder: "${srcdir}"/.yarn/global"
-            echo 'networkConcurrency: 32'
-        } >> .yarnrc.yml
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+            export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
+            export YARN_NETWORK_CONCURRENCY=32
+            sed -i '/^npmRegistryServer:/d' .yarnrc.yml
+            echo 'npmRegistryServer: "https://registry.npmmirror.com"' >> .yarnrc.yml
+        }
+
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
+    patch -Np1 -i "${srcdir}/${pkgname%-git}-rollup.patch"
     _ensure_local_nvm
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    local _electron_ver="$(electron${_electronversion} -v | sed 's/v//g')"
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${_electron_ver}\"/g" package.json
     yarn config set --home enableTelemetry 0
     NODE_ENV=development    yarn install
+    rm -rf node_modules/electron
+    mkdir -p node_modules/electron
+    echo "${_electron_ver}" > node_modules/electron/.npm-version
+    echo "{\"version\": \"${_electron_ver}\"}" > node_modules/electron/package.json
+    cat > node_modules/electron/index.js << EOF
+const path = require('path');
+const electronPath = process.env.ELECTRON_PATH || '/usr/lib/electron${_electronversion}';
+module.exports = {
+  default: path.join(electronPath, 'electron'),
+  path: path.join(electronPath, 'electron'),
+};
+EOF
+    ln -sf "${ELECTRON_PATH}"/* node_modules/electron/
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
+    local _electron_ver="$(electron${_electronversion} -v | sed 's/v//g')"
+    rm -rf node_modules/electron
+    mkdir -p node_modules/electron
+    echo "${_electron_ver}" > node_modules/electron/.npm-version
+    echo "{\"version\": \"${_electron_ver}\"}" > node_modules/electron/package.json
+    cat > node_modules/electron/index.js << EOF
+const path = require('path');
+const electronPath = process.env.ELECTRON_PATH || '/usr/lib/electron${_electronversion}';
+module.exports = {
+  default: path.join(electronPath, 'electron'),
+  path: path.join(electronPath, 'electron'),
+};
+EOF
+    ln -sf "${electronDist}"/* node_modules/electron/
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.json
 }
