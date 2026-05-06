@@ -13,7 +13,7 @@ depends=()
 optdepends=('bash-completion: bash completions'
             'zsh: zsh completions'
             'fish: fish completions')
-makedepends=('rust>=1.88' 'pkgconf')
+makedepends=('cargo' 'pkgconf')
 provides=('deepseek-tui' 'deepseek')
 conflicts=('deepseek-tui' 'deepseek-tui-bin')
 
