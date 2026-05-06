@@ -1,17 +1,17 @@
 pkgbase = zephyr-bin
 	pkgdesc = A modern mod manager for all your games with built-in Archipelago support.
-	pkgver = 1.2.12
+	pkgver = 1.2.13
 	pkgrel = 1
 	url = https://github.com/Prismo-Studio/Zephyr
 	arch = x86_64
 	license = GPL3
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	provides = zephyr=1.2.12
+	provides = zephyr=1.2.13
 	conflicts = zephyr
 	options = !strip
 	options = !debug
-	source = zephyr-1.2.12.deb::https://github.com/Prismo-Studio/Zephyr/releases/download/v1.2.12/Zephyr_1.2.12_amd64.deb
-	sha256sums = a39f7d24065d6f815691344b55304215f123b1b1da2bff200f4a0cb8294c9742
+	source = zephyr-1.2.13.deb::https://github.com/Prismo-Studio/Zephyr/releases/download/v1.2.13/Zephyr_1.2.13_amd64.deb
+	sha256sums = d4365abc574a1037cade10169b2a328ba8bb6064d12db283f92d42c974f34ff3
 
 pkgname = zephyr-bin
