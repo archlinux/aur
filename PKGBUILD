@@ -1,7 +1,7 @@
 # Maintainer: xander-lin <xander-lin@users.noreply.github.com>
 
 pkgname=screenshot-cpp-git
-pkgver=0.1.0.r1.g404fe3f
+pkgver=0.1.0.r2.gf751322
 pkgrel=1
 pkgdesc='Interactive wlroots/Hyprland region screenshot tool with image clipboard and optional file-reference mode'
 arch=('x86_64')
@@ -27,8 +27,16 @@ optdepends=(
 )
 provides=('screenshot-cpp')
 conflicts=('screenshot-cpp')
-source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+_github_url='https://github.com/xander-lin/screenshot.git'
+_gitee_url='https://gitee.com/xander-lin/screenshot.git'
+source=()
+sha256sums=()
+
+prepare() {
+  rm -rf "${srcdir}/${pkgname}"
+  git clone "${_github_url}" "${srcdir}/${pkgname}" || \
+    git clone "${_gitee_url}" "${srcdir}/${pkgname}"
+}
 
 pkgver() {
   cd "${pkgname}"

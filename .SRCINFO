@@ -1,6 +1,6 @@
 pkgbase = screenshot-cpp-git
 	pkgdesc = Interactive wlroots/Hyprland region screenshot tool with image clipboard and optional file-reference mode
-	pkgver = 0.1.0.r1.g404fe3f
+	pkgver = 0.1.0.r2.gf751322
 	pkgrel = 1
 	url = https://github.com/xander-lin/screenshot
 	arch = x86_64
@@ -19,7 +19,5 @@ pkgbase = screenshot-cpp-git
 	optdepends = sway: alternative wlroots compositor environment
 	provides = screenshot-cpp
 	conflicts = screenshot-cpp
-	source = screenshot-cpp-git::git+https://github.com/xander-lin/screenshot.git
-	sha256sums = SKIP
 
 pkgname = screenshot-cpp-git
