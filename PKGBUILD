@@ -6,13 +6,13 @@
 pkgname=equicord-openasar
 _pkgname=equicord
 pkgver=1.0.137.r7277gd7a841f1b.r860g6232c4f
-pkgrel=2
+pkgrel=3
 pkgdesc='The other cutest Discord client mod (with OpenAsar)'
 arch=('x86_64')
 url='https://equicord.org/'
 license=('custom')
 options=('!debug' '!strip')
-depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3')
+depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3' 'hicolor-icon-theme')
 optdepends=('libpulse: PulseAudio support'
             'libappindicator-gtk3: Systray indicator support'
             'xdg-utils: For opening URLs and files')
