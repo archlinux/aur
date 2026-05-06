@@ -2,8 +2,8 @@
 
 _pkgname=qBittorrent-ClientBlocker
 pkgname="${_pkgname,,}"
-pkgver=3.7
-pkgrel=2
+pkgver=3.8b8
+pkgrel=1
 pkgdesc="A client blocker compatible with qBittorrent/Transmission (Beta)/BitComet (Beta, Partial) which is prohibited to include but not limited to clients such as Xunlei."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/Simple-Tracker/qBittorrent-ClientBlocker"
@@ -18,13 +18,11 @@ optdepends=('qbittorrent-nox: downloader'
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "${pkgname}-0001.patch::${url}/commit/1dc035bca4f70ace35f4f16e85b7a280729073a9.patch"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service")
-sha256sums=('3b774c0cb91dca5e2317944c3166608f73a7eff2bdcad0c74095a7cab277c26a'
-            'beccfb6f63640356734494955f9f6658ba356df46d69179eaf7d6f0d6b89f0fb'
+sha256sums=('88761873e32924b13c2866260c235a62d0491400e58f0b4b239b71d631b0f007'
             'ad67b1a1149fdc797e77786557b6bf2a66e0c34e0e622a593c95c6c617fa70d9'
             'b419f001a0e45fa19776cd255170fd12ac19dc878683a98006ff53a6984bf417'
             '57f5a17c4a36b8fed9503e2ed1b6b60b43cd9f10fa249807a084de5744d7aed2'
@@ -32,7 +30,6 @@ sha256sums=('3b774c0cb91dca5e2317944c3166608f73a7eff2bdcad0c74095a7cab277c26a'
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    patch -p1 -i "../${pkgname}-0001.patch"
     cp -f config.toml config-user.sample.toml
     sed -e "s|logPath = \"logs\"|logPath = \"/var/log/qbittorrent-clientblocker\"|" \
         -i config.toml
