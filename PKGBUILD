@@ -3,14 +3,14 @@
 _pkgname1=plasma-workspace
 _pkgname2=sonic-workspace
 pkgname="${_pkgname2}-bin"
-pkgver=6.6.2
-pkgrel=2
+pkgver=6.6.4
+pkgrel=3.1
 pkgdesc="KDE Plasma Workspace, light version with fixes and improvements for X11 session"
 arch=(x86_64)
 url="https://github.com/Sonic-DE/${_pkgname2}"
 license=('custom')
 options=(!strip)
-source=("https://x11libre.net/repo/arch_based/x86_64/${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=("https://x11libre.net/repo/arch_based/x86_64/sonicde/${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(accountsservice
          appstream-qt
@@ -118,9 +118,8 @@ provides=($_pkgname1 $_pkgname2 "${_pkgname1}-sonic-bin")
 conflicts=($_pkgname1 $_pkgname2 "${_pkgname1}-sonic-bin")
 replaces=("${_pkgname1}-sonic-bin")
 
-sha256sums=('cf49e9098dbf8570aab1cf16822d125db29c0b44f68f1e2782e0045a039b2688')
+sha256sums=('e6fa67c852b72c60853e7ea43d78dc4a7a13dfbc9a84ed2a8780a86ea20d714b')
 
 package() {
   tar -xf "${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
 }
-
