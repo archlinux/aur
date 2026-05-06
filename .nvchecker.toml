@@ -1,0 +1,5 @@
+[baeru-bin]
+source = "github"
+github = "blacknon/baeru"
+use_latest_release = true
+prefix = ""
