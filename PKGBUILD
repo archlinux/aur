@@ -1,23 +1,23 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=vortex
-pkgver=2.0.0_beta.2
-pkgrel=2
-pkgdesc="Nexus Mods' mod manager - native Linux build (Beta)"
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Nexus Mods' mod manager - native Linux build"
 arch=('x86_64')
 url="https://github.com/Nexus-Mods/Vortex"
 license=('GPL-3.0-or-later')
 
 depends=('gtk3' 'nss' 'libxss' 'libnotify' 'libappindicator-gtk3' 'libsecret' 'nodejs' 'dotnet-runtime-9.0')
-makedepends=('git' 'pnpm' 'npm' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
+makedepends=('git' 'pnpm' 'npm' 'yarn' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
 
 conflicts=('vortex-git')
 install=vortex.install
 
-source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver//_/-}"
+source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
   "vortex.desktop"
   "vortex.sh")
 
-sha256sums=('6e4dc2415071c07d7751237a4f0269425104af531eae4c225e663216cc6150d8'
+sha256sums=('930848f174257f6c9a81a63a1610492b68bc14bb505dfdd281fc0ccb8c23efac'
   '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
   'b75e3826dd3c0658b9d69ea700e9262609753b2dcb3459c26c1265273338dc1e')
 
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 prepare() {
   cd "$srcdir/Vortex"
 
-  msg2 "Patching package.json requirements..."
+  msg2 "Injecting compiler and TypeScript overrides..."
   node -e "
     const fs = require('fs');
     let pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
@@ -50,8 +50,6 @@ prepare() {
   export npm_config_runtime="electron"
   export npm_config_target="39.8.0"
   export npm_config_disturl="https://electronjs.org/headers"
-  export JOBS=4
-  export MAKEFLAGS="-j4"
 
   pnpm install --no-frozen-lockfile
 }
@@ -59,9 +57,16 @@ prepare() {
 build() {
   cd "$srcdir/Vortex"
 
+  export VORTEX_VERSION="$pkgver"
+
+  export npm_config_runtime="electron"
+  export npm_config_target="39.8.0"
+  export npm_config_disturl="https://electronjs.org/headers"
+
   export VORTEX_SKIP_SUBMODULES="1"
   export NO_PARALLEL="1"
   export npm_config_yes=true
+  export CI=1
 
   msg2 "Building project via pnpm..."
   pnpm run dist:all
@@ -74,10 +79,26 @@ build() {
   cd src/main
   node ./prepare-dist-package.mjs
 
-  echo "packages:" >dist/pnpm-workspace.yaml
+  echo "packages:" >>dist/pnpm-workspace.yaml
   echo "  - '.'" >>dist/pnpm-workspace.yaml
 
-  pnpm install --dir=./dist
+  node -e "
+    const fs = require('fs');
+    let pkg = JSON.parse(fs.readFileSync('dist/package.json', 'utf8'));
+    pkg.pnpm = pkg.pnpm || {};
+    pkg.pnpm.overrides = pkg.pnpm.overrides || {};
+    pkg.pnpm.overrides['node-addon-api'] = '8.5.0';
+    fs.writeFileSync('dist/package.json', JSON.stringify(pkg, null, 2));
+  "
+
+  pnpm install --dir=./dist --no-frozen-lockfile
+
+  msg2 "Cleaning up conflicting Windows-only native modules..."
+  rm -rf dist/node_modules/winapi-bindings 2>/dev/null || true
+  rm -rf dist/node_modules/windows-shortcuts-rs 2>/dev/null || true
+
+  rm -rf ../../dist/linux-unpacked 2>/dev/null || true
+
   pnpm exec electron-builder --config ./electron-builder.config.json \
     --publish never \
     --linux dir \
@@ -100,4 +121,6 @@ package() {
   install -Dm755 "$srcdir/vortex.sh" "$pkgdir/usr/bin/vortex"
   install -Dm644 "$srcdir/vortex.desktop" "$pkgdir/usr/share/applications/vortex.desktop"
   install -Dm644 "$srcdir/Vortex/assets/images/vortex.png" "$pkgdir/usr/share/pixmaps/vortex.png" 2>/dev/null || true
+
+  chmod -R 777 "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets"
 }
