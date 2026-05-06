@@ -1,10 +1,10 @@
 pkgbase = dsview-cli
 	pkgdesc = Scriptable DSLogic Plus capture and protocol decoding without the DSView GUI
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/LISTENAI/dsview-cli
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache-2.0 AND GPL-3.0-only
 	makedepends = git
 	makedepends = rust
 	makedepends = libusb
@@ -34,12 +34,14 @@ pkgbase = dsview-cli
 	depends = zlib
 	depends = zstd
 	provides = dsview-cli
+	provides = dsview
 	conflicts = dsview-cli
+	conflicts = dsview
 	options = !lto
 	options = !debug
-	source = dsview-cli::git+https://github.com/LISTENAI/dsview-cli.git#tag=v1.2.3
+	source = dsview-cli::git+https://github.com/LISTENAI/dsview-cli.git#tag=v1.2.4
 	source = DSView::git+https://github.com/DreamSourceLab/DSView.git
-	sha256sums = c49a24ba6d439ec2c987a6deaa9f87a4b89e16cb950bac07d79f7abe800c9b9f
+	sha256sums = 7f2576047d8e8db7a1e4e7a3758e7fddc9b0aebb253ac21adbff562598f89da2
 	sha256sums = SKIP
 
 pkgname = dsview-cli

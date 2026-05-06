@@ -1,17 +1,19 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=dsview-cli
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Scriptable DSLogic Plus capture and protocol decoding without the DSView GUI"
 arch=($CARCH)
 url="https://github.com/LISTENAI/dsview-cli"
-license=('Apache-2.0')
+license=('Apache-2.0 AND GPL-3.0-only')
 provides=(
     ${pkgname}
+    ${pkgname%-cli}
 )
 conflicts=(
     ${pkgname}
+    ${pkgname%-cli}
 )
 replaces=()
 depends=(
@@ -55,7 +57,7 @@ source=(
     "${pkgname}::git+${url}.git#tag=v${pkgver}"
     "DSView::git+https://github.com/DreamSourceLab/DSView.git"
 )
-sha256sums=('c49a24ba6d439ec2c987a6deaa9f87a4b89e16cb950bac07d79f7abe800c9b9f'
+sha256sums=('7f2576047d8e8db7a1e4e7a3758e7fddc9b0aebb253ac21adbff562598f89da2'
             'SKIP')
 
 prepare() {
@@ -106,20 +108,15 @@ package() {
         --output "dsview-cli-$pkgver.tar.gz" \
         --version $pkgver \
         --target $pkgver
-    export RUSTUP_TOOLCHAIN=stable
-    #     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
-    # find target/release \
-    #     -maxdepth 1 \
-    #     -executable \
-    #     -type f \
-    #     -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
     
     install -vdm0755 ${pkgdir}/usr/share/${pkgname}/ \
         ${pkgdir}/usr/bin/
     tar -xf dsview-cli-$pkgver.tar.gz --strip-components=1 -C ${pkgdir}/usr/share/${pkgname}/ 
     ln -sf /usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname} 
 
+    install -vDm0644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/99-dsview-cli.rules" << EOF
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2a0e", TAG+="uaccess" 
+EOF
     install -vDm0644 README* -t "$pkgdir/usr/share/doc/${pkgname}/"
-    # install -vDm0644/* -t "$pkgdir/usr/share/doc/${pkgname}/"
     install -vDm0644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}/"
 }
