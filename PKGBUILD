@@ -20,7 +20,7 @@ makedepends=(
   'python-installer'
 )
 optdepends=('frr: FRRouting support for router topologies')
-conflicts=('pumpkin')
+conflicts=('p4-utils')
 source=("git+https://github.com/nsg-ethz/p4-utils.git")
 sha256sums=('SKIP')
 options=('!debug')
