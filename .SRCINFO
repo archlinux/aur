@@ -1,0 +1,22 @@
+pkgbase = cc-switch-cli-git
+	pkgdesc = All-in-One Assistant for Claude Code, Codex, Gemini, OpenCode & OpenClaw
+	pkgver = 5.4.0.r3.g49b7142
+	pkgrel = 1
+	url = https://github.com/SaladDay/cc-switch-cli
+	arch = x86_64
+	arch = aarch64
+	arch = loong64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	provides = cc-switch-cli
+	conflicts = cc-switch-cli
+	conflicts = cc-switch
+	options = !lto
+	source = git+https://github.com/SaladDay/cc-switch-cli.git
+	sha256sums = SKIP
+
+pkgname = cc-switch-cli-git
