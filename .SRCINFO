@@ -8,6 +8,6 @@ pkgbase = shmooz
 	makedepends = cargo
 	depends = wayland
 	source = shmooz-0.1.0.tar.gz::https://github.com/chmouel/shmooz/archive/v0.1.0.tar.gz
-	sha256sums = 42f1490a164982108f46e886ed5b731f299a68aa71868be5e8590844569dbbdd
+	sha256sums = 770196d66374057a474306e948f6c1d0da889391b290bc5fa627e2a18f805a8e
 
 pkgname = shmooz
