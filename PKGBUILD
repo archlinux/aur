@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-c-sharp
 pkgver=0.23.5
-pkgrel=1
+pkgrel=2
 pkgdesc="C# grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-c-sharp"
@@ -39,5 +39,5 @@ package() {
 
   # https://gitlab.archlinux.org/archlinux/packaging/packages/neovim/-/blob/390a730f1f0e85d48b3e49c69421cc7baeb3e00d/PKGBUILD#L74-76
   install -d "$pkgdir/usr/lib/tree_sitter"
-  ln -s "/usr/lib/libtree-sitter-c-sharp.so" "$pkgdir/usr/lib/tree_sitter/c-sharp.so"
+  ln -s "/usr/lib/libtree-sitter-c-sharp.so" "$pkgdir/usr/lib/tree_sitter/c_sharp.so"
 }
