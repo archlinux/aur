@@ -2,7 +2,7 @@
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
 pkgver=2.6.1.r201.9da0255
-pkgrel=1
+pkgrel=2.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -34,6 +34,7 @@ prepare() {
     git submodule init
     git config submodule.ruff_config.url "$srcdir/ruff-config"
     git -c protocol.file.allow=always submodule update
+    sed --in-place 's/uv run //g' Makefile
 }
 
 # Based on https://aur.archlinux.org/packages/dpsprep-git#comment-1031722
