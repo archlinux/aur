@@ -1,4 +1,21 @@
 post_install() {
+    # Ensure RabbitMQ is running so we can configure the user
+    if ! systemctl is-active --quiet rabbitmq 2>/dev/null; then
+        systemctl start rabbitmq 2>/dev/null || true
+        sleep 2
+    fi
+
+    # Create the praxis RabbitMQ user if it doesn't already exist
+    if rabbitmqctl list_users 2>/dev/null | grep -q '^praxis'; then
+        echo ":: RabbitMQ user 'praxis' already exists"
+    else
+        echo ":: Creating RabbitMQ user 'praxis'..."
+        rabbitmqctl add_user praxis praxis 2>/dev/null || true
+        rabbitmqctl set_permissions praxis ".*" ".*" ".*" 2>/dev/null || true
+        echo ":: RabbitMQ user 'praxis' created"
+    fi
+
+    echo ""
     echo ":: Enable and start RabbitMQ if not already running:"
     echo "     sudo systemctl enable --now rabbitmq"
     echo ""
@@ -13,6 +30,15 @@ post_install() {
 }
 
 post_upgrade() {
+    # Ensure the praxis RabbitMQ user exists after upgrade
+    if systemctl is-active --quiet rabbitmq 2>/dev/null; then
+        if ! rabbitmqctl list_users 2>/dev/null | grep -q '^praxis'; then
+            echo ":: Creating RabbitMQ user 'praxis'..."
+            rabbitmqctl add_user praxis praxis 2>/dev/null || true
+            rabbitmqctl set_permissions praxis ".*" ".*" ".*" 2>/dev/null || true
+        fi
+    fi
+
     echo ":: Restart Praxis to apply changes:"
     echo "     sudo systemctl restart praxis"
 }
