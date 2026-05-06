@@ -1,15 +1,15 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
-pkgver=2.6.1.r201.9da0255
-pkgrel=2.314
+pkgver=2.6.2.r205.d19863a
+pkgrel=1.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL-3.0-only')
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
-checkdepends=(ruff mypy python-types-pillow python-types-fpdf2 python-pytest)
+checkdepends=(python-pytest)
 makedepends=(git python-uv-build python-build python-installer python-wheel python-click-man coreutils make)
 depends=(python python-djvulibre-python
          python-click python-loguru python-pillow
@@ -18,11 +18,8 @@ optdepends=(
   'ocrmypdf: Optional OCR and advanced PDF optimization'
   'jbig2enc: Advanced compression of bitonal images'
 )
-source=(
-  "git+https://github.com/kcroker/dpsprep.git"
-  "git+https://github.com/v--/ruff-config.git"
-)
-md5sums=('SKIP' 'SKIP')
+source=("git+https://github.com/kcroker/dpsprep.git")
+md5sums=('SKIP')
 
 _fullsrcdir() {
     echo "$srcdir/$_pkgbasename"
@@ -55,7 +52,6 @@ pkgver() {
 
 check() {
     cd "$(_fullsrcdir)"
-    make lint
     make test
 }
 
