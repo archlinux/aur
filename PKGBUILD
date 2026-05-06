@@ -1,4 +1,5 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: RubenKelevra
 
 _ocamlname=stdcompat
 pkgname=ocaml-$_ocamlname
