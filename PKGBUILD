@@ -1,6 +1,6 @@
 # Maintainer: Luke Simpson <luke@s4solutions.ai>
 pkgname=nexis
-pkgver=2.3.3
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Linux system optimizer and monitoring tool"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('qt6-base' 'qt6-charts' 'qt6-svg')
 makedepends=('cmake' 'gcc' 'make' 'qt6-tools')
 checkdepends=('xorg-server-xvfb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/s4solutionsllc/Nexis/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('afe68e4bbad635d05e3ccb396ac39c18bb7c5c1b14327dd46d8557e62ac96744')
 
 build() {
     cmake -B build -S "Nexis-$pkgver" \
