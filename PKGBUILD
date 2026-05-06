@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.7.5.r108.g282d59a
+pkgver=1.8.0.r0.g83304c4
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -51,10 +51,6 @@ prepare() {
   # Set StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="${pkgname%-git}" \
     "data/io.github.benjamimgois.${pkgname%-git}.desktop"
-
-  # Bump libgit2 version
-  sed -i 's/libgit2.so.1.7/libgit2.so.1.9/g' git2pas.pas
-  sed -i 's/libgit2.so.1.6/libgit2.so.1.8/g' git2pas.pas
 }
 
 build() {
@@ -70,5 +66,9 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
-  make prefix=/usr libexecdir=/lib DESTDIR="$pkgdir/" install
+  make prefix=/usr libexecdir=/"lib/${pkgname%-git}" DESTDIR="$pkgdir/" install
+
+  install -d "$pkgdir/usr/lib/${pkgname%-git}"/{assets,data}/
+  cp -a assets/icons "$pkgdir/usr/lib/${pkgname%-git}/assets/"
+  cp -a  data/icons "$pkgdir/usr/lib/${pkgname%-git}/data/"
 }
