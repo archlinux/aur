@@ -1,0 +1,5 @@
+[termbook-bin]
+source = "github"
+github = "tiulpin/termbook"
+use_latest_release = true
+prefix = "v"

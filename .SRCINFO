@@ -1,0 +1,17 @@
+pkgbase = termbook-bin
+	pkgdesc = Your CLI storybook for your commands
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/tiulpin/termbook
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = termbook
+	conflicts = termbook
+	options = !strip
+	source_x86_64 = termbook-x86_64-0.3.0.tgz::https://github.com/tiulpin/termbook/releases/download/v0.3.0/termbook_0.3.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = f7867aa3c9218c922306d31ee18c8875ad53d97f4fbdbafc75824140de34251a
+	source_aarch64 = termbook-aarch64-0.3.0.tgz::https://github.com/tiulpin/termbook/releases/download/v0.3.0/termbook_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3b914ac57144075e38f90c415ebe9bf457511b03840d4a50f1175c98c57e821c
+
+pkgname = termbook-bin
