@@ -1,0 +1,11 @@
+--- ezodf/tableutils.py
++++ ezodf/tableutils.py
+@@ -28,7 +28,7 @@
+     next(generator)
+     return generator
+
+-CELL_ADDRESS = re.compile('^([A-Z]+)(\d+)$')
++CELL_ADDRESS = re.compile(r'^([A-Z]+)(\d+)$')
+
+ def address_to_index(address):
+     def column_name_to_index(colname):

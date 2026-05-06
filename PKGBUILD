@@ -3,7 +3,7 @@
 
 pkgname=python-pyexcel-ezodf
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python package to create/manipulate OpenDocumentFormat files"
 arch=('any')
 url="https://github.com/pyexcel/pyexcel-ezodf"
@@ -11,8 +11,12 @@ license=('MIT')
 depends=('python-lxml')
 makedepends=('python' 'python-pip')
 
+source=("fix-python312-regex-warning.patch")
+sha256sums=('1a3d41f6b67eef7beea7831faf5915322a0489db125eca899788aed48e7c3e2a')
+
 build() {
   pip install --no-deps --target="pyexcel-ezodf" pyexcel-ezodf==$pkgver
+  patch -p0 -d pyexcel-ezodf < "$srcdir/fix-python312-regex-warning.patch"
 }
 
 package() {
