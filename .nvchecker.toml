@@ -1,0 +1,4 @@
+[funzzy]
+source = "git"
+git = "https://github.com/cristianoliveira/funzzy.git"
+prefix = "v"
