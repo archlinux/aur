@@ -1,0 +1,22 @@
+pkgbase = p4-utils-git
+	pkgdesc = Extension to Mininet that makes P4 networks easier to build
+	pkgver = r714.83b118b
+	pkgrel = 1
+	url = https://github.com/nsg-ethz/p4-utils
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = help2man
+	makedepends = python-build
+	makedepends = python-fissix
+	makedepends = python-installer
+	depends = mininet
+	depends = python-networkx
+	depends = python-psutil
+	depends = p4lang-p4c
+	optdepends = frr: FRRouting support for router topologies
+	conflicts = pumpkin
+	options = !debug
+	source = git+https://github.com/nsg-ethz/p4-utils.git
+	sha256sums = SKIP
+
+pkgname = p4-utils-git
