@@ -1,7 +1,7 @@
 # Maintainer: Panda <satodu@github.com>
 pkgname=cachyos-store-bin
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern community store for CachyOS and Arch Linux built with NativePHP"
 arch=('x86_64')
 url="https://github.com/satodu/panda-cachy-store"
@@ -37,7 +37,13 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}"
     cp -rp "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}/"
 
-    # 2. Cria o link simbólico para o executável no /usr/bin
+    # 2. Corrige permissões (essencial para que o usuário consiga ler recursos e bibliotecas)
+    chmod -R u+rwX,go+rX "${pkgdir}/opt/${pkgname}"
+
+    # 3. Corrige o bug no AppRun que quebra o APPDIR quando argumentos são passados
+    sed -i 's/! -e "$path\/$1"/! -e "$path\/AppRun"/' "${pkgdir}/opt/${pkgname}/AppRun"
+
+    # 4. Cria o link simbólico para o executável no /usr/bin
     install -d "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/cachyos-store"
 

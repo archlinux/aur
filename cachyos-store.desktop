@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=CachyOS Store
-Exec=cachyos-store %U
+Exec=cachyos-store --no-sandbox %U
 Terminal=false
 Type=Application
 Icon=cachyos-store
