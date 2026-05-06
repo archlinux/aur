@@ -1,0 +1,17 @@
+pkgbase = python-timed-threads
+	pkgdesc = Absolute time deadlines and thread cancelling for Python asynchronous threads
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/Timed-Threads
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = python-timed-threads-2.0.0.tar.gz::https://github.com/Mathics3/python-timed-threads/releases/download/2.0.0/timed_threads-2.0.0.tar.gz
+	sha256sums = 49217b2d5e6218b5e1cce2d826722940f1d54fe1242260f2a8b53065529254c7
+
+pkgname = python-timed-threads
