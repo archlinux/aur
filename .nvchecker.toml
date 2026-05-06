@@ -1,4 +1,4 @@
-[python-skimpy]
+[python-typepy]
 source = "github"
 github = "thombashi/typepy"
 use_latest_release = "true"
