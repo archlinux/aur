@@ -1,7 +1,7 @@
 pkgbase = flipperui-git
 	pkgdesc = A fast, native desktop manager for Flipper Zero
 	pkgver = v0.3.5.r15.g9af4746
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fuckmaz/FlipperUI
 	arch = x86_64
 	license = PolyForm-Noncommercial-1.0.0
