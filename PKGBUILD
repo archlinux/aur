@@ -1,6 +1,6 @@
 # Maintainer: Erdal Mutlu <erdalmutlu at yahoo dot com>
 pkgname=sisiya-client
-pkgver=1.0.76
+pkgver=1.0.77
 pkgrel=1
 epoch=
 pkgdesc="The SisIYA client. This package is installed on every server that is going to be monitored by SisIYA."
@@ -22,7 +22,7 @@ changelog=
 #source=("$pkgname-$pkgver.tar.gz")
 source=("https://gitlab.com/api/v4/projects/70802198/packages/generic/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('e3bfab09a33a3a1baba22b6c1d8e9f25')
+md5sums=('415aeeafcfe73e058ebcbccf719ad86f')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
