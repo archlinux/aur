@@ -1,0 +1,19 @@
+pkgbase = dsl2sigrok-git
+	pkgdesc = a converter from DSView .dsl to Sigrok/Pulseview .sr
+	pkgver = r12.e41831e
+	pkgrel = 1
+	url = https://github.com/kittennbfive/dsl2sigrok
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	depends = glibc
+	depends = libzip
+	optdepends = dsview: GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.
+	optdepends = pulseview: A Qt based logic analyzer GUI for sigrok
+	optdepends = sigrok-cli: Command-line client for the sigrok software
+	provides = dsl2sigrok
+	conflicts = dsl2sigrok
+	source = dsl2sigrok-git::git+https://github.com/kittennbfive/dsl2sigrok.git
+	sha256sums = SKIP
+
+pkgname = dsl2sigrok-git
