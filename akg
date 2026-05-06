@@ -21,7 +21,7 @@ if [[ $1 = "-Ss" ]]; then
 		exit
 	fi
 	for ((i = 0 ; i < count ; i++)); do
-  		echo $i: $(cat ./search | jq -r .results.[$i].Name) \> $(cat ./search | jq -r .results.[$i].Description)
+  		echo $i: $(cat ./search | jq -r .results.[$i].Name) /// $(cat ./search | jq -r .results.[$i].Description)
 		echo
 	done
 	read -p "Pick package index:  " index

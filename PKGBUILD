@@ -1,7 +1,7 @@
 # Maintainer: Dawid Majewski <mdawid581 at gmail dot com>
 pkgname=aur-kein-git
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=3
 pkgdesc="AUR helper that doesnt use git at all"
 arch=('any')
 url="https://tklab.eu1.netbird.services/file/My stuff/"
