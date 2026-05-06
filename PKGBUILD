@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rcellminerData
-_pkgver=2.33.0
+_pkgver=2.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9dc86d58de03e9a0d9da387c826006e6')
-b2sums=('19c41e80f8e9cb2551f5bbcc3ef11105622c84611014268868d635998c6f78c4f16fc153542e60e1f106aadc31270effbcbe586ab9b7d292cfa0177d0503cd7f')
+md5sums=('0f71945ba6b24fea2513f4f8f12fc658')
+b2sums=('5e57255aa219b6c0a3c56b1a57106405cc3f89acde2decb835a325554ea118b5519b37c88a25613a19374f7a5fc823219110b6fe5dedb2b8c220de70a0fc2236')
 
 build() {
   mkdir build
