@@ -10,7 +10,13 @@ post_install() {
         rm -f /etc/opt/simplex/smp-server.ini.new
     fi
 
-    chown smp:smp /etc/opt/simplex/smp-server.ini 2>/dev/null || true
+    # Исправляем права на конфиги и ключи
+    if [[ -d /etc/opt/simplex ]]; then
+        chown -R smp:smp /etc/opt/simplex/ 2>/dev/null || true
+        chmod 600 /etc/opt/simplex/*.key 2>/dev/null || true
+        chmod 644 /etc/opt/simplex/*.crt 2>/dev/null || true
+        chmod 644 /etc/opt/simplex/*.ini 2>/dev/null || true
+    fi
 
     echo ""
     echo "======================================================================"
@@ -59,7 +65,12 @@ post_install() {
 }
 
 post_upgrade() {
-    chown smp:smp /etc/opt/simplex/smp-server.ini 2>/dev/null || true
+    if [[ -d /etc/opt/simplex ]]; then
+        chown -R smp:smp /etc/opt/simplex/ 2>/dev/null || true
+        chmod 600 /etc/opt/simplex/*.key 2>/dev/null || true
+        chmod 644 /etc/opt/simplex/*.crt 2>/dev/null || true
+        chmod 644 /etc/opt/simplex/*.ini 2>/dev/null || true
+    fi
     echo ""
     echo " smp-server upgraded — restart to apply: systemctl restart smp-server"
 }
