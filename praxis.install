@@ -1,49 +1,56 @@
+#
+# Mirrors what scripts/install.sh --service native does on Arch:
+#   - ensures rabbitmq is running and the praxis user exists in it
+#   - enables and starts praxis-service.service
+#
+
 post_install() {
-    # Ensure RabbitMQ is running so we can configure the user
     if ! systemctl is-active --quiet rabbitmq 2>/dev/null; then
+        echo ":: Starting rabbitmq..."
         systemctl start rabbitmq 2>/dev/null || true
         sleep 2
     fi
 
-    # Create the praxis RabbitMQ user if it doesn't already exist
-    if rabbitmqctl list_users 2>/dev/null | grep -q '^praxis'; then
+    if rabbitmqctl list_users 2>/dev/null | awk '{print $1}' | grep -qx 'praxis'; then
         echo ":: RabbitMQ user 'praxis' already exists"
     else
         echo ":: Creating RabbitMQ user 'praxis'..."
         rabbitmqctl add_user praxis praxis 2>/dev/null || true
         rabbitmqctl set_permissions praxis ".*" ".*" ".*" 2>/dev/null || true
-        echo ":: RabbitMQ user 'praxis' created"
     fi
 
+    echo ":: Enabling and starting praxis-service.service..."
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl enable --now praxis-service.service 2>/dev/null || \
+        echo ":: WARNING: failed to enable praxis-service.service — start manually with: sudo systemctl enable --now praxis-service"
+
     echo ""
-    echo ":: Enable and start RabbitMQ if not already running:"
-    echo "     sudo systemctl enable --now rabbitmq"
+    echo ":: Praxis installed."
+    echo "     praxisctl status"
+    echo "     praxisctl set-rabbitmqurl amqp://praxis:praxis@localhost:5672"
+    echo "     praxis                    # interactive TUI"
     echo ""
-    echo ":: Enable and start Praxis:"
-    echo "     sudo systemctl enable --now praxis"
-    echo ""
-    echo ":: Web UI: http://localhost:8080"
-    echo ":: Config: /etc/praxis/env"
-    echo ""
-    echo ":: Node binary for deployment to targets:"
-    echo "     /usr/share/praxis/nodes/praxis_node_linux"
+    echo ":: Config:      /etc/praxis/env"
+    echo ":: Data:        /var/lib/praxis"
+    echo ":: Node binary: /usr/share/praxis/nodes/praxis_node_linux"
 }
 
 post_upgrade() {
-    # Ensure the praxis RabbitMQ user exists after upgrade
     if systemctl is-active --quiet rabbitmq 2>/dev/null; then
-        if ! rabbitmqctl list_users 2>/dev/null | grep -q '^praxis'; then
+        if ! rabbitmqctl list_users 2>/dev/null | awk '{print $1}' | grep -qx 'praxis'; then
             echo ":: Creating RabbitMQ user 'praxis'..."
             rabbitmqctl add_user praxis praxis 2>/dev/null || true
             rabbitmqctl set_permissions praxis ".*" ".*" ".*" 2>/dev/null || true
         fi
     fi
 
-    echo ":: Restart Praxis to apply changes:"
-    echo "     sudo systemctl restart praxis"
+    systemctl daemon-reload 2>/dev/null || true
+    if systemctl is-enabled --quiet praxis-service.service 2>/dev/null; then
+        echo ":: Restart Praxis to apply changes:"
+        echo "     sudo systemctl restart praxis-service"
+    fi
 }
 
 pre_remove() {
-    systemctl stop praxis.service 2>/dev/null || true
-    systemctl disable praxis.service 2>/dev/null || true
+    systemctl disable --now praxis-service.service 2>/dev/null || true
 }

@@ -1,28 +1,24 @@
 # Maintainer: Origin Security <support@originhq.com>
 pkgname=praxis
-pkgver=0.9.22
-pkgrel=2
+pkgver=0.9.23
+pkgrel=1
 pkgdesc='Praxis - Semantic Command & Control Framework for Agents'
 arch=('x86_64')
 url='https://github.com/originsec/praxis'
 license=('Apache-2.0')
 depends=('rabbitmq' 'gcc-libs' 'glibc')
-makedepends=('cargo' 'npm' 'git')
+makedepends=('cargo' 'git')
 backup=('etc/praxis/env')
 options=('!lto')
 install=praxis.install
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/originsec/praxis/archive/v$pkgver.tar.gz"
-    'praxis.service'
     'praxis-service.service'
-    'praxis-web.service'
     'praxis-sysusers.conf'
     'praxis-tmpfiles.conf'
     'praxis.env'
 )
 sha256sums=(
-    'cfd5b7b00fa32d27c8b932c332e4849ad5ebfe219aca5fd3d96dbb6e7a415a0f'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -46,28 +42,29 @@ build() {
     # inherits CFLAGS. GCC LTO objects aren't compatible with rust-lld.
     unset CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
 
-    cargo build --frozen --release -p praxis_service -p praxis_web -p praxis_cli -p praxis_node
+    cargo build --frozen --release -p praxis_service -p praxis_cli -p praxis_node
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
-    # Binaries
+    # Binaries — service, CLI, node agent. The web server is intentionally
+    # not installed; manage Praxis via the `praxis` TUI.
     install -Dm755 target/release/praxis_service "$pkgdir/usr/bin/praxis_service"
-    install -Dm755 target/release/praxis_web "$pkgdir/usr/bin/praxis_web"
-    install -Dm755 target/release/praxis_cli "$pkgdir/usr/bin/praxis_cli"
+    install -Dm755 target/release/praxis_cli     "$pkgdir/usr/bin/praxis_cli"
 
-    # Convenience symlink: `praxis` -> `praxis_cli` so users can invoke the
-    # CLI by its short name without typing the workspace-qualified binary.
+    # `praxis` is the user-facing CLI name; `praxis_cli` is the underlying
+    # binary. The CLI uses argv[0] for its display name.
     ln -s praxis_cli "$pkgdir/usr/bin/praxis"
 
-    # Node binary (for distribution to targets, filename must match web UI expectations)
+    # praxisctl — wraps systemctl + edits /etc/praxis/env.
+    install -Dm755 pkg/praxisctl/praxisctl "$pkgdir/usr/bin/praxisctl"
+
+    # Node binary (filename matches what the service expects to ship to targets).
     install -Dm755 target/release/praxis_node "$pkgdir/usr/share/praxis/nodes/praxis_node_linux"
 
-    # Systemd units
-    install -Dm644 "$srcdir/praxis.service" "$pkgdir/usr/lib/systemd/system/praxis.service"
+    # Systemd unit (single service; no umbrella).
     install -Dm644 "$srcdir/praxis-service.service" "$pkgdir/usr/lib/systemd/system/praxis-service.service"
-    install -Dm644 "$srcdir/praxis-web.service" "$pkgdir/usr/lib/systemd/system/praxis-web.service"
 
     # sysusers/tmpfiles
     install -Dm644 "$srcdir/praxis-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/praxis.conf"

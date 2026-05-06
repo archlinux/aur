@@ -1,16 +1,18 @@
 [Unit]
 Description=Praxis Service
-PartOf=praxis.service
-After=rabbitmq.service
+After=rabbitmq.service network.target
+Wants=network.target
+Requires=rabbitmq.service
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/praxis_service
-EnvironmentFile=/etc/praxis/env
+EnvironmentFile=-/etc/praxis/env
 User=praxis
 Group=praxis
+WorkingDirectory=/var/lib/praxis
 Restart=on-failure
 RestartSec=3
 
 [Install]
-WantedBy=praxis.service
+WantedBy=multi-user.target
