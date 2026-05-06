@@ -1,6 +1,6 @@
 pkgbase = aghub-bin
 	pkgdesc = One hub for every AI coding agent - unified configuration management for 22+ assistants
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/AkaraChen/aghub
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = aghub-bin
 	conflicts = aghub
 	options = !strip
 	options = !debug
-	source = https://github.com/AkaraChen/aghub/releases/download/v1.0.4/aghub_1.0.4_amd64.deb
-	source = https://github.com/AkaraChen/aghub/releases/download/v1.0.4/aghub-cli-x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/AkaraChen/aghub/releases/download/v1.1.0/aghub_1.1.0_amd64.deb
+	source = https://github.com/AkaraChen/aghub/releases/download/v1.1.0/aghub-cli-x86_64-unknown-linux-gnu.tar.gz
 	source = aghub.desktop
-	sha256sums = 1d53caa0b8cc8ed661d49a85c1c449c058ea06c0c2f72bd75d3c308eafa75e87
-	sha256sums = 3c51d669767386d129a92ca601dbe0109c89053c53f4fde250a606b064199b1d
+	sha256sums = a43aef168fed32406b623afba86e9585251eca4f50acca8bc269b8c11409cef6
+	sha256sums = 6d0526d96b6f1dda73fff57de3309098cb384710a3896ffe78052fcd4cba925e
 	sha256sums = c757f3e63c64ac773c4693804e5710b66d280ea7e07eafa3a0ef384245a4375c
 
 pkgname = aghub-bin
