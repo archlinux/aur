@@ -12,7 +12,3 @@ post_install() {
   echo "   version, installed according to upstream instructions, feel free to report it through"
   echo "   the issues in our repository - https://github.com/CachyOS/proton-cachyos"
 }
-
-post_upgrade() {
-  post_install
-}
