@@ -1,0 +1,4 @@
+# AppImages
+*.AppImage
+# built packages
+*.pkg.tar.zst
