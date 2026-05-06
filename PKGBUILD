@@ -2,13 +2,13 @@
 # Maintainer: czjstmax : <jstmaxlol@disroot.org>
 pkgname=nosh
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a minimal POSIX C- shell for -OOL people."
 arch=('any')
-url="https://github.com/jstmaxlol/nosh"
+url="https://kuronavipad.xantu-ling.ts.net/cgit/nosh.git"
 license=('MIT')
 makedepends=('gcc')
-source=("git+https://github.com/jstmaxlol/nosh")
+source=("git+https://kuronavipad.xantu-ling.ts.net/cgit/nosh.git")
 md5sums=('SKIP')
 
 build() {
