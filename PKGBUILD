@@ -1,14 +1,14 @@
 #!/bin/bash
 # Maintainer: czjstmax <jstmaxlol@disroot.org>, <maxwasmailed@proton.me>
 pkgname=getg
-pkgver=11-20.001
-pkgrel=1
+pkgver=11_20.001
+pkgrel=2
 pkgdesc="g - the *permissive* git wrapper."
 arch=('any')
-url="https://github.com/jstmaxlol/g"
+url="https://kuronavipad.xantu-ling.ts.net/cgit/g.git"
 license=('MIT')
 makedepends=('git' 'gcc')
-source=("git+https://github.com/jstmaxlol/g")
+source=("git+https://kuronavipad.xantu-ling.ts.net/cgit/g.git")
 md5sums=('SKIP')
 
 build() {
