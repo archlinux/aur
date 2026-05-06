@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-l-theme
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='A collection of legacy mint themes.'
 arch=('any')
