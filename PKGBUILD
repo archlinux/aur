@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RUVnormalizeData
-_pkgver=1.31.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('44c44e0755a888c909d12bc459387625')
-b2sums=('aab10918720b96a9ddefe239a1f608366064bc9062532172d847e9f29b8e9ea8d6b2f0652403367e9461bdc8e0dc924c3b8ca74a4b33cb1b2d25f28fd05138c4')
+md5sums=('a63d66dcd09c72f391c645e12668cb96')
+b2sums=('4c0f7efc047e2d70f6373507942a60a9b0d171d2bcc271707935de5a3741fbe377a8cf9e92af1a859266e872ddea7ac223b0d1640a07732bcbcd12fcd7f85ffb')
 
 build() {
   mkdir build
