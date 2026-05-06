@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('8067e1444645649d5d0bcd38640295154f985f9027b5910b0e5e5ee3313bcc1d'
+sha256sums=('500e4bd1bb248ed549a678254526cf35d92496036d6f2788456a6cc70ee4bc71'
             'SKIP')
 
 package() {
@@ -57,7 +57,7 @@ package() {
                    "$pkgdir/usr/lib/tmpfiles.d/hls-livecam.conf"
 
     # ── Sudoers ───────────────────────────────────────────────────────────────
-    # Ships www-data entry for broadcast-api dark toggle.
+    # Ships http user for broadcast-api (Arch has no www-data).
     # Per-user entries (hls-livecam-dark, hls-livecam-services, camdash-smart)
     # are written dynamically by hls-livecam-setup at configure time.
     install -Dm440 pkg/etc/sudoers.d/hls-livecam-dark \
