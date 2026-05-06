@@ -1,6 +1,6 @@
 # Maintainer: Paul Goessmann <paul.goessmann@proton.me>
 pkgname=pvpn-go
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Proton VPN client with TUI for Linux (WireGuard + Stealth)'
 arch=('x86_64' 'aarch64')
@@ -19,14 +19,6 @@ prepare() {
   cd "${_srcdir}"
   export GOPATH="${srcdir}/gopath"
   export GOFLAGS="-modcacherw"
-  # Pin Go toolchain to whatever the system provides. Without this,
-  # Go would auto-fetch golang.org/toolchain@v0.0.1-go${ver} into the
-  # modcache and mark it 0555/0444 — which then blocks yay from
-  # cleaning ~/.cache/yay/pvpn-go on the next upgrade ("Permission
-  # denied" on every toolchain file). Arch's `go` package tracks
-  # upstream tightly; if it ever lags this just fails clearly instead
-  # of silently downloading an uncleanable toolchain.
-  export GOTOOLCHAIN=local
   go mod download
 }
 
@@ -38,7 +30,6 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}/gopath"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  export GOTOOLCHAIN=local
 
   local _ldflags="-s -w -X main.version=${pkgver}"
 
@@ -46,9 +37,16 @@ build() {
   go build -ldflags "${_ldflags}" -o pvpn   ./cmd/pvpn
   go build -ldflags "${_ldflags}" -o pvpnctl ./cmd/pvpnctl
 
-  # Defense in depth: if a future change ever lets a read-only file
-  # land under gopath, this keeps yay's cleanup phase functional so
-  # the next upgrade doesn't ask the user to manually wipe the cache.
+  # When the system Go is older than go.mod's directive (common for
+  # users with mise/asdf/conda overriding /usr/bin/go), the bootstrap
+  # auto-downloads golang.org/toolchain@v0.0.1-go${ver} into the
+  # gopath modcache and marks the entire tree 0555/0444. Yay's
+  # cleanup on the next upgrade then fails with hundreds of
+  # "Permission denied" warnings, leaving the user stuck.
+  #
+  # GOFLAGS=-modcacherw fixes regular module downloads but does NOT
+  # apply to the toolchain bootstrap, so we walk gopath and force
+  # everything writable at the end of build() instead.
   if [[ -d "${srcdir}/gopath" ]]; then
     chmod -R u+w "${srcdir}/gopath" || true
   fi
