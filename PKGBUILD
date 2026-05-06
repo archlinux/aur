@@ -1,3 +1,4 @@
+# Maintainer: Zebar2711 <zebra2711t@gmail.com>
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
@@ -5,14 +6,18 @@
 # Contributor: American_Jesus
 # Contributor: Mufflone
 # Contributor: switchnode
+
+### Enable NPAPI plugins
+: "${_npapi:=""}"
+
 pkgname=palemoon-gtk3
 _pkgname=palemoon
 _repo=Pale-Moon
 epoch=1
-pkgver=34.2.0
+pkgver=34.2.2
 # Commit ID can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/tags
-_commit=a1043b6a581b2e9b12b34159c26dcf198058d525
-pkgrel=2
+_commit=73757dbcdb025c499dd33ff617bf03b1b9f1f585
+pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="https://www.palemoon.org/"
@@ -20,7 +25,7 @@ license=('MPL-2.0')
 provides=('palemoon')
 conflicts=('palemoon')
 depends=('gtk3' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib')
-makedepends=('python2' 'unzip' 'zip' 'yasm' 'libpulse' 'git' 'gtk2')
+makedepends=('python' 'unzip' 'zip' 'yasm' 'libpulse' 'git')
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support'
 	          'gtk2: Required for NPAPI plugins')
@@ -28,15 +33,24 @@ source=(git+"https://repo.palemoon.org/MoonchildProductions/${_repo}?signed#comm
         git+"https://repo.palemoon.org/MoonchildProductions/UXP"
         mozconfig.in)
 validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC')
-sha1sums=('8a287fd50942645a557e7cf054dc065a43cc807e'
+sha1sums=('bdf2a96fdf1dfbba06fbb0aef1ddf20d23a4a864'
           'SKIP'
-          '2578b9cb0a4110c170d1c1cfa90fe929f3c760a9')
-sha256sums=('1b7b96ab385f7eb23a41ffb0247f010b1601006dbe4bbd3e03d4760d25145c9f'
+          '1b8d0a61a6239f05a0b33e19b51429ca4933fa52')
+sha256sums=('69244fd88095538fdfd9512ecd12fddc2bc01c86d69d78c28611dfb12fac475c'
             'SKIP'
-            '73ceef9fb5712c2fd150b24a7f02d47ffb7cbf35237f4d65eb1c71c0ce37917a')
+            '8b7740ae6cf141d959029acf15cc4cd7a67e4b1679871d8812454655a0ef0361')
+
+if [ "$_npapi" = "yes" ]; then
+  makedepends+=('gtk2')
+fi
 
 prepare() {
   sed 's#%SRCDIR%#'"${srcdir}"'#g' mozconfig.in > mozconfig
+  if [ "$_npapi" != "yes" ]; then
+    cat >> "$srcdir/mozconfig" <<EOF
+ac_add_options --disable-npapi
+EOF
+  fi
   cd ${_repo}
   git submodule init
   git config submodule.platform.url "${srcdir}/UXP"
