@@ -1,7 +1,7 @@
 pkgbase = goben
 	pkgdesc = goben is a golang tool to measure TCP/UDP transport layer throughput between hosts.
-	pkgver = 1.0.2
-	pkgrel = 4
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://github.com/udhos/goben
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = goben
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/udhos/goben.git#tag=v1.0.2
+	source = git+https://github.com/udhos/goben.git#tag=v1.0.3
 	sha256sums = SKIP
 
 pkgname = goben
