@@ -1,6 +1,6 @@
 # Maintainer: wDona <donanferyt@gmail.com> 
 pkgname=burnt-out 
-pkgver=1.2.96
+pkgver=1.2.97
 pkgrel=1
 pkgdesc="To-do app focused on preventing Burnout Syndrome ;)" 
 arch=('x86_64') 
