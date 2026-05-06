@@ -1,12 +1,12 @@
 # Maintainer: Woofson <https://github.com/Woofson>
 pkgname=dotmatrix-git
-pkgver=2.0.0.r0.gee54c7b
+pkgver=2.0.3
 pkgrel=1
-pkgdesc="Project compositor with git versioning - CLI, TUI, and GUI"
+pkgdesc="Dot Matrix - project compositor with git versioning (CLI, TUI)"
 arch=('x86_64')
 url="https://github.com/Woofson/dotmatrix"
 license=('MIT')
-depends=('gcc-libs' 'libxcb' 'libxkbcommon' 'libgl' 'oniguruma' 'zstd')
+depends=('gcc-libs' 'oniguruma' 'zstd')
 makedepends=('cargo' 'git')
 provides=('dotmatrix')
 conflicts=('dotmatrix')
@@ -38,13 +38,13 @@ build() {
 check() {
     cd "$srcdir/dotmatrix"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --release
+    cargo test
 }
 
 package() {
     cd "$srcdir/dotmatrix"
-    install -Dm755 "target/release/dotmatrix" "$pkgdir/usr/bin/dotmatrix"
-    install -Dm755 "target/release/dotmatrix-tui" "$pkgdir/usr/bin/dotmatrix-tui"
-    install -Dm755 "target/release/dotmatrix-gui" "$pkgdir/usr/bin/dotmatrix-gui"
+    install -Dm755 "target/release/dmxcli" "$pkgdir/usr/bin/dmxcli"
+    install -Dm755 "target/release/dmxtui" "$pkgdir/usr/bin/dmxtui"
+    install -Dm644 "dmxcli.1" "$pkgdir/usr/share/man/man1/dmxcli.1"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
