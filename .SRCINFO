@@ -1,0 +1,23 @@
+pkgbase = flipperui-git
+	pkgdesc = A fast, native desktop manager for Flipper Zero
+	pkgver = v0.3.5.r13.g976c842
+	pkgrel = 1
+	url = https://github.com/fuckmaz/FlipperUI
+	arch = x86_64
+	license = PolyForm-Noncommercial-1.0.0
+	makedepends = git
+	makedepends = npm
+	depends = webkit2gtk-4.1
+	depends = glib2
+	depends = libsoup3
+	depends = gtk3
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = dbus
+	depends = systemd-libs
+	provides = flipperui
+	conflicts = flipperui
+	source = flipperui::git+https://github.com/fuckmaz/FlipperUI.git
+	sha256sums = SKIP
+
+pkgname = flipperui-git
