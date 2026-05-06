@@ -1,6 +1,6 @@
 # Maintainer: zwielichtig <zwielichtig@users.noreply.github.com>
 pkgname=zorg-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='A TUI SSH connection manager and orchestrator'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/Zwielichtig/zorg/refs/tags/zorg-v${pkgver}/LICENSE.md"
 )
 b2sums=(
-  '1f540d14dd93023022697d3650d7a92db0ed406ddd177b63da7cbf9c660bd0030c6f5d7c921a8e87a54f2109ebe7a38e45dd608851d20a6a5376a3499eb54fad'
+  'be97871dccc4690ffe4a45545d85d815147697a0f82279d053ad5bb259d90b69fef6c2e4a1715d43bef679f22de628f2bafac5850ff32666f747d689893def77'
   '74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd'
 )
 
