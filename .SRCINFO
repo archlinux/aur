@@ -1,6 +1,6 @@
 pkgbase = awob-bin
 	pkgdesc = Another Wayland Overlay Bar — daemon + CLI.
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/jmylchreest/awob
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = awob-bin
 	provides = awob-daemon
 	conflicts = awob
 	conflicts = awob-git
-	source = awob-0.1.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.4/awob-0.1.4-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = d8df821431eae3886028d1fb88d48df7f749ac73ee9d3a4daa14bb8713e95f11
+	source = awob-0.1.5-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.5/awob-0.1.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = f3b8d0b21f7a4d8a0603083a478a04ec7c4da1dc975a1f4ffe609beb71573327
 
 pkgname = awob-bin
