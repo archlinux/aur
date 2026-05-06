@@ -6,7 +6,7 @@ _srcmntr="jely2002"
 
 pkgname="${_pkgname}-appimage"
 pkgver="3.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A cross-platform GUI for youtube-dl made in Rust with Tauri and Vue + Typescript"
 url="https://github.com/${_srcmntr}/${_srcname}"
 arch=("x86_64")
@@ -23,7 +23,7 @@ provides=("open-video-downloader")
 
 sha256sums=(
   "dffee4cfef50e8edb9be4136d5650b123e49b8a1ffd959ff3d2c42502fc391e3"
-  "217d02211a51853d920e53558cd9cbd7a753ba9f2036ddaa0ec4e00a77351b6c"
+  "c9e49f87d6d146252a58f5de8b5451b021119c4698805228078d70d1f609d5d9"
   "188992cbe106d0dd6e7b9c219020118a1246c3657c828f86e463617c3d6214cb"
 )
 

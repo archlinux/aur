@@ -17,7 +17,7 @@ fi
 # Check version
 if [ "${pkgver}" = "${oldver}" ] && [ -z "${FORCE_REBUILD}" ]; then
   echo >/dev/stderr "Error: same (old) version specified - update aborted"
-  exit 1
+  exit
 fi
 
 # Get variables from PKGBUILD
@@ -38,27 +38,26 @@ else
 fi
 
 # Perform variable substitution
-url="${url//\$\{pkgname\}/$pkgname}"
 url="${url//\$\{_pkgname\}/$_pkgname}"
 url="${url//\$\{_srcname\}/$_srcname}"
 url="${url//\$\{_srcmntr\}/$_srcmntr}"
 url="${url//\$\{pkgver\}/$pkgver}"
-_archive="${_archive//\$\{pkgname\}/$pkgname}"
 _archive="${_archive//\$\{_pkgname\}/$_pkgname}"
 _archive="${_archive//\$\{pkgver\}/$pkgver}"
 aur_url="${aur_url//\$\{_pkgname\}/$_pkgname}"
+pkgname="${pkgname//\$\{_pkgname\}/$_pkgname}"
 
 # Download archive
-wget -O ${_archive} "${url}"
+wget -qO ${_archive} "${url}"
 # Extract icon / .desktop files if appimage
 if printf '%s' "${_archive,,}" | grep -qi "appimage"; then
   chmod +x "${_archive}"
-  "./${_archive}" --appimage-extract
+  "./${_archive}" --appimage-extract >/dev/null
   cp "squashfs-root/${desktop}" "${newdesktop}"
   cp "squashfs-root/${icon}" "${newicon}"
-  if [ -L "squashfs-root" ]; then
-    rm -rf $(readlink -f squashfs-root) squashfs-root
-  fi
+  sed -i '/^X-AppImage-/d;/^$/d' "${newdesktop}"
+  sed -i 's/^Exec=.*/Exec=reflex %U/' "${newdesktop}"
+  rm -rf $(readlink -f squashfs-root) squashfs-root
 fi
 # Calculate checksums
 sha256bin=$(sha256sum ${_archive} | awk '{print $1}')
@@ -81,6 +80,9 @@ sha256sums=(\
 else
   sed -i -E "s/^sha256sums=\(\"[^\"]+\"\)/sha256sums=(\"$sha256bin\")/" PKGBUILD
 fi
+if [ "${pkgver}" != "${oldver}" ] && [ -n "${FORCE_REBUILD}" ]; then
+  sed -i -E "s/^pkgrel=\"[^\"]+\"/pkgrel=\"1\"/" PKGBUILD
+fi
 # Update .SRCINFO
 makepkg --printsrcinfo > .SRCINFO
 
@@ -94,7 +96,7 @@ fi
 if [ -z "${NO_GIT_PUSH}" ]; then
   # In case of fire, git commit, git push, leave building
   git add .
-  git commit -m "Updated ${pkgname} to ${pkgver}-${pkgrel}"
+  git commit -m "${commit_msg}"
   git remote add aur ${aur_url}
   git push origin main
   git push aur main:master
