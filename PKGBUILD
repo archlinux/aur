@@ -16,7 +16,7 @@ provides=("$_pkgname")
 options=("!strip" "!debug")
 
 source=(
-  "${_pkgname}-${pkgver}.zip::${url}/actions/runs/24861762731/artifacts/6613321788"
+  "${_pkgname}-${pkgver}.zip::https://nightly.link/luizzeroxis/UndertaleModTool/workflows/publish_gui_avalonia/avalonia/GUI-ubuntu-latest-Release-isBundled-true-isSingleFile-false.zip"
   "${_pkgname}.sh"
   "${_pkgname}.desktop"
   "gamemaker-data.xml"
