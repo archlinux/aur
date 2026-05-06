@@ -1,8 +1,11 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=nightlight-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Experience a new way of connecting with like-minded people on Nightlight, a free social media platform that values inclusivity, customization, and an ad-free environment."
+
+provides=(nightlight)
+conflicts=(nightlight)
 
 arch=('x86_64')
 
