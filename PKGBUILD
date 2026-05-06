@@ -27,9 +27,9 @@ _common_make_flags=(
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.21.1
+pkgver=4.21.2pre
 _branch="stable-4.21"
-pkgrel=2
+pkgrel=1
 pkgdesc='Open-source type-1 or baremetal hypervisor - stable branch'
 arch=('x86_64')
 url='https://xenproject.org/'
