@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=2.8.14
+pkgver=2.8.15
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camstack monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('60a8e44dcf5ff69a257639ea7cebe67eaaa843b741991bce3426488e7421b811'
+sha256sums=('b6354faf9e1f42735e033b850be55a78a4165504763eed6417ac6d1d2f6bea83'
             'aab8d136f606ee05f7bb96ee51d2fcd1730edfa632ec4b832817e2901edf9f2e')
 
 package() {
@@ -51,6 +51,10 @@ package() {
                    "$pkgdir/usr/lib/systemd/system/ffmpeg-cam-dark.service"
     install -Dm644 pkg/etc/systemd/system/ffmpeg-cam.service \
                    "$pkgdir/usr/lib/systemd/system/ffmpeg-cam.service"
+
+    # ── tmpfiles.d ───────────────────────────────────────────────────────────
+    install -Dm644 pkg/usr/lib/tmpfiles.d/hls-livecam.conf \
+                   "$pkgdir/usr/lib/tmpfiles.d/hls-livecam.conf"
 
     # ── Sudoers ───────────────────────────────────────────────────────────────
     # Ships www-data entry for broadcast-api dark toggle.
