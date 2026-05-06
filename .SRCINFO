@@ -1,0 +1,23 @@
+pkgbase = middlesox-git
+	pkgdesc = Scriptable event-driven controller for window managers and compositors
+	pkgver = 0.0.1.r10.g264a281
+	pkgrel = 1
+	url = https://github.com/washanhanzi/middlesox
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = wayland
+	provides = middlesox=0.0.1.r10.g264a281
+	provides = msx
+	conflicts = middlesox
+	conflicts = msx
+	source = middlesox::git+https://github.com/washanhanzi/middlesox.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = b014105d4927d609815c8f2e274d7187f341cc60ab85f06e86e986882b53aaf4
+
+pkgname = middlesox-git
