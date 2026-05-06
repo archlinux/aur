@@ -1,0 +1,21 @@
+pkgbase = airpods-tui-bin
+	pkgdesc = Terminal UI for managing AirPods on Linux over Bluetooth AACP (prebuilt binary)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/annoyedmilk/airpods-tui
+	install = airpods-tui.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = bluez
+	depends = dbus
+	depends = libpulse
+	optdepends = pipewire: audio routing
+	optdepends = wireplumber: volume control via wpctl
+	optdepends = swayosd: volume OSD overlay
+	provides = airpods-tui
+	conflicts = airpods-tui
+	conflicts = airpods-tui-git
+	source = airpods-tui-bin-0.2.0.tar.gz::https://github.com/annoyedmilk/airpods-tui/releases/download/v0.2.0/airpods-tui-0.2.0-x86_64.tar.gz
+	sha256sums = a57eeb581225b4b40274e8327a6594d855860cca8318bcee6663e6574fb1b99c
+
+pkgname = airpods-tui-bin
