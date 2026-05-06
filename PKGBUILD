@@ -1,8 +1,8 @@
 # Maintainer: eltonff <eltonfabricio10@gmail.com>
 
 pkgname=mediaharbor-bin
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="MediaHarbor is your all-in-one media downloader."
 arch=('x86_64')
 url="https://github.com/MediaHarbor/mediaharbor"
@@ -30,9 +30,9 @@ provides=("mediaharbor=${pkgver}")
 conflicts=('mediaharbor')
 
 _pkgname="MediaHarbor"
-source=("${_pkgname}-${pkgver}.deb::https://github.com/MediaHarbor/mediaharbor/releases/download/v${pkgver}/${_pkgname}-${pkgver}.deb")
+source=("${_pkgname}-${pkgver}.deb::https://github.com/MediaHarbor/mediaharbor/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 
-sha256sums=('470b5ba9025c6b04da2b6504c8b162c880ba3b05f55a9d2f7657e4d8479c13aa')
+sha256sums=('7517887b85705c9364a8a9c4802eb6005b4e423e4ad8de9f6e5a64b5586a2709')
 
 package() {
   cd "$srcdir"
