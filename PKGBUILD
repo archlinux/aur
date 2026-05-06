@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=image-metahub-bin
 _pkgname=Image.MetaHub
-pkgver=0.15.3
+pkgver=0.15.4
 _electronversion=38
 pkgrel=1
 pkgdesc="A desktop application for browsing, searching, and organizing AI-generated images locally. Designed for performance with large collections, focusing on powerful metadata filtering and complete privacy.(Prebuilt version.Use system-wide electron)"
@@ -18,17 +18,15 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e3fa1eaf309317a3467811ac7234bf19f0013376a0d351198d4e7d255fd66867'
-            '3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5')
+sha256sums=('dd6a955fa49e6d688c2277f24dc128c7633ecdb5144f838e8c716a202f1b1f8e'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
     local _main_exe=""
-    
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
     fi
-
     if [[ -n "${_main_exe}" ]]; then
         local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
         if [[ -n "${_elec_ver}" ]]; then
