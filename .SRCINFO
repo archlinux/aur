@@ -1,0 +1,27 @@
+pkgbase = vrchat-avatar-scaler
+	pkgdesc = Control your avatar's scale via OSC
+	pkgver = 0.2.2
+	pkgrel = 4
+	url = https://github.com/SalbugVR/_vrchat-avatar-scaler
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-osc
+	depends = python-pynput
+	depends = python-pillow
+	depends = python-psutil
+	depends = python-tinyoscquery-git
+	conflicts = vrchat-avatar-scaler-git
+	conflicts = vrchat-avatar-scaler-nuitka
+	conflicts = vrchat-avatar-scaler-nuitka-git
+	source = https://github.com/SalbugVR/VRChat-Avatar-Scaler/archive/refs/tags/v0.2.2.tar.gz
+	source = vrchat-avatar-scaler.desktop
+	source = vrchat-avatar-scaler
+	source = scaler_config.json
+	sha256sums = 0adc9d6d3464c9c8d39daf6a0d5200016cbda51dcf1293dbc795396ca5ee23ea
+	sha256sums = a9eb665d62ed0adbdf554d6cdd7727e2713176452b02e9608151b70b4fe704db
+	sha256sums = 9685a2710c75091518e63fcee4a455f8e75dfa204336ca47379b5b290c3aaacb
+	sha256sums = 4e5faca98290b8d3d3bdc73aa6d7da8b20922d8ab8dc7e99d5da637be2ff43f3
+
+pkgname = vrchat-avatar-scaler
