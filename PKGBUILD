@@ -2,7 +2,7 @@
 pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
-pkgver=0.10.3
+pkgver=0.10.5
 pkgrel=1
 pkgdesc="A customisable music player.Binary version."
 arch=('x86_64')
@@ -32,28 +32,26 @@ depends=(
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
     'libpipewire: For the PipeWire audio output plugin'
-    'libopenmpt: For the OpenMPT audio input plugin'
-    'libgme: For the GME audio input plugin'
     'libsndfile: For the GME audio input plugin'
-    'libarchive: For the libarchive archive plugin'
     'libebur128: For the ReplayGain scanner plugin'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-trixie_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.fc44.x86_64.rpm"
 )
-sha256sums=('2c108beb647482b6b8932babfb0d9eaa9f21932ac90827b35c80d7ddead8414f')
+sha256sums=('d0ea6b62da204bdbc9b2cc4f2459f9d934273fdec64dc91e139beb64e5ddf59b')
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
+    #bsdtar -xf "${srcdir}/data."*
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/"*.so* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/plugins/"*.so -t "${pkgdir}/usr/lib/${pkgname%-bin}/plugins"
-    _icon_sizes=(16x16 22x22 32x32 48x48 64x64 128x128 256x256 512x512)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/usr/lib64/${pkgname%-bin}/"*.so* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/lib64/${pkgname%-bin}/plugins/"*.so -t "${pkgdir}/usr/lib/${pkgname%-bin}/plugins"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
     #ln -sf "/usr/lib/libkdsingleapplication-qt6.so" "${pkgdir}/usr/lib/${pkgname%-bin}/libkdsingleapplication-qt6.so.1.1"
     #ln -sf "/usr/lib/libavcodec.so.62" "${pkgdir}/usr/lib/${pkgname%-bin}/libavcodec.so.61"
