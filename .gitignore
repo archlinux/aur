@@ -1,4 +1,5 @@
 lastools-*.tar.gz
+LAStools/
 src/
 pkg/
 lastools-*.pkg.tar*

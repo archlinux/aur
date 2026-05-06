@@ -17,7 +17,7 @@
 --- LASlib/src/CMakeLists.txt
 +++ LASlib/src/CMakeLists.txt
 
-@@ -113,8 +113,8 @@ Change the installation directory
+@@ -114,8 +114,8 @@ Change the installation directory
  else()
  	install(TARGETS LASlib COMPONENT laslib EXPORT laslib-targets
 -		ARCHIVE DESTINATION lib/LASlib

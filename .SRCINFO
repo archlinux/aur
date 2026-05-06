@@ -1,28 +1,32 @@
 pkgbase = lastools
 	pkgdesc = Efficient tools for LiDAR processing
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://lastools.github.io/
 	arch = x86_64
 	license = LGPL-2.1-only
 	makedepends = cmake
-	depends = gcc-libs
+	makedepends = git
 	depends = glibc
-	source = lastools-2.0.4.tar.gz::https://github.com/LAStools/LAStools/archive/refs/tags/v2.0.4.tar.gz
+	depends = libgcc
+	depends = libstdc++
+	source = git+https://github.com/LAStools/LAStools.git#tag=v2.0.5
 	source = add_cmake_components.patch
 	source = set_libdir.patch
-	sha256sums = 40009d74dd7e782e2f245f4e35d063db06e74b2948a47157ee41f1cf63057090
-	sha256sums = da6c519b33e5a596c0dac0fdfc37b0bf39b6a459a160165ea9cc688b42a363a7
-	sha256sums = 98870e79ce664e191b9100adafabb1d63c05e9b75e6566e6477eb94d64ee6a96
+	sha256sums = 4ac6cfb23c6909db934575e1c1007bc16c143c6c3307aaed54759b91aaa1ae8e
+	sha256sums = 3e96ed4d97d6f86e117bf1bfb70ad7ea5c6937919d5823378bababc8ef8c27f3
+	sha256sums = 0c16096e6d8f64a7a56eded935e55a793e194c042ed4801cfe1860613ffd9628
 
 pkgname = lastools
 	pkgdesc = Efficient tools for LiDAR processing
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = libLASlib.so
+	depends = libstdc++
 
 pkgname = laslib
 	pkgdesc = Efficient library for LiDAR processing
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	provides = libLASlib.so
