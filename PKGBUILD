@@ -1,6 +1,7 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 
 pkgname=p4-utils-git
+_pkgname=${pkgname%-git}
 pkgver=r714.83b118b
 pkgrel=1
 pkgdesc='Extension to Mininet that makes P4 networks easier to build'
@@ -16,7 +17,6 @@ depends=(
 makedepends=(
   'help2man'
   'python-build'
-  'python-fissix'
   'python-installer'
 )
 optdepends=('frr: FRRouting support for router topologies')
@@ -26,12 +26,12 @@ sha256sums=('SKIP')
 options=('!debug')
 
 pkgver() {
-    cd $pkgname
+    cd "$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   python -m build --wheel --no-isolation
 
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
