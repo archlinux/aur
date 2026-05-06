@@ -1,6 +1,6 @@
 # Maintainer: godlyfast <godlyfast@gmail.com>
 pkgname=hyprwave-hifi
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="HyprWave HiFi - GTK4 Wayland music overlay with PipeWire visualization and per-application volume"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 provides=('hyprwave')
 conflicts=('hyprwave' 'hyprwave-hifi-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/godlyfast/hyprwave-hifi/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a189f1c0a44c1c6f85bccf9f103c4d233b330dc0e5d821ba35613dd0e2419235')
+sha256sums=('c7851d1a1a96d531eb0104b9b336e825a4acc6dd88f705383ee34404b0edf24e')
 
 build() {
     cd "hyprwave-hifi-$pkgver"
