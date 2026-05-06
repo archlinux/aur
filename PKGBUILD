@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cMap2data
-_pkgver=1.47.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('61bb2121d465ebbcf5022db39aae10d2')
-b2sums=('fd9e0b9194ba5aaa416ef4289e2c4e1e0280241c3f49e931787e242a0b5857e0fb15d658fcbc37a39f53e72944095929592e44e67906579f1b8776b828b2f3ca')
+md5sums=('355be1561ec8fa45794f6fd5e5add4da')
+b2sums=('0fc4e4903187eb8b67d37785b74c3ca4c02d2f204c0f56f1ed621207d833d740b888c2dba09e6076c0a8f60d1a8560b274c00e7ad703a47bf691e1d521a53ec9')
 
 build() {
   mkdir build
