@@ -1,7 +1,7 @@
 pkgbase = wallhaven-bin
 	pkgdesc = 一款优雅的跨平台桌面壁纸浏览与下载应用
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiaobili/wallhaven
 	install = wallhaven-bin.install
 	arch = x86_64
