@@ -1,6 +1,6 @@
 pkgbase = caqtdm-git
 	pkgdesc = caQtDM is a popular Epics framework for developing panels
-	pkgver = 4.6.0.r5463.g24d9eb2
+	pkgver = 4.6.1.r5761.g3a331b7
 	pkgrel = 1
 	url = https://caqtdm.github.io/
 	arch = x86_64
@@ -12,10 +12,13 @@ pkgbase = caqtdm-git
 	depends = glibc
 	depends = python
 	depends = qt6-base
+	depends = qt6-opcua
+	depends = qt6-positioning
+	depends = qt6-serialbus
 	depends = qt6-tools
 	depends = qwt
 	depends = zeromq
-	provides = caqtdm=4.6.0.r5463.g24d9eb2
+	provides = caqtdm=4.6.1.r5761.g3a331b7
 	conflicts = caqtdm
 	source = caqtdm::git+https://github.com/caqtdm/caqtdm.git
 	sha256sums = SKIP

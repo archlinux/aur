@@ -1,7 +1,7 @@
 # Maintainer: Julian Houba <info at craftingdragon dot ch>
 _pkgsrc=caqtdm
 pkgname='caqtdm-git'
-pkgver=4.6.0.r5463.g24d9eb2
+pkgver=4.6.1.r5761.g3a331b7
 pkgrel=1
 pkgdesc='caQtDM is a popular Epics framework for developing panels'
 arch=('x86_64')
@@ -13,6 +13,9 @@ depends=(
     'glibc'
     'python'
     'qt6-base'
+    'qt6-opcua'
+    'qt6-positioning'
+    'qt6-serialbus'
     'qt6-tools'
     'qwt'
     'zeromq'
@@ -48,6 +51,9 @@ build() {
     export ZMQ=/usr
     export ZMQINC=/usr/include
     export ZMQLIB=/usr/lib
+    export CAQTDM_OPCUA=1
+    export CAQTDM_MODBUS=1
+    export CAQTDM_GPS=1
     export CAQTDM_NORPATH=1
     export EPICS_HOST_ARCH="linux-${CARCH}"
     export QTHOME=/usr
