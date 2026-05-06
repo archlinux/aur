@@ -9,7 +9,7 @@ pkgbase = python-tinyoscquery-git
 	depends = python
 	depends = python-zeroconf
 	depends = python-requests
-	provides = python-tinyoscquery-git=0.1.2.r2.ga2c0af4
+	provides = python-tinyoscquery
 	conflicts = python-tinyoscquery
 	source = git+https://github.com/Hackebein/tinyoscquery.git
 	sha256sums = SKIP

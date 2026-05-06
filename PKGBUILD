@@ -9,7 +9,7 @@ url="https://github.com/Hackebein/$_pkgname"
 license=("MIT")
 depends=("python" "python-zeroconf" "python-requests")
 makedepends=("python-setuptools")
-provides=("${pkgname}=${pkgver}")
+provides=("python-${_pkgname}")
 conflicts=("python-${_pkgname}")
 source=("git+https://github.com/Hackebein/${_pkgname}.git")
 sha256sums=('SKIP')
