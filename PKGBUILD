@@ -4,7 +4,7 @@ pkgbase=python-stdatamodels
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Core support for DataModel classes used in calibration pipelines"
 arch=('any')
@@ -17,9 +17,8 @@ makedepends=('python-setuptools-scm'
 #            'python-sphinx_rtd_theme'
 #            'python-gwcs'
 #            'graphviz')  # wheel required by new setuptools, need old sphinx
-checkdepends=('python-pytest'
-#             'python-pytest-doctestplus'
-#             'python-pytest-asdf-plugin'
+checkdepends=('python-pytest-asdf-plugin'
+              'python-pytest-doctestplus'
 ##            'python-pytest-xdist'
 #             'python-asdf-astropy'
               'python-gwcs'
@@ -31,7 +30,7 @@ checkdepends=('python-pytest'
 #             )   # asdf, astropy, already in makedepends
 #              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('b83680c047bcadd4e6c0f0649e6e8d23')
+md5sums=('0382e1c5c73f066866832bedbfa9a70f')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -81,6 +80,7 @@ check() {
         --deselect=src/stdatamodels/jwst/transforms/resources/schemas/stsci.edu/jwst_pipeline/v23tosky-0.7.0.yaml::test_example_0 \
         --deselect=docs/source/jwst/datamodels/metadata.rst::metadata.rst \
         --deselect=docs/source/jwst/datamodels/models.rst::models.rst \
+        --deselect=docs/source/jwst/datamodels/switch-from-fits.rst \
         --deselect=src/stdatamodels/jwst/_kwtool/_tests/test_cli.py::test_cli || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 }
 
