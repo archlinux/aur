@@ -1,4 +1,5 @@
-# Maintainer: linrs <LinRs at users.noreply.github.com>
+# Maintainer: Troy C. <troxor at users.noreply.github.com>
+# Contributor: linrs <LinRs at users.noreply.github.com>
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 # Contributor: Jacob Emmert-Aronson <jacob at mlaronson dot com>
 # Contributor: Rene Schoebel <schoebel.r at gmail dot com>
@@ -14,75 +15,74 @@
 # Check the AUR package 'fs2_open-data' for details.
 
 pkgname=fs2_open
-pkgver=23_2_0_RC1
-pkgrel=2
+pkgver=25.0.1
+pkgrel=1
 pkgdesc="An enhancement of the FreeSpace 2 engine, need game data"
 url="https://scp.indiegames.us/"
 arch=(i686 x86_64)
-license=('custom:fs2_open')
-depends=(libjpeg libpng freetype2 ffmpeg sdl2 lua51 openal jansson)
-makedepends=(git cmake doxygen)
+license=('LicenseRef-fs2_open')
+depends=(glibc libgcc libx11 libstdc++ libjpeg libpng freetype2 ffmpeg sdl2 lua51 openal jansson bash hicolor-icon-theme)
+makedepends=(cmake)
 optdepends=('fs2_open-mediavps: extensive audiovisual enhancements'
             'fs2_open-data: extensive retail data'
-            'wxlauncher: cross-platform fs2 launcher')
-install=$pkgname.install
-source=("fs2open::git+https://github.com/scp-fs2open/fs2open.github.com.git#tag=release_${pkgver}"
-        "asarium-cmake-modules::git+https://github.com/asarium/cmake-modules.git"
-        "git+https://github.com/asarium/libRocket.git"
-        'fs2_open.sh'
-        'fs2_open.desktop'
-        'options'
-        'ffmpeg59-chlayout.patch')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'b79e907883949e7fe3a9b10ca3053d87b3e7f393deb41ecd905a823ef60d77e1'
-            'cac8914fb96eb4f09d8dec0005ccb3626499ab9f3f4c5f64c11bd8d2e913e372'
-            'c593dacd19705f1aaf23170d7b65b4621945200d3a496e256f77e3f1f0279741'
-            '84ed83906f69d00bee7ada626c1c29317d701215331502deb99b17222de3fead')
+            'wxlauncher: cross-platform fs2 launcher'
+            'doxygen: generate engine API docs when building from source')
+
+_upstream_tag=release_25_0_1
+_extracted="fs2open.github.com-${_upstream_tag}"
+
+# Submodule commits from: git submodule status (at $_upstream_tag)
+_submod_rpavlik=7cef9577d6fc35057ea57f46b4986a8a28aeff50
+_submod_librocket=b0c18e17d257a46db8395485895185915f483ede
+
+source=("fs2open-${pkgver}.tar.gz::https://github.com/scp-fs2open/fs2open.github.com/archive/refs/tags/${_upstream_tag}.tar.gz"
+        "cmake-modules-${_submod_rpavlik}.tar.gz::https://github.com/rpavlik/cmake-modules/archive/${_submod_rpavlik}.tar.gz"
+        "libRocket-${_submod_librocket}.tar.gz::https://github.com/scp-fs2open/libRocket/archive/${_submod_librocket}.tar.gz"
+        'fs2_open.desktop')
+sha256sums=('a32289ff57578368e9e41f13e1652c890fd418eb2e1e480cc6aae7f41cc5e3ba'
+            '7b6912da01a56eeca58c13f8bbb07b6120af8f04722316747dc8132a8ec65aca'
+            '444266ebd5fc1f48e565b91abdaa2bee87a621f792450c4339a5cc7be6f946ab'
+            '5e5205173637029217c77cd426582d3df55d9c6671b271379d023664484a6153')
 
 prepare() {
-  cd "fs2open"
-  git submodule init
-  git config submodule.cmake/external/rpavlik-cmake-modules.url "${srcdir}/asarium-cmake-modules"
-  git config submodule.lib/libRocket.url "${srcdir}/libRocket"
-  git -c protocol.file.allow=always submodule update
-
-  # CMake 4+ no longer allows CMP_* OLD for these; bundled antlr4 still requests them.
-  sed -i \
-    -e 's/CMAKE_POLICY(SET CMP0054 OLD)/CMAKE_POLICY(SET CMP0054 NEW)/g' \
-    -e 's/CMAKE_POLICY(SET CMP0045 OLD)/CMAKE_POLICY(SET CMP0045 NEW)/g' \
-    -e 's/CMAKE_POLICY(SET CMP0042 OLD)/CMAKE_POLICY(SET CMP0042 NEW)/g' \
-    -e 's/CMAKE_POLICY(SET CMP0059 OLD)/CMAKE_POLICY(SET CMP0059 NEW)/g' \
-    lib/antlr4-cpp-runtime/CMakeLists.txt
-
-  # GCC 15: const members make this assignment ill-formed; match upstream rapidjson fix.
-  sed -i 's|GenericStringRef& operator=(const GenericStringRef& rhs) { s = rhs.s; length = rhs.length; }|GenericStringRef\& operator=(const GenericStringRef\& rhs) = delete;|' \
-    lib/discord/thirdparty/rapidjson/document.h
-
-  patch -p1 -i "${srcdir}/ffmpeg59-chlayout.patch"
+  cd "${_extracted}"
+  rm -rf cmake/external/rpavlik-cmake-modules lib/libRocket
+  mv "$srcdir/cmake-modules-${_submod_rpavlik}" cmake/external/rpavlik-cmake-modules
+  mv "$srcdir/libRocket-${_submod_librocket}" lib/libRocket
+  # Upstream uses fs2_open_${version}_${arch}_${SIMD}; force a fixed name for packaging.
+  sed -i 's/OUTPUT_NAME "fs2_open_${FSO_BINARY_SUFFIX}"/OUTPUT_NAME "fs2_open"/' freespace2/CMakeLists.txt
 }
 
 build() {
-  # Strip build-machine paths from DWARF, __FILE__, and macros (avoids makepkg $srcdir warning).
-  local _pm="-ffile-prefix-map=${srcdir}=. -fmacro-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
-  export CFLAGS+=" ${_pm}"
-  export CXXFLAGS+=" ${_pm}"
+  # Strip $srcdir from debug paths (namcap) and improve reproducibility.
+  local _map="-ffile-prefix-map=${srcdir}=."
+  CFLAGS+=" ${_map}"
+  CXXFLAGS+=" ${_map}"
 
-  cmake -B build -S "fs2open" -Wno-dev \
+  cmake -B build -S "${_extracted}" -Wno-dev \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DFSO_BUILD_WITH_VULKAN=OFF \
+    -DFSO_BUILD_WITH_OPENXR=OFF
 
   cmake --build build
 }
 
 package() {
-  #this don't play nice with make/cmake install
-  binary=`find build/bin/fs2_open*`
-  install -Dm755 ${binary} "$pkgdir/opt/$pkgname/fs2_open"
+  install -Dm755 build/bin/fs2_open "$pkgdir/usr/lib/$pkgname/fs2_open"
+  install -d "$pkgdir/opt/$pkgname"
+  ln -sf "/usr/lib/$pkgname/fs2_open" "$pkgdir/opt/$pkgname/fs2_open"
 
-  install -Dm644 fs2open/Copying.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Engine resolves game data relative to PWD; keep /opt/fs2_open as cwd for CLI users.
+  mkdir -p "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/fs2_open" << 'EOF'
+#!/bin/sh
+cd /opt/fs2_open || exit 1
+exec ./fs2_open "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/fs2_open"
+
+  install -Dm644 "${_extracted}/Copying.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${_extracted}/freespace2/resources/app_icon.png" \
+    "$pkgdir/usr/share/icons/hicolor/48x48/apps/fs2_open.png"
   install -Dm644 fs2_open.desktop "$pkgdir/usr/share/applications/fs2_open.desktop"
-  install -Dm644 options "$pkgdir/usr/share/$pkgname/options"
-  install -Dm755 fs2_open.sh "$pkgdir/usr/bin/fs2_open"
 }

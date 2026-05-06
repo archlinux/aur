@@ -1,7 +1,16 @@
 [Desktop Entry]
-Name=FS2 Open
+Version=1.4
 Type=Application
-Comment=FreeSpace 2
-Exec=fs2_open
-Icon=freespace2
-Categories=Game;
+Name=FS2 Open
+Comment=Open-source engine reviving FreeSpace 2 with modern fixes, higher resolutions, and mod support.
+GenericName=FreeSpace 2 engine
+Exec=/usr/bin/fs2_open %F
+TryExec=/usr/bin/fs2_open
+Path=/opt/fs2_open
+Icon=fs2_open
+StartupWMClass=fs2_open
+Terminal=false
+Categories=Game;StrategyGame;
+Keywords=space;freespace;fs2;combat;simulation;scifi;
+StartupNotify=false
+PrefersNonDefaultGPU=true
