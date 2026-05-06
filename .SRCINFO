@@ -17,6 +17,7 @@ pkgbase = deepseek-tui-git
 	provides = deepseek-tui
 	provides = deepseek
 	conflicts = deepseek-tui
+	conflicts = deepseek-tui-bin
 	source = deepseek-tui::git+https://github.com/Hmbown/DeepSeek-TUI.git
 	sha256sums = SKIP
 

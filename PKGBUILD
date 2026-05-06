@@ -15,7 +15,7 @@ optdepends=('bash-completion: bash completions'
             'fish: fish completions')
 makedepends=('rust>=1.88' 'pkg-config')
 provides=('deepseek-tui' 'deepseek')
-conflicts=('deepseek-tui')
+conflicts=('deepseek-tui' 'deepseek-tui-bin')
 
 source=("$_pkgname::git+https://github.com/Hmbown/DeepSeek-TUI.git")
 sha256sums=('SKIP')
