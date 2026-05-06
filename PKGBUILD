@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=formidable-bin
 _pkgname=Formidable
-pkgver=2.0.4
+pkgver=2.0.12
 _electronversion=41
 pkgrel=1
 pkgdesc="A modular Electron desktop application for creating, managing, and rendering dynamic forms and Markdown documents from YAML-based templates.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_amd64.deb")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('c855839851ad4390a6f142b87f9ff92de29b82bc470f126eec59e99c58c7feb9')
-sha256sums_x86_64=('c088efafcbd53dd1b47d091d9a3c0c7577e37f5b650026e7e64daef6597068d9')
+sha256sums_aarch64=('761a9f85aaeeccecbe0ef51c84e1f4f17bd29d25116c9c39f80fdb235a66ef25')
+sha256sums_x86_64=('4893702ca717aa484ac6b86ca8004f631c3dbc428a31dbfdc2c547fc71bb034e')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
