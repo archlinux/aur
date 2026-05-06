@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=3.7.6
+pkgver=3.8.1
 _electronversion=36
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter.(Prebuilt version.Use system-wide electron)"
@@ -23,12 +23,28 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('65dff9c234613d5ca892f8a52b54de23fcf3b9f996d51651bc611aca239ef606'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('e6da7dd09b89efbb0be1c4e1a13fe81be4079b049fd68f7b98a8a6086689d1ce')
-sha256sums_x86_64=('bf1e75293ecf263860418cff10ee2d582769bfedf90d2c0f5e341e7f225780d0')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('78ff3c030de024c0ca44204df1ef7dcffd10550c2fd9433efb498756904fdf81')
+sha256sums_x86_64=('bd9d1e5ce0be2e736f2e0fc74333b4da2d1618f942fe0837839811c9a0446ae1')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -36,7 +52,6 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -45,19 +60,21 @@ prepare() {
         rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    _get_electron_version
+    _check_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/squashfs-root/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    _icon_sizes=(8x8 32x32 64x64 128x128 256x256)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
