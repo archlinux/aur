@@ -1,0 +1,21 @@
+pkgbase = omikuji-git
+	pkgdesc = Qt/QML based wine apps launcher for Linux (development version)
+	pkgver = r0.0.0
+	pkgrel = 1
+	url = https://github.com/reakjra/omikuji
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	provides = omikuji
+	conflicts = omikuji
+	source = omikuji::git+https://github.com/reakjra/omikuji.git
+	sha256sums = SKIP
+
+pkgname = omikuji-git
