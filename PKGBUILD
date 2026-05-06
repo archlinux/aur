@@ -20,7 +20,7 @@ optdepends=(
 )
 options=('!strip')
 source=("${pkgname}_${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('e374ab3e18be6c17eb89229100556c3663f234777236f215088e56b4368cc70e')
+sha256sums=('e1a8e2cc7abfc40ca0ce10c8de63861a18569db48221ebc838d0aeadd9754772')
 
 build() {
 	cd "${pkgname}"
