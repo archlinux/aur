@@ -1,0 +1,16 @@
+[Desktop Entry]
+Comment=Control your avatar's height via OSC
+Exec=/usr/bin/vrchat-avatar-scaler
+GenericName=vrchat-avatar-scaler
+Name=vrchat-avatar-scaler
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Icon=vrchat-avatar-scaler
+Categories=Utilities;Network;

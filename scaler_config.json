@@ -1,0 +1,23 @@
+{
+  "default_height": 1.65,
+  "last_height": 1.65,
+  "retain_on_change": true,
+  "apply_default_on_change": false,
+  "auto_close_with_vrchat": false,
+  "auto_launch_with_vrchat": false,
+  "run_on_startup": false,
+  "start_minimized": false,
+  "overlay_enabled": false,
+  "overlay_x": null,
+  "overlay_y": null,
+  "suppress_range_warning": false,
+  "keyboard_enabled": true,
+  "kb_fine_up": "ctrl+alt+up",
+  "kb_fine_down": "ctrl+alt+down",
+  "kb_coarse_up": "ctrl+alt+shift+up",
+  "kb_coarse_down": "ctrl+alt+shift+down",
+  "kb_apply_default": "ctrl+alt+home",
+  "vrc_ip": "127.0.0.1",
+  "send_port": 9000,
+  "recv_port": 9001
+}

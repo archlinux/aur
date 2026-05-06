@@ -1,0 +1,26 @@
+#!/bin/bash
+cd /opt/vrchat-avatar-scaler
+
+##Create vrchat-avatar-scaler config user dir
+if [ ! -d "$HOME/.config/vrchat-avatar-scaler" ];
+then
+        mkdir -p $HOME/.config/vrchat-avatar-scaler
+fi
+##check if the user config is there
+if [ ! -f "$HOME/.config/vrchat-avatar-scaler/scaler_config.json" ];
+then
+        cp /opt/vrchat-avatar-scaler/scaler_config.json.example $HOME/.config/vrchat-avatar-scaler/scaler_config.json
+fi
+##check if the symlink is attached to the current user running this script
+confSym=$(ls -la | grep "$HOME")
+if [ -z "$confSym" ];
+then
+        if [ -f "/opt/vrchat-avatar-scaler/scaler_config.json" ];
+        then
+                rm -f /opt/vrchat-avatar-scaler/scaler_config.json
+        fi
+        ln -s $HOME/.config/vrchat-avatar-scaler/scaler_config.json /opt/vrchat-avatar-scaler/
+fi
+
+
+/usr/bin/python /opt/vrchat-avatar-scaler/vrchat_avatar_scaler.pyw
