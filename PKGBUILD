@@ -2,7 +2,7 @@
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
 pkgver=2.6.2.r205.d19863a
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -25,12 +25,8 @@ _fullsrcdir() {
     echo "$srcdir/$_pkgbasename"
 }
 
-# Based on https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
 prepare() {
     cd "$(_fullsrcdir)"
-    git submodule init
-    git config submodule.ruff_config.url "$srcdir/ruff-config"
-    git -c protocol.file.allow=always submodule update
     sed --in-place 's/uv run //g' Makefile
 }
 
