@@ -1,0 +1,23 @@
+# Maintainer: HaroldLoui <riven970309@gmail.com>
+pkgbase = deepseek-tui-git
+	pkgdesc = Terminal coding agent for DeepSeek models - git version
+	pkgver = 0.8.14.r0.gABCDEF
+	pkgrel = 1
+	url = https://github.com/Hmbown/DeepSeek-TUI
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = dbus
+	depends = ca-certificates
+	optdepends = bash-completion: bash completions
+	optdepends = zsh: zsh completions
+	optdepends = fish: fish completions
+	makedepends = rust
+	makedepends = pkg-config
+	provides = deepseek-tui
+	provides = deepseek
+	conflicts = deepseek-tui
+	source = deepseek-tui::git+https://github.com/Hmbown/DeepSeek-TUI.git
+	sha256sums = SKIP
+
+pkgname = deepseek-tui-git
