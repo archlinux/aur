@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ThreadLens
+Comment=Find, review, back up, and safely clean up local AI sessions across Codex, Claude, Gemini, and Copilot
+Exec=threadlens %U
+Terminal=false
+Type=Application
+Icon=threadlens
+StartupWMClass=@threadlensdesktop-electron
+Categories=Utility;
+NoDisplay=true

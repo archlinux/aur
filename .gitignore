@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!threadlens.desktop
+!threadlens-appimage.desktop
+!threadlens.png
+!threadlens.sh
+!threadlens.install

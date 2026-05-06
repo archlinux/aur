@@ -1,0 +1,26 @@
+_threadlens_setup_colors() {
+  if [ -t 1 ] && command -v tput >/dev/null 2>&1; then
+    all_off="$(tput sgr0 2>/dev/null || printf '')"
+    bold="${all_off}$(tput bold 2>/dev/null || printf '')"
+    blue="${bold}$(tput setaf 4 2>/dev/null || printf '')"
+    yellow="${bold}$(tput setaf 3 2>/dev/null || printf '')"
+  else
+    all_off=''
+    bold=''
+    blue=''
+    yellow=''
+  fi
+}
+
+note() {
+  _threadlens_setup_colors
+  printf "%s==>%s NOTE:%s %s%s\n" "$blue" "$yellow" "$bold" "$1" "$all_off"
+}
+
+post_install() {
+  note "Custom flags should be put directly in: ~/.config/threadlens-flags.conf"
+}
+
+post_upgrade() {
+  post_install
+}
