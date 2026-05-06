@@ -1,6 +1,6 @@
 # Maintainer: tim <iunstable0@proton.me>
-pkgname=klear-bar-git
-_pkgname=klearShell
+pkgname=klear
+_pkgname=klear
 pkgver=r1.0
 pkgrel=1
 pkgdesc='A minimal Hyprland status bar in Kotlin/Native (tray, popup menus, battery, glassy refraction)'
