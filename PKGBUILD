@@ -6,7 +6,6 @@ _name='powershell'
 pkgname="$_name-git"
 pkgver=7.7.0.preview.1.r11437.faf1e0e
 _major=${pkgver:0:1}
-_pester_ver=4.10.1
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
