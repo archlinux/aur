@@ -2,7 +2,7 @@
 # Maintainer: lbp <noreply@forge.lbp.dev>
 
 pkgname='telex-bin'
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc='Terminal UI and CLI for telex.sh email workflows'
 url='https://forge.lbp.dev/lbp/telex-cli'
@@ -12,10 +12,10 @@ provides=('telex')
 conflicts=('telex')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://forge.lbp.dev/lbp/telex-cli/releases/download/v${pkgver}/telex_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4af9a7c4f2d80c67ffef52a7b8dda4439e30a40405b6044a5a2255e23e336d8f')
+sha256sums_aarch64=('cb412d9069bff786f51007fae4d1ad4f3447ada39e6205b6dd1af6441d949f8f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://forge.lbp.dev/lbp/telex-cli/releases/download/v${pkgver}/telex_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('689b11b891cff1d4a6410d6447ce81b804750a01afb892b69ae0b702e370bfd8')
+sha256sums_x86_64=('5434cce9e1894d6bd890095f29a8efbdfd4cb8fae5329de79ca4dfd76e70d74a')
 
 package() {
   install -Dm755 telex "${pkgdir}/usr/bin/telex"
