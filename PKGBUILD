@@ -17,14 +17,12 @@ pkgrel=1
 options=("!strip")
 source=("linux-zen.conf"
         "linux-zen.preset"
-        'zen-kernel::git+https://github.com/zen-kernel/zen-kernel.git#branch=6.18/main')
+        'zen-kernel::git+https://github.com/zen-kernel/zen-kernel.git#branch=7.0/main')
         #'allow-disable-msr-lockdown.patch')
 sha256sums=('6373073ad943e068478ef1373be4eb2a7e473da8743d946f1f50cd364685ab87'
             '18fe6b2664a9a740544c4cb990efe5ec933d6e64caf9e5d0a6ced92af0027c2d'
             'SKIP')
 #            'd19b97eb71b00d750c76aaf4bb2c4f783bebdfd36eb262219214e450c891a41d')
-
-_CORES=2
 
 # compress the modules or not
 _compress="y"
@@ -34,12 +32,6 @@ PKGEXT='.pkg.tar'
 
 prepare() {
 	cd "${srcdir}/zen-kernel"
-	
-	# Number of CPU Cores
-	_CORES=$(cat /proc/cpuinfo|grep processor|wc -l)
-	if [ $_CORES -lt 1 ]; then
-		_CORES=2
-	fi
 	
 	git reset --hard
 }
@@ -108,8 +100,8 @@ build() {
 	
 	cd "${srcdir}/build"
 
-	msg2 "Building kernel..."; make -j $_CORES bzImage
-	msg2 "Building modules..."; make -j $_CORES modules
+	msg2 "Building kernel..."; bzImage
+	msg2 "Building modules..."; modules
 }
 
 package_linux-zen-git() {
