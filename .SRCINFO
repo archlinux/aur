@@ -1,6 +1,6 @@
 pkgbase = moshpit-keygen-bin
 	pkgdesc = ed25519 key generation and inspection tool for moshpit (pre-compiled binary)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = moshpit-keygen-bin
 	license = Apache-2.0
 	provides = moshpit-keygen
 	conflicts = moshpit-keygen
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.4.0/dist-mp-keygen.tar.gz
-	sha256sums = 18086a2e82554613e4cc1513850a3f457801f02ffd735c83ecbdc9e079138b0d
-	source_x86_64 = mp-keygen-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.4.0/mp-keygen-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 6804ea4837a48f2776c7d3873f9b3b7fb7f97c8048a2ddf5781e09613a98d936
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.4.1/dist-mp-keygen.tar.gz
+	sha256sums = 81d8c4cff0926da6694d813f9ef6d6a7eb4b177ff9601c67d05e79cdde868d31
+	source_x86_64 = mp-keygen-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.4.1/mp-keygen-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = dccd2645ef4ffa6bdf5953fc17a7d93e652a31acb34f9cb79b80965ba9788787
 
 pkgname = moshpit-keygen-bin
