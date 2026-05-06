@@ -1,7 +1,7 @@
 pkgbase = plasma-login-manager
 	pkgdesc = Plasma Login Manager
 	pkgver = 6.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -33,11 +33,13 @@ pkgbase = plasma-login-manager
 	depends = systemd-libs
 	source = https://download.kde.org/stable/plasma/6.6.4/plasma-login-manager-6.6.4.tar.xz
 	source = https://download.kde.org/stable/plasma/6.6.4/plasma-login-manager-6.6.4.tar.xz.sig
+	source = https://invent.kde.org/plasma/plasma-login-manager/-/commit/304413ce.patch
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = 3b4a3838459011115a97a4563be20907070cace91ba9679dc7fa43dced44cd1e
 	sha256sums = SKIP
+	sha256sums = 224c32dc5f57b453fe97a4ee8ffd865d85aa207792852514d23eae22c81359b6
 
 pkgname = plasma-login-manager
