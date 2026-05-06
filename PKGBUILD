@@ -1,6 +1,6 @@
 # Maintainer: Pablo <pablo@example.com>
 pkgname=tango-cli
-pkgver=1.0.4
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Declarative API testing CLI"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('86f69a461e30e7d167175dcb2616eec419750b7e3ac2f84a922e4add543bbb5e')
 
 build() {
   cd "${pkgname}-${pkgver}"
