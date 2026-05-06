@@ -2,3 +2,6 @@
 *.tar
 pkg/
 src/
+
+.claude/
+deepseek-tui/

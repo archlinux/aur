@@ -3,13 +3,14 @@
 
 pkgname=deepseek-tui-git
 _pkgname=deepseek-tui
-pkgver=0.8.14.r0.gABCDEF
-pkgrel=1
+pkgver=0.8.14.r47.gf932c4b9
+pkgrel=2
 pkgdesc="Terminal coding agent for DeepSeek models - git version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hmbown/DeepSeek-TUI"
 license=('MIT')
-depends=()
+options=('!debug')
+depends=('dbus')
 optdepends=('bash-completion: bash completions'
             'zsh: zsh completions'
             'fish: fish completions')
@@ -31,6 +32,11 @@ build() {
     # Rust 1.88+ required for edition 2024
     : "Building DeepSeek-TUI from source"
 
+    # rust-lld cannot handle GCC LTO objects produced when makepkg's CFLAGS
+    # includes -flto=auto. Strip it so sqlite3's C code compiles as native code.
+    CFLAGS="${CFLAGS//-flto=auto/}"
+    export CFLAGS
+
     cargo build --release --locked
 }
 
@@ -45,16 +51,12 @@ package() {
     ./target/release/deepseek completion bash > deepseek.bash
     install -Dm644 deepseek.bash "$pkgdir/usr/share/bash-completion/completions/deepseek"
 
-    # Only install zsh/fish completions if the respective shell is installed
-    if command -v zsh &>/dev/null; then
-        ./target/release/deepseek completion zsh > _deepseek
-        install -Dm644 _deepseek "$pkgdir/usr/share/zsh/site-functions/_deepseek"
-    fi
+    # Install zsh and fish completions (optdepends tells users about them)
+    ./target/release/deepseek completion zsh > _deepseek
+    install -Dm644 _deepseek "$pkgdir/usr/share/zsh/site-functions/_deepseek"
 
-    if command -v fish &>/dev/null; then
-        ./target/release/deepseek completion fish > deepseek.fish
-        install -Dm644 deepseek.fish "$pkgdir/usr/share/fish/vendor_completions.d/deepseek.fish"
-    fi
+    ./target/release/deepseek completion fish > deepseek.fish
+    install -Dm644 deepseek.fish "$pkgdir/usr/share/fish/vendor_completions.d/deepseek.fish"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

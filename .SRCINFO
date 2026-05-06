@@ -1,22 +1,22 @@
-# Maintainer: HaroldLoui <riven970309@gmail.com>
 pkgbase = deepseek-tui-git
 	pkgdesc = Terminal coding agent for DeepSeek models - git version
-	pkgver = 0.8.14.r0.gABCDEF
-	pkgrel = 1
+	pkgver = 0.8.14.r47.gf932c4b9
+	pkgrel = 2
 	url = https://github.com/Hmbown/DeepSeek-TUI
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = 
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = dbus
 	optdepends = bash-completion: bash completions
 	optdepends = zsh: zsh completions
 	optdepends = fish: fish completions
-	makedepends = cargo
-	makedepends = pkgconf
 	provides = deepseek-tui
 	provides = deepseek
 	conflicts = deepseek-tui
 	conflicts = deepseek-tui-bin
+	options = !debug
 	source = deepseek-tui::git+https://github.com/Hmbown/DeepSeek-TUI.git
 	sha256sums = SKIP
 
