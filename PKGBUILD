@@ -11,7 +11,7 @@ install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
 sha256sums=("cae3278889a320b7fec531efd37e93c1050cbc479652bf25288a1cc32b395f8f"
-            'aab8d136f606ee05f7bb96ee51d2fcd1730edfa632ec4b832817e2901edf9f2e')
+            '21faf62e96115dfa873dc71fc1e61d5ce5415fb96da15c5c7ba99cfc31ae62c8')
 
 package() {
     cd "$pkgname-$pkgver"
