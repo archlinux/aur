@@ -1,8 +1,7 @@
 # Maintainer: Brightbites <brightbites667@gmail.com>
 pkgname=tagstudio-bin
-_pkgname=${pkgname%-bin}
 pkgver=9.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A User-Focused Photo & File Management System (pre-compiled)"
 arch=('x86_64')
 url="https://github.com/TagStudioDev/TagStudio"
