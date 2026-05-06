@@ -1,0 +1,27 @@
+pkgbase = athen-bin
+	pkgdesc = Universal proactive AI agent (Tauri 2 desktop app)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/albiol2004/Athen
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = libappindicator-gtk3
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	depends = hicolor-icon-theme
+	optdepends = podman: container-isolated tool sandbox
+	optdepends = docker: container-isolated tool sandbox (alternative to podman)
+	optdepends = nushell: cross-platform shell backend
+	provides = athen
+	conflicts = athen
+	options = !debug
+	source = athen-0.1.1.deb::https://github.com/albiol2004/Athen/releases/download/v0.1.1/Athen_0.1.1_amd64.deb
+	source = LICENSE-0.1.1::https://github.com/albiol2004/Athen/raw/v0.1.1/LICENSE
+	sha256sums = c5df77c52b0c0d2f05f208225a0823ddc746f639f46d9c3f6de71f6a94a683ea
+	sha256sums = 63a6a7e9ff02a7d4782645d17fb75d5d918dc35c834a64dab5db485da85feb47
+
+pkgname = athen-bin
