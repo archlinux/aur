@@ -1,8 +1,8 @@
 # Maintainer: Johannes Loher <johannes.loher@fg4f.de>
 
 pkgname=fence
-pkgver=0.1.54
-pkgrel=3
+pkgver=0.1.57
+pkgrel=1
 pkgdesc="Lightweight, container-free sandbox for running untrusted commands"
 arch=('x86_64')
 url="https://github.com/Use-Tusk/fence"
@@ -11,7 +11,7 @@ depends=('bubblewrap' 'socat')
 optdepends=('bpftrace: filesystem violation visibility when monitoring with -m')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Use-Tusk/fence/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5bb6064189e154e3223c3afb28cc12d28aae88f7f6efbd4c1b87d2452df5c16c')
+sha256sums=('cc29d80141c920eb628f8fca900839f698deea3ce93c74bdef261da21c9d1667')
 
 prepare() {
     cd "$pkgname-$pkgver"
