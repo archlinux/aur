@@ -13,7 +13,7 @@ arch=('x86_64')
 url='https://equicord.org/'
 license=('custom')
 options=('!debug' '!strip')
-depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3')
+depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3' 'hicolor-icon-theme')
 optdepends=('libpulse: PulseAudio support'
             'libappindicator-gtk3: Systray indicator support'
             'xdg-utils: For opening URLs and files')
@@ -23,11 +23,13 @@ source=(
     'discord-pkgbuild::https://gitlab.archlinux.org/archlinux/packaging/packages/discord/-/raw/main/PKGBUILD'
     'equicord.desktop'
     'equicord.png'
+    'equicord.sh'
 )
 sha512sums=('SKIP'
             'SKIP'
             '25c3e3cbef8c981a42ba059f589ffc9ebe8c81406fa6cd6b000ed7b4e3c7b95ae96108df2a29096a8c527153b3becf98b1769b2af75d5f6cf0fe69edd2b3da3a'
-            '94f091c05c365986d556616404e00344a1d8e4ba93ad1875c0d3d96b1d0a643a799343fe6b84dcf7013ea3f9d47a3380540d8212bbf3fb6f5ddf39840ffe38d5')
+            '94f091c05c365986d556616404e00344a1d8e4ba93ad1875c0d3d96b1d0a643a799343fe6b84dcf7013ea3f9d47a3380540d8212bbf3fb6f5ddf39840ffe38d5'
+            '2b7885cc7cad6d10d5d503fa1f55bf418dbea4d96fe4f3f917bd20bd5d934c7342c794ea77bea11aca79cc04d6f386f6e91dd5bd3fbf8a206e206bf440cd4be3')
 
 pkgver() {
     local discord_ver=$(grep -oE '^pkgver=(.*?)$' discord-pkgbuild)
@@ -82,52 +84,35 @@ build() {
     rm -rf "discord-$discord_ver"; mkdir "discord-$discord_ver"
     tar -xzvf "discord-$discord_ver.tar.gz" -C "discord-$discord_ver" --strip-components=1
 
-    pushd "discord-$discord_ver"
-        # replace desktop file
-        cp ../equicord.{desktop,png} .
-        cp {equicord,discord}.png
-        rm discord.desktop
+    pushd equicord-source
+        _ensure_local_nvm
+        EQUICORD_REMOTE="Equicord/Equicord" pnpm buildStandalone
 
-        # setuid on chrome-sandbox
-        chmod u+s chrome-sandbox
-        chmod 755 Discord
-
-        rm postinst.sh
-
-        pushd resources
-            mv app.asar _app.asar
+        pushd dist
             mkdir app
-
             echo '{"name": "discord", "main": "index.js"}' > app/package.json
-            echo 'require("/usr/lib/equicord/dist/desktop.asar");' > app/index.js
+            echo 'require(require("path").resolve(require("electron").app.getAppPath(), "..", "equicord.asar"));' > app/index.js
             asar pack app app.asar
             rm -rf app
         popd
     popd
-    
-    pushd equicord-source
-        _ensure_local_nvm
-        EQUICORD_REMOTE="Equicord/Equicord" pnpm buildStandalone
-        cp -a dist "../discord-$discord_ver"
 
-        rm -rf "../discord-$discord_ver/dist/Installer"
-        rm -rf "../discord-$discord_ver/dist/equibop"
-        rm -f "../discord-$discord_ver/dist/equibop.asar"
-    popd
+    local hash="$(sha256sum equicord-source/dist/app.asar | awk '{print $1}')"
+    sed -i 's/INSERT_HASH_HERE/'"$hash"'/' equicord.sh
 }
 
 package() {
-  local discord="discord-${pkgver%%.r*}"
+  local discord="$(pwd)/discord-${pkgver%%.r*}"
+  local equicord="$(pwd)/equicord-source"
 
-  install -d "$pkgdir/usr/lib/$pkgname"
-  cp -a "$discord/." "$pkgdir/usr/lib/$pkgname"
+  install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 $pkgname.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
 
-  install -d "$pkgdir/usr/bin"
-  ln -s "/usr/lib/$pkgname/Discord" "$pkgdir/usr/bin/$pkgname"
+  cd "$discord"
+  install -Dm755 updater_bootstrap "$pkgdir"/usr/share/$pkgname/updater_bootstrap
 
-  install -d "$pkgdir/usr/share/applications"
-  ln -s "/usr/lib/$pkgname/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  ln -s "/usr/lib/$pkgname/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  cd "$equicord"
+  install -Dm644 dist/app.asar "$pkgdir"/usr/share/$pkgname/app.asar
+  install -Dm644 dist/desktop.asar "$pkgdir"/usr/share/$pkgname/equicord.asar
 }
