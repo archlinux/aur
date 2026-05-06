@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Parra Mazuecos <eduparra90@gmail.com>
 
 pkgname=betcon
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Sports betting management"
 url="http://betcon.eduardoparra.es"
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPLv3')
 depends=('python' 'pyside6' 'qt6-tools' 'python-numpy' 'python-yaml' 'python-pillow' 'python-pyqtgraph' 'python-colorama')
 source=("https://github.com/soker90/betcon/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('52aabcfe4085ce251d3e90bc8ea644afd9c1ab6a0f4d897bb72acac2c255b069')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -40,5 +40,4 @@ EOF
 	install -dm755 "${pkgdir}/usr/share/pixmaps"
 	install -Dm644 resources/icon.png "${pkgdir}/usr/share/pixmaps/betcon.png"
 }
-
 
