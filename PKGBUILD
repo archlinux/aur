@@ -2,7 +2,7 @@
 pkgname=moekoemusic
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.6.2
+pkgver=1.6.3
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -12,7 +12,7 @@ arch=(
     'x86_64'
 )
 url="https://music.moekoe.cn/"
-_ghurl="https://github.com/iAJue/MoeKoeMusic"
+_ghurl="https://github.com/MoeKoeMusic/MoeKoeMusic"
 license=('GPL-2.0-only')
 depends=(
     "electron${_electronversion}"
@@ -27,7 +27,7 @@ makedepends=(
     'jq'
 )
 source=("${pkgname}.sh")
-sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -35,17 +35,21 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -name "node_modules" \
+        -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
+    _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}"
-    git clone \
-        --depth 1 \
-        --branch "v${pkgver}" \
-        "${_ghurl}" \
-        "${pkgname}-${pkgver}"
+    if [[ ! -d "${pkgname}-${pkgver}" ]]; then
+        git clone \
+            --depth 1 \
+            --branch "v${pkgver}" \
+            "${_ghurl}" \
+            "${pkgname}-${pkgver}"
+    fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
@@ -53,7 +57,6 @@ prepare() {
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
@@ -81,6 +84,7 @@ prepare() {
         s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g
         s/\.\.\/api/\.\/api/g
     " "${srcdir}/${pkgname}-${pkgver}/electron/appServices.js"
+    git submodule update --depth=1 --init --recursive
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname}-${pkgver}/api"
     NODE_ENV=development    npm install
@@ -104,8 +108,9 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -a "${srcdir}/${pkgname}-${pkgver}/dist_electron/linux-"*"/resources/". "${pkgdir}/usr/lib/${pkgname}/"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/dist_electron/linux-"*/{api,assets} "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/images/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+    cp -a "${_app_dir}"/{api,assets} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icons/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
