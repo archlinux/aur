@@ -71,7 +71,7 @@ provides=($_pkgname kwin-x11 "${_pkgname1}-sonic-bin")
 conflicts=($_pkgname kwin-x11 "${_pkgname1}-sonic-bin")
 replaces=("${_pkgname1}-sonic-bin")
 
-sha256sums=('2a7723e52895abdaab93aebe33044eb29a136dd384de3b538dc41b5cb120b883')
+sha256sums=('bd61b3ca48345d2177446271a7ed5856815fff4d466d2b27f2368484ff9a4889')
 
 package() {
   tar -xf "${_pkgname1}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
