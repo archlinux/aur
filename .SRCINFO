@@ -1,7 +1,7 @@
 pkgbase = python-sphinxcontrib-bibtex
 	pkgdesc = A Sphinx extension for BibTeX style citations
-	pkgver = 2.6.5
-	pkgrel = 2
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://sphinxcontrib-bibtex.readthedocs.org
 	arch = any
 	license = BSD-2-Clause
@@ -17,9 +17,7 @@ pkgbase = python-sphinxcontrib-bibtex
 	depends = python-pybtex
 	depends = python-pybtex-docutils
 	depends = python-docutils
-	source = python-sphinxcontrib-bibtex-2.6.5.tar.gz::https://github.com/mcmtroffaes/sphinxcontrib-bibtex/archive/2.6.5.tar.gz
-	source = https://github.com/mcmtroffaes/sphinxcontrib-bibtex/commit/20781600.patch
-	b2sums = 84f169a573532294d9ee3e5fb0362d8bd9b0ed0093fb0e5df2fa7486f36d8df6693659046f4b303972ea98a60eb0588e04b47369e169e517ab3c3822dc33f013
-	b2sums = 7bbae7b618eebc8b18a5314bf87a88164b3f63c1c36746f8e502997d36a6ae365d8d72049f050e5d093163498fa5a1ba32c16081b9775ac9a1115f7794f336af
+	source = python-sphinxcontrib-bibtex-2.7.0.tar.gz::https://github.com/mcmtroffaes/sphinxcontrib-bibtex/archive/2.7.0.tar.gz
+	b2sums = 75aea173bcac48d7634adcac15fa4573e6f2f30ef1ce4f39dd863692262cebffeb5eb100fe8ba7be6291becaba6ce07a5454792a88dcfcf22864957e2160629b
 
 pkgname = python-sphinxcontrib-bibtex
