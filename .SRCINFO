@@ -1,0 +1,16 @@
+pkgbase = ratherapia-git
+	pkgdesc = blends ambient sound, rain textures, reactive terminal particles, and an optional inline 3D rat scene into a quiet TUI instrument.
+	pkgver = 0.1.1.r0.ge7e4f0c
+	pkgrel = 1
+	url = https://github.com/ozzyocak/ratherapia
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = ratherapia
+	conflicts = ratherapia-git
+	source = ratherapia-main::git+https://github.com/ozzyocak/ratherapia.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ratherapia-git
