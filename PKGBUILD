@@ -2,7 +2,7 @@
 
 pkgname=kiru-bin
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Transcription-driven video editor"
 arch=('x86_64')
 url="https://getkiru.app"

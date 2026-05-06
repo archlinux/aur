@@ -1,7 +1,7 @@
 pkgbase = kiru-bin
 	pkgdesc = Transcription-driven video editor
 	pkgver = 0.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getkiru.app
 	arch = x86_64
 	license = custom
