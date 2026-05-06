@@ -2,8 +2,8 @@
 # Previous maintainer: Patrick Fischer <aur@pathin.me>
 # Revived package with updated upstream tarball
 pkgname=windsurf-bin
-pkgver=2.1.32
-pkgrel=2
+pkgver=2.2.17
+pkgrel=1
 pkgdesc="The new purpose-built IDE to harness magic (binary pre-built version)"
 arch=('x86_64')
 url="https://windsurf.com/"
