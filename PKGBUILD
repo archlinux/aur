@@ -1,7 +1,7 @@
 # Maintainer: EvaristeGalois11 <turbo dot backslid four zero zero at passinbox dot com>
 
 pkgname=gnome-shell-extension-no-overview
-pkgver=49
+pkgver=50
 pkgrel=1
 epoch=1
 pkgdesc='Disable the start up overview in Gnome 40+'
@@ -9,11 +9,12 @@ arch=('any')
 url='https://github.com/fthx/no-overview'
 license=('GPL-3.0-only')
 depends=(gnome-shell)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fthx/no-overview/archive/v${pkgver}.tar.gz")
-sha256sums=('b952cb803a1c34ad9473d394b920442cab7fc66631cfea10c103c7173e96853d')
+_commit='9d301e7c5a9657b68c9a584aa287f72795d0563b'
+source=("git+https://github.com/fthx/no-overview.git#commit=${_commit}")
+sha256sums=('0de9cc4decee4b2b1174fd0c738ff8695d654270751a7439ecf6ce71b03cf0f8')
 
 package() {
-	cd no-overview-${pkgver}
+	cd no-overview
 	destdir="${pkgdir}/usr/share/gnome-shell/extensions/no-overview@fthx"
 	mkdir -p "${destdir}"
 	cp -a metadata.json extension.js "${destdir}"
