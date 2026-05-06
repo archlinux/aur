@@ -1,8 +1,8 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=2.8.16
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camstack monitor, and family presence features"
+pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
 url="https://github.com/thefangeddeity/hls-livecam-server"
 license=('GPL-3.0-or-later')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('48475333980c219affaced5e452adabc321ee1d46ec325e571bb57c33367d2d6'
+sha256sums=('ea26fb49e4a946cf0a2e8ad709536527436c6adc263ef547f7f69086092e3eec'
             'aab8d136f606ee05f7bb96ee51d2fcd1730edfa632ec4b832817e2901edf9f2e')
 
 package() {
@@ -19,14 +19,14 @@ package() {
     # ── Executables ──────────────────────────────────────────────────────────
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-setup-arch \
                    "$pkgdir/usr/local/bin/hls-livecam-setup"
-    install -Dm755 pkg/usr/local/bin/camstack          "$pkgdir/usr/local/bin/camstack"
+    install -Dm755 pkg/usr/local/bin/camdash          "$pkgdir/usr/local/bin/camdash"
     install -Dm755 pkg/usr/local/bin/hls-livecam-repair "$pkgdir/usr/local/bin/hls-livecam-repair"
     install -Dm755 pkg/usr/local/bin/hls-livecam-dark  "$pkgdir/usr/local/bin/hls-livecam-dark"
     install -Dm755 pkg/usr/local/bin/broadcast-api     "$pkgdir/usr/local/bin/broadcast-api"
 
     # ── Shared data ──────────────────────────────────────────────────────────
-    install -Dm755 pkg/usr/share/hls-livecam-server/camstack \
-                   "$pkgdir/usr/share/hls-livecam-server/camstack"
+    install -Dm755 pkg/usr/share/hls-livecam-server/camdash \
+                   "$pkgdir/usr/share/hls-livecam-server/camdash"
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-setup-arch \
                    "$pkgdir/usr/share/hls-livecam-server/hls-livecam-setup"
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-repair \
@@ -58,7 +58,7 @@ package() {
 
     # ── Sudoers ───────────────────────────────────────────────────────────────
     # Ships www-data entry for broadcast-api dark toggle.
-    # Per-user entries (hls-livecam-dark, hls-livecam-services, camstack-smart)
+    # Per-user entries (hls-livecam-dark, hls-livecam-services, camdash-smart)
     # are written dynamically by hls-livecam-setup at configure time.
     install -Dm440 pkg/etc/sudoers.d/hls-livecam-dark \
                    "$pkgdir/etc/sudoers.d/hls-livecam-dark"
