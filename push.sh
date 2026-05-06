@@ -79,6 +79,9 @@ sha256sums=(\
 else
   sed -i -E "s/^sha256sums=\(\"[^\"]+\"\)/sha256sums=(\"$sha256bin\")/" PKGBUILD
 fi
+if [ "${pkgver}" != "${oldver}" ] && [ -n "${FORCE_REBUILD}" ]; then
+  sed -i -E "s/^pkgrel=\"[^\"]+\"/pkgrel=\"1\"/" PKGBUILD
+fi
 # Update .SRCINFO
 makepkg --printsrcinfo > .SRCINFO
 
