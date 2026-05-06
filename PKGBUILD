@@ -10,7 +10,7 @@ depends=(
     'go'
     'wails'
     'bun'
-    'webkit2gtk'
+    'webkit2gtk-4.1'
     'hamlib'
 )
 url="https://github.com/wavelog/WaveLogGate"
@@ -35,7 +35,7 @@ options=(!lto !debug)
 build () {
 
     cd WaveLogGate
-    wails build -clean
+    wails build -clean -tags webkit2_41
 }
 
 package() {
