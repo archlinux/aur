@@ -1,0 +1,13 @@
+pkgbase = shmooz
+	pkgdesc = A zoom / magnifier utility for Wayland compositors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chmouel/shmooz
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = wayland
+	source = shmooz-0.1.0.tar.gz::https://github.com/chmouel/shmooz/archive/v0.1.0.tar.gz
+	sha256sums = 42f1490a164982108f46e886ed5b731f299a68aa71868be5e8590844569dbbdd
+
+pkgname = shmooz
