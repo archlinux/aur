@@ -1,10 +1,10 @@
-# Maintainer: dungdinhmanh <dungdinhmanh at users dot noreply dot github dot com>
+# Maintainer: dungdinhmanh <dungdinhmanh0209 at google mail>
 
 pkgname=schale-pick-bin
 _pkgname=schale-pick
 pkgver=0.1.1
 pkgrel=1
-pkgdesc="Terminal UI to swap the fastfetch logo with a Blue Archive student portrait"
+pkgdesc="Your terminal, your Memorial Lobby. Pick a student from the full Kivotos roster and make them your fastfetch portrait."
 arch=('x86_64' 'aarch64')
 url="https://github.com/dungdinhmanh/schale-pick"
 license=('MIT')
@@ -19,6 +19,6 @@ sha256sums_x86_64=('f20536baa805202728fde69f9f9e7ae2355cf93c1d57cae57b019e450caf
 sha256sums_aarch64=('cbdad14818c5d05df832c9e39ef125aea9fa88dbc127d3241132ad56be7cdf1c')
 
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/${_pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
