@@ -2,7 +2,7 @@
 
 pkgname=kiru-bin
 pkgver=0.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Transcription-driven video editor"
 arch=('x86_64')
 url="https://getkiru.app"
@@ -20,7 +20,7 @@ source=(
   'LICENSE'
 )
 sha256sums=(
-  '39367d85d48597ed533edd9200a7aa563c121e7bb3833861597a3fdff0eef836'
+  'f309608e7b26ae4efe19bb16bc9e5d5269357b8fdb865d2d30f58fc5e91fcb8a'
   'b9ccd131ad127061eae3b05b53c566e78ca25243155c2b03bb7546e5be5defe0'
   '356ce1144dedad29ecf4a180761b83b2d826322ba25d9203c75e7570f574b364'
   '2935a0fe9651a84fded9c0fcd10122803f0935e0cd27f2d76dc96a3209af8cae'
