@@ -2,7 +2,7 @@
 _pkgname=aptakube
 
 pkgname="${_pkgname}"
-pkgver=1.16.4
+pkgver=1.16.5
 pkgrel=1
 pkgdesc="A modern and lightweight Kubernetes desktop client to help you operate workloads on multiple clusters. (free to use during the public preview)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 _debfile="${pkgname}-${pkgver}.deb"
 source_x86_64=("${_debfile}::https://releases.aptakube.com/${_pkgname}_${pkgver}_amd64.deb")
 noextract=("${_debfile}")
-sha256sums_x86_64=('25dae22506b42498f4468b99680acec650f84df9e5cde1b06b355f4a21b4dde0')
+sha256sums_x86_64=('b3eb2b3e2df2efe6912c53edc1845878c705e0a3fbce16afe9458c437dc9a621')
 
 package() {
     cd "$srcdir"
