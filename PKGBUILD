@@ -6,11 +6,12 @@ pkgdesc="KDE Plasma wallpaper rotation daemon with multi-monitor support, online
 arch=('x86_64' 'aarch64')
 url="https://github.com/kabeuchi-bird/kabekami"
 license=('MIT')
-depends=('plasma-workspace' 'libxkbcommon' 'openssl')
+depends=('plasma-workspace' 'libxkbcommon')
 makedepends=('rust' 'cargo' 'git' 'pkg-config')
 optdepends=(
     'kscreen: screen resolution auto-detection via kscreen-doctor'
     'noto-fonts-cjk: Japanese text in the settings GUI'
+    'kdialog: native KDE file/folder picker dialogs in kabekami-config'
 )
 provides=('kabekami' 'kabekami-config')
 conflicts=('kabekami' 'kabekami-config')
