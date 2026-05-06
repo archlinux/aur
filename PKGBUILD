@@ -1,7 +1,7 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-viewer
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='ASE TECH & DESIGN Documentation Viewer — Native GTK4 Markdown renderer'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-viewer'
@@ -83,7 +83,9 @@ build() {
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.10 \
+        -DASE_WEB_PUBLIC_ROOT=/usr/share/ase-viewer/public \
+        -DASE_MICROTEX_RES_PATH=/usr/share/microtex/res
     cmake --build build --parallel
 }
 
