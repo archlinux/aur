@@ -2,7 +2,6 @@ pkg/
 src/
 M-AIR-Edit_LINUX_*.tar.gz
 M-AIR-Edit_RASPI_*.tar.gz
-m-air-edit-bin-*.pkg.tar.xz
-m-air-edit-bin-*.pkg.tar.zst
+m-air-edit-bin-*.pkg.tar.*
 m-air-edit-bin-*.src.tar.gz
-.AURINFO
+Midas_M-AIR%20EDIT_V1.8_2023-06-16.pdf
