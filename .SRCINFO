@@ -1,7 +1,7 @@
 pkgbase = tagstudio-bin
 	pkgdesc = A User-Focused Photo & File Management System (pre-compiled)
 	pkgver = 9.5.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TagStudioDev/TagStudio
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,6 +18,6 @@ pkgbase = tagstudio-bin
 	source = tagstudio-bin-9.5.7.tar.gz::https://github.com/TagStudioDev/TagStudio/releases/download/v9.5.7/tagstudio_linux_x86_64.tar.gz
 	source = tagstudio.desktop
 	sha256sums = 5db6b27ce958a97b6c2fef26f674058ddecc1b8c81837092f6c4e1ae59405e5a
-	sha256sums = 42cbcfe8641c8cd86014628855b3aaf05ed3c6c08d0668607c451d48a4c67192
+	sha256sums = 78940c7963ca5d59c8d674eb73c50e7c2e95372de43d3656ad727147b1d7788c
 
 pkgname = tagstudio-bin
