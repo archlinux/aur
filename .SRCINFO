@@ -1,0 +1,24 @@
+pkgbase = undertalemodtool-avalonia-bin
+	pkgdesc = The rewrite of UndertaleModTool with a cross-platform framework Avalonia
+	pkgver = 2026.04.25
+	pkgrel = 1
+	url = https://github.com/luizzeroxis/UndertaleModTool
+	arch = x86_64
+	license = GPL-3.0
+	depends = dotnet-runtime-10.0
+	provides = undertalemodtool-avalonia
+	noextract = undertalemodtool-avalonia-2026.04.25.zip
+	options = !strip
+	options = !debug
+	source = undertalemodtool-avalonia-2026.04.25.zip::https://github.com/luizzeroxis/UndertaleModTool/actions/runs/24861762731/artifacts/6613321788
+	source = undertalemodtool-avalonia.sh
+	source = undertalemodtool-avalonia.desktop
+	source = gamemaker-data.xml
+	source = icon.png
+	sha256sums = ca7965ddce80f59aa98e7a02d4360a61b79e19292be2430b5392e36aa46c8041
+	sha256sums = 706b5653445f333ada38279ebd21e4f14439e9eb2bcce21ce9cae13230ceaaf0
+	sha256sums = efdd09628785b8d27cda3a0d9ef434ae8435041a199f12b7be39f697297a84c0
+	sha256sums = 64c7b9ab34a2c519f99533b85a6ff8b4a50710ec6ee93024f3b239493dc9d61e
+	sha256sums = 4f501b7495960a291dfaa3a5c7b87b529170c47447c365d2407d1d317d97c51f
+
+pkgname = undertalemodtool-avalonia-bin

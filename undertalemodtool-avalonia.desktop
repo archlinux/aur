@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=UndertaleModTool Avalonia
+GenericName=UMT
+Exec=undertalemodtool-avalonia %f
+Type=Application
+Terminal=false
+Categories=Application;Development;
+Icon=undertalemodtool-avalonia
+Comment=The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)
+MimeType=application/gamemaker-data
