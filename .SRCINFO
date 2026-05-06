@@ -1,0 +1,17 @@
+pkgbase = keysound
+	pkgdesc = Wayland-compatible mechanical keyboard sound daemon
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/Shyam-Jagath/keysound
+	install = keysound.install
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = make
+	depends = libevdev
+	depends = systemd
+	depends = miniaudio
+	source = https://github.com/Shyam-Jagath/keysound/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 07b8d6cf61db0cce7d89e8ece3fa564b581d2e665fa6d5eb39a60927d6dbd90f
+
+pkgname = keysound
