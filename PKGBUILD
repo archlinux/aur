@@ -1,13 +1,13 @@
 # Maintainer: Paul Goessmann <paul.goessmann@proton.me>
 pkgname=pvpn-go
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Proton VPN client with TUI for Linux (WireGuard + Stealth)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/YourDoritos/pVPN'
 license=('GPL-3.0-or-later')
 depends=('glibc')
-makedepends=('go>=1.22' 'git')
+makedepends=('go>=1.26' 'git')
 install=pvpn-go.install
 backup=('etc/pvpn/config.toml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -19,6 +19,14 @@ prepare() {
   cd "${_srcdir}"
   export GOPATH="${srcdir}/gopath"
   export GOFLAGS="-modcacherw"
+  # Pin Go toolchain to whatever the system provides. Without this,
+  # Go would auto-fetch golang.org/toolchain@v0.0.1-go${ver} into the
+  # modcache and mark it 0555/0444 — which then blocks yay from
+  # cleaning ~/.cache/yay/pvpn-go on the next upgrade ("Permission
+  # denied" on every toolchain file). Arch's `go` package tracks
+  # upstream tightly; if it ever lags this just fails clearly instead
+  # of silently downloading an uncleanable toolchain.
+  export GOTOOLCHAIN=local
   go mod download
 }
 
@@ -30,12 +38,20 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}/gopath"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOTOOLCHAIN=local
 
   local _ldflags="-s -w -X main.version=${pkgver}"
 
   go build -ldflags "${_ldflags}" -o pvpnd  ./cmd/pvpnd
   go build -ldflags "${_ldflags}" -o pvpn   ./cmd/pvpn
   go build -ldflags "${_ldflags}" -o pvpnctl ./cmd/pvpnctl
+
+  # Defense in depth: if a future change ever lets a read-only file
+  # land under gopath, this keeps yay's cleanup phase functional so
+  # the next upgrade doesn't ask the user to manually wipe the cache.
+  if [[ -d "${srcdir}/gopath" ]]; then
+    chmod -R u+w "${srcdir}/gopath" || true
+  fi
 }
 
 package() {
