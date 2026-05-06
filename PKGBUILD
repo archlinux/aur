@@ -1,20 +1,34 @@
-# Maintainer: RandomChugokujin <randomchugokujin@tutamail.com>
 pkgname=bloodyad
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Active Directory privilege escalation swiss army knife"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/CravateRouge/bloodyAD"
 license=('MIT')
+
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-pip')
+makedepends=('python-build' 'python-pip')
+
 optdepends=('krb5: For Kerberos authentication')
+
 provides=('bloodyad')
 conflicts=('bloodyad')
+
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CravateRouge/bloodyAD/archive/v${pkgver}.tar.gz")
 sha256sums=('2c04f013963a616ef21bee964b7c5c641b0d2c3ae51be6d65a7485bc4b5e4513')
 
-_venv_dir="/opt/bloodyad/venv"
+_pyver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+_pkgroot="/opt/bloodyad"
+_pylib="${_pkgroot}/lib/python${_pyver}/site-packages"
+
+# Explicit dependency list from pyproject.toml
+_deps=(
+  "cryptography==44.0.2"
+  "badldap>=0.7.5"
+  "winacl==0.1.9"
+  "asn1crypto==1.5.1"
+  "kerbad>=0.5.10"
+)
 
 build() {
     cd "${srcdir}/bloodyAD-${pkgver}"
@@ -24,27 +38,36 @@ build() {
 package() {
     cd "${srcdir}/bloodyAD-${pkgver}"
 
-    # Create virtual environment in package root
-    python -m venv "${pkgdir}${_venv_dir}"
+    install -d "${pkgdir}${_pylib}"
 
-    # Upgrade pip/setuptools in venv
-    "${pkgdir}${_venv_dir}/bin/pip" install --upgrade pip setuptools wheel
+    # Install dependencies first
+    python -m pip install \
+        --target="${pkgdir}${_pylib}" \
+        --no-compile \
+        "${_deps[@]}"
 
-    # Install bloodyAD and all dependencies into venv
-    "${pkgdir}${_venv_dir}/bin/pip" install dist/*.whl
+    # Install the built wheel (no deps)
+    python -m pip install \
+        --target="${pkgdir}${_pylib}" \
+        --no-deps \
+        --no-compile \
+        dist/*.whl
 
-    # Create wrapper script
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bloodyad" << 'EOF'
+    # Wrapper using real entrypoint
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bloodyad" << EOF
 #!/bin/bash
-exec /opt/bloodyad/venv/bin/bloodyad "$@"
+export PYTHONPATH="${_pylib}:\$PYTHONPATH"
+export PYTHONWARNINGS="ignore::SyntaxWarning"
+exec python -c "from bloodyAD.main import main; main()" "\$@"
 EOF
 
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bloodyAD" << 'EOF'
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bloodyAD" << EOF
 #!/bin/bash
-exec /opt/bloodyad/venv/bin/bloodyAD "$@"
+export PYTHONPATH="${_pylib}:\$PYTHONPATH"
+export PYTHONWARNINGS="ignore::SyntaxWarning"
+exec python -c "from bloodyAD.main import main; main()" "\$@"
 EOF
 
-    # Install license and docs
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
