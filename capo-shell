@@ -3,6 +3,26 @@
 set -eu
 set -o pipefail
 
+if [[ "${1:-}" == "--help" ]] || [[ "${1:-}" == "-h" ]]; then
+  cat <<EOF
+Usage: capo-shell <namespace> <name> [command...]
+
+Opens a shell with kubeconfig and OpenStack environment variables set for
+a CAPO-managed CAPI cluster.
+
+Arguments:
+  namespace    Kubernetes namespace of the cluster
+  name         Name of the cluster
+  command      Command to run (default: \$SHELL or bash)
+
+Environment variables:
+  KUBECONFIG_CONTEXT              kubectl context to use for the management cluster
+  CAPO_SHELL_KUBECONFIG_FILTER    yq expression to filter the workload kubeconfig
+  CAPO_SHELL_SSHUTTLE_HOST        SSH host to proxy API server traffic via sshuttle
+EOF
+  exit 0
+fi
+
 namespace="${1?}"
 name="${2?}"
 shift

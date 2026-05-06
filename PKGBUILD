@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=capo-shell
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Wrapper to start a tool or shell with KUBECONFIG and OS_ environment variables to interact with cluster-api-provider-openstack clusters"
 license=('APACHE')

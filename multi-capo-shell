@@ -3,6 +3,25 @@
 set -eu
 set -o pipefail
 
+if [[ "${1:-}" == "--help" ]] || [[ "${1:-}" == "-h" ]]; then
+  cat <<EOF
+Usage: multi-capo-shell [command...]
+
+Interactively selects a CAPO cluster from all management clusters using
+fzf, then opens a capo-shell for the selected cluster.
+
+Arguments:
+  command      Command to pass through to capo-shell (default: \$SHELL or bash)
+
+Environment variables:
+  MANAGEMENT_KUBECONFIGS                    Semicolon-separated list of management kubeconfig paths
+  KUBECONFIG                                Semicolon-separated management cluster kubeconfig paths (additional)
+  MULTI_CAPO_SHELL_CUSTOM_COLUMN_<name>     yq expression for an extra fzf preview column
+  MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION   yq expression for a custom cluster display name
+EOF
+  exit 0
+fi
+
 if ! command -v fzf &>/dev/null; then
   echo "fzf is required but not installed. Please install fzf to use this script." >&2
   exit 1
