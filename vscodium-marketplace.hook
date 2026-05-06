@@ -3,6 +3,13 @@ Operation = Install
 Operation = Upgrade
 Type = Package
 Target = vscodium
+Target = vscodium-bin
+Target = vscodium-git
+Target = vscodium-insiders
+Target = vscodium-insiders-bin
+Target = vscodium-insiders-git
+Target = vscodium-electron
+Target = vscodium-electron-bin
 
 [Action]
 Description = [vscodium-marketplace] Patching product.json...

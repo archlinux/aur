@@ -1,18 +1,35 @@
 #!/usr/bin/env python
-from sys import argv
+from sys import argv, stderr, stdout
 from json import load, dump, JSONDecodeError
 
-PRODUCT_JSON_LOCATION = "/usr/share/vscodium/resources/app/product.json"
+PRODUCT_JSON_LOCATIONS = tuple((
+    "/usr/share/vscodium/resources/app/product.json",
+    "/opt/vscodium-bin/resources/app/product.json",
+    "/usr/share/vscodium-electron/resources/app/product.json",
+    "/usr/share/vscodium-electron-bin/resources/app/product.json",
+    "/usr/share/vscodium-git/resources/app/product.json",
+    "/usr/share/vscodium-insiders/resources/app/product.json",
+    "/usr/share/vscodium-insiders-bin/resources/app/product.json",
+    "/usr/share/vscodium-insiders-git/resources/app/product.json",
+    "/usr/share/vscodium-translucent/resources/app/product.json",
+))
 
+PRODUCT_LOCATION = None
+product = None
 
 if __name__ == "__main__":
-    try:
-        with open(PRODUCT_JSON_LOCATION) as file:
-            product = load(file)
-    except JSONDecodeError:
-        print(
-            "error: couldn't parse local product.json or fetch a new one from the web")
+    for PRODUCT_JSON_LOCATION in PRODUCT_JSON_LOCATIONS:
+        try:
+            with open(PRODUCT_JSON_LOCATION) as file:
+                product = load(file)
+            print(f"Valid product configuration found in:\n\t{PRODUCT_JSON_LOCATION}", file=stdout)
+            break
+        except (JSONDecodeError, FileNotFoundError, IsADirectoryError):
+            continue
+    else:
+        print(f"Error: No valid product configuration found in:\n\t{PRODUCT_JSON_LOCATIONS}", file=stderr)
         exit(1)
+
     if '-R' in argv:
         product["extensionsGallery"] = {
             "serviceUrl": "https://open-vsx.org/vscode/gallery",
