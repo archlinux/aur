@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=11.0.0
 _xaliaver=0.4.9
-pkgrel=2
+pkgrel=3
 epoch=1
 
 source=(
@@ -32,135 +32,135 @@ arch=(x86_64 x86_64_v3)
 options=(!staticlibs !lto !debug emptydirs pestrip)
 license=('custom')
 depends=(
-  attr
-#  blas
+  attr            lib32-attr
+#  blas            lib32-blas
   cabextract
   desktop-file-utils
-  fontconfig
-  freetype2
-  libgcc
-  gettext
-  glib2
-  glibc
-#  lapack
-  libgudev
-  libpcap
-  libsoup
-  libunwind
-  libvpx
-  libx11
-  libxcursor
-  libxext
-  libxkbcommon
-  libxi
-  libxrandr
-  lzo
+  fontconfig      lib32-fontconfig
+  freetype2       lib32-freetype2
+  libgcc          lib32-gcc-libs
+  gettext         lib32-gettext
+  glib2           lib32-glib2
+  glibc           lib32-glibc
+#  lapack          lib32-lapack
+  libgudev        lib32-libgudev
+  libpcap         lib32-libpcap
+  libsoup         lib32-libsoup
+  libunwind       lib32-libunwind
+  libvpx          lib32-libvpx
+  libx11          lib32-libx11
+  libxcursor      lib32-libxcursor
+  libxext         lib32-libxext
+  libxkbcommon    lib32-libxkbcommon
+  libxi           lib32-libxi
+  libxrandr       lib32-libxrandr
+  lzo             lib32-lzo
   python
   python-six
-  speex
+  speex           lib32-speex
 # Start of old steam-native-runtime
-  atk
-  cairo
-  curl
-  dbus-glib
-  freeglut
-  gdk-pixbuf2
-  glu
-  lcms2
-  libcaca
-  libcanberra
-  dbus
-  libdrm
-  libice
+  atk             lib32-atk
+  cairo           lib32-cairo
+  curl            lib32-curl
+  dbus-glib       lib32-dbus-glib
+  freeglut        lib32-freeglut
+  gdk-pixbuf2     lib32-gdk-pixbuf2
+  glu             lib32-glu
+  lcms2           lib32-lcms2
+  libcaca         lib32-libcaca
+  libcanberra     lib32-libcanberra
+  dbus            lib32-dbus
+  libdrm          lib32-libdrm
+  libice          lib32-libice
   libibus
-  libnm
-  libusb
-  libvdpau
-  libvorbis
-  libxft
-  libxmu
-  libxrender
-  libxtst
-  nspr
-  openal
-  pango
-  sdl2
-  sdl2_image
-  sdl2_mixer
-  sdl2_ttf
-  pipewire
+  libnm           lib32-libnm
+  libusb          lib32-libusb
+  libvdpau        lib32-libvdpau
+  libvorbis       lib32-libvorbis
+  libxft          lib32-libxft
+  libxmu          lib32-libxmu
+  libxrender      lib32-libxrender
+  libxtst         lib32-libxtst
+  nspr            lib32-nspr
+  openal          lib32-openal
+  pango           lib32-pango
+  sdl2            lib32-sdl2
+  sdl2_image      lib32-sdl2_image
+  sdl2_mixer      lib32-sdl2_mixer
+  sdl2_ttf        lib32-sdl2_ttf
+  pipewire        lib32-pipewire
   librsvg
-  libsm
-  libtheora
-  vulkan-driver
+  libsm           lib32-libsm
+  libtheora       lib32-libtheora
+  vulkan-driver   lib32-vulkan-driver
 # End of old steam-native-runtime
   unzip
-  wayland
+  wayland         lib32-wayland
 )
 makedepends=(
   afdko
-  alsa-lib
+  alsa-lib              lib32-alsa-lib
   clang
   cmake
   ffmpeg
   fontforge
-  giflib
+  giflib                lib32-giflib
   git
   glib2-devel
   glslang 
-  gnutls
-  gtk3
+  gnutls                lib32-gnutls
+  gtk3                  lib32-gtk3
   libgphoto2
-  libpulse
-  libva
-  libxcomposite
-  libxinerama
-  libxml2
-  libxxf86vm
+  libpulse              lib32-libpulse
+  libva                 lib32-libva
+  libxcomposite         lib32-libxcomposite
+  libxinerama           lib32-libxinerama
+  libxml2               lib32-libxml2
+  libxxf86vm            lib32-libxxf86vm
   lld
-  mesa
-  mesa-libgl
+  mesa                  lib32-mesa
+  mesa-libgl            lib32-mesa-libgl
   meson
   mingw-w64-gcc
   mingw-w64-tools
   nasm
   opencl-headers
-  opencl-icd-loader
-  pcsclite
+  opencl-icd-loader     lib32-opencl-icd-loader
+  pcsclite              lib32-pcsclite
   perl
   perl-json
   rsync
-  rust
+  rust                  lib32-rust-libs
   python-pefile
   python-setuptools-scm
   samba
   unixodbc
-  v4l-utils
+  v4l-utils             lib32-v4l-utils
   vulkan-headers
-  vulkan-icd-loader
+  vulkan-icd-loader     lib32-vulkan-icd-loader
   wayland-protocols
   wget
   xorg-util-macros
 )
 optdepends=(
-  alsa-lib
-  alsa-plugins
+  alsa-lib              lib32-alsa-lib
+  alsa-plugins          lib32-alsa-plugins
   ffmpeg
-  gnutls
-  gtk3
+  gnutls                lib32-gnutls
+  gtk3                  lib32-gtk3
   libgphoto2
-  libpulse
-  libva
-  libxcomposite
-  libxinerama
-  opencl-icd-loader
-  pcsclite
+  libpulse              lib32-libpulse
+  libva                 lib32-libva
+  libxcomposite         lib32-libxcomposite
+  libxinerama           lib32-libxinerama
+  opencl-icd-loader     lib32-opencl-icd-loader
+  pcsclite              lib32-pcsclite
   samba
   steam
   umu-launcher
   unixodbc
-  v4l-utils
-  vulkan-icd-loader
+  v4l-utils             lib32-v4l-utils
+  vulkan-icd-loader     lib32-vulkan-icd-loader
 )
 optdepends+=(
   NTSYNC-MODULE
@@ -296,8 +296,7 @@ build() {
         --build-name="${pkgname}" \
         --without-wayland-libs \
         --without-libpcap \
-        --without-tts \
-        --enable-wow64
+        --without-tts
 
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
