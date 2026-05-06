@@ -9,11 +9,11 @@ pkgdesc="Terminal coding agent for DeepSeek models - git version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hmbown/DeepSeek-TUI"
 license=('MIT')
-depends=('dbus' 'ca-certificates')
+depends=()
 optdepends=('bash-completion: bash completions'
             'zsh: zsh completions'
             'fish: fish completions')
-makedepends=('rust>=1.88' 'pkg-config')
+makedepends=('rust>=1.88' 'pkgconf')
 provides=('deepseek-tui' 'deepseek')
 conflicts=('deepseek-tui' 'deepseek-tui-bin')
 
