@@ -1,5 +1,5 @@
 pkgbase = schale-pick-bin
-	pkgdesc = Terminal UI to swap the fastfetch logo with a Blue Archive student portrait
+	pkgdesc = Your terminal, your Memorial Lobby. Pick a student from the full Kivotos roster and make them your fastfetch portrait.
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/dungdinhmanh/schale-pick
