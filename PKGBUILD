@@ -3,7 +3,7 @@
 
 # Maintainer: nyrda <nyrda@keymasq.tools>
 pkgname=keymasq
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Keyboard and mouse remapper with GUI configuration, per-window profiles, and macros"
 arch=(
@@ -35,8 +35,8 @@ makedepends=(
     'python-installer'
 )
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.14.0.tar.gz")
-sha256sums=('963472dfd05030d935d4b04acd7a9f0190842f2f677a9fb0738ac905e0df4d8d')
+source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.15.0.tar.gz")
+sha256sums=('4549a80ccc407a3be1aae59add284a04be21f9afe1ff3640f0c811537260eaff')
 
 
 build() {
