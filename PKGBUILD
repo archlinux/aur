@@ -23,13 +23,27 @@ sha256sums=(
     'SKIP'
 )
 
-package() {
-    # 1. Executável
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/bin/cachyos-store"
+prepare() {
+    # 1. Torna o AppImage executável para extração
+    chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
+    
+    # 2. Extrai o conteúdo (cria a pasta squashfs-root)
+    # Usamos --appimage-extract para que os arquivos fiquem acessíveis direto no disco
+    "${srcdir}/${pkgname}-${pkgver}.AppImage" --appimage-extract
+}
 
-    # 2. Menu Desktop
+package() {
+    # 1. Cria a pasta em /opt e copia os arquivos extraídos
+    install -d "${pkgdir}/opt/${pkgname}"
+    cp -rp "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}/"
+
+    # 2. Cria o link simbólico para o executável no /usr/bin
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/cachyos-store"
+
+    # 3. Menu Desktop
     install -Dm644 "${srcdir}/cachyos-store.desktop" "${pkgdir}/usr/share/applications/cachyos-store.desktop"
 
-    # 3. Ícone oficial do sistema
+    # 4. Ícone oficial do sistema
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cachyos-store.png"
 }
