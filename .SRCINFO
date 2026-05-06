@@ -1,12 +1,14 @@
 pkgbase = python-pyexcel-ezodf
 	pkgdesc = A Python package to create/manipulate OpenDocumentFormat files
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyexcel/pyexcel-ezodf
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python-pip
 	depends = python-lxml
+	source = fix-python312-regex-warning.patch
+	sha256sums = 1a3d41f6b67eef7beea7831faf5915322a0489db125eca899788aed48e7c3e2a
 
 pkgname = python-pyexcel-ezodf
