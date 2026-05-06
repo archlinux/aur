@@ -1,0 +1,19 @@
+Description: Properly pass $CPPFLAGS and $LDFLAGS
+Author: Axel Beckert <abe@debian.org>
+Forwarded: no
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -69,10 +69,10 @@ sinstall: | snmp_NETFLOW.so IPT-NETFLOW-
+ 	fi
+ 
+ %_sh.o: libipt_NETFLOW.c
+-	$(CC) $(CFLAGS) -O2 -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
++	$(CC) $(CFLAGS) $(CPPFLAGS) -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
+ 
+ %.so: %_sh.o
+-	$(CC) -shared -o $@ $<
++	$(CC) $(LDFLAGS) -shared -o $@ $<
+ 
+ version.h: ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
+ 	@./version.sh --define > version.h

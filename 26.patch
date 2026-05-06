@@ -1,0 +1,31 @@
+From 17efcde6a816672d8f4b7ee21789f57d3bdeaff6 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Sat, 20 Jul 2024 02:22:01 +0200
+Subject: [PATCH] Unexporting find_module() has been backported to Linux
+ v5.10.220
+
+Signed-off-by: Andreas Beckmann <anbe@debian.org>
+---
+ compat.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/compat.h b/compat.h
+index 27fe96d..ced9385 100644
+--- a/compat.h
++++ b/compat.h
+@@ -746,9 +746,10 @@ unsigned long long strtoul(const char *cp, char **endp, unsigned int base)
+ 	return result;
+ }
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,12,0)
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,12,0)) \
++    || ((LINUX_VERSION_CODE >= KERNEL_VERSION(5,10,220)) && (LINUX_VERSION_CODE < KERNEL_VERSION(5,11,0)))
+ /*
+- * find_module() is unexported in v5.12:
++ * find_module() is unexported in v5.12 (backported to 5.10.220):
+  *   089049f6c9956 ("module: unexport find_module and module_mutex")
+  * and module_mutex is replaced with RCU in
+  *   a006050575745 ("module: use RCU to synchronize find_module")
+-- 
+2.39.5
+

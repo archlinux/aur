@@ -1,0 +1,40 @@
+From e52ce144d81d153fc3a596d622aebfa6f6b1d20d Mon Sep 17 00:00:00 2001
+From: gnought <1684105+gnought@users.noreply.github.com>
+Date: Sat, 29 Apr 2023 23:36:01 +0800
+Subject: [PATCH] fix: detect modularized CONFIG_BRIDGE_NETFILTER
+
+Origin: other, https://github.com/aabc/ipt-netflow/pull/216
+---
+ compat.h       | 2 +-
+ gen_compat_def | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/compat.h b/compat.h
+index 6c4984b..27fe96d 100644
+--- a/compat.h
++++ b/compat.h
+@@ -692,7 +692,7 @@ static inline int is_vlan_dev(struct net_device *dev)
+ }
+ #endif
+ 
+-#ifdef CONFIG_BRIDGE_NETFILTER
++#if IS_ENABLED(CONFIG_BRIDGE_NETFILTER)
+ # ifndef HAVE_NF_BRIDGE_INFO_GET
+ static inline struct nf_bridge_info *
+ nf_bridge_info_get(const struct sk_buff *skb)
+diff --git a/gen_compat_def b/gen_compat_def
+index a9cb95e..9884414 100755
+--- a/gen_compat_def
++++ b/gen_compat_def
+@@ -116,7 +116,7 @@ kbuild_test_struct timeval linux/ktime.h
+ kbuild_test_struct proc_ops linux/proc_fs.h
+ # No since v5.1, but present in CentOS-8's 4.18.0-227
+ kbuild_test_symbol synchronize_sched linux/rcupdate.h
+-# Fails on 3.10.0-957.10.1.el7.x86_64
++# No since 5, but present in include/net/netfilter/br_netfilter.h >= linux v4.2 and < 5 (non-backports)
+ kbuild_test_symbol nf_bridge_info_get linux/netfilter_bridge.h
+ # Stumbled on 5.9
+ kbuild_test_struct vlan_dev_priv linux/if_vlan.h
+-- 
+2.39.5
+

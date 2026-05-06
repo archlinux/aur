@@ -1,0 +1,27 @@
+From c0badb8323e76cff61a0dbf191769b607c7245e9 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Thu, 25 Nov 2021 18:52:02 +0300
+Subject: [PATCH 05/17] Avoid using incomplete compat_def.h
+
+Or else this may cause too much irrelevant errors.
+---
+ Makefile.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index edf1dd8..65edf4c 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -27,7 +27,8 @@ ipt_NETFLOW.ko: version.h ipt_NETFLOW.c ipt_NETFLOW.h compat_def.h compat.h Make
+ 	make -C $(KDIR) M=$(CURDIR) modules
+ 	@touch $@
+ compat_def.h: gen_compat_def
+-	./gen_compat_def > $@
++	./gen_compat_def > $@-
++	mv $@- $@
+ sparse: | version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
+ 	@rm -f ipt_NETFLOW.ko ipt_NETFLOW.o
+ 	@echo Compiling for kernel $(KVERSION)
+-- 
+2.39.5
+

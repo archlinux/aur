@@ -1,0 +1,29 @@
+From 780c4e51e0462d22c960298df7d6737362369690 Mon Sep 17 00:00:00 2001
+From: Paolo Pisati <paolo.pisati@canonical.com>
+Date: Tue, 14 Feb 2023 17:15:20 +0000
+Subject: [PATCH] use get_random_u32_below() instead of deprecated
+ prandom_u32_max()
+
+Signed-off-by: Paolo Pisati <paolo.pisati@canonical.com>
+---
+ compat.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/compat.h b/compat.h
+index 99edf91..5a0c388 100644
+--- a/compat.h
++++ b/compat.h
+@@ -129,6 +129,10 @@ static inline u32 prandom_u32_max(u32 ep
+ }
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,1,0)
++#define prandom_u32_max get_random_u32_below
++#endif
++
+ #ifndef min_not_zero
+ # define min_not_zero(x, y) ({			\
+ 	typeof(x) __x = (x);			\
+-- 
+2.38.1
+

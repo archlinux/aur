@@ -1,0 +1,27 @@
+From 40fefb20d0d2d11a39a5cc69d08db25c95b20a16 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Tue, 10 May 2022 00:58:02 +0300
+Subject: [PATCH 12/17] compat: Fix __has_attribute usage
+
+Fixes: #195
+Link: https://github.com/aabc/ipt-netflow/issues/195
+---
+ compat.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/compat.h b/compat.h
+index 847117f..8461c3d 100644
+--- a/compat.h
++++ b/compat.h
+@@ -774,7 +774,7 @@ struct module *find_module(const char *name)
+ /* Copy from 294f69e662d1 ("compiler_attributes.h: Add 'fallthrough' pseudo
+  * keyword for switch/case use") */
+ #ifndef fallthrough
+-# if __has_attribute(__fallthrough__)
++# if defined __has_attribute && __has_attribute(__fallthrough__)
+ #  define fallthrough			__attribute__((__fallthrough__))
+ # else
+ #  define fallthrough			do {} while (0)  /* fallthrough */
+-- 
+2.39.5
+

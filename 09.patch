@@ -1,0 +1,30 @@
+From 122662f5c19864e3340cc44e703ae24b75a26ca7 Mon Sep 17 00:00:00 2001
+From: Vadim Fedorenko <vfedorenko@novek.ru>
+Date: Mon, 28 Mar 2022 23:55:44 +0300
+Subject: [PATCH 09/17] Fix preemptive enabled warning
+
+Issue 193, we can use unstable reading because we actually don't
+care much of actual CPU that executed worker
+
+Link: https://github.com/aabc/ipt-netflow/issues/193
+Link: https://github.com/aabc/ipt-netflow/pull/197
+---
+ ipt_NETFLOW.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index e14a36f..e042fe6 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -4501,7 +4501,7 @@ static void netflow_work_fn(struct work_struct *dummy)
+ 	wk_count = 0;
+ 	wk_trylock = 0;
+ 	wk_llist = 0;
+-	wk_cpu = smp_processor_id();
++	wk_cpu = __smp_processor_id();
+ 	wk_start = jiffies;
+ 
+ 	pdus = netflow_scan_and_export(DONT_FLUSH);
+-- 
+2.39.5
+

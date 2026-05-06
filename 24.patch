@@ -1,0 +1,44 @@
+From d72f00257c1a1ace8d766af6a9e2d28997180265 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Sat, 1 Mar 2025 14:40:37 +0100
+Subject: [PATCH] dkms.conf: Declare BUILD_EXCLUSIVE_KERNEL_MIN="3"
+
+skb_reset_mac_len() was introduced in v3.0-rc3
+and is used unconditionally
+
+Signed-off-by: Andreas Beckmann <anbe@debian.org>
+---
+ dkms.conf     | 4 ++++
+ ipt_NETFLOW.c | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/dkms.conf b/dkms.conf
+index 808e158..7968b38 100644
+--- a/dkms.conf
++++ b/dkms.conf
+@@ -2,6 +2,10 @@ PACKAGE_NAME="ipt-netflow"
+ pushd `dirname $BASH_SOURCE`
+ PACKAGE_VERSION=`./version.sh`
+ popd
++
++# skb_reset_mac_len() was introduced in v3.0-rc3
++BUILD_EXCLUSIVE_KERNEL_MIN="3"
++
+ BUILT_MODULE_NAME[0]=ipt_NETFLOW
+ DEST_MODULE_LOCATION[0]=/kernel/extra
+ STRIP[0]=no
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index ab05b24..94f3cf2 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -74,6 +74,7 @@
+ 	 * but centos6 have it backported on its 2.6.32.el6 */
+ # include <linux/llist.h>
+ #endif
++#include <linux/ratelimit.h>
+ #include "compat.h"
+ #include "ipt_NETFLOW.h"
+ #include "murmur3.h"
+-- 
+2.39.5
+

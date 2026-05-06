@@ -1,0 +1,35 @@
+Description: Support Linux 6.19
+ With the new Linux Kernel 6.19, the bind/connect APIs for the sockets
+ require to cast to a "struct sockaddr_unsized *" instead of a 
+ "struct sockaddr *".
+Author: Alessio Faina <alessio.faina@canonical.com>
+Origin: Vendor
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2143742
+Last-Update: 2026-03-09
+---
+--- iptables-netflow-2.6.orig/ipt_NETFLOW.c
++++ iptables-netflow-2.6/ipt_NETFLOW.c
+@@ -2025,7 +2025,11 @@ static struct socket *usock_open_sock(st
+ 			salen = sizeof(struct sockaddr_in);
+ 		else if (usock->saddr.ss_family == AF_INET6)
+ 			salen = sizeof(struct sockaddr_in6);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 19, 0)
++		if ((error = sock->ops->bind(sock, (struct sockaddr_unsized *)&usock->saddr, salen)) < 0) {
++#else
+ 		if ((error = sock->ops->bind(sock, (struct sockaddr *)&usock->saddr, salen)) < 0) {
++#endif
+ 			printk(KERN_ERR "ipt_NETFLOW: error binding socket %d\n", -error);
+ 			goto err_free_sock;
+ 		}
+@@ -2035,7 +2039,11 @@ static struct socket *usock_open_sock(st
+ 		sock->sk->sk_sndbuf = sndbuf;
+ 	else
+ 		sndbuf = sock->sk->sk_sndbuf;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 19, 0)
++	error = sock->ops->connect(sock, (struct sockaddr_unsized *)&usock->addr, sizeof(usock->addr), 0);
++#else
+ 	error = sock->ops->connect(sock, (struct sockaddr *)&usock->addr, sizeof(usock->addr), 0);
++#endif
+ 	if (error < 0) {
+ 		printk(KERN_ERR "ipt_NETFLOW: error connecting UDP socket %d,"
+ 		    " don't worry, will try reconnect later.\n", -error);

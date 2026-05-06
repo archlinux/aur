@@ -1,0 +1,25 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: dump compat_def.h
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -29,6 +29,7 @@ ipt_NETFLOW.ko: version.h ipt_NETFLOW.c
+ compat_def.h: gen_compat_def
+ 	./gen_compat_def > $@-
+ 	mv $@- $@
++	cat $@
+ sparse: | version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
+ 	@rm -f ipt_NETFLOW.ko ipt_NETFLOW.o
+ 	@echo Compiling for kernel $(KVERSION)
+--- a/gen_compat_def
++++ b/gen_compat_def
+@@ -37,7 +37,8 @@ kbuild_test_compile() {
+   else
+     echo " undeclared" >&2
+     echo "#undef HAVE_$1"
+-    echo "// ${2:-symbol} is undeclared${3:+ in <$3>}. Compile:"
++    echo "// ${2:-symbol} is undeclared${3:+ in <$3>}."
++    echo "// Compile:"
+     sed  "s/^/\/\/   /" test.c
+     echo "// Output:"
+     sed  "s/^/\/\/   /" log

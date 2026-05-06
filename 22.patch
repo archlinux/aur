@@ -1,0 +1,28 @@
+From f158f57ba960b66b9428d245a2b3a6e1b16ce7bc Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Wed, 3 Jul 2024 12:09:45 +0200
+Subject: [PATCH] Do not check for dkms if called from dkms
+
+the recursive calls slowed down the configure script significantly
+
+Signed-off-by: Andreas Beckmann <anbe@debian.org>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index 86f9488..f2ec1a9 100755
+--- a/configure
++++ b/configure
+@@ -348,7 +348,7 @@ do
+     --disable-snmp-a*)   SKIPSNMP=1 ;;
+     --disable-net-snmp*) SKIPSNMP=1 ;;
+     --disable-dkms*)     SKIPDKMS=1 ;;
+-    --from-dkms-conf*) ;;
++    --from-dkms-conf*)   SKIPDKMS=1 ;;
+     --make) echo called from make; CARGS=`echo $CARGS | sed s/--make//g` ;;
+     -Werror) KOPTS="$KOPTS -Werror" ;;
+     --help|-h) show_help ;;
+-- 
+2.39.5
+

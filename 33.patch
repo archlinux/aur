@@ -1,0 +1,24 @@
+Description: Disable kernel check in configure script if no dkms is used
+ This means it's skipped during package build but not during install
+ time when a build of the kernel module is being triggered via dkms.
+Author: Axel Beckert <abe@debian.org>
+Forwarded: not-needed
+
+--- a/configure
++++ b/configure
+@@ -631,6 +631,7 @@ dkms_check() {
+ 
+ echo "Module version: $(./version.sh)"
+ 
++if [ "$SKIPDKMS" != 1 ]; then
+ kernel_find_version	#KVERSION
+ test "$KLIBMOD" || KLIBMOD=$KVERSION
+ echo "Kernel version: $KVERSION ($KHOW)"
+@@ -639,6 +640,7 @@ echo "Kernel sources: $KDIR ($KSHOW)"
+ kernel_check_consistency
+ kernel_check_config
+ kernel_check_features
++fi
+ 
+ CC=${CC:-gcc}
+ test "$IPTBIN" || IPTBIN=`which iptables`

@@ -1,0 +1,18 @@
+Description: Don't hardcode default gcc version (i.e. don't override $CC if set)
+ Avoids compilation failures with older kernels which can't be
+ compiled with the current gcc, e.g. 5.7 needs gcc-9 instead of the
+ current gcc-10 (where the gcc symlink points to).
+Author: Axel Beckert <abe@debian.org>
+Forwarded: no
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -13,7 +13,7 @@
+ SNMPTGSO = /usr/lib/snmp/dlmod/snmp_NETFLOW.so
+ SNMPCONF = /etc/snmp/snmpd.conf
+ SNMPLINE = dlmod netflow $(SNMPTGSO)
+-CC = gcc
++CC ?= gcc
+ 
+ # https://www.kernel.org/doc/Documentation/kbuild/modules.txt
+ # https://www.kernel.org/doc/Documentation/kbuild/makefiles.txt

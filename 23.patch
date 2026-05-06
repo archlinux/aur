@@ -1,0 +1,26 @@
+From 0d92accaa14d21236377173e9b5ab2e2727097e3 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Wed, 3 Jul 2024 12:12:31 +0200
+Subject: [PATCH] Set KDIR early if called from dkms and get version from
+ sources
+
+Signed-off-by: Andreas Beckmann <anbe@debian.org>
+---
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure b/configure
+index f2ec1a9..ae8a579 100755
+--- a/configure
++++ b/configure
+@@ -6,6 +6,7 @@ PATH=$PATH:/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin
+ case "$1" in
+   --from-dkms-conf*)
+     KDKMS=`echo "$1" | sed 's/[^=]*.//'`
++    KDIR="$KDKMS"
+     # restore options from existing Makefile, if present
+     if [ -e Makefile ]; then
+       set -- `sed -n 's/^CARGS = \(.*\)/\1/p' Makefile`
+-- 
+2.39.5
+

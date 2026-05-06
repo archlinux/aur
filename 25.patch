@@ -1,0 +1,30 @@
+From 7f1cc83f03d09960b403884a3ba00540a8984b3d Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Thu, 18 Jul 2024 00:24:57 +0200
+Subject: [PATCH] Fix module build for Linux v4.3
+
+netif_is_bridge_port() was introduced in v4.4-rc2 by
+"vlan: Do not put vlan headers back on bridge and macvlan ports"
+(28f9ee22bcdd84726dbf6267d0b58f254166b900)
+
+Signed-off-by: Andreas Beckmann <anbe@debian.org>
+---
+ ipt_NETFLOW.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index 94f3cf2..6689764 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -4886,6 +4886,8 @@ static void parse_l2_header(const struct sk_buff *skb, struct ipt_netflow_tuple
+ 		    && !(vlan->flags & VLAN_FLAG_REORDER_HDR)
+ #  if LINUX_VERSION_CODE >= KERNEL_VERSION(4,3,0)
+ 		    && !netif_is_macvlan_port(vlan_dev)
++#  endif
++#  if LINUX_VERSION_CODE >= KERNEL_VERSION(4,4,0)
+ 		    && !netif_is_bridge_port(vlan_dev)
+ #  endif
+ 		   ))
+-- 
+2.39.5
+

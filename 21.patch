@@ -1,0 +1,28 @@
+From a376601061fb648498043ceda130738e9a92a7a8 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Wed, 3 Jul 2024 12:06:55 +0200
+Subject: [PATCH] Fix dkms status invocation
+
+and do not query unrelated modules
+
+Signed-off-by: Andreas Beckmann <anbe@debian.org>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index 66ced00..86f9488 100755
+--- a/configure
++++ b/configure
+@@ -614,7 +614,7 @@ dkms_check() {
+   echo Yes.
+   DKMSINSTALL=dinstall
+   test "$FROMDKMSCONF" && return
+-  if dkms status | grep ^ipt-netflow, >/dev/null; then
++  if dkms status ipt-netflow | grep ^ipt-netflow/ >/dev/null; then
+     echo "! You are already have module installed via DKMS"
+     echo "!   it will be uninstalled on 'make install' and"
+     echo "!   current version of module installed afterwards."
+-- 
+2.39.5
+

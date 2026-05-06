@@ -1,0 +1,35 @@
+From a3e587794be862315d573843d0991b6c97a381b0 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Thu, 6 Mar 2025 12:56:38 +0100
+Subject: [PATCH] Restore ctl_table backwards compatibility
+
+---
+ compat.h | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/compat.h b/compat.h
+index 0c9c764..9e63974 100644
+--- a/compat.h
++++ b/compat.h
+@@ -80,10 +80,16 @@ union nf_inet_addr {
+ #  define s_ctl_table const struct ctl_table
+ # elif LINUX_VERSION_CODE >= KERNEL_VERSION(3,17,0)
+ #  define s_ctl_table struct ctl_table
++# else
++#  define s_ctl_table ctl_table
+ # endif
+ 
+-# if !defined(HAVE_GRSECURITY_H) && LINUX_VERSION_CODE >= KERNEL_VERSION(3,17,0)
+-#  define ctl_table_no_const struct ctl_table
++# ifndef HAVE_GRSECURITY_H
++#  if LINUX_VERSION_CODE >= KERNEL_VERSION(3,17,0)
++#   define ctl_table_no_const struct ctl_table
++#  else
++#   define ctl_table_no_const ctl_table
++#  endif
+ # endif
+ #endif
+ 
+-- 
+2.39.5
+

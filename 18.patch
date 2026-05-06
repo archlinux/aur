@@ -1,0 +1,37 @@
+From 0ec2162cf645063b3fe5af6b3b3c482444a9508e Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Sat, 20 Jul 2024 02:48:42 +0200
+Subject: [PATCH] compat: Really fix __has_attribute usage
+
+Fixes: 40fefb2 ("compat: Fix __has_attribute usage")
+Signed-off-by: Andreas Beckmann <anbe@debian.org>
+---
+ compat.h | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/compat.h b/compat.h
+index 8461c3d..6c4984b 100644
+--- a/compat.h
++++ b/compat.h
+@@ -773,13 +773,14 @@ struct module *find_module(const char *name)
+ 
+ /* Copy from 294f69e662d1 ("compiler_attributes.h: Add 'fallthrough' pseudo
+  * keyword for switch/case use") */
+-#ifndef fallthrough
+-# if defined __has_attribute && __has_attribute(__fallthrough__)
++#if !defined(fallthrough) && defined(__has_attribute)
++# if __has_attribute(__fallthrough__)
+ #  define fallthrough			__attribute__((__fallthrough__))
+-# else
+-#  define fallthrough			do {} while (0)  /* fallthrough */
+ # endif
+ #endif
++#ifndef fallthrough
++#  define fallthrough			do {} while (0)  /* fallthrough */
++#endif
+ 
+ #ifndef HAVE_NF_CT_EVENT_NOTIFIER_CT_EVENT
+ /*
+-- 
+2.39.5
+

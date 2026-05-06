@@ -1,0 +1,33 @@
+From faf869ce600f9ec25e6fa5eece611a311a9a2c65 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Wed, 18 Jan 2023 08:58:17 +0300
+Subject: [PATCH 14/17] TCP Option 0 should participate in bitmask too
+
+Fixes: a1386af ("tcp options: fix possible shift-out-of-bounds")
+Signed-off-by: ABC <abc@openwall.com>
+---
+ ipt_NETFLOW.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index a0119bb..e9c2567 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -4852,12 +4852,10 @@ static inline __u32 tcp_options(const struct sk_buff *skb, const unsigned int pt
+ 	for (i = 0; likely(i < optsize); ) {
+ 		u_int8_t opt = p[i++];
+ 
++		if (likely(opt < 32))
++			ret |= 1 << (31 - opt);
+ 		if (likely(opt == 0) || unlikely(p[i] < 2))
+ 			break;
+-		if (likely(opt < 32)) {
+-			/* IANA doc is messed up, see above. */
+-			ret |= 1 << (31 - opt);
+-		}
+ 		if (unlikely(opt == 1))
+ 			continue;
+ 		else
+-- 
+2.39.5
+

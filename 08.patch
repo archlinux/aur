@@ -1,0 +1,36 @@
+From 4016a069c65756374c38e3fd80805c247d1255b0 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Wed, 20 Apr 2022 22:26:35 +0300
+Subject: [PATCH 08/17] gen_compat_def: Catch 'dereferencing pointer to
+ incomplete type'
+
+If `CONFIG_NF_CONNTRACK_EVENTS` is undeclared following test produce build error:
+
+  Test member nf_ct_event_notifier.ct_event net/netfilter/nf_conntrack_ecache.h  undeclared
+  Error: unexpected error from compiler
+  make -s -B M=cc-test-build modules
+  cc-test-build/test.c:4:41: error: dereferencing pointer to incomplete type 'struct nf_ct_event_notifier'
+   typeof(((struct nf_ct_event_notifier*)0)->ct_event) test;
+					   ^~
+  scripts/Makefile.build:288: recipe for target 'cc-test-build/test.o' failed
+
+Treat this error as just a negative test case.
+---
+ gen_compat_def | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gen_compat_def b/gen_compat_def
+index 35803a2..396fdb9 100755
+--- a/gen_compat_def
++++ b/gen_compat_def
+@@ -49,6 +49,7 @@ kbuild_test_compile() {
+ 	  -e 'No such file or directory' \
+ 	  -e 'incompatible types when initializing' \
+ 	  -e 'initializer element is not constant' \
++	  -e 'dereferencing pointer to incomplete type' \
+ 	  log; then
+       echo "Error: unexpected error from compiler" >&2
+       cat log >&2
+-- 
+2.39.5
+

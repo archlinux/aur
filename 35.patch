@@ -1,0 +1,62 @@
+--- a/configure
++++ b/configure
+@@ -124,10 +124,15 @@ try_dir2() {
+ 
+ check_pkg_config() {
+   test "$PKGWARN" && return 1
+-  if ! which pkg-config >/dev/null 2>&1; then
+-    echo "! You don't have pkg-config, it may be useful to install it."
+-    PKGWARN=1
+-    return 1
++  if test -z "$PKG_CONFIG"; then
++    if ! which pkg-config >/dev/null 2>&1; then
++      echo "! You don't have pkg-config, it may be useful to install it."
++      PKG_CONFIG=false
++      PKGWARN=1
++      return 1
++    else
++      PKG_CONFIG=pkg-config
++    fi
+   fi
+   return 0
+ }
+@@ -144,10 +149,10 @@ iptables_find_version() {
+       echo "no iptables binary found"
+     fi
+     check_pkg_config
+-    PKGVER=`pkg-config --modversion xtables 2>/dev/null`
++    PKGVER=`$PKG_CONFIG --modversion xtables 2>/dev/null`
+     if [ "$PKGVER" ]; then
+       IPTVER="$PKGVER"
+-      echo "Xtables version: $IPTVER (detected from `which pkg-config`)"
++      echo "Xtables version: $IPTVER (detected from $PKG_CONFIG)"
+       return
+     fi
+     error "Can not find iptables version, try setting it with --ipt-ver="
+@@ -213,10 +218,10 @@ compile_libitp_test() {
+ iptables_try_pkgconfig() {
+   if [ ! "$PKGVER" ]; then
+     check_pkg_config
+-    PKGVER=`pkg-config --modversion xtables 2>/dev/null`
+-    TRYPKGVER=`pkg-config --modversion xtables 2>/dev/null`
++    PKGVER=`$PKG_CONFIG --modversion xtables 2>/dev/null`
++    TRYPKGVER=`$PKG_CONFIG --modversion xtables 2>/dev/null`
+     echo -n "pkg-config for version $IPTVER exists: "
+-    pkg-config --exact-version=$IPTVER xtables 2>/dev/null
++    $PKG_CONFIG --exact-version=$IPTVER xtables 2>/dev/null
+     if [ $? = 0 ]; then
+       echo "Yes"
+       PKGVER=$TRYPKGVER
+@@ -231,9 +236,9 @@ iptables_try_pkgconfig() {
+   fi
+   if [ "$PKGVER" ]; then
+     check_pkg_config
+-    PKGVER=`pkg-config --modversion xtables 2>/dev/null`
+-    PKGINC=`pkg-config --cflags xtables`
+-    PKGLIB=`pkg-config --variable=xtlibdir xtables`
++    PKGVER=`$PKG_CONFIG --modversion xtables 2>/dev/null`
++    PKGINC=`$PKG_CONFIG --cflags xtables`
++    PKGLIB=`$PKG_CONFIG --variable=xtlibdir xtables`
+   elif expr "$IPTVER" : '^1\.3' >/dev/null; then
+     echo "! This version of iptables ($IPTVER) will be treated as old version."
+     # Newer versions of iptables should not have -I/kernel/include!

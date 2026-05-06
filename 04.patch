@@ -1,0 +1,29 @@
+From 9ed578818bb826ff56e97a4a2625e408d1482322 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Fri, 22 Oct 2021 16:46:36 +0300
+Subject: [PATCH 04/17] Better detection of CONFIG_BRIDGE_NETFILTER
+
+`CONFIG_BRIDGE_NETFILTER' is a tristate, thus just `#ifdef' cannot be used.
+
+Reported-by: https://github.com/lyt0112
+Fixes: #184
+---
+ ipt_NETFLOW.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index 7982212..91e17c1 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -87,7 +87,7 @@
+ #if defined(CONFIG_NF_NAT_NEEDED) && LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39)
+ # include <net/netfilter/nf_conntrack_timestamp.h>
+ #endif
+-#ifndef CONFIG_BRIDGE_NETFILTER
++#if !IS_ENABLED(CONFIG_BRIDGE_NETFILTER)
+ # ifdef ENABLE_PHYSDEV_OVER
+ #  warning "Requested physdev override is not compiled."
+ #  undef ENABLE_PHYSDEV_OVER
+-- 
+2.39.5
+

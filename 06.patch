@@ -1,0 +1,71 @@
+From 60581e2b661efe9576b5c159a9b2794ae0065242 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Thu, 25 Nov 2021 20:19:14 +0300
+Subject: [PATCH 06/17] Use explicit fallthrough macro
+
+Since `-Wimplicit-fallthrough=5` is emabled in Linux Makefile.
+---
+ compat.h      | 10 ++++++++++
+ ipt_NETFLOW.c |  4 ++--
+ murmur3.h     |  4 ++--
+ 3 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/compat.h b/compat.h
+index 671d76a..c498bb8 100644
+--- a/compat.h
++++ b/compat.h
+@@ -771,4 +771,14 @@ struct module *find_module(const char *name)
+ }
+ #endif
+ 
++/* Copy from 294f69e662d1 ("compiler_attributes.h: Add 'fallthrough' pseudo
++ * keyword for switch/case use") */
++#ifndef fallthrough
++# if __has_attribute(__fallthrough__)
++#  define fallthrough			__attribute__((__fallthrough__))
++# else
++#  define fallthrough			do {} while (0)  /* fallthrough */
++# endif
++#endif
++
+ #endif /* COMPAT_NETFLOW_H */
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index 91e17c1..8f70a1a 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -2226,7 +2226,7 @@ static int parse_sampler(char *ptr)
+ 		printk(KERN_ERR "ipt_NETFLOW: sampler parse error (%s '%s').\n",
+ 		    "unknown mode", ptr);
+ 		ret = -EINVAL;
+-		/* FALLTHROUGH */
++		fallthrough;
+ 	case '\0': /* empty */
+ 	case 'n':  /* none */
+ 	case 'o':  /* off */
+@@ -3654,7 +3654,7 @@ static inline void add_tpl_field(__u8 *ptr, const int type, const struct ipt_net
+ 			      put_unaligned_be16(nf->options, ptr); break;
+ 	case SRC_MASK:	               *ptr = nf->s_mask; break;
+ 	case DST_MASK:	               *ptr = nf->d_mask; break;
+-	case icmpTypeCodeIPv4:	/*FALLTHROUGH*/
++	case icmpTypeCodeIPv4:	fallthrough;
+ 	case icmpTypeCodeIPv6:	put_unaligned(nf->tuple.d_port, (__be16 *)ptr); break;
+ 	case MUL_IGMP_TYPE:            *ptr = nf->tuple.d_port; break;
+ 	case flowEndReason: 	       *ptr = nf->flowEndReason; break;
+diff --git a/murmur3.h b/murmur3.h
+index 4e3377b..50d8b11 100644
+--- a/murmur3.h
++++ b/murmur3.h
+@@ -32,8 +32,8 @@ static inline uint32_t murmur3(const void *key, const uint32_t len, const uint32
+ 	}
+ 	tail = (const uint8_t*)blocks;
+ 	switch (len & 3) {
+-		case 3: k1 ^= tail[2] << 16; /* FALLTHROUGH */
+-		case 2: k1 ^= tail[1] << 8;  /* FALLTHROUGH */
++		case 3: k1 ^= tail[2] << 16; fallthrough;
++		case 2: k1 ^= tail[1] << 8;  fallthrough;
+ 		case 1: k1 ^= tail[0];
+ 			h1 ^= rotl32(k1 * c1, 15) * c2;
+ 	}
+-- 
+2.39.5
+

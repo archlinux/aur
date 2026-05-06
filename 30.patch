@@ -1,0 +1,44 @@
+From b0846ca8257f83b908d4a31665230d1ce8a3af02 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Fri, 28 Feb 2025 10:53:27 +0100
+Subject: [PATCH] physindev has been replaced by physinif in Linux v6.8
+
+disable ENABLE_PHYSDEV/ENABLE_PHYSDEV_OVER after
+"netfilter: bridge: replace physindev with physinif in nf_bridge_info"
+v6.8-rc1 (9874808878d9eed407e3977fd11fee49de1e1d86)
+v6.7.2   (544add1f1cfb78c3dfa3e6edcf4668f6be5e730c)
+v6.6.14  (9325e3188a9cf3f69fc6f32af59844bbc5b90547)
+v6.1.75  (7ae19ee81ca56b13c50a78de6c47d5b8fdc9d97b)
+
+Signed-off-by: Andreas Beckmann <anbe@debian.org>
+---
+ ipt_NETFLOW.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index f3a15dd..6b4448e 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -102,6 +102,19 @@
+ #  undef ENABLE_PHYSDEV
+ # endif
+ #endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6,8,0)) || \
++    ((LINUX_VERSION_CODE >= KERNEL_VERSION(6,7,2)) && (LINUX_VERSION_CODE < KERNEL_VERSION(6,8,0))) || \
++    ((LINUX_VERSION_CODE >= KERNEL_VERSION(6,6,14)) && (LINUX_VERSION_CODE < KERNEL_VERSION(6,7,0))) || \
++    ((LINUX_VERSION_CODE >= KERNEL_VERSION(6,1,75)) && (LINUX_VERSION_CODE < KERNEL_VERSION(6,2,0)))
++# ifdef ENABLE_PHYSDEV_OVER
++#  warning "FIXME: physindev in struct nf_bridge_info has been replaced by physinif."
++#  undef ENABLE_PHYSDEV_OVER
++# endif
++# ifdef ENABLE_PHYSDEV
++#  warning "FIXME: physindev in struct nf_bridge_info has been replaced by physinif."
++#  undef ENABLE_PHYSDEV
++# endif
++#endif
+ 
+ #define IPT_NETFLOW_VERSION "2.6" /* Note that if you are using git, you
+ 				     will see version in other format. */
+-- 
+2.39.5
+

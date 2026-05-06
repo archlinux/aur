@@ -1,0 +1,127 @@
+From 5f188b7b4b0dfc9b9b4445700ad02d0078198bb7 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Wed, 14 Jul 2021 17:33:49 +0300
+Subject: [PATCH 03/17] Fix compilation on CentOS 8
+
+Tested on kernel-4.18.0-305.7.1.el8_4.x86_64 using this
+Dockerfile:
+
+  FROM centos:8
+  RUN yum install -y gcc make which kernel kernel-devel iptables-devel
+  WORKDIR /src
+  COPY . .
+  RUN ./configure --kver=$(cd /lib/modules; ls)
+  RUN make
+
+Fixes: #176 and #178.
+---
+ compat.h       |  4 ++--
+ gen_compat_def | 33 ++++++++++++++++++++++++++++-----
+ ipt_NETFLOW.c  |  2 +-
+ 3 files changed, 31 insertions(+), 8 deletions(-)
+
+diff --git a/compat.h b/compat.h
+index 30f1d8f..671d76a 100644
+--- a/compat.h
++++ b/compat.h
+@@ -203,9 +203,9 @@ err:
+ }
+ #endif
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++#ifdef HAVE_TOTALRAM_PAGES
+ #define num_physpages	totalram_pages()
+-#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3,11,0)
++#elif defined HAVE_TOTALRAM_PAGES_REF
+ #define num_physpages	totalram_pages
+ #endif
+ 
+diff --git a/gen_compat_def b/gen_compat_def
+index 79603f1..011eb0c 100755
+--- a/gen_compat_def
++++ b/gen_compat_def
+@@ -1,8 +1,9 @@
+ #!/bin/bash -efu
+ # SPDX-License-Identifier: GPL-2.0-only
+ #
+-# Generate defines based on kernel having
+-# some symbols declared
++# Generate defines based on kernel having some symbols declared.
++# Tests should work without linking, because kernel may not be
++# completely compiled (only prepared).
+ #
+ # Copyright (C) 2019-2021 <abc@openwall.com>
+ #
+@@ -41,7 +42,14 @@ kbuild_test_compile() {
+     echo "// Output:"
+     sed  "s/^/\/\/   /" log
+     echo
+-    if ! egrep -q 'has no member named|undeclared|storage size of .* isn.t known|No such file or directory' log; then
++    if ! egrep -q \
++	  -e 'has no member named' \
++	  -e 'undeclared' \
++	  -e 'storage size of .* isn.t known' \
++	  -e 'No such file or directory' \
++	  -e 'incompatible types when initializing' \
++	  -e 'initializer element is not constant' \
++	  log; then
+       echo "Error: unexpected error from compiler" >&2
+       cat log >&2
+       echo >&2
+@@ -50,9 +58,9 @@ kbuild_test_compile() {
+   fi
+ }
+ 
+-# Test that symbol is defined.
++# Test that symbol is defined (will catch functions mostly).
+ kbuild_test_symbol() {
+-  echo -n "Test symbol $* " >&2
++  echo -n "Test function $* " >&2
+   kbuild_test_compile ${1^^} $1 ${2-} <<-EOF
+ 	#include <linux/module.h>
+ 	${2:+#include <$2>}
+@@ -61,6 +69,16 @@ kbuild_test_symbol() {
+ 	EOF
+ }
+ 
++# Test that symbol is defined (functions and globals).
++kbuild_test_ref() {
++  echo -n "Test symbol $* " >&2
++  kbuild_test_compile ${1^^}_REF $1 ${2-} <<-EOF
++	#include <linux/module.h>
++	${2:+#include <$2>}
++	MODULE_LICENSE("GPL");
++	void *test = &$1;
++	EOF
++}
+ # Test that struct is defined.
+ kbuild_test_struct() {
+   echo -n "Test struct $* " >&2
+@@ -87,6 +105,11 @@ kbuild_test_symbol synchronize_sched linux/rcupdate.h
+ kbuild_test_symbol nf_bridge_info_get linux/netfilter_bridge.h
+ # Stumbled on 5.9
+ kbuild_test_struct vlan_dev_priv linux/if_vlan.h
++# Kernel version check broken by centos8
++kbuild_test_symbol put_unaligned_be24 asm/unaligned.h
++# totalram_pages changed from atomic to inline function.
++kbuild_test_symbol totalram_pages linux/mm.h
++kbuild_test_ref    totalram_pages linux/mm.h
+ 
+ echo "// End of compat_def.h"
+ 
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index 136c17c..7982212 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -3532,7 +3532,7 @@ static inline __u8 hook2dir(const __u8 hooknum)
+ }
+ #endif
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(5,7,0)
++#ifndef HAVE_PUT_UNALIGNED_BE24
+ static inline void put_unaligned_be24(u32 val, unsigned char *p)
+ {
+ 	*p++ = val >> 16;
+-- 
+2.39.5
+

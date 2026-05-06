@@ -1,0 +1,61 @@
+From 10dd0d5042dbad4b357d4f1ad234b9804e405bea Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Fri, 7 Mar 2025 10:03:58 +0100
+Subject: [PATCH] Fix module build for Linux v6.12
+
+adapt to "move asm/unaligned.h to linux/unaligned.h"
+(5f60d5f6bbc12e782fac78110b0ee62698f3b576) in v6.12-rc2
+
+Fixes: #237
+Signed-off-by: Andreas Beckmann <anbe@debian.org>
+---
+ gen_compat_def | 9 +++++++--
+ ipt_NETFLOW.c  | 4 ++++
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/gen_compat_def b/gen_compat_def
+index 9884414..ec8404b 100755
+--- a/gen_compat_def
++++ b/gen_compat_def
+@@ -64,7 +64,7 @@ kbuild_test_symbol() {
+   echo -n "Test function $* " >&2
+   kbuild_test_compile ${1^^} $1 ${2-} <<-EOF
+ 	#include <linux/module.h>
+-	${2:+#include <$2>}
++	${3:-${2:+#include <$2>}}
+ 	MODULE_LICENSE("GPL");
+ 	void *test = $1;
+ 	EOF
+@@ -121,7 +121,12 @@ kbuild_test_symbol nf_bridge_info_get linux/netfilter_bridge.h
+ # Stumbled on 5.9
+ kbuild_test_struct vlan_dev_priv linux/if_vlan.h
+ # Kernel version check broken by centos8
+-kbuild_test_symbol put_unaligned_be24 asm/unaligned.h
++kbuild_test_symbol put_unaligned_be24 '???/unaligned.h' '#include <linux/version.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,12,0)
++#include <linux/unaligned.h>
++#else
++#include <asm/unaligned.h>
++#endif'
+ # totalram_pages changed from atomic to inline function.
+ kbuild_test_symbol totalram_pages linux/mm.h
+ kbuild_test_ref    totalram_pages linux/mm.h
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index d28f868..e4b38ba 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -68,7 +68,11 @@
+ # include <net/netfilter/nf_conntrack_core.h>
+ #endif
+ #include <linux/version.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,12,0)
++#include <linux/unaligned.h>
++#else
+ #include <asm/unaligned.h>
++#endif
+ #ifdef HAVE_LLIST
+ 	/* llist.h is officially defined since linux 3.1,
+ 	 * but centos6 have it backported on its 2.6.32.el6 */
+-- 
+2.39.5
+

@@ -1,0 +1,35 @@
+Description: Rename del_timer_sync to timer_delete_sync in Linux 6.15
+ The kernel upstream commit 8fa7292fee5c (treewide: Switch/rename to timer_delete[_sync]())),
+ which landed mainline in v6.15, renames the function from del_timer_sync()
+ to timer_delete_sync(). Adjust the code accordingly.
+Author: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
+Bug-Debian: http://bugs.debian.org/1106550
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2116328
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -5782,7 +5782,11 @@
+ err_stop_timer:
+ 	_unschedule_scan_worker();
+ 	netflow_scan_and_export(AND_FLUSH);
+-	del_timer_sync(&rate_timer);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,15,0)
++ 	del_timer_sync(&rate_timer);
++#else
++	timer_delete_sync(&rate_timer);
++#endif
+ 	free_templates();
+ 	destination_removeall();
+ #ifdef ENABLE_AGGR
+@@ -5832,7 +5836,11 @@
+ #endif
+ 	_unschedule_scan_worker();
+ 	netflow_scan_and_export(AND_FLUSH);
+-	del_timer_sync(&rate_timer);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,15,0)
++ 	del_timer_sync(&rate_timer);
++#else
++	timer_delete_sync(&rate_timer);
++#endif
+ 
+ #ifdef HAVE_SYNCHRONIZE_SCHED
+ 	synchronize_sched();
