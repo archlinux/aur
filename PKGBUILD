@@ -7,15 +7,15 @@
 # Contributor: maleadt <tim dot besard at gmail dot com>
 pkgname="turbovnc"
 pkgdesc="A derivative of Virtual Network Computing that is tuned to provide peak performance for 3D and video workloads"
-pkgver=3.2.1
+pkgver=3.3
 pkgrel=1
-arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-url="http://www.turbovnc.org/"
+arch=('x86_64' 'aarch64')
+url="https://www.turbovnc.org/"
 license=('GPL-2.0-or-later')
 depends=('bash'
          'glibc'
          'hicolor-icon-theme'
-         'java-runtime>11'
+         'java-runtime>=16'
          'libglvnd'
          'libjpeg-turbo'
          'libx11'
@@ -24,14 +24,20 @@ depends=('bash'
          'libxext'
          'libxfont2'
          'libxi'
+         'libxshmfence'
+         'mesa'
          'openssl'
          'pam'
          'perl'
          'pixman'
          'python'
-         'zlib')
-makedepends=('cmake>=3.12'
-             'java-environment>11'
+         'xkeyboard-config'
+         'xorg-xauth'
+         'xorg-xkbcomp'
+      #   'zlib'
+       )
+makedepends=('cmake>=3.16'
+             'java-environment>=16'
              'libxaw'
              'libxcursor'
              'libxt'
@@ -41,9 +47,9 @@ conflicts=('tigervnc' 'tigervnc-git' 'tightvnc' 'tightvnc-git')
 backup=(etc/turbovnc/turbovncserver.conf
         etc/turbovnc/turbovncserver-security.conf)
 source=("https://github.com/TurboVNC/turbovnc/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('e5b853b832808d796764e17a85396de62bc65f21e8b98056f6de333a2ef64720'
+sha256sums=('579d71e95beb7790badc1e40b36b52ccec71f255493e89e21721dfd86bbf2a5a'
             'SKIP')
-validpgpkeys=(AE1A7BA4EFFF9A9987E1474C4BACCAB36E7FE9A1) # The VirtualGL Project <information@VirtualGL.org>
+validpgpkeys=('AE1A7BA4EFFF9A9987E1474C4BACCAB36E7FE9A1') # The VirtualGL Project <information@VirtualGL.org>
 
 build() {
 	export JAVA_HOME=/usr/lib/jvm/default/
@@ -52,7 +58,7 @@ build() {
 	      -DCMAKE_BUILD_TYPE='None' \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/$pkgname \
-	      -DCMAKE_INSTALL_MANDIR=/usr/share/man/$pkgname \
+	      -DCMAKE_INSTALL_MANDIR=/usr/share/man \
 	      -DCMAKE_INSTALL_SYSCONFDIR=/etc/turbovnc \
 	      -Wno-dev \
 	      -G "Unix Makefiles" \
@@ -61,12 +67,20 @@ build() {
 }
 
 package() {
-	cd build
-	make DESTDIR="${pkgdir}" install
-	rm -f "${pkgdir}/usr/share/man/man1/Xserver.1"
-	rm -r "${pkgdir}/etc/turbovnc/init.d"
-	printf "[Desktop Entry]\nName=TurboVNC Viewer\nComment=TurboVNC client application\n\
-Exec=/usr/bin/vncviewer\nTerminal=false\nIcon=turbovnc\nType=Application\n\
-Categories=Application;Utility;\n" >> tvncviewer.desktop
-	install -Dm755 tvncviewer.desktop "${pkgdir}/usr/share/applications/tvncviewer.desktop"
+  DESTDIR="${pkgdir}" cmake --install build
+
+  rm -f "${pkgdir}/usr/share/man/man1/Xserver.1"
+  rm -rf "${pkgdir}/etc/turbovnc/init.d"
+
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/tvncviewer.desktop" <<'EOF'
+[Desktop Entry]
+Name=TurboVNC Viewer
+Comment=TurboVNC client application
+Exec=/usr/bin/vncviewer
+Terminal=false
+Icon=turbovnc
+Type=Application
+Categories=Utility;RemoteAccess;
+EOF
 }
+
