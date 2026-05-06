@@ -1,14 +1,17 @@
 pkgbase = qmc-decoder
 	pkgdesc = Convert QMC3/QMC0/QMCFLAC files to MP3 or FLAC
 	pkgver = 2.5+r24+gfb1e04b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Presburger/qmc-decoder
 	arch = x86_64
 	license = MIT
 	makedepends = ghc-filesystem
-	depends = gcc-libs
 	depends = glibc
-	source = qmc-decoder-fb1e04b03246db406e9fc15c4426b79ed321e4f5.tar.gz::https://github.com/Presburger/qmc-decoder/archive/fb1e04b03246db406e9fc15c4426b79ed321e4f5.tar.gz
+	depends = libgcc
+	depends = libstdc++
+	source = https://github.com/Presburger/qmc-decoder/archive/fb1e04b03246db406e9fc15c4426b79ed321e4f5/qmc-decoder-fb1e04b03246db406e9fc15c4426b79ed321e4f5.tar.gz
+	source = qmc-decoder_gcc15_include_cstdint.patch
 	b2sums = c99360886a3d817c899b00785a51ba9753beb7e21a5569dc46eee10cfcaaec5f18d84c397e58b833e733c48a1da608504f56fc936f9bd0217eddcadf9ef2829d
+	b2sums = dfa1edfac6b13daa0bc7c34c0e6f928792ed8ce28b741b6a279a8fbdd3a53f5215462e284a8bc82c6deef6e8480d778e8106434094f94fb845f6d45778598dc6
 
 pkgname = qmc-decoder
