@@ -41,15 +41,10 @@ sha256sums=(
 )
 
 _ghc_ver="9.6.3"
-_cabal_ver="3.10.3.0"
+_cabal_ver="3.16.1.0"
 
 prepare() {
-    source "${HOME}/.ghcup/env"
-
-    ghcup install ghc "${_ghc_ver}"
-    ghcup install cabal "${_cabal_ver}"
-    ghcup set ghc "${_ghc_ver}"
-    ghcup set cabal "${_cabal_ver}"
+    export PATH="$HOME/.ghcup/bin:$PATH"
 
     cabal update
 }
@@ -57,7 +52,7 @@ prepare() {
 build() {
     cd "simplexmq-${pkgver}"
 
-    source "${HOME}/.ghcup/env"
+    export PATH="$HOME/.ghcup/bin:$PATH"
 
     cabal build exe:smp-server
 }
@@ -65,7 +60,7 @@ build() {
 package() {
     cd "simplexmq-${pkgver}"
 
-    source "${HOME}/.ghcup/env"
+    export PATH="$HOME/.ghcup/bin:$PATH"
 
     # cabal list-bin output gets contaminated by git submodule log messages,
     # so we find the binary directly in the dist-newstyle build tree
