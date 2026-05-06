@@ -1,0 +1,30 @@
+pkgbase = whale-hunter
+	pkgdesc = Sovereign-Grade Mempool Sentinel — provider-agnostic, encrypted, TUI-based Ethereum intelligence radar
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://github.com/GIN-SYSTEMS/whale-hunter
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.10
+	depends = python-textual
+	depends = python-rich
+	depends = python-httpx
+	depends = python-websockets
+	depends = python-cryptography
+	depends = python-dotenv
+	optdepends = python-orjson: faster JSON parsing in the WSS hot path
+	optdepends = python-psutil: process priority + CPU affinity introspection
+	optdepends = python-uvloop: extreme low-latency event loop (replaces asyncio default)
+	optdepends = python-clickhouse-connect: optional ClickHouse persistence backend
+	optdepends = tmux: recommended for 24/7 detached headless VPS deployment
+	optdepends = screen: legacy alternative to tmux for session persistence
+	optdepends = libnotify: native desktop notifications via the Sovereign Shield
+	source = whale-hunter-11.0.0.tar.gz::https://github.com/GIN-SYSTEMS/whale-hunter/archive/refs/tags/v11.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = whale-hunter
