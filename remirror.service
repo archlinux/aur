@@ -1,0 +1,45 @@
+[Unit]
+Description=Caching proxy for package repositories
+Documentation=https://github.com/yobert/remirror
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=remirror
+Group=remirror
+ExecStart=/usr/bin/remirror
+Restart=on-failure
+RestartSec=5s
+WorkingDirectory=/var/remirror
+
+# Allow binding to privileged ports, in case you want :80 or something
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+ReadWritePaths=/var/remirror
+
+[Install]
+WantedBy=multi-user.target

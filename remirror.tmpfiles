@@ -1,0 +1,2 @@
+#Type Path           Mode UID       GID       Age Argument
+d     /var/remirror  0750 remirror  remirror  -   -
