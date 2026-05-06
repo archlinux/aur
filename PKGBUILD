@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
 pkgver=2.6.1
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -29,6 +29,7 @@ _fullsrcdir() {
 prepare() {
     cd "$(_fullsrcdir)"
     cp ../ruff-config-*/ruff.toml ruff_config
+    sed --in-place 's/uv run //g' Makefile
 }
 
 check() {
