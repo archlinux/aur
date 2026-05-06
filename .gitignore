@@ -1,3 +1,4 @@
-*/
+# Sources
+*.deb
+# built packages
 *.pkg.tar.zst
-*.rpm

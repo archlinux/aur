@@ -1,44 +1,24 @@
-# Maintainer: SelfRef <arch@selfref.dev>
+# Maintainer: Bryan Joshua Pedini <bryan [at] pedini [dot] dev>
 
-# INFO: Upstream binary is built with X11 support thus X11 dependencies are required.
-#       To built version for Wayland only use either `deskflow` or `deskflow-git` package.
+_pkgname="deskflow"
+_srcname="deskflow"
+_srcmntr="deskflow"
 
-_basename=deskflow
-pkgname=${_basename}-bin
-pkgver=1.17.1
-pkgrel=1
-pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
-arch=('x86_64')
-url="https://deskflow.org/"
-license=('GPL-2.0')
-depends=(
-	'libxtst'
-	'libxkbcommon'
-	'libxkbcommon-x11'
-	'libnotify'
-	'libxkbfile'
-	'libxinerama'
-	'libxrandr'
-	'libei'
-	'libportal'
-	'qt6-base'
-	'gdk-pixbuf2'
-	'pugixml'
-	'tomlplusplus'
-	# 'libx11' # dependency of libxtst
-	# 'libxext' # dependency of libxtst
-	# 'libxi' # dependency of libxtst
-)
-optdepends=(
-	'openssl: TLS encryption'
-	'gtk3: GTK file/dir picker'
-)
-provides=("$_basename")
-conflicts=("$_basename")
-source=("https://github.com/deskflow/deskflow/releases/download/v$pkgver/deskflow-$pkgver-arch-x86_64.pkg.tar.zst")
-sha256sums=('eae8163c59ce8ac991eb1a9f59cb123b99ee350176693314e3489247397ef39b')
+pkgname="${_pkgname}-bin"
+pkgver="1.26.0"
+pkgrel="1"
+pkgdesc="Share a single keyboard and mouse between multiple computers"
+url="https://github.com/${_srcmntr}/${_srcname}"
+arch=("x86_64")
+license=("AGPL3")
+options=("!strip" "!debug")
+_archive="${_pkgname}-${pkgver}.deb"
+source=("${_archive}::https://github.com/${_srcmntr}/${_srcname}/releases/download/v${pkgver}/deskflow-${pkgver}-debian-trixie-x86_64.AppImage")
+conflicts=("deskflow")
+provides=("deskflow")
+
+sha256sums=("4760d432cd414539df029d1bf0776ebe9069f3c39193845badc52f36dcb27563")
 
 package() {
-	mkdir "$pkgdir"/usr/
-	cp -r usr/* "$pkgdir"/usr/
+  bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
 }
