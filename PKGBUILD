@@ -2,8 +2,8 @@
 
 # shellcheck disable=SC2164
 
-_pkgver=v1.1.0
-pkgver=1.1.0
+_pkgver=v1.2.1
+pkgver=1.2.1
 pkgrel=1
 
 _pkgname=valve-parsers
@@ -18,7 +18,7 @@ depends=('python>=3.8')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
 
 source=("git+${url}#tag=${_pkgver}")
-sha256sums=('e02e3d4907814d1e7fbeda6eecf26f7dd9aaa8ef4e4a609272858e5e362e6f44')
+sha256sums=('2f968ff21d17f0094a4a9f05bbee2cdd6da379ca6879f42c5b7ae6640efab920')
 
 prepare() {
 	git -C "${_pkgname}" clean -dfx # Clean out old wheels etc.
