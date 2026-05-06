@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=6.18.4+1400811+gcf981913c2a7
+pkgver=7.0.3+1430873+gcc1508fee3bd
 _kernver=4.19.0+783746+g54d1f99f63e9
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
@@ -13,7 +13,7 @@ true && pkgname=("linux-zen-git" "linux-zen-git-headers")
 arch=("i686" "x86_64")
 conflicts=("linux-zen")
 provides=("linux-zen")
-pkgrel=1
+pkgrel=2
 options=("!strip")
 source=("linux-zen.conf"
         "linux-zen.preset"
@@ -100,8 +100,8 @@ build() {
 	
 	cd "${srcdir}/build"
 
-	msg2 "Building kernel..."; bzImage
-	msg2 "Building modules..."; modules
+	msg2 "Building kernel..."; make bzImage
+	msg2 "Building modules..."; make modules
 }
 
 package_linux-zen-git() {
