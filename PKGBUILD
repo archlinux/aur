@@ -1,7 +1,7 @@
 # Maintainer: WillyJL <me@willyjl.dev>
 pkgname=flipperui-git
 pkgver=v0.3.5.r15.g9af4746
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, native desktop manager for Flipper Zero"
 arch=(x86_64)
 url="https://github.com/fuckmaz/FlipperUI"

@@ -3,6 +3,7 @@
 set -e
 
 makepkg -sf
+pkgver=$(grep "pkgver=" PKGBUILD | cut -d = -f 2)
 makepkg --printsrcinfo > .SRCINFO
 git add .SRCINFO PKGBUILD
 git status
