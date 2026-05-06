@@ -2,9 +2,9 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=1.10.5
+pkgver=1.11.2
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=3
+pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="https://www.xnview.com/en/xnviewmp/"
 
@@ -26,11 +26,11 @@ source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.
         'XnView.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
-sha256sums=('CA7861470973C79A86F540C8CCBE16F834FA7B5FEC6469AF76DFAE8B3D1462F3'
-            '87EC80C5049745DC3018FCDCF4DDDF0E877AE3B20706705F2A80715232AD2141'
-            'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A'
-            'F9EE40F03A1783DD5844D2FCD4A8986A982800D8ADF75F7A787799F961D09A11'
-            '3D6DA484CD55EAC8910D5CF87F9057E6EADEAC842A249DCBDA35E1C6F3FCDC0D')
+sha256sums=('f940a7884d4e2f0050a3158902596dc038b91da613d821dea4b8af8cfdb7edd1'
+            '87ec80c5049745dc3018fcdcf4dddf0e877ae3b20706705f2a80715232ad2141'
+            'f6b3a4aaa0a55b5f21d9b91ab6f3da3d6ee077ba7fdd17e7c4ab1c69ad2a9e3a'
+            'f9ee40f03a1783dd5844d2fcd4a8986a982800d8adf75f7a787799f961d09a11'
+            '3d6da484cd55eac8910d5cf87f9057e6eadeac842a249dcbda35e1c6f3fcdc0d')
 
 # There is a lot of useless files in the archive, only install those from that
 # list.
@@ -103,6 +103,9 @@ package() {
   # There is no package for libmdk, which is anyway distributed as binary, so
   # just use the one provided.
   install -D -m644 "lib/libmdk.so.0" -t "${pkg_opt_dir}/lib"
+  # From Adobe XMP Toolkit SDK, apparently not packaged on Arch.
+  install -D -m644 "lib/libXMPCore.so" -t "${pkg_opt_dir}/lib"
+  install -D -m644 "lib/libXMPFiles.so" -t "${pkg_opt_dir}/lib"
 
   install -m755 "${srcdir}/xnview.sh" "${pkg_opt_dir}"
 
