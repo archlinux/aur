@@ -1,7 +1,7 @@
 # Maintainer: mizorewww <aac6fef@icloud.com>
 pkgname=arkloop-git
 pkgver=26.5.1.r2277.g681aa79
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for building conversational AI agents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/qqqqqf-q/Arkloop"
