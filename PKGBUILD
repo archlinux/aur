@@ -4,8 +4,9 @@
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.6.1.r11425.65e6a80
+pkgver=7.7.0.preview.1.r11437.faf1e0e
 _major=${pkgver:0:1}
+_pester_ver=4.10.1
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -34,12 +35,16 @@ source=(
   "git+https://github.com/$_name/$_name-native"
   "git+https://github.com/google/googletest#commit=4e4df226fc197c0dda6e37f5c8c3845ca1e73a49"
   'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets'
+  'nuget.config'
+  'nuget.modules.config'
 )
-sha256sums=(
+b2sums=(
   'SKIP'
   'SKIP'
-  '129bbf3ed96922525dc3e3d54115ec0932091025d60403addb75c35dd8cf3252'
-  '8d10afb45883813f805bdf74ec445ae3f2fdbd4d30ab2ce7ce3a55df80693696'
+  '2a652b5a8c0ffe9b3e5d8b225b9c2268d0770d0d8457cd78083c5adfc6cb85231adf318d81da104c5788d19a1c9b8cfba86e466cc73dd66cd3a21ee03177a6ba'
+  '8f8dfbd0db3e04e4e1c743c54ab94f76ea276f9b2061c3ed421baa84c8e1a3a96387a477850439caa41fa6fb69a0f4ec26968cbbcff6036f9e6b3b64669a97f2'
+  'd22f641a07c9fd1eb561a739a5e627c1f57575f64f14ea31cc36d266976a120ed748fe35ae5072e363bf2604b462a4db50ecac8817a84593674b2a62cf4d98f2'
+  'd5d55a46d97a4fa827139a78b79f519299250f11cdd6625f7e593708614a20e2c2e70527d6d5d342584c969895c70e279a4bb27550c67d7b0735b11931016d30'
 )
 install=powershell.install
 options=(staticlibs !strip)
@@ -57,6 +62,11 @@ prepare() {
   export DOTNET_INSTALL_DIR="$DOTNET_HOME"
   export PATH="$PATH:$DOTNET_HOME"
   cd "$_name"
+  
+  ## Use public package sources
+  cp "$srcdir/nuget.config" nuget.config
+  cp "$srcdir/nuget.modules.config" src/Modules/nuget.config
+  cp "$srcdir/nuget.modules.config" test/tools/Modules/nuget.config
 
   ## Install specified version of dotnet and restore
   dotnet-install --jsonfile global.json
@@ -95,7 +105,7 @@ build() {
   ## Build native component
   pushd "$srcdir/$_name-native/src/libpsl-native"
   sed -i 's/-D_FORTIFY_SOURCE=2/-fPIC/' CMakeLists.txt # -Werror...
-  cmake -D CMAKE_BUILD_TYPE=Debug -D CMAKE_POLICY_VERSION_MINIMUM=3.5 .
+  cmake -D CMAKE_BUILD_TYPE=Debug -D CMAKE_POLICY_VERSION_MINIMUM=3.5 -W no-dev .
   make
   popd
 
