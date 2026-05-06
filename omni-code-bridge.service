@@ -1,0 +1,15 @@
+[Unit]
+Description=Omni Code Bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/omni-code-bridge serve
+Restart=on-failure
+RestartSec=3
+Environment=RUST_LOG=info
+EnvironmentFile=-/etc/omni-code-bridge/.env
+
+[Install]
+WantedBy=multi-user.target
