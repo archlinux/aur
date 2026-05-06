@@ -1,6 +1,6 @@
 pkgbase = r-sbgnview.data
 	pkgdesc = Supporting datasets for SBGNview package
-	pkgver = 1.25.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SBGNview.data
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-sbgnview.data
 	depends = r-knitr
 	depends = r-rmarkdown
 	optdepends = r-summarizedexperiment
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SBGNview.data_1.25.0.tar.gz
-	sha256sums = 063468d1528566540bf63bdba61e992e3c24a593f6b524b556a0628f94305cc1
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SBGNview.data_1.26.0.tar.gz
+	sha256sums = e2ed8ee72d8de83638374c07c3d2f33606561937e402471826ceb5ee5338f0be
 
 pkgname = r-sbgnview.data
