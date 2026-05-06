@@ -38,6 +38,8 @@ pkgbase = python-ocp-vscode
 	depends = python-yaml
 	optdepends = python-cadquery: for working with cadquery
 	optdepends = python-build123d: for working with build123d
+	optdepends = vscode: this plugin works here
+	optdepends = vscode-insiders: this plugin works here
 	source = git+https://github.com/bernhard-42/vscode-ocp-cad-viewer#tag=v3.3.4
 	b2sums = 7f12bdc82b41c6f8cf2f8fe23f949353aa04290e3d441803fea203e586988947df8f6ec45db15c635f263c5fb63edc168cee369f68436fe2b52238f45be5ed17
 

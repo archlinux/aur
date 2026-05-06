@@ -45,6 +45,8 @@ yarn
 optdepends=(
 "python-cadquery: for working with cadquery"
 "python-build123d: for working with build123d"
+"vscode: this plugin works here"
+"vscode-insiders: this plugin works here"
 )
 
 install=python-ocp-vscode.install
