@@ -5,6 +5,7 @@ pkgbase = dnsperf-git
 	url = https://www.dns-oarc.net/tools/dnsperf
 	arch = x86_64
 	license = GPL
+	depends = json-c
 	depends = ldns
 	depends = libck
 	depends = libnghttp2

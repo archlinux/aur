@@ -10,7 +10,7 @@ url="https://www.dns-oarc.net/tools/dnsperf"
 license=('GPL')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-depends=('ldns' 'libck' 'libnghttp2')
+depends=('json-c' 'ldns' 'libck' 'libnghttp2')
 source=("git+https://codeberg.org/DNS-OARC/dnsperf.git")
 sha512sums=('SKIP')
 
