@@ -1,6 +1,6 @@
 pkgbase = mark-shot
 	pkgdesc = Qt 6 Wayland screenshot selection and annotation tool
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/jswysnemc/mark-shot
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mark-shot
 	depends = layer-shell-qt
 	depends = grim
 	depends = wl-clipboard
-	source = mark-shot-0.1.4.tar.gz::https://github.com/jswysnemc/mark-shot/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = bc724c00a3c8e91f2d0e812139f397a63799bcbd9cb5fb5174f889e5c9ab64c4
+	source = mark-shot-0.1.5.tar.gz::https://github.com/jswysnemc/mark-shot/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 7c197f321d70c420b4e639a049877175824dc76bf0a15027b61b33de80548f20
 
 pkgname = mark-shot
