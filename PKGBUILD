@@ -1,9 +1,8 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # Maintainer: FirstAirBender <noblechuk5 at web dot de>
 pkgname=crowdsec-nginx-bouncer
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
-_pkgrc=1
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
 url="https://doc.crowdsec.net/docs/bouncers/nginx"
@@ -33,17 +32,17 @@ install=cs-nginx-bouncer.install
 source=(
   "$pkgname-$pkgver.tar.gz::${_giturl}/releases/download/v${pkgver}/${pkgname}.tgz"
 )
-sha256sums=('85aed0ece04b3bd0d37325e6962661f59b491a6642b78cf81e275ae9140b16a2')
+sha256sums=('323c6bd182cda2221d5b2d3d21b7e5e0b66ec77dd306a37299916617c3d50eea')
 
 prepare() {
-  cd "$pkgname-v$pkgver-rc$_pkgrc"
+  cd "$pkgname-v$pkgver"
   sed -i s:var/lib/crowdsec/lua/templates:etc/nginx/lua/templates/crowdsec: lua-mod/config_example.conf
   # $prefix see https://openresty-reference.readthedocs.io/en/latest/Directives/#lua_package_path
   sed -i s:/usr/local/lua/crowdsec/:'$prefix/lua/plugins/crowdsec/': nginx/crowdsec_nginx.conf
 }
 
 package() {
-  cd "$pkgname-v$pkgver-rc$_pkgrc"
+  cd "$pkgname-v$pkgver"
   install -dm755 $pkgdir/etc/nginx/lua/plugins/crowdsec/
   install -dm755 $pkgdir/etc/nginx/lua/templates/crowdsec/
 

@@ -1,6 +1,6 @@
 pkgbase = crowdsec-nginx-bouncer
 	pkgdesc = CrowdSec bouncer for Nginx
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://doc.crowdsec.net/docs/bouncers/nginx
 	install = cs-nginx-bouncer.install
@@ -21,7 +21,7 @@ pkgbase = crowdsec-nginx-bouncer
 	backup = etc/nginx/lua/templates/crowdsec/captcha.html
 	backup = etc/nginx/conf.d/crowdsec_nginx.conf
 	backup = etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
-	source = crowdsec-nginx-bouncer-1.1.5.tar.gz::https://github.com/crowdsecurity/cs-nginx-bouncer/releases/download/v1.1.5/crowdsec-nginx-bouncer.tgz
-	sha256sums = 85aed0ece04b3bd0d37325e6962661f59b491a6642b78cf81e275ae9140b16a2
+	source = crowdsec-nginx-bouncer-1.1.6.tar.gz::https://github.com/crowdsecurity/cs-nginx-bouncer/releases/download/v1.1.6/crowdsec-nginx-bouncer.tgz
+	sha256sums = 323c6bd182cda2221d5b2d3d21b7e5e0b66ec77dd306a37299916617c3d50eea
 
 pkgname = crowdsec-nginx-bouncer
