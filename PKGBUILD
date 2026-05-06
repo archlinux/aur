@@ -70,5 +70,5 @@ package() {
 
   install -d "$pkgdir/usr/lib/${pkgname%-git}"/{assets,data}/
   cp -a assets/icons "$pkgdir/usr/lib/${pkgname%-git}/assets/"
-  cp -a  data/icons "$pkgdir/usr/lib/${pkgname%-git}/data/"
+  cp -a data/icons "$pkgdir/usr/lib/${pkgname%-git}/data/"
 }
