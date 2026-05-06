@@ -2,6 +2,7 @@
 pkgname=vortex
 pkgver=2.0.0
 pkgrel=1
+epoch=1
 pkgdesc="Nexus Mods' mod manager - native Linux build"
 arch=('x86_64')
 url="https://github.com/Nexus-Mods/Vortex"
