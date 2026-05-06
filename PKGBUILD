@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="moshpit client — SSH and Mosh inspired remote terminal client (pre-compiled binary)"
 arch=('x86_64')
@@ -16,8 +16,8 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 
 source=("${_base}/dist-mp.tar.gz")
 source_x86_64=("mp-x86_64::${_base}/mp-x86_64-unknown-linux-musl")
-sha256sums=('9d6572cae084738ed130d0ba064f665887278790fb0e0de04eb6cec66c6963f9')
-sha256sums_x86_64=('5ea57284615c2897ffe59783f310344c2be16c0220ca285ca6a4c520b67a342c')
+sha256sums=('8d278235e574838944b8aa795f9f4476712d4d87c4da4e8c393cc299da5489c4')
+sha256sums_x86_64=('ccd6cc9fff217843b8330f6a2cb792031db7f1efb9790a2cfdbe7638a76cbf2f')
 
 package() {
     install -Dm755 mp-x86_64 "$pkgdir/usr/bin/mp"
