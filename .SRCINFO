@@ -1,21 +1,21 @@
 pkgbase = moekoemusic-bin
 	pkgdesc = An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
-	url = https://moejue.cn/
+	url = https://music.moekoe.cn/
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron39
-	provides = moekoemusic=1.6.2
+	provides = moekoemusic=1.6.3
 	conflicts = moekoemusic
 	options = !strip
 	options = !emptydirs
-	source = moekoemusic-1.6.2.deb::https://github.com/iAJue/MoeKoeMusic/releases/download/v1.6.2/MoeKoe_Music_v1.6.2_amd64.deb
-	source = LICENSE-1.6.2::https://raw.githubusercontent.com/iAJue/MoeKoeMusic/v1.6.2/LICENSE
+	source = moekoemusic-1.6.3.deb::https://github.com/MoeKoeMusic/MoeKoeMusic/releases/download/v1.6.3/MoeKoe.Music-amd64.deb
+	source = LICENSE-1.6.3::https://raw.githubusercontent.com/MoeKoeMusic/MoeKoeMusic/v1.6.3/LICENSE
 	source = moekoemusic.sh
-	sha256sums = b89b38965c1c61d594e2de322bde175af5646f01767d47e79de6fdc746944d8b
+	sha256sums = a50926ea7e2010e68ebdbbe8a3c33053cd30ef2f01c3ff3c8a2d530562201559
 	sha256sums = f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = moekoemusic-bin
