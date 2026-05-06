@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libevdev' 'systemd' 'miniaudio')
 makedepends=('clang' 'make')
 source=("https://github.com/Shyam-Jagath/keysound/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('07b8d6cf61db0cce7d89e8ece3fa564b581d2e665fa6d5eb39a60927d6dbd90f')
+sha256sums=('b921122f335e0738565deb3cfee9f00132bb1443bc152448a82ab2a6f893ca5a')
 install='keysound.install'
 
 build() {
