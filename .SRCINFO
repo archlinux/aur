@@ -1,7 +1,7 @@
 pkgbase = tilth-git
 	pkgdesc = Smart(er) code reading for humans and AI agents.
 	pkgver = 0.7.0.r0.g6f44b4a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jahala/tilth
 	arch = x86_64
 	license = MIT

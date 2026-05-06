@@ -1,7 +1,7 @@
 # Maintainer: jahala <jahala@users.noreply.github.com>
 pkgname=tilth-git
 pkgver=0.7.0.r0.g6f44b4a
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart(er) code reading for humans and AI agents."
 arch=('x86_64')
 url="https://github.com/jahala/tilth"
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  cargo build --frozen --release
+  cargo build --release
 }
 
 check() {
   cd "$pkgname"
-  cargo test --frozen --release
+  cargo test --release
 }
 
 package() {
