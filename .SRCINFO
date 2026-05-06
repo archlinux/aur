@@ -1,6 +1,6 @@
 pkgbase = trufos-git
 	pkgdesc = A modern, open source REST client app.(Use system-wide electron)
-	pkgver = 0.5.0.r9.g8a31eb1
+	pkgver = 0.8.0.r0.g3ea2a57
 	pkgrel = 1
 	url = https://exxeta.github.io/trufos/
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = trufos-git
 	makedepends = curl
 	makedepends = gendesk
 	makedepends = jq
-	depends = electron40
-	provides = trufos=0.5.0
+	depends = electron41
+	provides = trufos=0.8.0
 	conflicts = trufos
 	source = trufos.git::git+https://github.com/EXXETA/trufos.git
 	source = trufos.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = trufos-git
