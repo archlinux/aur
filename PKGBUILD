@@ -3,14 +3,14 @@
 _pkgname1=kwin-x11
 _pkgname2=sonic-win
 pkgname="${_pkgname2}-bin"
-pkgver=6.6.2
-pkgrel=2
+pkgver=6.6.4.1
+pkgrel=1.1
 pkgdesc="kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre"
 arch=(x86_64)
 url="https://github.com/Sonic-DE/${_pkgname2}"
 license=('GPL-2.0-or-later')
 options=(!strip)
-source=("https://x11libre.net/repo/arch_based/x86_64/${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=("https://x11libre.net/repo/arch_based/x86_64/sonicde/${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname1}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(aurorae
          breeze
@@ -76,4 +76,3 @@ sha256sums=('2a7723e52895abdaab93aebe33044eb29a136dd384de3b538dc41b5cb120b883')
 package() {
   tar -xf "${_pkgname1}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
 }
-
