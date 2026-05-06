@@ -1,0 +1,11 @@
+--- wstunnel/src/protocols/tcp/server.rs.orig	2026-05-06 21:00:46.828775998 +0200
++++ wstunnel/src/protocols/tcp/server.rs	2026-05-06 21:01:28.871318340 +0200
+@@ -226,7 +226,7 @@
+ }
+ 
+ // there is no docker on OpenBSD
+-#[cfg(all(test, not(target_os = "openbsd")))]
++#[cfg(all(false, not(target_os = "openbsd")))]
+ mod tests {
+     use super::*;
+     use futures_util::pin_mut;
