@@ -1,5 +1,5 @@
 pkgname=python-bd_warehouse-git
-pkgdesc="A build123d parametric part collection"
+pkgdesc="A build123d parametric part collection -- latest git"
 pkgver=0.2.0.r4.g5be571e
 pkgrel=1
 arch=(any)
