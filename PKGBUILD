@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawd-on-desk-bin
 _pkgname='Clawd on Desk'
-pkgver=0.6.3
+pkgver=0.7.0
 _electronversion=41
 pkgrel=1
 pkgdesc="A desktop pet that reacts to your Claude Code sessions in real-time — thinking, typing, juggling, sleeping, and more.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/rullerzhou-afk/clawd-on-desk/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('593cb8efadbd2863c6506183784c2c4d5150701cf540bdef712ce53e8bca9563'
+sha256sums=('67d20fbf3186a6d54ea1d8d0a07ca7ff89fd5722a29decc1d9e6628dcd4c4a65'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
