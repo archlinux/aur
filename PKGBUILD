@@ -11,10 +11,6 @@ optdepends=('linux-wallpaperengine: the backend that actually renders wallpapers
 source=("$pkgname-$pkgver.tar.gz::https://github.com/diode701/nyaa-paper/releases/download/v$pkgver/nyaa-paper-$pkgver.tar.gz")
 sha256sums=('4408bf2d29a08d2d5c98125e024a4a740ebc8592ed3cdcaa0771b4025f4c1beb')
 
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    sed -i "s|/usr/share/nyaa-paper/|/usr/share/$pkgname/|g" bin/nyaa-paper
-}
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
