@@ -10,7 +10,7 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.17.1
+pkgver=1.3.17.2
 _skiaver=m124
 _skiahash=08a5439a6b
 pkgrel=1
@@ -41,7 +41,7 @@ makedepends=(# "Meta" dependencies
              # Upstream recommends using clang
              'clang>=22'
              )
-source=("https://github.com/aseprite/aseprite/releases/download/v1.3.17/Aseprite-v1.3.17-Source.zip"
+source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
         # forgive me, I couldn't figure out linker errors.
@@ -63,7 +63,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v1.3.17/Aseprite
         change_use_of_removed_intrinsic.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('887dd92c0d47988848f86405c05d73ba6af9e572a37fa63870350ac3d2ef3782'
+sha256sums=('3895afca60608e86ffbba20c32af95a6e59f8d7ebe6d2617236f159b42176bfe'
             'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
             'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
             'e2021cabe800b033afb799bc24f51e4b09cfb4d76afca4cf44f1cc05fb88bdf8'
