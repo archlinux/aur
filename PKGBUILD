@@ -15,17 +15,15 @@ optdepends=('wireless-regdb: wireless regulatory database'
             'modprobed-db: module tracking'
             'scx-sched: sched-ext schedulers')
 
-source=('cachy-kernel::git+https://github.com/CachyOS/linux-cachyos.git#tag=v7.0.3-1'
-        'https://raw.githubusercontent.com/CachyOS/kernel-patches/master/7.0/config.x86_64')
+source=('cachy-kernel::git+https://github.com/CachyOS/linux-cachyos.git#tag=v7.0.3-1')
 
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
     cd cachy-kernel
     
-    # Copy config
-    cp ../config.x86_64 arch/x86/config
+    # Copy config from repo
+    cp linux-cachyos/config arch/x86/config
     
     # Change to Solara branding
     scripts/config --set-str CONFIG_LOCALVERSION "-solara"
