@@ -5,7 +5,7 @@
 
 pkgname=equicord-openasar
 _pkgname=equicord
-pkgver=1.0.137.r7285g39f82af5e.r860g6232c4f
+pkgver=1.0.137.r7295g25c87c091.r860g6232c4f
 pkgrel=1
 pkgdesc='The other cutest Discord client mod (with OpenAsar)'
 arch=('x86_64')
