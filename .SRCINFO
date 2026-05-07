@@ -1,0 +1,14 @@
+pkgbase = unfold
+	pkgdesc = Flatpak wrapper that shows app permissions before install/update
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/danfinlay/unfold
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = flatpak
+	source = unfold-0.1.1.tar.gz::https://github.com/danfinlay/unfold/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 3e4ff24c394d83597ab66a2b996197dba2d9a84722feefdf4071c36d5338aa6a
+
+pkgname = unfold
