@@ -12,6 +12,12 @@ makedepends=(
     'dotnet-sdk-8.0-bin'
     'git'
 )
+depends=(
+    'zlib-ng-compat'
+    'hicolor-icon-theme'
+    'libgcc'
+    'libstdc++'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}.git")
@@ -48,5 +54,5 @@ package() {
         -t "$pkgdir/usr/share/applications"
 
     install -Dm 644 resources/min-ed-launcher.svg \
-        -t "$pkgdir/usr/share/icons/hicolor/scalable"
+        -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 }
