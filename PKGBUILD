@@ -32,7 +32,7 @@ source_x86_64=(
 sha256sums_x86_64=('79909a1aaa766e7e09295102771720ff05cea6703acc5c2ca859064c1ee0e5e0')
 
 package() {
-    local srcdir_app="$srcdir/felixweb-ide-$pkgver"
+    local srcdir_app="$srcdir/felixweb-ide"
 
     # ── App files → /usr/lib/felixweb-ide-bin/ ───────────────────────────────
     install -dm755 "$pkgdir/usr/lib/$pkgname"
