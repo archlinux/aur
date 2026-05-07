@@ -3,18 +3,19 @@
 # Contributor: Caleb Cushing <xenoterracide at gmail dot com>
 
 _perlmod='Cache-FastMmap'
-_modnamespace=Cache
+_modnamespace=Cache/ROBM
 pkgname=perl-cache-fastmmap
-pkgver=1.60
+pkgver=1.61
 pkgrel=1
 pkgdesc="Uses an mmap'ed file to act as a shared memory interprocess cache"
 arch=("x86_64" "i686")
 url="http://search.cpan.org/dist/$_perlmod"
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=('perl')
+makedepends=('perl-test-deep')
 options=('!emptydirs')
-source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('9b2d3b0aef095d2c59b356a4482950d0c3a22e84e6e69b97bb96dcc1edc642ff')
+source=("https://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
+sha256sums=('25ef2ac8369f1b4711e90ad2ff93d6ef6b1ea1914a9de64e71ad9745b72ed27f')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"

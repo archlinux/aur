@@ -1,14 +1,15 @@
 pkgbase = perl-cache-fastmmap
 	pkgdesc = Uses an mmap'ed file to act as a shared memory interprocess cache
-	pkgver = 1.60
+	pkgver = 1.61
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Cache-FastMmap
 	arch = x86_64
 	arch = i686
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-test-deep
 	depends = perl
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-module/Cache/Cache-FastMmap-1.60.tar.gz
-	sha256sums = 9b2d3b0aef095d2c59b356a4482950d0c3a22e84e6e69b97bb96dcc1edc642ff
+	source = https://cpan.perl.org/modules/by-module/Cache/ROBM/Cache-FastMmap-1.61.tar.gz
+	sha256sums = 25ef2ac8369f1b4711e90ad2ff93d6ef6b1ea1914a9de64e71ad9745b72ed27f
 
 pkgname = perl-cache-fastmmap
