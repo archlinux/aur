@@ -1,0 +1,4 @@
+[figurine]
+source = "git"
+git = "https://github.com/arsham/figurine.git"
+prefix = "v"
