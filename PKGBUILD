@@ -1,7 +1,7 @@
 # Maintainer: Daringcuteseal <daringcuteseal at gmail dot com>
 
 pkgname=python-commitizen
-pkgver=4.13.9
+pkgver=4.15.1
 pkgrel=1
 pkgdesc="Create committing rules for projects, auto bump versions, and auto changelog generation"
 arch=('any')
@@ -28,17 +28,11 @@ depends=(
 	'python-charset-normalizer'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-	"uv-build.patch"
 )
 
-sha256sums=('9871f3580cfd2c3de08a380edff4afce5adc3d4ab90c51d9b5540eb1b2ee6529'
-	'9fd2104b5b2ad48df2c7a6de335bd3d55009227ac7179d6d4981a2eac68779f5')
+sha256sums=('1545933a136db22c0ab49fa81bb0f94ab02e35391857911b45cb0e62150075d9')
 
 _pkgname="${pkgname/python-/}"
-
-prepare() {
-	patch -d $_pkgname-$pkgver -Np1 -i ../uv-build.patch
-}
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
