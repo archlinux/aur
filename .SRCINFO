@@ -1,6 +1,6 @@
 pkgbase = tpack-bin
 	pkgdesc = Tmux Plugin Manager
-	pkgver = 0.9.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/tmuxpack/tpack
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = tpack-bin
 	depends = tmux
 	provides = tpack
 	conflicts = tpack
-	source_x86_64 = https://github.com/tmuxpack/tpack/releases/download/v0.9.1/tpack_0.9.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4c9d3d3f511da8957d0bff13ed39701a9cb0e31b2ad267358108533000f0c81e
-	source_aarch64 = https://github.com/tmuxpack/tpack/releases/download/v0.9.1/tpack_0.9.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 488a9bb1480ec7a2f1de7d2a47b6aaf3f8ebfbe6c79c4590a8c49c3f89c77efd
+	source_x86_64 = https://github.com/tmuxpack/tpack/releases/download/v1.0.0/tpack_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 30be322c6e36a23ae654a482bbb592465a7aa670bd7b61a919cc5846ffa2de9c
+	source_aarch64 = https://github.com/tmuxpack/tpack/releases/download/v1.0.0/tpack_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = c7fec2dad1e8fac9cd1e90cbaf8ea916af9facad7cfa49fd81d6be24f61a82be
 
 pkgname = tpack-bin
