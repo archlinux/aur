@@ -2,7 +2,7 @@
 pkgname=masscode-git
 _pkgname=massCode
 pkgver=5.4.0.r1.g68d8789
-_electronversion=41
+_electronversion=34
 _nodeversion=22
 pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers.(Use system-wide electron)"
