@@ -1,6 +1,6 @@
 pkgbase = linux-cachyos-bore
 	pkgdesc = Linux BORE + Cachy Sauce scheduler Kernel by CachyOS with other patches and improvements
-	pkgver = 7.0.3
+	pkgver = 7.0.4
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -27,11 +27,11 @@ pkgbase = linux-cachyos-bore
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.3-1/cachyos-7.0.3-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.4-1/cachyos-7.0.4-1.tar.gz
 	source = config
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/sched/0001-bore-cachy.patch
-	b2sums = d6ab08acd91f405f36205070cdebab99d244e439ca00d823c4068aeba583818dd3c1fdc0d0b3836406ecb1a93b611c637533b50ae96e9bda3153682bbb9f33bd
-	b2sums = bd404bba9f1d30d7a82e7d147e11d34e28a75d00f511e1e5cbfea51a33f814eb492c28a4f0bda87546d5c81b980dce69bdd7ac5f02860f4d3c003b2073f2aa9f
+	b2sums = 5e20b744416a1550ea784ac7a5ca55107a5a2360a23d8cb16ef0e6cba7721dc7d9efc4c58a5bcdc9f5900dd0b3411545fce7412ea51c7312f45dafa25c093071
+	b2sums = 7bb5113dbc67e8e2ce5c5473ae1b08973af5adba0a6a14c64a213bb116e5a172d40b7c274b85ad15553511484ee1f120e0372251e242c6f87ce6920235f0c136
 	b2sums = 9dc1a5a46d8ecf606323926f22b4ce0aaf910dc47fd9ab9b8d08d1600e0bb45109babf7098f390562d8d8456239bb44b7db13b175fe2f529b9784a603dc11fbe
 
 pkgname = linux-cachyos-bore
