@@ -7,6 +7,7 @@ pkgdesc="A simple, powerful Minecraft launcher"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Mrmayman/quantumlauncher"
 license=('GPL-3.0-or-later')
+options=('!debug' '!strip')
 depends=('glibc' 'gcc-libs')
 optdepends=('jre-openjdk: External Java Runtime for Minecraft Java')
 provides=('quantumlauncher')
@@ -19,14 +20,14 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/Mrmayman/
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/Mrmayman/quantumlauncher/releases/download/v${pkgver}/quantum_launcher_linux_aarch64.tar.gz")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::https://github.com/Mrmayman/quantumlauncher/releases/download/v${pkgver}/quantum_launcher_linux_arm32.tar.gz")
 
-sha256sums=('155505fc1c8e7139ee5b7e2c430c984dc54ac23ccaf3f67b2a1635bfd3f71fab'
-            '9562d3780eae741c9c407cfde6873e9b54a36d148aefcc56733a0c482cf782b3'
-            '51e20ef1e0c37128523be60ae5007694efb0914b8f097a2be1bd24055768df9f'
-            '1f94c842893f9527a08484b5c621f3557a4ac414aeb378fef14dc89931426a61'
-            '71f7418e88aab8bc7f4da221fafa0a99e3b8058737eafa4bcbefec8f080bcc82')
-sha256sums_x86_64=('26b564795f9c8c67ca2bbda7156d5df8cdc2a5dfeb98730dbccf90465c60052a')
-sha256sums_aarch64=('4e941ab860b8f84ab6cb17611bd8624ee67a3a04646c3ed3c2fed6352eb263ab')
-sha256sums_armv7h=('8495a83f5c27cc777318bd3380871bb65e000a6798a261a0a5cbc11d0abb8d00')
+b2sums=('e76ab4a182252a5670381083695f498a25ebfa838783572acb48e07e703008247155be6d51c865e11f0aac10205f15988922de6b9beab94b63b1ae331ba50742'
+        'f2834221807bf43797eba64ff13f297fab23bd8fd45bcb93e184a754c314461583c35fd83e1368d71559451b21acda37915c919f56575498ef412de5b8a8bd03'
+        '00b811a5909c1322e85f6d4d9cfa7ada839d0c204050bcc944c9df70fe6bb352ee9c986d446ee602a3036cd93a04e01f1a6b1bd4fe469a78694674b7c11d0b17'
+        '6c61d4fd2605b9476f036e02f079d45efb56b99f3c4aba0a89eeccc6648a7271cf4be3b02297c7af53a58bec7b9a36da5e2b91dc74713d082ec4d8e83d4558df'
+        '77d785d56a80ead234decccb4c18d2043460f93164f3a6f9c20dbf81a7684d49e430820580711bbbc6b3cb0c6f3d56e325c1dd0bf3397eaf7bb7cb8f09ddc16e')
+b2sums_x86_64=('63019d4c178b54cb223d62e6d122a29720431b28fdc46104a5284e80362ce96612c58588cf6498905897be5a36ffc01d657c65519d6e991f627248e3a7cd1af9')
+b2sums_aarch64=('ff39738ec47e2a5da2736c6aacda1f1b51a0b5dc228ebed449a4f3de7c8b404d8f5586537ccb4c8ec1f6ff76b9bc4c5773e263bda690683945e8a0dcdcc50f5d')
+b2sums_armv7h=('b689ed37220a652d1ece70d87e0b47759c03a62c193827172400267db97ce5ed91a0820878e7856a9265cbea962e9e01e8edd81dfea338f46b7acc0456b668df')
 
 package() {
     install -Dm755 "${srcdir}/quantum_launcher" "${pkgdir}/usr/bin/quantumlauncher"
