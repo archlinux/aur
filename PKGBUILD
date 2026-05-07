@@ -2,17 +2,17 @@
 # Contributor: nirnakinho <aur at dominikbodi dot de>
 
 pkgname=dnscontrol
-pkgver=4.36.1
+pkgver=4.37.0
 pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL"
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://stackexchange.github.io/${pkgname}/"
+url="https://dnscontrol.org/"
 license=('MIT')
 depends=('glibc')
 makedepends=('git'  'go')
 provides=("${pkgname}=${pkgver}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/StackExchange/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('03951a499e9cabf23bac674534ffef157af29cf26b8d47c0eb08130f73ceb5c0146ce3163eaa8f9b94e8fa3f706f807f6c936bf9e5086f302902db7ebee8856b')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DNSControl/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('edb1334acb1188815efec3f815af7c81004f207f271e36ff14e6b36274d1490e1cd6af730d2212d8165cf50a5bc3c8b9b850e1b2b56e12c2949c4871394fc65b')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
@@ -46,7 +46,7 @@ build() {
   
   cd "${pkgname}-${pkgver}"
   go build -v \
-    -ldflags="${_x[*]/#/-X=github.com/StackExchange/dnscontrol/v4/pkg/version.} -linkmode=external" \
+    -ldflags="${_x[*]/#/-X=github.com/DNSControl/dnscontrol/v4/pkg/version.} -linkmode=external" \
     -o build/ \
     .
 }
