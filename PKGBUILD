@@ -7,17 +7,22 @@ pkgdesc="A slick, animated window management tool for Linux (X11)"
 arch=('any')
 url="https://github.com/Evilchuck666/winjitsu"
 license=('GPL3')
-depends=('python' 'xdotool' 'xorg-xrandr')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/Evilchuck666/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('b25920fd0b050b4794d82dd672a66e5d')
+depends=('python' 'xdotool' 'python-xlib')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("$_pkgname::git+https://github.com/Evilchuck666/$_pkgname.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$_pkgname"
+    python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])"
+}
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
