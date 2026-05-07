@@ -1,6 +1,6 @@
 # Maintainer: Juan Roa <hello@juanroa.dev>
 pkgname=athas
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Lightweight code editor built with React, TypeScript, and Tauri"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ _source_name=athas
 source=("${_source_name}-${pkgver}.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v${pkgver}.tar.gz"
         '0001-add-missing-js-deps-and-swift-cli-override.patch'
         '0002-add-packaging-tree-sitter-bootstrap-script.patch')
-sha256sums=('92cd3153e60e22f2f0ff795802596e5bc6392fa4f329972c54abec32ff990910'
+sha256sums=('90f3508b473ee763e1c14905b2641df4dad645ebb9a07517abe0116828ab9102'
             '8f74e00d2051ff1a330b8cb18757ce29742c6c228b888e32d02eb7b821355e89'
             'bc65eec041814fbab5b7e4336d633abe6975227cd630e92ddf07f69a3624e492')
 
