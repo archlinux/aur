@@ -12,7 +12,7 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.13.0
-pkgver=0.13.0.r268.g724fccd46f
+pkgver=0.13.0.r540.g9174157f74
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
@@ -28,7 +28,7 @@ depends=(
     tree-sitter
     unibilium
 )
-makedepends=('git' 'zig>=0.15.2' 'tar')
+makedepends=('git' 'zig>=0.16.0' 'tar')
 optdepends=(
     'python-pynvim: for Python plugin support (see :help python)'
     'tree-sitter-bash: tree-sitter parser for bash'
@@ -41,11 +41,13 @@ provides=("neovim=${_nvim_version}" 'vim-plugin-runtime')
 conflicts=('neovim' 'neovim-git')
 source=(
     'git+https://github.com/neovim/neovim.git'
-    'ziglua.tar.gz::https://github.com/natecraddock/ziglua/archive/a1cae53f6b841dd4fa108103f4bd0f515ca29cfb.tar.gz'
+    'ziglua.tar.gz::https://github.com/natecraddock/ziglua/archive/c09d0cb9f8175c1c02fbeae51940cfab15f3e085.tar.gz'
+    'translate_c.tar.gz::https://codeberg.org/ziglang/translate-c/archive/46b5609b5ac4c0a896217d1d984f3ae50e4810b5.tar.gz'
+    'aro.tar.gz::https://github.com/Vexu/arocc/archive/5f5a050569a95ecc40a426f0c3666ae7ef987ede.tar.gz'
     'https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz'
     nvimdoc{,.hook}
 
-    'tree-sitter-c.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/7fa1be1b694b6e763686793d97da01f36a0e5c12.tar.gz'
+    'tree-sitter-c.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/b780e47fc780ddc8da13afa35a3f4ed5c157823d.tar.gz'
     'tree-sitter-markdown.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-markdown/archive/f969cd3ae3f9fbd4e43205431d0ae286014c05b5.tar.gz'
     'tree-sitter-lua.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-lua/archive/10fe0054734eec83049514ea2e718b2a56acd0c9.tar.gz'
     'tree-sitter-vim.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-vim/archive/3092fcd99eb87bbd0fc434aa03650ba58bd5b43b.tar.gz'
@@ -64,6 +66,8 @@ noextract=(
     'tree-sitter-query.tar.gz'
 )
 b2sums=(
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'b27aa3bb208cbb68bac8b7722fb48fc76c4b862d19d1bc7564596316a25623d727c4d8d2e520c0abe416dc78b33c6aacd4b28968206b356e4fe80691886ca48b'
@@ -89,9 +93,11 @@ pkgver() {
 
 prepare() {
     local zlua_hash lua_dev_deps_hash ts_c_hash ts_markdown_hash ts_lua_hash ts_vim_hash ts_vimdoc_hash ts_query_hash
-    zlua_hash='zlua-0.1.0-hGRpCwxDBQD25I09a5dhcaNCEontuUsq2pgB34wjugHQ'
+    zlua_hash='zlua-0.1.0-hGRpC1hWBQAhR6kPtfypQ1Awn09a9JWpIuErNKPCMwSq'
     lua_dev_deps_hash='N-V-__8AAGevEQCHAkCozca5AIdN9DFc3Luf3g3r2AcbyOrm'
-    ts_c_hash='N-V-__8AANxPSABzw3WBTSH_YkwaGAfrK6PBqAMqQedkDDim'
+    translate_c_hash='translate_c-0.0.0-Q_BUWpf0BgAwrh5AM-acJcslN_YPEhcoCVKbbNjwuUTJ'
+    aro_hash='aro-0.0.0-JSD1Qi7QNgDnfcrdEJf82v3o6MhZySjYVrtdfEf3E4Se'
+    ts_c_hash='tree_sitter_c-0.24.2-y5boS-ptQADHoCoVfjGT_nFtFQ5LbomIkW0fxG3_cmdB'
     ts_markdown_hash='N-V-__8AAOphUwCl_jXY5BvJ_I-kB6cZuE48ZpMar9Gq2SiD'
     ts_lua_hash='N-V-__8AAE5ZCQA-BW5BOioWVkGcPTjhC5x1Qv07BH3Xt3dR'
     ts_vim_hash='N-V-__8AAPWmVADyg5WrfQyap9wVnE7y5EYV7I3MNEocN96-'
@@ -102,6 +108,8 @@ prepare() {
     mkdir -p zig_deps && cd zig_deps || exit 1
 
     mkdir -p $zlua_hash \
+        $translate_c_hash \
+        $aro_hash \
         $lua_dev_deps_hash \
         $ts_c_hash \
         $ts_markdown_hash \
@@ -110,6 +118,8 @@ prepare() {
         $ts_vimdoc_hash \
         $ts_query_hash
     tar xf "${srcdir}/ziglua.tar.gz" -C $zlua_hash --strip-components=1
+    tar xf "${srcdir}/translate_c.tar.gz" -C $translate_c_hash --strip-components=1
+    tar xf "${srcdir}/aro.tar.gz" -C $aro_hash --strip-components=1
     tar xf "${srcdir}/lua-dev-deps.tar.gz" -C $lua_dev_deps_hash --warning=no-unknown-keyword
     tar xf "${srcdir}/tree-sitter-c.tar.gz" -C $ts_c_hash --strip-components=1
     tar xf "${srcdir}/tree-sitter-markdown.tar.gz" -C $ts_markdown_hash --strip-components=1
