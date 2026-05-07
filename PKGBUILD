@@ -1,6 +1,6 @@
 pkgname="clover"
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Clover is a lightweight, fast, leech-only torrent client written in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JoelVCrasta/clover-torrent"
@@ -23,7 +23,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    go build -o build/"$pkgname" .
+    go build -o build/"$pkgname" ./cmd/clover
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = clover
 	pkgdesc = Clover is a lightweight, fast, leech-only torrent client written in Go
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JoelVCrasta/clover-torrent
 	arch = x86_64
 	arch = aarch64
