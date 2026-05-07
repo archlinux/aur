@@ -4,10 +4,12 @@
 
 pkgname=dufs-bin
 pkgver=0.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Dufs is a distinctive utility file server that supports static serving, uploading, searching, accessing control, webdav...'
 arch=('x86_64' 'aarch64')
 url="https://github.com/sigoden/${pkgname%-bin}"
+provides=('dufs')
+conflicts=('dufs')
 license=('APACHE' 'MIT')
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
