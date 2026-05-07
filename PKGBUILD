@@ -10,7 +10,7 @@ makedepends=('rust')
 provides=('otaripper')
 conflicts=('otaripper-bin' 'otaripper-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9c75549090623a85669b61ef0768c679a953e5e406325be541a798516d91023c')
+sha256sums=('c9c59b581d5fcf737a79073b66e9cb667a7b93aeec232810c5e1e48590ac9040')
 build() {
   cd "$pkgname-$pkgver"
   cargo build --release --locked

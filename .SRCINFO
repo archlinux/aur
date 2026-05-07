@@ -11,5 +11,6 @@ pkgbase = otaripper
 	conflicts = otaripper-bin
 	conflicts = otaripper-git
 	source = otaripper-2.3.0.tar.gz::https://github.com/syedinsaf/otaripper/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = 9c75549090623a85669b61ef0768c679a953e5e406325be541a798516d91023c
+	sha256sums = c9c59b581d5fcf737a79073b66e9cb667a7b93aeec232810c5e1e48590ac9040
+
 pkgname = otaripper
