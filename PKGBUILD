@@ -1,6 +1,6 @@
 # Maintainer: eltonff <eltonfabricio10@gmail.com>
 
-pkgname=mediaharbor
+pkgname=mediaharbor-bin
 pkgver=2.0.5
 pkgrel=1
 pkgdesc="MediaHarbor is all-in-one music streaming and downloading application built with Tauri and React."
