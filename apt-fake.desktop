@@ -1,9 +1,8 @@
 [Desktop Entry]
-Name=APT Fake GUI
-Comment=Manage your Arch Linux with APT syntax
+Name=APT Fake
+Comment=Ubuntu management on Arch
 Exec=apt gui
 Icon=apt-fake
 Terminal=false
 Type=Application
-Categories=System;Settings;
-Keywords=apt;ubuntu;package;manager;
+Categories=System;

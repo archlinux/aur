@@ -1,63 +1,52 @@
 #!/bin/bash
 
-# --- GabrieleArch Colors ---
+# --- APT-Fake v1.7 (Gabriele Edition) ---
 G_PURPLE='\033[1;35m'
 G_CYAN='\033[1;36m'
 G_GREEN='\033[1;32m'
 G_RED='\033[1;31m'
 NC='\033[0m'
 
-# Check if command is provided
-if [ -z "$1" ]; then
-    echo -e "${G_PURPLE}APT-Fake Ubuntu v1.5${NC}"
-    echo "Usage: apt [install|update|upgrade|remove|search]"
-    exit 1
+# Function: Zenity GUI (The 1.6 Feature)
+show_gui() {
+    zenity --info \
+        --title="APT-Fake Ubuntu v1.7" \
+        --text="Welcome Gabriele!\n\nSystem: Arch Linux\nStatus: Optimized\n\nThis tool bridges the gap between Ubuntu commands and Arch power." \
+        --icon-name="apt-fake" \
+        --width=350
+}
+
+# Fix 1.7: Handle empty arguments or GUI call
+if [[ -z "$1" || "$1" == "gui" ]]; then
+    show_gui
+    [[ "$1" == "gui" ]] && exit 0
+    echo -e "${G_PURPLE}Usage: apt [install|update|upgrade|remove|search|gui]${NC}"
+    exit 0
 fi
 
 case "$1" in
     install)
         shift
-        # Clean Ubuntu-specific flags (e.g., -y) for pacman
+        # Fix 1.7: Improved package string handling
         packages=${*//-y/}
-        
-        echo -e "${G_CYAN}::${NC} Searching in Arch Linux official repositories..."
+        echo -e "${G_CYAN}::${NC} Searching official repositories..."
         if sudo pacman -S --needed $packages; then
-            echo -e "${G_GREEN}::${NC} Installation successful."
+            echo -e "${G_GREEN}::${NC} Installation complete."
         else
-            echo -e "${G_CYAN}::${NC} Package not found. Launching ${G_PURPLE}G-HELPER${NC}..."
-            
-            # Switch to g-helper
-            if command -v g-helper &> /dev/null; then
-                g-helper $packages
-            else
-                echo -e "${G_RED}Error:${NC} g-helper is not installed. Please install it from AUR."
-            fi
+            echo -e "${G_CYAN}::${NC} Not found. Engaging ${G_PURPLE}G-HELPER${NC}..."
+            g-helper $packages
         fi
         ;;
-
     update)
-        echo -e "${G_CYAN}::${NC} Synchronizing package databases..."
-        sudo pacman -Sy
-        ;;
-
-    upgrade|dist-upgrade)
-        echo -e "${G_CYAN}::${NC} Starting full system upgrade..."
-        sudo pacman -Syu
-        ;;
-
-    remove|purge)
+        sudo pacman -Sy ;;
+    upgrade)
+        sudo pacman -Syu ;;
+    remove)
         shift
-        echo -e "${G_CYAN}::${NC} Removing package(s)..."
-        sudo pacman -Rs $@
-        ;;
-
+        sudo pacman -Rs $@ ;;
     search)
         shift
-        echo -e "${G_CYAN}::${NC} Searching for: $@"
-        pacman -Ss $@
-        ;;
-
+        pacman -Ss $@ ;;
     *)
-        echo -e "${G_RED}Error:${NC} Command '$1' not recognized."
-        ;;
+        echo -e "${G_RED}Error:${NC} Command '$1' not found." ;;
 esac
