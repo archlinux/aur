@@ -1,0 +1,18 @@
+pkgbase = polkit-waycrate
+	pkgdesc = polkit agent waycrate
+	pkgver = 0.1.1
+	pkgrel = 1.0
+	url = https://github.com/waycrate/polkit-waycrate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	makedepends = rust
+	depends = polkit
+	options = !lto
+	source = polkit-waycrate-v0.1.1.tar.gz::https://github.com/waycrate/polkit-waycrate/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 4782a8e4c536d5c93904a49ba8c7f3036d4d08242ebfb56caecbc3993487dd23
+
+pkgname = polkit-waycrate
