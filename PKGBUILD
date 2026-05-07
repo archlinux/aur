@@ -1,16 +1,14 @@
-# Maintainer: gabrielearchapt <castielloangela512@gmail.com>
+# Maintainer: Gabriele <castielloangels512@gmail.com>
 pkgname=g-helper
-pkgver=1.0.0
+pkgver=1.2
 pkgrel=1
-pkgdesc="A powerful and lightweight AUR helper designed to work with apt-fake-ubuntu"
+pkgdesc="Gabriele's lightweight AUR helper for apt-fake integration (v1.2)"
 arch=('any')
-url="https://aur.archlinux.org/packages/g-helper"
 license=('GPL3')
 depends=('bash' 'git' 'pacman' 'curl')
 source=('g-helper')
-sha256sums=('01c2670bfef9984ec2e4984d2c4420493d1700f8d90f3f23ee2e608029f5fc21')
+sha256sums=('511935dc39e248fa206e33407cfc17efe00a00d9b46d9ca6f41dec3a7a1d9e5d')
 
 package() {
-  # Install the script to /usr/bin/g-helper
   install -Dm755 "${srcdir}/g-helper" "${pkgdir}/usr/bin/g-helper"
 }

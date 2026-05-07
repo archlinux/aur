@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# --- G-HELPER (AUR Partner for APT-Fake) ---
+# --- G-HELPER v1.2 (AUR Bridge) ---
 G_PURPLE='\033[1;35m'
 G_CYAN='\033[1;36m'
 G_GREEN='\033[1;32m'
@@ -8,37 +8,45 @@ G_YELLOW='\033[1;33m'
 G_RED='\033[1;31m'
 NC='\033[0m'
 
-# Check for arguments
+# Check if a package name was provided
 if [ -z "$1" ]; then
-    echo -e "${G_PURPLE}G-HELPER v1.0.0${NC} - The AUR assistant"
+    echo -e "${G_PURPLE}G-HELPER v1.2${NC} - AUR Assistant"
     echo "Usage: g-helper [package_name]"
     exit 1
 fi
 
 PACKAGE=$1
 
-echo -e "${G_CYAN}::${NC} Searching for ${G_YELLOW}$PACKAGE${NC} in AUR..."
+# 1.2 Fix: Check for essential tools
+for tool in git makepkg; do
+    if ! command -v $tool &> /dev/null; then
+        echo -e "${G_RED}Error:${NC} '$tool' is not installed. Please install it first."
+        exit 1
+    fi
+done
 
-# Check if the package exists in AUR
-if ! curl -s "https://aur.archlinux.org/rpc/?v=5&type=info&arg[]=$PACKAGE" | grep -q '"resultcount":1'; then
-    echo -e "${G_RED}Error:${NC} Package '$PACKAGE' not found in AUR."
-    exit 1
-fi
+echo -e "${G_CYAN}::${NC} Fetching ${G_YELLOW}$PACKAGE${NC} from AUR..."
 
-echo -e "${G_GREEN}::${NC} Package found! Preparing build directory..."
-mkdir -p /tmp/g-helper-build && cd /tmp/g-helper-build
+# Build directory (clean and local)
+BUILD_DIR="/tmp/g-helper-v1.2-$USER"
+mkdir -p "$BUILD_DIR" && cd "$BUILD_DIR"
 
-# Clone, Build and Install
+# Cloning process
 if git clone "https://aur.archlinux.org/$PACKAGE.git"; then
     cd "$PACKAGE"
-    echo -e "${G_CYAN}::${NC} Starting compilation and installation..."
-    makepkg -si --noconfirm
+    echo -e "${G_GREEN}::${NC} Repository cloned. Starting build..."
     
-    # Cleanup
+    # 1.2 Improvement: Run makepkg with sync dependencies
+    if makepkg -si --noconfirm; then
+        echo -e "${G_GREEN}::${NC} $PACKAGE installed successfully!"
+    else
+        echo -e "${G_RED}Error:${NC} Build failed for $PACKAGE."
+    fi
+    
+    # Clean up
     cd ..
     rm -rf "$PACKAGE"
-    echo -e "${G_GREEN}::${NC} Process finished successfully."
 else
-    echo -e "${G_RED}Error:${NC} Failed to clone the repository."
+    echo -e "${G_RED}Error:${NC} Could not find or clone $PACKAGE."
     exit 1
 fi
