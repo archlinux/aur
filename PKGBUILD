@@ -6,7 +6,7 @@
 # Patches are welcome at the upstream repository, not against the AUR copy.
 pkgname=komai
 pkgver=2026.05.06.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fine Matrix chat app you can get to love"
 arch=('x86_64')
 url="https://github.com/etkecc/komai"
@@ -32,15 +32,15 @@ depends=(
 )
 makedepends=(
 	asciidoctor
+	cargo
 	cmake
 	fontconfig
 	git
 	python
 	qt6-tools
-	rust
 )
 optdepends=(
-	'kimageformats: Extends the formats Komai supports for image attachments'
+	'kimageformats: Support for additional image formats (AVIF, JXL, HEIC, etc.)'
 	'gst-plugins-base-libs: VoIP/Video calls'
 	'gst-plugins-good: VoIP/Video calls'
 	'gst-plugins-bad: VoIP/Video calls'
@@ -61,6 +61,13 @@ prepare() {
 }
 
 build() {
+	# Pin to the stable rustup channel for this build. Per Arch's Rust
+	# package guidelines, this is the defensive default for AUR users
+	# whose rustup default may have been changed (or is absent in
+	# sandboxed builders such as `rua`, where the host's ~/.rustup is
+	# not visible). Ignored when cargo is provided by Arch's `rust`
+	# package (no rustup shim involved).
+	export RUSTUP_TOOLCHAIN=stable
 	cmake \
 		-B build \
 		-S "$pkgname" \
