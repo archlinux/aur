@@ -1,7 +1,7 @@
 pkgbase = hacklog-bin
 	pkgdesc = Bug Bounty Research Tracker (Electron AppImage)
 	pkgver = 1.0.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/pradeepkumar-404/HackLog
 	arch = x86_64
 	license = MIT

@@ -1,6 +1,6 @@
 pkgname=hacklog-bin
 pkgver=1.0.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Bug Bounty Research Tracker (Electron AppImage)"
 arch=('x86_64')
 url="https://github.com/pradeepkumar-404/HackLog"
