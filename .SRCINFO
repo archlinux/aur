@@ -1,0 +1,16 @@
+pkgbase = cleave
+	pkgdesc = Qt6 QML plugin for window geometry and screen edge detection
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Happilli/Cleave
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	source = cleave-1.0.0.tar.gz::https://github.com/Happilli/Cleave/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 47425de76d8fb55cca29705b5a0c12d291c4cb1f3d316aa96dad65deae8f36c1
+
+pkgname = cleave
