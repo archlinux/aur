@@ -1,11 +1,11 @@
 # Maintainer: Harsh Sharma <harsh@codelif.in>
 
 pkgname=ytuff-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Terminal music player for local files and YouTube Music"
 arch=('x86_64')
-url="https://github.com/life2harsh/rustplayer"
+url="https://github.com/life2harsh/ytuff"
 license=('GPL-3.0-or-later')
 depends=(
   'alsa-lib'
@@ -20,9 +20,9 @@ depends=(
 )
 provides=('ytuff')
 conflicts=('ytuff')
-source=("https://github.com/life2harsh/rustplayer/releases/download/v${pkgver}/rustplayer-linux-${CARCH}-arch.tar.gz")
-sha256sums=('112476ff45880924512881c0501594d7f49bcd38bf6894df2398acc2a8414a06')
+source=("https://github.com/life2harsh/ytuff/releases/download/v${pkgver}/ytuff-linux-${CARCH}-arch.tar.gz")
+sha256sums=('8cdf118c7832df234ee7e5037073a6e5d02902d22bde525501971f667957b72c')
 
 package() {
-  install -Dm755 "rustplayer-linux-${CARCH}/rustplayer" "$pkgdir/usr/bin/rustplayer"
+  install -Dm755 "ytuff-linux-${CARCH}/ytuff" "$pkgdir/usr/bin/ytuff"
 }
