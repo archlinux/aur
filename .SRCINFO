@@ -1,13 +1,13 @@
 pkgbase = bountui
 	pkgdesc = A terminal-based user interface for interacting with HashiCorp Boundary
-	pkgver = 0.9.2
-	pkgrel = 13
+	pkgver = 0.10.0
+	pkgrel = 14
 	url = https://github.com/Cedware/bountui
 	arch = any
 	license = GPL-3.0
 	makedepends = cargo
 	provides = bountui
-	source = https://github.com/Cedware/bountui/archive/refs/tags/v0.9.2.tar.gz
-	sha256sums = d9575d23ac2a01ea6a8d7e1ed68917921bd91dc8140bc4736a47e78c8dd9460f
+	source = https://github.com/Cedware/bountui/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = ad6ef0ae31671674a03575b642d254ddf6dbce3fb74dc641f8ef5c474dc54595
 
 pkgname = bountui
