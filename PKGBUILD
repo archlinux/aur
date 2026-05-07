@@ -1,6 +1,6 @@
 # Maintainer: Junjie <junjie@omni-stream.ai>
 pkgname=omni-code-bridge
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Rust bridge for Omni Code — connects mobile clients to local coding agents"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/omni-stream-ai/omni-code-bridge"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/omni-stream-ai/omni-code-bridge/archive/refs/tags/v0.1.5.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/omni-stream-ai/omni-code-bridge/archive/refs/tags/v0.1.6.tar.gz"
         "omni-code-bridge.service")
 sha256sums=('SKIP'
             'SKIP')
