@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
 pkgname=finar-unstable
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Jellyfin frontend client (unstable build from GitHub)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('finar')
 conflicts=('finar')
 options=('!strip')
-source=("finar-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-92/finar-4.1.0-2026-04-30-linux-x64.zip")
+source=("finar-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-94/finar-4.1.1-2026-05-07-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
