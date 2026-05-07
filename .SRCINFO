@@ -1,7 +1,7 @@
 pkgbase = buildcache-bin
 	pkgdesc = An advanced compiler accelerator
-	pkgver = 0.31.7
-	pkgrel = 2
+	pkgver = 0.32.0
+	pkgrel = 1
 	url = https://gitlab.com/bits-n-bites/buildcache
 	arch = aarch64
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = buildcache-bin
 	depends = glibc
 	depends = openssl
 	optdepends = lua
-	provides = buildcache=0.31.7
+	provides = buildcache=0.32.0
 	conflicts = buildcache
 	source = LICENSE::https://gitlab.com/bits-n-bites/buildcache/-/raw/master/LICENSE
 	sha256sums = SKIP
-	source_aarch64 = https://gitlab.com/bits-n-bites/buildcache/-/releases/v0.31.7/downloads/buildcache-linux-arm64.tar.gz
-	sha256sums_aarch64 = ba93883abce222608f598e9aeaa2707f2696eabf16624dfba38ebeb8c1bae384
-	source_x86_64 = https://gitlab.com/bits-n-bites/buildcache/-/releases/v0.31.7/downloads/buildcache-linux-amd64.tar.gz
-	sha256sums_x86_64 = fd9f4499570f1b6bf74ade251c4f8fdf895358f4899f6d5fbdf4b13f0eca7260
+	source_aarch64 = https://gitlab.com/bits-n-bites/buildcache/-/releases/v0.32.0/downloads/buildcache-linux-arm64.tar.gz
+	sha256sums_aarch64 = b068d674c2557212c8faeaf7d10d469bae471f5af1fddd585740dc82a82b9be9
+	source_x86_64 = https://gitlab.com/bits-n-bites/buildcache/-/releases/v0.32.0/downloads/buildcache-linux-amd64.tar.gz
+	sha256sums_x86_64 = b2519eb357dd246fad03d01fa0e1db786a9625f77f1f42ff961cfab32cd6bbb6
 
 pkgname = buildcache-bin
