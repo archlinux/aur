@@ -23,8 +23,8 @@ depends=(
 
 source=("https://releases.bootstrapstudio.io/${pkgver}/Bootstrap%20Studio.AppImage"
         "bstudio.desktop")
-sha256sums=('b95783ea0dc0f484ca901a770314cf50cde7ca109b5bbf603d54d4edb2039a1b'
-            'e1c1b0d4b24658fc0ead611cb002dcde431e30256cb8fd0dffb3cfc76f24db84')
+b2sums=('c7dd0e6493fb6317cf4f6da7f2bd83a0e13de4de44a9f8a2455521de07240a8b86512a6ccfbbc0799ff17c09753502b16a9aaefc34ecefee91874775e448a814'
+        '6588d6c99396a05eafa74ca0e4d0c1113ff927f0fc6afc6cf549bf251b1f03a742d0a39d5e1b8bffd0052b49196357daafef371c1ebd49efc16ef353ab3d9daa')
 prepare() {
     # Extract AppImage
     echo "Extracting AppImage..."
