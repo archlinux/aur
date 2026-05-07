@@ -13,13 +13,13 @@ conflicts=('yggd')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/asciimoth/ygg/releases/download/v${pkgver}/yggd_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('3ee498aa5e4b4d7c6cc9d7a067f0a4abc92b952f5eee416de16359bece693d08')
+sha256sums_aarch64=('dbaea1e199f180f6c0c4520f230e35990ceaae95010705899f3297bb642897c7')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/asciimoth/ygg/releases/download/v${pkgver}/yggd_${pkgver}_linux_i686.tar.gz")
-sha256sums_i686=('8c6e3a27d2be839b33adf08c03eb421532e876f09910d65314e0f53bf20ce4e4')
+sha256sums_i686=('13759bf46cc4f393a724b513365004e7564cc1bc03ef80a74e5ead08c09b22f0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/asciimoth/ygg/releases/download/v${pkgver}/yggd_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('db563f2539e983b6c0f950cac62fd9dac99425f8f41d9fd3369db9dd8d57f6a6')
+sha256sums_x86_64=('1c428d5056e4e7d138db8ec5f661fd808c6efa78fd4cb95ad1924d13671c54c6')
 
 package() {
   install -Dm755 "./yggd" "${pkgdir}/usr/bin/yggd"
