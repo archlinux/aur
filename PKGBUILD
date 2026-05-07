@@ -1,16 +1,16 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=chawan-git
-pkgver=r3746.daed0cb
+pkgver=r4690.1bac916
 pkgrel=1
 pkgdesc="Web browser for your terminal"
-arch=(i686 x86_64)
+arch=(aarch64 i686 x86_64)
 url="https://git.sr.ht/~bptato/${pkgname%-git}"
 license=(Unlicense)
 depends=(
   brotli
-  gcc-libs
   glibc
+  libgcc
   libssh2
   openssl
   sh
