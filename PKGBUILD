@@ -13,7 +13,7 @@ pkgver() {
 _pkgver="$(pkgver)"
 pkgver="${_pkgver}"
 
-url="https://github.com/SteamClientHomebrew/Millennium/releases"
+url="https://github.com/SteamClientHomebrew/Millennium"
 arch=('x86_64')
 license=('MIT')
 provides=('millennium')
@@ -24,8 +24,8 @@ options=('!strip')
 install=millennium-bin.install
 
 source=(
-  "${url}/download/v${pkgver//_/-}/millennium-v${pkgver//_/-}-linux-${arch}.tar.gz"
-  "${url}/download/v${pkgver//_/-}/millennium-v${pkgver//_/-}-linux-${arch}.sha256"
+  "${url}/releases/download/v${pkgver//_/-}/millennium-v${pkgver//_/-}-linux-${arch}.tar.gz"
+  "${url}/releases/download/v${pkgver//_/-}/millennium-v${pkgver//_/-}-linux-${arch}.sha256"
   "https://raw.githubusercontent.com/SteamClientHomebrew/Millennium/refs/heads/main/LICENSE.md"
 )
 sha256sums=(
