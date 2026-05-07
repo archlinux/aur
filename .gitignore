@@ -8,3 +8,9 @@
 !anki-sync-server.tmpfiles
 !sysusers-anki-sync-server.conf
 !anki-sync-server.env
+!no-corepack.patch
+!no-update.patch
+!reproducible-sveltekit.patch
+!strip-formatter-deps.patch
+!strip-python-pip-system-certs.patch
+!strip-type-checking-deps.patch

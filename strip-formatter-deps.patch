@@ -1,0 +1,9 @@
+diff --git i/pylib/tools/hookslib.py w/pylib/tools/hookslib.py
+index 99f08fa1e..9f60ae9dc 100644
+--- i/pylib/tools/hookslib.py
++++ w/pylib/tools/hookslib.py
+@@ -205,4 +205,3 @@ def write_file(path: str, hooks: list[Hook], prefix: str, suffix: str):
+ 
+     with open(path, "wb") as file:
+         file.write(code.encode("utf8"))
+-    subprocess.run([sys.executable, "-m", "ruff", "format", "-q", path], check=True)
