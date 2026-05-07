@@ -11,7 +11,7 @@ license=('GPL3')
 options=(!strip)
 provides=('arcticons-icon-theme')
 conflicts=('arcticons-icon-theme')
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("${url}/releases/download/${pkgver}/arcticons-${pkgver}.tar.gz")
 sha512sums=('713f36bd091565b088d615c1c90edac5a850e6a98294d60208d36eb90713127784e35c9dbe0767bdeaa1e593aaba70c6bf2d13086cdb55ed18824f9b54fa9ffe')
 
 package() {
