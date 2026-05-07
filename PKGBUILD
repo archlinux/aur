@@ -2,7 +2,7 @@
 pkgbase=surrealql-language-server-git
 pkgname=(surrealql-language-server-git surrealql-tree-sitter-git)
 pkgver="0.1.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="SurrealQL Language Server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=(Apache-2.0)
@@ -23,10 +23,13 @@ prepare() {
 }
 
 check() {
-    export RUSTUP_TOOLCHAIN=stable
+    export RUST_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    export CFLAGS="${CFLAGS//-flto}"
+    export CXXFLAGS="$CFLAGS"
 
     cd "$srcdir/surql"
-    cargo test --frozen --all-features
+    TREE_SITTER_SURREALQL_DIR="$(realpath "../surql-ts")" cargo test --frozen --all-features
 }
 
 build() {

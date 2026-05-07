@@ -1,7 +1,7 @@
 pkgbase = surrealql-language-server-git
 	pkgdesc = SurrealQL Language Server
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	arch = armv6h
