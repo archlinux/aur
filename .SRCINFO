@@ -1,6 +1,6 @@
 pkgbase = mediaharbor-bin
 	pkgdesc = MediaHarbor is all-in-one music streaming and downloading application built with Tauri and React.
-	pkgver = 2.0.5
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/MediaHarbor/mediaharbor
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mediaharbor-bin
 	depends = glib2
 	provides = mediaharbor
 	conflicts = mediaharbor
-	source = MediaHarbor-2.0.5.deb::https://github.com/MediaHarbor/mediaharbor/releases/download/v2.0.5/MediaHarbor_2.0.5_amd64.deb
-	sha256sums = 227f35797af8e410f31ce2cf8088133ecbf3591b20b8a37dcacb38384178eecb
+	source = MediaHarbor-2.1.0.deb::https://github.com/MediaHarbor/mediaharbor/releases/download/v2.1.0/MediaHarbor_2.1.0_amd64.deb
+	sha256sums = 6c9e2122e50b790166cf8bfb25eee05443725dbd13ffabb9261fcf11def79faa
 
 pkgname = mediaharbor-bin
