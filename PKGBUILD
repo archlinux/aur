@@ -5,7 +5,7 @@
 
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-devel
-pkgver=4.21.3
+pkgver=4.21.7
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,19 +14,17 @@ license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
 depends=('libxfce4util' 'gtk3' 'xfconf' 'libsm' 'startup-notification' 'libgudev' 
          'libgtop' 'libepoxy' 'hicolor-icon-theme')
-makedepends=('gtk-doc' 'gobject-introspection' 'vala' 'glade' 'xfce4-dev-tools' 'meson')
-optdepends=('glade: Glade designer plugin')
+makedepends=('gtk-doc' 'gobject-introspection' 'vala' 'xfce4-dev-tools' 'meson')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('3c51a18ebad3c67161f53fd4f4f3b11468d9c06e3116dec6252482ba8fe34829')
+sha256sums=('a72a7af39cf183819bcfb61b1747d425261e966ccb172b2fc28f1494f524bd17')
 
 build() {
   local meson_options=(
     -D gtk-doc=true
     -D x11=enabled
     -D wayland=enabled
-    -D glade=enabled
   )
 
   arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
