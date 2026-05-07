@@ -2,7 +2,7 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.7.4
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
@@ -12,6 +12,8 @@ license=('MIT')
 depends=(
     'python'
     'python-networkx'
+    'python-datasketch'
+    'python-rapidfuzz'
     'python-tree-sitter>=0.23.0'
     'python-tree-sitter-python'
     'python-tree-sitter-javascript'
@@ -19,6 +21,7 @@ depends=(
     'python-tree-sitter-go'
     'python-tree-sitter-rust'
     'python-tree-sitter-java'
+    'python-tree-sitter-groovy'
     'python-tree-sitter-c'
     'python-tree-sitter-cpp'
     'python-tree-sitter-ruby'
@@ -38,20 +41,20 @@ depends=(
 )
 
 optdepends=(
-    'python-mcp: Model Context Protocol (MCP) support'
+    'python-mcp: Model Context Protocol (MCP) server'
     'python-neo4j: Neo4j export support'
     'python-pypdf: PDF extraction support'
     'python-markdownify: PDF/HTML extraction support'
     'python-watchdog: File watching support'
     'python-matplotlib: SVG output support'
     'python-graspologic: Leiden community detection support (Python < 3.13)'
-    'python-docx: Office document support'
-    'python-openpyxl: Office document support'
+    'python-docx: Office document (.docx) support'
+    'python-openpyxl: Office spreadsheet (.xlsx) support'
     'python-faster-whisper: Video transcription support'
     'yt-dlp: Video download support'
-    'python-openai: Kimi K2 LLM support'
-    'python-tiktoken: Kimi K2 token counting support'
-    'python-anthropic: Claude direct extraction support'
+    'python-openai: OpenAI-compatible LLM backends (Kimi/Ollama/Gemini/OpenAI)'
+    'python-tiktoken: Token counting for Kimi/Gemini/OpenAI backends'
+    'python-anthropic: Claude direct extraction backend'
     'python-tree-sitter-sql: SQL indexing support'
 )
 
@@ -66,7 +69,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c6767823da4e40c42da0897aed7f584700b1ce2171aa89d069986f38521673a7')
+sha256sums=('4a923f207c9bdebf5009b3972b11f7993b668c68e2a1a05dbde50106db873792')
 
 build() {
     cd "${_name}-${pkgver}"
