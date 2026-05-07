@@ -1,7 +1,7 @@
 # Maintainer: Love Billenius <lovebillenius@disroot.org>
 pkgname=lolcat++
 _reponame=lolcatpp
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="A lolcat reimplementation in C++ -- BLAZINGLY FAST"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 provides=('lolcat' "$pkgname")
 conflicts=('lolcat' "$pkgname-bin" 'lolcat-c' 'lolcat-rs')
 source=("$_reponame-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6ecb7775387999345b52bc12d6b2d554d0b132c8988498c0740bbdeed4fdd6b0')
+sha256sums=('d862838e0ea22be4d8d5e37d56814db6c10e9093ee5bb3f37435fb6ead536b80')
 
 build() {
     cd "$srcdir/$_reponame-$pkgver"
