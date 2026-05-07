@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=motrix-next-bin
-pkgver=3.8.7
+pkgver=3.8.8
 pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ depends=(
     webkit2gtk-4.1
 )
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/MotrixNext_${pkgver}_amd64.deb")
-sha256sums_x86_64=('ca1e6bc6f945cf443ea1332e20c0cefb7611e34710959bb79f2dc9b529d24956')
+sha256sums_x86_64=('afca3722cb83aa6137d3ef40894f645a64a5743521b69a88ffb768474b824e50')
+sha256sums_aarch64=('8ab858603a6f2c10d41067d7db6e60ac8c73e432f6049765e284db9157afb9dc')
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/MotrixNext_${pkgver}_arm64.deb")
-sha256sums_aarch64=('bd6950bc043f05b5f7cc9e524e0842ffc94dc82bdcdee124c701b986b5093366')
 
 package() {
     # Extract the contents of data.tar.gz into the pkgdir itself
