@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Happilli/Warsa/archive/refs
 sha256sums=('b9bd4f2d02315892a47b6ebf8cd775dec6b330bc838bc17b343663a1ba1160e0')
 
 build() {
-  cmake -B build -S "Warsa-$pkgver" \
+  cmake -B build -S "warsa-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -G Ninja
@@ -21,5 +21,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "Warsa-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "warsa-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
