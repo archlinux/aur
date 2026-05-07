@@ -1,12 +1,12 @@
 # Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 pkgname=nnote
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal CLI note taker"
 arch=('any')
 url="https://github.com/stiermid/nnote"
 license=('GPL-3.0-or-later')
-depends=('python' 'python-click' 'python-pyyaml' 'python-shellingham')
+depends=('python' 'python-click' 'python-pyyaml')
 makedepends=('uv')
 provides=("python-$pkgname")
 conflicts=("python-$pkgname")
