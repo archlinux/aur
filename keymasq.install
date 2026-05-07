@@ -90,13 +90,16 @@ post_upgrade() {
 
     _ensure_security_policy
 
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl try-restart keymasqd.service 2>/dev/null || true
+
     echo ""
     echo "Keymasq has been upgraded!"
     echo ""
     echo "Security policy uses UID/ACL controls; verify /etc/keymasq/security.toml"
     echo "If session cannot connect to daemon, verify runtime socket policy in /etc/keymasq/security.toml"
-    echo "Restart services to apply changes:"
-    echo "  sudo systemctl restart keymasqd"
+    echo "The package tried to restart keymasqd if it was already running."
+    echo "If needed, restart services manually:"
     echo "  systemctl --user restart keymasq-session"
 }
 
