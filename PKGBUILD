@@ -1,6 +1,6 @@
 # Maintainer: Aloys233 <luodh233@gmail.com>
 pkgname=quickflare-bin
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A native-feeling Cloudflare Tunnel GUI for Linux and Windows."
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "quickflare-32x32-${pkgver}.png::${url}/raw/v${pkgver}/src-tauri/icons/32x32.png"
 )
 sha256sums=(
-    'ffb3bafed6b5ee3135ed6b3f415c0e61b40edb508cc04e2d2569b10127221d71'
+    'f6d84254f05b680d84193660c2e1f0bbf96237f818083e293fef46bb4fe8478a'
     '6b4b6962348e985208f41d51daa16874f51aec834f5c75aa3de91d9693965d1c'
     '8384aeba5fbb87c67fad52e2d8ac57521ede6427a4fe69977740e1aac3732e18'
 )
