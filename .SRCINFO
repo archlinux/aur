@@ -1,0 +1,17 @@
+pkgbase = wolf-midi
+	pkgdesc = A lightweight library for parsing MIDI
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/wolfgitpr/wolf-midi
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	conflicts = wolf-midi
+	source = wolf-midi-1.0.1.tar.gz::https://github.com/wolfgitpr/wolf-midi/archive/refs/tags/1.0.1.tar.gz
+	sha512sums = 6359707d2631bd2e6e3f2e34b6ca1da3718a312c09968323b1598e83085beae8417d0c8d465ce50550af6843c9c5f060f799ef6d5a78a013a08cfbaa84506cff
+
+pkgname = wolf-midi
