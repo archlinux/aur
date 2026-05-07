@@ -1,29 +1,22 @@
-# Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
+# Maintainer: Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=rmatrix
-pkgver=0a07ce3
+_cratename=r-matrix
+pkgver=0.2.8
 pkgrel=1
-pkgdesc="Rust port of a curses-based 'Matrix'-like screen"
-arch=('any')
+pkgdesc="Rust port of cmatrix."
+arch=('x86_64')
 url="https://github.com/Fierthraix/rmatrix"
-license=('GPL3')
-provides=("rmatrix")
-makedepends=('git' 'cargo')
-conflicts=('rmatrix')
-source=("git+https://github.com/Fierthraix/rmatrix")
-sha1sums=('SKIP')
-
-build() {
-  cd "$srcdir/$pkgname"
-  cargo build --release
-}
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  echo $(git describe --always | sed 's/-/./g')
-}
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc' 'ncurses')
+makedepends=('cargo')
+conflicts=('rmatrix-git')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname/target/release/r-matrix" "$pkgdir/usr/bin/rmatrix"
+  export CARGO_HOME="$srcdir/cargo-home"
+
+  cargo install --locked --root "$pkgdir/usr" --version "$pkgver" "$_cratename"
+  rm -f "$pkgdir/usr/.crates.toml" "$pkgdir/usr/.crates2.json"
+  ln -s r-matrix "$pkgdir/usr/bin/rmatrix"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,15 +1,14 @@
 pkgbase = rmatrix
-	pkgdesc = Rust port of a curses-based 'Matrix'-like screen
-	pkgver = 0a07ce3
+	pkgdesc = Rust port of cmatrix.
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/Fierthraix/rmatrix
-	arch = any
-	license = GPL3
-	makedepends = git
+	arch = x86_64
+	license = GPL-3.0-or-later
 	makedepends = cargo
-	provides = rmatrix
-	conflicts = rmatrix
-	source = git+https://github.com/Fierthraix/rmatrix
-	sha1sums = SKIP
+	depends = gcc-libs
+	depends = glibc
+	depends = ncurses
+	conflicts = rmatrix-git
 
 pkgname = rmatrix
