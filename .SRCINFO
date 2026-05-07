@@ -1,6 +1,6 @@
 pkgbase = evolution-quill
 	pkgdesc = AI assistant for Evolution mail — summarize messages and draft replies (Gemini, Claude, OpenAI)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitlab.com/gnuruzzi/evolution-quill
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = evolution-quill
 	depends = json-glib
 	depends = libsecret
 	depends = gtk3
-	source = evolution-quill-0.1.0.tar.gz::https://gitlab.com/gnuruzzi/evolution-quill/-/archive/v0.1.0/evolution-quill-v0.1.0.tar.gz
-	sha256sums = baa74985d7f56e2126eca33702784f39a1e753eabe2e99b97a2a6a81a8fc035b
+	source = evolution-quill-0.1.1.tar.gz::https://gitlab.com/gnuruzzi/evolution-quill/-/archive/v0.1.1/evolution-quill-v0.1.1.tar.gz
+	sha256sums = 21e06f0c62723f3af7525806a1bc19b3dcc72095d7fbea5a6568133cd6fe3690
 
 pkgname = evolution-quill
