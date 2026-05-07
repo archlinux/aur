@@ -1,6 +1,6 @@
 # Maintainer: Ashutosh Tiwari <contact@ashutoshtiwari.dev>
 pkgname=qwarp
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="A lightweight, Wayland-native Qt6 wrapper for cloudflare-warp-bin"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 
 # Bash substitution converts "0.6.0_alpha" to "0.6.0-alpha" for GitHub tags
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iashutoshtiwari/qwarp/archive/refs/tags/v${pkgver/_/-}.tar.gz")
-sha256sums=('7f5c310273ec920d542176aa1373bdc1a0cbe81831087b363e3b5936c7399489')
+sha256sums=('d76519f80ff56ba6a57e090ebbfbf6306f778cf8b87b42ba306dc9577216d9c7')
 
 build() {
   # Enter the directory extracted from the GitHub tarball

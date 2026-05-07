@@ -1,6 +1,6 @@
 pkgbase = qwarp
 	pkgdesc = A lightweight, Wayland-native Qt6 wrapper for cloudflare-warp-bin
-	pkgver = 0.7.7
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://github.com/iashutoshtiwari/qwarp
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = qwarp
 	depends = python
 	depends = python-pyqt6
 	depends = cloudflare-warp-bin
-	source = qwarp-0.7.7.tar.gz::https://github.com/iashutoshtiwari/qwarp/archive/refs/tags/v0.7.7.tar.gz
-	sha256sums = 7f5c310273ec920d542176aa1373bdc1a0cbe81831087b363e3b5936c7399489
+	source = qwarp-0.7.8.tar.gz::https://github.com/iashutoshtiwari/qwarp/archive/refs/tags/v0.7.8.tar.gz
+	sha256sums = d76519f80ff56ba6a57e090ebbfbf6306f778cf8b87b42ba306dc9577216d9c7
 
 pkgname = qwarp
