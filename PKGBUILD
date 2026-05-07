@@ -1,7 +1,7 @@
 # Maintainer: Lenvora
 pkgname=ydm-git
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YouTube Download Manager by Lenvora"
 arch=('any')
 url="https://github.com/lenvora/YDM"

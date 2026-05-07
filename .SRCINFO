@@ -1,7 +1,7 @@
 pkgbase = ydm-git
 	pkgdesc = YouTube Download Manager by Lenvora
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lenvora/YDM
 	arch = any
 	license = MIT
