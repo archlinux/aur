@@ -1,6 +1,6 @@
 pkgbase = iptvnator-bin
 	pkgdesc = Video player for IPTV playlists (m3u, m3u8) with EPG, favorites, and TV archive support.
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/4gray/iptvnator
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = iptvnator-bin
 	conflicts = iptvnator
 	options = !strip
 	options = !debug
-	source = iptvnator-0.20.0.pacman::https://github.com/4gray/iptvnator/releases/download/v0.20.0/iptvnator-0.20.0-linux-x64.pacman
-	sha256sums = 14792c467a2bf92a4d372ac2acb3d5f0270e931a603e6bbcb4e9f8ada11d53c4
+	source = iptvnator-0.21.0.pacman::https://github.com/4gray/iptvnator/releases/download/v0.21.0/iptvnator-0.21.0-linux-x64.pacman
+	sha256sums = 3a1064035819789ad9a8464f25fb73683cbccb62fa1cc068164fc7d8dda8f18c
 
 pkgname = iptvnator-bin
