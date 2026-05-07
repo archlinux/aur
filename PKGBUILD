@@ -1,6 +1,6 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=chainsaw
-pkgver=0.2.14
+pkgver=0.2.15
 pkgrel=1
 pkgdesc='Declarative Kubernetes end-to-end testing framework'
 arch=('x86_64' 'aarch64')
@@ -9,16 +9,12 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 conflicts=('chainsaw-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kyverno/chainsaw/archive/v$pkgver.tar.gz"
-        'go1.26-modulepath.patch')
-sha256sums=('8d80b9d4bed3a158e1fb0a01d1321c1b5c6a0dab565b036b1404859a8d4602bf'
-            '2375256721fedf3cdd0b7a8032dcd9c9a01b4cc48c35f3b55f6de154f7b57024')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kyverno/chainsaw/archive/v$pkgver.tar.gz")
+sha256sums=('04f3fc7dd8e958e4fc7d73383bc22b05827240dd2fe7a8e32ee99d8c0332da2a')
 options=(!lto)
 
 prepare() {
     cd chainsaw-$pkgver
-    # Backport upstream fix for Go 1.26 testing.testDeps ModulePath() requirement.
-    patch -p1 -i "$srcdir/go1.26-modulepath.patch"
     export GOFLAGS="-mod=readonly -modcacherw"
     go mod download -x
 }

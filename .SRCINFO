@@ -1,6 +1,6 @@
 pkgbase = chainsaw
 	pkgdesc = Declarative Kubernetes end-to-end testing framework
-	pkgver = 0.2.14
+	pkgver = 0.2.15
 	pkgrel = 1
 	url = https://github.com/kyverno/chainsaw
 	arch = x86_64
@@ -10,9 +10,7 @@ pkgbase = chainsaw
 	depends = glibc
 	conflicts = chainsaw-bin
 	options = !lto
-	source = chainsaw-0.2.14.tar.gz::https://github.com/kyverno/chainsaw/archive/v0.2.14.tar.gz
-	source = go1.26-modulepath.patch
-	sha256sums = 8d80b9d4bed3a158e1fb0a01d1321c1b5c6a0dab565b036b1404859a8d4602bf
-	sha256sums = 2375256721fedf3cdd0b7a8032dcd9c9a01b4cc48c35f3b55f6de154f7b57024
+	source = chainsaw-0.2.15.tar.gz::https://github.com/kyverno/chainsaw/archive/v0.2.15.tar.gz
+	sha256sums = 04f3fc7dd8e958e4fc7d73383bc22b05827240dd2fe7a8e32ee99d8c0332da2a
 
 pkgname = chainsaw
