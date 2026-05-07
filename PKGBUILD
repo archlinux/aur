@@ -1,8 +1,9 @@
 # Maintainer: cozyOwl <cozyOw1@proton.me>
+validpgpkeys=('85A129CD038220C44227EAB9C28D02D181F83532')
 
 pkgname=opaquefiles
 pkgver=0.9.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='File encryption program'
 
 arch=('any')
@@ -14,7 +15,7 @@ optdepends=('noto-fonts: Fallback font' 'ttf-noto-emoji-monochrome: Font for ico
 makedepends=('git')
 
 source=(
-  "${pkgname}::git+https://codeberg.org/cozyOwl/OpaqueFiles.git#tag=v${pkgver}"
+  "${pkgname}::git+https://codeberg.org/cozyOwl/OpaqueFiles.git?signed#tag=v${pkgver}"
 )
 
 sha256sums=('SKIP')
