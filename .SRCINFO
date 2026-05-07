@@ -1,16 +1,16 @@
 pkgbase = lazykiq-bin
 	pkgdesc = A rich terminal UI for Sidekiq.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/kpumuk/lazykiq
 	license = MIT
 	conflicts = lazykiq
 	provides = lazykiq
 	arch = aarch64
-	source_aarch64 = https://github.com/kpumuk/lazykiq/releases/download/v0.1.0/lazykiq-0.1.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 922c7ee5e67c0392cb2fed920beab579c7305b58b18511443d1f20d95c09915a
+	source_aarch64 = https://github.com/kpumuk/lazykiq/releases/download/v0.1.1/lazykiq-0.1.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 89cadb892dc829aee727859fbfd67d80dc5952551952dbf74c3c22ec4d54f8fd
 	arch = x86_64
-	source_x86_64 = https://github.com/kpumuk/lazykiq/releases/download/v0.1.0/lazykiq-0.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 338acbecd952b39e4128a16f073b996eb8791e9c7aab22b369a214defba2511b
+	source_x86_64 = https://github.com/kpumuk/lazykiq/releases/download/v0.1.1/lazykiq-0.1.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 83b800908a80542c72a9d5f1c30ae53688396f610b2dfb1cfc8388c518de8e0a
 	
 pkgname = lazykiq-bin
