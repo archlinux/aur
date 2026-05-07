@@ -1,4 +1,4 @@
-# Maintainer: Atte Lautanala <atte@lautana.la>
+# Contributor: Atte Lautanala <atte@lautana.la>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-catppuccin
