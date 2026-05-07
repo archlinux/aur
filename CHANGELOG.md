@@ -2,6 +2,26 @@
 
 All the changes made to runa are documented here.
 
+## [0.11.3] - 2026-05-06
+
+#### Fixes to file actions and tabs
+
+### Fixed
+- **Stale panes**: Fixed an issue where file actions (such as `move_file`) would not correctly update the preview or parent pane.
+- **Tab switch**:
+    - Fixed a race condition where switching tabs would not initialize the startup tabs, causing them to be empty.
+    - Fixed an issue where the status line information section could sometimes fail to render during tab switches.
+
+### Changed
+- **Cargo update**: Updated dependencies
+
+### Internal
+- **`handle_move`**: Renamed to `move_file` and moved to `handlers/file_actions`.
+
+
+---
+
+
 ## [0.11.2] - 2026-05-04
 
 #### Patch to documentation and configuration file.
