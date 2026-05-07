@@ -4,7 +4,7 @@
 
 _pkgver=v1.2.1
 pkgver="${_pkgver#v}"
-pkgrel=2
+pkgrel=3
 
 _pkgname=valve-parsers
 pkgname="python-${_pkgname}"
@@ -32,5 +32,5 @@ build() {
 package() {
 	cd "${_pkgname}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
-	install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/python-valve-parsers
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
