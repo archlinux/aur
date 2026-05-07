@@ -1,0 +1,5 @@
+[cadr-bin]
+source = "github"
+github = "abhinavdevarakonda/cadr"
+use_latest_release = true
+prefix = "v"
