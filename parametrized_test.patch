@@ -1,0 +1,21 @@
+--- a/python-mistune1-0.8.4/tests/test_cases.py	2017-09-14 16:31:47.000000000 +1000
++++ b/python-mistune1-0.8.4/tests/test_cases.py	2026-05-07 17:16:08.900678749 +1000
+@@ -38,14 +38,15 @@
+     names = map(lambda o: o[:-5], files)
+     return folder, names
+ 
++#Patch to move from yield tests to  modern parametrized
++import pytest
+ 
+ def test_extra():
+     folder, names = listdir('extra')
+     for key in names:
+-        yield render, folder, key
+-
++        render(folder, key)
+ 
+ def test_normal():
+     folder, names = listdir('normal')
+     for key in names:
+-        yield render, folder, key
++        render(folder, key)

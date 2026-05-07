@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 _name=mistune
 pkgname=python-mistune1
@@ -9,7 +10,7 @@ arch=('any')
 url="https://github.com/lepture/mistune"
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 conflicts=('python-mistune')
 provides=("python-mistune=${pkgver}")
@@ -19,11 +20,13 @@ b2sums=('e65d45c5c95706a49a7fd407afe5f10e82a475766ca272ec3bebba8c89e670fe6efced7
 
 prepare() {
   mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
+  #Patch from Yield tests to Parametrized because of modern python
+  patch --forward --strip=1 --input="../parametrized_test.patch"
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -34,7 +37,7 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  python setup.py install --optimize=1 --root="${pkgdir}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 {CHANGES,README}.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

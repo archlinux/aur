@@ -6,7 +6,9 @@ pkgbase = python-mistune1
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	provides = python-mistune=0.8.4
 	conflicts = python-mistune
