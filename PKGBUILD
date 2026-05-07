@@ -1,8 +1,8 @@
 # Maintainer: Aloys233 <luodh233@gmail.com>
-pkgname=quickflare
+pkgname=quickflare-bin
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A native-feeling Cloudflare Tunnel GUI for Linux, macOS and Windows."
+pkgdesc="A native-feeling Cloudflare Tunnel GUI for Linux and Windows."
 arch=('x86_64')
 url="https://github.com/Aloys233/quickflare"
 license=('MIT')
@@ -13,32 +13,28 @@ depends=(
     'libsecret'
     'openssl'
 )
-makedepends=(
-    'rust'
-    'nodejs'
-    'pnpm'
-    'pkgconf'
-    'librsvg'
-)
 optdepends=(
     'cloudflared: required to create Cloudflare tunnels'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6d29cfb1c6fdb04302b4745492269d2fb186fbd7bec5c78da21028d1b6d496ac')
-
-build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    pnpm install --frozen-lockfile
-    pnpm tauri build --ci --no-bundle
-}
+provides=('quickflare')
+conflicts=('quickflare')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/quickflare-${pkgver}-linux-x86_64.tar.gz"
+    "quickflare-128x128-${pkgver}.png::${url}/raw/v${pkgver}/src-tauri/icons/128x128.png"
+    "quickflare-32x32-${pkgver}.png::${url}/raw/v${pkgver}/src-tauri/icons/32x32.png"
+)
+sha256sums=(
+    'ffb3bafed6b5ee3135ed6b3f415c0e61b40edb508cc04e2d2569b10127221d71'
+    '6b4b6962348e985208f41d51daa16874f51aec834f5c75aa3de91d9693965d1c'
+    '8384aeba5fbb87c67fad52e2d8ac57521ede6427a4fe69977740e1aac3732e18'
+)
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/quickflare-${pkgver}-linux-x86_64"
 
-    install -Dm755 "src-tauri/target/release/quickflare" "${pkgdir}/usr/bin/quickflare"
-    install -Dm644 "src-tauri/icons/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/quickflare.png"
-    install -Dm644 "src-tauri/icons/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/quickflare.png"
+    install -Dm755 "quickflare" "${pkgdir}/usr/bin/quickflare"
+    install -Dm644 "${srcdir}/quickflare-128x128-${pkgver}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/quickflare.png"
+    install -Dm644 "${srcdir}/quickflare-32x32-${pkgver}.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/quickflare.png"
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/app.quickflare.desktop" <<'DESKTOP'
 [Desktop Entry]
@@ -52,7 +48,4 @@ Categories=Development;
 DESKTOP
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    if [ -f "LICENSE" ]; then
-        install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    fi
 }
