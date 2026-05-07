@@ -1,7 +1,7 @@
 pkgbase = kiru-bin
 	pkgdesc = Transcription-driven video editor
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getkiru.app
 	arch = x86_64
 	license = custom
@@ -15,7 +15,7 @@ pkgbase = kiru-bin
 	provides = kiru
 	conflicts = kiru
 	options = !strip
-	source = Kiru-0.4.4-linux-x86_64-bundle.tar.gz::https://releases.getkiru.app/releases/linux/Kiru-0.4.4-linux-x86_64-bundle.tar.gz
+	source = Kiru-0.4.4-linux-x86_64-bundle.tar.gz::https://releases.kiru.app/releases/linux/Kiru-0.4.4-linux-x86_64-bundle.tar.gz
 	source = kiru.desktop
 	source = kiru.png
 	source = kiru.svg

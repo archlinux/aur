@@ -2,7 +2,7 @@
 
 pkgname=kiru-bin
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Transcription-driven video editor"
 arch=('x86_64')
 url="https://getkiru.app"
@@ -13,7 +13,7 @@ provides=('kiru')
 conflicts=('kiru')
 options=('!strip')
 source=(
-  "Kiru-${pkgver}-linux-x86_64-bundle.tar.gz::https://releases.getkiru.app/releases/linux/Kiru-0.4.4-linux-x86_64-bundle.tar.gz"
+  "Kiru-${pkgver}-linux-x86_64-bundle.tar.gz::https://releases.kiru.app/releases/linux/Kiru-0.4.4-linux-x86_64-bundle.tar.gz"
   'kiru.desktop'
   'kiru.png'
   'kiru.svg'
