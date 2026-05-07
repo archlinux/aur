@@ -1,0 +1,1 @@
+export ADW_DISABLE_PORTAL=1
