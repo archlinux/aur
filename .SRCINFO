@@ -8,6 +8,8 @@ pkgbase = stepreduce-git
 	makedepends = git
 	makedepends = cmake
 	depends = opencascade
+	provides = stepreduce
+	conflicts = stepreduce
 	source = git+https://gitlab.com/sethhillbrand/stepreduce.git#commit=63c8a10795fe6136607041642c0e07e97b32a518
 	b2sums = 79c21d903793236cb1cd0b35e7d08a9b4a5f5c11d8daa55b1073d4feb6b33980a99af428fe3b4162c2bdf13fb68ad3daaae8355741f4060b6c120672ae18936b
 

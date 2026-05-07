@@ -19,6 +19,9 @@ git
 cmake
 )
 
+conflicts=(stepreduce)
+provides=(stepreduce)
+
 pkgver() {
   cd stepreduce
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
