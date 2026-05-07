@@ -2,6 +2,7 @@
 !*.d
 !*.conf
 !*.service
+!*.install
 !.gitignore
 !PKGBUILD
 !.SRCINFO

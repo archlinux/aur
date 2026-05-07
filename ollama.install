@@ -1,0 +1,31 @@
+## arg 1:  the new package version
+pre_install() {
+  :
+}
+
+## arg 1:  the new package version
+post_install() {
+  sudo setcap cap_perfmon+ep /usr/bin/ollama
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+  :
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  sudo setcap cap_perfmon+ep /usr/bin/ollama
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  :
+}
+
+## arg 1:  the old package version
+post_remove() {
+  :
+}
