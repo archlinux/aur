@@ -3,7 +3,7 @@
 pkgname=rebased-bin
 _pkgname=rebased
 pkgver=1.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone JetBrains-based Git client (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/DetachHead/rebased'
@@ -13,34 +13,35 @@ optdepends=('xdg-utils: open URLs from the IDE')
 provides=('rebased')
 conflicts=('rebased')
 options=('!strip')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.0.12/rebased.tar.gz")
-sha256sums=('fbaf32f80c1a835296b772ec4c3d58e94aa48bfbec5ae3fe8dca87fd952a81cb')
+source=("${_pkgname}-${pkgver}-${CARCH}.AppImage::https://github.com/DetachHead/rebased/releases/download/1.0.12/Rebased-x86_64.AppImage")
+sha256sums=('0439aea97e87d4ffba1893a63a7e1d247096dfab5418fba610120bb470fa3b0b')
 
 package() {
-  source_root=""
+  local appimage="${srcdir}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
+  local extract_dir="${srcdir}/appimage-extract"
 
-  for candidate in "${srcdir}"/idea-IC-* "${srcdir}"/ideaIC-* "${srcdir}"/rebased* "${srcdir}"/Rebased*; do
-    if [[ -d "${candidate}" ]]; then
-      source_root="${candidate}"
-      break
-    fi
-  done
+  chmod +x "${appimage}"
+  rm -rf "${extract_dir}"
+  install -dm755 "${extract_dir}"
 
-  if [[ -z "${source_root}" ]]; then
-    printf 'failed to locate extracted source tree\n' >&2
-    return 1
-  fi
+  (
+    cd "${extract_dir}"
+    APPIMAGE_EXTRACT_AND_RUN=1 "${appimage}" --appimage-extract >/dev/null
+  )
 
   install -dm755 "${pkgdir}/opt/${_pkgname}"
-  cp -a "${source_root}/." "${pkgdir}/opt/${_pkgname}/"
+  install -Dm755 "${appimage}" "${pkgdir}/opt/${_pkgname}/Rebased-x86_64.AppImage"
 
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${_pkgname}/bin/idea" "${pkgdir}/usr/bin/rebased"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/rebased" <<'SCRIPT'
+#!/bin/sh
+exec env APPIMAGE_EXTRACT_AND_RUN=1 APPIMAGELAUNCHER_DISABLE=1 \
+  /opt/rebased/Rebased-x86_64.AppImage "$@"
+SCRIPT
 
-  install -Dm644 "${source_root}/bin/idea.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/rebased.svg"
-  install -Dm644 "${source_root}/bin/idea.png" "${pkgdir}/usr/share/pixmaps/rebased.png"
-  install -Dm644 "${source_root}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-  install -Dm644 "${source_root}/NOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE.txt"
+  install -Dm644 "${extract_dir}/squashfs-root/usr/bin/idea.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/rebased.svg"
+  install -Dm644 "${extract_dir}/squashfs-root/rebased.png" "${pkgdir}/usr/share/pixmaps/rebased.png"
+  install -Dm644 "${extract_dir}/squashfs-root/usr/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -Dm644 "${extract_dir}/squashfs-root/usr/NOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE.txt"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/rebased.desktop" <<'DESKTOP'
 [Desktop Entry]
@@ -55,5 +56,6 @@ StartupNotify=true
 StartupWMClass=jetbrains-rebased
 Categories=Development;IDE;VersionControl;
 Keywords=git;vcs;jetbrains;
+X-AppImage-Version=1.0.12
 DESKTOP
 }
