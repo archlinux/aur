@@ -26,6 +26,7 @@ b2sums=('14d24c2ed2b69d0cb970be4f93ca9120934656420c9125f9d41d87f8f6a86e23017f4b7
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
 	msg2 "Install using Using npm"
+	export SHARP_IGNORE_GLOBAL_LIBVIPS=1
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
