@@ -1,15 +1,20 @@
 # Maintainer: diode701 <undeadsan7@gmail.com>
 pkgname=nyaa-paper-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Linux Wallpaper Engine frontend with a keyboard‑first GUI"
 arch=('any')
 url="https://github.com/diode701/nyaa-paper"
-license=('CC-BY-NC-4.0')
-depends=('java-runtime>=17')
+license=('AGPL-3.0-only')
+depends=('java-runtime>=21')
 optdepends=('linux-wallpaperengine: the backend that actually renders wallpapers')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/diode701/nyaa-paper/releases/download/v$pkgver/nyaa-paper-$pkgver.tar.gz")
-sha256sums=('57bb2bb69e5299ad972f9da04cf1d1bc0ee0b9c99bde17fa968f6898b163e560')
+sha256sums=('4408bf2d29a08d2d5c98125e024a4a740ebc8592ed3cdcaa0771b4025f4c1beb ')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    sed -i "s|/usr/share/nyaa-paper/|/usr/share/$pkgname/|g" bin/nyaa-paper
+}
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
