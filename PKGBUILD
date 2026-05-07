@@ -53,10 +53,7 @@ conflicts=(
     # the next two are hopefully temporary, but at the moment ChiPass still uses a lot of the same file paths as KeePassXC
     'keepassxc'
     'keepassxc-git'
-    # the next one (and the replaces=) is *very* temporary, upstream only used the KeePassχ name for a short time
-    'keepasschi-git'
 )
-replaces=('keepasschi-git')
 options=(!emptydirs)
 source=(git+https://codeberg.org/ChiPass/ChiPass.git)
 md5sums=('SKIP')
