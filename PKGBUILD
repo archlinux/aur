@@ -2,7 +2,7 @@
 
 pkgname=opaquefiles
 pkgver=0.9.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='File encryption program'
 
 arch=('any')
