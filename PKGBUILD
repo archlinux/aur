@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MKmisc
-_pkgver=1.9
+_pkgver=2.0
 pkgname=r-${_pkgname,,}
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
 pkgdesc='Miscellaneous Functions from M. Kohl'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('23f97ab7f80142f870b15d610c2f842e75ffd7ef6a75bb244278f0d29de66d26')
+sha256sums=('852476694acf9f93fd3952aad2ed63b94d6d7cf0f16a6b6582c989855f7df359')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
