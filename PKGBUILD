@@ -26,13 +26,13 @@ depends=(
 )
 
 source_x86_64=(
-    "$pkgname-$pkgver-x86_64.tar.gz::https://github.com/benzenma123/felixweb-ide/releases/download/v$pkgver/felixweb-ide-$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/benzenma123/felixweb-ide/releases/download/v$pkgver/felixweb-ide-$pkgver.tar.gz"
 )
 
 sha256sums_x86_64=('79909a1aaa766e7e09295102771720ff05cea6703acc5c2ca859064c1ee0e5e0')
 
 package() {
-    local srcdir_app="$srcdir/felixweb-ide-1.0.0"
+    local srcdir_app="$srcdir/felixweb-ide-$pkgver"
 
     # ── App files → /usr/lib/felixweb-ide-bin/ ───────────────────────────────
     install -dm755 "$pkgdir/usr/lib/$pkgname"

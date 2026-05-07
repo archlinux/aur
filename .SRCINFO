@@ -17,7 +17,7 @@ pkgbase = felixweb-ide-bin
 	depends = xdg-user-dirs
 	provides = felixweb-ide
 	conflicts = felixweb-ide
-	source_x86_64 = felixweb-ide-bin-1.0.1-x86_64.tar.gz::https://github.com/benzenma123/felixweb-ide/releases/download/v1.0.1/felixweb-ide-1.0.1.tar.gz
+	source_x86_64 = felixweb-ide-bin-1.0.1.tar.gz::https://github.com/benzenma123/felixweb-ide/releases/download/v1.0.1/felixweb-ide-1.0.1.tar.gz
 	sha256sums_x86_64 = 79909a1aaa766e7e09295102771720ff05cea6703acc5c2ca859064c1ee0e5e0
 
 pkgname = felixweb-ide-bin
