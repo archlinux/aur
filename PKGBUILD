@@ -4,7 +4,7 @@
 pkgname=mathics3-script
 _pkgname=mathicsscript
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A more advanced command-line interface to Mathics."
 arch=("any")
 url="https://mathics.org/"
@@ -19,7 +19,8 @@ depends=("mathics3>=10.0.0"
          "python-pygments>=2.9.0"
          "mathics3-pygments>=10.0.0"
          "python-term-background>=1.0.5")
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-pytest')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=('python-pytest')
 optdepends=(
     "python-yaml: Used for admin-tools/make-tables.sh to build JSON tables"
     "python-pyqt6: For interactive display of graphs via matplotlib"
@@ -27,6 +28,8 @@ optdepends=(
     "python-cson: for xasy"
     "python-matplotlib: For rendering SVG plots"
 )
+conflicts=('mathicsscript')
+replaces=('mathicsscript')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mathics3/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
 sha256sums=('aeacd508ccf78a1c06007d815209f29c81422ac4861f24f502c6aa69f7622f4f')
 

@@ -1,15 +1,15 @@
 pkgbase = mathics3-script
 	pkgdesc = A more advanced command-line interface to Mathics.
 	pkgver = 10.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = python-pytest
 	depends = mathics3>=10.0.0
 	depends = mathics3-scanner>=10.0.0
 	depends = python-click>=8.0.0
@@ -25,6 +25,8 @@ pkgbase = mathics3-script
 	optdepends = python-cairosvg: For rendering plots and graphs as SVGs via matplotlib
 	optdepends = python-cson: for xasy
 	optdepends = python-matplotlib: For rendering SVG plots
+	conflicts = mathicsscript
+	replaces = mathicsscript
 	source = mathics3-script-10.0.0.tar.gz::https://github.com/Mathics3/mathics3-script/releases/download/10.0.0/mathicsscript-10.0.0.tar.gz
 	sha256sums = aeacd508ccf78a1c06007d815209f29c81422ac4861f24f502c6aa69f7622f4f
 
