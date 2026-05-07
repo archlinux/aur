@@ -1,6 +1,6 @@
 pkgbase = klear
 	pkgdesc = A minimal Hyprland status bar in Kotlin/Native (tray, popup menus, battery, glassy refraction)
-	pkgver = r55.028fb1b
+	pkgver = r56.a311558
 	pkgrel = 1
 	url = https://codeberg.org/goal10der/klearShell
 	arch = x86_64
