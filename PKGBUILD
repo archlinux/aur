@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname='Yank Note'
-pkgver=3.88.2
+pkgver=3.89.1
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -30,7 +30,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('e703247665ba4a24fe717d1d6b1037c83349cb58e0bb1ecc6a65eb84103a30ce'
+sha256sums=('32784fa2e65a239576490b66ee6cb103432f907931f8fd38a8f36f34041151ae'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -39,11 +39,10 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -name "node_modules" \
-        -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
-    _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    [[ -z "${_elec_ver}" ]] && return 1
+    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}.git"
