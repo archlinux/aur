@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 groups=('xfce4-git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${_pkgver}")
-depends=('gtk3' 'xfconf' 'libdisplay-info' 'libdrm' 'libinput' 'mesa' 'pixman'
+depends=('gtk3' 'xfconf>=4.21.1' 'libxfce4ui>=4.21.4' 'libdisplay-info' 'libdrm' 'libinput' 'mesa' 'pixman'
          'seatd' 'libxkbcommon')
 makedepends=('cargo' 'rust' 'git' 'meson')
 source=("${_pkgname}::git+https://gitlab.xfce.org/kelnos/xfwl4"

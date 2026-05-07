@@ -14,7 +14,8 @@ pkgbase = xfwl4-git
 	makedepends = git
 	makedepends = meson
 	depends = gtk3
-	depends = xfconf
+	depends = xfconf>=4.21.1
+	depends = libxfce4ui>=4.21.4
 	depends = libdisplay-info
 	depends = libdrm
 	depends = libinput
