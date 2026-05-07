@@ -6,7 +6,7 @@ pkgver=0.73.1
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
-url="https://github.com/badlogic/pi-mono"
+url="https://github.com/earendil-works/pi-mono"
 license=('MIT')
 depends=('nodejs>=20')
 makedepends=('npm')
