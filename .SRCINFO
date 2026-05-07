@@ -1,7 +1,7 @@
 pkgbase = gtest-src
 	pkgdesc = Google Test Source - C++ testing utility
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/googletest
 	arch = x86_64
 	license = BSD-3-Clause

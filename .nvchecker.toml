@@ -1,0 +1,4 @@
+[gtest-src]
+source = "git"
+git = "https://github.com/google/googletest.git"
+prefix = "v"
