@@ -1,6 +1,6 @@
 pkgbase = veila-bin
 	pkgdesc = Secure, elegant, and fast Wayland screen locker
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/naurissteins/Veila
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = veila-bin
 	conflicts = veila
 	conflicts = veila-git
 	options = !debug
-	source = veila-bin-0.2.0.tar.gz::https://github.com/naurissteins/Veila/releases/download/0.2.0/veila-0.2.0-x86_64-linux.tar.gz
-	sha256sums = aa04ff7c1391b19821bf28fdcf38f1a83475d73fae48f95cfa4cc5fa59c590b7
+	source = veila-bin-0.2.1.tar.gz::https://github.com/naurissteins/Veila/releases/download/0.2.1/veila-0.2.1-x86_64-linux.tar.gz
+	sha256sums = 77fa82359f009e88c9ba2855a9da9cf1b5725327f75a65ef91c8aaef1bc0db8b
 
 pkgname = veila-bin
