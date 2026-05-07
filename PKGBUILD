@@ -1,5 +1,6 @@
 # Maintainer: tarball <bootctl@gmail.com>
 # Contributor: Árni Dagur <arnidg@protonmail.ch>
+# Contributor: Ahmet Arda Kavakcı <ahmetardakavakci@gmail.com>
 
 pkgname='xcp'
 pkgver='0.24.8'
@@ -36,7 +37,9 @@ check() {
 
   cd $_src
 
-  if grep --quiet '^mail:' /etc/passwd; then
+  # acl test relies on the `mail` user being present
+  # https://github.com/tarka/xcp/blob/d408d13c9453e0223bcc0162943ca02272b0ad5b/libfs/src/linux.rs#L810
+  if id mail &>/dev/null; then
     ./tests/scripts/test-linux.sh
   else
     ./tests/scripts/test-linux.sh test_no_acl
