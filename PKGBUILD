@@ -9,7 +9,7 @@ pkgdesc="Universal Package-management Tool for any OS."
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i686' 'aarch64')
-license=('MIT' 'Apache')
+license=('MIT' 'Apache-2.0')
 depends=('curl' 'tar' 'gzip' 'unzip')
 makedepends=('help2man')
 
