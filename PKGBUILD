@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ backup=('etc/control-ofc/daemon.toml'
 install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d81226a430d3a420143bd9ec855ab76d48ac5b172bfcb19148b03ac455ac34f8')
+sha256sums=('c84415ba773fbc5d5ba514f9accfdb45ab0f5142e9179f36f182a418c01004a3')
 
 prepare() {
     cd "$pkgname-$pkgver"
