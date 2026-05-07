@@ -1,6 +1,6 @@
 pkgbase = keyguard-bin
 	pkgdesc = Multi-client for the Bitwarden® platform and KeePass (KDBX), designed to provide the best user experience possible.
-	pkgver = 2.9.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/AChep/keyguard-app
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = keyguard-bin
 	provides = keyguard
 	conflicts = keyguard
 	options = !strip
-	source_x86_64 = https://github.com/AChep/keyguard-app/releases/download/r20260428/Keyguard-2.9.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a62d6502cd5efeddddb2e8ef31b465a856484124d88515c4500a77ab5d438825
-	source_aarch64 = https://github.com/AChep/keyguard-app/releases/download/r20260428/Keyguard-2.9.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 8ecac0adb64d956517a8c8ca27841e841f525fc8e305612f18af939a88849e14
+	source_x86_64 = https://github.com/AChep/keyguard-app/releases/download/r20260507.1/Keyguard-2.10.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e18969a7ce7edcd1977764bf8793891eac1714a2d45522b0d76c8d269a2b1f93
+	source_aarch64 = https://github.com/AChep/keyguard-app/releases/download/r20260507.1/Keyguard-2.10.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 6bffd336960d7c3fc3daa984c25744adf39c7bb39372206305c33c81ab48d29f
 
 pkgname = keyguard-bin
