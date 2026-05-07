@@ -3,8 +3,8 @@
 # Maintainer: Guillermo Galavis <druxorey@proton.me>
 
 pkgname=tetro-tui
-pkgver=3.1.0
-pkgrel=4
+pkgver=3.4.0
+pkgrel=5
 pkgdesc="A terminal-based but modern tetromino-stacking game that is very customizable and cross-platform. "
 arch=('x86_64' 'aarch64')
 url="https://github.com/Strophox/tetro-tui"
@@ -15,7 +15,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('a83054b92a790ab507fee8c7e62c2cd88d3fc573e49a3ee8f202479e2dd36a1fc36e24931673cb42b65873458fcb06b3b33500fb7b52b52214f2b3de372878b2')
+b2sums=('44467aad65195c1f61ffedfe06df82bbbae03f8047e7098a862c560913f9c553ab821502d8b2116d2253552400473b5d98e299b2a665cdfae64cfc6ab999d756')
 options=('!debug')
 
 prepare() {
