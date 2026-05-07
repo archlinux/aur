@@ -9,7 +9,7 @@ pkgbase = swaddle
 	depends = gcc-libs
 	optdepends = rust: For building with system-wide Rust
 	optdepends = rustup: For building with custom Rust toolchains
-	source=("$url/archive/v$pkgver.tar.gz")
+	source=("$pkgname-$pkgver.tar.gz::https://github.com/ATTron/swaddle/archive/refs/tags/v$pkgver.tar.gz")
 	sha256sums = ('cf7804d6e43417e3ccc35de70e11ad1d25f1d14b95d792bd3296d13baa43af82')
 
 pkgname = swaddle
