@@ -96,8 +96,12 @@ _models=(
   'qwen3.6_27b_awq_int4'
   'qwen3.6_27b_gptq_int4'
   'qwen3.6_27b_autoround_int4'
+  'qwen3.6_27b_nvfp4'
   'qwen3.6_35b_a3b'
   'qwen3.6_35b_a3b_fp8'
+  'qwen3.6_35b_a3b_awq_int4'
+  'qwen3.6_35b_a3b_gptq_int4'
+  'qwen3.6_35b_a3b_autoround_int4'
   'qwen3.6_35b_a3b_nvfp4'
 )
 
