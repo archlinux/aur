@@ -1,11 +1,11 @@
 # Maintainer: Harsh Sharma <harsh@codelif.in>
 
 pkgname=ytuff
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Terminal music player for local files and YouTube Music"
 arch=('x86_64')
-url="https://github.com/life2harsh/rustplayer"
+url="https://github.com/life2harsh/ytuff"
 license=('GPL-3.0-or-later')
 depends=(
   'alsa-lib'
@@ -25,18 +25,18 @@ makedepends=(
 )
 provides=()
 conflicts=('ytuff-bin')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/life2harsh/rustplayer/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('68a830a9c4c78bb15e1fb4dccaf8ccc498dd2513af769b64907df65812bef7f5')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/life2harsh/ytuff/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a77d0d8b6af01c4f887ae70471c31717006e26bdd2cd37786a35aa1e8789a71a')
 
 prepare() {
-  cd "rustplayer-${pkgver}"
+  cd "ytuff-${pkgver}"
 
   export CARGO_HOME="${srcdir}/cargo-home"
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "rustplayer-${pkgver}"
+  cd "ytuff-${pkgver}"
 
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR=target
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "rustplayer-${pkgver}"
+  cd "ytuff-${pkgver}"
 
-  install -Dm755 "target/release/rustplayer" "$pkgdir/usr/bin/rustplayer"
+  install -Dm755 "target/release/ytuff" "$pkgdir/usr/bin/ytuff"
 }
