@@ -1,0 +1,25 @@
+pkgbase = mathics3-django
+	pkgdesc = The Django front-end to Mathics.
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://github.com/Mathics3/Mathics3-django
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = mathics3-scanner
+	depends = mathics3
+	depends = python-django
+	depends = python-pygments
+	depends = python-requests
+	depends = python-scikit-image
+	depends = python-networkx
+	optdepends = python-ujson: faster than the native json library, but not supported in pyston
+	conflicts = mathics-django
+	replaces = mathics-django
+	source = mathics3-django-10.0.0.tar.gz::https://github.com/Mathics3/mathics3-django/releases/download/10.0.0/mathics3_django-10.0.0.tar.gz
+	sha256sums = 0db730d7dc9799bee34e95c12130be6b021d506e1beb362fd9544a433eaeb4f2
+
+pkgname = mathics3-django
