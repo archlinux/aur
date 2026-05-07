@@ -1,6 +1,6 @@
 pkgbase = stellarfiles-git
 	pkgdesc = A minimalist, fast native Linux file manager built for the Cosmic Desktop Environment.
-	pkgver = v0.4.0.r5.g2f99f19
+	pkgver = v0.4.1.r0.gf34136a
 	pkgrel = 1
 	url = https://github.com/TanF12/stellarfiles
 	arch = x86_64
