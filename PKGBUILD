@@ -2,7 +2,7 @@
 
 pkgname=navicat17-premium-cs
 pkgver=17.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Navicat Premium is a multi-connection database development tool. (Chinese Simplified)'
 arch=('x86_64')
 url='https://www.navicat.com.cn/products/navicat-premium'
@@ -19,6 +19,10 @@ package() {
 
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/${pkgname}/"
+
+  # Prefer Arch's system copies for these low-level libraries to avoid
+  # symbol-version conflicts with host libmount/libudev users.
+  rm -f     "${pkgdir}/opt/${pkgname}/usr/lib/libsystemd.so"*     "${pkgdir}/opt/${pkgname}/usr/lib/libudev.so"*     "${pkgdir}/opt/${pkgname}/usr/lib/libblkid.so"*     "${pkgdir}/opt/${pkgname}/usr/lib/libselinux.so"*
 
   install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/navicat.desktop"     "${pkgdir}/usr/share/applications/navicat.desktop"
   install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/navicat-icon.png"     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/navicat-icon.png"
