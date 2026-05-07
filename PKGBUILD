@@ -1,7 +1,7 @@
 # Maintainer: SummerBreeze630 <xzwf2003@163.com>
 
 pkgname=bili23-downloader
-pkgver=2.00.1
+pkgver=2.00.4
 pkgrel=1
 pkgdesc="Bili23 Downloader"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=("${_git_url}/releases/download/v${pkgver}/Bili23-Downloader_${pkgver//_/
 	"https://raw.githubusercontent.com/ScottSloan/Bili23-Downloader/main/LICENSE"
 
 )
-sha256sums=('bf854abbaa9af9909f1b44c24be249318d2771a025b2009ceb56dc5af6086788'
-            'fb83d13261630aae26b4c7a9ab6366d8de205a7715995670d3a4285ae0550764')
+sha256sums=('61438227c8d5c34e76fa373a9f245fc06d43af0f9b3ffd1c522cd5c841d28445'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
 	tar -axvf data.tar.zst -C ${pkgdir}

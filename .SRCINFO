@@ -1,6 +1,6 @@
 pkgbase = bili23-downloader
 	pkgdesc = Bili23 Downloader
-	pkgver = 2.00.1
+	pkgver = 2.00.4
 	pkgrel = 1
 	url = https://bili23.scott-sloan.cn/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = bili23-downloader
 	depends = libtiff5
 	depends = ffmpeg
 	options = !strip
-	source = https://github.com/ScottSloan/Bili23-Downloader/releases/download/v2.00.1/Bili23-Downloader_2.00.1_linux_amd64.deb
+	source = https://github.com/ScottSloan/Bili23-Downloader/releases/download/v2.00.4/Bili23-Downloader_2.00.4_linux_amd64.deb
 	source = https://raw.githubusercontent.com/ScottSloan/Bili23-Downloader/main/LICENSE
-	sha256sums = bf854abbaa9af9909f1b44c24be249318d2771a025b2009ceb56dc5af6086788
-	sha256sums = fb83d13261630aae26b4c7a9ab6366d8de205a7715995670d3a4285ae0550764
+	sha256sums = 61438227c8d5c34e76fa373a9f245fc06d43af0f9b3ffd1c522cd5c841d28445
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = bili23-downloader
