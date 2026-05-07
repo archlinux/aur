@@ -1,6 +1,6 @@
 # Maintainer: Anderson Juhasc <anjhc@proton.me>
 pkgname=nostrord-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Nostr NIP-29 group messaging client"
 arch=('x86_64')
@@ -11,26 +11,26 @@ conflicts=('nostrord')
 depends=('libxtst' 'libxrender' 'fontconfig' 'freetype2')
 install=nostrord-bin.install
 source=("nostrord-${pkgver}.deb::https://github.com/Nostrord/nostrord/releases/download/v${pkgver}/nostrord-${pkgver}-linux-amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('418a43b99455f9ae3556012d49b3467e4f70e49784a159a21d7ce8946991dcb5')
 
 package() {
-    cd "${srcdir}"
+  cd "${srcdir}"
 
-    # Extract .deb data archive
-    bsdtar -xf "nostrord-${pkgver}.deb" data.tar.xz 2>/dev/null \
-        || bsdtar -xf "nostrord-${pkgver}.deb" data.tar.gz 2>/dev/null \
-        || bsdtar -xf "nostrord-${pkgver}.deb" data.tar.zst
-    bsdtar -xf data.tar.* -C "${pkgdir}"
+  # Extract .deb data archive
+  bsdtar -xf "nostrord-${pkgver}.deb" data.tar.xz 2>/dev/null ||
+    bsdtar -xf "nostrord-${pkgver}.deb" data.tar.gz 2>/dev/null ||
+    bsdtar -xf "nostrord-${pkgver}.deb" data.tar.zst
+  bsdtar -xf data.tar.* -C "${pkgdir}"
 
-    # Move .desktop to the standard location (deb puts it in /opt via xdg-desktop-menu)
-    local desktop_src="${pkgdir}/opt/nostrord/lib/nostrord-Nostrord.desktop"
-    if [[ -f "${desktop_src}" ]]; then
-        install -Dm644 "${desktop_src}" \
-            "${pkgdir}/usr/share/applications/nostrord.desktop"
-    fi
+  # Move .desktop to the standard location
+  local desktop_src="${pkgdir}/opt/nostrord/lib/nostrord-Nostrord.desktop"
+  if [[ -f "${desktop_src}" ]]; then
+    install -Dm644 "${desktop_src}" \
+      "${pkgdir}/usr/share/applications/nostrord.desktop"
+  fi
 
-    # Launcher wrapper at /usr/bin
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/nostrord" <<'EOF'
+  # Launcher wrapper at /usr/bin
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/nostrord" <<'EOF'
 #!/bin/sh
 exec /opt/nostrord/bin/Nostrord "$@"
 EOF
