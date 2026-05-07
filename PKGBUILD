@@ -1,7 +1,7 @@
 # Maintainer: coldbrxthe <rocattjust@gmail.com>
 pkgname=rs-pug-git
 pkgver=r13.d6b9733
-pkgrel=16
+pkgrel=17
 pkgdesc="Terminal YouTube music player with mpv, yt-dlp and Lua plugin support"
 arch=('x86_64')
 url="https://github.com/JustRoccat/rs-pug"
@@ -15,33 +15,26 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$pkgname"
-    # Czyścimy WSZYSTKIE flagi systemowe, które mogą wymuszać linkowanie dynamiczne
-    unset CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
+  cd "$pkgname"
+  # Czyścimy WSZYSTKIE flagi systemowe, które mogą wymuszać linkowanie dynamiczne
+  unset CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
 
-    # Wymuszamy na Cargo, żeby użyło TYLKO tego, co ma w Cargo.toml (czyli vendored lua)
-    cargo build --release --locked
+  # Wymuszamy na Cargo, żeby użyło TYLKO tego, co ma w Cargo.toml (czyli vendored lua)
+  cargo build --release --locked
 }
 
-
-
-
-
-
-
-
 package() {
-    cd "$pkgname"
-    install -Dm755 "target/release/rs-pug" "$pkgdir/usr/bin/rs-pug"
-    if [ -f LICENSE ]; then
-        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    fi
-    if [ -f README.md ]; then
-        install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    fi
+  cd "$pkgname"
+  install -Dm755 "target/release/rs-pug" "$pkgdir/usr/bin/rs-pug"
+  if [ -f LICENSE ]; then
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  fi
+  if [ -f README.md ]; then
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  fi
 }
