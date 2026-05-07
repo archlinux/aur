@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
 pkgver=1.8.0.r0.g83304c4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -68,7 +68,7 @@ package() {
   cd "${pkgname%-git}"
   make prefix=/usr libexecdir=/"lib/${pkgname%-git}" DESTDIR="$pkgdir/" install
 
-  install -d "$pkgdir/usr/lib/${pkgname%-git}"/{assets,data}/
+  install -d "$pkgdir/usr/lib/${pkgname%-git}"/{assets,data/icons}/
   cp -a assets/icons "$pkgdir/usr/lib/${pkgname%-git}/assets/"
-  cp -a data/icons "$pkgdir/usr/lib/${pkgname%-git}/data/"
+  cp -a data/icons/{buttons,system} "$pkgdir/usr/lib/${pkgname%-git}/data/icons/"
 }
