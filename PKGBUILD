@@ -15,6 +15,7 @@ sha256sums=("SKIP")
 
 package() {
 	# make dirs
+	install -d "${pkgdir}"/usr/share/shelter
 	install -d "${pkgdir}"/usr/share/libalpm/hooks
 
 	# copy over scripts
