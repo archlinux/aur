@@ -1,0 +1,17 @@
+pkgbase = unfold-git
+	pkgdesc = Flatpak wrapper that shows app permissions before install/update (git)
+	pkgver = 0.1.1.r1.geb04830
+	pkgrel = 1
+	url = https://github.com/danfinlay/unfold
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = flatpak
+	provides = unfold
+	conflicts = unfold
+	source = unfold::git+https://github.com/danfinlay/unfold.git
+	sha256sums = SKIP
+
+pkgname = unfold-git
