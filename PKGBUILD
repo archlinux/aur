@@ -1,6 +1,6 @@
 pkgname=python-bd_warehouse-git
 pkgdesc="A build123d parametric part collection"
-pkgver=v0.2.0.r4.g5be571e
+pkgver=0.2.0.r4.g5be571e
 pkgrel=1
 arch=(any)
 url="https://github.com/gumyr/bd_warehouse"
@@ -27,7 +27,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd bd_warehouse
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
