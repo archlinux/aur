@@ -1,62 +1,37 @@
 # Maintainer: Solara Linux <ash8820@proton.me>
-# Based on CachyOS PKGBUILD
+# Repackage CachyOS kernel with Solara branding
 
 pkgname=solara-kernel
-pkgver=7.0.3
-pkgrel=1
-pkgdesc="Solara Linux Kernel - CachyOS optimized, Solara branded"
+pkgver=7.0.1
+pkgrel=2
+pkgdesc="Solara Linux Kernel - EEVDF + LTO from CachyOS with Solara branding"
 arch=('x86_64')
 url="https://github.com/ravecorelabs/solara"
 license=('GPL2')
-makedepends=('bc' 'bison' 'flex' 'kmod' 'libelf' 'openssl' 'pahole' 'perl' 'python' 'rust' 'rust-bindgen' 'xz' 'zstd' 'clang' 'llvm' 'lld' 'git')
 depends=('coreutils' 'kmod' 'initramfs')
 optdepends=('wireless-regdb: wireless regulatory database'
             'linux-firmware: firmware files'
             'modprobed-db: module tracking'
             'scx-sched: sched-ext schedulers')
 
-source=('cachy-kernel::git+https://github.com/CachyOS/linux-cachyos.git#tag=v7.0.3-1')
-
+source=("https://share.cachyos.org/x86_64_v3/kernel/7.0/linux-cachyos-${pkgver}-${pkgrel}-x86_64_v3.pkg.tar.zst")
 sha256sums=('SKIP')
 
-prepare() {
-    cd cachy-kernel
-    
-    # Copy config from repo
-    cp linux-cachyos/config arch/x86/config
-    
-    # Change to Solara branding
-    scripts/config --set-str CONFIG_LOCALVERSION "-solara"
-    scripts/config --set-str CONFIG_LOCALVERSION_AUTO "n"
-    scripts/config --set-str CONFIG_DEFAULT_HOSTNAME "solara"
-    
-    # Apply Solara patches if any (create your own)
-    # patch -p1 -i /path/to/solara-patches/xxx.patch
-}
-
-build() {
-    cd cachy-kernel
-    
-    # Use clang for faster builds
-    export CC=clang
-    export CXX=clang++
-    export LD=ld.lld
-    
-    make -j$(nproc) all
-}
-
 package() {
-    cd cachy-kernel
+    tar -xf "${srcdir}/linux-cachyos-${pkgver}-${pkgrel}-x86_64_v3.pkg.tar.zst" -C "${pkgdir}"
     
-    # Install kernel
-    make INSTALL_PATH=/usr install
+    for f in "${pkgdir}"/boot/vmlinuz-*; do
+        [ -f "$f" ] && mv "$f" "${f/-cachyos/-solara}"
+    done
     
-    # Install modules
-    make INSTALL_MOD_PATH="$pkgdir" modules_install
+    for d in "${pkgdir}"/usr/lib/modules/*; do
+        [ -d "$d" ] && mv "$d" "${d/-cachyos/-solara}"
+    done
     
-    # Solara os-release
-    mkdir -p "$pkgdir/usr/lib"
-    cat > "$pkgdir/usr/lib/os-release" << 'EOF'
+    sed -i 's/linux-cachyos/solara-kernel/g' "${pkgdir}"/usr/lib/modprobe.d/*.conf 2>/dev/null || true
+    
+    mkdir -p "${pkgdir}/usr/lib"
+    cat > "${pkgdir}/usr/lib/os-release" << 'EOF'
 NAME="Solara Linux"
 PRETTY_NAME="Solara Linux"
 ID=solara
