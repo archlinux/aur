@@ -1,5 +1,3 @@
 [nnote]
-source="github"
-github="stiermid/nnote"
-use_max_tag=true
-prefix="v"
+source="pypi"
+pypi="nnote"
