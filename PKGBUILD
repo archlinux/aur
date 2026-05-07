@@ -1,6 +1,6 @@
 pkgname=rimilo
 pkgver=0.2.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Rapida rimvort-serchilo por Esperanto-angla vortaro'
 arch=('x86_64')
 url='https://github.com/Fierthraix/rimilo'
