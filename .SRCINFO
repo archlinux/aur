@@ -1,7 +1,7 @@
 pkgbase = casual-pre-loader-git
 	pkgdesc = TF2 particle modifications via some wizardry.
-	pkgver = 2.1.0.9.ga5a431f
-	pkgrel = 2
+	pkgver = 2.1.2.r0.g25dbae5
+	pkgrel = 1
 	url = https://github.com/cueki/casual-pre-loader
 	install = casual-pre-loader.install
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = casual-pre-loader-git
 	depends = python-valve-parsers>=1.0.7
 	optdepends = python-rich: pretty printing logs
 	optdepends = wine: running studiomdl
-	provides = casual-pre-loader=2.1.0.9.ga5a431f
+	provides = casual-pre-loader=2.1.2.r0.g25dbae5
 	conflicts = casual-pre-loader
 	source = git+https://github.com/cueki/casual-pre-loader
 	source = git+https://github.com/cueki/studiomdl

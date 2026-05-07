@@ -5,8 +5,8 @@
 _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
-pkgver=2.1.0.9.ga5a431f
-pkgrel=2
+pkgver=2.1.2.r0.g25dbae5
+pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=("git+${url}" 'git+https://github.com/cueki/studiomdl')
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
-	git -C "${_pkgname}" describe --tag --always | sed 's/^v//; s/-/./g'
+	git -C "${_pkgname}" describe --tags --long --abbrev=7 --first-parent --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
