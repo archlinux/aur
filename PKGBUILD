@@ -11,16 +11,14 @@ license=('GPL2')
 makedepends=('bc' 'bison' 'flex' 'kmod' 'libelf' 'openssl' 'pahole' 'perl' 'python' 'rust' 'rust-bindgen' 'xz' 'zstd' 'clang' 'llvm' 'lld' 'git')
 depends=('solara-kernel')
 
-source=('cachy-kernel::git+https://github.com/CachyOS/linux-cachyos.git#tag=v7.0.3-1'
-        'https://raw.githubusercontent.com/CachyOS/kernel-patches/master/7.0/config.x86_64')
+source=('cachy-kernel::git+https://github.com/CachyOS/linux-cachyos.git#tag=v7.0.3-1')
 
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
     cd cachy-kernel
     
-    cp ../config.x86_64 arch/x86/config
+    cp linux-cachyos/config arch/x86/config
     
     scripts/config --set-str CONFIG_LOCALVERSION "-solara"
     scripts/config --set-str CONFIG_LOCALVERSION_AUTO "n"
