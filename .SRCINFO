@@ -1,0 +1,16 @@
+pkgbase = mote
+	pkgdesc = A tiny terminal text editor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mote-editor/mote
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = mote-0.1.0.tar.gz::https://github.com/mote-editor/mote/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ce22e0b6ec5825c2b7f1f1d2e701aebe8b97d28ba60f94511ba76904ab15d907
+
+pkgname = mote
