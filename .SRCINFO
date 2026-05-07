@@ -1,6 +1,6 @@
 pkgbase = telemost
 	pkgdesc = Yandex video conferencing client (Wine). Camera and screen sharing may not work under Wine.
-	pkgver = 2.30.4.8231
+	pkgver = 2.30.5.8321
 	pkgrel = 1
 	url = https://telemost.yandex.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = telemost
 	depends = wine
 	options = !strip
 	options = !debug
-	source = telemost-2.30.4.8231.msi::https://disk.cdn.yandex.net/update/stable/ef60ee608fc67265be7ec794ad4b0290/YandexTelemostSetup.msi
+	source = telemost-2.30.5.8321.msi::https://disk.cdn.yandex.net/update/stable/ef60ee608fc67265be7ec794ad4b0290/YandexTelemostSetup.msi
 	source = telemost.desktop
 	sha256sums = 80fc873488046ebdd772523a2a7217f1da0d925908827e49795a2a3531254711
 	sha256sums = f76a203977c050cda625835166f73a8771bb867b2fe163781051afc2afbb25a0
