@@ -1,6 +1,6 @@
 pkgbase = scroll-rs-bin
 	pkgdesc = Terminal web browser written in Rust
-	pkgver = 0.1.9
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/isene/scroll
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = scroll-rs-bin
 	provides = scroll
 	conflicts = scroll-rs
 	options = !strip
-	source = README-0.1.9.md::https://raw.githubusercontent.com/isene/scroll/v0.1.9/README.md
+	source = README-0.2.6.md::https://raw.githubusercontent.com/isene/scroll/v0.2.6/README.md
 	sha256sums = 3e102a72cc961a1a579d0a03a7f7414ad2d7536a320edfe112d99951a1c9a3eb
-	source_x86_64 = scroll-x86_64-0.1.9::https://github.com/isene/scroll/releases/download/v0.1.9/scroll-linux-x86_64
-	sha256sums_x86_64 = dc2102070e1a190be10fc6bd144a125f7561a57250c2f6fdb19d3505fa781791
-	source_aarch64 = scroll-aarch64-0.1.9::https://github.com/isene/scroll/releases/download/v0.1.9/scroll-linux-aarch64
-	sha256sums_aarch64 = b85703566400d0b64f97a70811e037705abbcf75bbe4e309f29a911a622a20df
+	source_x86_64 = scroll-x86_64-0.2.6::https://github.com/isene/scroll/releases/download/v0.2.6/scroll-linux-x86_64
+	sha256sums_x86_64 = 71450a88ded6cdb5ac3d53578b71f2b64864a3861a9f31dfd00738ac96547005
+	source_aarch64 = scroll-aarch64-0.2.6::https://github.com/isene/scroll/releases/download/v0.2.6/scroll-linux-aarch64
+	sha256sums_aarch64 = bae631ce36a97af5d3ec538e3da9e3dbcc64eec519b4efe750c465289013795d
 
 pkgname = scroll-rs-bin
