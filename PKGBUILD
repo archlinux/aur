@@ -1,30 +1,18 @@
 # Maintainer: eltonff <eltonfabricio10@gmail.com>
 
-pkgname=mediaharbor-bin
-pkgver=2.0.4
+pkgname=mediaharbor
+pkgver=2.0.5
 pkgrel=1
-pkgdesc="MediaHarbor is your all-in-one media downloader."
+pkgdesc="MediaHarbor is all-in-one music streaming and downloading application built with Tauri and React."
 arch=('x86_64')
 url="https://github.com/MediaHarbor/mediaharbor"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 depends=(
+  'webkit2gtk-4.1'
   'gtk3'
-  'libnotify'
-  'nss'
-  'libxss'
-  'alsa-lib'
-  'libxtst'
-  'xdg-utils'
-  'at-spi2-core'
-  'libsecret'
-  'python-isodate'
-  'python-ytmusicapi'
-  'yt-dlp'
-)
-optdepends=(
-  'ffmpeg: For support of transcoding (converting media).'
-  'python-rich: For colorful output formatting in the terminal.'
+  'libappindicator-gtk3'
+  'glib2'
 )
 provides=("mediaharbor=${pkgver}")
 conflicts=('mediaharbor')
@@ -32,7 +20,7 @@ conflicts=('mediaharbor')
 _pkgname="MediaHarbor"
 source=("${_pkgname}-${pkgver}.deb::https://github.com/MediaHarbor/mediaharbor/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 
-sha256sums=('7517887b85705c9364a8a9c4802eb6005b4e423e4ad8de9f6e5a64b5586a2709')
+sha256sums=('227f35797af8e410f31ce2cf8088133ecbf3591b20b8a37dcacb38384178eecb')
 
 package() {
   cd "$srcdir"
