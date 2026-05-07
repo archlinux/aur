@@ -1,7 +1,7 @@
 # Maintainer: Max Hefley <Mizuna737@gmail.com>
 
 pkgname=gesturecontrol
-pkgver=r20.0323fb3
+pkgver=r21.f8cce22
 pkgrel=2
 pkgdesc="Hand gesture recognition: webcam → MediaPipe → D-Bus signals → configurable actions"
 arch=('any')
@@ -50,7 +50,7 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     for script in gestureControl gestureControl-config gestureControl-actions gestureControl-tray; do
         wrapper="$pkgdir/usr/bin/${script,,}"
-        printf '#!/bin/sh\nexec python3 /usr/share/%s/%s.py "$@"\n' "$pkgname" "$script" > "$wrapper"
+        printf '#!/bin/sh\nexport LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$HOME/.local/share/%s/cuda_shims"\nexec python3 /usr/share/%s/%s.py "$@"\n' "$pkgname" "$pkgname" "$script" > "$wrapper"
         chmod 755 "$wrapper"
     done
 
