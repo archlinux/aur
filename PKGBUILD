@@ -2,12 +2,12 @@
 # Contributor: Chris Brannon <cmbrannon (at) cox.net>
 
 pkgname=pcc-libs-git
-pkgver=20230806
-pkgrel=4
+pkgver=20260208
+pkgrel=1
 pkgdesc="Libraries for the Portable C Compiler."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PortableCC/"
-license=('custom')
+license=('BSD-3-Clause')
 provides=(pcc-libs)
 conflicts=(pcc-libs)
 makedepends=('git')
