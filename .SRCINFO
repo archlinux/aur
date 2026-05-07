@@ -4,6 +4,7 @@ pkgbase = liblss16
 	pkgrel = 1
 	url = https://codeberg.org/maandree/liblss16
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	source = liblss16-1.0.tar.gz::https://codeberg.org/maandree/liblss16/archive/1.0.tar.gz
 	sha256sums = 12367594c727e6cb46480ce73133ee33517c916e5f53e1489af6f70e7802e1f6
