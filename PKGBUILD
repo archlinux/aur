@@ -3,7 +3,7 @@
 _plug=zoomvtools
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r384.16a2ab6
-pkgrel=2
+pkgrel=3
 pkgdesc='Zoomy reimplementation of VapourSynth MVTools'
 arch=('x86_64')
 url='https://gitlab.com/shssoichiro/vapoursynth-zoomvtools'
@@ -32,5 +32,5 @@ rustup install stable && rustup default stable'
 package() {
 	PLUGINDIR=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
 	cd $_plug
-	install -Dm755 "target/release/libvapoursynth_zoomvtools.so" "{$pkgdir}${PLUGINDIR}/libzoomvtools.so"
+	install -Dm755 "target/release/libvapoursynth_zoomvtools.so" "${pkgdir}${PLUGINDIR}/libzoomvtools.so"
 }
