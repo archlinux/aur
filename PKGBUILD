@@ -2,7 +2,7 @@
 validpgpkeys=('85A129CD038220C44227EAB9C28D02D181F83532')
 
 pkgname=opaquefiles
-pkgver=0.9.10.0
+pkgver=0.9.11.0
 pkgrel=1
 pkgdesc='File encryption program'
 
@@ -10,8 +10,8 @@ arch=('any')
 url="https://codeberg.org/cozyOwl/OpaqueFiles"
 license=('GPL-3.0-or-later')
 
-depends=('java-runtime=17' 'bash')
-optdepends=('hicolor-icon-theme' 'noto-fonts' 'ttf-noto-emoji-monochrome')
+depends=('java-runtime=25' 'bash' 'hicolor-icon-theme')
+optdepends=('noto-fonts: Fallback font' 'ttf-noto-emoji-monochrome: Font for icon support')
 makedepends=('git')
 
 source=(
