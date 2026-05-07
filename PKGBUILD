@@ -4,14 +4,14 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r2085.ffd52e5a
+pkgver=r2106.7ec4fe13
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ksh93/ksh/'
 license=('EPL')
 depends=('libmd')
-makedepends=('git' 'linux-api-headers')
+makedepends=('bash' 'git' 'linux-api-headers')
 conflicts=('ksh' 'ksh93')
 provides=('ksh' 'ksh93')
 install='ksh93.install'
@@ -30,8 +30,8 @@ build() {
 	# Get rid of any leftover build files (in case makepkg.conf changed).
 	rm -rf ./arch
 	if ! [[ ${_ksh_pgo} == 1 || ${_ksh_pgo} == yes || ${_ksh_pgo} == true ]] || [[ $CC == clang ]]; then
-		export CCFLAGS="${CFLAGS}"  # bin/package uses CCFLAGS rather than CFLAGS.
-		./bin/package make          # Build ksh (no -j flag because that's still experimental).
+		export CCFLAGS="${CFLAGS}"         # bin/package uses CCFLAGS rather than CFLAGS.
+		./bin/package make SHELL=/bin/bash # Build ksh (no -j flag because that's still experimental).
 	else
 		# Optional and experimental: Compile ksh with profile guided optimization (making
 		# use of the regression tests) if ${_ksh_pgo} is enabled.
@@ -67,7 +67,7 @@ build() {
 		export CCFLAGS="${save_ccflags} ${use_flags}"
 		export LDFLAGS="${save_ldflags} ${use_flags}"
 		rm -rf ./arch
-		./bin/package make -j${cores}
+		./bin/package make SHELL=/bin/bash -j${cores}
 		# Cleanup PGO artefacts
 		rm -r "${tmpdir}"
 	fi
