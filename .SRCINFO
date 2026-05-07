@@ -1,0 +1,18 @@
+pkgbase = dota2-minify-rc-bin
+	pkgdesc = Dota 2 Mod Patcher & Toolkit — prebuilt release candidate binary
+	pkgver = 1.14rc1
+	pkgrel = 1
+	url = https://github.com/Egezenn/dota2-minify
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = freetype2
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	provides = dota2-minify
+	conflicts = dota2-minify
+	conflicts = dota2-minify-bin
+	options = !strip
+	source = dota2-minify-rc-bin-1.14rc1.zip::https://github.com/Egezenn/dota2-minify/releases/download/Minify-v1.14rc1/Minify-v1.14rc1-linux.zip
+	sha256sums = 24066d2728b59a1cb501375a09d6c0283297205062493fa80e6e59eed80ae25c
+
+pkgname = dota2-minify-rc-bin
