@@ -30,17 +30,17 @@ prepare() {
   cd "$_pkgsrc"
   python -m venv venv
   source venv/bin/activate
+  pip install -r requirements.txt
+  pip install pyinstaller
+  cd frontend
+  npm install
 }
 
 build() {
   cd "$_pkgsrc"
   cd frontend
-  npm install
   npm run build
   cd ..
-  pip install -r requirements.txt
-  pip install pyinstaller 
-
   pyinstaller main.py --name BiliLiveTool --onefile \
   --add-data "frontend/dist:frontend/dist" \
   --add-data "bilibili.ico:." \
