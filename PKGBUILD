@@ -1,8 +1,9 @@
-# Maintainer: Rafael Silva <perigoso@riseup.net>
+# Maintainer: Popolon <popolon At popolon dot org>
+# Contributor: Rafael Silva <perigoso@riseup.net>
 
 _modulename='sphinxcontrib.asciinema'
 pkgname="python-${_modulename/./-}"
-pkgver=0.3.7
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Embed asciinema casts in your Sphinx docs.'
 arch=('any')
@@ -14,8 +15,8 @@ depends=(
 makedepends=(
   'python-setuptools'
 )
-source=("https://files.pythonhosted.org/packages/source/${_modulename::1}/${_modulename}/${_modulename}-${pkgver}.tar.gz")
-b2sums=('6722d0bf535368b9e1e62000eff874a7480b3c8d4842419bd45fb1a6fbee9c7ea2daf5789e47b090ff89598084ddca0a4bd42862fffd7a6b7b5d609e4bb0268a')
+source=("https://github.com/divi255/${_modulename}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('0776967b3131dc967eaaa1e11bf20141c2b658a358124767c9baf7cec6294e9779959f6c08dfa435cee8a20962964885355f146d2ce327ffdb6fa4c6f6c63c16')
 
 build() {
   cd "${_modulename}-${pkgver}"
