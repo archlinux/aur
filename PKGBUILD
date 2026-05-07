@@ -4,7 +4,7 @@
 pkgname=python-viztracer
 _pkgname=viztracer
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VizTracer is a low-overhead logging/debugging/profiling tool that can trace and visualize your python code execution.'
 arch=('x86_64')
 url="https://github.com/gaogaotiantian/viztracer"
