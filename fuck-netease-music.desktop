@@ -6,4 +6,4 @@ Exec=fuck-netease-music %U
 Terminal=false
 Categories=AudioVideo;Audio;Player;
 StartupNotify=true
-Icon=audio-x-generic
+Icon=fuck-netease-music
