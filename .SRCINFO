@@ -1,7 +1,7 @@
 pkgbase = procmon
 	pkgdesc = Trace syscall activity tool
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://github.com/microsoft/ProcMon-for-Linux
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = procmon
 	depends = sysinternalsebpf
 	depends = zlib
 	depends = zstd
-	source = procmon-2.2.0.tar.gz::https://github.com/microsoft/ProcMon-for-Linux/archive/refs/tags/2.2.0.tar.gz
-	sha256sums = 3c8be7f3f67249315d6b7258419dff3880bf342868502bcebe760a2aaac15cd9
+	source = procmon-2.2.1.tar.gz::https://github.com/microsoft/ProcMon-for-Linux/archive/refs/tags/2.2.1.tar.gz
+	sha256sums = 7e596d473bcfcb26cad1e04dd8ffc08a32d41a848d10b694b86124a496e7df69
 
 pkgname = procmon
