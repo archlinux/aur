@@ -1,8 +1,8 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop
-pkgver=1.14.40
-pkgrel=2
+pkgver=1.14.41
+pkgrel=1
 pkgdesc='OpenCode desktop app (built from source, runs on system electron41)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/anomalyco/opencode'

@@ -1,7 +1,7 @@
 pkgbase = opencode-desktop
 	pkgdesc = OpenCode desktop app (built from source, runs on system electron41)
-	pkgver = 1.14.40
-	pkgrel = 2
+	pkgver = 1.14.41
+	pkgrel = 1
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = opencode-desktop
 	replaces = opencode-desktop-electron
 	options = !strip
 	options = !debug
-	source = opencode-desktop::git+https://github.com/anomalyco/opencode.git#tag=v1.14.40
+	source = opencode-desktop::git+https://github.com/anomalyco/opencode.git#tag=v1.14.41
 	source = opencode-desktop.sh
 	source = relax-bun-version.patch
 	source = set-desktop-name.patch
