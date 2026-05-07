@@ -20,6 +20,7 @@ with_openal_backends = ','.join(['alsa', 'pulseaudio', 'portaudio', 'oss'])
 with_system_libogg ='yes'
 with_system_libvorbis ='yes'
 with_system_libtheora ='yes'
+with_system_libopus ='yes'
 with_system_fox ='no'
 with_system_dragonscript = 'no'
 with_system_libffi = 'no'           # smalltalk only
