@@ -1,0 +1,55 @@
+post_install() {
+    # Create ZED SDK symlink for compatibility with hardcoded runtime paths
+    if [ ! -e /usr/local/zed ]; then
+        ln -sf /opt/zed /usr/local/zed
+    fi
+    # Create CUDA symlink for compatibility with binaries expecting /usr/local/cuda
+    if [ -d /opt/cuda ] && [ ! -e /usr/local/cuda ]; then
+        ln -sf /opt/cuda /usr/local/cuda
+    fi
+    ldconfig
+    cat << EOF
+
+==> ZED SDK $1 installed to /opt/zed
+==> Tool wrappers installed to /usr/bin/ (ZED_Studio, ZED_Explorer, ZED_Diagnostic, etc.)
+==> To install the Python API, run:
+      python /opt/zed/get_python_api.py
+==> CMake config available at /usr/lib/cmake/zed/
+
+==> IMPORTANT: USBFS memory buffer configuration
+    A tmpfiles.d rule and modprobe.d config have been installed to set
+    usbfs_memory_mb=256 at boot. This works on most systems automatically.
+    For multi-camera setups, increase proportionally (e.g., 512 for 2 cameras)
+    or set to 0 for unlimited by editing:
+      /usr/lib/tmpfiles.d/zed-usbfs.conf
+      /usr/lib/modprobe.d/zed-usbfs.conf
+
+==> WARNING: ASMedia USB controller incompatibility
+    ASMedia USB controllers (ASM2142, ASM3142, ASM3242) are known to cause
+    silent failures with ZED cameras. V4L2 streaming may hang indefinitely.
+    Use AMD native (Matisse, Renoir, X470+) or Intel XHCI controllers instead.
+
+==> Make sure your user is in the 'video' group:
+      sudo usermod -aG video \$USER
+
+==> Reboot required for udev rules and USBFS changes to take effect.
+    (Or run: udevadm control --reload-rules && udevadm trigger)
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+    # Fix permissions on resources directory for existing installations
+    if [ -d /opt/zed/resources ]; then
+        chmod 1777 /opt/zed/resources
+    fi
+}
+
+post_remove() {
+    # Clean up compatibility symlink if it points to our target
+    if [ "$(readlink -f /usr/local/zed 2>/dev/null)" = "/opt/zed" ]; then
+        rm -f /usr/local/zed
+    fi
+    ldconfig
+}
