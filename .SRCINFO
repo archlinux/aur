@@ -1,6 +1,6 @@
 pkgbase = python-hyprland-state
 	pkgdesc = Live state interface for Hyprland — options, animations, monitors, binds, and devices
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/BlueManCZ/hyprland-state
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-hyprland-state
 	makedepends = python-wheel
 	depends = python
 	depends = hyprland
-	source = python-hyprland-state-0.2.0.tar.gz::https://github.com/BlueManCZ/hyprland-state/archive/v0.2.0.tar.gz
-	sha256sums = 250ec6ff7434edb186ea12202fbc81fc8d5b9b835e8ba1ee353ac9c675165a78
+	source = python-hyprland-state-0.2.1.tar.gz::https://github.com/BlueManCZ/hyprland-state/archive/v0.2.1.tar.gz
+	sha256sums = 27e134c54ce0d7569ba3d22e053d8a0e495b97edfa96bed6c9e6b858bad35b4b
 
 pkgname = python-hyprland-state
