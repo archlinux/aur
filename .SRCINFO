@@ -1,6 +1,6 @@
 pkgbase = td-system-tools
 	pkgdesc = Tools for Basic System Management
-	pkgver = 2.5.4
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = https://github.com/dreibh/system-tools
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = td-system-tools
 	conflicts = td-system-tools
 	conflicts = system-tools
 	options = !debug
-	source = td-system-tools::git+https://github.com/dreibh/system-tools.git#tag=td-system-tools-2.5.4
-	sha256sums = cb64402a3cac1ab3e8c5d3710692bd0df7286b9f2cfef3879cc917844a0a42c4
+	source = td-system-tools::git+https://github.com/dreibh/system-tools.git#tag=td-system-tools-2.5.5
+	sha256sums = d7c0dd4ecd06fb07dd7a73557528c694081f8348c51e814627bdb74b39204e22
 
 pkgname = td-system-tools
