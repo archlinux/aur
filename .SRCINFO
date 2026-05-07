@@ -1,7 +1,7 @@
 pkgbase = brief
 	pkgdesc = A GTK4 application for browsing tldr-pages (community-maintained command line help pages).
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/shonebinu/Brief
 	arch = any
 	license = GPL-3.0-or-later
@@ -21,9 +21,9 @@ pkgbase = brief
 	depends = python-requests
 	depends = python-urllib3
 	options = !strip
-	source = git+https://github.com/shonebinu/Brief.git#tag=v0.3.1
+	source = git+https://github.com/shonebinu/Brief.git#tag=v0.3.2
 	source = git+https://github.com/tldr-pages/tldr.git
-	sha256sums = 543b84ef464ed418f398490bdb6e9eb69850d31850acc04adc5a7570382f5c29
+	sha256sums = 5d7f349a76d0a324a5f7abf0ee8131b275951f06ca1527a566f6719302ba2356
 	sha256sums = SKIP
 
 pkgname = brief
