@@ -21,7 +21,7 @@ url="${_url_github}"
 
 provides=("${_execname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
-depends=('python' 'python-textual' 'python-packaging' 'python-rich' 'python-pyperclip')
+depends=('python' 'python-typing_extensions' 'python-textual' 'python-click' 'python-rich')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 # source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/${pkgver}.tar.gz")
