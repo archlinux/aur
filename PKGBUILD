@@ -3,7 +3,7 @@
 _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.118.1
+pkgver=1.119.0
 _electronversion=39
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)"
@@ -48,11 +48,11 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
-sha256sums=('dc5406ddd35ed5e3be39fe0a5a460f061aff3d296dc70124fd3eface8444c947'
-            'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('c77af92942f7600ea14340796df087e36efb2918d8c655d8e690f9996ad26e42')
-sha256sums_armv7h=('eba8f50bc8f02d47eb37ba87807f6d30f5cc45bc321da5bec53f24074676a0b7')
-sha256sums_x86_64=('f4ce4e9a895b18e4929e0fdbfad3591960a85404652e6df406ee63b8d2d65562')
+sha256sums=('aa4df0bcfa036b54b74a4f059d29e3a225f41c9fae4c36c6ec6d388349d7ee2b'
+            '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
+sha256sums_aarch64=('5479ec16423e061b7ed7df0c1c2f886dbb6866d55226f924ef98e2b17cb1eefe')
+sha256sums_armv7h=('271c67f19eaa30af955c27b3921da8d13cd61387c9302f85c6ea2d6218969183')
+sha256sums_x86_64=('164dc1539ef51b10bc997ef258a3bc08ec80bc1435b5c423c117209e3058c5d0')
 pkgver() {
     cd "${srcdir}/usr/share/${_appname}/resources/app"
     grep '"version": ' package.json | awk '{print $2}' | tr -d '"' | tr -d ','
@@ -77,21 +77,12 @@ prepare() {
         s/Icon=vs${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
     ln -sf "/usr/bin/rg" "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@vscode/ripgrep/bin/rg"
-    case "${CARCH}" in
-        aarch64)
-            find "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@anthropic-ai/sandbox-runtime" \
-                -type d -name "x64" -exec rm -rf {} +
-            ;;
-        x86_64)
-            find "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@anthropic-ai/sandbox-runtime" \
-                -type d -name "arm64" -exec rm -rf {} +
-            ;;
-    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/usr/share/${_appname}/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    cp -a "${_app_dir}/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/appdata/${_appname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-url-handler.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
