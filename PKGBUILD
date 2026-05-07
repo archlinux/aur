@@ -1,8 +1,8 @@
-# Maintainer: Ville Aakko <ville.aakko@kapsi.fi>
+# Maintainer: Ville Aakko <wpenguin <AT> kapsi DOT fi>
 
 pkgname="thelasteichhof"
-pkgver="2.11W"
-pkgrel=3
+pkgver="2.12w"
+pkgrel=1
 
 pkgdesc="A game from 1993, Allegro4 port with experimental minor improvements."
 
@@ -16,7 +16,7 @@ depends=('allegro4' 'glibc')
 
 source=("$pkgname-$pkgver-src.tar.gz"::"https://gitea.com/WildPenguin/TheLastEichhof/archive/v${pkgver}.tar.gz")
 
-sha256sums=('acc69cae7ea77d4f759b838535d316448f6fe47c555a78b22949af396b8853db')
+sha256sums=('6ad29fdebcb4a69bb9775c992eb04a2f36fa2180f7a7abb5a7c6becbbfee471b')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -35,6 +35,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" install
-  install -Dm644 LICENSE.GPL -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }

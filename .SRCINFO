@@ -1,13 +1,13 @@
 pkgbase = thelasteichhof
 	pkgdesc = A game from 1993, Allegro4 port with experimental minor improvements.
-	pkgver = 2.11W
-	pkgrel = 3
+	pkgver = 2.12w
+	pkgrel = 1
 	url = https://gitea.com/WildPenguin/TheLastEichhof/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = allegro4
 	depends = glibc
-	source = thelasteichhof-2.11W-src.tar.gz::https://gitea.com/WildPenguin/TheLastEichhof/archive/v2.11W.tar.gz
-	sha256sums = acc69cae7ea77d4f759b838535d316448f6fe47c555a78b22949af396b8853db
+	source = thelasteichhof-2.12w-src.tar.gz::https://gitea.com/WildPenguin/TheLastEichhof/archive/v2.12w.tar.gz
+	sha256sums = 6ad29fdebcb4a69bb9775c992eb04a2f36fa2180f7a7abb5a7c6becbbfee471b
 
 pkgname = thelasteichhof
