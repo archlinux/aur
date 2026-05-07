@@ -1,0 +1,19 @@
+pkgbase = tfimport-bin
+	pkgdesc = The auto-pilot for tfimports
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://tfimport.cooolapso.sh
+	license = MIT
+	conflicts = tfimport
+	provides = tfimport
+	arch = aarch64
+	source_aarch64 = https://github.com/coolapso/tfimport/releases/download/v0.1.0/tfimport_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 69ba2c557ee2bc327986f7e4b32c9434823805c00a46daef4815e6714863923e
+	arch = i686
+	source_i686 = https://github.com/coolapso/tfimport/releases/download/v0.1.0/tfimport_0.1.0_linux_386.tar.gz
+	sha256sums_i686 = aeccdbe4e20260fee076e93b2bfa6aad37f56d0bb58f25e77ead1c036e6409ed
+	arch = x86_64
+	source_x86_64 = https://github.com/coolapso/tfimport/releases/download/v0.1.0/tfimport_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 93df8519931c1fe66b7ca33bd777cd78e9b3f18590aed27d8587a2381d1c563c
+	
+pkgname = tfimport-bin
