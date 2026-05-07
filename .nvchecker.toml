@@ -1,0 +1,4 @@
+[python-ahrs]
+source = "git"
+git = "https://github.com/Mayitzin/ahrs.git"
+prefix = "v"
