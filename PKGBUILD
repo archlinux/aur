@@ -10,7 +10,7 @@
 
 pkgname=pcl
 pkgver=1.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=('x86_64')
 url='https://www.pointclouds.org'

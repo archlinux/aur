@@ -1,0 +1,4 @@
+[pcl]
+source = "git"
+git = "https://github.com/PointCloudLibrary/pcl.git"
+prefix = "pcl-"
