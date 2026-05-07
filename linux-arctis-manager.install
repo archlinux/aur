@@ -9,7 +9,7 @@ post_install() {
     echo -e "${_y}::${_r} -----------------------------------------------------------------------"
     echo -e "${_y}::${_r} TIP: To autostart the system tray app on login, run:"
     echo -e "${_y}::${_r}"
-    echo -e "${_y}::${_r}    ${_b}cp ~/.local/share/applications/lam-gui-tray.desktop ~/.config/autostart/${_r}"
+    echo -e "${_y}::${_r}    ${_b}cp ~/.local/share/applications/ArctisManagerSystray.desktop ~/.config/autostart/${_r}"
     echo -e "${_y}::${_r} -----------------------------------------------------------------------"
     echo ""
 }
