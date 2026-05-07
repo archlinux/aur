@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-nox-static-bin
 	pkgdesc = An advanced BitTorrent client programmed in C++. Without GUI. Static binary.
-	pkgver = 5.1.4_v2.0.12
+	pkgver = 5.2.0_v2.0.12
 	pkgrel = 1
 	url = https://github.com/userdocs/qbittorrent-nox-static
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = qbittorrent-nox-static-bin
 	provides = qbittorrent-nox
 	conflicts = qbittorrent-nox
 	options = !debug
-	source = qbittorrent-nox::https://github.com/userdocs/qbittorrent-nox-static/releases/download/release-5.1.4_v2.0.12/x86_64-qbittorrent-nox
-	source = qbittorrent-nox@.service::https://raw.githubusercontent.com/qbittorrent/qBittorrent/refs/tags/release-5.1.4/dist/unix/systemd/qbittorrent-nox%40.service.in
-	sha256sums = 1c8117d597c8d48359e00e9d04c36b5bd7ca8844e658452f8d515de3386c5af9
+	source = qbittorrent-nox::https://github.com/userdocs/qbittorrent-nox-static/releases/download/release-5.2.0_v2.0.12/x86_64-qbittorrent-nox
+	source = qbittorrent-nox@.service::https://raw.githubusercontent.com/qbittorrent/qBittorrent/refs/tags/release-5.2.0/dist/unix/systemd/qbittorrent-nox%40.service.in
+	sha256sums = 4bc42999dfc19d8f8741f46390a7237f34cf0b82ef8af00593d901460f9e9936
 	sha256sums = cad6f76111bfbcfbb7ed46ae2bc46557636905418e9c055c106fdc61bfd0c7a3
-	sha512sums = 753ba504404c953ad54121b8bdbcce6bf69349c0c016ec9c587f1779a3c80a4be5832c6ba0c53864a5a71d65f6767e9cf5a2dd580ad807f3c7fa2d45ead90805
+	sha512sums = e36bfb063e749c98a6c05368b6ac95e02fd17e1f05550c81455738cbf1fb721494aacf50e75b6041d37bab031482b27b8579d711c02c28f0d63f845a09e112da
 	sha512sums = e4c5c99fff4f48ab82a8790d2c5f73a80b099f368b541530dcd740f72a0870087d98031947e585296b7d0494fcd67394473929be2b5deca952bdc7d92fb8b091
 
 pkgname = qbittorrent-nox-static-bin
