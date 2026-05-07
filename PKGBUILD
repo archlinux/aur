@@ -8,7 +8,8 @@ pkgdesc="Binary editor like vI"
 
 pkgver=3.5.1.68
 pkgrel=1
-_gitversion=v${pkgver}-stabe # FIX!
+_gitsuffix=stabe
+_gitversion=v${pkgver}-${_gitsuffix}
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -23,7 +24,7 @@ source=("${_appname}-${pkgver}.zip::${_ghurl}/archive/refs/tags/${_gitversion}.z
 sha256sums=('3bd275e4fc2c2ae90435a5711cd36b417226780d2fb8d9099961c9d1212b0271')
 
 package() {
-	cd "${srcdir}/${_appname}-${pkgver}-stable/" || exit
+	cd "${srcdir}/${_appname}-${pkgver}-${_gitsuffix}/" || exit
 
 	install -Dm755 "${_appname}.py" "${pkgdir}/usr/bin/${_appname}"
 
