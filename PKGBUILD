@@ -1,12 +1,12 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-explorer
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='ASE Hierarchical Project Explorer with NerdFont Icons'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-explorer'
 license=('custom')
-depends=('gtkmm-4.0' 'libadwaita' 'ttf-fira-code' 'ttf-nerd-fonts-symbols-mono' 'nlohmann-json')
+depends=('gtkmm-4.0' 'libadwaita' 'ttf-fira-code' 'ttf-nerd-fonts-symbols-mono' 'nlohmann-json' 'libgit2')
 makedepends=('cmake' 'ninja' 'gcc' 'pkgconf' 'git')
 source=(
     "ase-client-explorer::git+https://github.com/antarien/ase-client-explorer.git"
@@ -14,12 +14,16 @@ source=(
     "ase-fileio::git+https://github.com/antarien/ase-fileio.git"
     "ase-json::git+https://github.com/antarien/ase-json.git"
     "ase-adp-gtk::git+https://github.com/antarien/ase-adp-gtk.git"
+    "ase-adp-libgit2::git+https://github.com/antarien/ase-adp-libgit2.git"
+    "ase-adp-libcuckoo::git+https://github.com/antarien/ase-adp-libcuckoo.git"
     "file-icons.hpp"
     "colors.hpp"
     "design_tokens.hpp"
     "ui_icons.hpp"
 )
 sha256sums=(
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -41,6 +45,8 @@ prepare() {
     mv ase-fileio           ase-root/foundation/
     mv ase-json             ase-root/foundation/
     mv ase-adp-gtk          ase-root/adapter/
+    mv ase-adp-libgit2      ase-root/adapter/
+    mv ase-adp-libcuckoo    ase-root/adapter/
     mv ase-client-explorer  ase-root/clients/
     install -m644 -t ase-root/clients/sha-client-web/sha-web-console/generated/ \
         "${srcdir}/file-icons.hpp" \
