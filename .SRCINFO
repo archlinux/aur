@@ -1,6 +1,6 @@
 pkgbase = mailspring-git
 	pkgdesc = A beautiful, fast and fully open source mail client.(Use system-wide electron)
-	pkgver = 1.19.1.r0.g66f9e22
+	pkgver = 1.21.0.r2.g691a3d4
 	pkgrel = 1
 	url = https://getmailspring.com/
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = mailspring-git
 	depends = electron41
 	depends = db5.3
 	depends = openssl-1.0
-	provides = mailspring=1.19.1
+	provides = mailspring=1.21.0
 	conflicts = mailspring
 	source = mailspring.git::git+https://github.com/Foundry376/Mailspring.git
 	source = mailspring.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = mailspring-git
