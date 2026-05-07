@@ -1,6 +1,6 @@
 pkgbase = openzl-git
 	pkgdesc = A novel data compression framework
-	pkgver = r114.973a44c
+	pkgver = r587.3dceb648
 	pkgrel = 1
 	url = https://github.com/facebook/openzl
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = openzl-git
 	makedepends = git
 	depends = glibc
 	provides = openzl
-	provides = libopenzl.so=0.1.0
+	provides = libopenzl.so=0.2.0
 	conflicts = openzl
 	source = git+https://github.com/facebook/openzl.git
 	sha256sums = SKIP
