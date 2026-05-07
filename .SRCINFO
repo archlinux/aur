@@ -1,0 +1,17 @@
+pkgbase = reticode-git
+	pkgdesc = ReTI assembler, disassembler, emulator and related tools (Armin Biere)
+	pkgver = r102.a8616ff
+	pkgrel = 1
+	url = https://github.com/arminbiere/reticode
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	provides = reticode
+	conflicts = reticode
+	source = reticode::git+https://github.com/arminbiere/reticode.git
+	sha256sums = SKIP
+
+pkgname = reticode-git

@@ -1,0 +1,5 @@
+src/
+pkg/
+reticode/
+*.pkg.tar.zst
+*.pkg.tar.xz
