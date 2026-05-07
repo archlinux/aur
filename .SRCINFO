@@ -1,0 +1,31 @@
+pkgbase = mathics3-script
+	pkgdesc = A more advanced command-line interface to Mathics.
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://mathics.org/
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	depends = mathics3>=10.0.0
+	depends = mathics3-scanner>=10.0.0
+	depends = python-click>=8.0.0
+	depends = python-colorama
+	depends = python-columnize
+	depends = python-networkx
+	depends = python-prompt_toolkit>=3.0.18
+	depends = python-pygments>=2.9.0
+	depends = mathics3-pygments>=10.0.0
+	depends = python-term-background>=1.0.5
+	optdepends = python-yaml: Used for admin-tools/make-tables.sh to build JSON tables
+	optdepends = python-pyqt6: For interactive display of graphs via matplotlib
+	optdepends = python-cairosvg: For rendering plots and graphs as SVGs via matplotlib
+	optdepends = python-cson: for xasy
+	optdepends = python-matplotlib: For rendering SVG plots
+	source = mathics3-script-10.0.0.tar.gz::https://github.com/Mathics3/mathics3-script/releases/download/10.0.0/mathicsscript-10.0.0.tar.gz
+	sha256sums = aeacd508ccf78a1c06007d815209f29c81422ac4861f24f502c6aa69f7622f4f
+
+pkgname = mathics3-script
