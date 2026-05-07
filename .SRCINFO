@@ -19,6 +19,9 @@ pkgbase = mterminal-git
 	provides = mterminal
 	conflicts = mterminal
 	conflicts = mterminal-bin
+	options = !strip
+	options = !debug
+	options = !lto
 	source = mterminal::git+https://github.com/arthurr0/mTerminal.git
 	sha256sums = SKIP
 

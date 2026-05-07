@@ -24,6 +24,7 @@ makedepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname" "mterminal-bin")
+options=('!strip' '!debug' '!lto')
 source=("$_pkgname::git+https://github.com/arthurr0/mTerminal.git")
 sha256sums=('SKIP')
 
