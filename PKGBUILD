@@ -2,7 +2,7 @@
 
 pkgname=python-dbgprobe-mcp-server
 _name=${pkgname#python-}
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Model Context Protocol (MCP) server that lets AI agents interact with on-chip debug probes (J-Link, CMSIS-DAP, ST-Link, etc.)"
 provides=(${pkgname})
@@ -34,10 +34,11 @@ makedepends=(
 optdepends=(
     'jlink-software-and-documentation: Segger JLink software & documentation pack for Linux'
     'openocd: Debugging, in-system programming and boundary-scan testing for embedded target devices'
+    'stlink: Open source STM32 MCU programming toolset'
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('044bc79e6de92d8611d848a9793b7b68bd38e24c04ea74d9a0b72daa5a9055cf')
+sha256sums=('42e0d1acff225037d4f4235b7f65fb94c18ba340fa96590568dd7ccdedccb7bf')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

@@ -1,6 +1,6 @@
 pkgbase = python-dbgprobe-mcp-server
 	pkgdesc = Model Context Protocol (MCP) server that lets AI agents interact with on-chip debug probes (J-Link, CMSIS-DAP, ST-Link, etc.)
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/es617/dbgprobe-mcp-server
 	arch = any
@@ -20,9 +20,10 @@ pkgbase = python-dbgprobe-mcp-server
 	depends = python-mcp
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	optdepends = openocd: Debugging, in-system programming and boundary-scan testing for embedded target devices
+	optdepends = stlink: Open source STM32 MCU programming toolset
 	provides = python-dbgprobe-mcp-server
 	conflicts = python-dbgprobe-mcp-server
-	source = dbgprobe-mcp-server::git+https://github.com/es617/dbgprobe-mcp-server.git#tag=v0.1.3
-	sha256sums = 044bc79e6de92d8611d848a9793b7b68bd38e24c04ea74d9a0b72daa5a9055cf
+	source = dbgprobe-mcp-server::git+https://github.com/es617/dbgprobe-mcp-server.git#tag=v0.1.4
+	sha256sums = 42e0d1acff225037d4f4235b7f65fb94c18ba340fa96590568dd7ccdedccb7bf
 
 pkgname = python-dbgprobe-mcp-server
