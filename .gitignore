@@ -1,2 +1,27 @@
-# Local builds of AUR dependencies
-deps/
+# Ignore everything by default
+*
+
+# Whitelist the essentials
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+
+# Whitelist auxiliary files
+!*.install
+!*.patch
+!*.diff
+!*.service
+!*.desktop
+!*.conf
+!*.png
+!*.svg
+!*.sysusers
+!*.tmpfiles
+!LICENSE
+!README.md
+!CHANGELOG.md
+!*.ini
+!*.txt
+
+# Package-specific files
+!ChangeLog
