@@ -1,0 +1,22 @@
+pkgbase = quickflare
+	pkgdesc = A native-feeling Cloudflare Tunnel GUI for Linux, macOS and Windows.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Aloys233/quickflare
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = pkgconf
+	makedepends = librsvg
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = libsecret
+	depends = openssl
+	optdepends = cloudflared: required to create Cloudflare tunnels
+	source = quickflare-0.1.0.tar.gz::https://github.com/Aloys233/quickflare/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6d29cfb1c6fdb04302b4745492269d2fb186fbd7bec5c78da21028d1b6d496ac
+
+pkgname = quickflare
