@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Rice Cooker
+Comment=a visual (toy) tool for ricing
+Exec=rice-cooker %U
+Icon=rice-cooker
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=rice;hyprland;quickshell;theme;desktop;
+StartupWMClass=rice-cooker
