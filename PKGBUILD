@@ -1,4 +1,3 @@
-# Contributor: djsigmann <aur+djsigmann@protonmail.com>
 # Maintainer: djsigmann <aur+djsigmann@protonmail.com>
 
 # shellcheck disable=SC2164
@@ -7,7 +6,7 @@ _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
 pkgver=2.1.0.9.ga5a431f
-pkgrel=1
+pkgrel=2
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
