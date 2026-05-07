@@ -2,13 +2,13 @@
 # Contributor: loathingkernel <loathingkernel @at gmail .dot com>
 pkgname=d7vk
 pkgver=1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Vulkan-based implementation of D3D7, 6, 5 and 3 for Linux / Wine, spun off from DXVK."
 arch=('x86_64' 'i686')
 url="https://github.com/WinterSnowfall/d7vk"
 license=('Zlib')
 depends=('bash')
-makedepends=('mingw-w64-gcc' 'meson' 'ninja' 'python')
+makedepends=('mingw-w64-gcc' 'meson' 'ninja' 'python' 'git' 'glslang')
 install="${pkgname}.install"
 source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/WinterSnowfall/mingw-directx-headers.git"
