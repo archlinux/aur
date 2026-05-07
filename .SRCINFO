@@ -1,6 +1,6 @@
 pkgbase = pi
 	pkgdesc = AI coding agent for the terminal — minimal, extensible and optimized for tool use
-	pkgver = 0.73.0
+	pkgver = 0.73.1
 	pkgrel = 1
 	url = https://github.com/badlogic/pi-mono
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pi
 	optdepends = tmux: for background bash capabilities
 	optdepends = fd: system-provided backend for the find tool
 	optdepends = ripgrep: system-provided backend for the grep tool
-	source = pi-0.73.0.tar.gz::https://github.com/badlogic/pi-mono/archive/refs/tags/v0.73.0.tar.gz
-	sha256sums = 6fa0ad411225a4e7860332ad0d250250f3d5d4ebdfe00234eb743b41ef298ebf
+	source = pi-0.73.1.tar.gz::https://github.com/badlogic/pi-mono/archive/refs/tags/v0.73.1.tar.gz
+	sha256sums = 993469942c1a20ce58010106b3743b5e2921f35c5b12dbed6ac9db9d0bc0d048
 
 pkgname = pi
