@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=echo-music-bin
 _pkgname=EchoMusic
-pkgver=2.2.2
-_electronversion=41
+pkgver=2.2.3
+_electronversion=42
 pkgrel=1
 pkgdesc="A minimalist third-party Kugou concept music player. (Prebuilt version. Use system-wide electron)🎉 一个简约的第三方酷狗概念版音乐播放器"
 arch=(
@@ -19,7 +19,6 @@ conflicts=(
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    #'mpv'
 )
 makedepends=(
     'asar'
@@ -35,8 +34,8 @@ source_aarch64=( "${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/downloa
 source_x86_64=( "${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('8b9f721a54a564c55de17c8082a2a6466568309b5a026a989f12a711bb78edbf'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('f93dbebc94cc61f3c8160f1b2aa06a3a3de92a08ba83646fe2171415f32a9c7f')
-sha256sums_x86_64=('a5640966b2571be1ae4b9a7e65e6045ae837d80a7ce6038c0352177ad7c9a8fb')
+sha256sums_aarch64=('537693e69f2cc1ddc749b5a83f550dc5725baa4b94e3edbd6418a488affa2277')
+sha256sums_x86_64=('caa0396ef4531d3a0635fa5eda6b5c54a864c021e75a746b7da707139f2fc2fd')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
@@ -70,7 +69,6 @@ prepare() {
     find "${srcdir}/app.asar.unpacked/dist-electron" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_pkgname}/resources/app.asar"
-    #ln -sf "/usr/bin/mpv" "${srcdir}/opt/${_pkgname}/resources/mpv/mpv"
     find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -type d \( -name "*darwin*" -o -name "*win32*" \) -exec rm -rf {} +
 }
 
