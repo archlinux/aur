@@ -1,12 +1,13 @@
 pkgbase = starpsx-bin
-	pkgdesc = A cross-platform fast Sony PlayStation 1 emulator written in Rust
-	pkgver = 0.8.1
+	pkgdesc = A cross-platform Sony PlayStation 1 emulator written in Rust
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/kaezrr/starpsx
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = starpsx
-	source = https://github.com/kaezrr/starpsx/releases/download/v0.8.1/starpsx-linux-x86_64.zip
-	sha256sums = e359075f501b4891bec27c122b170e42d3c6315ecd54eeb15ad99684a2cc056e
+	conflicts = starpsx
+	source = starpsx-bin-0.8.3::https://github.com/kaezrr/starpsx/releases/download/v0.8.3/StarPSX-0.8.3-linux-x86_64.AppImage
+	sha256sums = c25288505b8765d3a9d8f0f4ae2e0f41916c901f9ec5aa252a313c1550ba5ca8
 
 pkgname = starpsx-bin
