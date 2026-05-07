@@ -1,0 +1,14 @@
+pkgbase = alarmng
+	pkgdesc = Light & fast TUI alarm clock using systemd.timer (includes alarm track)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/AmorphousXubstance/alarmng
+	arch = any
+	license = GPL3
+	license = custom:CC BY 4.0
+	depends = python
+	depends = pipewire
+	source = alarmng-v0.9.0.tar.gz::https://github.com/AmorphousXubstance/alarmng/releases/download/Release_v0.9.0/alarmng-v0.9.0.tar.gz
+	sha256sums = fad38b9afa8000a59d8d5ecdbb3ffdbc420a5f6cb4c7f698266ef6b9d4c293b1
+
+pkgname = alarmng
