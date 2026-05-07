@@ -1,6 +1,6 @@
 pkgbase = speedify
 	pkgdesc = Use multiple internet connections in parallel
-	pkgver = 16.6.2.12924
+	pkgver = 16.7.0.12928
 	pkgrel = 0
 	url = https://speedify.com/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = speedify
 	depends = lsof
 	depends = net-tools
 	provides = speedify
-	source_x86_64 = http://apt.connectify.me/pool/main/s/speedify/speedify_16.6.2-12924_amd64.deb
-	md5sums_x86_64 = 426a085e0e702bb7c6ecf00baa144684
-	sha256sums_x86_64 = 922526156c133c2f5fe2ce78ecd1b9db91f24beeeae300baa9b05535f56e947f
-	sha512sums_x86_64 = d477bd247418982268fcad21469f2d837475b9b18c7186a5495a61c032c8b9483dcf168aac1e7c6db6e66a78d7ac5400f6aed333093bbc8028b0a350cfd9c7e7
-	source_aarch64 = http://apt.connectify.me/pool/main/s/speedify/speedify_16.6.2-12924_arm64.deb
+	source_x86_64 = http://apt.connectify.me/pool/main/s/speedify/speedify_16.7.0-12928_amd64.deb
+	md5sums_x86_64 = d8bf4df8d6fa7f247305039c38de5124
+	sha256sums_x86_64 = 03becb60118b020a11155eb8fd99a94cbefa350c7ac47ab46bb95e0d88bd2338
+	sha512sums_x86_64 = fe589286df541873d5e64bcac48f3220002368a50c0f76f3e214f60fdc7fc2e2d2f4fa800facdb4607ff682887023c7817c8442238e12c58f1c2b0ee4a61a048
+	source_aarch64 = http://apt.connectify.me/pool/main/s/speedify/speedify_16.7.0-12928_arm64.deb
 	md5sums_aarch64 = SKIP
-	source_armv7h = http://apt.connectify.me/pool/main/s/speedify/speedify_16.6.2-12924_armhf.deb
+	source_armv7h = http://apt.connectify.me/pool/main/s/speedify/speedify_16.7.0-12928_armhf.deb
 	md5sums_armv7h = SKIP
 
 pkgname = speedify
