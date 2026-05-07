@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Tiny self-hosted SSH/TUI workspace chat for small teams and operators who want real-time collaboration over SSH"
 
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('32d42aefe9d450991c523fd4706cae67bfb01610aff680f7731858929d5b64df'
+sha256sums=('e85c686244832e0c837ae0927fe53949ae3ddec169ef712d376116bd55dfab01'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('a769550f82bc28b20582ff3824ffd27573c6ed1c9f70003e6cc35114639dbe7d')
-sha256sums_aarch64=('d9327444fd9ef951243f1c99088091695fd0add25ef17ac6607a8db8d7b52420')
+sha256sums_x86_64=('d4b230a1702f8f1ff248838dcee5f4734efa5b30dcf3314496f53bf05b98f45c')
+sha256sums_aarch64=('a65b2aa89615a56f5c1d0696a467903528364c3ae5660bd141f4c30b1f4ce917')
 
 
 case ${CARCH} in
