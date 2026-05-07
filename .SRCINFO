@@ -1,6 +1,6 @@
 pkgbase = refrain
 	pkgdesc = Discord Rich Presence for Apple Music on Linux
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/Rockykln/refrain
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = refrain
 	depends = python-dbus
 	depends = pyside6
 	optdepends = python-gobject: enables MPRIS-server publication so Plasma media controls reach Refrain
-	source = refrain-0.2.3.tar.gz::https://github.com/Rockykln/refrain/archive/v0.2.3.tar.gz
-	sha256sums = 29f2371393d855f508730238a096cbdc85219616a9fab240745c1072a005b23d
+	source = refrain-0.2.4.tar.gz::https://github.com/Rockykln/refrain/archive/v0.2.4.tar.gz
+	sha256sums = cb4e712a2809bd237c4ccaebd2cc81afa28286b4d260072f74bf94ce530a0ea3
 
 pkgname = refrain
