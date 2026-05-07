@@ -1,0 +1,18 @@
+pkgbase = nfp-git
+	pkgdesc = New File Processor: Run user-defined actions on new files in watched directories (development version)
+	pkgver = r62.g60d6ffe
+	pkgrel = 1
+	url = https://codeberg.org/isagalaev/nfp
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = nfp
+	conflicts = nfp
+	source = git+https://codeberg.org/isagalaev/nfp.git
+	sha256sums = SKIP
+
+pkgname = nfp-git
