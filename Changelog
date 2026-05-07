@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 3.7.0 ➙ 4.2.1
-              : 2026-04-22 ➙ 2026-05-07
+ Tags         : 3.8.0 ➙ 4.2.2
+              : 2026-04-24 ➙ 2026-05-07
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-07   : 4.2.2
+              - Small code comment clean ups - no functional change
+              - delete old now unused directories
+              - update Changelog
 
  2026-05-07   : 4.2.1
               - Make sure test suite runs in fresh set up - fixed
@@ -34,9 +39,4 @@
  2026-04-24   : 3.8.0
               - Tidy up sd-boot-efifs-update a bit
  2026-04-22   ⋯
-              - update Changelog
-
- 2026-04-22   : 3.7.0
-              - Fix typo in print statement
- 2026-04-21   ⋯
               - update Changelog
