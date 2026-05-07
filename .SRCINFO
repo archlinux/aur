@@ -1,0 +1,19 @@
+pkgbase = python-tree-sitter-groovy
+	pkgdesc = Groovy grammar for tree-sitter
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/amaanq/tree-sitter-groovy
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tree-sitter
+	source = python-tree-sitter-groovy-0.1.2.tar.gz::https://github.com/amaanq/tree-sitter-groovy/archive/refs/tags/v0.1.2.tar.gz
+	source = LICENSE
+	sha256sums = d3eafa455e3a092d79c2d3488fa58a461c1a18cdfa1b7edb22e168b513e454fe
+	sha256sums = 0eea8dc45e89deeb03c7799bbbc7b4688f365fb274562f4540ecfebdea82e727
+
+pkgname = python-tree-sitter-groovy
