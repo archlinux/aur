@@ -29,7 +29,7 @@ source_x86_64=(
     "$pkgname-$pkgver-x86_64.tar.gz::https://github.com/benzenma123/felixweb-ide/releases/download/v$pkgver/felixweb-ide-$pkgver.tar.gz"
 )
 
-sha256sums_x86_64=('754913949fd61042f4acd527dfffa8674062903d5510f3e1a9201841beb26f5d')
+sha256sums_x86_64=('79909a1aaa766e7e09295102771720ff05cea6703acc5c2ca859064c1ee0e5e0')
 
 package() {
     local srcdir_app="$srcdir/felixweb-ide-$pkgver"
