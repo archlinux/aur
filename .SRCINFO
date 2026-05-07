@@ -1,6 +1,6 @@
 pkgbase = opencode-desktop-electron-bin
 	pkgdesc = OpenCode desktop client (Electron)
-	pkgver = 1.2.26
+	pkgver = 1.14.39
 	pkgrel = 1
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = opencode-desktop-electron-bin
 	conflicts = opencode
 	options = !strip
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v1.2.26/LICENSE
-	source = opencode-electron-1.2.26-linux-x86_64.AppImage::https://github.com/anomalyco/opencode/releases/download/v1.2.26/opencode-electron-linux-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v1.14.39/LICENSE
+	source = opencode-desktop-1.14.39-linux-x86_64.AppImage::https://github.com/anomalyco/opencode/releases/download/v1.14.39/opencode-desktop-linux-x86_64.AppImage
 	sha256sums = SKIP
-	sha256sums = a1b3c1ca5287206d1c1c62e46a844f66e9dd79a0d600c1a6bc4b9a434766c272
+	sha256sums = 8dfc5424b172815b920cdd88418f98f751a3352fd94317c0f62e46adf35de097
 
 pkgname = opencode-desktop-electron-bin

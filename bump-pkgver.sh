@@ -35,21 +35,28 @@ pkgdesc="OpenCode desktop client (Electron)"
 arch=('x86_64')
 url="https://github.com/anomalyco/opencode"
 license=('MIT')
-provides=('opencode-desktop-electron')
-conflicts=('opencode-desktop-electron')
+provides=('opencode-desktop-electron' 'opencode')
+conflicts=('opencode-desktop-electron' 'opencode')
 depends=('nss' 'libnotify' 'libxss' 'xdg-utils' 'hicolor-icon-theme' 'gtk3')
 options=('!strip' '!debug')
 
 source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE"
-        "opencode-electron-${pkgver}-linux-x86_64.AppImage::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-electron-linux-x86_64.AppImage")
+        "opencode-desktop-${pkgver}-linux-x86_64.AppImage::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-x86_64.AppImage")
 
 sha256sums=('SKIP'
             'PLACEHOLDER_X86_64')
 
 package() {
-  local appimage="${srcdir}/opencode-electron-${pkgver}-linux-x86_64.AppImage"
+  local appimage="${srcdir}/opencode-desktop-${pkgver}-linux-x86_64.AppImage"
   local extractdir
   local appdir
+  local desktop_source=
+  local desktop_basename=
+  local icon_name=
+  local icon_source=
+  local startup_wm_class=
+  local candidate
+  local had_nullglob=0
   extractdir="$(mktemp -d)"
   appdir="${extractdir}/squashfs-root"
   chmod +x "$appimage"
@@ -59,22 +66,30 @@ package() {
   cp -a "$appdir"/. "${pkgdir}/opt/OpenCode/"
   find "${pkgdir}/opt/OpenCode" -type d -exec chmod 755 {} +
 
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/opencode-desktop-electron" <<'WRAPPER'
-#!/bin/sh
-export APPDIR=/opt/OpenCode
-export CHROME_DESKTOP=opencode-desktop-electron.desktop
-exec /opt/OpenCode/AppRun --no-sandbox "$@"
-WRAPPER
+  if shopt -q nullglob; then
+    had_nullglob=1
+  fi
+  shopt -s nullglob
 
-  # Expose the bundled CLI as /usr/bin/opencode
-  ln -sf "/opt/OpenCode/resources/opencode-cli" "${pkgdir}/usr/bin/opencode"
+  for candidate in "$appdir"/*.desktop "$appdir"/usr/share/applications/*.desktop; do
+    if [[ -f "$candidate" ]]; then
+      desktop_source="$candidate"
+      break
+    fi
+  done
+  [[ -n "$desktop_source" ]] || { echo "ERROR: desktop file not found"; exit 1; }
 
-  local icon_source=
-  local candidate
+  desktop_basename="$(basename "$desktop_source")"
+  icon_name="$(grep -m1 '^Icon=' "$desktop_source" | cut -d= -f2-)"
+  [[ -n "$desktop_basename" ]] || desktop_basename='@opencode-aidesktop.desktop'
+  [[ -n "$icon_name" ]] || icon_name='@opencode-aidesktop'
+  startup_wm_class="$(grep -m1 '^StartupWMClass=' "$desktop_source" | cut -d= -f2-)"
+  [[ -n "$startup_wm_class" ]] || startup_wm_class='OpenCode'
+
   for candidate in \
-    "${pkgdir}/opt/OpenCode/usr/share/icons/hicolor/128x128/apps/@opencode-aidesktop-electron.png" \
-    "${pkgdir}/opt/OpenCode/usr/share/icons/hicolor/310x310/apps/@opencode-aidesktop-electron.png" \
-    "${pkgdir}/opt/OpenCode/usr/share/icons/hicolor/64x64/apps/@opencode-aidesktop-electron.png"; do
+    "$appdir"/usr/share/icons/hicolor/*/apps/"${icon_name}".png \
+    "$appdir"/usr/share/icons/hicolor/*/apps/*opencode*.png \
+    "$appdir"/*.png; do
     if [[ -f "$candidate" ]]; then
       icon_source="$candidate"
       break
@@ -82,22 +97,50 @@ WRAPPER
   done
   [[ -n "$icon_source" ]] || { echo "ERROR: icon asset not found"; exit 1; }
 
+  if (( ! had_nullglob )); then
+    shopt -u nullglob
+  fi
+
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/opencode-desktop-electron" <<WRAPPER
+#!/bin/sh
+export APPDIR=/opt/OpenCode
+export CHROME_DESKTOP=${desktop_basename}
+exec /opt/OpenCode/AppRun --no-sandbox "\$@"
+WRAPPER
+
+  ln -sf opencode-desktop-electron "${pkgdir}/usr/bin/opencode-desktop"
+
+  # Expose the bundled CLI as /usr/bin/opencode
+  ln -sf "/opt/OpenCode/resources/opencode-cli" "${pkgdir}/usr/bin/opencode"
+
   install -dm755 "${pkgdir}/usr/share"
   cp -a "${pkgdir}/opt/OpenCode/usr/share/icons" "${pkgdir}/usr/share/"
   find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} +
+
+  shopt -s nullglob
+  for candidate in "${pkgdir}"/usr/share/icons/hicolor/*/apps/"${icon_name}".png; do
+    ln -sf "${icon_name}.png" "${candidate%/*}/opencode-desktop-electron.png"
+    ln -sf "${icon_name}.png" "${candidate%/*}/opencode-desktop.png"
+    ln -sf "${icon_name}.png" "${candidate%/*}/opencode.png"
+  done
+  if (( ! had_nullglob )); then
+    shopt -u nullglob
+  fi
+
   install -Dm644 "$icon_source" "${pkgdir}/opt/OpenCode/resources/icons/icon.png"
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/opencode-desktop-electron.desktop" <<DESKTOP
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${desktop_basename}" <<DESKTOP
 [Desktop Entry]
-Name=Opencode
+Name=OpenCode
 Comment=OpenCode desktop client
 Exec=opencode-desktop-electron %U
-Icon=@opencode-aidesktop-electron
+Icon=${icon_name}
 Terminal=false
 Type=Application
 Categories=Development;
 StartupNotify=true
-StartupWMClass=OpenCode
+StartupWMClass=${startup_wm_class}
+X-GNOME-WMClass=${startup_wm_class}
 MimeType=x-scheme-handler/opencode;
 DESKTOP
 
@@ -128,23 +171,32 @@ LATEST_VER="${LATEST_TAG#v}"
 CURRENT_VER="$(grep '^pkgver=' "$PKGBUILD" | cut -d= -f2 || true)"
 info "Current: ${CURRENT_VER:-<empty>}  →  Latest: $LATEST_VER"
 
-if [[ "$CURRENT_VER" == "$LATEST_VER" ]] && ! grep -q 'PLACEHOLDER' "$PKGBUILD"; then
+if [[ "$CURRENT_VER" == "$LATEST_VER" ]] \
+  && ! grep -Eq 'PLACEHOLDER|opencode-electron-linux-x86_64\.AppImage|@opencode-aidesktop-electron|StartupWMClass=OpenCode|Name=Opencode' "$PKGBUILD"; then
   success "Already at $LATEST_VER — nothing to do."
   exit 0
 fi
 
 # ── 2. Resolve asset URL ──────────────────────────────────────────────────────
-APPIMAGE_URL="$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name == "opencode-electron-linux-x86_64.AppImage") | .browser_download_url' | head -1)"
-[[ -z "$APPIMAGE_URL" ]] && die "x86_64 AppImage not found in release $LATEST_TAG"
-info "Asset: $APPIMAGE_URL"
+APPIMAGE_ASSET_JSON="$(echo "$RELEASE_JSON" | jq -c '.assets[] | select(.name == "opencode-desktop-linux-x86_64.AppImage" or .name == "opencode-electron-linux-x86_64.AppImage")' | head -1)"
+[[ -z "$APPIMAGE_ASSET_JSON" ]] && die "x86_64 AppImage not found in release $LATEST_TAG"
+APPIMAGE_NAME="$(echo "$APPIMAGE_ASSET_JSON" | jq -r '.name')"
+APPIMAGE_URL="$(echo "$APPIMAGE_ASSET_JSON" | jq -r '.browser_download_url')"
+APPIMAGE_SHA256="$(echo "$APPIMAGE_ASSET_JSON" | jq -r '.digest // empty' | sed 's/^sha256://')"
+info "Asset: $APPIMAGE_NAME"
 
 # ── 3. Download & checksum ────────────────────────────────────────────────────
 TMPDIR="$(mktemp -d)"
 trap 'rm -rf "$TMPDIR"' EXIT
 
-info "Downloading x86_64 AppImage..."
-curl -fsSL --progress-bar -o "$TMPDIR/opencode.AppImage" "$APPIMAGE_URL"
-SHA_X86_64="$(sha256sum "$TMPDIR/opencode.AppImage" | awk '{print $1}')"
+if [[ -n "$APPIMAGE_SHA256" ]]; then
+  SHA_X86_64="$APPIMAGE_SHA256"
+  info "Using release-provided sha256."
+else
+  info "Downloading x86_64 AppImage..."
+  curl -fsSL --progress-bar -o "$TMPDIR/opencode.AppImage" "$APPIMAGE_URL"
+  SHA_X86_64="$(sha256sum "$TMPDIR/opencode.AppImage" | awk '{print $1}')"
+fi
 info "sha256: $SHA_X86_64"
 
 # ── 4. Patch PKGBUILD ─────────────────────────────────────────────────────────
@@ -154,6 +206,32 @@ path, ver, sha = sys.argv[1], sys.argv[2], sys.argv[3]
 content = open(path).read()
 content = re.sub(r'^pkgver=.*', f'pkgver={ver}', content, flags=re.MULTILINE)
 content = re.sub(r'^pkgrel=.*', 'pkgrel=1', content, flags=re.MULTILINE)
+content = content.replace(
+    'opencode-electron-${pkgver}-linux-x86_64.AppImage::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-electron-linux-x86_64.AppImage',
+    'opencode-desktop-${pkgver}-linux-x86_64.AppImage::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-x86_64.AppImage',
+)
+content = content.replace(
+    'local appimage="${srcdir}/opencode-electron-${pkgver}-linux-x86_64.AppImage"',
+    'local appimage="${srcdir}/opencode-desktop-${pkgver}-linux-x86_64.AppImage"',
+)
+content = content.replace('export CHROME_DESKTOP=opencode-desktop-electron.desktop', 'export CHROME_DESKTOP=${desktop_basename}')
+content = content.replace('export CHROME_DESKTOP=opencode.desktop', 'export CHROME_DESKTOP=${desktop_basename}')
+content = content.replace('exec /opt/OpenCode/AppRun --class=opencode-desktop-electron --no-sandbox "$@"', 'exec /opt/OpenCode/AppRun --no-sandbox "\\$@"')
+content = content.replace('exec /opt/OpenCode/AppRun --no-sandbox "$@"', 'exec /opt/OpenCode/AppRun --no-sandbox "\\$@"')
+content = content.replace('Icon=@opencode-aidesktop-electron', 'Icon=${icon_name}')
+content = content.replace('Icon=opencode-desktop-electron', 'Icon=${icon_name}')
+content = content.replace('Icon=opencode', 'Icon=${icon_name}')
+content = content.replace('StartupWMClass=opencode-desktop-electron', 'StartupWMClass=${startup_wm_class}')
+content = content.replace('StartupWMClass=OpenCode', 'StartupWMClass=${startup_wm_class}')
+content = content.replace('X-GNOME-WMClass=opencode-desktop-electron', 'X-GNOME-WMClass=${startup_wm_class}')
+content = content.replace('X-GNOME-WMClass=OpenCode', 'X-GNOME-WMClass=${startup_wm_class}')
+content = content.replace('${pkgdir}/usr/share/applications/opencode-desktop-electron.desktop', '${pkgdir}/usr/share/applications/${desktop_basename}')
+content = content.replace('${pkgdir}/usr/share/applications/opencode.desktop', '${pkgdir}/usr/share/applications/${desktop_basename}')
+content = content.replace('ln -sf opencode-desktop-electron.desktop "${pkgdir}/usr/share/applications/opencode-desktop.desktop"\n', '')
+content = content.replace('ln -sf opencode-desktop-electron.desktop "${pkgdir}/usr/share/applications/opencode.desktop"\n', '')
+if 'X-GNOME-WMClass=${startup_wm_class}' not in content:
+    content = content.replace('StartupWMClass=${startup_wm_class}', 'StartupWMClass=${startup_wm_class}\nX-GNOME-WMClass=${startup_wm_class}')
+content = content.replace('Name=Opencode', 'Name=OpenCode')
 content = re.sub(
     r"sha256sums=\(.*?\)",
     f"sha256sums=('SKIP'\n            '{sha}')",
