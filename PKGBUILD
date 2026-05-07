@@ -1,7 +1,7 @@
 # Maintainer: ammarhossain <ammar at butterfly dot so>
 pkgname=rice-cooker
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="a visual (toy) tool for ricing"
 arch=('x86_64')
 url="https://github.com/amarsbar/rice-cooker"
@@ -17,11 +17,11 @@ optdepends=(
     'ttf-outfit: intended UI font for Whisker'
 )
 source=(
-    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
     'rice-cooker.sh'
     'rice-cooker.desktop'
 )
-sha256sums=('f94168d587b01d8eff3c46a763223e98558770f632b98c004c3cd84fc60ef8e7'
+sha256sums=('0ed16e8193cc9b1f3493c536149ac50621aca915e94d152f26bcec666ba6c385'
             '1527354310806f2ae55a2629d2954f02efa6b4063d85233ef3ecc50f53887b91'
             'ed4a26ab693d922de7392f4020a61d75c723c5dfaaa3b828ea5f4c870fb4933d')
 
