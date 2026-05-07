@@ -1,6 +1,6 @@
 pkgbase = pdx-unlimiter
 	pkgdesc = A smart savegame manager, editor, and toolbox for all current major Paradox Grand Strategy games.
-	pkgver = 3.5.1
+	pkgver = 3.5.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/crschnick/pdx_unlimiter
@@ -37,7 +37,7 @@ pkgbase = pdx-unlimiter
 	sha256sums = 6E9A5023E22BB9763829D9C0974B9650D68DD613E1A786C59888CA2FB4E8CEEB
 	sha256sums = 911EA17F6F399622D25C7E14D43B022C7232CC1A8931CD1EE384960323939D3D
 	sha256sums = 8ED96FF0EA5AA2C3E2254DC9C1F91E60B3F41E82A575571ABC626008FD8E4A34
-	source_x86_64 = pdx-unlimiter-3.5.1-x86_64.tar.gz::https://github.com/crschnick/pdx_unlimiter/releases/download/3.5.1/pdx-unlimiter-portable-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e30d529b683dfde84e5da2f94737e2fd3b9eea3caff484a918d460c7a1101efb
+	source_x86_64 = pdx-unlimiter-3.5.2-x86_64.tar.gz::https://github.com/crschnick/pdx_unlimiter/releases/download/3.5.2/pdx-unlimiter-portable-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 335325c5ffc0bb5be5ca3fab5d1e8432d14391b191f05c660e7ca3c5ef66a5c7
 
 pkgname = pdx-unlimiter
