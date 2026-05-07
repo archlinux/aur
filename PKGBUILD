@@ -1,6 +1,6 @@
 # Maintainer: Matthias Schabhüttl <aur@mschabhuettl.dev>
 pkgname=openconnect-saml
-pkgver=0.24.3
+pkgver=0.24.4
 pkgrel=1
 pkgdesc='OpenConnect wrapper with Azure AD (SAML) SSO support for Cisco SSL-VPNs'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("openconnect-saml-${pkgver}.tar.gz::https://github.com/mschabhuettl/openconnect-saml/archive/v${pkgver}.tar.gz")
-sha256sums=('1ce4b73b3a865d86f4ec89aabbf67c3934668d88577522fa3e55698610a5a59c')
+sha256sums=('2747d08186059a5ba64c355534b1a5a92439269cd56dd3749503991b990fde45')
 
 build() {
   cd "$pkgname-$pkgver"
