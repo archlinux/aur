@@ -1,13 +1,13 @@
 pkgbase = vapoursynth-plugin-zoomvtools-git
 	pkgdesc = Zoomy reimplementation of VapourSynth MVTools
-	pkgver = r379.7d049c2
+	pkgver = r384.16a2ab6
 	pkgrel = 1
 	url = https://gitlab.com/shssoichiro/vapoursynth-zoomvtools
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	depends = vapoursynth
+	depends = vapoursynth>=75
 	depends = fftw
 	optdepends = fftw-amd: optimized version for AMD CPUs
 	provides = vapoursynth-plugin-zoomvtools
