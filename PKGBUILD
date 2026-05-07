@@ -2,7 +2,7 @@
 # Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname=notesmd-cli
-pkgver=0.3.4
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Interact with Obsidian in the terminal. Open, search, create, update and move notes!"
 arch=('aarch64' 'x86_64')
@@ -14,14 +14,13 @@ makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('502ca602e1014be46e7b82c28786f89e73ce1052dfd70a85fc8aed77c0a90926')
+sha256sums=('6e0bb297027f1a37cea3ae923dc79eb92c652ecf5c839b1f9f2983e72e9f3259')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  chmod -R ug+Xwr "${GOMODCACHE}"
+  go mod download -modcacherw
 
   mkdir -p "build" "completions"
 }
@@ -33,10 +32,10 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOCACHE="${srcdir}/go-cache"
   export GOMODCACHE="${srcdir}/go-mod-cache"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
 
   cd "${srcdir}/${_pkgsrc}"
-  go build -v -o "build/${pkgname}" .
+  go build -o "build/${pkgname}" .
 
   for _sh in bash fish zsh powershell; do
     ./"build/${pkgname}" completion "${_sh}" > "completions/${pkgname}.${_sh}"
