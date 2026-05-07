@@ -1,7 +1,7 @@
 pkgbase = python-timed-threads
 	pkgdesc = Absolute time deadlines and thread cancelling for Python asynchronous threads
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/Timed-Threads
 	arch = any
 	license = MIT

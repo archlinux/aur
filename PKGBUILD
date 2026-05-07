@@ -3,7 +3,7 @@
 pkgname=python-timed-threads
 _pkgname=timed_threads
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Absolute time deadlines and thread cancelling for Python asynchronous threads"
 arch=('any')
 url="https://pypi.org/project/Timed-Threads"
@@ -25,7 +25,7 @@ check() {
 }
 
 package() {
-  #install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
   cd "${srcdir}/${_pkgname}-${pkgver}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 }
