@@ -11,7 +11,7 @@ optdepends=('kubectl: required for embedded terminal exec/kubectl tabs')
 provides=('ferrisscope')
 conflicts=('ferrisscope' 'ferrisscope-git')
 source=("${pkgname}-${pkgver}.deb::https://github.com/dzcorp/FerrisScope/releases/download/v${pkgver}/FerrisScope_1.0.0_amd64-linux-x64.deb")
-sha256sums=('e4419d8d1a4ad6ff8c4920f5773780e58041c086b39883601ac136a5e6b4658d')
+sha256sums=('8eb21315cb525aa127ca70c94e95cd8bb361103f3aac33b3d463a40f94ed34db')
 
 package() {
     # Tauri's .deb is a standard ar archive containing
