@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=StarPSX
+Exec=/usr/bin/starpsx
+Icon=starpsx
+Type=Application
+Categories=Game;
+

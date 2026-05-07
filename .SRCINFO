@@ -1,0 +1,17 @@
+pkgbase = starpsx
+	pkgdesc = A cross-platform Sony PlayStation 1 emulator written in Rust
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/kaezrr/starpsx
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = libasound.so
+	makedepends = libudev.so
+	depends = libgcc
+	source = starpsx-0.8.3.tar.gz::https://github.com/kaezrr/starpsx/archive/v0.8.3.tar.gz
+	source = starpsx.desktop
+	sha256sums = aa4d0ea152f6728da411fb6ae35cd87fdafadef361f9fc4e942d9454e13171ed
+	sha256sums = 83894f4b29ffdfa2790c4c593a395192839eff447bee3983c9ea49b81474bd04
+
+pkgname = starpsx
