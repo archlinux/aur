@@ -6,19 +6,19 @@ pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx
 
 : "${_fragment=branch=master}"
 
-pkgver=0.21.4+13+g3d715b8c60
+pkgver=0.21.5.5
 pkgrel=1
 arch=('x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
 makedepends=(
 	boost
+	boost-libs
 	db5.3
 	git
 	fmt
 	libevent
 	libzmq.so
-	libminiupnpc.so
 	protobuf
 	qrencode
 	qt5-base
@@ -29,23 +29,23 @@ source=(
 	'litecoin-qt.desktop'
 	'litecoind.service'
 	'litecoin.sysusers'
-	'miniupnpc.patch'
 	'0001-fix-boost-1.84-filesystem-deprecations.patch'
-	'0002-fix-missing-headers-for-gcc-15.patch'
+	'0003-Fix-_FORTIFY_SOURCE-flag.patch'
+	'0004-remove-boost-system.patch'
 )
 sha256sums=('SKIP'
-	'ec2a2669a50fa96147a1d04cacf1cbc3d63238aee97e3b0df3c6f753080dae96'
-	'98f5a1b28fe13b9093fa89cfe56bb84af09ff5f0d6e9ca196ec02d6dd826ca88'
-	'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db'
-	'82497ba013364c98e2390f5fc76ad7f67d7757f705347db7b34134e21c3ab089'
-	'f9de747281f6003739d9ac736684771b061e9d63f2ea90404c08187595e57619'
-	'bd5ecad7133a98bcb5387fa298a296cde8985d92b5a84eed06c19ec93e8b7ab4')
+            'ec2a2669a50fa96147a1d04cacf1cbc3d63238aee97e3b0df3c6f753080dae96'
+            '98f5a1b28fe13b9093fa89cfe56bb84af09ff5f0d6e9ca196ec02d6dd826ca88'
+            'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db'
+            'f9de747281f6003739d9ac736684771b061e9d63f2ea90404c08187595e57619'
+            '0ca550e3967ee880f8e24b77fc58ff22451f2966d056b4554184104c3ca5dbb5'
+            '7d427d1ae3f0f8d848e7baf4210448bdede90b83c3ca6948f48eb4eb115b4db5')
 
 prepare() {
 	cd "$pkgbase"
-	git apply ../miniupnpc.patch
-	git apply ../0001-fix-boost-1.84-filesystem-deprecations.patch
-	git apply ../0002-fix-missing-headers-for-gcc-15.patch
+	patch -Np1 <../0001-fix-boost-1.84-filesystem-deprecations.patch
+	patch -Np1 <../0003-Fix-_FORTIFY_SOURCE-flag.patch
+	patch -Np1 <../0004-remove-boost-system.patch
 	autoreconf -fi
 }
 
@@ -56,13 +56,13 @@ pkgver() {
 
 build() {
 	cd "$pkgbase"
-	./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --disable-gui-tests BDB_LIBS="-ldb_cxx-5.3" BDB_CFLAGS="-I/usr/include/db5.3"
+	./configure --prefix=/usr --with-gui=qt5 --with-miniupnpc=no --with-incompatible-bdb --disable-tests BDB_LIBS="-ldb_cxx-5.3" BDB_CFLAGS="-I/usr/include/db5.3"
 	make
 }
 
 package_litecoin-qt-git() {
 	pkgdesc="Litecoin is a peer-to-peer network based digital currency - Qt"
-	depends=(boost-libs desktop-file-utils libevent qt5-base fmt miniupnpc qrencode protobuf zeromq db5.3)
+	depends=(boost-libs desktop-file-utils libevent qt5-base fmt qrencode protobuf zeromq db5.3)
 	conflicts=(litecoin-qt)
 	provides=(litecoin-qt)
 
@@ -77,7 +77,7 @@ package_litecoin-qt-git() {
 
 package_litecoin-daemon-git() {
 	pkgdesc="Litecoin is a peer-to-peer network based digital currency - daemon"
-	depends=(boost-libs libevent miniupnpc zeromq db5.3)
+	depends=(boost-libs libevent zeromq db5.3)
 	conflicts=(litecoin-daemon)
 	provides=(litecoin-daemon)
 
