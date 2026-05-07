@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=rad
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Modern CLI scripts made easy."
 arch=('x86_64' 'aarch64')
