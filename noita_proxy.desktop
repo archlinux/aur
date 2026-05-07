@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Noita Entangled Worlds
+Comment=Noita multiplayer mod
+Exec=noita_proxy
+Type=Application
+Keywords=noita;entangled;
+Icon=noita_proxy
+StartupWMClass=noita_proxy
+Categories=Game;

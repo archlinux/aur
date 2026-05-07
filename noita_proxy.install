@@ -1,0 +1,10 @@
+post_install() {
+    echo ""
+    echo "noita_proxy usage:"
+    echo "Either launch Noita and then noita_proxy (order matters) or"
+    echo "set Noita's Steam launch options to:"
+    echo "noita_proxy --launch-cmd '%command%'"
+    echo "The latter method can similarly be used for other storefronts (GOG) by"
+    echo "replacing '%command%' with the command used to open the game."
+    echo ""
+}
