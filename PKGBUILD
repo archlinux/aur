@@ -2,7 +2,7 @@
 
 pkgbase=sv-lang
 pkgname=(sv-lang python-pysvlang)
-pkgver=10.0
+pkgver=11.0rc1
 pkgrel=1
 epoch=
 pkgdesc="SystemVerilog compiler and language services"
@@ -43,7 +43,7 @@ install=
 changelog=
 source=("${pkgbase}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('e7ddbd93d2348ee6020828578b5ba6389cb372d34de3997bcc2f8b93778c5301')
+sha256sums=('d6bdf26d572a7b28bb5828a05c301b46b2ccfddf053065beb0639e1b90e7e93f')
 validpgpkeys=()
 
 prepare() {
