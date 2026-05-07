@@ -1,0 +1,18 @@
+pkgbase = pingall-git
+	pkgdesc = Ping everything you can reach
+	pkgver = 1.0.1.r37.g69dadd2
+	pkgrel = 1
+	url = https://github.com/Fierthraix/pingall
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = iputils
+	optdepends = avahi: resolve hostnames via avahi-resolve
+	provides = pingall
+	conflicts = pingall
+	source = pingall::git+https://github.com/Fierthraix/pingall
+	sha256sums = SKIP
+
+pkgname = pingall-git
