@@ -2,8 +2,8 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b9010.r0.d05fe1d7da
-pkgrel=2
+pkgver=b9050.r5.8e52631d55
+pkgrel=1
 _build_number=0
 _commit_id=
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
@@ -17,7 +17,6 @@ depends=(
   gcc-libs
   glibc
   nvidia-utils
-  openblas
   openssl
 )
 makedepends=(
@@ -105,8 +104,6 @@ build() {
     -DGGML_CUDA=ON
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DGGML_CUDNN=ON
-    -DGGML_BLAS=ON
-    -DGGML_BLAS_VENDOR=OpenBLAS
     -DGGML_CUDA_COMPRESSION_MODE=speed
     -DLLAMA_BUILD_SERVER=ON
     -DLLAMA_BUILD_NUMBER="${_build_number}"

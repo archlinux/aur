@@ -16,7 +16,6 @@ pkgbase = llama.cpp-cuda-git
 	depends = gcc-libs
 	depends = glibc
 	depends = nvidia-utils
-	depends = openblas
 	depends = openssl
 	optdepends = ccache: greatly reduce package re-build time
 	optdepends = nccl: needed for multi-GPU parallelism
