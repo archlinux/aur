@@ -1,0 +1,12 @@
+pkgbase = scratsh
+	pkgdesc = Minimal CLI scratch file manager
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://codeberg.org/codepunk/scratsh
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = zig
+	source = scratsh-0.8.1.tar.gz::https://codeberg.org/codepunk/scratsh/archive/0.8.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = scratsh
