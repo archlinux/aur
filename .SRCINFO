@@ -17,6 +17,6 @@ pkgbase = gitpkg
 	optdepends = zsh: zsh tab completions
 	backup = etc/gitpkg/gitpkg.conf
 	source = gitpkg-0.8.1.tar.gz::https://github.com/fkzys/gitpkg/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = 6e959ef6dc6add86abb17eb5a4e03786f593eb616af2447749dd3356ac8b2248
+	sha256sums = 61d668d0011e230915d29faa5ef61ee9a5c10189c6bb8998cfe8e02dcc47d0e6
 
 pkgname = gitpkg
