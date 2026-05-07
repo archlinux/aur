@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=0.16.1
+pkgver=0.17.0
 _electronversion=37
 pkgrel=1
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
@@ -29,10 +29,10 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1aa02414a01bc5ddf0acfd66ed69049be0769e7bf5e4a421ae4783584dfcb43f'
+sha256sums=('2e37779c3c943a19b89875e4855b6276b32014720d3e1804e5dfe9ae4ca5acf9'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            '51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc'
-            'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
+            '3e78d843645c4cc5709698e0717785acdef5f36e60e3e220801bdf3b8effd799'
+            '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
 pkgver() {
     cd "${srcdir}/usr/share/${pkgname%-bin}/resources/app"
     grep '"version":' featureFlags.json | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"'
@@ -64,7 +64,6 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
     sed -i -e "
