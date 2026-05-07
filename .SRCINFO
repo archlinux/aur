@@ -1,7 +1,7 @@
 pkgbase = open-design-git
 	pkgdesc = VCS build of Open Design installed from an extracted Linux AppImage AppDir
-	pkgver = 0.4.0.r264.gc69dee74
-	pkgrel = 5
+	pkgver = 0.5.0.r356.g2bb029cb
+	pkgrel = 1
 	url = https://github.com/nexu-io/open-design
 	arch = x86_64
 	license = Apache-2.0
@@ -24,10 +24,8 @@ pkgbase = open-design-git
 	source = open-design-git::git+https://github.com/nexu-io/open-design.git#branch=main
 	source = open-design
 	source = open-design.desktop
-	source = contracts-dist-runtime.patch
 	sha256sums = SKIP
 	sha256sums = 8c076f4471bc20f457effb61c847ae1e80eb7861638a5b78f65613179ff39311
 	sha256sums = 0245ea0484c1bb89b74093abc3c77ce421e793dd06c5a8e36c203971bfd7f919
-	sha256sums = 8da1d3aea89618df21a15f41981366478f15d4dfe0c8051a97ab2d0a8288e32c
 
 pkgname = open-design-git

@@ -1,8 +1,8 @@
 # Maintainer: motherofmilk <iulian.dita@gmail.com>
 
 pkgname=open-design-git
-pkgver=0.4.0.r264.gc69dee74
-pkgrel=5
+pkgver=0.5.0.r356.g2bb029cb
+pkgrel=1
 pkgdesc='VCS build of Open Design installed from an extracted Linux AppImage AppDir'
 arch=('x86_64')
 url='https://github.com/nexu-io/open-design'
@@ -12,16 +12,14 @@ makedepends=('git' 'npm' 'python' 'make' 'gcc')
 provides=('open-design')
 conflicts=('open-design' 'open-design-bin')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/nexu-io/open-design.git#branch=main" 'open-design' 'open-design.desktop' 'contracts-dist-runtime.patch')
+source=("${pkgname}::git+https://github.com/nexu-io/open-design.git#branch=main" 'open-design' 'open-design.desktop')
 sha256sums=('SKIP'
             '8c076f4471bc20f457effb61c847ae1e80eb7861638a5b78f65613179ff39311'
-            '0245ea0484c1bb89b74093abc3c77ce421e793dd06c5a8e36c203971bfd7f919'
-            '8da1d3aea89618df21a15f41981366478f15d4dfe0c8051a97ab2d0a8288e32c')
+            '0245ea0484c1bb89b74093abc3c77ce421e793dd06c5a8e36c203971bfd7f919')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
   git clean -fdx
-  patch -Np1 < "${srcdir}/contracts-dist-runtime.patch"
 }
 
 pkgver() {
