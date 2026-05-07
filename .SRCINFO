@@ -1,6 +1,6 @@
 pkgbase = claude-desktop-hardened-bin
 	pkgdesc = Claude Desktop for Linux (hardened) — bubblewrap sandboxing, credential redaction
-	pkgver = 1.6259.1
+	pkgver = 1.6608.0
 	pkgrel = 1
 	url = https://github.com/techtoboggan/claude-desktop-hardened-linux
 	arch = x86_64
