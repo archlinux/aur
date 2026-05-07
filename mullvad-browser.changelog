@@ -1,3 +1,10 @@
+Mullvad Browser 15.0.12 - May 07 2026
+ * All Platforms
+   * Updated Firefox to 140.10.2esr
+ * Build System
+   * All Platforms
+     * Bug 41781: Fix clean section in rbm.local.conf.example [tor-browser-build]
+
 Mullvad Browser 15.0.11 - April 28 2026
  * All Platforms
    * Updated Firefox to 140.10.1esr
