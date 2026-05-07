@@ -5,7 +5,7 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-readonly _version_frappe="v16.17.4"
+readonly _version_frappe="v16.17.5"
 
 pkgname="erpnext"
 pkgver="16.17.0"
