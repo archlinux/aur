@@ -4,7 +4,7 @@
 
 pkgname=python-rawpy
 _pkg="${pkgname#python-}"
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Python wrapper for the libraw library"
 arch=('x86_64')
@@ -17,6 +17,7 @@ optdepends=(
 )
 makedepends=(
     'cython'
+    'cmake'
     'python-build'
     'python-installer'
     'python-setuptools'
@@ -26,11 +27,11 @@ makedepends=(
 checkdepends=('python-pytest' 'python-imageio' 'python-opencv')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=(
-    'ccea8a75318ef614e2689cf9bea527b03c41a441ec5523b8fc61535ebf6b830dd3d61c5def8d5d6de0448ef7e4943f0880a2cc3e0eb8f6eb32febd6fcd7486d2')
+    'b9822a4ca69d2c49d5f778b614ba3d8677c5de809bb738cbdc771acd53277bccdeb4afca8404d85381f6306ea8b9b59ab052dd359f0a80243a8266bba4a0be4a')
 
 build() {
     cd "$_pkg-$pkgver"
-    python -m build --wheel --no-isolation
+    RAWPY_USE_SYSTEM_LIBRAW=1 python -m build --wheel --no-isolation --skip-dependency-check
     _py="$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')"
     PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$_py" sphinx-build -b man docs _build
 }
