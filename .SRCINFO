@@ -1,12 +1,12 @@
 pkgbase = terraform-bin
 	pkgdesc = HashiCorp tool for building and updating infrastructure as code idempotently
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1.0
 	url = https://www.terraform.io
 	arch = x86_64
 	license = BSL
 	replaces = terraform
-	source = https://releases.hashicorp.com/terraform/1.15.1/terraform_1.15.1_linux_amd64.zip
-	sha256sums = 0921fee8c8435253ca49390a02109e906042e611a4e17f69e922261f5176c74f
+	source = https://releases.hashicorp.com/terraform/1.15.2/terraform_1.15.2_linux_amd64.zip
+	sha256sums = c56ff2bc7e6ce9b3879a50392b03c2ea074b47688bf503ff966c87fb01b2aab8
 
 pkgname = terraform-bin
