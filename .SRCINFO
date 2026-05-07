@@ -1,0 +1,25 @@
+pkgbase = adapterremoval3
+	pkgdesc = Rapid adapter trimming, identification, and read merging of NGS sequence reads
+	pkgver = 3.0.0
+	pkgrel = 0
+	url = https://github.com/MikkelSchubert/adapterremoval
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = python-sphinx
+	makedepends = meson
+	makedepends = ninja
+	makedepends = uv
+	makedepends = mold
+	makedepends = python-fastjsonschema
+	depends = glibc
+	depends = gcc-libs
+	depends = libdeflate
+	depends = isa-l
+	depends = libstdc++
+	depends = libgcc
+	provides = adapterremoval
+	conflicts = adapterremoval
+	source = adapterremoval-3.0.0.tar.gz::https://github.com/MikkelSchubert/adapterremoval/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 08145e38f27bfd94e9c95864365726bc63e9325a8b39b973b9ab6c87bd8c93aa
+
+pkgname = adapterremoval3
