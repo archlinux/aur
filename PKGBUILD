@@ -1,8 +1,6 @@
-# Maintainer: Santiago Lo Coco <mail at slococo dot com dot ar>
-
 _pkgname="python-isr"
 pkgname="${_pkgname}-git"
-pkgver=r150.3f6498c
+pkgver=r151.3d07905
 pkgrel=1
 pkgdesc="Super-scale your images and run experiments with Residual Dense and Adversarial Networks."
 arch=("any")
