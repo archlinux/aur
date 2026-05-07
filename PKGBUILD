@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=assorthead
-_pkgver=1.6.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5de0c2fed2be0b74c804358fe2cef70a')
-b2sums=('483bc02e3818876e257176c2b92ef9d22387db46c7138c906d09c63b96a84ce512d9211f5d4f138b4cd3cb8a4eb8d80f7e949389a31cbaec887b905f545a3338')
+md5sums=('4873314a7fa300bba09be9876d281056')
+b2sums=('87d505d54de5312423dbb5409ff5577c35b8be5ad95a7d6233f8e4405b0696fcfdcf00d2674347fb94f90a845b9fd0f31be39578ddb2833387de74d57affee15')
 
 build() {
   mkdir build
