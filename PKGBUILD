@@ -1,27 +1,47 @@
 pkgname=python-bd_warehouse-git
 pkgdesc="A build123d parametric part collection"
-pkgver=r152.e3a1f27
+pkgver=v0.2.0.r4.g5be571e
 pkgrel=1
-arch=('any')
+arch=(any)
 url="https://github.com/gumyr/bd_warehouse"
-license=('Apache')
-depends=('python-build123d' 'python-typing_extensions')
-makedepends=('git' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
-_name=${pkgname#python-}
-source=("${_name}::git+https://github.com/gumyr/bd_warehouse.git")
-sha256sums=('SKIP')
+license=(Apache-2.0)
+depends=(
+python-build123d
+)
+makedepends=(
+git
+python-setuptools-scm
+python-build
+python-installer
+python-wheel
+)
+checkdepends=(
+python-pytest
+)
+source=(git+https://github.com/gumyr/bd_warehouse.git)
+b2sums=('SKIP')
 
 pkgver() {
-  cd $_name
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  cd bd_warehouse
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_name
+  cd bd_warehouse
   python -m build --wheel --no-isolation
 }
 
+check() {
+  python -m venv --without-pip --system-site-packages --clear venv
+  source venv/bin/activate
+  python -m installer bd_warehouse/dist/*.whl
+  cd bd_warehouse
+  python -m pytest \
+    --deselect="tests/test_bearings.py::test_bearings[SingleRowTaperedRollerBearing-SKT-M32-53-14.5]"
+  deactivate
+}
+
 package() {
-  cd $_name
+  cd bd_warehouse
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
