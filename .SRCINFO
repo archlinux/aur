@@ -1,7 +1,7 @@
 pkgbase = lroverhaul-bin
 	pkgdesc = Line Rider Overhaul - an open source Line Rider client
 	pkgver = 1.5.0.8b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LunaKampling/LROverhaul
 	arch = x86_64
 	license = GPL-3.0-or-later
