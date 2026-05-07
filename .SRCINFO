@@ -1,18 +1,19 @@
 pkgbase = apt-fake-ubuntu
-	pkgdesc = Ubuntu's apt wrapper for Arch, features g-helper integration and custom icon
-	pkgver = 1.5
-	pkgrel = 1
+	pkgdesc = Ubuntu's apt wrapper for Arch (v1.7 Legacy & GUI Edition)
+	pkgver = 1.7
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/apt-fake-ubuntu
 	arch = any
 	license = GPL3
 	depends = pacman
 	depends = bash
 	depends = g-helper
+	depends = zenity
 	source = apt
 	source = apt-fake.desktop
 	source = apt-fake.png
-	sha256sums = fed44a459cde57bb08f343a99209ca9b122cc7d40bd6958d6ecb05ed1fe6fe7f
-	sha256sums = 89f3539fe164953e7845d2fa5fd4e319bb1fd9d99db86d378fe01a0708eddcde
+	sha256sums = 9324c07fd7df14d76d7339d513bec9c8a0409457c77bd1594bfc37faa78cccca
+	sha256sums = 81b7e66f512f1fe7ac507462b138fb6291b0a3601e09a4d763949b1271014553
 	sha256sums = 2efa2b8821340fc09e7db18bc1a8285e110e0bbcef9795729cbabf11ad57f184
 
 pkgname = apt-fake-ubuntu

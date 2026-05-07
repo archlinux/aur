@@ -1,7 +1,7 @@
 # Maintainer: Gabriele <castielloangela512@gmail.com>
 pkgname=apt-fake-ubuntu
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Ubuntu's apt wrapper for Arch (v1.7 Legacy & GUI Edition)"
 arch=('any')
 url="https://aur.archlinux.org/packages/apt-fake-ubuntu"
