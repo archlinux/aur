@@ -1,5 +1,5 @@
 pkgname=linux-wallpaper-engine-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Yet another linux wallpaper engine"
 arch=("x86_64")

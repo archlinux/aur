@@ -1,6 +1,6 @@
 pkgbase = linux-wallpaper-engine-git
 	pkgdesc = Yet another linux wallpaper engine
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/wqLouis/linux-wallpaperengine
 	arch = x86_64
