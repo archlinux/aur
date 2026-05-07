@@ -1,5 +1,9 @@
-/*
-!/.gitignore
-!/.SRCINFO
-!/PKGBUILD
-!/0001-print-help-when-no-args-provided.patch
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!0001-print-help-when-no-args-provided.patch
+!LICENSES
+!LICENSE
+!REUSE.toml

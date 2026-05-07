@@ -1,0 +1,4 @@
+[bdf2psf]
+source = "regex"
+url = "https://deb.debian.org/debian/pool/main/c/console-setup/"
+regex = "bdf2psf_(\\d\\.\\d+)_all\\.deb"
