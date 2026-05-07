@@ -1,7 +1,7 @@
 pkgbase = slskdn
 	pkgdesc = slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening.
 	pkgver = 2026050712.slskdn.232
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/snapetech/slskdn
 	install = slskd.install
 	arch = x86_64
