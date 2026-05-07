@@ -1,0 +1,14 @@
+pkgbase = bilibili-live-stream-code-git
+	pkgdesc = 用于在准备直播时获取第三方推流码
+	pkgver = 2.3.12.1.g8b28d31
+	pkgrel = 1
+	url = https://github.com/ChaceQC/bilibili_live_stream_code
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	makedepends = python
+	makedepends = imagemagick
+	source = bilibili-live-stream-code::git+https://github.com/ChaceQC/bilibili_live_stream_code.git
+	sha256sums = SKIP
+
+pkgname = bilibili-live-stream-code-git
