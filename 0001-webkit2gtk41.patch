@@ -1,0 +1,17 @@
+--- config.mk	2021-05-09 17:34:33.000000000 -0500
++++ config.mk	2026-05-07 13:37:52.475650865 -0500
+@@ -12,10 +12,10 @@
+ X11INC = `pkg-config --cflags x11`
+ X11LIB = `pkg-config --libs x11`
+ 
+-GTKINC = `pkg-config --cflags gtk+-3.0 gcr-3 webkit2gtk-4.0`
+-GTKLIB = `pkg-config --libs gtk+-3.0 gcr-3 webkit2gtk-4.0`
+-WEBEXTINC = `pkg-config --cflags webkit2gtk-4.0 webkit2gtk-web-extension-4.0 gio-2.0`
+-WEBEXTLIBS = `pkg-config --libs webkit2gtk-4.0 webkit2gtk-web-extension-4.0 gio-2.0`
++GTKINC = `pkg-config --cflags gtk+-3.0 gcr-3 webkit2gtk-4.1`
++GTKLIB = `pkg-config --libs gtk+-3.0 gcr-3 webkit2gtk-4.1`
++WEBEXTINC = `pkg-config --cflags webkit2gtk-4.1 webkit2gtk-web-extension-4.1 gio-2.0`
++WEBEXTLIBS = `pkg-config --libs webkit2gtk-4.1 webkit2gtk-web-extension-4.1 gio-2.0`
+ 
+ # includes and libs
+ INCS = $(X11INC) $(GTKINC)

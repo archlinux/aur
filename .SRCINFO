@@ -1,7 +1,7 @@
 pkgbase = surf
 	pkgdesc = A simple web browser based on WebKit/GTK+.
 	pkgver = 2.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://surf.suckless.org/
 	install = surf.install
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = surf
 	optdepends = curl: default download handler
 	optdepends = tabbed: tabbed frontend
 	source = https://dl.suckless.org/surf/surf-2.1.tar.gz
+	source = 0001-webkit2gtk41.patch
 	sha256sums = 72e582920ba25a646203e93c2d2331d87f03037a28894d6c7e99af00ee043257
+	sha256sums = e2308e4bc99a19a959d629543d1764686c533d086acd38e8bdf0399784ee6972
 
 pkgname = surf

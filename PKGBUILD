@@ -9,7 +9,7 @@
 
 pkgname=surf
 pkgver=2.1
-pkgrel=7
+pkgrel=8
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('x86_64')
 url='https://surf.suckless.org/'
@@ -22,14 +22,19 @@ optdepends=('dmenu: URL-bar'
             'tabbed: tabbed frontend')
 makedepends=()
 install='surf.install'
-source=("https://dl.suckless.org/surf/surf-${pkgver}.tar.gz")
-sha256sums=('72e582920ba25a646203e93c2d2331d87f03037a28894d6c7e99af00ee043257')
+source=("https://dl.suckless.org/surf/surf-${pkgver}.tar.gz" "0001-webkit2gtk41.patch")
+sha256sums=('72e582920ba25a646203e93c2d2331d87f03037a28894d6c7e99af00ee043257'
+            'e2308e4bc99a19a959d629543d1764686c533d086acd38e8bdf0399784ee6972')
 
 prepare() {
     if [[ -f ../config.h ]]; then
 	echo "Found custom config.h in $(readlink -f ../), copying..."
         cp -v ../config.h "${pkgname}-${pkgver}/config.h"
     fi
+    cd "${pkgname}-${pkgver}"
+    for i in "${srcdir}/*.patch"; do
+        patch -N < $i
+    done
 }
 
 build() {
