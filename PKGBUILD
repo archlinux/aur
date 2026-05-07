@@ -1,6 +1,6 @@
 # Maintainer: Happilli <https://github.com/Happilli>
 pkgname=clipsh
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Qt6 QML plugin for managing clipboard history via cliphist"
 arch=('x86_64')
