@@ -2,8 +2,8 @@
 
 pkgname=('lua-pgmoon' 'lua51-pgmoon' 'lua52-pgmoon' 'lua53-pgmoon' 'lua54-pgmoon')
 _pkgbase='pgmoon'
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 arch=('any')
 url='https://github.com/leafo/pgmoon'
 license=('MIT')
@@ -46,4 +46,4 @@ package_lua51-pgmoon() {
     _package 5.1
 }
 
-sha256sums=('9869728131338e518f4fb060814b53a20ed59c97f51f961fa1992291ff9e89a9')
+sha512sums=('ee4b1e48914bf0497e206da4b95f284a6383866cb66c551572b92b00d901fd84fcce8d0b7262c9b67712406d119891e627a3ae8454e762bce12d7b1b3a93f7b8')
