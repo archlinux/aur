@@ -1,9 +1,9 @@
 # Maintainer: Jimmy Xu <me at jimmyxu dot org>
 
 _perlmod='Mail-Milter-Authentication'
-_modnamespace=Mail
+_modnamespace=Mail/MBRADSHAW
 pkgname=perl-mail-milter-authentication
-pkgver=4.20250811
+pkgver=4.20260319
 pkgrel=1
 pkgdesc="A Perl Mail Authentication Milter"
 arch=("any")
@@ -16,9 +16,9 @@ replaces=('perl-mail-milter-authentication-handler-arc')
 conflicts=('perl-mail-milter-authentication-handler-arc')
 backup=('etc/authentication_milter.json')
 options=('!emptydirs')
-source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz"
+source=("https://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz"
         'authentication_milter.service')
-sha256sums=('eaf06533cc33ce3ee588a9a1394a91d85f63ed0a0ecfca1b1d5df2b7fbb65772'
+sha256sums=('c88bbb7a462a5b8f90059065d6b84950d6075dee72ed9f69b45eefa76b893a3f'
             '8715d45d62859fb3838d0fd31878d59b47da2cb62d55675f828f8b812845526d')
 
 build() {
