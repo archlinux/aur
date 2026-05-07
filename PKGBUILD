@@ -22,7 +22,7 @@ makedepends=(
   'minisign'
 )
 provides=(
-  "${_pkgname}=$pkgver"
+  "${_basename}=$pkgver"
 )
 conflicts=(
   "${_basename}"
