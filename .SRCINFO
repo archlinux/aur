@@ -10,7 +10,6 @@ pkgbase = min-ed-launcher-git
 	makedepends = git
 	depends = zlib-ng-compat
 	depends = hicolor-icon-theme
-	depends = libgcc
 	depends = libstdc++
 	provides = min-ed-launcher
 	conflicts = min-ed-launcher

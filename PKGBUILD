@@ -15,7 +15,6 @@ makedepends=(
 depends=(
     'zlib-ng-compat'
     'hicolor-icon-theme'
-    'libgcc'
     'libstdc++'
 )
 provides=("${pkgname%-git}")
