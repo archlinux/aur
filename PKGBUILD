@@ -1,4 +1,3 @@
-# Maintainer: Atte Lautanala <atte@lautana.la>
 # Contributor: Arnaud Renevier <arno@renevier.net>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
