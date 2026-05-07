@@ -1,13 +1,16 @@
 pkgbase = min-ed-launcher
 	pkgdesc = Minimal Elite Dangerous Launcher
 	pkgver = 0.12.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rfvgyhn/min-ed-launcher
 	install = min-ed-launcher.install
 	arch = x86_64
 	license = MIT
 	makedepends = dotnet-sdk-8.0-bin
 	makedepends = git
+	depends = zlib-ng-compat
+	depends = hicolor-icon-theme
+	depends = libstdc++
 	options = !strip
 	source = git+https://github.com/rfvgyhn/min-ed-launcher.git#tag=v0.12.2
 	sha256sums = 65d3962f8b45a46ed5fd0b014d7118c7f5d57fdeb35ce7376c587681318e2413
