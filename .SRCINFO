@@ -12,6 +12,8 @@ pkgbase = python-bd_warehouse-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-build123d
+	provides = python-bd_warehouse
+	conflicts = pythno-bd_warehouse
 	source = git+https://github.com/gumyr/bd_warehouse.git
 	b2sums = SKIP
 

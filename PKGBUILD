@@ -18,6 +18,10 @@ python-wheel
 checkdepends=(
 python-pytest
 )
+
+provides=(python-bd_warehouse)
+conflicts=(pythno-bd_warehouse)
+
 source=(git+https://github.com/gumyr/bd_warehouse.git)
 b2sums=('SKIP')
 
