@@ -13,6 +13,6 @@ pkgbase = clipsh
 	depends = cliphist
 	depends = wl-clipboard
 	source = clipsh-1.0.1.tar.gz::https://github.com/Happilli/clipsh/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 45db66f6e81d81cb0494637a5a8ae9ec2f81c22e51c1515f31f6aad12d6ba66b
+	sha256sums = 0837c3644c175192ee0c8a1aabe2ad5f30a5e4e90a9663a215c854af3beba2ab
 
 pkgname = clipsh
