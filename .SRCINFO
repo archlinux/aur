@@ -5,6 +5,7 @@ pkgbase = libquanta
 	url = https://codeberg.org/maandree/libquanta
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	depends = libj2
 	source = libquanta-1.0.tar.gz::https://codeberg.org/maandree/libquanta/archive/1.0.tar.gz
