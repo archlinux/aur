@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=1.5.2
-_version=ba864a6fbffcc29f3d703edd590578f3fc9fcad5-249402461
+pkgver=1.7.1
+_version=b6521b23eb313793d303f352a969808ff20f30ad-250881103
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -44,31 +44,47 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('c3a1092a7721ed02b8f4a22a8ce96995f731986e9158d9bcc5475662aa836831'
-            '14807b90c15a2757d9713664db6a69aa4fab3568e53d84f27de2ab7c8ae85446'
+sha256sums=('0d5d782b00a78adf97c471fb9a60a96a238c208327ca137652d4baec3912ae7c'
+            'df2535dcf1679b8681a27f35a445c08300d34b0336af0dea07f0fbcd5ef5e946'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
-            'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
-sha256sums_x86_64=('92924fc6b104d0e7e216768234b590cb929fdecffaa9eceb0eca9ead50bfd574')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/${_pkgname}-linux-x64/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+            '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
+sha256sums_x86_64=('74aabac63130af79ab80073cac615b813a097d0b1ad9011f55d1f0372beb63a5')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
-    _get_electron_version
+    _check_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/${_pkgname}-linux-x64/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}"*.desktop -t "${pkgdir}/usr/share/applications"
     if [ -x "/usr/bin/bash" ];then
