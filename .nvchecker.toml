@@ -1,0 +1,3 @@
+[g2o]
+source = "git"
+git = "https://github.com/RainerKuemmerle/g2o.git"

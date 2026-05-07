@@ -2,7 +2,7 @@
 # Contributor: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=g2o
 pkgver=20241228
-pkgrel=2
+pkgrel=3
 pkgdesc="A General Framework for Graph Optimization"
 arch=('x86_64')
 url="https://github.com/RainerKuemmerle/g2o"
