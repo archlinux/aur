@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
-pkgver=0.31.1
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   'python-pandas: dashboard support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('4ef61b6197603e969cf90c70273aca2179fe3baffad0b9f1ff5bb6270164b2d2')
+sha256sums=('16b108b56a77688fa1c76b160ca759f87ee9db5eb084c727ada0b9f4fe5bb5b5')
 install=${pkgname}.install
 
 build() {
