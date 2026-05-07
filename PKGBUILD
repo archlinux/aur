@@ -1,5 +1,5 @@
 pkgname="clover"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Clover is a lightweight, fast, leech-only torrent client written in Go"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('60b324717752d5b1560a51140b2768e9e0333f636095d95bdc7c92af3d215930')
+sha256sums=('0d0659d3aebfcc2e79166df7c343fa255fa295768dff020f7be6a6bdb440f598')
 
 prepare() {
     cd "clover-torrent-$pkgver"
