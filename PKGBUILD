@@ -1,8 +1,8 @@
 # Maintainer: Kino <cybao292261@163.com>
 
 pkgname=ros2-jazzy
-pkgver=2025.04.30
-pkgrel=2
+pkgver=2026.01.28
+pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/jazzy/"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     'nvidia-cg-toolkit'
     'assimp'
     'gmock'
+    'lttng-ust'
 )
 makedepends=('cmake' 'git' 'gcc')
 optdepends=('gz-harmonic: For Gazebo Simulation support')
