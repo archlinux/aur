@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 pkgname=nexus-client
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform BBS client with chat, file transfers, and news support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zquestz/nexus"
