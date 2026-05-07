@@ -1,13 +1,13 @@
 pkgbase = tyrannus
 	pkgdesc = Terminal word processor (Ratatui)
-	pkgver = 0.1.2.2
+	pkgver = 0.1.2.3
 	pkgrel = 1
 	url = https://github.com/huffs-projects/tyrannus
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/huffs-projects/tyrannus/releases/download/0.1.2.2/tyrannus-0.1.2.2-linux-x86_64.tar.gz
-	sha256sums = a118a43459cb894229dca6fdb160a5550372ff0ced6ca0e8507321d83567e419
+	source = https://github.com/huffs-projects/tyrannus/releases/download/0.1.2.3/tyrannus-0.1.2.3-linux-x86_64.tar.gz
+	sha256sums = 3fe43c7cde1ac78e7d50a5e8975b7386f4906ad036625646647700f1d6a29453
 
 pkgname = tyrannus
