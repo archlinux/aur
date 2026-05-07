@@ -1,7 +1,7 @@
 # Maintainer: tim <iunstable0@proton.me>
 pkgname=klear
 _pkgname=klear
-pkgver=r65.1788ef2
+pkgver=r66.da6d692
 pkgrel=1
 pkgdesc='A minimal Hyprland status bar in Kotlin/Native (tray, popup menus, battery, glassy refraction)'
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=(
   'mesa'
   'libglvnd'
   'glibc'
+  'pam'
 )
 optdepends=(
   'hyprland: the compositor klear is designed for'
