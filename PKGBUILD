@@ -4,7 +4,7 @@ pkgname=rill-git
 _pkgname=rill
 pkgdesc="A minimalist scrolling window manager for River"
 pkgver=b063485
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 _zigwlver=0.6.0
 _xkbver=0.4.0
@@ -23,7 +23,6 @@ sha256sums=('SKIP'
             'd9804e50f9fa549ad0aed751fbbb5fbc52110d57971b59ecab34ff11f08b0230'
             'bff568b83a19630dc7cb27950e03337925d0d71b4fb0676bc6ebe2d31d1db032')
 
-noextract=("${source[@]:1}")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 optdepends=('alacritty: Default terminal emulator'
