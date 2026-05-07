@@ -1,6 +1,6 @@
 pkgbase = synology-assistant
 	pkgdesc = It helps you set up and install DSM on your DiskStation
-	pkgver = 7.0.6_50085
+	pkgver = 7.0.7_50095
 	pkgrel = 1
 	url = https://www.synology.com/en-global/releaseNote/Assistant
 	install = synology-assistant.install
@@ -14,7 +14,7 @@ pkgbase = synology-assistant
 	depends = libsm
 	provides = synology-assistant
 	conflicts = synology-assistant
-	source = https://global.download.synology.com/download/Utility/Assistant/7.0.6-50085/Ubuntu/x86_64/synology-assistant_7.0.6-50085_amd64.deb
-	sha256sums = b42082f9bbde5494171dad70dbb2675678a1b7a5c9b3af0c11900ee17b1b7122
+	source = https://global.download.synology.com/download/Utility/Assistant/7.0.7-50095/Ubuntu/x86_64/synology-assistant_7.0.7-50095_amd64.deb
+	sha256sums = 179b65691619a3c54bcf7dad9dd3af5474a8c337ebce7d0af3416dd13b85cfc6
 
 pkgname = synology-assistant
