@@ -1,10 +1,10 @@
 # Maintainer: wasdxl <xiaotianjuewo@foxmail.com>
 pkgname=tauritavern-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Tauri-based frontend for SillyTavern (Binary repackaged for Arch Linux)"
 arch=('x86_64')
-url="https://github.com/Darkatse/TauriTavern/releases"
+url="https://github.com/LX2000WASD/TauriTavern-aur"
 license=('AGPL-3.0')
 options=('!debug')
 depends=(
@@ -19,9 +19,9 @@ depends=(
 provides=('tauritavern')
 conflicts=('tauritavern')
 
-source=("https://github.com/Darkatse/TauriTavern/releases/download/v${pkgver}/TauriTavern_${pkgver}_amd64.deb")
+source=("https://github.com/LX2000WASD/TauriTavern-aur/releases/download/v${pkgver}-${pkgrel}/TauriTavern_${pkgver}_amd64.deb")
 
-md5sums=('375fc9bf75ef705d4ddf2004772975a8')
+md5sums=('c70561f137332acf9140be4432dc22df')
 
 package() {
     cd "${srcdir}"
