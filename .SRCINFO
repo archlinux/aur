@@ -1,0 +1,16 @@
+pkgbase = warsa
+	pkgdesc = Qt6 QML plugin for converting AD dates to BS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Happilli/Warsa
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	source = warsa-1.0.0.tar.gz::https://github.com/Happilli/Warsa/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b9bd4f2d02315892a47b6ebf8cd775dec6b330bc838bc17b343663a1ba1160e0
+
+pkgname = warsa
