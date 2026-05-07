@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.3.11
+pkgver=0.4.0
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -13,6 +13,11 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
+    'python'
+    'python-lxml'
+    'python-defusedxml'
+    'python-yaml'
+    'python-pillow'
 )
 makedepends=(
     'npm'
@@ -28,7 +33,7 @@ options=(
     'emptydirs'
 )
 source=("${pkgname}.sh")
-sha256sums=('880ef52d7457bf1f5dbf07d01c04d47ea1c5df224c3c5136989aaecbc2dec6d6')
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -36,9 +41,10 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    [[ -z "${_elec_ver}" ]] && return 1
+    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
     cd "${srcdir}"
