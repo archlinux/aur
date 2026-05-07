@@ -1,7 +1,7 @@
 # Maintainer: fkzys <fkzys at proton dot me>
 
 pkgname=gitpkg
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Minimal package manager for git + make projects"
 arch=('any')
