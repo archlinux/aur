@@ -78,9 +78,15 @@ package() {
     find "${pkgdir}/opt/zed/tools" -type f -exec chmod 755 {} \;
     find "${pkgdir}/opt/zed" -name "*.sh" -exec chmod 755 {} \;
 
-    # Make resources directory world-writable with sticky bit so users can write
-    # optimized AI model files without needing root
-    chmod 1777 "${pkgdir}/opt/zed/resources"
+    # setgid video: lets users write AI model files and calibration data
+    chown root:video "${pkgdir}/opt/zed/resources"
+    chmod 2775 "${pkgdir}/opt/zed/resources"
+    chgrp -R video "${pkgdir}/opt/zed/resources"
+    chmod -R g+w "${pkgdir}/opt/zed/resources"
+
+    mkdir -p "${pkgdir}/opt/zed/settings"
+    chown root:video "${pkgdir}/opt/zed/settings"
+    chmod 2775 "${pkgdir}/opt/zed/settings"
 
     # Fix RUNPATH for all binaries to point to correct library paths
     for bin in "${pkgdir}/opt/zed/tools/"*; do
@@ -89,10 +95,8 @@ package() {
         fi
     done
 
-    # Patch RUNPATH on bundled AI dependency libraries (e.g. libnvinfer.so)
-    # libnvinfer.so uses dlopen() to load libnvinfer_builder_resource by exact
-    # filename, but has no RUNPATH. The executable's RUNPATH is not transitive,
-    # and ldconfig can't resolve it due to a deliberately poisoned SONAME.
+    # AI deps need own RUNPATH: libnvinfer dlopen()s by filename with no RUNPATH,
+    # and ldconfig can't resolve it due to deliberately poisoned SONAMEs
     for lib in "${pkgdir}/opt/zed/dependencies/ai_dependencies/lib/"*.so*; do
         if [ -f "$lib" ] && [ ! -L "$lib" ]; then
             patchelf --set-rpath '/opt/zed/dependencies/ai_dependencies/lib:/opt/cuda/lib64' "$lib" 2>/dev/null || true
@@ -143,7 +147,6 @@ options usbcore usbfs_memory_mb=256
 EOF
 
     # Install tmpfiles.d rule to set USBFS memory buffer at boot via sysfs
-    # This works regardless of whether usbcore is built-in or a module
     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/zed-usbfs.conf" << 'EOF'
 # Set USBFS memory buffer for ZED stereo cameras (applied at boot)
 w /sys/module/usbcore/parameters/usbfs_memory_mb - - - - 256
