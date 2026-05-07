@@ -1,6 +1,6 @@
 pkgbase = linux-wallpaper-engine-git
 	pkgdesc = Yet another linux wallpaper engine
-	pkgver = 0.1.1
+	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://github.com/wqLouis/linux-wallpaperengine
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = linux-wallpaper-engine-git
 	makedepends = git
 	makedepends = rustup
 	provides = linux-wallpaper-engine
+	conflicts = linux-wallpaper-engine
 	options = !strip
 	source = linux-wallpaper-engine-git::git+https://github.com/wqLouis/linux-wallpaperengine.git
 	sha256sums = SKIP
