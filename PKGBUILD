@@ -1,6 +1,6 @@
 # Maintainer: cbxcvl <cbxcvl@github>
 pkgname=btk-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Burp Token Killer — token-efficient MCP proxy between Claude Code and Burp Suite"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('btk')
 source_x86_64=("btk-linux-x86_64::${url}/releases/download/v${pkgver}/btk-linux-x86_64")
 source_aarch64=("btk-linux-aarch64::${url}/releases/download/v${pkgver}/btk-linux-aarch64")
 
-sha256sums_x86_64=('cdedf547605cdacd40f74630638d28726576fe69aa5e93289c4def0e7ea3fd7c')
-sha256sums_aarch64=('de191e3c58fd6c56e114302f51b4fa5a7472ec43a9f844b8bcce77bd2a6e1c62')
+sha256sums_x86_64=('5c9523fbd2cb4dd4ed09f5d229ad5cea3b135e49ee53f6278ef13aee617ee191')
+sha256sums_aarch64=('f5bbda246360dc84dffbac45e0539a63df3d1dbe37ea0d6780abeb1767a31eb4')
 
 package() {
   install -Dm755 "btk-linux-${CARCH}" "${pkgdir}/usr/bin/btk"
