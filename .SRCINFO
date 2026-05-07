@@ -1,7 +1,7 @@
 pkgbase = pcc-git
 	pkgdesc = A Portable C Compiler.
-	pkgver = 20250608
-	pkgrel = 2
+	pkgver = 20260213
+	pkgrel = 1
 	url = https://github.com/PortableCC/
 	arch = i686
 	arch = x86_64
