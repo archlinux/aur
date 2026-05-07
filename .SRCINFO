@@ -3,14 +3,17 @@ pkgbase = tsdproxy-bin
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/almeidapaulopt/tsdproxy
-	arch = x86_64
-	arch = aarch64
 	license = MIT
-	provides = tsdproxy
 	conflicts = tsdproxy
-	source_x86_64 = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.0.0/tsdproxy_2.0.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = a4e9887753373dd16189ad87831bfdc3f279a2c0020b15097910f2862b40b470
+	provides = tsdproxy
+	arch = aarch64
 	source_aarch64 = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.0.0/tsdproxy_2.0.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2ce561f99ea9d4bec51f3c061c42245be51e3725cfe5f5245374cc408690e925
-
+	sha256sums_aarch64 = 99f28df1b659b01e0c3e6a26f4082966e7b855c36cdd0192e870fed35a3c20d2
+	arch = armv7h
+	source_armv7h = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.0.0/tsdproxy_2.0.0_linux_armv7.tar.gz
+	sha256sums_armv7h = bd4df7d265e831a70213bdd155949ed9f071d12b27455e0b9999a1450ef305b4
+	arch = x86_64
+	source_x86_64 = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.0.0/tsdproxy_2.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 03c983a289f57ac9f34c8cc1cf61684522385ec913ec70b93d6196b1b28d0c6f
+	
 pkgname = tsdproxy-bin
