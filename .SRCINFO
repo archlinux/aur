@@ -39,7 +39,7 @@ pkgbase = chipass-git
 	conflicts = keepasschi-git
 	replaces = keepasschi-git
 	options = !emptydirs
-	source = git+https://codeberg.org/keepasschi/chipass.git
+	source = git+https://codeberg.org/ChiPass/ChiPass.git
 	md5sums = SKIP
 
 pkgname = chipass-git

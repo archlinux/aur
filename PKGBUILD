@@ -12,7 +12,7 @@
 # Contributor: Paolo Stivanin <admin at polslinux dot it>
 
 pkgname=chipass-git
-_gitname=chipass
+_gitname=ChiPass
 pkgver=r4791.g5106899
 pkgrel=1
 pkgdesc="Modern, secure, and open-source password manager (fork of KeePassXC)"
@@ -58,7 +58,7 @@ conflicts=(
 )
 replaces=('keepasschi-git')
 options=(!emptydirs)
-source=(git+https://codeberg.org/keepasschi/chipass.git)
+source=(git+https://codeberg.org/ChiPass/ChiPass.git)
 md5sums=('SKIP')
 
 pkgver() {
