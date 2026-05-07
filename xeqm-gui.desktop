@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=XEQM GUI
+Comment=Official GUI wallet for XEQMLabs (XEQM)
+Exec=xeqm-gui %U
+Icon=xeqm-gui
+Terminal=false
+Type=Application
+Categories=Finance;Network;
+StartupWMClass=xeqm-gui
