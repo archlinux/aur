@@ -9,7 +9,7 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-_ffsrcver=140.10.1
+_ffsrcver=140.10.2
 _ffbuild=1
 _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _lwrelver=100
@@ -146,8 +146,8 @@ source=(
   "0004-skia-m142-update.patch.xz"
   "0005-rust1_95compat.patch"
 )
-sha256sums=('bdf2c8a566eb751ed719ed06114563c8e804c92351748301258f59aef5077095'
-            '4e75c0c3e2c5530de9364de388272bf81b2b32209d98fa4a7eb50d268a17a5bb'
+sha256sums=('c0bb994f89dcd089d1395095e13e6af5a1dd2c3c175eb54c52dd0769902f525c'
+            '796bf65372e702c13277e6f38e9276ded9dceea81e8934c29a06568016f24e77'
             'SKIP'
             '52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
@@ -178,9 +178,6 @@ prepare() {
   mkdir -p "${_lw_srcdir}/lw"
   mv "../firefox-l10n-${_l10n_commit}" "${_lw_srcdir}/lw/l10n"
 
-  export KONFORM_MOZ_BUILD_ID="$(grep '^buildID=' "$srcdir/src/config/linux_info.txt" | cut -d= -f2)"
-  export MOZ_BUILD_DATE="${KONFORM_MOZ_BUILD_ID}"
-
   python3 scripts/librewolf-patches.py "${_ffsrcver}" "${_lwrelver}"
 
   ## </srcprep>
@@ -196,9 +193,6 @@ ac_add_options --allow-addon-sideload
 
 
 ##### Kon
-mk_add_options KONFORM_MOZ_BUILD_ID=${KONFORM_MOZ_BUILD_ID}
-export KONFORM_MOZ_BUILD_ID=${KONFORM_MOZ_BUILD_ID}
-export MOZ_BUILD_DATE=${MOZ_BUILD_DATE}
 export MOZ_REQUIRE_SIGNING=
 export MOZ_DATA_REPORTING=
 export MOZ_TELEMETRY_ON_BY_DEFAULT=
@@ -300,10 +294,6 @@ build() {
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  # export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
-  #hardcoded build timestamp for fingerprint protection defense-in-depth
-  export KONFORM_MOZ_BUILD_ID="$(grep '^buildID=' "$srcdir/src/config/linux_info.txt" | cut -d= -f2)"
-  export MOZ_BUILD_DATE="${KONFORM_MOZ_BUILD_ID}"
   export MOZ_NOSPAM=1
   export MOZ_REQUIRE_SIGNING=
 
