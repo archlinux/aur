@@ -3,9 +3,8 @@
 # shellcheck disable=SC2164
 
 _pkgname=casual-pre-loader
-
 pkgname="${_pkgname}-git"
-pkgver=2.1.2.r0.g25dbae5
+pkgver=2.2.0.r0.g196179a
 pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
@@ -21,7 +20,7 @@ depends=(
 	'python-pygithub>=2.9.0' 'python-pygithub<3'
 	'python-pyqt6>=6.8' 'python-pyqt6<7'
 	'python-requests>=2.33' 'python-requests<3'
-	'python-valve-parsers>=1.0.7'
+	'python-valve-parsers>=1.2.2'
 )
 makedepends=('git' 'gendesk' 'sed')
 optdepends=(
