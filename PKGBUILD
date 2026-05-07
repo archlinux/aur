@@ -2,7 +2,7 @@
 pkgname=cleave
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Qt6 QML plugin for window geometry and screen edge detection"
+pkgdesc="Qt6 QML plugin for audio visualization"
 arch=('x86_64')
 url="https://github.com/Happilli/Cleave"
 license=('MIT')
