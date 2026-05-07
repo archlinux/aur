@@ -2,7 +2,7 @@
 
 _pkgname=jsonpath-python
 pkgname="python-${_pkgname}"
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="A more powerful JSONPath implementation in modern python"
 arch=("any")
@@ -17,7 +17,7 @@ makedepends=(
     "uv"
 )
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('e94d043015bbe978047bc17df46916aafae7c92d37302f0c0135239932116253')
+sha256sums=('9e0ae4577526317249c34f7ed9ac27a710c4bdf927798e249bcba3e2ce6e9d04')
 
 build() {
     cd "${_pkgname}"
