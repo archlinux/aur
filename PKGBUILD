@@ -1,7 +1,7 @@
 # Maintainer: Arzet Ro <arzeth0@gmail.com>
 pkgname=python-deepspeed
-pkgver=0.18.2
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective."
 #depends=(python python-hjson ninja python-numpy python-packaging python-psutil python-py-cpuinfo python-pydantic python-pynvml python-pytorch python-tqdm)
 #depends+=(python-cupy python-huggingface-hub tensorboard python-transformers python-mpi4py python-tabulate python-fairscale python-safetensors)
@@ -55,7 +55,7 @@ url="https://github.com/deepspeedai/DeepSpeed"
 license=('Apache-2.0')
 # 208 MiB, but building takes ~5 sec, and .pkg.tar.zst is 3 MiB
 source=("https://github.com/deepspeedai/DeepSpeed/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('905d6e1e803449f8d904b737f9d38b37ed5932948a9da5090744797aa0ed577e')
+sha256sums=('7863e55196ace8793fb78fc746dcb19d1a27de4658c120fa1645163521e2c618')
 
 build() {
   cd "${srcdir}/DeepSpeed-$pkgver"
@@ -69,6 +69,6 @@ package() {
   # `ds` and `dsr` are too short; we'd better
   # avoid possible collisions with other packages.
   # The package already provides /usr/bin/{deepspeed,ds_report}
-  # which are exactly the same (synonymous).
+  # which are exactly the same — aliases.
   rm "$pkgdir/usr/bin/ds"{,r}
 }
