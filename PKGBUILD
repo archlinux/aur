@@ -1,4 +1,3 @@
-# Maintainer: Atte Lautanala <atte@lautana.la>
 # Contributor: HelloImWar <helloimwar at proton dot me>
 
 pkgname=neovim-autopairs-git
