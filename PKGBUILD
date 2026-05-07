@@ -2,13 +2,13 @@
 
 pkgname=oniri-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.0.r24.ddf5996
+pkgver=1.2.0.r48.307081e
 pkgrel=1
 pkgdesc="A tool that automatically maximizes the only window of a niri workspace (git version)"
 url="https://github.com/Antiz96/oniri"
 arch=('x86_64')
 license=('GPL-3.0-or-later')
-depends=('glibc' 'libgcc')
+depends=('glibc' 'libgcc' 'niri')
 makedepends=('cargo' 'git' 'scdoc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
