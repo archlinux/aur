@@ -1,7 +1,7 @@
 pkgbase = white-music-bin
 	pkgdesc = Yandex Music mod (White Music) with bottom search and clean UI
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/nerolocker/whitemusic
 	arch = x86_64
 	license = MIT
