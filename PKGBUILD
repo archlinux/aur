@@ -30,7 +30,7 @@ source=(
 )
 
 sha256sums=(
-  "e2ef1cf33f139ded2c6ea28a50e1f445a785991d3caacaeecd44809d91d21bc0"
+  "0ecff6b4300668cc7ba4f1dd7d875750b562707aacc4634c2e8e9d2ec474ca16"
   "SKIP"
 )
 
