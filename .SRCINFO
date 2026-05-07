@@ -1,6 +1,6 @@
 pkgbase = crib-bin
 	pkgdesc = Crib reads your devcontainer.json config, builds the container, and gets out of your way
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/fgrehm/crib
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = crib-bin
 	optdepends = podman: for Podman runtime
 	provides = crib
 	options = !strip
-	source = crib-bin-0.9.0.tar.gz::https://github.com/fgrehm/crib/releases/download/v0.9.0/crib_linux_amd64.tar.gz
-	sha256sums = 0d63539fe141b79dc00837b9fb5aded71fe4841b3e9d7b545de80cc9d8132fbb
+	source = crib-bin-0.9.1.tar.gz::https://github.com/fgrehm/crib/releases/download/v0.9.1/crib_linux_amd64.tar.gz
+	sha256sums = 8e52b4725d030861c47821492b79c560688ddd9e0c0fbf5ce9d93a051683dcbc
 
 pkgname = crib-bin
