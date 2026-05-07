@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('java-runtime>=21')
 optdepends=('linux-wallpaperengine: the backend that actually renders wallpapers')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/diode701/nyaa-paper/releases/download/v$pkgver/nyaa-paper-$pkgver.tar.gz")
-sha256sums=('4408bf2d29a08d2d5c98125e024a4a740ebc8592ed3cdcaa0771b4025f4c1beb ')
+sha256sums=('2d6bee7e0a267c871ef477c8c6cc2d43e08a70fcf50c986337825833a3846cfb')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
