@@ -1,13 +1,15 @@
 pkgbase = atf
-	pkgdesc = Automated Testing Framework
-	pkgver = 0.21
+	pkgdesc = Automated Testing Framework libs to write tests in C, C++ and shell
+	pkgver = 0.23
 	pkgrel = 1
-	url = https://github.com/jmmv/atf/
+	url = https://github.com/freebsd/atf
 	arch = i686
 	arch = x86_64
-	license = BSD
-	depends = gcc-libs
-	source = https://github.com/jmmv/atf/archive/atf-0.21.zip
-	sha1sums = 986f7e13eb8f3ffdba6bd210c39816734589bfb9
+	license = LicenseRef-custom
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	source = https://github.com/freebsd/atf/archive/atf-0.23.zip
+	sha256sums = 6a26374943d65837c26a2c2158fda0471e3ef866e260287de21e908c2f15ca82
 
 pkgname = atf
