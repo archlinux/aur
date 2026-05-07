@@ -2,7 +2,7 @@
 # Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yank-note-bin
 _pkgname=Yank-Note
-pkgver=3.88.2
+pkgver=3.89.1
 _electronversion=38
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.(Prebuilt version.Use system-wide electron)'
@@ -27,8 +27,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('dafed00038152820faf377270f09e78dad0a1ad45299d9a6bad10c246e12cbba')
-sha256sums_x86_64=('d521c1384d63188d67b1026961db51f7d0607ac606493c7ea89a4df43466c583')
+sha256sums_aarch64=('1ea063fe97c669c043dc8132b6406ff69a8df2118845d384da64e2424f6d3c5e')
+sha256sums_x86_64=('6bf87af2ef047a842ad52604ad08a8dc6d2522cb611e175cddc29fa8a477bf96')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
