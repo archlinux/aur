@@ -2,7 +2,7 @@
 # Contributer: desbma
 
 pkgname=debmirror
-pkgver=2.47
+pkgver=2.48
 pkgrel=1
 pkgdesc='Debian partial mirror script, with ftp and package pool support'
 url="https://salsa.debian.org/debian/${pkgname}"
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('bzip2' 'perl-crypt-ssleay' 'perl-libwww' 'perl-lockfile-simple' 'rsync' 'xz')
 optdepends=('ed' 'gnupg' 'patch')
 source=("https://salsa.debian.org/debian/${pkgname}/-/archive/debian/1%25${pkgver}/${pkgname}-debian-1%25${pkgver}.tar.bz2")
-sha256sums=('2a634ad315d158ad9beb6790b2958573b8dd531ba8b453e1db2d5f9336dae0ae')
+sha256sums=('0cad6872472741c9f47f15b48c71cf28404d8a039a28b026f1987b7711c83a23')
 
 build() {
     cd "${pkgname}-debian-1%${pkgver}"
