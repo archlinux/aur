@@ -8,7 +8,6 @@ src
 *.pkg.tar.zst
 *.sh
 *.template
-leaf-*
 LICENSE-*
 checksums.txt
 namcap.txt
