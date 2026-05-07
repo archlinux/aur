@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=fff-bun
 _npmname=@ff-labs/fff-bun
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="High-performance fuzzy file finder for Bun, powered by a Rust native library"
 arch=('x86_64' 'aarch64')
@@ -15,10 +15,10 @@ source_x86_64=("${pkgname}-linux-x64-gnu-${pkgver}.tgz::https://registry.npmjs.o
 source_aarch64=("${pkgname}-linux-arm64-gnu-${pkgver}.tgz::https://registry.npmjs.org/@ff-labs/fff-bin-linux-arm64-gnu/-/fff-bin-linux-arm64-gnu-${pkgver}.tgz")
 noextract=("${pkgname}-linux-x64-gnu-${pkgver}.tgz"
            "${pkgname}-linux-arm64-gnu-${pkgver}.tgz")
-sha256sums=('5e852a2b1d0702e8de65d97b6c5d356cef6d0f6527a0e8b5b756fa4252f41de2'
+sha256sums=('59a3987a8453ca13151ab1516325bf78e587acfa0ca678fa1707d62d108f67b1'
             'f8264de82db188834a5711d7e348dc08c33db14f79bb587ccb42616fd694ee81')
-sha256sums_x86_64=('7ffbb638e7deb0ad5470f96fb43c7b4210f596e25b4c276df18feba885edd278')
-sha256sums_aarch64=('a9436329da4fbd23748416e2a73173cb3c4143e39cf5cb5e2a4777c45cc65d38')
+sha256sums_x86_64=('b673e22e79a29228c556f327a17053079acf9361a08fd6376e0bf6f7de33e315')
+sha256sums_aarch64=('9b1ba2cdbf5a4372e6551db7bf49e234ea124d0a7d7a4155fd68064732ddcb66')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" |
