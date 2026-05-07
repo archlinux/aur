@@ -22,10 +22,10 @@ makedepends=(
   'minisign'
 )
 provides=(
-  "${_pkgname}"
+  "${_basename}=$pkgver"
 )
 conflicts=(
-  "${_pkgname}"
+  "${_basename}"
 )
 options=(
   '!strip'
@@ -72,7 +72,7 @@ package() {
   cp -a --no-preserve=ownership "lib" -t "${pkgdir}/opt/${_pkgname}"
 
   install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
-  ln -vsf "/opt/${_pkgname}/${_basename}" "${pkgdir}/usr/bin/${_pkgname}"
-  ln -vsf "/opt/${_pkgname}/lib"          "${pkgdir}/usr/lib/${_pkgname}"
+  ln -vsf "/opt/${_pkgname}/${_basename}" "${pkgdir}/usr/bin/${_basename}"
+  ln -vsf "/opt/${_pkgname}/lib"          "${pkgdir}/usr/lib/${_basename}"
 }
 
