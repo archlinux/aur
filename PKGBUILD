@@ -2,7 +2,7 @@
 
 pkgname=opencode-desktop
 pkgver=1.14.40
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenCode desktop app (built from source, runs on system electron41)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/anomalyco/opencode'
@@ -17,6 +17,7 @@ makedepends=(
 )
 optdepends=(
   'opencode: standalone terminal CLI (independent of the desktop app, which embeds its own server)'
+  'nodejs: needed only when invoking npm CLI helpers shipped inside bundled node_modules (marked, js-yaml, semver, ...) — the desktop app itself runs entirely under electron'
 )
 # Renamed from opencode-desktop-electron after upstream renamed
 # packages/desktop-electron → packages/desktop in v1.14.39.
@@ -96,9 +97,11 @@ package() {
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -a "$_bld/dist/linux-unpacked/resources/app/." "$pkgdir/usr/lib/$pkgname/"
 
-  # Drop musl prebuilds (Arch is glibc) and strip world-writable bits that
-  # some npm packages ship with mode 777 (security + namcap).
+  # Drop musl prebuilds (Arch is glibc): both file-level (*.musl.node, e.g.
+  # @msgpackr-extract) and directory-level (e.g. @parcel/watcher-linux-x64-musl).
+  # Strip world-writable bits that some npm packages ship with mode 777.
   find "$pkgdir/usr/lib/$pkgname" -name '*.musl.node' -delete
+  find "$pkgdir/usr/lib/$pkgname" -depth -type d -name '*-musl*' -exec rm -rf {} +
   chmod -R go-w "$pkgdir/usr/lib/$pkgname"
 
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"

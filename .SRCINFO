@@ -1,7 +1,7 @@
 pkgbase = opencode-desktop
 	pkgdesc = OpenCode desktop app (built from source, runs on system electron41)
 	pkgver = 1.14.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = opencode-desktop
 	depends = electron41
 	depends = hicolor-icon-theme
 	optdepends = opencode: standalone terminal CLI (independent of the desktop app, which embeds its own server)
+	optdepends = nodejs: needed only when invoking npm CLI helpers shipped inside bundled node_modules (marked, js-yaml, semver, ...) — the desktop app itself runs entirely under electron
 	conflicts = opencode-desktop-bin
 	conflicts = opencode-desktop-electron
 	conflicts = opencode-desktop-electron-bin
