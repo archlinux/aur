@@ -1,6 +1,6 @@
 pkgbase = panache-bin
 	pkgdesc = A language server, formatter, and linter for Pandoc, Quarto, and R Markdown
-	pkgver = 2.41.1
+	pkgver = 2.44.0
 	pkgrel = 1
 	url = https://github.com/jolars/panache
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = panache-bin
 	provides = panache
 	conflicts = panache
 	options = !strip
-	source_x86_64 = panache-2.41.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jolars/panache/releases/download/v2.41.1/panache-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b837081814b5f337b83896c411e1890b1f489255b47c3138360c77183f374069
-	source_aarch64 = panache-2.41.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jolars/panache/releases/download/v2.41.1/panache-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a4379bfb2e416d6af0a69022780f5e65b0051f66dd22471eff1cbef8a83ed27c
+	source_x86_64 = panache-2.44.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jolars/panache/releases/download/v2.44.0/panache-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a06dc2c2f5ccbb8c1eac017f920ed9d3e2fa40f5bd6956f94a5bd89fc5a9dd6b
+	source_aarch64 = panache-2.44.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jolars/panache/releases/download/v2.44.0/panache-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e38901c19f3d195e2975e0d0f372aefae1126252ce3e1a5afefb7307eee8c9de
 
 pkgname = panache-bin
