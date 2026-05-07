@@ -1,0 +1,17 @@
+pkgbase = esh-shell
+	pkgdesc = Unix shell with LISP-like syntax created originally by Ivan Tkatchev
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://codeberg.org/aperezdc/esh
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = meson
+	makedepends = texinfo
+	depends = readline
+	source = https://codeberg.org/aperezdc/esh/releases/download/v0.8.6/esh-0.8.6.tar.xz
+	source = https://codeberg.org/aperezdc/esh/releases/download/v0.8.6/esh-0.8.6.tar.xz.asc
+	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
+	sha256sums = 35fe69def141aa73840fd3be9cd1c171ce5a6ed51dde83acd6a2ff7c2cea04e1
+	sha256sums = SKIP
+
+pkgname = esh-shell
