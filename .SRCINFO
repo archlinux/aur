@@ -1,7 +1,7 @@
 pkgbase = g2o
 	pkgdesc = A General Framework for Graph Optimization
 	pkgver = 20241228
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/RainerKuemmerle/g2o
 	arch = x86_64
 	license = BSD-3-Clause
