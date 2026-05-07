@@ -1,0 +1,23 @@
+post_install() {
+    echo ""
+    echo "==> Start service / 启动服务："
+    echo "      systemctl enable --now hclient-cli"
+    echo ""
+    echo "==> Add microserver / 添加微服："
+    echo "      curl -X POST --get \\"
+    echo "        --data-urlencode bname=\"<微服名/microserver name>\" \\"
+    echo "        --data-urlencode uid=\"<用户名/username>\" \\"
+    echo "        --data-urlencode password=\"<密码/password>\" \\"
+    echo "        http://127.0.0.1:7777/add_box"
+    echo ""
+    echo "==> Two-factor authentication / 如需两步验证："
+    echo "      curl -X POST --get \\"
+    echo "        --data-urlencode bname=\"<微服名/microserver name>\" \\"
+    echo "        --data-urlencode tfa=\"<验证码/2FA code>\" \\"
+    echo "        http://127.0.0.1:7777/add_tfa"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

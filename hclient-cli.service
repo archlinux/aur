@@ -1,0 +1,12 @@
+[Unit]
+Description=Lazycat Microserver hclient-cli
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/hclient-cli -tun
+AmbientCapabilities=CAP_NET_ADMIN
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
