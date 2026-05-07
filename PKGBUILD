@@ -7,14 +7,14 @@
 
 pkgname=hunspell-pt-br
 pkgver=3.2.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Brazillian Portuguese grammar, spelling and hyphenation checker to hunspell"
 arch=(any)
-url="https://extensions.libreoffice.org/en/extensions/show/vero-verificador-ortografico-e-hifenizador-em-portugues"
+url="http://pt-br.libreoffice.org/projetos/vero"
 license=('LGPL3' 'MPL')
 optdepends=('hunspell:  the spell checking libraries and apps')
-source=('https://extensions.libreoffice.org/assets/downloads/z/veroptbrv320aoc.oxt')
-sha256sums=('78bac9ed27bf1b23666e240bc3809b9520004f14885423580a029771032bff54')
+source=('https://web.archive.org/web/20260219135127/https://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/VeroptBR3215AOC.oxt')
+sha256sums=('7571a3d8aaa0d5699f8b572d2fc613189876fa4fa87dcbda9a99bd63500210ee')
 
 #based it in the community build for hunspell-hu-HU
 package() {
