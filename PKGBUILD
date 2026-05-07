@@ -2,7 +2,7 @@
 
 _pkgbase=unsloth
 pkgname="$_pkgbase"
-pkgver=0.1.37.beta
+pkgver=0.1.39.beta
 pkgrel=1
 pkgdesc='Web UI for training and running open models locally'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
 	"unsloth-setup"
 	"fix-assistant-ui-message-repository-import.patch"
 )
-sha256sums=('b7989b55109bf95b97eea5af07d1311faf0bc8ecc41afbecd06131d3a70297e5'
+sha256sums=('d3b04de1e5611421ef210dc06c5bb665edd312fc37e4916925a6a4e41d48a321'
             '14444b022bd50269d474df655e74c3309959c1bd312214b7b431ed341b26a222'
             '2e446190015ccb8d403fc91d2b59fd7f3237230f1c6bd48034d43c624a5f0689')
 
