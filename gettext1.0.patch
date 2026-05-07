@@ -1,0 +1,37 @@
+diff -Naur ./xfwl4.orig/Cargo.lock ./xfwl4/Cargo.lock
+--- ./xfwl4.orig/Cargo.lock	2026-05-04 19:31:08.292328929 -0400
++++ ./xfwl4/Cargo.lock	2026-05-04 19:34:53.367765068 -0400
+@@ -1011,8 +1011,7 @@
+ [[package]]
+ name = "gettext-rs"
+ version = "0.7.7"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5d5857dc1b7f0fee86961de833f434e29494d72af102ce5355738c0664222bdf"
++source = "git+https://github.com/gettext-rs/gettext-rs.git#846d25d2d8a3d841ced820d2763b0586aadcdc85"
+ dependencies = [
+  "gettext-sys",
+  "locale_config",
+@@ -1020,9 +1019,8 @@
+ 
+ [[package]]
+ name = "gettext-sys"
+-version = "0.26.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "4ea859ab0dd7e70ff823032b3e077d03d39c965d68c6c10775add60e999d8ee9"
++version = "1.0.0"
++source = "git+https://github.com/gettext-rs/gettext-rs.git#846d25d2d8a3d841ced820d2763b0586aadcdc85"
+ dependencies = [
+  "cc",
+  "temp-dir",
+diff -Naur ./xfwl4.orig/Cargo.toml ./xfwl4/Cargo.toml
+--- ./xfwl4.orig/Cargo.toml	2026-05-04 19:31:08.292328929 -0400
++++ ./xfwl4/Cargo.toml	2026-05-04 19:34:33.763171735 -0400
+@@ -32,7 +32,7 @@
+ clap = { version = "4.5.54", features = ["derive"] }
+ fps_ticker = {version = "1.0.0", optional = true}
+ freedesktop-icons = "0.4.0"
+-gettext-rs = "0.7.7"
++gettext-rs = { git = "https://github.com/gettext-rs/gettext-rs.git" }
+ glib = { version = "0.18", features = ["log", "v2_72"] }
+ gtk = { version = "0.18", features = ["v3_24"] }
+ image = { version = "0.25.1", default-features = false, features = ["png"] }

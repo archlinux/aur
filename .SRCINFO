@@ -1,0 +1,36 @@
+pkgbase = xfwl4-git
+	pkgdesc = Wayland compositor for xfce4 (git checkout)
+	pkgver = r446+6fe80c5
+	pkgrel = 1
+	url = https://gitlab.xfce.org/kelnos/xfwl4
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	groups = xfce4-git
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = xfconf
+	depends = libdisplay-info
+	depends = libdrm
+	depends = libinput
+	depends = mesa
+	depends = pixman
+	depends = seatd
+	depends = libxkbcommon
+	provides = xfwl4=0.1.0dev
+	conflicts = xfwl4
+	source = xfwl4::git+https://gitlab.xfce.org/kelnos/xfwl4
+	source = fix_podir.patch
+	source = gettext1.0.patch
+	source = disable_xfwl4_binary_install_from_meson.patch
+	sha256sums = SKIP
+	sha256sums = 638c8251f11d4b9f312352d19cd1ddeb967b97223db2a774ed9a07f66dfa9808
+	sha256sums = eb047de3cc53a456b6d750e6dd4a681427f6a087419898858491cbb05ea02340
+	sha256sums = 38b3cbd20567118871e1680120a5629f164868452c2329fbda11d12cc50396b8
+
+pkgname = xfwl4-git

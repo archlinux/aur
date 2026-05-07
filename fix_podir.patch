@@ -1,0 +1,12 @@
+diff -Naur ./xfwl4.orig/resources/meson.build ./xfwl4/resources/meson.build
+--- ./xfwl4.orig/resources/meson.build	2026-05-04 19:29:06.315778557 -0400
++++ ./xfwl4/resources/meson.build	2026-05-04 19:29:31.484439631 -0400
+@@ -6,7 +6,7 @@
+ i18n.merge_file(
+   input: 'xfwl4.desktop.in',
+   output: 'xfwl4.desktop',
+-  po_dir: 'po',
++  po_dir: '..' / 'po',
+   type: 'desktop',
+   install: true,
+   install_dir: wayland_session_prefix / get_option('datadir') / 'wayland-sessions',

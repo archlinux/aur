@@ -1,0 +1,22 @@
+diff -Naur ./xfwl4.orig/meson.build ./xfwl4/meson.build
+--- ./xfwl4.orig/meson.build	2026-05-07 14:17:52.711266459 -0400
++++ ./xfwl4/meson.build	2026-05-07 14:19:27.266467986 -0400
+@@ -124,12 +124,12 @@
+ )
+ # Can't use custom_target()'s installation feature, as it will install
+ # _everything_, including all the rust intermediate build files.
+-meson.add_install_script(
+-  install,
+-  '-m', '0755',
+-  meson.current_build_dir() / 'xfwl4' / cargo_profile / 'xfwl4',
+-  get_option('prefix') / get_option('bindir'),
+-)
++#meson.add_install_script(
++#  install,
++#  '-m', '0755',
++#  meson.current_build_dir() / 'xfwl4' / cargo_profile / 'xfwl4',
++#  get_option('prefix') / get_option('bindir'),
++#)
+ 
+ if meson.version().version_compare('>= 1.4.0')
+   cargo_test_cmd = custom_target(
