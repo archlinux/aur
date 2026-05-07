@@ -1,9 +1,28 @@
-# source
-/*.tar.gz
+# Ignore everything by default
+*
 
-# build
-/src/
-/pkg/
+# Whitelist the essentials
+!.gitignore
+!.SRCINFO
+!PKGBUILD
 
-# package
-/*.pkg.tar*
+# Whitelist auxiliary files
+!*.install
+!*.patch
+!*.diff
+!*.service
+!*.desktop
+!*.conf
+!*.png
+!*.svg
+!*.sysusers
+!*.tmpfiles
+!LICENSE
+!README.md
+!CHANGELOG.md
+!*.ini
+!*.txt
+
+# Package-specific files
+!graalvm-rebuild-libpolyglot.hook
+!test.sh
