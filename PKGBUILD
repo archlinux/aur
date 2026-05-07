@@ -67,7 +67,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 _kernel_make_args() {
   case $CARCH in
-    aarch64) echo "ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-" ;;
+    aarch64) echo "ARCH=arm64" ;;
     *) echo "Unknown CARCH $CARCH" >&2; exit 1 ;;
   esac
 }
