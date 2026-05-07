@@ -1,6 +1,6 @@
 pkgbase = tauritavern-bin
 	pkgdesc = A Tauri-based frontend for SillyTavern (Binary repackaged for Arch Linux)
-	pkgver = 1.6.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Darkatse/TauriTavern/releases
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tauritavern-bin
 	provides = tauritavern
 	conflicts = tauritavern
 	options = !debug
-	source = https://github.com/Darkatse/TauriTavern/releases/download/v1.6.5/TauriTavern_1.6.5_amd64.deb
-	md5sums = 75e3b3f6c2970087d04e0a32e09dcdee
+	source = https://github.com/Darkatse/TauriTavern/releases/download/v2.0.0/TauriTavern_2.0.0_amd64.deb
+	md5sums = 375fc9bf75ef705d4ddf2004772975a8
 
 pkgname = tauritavern-bin
