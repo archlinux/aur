@@ -16,6 +16,8 @@ prepare() {
     cd "$pkgname"
 
     rustup default stable
+
+    git submodule update --init --recursive
 }
 
 build() {
