@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-passman
 	pkgdesc = Passman is a full featured password manager
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/nextcloud/passman
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-passman
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-passman-2.5.0.tar.gz::https://releases.passman.cc/passman_2.5.0.tar.gz
-	sha512sums = 54ff4b0dbe2673660d8168663963ed3ad1e9de181a92d13e14578f0de411a914a45c0576cb47107fd4b1d100b0857912477675a9b21da8bac843b8dcaf5807fb
+	source = nextcloud-app-passman-2.5.1.tar.gz::https://releases.passman.cc/passman_2.5.1.tar.gz
+	sha512sums = 379d749995db73033629c0e17a894e4790aa97812c213e44715a124fde1f10ec3399ced092c9fb6b4041ee469291aee5ab80bc490d3f9a9977f122540919c0aa
 
 pkgname = nextcloud-app-passman
