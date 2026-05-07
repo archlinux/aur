@@ -3,7 +3,7 @@
 pkgname=proton-meet
 pkgver=1.0.9
 pkgrel=1
-pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
+pkgdesc='Secure, end-to-end encrypted video conferencing'
 arch=(any)
 url='https://proton.me/meet'
 license=(GPL-3.0-or-later)

@@ -1,5 +1,5 @@
 pkgbase = proton-meet
-	pkgdesc = Proton official desktop application for Proton Mail and Proton Calendar
+	pkgdesc = Secure, end-to-end encrypted video conferencing
 	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://proton.me/meet
