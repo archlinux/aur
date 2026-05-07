@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/pingall/
+/*.pkg.tar.*
+/*.src.tar.*
