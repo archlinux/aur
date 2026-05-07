@@ -5,7 +5,7 @@ _pkgname=matcha
 pkgname=${_pkgname}-client-bin
 pkgdesc="A powerful, feature-rich email client for your terminal"
 
-pkgver=0.36.1
+pkgver=0.37.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}"{,-bin})
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('58ef965099afb90fedc1428076ae290ad61faa2ee3c2777139e36faa2ba7df78')
-sha256sums_aarch64=('f4666cc02f057a51209ce6057accd21192581e732e914d1e8fed98292a9f0184')
+sha256sums_x86_64=('8dece29a5901033f410947b54572244369cb47ca603b940b7020e564031a8999')
+sha256sums_aarch64=('afb8d05ed6d64d323031cf20aaede83c662780dd7ac0c66a843f9875718726a4')
 
 
 package() {
