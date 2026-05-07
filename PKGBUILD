@@ -3,7 +3,7 @@
 # Maintainer: Solomon <shlomochoina@gmail.com>
 pkgname=openclaw-bun-git
 _pkgver=2026.4.19.beta.2
-pkgver=2026.4.19.beta.2.r9424.gafc46e92335
+pkgver=2026.4.19.beta.2.r9653.g6ce1c98b618
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices (Bun build, highly optimized)"
 arch=('x86_64')
@@ -70,7 +70,7 @@ prepare() {
     # 3. Surgically install built fs-safe into openclaw node_modules AFTER bun install
     echo "Surgically installing local @openclaw/fs-safe build..."
     mkdir -p "$srcdir/openclaw/node_modules/@openclaw/fs-safe"
-    cp -rv "$srcdir/fs-safe/dist" "$srcdir/fs-safe/package.json" "$srcdir/openclaw/node_modules/@openclaw/fs-safe/"
+    cp -r "$srcdir/fs-safe/dist" "$srcdir/fs-safe/package.json" "$srcdir/openclaw/node_modules/@openclaw/fs-safe/"
 
     if [ -n "$OPENCLAW_REVERT_382fe80" ]; then
         echo "Reverting commit 382fe80 (restoring Google Antigravity)..."

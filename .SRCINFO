@@ -1,6 +1,6 @@
 pkgbase = openclaw-bun-git
 	pkgdesc = Personal AI assistant that runs on your own devices (Bun build, highly optimized)
-	pkgver = 2026.4.19.beta.2.r9424.gafc46e92335
+	pkgver = 2026.4.19.beta.2.r9653.g6ce1c98b618
 	pkgrel = 1
 	url = https://github.com/openclaw/openclaw
 	arch = x86_64
