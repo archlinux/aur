@@ -3,8 +3,8 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-resumable-media
-_pkg="google-resumable-media"
-pkgver=2.8.2
+_pkg="google_resumable_media"
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
@@ -17,18 +17,18 @@ optdepends=(
 	'python-aiohttp: for aiohttp support'
 	'python-google-auth: for extra functionality')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/google-cloud-python/archive/$_pkg-v$pkgver.tar.gz")
-sha256sums=('37dbe1de9d3d2b4aaa9812fc610ec3cb218264d0852b46be62e525dee1bbeb6f')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('f7cfb224846a9dd444d125115dfbe8ef02a2b893e78f087762fe716a255a734b')
 
 build() {
-	cd "google-cloud-python-$_pkg-v$pkgver/packages/$_pkg"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 # tests require preset credentials
 
 package() {
-	cd "google-cloud-python-$_pkg-v$pkgver/packages/$_pkg"
+	cd "$_pkg-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dvm644 README.rst -t "${pkgdir}/usr/share/doc/$pkgname/"
 }
