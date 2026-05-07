@@ -1,0 +1,17 @@
+pkgbase = mongodbtui
+	pkgdesc = A terminal UI for MongoDB written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vehbican/mongodbtui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = lld
+	makedepends = perl
+	makedepends = nasm
+	depends = gcc-libs
+	source = mongodbtui-0.1.0.tar.gz::https://github.com/vehbican/mongodbtui/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = mongodbtui
