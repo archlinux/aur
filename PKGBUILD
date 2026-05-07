@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('993469942c1a20ce58010106b3743b5e2921f35c5b12dbed6ac9db9d0bc0d048')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   export npm_config_cache="${srcdir}/npm-cache"
 
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   local mod_dir="/usr/lib/node_modules/$pkgname"
 
