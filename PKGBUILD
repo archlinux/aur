@@ -14,8 +14,8 @@ depends=(
   'libappindicator-gtk3'
   'glib2'
 )
-provides=("mediaharbor=${pkgver}")
-conflicts=('mediaharbor')
+provides=("mediaharbor-bin=${pkgver}")
+conflicts=('mediaharbor-bin')
 
 _pkgname="MediaHarbor"
 source=("${_pkgname}-${pkgver}.deb::https://github.com/MediaHarbor/mediaharbor/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
