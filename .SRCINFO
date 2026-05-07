@@ -1,6 +1,6 @@
 pkgbase = happ-desktop-bin
 	pkgdesc = Happ — user-friendly GUI client for xray-core with TUN/VPN and anti-censorship
-	pkgver = 2.12.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://happ.su
 	install = happ-desktop-bin.install
@@ -17,9 +17,9 @@ pkgbase = happ-desktop-bin
 	provides = happ-desktop
 	conflicts = happ
 	conflicts = happ-desktop
-	noextract = happ-desktop-bin-2.12.0.pkg.tar.zst
+	noextract = happ-desktop-bin-2.14.0.pkg.tar.zst
 	options = !strip
-	source = happ-desktop-bin-2.12.0.pkg.tar.zst::https://github.com/Happ-proxy/happ-desktop/releases/download/2.12.0/Happ.linux.x64.pkg.tar.zst
-	sha256sums = 0426851f1cefbb15da61a68e970edbaa45ac2bbe3038fd54f3cbbd7f263b946f
+	source = happ-desktop-bin-2.14.0.pkg.tar.zst::https://github.com/Happ-proxy/happ-desktop/releases/download/2.14.0/Happ.linux.x64.pkg.tar.zst
+	sha256sums = b478c72ddf55f2cccbd1d6c5914a273c705a581a8ed73bd4d5ea591789f8a298
 
 pkgname = happ-desktop-bin
