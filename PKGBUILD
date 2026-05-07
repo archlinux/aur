@@ -11,15 +11,14 @@ optdepends=('linux-wallpaperengine: the backend that actually renders wallpapers
 source=("$pkgname-$pkgver.tar.gz::https://github.com/diode701/nyaa-paper/releases/download/v$pkgver/nyaa-paper-$pkgver.tar.gz")
 sha256sums=('4408bf2d29a08d2d5c98125e024a4a740ebc8592ed3cdcaa0771b4025f4c1beb')
 
-
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/nyaa-paper-$pkgver"
     # Fix path to match where PKGBUILD installs
     sed -i "s|/usr/share/nyaa-paper/|/usr/share/$pkgname/|g" bin/nyaa-paper
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/nyaa-paper-$pkgver"
     install -Dm644 lib/nyaa-paper-launcher.jar "$pkgdir/usr/share/$pkgname/nyaa-paper-launcher.jar"
     install -Dm644 lib/nyaa-paper-app.jar "$pkgdir/usr/share/$pkgname/nyaa-paper-app.jar"
     install -Dm644 icon.png "$pkgdir/usr/share/$pkgname/icon.png"
