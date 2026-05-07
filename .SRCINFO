@@ -1,14 +1,14 @@
 pkgbase = crab-bin
 	pkgdesc = A versatile tool to crawl dozens of URLs from a given source, like a sitemap or an URL list.
 
-	pkgver = 1.4.4
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/atomicptr/crab
 	license = MIT
 	conflicts = crab
 	provides = tmplr
 	arch = x86_64
-	source_x86_64 = https://github.com/atomicptr/crab/releases/download/v1.4.4/crab_1.4.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = 38b98a569a1fb698ec4f54156b49c6076096b0bdf7b00252600138e054af82a1
+	source_x86_64 = https://github.com/atomicptr/crab/releases/download/v1.5.0/crab_1.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a5ffb6b2501ebfbfaea3b3658cde7391fcf2ad84ce24d4ad15dafc49f8d70e7d
 	
 pkgname = crab-bin
