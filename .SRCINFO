@@ -29,6 +29,7 @@ pkgbase = fenrir-git
 	optdepends = socat: Control running Fenrir screenreader
 	optdepends = sox: The default sound driver
 	optdepends = xclip: for copy to X session clipboard
+	optdepends = python-xlib: X11 terminal input mode with fenrir -x
 	optdepends = speech-dispatcher: TTS support
 	provides = fenrir
 	conflicts = fenrir

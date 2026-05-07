@@ -11,9 +11,11 @@ arch=('any')
 url="https://git.stormux.org/storm/fenrir"
 license=('LGPL')
 depends=('espeak-ng' 'gst-plugins-base' 'gst-plugins-good' 'gstreamer' 'python' 'python-gobject' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyperclip' 'python-pyte' 'python-pyxdg' 'python-setproctitle' 'python-pyenchant' 'python-pexpect')
-optdepends=('socat: Control running Fenrir screenreader'
+optdepends=(
+  'socat: Control running Fenrir screenreader'
   'sox: The default sound driver'
   'xclip: for copy to X session clipboard'
+  'python-xlib: X11 terminal input mode with fenrir -x'
   'speech-dispatcher: TTS support')
 makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
 provides=('fenrir')
