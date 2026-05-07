@@ -1,0 +1,19 @@
+post_install() {
+  echo ""
+  echo "==> P2-Record: Installation abgeschlossen!"
+  echo ""
+  echo "  Für Hotkeys im Spiel (Wayland-kompatibel):"
+  echo "    sudo usermod -aG input \$USER"
+  echo "    → Danach neu einloggen"
+  echo ""
+  echo "  Starten:"
+  echo "    p2record"
+  echo "    Oder über das Anwendungsmenü"
+  echo ""
+  gtk-update-icon-cache -qtf /usr/share/icons/hicolor 2>/dev/null || true
+  update-desktop-database -q 2>/dev/null || true
+}
+
+post_upgrade() {
+  post_install
+}
