@@ -1,7 +1,7 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 
 pkgname=refrain
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Discord Rich Presence for Apple Music on Linux"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Rockykln/refrain/archive/v$pkgver.tar.gz")
-sha256sums=('cb4e712a2809bd237c4ccaebd2cc81afa28286b4d260072f74bf94ce530a0ea3')
+sha256sums=('7ee7b991fab3ba2149fe72745b1432ef11abd7714ffba71cafd3bf1b6af5a6c4')
 
 build() {
     cd "$pkgname-$pkgver"
