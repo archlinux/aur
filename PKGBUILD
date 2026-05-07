@@ -1,42 +1,57 @@
 pkgname=openwork
-pkgver=0.13.3
-pkgrel=1 # pkgrel should change when PKGBUILD does. Standard is to change back to 1 next time. Any interger is valid.
+pkgver=0.13.4+aurtest.2.1.81e3703
+pkgrel=1
 pkgdesc="An Open source alternative to Claude Cowork"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/different-ai/openwork"
 license=('MIT')
-# webkit2gtk-4.1 provides both webkit2gtk-4.1.pc and javascriptcoregtk-4.1.pc
-depends=('gtk3' 'glib2' 'libayatana-appindicator' 'libsoup3' 'webkit2gtk-4.1' 'openssl' 'dbus' 'librsvg')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libdrm' 'libxkbcommon' 'mesa' 'dbus' 'hicolor-icon-theme')
+options=(!strip)
 
 # Architecture-specific sources and checksums
-source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/openwork-desktop-linux-amd64.deb")
-sha256sums_x86_64=('b6fb8ecb86eb9e62d4379f3beb9390106378d3d95dd24b2d405a3377a4acc4a1')
+source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::https://github.com/different-ai/openwork/releases/download/aur-test-v0.13.4-aurtest.2.1-81e3703/openwork-linux-x64-0.13.4.tar.gz")
+sha256sums_x86_64=('548db82e20a58af6c40254805cf59ef3782a248ec20ae7ecaebe8a9413644638')
 
-source_aarch64=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/openwork-desktop-linux-arm64.deb")
-sha256sums_aarch64=('9f5602b30536a014a39850e9eb656bcb10242c84988b08c8e961a59f9453c93c')
-
-# Makes sure makepkg doesn't extract the .deb since it will break
-noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
-  # cd cwd
   cd "${srcdir}"
 
-  # Extract the internal data archive directly to the cwd.
-  bsdtar -O -xf "${pkgname}-${pkgver}.deb" 'data.tar*' | bsdtar -C "${pkgdir}" -xf -
+  local bundle_dir
+  case "${CARCH}" in
+    x86_64)
+      bundle_dir="openwork-linux-x64-${pkgver}"
+      ;;
+    aarch64)
+      bundle_dir="openwork-linux-arm64-${pkgver}"
+      ;;
+    *)
+      echo "Unsupported architecture: ${CARCH}" >&2
+      return 1
+      ;;
+  esac
 
-  # The upstream .deb includes /usr/bin/opencode, but the AUR package should
-  # not claim the global CLI name. OpenWork uses its bundled copy under
-  # /opt/openwork/ at runtime, while opencode-bin should remain the owner of
-  # /usr/bin/opencode when users install the standalone CLI.
-  rm -f "${pkgdir}/usr/bin/opencode"
+  install -d "${pkgdir}/opt/openwork"
+  cp -a "${bundle_dir}/." "${pkgdir}/opt/openwork/"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s /opt/openwork/@openworkdesktop "${pkgdir}/usr/bin/openwork"
+
+  install -Dm644 "${pkgdir}/opt/openwork/resources/app-dist/openwork-logo-square.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/openwork.svg"
+
+  install -d "${pkgdir}/usr/share/applications"
+  cat > "${pkgdir}/usr/share/applications/openwork.desktop" <<'EOF'
+[Desktop Entry]
+Name=OpenWork
+Comment=Run agents, skills, and MCP workflows
+Exec=openwork %U
+Terminal=false
+Type=Application
+Icon=openwork
+StartupWMClass=OpenWork
+Categories=Development;Utility;
+MimeType=x-scheme-handler/openwork;
+EOF
+
+  chmod 4755 "${pkgdir}/opt/openwork/chrome-sandbox"
 }
-# .deb Internal Structure Reference:
-# └── openwork-desktop-linux-amd64.deb
-#     ├── debian-binary
-#     ├── control.tar.zst
-#     └── data.tar.zst (Extracted to $pkgdir)
-#         ├── opt/openwork/ (App files)
-#         └── usr/bin/
-#             ├── opencode (Terminal agent)
-#             └── openwork (GUI launcher)
