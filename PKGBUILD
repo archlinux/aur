@@ -18,25 +18,25 @@ sha256sums=('9ac922ce52fe3f82cc32e2d36f1cef9bff92ed654962bf17e15232149c099537')
 package() {
     cd "${srcdir}/d7vk-v${pkgver}"
 
-    # Кладём ddraw.dll в системную папку пакета
+    # Install ddraw.dll to package directory
     install -Dm755 "x32/ddraw.dll" "${pkgdir}/usr/share/d7vk/ddraw.dll"
 
-    # Скрипт установки dll в Wine-префикс
+    # DLL installation script for Wine prefix
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/d7vk-install" << 'EOF'
 #!/bin/bash
-# Устанавливает d7vk в Wine-префикс
-# Использование: d7vk-install [путь к префиксу]
-# По умолчанию: ~/.wine
+# Installs d7vk into Wine prefix
+# Usage: d7vk-install [prefix path]
+# Default: ~/.wine
 
 PREFIX="${1:-$HOME/.wine}"
 DLL_DIR="${PREFIX}/drive_c/windows/system32"
 REG_FILE=$(mktemp /tmp/d7vk-XXXXXX.reg)
 
-echo "Устанавливаем d7vk в префикс: ${PREFIX}"
+echo "Installing d7vk to prefix: ${PREFIX}"
 
 mkdir -p "${DLL_DIR}"
 cp /usr/share/d7vk/ddraw.dll "${DLL_DIR}/ddraw.dll"
-echo "  ✓ ddraw.dll скопирована"
+echo "  + ddraw.dll copied"
 
 cat > "${REG_FILE}" << 'ENDREG'
 REGEDIT4
@@ -47,26 +47,26 @@ ENDREG
 
 WINEPREFIX="${PREFIX}" regedit "${REG_FILE}"
 rm -f "${REG_FILE}"
-echo "  ✓ DllOverride ddraw=native,builtin прописан в реестре"
+echo "  + DllOverride ddraw=native,builtin registered in registry"
 echo ""
-echo "Готово! Запускай игры через Wine как обычно — флаги не нужны."
+echo "Done! Run games through Wine as usual — no extra flags needed."
 EOF
 
-    # Скрипт удаления dll из Wine-префикса
+    # DLL removal script from Wine prefix
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/d7vk-uninstall" << 'EOF'
 #!/bin/bash
-# Удаляет d7vk из Wine-префикса
-# Использование: d7vk-uninstall [путь к префиксу]
-# По умолчанию: ~/.wine
+# Removes d7vk from Wine prefix
+# Usage: d7vk-uninstall [prefix path]
+# Default: ~/.wine
 
 PREFIX="${1:-$HOME/.wine}"
 DLL_DIR="${PREFIX}/drive_c/windows/system32"
 REG_FILE=$(mktemp /tmp/d7vk-XXXXXX.reg)
 
-echo "Удаляем d7vk из префикса: ${PREFIX}"
+echo "Removing d7vk from prefix: ${PREFIX}"
 
 rm -f "${DLL_DIR}/ddraw.dll"
-echo "  ✓ ddraw.dll удалена"
+echo "  + ddraw.dll removed"
 
 cat > "${REG_FILE}" << 'ENDREG'
 REGEDIT4
@@ -77,8 +77,8 @@ ENDREG
 
 WINEPREFIX="${PREFIX}" regedit "${REG_FILE}"
 rm -f "${REG_FILE}"
-echo "  ✓ DllOverride ddraw сброшен"
+echo "  + DllOverride ddraw reset"
 echo ""
-echo "d7vk удалён из префикса: ${PREFIX}"
+echo "d7vk removed from prefix: ${PREFIX}"
 EOF
 }
