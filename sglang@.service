@@ -11,6 +11,10 @@ WorkingDirectory=/var/lib/sglang
 Environment=HOME=/var/lib/sglang
 Environment=HF_HOME=/var/lib/sglang
 Environment=CUDA_HOME=/opt/cuda
+# nvcc 13.x can't parse libstdc++ 16's new constructs (Arch's default gcc 16);
+# flashinfer/sgl_kernel JIT extensions fail at build time without this.
+# Drop this line once nvcc supports gcc 16 (CUDA 13.3+ likely).
+Environment=NVCC_PREPEND_FLAGS=--compiler-bindir=/usr/bin/gcc-15
 EnvironmentFile=-/etc/sglang/sglang.conf
 EnvironmentFile=-/etc/sglang/sglang.env
 EnvironmentFile=-/etc/sglang/%i.conf
