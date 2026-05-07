@@ -1,0 +1,5 @@
+[projclean-bin]
+source = "github"
+github = "sigoden/projclean"
+use_latest_release = true
+prefix = "v"
