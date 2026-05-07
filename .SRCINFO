@@ -5,6 +5,7 @@ pkgbase = luhncheck
 	url = https://codeberg.org/maandree/luhncheck
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:ISC
 	makedepends = libsimple
 	source = luhncheck-1.0.1.tar.gz::https://codeberg.org/maandree/luhncheck/archive/1.0.1.tar.gz
