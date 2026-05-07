@@ -1,12 +1,11 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
-_pkgname=pi-mono
 pkgname=pi
 pkgver=0.73.1
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
-url="https://github.com/earendil-works/pi-mono"
+url="https://github.com/earendil-works/pi"
 license=('MIT')
 depends=('nodejs>=20')
 makedepends=('npm')
