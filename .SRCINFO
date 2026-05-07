@@ -1,6 +1,6 @@
 pkgbase = upplay-git
 	pkgdesc = A Qt-based UPnP audio Control point
-	pkgver = 1.7.7.r7.g7b5a2aa
+	pkgver = 1.9.10.r28.gef79569
 	pkgrel = 1
 	url = https://www.lesbonscomptes.com/upplay/
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = upplay-git
 	provides = upplay
 	conflicts = upplay
 	source = git+https://framagit.org/medoc92/upplay.git
+	source = git+https://framagit.org/medoc92/amber-mpris.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = upplay-git
