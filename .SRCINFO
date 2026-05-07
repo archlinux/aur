@@ -1,6 +1,6 @@
 pkgbase = echomusic-appimage
 	pkgdesc = EchoMusic desktop client AppImage
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/hoowhoami/EchoMusic
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = echomusic-appimage
 	optdepends = libappindicator-gtk3: tray indicator support
 	provides = echomusic
 	conflicts = echomusic
-	noextract = EchoMusic-2.2.2-linux-x86_64.AppImage
+	noextract = EchoMusic-2.2.3-linux-x86_64.AppImage
 	options = !strip
-	source_x86_64 = EchoMusic-2.2.2-linux-x86_64.AppImage::https://github.com/hoowhoami/EchoMusic/releases/download/v2.2.2/EchoMusic-2.2.2-linux-x86_64.AppImage
-	sha512sums_x86_64 = 01a431eca44cc9ff541697e8a9714c7c7d8baeabe532816149c5af82156153256244c5a0dea1e59f7dbda0da9be8a63816a200f2c10312c2fe88a2f4a5a3f09e
+	source_x86_64 = EchoMusic-2.2.3-linux-x86_64.AppImage::https://github.com/hoowhoami/EchoMusic/releases/download/v2.2.3/EchoMusic-2.2.3-linux-x86_64.AppImage
+	sha512sums_x86_64 = 9d5be713f6f2257f54487b2d2f707e9d224df62b8cdb9d09c2aeded62c786ade68a06565618c7dd2ee0a0061a7c66f8f02b0d25d8ffd78db5d745f2de3a2960a
 
 pkgname = echomusic-appimage
