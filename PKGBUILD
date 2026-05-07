@@ -33,7 +33,7 @@ package() {
     cp -a --reflink=auto brave/usr "$pkgdir/usr"
     rm -f "$pkgdir/usr/bin/${pkgname%-bin}"
     install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
-    install -Dm0644 "brave/opt/brave.com/${pkgname%-bin}/product_logo_128.png" "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm0644 "brave/opt/brave.com/${pkgname%-bin}/product_logo_128_beta.png" "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "brave/opt/brave.com/${pkgname%-bin}/LICENSE"
     chmod 4755 "$pkgdir/opt/brave.com/${pkgname%-bin}/chrome-sandbox"
 }
