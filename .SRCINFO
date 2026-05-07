@@ -1,6 +1,6 @@
 pkgbase = wallhaven-bin
 	pkgdesc = 一款优雅的跨平台桌面壁纸浏览与下载应用
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 2
 	url = https://github.com/xiaobili/wallhaven
 	install = wallhaven-bin.install
@@ -14,7 +14,7 @@ pkgbase = wallhaven-bin
 	depends = libdrm
 	depends = libxkbcommon
 	depends = mesa
-	source = wallhaven-2.7.0.pacman::https://github.com/xiaobili/wallhaven/releases/download/v2.7.0/wallhaven-2.7.0.pacman
-	sha256sums = 2de4cf3a2c5f2792798cc7562b0e0914ad58ff753b8ce60196d0aeaf46c1038f
+	source = wallhaven-2.8.0.pacman::https://github.com/xiaobili/wallhaven/releases/download/v2.8.0/wallhaven-2.8.0.pacman
+	sha256sums = a7cec112b29ca858501057595bccc5056804faa3b3dd3062561e7973a53669c0
 
 pkgname = wallhaven-bin
