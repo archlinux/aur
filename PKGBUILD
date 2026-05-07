@@ -5,7 +5,7 @@
 pkgname=felixweb-ide-bin
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="FelixWeb IDE — desktop IDE for the FelixWeb language (prebuilt binary)"
+pkgdesc="FelixWeb IDE — desktop IDE for the FelixWeb language (prebuilt binary for arch)"
 arch=('x86_64')
 url="https://github.com/benzenma123/felixweb-ide"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = felixweb-ide-bin
-	pkgdesc = FelixWeb IDE — desktop IDE for the FelixWeb language (prebuilt binary)
+	pkgdesc = FelixWeb IDE — desktop IDE for the FelixWeb language (prebuilt binary for arch)
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/benzenma123/felixweb-ide
