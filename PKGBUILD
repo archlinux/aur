@@ -1,7 +1,7 @@
 # Maintainer: ammarhossain <ammar at butterfly dot so>
 pkgname=rice-cooker
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a visual (toy) tool for ricing"
 arch=('x86_64')
 url="https://github.com/amarsbar/rice-cooker"
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('f94168d587b01d8eff3c46a763223e98558770f632b98c004c3cd84fc60ef8e7'
             '1527354310806f2ae55a2629d2954f02efa6b4063d85233ef3ecc50f53887b91'
-            '70b83cade8c33465d876b517e7291e29d9ac95c7f6d81eafe9b8dde6b7a45907')
+            'ed4a26ab693d922de7392f4020a61d75c723c5dfaaa3b828ea5f4c870fb4933d')
 
 prepare() {
     cd "$_srcdir/backend"
