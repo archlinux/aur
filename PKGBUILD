@@ -19,7 +19,7 @@ prepare() {
     # This would be in qt6-tools, but it defines no command by that name
     # as of this writing; we have to patch setup.py manually.
     cd $pkgname-$pkgver
-    sed -i 's/lrelease-pro-qt6/\/usr\/lib\/qt6\/lrelease-pro/' setup.py
+    sed -i 's/lrelease-pro-qt6/lrelease-pro6/' setup.py
 }
 
 package() {
