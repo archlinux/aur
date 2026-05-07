@@ -1,0 +1,19 @@
+pkgbase = python-type-lens
+	pkgdesc = Runtime type introspection utilities
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/litestar-org/type-lens
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = python>=3.8
+	depends = python<4.0
+	depends = python-typing_extensions>=4.1.0
+	source = git+https://github.com/litestar-org/type-lens#tag=v0.2.6
+	sha256sums = 5dc1b3f86bac7f23442b9dfb178f83ea2a7615288506118ce628be59501323b3
+
+pkgname = python-type-lens
