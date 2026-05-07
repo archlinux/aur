@@ -1,6 +1,6 @@
 # Maintainer: Jacob Meyers <jeyersdev@gmail.com>
 pkgname=alescript
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A programming language targeted for building console applications."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('cmake' 'gcc' 'make')
 source=("https://github.com/Jeyers-Development/aleScript-main/releases/download/$pkgver/alescript.tar.gz")
-sha256sums=('84ad4e559559b159ec46e85c696dc288e2d4460a037e5e79c005c8bf1840457f')
+sha256sums=('b6585379694c99ef51458a296f32b8d7ac55e90b46d78feb2f2c94c3f577c453')
 
 package() {
     install -Dm755 "$srcdir/alescript/alescript" "$pkgdir/usr/bin/alescript"
