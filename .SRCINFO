@@ -1,0 +1,20 @@
+pkgbase = zeshion
+	pkgdesc = Session manager for tmux and Zellij
+	pkgver = 0.1.0alpha1
+	pkgrel = 1
+	url = https://github.com/OneNoted/zeshion
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = tmux: tmux session management
+	optdepends = zellij: Zellij session management
+	optdepends = zoxide: zoxide-backed directory sessions
+	provides = zeshion
+	conflicts = zeshion-git
+	source = zeshion-v0.1.0-alpha.1::git+https://github.com/OneNoted/zeshion.git#tag=v0.1.0-alpha.1
+	sha256sums = SKIP
+
+pkgname = zeshion
