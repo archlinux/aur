@@ -1,6 +1,6 @@
 pkgbase = cleave
-	pkgdesc = Qt6 QML plugin for audio visualizations
-	pkgver = 1.0.0
+	pkgdesc = Qt6 QML plugin for window geometry and screen edge detection
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Happilli/Cleave
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cleave
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-declarative
-	source = cleave-1.0.0.tar.gz::https://github.com/Happilli/Cleave/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 47425de76d8fb55cca29705b5a0c12d291c4cb1f3d316aa96dad65deae8f36c1
+	source = cleave-1.0.1.tar.gz::https://github.com/Happilli/Cleave/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 30561959f8efcd5602c531c70d2e95170f4cf23b7ddf3e88569dfaedb56db187
 
 pkgname = cleave
