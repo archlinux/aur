@@ -1,6 +1,6 @@
 pkgbase = ytuff-bin
 	pkgdesc = Terminal music player for local files and YouTube Music
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/life2harsh/ytuff
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ytuff-bin
 	depends = webkit2gtk-4.1
 	provides = ytuff
 	conflicts = ytuff
-	source = https://github.com/life2harsh/ytuff/releases/download/v1.0.2/ytuff-linux-x86_64-arch.tar.gz
-	sha256sums = 8cdf118c7832df234ee7e5037073a6e5d02902d22bde525501971f667957b72c
+	source = https://github.com/life2harsh/ytuff/releases/download/v1.0.3/ytuff-linux-x86_64-arch.tar.gz
+	sha256sums = f6130d86f0c2af5d2330f09de957035ce9da7f4e68c5a1157d20dbeb833a2f33
 
 pkgname = ytuff-bin
