@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=iron
 pkgname="srware-${_pkgname}-bin"
-pkgver=141.0.7150.0
+pkgver=147.7750.0
 pkgrel=1
 pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium.(Prebuilt version)"
 arch=(
@@ -9,7 +9,7 @@ arch=(
     'x86_64'
 )
 url="https://www.srware.net"
-license=('GPL-2.0-only')
+license=('LicenseRef-Freeware')
 provides=("${_pkgname}=${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
@@ -22,14 +22,12 @@ depends=(
     'nss'
     'nspr'
 )
+source=("LICENSE.txt")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/downloads/${_pkgname}arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/downloads/${_pkgname}64.deb")
-source=(
-    "LICENSE-${pkgver}.txt::${url}/license.txt"
-)
-sha256sums=('a29953afc386e2a9a95906cfa0de4bf58a332260d7199a5f99d3e15db9381022')
-sha256sums_aarch64=('d7d27b896ffdea6cae83e92ed2bdd824c4d65123f7c64bf87fb9036a6e2b546a')
-sha256sums_x86_64=('c9d1b7f30dd5d13da51a920e0b98490b9bbc4fe4ece960e71917f6bb64393f77')
+sha256sums=('554e3955aa5a106e3e39e8bb0d47a32c117b581d425522365f69cf86a9e357bd')
+sha256sums_aarch64=('0bb875a6c2d2fc6d2ee3e993ffb532bbf9bae9a0289201010922b816bb04ef13')
+sha256sums_x86_64=('6699056bac12015a51845a6cd2b3094287b6233cc56c5cfa4615d8b1509c87af')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
@@ -51,5 +49,5 @@ package() {
     ln -sf "/usr/lib/${pkgname%-bin}/IronConfigBackup" "${pkgdir}/usr/bin/${pkgname%-bin}-configbackup"
     install -Dm644 "${srcdir}/usr/share/applications/"*.desktop -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}_product_logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,0 +1,231 @@
+License/TOS and Privacy Policy
+
+SRWare Iron is based on the Soucecode of Chromium. It is licensed under the BSD-license. 
+SRWare Iron basiert auf dem Sourcecode von Chromium. Er ist lizensiert unter der untenstehenden BSD-Lizenz.
+Die deutsche Fassung befindet sich am Ende des Textes. Bitte scrollen.
+
+Terms and Conditions
+The Chromium software and sample code developed by Google is licensed under the BSD license. Other software included in this distribution is provided under other licenses, as listed in the Included Software and Licenses section at the bottom of this page. Source code for software included in this distribution is available from the Chromium website. 
+For third party implementations, we have provided guidelines on the proper usage of Google branding and attribution. 
+BSD License
+Copyright © 2008, The Chromium Authors 
+All rights reserved. 
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. 
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+Neither the name of the Google Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+Included Software and Licenses
+The following third party software is distributed with Chromium and is provided under other licenses and/or has source available from other locations. 
+
+Package Name
+License
+
+bsdiff
+BSD Protection License 
+bspatch
+BSD Protection License
+bzip2
+BSD license
+dtoa
+BSD license
+hunspell
+MPL 1.1/GPL 2.0/LGPL
+ICU
+ICU license
+JSCRE
+BSD license
+libjpeg
+libjpeg license
+libpng
+libpng license
+libxml
+MIT license 
+libxslt
+MIT license 
+LZMA SDK
+Special exception license 
+modp_b64
+BSD license
+Mozilla interface to Java Plugin APIs
+MPL 1.1/GPL 2.0/LGPL
+npapi
+MPL 1.1/GPL 2.0/LGPL
+nspr
+MPL 1.1/GPL 2.0/LGPL
+nss
+MPL 1.1/GPL 2.0/LGPL
+Pthreads for win32
+LGPL 2.1
+sqlite
+Public domain
+tlslite
+Public domain
+V8 assembler
+BSD license
+WebKit
+BSD/LGPL 2/LGPL 2.1
+WTL
+Microsoft Permissive License
+zlib
+zlib license
+
+Privacy
+---------
+
+
+Synchronization ("Sign in"-Feature)
+
+If users turn on the optinal synchronization, the selected personal data (e.g. History, Bookmarks) is transmitted to the Google Servers
+beside standard log information (e.g. your system’s IP address, local time).
+
+
+Translation
+
+If users use the "Translate now" function, the content of the website is sent to Google-Translate servers.
+No personal informations are transmitted, except standard log information (e.g. your system’s IP address, local time).
+
+
+Malware Check
+
+The Browser will contact Internet servers periodically to download the most recent "Safe Browsing" list from Google. It comtains known maleware sites that can harm your computer.
+There are not transmitted identifying information,  but the server receives standard log information,
+including an IP address and one or more cookies.  If the system detects a match with your visited website, your browser will send Google a hashed,
+partial copy of the site’s URL so that Google can send more information to your browser.
+
+
+Update checks
+
+The browser checks plug-ins and extensions sporadically  for updates. 
+No personal informations are transmitted, except standard log information (e.g. your system’s IP address, local time).
+
+General
+
+As a browser, this product is designed to communicate with the internet. E.g. when you surf to a web page, enter search requests etc., your IP-Adress and/or data you enter will be transmitted to external servers.  Foreign servers data protection policy is not in our hand.  In cases, requests are done via our own server (preinstalled search providers except Google and DuckDuckGo run over our srware-search.com servers and are then purely redirected to the search provider) we track/record no data .
+
+Web search
+
+The securesearch and new tab search services provided herein are provided by Wisesearches Search and powered by Wisesearches search partners. For information on the web search services data collection, please visit http://info.wisesearches.com/privacy-policy/, and the Bing privacy policy ( https://privacy.microsoft.com/privacystatement).
+For other search engine, please see: https://www.startpage.com/en/privacy-policy, DuckDuckGo: https://duckduckgo.com/privacy
+
+
+For more Information you can contact us:
+www.srware.net - webmaster@srware.net
+
+
+
+
+------------
+
+
+Lizenz/AGB und Datenschutzrichtlinie
+
+SRWare Iron basiert auf dem Soucecode von Chrom. Es ist unter der BSD-Lizenz lizenziert.
+
+Geschäftsbedingungen
+Die von Google entwickelte Chromium-Software und der Beispielcode sind unter der BSD-Lizenz lizenziert. Andere in dieser Distribution enthaltene Software wird unter anderen Lizenzen bereitgestellt, wie im Abschnitt Enthaltene Software und Lizenzen unten auf dieser Seite aufgeführt. Der Quellcode für die in dieser Distribution enthaltene Software ist auf der Chromium-Website verfügbar.
+Für Implementierungen von Drittanbietern haben wir Richtlinien zur ordnungsgemäßen Verwendung von Google-Branding und -Attribution bereitgestellt.
+BSD-Lizenz
+Copyright © 2008, Die Chromium-Autoren
+Alle Rechte vorbehalten.
+Die Weitergabe und Verwendung in Quell- und Binärform, mit oder ohne Änderung, ist gestattet, sofern die folgenden Bedingungen erfüllt sind:
+Bei der Weiterverteilung des Quellcodes müssen der obige Urheberrechtshinweis, diese Liste der Bedingungen und der folgende Haftungsausschluss beibehalten werden.
+Bei Weiterverteilungen in binärer Form müssen der obige Urheberrechtshinweis, diese Liste der Bedingungen und der folgende Haftungsausschluss in der Dokumentation und/oder anderen Materialien, die mit der Verteilung bereitgestellt werden, wiedergegeben werden.
+Weder der Name von Google Inc. noch die Namen seiner Mitwirkenden dürfen ohne ausdrückliche vorherige schriftliche Genehmigung dazu verwendet werden, von dieser Software abgeleitete Produkte zu unterstützen oder zu bewerben.
+DIESE SOFTWARE WIRD VON DEN URHEBERRECHTSINHABERN UND MITARBEITERN "WIE BESEHEN" BEREITGESTELLT UND JEGLICHE AUSDRÜCKLICHE ODER STILLSCHWEIGENDE GEWÄHRLEISTUNG, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF DIE STILLSCHWEIGENDEN GEWÄHRLEISTUNGEN DER MARKTGÄNGIGKEIT UND EIGNUNG FÜR EINEN BESTIMMTEN ZWECK, WERDEN AUSGESCHLOSSEN. IN KEINEM FALL HAFTET DER URHEBERRECHTSINHABER ODER DIE MITARBEITER FÜR DIREKTE, INDIREKTE, ZUFÄLLIGE, BESONDERE, BEISPIELHAFTE ODER FOLGESCHÄDEN (EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF DIE BESCHAFFUNG VON ERSATZWAREN ODER DIENSTLEISTUNGEN; DATEN ODER GEWINNE; ODER GESCHÄFTSUNTERBRECHUNG) JEDOCH VERURSACHT UND AUF JEDE THEORIE DER HAFTUNG, OB VERTRAG, STRENG HAFTUNG ODER unerlaubte Handlung (EINSCHLIESSLICH FAHRLÄSSIGKEIT ODER ANDERWEITIG), DIE IN IRGENDEINER WEISE AUS DER NUTZUNG DIESER SOFTWARE ENTSTEHEN, AUCH WENN DARÜBER DARAUF HINWEIS GEHT.
+Enthaltene Software und Lizenzen
+Die folgende Software von Drittanbietern wird mit Chromium vertrieben und wird unter anderen Lizenzen bereitgestellt und/oder verfügt über Quellen von anderen Standorten.
+
+Paketnamen
+Lizenz
+
+bsdiff
+BSD-Schutzlizenz
+bspatch
+BSD-Schutzlizenz
+bzip2
+BSD-Lizenz
+dtoa
+BSD-Lizenz
+Hunspell
+MPL 1.1/GPL 2.0/LGPL
+Intensivstation
+ICU-Lizenz
+JSCRE
+BSD-Lizenz
+libjpeg
+libjpeg-Lizenz
+libpng
+libpng-Lizenz
+libxml
+MIT-Lizenz
+libxslt
+MIT-Lizenz
+LZMA-SDK
+Sonderausnahmelizenz
+modp_b64
+BSD-Lizenz
+Mozilla-Schnittstelle zu Java-Plugin-APIs
+MPL 1.1/GPL 2.0/LGPL
+npapi
+MPL 1.1/GPL 2.0/LGPL
+nspr
+MPL 1.1/GPL 2.0/LGPL
+nss
+MPL 1.1/GPL 2.0/LGPL
+P-Threads für win32
+LGPL 2.1
+sqlite
+Gemeinfrei
+tlslite
+Gemeinfrei
+V8-Assembler
+BSD-Lizenz
+WebKit
+BSD/LGPL 2/LGPL 2.1
+WTL
+Microsoft Permissive-Lizenz
+zlib
+zlib-Lizenz
+
+Privatsphäre
+---------
+
+
+Synchronisation ("Anmelden"-Funktion)
+
+Wenn Nutzer die optionale Synchronisierung einschalten, werden die ausgewählten personenbezogenen Daten (z.B. Verlauf, Lesezeichen) an die Google-Server übermittelt
+neben Standardprotokollinformationen (z. B. die IP-Adresse Ihres Systems, Ortszeit).
+
+
+Übersetzung
+
+Wenn Nutzer die Funktion „Jetzt übersetzen“ nutzen, werden die Inhalte der Website an die Server von Google-Translate gesendet.
+Es werden keine personenbezogenen Daten übermittelt, außer Standardprotokollinformationen (z. B. die IP-Adresse Ihres Systems, Ortszeit).
+
+
+Malware-Check
+
+Der Browser kontaktiert regelmäßig Internetserver, um die neueste "Safe Browsing"-Liste von Google herunterzuladen. Es enthält bekannte Malware-Sites, die Ihrem Computer schaden können.
+Es werden keine identifizierenden Informationen übertragen, aber der Server erhält Standardprotokollinformationen,
+einschließlich einer IP-Adresse und einem oder mehreren Cookies. Erkennt das System eine Übereinstimmung mit Ihrer besuchten Website, sendet Ihr Browser an Google eine gehashte,
+teilweise Kopie der URL der Website, damit Google weitere Informationen an Ihren Browser senden kann.
+
+
+Update Check
+
+Der Browser prüft sporadisch Plug-Ins und Erweiterungen auf Updates.
+Es werden keine personenbezogenen Daten übermittelt, außer Standardprotokollinformationen (z. B. die IP-Adresse Ihres Systems, Ortszeit).
+
+Allgemeines
+
+Als Browser ist dieses Produkt für die Kommunikation mit dem Internet ausgelegt. Z.B. beim Surfen auf einer Webseite, Eingabe von Suchanfragen etc. werden Ihre IP-Adresse und/oder die von Ihnen eingegebenen Daten an externe Server übermittelt. Die Datenschutzrichtlinie für ausländische Server liegt nicht in unserer Hand. In Fällen, in denen Anfragen über unseren eigenen Server erfolgen (vorinstallierte Suchanbieter außer Google und DuckDuckGo laufen über unsere srware-search.com-Server und werden dann rein an den Suchanbieter weitergeleitet) verfolgen/speichern wir keine Daten.
+
+Web-Suche
+
+Die hierin bereitgestellten Dienste Securesearch und "Neuer Tab"-Suche werden von Wisesearches Search bereitgestellt und von Wisesearches-Suchpartnern betrieben. Informationen zur Datenerhebung durch Websuchdienste finden Sie unter http://info.wisesearches.com/privacy-policy/ und in der Datenschutzerklärung von Bing (https://privacy.microsoft.com/privacystatement).
+Für andere Suchmaschine siehe: https://www.startpage.com/en/privacy-policy, DuckDuckGo: https://duckduckgo.com/privacy
+
+
+Für weitere Informationen können Sie uns kontaktieren:
+www.srware.net - webmaster@srware.net
