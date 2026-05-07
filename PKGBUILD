@@ -2,7 +2,7 @@
 
 pkgname=brave-origin-beta-bin
 pkgver=1.91.143
-pkgrel=1
+pkgrel=2
 pkgdesc='The minimalist browser from the makers of Brave (beta binary release).'
 arch=(x86_64 aarch64)
 url='https://brave.com/origin/download-beta'
