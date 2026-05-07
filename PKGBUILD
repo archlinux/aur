@@ -1,4 +1,5 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Andreas Baumann <mail@andreasbauman.cc>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
@@ -6,7 +7,7 @@
 
 pkgname=python2
 pkgver=2.7.18
-pkgrel=12
+pkgrel=13
 _pybasever=2.7
 pkgdesc="A high-level scripting language"
 arch=('x86_64' 'aarch64')
