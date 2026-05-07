@@ -2,7 +2,7 @@
 pkgname=cleave
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Qt6 QML plugin for audio visualization"
+pkgdesc="Qt6 QML plugin for audio visualizations"
 arch=('x86_64')
 url="https://github.com/Happilli/Cleave"
 license=('MIT')
