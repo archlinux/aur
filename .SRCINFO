@@ -1,7 +1,7 @@
 pkgbase = opaquefiles
 	pkgdesc = File encryption program
 	pkgver = 0.9.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/cozyOwl/OpaqueFiles
 	arch = any
 	license = GPL-3.0-or-later
@@ -11,7 +11,7 @@ pkgbase = opaquefiles
 	depends = hicolor-icon-theme
 	optdepends = noto-fonts: Fallback font
 	optdepends = ttf-noto-emoji-monochrome: Font for icon support
-	source = opaquefiles::git+https://codeberg.org/cozyOwl/OpaqueFiles.git?tag=v0.9.11.0
+	source = opaquefiles::git+https://codeberg.org/cozyOwl/OpaqueFiles.git#tag=v0.9.11.0
 	sha256sums = SKIP
 
 pkgname = opaquefiles
