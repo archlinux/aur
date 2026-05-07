@@ -1,6 +1,6 @@
 pkgbase = gonzo-bin
 	pkgdesc = TUI log analysis tool
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/control-theory/gonzo
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = gonzo-bin
 	license = MIT
 	provides = gonzo
 	conflicts = gonzo
-	source = USAGE_GUIDE-0.4.0.md::https://raw.githubusercontent.com/control-theory/gonzo/v0.4.0/USAGE_GUIDE.md
+	source = USAGE_GUIDE-0.4.1.md::https://raw.githubusercontent.com/control-theory/gonzo/v0.4.1/USAGE_GUIDE.md
 	sha256sums = 3ebf38fe0fce57e39a0f8fd6cde50b92944311825fdfaab78698316bb71d9deb
-	source_x86_64 = gonzo-x86_64-0.4.0.tgz::https://github.com/control-theory/gonzo/releases/download/v0.4.0/gonzo-0.4.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = c543f78ea7eee6467a553658aa62f61cb3d79886629291402604ee4d44c22212
-	source_aarch64 = gonzo-aarch64-0.4.0.tgz::https://github.com/control-theory/gonzo/releases/download/v0.4.0/gonzo-0.4.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 35b9fa4b30fd9ad21155b8167ae9600a06c93963793d8bf04b1d69368ecf3d89
+	source_x86_64 = gonzo-x86_64-0.4.1.tgz::https://github.com/control-theory/gonzo/releases/download/v0.4.1/gonzo-0.4.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = fb0a6d66677f10e31f8b510692ac62eb50784000d5f3557a0c3568f604748a2c
+	source_aarch64 = gonzo-aarch64-0.4.1.tgz::https://github.com/control-theory/gonzo/releases/download/v0.4.1/gonzo-0.4.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 35d5bd0f0e52a9f76c65a3073bd75c7fdff5aa8ddb064bda3fa503dcc827bed5
 
 pkgname = gonzo-bin
