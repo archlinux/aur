@@ -1,12 +1,12 @@
 # Maintainer: CrypticCreator <crypticcreator@noreply.codeberg.org>
 pkgname=selene-player-git
 _pkgname=selene-player
-pkgver=v0.8.0.r0.g2ece508
-pkgrel=0
+pkgver=v0.8.0.r1.gfe987f5
+pkgrel=2
 pkgdesc="A feature complete music player and metadata editor"
 
-url="https://codeberg.org/CrypticCreator/Selene"
-_git="https://codeberg.org/CrypticCreator/selene.git"
+url="https://codeberg.org/selene-player/selene"
+_git="https://codeberg.org/selene-player/selene.git"
 
 license=("MIT")
 arch=(x86_64)
