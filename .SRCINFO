@@ -11,7 +11,7 @@ pkgbase = zig-0.16-bin
 	arch = x86_64
 	license = MIT
 	makedepends = minisign
-	provides = zig=0.16.0
+	provides = zig-0.16=0.16.0
 	conflicts = zig
 	options = !strip
 	source = https://ziglang.org/download/0.16.0/zig-x86_64-linux-0.16.0.tar.xz
