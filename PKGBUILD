@@ -1,6 +1,6 @@
 # Maintainer: Andy Bao <contact@andybao.me>
 pkgname=horizon-terminal-bin
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="GPU-accelerated terminal board that puts all your sessions on an infinite canvas"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "horizon.svg::https://github.com/peters/horizon/raw/refs/tags/v${pkgver}/assets/icons/logo.svg"
 )
 sha256sums=(
-    'd6804aa5acb9e0b48c26ed093ce2ef3e4efd136425e7f07a27afccec31013726'
+    '5002f78e4e1ef7583487fc5735d13e462e31a432f9f087a3948f0b641216a39b'
     'cd243e063b827ac762feab1e234df11f6a691b0e416adc21ba51be7345e4e1d0'
     '44a0975cc255d3c3e53dbaa550ff5d17e4ae55838e1229355063f92e2692a6bf'
     'ca979d75edf8da828d9b1a1d27d847ef7eea6e13dfd51289a094ef29d26d8ba8'
