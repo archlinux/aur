@@ -1,0 +1,42 @@
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+	echo "============================================================="
+	echo "Despite providing a setup_d7vk script to install d7vk, it"
+	echo "seems like d7vk prefers to have the ddraw.dll file be copied"
+	echo "next to the game's binary. The script is there to mess around"
+	echo "with. But, please keep in mind if your game does not launch."
+	echo "============================================================="
+
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	echo "============================================================="
+	echo "Despite providing a setup_d7vk script to install d7vk, it"
+	echo "seems like d7vk prefers to have the ddraw.dll file be copied"
+	echo "next to the game's binary. The script is there to mess around"
+	echo "with. But, please keep in mind if your game does not launch."
+	echo "============================================================="
+}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
