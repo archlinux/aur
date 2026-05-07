@@ -1,0 +1,41 @@
+#!/bin/bash
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} %s${all_off}\n" "${1}"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "Custom flags should be put directly in: ~/.config/lm-studio-flags.conf"
+
+#     if type update-alternatives 2>/dev/null >&1; then
+#         if [ -L '/usr/bin/lm-studio' -a -e '/usr/bin/lm-studio' -a "`readlink '/usr/bin/lm-studio'`" != '/etc/alternatives/lm-studio' ]; then
+#             rm -f '/usr/bin/lm-studio'
+#         fi
+#         update-alternatives --install '/usr/bin/lm-studio' 'lm-studio' '/opt/LM-Studio/lm-studio' 100 || ln -sf '/opt/LM-Studio/lm-studio' '/usr/bin/lm-studio'
+#     else
+#         ln -sf '/opt/LM-Studio/lm-studio' '/usr/bin/lm-studio'
+#     fi
+
+    chmod 4755 '/opt/LM-Studio/chrome-sandbox' || true
+
+    if hash update-mime-database 2>/dev/null; then
+        update-mime-database /usr/share/mime || true
+    fi
+
+    if hash update-desktop-database 2>/dev/null; then
+        update-desktop-database /usr/share/applications || true
+    fi
+}
+
+# post_remove() {
+#     if type update-alternatives >/dev/null 2>&1; then
+#         update-alternatives --remove 'lm-studio' '/usr/bin/lm-studio'
+#     else
+#         rm -f '/usr/bin/lm-studio'
+#     fi
+# }

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+
+LMSTUDIO_USER_FLAGS=()
+if [[ -f "${XDG_CONFIG_HOME}/lm-studio-flags.conf" ]]; then
+    mapfile -t LMSTUDIO_USER_FLAGS < <(grep -Ev '^\s*#|^\s*$' "${XDG_CONFIG_HOME}/lm-studio-flags.conf")
+fi
+
+exec /opt/LM-Studio/lm-studio "${LMSTUDIO_USER_FLAGS[@]}" "$@"
