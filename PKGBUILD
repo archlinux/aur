@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=wormhole-rs-bin
-pkgver=0.7.7
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Rust implementation of Magic Wormhole, with new features and enhancements'
 url='https://github.com/magic-wormhole/magic-wormhole.rs'
@@ -15,7 +15,7 @@ source=("https://raw.githubusercontent.com/magic-wormhole/magic-wormhole.rs/$pkg
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/magic-wormhole-cli-x86_64-unknown-linux-gnu.tgz")
 
 sha256sums=('6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665')
-sha256sums_x86_64=('1216e17e24efd867bc71ef55afb52d596527916ba7ad6754fdf00d92d8604ab6')
+sha256sums_x86_64=('bc5f2491fa483237a7f2b194b1083a21c47b76513a72695dc8cefd55602db1a4')
 
 prepare() {
   local sh
