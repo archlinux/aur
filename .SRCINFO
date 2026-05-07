@@ -1,4 +1,4 @@
-pkgbase = kraken
+pkgbase = ryu-kraken
 	pkgdesc = Qt6 QML plugin for reading and writing JSON files
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = kraken
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-declarative
-	source = kraken-1.0.0.tar.gz::https://github.com/Happilli/Kraken/archive/refs/tags/v1.0.0.tar.gz
+	source = ryu-kraken-1.0.0.tar.gz::https://github.com/Happilli/Kraken/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = 331cb0fcbe7340da214291ffd9a7bf7560dcbe15679d419341101e8dcf9fd135
 
-pkgname = kraken
+pkgname = ryu-kraken

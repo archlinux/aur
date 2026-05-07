@@ -1,5 +1,5 @@
 # Maintainer: Happilli <https://github.com/Happilli>
-pkgname=kraken
+pkgname=ryu-kraken
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Qt6 QML plugin for reading and writing JSON files"
