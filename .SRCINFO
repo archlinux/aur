@@ -1,6 +1,6 @@
 pkgbase = gdevelop-bin
 	pkgdesc = A full-featured, no-code, open-source game development software.(Prebuilt version.Use system-wide electron)
-	pkgver = 5.6.266
+	pkgver = 5.6.268
 	pkgrel = 1
 	url = https://gdevelop.io/
 	arch = aarch64
@@ -8,16 +8,16 @@ pkgbase = gdevelop-bin
 	license = MIT
 	makedepends = asar
 	depends = electron32
-	provides = gdevelop=5.6.266
+	provides = gdevelop=5.6.268
 	conflicts = gdevelop
 	options = !strip
-	source = LICENSE-5.6.266.md::https://raw.githubusercontent.com/4ian/GDevelop/v5.6.266/LICENSE.md
+	source = LICENSE-5.6.268.md::https://raw.githubusercontent.com/4ian/GDevelop/v5.6.268/LICENSE.md
 	source = gdevelop.sh
 	sha256sums = 0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = gdevelop-5.6.266-aarch64.AppImage::https://github.com/4ian/GDevelop/releases/download/v5.6.266/GDevelop-5-5.6.266-arm64.AppImage
-	sha256sums_aarch64 = 71b62472f5e6c4a6f8ea2d7a249d767a89a65e35a2cf9658345694c05d65d291
-	source_x86_64 = gdevelop-5.6.266-x86_64.AppImage::https://github.com/4ian/GDevelop/releases/download/v5.6.266/GDevelop-5-5.6.266.AppImage
-	sha256sums_x86_64 = 4a95f6f1a8a5681a49fc0472515cf367be8c7f719b4cbbcda4b8861efd7b1908
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = gdevelop-5.6.268-aarch64.AppImage::https://github.com/4ian/GDevelop/releases/download/v5.6.268/GDevelop-5-5.6.268-arm64.AppImage
+	sha256sums_aarch64 = bc6205cc0f977650148d1af9060c00d85b26b6f7765e9d55e63d01122a190f4a
+	source_x86_64 = gdevelop-5.6.268-x86_64.AppImage::https://github.com/4ian/GDevelop/releases/download/v5.6.268/GDevelop-5-5.6.268.AppImage
+	sha256sums_x86_64 = 755ae3f173948bb2fe90afe18a43323e7839986581c3306c4cc8c5d6aef7323a
 
 pkgname = gdevelop-bin
