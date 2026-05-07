@@ -2,8 +2,8 @@
 
 pkgname=eastl
 _pkgname=EASTL
-pkgver=3.27.00
-pkgrel=2
+pkgver=3.27.01
+pkgrel=1
 pkgdesc="Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance."
 arch=('x86_64' 'riscv64')
 url="https://github.com/electronicarts/EASTL"
@@ -12,9 +12,9 @@ makedepends=("cmake" "git")
 optdepends=("mimalloc: for better performance")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/electronicarts/EASTL/archive/${pkgver}.tar.gz"
         "EASTL-3.21.23.patch")
-sha256sums=('5606643e41ab12fd7c209755fe04dca581ed01f43dec515288b1544eea22623f'
+sha256sums=('fce43bf443f5569b00a8deae735394ea0b16f6c3f96867a17ded50775ffcdd12'
             'c5b9a2db05ec2d98fb8e7b59ee942adfc0cd223e06567fc49ad1bb4acf5a011a')
-b2sums=('e1872453575135fd81e7caa07638df7d30c716ae6c9422aacdd0ae20a9b8ab144c77370d67636497d70c0bdacb469a9769215db5288b0df708696db9aa262fbb'
+b2sums=('9ca887fadfc6c8380f15d07e57bc32b2142c0f0262b834a2ab76d931dcbc33e45be467c6670dafc070c4f5c098a9a299a195d0f66369ce7c5855a13017fa5f88'
         '9ea7ab0978e0399c6cfbab37e16431caafca768fea2b800cf14587a2ae83d8ee187192f51819f1dedf5166a80b1acf846f7cca5efe64f770a1d82da459596333')
 
 prepare() {
