@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-declarative' 'cliphist' 'wl-clipboard')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Happilli/clipsh/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0f582d7d1f5c308bd92054406163378542be52acb10049e1cd642d3d5f361bc')
+sha256sums=('68b8c15cafe6dd1a4db6f98152864be7a434c90393aa6f737dd19fc563212385')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
