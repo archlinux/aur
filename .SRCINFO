@@ -1,6 +1,6 @@
 pkgbase = python-qualia-codegen-plugin-snn
 	pkgdesc = Support for Spiking Neural Networks in Qualia-CodeGen
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/LEAT-EDGE/qualia-codegen-plugin-snn
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-qualia-codegen-plugin-snn
 	depends = python-qualia-codegen-core
 	depends = python-spikingjelly
 	depends = python-typing_extensions
-	source = git+https://github.com/leat-edge/qualia-codegen-plugin-snn.git#tag=2.5.0
+	source = git+https://github.com/leat-edge/qualia-codegen-plugin-snn.git#tag=2.6.0
 	md5sums = SKIP
 
 pkgname = python-qualia-codegen-plugin-snn
