@@ -3,7 +3,7 @@
 # Source package (builds from source): felixweb-ide
 
 pkgname=felixweb-ide-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="FelixWeb IDE — desktop IDE for the FelixWeb language (prebuilt binary)"
 arch=('x86_64')
