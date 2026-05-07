@@ -1,4 +1,5 @@
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: thom wiggers
 # Submitter: portaloffreedom
 
