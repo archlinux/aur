@@ -1,0 +1,5 @@
+[python-textual-web]
+source = 'github'
+github = 'Textualize/textual-web'
+use_latest_release = true
+prefix = 'v'
