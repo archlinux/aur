@@ -1,16 +1,16 @@
 pkgbase = touchportal-appimage
 	pkgdesc = Remote macro control deck for PC and Mac OS for streamers, content creators and other professionals
-	pkgver = 4.4.3
-	pkgrel = 2
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = https://www.touch-portal.com
 	arch = x86_64
 	license = custom
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = fuse2
-	noextract = TouchPortal-4.4.3.AppImage
+	noextract = TouchPortal-4.5.0.AppImage
 	options = !strip
-	source_x86_64 = TouchPortal-4.4.3.AppImage::https://www.touch-portal.com/downloads/releases/linux/archive/archive_touchportal_4.4.2.AppImage
-	sha256sums_x86_64 = 4c306f93d9928fbb06887169735b94c8c401e96be49d2485b55b4c700cf4590c
+	source_x86_64 = TouchPortal-4.5.0.AppImage::https://www.touch-portal.com/downloads/releases/linux/TouchPortal.AppImage
+	sha256sums_x86_64 = 1f2cc0f9854aa1d95b474262a701eb2bb86cb41981dbc4ee65b6aaa8b751d1a7
 
 pkgname = touchportal-appimage
