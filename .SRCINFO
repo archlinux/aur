@@ -1,7 +1,7 @@
 pkgbase = openzl
 	pkgdesc = A novel data compression framework
-	pkgver = 0.1.0
-	pkgrel = 5
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/facebook/openzl
 	arch = aarch64
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = openzl
 	makedepends = cmake
 	depends = glibc
 	provides = libopenzl.so=0.1.0
-	source = https://github.com/facebook/openzl/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 3278546dcdbae3aef3887f07b435ebe0aa9f6943a5ac74cf9b7baeefe6526c2e
+	source = https://github.com/facebook/openzl/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 2ad14ed9af63d4a70cb05df5d5629871d052371ad017cf5559dc76c41ae3865f
 
 pkgname = openzl
