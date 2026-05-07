@@ -3,7 +3,7 @@
 
 _name=keeweb
 pkgname=nextcloud-app-keeweb
-pkgver=0.6.22
+pkgver=0.6.23
 pkgrel=1
 pkgdesc="Open Keepass stores inside Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("https://github.com/jhass/nextcloud-keeweb/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('a471920105704c19052945f231ee572b6536c0bd179d9364afdb0dba4349be87184fa7c1b393aace264d04b1e284cdd7cc6e5316cecb2e0062a5fd22e40e375c')
+sha512sums=('a44eb659f7c1fe37e4b54bc8f90ed6ffcde80eb99b39d2ef2dd6576f475c8d4cfcca0e04c1158b5c2159e29160da3baf7a461e178659549e15a064d7a4175f4d')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
