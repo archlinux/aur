@@ -12,8 +12,8 @@ post_upgrade() {
     fi
 
     printf "%s\n" \
-        "==> Refresh loaded gateway service:" \
-        "    openclaw gateway install --force && openclaw gateway restart" \
-        "==> Check outdated plugin dependencies:" \
-        "    openclaw doctor"
+        "==> Run doctor to migrate configs, check gateway health, etc.:" \
+        "    openclaw doctor" \
+        "==> Restart gateway service:" \
+        "    openclaw gateway restart"
 }

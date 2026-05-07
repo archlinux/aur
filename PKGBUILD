@@ -5,7 +5,7 @@
 
 pkgname=openclaw
 pkgver=2026.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-channel AI gateway with extensible messaging integrations'
 arch=(x86_64 aarch64)
 url=https://github.com/openclaw/openclaw
