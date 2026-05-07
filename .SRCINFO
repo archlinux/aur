@@ -1,15 +1,17 @@
 pkgbase = python-fsutil
 	pkgdesc = High-level file-system operations for lazy devs
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/fabiocaccamo/python-fsutil
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/fabiocaccamo/python-fsutil/archive/0.16.0.tar.gz
-	sha256sums = 89002c2dda97bbab53b7b5154cd757fb7dcfb0bb8e260f295a164f87cb4fc66a
+	depends = python-requests
+	source = https://github.com/fabiocaccamo/python-fsutil/archive/0.16.1.tar.gz
+	sha256sums = 78f8145ade0baa0c915d4ac4868b8c22b9f0707d4d5418a487d339953712e1bd
 
 pkgname = python-fsutil

@@ -1,6 +1,5 @@
-pkg/
-src/
-*.tar.*
-
-.AURINFO
-*.log
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO

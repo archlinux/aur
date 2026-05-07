@@ -1,0 +1,3 @@
+[python-fsutil]
+source = "pypi"
+pypi = "python-fsutil"
