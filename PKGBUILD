@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Happilli/Cleave/archive/ref
 sha256sums=('47425de76d8fb55cca29705b5a0c12d291c4cb1f3d316aa96dad65deae8f36c1')
 
 build() {
-  cmake -B build -S "$pkgname-$pkgver" \
+  cmake -B build -S "Cleave-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -G Ninja
@@ -21,5 +21,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "Cleave-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
