@@ -1,19 +1,19 @@
 pkgbase = asciinema-agg-bin
 	pkgdesc = asciinema gif generator (binary version)
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/asciinema/agg
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = Apache
+	license = GPLv3
 	provides = asciinema-agg
 	conflicts = asciinema-agg
-	source_x86_64 = agg-1.8.0-x86_64::https://github.com/asciinema/agg/releases/download/v1.8.0/agg-x86_64-unknown-linux-gnu
-	sha512sums_x86_64 = 971d32f5aea76b69a9b33ee6257a35ecbb07f2f31e19d75b4ab3daed6cc3e30f2c9b5482b9f8395e0de60fb159b08f941c55e936f3361e53abd864c233f5c299
-	source_armv7h = agg-1.8.0-armv7h::https://github.com/asciinema/agg/releases/download/v1.8.0/agg-arm-unknown-linux-gnueabihf
-	sha512sums_armv7h = 027dd4214b727e14ad05af92c435ff0df4024c680ecb2fcae1ae23e6890dca0564a7beac870fe06881831ece2fd1e827ef978881f17e9b640c09690dfb42af06
-	source_aarch64 = agg-1.8.0-aarch64::https://github.com/asciinema/agg/releases/download/v1.8.0/agg-aarch64-unknown-linux-gnu
-	sha512sums_aarch64 = 522acd8aeb8604b9aa60c29baa116f87cb668d6abdae41aa144865c70d40d9e6f967b6b997113325cfa128a985e992ead1978aa8920b1fc7d816cceb9d04c96c
+	source_x86_64 = agg-1.8.1-x86_64::https://github.com/asciinema/agg/releases/download/v1.8.1/agg-x86_64-unknown-linux-gnu
+	sha512sums_x86_64 = 7bd015e3bb2c3efcfcdde97333236c2f2cd100c579b26d0b85f5e62e56125bf0f728ae0988d9740037a489bb74234c6b3e863c310a5b4f4c0d5c876cca62c18b
+	source_armv7h = agg-1.8.1-armv7h::https://github.com/asciinema/agg/releases/download/v1.8.1/agg-arm-unknown-linux-gnueabihf
+	sha512sums_armv7h = b31079ad5dc7cb4a87deb35d2969c608346c3846d9a86dc67dcbf2a71988baf487ffa0ec03e2624d26f7537d7ca00ff0ffd6279ea69a72674c694e57615eb213
+	source_aarch64 = agg-1.8.1-aarch64::https://github.com/asciinema/agg/releases/download/v1.8.1/agg-aarch64-unknown-linux-gnu
+	sha512sums_aarch64 = 5e4b4fa2c6d9f0d5302a6315c6f62273549237a942b5f595ce5cd8ad48db0e4ed32185106ae6d9926e6fc0a0e6b2b95cfa2348d6609b396d80107b94040a37fa
 
 pkgname = asciinema-agg-bin
