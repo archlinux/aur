@@ -4,7 +4,7 @@
 # Thanks to Fabio Lolix for the patch.
 
 pkgname=applewin-git
-pkgver=1.30.21.0.b.r289.gbbe80789
+pkgver=1.30.21.0.b.r291.g89cba1cc
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
@@ -23,14 +23,14 @@ source=("${pkgname%-git}::git+https://github.com/audetto/AppleWin.git"
         "git+https://github.com/AirGuanZ/imgui-filebrowser.git"
         applewin-sdl2.desktop
         applewin-qt.desktop
-        apple-logo.svg)
+        apple-logo.png)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '3c85c5f62d94b5e50431d0eabd5b59f0416a3cbfc38cae169ed5deeca76744b7'
-            'a1ff883091cc0d80ae9830353f3ef3a9b451833814c39100b351a7a92677960f'
+            '7745b40233f05a85735530628e616121e3e19f04d201d8326f6df04bddc26733'
+            '865dc6dd46d13202c0a43baf3a272f74a5efb2ce027de22a1c9d1f48a99f2251'
             'e3bbf57d2ad105c6211b0853fbb88f1c20d874d0a34b6ae263e2cf8c74e1568d')
 
 pkgver() {
@@ -62,7 +62,7 @@ package() {
   make DESTDIR="${pkgdir}/" install
 
   install -D "${srcdir}"/*.desktop -t "${pkgdir}"/usr/share/applications/
-  install -D "${srcdir}"/apple-logo.svg -t "${pkgdir}"/usr/share/applewin/common/
+  install -D "${srcdir}"/apple-logo.png -t "${pkgdir}"/usr/share/applewin/common/
 }
 
 # vim:set ts=2 sw=2 et:
