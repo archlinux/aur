@@ -1,7 +1,8 @@
 # Maintainer: JasonLandbridge
+# Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/omniroute-bin
 
 pkgname=omniroute-bin
-pkgver=3.7.8 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
+pkgver=3.7.9 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
 pkgrel=1
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')

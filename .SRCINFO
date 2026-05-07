@@ -1,6 +1,6 @@
 pkgbase = omniroute-bin
 	pkgdesc = OpenAI-compatible AI gateway with routing, retries, caching, and observability
-	pkgver = 3.7.8
+	pkgver = 3.7.9
 	pkgrel = 1
 	url = https://github.com/diegosouzapw/OmniRoute
 	install = omniroute-bin.install
@@ -11,7 +11,7 @@ pkgbase = omniroute-bin
 	depends = nodejs-lts-krypton
 	optdepends = systemd: user service management via systemctl --user
 	options = !strip
-	source = omniroute-bin-3.7.8.tgz::https://registry.npmjs.org/omniroute/-/omniroute-3.7.8.tgz
+	source = omniroute-bin-3.7.9.tgz::https://registry.npmjs.org/omniroute/-/omniroute-3.7.9.tgz
 	source = omniroute.sh
 	source = omniroute.service
 	source = .env.example
