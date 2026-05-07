@@ -1,0 +1,18 @@
+pkgbase = nostrord-bin
+	pkgdesc = Nostr NIP-29 group messaging client
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nostrord/nostrord
+	install = nostrord-bin.install
+	arch = x86_64
+	license = MIT
+	depends = libxtst
+	depends = libxrender
+	depends = fontconfig
+	depends = freetype2
+	provides = nostrord
+	conflicts = nostrord
+	source = nostrord-1.0.0.deb::https://github.com/Nostrord/nostrord/releases/download/v1.0.0/nostrord-1.0.0-linux-amd64.deb
+	sha256sums = SKIP
+
+pkgname = nostrord-bin
