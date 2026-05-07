@@ -1,0 +1,5 @@
+[d7vk]
+source = "github"
+github = "WinterSnowfall/d7vk"
+prefix = "v"
+use_latest_release = true

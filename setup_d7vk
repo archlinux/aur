@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/share/d7vk/setup_d7vk.sh $@
