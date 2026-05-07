@@ -1,11 +1,13 @@
 pkgbase = shelter
 	pkgdesc = a flux interceptor with discord as a liability
-	pkgver = 0.0.1
-	pkgrel = 3
+	pkgver = 0.0.2
+	pkgrel = 1
 	url = https://github.com/uwu/shelter
 	arch = any
 	license = CC0
 	source = shelter-src::git+https://github.com/uwu/shelter
+	source = install-shelter::https://github.com/uwu/shelter-installer/releases/download/v2.1.0/install-shelter
 	sha256sums = SKIP
+	sha256sums = cc0e2e86c12c7f7b7e1b6553c7cf0dffb248e096a2cc64631faae64b208fbb92
 
 pkgname = shelter
