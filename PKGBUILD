@@ -2,7 +2,7 @@
 # Contributor: BillyJR <your-email@example.com>
 
 pkgname=wallhaven-bin
-pkgver=2.8.0
+pkgver=2.8.2
 pkgrel=2
 pkgdesc="一款优雅的跨平台桌面壁纸浏览与下载应用"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 )
 install="$pkgname.install"
 source=("wallhaven-$pkgver.pacman::https://github.com/xiaobili/wallhaven/releases/download/v$pkgver/wallhaven-$pkgver.pacman")
-sha256sums=('a7cec112b29ca858501057595bccc5056804faa3b3dd3062561e7973a53669c0')
+sha256sums=('8b095ce24900449c28a7c113df4a89d05bfaa688b88eaced9de4119cd96d75cf')
 
 package() {
     # 解压 .pacman 文件到临时目录
