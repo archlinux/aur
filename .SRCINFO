@@ -1,6 +1,6 @@
 pkgbase = nativmix
 	pkgdesc = Hardware-based PipeWire volume & MIDI mixer for Linux. Controls physical Arduino faders, virtual sinks, and MIDI devices.
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://github.com/knoelliX/NativMix
 	install = nativmix.install
@@ -22,7 +22,7 @@ pkgbase = nativmix
 	optdepends = qt6-wayland: Wayland compositor support
 	provides = nativmix
 	conflicts = nativmix-git
-	source = nativmix-1.0.12.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v1.0.12.tar.gz
-	sha256sums = 4a1202132014f05a6b6596db8a657261343b4311e6138b5838de6ae6dd07e1bf
+	source = nativmix-1.0.13.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v1.0.13.tar.gz
+	sha256sums = 65562afeb6705fde49c8c868be7ea6d13605de6d951e3ffeb299bd81e6b00a37
 
 pkgname = nativmix
