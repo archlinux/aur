@@ -1,0 +1,4 @@
+[osqp-eigen]
+source = "git"
+git = "https://github.com/robotology/osqp-eigen.git"
+prefix = "v"
