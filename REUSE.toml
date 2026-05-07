@@ -5,7 +5,8 @@ path = [
     "PKGBUILD",
     ".SRCINFO",
     "vsedit.desktop",
-    "vsedit.profile"
+    "vsedit.install",
+    "vsedit.sh"
     ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

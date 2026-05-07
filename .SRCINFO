@@ -1,17 +1,17 @@
 pkgbase = vapoursynth-editor
 	pkgdesc = Editor for VapourSynth scripts
 	pkgver = r19_mod_6.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/YomikoR/VapourSynth-Editor
+	install = vsedit.install
 	arch = x86_64
 	license = MIT
-	makedepends = mold
 	depends = qt6-5compat
 	depends = qt6-websockets
 	depends = vapoursynth>=74
 	source = https://github.com/YomikoR/VapourSynth-Editor/archive/refs/tags/R19-mod-6.10.tar.gz
 	source = vsedit.desktop
-	source = vsedit.profile
+	source = vsedit.sh
 	b2sums = 739b64a4debe8fef54b445ddd0dabe71929bba1c4b1750a98248b4caf806a2d65cc886eb0c44b8f56d533aad82765a55d2571d71b41d76f0c69b5181cbee0f37
 	b2sums = 0be4452d3547176c674f1c938ec745d1d27741c4da5d87e212e5d6fd723240600c5d8ed760121a68ac7a60e42518c9af0c2367a63c5161a0e75581d65be9417d
 	b2sums = 5b56b51193150f31ae515ba06d6209c57c8f129694887de4b5d672b5fe9394f93e96472e4863cdc651b1f4c927b5320cfd27286554c9ebf21f8dcbfc955727d0
