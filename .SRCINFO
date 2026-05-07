@@ -1,0 +1,22 @@
+pkgbase = mathics3-pygments
+	pkgdesc = A pygments-based lexer and scanner for Mathics.
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://github.com/Mathics3/mathics3-pygments
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-pyaml
+	depends = mathics3-scanner>=10.0.0
+	depends = python-pygments>=2.9
+	optdepends = python-ujson: faster than the native json library, but not supported in pyston
+	conflicts = mathics-pygments
+	replaces = mathics-pygments
+	source = mathics3-pygments-10.0.0.tar.gz::https://github.com/Mathics3/mathics3-pygments/releases/download/10.0.0/mathics3_pygments-10.0.0.tar.gz
+	sha256sums = 4a4ea7787fef9f5f086b4bd900b3a7ca5c8f083e9e4619b8864edc0514994255
+
+pkgname = mathics3-pygments
