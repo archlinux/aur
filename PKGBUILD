@@ -6,7 +6,7 @@ _appname=${_pkgname,,}
 pkgname=${_appname}-bin
 pkgdesc="Terminal Based Binary for API Testing"
 
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('3b7f0aa538f823c30b2e444949c12b49fd95fced698ea2ebf5cd85fe11a2f6de')
-sha256sums_x86_64=('a7a9d8dc10e924ed2acd751a7cda3e3e101a32f88407e0a8d55c9d7b2d5f78bf')
-sha256sums_aarch64=('27ab8049512c309feb8495ea40670ffd1ae378bec9cc3e7c516c693b16fb4a53')
+sha256sums=('078c2fced42cadc70d34f19eee4e733243b9cabea18910b359d737bf140124b0')
+sha256sums_x86_64=('3826b5105b93bdcd4fafc7abd75a02ceb3bb43424166798eeb2e57004e30077c')
+sha256sums_aarch64=('98aeaeb633d6c8c4b9888c031f830cf33878865103e2dedceca483f44175f433')
 
 
 package() {
