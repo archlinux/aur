@@ -1,0 +1,4 @@
+[asm-lsp]
+source = "git"
+git = "https://github.com/bergercookie/asm-lsp.git"
+prefix = "v"

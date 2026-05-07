@@ -3,7 +3,7 @@
 
 pkgname=asm-lsp
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A language server for NASM/GAS/GO Assembly"
 arch=('x86_64' 'riscv64')
 url="https://crates.io/crates/asm-lsp"

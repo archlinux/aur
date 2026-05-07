@@ -1,7 +1,7 @@
 pkgbase = asm-lsp
 	pkgdesc = A language server for NASM/GAS/GO Assembly
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crates.io/crates/asm-lsp
 	arch = x86_64
 	arch = riscv64
