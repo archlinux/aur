@@ -3,7 +3,7 @@
 pkgname=slskdn-bin
 _pkgname=slskd
 pkgver=2026050712.slskdn.232
-pkgrel=2
+pkgrel=3
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64')
 url="https://github.com/snapetech/slskdn"
@@ -70,7 +70,7 @@ EOF
     install -Dm644 "${srcdir}/slskd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
     install -Dm644 "${srcdir}/slskd.yml" "${pkgdir}/etc/${_pkgname}/${_pkgname}.yml"
 
-    install -dm755 "${pkgdir}/var/lib/${_pkgname}"
-    install -dm755 "${pkgdir}/var/lib/${_pkgname}/downloads"
-    install -dm755 "${pkgdir}/var/lib/${_pkgname}/incomplete"
+    install -dm775 "${pkgdir}/var/lib/${_pkgname}"
+    install -dm775 "${pkgdir}/var/lib/${_pkgname}/downloads"
+    install -dm775 "${pkgdir}/var/lib/${_pkgname}/incomplete"
 }
