@@ -2,7 +2,7 @@
 
 _pkgname="html2markdown"
 pkgname="${_pkgname}-bin"
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Convert HTML to Markdown. Even works with entire websites and can be extended through rules."
 arch=(
@@ -21,23 +21,23 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_pkgsrc="${_pkgname}-${pkgver}"
+_pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_pkgsrc}-ESCAPING.md::${_url}/raw/refs/tags/v${pkgver}/ESCAPING.md"
 )
 source_aarch64=(
-  "${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/html-to-markdown_Linux_arm64.tar.gz"
+  "html-to-markdown_${pkgver}_Linux_arm64.tar.gz::${_url}/releases/download/v${pkgver}/html-to-markdown_Linux_arm64.tar.gz"
 )
 source_i686=(
-  "${_pkgsrc}-i686.tar.gz::${_url}/releases/download/v${pkgver}/html-to-markdown_Linux_i386.tar.gz"
+  "html-to-markdown_${pkgver}_Linux_i386.tar.gz::${_url}/releases/download/v${pkgver}/html-to-markdown_Linux_i386.tar.gz"
 )
 source_x86_64=(
-  "${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/html-to-markdown_Linux_x86_64.tar.gz"
+  "html-to-markdown_${pkgver}_Linux_x86_64.tar.gz::${_url}/releases/download/v${pkgver}/html-to-markdown_Linux_x86_64.tar.gz"
 )
 sha256sums=('74545f65ae3774ef2fe4ecc48b208305929860e95cfda3f227bc4eb507e8e5b4')
-sha256sums_aarch64=('3ef28c5e030986e9b082b42984178692136258381f66e3208218a17a3278cee4')
-sha256sums_i686=('a7b1c67961d55a3b28a05ea573949473c1428a8c2eab561731f0fdbfcc83f439')
-sha256sums_x86_64=('0c741a0949c255fec6f693796fcbda564120e459a66251364f0d2a50c3b1047b')
+sha256sums_aarch64=('dfcb6623c49a59600a38957a4be783314f9732948a69c42409fbb125021a4773')
+sha256sums_i686=('72f5319eb6a4c57c33e3578d73c9cb19bfcfc55da6c1a9c20de1bc02aba52744')
+sha256sums_x86_64=('2d6be8c6d155c60b06254dd8b999cd0b114d1a05bf7eac511ed60cfeb012f087')
 
 package() {
   cd "${srcdir}"
