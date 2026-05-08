@@ -7,6 +7,6 @@ pkgbase = sentype
 	license = MIT
 	depends = python
 	source = https://github.com/rumyp/sentype/releases/download/0.2.0/sentype-0.2.0.tar.gz
-	sha256sums = 9ed5d4884fd2f4023e5452e02a57b84bd813473cd174d55735f1ee721d75a427
+	sha256sums = 2998401383ea4e8b8e0751168912a93e9ab2b7ae70ba4360f84a23e0203b3f01
 
 pkgname = sentype
