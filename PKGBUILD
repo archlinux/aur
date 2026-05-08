@@ -1,7 +1,7 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=edconv-bin
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="A user-friendly FFmpeg GUI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/edneyosf/Edconv"
@@ -21,8 +21,8 @@ noextract=("Edconv-${pkgver}-x86_64.deb"
            "Edconv-${pkgver}-arm64.deb")
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('dc8adc0b9149a69d02fd62cc51dabb9fee23e38e7b7fc863bd741f7cab01d70a')
-sha256sums_aarch64=('7d304957ad4970ede4058d0e31d7a560dec92887094170d2600e8959f4a2ca09')
+sha256sums_x86_64=('32b19a8072d70561982f1b3961da77b2ffed98b3218f9faeb22d771d3057336b')
+sha256sums_aarch64=('96c31cfdb2caa7bf7e391f761da9fe47556a49654cf13817f0efce620d86a587')
 
 # ci/cd flag: gh repo for auto updates
 _ghrepo="edneyosf/Edconv"
