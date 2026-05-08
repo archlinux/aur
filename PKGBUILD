@@ -2,13 +2,13 @@
 
 pkgname=git-dumper-git
 _pkgname=git-dumper
-pkgver=r70.2d6fa4f
+pkgver=1.0.8.r3.g29b043f
 pkgrel=1
 pkgdesc="A tool to dump a git repository from a website"
 arch=('any')
 url="https://github.com/arthaud/git-dumper"
 license=('MIT')
-makedepends=(git python-setuptools)
+makedepends=(git python-setuptools python-pip)
 depends=(python python-pysocks python-requests python-beautifulsoup4 python-dulwich python-requests-pkcs12)
 source=(git+https://github.com/arthaud/git-dumper)
 sha512sums=('SKIP')

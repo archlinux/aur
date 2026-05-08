@@ -1,12 +1,13 @@
 pkgbase = git-dumper-git
 	pkgdesc = A tool to dump a git repository from a website
-	pkgver = r70.2d6fa4f
+	pkgver = 1.0.8.r3.g29b043f
 	pkgrel = 1
 	url = https://github.com/arthaud/git-dumper
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = python-pysocks
 	depends = python-requests
