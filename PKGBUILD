@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}
 pkgdesc="A Lotus 1-2-3–style terminal spreadsheet with modern Excel compatibility"
 
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,7 +22,7 @@ depends=('glibc' 'libgcc' 'bzip2' 'fontconfig' 'freetype2')
 provides=("${_appname}")
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_pkgvername}.tar.gz")
-sha256sums=('e66a7e20d74e550a15b4f9ff9667fafe0d1fba225f1a087ccee5c2ebb8491246')
+sha256sums=('ddd1032347a6df62d59efa4466b195db84227a5ac27041a729fb13882d1c1538')
 
 
 prepare() {
