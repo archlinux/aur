@@ -1,0 +1,9 @@
+# Ignore
+/*
+
+# Don't ignore
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!noita_proxy.install
+!noita_proxy.desktop

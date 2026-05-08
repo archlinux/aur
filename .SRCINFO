@@ -1,0 +1,23 @@
+pkgbase = noita_proxy-bin
+	pkgdesc = Noita Entangled Worlds mod
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/IntQuant/noita_entangled_worlds
+	install = noita_proxy.install
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = sh
+	depends = alsa-lib
+	depends = openssl
+	depends = opus
+	depends = bzip2
+	conflicts = noita_proxy
+	source = https://github.com/IntQuant/noita_entangled_worlds/releases/download/v1.6.2/noita-proxy-linux.zip
+	source = https://github.com/IntQuant/noita_entangled_worlds/archive/refs/tags/v1.6.2.tar.gz
+	source = noita_proxy.desktop
+	sha256sums = 2e2498f1e46ab41c277480c48e33bd7ed03aa9955dad9753c1b034e9adc1604d
+	sha256sums = 91d3776fb6e779e35fc26805941d88fbfbbbcbed79719db737972bf25626a5b3
+	sha256sums = 512c06c20b86cd51188f883904efc7f48d59b852ee5607a80b11337a92ca1899
+
+pkgname = noita_proxy-bin
