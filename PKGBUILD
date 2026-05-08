@@ -1,6 +1,6 @@
 # Maintainer: Hamid Noroozi <hamid at validio dot io>
 pkgname=evolution-quill
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="AI assistant for Evolution mail — summarize messages and draft replies (Gemini, Claude, OpenAI)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
     'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('fdaaa67d2f118109a9c0f191533514e19adea16ca76ab6f07f1633508c7e48e7')
+sha256sums=('8bd3fb4c1ccb67019d97ce08bd71acf52a150e7e78a3d19605e396e53e24ae39')
 
 build() {
     cmake -B build -S "$pkgname-v$pkgver" \
