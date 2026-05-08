@@ -1,20 +1,23 @@
 # Maintainer: Emma CHRISTOPHE <jean.michel.lesatanique@gmail.com>
 pkgname=crcl-select
-pkgver=2.0
+pkgver=2.1
 pkgrel=0
 pkgdesc="Circle selection utility with Eww widgets"
 arch=('x86_64')
 url="https://github.com/Pat8998/crcl-select/"
 license=('unknown')
 groups=()
+backup=('etc/crcl-select/theme.json'
+		'etc/crcl-select/toolbox.json'
+		'etc/crcl-select/power_menu.json')
 depends=('eww' 'jq')
 makedepends=('jansson')
 source=('https://github.com/Pat8998/crcl-select/releases/latest/download/crcl-sel.tar')
-sha256sums=(76c3d60180cf00197e9d6ff82da5b5b039957aa332d125035563dde84d6c1cb2)
+sha256sums=(b60b0608c6a4dbe17ec73d7d5df32a9f057f6146121cd08604139f9adcfcf4e4)
 
 build() {
 	tput setaf 13
-	echo "Building crcl-select...\n"
+	printf "Building crcl-select...\n"
 	gcc "eww-circle.c"    		-O3 -o crcl-circle-gen   -ljansson -lm
 	tput setaf 5
 		printf "	Compiled crcl-circle-gen\n"
@@ -54,11 +57,13 @@ package() {
 	install -Dm644 "def_conf/theme.json" 		"$pkgdir"/etc/crcl-select/
 	tput setaf 2
 	printf  "ok\n"
+	tput setaf 3
+	printf "Warining :  when upgrading to v2.1+, themes are incompatible\n\n"
 	tput setaf 1
-	printf ":: COPY CONFIG FILES TO ~/.config/crcl-select/ ::"
-	printf "\nwith:\n"
+	printf ">-------------< COPY DEFAULT CONFIG FILES TO ~/.config/crcl-select/ >-------------<"
+	printf "\nwith :"
 	tput setaf 5
 	printf "\n	mkdir -p ~/.config/crcl-select "
 	printf "\n	cp /etc/crcl-select/* ~/.config/crcl-select \n\n"
 	tput setaf 7
-}
+} 

@@ -1,6 +1,6 @@
 pkgbase = crcl-select
 	pkgdesc = Circle selection utility with Eww widgets
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 0
 	url = https://github.com/Pat8998/crcl-select/
 	arch = x86_64
@@ -8,7 +8,10 @@ pkgbase = crcl-select
 	makedepends = jansson
 	depends = eww
 	depends = jq
+	backup = etc/crcl-select/theme.json
+	backup = etc/crcl-select/toolbox.json
+	backup = etc/crcl-select/power_menu.json
 	source = https://github.com/Pat8998/crcl-select/releases/latest/download/crcl-sel.tar
-	sha256sums = 76c3d60180cf00197e9d6ff82da5b5b039957aa332d125035563dde84d6c1cb2
+	sha256sums = b60b0608c6a4dbe17ec73d7d5df32a9f057f6146121cd08604139f9adcfcf4e4
 
 pkgname = crcl-select
