@@ -13,7 +13,7 @@ optdepends=('wireless-regdb' 'linux-firmware' 'modprobed-db' 'scx-sched')
 makedepends=('xz' 'zstd' 'bc' 'rsync' 'libelf' 'openssl' 'python' 'tar' 'gcc' 'make' 'patch' 'diffutils' 'git' 'curl' 'flex' 'bison' 'elfutils' 'inetutils' 'clang' 'lld' 'llvm')
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.5.tar.xz"
-        "https://github.com/zen-kernel/zen-kernel/releases/download/v2.0/7.0.5/linux-v7.0.5-zen1.patch.zst")
+        "https://github.com/zen-kernel/zen-kernel/releases/download/v7.0.5-zen1/linux-v7.0.5-zen1.patch.zst")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
