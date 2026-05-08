@@ -1,7 +1,7 @@
 pkgbase = klear
-	pkgdesc = A minimal Hyprland status bar in Kotlin/Native (tray, popup menus, battery, glassy refraction)
+	pkgdesc = A minimal Hyprland status bar in Kotlin/Native (tray, popup menus, battery, glassy refraction, session lock)
 	pkgver = r66.da6d692
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/goal10der/klearShell
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = klear
 	depends = pam
 	optdepends = hyprland: the compositor klear is designed for
 	optdepends = ttf-dejavu: fallback font if AdwaitaSans is unavailable
+	backup = etc/pam.d/klear
 	source = klear::git+https://codeberg.org/goal10der/klearShell.git
 	source = nanovg::git+https://github.com/memononen/nanovg.git
 	sha256sums = SKIP
