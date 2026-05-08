@@ -4,7 +4,7 @@
 pkgname=lemonade-desktop
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (GUI)"
 pkgver=10.4.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
 license=('Apache-2.0')
@@ -40,7 +40,7 @@ build() {
   cd $srcdir/lemonade-$pkgver/src/app
   sed -i '1i cargo-features = ["profile-rustflags", "trim-paths"]' src-tauri/Cargo.toml
   sed -i '$a trim-paths = "all"' src-tauri/Cargo.toml
-  sed -i '$a rustflags = ["-Cdebuginfo=0", "-Zthreads=16"]' src-tauri/Cargo.toml 
+  sed -i '$a rustflags = ["-Cdebuginfo=0", "-Zthreads=0"]' src-tauri/Cargo.toml 
   npm run tauri build -- --no-bundle
 }
 
