@@ -57,8 +57,6 @@ package() {
     install -Dm644 "$srcdir"/vatsim-crc.desktop "$pkgdir/usr/share/applications/vatsim-crc.desktop"
     printf "Version=$pkgver-$pkgrel\n" >> $pkgdir/usr/share/applications/vatsim-crc.desktop
     install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/vatsim-crc.png"
-    find $pkgdir/usr/share/$pkgname -type d -exec chmod 755 "{}" \;
-    find $pkgdir/usr/share/$pkgname -type f -exec chmod 644 "{}" \;
     find $pkgdir/opt/$pkgname -type d -exec chmod 755 "{}" \;
     find $pkgdir/opt/$pkgname -type f -exec chmod 644 "{}" \;
 }
