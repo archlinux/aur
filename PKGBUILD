@@ -2,7 +2,7 @@
 pkgname=linux-sensor-tray-bin
 _pkgname=linux-sensor-tray
 _appimage_name=Linux-Sensor-Tray
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Tray-first Electron app for live CPU/GPU/mainboard/storage stats on Linux (AppImage repackage)"
 arch=('x86_64')
@@ -48,7 +48,7 @@ source=(
 )
 # CI regenerates hashes via updpkgsums for the actual tag at deploy time;
 # local makepkg should run `updpkgsums` first if you change pkgver.
-sha256sums=('2062471186d1275cf830ba9e1e1c04f154b6ea12392b7b0e07a8fc322f946562'
+sha256sums=('555cb01f6499fe46239d65094efc751556c1fce7ee878588fa18fa3b463fb276'
             'e552a4ea6b18459048d98882b05ff09dc1d1b6d0fb32443de4f7367335d14348'
             '6eabb99dce20a12387ef81f5b220d1636ea06f363fed48246507af74c377c532'
             'f1e53185b3695f2fabdca9474b782fb6db31fc248b925beb5208494b82ca5343'
