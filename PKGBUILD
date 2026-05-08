@@ -7,7 +7,7 @@
 # Contributor: ahrs
 
 pkgname=mailspring
-pkgver=1.17.3
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=(x86_64)
@@ -15,17 +15,13 @@ license=(GPL-3.0-only)
 url="https://github.com/Foundry376/Mailspring"
 depends=(alsa-lib gtk3 nss glibc)
 makedepends=(git npm nodejs-lts-iron grunt-cli python chrpath)
-source=("git+https://github.com/Foundry376/Mailspring.git#tag=${pkgver}"
-        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mailspring_0001-linux-don-t-build-a-deb-or-rpm-please.patch"
-        desktop.patch)
-sha256sums=('7724d1e6d6a8fc6a5c266549cd93a7c3e3564b9b234d807ce75f5b9ee9e33415'
-            'fd2158e0e3d39df0fa498b2afbcfa55c30607018ae144656f9575a6ec9e3dc98'
-            '406b34236f3d966989b347aad88dfe52b9c1681ae26296974dcd719171c9833e')
+source=("git+https://github.com/Foundry376/Mailspring.git#tag=${pkgver}")
+sha256sums=('a87a1d336d55388bcb541de266b0d780242cb31fbdc8289af987362179cd4c36')
 
 prepare() {
   cd Mailspring
-  patch -p1 < ../mailspring_0001-linux-don-t-build-a-deb-or-rpm-please.patch
-  patch -p1 < ../desktop.patch
+  sed -i "/await createRpmInstaller/d" app/build/build.js
+  sed -i "s/execstack --clear-execstack//g" app/script/mkdeb
 }
 
 build() {
@@ -46,6 +42,10 @@ package() {
 
   install -D Mailspring.desktop.in "${pkgdir}/usr/share/applications/Mailspring.desktop"
   install -D mailspring.appdata.xml.in "${pkgdir}/usr/share/metainfo/mailspring.appdata.xml"
+
+  sed -i 's/<%= productName %>/Mailspring/g' "${pkgdir}/usr/share/applications/Mailspring.desktop"
+  sed -i 's/<%= description %>/Email client/g' "${pkgdir}/usr/share/applications/Mailspring.desktop"
+  sed -i 's/<%= productName %>/Mailspring/g' "${pkgdir}/usr/share/metainfo/mailspring.appdata.xml"
 
   #for s in 16 32 64 128 256 512; do
   #  install -Dm0644 "icons/$s.png" "${pkgdir}/usr/share/icons/hicolor/$s/apps/mailspring.png"
