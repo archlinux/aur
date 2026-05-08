@@ -1,0 +1,9 @@
+pkgbase = aitasks
+	pkgdesc = File-based task management framework for AI coding agents (placeholder)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://aitasks.io/
+	arch = any
+	license = Apache
+
+pkgname = aitasks
