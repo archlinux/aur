@@ -1,0 +1,22 @@
+pkgbase = linear-bin
+	pkgdesc = Linear - Issue tracking & project management (unofficial Linux build)
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://linear.app
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	makedepends = p7zip
+	makedepends = imagemagick
+	makedepends = icoutils
+	makedepends = python
+	depends = electron
+	provides = linear
+	conflicts = linear-desktop
+	conflicts = linear-desktop-bin
+	conflicts = linear-desktop-git
+	source = Linear-Setup-1.30.0.exe::https://releases.linear.app/Linear%20Setup%201.30.0.exe
+	source = patch-main.py::https://raw.githubusercontent.com/shrimpwtf/linear-arch/main/patch-main.py
+	sha512sums = 31d309720ce21c93dd8a5bce9735bdfc045781db27b1bbfb80ad0048e16bde22836353d6abf1797f6dbb0bf250f48afb354bab63bd804f25997022424985fb98
+	sha512sums = SKIP
+
+pkgname = linear-bin
