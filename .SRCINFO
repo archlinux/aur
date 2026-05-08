@@ -1,6 +1,6 @@
 pkgbase = go-bin
 	pkgdesc = Go programming language (binary release)
-	pkgver = 1.26.2
+	pkgver = 1.26.3
 	pkgrel = 1
 	url = https://go.dev/
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = go-bin
 	conflicts = go
 	options = !strip
 	options = staticlibs
-	source_x86_64 = https://go.dev/dl/go1.26.2.linux-amd64.tar.gz
-	sha256sums_x86_64 = 990e6b4bbba816dc3ee129eaeaf4b42f17c2800b88a2166c265ac1a200262282
-	source_aarch64 = https://go.dev/dl/go1.26.2.linux-arm64.tar.gz
-	sha256sums_aarch64 = c958a1fe1b361391db163a485e21f5f228142d6f8b584f6bef89b26f66dc5b23
-	source_armv7h = https://go.dev/dl/go1.26.2.linux-armv6l.tar.gz
-	sha256sums_armv7h = 0000e45577827b0a8868588c543cbe4232853def1d3d7a344ad6e60ce2b015c8
+	source_x86_64 = https://go.dev/dl/go1.26.3.linux-amd64.tar.gz
+	sha256sums_x86_64 = 2b2cfc7148493da5e73981bffbf3353af381d5f93e789c82c79aff64962eb556
+	source_aarch64 = https://go.dev/dl/go1.26.3.linux-arm64.tar.gz
+	sha256sums_aarch64 = 9d89a3ea57d141c2b22d70083f2c8459ba3890f2d9e818e7e933b75614936565
+	source_armv7h = https://go.dev/dl/go1.26.3.linux-armv6l.tar.gz
+	sha256sums_armv7h = d44133d4c66b1451a1e247da26db7716f76a081c0169a75e6c84e1871e394320
 
 pkgname = go-bin
