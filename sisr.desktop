@@ -3,6 +3,6 @@ Type=Application
 Name=SISR
 Comment=Steam Input System Redirector
 Exec=sisr
-Icon=controller
+Icon=joypad
 Terminal=false
 Categories=Game;Utility;
