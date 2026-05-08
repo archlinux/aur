@@ -1,6 +1,6 @@
 # Maintainer: Alexander Björk <aur.operator320@passmail.net>
 pkgname=sisr-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Steam Input System Redirector - Binary"
 arch=('x86_64')
