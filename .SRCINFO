@@ -1,0 +1,17 @@
+pkgbase = mongobench-git
+	pkgdesc = A modern, dark-mode-first MongoDB GUI
+	pkgver = .r32.geee0c5a
+	pkgrel = 1
+	url = https://github.com/ByteExceptionM/MongoBench
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = electron
+	provides = mongobench
+	conflicts = mongobench
+	source = git+https://github.com/ByteExceptionM/MongoBench.git
+	source = 0001-fix-display-correct-icon-under-wayland-kde.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mongobench-git

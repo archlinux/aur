@@ -1,0 +1,25 @@
+From e6fdcd3e790edd8ca7d5727d210f7f79fa81f7e0 Mon Sep 17 00:00:00 2001
+From: Nycz-lab <Skybreak00@protonmail.com>
+Date: Thu, 7 May 2026 12:59:27 +0200
+Subject: [PATCH] fix: display correct icon under wayland kde
+
+---
+ src/main/index.ts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/main/index.ts b/src/main/index.ts
+index acea5be..fc65f1b 100644
+--- a/src/main/index.ts
++++ b/src/main/index.ts
+@@ -91,6 +91,8 @@ function createWindow(): void {
+     void window.loadFile(join(__dirname, '../renderer/index.html'))
+   }
+ }
++app.setName('mongobench');
++app.setDesktopName?.('mongobench');
+ 
+ app.whenReady().then(() => {
+   const secrets = new SecretsStore()
+-- 
+2.54.0
+
