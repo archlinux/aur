@@ -1,4 +1,5 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Michael Tews <michael at tews dot dev>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
 pkgver=17.11.0
