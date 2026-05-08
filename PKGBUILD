@@ -1,37 +1,35 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Ryan Farley <ryan.farley@gmx.com>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Krzysztof Stasiorowski <krzysiekst@gmail.com>
-# Contribute : Daniel Kamil Kozar <dkk089@gmail.com>
-
 pkgname=qpxtool-unofficial-git
-pkgver=1
+pkgver=r157.f35f02a
 pkgrel=1
 pkgdesc="Enhanced (unofficial) qpxtool version"
 arch=('x86_64')
 url="https://github.com/speed47/qpxtool"
 license=('GPL')
-makedepends=('qt5-tools')
 depends=('qt5-base')
+makedepends=('git' 'qt5-tools')
+
 source=("git+https://github.com/speed47/qpxtool.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/qpxtool"
+  printf "r%s.%s" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  patch -p0 -i ../fix-wrong-variable-in-comparison.diff
+  cd "$srcdir/qpxtool"
 }
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
-  # Fix strict aliasing warnings
-  export CFLAGS="$CFLAGS -fno-strict-aliasing"
+  cd "$srcdir/qpxtool"
+  export CFLAGS+=" -fno-strict-aliasing"
   ./configure --prefix=/usr --sbindir=/usr/bin --libdir=/usr/lib
   make
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
-  mkdir -p "$pkgdir"/usr/bin
+  cd "$srcdir/qpxtool"
   make DESTDIR="$pkgdir" install
 }

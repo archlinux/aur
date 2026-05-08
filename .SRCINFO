@@ -1,13 +1,14 @@
 pkgbase = qpxtool-unofficial-git
 	pkgdesc = Enhanced (unofficial) qpxtool version
-	pkgver = 1
+	pkgver = r157.f35f02a
 	pkgrel = 1
 	url = https://github.com/speed47/qpxtool
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = qt5-tools
 	depends = qt5-base
 	source = git+https://github.com/speed47/qpxtool.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = qpxtool-unofficial-git
