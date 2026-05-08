@@ -1,0 +1,19 @@
+pkgbase = clockode
+	pkgdesc = TOTP client made with Iced
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/mariinkys/clockode
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	source = clockode-0.2.5.tar.gz::https://github.com/mariinkys/clockode/archive/refs/tags/0.2.5.tar.gz
+	source = autofocus-password-field.patch
+	b2sums = c6e5f7a4ed7dbd899c8d94b95cb7eff32d46bacc679af2ce9b6712245291ef094a5a13190c0687e3bdb05a354ebf9c7c45e9d42e82a0380e2f826bd7e6c63998
+	b2sums = 896822a7540c1d4550e3e0930510ea15416aad0a8ac3a78405d5072d7db41afddff6df71ffb672583d4512783b5df05179b8f0e1d07a0d759873052ad5c3553d
+
+pkgname = clockode
