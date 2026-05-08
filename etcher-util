@@ -1,2 +1,2 @@
 #!/bin/sh
-exec node /usr/lib/balena-etcher/utils/util/api.js
+exec /usr/bin/node /usr/lib/balena-etcher/utils/util/api.js "$@"

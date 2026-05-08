@@ -4,9 +4,8 @@
 
 pkgname=balena-etcher
 _pkgname=etcher
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
-epoch=0
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 _github_url='https://github.com/balena-io/etcher'
@@ -27,10 +26,10 @@ source=("${_github_url}/archive/refs/tags/v${pkgver}.tar.gz"
   "etcher-util"
   'skip-build-util.patch'
 )
-sha256sums=('acdd51d6a32d7c5063a425692c0757c99e420ba89fba92f59fb19bf003915827'
+sha256sums=('f5d80b61107b34ca4c2c8fd1051cbd1875e491d0006d7c75a76897979f8d5dcd'
             '6c5fb48aeb636272689c86d7cf9beea4515214636bc617a61c3e8387628b3415'
             '7482eb18af030eb6d2b44850f23ecb99cd9198f642ac3b22b2f9f2ef0c8944d4'
-            'f27e34eaec0d2cb74fee259ff32c2cbd1dae36d2046d2b3e97394b91f47adace'
+            '75ec686b0af8b6f744970cd5f1bfe4c62baf492215d14f43b87da3d492919680'
             'a64369d70d41a3e9bed9d2260dedcaf76fceb8c654dbf8b6eee947785de2ae45')
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -42,6 +41,7 @@ prepare() {
   jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
   sed -i lib/gui/etcher.ts -e "s|process.resourcesPath|'/usr/lib/${pkgname}'|"
   sed -i ${srcdir}/${pkgname} -e "s|__ELECTRON__|${_electron}|"
+  sed -i "/elevated = 'refused';/d" lib/shared/sudo/linux.ts
 }
 
 build() {
@@ -53,12 +53,12 @@ build() {
   cd "${_pkgname}-${pkgver}"
   unset MAKEFLAGS
 
-  npm install
+  npm install --no-package-lock
   npm run package
 
   # node_modules for our etcher-util wrapper
   cd "out/sidecar/src"
-  npm install --prefix . etcher-sdk ws lodash
+  npm install --no-package-lock --prefix . etcher-sdk ws lodash
 }
 
 __clean_modules() {
