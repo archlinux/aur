@@ -1,12 +1,13 @@
 pkgname=git-flow-tui
 pkgver=1.1.1
-pkgrel=1
-pkgdesc='Terminal UI for gitflow'
+pkgrel=2
+pkgdesc='Terminal UI for gitflow with extended logic for CI/CD'
 arch=('x86_64')
 url="https://github.com/Emiliopg91/${pkgname}"
 license=('GPL-2')
 provides=('gitflow')
 depends=(
+  'git'
   'glibc'
   'libgcc'
 )
