@@ -10,11 +10,12 @@ pkgbase = snask
 	makedepends = llvm18
 	makedepends = clang18
 	makedepends = lld18
+	makedepends = pkgconf
 	depends = llvm18-libs
 	depends = gtk3
 	depends = zlib
 	depends = sqlite
 	source = snask-0.4.1.tar.gz::https://github.com/rancidavi-dotcom/TheSnask/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 773ad98a23ea04858d7487c0f47110ca3ab9515ed58a78b0fde196fc8a7d4e98
+	sha256sums = a1f77aad03886a6cc3714027d20a2f4a4c0f9e2a4cdf7e36701ca25658993739
 
 pkgname = snask
