@@ -1,4 +1,4 @@
-# Maintainer: tim <iunstable0@proton.me>
+# Maintainer: tim <goal10derphone@gmail.com>
 pkgname=klear
 _pkgname=klear
 pkgver=r72.60576e3
