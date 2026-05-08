@@ -1,7 +1,7 @@
 # Contributor: Ordoban <gabba.head@gmx.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-perl-critic-itch'
+pkgname='perl-critic-itch'
 pkgver='0.07'
 pkgrel='1'
 pkgdesc="Perl::Critic::Itch - A collection of Policies to solve some Itches"
