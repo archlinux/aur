@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "data": {
+    "gmcli": {
+      "version": "0.2.0",
+      "gitref": "refs/tags/v0.2.0",
+      "url": "https://github.com/badlogic/gmcli/tree/v0.2.0"
+    }
+  }
+}

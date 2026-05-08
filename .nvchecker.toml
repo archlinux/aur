@@ -1,0 +1,9 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+[gmcli]
+source = "github"
+github = "badlogic/gmcli"
+use_max_tag = true
+prefix = "v"

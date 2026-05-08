@@ -1,0 +1,13 @@
+pkgbase = gmcli
+	pkgdesc = Minimal Gmail CLI for searching, threads, drafts, labels, and sending mail
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/badlogic/gmcli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = gmcli-0.2.0.tar.gz::https://github.com/badlogic/gmcli/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 457dec074577c1c69419d3397ca5ecf3cfa938d76986aaa07cae1d3994acf638
+
+pkgname = gmcli
