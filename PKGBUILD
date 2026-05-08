@@ -109,6 +109,28 @@ pref("image.jxl.enabled", true);
 // Prevent about:config warning
 pref("browser.aboutConfig.showWarning", false);
 
+// Settings to nullify Telemetry reports and upstream URLs
+pref("toolkit.telemetry.enabled", false);
+pref("toolkit.telemetry.dap_enabled", false);
+pref("toolkit.telemetry.bhrPing.enabled", false);
+pref("toolkit.telemetry.archive.enabled", false);
+
+pref("toolkit.telemetry.dap.leader.url", "");
+pref("toolkit.telemetry.dap.helper.url", "");
+pref("toolkit.telemetry.server", "");
+
+pref("browser.ping-centre.telemetry", false);
+
+// Fix "Find more add-ons/Get more add-ons" link to point to the no-JS GNUzilla directory,
+// where the install links point to upstream Firefox Add-ons directory.
+pref("extensions.getAddons.browserMappings.url", "https://gnuzilla.gnu.org/");
+pref("extensions.getAddons.discovery.api_url", "https://gnuzilla.gnu.org/");
+pref("extensions.getAddons.get.url", "https://gnuzilla.gnu.org/");
+pref("extensions.getAddons.langpacks.url", "https://gnuzilla.gnu.org/");
+pref("extensions.getAddons.link.url", "https://gnuzilla.gnu.org/");
+pref("extensions.getAddons.search.browseURL", "https://gnuzilla.gnu.org/");
+pref("extensions.getAddons.search.url", "https://gnuzilla.gnu.org/");
+
 // Prevent telemetry notification
 pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
