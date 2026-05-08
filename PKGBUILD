@@ -1,5 +1,5 @@
 pkgname=git-flow-tui
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Terminal UI for gitflow with extended logic for CI/CD'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
   'rust'
 )
 source=(
-  "git+$url.git#tag=$pkgver-$pkgrel"
+  "git+$url.git#tag=$pkgver"
 )
 sha256sums=(
   'SKIP'
