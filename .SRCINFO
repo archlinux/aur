@@ -8,7 +8,7 @@ pkgbase = flare-game
 	makedepends = cmake
 	depends = flare-engine
 	options = !strip
-	source = flare-game-1.14::https://github.com/flareteam/flare-game/archive/v1.15.tar.gz
+	source = flare-game-1.15::https://github.com/flareteam/flare-game/archive/v1.15.tar.gz
 	sha256sums = b6b2e7037dae416c29d2d55f8275491ed9edec690194fc2165a5429582a2518c
 
 pkgname = flare-game
