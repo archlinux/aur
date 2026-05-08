@@ -2,7 +2,7 @@
 
 pkgname=goose-desktop
 pkgver=1.33.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
 url="https://github.com/aaif-goose/goose"
@@ -42,9 +42,9 @@ build() {
 
   cd ui/desktop
 
-  pnpm install
+  pnpm install --frozen-lockfile
 
-  npx electron-forge package
+  pnpm run package
 }
 
 package() {
