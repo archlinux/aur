@@ -1,0 +1,17 @@
+pkgbase = refetsh-git
+	pkgdesc = A simple system fetch script written in UNIX shell.
+	pkgver = 1.0.r5.d979d5b
+	pkgrel = 1
+	url = https://github.com/colebohte/refetsh
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = glib2
+	depends = xorg-xdpyinfo
+	provides = refetsh
+	conflicts = refetsh
+	source = refetsh::git+https://github.com/colebohte/refetsh.git
+	sha256sums = SKIP
+
+pkgname = refetsh-git
