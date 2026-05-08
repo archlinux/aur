@@ -1,0 +1,4 @@
+[fast-ssh]
+source = "git"
+git = "https://github.com/Julien-R44/fast-ssh.git"
+prefix = "v"
