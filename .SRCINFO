@@ -1,0 +1,13 @@
+pkgbase = docs
+	pkgdesc = search your man pages with fzf
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/FGRCL/docs
+	arch = any
+	license = unkown
+	makedepends = rustup
+	depends = fzf
+	source = https://github.com/FGRCL/docs/archive/refs/tags/0.0.1.tar.gz
+	sha256sums = 96146ef6644375194146ab7f458a41fe63043217330570b1d296ad8b6e8729ad
+
+pkgname = docs
