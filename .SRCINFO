@@ -1,16 +1,21 @@
 pkgbase = petbottle-bin
 	pkgdesc = Yerel not uygulamasi
 	pkgver = 0.1.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/YalvacRamazan/Petbottle-public
 	arch = x86_64
 	license = Apache-2.0
+	license = LGPL
 	depends = gtk3
 	depends = webkit2gtk
 	depends = libappindicator-gtk3
 	provides = petbottle
 	conflicts = petbottle
 	source = petbottle-bin-0.1.15.deb::https://github.com/YalvacRamazan/Petbottle-public/releases/download/v0.1.15/petbottle_0.1.15_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/YalvacRamazan/Petbottle-public/main/LICENSE
+	source = NOTICE::https://raw.githubusercontent.com/YalvacRamazan/Petbottle-public/main/NOTICE
 	sha256sums = b22d750dcf88872706d0f88db4dbf58c674504afbb20f1f512cc98b42e319473
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = petbottle-bin
