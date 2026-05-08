@@ -1,6 +1,6 @@
 pkgbase = python-hyprland-socket
 	pkgdesc = Typed Python library for Hyprland IPC via Unix sockets
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/BlueManCZ/hyprland-socket
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-hyprland-socket
 	makedepends = python-wheel
 	depends = python
 	depends = hyprland
-	source = python-hyprland-socket-0.9.1.tar.gz::https://github.com/BlueManCZ/hyprland-socket/archive/v0.9.1.tar.gz
-	sha256sums = 3382c5d89200583102d88972d0df9ac4be3c6a90704555439ee9d34978e1bba1
+	source = python-hyprland-socket-0.10.0.tar.gz::https://github.com/BlueManCZ/hyprland-socket/archive/v0.10.0.tar.gz
+	sha256sums = bdb63fa7cee7f30feafcd03976f15d232935ace6913acf3be43eff08e4fa31d9
 
 pkgname = python-hyprland-socket
