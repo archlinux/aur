@@ -1,6 +1,6 @@
 pkgbase = clipvault
 	pkgdesc = Clipboard history manager for Wayland, inspired by cliphist
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/rolv-apneseth/clipvault
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = clipvault
 	conflicts = clipvault
 	options = !debug
 	options = !lto
-	source = clipvault-1.1.1.tar.gz::https://github.com/rolv-apneseth/clipvault/archive/v1.1.1.tar.gz
-	sha512sums = 539e21aee87abb12975974a393513468b1e65923736260b7ccc06d6d21c2df07964261233948115f60031053f1081c1760dc27898910d4fa37ddd25115bbdf8e
+	source = clipvault-1.2.0.tar.gz::https://github.com/rolv-apneseth/clipvault/archive/v1.2.0.tar.gz
+	sha512sums = 20f87d10ce1ddaf60255a76247a190ea2f07b8608184c9cd5451e9c6e35f4e73c4b6268b25325804325f7bf8702506e9f6d97b15063dc625864f0c8ea508ad4d
 
 pkgname = clipvault
