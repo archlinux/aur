@@ -1,0 +1,16 @@
+pkgbase = ccpr-bin
+	pkgdesc = gh-style CLI for AWS CodeCommit pull request review with AI tools
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/hidetzu/ccpr
+	license = MIT
+	conflicts = ccpr
+	provides = ccpr
+	arch = aarch64
+	source_aarch64 = https://github.com/hidetzu/ccpr/releases/download/v1.2.1/ccpr_1.2.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 1f0a85f76baeed206ce62e644e1ee641f0b09ffa0a556ef89149d89c42e66daf
+	arch = x86_64
+	source_x86_64 = https://github.com/hidetzu/ccpr/releases/download/v1.2.1/ccpr_1.2.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1df3c539016d3628adb491236f22f3618ea7811bf77bf3c47bcd598790ef0bed
+	
+pkgname = ccpr-bin
