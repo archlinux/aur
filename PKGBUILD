@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bettersoundcloud
 _pkgname=BetterSoundCloud
-pkgver=0.7.0
+pkgver=0.7.1
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=V${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('8972e3fe02d2c34c3a355e1045e052c519f23ef4499068e0e731b27ee2ca2866'
+sha256sums=('077afce9b3798af59f20f2546925de032dbb9ba2cbe1f4748ac6ccb85969678b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
