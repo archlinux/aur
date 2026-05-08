@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Godot Hub
+GenericName=Godot Version Manager
+Comment=Desktop app for managing Godot Engine versions and projects
+Exec=godot-hub
+Icon=godot-hub
+Terminal=false
+PrefersNonDefaultGPU=true
+Type=Application
+Categories=Development;IDE;
+StartupWMClass=Godot Hub

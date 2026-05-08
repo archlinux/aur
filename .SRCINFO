@@ -1,0 +1,19 @@
+pkgbase = godot-hub-bin
+	pkgdesc = Desktop app for managing Godot Engine versions and projects
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ismailivanov/godot-hub
+	arch = x86_64
+	license = MIT
+	provides = godot-hub
+	conflicts = godot-hub
+	source = Linux.zip::https://github.com/ismailivanov/godot-hub/releases/download/v1.0/Linux.zip
+	source = godot-hub.png::https://raw.githubusercontent.com/ismailivanov/godot-hub/v1.0/icon.png
+	source = LICENSE::https://raw.githubusercontent.com/ismailivanov/godot-hub/v1.0/LICENSE
+	source = godot-hub.desktop
+	sha256sums = 1c82200e9b94c195d8f61b2af50834829bf0b533387a5b2408423f1e05b1b1bb
+	sha256sums = fb2973ac18502c9e828e9f4225980239033fa474847e8b69a0b8ef37f0a6a7cc
+	sha256sums = 76b8e9aacad7b9b2fd0c699065186191f8705d8f1892ee36873c56f904f073ef
+	sha256sums = ae5dc922d2f390ddefb7009c949242de295729595aa00fc2f3357be683935507
+
+pkgname = godot-hub-bin
