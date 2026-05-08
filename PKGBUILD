@@ -4,7 +4,7 @@
 # Contributor: Daniel Plank <tyrolyean@semi-professional.net>
 
 pkgname=freerouting
-pkgver=2.2.2
+pkgver=2.2.3
 _jrever=25
 _jdkver=25
 pkgrel=1
@@ -18,7 +18,7 @@ optdepends=('kicad: for use with PCB editor')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "freerouting.sh"
         "freerouting.desktop")
-sha512sums=('acdd38c129a72944545f9549ffb50eb20068ebd8371ce2800646667b8b45fef985b848f2400bade2c3ebb292d0f4806039e3c890e5ac300d74d87843e8cee86d'
+sha512sums=('b39c881b9b635a6795f997d8ddedcce611ef59dd05fb44f0db13ddd47ab2713eaa0b39dc5d983f18b978fae70a7f727ae226441769df7dbac3657bed2a215710'
             '994102e3f526fe364920602dfa8f2160eeeeb512194172bdc82f1fb45c261c2da79b8baf58008da9ab56f33d1b047dfe1ccb2f7d4113215cdfc376319b4f9320'
             '1eeacc544cd6081a9cef03424e505177972c65dc13d1379989889c0ed7419ed1b76013d48d160d0b74932aec1170ca1535b103f4266024b7f35e9656a11281f5')
 
