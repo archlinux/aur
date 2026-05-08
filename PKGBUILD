@@ -7,7 +7,7 @@ url="https://github.com/rumyp/sentype"
 license=('MIT')
 depends=('python')
 source=("https://github.com/rumyp/sentype/releases/download/${pkgver}/sentype-${pkgver}.tar.gz")
-sha256sums=('e78bbccb3bf8e54a20611988fc2f6ef12b0a632813dd79be04b3cabbb71a5607')
+sha256sums=('9ed5d4884fd2f4023e5452e02a57b84bd813473cd174d55735f1ee721d75a427')
 
 build() { :; }
 
