@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="html2markdown"
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Convert HTML to Markdown. Even works with entire websites and can be extended through rules."
 arch=(
@@ -25,7 +25,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
 )
-b2sums=('d703e024b9064302ad37e5beb6cfaf062302d091b03071637356482d6e82fa236e2aa554c0d6cd6ef774a118adc0e1ea97d1514571f9fcfa5531b753ca78e698')
+b2sums=('332c391f46909e9521ff56817c678bc2dcb6908d29b9e95c6cbb8573eb756e60653f833ea4251a4a17912b797aa807cd356300288121d8352fd747aa8ef0835d')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -33,8 +33,6 @@ prepare() {
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
   go mod verify
-
-  mkdir -p "build"
 }
 
 build() {
