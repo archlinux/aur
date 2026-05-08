@@ -1,13 +1,20 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
 url="https://github.com/Plan-B-Development/control-ofc-daemon"
 license=('MIT')
 depends=('glibc' 'systemd-libs' 'libgcc')
-optdepends=('lm_sensors: sensors-detect for hardware not covered by built-in module list')
+optdepends=(
+    'lm_sensors: sensors-detect for hardware not covered by the built-in module list'
+    'it87-dkms-git: out-of-tree driver for ITE 8625E/8686E/8688E/8689E/8696E/87952E (most newer Gigabyte boards)'
+    'nct6687d-dkms-git: out-of-tree driver for Nuvoton NCT6687-R (most newer MSI boards)'
+    'nct6686d-dkms-git: out-of-tree driver for Nuvoton NCT6686D (some newer ASRock boards)'
+    'dkms: required by the *-dkms-git driver packages above'
+    'linux-headers: required by DKMS to build out-of-tree drivers (must match your running kernel)'
+)
 # `rust` provides `cargo`; do not list both.
 makedepends=('rust' 'scdoc')
 backup=('etc/control-ofc/daemon.toml'
@@ -16,7 +23,7 @@ backup=('etc/control-ofc/daemon.toml'
 install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a65c2edb0d4470e48f5153a02c30d0f14d76c91d056dd382b598b106769b341c')
+sha256sums=('ebf65fb172fdcfc64ba041bdc753446809a8efe46c7abbcf9c3adefb3d9b71dc')
 
 prepare() {
     cd "$pkgname-$pkgver"

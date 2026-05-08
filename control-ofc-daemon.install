@@ -2,74 +2,16 @@ post_install() {
     cat <<'EOF'
 :: control-ofc-daemon installed.
 
-   Start the daemon:
-     sudo systemctl enable --now control-ofc-daemon
-
-   If sensors don't appear immediately (auto-loaded at next boot):
-     sudo systemctl start systemd-modules-load
-
-   AMD GPU fan control on RDNA3+ (RX 7000 / RX 9000) requires the kernel
-   parameter 'amdgpu.ppfeaturemask=0xffffffff'. Pre-RDNA3 cards don't
-   need it. The daemon man page documents the per-bootloader steps.
-
-   Documentation:
-     man control-ofc-daemon
-     /usr/share/doc/control-ofc-daemon/USER_GUIDE.md
+   Start now:        sudo systemctl enable --now control-ofc-daemon
+   Load modules:     sudo systemctl start systemd-modules-load   (or reboot)
+   Setup guide:      man control-ofc-daemon
+   Hardware check:   open the GUI -> Diagnostics -> Fans -> Hardware Readiness
 EOF
 }
 
 post_upgrade() {
     echo ":: Restart to apply changes:"
     echo "   sudo systemctl restart control-ofc-daemon"
-
-    _strip_legacy_runtime_sections
-}
-
-# Auto-strip [profiles] and [startup] sections from /etc/control-ofc/daemon.toml
-# if they exist. Back up the original to daemon.toml.pre-1.1.2.bak first. Safe
-# to re-run — no-op when the sections are already gone. Uses awk so we do not
-# depend on sed GNU extensions.
-_strip_legacy_runtime_sections() {
-    local config="/etc/control-ofc/daemon.toml"
-    [ -f "$config" ] || return 0
-
-    # Grep for top-of-line section headers only; ignore comments and dotted keys.
-    if ! grep -qE '^[[:space:]]*\[(profiles|startup)\][[:space:]]*$' "$config"; then
-        return 0
-    fi
-
-    local backup="${config}.pre-1.1.2.bak"
-    if ! cp -a "$config" "$backup" 2>/dev/null; then
-        echo ":: WARNING: could not back up $config — leaving legacy sections in place."
-        echo "   Remove [profiles] and [startup] manually before upgrading to 1.2.0."
-        return 0
-    fi
-
-    local tmp="${config}.tmp-$$"
-    awk '
-        BEGIN { skip = 0 }
-        /^[[:space:]]*\[profiles\][[:space:]]*$/ { skip = 1; next }
-        /^[[:space:]]*\[startup\][[:space:]]*$/  { skip = 1; next }
-        /^[[:space:]]*\[/                         { skip = 0 }
-        skip == 0 { print }
-    ' "$config" > "$tmp" || {
-        echo ":: WARNING: failed to strip legacy sections from $config."
-        echo "   Backup saved to $backup. Remove [profiles] and [startup] manually."
-        rm -f "$tmp"
-        return 0
-    }
-
-    # Preserve mode/owner from the original (should be root:root 0644 from PKGBUILD).
-    chmod --reference="$config" "$tmp" 2>/dev/null || chmod 0644 "$tmp"
-    chown --reference="$config" "$tmp" 2>/dev/null || true
-
-    if mv -f "$tmp" "$config"; then
-        echo ":: Stripped legacy [profiles] / [startup] sections from $config."
-        echo "   Original saved as $backup."
-    else
-        echo ":: WARNING: failed to replace $config — backup is at $backup."
-        rm -f "$tmp"
-    fi
 }
 
 pre_remove() {
