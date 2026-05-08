@@ -8,12 +8,12 @@ pkgname=qpxtool-unofficial-git
 pkgver=0.8.1
 pkgrel=6
 pkgdesc="Enhanced (unofficial) qpxtool version"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/speed47/qpxtool"
 license=('GPL')
 makedepends=('qt5-tools')
 depends=('qt5-base')
-source=(https://github.com/speed47/qpxtool.git)
+source=("git+https://github.com/speed47/qpxtool.git")
 md5sums=('SKIP')
 
 prepare() {
