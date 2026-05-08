@@ -7,7 +7,7 @@
 
 pkgname=dolphin-meld
 _pkgname=dolphin
-pkgver=26.04.0
+pkgver=26.04.1
 pkgrel=1
 pkgdesc='KDE File Manager, using Meld rather than Kompare'
 arch=(x86_64)
@@ -65,9 +65,9 @@ groups=(kde-applications
         kde-system)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         dolphin-meld.patch)
-sha256sums=('5c5e5024835fddbcd9dfaa9c16ab2bcff2475645b0e28d1b269de42e412ec543'
+sha256sums=('ba4da5192f7e45f392feaa74dfb18fddddcf9dbcc8f9abeb3f670e83ed9e4f57'
             'SKIP'
-            'a69abda1bd78cbaf3eb92ed645637fce1ea04a3528c90e22ab2abbdd809a0b15')
+            '13f53fa59dfe71883e9f5eb173b6ff297c8d7b96580e1f1633c9f4e95beaa59d')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
