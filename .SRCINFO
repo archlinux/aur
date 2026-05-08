@@ -14,6 +14,6 @@ pkgbase = iso-commander
 	depends = xz
 	depends = zstd
 	source = iso-commander-6.9.0.tar.gz::https://github.com/siyia2/iso-commander/archive/v6.9.0.tar.gz
-	md5sums = fb521f201fee28319a83bb4f8cff8e32
+	md5sums = 1817d9fc25794a767c9ca69338cefe5b
 
 pkgname = iso-commander
