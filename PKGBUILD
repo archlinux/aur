@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian-git
-pkgver=r1727.07b8d539
+pkgver=r2253.def861e9
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
@@ -34,8 +34,15 @@ makedepends=(
 provides=('solian')
 conflicts=('solian' 'solian-bin' 'solian-bin-git')
 
-source=("git+https://github.com/Solsynth/${_reponame}.git")
-sha256sums=('SKIP')
+source=(
+    "git+https://github.com/Solsynth/${_reponame}.git"
+    "icon-padded.png"
+)
+
+sha256sums=(
+    'SKIP'
+    '448670e6164b577892733ebdd267830e21509136175df35abb87717d14a63a05'
+)
 
 options=('!debug')
 
@@ -83,6 +90,9 @@ build() {
 }
 
 package() {
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 "icon-padded.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/solian.png"
+
   cd "$srcdir/$_reponame"
 
   install -dm755 "$pkgdir/usr/lib/solian"
@@ -93,9 +103,6 @@ package() {
 cd /usr/lib/solian
 exec ./island "$@"
 EOF
-
-  install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  install -Dm644 "assets/icons/icon-padded.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/solian.png"
 
   install -dm755 "$pkgdir/usr/share/applications"
   cat > "$pkgdir/usr/share/applications/solian.desktop" << 'EOF'
