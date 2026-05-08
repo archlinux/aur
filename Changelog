@@ -1,2 +1,5 @@
-2.42.4-1 [2026-04-29]
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 147.0.7727.137.
+2.43.0-1 [2026-05-06]
+- [Desktop][Enterprise][Experiment] Introduced Secure Access V2.
+- [Android][Enterprise][Experiment] Introduced Secure Access.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 148.0.7778.120.
+
