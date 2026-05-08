@@ -1,0 +1,24 @@
+pkgbase = linux-sensor-tray
+	pkgdesc = Tray-first Electron app for live CPU/GPU/mainboard/storage stats on Linux
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Mindsaver/linux-sensor-tray
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs>=20
+	makedepends = asar
+	makedepends = git
+	depends = electron41
+	depends = hicolor-icon-theme
+	optdepends = lshw: richer System info enrichment
+	optdepends = polkit: pkexec-based root helpers
+	optdepends = zenpower3-dkms: extra AMD CPU sensors (Vcore, V SoC, per-CCD temps)
+	source = linux-sensor-tray-0.2.0.tar.gz::https://github.com/Mindsaver/linux-sensor-tray/archive/refs/tags/v0.2.0.tar.gz
+	source = linux-sensor-tray.sh
+	source = linux-sensor-tray.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-sensor-tray

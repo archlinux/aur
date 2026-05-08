@@ -1,0 +1,7 @@
+*.pkg.tar.*
+*.tar.gz
+LICENSE-*
+src/
+pkg/
+.npm-cache/
+stage/

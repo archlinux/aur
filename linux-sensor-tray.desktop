@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Linux Sensor Tray
+Comment=Linux hardware sensor tray monitor
+Exec=/usr/bin/linux-sensor-tray %U
+Icon=linux-sensor-tray
+Terminal=false
+Type=Application
+Categories=Utility;System;
+StartupWMClass=linux-sensor-tray
