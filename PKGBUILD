@@ -3,12 +3,12 @@
 _plug=misc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=R2.5.g07e0589
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/vapoursynth/vs-miscfilters-obsolete'
 license=('GPL')
-depends=('vapoursynth')
+depends=('vapoursynth>=75')
 makedepends=('git'
   'meson'
 )
@@ -35,7 +35,8 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  PLUGINDIR=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
 
+  install -Dm755 build/libmiscfilters.so "${pkgdir}${PLUGINDIR}/libmiscfilters.so"
   install -Dm644 "${_plug}/docs/misc.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }

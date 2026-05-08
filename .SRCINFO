@@ -1,13 +1,13 @@
 pkgbase = vapoursynth-plugin-misc-git
 	pkgdesc = Plugin for Vapoursynth: misc (GIT version)
 	pkgver = R2.5.g07e0589
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vapoursynth/vs-miscfilters-obsolete
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = meson
-	depends = vapoursynth
+	depends = vapoursynth>=75
 	provides = vapoursynth-plugin-misc
 	provides = vapoursynth-plugin-miscfilters-obsolete
 	conflicts = vapoursynth-plugin-misc
