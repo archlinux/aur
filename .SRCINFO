@@ -1,0 +1,15 @@
+pkgbase = git-flow-tui
+	pkgdesc = Terminal UI for gitflow
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/Emiliopg91/git-flow-tui
+	arch = x86_64
+	license = GPL-2
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	provides = gitflow
+	source = git+https://github.com/Emiliopg91/git-flow-tui.git#tag=1.1.1-1
+	sha256sums = SKIP
+
+pkgname = git-flow-tui
