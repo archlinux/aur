@@ -1,0 +1,152 @@
+From: Will Handley <wh260@cam.ac.uk>
+Subject: [PATCH] fix: SM120 NVFP4 — clamp + 3D reshape + system-cutlass fallback
+
+Four coordinated fixes for NVFP4 dense inference on RTX 5090 (SM120) with
+the RedHatAI compressed-tensors NVFP4 path. Tracks sglang upstream
+PR #22927 (open at time of writing) plus a JIT include-path fallback for
+distributions that ship cutlass headers under /usr/include.
+
+1. SGLang CUTLASS JIT scale-byte NaN clamp (modelopt_quant.py:fp4_gemm)
+2. SGLang CUTLASS JIT 3D-shape handling (jit_kernel/nvfp4.py:cutlass_scaled_fp4_mm)
+3. Caller-side 2D reshape into the dense fp4_gemm wrapper (apply / apply_weights)
+4. System-cutlass fallback in JIT include discovery (jit_kernel/utils.py)
+   — adds /usr/include as a candidate when neither flashinfer nor
+   deep_gemm bundle cutlass headers.
+
+Drop the patch once upstream sglang accepts equivalents.
+---
+diff --git a/python/sglang/jit_kernel/nvfp4.py b/python/sglang/jit_kernel/nvfp4.py
+index ff3c20072..e94087cf5 100644
+--- a/python/sglang/jit_kernel/nvfp4.py
++++ b/python/sglang/jit_kernel/nvfp4.py
+@@ -136,11 +136,22 @@ def cutlass_scaled_fp4_mm(
+     alpha: torch.Tensor,
+     out_dtype: torch.dtype,
+ ) -> torch.Tensor:
++    # 3D activations from CUDA-graph capture: flatten leading dims along
++    # with matching per-row block scales; restore on return.
++    orig_shape = a.shape
++    if a.ndim == 3:
++        a = a.reshape(-1, a.shape[-1])
++        block_scale_a = block_scale_a.reshape(-1, block_scale_a.shape[-1])
++    if b.ndim == 3:
++        b = b.reshape(-1, b.shape[-1])
++        block_scale_b = block_scale_b.reshape(-1, block_scale_b.shape[-1])
+     assert a.ndim == 2 and b.ndim == 2
+     m, n = a.shape[0], b.shape[0]
+     out = torch.empty((m, n), dtype=out_dtype, device=a.device)
+     module = _jit_nvfp4_scaled_mm_module()
+     module.cutlass_scaled_fp4_mm(out, a, b, block_scale_a, block_scale_b, alpha)
++    if len(orig_shape) == 3:
++        out = out.reshape(orig_shape[0], -1, n)
+     return out
+ 
+ 
+diff --git a/python/sglang/jit_kernel/utils.py b/python/sglang/jit_kernel/utils.py
+index bcd42e5ce..d14a16f1f 100644
+--- a/python/sglang/jit_kernel/utils.py
++++ b/python/sglang/jit_kernel/utils.py
+@@ -382,6 +382,13 @@ def get_cutlass_include_paths() -> List[str]:
+         if candidate.exists():
+             include_paths.append(str(candidate))
+ 
++    # System cutlass install (Arch's `cutlass` package puts headers under
++    # /usr/include/cutlass/...). Fallback when neither flashinfer nor
++    # deep_gemm bundles cutlass.
++    system_include = pathlib.Path("/usr/include")
++    if (system_include / "cutlass" / "arch" / "barrier.h").exists():
++        include_paths.append(str(system_include))
++
+     # De-duplicate while preserving order.
+     unique_paths = []
+     seen = set()
+diff --git a/python/sglang/srt/layers/quantization/compressed_tensors/schemes/compressed_tensors_w4a4_nvfp4.py b/python/sglang/srt/layers/quantization/compressed_tensors/schemes/compressed_tensors_w4a4_nvfp4.py
+index 477339a54..dd1321415 100644
+--- a/python/sglang/srt/layers/quantization/compressed_tensors/schemes/compressed_tensors_w4a4_nvfp4.py
++++ b/python/sglang/srt/layers/quantization/compressed_tensors/schemes/compressed_tensors_w4a4_nvfp4.py
+@@ -136,9 +136,13 @@ class CompressedTensorsW4A4Fp4(CompressedTensorsLinearScheme):
+         x: torch.Tensor,
+         bias: Optional[torch.Tensor] = None,
+     ) -> torch.Tensor:
++        # flashinfer.mm_fp4 contracts on 2D (m, k); CUDA graph capture
++        # passes [1, max_seq, K]. Flatten leading dims, restore at return.
++        orig_shape = x.shape
++        x = x.reshape(-1, x.shape[-1])
+         output_dtype = x.dtype
+         w_n, _ = layer.weight_packed.shape
+-        output_shape = [x.shape[0], w_n]
++        output_shape = (*orig_shape[:-1], w_n)
+ 
+         # quantize BF16 or FP16 to (FP4 and interleaved block scale)
+         x_fp4, x_blockscale = fp4_quantize(x, layer.input_global_scale)
+@@ -168,4 +172,4 @@ class CompressedTensorsW4A4Fp4(CompressedTensorsLinearScheme):
+         )
+         if bias is not None:
+             out = out + bias
+-        return out.view(*output_shape)
++        return out.reshape(*output_shape)
+diff --git a/python/sglang/srt/layers/quantization/modelopt_quant.py b/python/sglang/srt/layers/quantization/modelopt_quant.py
+index d8ad8a1dd..a31b0491e 100755
+--- a/python/sglang/srt/layers/quantization/modelopt_quant.py
++++ b/python/sglang/srt/layers/quantization/modelopt_quant.py
+@@ -143,12 +143,26 @@ def fp4_gemm(
+ ) -> torch.Tensor:
+     fp4_backend = get_fp4_gemm_runner_backend()
+     if fp4_backend.is_cutlass() and cutlass_fp4_gemm is not None:
+-        # flashinfer.fp4_quantize returns scale factors as uint8 (e4m3fn bits
+-        # stored in uint8 memory). The JIT kernel requires float8_e4m3fn dtype.
+-        if input_sf.dtype != torch.float8_e4m3fn:
+-            input_sf = input_sf.view(torch.float8_e4m3fn)
+-        if weight_sf.dtype != torch.float8_e4m3fn:
+-            weight_sf = weight_sf.view(torch.float8_e4m3fn)
++        # SM120 NaN clamp + dtype reinterpret. CUTLASS FP4 GEMM produces
++        # NaN when an E4M3 scale-factor byte is 0x7f (not a finite scale
++        # value in torch.float8_e4m3fn). Clamp raw bytes to 0x7e, the
++        # largest finite positive e4m3fn value. Per sglang PR #22927,
++        # which scopes this workaround to SGLang's CUTLASS JIT path.
++        # Leave FlashInfer mm_fp4 unchanged: it is a separate backend
++        # with its own layout/stride expectations for the transposed
++        # weight-scale tensors passed via weight_scale.T below.
++        input_sf = (
++            input_sf.contiguous()
++            .view(torch.uint8)
++            .clamp(max=126)
++            .view(torch.float8_e4m3fn)
++        )
++        weight_sf = (
++            weight_sf.contiguous()
++            .view(torch.uint8)
++            .clamp(max=126)
++            .view(torch.float8_e4m3fn)
++        )
+         return cutlass_fp4_gemm(input, weight, input_sf, weight_sf, alpha, out_dtype)
+     elif enable_flashinfer_fp4_gemm:
+         # Use the remapping logic to convert SGLang backend names to FlashInfer API names
+@@ -1467,13 +1481,17 @@ class ModelOptFp4LinearMethod(LinearMethodBase):
+         x: torch.Tensor,
+         bias: Optional[torch.Tensor] = None,
+     ) -> torch.Tensor:
++        # flashinfer.mm_fp4 contracts on 2D (m, k); CUDA graph capture
++        # passes [1, max_seq, K]. Flatten leading dims, restore at return.
++        orig_shape = x.shape
++        x = x.reshape(-1, x.shape[-1])
+         output_dtype = x.dtype
+         x_m, _ = x.shape
+ 
+         # Get original output size (before padding) and padded weight size
+         output_size = layer.output_size_per_partition
+         w_n, _ = layer.weight.shape
+-        output_shape = [x_m, output_size]
++        output_shape = (*orig_shape[:-1], output_size)
+ 
+         # Quantize BF16 or FP16 to (FP4 and interleaved block scale)
+         x_fp4, x_scale_interleaved = fp4_quantize(x, layer.input_scale_inv)
+@@ -1511,7 +1529,7 @@ class ModelOptFp4LinearMethod(LinearMethodBase):
+ 
+         if bias is not None:
+             out = out + bias
+-        return out.view(*output_shape)
++        return out.reshape(*output_shape)
+ 
+ 
+ class ModelOptNvFp4FusedMoEMethod(FusedMoEMethodBase):

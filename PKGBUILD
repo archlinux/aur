@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r12426.0588e9044
+pkgver=r12443.297d183a4
 pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
@@ -120,15 +120,26 @@ source=("${_pkgname}::git+https://github.com/williamjameshandley/sglang.git#bran
         'sglang.env'
         'sglang.sysusers'
         'deepseek_v4.jinja'
+        'wjh-fp4-3d-reshape.patch'
         "${_models[@]/%/.conf}")
 sha256sums=('SKIP')
-for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' 'deepseek_v4.jinja' "${_models[@]}"; do
+for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' 'deepseek_v4.jinja' 'wjh-fp4-3d-reshape.patch' "${_models[@]}"; do
   sha256sums+=('SKIP')
 done
 
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${_pkgname}"
+  # flashinfer.mm_fp4 contracts on 2D (m, k); sglang's CUDA-graph-capture
+  # path passes 3D [1, max_seq, K] activations to ModelOptFp4LinearMethod
+  # and trips the 2D check in flashinfer.gemm._check_mm_fp4_problem_size
+  # before backend selection. Local fix: flatten on entry, restore at
+  # return. Drop once upstream sglang accepts equivalent.
+  patch -p1 < "${srcdir}/wjh-fp4-3d-reshape.patch"
 }
 
 build() {
