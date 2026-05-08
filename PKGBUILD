@@ -5,7 +5,7 @@ pkgname="agertu"
 _commit_rel="e5e3a0fc2e62701447b32bd3ab3004f5d847e58c" # 1.0.1
 _commit="9538804e405e99cab6fca3342aca0d08da214941" # r6
 pkgver="1.0.1+r6+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Popup information for river Wayland compositor"
 arch=(
   'x86_64'
@@ -46,42 +46,38 @@ prepare() {
 
 build() {
   local zig_options=(
-    # --summary all
     --prefix /usr
     --search-prefix /usr
     --global-cache-dir "${srcdir}/zig-global-cache"
-    # --system "${srcdir}/zig-global-cache/p"
     --verbose
-    -Dtarget=native-linux.6.15-gnu.2.42
+    -Dtarget=native-linux.6.15-gnu.2.34
     -Dcpu=baseline
-    # -Doptimize=ReleaseSafe
+    -Drelease-safe=true
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="build" "zig${_zig}" build "${zig_options[@]}"
+  DESTDIR="build" "zig-${_zig}" build "${zig_options[@]}"
 }
 
 check() {
   local zig_options=(
-    # --summary all
     --prefix /usr
     --search-prefix /usr
     --global-cache-dir "${srcdir}/zig-global-cache"
-    # --system "${srcdir}/zig-global-cache/p"
     --verbose
-    -Dtarget=native-linux.6.15-gnu.2.42
+    -Dtarget=native-linux.6.15-gnu.2.34
     -Dcpu=baseline
-    # -Doptimize=ReleaseSafe
+    -Drelease-safe=true
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="check" "zig${_zig}" build test "${zig_options[@]}"
+  DESTDIR="check" "zig-${_zig}" build test "${zig_options[@]}"
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
   cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "COPYING"   -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
