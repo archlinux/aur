@@ -1,10 +1,15 @@
 pkgbase = smolrtsp-libevent
 	pkgdesc = SmolRTSP + libevent 2.x
 	pkgver = 0.1.0+r1+g7451e74
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OpenIPC/smolrtsp-libevent
 	arch = x86_64
 	license = MIT
+	makedepends = libevent
+	makedepends = smolrtsp
+	makedepends = datatype99
+	makedepends = interface99
+	makedepends = slice99
 	depends = glibc
 	optdepends = libevent
 	optdepends = smolrtsp

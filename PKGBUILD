@@ -4,7 +4,7 @@ pkgname="smolrtsp-libevent"
 _commit_rel="c4d914648dc6832cc650b1eeb3b7c4e8914aaa68" # 0.1.0
 _commit="7451e74a574e3d982bf175094aa0baa432cba7dd" # r1
 pkgver="0.1.0+r1+g${_commit::7}"
-pkgrel=2
+pkgrel=3
 pkgdesc="SmolRTSP + libevent 2.x"
 arch=(
   'x86_64'
@@ -15,6 +15,14 @@ license=(
 )
 depends=(
   'glibc'
+)
+makedepends=(
+  'libevent'
+  'smolrtsp'
+
+  'datatype99'
+  'interface99'
+  'slice99'
 )
 optdepends=(
   'libevent'
