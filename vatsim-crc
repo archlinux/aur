@@ -15,12 +15,13 @@ fi
 
 mkdir -p $savedFiles
 
+export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
+
 if [[ $1 == "clean" ]] ; then
   rm -rf $WINEPREFIX
   shift
 fi
 
-export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
 mkdir -p $WINEPREFIX
 
 ## probe if umu-launcher
@@ -29,13 +30,12 @@ UMU_AVAIL=$?
 
 if [ $UMU_AVAIL -eq 0 ] ; then
   # Proton version
-  export UMU_NO_RUNTIME=1
   export GAMEID=vatsim-crc
   if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
     rm "$WINEPREFIX/.installed*"
 
     if [[ ! -v PROTONPATH ]]; then
-      if [ ! -d "/usr/share/steam/compatibilitytools.d/proton-ge-custom" ] ; then
+      if [ -d "/usr/share/steam/compatibilitytools.d/proton-ge-custom" ] ; then
         export PROTONPATH="/usr/share/steam/compatibilitytools.d/proton-ge-custom"
       fi
     fi
@@ -45,28 +45,30 @@ if [ $UMU_AVAIL -eq 0 ] ; then
     fi
 
     notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
-    umu-run winetricks arial tahoma
+    echo "PROTONPATH=$PROTONPATH"
+    echo "UMU_NO_RUNTIME=$UMU_NO_RUNTIME"
+    UMU_NO_RUNTIME=1 umu-run winetricks arial tahoma
     if [[ $1 == "msfonts" ]] ; then
-      umu-run winetricks courier
+      UMU_NO_RUNTIME=1 umu-run winetricks courier
     else
-      umu-run winetricks /usr/share/vatsim-crc/nicfonts.verb
+      UMU_NO_RUNTIME=1 umu-run winetricks /usr/share/vatsim-crc/nicfonts.verb
     fi
-    umu-run winetricks /usr/share/vatsim-crc/segmdl2.verb 
-    umu-run winetricks webview2
-    umu-run reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
+    UMU_NO_RUNTIME=1 umu-run winetricks /usr/share/vatsim-crc/segmdl2.verb 
+    UMU_NO_RUNTIME=1 umu-run winetricks webview2
+    UMU_NO_RUNTIME=1 umu-run reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
     ln -svf $savedFiles $WINEPREFIX/drive_c/$progName
     for i in $(ls /usr/share/$progName); do
       ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
     done
     if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
-      umu-run "/opt/rpc-bridge/bridge.exe" --install
+      UMU_NO_RUNTIME=1 umu-run "/opt/rpc-bridge/bridge.exe" --install
     fi
     touch "$WINEPREFIX/.installed.$CURRVER"
-    umu-run wineboot -e
+    UMU_NO_RUNTIME=1 umu-run wineboot -e
   fi
 
   source "$WINEPREFIX/.installed.$CURRVER" # Load PROTONPATH
-  cd $savedFiles && umu-run "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
+  cd $savedFiles && UMU_NO_RUNTIME=1 umu-run "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
 else
   # Wine version
   if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
