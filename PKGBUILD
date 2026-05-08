@@ -1,28 +1,27 @@
+# Maintainer: Radu Potop <radu at wooptoo dot com>
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 # Contributor: Daniel Peukert <daniel@peukert.cc>
 
-pkgbase=python-pysimplegui
-pkgname=('python-pysimplegui')
-_module='PySimpleGUI'
-pkgver=4.70.1
+upstream_name='PySimpleGUI'
+pkgname='python-pysimplegui'
+pkgver=6.0
 pkgrel=1
-pkgdesc='Super-simple to create custom GUI'
+pkgdesc='Create GUIs using Python, quickly and easily'
 arch=('any')
-license=('LGPLv3+')
-url='https://github.com/MikeTheWatchGuy/PySimpleGUI'
+license=('LGPL-3.0-or-later')
+url='https://github.com/PySimpleGUI/PySimpleGUI'
 depends=('python' 'tk')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest-runner')
-source=(${pkgbase}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI/PySimpleGUI-${pkgver}.tar.gz)
-sha256sums=('84b2bd09435a41d0a9cfd7ecbb464daa0557174cfd099068524266ed43b3525f')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('4c58510c3135505a3ecf3193d116a4322130bcbdaa1d0e064638a05d0ac238fd')
 
 build() {
-  cd "$srcdir"/${_module}-$pkgver
-  python setup.py build
+    cd "${upstream_name}-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${_module}-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd "${upstream_name}-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
-# vim:set ts=2 sw=2 et:
