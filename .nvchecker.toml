@@ -1,0 +1,4 @@
+[paper-soccer]
+source = "git"
+git = "https://github.com/MateuszJanda/paper-soccer.git"
+prefix = "v"
