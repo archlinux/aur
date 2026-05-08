@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 
 pkgname=koboldcpp-cuda
-pkgver=1.112
+pkgver=1.112.2
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     'koboldcpp.png'
 )
 sha256sums=(
-    'c6cac5d9b80342e4d1af0894bb24d404695f8c5d4895cbd1754b1b6e4d83d26b'
+    '4baf037730b28fafd8ccca5dfaf085dc441979a1fbbd57880236c216351b8e0d'
     '2f2f45a745b30392d01472c1f5e68f82e5e7d7353a4615cf94b9f0cd4fd0505b'
     'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
@@ -61,10 +61,9 @@ package() {
 
     install -Dm644 "koboldcpp.py" "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 
-    echo '#!/bin/sh' > koboldcpp
-    echo 'python /usr/share/koboldcpp/koboldcpp.py "$@"' >> koboldcpp
-
-    install -Dm755 koboldcpp "$pkgdir/usr/bin/koboldcpp"
+    echo '#!/bin/sh' > "$pkgdir/usr/bin/koboldcpp"
+    echo 'exec /usr/bin/python3 /usr/share/koboldcpp/koboldcpp.py "$@"' >> "$pkgdir/usr/bin/koboldcpp"
+    chmod +x "$pkgdir/usr/bin/koboldcpp"
 
     install -Dm644 "$srcdir/koboldcpp.desktop" "$pkgdir/usr/share/applications/koboldcpp.desktop"
     install -Dm644 "$srcdir/koboldcpp.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/koboldcpp.png"
