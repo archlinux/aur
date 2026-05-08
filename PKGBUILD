@@ -41,7 +41,7 @@ build() {
 
     cd "${pkgname}-${pkgver}"
     npm --prefix frontend run build
-    go build -ldflags="-s -w -X main.version=${pkgver}" -o "${pkgname}" ./cmd/server
+    go build -ldflags="-s -w -X main.Version=${pkgver}" -o "${pkgname}" ./cmd/server
 }
 
 package() {
