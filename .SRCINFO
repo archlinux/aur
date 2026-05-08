@@ -1,6 +1,6 @@
 pkgbase = linux-sensor-tray-bin
 	pkgdesc = Tray-first Electron app for live CPU/GPU/mainboard/storage stats on Linux (AppImage repackage)
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/Mindsaver/linux-sensor-tray
 	install = linux-sensor-tray.install
@@ -29,17 +29,17 @@ pkgbase = linux-sensor-tray-bin
 	optdepends = lshw: richer System info enrichment
 	optdepends = polkit: pkexec-based root helpers
 	optdepends = zenpower3-dkms: extra AMD CPU sensors (Vcore, V SoC, per-CCD temps)
-	provides = linux-sensor-tray=0.3.3
+	provides = linux-sensor-tray=0.3.4
 	conflicts = linux-sensor-tray
-	noextract = Linux-Sensor-Tray-0.3.3.AppImage
+	noextract = Linux-Sensor-Tray-0.3.4.AppImage
 	options = !strip
 	options = !debug
-	source = Linux-Sensor-Tray-0.3.3.AppImage::https://github.com/Mindsaver/linux-sensor-tray/releases/download/v0.3.3/Linux-Sensor-Tray-0.3.3.AppImage
-	source = LICENSE-0.3.3::https://github.com/Mindsaver/linux-sensor-tray/raw/v0.3.3/LICENSE
-	source = linux-sensor-tray-setup-0.3.3::https://github.com/Mindsaver/linux-sensor-tray/raw/v0.3.3/scripts/linux-sensor-tray-setup
+	source = Linux-Sensor-Tray-0.3.4.AppImage::https://github.com/Mindsaver/linux-sensor-tray/releases/download/v0.3.4/Linux-Sensor-Tray-0.3.4.AppImage
+	source = LICENSE-0.3.4::https://github.com/Mindsaver/linux-sensor-tray/raw/v0.3.4/LICENSE
+	source = linux-sensor-tray-setup-0.3.4::https://github.com/Mindsaver/linux-sensor-tray/raw/v0.3.4/scripts/linux-sensor-tray-setup
 	source = linux-sensor-tray.sh
 	source = linux-sensor-tray.desktop
-	sha256sums = 855d755e0893bde3b9d860303a349cf0927316e22374886a8285ea638993aa0e
+	sha256sums = 79bbba7f45f98a2840da4be686bbdc4aa8597884c3bc3a057caccc4074cbdf4e
 	sha256sums = e552a4ea6b18459048d98882b05ff09dc1d1b6d0fb32443de4f7367335d14348
 	sha256sums = 6eabb99dce20a12387ef81f5b220d1636ea06f363fed48246507af74c377c532
 	sha256sums = f1e53185b3695f2fabdca9474b782fb6db31fc248b925beb5208494b82ca5343
