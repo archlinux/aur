@@ -1,0 +1,13 @@
+pkgbase = gofetch
+	pkgdesc = A neofetch inspired utility written in golang
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/grMLEqomlkkU5Eeinz4brIrOVCUCkJuN/gofetch
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = gofetch-0.1.0.tar.gz::https://github.com/grMLEqomlkkU5Eeinz4brIrOVCUCkJuN/gofetch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = be13068fca900ea2a59aabec7d6e9921313ad70a6d8a3ef74eb362152641705e
+
+pkgname = gofetch
