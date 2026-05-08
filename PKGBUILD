@@ -1,7 +1,7 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=zrok2-bin
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='An open source sharing solution built on OpenZiti'
 #arch=('x86_64' 'aarch64' 'armv7h')
@@ -21,8 +21,8 @@ source_armv7h=("zrok_${pkgver}-linux-armv7.tar.gz::${url}/releases/download/v${p
 source_x86_64=("zrok_${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/zrok_${pkgver}_linux_amd64.tar.gz")
 
 sha256sums=('ce6cc1096b309f7599d0e5647507dfd8ab5416b82e6feb959395fad9d8e566fc')
-sha256sums_x86_64=('d9ec0d85a06d0196e7b6c8f203eec3df699e8b4fa669e526e98071958399cad3')
-sha256sums_armv7h=('94e9ca32553fb3670438b6e6f17944ef622a83105f16512d661bb377fd6c3f10')
+sha256sums_x86_64=('7e9d7fc0b96f3ecca96a02892e539bda4871ca4abfada4988891c6486e2a389f')
+sha256sums_armv7h=('d87677d1364112582dbb319196855fdb00214d0d563baa09f5229f58a3741534')
 #sha256sums_aarch64=('2c38069ee27c3c96f8d35cbe23e3a51457651229049edcd017bdbb485c9f1920')
 
 package() {
