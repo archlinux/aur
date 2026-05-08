@@ -2,7 +2,7 @@
 
 pkgbase=xbydriver-appimage
 pkgname=(xbydriver-{bin,appimage})
-_tagname=4.0.5-beta
+_tagname=4.0.6-beta
 pkgver=${_tagname//-/_}
 pkgrel=1
 pkgdesc="小白羊网盘 - 多网盘统一管理 + 智能媒体库 + 高速下载"
@@ -22,10 +22,10 @@ source_x86_64=("${pkgbase}-${_tagname}-x86_64.AppImage::${url}/releases/download
     "${pkgbase%-appimage}-${_tagname}-x86_64.deb::${url}/releases/download/v${_tagname}/xbyboxplayer-${_tagname}-linux-amd64.deb")
 source_aarch64=("${pkgbase}-${_tagname}-aarch64.AppImage::${url}/releases/download/v${_tagname}/xbyboxplayer-${_tagname}-linux-arm64.AppImage"
     "${pkgbase%-appimage}-${_tagname}-aarch64.deb::${url}/releases/download/v${_tagname}/xbyboxplayer-${_tagname}-linux-arm64.deb")
-sha256sums_x86_64=('4c13c43de9e7983c7b52b72b8a8c08bcb75cac1812b1a1da8a3f62afd2b60acc'
-                   '34bd39565ce6fc8db59dd49e30af5871314861d7ac2d9e402a4906225e3f80a0')
-sha256sums_aarch64=('3de05925bd137c60014d85b2581924ca5486276098b16884d975061c9360e71c'
-                    '8f93903ee80ae158be66c4faf42f31501ceba2ebf7725f5dc9ac94d4d48c4698')
+sha256sums_x86_64=('238da7360245180f56de186d9d7b101b7f066d412d815cf50b956ef1fe6db83a'
+                   '00bd18844fc81a1ecf591e74ad30663d056ae15e95871fa0484ffcc34fc43d8e')
+sha256sums_aarch64=('c231dedef5f4b04a38a476993fbafd71933acd7fb39a14bb3497055e2d49a02e'
+                    '8accd9552430c52a0de4ebea5080ec8f2391d36cd4eacf2219725ecef66a0f22')
 noextract=(
     ${pkgbase%-appimage}-${_tagname}-x86_64.deb
     ${pkgbase%-appimage}-${_tagname}-aarch64.deb)
