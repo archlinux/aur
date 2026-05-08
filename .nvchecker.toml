@@ -1,0 +1,4 @@
+[multibootusb]
+source = "git"
+git = "https://github.com/mbusb/multibootusb.git"
+prefix = "v"

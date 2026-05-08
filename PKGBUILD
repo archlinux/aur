@@ -1,37 +1,53 @@
-# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Maintainer:
+# Contributor: Maxim Kurnosenko <asusx2@mail.ru>
 # Contributor: Zack Emmert <zemmert@fastmail.com>
-# Contributor: Jonas Heinrich <onny@project-insanity.org>
-# Former Maintainer: sundar_ima <feedback.multibootusb@gmail.com>
-# Former Maintainer: Angel_Caido <geussepe at gmail dot com>
+# Contributor: Angel_Caido <geussepe at gmail dot com>
 
-pkgname=multibootusb
+_pkgname="multibootusb"
+pkgname="$_pkgname"
 pkgver=9.2.0
-pkgrel=5
-pkgdesc="Boot multiple live Linux distros from a usb flash drive."
+pkgrel=6
+pkgdesc="Boot multiple live Linux distros from a usb flash drive"
+url="https://github.com/mbusb/multibootusb"
+license=('GPL-2.0-or-later')
 arch=('any')
-url="https://sourceforge.net/projects/multibootusb/"
-license=('GPL')
-depends=('python-pyqt5' 'python-dbus' 'mtools' 'parted' 'p7zip' 'python-pyudev')
 
-sha512sums=('461ce6edd835b2a017d96c3987338cd9004894949ac0b121fc289d100b7945dd89970f966e48310b97f312221a2f5a047190c55802d3a07a9eec0bf6ec22356d'
-            'e10ddbd1588bb17d05040c001e4ca4f85d5da5a77de95154ac34d0fc7b3310a464077c88636a008b92af09b0920711d7b057f4c7542e1576708bed5a591e76d3')
-source=("https://github.com/mbusb/$pkgname/archive/v${pkgver}.tar.gz"
-        "fixes.patch")
+depends=(
+  '7zip'
+  'mtools'
+  'parted'
+  'python'
+  'python-dbus'
+  'python-pyqt5'
+  'python-pyudev'
+)
+makedepends=(
+  'python-setuptools'
+)
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=(
+  "$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext"
+  "fixes.patch"
+)
+sha256sums=(
+  '1f1539e11e5ac8af2fc2379a22c2ad6b73759b2babbc165f7ff716240e922d7d'
+  'f30e85800d1d1d6f78d4df3110ecfc2ce0eed9326434a2b22b62653bb7f92fd8'
+)
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    patch -Np1 < "$srcdir/fixes.patch"
+  cd "$_pkgsrc"
+  patch -Np1 -i "$srcdir/fixes.patch"
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py build
+  cd "$_pkgsrc"
+  python setup.py build
 }
 
-package () {
-    cd "$srcdir/$pkgname-$pkgver"
-    chmod 755 "$srcdir/$pkgname-$pkgver/data/multibootusb.desktop"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    sed -i "s/\/usr\/local\/bin/\/usr\/bin/" "$pkgdir/usr/share/polkit-1/actions/org.debian.pkexec.run-multibootusb.policy"
+package() {
+  cd "$_pkgsrc"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  sed -i "s/\/usr\/local\/bin/\/usr\/bin/" "$pkgdir/usr/share/polkit-1/actions/org.debian.pkexec.run-multibootusb.policy"
 }
