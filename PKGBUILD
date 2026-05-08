@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/rumyp/sentype"
 license=('MIT')
 depends=('python')
-source=("donkeytype-${pkgver}.tar.gz")
+source=("https://github.com/rumyp/donkeytype/releases/download/${pkgver}/donkeytype-${pkgver}.tar.gz")
 sha256sums=('d32e0fcdacf87c10c76303a924b4d266b320435342ae2d1199412153f7134df4')
 
 build() { :; }

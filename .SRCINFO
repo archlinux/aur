@@ -6,7 +6,7 @@ pkgbase = sentype
 	arch = any
 	license = MIT
 	depends = python
-	source = donkeytype-0.1.1.tar.gz
+	source = https://github.com/rumyp/donkeytype/releases/download/0.1.1/donkeytype-0.1.1.tar.gz
 	sha256sums = d32e0fcdacf87c10c76303a924b4d266b320435342ae2d1199412153f7134df4
 
 pkgname = sentype
