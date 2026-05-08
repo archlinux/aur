@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Solara Linux Kernel - Compiled from Linux ZEN kernel source"
 arch=('x86_64')
 url="https://github.com/ravecorelabs/solara"
+keywords=('kernel' 'linux' 'zen' 'solara' 'solara-linux')
 license=('GPL2')
 depends=('coreutils' 'kmod' 'initramfs')
 optdepends=('wireless-regdb' 'linux-firmware' 'modprobed-db' 'scx-sched')
