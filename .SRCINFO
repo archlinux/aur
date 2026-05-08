@@ -1,7 +1,7 @@
 pkgbase = crocotile3d
 	pkgdesc = Tile-based 3D modeling application
 	pkgver = 2.6.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.crocotile3d.com/
 	arch = x86_64
 	license = Unknown
