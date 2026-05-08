@@ -1,6 +1,6 @@
 pkgbase = siril
 	pkgdesc = An astronomical image processing software for Linux. (IRIS clone)
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://www.siril.org/
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = siril
 	optdepends = ffmpeg: avi export support
 	optdepends = libgit2: git integration to sync with the official siril-scripts repository
 	options = !lto
-	source = https://free-astro.org/download/siril-1.4.2.tar.bz2
-	sha256sums = 451915627ae461ef992ac0f83bd3ff1db5102d72ca379eee55b9be4f12b1162b
+	source = https://free-astro.org/download/siril-1.4.3.tar.bz2
+	sha256sums = d8afb8480fd9de6d01760e4bf4aa187e799f7bb25ac9226ebe996a1c7cd3491a
 
 pkgname = siril
