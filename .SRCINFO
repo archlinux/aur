@@ -1,0 +1,18 @@
+pkgbase = codex-proxy
+	pkgdesc = Local headless proxy exposing ChatGPT Codex Responses API as OpenAI/Anthropic/Gemini-compatible endpoints
+	pkgver = 2.0.70
+	pkgrel = 1
+	url = https://github.com/icebear0828/codex-proxy
+	arch = x86_64
+	license = custom:non-commercial
+	makedepends = npm
+	makedepends = rust
+	depends = nodejs
+	source = codex-proxy-2.0.70.tar.gz::https://github.com/icebear0828/codex-proxy/archive/refs/tags/v2.0.70.tar.gz
+	source = codex-proxy.sh
+	source = codex-proxy.service
+	sha256sums = 143a7ad861ff83974ae32ca5960fb27ee0e1dfc9329e3064930a9b576c3a71c3
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = codex-proxy

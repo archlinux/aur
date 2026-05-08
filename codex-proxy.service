@@ -1,0 +1,14 @@
+[Unit]
+Description=Codex Proxy (headless ChatGPT subscription gateway)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/codex-proxy
+Restart=on-failure
+RestartSec=5
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=default.target
