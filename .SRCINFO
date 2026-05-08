@@ -1,0 +1,23 @@
+pkgbase = hyprwire-frozen
+	pkgdesc = A fast and consistent wire protocol for IPC - Frozen For Yggdrasil, Nordix Desktop Environment
+	pkgver = 0.3.0.r16.g62cd80b
+	pkgrel = 1
+	url = https://gitlab.com/TheEnchantedPotato/mirror-hyprwire-hyprland-v0.54.git
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = gtest
+	makedepends = ninja
+	depends = hyprutils-frozen
+	depends = pugixml
+	depends = libffi
+	provides = hyprwire-frozen
+	provides = hyprwire
+	conflicts = hyprwire
+	conflicts = hyprwire-git
+	source = hyprwire-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprwire-hyprland-v0.54.git
+	sha256sums = SKIP
+
+pkgname = hyprwire-frozen
