@@ -1,6 +1,6 @@
 # Maintainer: Mindsaver <Mindsaver@users.noreply.github.com>
 pkgname=linux-sensor-tray
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Tray-first Electron app for live CPU/GPU/mainboard/storage stats on Linux"
 arch=('x86_64')
@@ -19,7 +19,9 @@ source=(
   "${pkgname}.sh"
   "${pkgname}.desktop"
 )
-sha256sums=('fe819ffbc17002f8f5014dff7da9e8f748c8e1cdbc26f505f26233e5ce3bc1a5'
+# CI regenerates hashes via updpkgsums for the actual tag at deploy time;
+# local makepkg should run `updpkgsums` first if you change pkgver.
+sha256sums=('0d9d9544dc8836342e325ae6a5cb26b13e55971fed62e13a9279189f32257ff2'
             '90267ebd6e338215d5358159ade24aaf9403008d19db1c81553bc5e8d94421d3'
             '4af4bed1cb787c29e0f5345330f7ba83bbcb97ea5d42dde20f3e77b56522697a')
 
@@ -58,6 +60,8 @@ package() {
 
   install -Dm755 "${srcdir}/${pkgname}.sh" \
     "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/scripts/linux-sensor-tray-setup" \
+    "${pkgdir}/usr/bin/${pkgname}-setup"
   install -Dm644 "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 build/icon.png \
