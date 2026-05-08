@@ -27,7 +27,7 @@ sha256sums_x86_64=('f601d0e7011257861eb2512f98f1d67612d1fadf86c6e3183d981f1ffb09
 build() {
   cd "${srcdir}/" || exit
 
-  gzip "./man/${_pkgname}.1"
+  gzip -f "./man/${_pkgname}.1"
 }
 
 package() {
