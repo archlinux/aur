@@ -18,7 +18,7 @@ depends=(
   'dbus'
 )
 source=("https://cdn.pollis.com/releases/v${pkgver}/pollis-v${pkgver}-linux.deb")
-sha256sums=('d4f0970f424a7bcafa767ec486c78cd3b0482954df48c6a2df4c0a88cd7098c5')
+sha256sums=('972f33ee44f3fa91d50d37ef32a322565a97a3f337b190d99ebfbac6557be3cf')
 
 package() {
   # Extract the data archive from the .deb
