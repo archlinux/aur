@@ -1,0 +1,19 @@
+pkgbase = twrap-bin
+	pkgdesc = A TUI wrapper for applying rules to live terminal screens
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/blacknon/twrap
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = twrap
+	conflicts = twrap
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/blacknon/twrap/v0.1.0/LICENSE
+	source = README-0.1.0.md::https://raw.githubusercontent.com/blacknon/twrap/v0.1.0/README.md
+	sha256sums = 817b3fba984ddaa8a9a5694c52f79c4b63f524ffe40ade1f85f2c90ee34b3e22
+	sha256sums = 00435dd5575cf7d819f4d4c96d0ffbc89e56197949ef622ac59e8d704a014338
+	source_x86_64 = https://github.com/blacknon/twrap/releases/download/v0.1.0/twrap-0.1.0.x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 640a6f8e9f256317158a0ebd17e21cae7c653551bc2574543569634d570a928c
+
+pkgname = twrap-bin

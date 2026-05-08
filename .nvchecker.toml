@@ -1,0 +1,5 @@
+["twrap-bin"]
+source = "github"
+github = "blacknon/twrap"
+use_latest_release = true
+prefix = "v"
