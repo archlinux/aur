@@ -1,13 +1,13 @@
 # Maintainer: Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=rmatrix
 _cratename=r-matrix
-pkgver=0.2.8
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Rust port of cmatrix."
 arch=('x86_64')
 url="https://github.com/Fierthraix/rmatrix"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'glibc' 'ncurses')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 conflicts=('rmatrix-git')
 
