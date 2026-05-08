@@ -36,7 +36,6 @@ prepare() {
     sed -i 's/"applications\/\*",/"applications\/meet-desktop",/' package.json
 
     export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
-    export SENTRYCLI_SKIP_DOWNLOAD=1
     yarn install
 }
 
