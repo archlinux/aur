@@ -1,6 +1,6 @@
 # Maintainer: PandaDEV <contact@pandadev.net>
 pkgname=twitch-drops-miner-bin
-pkgver=20260428.184025
+pkgver=20260508.200733
 pkgrel=1
 pkgdesc="An app that allows you to AFK mine timed Twitch drops, with automatic drop claiming and channel switching."
 arch=(x86_64 aarch64)
@@ -36,26 +36,23 @@ package() {
     
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/twitch-drops-miner" << 'EOF'
-    #!/bin/bash
-    export APPIMAGE_EXTRACT_AND_RUN=1
+#!/bin/bash
+export APPIMAGE_EXTRACT_AND_RUN=1
 
-    # Create user data directory if it doesn't exist
-    DATA_DIR="$HOME/.local/share/twitch-drops-miner"
-    mkdir -p "$DATA_DIR"
+DATA_DIR="$HOME/.local/share/twitch-drops-miner"
+mkdir -p "$DATA_DIR"
 
-    # Copy AppImage to user directory if it doesn't exist or is older
-    USER_APPIMAGE="$DATA_DIR/twitch-drops-miner.appimage"
-    SYSTEM_APPIMAGE="/usr/lib/twitch-drops-miner/twitch-drops-miner.appimage"
+USER_APPIMAGE="$DATA_DIR/twitch-drops-miner.appimage"
+SYSTEM_APPIMAGE="/usr/lib/twitch-drops-miner/twitch-drops-miner.appimage"
 
-    if [ ! -f "$USER_APPIMAGE" ] || [ "$SYSTEM_APPIMAGE" -nt "$USER_APPIMAGE" ]; then
-        echo "Copying AppImage to user directory..."
-        cp "$SYSTEM_APPIMAGE" "$USER_APPIMAGE"
-        chmod +x "$USER_APPIMAGE"
-    fi
+if [ ! -f "$USER_APPIMAGE" ] || [ "$SYSTEM_APPIMAGE" -nt "$USER_APPIMAGE" ]; then
+    echo "Copying AppImage to user directory..."
+    cp "$SYSTEM_APPIMAGE" "$USER_APPIMAGE"
+    chmod +x "$USER_APPIMAGE"
+fi
 
-    # Change to user data directory and run from there
-    cd "$DATA_DIR"
-    exec "$USER_APPIMAGE" "$@"
+cd "$DATA_DIR"
+exec "$USER_APPIMAGE" "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/twitch-drops-miner"
     
@@ -69,7 +66,7 @@ EOF
     
     png_file=$(find squashfs-root -name "*.png" -type f | head -1)
     if [ -n "$png_file" ]; then
-        install -Dm644 "$png_file" "$pkgdir/usr/share/pixmaps/twitch-drops-miner.png"
+        install -Dm644 "$png_file" "$pkgdir/usr/share/pixmaps/io.github.devilxd.twitchdropsminer.png"
     fi
     
     rm -rf squashfs-root
