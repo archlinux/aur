@@ -1,6 +1,6 @@
 pkgbase = jay-git
 	pkgdesc = A Wayland Compositor
-	pkgver = 1.11.0.r450.gec74723
+	pkgver = 1.13.0.r4.gcb5bc34
 	pkgrel = 1
 	url = https://github.com/mahkoh/jay
 	install = jay.install
@@ -18,8 +18,9 @@ pkgbase = jay-git
 	depends = libvulkan.so=1
 	depends = mesa
 	depends = pango
-	optdepends = xorg-xwayland: X11 support
+	optdepends = sqlite: session management
 	optdepends = xdg-desktop-portal: portal support
+	optdepends = xorg-xwayland: X11 support
 	provides = jay
 	provides = wayland-compositor
 	conflicts = jay

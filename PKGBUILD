@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=1.11.0.r450.gec74723
+pkgver=1.13.0.r4.gcb5bc34
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -26,8 +26,9 @@ depends=(
   pango
 )
 optdepends=(
-  'xorg-xwayland: X11 support'
+  'sqlite: session management'
   'xdg-desktop-portal: portal support'
+  'xorg-xwayland: X11 support'
 )
 makedepends=(
   cargo
