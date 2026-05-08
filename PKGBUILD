@@ -1,8 +1,8 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.7.37
-pkgrel=1
-pkgdesc='Cellframe blockchain node with a powerful SDK'
+pkgrel=2
+pkgdesc='Cellframe post-quantum blockchain node with SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
 license=('LGPL-3.0-or-later')
@@ -14,10 +14,10 @@ replaces=('cellframe-node-debug')
 sha256sums=('SKIP'
             'ff01e188b169720d6222cac739786da61496dddb7ff270d68af4b34aae4d3434'
             '5fab0cfadc8366ebd2be9d06ff36dbd3a84b18f679ea3babb3c739e7e13acefd'
-            '50e65fe5407024a71c2fa27d379901ece965e0fb788070665cf3a194b402d901'
+            'cfb98f54679c5f4bcd380b4273731b335abe75dfbb84510654d6a8198b41a5f0'
             '9b7be4cb912290ed1164dbc3c5f6714c5a9525cc41a4d7ba3115cdbe312a9320'
-            'a6b504ce331ef5953f38db6f2b3c18c3d5ed796eed29381bbe76a931cf3f9fa5'
-            '88c4b5f4f6907e1db8a415540dcce699b4c5ef7034b064dbe760b7f1027f4ba3')
+            '8e880c7559cee668231e4b59a3dddad8ab4a93435b6d8b08dc68b19eded3695d'
+            '54c6693d76e9ab69d9de1fef9d4a48b1cec16ade86c814a439b1855185e734e2')
 source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=b129e28cf05289e145592a3ef4a41efec1c221e0
 		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.13-py3-none-any.whl
 		cellframe-node.logrotate
