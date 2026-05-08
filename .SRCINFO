@@ -1,7 +1,7 @@
 pkgbase = lceda-pro-bin
 	pkgdesc = 免费、专业、强大的国产PCB设计工具
 	pkgver = 3.2.131
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pro.lceda.cn/
 	install = lceda-pro-bin.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = lceda-pro-bin
 	provides = lceda-pro
 	conflicts = lceda-pro
 	conflicts = lceda-pro-git
+	conflicts = lceda-pro-electron
 	source = lceda-pro-bin.install
 	sha256sums = afba3c6712227a37c08783b3cc1a97ae71e90dc2f575409213d2773372220697
 	source_x86_64 = lceda-pro-x86_64-3.2.131.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-3.2.131.zip
