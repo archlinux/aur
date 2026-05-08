@@ -1,7 +1,7 @@
 pkgbase = viiper
 	pkgdesc = Virtual Input over IP Emulator - VIIPER is a tool to create virtual input devices using USBIP
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Alia5/VIIPER
 	install = viiper.install
 	arch = x86_64

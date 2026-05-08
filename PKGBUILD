@@ -1,7 +1,7 @@
 # Maintainer: Alexander Björk <aur.operator320@passmail.net>
 pkgname=viiper
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual Input over IP Emulator - VIIPER is a tool to create virtual input devices using USBIP"
 arch=('x86_64')
 url="https://github.com/Alia5/VIIPER"
@@ -25,14 +25,11 @@ prepare() {
 
 build() {
     cd "VIIPER-$pkgver"
-
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o build/viiper ./cmd/viiper
+    make
 }
 
 package() {
     cd "VIIPER-$pkgver"
-
-    install -Dm755 "build/viiper" "$pkgdir/usr/bin/viiper"
+    install -Dm755 "dist/viiper" "$pkgdir/usr/bin/viiper"
     install -Dm644 "../viiper.service" "$pkgdir/usr/lib/systemd/system/viiper.service"
 }
