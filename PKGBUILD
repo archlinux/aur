@@ -4,7 +4,7 @@
 
 pkgname=koboldcpp-hipblas
 pkgver=1.112.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -62,6 +62,7 @@ package() {
 
     install -Dm644 "koboldcpp.py" "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 
+    install -d "$pkgdir/usr/bin"
     echo '#!/bin/sh' > "$pkgdir/usr/bin/koboldcpp"
     echo 'exec /usr/bin/python3 /usr/share/koboldcpp/koboldcpp.py "$@"' >> "$pkgdir/usr/bin/koboldcpp"
     chmod +x "$pkgdir/usr/bin/koboldcpp"
