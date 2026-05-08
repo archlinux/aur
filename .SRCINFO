@@ -44,6 +44,6 @@ pkgbase = python-chromadb
 	depends = uvicorn
 	options = !lto
 	source = chromadb-1.5.9.tar.gz::https://files.pythonhosted.org/packages/source/c/chromadb/chromadb-1.5.9.tar.gz
-	b2sums = 5c20e62a455c28bacac927f26116a73fd8e1799e0d908be8e8a4f02197a54731
+	b2sums = f34513c8d2f51eb81b8d9f61b588d200396620381af01e399903b3bd2c8fa4647da9e84ff852ab43050e802b7690088e5a1eb06c2475afde5ecca0a792dcedfe
 
 pkgname = python-chromadb

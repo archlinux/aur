@@ -1,4 +1,3 @@
-Already up to date.
 # Maintainer: Jai Brown (AUR: JaINTP) <dev [at] jaintp [dot] com>
 # Contributor: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: devome <evinedeng@hotmail.com>
@@ -15,7 +14,7 @@ depends=(python-bcrypt python-build python-chroma-hnswlib python-fastapi python-
 makedepends=('python-build' 'python-installer' 'python-maturin' 'python-setuptools' 'python-setuptools-scm' 'rust')
 options=(!lto)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('5c20e62a455c28bacac927f26116a73fd8e1799e0d908be8e8a4f02197a54731')
+b2sums=('f34513c8d2f51eb81b8d9f61b588d200396620381af01e399903b3bd2c8fa4647da9e84ff852ab43050e802b7690088e5a1eb06c2475afde5ecca0a792dcedfe')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
