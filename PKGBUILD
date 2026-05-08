@@ -1,8 +1,8 @@
 pkgname=mediaharbor
-pkgver=2.0.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="MediaHarbor is all-in-one music streaming and downloading application built with Tauri and React."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/MediaHarbor/mediaharbor"
 license=('GPL-3.0-or-later')
 
@@ -22,7 +22,7 @@ makedepends=(
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MediaHarbor/mediaharbor/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('73fa8b80aeb2f9ff867ecf77c8e20172985528f3b4c8991dda0b06d2d708f835')
+sha256sums=('9a3695647b4409c0cee8b2ac6171e7de6df758a724f8aeae1fc7519c2b6945aa')
 
 prepare() {
   cd "$srcdir/mediaharbor-${pkgver}"

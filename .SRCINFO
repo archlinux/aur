@@ -1,9 +1,10 @@
 pkgbase = mediaharbor
 	pkgdesc = MediaHarbor is all-in-one music streaming and downloading application built with Tauri and React.
-	pkgver = 2.0.4
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/MediaHarbor/mediaharbor
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = rust
 	makedepends = nodejs
@@ -13,7 +14,7 @@ pkgbase = mediaharbor
 	depends = libappindicator-gtk3
 	depends = glib2
 	options = !lto
-	source = mediaharbor-2.0.4.tar.gz::https://github.com/MediaHarbor/mediaharbor/archive/refs/tags/v2.0.4.tar.gz
-	sha256sums = 73fa8b80aeb2f9ff867ecf77c8e20172985528f3b4c8991dda0b06d2d708f835
+	source = mediaharbor-2.2.0.tar.gz::https://github.com/MediaHarbor/mediaharbor/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 9a3695647b4409c0cee8b2ac6171e7de6df758a724f8aeae1fc7519c2b6945aa
 
 pkgname = mediaharbor
