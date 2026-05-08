@@ -27,6 +27,6 @@ package() {
     esac
 
     install -Dm755 "$asset_dir/omni-code-bridge" "$pkgdir/usr/bin/omni-code-bridge"
-    install -Dm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/omni-code-bridge/LICENSE"
+    install -Dm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/omni-code-bridge.service" "$pkgdir/usr/lib/systemd/user/omni-code-bridge.service"
 }
