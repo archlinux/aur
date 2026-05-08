@@ -8,6 +8,7 @@ pkgbase = python-hyprland-config
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	depends = hyprland
 	source = python-hyprland-config-0.4.5.tar.gz::https://github.com/BlueManCZ/hyprland-config/archive/v0.4.5.tar.gz
