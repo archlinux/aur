@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.8.0.r3.ga1c663f
+pkgver=1.8.0.r6.gf0a8725
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
   'libgit2'
   'libnotify'
   'mangohud'
+  'mesa-utils'
   'pciutils'
   'polkit'
   'qt6pas'
@@ -24,14 +25,13 @@ makedepends=(
 )
 checkdepends=('appstream')
 optdepends=(
-  'gamemode: required for GameMode feature in Tweaks tab'
-  'git: for ReShade shader cloning'
-  'mesa-utils: Detect GPU model via glxinfo'
-  'pascube: Run pasCube (beta)'
+  'gamemode: Required for GameMode feature in Tweaks tab'
+  'git: Used to clone repositories (e.g., ReShade)'
+  'pascube: Simple OpenGL spinning cube used for configuration previews'
   'protontricks: required for Wine prefix managewr'
-  'vkbasalt: Configure vkBasalt'
-  'vulkan-tools: Vulkan preview'
-  'zenergy-dkms: Display AMD CPU power'
+  'vkbasalt: Vulkan post-processing effects'
+  'vulkan-tools: Vulkan preview via vkcube'
+  'zenergy-dkms: Displays AMD CPU power metrics'
   'zenity: FGMod GUI'
 )
 provides=("${pkgname%-git}")
