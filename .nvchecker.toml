@@ -1,0 +1,4 @@
+[tcli]
+source = "git"
+git = "https://github.com/Tectone23/tcli.git"
+prefix = "v"
