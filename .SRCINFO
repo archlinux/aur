@@ -1,6 +1,6 @@
 pkgbase = lapctl
 	pkgdesc = Control Linux laptop hardware (Graphics, Battery, Power, Cooling, Display) with Rust
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/S4NKALP/lapctl
 	install = lapctl.install
@@ -15,7 +15,7 @@ pkgbase = lapctl
 	depends = wayland
 	optdepends = xorg-xrandr: for GPU switching on X11
 	optdepends = nvidia-settings: for NVIDIA GPU management on X11
-	source = lapctl-0.3.2.tar.gz::https://github.com/S4NKALP/lapctl/archive/refs/tags/0.3.2.tar.gz
-	sha256sums = 2a60da3f7987be5674ab96b4db4d974a3150802beb1cc235e2f95769a700f8f9
+	source = lapctl-0.3.3.tar.gz::https://github.com/S4NKALP/lapctl/archive/refs/tags/0.3.3.tar.gz
+	sha256sums = f0d931809183737e8b6820b96bd5d018e23f6e4fa64cc81ec748c502e6c48e3c
 
 pkgname = lapctl
