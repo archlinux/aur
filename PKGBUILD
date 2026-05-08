@@ -2,7 +2,7 @@
 
 _pkgname=quatter
 pkgname=${_pkgname}-git
-pkgver=r156.85330f0
+pkgver=r158.0c2cc64
 pkgrel=1
 pkgdesc='A digital version of the Quarto boardgame by Blaise Müller, made using the Dry game engine and other open source software.'
 arch=('x86_64')
