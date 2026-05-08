@@ -1,6 +1,6 @@
 pkgbase = framr
 	pkgdesc = A Wayland screenshot tool written in Rust
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/vMohammad24/framr
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = framr
 	depends = gst-plugins-good
 	depends = gst-plugins-ugly
 	options = !lto
-	source = framr-0.6.0.tar.gz::https://github.com/vMohammad24/framr/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = cc3755180710026c8e49b8cb3b68245f30e732a049b15d306213ec34f4aa05e8
+	source = framr-0.7.0.tar.gz::https://github.com/vMohammad24/framr/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 4ca5983da2fd902df83b3b62409c5b28b090e4d514363c6d45d1bb53a0691704
 
 pkgname = framr
