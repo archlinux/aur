@@ -2,7 +2,7 @@
 #
 
 pkgname=ytdlp-gui
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="a GUI for yt-dlp written in Rust"
 url="https://github.com/BKSalman/ytdlp-gui"
@@ -12,7 +12,7 @@ makedepends=( "cargo" "pkgconf" "git" )
 depends=("ffmpeg" "yt-dlp")
 
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("59f1aafcd31cf7aeb11b667f221729d0c303346c0a3f8d1f7ef6cc12bf43a2a3")
+sha256sums=("dd378650f145f6a56d2db8262a7d22f8e05efea4cebc9a0b61107e2aba90666e")
 
 prepare() {
     cd "$pkgname-${pkgver}"
