@@ -1,6 +1,6 @@
 # Maintainer: Tristan <https://github.com/techtoboggan>
 pkgname=claude-desktop-hardened-bin
-pkgver=1.6608.0
+pkgver=1.6608.1
 pkgrel=1
 pkgdesc="Claude Desktop for Linux (hardened) — bubblewrap sandboxing, credential redaction"
 arch=('x86_64' 'aarch64')
