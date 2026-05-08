@@ -1,28 +1,25 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Andy Alt <arch_stanton5995 at proton.me>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=mars-shooter-git
-pkgver=0.7.4.r7.c855d04
+pkgver=0.7.4.r259.84664cd
 pkgrel=1
 pkgdesc="A ridiculous space shooter with nice graphics (development version)"
-arch=('i686' 'x86_64')
-url="http://mars-game.sourceforge.net/"
-license=('custom' 'GPL')
-install=mars.install
-depends=('sfml' 'taglib' 'fribidi' 'hicolor-icon-theme')
+arch=('x86_64')
+url="https://marsshooter.org/"
+license=('GPL-3.0-or-later')
+depends=(
+  'fribidi'
+  'hicolor-icon-theme'
+  'sfml2'
+  'taglib'
+)
 makedepends=('cmake' 'git')
 provides=('mars-shooter')
 conflicts=('mars-shooter')
-source=(mars-shooter::"git+https://github.com/thelaui/M.A.R.S..git"
-        mars-fribidi.patch
-        mars-shader.patch::"https://github.com/thelaui/M.A.R.S./pull/2.patch"
-        mars-noglu.patch::"https://github.com/thelaui/M.A.R.S./pull/17.patch"
-        mars-archinstall.patch)
-sha256sums=('SKIP'
-            '6fb105bd6c7f0b3c35bedc13240e1b1f9ad37bb5b4b1328438532b4f40e19c6e'
-            '2cb61532d94eb68100ddf24888c513a06ef44c32fc867a3b20dfd901d0a0b1d2'
-            '729fb013fe4ad95e2a15e59bf1ce94eddc3fc42f942253522a9e7b041e052664'
-            'd33d6cd40bf6b2846c069524ed3344e2f4c3afe373e89c74d3e4888d63e2261a')
+source=(mars-shooter::"git+https://github.com/thelaui/M.A.R.S..git#commit=84664cd")
+sha256sums=('SKIP')
 
 pkgver() {
   cd mars-shooter
@@ -31,34 +28,46 @@ pkgver() {
 }
 
 prepare() {
-  # reset build dir
-  rm -rf build
-  mkdir build
-
   cd mars-shooter
-  # add include dir of fribidi
-  patch -Np1 < ../mars-fribidi.patch
-  # fix use of sfml2 shader
-  patch -Np1 < ../mars-shader.patch
-  # remove glu dependency
-  patch -Np1 < ../mars-noglu.patch
-  # fix install target
-  patch -Np0 < ../mars-archinstall.patch
+
   # fix executable name in and remove mimetype from launcher
-  sed 's/Exec=mars$/&-shooter/;/MimeType=.*/d' -i resources/mars.desktop
+  sed 's/Exec=mars$/&-shooter/;/MimeType=.*/d' -i resources/marsshooter.desktop
 }
 
 build() {
-  cd build
-
-  cmake ../mars-shooter -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  local cmake_options=(
+    -B build
+    -S "${srcdir}/mars-shooter"
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_CXX_STANDARD=14
+    -DCMAKE_CXX_FLAGS="-std=c++14"
+    -DSFML_DIR=/opt/sfml2/lib/cmake/SFML
+    -DSFML_INCLUDE_DIR=/opt/sfml2/include
+    -DSFML_SYSTEM_LIBRARY=/opt/sfml2/lib/libsfml-system.so
+    -DSFML_WINDOW_LIBRARY=/opt/sfml2/lib/libsfml-window.so
+    -DSFML_GRAPHICS_LIBRARY=/opt/sfml2/lib/libsfml-graphics.so
+    -DSFML_AUDIO_LIBRARY=/opt/sfml2/lib/libsfml-audio.so
+    -DCMAKE_INSTALL_RPATH=/opt/sfml2/lib
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build
 
-  # rename executable
-  mv "$pkgdir"/usr/bin/mars "$pkgdir"/usr/bin/mars-shooter
+  install -Dm755 "${pkgdir}/usr/games/marsshooter" \
+    "${pkgdir}/usr/bin/mars-shooter"
+  # Remove the original /usr/games install
+  rm -rf "${pkgdir}/usr/games"
+
+  mv "${pkgdir}/usr/share/man/man6/marsshooter.6" \
+    "${pkgdir}/usr/share/man/man6/mars-shooter.6"
+
+  sed -i 's|^Exec=.*|Exec=mars-shooter|' \
+    "${pkgdir}/usr/share/applications/marsshooter.desktop"
+  mv "${pkgdir}/usr/share/applications/marsshooter.desktop" \
+    "${pkgdir}/usr/share/applications/mars-shooter.desktop"
 }
