@@ -1,0 +1,21 @@
+pkgbase = hyprland-qt-support-frozen
+	pkgdesc = A qml style provider for hypr* qt apps - Frozen For Yggdrasil, Nordix Desktop Environment
+	pkgver = 0.1.0.r8.g073c52b
+	pkgrel = 1
+	url = https://gitlab.com/TheEnchantedPotato/mirror-hyprland-qt-support-hyprland-v0.54.git
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = qt6-wayland>=6.6.0
+	depends = hyprlang-frozen
+	provides = hyprland-qt-support-frozen
+	provides = hyprland-qt-support
+	conflicts = hyprland-qt-support
+	conflicts = hyprland-qt-support-git
+	source = ::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprland-qt-support-hyprland-v0.54.git
+	sha256sums = SKIP
+
+pkgname = hyprland-qt-support-frozen
