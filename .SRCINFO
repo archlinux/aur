@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-hipblas
 	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)
-	pkgver = 1.112
+	pkgver = 1.112.2
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = koboldcpp-hipblas
 	optdepends = zenity: native file picker dialogs
 	optdepends = yad: native file picker dialogs
 	optdepends = python-jinja: jinja2 templates
-	provides = koboldcpp=1.112
-	provides = koboldcpp-rocm=1.112
+	provides = koboldcpp=1.112.2
+	provides = koboldcpp-rocm=1.112.2
 	conflicts = koboldcpp
-	source = koboldcpp-hipblas-1.112.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.112.tar.gz
+	source = koboldcpp-hipblas-1.112.2.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.112.2.tar.gz
 	source = koboldcpp.desktop
 	source = koboldcpp.png
-	sha256sums = c6cac5d9b80342e4d1af0894bb24d404695f8c5d4895cbd1754b1b6e4d83d26b
+	sha256sums = 4baf037730b28fafd8ccca5dfaf085dc441979a1fbbd57880236c216351b8e0d
 	sha256sums = 2f2f45a745b30392d01472c1f5e68f82e5e7d7353a4615cf94b9f0cd4fd0505b
 	sha256sums = d244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54
 
