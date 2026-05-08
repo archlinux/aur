@@ -1,7 +1,7 @@
 pkgbase = python-minotaur-git
 	pkgdesc = A pythonic, asynchronous inotify interface (development version)
 	pkgver = 0.3.0.r0.g84628aa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/giannitedesco/minotaur
 	arch = aarch64
 	arch = x86_64
