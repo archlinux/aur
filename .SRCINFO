@@ -1,12 +1,12 @@
 pkgbase = apollo
 	pkgdesc = A self-hosted game stream server
 	pkgver = 0.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ClassicOldSong/Apollo
 	install = apollo.install
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = gcc
+	makedepends = gcc15
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git

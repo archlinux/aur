@@ -9,7 +9,7 @@
 _pkgname="apollo"
 pkgname="$_pkgname"
 pkgver=0.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hosted game stream server"
 url="https://github.com/ClassicOldSong/Apollo"
 license=('GPL-3.0-only')
@@ -186,6 +186,10 @@ package() {
   fi
 
   DESTDIR="$pkgdir" cmake --install build
+
+  # prevent conflict
+  mv "$pkgdir"/usr/lib/modules-load.d/60-{sunshine,apollo}.conf
+  mv "$pkgdir"/usr/lib/udev/rules.d/60-{sunshine,apollo}.rules
 
   # unwanted
   rm -rf "$pkgdir/usr/lib/systemd"
