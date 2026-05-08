@@ -10,7 +10,7 @@
 
 _pkgname="apollo"
 pkgname="$_pkgname-git"
-pkgver=0.4.8.r14.g41bacbd
+pkgver=0.4.8.r20.gdd99a82
 pkgrel=2
 pkgdesc="A self-hosted game stream server"
 url="https://github.com/ClassicOldSong/Apollo"
@@ -197,6 +197,10 @@ package() {
   fi
 
   DESTDIR="$pkgdir" cmake --install build
+
+  # prevent conflict
+  mv "$pkgdir"/usr/lib/modules-load.d/60-{sunshine,apollo}.conf
+  mv "$pkgdir"/usr/lib/udev/rules.d/60-{sunshine,apollo}.rules
 
   # unwanted
   rm -rf "$pkgdir/usr/lib/systemd"
