@@ -1,0 +1,19 @@
+pkgbase = moirai-client-bin
+	pkgdesc = Moirai desktop VPN client
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/v0idhrt/moirai
+	arch = x86_64
+	license = custom
+	options = !strip
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = libsecret
+	depends = polkit
+	provides = moirai-client
+	conflicts = moirai-client
+	source = moirai-linux-x64-0.2.1.tar.gz::https://github.com/v0idhrt/moirai/releases/download/v0.2.1/moirai-linux-x64.tar.gz
+	sha256sums = SKIP
+
+pkgname = moirai-client-bin
