@@ -1,0 +1,13 @@
+pkgbase = tuichess
+	pkgdesc = Terminal chess engine with minimax AI, alpha-beta pruning, and ncurses interface
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/flankmekid/tuichess
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ncurses
+	source = tuichess-0.1.0.tar.gz::https://github.com/flankmekid/tuichess/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b7eff1a28df37483ea25a3fdead2b8ff7a2e422743b5a4c0db2b429014e0e269
+
+pkgname = tuichess
