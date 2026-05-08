@@ -11,11 +11,11 @@ depends=('php-interpreter')
 makedepends=('git')
 optdepends=()
 backup=(etc/${pkgname}/config.php)
-_commit=392e6b16247cda85a9838b961e255c249688848c
+_commit=d0f909e9147b0c2c83496bb269496526389e7460
 source=("git+https://github.com/stecklars/${pkgname}.git#commit=$_commit"
         ${pkgname}.service
         ${pkgname}.timer)
-sha256sums=('cda1c9ac7f321abda4f370dbd41d99b45ff1f8f7c8904b9b63261f30b1614216'
+sha256sums=('1f5c62f47c056f7e659e764d8f102ec4a0005be8be5907f95e0be09c54a2cf64'
             'f8d030218d7ac033ba9ebc72ae6e5f25e5671e7ca69cb3c07bbb060a2426819a'
             'e47b47ba368cbaf09cb63fdbeaef632f6fd358e6994440d8d3a682ee4510e648')
 
