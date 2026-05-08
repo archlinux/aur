@@ -1,0 +1,48 @@
+# Maintainer: Jimmy Källhagen
+# Mail: TheEnchantedPotato@proton.me
+
+pkgname=hyprpolkitagent-frozen
+pkgver=0.1.2.r3.g352638e
+pkgrel=1
+conflicts=('hyprpolkitagent' 'hyprpolkitagent-git')
+provides=('hyprpolkitagent-frozen' 'hyprpolkitagent')
+pkgdesc="A polkit authentication agent written in QT/QML - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
+arch=('x86_64' 'aarch64')
+url="https://gitlab.com/TheEnchantedPotato/mirror-hyprpolkitagent-hyprland-v0.54.git"
+license=('BSD-3-Clause')
+
+depends=(
+  hyprland-qt-support-frozen
+  hyprutils-frozen
+  polkit-qt6
+)
+
+makedepends=(
+  cmake
+  git
+  ninja
+)
+
+_pkgsrc=$pkgname
+source=("$_pkgsrc::git+$url")
+sha256sums=('SKIP')
+
+build() {
+  local cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+  	-D CMAKE_INSTALL_LIBEXECDIR=lib
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+

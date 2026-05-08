@@ -1,0 +1,22 @@
+pkgbase = hyprpolkitagent-frozen
+	pkgdesc = A polkit authentication agent written in QT/QML - Frozen For Yggdrasil, Nordix Desktop Environment
+	pkgver = 0.1.2.r3.g352638e
+	pkgrel = 1
+	url = https://gitlab.com/TheEnchantedPotato/mirror-hyprpolkitagent-hyprland-v0.54.git
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = hyprland-qt-support-frozen
+	depends = hyprutils-frozen
+	depends = polkit-qt6
+	provides = hyprpolkitagent-frozen
+	provides = hyprpolkitagent
+	conflicts = hyprpolkitagent
+	conflicts = hyprpolkitagent-git
+	source = hyprpolkitagent-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprpolkitagent-hyprland-v0.54.git
+	sha256sums = SKIP
+
+pkgname = hyprpolkitagent-frozen
