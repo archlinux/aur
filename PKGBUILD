@@ -2,7 +2,7 @@
 # Contributor: codepunk <codepunk AT noreply DOT codeberg DOT org>
 
 pkgname=scratsh
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Minimal CLI scratch file manager"
 archive=scratsh
@@ -35,4 +35,5 @@ check() {
 package() {
     cd "${archive}"
     install -Dm0755 -t "${pkgdir}/usr/bin" "zig-out/bin/${pkgname}"
+    install -Dm0755 -t "${pkgdir}/usr/bin" "scripts/scrappend"
 }
