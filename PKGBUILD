@@ -2,7 +2,7 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/mcpproxy-bin
 
 pkgname=mcpproxy-bin
-pkgver=0.29.3 # renovate: datasource=github-tags depName=smart-mcp-proxy/mcpproxy-go
+pkgver=0.29.5 # renovate: datasource=github-tags depName=smart-mcp-proxy/mcpproxy-go
 pkgrel=3
 pkgdesc="Smart proxy for AI agents using the Model Context Protocol"
 arch=('x86_64' 'aarch64')
