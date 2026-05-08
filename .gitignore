@@ -1,5 +1,6 @@
 *.pkg.tar*
 *.src.tar*
+*.tar.gz
 screenplain
 pkg
 src
