@@ -10,13 +10,11 @@ url='https://github.com/srinivasr/nirimod'
 license=('MIT')
 
 depends=(
-    'glib2'
     'gtk4'
     'libadwaita'
     'python'
     'python-gobject'
     'python-cairo'
-    'pango'
     'hicolor-icon-theme'
     'sh'
     'niri'
