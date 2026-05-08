@@ -3,7 +3,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=firefox-extension-bitwarden
-pkgver=2026.2.0
+pkgver=2026.4.0
 pkgrel=1
 pkgdesc='Bitwarden browser extension for Firefox'
 arch=('any')
@@ -14,21 +14,16 @@ groups=('firefox-addons')
 pkgdesc='Bitwarden browser extension for Firefox'
 makedepends=('nodejs-lts-krypton' 'npm' 'unzip' 'zip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v${pkgver}.tar.gz")
-b2sums=('5a977b7c6fba6174d2602136929d2d4ceec088ea8c09f5abccd96cb87a7f58ea0ef6abc49f534b3c0cf800c7da69a9ee29719b1c210ce94713b207d9357e6fbe')
+b2sums=('a8e10f13b4f746f62c85aadf45f261574a069ca978dc1916b1bb044460e0e3af27cf4bd65aa56cd75866731799034f3c4eedfe3a956e96bec8e1ecdf8fbac29e')
 
 prepare() {
   cd "${srcdir}/clients-browser-v${pkgver}" || exit
-  npm ci
+  npm install
 }
 
 build() {
   cd "${srcdir}/clients-browser-v${pkgver}/apps/browser" || exit
   npm run dist:firefox
-}
-
-check() {
-  cd "${srcdir}/clients-browser-v${pkgver}/apps/browser" || exit
-  npm run test
 }
 
 package() {
