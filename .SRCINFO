@@ -8,6 +8,7 @@ pkgbase = mars-shooter-git
 	makedepends = cmake
 	makedepends = git
 	depends = fribidi
+	depends = libglvnd
 	depends = hicolor-icon-theme
 	depends = sfml2
 	depends = taglib

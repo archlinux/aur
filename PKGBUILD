@@ -11,6 +11,7 @@ url="https://marsshooter.org/"
 license=('GPL-3.0-or-later')
 depends=(
   'fribidi'
+  'libglvnd'
   'hicolor-icon-theme'
   'sfml2'
   'taglib'
@@ -70,4 +71,7 @@ package() {
     "${pkgdir}/usr/share/applications/marsshooter.desktop"
   mv "${pkgdir}/usr/share/applications/marsshooter.desktop" \
     "${pkgdir}/usr/share/applications/mars-shooter.desktop"
+
+  install -Dm644 "$srcdir/mars-shooter/license.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
