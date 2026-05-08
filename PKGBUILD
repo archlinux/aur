@@ -3,7 +3,7 @@
 
 pkgname=canon-lbp2900-capt
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CUPS driver for Canon LBP2900/LBP3000 CAPT printers (reverse-engineered)"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/gauravyad69/Canon-LBP2900B"
