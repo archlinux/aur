@@ -6,7 +6,7 @@ pkgbase = metalang99
 	arch = any
 	license = MIT
 	checkdepends = cmake>=3.16
-	source = metalang99-1.13.5.tar.gz::https://github.com/hirrolot/metalang99/archive/refs/tags/v1.13.5.tar.gz
+	source = https://github.com/hirrolot/metalang99/archive/refs/tags/v1.13.5/metalang99-1.13.5.tar.gz
 	sha256sums = f3d1607d76b4b081d3295661c4c2b8d5fde4d5018b1aa409c84fb3a6660ffb90
 
 pkgname = metalang99
