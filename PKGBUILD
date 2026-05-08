@@ -3,7 +3,7 @@
 pkgname=cli53-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for Amazon Route 53"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/barnybug/cli53"
