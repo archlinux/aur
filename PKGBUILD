@@ -1,5 +1,5 @@
 pkgname=repoconductor-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Tool to manage multiple repositories'
 arch=('x86_64')
@@ -10,8 +10,8 @@ conflicts=('repoconductor' 'repoconductor-git')
 source=("$pkgname-$pkgver::${url}/releases/download/v${pkgver}/repoconductor"
         "${url}/releases/download/v${pkgver}/repoconductor-completions-${pkgver}.tar.gz")
 noextract=("$pkgname-$pkgver")
-sha256sums=('849a5131ac880f1e823ec7552729aae24345adc151ec8e0da3de1f1563393a7a'
-            '5eb5e59ba9bf18a58657a28358b4ea2d0b45c61d31348d8db0d06af8c0fc57ad')
+sha256sums=('cbdd4287ce8542fcb8c7fbcc7bf4197ae9514b889baf410361cf3549551da81e'
+            '1d41d31dbea900b5b80f6f29ab74330f8b4d1245029fd6ce9821fb5f708739a0')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver" \
