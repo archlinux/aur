@@ -1,6 +1,6 @@
 pkgbase = hyprpier-git
 	pkgdesc = Hyprland monitor profile manager with Thunderbolt dock detection
-	pkgver = 0.1.5.r0.g7814d49
+	pkgver = 0.1.5.r3.g46489e3
 	pkgrel = 1
 	url = https://github.com/jakeb-grant/hyprpier
 	arch = x86_64
