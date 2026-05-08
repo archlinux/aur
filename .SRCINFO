@@ -9,11 +9,14 @@ pkgbase = snask
 	depends = gtk3
 	depends = zlib
 	depends = sqlite
+	depends = llvm18
+	depends = clang18
+	depends = lld18
 	provides = snask
 	conflicts = snask-git
 	source_x86_64 = snask-0.4.1-x86_64::https://github.com/rancidavi-dotcom/TheSnask/releases/download/v0.4.1/snask-linux-amd64
 	source_x86_64 = snask-0.4.1.tar.gz::https://github.com/rancidavi-dotcom/TheSnask/archive/refs/tags/v0.4.1.tar.gz
 	sha256sums_x86_64 = 20a7dac42c7e8f47d53ac889a41c80398b4ae9b979015c2a9389526a9c3262de
-	sha256sums_x86_64 = 088c85f3d7c5d213c065c5dd54400c4e4ee7329a44f8c9e56a8f5f0f8a0f9a35
+	sha256sums_x86_64 = a4ed13084f939148300592ed3572314f6737e58b8611a68e2acad18f5f7c3e41
 
 pkgname = snask
