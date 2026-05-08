@@ -2,8 +2,8 @@
 
 pkgbase=ollama-bin
 pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin ollama-vulkan-bin)
-pkgver=0.23.1
-pkgrel=2
+pkgver=0.23.2
+pkgrel=1
 pkgdesc="Create, run and share large language models (LLMs)"
 
 arch=('x86_64' 'aarch64')
@@ -48,8 +48,8 @@ sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
             '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
             '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3'
             'c45babd58b56b10ece2c652b67ca3104ed0ceaf4d6041b846be4e71dbd669c2d')
-sha256sums_x86_64=('1079dad63e0e0f2d3279280ce6d8a93f3af53e79afb14f74813e0b35d9b96d54')
-sha256sums_aarch64=('eaef32e13214ee9f6b47a6dea8a8843d1c00248f5309de749cb935f1c31097c3')
+sha256sums_x86_64=('11a333b59b4f47d572dbda4ddf6d58099c9d3a37dae399aba7e064da2891b61c')
+sha256sums_aarch64=('ef3990216f36a77777473801c2803c473475770109040040fdc818df31ef8a64')
 
 
 package_ollama-bin() {
@@ -86,6 +86,8 @@ package_ollama-cuda12-bin() {
     depends=("ollama-bin" "nvidia-libgl")
     conflicts=("ollama-cuda" "ollama-cuda13" "ollama-vulkan")
 
+    backup=('etc/ollama-cuda.conf')
+
     cd "${srcdir}/" || exit
 
     install -Dm644 "./ollama-cuda.service" "${pkgdir}/usr/lib/systemd/system/ollama.service.d/01-cuda.conf"
@@ -105,6 +107,8 @@ package_ollama-cuda13-bin() {
     depends=("ollama-bin" "nvidia-libgl")
     conflicts=("ollama-cuda" "ollama-cuda12" "ollama-vulkan")
 
+    backup=('etc/ollama-cuda.conf')
+
     cd "${srcdir}/" || exit
 
     install -Dm644 "./ollama-cuda.service" "${pkgdir}/usr/lib/systemd/system/ollama.service.d/01-cuda.conf"
@@ -123,6 +127,8 @@ package_ollama-vulkan-bin() {
     provides=("ollama-vulkan")
     depends+=("ollama-bin" "vulkan-driver")
     conflicts=("ollama-cuda" "ollama-cuda12" "ollama-cuda13")
+
+    backup=('etc/ollama-vulkan.conf')
 
     cd "${srcdir}/" || exit
 
