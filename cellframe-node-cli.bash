@@ -675,7 +675,7 @@ _cfcli_commands() {
         return
     fi
     # ... fallback to static list
-    echo "global_db node version help wallet net block dag dag_poa token token_decl token_update token_decl_sign token_update_sign token_emit token_emit_sign mempool mempool_add chain_ca_pub tx_create tx_create_json tx_cond tx_verify tx_sign tx_history ledger srv_stake stake_lock stake_ext srv_xchange srv_dex net_srv poll esbocs decree find remove exec_cmd policy print_log stats gdb_export gdb_import plugin vpn_client exit"
+    echo "global_db node version help wallet net block dag dag_poa token token_decl token_update token_decl_sign token_update_sign token_emit token_emit_sign mempool mempool_add chain_ca_pub tx_create tx_create_json tx_cond tx_verify tx_sign tx_history ledger srv_stake stake_lock stake_ext srv_xchange srv_dex net_srv poll esbocs decree find remove exec_cmd policy print_log stats gdb_export gdb_import plugin vpn_client vpn_stat srv_datum exit"
 }
 
 _cellframe_node_cli() {
