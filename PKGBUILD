@@ -2,7 +2,7 @@
 
 _pkgname=nirimod
 pkgname=nirimod-git
-pkgver=r23.6dbda78
+pkgver=r66.d871327
 pkgrel=1
 pkgdesc='A visual, interactive configuration interface for the niri Wayland compositor'
 arch=('any')
@@ -10,11 +10,12 @@ url='https://github.com/srinivasr/nirimod'
 license=('MIT')
 
 depends=(
-    'python'
+    'glib2'
     'gtk4'
     'libadwaita'
+    'python'
     'python-gobject'
-    'glib2'
+    'python-cairo'
     'pango'
     'hicolor-icon-theme'
     'sh'
@@ -60,7 +61,7 @@ Name=NiriMod
 GenericName=Compositor Settings
 Comment=GUI Configuration Manager for the Niri Wayland Compositor
 Exec=nirimod
-Icon=preferences-system
+Icon=nirimod
 Terminal=false
 Type=Application
 Categories=Utility;Settings;DesktopSettings;
