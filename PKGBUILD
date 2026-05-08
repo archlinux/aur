@@ -10,30 +10,22 @@ depends=('llvm18-libs' 'gtk3' 'zlib' 'sqlite' 'llvm18' 'clang18' 'lld18')
 provides=('snask')
 conflicts=('snask-git')
 source_x86_64=(
-  "${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/snask-linux-amd64"
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "snask-bin::${url}/releases/download/v${pkgver}/snask-linux-amd64"
+  "snask-src.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums_x86_64=('20a7dac42c7e8f47d53ac889a41c80398b4ae9b979015c2a9389526a9c3262de'
-                   '4c3dd70f091763b19b24ad2da9b048a34b6de47fb00cb7c632070b447c6e2db0')
+sha256sums_x86_64=('162e2418c1411b5ca0b8b962fb7e5f8d0bed90e831144b275da08d443f00b16f'
+                   '9bc1a5216fa804ddf66de7c42108d85c6b10b7963e8b091d898252ecb9fe8b11')
 
 package() {
-  # Instala o binário
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}-x86_64" "${pkgdir}/usr/bin/snask"
+  # Instala o binário renomeado
+  install -Dm755 "${srcdir}/snask-bin" "${pkgdir}/usr/bin/snask"
 
-  # Pasta do código fonte extraído
-  local src_dir="TheSnask-${pkgver}"
+  # Pasta do código fonte extraído (nome do repo no zip)
+  local src_dir="TheSnask-${pkgver/-beta/}"
 
-  # Cria diretórios de biblioteca e src
+  # Cria diretórios
   install -dm755 "${pkgdir}/usr/lib/snask/src"
-  install -dm755 "${pkgdir}/usr/lib/snask/runtime"
-  install -dm755 "${pkgdir}/usr/lib/snask/stdlib"
 
-  # Copia stdlib e runtime do código fonte
+  # Copia fonte
   cp -r "${src_dir}/src/"* "${pkgdir}/usr/lib/snask/src/"
 }
-
-# Adiciona um hook para linkar a pasta esperada pelo snask setup na primeira execução
-# Como não podemos rodar código no post_install facilmente via AUR, 
-# vamos instruir o binário a procurar em /usr/lib/snask/src
-# Mas como o binário está estático, vamos criar um symlink se não existir.
-# Alternativamente, corrigimos o código do snask.

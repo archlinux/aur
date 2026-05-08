@@ -14,9 +14,9 @@ pkgbase = snask
 	depends = lld18
 	provides = snask
 	conflicts = snask-git
-	source_x86_64 = snask-0.4.1-x86_64::https://github.com/rancidavi-dotcom/TheSnask/releases/download/v0.4.1/snask-linux-amd64
-	source_x86_64 = snask-0.4.1.tar.gz::https://github.com/rancidavi-dotcom/TheSnask/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums_x86_64 = 20a7dac42c7e8f47d53ac889a41c80398b4ae9b979015c2a9389526a9c3262de
-	sha256sums_x86_64 = 4c3dd70f091763b19b24ad2da9b048a34b6de47fb00cb7c632070b447c6e2db0
+	source_x86_64 = snask-bin::https://github.com/rancidavi-dotcom/TheSnask/releases/download/v0.4.1/snask-linux-amd64
+	source_x86_64 = snask-src.tar.gz::https://github.com/rancidavi-dotcom/TheSnask/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums_x86_64 = 162e2418c1411b5ca0b8b962fb7e5f8d0bed90e831144b275da08d443f00b16f
+	sha256sums_x86_64 = 9bc1a5216fa804ddf66de7c42108d85c6b10b7963e8b091d898252ecb9fe8b11
 
 pkgname = snask
