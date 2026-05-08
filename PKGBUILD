@@ -6,6 +6,7 @@ pkgdesc="GUI for managing local and remote Neo4j Graph databases"
 arch=('x86_64')
 url=http://neo4j.org/
 license=(custom)
+makedepends=('imagemagick')
 depends=('fuse')
 optdepends=('gnome-keyring: Adds support for storing secrets')
 options=(!strip)
@@ -23,6 +24,17 @@ build() {
     # Adjust .desktop so it will work outside AppImage container
     sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${pkgname}|" "squashfs-root/${pkgname}.desktop" \
         "squashfs-root/${pkgname}.desktop"
+
+    # The AppImage contains only an icon of size 1024x1024, so
+    # we need to generate the other icons for it to show
+    # consistently in the UI.
+    icons_dir="squashfs-root/usr/share/icons/hicolor"
+    src_icon="${icons_dir}/1024x1024/apps/${pkgname}.png"
+
+    for size in 16 32 48 64 128 256 512; do
+      mkdir -p "${icons_dir}/${size}x${size}/apps/"
+      magick "$src_icon" -resize "${size}x${size}" "${icons_dir}/${size}x${size}/apps/${pkgname}.png"
+    done
 
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
