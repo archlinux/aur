@@ -1,0 +1,25 @@
+pkgbase = hyprlang-frozen
+	pkgdesc = The official implementation library for the hypr config language - Frozen For Yggdrasil, Nordix Desktop Environment
+	pkgver = 0.6.7.r0.g0d00dc1
+	pkgrel = 1
+	url = https://github.com/jimmykallhagen/nordix-hyprland-mirrors
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = pixman
+	depends = gcc-libs
+	depends = glibc
+	depends = hyprutils-git
+	provides = hyprlang-frozen
+	provides = hyprlang
+	provides = libhyprlang.so
+	conflicts = hyprlang
+	conflicts = hyprlang-git
+	backup = usr/share/xdg-desktop-portal/hyprland-portals.conf
+	source = hyprlang-frozen::git+https://github.com/jimmykallhagen/nordix-hyprland-mirrors
+	sha256sums = SKIP
+
+pkgname = hyprlang-frozen
