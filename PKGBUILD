@@ -1,4 +1,5 @@
-# Maintainer: David Birks <david@birks.dev>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: David Birks <david@birks.dev>
 
 _authorname=batrachianai
 _appname=toad
