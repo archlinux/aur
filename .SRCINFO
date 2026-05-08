@@ -1,6 +1,6 @@
 pkgbase = moshpits-bin
 	pkgdesc = moshpits server — SSH and Mosh inspired remote terminal server (pre-compiled binary)
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	install = moshpits.install
@@ -10,11 +10,11 @@ pkgbase = moshpits-bin
 	depends = moshpit-keygen
 	provides = moshpits
 	conflicts = moshpits
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.4.1/dist-mps.tar.gz
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.5.0/dist-mps.tar.gz
 	source = mps.service
-	sha256sums = fa98f3cef6813a00e55569db58bffd029482399cf59cbe85b58aa23b510d6e08
+	sha256sums = 14d0869f905c92cc212e6dedac53386a8a4531e2810f5e73c5876028652f07f9
 	sha256sums = SKIP
-	source_x86_64 = mps-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.4.1/mps-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 4913d7d58d37bcd2a6764b00cac3440b51832d1842f62c0bc9449a0746d40e3d
+	source_x86_64 = mps-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.5.0/mps-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 7eeb2510ed8ffa9896e280b0c02d322588ce3d8914dfd1cc732d65dc953f9ac5
 
 pkgname = moshpits-bin
