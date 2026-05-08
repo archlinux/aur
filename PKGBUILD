@@ -2,7 +2,7 @@
 
 pkgname=batmon
 pkgdesc="Interactive batteries viewer"
-pkgver=0.0.1
+pkgver=0.2.0
 pkgrel=0
 arch=('x86_64')
 url="https://github.com/6543/batmon"
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/6543/batmon/archive/v${pkgver}.tar.gz")
 sha512sums=(
-  '2c365a90a6b949cb74a0e3e8e5eff5f77db36b93e4008226703daf9b1a55737ab62f7214d8a908a6966ce3daeb2b2d7bc2e30d11f66380111ec741576f49a69e'
+  'a154c7b1da7ec48b6a93d16cc12ef45ac80dc8e78bfb974933ab05246c5f5d9272114f5cede397877ffee985632b832948c27b044f7a8c8d7582190ae9ebc4bf'
 )
 
 build() {
