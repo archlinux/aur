@@ -1,10 +1,11 @@
 pkgbase = gvfs-googledrive
 	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - all backends
 	pkgver = 1.60.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.gnome.org/fluhus/gvfs
 	install = gvfs-nfs.install
 	arch = x86_64
+	arch = aarch64
 	groups = gnome
 	license = LGPL-2.0-only
 	makedepends = dbus
