@@ -1,0 +1,17 @@
+pkgbase = amass-git
+	pkgdesc = In-depth Attack Surface Mapping and Asset Discovery (VCS version)
+	pkgver = 5.1.1.r0.g79299dc
+	pkgrel = 1
+	url = https://github.com/owasp-amass/amass
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = amass
+	conflicts = amass
+	source = git+https://github.com/owasp-amass/amass.git
+	sha512sums = SKIP
+
+pkgname = amass-git
