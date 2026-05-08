@@ -3,7 +3,7 @@
 # Maintainer: Solomon <shlomochoina@gmail.com>
 pkgname=openclaw-bun-git
 _pkgver=2026.4.19.beta.2
-pkgver=2026.4.19.beta.2.r9653.g6ce1c98b618
+pkgver=2026.4.19.beta.2.r10690.gf49beec09aa
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices (Bun build, highly optimized)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ sha256sums=('SKIP'
             '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
             '44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            'd11e563b21cd164b333393a898e6918bccd5b8915a51e6ccdd952df858665976'
+            '3df0ba27df4db0c270370cccfaf417fe96f7dbff0d96d165dee34741605e751b'
             '7f7dc1a6d0c96c018de6c73b7594dc15c268c4152a0ade8001406055962c89a7'
             'cdaf01acb58af62348c6f669f8b77675f66428a8ae41b4b4e371739492fb05c6'
             '76ed2119685ad98af2823f6c0d96e258b93af689c5bee0b572fd9f82d032093a'

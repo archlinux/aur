@@ -44,7 +44,9 @@ node -e '
         "https-proxy-agent": "9.0.0",
         "undici": "8.1.0",
         "jsdom": "29.1.1",
-        "zod": "4.4.1"
+        "zod": "4.4.1",
+        "unrun": "0.2.37",
+        "tsdown": "0.21.10"
     };
 
     pkg.dependencies = pkg.dependencies || {};
@@ -61,6 +63,30 @@ node -e '
     if (pkg.pnpm && pkg.pnpm.overrides) {
         pkg.resolutions = Object.assign({}, pkg.resolutions || {}, pkg.pnpm.overrides);
         pkg.overrides = Object.assign({}, pkg.overrides || {}, pkg.pnpm.overrides);
+    }
+
+    // --- TRUSTED DEPENDENCIES ---
+    const trusted = [
+        "tsdown",
+        "unrun",
+        "@openclaw/fs-safe",
+        "@discordjs/opus",
+        "@google/genai",
+        "@lydell/node-pty",
+        "@matrix-org/matrix-sdk-crypto-nodejs",
+        "@tloncorp/api",
+        "@tloncorp/tlon-skill",
+        "@whiskeysockets/baileys",
+        "@whiskeysockets/libsignal-node",
+        "authenticate-pam",
+        "esbuild",
+        "node-llama-cpp",
+        "protobufjs",
+        "sharp"
+    ];
+    pkg.trustedDependencies = trusted; // Bun uses trustedDependencies or onlyBuiltDependencies
+    if (pkg.pnpm) {
+        pkg.pnpm.onlyBuiltDependencies = trusted;
     }
 
     fs.writeFileSync("package.json", JSON.stringify(pkg, null, 4));
@@ -90,9 +116,9 @@ node -e '
             content = content.replace("import { resolveUserPath } from \"../utils.js\";", "import { CONFIG_DIR, resolveUserPath } from \"../utils.js\";");
             
             const anchor = "seen,\n        realpathCache,\n      });";
-            const callCode = "\n      discoverNpmPlugins({ dir: CONFIG_DIR, origin: \"global\", ownershipUid: params.ownershipUid, candidates: result.candidates, diagnostics: result.diagnostics, seen, realpathCache });";
+            const callCode = "\n      discoverNpmPlugins({ dir: CONFIG_DIR, origin: \"global\", env: params.env ?? process.env, ownershipUid: params.ownershipUid, candidates: result.candidates, diagnostics: result.diagnostics, seen, realpathCache });";
             content = content.replace(anchor, anchor + callCode);
-            content += "\nfunction discoverNpmPlugins(params: { dir: string; origin: PluginOrigin; ownershipUid?: number | null; workspaceDir?: string; candidates: PluginCandidate[]; diagnostics: PluginDiagnostic[]; seen: Set<string>; realpathCache: Map<string, string>; }) {\n  const nodeModules = path.join(params.dir, \"node_modules\");\n  if (!fs.existsSync(nodeModules)) return;\n  try {\n    const entries = fs.readdirSync(nodeModules, { withFileTypes: true });\n    for (const entry of entries) {\n      if (!entry.isDirectory()) continue;\n      if (entry.name.startsWith(\"@\")) {\n        const scopeDir = path.join(nodeModules, entry.name);\n        const scopeEntries = fs.readdirSync(scopeDir, { withFileTypes: true });\n        for (const scopeEntry of scopeEntries) {\n          if (!scopeEntry.isDirectory()) continue;\n          discoverInDirectory({ dir: path.join(scopeDir, scopeEntry.name), origin: params.origin, ownershipUid: params.ownershipUid, workspaceDir: params.workspaceDir, candidates: params.candidates, diagnostics: params.diagnostics, seen: params.seen, realpathCache: params.realpathCache });\n        }\n      } else if (!entry.name.startsWith(\".\")) {\n        discoverInDirectory({ dir: path.join(nodeModules, entry.name), origin: params.origin, ownershipUid: params.ownershipUid, workspaceDir: params.workspaceDir, candidates: params.candidates, diagnostics: params.diagnostics, seen: params.seen, realpathCache: params.realpathCache });\n      }\n    }\n  } catch {}\n}";
+            content += "\nfunction discoverNpmPlugins(params: { dir: string; origin: PluginOrigin; env: NodeJS.ProcessEnv; ownershipUid?: number | null; workspaceDir?: string; candidates: PluginCandidate[]; diagnostics: PluginDiagnostic[]; seen: Set<string>; realpathCache: Map<string, string>; }) {\n  const nodeModules = path.join(params.dir, \"node_modules\");\n  if (!fs.existsSync(nodeModules)) return;\n  try {\n    const entries = fs.readdirSync(nodeModules, { withFileTypes: true });\n    for (const entry of entries) {\n      if (!entry.isDirectory()) continue;\n      if (entry.name.startsWith(\"@\")) {\n        const scopeDir = path.join(nodeModules, entry.name);\n        const scopeEntries = fs.readdirSync(scopeDir, { withFileTypes: true });\n        for (const scopeEntry of scopeEntries) {\n          if (!scopeEntry.isDirectory()) continue;\n          discoverInDirectory({ dir: path.join(scopeDir, scopeEntry.name), origin: params.origin, env: params.env, ownershipUid: params.ownershipUid, workspaceDir: params.workspaceDir, candidates: params.candidates, diagnostics: params.diagnostics, seen: params.seen, realpathCache: params.realpathCache });\n        }\n      } else if (!entry.name.startsWith(\".\")) {\n        discoverInDirectory({ dir: path.join(nodeModules, entry.name), origin: params.origin, env: params.env, ownershipUid: params.ownershipUid, workspaceDir: params.workspaceDir, candidates: params.candidates, diagnostics: params.diagnostics, seen: params.seen, realpathCache: params.realpathCache });\n      }\n    }\n  } catch {}\n}";
             fs.writeFileSync(discoveryPath, content);
         }
     }
