@@ -1,0 +1,8 @@
+*.pkg.tar.*
+*.AppImage
+*.tar.gz
+LICENSE-*
+src/
+pkg/
+.npm-cache/
+squashfs-root/
