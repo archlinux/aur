@@ -1,0 +1,27 @@
+pkgbase = signalflowgrapher-git
+	pkgdesc = Signal-flow graph editor and analysis tool
+	pkgver = V2.0.0.6.g4fcdfdc
+	pkgrel = 1
+	url = https://github.com/hanspi42/signalflowgrapher
+	install = signalflowgrapher-git.install
+	arch = any
+	license = Artistic-2.0
+	makedepends = git
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = python
+	depends = python-dependency-injector
+	depends = python-jsonschema
+	depends = pyside6
+	depends = python-sympy
+	depends = shared-mime-info
+	provides = signalflowgrapher
+	conflicts = signalflowgrapher
+	source = signalflowgrapher-git::git+https://github.com/hanspi42/signalflowgrapher.git
+	source = signalflowgrapher.desktop
+	source = signalflowgrapher.xml
+	sha256sums = SKIP
+	sha256sums = ed291caf76783dddda70f36e990242b967f213c6dc584243b0864cfe0ecd3358
+	sha256sums = 3093764da2688c4d2c2b8ba84a6e98f7080a883b46c2aa9b5730b06d9adbb9b2
+
+pkgname = signalflowgrapher-git

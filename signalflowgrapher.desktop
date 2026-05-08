@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=SignalFlowGrapher
+Comment=Signal-flow graph editor and analysis tool
+Exec=signalflowgrapher %f
+TryExec=signalflowgrapher
+Icon=signalflowgrapher
+Terminal=false
+Categories=Education;Science;Graphics;
+MimeType=text/x-sfg;
+StartupNotify=false
