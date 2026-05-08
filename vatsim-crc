@@ -3,7 +3,6 @@
 winepfxSaved=$WINEPREFIX
 pwdSaved=$PWD
 progName="vatsim-crc"
-export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
 savedFiles=$HOME/.$progName
 
 CURRVER=$(LC_ALL=C pacman -Qi vatsim-crc | grep Version | awk '{print $3}')
@@ -21,34 +20,80 @@ if [[ $1 == "clean" ]] ; then
   shift
 fi
 
+export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
 mkdir -p $WINEPREFIX
 
-if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
-  rm "$WINEPREFIX/.installed*"
-  wine wineboot -ru
-  notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
-  winetricks -q arial tahoma
-  if [[ $1 == "msfonts" ]] ; then
-    winetricks -q courier
-  else
-    winetricks -q /usr/share/vatsim-crc/nicfonts.verb
+## probe if umu-launcher
+hash umu-run
+UMU_AVAIL=$?
+
+if [ $UMU_AVAIL -eq 0 ] ; then
+  # Proton version
+  export UMU_NO_RUNTIME=1
+  export GAMEID=vatsim-crc
+  if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
+    rm "$WINEPREFIX/.installed*"
+
+    if [[ ! -v PROTONPATH ]]; then
+      if [ ! -d "/usr/share/steam/compatibilitytools.d/proton-ge-custom" ] ; then
+        export PROTONPATH="/usr/share/steam/compatibilitytools.d/proton-ge-custom"
+      fi
+    fi
+
+    if [[ -v PROTONPATH ]]; then
+      declare -p PROTONPATH > "$WINEPREFIX/.installed.$CURRVER"
+    fi
+
+    notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
+    umu-run winetricks arial tahoma
+    if [[ $1 == "msfonts" ]] ; then
+      umu-run winetricks courier
+    else
+      umu-run winetricks /usr/share/vatsim-crc/nicfonts.verb
+    fi
+    umu-run winetricks /usr/share/vatsim-crc/segmdl2.verb 
+    umu-run winetricks webview2
+    umu-run reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
+    ln -svf $savedFiles $WINEPREFIX/drive_c/$progName
+    for i in $(ls /usr/share/$progName); do
+      ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
+    done
+    if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
+      umu-run "/opt/rpc-bridge/bridge.exe" --install
+    fi
+    touch "$WINEPREFIX/.installed.$CURRVER"
+    umu-run wineboot -e
   fi
-  winetricks -q /usr/share/vatsim-crc/segmdl2.verb /usr/share/vatsim-crc/webview2.verb
-  winetricks -q fontsmooth=rgb
-  wine reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
-  ln -svf $savedFiles $WINEPREFIX/drive_c/$progName
-  for i in $(ls /usr/share/$progName); do
-    ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
-  done
-  if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
-    wine "/opt/rpc-bridge/bridge.exe" --install
+
+  source "$WINEPREFIX/.installed.$CURRVER" # Load PROTONPATH
+  cd $savedFiles && umu-run "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
+else
+  # Wine version
+  if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
+    rm "$WINEPREFIX/.installed*"
+    wine wineboot -ru
+    notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
+    winetricks -q arial tahoma
+    if [[ $1 == "msfonts" ]] ; then
+      winetricks -q courier
+    else
+      winetricks -q /usr/share/vatsim-crc/nicfonts.verb
+    fi
+    winetricks -q /usr/share/vatsim-crc/segmdl2.verb /usr/share/vatsim-crc/webview2.verb
+    winetricks -q fontsmooth=rgb
+    wine reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
+    ln -svf $savedFiles $WINEPREFIX/drive_c/$progName
+    for i in $(ls /usr/share/$progName); do
+      ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
+    done
+    if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
+      wine "/opt/rpc-bridge/bridge.exe" --install
+    fi
+    touch "$WINEPREFIX/.installed.$CURRVER"
+    wine wineboot -e
   fi
-  touch "$WINEPREFIX/.installed.$CURRVER"
-  wine wineboot -e
+
+  cd $savedFiles && WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
 fi
 
-cd $savedFiles && WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
-
-unset WINEPREFIX
-export WINEPREFIX=$winepfxSaved
 cd $pwdSaved

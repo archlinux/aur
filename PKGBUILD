@@ -7,14 +7,14 @@
 
 pkgname=vatsim-crc
 pkgver=2.16.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Consolidated Radar Client (CRC), a controller application connects to the VATSIM network through vNAS."
 arch=("x86_64")
 url="https://vnas.vatsim.net/crc"
 license=('custom')
 makedepends=('p7zip' 'jq')
 depends=('wine' 'wine-mono' 'winetricks')
-optdepends=('trackaudio: Audio For VATSIM support' 'rpc-bridge: Discord Rich Presence support' 'ttf-cascadia-code' 'noto-fonts-cjk')
+optdepends=('rpc-bridge: Discord Rich Presence support' 'ttf-cascadia-code' 'noto-fonts-cjk' 'umu-launcher' 'proton-ge-custom-bin')
 install=$pkgname.install
 options=(!debug)
 
