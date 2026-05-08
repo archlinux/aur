@@ -1,32 +1,44 @@
-# Maintainer: zeroclaw-bot <zeroclaw-bot@users.noreply.github.com>
+# Maintainer: zeroclaw-labs <bot@zeroclaw.dev>
 pkgname=zeroclawlabs
-pkgver=0.6.9
+_reponame=zeroclaw
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant."
 arch=('x86_64' 'aarch64')
 url="https://github.com/zeroclaw-labs/zeroclaw"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'openssl')
-makedepends=('rust' 'cargo' 'nodejs' 'npm')
+makedepends=('cargo' 'git' 'nodejs' 'npm')
+provides=('zeroclaw')
+conflicts=('zeroclaw')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('08e3d503f6e6903ac2c52f46424ae03b279c17875a7f5dc0a06093890bd7fe7b')
+sha256sums=('be2a66d84eebf28a80f788f38d55dde60833027bee9c092a6fe0ab080e381365')
 
 prepare() {
-  cd "zeroclaw-${pkgver}"
+  cd "${_reponame}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "zeroclaw-${pkgver}"
+  cd "${_reponame}-${pkgver}"
+
+  # Build web dashboard (served from filesystem at runtime)
+  cd web && npm ci && npm run build && cd ..
+
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --features channel-matrix,channel-lark
+  cargo build --frozen --release --profile dist --features channel-matrix,channel-lark
 }
 
 package() {
-  cd "zeroclaw-${pkgver}"
-  install -Dm755 "target/release/zeroclaw" "${pkgdir}/usr/bin/zeroclaw"
-  install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
-  install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+  cd "${_reponame}-${pkgver}"
+  install -Dm0755 -t "${pkgdir}/usr/bin/" "target/dist/zeroclaw"
+
+  # Install web dashboard assets (served from filesystem at runtime)
+  install -dm0755 "${pkgdir}/usr/share/${pkgname}/web/dist"
+  cp -r web/dist/* "${pkgdir}/usr/share/${pkgname}/web/dist/"
+
+  install -Dm0644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+  install -Dm0644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
