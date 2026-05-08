@@ -2,7 +2,7 @@
 
 pkgname="librespeed-go"
 pkgver=1.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Go backend for LibreSpeed"
 url="https://github.com/librespeed/speedtest-go"
 license=("LGPL3")
@@ -53,7 +53,7 @@ package(){
  install -m 644 "database/mysql/telemetry_mysql.sql" "$pkgdir/usr/share/librespeed"
  install -m 644 "database/postgresql/telemetry_postgresql.sql" "$pkgdir/usr/share/librespeed"
  # html pages
- install -D -m 644 "web/assets/example-singleServer-full.html" "web/assets/index.html"
+ install -D -m 644 "web/assets/example-singleServer-progressBar.html" "web/assets/index.html"
  install -D -m 644 "$srcdir/librespeed.ico" "web/assets/favicon.ico"
  cp -r "web/assets" "$pkgdir/usr/share/librespeed"
  # systemd files
