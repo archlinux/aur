@@ -1,8 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=canboatjs
-_tagname=3.18.0-beta.1
-pkgver=${_tagname//-/+}
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="Native javascript NMEA 2000 decoder and encoder"
 arch=(any)
@@ -16,12 +15,12 @@ makedepends=(npm)
 backup=()
 options=()
 install=
-source=("${pkgname}-${_tagname}.tar.gz::${url}/archive/refs/tags/v${_tagname}.tar.gz")
-sha256sums=('91f8dcd933fd9f3fe4293b22b0c66ee6b0b4df6fbd1e2dde3b7f1bc26b58ce8b')
-noextract=("${pkgname}-${_tagname}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e916465df733598e8269ebfd7ed9ed2b7f25e5042a58af62d5122b3b166c1598')
+noextract=("${pkgname}-${pkgver}.tar.gz")
 
 package() {
-    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${_tagname}.tar.gz"
+    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/cli/issues/1103 for details.
