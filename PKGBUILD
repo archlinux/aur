@@ -1,9 +1,9 @@
 # Maintainer: dougefresh <dchimento@gmail.com>
 pkgname='pi-coding-agent-git'
-pkgver=0.72.0.r2.g3e0ee69b5
+pkgver=0.74.0.r5.gdacb7eaa9
 pkgrel=1
 pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management"
-url="https://github.com/badlogic/pi-mono"
+url="https://github.com/earendil-works/pi"
 _pkgname=pi-coding-agent
 arch=('x86_64')
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=('git' 'npm')
 depends=('nodejs')
 pkgbase=pi-coding-agent-git
 source=(
-    "${_pkgname}::git+https://github.com/badlogic/pi-mono"
+    "${_pkgname}::git+https://github.com/earendil-works/pi"
     'pi-wrapper'
     'APPEND_SYSTEM.md.example'
 )
