@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast service fingerprinting CLI for 170+ protocols (TCP/UDP/SCTP)"
 
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('64571fe0bf9ce890bf77fffa0b28995fd18ebedccf6fa0cf61baed2894d0e7af'
+sha256sums=('3183fd299d107e6d30b831b839040e8e6290c38ff6f8e67814fbc53f1141d9cb'
             '43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1')
-sha256sums_x86_64=('8636df1c49d0f528f31d89ba9f13a74456a98c2d77910eba3f772e42facd199d')
-sha256sums_aarch64=('a36e561d53ed33faef3ac71a00fb0b2e173ba05c2909fea507847b61cf868a6a')
+sha256sums_x86_64=('0d96baca7a9f94b32a01add31c874e3fa5856049d55d4a18ab55c97c3a8fd091')
+sha256sums_aarch64=('40daf76c8ae851c94df40db322099e8591ffef6a86ba6bafdf2af6c90db7deb9')
 
 
 package() {
