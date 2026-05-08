@@ -1,0 +1,12 @@
+minotaur
+pkg
+src
+*~
+*.md
+*.old
+*.pkg.tar.zst
+*.sh
+*.template
+LICENSE-*
+checksums.txt
+namcap.txt
