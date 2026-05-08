@@ -1,4 +1,15 @@
 post_install() {
+    python3 - << 'EOF'
+import glob
+for path in glob.glob('/usr/lib/python3*/site-packages/pyfakewebcam/pyfakewebcam.py'):
+    with open(path, 'r') as f:
+        s = f.read()
+    if 'tostring()' in s:
+        s = s.replace('self._buffer.tostring()', 'self._buffer.tobytes()')
+        with open(path, 'w') as f:
+            f.write(s)
+        print(f'pyfakewebcam: tobytes() fix applied to {path}')
+EOF
     echo ""
     echo "  hls-livecam-server installed."
     echo ""
@@ -12,6 +23,17 @@ post_install() {
 }
 
 post_upgrade() {
+    python3 - << 'EOF'
+import glob
+for path in glob.glob('/usr/lib/python3*/site-packages/pyfakewebcam/pyfakewebcam.py'):
+    with open(path, 'r') as f:
+        s = f.read()
+    if 'tostring()' in s:
+        s = s.replace('self._buffer.tostring()', 'self._buffer.tobytes()')
+        with open(path, 'w') as f:
+            f.write(s)
+        print(f'pyfakewebcam: tobytes() fix applied to {path}')
+EOF
     echo ""
     echo "  hls-livecam-server upgraded."
     echo "  If stream behavior changes, run: sudo hls-livecam-setup"
