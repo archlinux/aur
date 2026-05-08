@@ -2,11 +2,11 @@
 pkgname=python-hyprland-state
 _module=${pkgname#python-}
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Live state interface for Hyprland — options, animations, monitors, binds, and devices"
 url="https://github.com/BlueManCZ/hyprland-state"
 depends=('python' 'hyprland')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
