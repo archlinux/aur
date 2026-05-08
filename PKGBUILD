@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='1.15.1'
+_upstreamver='1.16.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='nothing-less'
@@ -24,7 +24,7 @@ depends=('python' 'python-textual' 'python-packaging' 'python-rich' 'python-pype
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('11c0bd216e1a313f25f624b9b9a7ed82eace609c495ae5509ced6c423ac4736c')
+sha256sums=('f9de6bd5782854caaf545b910522820ae470a2512717eca939ddf6ae70a781f3')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit

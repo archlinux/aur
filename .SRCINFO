@@ -1,6 +1,6 @@
 pkgbase = nothing-less
 	pkgdesc = A TUI paging application with enhanced support for tabular data and real-time streaming
-	pkgver = 1.15.1
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://github.com/mpryor/nothing-less
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = nothing-less
 	depends = python-rich
 	depends = python-pyperclip
 	provides = nless
-	source = nothing-less-1.15.1.tar.gz::https://github.com/mpryor/nothing-less/archive/refs/tags/1.15.1.tar.gz
-	sha256sums = 11c0bd216e1a313f25f624b9b9a7ed82eace609c495ae5509ced6c423ac4736c
+	source = nothing-less-1.16.1.tar.gz::https://github.com/mpryor/nothing-less/archive/refs/tags/1.16.1.tar.gz
+	sha256sums = f9de6bd5782854caaf545b910522820ae470a2512717eca939ddf6ae70a781f3
 
 pkgname = nothing-less
