@@ -2,7 +2,7 @@
 pkgname=ersatztv-bin
 _pkgname=ersatztv
 pkgnamecaps=ErsatzTV
-pkgver=26.3.0
+pkgver=26.5.1
 pkgrel=1
 pkgdesc="Software for configuring and streaming custom live channels using your media library"
 url="https://ersatztv.org/"
@@ -12,13 +12,13 @@ provides=('ersatztv')
 optdepends=('ffmpeg')
 options=('!strip')
 source=("$_pkgname.service" "$_pkgname.sysusers" "$_pkgname.tmpfiles")
-source_x86_64=("https://github.com/$pkgnamecaps/$pkgnamecaps/releases/download/v$pkgver/$pkgnamecaps-v$pkgver-linux-x64.tar.gz")
-source_aarch64=("https://github.com/$pkgnamecaps/$pkgnamecaps/releases/download/v$pkgver/$pkgnamecaps-v$pkgver-linux-arm64.tar.gz")
+source_x86_64=("https://github.com/$pkgnamecaps/legacy/releases/download/v$pkgver/$pkgnamecaps-Legacy-v$pkgver-linux-x64.tar.gz")
+source_aarch64=("https://github.com/$pkgnamecaps/legacy/releases/download/v$pkgver/$pkgnamecaps-Legacy-v$pkgver-linux-arm64.tar.gz")
 sha256sums=('27b89ea376c06600ae7871f4e9db6cafb446e38e59334bdf31983bfa9f8bc550'
             'b8fc55ba6da728a51e2d0ce5add05e8a9500a0e7626c55b042d6b55763bc1ad5'
             '95bb7e34c04af1288af7765940fd73c6807bba3fd276a9cb32f243b029d20d66')
-sha256sums_x86_64=('7fb93818ba8deb1134ac17a8d022e4d7baaac446817795562c0af7df99d813b3')
-sha256sums_aarch64=('654b01559138839ea659cdefb6c28d5de0f98fe43cc25218e9b1f2b9ab370a5c')
+sha256sums_x86_64=('8953c6285fe9eeaad959c0634d1fcaebc51a03b4c2f6eb5cd2b7c5ee63f05f35')
+sha256sums_aarch64=('bd583ab774eefe44b4efe7eb249dd855bbd90bea709571920fd81be75e523ab6')
 
 package() {
 	cd "$srcdir"
