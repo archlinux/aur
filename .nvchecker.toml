@@ -1,0 +1,4 @@
+[thokr]
+source = "git"
+git = "https://github.com/jrnxf/thokr.git"
+prefix = "v"
