@@ -1,12 +1,12 @@
 pkgbase = args
 	pkgdesc = Simple header-only C++ argument parser library
-	pkgver = 6.4.15
+	pkgver = 6.4.16
 	pkgrel = 1
 	url = https://github.com/Taywee/args
 	arch = any
 	license = MIT
 	makedepends = cmake
-	source = args-6.4.15.tar.gz::https://github.com/Taywee/args/archive/refs/tags/6.4.15.tar.gz
-	sha256sums = 02652a69953cd91d8c8accef88e8bdf54e909850d1a6f6f47924d0cc6fe974f7
+	source = args-6.4.16.tar.gz::https://github.com/Taywee/args/archive/refs/tags/6.4.16.tar.gz
+	sha256sums = 13fd2c21c4941672f02d67ac666fe6507fe2c2e0f17f95a0c2f17fddb4023000
 
 pkgname = args
