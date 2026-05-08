@@ -1,0 +1,27 @@
+pkgbase = voxn
+	pkgdesc = Local-first voice and text note-taking suite
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/okrinoggen33/voxn
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-typer
+	depends = sox
+	depends = fzf
+	depends = sqlite
+	optdepends = python-faster-whisper: local speech transcription backend
+	optdepends = ollama: default local LLM provider
+	optdepends = wl-clipboard: copy notes from voxn browse
+	optdepends = libnotify: desktop notifications
+	optdepends = yt-dlp: ingest video URLs
+	optdepends = poppler: ingest PDF files
+	conflicts = voxn-git
+	source = https://files.pythonhosted.org/packages/source/v/voxn/voxn-0.3.0.tar.gz
+	sha256sums = 7ae4a587d5ff24d869ad81815f456c8ec2147c578cf6d8009ca7557ad9d86148
+
+pkgname = voxn
