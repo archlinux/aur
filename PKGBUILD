@@ -8,7 +8,7 @@
 
 _appname='tor-browser'
 pkgname="${_appname}-alpha-bin"
-pkgver='16.0a5'
+pkgver='16.0a6'
 pkgrel=1
 pkgdesc='Alpha Version of Tor Browser'
 url='https://www.torproject.org/projects/torbrowser.html'
@@ -51,9 +51,9 @@ source=("${pkgname}.svg"
 
 sha256sums=('0f05dfe54e576f45e036b3f82e079b5e87f32e3bdbbf3b31a82a5746a9277ed4'
             '1dac790ea6437642d06d5555dd636c286ab2fec3dc524b8bf08ad0f7fc2b7d3b'
-            '59227d06587417932a6865c154e16627da760436ff38ab6210d4003e40ea4ed6'
+            'db9f4e5ffaaf73823b9666a47becab03d502d1659d1a584d3b75196e5dd1fc46'
             '1b77a9339fc8d0d8da1b0879e347ccb3909ae7b8515c9c4b73ca0cc582ba289e'
-            'f880fb3274943dddb3b3a3e5e815e048b0b4f04f0c71f6ca2ae9d2d82c32a894'
+            '2fa3338d2948f6dcf06dec80b50811c51f747fab78e72e411a6cc268bfaf6f02'
             'SKIP')
 
 noextract=("${_appname}-${_arch}-${pkgver}.tar.xz")

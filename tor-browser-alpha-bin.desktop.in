@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=@PACKAGE_VERSION@
+Version=1.0
 Type=Application
 Name=Tor Browser Alpha
 Exec=tor-browser %u
