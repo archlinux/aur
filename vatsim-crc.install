@@ -7,7 +7,7 @@ post_install() {
   printf "# This package automatically detects umu-run and   \n"
   printf "# proton-ge-custom-bin. You may specify custom     \n"
   printf "# PROTONPATH on first run of each upgrade and it   \n"
-  printf "# will be saved for future use." 
+  printf "# will be saved for future use.\n" 
   printf "#--------------------------------------------------\n\n"
 }
 
