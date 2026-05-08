@@ -1,6 +1,6 @@
 pkgbase = omni-code-bridge-bin
 	pkgdesc = Rust bridge for Omni Code — connects mobile clients to local coding agents
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/omni-stream-ai/omni-code-bridge
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = omni-code-bridge-bin
 	provides = omni-code-bridge
 	conflicts = omni-code-bridge
 	source = omni-code-bridge.service
-	source = LICENSE-0.1.8::https://raw.githubusercontent.com/omni-stream-ai/omni-code-bridge/v0.1.8/LICENSE
+	source = LICENSE-0.1.9::https://raw.githubusercontent.com/omni-stream-ai/omni-code-bridge/v0.1.9/LICENSE
 	sha256sums = SKIP
 	sha256sums = ed59c1da82265d3d408c7c47ebdfd1af041ab847e68692387189487dc60a9713
-	source_x86_64 = omni-code-bridge-0.1.8-linux-x64.tar.gz::https://github.com/omni-stream-ai/omni-code-bridge/releases/download/v0.1.8/omni-code-bridge-linux-x64.tar.gz
-	sha256sums_x86_64 = 705a154745aedc32af81dad1d6de0d460a45bd9274998022fb09dcb47d4f62b7
-	source_aarch64 = omni-code-bridge-0.1.8-linux-arm64.tar.gz::https://github.com/omni-stream-ai/omni-code-bridge/releases/download/v0.1.8/omni-code-bridge-linux-arm64.tar.gz
-	sha256sums_aarch64 = 55dad39ee653b905f91c206787a602f3ed1ee3cdb5eede1a0025447849f50ed8
+	source_x86_64 = omni-code-bridge-0.1.9-linux-x64.tar.gz::https://github.com/omni-stream-ai/omni-code-bridge/releases/download/v0.1.9/omni-code-bridge-linux-x64.tar.gz
+	sha256sums_x86_64 = 7ccce735e0edabf151ea1826b3f8f2aa98626226f7e6b8fd9ef9521df9be30ff
+	source_aarch64 = omni-code-bridge-0.1.9-linux-arm64.tar.gz::https://github.com/omni-stream-ai/omni-code-bridge/releases/download/v0.1.9/omni-code-bridge-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6c6cfd0c0b8b6f4a41b6de53f75d6d28e99f3f18e065b3ff303aa15f163dfa9c
 
 pkgname = omni-code-bridge-bin
