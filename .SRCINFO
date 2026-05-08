@@ -13,7 +13,6 @@ pkgbase = zerodds
 	makedepends = openssl
 	depends = glibc
 	depends = gcc-libs
-	optdepends = clang: required for some bridge integration tests
 	options = !lto
 	source = zerodds-1.0.0_rc1.tar.gz::https://github.com/zero-objects/zero-dds/archive/refs/tags/v1.0.0-rc.1.tar.gz
 	sha256sums = SKIP
