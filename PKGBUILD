@@ -1,18 +1,23 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=1.11.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
 url="https://github.com/Plan-B-Development/control-ofc-gui"
 license=('MIT')
+# python-colorama: required transitive runtime dep — pyqtgraph imports
+# `colorama.win32`/`colorama.winterm` unconditionally at module load
+# (the platform check happens after the import). Arch's
+# `python-pyqtgraph` package omits the dep upstream; declaring it here
+# is load-bearing on clean systems. See DEC-103. Do not remove.
 depends=('control-ofc-daemon>=1.6.4' 'python' 'pyside6' 'python-httpx'
-         'python-pyqtgraph' 'python-numpy'
+         'python-pyqtgraph' 'python-numpy' 'python-colorama'
          'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cfbf41cb47f6c7e87ef3178692af248b3733deffb0b85e25b302d53023166701')
+sha256sums=('2e551c09ad3b1b9143efa7c4bb049a5c1c39ee59007e96aab9fc0e3d5b3bf253')
 
 build() {
     cd "$pkgname-$pkgver"
