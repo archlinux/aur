@@ -1,6 +1,6 @@
 pkgbase = wordfence-cli
 	pkgdesc = A modern and fast real-time MIDI player written in Rust.
-	pkgver = 5.0.3
+	pkgver = 5.0.4
 	pkgrel = 1
 	url = https://github.com/wordfence/wordfence-cli
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = wordfence-cli
 	depends = python-packaging
 	depends = python-requests
 	depends = python-pymysql
-	source = wordfence-cli-5.0.3.tar.gz::https://github.com/wordfence/wordfence-cli/archive/refs/tags/v5.0.3.tar.gz
-	b2sums = aec60dd035e6a354d85585fcf6acb0b4dd68c05bc694ca72a40bd945ce0a77396c7eefc5d9d4970279faa0992327bc6b6d1d66f6d164357a441eed3de16cbd5a
+	source = wordfence-cli-5.0.4.tar.gz::https://github.com/wordfence/wordfence-cli/archive/refs/tags/v5.0.4.tar.gz
+	b2sums = 903177ea0fb7b11c0b308538aef8765abb8fe24352633e9d83e8743c7dad7ec4a656ac9c95f278ed33cc0ec8071aeefb00ca1d46a936fc6666a63a6a84c56ef1
 
 pkgname = wordfence-cli
