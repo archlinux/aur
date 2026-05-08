@@ -39,8 +39,10 @@ build() {
 
 # check() {
 # }
-#
+
 package() {
-	cp "$pkgname-$pkgver/target/release/docs-parse" "$pkgdir/docs-parse"
-	cp "$pkgname-$pkgver/docs.sh" "$pkgdir/docs"
+	mkdir "$pkgdir/usr"
+	mkdir "$pkgdir/usr/bin/"
+	cp "$pkgname-$pkgver/target/release/docs-parse" "$pkgdir/usr/bin/docs-parse"
+	cp "$pkgname-$pkgver/docs.sh" "$pkgdir/usr/bin/docs"
 }
