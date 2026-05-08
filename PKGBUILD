@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=karakeep
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
@@ -10,11 +10,11 @@ license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
 replaces=("hoarder")
 depends=("chromium" "graphicsmagick" "ghostscript" "meilisearch" "monolith" "nodejs")
-makedepends=("git" "jq" "nodejs" "pnpm" "python")
+makedepends=("jq" "nodejs" "pnpm" "python")
 optdepends=("${pkgname}-cli: ${pkgname} cli tool"
             "ollama: for automatic tagging"
             "yt-dlp: for downloading video")
-source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.env"
         "${pkgname}.sysusers"
         "${pkgname}.target"
@@ -22,14 +22,14 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('00f930ae6665773da5ace735054e15dcef9481eb697b6cea7287fb53a218d090'
+sha256sums=('4de0ac900688377746278261fd49cb2e4a90b2c864b1010968a57ef9f7aa90c0'
             'ce0ce4b582f5f8904b875475262ad47edb5f398517add9e6901bb5f065742d7d'
             '0b5193cdca50bf430f3387cd998f8848e1579ecafc8798400595581d961cc399'
             '9c7f0c9bd7864a95269e49d5f27eaecb1714637b5771d748c3437aa5c297d21e'
             '15ec782d5dc557a6aad15140a1b8098438e57012291f2a0f3542686f5eda93ea'
-            'dc4ce21d936b7442e84eb521d8c519e02322808fbbadf23c27aa1bf4994fccf5'
-            'ebb75b25fda53a07cc1965b8e706383aa1c9ea7953b44d49544ffccf761ff744'
-            'd8c1a6caeec190c2e5fe1fd97666f55450cbf61516424ca250a4b4c21608a748')
+            '18454d7ffebd7232f96116988ecd6b8207f3ccb8e8ab61880a1ece702fe53836'
+            '68b1ca56ffdd2403123d0345c8ffe9e3aa038cb64060599fa335ce00289d4321'
+            'ce65c6ce93bdd8f123eda6eed9a7cfe5614483b8a043209b09d0734896b3ec44')
 
 prepare() {
     echo "After upgrading 'nodejs', you need to recompile '${pkgname}'..."
@@ -43,7 +43,7 @@ build() {
     export PUPPETEER_SKIP_DOWNLOAD="true"
 
     # Build
-    cd "${pkgname}"
+    cd "${pkgname}-${pkgver}"
     pnpm install
 
     # Build the db migration script
@@ -72,9 +72,9 @@ build() {
 
     # fix path
     while read file; do
-        sed -i "s|${srcdir}/${pkgname}/workers|/usr/lib/${pkgname}/apps/workers|g" "$file"
-        sed -i "s|${srcdir}/${pkgname}|/usr/lib/${pkgname}|g" "$file"
-    done <<< $(grep -rl "${srcdir}/${pkgname}" .)
+        sed -i "s|${srcdir}/${pkgname}-${pkgver}/workers|/usr/lib/${pkgname}/apps/workers|g" "$file"
+        sed -i "s|${srcdir}/${pkgname}-${pkgver}|/usr/lib/${pkgname}|g" "$file"
+    done <<< $(grep -rl "${srcdir}/${pkgname}-${pkgver}" .)
 }
 
 package() {
@@ -84,7 +84,7 @@ package() {
     install -Dm644 "${pkgname}.tmpfiles"  "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    cd "${pkgname}"
+    cd "${pkgname}-${pkgver}"
     cp -r "apps/web/.next/standalone"     "${pkgdir}/usr/lib/${pkgname}"
     cp -r "db_migrations"                 "${pkgdir}/usr/lib/${pkgname}/db_migrations"
     cp -r "workers"                       "${pkgdir}/usr/lib/${pkgname}/apps/workers"

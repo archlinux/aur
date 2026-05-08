@@ -1,21 +1,21 @@
 [Unit]
-Description = Karakeep Workers
-Wants = network-online.target karakeep-browser.service meilisearch.service ollama.service
-After = network-online.target karakeep-browser.service meilisearch.service ollama.service
+Description=Karakeep Workers
+Wants=network-online.target karakeep-browser.service meilisearch.service ollama.service
+After=network-online.target karakeep-browser.service meilisearch.service ollama.service
 
 [Service]
-User = karakeep
-Restart = on-failure
-EnvironmentFile = -/etc/karakeep/karakeep.env
-Environment = DATA_DIR=/var/lib/karakeep
-WorkingDirectory = /usr/lib/karakeep/apps/workers
-ExecStartPre = /usr/bin/sh -c 'cd /usr/lib/karakeep/db_migrations ; /usr/bin/node index.js'
-ExecStart = /usr/bin/node dist/index.js
-TimeoutStopSec = 5
-SyslogIdentifier = karakeep-workers
-ProtectSystem = yes
-PrivateTmp = yes
-NoNewPrivileges = yes
+User=karakeep
+Restart=on-failure
+EnvironmentFile=-/etc/karakeep/karakeep.env
+Environment=DATA_DIR=/var/lib/karakeep
+WorkingDirectory=/usr/lib/karakeep/apps/workers
+ExecStartPre=/usr/bin/sh -c 'cd /usr/lib/karakeep/db_migrations ; /usr/bin/node index.js'
+ExecStart=/usr/bin/node /usr/lib/karakeep/apps/workers/dist/index.js
+TimeoutStopSec=5
+SyslogIdentifier=karakeep-workers
+ProtectSystem=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target

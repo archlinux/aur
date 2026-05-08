@@ -1,17 +1,17 @@
 [Unit]
-Description = Karakeep Browser
-Wants = network-online.target
-After = network-online.target
+Description=Karakeep Browser
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-User = karakeep
-Restart = on-failure
-ExecStart = /usr/bin/chromium --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --hide-scrollbars
-TimeoutStopSec = 5
-SyslogIdentifier = karakeep-browser
-ProtectSystem = yes
-PrivateTmp = yes
-NoNewPrivileges = yes
+User=karakeep
+Restart=on-failure
+ExecStart=/usr/bin/chromium --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --hide-scrollbars
+TimeoutStopSec=5
+SyslogIdentifier=karakeep-browser
+ProtectSystem=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target

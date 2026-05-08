@@ -1,21 +1,21 @@
 [Unit]
-Description = Karakeep WebUI
-Wants = network-online.target karakeep-workers.service
-After = network-online.target karakeep-workers.service
+Description=Karakeep WebUI
+Wants=network-online.target karakeep-workers.service
+After=network-online.target karakeep-workers.service
 
 [Service]
-User = karakeep
-Restart = on-failure
-EnvironmentFile = -/etc/karakeep/karakeep.env
-EnvironmentFile = -/usr/lib/karakeep/version
-Environment = DATA_DIR=/var/lib/karakeep
-WorkingDirectory = /usr/lib/karakeep/apps/web
-ExecStart = /usr/bin/node server.js
-TimeoutStopSec = 5
-SyslogIdentifier = karakeep-web
-ProtectSystem = yes
-PrivateTmp = yes
-NoNewPrivileges = yes
+User=karakeep
+Restart=on-failure
+EnvironmentFile=-/etc/karakeep/karakeep.env
+EnvironmentFile=-/usr/lib/karakeep/version
+Environment=DATA_DIR=/var/lib/karakeep
+WorkingDirectory=/usr/lib/karakeep/apps/web
+ExecStart=/usr/bin/node /usr/lib/karakeep/apps/web/server.js
+TimeoutStopSec=5
+SyslogIdentifier=karakeep-web
+ProtectSystem=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target
