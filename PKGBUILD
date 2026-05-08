@@ -2,8 +2,8 @@
 
 _name=tree-sitter-julia
 pkgname=python-tree-sitter-julia
-pkgver=0.23.1
-pkgrel=7
+pkgver=0.25.0
+pkgrel=1
 pkgdesc="Julia grammar for tree-sitter"
 arch=('any')
 url="https://github.com/tree-sitter/tree-sitter-julia"
@@ -15,8 +15,8 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-julia/archive/refs/tags/v0.23.1.tar.gz")
-sha256sums=('9f6926734e09110dd4792f6c327c6b547834b52b8ce2bc7c1eba2ed4f7f7aba0')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-julia/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5ab5fefc1459cff08efa28aeacf028c6e812d9f7552a758fda8c0d65c2abae54')
 
 build() {
     cd "${_name}-${pkgver}"
