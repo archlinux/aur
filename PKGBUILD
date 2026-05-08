@@ -10,13 +10,13 @@ provides=('godot-hub')
 conflicts=('godot-hub')
 source=(
     "Linux.zip::https://github.com/ismailivanov/godot-hub/releases/download/v${pkgver}/Linux.zip"
-    "godot-hub.png::https://raw.githubusercontent.com/ismailivanov/godot-hub/v${pkgver}/assets/godothub_logo_without_bg.png"
+    "godot-hub.png::https://raw.githubusercontent.com/ismailivanov/godot-hub/v${pkgver}/icon.png"
     "LICENSE::https://raw.githubusercontent.com/ismailivanov/godot-hub/v${pkgver}/LICENSE"
     "godot-hub.desktop"
 )
 sha256sums=(
     '1c82200e9b94c195d8f61b2af50834829bf0b533387a5b2408423f1e05b1b1bb'
-    '5043631b7129f68c2dfe119b24812d7bce188369a3b0447b02430babcec52a04'
+    'fb2973ac18502c9e828e9f4225980239033fa474847e8b69a0b8ef37f0a6a7cc'
     '76b8e9aacad7b9b2fd0c699065186191f8705d8f1892ee36873c56f904f073ef'
     'ae5dc922d2f390ddefb7009c949242de295729595aa00fc2f3357be683935507'
 )
