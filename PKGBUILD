@@ -8,7 +8,7 @@
 
 pkgname=megasync
 pkgver=6.3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
 url='https://github.com/meganz/MEGAsync/'
@@ -57,17 +57,9 @@ prepare() {
     # https://github.com/meganz/MEGAsync/issues/1010#issuecomment-2726028797
     git -C MEGAsync rm --cached src/DesignTokensImporter/megadesignassets
     
-    #git -C MEGAsync submodule init
-    #git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
-    #git -C MEGAsync -c protocol.file.allow='always' submodule update
-    # sdk is set to be at commit eb773dc10b00745b3e01ad71fb72f862fcfb2087 (v10.12.0) but it does not exist, using sdk v10.11.0
-    # https://github.com/meganz/MEGAsync/commit/f4504895006414de3983f79478ab9ec5ed9b082e
-    # https://github.com/meganz/sdk/tree/v10.11.0/
-    git -C meganz-sdk config --local advice.detachedHead false
-    git -C meganz-sdk checkout 6c963c89593f712ec561ea9058e3c0d006f53d5f
-    rm -r MEGAsync/src/MEGASync/mega
-    ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
-
+    git -C MEGAsync submodule init
+    git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
+    git -C MEGAsync -c protocol.file.allow='always' submodule update
     
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-sdk-fix-cmake-dependencies-detection.patch"
     patch -d MEGAsync -Np1 -i "${srcdir}/020-megasync-app-fix-cmake-dependencies-detection.patch"

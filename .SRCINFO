@@ -1,7 +1,7 @@
 pkgbase = megasync
 	pkgdesc = Official MEGA desktop application for syncing with MEGA Cloud Drive
 	pkgver = 6.3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meganz/MEGAsync/
 	arch = x86_64
 	license = LicenseRef-Mega-Limited-Code-License
