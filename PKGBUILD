@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/mnd"
+    cd "${srcdir}/multiple-network-deauth"
     install -Dm755 mcmodm "${pkgdir}/usr/bin/mnd"
 
     install -Dm644 README.md \
