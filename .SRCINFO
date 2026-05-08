@@ -1,6 +1,6 @@
 pkgbase = diaspora-postgresql-git
 	pkgdesc = A distributed privacy aware social network (development head) (PostgreSQL)
-	pkgver = 0.9.0.0.r13.gc2589f10c
+	pkgver = 0.9.1.0.r27.gea6c79a94
 	pkgrel = 1
 	url = https://diasporafoundation.org
 	install = diaspora.install
@@ -13,6 +13,8 @@ pkgbase = diaspora-postgresql-git
 	depends = ruby
 	depends = ruby-bundler
 	depends = ruby-erb
+	depends = ruby-irb
+	depends = ruby-mutex_m
 	depends = redis
 	depends = imagemagick
 	depends = libidn
@@ -41,7 +43,7 @@ pkgbase = diaspora-postgresql-git
 	sha256sums = aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685
 	sha256sums = d10f10439e56c38a9960e7cd481c7b44a68bc0ecf7c88b91d9cafb454aa6ffd0
 	sha256sums = 7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408
-	sha256sums = 8a174c2a64aff5fe72ca6b61bb05c5d85f4cd5cbb91aa3a0334e8c5a15b45bd3
+	sha256sums = bc48c0368306f62b9f443a3b1b391adaa93666fc51f0041f0a8ed3f710b21f86
 	sha256sums = 29cfd5116e919d8851ff70b8b82af8d4a6c8243a9d1ca555981a1a695e2d7715
 
 pkgname = diaspora-postgresql-git
