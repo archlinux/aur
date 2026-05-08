@@ -1,6 +1,6 @@
 pkgbase = tributary-bin
 	pkgdesc = A high-performance, Rhythmbox-style media manager (Pre-compiled Binary)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/jm2/tributary
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tributary-bin
 	depends = dbus
 	provides = tributary
 	conflicts = tributary
-	source = tributary-bin-0.4.0.pkg.tar.zst::https://github.com/jm2/tributary/releases/download/v0.4.0/tributary-x86_64.pkg.tar.zst
-	sha256sums = 809038949ec9c65fee6ec025c282f1fa3d7bda6aec508939ed9d38e667d85938
+	source = tributary-bin-0.5.0.pkg.tar.zst::https://github.com/jm2/tributary/releases/download/v0.5.0/tributary-x86_64.pkg.tar.zst
+	sha256sums = 430cad4711cac18184d6c03bcbfe129cbc4b37a40cd3711fc72d04ffcd673c6a
 
 pkgname = tributary-bin
