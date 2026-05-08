@@ -2,7 +2,7 @@
 
 pkgname=solara-kernel
 pkgver=7.0.5
-pkgrel=zen1
+pkgrel=1
 pkgdesc="Solara Linux Kernel - Compiled from Linux ZEN kernel source"
 arch=('x86_64')
 url="https://github.com/ravecorelabs/solara"
