@@ -1,6 +1,6 @@
 pkgbase = plasma-shortcut
-	pkgdesc = Plasma GUI service menu for creating/editing .desktop shortcuts. Supports any file, .exe with Wine/Proton, auto-extracts icons / Plasma GUI сервисное меню для создания .desktop ярлыков. Любые файлы, .exe через Wine/Proton, авто-извлечение иконок
-	pkgver = 1.0
+	pkgdesc = Dolphin service menu: .desktop shortcuts + GPU launch mode (Intel/NVIDIA). Wine/Proton/Flatpak support / Сервисное меню Dolphin: ярлыки .desktop + режим GPU (Intel/NVIDIA). Wine/Proton/Flatpak
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Matvel007/Plasma-Shortcut
 	install = plasma-shortcut.install
@@ -9,7 +9,7 @@ pkgbase = plasma-shortcut
 	depends = kio
 	depends = icoutils
 	depends = pyside6
-	source = plasma-shortcut-1.0.tar.gz::https://github.com/Matvel007/Plasma-Shortcut/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 7604cfe7f186358a65a97362603192e2e72383033fa32cbe75fe221eba19ed86
+	source = plasma-shortcut-1.1.tar.gz::https://github.com/Matvel007/Plasma-Shortcut/archive/refs/tags/v1.1.tar.gz
+	sha256sums = ef1576817ff5f64d9c82f88b4f347473e69e5a14c4b219561e65529e84a68c57
 
 pkgname = plasma-shortcut
