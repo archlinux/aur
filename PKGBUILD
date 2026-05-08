@@ -1,7 +1,7 @@
 # Maintainer: eltonff <eltonfabricio10@gmail.com>
 
 pkgname=mediaharbor-bin
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="MediaHarbor is all-in-one music streaming and downloading application built with Tauri and React."
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('mediaharbor')
 _pkgname="MediaHarbor"
 source=("${_pkgname}-${pkgver}.deb::https://github.com/MediaHarbor/mediaharbor/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 
-sha256sums=('6c9e2122e50b790166cf8bfb25eee05443725dbd13ffabb9261fcf11def79faa')
+sha256sums=('47a0f740210b1034e6fdbb8228e827060cfca334120ca2c0a654f844754dc466')
 
 package() {
   cd "$srcdir"
