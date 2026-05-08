@@ -6,7 +6,7 @@ pkgbase = lapifetch
 	arch = x86_64
 	license = MIT
 	depends = gcc
-	source = lapifetch-.tar.gz::https://github.com/asunyan-dev/lapifetch/archive/refs/tags/v0.2.0.tar.gz
+	source = lapifetch-0.2.0.tar.gz::https://github.com/asunyan-dev/lapifetch/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = lapifetch

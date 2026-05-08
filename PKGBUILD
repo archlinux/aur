@@ -7,7 +7,7 @@ url="https://github.com/asunyan-dev/lapifetch"
 license=('MIT')
 depends=('gcc')
 
-source=("$pkgname-$pkver.tar.gz::https://github.com/asunyan-dev/lapifetch/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/asunyan-dev/lapifetch/archive/refs/tags/v$pkgver.tar.gz")
 
 sha256sums=('SKIP')
 
