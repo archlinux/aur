@@ -46,29 +46,28 @@ if [ $UMU_AVAIL -eq 0 ] ; then
 
     notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
     echo "PROTONPATH=$PROTONPATH"
-    echo "UMU_NO_RUNTIME=$UMU_NO_RUNTIME"
-    UMU_NO_RUNTIME=1 umu-run winetricks arial tahoma
+    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks arial tahoma
     if [[ $1 == "msfonts" ]] ; then
-      UMU_NO_RUNTIME=1 umu-run winetricks courier
+      GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks courier
     else
-      UMU_NO_RUNTIME=1 umu-run winetricks /usr/share/vatsim-crc/nicfonts.verb
+      GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks /opt/vatsim-crc/nicfonts.verb
     fi
-    UMU_NO_RUNTIME=1 umu-run winetricks /usr/share/vatsim-crc/segmdl2.verb 
-    UMU_NO_RUNTIME=1 umu-run winetricks webview2
-    UMU_NO_RUNTIME=1 umu-run reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
+    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks /opt/vatsim-crc/segmdl2.verb 
+    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks webview2
+    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
     ln -svf $savedFiles $WINEPREFIX/drive_c/$progName
-    for i in $(ls /usr/share/$progName); do
-      ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
+    for i in $(ls /opt/$progName); do
+      ln -svf /opt/$progName/$i $WINEPREFIX/drive_c/$progName/
     done
     if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
-      UMU_NO_RUNTIME=1 umu-run "/opt/rpc-bridge/bridge.exe" --install
+      GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run "/opt/rpc-bridge/bridge.exe" --install
     fi
     touch "$WINEPREFIX/.installed.$CURRVER"
-    UMU_NO_RUNTIME=1 umu-run wineboot -e
+    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run wineboot -e
   fi
 
   source "$WINEPREFIX/.installed.$CURRVER" # Load PROTONPATH
-  cd $savedFiles && UMU_NO_RUNTIME=1 umu-run "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
+  cd $savedFiles && GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
 else
   # Wine version
   if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
@@ -79,14 +78,14 @@ else
     if [[ $1 == "msfonts" ]] ; then
       winetricks -q courier
     else
-      winetricks -q /usr/share/vatsim-crc/nicfonts.verb
+      winetricks -q /opt/vatsim-crc/nicfonts.verb
     fi
-    winetricks -q /usr/share/vatsim-crc/segmdl2.verb /usr/share/vatsim-crc/webview2.verb
+    winetricks -q /opt/vatsim-crc/segmdl2.verb /opt/vatsim-crc/webview2.verb
     winetricks -q fontsmooth=rgb
     wine reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
     ln -svf $savedFiles $WINEPREFIX/drive_c/$progName
-    for i in $(ls /usr/share/$progName); do
-      ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
+    for i in $(ls /opt/$progName); do
+      ln -svf /opt/$progName/$i $WINEPREFIX/drive_c/$progName/
     done
     if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
       wine "/opt/rpc-bridge/bridge.exe" --install
