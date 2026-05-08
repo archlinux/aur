@@ -1,8 +1,8 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=ymir-emu
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
@@ -54,7 +54,8 @@ build() {
 
 package() {
     cd $srcdir/ymir
-    DESTDIR="${pkgdir}" cmake --install "build"
+    install -Dm755 $srcdir/ymir/build/apps/ymir-sdl3/ymir-sdl3 -t $pkgdir/usr/bin
+    install -Dm755 $srcdir/ymir/build/apps/ymdasm/ymdasm -t $pkgdir/usr/bin
     install -Dm644 $srcdir/ymir-emu.desktop -t ${pkgdir}/usr/share/applications
     install -Dm644 $srcdir/ymir/apps/ymir-sdl3/res/ymir.png $pkgdir/usr/share/pixmaps/$pkgname.png
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
