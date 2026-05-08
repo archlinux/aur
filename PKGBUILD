@@ -1,7 +1,7 @@
 # Maintainer: Gunnar Bretthauer <taijian@posteo.de>
 
 pkgname=dynamic-dns-netcup-api
-pkgver=6.1
+pkgver=6.2
 pkgrel=1
 pkgdesc="A simple dynamic DNS client written in PHP for use with the netcup DNS API."
 arch=('any')
