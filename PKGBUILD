@@ -1,10 +1,11 @@
+Already up to date.
 # Maintainer: Jai Brown (AUR: JaINTP) <dev [at] jaintp [dot] com>
 # Contributor: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: devome <evinedeng@hotmail.com>
 
 _pkgname=chromadb
 pkgname="python-${_pkgname}"
-pkgver=1.5.8
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="the AI-native open-source embedding database"
 arch=("x86_64" "aarch64")
@@ -14,7 +15,7 @@ depends=(python-bcrypt python-build python-chroma-hnswlib python-fastapi python-
 makedepends=('python-build' 'python-installer' 'python-maturin' 'python-setuptools' 'python-setuptools-scm' 'rust')
 options=(!lto)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('34aa95e2487b58ce49a0f99e5ee350e1923d2c8d0b37be789ceb62e70035d696d082df4d4f22f1948c6a836c040e0dca3aa6b1dab56d96ab259902d027757a8c')
+b2sums=('5c20e62a455c28bacac927f26116a73fd8e1799e0d908be8e8a4f02197a54731')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
