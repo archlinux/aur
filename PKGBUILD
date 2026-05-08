@@ -5,8 +5,8 @@
 # Contribute : Daniel Kamil Kozar <dkk089@gmail.com>
 
 pkgname=qpxtool-unofficial-git
-pkgver=0.8.1
-pkgrel=6
+pkgver=1
+pkgrel=1
 pkgdesc="Enhanced (unofficial) qpxtool version"
 arch=('x86_64')
 url="https://github.com/speed47/qpxtool"
@@ -18,6 +18,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   patch -p0 -i ../fix-wrong-variable-in-comparison.diff
 }
 
