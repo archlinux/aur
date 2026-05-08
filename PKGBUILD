@@ -13,7 +13,7 @@
 pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=8.2.6
+pkgver=8.2.7
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
@@ -39,7 +39,7 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         bazel-version.patch
         bazelisk-url.patch
 )
-sha256sums=('a9ace7e055c926ad35a1144ac652f32e8e66e6f900fcc85bbc6cb585505853e7'
+sha256sums=('788eabe9c7e5057da5d2f587862265c7f877f3ad680521c8d7eed75f7c8b1205'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '59a522f2a20a003799dbff2846a5b7a2e46eb1deab75b0bb3c3746cfe2b5446e'
