@@ -1,7 +1,7 @@
 pkgbase = zls0.10-bin
 	pkgdesc = A language server for Zig
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zigtools.org/zls
 	arch = i686
 	arch = x86_64
