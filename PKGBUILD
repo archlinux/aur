@@ -1,5 +1,5 @@
 pkgname=codex-native-git
-pkgver=r1.d06165c
+pkgver=r1.9a50edd
 pkgrel=1
 pkgdesc="Native Linux Codex desktop shell built with Rust, GTK, WebKitGTK, and Codex CLI"
 arch=('x86_64')
@@ -10,14 +10,14 @@ optdepends=('codex: Codex CLI backend bridge for chat, auth, and runtime integra
 makedepends=('cargo' 'git' 'rust' 'unzip')
 provides=('codex-native')
 conflicts=('codex-native')
-_codex_frontend_version=26.506.21252
+_codex_frontend_version=26.506.31004
 source=(
   "codex-native::git+${url}.git"
   "Codex-darwin-arm64-${_codex_frontend_version}.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-${_codex_frontend_version}.zip"
 )
 sha256sums=(
   'SKIP'
-  '4bf84cc3111233afaa1465623303e9f1296ec170f70b28e4cea29b3e62b8cc16'
+  '9a09529d4937d1f24c78f78c7ef7f4b501c594c55b4beb4fecc076d03524dad5'
 )
 
 pkgver() {
