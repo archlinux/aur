@@ -1,5 +1,5 @@
 pkgname=cmdcreate
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Allows you to create custom commands for your custom scripts"
 arch=('x86_64' 'aarch64') 
