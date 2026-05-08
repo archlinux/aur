@@ -1,6 +1,6 @@
 pkgbase = tempstash
 	pkgdesc = stash a copy of a file for a specified period of time
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://sr.ht/~minshall/tempstash/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = tempstash
 	depends = zsh
 	optdepends = emacs: create and operate on org-mode files
 	optdepends = cram: functional testing framework
-	source = git+https://git.sr.ht/~minshall/tempstash#tag=9255858d7d06b445ab600ba308ecbd82ceaf5ede?signed
+	source = git+https://git.sr.ht/~minshall/tempstash#tag=8c27c4d7ca795dd18506c0e8ddc353bf9fb5c840?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
 	sha256sums = SKIP
 
