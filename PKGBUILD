@@ -1,8 +1,8 @@
 # Maintainer: tim <goal10derphone@gmail.com>
 pkgname=klear
 _pkgname=klear
-pkgver=r77.030a7dc
-pkgrel=2
+pkgver=r78.3dff81b
+pkgrel=1
 pkgdesc='A minimal Hyprland status bar in Kotlin/Native (tray, popup menus, battery, glassy refraction, session lock)'
 arch=('x86_64')
 url='https://codeberg.org/goal10der/klearShell'
