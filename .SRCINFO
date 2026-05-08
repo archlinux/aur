@@ -1,0 +1,33 @@
+pkgbase = hyprlock-frozen
+	pkgdesc = Hyprland's GPU-accelerated screen locking utility - Frozen For Yggdrasil, Nordix Desktop Environment
+	pkgver = 0.9.1.r1.g347e05a
+	pkgrel = 1
+	url = https://gitlab.com/TheEnchantedPotato/mirror-hyprlock-hyprland-v0.54.git
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = hyprwayland-scanner-frozen
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = sdbus-cpp>=2.0.0
+	depends = hyprgraphics-frozen
+	depends = hyprlang-frozen
+	depends = hyprutils-frozen
+	depends = libdrm
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = mesa
+	depends = pam
+	depends = pango
+	depends = wayland
+	provides = hyprlock-frozen
+	provides = hyprlock
+	conflicts = hyprlock
+	conflicts = hyprlock-git
+	backup = etc/pam.d/hyprlock
+	source = hyprlock-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprlock-hyprland-v0.54.git
+	sha256sums = SKIP
+
+pkgname = hyprlock-frozen
