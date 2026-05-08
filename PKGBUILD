@@ -1,7 +1,7 @@
 # Maintainer: Hownioni <honeyhownioni at gmail dot com>
 pkgname=win2xcur
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Convert Windows cursors to Xcursor format and visceversa"
 arch=(any)
 url="https://github.com/quantum5/win2xcur"
