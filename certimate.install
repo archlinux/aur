@@ -1,0 +1,25 @@
+post_install() {
+    cat <<'EOF'
+
+==> Certimate installed.
+    - Service:   systemctl enable --now certimate.service
+    - Web UI:    http://127.0.0.1:8090
+    - Data dir:  /var/lib/certimate
+    - On first run, set the admin account through the Web UI.
+
+EOF
+}
+
+post_upgrade() {
+    :
+}
+
+post_remove() {
+    cat <<'EOF'
+
+==> Certimate uninstalled. Data in /var/lib/certimate was kept.
+    Remove it manually if no longer needed:  rm -rf /var/lib/certimate
+    Remove the system user:                  userdel certimate
+
+EOF
+}
