@@ -1,6 +1,6 @@
 pkgbase = talm
 	pkgdesc = Manage Talos Linux the GitOps Way!
-	pkgver = 0.24.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/cozystack/talm
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = talm
 	license = MPL-2.0
 	makedepends = go
 	depends = glibc
-	source = talm-0.24.0.tar.gz::https://github.com/cozystack/talm/archive/refs/tags/v0.24.0.tar.gz
-	sha256sums = 564da69efdf8f1b6e0465c27131d2cca44129fc18ae6762b12e03214ca334441
+	source = talm-0.25.1.tar.gz::https://github.com/cozystack/talm/archive/refs/tags/v0.25.1.tar.gz
+	sha256sums = 16cd8b56ba56c22af6cc4496cce2a864dcdc95fff3ab650a71b7d30759133ea4
 
 pkgname = talm
