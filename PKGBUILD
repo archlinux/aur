@@ -1,9 +1,8 @@
-# Maintainer: Orion-zhen <https://github.com/Orion-zhen>
-# Contributor: Rongbo Wu <wurongbo2012@hotmail.com>
+# Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 
 _gpuarch=gfx120X-all
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=7.13.0a20260420
+pkgver=7.13.0a20260507
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
@@ -38,27 +37,19 @@ options=('!strip' '!debug')
 source=("${url}/tarball/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
+noextract=("${source[@]##*/}")
+
 package() {
-    local _tarball_name=$(basename "${source[0]}")
+    install -d "${pkgdir}/opt/rocm"
 
-    # 1. 创建安装目录 /opt/rocm
-    mkdir -p "${pkgdir}/opt/rocm"
-
-    # 2. 复制所有内容
+    # 1. 复制所有内容
     # 源码是 tarbomb 结构（直接解压在 srcdir），因此复制当前目录下所有可见文件
-    # 使用 -d (preserve links) -r (recursive)
-    msg2 "Copying files to /opt/rocm..."
-    cp -dr --no-preserve=ownership * "${pkgdir}/opt/rocm/"
-    # 2.1 修复 amdgcn 目录结构
-    local _amdgcn_dir="${pkgdir}/opt/rocm/lib/llvm/amdgcn"
-    if [ -d "${_amdgcn_dir}" ]; then
+    tar xzf "${source[0]##*/}" -C ${pkgdir}/opt/rocm
+    # 2 修复 amdgcn 目录结构
+    if [ -d "${pkgdir}/opt/rocm/lib/llvm/amdgcn" ]; then
         msg2 "Symlinking amdgcn directory..."
         ln -s "lib/llvm/amdgcn" "${pkgdir}/opt/rocm/amdgcn"
     fi
-
-    # 删除可能误复制的 tarball 和 PKGBUILD 相关文件 (如果 source 在当前目录)
-    rm -f "${pkgdir}/opt/rocm/${_tarball_name}"
-    rm -f "${pkgdir}/opt/rocm/PKGBUILD"
 
     # 3. 配置动态链接库路径 /etc/ld.so.conf.d/
     install -Dm644 /dev/null "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
@@ -78,9 +69,7 @@ EOF
 
     # 5. 处理许可证
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    if [ -f "${pkgdir}/opt/rocm/LICENSE" ]; then
-        ln -s "/opt/rocm/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    elif [ -f "${pkgdir}/opt/rocm/LICENSE.txt" ]; then
-        ln -s "/opt/rocm/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    if [ -f "${pkgdir}/opt/rocm/share/doc/NOTICES.txt" ]; then
+        ln -s "/opt/rocm/share/doc/NOTICES.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICES.txt"
     fi
 }
