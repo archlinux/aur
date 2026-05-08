@@ -28,7 +28,7 @@ optdepends=(
     'ghostscript: advanced PDF compression'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nelsonduarte/PDFApps/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9e4f5fd2cb3b883bb5059b5431068ee2f6a431ac02c0322495ae543025be5c35')
+sha256sums=('da54005e4dd44a73a69195c794a2b14c441694ac9d6c520f7a1b7b2e8e66e262')
 
 package() {
     cd "$srcdir/PDFApps-$pkgver"
