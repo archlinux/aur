@@ -1,17 +1,18 @@
-# Maintainer:  Misaka13514 <Misaka13514 at gmail dot com>
+# Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
+# Contributor: taotieren <admin@taotieren.com>
 
 pkgname=easyeda-pro-electron
-_pkgname=${pkgname%-electron}
+_pkgname=easyeda-pro
 pkgver=2.2.47.7
-pkgrel=1
+pkgrel=2
 pkgdesc="EasyEDA Professional Edition. Run with system electron."
-arch=('x86_64' 'aarch64')
+arch=("x86_64" "aarch64")
 url="https://pro.easyeda.com/"
-license=('LicenseRef-EasyEDA-Proprietary')
-depends=('electron' 'libnotify' 'libappindicator-gtk3')
-makedepends=('curl')
-provides=($_pkgname)
-conflicts=($_pkgname $_pkgname-git $_pkgname-bin)
+license=("LicenseRef-EasyEDA-Proprietary")
+depends=("electron" "libnotify" "libappindicator-gtk3")
+makedepends=("curl")
+provides=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-bin")
 install=$pkgname.install
 source=("$pkgname.install"
         "$_pkgname.sh")
@@ -23,55 +24,60 @@ sha256sums_x86_64=('2a504564c2d49189309c29da1e24eb7c3166d9cd09a38c4d19478c9c6f2b
 sha256sums_aarch64=('0c47ce6257aa07d4a2831e20811cfd7f2d1b78508bb3e3158086307325334524')
 
 prepare() {
-    # https://gitlab.archlinux.org/pacman/pacman-contrib/-/issues/119
     curl -sSfL -o "LICENSE-$pkgver.html" "https://easyeda.com/page/legal"
 }
 
 package() {
-    cd $srcdir
-    install -Dm755 $_pkgname.sh $pkgdir/usr/bin/$_pkgname
-    install -Dm644 LICENSE-$pkgver.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
+    install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 "$srcdir/LICENSE-$pkgver.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.html"
 
-    cd $srcdir/$_pkgname
-    install -Dm644 EasyEDA-Distribution-License.txt \
-                   $pkgdir/usr/share/licenses/$pkgname/EasyEDA-DLA.txt
-    install -dm755 $pkgdir/usr/lib/$_pkgname
-    cp -dpr --no-preserve=ownership resources $pkgdir/usr/lib/$_pkgname
-    cp -dpr --no-preserve=ownership locales   $pkgdir/usr/lib/$_pkgname
+    cd "$srcdir/$_pkgname"
+    if [ -f "EasyEDA-Distribution-License.txt" ]; then
+        install -Dm644 "EasyEDA-Distribution-License.txt" "$pkgdir/usr/share/licenses/$pkgname/EasyEDA-DLA.txt"
+    elif [ -f "嘉立创EDA软件安装最终用户许可协议（EULA）.pdf" ]; then
+        install -Dm644 "嘉立创EDA软件安装最终用户许可协议（EULA）.pdf" "$pkgdir/usr/share/licenses/$pkgname/LCEDA-EULA.pdf"
+    elif [ -f "LCEDA-Distribution-License.txt" ]; then
+        install -Dm644 "LCEDA-Distribution-License.txt" "$pkgdir/usr/share/licenses/$pkgname/EasyEDA-DLA.txt"
+    fi
+
+    install -dm755 "$pkgdir/usr/lib/$_pkgname"
+    cp -dpr --no-preserve=ownership resources "$pkgdir/usr/lib/$_pkgname"
+    if [ -d "locales" ]; then
+        cp -dpr --no-preserve=ownership locales "$pkgdir/usr/lib/$_pkgname"
+    fi
 
     # icon
     local _icon
     for _icon in 16 32 64 128 256 512; do
-        install -Dm644 icon/icon_${_icon}x${_icon}.png \
-                       $pkgdir/usr/share/icons/hicolor/${_icon}x${_icon}/apps/$_pkgname.png
+        if [ -f "icon/icon_${_icon}x${_icon}.png" ]; then
+            install -Dm644 "icon/icon_${_icon}x${_icon}.png"                            "$pkgdir/usr/share/icons/hicolor/${_icon}x${_icon}/apps/$_pkgname.png"
+        fi
     done
-    if [ -f icon/icon_512x512@2x.png ]; then
-        install -Dm644 icon/icon_512x512@2x.png \
-                       $pkgdir/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png
+    if [ -f "icon/icon_512x512@2x.png" ]; then
+        install -Dm644 "icon/icon_512x512@2x.png"                        "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png"
     fi
 
     # desktop entry
-    if [ -f easyeda-pro.dkt ]; then
-        install -Dm644 easyeda-pro.dkt \
-                       $pkgdir/usr/share/applications/$_pkgname.desktop
-
-        sed -i 's|/opt/easyeda-pro/icon/icon_128x128.png|easyeda-pro|g' \
-            $pkgdir/usr/share/applications/$_pkgname.desktop
-        sed -i 's|/opt/easyeda-pro/||g' \
-            $pkgdir/usr/share/applications/$_pkgname.desktop
+    if [ -f "$_pkgname.dkt" ]; then
+        install -Dm644 "$_pkgname.dkt" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+        sed -E -i "s|^Exec=.*|Exec=$_pkgname %f|g" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+        sed -E -i "s|^Icon=.*|Icon=$_pkgname|g" "$pkgdir/usr/share/applications/$_pkgname.desktop"
     else
-        install -Dm644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop << "EOF"
+        install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << "DESKTOP_EOF"
 [Desktop Entry]
 Categories=Development;Electronics;
-Comment=A Simple and Powerful Electronic Circuit Design Tool
-Exec=easyeda-pro %f
-Keywords=PCB;EasyEDA;EDA
+Comment=EasyEDA Professional Edition. Run with system electron.
+Exec=$_pkgname %f
+Keywords=PCB;EDA;
 GenericName=EasyEDA Pro
-Icon=easyeda-pro
+Icon=$_pkgname
 Name=EasyEDA Pro
 Type=Application
-Name[en_US]=EasyEDA Pro
-MimeType=application/eprj
-EOF
+MimeType=application/eprj;application/eprj2;application/eprj3;
+DESKTOP_EOF
     fi
+
+    # fix permissions
+    find "$pkgdir/usr/lib/$_pkgname/" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr/lib/$_pkgname/" -type f -exec chmod 644 {} +
 }
