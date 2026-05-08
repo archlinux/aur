@@ -1,7 +1,7 @@
 pkgbase = forgecode-bin
 	pkgdesc = An AI-powered code assistant CLI tool
 	pkgver = 2.12.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/antinomyhq/forgecode
 	arch = x86_64
 	arch = aarch64

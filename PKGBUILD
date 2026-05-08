@@ -1,6 +1,6 @@
 pkgname=forgecode-bin
 pkgver=2.12.12
-pkgrel=1
+pkgrel=2
 pkgdesc="An AI-powered code assistant CLI tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/antinomyhq/forgecode"
@@ -26,7 +26,7 @@ sha256sums=('3c9f90350449325ae2b1355d6aae26df25be58f1cfcb8ed6a44b9c4b10c663f9')
 
 package() {
   install -Dm0755 forge "$pkgdir/usr/bin/forge"
-  ln -sf forge "$pkgdir/usr/bin/forge-code"
+  ln -sf forge "$pkgdir/usr/bin/forgecode"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
