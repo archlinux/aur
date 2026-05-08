@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+_pkgname="cups-web"
+
+post_install() {
+    echo "Please set a password for the '${_runuser}' user to access CUPS administration features: passwd ${_runuser}"
+    echo "Please also enter this password in '/etc/conf.d/${_pkgname}' for 'CUPSPASSWORD' variables."
+    echo "And modify the 'SystemGroup' line in '/etc/cups/cups-files.conf' and add 'cups-web' at the end of the line."
+}
+
+post_upgrade() {
+    post_install
+}
