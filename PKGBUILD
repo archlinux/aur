@@ -1,6 +1,6 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-nightly-bin
-pkgver=nightly.20260508.022608
+pkgver=nightly.20260508.041213
 pkgrel=1
 pkgdesc="Desktop app for unbill (nightly)"
 arch=('x86_64')
@@ -15,5 +15,7 @@ source_x86_64=("https://github.com/unbill-project/unbill/releases/download/${_ta
 sha256sums_x86_64=('SKIP')
 
 package() {
-    tar -xvf data.tar.gz -C "${pkgdir}"
+    cd "$srcdir"
+    ar x unbill-linux-x86_64.deb
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 }
