@@ -67,7 +67,7 @@ if [ $UMU_AVAIL -eq 0 ] ; then
   fi
 
   source "$WINEPREFIX/.installed.$CURRVER" # Load PROTONPATH
-  cd $savedFiles && GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
+  cd $savedFiles && GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run "C:\\${progName}\\Application\\CRC.exe" "$@"
 else
   # Wine version
   if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
