@@ -1,6 +1,6 @@
 # Maintainer: KumihoIO <bot@construct.dev>
 pkgname=construct
-pkgver=2026.5.3
+pkgver=2026.5.7
 pkgrel=1
 pkgdesc="Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KumihoIO/construct-os/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bb8a8aedcd50c88301dce121076be86fabe8745261bd77317ba7f8b139ca8836')
+sha256sums=('bc536ad842e2d5cffe2ac987087adae55d4079cdf51fbbdaf03b433851b9941f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
