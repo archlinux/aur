@@ -1,6 +1,6 @@
 pkgbase = ipinfo-cli-bin
 	pkgdesc = Official Command Line Interface for the IPinfo API (IP geolocation and other types of IP data)
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://ipinfo.io
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = ipinfo-cli-bin
 	arch = aarch64
 	license = Apache-2.0
 	depends = glibc
-	provides = ipinfo-cli=3.3.1
+	provides = ipinfo-cli=3.3.2
 	conflicts = ipinfo-cli
-	source_x86_64 = ipinfo-cli-bin-3.3.1_x86_64.tar.gz::https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.1/ipinfo_3.3.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 81e62958fcb91f979c03d0f10887486df1460d432d0d4c2e86a3079f6039840a
-	source_armv7h = ipinfo-cli-bin-3.3.1_armv7h.tar.gz::https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.1/ipinfo_3.3.1_linux_arm.tar.gz
-	sha256sums_armv7h = 12746e0672aa88f4e6a3e5e92de49dcfcf0c6433d8727496d1a3e9587b06a420
-	source_aarch64 = ipinfo-cli-bin-3.3.1_aarch64.tar.gz::https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.1/ipinfo_3.3.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = b1e00471f50cdae33cf7423f21970fa6f1e05bc13167babe43c6869988dd943d
+	source_x86_64 = ipinfo-cli-bin-3.3.2_x86_64.tar.gz::https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.2/ipinfo_3.3.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = e08d010cdf37cda4db28ce62bdeaee781ec9aa59003f346eecce8aeb07854d0f
+	source_armv7h = ipinfo-cli-bin-3.3.2_armv7h.tar.gz::https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.2/ipinfo_3.3.2_linux_arm.tar.gz
+	sha256sums_armv7h = 4ce32959972a31d3362bb8841093d0f1744d63a2d9245d0df11150123983851d
+	source_aarch64 = ipinfo-cli-bin-3.3.2_aarch64.tar.gz::https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.2/ipinfo_3.3.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = d42ff22ea976532729a07f902c87d09466a6a547ec70db21eca312816e481cea
 
 pkgname = ipinfo-cli-bin
