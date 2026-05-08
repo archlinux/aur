@@ -1,6 +1,6 @@
 pkgbase = tabby-electron-bin
 	pkgdesc = A terminal for a more modern age.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.232
+	pkgver = 1.0.233
 	pkgrel = 1
 	url = https://tabby.sh/
 	arch = aarch64
@@ -11,18 +11,18 @@ pkgbase = tabby-electron-bin
 	depends = electron38
 	depends = python
 	depends = libsecret
-	provides = tabby=1.0.232
+	provides = tabby=1.0.233
 	conflicts = tabby
 	options = !emptydirs
-	source = LICENSE-1.0.232::https://raw.githubusercontent.com/Eugeny/tabby/v1.0.232/LICENSE
+	source = LICENSE-1.0.233::https://raw.githubusercontent.com/Eugeny/tabby/v1.0.233/LICENSE
 	source = tabby-electron.sh
 	sha256sums = ac295694b9f56e90dce3cf58313ed891d0bd9178adec02d8503a0c07d9d34c68
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = tabby-electron-1.0.232-aarch64.rpm::https://github.com/Eugeny/tabby/releases/download/v1.0.232/tabby-1.0.232-linux-arm64.rpm
-	sha256sums_aarch64 = 21c96620f4b4d06c9693e7f7077e87786e0545508c9fc0663b95bde14276120f
-	source_armv7h = tabby-electron-1.0.232-armv7h.rpm::https://github.com/Eugeny/tabby/releases/download/v1.0.232/tabby-1.0.232-linux-armv7l.rpm
-	sha256sums_armv7h = f259d4b68874a0b3975101b372bf49cc17aa73587e8f9107a6fa3277c68cf8cc
-	source_x86_64 = tabby-electron-1.0.232-x86_64.rpm::https://github.com/Eugeny/tabby/releases/download/v1.0.232/tabby-1.0.232-linux-x64.rpm
-	sha256sums_x86_64 = ea72062a400ba30f17608f1192714a869f0a219951818353820c0f0c51fa5791
+	source_aarch64 = tabby-electron-1.0.233-aarch64.rpm::https://github.com/Eugeny/tabby/releases/download/v1.0.233/tabby-1.0.233-linux-arm64.rpm
+	sha256sums_aarch64 = 35e2a42bade6faa66bcea9d212cae6401822aad650bff89a0dbb1a66076dd257
+	source_armv7h = tabby-electron-1.0.233-armv7h.rpm::https://github.com/Eugeny/tabby/releases/download/v1.0.233/tabby-1.0.233-linux-armv7l.rpm
+	sha256sums_armv7h = 28e48a6726255b310e43aff93ac76e54409706fe57268a788918c34fbbaafb70
+	source_x86_64 = tabby-electron-1.0.233-x86_64.rpm::https://github.com/Eugeny/tabby/releases/download/v1.0.233/tabby-1.0.233-linux-x64.rpm
+	sha256sums_x86_64 = 6e49fd8978a9af60f48a4b336f7e2bdc327ba2828c9485ed64fa24974c0ac68d
 
 pkgname = tabby-electron-bin
