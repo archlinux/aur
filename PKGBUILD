@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Chamon <gchamon@gmail.com>
 pkgname=dirac-cli-git
 _pkgname=dirac
-pkgver=r176.fb963a8
+pkgver=r323.312d820
 pkgrel=1
 pkgdesc="CLI for dirac, a fast and lightweight remote development environment"
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    npm ci --ignore-scripts
+    npm install --ignore-scripts
     npm rebuild grpc-tools
     npm run cli:build
 }

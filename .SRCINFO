@@ -1,6 +1,6 @@
 pkgbase = dirac-cli-git
 	pkgdesc = CLI for dirac, a fast and lightweight remote development environment
-	pkgver = r176.fb963a8
+	pkgver = r323.312d820
 	pkgrel = 1
 	url = https://github.com/dirac-run/dirac
 	arch = any
