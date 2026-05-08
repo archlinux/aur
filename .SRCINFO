@@ -1,6 +1,6 @@
 pkgbase = logserver
 	pkgdesc = Advanced pager designed for rapid navigation of large logs.
-	pkgver = 1.13.6
+	pkgver = 1.13.7
 	pkgrel = 1
 	url = https://codeberg.org/potatocrunchcereal/logserver
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = logserver
 	depends = zlib
 	depends = ncurses
 	depends = catch2
-	source = https://codeberg.org/potatocrunchcereal/logserver/archive/v1.13.6.tar.gz
-	sha256sums = a34b8ade224344453e7ae4afe5613fc5efd920b14ed61d8287149a2f8dfa53d1
+	source = https://codeberg.org/potatocrunchcereal/logserver/archive/v1.13.7.tar.gz
+	sha256sums = bf91822658b8804c1addf9955335c05e437b906250d527df1ff32ca31e251e63
 
 pkgname = logserver

@@ -1,7 +1,7 @@
 # Maintainer: Joe Davison <joe@davison.tech>
 
 pkgname=logserver
-pkgver=1.13.6
+pkgver=1.13.7
 pkgrel=1
 pkgdesc="Advanced pager designed for rapid navigation of large logs."
 license=('GPL-3.0-or-later')
@@ -10,7 +10,7 @@ url="https://codeberg.org/potatocrunchcereal/logserver"
 depends=('zlib' 'ncurses' 'catch2')
 makedepends=('cmake' 'txt2man')
 source=("https://codeberg.org/potatocrunchcereal/logserver/archive/v${pkgver}.tar.gz")
-sha256sums=('a34b8ade224344453e7ae4afe5613fc5efd920b14ed61d8287149a2f8dfa53d1')
+sha256sums=('bf91822658b8804c1addf9955335c05e437b906250d527df1ff32ca31e251e63')
 
 build() {
 	cd logserver
