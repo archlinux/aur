@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-  <mime-type type="text/x-sfg">
+  <mime-type type="text/x-signalflowgrapher">
     <icon name="signalflowgrapher"/>
     <comment>SignalFlowGrapher file</comment>
     <glob pattern="*.sfg"/>

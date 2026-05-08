@@ -21,7 +21,7 @@ pkgbase = signalflowgrapher-git
 	source = signalflowgrapher.desktop
 	source = signalflowgrapher.xml
 	sha256sums = SKIP
-	sha256sums = ed291caf76783dddda70f36e990242b967f213c6dc584243b0864cfe0ecd3358
-	sha256sums = 3093764da2688c4d2c2b8ba84a6e98f7080a883b46c2aa9b5730b06d9adbb9b2
+	sha256sums = f47c3b62785979a140706e0378e85d75bbcd479970df7b839b302a56d31e9cf6
+	sha256sums = e68705635aca752d95ad575a672ce359f0f3e14f59cda3f1e1c04a27f250e7cc
 
 pkgname = signalflowgrapher-git

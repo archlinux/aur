@@ -7,5 +7,5 @@ TryExec=signalflowgrapher
 Icon=signalflowgrapher
 Terminal=false
 Categories=Education;Science;Graphics;
-MimeType=text/x-sfg;
+MimeType=text/x-signalflowgrapher;
 StartupNotify=false
