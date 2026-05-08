@@ -4,7 +4,8 @@ After=network.target mongodb.service
 Requires=mongodb.service
 
 [Service]
-DynamicUser=true
+User=graylog
+Group=graylog
 PIDFile=$RUNTIME_DIRECTORY/server.pid
 ExecStart=/usr/bin/java -Djava.net.preferIPv6Addresses=true -Djava.library.path=/usr/lib/graylog/lib/sigar -jar /usr/lib/graylog/server.jar server -f ${CONFIGURATION_DIRECTORY}/server/server.conf -p ${RUNTIME_DIRECTORY}/server.pid
 Restart=on-failure
