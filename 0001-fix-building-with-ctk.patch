@@ -16,7 +16,7 @@ index 6c1f5c4c67..f6ed42acfe 100644
  
    ExternalProject_SetIfNotDefined(
      Slicer_${proj}_GIT_TAG
--    "935c4e0413a2e074175a8e015a95c3475940142e"
+-    "549a5b7b72f7b63a70ad91f6d183c7728511f794"
 +    "9ce17b4a5a69a6a0e5750ef6ac8a9840427a5ae2"
      QUIET
      )

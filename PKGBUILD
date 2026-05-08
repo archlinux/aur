@@ -4,7 +4,7 @@
 #
 _pkgname=3dslicer
 pkgname=3dslicer-qt6-git
-pkgver=5.10.0.r246.a4c1ea89e9
+pkgver=5.10.0.r291.9b1f832706
 pkgrel=1
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research, qt6 version'
 arch=('x86_64')
@@ -63,7 +63,7 @@ source=("${_pkgname}::git+https://github.com/Slicer/Slicer.git"
 )
 sha512sums=('SKIP'
             '3422d244f819a7ec4c475d3d8a90c79fcb73738920c0830b100c6342ca24d5be607ba60ee3d91892402036a0adf31d5ab7c8fc83f451121a7b537f7de5306014'
-            'cbd02080969aff4f8a2d92fd1ca10a4d5479afb94a223fcc3d8bb8021c753b73e6b0e4752504c5e0c35891c2c0224d1ed978088ef8d9941de59f284267b1befd'
+            'a47374858ad5d89d23bddf18948ac0fda4de22e03a960a44935251f6fe297f571c6e6abe5e0023eab62c61b9377dbb3245b44588e3239987c4caf946a9dd2f8e'
             '5b6a8850fba98074d5cc624355b1fd73ced04371ab417ef60fd919d96327629fdcaa84290a0ec9cdfab2e12b7a6efb6971d87f940ad8e2bc4c4bbc18c4f8086e')
 
 pkgver() {
