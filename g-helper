@@ -1,52 +1,46 @@
 #!/bin/bash
 
-# --- G-HELPER v1.2 (AUR Bridge) ---
+# --- G-HELPER v1.3 (Gabriele Edition) ---
 G_PURPLE='\033[1;35m'
 G_CYAN='\033[1;36m'
 G_GREEN='\033[1;32m'
-G_YELLOW='\033[1;33m'
 G_RED='\033[1;31m'
 NC='\033[0m'
 
-# Check if a package name was provided
+# Funzione di pulizia automatica
+cleanup() {
+    echo -e "\n${G_CYAN}::${NC} Cleaning up build files..."
+    rm -rf "$BUILD_DIR"
+}
+
+# Se l'utente preme Ctrl+C, pulisci tutto
+trap cleanup EXIT
+
 if [ -z "$1" ]; then
-    echo -e "${G_PURPLE}G-HELPER v1.2${NC} - AUR Assistant"
-    echo "Usage: g-helper [package_name]"
+    echo -e "${G_PURPLE}G-HELPER v1.3${NC}"
+    echo "Usage: g-helper [package]"
     exit 1
 fi
 
 PACKAGE=$1
+BUILD_DIR="/tmp/g-helper-$PACKAGE-$(date +%s)"
 
-# 1.2 Fix: Check for essential tools
-for tool in git makepkg; do
-    if ! command -v $tool &> /dev/null; then
-        echo -e "${G_RED}Error:${NC} '$tool' is not installed. Please install it first."
-        exit 1
-    fi
-done
+echo -e "${G_CYAN}::${NC} Starting AUR bridge for: ${G_PURPLE}$PACKAGE${NC}"
 
-echo -e "${G_CYAN}::${NC} Fetching ${G_YELLOW}$PACKAGE${NC} from AUR..."
-
-# Build directory (clean and local)
-BUILD_DIR="/tmp/g-helper-v1.2-$USER"
 mkdir -p "$BUILD_DIR" && cd "$BUILD_DIR"
 
-# Cloning process
-if git clone "https://aur.archlinux.org/$PACKAGE.git"; then
-    cd "$PACKAGE"
-    echo -e "${G_GREEN}::${NC} Repository cloned. Starting build..."
+# Clone con progresso visibile
+if git clone --depth 1 "https://aur.archlinux.org/$PACKAGE.git" .; then
+    echo -e "${G_GREEN}::${NC} Repository cloned. Building now..."
     
-    # 1.2 Improvement: Run makepkg with sync dependencies
+    # Compilazione e installazione
     if makepkg -si --noconfirm; then
-        echo -e "${G_GREEN}::${NC} $PACKAGE installed successfully!"
+        echo -e "${G_GREEN}::${NC} $PACKAGE has been installed successfully."
     else
         echo -e "${G_RED}Error:${NC} Build failed for $PACKAGE."
+        exit 1
     fi
-    
-    # Clean up
-    cd ..
-    rm -rf "$PACKAGE"
 else
-    echo -e "${G_RED}Error:${NC} Could not find or clone $PACKAGE."
+    echo -e "${G_RED}Error:${NC} Package not found on AUR."
     exit 1
 fi

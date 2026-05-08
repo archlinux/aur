@@ -1,13 +1,14 @@
-# Maintainer: Gabriele <castielloangels512@gmail.com>
+# Maintainer: gabrielearchapt <castielloangela512@gmail.com>
 pkgname=g-helper
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
-pkgdesc="Gabriele's lightweight AUR helper for apt-fake integration (v1.2)"
+pkgdesc="Gabriele's optimized AUR bridge helper with auto-cleanup (v1.3)"
 arch=('any')
+url="https://tuo-sito.github.io"
 license=('GPL3')
-depends=('bash' 'git' 'pacman' 'curl')
+depends=('bash' 'git' 'pacman' 'binutils' 'gcc' 'make')
 source=('g-helper')
-sha256sums=('511935dc39e248fa206e33407cfc17efe00a00d9b46d9ca6f41dec3a7a1d9e5d')
+sha256sums=('cc5a3ca7300e7569862a30ddc931064c3f87eb220d9087b486da80eb104b00e7')
 
 package() {
   install -Dm755 "${srcdir}/g-helper" "${pkgdir}/usr/bin/g-helper"
