@@ -1,79 +1,98 @@
 # Maintainer: Pqolk <tiangloo@outlook.com>
 
 pkgname=azurlaneautoscript
-pkgver=2025.07.13
+pkgver=2026.03.28
 pkgrel=1
 pkgdesc="Azur Lane bot (CN/EN/JP/TW) 碧蓝航线脚本 | 无缝委托科研，全自动大世界"
 arch=('x86_64')
 url="https://github.com/LmeSzinc/AzurLaneAutoScript"
 license=('GPL3')
 depends=(
-  'python'
-  'python-pipenv'
-  'python-virtualenv'
-  'python37'
   'android-tools'
   'git'
 )
+makedepends=(
+  'expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl'
+  'sqlite' 'mpdecimal' 'xz' 'tk'
+)
 options=(!debug !strip)
-# install=${pkgname}.install
 source=(
-  # "${pkgname}.sh"
-  # "${pkgname}.service"
-  # "git+https://github.com/LmeSzinc/AzurLaneAutoScript.git"
+  "https://www.python.org/ftp/python/3.7.17/Python-3.7.17.tar.xz"
 )
-sha256sums=(
-  # 'fd253d364680a740812ea00835c76b6dfc14d60c410c536329ea7d6d1873a31e'
-  # 'b26428959edf525e8e59dc99680edef06f4946621d89c8906050a2cef40bce19'
-  # 'SKIP'
-)
-package() {
-    cd ${pkgdir}
-    git clone https://github.com/LmeSzinc/AzurLaneAutoScript.git opt/${pkgname}/app
-    python3.7 -m venv opt/${pkgname}/venv
-    source opt/${pkgname}/venv/bin/activate
+sha512sums=(
+            '86ba1c953e7b4bce70445d1616cc0d428b50937f6a874811584df8bf23c3e2ba3e5d48dec00e629a47f4216f3ca50dc5389cd485fbc315f51000d8750403b5f0')
+
+build() {
+    cd "${srcdir}"
+
+    # 1. 编译 Python 3.7（静态链接，快速）
+    tar -xf Python-3.7.17.tar.xz
+    cd Python-3.7.17
+    ./configure --prefix="${srcdir}/python37" --without-ensurepip
+    make -j$(nproc)
+    make install
+
+    cd "${srcdir}"
+    git clone "https://github.com/LmeSzinc/AzurLaneAutoScript.git" "${pkgname}"
+
+    # 2. 创建虚拟环境（--copies 保证可移植，但标准库仍需 pyvenv.cfg 指向 home）
+    cd "${srcdir}/${pkgname}"
+    rm -rf "${srcdir}/venv"
+    "${srcdir}/python37/bin/python3.7" -m venv --copies "${srcdir}/venv"
+    source "${srcdir}/venv/bin/activate"
+
+    # 3. 安装 pip 和项目依赖
+    python -m ensurepip --upgrade
     pip install --upgrade --no-cache-dir pip
-    sed -i '/^\s*av\s*==/d' opt/${pkgname}/app/deploy/docker/requirements.txt
-    pip install --no-cache-dir -r opt/${pkgname}/app/deploy/docker/requirements.txt
+    sed -i '/^\s*av\s*==/d' deploy/docker/requirements.txt
+    pip install --no-cache-dir -r deploy/docker/requirements.txt
     pip install --no-cache-dir mxnet-alas
-    cp opt/${pkgname}/app/config/deploy.template-linux.yaml opt/${pkgname}/app/config/deploy.yaml
+
+    # 验证
+    python -c "import rich" || { echo "ERROR: rich not installed"; exit 1; }
     deactivate
-    install -dm755 "${pkgdir}/opt/${pkgname}"
+
+    # 清理字节码
+    find "${srcdir}/venv" -type d -name "__pycache__" -exec rm -rf {} +
+    find "${srcdir}/venv" -type f -name "*.pyc" -delete
+}
+
+package() {
+    cd "${srcdir}"
+
+    # 1. 安装整个 python37 基础解释器（提供标准库）
+    install -dm755 "${pkgdir}/opt/${pkgname}/python37"
+    cp -a python37/* "${pkgdir}/opt/${pkgname}/python37"
+
+    # 2. 安装应用代码
+    install -dm755 "${pkgdir}/opt/${pkgname}/app"
+    cp -a "${pkgname}/." "${pkgdir}/opt/${pkgname}/app"
+
+    # 3. 安装虚拟环境
+    cp -a venv "${pkgdir}/opt/${pkgname}/venv"
+
+    # 4. 修正虚拟环境的路标文件 pyvenv.cfg，让解释器找到标准库
+    sed -i "s|home = .*|home = /opt/${pkgname}/python37|" \
+        "${pkgdir}/opt/${pkgname}/venv/pyvenv.cfg"
+
+    # 5. 修正 activate 脚本中的 VIRTUAL_ENV
+    sed -i "s|VIRTUAL_ENV=.*|VIRTUAL_ENV=\"/opt/${pkgname}/venv\"|" \
+        "${pkgdir}/opt/${pkgname}/venv/bin/activate"
+
+    # 6. 确保权限
+    chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${pkgname}"
+
+    # 7. 配置文件
+    cp "${pkgdir}/opt/${pkgname}/app/config/deploy.template-linux.yaml" \
+       "${pkgdir}/opt/${pkgname}/app/config/deploy.yaml"
     install -dm755 "${pkgdir}/etc/${pkgname}"
-    ln -sf "/opt/${pkgname}/app/config/alas.json" "${pkgdir}/etc/${pkgname}/alsa.json"
+    ln -sf "/opt/${pkgname}/app/config/alas.json" "${pkgdir}/etc/${pkgname}/alas.json"
     ln -sf "/opt/${pkgname}/app/config/deploy.yaml" "${pkgdir}/etc/${pkgname}/deploy.yaml"
-    # install -Dm755 azurlaneautoscript.sh "${pkgdir}/usr/bin/${pkgname}"
+
+    # 8. 启动脚本
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<'EOF'
 #!/bin/bash
-
 source /opt/azurlaneautoscript/venv/bin/activate
-python /opt/azurlaneautoscript/app/gui.py "$@"
-
+exec python /opt/azurlaneautoscript/app/gui.py "$@"
 EOF
-    # install -Dm644 azurlaneautoscript.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/${pkgname}.service" <<EOF
-[Unit]
-Description=AzurLaneAutoScript Service
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/azurlaneautoscript
-Restart=on-failure
-
-# 限制写入权限
-#ProtectSystem=strict
-#ReadWritePaths=/opt/azurlaneautoscript /tmp /var/tmp /usr/bin/azurlaneautoscript
-
-# 限制服务运行的文件系统访问
-#ProtectHome=true
-#NoNewPrivileges=true
-
-[Install]
-WantedBy=multi-user.target
-
-EOF
-
-    # cp -r "$srcdir/venv" "${pkgdir}/opt/${pkgname}/venv"
-    sed -i "s|VIRTUAL_ENV=.*|VIRTUAL_ENV=/opt/${pkgname}/venv|" "${pkgdir}/opt/${pkgname}/venv/bin/activate"
 }
