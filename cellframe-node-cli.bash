@@ -641,7 +641,6 @@ _cfcli_complete_flag_value() {
         -where)
             _cfcli_compgen "chains mempool" ; return 0 ;;
         -from)
-            # dag event list -from values
             if [[ "${words[1]}" == "dag" ]]; then
                 _cfcli_compgen "events events_lasts threshold round.new"
             fi ; return 0 ;;
@@ -651,11 +650,30 @@ _cfcli_complete_flag_value() {
     return 1
 }
 
+_cfcli_srv_datum() {
+    local subcmds="datum"
+    case "${words[2]}" in
+        datum)
+            case "${words[3]}" in
+                save|load) _cfcli_compgen "-net -chain -datum" ;;
+                *)         _cfcli_compgen "save load" ;;
+            esac ;;
+        *) _cfcli_compgen "$subcmds -net -chain" ;;
+    esac
+}
+
+_cfcli_vpn_stat() {
+    _cfcli_compgen "-net -full"
+}
+
 _cfcli_commands() {
     # try first with cli...
     local output
-    output="$(cellframe-node-cli help 2>/dev/null)" && \
-        echo "$output" | sed -n 's/^\([a-z_][a-z_0-9]*\):.*/\1/p' && return
+    output="$(cellframe-node-cli help 2>/dev/null)"
+    if [[ $? -eq 0 ]] && ! echo "$output" | grep -qi "error"; then
+        echo "$output" | sed -n 's/^\([a-z_][a-z_0-9]*\):.*/\1/p'
+        return
+    fi
     # ... fallback to static list
     echo "global_db node version help wallet net block dag dag_poa token token_decl token_update token_decl_sign token_update_sign token_emit token_emit_sign mempool mempool_add chain_ca_pub tx_create tx_create_json tx_cond tx_verify tx_sign tx_history ledger srv_stake stake_lock stake_ext srv_xchange srv_dex net_srv poll esbocs decree find remove exec_cmd policy print_log stats gdb_export gdb_import plugin vpn_client exit"
 }
