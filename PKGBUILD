@@ -2,8 +2,8 @@
 
 pkgname=vrchat-avatar-scaler
 _pkgname=VRChat-Avatar-Scaler
-pkgver=0.2.2
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Control your avatar's scale via OSC"
 arch=("any")
 url="https://github.com/SalbugVR/$_pkgname"
@@ -15,10 +15,12 @@ source=("https://github.com/SalbugVR/${_pkgname}/archive/refs/tags/v${pkgver}.ta
         "vrchat-avatar-scaler.desktop"
 	"vrchat-avatar-scaler"
 	"scaler_config.json")
-sha256sums=('0adc9d6d3464c9c8d39daf6a0d5200016cbda51dcf1293dbc795396ca5ee23ea'
+
+sha256sums=('c8914dfcc94b21f7bbff5337591e2b7d11664885ff2d042b0f6b6ea8de0e3044'
             'a9eb665d62ed0adbdf554d6cdd7727e2713176452b02e9608151b70b4fe704db'
             '9685a2710c75091518e63fcee4a455f8e75dfa204336ca47379b5b290c3aaacb'
-            '4e5faca98290b8d3d3bdc73aa6d7da8b20922d8ab8dc7e99d5da637be2ff43f3')
+            'b90e10afa52d0acc99574be03d1525fde87ae413f859e0900c3276fa79dac217')
+
 package() {
     #make the dir writable to all
     install -dm757 "$pkgdir/opt/${pkgname}"
