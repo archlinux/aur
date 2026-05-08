@@ -1,8 +1,7 @@
-# $Id$
-# Maintainer: Ruben De Smet <me@rubdos.be>
+# Maintainer: Ruben De Smet <aur@rubdos.be>
 
 pkgname=sqlite-vec
-pkgver=0.1.6
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A vector search SQLite extension that runs anywhere!"
 arch=(i686 x86_64 armv7h aarch64)
@@ -10,7 +9,7 @@ license=('Apache')
 depends=()
 makedepends=('git' 'gcc' 'pkgconf' 'sqlite')
 url="https://github.com/asg017/sqlite-vec/"
-sha256sums=('2df2c99d8ac53f88b0944bbca078993b348ae3f1a164bc97570d47b9563effea')
+sha256sums=('9823e737d9934dcbe85dff75d3fca81018a9beee803d70fa77b16faab5d61dc9')
 # source=('sqlite-vec::git+https://github.com/asg017/sqlite-vec.git')
 source=("${url}/archive/v${pkgver}.tar.gz")
 

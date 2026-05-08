@@ -1,6 +1,6 @@
 pkgbase = sqlite-vec
 	pkgdesc = A vector search SQLite extension that runs anywhere!
-	pkgver = 0.1.6
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/asg017/sqlite-vec/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = sqlite-vec
 	makedepends = gcc
 	makedepends = pkgconf
 	makedepends = sqlite
-	source = https://github.com/asg017/sqlite-vec//archive/v0.1.6.tar.gz
-	sha256sums = 2df2c99d8ac53f88b0944bbca078993b348ae3f1a164bc97570d47b9563effea
+	source = https://github.com/asg017/sqlite-vec//archive/v0.1.9.tar.gz
+	sha256sums = 9823e737d9934dcbe85dff75d3fca81018a9beee803d70fa77b16faab5d61dc9
 
 pkgname = sqlite-vec
