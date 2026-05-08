@@ -1,7 +1,7 @@
 # Maintainer: Angelo Gazzola <(firstname) @ nglgzz.com>
 pkgname=neo4j-desktop
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing local and remote Neo4j Graph databases"
 arch=('x86_64')
 url=http://neo4j.org/
@@ -21,8 +21,9 @@ prepare() {
 }
 
 build() {
-    # Adjust .desktop so it will work outside AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${pkgname}|" "squashfs-root/${pkgname}.desktop" \
+    # Adjust .desktop so it will work outside AppImage container.
+    # Also force electron to use x11, as otherwise the main window is not opening (at least on wayland).
+    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${pkgname} --ozone-platform=x11|" "squashfs-root/${pkgname}.desktop" \
         "squashfs-root/${pkgname}.desktop"
 
     # The AppImage contains only an icon of size 1024x1024, so
