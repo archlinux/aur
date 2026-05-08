@@ -1,5 +1,5 @@
 pkgname=samba-util
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=2
 pkgdesc="A simple and modern GUI for managing Samba."
 
