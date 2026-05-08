@@ -1,6 +1,6 @@
 # Maintainer: Pablo <pablo@example.com>
 pkgname=tango-cli
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Declarative API testing CLI"
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f64b91db5f295e908b36f2aeb6434c55594e7efa147d8d9007bf97780ec2de96')
+sha256sums=('639f27b195125e58ae13e5bec45da9c41eb50e0d0094e8d135bcf6bc91e4818f')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "tango-${pkgver}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go build -ldflags "-X main.Version=v${pkgver}" -o tango .
 
@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "tango-${pkgver}"
   install -Dm755 tango "${pkgdir}/usr/bin/tango"
   install -Dm644 tango.bash "${pkgdir}/usr/share/bash-completion/completions/tango"
   install -Dm644 _tango "${pkgdir}/usr/share/zsh/site-functions/_tango"
