@@ -1,6 +1,6 @@
 pkgbase = voicevox-bin
 	pkgdesc = A text-to-speech software
-	pkgver = 0.25.1
+	pkgver = 0.25.2
 	pkgrel = 1
 	url = https://github.com/VOICEVOX/voicevox
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = voicevox-bin
 	conflicts = voicevox
 	options = !strip
 	options = !debug
-	source = https://github.com/VOICEVOX/voicevox/releases/download/0.25.1/VOICEVOX-CPU-X64.AppImage.7z.001
-	source = https://github.com/VOICEVOX/voicevox/releases/download/0.25.1/VOICEVOX-CPU-X64.AppImage.7z.002
-	sha256sums = 4eec1aed071bb1a44e6c196d50ba5b051e14890d16fe24e7e73670d4ed344ad7
-	sha256sums = ee4d3f49dfc2346e75e28e4e966c664a3c181d8622f372656adaa2825d262d6a
+	source = https://github.com/VOICEVOX/voicevox/releases/download/0.25.2/VOICEVOX-CPU-X64.AppImage.7z.001
+	source = https://github.com/VOICEVOX/voicevox/releases/download/0.25.2/VOICEVOX-CPU-X64.AppImage.7z.002
+	b2sums = e36263391b8af03da7e4e44995f5c65961fbbef7905d4cb107cb8b3fedf7bb0fbc381da261464f587126a123004b28530116170c77c2e578da182ad618ffcdc9
+	b2sums = b0079c64ef268c207fcf870771e2436d440ad6a8465c6ae0a65d05343ae6e0e1500bd7c372e0aeef5229ab80b861776b07432ae79d8a5006824e496d28ffc41d
 
 pkgname = voicevox-bin
 	arch = any
