@@ -2,7 +2,7 @@
 pkgname=cloudflarespeedtest-bin
 _appname=cfst
 pkgver=2.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="XIU2/CloudflareSpeedTest 🌩 'Choose Your Own Preferred IP' Test Cloudflare CDN latency and speed, get the fastest IP! Written in go.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -25,11 +25,15 @@ sha256sums_i686=('6da4bc3f683ae8e7d733a8a5468d4140a310c4751424a0676777b196879903
 sha256sums_x86_64=('1b1a2caa09246da589e1555a4a0aa7e4d84958dcb76d46e27b7f1216a4607e39')
 prepare() {
     mv "${srcdir}/使用+错误+反馈说明.txt" "${srcdir}/ReadMe.txt"
+    #sed -i "s/\.\/${_appname}/\/usr\/lib\/${pkgname%-bin}\/${_appname}/g" "${srcdir}/${_appname}_hosts.sh"
+    sed -i "33i\	cd /usr/lib/cloudflarespeedtest" "${srcdir}/${_appname}_hosts.sh"
+    #touch result_hosts.txt
 }
 package() {
     install -Dm755 "${srcdir}/${_appname}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/"*.txt -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/cfst_hosts.sh" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    #chmod 777 "${pkgdir}/usr/lib/${pkgname%-bin}/result_hosts.txt"
+    install -Dm755 "${srcdir}/${_appname}_hosts.sh" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/bin"
-    ln -sf "/usr/lib/${pkgname%-bin}/cfst_hosts.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/${_appname}_hosts.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
