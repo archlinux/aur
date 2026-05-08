@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=oxideterm-bin
 _pkgname=OxideTerm
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="All-in-one terminal workspace — local shells, SSH, SFTP, remote IDE, AI agent, and file manager in a single native binary. Built with Tauri 2 and pure Rust SSH (no OpenSSL). Smart reconnect, MCP, RAG, plugins, 30+ themes, 11 languages.(Prebuilt version)"
 arch=(
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x64.rpm")
-sha256sums_aarch64=('060de63333c1b11ebcfe6ef92e44f2bc5a0acfff930548bfa471d1b365ab81bb')
-sha256sums_x86_64=('f017ca98d0b923d860ce88e0ae762374f7d118dff269a70f92daa66574997000')
+sha256sums_aarch64=('24f113ddfa0bda6d2325ecb4a16c942067d41c860a3c7b84376d2f72c29c2bab')
+sha256sums_x86_64=('c369cdc747afa4842517016131aeff28a92dbcc047c9d61a65eb708eff545004')
 prepare() {
     sed -i "s/Categories=/Categories=Development;System;Utility;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
