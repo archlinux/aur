@@ -1,8 +1,8 @@
 post_install() {
   update-desktop-database -q /usr/share/applications
   printf "\n#--------------------------------------------------\n"
-  printf "# Rebuild the package when out-of-date.\n\n"
-  printf "# Use \"vatsim-crc clean\" to clean up WINEPREFIX.\n\n"
+  printf "# Rebuild the package when out-of-date.\n#\n"
+  printf "# Use \"vatsim-crc clean\" to clean up WINEPREFIX.\n#\n"
   printf "# Personally, I recommend Proton over Wine:\n"
   printf "# This package automatically detects umu-run and   \n"
   printf "# proton-ge-custom-bin. You may specify custom     \n"
