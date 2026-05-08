@@ -1,6 +1,6 @@
 pkgbase = haus-bin
 	pkgdesc = Command-line interface for Home Assistant
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/kevinboss/haus
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = haus-bin
 	provides = haus
 	conflicts = haus
 	options = !strip
-	source_x86_64 = https://github.com/kevinboss/haus/releases/download/v0.2.0/haus-v0.2.0-linux-x64.tar.gz
-	sha256sums_x86_64 = b95b78781484c80f4d11ebaa679a62fd9178458101e7f3af624c422fc394dd9e
+	source_x86_64 = https://github.com/kevinboss/haus/releases/download/v0.2.1/haus-v0.2.1-linux-x64.tar.gz
+	sha256sums_x86_64 = 978892510c2cb0baabbfdc8bdb82401b8e8de8db4ae84cef70329af8d82bacc1
 
 pkgname = haus-bin
