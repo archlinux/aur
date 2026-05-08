@@ -16,8 +16,8 @@ url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 
 # Apparently there is an alternate URL - https://archive.mozilla.org/pub/
 _base_url="https://ftp.mozilla.org/pub/${_name}/${_channel}"
-_version=$(curl "${CURL_OPTS[@]}" ${_base_url}/latest-mozilla-central/ | grep "${_lang}.linux-${CARCH}.checksums" | sed "s/^.*>firefox-//; s/\.${_lang}.*//" | sort -n | tail -n 1)
-_build_id_raw="$(curl -s "${_base_url}/latest-mozilla-central/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums" | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
+_version=152.0a1
+_build_id_raw=20260507083759
 declare -A _build_id
 _build_id=(
   [year]="${_build_id_raw:0:4}"
@@ -29,14 +29,11 @@ _build_id=(
   [date]="${_build_id_raw:0:8}"
   [time]="${_build_id_raw:8:6}"
 )
-_build_id_date=${_build_id[date]}
-_build_id_time=${_build_id[time]}
 
-pkgver=135.0a1.20241128.042549
-pkgver() {
-  printf "%s.%s.%s" ${_version} ${_build_id_date} ${_build_id_time}
-}
+pkgver=152.0a1.20260507.083759
+
 pkgrel=1
+
 arch=('x86_64' 'aarch64')
 license=('MPL' 'GPL' 'LGPL')
 conflicts=('firefox-nightly')
@@ -59,15 +56,18 @@ optdepends=(
   'startup-notification: support for FreeDesktop Startup Notification'
 )
 _url="${_base_url}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central"
+
 _src="${_name}-${_version}.${_lang}.linux-${CARCH}"
+
 _filename="${_build_id[date]}-${_build_id[time]}-${_src}"
+
 source=('firefox-nightly.desktop'
   'policies.json'
   "${_filename}.tar.xz::${_url}/${_src}.tar.xz"
   "${_filename}.tar.xz.asc::${_url}/${_src}.tar.xz.asc")
 sha512sums=('320659477fc3319db4b73492aa6ce39c3a5dbc4ab8adc27440cb1e7ab69dad2cea83a57d7cd77eebfe833fb8a48c7e021bdca851f1be4840fae292afdba96664'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
-            'SKIP'
+            '4b390a75b9f15bf664ead98fed1d011397f33c90664ebda5acc0c0146308347c1a2140807c9f6c2aad3d5bd21f4065953f86dc2ea8e24bde9c926915e44b6f0c'
             'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
