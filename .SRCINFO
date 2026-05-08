@@ -1,6 +1,6 @@
 pkgbase = yggd-bin
 	pkgdesc = Yggdrasil network daemon and command line tools
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/asciimoth/ygg
 	license = LGPL-3.0
@@ -11,12 +11,12 @@ pkgbase = yggd-bin
 	provides = genkeys
 	arch = aarch64
 	source_aarch64 = https://github.com/asciimoth/ygg/releases/download/v${pkgver}/yggd_${pkgver}_linux_arm64.tar.gz
-	sha256sums_aarch64 = c1581e20ed81dbd506f0bfaf9f07167b84db5a90f26edb04afd8f1f2b5665185
+	sha256sums_aarch64 = 54fee11836fb69b96a6cf64f7a19ef1a4be43032b9103229dae552aa74701582
 	arch = i686
 	source_i686 = https://github.com/asciimoth/ygg/releases/download/v${pkgver}/yggd_${pkgver}_linux_i686.tar.gz
-	sha256sums_i686 = ae5f0527b3fdf77e5ba2f4e2ec628e7ec038ccf34ebc11bdfb7e1bf83954c8cb
+	sha256sums_i686 = da6d51a41823260565f175a758d67646e5b2a13585bb26088fdde508326dbdf9
 	arch = x86_64
 	source_x86_64 = https://github.com/asciimoth/ygg/releases/download/v${pkgver}/yggd_${pkgver}_linux_x86_64.tar.gz
-	sha256sums_x86_64 = b262c0a0858fa3e54dd9b08c2acdb8131a56de399b646300de0a3b61da0932dd
+	sha256sums_x86_64 = d0cab72f4984495efab73e413a6173d8fe32e37f13cbbe20e247bfce00c63b70
 	
 pkgname = yggd-bin
