@@ -24,11 +24,11 @@ depends=(
 makedepends=(
   'cargo'
   'cmake'
-  'desktop-file-utils'
   'libxcb'
   'libxkbcommon'
   'python'
   'glslang'
+  'scdoc'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('25a46bbe123ab5e322b1c160c396c94b3b381df99c22c903a0829b580cd219bcdd58b83923c50dd62821af6bd01d67a4a6de647b2278642f1765b9e5e8bc2c0b')
@@ -41,6 +41,7 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
   cargo build --frozen --release --all-features
+  make -C extra/man
 }
 
 check() {
@@ -53,7 +54,11 @@ package() {
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
   install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "README.md"
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE"
-  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "misc/${pkgname}.desktop"
+  install -vDm 644 "misc/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -vDm 644 "misc/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+  install -vDm 644 "misc/com.rioterm.Rio.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -vDm 644 extra/man/*.1 -t "$pkgdir/usr/share/man/man1/"
+  install -vDm 644 extra/man/*.5 -t "$pkgdir/usr/share/man/man5/"
 }
 
 # vim: ts=2 sw=2 et:
