@@ -1,11 +1,11 @@
 pkgbase = ublacklist
 	pkgdesc = uBlackList prevents the sites you specify from appearing in search engines' results.
-	pkgver = 8.9.2
+	pkgver = 9.6.0
 	pkgrel = 1
 	url = https://github.com/iorate/ublacklist
 	arch = any
 	license = MIT
-	source = https://github.com/iorate/ublacklist/releases/download/v8.9.2/ublacklist-v8.9.2-chrome.zip
-	b2sums = 4579846e9b733fb8a94e384dcf7b3d39f9563ffa039a45eaca97094bc5c5d759ea5e2be5383addfcf8edb9fb5399c4c76a1330c34195d2d157b4fe1add897db0
+	source = https://github.com/iorate/ublacklist/releases/download/v9.6.0/ublacklist-v9.6.0-chrome.zip
+	b2sums = 4f8435d50f0c01d3e174f67f144f06f1e8c6bab35dfc4be4c5471dc59520c1d3709df03bb1361bd3efdacdc3ba5722dd1d3aa3e4359ae799291fa5c21bee0e47
 
 pkgname = ublacklist
