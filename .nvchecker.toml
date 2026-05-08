@@ -1,0 +1,5 @@
+[childflow-bin]
+source = "github"
+github = "blacknon/childflow"
+use_latest_release = true
+prefix = ""
