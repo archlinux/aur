@@ -1,0 +1,21 @@
+pkgbase = jj-starship-git
+	pkgdesc = Unified Git/JJ Starship prompt module
+	pkgver = 0.7.0.r0.g76cf006
+	pkgrel = 1
+	url = https://github.com/dmmulroy/jj-starship
+	arch = x86_64
+	arch = aarch64
+	arch = loong64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	provides = jj-starship
+	conflicts = jj-starship
+	options = !lto
+	source = git+https://github.com/dmmulroy/jj-starship.git
+	sha256sums = SKIP
+
+pkgname = jj-starship-git
