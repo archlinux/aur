@@ -1,0 +1,12 @@
+# makepkg working directories
+src/
+pkg/
+
+# downloaded source archives & built packages
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.zip
+
+# local namcap / log droppings
+*.log

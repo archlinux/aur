@@ -1,0 +1,41 @@
+[Unit]
+Description=Certimate - self-hosted SSL certificate ACME tool
+Documentation=https://github.com/certimate-go/certimate
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=certimate
+Group=certimate
+WorkingDirectory=/var/lib/certimate
+ExecStart=/usr/bin/certimate serve --http 127.0.0.1:8090 --dir /var/lib/certimate/pb_data
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=65536
+
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+ReadWritePaths=/var/lib/certimate
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources @mount @debug @cpu-emulation @obsolete @raw-io @reboot @swap
+
+[Install]
+WantedBy=multi-user.target

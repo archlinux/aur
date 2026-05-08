@@ -1,0 +1,29 @@
+pkgbase = certimate
+	pkgdesc = Self-hosted ACME tool for visual SSL certificate issuance, deployment, renewal, and monitoring
+	pkgver = 0.4.22
+	pkgrel = 1
+	url = https://github.com/certimate-go/certimate
+	install = certimate.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go>=1.25
+	makedepends = nodejs>=24
+	makedepends = npm
+	makedepends = git
+	depends = glibc
+	optdepends = ca-certificates: TLS root certificates for outbound ACME requests
+	provides = certimate=0.4.22
+	conflicts = certimate-bin
+	options = !lto
+	source = certimate-0.4.22.tar.gz::https://github.com/certimate-go/certimate/archive/refs/tags/v0.4.22.tar.gz
+	source = certimate.service
+	source = certimate.sysusers
+	source = certimate.tmpfiles
+	sha256sums = ee28716e5460313f24c5f9dce4bf0555b000cfd44562a835eb682139edeae158
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = certimate
