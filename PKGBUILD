@@ -1,5 +1,6 @@
 # Maintainer: magie <aur@msareid.com>
 # Contributor: Brenden Hoffman <hbrenden@fastmail.com>
+# Contributor: yochananmarqos <mark.wagie@proton.me>
 
 pkgname=fzf-tab
 pkgver=1.3.0
