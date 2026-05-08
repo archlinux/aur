@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=nightlight-bin
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Experience a new way of connecting with like-minded people on Nightlight, a free social media platform that values inclusivity, customization, and an ad-free environment."
 
 provides=(nightlight)
@@ -24,7 +24,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.deb::https://assets.night-light.cz/nightlight_${pkgver}_amd64.deb")
-sha256sums=('0158567575707918d98ea172fbc1624528c99a5624c51f91653efe4173f78719')
+sha256sums=('9121387bc2709c88c8a1fc3b09d9ef1b60426e0b5ca251c21700c2c8316bca06')
 
 noextract=("$pkgname-$pkgver.deb")
 

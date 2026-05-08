@@ -1,7 +1,7 @@
 pkgbase = nightlight-bin
 	pkgdesc = Experience a new way of connecting with like-minded people on Nightlight, a free social media platform that values inclusivity, customization, and an ad-free environment.
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://nightlightapp.net/
 	arch = x86_64
 	depends = c-ares
@@ -17,8 +17,8 @@ pkgbase = nightlight-bin
 	depends = libz.so
 	provides = nightlight
 	conflicts = nightlight
-	noextract = nightlight-bin-1.0.0.deb
-	source = nightlight-bin-1.0.0.deb::https://assets.night-light.cz/nightlight_1.0.0_amd64.deb
-	sha256sums = 0158567575707918d98ea172fbc1624528c99a5624c51f91653efe4173f78719
+	noextract = nightlight-bin-1.0.1.deb
+	source = nightlight-bin-1.0.1.deb::https://assets.night-light.cz/nightlight_1.0.1_amd64.deb
+	sha256sums = 9121387bc2709c88c8a1fc3b09d9ef1b60426e0b5ca251c21700c2c8316bca06
 
 pkgname = nightlight-bin
