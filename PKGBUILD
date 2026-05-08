@@ -47,6 +47,13 @@ build() {
 
 package() {
     cd linux-7.0.5
-    DESTDIR="${pkgdir}" make modules_install install
-    cp arch/x86_64/boot/bzImage "${pkgdir}/boot/vmlinuz-solara"
+    
+    KERNELRELEASE=$(make -s kernelrelease)
+    
+    make modules_install INSTALL_MOD_PATH="${pkgdir}"
+    
+    install -Dm644 arch/x86_64/boot/bzImage "${pkgdir}/boot/vmlinuz-solara"
+    
+    install -Dm644 .config "${pkgdir}/boot/config-solara"
+    install -Dm644 System.map "${pkgdir}/boot/System.map-solara"
 }
