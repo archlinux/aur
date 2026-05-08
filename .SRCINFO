@@ -1,6 +1,6 @@
 pkgbase = kreuzberg-bin
 	pkgdesc = High-performance text extraction library - CLI binary
-	pkgver = 4.9.5
+	pkgver = 4.9.6
 	pkgrel = 1
 	url = https://github.com/kreuzberg-dev/kreuzberg
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kreuzberg-bin
 	license = MIT
 	provides = kreuzberg
 	conflicts = kreuzberg
-	source_x86_64 = kreuzberg-4.9.5-x86_64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.9.5/kreuzberg-cli-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ab8ab2e66e10130d3c93652b308c21abbed28d438b2097a4e8805ec48c88087c
-	source_aarch64 = kreuzberg-4.9.5-aarch64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.9.5/kreuzberg-cli-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d9ae063ad72b6df66a1ec74f7a1acb6e6208c814005f06b0b788400b616b0559
+	source_x86_64 = kreuzberg-4.9.6-x86_64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.9.6/kreuzberg-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 28dc0cfe4d9cbd44a88b2f856ace556d0c5a860e3fe64c4125c1010c35a9f032
+	source_aarch64 = kreuzberg-4.9.6-aarch64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.9.6/kreuzberg-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4f39d9aef8bd268130429981fd590fcef2ce66815117287c3fe325b49f8895ae
 
 pkgname = kreuzberg-bin
