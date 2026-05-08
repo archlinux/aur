@@ -1,0 +1,20 @@
+pkgbase = pikvm-bin
+	pkgdesc = PiKVM ATX power control — terminal UI and CLI
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/j4y-w4lk3r/pikvm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pikvm
+	conflicts = pikvm
+	optdepends = fzf: fuzzy port/iso/script picker
+	optdepends = ffmpeg: ffplay HDMI stream view
+	optdepends = mpv: alternate HDMI stream view
+	optdepends = chafa: snapshot thumbnails (future grid view)
+	source_x86_64 = pikvm-bin-0.0.1-x86_64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.0.1/pikvm_0.0.1_linux_x86_64.tar.gz
+	source_aarch64 = pikvm-bin-0.0.1-aarch64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.0.1/pikvm_0.0.1_linux_arm64.tar.gz
+	sha256sums_x86_64 = SKIP
+	sha256sums_aarch64 = SKIP
+
+pkgname = pikvm-bin
