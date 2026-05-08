@@ -6,6 +6,7 @@ pkgbase = hwatch-bin
 	arch = x86_64
 	license = MIT
 	depends = glibc
+	depends = libgcc
 	provides = hwatch
 	conflicts = hwatch
 	source = LICENSE-0.4.2::https://raw.githubusercontent.com/blacknon/hwatch/0.4.2/LICENSE

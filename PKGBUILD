@@ -13,9 +13,9 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${pkgver}"
 arch=('x86_64')
 license=('MIT')
 
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-depends=('glibc')
+conflicts=("${_pkgname}")
+depends=('glibc' 'libgcc')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
@@ -33,13 +33,13 @@ build() {
 package() {
   cd "${srcdir}/" || exit
 
-  install -Dm755 "./bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "./man/${_pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
+  install -Dm644 "man/${_pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
 
-  install -Dm644 "./completion/bash/${_pkgname}-completion.bash" "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
-  install -Dm644 "./completion/fish/${_pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -Dm644 "./completion/zsh/_${_pkgname}" "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "completion/bash/${_pkgname}-completion.bash" "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 "completion/fish/${_pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -Dm644 "completion/zsh/_${_pkgname}" "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
