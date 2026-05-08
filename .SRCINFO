@@ -1,0 +1,15 @@
+pkgbase = tasks-org-appimage
+	pkgdesc = Bringing Astrid Tasks back from the dead
+	pkgver = 15.4.1
+	pkgrel = 1
+	url = https://github.com/tasks/tasks
+	arch = x86_64
+	license = GPL-3.0
+	provides = tasks-org
+	conflicts = tasks-org
+	options = !strip
+	options = !debug
+	source = tasks-org-15.4.1.AppImage::https://github.com/tasks/tasks/releases/download/15.4.1/tasks-org-linux-x86_64.AppImage
+	sha256sums = 445c5f069d710e9ed894a01d59819cdaf7fe0fe787606297497f0bb3176e87b3
+
+pkgname = tasks-org-appimage
