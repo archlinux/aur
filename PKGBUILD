@@ -4,7 +4,7 @@
 
 pkgname=roxybrowser-bin
 _pkgname=roxybrowser
-pkgver=3.8.3
+pkgver=3.8.4
 pkgrel=1
 pkgdesc="Premier Antidetect Browser - Streamline Your Workflow Effortlessly (Unofficial Community Package)"
 arch=('x86_64')
@@ -15,8 +15,8 @@ optdepends=('libappindicator-gtk3: for system tray icon support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
-source_x86_64=("roxybrowser-3.8.3.deb::https://dl.roxybrowser.com/app-download/Linux-64-latest")
-sha256sums_x86_64=('0cad55766af27b0c75707c33d5322842688b20b916085163fdac690399527bac')
+source_x86_64=("roxybrowser-3.8.4.deb::https://dl.roxybrowser.com/app-download/Linux-64-latest")
+sha256sums_x86_64=('ba0210b48d75f591aed259106e6853e8fa30232c7d96e1297f52242b33eaf18a')
 
 package() {
 	# Extract the official deb package downloaded from roxybrowser.com
