@@ -1,0 +1,18 @@
+pkgbase = zerodds-bin
+	pkgdesc = Pure-Rust OMG Data Distribution Service implementation (precompiled binaries)
+	pkgver = 1.0.0_rc1
+	pkgrel = 1
+	url = https://zerodds.org
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = zerodds
+	conflicts = zerodds
+	depends = glibc
+	depends = gcc-libs
+	source_x86_64 = https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.1/zerodds-1.0.0-rc.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.1/zerodds-1.0.0-rc.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = zerodds-bin
