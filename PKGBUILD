@@ -1,12 +1,12 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql-git'
-pkgver=0.9.0.0.r13.gc2589f10c
+pkgver=0.9.1.0.r27.gea6c79a94
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (MySQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby' 'ruby-bundler' 'ruby-erb' 'redis' 'imagemagick' 'libidn' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
+depends=('ruby' 'ruby-bundler' 'ruby-erb' 'ruby-irb' 'ruby-mutex_m' 'redis' 'imagemagick' 'libidn' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
 optdepends=('jemalloc: lower memory consumption' 'mariadb: Database server')
 makedepends=('nodejs' 'yarn' 'git')
 conflicts=('diaspora-mysql' 'diaspora-postgresql' 'diaspora-postgresql-git')
@@ -69,18 +69,20 @@ build() {
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
   export GEM_HOME="$_builddir/vendor/bundle" \
          BUNDLE_GEMFILE="$_builddir/Gemfile"
+  HOME=$_builddir $_gem install bundler -v "2.5.9"
   HOME=$_builddir $_bundle config --local path vendor/bundle
   HOME=$_builddir $_bundle config --local frozen 1
   HOME=$_builddir $_bundle config --local disable_shared_gems true
   HOME=$_builddir $_bundle config --local with mysql
   HOME=$_builddir $_bundle config --local without development:test
   HOME=$_builddir C_INCLUDE_PATH=/usr/include:/usr/include/tirpc $_bundle install
+  HOME=$_builddir yarn
 
   # Enforce bundler binstubs
   $_bundle binstubs bundler foreman puma sidekiq rake rails --force
 
   # Workaround libsass.so not being found
-  ln -s ../../../../extensions/x86_64-linux/3.3.0/sassc-2.4.0/sassc/libsass.so $_builddir/vendor/bundle/ruby/3.3.0/gems/sassc-2.4.0/lib/sassc/libsass.so
+  ln -s ../../../../extensions/x86_64-linux/3.4.0/sassc-2.4.0/sassc/libsass.so $_builddir/vendor/bundle/ruby/3.4.0/gems/sassc-2.4.0/lib/sassc/libsass.so
 
   msg "Patch configuration examples"
   sed -i -e 's|#certificate_authorities = "/etc/ssl/certs/ca-certificates.crt"|certificate_authorities = "/etc/ssl/certs/ca-certificates.crt"|' \
@@ -93,6 +95,8 @@ build() {
 
   cp $_builddir/config/diaspora.toml{.example,}
   cp $_builddir/config/database.yml{.example,}
+
+  export RUBYOPT="-rmutex_m"
 
   msg "Create secret token"
   HOME=$_builddir RAILS_ENV=production bin/bundle exec rake generate:secret_token
@@ -145,5 +149,5 @@ sha256sums=('SKIP'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             '2ac3ef6c4f0396b7738b18d07c56f57e0db5e5e194bf8b07ffd6ad790dd92e17'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
-            '8a174c2a64aff5fe72ca6b61bb05c5d85f4cd5cbb91aa3a0334e8c5a15b45bd3'
+            'bc48c0368306f62b9f443a3b1b391adaa93666fc51f0041f0a8ed3f710b21f86'
             '29cfd5116e919d8851ff70b8b82af8d4a6c8243a9d1ca555981a1a695e2d7715')
