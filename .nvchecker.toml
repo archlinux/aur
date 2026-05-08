@@ -1,0 +1,5 @@
+["twatch-bin"]
+source = "github"
+github = "blacknon/twatch"
+use_latest_release = true
+prefix = "v"

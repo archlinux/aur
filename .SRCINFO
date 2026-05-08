@@ -1,0 +1,15 @@
+pkgbase = twatch-bin
+	pkgdesc = Wrap a child TUI app and keep screen history
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/blacknon/twatch
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = twatch
+	conflicts = twatch
+	source_x86_64 = https://github.com/blacknon/twatch/releases/download/v0.1.1/twatch-0.1.1.x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b69357781ca2e3f9f5fa5f44101d2dc956f8e3335def1cf998ff18079ff82755
+
+pkgname = twatch-bin
