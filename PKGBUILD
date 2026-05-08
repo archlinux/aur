@@ -1,29 +1,31 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
-_name=flit
 pkgname=flit-git
-pkgver=1.2.1.r24.gd0758b7
+pkgver=4.0.0.r0.gef7f319
 pkgrel=1
 pkgdesc='Simple packaging tool for simple Python packages.'
 arch=('any')
-url="http://$_name.readthedocs.io"
+url="http://flit.readthedocs.io"
 license=('BSD')
-provides=($_name)
-conflicts=($_name)
-depends=(python python-pytoml python-requests python-requests_download python-docutils)
-makedepends=('python-pip')
-source=("${_name}::git+https://github.com/takluyver/$_name.git")
+provides=('flit')
+conflicts=('python-flit')
+depends=('python' 'python-docutils' 'python-flit-core' 'python-requests' 'python-tomli-w')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("git+https://github.com/pypa/flit.git")
 sha256sums=('SKIP')
-noextract=("$_wheel")
 
 pkgver() {
-	cd "$_name"
+	cd flit
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+	cd flit
+  python -m build --wheel --no-isolation
+}
+
 package() {
-	cd "$srcdir/$_name"
-	python -m flit build
-	ver=$(python -c 'import flit; print(flit.__version__)')
-	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "dist/$_name-$ver-py3-none-any.whl"
+  cd flit
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
