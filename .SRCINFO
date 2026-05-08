@@ -1,0 +1,16 @@
+pkgbase = rkn-block-checker
+	pkgdesc = Diagnose RKN/TSPU internet blocks layer by layer (DNS, TCP, TLS, HTTP)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/MayersScott/rkn-block-checker
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-requests
+	source = https://github.com/MayersScott/rkn-block-checker/releases/download/v0.4.0/rkn_block_checker-0.4.0.tar.gz
+	sha256sums = 4ce4e9958de6c92ed434a52a1a9379502374c9d9c1af8ed6e4112c36f59e87f9
+	b2sums = SKIP
+
+pkgname = rkn-block-checker
