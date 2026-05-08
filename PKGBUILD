@@ -2,7 +2,7 @@
 pkgname=linux-sensor-tray-bin
 _pkgname=linux-sensor-tray
 _appimage_name=Linux-Sensor-Tray
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Tray-first Electron app for live CPU/GPU/mainboard/storage stats on Linux (AppImage repackage)"
 arch=('x86_64')
@@ -42,11 +42,15 @@ options=(!strip !debug)
 source=(
   "${_appimage_name}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appimage_name}-${pkgver}.AppImage"
   "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
+  "${_pkgname}-setup-${pkgver}::${url}/raw/v${pkgver}/scripts/linux-sensor-tray-setup"
   "${_pkgname}.sh"
   "${_pkgname}.desktop"
 )
-sha256sums=('c8d47b893ee2b8e174ba40d92fbb1bc07e7d4717fd3c113c6918ffa81ae1f072'
+# CI regenerates hashes via updpkgsums for the actual tag at deploy time;
+# local makepkg should run `updpkgsums` first if you change pkgver.
+sha256sums=('2062471186d1275cf830ba9e1e1c04f154b6ea12392b7b0e07a8fc322f946562'
             'e552a4ea6b18459048d98882b05ff09dc1d1b6d0fb32443de4f7367335d14348'
+            '6eabb99dce20a12387ef81f5b220d1636ea06f363fed48246507af74c377c532'
             'f1e53185b3695f2fabdca9474b782fb6db31fc248b925beb5208494b82ca5343'
             '4af4bed1cb787c29e0f5345330f7ba83bbcb97ea5d42dde20f3e77b56522697a')
 noextract=("${_appimage_name}-${pkgver}.AppImage")
@@ -78,6 +82,7 @@ package() {
   chmod 4755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"
 
   install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${srcdir}/${_pkgname}-setup-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}-setup"
 
   install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
