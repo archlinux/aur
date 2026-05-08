@@ -1,0 +1,16 @@
+pkgbase = codex-proxy-bin
+	pkgdesc = Local proxy exposing ChatGPT Codex Responses API as OpenAI/Anthropic/Gemini-compatible endpoints
+	pkgver = 2.0.70
+	pkgrel = 1
+	url = https://github.com/icebear0828/codex-proxy
+	arch = x86_64
+	license = custom:non-commercial
+	depends = fuse2
+	provides = codex-proxy
+	conflicts = codex-proxy
+	noextract = Codex-Proxy-2.0.70-linux-x86_64.AppImage
+	options = !strip
+	source = Codex-Proxy-2.0.70-linux-x86_64.AppImage::https://github.com/icebear0828/codex-proxy/releases/download/v2.0.70/Codex-Proxy-2.0.70-linux-x86_64.AppImage
+	sha256sums = 695846af059eab7a78d6649ad6d9d4256ec8c19332e3d5e0df8b68a4f920731c
+
+pkgname = codex-proxy-bin
