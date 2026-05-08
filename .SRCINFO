@@ -1,6 +1,6 @@
 pkgbase = wdotool-bin
 	pkgdesc = xdotool-compatible input automation for Wayland (prebuilt binary)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/cushycush/wdotool
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = wdotool-bin
 	provides = wdotool
 	conflicts = wdotool
 	conflicts = wdotool-git
-	source = wdotool-bin-0.5.0.tar.xz::https://github.com/cushycush/wdotool/releases/download/v0.5.0/wdotool-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = b09b356ef3886c2d8ba2640c610b3d2879b8523c4d06ce241aa2ff0fd1517af9
+	source = wdotool-bin-0.5.1.tar.xz::https://github.com/cushycush/wdotool/releases/download/v0.5.1/wdotool-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 1c983960750489837f10db09a9697a98670f08a8a043cb65951123a7a1307446
 
 pkgname = wdotool-bin

@@ -1,7 +1,7 @@
 # Maintainer: Matthew Cushing <hgxtymphwn@privaterelay.appleid.com>
 pkgname=wdotool-bin
 _pkgname=wdotool
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="xdotool-compatible input automation for Wayland (prebuilt binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libxkbcommon' 'wayland')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/wdotool-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('b09b356ef3886c2d8ba2640c610b3d2879b8523c4d06ce241aa2ff0fd1517af9')
+sha256sums=('1c983960750489837f10db09a9697a98670f08a8a043cb65951123a7a1307446')
 
 package() {
     cd "wdotool-x86_64-unknown-linux-gnu"
