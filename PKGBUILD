@@ -1,7 +1,7 @@
 # Maintainer: Pavle Barši <pakibarsipavle@gmail.com>
 
 pkgname=mnd
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A tool that can deauth multiple networks at once written in C++"
 arch=('x86_64')
@@ -20,7 +20,7 @@ build() {
 
 package() {
     cd "${srcdir}/multiple-network-deauth"
-    install -Dm755 mcmodm "${pkgdir}/usr/bin/mnd"
+    install -Dm755 mnd "${pkgdir}/usr/bin/mnd"
 
     install -Dm644 README.md \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
