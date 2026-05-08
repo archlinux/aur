@@ -1,6 +1,6 @@
 pkgbase = organicmaps
 	pkgdesc = Offline Maps
-	pkgver = 2026.05.04_13
+	pkgver = 2026.05.07_10
 	pkgrel = 1
 	url = https://organicmaps.app
 	arch = x86_64
