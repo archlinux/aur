@@ -2,7 +2,7 @@
 # Contributor: Alexey Galakhov
 
 pkgname=canon-lbp2900-capt
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="CUPS driver for Canon LBP2900/LBP3000 CAPT printers (reverse-engineered)"
 arch=('x86_64' 'i686' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('autoconf' 'automake' 'cups')
 provides=('captdriver')
 conflicts=('captdriver')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gauravyad69/Canon-LBP2900B/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('88e0cb030981230ec7fdbf65b08781b1f54dccbe5be1126dce1312762a3a6ac6')
+sha256sums=('05289ecdedb04605254ed595cb46323703749eebb3c59d2d04eaadab8feb411c')
 
 build() {
     cd "Canon-LBP2900B-${pkgver}"
@@ -36,7 +36,7 @@ package() {
     install -Dm644 Canon-LBP-2900.ppd "${pkgdir}/usr/share/cups/model/Canon-LBP-2900.ppd"
     
     # Install documentation
-    install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 SPECS "${pkgdir}/usr/share/doc/${pkgname}/SPECS"
     install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
