@@ -2,9 +2,9 @@
   "version": 2,
   "data": {
     "pi-ext-awsdocs": {
-      "version": "0.1.4",
-      "gitref": "refs/tags/v0.1.4",
-      "url": "https://github.com/dougefresher/pi-ext-awsdocs/releases/tag/v0.1.4"
+      "version": "1.0.0",
+      "gitref": "refs/tags/v1.0.0",
+      "url": "https://github.com/dougefresher/pi-ext-awsdocs/releases/tag/v1.0.0"
     }
   }
 }
