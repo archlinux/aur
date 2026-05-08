@@ -2,7 +2,7 @@
 
 pkgbase=apache-tvm-ffi
 pkgname=('tvm-ffi' 'python-tvm-ffi')
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 arch=('any')
 pkgdesc='Open ABI and FFI for Machine Learning Systems'
@@ -18,6 +18,8 @@ makedepends=(
 	gcc
 #	dlpack
 	cython
+	python-build
+	python-setuptools-scm
 	python-scikit-build-core
 	python-installer
 )
@@ -28,7 +30,7 @@ source=(
 	libbacktrace.patch
 )
 sha256sums=(
-	'974c208766c304c780c17c6d405449e862f83b22c7b6b2b8c28b29d55a806ae3'
+	'153cd2c5a9717804cb0bcd9b2709f22a1e5f80ed05b5a490faf5949b136eedba'
 	'eb549f83265dd06550672f68daeb5f4bc20c20b41bcfd162710e639248b4e4cc'
 )
 
@@ -49,7 +51,7 @@ package_python-tvm-ffi() {
 	depends=('python')
 
 	cd ${srcdir}/${pkgbase//-/_}-${pkgver}
-	python3 -m installer --prefix ${pkgdir}/usr dist/*.whl
+	python3 -m installer --prefix ${pkgdir}/usr dist/*${pkgver}*.whl
 }
 
 package_tvm-ffi() {
