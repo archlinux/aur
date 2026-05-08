@@ -1,0 +1,17 @@
+pkgbase = legendary-lyrics
+	pkgdesc = Terminal music visualizer with album art, synced lyrics and bar animation
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/profevine/legendary-lyrics
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-textual
+	depends = python-httpx
+	depends = python-pillow
+	depends = playerctl
+	optdepends = cava: real audio bar visualization
+	source = legendary-lyrics-1.0.0.tar.gz::https://github.com/profevine/legendary-lyrics/archive/v1.0.0.tar.gz
+	sha256sums = 121e5b2890f73a9769ee50484e2fe162037bffbb64aea7b4f73228ccfdb87e50
+
+pkgname = legendary-lyrics
