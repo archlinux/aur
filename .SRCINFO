@@ -1,0 +1,17 @@
+pkgbase = asset-tool-git
+	pkgdesc = Upload and download Roblox assets (StrafesNET)
+	pkgver = 0.5.1.r286.173ad65
+	pkgrel = 1
+	url = https://git.itzana.me/StrafesNET/asset-tool
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = asset-tool
+	conflicts = asset-tool
+	source = asset-tool::git+https://git.itzana.me/StrafesNET/asset-tool.git
+	sha256sums = SKIP
+
+pkgname = asset-tool-git
