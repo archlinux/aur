@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://kafkio.com/download/kafkio/${pkgve
         "kafkio.desktop"
         "kafkio.install"
         "laptop_k_colour.svg")
-sha256sums=('d8a242913fd2666763f8b22eed4a272dca2ae40a694bde52e2f95502f9357275'
+sha256sums=('e59db12b7b63aecbe415ebd034034ee3417679648a86392b9357aea4c90291e8'
             '471bd05ff4e330918adbd69c746a6644fb2006aca40e65ad899047f6dbf56d9f'
             '5a76c0ef634149fa2ca7ac9e44b0d296affecde78921b10210c2f36e76a7c18e'
             '875b569e6358652351deb034afd68b8ee34a7e1a6e92ab7947e3e4980140e5d0')
