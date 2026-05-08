@@ -1,6 +1,6 @@
 # Maintainer: Mindsaver <Mindsaver@users.noreply.github.com>
 pkgname=linux-sensor-tray
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Tray-first Electron app for live CPU/GPU/mainboard/storage stats on Linux"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "${pkgname}.sh"
   "${pkgname}.desktop"
 )
-sha256sums=('e850c6497c6f54723c5c014d01645fe465091690155a5adbe5d24ab660057a43'
+sha256sums=('fe819ffbc17002f8f5014dff7da9e8f748c8e1cdbc26f505f26233e5ce3bc1a5'
             '90267ebd6e338215d5358159ade24aaf9403008d19db1c81553bc5e8d94421d3'
             '4af4bed1cb787c29e0f5345330f7ba83bbcb97ea5d42dde20f3e77b56522697a')
 
