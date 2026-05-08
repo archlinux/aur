@@ -1,0 +1,15 @@
+pkgbase = mnd
+	pkgdesc = A tool that can deauth multiple networks at once written in C++
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MidnightPavlaka635920/multiple-network-deauth
+	arch = x86_64
+	license = GPLv3
+	makedepends = make
+	makedepends = gcc
+	depends = aircrack-ng
+	depends = wireless_tools
+	source = git+https://github.com/MidnightPavlaka635920/multiple-network-deauth.git#tag=v1.0
+	sha256sums = SKIP
+
+pkgname = mnd
