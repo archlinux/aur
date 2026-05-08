@@ -1,12 +1,12 @@
 pkgbase = lapifetch
 	pkgdesc = Simple bunny-themed Linux fetch utility
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/asunyan-dev/lapifetch
 	arch = x86_64
 	license = MIT
 	depends = gcc
-	source = lapifetch-.tar.gz::https://github.com/asunyan-dev/lapifetch/archive/refs/tags/v0.1.1.tar.gz
+	source = lapifetch-.tar.gz::https://github.com/asunyan-dev/lapifetch/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = lapifetch
