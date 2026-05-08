@@ -8,8 +8,8 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=6.7.9
-pkgrel=2
+pkgver=6.8.1
+pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -78,11 +78,13 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  'cc329cccef97e127c6e6e96e239fa7578cee576d4b88236310cc1535c71d9e11'
+  'edfa7b1448f15d05d5ea8295d0a51618d6b66de17cff70f0383049acbc61c421'
   'SKIP'
 )
 
 prepare() {
+  cd "$_pkgsrc"
+
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -90,19 +92,44 @@ prepare() {
     src="${src%.zst}"
     if [[ $src == *.patch ]]; then
       printf '\nApplying patch: %s\n' "$src"
-      patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
 
   # force system minizip-ng
   rm -rf "$_pkgsrc/Telegram/ThirdParty/minizip"
-  sed -E -e '/pkg_check_modules/s&\bminizip\b&minizip-ng&' -i "$_pkgsrc/cmake/external/minizip/CMakeLists.txt"
+  sed -E -e '/pkg_check_modules/s&\bminizip\b&minizip-ng&' -i "cmake/external/minizip/CMakeLists.txt"
 
   # add missing headers for gcc 16
   sed -E -e '1i #include <cstdint>' -i \
-    "$_pkgsrc/Telegram/ThirdParty/tgcalls/tgcalls/DirectConnectionChannel.h" \
-    "$_pkgsrc/Telegram/ThirdParty/tgcalls/tgcalls/third-party/json11.cpp" \
-    "$_pkgsrc/Telegram/ThirdParty/tgcalls/tgcalls/v2/SignalingConnection.h"
+    "Telegram/ThirdParty/tgcalls/tgcalls/DirectConnectionChannel.h" \
+    "Telegram/ThirdParty/tgcalls/tgcalls/third-party/json11.cpp" \
+    "Telegram/ThirdParty/tgcalls/tgcalls/v2/SignalingConnection.h"
+
+  # extra patches
+  local _bn _dir
+  for src in patches/*.patch; do
+    _bn=$(basename "$src")
+
+    case "$_bn" in
+      cmake_*.patch)
+        _dir="cmake"
+        ;;
+      codegen_*.patch)
+        _dir="Telegram/codegen"
+        ;;
+      lib_base_*.patch)
+        _dir="Telegram/lib_base"
+        ;;
+      *)
+        echo "Skipping unknown patch: $src"
+        continue
+        ;;
+    esac
+
+    printf '\nApplying patch: %s\n' "$src"
+    patch -d "$_dir" -Np1 -F100 -i "$PWD/$src"
+  done
 }
 
 build() {
