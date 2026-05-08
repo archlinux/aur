@@ -1,6 +1,6 @@
 # Maintainer: patcito
 pkgname=prettymux
-pkgver=0.2.28
+pkgver=0.2.31
 pkgrel=1
 pkgdesc="GPU-accelerated terminal multiplexer"
 arch=('x86_64')
@@ -50,6 +50,8 @@ package() {
   install -d "$pkgdir/usr/share/prettymux/shell-integration"
   cp -a "$srcdir/ghostty/src/shell-integration/." \
     "$pkgdir/usr/share/prettymux/shell-integration/"
+  bash "$srcdir/prettymux/packaging/verify-shell-integration.sh" \
+    "$pkgdir/usr/share/prettymux"
   install -Dm755 "$srcdir/prettymux/src/gtk/bin/open" \
     "$pkgdir/usr/share/prettymux/bin/open"
   install -Dm755 "$srcdir/prettymux/src/gtk/bin/xdg-open" \
