@@ -15,12 +15,10 @@ source=("https://github.com/SalbugVR/${_pkgname}/archive/refs/tags/v${pkgver}.ta
         "vrchat-avatar-scaler.desktop"
 	"vrchat-avatar-scaler"
 	"scaler_config.json")
-
 sha256sums=('c8914dfcc94b21f7bbff5337591e2b7d11664885ff2d042b0f6b6ea8de0e3044'
             'a9eb665d62ed0adbdf554d6cdd7727e2713176452b02e9608151b70b4fe704db'
             '9685a2710c75091518e63fcee4a455f8e75dfa204336ca47379b5b290c3aaacb'
-            'b90e10afa52d0acc99574be03d1525fde87ae413f859e0900c3276fa79dac217')
-
+            '89dde327e08dc9951f3ea29a440fdbe64b665ea1679328899dc321dcd6a12c69')
 package() {
     #make the dir writable to all
     install -dm757 "$pkgdir/opt/${pkgname}"
