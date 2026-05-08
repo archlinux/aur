@@ -1,6 +1,6 @@
 # Maintainer: Marco Ziliani
 pkgname=xeqm-gui
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Official GUI wallet for XEQMLabs (XEQM) cryptocurrency"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "xeqm-gui.desktop"
 )
 sha256sums=(
-    '93c23736ba84d4b41933c37c6361f0e898c96d2b0bcd71c977a6c3eff3881776'
+    '1d2bacf89e07420325f9505c8367a855cab11f27780a458cf16aa42be2fb0870'
     'bd35288a454689f25ca246c8e0be5dbe44e156ee0084bee6f90b6c0888b811c6'
     '30505f3ce45486cc90a26044160b140729ffd8dada2925bbeb815bc79b630937'
     'SKIP'
