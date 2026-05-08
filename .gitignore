@@ -1,0 +1,19 @@
+# Arch Linux packaging
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.log
+*.pkg.tar.*
+.git
+go/
+# opencodepenCode & Agents
+.opencode/
+*.log
+.engram_cache/
+*.md
+
+# System / HyDE
+.DS_Store
+*~
+*.swp
