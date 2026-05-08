@@ -9,18 +9,22 @@ license=('MIT')
 depends=('llvm18-libs' 'gtk3' 'zlib' 'sqlite')
 makedepends=('rust' 'cargo' 'llvm18' 'clang18' 'lld18' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rancidavi-dotcom/TheSnask/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6297af794c633629cc1cbc46ada8c82a09e233cd0bdc79bb347b4dd5e3bd0f72')
+sha256sums=('8fba7248f5149f74ca9c0f7ba1d8914366b95f4570fb65cae02fea55b287f85b')
 
 build() {
   cd "${srcdir}/TheSnask-${pkgver}"
-  
-  # Variáveis para forçar o build do Rust a usar o LLVM dinâmico do Arch
+
+  # Variáveis definitivas para o build do Rust no Arch
   export LLVM_CONFIG_PATH=/usr/bin/llvm-config-18
   export LLVM_LINK_STATIC=0
   export LLVM_SYS_180_PREFIX=/usr/lib/llvm18
-  
+
+  # HACK: Força o llvm-sys a aceitar libs dinâmicas no Arch
+  export LLVM_SYS_180_FFI_WORKAROUND=1
+  export LLVM_SYS_180_NO_CLEAN_CFLAGS=1
+
   cargo build --release --locked
-  
+  ...
   # Use a temporary home for snask setup
   mkdir -p "${srcdir}/temp_home"
   export HOME="${srcdir}/temp_home"
