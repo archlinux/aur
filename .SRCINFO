@@ -1,6 +1,6 @@
 pkgbase = linux-cachyos-cjktty
 	pkgdesc = CachyOS Linux kernel with cjktty patches
-	pkgver = 7.0.3
+	pkgver = 7.0.5
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = linux-cachyos-cjktty
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.3-1/cachyos-7.0.3-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.5-1/cachyos-7.0.5-1.tar.gz
 	source = config
 	source = https://raw.githubusercontent.com/bigshans/cjktty-patches/master/v7.x/cjktty-7.0.patch
 	source = https://raw.githubusercontent.com/bigshans/cjktty-patches/master/cjktty-add-cjk32x32-font-data.patch
@@ -57,7 +57,7 @@ pkgname = linux-cachyos-cjktty
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-cjktty-lto=7.0.3-1
+	provides = linux-cachyos-cjktty-lto=7.0.5-1
 	replaces = linux-cachyos-cjktty-lto
 
 pkgname = linux-cachyos-cjktty-headers
@@ -76,5 +76,5 @@ pkgname = linux-cachyos-cjktty-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-cjktty-lto-headers=7.0.3-1
+	provides = linux-cachyos-cjktty-lto-headers=7.0.5-1
 	replaces = linux-cachyos-cjktty-lto-headers

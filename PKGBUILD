@@ -178,7 +178,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.0
-_minor=3
+_minor=5
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
