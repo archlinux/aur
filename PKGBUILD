@@ -1,6 +1,6 @@
 # Maintainer: Alban Guyon <albanguyon@yahoo.fr>
 pkgname=delete-old-downloads
-pkgver=0.0.0
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Deletes files in your download folder if they have not been modified in the specified number of days"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('bash' 'systemd' 'xdg-user-dirs')
 install="$pkgname.install"
 backup=('etc/delete-old-downloads/users.list')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/3nabla3/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b8cec9d13b050a20113adae0eb39d1fd0655db0cf7c9b384a6c3ce637632245f')
 
 package() {
     cd "$pkgname-$pkgver"

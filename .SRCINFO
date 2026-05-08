@@ -1,6 +1,6 @@
 pkgbase = delete-old-downloads
 	pkgdesc = Deletes files in your download folder if they have not been modified in the specified number of days
-	pkgver = 0.0.0
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/3nabla3/delete-old-downloads
 	install = delete-old-downloads.install
@@ -10,7 +10,7 @@ pkgbase = delete-old-downloads
 	depends = systemd
 	depends = xdg-user-dirs
 	backup = etc/delete-old-downloads/users.list
-	source = delete-old-downloads-0.0.0.tar.gz::https://github.com/3nabla3/delete-old-downloads/archive/refs/tags/v0.0.0.tar.gz
-	sha256sums = SKIP
+	source = delete-old-downloads-0.0.10.tar.gz::https://github.com/3nabla3/delete-old-downloads/archive/refs/tags/v0.0.10.tar.gz
+	sha256sums = b8cec9d13b050a20113adae0eb39d1fd0655db0cf7c9b384a6c3ce637632245f
 
 pkgname = delete-old-downloads
