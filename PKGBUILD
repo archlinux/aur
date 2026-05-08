@@ -1,7 +1,7 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 pkgname=libaegis
-pkgver=0.9.1
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Portable C implementations of the AEGIS family of high-performance authenticated encryption algorithms. "
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,11 +10,11 @@ url="https://github.com/aegis-aead/libaegis.git"
 license=('MIT')
 options=('!lto')
 
-_commit=b6ab782144f466d47f1ecc05918653bd127f723c
+_commit=45fcfd7af184e54064200a5dd1b78094a780773c
 source=("git+https://github.com/aegis-aead/libaegis.git#commit=${_commit}?signed/")
 # mruby-Rakefile.patch
 # h2o-libressl-3.6.2.patch
-sha256sums=('f0ae83c93c6f0bc5ee4fe8994fdb70f0f4094d26139e250306a44e2038e77bc0')
+sha256sums=('a3c1f12c82ab1c72c9111139a6f7e95201a4260b253408e2e33d0ec1c13fa481')
 provides=('libaegis')
 conflicts=('libaegis')
 
