@@ -1,0 +1,5 @@
+[toad-ai]
+source = "github"
+github = "batrachianai/toad"
+use_latest_release = true
+prefix = "v"

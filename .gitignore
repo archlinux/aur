@@ -1,5 +1,5 @@
-pkg
-src
-*.tar.gz
-*.pkg.tar.zst
-toad-*/
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO
