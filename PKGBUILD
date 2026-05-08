@@ -1,5 +1,5 @@
 pkgname=sentype
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="SenType — simple terminal typing game"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/rumyp/sentype"
 license=('MIT')
 depends=('python')
 source=("https://github.com/rumyp/sentype/releases/download/${pkgver}/sentype-${pkgver}.tar.gz")
-sha256sums=('a9bf203debea91b7623846cbe85281f279fadf5711879942a9fb79411c2f36c6')
+sha256sums=('e78bbccb3bf8e54a20611988fc2f6ef12b0a632813dd79be04b3cabbb71a5607')
 
 build() { :; }
 
