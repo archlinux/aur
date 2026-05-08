@@ -6,7 +6,7 @@ pkgdesc="stash a copy of a file for a specified period of time"
 arch=(any)
 url="https://sr.ht/~minshall/tempstash/"
 license=('MIT')
-depends=(zsh tmolq rsync)
+depends=(zsh tomlq rsync)
 makedepends=(asciidoc)
 optdepends=('emacs: create and operate on org-mode files'
            'cram: functional testing framework')
