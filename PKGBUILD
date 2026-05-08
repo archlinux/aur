@@ -2,7 +2,7 @@
 
 pkgname=python-dict2css
 _name=${pkgname#python-}
-pkgver=0.3.0.post1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A μ-library for constructing cascading style sheets from Python dictionaries'
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 )
 optdepends=()
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha512sums=('d1b8d9d87373064212d125064a75af706fa00c5717968221add8773ce4d276b443ab301911be358c1ffbfb5612a0e29e4b3c06083f622e8ff549ccf71349e935')
+sha512sums=('19126958e60663b47e38bd2c59d439322090ac34af1bfbae14e519b6b5eaabc624d7efcc7d66619e3af86377e3739a2637358f5657bff0ef61900cdda3654f4c')
 
 prepare() {
   git -C "${srcdir}/${_name}" clean -dfx
