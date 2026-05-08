@@ -1,0 +1,33 @@
+CONFIG_FILE="/etc/delete-old-downloads/users.list"
+DEFAULT_CONFIG_FILE="/usr/share/delete-old-downloads/users.list"
+
+post_install() {
+    mkdir -p /etc/delete-old-downloads
+
+    if [ ! -f "$CONFIG_FILE" ]; then
+        cp "$DEFAULT_CONFIG_FILE" "$CONFIG_FILE"
+    fi
+
+    if [ -n "$SUDO_USER" ]; then
+        USERNAME="$SUDO_USER"
+    else
+        USERNAME=$(logname 2>/dev/null || whoami)
+    fi
+
+    if ! grep -qE "^$USERNAME(:|$)" "$CONFIG_FILE"; then
+        echo "$USERNAME:30" >> "$CONFIG_FILE"
+    fi
+
+    systemctl daemon-reload
+    systemctl enable --now delete-old-downloads.timer
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart delete-old-downloads.timer
+}
+
+pre_remove() {
+    systemctl disable --now delete-old-downloads.timer
+    systemctl disable --now delete-old-downloads.service
+}
