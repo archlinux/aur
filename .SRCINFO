@@ -1,6 +1,6 @@
 pkgbase = linux-cachyos-native
 	pkgdesc = Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.
-	pkgver = 7.0.3
+	pkgver = 7.0.5
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = linux-cachyos-native
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.3-1/cachyos-7.0.3-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.5-1/cachyos-7.0.5-1.tar.gz
 	source = config
 	source = dkms-clang.patch
 	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-595.71.05.tar.xz
@@ -39,8 +39,8 @@ pkgbase = linux-cachyos-native
 	source = 0004-fix-dsc-use-bits_per_component-for-flatnessDetThresh.patch
 	source = 0005-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch
 	source = 0001-bore-cachy.patch
-	b2sums = d6ab08acd91f405f36205070cdebab99d244e439ca00d823c4068aeba583818dd3c1fdc0d0b3836406ecb1a93b611c637533b50ae96e9bda3153682bbb9f33bd
-	b2sums = 389571b71590616652716ffd8da99674c798fe41a18897b8d5d162158247adcdf0fbfebc55627fe5a55081b085ef2db628c81441c572a239f4c2cd52d9990995
+	b2sums = 6e3de2016468abfaacb4f02968118cb9e5ef4c897c9db92a72f10a5212b3080c57fcc881127dc954fa68a09442d1941f232e61ec9593924cffd39ca0be7e726d
+	b2sums = d08fc589c20ec2bcd34f5d967306924bbcb986bfb27f347e2e78c2a7ecf71fd9e19b206ee6fbc4a36e0b0faa1dfcec72b4747784e4a314b26239447a4cd29365
 	b2sums = c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e
 	b2sums = 45361ac9830c16c748688545501124647859c247c5cf7dc6ab4508fe614425715c7299cf88728a3da4111c7fbf6f9eab8a1c77b039ebd868dc7a6367b5e97ff8
 	b2sums = bccb4169c43e556f10cddaf8f101cc0b29209f984b9f681f266602a359bc6b4765b48d192006decd23667bd2b899fad9c1fd5b742251014dacc7c077ea023e0f
@@ -65,7 +65,7 @@ pkgname = linux-cachyos-native
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=7.0.3-1
+	provides = linux-cachyos-lto=7.0.5-1
 	replaces = linux-cachyos-lto
 
 pkgname = linux-cachyos-native-headers
@@ -84,13 +84,13 @@ pkgname = linux-cachyos-native-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=7.0.3-1
+	provides = linux-cachyos-lto-headers=7.0.5-1
 	replaces = linux-cachyos-lto-headers
 
 pkgname = linux-cachyos-native-nvidia-open
 	pkgdesc = nvidia open modules of 595.71.05 driver for the linux-cachyos-native kernel
 	license = MIT AND GPL-2.0-only
-	depends = linux-cachyos-native=7.0.3-1
+	depends = linux-cachyos-native=7.0.5-1
 	depends = nvidia-utils=595.71.05
 	depends = libglvnd
 	provides = NVIDIA-MODULE
