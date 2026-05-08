@@ -1,6 +1,6 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=llama.cpp-sycl
-pkgver=r1.f08f20a
+pkgver=r1.803627f
 pkgrel=1
 pkgdesc="llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI (bundled runtime, no separate oneAPI install required). Please read the README on GitHub before use."
 arch=('x86_64')
@@ -85,7 +85,19 @@ build() {
 
     cd "${srcdir}/llama.cpp"
 
+    # Strip -D_FORTIFY_SOURCE from CFLAGS/CXXFLAGS for IntelLLVM device-side
+    # compilation. The SYCL JIT compiler emits __memcpy_chk references when
+    # _FORTIFY_SOURCE is set, but the device runtime cannot resolve glibc's
+    # fortify symbols. This causes a SYCL build program failure at first
+    # kernel warmup ("Unresolved Symbol <__memcpy_chk>" → ggml_sycl_op_mul_mat
+    # → SIGABRT). Stripping the macro restores normal device-side codegen.
+    # Refs: https://github.com/ggml-org/llama.cpp/issues/11713
+    local _cflags="${CFLAGS//-D_FORTIFY_SOURCE=*/} -U_FORTIFY_SOURCE"
+    local _cxxflags="${CXXFLAGS//-D_FORTIFY_SOURCE=*/} -U_FORTIFY_SOURCE"
+
     cmake -B build \
+        -DCMAKE_C_FLAGS="$_cflags" \
+        -DCMAKE_CXX_FLAGS="$_cxxflags" \
         -DGGML_SYCL=ON \
         -DCMAKE_C_COMPILER=icx \
         -DCMAKE_CXX_COMPILER=icpx \

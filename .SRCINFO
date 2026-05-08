@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-sycl
 	pkgdesc = llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI (bundled runtime, no separate oneAPI install required). Please read the README on GitHub before use.
-	pkgver = r1.f08f20a
+	pkgver = r1.803627f
 	pkgrel = 1
 	url = https://github.com/cantosun99/llama.cpp-sycl
 	arch = x86_64
