@@ -1,7 +1,7 @@
 # Maintainer: Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=rmatrix
 _cratename=r-matrix
-pkgver=0.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Rust port of cmatrix."
 arch=('x86_64')
