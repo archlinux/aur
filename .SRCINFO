@@ -25,7 +25,6 @@ pkgbase = proxyman-bin
 	depends = gcc-libs
 	depends = libxdamage
 	depends = python
-	depends = gtk2
 	depends = libdbusmenu-glib
 	depends = alsa-lib
 	depends = bash

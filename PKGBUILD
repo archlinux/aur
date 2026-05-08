@@ -10,7 +10,7 @@ license=('custom')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!strip')
-depends=('cairo' 'libxkbcommon' 'nss' 'libxfixes' 'glib2' 'expat' 'libcups' 'libxcomposite' 'libxrandr' 'libxcb' 'dbus-glib' 'mesa' 'nspr' 'libx11' 'pango' 'glibc' 'gdk-pixbuf2' 'gcc-libs' 'libxdamage' 'python' 'gtk2' 'libdbusmenu-glib' 'alsa-lib' 'bash' 'gtk3' 'libsecret' 'libxext' 'libdrm' 'at-spi2-core' 'dbus')
+depends=('cairo' 'libxkbcommon' 'nss' 'libxfixes' 'glib2' 'expat' 'libcups' 'libxcomposite' 'libxrandr' 'libxcb' 'dbus-glib' 'mesa' 'nspr' 'libx11' 'pango' 'glibc' 'gdk-pixbuf2' 'gcc-libs' 'libxdamage' 'python' 'libdbusmenu-glib' 'alsa-lib' 'bash' 'gtk3' 'libsecret' 'libxext' 'libdrm' 'at-spi2-core' 'dbus')
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::https://github.com/ProxymanApp/proxyman-windows-linux/releases/download/${pkgver}/Proxyman-${pkgver}.AppImage?v=${pkgver//./-}"
     "LICENSE.md"
