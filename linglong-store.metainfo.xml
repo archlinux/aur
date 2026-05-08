@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>org.linglongstore.linglong_store</id>
+  <id>com.dongpl.linglong-store.v2</id>
   <name>玲珑应用商店社区版</name>
   <summary>Linglong Store Community Edition</summary>
   <metadata_license>MIT</metadata_license>
