@@ -2,7 +2,7 @@
 
 _pkgname=engram
 pkgname=engram-bin
-pkgver=1.15.9
+pkgver=1.15.10
 pkgrel=1
 pkgdesc="Persistent memory system for AI coding agents - SQLite + FTS5 with MCP server, HTTP API, CLI, and TUI"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=(engram)
 conflicts=(engram)
 source_x86_64=("$_pkgname-$pkgver-linux-amd64.tar.gz::https://github.com/Gentleman-Programming/$_pkgname/releases/download/v$pkgver/engram_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-arm64.tar.gz::https://github.com/Gentleman-Programming/$_pkgname/releases/download/v$pkgver/engram_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('3d324d4f07a0fba31afdbc9d7df3a9538e0190bf71c5f0d25c4ecd13b29f3d15')
-sha256sums_aarch64=('dce36822e5afb32e190f969ae03ad27f9d1b557fd2e62c87622ee7ded5a65b4a')
+sha256sums_x86_64=('cc6abd3d82586a982867fe3a718bd2aaf57ab2832f2442710d6ff84625d93adb')
+sha256sums_aarch64=('d1005d699ad49da79677f717fe451215e0efca85ae4e37b3a532daabe146dcfb')
 
 prepare() {
   cd "$srcdir"
