@@ -527,7 +527,7 @@ _cfcli_srv_dex() {
             esac ;;
         orders)          _cfcli_compgen "-net -pair -seller -addr -limit -offset -H" ;;
         orderbook)       _cfcli_compgen "-net -pair -depth -tick_price -tick -cumulative" ;;
-        status)          _cfcli_compgen "-net -pair" ;;
+        status)          _cfcli_compgen "-net -pair -seller" ;;
         pairs)           _cfcli_compgen "-net" ;;
         tvl)             _cfcli_compgen "-net -token -by -top" ;;
         spread)          _cfcli_compgen "-net -pair -verbose" ;;
@@ -633,7 +633,7 @@ _cfcli_complete_flag_value() {
         -fill_policy|-leftover_fill_policy)
             _cfcli_compgen "AON min min_from_origin" ; return 0 ;;
         -view)
-            _cfcli_compgen "events summary ohlc volume" ; return 0 ;;
+            _cfcli_compgen "events summary ohlc volume stats" ; return 0 ;;
         -mode)
             _cfcli_compgen "update all" ; return 0 ;;
         -method)
