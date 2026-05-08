@@ -1,3 +1,4 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Tomas Kopecny aka Georgo10 <georgo10@gmail.com>
 # Contributor: scorpfa
 # Contributor: fi-dschi <fi-dschi_archlinux - at - arcor - dot - de>

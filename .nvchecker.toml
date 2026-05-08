@@ -1,0 +1,5 @@
+[mucommander]
+source = "github"
+github = "mucommander/mucommander"
+use_latest_release = true
+prefix = "v"
