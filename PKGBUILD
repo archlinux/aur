@@ -18,8 +18,8 @@ sha256sums=('SKIP' 'SKIP')
 
 prepare() {
     cd linux-7.0.5
-    tar -xf "${srcdir}/linux-v7.0.5-zen1.patch.zst"
-    for patch in *.patch; do
+    zstd -d "${srcdir}/linux-v7.0.5-zen1.patch.zst" -o linux-v7.0.5-zen1.patch
+    for patch in linux-v7.0.5-zen1.patch; do
         [ -f "$patch" ] && patch -p1 -N < "$patch" || true
     done
     make x86_64_defconfig
