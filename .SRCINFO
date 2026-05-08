@@ -1,7 +1,7 @@
 pkgbase = deepseek-tui-git
 	pkgdesc = Terminal coding agent for DeepSeek models - git version
-	pkgver = 0.8.14.r47.gf932c4b9
-	pkgrel = 2
+	pkgver = 0.8.20.r17.gf183501f
+	pkgrel = 1
 	url = https://github.com/Hmbown/DeepSeek-TUI
 	arch = x86_64
 	arch = aarch64
