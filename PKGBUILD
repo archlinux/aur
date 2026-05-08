@@ -2,7 +2,7 @@
 
 pkgname=fotocx
 pkgver=26.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Image editing and collection management program'
 url=https://www.kornelix.net/fotocx/fotocx.html
 arch=(x86_64)
@@ -16,6 +16,7 @@ optdepends=(
   'hugin: for panorama photos'
   'libheif: for .heic, .avif and .webp files'
   'liborigin: for .jp2 files'
+  'libwebp-utils: for .webp files'
   'rawtherapee: for raw image processing'
   'vlc: for viewing video')
 replaces=(fotoxx)

@@ -1,7 +1,7 @@
 pkgbase = fotocx
 	pkgdesc = Image editing and collection management program
 	pkgver = 26.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kornelix.net/fotocx/fotocx.html
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -19,6 +19,7 @@ pkgbase = fotocx
 	optdepends = hugin: for panorama photos
 	optdepends = libheif: for .heic, .avif and .webp files
 	optdepends = liborigin: for .jp2 files
+	optdepends = libwebp-utils: for .webp files
 	optdepends = rawtherapee: for raw image processing
 	optdepends = vlc: for viewing video
 	replaces = fotoxx
