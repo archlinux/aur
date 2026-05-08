@@ -3,7 +3,7 @@
 pkgname=openwarp-bin
 pkgver=2026.05.08.preview
 _debver=2026.05.08.preview
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenWarp - open-source fork of Warp, a Rust-based terminal with AI built in"
 arch=('x86_64')
 url="https://github.com/zerx-lab/warp"
@@ -35,6 +35,12 @@ sha256sums=('ec54a229ec23852d9ee3558dcc917c0c70340ba53829cfbd9d6312c989a7e0fd')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
+
+    # Upstream desktop entry sets StartupWMClass=dev.warp.OpenWarp, but the
+    # running app uses WM_CLASS=dev.openwarp.OpenWarp, so GNOME can't match
+    # the window to the .desktop and falls back to a generic icon.
+    sed -i 's/^StartupWMClass=dev\.warp\.OpenWarp$/StartupWMClass=dev.openwarp.OpenWarp/' \
+        "${pkgdir}/usr/share/applications/dev.warp.OpenWarp.desktop"
 
     install -d "${pkgdir}/usr/bin"
     ln -s /opt/warpdotdev/warp-terminal-oss/warp-oss "${pkgdir}/usr/bin/warp-terminal-oss"
