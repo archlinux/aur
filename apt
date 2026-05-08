@@ -1,52 +1,60 @@
 #!/bin/bash
 
-# --- APT-Fake v1.7 (Gabriele Edition) ---
+# --- APT-Fake v1.8 (Gabriele Edition) ---
 G_PURPLE='\033[1;35m'
 G_CYAN='\033[1;36m'
 G_GREEN='\033[1;32m'
 G_RED='\033[1;31m'
 NC='\033[0m'
 
-# Function: Zenity GUI (The 1.6 Feature)
+LOG_FILE="$HOME/.apt-fake-history"
+
+# Function: Zenity GUI
 show_gui() {
     zenity --info \
-        --title="APT-Fake Ubuntu v1.7" \
-        --text="Welcome Gabriele!\n\nSystem: Arch Linux\nStatus: Optimized\n\nThis tool bridges the gap between Ubuntu commands and Arch power." \
+        --title="APT-Fake v1.8 - Dashboard" \
+        --text="User: Gabriele\nStatus: Online\n\nBridge active between Ubuntu and Arch.\nCheck terminal for logs." \
         --icon-name="apt-fake" \
         --width=350
 }
 
-# Fix 1.7: Handle empty arguments or GUI call
+# Function: Log activity
+log_action() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+}
+
 if [[ -z "$1" || "$1" == "gui" ]]; then
     show_gui
     [[ "$1" == "gui" ]] && exit 0
-    echo -e "${G_PURPLE}Usage: apt [install|update|upgrade|remove|search|gui]${NC}"
+    echo -e "${G_PURPLE}Usage: apt [install|update|upgrade|remove|history|gui]${NC}"
     exit 0
 fi
 
 case "$1" in
     install)
         shift
-        # Fix 1.7: Improved package string handling
         packages=${*//-y/}
         echo -e "${G_CYAN}::${NC} Searching official repositories..."
         if sudo pacman -S --needed $packages; then
-            echo -e "${G_GREEN}::${NC} Installation complete."
+            log_action "Installed: $packages"
+            echo -e "${G_GREEN}::${NC} Success."
         else
-            echo -e "${G_CYAN}::${NC} Not found. Engaging ${G_PURPLE}G-HELPER${NC}..."
+            echo -e "${G_CYAN}::${NC} Redirecting to ${G_PURPLE}G-HELPER${NC}..."
             g-helper $packages
+            log_action "AUR Install Attempt: $packages"
         fi
         ;;
     update)
-        sudo pacman -Sy ;;
+        sudo pacman -Sy && log_action "Database Updated" ;;
     upgrade)
-        sudo pacman -Syu ;;
+        sudo pacman -Syu && log_action "System Upgraded" ;;
     remove)
         shift
-        sudo pacman -Rs $@ ;;
-    search)
-        shift
-        pacman -Ss $@ ;;
+        sudo pacman -Rs $@ && log_action "Removed: $@" ;;
+    history)
+        echo -e "${G_CYAN}:: Recent Activity:${NC}"
+        tail -n 10 "$LOG_FILE" 2>/dev/null || echo "No history yet."
+        ;;
     *)
-        echo -e "${G_RED}Error:${NC} Command '$1' not found." ;;
+        echo -e "${G_RED}Error:${NC} Command '$1' unknown." ;;
 esac

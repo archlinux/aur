@@ -1,8 +1,7 @@
 pkgbase = apt-fake-ubuntu
-	pkgdesc = Ubuntu's apt wrapper for Arch (v1.7 Legacy & GUI Edition)
-	pkgver = 1.7
-	pkgrel = 2
-	url = https://aur.archlinux.org/packages/apt-fake-ubuntu
+	pkgdesc = Advanced Ubuntu apt wrapper for Arch with History and GUI (v1.8)
+	pkgver = 1.8
+	pkgrel = 1
 	arch = any
 	license = GPL3
 	depends = pacman
@@ -12,7 +11,7 @@ pkgbase = apt-fake-ubuntu
 	source = apt
 	source = apt-fake.desktop
 	source = apt-fake.png
-	sha256sums = 9324c07fd7df14d76d7339d513bec9c8a0409457c77bd1594bfc37faa78cccca
+	sha256sums = fcbd8c70fae2b1aa4ff5f604f6e64a9b30013fe68d1b8ff61da490a83656c2ae
 	sha256sums = 81b7e66f512f1fe7ac507462b138fb6291b0a3601e09a4d763949b1271014553
 	sha256sums = 2efa2b8821340fc09e7db18bc1a8285e110e0bbcef9795729cbabf11ad57f184
 
