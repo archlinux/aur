@@ -1,6 +1,6 @@
 pkgbase = forgecode-bin
 	pkgdesc = An AI-powered code assistant CLI tool
-	pkgver = 2.12.11
+	pkgver = 2.12.12
 	pkgrel = 1
 	url = https://github.com/antinomyhq/forgecode
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = forgecode-bin
 	conflicts = forge
 	source = LICENSE
 	sha256sums = 3c9f90350449325ae2b1355d6aae26df25be58f1cfcb8ed6a44b9c4b10c663f9
-	source_x86_64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.12.11/forge-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 8eafae5354e1c6153a5a818648756552f5e0e362079a7c31138173ed772b44a1
-	source_aarch64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.12.11/forge-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = ca7549b59115b0cdb91545d396e862b83d30bf1c48c19753cdf2044c1b97dab4
+	source_x86_64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.12.12/forge-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 2ff5ae064005fdcf5808f23183716a4e90171af4d3f3103242df87f80dc469c1
+	source_aarch64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.12.12/forge-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 1c7756f09c597f9b98bbe0301848c944e17e764ddd27f1794a3dd8763005cfef
 
 pkgname = forgecode-bin
