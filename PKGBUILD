@@ -2,8 +2,8 @@
 
 _reponame=google-cloud-python
 pkgname=python-google-cloud-core
-_pkgname=${pkgname##*python-}
-pkgver=2.5.1
+_pkgname=${pkgname##python-}
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Google Cloud API client core library'
 url=https://github.com/googleapis/${_reponame}/tree/${_pkgname}-v${pkgver}/packages/${_pkgname}
@@ -23,7 +23,7 @@ makedepends=(
 optdepends=('python-grpcio: for grpc support')
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url%/tree*}/archive/${_pkgname}-v${pkgver}.tar.gz)
-b2sums=('79b1b7a41a230f8c66c7b671c62545900174c829b76d4dc7b7f5315700fa0055e7eb46ca941a773c134c909c79aad6295d2c26a10b03143fd4dbdf6670ec2770')
+b2sums=('18ecd6ce915a8dcb410397f68c39af50726422312ca028b087951015839ebd46ef4dc1feca0a78a53e2ac3f0eadc90bd1dfe629dfabc313d6eb5f27bc36b1e24')
 
 build() {
   cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
