@@ -1,7 +1,7 @@
 # Maintainer: arthurr0 <koeckiartur@gmail.com>
 pkgname=mterminal-bin
 _pkgname=mterminal
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Custom terminal emulator with grouped tabs and warm dark UI (binary release)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "https://raw.githubusercontent.com/arthurr0/mTerminal/v$pkgver/build/icon.png"
   "https://raw.githubusercontent.com/arthurr0/mTerminal/v$pkgver/LICENSE"
 )
-sha256sums=('21aeafab8b335f9e1e63324fdb672d92f680a5fdd93dc9e11b4adb9afc2bac95' '43c8d753ee939ec0077890ecb4bd359dde3609b0bb5b2b1183cb570836db6034' '25bb2bf785d51e6a4a075006b97d3742e5ce88b2b7933e871e1834df3785a4b5' '1699e3455f860d7875bb9791ec4f5926348722ca98bb834832a0bacddcbd12d6')
+sha256sums=('dece035872f29064aa8578ac02f51dda6a6cd645d67cf92b3d944f8d964ebf28' '43c8d753ee939ec0077890ecb4bd359dde3609b0bb5b2b1183cb570836db6034' '25bb2bf785d51e6a4a075006b97d3742e5ce88b2b7933e871e1834df3785a4b5' '1699e3455f860d7875bb9791ec4f5926348722ca98bb834832a0bacddcbd12d6')
 
 prepare() {
   cd "$srcdir"
