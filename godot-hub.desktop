@@ -8,4 +8,4 @@ Terminal=false
 PrefersNonDefaultGPU=true
 Type=Application
 Categories=Development;IDE;
-StartupWMClass=Godot Hub
+StartupWMClass=Godot_Engine
