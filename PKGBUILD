@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('kio' 'icoutils' 'pyside6')
 install=plasma-shortcut.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Matvel007/Plasma-Shortcut/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ef1576817ff5f64d9c82f88b4f347473e69e5a14c4b219561e65529e84a68c57')
+sha256sums=('70d0ff130c96e21f8a29940ebb410b4b9b00bced153ca16627dd7f1edf5636cb')
 
 package() {
     cd "$srcdir/Plasma-Shortcut-$pkgver"
