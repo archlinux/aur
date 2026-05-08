@@ -1,0 +1,22 @@
+# Build files
+pkg/
+src/
+pulse-remote/
+pulse-remote-bin/
+pulse-remote-desktop/
+AGENTS.md
+
+# Package files
+*.tar.zst
+*.tar.gz
+*.tar.xz
+
+# Downloaded sources
+pulse-remote-desktop-*
+
+# Debug packages
+*-debug/
+
+# OpenCode
+!.opencode/
+.opencode/plans/

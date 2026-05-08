@@ -1,0 +1,15 @@
+post_install() {
+	echo "==> pulse-remote-desktop installed"
+	echo "==> Requires pulse-remote server running on localhost:8448"
+
+	if ! pacman -Qq pulse-remote &>/dev/null && ! pacman -Qq pulse-remote-git &>/dev/null; then
+		echo "==> WARNING: Neither 'pulse-remote' nor 'pulse-remote-git' is installed."
+		echo "==> Install one of them, then start: systemctl --user enable --now pulse-remote.service"
+	else
+		echo "==> Start server: systemctl --user enable --now pulse-remote.service"
+	fi
+}
+
+post_upgrade() {
+	echo "==> pulse-remote-desktop has been updated"
+}
