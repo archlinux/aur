@@ -240,10 +240,12 @@ prepare() {
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin \
            third_party/rust-toolchain/bin \
-           third_party/jdk/current/bin
+           third_party/jdk/current/bin \
+           third_party/gperf/cipd/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/rustc third_party/rust-toolchain/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
+  ln -s /usr/bin/gperf third_party/gperf/cipd/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
