@@ -1,12 +1,12 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql'
-pkgver=0.9.0.0
+pkgver=0.9.1.0
 pkgrel=2
 pkgdesc="A distributed privacy aware social network (PostgreSQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby' 'ruby-bundler' 'ruby-erb' 'redis' 'imagemagick' 'libidn' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
+depends=('ruby' 'ruby-bundler' 'ruby-erb' 'ruby-irb' 'ruby-mutex_m' 'redis' 'imagemagick' 'libidn' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
 optdepends=('jemalloc: lower memory consumption' 'postgresql: Database server')
 makedepends=('nodejs' 'yarn' )
 conflicts=('diaspora-mysql' 'diaspora-mysql-git' 'diaspora-postgresql-git')
@@ -56,7 +56,7 @@ build() {
   msg "Setup build directory"
   rm -rf $_builddir
   mkdir -p $_builddir
-  cp -Rf $srcdir/diaspora-0.9.0.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile,package.json,yarn.lock,.foreman,Procfile} $_builddir
+  cp -Rf $srcdir/diaspora-0.9.1.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile,package.json,yarn.lock,.foreman,Procfile} $_builddir
 
   cd $_builddir
 
@@ -64,18 +64,20 @@ build() {
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
   export GEM_HOME="$_builddir/vendor/bundle" \
          BUNDLE_GEMFILE="$_builddir/Gemfile"
+  HOME=$_builddir $_gem install bundler -v "2.5.9"
   HOME=$_builddir $_bundle config --local path vendor/bundle
   HOME=$_builddir $_bundle config --local frozen 1
   HOME=$_builddir $_bundle config --local disable_shared_gems true
   HOME=$_builddir $_bundle config --local with postgresql
   HOME=$_builddir $_bundle config --local without development:test
   HOME=$_builddir C_INCLUDE_PATH=/usr/include:/usr/include/tirpc $_bundle install
+  HOME=$_builddir yarn
 
   # Enforce bundler binstubs
   $_bundle binstubs bundler foreman puma sidekiq rake rails --force
 
   # Workaround libsass.so not being found
-  ln -s ../../../../extensions/x86_64-linux/3.3.0/sassc-2.4.0/sassc/libsass.so $_builddir/vendor/bundle/ruby/3.3.0/gems/sassc-2.4.0/lib/sassc/libsass.so
+  ln -s ../../../../extensions/x86_64-linux/3.4.0/sassc-2.4.0/sassc/libsass.so $_builddir/vendor/bundle/ruby/3.4.0/gems/sassc-2.4.0/lib/sassc/libsass.so
 
   msg "Patch configuration examples"
   sed -i -e 's|#certificate_authorities = "/etc/ssl/certs/ca-certificates.crt"|certificate_authorities = "/etc/ssl/certs/ca-certificates.crt"|' \
@@ -88,6 +90,8 @@ build() {
 
   cp $_builddir/config/diaspora.toml{.example,}
   cp $_builddir/config/database.yml{.example,}
+
+  export RUBYOPT="-rmutex_m"
 
   msg "Create secret token"
   HOME=$_builddir RAILS_ENV=production bin/bundle exec rake generate:secret_token
@@ -136,9 +140,9 @@ package() {
   ln -sf /var/log/diaspora                     $pkgdir/usr/share/webapps/diaspora/log
 }
 
-sha256sums=('11c79d8cc86412f0a94de62f5a8cc115428d978333c6129c96bbf44f39adc31d'
+sha256sums=('92f8e5ebcb64e893c274f2b975b7b3bd87d5d492806615734fbb564a060847ba'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             'd10f10439e56c38a9960e7cd481c7b44a68bc0ecf7c88b91d9cafb454aa6ffd0'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
-            '8a174c2a64aff5fe72ca6b61bb05c5d85f4cd5cbb91aa3a0334e8c5a15b45bd3'
+            'bc48c0368306f62b9f443a3b1b391adaa93666fc51f0041f0a8ed3f710b21f86'
             '29cfd5116e919d8851ff70b8b82af8d4a6c8243a9d1ca555981a1a695e2d7715')
