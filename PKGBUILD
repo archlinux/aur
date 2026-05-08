@@ -15,8 +15,6 @@ depends=(
     'sh'
     'alsa-lib'
     'openssl'
-    'opus'
-    'bzip2'
 )
 provide=(${_pkgname})
 conflicts=(${_pkgname})
@@ -34,10 +32,10 @@ package() {
     cd "noita_entangled_worlds-${pkgver}"
 
     install -Dm 644 LICENSE-APACHE \
-        -t "$pkgdir/usr/share/licenses/$_pkgname"
+        -t "$pkgdir/usr/share/licenses/$pkgname"
 
     install -Dm 644 LICENSE-MIT \
-        -t "$pkgdir/usr/share/licenses/$_pkgname"
+        -t "$pkgdir/usr/share/licenses/$pkgname"
 
     install -Dm 644 noita-proxy/assets/icon.png \
         -T "$pkgdir/usr/share/icons/noita_proxy.png"
