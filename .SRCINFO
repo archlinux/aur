@@ -1,6 +1,6 @@
 pkgbase = graphify
 	pkgdesc = AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph
-	pkgver = 0.7.8
+	pkgver = 0.7.10
 	pkgrel = 1
 	url = https://github.com/safishamsi/graphify
 	arch = any
@@ -51,10 +51,11 @@ pkgbase = graphify
 	optdepends = python-openai: OpenAI-compatible LLM backends (Kimi/Ollama/Gemini/OpenAI)
 	optdepends = python-tiktoken: Token counting for Kimi/Gemini/OpenAI backends
 	optdepends = python-anthropic: Claude direct extraction backend
+	optdepends = python-boto3: AWS Bedrock LLM backend
 	optdepends = python-tree-sitter-sql: SQL indexing support
 	provides = graphifyy
 	conflicts = graphifyy
-	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.7.8.tar.gz
-	sha256sums = 4a923f207c9bdebf5009b3972b11f7993b668c68e2a1a05dbde50106db873792
+	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.7.10.tar.gz
+	sha256sums = 025a6f5ab755027392f59e2327ef9ed3b0a0d051dc93f62b7772aa4dda183ddb
 
 pkgname = graphify
