@@ -1,7 +1,7 @@
 # Maintainer: Thomas Andres <thomas at andres dot in>
 pkgname=openhantek6022
 _gitname=OpenHantek6022
-pkgver=3.4.0
+pkgver=3.4.1.rc2
 pkgrel=1
 pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE/BL."
 arch=('i686' 'x86_64')
@@ -15,12 +15,13 @@ source=("$_gitname::git+https://github.com/OpenHantek/OpenHantek6022.git")
 md5sums=('SKIP')
 
 pkgver() {
-    curl --silent https://api.github.com/repos/OpenHantek/OpenHantek6022/releases/latest | grep -Po '"tag_name": "\K.*?(?=")'
+    git_tag_name=$(curl --silent https://api.github.com/repos/OpenHantek/OpenHantek6022/releases/latest | grep -Po '"tag_name": "\K.*?(?=")')
+    echo $git_tag_name | sed 's/-/./'
 }
 
 build() {
     cd $_gitname
-    git checkout $pkgver -q
+    git checkout $git_tag_name -q
     [[ ! -d build ]] && mkdir -p build
     cd build
     cmake \
