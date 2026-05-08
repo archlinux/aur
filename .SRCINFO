@@ -1,6 +1,6 @@
 pkgbase = wdotool
 	pkgdesc = xdotool-compatible input automation for Wayland (libei + wlroots)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/cushycush/wdotool
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wdotool
 	makedepends = cargo
 	depends = libxkbcommon
 	depends = wayland
-	source = wdotool-0.5.0.tar.gz::https://github.com/cushycush/wdotool/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = c95fdb0cc4affd5d1efe0513875d6472e8e4338a66f93d5eeb5e78ab97c76cb3
+	source = wdotool-0.5.1.tar.gz::https://github.com/cushycush/wdotool/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 5969eb46331c20c85e9dfab79f24e1b9f3be5c8bdf92669801c42573237e332d
 
 pkgname = wdotool

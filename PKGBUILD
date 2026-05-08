@@ -1,6 +1,6 @@
 # Maintainer: Matthew Cushing <hgxtymphwn@privaterelay.appleid.com>
 pkgname=wdotool
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="xdotool-compatible input automation for Wayland (libei + wlroots)"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=('libxkbcommon' 'wayland')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c95fdb0cc4affd5d1efe0513875d6472e8e4338a66f93d5eeb5e78ab97c76cb3')
+sha256sums=('5969eb46331c20c85e9dfab79f24e1b9f3be5c8bdf92669801c42573237e332d')
 
 prepare() {
     cd "$pkgname-$pkgver"
