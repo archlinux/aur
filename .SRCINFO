@@ -21,7 +21,7 @@ pkgbase = hls-livecam-server
 	install = hls-livecam-server.install
 	source = hls-livecam-server-3.0.5.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v3.0.5.tar.gz
 	source = hls-livecam-server.install
-	sha256sums = d45032481f766972679dbdb18462328401b111c6ea2de0377e53992203bc4bb1
+	sha256sums = ddddd76bd43064de53572eda786dc98a3c0e817750182ae0088a477bb33f9051
 	sha256sums = d44643f459d6031daef8e2486c5cce59a67f3894eb3cfcc382c8b8de3b2c0a55
 
 pkgname = hls-livecam-server
