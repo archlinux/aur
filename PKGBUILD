@@ -1,6 +1,6 @@
 # Maintainer: blekki <blekkiw at gmail dot com>
 pkgname=ed-odyssey-materials-helper-bin
-pkgver=3.1.10
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Elite Dangerous Odyssey Materials Helper"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "icon.png"
   "https://raw.githubusercontent.com/jixxed/ed-odyssey-materials-helper/$pkgver/EULA.MD"
 )
-sha256sums=('ca0ea17de3c89911591194e1e3bc590949142e2a317031de0f83a2065efc2d3a'
+sha256sums=('d90b861de022bce20c4747ef2c099c3239440936a9e2585d1a9806de95a0080c'
             '0bf625dde338c79ce065cfc65076dd235e39e9d6885140bcaace35c644f85475'
             '1e39aba98b92f8d9fcedb15b4ca8b1574e710ca3caf81473fac4745041cc6129'
             'a1af8aa279188ee356d742aace1f2fc45c591b87ca66e777920e2673878de4e7')
