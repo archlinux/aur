@@ -2,7 +2,7 @@
 pkgname=linux-sensor-tray-bin
 _pkgname=linux-sensor-tray
 _appimage_name=Linux-Sensor-Tray
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Tray-first Electron app for live CPU/GPU/mainboard/storage stats on Linux (AppImage repackage)"
 arch=('x86_64')
@@ -37,6 +37,7 @@ optdepends=(
 )
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+install="${_pkgname}.install"
 options=(!strip !debug)
 source=(
   "${_appimage_name}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appimage_name}-${pkgver}.AppImage"
@@ -44,7 +45,7 @@ source=(
   "${_pkgname}.sh"
   "${_pkgname}.desktop"
 )
-sha256sums=('ff313f77e8702df50158bf1bd4fdbaf42d4ee208efe1085997bd058440f9ad7f'
+sha256sums=('8c421489c8804f3ad27442bb86273daf3362995e6726fa912a6adb70210202af'
             'e552a4ea6b18459048d98882b05ff09dc1d1b6d0fb32443de4f7367335d14348'
             'f1e53185b3695f2fabdca9474b782fb6db31fc248b925beb5208494b82ca5343'
             '4af4bed1cb787c29e0f5345330f7ba83bbcb97ea5d42dde20f3e77b56522697a')
