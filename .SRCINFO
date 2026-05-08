@@ -1,6 +1,6 @@
 pkgbase = envd
 	pkgdesc = Tiny server that stores per-project environment variables
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/envd
 	install = envd.install
@@ -9,9 +9,9 @@ pkgbase = envd
 	license = MIT
 	depends = gcc-libs
 	options = !strip
-	source_x86_64 = envd-0.1.7-x86_64.tar.gz::https://github.com/skorotkiewicz/envd/releases/download/v0.1.7/envd-v0.1.7-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 63730e9078d092e8bcc578779bf0df335c78eb7c2025b3ceebd0615397dfda40
-	source_aarch64 = envd-0.1.7-aarch64.tar.gz::https://github.com/skorotkiewicz/envd/releases/download/v0.1.7/envd-v0.1.7-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9c7abd345f65b1f4794fd22726baf9494ddc08dd314e6d2145b0717590ea724f
+	source_x86_64 = envd-0.1.8-x86_64.tar.gz::https://github.com/skorotkiewicz/envd/releases/download/v0.1.8/envd-v0.1.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = faaac361eccd22cf9dca7e504912beff7b3395ff6f2fd63e92dfadc58b84b7b6
+	source_aarch64 = envd-0.1.8-aarch64.tar.gz::https://github.com/skorotkiewicz/envd/releases/download/v0.1.8/envd-v0.1.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = cfd5b445c1c9d11cf62447ca94089e67b40f5cc06b28e9462aadf21098359ec1
 
 pkgname = envd
