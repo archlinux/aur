@@ -1,6 +1,6 @@
 # Maintainer: Diramix <39developer@diram1x.ru>
 pkgname=next-music
-pkgver=3.6.3
+pkgver=test
 pkgrel=1
 pkgdesc="Web client for Yandex Music with support for themes, addons, Discord Rich Presence (RPC) and OBS widget"
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('MIT')
 depends=('glibc' 'gtk3' 'alsa-lib' 'desktop-file-utils')
 options=('!strip' '!debug' '!zipman' '!emptydirs')
 _pkgfile="next-music_3.6.3_x64.pkg.tar.zst"
-_pkgtag="v3.6.3"
+_pkgtag="test"
 source=("${_pkgfile}::https://github.com/Web-Next-Music/Next-Music-Client/releases/download/${_pkgtag}/${_pkgfile}")
-sha256sums=('d1e5290e6afac95ef5e8168e4815c97c4ecd33ec17d53a174fa8553305ccc8b2')
+sha256sums=('f27c45fd94ac382c6146cccbbf16372c9946b213c8503170a955bb4afb6a1199')
 noextract=("${_pkgfile}")
 
 package() {
