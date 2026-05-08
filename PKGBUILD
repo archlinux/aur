@@ -6,8 +6,10 @@ pkgname=${_pkgname}-bin
 pkgver=0.4.2
 pkgrel=1
 pkgdesc='A modern alternative to the watch command'
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${pkgver}"
+
 arch=('x86_64')
 license=('MIT')
 
