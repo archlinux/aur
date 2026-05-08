@@ -1,0 +1,19 @@
+pkgbase = smolrtsp
+	pkgdesc = A lightweight real-time streaming library for IP cameras
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://openipc.github.io/smolrtsp/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.16
+	makedepends = datatype99
+	makedepends = interface99
+	makedepends = slice99
+	depends = glibc
+	optdepends = datatype99
+	optdepends = interface99
+	optdepends = slice99
+	source = https://github.com/openipc/smolrtsp/archive/refs/tags/v0.1.3/smolrtsp-0.1.3.tar.gz
+	sha256sums = cc4376569b687e03385664584b57697076e6772a1c52de2d24389014e016ad1e
+
+pkgname = smolrtsp

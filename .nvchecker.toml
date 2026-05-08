@@ -1,0 +1,4 @@
+[smolrtsp]
+source = "git"
+git = "https://github.com/openipc/smolrtsp.git"
+prefix = "v"
