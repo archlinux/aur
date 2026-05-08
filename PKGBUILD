@@ -1,7 +1,7 @@
 # Maintainer: Dmitriy Q atsip-help <at> yandex <dot> ru
 pkgname=meshtastic-desktop-bin
-pkgver=2.7.14
-pkgrel=22
+pkgver=2.7.14beta3
+pkgrel=23
 pkgdesc="Meshtastic Desktop Application"
 arch=('any')
 url="https://github.com/meshtastic/Meshtastic-Android"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('libgcc' 'zlib' 'libmd' 'xdg-utils' 'alsa-lib' 'libbsd' 'libpng' 'util-linux-libs')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("https://github.com/meshtastic/Meshtastic-Android/releases/download/v${pkgver}-open.3/${pkgname%-bin}_${pkgver}_amd64.deb")
+source=("https://github.com/meshtastic/Meshtastic-Android/releases/download/v${pkgver//beta*}-open.3/${pkgname%-bin}_${pkgver//beta*}_amd64.deb")
 sha256sums=('ee5f9ece3aae8289374034ac0fb2c3b5af72b6703b3069d7b2982b2e098b178b')
 
 package(){
