@@ -1,6 +1,6 @@
 pkgbase = freelib-dev-git
 	pkgdesc = Book library manager
-	pkgver = 6.2.12
+	pkgver = 6.2.18
 	pkgrel = 1
 	url = https://github.com/petrovvlad/freeLib
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = freelib-dev-git
 	optdepends = kindlegen: convert to MOBI, AZW3
 	optdepends = djvulibre: djvu covers
 	optdepends = poppler-qt6: pdf covers
+	optdepends = libarchive: 7z, rar archives
 	optdepends = kio: KDE integration
 	provides = freelib
 	conflicts = freelib

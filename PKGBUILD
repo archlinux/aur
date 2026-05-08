@@ -1,7 +1,7 @@
 # Maintainer: Petrov Vlad <petrov.vlad@ya.ru>
 
 pkgname=freelib-dev-git
-pkgver=6.2.12
+pkgver=6.2.18
 pkgrel=1
 pkgdesc="Book library manager"
 arch=(x86_64)
@@ -11,6 +11,7 @@ depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6 onetbb qtkeychain-qt6)
 optdepends=('kindlegen: convert to MOBI, AZW3'
   'djvulibre: djvu covers'
   'poppler-qt6: pdf covers'
+  'libarchive: 7z, rar archives'
   'kio: KDE integration')
 makedepends=(git cmake)
 provides=(freelib)
