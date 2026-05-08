@@ -1,7 +1,7 @@
 pkgbase = multibootusb
 	pkgdesc = Boot multiple live Linux distros from a usb flash drive
 	pkgver = 9.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/mbusb/multibootusb
 	arch = any
 	license = GPL-2.0-or-later
