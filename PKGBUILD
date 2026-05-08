@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}-gui"
 )
 pkgver=2.47.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Exports Discord chat logs to a file"
 arch=(
   'aarch64'
@@ -58,6 +58,9 @@ prepare() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
+  sed -e '/TreatWarningsAsErrors/d' \
+      -i 'Directory.Build.props'
+
   for dir in Core Cli Gui; do
     dotnet restore "${dotnet_restore_options[@]}" "${_Name}.${dir}"
   done
