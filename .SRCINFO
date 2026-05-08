@@ -1,6 +1,6 @@
 pkgbase = ezp2019
 	pkgdesc = USB SPI Flash Programmer
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/bokic/ezp2019
 	install = ezp2019.install
@@ -20,7 +20,7 @@ pkgbase = ezp2019
 	provides = libezp2019.so
 	conflicts = ezp2019-git
 	options = !debug
-	source = ezp2019-1.0.0.tar.gz::https://github.com/bokic/ezp2019/archive/refs/tags/1.0.0.tar.gz
-	sha512sums = 1348712e615efda531fff93ab1801e90d6391300803cd9580a69b9b05fe6c13cf01cd6a9cec6fcd868ec1bd8c381dfa470e8f2d7cb9174cd95e80c7969c5652a
+	source = ezp2019-1.0.1.tar.gz::https://github.com/bokic/ezp2019/archive/refs/tags/1.0.1.tar.gz
+	sha512sums = c92f3eb179e947470e6e2d8c07c2d7fa6c9f9591b5430a69010292a1cddd698349e306e5c20a0455c0707381bbec4ffda401903d7d0bed2df65ef98dbaf4bb92
 
 pkgname = ezp2019
