@@ -1,6 +1,6 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=tmuxai
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='AI-powered, non-intrusive terminal assistant for tmux'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('tmux')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alvinunreal/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('20c649030acc47bc32d971396aa14c0e782821b4cd80c25a24d12565f0d0c9ed')
+sha256sums=('c14a56d3495d6a08dd4bbb53c0553156b0c0aa993dcff5f1b7fcffb88a729815')
 
 build() {
     cd "$pkgname-$pkgver"
