@@ -15,6 +15,6 @@ pkgbase = snask
 	depends = zlib
 	depends = sqlite
 	source = snask-0.4.1.tar.gz::https://github.com/rancidavi-dotcom/TheSnask/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 3c139d42aaaed04c80c6823ccdd35b657529584a4038ac43b4577293b644fac3
+	sha256sums = 773ad98a23ea04858d7487c0f47110ca3ab9515ed58a78b0fde196fc8a7d4e98
 
 pkgname = snask
