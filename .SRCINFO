@@ -1,6 +1,6 @@
 pkgbase = bluevein
 	pkgdesc = Bluetooth dual-boot key synchronization service
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/meowrch/BlueVein
 	install = bluevein.install
@@ -12,7 +12,7 @@ pkgbase = bluevein
 	provides = bluevein
 	conflicts = bluevein-git
 	conflicts = bluevein-bin
-	source = bluevein-1.1.0.tar.gz::https://github.com/meowrch/BlueVein/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = ab1eef9551cfed2d49942e885ca69678e131e5976c8c0b2f7dd911c082bc58ec
+	source = bluevein-1.1.1.tar.gz::https://github.com/meowrch/BlueVein/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 10238e40d74fb019cd87ae51a75dedc861f372b569070a242e9c2f8cdf4aae12
 
 pkgname = bluevein

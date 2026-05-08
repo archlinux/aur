@@ -1,6 +1,6 @@
 # Maintainer: DIMFLIX <dimflix.official@gmail.com>
 pkgname=bluevein
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Bluetooth dual-boot key synchronization service"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('bluevein')
 conflicts=('bluevein-git' 'bluevein-bin')
 install=bluevein.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ab1eef9551cfed2d49942e885ca69678e131e5976c8c0b2f7dd911c082bc58ec')
+sha256sums=('10238e40d74fb019cd87ae51a75dedc861f372b569070a242e9c2f8cdf4aae12')
 
 build() {
   cd "BlueVein-$pkgver"
