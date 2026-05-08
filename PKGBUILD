@@ -20,7 +20,7 @@ source_aarch64=("https://www.signalyst.com/bins/hqplayerd/fc43/hqplayerd-$_debpk
 sha256sums=('15b8150b86441b92ac0192f21fe80ca220b74af97c1b423125c1cbf60b23f069'
             'e40b296cea92dcbb68660f80796b9b41ef55230cfb0755724cd2ca484ab24fd7')
 sha256sums_x86_64=('5d338a655065b17625f73fe8cf10b137c6cd3fec16aa1b00ce9db98abba0fefb')
-sha256sums_aarch64=('ad3af6ab6f7e8db2737f78959476d982a57f5fa9a0a749de73e08fa150b6fb93')
+sha256sums_aarch64=('58e84bf903f9d3e8f814384a3e3d59ad8973f143d55139c5ab6a666df9fbc2bb')
 install=${pkgname}.install
 backup=(etc/hqplayer/hqplayerd.xml)
 
