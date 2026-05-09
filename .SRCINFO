@@ -1,6 +1,6 @@
 pkgbase = onetcli-bin
 	pkgdesc = One Net Client — A cross-platform desktop client for databases, SSH/SFTP, terminals & AI, all in one place. (Prebuilt version)
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://feigecode.github.io/onetcli/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = onetcli-bin
 	depends = libxkbcommon-x11
 	depends = libxcb
 	depends = systemd-libs
-	provides = onetcli=0.3.3
+	provides = onetcli=0.4.0
 	conflicts = onetcli
-	source = onetcli-0.3.3.tar.gz::https://github.com/feigeCode/onetcli/releases/download/v0.3.3/onetcli-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = be70602c4857df181e9ebec1c8f6eb5e4312956927870bb0f1a1750456c108b9
+	source = onetcli-0.4.0.tar.gz::https://github.com/feigeCode/onetcli/releases/download/v0.4.0/onetcli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 26e6b06efb12ff9124f5f926f642a215042ef540090f550f78354f0466aefd69
 
 pkgname = onetcli-bin
