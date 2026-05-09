@@ -9,8 +9,17 @@ pkgrel=1
 arch=(any)
 url="https://github.com/rhasspy/wyoming-faster-whisper"
 license=('MIT')
-depends=(python 'python-wyoming>=1.8' 'python-faster-whisper>=1.2.1')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+depends=(
+  python
+  "python-wyoming>=1.8"
+  "python-faster-whisper>=1.2.1"
+)
+makedepends=(
+  python-build
+  python-installer
+  python-wheel
+  python-setuptools
+)
 source=("https://github.com/rhasspy/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         wyoming-faster-whisper.conf
         wyoming-faster-whisper.service)
