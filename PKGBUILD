@@ -3,7 +3,7 @@
 _pkgname=ssh-multisession-resume
 pkgname=${_pkgname}-git
 _srcname=${_pkgname}-source
-pkgver=0.r7.g2c5805f
+pkgver=0.r8.g3da2e62
 pkgrel=1
 pkgdesc='Persistent multi-session SSH auto-resume utility backed by tmux'
 arch=('any')
@@ -23,7 +23,7 @@ source=("${_srcname}::git+https://github.com/Bit-Loop/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_srcname}"
+  cd "${_srcname}" || return
 
   if git describe --long --tags --abbrev=7 >/dev/null 2>&1; then
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 package() {
-  cd "${_srcname}"
+  cd "${_srcname}" || return
 
   install -Dm755 ssh-multisession-resume "${pkgdir}/usr/lib/${_pkgname}/ssh-multisession-resume"
   install -Dm755 client/install.sh "${pkgdir}/usr/lib/${_pkgname}/client/install.sh"
