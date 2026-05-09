@@ -1,0 +1,26 @@
+pkgbase = mykey
+	pkgdesc = Hardware-focused local authentication, Secret Service, and tray stack for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JamesFromFL/mykey
+	install = mykey.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	makedepends = rust
+	depends = dbus
+	depends = pam
+	depends = polkit
+	depends = systemd
+	depends = tpm2-tss
+	optdepends = fprintd: fingerprint enrollment and runtime biometric authentication
+	optdepends = howdy: face biometric authentication backend (AUR)
+	optdepends = pam-u2f: security-key enrollment and security-key authentication testing
+	provides = mykey
+	conflicts = mykey-git
+	source = mykey-0.1.0.tar.gz::https://github.com/JamesFromFL/mykey/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 03d34e72ace540078023dad9655f9bc86ff73a5b4db5268f467dbbb28f03f4c2
+
+pkgname = mykey

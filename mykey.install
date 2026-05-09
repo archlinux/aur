@@ -1,0 +1,54 @@
+post_install() {
+  cat <<EOF
+Installation complete.
+
+Recommended next steps:
+    1. Run the unified auth setup:
+       sudo mykey auth setup
+
+    2. Optionally enroll MyKey as your Secret Service provider:
+       mykey migrate enroll
+
+       Do not manually enable mykey-secrets first on initial setup.
+       The migration flow will enable/start the service after
+       proper provider handoff.
+
+    3. Optionally enable the tray:
+       mykey tray enable
+
+    4. For help use:
+       mykey --help
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+MyKey was upgraded.
+
+Recommended next steps:
+  - Review the current control surface:
+    mykey --help
+  - Re-run auth setup only if you intentionally want to change your MyKey auth configuration:
+    sudo mykey auth setup
+EOF
+}
+
+pre_remove() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl disable --now mykey-daemon >/dev/null 2>&1 || true
+  fi
+}
+
+post_remove() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload >/dev/null 2>&1 || true
+  fi
+
+  cat <<'EOF'
+MyKey package files were removed.
+
+Runtime state under /etc/mykey, user data under ~/.local/share/mykey, and any
+user-session enablement were not removed automatically. Review them manually
+if you want a full teardown.
+EOF
+}
