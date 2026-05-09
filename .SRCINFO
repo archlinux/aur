@@ -1,6 +1,6 @@
 pkgbase = yume-2kki-launcher-git
 	pkgdesc = Launcher, installer, and updater for Yume 2kki
-	pkgver = 2.1.1r333.df703df
+	pkgver = 2.2.0336.360c79c
 	pkgrel = 1
 	url = https://gitlab.com/Z-ixel/yume-2kki-launcher
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = yume-2kki-launcher-git
 	depends = jsoncpp
 	optdepends = easyrpg-player: preferred way to launch Yume 2kki
 	optdepends = 7zip: faster decompression of .7z files
-	provides = yume-2kki-launcher=2.1.1r333.df703df
+	provides = yume-2kki-launcher=2.2.0336.360c79c
 	source = git+https://gitlab.com/Z-ixel/yume-2kki-launcher.git
 	sha256sums = SKIP
 
