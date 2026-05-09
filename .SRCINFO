@@ -23,6 +23,7 @@ pkgbase = solara-kernel-headers
 	makedepends = elfutils
 	makedepends = clang
 	makedepends = llvm
+	makedepends = zstd
 	depends = solara-kernel
 	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.5.tar.xz
 	sha256sums = SKIP
