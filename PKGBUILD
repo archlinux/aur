@@ -2,26 +2,23 @@
 # Maintainer: wquintal <williamquintal95@gmail.com>
 
 pkgname='logviewer-bin'
-pkgver=0.1.18
+pkgver=0.1.21
 pkgrel=1
 pkgdesc='CLI log client for multiple sources (Splunk, K8s, Docker, etc)'
-url='https://github.com/bascanada/logviewer'
+url='https://github.com/estran-studio/logviewer'
 arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')
 provides=('logviewer')
 conflicts=('logviewer')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bascanada/logviewer/releases/download/v${pkgver}/logviewer_Linux_arm64.tar.gz")
-sha256sums_aarch64=('9befb2068e7537db7ea935bf4eabd8c39123f683f5504a8e2d4ddbac609d0fd5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/estran-studio/logviewer/releases/download/v${pkgver}/logviewer_Linux_arm64.tar.gz")
+sha256sums_aarch64=('bf75dd4c691df29e8c844330fac6e4849c974b37c39c3ee5408d28ac65a2c042')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bascanada/logviewer/releases/download/v${pkgver}/logviewer_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('58d862858caee433d6b9e0496e37b3ee85edc7cefbbd4df244e5cb26522378c2')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/estran-studio/logviewer/releases/download/v${pkgver}/logviewer_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('89752d0ec48be615701be2d3ddce18ebbb18852aa7e326d851c4ae7b0c2eadba')
 
 package() {
-  # bin is simply installed to /usr/bin
   install -Dm755 "./logviewer" "${pkgdir}/usr/bin/logviewer"
-
-  # Install license and readme
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
