@@ -1,6 +1,6 @@
 pkgbase = gpu-t
 	pkgdesc = A lightweight GPU-Z clone for Linux
-	pkgver = 0.1.5
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/lseurttyuu/GPU-T
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = gpu-t
 	depends = mesa-utils
 	depends = pciutils
 	depends = vulkan-tools
+	optdepends = opencl-driver: packaged OpenCL driver
 	optdepends = opengl-driver: packaged openGL driver
 	optdepends = vulkan-driver: packaged Vulkan driver
-	optdepends = opencl-driver: packaged OpenCL driver
-	source = GPU-T-0.1.5.tar.gz::https://github.com/lseurttyuu/GPU-T/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 4eba531e59e22a0a971db460d59a452c8e25b30cd96fc60c548101f5e5ffe5ff
+	source = GPU-T-0.2.0.tar.gz::https://github.com/lseurttyuu/GPU-T/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 3fc168d8fefe68f7ed5477e0156bba3c474e9c185225611df99c5fe69476842d
 
 pkgname = gpu-t

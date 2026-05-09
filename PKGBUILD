@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gpu-t
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A lightweight GPU-Z clone for Linux"
 arch=('x86_64')
@@ -20,12 +20,12 @@ makedepends=(
   'dotnet-sdk-9.0'
 )
 optdepends=(
+  'opencl-driver: packaged OpenCL driver'
   'opengl-driver: packaged openGL driver'
   'vulkan-driver: packaged Vulkan driver'
-  'opencl-driver: packaged OpenCL driver'
 )
 source=("GPU-T-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4eba531e59e22a0a971db460d59a452c8e25b30cd96fc60c548101f5e5ffe5ff')
+sha256sums=('3fc168d8fefe68f7ed5477e0156bba3c474e9c185225611df99c5fe69476842d')
 
 prepare() {
   cd "GPU-T-$pkgver"
@@ -40,6 +40,13 @@ build() {
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
   export DOTNET_NOLOGO=1
 
+  dotnet publish Nvapi/GPU-T.Nvapi.csproj \
+    --configuration Release \
+    --runtime linux-x64 \
+    --output builddir \
+    -p:DebugSymbols=false \
+    -p:DebugType=None
+
   dotnet publish GPU-T.csproj \
     --configuration Release \
     --runtime linux-x64 \
@@ -53,7 +60,7 @@ build() {
 
 package() {
   cd "GPU-T-$pkgver"
-  install -Dm755 builddir/GPU-T -t "$pkgdir/usr/lib/$pkgname/"
+  install -Dm755 builddir/{GPU-T,GPU-T.Nvapi} -t "$pkgdir/usr/lib/$pkgname/"
   install -Dm644 builddir/*.{dll,json} -t "$pkgdir/usr/lib/$pkgname/"
   install -Dm755 builddir/*.so -t "$pkgdir/usr/lib/$pkgname/"
   install -Dm644 Assets/app_icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
