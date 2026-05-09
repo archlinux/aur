@@ -20,5 +20,5 @@ package() {
   cd "$pkgname"
 
   install -Dm644 -t "${pkgdir}/usr/share/easyeffects/input/jtrv-Presets/" *.json
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/" README.md
 }
