@@ -1,0 +1,13 @@
+pkgbase = goplayertui-bin
+	pkgdesc = Reproductor de música TUI escrito en Go
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/ader999/GoPlayerTUI
+	license = MIT
+	conflicts = GoPlayerTUI
+	provides = GoPlayerTUI
+	arch = x86_64
+	source_x86_64 = https://github.com/ader999/GoPlayerTUI/releases/download/v1.0.5/GoPlayerTUI_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8dc74571db776683766d36555ac9f862749eb33eb64aed6263f4ff072b80383f
+	
+pkgname = goplayertui-bin
