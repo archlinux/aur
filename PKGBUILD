@@ -1,7 +1,7 @@
 # Maintainer: Joao Costa <arch@joaocosta.dev>
 pkgname=tasks-org-appimage
 _pkgname=tasks-org
-pkgver=15.4.1
+pkgver=15.4.2
 pkgrel=1
 pkgdesc="Bringing Astrid Tasks back from the dead"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!strip' '!debug')
 provides=('tasks-org')
 conflicts=('tasks-org')
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/tasks/tasks/releases/download/${pkgver}/tasks-org-linux-x86_64.AppImage")
-sha256sums=('445c5f069d710e9ed894a01d59819cdaf7fe0fe787606297497f0bb3176e87b3')
+sha256sums=('172cb18b15f0ea3f4b3b368301bd73ba818138bdd052cae87c2a29c00ba42530')
 
 package() {
   cd "$srcdir"
