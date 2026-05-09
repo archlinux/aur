@@ -1,5 +1,5 @@
-/pkg/
-/src/
-/*.pkg.tar.zst
-
-/hell-linux-x86-64bit
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO
