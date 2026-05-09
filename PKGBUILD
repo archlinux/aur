@@ -1,17 +1,16 @@
 pkgname=cmdcreate-git
-pkgver=r1382.3380b6c
+pkgver=r143.1045ced
 pkgrel=1
 pkgdesc="Allows you to create custom commands for your custom scripts"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/owen-debiasio/cmdcreate"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
-depends=('gcc-libs' 'less')
-makedepends=('cargo' 'git' 'cmake' 'clang')
+depends=('gcc-libs' 'curl' 'git' 'less' 'openssl')
+makedepends=('cargo' 'git')
 
 conflicts=('cmdcreate')
 provides=('cmdcreate')
-options=('!lto') 
 
 source=("cmdcreate::git+$url.git")
 sha256sums=('SKIP')
@@ -28,7 +27,6 @@ prepare() {
 
 build() {
   cd cmdcreate
-  export LIBCLANG_PATH=/usr/lib
   cargo build --release --frozen
 }
 
