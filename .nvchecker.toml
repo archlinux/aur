@@ -1,0 +1,4 @@
+[odamex]
+source = "git"
+git = "https://github.com/odamex/odamex.git"
+include_regex = '[0-9.]+'
