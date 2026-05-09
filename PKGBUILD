@@ -1,7 +1,7 @@
 # Maintainer: Harsh Sharma <harsh@codelif.in>
 
 pkgname=ytuff-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Terminal music player for local files and YouTube Music"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 provides=('ytuff')
 conflicts=('ytuff')
 source=("https://github.com/life2harsh/ytuff/releases/download/v${pkgver}/ytuff-linux-${CARCH}-arch.tar.gz")
-sha256sums=('f6130d86f0c2af5d2330f09de957035ce9da7f4e68c5a1157d20dbeb833a2f33')
+sha256sums=('bcc52d508f3d5cfc0d3b80ac6971ee7fc14193084aa81128f7dc82d982e1fe8c')
 
 package() {
   install -Dm755 "ytuff-linux-${CARCH}/ytuff" "$pkgdir/usr/bin/ytuff"
