@@ -1,7 +1,7 @@
 pkgbase = nnote
 	pkgdesc = A minimal CLI note taker
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/stiermid/nnote
 	arch = any
 	license = GPL-3.0-or-later
@@ -11,7 +11,7 @@ pkgbase = nnote
 	depends = python-pyyaml
 	provides = python-nnote
 	conflicts = python-nnote
-	source = https://files.pythonhosted.org/packages/source/n/nnote/nnote-0.3.1.tar.gz
-	sha256sums = b34f3d55c6612cd68b3a017dbc46fc022413822732e2d9f6c6bc7dd5c785d596
+	source = https://files.pythonhosted.org/packages/source/n/nnote/nnote-0.3.2.tar.gz
+	sha256sums = c7e45346a6a8dca55c641d6d02d9b431a65430bcb11c781b02401bbb3ec311c7
 
 pkgname = nnote
