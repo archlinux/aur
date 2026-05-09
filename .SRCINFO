@@ -1,12 +1,11 @@
 pkgbase = r-radiant.data
 	pkgdesc = Data Menu for Radiant: Business Analytics using R and Shiny
-	pkgver = 1.6.6
+	pkgver = 1.6.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=radiant.data
 	arch = any
 	license = AGPL-3.0-only AND CC-BY-SA-4.0
 	checkdepends = r-testthat
-	depends = r-arrow
 	depends = r-base64enc
 	depends = r-broom
 	depends = r-bslib
@@ -40,6 +39,7 @@ pkgbase = r-radiant.data
 	depends = r-tibble
 	depends = r-tidyr
 	depends = r-writexl
+	optdepends = r-arrow
 	optdepends = r-dbi
 	optdepends = r-dbplyr
 	optdepends = r-pkgdown
@@ -47,8 +47,8 @@ pkgbase = r-radiant.data
 	optdepends = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-webshot
-	source = https://cran.r-project.org/src/contrib/radiant.data_1.6.6.tar.gz
-	md5sums = e5432e5ef8796bb18f6ab0d40f91c7e1
-	b2sums = c7d8de7be7bc38fb838579186279cdf151b8e3c686cb40143c54e944b9f7c9633e11152614d49a93cd158bfb079f20a342a2cad9ac98a22c2257d4c6d5f2ed9d
+	source = https://cran.r-project.org/src/contrib/radiant.data_1.6.8.tar.gz
+	md5sums = c760b4d84c01010300a4f954ac86f35d
+	b2sums = f7e401e38fbea7706a367bd21d4bf8c2c72b631c119e4f6614bda0c7f2a659252427f6456998993a3ae5f62d6df5ed0178766727c2ed27ac03a0c9775b672b27
 
 pkgname = r-radiant.data
