@@ -1,6 +1,6 @@
 pkgbase = python-finitediff
 	pkgdesc = Finite difference weights for any derivative order on arbitrarily spaced grids
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/bjodah/finitediff
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-finitediff
 	makedepends = cython
 	makedepends = python-wheel
 	depends = python-numpy
-	source = https://pypi.org/packages/source/f/finitediff/finitediff-0.6.4.tar.gz
-	sha512sums = d9b1b45400cd4bfcfccfe0b3322e1db251f4e060e6b33d2c50c55e1744711589f4d67cd795dbf40abb840c274ad619d80741fda69f797b77ea619a087a5fb04d
+	source = https://pypi.org/packages/source/f/finitediff/finitediff-0.6.5.tar.gz
+	sha512sums = eebffa81780294ebdde6a46165e7c8180abfa4873e1595ee79a58adb6995fc1711b6c4c6366b016654af27d2c99c87a2172b6d43391d086614dc71e4730a18bd
 
 pkgname = python-finitediff
