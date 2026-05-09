@@ -16,6 +16,7 @@ pkgbase = python-dataproperty
 	makedepends = python-docutils
 	makedepends = python-pygments
 	depends = python-mbstrdecoder
+	depends = python-loguru
 	depends = python-typepy
 	source = https://files.pythonhosted.org/packages/source/d/dataproperty/dataproperty-1.1.1.tar.gz
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367

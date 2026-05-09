@@ -27,6 +27,7 @@ checkdepends=(
   'python-pytz')
 depends=(
   'python-mbstrdecoder'
+  'python-loguru'
   'python-typepy')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
@@ -58,7 +59,7 @@ package() {
   local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   ln -s \
-    "$_site/${_name}-${pkgver}.dist-info/LICENSE" \
+    "$_site/${_name}-${pkgver}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
