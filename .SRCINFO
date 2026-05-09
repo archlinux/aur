@@ -1,9 +1,9 @@
 pkgbase = virtdev-git
 	pkgdesc = Isolated virtual development machines on KVM/QEMU
-	pkgver = r221.5ff934b
+	pkgver = r296.cddf7b7
 	pkgrel = 1
 	url = https://github.com/matheusmoreira/virtdev
-	arch = any
+	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
 	depends = bash>=5.2
@@ -13,7 +13,6 @@ pkgbase = virtdev-git
 	depends = openssh
 	depends = socat
 	optdepends = archiso: required for building the installation ISO (virtdev-iso)
-	optdepends = jq: required for building the installation ISO (virtdev-iso)
 	optdepends = rsync: required for backup, restore, transfer, and recreate
 	provides = virtdev
 	conflicts = virtdev

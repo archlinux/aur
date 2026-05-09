@@ -1,6 +1,6 @@
 # Maintainer: Matheus Afonso Martins Moreira <matheus@matheusmoreira.com>
 pkgname=virtdev-git
-pkgver=r221.5ff934b
+pkgver=r307.0b213b5
 pkgrel=1
 pkgdesc='Isolated virtual development machines on KVM/QEMU'
 arch=('x86_64')
@@ -16,7 +16,6 @@ depends=(
 )
 optdepends=(
   'archiso: required for building the installation ISO (virtdev-iso)'
-  'jq: required for building the installation ISO (virtdev-iso)'
   'rsync: required for backup, restore, transfer, and recreate'
 )
 makedepends=('git')
@@ -61,10 +60,10 @@ package() {
   done < <(find iso/ -type f -print0)
   unset _file
 
-  chmod 755 "${_profiledir}/airootfs/root/archinstall/install.sh"
+  chmod 755 "${_profiledir}/airootfs/root/virtdev/install.sh"
 
   install -dm755 "${_profiledir}/airootfs/etc/systemd/system/multi-user.target.wants"
-  ln -s ../archinstall-auto.service "${_profiledir}/airootfs/etc/systemd/system/multi-user.target.wants/archinstall-auto.service"
+  ln -s ../virtdev-install.service "${_profiledir}/airootfs/etc/systemd/system/multi-user.target.wants/virtdev-install.service"
 
   # Install documentation
   install -Dm644 README.md  "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
