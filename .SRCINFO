@@ -1,0 +1,18 @@
+pkgbase = tomedb-bin
+	pkgdesc = AI-native database client powered by natural-language queries. (Prebuilt version. Use system-wide electron)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://tomedb.dev/
+	arch = x86_64
+	license = Apache-2.0
+	depends = electron30
+	depends = libsecret
+	provides = tomedb=0.6.0
+	conflicts = tomedb
+	options = !emptydirs
+	source = tomedb-0.6.0-x86_64.AppImage::https://github.com/joshkotrous/tome/releases/download/v0.6.0/tome-linux-x86_64.AppImage
+	source = tomedb.sh
+	sha256sums = f10c7841ef58d6b829bbc765743a88d4dc43ca4c057f764a98e756be846333fc
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = tomedb-bin
