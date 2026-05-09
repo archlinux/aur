@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=RcppSpdlog
-_pkgver=0.0.28
+_pkgver=0.0.29
 pkgname=r-${_pkgname,,}
-pkgver=0.0.28
+pkgver=0.0.29
 pkgrel=1
 pkgdesc="R and C++ Interfaces to 'spdlog' C++ Header Library for Logging"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-simplermarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5d46f4df8c038a69b042f9fd983f8875bfe0737f8721eb05731872923cf7c996')
+sha256sums=('a7687a8ab54dedc9642c16f7611360cc721ef8f170a26e4aa60a17f9650355e7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
