@@ -1,7 +1,7 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=tempstash
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="stash a copy of a file for a specified period of time"
 arch=(any)
 url="https://sr.ht/~minshall/tempstash/"
@@ -33,7 +33,7 @@ check() {
     cd "${pkgname}"
 
     if cram -h > /dev/null; then
-        make test;
+        make testlocal;
     else
         echo "cram(1) not installed; check suppressed"
     fi

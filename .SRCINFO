@@ -1,7 +1,7 @@
 pkgbase = tempstash
 	pkgdesc = stash a copy of a file for a specified period of time
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~minshall/tempstash/
 	arch = any
 	license = MIT
