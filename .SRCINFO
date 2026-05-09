@@ -1,7 +1,7 @@
 pkgbase = vrchat-avatar-scaler
 	pkgdesc = Control your avatar's scale via OSC
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SalbugVR/VRChat-Avatar-Scaler
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = vrchat-avatar-scaler
 	source = vrchat-avatar-scaler
 	source = scaler_config.json
 	sha256sums = c8914dfcc94b21f7bbff5337591e2b7d11664885ff2d042b0f6b6ea8de0e3044
-	sha256sums = a9eb665d62ed0adbdf554d6cdd7727e2713176452b02e9608151b70b4fe704db
+	sha256sums = fa49ddd9c951efdf12594ec78271f55606d86474660eea30999971de184cbdc7
 	sha256sums = 9685a2710c75091518e63fcee4a455f8e75dfa204336ca47379b5b290c3aaacb
 	sha256sums = 89dde327e08dc9951f3ea29a440fdbe64b665ea1679328899dc321dcd6a12c69
 

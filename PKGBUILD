@@ -3,7 +3,7 @@
 pkgname=vrchat-avatar-scaler
 _pkgname=VRChat-Avatar-Scaler
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Control your avatar's scale via OSC"
 arch=("any")
 url="https://github.com/SalbugVR/$_pkgname"
@@ -16,7 +16,7 @@ source=("https://github.com/SalbugVR/${_pkgname}/archive/refs/tags/v${pkgver}.ta
 	"vrchat-avatar-scaler"
 	"scaler_config.json")
 sha256sums=('c8914dfcc94b21f7bbff5337591e2b7d11664885ff2d042b0f6b6ea8de0e3044'
-            'a9eb665d62ed0adbdf554d6cdd7727e2713176452b02e9608151b70b4fe704db'
+            'fa49ddd9c951efdf12594ec78271f55606d86474660eea30999971de184cbdc7'
             '9685a2710c75091518e63fcee4a455f8e75dfa204336ca47379b5b290c3aaacb'
             '89dde327e08dc9951f3ea29a440fdbe64b665ea1679328899dc321dcd6a12c69')
 package() {
@@ -30,6 +30,11 @@ package() {
     # Install desktop file
     install -Dm644 "$srcdir/${pkgname}.desktop" \
         "$pkgdir/usr/share/applications/${pkgname}.desktop"
+
+    # Install icon
+    install -Dm644 "$srcdir/${_pkgname}-${pkgver}/resources/oscscale.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/oscscale.svg"
+
     
     #install launcher
     install -Dm755 "$srcdir/${pkgname}" \
