@@ -1,0 +1,13 @@
+pkgbase = late-cli
+	pkgdesc = High performance coding agent that just works with local or cloud models. Minimal token usage, extreme performance.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/mlhher/late-cli
+	arch = x86_64
+	license = custom:BUSL-1.1
+	makedepends = go
+	depends = glibc
+	source = late-cli-1.2.3.tar.gz::https://github.com/mlhher/late-cli/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 7058ada1c3a3d7fe5247c2689197596f519fbbc6276e7f3dc3a1ceb3f29422e0
+
+pkgname = late-cli
