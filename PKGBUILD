@@ -13,6 +13,9 @@ depends=(
   python
   "python-wyoming>=1.8"
   "python-faster-whisper>=1.2.1"
+  python-huggingface-hub
+  python-numpy
+  python-pytorch
 )
 makedepends=(
   python-build
@@ -38,4 +41,6 @@ package() {
 
   install -Dm644 ../wyoming-faster-whisper.service -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 ../wyoming-faster-whisper.conf "$pkgdir/etc/conf.d/wyoming-faster-whisper"
+
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -12,6 +12,9 @@ pkgbase = python-wyoming-faster-whisper
 	depends = python
 	depends = python-wyoming>=1.8
 	depends = python-faster-whisper>=1.2.1
+	depends = python-huggingface-hub
+	depends = python-numpy
+	depends = python-pytorch
 	source = https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v3.1.0.tar.gz
 	source = wyoming-faster-whisper.conf
 	source = wyoming-faster-whisper.service
