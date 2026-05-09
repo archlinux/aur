@@ -1,15 +1,13 @@
 pkgbase = easyeffects-digitalone1-presets-git
 	pkgdesc = Community Presets for Easyeffects: Loudness Equalizer
-	pkgver = r76.347dc4d
+	pkgver = r77.6fc0630
 	pkgrel = 1
 	url = https://github.com/Digitalone1/EasyEffects-Presets
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = easyeffects>=7.0.0
+	depends = easyeffects>=8.0.0
 	depends = lsp-plugins-lv2>=1.2.17
-	provides = easyeffects-digitalone1-presets=r76.347dc4d
-	conflicts = easyeffects-digitalone1-presets
 	source = EasyEffects-Presets::git+https://github.com/Digitalone1/EasyEffects-Presets.git
 	sha256sums = SKIP
 

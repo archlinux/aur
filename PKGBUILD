@@ -1,37 +1,29 @@
 # Maintainer: DeepChirp <deepchirp@archlinuxcn.org>
 pkgname=easyeffects-digitalone1-presets-git
 _origin=EasyEffects-Presets
-pkgver=r76.347dc4d
+pkgver=r77.6fc0630
 pkgrel=1
 pkgdesc="Community Presets for Easyeffects: Loudness Equalizer"
 arch=('any')
 url="https://github.com/Digitalone1/${_origin}"
 license=('MIT')
-depends=('easyeffects>=7.0.0' 'lsp-plugins-lv2>=1.2.17')
+depends=('easyeffects>=8.0.0' 'lsp-plugins-lv2>=1.2.17')
 makedepends=('git')
-provides=("${pkgname%-git}=${pkgver}")
-conflicts=("${pkgname%-git}")
 source=("${_origin}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_origin}"
-
-  printf "r%s.%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  cd "${_origin}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-  cd "${srcdir}/${_origin}"
+  cd "${_origin}"
 
-  outdir="${pkgdir}/usr/share/easyeffects/output/Digitalone1-Presets"
-  install -dm755 "${outdir}"
+  install -Dm644 -t "${pkgdir}/usr/share/easyeffects/output/Digitalone1-Presets/" \
+    "LoudnessEqualizer.json" \
+    "LoudnessCrystalEqualizer.json"
 
-  install -m644 "LoudnessEqualizer.json" "${outdir}/" \
-    || { echo "Missing LoudnessEqualizer.json"; return 1; }
-  install -m644 "LoudnessCrystalEqualizer.json" "${outdir}/" \
-    || { echo "Missing LoudnessCrystalEqualizer.json"; return 1; }
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "README.md"
 }
