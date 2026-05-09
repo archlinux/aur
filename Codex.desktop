@@ -6,5 +6,6 @@ Icon=openai-codex-desktop
 Terminal=false
 Type=Application
 Categories=Development;IDE;
+MimeType=x-scheme-handler/codex;
 StartupNotify=true
 StartupWMClass=Codex
