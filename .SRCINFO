@@ -1,19 +1,21 @@
 pkgbase = python-tinyfpgab-git
 	pkgdesc = Programmer for the TinyFPGA B2 boards
 	pkgver = r80.e8f9150
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tinyfpga/TinyFPGA-B-Series
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	checkdepends = python-pytest
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyserial
 	provides = python-tinyfpgab
 	conflicts = python-tinyfpgab
-	source = git+https://github.com/tinyfpga/TinyFPGA-B-Series.git
+	source = python-tinyfpgab-git::git+https://github.com/tinyfpga/TinyFPGA-B-Series.git
 	sha256sums = SKIP
 
 pkgname = python-tinyfpgab-git
-
