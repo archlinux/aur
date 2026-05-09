@@ -1,0 +1,3 @@
+[python-tcconfig]
+source = "pypi"
+pypi = "tcconfig"
