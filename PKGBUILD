@@ -3,14 +3,14 @@
 # cmake/FetchCorrosion.cmake
 _corrosion_version=0.6.1
 # deps.json
-_rstd_commit=5878b2058eb67adb615f691889d93e3ab13ba7d2
+_rstd_commit=f4f45c507d3d69fd6b31e3139c0d63a57622c0d0
 _ncrequest_commit=404868aa2aa4481e262f25d8f7d053f42b61b7b8
 _wavsen_commit=24bade549e5059dbfa02e61df1a4b4a928f5eef7
 _qml_material_commit=7c516a90d74b5b95c7c51f3d8e92c4c711951ac3
 _qextra_commit=e9984a0dc57a4abecf5795a067ff4132bcb9489d
 
 pkgname=waywallen
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
@@ -28,9 +28,9 @@ source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/hypengw/QmlMaterial.git#commit=$_qml_material_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit"
         "0001-use-system-deps.diff")
-sha256sums=('7fffb14820059205f821a84c6bea66663d196e8197ae5125fe358f04ec6cf201'
+sha256sums=('a6f670c76f4e7063a23e193e4a61dd4239dd9c13ae6731553fe7a42f601fa36d'
             '75c1711049c3aa058ef7f8519ecc2a8a437cd31dd8ce4fb0b65c0ba13b7b36f6'
-            '4a138aeeca0160772aa5c6e4ddba67d31935f299d048fb767fadbda4c0b29883'
+            '51783e07b586d7d44884d935201308df4e0425a5614731fef167f0fa2ea22a7d'
             '939c717802fc9e0ef13e54f547d6f7d1b2b99730eb31c6ef06211a3ffd5495e6'
             '8b94d8c0fd2bd8e7f49200d839bbb9cd1a633a99d4c648743f1ef3b27165e2b8'
             '1dce8eff7f278490496300dcc01f3907a1bf9d0d130f30de047a9638bfd6df49'
