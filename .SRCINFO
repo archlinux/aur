@@ -1,15 +1,10 @@
 pkgbase = xp3-tool
 	pkgdesc = A simple tool for packing and unpacking .xp3 files
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/storycraft/xp3-tool
 	arch = x86_64
 	license = MIT
-  keywords = xp3
-  keywords = rust
-  keywords = packer
-  keywords = unpacker
-  keywords = visual-novel
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs

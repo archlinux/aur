@@ -2,9 +2,8 @@
 # This is made by storycraft (Github) so all credit goes to them. I (SaltedFish) am just uploading it to AUR. My reddit is u/Salted_Fsh
 pkgname=xp3-tool
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tool for packing and unpacking .xp3 files"
-keywords=('xp3' 'packer' 'unpacker' 'rust' 'visual-novel')
 arch=('x86_64')
 url="https://github.com/storycraft/xp3-tool"
 license=('MIT')
