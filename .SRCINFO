@@ -1,15 +1,14 @@
 pkgbase = python-trame-plotly
 	pkgdesc = Plotly figure widget for trame
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/trame-plotly
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-hatchling
 	makedepends = nodejs
 	makedepends = npm
 	depends = python-trame-client
