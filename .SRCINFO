@@ -7,7 +7,7 @@ pkgbase = python-msgfy
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/thombashi/msgfy/archive/v0.2.1.tar.gz
+	source = msgfy-0.2.1.tgz::https://github.com/thombashi/msgfy/archive/v0.2.1.tar.gz
 	sha256sums = f705a968b193270acc8784cb1c9e9843bd09ff9c157a1e326864119dfde393b8
 
 pkgname = python-msgfy
