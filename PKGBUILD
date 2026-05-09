@@ -4,11 +4,11 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Binary wrapper for gaze-gui from Gundu Labs"
 arch=('x86_64' )
-url="https://packages.gundulabs.com"
+url="https://gaze.gundulabs.com"
 license=('custom')
 depends=('gtk4' 'libadwaita' )
 source=("gaze-gui-0.1.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gui-0.1.0-1-x86_64.pkg.tar.zst")
-sha256sums=('38bf32ca8a91bab0c5de05be3463095f923e9ba8a65884fcf7254cbaa317fe85')
+sha256sums=('a3da8dc38aef35690aa244ea537ad8171c26009ae324c6ada48eb3f4b1a31285')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-gui-0.1.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
