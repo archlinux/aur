@@ -1,6 +1,6 @@
 pkgbase = noirdb-bin
 	pkgdesc = 🕵️‍♂️ Noir - keyboard driven database management client for Postgresql, MySQL, MariaDB, SQLite and Clickhouse. (Prebuilt version)
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://noirdb.dev/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = noirdb-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = noirdb=2.3.0
+	provides = noirdb=2.3.1
 	conflicts = noirdb
-	source = noirdb-2.3.0.rpm::https://github.com/invm/noir/releases/download/v2.3.0/Noir-2.3.0-1.x86_64.rpm
-	sha256sums = 99894d9f9a7bde3476a4362c8c0e1b88948ad1a3d832450b8571efd8f1bdab9e
+	source = noirdb-2.3.1.rpm::https://github.com/invm/noir/releases/download/v2.3.1/Noir-2.3.1-1.x86_64.rpm
+	sha256sums = 323c48536a6f0de27eea23e8acdfc0cbf746c0120d35e104d91f5acf57710698
 
 pkgname = noirdb-bin

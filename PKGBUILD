@@ -2,7 +2,7 @@
 _appname=noir
 pkgname="${_appname}db-bin"
 _pkgname=Noir
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="🕵️‍♂️ Noir - keyboard driven database management client for Postgresql, MySQL, MariaDB, SQLite and Clickhouse. (Prebuilt version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('99894d9f9a7bde3476a4362c8c0e1b88948ad1a3d832450b8571efd8f1bdab9e')
+sha256sums=('323c48536a6f0de27eea23e8acdfc0cbf746c0120d35e104d91f5acf57710698')
 prepare() {
     sed -i -e "
         s/Categories=/Categories=Development;Database;/g
