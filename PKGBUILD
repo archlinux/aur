@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=23.0.0_r578095.0ad0e899d456
+pkgver=23.0.0_r579874.2caea408ab90
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -17,7 +17,7 @@ source=("git+https://github.com/llvm/llvm-project.git"
         libclc.pc.in
 )
 sha256sums=('SKIP'
-            '686eaf3427ae9990110028c5b9d7f5e1a0ad17fc6188b2bffd6484d81400a848'
+            'c0e87c69e4e9f1ea012eab976df2c3327897f03c2037aff3a4f87514c0ae0659'
             'a4cfc362c5bbfcaae407496abbc5407454474ab1d2f9e4aa1ee12e81be1a0db6')
 options=(!lto !debug)
 
@@ -29,7 +29,7 @@ options=(!lto !debug)
 prepare() {
   cd llvm-project
   local _commit_hash=$(echo $(pacman -Q llvm-minimal-git) | cut -d' ' -f2 |  cut -d'-' -f1 | cut -d'.' -f4)
-  # makepkg installs deps after processing the body of the PKGBUI:LD. 
+  # makepkg installs deps after processing the body of the PKGBUILD. 
   # This prevents using _commit_hash in the source= array unless llvm-minimal-git is installed before build starts.
   # best alternative seems to be to use git reset in prepare() .
   # example how the command works

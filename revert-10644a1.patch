@@ -1,13 +1,13 @@
 diff -ura llvm-project/libclc/CMakeLists.txt llvm-project.new/libclc/CMakeLists.txt
---- llvm-project/libclc/CMakeLists.txt	2026-04-25 15:01:15.439892851 +0200
-+++ llvm-project.new/libclc/CMakeLists.txt	2026-04-25 15:05:10.385576885 +0200
-@@ -138,6 +138,9 @@
+--- llvm-project/libclc/CMakeLists.txt	2026-05-09 21:24:29.204650110 +0200
++++ llvm-project.new/libclc/CMakeLists.txt	2026-05-09 21:27:15.132045718 +0200
+@@ -135,6 +135,9 @@
  add_custom_target( libclc-opencl-builtins COMMENT "Build libclc OpenCL builtins" )
  add_dependencies( libclc libclc-opencl-builtins )
  
 +configure_file( libclc.pc.in libclc.pc @ONLY )
 +install( FILES ${CMAKE_CURRENT_BINARY_DIR}/libclc.pc DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig" )
 +
- # Determine the clang target triple.
+ # Determine the clang target triple. Vulkan and SPIR-V backend targets use the
+ # triple directly; other SPIR-V targets fall back to the legacy SPIR target.
  set(clang_triple ${LIBCLC_TARGET})
- if(ARCH STREQUAL spirv AND LIBCLC_USE_SPIRV_BACKEND)
