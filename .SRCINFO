@@ -4,13 +4,13 @@ pkgbase = easyeffects-jtrv-presets-git
 	pkgrel = 1
 	url = https://gist.github.com/jtrv/47542c8be6345951802eebcf9dc7da31
 	arch = any
-	license = custom
+	license = unknown
 	makedepends = git
 	depends = easyeffects>=7.0.0
 	depends = lsp-plugins-lv2>=1.2.17
 	depends = rnnoise
 	depends = libdeep_filter_ladspa
-	source = EasyEffects-Presets::git+https://gist.github.com/47542c8be6345951802eebcf9dc7da31.git
+	source = easyeffects-jtrv-presets-git::git+https://gist.github.com/47542c8be6345951802eebcf9dc7da31.git
 	sha256sums = SKIP
 
 pkgname = easyeffects-jtrv-presets-git
