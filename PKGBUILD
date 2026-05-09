@@ -1,8 +1,6 @@
-# Maintainer: Matias <matiase@archlinux.org>
-
 pkgname=wanpipe
 pkgver=7.0.38
-pkgrel=4
+pkgrel=5
 pkgdesc='Sangoma WANPIPE drivers and utilities for DAHDI'
 arch=(x86_64)
 url=https://ftp.sangoma.com/linux/current_wanpipe/
