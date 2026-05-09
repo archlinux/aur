@@ -25,24 +25,30 @@ makedepends=(
   'git'
   'mold'
 )
-provides=("cosmic-comp-git")
-conflicts=("cosmic-comp-git")
+provides=(
+	"cosmic-comp-git"
+	"cosmic-comp"
+)
+conflicts=(
+	"cosmic-comp-git"
+	"cosmic-comp"
+)
 source=('git+https://github.com/skygrango/cosmic-comp.git#branch=gaming-fix')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd cosmic-comp-git
+  cd cosmic-comp
   git describe --long --tags --abbrev=7 | sed 's/^gaming-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd cosmic-comp-git
+  cd cosmic-comp
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "cosmic-comp-git"
+  cd cosmic-comp
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
@@ -53,6 +59,6 @@ build() {
 }
 
 package() {
-  cd cosmic-comp-git
+  cd cosmic-comp
   make DESTDIR="$pkgdir" install
 }
