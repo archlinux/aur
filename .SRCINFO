@@ -1,6 +1,6 @@
 pkgbase = bfree-bin
 	pkgdesc = A better free, human by default
-	pkgver = 0.1.20
+	pkgver = 0.1.21
 	pkgrel = 1
 	url = https://github.com/glexposito/bfree
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = bfree-bin
 	depends = libgcc
 	provides = bfree
 	conflicts = bfree
-	source = README-0.1.20.md::https://raw.githubusercontent.com/glexposito/bfree/v0.1.20/README.md
-	source = LICENSE-0.1.20::https://raw.githubusercontent.com/glexposito/bfree/v0.1.20/LICENSE
+	source = README-0.1.21.md::https://raw.githubusercontent.com/glexposito/bfree/v0.1.21/README.md
+	source = LICENSE-0.1.21::https://raw.githubusercontent.com/glexposito/bfree/v0.1.21/LICENSE
 	sha256sums = 556363d68708ef8fd54b433c1655916a1f98967dfbd353747b5684ab195de7ac
 	sha256sums = 07ec7d6e8c4890362dd7b638725abc54dc6449edbfa2fbabae6692dfbcebafd5
-	source_x86_64 = bfree-x86_64-0.1.20::https://github.com/glexposito/bfree/releases/download/v0.1.20/bfree
-	sha256sums_x86_64 = 10e64fea2e5169b331585927f1a645c924509d69291cc5c6309c16d78a529d6a
+	source_x86_64 = bfree-x86_64-0.1.21::https://github.com/glexposito/bfree/releases/download/v0.1.21/bfree
+	sha256sums_x86_64 = 6a6b4a902928f995a4ac52976382a9a563692a565078927020ec51b247e93b87
 
 pkgname = bfree-bin
