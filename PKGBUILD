@@ -6,7 +6,7 @@
 
 _name="matlabengine"
 pkgname="python-${_name}"
-pkgver=26.1.3a1
+pkgver=26.1.12
 pkgrel=1
 declare -Ag _releases=(
   ["${pkgver%%.*}.1"]="R20${pkgver%%.*}a"
@@ -44,7 +44,7 @@ source=(
   "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
   "${pkgname}_python3.12_syntax_warning.patch::${_url}/pull/55.patch?full_index=1"
 )
-b2sums=('6df13dad063d481f36f466bf7ee0aba1a6a8a57c9162a01ade426bc35b344ea4270e4d54f8775e16b68af9a463572d6406e10015f68f8c5215c70394c56ec054'
+b2sums=('06f859ca8ca6389e9c888fb6394f37a49ba752273061ae8ea36ed08cecc30b43305e832d42b25551fb73e09b3e511305277e8af8309ab1e602f1a21d55853eb7'
         'cd5b04e6b6216728ff91151d41444b294bbe5ca22feadd2bf0ed3acd32fb2428416d3685ccf50b9cb875230740479358b0347da16eb6a0c3a0e64f4b109ea670')
 
 prepare() {
