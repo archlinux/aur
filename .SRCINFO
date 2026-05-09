@@ -1,0 +1,19 @@
+pkgbase = tuxedo-bin
+	pkgdesc = A fast, keyboard-driven terminal UI for todo.txt
+	pkgver = 2026.5.3
+	pkgrel = 1
+	url = https://github.com/webstonehq/tuxedo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tuxedo
+	conflicts = tuxedo
+	options = !strip
+	source_x86_64 = tuxedo-x86_64-2026.5.3.tgz::https://github.com/webstonehq/tuxedo/releases/download/v2026.5.3/tuxedo-v2026.5.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = eb49071940a3b738bfb4a4151ab2b01524aeb55244b623c5bde7986b70ebe8d5
+	source_aarch64 = tuxedo-aarch64-2026.5.3.tgz::https://github.com/webstonehq/tuxedo/releases/download/v2026.5.3/tuxedo-v2026.5.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = eb49071940a3b738bfb4a4151ab2b01524aeb55244b623c5bde7986b70ebe8d5
+
+pkgname = tuxedo-bin

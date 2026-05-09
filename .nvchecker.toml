@@ -1,0 +1,5 @@
+[tuxedo-bin]
+source = "github"
+github = "webstonehq/tuxedo"
+use_latest_release = true
+prefix = "v"
