@@ -10,6 +10,6 @@ pkgbase = plasma-shortcut
 	depends = icoutils
 	depends = pyside6
 	source = plasma-shortcut-1.1.tar.gz::https://github.com/Matvel007/Plasma-Shortcut/archive/refs/tags/v1.1.tar.gz
-	sha256sums = 70d0ff130c96e21f8a29940ebb410b4b9b00bced153ca16627dd7f1edf5636cb
+	sha256sums = d70609a6ef1d5dd9eea1fcfeea0afccfc2171c4edee9cc2658822ca58a56f554
 
 pkgname = plasma-shortcut

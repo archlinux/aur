@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('kio' 'icoutils' 'pyside6')
 install=plasma-shortcut.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Matvel007/Plasma-Shortcut/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('70d0ff130c96e21f8a29940ebb410b4b9b00bced153ca16627dd7f1edf5636cb')
+sha256sums=('d70609a6ef1d5dd9eea1fcfeea0afccfc2171c4edee9cc2658822ca58a56f554')
 
 package() {
     cd "$srcdir/Plasma-Shortcut-$pkgver"
@@ -21,6 +21,9 @@ package() {
 
     install -Dm755 src/dolphin-launch-mode \
         "$pkgdir/usr/local/bin/dolphin-launch-mode"
+
+    install -Dm755 src/dolphin-extract-icon \
+        "$pkgdir/usr/local/bin/dolphin-extract-icon"
 
     install -Dm755 src/dolphin-shortcut-dialog.py \
         "$pkgdir/usr/local/share/create-shortcut/dolphin-shortcut-dialog.py"
@@ -40,4 +43,8 @@ package() {
     sed "s|PREFIX|/usr/local|g" src/launch-mode.desktop \
         > "$pkgdir/usr/share/kio/servicemenus/launch-mode.desktop"
     chmod 644 "$pkgdir/usr/share/kio/servicemenus/launch-mode.desktop"
+
+    sed "s|PREFIX|/usr/local|g" src/extract-icon.desktop \
+        > "$pkgdir/usr/share/kio/servicemenus/extract-icon.desktop"
+    chmod 644 "$pkgdir/usr/share/kio/servicemenus/extract-icon.desktop"
 }
