@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=word-sys's PDF Editor
+GenericName=word-sys's PDF Editor
+Comment=A simple and user-friendly PDF Editor
+Exec=word-sys-pdf-editor
+Terminal=false
+Type=Application
+Icon=word-sys-pdf-editor
+Categories=Office
+StartupWMClass=org.word-sys.pdfeditor
+

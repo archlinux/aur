@@ -1,0 +1,12 @@
+diff -Naur word-sys-pdf-editor-1.9.0.orig/word_sys_pdf_editor/window.py word-sys-pdf-editor-1.9.0/word_sys_pdf_editor/window.py
+--- word-sys-pdf-editor-1.9.0.orig/word_sys_pdf_editor/window.py	2026-05-06 22:50:42.000000000 +0200
++++ word-sys-pdf-editor-1.9.0/word_sys_pdf_editor/window.py	2026-05-09 20:02:34.380540271 +0200
+@@ -735,7 +735,7 @@
+         try:
+             license_path = Path(__file__).resolve().parent.parent / "LICENSE"
+             if not license_path.exists():
+-                license_path = Path("/usr/share/common-licenses/GPL-3")
++                license_path = Path("/usr/share/licenses/spdx/GPL-3.0-or-later.txt")
+ 
+             if license_path.exists():
+                 with open(license_path, 'r', encoding='utf-8') as f:
