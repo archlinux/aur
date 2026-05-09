@@ -8,7 +8,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/precice/${_base}"
 license=(MIT)
-depends=(python-lxml python-networkx)
+depends=(python-lxml python-networkx precice-config-format)
 makedepends=(python-build python-installer python-setuptools-git-versioning git)
 checkdepends=(python-pytest python-gitpython)
 source=(git+${url}.git#tag=v${pkgver})

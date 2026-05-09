@@ -13,6 +13,7 @@ pkgbase = precice-config-graph
 	makedepends = git
 	depends = python-lxml
 	depends = python-networkx
+	depends = precice-config-format
 	source = git+https://github.com/precice/config-graph.git#tag=v3.0.0
 	sha512sums = 271de157a11e170945128c739143b676680974538fdc00903b3f093d08c8cd561952ea72dde3b2bec4925b19b7ae57c24e8cb868416a098d707fdf5c6a0a8ab7
 
