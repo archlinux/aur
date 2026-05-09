@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=mopyrust
+GenericName=Mopidy Client
+Comment=Native Mopidy client for desktop
+Exec=mopyrust
+Icon=mopyrust
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+Keywords=music;mopidy;audio;player;mpd;tidal;
+StartupWMClass=mopyrust
