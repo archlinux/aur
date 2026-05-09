@@ -1,0 +1,5 @@
+[walk-bin]
+source = "github"
+github = "antonmedv/walk"
+use_latest_release = true
+prefix = "v"
