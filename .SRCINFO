@@ -1,11 +1,13 @@
 pkgbase = mergerfs-git
 	pkgdesc = Featureful union filesystem. Combines directories from various filesystems into a storage pool
-	pkgver = 2.41.0.r1.gb6e1a08
+	pkgver = 2.42.0.r0.gce3737f
 	pkgrel = 1
 	url = https://github.com/trapexit/mergerfs
 	arch = x86_64
 	license = ISC
 	makedepends = git
+	optdepends = lsb-release: for mergerfs.collect-info
+	optdepends = lshw: for mergerfs.collect-info
 	optdepends = mergerfs-tools-git: manage data in a pool
 	provides = mergerfs
 	conflicts = mergerfs

@@ -1,15 +1,18 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=mergerfs-git
-pkgver=2.41.0.r1.gb6e1a08
+pkgver=2.42.0.r0.gce3737f
 pkgrel=1
 pkgdesc='Featureful union filesystem. Combines directories from various filesystems into a storage pool'
 arch=(x86_64)
 url=https://github.com/trapexit/mergerfs
 license=(ISC)
 makedepends=(git)
-#optdepends=('mergerfs-tools: manage data in a pool')
-optdepends=('mergerfs-tools-git: manage data in a pool')
+optdepends=(
+  'lsb-release: for mergerfs.collect-info'
+  'lshw: for mergerfs.collect-info'
+  #'mergerfs-tools: manage data in a pool'
+  'mergerfs-tools-git: manage data in a pool')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
