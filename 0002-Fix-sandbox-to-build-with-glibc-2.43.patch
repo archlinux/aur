@@ -1,0 +1,25 @@
+From 0e66dacce7291ba0b88cd2deaf771ef5890db88e Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Tue, 17 Feb 2026 18:35:42 -0600
+Subject: [PATCH 1/1] Fix sandbox to build with glibc 2.43
+
+---
+ .../chromium/sandbox/linux/system_headers/linux_seccomp.h       | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/security/sandbox/chromium/sandbox/linux/system_headers/linux_seccomp.h b/security/sandbox/chromium/sandbox/linux/system_headers/linux_seccomp.h
+index a60fe2ad3d..27f2cc744a 100644
+--- a/security/sandbox/chromium/sandbox/linux/system_headers/linux_seccomp.h
++++ b/security/sandbox/chromium/sandbox/linux/system_headers/linux_seccomp.h
+@@ -5,6 +5,8 @@
+ #ifndef SANDBOX_LINUX_SYSTEM_HEADERS_LINUX_SECCOMP_H_
+ #define SANDBOX_LINUX_SYSTEM_HEADERS_LINUX_SECCOMP_H_
+ 
++#include <signal.h>
++
+ // The Seccomp2 kernel ABI is not part of older versions of glibc.
+ // As we can't break compilation with these versions of the library,
+ // we explicitly define all missing symbols.
+-- 
+2.53.0
+
