@@ -1,7 +1,7 @@
 # Maintainer: Ben Word <ben@benword.com>
 pkgname=quien-bin
 _pkgname=quien
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A better whois and domain intelligence toolkit (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("$_pkgname-$pkgver-amd64.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_linux_amd64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-arm64.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_linux_arm64.tar.gz")
-sha256sums_x86_64=('244f802972d0b565d7e0a433d6a12dcc907644128c471db68e3f4ce1cec73915')
-sha256sums_aarch64=('ba254fd4d490a8e3e9fc815241bb7167d7c4d6530977a4d0921fc3a82137b503')
+sha256sums_x86_64=('4d3fdbed6761e41b7c49e7da0297e2eb694d7be2b7b0c2ea0eaca00f946c7753')
+sha256sums_aarch64=('ec59bbd2af32f1df467520ded12b1675ac446438dd3b1deb97eb2d4740bbf638')
 
 package() {
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
