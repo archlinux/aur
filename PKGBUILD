@@ -1,6 +1,6 @@
 # Maintainer: ewgsta <ewgst@proton.me>
 pkgname=weeb-cli
-pkgver=2.16.2
+pkgver=2.16.3
 pkgrel=1
 pkgdesc="No browser, no ads, no distractions. Just you and an unparalleled anime viewing experience."
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
     'python-beautifulsoup4'
     'python-lxml'
     'python-pycryptodome'
-    'python-curl-cffi'
+    'python-curl_cffi'
     'python-appdirs'
     'python-prompt_toolkit'
     'python-pyfiglet'

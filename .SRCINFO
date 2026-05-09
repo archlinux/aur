@@ -1,6 +1,6 @@
 pkgbase = weeb-cli
 	pkgdesc = No browser, no ads, no distractions. Just you and an unparalleled anime viewing experience.
-	pkgver = 2.16.2
+	pkgver = 2.16.3
 	pkgrel = 1
 	url = https://github.com/ewgsta/weeb-cli
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = weeb-cli
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-pycryptodome
-	depends = python-curl-cffi
+	depends = python-curl_cffi
 	depends = python-appdirs
 	depends = python-prompt_toolkit
 	depends = python-pyfiglet
@@ -31,7 +31,7 @@ pkgbase = weeb-cli
 	optdepends = python-flask: for Torznab and RESTful API server modes
 	optdepends = python-flask-cors: for RESTful API CORS support
 	optdepends = python-yaml: for Torznab server configuration
-	source = https://files.pythonhosted.org/packages/source/w/weeb-cli/weeb_cli-2.16.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/w/weeb-cli/weeb_cli-2.16.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = weeb-cli
