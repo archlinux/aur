@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon
-pkgver=r41.496af6e
+pkgver=r42.2f7b603
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets'
 arch=('x86_64')
@@ -33,6 +33,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export CFLAGS="${CFLAGS//-flto*([^ ])/}"
+  export LIBCLANG_PATH=/usr/lib
   cargo build --frozen --release
 }
 
