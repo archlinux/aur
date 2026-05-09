@@ -1,4 +1,3 @@
-# Maintainer: Matias <matiase@archlinux.org>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
