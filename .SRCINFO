@@ -1,6 +1,6 @@
 pkgbase = dehydrated-cloudflare-hook
 	pkgdesc = CloudFlare hook for dehydrated
-	pkgver = r87.a1e91a7
+	pkgver = r123.203325f
 	pkgrel = 1
 	url = https://github.com/walcony/letsencrypt-cloudflare-hook
 	arch = any

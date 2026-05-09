@@ -2,7 +2,7 @@
 # Contributor: Vladislav Minakov <v@minakov.pro>
 
 pkgname=dehydrated-cloudflare-hook
-pkgver=r87.a1e91a7
+pkgver=r123.203325f
 pkgrel=1
 pkgdesc="CloudFlare hook for dehydrated"
 arch=(any)
