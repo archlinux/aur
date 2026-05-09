@@ -1,6 +1,6 @@
 pkgbase = haskell-http-reverse-proxy
 	pkgdesc = Reverse proxy HTTP requests, either over raw sockets or with WAI
-	pkgver = 0.6.0.1
+	pkgver = 0.6.2.0
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/http-reverse-proxy
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = haskell-http-reverse-proxy
 	depends = haskell-wai
 	depends = haskell-wai-logger
 	depends = haskell-word8
-	source = http://hackage.haskell.org/packages/archive/http-reverse-proxy/0.6.0.1/http-reverse-proxy-0.6.0.1.tar.gz
-	md5sums = d115fc1e2e0a8b1626d0ec7ed15fd140
+	source = http://hackage.haskell.org/packages/archive/http-reverse-proxy/0.6.2.0/http-reverse-proxy-0.6.2.0.tar.gz
+	sha256sums = 15f92fe1fa244ab49c5e03cbb2e07219b3aeed05fc5fed09b0aa44f23db99290
 
 pkgname = haskell-http-reverse-proxy
