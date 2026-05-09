@@ -1,8 +1,8 @@
 --- a/build.zig
 +++ b/build.zig
-@@ -37,6 +37,7 @@ pub fn build(b: *std.Build) !void {
-         .name = "phoenix",
-         .root_module = exe_mod,
+@@ -42,6 +42,7 @@ pub fn build(b: *std.Build) !void {
+         .use_lld = if (debugger) true else null,
+         .use_llvm = if (debugger) true else null,
      });
 +    exe.pie = true;
      b.installArtifact(exe);
