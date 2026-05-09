@@ -1,0 +1,18 @@
+pkgbase = ccsm-bin
+	pkgdesc = Desktop GUI for running multiple Claude Code agents in parallel, organized by task. (Prebuilt version. Use system-wide electron)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Jiahui-Gu/ccsm
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = electron41
+	depends = python
+	provides = ccsm=0.2.0
+	conflicts = ccsm
+	options = !emptydirs
+	source = ccsm-0.2.0.rpm::https://github.com/Jiahui-Gu/ccsm/releases/download/v0.2.0/CCSM-0.2.0-x86_64.rpm
+	source = ccsm.sh
+	sha256sums = bf14755a22d8c6506775b7f5eb07f1ad61cfea36154eba3dc65ead7888fa47a9
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = ccsm-bin
