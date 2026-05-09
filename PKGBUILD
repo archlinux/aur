@@ -1,7 +1,7 @@
-pkgname="AntiHacks"
+pkgname="antivirus"
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="A anti hackers by Jeicob_hack2015"
+pkgdesc="A antivirus by Jeicob_hack2015"
 arch=('x86_64')
 source=("AntiHacksource.sh")
 install=AH.install
