@@ -1,7 +1,7 @@
 # Maintainer: alejopek alejopek62@gmail.com
 pkgname=sys-dashboard
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A professional real-time system monitoring dashboard built with Node.js and Electron"
 arch=('x86_64')
 url="https://github.com/Alejopek/Sys-Dashboard-"
