@@ -1,0 +1,49 @@
+# Maintainer: taotieren <admin@taotieren.com>
+
+pkgname=python-icefunprog-git
+pkgver=r1.99e6abc
+pkgrel=1
+pkgdesc='Programmer for the iceFUN FPGAs https://www.robot-electronics.co.uk/icefun.html)'
+url='https://github.com/pitrz/icefunprog'
+license=('GPL-3.0-only')
+arch=(any)
+depends=(
+    python
+    python-pyserial
+)
+makedepends=(
+    git
+    python-build
+    python-installer
+    python-wheel
+    python-setuptools
+)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    (
+        set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    python -m build --wheel --no-isolation
+}
+
+# check() {
+#     cd "${srcdir}/${pkgname}"
+#     python setup.py test
+# }
+
+package() {
+    cd "${srcdir}/${pkgname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm0644 license* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
