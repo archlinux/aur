@@ -1,6 +1,6 @@
 pkgbase = python-logboth
 	pkgdesc = Python library for logging to stdout and a file
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/zehkira/logboth
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-logboth
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://gitlab.com/zehkira/logboth/-/archive/v0.3.0/logboth-v0.3.0.tar.gz
-	sha256sums = 42546fb9693aaa15baaf0ab6a755c9df457f53261433c6a70dec5587b4df1ece
+	source = https://gitlab.com/zehkira/logboth/-/archive/v0.4.0/logboth-v0.4.0.tar.gz
+	sha256sums = abea2d1d429e2e62283d07a727c38d2b7bd87e8d71954ac282f3a2ed6bc45977
 
 pkgname = python-logboth
