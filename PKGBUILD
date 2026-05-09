@@ -1,6 +1,6 @@
 # Maintainer: DasCanard
 pkgname=radioss
-pkgver=0.9.0
+pkgver=v0.9.0
 pkgrel=1
 pkgdesc="A modern, cross-platform internet radio player built with Electron, React, and TypeScript"
 arch=('x86_64')
