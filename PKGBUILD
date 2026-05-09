@@ -2,7 +2,7 @@
 # Contributor: Firepal <firepal@cyberdude.com>
 
 pkgname=wivrn-multilib-git
-pkgver=25.9.129.g2204fdd3
+pkgver=26.2.214.ge3be6294
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets. (32-bit support)"
 arch=("x86_64")
@@ -114,6 +114,10 @@ package() {
 
     echo "Installing 64-bit libraries and server"
     DESTDIR="$pkgdir" cmake --install WiVRn/build64
+
+    echo "Creating PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES environment variable"
+    mkdir -p $pkgdir/usr/lib/environment.d
+    echo PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 > $pkgdir/usr/lib/environment.d/wivrn.conf
 
     echo "Adding ld.so.conf entry"
     # ld.so.conf file
