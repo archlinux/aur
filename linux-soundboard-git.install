@@ -11,6 +11,11 @@ post_install() {
     chmod +x /usr/bin/swhks || true
   fi
 
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl --global enable linux-soundboard-engine.service >/dev/null 2>&1 || true
+    echo "==> Enabled Linux Soundboard audio engine for user sessions."
+  fi
+
   echo "==> X11 sessions can use the native X11 backend directly."
 }
 

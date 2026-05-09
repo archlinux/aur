@@ -2,7 +2,7 @@
 
 pkgname=linux-soundboard-git
 _pkgname=linux-soundboard
-pkgver=1.1.2.r59.gec2f225
+pkgver=2.0.0.r65.gd5cf541
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
   'libxtst'
   'libxkbcommon'
   'hicolor-icon-theme'
+  'polkit'
   'pipewire'
   'pipewire-pulse'
   'wireplumber'
@@ -74,6 +75,8 @@ package() {
 
   install -Dm755 "${srcdir}/target/release/linux-soundboard" "${pkgdir}/usr/bin/linux-soundboard"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 packaging/rpm/linux-soundboard.desktop \
+    "${pkgdir}/usr/share/applications/com.linuxsoundboard.app.desktop"
 
   local icon_root="src/resources/icons"
   local icon_names=("com.linuxsoundboard.app.png" "linux-soundboard.png")
@@ -86,18 +89,12 @@ package() {
     done
   done
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/com.linuxsoundboard.app.desktop" <<'EOF'
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Linux Soundboard
-Comment=A Linux soundboard with PipeWire virtual mic support
-Exec=linux-soundboard
-Icon=linux-soundboard
-Terminal=false
-Categories=AudioVideo;Audio;
-Keywords=soundboard;audio;pipewire;microphone;
-StartupNotify=true
-StartupWMClass=linux-soundboard
-EOF
+  install -Dm755 packaging/linux/install-swhkd-helper.sh \
+    "${pkgdir}/usr/libexec/linux-soundboard/install-swhkd-helper.sh"
+  install -Dm644 packaging/linux/com.linuxsoundboard.install-swhkd.policy \
+    "${pkgdir}/usr/share/polkit-1/actions/com.linuxsoundboard.install-swhkd.policy"
+  install -Dm644 packaging/pipewire/99-linuxsoundboard.conf \
+    "${pkgdir}/usr/share/pipewire/pipewire.conf.d/99-linuxsoundboard.conf"
+  install -Dm644 packaging/linux/linux-soundboard-engine.service \
+    "${pkgdir}/usr/lib/systemd/user/linux-soundboard-engine.service"
 }
