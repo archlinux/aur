@@ -50,7 +50,7 @@ build() {
   cd src-tauri
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="${srcdir}/target"
-  cargo build --release --frozen
+  cargo build --release --locked
 }
 
 package() {
