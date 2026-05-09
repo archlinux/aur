@@ -1,20 +1,20 @@
 pkgbase = pwvucontrol
 	pkgdesc = Pipewire volume control for GNOME
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/saivert/pwvucontrol
 	arch = x86_64
 	license = GPL-3.0-only
+	checkdepends = appstream-glib
 	makedepends = rust
 	makedepends = clang
 	makedepends = meson
-	makedepends = git
+	makedepends = blueprint-compiler
 	depends = glib2
 	depends = gtk4
 	depends = libadwaita
 	depends = wireplumber
-	depends = libwireplumber-4.0-compat
-	source = pwvucontrol-0.5.1.tar.gz::https://github.com/saivert/pwvucontrol/archive/refs/tags/0.5.1.tar.gz
-	b2sums = e95284c58d56e78fda0e2bd0a9af2149530cb3df0e70fb6fe11ac87f50539ffb28c7679f76f5662a3ccd700ef4a59eb65063ff7f4fa514cdaf7038df13feb6d8
+	source = pwvucontrol-0.5.2.tar.gz::https://github.com/saivert/pwvucontrol/archive/refs/tags/0.5.2.tar.gz
+	b2sums = fb749511f886a0481edc5e6d8312241503d133724f316a76dfc1c3222c1b1874d4ed332fe847b358340cef8258ca04e56bd33ed2a72a713cacf8e06f992a7031
 
 pkgname = pwvucontrol
