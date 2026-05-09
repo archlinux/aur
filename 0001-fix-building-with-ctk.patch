@@ -1,34 +1,25 @@
-From 59e2cd2fbea659940aa474c6e85e1f295ac8186d Mon Sep 17 00:00:00 2001
+From e966ebbebe4f8db15eef4ee3328667f8b7217204 Mon Sep 17 00:00:00 2001
 From: Hu Butui <hot123tea123@gmail.com>
 Date: Fri, 3 Apr 2026 23:15:08 +0800
 Subject: [PATCH] fix building with ctk
 
 Signed-off-by: Hu Butui <hot123tea123@gmail.com>
 ---
- SuperBuild/External_CTK.cmake | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ SuperBuild/External_CTK.cmake | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/SuperBuild/External_CTK.cmake b/SuperBuild/External_CTK.cmake
-index 6c1f5c4c67..f6ed42acfe 100644
+index bcec67cdeb..7b2a22c180 100644
 --- a/SuperBuild/External_CTK.cmake
 +++ b/SuperBuild/External_CTK.cmake
-@@ -78,7 +78,7 @@ if(NOT DEFINED CTK_DIR AND NOT Slicer_USE_SYSTEM_${proj})
- 
-   ExternalProject_SetIfNotDefined(
-     Slicer_${proj}_GIT_TAG
--    "549a5b7b72f7b63a70ad91f6d183c7728511f794"
-+    "9ce17b4a5a69a6a0e5750ef6ac8a9840427a5ae2"
-     QUIET
-     )
- 
 @@ -89,6 +89,7 @@ if(NOT DEFINED CTK_DIR AND NOT Slicer_USE_SYSTEM_${proj})
      ${${proj}_EP_ARGS}
      GIT_REPOSITORY "${Slicer_${proj}_GIT_REPOSITORY}"
      GIT_TAG "${Slicer_${proj}_GIT_TAG}"
-+    PATCH_COMMAND git apply ${CMAKE_SOURCE_DIR}/../0002-fix-undefined-reference-error-when-building-with-qt6.patch
++    PATCH_COMMAND git apply --verbose ${CMAKE_SOURCE_DIR}/../0001-BUG-Fix-export-macro-for-non-Windows-platforms.patch && git apply --verbose ${CMAKE_SOURCE_DIR}/../0002-ENH-Update-PythonQt-to-use-forked-repository.patch
      SOURCE_DIR ${EP_SOURCE_DIR}
      BINARY_DIR ${EP_BINARY_DIR}
      CMAKE_CACHE_ARGS
 -- 
-2.53.0
+2.54.0
 

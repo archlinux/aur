@@ -1,6 +1,6 @@
 pkgbase = 3dslicer-qt6-git
 	pkgdesc = A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research, qt6 version
-	pkgver = 5.10.0.r291.9b1f832706
+	pkgver = 5.10.0.r292.785744ed8c
 	pkgrel = 1
 	url = https://www.slicer.org
 	arch = x86_64
@@ -44,17 +44,19 @@ pkgbase = 3dslicer-qt6-git
 	depends = util-linux-libs
 	depends = xz
 	depends = zlib
-	provides = 3dslicer=5.10.0.r291.9b1f832706
+	provides = 3dslicer=5.10.0.r292.785744ed8c
 	conflicts = 3dslicer
 	options = !emptydirs
 	options = !strip
 	source = 3dslicer::git+https://github.com/Slicer/Slicer.git
 	source = 3dslicer.svg::https://www.slicer.org/assets/img/3D-Slicer-Mark.svg
 	source = 0001-fix-building-with-ctk.patch
-	source = 0002-fix-undefined-reference-error-when-building-with-qt6.patch
+	source = 0001-BUG-Fix-export-macro-for-non-Windows-platforms.patch
+	source = 0002-ENH-Update-PythonQt-to-use-forked-repository.patch
 	sha512sums = SKIP
 	sha512sums = 3422d244f819a7ec4c475d3d8a90c79fcb73738920c0830b100c6342ca24d5be607ba60ee3d91892402036a0adf31d5ab7c8fc83f451121a7b537f7de5306014
-	sha512sums = a47374858ad5d89d23bddf18948ac0fda4de22e03a960a44935251f6fe297f571c6e6abe5e0023eab62c61b9377dbb3245b44588e3239987c4caf946a9dd2f8e
-	sha512sums = 5b6a8850fba98074d5cc624355b1fd73ced04371ab417ef60fd919d96327629fdcaa84290a0ec9cdfab2e12b7a6efb6971d87f940ad8e2bc4c4bbc18c4f8086e
+	sha512sums = fa03a2d951d484f786db273daaa8f305db23b15cd02674540b485fe1557af3cf2bf63dc7bb0e645bef9dc1d07e5e337c5a105d053315851b6d09c2576c4154ff
+	sha512sums = 9e47a73e11cb0c6d054679a2bfb720859c70c689b546deaa6e4f976d5796c6cd8a68dd1625e416ca836ae2b037e3b72c31a1b30d297ceafd477610fc0a32669c
+	sha512sums = 3ccd5b91bb43a554454537ad3c59d3431b68792faead9571b5a6ba981a095eb36d054afb28bee91fdf85d378608e5c87262573e75d35ef0f9de174f5b74dc689
 
 pkgname = 3dslicer-qt6-git

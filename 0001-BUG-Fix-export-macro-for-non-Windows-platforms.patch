@@ -1,0 +1,42 @@
+From f2fe792ceb6c6ffd5a95dfef93ef6959d132a691 Mon Sep 17 00:00:00 2001
+From: Hu Butui <hot123tea123@gmail.com>
+Date: Fri, 8 May 2026 21:19:09 +0800
+Subject: [PATCH 1/2] BUG: Fix export macro for non-Windows platforms in
+ ctkExport.h.in
+
+Restore the previously commented-out conditional block and align
+its guard with the Windows section by using @MY_LIBNAME@_EXPORTS
+instead of CTK_SHARED. Also correctly define the macro as
+Q_DECL_IMPORT for the importing side, instead of leaving it empty.
+
+This ensures consistent symbol visibility handling across all
+platforms.
+
+Signed-off-by: Hu Butui <hot123tea123@gmail.com>
+---
+ Libs/ctkExport.h.in | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Libs/ctkExport.h.in b/Libs/ctkExport.h.in
+index 0bb77077..97b357a4 100644
+--- a/Libs/ctkExport.h.in
++++ b/Libs/ctkExport.h.in
+@@ -22,11 +22,11 @@
+ #endif
+ 
+ #if !defined(@MY_LIBRARY_EXPORT_DIRECTIVE@)
+-//#  if defined(CTK_SHARED)
++#  if defined(@MY_LIBNAME@_EXPORTS)
+ #    define @MY_LIBRARY_EXPORT_DIRECTIVE@ Q_DECL_EXPORT
+-//#  else
+-//#    define @MY_LIBRARY_EXPORT_DIRECTIVE@
+-//#  endif
++#  else
++#    define @MY_LIBRARY_EXPORT_DIRECTIVE@ Q_DECL_IMPORT
++#  endif
+ #endif
+ 
+ @CTK_EXPORT_CUSTOM_CONTENT@
+-- 
+2.54.0
+
