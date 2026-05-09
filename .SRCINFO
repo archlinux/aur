@@ -19,8 +19,8 @@ pkgbase = cosmic-comp-gaming
 	depends = pixman
 	depends = systemd
 	depends = wayland
-	provides = cosmic-comp-gaming
-	conflicts = cosmic-comp-gaming
+	provides = cosmic-comp-git
+	conflicts = cosmic-comp-git
 	source = git+https://github.com/skygrango/cosmic-comp.git#branch=gaming-fix
 	sha256sums = SKIP
 
