@@ -1,6 +1,6 @@
 pkgbase = r-r.devices
 	pkgdesc = Unified Handling of Graphics Devices
-	pkgver = 2.17.3
+	pkgver = 2.17.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=R.devices
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-r.devices
 	optdepends = r-cairo
 	optdepends = r-digest
 	optdepends = r-r.rsp
-	source = https://cran.r-project.org/src/contrib/R.devices_2.17.3.tar.gz
-	sha256sums = 4fa070d83781774e69c8ec5f4b3ffb3751f0d3f292271cdb47d76b0c012f3cf8
+	source = https://cran.r-project.org/src/contrib/R.devices_2.17.4.tar.gz
+	sha256sums = d4327aa9eb8d97441ce97629e6450ef74fbcb0e0b1976040796bc9e349d6f792
 
 pkgname = r-r.devices
