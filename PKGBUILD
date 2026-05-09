@@ -2,7 +2,8 @@
 
 _pkgname=ssh-multisession-resume
 pkgname=${_pkgname}-git
-pkgver=0.r3.g7cb8713
+_srcname=${_pkgname}-source
+pkgver=0.r6.gf7d4b81
 pkgrel=1
 pkgdesc='Persistent multi-session SSH auto-resume utility backed by tmux'
 arch=('any')
@@ -15,13 +16,14 @@ optdepends=(
   'screen: fallback terminal backend'
   'sudo: allow non-root installer runs to apply SSHD changes'
 )
+install=${_pkgname}.install
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/Bit-Loop/${_pkgname}.git")
+source=("${_srcname}::git+https://github.com/Bit-Loop/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${_srcname}"
 
   if git describe --long --tags --abbrev=7 >/dev/null 2>&1; then
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -31,9 +33,9 @@ pkgver() {
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${_srcname}"
 
-  install -Dm755 install.sh "${pkgdir}/usr/lib/${_pkgname}/install.sh"
+  install -Dm755 ssh-multisession-resume "${pkgdir}/usr/lib/${_pkgname}/ssh-multisession-resume"
   install -Dm755 client/install.sh "${pkgdir}/usr/lib/${_pkgname}/client/install.sh"
   install -Dm755 client/auto-resume.sh "${pkgdir}/usr/lib/${_pkgname}/client/auto-resume.sh"
   install -Dm755 client/auto-screen.sh "${pkgdir}/usr/lib/${_pkgname}/client/auto-screen.sh"
@@ -50,7 +52,8 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/usr/bin/env bash
-exec /usr/lib/${_pkgname}/install.sh "\$@"
+export SSH_MULTISESSION_RESUME_COMMAND=${_pkgname}
+exec /usr/lib/${_pkgname}/${_pkgname} "\$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }

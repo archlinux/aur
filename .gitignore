@@ -2,3 +2,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!ssh-multisession-resume.install
