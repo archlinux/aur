@@ -1,0 +1,5 @@
+[sub-bin]
+source = "github"
+github = "juanibiapina/sub"
+use_latest_release = true
+prefix = "v"

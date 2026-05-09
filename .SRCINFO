@@ -1,0 +1,20 @@
+pkgbase = sub-bin
+	pkgdesc = Shell scripts with superpowers
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/juanibiapina/sub
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sub
+	conflicts = sub
+	options = !strip
+	source = README-2.3.0.md::https://raw.githubusercontent.com/juanibiapina/sub/v2.3.0/README.md
+	source = LICENSE-2.3.0::https://raw.githubusercontent.com/juanibiapina/sub/v2.3.0/LICENSE
+	sha256sums = d6957c8034a4a341d2359d6e5dac02466adb3ed5b882c0d54a68c5162d7da65d
+	sha256sums = 1aeb6c22f163e3fc68f4370e6c9a805f59238c29f9995f1a5d65e562d10ba174
+	source_x86_64 = sub-x86_64-2.3.0.tgz::https://github.com/juanibiapina/sub/releases/download/v2.3.0/sub-v2.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3aabfeedafc04748eff676c73aee10f0e42408cc58e1b5b7a860c022259057b8
+
+pkgname = sub-bin
