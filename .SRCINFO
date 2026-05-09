@@ -1,6 +1,6 @@
 pkgbase = wflow-bin
 	pkgdesc = A workflow engine for Wayland automation, Shortcuts-style GUI + CLI (prebuilt binary)
-	pkgver = 1.0.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/cushycush/wflow
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = wflow-bin
 	optdepends = libnotify: desktop notifications via notify-send
 	optdepends = wl-clipboard: clipboard via wl-copy
 	optdepends = xdg-desktop-portal: input via libei portal + Record Mode
-	provides = wflow=1.0.3
+	provides = wflow=1.2.0
 	conflicts = wflow
 	conflicts = wflow-git
-	source = wflow-1.0.3.tar.gz::https://github.com/cushycush/wflow/releases/download/v1.0.3/wflow-1.0.3-x86_64-unknown-linux-gnu.tar.gz
-	source = io.github.cushycush.wflow.desktop::https://raw.githubusercontent.com/cushycush/wflow/v1.0.3/packaging/flatpak/io.github.cushycush.wflow.desktop
-	source = io.github.cushycush.wflow.svg::https://raw.githubusercontent.com/cushycush/wflow/v1.0.3/packaging/flatpak/io.github.cushycush.wflow.svg
+	source = wflow-1.2.0.tar.gz::https://github.com/cushycush/wflow/releases/download/v1.2.0/wflow-1.2.0-x86_64-unknown-linux-gnu.tar.gz
+	source = io.github.cushycush.wflow.desktop::https://raw.githubusercontent.com/cushycush/wflow/v1.2.0/packaging/flatpak/io.github.cushycush.wflow.desktop
+	source = io.github.cushycush.wflow.svg::https://raw.githubusercontent.com/cushycush/wflow/v1.2.0/packaging/flatpak/io.github.cushycush.wflow.svg
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
