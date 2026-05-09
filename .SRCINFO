@@ -1,7 +1,7 @@
 pkgbase = mcpproxy-bin
 	pkgdesc = Smart proxy for AI agents using the Model Context Protocol
 	pkgver = 0.29.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/smart-mcp-proxy/mcpproxy-go
 	install = mcpproxy-bin.install
 	arch = x86_64
