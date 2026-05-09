@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://www.pvzhe.com"
 license=('unknown')
 depends=('godot')
+install="${pkgname}.install"
 
 # 声明网络依赖文件：从 Release 下载 pck，从 main 分支 raw 下载 icon
 source=(
