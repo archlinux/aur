@@ -1,0 +1,15 @@
+pkgbase = qgraph
+	pkgdesc = Visual knowledge graph over qnote — Tauri 2 + React 18 desktop app
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Omibranch/qgraph
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	source = qgraph-0.1.0-linux_x86_64.tar.gz::https://github.com/Omibranch/qgraph/releases/download/v0.1.0/qgraph_0.1.0_linux_x86_64.tar.gz
+	sha256sums = 1aa5ff0bf296177a54ea4f69c181a4ab7e1fbbe3bb3468d331e490b5cb58898d
+
+pkgname = qgraph
