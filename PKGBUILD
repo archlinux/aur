@@ -1,7 +1,7 @@
 # Maintainer: Jove Yu <yushijun110 at 126 dot com>
 
 pkgname=lazycat-cloud-client
-pkgver=1.6.20
+pkgver=1.6.29
 pkgrel=1
 pkgdesc='懒猫微服'
 url='https://lazycat.cloud'
@@ -21,7 +21,7 @@ source=(
   "lzc-client-desktop")
 install='lazycat-cloud-client.install'
 noextract=("lzc-client-desktop_v${pkgver}.tar.zst")
-md5sums=('fdf9ca4878772252cfe38cfe50e7485e'
+md5sums=('a28dd1b1a7a66518a6a58c92312b0a64'
          'b043322b2f2cfef1f7ff898ec5ae1801')
 
 package() {
