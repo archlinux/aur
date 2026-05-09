@@ -3,7 +3,7 @@
 _pkgname=searchfox-cli
 pkgname="$_pkgname"-git
 pkgver=0.10.11.r0.ga767d65
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool for querying the searchfox.org code search engine'
 arch=('x86_64' 'aarch64' 'loong64') 
 url='https://github.com/padenot/searchfox-cli'
@@ -23,18 +23,18 @@ pkgver() {
 
 build() {
   cd "$srcdir"/searchfox-cli
-  cargo build --release --locked
+  cargo build --release --locked --all-features
 }
 
 check() {
   cd "$srcdir"/searchfox-cli
-  cargo test --locked
+  cargo test --release --locked --all-features
 }
 
 package() {
   cd "$srcdir"/searchfox-cli
 
-  install -vDm755 target/release/searchfox-cli "$pkgdir"/usr/bin/searchfox-cli
+  cargo install --no-track --frozen --all-features --root "$pkgdir/usr/" --path ./searchfox-cli
   install -vDm644 README.md "$pkgdir"/usr/share/doc/"$_pkgname"/README.md
   install -vDm644 LICENSE-APACHE "$pkgdir"/usr/share/licenses/"$_pkgname"/LICENSE-APACHE
   install -vDm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/"$_pkgname"/LICENSE-MIT

@@ -1,7 +1,7 @@
 pkgbase = searchfox-cli-git
 	pkgdesc = CLI tool for querying the searchfox.org code search engine
 	pkgver = 0.10.11.r0.ga767d65
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/padenot/searchfox-cli
 	arch = x86_64
 	arch = aarch64
