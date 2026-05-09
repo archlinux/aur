@@ -1,6 +1,6 @@
 pkgbase = gpu-t-git
 	pkgdesc = GPU-T is a modern desktop utility built with .NET and Avalonia UI designed to provide detailed information about your video card and GPU
-	pkgver = 0.1.4.r2.g6a003bd
+	pkgver = 0.2.0.r1.g6139531
 	pkgrel = 1
 	url = https://github.com/lseurttyuu/GPU-T
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = gpu-t-git
 	depends = mesa-utils
 	depends = libva-utils
 	depends = pciutils
-	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	optdepends = rocm-opencl-runtime: OpenCL platform for clinfo to get details for AMD GPUs
 	optdepends = rocm-hip-runtime: HIP support detection for AMD GPUs

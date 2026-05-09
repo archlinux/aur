@@ -2,13 +2,13 @@
 _pkgname=GPU-T
 pkgname=${_pkgname,,}-git
 pkgdesc='GPU-T is a modern desktop utility built with .NET and Avalonia UI designed to provide detailed information about your video card and GPU'
-pkgver=0.1.4.r2.g6a003bd
+pkgver=0.2.0.r1.g6139531
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/lseurttyuu/${_pkgname}"
 license=('MIT')
 makedepends=('git' 'dotnet-host' 'dotnet-sdk-9.0' 'clang' 'zlib')
-depends=('dotnet-runtime-9.0' 'vulkan-tools' 'clinfo' 'mesa' 'mesa-utils' 'libva-utils' 'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('dotnet-runtime-9.0' 'vulkan-tools' 'clinfo' 'mesa' 'mesa-utils' 'libva-utils' 'pciutils' 'hicolor-icon-theme')
 optdepends=('rocm-opencl-runtime: OpenCL platform for clinfo to get details for AMD GPUs'
     'rocm-hip-runtime: HIP support detection for AMD GPUs'
     'intel-compute-runtime: OpenCL platform for clinfo to get details for Intel GPUs'
