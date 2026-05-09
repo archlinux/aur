@@ -32,7 +32,8 @@ _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
 _zen_pkgrel=1
 source=(
-  https://mirrors-i.tuna.tsinghua.edu.cn/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}$url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  https://mirrors-i.tuna.tsinghua.edu.cn/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   "config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${pkgver}-${pkgrel}/config.x86_64"   # the main kernel config file
   "0001-cjktty.patch::https://ghproxy.imciel.com/https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.0.patch"
   "0002-cjktty-32.patch::https://ghproxy.imciel.com/https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
