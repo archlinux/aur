@@ -16,7 +16,7 @@ depends=(
     'xdotool'
     'dbus'
     'cmake'
-    'libopus'
+    'opus'
 )
 makedepends=(
     'rust'
