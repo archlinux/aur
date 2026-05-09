@@ -1,0 +1,14 @@
+pkgbase = xp3-tool
+	pkgdesc = A simple tool for packing and unpacking .xp3 files
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/storycraft/xp3-tool
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = xp3-tool-0.2.1.tar.gz::https://github.com/storycraft/xp3-tool/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 694df2a19d78ca990d1ef90b94d3dec07e365684e1339f57a30b3bf3a5dbdd10
+
+pkgname = xp3-tool
