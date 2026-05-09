@@ -1,20 +1,21 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=sleepy-launcher
-pkgver=1.6.2
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 arch=(x86_64)
 url="https://github.com/an-anime-team/sleepy-launcher"
 license=('GPL-3.0-only')
-depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
-	'pango' 'xz' 'bzip2' 'cairo' 'p7zip' 'wayland' 'libwebp-utils' 'git')
+depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'glib2' 'libgcc'
+	'pango' 'xz' 'bzip2' 'cairo' '7zip' 'wayland' 'libwebp-utils' 'git'
+	'gdk-pixbuf2')
 makedepends=('cargo')
 optdepends=(
 	'mangohud: FPS Overlay'
 	'gamescope: Micro-compositor'
 	'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('23803424bfe7d2fa7141b653fb6b97f7475e088324ba4c52bf5e89d313bc6c3f')
+sha256sums=('39db6390ad58650250ade25c98c8da18f9ccae81e2662dfdbb15bf4cff62647b')
 
 prepare() {
 	cd "$pkgname-$pkgver"
