@@ -6,12 +6,13 @@
 pkgname=mawkawk
 pkgdesc='Let mawk be your awk by pointing /usr/bin/awk symlink to mawk'
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 install="$pkgname.install"
 arch=('any')
 license=('0BSD')  # SPDX-License-Identifier: 0BSD
 depends=('gawk' 'mawk')
 provides=('awk')
+conflicts=('nawkawk')
 options=('!strip')
 source=("$pkgname.hook")
 sha256sums=(

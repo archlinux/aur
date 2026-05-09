@@ -1,13 +1,14 @@
 pkgbase = mawkawk
 	pkgdesc = Let mawk be your awk by pointing /usr/bin/awk symlink to mawk
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	install = mawkawk.install
 	arch = any
 	license = 0BSD
 	depends = gawk
 	depends = mawk
 	provides = awk
+	conflicts = nawkawk
 	options = !strip
 	source = mawkawk.hook
 	sha256sums = c56c1f85e0d6ed5bb58e7e09ef22c93eab904be6952e8e7304a228ed462d7e4d
