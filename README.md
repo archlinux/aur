@@ -25,7 +25,8 @@ yay -S solara-kernel
 
 ## Source
 
-- GitHub: https://github.com/ravecorelabs/solara
+- GitHub: https://github.com/celestia-foundation/solara
+- Kernel Source: https://github.com/CachyOS/linux-cachyos
 
 ## Maintainer
 
