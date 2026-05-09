@@ -1,8 +1,9 @@
-# Maintainer: Fijxu <fijxu [at] nadeko [dot] net>
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: Fijxu <fijxu [at] nadeko [dot] net>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Gimo <self@gimo.me>
 
-pkgname=otf-openmoji
+pkgname=ttf-openmoji
 pkgver=16.0.0
 pkgrel=1
 pkgdesc="Open source emojis for designers, developers and everyone else!"
