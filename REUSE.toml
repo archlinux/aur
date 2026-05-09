@@ -1,0 +1,7 @@
+version = 1
+
+[[annotations]]
+SPDX-FileCopyrightText = "2026 Alexandre Boutrik <alexandreboutrik@protonmail.ch>"
+SPDX-License-Identifier = "0BSD"
+precedence = "override"
+paths = ["**/*"]
