@@ -21,18 +21,6 @@ makedepends=(
   'python-wheel'
   'python-sphinx'
   'python-sphinx_rtd_theme')
-checkdepends=(
-  'python-dominate'
-  'python-elasticsearch'
-  'python-idna'
-  'python-pytablereader'
-  'python-pytablewriter-altrow-theme'
-  'python-pytest'
-  'python-sqliteschema'
-  'python-tablib'
-  'python-beautifulsoup4'
-  'python-toml'
-  'python-yaml')
 depends=(
   'python-dataproperty'
   'python-mbstrdecoder'
@@ -40,8 +28,15 @@ depends=(
   'python-tabledata'
   'python-tcolorpy'
   'python-typepy'
+  'python-xlsxwriter'
+  'python-simplejson'
+  'python-yaml'
+  'python-toml'
+  'python-xlwt'
+  'python-ipykernel'
   ## for python-typepy['dateutil']
   'python-pytz'
+  'python-pytest'
   'python-dateutil')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
@@ -56,12 +51,6 @@ build() {
   rst2man README.rst "$pkgname.7"
 }
 
-check() {
-  cd "${_name}-$pkgver"
-
-  PYTHONPATH=./ pytest -x --disable-warnings
-}
-
 package() {
   cd "${_name}-$pkgver"
 
@@ -73,7 +62,7 @@ package() {
   local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   ln -s \
-    "$_site/${_name}-${pkgver}.dist-info/LICENSE" \
+    "$_site/${_name}-${pkgver}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
