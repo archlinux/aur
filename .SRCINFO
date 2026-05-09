@@ -1,7 +1,7 @@
 pkgbase = phantom-satellite-gtk3-bin
 	pkgdesc = Phantom Satellite - Unofficial build of Pale Moon that aims to support older/niche platforms (GTK3).
 	pkgver = 34.2.0
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/DCFUKSURMOM/Phantom-Satellite
 	arch = x86_64
 	license = MPL-2.0
