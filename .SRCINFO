@@ -1,6 +1,6 @@
 pkgbase = python-humanreadable
 	pkgdesc = Convert human-readable values to other units
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/thombashi/humanreadable
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-humanreadable
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	depends = python-typepy
-	source = humanreadable-0.4.1.tar.gz::https://github.com/thombashi/humanreadable/archive/v0.4.1.tar.gz
-	sha256sums = 77088a850925a0ad776698f85514d63c8cc976760f31578443958add873872c2
+	source = humanreadable-0.4.3.tar.gz::https://github.com/thombashi/humanreadable/archive/v0.4.3.tar.gz
+	sha256sums = ff41f2df458c14bb72aec794c74fa57ff065139aa20da2391306da905c0cdcae
 
 pkgname = python-humanreadable

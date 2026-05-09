@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 _base=humanreadable
 pkgname=python-${_base}
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Convert human-readable values to other units"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-typepy)
 makedepends=(python-build python-installer python-setuptools-scm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('77088a850925a0ad776698f85514d63c8cc976760f31578443958add873872c2')
+sha256sums=('ff41f2df458c14bb72aec794c74fa57ff065139aa20da2391306da905c0cdcae')
 
 build() {
   cd ${_base}-${pkgver}
