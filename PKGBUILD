@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # Указываем загрузку прямо из PyPI
 source=("https://files.pythonhosted.org/packages/source/c/cmd-game-chess/cmd_game_chess-$pkgver.tar.gz")
-sha256sums=('38fa982ecfc8eeb7e9cbdf981a9434d09e933200967510bdc42e87d5f0fe80d4')
+sha256sums=('4f4b7610bede21eb5f96704d45730d35b6fad88bc5d90b902e4451d5efb39434')
 
 build() {
   cd "cmd_game_chess-$pkgver"
