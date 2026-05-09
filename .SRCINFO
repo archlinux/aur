@@ -1,6 +1,6 @@
 pkgbase = open-webui-desktop-bin
 	pkgdesc = User-friendly AI chat interface supports Ollama, OpenAI API (desktop client)
-	pkgver = 0.0.17
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/open-webui/desktop
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = open-webui-desktop-bin
 	optdepends = xdg-desktop-portal: system theme detection via D-Bus portal
 	provides = open-webui
 	conflicts = open-webui
-	noextract = open-webui-bin_0.0.17_amd64.deb
+	noextract = open-webui-bin_0.0.20_amd64.deb
 	options = !strip
 	options = !debug
 	source = open-webui.sh
 	sha512sums = b0e3e1cf3645b1edbb9090c0a7463995312e876c05e3699d2625c6c055797fa6272e48fbe3904d3173b098be1242b5fb21c37ccc399166fd0db8e16f3c4a541e
-	source_x86_64 = open-webui-bin_0.0.17_amd64.deb::https://github.com/open-webui/desktop/releases/download/v0.0.17/open-webui_amd64.deb
-	sha512sums_x86_64 = 11724676119fb0afaf58f5b025adec2071df3775cf9ad5a5af4da1b6922c5fe75cd059e31ca55c5dd720b83fbbfc2fb3cdba91818c40986359c0f4c7b6c0aafe
+	source_x86_64 = open-webui-bin_0.0.20_amd64.deb::https://github.com/open-webui/desktop/releases/download/v0.0.20/open-webui_amd64.deb
+	sha512sums_x86_64 = 21d1454859cebbc7b7aeb75ed15e37828764cb7b66a3569859f297baaf5ec8448487bc9c5fc65cb82b56105772d90f0a4899d727882aa09bed0f8a86451a8534
 
 pkgname = open-webui-desktop-bin
