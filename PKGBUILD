@@ -3,7 +3,7 @@ pkgname=neo-mofox-launcher-git
 _pkgname='Neo-MoFox Launcher'
 _appname=neo-mofox-launcher
 _zhsname='Neo-MoFox 启动器'
-pkgver=r150.beecc9f
+pkgver=r193.8814f1e
 _electronversion=39
 pkgrel=1
 pkgdesc="An elegant instance management launcher for Neo-MoFox QQ Bot. - 一个优雅的 Neo-MoFox QQ 机器人实例管理启动器"
@@ -108,6 +108,26 @@ build() {
 package() {
     # 安装启动脚本
     install -Dm755 "${srcdir}/${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
+
+    # 安装 CLI 命令行包装脚本（无桌面环境亦可使用）
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/neo-mofox-cli" <<'CLI_EOF'
+#!/usr/bin/env bash
+# /usr/bin/neo-mofox-cli — Neo-MoFox Launcher 命令行入口
+INSTALL_DIR="/usr/lib/neo-mofox-launcher"
+CLI_ENTRY="${INSTALL_DIR}/app.asar/src/cli/index.js"
+[ -f "${CLI_ENTRY}" ] || CLI_ENTRY="${INSTALL_DIR}/resources/app.asar/src/cli/index.js"
+
+if command -v node >/dev/null 2>&1; then
+    exec node "${CLI_ENTRY}" "$@"
+fi
+for v in 39 38 37 36 35; do
+    if command -v "electron${v}" >/dev/null 2>&1; then
+        exec env ELECTRON_RUN_AS_NODE=1 "electron${v}" "${CLI_ENTRY}" "$@"
+    fi
+done
+echo "错误: 未找到可用的 node 或 electron 运行时" >&2
+exit 1
+CLI_EOF
     
     # 安装应用文件
     install -Dm755 -d "${pkgdir}/usr/lib/${_appname}"
