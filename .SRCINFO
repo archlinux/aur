@@ -1,0 +1,17 @@
+pkgbase = gob-bin
+	pkgdesc = Process manager for AI agents
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/juanibiapina/gob
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gob
+	conflicts = gob
+	options = !strip
+	source_x86_64 = gob-x86_64-3.4.0.tgz::https://github.com/juanibiapina/gob/releases/download/v3.4.0/gob_3.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 12e4025a0e1b1749cb3d0307a5fee096bca324775ff435f74b1d597f9d4a7085
+	source_aarch64 = gob-aarch64-3.4.0.tgz::https://github.com/juanibiapina/gob/releases/download/v3.4.0/gob_3.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9b1feca7fbb263d457fa715b56a05c1d8dcca83e22740e54cdfc535508aea531
+
+pkgname = gob-bin

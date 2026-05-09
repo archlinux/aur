@@ -1,0 +1,5 @@
+[gob-bin]
+source = "github"
+github = "juanibiapina/gob"
+use_latest_release = true
+prefix = "v"
