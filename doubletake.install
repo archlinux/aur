@@ -1,0 +1,11 @@
+post_install() {
+  cat <<'EOF'
+Optional: enable the user daemon service
+  systemctl --user daemon-reload
+  systemctl --user enable --now doubletake.service
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
