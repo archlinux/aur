@@ -1,7 +1,7 @@
 # based on https://aur.archlinux.org/packages/brother-mfc-l2713dw/
 pkgname="brother-mfc-l2880dw"
 pkgver="4.1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-L2880DW"
 url="http://solutions.brother.com/linux/en_us/"
 arch=("i686" "x86_64")
