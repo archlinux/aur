@@ -1,24 +1,18 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: xantares
 
-pkgname=python-pytablewriter
-pkgver=0.64.2
+_pypi_name=pytablewriter
+_name=${_pypi_name,,}
+
+pkgname=python-${_name,,}
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Python library to write a table in various formats'
 arch=('any')
-url='https://github.com/thombashi/pytablewriter'
+url="https://github.com/thombashi/${_pypi_name}"
 license=('MIT')
-depends=(
-  'python-dataproperty'
-  'python-mbstrdecoder'
-  'python-pathvalidate'
-  'python-tabledata'
-  'python-tcolorpy'
-  'python-typepy'
-  ## for python-typepy['dateutil']
-  'python-pytz'
-  'python-dateutil')
 makedepends=(
   'git'
   'python-setuptools'
@@ -39,34 +33,48 @@ checkdepends=(
   'python-beautifulsoup4'
   'python-toml'
   'python-yaml')
-source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('SKIP')
-validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367') ## Tsuyoshi Hombashi
+depends=(
+  'python-dataproperty'
+  'python-mbstrdecoder'
+  'python-pathvalidate'
+  'python-tabledata'
+  'python-tcolorpy'
+  'python-typepy'
+  ## for python-typepy['dateutil']
+  'python-pytz'
+  'python-dateutil')
+
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
+sha256sums=('7bd0f4f397e070e3b8a34edcf1b9257ccbb18305493d8350a5dbc9957fced959')
+validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
-  cd "$pkgname"
+  cd "${_name}-$pkgver"
+
   python -m build --wheel --no-isolation
-  cd docs
-  PYTHONPATH=../ make man
+
+  rst2man README.rst "$pkgname.7"
 }
 
 check() {
-  cd "$pkgname"
-  pytest -x --disable-warnings
+  cd "${_name}-$pkgver"
+
+  PYTHONPATH=./ pytest -x --disable-warnings
 }
 
 package() {
+  cd "${_name}-$pkgver"
+
   export PYTHONHASHSEED=0
-  cd "$pkgname"
   python -m installer --destdir="$pkgdir/" dist/*.whl
-  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 docs/_build/man/pytablewriter.1 -t "$pkgdir/usr/share/man/man1/"
+
+  install -Dm644 "$pkgname.7" -t "$pkgdir/usr/share/man/man7/"
 
   local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   ln -s \
-    "$_site/pytablewriter-$pkgver.dist-info/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/"
+    "$_site/${_name}-${pkgver}.dist-info/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 # vim: ts=2 sw=2 et:
