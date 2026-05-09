@@ -20,7 +20,7 @@ pkgbase = mcpproxy-bin
 	sha256sums = 47220bfb076e34a1d349307679b7d4707fbe1426f1355049e69bced26568fea0
 	sha256sums = 0dbb8e1a0431cffe8d739fee40f73e237ed9be37887e285d7524d1a02afa1ce4
 	source_x86_64 = mcpproxy-0.29.5-linux-amd64.tar.gz::https://github.com/smart-mcp-proxy/mcpproxy-go/releases/download/v0.29.5/mcpproxy-0.29.5-linux-amd64.tar.gz
-	sha256sums_x86_64 = b1a71ab27aad8ea42d59aae2aa3bda0fe4fe817b82cdea542453b997f90ebfaf
+	sha256sums_x86_64 = c2077e5b9e078165fc832ae752154d4c9362169d73914a208fb03827b72a64b6
 	source_aarch64 = mcpproxy-0.29.5-linux-arm64.tar.gz::https://github.com/smart-mcp-proxy/mcpproxy-go/releases/download/v0.29.5/mcpproxy-0.29.5-linux-arm64.tar.gz
 	sha256sums_aarch64 = e6f889a00caa0eb6f50cff7d872d6b8ae595503ca90c5cd4f87ca58260e3b47e
 
