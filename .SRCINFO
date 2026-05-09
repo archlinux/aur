@@ -1,6 +1,6 @@
 pkgbase = electron42-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 42.0.0
+	pkgver = 42.0.1
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,21 +17,21 @@ pkgbase = electron42-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron42=42.0.0
+	provides = electron42=42.0.1
 	conflicts = electron42
-	noextract = electron42-chromedriver-42.0.0-x86_64.zip
-	noextract = electron42-42.0.0-x86_64.zip
-	source_aarch64 = electron42-chromedriver-42.0.0-aarch64.zip::https://github.com/electron/electron/releases/download/v42.0.0/chromedriver-v42.0.0-linux-arm64.zip
-	source_aarch64 = electron42-42.0.0-aarch64.zip::https://github.com/electron/electron/releases/download/v42.0.0/electron-v42.0.0-linux-arm64.zip
-	sha256sums_aarch64 = 02df20a172310591a55390713cb9acfb70d0dfd204e538e08bc119d4e35831d5
-	sha256sums_aarch64 = 5531da08123d60d50c833997842e8371970bebe7d29261e00eaa83de948332b4
-	source_armv7h = electron42-chromedriver-42.0.0-armv7h.zip::https://github.com/electron/electron/releases/download/v42.0.0/chromedriver-v42.0.0-linux-armv7l.zip
-	source_armv7h = electron42-42.0.0-armv7h.zip::https://github.com/electron/electron/releases/download/v42.0.0/electron-v42.0.0-linux-armv7l.zip
-	sha256sums_armv7h = b947fcbfcc3e0a9e5739151fec899e0438bea9127b6ba33f97adf0dbb962fc7d
-	sha256sums_armv7h = a0ab195cff93c86ddf284b7ef44026b29ff3ec89dcc4a2f5024ff28e32ae5b60
-	source_x86_64 = electron42-chromedriver-42.0.0-x86_64.zip::https://github.com/electron/electron/releases/download/v42.0.0/chromedriver-v42.0.0-linux-x64.zip
-	source_x86_64 = electron42-42.0.0-x86_64.zip::https://github.com/electron/electron/releases/download/v42.0.0/electron-v42.0.0-linux-x64.zip
-	sha256sums_x86_64 = a1d92d643ebc92c8f08f53337f0308fc5aa97f871cf029ef34c9a3119a5c0f26
-	sha256sums_x86_64 = 83c7178dba2d0ce77e13743bf86beda75c6141caeeadb4340e1888bc96298b4b
+	noextract = electron42-chromedriver-42.0.1-x86_64.zip
+	noextract = electron42-42.0.1-x86_64.zip
+	source_aarch64 = electron42-chromedriver-42.0.1-aarch64.zip::https://github.com/electron/electron/releases/download/v42.0.1/chromedriver-v42.0.1-linux-arm64.zip
+	source_aarch64 = electron42-42.0.1-aarch64.zip::https://github.com/electron/electron/releases/download/v42.0.1/electron-v42.0.1-linux-arm64.zip
+	sha256sums_aarch64 = 43468f7efacb056a856fd82e75d80ec84127471aa6fe2ca4473fd14abb352f91
+	sha256sums_aarch64 = a08a4e6913804eb05cea798d8bd0aface4d1b88e9d07db86b779ea4a448be070
+	source_armv7h = electron42-chromedriver-42.0.1-armv7h.zip::https://github.com/electron/electron/releases/download/v42.0.1/chromedriver-v42.0.1-linux-armv7l.zip
+	source_armv7h = electron42-42.0.1-armv7h.zip::https://github.com/electron/electron/releases/download/v42.0.1/electron-v42.0.1-linux-armv7l.zip
+	sha256sums_armv7h = 51fce5a32ad1c5ddcce0e064135f92e341d23b999a6f2c6a39511d1e1b2d4b8d
+	sha256sums_armv7h = 6f4d8e17222a132479a0eceb6a8438fe5ed1637a53c60ed54a8d7f03232f08c3
+	source_x86_64 = electron42-chromedriver-42.0.1-x86_64.zip::https://github.com/electron/electron/releases/download/v42.0.1/chromedriver-v42.0.1-linux-x64.zip
+	source_x86_64 = electron42-42.0.1-x86_64.zip::https://github.com/electron/electron/releases/download/v42.0.1/electron-v42.0.1-linux-x64.zip
+	sha256sums_x86_64 = d22f2339736c092c35174a7d1d6e0ae6109fb4da8b05d7f5854c48630bd9331b
+	sha256sums_x86_64 = e1b8b5b86d3fff69e2b3502586363d384085ee0578bd041fa5915fd0b557c4f1
 
 pkgname = electron42-bin
