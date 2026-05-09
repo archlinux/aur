@@ -4,6 +4,7 @@ pkgname=haskell-cache-git
 pkgver=0.1.3.0
 pkgrel=1
 pkgdesc="An in-memory key/value store with expiration support, similar to patrickmn/go-cache for Go."
+provides=(haskell-cache)
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('BSD-3-Clause')
 arch=('i686' 'x86_64')
