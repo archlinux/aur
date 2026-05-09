@@ -17,7 +17,7 @@ url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 # Apparently there is an alternate URL - https://archive.mozilla.org/pub/
 _base_url="https://ftp.mozilla.org/pub/${_name}/${_channel}"
 _version=152.0a1
-_build_id_raw=20260508130736
+_build_id_raw=20260508212640
 declare -A _build_id
 _build_id=(
   [year]="${_build_id_raw:0:4}"
@@ -30,7 +30,7 @@ _build_id=(
   [time]="${_build_id_raw:8:6}"
 )
 
-pkgver=152.0a1.20260508.130736
+pkgver=152.0a1.20260508.212640
 
 pkgrel=1
 
@@ -67,7 +67,7 @@ source=('firefox-nightly.desktop'
   "${_filename}.tar.xz.asc::${_url}/${_src}.tar.xz.asc")
 sha512sums=('320659477fc3319db4b73492aa6ce39c3a5dbc4ab8adc27440cb1e7ab69dad2cea83a57d7cd77eebfe833fb8a48c7e021bdca851f1be4840fae292afdba96664'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
-            'e2946cb5c911331cbcbcf1c710c06fcfe1b878ac78d0b7a13aca3885228066b8f1f716c757e91a199fc6239081069e1ffc49b2b42d6ba6f79ee38666deffa427'
+            'ade8b70c0e806f4413f76b2058bf5fe4a5358a6a41c95d5d6477b6f19e00c52c37294e4fb8644e58f360fea402f9fde9d55146fe344120973aaf76e5707a24b6'
             'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
