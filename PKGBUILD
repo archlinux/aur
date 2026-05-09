@@ -3,7 +3,7 @@
 pkgname=qmd
 _npmname="@tobilu/qmd"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="On-device search engine for markdown files with BM25, vector, and LLM-powered search"
 arch=('x86_64')
 url="https://github.com/tobi/qmd"
@@ -31,7 +31,7 @@ package() {
   cp -a "${srcdir}/staging/lib/node_modules/@tobilu/qmd" "${pkgdir}/usr/lib/node_modules/@tobilu/qmd"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/node_modules/@tobilu/qmd/dist/qmd.js" "${pkgdir}/usr/bin/qmd"
+  ln -s "/usr/lib/node_modules/@tobilu/qmd/bin/qmd" "${pkgdir}/usr/bin/qmd"
 
   # License
   install -Dm644 "${pkgdir}/usr/lib/node_modules/@tobilu/qmd/LICENSE" \
