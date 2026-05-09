@@ -1,0 +1,13 @@
+pkgbase = user-foxy-cli
+	pkgdesc = CLI for the Foxy API — paste sharing, URL shortener, and remote server control
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://niko.undo.it
+	arch = any
+	license = MIT
+	depends = curl
+	depends = python
+	source = foxy::https://niko.undo.it/get-foxy
+	sha256sums = f140b5aa12c95d88b0812f2e3c1d5ba9c4f3df53897585bfa2a77a07c780102f
+
+pkgname = user-foxy-cli
