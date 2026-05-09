@@ -1,6 +1,6 @@
 pkgbase = python-types-fpdf2
 	pkgdesc = Typing stubs for fpdf2
-	pkgver = 2.8.4.20260408
+	pkgver = 2.8.4.20260509
 	pkgrel = 1.314
 	url = https://pypi.org/project/types-fpdf2/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-types-fpdf2
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types_fpdf2/types_fpdf2-2.8.4.20260408.tar.gz
-	sha256sums = 2a83146bba2aec0bf92b2fc8046dd200c65e9668c795cd063ff6d31304f2d725
+	source = https://files.pythonhosted.org/packages/source/t/types_fpdf2/types_fpdf2-2.8.4.20260509.tar.gz
+	sha256sums = 611cebdca910cac27d7e9a1e37907fa0d807f3f3d3470b8705dbad8a41dbbb78
 
 pkgname = python-types-fpdf2
