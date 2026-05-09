@@ -1,0 +1,11 @@
+--- a/xpp/echo_loader.c
++++ b/xpp/echo_loader.c
+@@ -564,7 +564,7 @@ UINT32 Oct6100UserDriverReadBurstApi(tPOCT6100_READ_BURST_PARAMS f_pBurstParams)
+ 	return cOCT6100_ERR_OK;
+ }
+ 
+-inline int get_ver(struct astribank *astribank)
++static inline int get_ver(struct astribank *astribank)
+ {
+ 	return spi_send(astribank, 0, 0, 1, 1);
+ }

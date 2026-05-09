@@ -5,7 +5,7 @@
 pkgname=dahdi-tools
 pkgdesc='DAHDI tools for Asterisk (Digium, OpenVox, Allo and Yeastar cards)'
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://www.asterisk.org
 license=(LGPL-2.1-only)
@@ -17,13 +17,17 @@ backup=(
 )
 source=(
   "https://downloads.asterisk.org/pub/telephony/${pkgname}/releases/${pkgname}-${pkgver}.tar.gz"
+  fix-get-ver-inline.patch
 )
 sha256sums=(
   9b9cd53ba51f4a03baf58bbcecda6d7bd7024e3ea3f7e0b864f666bdd794fcc5
+  a9b2e9af0032e6c41ec573ab9ba1235da7a105d0b41bdcdcc208b0db9934461a
 )
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+
+  patch -Np1 -i ../fix-get-ver-inline.patch
 
   # bootstrap.sh is broken, so do this manually
   rm -rf autom4te*.cache

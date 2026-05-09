@@ -1,7 +1,7 @@
 pkgbase = dahdi-tools
 	pkgdesc = DAHDI tools for Asterisk (Digium, OpenVox, Allo and Yeastar cards)
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.asterisk.org
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -16,6 +16,8 @@ pkgbase = dahdi-tools
 	backup = etc/dahdi/genconf_parameters
 	backup = etc/dahdi/system.conf
 	source = https://downloads.asterisk.org/pub/telephony/dahdi-tools/releases/dahdi-tools-3.4.0.tar.gz
+	source = fix-get-ver-inline.patch
 	sha256sums = 9b9cd53ba51f4a03baf58bbcecda6d7bd7024e3ea3f7e0b864f666bdd794fcc5
+	sha256sums = a9b2e9af0032e6c41ec573ab9ba1235da7a105d0b41bdcdcc208b0db9934461a
 
 pkgname = dahdi-tools
