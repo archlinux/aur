@@ -5,6 +5,7 @@ pkgbase = dearsql
 	url = https://github.com/dunkbing/dearsql
 	arch = x86_64
 	license = GPL3
+	options = !strip
 	source = dearsql-0.4.7.AppImage::https://github.com/dunkbing/dearsql/releases/download/v0.4.7/dearsql-x86_64.AppImage
 	source = dearsql.desktop::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v0.4.7/packaging/io.gitlab.dunkbing.dearsql.desktop
 	source = dearsql.png::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v0.4.7/assets/appicon.png
