@@ -1,0 +1,21 @@
+pkgbase = deltoids-bin
+	pkgdesc = sTools for reviewing code in the agentic era
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/juanibiapina/deltoids
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = zlib
+	provides = deltoids
+	conflicts = deltoids
+	options = !strip
+	source_x86_64 = deltoids-x86_64-0.5.0.tgz::https://github.com/juanibiapina/deltoids/releases/download/v0.5.0/deltoids-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0b9150ac9c0071ff527c2d05a7af89a0cdb36ac3d3aae29798ba35cfd5325099
+	source_aarch64 = deltoids-aarch64-0.5.0.tgz::https://github.com/juanibiapina/deltoids/releases/download/v0.5.0/deltoids-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = eec960c319cfc550797f120b5b34760614fa64c10ac7f72a1a473eb088834a28
+
+pkgname = deltoids-bin

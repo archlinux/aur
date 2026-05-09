@@ -1,0 +1,5 @@
+[deltoids-bin]
+source = "github"
+github = "juanibiapina/deltoids"
+use_latest_release = true
+prefix = "v"
