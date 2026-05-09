@@ -1,0 +1,20 @@
+pkgbase = python-blackiceprog-git
+	pkgdesc = Programmer for the blackice FPGAs by myStorm (https://mystorm.uk/)
+	pkgver = r4.8b6667d
+	pkgrel = 1
+	url = https://github.com/jpenalbae/black-iceprog
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyserial
+	provides = python-blackiceprog
+	conflicts = python-blackiceprog
+	source = python-blackiceprog-git::git+https://github.com/jpenalbae/black-iceprog.git
+	sha256sums = SKIP
+
+pkgname = python-blackiceprog-git
