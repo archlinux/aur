@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-bin
-pkgver=2.2.3.2
+pkgver=2.2.4.0
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
 arch=('x86_64')
@@ -22,6 +22,7 @@ depends=(
     'glibc'
     'libarchive'
     'dconf'
+    'gnupg'
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
@@ -33,7 +34,7 @@ source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
 )
 
-sha256sums=('7e66f0b6ad39ad5806d85e5419436b1ed5da9ea0cc2932795b3b1309c2284d58')
+sha256sums=('e800b8b632ff1f7a11744b30612caf646f42dd90e6ea712114d5e2be2d5f584a')
 
 package() {
   # Install Shelly.Gtk binary
@@ -44,6 +45,9 @@ package() {
 
   # Install Shelly-CLI binary
   install -Dm755 "$srcdir/shelly" "$pkgdir/usr/bin/shelly"
+
+  # Install Shelly.Keys binary
+  install -Dm755 "$srcdir/shelly-keys" "$pkgdir/usr/bin/shelly-keys"
 
   # Install desktop entry
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
