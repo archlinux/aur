@@ -1,6 +1,6 @@
 pkgbase = kdotool
 	pkgdesc = A xdotool clone for KDE Wayland
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/jinliu/kdotool/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kdotool
 	depends = dbus
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/jinliu/kdotool/archive/v0.2.2/kdotool-0.2.2.tar.gz
-	sha256sums = 6a613e8d376298fc701cac9f965b9511c796623b505523955e6006215194a77a
+	source = https://github.com/jinliu/kdotool/archive/v0.2.3/kdotool-0.2.3.tar.gz
+	sha256sums = b2d16d8776b65b6dc37b5a51d7afdef6303c88d76337cf8c217c4edf1754d5a0
 
 pkgname = kdotool
