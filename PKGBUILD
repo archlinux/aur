@@ -3,7 +3,7 @@
 _pkgauthor=trapexit
 _pkgname=mergerfs
 pkgname=${_pkgname}-bin
-pkgver=2.41.1
+pkgver=2.42.0
 pkgrel=1
 _pkgvername=${pkgver}
 pkgdesc="Featureful union filesystem. Combines directories from various filesystems into a storage pool"
@@ -24,11 +24,11 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-static-linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-static-linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-static-linux_${_barch[2]}.tar.gz")
-sha256sums=('b442f17731ef6c5638e49aeb8abb0add16d4f9f624105246812ef984d41c19f4'
+sha256sums=('5bf5ab72b9a8d4405b8e3c15aaea4e2eab39e18d105c15a1b24e6133f1b00892'
             '26de2f82a16dc31e33a99ba3d148d1f4f7ccc0e6faa5f1de7e79caac6ba6f9b5')
-sha256sums_x86_64=('56651d4bb0d8e672046cc00d396f766874b5478487f0b031fe04b9ec2f2de6ba')
-sha256sums_i686=('cbe31cf6fd4ef61d85c9fd48966ee99f68b34bf432ceafdd970d35ee67125263')
-sha256sums_aarch64=('e3fc92b53b6a28dbaa2b7320a1a608657cf6eb9aee1a506789a20c6bcbec44a4')
+sha256sums_x86_64=('0cf8692e1687c8a1140c714966c6f5f4b498a1537f1a0bef5665082ecb35fc12')
+sha256sums_i686=('d795e46659a50af628ff6c02ce233794cb62f03867f48b5beb1cc4a39fd97c3b')
+sha256sums_aarch64=('da318afbf109f025a41e9be86de5ebbdfb879546abf4cb5176c8c15881b7cf05')
 
 
 package() {
