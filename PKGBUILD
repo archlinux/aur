@@ -1,6 +1,6 @@
 pkgname=vigaphone-bin
 pkgver=1.3.0
-pkgrel=0
+pkgrel=1
 options=('!strip' '!debug')
 groups=('pro-audio','vst3-plugins')
 pkgdesc="ViGAPhone Synth Lab is a New Physical-Modeling Synthesizer MIDI-MPE application and VST3 plugin, Sound and Timbre Analyzer, Instrument Tuner and more..."
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
-sha256sums=('88329ee097d1da5d86de00481649b22c01f1d3c5395b5e7ef35349f33905ed21')
+sha256sums=('c2bc9b5a770f2a6452caa14410fed2eed184cd96cb15e57df78c1477a7184421')
 
 depends=(
     'alsa-lib'
@@ -32,7 +32,7 @@ package() {
     # Desktop entry
     # Ajout de la ligne Exec= dans le .desktop, et du chemin complet vers l'icône
     install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.desktop "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
-	sed -i '/^Exec=/c Exec=ViGAPhone %f' "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
+	sed -i '/^\[Desktop Entry\]/a Exec=/usr/bin/ViGAPhone %f' $pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop
 	sed -i "s|^Icon=.*|Icon=/usr/share/icons/hicolor/256x256/apps/org.vigaworld.vigaphone.png|" "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
     # Icône
     install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.vigaworld.vigaphone.png"
