@@ -2,7 +2,7 @@
 
 _pkgname="daed"
 pkgname="${_pkgname}-edge-git"
-pkgver=1.27.0.r13.gf655b35.w223.gdc50308.d842.g0a4de9d
+pkgver=1.27.0.r14.g1e35217.w223.gdc50308.d843.gc7e0296
 pkgrel=1
 pkgdesc="A modern dashboard for dae, bundled with latest dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
