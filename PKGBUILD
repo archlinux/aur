@@ -28,8 +28,10 @@ package() {
   # Install the main binary
   install -Dm755 squashfs-root/usr/bin/worklog -t "$pkgdir/usr/bin/"
   
-  # Install the desktop file and icons (resolves the desktop.ini request)
-  cp -r squashfs-root/usr/share "$pkgdir/usr/"
+  # Install only the desktop file and icons to avoid system schema conflicts
+  install -dm755 "$pkgdir/usr/share"
+  cp -dr --no-preserve=ownership squashfs-root/usr/share/applications "$pkgdir/usr/share/"
+  cp -dr --no-preserve=ownership squashfs-root/usr/share/icons "$pkgdir/usr/share/"
   
   # Ensure correct permissions for shared resources
   chmod -R u=rwX,go=rX "$pkgdir/usr/share"
