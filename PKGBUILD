@@ -8,7 +8,7 @@
 
 _pkgname="godot"
 pkgname="$_pkgname-git"
-pkgver=4.6.r3816.g741fb8a
+pkgver=4.7.r2769.gaaaf764
 pkgrel=1
 pkgdesc="Advanced cross-platform 2D and 3D game engine"
 url="https://github.com/godotengine/godot"
@@ -21,6 +21,7 @@ depends=(
   graphite
   harfbuzz
   harfbuzz-icu
+  hicolor-icon-theme
   libglvnd
   libspeechd
   libsquish
@@ -95,7 +96,7 @@ package() {
   done
 
   # resources
-  install -Dm644 icon_outlined.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+  install -Dm644 misc/logo/icon_outlined.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
   install -Dm644 misc/dist/linux/org.godotengine.Godot.desktop -t "$pkgdir/usr/share/applications/"
 

@@ -1,6 +1,6 @@
 pkgbase = godot-git
 	pkgdesc = Advanced cross-platform 2D and 3D game engine
-	pkgver = 4.6.r3816.g741fb8a
+	pkgver = 4.7.r2769.gaaaf764
 	pkgrel = 1
 	url = https://github.com/godotengine/godot
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = godot-git
 	depends = graphite
 	depends = harfbuzz
 	depends = harfbuzz-icu
+	depends = hicolor-icon-theme
 	depends = libglvnd
 	depends = libspeechd
 	depends = libsquish
