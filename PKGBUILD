@@ -4,7 +4,7 @@ _gitauthor=juanibiapina
 _gitname=deltoids
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="sTools for reviewing code in the agentic era"
+pkgdesc="Tools for reviewing code in the agentic era"
 
 pkgver=0.5.0
 pkgrel=1
