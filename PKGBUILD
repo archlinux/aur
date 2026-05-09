@@ -18,6 +18,7 @@ depends=(
   python-onnxruntime
   python-av
   python-tqdm
+  python-numpy
 )
 makedepends=(
   python-build
