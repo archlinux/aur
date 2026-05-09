@@ -3,8 +3,8 @@
 
 _pkgname=moonraker
 pkgname="${_pkgname}-git"
-pkgver=0.9.3.r123.g8426f41
-pkgrel=2
+pkgver=0.10.0.r20.g9008485
+pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
 url="https://github.com/Arksine/moonraker"
