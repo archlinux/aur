@@ -2,7 +2,7 @@
 
 pkgname=shutter-git
 _pkgname=shutter
-pkgver=r1636.d6dcd492
+pkgver=r1877.aedf63a7
 pkgrel=1
 pkgdesc="A featureful screenshot tool, git version"
 arch=('any')
