@@ -1,6 +1,6 @@
 # Maintainer: Tim Koornstra <89044870+TimKoornstra@users.noreply.github.com>
 pkgname=repoyank
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Interactively select files from a repo and yank them as LLM-ready snippets to the clipboard"
 arch=('x86_64')
@@ -20,3 +20,4 @@ package() {
   install -Dm755 "target/release/repoyank" "$pkgdir/usr/bin/repoyank"
 }
 
+sha256sums=('208b0a8c74dbc26fe30a04dce7f94022782507ccb780963b88eb751504075af1')
