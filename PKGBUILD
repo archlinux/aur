@@ -4,6 +4,7 @@ pkgname=xp3-tool
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="A simple tool for packing and unpacking .xp3 files"
+keywords=('xp3' 'packer' 'unpacker' 'rust' 'visual-novel')
 arch=('x86_64')
 url="https://github.com/storycraft/xp3-tool"
 license=('MIT')
