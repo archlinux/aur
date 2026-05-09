@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=lsqlite3
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
