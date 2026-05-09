@@ -5,7 +5,7 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.6.2.18
+pkgver=3.6.2.19
 pkgrel=1
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('Artistic-2.0')
 depends=('sdl2' 'sdl2_sound' 'libogg' 'libtheora' 'libvorbis' 'freetype2' 'glm' 'tinyxml2' 'miniz')
 makedepends=('cmake' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v$pkgver.tar.gz")
-sha256sums=('8c41917bdf74c2aa8457845afcf9439a5016d21aac6bcc375e20acdadb02538b')
+sha256sums=('ecb7280b4cac12a292c17b22b3a45fda4e7b30870cfb8defc1231965b04ce590')
 
 _srcdir="$pkgname-$pkgver"
 
@@ -36,7 +36,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DCMAKE_BUILD_TYPE=None \
 		-DAGS_TESTS=ON \
-		-DCMAKE_CXX_STANDARD=20 \
+		-DCMAKE_CXX_STANDARD=23 \
 		-DAGS_USE_LOCAL_ALL_LIBRARIES=ON \
 		-DAGS_BUILD_TOOLS=ON \
 		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
