@@ -1,4 +1,3 @@
-# Maintainer: Matias <matiase@archlinux.org>
 # Contributor: <software+aur@disavowed.jp>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 
