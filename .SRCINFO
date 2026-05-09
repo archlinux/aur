@@ -32,7 +32,7 @@ pkgbase = ladybird
 	options = !buildflags
 	options = !staticlibs
 	options = !emptydirs
-	source = git+https://github.com/LadybirdBrowser/ladybird#commit=243465391a0d36f4ff8c53a51d2c9321ee111037
+	source = git+https://github.com/LadybirdBrowser/ladybird#commit=ba26f8eee7c9912a9923081b141d3297f7a6f728
 	source = git+https://github.com/microsoft/vcpkg.git#commit=48cfe1e0e928341709d97fc3d2eff10ad6262c96
 	source = hb-fc-whole-archive.patch
 	source = new-tab.patch
