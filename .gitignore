@@ -1,0 +1,13 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!kraken.png
+!LICENSE
+!update.sh
+!.github/
+!.github/workflows/
+!.github/workflows/update-aur.yml
