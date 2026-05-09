@@ -1,5 +1,5 @@
 pkgbase = foxchat-cli
-	pkgdesc = A programming language targeted for building console applications.
+	pkgdesc = FoxChat client entirely in the terminal.
 	pkgver = 2026
 	pkgrel = 5.8
 	url = https://jd.pnc3.net/software/foxchat
@@ -9,6 +9,6 @@ pkgbase = foxchat-cli
 	makedepends = gcc
 	makedepends = make
 	source = https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/foxchat-cli.tar.gz
-	sha256sums = a0b762922944044076fe94d3bc82743efa11f17c7199235991a3bb7836283500
+	sha256sums = 90167cb4152cb6aa0a1cd1dfd256cb5d045e66f33bc7fd7177916c2b2310e483
 
 pkgname = foxchat-cli
