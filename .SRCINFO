@@ -1,6 +1,6 @@
 pkgbase = imapgoose
 	pkgdesc = Keep local Maildir directories synchronised with an IMAP server
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://git.sr.ht/~whynothugo/ImapGoose
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = imapgoose
 	checkdepends = dovecot
 	makedepends = go
 	makedepends = golangci-lint
-	source = https://git.sr.ht/~whynothugo/ImapGoose/archive/v0.5.2.tar.gz
-	sha256sums = ad21d08a3d3fa29eabf7588dd3423a822f981c554e75549ac1dcf6b3b3d52bd5
+	source = https://git.sr.ht/~whynothugo/ImapGoose/archive/v0.5.3.tar.gz
+	sha256sums = d8ddce354a89122062f72fd21a10fe4c33bac2feb3b2064b96918ffc9ae61592
 
 pkgname = imapgoose

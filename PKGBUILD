@@ -2,7 +2,7 @@
 
 pkgname=imapgoose
 _pkgname=ImapGoose
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Keep local Maildir directories synchronised with an IMAP server"
 arch=('x86_64')
@@ -18,7 +18,7 @@ checkdepends=(
 source=(
   "https://git.sr.ht/~whynothugo/ImapGoose/archive/v$pkgver.tar.gz"
 )
-sha256sums=('ad21d08a3d3fa29eabf7588dd3423a822f981c554e75549ac1dcf6b3b3d52bd5')
+sha256sums=('d8ddce354a89122062f72fd21a10fe4c33bac2feb3b2064b96918ffc9ae61592')
 
 prepare() {
   cd "${_pkgname}-v${pkgver}"
