@@ -3,7 +3,7 @@
 _pkgname=advancely
 pkgname=$_pkgname-bin
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress beyond just Advancements."
 arch=('x86_64')
 url="https://github.com/LNXSeus/Advancely"
@@ -31,7 +31,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/${_pkgname}"
   cp -r sources/resources "${pkgdir}/usr/share/${_pkgname}/"
 
-  install -D -m 755 "sources/Advancely" "${pkgdir}/usr/share/Advancely"
+  install -D -m 755 "sources/Advancely" "${pkgdir}/usr/share/${_pkgname}"
 
   install -D -m 755 "launcher" "${pkgdir}/usr/bin/advancely"
 
