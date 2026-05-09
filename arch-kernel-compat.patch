@@ -1,0 +1,65 @@
+diff --git a/drivers/dahdi/dahdi-sysfs-chan.c b/drivers/dahdi/dahdi-sysfs-chan.c
+--- a/drivers/dahdi/dahdi-sysfs-chan.c
++++ b/drivers/dahdi/dahdi-sysfs-chan.c
+@@ -223,5 +223,11 @@
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0) ||(defined(RHEL_RELEASE_CODE) && (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 8)))
++#if defined(RHEL_RELEASE_CODE) && defined(RHEL_RELEASE_VERSION)
++#define DAHDI_RHEL_9_8_PLUS (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 8))
++#else
++#define DAHDI_RHEL_9_8_PLUS 0
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0) || DAHDI_RHEL_9_8_PLUS
+ static int chan_match(struct device *dev, const struct device_driver *driver)
+ #else
+ static int chan_match(struct device *dev, struct device_driver *driver)
+ #endif /* LINUX_VERSION_CODE */
+diff --git a/drivers/dahdi/dahdi-sysfs.c b/drivers/dahdi/dahdi-sysfs.c
+--- a/drivers/dahdi/dahdi-sysfs.c
++++ b/drivers/dahdi/dahdi-sysfs.c
+@@ -45,5 +45,11 @@
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0) ||(defined(RHEL_RELEASE_CODE) && (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 8)))
++#if defined(RHEL_RELEASE_CODE) && defined(RHEL_RELEASE_VERSION)
++#define DAHDI_RHEL_9_8_PLUS (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 8))
++#else
++#define DAHDI_RHEL_9_8_PLUS 0
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0) || DAHDI_RHEL_9_8_PLUS
+ static int span_match(struct device *dev, const struct device_driver *driver)
+ #else
+ static int span_match(struct device *dev, struct device_driver *driver)
+ #endif /* LINUX_VERSION_CODE */
+diff --git a/drivers/dahdi/xpp/xbus-sysfs.c b/drivers/dahdi/xpp/xbus-sysfs.c
+--- a/drivers/dahdi/xpp/xbus-sysfs.c
++++ b/drivers/dahdi/xpp/xbus-sysfs.c
+@@ -400,5 +400,11 @@
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0) ||(defined(RHEL_RELEASE_CODE) && (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 8)))
++#if defined(RHEL_RELEASE_CODE) && defined(RHEL_RELEASE_VERSION)
++#define DAHDI_RHEL_9_8_PLUS (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 8))
++#else
++#define DAHDI_RHEL_9_8_PLUS 0
++#endif
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0) || DAHDI_RHEL_9_8_PLUS
+ static int astribank_match(struct device *dev, const struct device_driver *driver)
+ #else
+ static int astribank_match(struct device *dev, struct device_driver *driver)
+ #endif /* LINUX_VERSION_CODE */
+@@ -781,5 +788,5 @@
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0) ||(defined(RHEL_RELEASE_CODE) && (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 8)))
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0) || DAHDI_RHEL_9_8_PLUS
+ static int xpd_match(struct device *dev, const struct device_driver *driver)
+ #else
+ static int xpd_match(struct device *dev, struct device_driver *driver)
+ #endif /* LINUX_VERSION_CODE */
+diff --git a/drivers/dahdi/Kbuild b/drivers/dahdi/Kbuild
+--- a/drivers/dahdi/Kbuild
++++ b/drivers/dahdi/Kbuild
+@@ -144,7 +144,6 @@
+     $(shell touch $(KBUILD_EXTMOD)/vpmadt032_loader/.vpmadt032_$(DAHDI_ARCH).o.cmd)
+     VPMADT032_LOADER_PRESENT=yes
+     dahdi_vpmadt032_loader-objs += vpmadt032_loader/vpmadt032_$(DAHDI_ARCH).o
+-    obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_VPMADT032_LOADER)	+= dahdi_vpmadt032_loader.o
+   endif
+ endif

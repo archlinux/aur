@@ -1,19 +1,17 @@
-# Maintainer:
+# Maintainer: Matias <matiase@archlinux.org>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 
 _kernelver=$(pacman -Q linux | cut -f2 -d ' ')
-_linuxver=${_kernelver%-*}
-
 _basename=dahdi
 pkgname=dahdi-linux-git
-pkgdesc="DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
-pkgver=3.3.0.r1.g2781746
-pkgrel=3
-arch=(x86_64 i686)
-url=http://www.asterisk.org
-license=(LGPL)
+pkgdesc='DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)'
+pkgver=3.4.0.rc1.r20.gd1c842a
+pkgrel=1
+arch=(x86_64)
+url=https://www.asterisk.org
+license=(GPL-2.0-only)
 makedepends=(
   git
   libusb
@@ -30,9 +28,10 @@ conflicts=(
 )
 install="${pkgname%-linux-git}.install"
 _archive="$pkgname"
-_fwurl=http://downloads.digium.com/pub/telephony/firmware/releases
+_fwurl=https://downloads.digium.com/pub/telephony/firmware/releases
 source=("$_archive::git+https://github.com/asterisk/dahdi-linux#branch=master"
         "${pkgname%-linux-git}.service"
+        arch-kernel-compat.patch
         "$_fwurl/dahdi-fw-a4a-a0017.tar.gz"
         "$_fwurl/dahdi-fw-a4b-d001e.tar.gz"
         "$_fwurl/dahdi-fw-a8a-1d0017.tar.gz"
@@ -53,6 +52,7 @@ source=("$_archive::git+https://github.com/asterisk/dahdi-linux#branch=master"
 )
 sha256sums=('SKIP'
             '7c91314aacab22ffd02794abfa7db49f44a796ea54f3e2bc4276616e68b90e0f'
+            '67bb74c83198946fee1aac138f9aa03d4c23b197813951ea254de69671ada4e6'
             'd5b6ab6851e431afcfec2ecc39d95fa88fe3939ffdb2e3d4f28a43cabf30e95b'
             'e039af8bec36407b74e1dd9ebdd49ba077469eda79d4e6093721ed2836d4536f'
             '5064f9877b8aec99b19fd57988216fe1a9c0b7c07853dd3b32b5a55ab7b418e6'
@@ -77,8 +77,9 @@ prepare() {
     drivers/dahdi/firmware/Makefile
   sed -i -e '/^target/s,lib,usr/lib,' -e '/\binstall\b/{s,-m,-Dm,;s,bin ,bin -t ,}' \
     build_tools/install_firmware
+  patch -Np1 -i "$srcdir/arch-kernel-compat.patch"
   cd "drivers/dahdi/firmware"
-  for fw in ${source[@]:2:18}; do
+  for fw in ${source[@]:3:18}; do
     ln -sf "$srcdir/${fw##*/}"
   done
 }
@@ -91,13 +92,13 @@ pkgver() {
 
 build() {
   cd "$_archive"
-  make DESTDIR="$pkgdir" all
+  make all
 }
 
 package() {
   depends=(
     libusb
-    "linux=${_linuxver//-/.}"
+    linux
     perl
   )
 
@@ -109,6 +110,6 @@ package() {
   rm -r "$pkgdir/usr/lib/hotplug/firmware"
   cd drivers
   find . -name "*.ko" \
-    -exec gzip "{}" \; \
+    -exec gzip -n "{}" \; \
     -exec install -Dm0644 "{}.gz" "$pkgdir/usr/lib/modules/$_kernelver/extramodules/{}.gz" \;
 }

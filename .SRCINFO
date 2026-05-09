@@ -1,41 +1,42 @@
 pkgbase = dahdi-linux-git
 	pkgdesc = DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)
-	pkgver = 3.3.0.r1.g2781746
-	pkgrel = 3
-	url = http://www.asterisk.org
+	pkgver = 3.4.0.rc1.r20.gd1c842a
+	pkgrel = 1
+	url = https://www.asterisk.org
 	install = dahdi.install
 	arch = x86_64
-	arch = i686
-	license = LGPL
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = libusb
 	makedepends = linux
 	makedepends = linux-headers
-	provides = dahdi=3.3.0
-	provides = dahdi-linux=3.3.0
+	provides = dahdi=3.4.0.rc1
+	provides = dahdi-linux=3.4.0.rc1
 	conflicts = dahdi
 	conflicts = dahdi-linux
 	source = dahdi-linux-git::git+https://github.com/asterisk/dahdi-linux#branch=master
 	source = dahdi.service
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a4a-a0017.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a4b-d001e.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a8a-1d0017.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a8b-1f001e.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-hx8-2.06.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-032-1.05.01.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-064-1.05.01.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-128-1.05.01.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-256-1.05.01.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-tc400m-MR6.12.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te133-7a001e.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te134-780017.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te435-13001e.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te436-10017.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te820-1.76.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-vpmoct032-1.12.0.tar.gz
-	source = http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fwload-vpmadt032-1.25.0.tar.gz
+	source = arch-kernel-compat.patch
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a4a-a0017.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a4b-d001e.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a8a-1d0017.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a8b-1f001e.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-hx8-2.06.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-032-1.05.01.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-064-1.05.01.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-128-1.05.01.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-256-1.05.01.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-tc400m-MR6.12.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te133-7a001e.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te134-780017.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te435-13001e.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te436-10017.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te820-1.76.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-vpmoct032-1.12.0.tar.gz
+	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fwload-vpmadt032-1.25.0.tar.gz
 	sha256sums = SKIP
 	sha256sums = 7c91314aacab22ffd02794abfa7db49f44a796ea54f3e2bc4276616e68b90e0f
+	sha256sums = 67bb74c83198946fee1aac138f9aa03d4c23b197813951ea254de69671ada4e6
 	sha256sums = d5b6ab6851e431afcfec2ecc39d95fa88fe3939ffdb2e3d4f28a43cabf30e95b
 	sha256sums = e039af8bec36407b74e1dd9ebdd49ba077469eda79d4e6093721ed2836d4536f
 	sha256sums = 5064f9877b8aec99b19fd57988216fe1a9c0b7c07853dd3b32b5a55ab7b418e6
@@ -56,5 +57,5 @@ pkgbase = dahdi-linux-git
 
 pkgname = dahdi-linux-git
 	depends = libusb
-	depends = linux=6.8.2.arch1
+	depends = linux
 	depends = perl
