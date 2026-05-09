@@ -1,0 +1,5 @@
+[howto-bin]
+source = "github"
+github = "antonmedv/howto"
+use_latest_release = true
+prefix = ""
