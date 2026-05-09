@@ -2,7 +2,7 @@
 
 _gpuarch=gfx120X-all
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=7.13.0a20260507
+pkgver=7.13.0a20260508
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
@@ -19,7 +19,7 @@ _rocm_packages=(
     'comgr' 'rocminfo' 'rocwmma' 'rocprofiler-register'
     'rocm-smi-lib' 'rocm-gdb' 'rocm-dbgapi'
     'rocprofiler' 'roctracer' 'rocm-bandwidth-test'
-    'opencl-rocm'
+    'rocm-opencl-runtime' 'rocm-opencl-sdk'
     'hipblas' 'hipblas-common' 'hipblaslt' 'rocblas'
     'hipfft' 'rocfft'
     'hiprand' 'rocrand'
@@ -28,10 +28,10 @@ _rocm_packages=(
     'rccl' 'rocalution' 'rocprim' 'rocthrust' 'hipcub'
     'miopen-hip' 'migraphx' 'mivisionx' 'rpp'
     'hipfort' 'hipify-clang'
-    'rocm-hip-sdk' 'rocm-hip-libraries' 'rocm-hip-runtime' 'rocm-opencl-sdk' 'rocm-ml-sdk' # Meta packages
+    'rocm-hip-sdk' 'rocm-hip-libraries' 'rocm-hip-runtime' 'rocm-ml-sdk' # Meta packages
 )
 
-provides=("${_rocm_packages[@]}" "rocm=${pkgver}")
+provides=("${_rocm_packages[@]}" opencl-driver "rocm=${pkgver}")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
 source=("${url}/tarball/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
@@ -41,24 +41,16 @@ noextract=("${source[@]##*/}")
 
 package() {
     install -d "${pkgdir}/opt/rocm"
-
-    # 1. 复制所有内容
-    # 源码是 tarbomb 结构（直接解压在 srcdir），因此复制当前目录下所有可见文件
+    # 源码是 tarbomb 结构
     tar xzf "${source[0]##*/}" -C ${pkgdir}/opt/rocm
-    # 2 修复 amdgcn 目录结构
-    if [ -d "${pkgdir}/opt/rocm/lib/llvm/amdgcn" ]; then
-        msg2 "Symlinking amdgcn directory..."
-        ln -s "lib/llvm/amdgcn" "${pkgdir}/opt/rocm/amdgcn"
-    fi
 
-    # 3. 配置动态链接库路径 /etc/ld.so.conf.d/
+    # 配置动态链接库路径 /etc/ld.so.conf.d/
     install -Dm644 /dev/null "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
     echo "/opt/rocm/lib" > "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
     echo "/opt/rocm/lib64" >> "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
 
-    # 4. 配置环境变量 /etc/profile.d/
-    install -Dm755 /dev/null "${pkgdir}/etc/profile.d/rocm-nightly-${_gpuarch}.sh"
-    cat <<EOF > "${pkgdir}/etc/profile.d/rocm-nightly-${_gpuarch}.sh"
+    # 配置环境变量 /etc/profile.d/
+    install -Dm755 /dev/stdin "${pkgdir}/etc/profile.d/rocm-nightly-${_gpuarch}.sh" <<EOF
 export ROCM_PATH=/opt/rocm
 export ROCM_HOME=/opt/rocm
 export HIP_PATH=/opt/rocm
@@ -67,7 +59,11 @@ export PATH=\$ROCM_PATH/bin:\$PATH
 export LD_LIBRARY_PATH=\$ROCM_PATH/lib:\$LD_LIBRARY_PATH
 EOF
 
-    # 5. 处理许可证
+    # 配置 OpenCL ICD
+    install -Dm644 /dev/stdin "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd" <<EOF
+/opt/rocm/lib/opencl/libamdocl64.so
+EOF
+    # 处理许可证
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     if [ -f "${pkgdir}/opt/rocm/share/doc/NOTICES.txt" ]; then
         ln -s "/opt/rocm/share/doc/NOTICES.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICES.txt"
