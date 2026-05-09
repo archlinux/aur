@@ -1,0 +1,25 @@
+pkgbase = wayland-scroll-factor-git
+	pkgdesc = Touchpad scroll and gesture tuning for Wayland (GNOME and Hyprland)
+	pkgver = 0.3.0.beta.1.1.ge019ef3
+	pkgrel = 1
+	url = https://github.com/daniel-g-carrasco/wayland-scroll-factor
+	install = wayland-scroll-factor.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gcc
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	optdepends = libinput-tools: for wsf doctor diagnostics
+	optdepends = hyprland: for Hyprland native scroll and gesture support
+	provides = wayland-scroll-factor
+	conflicts = wayland-scroll-factor
+	source = wayland-scroll-factor::git+https://github.com/daniel-g-carrasco/wayland-scroll-factor.git#branch=main
+	sha256sums = SKIP
+
+pkgname = wayland-scroll-factor-git

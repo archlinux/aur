@@ -1,0 +1,26 @@
+_update_desktop_database() {
+  if command -v update-desktop-database >/dev/null; then
+    update-desktop-database -q /usr/share/applications
+  fi
+}
+
+_update_icon_cache() {
+  if command -v gtk-update-icon-cache >/dev/null; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  fi
+}
+
+post_install() {
+  _update_desktop_database
+  _update_icon_cache
+}
+
+post_upgrade() {
+  _update_desktop_database
+  _update_icon_cache
+}
+
+post_remove() {
+  _update_desktop_database
+  _update_icon_cache
+}
