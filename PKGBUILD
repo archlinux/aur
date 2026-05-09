@@ -6,7 +6,7 @@
 pkgname=nawkawk
 pkgdesc='Let nawk be your awk by pointing /usr/bin/awk symlink to nawk'
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 install="$pkgname.install"
 arch=('any')
 license=('0BSD')  # SPDX-License-Identifier: 0BSD
