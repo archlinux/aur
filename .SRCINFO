@@ -1,6 +1,6 @@
 pkgbase = netlogo
 	pkgdesc = A multi-agent programmable modeling environment
-	pkgver = 7.0.3
+	pkgver = 7.0.4
 	pkgrel = 1
 	url = https://www.netlogo.org
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = netlogo
 	depends = python
 	depends = zlib
 	options = !strip
-	source = https://ccl.northwestern.edu/netlogo/7.0.3/NetLogo-7.0.3-64.tgz
-	sha256sums = 7923c9c1e834f462208403ea07a5758629ea6dc57029cb31e01222595be10471
+	source = https://downloads.netlogo.org/7.0.4/NetLogo-7.0.4-64.tgz
+	sha256sums = 75636b8469ea4995ec051cfbc91e525f171be84b8f959b86bc080fbff702dfbc
 
 pkgname = netlogo

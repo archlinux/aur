@@ -4,7 +4,7 @@
 # Contributor: Grogi <roman@algofacil.info>
 
 pkgname=netlogo
-pkgver=7.0.3
+pkgver=7.0.4
 pkgrel=1
 pkgdesc="A multi-agent programmable modeling environment"
 arch=('x86_64')
@@ -26,12 +26,12 @@ depends=('alsa-lib'
          'python'
          'zlib')
 makedepends=('gendesk')
-options=(!strip)
-source=("https://ccl.northwestern.edu/netlogo/${pkgver}/NetLogo-${pkgver}-64.tgz")
-sha256sums=('7923c9c1e834f462208403ea07a5758629ea6dc57029cb31e01222595be10471')
+options=('!strip')
+source=("https://downloads.netlogo.org/${pkgver}/NetLogo-${pkgver}-64.tgz")
+sha256sums=('75636b8469ea4995ec051cfbc91e525f171be84b8f959b86bc080fbff702dfbc')
 
 prepare() {
-    for file in NetLogo NetLogo3D HubNetClient Behaviorsearch; do
+    for file in NetLogo NetLogo3D HubNetClient BehaviorSearch; do
         gendesk -f -n \
             --pkgname "${file}" \
             --name "${file}" \
@@ -44,7 +44,7 @@ package() {
     mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/opt"
     cp -r "NetLogo ${pkgver}" "${pkgdir}/opt/${pkgname}"
 
-    for file in NetLogo NetLogo3D HubNetClient Behaviorsearch; do
+    for file in NetLogo NetLogo3D HubNetClient BehaviorSearch; do
         ln -s "/opt/${pkgname}/bin/${file}" "${pkgdir}/usr/bin"
         install -Dm644 "${file}.desktop" -t "${pkgdir}/usr/share/applications"
         install -Dm644 "NetLogo ${pkgver}/icons/${file}.png" -t "${pkgdir}/usr/share/pixmaps"
