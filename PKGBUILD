@@ -4,7 +4,7 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.84.0
+pkgver=0.85.0
 pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
@@ -40,11 +40,11 @@ arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('a592fa0f08ba2558812ac25b0c1efda633755ffe8c88c2ed1b5612b864059e71'
+sha256sums=('c46c5f57d2267ef13522dbcdc06ee450a26e786b81e97df5d4224abb56ca3cba'
             'e252e4eec325886d76dfc54c90604ea81ec0d6791b7e22bb93f63cec6378c50c')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.41.5
+_engine_version=3.41.9
 
 prepare() {
 	cd "${_srcdir}"
@@ -54,8 +54,8 @@ prepare() {
 
 build() {
 	export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
+	export CC='clang'
 	export CXX='clang++'
-	export CXXFLAGS+=' -Wno-error=nontrivial-memcall'
 
 	cd "${_srcdir}"
 
@@ -66,7 +66,7 @@ build() {
 		fvm flutter --disable-analytics
 
 		fvm flutter --no-version-check pub get
-		fvm flutter build linux --release
+		fvm flutter build linux --release -v
 	popd
 
 	#cd 'sdk/python'
