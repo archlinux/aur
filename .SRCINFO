@@ -12,7 +12,6 @@ pkgbase = python-trame-client
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	makedepends = nodejs
 	makedepends = npm
 	depends = python-trame-common
