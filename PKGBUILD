@@ -2,7 +2,7 @@
 # Maintainer: overader <goplayertui@codeader.com>
 
 pkgname='goplayertui-bin'
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Reproductor de música TUI escrito en Go'
 url='https://github.com/ader999/GoPlayerTUI'
@@ -12,7 +12,7 @@ provides=('GoPlayerTUI')
 conflicts=('GoPlayerTUI')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ader999/GoPlayerTUI/releases/download/v${pkgver}/GoPlayerTUI_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('6ec9d6fe4fb0463636233ff95716635f904d661704811cea15b7d8fa615c4b81')
+sha256sums_x86_64=('08447692d91139691f351f86335a2323317f5e12225643ed11a32c1c5b0364b9')
 
 package() {
   # bin
