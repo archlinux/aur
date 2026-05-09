@@ -3,7 +3,7 @@
 _pkgauthor=n0-computer
 _pkgname=sendme
 pkgname=${_pkgname}-bin
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc='A tool to send files and directories'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,11 +20,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[1]}.tar.gz")
-sha256sums=('974857d00c8d3e956c4f75d41e4a631f55fe1de895d99f8ea28d3b86520f47bd'
-            'b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353'
-            '7ee92352fcac2b427c4754822087d0aeb3afc99951b71bd15cc4c2e5c61c1b60')
-sha256sums_x86_64=('ffb5bd25ef545f1e8108d1fa809f7a8e10203f15f3d9bcdc26b84414afc03d8f')
-sha256sums_aarch64=('d393c382195eb73d3bc0c0950ec60a0389a83c2a83c0c96bb6a3c21aa2255c82')
+sha256sums=('2aa4c34073e5f174c9f43b2f7a1a1ecc0865574ebf765467fe7ac219d34438f0'
+            '339060c99d5c80c2742cae417f765980afe6b0149a78f959bbf2a79f19ab3af5'
+            '7953ad8cebf4e01199521a5faa221ef59bec5cee0a9856b179590613a8560cbc')
+sha256sums_x86_64=('aad7b12f224251cfea5c5fb988089cb9b354ede9d2ed90fde9405ec0a8717902')
+sha256sums_aarch64=('d72d2a7e178ee719dceff04fbc04e30acada4ad6b386dd8260cbd28f335fadf4')
 
 package() {
   cd "${srcdir}/" || exit
