@@ -2,7 +2,7 @@
 
 pkgname=3dslicer-nightly-bin
 _pkgname=3dslicer
-pkgver=20251121.5.10.0
+pkgver=20260509.5.11.0
 pkgrel=1
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research (nightly build)'
 arch=('x86_64')
@@ -31,7 +31,7 @@ prepare() {
 
   echo "Creating desktop file"
   gendesk -f -n \
-    --categories "Graphics;MedicalSoftware;Science;" \
+    --categories "Science;MedicalSoftware;Education;MedicalSoftware" \
     --custom="StartupWMClass=Slicer" \
     --exec "Slicer" \
     --icon "${_pkgname}" \
