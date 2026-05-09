@@ -3,7 +3,7 @@
 pkgname=headscale-ui
 pkgver=2026.03.17
 pkgrel=1
-pkgdesc="A ReactJS-based progressive web application for Shlink"
+pkgdesc="A web frontend for the headscale Tailscale-compatible coordination server"
 arch=('any')
 url="https://github.com/gurucomputing/headscale-ui"
 optdepends=('nginx: reverse-proxy')
