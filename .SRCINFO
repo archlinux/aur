@@ -1,21 +1,21 @@
 pkgbase = dahdi-tools
 	pkgdesc = DAHDI tools for Asterisk (Digium, OpenVox, Allo and Yeastar cards)
-	pkgver = 3.1.0
-	pkgrel = 2
-	url = http://www.asterisk.org/
-	arch = i686
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://www.asterisk.org
 	arch = x86_64
-	license = LGPLv2
+	license = LGPL-2.1-only
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = libusb-compat
+	depends = dahdi-linux
+	depends = libnewt
 	depends = libusb
 	depends = perl
 	backup = etc/dahdi/genconf_parameters
 	backup = etc/dahdi/system.conf
-	source = https://downloads.asterisk.org/pub/telephony/dahdi-tools/dahdi-tools-3.1.0.tar.gz
-	source = patch-xpp_mpptalk.c
-	source = patch-hotplug_dahdi_span_config
-	sha256sums = ea852ebd274ee1cc90ff5e4ac84261b0b787b1a74e8b76ad659bc9ec4f77e67e
-	sha256sums = 0e965748c679f99c21123338e3371a5d88737d4a128349bdfea3c278ab15de79
-	sha256sums = ba3f5d9cc323b6d3544283b9c54b52aaa42b15a7946f0894292c5ed5425ce079
+	source = https://downloads.asterisk.org/pub/telephony/dahdi-tools/releases/dahdi-tools-3.4.0.tar.gz
+	sha256sums = 9b9cd53ba51f4a03baf58bbcecda6d7bd7024e3ea3f7e0b864f666bdd794fcc5
 
 pkgname = dahdi-tools
-
