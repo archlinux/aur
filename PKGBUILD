@@ -16,12 +16,11 @@ makedepends=(lua
              lua52
              lua53
              luarocks)
-_archive="${_rockname}_$_fossilver-$pkgrel"
-source=("$_archive.zip::http://lua.sqlite.org/home/zip/$_archive.zip?uuid=v$pkgver")
-sha256sums=('645028aecb710775c08efc8d78fb261fd51858c8c65751e4cda7e5aad8d8f744')
+source=("archive.zip::http://lua.sqlite.org/home/zip/archive.zip?uuid=v$pkgver")
+sha256sums=('524b4dd1d254967141d04faac6ccc3cf4cf4e2ae9e0dd3fc83da872e3844353f')
 
 _package_helper() {
-	cd "$_archive"
+	cd archive
 	luarocks --lua-version "$1" --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }

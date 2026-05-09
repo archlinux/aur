@@ -12,8 +12,8 @@ pkgbase = lua-lsqlite3
 	makedepends = lua53
 	makedepends = luarocks
 	depends = sqlite
-	source = lsqlite3_v096-7.zip::http://lua.sqlite.org/home/zip/lsqlite3_v096-7.zip?uuid=v0.9.6
-	sha256sums = 645028aecb710775c08efc8d78fb261fd51858c8c65751e4cda7e5aad8d8f744
+	source = archive.zip::http://lua.sqlite.org/home/zip/archive.zip?uuid=v0.9.6
+	sha256sums = 524b4dd1d254967141d04faac6ccc3cf4cf4e2ae9e0dd3fc83da872e3844353f
 
 pkgname = lua-lsqlite3
 	depends = sqlite
