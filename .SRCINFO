@@ -6,11 +6,11 @@ pkgbase = tempstash
 	arch = any
 	license = MIT
 	makedepends = asciidoc
+	makedepends = git
 	depends = jq
 	depends = rsync
 	depends = yq
 	depends = zsh
-	optdepends = emacs: create and operate on org-mode files
 	optdepends = cram: functional testing framework
 	source = git+https://git.sr.ht/~minshall/tempstash#tag=44a7460fa594fdbd362d495a43c69b35e987ef6b?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F

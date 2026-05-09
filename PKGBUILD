@@ -7,9 +7,8 @@ arch=(any)
 url="https://sr.ht/~minshall/tempstash/"
 license=('MIT')
 depends=(jq rsync yq zsh)
-makedepends=(asciidoc)
-optdepends=('emacs: create and operate on org-mode files'
-           'cram: functional testing framework')
+makedepends=(asciidoc git)
+optdepends=('cram: functional testing framework')
 # git rev-parse 0.5.4
 _tag=44a7460fa594fdbd362d495a43c69b35e987ef6b
 source=(git+https://git.sr.ht/~minshall/tempstash#tag=${_tag}?signed)
@@ -43,7 +42,7 @@ check() {
 package() {
     cd "${pkgname}"
 
-    make DESTDIR="${pkgdir}/" install
+    make DESTDIR="${pkgdir}" PREFIX=/usr install
     # install our MIT license
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
