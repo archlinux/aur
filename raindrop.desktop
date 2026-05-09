@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Raindrop.io
+Exec=/opt/raindrop/raindrop %U
+Terminal=false
+Type=Application
+Icon=raindrop
+StartupWMClass=Raindrop.io
+MimeType=x-scheme-handler/rnio;
+Comment=Crossplatform bookmarking app
+Categories=GNOME;GTK;Network;Education;Science;

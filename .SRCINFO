@@ -11,7 +11,10 @@ pkgbase = raindrop
 	makedepends = npm
 	provides = raindrop
 	source_x86_64 = raindrop-amd64.deb::https://github.com/raindropio/desktop/releases/download/v5.7.7/Raindrop-amd64.deb
+	source_x86_64 = raindrop.desktop
 	sha256sums_x86_64 = b2132c68667eefb689ed0720bee12785ff59973cf1d6a1d2052eb2a729663e11
+	sha256sums_x86_64 = SKIP
 	sha256sums_aarch64 = 5e4eb72c1c405b49abb50fd6d60864ccfa036f34b69acc16e0040e3ad89da390
+	sha256sums_aarch64 = SKIP
 
 pkgname = raindrop
