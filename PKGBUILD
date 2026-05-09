@@ -3,7 +3,7 @@
 
 pkgname=unrpyc
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="A ren'py script decompiler"
 arch=("any")
@@ -11,8 +11,9 @@ url="https://github.com/CensoredUsername/unrpyc"
 license=('MIT')
 depends=("python")
 makedepends=("python-setuptools")
-source=("git+https://github.com/madeddy/unrpyc.git#branch=dev")
-sha256sums=('SKIP')
+source=("git+https://github.com/CensoredUsername/unrpyc.git")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CensoredUsername/unrpyc/archive/refs/tags/v${pkgver}.zip")
+sha256sums=('df7446d89f68a9a94a62378248da875e9e75e983bf81de53d92b2c19f359673e')
 
 prepare () {
     cd "${srcdir}/${pkgname}"
