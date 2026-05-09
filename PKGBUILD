@@ -1,5 +1,6 @@
-# Maintainer: soloturn <soloturn@gmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: skygrango <coding.hard.day.and.night@gmail.com>
+# Contributor: soloturn <soloturn@gmail.com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-gaming
 pkgver=1.0.13.beta.1.r1
 pkgrel=1
