@@ -1,6 +1,6 @@
 pkgbase = dpcode-bin
 	pkgdesc = DP Code desktop app packaged from the upstream AppImage
-	pkgver = 0.0.41
+	pkgver = 0.0.43
 	pkgrel = 1
 	url = https://dpcode.cc
 	arch = x86_64
@@ -34,15 +34,15 @@ pkgbase = dpcode-bin
 	depends = zlib
 	optdepends = openai-codex: use the system-installed Codex CLI
 	optdepends = sqlite: repair imported T3 Code state with dpcode-repair-t3-import
-	provides = dpcode=0.0.41
+	provides = dpcode=0.0.43
 	conflicts = dpcode
 	options = !debug
 	options = !emptydirs
 	options = !strip
-	source = DP-Code-0.0.41-x86_64.AppImage::https://github.com/Emanuele-web04/dpcode/releases/download/v0.0.41/DP-Code-0.0.41-x86_64.AppImage
+	source = DP-Code-0.0.43-x86_64.AppImage::https://github.com/Emanuele-web04/dpcode/releases/download/v0.0.43/DP-Code-0.0.43-x86_64.AppImage
 	source = dpcode-icon.png
 	source = LICENSE
-	sha256sums = cd75a8284f6c6f428f3ae322428a2f23bf9aaba8d27091d28869efbe26c07db1
+	sha256sums = 86221a29a9a041a6c1cf858f78414c5ca8fdbecc9e308b089b9ea286a6a64edd
 	sha256sums = 9fada842a88c3b1a503ee45756f781b7d32b39cc97579f4f1e880bb28606e728
 	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
 
