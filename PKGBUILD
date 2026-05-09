@@ -15,5 +15,9 @@ sha256sums=('435e847e7343421fef99a0bf926bc9300ec42b8962ee1d0108b400672dc41507')
 package() {
     install -Dm755 "$srcdir/foxchat-server" "$pkgdir/usr/bin/foxchat-server"
 
-    install -Dm644 "$srcdir/server_licenses/" "$pkgdir/usr/share/licenses/$pkgname/*"
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
+
+    cp -r "$srcdir/server_licenses/." "$pkgdir/usr/share/licenses/$pkgname/"
+
+    find "$pkgdir/usr/share/licenses/$pkgname" -type f -exec chmod 644 {} +
 }
