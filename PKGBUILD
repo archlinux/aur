@@ -3,7 +3,7 @@
 # Contributor: Florian Wittmann
 _base=typepy
 pkgname=python-${_base}
-pkgver=1.3.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Variable type checker/validator/converter at a run time"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools-scm)
 # optdepends=('python-pytz')
 # checkdepends=('python-pytest' 'python-tcolorpy' 'python-pytz')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('813eb30bb96e0fa9d972c40a829a30d712d0402d7bdd3182a32aab67290f2490')
+sha256sums=('6f3e077ab894160598053f0540c9edd82e0473325f3aca8a342f2bac840337a8')
 
 build() {
   cd ${_base}-${pkgver}
