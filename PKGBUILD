@@ -3,7 +3,7 @@
 pkgname=ipe
 _dirver=7.2
 pkgver=7.2.30
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible drawing editor"
 url="http://ipe.otfried.org/"
 depends=('lua' 'qt6-base' 'qt6-svg' 'freetype2' 'zlib' 'poppler' 'hicolor-icon-theme' 'gsl' 'libspiro' 'qtspell')
@@ -14,6 +14,7 @@ source=("https://github.com/otfried/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "ipe.bash-completion"
         "config.patch"
         "ipe.desktop"
+        "gcc16.patch"
         )
 
 prepare() {
@@ -23,6 +24,9 @@ prepare() {
 
   sed -i -e 's/"ipefonts.h"/<ipefonts.h>/' ipepresenter/ipepresenter.h
   sed -i -e 's/"ipethumbs.h"/<ipethumbs.h>/' ipepresenter/ipepresenter_qt.cpp
+
+  cd "$srcdir/$pkgname-$pkgver"
+  patch "src/include/ipebase.h" < "$srcdir/gcc16.patch"
 }
 
 build() {
@@ -67,4 +71,5 @@ package() {
 md5sums=('1c17d262321166c121d50f35bd2ea209'
          '694f0d5402655901be385647e5d8d6e3'
          '9b8ef63e12862f93ab8907a5763fb683'
-         '19fd2cac2564125afa0149105d00d3dd')
+         '19fd2cac2564125afa0149105d00d3dd'
+         '62977d1b0b55ec2572222d8045444a2d')

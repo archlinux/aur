@@ -1,0 +1,10 @@
+--- src/include/ipebase.h	2024-06-01 07:59:07.000000000 -0700
++++ src/include/ipebase-fix.h	2026-05-09 13:55:38.524536308 -0700
+@@ -36,6 +36,7 @@
+ #include <vector>
+ #include <algorithm>
+ #include <memory>
++#include <cstdint>
+ 
+ // --------------------------------------------------------------------
+ 

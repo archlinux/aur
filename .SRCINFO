@@ -1,7 +1,7 @@
 pkgbase = ipe
 	pkgdesc = The extensible drawing editor
 	pkgver = 7.2.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ipe.otfried.org/
 	arch = i686
 	arch = x86_64
@@ -21,9 +21,11 @@ pkgbase = ipe
 	source = ipe.bash-completion
 	source = config.patch
 	source = ipe.desktop
+	source = gcc16.patch
 	md5sums = 1c17d262321166c121d50f35bd2ea209
 	md5sums = 694f0d5402655901be385647e5d8d6e3
 	md5sums = 9b8ef63e12862f93ab8907a5763fb683
 	md5sums = 19fd2cac2564125afa0149105d00d3dd
+	md5sums = 62977d1b0b55ec2572222d8045444a2d
 
 pkgname = ipe
