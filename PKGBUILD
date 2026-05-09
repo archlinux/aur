@@ -4,37 +4,43 @@
 
 pkgname="itex2mml"
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="iTeX to MathML converter"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://golem.ph.utexas.edu/~distler/blog/itex2MML.html"
-license=('GPL-2.0-or-later OR LGPL-2.0-or-later OR MPL-1.1')
-depends=('gcc-libs' 'glibc')
-_pkgsrc="${pkgname}-${pkgver}"
-noextract=("${_pkgsrc}.tar.gz")
-source=("${_pkgsrc}.tar.gz::https://golem.ph.utexas.edu/~distler/blog/files/itexToMML-${pkgver}.tar.gz")
+license=(
+  'GPL-2.0-or-later OR LGPL-2.0-or-later OR MPL-1.1'
+)
+depends=(
+  'glibc'
+  'libgcc'
+  'libstdc++'
+)
+_pkgsrc="itexToMML"
+source=(
+  "https://golem.ph.utexas.edu/~distler/blog/files/itexToMML-${pkgver}.tar.gz"
+)
 sha256sums=('3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f')
 
 prepare() {
-  cd "${srcdir}"
-  mkdir -p "${srcdir}/${_pkgsrc}"
-  bsdtar -xzf "${_pkgsrc}.tar.gz" --strip-components=2 -C "${srcdir}/${_pkgsrc}" "itexToMML/itex-src"
-  bsdtar -xzf "${_pkgsrc}.tar.gz" --strip-components=1 -C "${srcdir}/${_pkgsrc}" "itexToMML/README"
-  
-  cd "${_pkgsrc}"
-  sed -i "s|/usr/local/bin|${pkgdir}/usr/bin|" Makefile
-  sed -i "s/\$(CXX) \$(CFLAGS)/ \$(CXX) ${CFLAGS} ${LDFLAGS}/" Makefile
+  cd "${srcdir}/${_pkgsrc}/itex-src"
+  sed -e "s|/usr/local/bin|${pkgdir}/usr/bin|g" \
+      -e "s/\$(CXX) \$(CFLAGS)/ \$(CXX) ${CFLAGS} ${LDFLAGS}/g" \
+      -i 'Makefile'
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}/itex-src"
   make
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
+  install -vDm644 "README" -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+  cd "itex-src"
   install -d "${pkgdir}/usr/bin"
   make DESTDIR="${pkgdir}" install
-
-  install -Dm644 "README" "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
