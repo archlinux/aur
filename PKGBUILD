@@ -2,12 +2,11 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 
-_kernelver=$(pacman -Q linux | cut -f2 -d ' ')
 _basename=dahdi
 pkgname=dahdi-linux-git
 pkgdesc='DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)'
 pkgver=3.4.0.rc1.r20.gd1c842a
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://www.asterisk.org
 license=(GPL-2.0-only)
@@ -70,6 +69,10 @@ sha256sums=('SKIP'
             '6b199cf836f150f9cb35f763f0f502fb52cfa2724a449b500429c746973904ad'
             '3ff26cf80555fd7470b43a87c51d03c1db2a75abcd4561d79f69b6c48298e4a1')
 
+_kernelver() {
+  pacman -Q linux | cut -f2 -d ' ' | sed 's/\.arch/-arch/'
+}
+
 prepare() {
   cd "$_archive"
   sed -i -e 's,$(DESTDIR)/lib/firmware,$(DESTDIR)/usr/lib/firmware,g' \
@@ -102,6 +105,7 @@ package() {
   )
 
   cd "$_archive"
+  local kernelver="$(_kernelver)"
   make DESTDIR="$pkgdir" install-firmware
   make DESTDIR="$pkgdir" install-include
   make DESTDIR="$pkgdir" install-xpp-firm
@@ -110,5 +114,5 @@ package() {
   cd drivers
   find . -name "*.ko" \
     -exec gzip -n "{}" \; \
-    -exec install -Dm0644 "{}.gz" "$pkgdir/usr/lib/modules/$_kernelver/extramodules/{}.gz" \;
+    -exec install -Dm0644 "{}.gz" "$pkgdir/usr/lib/modules/$kernelver/extramodules/{}.gz" \;
 }
