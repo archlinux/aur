@@ -1,0 +1,3 @@
+[python-simplesqlite]
+source = "pypi"
+pypi = "SimpleSQLite"
