@@ -1,12 +1,13 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Jan Horvath <johnvonbrno at tutamail dot com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Zdenek Janak <janak@astronomie.cz>
 
 pkgname=munipack
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="A general astronomical image processing software"
-arch=(x86_64)
-url="http://munipack.physics.muni.cz"
+arch=('x86_64')
+url="https://munipack.physics.muni.cz"
 license=(GPL-3.0-or-later)
 depends=(
   cfitsio
@@ -16,31 +17,37 @@ depends=(
   libminpack
   liboakleaf
   plplot
-  python
-  python-matplotlib
-  python-numpy
-  wxgtk3
+  wxwidgets-gtk3
   wxwidgets-common
 )
 makedepends=(gcc-fortran)
 
-source=("ftp://munipack.physics.muni.cz/pub/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('8a34e320b2c088269483178c28e02f5a800b0426d3cc46ced686cb1d1cc7d57f')
+source=("https://integral.physics.muni.cz/ftp/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
+validpgpkeys=('50329FD7732E2AB08161435F1E625DF64972FF9A')
+
+md5sums=("3055f3f24a64589f777b91acbfa62fc6"
+        'SKIP')
+INTEGRITY_CHECK=('md5')
 
 _archive="$pkgname-$pkgver"
+
+CFLAGS="-O2 -DNDEBUG"
+CXXFLAGS="-O2 -DNDEBUG"
+FCFLAGS="-O2 -ffpe-summary=invalid,zero,overflow -fno-unsafe-math-optimizations -frounding-math -fsignaling-nans"
 
 build() {
   cd "$_archive"
 
   ./configure --prefix=/usr --libexecdir=/usr/lib
+  make
+}
 
-  # Parallel compilation fails
-  MAKEFLAGS="-j1" make
+check() {
+  cd "$_archive"
+  make -k check
 }
 
 package() {
   cd "$_archive"
-
-  # Parallel compilation fails
-  MAKEFLAGS="-j1" make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install
 }
