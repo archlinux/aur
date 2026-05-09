@@ -8,6 +8,7 @@ pkgbase = nawkawk
 	depends = gawk
 	depends = nawk
 	provides = awk
+	conflicts = mawkawk
 	options = !strip
 	source = nawkawk.hook
 	sha256sums = 86fa81f6065ee6159e5e54fbd61ca989c270ddf44c6e03b7368799dbeaa8bc76

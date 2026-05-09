@@ -12,6 +12,7 @@ arch=('any')
 license=('0BSD')  # SPDX-License-Identifier: 0BSD
 depends=('gawk' 'nawk')
 provides=('awk')
+conflicts=('mawkawk')
 options=('!strip')
 source=("$pkgname.hook")
 sha256sums=(
