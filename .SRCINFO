@@ -1,6 +1,6 @@
 pkgbase = poe2-overlord-bin
 	pkgdesc = A powerful companion app for Path of Exile 2
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/dmeents/poe2-overlord
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = poe2-overlord-bin
 	conflicts = poe2-overlord
 	options = !strip
 	options = !debug
-	source = poe2-overlord-bin-0.0.6.deb::https://github.com/dmeents/poe2-overlord/releases/download/v0.0.6/POE2.Overlord_0.0.6_amd64.deb
+	source = poe2-overlord-bin-0.0.7.deb::https://github.com/dmeents/poe2-overlord/releases/download/v0.0.7/POE2.Overlord_0.0.7_amd64.deb
 	sha256sums = SKIP
 
 pkgname = poe2-overlord-bin
