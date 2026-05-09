@@ -1,7 +1,7 @@
 pkgbase = foxchat-server
 	pkgdesc = Simple server used for FoxChat.
 	pkgver = 2026
-	pkgrel = 5.801
+	pkgrel = 5.8
 	url = https://jd.pnc3.net/software/foxchat
 	arch = x86_64
 	license = Apache-2.0

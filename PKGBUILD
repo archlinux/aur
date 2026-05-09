@@ -1,7 +1,7 @@
 # Maintainer: Jacob Meyers <jeyersdev@gmail.com>
 pkgname=foxchat-server
 pkgver=2026
-pkgrel=5.801
+pkgrel=5.8
 pkggitver=v5.8.2026
 pkgdesc="Simple server used for FoxChat."
 arch=('x86_64')
