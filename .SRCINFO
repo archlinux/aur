@@ -1,6 +1,6 @@
 pkgbase = conga
 	pkgdesc = Config generator CLI for Nginx, Docker Compose, WireGuard, Apache, and Caddy
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/pc0stas/conga
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = conga
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = conga-1.4.3.tar.gz::https://github.com/pc0stas/conga/archive/refs/tags/v1.4.3.tar.gz
-	sha256sums = 331c1ce0f877b5ea98e14a3cf38166982094168149719ef7440aaf9c3e9f048b
+	source = conga-1.5.0.tar.gz::https://github.com/pc0stas/conga/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = d7279cc3bd59e0509b9333dc45cd5d0e349f5c26932e0b88e808c659ae45da9e
 
 pkgname = conga
