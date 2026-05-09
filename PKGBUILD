@@ -22,7 +22,7 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'irpf.sh'
         'LICENSE')
 sha256sums=('c4532067f70e089819d525f13a79141b4bddeb8c633fde60c0b9f5c086891655'
-            '52e81af725ab19b38b3685137e6888fc91882d31aad6a327eab419575a128ec2'
+            'c351001674b18d177e4075cb495f27ef7986d196aaeffc7ed655df32e1af6ea0'
             'da7a57964e9f77bee1d5e747ae6bfb9cf6db41509e04101f2edb08f0ea1a65a0'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 

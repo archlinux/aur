@@ -9,4 +9,4 @@ StartupWMClass=serpro-ppgd-app-IRPFPGD
 Terminal=false
 StartupNotify=false
 Type=Application
-Categories=Application;
+Categories=Office;Finance;
