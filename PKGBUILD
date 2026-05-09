@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
@@ -7,7 +7,7 @@
 _pkgname="odamex"
 pkgname="$_pkgname"
 pkgver=12.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom'
 url="https://github.com/odamex/odamex"
 license=('GPL-2.0-or-later')
