@@ -2,7 +2,7 @@
 # Based on the 'community/openttd' PKGBUILD by Vesa Kaihlavirta <vegai@iki.fi>, Alexander F. Rødseth <xyproto@archlinux.org>, and Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=openttd-jgrpp
-pkgver=0.72.1
+pkgver=0.72.2
 pkgrel=1
 pkgdesc="Engine for running Transport Tycoon Deluxe with JGR's patch pack"
 arch=('i686' 'x86_64' 'aarch64')
@@ -24,7 +24,7 @@ optdepends=(
   'openttd-jgrpp-openmsx: free music set'
 )
 source=("$url/archive/jgrpp-$pkgver.tar.gz")
-b2sums=('38617c9c8633944dba77032b17154d87dce76ac1d21019107783db0fe7b84a8cb01c37b52815b81b87d1d5ad282d2ffc60f4dc78d55d1591b44e39d025445097')
+b2sums=('645372bf1a92f4d11eec027fc5983e97dc4d33fe9df466f541aa30da5b9888fdb6ef4d80d6d6281369a1f5c31c6f594f26f716cb7b63a51293bb5c11f57be503')
 _dirname="OpenTTD-patches-jgrpp"
 
 build() {
@@ -46,9 +46,5 @@ package() {
 
   sed -i "s|^Name=OpenTTD+JGRPP$|Name=OpenTTD (JGR Patch Pack)|g" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  cd $_dirname-$pkgver
-  install -D -m644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  for f in CREDITS.md known-bugs.md; do
-    install -Dm644 $f "$pkgdir/usr/share/doc/$pkgname/$f"
-  done
+  install -D -m644 "$_dirname-$pkgver/COPYING.md" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
