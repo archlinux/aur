@@ -1,0 +1,20 @@
+pkgbase = libubootenv
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/sbabic/libubootenv
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake>=3.5
+	depends = zlib
+	depends = libyaml
+	source = libubootenv-0.3.7.tar.gz::https://github.com/sbabic/libubootenv/archive/refs/tags/v0.3.7.tar.gz
+	b2sums = b7737b5a71de7da047156123dbb5b86af60da107197052f0b22cb94ac0a51306cd8a06fb72fe01c170528ea254a053fe6b0cb50baa41349ccfa8de1509dab133
+
+pkgname = libubootenv
+	pkgdesc = Generic library to access and modify U-Boot environment from User Space
+	provides = libubootenv.so
+
+pkgname = libubootenv-tools
+	pkgdesc = Generic tools to access and modify U-Boot environment from User Space
+	install = libubootenv-tools.install
+	conflicts = uboot-tools

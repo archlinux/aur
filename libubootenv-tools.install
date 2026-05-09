@@ -1,0 +1,16 @@
+post_install() {
+	local rel_ver="${1%-*}"
+
+	echo "NOTE: fw_setenv and fw_printenv requires a config file to function" 
+	echo "      (default: '/etc/fw_env.config')"
+	echo "      The contents of this file are dependent on the specifics of your "
+	echo "      hardware and firmware. For details on how to write one for your system, "
+	echo "      please refer to the following URL:"
+	echo "      https://github.com/sbabic/libubootenv/tree/v$rel_ver/docs/fw_env_config.md "
+	echo "NOTE: You can also copy your default u-boot env to '/etc/u-boot-initial-env'"
+}
+
+post_remove() {
+	echo "NOTE: If you created a '/etc/fw_env.config' and/or '/etc/u-boot-initial-env', "
+	echo "      feel free to remove them if you do not need the files anymore."
+}
