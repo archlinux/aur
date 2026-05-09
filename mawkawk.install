@@ -1,12 +1,13 @@
 # shellcheck shell=bash
 
 post_install() {
-  echo 'Relinking /usr/bin/awk to mawk'
+  echo 'pointing /usr/bin/awk to mawk'
   /usr/bin/ln -sfT mawk /usr/bin/awk
 }
 
 post_upgrade() {
-  post_install "$@"
+  echo 'Re-pointing /usr/bin/awk to mawk'
+  /usr/bin/ln -sfT mawk /usr/bin/awk
 }
 
 post_remove() {

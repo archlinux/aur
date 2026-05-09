@@ -4,9 +4,9 @@
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname=mawkawk
-pkgdesc='Re-point /usr/bin/awk symlink to mawk'
+pkgdesc='Let mawk be your awk by pointing /usr/bin/awk symlink to mawk'
 pkgver=0.2
-pkgrel=4
+pkgrel=5
 install="$pkgname.install"
 arch=('any')
 license=('0BSD')  # SPDX-License-Identifier: 0BSD
