@@ -23,7 +23,14 @@ makedepends=(
   'python-sphinx_rtd_theme')
 depends=(
   'python'
+  'python-pytest'
+  'python-ipykernel'
   'python-markdown'
+  'python-xlwt'
+  'python-yaml'
+  'python-xlsxwriter'
+  'python-toml'
+  'python-tcolorpy'
   'python-mbstrdecoder'
   'python-pypandoc'
   'python-path'
