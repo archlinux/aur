@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="The cadastre for your codebase"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('48ac9a5eb2eb70f4ebebf53e1a9790d74e3d34f3d2019faede9c95873c164e4f')
-sha256sums_aarch64=('047a8cdf0aabda125294c185041479aed939c98100538a8184c7f510cefd3b88')
+sha256sums_x86_64=('f58702475fbfdf620a173d8d7a0f5b24a28ffff809297cd92281e90852ef831b')
+sha256sums_aarch64=('45c90cb049a435e8446d9daad48e086b512d7cfd08ce9e08d2c4532fae77b04f')
 
 
 package() {
