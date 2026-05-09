@@ -1,6 +1,6 @@
 pkgname=vigaphone-bin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=0
 options=('!strip' '!debug')
 groups=('pro-audio','vst3-plugins')
 pkgdesc="ViGAPhone Synth Lab is a New Physical-Modeling Synthesizer MIDI-MPE application and VST3 plugin, Sound and Timbre Analyzer, Instrument Tuner and more..."
@@ -32,7 +32,7 @@ package() {
     # Desktop entry
     # Ajout de la ligne Exec= dans le .desktop, et du chemin complet vers l'icône
     install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.desktop "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
-    sed -i '/^\[Desktop Entry\]/a Exec=sh -c "ViGAPhone %f"' "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
+	sed -i '/^Exec=/c Exec=ViGAPhone %f' "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
 	sed -i "s|^Icon=.*|Icon=/usr/share/icons/hicolor/256x256/apps/org.vigaworld.vigaphone.png|" "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
     # Icône
     install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.vigaworld.vigaphone.png"
