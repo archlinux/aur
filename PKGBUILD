@@ -5,16 +5,18 @@
 
 pkgname=dsview-git
 pkgver=1.3.2.r53.g2e9e2c8
-pkgrel=16
+pkgrel=18
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=($CARCH)
 url='http://www.dreamsourcelab.com/'
 license=('GPL-3.0-only')
 provides=(
   ${pkgname%-git}
+  ${pkgname%-git}-cli
 )
 conflicts=(
   ${pkgname%-git}
+  ${pkgname%-git}-cli
 )
 replaces=()
 # Upstream added VCS dependency to libsigrokdecode :/
@@ -88,9 +90,9 @@ prepare() {
 
   # Packaging, CLI and MCP agent #899
   git cherry-pick -n bfa6c18cb4abbc738c2e7b7a44e5b29d11fbed6f
-  git cherry-pick -n d33e389ec66476349ce703b209c74ec3582df06a
-  git cherry-pick -n f69b6f3a328541e8bf1c83fa3daac5501f956593
-  git cherry-pick -n ba6e86fcd7a20303e1ec25d8f12069beb6cd58db
+  git cherry-pick -n 99fdabea60ef693ae8e6cd4d6d25af0f36a7de2b
+  git cherry-pick -n 89b7c7116620cc83ef020f5c4526831b5e5a5e2c
+  git cherry-pick -n 20211d86a7d8e66c72e02d5f59f2cd217f6a7666
 
   # Fix window drag on Wayland #902
   git cherry-pick -n c9aeded7d621264c82b7646ed34c04697812e2cd
