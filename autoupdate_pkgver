@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Bump deck to the latest upstream release.
+set -euo pipefail
+
+cd "$(dirname "$(readlink -f "$0")")"
+
+upstream_repo="Kong/deck"
+
+latest_tag=$(curl -fsSL "https://api.github.com/repos/$upstream_repo/releases/latest" | jq -r '.tag_name')
+latest_ver=${latest_tag#v}
+
+tarball_url="https://github.com/$upstream_repo/archive/v$latest_ver.tar.gz"
+latest_sha=$(curl -fsSL "$tarball_url" | sha256sum | cut -d' ' -f1)
+
+sed -i \
+    -e "s/^pkgver=.*/pkgver=$latest_ver/" \
+    -e "s/^pkgrel=.*/pkgrel=1/" \
+    -e "s/^_tarball_sha256sum=.*/_tarball_sha256sum=$latest_sha/" \
+    PKGBUILD
+
+makepkg --printsrcinfo > .SRCINFO
+git add PKGBUILD .SRCINFO
+if ! git diff --staged --quiet; then
+    git commit -m "decK $latest_ver"
+fi

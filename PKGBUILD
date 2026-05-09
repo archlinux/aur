@@ -7,8 +7,9 @@ arch=('x86_64')
 url="https://github.com/Kong/$pkgname"
 license=('Apache-2.0')
 makedepends=('go')
+_tarball_sha256sum=9fd6d1dde03582090793cd0812c27ed0b73f470e57e32bd34560249aa37d8b02
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kong/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9fd6d1dde03582090793cd0812c27ed0b73f470e57e32bd34560249aa37d8b02')
+sha256sums=("$_tarball_sha256sum")
 install=install.sh
 
 prepare(){
