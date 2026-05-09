@@ -4,7 +4,7 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=bkmr
-pkgver=7.6.3
+pkgver=7.6.4
 pkgrel=1
 pkgdesc="A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management"
 url="https://github.com/sysid/$pkgname"
@@ -13,7 +13,7 @@ arch=('x86_64' 'i686' 'aarch64' 'arm')
 depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('73fa7f4d1e17d4f8c131c2892c29e4c5018145b67fa3ef13ff5bf2f9cddd2a0b')
+sha256sums=('457459b09974115aa251e6b6d96214c49841b3e9fdd1f98725eb31996684f1c2')
 options=('!lto')
 
 prepare() {
