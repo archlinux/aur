@@ -1,6 +1,6 @@
 pkgbase = jjui-bin
 	pkgdesc = Text User Interface (TUI) designed for interacting with the Jujutsu version control system.
-	pkgver = 0.10.4
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/idursun/jjui
 	install = jjui-bin.install
@@ -10,11 +10,11 @@ pkgbase = jjui-bin
 	depends = jujutsu
 	provides = jjui
 	options = !debug
-	source = LICENSE-0.10.4::https://raw.githubusercontent.com/idursun/jjui/refs/tags/v0.10.4/LICENSE
+	source = LICENSE-0.10.5::https://raw.githubusercontent.com/idursun/jjui/refs/tags/v0.10.5/LICENSE
 	sha256sums = 287dc795228e18d40fe378a70b577d9fd019b638841af5f3d26c1170cb1ed4df
-	source_x86_64 = jjui-bin-x86_64-0.10.4::https://github.com/idursun/jjui/releases/download/v0.10.4/jjui-0.10.4-linux-amd64.zip
-	sha256sums_x86_64 = 9dbcfd624e9ec59d69d156c9d1d5c4da2a0f55c6c95dfec7f4ef7de2c8abd1a1
-	source_aarch64 = jjui-bin-aarch64-0.10.4::https://github.com/idursun/jjui/releases/download/v0.10.4/jjui-0.10.4-linux-arm64.zip
-	sha256sums_aarch64 = 34ff750e2525e6a34f199e507ecec93c8e2d2a2019c707591be4cabe7b40bd2d
+	source_x86_64 = jjui-bin-x86_64-0.10.5::https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-amd64.zip
+	sha256sums_x86_64 = f33b10edc9159a418436f23282afd3d8b52d2fb7cffa6e84f0f8cc0a9a80d4b1
+	source_aarch64 = jjui-bin-aarch64-0.10.5::https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-arm64.zip
+	sha256sums_aarch64 = 9ff372e08ec6a290fe09fbb3d3dafa22bbfe9ad69b99d0e981a370b73ed372bc
 
 pkgname = jjui-bin
