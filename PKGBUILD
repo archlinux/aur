@@ -1,6 +1,6 @@
 # makepkg --printsrcinfo > .SRCINFO
 pkgname=worklog-bin
-pkgver=1.2.12
+pkgver=1.2.15
 pkgrel=1
 pkgdesc="Local-first desktop project manager for small dev teams"
 arch=('x86_64')
@@ -13,11 +13,24 @@ depends=(
   'glib2'
   'gcc-libs'
 )
-source=("https://github.com/regisx001/worklog/releases/download/app-v${pkgver}/worklog_${pkgver}_amd64.deb")
-sha256sums=('e0f802b37a4cb46e8cebbba44209167de614895f64a1037780911a8692498e0d')
+source=("https://github.com/regisx001/worklog/releases/download/app-v${pkgver}/worklog_${pkgver}_amd64.AppImage")
+sha256sums=('848e8d049b10a9c9cbf70aca2a55d0e15bbd87948c9780e16ffb1ee7080ff5f0')
+
+prepare() {
+  cd "$srcdir"
+  chmod +x "worklog_${pkgver}_amd64.AppImage"
+  ./worklog_${pkgver}_amd64.AppImage --appimage-extract
+}
 
 package() {
   cd "$srcdir"
-  ar x "worklog_${pkgver}_amd64.deb"
-  tar -xf data.tar.* -C "$pkgdir"
+  
+  # Install the main binary
+  install -Dm755 squashfs-root/usr/bin/worklog -t "$pkgdir/usr/bin/"
+  
+  # Install the desktop file and icons (resolves the desktop.ini request)
+  cp -r squashfs-root/usr/share "$pkgdir/usr/"
+  
+  # Ensure correct permissions for shared resources
+  chmod -R u=rwX,go=rX "$pkgdir/usr/share"
 }
