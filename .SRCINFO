@@ -1,7 +1,7 @@
 pkgbase = shelly-git
 	pkgdesc = Shelly: A Modern Arch Package Manager (git version)
-	pkgver = 2.2.4.0.r0.g6f04ce9
-	pkgrel = 1
+	pkgver = 2.2.4.0.r0.gfc902f0
+	pkgrel = 2
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
 	license = GPL-3.0-only
