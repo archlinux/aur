@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-mac2-driver
 	pkgdesc = XCTest-based Appium driver for macOS apps automation
-	pkgver = 3.3.4
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/appium-mac2-driver
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-mac2-driver-3.3.4.tgz
-	source = nodejs-appium-mac2-driver-3.3.4.tgz::https://registry.npmjs.org/appium-mac2-driver/-/appium-mac2-driver-3.3.4.tgz
-	sha256sums = 6a3faafd119a0a4ee49b3eaf68f0e88ae464be3e3c96f7198fa635d06f450bb5
+	noextract = nodejs-appium-mac2-driver-3.4.0.tgz
+	source = nodejs-appium-mac2-driver-3.4.0.tgz::https://registry.npmjs.org/appium-mac2-driver/-/appium-mac2-driver-3.4.0.tgz
+	sha256sums = eaf6222f75f6c05c582e03a7e8e36874dffa0560040fa8524e8cf26a3c240575
 
 pkgname = nodejs-appium-mac2-driver
