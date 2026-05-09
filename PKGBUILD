@@ -1,4 +1,5 @@
-# Maintainer: hrdl <aur@hrdl.eu>
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: hrdl <aur@hrdl.eu>
 
 pkgname=python-wyoming-faster-whisper
 _pkgname=wyoming-faster-whisper
