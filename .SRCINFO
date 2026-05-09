@@ -1,0 +1,14 @@
+pkgbase = foxchat-server
+	pkgdesc = Simple server used for FoxChat.
+	pkgver = 2026
+	pkgrel = 5.8
+	url = https://jd.pnc3.net/software/foxchat
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	source = https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/foxchat-server.tar.gz
+	sha256sums = ab75215cab1d105b0124ce5065a0061019d4c9b45c623ab3bfc44976f393d71c
+
+pkgname = foxchat-server
