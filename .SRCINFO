@@ -1,0 +1,24 @@
+pkgbase = bigkis-bin
+	pkgdesc = Declarative package bundle manager for Arch Linux
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://codeberg.org/gurg/bigkis
+	arch = x86_64
+	license = MIT
+	depends = sudo
+	optdepends = yay: AUR helper support
+	optdepends = paru: AUR helper support
+	optdepends = flatpak: flatpak plugin support
+	optdepends = npm: node plugin support
+	optdepends = pnpm: node plugin support
+	optdepends = yarn: node plugin support
+	provides = bigkis
+	conflicts = bigkis
+	options = !strip
+	options = !debug
+	source = bigkis-linux-amd64::https://codeberg.org/gurg/bigkis/releases/download/v0.5.0/bigkis-linux-amd64
+	source = upstream-LICENSE::https://codeberg.org/gurg/bigkis/raw/tag/v0.5.0/LICENSE
+	sha256sums = 4d10655c6bd028d13dad44688952b5f721e50b8019d428c79bf52de5eef8106f
+	sha256sums = 9be548f8ac17e571d7a82ab7931d4c761d75855cba77f2f58d50018e6faf1f1b
+
+pkgname = bigkis-bin

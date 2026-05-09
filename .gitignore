@@ -1,0 +1,7 @@
+pkg/
+src/
+*.log
+*.pkg.tar.*
+*.src.tar.*
+bigkis-linux-amd64
+upstream-LICENSE
