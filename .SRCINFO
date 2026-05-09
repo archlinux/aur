@@ -1,0 +1,14 @@
+pkgbase = foxchat
+	pkgdesc = A programming language targeted for building console applications.
+	pkgver = 2026
+	pkgrel = 5.8
+	url = https://jd.pnc3.net/software/foxchat
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	source = https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/foxchat-gui.tar.gz
+	sha256sums = 8b6fc0adf986525be0e7a2140ca3c0485c5c689e635161785d81407bf6594dad
+
+pkgname = foxchat
