@@ -1,6 +1,6 @@
 # Maintainer: KlapkiSzatana
 pkgname=budget-app
-pkgver=1.5.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Zarządzanie Budżetem Domowym"
 arch=('any')
