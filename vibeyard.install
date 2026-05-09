@@ -1,0 +1,38 @@
+post_install() {
+    echo "------------------------------------------------------"
+    echo "Vibeyard has been installed successfully!"
+    echo "------------------------------------------------------"
+    echo ""
+    echo "Note: Vibeyard requires AI coding agents to work properly."
+    echo "The following agents are supported:"
+    echo "  - Claude Code"
+    echo "      Installation: npm install -g @anthropic-ai/claude-code"
+    echo "  - Codex CLI"
+    echo "      Installation: npm install -g @openai/codex"
+    echo "  - GitHub Copilot"
+    echo "      Installation: npm install -g @github/copilot"
+    echo "  - Gemini CLI"
+    echo "      Installation: npm install -g @google/gemini-cli"
+    echo ""
+    echo "Please install the AI agents you want to use."
+    echo "Refer to the official documentation for installation instructions:"
+    echo "https://github.com/elirantutia/vibeyard"
+    echo ""
+    echo "Configuration directory: ~/.config/vibeyard"
+    echo ""
+    echo "To launch Vibeyard, run: vibeyard"
+    echo "------------------------------------------------------"
+}
+
+post_upgrade() {
+    echo "Vibeyard has been upgraded to version $2"
+}
+
+pre_remove() {
+    echo "Removing Vibeyard..."
+}
+
+post_remove() {
+    echo "Vibeyard has been removed."
+    echo "Note: Configuration files in ~/.config/vibeyard were not removed."
+}
