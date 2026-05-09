@@ -1,0 +1,3 @@
+[python-sqliteschema]
+source = "pypi"
+pypi = "sqliteschema"
