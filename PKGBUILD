@@ -3,7 +3,7 @@
 pkgname=baidu-translate-client-bin
 _pkgname=BdTranslateClient
 _zhsname='百度翻译'
-pkgver=2.3.0
+pkgver=2.4.0
 _electronversion=11
 pkgrel=1
 pkgdesc="Baidu translate.(Prebuilt version.Use system-wide electron)${_zhsname}"
@@ -32,13 +32,29 @@ source=(
     "LICENSE-${pkgver}.html::https://fanyi.baidu.com/static/webpage/agreement.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('21e8e2b9aa5c4acac0fbca196d23fe0494a45ff94c27a7cc83219749577a363d'
-            '883caab57df8960f025758fa321da15cdac180dfc3688d7ec975c142ccd0d3ad'
+sha256sums=('e0cc2846d97d9a23451fd99a03eef3c06fe9178c7d7a9df1c34988c76cd58277'
+            '344f302a9ec12eb2eac18f39c0368291eb7d815aaa3a34c65474b76d01cf3962'
             '1bac6150492bcebb1b2f74fc4a6712a8cd9317abf3107e6fa8ca357e5023bbf7'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/${_zhsname}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare(){
     sed -i -e "
@@ -46,10 +62,9 @@ prepare(){
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/--disable-gpu-sandbox/g
     " "${srcdir}/${pkgname%-bin}.sh"
     7z e "${srcdir}/${pkgname%-bin}-${pkgver}.exe" -aoa
-    _get_electron_version
+    _check_electron_version
     wrestool -x --output="${srcdir}" -t14 "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
     icotool -i 5 -x "${srcdir}/"*.ico -o "${srcdir}/${pkgname%-bin}.png"
     case "${CARCH}" in
@@ -60,13 +75,14 @@ prepare(){
             bsdtar -xf "${srcdir}/app-64.7z"
             ;;
     esac
-    find "${srcdir}/resources/app.asar.unpacked" \( -name "*win32*" -o -name "*darwin*" \) -exec rm -rf {} +
+    find "${srcdir}/resources/app.asar.unpacked" \( -name "*win32*" -o -name "*darwin*" -o -name "*arm*" \) -exec rm -rf {} +
     find "${srcdir}/resources" -name "*.exe" -exec rm -rf {} +
 }
 package(){
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	cp -a "${srcdir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
