@@ -13,7 +13,7 @@ pkgname=(
     'lib32-nvidia-vulkan-utils'
     'lib32-opencl-nvidia-vulkan'
 )
-pkgver=595.44.06
+pkgver=595.44.07
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ url="https://developer.nvidia.com/vulkan-driver"
 license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
-_pkg_open="open-gpu-kernel-modules-${pkgver}"
+_pkg_open="${_pkg}/kernel-open"
 source=(
     'nvidia-drm-outputclass.conf'
     'nvidia-vulkan-utils.sysusers'
@@ -30,8 +30,6 @@ source=(
     'systemd-suspend-override.conf'
     'nvidia-sleep.conf'
     "${_pkg}.run::https://developer.nvidia.com/downloads/vulkan-beta-${pkgver//./}-linux"
-    "$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${pkgver}.tar.gz"
-    0003-Add-IBT-support.patch
 )
 
 sha512sums=(
@@ -41,9 +39,7 @@ sha512sums=(
     'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
     '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
     'f51515f2f509a96175f7b32b0cfe74e253f0352b509782bbbd15663fce085448734c6d2730b5553254490cea2905285eee998dff55876c295a29b1b22813c4ef'
-    'cd6ef795d0d0524f20e36a62d7e5d59bc47dcc2f7fe10a0a48f43ecc2e82840dc595080f000c059d489c570ae15356379b042ec98710c68960244d8c6e182446'
-    'ea490a7623cfaf4ee6bff8bf18522341ccd74bf3d0767d190f593e7ac1c2dab6bb203b39b311219ca4253d390c3ead9d4ca53b8ca27cecdfb9a03df282e45c95'
-    '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82'
+    '10dcdc887e457feae38c48b33ac808b67a0e5ddc3098b06bf28d9b6174bb584ae1e3aa3b0004da2c618f5f00428b6791341011c976ad4446a290be52f0fc4c96'
 )
 
 create_links() {
@@ -80,20 +76,13 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' dkms.conf
     # Gift for linux-rt guys
     sed -i 's/NV_EXCLUDE_BUILD_MODULES/IGNORE_PREEMPT_RT_PRESENCE=1 NV_EXCLUDE_BUILD_MODULES/' dkms.conf
 
-    cd "$srcdir"/open-gpu-kernel-modules-${pkgver}
+    cd "$srcdir/${_pkg_open}"
 
-    # Fix for https://bugs.archlinux.org/task/74886
-    patch -Np1 --no-backup-if-mismatch -i "$srcdir"/0003-Add-IBT-support.patch
-
-    # Attempt to make this reproducible
-    sed -i "s/^HOSTNAME.*/HOSTNAME = echo archlinux"/ utils.mk
-    sed -i "s/^WHOAMI.*/WHOAMI = echo archlinux-builder"/ utils.mk
-    sed -i "s/^DATE.*/DATE = date -r version.mk"/ utils.mk
-
-    sed -i "s/__VERSION_STRING/${pkgver}/" kernel-open/dkms.conf
-    sed -i 's/__JOBS/`nproc`/' kernel-open/dkms.conf
-    sed -i 's/__EXCLUDE_MODULES//' kernel-open/dkms.conf
-    sed -i 's/__DKMS_MODULES//' kernel-open/dkms.conf
+    sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
+    sed -i 's/__JOBS/`nproc`/' dkms.conf
+    sed -i 's/__EXCLUDE_MODULES//' dkms.conf
+    sed -i 's/__DKMS_MODULES//' dkms.conf
+    sed -i "/^MAKE\[0\]=/s#'make' -j#'make' -C kernel-open -j#" dkms.conf
     sed -i '$i\
 BUILT_MODULE_NAME[0]="nvidia"\
 BUILT_MODULE_LOCATION[0]="kernel-open"\
@@ -109,13 +98,14 @@ BUILT_MODULE_LOCATION[3]="kernel-open"\
 DEST_MODULE_LOCATION[3]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[4]="nvidia-peermem"\
 BUILT_MODULE_LOCATION[4]="kernel-open"\
-DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' kernel-open/dkms.conf
+DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' dkms.conf
 
     # Gift for linux-rt guys
-    sed -i 's/NV_EXCLUDE_BUILD_MODULES/IGNORE_PREEMPT_RT_PRESENCE=1 NV_EXCLUDE_BUILD_MODULES/' kernel-open/dkms.conf
+    sed -i 's/NV_EXCLUDE_BUILD_MODULES/IGNORE_PREEMPT_RT_PRESENCE=1 NV_EXCLUDE_BUILD_MODULES/' dkms.conf
 
     # Clean version for later copying for DKMS
-    cp -r ../open-gpu-kernel-modules-${pkgver} "$srcdir"/open-gpu-kernel-modules-dkms
+    mkdir -p "$srcdir"/open-gpu-kernel-modules-dkms
+    cp -r "$srcdir/${_pkg_open}" "$srcdir"/open-gpu-kernel-modules-dkms/kernel-open
 }
 
 package_nvidia-vulkan-open-dkms() {
@@ -129,13 +119,11 @@ package_nvidia-vulkan-open-dkms() {
     install -dm 755 "${pkgdir}"/usr/src
     cp -dr --no-preserve='ownership' open-gpu-kernel-modules-dkms "${pkgdir}/usr/src/nvidia-$pkgver"
     mv "${pkgdir}/usr/src/nvidia-$pkgver/kernel-open/dkms.conf" "${pkgdir}/usr/src/nvidia-$pkgver/dkms.conf"
-
-    install -Dm644 open-gpu-kernel-modules-${pkgver}/COPYING "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_nvidia-vulkan-utils() {
     pkgdesc="NVIDIA drivers utilities (vulkan developer branch)"
-    depends=('libglvnd' 'egl-wayland' 'egl-gbm' 'egl-x11')
+    depends=('libglvnd' 'egl-wayland' 'egl-wayland2' 'egl-gbm' 'egl-x11')
     optdepends=('xorg-server: Xorg support'
         'xorg-server-devel: nvidia-xconfig'
         'opencl-nvidia: OpenCL support')
@@ -210,6 +198,7 @@ package_nvidia-vulkan-utils() {
 
     # NVVM Compiler library loaded by the CUDA driver to do JIT link-time-optimization
     install -Dm644 "libnvidia-nvvm.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-nvvm.so.${pkgver}"
+    install -Dm755 "libnvidia-nvvm70.so.4" "${pkgdir}/usr/lib/libnvidia-nvvm70.so.4"
 
     # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
     install -Dm755 "libnvidia-ptxjitcompiler.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ptxjitcompiler.so.${pkgver}"
@@ -240,6 +229,9 @@ package_nvidia-vulkan-utils() {
 
     # Present Helper
     install -Dm755 "libnvidia-present.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-present.so.${pkgver}"
+
+    # https://github.com/microsoft/TileIR
+    install -Dm755 "libnvidia-tileiras.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-tileiras.so.${pkgver}"
 
     # Debug
     install -Dm755 nvidia-debugdump "${pkgdir}/usr/bin/nvidia-debugdump"
@@ -399,6 +391,7 @@ package_lib32-nvidia-vulkan-utils() {
     install -D -m755 "libnvidia-glvkspirv.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-glvkspirv.so.${pkgver}"
     install -D -m755 "libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-allocator.so.${pkgver}"
     install -D -m755 "libnvidia-gpucomp.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-gpucomp.so.${pkgver}"
+    install -D -m755 "libnvidia-tileiras.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-tileiras.so.${pkgver}"
 
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/vdpau/libvdpau_nvidia.so.${pkgver}"
