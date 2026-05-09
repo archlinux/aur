@@ -1,6 +1,6 @@
 pkgbase = python-allure-commons
 	pkgdesc = Common module for integrate allure with python-based frameworks
-	pkgver = 2.15.3
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://github.com/allure-framework/allure-python
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-allure-commons
 	makedepends = python-wheel
 	depends = python-attrs
 	depends = python-pluggy
-	source = allure-python-2.15.3.tar.gz::https://github.com/allure-framework/allure-python/archive/2.15.3.tar.gz
-	sha512sums = 60170aca9c33e9a32a7c8ef69065ccfdd5b7afe5246cd7179de9f0914aa55baeb42f6fa6d8ca113ea0ca9e312aa87b34d0ae0e2ac51780c692d965de9063e181
+	source = allure-python-2.16.0.tar.gz::https://github.com/allure-framework/allure-python/archive/2.16.0.tar.gz
+	sha512sums = f8f6a05f19c7b71c30c4277e716733e18fbd7ee1d74e6de78ef19f99892df972607706cb32454db09b25eb2f4509513b5ac5dbb64da5415e47cbbde4604e2856
 
 pkgname = python-allure-commons
