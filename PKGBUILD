@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 ## options
 : ${_build_pgo:=true}
@@ -15,7 +15,7 @@
 _pkgname="waterfox"
 pkgname="$_pkgname"
 pkgver=6.6.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
 license=('MPL-2.0')

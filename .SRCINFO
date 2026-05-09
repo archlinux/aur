@@ -1,7 +1,7 @@
 pkgbase = waterfox
 	pkgdesc = A customizable, privacy‑focused web browser
 	pkgver = 6.6.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BrowserWorks/waterfox
 	arch = x86_64
 	license = MPL-2.0
