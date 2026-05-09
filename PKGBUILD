@@ -27,12 +27,12 @@ sha256sums=('f088557df104454ff555cebb1c92b6a62e4a127a5bab55cc976fcfe60fbd9971')
 
 build() {
     # If the extracted directory has a different name, update this path
-    cd "$pkgname-$pkgver"
+    cd "syncthing-cli-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "syncthing-cli-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Optional: Install a license file if you have one
