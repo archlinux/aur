@@ -1,13 +1,12 @@
 pkgbase = libpri
 	pkgdesc = library that encapsulates the protocols used to communicate over ISDN Primary Rate Interfaces
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/asterisk/libpri
 	arch = x86_64
-	arch = i686
 	license = GPL-2.0-only
-	depends = dahdi-linux
-	source = https://github.com/asterisk/libpri/archive/1.6.1/libpri-1.6.1.tar.gz
-	sha256sums = c38ea1b5a90a6a7a38d57fcb58f47f14d865468acf9e2e1ef0dc76e257755c7a
+	depends = glibc
+	source = https://downloads.asterisk.org/pub/telephony/libpri/libpri-1.6.1.tar.gz
+	sha256sums = d4d1a62766695455f1b616f5f7603458e6d23df787ebabc31ffda1c6298d0509
 
 pkgname = libpri
