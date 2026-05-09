@@ -1,7 +1,7 @@
 # Maintainer: Donien <donien.96@hotmail.com>
 
 pkgname="pulp-cli"
-pkgver="0.39.0"
+pkgver="0.39.1"
 pkgrel=1
 epoch=0
 pkgdesc="Command line interface to talk to the Pulp 3 REST API"
@@ -54,7 +54,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "b03f79fae3b1457f80520dbe708898cc9a3f3c4004b3205820b7c03bfd7fc4b9"
+    "c43e8dad6e0664f814cd066fdbc81d34d78870d67c3e113c87a12ef716269418"
 )
 
 

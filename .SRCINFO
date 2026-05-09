@@ -1,6 +1,6 @@
 pkgbase = pulp-cli
 	pkgdesc = Command line interface to talk to the Pulp 3 REST API
-	pkgver = 0.39.0
+	pkgver = 0.39.1
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/pulp/pulp-cli
@@ -28,7 +28,7 @@ pkgbase = pulp-cli
 	optdepends = python-pygments
 	provides = pulp-cli
 	provides = python-pulp-cli
-	source = https://github.com/pulp/pulp-cli/archive/0.39.0/pulp-cli-0.39.0.tar.gz
-	sha256sums = b03f79fae3b1457f80520dbe708898cc9a3f3c4004b3205820b7c03bfd7fc4b9
+	source = https://github.com/pulp/pulp-cli/archive/0.39.1/pulp-cli-0.39.1.tar.gz
+	sha256sums = c43e8dad6e0664f814cd066fdbc81d34d78870d67c3e113c87a12ef716269418
 
 pkgname = pulp-cli
