@@ -1,0 +1,20 @@
+pkgbase = domcp-git
+	pkgdesc = Dockerize MCP servers for safety by wrapping uvx/npx/pipx in containers
+	pkgver = 0.2.0.r0.gbbfb4d4
+	pkgrel = 1
+	url = https://gitlab.com/Kanedias/domcp
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	optdepends = podman: preferred container engine
+	optdepends = docker: alternative container engine
+	provides = domcp
+	conflicts = domcp
+	source = domcp::git+https://gitlab.com/Kanedias/domcp.git
+	sha256sums = SKIP
+
+pkgname = domcp-git
