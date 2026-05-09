@@ -1,6 +1,6 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-tui-nightly-bin
-pkgver=nightly.20260509.021041
+pkgver=nightly.20260509.042313
 pkgrel=1
 pkgdesc="Terminal UI for unbill (nightly)"
 arch=('x86_64')
