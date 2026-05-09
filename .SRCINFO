@@ -1,7 +1,7 @@
 pkgbase = linux-cachyos-native
 	pkgdesc = Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.
 	pkgver = 7.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
 	license = GPL-2.0-only
@@ -65,7 +65,7 @@ pkgname = linux-cachyos-native
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=7.0.5-1
+	provides = linux-cachyos-lto=7.0.5-2
 	replaces = linux-cachyos-lto
 
 pkgname = linux-cachyos-native-headers
@@ -84,13 +84,13 @@ pkgname = linux-cachyos-native-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=7.0.5-1
+	provides = linux-cachyos-lto-headers=7.0.5-2
 	replaces = linux-cachyos-lto-headers
 
 pkgname = linux-cachyos-native-nvidia-open
 	pkgdesc = nvidia open modules of 595.71.05 driver for the linux-cachyos-native kernel
 	license = MIT AND GPL-2.0-only
-	depends = linux-cachyos-native=7.0.5-1
+	depends = linux-cachyos-native=7.0.5-2
 	depends = nvidia-utils=595.71.05
 	depends = libglvnd
 	provides = NVIDIA-MODULE
