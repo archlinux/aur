@@ -2,7 +2,7 @@
 
 pkgname=paqet
 pkgver=1.0.0_alpha.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Ferries Packets Across Forbidden Boundaries"
 arch=("any")
 url="https://github.com/hanselime/paqet"
