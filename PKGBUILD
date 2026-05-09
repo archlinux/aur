@@ -1,7 +1,7 @@
 # Maintainer: Dani <kpssakk@gmail.com>
 pkgname=python-cmd-game-chess
 _name=cmd-game-chess
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A simple command-line chess game with AI"
 arch=('any')
