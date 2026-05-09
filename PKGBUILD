@@ -3,7 +3,7 @@
 _appname=krux_installer
 pkgname="${_appname//_/-}-bin"
 _pkgname="org.selfcustody.${pkgname%-bin}"
-pkgver=0.0.21
+pkgver=0.0.22
 pkgrel=1
 pkgdesc="A GUI based application to flash Krux firmware on K210 based devices.(Prebuilt version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver}/LICENSE"
 )
-sha256sums=('9986dc5d1a6a3a97fec46504f71959deed5a7a079d81c1006c5cd9cbf9834dfb'
+sha256sums=('877cc72f247005b841359f05a19f643a2d9ed165806d6f43f3325e03ea4b6d23'
             '75486ea0af9309140ca6e2c401d7e67bea8f4892344e5707f6394dc5e83dfc44')
 prepare() {
     sed -i -e "
