@@ -2,7 +2,7 @@
 
 _pkgname=homer
 pkgname="${_pkgname}-web"
-pkgver=26.4.1
+pkgver=26.4.2
 pkgrel=1
 pkgdesc='A very simple static homepage for your server'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/bastienwirtz/${_pkgname}"
 license=('Apache-2.0')
 source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}.zip")
 noextract=("${_pkgname}-${pkgver}.zip")
-b2sums=('846d318dcdb0b986158de2beb51cd1bf46a5ad047e6eb36f1d62206599e08fb34e9bb2e0fa3ceb099b77ec4afc51a7fd2f68e8ac584d783e0de275657c801c62')
+b2sums=('d5713a25c3a269546349dc54677d9b8266a605bbb4fc641dc0de7d1720438949ceeaa45b9ab0ec0fc857ce956b8358b3442c4a95256559e8419f5d7a48cea69f')
 
 package() {
     local _dest_dir="/usr/share/webapps/${_pkgname}"
