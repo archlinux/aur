@@ -3,7 +3,7 @@
 
 pkgname=mcp-linker-bin
 pkgver=2.2.0 # renovate: datasource=github-tags depName=milisp/mcp-linker
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop manager for adding and syncing MCP servers across AI clients"
 arch=('x86_64')
 url="https://github.com/milisp/mcp-linker"
