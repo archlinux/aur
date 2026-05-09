@@ -48,21 +48,23 @@ prepare() {
 build() {
 	cd "${srcdir}/" || exit
 
+	# Specify the shebang you want to add
 	SHEBANG='#!/usr/bin/env hell'
 
+	# Loop through all files in the current directory
 	for file in git/examples/*.hell; do
-	# Only process regular files
-	if [[ -f "${file}" ]]; then
-		# Check if the file already has a shebang to avoid duplicates
-		if head -n 1 "${file}" | grep -q "^#!"; then
-			msg2 "Skipping '${file}': already has a shebang."
-			continue
-		fi
+		# Only process regular files
+		if [[ -f "${file}" ]]; then
+			# Check if the file already has a shebang to avoid duplicates
+			if head -n 1 "${file}" | grep -q "^#!"; then
+				msg2 "Skipping '${file}': already has a shebang."
+				continue
+			fi
 
-		sed -i "1i $SHEBANG" "${file}"
-		msg2 "Updated '${file}'."
-	fi
-done
+			sed -i "1i $SHEBANG" "${file}"
+			msg2 "Updated '${file}'."
+		fi
+	done
 }
 
 package() {
