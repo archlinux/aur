@@ -1,16 +1,18 @@
-# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Giacomo Vercesi <mrjackv@hotmail.it>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Florian Wittmann
 
 _pypi_name='tcconfig'
-pkgname="python-${_pypi_name}"
+
+pkgname=python-${_pypi_name}
 pkgver=0.30.1
 pkgrel=1
 pkgdesc='tc command wrapper'
 
-url='https://github.com/thombashi/tcconfig'
+_url_github='https://github.com/thombashi/tcconfig'
 _url_pypi='https://pypi.org/project/tcconfig'
+url=${_url_github}
 license=('MIT')
 arch=('any')
 
@@ -37,5 +39,3 @@ package() {
 
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
