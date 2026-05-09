@@ -50,7 +50,7 @@ package() {
     
     KERNELRELEASE=$(make -s kernelrelease)
     
-    make modules_install INSTALL_MOD_PATH="${pkgdir}"
+    make modules_install INSTALL_MOD_PATH="${pkgdir}/usr"
     
     install -Dm644 arch/x86_64/boot/bzImage "${pkgdir}/boot/vmlinuz-solara"
     
