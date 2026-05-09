@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=actual-bin
 _pkgname=Actual
-pkgver=26.5.0
+pkgver=26.5.2
 _electronversion=39
 pkgrel=1
 pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.AppImage")
 sha256sums=('71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('947e6c3717f6ac0d0b07e257a2a1b050d47a88a85b9522366d8033faf629572c')
-sha256sums_x86_64=('77e19142b83190e603d8c3a9bb2035c296a2fd40b4b16cb001be0e2dc075f056')
+sha256sums_aarch64=('b5d02e3b48be25e11e2f7b4784971fb81660736992b623d0bd172ab2ff677010')
+sha256sums_x86_64=('80525699f64a09d6e8fb2a2144c341d8488d2aaed1a5c4130053cc23d679e886')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
