@@ -26,7 +26,9 @@ pkgver() {
 
 package() {
     cd "$_pkgname"
-    install -Dm755 anirss      "$pkgdir/usr/bin/anirss"
-    install -Dm644 README.md   "$pkgdir/usr/share/doc/$_pkgname/README.md"
-    install -Dm644 LICENSE     "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm755 anirss               "$pkgdir/usr/bin/anirss"
+    install -Dm644 README.md            "$pkgdir/usr/share/doc/$_pkgname/README.md"
+    install -Dm644 LICENSE              "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 completions/_anirss  "$pkgdir/usr/share/zsh/site-functions/_anirss"
+    install -Dm644 completions/anirss.bash "$pkgdir/usr/share/bash-completion/completions/anirss"
 }
