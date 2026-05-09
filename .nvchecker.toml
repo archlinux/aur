@@ -1,0 +1,5 @@
+[vencord-installer-bin]
+source = "github"
+github = "Vencord/Installer"
+prefix = "v"
+use_max_tag = true
