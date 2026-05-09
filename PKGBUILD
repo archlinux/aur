@@ -1,6 +1,6 @@
 # Maintainer: Sosukeaizen <age3dude@gmail.com>
 pkgname=front-porch-ai-beta-bin
-pkgver=0.9.8_Beta10
+pkgver=0.9.8_Beta9
 pkgrel=1
 pkgdesc="A chilled out frontend for KoboldCPP (beta/pre-release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'glib2' 'libsecret' 'fuse2')
 provides=('front-porch-ai')
 conflicts=('front-porch-ai' 'front-porch-ai-bin')
 options=('!strip' '!debug')
-_tag="v0.9.8-Beta10"
+_tag="v0.9.8-Beta9"
 source=("Front_Porch_AI-Linux.AppImage::https://github.com/linux4life1/front-porch-AI/releases/download/${_tag}/Front_Porch_AI-Linux.AppImage"
         "front-porch-ai.desktop"
         "front-porch-ai.png")
