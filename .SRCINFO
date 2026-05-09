@@ -9,6 +9,6 @@ pkgbase = foxchat-cli
 	makedepends = gcc
 	makedepends = make
 	source = https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/foxchat-cli.tar.gz
-	sha256sums = e57248f36448bfdf604d2e08f9ae9a10b684fb519e4f7004e8e5ce502c3ca3ef
+	sha256sums = 3da6942216d46a4086950bcf32dde019ade23791679ccd5f06a38803530c1121
 
 pkgname = foxchat-cli
