@@ -5,7 +5,7 @@
 
 pkgname=ttf-openmoji
 pkgver=17.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source emojis for designers, developers and everyone else!"
 arch=(any)
 url="https://openmoji.org/"
@@ -18,5 +18,5 @@ package() {
   mkdir -p "$pkgdir/usr/share/fonts/openmoji"
   install -m644 OpenMoji-black-glyf/OpenMoji-black-glyf.ttf "$pkgdir/usr/share/fonts/openmoji"
   # COLRv0 has wider support for desktop programs and browsers
-  install -m644 OpenMoji-color-colr0_svg/OpenMoji-color-colr0_svg.ttf "$pkgdir/usr/share/fonts/openmoji"
+  install -m644 OpenMoji-color-glyf_colr_0/OpenMoji-color-glyf_colr_0.ttf "$pkgdir/usr/share/fonts/openmoji"
 }

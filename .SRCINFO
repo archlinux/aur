@@ -1,7 +1,7 @@
 pkgbase = ttf-openmoji
 	pkgdesc = Open source emojis for designers, developers and everyone else!
 	pkgver = 17.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openmoji.org/
 	arch = any
 	license = CC-BY-SA-4.0
