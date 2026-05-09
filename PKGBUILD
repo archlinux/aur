@@ -1,6 +1,6 @@
 # Maintainer: Hornfisk <hornfisk@users.noreply.github.com>
 pkgname=niner
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Three-layer synthesized kick drum plugin (VST3, CLAP, Standalone)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('niner-vst3' 'niner-clap' 'niner-standalone' 'slammer')
 replaces=('slammer')
 conflicts=('slammer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hyperfocusdsp/niner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b18668f41def08750a232343b5d02d1c795697dfe670fb843a6a19e270e23fa8')
+sha256sums=('6ba1bd7613e562d9514990ff059de32b3e1a20dfbd03217987d4c01bcf736596')
 
 prepare() {
   cd "$pkgname-$pkgver"
