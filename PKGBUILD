@@ -1,39 +1,34 @@
-# Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
-# Contributor: FirstAirBender <noblechuk5[at]web[dot]de>
+# Maintainer: John Luebs
 
 pkgname=('conan')
-pkgver=2.19.1
+pkgver=2.28.1
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
 license=('MIT')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'patch')
-depends=('sqlite'
-         'python-requests>=2.25'
-         'python-urllib3>=1.26.6'
-         'python-colorama>=0.4.3'
-         'python-yaml>=6.0'
-         'python-patch-ng>=1.18.0'
-         'python-fasteners>=0.15'
-         'python-distro>=1.4.0'
-         'python-jinja>=3.0'
-         'python-dateutil>=2.8.0'
-         'python-bottle>=0.12.8'
-         'python-pluginbase>=0.5'
-         'python-pyjwt>=2.4.0')
+depends=('python-requests>=2.25'
+  'python-urllib3>=1.26.6'
+  'python-colorama>=0.4.3'
+  'python-yaml>=6.0'
+  'python-patch-ng>=1.18.0'
+  'python-fasteners>=0.15'
+  'python-distro>=1.4.0'
+  'python-jinja>=3.0'
+  'python-dateutil>=2.8.0')
 conflicts=('conan1')
-provides=("conan")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
+sha256sums=('27e920b16e87631f64a7b30c63e2e75479955171a1a6a481be64fa8a3cda8e7c')
 
 prepare() {
   cd $pkgname-$pkgver
   # Remove maximum version constraints
   sed -i -r 's|(.*),.*|\1|g' conans/requirements.txt
   sed -i -r 's|(.*),.*|\1|g' conans/requirements_server.txt
-  sed -i -r 's|(.*),.*|\1|g' conans/requirements_dev.txt  
- }
+  sed -i -r 's|(.*),.*|\1|g' conans/requirements_dev.txt
+}
 
 build() {
   cd $pkgname-$pkgver
@@ -48,4 +43,3 @@ package() {
   install -m755 -d "${pkgdir}/usr/share/doc/conan"
   install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
 }
-md5sums=('07f53c0a9908fa2ecc7ff91ccac13e9a')
