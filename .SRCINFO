@@ -1,0 +1,27 @@
+pkgbase = cosmic-comp-gaming
+	pkgdesc = Compositor for the COSMIC desktop environment with gaming patch
+	pkgver = 1.0.13.beta.1.r1
+	pkgrel = 1
+	url = https://github.com/skygrango/cosmic-comp
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = mold
+	depends = fontconfig
+	depends = libdisplay-info
+	depends = libseat.so
+	depends = libinput
+	depends = libxcb
+	depends = libxkbcommon
+	depends = mesa
+	depends = pixman
+	depends = systemd
+	depends = wayland
+	provides = cosmic-comp-gaming
+	conflicts = cosmic-comp-gaming
+	source = git+https://github.com/skygrango/cosmic-comp.git#branch=gaming-fix
+	sha256sums = SKIP
+
+pkgname = cosmic-comp-gaming
