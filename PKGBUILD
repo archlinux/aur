@@ -13,13 +13,6 @@ pkgdesc='Python library to represent tabular data'
 arch=('any')
 url="https://github.com/thombashi/${_pypi_name}"
 license=('MIT')
-depends=(
-  'python-dataproperty'
-  'python-typepy')
-checkdepends=(
-  'python-pytest'
-  'python-dateutil'
-  'python-pytz')
 makedepends=(
   'git'
   'python-setuptools'
@@ -28,6 +21,15 @@ makedepends=(
   'python-wheel'
   'python-sphinx'
   'python-sphinx_rtd_theme')
+checkdepends=(
+  'python-pytest'
+  'python-dateutil'
+  'python-pytz')
+depends=(
+  'python-dataproperty'
+  'python-pandas'
+  'python-loguru'
+  'python-typepy')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('e9649cab129d718f3bff4150083b77f8a78c30f6634a30caf692b10fdc60cb97')
@@ -58,7 +60,7 @@ package() {
   local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   ln -s \
-    "$_site/${_name}-${pkgver}.dist-info/LICENSE" \
+    "$_site/${_name}-${pkgver}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
