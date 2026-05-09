@@ -1,6 +1,6 @@
 pkgbase = netchecker
 	pkgdesc = Simple network checker with JSON configuration
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/radlesner/netchecker
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = netchecker
 	depends = bash
 	depends = jq
 	depends = iputils
-	source = netchecker::git+https://github.com/radlesner/netchecker#tag=v1.0.6
+	source = netchecker::git+https://github.com/radlesner/netchecker#tag=v1.0.7
 	sha256sums = SKIP
 
 pkgname = netchecker
