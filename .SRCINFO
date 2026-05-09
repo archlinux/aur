@@ -1,0 +1,16 @@
+pkgbase = multi-audio-sink
+	pkgdesc = Human-friendly TUI for combining, routing, and managing PipeWire audio outputs on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sambuaneesh/multi-audio-sink
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = libpulse
+	depends = gcc-libs
+	depends = glibc
+	provides = mas
+	source = multi-audio-sink-0.1.0.tar.gz::https://github.com/sambuaneesh/multi-audio-sink/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 8682a59826e516139639ef31c29421a0ea19e53faea7194cede9e643460836b2
+
+pkgname = multi-audio-sink
