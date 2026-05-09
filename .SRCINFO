@@ -1,7 +1,7 @@
 pkgbase = python-mysql-to-sqlite3
 	pkgdesc = A simple Python tool to transfer data from MySQL to SQLite 3
 	pkgver = 2.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://techouse.github.io/mysql-to-sqlite3/
 	arch = any
 	license = custom:MIT License
@@ -10,7 +10,8 @@ pkgbase = python-mysql-to-sqlite3
 	makedepends = python-wheel
 	depends = python
 	depends = python-mysql-connector
-	depends = python-sqlglot
+	depends = python-sqlglot>=30.0.0
+	conflicts = mysql2sqlite
 	source = https://github.com/techouse/mysql-to-sqlite3/releases/download/v2.6.0/mysql_to_sqlite3-2.6.0.tar.gz
 	sha256sums = b465354a82205a23523d4886ae76579872d266f0444ff5c4d5f89dcb858ce253
 

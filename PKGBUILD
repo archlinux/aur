@@ -6,11 +6,12 @@ _module='mysql-to-sqlite3'
 _src_folder='mysql_to_sqlite3-2.6.0'
 pkgver='2.6.0'
 _src_folder="mysql_to_sqlite3-${pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple Python tool to transfer data from MySQL to SQLite 3"
 url="https://techouse.github.io/mysql-to-sqlite3/"
-depends=('python' 'python-mysql-connector' 'python-sqlglot')
+depends=('python' 'python-mysql-connector' 'python-sqlglot>=30.0.0')
 makedepends=('python-build' 'python-installer' 'python-wheel')
+conflicts=('mysql2sqlite')
 license=('custom:MIT License')
 arch=('any')
 source=("https://github.com/techouse/${_module}/releases/download/v${pkgver}/${_src_folder}.tar.gz")
