@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=passwordsafe-bin
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="Popular secure and convenient password manager(Prebuilt version)"
 arch=("x86_64")
@@ -18,11 +18,11 @@ depends=(
     'wxwidgets-common'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-fedora42-${pkgver%.0}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-fedora43-${pkgver%.0}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pwsafe/pwsafe/${pkgver}/LICENSE"
 )
-sha256sums=('1f103e40ecb513f09957e8ea692fcc99f9cfdcd83ea5c47326ff0e41f0eeed9f'
-            '2f65a5f2197c53b23dd4d2c60180286c79717393804e86494e4248c0951d9b06')
+sha256sums=('d5311602cda8ef032eed9162ccb983e7a092a05db2484c5085924fbf8dd53dec'
+            '4b78a21565152049c63fcde694cd4ba8f2205491d0e17dc4fd1a711416561013')
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/share" "${pkgdir}/usr"

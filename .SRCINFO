@@ -1,6 +1,6 @@
 pkgbase = passwordsafe-bin
 	pkgdesc = Popular secure and convenient password manager(Prebuilt version)
-	pkgver = 1.23.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://pwsafe.org/
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = passwordsafe-bin
 	depends = util-linux-libs
 	depends = wxwidgets-gtk3
 	depends = wxwidgets-common
-	provides = passwordsafe=1.23.0
+	provides = passwordsafe=1.24.0
 	conflicts = passwordsafe
-	source = passwordsafe-1.23.0.rpm::https://github.com/pwsafe/pwsafe/releases/download/1.23.0/passwordsafe-fedora42-1.23.rpm
-	source = LICENSE-1.23.0::https://raw.githubusercontent.com/pwsafe/pwsafe/1.23.0/LICENSE
-	sha256sums = 1f103e40ecb513f09957e8ea692fcc99f9cfdcd83ea5c47326ff0e41f0eeed9f
-	sha256sums = 2f65a5f2197c53b23dd4d2c60180286c79717393804e86494e4248c0951d9b06
+	source = passwordsafe-1.24.0.rpm::https://github.com/pwsafe/pwsafe/releases/download/1.24.0/passwordsafe-fedora43-1.24.rpm
+	source = LICENSE-1.24.0::https://raw.githubusercontent.com/pwsafe/pwsafe/1.24.0/LICENSE
+	sha256sums = d5311602cda8ef032eed9162ccb983e7a092a05db2484c5085924fbf8dd53dec
+	sha256sums = 4b78a21565152049c63fcde694cd4ba8f2205491d0e17dc4fd1a711416561013
 
 pkgname = passwordsafe-bin
