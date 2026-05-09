@@ -1,6 +1,6 @@
 pkgbase = gittop-bin
 	pkgdesc = A lightweight GitHub notifications client. Why spin up a browser just to check your GitHub notifications?
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/AmarBego/GitTop
 	install = gittop.install
@@ -12,9 +12,9 @@ pkgbase = gittop-bin
 	conflicts = gittop
 	options = !strip
 	options = !debug
-	source_x86_64 = gittop-0.5.1-linux-gnu-x86_64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v0.5.1/gittop-0.5.1-linux-gnu-x86_64.tar.gz
-	sha256sums_x86_64 = f5afd0a9f289bea22b140c9149d880851e8f89f892a7acc1bb2d5289f2bb87a3
-	source_aarch64 = gittop-0.5.1-linux-gnu-aarch64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v0.5.1/gittop-0.5.1-linux-gnu-aarch64.tar.gz
-	sha256sums_aarch64 = 5907b56c40c585b51131201299b43ec3af17b55c6ecfc9d571943e03da4d51f1
+	source_x86_64 = gittop-0.5.2-linux-gnu-x86_64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v0.5.2/gittop-0.5.2-linux-gnu-x86_64.tar.gz
+	sha256sums_x86_64 = 79813785ca2d713e931614a8d605c06a5de0764a883c55efeb2bf5ca003e6401
+	source_aarch64 = gittop-0.5.2-linux-gnu-aarch64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v0.5.2/gittop-0.5.2-linux-gnu-aarch64.tar.gz
+	sha256sums_aarch64 = 6188a099153a59dd8bf34363157df6a363c7d5b85aafa8f3c53f977979e30aed
 
 pkgname = gittop-bin
