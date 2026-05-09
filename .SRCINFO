@@ -1,16 +1,18 @@
 pkgbase = legendofedgar
 	pkgdesc = 2D platformer: Venture across the world, battle fearsome creatures and solve puzzles to rescue your father.
-	pkgver = 1.36
+	pkgver = 1.38
 	pkgrel = 1
 	url = https://www.parallelrealities.co.uk/games/edgar/
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-1.0-or-later
+	depends = libpng
+	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
 	depends = hicolor-icon-theme
-	source = https://github.com/riksweeney/edgar/archive/1.36.tar.gz
-	md5sums = 758bca5ef7333e6b55cf884a6272a284
+	depends = zlib
+	source = https://github.com/riksweeney/edgar/releases/download/1.38/edgar-1.38-1.tar.gz
+	sha256sums = d7abc562eee9beef98ba783034541023a7a2b744f3b3f4e0d4c92a48c65d9f08
 
 pkgname = legendofedgar
