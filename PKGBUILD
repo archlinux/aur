@@ -32,34 +32,24 @@ _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
 _zen_pkgrel=1
 source=(
-  https://mirrors-i.tuna.tsinghua.edu.cn/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
-  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  https://mirrors-i.tuna.tsinghua.edu.cn/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}$url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   "config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${pkgver}-${pkgrel}/config.x86_64"   # the main kernel config file
   "0001-cjktty.patch::https://ghproxy.imciel.com/https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.0.patch"
-  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.0.patch"
   "0002-cjktty-32.patch::https://ghproxy.imciel.com/https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
-  "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
-b2sums=('10b9e0c47da78d605d1ff45054e0693045bcbfe9ab1437ababe9b58383a193c89d5a36f9ee806266c743ae8a320ac60620b3e306751ead2e1a77150cf0d985eb'
-        'SKIP'
-        'c837cd816621e45352f80216dd1424bc37a6bb59c08648f7d222b23eca40a1791d761136aee294980cc9daee78516608fc7d5084aa8bb67e2fa0f3fcc2921004'
-        'SKIP'
-        '10b9e0c47da78d605d1ff45054e0693045bcbfe9ab1437ababe9b58383a193c89d5a36f9ee806266c743ae8a320ac60620b3e306751ead2e1a77150cf0d985eb'
+b2sums=('c837cd816621e45352f80216dd1424bc37a6bb59c08648f7d222b23eca40a1791d761136aee294980cc9daee78516608fc7d5084aa8bb67e2fa0f3fcc2921004'
         'SKIP'
         'c837cd816621e45352f80216dd1424bc37a6bb59c08648f7d222b23eca40a1791d761136aee294980cc9daee78516608fc7d5084aa8bb67e2fa0f3fcc2921004'
         'SKIP'
         '88686cc78c15884c82304f09ecefb90c866e8b34fe5c93e72b3fcb313c8b57023177c973b2ab742aa3197b0cd4865f5657294832dc7024fb799f04826ce35298'
         '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
-        '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
-        '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
+
 
 
 export KBUILD_BUILD_HOST=archlinux
