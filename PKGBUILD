@@ -75,7 +75,7 @@ pkgname=(
   'dns01proxy-westcn'
 )
 pkgbase='dns01proxy'
-pkgver='0.1.15'
+pkgver='0.1.16'
 pkgrel=1
 pkgdesc='ACME DNS-01 proxy server'
 arch=('x86_64' 'aarch64')
@@ -6953,7 +6953,7 @@ package_dns01proxy-westcn() {
   sed -i 's/@BUILD@/westcn/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-b2sums=('2f1cf5a363156130037f1b586a9419bac83e461d007ac6fced1a7f9149b43fac1fd7cb09cc14b7583ec3013c1491bb47c20d044d59eb02e015008ee0a5ddb0a8'
+b2sums=('2db688f6a79450252fbd68a2c75480cc6f26584407eba15b0c6a7f6e47b2edd91881c73fe5cd632af06adbac4b499eb4c1dc7e4bd02e1e0b5141ec00649d0ce1'
         '3805fbcc7d8d73515f702e0c0bb9066a33477c389586c187f182b6d3989cdf33fe5d63c8b6a4059d2848bacd55014ebf97ff67437e27534c55f4a0a496f65531'
         '0b6a5ecf1e7e475cd5b74e60009f0f48f3e06ef51ef6ba96babe7fb5b9bb5aa80e1effe49c7d1be8fd9309d5446afb1b9800f14e690a71b48b7f442ccc739092'
         '790f85266921ee4634a376132ae394276c85dfd270692406233dcd69ca1e86b9a7cfd0a264c7c51ab30051a225afc1bc3fa3c017f8ec58631e33d27269ece83d'
