@@ -23,6 +23,10 @@ _package_helper() {
 	cd archive
 	luarocks --lua-version "$1" --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+
+	# Upstream ships the MIT license inline in lsqlite3.c; extract it into /usr/share/licenses/.
+	awk 'NR==1{next} /^\*+\/$/{exit} {sub(/^\* ?/, ""); sub(/ *\*+$/, ""); print}' lsqlite3.c |
+		install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lua-lsqlite3() {
