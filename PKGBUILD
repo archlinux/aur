@@ -1,6 +1,6 @@
 pkgname=gohpts
 _pkgname=go-http-proxy-to-socks
-pkgver=1.13.0
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="Simple CLI tool to transform SOCKS proxy into HTTP proxy with IPv4/IPv6 support for TCP/UDP Transparent Proxy (Redirect and TProxy), Proxychains, ARP/NDP/RA/RDNSS spoofing and Traffic Sniffing "
 arch=('any')
