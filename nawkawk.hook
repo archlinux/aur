@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = gawk
+
+[Action]
+Description = Re-pointing /usr/bin/awk symlink to nawk…
+When = PostTransaction
+Exec = /usr/bin/ln -sfT nawk /usr/bin/awk
+Depends = nawk

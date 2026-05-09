@@ -1,0 +1,18 @@
+# shellcheck shell=bash
+
+post_install() {
+  echo 'Pointing /usr/bin/awk to nawk'
+  /usr/bin/ln -sfT nawk /usr/bin/awk
+}
+
+post_upgrade() {
+  echo 'Re-pointing /usr/bin/awk to nawk'
+  /usr/bin/ln -sfT nawk /usr/bin/awk
+}
+
+post_remove() {
+  echo 'Re-pointing /usr/bin/awk to gawk'
+  /usr/bin/ln -sfT gawk /usr/bin/awk
+}
+
+# eof
