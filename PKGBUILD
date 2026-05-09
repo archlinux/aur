@@ -1,6 +1,6 @@
 pkgname=wanpipe
 pkgver=7.0.38
-pkgrel=5
+pkgrel=6
 pkgdesc='Sangoma WANPIPE drivers and utilities for DAHDI'
 arch=(x86_64)
 url=https://ftp.sangoma.com/linux/current_wanpipe/
@@ -10,6 +10,7 @@ depends=(
   glibc
   linux
   ncurses
+  net-tools
 )
 makedepends=(
   autoconf
@@ -65,11 +66,16 @@ package() {
     rm -rf "${pkgdir}/usr/local"
   fi
 
-  local module
-  for module in patches/kdrivers/src/net/{sdladrv,wanrouter,wanpipe,wanec,wan_aften}.ko; do
-    gzip -fn "$module"
-    install -Dm0644 "${module}.gz" "${pkgdir}/usr/lib/modules/${kernelver}/extramodules/${module##*/}.gz"
-  done
+  install -Dm0644 patches/kdrivers/src/net/sdladrv.ko \
+    "${pkgdir}/usr/lib/modules/${kernelver}/kernel/drivers/net/wan/sdladrv.ko"
+  install -Dm0644 patches/kdrivers/src/net/wanpipe.ko \
+    "${pkgdir}/usr/lib/modules/${kernelver}/kernel/drivers/net/wan/wanpipe.ko"
+  install -Dm0644 patches/kdrivers/src/net/wanrouter.ko \
+    "${pkgdir}/usr/lib/modules/${kernelver}/kernel/net/wanrouter/wanrouter.ko"
+  install -Dm0644 patches/kdrivers/src/net/wanec.ko \
+    "${pkgdir}/usr/lib/modules/${kernelver}/kernel/net/wanrouter/wanec.ko"
+  install -Dm0644 patches/kdrivers/src/net/wan_aften.ko \
+    "${pkgdir}/usr/lib/modules/${kernelver}/kernel/net/wanrouter/wan_aften.ko"
 
   rm -f "${pkgdir}"/usr/lib/*.la
 }
