@@ -1,6 +1,6 @@
 # Maintainer: lostmason <lostmason@tutamail.com>
 pkgname=ttf-illinois-mono-git
-pkgver=r115.g67c38f5
+pkgver=r1.g0f78e67
 pkgrel=1
 pkgdesc="Monospace font based on Lexend"
 arch=('any')
@@ -22,5 +22,8 @@ package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
 
     # Install all TTF variants
-    install -m644 Illinois_Mono_*.ttf ${pkgdir}/usr/share/fonts/TTF
+    install -m644 IllinoisMono-*.ttf ${pkgdir}/usr/share/fonts/TTF
+
+    # Install license
+    install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

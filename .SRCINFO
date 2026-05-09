@@ -1,6 +1,6 @@
 pkgbase = ttf-illinois-mono-git
 	pkgdesc = Monospace font based on Lexend
-	pkgver = r115.g67c38f5
+	pkgver = r1.g0f78e67
 	pkgrel = 1
 	url = https://github.com/MadSimple/illinois-mono
 	arch = any
