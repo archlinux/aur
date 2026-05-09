@@ -12,10 +12,14 @@ pkgbase = noita_proxy-bin
 	depends = openssl
 	conflicts = noita_proxy
 	source = https://github.com/IntQuant/noita_entangled_worlds/releases/download/v1.6.2/noita-proxy-linux.zip
-	source = https://github.com/IntQuant/noita_entangled_worlds/archive/refs/tags/v1.6.2.tar.gz
+	source = noita_proxy.png::https://raw.githubusercontent.com/IntQuant/noita_entangled_worlds/v1.6.2/noita-proxy/assets/icon.png
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/IntQuant/noita_entangled_worlds/v1.6.2/LICENSE-APACHE
+	source = LICENSE-MIT::https://raw.githubusercontent.com/IntQuant/noita_entangled_worlds/v1.6.2/LICENSE-MIT
 	source = noita_proxy.desktop
 	sha256sums = 2e2498f1e46ab41c277480c48e33bd7ed03aa9955dad9753c1b034e9adc1604d
-	sha256sums = 91d3776fb6e779e35fc26805941d88fbfbbbcbed79719db737972bf25626a5b3
+	sha256sums = ecd4f95a07f388e6e393feb79146ce4ae97604646d22e9698253995898a3343c
+	sha256sums = 59899c6091b540582ed617e8eeaac4919dc985ccfc35459ee9752b699be5205b
+	sha256sums = c97af108287fce52a6e0d1197ad8bc92a9a470b484942c0bbb74469d8475e2d4
 	sha256sums = 512c06c20b86cd51188f883904efc7f48d59b852ee5607a80b11337a92ca1899
 
 pkgname = noita_proxy-bin
