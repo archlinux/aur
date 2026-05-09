@@ -2,7 +2,7 @@
 
 _pkgname=hunk
 pkgname=hunk-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Review-first terminal diff viewer for agentic coders"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("hunkdiff-${pkgver}-linux-x64.tar.gz::${url}/releases/download/v${pkgver}/hunkdiff-linux-x64.tar.gz")
 source_aarch64=("hunkdiff-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/hunkdiff-linux-arm64.tar.gz")
 sha256sums=('e9a844c47847aacdcb894aed09ae6359f7b4fa85895a9b78edb5864b8bfef439')
-sha256sums_x86_64=('343dca6f5bb40793be8e8342bc4e0bcc98d8a52167b794160c51a6b809989ecf')
-sha256sums_aarch64=('7a9686d2ead3c779eaaf69880a59032f3af17fe80e644e040f20b463210fabc3')
+sha256sums_x86_64=('eda5526139e08b40877bd9b48028e1b7c5edde8d030247665a4f21e821cdb7fe')
+sha256sums_aarch64=('695f75d1bc7ef1b1aebe3c144301d25d20bd65c26a77a2d7d2f02fdfb4a94679')
 
 latestver() {
   curl -s "https://api.github.com/repos/modem-dev/hunk/releases/latest" | \
