@@ -1,6 +1,6 @@
 pkgbase = nmlinkd
 	pkgdesc = NetworkManager D-Bus bridge for netlink-based network stacks
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/subz69/nmlinkd
 	install = nmlinkd.install
@@ -11,7 +11,7 @@ pkgbase = nmlinkd
 	depends = dbus
 	provides = networkmanager
 	conflicts = networkmanager
-	source = nmlinkd-0.2.0.tar.gz::https://github.com/subz69/nmlinkd/archive/v0.2.0.tar.gz
-	sha256sums = cdaa465f0b80a32fb6172ddf11fc1abb7817a4e7d13311fafc651e9b30c67821
+	source = nmlinkd-0.2.1.tar.gz::https://github.com/subz69/nmlinkd/archive/v0.2.1.tar.gz
+	sha256sums = 9d506b0da64a15aa46bf9538e85a8a8cd4228d0446ad865d195547b29194d1dd
 
 pkgname = nmlinkd

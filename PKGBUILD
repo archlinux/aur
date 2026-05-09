@@ -1,6 +1,6 @@
 # Maintainer: subz69 <shyne69 at gmail dot com>
 pkgname=nmlinkd
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="NetworkManager D-Bus bridge for netlink-based network stacks"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('networkmanager')
 conflicts=('networkmanager')
 install=nmlinkd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cdaa465f0b80a32fb6172ddf11fc1abb7817a4e7d13311fafc651e9b30c67821')
+sha256sums=('9d506b0da64a15aa46bf9538e85a8a8cd4228d0446ad865d195547b29194d1dd')
 
 prepare() {
     cd "$pkgname-$pkgver"
