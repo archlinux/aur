@@ -1,11 +1,12 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Jan Horvath <johnvonbrno at tutamail dot com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=liboakleaf
-pkgver=0.0.1
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Library which implements robust statistical estimates"
-arch=(x86_64)
-url="http://integral.physics.muni.cz/oakleaf"
+arch=('x86_64')
+url="https://integral.physics.muni.cz/oakleaf"
 license=(LGPL-3.0-only)
 depends=(
   gcc-libs
@@ -14,25 +15,27 @@ depends=(
 )
 makedepends=(gcc-fortran)
 
-source=("ftp://integral.physics.muni.cz/pub/oakleaf/oakleaf-$pkgver.tar.gz")
-sha256sums=('2bda78abeb483a48adfac6955aa73232a86f678549c2a84df8b7f05f314757c6')
+source=("https://integral.physics.muni.cz/ftp/oakleaf/oakleaf-$pkgver.tar.gz"{,.asc})
+validpgpkeys=('50329FD7732E2AB08161435F1E625DF64972FF9A')
+
+md5sums=("af752a5d682ecb4dd8c18500d69b64a8"
+	"SKIP")
+INTEGRITY_CHECK=('md5')
 
 _archive="oakleaf-$pkgver"
+
+FCFLAGS="-O2 -ffpe-summary=invalid,zero,overflow -fno-unsafe-math-optimizations -frounding-math -fsignaling-nans"
 
 build() {
   cd "$_archive"
 
   ./configure --prefix=/usr --libexecdir=/usr/lib
-
-  # Parallel compilation fails
-  MAKEFLAGS="-j1" make
+  make
 }
 
 check() {
   cd "$_archive"
-
-  # Parallel compilation fails
-  MAKEFLAGS="-j1" make -k check
+  make -k check
 }
 
 package() {
