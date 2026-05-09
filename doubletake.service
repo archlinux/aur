@@ -1,0 +1,11 @@
+[Unit]
+Description=doubletake AirPlay Mirroring Daemon
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/doubletake -daemonize -creds %h/.config/doubletake/credentials.json
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
