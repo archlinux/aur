@@ -1,0 +1,5 @@
+[seaquel-bin]
+source = "github"
+github = "webstonehq/seaquel"
+use_latest_release = true
+prefix = "v"
