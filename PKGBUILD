@@ -1,4 +1,5 @@
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: hrdl <aur@hrdl.eu>
 
 pkgname=python-faster-whisper
