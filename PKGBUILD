@@ -2,7 +2,7 @@
 pkgname=ripes-bin
 _pkgname=Ripes
 pkgver=2.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="A graphical processor simulator and assembly editor for the RISC-V ISA.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/mortbopet/Ripes"
@@ -16,27 +16,27 @@ depends=(
     'freetype2'
     'libglvnd'
 )
-makedepends=(
-    'fuse2'
-)
 options=('!strip')
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mortbopet/Ripes/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('065cc364897f2181dd0c4d32decb6d7e38309ae12ed1319a52e6648223cd55db'
             '2af9cacb9ee73bed57c14ae509681749e1b12521878ce3a9b4f64add0b572078'
-            '2f265c4afd90993bb2c4bf412ac5e4cf8168b5bff6db82821ff259d5c14db041')
+            'b80c5b20834e078e65c85efa803ba60c0f79c4b203466727eb1c0d5652403f49')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin} %U/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
