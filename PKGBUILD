@@ -1,3 +1,5 @@
+_patchurl="https://git.openembedded.org/meta-openembedded/plain/meta-oe/recipes-extended/sblim-sfcc/sblim-sfcc"
+
 pkgname=sblim-sfcc
 pkgver=2.2.8
 pkgrel=1
@@ -6,8 +8,21 @@ arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/sblim/"
 license=('EPL')
 depends=('curl')
-source=("https://downloads.sourceforge.net/project/sblim/$pkgname/$pkgname-$pkgver.tar.bz2")
-md5sums=('0bac0dec19f17ec065b6c332a56d7bae')
+source=("https://downloads.sourceforge.net/project/sblim/$pkgname/$pkgname-$pkgver.tar.bz2" \
+        "$_patchurl/0001-cimxml-Include-sys-select.h-for-fd_set.patch" \
+        "$_patchurl/0001-Fix-implicit-function-declarations.patch" \
+        "$_patchurl/0001-Fix-incompatible-pointer-type-error-with-gcc-option.patch")
+sha256sums=('1b8f187583bc6c6b0a63aae0165ca37892a2a3bd4bb0682cd76b56268b42c3d6'
+            'ef95515a15c3dd83fe7242a383187bcb601605162914c1977d35f90379aab626'
+            'd17174e0166d1c8342e7067304a48e605ad2fa2efec908637cf27520973b39ce'
+            '8e7c9d006a100c0ac4665a425753679f2b891e4210d0fb5b25025b6acd1091b2')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 < ../0001-Fix-implicit-function-declarations.patch
+  patch -p1 < ../0001-Fix-incompatible-pointer-type-error-with-gcc-option.patch
+  patch -p1 < ../0001-cimxml-Include-sys-select.h-for-fd_set.patch
+}
 
 build() {
 	cd "$pkgname-$pkgver"
