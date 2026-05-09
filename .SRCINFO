@@ -1,7 +1,7 @@
 pkgbase = antivirus
 	pkgdesc = A antivirus by Jeicob_hack2015
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	install = AH.install
 	arch = x86_64
 	source = AntiHacksource.sh
