@@ -1,13 +1,13 @@
 pkgbase = repoyank
 	pkgdesc = Interactively select files from a repo and yank them as LLM-ready snippets to the clipboard
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/TimKoornstra/repoyank
 	arch = x86_64
 	license = GPL3
 	depends = gcc
 	depends = cargo
-	source = repoyank-0.3.0.tar.gz::https://crates.io/api/v1/crates/repoyank/0.3.0/download
-	sha256sums = SKIP
+	source = repoyank-0.4.0.tar.gz::https://crates.io/api/v1/crates/repoyank/0.4.0/download
+	sha256sums = 208b0a8c74dbc26fe30a04dce7f94022782507ccb780963b88eb751504075af1
 
 pkgname = repoyank
