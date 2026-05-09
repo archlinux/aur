@@ -4,7 +4,7 @@
 # Contributor: Gimo <self@gimo.me>
 
 pkgname=ttf-openmoji
-pkgver=16.0.0
+pkgver=17.0.0
 pkgrel=1
 pkgdesc="Open source emojis for designers, developers and everyone else!"
 arch=(any)
@@ -12,7 +12,7 @@ url="https://openmoji.org/"
 license=(CC-BY-SA-4.0)
 depends=(fontconfig)
 source=($pkgname-$pkgver.zip::"https://github.com/hfg-gmuend/openmoji/releases/download/$pkgver/openmoji-font.zip")
-sha256sums=('4ff90e4fbdcf29bfe5c6ff477bc5c61a1280945bcc13113a63f8560590b0edbb')
+sha256sums=('1de61d8dcb38d0bebbdd13c7057a65f5d957ead36ce4b61bd635f84e6f3cadba')
 
 package() {
   mkdir -p "$pkgdir/usr/share/fonts/openmoji"
