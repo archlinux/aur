@@ -59,7 +59,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  sed -i 's/"pdm-backend<=2.4.4"/"pdm-backend"/' pyproject.toml
+  sed -i 's/"pdm-backend<=2\.[0-9]\+\.[0-9]\+"/"pdm-backend"/' pyproject.toml
 }
 
 build() {
