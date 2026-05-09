@@ -1,15 +1,14 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon
-pkgver=r38.2d48800
+pkgver=r40.44e3fca
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets'
 arch=('x86_64')
 url='https://github.com/liixini/skwd-daemon'
 license=('MIT')
-makedepends=('cargo' 'gcc' 'pkgconf')
-depends=('gcc-libs' 'imagemagick')
+makedepends=('cargo' 'gcc' 'clang' 'pkgconf' 'ffmpeg' 'alsa-lib')
+depends=('gcc-libs' 'imagemagick' 'ffmpeg' 'alsa-lib')
 optdepends=(
-  'ffmpeg: video wallpaper thumbnail extraction and conversion'
   'ollama: local LLM for automated wallpaper tagging'
   'steamcmd: Steam Workshop Wallpaper Engine downloads'
   'linux-wallpaperengine: Wallpaper Engine scene rendering'
@@ -42,6 +41,8 @@ package() {
 
   install -Dm755 target/release/skwd-daemon "$pkgdir/usr/bin/skwd-daemon"
   install -Dm755 target/release/skwd "$pkgdir/usr/bin/skwd"
+  install -Dm755 target/release/skwd-paper "$pkgdir/usr/bin/skwd-paper"
+  install -Dm755 target/release/skwd-paper-still "$pkgdir/usr/bin/skwd-paper-still"
 
   install -Dm644 data/skwd-daemon.service "$pkgdir/usr/lib/systemd/user/skwd-daemon.service"
 
