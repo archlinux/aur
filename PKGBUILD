@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=duckdb
-_pkgver=1.4.4
+_pkgver=1.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,14 +30,16 @@ optdepends=(
   r-dbplyr
   r-dplyr
   r-rlang
+  r-sf
   r-testthat
   r-tibble
   r-vctrs
   r-withr
+  r-wk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ffbb91768e5de8cdacbbfe35ca725567')
-b2sums=('d5beb57dde4e49510b3b8f7dfacaf66faabe3a1142fae33adde66d99ebf2ba9a0e5b3e7690adb1148f1c18e3e9a8204a33954a4a6cead8c3ec6be40c5a0ecb7f')
+md5sums=('4e01484a093b934a97a02ad802df00b0')
+b2sums=('d049bb5707c986b9dbafc388b3b4580a17d593dc7f3759c49caaca08045e2ec455df6bec4c6acbec52a41a05d017442f45c1705242f162f7866119b089336f8c')
 
 build() {
   mkdir build
