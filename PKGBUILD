@@ -1,9 +1,9 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 # Co-maintainer: Evert <evorster at gmail dot com>
 pkgname=hermes-agent
-pkgver=0.12.0
-_tagver=2026.4.30
-pkgrel=2
+pkgver=0.13.0
+_tagver=2026.5.7
+pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -26,7 +26,7 @@ depends=(
 
 makedepends=('uv' 'nodejs' 'npm')
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('3743db721cf6c93631f8446bdc8b77fd53e0c439ee8c42ec821ebfd6874c3949')
+sha256sums=('75b629e787a68164713b66d1dd163c65f853474c9c775cd6f206797a629aa2c0')
 validpgpkeys=()
 install=hermes-agent.install
 
