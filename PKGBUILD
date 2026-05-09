@@ -2,7 +2,7 @@
 
 pkgname=wanpipe
 pkgver=7.0.38
-pkgrel=1
+pkgrel=3
 pkgdesc='Sangoma WANPIPE drivers and utilities for DAHDI'
 arch=(x86_64)
 url=https://ftp.sangoma.com/linux/current_wanpipe/
@@ -52,6 +52,10 @@ package() {
 
   make DESTDIR="${pkgdir}" install_etc install_util install_inc install_lib
   rm -f "${pkgdir}"/etc/wanpipe/api/{libsangoma,libstelephony}/{config.log,config.status,Makefile}
+
+  install -d "${pkgdir}/usr/bin"
+  mv "${pkgdir}"/usr/sbin/* "${pkgdir}/usr/bin/"
+  rmdir "${pkgdir}/usr/sbin"
 
   local module
   for module in patches/kdrivers/src/net/{sdladrv,wanrouter,wanpipe,wanec,wan_aften}.ko; do
