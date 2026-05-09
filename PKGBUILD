@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=speedofsound
 _app_id="io.$pkgname.SpeedOfSound"
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 _java_ver=25
 pkgdesc="Voice typing for the Linux desktop."
@@ -23,7 +23,7 @@ makedepends=(
   'meson'
 )
 source=("git+https://github.com/zugaldia/speedofsound.git#tag=v$pkgver")
-sha256sums=('6ebca7df63c16be816a1d95749af248d4a3e7792ab0ba080e17c8f1aba207570')
+sha256sums=('649f13c363812d6cde8fbdf553d23fecd4cbe732e65a702fed38b8296d9c3ba1')
 
 prepare() {
   cd "$pkgname"
