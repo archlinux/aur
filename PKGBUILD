@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon
-pkgver=r42.2f7b603
+pkgver=r43.ae12280
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets'
 arch=('x86_64')
@@ -8,6 +8,7 @@ url='https://github.com/liixini/skwd-daemon'
 license=('MIT')
 makedepends=('cargo' 'gcc' 'clang' 'pkgconf' 'ffmpeg' 'alsa-lib')
 depends=('gcc-libs' 'imagemagick' 'ffmpeg' 'alsa-lib')
+options=('!debug' '!lto')
 optdepends=(
   'ollama: local LLM for automated wallpaper tagging'
   'steamcmd: Steam Workshop Wallpaper Engine downloads'
