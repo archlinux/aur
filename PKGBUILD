@@ -1,5 +1,5 @@
 pkgname=vigaphone-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 options=('!strip' '!debug')
 groups=('pro-audio','vst3-plugins')
@@ -8,16 +8,13 @@ arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
-sha256sums=('a59a68735656c813cf06e938e7c828c0b91433e08fc8347cec4b07d0e59eb1ef')
+sha256sums=('88329ee097d1da5d86de00481649b22c01f1d3c5395b5e7ef35349f33905ed21')
 
 depends=(
     'alsa-lib'
     'jack'
     'libx11'
     'libglvnd'
-    'freetype2'
-    'fontconfig'
-    'noto-fonts-emoji'
     'rsync'
 )
 
@@ -53,7 +50,8 @@ package() {
     # Locales
     for lang in locale/*; do
         langname=$(basename "$lang")
-        install -pDm644 "$lang/LC_MESSAGES/ViGAPhone.mo" "$pkgdir/usr/share/locale/$langname/LC_MESSAGES/ViGAPhone.mo"
+#        install -pDm644 "$lang/LC_MESSAGES/ViGAPhone.mo" "$pkgdir/usr/share/locale/$langname/LC_MESSAGES/ViGAPhone.mo"
+		install -pDm644 $lang/ViGAPhone_$langname.po $pkgdir/usr/share/locale/$langname/ViGAPhone_$langname.po
     done
 
 	# Données utilisateur (tout sauf ce qui est déjà installé ailleurs)
