@@ -4,6 +4,7 @@
   "applicationName": "code-oss",
   "dataFolderName": ".vscode-oss",
   "win32MutexName": "vscodeoss",
+  "sharedDataFolderName": ".vscode-oss",
   "licenseName": "MIT",
   "licenseUrl": "https://github.com/microsoft/vscode/blob/main/LICENSE.txt",
   "serverLicenseUrl": "https://github.com/microsoft/vscode/blob/main/LICENSE.txt",
@@ -182,6 +183,23 @@
     "openai"
   ],
   "extensionRecommendations": {
+    "ms-vscode.vscode-chat-customizations-evaluations": {
+      "onFileOpen": [
+        {
+          "pathGlob": "{**/*prompt.md, **/*skill.md, **/*instructions.md, **/*agent.md}",
+          "important": true
+        },
+        {
+          "languages": [
+            "prompt",
+            "chatagent",
+            "skill",
+            "instructions"
+          ],
+          "important": true
+        }
+      ]
+    },
     "ms-dotnettools.csdevkit": {
       "onFileOpen": [
         {
@@ -455,7 +473,6 @@
   "privacyStatementUrl": "https://go.microsoft.com/fwlink/?LinkId=521839",
   "npsSurveyUrl": "",
   "checksumFailMoreInfoUrl": "https://go.microsoft.com/fwlink/?LinkId=828886",
-  "electronRepository": "Microsoft/vscode-electron-prebuilt",
   "settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
   "surveys": [],
   "extensionsEnabledWithApiProposalVersion": [
@@ -829,6 +846,19 @@
       "postInstallCommand": "workbench.action.chat.openNewSessionSidebar.copilot-cloud-agent"
     }
   ],
-  "commit": "10c8e557c8b9f9ed0a87f61f1c9a44bde731c409",
-  "date": "2026-04-21T16:12:14-07:00"
+  "checksums": {
+    "vs/base/parts/sandbox/electron-browser/preload.js": "pEnkU8mcIZ0DvnCkVCVdSC12xeGMu3MUXKKluNx/Lnk",
+    "vs/workbench/workbench.desktop.main.js": "PsiGHpiHlx4eesy259DBVL4nn5SQ+G93aMIaptysSJ8",
+    "vs/workbench/workbench.desktop.main.css": "/NBy0ozX1Hz4dnZ9f2dbcZDTR80FpKHLcHWH70KAd6E",
+    "vs/workbench/api/node/extensionHostProcess.js": "TWL3li6lIB+p+7m5A52F/xNsyttMbLemwHz7/QBfQcg",
+    "vs/code/electron-browser/workbench/workbench.html": "y/1rUTZiVPFlnCpp+xudt09z5R/r1OulxFGN0tSQw90",
+    "vs/code/electron-browser/workbench/workbench.js": "nyxj97fr1Hz59kKWfHB0PvRy4SdgndXltiYqfdmVQdg",
+    "vs/sessions/sessions.desktop.main.js": "gDp+n+9YkorLlhS6ADoFJGfCIdxPNCaxeXbE/eDqLYM",
+    "vs/sessions/sessions.desktop.main.css": "ysrkJ64MjUV4OplfLToYgLFYXcvXrco4BUukTrUzfAw",
+    "vs/sessions/electron-browser/sessions.html": "jVbR4zXGjojgXGd9jywXFQUssPI/EhZrxsk+VVhSeGM",
+    "vs/sessions/electron-browser/sessions.js": "U+b2ChbYPOQ7kPSPQPf8wu8CrHrFoc3FFqmEQaJipxc"
+  },
+  "version": "1.119.0",
+  "commit": "8b640eef5a6c6089c029249d48efa5c99adf7d51",
+  "date": "2026-05-05T11:23:50-07:00"
 }
