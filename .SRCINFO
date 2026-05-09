@@ -1,6 +1,6 @@
 pkgbase = slimjet
 	pkgdesc = Fast, smart and powerful browser based on Blink.(Prebuilt version)
-	pkgver = 49.0.2.0
+	pkgver = 50.0.0
 	pkgrel = 1
 	url = https://www.slimjet.com
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = slimjet
 	optdepends = ttf-liberation: fix fonts for some PDFs
 	options = !emptydirs
 	options = !strip
-	source = slimjet-49.0.2.0.deb::https://www.slimjetbrowser.com/release/slimjet_amd64.deb
-	source = libffmpeg-0.105.0.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.105.0/0.105.0-linux-x64.zip
-	sha256sums = 8626df83d1678b417fe9f88d51257cdce75889ac557d18dcaf750c3b0baf0d68
-	sha256sums = 344d021601999b9409a05ed9bfe4055dd4b1de5a9b4bd58df38078157145232b
+	source = slimjet-50.0.0.deb::https://www.slimjetbrowser.com/release/slimjet_amd64.deb
+	source = libffmpeg-0.107.0.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.107.0/0.107.0-linux-x64.zip
+	sha256sums = 402eb81ca4e856eaceff69df3c20d9fb4d6519c98b17bbe17de9a92e89e3a594
+	sha256sums = 8f92b1afc9deda5d896d73af02c26896e2a8877ae05aec6a5fe2fcc34fb59179
 
 pkgname = slimjet
