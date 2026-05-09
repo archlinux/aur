@@ -3,7 +3,7 @@
 _pkgname=jj-starship
 pkgname="$_pkgname"-git
 pkgver=0.7.0.r0.g76cf006
-pkgrel=1
+pkgrel=2
 pkgdesc='Unified Git/JJ Starship prompt module'
 arch=('x86_64' 'aarch64' 'loong64')
 url='https://github.com/dmmulroy/jj-starship'
@@ -23,18 +23,18 @@ pkgver() {
 
 build() {
   cd "$srcdir"/"$_pkgname"
-  cargo build --release --locked
+  cargo build --release --locked --all-features
 }
 
 check() {
   cd "$srcdir"/"$_pkgname"
-  cargo test --locked
+  cargo test --release --locked --all-features
 }
 
 package() {
   cd "$srcdir"/"$_pkgname"
 
-  install -vDm755 target/release/"$_pkgname" "$pkgdir"/usr/bin/"$_pkgname"
+  cargo install --no-track --frozen --all-features --root "$pkgdir/usr/" --path .
   install -vDm644 README.md "$pkgdir"/usr/share/doc/"$_pkgname"/README.md
   install -vDm644 LICENSE "$pkgdir"/usr/share/licenses/"$_pkgname"/LICENSE
 }
