@@ -2,7 +2,7 @@
 # Contributor: macxcool <macx cool at tuta + nota dot com>
 pkgname=eliot
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source Scrabble game"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/eliot/"
