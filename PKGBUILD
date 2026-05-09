@@ -25,10 +25,8 @@ source=(
   "doubletake-${pkgver}.tar.gz::https://github.com/omarroth/doubletake/archive/refs/tags/v${pkgver}.tar.gz"
   'doubletake.service'
 )
-sha256sums=(
-  '6145d38e163184ac73138293339bf54539b639e80b538f9d8262d3e5f43a2ad5'
-  'bb51bea22f4a5a6264a509eea126fce8b7dd0de8f5127e77e6bee13a96193c84'
-)
+sha256sums=('6145d38e163184ac73138293339bf54539b639e80b538f9d8262d3e5f43a2ad5'
+            'bb51bea22f4a5a6264a509eea126fce8b7dd0de8f5127e77e6bee13a96193c84')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
