@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=mole
 pkgname=lib${_base}
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Mimetic Operators Library Enhanced"
 url="https://github.com/csrc-sdsu/${_base}"
 license=(GPL-3.0-only)
@@ -13,7 +13,7 @@ checkdepends=(gtest)
 optdepends=('eigen: for the sparse LU factorization')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   git+https://github.com/gllmflndn/m2html.git#branch=main)
-sha512sums=('d58cdfeb461185fb3f94fa0bb19f6c2d6944163af13130727e488858a920e056d2a162aa8e461e4c2f2bd573e31f6de894645779014ace4c005a75750c06df65'
+sha512sums=('7169b94cb899e7bfe2964ff28a53368d7d484d38f48a853b6f6b7e1b6dc1e5a5db82b3dd603dd1ecfe76257260cb260171c3d530ce375e866ef8f685095f2faf'
             'SKIP')
 
 prepare() {
