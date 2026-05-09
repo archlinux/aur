@@ -1,6 +1,6 @@
 pkgname=vigaphone-bin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=0
 options=('!strip' '!debug')
 groups=('pro-audio','vst3-plugins')
 pkgdesc="ViGAPhone Synth Lab is a New Physical-Modeling Synthesizer MIDI-MPE application and VST3 plugin, Sound and Timbre Analyzer, Instrument Tuner and more..."
