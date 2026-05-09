@@ -4,6 +4,33 @@ A complete debug log of getting `RedHatAI/gemma-4-31B-it-NVFP4` running coherent
 on consumer Blackwell (SM 12.0a) with sglang. Recorded 2026-05-09 after ~25 hours
 of step-by-step debugging.
 
+## Fresh-box checklist
+
+```
+1. paru -S sglang-git python-sgl-kernel-git python-flashinfer \
+          python-nvidia-cudnn-frontend python-compressed-tensors-git \
+          cuda gcc15 cutlass
+
+2. sudo cp /usr/share/doc/sglang-git/gemma_4_31b_nvfp4.env.example \
+           /etc/sglang/gemma_4_31b_nvfp4.env
+
+3. sudo systemctl start sglang@gemma_4_31b_nvfp4
+   # First start downloads ~30 GB of NVFP4 weights from HF.
+
+4. Find the snapshot hash:
+   ls /var/lib/sglang/hub/models--RedHatAI--gemma-4-31B-it-NVFP4/snapshots/
+
+5. sudo sed -i 's|<snapshot-hash>|<actual-hash>|' \
+        /etc/sglang/gemma_4_31b_nvfp4.env
+   sudo systemctl restart sglang@gemma_4_31b_nvfp4
+
+6. Smoke-test:
+   curl -s http://127.0.0.1:30000/v1/chat/completions \
+     -H 'content-type: application/json' \
+     -d '{"model":"RedHatAI/gemma-4-31B-it-NVFP4","messages":[{"role":"user","content":"What is 2+2?"}],"temperature":0,"max_tokens":16}'
+   # Expect "4" in the content. If garbled, see failure mode chronology below.
+```
+
 The **working configuration** for sglang-git ≥ r12451 with this AUR package's
 patches applied:
 
@@ -104,6 +131,19 @@ In auto-dispatch sglang picks `flashinfer_cudnn` on SM120 (per
 `fp4_utils.py:60-78` comment about flashinfer_cutlass NaN with
 heterogeneous batches). For our case (batch=1), `cutlass` (sglang JIT,
 post-patch) is what works.
+
+**Sanity check after install**: ensure the JIT cache shows
+`cutlass_scaled_fp4_mm`, not flashinfer's mm_fp4. The cutlass-branch
+gate in `modelopt_quant.py:fp4_gemm()` is
+`if fp4_backend.is_cutlass() and cutlass_fp4_gemm is not None`. If
+`cutlass_fp4_gemm` failed to import (try/except in modelopt_quant.py:96-100),
+sglang silently falls through to flashinfer with backend="cutlass" — same
+code path that produced gibberish during debug. Verify with:
+
+```sh
+python -c "from sglang.srt.layers.quantization.modelopt_quant import cutlass_fp4_gemm; print(cutlass_fp4_gemm)"
+# Should print a real function object, not None.
+```
 
 ## Why `LD_PRELOAD` + `LD_LIBRARY_PATH`
 

@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r12443.297d183a4
+pkgver=r12453.b9e4c2905
 pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
@@ -64,6 +64,12 @@ optdepends=(
   'python-tilelang: DeepSeek V4 model support'
   'python-timm: Vision model library'
   'python-uvloop: Fast event loop'
+  # NVFP4 on SM120 (RTX 5090 / RTX PRO 6000) — see SM120-NVFP4-NOTES.md
+  'cuda: NVFP4/CUTLASS JIT compilation'
+  'gcc15: nvcc 13.x host compiler on systems with GCC 16+'
+  'cutlass: headers for SGLang/FlashInfer NVFP4 JIT'
+  'python-nvidia-cudnn-frontend: FlashInfer cuDNN FP4/FP8 backend imports'
+  'python-compressed-tensors-git: RedHatAI NVFP4 recipe scale_dtype support (>=0.15.0)'
 )
 provides=('sglang')
 conflicts=('sglang')
@@ -121,9 +127,11 @@ source=("${_pkgname}::git+https://github.com/williamjameshandley/sglang.git#bran
         'sglang.sysusers'
         'deepseek_v4.jinja'
         'wjh-fp4-3d-reshape.patch'
+        'SM120-NVFP4-NOTES.md'
+        'gemma_4_31b_nvfp4.env.example'
         "${_models[@]/%/.conf}")
 sha256sums=('SKIP')
-for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' 'deepseek_v4.jinja' 'wjh-fp4-3d-reshape.patch' "${_models[@]}"; do
+for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' 'deepseek_v4.jinja' 'wjh-fp4-3d-reshape.patch' 'SM120-NVFP4-NOTES.md' 'gemma_4_31b_nvfp4.env.example' "${_models[@]}"; do
   sha256sums+=('SKIP')
 done
 
@@ -134,12 +142,12 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  # flashinfer.mm_fp4 contracts on 2D (m, k); sglang's CUDA-graph-capture
-  # path passes 3D [1, max_seq, K] activations to ModelOptFp4LinearMethod
-  # and trips the 2D check in flashinfer.gemm._check_mm_fp4_problem_size
-  # before backend selection. Local fix: flatten on entry, restore at
-  # return. Drop once upstream sglang accepts equivalent.
-  patch -p1 < "${srcdir}/wjh-fp4-3d-reshape.patch"
+  # Local SM120 NVFP4 fixes: dense FP4 3D activation reshape, SGLang
+  # CUTLASS scale-byte clamp from upstream PR #22927, JIT 3D handling,
+  # and /usr/include/cutlass discovery fallback. -F0 prevents fuzzy
+  # misapply if upstream context drifts. Drop once upstream carries
+  # equivalents. See SM120-NVFP4-NOTES.md.
+  patch -Np1 -F0 < "${srcdir}/wjh-fp4-3d-reshape.patch"
 }
 
 build() {
@@ -161,6 +169,14 @@ package() {
   for model in "${_models[@]}"; do
     install -Dm644 "${srcdir}/${model}.conf" "${pkgdir}/etc/sglang/${model}.conf"
   done
+  # SM120 NVFP4 docs + working env-file template. Installed under
+  # /usr/share/doc so package upgrades don't clobber any user edits to
+  # /etc/sglang/<instance>.env. Operator copies the example, fills in
+  # the HF snapshot hash, and drops it into /etc/sglang/.
+  install -Dm644 "${srcdir}/SM120-NVFP4-NOTES.md" \
+    "${pkgdir}/usr/share/doc/${pkgname}/SM120-NVFP4-NOTES.md"
+  install -Dm644 "${srcdir}/gemma_4_31b_nvfp4.env.example" \
+    "${pkgdir}/usr/share/doc/${pkgname}/gemma_4_31b_nvfp4.env.example"
   # Workaround: deepseek-ai/DeepSeek-V4-Flash ships tokenizer_config.json
   # without a chat_template field, and sglang has no built-in deepseek-v4
   # template. Lifted from DeepSeek-V3.2-Exp, which uses the same special
