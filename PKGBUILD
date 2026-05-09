@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _base=CryptoLyzer
 pkgname=python-${_base,,}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A comprehensive cryptographic settings analyzer"
 arch=(any)
@@ -12,7 +12,7 @@ license=(MPL-2.0)
 depends=(python-oscrypto python-beautifulsoup4 python-certvalidator python-colorama python-cryptoparser python-pyfakefs python-requests python-dnspython)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 source=(https://gitlab.com/coroner/${_base}/-/archive/v${pkgver}/${_base,,}-v${pkgver}.tar.gz)
-sha512sums=('6382b5da2058c9670c3b73ae2b0d0a59e2ed77f3d376b338e38d4d5221e94d5ea35ace09631cbe71cab5f4da3bb887b129e6408d627e918ec4df3e0b4e56ebb8')
+sha512sums=('14b21bb5d5d9c88a644471024f1bc7095f2ab5eb20ed602bce9a0fc8743fc2024af2aa80b53c78ddfeda79816fde78e9128507c46f222fe3be868567d9de6958')
 
 build() {
   cd ${_base,,}-v${pkgver}
