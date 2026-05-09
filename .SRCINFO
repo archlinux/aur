@@ -1,0 +1,24 @@
+pkgbase = wanpipe
+	pkgdesc = Sangoma WANPIPE drivers and utilities for DAHDI
+	pkgver = 7.0.38
+	pkgrel = 1
+	url = https://ftp.sangoma.com/linux/current_wanpipe/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = bison
+	makedepends = flex
+	makedepends = libtool
+	makedepends = linux-headers
+	depends = dahdi-linux
+	depends = glibc
+	depends = linux
+	depends = ncurses
+	backup = etc/wanpipe/wanrouter.rc
+	source = https://ftp.sangoma.com/linux/current_wanpipe/wanpipe-7.0.38.tgz
+	source = arch-kernel-compat.patch
+	sha256sums = 95266edd83bd8bb427f47f7a39365795936acc0d6e2e3a1e482bd015bba90fa2
+	sha256sums = 57390f6d7991614af7671297ecc4bd062889d4f51403e7c99353658d8cc61e0f
+
+pkgname = wanpipe

@@ -1,0 +1,173 @@
+--- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/Makefile	2008-08-01 00:30:00.000000000 -0300
++++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/Makefile	2026-05-09 13:16:25.189529253 -0300
+@@ -136,7 +136,7 @@
+ 		ZAP_PROT=TDM
+ 		PROTS=DEF-TDM
+ 	else
+-		ifneq (,$(wildcard $(ZAPDIR)/include/dahdi/version.h))
++		ifneq (,$(wildcard $(ZAPDIR)/include/dahdi/kernel.h))
+ 			ZAPDIR_PRIV=$(ZAPDIR) 
+ 			ENABLE_WANPIPEMON_ZAP=YES
+ 			DAHDI_CFLAGS+= -DSTANDALONE_ZAPATA -DCONFIG_PRODUCT_WANPIPE_TDM_VOICE_DCHAN_ZAPTEL -DDAHDI_ISSUES -DBUILDING_TONEZONE -I$(ZAPDIR)/include -I$(ZAPDIR)/include/dahdi -I$(ZAPDIR)/drivers/dahdi
+@@ -145,8 +145,8 @@
+ 			endif
+ 			ZAP_PROT=TDM
+ 			PROTS=DEF-TDM
+-			DAHDI_MAJOR := $(shell cat $(ZAPDIR)/include/dahdi/version.h |  grep define | cut -d'"' -f2 | cut -d'.' -f1)
+-			DAHDI_MINOR := $(shell cat $(ZAPDIR)/include/dahdi/version.h |  grep define | cut -d'"' -f2 | cut -d'.' -f2)
++			DAHDI_MAJOR := $(shell test -f $(ZAPDIR)/include/dahdi/version.h && cat $(ZAPDIR)/include/dahdi/version.h |  grep define | cut -d'"' -f2 | cut -d'.' -f1 || echo 3)
++			DAHDI_MINOR := $(shell test -f $(ZAPDIR)/include/dahdi/version.h && cat $(ZAPDIR)/include/dahdi/version.h |  grep define | cut -d'"' -f2 | cut -d'.' -f2 || echo 4)
+ 			DAHDI_VER=-DDAHDI_$(DAHDI_MAJOR)$(DAHDI_MINOR)
+ 			DAHDI_CFLAGS+= $(DAHDI_VER)
+ 		else
+@@ -576,7 +576,6 @@
+ .PHONY: install_kmod
+ install_kmod:
+ 	install -m 644 -D $(WAN_DIR)/wanrouter.${MODTYPE}  	$(INSTALLPREFIX)/$(KINSTDIR)/net/wanrouter/wanrouter.${MODTYPE} 
+-	install -m 644 -D $(WAN_DIR)/af_wanpipe.${MODTYPE} 	$(INSTALLPREFIX)/$(KINSTDIR)/net/wanrouter/af_wanpipe.${MODTYPE}   
+ 	install -m 644 -D $(WAN_DIR)/wanec.${MODTYPE} 		$(INSTALLPREFIX)/$(KINSTDIR)/net/wanrouter/wanec.${MODTYPE}   
+ 	install -m 644 -D $(WAN_DIR)/wan_aften.${MODTYPE} 	$(INSTALLPREFIX)/$(KINSTDIR)/net/wanrouter/wan_aften.${MODTYPE}   
+ 	install -m 644 -D $(WAN_DIR)/sdladrv.${MODTYPE} 	$(INSTALLPREFIX)/$(KINSTDIR)/drivers/net/wan/sdladrv.${MODTYPE}
+--- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/src/net/Makefile	2008-08-01 00:30:00.000000000 -0300
++++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/src/net/Makefile	2026-05-09 13:13:16.878017914 -0300
+@@ -7,7 +7,7 @@
+ 
+ 
+ PWD=$(shell pwd)
+-WAN_MODULES = sdladrv.o wanrouter.o wanpipe.o wanpipe_syncppp.o af_wanpipe.o wanec.o wan_aften.o
++WAN_MODULES = sdladrv.o wanrouter.o wanpipe.o wanec.o wan_aften.o
+ 
+ CONFIG_WANPIPE_X25=n
+ CONFIG_WANPIPE_FR=n
+@@ -15,7 +15,7 @@
+ CONFIG_WANPIPE_PPP=n
+ CONFIG_WANPIPE_MULTPPP=n 
+ 
+-EXTRA_CFLAGS=$(EXTRA_FLAGS) 
++ccflags-y := $(EXTRA_FLAGS)
+ 
+ wanpipe-y			:= sdlamain.o 
+ 
+@@ -41,7 +41,7 @@
+ wanpipe-y                       += wanpipe_usb.o sdla_usb_remora.o 
+ wanpipe-y                       += wanpipe_timer_dev.o
+ 
+-EXTRA_CFLAGS 			+= $(PRODUCT_DEFINES)
++ccflags-y += $(PRODUCT_DEFINES)
+ 
+ wanpipe-objs := $(wanpipe-y)
+ 
+@@ -54,7 +54,7 @@
+ OCTAPIMIDIR=$(WANECDIR)/oct6100_api/octdeviceapi/oct6100api/oct6100_apimi
+ HOME=$(HOMEDIR)/patches/kdrivers/wanec
+ 
+-EXTRA_CFLAGS += -I$(HOME) -I$(HOME)/oct6100_api -I$(HOME)/oct6100_api/include -I$(HOME)/oct6100_api/include/oct6100api -I$(HOME)/oct6100_api/include  -I$(HOME)/oct6100_api/include/apilib -I$(HOME)/oct6100_api/include/apilib -I$(HOME)/oct6100_api/include/octrpc -I$(HOME)/oct6100_api/include/oct6100api -I$(HOME)/oct6100_api/octdeviceapi/oct6100api -DENABLE_TONE_PLAY
++ccflags-y += -I$(HOME) -I$(HOME)/oct6100_api -I$(HOME)/oct6100_api/include -I$(HOME)/oct6100_api/include/oct6100api -I$(HOME)/oct6100_api/include  -I$(HOME)/oct6100_api/include/apilib -I$(HOME)/oct6100_api/include/apilib -I$(HOME)/oct6100_api/include/octrpc -I$(HOME)/oct6100_api/include/oct6100api -I$(HOME)/oct6100_api/octdeviceapi/oct6100api -DENABLE_TONE_PLAY
+ 
+ wanec-y := $(WANECDIR)/wanec_iface.o $(WANECDIR)/wanec_cmd.o $(WANECDIR)/wanec_utils.o $(WANECDIR)/wanec_dev.o 
+ wanec-y += $(BTDIR)/octapi_bt0.o $(LARGMATHDIR)/octapi_largmath.o 
+@@ -81,4 +81,3 @@
+ wan_aften-objs := ../wan_aften/wan_aften_src.o ../wan_aften/wanpipe_linux_iface.o
+ 
+ obj-m += $(WAN_MODULES)      
+-
+--- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/include/wanpipe_common.h	2008-08-01 00:30:00.000000000 -0300
++++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/include/wanpipe_common.h	2026-05-09 12:03:35.076788819 -0300
+@@ -1150,7 +1150,7 @@
+ 		}
+ 		return;
+ 	}
+-	del_timer(&wan_timer->timer_info);
++	timer_delete(&wan_timer->timer_info);
+ #elif defined(__FreeBSD__)
+ 	untimeout(wan_timer->timer_func,
+ 		  (void*)wan_timer->timer_arg, 
+--- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/include/wanpipe_includes.h	2008-08-01 00:30:00.000000000 -0300
++++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/include/wanpipe_includes.h	2026-05-09 13:11:07.541609248 -0300
+@@ -255,6 +255,9 @@
+ #  include <linux/ctype.h>
+ #  include <linux/kernel.h>	/* printk()m and other usefull stuff */
+ #  include <linux/timer.h>
++#  if !defined(from_timer) && defined(timer_container_of)
++#   define from_timer(var, timer, timer_fieldname) timer_container_of(var, timer, timer_fieldname)
++#  endif
+ #  include <linux/kmod.h>
+ #  include <net/ip.h>
+ #  include <net/protocol.h>
+@@ -408,4 +411,3 @@
+ #endif
+ 
+ #endif	/* __WANPIPE_INCLUDES_H	*/
+-
+--- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/src/net/wanpipe_cdev_linux.c	2008-08-01 00:30:00.000000000 -0300
++++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/src/net/wanpipe_cdev_linux.c	2026-05-09 12:04:13.224540984 -0300
+@@ -194,7 +194,7 @@
+ 		return err;
+ 	}
+ 
+-	wp_cdev_class = class_create(THIS_MODULE, "wanpipe");
++	wp_cdev_class = class_create("wanpipe");
+ 
+ #else
+ 
+@@ -211,7 +211,7 @@
+ 		return -EINVAL;
+ 	}
+ 
+-	wp_cdev_class = class_create(THIS_MODULE, "wanpipe");
++	wp_cdev_class = class_create("wanpipe");
+ 	if (IS_ERR(wp_cdev_class)) {
+ 		DEBUG_ERROR("%s(): Error creating class!\n",__FUNCTION__);
+ 		cdev_del(&wp_cdev_dev);
+@@ -1025,4 +1025,3 @@
+ EXPORT_SYMBOL(wanpipe_cdev_timer_create);
+ EXPORT_SYMBOL(wanpipe_cdev_logger_create);
+ 
+-
+--- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/patches/kdrivers/wanec/wanec_dev.c	2008-08-01 00:30:00.000000000 -0300
++++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/patches/kdrivers/wanec/wanec_dev.c	2026-05-09 13:13:33.660330655 -0300
+@@ -139,7 +139,7 @@
+ 
+ 	DEBUG_EVENT("%s: Registering Wanpipe ECDEV Device!\n",__FUNCTION__);
+ #ifdef WP_ECDEV_UDEV
+-	wanec_dev_class = class_create(THIS_MODULE, "wp_ec");
++	wanec_dev_class = class_create("wp_ec");
+ #endif
+ 
+ #ifdef WP_CONFIG_DEVFS_FS
+--- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/util/Makefile	2008-08-01 00:30:00.000000000 -0300
++++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/util/Makefile	2026-05-09 13:16:05.087154216 -0300
+@@ -23,8 +23,6 @@
+ 	make -C wanconfig all CC=$(CC) SYSINC=$(SYSINC) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
+ 	make -C wanec_client all CC=$(CC)  SYSINC=$(SYSINC) WANINCDIR=$(WANINCDIR) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
+ 	make -C wan_plxctrl all CC=$(CC)  SYSINC=$(SYSINC) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
+-	make -C wanpipemon all  CC=$(CC) SYSINC=$(SYSINC) PROTOCOL_DEFS="$(PROTOCOL_DEFS)" ENABLE_WANPIPEMON_ZAP=$(ENABLE_WANPIPEMON_ZAP) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
+-	make -C wanpipemon_legacy all CC=$(CC) SYSINC=$(SYSINC) PROTOCOL_DEFS="$(PROTOCOL_DEFS)" EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
+ 	make -C bwm all SYSINC=$(SYSINC) CC=$(CC) PROTOCOL_DEFS="$(PROTOCOL_DEFS)" EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
+ 	make -C wan_aftup all CC=$(CC) SYSINC=$(SYSINC) PROTOCOL_DEFS="$(PROTOCOL_DEFS)" EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
+ 
+@@ -40,8 +38,6 @@
+ 	make -C wanconfig install WAN_VIRTUAL=$(WAN_VIRTUAL)
+ 	make -C wanec_client install WAN_VIRTUAL=$(WAN_VIRTUAL)
+ 	make -C wan_plxctrl install WAN_VIRTUAL=$(WAN_VIRTUAL) 
+-	make -C wanpipemon install WAN_VIRTUAL=$(WAN_VIRTUAL)
+-	make -C wanpipemon_legacy install WAN_VIRTUAL=$(WAN_VIRTUAL)
+ 	make -C wan_aftup install WAN_VIRTUAL=$(WAN_VIRTUAL) 
+ 	make -C bwm install WAN_VIRTUAL=$(WAN_VIRTUAL)
+ 	make -C wancfg_zaptel install WAN_VIRTUAL=$(WAN_VIRTUAL)
+--- /tmp/opencode/wanpipe-orig/wanpipe-7.0.38/api/libsangoma/libsangoma-pvt.h	2008-08-01 00:30:00.000000000 -0300
++++ /tmp/opencode/wanpipe-src/wanpipe-7.0.38/api/libsangoma/libsangoma-pvt.h	2026-05-09 13:18:03.328360761 -0300
+@@ -139,7 +139,7 @@
+ #if defined(__WINDOWS__)
+ 	OutputDebugString(buf);
+ #else
+-	printf(buf);
++	printf("%s", buf);
+ #endif
+ 	va_end(args);
+ }
+@@ -166,4 +166,3 @@
+ #endif
+ 
+ #endif	/* _LIBSNAGOMA_PVT_H */
+-
