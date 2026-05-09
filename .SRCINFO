@@ -1,6 +1,6 @@
 pkgbase = sys-dashboard
 	pkgdesc = A professional real-time system monitoring dashboard built with Node.js and Electron
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Alejopek/Sys-Dashboard-
 	arch = x86_64
