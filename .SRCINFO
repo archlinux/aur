@@ -1,0 +1,18 @@
+pkgbase = linox-icon-theme-git
+	pkgdesc = A premium squircle-based icon theme for Linux desktops blending macOS aesthetics with native Linux consistency
+	pkgver = r15.c03c8bf
+	pkgrel = 1
+	url = https://github.com/abhijeetshewale05/Linox-Icon-Theme
+	install = linox-icon-theme.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	provides = linox-icon-theme
+	conflicts = linox-icon-theme
+	options = !strip
+	source = linox-icon-theme::git+https://github.com/abhijeetshewale05/Linox-Icon-Theme.git
+	sha256sums = SKIP
+
+pkgname = linox-icon-theme-git
