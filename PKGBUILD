@@ -22,22 +22,23 @@ makedepends=(
   'python-sphinx'
   'python-sphinx_rtd_theme')
 depends=(
-  'python-dataproperty'
+  'python'
+  'python-markdown'
   'python-mbstrdecoder'
-  'python-pathvalidate'
-  'python-tabledata'
-  'python-tcolorpy'
+  'python-pypandoc'
+  'python-path'
+  'python-requests'
+  'python-loguru'
   'python-typepy'
-  'python-xlsxwriter'
+  'python-jsonschema'
+  'python-oauth2client'
   'python-simplejson'
-  'python-yaml'
-  'python-toml'
-  'python-xlwt'
-  'python-ipykernel'
-  ## for python-typepy['dateutil']
-  'python-pytz'
-  'python-pytest'
-  'python-dateutil')
+  'python-tabledata'
+  'python-beautifulsoup4'
+  'python-xlrd'
+  'python-pathvalidate'
+  'python-dataproperty'
+  'python-pytablereader')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('ad97308308525cafe0eaa4b6a80a02499e0b4c6c979efb17452d302ad78bd5b1')
