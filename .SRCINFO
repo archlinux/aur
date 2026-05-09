@@ -15,7 +15,7 @@ pkgbase = haskell-cache-git
 	depends = haskell-transformers
 	depends = haskell-unordered-containers
 	provides = haskell-cache
-	source = git+https://github.com/livmackintosh/haskell-cache
+	source = haskell-cache-git::git+https://github.com/livmackintosh/haskell-cache
 	sha256sums = SKIP
 
 pkgname = haskell-cache-git

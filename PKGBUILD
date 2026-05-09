@@ -10,11 +10,10 @@ license=('BSD-3-Clause')
 arch=('i686' 'x86_64')
 depends=('ghc-libs' 'haskell-base' 'haskell-clock' 'haskell-hashable' 'haskell-stm' 'haskell-transformers' 'haskell-unordered-containers')
 makedepends=('ghc')
-source=('git+https://github.com/livmackintosh/haskell-cache')
+source=("${pkgname}::git+https://github.com/livmackintosh/haskell-cache")
 sha256sums=('SKIP')
 
 build() {
-  cp Setup.hs ./${pkgname}
   cd "${pkgname}"
   runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
     --prefix=/usr --docdir="/usr/share/doc/${pkgname}" --datasubdir="$pkgname" \
