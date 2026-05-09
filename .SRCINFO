@@ -1,0 +1,18 @@
+pkgbase = dearsql-bin
+	pkgdesc = A simple, cross-platform database client built with Dear ImGui
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://dearsql.dev
+	arch = x86_64
+	license = LicenseRef-FSL
+	provides = dearsql
+	conflicts = dearsql
+	options = !strip
+	source = DearSQL-0.4.7-x86_64.AppImage::https://github.com/dunkbing/dearsql/releases/download/v0.4.7/DearSQL-x86_64.AppImage
+	source = https://github.com/dunkbing/dearsql/raw/v0.4.7/packaging/io.gitlab.dunkbing.dearsql.desktop
+	source = dearsql.png::https://github.com/dunkbing/dearsql/raw/v0.4.7/assets/appicon.png
+	sha256sums = 5476fb3a48383570c80fec3b09e6b3674e5a44727fae8819305c1a6b395c4aca
+	sha256sums = 8d1eb52592409db0b26abb3def7be743c926ceb4212fddffdfb13d4a5f72420c
+	sha256sums = 03e01e1fe765e93f167d0870e010cd43d4fcb24fe103f7fadf50a6f540828167
+
+pkgname = dearsql-bin
