@@ -6,7 +6,7 @@
 # Contributor: Dave Reisner <dreisner AT archlinux DOT org>
 # Contributor: Alexander Fehr <pizzapunk AT gmail DOT com>
 pkgname=rubyripperremix
-pkgver=0.8.0rc4_0.3.0
+pkgver=0.8.0rc4_0.4.0
 pkgrel=1
 pkgdesc="Secure audiodisc ripper with AccurateRip and CTDB verification (Fork of rubyripper)"
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=('cd-discid: Gnudb support'
             'neroaacenc-bin: Nero AAC encoding support'
             'ctdb-cli: CUETools Database verification and submittion support')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/Masterisk-F/RubyRipperRemix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('240d10861c246c847cab4398fa6e9d3ca91b217b8bb2245b492c05269d95b4da')
+sha256sums=('e297300a38634aa0a18336a8cb8443100e7c280d14afdc2bdf27654cd076ef81')
 
 build() {
   cd "RubyRipperRemix-$pkgver"
