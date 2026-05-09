@@ -1,7 +1,7 @@
 pkgbase = satisfactory-mod-manager-bin
 	pkgdesc = A mod manager for easy installation of mods and modloader for Satisfactory
 	pkgver = 3.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/satisfactorymodding/SatisfactoryModManager
 	arch = x86_64
 	license = GPL-3.0-only

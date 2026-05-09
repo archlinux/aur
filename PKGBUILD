@@ -4,7 +4,7 @@ _Name="SatisfactoryModManager"
 _pkgname="satisfactory-mod-manager"
 pkgname="${_pkgname}-bin"
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(
   'x86_64'
@@ -67,6 +67,6 @@ package() {
 
   for _size in $_sizes; do
     install -vDm644 "${_pkgsrc}.${_size}x${_size}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_Name}.png"
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${_Name}.png"
   done
 }
