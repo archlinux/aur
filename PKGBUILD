@@ -1,6 +1,6 @@
 # Maintainer: ayalarol <219218716+ayalarol@users.noreply.github.com>
 pkgname=easy-ocamlfuse
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Gestor gráfico (GUI) para google-drive-ocamlfuse"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
     'libappindicator-gtk3: Soporte de iconos en GNOME/KDE'
 )
 source=("https://github.com/ayalarol/Easy-ocamlfuse/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b632543e301cf7435596f8c3eb95f7cd065aa42b4ff70dceacfa6ff23f7a55b7')
+sha256sums=('94a4b8b1ced2a97b18d332bf82508704807f502d98927c7ee02ec2b0134152ec')
 
 prepare() {
   cd "Easy-ocamlfuse-$pkgver"
