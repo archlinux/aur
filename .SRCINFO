@@ -1,0 +1,19 @@
+pkgbase = termua-bin
+	pkgdesc = An open-source cross-platform terminal application built with GPUI and powered by the Alacritty / WezTerm terminal backends.(Prebuilt version)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/iamazy/termua
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	provides = termua=0.1.2
+	conflicts = termua
+	source_aarch64 = termua-0.1.2-aarch64.rpm::https://github.com/iamazy/termua/releases/download/v0.1.2/termua-0.1.2-linux.aarch64.rpm
+	sha256sums_aarch64 = 0e72dd28160933e64a803ee1040486840f08b85d3fc08cbfbfe7214a98d524f2
+	source_x86_64 = termua-0.1.2-x86_64.rpm::https://github.com/iamazy/termua/releases/download/v0.1.2/termua-0.1.2-linux.x86_64.rpm
+	sha256sums_x86_64 = 1c17ff1e64723d5c35327230378d810a4b2b7c00abd6119b296655bf3044599f
+
+pkgname = termua-bin
