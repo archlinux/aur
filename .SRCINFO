@@ -1,6 +1,6 @@
 pkgbase = kdotool-bin
 	pkgdesc = A xdotool clone for KDE Wayland (pre-compiled binary)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/jinliu/kdotool/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = kdotool-bin
 	depends = libgcc
 	provides = kdotool
 	conflicts = kdotool
-	noextract = kdotool-bin-0.2.2.tar.gz
+	noextract = kdotool-bin-0.2.3.tar.gz
 	options = !debug
 	options = !strip
-	source = kdotool-bin-0.2.2.tar.gz::https://github.com/jinliu/kdotool/releases/download/v0.2.2/kdotool-0.2.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 527306b8e8269844d38147c1608eec512100bf8bbcb66a32aa6d083b03e7a729
+	source = kdotool-bin-0.2.3.tar.gz::https://github.com/jinliu/kdotool/releases/download/v0.2.3/kdotool-0.2.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = a30c09175d1c4180afa394e8ccbf61c8780d79845a2ed89c9f39f7804a5b1433
 
 pkgname = kdotool-bin
