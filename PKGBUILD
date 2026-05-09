@@ -10,8 +10,8 @@ license=('Apache-2.0')
 depends=()
 makedepends=('cmake' 'gcc' 'make')
 source=("https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/$pkggitver/foxchat-server.tar.gz")
-sha256sums=('ab75215cab1d105b0124ce5065a0061019d4c9b45c623ab3bfc44976f393d71c')
+sha256sums=('6140943729ac365596fe3e89b5c44a2eed6a321c253f001402855f61e76ae6dd')
 
 package() {
-    install -Dm755 "$srcdir/foxchat-server" "$pkgdir/usr/bin/foxchat-server"
+    install -Dm755 "$srcdir/foxchat-server/foxchat-server" "$pkgdir/usr/bin/foxchat-server"
 }
