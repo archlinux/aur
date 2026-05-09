@@ -1,0 +1,5 @@
+[mcpli-bin]
+source = "github"
+github = "juanibiapina/mcpli"
+use_latest_release = true
+prefix = "v"
