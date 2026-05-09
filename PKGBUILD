@@ -24,7 +24,7 @@ sha512sums=('SKIP'
 prepare() {
   echo "Creating desktop file"
   gendesk -f -n \
-    --categories "Graphics;MedicalSoftware;Science;" \
+    --categories "Science;MedicalSoftware;Education;MedicalSoftware" \
     --custom="StartupWMClass=Slicer" \
     --exec "Slicer" \
     --icon "${_pkgname}" \
