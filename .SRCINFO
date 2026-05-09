@@ -1,6 +1,6 @@
 pkgbase = taskeract
 	pkgdesc = Desktop app for orchestrating AI coding agents
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://f001.backblazeb2.com/file/taskeract-pub/releases
 	install = taskeract.install
@@ -11,7 +11,7 @@ pkgbase = taskeract
 	depends = libayatana-appindicator
 	depends = librsvg
 	options = !strip
-	source = taskeract-2.2.1.deb::https://f001.backblazeb2.com/file/taskeract-pub/releases/v2.2.1/Taskeract_2.2.1_amd64.deb
-	sha256sums = ca188877386c51b54f800478dd27d4d2df4a507d27e85c33e0335d051c284ba7
+	source = taskeract-2.2.2.deb::https://f001.backblazeb2.com/file/taskeract-pub/releases/v2.2.2/Taskeract_2.2.2_amd64.deb
+	sha256sums = caeaa7e92e04fb6f13fa30a7cf789e912fac13389a046bc982d3661822adec39
 
 pkgname = taskeract
