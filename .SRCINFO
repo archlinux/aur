@@ -1,14 +1,17 @@
 pkgbase = rockbox-zig-bin
         pkgdesc = Open Source high quality audio player
-        pkgver = 2025.02.16
+        pkgver = 2026.05.09
         pkgrel = 1
         url = https://github.com/tsirysndr/rockbox-zig
         arch = x86_64
         license = GPL-2.0
-        depends = sdl2
         depends = libunwind
         depends = alsa-lib
-        source = https://github.com/tsirysndr/rockbox-zig/releases/download/2025.02.16/rockbox-zig-2025.02.16-1-x86_64.pkg.tar.zst
-        sha256sums = 31081fcc430176429734774a0bb4755be1105f8de02e4a2c4a715fabab476482
+        depends = dbus
+        depends = bluez
+        depends = bluez-utils
+        depends = pulseaudio-bluetooth
+        source = https://github.com/tsirysndr/rockbox-zig/releases/download/2026.05.09/rockbox_2026.05.09_x86_64-linux.tar.gz
+        sha256sums = d92b29031582b3cf605eb5f0365dbafade798866eb8ba8b00fdce8eda70bf2be
 
 pkgname = rockbox-zig-bin

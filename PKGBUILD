@@ -1,17 +1,17 @@
-# Maintainer: Tsiry Sandratraina <tsiry.sndr@fluentci.io>
+# Maintainer: Tsiry Sandratraina <tsiry.sndr@rocksky.app>
 
 pkgname=rockbox-zig-bin
-pkgver=2025.02.16
+pkgver=2026.05.09
 pkgrel=1
 pkgdesc="Open Source high quality audio player"
 arch=('x86_64')
 url="https://github.com/tsirysndr/rockbox-zig"
 license=('GPL-2.0')
-depends=('sdl2' 'libunwind' 'alsa-lib')
-source=("$url/releases/download/${pkgver/_/-}/rockbox-zig-${pkgver/_/-}-1-x86_64.pkg.tar.zst")
-sha256sums=('31081fcc430176429734774a0bb4755be1105f8de02e4a2c4a715fabab476482')
+depends=('libunwind' 'alsa-lib' 'dbus' 'bluez' 'bluez-utils' 'pulseaudio-bluetooth')
+source=("$url/releases/download/${pkgver}/rockbox_${pkgver}_x86_64-linux.tar.gz")
+sha256sums=('d92b29031582b3cf605eb5f0365dbafade798866eb8ba8b00fdce8eda70bf2be')
 
 package() {
-  bsdtar -xvf "${srcdir}/rockbox-zig-${pkgver}-1-x86_64.pkg.tar.zst" -C "${pkgdir}/"
-  rm -f "$pkgdir/.BUILDINFO" "$pkgdir/.MTREE" "$pkgdir/.PKGINFO"
+  mkdir -p "${pkgdir}/usr/bin"
+  tar xvf "${srcdir}/rockbox_${pkgver}_x86_64-linux.tar.gz" -C "${pkgdir}/usr/bin"
 }
