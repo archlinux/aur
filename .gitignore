@@ -1,0 +1,6 @@
+*.tar.gz
+*.pkg.tar.zst
+checksums.txt
+src/
+pkg/
+tmp/
