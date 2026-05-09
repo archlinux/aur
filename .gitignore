@@ -1,0 +1,18 @@
+# Makepkg build artifacts
+src/
+pkg/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.tar
+*.pkg.tar.*
+
+# Build outputs
+bin/
+
+# Editor/IDE
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
