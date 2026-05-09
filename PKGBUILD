@@ -5,7 +5,7 @@
 
 pkgname=oidcwarden-web
 _pkgname=vaultwarden-web
-pkgver=2025.8.0
+pkgver=2026.4.2
 pkgrel=1
 pkgdesc='Bitwarden web vault with the patches to make it work with oidcwarden'
 arch=(any)
@@ -21,8 +21,8 @@ makedepends=(
 install=$pkgname.install
 #source=("$pkgname::git+$url#tag=v$pkgver-$pkgrel")
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}-${pkgrel}.tar.gz)
-sha512sums=('5590adb931bee492200fa9aebcf4be467241a7ab42c7a8815e876414fc3093f32ed32f7e8574ec03bd71e30ed6fb7b48e62950246ed94f6f76b4089153a116c4')
-b2sums=('f7d9677e6c86a9eba15b693ec851d697a59025260e80153c6d2f6d3ce18a8bb8e8f09751d60b7a3b93752779b0ca90951e470408ddea60caf22cd2e0f0568702')
+sha512sums=('ece4283f5926d0f08152757fba35bfc66048cd442e8694bf2e09fab0a804b141548ba8a9267ea20b573022a20f46c4e68f2bb25b1c12a06c1903dd1b4e1654a2')
+b2sums=('14993346b147731e810b3eabb82f107f3da7e5dad000c8052edf431e55a3e2b5d1c56becf3f5b182f92c221f3637e42a3ebfc424be14f0a21241ee3811ddf781')
 
 prepare() {
   cd oidc_web_vault-${pkgver}-${pkgrel}
