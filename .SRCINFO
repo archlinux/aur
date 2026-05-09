@@ -1,6 +1,6 @@
 pkgbase = r-sftime
 	pkgdesc = Classes and Methods for Simple Feature Objects that Have a Time Column
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sftime
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-sftime
 	optdepends = r-stars
 	optdepends = r-tidyr
 	optdepends = r-trajectories
-	source = https://cran.r-project.org/src/contrib/sftime_0.3.1.tar.gz
-	sha256sums = d1df6a2f611059e1949a3b2ef75ec5310e7cca4289dcf7af369197f4d5c68874
+	source = https://cran.r-project.org/src/contrib/sftime_0.3.2.tar.gz
+	sha256sums = 5638d00fd4e54ef765e0cfc6c984a0b3b5d5cda74153258af91e350d1dbd9f4d
 
 pkgname = r-sftime
