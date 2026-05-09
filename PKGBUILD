@@ -12,10 +12,10 @@ provides=('logviewer')
 conflicts=('logviewer')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/estran-studio/logviewer/releases/download/v${pkgver}/logviewer_Linux_arm64.tar.gz")
-sha256sums_aarch64=('bf75dd4c691df29e8c844330fac6e4849c974b37c39c3ee5408d28ac65a2c042')
+sha256sums_aarch64=('877c98ac7485b818cbc03dffe804f530ce11eba7bcf3b0239c54d8e73d43a493')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/estran-studio/logviewer/releases/download/v${pkgver}/logviewer_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('89752d0ec48be615701be2d3ddce18ebbb18852aa7e326d851c4ae7b0c2eadba')
+sha256sums_x86_64=('e9f6b5bbd4ba9d2d31a19d53fef78f911c27555ef838d081ea7d0f373fff337e')
 
 package() {
   install -Dm755 "./logviewer" "${pkgdir}/usr/bin/logviewer"
