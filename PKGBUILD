@@ -1,12 +1,13 @@
 # Maintainer: Ryan C. <admin at thebrowserbay dot org>
-pkgname=phantom-satellite-gtk3-bin
+pkgname=phantom-satellite-gtk2-bin
 pkgver=34.2.0
-pkgrel=1
-pkgdesc="Phantom Satellite - Unofficial build of Pale Moon that aims to support older/niche platforms (GTK3)."
+pkgrel=1.1
+pkgdesc="Phantom Satellite - Unofficial build of Pale Moon that aims to support older/niche platforms (GTK2)."
 arch=('x86_64')
 url="https://github.com/DCFUKSURMOM/Phantom-Satellite"
 license=('MPL-2.0')
-depends=('gtk3' 'libxt' 'dbus-glib' 'nss' 'ffmpeg4.4')
+depends=('gtk2-ng-git' 'libxt' 'dbus-glib' 'nss' 'ffmpeg4.4')
+optdepends=('gtk2: gtk2-ng-git is a community-maintained fork of GTK with ongoing fixes. It is strongly recommended.')
 provides=("phantom-satellite=${pkgver}")
 conflicts=('phantom-satellite' 'phantom-satellite-git')
 options=(!strip)
@@ -17,14 +18,14 @@ pkgver() {
     | sed -E 's/.*"v([^"]+)".*/\1/'
 }
 
-source=("https://github.com/DCFUKSURMOM/Phantom-Satellite/releases/download/v${pkgver}/phantomsatellite-${pkgver}.linux-x86_64-gtk3.tar.xz")
+source=("https://github.com/DCFUKSURMOM/Phantom-Satellite/releases/download/v${pkgver}/phantomsatellite-${pkgver}.linux-x86_64-gtk2.tar.xz")
 sha256sums=('SKIP')
 
 package() {
     cd "${srcdir}"
 
     # Extract
-    tar -xJf "phantomsatellite-${pkgver}.linux-x86_64-gtk3.tar.xz"
+    tar -xJf "phantomsatellite-${pkgver}.linux-x86_64-gtk2.tar.xz"
 
     # Enter extracted folder
     cd "phantomsatellite"
@@ -41,7 +42,7 @@ package() {
 [Desktop Entry]
 Name=Phantom Satellite
 Comment=Unofficial build of Pale Moon that aims to support older/niche platforms.
-Exec=phantom-satellite %u
+Exec=/opt/phantomsatellite/phantomsatellite %u
 Icon=phantom-satellite
 Type=Application
 Categories=Network;WebBrowser;
