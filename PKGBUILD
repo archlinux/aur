@@ -14,6 +14,8 @@ _url_pypi='https://pypi.org/project/tcconfig'
 license=('MIT')
 arch=('any')
 
+provides=('tcshow' 'tcset' 'tcdel')
+
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
 depends=('python' 'python-docker' 'python-dataproperty' 'python-humanreadable' 'python-loguru' 'python-msgfy' 'python-path' 'python-pyparsing' 'python-pyroute2' 'python-simplesqlite' 'python-subprocrunner' 'python-typepy' 'python-voluptuous' 'python-importlib-metadata' 'python-ujson' 'python-pkg_resources')
 
@@ -32,6 +34,7 @@ package() {
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
+
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 

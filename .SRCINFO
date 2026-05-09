@@ -26,6 +26,9 @@ pkgbase = python-tcconfig
 	depends = python-importlib-metadata
 	depends = python-ujson
 	depends = python-pkg_resources
+	provides = tcshow
+	provides = tcset
+	provides = tcdel
 	source = https://files.pythonhosted.org/packages/source/t/tcconfig/tcconfig-0.30.1.tar.gz
 	sha256sums = 71026a22d2be180ff7e251b860e448029d1dd3f5a3be1a11b1a19b4ccb4bbf60
 
