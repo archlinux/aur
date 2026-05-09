@@ -31,7 +31,9 @@ sha256sums=(
   57390f6d7991614af7671297ecc4bd062889d4f51403e7c99353658d8cc61e0f
 )
 
-_kernelver=$(pacman -Q linux | cut -f2 -d ' ' | sed 's/\.arch/-arch/')
+_kernelver() {
+  pacman -Q linux | cut -f2 -d ' ' | sed 's/\.arch/-arch/'
+}
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -40,11 +42,13 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  make dahdi DAHDI_DIR=/usr KVER="${_kernelver}" KDIR="/usr/lib/modules/${_kernelver}/build"
+  local kernelver="$(_kernelver)"
+  make dahdi DAHDI_DIR=/usr KVER="${kernelver}" KDIR="/usr/lib/modules/${kernelver}/build"
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
+  local kernelver="$(_kernelver)"
 
   make DESTDIR="${pkgdir}" install_etc install_util install_inc install_lib
   rm -f "${pkgdir}"/etc/wanpipe/api/{libsangoma,libstelephony}/{config.log,config.status,Makefile}
@@ -52,7 +56,7 @@ package() {
   local module
   for module in patches/kdrivers/src/net/{sdladrv,wanrouter,wanpipe,wanec,wan_aften}.ko; do
     gzip -fn "$module"
-    install -Dm0644 "${module}.gz" "${pkgdir}/usr/lib/modules/${_kernelver}/extramodules/${module##*/}.gz"
+    install -Dm0644 "${module}.gz" "${pkgdir}/usr/lib/modules/${kernelver}/extramodules/${module##*/}.gz"
   done
 
   rm -f "${pkgdir}"/usr/lib/*.la
