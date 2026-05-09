@@ -1,13 +1,13 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon
-pkgver=r43.ae12280
+pkgver=r44.973b5c6
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets'
 arch=('x86_64')
 url='https://github.com/liixini/skwd-daemon'
 license=('MIT')
-makedepends=('cargo' 'gcc' 'clang' 'pkgconf' 'ffmpeg' 'alsa-lib')
-depends=('gcc-libs' 'imagemagick' 'ffmpeg' 'alsa-lib')
+makedepends=('cargo' 'gcc' 'clang' 'pkgconf' 'ffmpeg' 'alsa-lib' 'wayland' 'wayland-protocols' 'mesa')
+depends=('gcc-libs' 'imagemagick' 'ffmpeg' 'alsa-lib' 'wayland' 'mesa')
 options=('!debug' '!lto')
 optdepends=(
   'ollama: local LLM for automated wallpaper tagging'
