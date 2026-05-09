@@ -49,7 +49,7 @@ package() {
                    "$pkgdir/usr/lib/systemd/system/broadcast-api.service"
     install -Dm644 pkg/etc/systemd/system/ffmpeg-cam-dark.service \
                    "$pkgdir/usr/lib/systemd/system/ffmpeg-cam-dark.service"
-    install -Dm644 pkg/etc/systemd/system/ffmpeg-cam.service \
+    install -Dm644 pkg/usr/lib/systemd/system/ffmpeg-cam.service \
                    "$pkgdir/usr/lib/systemd/system/ffmpeg-cam.service"
 
     # ── tmpfiles.d ───────────────────────────────────────────────────────────
