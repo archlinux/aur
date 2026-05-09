@@ -1,27 +1,24 @@
 pkgbase = python-mopidy-tidal-git
-	pkgdesc = Tidal music service integration
+	pkgdesc = TIDAL music service integration for Mopidy
 	pkgver = r48.5984ee1
 	pkgrel = 1
 	url = https://github.com/tehkillerbee/mopidy-tidal
 	arch = any
 	license = Apache
-	makedepends = python-pip
-	makedepends = python-wheel
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-uv-build
 	depends = python
 	depends = python-tidalapi
 	depends = python-pykka
 	depends = python-requests
-	depends = python-setuptools
 	depends = mopidy
-	provides = python-mopidy-tidal
-	conflicts = python-mopidy-tidal
-	source = PKGBUILD_EXTRAS
+	provides = mopidy-tidal
+	conflicts = mopidy-tidal
 	source = git+https://github.com/tehkillerbee/mopidy-tidal.git
-	source = LICENSE
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 3b83ef96387f14655fc854ddc3c6bd57
+	sha256sums = SKIP
 
 pkgname = python-mopidy-tidal-git
-
