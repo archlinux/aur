@@ -1,6 +1,6 @@
 pkgbase = vrc-py
 	pkgdesc = Advanced VRChat OSC HUD with synced lyrics, system stats, and progress bars
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/vrc-py
 	arch = any
@@ -11,6 +11,6 @@ pkgbase = vrc-py
 	optdepends = nvidia-utils: for GPU monitoring support
 	optdepends = cmatrix: for --larplarplarpsahur mode
 	source = vrc.py
-	sha256sums = de420cb38c384ef9f4c719ad63b675ac9524498c862b960e83320b05f8435908
+	sha256sums = aad47a118bf4780970b10f420386dfa53fe1e60cc0701841d718468b54606799
 
 pkgname = vrc-py
