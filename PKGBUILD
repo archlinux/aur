@@ -16,7 +16,7 @@ makedepends=(
     'gn'
 )
 options=('!lto')     # LTO conflicts with some V8 build steps
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/h4ckf0r0day/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/h4ckf0r0day/obscura/archive/refs/tags/v${pkgver}.tar.gz")
 
 sha256sums=('afcfd3cf31e3e6e39536fe02bc793f1c413e4f2ce9d00c9bd3d1b392974dfd01')
 
@@ -24,14 +24,16 @@ sha256sums=('afcfd3cf31e3e6e39536fe02bc793f1c413e4f2ce9d00c9bd3d1b392974dfd01')
 # When enabled, pass --stealth at runtime to activate.
 # _stealth_feature="--features stealth"
 
+_srcname=obscura
+
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_srcname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_srcname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
@@ -44,13 +46,13 @@ build() {
 }
 
 check() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_srcname}-${pkgver}"
     cargo test --frozen --release ${_stealth_feature}
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    cd "${_srcname}-${pkgver}"
+    install -Dm755 "target/release/${_srcname}" "${pkgdir}/usr/bin/${_srcname}"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 LICENSE   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

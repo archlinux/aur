@@ -13,7 +13,7 @@ pkgbase = obscura-browser
 	makedepends = ninja
 	makedepends = gn
 	options = !lto
-	source = obscura-browser-0.1.2.tar.gz::https://github.com/h4ckf0r0day/obscura-browser/archive/refs/tags/v0.1.2.tar.gz
+	source = obscura-browser-0.1.2.tar.gz::https://github.com/h4ckf0r0day/obscura/archive/refs/tags/v0.1.2.tar.gz
 	sha256sums = afcfd3cf31e3e6e39536fe02bc793f1c413e4f2ce9d00c9bd3d1b392974dfd01
 
 pkgname = obscura-browser
