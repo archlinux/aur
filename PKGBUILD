@@ -2,7 +2,7 @@
 
 pkgname=game-link-bin
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal game companion for linking ROMs and managing media (Pre-compiled)"
 arch=('x86_64')
 url="https://github.com/CarlosEvCode/game_link"
@@ -22,7 +22,8 @@ sha256sums=(
 )
 
 package() {
-  cd "$srcdir"
+  # Entrar en la subcarpeta que crea el tar.xz
+  cd "$srcdir/lutris_game_station_portable"
   
   # 1. Directorio base en /opt
   install -dm755 "$pkgdir/opt/game-link"
@@ -40,6 +41,6 @@ package() {
   ln -s /opt/game-link/launch.sh "$pkgdir/usr/bin/game-link"
 
   # 5. Integración con el sistema
-  install -Dm644 game-link.desktop "$pkgdir/usr/share/applications/game-link.desktop"
-  install -Dm644 game-link.png     "$pkgdir/usr/share/pixmaps/game-link.png"
+  install -Dm644 "$srcdir/game-link.desktop" "$pkgdir/usr/share/applications/game-link.desktop"
+  install -Dm644 "$srcdir/game-link.png"     "$pkgdir/usr/share/pixmaps/game-link.png"
 }

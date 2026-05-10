@@ -1,7 +1,7 @@
 pkgbase = game-link-bin
 	pkgdesc = Universal game companion for linking ROMs and managing media (Pre-compiled)
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CarlosEvCode/game_link
 	arch = x86_64
 	license = MIT
