@@ -1,6 +1,6 @@
 pkgbase = resonance-bin
 	pkgdesc = A local-first, zero-account API client with excellent user experience
-	pkgver = 2.8.4
+	pkgver = 2.8.5
 	pkgrel = 1
 	url = https://github.com/db-mobile/resonance
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = resonance-bin
 	provides = resonance
 	conflicts = resonance
 	options = !strip
-	source = resonance-2.8.4-source.tar.gz::https://github.com/db-mobile/resonance/archive/refs/tags/v2.8.4.tar.gz
-	sha256sums = ee8fa26e3e969e22682c558ae025782e9ab163cf1433fad1055e69d257465b04
-	source_x86_64 = resonance-2.8.4-amd64.deb::https://github.com/db-mobile/resonance/releases/download/v2.8.4/resonance_2.8.4_amd64.deb
-	sha256sums_x86_64 = 2b274aabc324810d02f33446398a68419b4ce101173d42b826e35efc3fc5a6a2
-	source_aarch64 = resonance-2.8.4-arm64.deb::https://github.com/db-mobile/resonance/releases/download/v2.8.4/resonance_2.8.4_arm64.deb
-	sha256sums_aarch64 = 92d286b4874319745366bb24d99483f40605e68fbfd22be81d2f6cddf739e59c
+	source = resonance-2.8.5-source.tar.gz::https://github.com/db-mobile/resonance/archive/refs/tags/v2.8.5.tar.gz
+	sha256sums = 06fb1517c44ff6b37976fcaadc1bb27b29c5c1c2609c4d12649925f3faa5edcc
+	source_x86_64 = resonance-2.8.5-amd64.deb::https://github.com/db-mobile/resonance/releases/download/v2.8.5/resonance_2.8.5_amd64.deb
+	sha256sums_x86_64 = f6bd75a31fb7a9dd9da3a81e327154a5f472278ad335857a350724fc1bb779d0
+	source_aarch64 = resonance-2.8.5-arm64.deb::https://github.com/db-mobile/resonance/releases/download/v2.8.5/resonance_2.8.5_arm64.deb
+	sha256sums_aarch64 = 3223920fcf79eab0903c4dd4210c7153d5596478982024c9a46a2e1cb1237128
 
 pkgname = resonance-bin
