@@ -50,6 +50,7 @@ package() {
 
   cp -a node_modules/. "$pkgdir/$mod_dir/node_modules/"
 
+  # Copy all necessary files for all packages except coding-agent
   local _pkg
   for _pkg in ai agent tui web-ui; do
     install -dm755 "$pkgdir/$mod_dir/packages/$_pkg"
@@ -57,18 +58,18 @@ package() {
       "$pkgdir/$mod_dir/packages/$_pkg/"
   done
 
+  # Copy all necessary files for coding-agent as it also includes docs and examples and CHANGELOG.md
   install -dm755 "$pkgdir/$mod_dir/packages/coding-agent"
   cp -a packages/coding-agent/dist packages/coding-agent/docs packages/coding-agent/examples \
     packages/coding-agent/package.json packages/coding-agent/README.md packages/coding-agent/CHANGELOG.md \
     "$pkgdir/$mod_dir/packages/coding-agent/"
 
+  # This package is only useful in windows installation, therefore remove it
   rm -rf "$pkgdir/$mod_dir/node_modules/koffi"
-  rm -f "$pkgdir/$mod_dir/node_modules/@mariozechner/pi" \
-        "$pkgdir/$mod_dir/node_modules/@mariozechner/pi-mom" \
-        "$pkgdir/$mod_dir/node_modules/@mariozechner/pi-web-ui"
 
   ln -s "$mod_dir/packages/coding-agent/dist/cli.js" "$pkgdir/usr/bin/pi"
 
+  # Copy coding-agent docs and README and CHANGELOG into /usr/share/doc/pi to align it with Arch packages
   cp -r packages/coding-agent/docs/* "$pkgdir/usr/share/doc/$pkgname/"
   cp -r packages/coding-agent/examples "$pkgdir/usr/share/doc/$pkgname/"
   install -m644 packages/coding-agent/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
