@@ -1,20 +1,22 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 # Contributor: zneix <zneix@zneix.eu>
 
-pkgname=pass-otp-git
-pkgver=1.2.0.r29.ga364d2a
-pkgrel=2
-pkgdesc='A pass extension for managing one-time-password (OTP) tokens.'
-arch=('any')
+_pkgname=pass-otp
+pkgname=$_pkgname-git
+pkgver=1.2.0.r39.g7bb50db
+pkgrel=1
+pkgdesc='A pass extension for managing one-time-password (OTP) tokens'
+arch=(any)
 url=https://github.com/tadfisher/pass-otp
-license=('GPL3')
-depends=()
-makedepends=('git' 'make')
-provides=('pass-otp')
-conflicts=('pass-otp')
-options=()
-source=('pass-otp::git+https://github.com/tadfisher/pass-otp.git')
-sha256sums=('SKIP')
+license=(GPL3)
+
+conflicts=($_pkgname)
+provides=($_pkgname)
+depends=(pass oath-toolkit qrencode)
+makedepends=(git)
+optdepends=('passage: a pass fork with age backend')
+source=(git+$url)
+sha256sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/pass-otp"
