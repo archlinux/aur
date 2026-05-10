@@ -23,7 +23,7 @@ optdepends=(
 conflicts=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
 provides=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
 
-_commit=cc515100158f6666b4c844be0ca290d0b55e7b18 # tags/Gtk4-100.23
+_commit=04412f83d989eed0e169fcfddfb6b995715bc5e0 # tags/100.23
 source=("git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=$_commit")
 sha256sums=('SKIP')
 

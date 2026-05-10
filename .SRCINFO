@@ -19,7 +19,7 @@ pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng-git
 	conflicts = gnome-shell-extension-desktop-icons
-	source = git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=cc515100158f6666b4c844be0ca290d0b55e7b18
+	source = git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=04412f83d989eed0e169fcfddfb6b995715bc5e0
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-gtk4-desktop-icons-ng
