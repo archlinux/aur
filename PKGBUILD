@@ -2,7 +2,7 @@
 # Contributor: Gxstavo <gps5821s@outlook.com>
 pkgname=spent-tracker
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal expense tracker desktop app built with Tauri"
 arch=('x86_64')
 url="https://github.com/Gxstavo-dev/spent"
