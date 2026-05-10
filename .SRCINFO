@@ -1,7 +1,7 @@
 pkgbase = vvenc-llvm
 	pkgdesc = A H.266/VVC (Versatile Video Coding) encoder — built with Clang and LLVM lld
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fraunhoferhhi/vvenc/
 	arch = x86_64
 	license = BSD-3-Clause-Clear
