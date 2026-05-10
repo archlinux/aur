@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=المكتبة الشاملة
+Comment=المكتبة الشاملة النسخة غير رسمية لأرش جنو لينكس
+Exec=shamela
+Icon=shamela
+Terminal=false
+Type=Application
+Categories=Education;Literature;Office;
+StartupWMClass=shamela
