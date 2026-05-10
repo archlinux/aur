@@ -1,7 +1,7 @@
 # Maintainer: The-Best-Codes <bestcodes dot official at gmail dot com>
 pkgname=agent-one-bin
 pkgver=0.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="AgentOne is a powerful AI agent that gives you freedom to choose your models and control your data."
 arch=('x86_64')
 url="https://www.agent-one.dev"
