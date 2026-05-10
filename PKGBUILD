@@ -1,4 +1,4 @@
-# Maintainer: Meredith V. <justmere@proton.me>
+# Maintainer: Meredith V. <delightful.device@pm.me>
 
 pkgname=wrlcatcontrol-bin
 pkgver=1.1.3
