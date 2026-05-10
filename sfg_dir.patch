@@ -1,0 +1,19 @@
+diff --git a/src/main/python/signalflowgrapher/gui/main_window.py b/src/main/python/signalflowgrapher/gui/main_window.py
+index 0bb87c1..270f3bc 100644
+--- a/src/main/python/signalflowgrapher/gui/main_window.py
++++ b/src/main/python/signalflowgrapher/gui/main_window.py
+@@ -1,5 +1,6 @@
+ import ntpath
+ import logging
++import os
+ 
+ from PySide6.QtWidgets import (
+     QMainWindow, QDockWidget, QFileDialog, QMessageBox)
+@@ -177,6 +178,7 @@ class MainWindow(QMainWindow):
+             self,
+             QCoreApplication.translate("main_window",
+                                        "Open Signal-flow Graph"),
++            dir=os.path.expanduser("~"),
+             filter=("SFG / JSON (*.json *.sfg);;"
+                     "JSON (*.json);;SFG (*.sfg)"))
+ 

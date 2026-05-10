@@ -25,11 +25,13 @@ source=(
   "${pkgname}::git+${url}.git"
   "signalflowgrapher.desktop"
   "signalflowgrapher.xml"
+  "sfg_dir.patch"
 )
 sha256sums=(
   'SKIP'
   'f47c3b62785979a140706e0378e85d75bbcd479970df7b839b302a56d31e9cf6'
   'e68705635aca752d95ad575a672ce359f0f3e14f59cda3f1e1c04a27f250e7cc'
+  '8aeaeec9b67eab55f658d83b38f18713b7d5de3bd87bf196ad104f9f1e5b08da'
 )
 
 pkgver() {
@@ -46,6 +48,12 @@ pkgver() {
   fi
 
   printf 'r%s.%s\n' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+
+  patch --forward --strip=1 --input="$srcdir/sfg_dir.patch"
 }
 
 package() {
