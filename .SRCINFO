@@ -1,0 +1,25 @@
+pkgbase = zoitechat-git
+	pkgdesc = HexChat based IRC client for Windows and UNIX-like operating systems
+	pkgver = r4771.4ed4eaf8
+	pkgrel = 1
+	url = https://github.com/ZoiteChat/zoitechat
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = glib2-devel
+	makedepends = perl
+	makedepends = lua
+	depends = gtk3
+	depends = libcanberra
+	depends = python-cffi
+	depends = libayatana-appindicator
+	optdepends = pciutils: sysinfo plugin support
+	optdepends = perl: perl script support
+	optdepends = lua: lua script support
+	provides = zoitechat
+	conflicts = zoitechat
+	source = git+https://github.com/ZoiteChat/zoitechat.git
+	md5sums = SKIP
+
+pkgname = zoitechat-git
