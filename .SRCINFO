@@ -1,6 +1,6 @@
 pkgbase = python-fudgeo
 	pkgdesc = OGC GeoPackage support via Python and SQLite
-	pkgver = 1.5.7
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://github.com/realiii/fudgeo
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-fudgeo
 	makedepends = python-wheel
 	depends = python-bottleneck
 	depends = python-numpy
-	source = git+https://github.com/realiii/fudgeo.git#tag=v1.5.7
-	sha256sums = 90d0fca99b04d6e570deefee1348b2e0f6c01b4bacf9ece8f58609ba2a3e4e66
+	source = git+https://github.com/realiii/fudgeo.git#tag=v1.5.9
+	sha256sums = 5d04c05a93a783a9bac1c7ded6d3ce691de3996b0c2498a506c159fab81338c0
 
 pkgname = python-fudgeo
