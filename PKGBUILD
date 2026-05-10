@@ -2,10 +2,10 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
-pkgver=8.1
+pkgver=8.1.1
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.8.3'
+_whispercpp_ver='1.8.4'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -173,10 +173,10 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
-sha256sums=('b072aed6871998cce9b36e7774033105ca29e33632be5b6347f3206898e0756a'
+sha256sums=('b6863adde98898f42602017462871b5f6333e65aec803fdd7a6308639c52edf3'
             'SKIP'
             'SKIP'
-            '870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
+            'b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
             'ff6dabc3cbef98d22cc8f081343d5c66b2564b3a898c2dbcc88baa5017d80232'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '73e516bd771024f100983d0b7a5d43b49fd1e992c83e6caec445b7338e79e8c2'
@@ -285,10 +285,10 @@ build() {
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
-        --enable-libharfbuzz \
         --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
+        --enable-libharfbuzz \
         --enable-libiec61883 \
         --enable-libilbc \
         --enable-libjack \
@@ -301,6 +301,7 @@ build() {
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libmpeghdec \
+        --enable-libmysofa \
         --enable-liboapv \
         --enable-libopencolorio \
         --enable-libopencore-amrnb \
@@ -365,21 +366,18 @@ build() {
         --enable-libzvbi \
         --enable-lv2 \
         --enable-lzma \
-        --enable-decklink \
         --disable-mbedtls \
-        --enable-libmysofa \
-        --enable-openal \
-        --enable-opencl \
-        --enable-opengl \
         --disable-openssl \
         --disable-pocketsphinx \
-        --enable-sndio \
-        --enable-sdl2 \
         --enable-vapoursynth \
-        --enable-vulkan \
         --enable-whisper \
         --enable-xlib \
         --enable-zlib \
+        \
+        --enable-decklink \
+        --enable-openal \
+        --enable-sndio \
+        --enable-sdl2 \
         \
         --enable-amf \
         --enable-cuda-nvcc \
@@ -393,10 +391,13 @@ build() {
         --enable-nvenc \
         --disable-ohcodec \
         --enable-omx \
+        --enable-opencl \
+        --enable-opengl \
         --enable-rkmpp \
         --enable-v4l2-m2m \
+        --enable-vdpau \
         --enable-vaapi \
-        --enable-vdpau
+        --enable-vulkan
     make
     make tools/qt-faststart
 }
