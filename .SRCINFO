@@ -1,6 +1,6 @@
 pkgbase = sql-pipe
 	pkgdesc = Read CSV via stdin, run SQL, emit CSV via stdout
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/vmvarela/sql-pipe
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = sql-pipe
 	license = MIT
 	provides = sql-pipe
 	conflicts = sql-pipe
-	source = LICENSE::https://raw.githubusercontent.com/vmvarela/sql-pipe/v0.8.1/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/vmvarela/sql-pipe/v0.9.0/LICENSE
 	sha256sums = 3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04
-	source_x86_64 = sql-pipe-0.8.1-x86_64::https://github.com/vmvarela/sql-pipe/releases/download/v0.8.1/sql-pipe-x86_64-linux
-	sha256sums_x86_64 = ac1d61b2372e8e0cd9506247866e12cecc136c9afcc25f2e47ec8d6c1e6011f2
-	source_aarch64 = sql-pipe-0.8.1-aarch64::https://github.com/vmvarela/sql-pipe/releases/download/v0.8.1/sql-pipe-aarch64-linux
-	sha256sums_aarch64 = 3bc12fe44bbd1cc4c5e1e851bf24563dd129dea7d61b5db8d535cbacc60601b3
+	source_x86_64 = sql-pipe-0.9.0-x86_64::https://github.com/vmvarela/sql-pipe/releases/download/v0.9.0/sql-pipe-x86_64-linux
+	sha256sums_x86_64 = 326417dc77fe2a686c8a20498c36a8ae6d037a5ee332a38c1e8bfe1e257643b0
+	source_aarch64 = sql-pipe-0.9.0-aarch64::https://github.com/vmvarela/sql-pipe/releases/download/v0.9.0/sql-pipe-aarch64-linux
+	sha256sums_aarch64 = c843455ad07a9ef4283ab6fbd311295bce0e4195868cc2fb945379f64ac2be73
 
 pkgname = sql-pipe
