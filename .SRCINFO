@@ -1,11 +1,11 @@
 pkgbase = burnt-out
 	pkgdesc = To-do app focused on preventing Burnout Syndrome ;)
-	pkgver = 1.3.05
+	pkgver = 1.3.06
 	pkgrel = 1
 	url = https://github.com/wDona/Burnt-out
 	arch = x86_64
 	license = MIT
-	source_x86_64 = https://github.com/wDona/Burnt-out/releases/download/v1.3.05/burnt-out-1.3.05-installer.deb
+	source_x86_64 = https://github.com/wDona/Burnt-out/releases/download/v1.3.06/burnt-out-1.3.06-installer.deb
 	sha256sums_x86_64 = SKIP
 
 pkgname = burnt-out
