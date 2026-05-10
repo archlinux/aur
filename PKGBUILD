@@ -1,6 +1,6 @@
 # Maintainer: Václav Šmejkal <engo@satan.red>
 pkgname=why2
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Lightweight, fast and secure chat application powered by WHY2 encryption."
 arch=('x86_64' 'aarch64')
