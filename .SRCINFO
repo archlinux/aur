@@ -1,17 +1,19 @@
 pkgbase = dash-static-musl
-	pkgdesc = A POSIX compliant shell that aims to be as small as possible, statically linked to musl libc
-	pkgver = 0.5.12
+	pkgdesc = A POSIX compliant shell that aims to be as small as possible
+	pkgver = 0.5.13.4
 	pkgrel = 1
 	url = http://gondor.apana.org.au/~herbert/dash/
 	install = dash.install
-	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = musl
+	makedepends = gcc
+	makedepends = make
 	provides = dash
 	conflicts = dash
-	source = https://git.kernel.org/pub/scm/utils/dash/dash.git/snapshot/dash-0.5.12.tar.gz
-	sha512sums = a5d2347465c0bad09a2921ecb55fb4e7fe451d627ed43c1da82b92259b539857c7a7f153dfee73cea4befcbb34388bb3585845148631262dfe6dec87390f049c
-	b2sums = e0751946fa3b6d513901cc98f3f39a48013f624b9a8ffd699e849456604b856866bd6da268560e6ffa9ec5b91976930d830297031804fdcbab82a953720ee973
+	source = https://git.kernel.org/pub/scm/utils/dash/dash.git/snapshot/dash-0.5.13.4.tar.gz
+	sha512sums = ff0e8a86097bbc39270e7aec9801997f302212e8c81fd24e9d8895830298041916be00a0cfb7a611845703dad4e2cdf51e9909bfcfadc00d4b82772ee5fed33d
+	b2sums = 8555459905a99772830a82c070ce4b1fe1ea8e3a89cf9618505737dce0614cfdafb706e11c82d134fdd6a5150b16ed7a170641cb770625bfc7899d1791430c6d
 
 pkgname = dash-static-musl
