@@ -1,0 +1,12 @@
+post_install() {
+    echo " :: 中国移动云盘安装完成。"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ":: 卸载完成。"
+    echo ":: 清理残留的用户数据，请执行： rm -rf ~/.local/share/mcloud_env"
+}
