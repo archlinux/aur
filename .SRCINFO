@@ -1,6 +1,6 @@
 pkgbase = tsm-app
 	pkgdesc = TradeSkillMaster Desktop App for Linux - auction data downloader for WoW under Wine/Lutris/Steam
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/exceptionptr/tsm-app-linux
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = tsm-app
 	depends = python-attrs
 	depends = python-tenacity
 	depends = python-tzlocal
-	source = tsm-app-1.1.7.tar.gz::https://github.com/exceptionptr/tsm-app-linux/archive/refs/tags/v1.1.7.tar.gz
-	sha256sums = fe7353bfef145dd637d0a835916efd050deab98235e1a900309f6f853b2a73f0
+	source = tsm-app-1.1.8.tar.gz::https://github.com/exceptionptr/tsm-app-linux/archive/refs/tags/v1.1.8.tar.gz
+	sha256sums = ca546e3bbeb893e59613f0bb85949a1224d112e6b98e53995d856e27ba0fc351
 
 pkgname = tsm-app
