@@ -1,0 +1,5 @@
+[xmp]
+source = "github"
+github = "libxmp/xmp-cli"
+use_latest_release = "true"
+prefix = "xmp-"
