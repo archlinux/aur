@@ -1,0 +1,20 @@
+pkgbase = game-link-bin
+	pkgdesc = Universal game companion for linking ROMs and managing media (Pre-compiled)
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://github.com/CarlosEvCode/game_link
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libgl
+	depends = sqlite
+	provides = game-link
+	conflicts = game-link
+	source = game-link-bin-2.8.0.tar.xz::https://github.com/CarlosEvCode/game_link/releases/download/v2.8.0/lutris_game_station-2.8.0-linux-x64.tar.xz
+	source = game-link.desktop
+	source = game-link.png::https://raw.githubusercontent.com/CarlosEvCode/game_link/main/linux/game_link.png
+	sha256sums = fed9c36054ed7ee519b31645944bc1b1ec44b6c9598aa1638517c81decedbb17
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = game-link-bin

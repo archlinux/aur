@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Game Link
+Comment=Universal game companion for linking ROMs and managing media
+Exec=/usr/bin/game-link
+Icon=game-link
+Terminal=false
+Type=Application
+Categories=Game;Utility;
