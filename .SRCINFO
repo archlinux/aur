@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-full
 	pkgver = 3.33.6133.102.20260503
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = custom

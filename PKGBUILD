@@ -25,7 +25,7 @@ _dict=(alt-cannadic
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=3.33.6133.102.20260503
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -73,8 +73,6 @@ sha512sums=('312e94e71bc2445ab8593d96a4311adddedbbf4e9bcf3a36deb95fac93ed74853e2
 
 pkgver() {
     cd "${srcdir}/mozc" || exit
-    # comment out shell-incompatible code, revert at build()
-    sed 's,DEFAULT_BUILD_LABEL_MACOS,#DEFAULT_BUILD_LABEL_MACOS,' -i src/version.bzl
     source <(grep = src/version.bzl | tr -d ' ')
     printf "%s.%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION + 2))" "$_utdicdate"
 }
@@ -83,6 +81,10 @@ prepare() {
     mv KEN_ALL.CSV x-ken-all.csv
 
     cd "$srcdir/mozc" || exit
+
+    # comment out shell-incompatible code, revert at build()
+    sed 's,DEFAULT_BUILD_LABEL_MACOS,#DEFAULT_BUILD_LABEL_MACOS,' -i src/version.bzl
+
     git config -f .gitmodules submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
     git config -f .gitmodules submodule.src/third_party/breakpad.url "$srcdir/breakpad"
     git config -f .gitmodules submodule.src/third_party/gtest.url "$srcdir/googletest"
@@ -116,8 +118,9 @@ prepare() {
 }
 
 build() {
-    # revert prior inline replace in pkgver()
+    # revert prior inline replace in prepare()
     sed 's,#DEFAULT_BUILD_LABEL_MACOS,DEFAULT_BUILD_LABEL_MACOS,' -i mozc/src/version.bzl
+
     # Fix compatibility with google-glog 0.3.3 (symbol conflict)
     CFLAGS="${CFLAGS} -fvisibility=hidden"
     CXXFLAGS="${CXXFLAGS} -fvisibility=hidden"
