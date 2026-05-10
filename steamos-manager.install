@@ -1,0 +1,10 @@
+post_install() {
+  echo ""
+  echo "==> NOTE: If TDP control does not appear, try rebooting."
+  echo "==> For GPD Win Mini ACPI/ALIB TDP control, ensure the"
+  echo "==> acpi_call kernel module is installed and loaded manually."
+}
+
+post_upgrade() {
+  post_install
+}

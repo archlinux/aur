@@ -1,0 +1,25 @@
+pkgbase = steamos-manager-gpdwinmini-git
+	pkgdesc = SteamOS Manager with native ACPI/ALIB TDP control for GPD Win Mini (VCS)
+	pkgver = r700.g667a7b9
+	pkgrel = 1
+	url = https://github.com/tctinh/steamos-manager-gpd
+	install = steamos-manager.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
+	depends = glib2
+	depends = libspeechd
+	depends = systemd-libs
+	depends = dbus
+	optdepends = acpi_call-dkms: Required for GPD Win Mini TDP control via ACPI/ALIB
+	provides = steamos-manager
+	conflicts = steamos-manager
+	conflicts = steamos-manager-gpdwinmini
+	options = !lto
+	source = steamos-manager-gpdwinmini-git::git+https://github.com/tctinh/steamos-manager-gpd.git#branch=main
+	sha256sums = SKIP
+
+pkgname = steamos-manager-gpdwinmini-git
