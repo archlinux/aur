@@ -19,6 +19,10 @@ pkgbase = canto-git
 	provides = canto
 	conflicts = canto
 	source = canto-git::git+https://github.com/lucilf3r/canto.git
+	source = https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/kokoro-v0_19.onnx
+	source = https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/voices.bin
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = canto-git
