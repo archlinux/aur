@@ -2,8 +2,8 @@
 
 _pkgname=headlamp
 pkgname=headlamp-bin
-pkgver=0.41.0
-pkgrel=2
+pkgver=0.42.0
+pkgrel=1
 pkgdesc='A Kubernetes web UI that is fully-featured, user-friendly and extensible'
 arch=('x86_64')
 license=('Apache-2.0')
@@ -15,7 +15,7 @@ options=('!debug' '!strip' '!emptydirs')
 source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/kubernetes-sigs/headlamp/releases/download/v${pkgver}/Headlamp-${pkgver}-linux-x64.tar.gz"
         ${_pkgname}.svg::"https://raw.githubusercontent.com/kubernetes-sigs/headlamp/main/frontend/src/resources/icon-dark.svg"
         "${_pkgname}.desktop")
-b2sums=('aedd191698605e87e133ff7bec0818eb76029363b3fc96c28c50a83748488113e76bed22afeabdf6dcd174a4ff1460276bb5ffcc422b4a73ea4204d1453d3c8f'
+b2sums=('7f459e35682699ba04298033e085449a3092de7b231815c69e4b16104feb3fb24f7f7e5954a1c10d298557e5a183c75cbb1136d429cd276171c9760bcd216212'
         '60dfacf0a97e0a642a25ca38e54a0c9448598ad0d9f40afe0966029536c40d502940068a1029463ce63df9e5216d4eba7fbd75538cedfdfd10f4014b8673a5bb'
         '775b6f07693b57548517b7e2f5cbf576daac8cc4ab744289ae2d8bb986d3609f8c5330776603fbf140a264bb31d3bba2dff3db5435aef22f9ddcabddc25c2853')
 
