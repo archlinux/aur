@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqmagick
-_pkgver=0.1.7
+_pkgver=0.1.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Sequence Manipulation Utilities"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,7 +15,6 @@ depends=(
   r-yulab.utils
 )
 optdepends=(
-  r-downloader
   r-genomicalignments
   r-genomicranges
   r-iranges
@@ -26,8 +25,8 @@ optdepends=(
   r-rsamtools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e2923b561cb82289ef07e4016f7376ad')
-b2sums=('e1f23726164157cc14cc1cda6df6ea6932cc8aea3474cedb79b44ede34c3ce2254eb53f4f3d6982803ceedb680c6993735b569a0279e586f319603b45b5142d9')
+md5sums=('15fe550ba1b3d9287f27c0647fcd4e64')
+b2sums=('b192ca63bf642a60ea0649490f3b40b409dd2d4b4a5a2164837e86e29897f46aed9c15543ca7009b142f264a896e31bce0fe6a91c3782001050bebc09f47164a')
 
 build() {
   mkdir build
