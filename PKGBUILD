@@ -1,15 +1,16 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2026.01.05.00
+pkgver=2026.05.04.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=(x86_64)
 license=(MIT)
 depends=(
-  gcc-libs
   glibc
+  libgcc
+  libstdc++
   openssl
 )
 makedepends=(
@@ -26,7 +27,7 @@ source=(
   "https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip"
   "watchman-v$pkgver-LICENSE::https://github.com/facebook/watchman/raw/v$pkgver/LICENSE"
 )
-b2sums=('1124a656656ebbe18e064715928724996c2e850ed4eb423c7857d83fc49fc0a2d669a37f8dbdba10c1e2f1f07914a6e0d60d72d8ca22633f778fcd4eb501c18c'
+b2sums=('7ea071390102cf6cc904c2100c1c201ab94b9c2f70a001bdde0febf8712aa483c08157cdb93875e64c58823cd7d825a715c51051820f71b90b686f50d65a841b'
         'b9c1c046dc0cd3c6bbf977f3e6d3f448a5fa26ac4d27aa3e2bf1c1a2f6bf97484a79f76c19bf5d5b3cf92400f951015a5036dfd8e183a2fdb0634ce992b12469')
 
 prepare() {
@@ -48,13 +49,9 @@ Path("bin/watchman").write_bytes(data)
 END
 
   patchelf \
-    --replace-needed {/usr/local/lib/,}libevent-2.1.so.7 \
     --replace-needed {/usr/local/lib/,}libgflags.so.2.2 \
     --replace-needed {/usr/local/lib/,}libglog.so.0 \
-    --replace-needed {/usr/local/lib/,}liblzma.so.5 \
     --replace-needed {/usr/local/lib/,}libsnappy.so.1 \
-    --replace-needed {/usr/local/lib/,}libunwind.so.8 \
-    --replace-needed {/usr/local/lib/,}libxxhash.so.0 \
     bin/* lib/*
 
   patchelf --set-rpath /usr/lib/watchman bin/* lib/*
