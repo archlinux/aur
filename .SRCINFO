@@ -7,7 +7,7 @@ pkgbase = pi
 	arch = aarch64
 	license = MIT
 	makedepends = npm
-	depends = nodejs>=20
+	depends = nodejs-lts-jod
 	optdepends = tmux: for background bash capabilities
 	optdepends = fd: system-provided backend for the find tool
 	optdepends = ripgrep: system-provided backend for the grep tool

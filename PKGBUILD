@@ -7,7 +7,7 @@ pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized 
 arch=('x86_64' 'aarch64')
 url="https://github.com/earendil-works/pi"
 license=('MIT')
-depends=('nodejs>=20')
+depends=('nodejs-lts-jod')
 makedepends=('npm')
 optdepends=(
   'tmux: for background bash capabilities'
@@ -26,6 +26,7 @@ build() {
   ./node_modules/.bin/tsgo -p packages/ai/tsconfig.build.json
   npm --prefix packages/agent run build
   npm --prefix packages/coding-agent run build
+  npm --prefix packages/web-ui run build
 
   npm prune --omit=dev --cache "${srcdir}/npm-cache"
 }
@@ -45,7 +46,8 @@ package() {
   install -dm755 "$pkgdir/$mod_dir/packages/ai" \
                  "$pkgdir/$mod_dir/packages/agent" \
                  "$pkgdir/$mod_dir/packages/tui" \
-                 "$pkgdir/$mod_dir/packages/coding-agent"
+                 "$pkgdir/$mod_dir/packages/coding-agent" \
+                 "$pkgdir/$mod_dir/packages/web-ui"
 
   cp -a packages/ai/dist packages/ai/package.json packages/ai/README.md \
     "$pkgdir/$mod_dir/packages/ai/"
@@ -56,6 +58,8 @@ package() {
   cp -a packages/coding-agent/dist packages/coding-agent/docs packages/coding-agent/examples \
     packages/coding-agent/package.json packages/coding-agent/README.md packages/coding-agent/CHANGELOG.md \
     "$pkgdir/$mod_dir/packages/coding-agent/"
+  cp -a packages/web-ui/dist packages/web-ui/package.json packages/web-ui/README.md \
+    "$pkgdir/$mod_dir/packages/web-ui/"
 
   rm -rf "$pkgdir/$mod_dir/node_modules/koffi"
   rm -f "$pkgdir/$mod_dir/node_modules/@mariozechner/pi" \
