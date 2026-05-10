@@ -1,4 +1,5 @@
-# Maintainer: zneix <zneix@zneix.eu>
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Contributor: zneix <zneix@zneix.eu>
 
 pkgname=pass-otp-git
 pkgver=1.2.0.r29.ga364d2a
