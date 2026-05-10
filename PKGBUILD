@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genefilter
-_pkgver=1.92.0
+_pkgver=1.94.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-tkwidgets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('06c2d7996767eac12666bb4e6e3cd584')
-b2sums=('d94c4718aab0827c2b7f29c9ce5acde8c652a609fd9c922f6a6862bc08b9189cc991a2f590e2d029bc607ee8ba89a6e7c90a0da7eaecea89dcf002a3f764cdb5')
+md5sums=('1cdcf9a109b9d4987433d424ac1dac91')
+b2sums=('0b633115c27614ea74d2502e5d62fa353c829d4c9f29a2647b44b2a3237b73d830ddac4abd4344255ad435e526e694d5a0a23da4ce49dd20c2c5624a59d7fc10')
 
 build() {
   mkdir build
