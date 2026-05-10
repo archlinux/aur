@@ -1,0 +1,60 @@
+pkgbase = diplib
+	pkgdesc = Quantitative Image Analysis in C++, MATLAB, and Python
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://diplib.org
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake>=3.12
+	makedepends = freeglut
+	makedepends = glfw
+	makedepends = java-environment
+	makedepends = libglvnd
+	makedepends = python>=3.8
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = pybind11
+	source = https://github.com/DIPlib/diplib/archive/refs/tags/3.6.0/diplib-3.6.0.tar.gz
+	b2sums = 453b133e071e521a7b017f87ca332f81dd8e18cdee43181b24ce993cc9e5e97930a1415fc466587ef374417890da7b6ff3c1039ce4e8161bab4c32a84b1b70e1
+
+pkgname = diplib
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	optdepends = dipviewer: viewer module
+	optdepends = java-diplib: Java bindings
+	optdepends = python-diplib: Python bindings
+
+pkgname = dipviewer
+	pkgdesc = Quantitative Image Analysis in C++, MATLAB, and Python (viewer module)
+	url = https://diplib.org/diplib-docs/dipviewer.html
+	depends = diplib>=3.6.0-1
+	depends = freeglut
+	depends = glfw
+	depends = glibc
+	depends = libgcc
+	depends = libglvnd
+	depends = libstdc++
+	optdepends = java-diplib: Java-based frontend
+
+pkgname = java-diplib
+	pkgdesc = Quantitative Image Analysis in C++, MATLAB, and Python (Java bindings)
+	url = https://diplib.org/diplib-docs/dipjavaio.html
+	depends = diplib>=3.6.0-1
+	depends = glibc
+	depends = java-runtime-headless
+	depends = libgcc
+	depends = libstdc++
+
+pkgname = python-diplib
+	pkgdesc = Quantitative Image Analysis in C++, MATLAB, and Python (Python bindings)
+	url = https://diplib.org/PyDIP.html
+	depends = diplib>=3.6.0-1
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = python>=3.8
+	optdepends = python-pandas: convert the measurement object into a Pandas DataFrame
+	optdepends = python-matplotlib: display functionality (`diplib.Show()` and `diplib.Image.Show()`)

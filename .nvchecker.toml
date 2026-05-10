@@ -1,0 +1,3 @@
+[diplib]
+source = "git"
+git = "https://github.com/DIPlib/diplib.git"
