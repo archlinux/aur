@@ -1,7 +1,7 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=pnpm-bin
 _pkgname=pnpm
-pkgver=10.33.0
+pkgver=11.0.9
 pkgrel=1
 pkgdesc="Fast, disk space efficient package manager (No dependency on nodejs)"
 arch=('x86_64' 'aarch64')
@@ -11,12 +11,12 @@ conflicts=(${_pkgname})
 provides=(${_pkgname})
 depends=('git')
 options=('!strip')
-source_x86_64=(${_pkgname}-${pkgver}-x86_64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-x64)
-source_aarch64=(${_pkgname}-${pkgver}-aarch64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-arm64)
+source_x86_64=(${_pkgname}-${pkgver}-x86_64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-x64.tar.gz)
+source_aarch64=(${_pkgname}-${pkgver}-aarch64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-arm64.tar.gz)
 _app=${_pkgname}-${pkgver}-${CARCH}
 
 package() {
 	install -Dm755 "${srcdir}/${_app}" "${pkgdir}/usr/bin/pnpm"
 }
-sha256sums_x86_64=('8d4e8f7d778e8ac482022e2577011706a872542f6f6f233e795a4d9f978ea8b5')
-sha256sums_aarch64=('06755ad2817548b84317d857d5c8003dc6e9e28416a3ea7467256c49ab400d48')
+sha256sums_x86_64=('ec84b7750ed24a47e55b71fba528499862bddaf8d9770b2f58a294b8692a8cbf')
+sha256sums_aarch64=('eeb0ccc8652aa21f87ebf656724f1f3a0553e898c35699b0040698252262823e')
