@@ -1,8 +1,8 @@
 # Maintainer: JackpotMachine777 <jackpotmachinedev777@gmail.com>
 
 pkgname=clippr
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.2
+pkgrel=2
 pkgdesc="A fast, minimal clipboard manager for Linux built with Tauri, Rust, React and Python"
 arch=('x86_64')
 url="https://github.com/JackpotMachine777/clippr"
@@ -28,7 +28,7 @@ makedepends=(
   'llvm'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JackpotMachine777/clippr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3839a01838433a1156211295d1f177b918bb5667de2b2ee14964fdc8b05aec4d')
+sha256sums=('25ff41cf7e03296b2ff45738d8ee513f8e6c48777de1647e88ca9b46d6550d65')
 options=(!lto !strip)
 
 build() {
