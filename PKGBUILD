@@ -20,6 +20,7 @@ depends=(
   'hicolor-icon-theme'
   'libgcc'
   'libstdc++'
+  'vulkan-driver'
 )
 makedepends=(
   'cargo'

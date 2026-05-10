@@ -19,6 +19,7 @@ pkgbase = rio
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libstdc++
+	depends = vulkan-driver
 	options = !lto
 	source = rio-0.4.3.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.4.3.tar.gz
 	sha512sums = 25a46bbe123ab5e322b1c160c396c94b3b381df99c22c903a0829b580cd219bcdd58b83923c50dd62821af6bd01d67a4a6de647b2278642f1765b9e5e8bc2c0b
