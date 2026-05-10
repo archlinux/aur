@@ -1,6 +1,6 @@
 pkgbase = r-cellity
 	pkgdesc = Quality Control for Single-Cell RNA-seq Data
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cellity
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-cellity
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellity_1.38.0.tar.gz
-	sha256sums = f99cb3c7fc5c9d9b65899d39c435ee14e8fcad08cd05a2f702c7382fdc8ead41
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellity_1.40.0.tar.gz
+	sha256sums = ac2a7776bf4c688bc5a33ea42bc7908a38efd2444180077322b7935db2ed1476
 
 pkgname = r-cellity
