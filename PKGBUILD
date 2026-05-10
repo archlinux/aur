@@ -12,7 +12,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum=0bedadbf5788693ddebbcc913c893f1a97349af79ddde7144c2a80b401959f1c}
+: ${_cksum=965fb0a1c1675399fc60c6063b227c0523041b5f9a662b66462f1212c438ac3c}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -24,7 +24,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=7.0.3
+pkgver=7.0.5
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -86,7 +86,7 @@ if [[ "${_build_vfio::1}" == "t" ]]; then
   )
   sha256sums+=(
     '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
-    '6f5b96e18acbfb5d69accb99818249dd9a97cb565c80628e6018468bca6e6c37'
+    'b13a692c492404c45cb56f1e27f05fcb2a620504a9cfc1b314f3f90f527d79c0'
   )
 fi
 
@@ -94,15 +94,17 @@ if [[ "${_build_arch_patch::1}" == "t" ]]; then
   [[ ${pkgver} =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && _pkgver=${pkgver%.*}
 
   _dl_url_arch='https://github.com/archlinux/linux'
-  _srctag=$(
+  _tags=$(
     curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/tags.atom" \
-      | grep -Eo "v${_pkgver}\S*-arch[0-9]+" \
-      | sort -rV | head -1
+      | grep -Eo 'v[0-9.]\S*-arch[0-9]+' | sort -ruV
   )
+
+  : ${_srctag:=$(grep -Eom1 "v${pkgver}-arch[0-9]+" <<< "$_tags")}
+  : ${_srctag:=$(grep -Eom1 "v${_pkgver}\\S*-arch[0-9]+" <<< "$_tags")}
   : ${_srctag:=v${pkgver}-arch1}
 
   source+=(
-    $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+    "$_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst"{,.sig}
   )
   sha256sums+=(
     'SKIP'
