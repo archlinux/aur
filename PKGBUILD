@@ -5,8 +5,8 @@
 # https://github.com/zed-extensions/matlab?tab=readme-ov-file#installation-steps
 
 pkgname="matlab-language-server"
-pkgver=1.3.10
-pkgrel=2
+pkgver=1.3.11
+pkgrel=1
 pkgdesc="Implementation of the Microsoft Language Server Protocol for the MATLAB language"
 arch=(
   'any'
@@ -26,28 +26,40 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('0f767e2a0f955987ba00f4fbb7ccd346b2d99bc6c77c182b370a9df780853415')
+sha256sums=('b82c644b10d5a1b06c4e51ba5e57fc69c7e9ab5cf52ea54d02890a265d4a5110')
+
+_source() {
+  export NPM_CONFIG_CACHE="${srcdir}/.npm"
+}
 
 prepare() {
+  _source
+
   cd "${srcdir}/${_pkgsrc}"
-  npm ci --cache "${srcdir}/.npm"
+  npm ci
 }
 
 build() {
+  _source
+
   cd "${srcdir}/${_pkgsrc}"
-  npm run project-install --cache "${srcdir}/.npm"
-  npm run compile --cache "${srcdir}/.npm"
-  npm run package --cache "${srcdir}/.npm"
+  npm run project-install
+  npm run compile
+  npm run package
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  npm run test --cache "${srcdir}/.npm"
-}
+# check() {
+#   _source
+
+#   cd "${srcdir}/${_pkgsrc}"
+#   npm run test
+# }
 
 package() {
+  _source
+
   cd "${srcdir}/${_pkgsrc}"
-  npm ci --omit=dev --cache "${srcdir}/.npm"
+  npm ci --omit=dev
 
   sed -i '1i#!/usr/bin/env node' "out/index.js"
   chmod +x "out/index.js"
@@ -60,7 +72,6 @@ package() {
   ln -vsf "/usr/lib/node_modules/${pkgname}/out/index.js" "${pkgdir}/usr/bin/${pkgname}"
   ln -vsf "${pkgname}" "${pkgdir}/usr/bin/matlab_ls"
 
-  install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "CHANGELOG.md" "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
