@@ -38,7 +38,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd cosmic-comp
-  git describe --long --tags --abbrev=7 | sed 's/^[a-z-]*//;s/\([^-]*-g\)/r\1/;s/-g.*//;s/-/./g'
+  _hash=$(git describe --long --tags --match "gaming-*" | sed 's/.*-g//')
+  echo "${pkgver}.g${_hash}"
 }
 
 prepare() {
