@@ -1,8 +1,8 @@
 # Maintainer: CarlosEvCode <programer.cm12@gmail.com>
 
 pkgname=game-link-bin
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="Universal game companion for linking ROMs and managing media (Pre-compiled)"
 arch=('x86_64')
 url="https://github.com/CarlosEvCode/game_link"
@@ -11,26 +11,26 @@ depends=('gtk3' 'libgl' 'sqlite')
 provides=('game-link')
 conflicts=('game-link')
 source=(
-  "${pkgname}-${pkgver}.tar.xz::https://github.com/CarlosEvCode/game_link/releases/download/v${pkgver}/lutris_game_station-${pkgver}-linux-x64.tar.xz"
+  "${pkgname}-${pkgver}.tar.xz::https://github.com/CarlosEvCode/game_link/releases/download/v${pkgver}/game_link-${pkgver}-linux-x64.tar.xz"
   "game-link.desktop"
   "game-link.png::https://raw.githubusercontent.com/CarlosEvCode/game_link/main/linux/game_link.png"
 )
 sha256sums=(
-  'fed9c36054ed7ee519b31645944bc1b1ec44b6c9598aa1638517c81decedbb17'
+  'c052418253fba71869392ad4b906d1ba096cba30f8540bdff9c1602e07a6e74d'
   'SKIP'
   'SKIP'
 )
 
 package() {
-  # Entrar en la subcarpeta que crea el tar.xz
-  cd "$srcdir/lutris_game_station_portable"
+  # Entrar en la nueva subcarpeta estandarizada
+  cd "$srcdir/game_link"
   
   # 1. Directorio base en /opt
   install -dm755 "$pkgdir/opt/game-link"
   
   # 2. Instalar binario y script
-  install -Dm755 lutris_game_station "$pkgdir/opt/game-link/lutris_game_station"
-  install -Dm755 launch.sh           "$pkgdir/opt/game-link/launch.sh"
+  install -Dm755 game_link "$pkgdir/opt/game-link/game_link"
+  install -Dm755 launch.sh  "$pkgdir/opt/game-link/launch.sh"
   
   # 3. Copiar librerías y datos
   cp -r lib/  "$pkgdir/opt/game-link/lib"
