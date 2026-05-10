@@ -4,7 +4,7 @@ _gitname="GoZen"
 _godot_version="4.6.1-stable"
 
 pkgname=gozen-git
-pkgver=20260421
+pkgver=20260511
 pkgrel=1
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
