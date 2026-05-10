@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geneplotter
-_pkgver=1.88.0
+_pkgver=1.90.0
 pkgname=r-${_pkgname,,}
-pkgver=1.88.0
+pkgver=1.90.0
 pkgrel=1
 pkgdesc='Graphics related functions for Bioconductor'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f577636a9b238f27b2319ab6f9e68fd25a6fcc844ba50ce34202ff9e09c051ac')
+sha256sums=('ea67e6dcbab71fb67287ec5ed3db06e921aa7a451630aa928e39d3b78d731b5e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
