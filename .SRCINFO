@@ -1,6 +1,6 @@
 pkgbase = miniforge
 	pkgdesc = Conda and Mamba package managers configured to use conda-forge
-	pkgver = 26.1.1.3
+	pkgver = 26.3.2.0
 	pkgrel = 1
 	url = https://github.com/conda-forge/miniforge
 	install = miniforge.install
@@ -14,11 +14,11 @@ pkgbase = miniforge
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source_x86_64 = https://github.com/conda-forge/miniforge/releases/download/26.1.1-3/Miniforge3-26.1.1-3-Linux-x86_64.sh
-	sha256sums_x86_64 = b25b828b702df4dd2a6d24d4eb56cfa912471dd8e3342cde2c3d86fe3dc2d870
-	source_aarch64 = https://github.com/conda-forge/miniforge/releases/download/26.1.1-3/Miniforge3-26.1.1-3-Linux-aarch64.sh
-	sha256sums_aarch64 = 83280e4ee71a5bd547d6b318f96e9ababe1054911ff6cc2b8801ce5493fe67e5
-	source_powerpc64le = https://github.com/conda-forge/miniforge/releases/download/26.1.1-3/Miniforge3-26.1.1-3-Linux-ppc64le.sh
-	sha256sums_powerpc64le = 5711fd69219bc9746389ef751ee4c2549d40d9b1626a0ea93cc63db1a739eee6
+	source_x86_64 = https://github.com/conda-forge/miniforge/releases/download/26.3.2-0/Miniforge3-26.3.2-0-Linux-x86_64.sh
+	sha256sums_x86_64 = 1d9b75bdf29ba48d9f10bb155a685baab02d318d1d591d2495f97524579dccc1
+	source_aarch64 = https://github.com/conda-forge/miniforge/releases/download/26.3.2-0/Miniforge3-26.3.2-0-Linux-aarch64.sh
+	sha256sums_aarch64 = b8f0320c0fe9bc9dd24be8896ecf4995bbba4227c9822902daeeb7f3689ba7d3
+	source_powerpc64le = https://github.com/conda-forge/miniforge/releases/download/26.3.2-0/Miniforge3-26.3.2-0-Linux-ppc64le.sh
+	sha256sums_powerpc64le = ccfef271bf337a9278d53d57760e7231f678e5ba64c5b6c9a69cbff7669a527f
 
 pkgname = miniforge
