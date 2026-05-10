@@ -1,8 +1,8 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.2.4.0.r0.gfc902f0
-pkgrel=2
+pkgver=2.2.4.1.r0.gbf6e8bb
+pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
