@@ -1,6 +1,7 @@
 # Maintainer: Wenxuan Shen <bushigemen114@gmail.com>
 
 pkgname=statusinsights-client
+_srcname=StatusInsights-Client
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='Desktop app for StatusInsights built with Flutter'
@@ -22,22 +23,22 @@ source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_srcname}"
   flutter pub get
   flutter gen-l10n
   flutter build linux --release
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_srcname}"
 
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cp -a build/linux/x64/release/bundle/. "${pkgdir}/opt/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/${pkgname}" <<'LAUNCHER'
+cat > "${pkgdir}/usr/bin/${pkgname}" <<'LAUNCHER'
 #!/usr/bin/env sh
-exec /opt/statusinsights/StatusInsights "$@"
+exec /opt/statusinsights-client/StatusInsights "$@"
 LAUNCHER
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
