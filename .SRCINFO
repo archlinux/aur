@@ -1,0 +1,14 @@
+pkgbase = vectorx-bin
+	pkgdesc = High-intensity GPU/CPU stress tester (Electron/WebGL)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AnandRiftYT/VectorX_Benchmarker
+	arch = x86_64
+	license = MIT
+	depends = electron
+	depends = libxss
+	depends = nss
+	source = https://github.com/AnandRiftYT/VectorX_Benchmarker/releases/download/VectorX_v.1.0.0_First_Stable_Release/VectorXBenchmark-cpu-linux-x64.zip
+	sha256sums = cf81579c1dab59070f428c872ac7adff6e11a5ed2d880e111640bef2fc0f1a28
+
+pkgname = vectorx-bin
