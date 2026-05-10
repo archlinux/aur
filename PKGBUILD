@@ -1,8 +1,8 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd
-pkgver=r2.e158066
+pkgver=r3.079e931
 pkgrel=1
-pkgdesc='Skwd '
+pkgdesc='Skwd - A Skwd (Quick)shell'
 arch=('any')
 url='https://github.com/liixini/skwd'
 license=('MIT')
@@ -47,7 +47,6 @@ package() {
   install -dm755 "$_sharedir/skwd-launch"
   cp -a skwd-launch/shell.qml "$_sharedir/skwd-launch/shell.qml"
   cp -a skwd-launch/qml       "$_sharedir/skwd-launch/qml"
-  cp -a skwd-launch/data      "$_sharedir/skwd-launch/data"
   install -Dm755 packaging/wrappers/skwd-launch "$pkgdir/usr/bin/skwd-launch"
 
   # skwd-music
@@ -73,7 +72,6 @@ package() {
   install -dm755 "$_sharedir/skwd-switch"
   cp -a skwd-switch/shell.qml "$_sharedir/skwd-switch/shell.qml"
   cp -a skwd-switch/qml       "$_sharedir/skwd-switch/qml"
-  cp -a skwd-switch/data      "$_sharedir/skwd-switch/data"
   install -Dm755 packaging/wrappers/skwd-switch "$pkgdir/usr/bin/skwd-switch"
 
   install -Dm644 data/config.json.example "$_sharedir/data/config.json.example"
