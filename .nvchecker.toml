@@ -1,2 +1,3 @@
 [itex2mml-bin]
-source = "manual"
+source = "gems"
+gems = "itextomml"
