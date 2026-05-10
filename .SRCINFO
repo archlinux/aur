@@ -1,9 +1,21 @@
 pkgbase = aitasks
-	pkgdesc = File-based task management framework for AI coding agents (placeholder)
-	pkgver = 0.0.0
+	pkgdesc = Agentic IDE in your terminal: markdown tasks, YAML frontmatter, git-native
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://aitasks.io/
 	arch = any
 	license = Apache
+	depends = bash>=4
+	depends = python>=3.9
+	depends = fzf
+	depends = jq
+	depends = git
+	depends = zstd
+	depends = tar
+	depends = curl
+	optdepends = github-cli: GitHub integration
+	optdepends = glab: GitLab integration
+	source = ait::https://github.com/beyondeye/aitasks/releases/download/v0.20.1/ait
+	sha256sums = ad4e92f3fe00549f8fb4c92b977fd462bc4df02454270404cfc762dd516fb5bd
 
 pkgname = aitasks
