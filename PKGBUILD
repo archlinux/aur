@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pkgdu
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A tool to display packages disk usage size"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(libalpm.so)
 makedepends=(cargo)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('df1734177bc82113416af36f04590e0b6a168bb63353b3e208028e713741a035d6d11969710120892f3d5df18da5e2590af8ac4384a08c4f1c08a68ed2fb3724')
+b2sums=('b6df71653a368b683747b9b43ec7d61b892ad8976315a707c878cbc42d62088b6e5d54fdadc9b47a1f477ed9f28bb69ef8117adf62d06a3dc563297c6e89f3dd')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
