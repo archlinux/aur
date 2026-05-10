@@ -1,6 +1,6 @@
 pkgbase = llamaman-bin
 	pkgdesc = TUI manager for llama-server (llama.cpp). Pre-built binary release.
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/cmoro-deusto/llamaman
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = llamaman-bin
 	conflicts = llamaman
 	provides = llamaman
 	arch = aarch64
-	source_aarch64 = https://github.com/cmoro-deusto/llamaman/releases/download/v0.7.1/llamaman_0.7.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = ddad4680eb96ef991a0e8c167cdd5ed722d91d13b9c2145e068e7fad953c01b4
+	source_aarch64 = https://github.com/cmoro-deusto/llamaman/releases/download/v0.7.2/llamaman_0.7.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 37cf15c91d7656282f404808cd5211897ae6fd4154600835f6ed5d348d1e7b1a
 	arch = x86_64
-	source_x86_64 = https://github.com/cmoro-deusto/llamaman/releases/download/v0.7.1/llamaman_0.7.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 45e25d736e4b1de4317a09296108b6f969518862aadd0d92bdb592aaf4d00350
+	source_x86_64 = https://github.com/cmoro-deusto/llamaman/releases/download/v0.7.2/llamaman_0.7.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = fa5b5ce60c077cbca3cb32cf11f56d3a1f9009f1022897ba7b7edd729b850135
 	
 pkgname = llamaman-bin
