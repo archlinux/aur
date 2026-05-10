@@ -3,15 +3,59 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.20.1.r32.g5eb484e92
+pkgver=2.21.0.r8.g7dfea533a
 pkgrel=1
-_electron=electron41
+_electron=electron
 pkgdesc="Native GOG, Epic Games and Amazon games launcher. Development version (Git) using system Electron."
 arch=('x86_64')
 url="https://heroicgameslauncher.com/"
 license=('GPL-3.0-only')
-depends=("$_electron" 'rsync' 'which' 'glibc' 'gcc-libs' 'zlib')
-makedepends=('git' 'pnpm' 'npm')
+depends=(
+  'python'
+  'glibc'
+  'zlib'
+  'libgcc'
+  'hicolor-icon-theme'
+  'qt6-base'
+  'nss'
+  'nspr'
+  'alsa-lib'
+  'libdrm'
+  'libx11'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxrandr'
+  'libxkbcommon'
+  'libxcb'
+  'gtk3'
+  'pango'
+  'cairo'
+  'glib2'
+  'at-spi2-core'
+  'libcups'
+  'mesa'
+  'systemd-libs'
+  'libxml2'
+  'libxslt'
+  'flac'
+  'c-ares'
+  'libpulse'
+  'minizip'
+  'opus'
+  'libstdc++'
+  'brotli'
+  'fontconfig'
+  'harfbuzz'
+  'libffi'
+  'freetype2'
+  'expat'
+  'libjpeg-turbo'
+  'dbus'
+  'libnghttp2'
+)
+makedepends=("$_electron" 'git' 'pnpm')
 provides=('heroic-games-launcher')
 conflicts=('heroic-games-launcher')
 source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git"
@@ -60,15 +104,7 @@ package() {
   install -d "$pkgdir/opt/heroic"
   install -d "$pkgdir/usr/bin"
 
-  # Install resources to /opt to avoid container path reservation conflicts
-  #install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/opt/heroic/"
-  #cp -r dist/linux-unpacked/resources/app.asar.unpacked "$pkgdir/opt/heroic/"
-  
-  # Wrapper script
-  #echo -e "#!/bin/bash\nexec $_electron /opt/heroic/app.asar \"\$@\"" > "$pkgdir/usr/bin/heroic"
-  #chmod +x "$pkgdir/usr/bin/heroic"
-
-  # Temporaly use the compiled binary instead of the script with the system electron
+  # Use the compiled binary
   cp -R dist/linux-unpacked/. "${pkgdir}/opt/heroic/"
   ln -sf "/opt/heroic/heroic" "${pkgdir}/usr/bin/heroic"
 
