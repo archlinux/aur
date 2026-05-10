@@ -1,0 +1,13 @@
+[Unit]
+Description=HP OMEN Mute LED Monitor (PipeWire/Bluetooth)
+After=pipewire.service wireplumber.service
+Wants=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/omen-mute-monitor
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

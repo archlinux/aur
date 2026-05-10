@@ -1,0 +1,22 @@
+pkgbase = omen-rgb-keyboard-dkms-git
+	pkgdesc = Linux kernel driver for HP OMEN laptop RGB keyboard lighting (DKMS)
+	pkgver = 1.4.r57.g3813bb4
+	pkgrel = 1
+	url = https://github.com/OmenLinux/omen-rgb-keyboard
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	depends = dkms
+	optdepends = alsa-lib: mute button LED sync via ALSA
+	optdepends = wireplumber: mute LED sync for PipeWire/Bluetooth audio
+	provides = omen-rgb-keyboard-dkms
+	conflicts = omen-rgb-keyboard-dkms
+	conflicts = omen-rgb-keyboard
+	source = omen-rgb-keyboard::git+https://github.com/OmenLinux/omen-rgb-keyboard.git
+	source = omen-rgb-keyboard.conf
+	source = omen-mute-monitor.service
+	sha256sums = SKIP
+	sha256sums = 42de1ab0f8123aedad347225c665e3108cc9035da3dfaf3c9fbf9bbcb6335b8c
+	sha256sums = 858c75ea954f023940dcbe6db75b7bc6d9450721ab3f7a8f3ea8ca1a7aa09c0c
+
+pkgname = omen-rgb-keyboard-dkms-git
