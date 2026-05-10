@@ -1,7 +1,7 @@
 # Maintainer: Terrabade <terrabade@protonmail.com>
 pkgname=shelly-gnome
 pkgver=2.2.4.1.gnome1
-pkgrel=1
+pkgrel=2
 pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
 arch=('x86_64')
 url="https://github.com/Terrabade/Shelly-ALPM-GNOME"

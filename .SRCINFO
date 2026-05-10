@@ -1,7 +1,7 @@
 pkgbase = shelly-gnome
 	pkgdesc = Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager.
 	pkgver = 2.2.4.1.gnome1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Terrabade/Shelly-ALPM-GNOME
 	arch = x86_64
 	license = GPL-3.0-only
