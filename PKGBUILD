@@ -1,9 +1,9 @@
 # Maintainer: Izu <ccatdev@proton.me>
 
 pkgname=concord
-pkgver=1.1.2
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="A TUI client for Discord"
+pkgdesc="A feature rich terminal client for Discord"
 arch=(x86_64)
 url="https://github.com/chojs23/concord"
 license=(GPL-3.0)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=('!lto')
-sha256sums=('923a4e0d5f7337dae6330110c63867200b1ae4f636ea5724d2981326531fd162')
+sha256sums=('41645656a96b23f55a7b16d2a94e301d7dfaab907d2fc38115ea3861d535c1fb')
 
 prepare() {
   cd $pkgname-$pkgver
