@@ -1,7 +1,7 @@
 # Mantenedor: Setimo <gustavo.gianeli@hotmail.com>
 pkgname=arch-update-full
 pkgver=3.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Protocolo Sentinela: Automação de updates (Pacman/AUR/Flatpak/Snap) e auditoria."
 arch=('any')
 url="https://github.com/GustavoGianeli/arch-update-full"
