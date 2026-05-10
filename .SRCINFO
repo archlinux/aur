@@ -1,23 +1,15 @@
 pkgbase = cosmostrix-bin
-	pkgdesc = A cosmic take on the classic Matrix rain for the terminal
-	pkgver = 1.1.1.stable.1
+	pkgdesc = A cosmic Matrix-style terminal rain written in Rust
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/oxyzenQ/cosmostrix
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = glibc
+	depends = gcc-libs
 	provides = cosmostrix
 	conflicts = cosmostrix
 	options = !strip
-	source_x86_64 = https://github.com/oxyzenQ/cosmostrix/releases/download/v1.1.1-stable.1/cosmostrix-bin-v1.1.1-stable.1-linux-x86_64-v1.tar.gz
-	source_x86_64 = https://github.com/oxyzenQ/cosmostrix/releases/download/v1.1.1-stable.1/cosmostrix-bin-v1.1.1-stable.1-linux-x86_64-v2.tar.gz
-	source_x86_64 = https://github.com/oxyzenQ/cosmostrix/releases/download/v1.1.1-stable.1/cosmostrix-bin-v1.1.1-stable.1-linux-x86_64-v3.tar.gz
-	source_x86_64 = https://github.com/oxyzenQ/cosmostrix/releases/download/v1.1.1-stable.1/cosmostrix-bin-v1.1.1-stable.1-linux-x86_64-v4.tar.gz
-	source_aarch64 = https://github.com/oxyzenQ/cosmostrix/releases/download/v1.1.1-stable.1/cosmostrix-bin-v1.1.1-stable.1-linux-aarch64-native.tar.gz
-	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = SKIP
-	sha256sums_aarch64 = SKIP
 
 pkgname = cosmostrix-bin

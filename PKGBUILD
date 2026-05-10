@@ -12,57 +12,44 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=1.1.1.stable.1
-_tag=v1.1.1-stable.1
+pkgver=1.1.1
+_tag=stable.1
 pkgrel=1
-pkgdesc="A cosmic take on the classic Matrix rain for the terminal"
+
+pkgdesc="A cosmic Matrix-style terminal rain written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/oxyzenQ/cosmostrix"
 license=('MIT')
+
+depends=('glibc' 'gcc-libs')
+
 provides=('cosmostrix')
 conflicts=('cosmostrix')
+
 options=('!strip')
 
 # ---------------------------------------------------------------------------
 # Source definitions
 # ---------------------------------------------------------------------------
-# All URLs derive from _tag so that updating _tag alone cascades to every
-# source entry.  No dynamic computation or side effects at parse time.
+# source=() is intentionally empty.  Assets are selected dynamically in
+# prepare() based on the host CPU, then downloaded and verified with the
+# sidecar .sha512 checksum from the GitHub Release.
 #
-# Every x86_64 variant is listed so that the optimal binary can be selected
-# at runtime via CPU feature detection in prepare() — not at parse time.
-# ---------------------------------------------------------------------------
-
-_base_url="https://github.com/oxyzenQ/cosmostrix/releases/download/${_tag}"
-
-source_x86_64=(
-    "${_base_url}/cosmostrix-bin-${_tag}-linux-x86_64-v1.tar.gz"
-    "${_base_url}/cosmostrix-bin-${_tag}-linux-x86_64-v2.tar.gz"
-    "${_base_url}/cosmostrix-bin-${_tag}-linux-x86_64-v3.tar.gz"
-    "${_base_url}/cosmostrix-bin-${_tag}-linux-x86_64-v4.tar.gz"
-)
-
-source_aarch64=(
-    "${_base_url}/cosmostrix-bin-${_tag}-linux-aarch64-native.tar.gz"
-)
-
-# Binaries are prebuilt and already stripped; checksums are verified by
-# GitHub release provenance rather than embedded hashes.
-sha256sums_x86_64=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums_aarch64=('SKIP')
-
-# Prevent makepkg from auto-extracting all archives (they would overwrite
-# each other since every archive contains identically-named files).
-noextract=("${source_x86_64[@]##*/}" "${source_aarch64[@]##*/}")
-
-# ---------------------------------------------------------------------------
-# prepare() — runtime CPU feature detection
-# ---------------------------------------------------------------------------
-# CPU detection MUST occur here, NOT in global scope.
 # This avoids:
-#   - parse-time side effects
-#   - dynamic global source=() definitions
-#   - uname -m (use ${CARCH} instead)
+#   - downloading all 4 x86_64 variants when only 1 is needed
+#   - parse-time side effects from dynamic source=() definitions
+#   - incompatibility between makepkg static checksums and adaptive selection
+# ---------------------------------------------------------------------------
+source=()
+sha512sums=()
+
+# ---------------------------------------------------------------------------
+# prepare() — runtime CPU feature detection + verified download
+# ---------------------------------------------------------------------------
+# 1. Select the optimal binary variant for the host CPU
+# 2. Download the asset and its .sha512 sidecar from GitHub Releases
+# 3. Verify integrity with sha512sum --check
+# 4. Extract into srcdir
 #
 # Detection strategy for x86_64:
 #   v4 requires AVX-512 (avx512f)
@@ -73,35 +60,68 @@ noextract=("${source_x86_64[@]##*/}" "${source_aarch64[@]##*/}")
 # Falls back to v1 when /proc/cpuinfo is unavailable (containers, chroots).
 # ---------------------------------------------------------------------------
 prepare() {
-    cd "${srcdir}"
+    local asset
+    local tag="v${pkgver}-${_tag}"
 
-    _selected_archive=""
+    # -- Select optimal binary based on host architecture and CPU features --
+    case "${CARCH}" in
+        aarch64)
+            asset="cosmostrix-bin-${tag}-linux-aarch64-native.tar.gz"
+            ;;
+        x86_64)
+            local level="v1"
 
-    if [[ "${CARCH}" == "aarch64" ]]; then
-        _selected_archive="cosmostrix-bin-${_tag}-linux-aarch64-native.tar.gz"
-    elif [[ "${CARCH}" == "x86_64" ]]; then
-        local cpuflags=""
-        if [[ -r /proc/cpuinfo ]]; then
-            # Extract flags line from the first processor entry only
-            cpuflags="$(awk '/^flags[[:space:]]*:/ { print $0; exit }' /proc/cpuinfo 2>/dev/null)" || true
-        fi
+            if [[ -r /proc/cpuinfo ]] && grep -q avx512f /proc/cpuinfo; then
+                level="v4"
+            elif [[ -r /proc/cpuinfo ]] && grep -q avx2 /proc/cpuinfo; then
+                level="v3"
+            elif [[ -r /proc/cpuinfo ]] && grep -q sse4_2 /proc/cpuinfo; then
+                level="v2"
+            fi
 
-        # Detect highest supported microarchitecture level
-        if echo "${cpuflags}" | grep -q 'avx512f'; then
-            _selected_archive="cosmostrix-bin-${_tag}-linux-x86_64-v4.tar.gz"
-        elif echo "${cpuflags}" | grep -q 'avx2'; then
-            _selected_archive="cosmostrix-bin-${_tag}-linux-x86_64-v3.tar.gz"
-        elif echo "${cpuflags}" | grep -q 'sse4_2'; then
-            _selected_archive="cosmostrix-bin-${_tag}-linux-x86_64-v2.tar.gz"
-        else
-            _selected_archive="cosmostrix-bin-${_tag}-linux-x86_64-v1.tar.gz"
-        fi
-    fi
+            asset="cosmostrix-bin-${tag}-linux-x86_64-${level}.tar.gz"
+            ;;
+        *)
+            error "Unsupported architecture: ${CARCH}"
+            return 1
+            ;;
+    esac
 
-    msg2 "Selected binary variant: ${_selected_archive}"
+    local url="https://github.com/oxyzenQ/cosmostrix/releases/download/${tag}/${asset}"
 
-    # Extract only the selected variant into srcdir
-    tar -xzf "${srcdir}/${_selected_archive}"
+    msg2 "Selected asset: ${asset}"
+    msg2 "Downloading: ${url}"
+
+    # -- Download the release asset --
+    curl \
+        --fail \
+        --location \
+        --proto '=https' \
+        --tlsv1.2 \
+        --output "${srcdir}/${asset}" \
+        "${url}"
+
+    # -- Download the sidecar SHA512 checksum --
+    curl \
+        --fail \
+        --location \
+        --proto '=https' \
+        --tlsv1.2 \
+        --output "${srcdir}/${asset}.sha512" \
+        "${url}.sha512"
+
+    # -- Verify integrity --
+    msg2 "Verifying SHA512 checksum..."
+    (
+        cd "${srcdir}" || return 1
+        sha512sum --check "${asset}.sha512"
+    )
+
+    # -- Extract --
+    bsdtar \
+        --extract \
+        --file "${srcdir}/${asset}" \
+        --directory "${srcdir}"
 }
 
 # ---------------------------------------------------------------------------
@@ -113,7 +133,19 @@ prepare() {
 #   /README.md
 # ---------------------------------------------------------------------------
 package() {
-    install -Dm755 "${srcdir}/cosmostrix"            "${pkgdir}/usr/bin/cosmostrix"
-    install -Dm644 "${srcdir}/LICENSE"               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/README.md"             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm755 \
+        "${srcdir}/cosmostrix" \
+        "${pkgdir}/usr/bin/cosmostrix"
+
+    if [[ -f "${srcdir}/LICENSE" ]]; then
+        install -Dm644 \
+            "${srcdir}/LICENSE" \
+            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    fi
+
+    if [[ -f "${srcdir}/README.md" ]]; then
+        install -Dm644 \
+            "${srcdir}/README.md" \
+            "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    fi
 }
