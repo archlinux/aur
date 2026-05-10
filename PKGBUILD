@@ -1,5 +1,5 @@
 # Maintainer: Your Name <you@example.com>
-pkgname=obscura
+pkgname=obscura-browser
 pkgver=0.1.2
 pkgrel=1
 pkgdesc="Open-source headless browser for AI agents and web scraping (Rust/V8/CDP)"
