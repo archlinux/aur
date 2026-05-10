@@ -11,10 +11,10 @@ source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/mal-tui-linux-
 source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/mal-tui-linux-aarch64")
 source_armv7h=("$pkgname-$pkgver::$url/releases/download/v$pkgver/mal-tui-linux-armv7")
 source_i686=("$pkgname-$pkgver::$url/releases/download/v$pkgver/mal-tui-linux-i686")
-sha256sums_x86_64=('bd8274591607108c8a70436cf3b4c5606caad2a6a9d05d16f7e240006d621a9f')
-sha256sums_aarch64=('d752b0c97d7eb75c28eb27fef9f0a606e5b83995f5046d6ca0cfd7f3c3dd16f7')
-sha256sums_armv7h=('c9acb483368cede669500f1862ad611a83f6ecc026c5395f1ba16188b943df7e')
-sha256sums_i686=('2a6286976caa851d54592f9388c041bb33f546be946211ebdb6e3e998d0ef2a3')
+sha256sums_x86_64=('ab214f6abccc5952d4253605b49c4f645f6eb658c474defb5f4db822502f4aa0')
+sha256sums_aarch64=('88dd922bd95be151ebc4dfd28b00b1ad602eafdcd192347ed457de5c3b8a93a1')
+sha256sums_armv7h=('42148cf807de5a2fd379aec71b033630fba4caae5b63899394b7573f4733b80c')
+sha256sums_i686=('1964bf9b8e7ef0742ae4f88ff504a34a9aa8680e646f62f0642013e04246dad1')
 
 package() {
   install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
