@@ -6,7 +6,7 @@ pkgdesc="EPUB reader with offline TTS and Spotify-style lyrics view"
 arch=('any')
 url="https://github.com/lucilf3r/canto"
 license=('MIT')
-depends=('python' 'python-pyside6' 'python-numpy' 'python-pillow'
+depends=('python' 'pyside6' 'python-numpy' 'python-pillow'
          'python-beautifulsoup4' 'python-lxml' 'fontconfig')
 makedepends=('git' 'python-pip')
 optdepends=('xdg-utils: open with support')
