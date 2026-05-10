@@ -1,5 +1,5 @@
 pkgname=forgecode-bin
-pkgver=2.12.13
+pkgver=2.12.14
 pkgrel=1
 pkgdesc="An AI-powered code assistant CLI tool"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_aarch64=(
   "forge::${_baseurl}/forge-aarch64-unknown-linux-gnu"
 )
 source=("LICENSE")
-sha256sums_x86_64=('eea5658bbc35c641bbe8b1d78b2994471f58fbc9a4588f5263f8d6cfd9bd1f32')
-sha256sums_aarch64=('04ebe23167f67658b8a249f2d831af92d0b1abd7359a2acc85e676c9ef73a612')
+sha256sums_x86_64=('3c85f0352f8dbc35044ebc420f38b6b39a1e63488cef7ac0d07d763b98d0caa0')
+sha256sums_aarch64=('9975da5922dae9619810cce4c8b34a6cd06adcc8fef1c8dd153d50de1472fbea')
 sha256sums=('3c9f90350449325ae2b1355d6aae26df25be58f1cfcb8ed6a44b9c4b10c663f9')
 
 package() {
