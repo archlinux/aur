@@ -51,6 +51,7 @@ build() {
   cargo build --manifest-path mykey-migrate/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-pin/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-pam/Cargo.toml --release
+  cargo build --manifest-path mykey-auth/mykey-biometrics/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-security-key/Cargo.toml --release
 }
 
@@ -86,6 +87,8 @@ package() {
     "${pkgdir}/usr/bin/mykey-pin-auth"
   install -Dm755 "${srcdir}/target/release/mykey-auth" \
     "${pkgdir}/usr/bin/mykey-auth"
+  install -Dm755 "${srcdir}/target/release/mykey-biometrics" \
+    "${pkgdir}/usr/bin/mykey-biometrics"
   install -Dm755 "${srcdir}/target/release/mykey-elevated-auth" \
     "${pkgdir}/usr/bin/mykey-elevated-auth"
   install -Dm755 "${srcdir}/target/release/mykey-security-key" \
