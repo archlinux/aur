@@ -9,7 +9,7 @@ license=('BSD')
 depends=('openssl')
 makedepends=('gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LF3551/ClawSec/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a1f0932bf35e0d27fbec0729e84c1b1f0056a6b764b4187f314e374d44dfd54a')
+sha256sums=('3e0529c71c51bb3901b9c1de86f0a99f9754802be5c3b4789edb31e99b454098')
 
 build() {
     cd "ClawSec-${pkgver}/src"
