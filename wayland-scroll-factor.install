@@ -10,14 +10,26 @@ _update_icon_cache() {
   fi
 }
 
+_print_hyprland_session_hint() {
+  cat <<'EOF'
+wayland-scroll-factor: Hyprland pinch zoom/rotate support is available through
+the "Hyprland (WSF gestures)" Wayland session installed by this package.
+
+Select it in your greeter if you want Hyprland gesture tuning. The package does
+not rewrite greetd, SDDM, GDM, or other login-manager configuration.
+EOF
+}
+
 post_install() {
   _update_desktop_database
   _update_icon_cache
+  _print_hyprland_session_hint
 }
 
 post_upgrade() {
   _update_desktop_database
   _update_icon_cache
+  _print_hyprland_session_hint
 }
 
 post_remove() {

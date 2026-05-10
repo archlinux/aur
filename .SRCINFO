@@ -1,6 +1,6 @@
 pkgbase = wayland-scroll-factor-git
 	pkgdesc = Touchpad scroll and gesture tuning for Wayland (GNOME and Hyprland)
-	pkgver = 0.3.0.6.g41118e8
+	pkgver = 0.3.0.7.g4d9e9e4
 	pkgrel = 1
 	url = https://github.com/daniel-g-carrasco/wayland-scroll-factor
 	install = wayland-scroll-factor.install
