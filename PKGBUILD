@@ -3,7 +3,7 @@
 pkgname=astraeditor-git
 _binname=astraeditor-desktop
 pkgver=v1.2.0.r0.g6b1e0f4
-pkgrel=2
+pkgrel=1
 pkgdesc='AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AstraEditor/'
