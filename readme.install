@@ -4,11 +4,11 @@ post_install() {
  echo
  echo '2) Be sure to add an entry to your users crontab to have the script run'
  echo '   at some regular interval.'
- echo 
+ echo
  echo '   Edit your users crontab by typing: crontab -e'
  echo '   Examples'
  echo '   Once per hour:      0 * * * *   /usr/bin/checkip c &>/dev/null'
- echo '   Every four hours:   0 */4 * * * /usr/bin/checkip c &>/dev/null' 
+ echo '   Every four hours:   0 */4 * * * /usr/bin/checkip c &>/dev/null'
  echo '-----------------------------------------------------------------------'
 }
 
@@ -32,7 +32,7 @@ post_upgrade() {
   else
     /bin/true
   fi
-  
+
 	if [[ $oldpkgver < 3.04 ]]; then
 		echo '--> Support for a configured MTA is now included in checkip.'
     echo '--> You MUST update your $HOME/.config/checkip/checkip.conf now!'
