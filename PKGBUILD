@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r2106.7ec4fe13
+pkgver=r2107.0bcf7877
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -48,7 +48,7 @@ build() {
 		local use_flags="-fprofile-dir=\"${tmpdir}\" -fprofile-use=\"${tmpdir}\" -fprofile-correction -fno-unroll-loops -Wno-error=coverage-mismatch"
 		export CCFLAGS="${save_ccflags} ${generation_flags}"
 		export LDFLAGS="${save_ldflags} ${generation_flags}"
-		bin/package make -j${cores}
+		bin/package make SHELL=/bin/bash -j${cores}
 		# Run the regression tests to profile ksh
 		local -i status=0
 		./arch/*/bin/ksh bin/shtests -u || status=$?
