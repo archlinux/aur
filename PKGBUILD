@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd
-pkgver=r6.a9fd0d6
+pkgver=r7.5819a64
 pkgrel=1
 pkgdesc='Skwd - A Skwd (Quick)shell'
 arch=('any')
@@ -74,6 +74,12 @@ package() {
   cp -a skwd-switch/shell.qml "$_sharedir/skwd-switch/shell.qml"
   cp -a skwd-switch/qml       "$_sharedir/skwd-switch/qml"
   install -Dm755 packaging/wrappers/skwd-switch "$pkgdir/usr/bin/skwd-switch"
+
+  # skwd-power
+  install -dm755 "$_sharedir/skwd-power"
+  cp -a skwd-power/shell.qml "$_sharedir/skwd-power/shell.qml"
+  cp -a skwd-power/qml       "$_sharedir/skwd-power/qml"
+  install -Dm755 packaging/wrappers/skwd-power "$pkgdir/usr/bin/skwd-power"
 
   install -Dm644 data/config.json.example "$_sharedir/data/config.json.example"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

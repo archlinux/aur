@@ -1,6 +1,6 @@
 pkgbase = skwd
-	pkgdesc = Skwd
-	pkgver = r6.a9fd0d6
+	pkgdesc = Skwd - A Skwd (Quick)shell
+	pkgver = r7.5819a64
 	pkgrel = 1
 	url = https://github.com/liixini/skwd
 	install = skwd.install
@@ -16,6 +16,7 @@ pkgbase = skwd
 	depends = file
 	depends = inotify-tools
 	depends = iwd
+	depends = cava
 	depends = ttf-nerd-fonts-symbols
 	depends = ttf-roboto
 	source = skwd::git+https://github.com/liixini/skwd.git#branch=main
