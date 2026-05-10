@@ -25,6 +25,7 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    unset CFLAGS
     cargo build --frozen --release --all-features --no-default-features
 }
 
