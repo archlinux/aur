@@ -4,7 +4,7 @@
 
 pkgname=python-terminaltexteffects
 _pkgname=terminaltexteffects
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Visual effects engine applied to text in the terminal. '
 url="https://github.com/ChrisBuilds/terminaltexteffects"
@@ -18,7 +18,7 @@ conflicts=('terminaltexteffects')
 provides=('tte')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/release-${pkgver}.tar.gz")
-b2sums=('c7ff3b302ee110305d73f2f66c6ff5ff2ad338816c1de7120be4b5bc6bf407ae414478b289a2742d592698c5a71c2c6c845ecad60cb1cdc2890fc8b7914a9dfb')
+b2sums=('67f591e5bb1be0340c992d9cd5eb4e9b2c83409ec8d8104dd0d3d0cea37de946710c64adca3d71cce3fc89838a3d40b3dad08853d1d017cb2f108692bad31f30')
 
 
 build() {
