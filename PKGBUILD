@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=motifcounter
-_pkgver=1.34.0
+_pkgver=1.35.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.35.0
 pkgrel=1
 pkgdesc='R package for analysing TFBSs in DNA sequences'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('242d59b31ba0f569fc60711a647aabebefb5b1b08d961843568378c6e0516dd5')
+sha256sums=('0af5d9df996c30f3ad43d51d16f9774178e1727f5d8acf1b356b8cc0325bbbaa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
