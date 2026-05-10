@@ -1,6 +1,6 @@
 pkgname=smart-updater
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight, intelligent, and beautiful GUI update tool for CachyOS"
 arch=('any')
 url="https://github.com/UniqueSpirit/smart-updater"
