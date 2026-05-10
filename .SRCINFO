@@ -1,7 +1,7 @@
 pkgbase = irpf
 	pkgdesc = Brazilian physical person income tax (IRPF) program
 	pkgver = 2026.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf
 	arch = any
 	license = LicenseRef-Custom

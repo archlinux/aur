@@ -4,7 +4,7 @@
 
 pkgname=irpf
 pkgver=2026.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Brazilian physical person income tax (IRPF) program'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf'
