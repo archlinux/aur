@@ -2,7 +2,7 @@
 
 pkgname=rockchip-mpp
 pkgver=1.0.11
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Rockchip Media Process Platform (MPP)'
 arch=('x86_64')
@@ -12,15 +12,21 @@ arch=('x86_64')
 url='https://github.com/HermanChen/mpp/'
 license=('Apache-2.0' 'MIT')
 depends=(
-    'gcc-libs'
-    'glibc')
+    'glibc'
+    'libstdc++')
 makedepends=(
     'cmake')
-source=("https://github.com/HermanChen/mpp/archive/${pkgver}/${pkgname}-HermanChen-${pkgver}.tar.gz")
-sha256sums=('e97f67e0d2e028ef444099443b6e77efea9f7db83edcbf080f539a44c1c2d36c')
+source=("https://github.com/HermanChen/mpp/archive/${pkgver}/${pkgname}-HermanChen-${pkgver}.tar.gz"
+        '010-rockchip-mpp-silence-unwanted-log-messages.patch')
+sha256sums=('e97f67e0d2e028ef444099443b6e77efea9f7db83edcbf080f539a44c1c2d36c'
+            '9764a01c08f5c1883e675295f8ebc8c26604a7b48d1f9c7df4c9d8c95f32dc26')
+
+prepare() {
+    patch -d "mpp-${pkgver}" -Np1 -i "${srcdir}/010-rockchip-mpp-silence-unwanted-log-messages.patch"
+}
 
 build() {
-    # fix build with gcc 15
+    # fix build with gcc 15+
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
     
     cmake -B build -S "mpp-${pkgver}" \

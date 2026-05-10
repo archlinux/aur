@@ -1,0 +1,24 @@
+--- a/osal/mpp_platform.c
++++ b/osal/mpp_platform.c
+@@ -124,8 +124,8 @@ static void mpp_plat_srv_init()
+     srv->soc_name = mpp_get_soc_name();
+     srv->soc_info = mpp_get_soc_info();
+ 
+-    if (srv->soc_info->soc_type == ROCKCHIP_SOC_AUTO)
+-        mpp_log("can not found match soc name: %s\n", srv->soc_name);
++    //if (srv->soc_info->soc_type == ROCKCHIP_SOC_AUTO)
++    //    mpp_log("can not found match soc name: %s\n", srv->soc_name);
+ 
+     srv->ioctl_version = IOCTL_VCODEC_SERVICE;
+     if (mpp_get_mpp_service_name()) {
+--- a/osal/mpp_soc.c
++++ b/osal/mpp_soc.c
+@@ -1032,7 +1032,7 @@ static void read_soc_name(char *name, rk
+     rk_s32 fd = open(path, O_RDONLY);
+ 
+     if (fd < 0) {
+-        mpp_err("open %s error\n", path);
++        //mpp_err("open %s error\n", path);
+     } else {
+         ssize_t soc_name_len = 0;
+ 
