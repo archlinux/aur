@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=ISCSI Util
-Comment=Herramienta gráfica para gestionar conexiones iSCSI
+Name=iSCSI Util
+Comment=A simple and modern GUI for managing iSCSI.
 Exec=iscsi-util
 Icon=iscsi-util
 Terminal=false
 Type=Application
-Categories=Utility;Network;
+Categories=Utility;
 
