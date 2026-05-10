@@ -6,3 +6,4 @@ Icon=game-link
 Terminal=false
 Type=Application
 Categories=Game;Utility;
+StartupWMClass=io.github.CarlosEvCode.GameLink
