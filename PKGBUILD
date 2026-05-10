@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd
-pkgver=r4.a16a3f4
+pkgver=r5.276f781
 pkgrel=1
 pkgdesc='Skwd - A Skwd (Quick)shell'
 arch=('any')
