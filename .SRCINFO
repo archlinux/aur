@@ -1,0 +1,16 @@
+pkgbase = deepl-cli
+	pkgdesc = DeepL CLI is a comprehensive, developer-friendly command-line tool that integrates DeepL's powerful Translate, Write, and Voice APIs.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/DeepLcom/deepl-cli/
+	arch = any
+	license = MIT
+	makedepends = python3
+	depends = nodejs
+	depends = npm
+	provides = deepl
+	conflicts = deepl
+	source = deepl-cli-1.2.0.tar.gz::https://github.com/DeepLcom/deepl-cli/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = c8e824960084d1bb33f6b0741a31ea5fc5c3b49525e4ddf6e325e77aab9e58a2
+
+pkgname = deepl-cli
