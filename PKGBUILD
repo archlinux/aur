@@ -1,7 +1,7 @@
 # Maintainer: CarlosEvCode <programer.cm12@gmail.com>
 
 pkgname=game-link-bin
-pkgver=2.9.10
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Universal game companion for linking ROMs and managing media (Pre-compiled)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "game-link.desktop"
   "game-link.png::https://raw.githubusercontent.com/CarlosEvCode/game_link/main/linux/game_link.png"
 )
-sha256sums=('ad619d5100e2e79e3d2ecdbf4f1206419c5b48f5801a24e2738a9767464cd248'
+sha256sums=('0d3d631cddb01da4f4205bc80f2c074aa5f9b07a7b6456f9a2e0ae696c67d2c6'
             '77b143253f56bfcf76f5ea433238e9747377c7341739c92c608e53eced6e268e'
             '281269ddafe863989f9b8e7a57b42d0e0e66ff0b5ddcc09fe44f9d1287726949')
 
