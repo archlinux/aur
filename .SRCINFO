@@ -1,0 +1,15 @@
+pkgbase = archive-editor-git
+	pkgdesc = GTK4/libadwaita desktop app for managing ABSOLKING Archive entries and reviews
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/AbsolKing/ArchiveEditor
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = gtk4
+	depends = libadwaita
+	source = git+https://github.com/AbsolKing/ArchiveEditor.git
+	sha256sums = SKIP
+
+pkgname = archive-editor-git
