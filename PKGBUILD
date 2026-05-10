@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('cargo' 'bun' 'python')
 source=("spent-tracker-$pkgver.tar.gz::https://github.com/Gxstavo-dev/spent/archive/v$pkgver.tar.gz")
-sha256sums=('532c5a7806d2e0b543dbf0e61278c4889e2765f5f6e9a8af632dd9dd009b85ed')
+sha256sums=('af249eabc7132d705142bd54b4b2346f2c7bf50707202684d625a9c72eda4253')
 
 prepare() {
   cd "$srcdir/spent-tracker-$pkgver"
