@@ -57,7 +57,7 @@ build() {
 
 # check() {
 #   cd "${srcdir}"
-#   DESTDIR="${pkgdir}" cmake --build "${_pkgsrc}/build" --target check
+#   cmake --build "${_pkgsrc}/build" --target check
 # }
 
 package_diplib() {
