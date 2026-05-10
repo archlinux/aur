@@ -1,7 +1,7 @@
 pkgbase = arch-update-full
 	pkgdesc = Protocolo Sentinela: Automação de updates (Pacman/AUR/Flatpak/Snap) e auditoria.
 	pkgver = 3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GustavoGianeli/arch-update-full
 	install = arch-update-full.install
 	arch = any
@@ -24,9 +24,9 @@ pkgbase = arch-update-full
 	source = arch-update-full.desktop
 	source = logoarchupdatefull.png
 	source = arch-update-full.install
-	sha256sums = 5e6d9c9618cb0ce6a2f60496d63f444bad3b86c4bffe618c79ba8dd17149fbc5
+	sha256sums = 3972061141bafc7afd68c97f703866fb808450478a480386f01598e5517fa2ed
 	sha256sums = c67f2145975aef77b7bc07a71ff334593df456ffe8155175f177f0e73f4f47cd
-	sha256sums = e0732656a868f19e30dd46069bc68389962facc464470f3238de188e8fffcaa5
+	sha256sums = c99f6abb3724611313b41ff065d57c70fdfb57a82c8f15d1a9410f497a9c7591
 	sha256sums = 275f888574b6c24911ce2524acbead50c1da1929ab6b787c62709ed4fb3280e8
 
 pkgname = arch-update-full
