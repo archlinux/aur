@@ -7,7 +7,7 @@
 
 _pkgver_sys='20.0-20260403'
 _pkgver_vendor='20.0-20260403'
-_pkgver_images_vendor=$_pkgver_vendor
+_pkgver_images_vendor='20.0-20260428'
 _pkgver_images_vendor_x86=$_pkgver_vendor
 _pkgver_images_vendor_arm=$_pkgver_vendor
 _pkgver_images_vendor_arm64=$_pkgver_vendor
@@ -16,7 +16,7 @@ _pkgver_images_system_x86=$_pkgver_sys
 _pkgver_images_system_arm=$_pkgver_sys
 _pkgver_images_system_arm64=$_pkgver_sys
 pkgname=waydroid-image
-pkgver='20.0.20260403'
+pkgver='20.0.20260510'
 pkgrel=1
 epoch=1
 pkgdesc="LineageOS-based Android images for Waydroid"
@@ -34,7 +34,7 @@ source_armv7h=("$_srcprefix/system/lineage/waydroid_arm/lineage-$_pkgver_images_
 source_aarch64=("$_srcprefix/system/lineage/waydroid_arm64/lineage-$_pkgver_images_system_arm64-VANILLA-waydroid_arm64-system.zip"
                 "$_srcprefix/vendor/waydroid_arm64/lineage-$_pkgver_images_vendor_arm64-MAINLINE-waydroid_arm64-vendor.zip")
 sha256sums_x86_64=('2e343b14c649a685853e7957ac34feb1ca110425d78a47ebad764caae24116a8'
-                   '24cc7e0d9e28b4ff32b4f097f2fc816a4552ac2070b2422afb28d39ac78d426b')
+                   'cba35433ffca73ed349e096b1daec495b3204e01c0e541c4203671e6d648e874')
 sha256sums_i686=('7ec24e44b7b80b7bc57e77cf8c94f3f53c669b8f30cb1df560602616dae477ef'
                  '03f1dfc41b0f37471843c1f2ecb72bc635e8ddf6ecd80b2c41ec6ef8ebe303a7')
 sha256sums_armv7h=('4d3d1a3631165118a0ad43d84ae84bf3f0207c429148747e59d4485727107a68'
