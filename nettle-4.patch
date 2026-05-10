@@ -1,0 +1,122 @@
+diff --git a/lib/curl_sha512_256.c b/lib/curl_sha512_256.c
+index 73b959c91d..c4531148a1 100644
+--- a/lib/curl_sha512_256.c
++++ b/lib/curl_sha512_256.c
+@@ -75,7 +75,8 @@
+ #endif
+ 
+ #if !defined(HAS_SHA512_256_IMPLEMENTATION) && defined(USE_GNUTLS)
+-#  include <nettle/sha.h>
++#  include <nettle/sha2.h>
++#  include <nettle/version.h>
+ #  ifdef SHA512_256_DIGEST_SIZE
+ #    define USE_GNUTLS_SHA512_256           1
+ #  endif
+@@ -282,7 +283,11 @@ static CURLcode Curl_sha512_256_finish(unsigned char *digest, void *context)
+   Curl_sha512_256_ctx * const ctx = (Curl_sha512_256_ctx *)context;
+ 
+   sha512_256_digest(ctx,
++#if NETTLE_VERSION_MAJOR > 3
++                    (uint8_t *)digest);
++#else
+                     (size_t)CURL_SHA512_256_DIGEST_SIZE, (uint8_t *)digest);
++#endif
+ 
+   return CURLE_OK;
+ }
+diff --git a/lib/md5.c b/lib/md5.c
+index 4dd0d7c278..1c066d6a29 100644
+--- a/lib/md5.c
++++ b/lib/md5.c
+@@ -47,6 +47,7 @@
+ 
+ #ifdef USE_GNUTLS
+ #include <nettle/md5.h>
++#include <nettle/version.h>
+ 
+ typedef struct md5_ctx my_md5_ctx;
+ 
+@@ -64,7 +65,11 @@ static void my_md5_update(void *ctx,
+ 
+ static void my_md5_final(unsigned char *digest, void *ctx)
+ {
++#if NETTLE_VERSION_MAJOR > 3
++  md5_digest(ctx, digest);
++#else
+   md5_digest(ctx, 16, digest);
++#endif
+ }
+ 
+ #elif defined(USE_OPENSSL) && \
+diff --git a/lib/sha256.c b/lib/sha256.c
+index d97f45f05f..4307034f87 100644
+--- a/lib/sha256.c
++++ b/lib/sha256.c
+@@ -113,7 +113,8 @@ static void my_sha256_final(unsigned char *digest, void *in)
+ }
+ 
+ #elif defined(USE_GNUTLS)
+-#include <nettle/sha.h>
++#include <nettle/sha2.h>
++#include <nettle/version.h>
+ 
+ typedef struct sha256_ctx my_sha256_ctx;
+ 
+@@ -132,7 +133,11 @@ static void my_sha256_update(void *ctx,
+ 
+ static void my_sha256_final(unsigned char *digest, void *ctx)
+ {
++#if NETTLE_VERSION_MAJOR > 3
++  sha256_digest(ctx, digest);
++#else
+   sha256_digest(ctx, SHA256_DIGEST_SIZE, digest);
++#endif
+ }
+ 
+ #elif defined(USE_MBEDTLS) && \
+diff --git a/lib/vtls/gtls.c b/lib/vtls/gtls.c
+index 9b6a4fab2e..7d29dbf98f 100644
+--- a/lib/vtls/gtls.c
++++ b/lib/vtls/gtls.c
+@@ -37,6 +37,7 @@
+ #include <gnutls/x509.h>
+ #include <gnutls/crypto.h>
+ #include <nettle/sha2.h>
++#include <nettle/version.h>
+ 
+ #include "urldata.h"
+ #include "curl_trc.h"
+@@ -2261,7 +2262,11 @@ static CURLcode gtls_sha256sum(const unsigned char *tmp, /* input */
+   struct sha256_ctx SHA256pw;
+   sha256_init(&SHA256pw);
+   sha256_update(&SHA256pw, (unsigned int)tmplen, tmp);
++#if NETTLE_VERSION_MAJOR > 3
++  sha256_digest(&SHA256pw, sha256sum);
++#else
+   sha256_digest(&SHA256pw, (unsigned int)sha256len, sha256sum);
++#endif
+   return CURLE_OK;
+ }
+ 
+diff --git a/m4/curl-gnutls.m4 b/m4/curl-gnutls.m4
+index b8ee3f5780..222386e0d9 100644
+--- a/m4/curl-gnutls.m4
++++ b/m4/curl-gnutls.m4
+@@ -145,7 +145,7 @@ dnl
+ if test "$GNUTLS_ENABLED" = "1"; then
+   USE_GNUTLS_NETTLE=
+   dnl First check if we can detect either crypto library via transitive linking
+-  AC_CHECK_LIB(gnutls, nettle_MD5Init, [ USE_GNUTLS_NETTLE=1 ])
++  AC_CHECK_LIB(gnutls, nettle_md5_init, [ USE_GNUTLS_NETTLE=1 ])
+ 
+   dnl If not, try linking directly to both of them to see if they are available
+   if test -z "$USE_GNUTLS_NETTLE"; then
+@@ -174,7 +174,7 @@ if test "$GNUTLS_ENABLED" = "1"; then
+           CPPFLAGS="$CPPFLAGS $addcflags"
+         fi
+ 
+-        AC_CHECK_LIB(nettle, nettle_MD5Init,
++        AC_CHECK_LIB(nettle, nettle_md5_init,
+         [
+           USE_GNUTLS_NETTLE=1
+         ],

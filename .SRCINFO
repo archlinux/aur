@@ -1,12 +1,13 @@
 pkgbase = curl-c-ares
 	pkgdesc = command line tool and library for transferring data with URLs (built with c-ares)
 	pkgver = 8.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://curl.se/
 	arch = x86_64
 	license = MIT
 	checkdepends = valgrind
 	makedepends = git
+	makedepends = nettle
 	depends = ca-certificates
 	depends = brotli
 	depends = libbrotlidec.so
@@ -39,7 +40,9 @@ pkgbase = curl-c-ares
 	conflicts = wcurl
 	replaces = wcurl
 	source = git+https://github.com/curl/curl.git#tag=curl-8_20_0?signed
+	source = nettle-4.patch
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
 	sha512sums = e97541789fb3f5e00ecb41c867f8440e651fdb7be922cddfea70e9462b40ed33d7ca4d29039025584afb11ade8ce389ae25fc41200e3a38706a6fc265cd0c29b
+	sha512sums = 66641075efeb6a4ed3df4dfabe28b7ec9e2c445f5f841d7e424bb40da969646adb6d2401b2507bf06d17f71ceacea66e3300083d0de70b0469b34240dad4c90d
 
 pkgname = curl-c-ares

@@ -11,7 +11,7 @@ _proj=curl
 pkgname=curl-c-ares
 pkgver=8.20.0
 _git_tag="curl-${pkgver//./_}"
-pkgrel=1
+pkgrel=2
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
 arch=('x86_64')
 url='https://curl.se/'
@@ -29,14 +29,16 @@ depends=('ca-certificates'
          'openssl' 'libcrypto.so' 'libssl.so'
          'zlib' 'libz.so'
          'zstd' 'libzstd.so')
-makedepends=('git')
+makedepends=('git' 'nettle')
 checkdepends=('valgrind')
 provides=('curl' 'libcurl.so')
 replaces=('wcurl')
 conflicts=('curl' 'wcurl')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-source=("git+https://github.com/curl/${_proj}.git#tag=${_git_tag}?signed")
-sha512sums=('e97541789fb3f5e00ecb41c867f8440e651fdb7be922cddfea70e9462b40ed33d7ca4d29039025584afb11ade8ce389ae25fc41200e3a38706a6fc265cd0c29b')
+source=("git+https://github.com/curl/${_proj}.git#tag=${_git_tag}?signed"
+        nettle-4.patch)
+sha512sums=('e97541789fb3f5e00ecb41c867f8440e651fdb7be922cddfea70e9462b40ed33d7ca4d29039025584afb11ade8ce389ae25fc41200e3a38706a6fc265cd0c29b'
+            '66641075efeb6a4ed3df4dfabe28b7ec9e2c445f5f841d7e424bb40da969646adb6d2401b2507bf06d17f71ceacea66e3300083d0de70b0469b34240dad4c90d')
 
 prepare() {
   cd $_proj
@@ -47,6 +49,7 @@ prepare() {
     -e "/\WLIBCURL_TIMESTAMP\W/c #define LIBCURL_TIMESTAMP \"$(git log -1 --format=%cs "$_git_tag")\"" \
     include/curl/curlver.h
 
+  patch -p1 -i ../nettle-4.patch  # Fix build with nettle 4
   autoreconf -fi
 }
 
