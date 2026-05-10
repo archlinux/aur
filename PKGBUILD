@@ -35,6 +35,7 @@ build() {
   npm --prefix packages/coding-agent run build
   npm --prefix packages/web-ui run build
 
+  # Remove packages which are only necessary in development / building
   npm prune --omit=dev --cache "${srcdir}/npm-cache"
 }
 
