@@ -1,6 +1,6 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 pkgname=i3keys
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc='Lists used and unused keys in your i3wm or Sway config'
 arch=('x86_64')
@@ -10,16 +10,11 @@ options=(!lto)
 depends=('libx11')
 makedepends=('go' 'libxtst')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RasmusLindroth/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7169e9e75baff083555e581808a073a7b05959d2c75ff021118b71b3e8ce7787')
+sha256sums=('2cd4a71c3afac9909596d0872fddfab0cdb145e1bcd83f8cf716715252536b0b')
 
 build() {
     cd $pkgname-$pkgver
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o .
+    go build -trimpath -ldflags "-s -w" -o i3keys ./cmd/i3keys
 }
 
 package() {
