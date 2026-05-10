@@ -20,11 +20,7 @@ sha256sums=('7caebc40db17568c2050d072c9e81eadb280b50f296018dd66ba25e44100be6d')
 build() {
   cd "${pkgname}-${pkgver}"
 
-  export npm_config_cache="${srcdir}/npm-cache"
-
-  mkdir -p "$npm_config_cache"
-
-  npm ci --ignore-scripts --cache "$npm_config_cache" \
+  npm ci --cache "${srcdir}/npm-cache" \
     --workspace packages/tui \
     --workspace packages/ai \
     --workspace packages/agent \
@@ -36,7 +32,7 @@ build() {
   npm --prefix packages/agent run build
   npm --prefix packages/coding-agent run build
 
-  npm prune --omit=dev --ignore-scripts --cache "$npm_config_cache" \
+  npm prune --omit=dev --cache "${srcdir}/npm-cache" \
     --workspace packages/tui \
     --workspace packages/ai \
     --workspace packages/agent \
