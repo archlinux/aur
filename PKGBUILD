@@ -2,7 +2,7 @@
 
 pkgname=3x-ui-bin
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/${pkgname%-bin}"
