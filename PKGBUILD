@@ -3,7 +3,7 @@
 
 pkgname=chromaprint-fftw-llvm
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for extracting fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg) — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://acoustid.org/chromaprint'
@@ -27,6 +27,14 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
+    export LD=/usr/bin/ld.lld
+    export NM=/usr/bin/llvm-nm
+    export OBJCOPY=/usr/bin/llvm-objcopy
+    export OBJDUMP=/usr/bin/llvm-objdump
+    export READELF=/usr/bin/llvm-readelf
+    export STRIP=/usr/bin/llvm-strip
+    export CFLAGS="${CFLAGS:-} -O3 -march=native"
+    export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     
     cmake -B build -S "chromaprint-${pkgver}" \
