@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=23.0.0_r579874.2caea408ab90
+pkgver=23.0.0_r579902.d6f6cdaddadb
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -60,14 +60,14 @@ pkgver() {
     echo "${_pkgver}"
 }
 
-_targets=( amdgcn-amd-amdhsa-llvm clspv-- clspv64-- nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda spirv-mesa3d- spirv64-mesa3d- )
+_targets=( amdgcn-amd-amdhsa-llvm spirv64-unknown-vulkan nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda spirv-mesa3d- spirv64-mesa3d- )
 build() {
     export CC=clang
     export CXX=clang++
     for t in "${_targets[@]}"
     do
       cmake \
-        -B _build-$t \
+        -B _build-"$t" \
         -S "$srcdir"/llvm-project/libclc  \
         -G Ninja \
         -D CMAKE_BUILD_TYPE=Release \
@@ -75,7 +75,7 @@ build() {
         -D LLVM_DEFAULT_TARGET_TRIPLE="$t" \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
-      ninja $NINJAFLAGS -C _build-$t
+      ninja $NINJAFLAGS -C _build-"$t"
     done
 }
 
