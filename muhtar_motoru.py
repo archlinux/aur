@@ -20,7 +20,7 @@ def muhtar_sistemini_calistir(dosya_yolu):
         yardim_menusu()
         return
     if dosya_yolu == "--versiyon":
-        print("Muhtar Dili V1.8.1 - Açık Kaynak Çekirdek (Anonim)")
+        print("Muhtar Dili V1.8.3 - Açık Kaynak Çekirdek (Anonim)")
         return
 
     try:
@@ -39,12 +39,13 @@ def muhtar_sistemini_calistir(dosya_yolu):
             'dene': 'try', 'denebozuldu': 'except', 'ondalik': 'float',
             'liste': 'list', 'ekle': 'append', 'cikar': 'remove',
             'sirala': 'sort', 'ters_cevir': 'reverse', 'uzunluk': 'len',
-             'kir': 'break',
-            'kirmizi': '"\\033[91m"', 'yesil': '"\\033[92m"',
-            'sari': '"\\033[93m"', 'mavi': '"\\033[94m"',
-            'renk_bitir': '"\\033[0m"'
+            'kir': 'break',
+            'kirmizi': "'\\033[91m'",
+            'yesil': "'\\033[92m'",
+            'sari': "'\\033[93m'",
+            'mavi': "'\\033[94m'",
+            'renk_bitir': "'\\033[0m'"
         }
-
         # KÖKTEN ÇÖZÜM: Yeni Tokenizer Mantığı
         # Bu satır; tırnak içindekileri, kelimeleri, boşlukları ve sembolleri birbirinden ayırır.
         cevrilmis_kod = ""

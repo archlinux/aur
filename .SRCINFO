@@ -1,12 +1,12 @@
 pkgbase = muhtar-dil
-	pkgdesc = Muhtar dili v1.8.2 - Break yerine Kir guncellemesi
-	pkgver = 1.8.2
+	pkgdesc = Muhtar dili v1.8.3 - Hata Düzeltmesi
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/KaliciArkadas/muhtar-dil
 	arch = any
 	license = GPL
 	depends = python
-	source = muhtar-dil-1.8.2.py::https://raw.githubusercontent.com/KaliciArkadas/muhtar-dil/main/muhtar_motoru.py
+	source = muhtar-dil-1.8.3.py::https://raw.githubusercontent.com/KaliciArkadas/muhtar-dil/main/muhtar_motoru.py
 	sha256sums = SKIP
 
 pkgname = muhtar-dil

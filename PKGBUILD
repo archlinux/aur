@@ -1,8 +1,8 @@
 # Maintainer: KaliciArkadas <anon@muhtar.lan>
 pkgname=muhtar-dil
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
-pkgdesc="Muhtar dili v1.8.2 - Break yerine Kir guncellemesi"
+pkgdesc="Muhtar dili v1.8.3 - Hata Düzeltmesi"
 arch=('any')
 url="https://github.com/KaliciArkadas/muhtar-dil"
 license=('GPL')
