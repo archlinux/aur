@@ -1,7 +1,7 @@
 pkgbase = cmdcreate
-	pkgdesc = Allows you to create custom commands for your custom scripts (Static Musl)
+	pkgdesc = Allows you to create custom commands for your custom scripts
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owen-debiasio/cmdcreate
 	arch = x86_64
 	arch = i686

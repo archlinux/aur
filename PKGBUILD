@@ -1,7 +1,7 @@
 pkgname=cmdcreate
 pkgver=1.3.3
-pkgrel=1
-pkgdesc="Allows you to create custom commands for your custom scripts (Static Musl)"
+pkgrel=2
+pkgdesc="Allows you to create custom commands for your custom scripts"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/owen-debiasio/cmdcreate"
 license=('GPL-3.0-or-later')
