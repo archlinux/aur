@@ -13,6 +13,6 @@ pkgbase = fuzz-wall
 	optdepends = xwallpaper: Lightweight X11 wallpaper setter
 	optdepends = libnotify: Desktop notifications support
 	source = fuzz-wall-1.0.0.tar.gz::https://github.com/youngcoder45/fuzz-wall/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 4dfbcf7885888ad6ccd5e448ff065f5c997852c48d6a832949ad01ffc306490a
 
 pkgname = fuzz-wall
