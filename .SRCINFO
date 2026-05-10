@@ -1,0 +1,27 @@
+pkgbase = rdhm-monitor
+	pkgdesc = Remote Disc Health Monitor - Monitor GUI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Kicer86/RemoteDiskHealthMonitor
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = avahi
+	depends = qt6-declarative
+	depends = avahi
+	source = RemoteDiskHealthMonitor-0.2.0.tar.gz::https://github.com/Kicer86/RemoteDiskHealthMonitor/archive/refs/tags/v0.2.0.tar.gz
+	source = cpp_restapi::git+https://github.com/Kicer86/cpp_restapi.git#commit=d440c5ac83b4dda821a2679e4f6c4330cc4875d9
+	source = googletest::git+https://github.com/google/googletest.git#commit=52eb8108c5bdec04579160ae17225d66034bd723
+	source = nlohmann-json::git+https://github.com/nlohmann/json.git#commit=f534f4f75e12893716ea688679aeb768bff426c4
+	source = QtZeroConf::git+https://github.com/jbagg/QtZeroConf.git#commit=81701d6a92d09a9ae091e755a55079f647f5f46c
+	sha256sums = 0bd0bc318485f9f2ceab1f0ef4f5f786ae22694a099752e1bb785543ba24f022
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rdhm-monitor
