@@ -1,7 +1,7 @@
 pkgbase = xeve-llvm
 	pkgdesc = MPEG-5 EVC (Essential Video Coding) encoder — built with Clang and LLVM lld
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mpeg5/xeve/
 	arch = x86_64
 	license = BSD-3-Clause
