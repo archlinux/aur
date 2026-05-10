@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-full-llvm
 pkgver=8.1.1
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.8.4'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld'
@@ -197,6 +197,12 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
+
+    # lld prunes these indirect flite1 dependencies under --as-needed, leaving
+    # the voice libraries with unresolved symbols such as usenglish_init.
+    sed -i \
+        's|^flite_extralibs=.*|flite_extralibs="-Wl,--push-state,--no-as-needed -lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_kal -lflite_cmu_us_kal16 -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish -lflite_cmulex -lflite -Wl,--pop-state"|' \
+        "ffmpeg-${pkgver}/configure"
 }
 
 build() {
