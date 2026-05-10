@@ -1,6 +1,6 @@
 pkgbase = hyprspin-git
 	pkgdesc = A lightweight, automated screen rotation daemon for Hyprland
-	pkgver = r2.40e51df
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/naregderlevonean/hyprspin
 	arch = x86_64
@@ -12,10 +12,11 @@ pkgbase = hyprspin-git
 	depends = gcc-libs
 	depends = glibc
 	depends = dbus
+	depends = lua
 	optdepends = iio-sensor-proxy: required for accelerometer sensing
 	provides = hyprspin
 	conflicts = hyprspin
-	source = git+https://github.com/naregderlevonean/hyprspin.git
+	source = hyprspin::git+https://github.com/naregderlevonean/hyprspin.git
 	sha256sums = SKIP
 
 pkgname = hyprspin-git
