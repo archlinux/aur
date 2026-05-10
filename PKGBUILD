@@ -2,7 +2,7 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=julia-bin
-pkgver=1.12.5
+pkgver=1.12.6
 pkgrel=0
 pkgdesc="High-level, high-performance, dynamic programming language - official binaries"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=(julia)
 depends=('bash' 'gmp' 'libnghttp2' 'libssh2' 'libunwind' 'python' 'llvm')
 source_x86_64=("https://julialang-s3.julialang.org/bin/linux/x64/${pkgver:0:4}/julia-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("https://julialang-s3.julialang.org/bin/linux/aarch64/${pkgver:0:4}/julia-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('41b84d727e4e96fbf3ed9e92fa195d773d247b9097f73fad688f8b699758bae7')
-sha256sums_aarch64=('2e5de844ea4462bfb08a5ba9fa5ae03532183cc0d9e724590e2c8df654f3e8e2')
+sha256sums_x86_64=('bbabf3bef19421a9dbd24a767d807606ab85e444323b5a1c73ffe293fa3d079a')
+sha256sums_aarch64=('029b93b857bd0ffd627f9a8580d3bbaa63daf008d7b7aed02fbceb8fd57c4899')
 
 options=(!strip)
 
