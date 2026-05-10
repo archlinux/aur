@@ -1,0 +1,21 @@
+pkgbase = mpeghdec-llvm
+	pkgdesc = Fraunhofer MPEG-H audio decoder — built with Clang and LLVM lld
+	pkgver = 3.0.3
+	pkgrel = 2
+	url = https://mpegh.com/
+	arch = x86_64
+	license = LicenseRef-Custom
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = lld
+	makedepends = llvm
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = mpeghdec
+	conflicts = mpeghdec
+	source = https://github.com/Fraunhofer-IIS/mpeghdec/archive/r3.0.3/mpeghdec-3.0.3.tar.gz
+	sha256sums = 0198ebc824332926c0c39abf216df65606da896a4204c93be77b1581b5bf0b73
+
+pkgname = mpeghdec-llvm
