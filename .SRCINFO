@@ -1,6 +1,6 @@
 pkgbase = superproductivity
 	pkgdesc = An advanced todo list app with timeboxing and time tracking capabilities
-	pkgver = 18.4.4
+	pkgver = 18.5.0
 	pkgrel = 1
 	url = https://super-productivity.com
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = superproductivity
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libstdc++
-	source = superproductivity-18.4.4.tar.gz::https://github.com/super-productivity/super-productivity/archive/v18.4.4.tar.gz
+	source = superproductivity-18.5.0.tar.gz::https://github.com/super-productivity/super-productivity/archive/v18.5.0.tar.gz
 	source = superproductivity.desktop
 	source = superproductivity.sh
-	sha256sums = f538f0ca6a0eda4fbb74e135700ccedde340e1092ae6f7a6a66d99a912d386e1
+	sha256sums = 51ab22a9d91fd2dc18545e84f37b7c93fe7b9e3cdb0e9bdcb0458bd159d055b1
 	sha256sums = a8945d93cacbe189b538da601b3f6ace0588c3b126236e763e8f2010005513bb
 	sha256sums = f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e
 
