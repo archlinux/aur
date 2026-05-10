@@ -1,0 +1,14 @@
+.jj
+pkg
+src
+*~
+*.bin
+*.md
+*.old
+*.pkg.tar.zst
+*.tar.gz
+*.sh
+*.template
+LICENSE-*
+checksums.txt
+namcap.txt
