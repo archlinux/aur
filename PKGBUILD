@@ -1,6 +1,6 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=beacn-utility
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A utility for controlling Beacn devices."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('rust')
 install=beacn-utility.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/beacn-on-linux/beacn-utility/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('7b3c2be3eb641447bc0cd9930ba7e9d4e0f77524c1a0872dc533a378467a1a5332bdafc9e4d8650624baaa45dc534af93f0c8370ac4d0cb7fc713846217ddb37')
+sha512sums=('58170d8244a7caaba156adc75a27a67f861f2c11ebeb58775d9ee3090906eea5dc00979c1ba35460aa37461a1852c664d30eb8bdca3e3329108fc16a6f27c087')
 
 build() {
     cd "$pkgname-$pkgver"
