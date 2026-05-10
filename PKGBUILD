@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pathRender
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
-pkgver=1.78.0
+pkgver=1.80.0
 pkgrel=1
 pkgdesc='Render molecular pathways'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-hgu95av2.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9cc19f80386f4b9edf7f4fc5a9d52fec09b63f88ccbc326ba56f51b0523d4ab0')
+sha256sums=('1272a9ebe511bbc7b6e1a41fd640d2899fa502bdbb2cfa4ced679f2c5fa8d343')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
