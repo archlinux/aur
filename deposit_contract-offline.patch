@@ -1,0 +1,85 @@
+diff --git a/common/deposit_contract/Cargo.toml b/common/deposit_contract/Cargo.toml
+index 76c18ef..27db067 100644
+--- a/common/deposit_contract/Cargo.toml
++++ b/common/deposit_contract/Cargo.toml
+@@ -18,6 +18,6 @@ types = { workspace = true }
+ 
+ [build-dependencies]
+ hex = { workspace = true }
+-reqwest = { workspace = true }
++url = "2"
+ serde_json = { workspace = true }
+ sha2 = { workspace = true }
+diff --git a/common/deposit_contract/build.rs b/common/deposit_contract/build.rs
+index 2061d13..7d41ae1 100644
+--- a/common/deposit_contract/build.rs
++++ b/common/deposit_contract/build.rs
+@@ -1,9 +1,14 @@
+ //! Downloads the ABI and bytecode for the deposit contract from the ethereum spec repository and
+ //! stores them in a `contract/` directory in the crate root.
+ //!
+-//! These files are required for some `include_bytes` calls used in this crate.
+-
+-use reqwest::Url;
++//! Arch packaging note: this build script is intentionally "file:// only" to avoid pulling
++//! HTTP/TLS client dependencies into the build-script binary (which can cause linker issues).
++//! Set:
++//! - LIGHTHOUSE_DEPOSIT_CONTRACT_SPEC_URL
++//! - LIGHTHOUSE_DEPOSIT_CONTRACT_TESTNET_URL
++//! to `file://...` URLs.
++
++use url::Url;
+ use serde_json::Value;
+ use sha2::{Digest, Sha256};
+ use std::env;
+@@ -36,30 +41,18 @@ fn testnet_url() -> String {
+ }
+ 
+ fn read_contract_file_from_url(url: Url) -> Result<Value, String> {
+-    if url.scheme() == "file" {
+-        let path = url
+-            .to_file_path()
+-            .map_err(|e| format!("Unable to get file path from url: {:?}", e))?;
+-
+-        let file = File::open(path).map_err(|e| format!("Unable to open json file: {:?}", e))?;
+-
+-        let contract: Value = serde_json::from_reader(file)
+-            .map_err(|e| format!("Unable to read from jeson file: {:?}", e))?;
+-        Ok(contract)
+-    } else {
+-        match reqwest::blocking::get(url) {
+-            Ok(response) => {
+-                let contract: Value = response
+-                    .json()
+-                    .map_err(|e| format!("Respsonse is not a valid json {:?}", e))?;
+-                Ok(contract)
+-            }
+-            Err(e) => Err(format!(
+-                "No abi file found. Failed to download from github: {:?}",
+-                e
+-            )),
+-        }
++    if url.scheme() != "file" {
++        return Err(
++            "No abi file found. Set LIGHTHOUSE_DEPOSIT_CONTRACT_SPEC_URL and LIGHTHOUSE_DEPOSIT_CONTRACT_TESTNET_URL to file:// URLs (packaging/offline build)."
++                .to_string(),
++        );
+     }
++
++    let path = url
++        .to_file_path()
++        .map_err(|e| format!("Unable to get file path from url: {:?}", e))?;
++    let file = File::open(path).map_err(|e| format!("Unable to open json file: {:?}", e))?;
++    serde_json::from_reader(file).map_err(|e| format!("Unable to read from json file: {:?}", e))
+ }
+ 
+ fn main() {
+@@ -99,7 +92,7 @@ pub fn download_deposit_contract(
+ ) -> Result<(), String> {
+     let abi_file = abi_dir().join(format!("{}_{}", TAG, abi_file));
+     let bytecode_file = abi_dir().join(format!("{}_{}", TAG, bytecode_file));
+-    let url = reqwest::Url::parse(url).map_err(|e| format!("Unable to parse url: {}", e))?;
++    let url = Url::parse(url).map_err(|e| format!("Unable to parse url: {}", e))?;
+ 
+     if abi_file.exists() {
+         // Nothing to do.
