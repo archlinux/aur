@@ -1,0 +1,15 @@
+pkgbase = capybara-cli
+	pkgdesc = A small CLI utility for displaying text next to a capybara (now also supports text files) :D
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ryanmferreira/capybara-cli
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = make
+	makedepends = premake
+	depends = gcc-libs
+	source = git+https://github.com/ryanmferreira/capybara-cli.git
+	sha256sums = SKIP
+
+pkgname = capybara-cli
