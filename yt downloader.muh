@@ -1,0 +1,98 @@
+dizla os
+dizla sys
+
+# --- SMART DYNAMIC PATH ---
+# Automatically detects the home directory of any user (huseyin, guest, or anonymous)
+ev_dizini = os.path.expanduser("~")
+ana_yol = ev_dizini + "/Muhtar_Downloader"
+ayar_dosyasi = ana_yol + "/settings.txt"
+
+# Directory Check (Creates the folder in the user's home if it doesn't exist)
+eger (os.path.exists(ana_yol) == yanlis):
+    os.system("mkdir -p '" + ana_yol + "'")
+
+eger (os.path.exists(ayar_dosyasi) == yanlis):
+    os.system("echo 'limit=10' > " + ayar_dosyasi)
+
+# --- FUNCTIONS ---
+
+gorev limit_kontrol():
+    f_ayar = open(ayar_dosyasi, "r")
+    limit_str = f_ayar.read().split("=")[1].strip()
+    limit = tamsayi(limit_str)
+    f_ayar.close()
+
+    os.chdir(ana_yol)
+    dosyalar = [f icin f icinde os.listdir(ana_yol) eger f.endswith(".mp4") veya f.endswith(".mp3")]
+    dosyalar.sort(key=os.path.getmtime)
+
+    mevcut = uzunluk(dosyalar)
+    yaz(mavi + "[*] Storage Usage: " + metin(mevcut) + "/" + metin(limit) + renk_bitir)
+
+    dongu (uzunluk(dosyalar) >= limit):
+        yaz(kirmizi + "[!] Storage Full! Purging oldest file: " + dosyalar[0] + renk_bitir)
+        os.remove(dosyalar[0])
+        dosyalar.pop(0)
+
+gorev video_sec_ve_izle():
+    os.chdir(ana_yol)
+    arsiv = [f icin f icinde os.listdir(ana_yol) eger f.endswith(".mp4") veya f.endswith(".mp3")]
+
+    eger (uzunluk(arsiv) == 0):
+        yaz(kirmizi + "[!] Library is empty!" + renk_bitir)
+        don
+
+    yaz(sari + "\n--- MUHTAR ARCHIVE ---" + renk_bitir)
+
+    # Listing the archive with the safest method
+    icin i icinde aralik(uzunluk(arsiv)):
+        yaz(metin(i+1) + " - " + arsiv[i])
+
+    secim_str = sor("\nEnter video number to watch: ")
+    secim = tamsayi(secim_str) - 1
+
+    eger (secim >= 0 ve secim < uzunluk(arsiv)):
+        yaz(yesil + "[>] Playing: " + arsiv[secim] + renk_bitir)
+        # MPV show starts on CachyOS
+        os.system("mpv --no-border --ontop '" + arsiv[secim] + "'")
+    degilse:
+        yaz(kirmizi + "[!] Invalid selection!" + renk_bitir)
+
+# --- MAIN LOOP ---
+dongu dogru:
+    yaz(kirmizi + "\n=== MUHTAR VIDEO STATION v5.0 ===" + renk_bitir)
+    limit_kontrol()
+
+    yaz("\n1 - Download Video (MP4)")
+    yaz("2 - Download Audio (MP3)")
+    yaz("3 - Stream (Direct Link)")
+    yaz("4 - Adjust Storage Limit")
+    yaz("5 - Open Library")
+    yaz("q - Exit System")
+
+    ana_secim = sor("\nYour Choice: ")
+
+    eger (ana_secim == "q"):
+        yaz(sari + "System shutting down. Goodbye!" + renk_bitir)
+        dur
+
+    os.chdir(ana_yol)
+
+    eger (ana_secim == "1"):
+        url = sor("Paste URL: ")
+        os.system("yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' -o '%(title)s.%(ext)s' " + url)
+
+    eger (ana_secim == "2"):
+        url = sor("Paste URL: ")
+        os.system("yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' " + url)
+
+    eger (ana_secim == "3"):
+        url = sor("Paste URL: ")
+        os.system("mpv --no-border --ontop " + url)
+
+    eger (ana_secim == "4"):
+        yeni_limit = sor("Set new storage limit: ")
+        os.system("echo 'limit=" + yeni_limit + "' > " + ayar_dosyasi)
+
+    eger (ana_secim == "5"):
+        video_sec_ve_izle()
