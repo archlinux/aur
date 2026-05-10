@@ -2,14 +2,14 @@
 
 pkgname=coderabbit
 pkgver=0.4.5
-pkgrel=1
-pkgdesc="AI-powered code review CLI tool"
+pkgrel=2
+pkgdesc='AI-powered code review CLI tool'
 arch=('x86_64' 'aarch64')
-url="https://www.coderabbit.ai/cli"
+url='https://www.coderabbit.ai/cli'
 license=('custom:unfree')
 depends=('libsecret')
-makedepends=('unzip')
 options=('!strip') # Prevent stripping JS from prepackaged Bun executable
+conflicts=('cr')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://cli.coderabbit.ai/releases/${pkgver}/coderabbit-linux-x64.zip")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://cli.coderabbit.ai/releases/${pkgver}/coderabbit-linux-arm64.zip")
