@@ -1,0 +1,15 @@
+pkgbase = adobe-courier-otb-git
+	pkgdesc = Adobe Courier bitmap fonts repackaged as OpenType Bitmap (OTB) for GTK/Pango applications
+	pkgver = r1.a343711
+	pkgrel = 1
+	url = https://github.com/osch/adobe-courier-otb
+	arch = any
+	license = HPND
+	license = 0BSD
+	depends = fontconfig
+	provides = adobe-courier-otb
+	conflicts = adobe-courier-otb
+	source = adobe-courier-otb-git::git+https://github.com/osch/adobe-courier-otb.git
+	sha256sums = SKIP
+
+pkgname = adobe-courier-otb-git

@@ -1,0 +1,6 @@
+/pkg/
+/src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log
+/adobe-courier-otb-git/
