@@ -1,0 +1,17 @@
+pkgbase = matlab-dipimage
+	pkgdesc = Quantitative Image Analysis in C++, MATLAB, and Python (MATLAB bindings)
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://diplib.org/DIPimage.html
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake>=3.12
+	depends = diplib>=3.6.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = matlab
+	source = https://github.com/DIPlib/diplib/archive/refs/tags/3.6.0/diplib-3.6.0.tar.gz
+	sha256sums = c9c5ef0c1590dbc428d7f198fecc008b1b3ea54853663a2c33d97e04022af456
+
+pkgname = matlab-dipimage
