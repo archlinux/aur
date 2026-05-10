@@ -1,0 +1,15 @@
+post_install() {
+  depmod -a
+  echo 'mt7601u-ap: installed.'
+  echo 'Reload with: sudo modprobe -r mt7601u && sudo modprobe mt7601u'
+}
+
+post_upgrade() {
+  depmod -a
+  echo 'mt7601u-ap: upgraded.'
+  echo 'Reload with: sudo modprobe -r mt7601u && sudo modprobe mt7601u'
+}
+
+post_remove() {
+  depmod -a
+}
