@@ -1,6 +1,6 @@
 pkgbase = r-synmut
 	pkgdesc = SynMut: Designing Synonymously Mutated Sequences with Different Genomic Signatures
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SynMut
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-synmut
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SynMut_1.26.0.tar.gz
-	sha256sums = ebb0cdde8e5fbf2135df7451a3c1b954075a382d4da8ecb2116079652dfd247e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SynMut_1.28.0.tar.gz
+	sha256sums = 3ec534b9aa413bd421a07c39b6f89ee333748d8b5c305e7da5375a5bb704b252
 
 pkgname = r-synmut
