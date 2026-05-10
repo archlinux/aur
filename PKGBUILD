@@ -7,7 +7,7 @@
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname='ubuntu-wallpapers'
-pkgver=25.04.2
+pkgver=26.04.2
 pkgrel=1
 pkgdesc='The default Wallpapers for Ubuntu'
 arch=('any')
@@ -21,10 +21,10 @@ makedepends=('python-distutils-extra' 'python-setuptools')
 source=(
   "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha512sums=('4ebb839bb451cccd875593f7b10ef5c0bb16e89266c55e9f1800f1294a923c5ec31af2debb0423a197f1f24029ab78cbce318d263265614ca0fc78607074d530')
+sha512sums=('841bb6d5f2bf86abd16e604000fd82b65c6ceee4f2e7c424df4d989ea204a15d997c3d4e905420408958193bf4f4aec9d8a6558832d9cc800141e51f05cc2bf5')
 
 prepare() {
-  sed -e 's|version = version,|version = "'"${pkgver}"'",|' -i ubuntu-wallpapers-25.04.2/setup.py
+  sed -e 's|version = version,|version = "'"${pkgver}"'",|' -i "${pkgname}-${pkgver}/setup.py"
 }
 
 package() {
