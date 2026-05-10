@@ -1,6 +1,6 @@
 pkgbase = neuroforest-git
 	pkgdesc = NeuroForest knowledge engineering platform
-	pkgver = 1.5.0.r313.33912e5
+	pkgver = 1.6.0.r353.8c1f84b
 	pkgrel = 1
 	url = https://github.com/neuroforest
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = neuroforest-git
 	conflicts = neuroforest
 	options = !strip
 	options = !debug
-	source = app::git+https://github.com/neuroforest/app.git#commit=33912e512bccd61d8af3574dbae72b04fd399d18
+	source = app::git+https://github.com/neuroforest/app.git#commit=8c1f84b308a90444fcdee85168e47facd76b12e5
 	source = neuro.sh
 	source = neurowiki.sh
 	source = neurowiki.desktop
 	sha256sums = SKIP
-	sha256sums = 9036b43d4d03b6b5498d9be056ce979008c31b6e8bc79a832d8da3f1d555e78a
-	sha256sums = c785760662f0534ed8a0a5a3cee8a3c65ddd668b4a885c3267905529163a8081
+	sha256sums = c1ae7630bcdbd441112c7ba035e21fa0386d52b6f20bac2b318e8c1a130a473a
+	sha256sums = 7e9cefeebc70e3b2c5f5eb94d45c1589fd7dfa10e5f2f1f6ef41a092bb50fe5a
 	sha256sums = fda674499a7514ee6154e2aa0af1d7b9b7eb90ec670414327398b60afe78ba34
 
 pkgname = neuroforest-git

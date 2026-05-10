@@ -1,5 +1,5 @@
 #!/bin/bash
 export APP_DIR=/opt/neuroforest
-export ENVIRONMENT=PRODUCTION
+export ENV=PRODUCTION
 cd "$APP_DIR"
 exec nenv/bin/invoke app.run
