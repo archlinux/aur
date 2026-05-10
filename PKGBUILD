@@ -16,8 +16,8 @@ optdepends=(
 
 source_x86_64=("${pkgname}-${pkgver}-linux-amd64.tar.gz::https://github.com/typechecks/anitui/releases/download/v${pkgver}/anitui_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-linux-arm64.tar.gz::https://github.com/typechecks/anitui/releases/download/v${pkgver}/anitui_linux_arm64.tar.gz")
-sha256sums_x86_64=('6c10be689e04b0e4cd075e6fd99e3a70fdfb269b29bace1854e383f17757e3be')
-sha256sums_aarch64=('066f00764ea23c5e83935f20de113cdd3968f4f2e530df8a0f40096ec10cd00a')
+sha256sums_x86_64=('e1416c3ae99cc6c46a13c7969d52a162a7bf7285e53e27790e719163fa0405a2')
+sha256sums_aarch64=('97da52e947d7b706abfa0500980583c262c90cb8a286f8e7e06a4d3627ed2aa5')
 
 package() {
   install -Dm755 anitui "${pkgdir}/usr/bin/anitui"
