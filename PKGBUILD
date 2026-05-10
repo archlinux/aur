@@ -3,7 +3,7 @@
 pkgname=lighthouse-ethereum
 pkgver=8.1.3
 _pkgname=lighthouse
-pkgrel=40
+pkgrel=41
 pkgdesc='Ethereum consensus client in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sigp/lighthouse'
@@ -11,6 +11,7 @@ license=('Apache License 2.0')
 # !lto: makepkg LTOFLAGS → cc-rs static archives → bad links with our rustc linker wrapper.
 # Wrapper (lighthouse-link-gcc.sh): strip gc-sections/as-needed from rsp, force lld + --no-gc-sections.
 options=('!lto')
+conflicts=('lighthouse-ethereum-bin')
 
 depends=('openssl' 'sqlite' 'zstd')
 makedepends=('cargo' 'cmake' 'clang' 'lld' 'protobuf' 'make' 'git' 'perl' 'pkgconf')
