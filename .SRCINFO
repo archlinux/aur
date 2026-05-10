@@ -1,6 +1,6 @@
 pkgbase = rog-perf-tuner
 	pkgdesc = An utility to manage Asus Rog laptop performance and RGB lighting
-	pkgver = 4.14.9
+	pkgver = 4.14.10
 	pkgrel = 1
 	url = https://github.com/Emiliopg91/RogPerfTuner
 	install = rog-perf-tuner.install
@@ -25,7 +25,6 @@ pkgbase = rog-perf-tuner
 	depends = libusb
 	depends = power-profiles-daemon
 	depends = python
-	depends = python-pip
 	depends = python-yaml
 	depends = qt6-base
 	depends = qt6-charts
@@ -42,7 +41,7 @@ pkgbase = rog-perf-tuner
 	replaces = rog-perf-tuner-git
 	options = !debug
 	options = !lto
-	source = git+https://github.com/Emiliopg91/RogPerfTuner.git#tag=4.14.9-1
+	source = git+https://github.com/Emiliopg91/RogPerfTuner.git#tag=4.14.10-1
 	sha256sums = SKIP
 
 pkgname = rog-perf-tuner
