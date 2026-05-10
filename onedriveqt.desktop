@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OneDriveQt
+Comment=OneDrive Qt 同步客户端
+Exec=onedriveqt
+Icon=onedriveqt
+Terminal=false
+Categories=Network;
+StartupWMClass=onedriveqt
