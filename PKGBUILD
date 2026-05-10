@@ -5,7 +5,7 @@
 
 pkgname=rio
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64')
 url="https://github.com/raphamorim/rio"
