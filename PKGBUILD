@@ -1,7 +1,7 @@
 # Maintainer: Stefan Ott <stefan@ott.net>
 pkgname=martoc
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 epoch=
 pkgdesc="Generate TOC for Audio CDs"
 arch=("x86_64")
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("martoc-${pkgver}.tar.gz::https://code.ott.net/martoc/downloads/martoc-${pkgver}.tar.gz")
-sha256sums=("e0f5ddd034975bba51f905cd34c29c776ff65c464a9dcc2f5aa98e56a36194f0")
+sha256sums=("47ce9bb68a1310837b5fe55015a1000570db00f43376330dc82ecbc78a1bdaae")
 noextract=()
 md5sums=()
 validpgpkeys=()
