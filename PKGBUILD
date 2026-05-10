@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('cargo' 'bun')
 source=("spent-$pkgver.tar.gz::https://github.com/Gxstavo-dev/spent/archive/v$pkgver.tar.gz")
-sha256sums=('fae0f66a256b7af36112db7cbbeba8e2c29ce907b417e6d679fe574e311ffd74')
+sha256sums=('fa58019a8a8c1b5b5cfc7927bd77c9b8b33d6688e34f2674786816b17cf69f74')
 
 build() {
   cd "$srcdir/spent-$pkgver"
