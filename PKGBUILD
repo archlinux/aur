@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multiMiR
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b6ae37ef2a74420c5ab7e7555cc0366d')
-b2sums=('450566afed12ad59932710ceb11e4974799e6dffd80b704aab11331d7225867d94d9b2dd8b50eb5dd86314fbdc3abd099b099839344f482c23314feb6004fcca')
+md5sums=('d005ef6d82b7adc890760c02eb7f2969')
+b2sums=('410aace2953ec43b3f19fa5cae9ce025845f3965e0c9a8e1bfc67ebe1c6287c3dab72b0cfa912845ae426518ef979822c9fda337db374c12694fe36e7d725199')
 
 build() {
   mkdir build
