@@ -1,7 +1,7 @@
 # Maintainer: Roc Gwei <roc dot gui at foxmail dot com>
 
 pkgname=codecrafters-bin
-pkgver=44
+pkgver=54
 pkgrel=1
 pkgdesc="Codecragers CLI tool (binary release)"
 arch=('x86_64' 'aarch64' 'i686')
@@ -16,9 +16,9 @@ source_x86_64=("${url}/releases/download/v${pkgver}/v${pkgver}_linux_amd64.tar.g
 source_aarch64=("${url}/releases/download/v${pkgver}/v${pkgver}_linux_arm64.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/v${pkgver}_linux_386.tar.gz")
 
-sha256sums_x86_64=('7a58c5c8355fd272e84d0e04ace612a1085a7cb612230f9daf90d7e75354a60c')
-sha256sums_aarch64=('ad5502c86919cccd870bda7f87ca7152a96b2df6be12cd17a8dc88394a2954ab')
-sha256sums_i686=('1134794e8cf38eeb4bcecc5cf8dc9d33bd65e4e36863476c04980ea75cf1cc46')
+sha256sums_x86_64=('777c74ee537570c7c054c2e1bbab0ce52b37157410d9bba1637d2ec8f8fbb4b8')
+sha256sums_aarch64=('6bf4a0e632cc5b313c3b8245e6d0c2ead5068d46c3831c3a567102ab254fea57')
+sha256sums_i686=('766d85a42e3201faef6226d41ba90568899f73967807d56d46caf55d0b0c0482')
 
 package() {
   install -Dm755 codecrafters "$pkgdir/usr/bin/codecrafters"
