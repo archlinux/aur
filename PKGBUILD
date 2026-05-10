@@ -22,11 +22,13 @@ pkgver() {
 
 prepare() {
   cd cmdcreate
+  rm -rf .cargo/config.toml
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd cmdcreate
+  CFLAGS+=" -ffat-lto-objects"
   cargo build --release --frozen
 }
 
