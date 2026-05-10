@@ -1,0 +1,16 @@
+pkgbase = mt7601u-ap-git
+	pkgdesc = mt7601u Wi-Fi kernel module patched to expose AP mode
+	pkgver = r1.1bfaee9
+	pkgrel = 1
+	url = https://github.com/torvalds/linux/tree/master/drivers/net/wireless/mediatek/mt7601u
+	install = mt7601u-ap.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = patch
+	source = access-point.patch
+	source = Makefile
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mt7601u-ap-git
