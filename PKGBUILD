@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.6.r171.g2913a8c
+pkgver=2.6.r213.g8e3e961
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
 	'hicolor-icon-theme'
 	'libx11'
 	'pugixml'
-	'sdl2'
+	'sdl3>=3.4.2'
 	'wxwidgets-gtk3>=3.3'
 )
 makedepends=(
@@ -29,7 +29,6 @@ makedepends=(
 	'glm'
 	'glu'
 	'gtk3'
-	'hidapi'
 	'libgcc'
 	'libgl'
 	'libpng'
@@ -66,7 +65,6 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
-	sed -i '/ZLIB::ZLIB/a zstd::zstd' src/Cafe/CMakeLists.txt
 }
 
 build() {
@@ -76,6 +74,7 @@ build() {
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D ENABLE_SDL=ON
 		-D ENABLE_VCPKG=OFF
 		-W no-dev
 	)
@@ -95,7 +94,6 @@ package() {
 		'libgdk-3.so'
 		'libgobject-2.0.so'
 		'libgtk-3.so'
-		'libhidapi-hidraw.so'
 		'libssl.so'
 		'libstdc++.so'
 		'libusb-1.0.so'
