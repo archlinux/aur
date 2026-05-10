@@ -2,7 +2,7 @@
 
 pkgname=nanocoder
 pkgauthor=Nano-Collective
-pkgver=1.25.2
+pkgver=1.26.1
 pkgrel=1
 
 _npmname=nanocoder
@@ -27,8 +27,8 @@ source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkg
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('c96cb1cde597c76af5ec98cc12fcf7feeca7072831df803b618c741c808c96c7a36ca30de25f381497037361702347d73ed28f66746e85b6fef61181fc4af81f'
-        'fdaff9ee8715190d0f68b017f8b935bf555d098e184b30c0582bc83c2c79b15f61a05c04dae9cf30ff149d5ab8d428696143bdd4dfc1807c92cf701500a6f8e9'
+b2sums=('adea1e4597208e4b8a998c79d5bc8fb6a0ac4673ef840c249eeaf95317249d0b817d806cf9c8c7572f9613a8e471eb7d8ec1e75aff5f6c7f08b0d6ed5892e8be'
+        'd10874accc80428a318740e435c3d3faa452b4d7075dbf27b9ed2a4a1f79e8534b1666de7d98eb3ed5c8cd8a8aaad4eb5fcd1aadb286d6cb7130046716bce23a'
         'c5f376c25c2c829847e6cadc183170cfe60bafcebef471f809d52830a7de8e7a934bce753afc90039a1bee32fa11b2715fa4b29ece13cc37ad55a26178f58c4a')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
