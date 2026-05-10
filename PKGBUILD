@@ -1,7 +1,7 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait-git
 _pkgname=cfait
-pkgver=849.b9b8d92.rolling
+pkgver=974.9e96293.rolling
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local, git version)"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     'fontconfig'        # Required by the GUI for system font discovery
     'libxkbcommon'      # Required by the GUI for keyboard handling (especially on Wayland)
     'vulkan-icd-loader' # Required by the GUI to load Vulkan drivers for rendering
+    'org.freedesktop.secrets'  # Required to store the CalDAV password
 )
 makedepends=('cargo' 'pkgconf' 'git')  # git is needed as long as libdav > 0.10.3 is not released
 # Optional dependencies for the GUI and specific features
@@ -65,4 +66,3 @@ package() {
   install -Dm644 "assets/cfait.desktop" "$pkgdir/usr/share/applications/cfait.desktop"
   install -Dm644 "assets/cfait.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/cfait.svg"
 }
-

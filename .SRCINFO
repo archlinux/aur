@@ -1,6 +1,6 @@
 pkgbase = cfait-git
 	pkgdesc = Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local, git version)
-	pkgver = 849.b9b8d92.rolling
+	pkgver = 974.9e96293.rolling
 	pkgrel = 1
 	url = https://codeberg.org/trougnouf/cfait
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = cfait-git
 	depends = fontconfig
 	depends = libxkbcommon
 	depends = vulkan-icd-loader
+	depends = org.freedesktop.secrets
 	optdepends = vulkan-driver: Required by the GUI for hardware-accelerated rendering
 	optdepends = wayland: Required by the GUI for Wayland session support
 	optdepends = libx11: Required by the GUI for X11 session support
