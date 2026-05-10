@@ -20,24 +20,14 @@ sha256sums=('7caebc40db17568c2050d072c9e81eadb280b50f296018dd66ba25e44100be6d')
 build() {
   cd "${pkgname}-${pkgver}"
 
-  npm ci --cache "${srcdir}/npm-cache" \
-    --workspace packages/tui \
-    --workspace packages/ai \
-    --workspace packages/agent \
-    --workspace packages/coding-agent \
-    --include-workspace-root
+  npm ci --cache "${srcdir}/npm-cache"
 
   npm --prefix packages/tui run build
   ./node_modules/.bin/tsgo -p packages/ai/tsconfig.build.json
   npm --prefix packages/agent run build
   npm --prefix packages/coding-agent run build
 
-  npm prune --omit=dev --cache "${srcdir}/npm-cache" \
-    --workspace packages/tui \
-    --workspace packages/ai \
-    --workspace packages/agent \
-    --workspace packages/coding-agent \
-    --include-workspace-root
+  npm prune --omit=dev --cache "${srcdir}/npm-cache"
 }
 
 package() {
