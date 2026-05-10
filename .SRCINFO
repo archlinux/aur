@@ -1,7 +1,7 @@
 pkgbase = rockchip-mpp-llvm
 	pkgdesc = Rockchip Media Process Platform (MPP) — built with Clang and LLVM lld
 	pkgver = 1.0.11
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/HermanChen/mpp/
 	arch = x86_64
