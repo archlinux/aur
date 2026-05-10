@@ -1,5 +1,5 @@
 pkgname=yauri
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 url="https://gitlab.com/PieyIsAPie/yauri"
 pkgdesc="yauri, the gayest aur helper ever, all fitting into 1 file."
