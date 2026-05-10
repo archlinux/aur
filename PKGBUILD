@@ -1,7 +1,7 @@
 # Maintainer: Carlos Prieto <prietus@live.com>
 pkgname=mopyrust-bin
 _pkgname=mopyrust
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Native Mopidy client for desktop, written in Rust + Tauri + Svelte (prebuilt binary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('mopidy: server this client connects to')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('567112766d819243f61c8ea5c5bdf1df57a9e2217e778f61233cba23884c78eb')
+sha256sums=('1e929f1d6e24b581fbd89dbe9ee8c13c28bb0eeffc89237aab5f1cbd42c316eb')
 
 package() {
   cd "${srcdir}"
