@@ -1,0 +1,21 @@
+pkgbase = clippr
+	pkgdesc = A fast, minimal clipboard manager for Linux built with Tauri, Rust, React and Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/JackpotMachine777/clippr
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = sqlite
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = python
+	depends = python-flask
+	source = clippr-1.0.0.tar.gz::https://github.com/JackpotMachine777/clippr/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 3839a01838433a1156211295d1f177b918bb5667de2b2ee14964fdc8b05aec4d
+
+pkgname = clippr
