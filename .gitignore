@@ -1,0 +1,9 @@
+*.pkg.tar.*
+*.deb
+*.rpm
+*.AppImage
+*.dmg
+*.msi
+*.exe
+src/
+pkg/
