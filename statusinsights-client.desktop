@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=StatusInsights Client
+Comment=Desktop app for StatusInsights
+Exec=statusinsights-client
+Icon=statusinsights-client
+Terminal=false
+Categories=Utility;
+StartupNotify=true

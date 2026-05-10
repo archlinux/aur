@@ -3,7 +3,7 @@
 pkgname=statusinsights-client
 _srcname=StatusInsights-Client
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop app for StatusInsights built with Flutter'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xuanxuan1231/StatusInsights-Client'
@@ -20,8 +20,14 @@ makedepends=(
   'pkgconf'
   'flutter'
 )
-source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=(
+  "git+${url}.git#tag=v${pkgver}"
+  "${pkgname}.desktop"
+)
+sha256sums=(
+  'SKIP'
+  '55eb6e8fb78e0c9f04f192d7e204c2587df870983f0116aef7df2216d6da980b'
+)
 
 build() {
   cd "${srcdir}/${_srcname}"
@@ -43,7 +49,7 @@ exec /opt/statusinsights-client/StatusInsights "$@"
 LAUNCHER
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 linux/packaging/statusinsights.desktop \
+  install -Dm644 "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 linux/packaging/statusinsights.png \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
