@@ -1,6 +1,8 @@
-# Maintainer: oscarcl <oscar.cowderylack@gmail.com>
-pkgname=casparcg-server-git
-pkgver=2.3.3.r250.g5b0716e
+# Maintainer: Scientress <arch@scientress.de>
+# Previous Maintainer: oscarcl <oscar.cowderylack@gmail.com>
+_pkgname="casparcg-server"
+pkgname="${_pkgname}-git"
+pkgver=r4173.8c7383783
 pkgrel=1
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
@@ -8,44 +10,46 @@ url="https://github.com/CasparCG/server"
 license=('GPL-3.0-or-later')
 conflicts=(casparcg-server)
 provides=(casparcg-server)
-depends=(ffmpeg boost-libs libgl freeimage glew tbb openal sfml libxcomposite libxdamage libxkbcommon libxss libcups pango nss at-spi2-atk ttf-liberation)
+depends=(cef ffmpeg boost-libs libgl freeimage glew tbb openal sfml2 libxcomposite libxdamage libxkbcommon libxss libcups pango nss at-spi2-atk ttf-liberation)
 makedepends=(git cmake ninja boost dos2unix)
-source=("casparcg-server::git+https://github.com/CasparCG/server.git"
-        casparcg)
+source=("${_pkgname}::git+https://github.com/CasparCG/server.git"
+        "archlinux-cef.patch")
 sha256sums=('SKIP'
-            '12a864689feb28c09fe809b733cfd502602dd8467bca83a617a3fec02fc92a66')
+            'cf2a2e0411b9d717aea98892f326ae7fdaa34a797cd535e3629f5745c98f36b4')
 
 pkgver() {
-    cd "$srcdir/casparcg-server"
-    git describe --long --abbrev=7 | sed 's/^v//;s/.lts//;s/.stable//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${_pkgname}"
+    # we can't do ${version}.${num_commits_ahead}.${short_hash} since the tags for recents versions are not part of the master branch
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/casparcg-server"
+    cd "${srcdir}/${_pkgname}"
 
+    patch -p1 < "${srcdir}/archlinux-cef.patch"
     dos2unix src/shell/casparcg.config
 }
 
 build() {
-    cd "$srcdir"
+    cd "${srcdir}"
 
-    # cef's build is incompatible with _FORTIFY_SOURCE=3
-    export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-    export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    export CFLAGS="${CFLAGS} -fmacro-prefix-map=${srcdir}/${_pkgname}=."
+    export CXXFLAGS="${CXXFLAGS} -fmacro-prefix-map=${srcdir}/${_pkgname}=."
 
-    cmake -B build -S "casparcg-server/src" \
+    cmake -B build -S "${_pkgname}/src" \
         -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_SYSTEM_FFMPEG=ON \
+        -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+        -DUSE_SYSTEM_CEF=ON \
+        -DUSE_STATIC_BOOST=OFF \
         -DDIAG_FONT_PATH="/usr/share/fonts/liberation/LiberationMono-Regular.ttf" \
+        -DCASPARCG_BINARY_NAME=${_pkgname} \
         -G Ninja
 
     ninja -C build
 }
 
 package() {
-    install -d "$pkgdir/opt/casparcg/"
-    cp -r "$srcdir/build/staging"/{bin,lib,casparcg.config} "$pkgdir/opt/casparcg/"
-
-    install -Dm755 "$srcdir/casparcg" "$pkgdir/usr/bin/casparcg"
+    cd "${srcdir}"
+    ninja -C build install
+    install -dm755 "${pkgdir}/opt/casparcg/"
 }
