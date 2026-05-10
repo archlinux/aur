@@ -1,5 +1,8 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 
+# DLAGENTS required to bypass User-Agent restriction on deepin's download server
+DLAGENTS=("https::/usr/bin/curl -A 'APT' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+
 pkgname='deepin-wine8-stable'
 _pkgver=8.16deepin25-1
 pkgver=${_pkgver//-/_}
