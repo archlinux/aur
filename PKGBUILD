@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=idiogram
-_pkgver=1.86.0
+_pkgver=1.88.0
 pkgname=r-${_pkgname,,}
-pkgver=1.86.0
+pkgver=1.88.0
 pkgrel=1
 pkgdesc='idiogram'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-hu6800.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('06385b4ea619c6d017c158493c068a4950f5c8d5facc1b1ce33e74fd4e4f3535')
+sha256sums=('23aa396f53ff17449978e6131ba845f46540d9b86cc2c5ccdb6fcdc173209036')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
