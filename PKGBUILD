@@ -1,8 +1,8 @@
 # Maintainer: Rusty Daemon (aur@rustydaemon.com)
 
 pkgname=gitkraken-cli-bin
-pkgver=3.1.54
-pkgrel=2
+pkgver=3.1.62
+pkgrel=1
 pkgdesc="GitKraken CLI"
 arch=('x86_64')
 url="https://www.gitkraken.com/"
@@ -13,11 +13,9 @@ source=(
   "LICENSE.txt"
   "README.md"
 )
-sha256sums=(
-  'a6b8c3485b22175b3c7637f4707a9c22aa0beb57ccce4e776477ac23f28cb55b'
-  '4003c1c4250a61397257d7d2251613f8d9ba7c8029d9e90c69c79c226bf41a3b'
-  'fb553e05cf57aadb4696f164f81e99576299f6706fa1dae093e47c76b9328cff'
-)
+sha256sums=('0fdf77697c51adaf7b6a6af3a60f8e735d9015c704c0e339d2237bdca1040033'
+            '4003c1c4250a61397257d7d2251613f8d9ba7c8029d9e90c69c79c226bf41a3b'
+            'fb553e05cf57aadb4696f164f81e99576299f6706fa1dae093e47c76b9328cff')
 
 package() {
   install -Dm755 "$srcdir"/gk "$pkgdir"/usr/bin/gk
