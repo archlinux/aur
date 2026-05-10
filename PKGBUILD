@@ -1,4 +1,5 @@
 # Maintainer: Parsiad Azimzadeh <parsiad.azimzadeh at gmail dot com>
+# Maintainer: mothran
 # Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=openai-codex-desktop
