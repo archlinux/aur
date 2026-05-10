@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=nightingale
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Machine learning powered Karaoke app (with scores!)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'alsa-lib' 'glib2' 'webkit2gtk-4.1' 'cairo' 'gtk3' 'gdk-pixbuf2' 'libsoup3')
 makedepends=('cargo' 'pnpm')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('898516a16c4f3c788afa1760791118061b3d755e5510682b553b069565642953')
+sha256sums=('0bf2acd0615bb6bbd1e90b128376ea0a7891cace39192981539df82df94438bc')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
