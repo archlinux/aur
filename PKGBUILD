@@ -1,7 +1,7 @@
 # Maintainer: Aaron <aarongonzal@gmail.com>
 
 pkgname=restic-box
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A simple GTK3 tray applet for restic backups over SSH, local, or rclone remotes"
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Shikaku2/restic-box/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('17e8f641e5ff4fda8a5a61fa2907d0a63ec9017c85ffa5555661df4f7c6e2d3d')
+sha256sums=('60ef7e5c6af6ca33d9bdd084bca237f1e3633d4438fe2f60105328ca9b3de396')
 
 build() {
   cd "$pkgname-$pkgver"
