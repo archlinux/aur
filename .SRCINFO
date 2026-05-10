@@ -1,11 +1,10 @@
 pkgbase = cwc
 	pkgdesc = Extensible Wayland compositor with dynamic window management
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Cudiph/cwcwm
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = ldoc
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols

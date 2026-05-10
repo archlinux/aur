@@ -2,7 +2,7 @@
 _pkgname="cwcwm"
 pkgname="cwc"
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Extensible Wayland compositor with dynamic window management'
 arch=('x86_64')
 url="https://github.com/Cudiph/cwcwm"
@@ -26,7 +26,7 @@ depends=(
   'xxhash'
 )
 makedepends=(
-  'ldoc'
+  # 'ldoc'
   'meson'
   'ninja'
   'wayland-protocols'
@@ -52,7 +52,7 @@ build() {
   cd "$_pkgname-$pkgver" || exit 1
   meson setup build -Dplugins=true --buildtype=release --prefix /usr --reconfigure
   ninja -C build
-  make docs
+  # make docs
 }
 
 package() {
