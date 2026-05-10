@@ -1,14 +1,14 @@
 diff --git a/src/CMakeModules/Bootstrap_Linux.cmake b/src/CMakeModules/Bootstrap_Linux.cmake
-index 79ee58840..729981eb8 100644
+index 79ee58840..3a98b2cdc 100644
 --- a/src/CMakeModules/Bootstrap_Linux.cmake
 +++ b/src/CMakeModules/Bootstrap_Linux.cmake
-@@ -44,16 +44,9 @@ find_package(X11 REQUIRED)
+@@ -44,16 +44,11 @@ find_package(X11 REQUIRED)
  
  if (ENABLE_HTML)
      if (USE_SYSTEM_CEF)
 -        set(CEF_LIB_PATH "/usr/lib/casparcg-cef-142")
--
 +        find_package(CEF 142 REQUIRED)
+ 
          add_library(CEF::CEF INTERFACE IMPORTED)
 -        target_include_directories(CEF::CEF INTERFACE
 -            "/usr/include/casparcg-cef-142"
@@ -18,6 +18,7 @@ index 79ee58840..729981eb8 100644
 -            "${CEF_LIB_PATH}/libcef_dll_wrapper.a"
 -        )
 +        target_link_libraries(CEF::CEF INTERFACE CEF::Wrapper CEF::Library)
++        SET(CMAKE_INSTALL_RPATH "/usr/lib/cef/")
      else()
          casparcg_add_external_project(cef)
          ExternalProject_Add(cef

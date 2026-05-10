@@ -8,14 +8,14 @@ pkgdesc="Software used to play out professional graphics, audio and video to mul
 arch=('x86_64')
 url="https://github.com/CasparCG/server"
 license=('GPL-3.0-or-later')
-conflicts=(casparcg-server)
+conflicts=(casparcg-server cef-minimal)
 provides=(casparcg-server)
-depends=(cef ffmpeg boost-libs libgl freeimage glew tbb openal sfml2 libxcomposite libxdamage libxkbcommon libxss libcups pango nss at-spi2-atk ttf-liberation)
+depends=(cef ffmpeg boost-libs libgl glew tbb openal sfml libxcomposite libxdamage libxkbcommon libxss libcups pango nss at-spi2-atk ttf-liberation)
 makedepends=(git cmake ninja boost dos2unix)
 source=("${_pkgname}::git+https://github.com/CasparCG/server.git"
         "archlinux-cef.patch")
 sha256sums=('SKIP'
-            'cf2a2e0411b9d717aea98892f326ae7fdaa34a797cd535e3629f5745c98f36b4')
+            'e34e0bbeb6db378b1e074948c4fe62030b1e925a4398ac6a468209d58b54a450')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
