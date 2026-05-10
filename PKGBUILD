@@ -1,5 +1,5 @@
 pkgname=spencer-macro
-pkgver=0.1
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Spencer Macro Utilities"
 arch=('x86_64')
