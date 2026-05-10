@@ -1,6 +1,6 @@
 pkgbase = pcsx2-parallel-gs-git
 	pkgdesc = A Sony PlayStation 2 emulator with experimental paraLLEl-GS support
-	pkgver = 2.7.298.r3.gd731c8b176
+	pkgver = 2.7.330.r2.g2a7f7b1fd2
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	arch = x86_64
