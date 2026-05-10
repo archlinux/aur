@@ -2,7 +2,7 @@
 # steamos-manager fork with native ACPI/ALIB TDP control for GPD Win Mini
 
 pkgname=steamos-manager-gpdwinmini-git
-pkgver=r702.g365f5d3
+pkgver=r703.gdd1b147
 pkgrel=1
 pkgdesc="SteamOS Manager with native ACPI/ALIB TDP control for GPD Win Mini (VCS)"
 arch=('x86_64')

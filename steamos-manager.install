@@ -15,7 +15,12 @@ post_install() {
 ==> To wire these into the KDE/GNOME power-profile selector, install
 ==> tuned-ppd, then edit /etc/tuned/ppd.conf and set:
 ==>     [main]
-==>     power_saver = gpd-win-mini-power-saver
+==>     default = balanced
+==>     battery_detection = true
+==>     sysfs_acpi_monitor = true
+==>
+==>     [profiles]
+==>     power-saver = gpd-win-mini-power-saver
 ==>     balanced    = gpd-win-mini-balanced
 ==>     performance = gpd-win-mini-performance
 ==> followed by:  sudo systemctl restart tuned tuned-ppd
