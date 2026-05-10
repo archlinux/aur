@@ -1,6 +1,6 @@
 # Maintainer: Lonny Wong <lonnywong@qq.com>
 pkgname="tsshd"
-pkgver="0.1.7"
+pkgver="0.1.8"
 pkgrel=1
 epoch=0
 pkgdesc="UDP-based SSH server with roaming support"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/trzsz/tsshd/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('ec8cc93cc10b29bb18ccb1be727d17d5')
+md5sums=('a0710478d47b44dee518b43dfb903ae8')
 validpgpkeys=()
 
 build() {

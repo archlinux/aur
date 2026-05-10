@@ -1,6 +1,6 @@
 pkgbase = tsshd
 	pkgdesc = UDP-based SSH server with roaming support
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	epoch = 0
 	url = https://trzsz.github.io/tsshd
@@ -10,7 +10,7 @@ pkgbase = tsshd
 	license = MIT
 	makedepends = go>=1.25.3
 	provides = tsshd
-	source = https://github.com/trzsz/tsshd/archive/refs/tags/v0.1.7.tar.gz
-	md5sums = ec8cc93cc10b29bb18ccb1be727d17d5
+	source = https://github.com/trzsz/tsshd/archive/refs/tags/v0.1.8.tar.gz
+	md5sums = a0710478d47b44dee518b43dfb903ae8
 
 pkgname = tsshd
