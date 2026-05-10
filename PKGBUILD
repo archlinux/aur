@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=odseq
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Outlier detection in multiple sequence alignments'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1785bc0e249308f9c59b33660c429fab6c98cff7389a542bae6bc17bad1bf26c')
+sha256sums=('024b6d4b60bdc79ad248053b07cf4b4cda38283a0a871ee6266e66f8bd49765c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
