@@ -75,6 +75,5 @@ package() {
   install -m644 packages/coding-agent/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -m644 packages/coding-agent/CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
-  find "$pkgdir/$mod_dir" -type d -exec chmod 755 '{}' +
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
