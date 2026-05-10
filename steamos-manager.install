@@ -16,8 +16,7 @@ post_install() {
 ==> tuned-ppd, then edit /etc/tuned/ppd.conf and set:
 ==>     [main]
 ==>     default = balanced
-==>     battery_detection = true
-==>     sysfs_acpi_monitor = true
+==>     battery_detection = false
 ==>
 ==>     [profiles]
 ==>     power-saver = gpd-win-mini-power-saver
