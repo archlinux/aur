@@ -1,0 +1,12 @@
+pkgbase = muhtar-organizer
+	pkgdesc = A powerful storage manager and file organizer, powered by Muhtar-Dil.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/KaliciArkadas/muhtar-organizer
+	arch = any
+	license = MIT
+	depends = python
+	source = organizer.muh::https://raw.githubusercontent.com/KaliciArkadas/muhtar-organizer/main/organizer.muh
+	sha256sums = SKIP
+
+pkgname = muhtar-organizer
