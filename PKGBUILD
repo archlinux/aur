@@ -2,13 +2,15 @@
 
 pkgname=tp-dusk
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
 license=('CC0-1.0')
 depends=(libjpeg-turbo glibc curl libgcc sdl3 abseil-cpp freetype2 libstdc++)
 makedepends=(cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr)
+provides=(tp-dusk)
+conflicts=(tp-dusk-git)
 source=(
   "git+$url#tag=v${pkgver}"
   "git+https://github.com/encounter/aurora.git"
