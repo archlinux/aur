@@ -1,6 +1,6 @@
 #Maintainer: Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="libudb"
-pkgver="1.0"
+pkgver="1.0.1"
 pkgrel="1"
 pkgdesc="Universal DataBase library"
 arch=('x86_64')
@@ -9,7 +9,7 @@ source=("https://github.com/ProfessorNavigator/${pkgname}/archive/refs/tags/v${p
 url="https://github.com/ProfessorNavigator/libudb"
 license=('GPL-3.0-only')
 makedepends=('cmake' 'gcc' 'doxygen')
-sha256sums=('e4b4217d2f0b9ba7918a4809d0a80510438c66eaa92440957d64c7fb0d311f7f')
+sha256sums=('ee6cd7546b36f80e5b35e39dae57c5bf8a9816d309eef6f4262814cc4e3fe993')
 
 build() {   
    local cmake_options=(

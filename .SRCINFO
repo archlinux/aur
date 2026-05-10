@@ -1,6 +1,6 @@
 pkgbase = libudb
 	pkgdesc = Universal DataBase library
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/libudb
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libudb
 	makedepends = gcc
 	makedepends = doxygen
 	provides = libudb
-	source = https://github.com/ProfessorNavigator/libudb/archive/refs/tags/v1.0.tar.gz
-	sha256sums = e4b4217d2f0b9ba7918a4809d0a80510438c66eaa92440957d64c7fb0d311f7f
+	source = https://github.com/ProfessorNavigator/libudb/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = ee6cd7546b36f80e5b35e39dae57c5bf8a9816d309eef6f4262814cc4e3fe993
 
 pkgname = libudb
