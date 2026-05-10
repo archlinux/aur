@@ -1,35 +1,38 @@
-# Maintainer: Robin Nehls <aur@manol.is>
+# Maintainer: suzakuwcx <suzakuwcx@suzakuwcx.com>
+# Contributor: Robin Nehls <aur@manol.is>
 
 pkgname=gr-dect2-git
-pkgver=a2a8f9d
+_pkgname=gr-dect2
+pkgver=r39.0d973fe
 pkgrel=1
 pkgdesc="This project was developed to demonstrate the possibility of real-time DECT voice channel decoding by Gnuradio."
 arch=('any')
 url="https://github.com/pavelyazev/gr-dect2"
-license=(unknown)
-depends=('gnuradio' 'boost' 'swig')
-makedepends=('cmake')
+license=('GPL')
+depends=('boost' 'boost-libs' 'gmp' 'gnuradio')
+makedepends=('cmake' 'doxygen' 'git')
+optdepends=('gnuradio-companion' 'python')
+conflicts=('gr-dect2')
 provides=('gr-dect2')
-source=('git+https://github.com/pavelyazev/gr-dect2.git')
-sha1sums=('SKIP')
-_gitname=gr-dect2
+source=("git+https://github.com/pavelyazev/gr-dect2.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  echo $(git describe --always | sed 's/-/./g')
+	cd "${srcdir}/${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd $_gitname
-  mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+	cd "${srcdir}/${_pkgname}"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make -j$(nproc)
 }
 
 package() {
-  cd $_gitname
-  cd build
-  make DESTDIR=${pkgdir} install
+	cd "${srcdir}/${_pkgname}"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+	cd build
+	make DESTDIR="${pkgdir}/" install
 }
-
-# vim:set ts=2 sw=2 et:
