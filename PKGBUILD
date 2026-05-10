@@ -29,7 +29,7 @@ build() {
 
   # Running run build specifically for each target is necessary for ai package
   npm --prefix packages/tui run build
-  # This is necessary to prevent ai module fetching models online in building
+  # This is necessary to prevent ai module fetching models on network in building
   ./node_modules/.bin/tsgo -p packages/ai/tsconfig.build.json
   npm --prefix packages/agent run build
   npm --prefix packages/coding-agent run build
