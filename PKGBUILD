@@ -4,7 +4,7 @@
 
 _target=riscv-none-elf
 pkgname=$_target-gcc
-pkgver=15.2.0
+pkgver=16.1.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for RISC-V (bare-metal) target. Includes C++ nano build.'
 arch=(x86_64)
@@ -18,8 +18,8 @@ conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
-sha512sums=('89047a2e07bd9da265b507b516ed3635adb17491c7f4f67cf090f0bd5b3fc7f2ee6e4cc4008beef7ca884b6b71dffe2bb652b21f01a702e17b468cca2d10b2de'
-'SKIP')
+sha512sums=('b3454958891ab47e1e5b6cb9396c0ad3b04f32fe2a7bf1153a143f21013fdb6b295ca94c98964698a688e4c1d7555ffd8ffbc20187507cce6b1c32cbcc09897a'
+'9ea34b2b1c3bdcbd2d97175a3ef59154046f5e095c394b857b3ebc10ad1d65bceedf3a833f1ed1292f39e29301615771f88ea372a6cf49523abcdb33ef2f1172')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
