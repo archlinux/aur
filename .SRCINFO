@@ -1,0 +1,20 @@
+pkgbase = nirimap-git
+	pkgdesc = A minimal workspace minimap overlay for the Niri Wayland compositor
+	pkgver = 0.2.0.r0.gcbe8504
+	pkgrel = 1
+	url = https://github.com/alexandergknoll/nirimap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
+	provides = nirimap
+	conflicts = nirimap
+	source = nirimap::git+https://github.com/alexandergknoll/nirimap.git
+	sha256sums = SKIP
+
+pkgname = nirimap-git
