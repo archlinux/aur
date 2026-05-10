@@ -1,56 +1,49 @@
-# Maintainer:  Michael Kogan <michael dot kogan at gmx dot net>
+# Maintainer: João Figueiredo <islandc0der@chaotic.cx>
+# Contributor:  Michael Kogan <michael dot kogan at gmx dot net>
 
 pkgname=geomspace
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="A browser for geometric (i.e. Euclidean, Riemann, Minkowski) spaces"
-arch=('i686' 'x86_64')
+arch=($CARCH)
 url="https://sourceforge.net/projects/geomspace/"
-license=('GPL')
-depends=('mesa' 'fltk')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgver/GeomSpace-$pkgver-src.tar.gz \
-	http://downloads.sourceforge.net/project/$pkgname/Theory/UniformGeomSpace-2010.11.02-en.pdf \
-	http://sourceforge.net/projects/geomspace/files/Models/5Cubes.gmsp \
-	http://sourceforge.net/projects/geomspace/files/Models/5Tetra.gmsp \
-	make.patch \
-	x11.patch\
-	deps.patch\
-	desktop.patch)
-md5sums=('00107ea0f443c1b9f800876b3b5d1342'
-			'14560f6f2cba975be1ba8d047b5acec5'
-			'205c728191134d15cd5053e37c30a454'
-			'520350c4ab6aa1385f75028d22e769be'
-			'70411ddfa47c969132274d49383f7f19'
-			'17774ac560e38ffb94bb95abd91bc5f4'
-			'b2ebed4874f2f96fdcf002bf297e8f58'
-			'582e9105abc065e41b8edf976799de78')
-_pkgname=GeomSpace
-build() {
-   cd $srcdir/GeomSpace/make
-   patch Makefile < $srcdir/make.patch
+license=(GPL-2.0-only)
+depends=(mesa fltk)
+source=(http://downloads.sourceforge.net/project/$pkgname/$pkgver/GeomSpace-$pkgver-pre-src.tar.gz
+		http://downloads.sourceforge.net/project/$pkgname/Theory/UniformGeomSpace-2010.11.02-en.pdf
+		make.patch
+		x11.patch
+		deps.patch)
+sha256sums=('f20a8f1f189f8f3084f6ceeece99c7818c1563b83f593de4dfcf37b0570e7f11'
+            '0f045c086e745dccf45e66d4a361cea91fde0c913a0d67150ac79ef7a2ed466a'
+            '2610c6e1e7dc709b8270c8e52048b02b790ed19eb30b12c8cc711892f07eb262'
+            '6ef44e2cea1ebed7fe94acbd28ab894311183ab0f3396ba41b2ed49ec2a186a1'
+            '206b2b69d1e7aad483e5858857c662ef267038f4715378054c9680a6eeb2480b')
+
+prepare() {
+	cd GeomSpace/make
+	patch Makefile < $srcdir/make.patch
 	patch x11.mk < $srcdir/x11.patch
 	patch deps < $srcdir/deps.patch
-	echo "OS = linux" >> platform
-	make || return 1
-	cd $srcdir/GeomSpace/bin
-	patch GeomSpace.desktop < $srcdir/desktop.patch
 }
+
+build() {
+	cd GeomSpace/make
+	make prepare
+	make compile
+	make build
+}
+
 package() {
-    install -D -m755 $srcdir/GeomSpace/bin/GeomSpace $pkgdir/usr/bin/geomspace
-    install -D -m644 $srcdir/GeomSpace/doc/DeveloperManual-en.pdf $pkgdir/usr/share/doc/$pkgname/DeveloperManual-en.pdf
-    install -D -m644 $srcdir/GeomSpace/doc/UserManual-en.pdf $pkgdir/usr/share/doc/$pkgname/UserManual-en.pdf
-    install -D -m644 $srcdir/UniformGeomSpace-2010.11.02-en.pdf $pkgdir/usr/share/doc/$pkgname/UniformGeomSpace-2010.11.02-en.pdf
-	 install -D -m644 $srcdir/GeomSpace/bin/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-	 install -D -m644 $srcdir/GeomSpace/bin/icn/${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-	 install -d -m755 ${pkgdir}/usr/share/${_pkgname}
-	 install -d -m755 ${pkgdir}/usr/share/${_pkgname}/models
-	 install -d -m755 ${pkgdir}/usr/share/${_pkgname}/i18n
-	 install -D -m644 ../5Cubes.gmsp ${pkgdir}/usr/share/${_pkgname}/models
-	 install -D -m644 ../5Tetra.gmsp ${pkgdir}/usr/share/${_pkgname}/models	
-	 install -D -m644 $srcdir/GeomSpace/bin/i18n/C ${pkgdir}/usr/share/${_pkgname}/i18n
-	 install -D -m644 $srcdir/GeomSpace/bin/i18n/de ${pkgdir}/usr/share/${_pkgname}/i18n
-	 install -D -m644 $srcdir/GeomSpace/bin/i18n/ro ${pkgdir}/usr/share/${_pkgname}/i18n
-	 install -D -m644 $srcdir/GeomSpace/bin/i18n/ru ${pkgdir}/usr/share/${_pkgname}/i18n
-    msg "\033[31;1m The user manual and a document containing a theory explanation have been installed to /usr/share/doc/$pkgname. It is strongly recommended to read them in order to use Geomspace! \033[0m"
-	 msg "\033[31;1m Some models of geometrical objects have been installed to /usr/share/$pkgname/models. Additional models can be found at http://sourceforge.net/projects/geomspace/files/Models/ \033[0m"
+	install -Dm755 GeomSpace/bin/GeomSpace -t $pkgdir/usr/bin/
+	install -Dm644 GeomSpace/bin/i18n/* -t $pkgdir/usr/share/GeomSpace/i18n/
+	install -Dm644 GeomSpace/bin/icn/* -t $pkgdir/usr/share/GeomSpace/icn/
+	install -Dm644 GeomSpace/bin/glsl/*.glsl -t $pkgdir/usr/share/GeomSpace/glsl/
+	install -Dm644 GeomSpace/models/*.gms* -t $pkgdir/usr/share/GeomSpace/models/
+	install -Dm644 UniformGeomSpace-2010.11.02-en.pdf GeomSpace/doc/{DeveloperManual-en.pdf,UserManual-en.pdf} -t \
+		$pkgdir/usr/share/doc/$pkgname/
+	install -Dm644 GeomSpace/bin/GeomSpace.desktop -t $pkgdir/usr/share/applications/
+	
+	msg "\033[31;1m The user manual and a document containing a theory explanation have been installed to /usr/share/doc/$pkgname. It is strongly recommended to read them in order to use Geomspace! \033[0m"
+	msg "\033[31;1m Some models of geometrical objects have been installed to /usr/share/$pkgname/models. Additional models can be found at http://sourceforge.net/projects/geomspace/files/Models/ \033[0m"
 }

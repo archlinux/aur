@@ -1,29 +1,21 @@
 pkgbase = geomspace
 	pkgdesc = A browser for geometric (i.e. Euclidean, Riemann, Minkowski) spaces
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://sourceforge.net/projects/geomspace/
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	depends = mesa
 	depends = fltk
-	source = http://downloads.sourceforge.net/project/geomspace/0.14/GeomSpace-0.14-src.tar.gz
+	source = http://downloads.sourceforge.net/project/geomspace/0.15/GeomSpace-0.15-pre-src.tar.gz
 	source = http://downloads.sourceforge.net/project/geomspace/Theory/UniformGeomSpace-2010.11.02-en.pdf
-	source = http://sourceforge.net/projects/geomspace/files/Models/5Cubes.gmsp
-	source = http://sourceforge.net/projects/geomspace/files/Models/5Tetra.gmsp
 	source = make.patch
 	source = x11.patch
 	source = deps.patch
-	source = desktop.patch
-	md5sums = 00107ea0f443c1b9f800876b3b5d1342
-	md5sums = 14560f6f2cba975be1ba8d047b5acec5
-	md5sums = 205c728191134d15cd5053e37c30a454
-	md5sums = 520350c4ab6aa1385f75028d22e769be
-	md5sums = 70411ddfa47c969132274d49383f7f19
-	md5sums = 17774ac560e38ffb94bb95abd91bc5f4
-	md5sums = b2ebed4874f2f96fdcf002bf297e8f58
-	md5sums = 582e9105abc065e41b8edf976799de78
+	sha256sums = f20a8f1f189f8f3084f6ceeece99c7818c1563b83f593de4dfcf37b0570e7f11
+	sha256sums = 0f045c086e745dccf45e66d4a361cea91fde0c913a0d67150ac79ef7a2ed466a
+	sha256sums = 2610c6e1e7dc709b8270c8e52048b02b790ed19eb30b12c8cc711892f07eb262
+	sha256sums = 6ef44e2cea1ebed7fe94acbd28ab894311183ab0f3396ba41b2ed49ec2a186a1
+	sha256sums = 206b2b69d1e7aad483e5858857c662ef267038f4715378054c9680a6eeb2480b
 
 pkgname = geomspace
-
