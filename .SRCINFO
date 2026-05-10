@@ -1,17 +1,35 @@
 pkgbase = lighthouse-ethereum
-	pkgdesc = Ethereum 2.0 client
-	pkgver = 5.1.3
-	pkgrel = 2
-	url = https://lighthouse.sigmaprime.io/
+	pkgdesc = Ethereum consensus client in Rust
+	pkgver = 8.1.3
+	pkgrel = 40
+	url = https://github.com/sigp/lighthouse
 	arch = x86_64
 	arch = aarch64
 	license = Apache License 2.0
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = clang
+	makedepends = lld
 	makedepends = protobuf
+	makedepends = make
+	makedepends = git
+	makedepends = perl
+	makedepends = pkgconf
 	depends = openssl
-	source = git+https://github.com/sigp/lighthouse.git#tag=v5.1.3
+	depends = sqlite
+	depends = zstd
+	options = !lto
+	source = git+https://github.com/sigp/lighthouse.git#tag=v8.1.3
+	source = xdelta3-rs::git+https://github.com/sigp/xdelta3-rs.git
+	source = deposit_contract-offline.patch
+	source = lighthouse-link-gcc.sh
+	source = validator_registration.json::https://raw.githubusercontent.com/ethereum/eth2.0-specs/v0.12.1/deposit_contract/contracts/validator_registration.json
+	source = unsafe_validator_registration.json::https://raw.githubusercontent.com/sigp/unsafe-eth2-deposit-contract/v0.9.2.1/unsafe_validator_registration.json
+	sha256sums = 7f193d7e545556348a63aab575afd9257ceea53ff29a755125fe02494d71b0d4
 	sha256sums = SKIP
+	sha256sums = 70ca6431c139debdee9fe9339cddffdc2eaa37e85631e42f7bd913feeb18d8fd
+	sha256sums = 502a20a5bc2adbc49781f328f77233cce6ef08b405e40011c2d46283d9295921
+	sha256sums = 66c9407b5c249a483c4ee6bf0269847c19a3a8c55c1888981f08be5acb04c1af
+	sha256sums = 69e4de1d14f742dc4145234c0884c85a6c7cf6f1ada31d8ecd27dff2f67e4586
 
 pkgname = lighthouse-ethereum

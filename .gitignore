@@ -1,5 +1,7 @@
 *.pkg.tar.xz
 *.pkg.tar.zst
+*.log
 lighthouse/
 pkg/
 src/
+xdelta3-rs/
