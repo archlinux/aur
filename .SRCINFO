@@ -1,6 +1,6 @@
 pkgbase = game-link-bin
 	pkgdesc = Universal game companion for linking ROMs and managing media (Pre-compiled)
-	pkgver = 2.8.1
+	pkgver = 2.9.10
 	pkgrel = 1
 	url = https://github.com/CarlosEvCode/game_link
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = game-link-bin
 	depends = sqlite
 	provides = game-link
 	conflicts = game-link
-	source = game-link-bin-2.8.1.tar.xz::https://github.com/CarlosEvCode/game_link/releases/download/v2.8.1/game_link-2.8.1-linux-x64.tar.xz
+	source = game-link-bin-2.9.10.tar.xz::https://github.com/CarlosEvCode/game_link/releases/download/v2.9.10/game_link-2.9.10-linux-x64.tar.xz
 	source = game-link.desktop
 	source = game-link.png::https://raw.githubusercontent.com/CarlosEvCode/game_link/main/linux/game_link.png
-	sha256sums = c052418253fba71869392ad4b906d1ba096cba30f8540bdff9c1602e07a6e74d
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = ad619d5100e2e79e3d2ecdbf4f1206419c5b48f5801a24e2738a9767464cd248
+	sha256sums = 77b143253f56bfcf76f5ea433238e9747377c7341739c92c608e53eced6e268e
+	sha256sums = 281269ddafe863989f9b8e7a57b42d0e0e66ff0b5ddcc09fe44f9d1287726949
 
 pkgname = game-link-bin

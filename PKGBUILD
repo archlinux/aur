@@ -1,7 +1,7 @@
 # Maintainer: CarlosEvCode <programer.cm12@gmail.com>
 
 pkgname=game-link-bin
-pkgver=2.8.1
+pkgver=2.9.10
 pkgrel=1
 pkgdesc="Universal game companion for linking ROMs and managing media (Pre-compiled)"
 arch=('x86_64')
@@ -15,14 +15,12 @@ source=(
   "game-link.desktop"
   "game-link.png::https://raw.githubusercontent.com/CarlosEvCode/game_link/main/linux/game_link.png"
 )
-sha256sums=(
-  'c052418253fba71869392ad4b906d1ba096cba30f8540bdff9c1602e07a6e74d'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('ad619d5100e2e79e3d2ecdbf4f1206419c5b48f5801a24e2738a9767464cd248'
+            '77b143253f56bfcf76f5ea433238e9747377c7341739c92c608e53eced6e268e'
+            '281269ddafe863989f9b8e7a57b42d0e0e66ff0b5ddcc09fe44f9d1287726949')
 
 package() {
-  # Entrar en la nueva subcarpeta estandarizada
+  # Entrar en la subcarpeta estandarizada
   cd "$srcdir/game_link"
   
   # 1. Directorio base en /opt
