@@ -21,7 +21,7 @@ provides=('agent-one')
 conflicts=('agent-one')
 options=('!strip' '!debug')
 install=${pkgname}.install
-source_x86_64=("${url}/releases/download/agent-one-v${pkgver}/AgentOne_${pkgver}_amd64.deb")
+source_x86_64=("https://github.com/AgentOne-Dev/agent-one-public/releases/download/agent-one-v${pkgver}/AgentOne_${pkgver}_amd64.deb")
 sha256sums_x86_64=('cdec815d00c22fe18fbb0ea14c1ffc837ab16c099c8dd1acf227ad04e27cf41f')
 
 package() {
