@@ -1,6 +1,6 @@
 pkgbase = steamos-manager-gpdwinmini-git
 	pkgdesc = SteamOS Manager with native ACPI/ALIB TDP control for GPD Win Mini (VCS)
-	pkgver = r704.ge933a46
+	pkgver = r705.gd736cb6
 	pkgrel = 1
 	url = https://github.com/tctinh/steamos-manager-gpd
 	install = steamos-manager.install
