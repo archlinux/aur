@@ -1,0 +1,11 @@
+--- ftp.c.orig	2026-05-10 17:30:51.514132680 +0800
++++ ftp.c	2026-05-10 17:31:31.167134579 +0800
+@@ -768,7 +768,7 @@
+ } while (0)
+ 		A(ftp_head);
+ 		ud = stracpy(get_url_data(c->url));
+-		if (strchr(cast_const_char ud, POST_CHAR)) *strchr(cast_const_char ud, POST_CHAR) = 0;
++		if (strchr(cast_const_char ud, POST_CHAR)) *(char *)strchr(cast_const_char ud, POST_CHAR) = 0;
+ 		s0 = init_str();
+ 		s0l = 0;
+ 		add_conv_str(&s0, &s0l, ud, (int)strlen(cast_const_char ud), -1);
