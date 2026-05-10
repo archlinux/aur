@@ -1,11 +1,11 @@
 pkgbase = pdfapps-bin
 	pkgdesc = Fast, offline, subscription-free PDF editor (PyInstaller binary)
-	pkgver = 1.13.9
+	pkgver = 1.13.10
 	pkgrel = 1
 	url = https://nelsonduarte.github.io/PDFApps/
 	arch = x86_64
 	license = MIT
-	provides = pdfapps=1.13.9
+	provides = pdfapps=1.13.10
 	conflicts = pdfapps
 	depends = glibc
 	depends = fontconfig
@@ -18,13 +18,13 @@ pkgbase = pdfapps-bin
 	optdepends = tesseract-data-fra: French OCR
 	optdepends = tesseract-data-deu: German OCR
 	optdepends = ghostscript: advanced PDF compression
-	source = pdfapps-1.13.9.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v1.13.9/PDFApps-Linux.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.9/LICENSE
-	source = pdfapps.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.9/flatpak/io.github.nelsonduarte.PDFApps.desktop
-	source = pdfapps.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.9/flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml
-	source = pdfapps.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.9/icon_512.png
-	source = pdfapps.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.9/pdfapps.svg
-	sha256sums = 7b168c704551516c29d32684a86ba2ef0755c5a087362ed81a92e0350b7fed71
+	source = pdfapps-1.13.10.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v1.13.10/PDFApps-Linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.10/LICENSE
+	source = pdfapps.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.10/flatpak/io.github.nelsonduarte.PDFApps.desktop
+	source = pdfapps.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.10/flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml
+	source = pdfapps.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.10/icon_512.png
+	source = pdfapps.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.10/pdfapps.svg
+	sha256sums = bd23dd9645fbdb51a4af35cc5f3c67c4b5f28b70d155a8cf6693c46d0ef40a33
 	sha256sums = 7db363c32a832c173e807e3737b50425dd2554acf93b25715a68483c4ff68c51
 	sha256sums = 0d7610911a09ee9c5ff3770de433bc61c31d81825ff433e8c42e46eedc6324b5
 	sha256sums = 8547fc58d95ce363ea0058a057d1776d169cd7fd4adbb5b91ef478136fefbf12
