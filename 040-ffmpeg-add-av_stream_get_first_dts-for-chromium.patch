@@ -1,0 +1,29 @@
+--- a/libavformat/avformat.h
++++ b/libavformat/avformat.h
+@@ -1179,6 +1179,10 @@ typedef struct AVStreamGroup {
+ 
+ struct AVCodecParserContext *av_stream_get_parser(const AVStream *s);
+ 
++// Chromium: We use the internal field first_dts vvv
++int64_t    av_stream_get_first_dts(const AVStream *st);
++// Chromium: We use the internal field first_dts ^^^
++
+ #define AV_PROGRAM_RUNNING 1
+ 
+ /**
+--- a/libavformat/utils.c
++++ b/libavformat/utils.c
+@@ -47,6 +47,13 @@
+  * various utility functions for use within FFmpeg
+  */
+ 
++// Chromium: We use the internal field first_dts vvv
++int64_t av_stream_get_first_dts(const AVStream *st)
++{
++  return ffstream(st)->first_dts;
++}
++// Chromium: We use the internal field first_dts ^^^
++
+ /* an arbitrarily chosen "sane" max packet size -- 50M */
+ #define SANE_CHUNK_SIZE (50000000)
+ 
