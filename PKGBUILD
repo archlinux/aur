@@ -1,6 +1,6 @@
 # Maintainer: Aditya <contact@aditya-verma.me>
 pkgname=fuzz-wall
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A fuzzel-based wallpaper picker supporting multiple WMs and wallpaper setters"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
     'libnotify: Desktop notifications support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4dfbcf7885888ad6ccd5e448ff065f5c997852c48d6a832949ad01ffc306490a')
+sha256sums=('d113334787ef4c561433b1d9a1ee8e9c482521d2a2732f802358d8393221af7a')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"

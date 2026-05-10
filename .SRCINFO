@@ -1,6 +1,6 @@
 pkgbase = fuzz-wall
 	pkgdesc = A fuzzel-based wallpaper picker supporting multiple WMs and wallpaper setters
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/youngcoder45/fuzz-wall
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = fuzz-wall
 	optdepends = nitrogen: X11 wallpaper setter with GUI
 	optdepends = xwallpaper: Lightweight X11 wallpaper setter
 	optdepends = libnotify: Desktop notifications support
-	source = fuzz-wall-1.0.0.tar.gz::https://github.com/youngcoder45/fuzz-wall/archive/v1.0.0.tar.gz
-	sha256sums = 4dfbcf7885888ad6ccd5e448ff065f5c997852c48d6a832949ad01ffc306490a
+	source = fuzz-wall-1.0.1.tar.gz::https://github.com/youngcoder45/fuzz-wall/archive/v1.0.1.tar.gz
+	sha256sums = d113334787ef4c561433b1d9a1ee8e9c482521d2a2732f802358d8393221af7a
 
 pkgname = fuzz-wall
