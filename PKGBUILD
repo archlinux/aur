@@ -2,25 +2,30 @@
 
 _name="itex2mml"
 pkgname="perl-${_name}"
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
-pkgdesc="Perl bindings for ${_name}"
-arch=('x86_64')
+pkgdesc="iTeX to MathML converter (Perl bindings)"
+arch=(
+  'x86_64'
+)
 url="https://golem.ph.utexas.edu/~distler/blog/itex2MML.html"
-license=('custom:GPL-unknown-version' 'custom:LGPL-unknown-version' 'custom:MPL-unknown-version'
-         'Artistic-1.0-Perl')
-depends=('glibc' 'perl')
-options=('!emptydirs' 'purge')
-_pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::http://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz")
-noextract=("${_pkgsrc}.tar.gz")
-sha256sums=('3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f')
-
-prepare() {
-  cd "${srcdir}"
-  mkdir -p "${srcdir}/${_pkgsrc}"
-  bsdtar -xzf "${_pkgsrc}.tar.gz" --strip-components 1 -C "${srcdir}/${_pkgsrc}"
-}
+license=(
+  'GPL-2.0-or-later OR LGPL-2.0-or-later OR MPL-1.1'
+  'Artistic-1.0-Perl'
+)
+depends=(
+  'glibc'
+  'perl'
+)
+options=(
+  '!emptydirs'
+  'purge'
+)
+_pkgsrc="itexToMML"
+source=(
+  "https://golem.ph.utexas.edu/~distler/blog/files/itexToMML-${pkgver}.tar.gz"
+)
+sha256sums=('8af5a7443df87f74e0cdf2bce27dd78396566cbcffaf15efe1e87325fa6b15d3')
 
 build() {
   cd "${srcdir}/${_pkgsrc}/itex-src/perl"
@@ -42,6 +47,6 @@ package() {
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 
-  install -Dm644 "README"  "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "README"  -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
