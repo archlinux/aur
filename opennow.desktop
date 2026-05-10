@@ -4,7 +4,6 @@ Type=Application
 Version=1.0
 Name=OpenNOW
 Comment=Custom Geforce NOW client
-Path=/opt/opennow
 Exec=/usr/bin/opennow
 Icon=opennow
 Terminal=false
