@@ -1,6 +1,6 @@
 pkgbase = ack-git
 	pkgdesc = The Amsterdam Compiler Kit
-	pkgver = dev.r0.g6a55a6f81
+	pkgver = dev.r0.gcd8805a0a
 	pkgrel = 2
 	url = http://tack.sourceforge.net/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = ack-git
 	makedepends = flex
 	makedepends = bison
 	makedepends = ed
-	makedepends = lua
+	makedepends = lua54
 	makedepends = python
 	depends = glibc
 	source = git+https://github.com/davidgiven/ack
