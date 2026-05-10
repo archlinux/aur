@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.59.0.r0.g896f5481
+pkgver=2.60.0.r8.g908a0d9e
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -13,9 +13,10 @@ url='https://i2pd.website/'
 license=('BSD-3-Clause')
 depends=(
     'boost-libs'
-    'gcc-libs'
     'glibc'
+    'libgcc'
     'libminiupnpc.so'
+    'libstdc++'
     'openssl'
     'zlib')
 makedepends=(
