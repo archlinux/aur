@@ -1,0 +1,5 @@
+[hedgemodmanager-bin]
+source = "git"
+git = "https://github.com/hedge-dev/HedgeModManager.git"
+from_pattern = '-beta'
+to_pattern = '.beta'
