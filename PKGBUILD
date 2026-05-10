@@ -13,7 +13,6 @@ depends=('python' 'python-gobject' 'python-flask' 'gtk4' 'libappindicator'
 makedepends=('git' 'python-installer')
 
 provides=('aria2p')
-conflicts=('aria2p')
 
 _botguard_ver="v0.1.2"
 _plugin_whl="yt_dlp_get_pot_rustypipe-0.2.0-py3-none-any.whl"
@@ -23,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "https://files.pythonhosted.org/packages/ca/85/3e379cb2f2e214764c1e15485d1e2ec6d6f839b29289a1202fc26c93e07d/${_plugin_whl}"
         "https://files.pythonhosted.org/packages/py3/a/aria2p/${_aria2p_whl}")
 
-sha256sums=('31040c56993404e57bd82e301b8ad634c6f5a4f590a486abad2e8192e7a39dce'
+sha256sums=('6019ffc6d3b1ae5ac13d0990dfd60c27d888c8079b94cf6e8e15d6a1b4fdb554'
             '601b3b940e49bc45ba48fcdb2327850a75ba23c7e91709b5abbff5d4b914fa0b'
             'c3c0a87958dacc6b3ad194b5320811baf1e593ddaf83542320d439f6a82f865d')
 sha256sums_x86_64=('4f2ec561e8f9fadece7deadc6ce0624fbdedd852222c3eb194c22153b1323129')
