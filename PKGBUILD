@@ -1,4 +1,4 @@
-# Maintainer: you
+# Maintainer: Tymofiy Saukh <tima3050505@gmail.com>
 pkgname=mt7601u-ap-git
 pkgver=r1.1bfaee9
 pkgrel=1
