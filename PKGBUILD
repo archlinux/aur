@@ -1,7 +1,7 @@
 # Maintainer: Carlos Prieto <cprieto.ortiz@gmail.com>
 pkgname=mopyrust-bin
 _pkgname=mopyrust
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Native Mopidy client for desktop, written in Rust + Tauri + Svelte (prebuilt binary)"
 arch=('x86_64')
