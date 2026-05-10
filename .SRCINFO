@@ -1,6 +1,6 @@
 pkgbase = tp-dusk
 	pkgdesc = Dusk is a reverse-engineered reimplementation of Twilight Princess.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/TwilitRealm/dusk
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = tp-dusk
 	depends = abseil-cpp
 	depends = freetype2
 	depends = libstdc++
-	source = git+https://github.com/TwilitRealm/dusk#tag=v1.0.0
+	source = git+https://github.com/TwilitRealm/dusk#tag=v1.0.1
 	source = git+https://github.com/encounter/aurora.git
 	source = launcher.sh
 	source = tp-dusk.desktop
-	sha256sums = a1948228b6127e8551e2a7ec893571724cacc3535a364aeaaf5620b9cc1929d6
+	sha256sums = efdbb8e112a252972459a0798297ec287483d33869c391f998d2413ed6e8cb0e
 	sha256sums = SKIP
 	sha256sums = 9bcacbd0a3da8a4149dd8cc4b904f3e9df6af59eb86de5cd6ece1f6ee1179ad5
 	sha256sums = 1e6547cf4dd69f0ecb6895733dcd13f3e265c6267298c7bf83dd6acbad42fda5

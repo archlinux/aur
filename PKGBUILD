@@ -1,7 +1,7 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 pkgname=tp-dusk
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "tp-dusk.desktop"
 )
 
-sha256sums=('a1948228b6127e8551e2a7ec893571724cacc3535a364aeaaf5620b9cc1929d6'
+sha256sums=('efdbb8e112a252972459a0798297ec287483d33869c391f998d2413ed6e8cb0e'
             'SKIP'
             '9bcacbd0a3da8a4149dd8cc4b904f3e9df6af59eb86de5cd6ece1f6ee1179ad5'
             '1e6547cf4dd69f0ecb6895733dcd13f3e265c6267298c7bf83dd6acbad42fda5')
