@@ -8,7 +8,7 @@ pkgname=(
   "python-${pkgbase}"
 )
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Quantitative Image Analysis in C++, MATLAB, and Python"
 arch=(
   'x86_64'
@@ -70,6 +70,7 @@ package_diplib() {
   optdepends=(
     "dipviewer: viewer module"
     "java-${pkgbase}: Java bindings"
+    "matlab-dipimage: MATLAB bindings"
     "python-${pkgbase}: Python bindings"
   )
 
