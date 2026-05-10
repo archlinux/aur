@@ -8,6 +8,7 @@ pkgbase = miniforge
 	arch = aarch64
 	arch = powerpc64le
 	license = BSD-3-Clause
+	depends = util-linux-libs
 	provides = conda
 	provides = mamba
 	replaces = mambaforge
