@@ -1,7 +1,7 @@
 # Maintainer: FreeTazaPablo <www.pablo.taza.com@gmail.com>
 pkgname=imate
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight terminal text editor built on ncurses"
 arch=('x86_64')
 url="https://github.com/FreeTazaPablo/Imate"
