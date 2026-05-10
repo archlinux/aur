@@ -4,7 +4,7 @@
 _pkgname=libaribcaption
 pkgname=libaribcaption-llvm
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Caption decoder/renderer library for handling ARIB STD-B24 based TV broadcast captions — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://github.com/xqq/libaribcaption/'
@@ -21,6 +21,14 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
+    export LD=/usr/bin/ld.lld
+    export NM=/usr/bin/llvm-nm
+    export OBJCOPY=/usr/bin/llvm-objcopy
+    export OBJDUMP=/usr/bin/llvm-objdump
+    export READELF=/usr/bin/llvm-readelf
+    export STRIP=/usr/bin/llvm-strip
+    export CFLAGS="${CFLAGS:-} -O3 -march=native"
+    export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     
     cmake -B build -S "${_pkgname}-${pkgver}" \
