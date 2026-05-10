@@ -3,7 +3,7 @@
 pkgname=lighthouse-ethereum
 pkgver=8.1.3
 _pkgname=lighthouse
-pkgrel=41
+pkgrel=42
 pkgdesc='Ethereum consensus client in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sigp/lighthouse'
