@@ -1,4 +1,4 @@
-pkgbase = spent
+pkgbase = spent-tracker
 	pkgdesc = A personal expense tracker desktop app built with Tauri
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = spent
 	source = spent-0.1.0.tar.gz::https://github.com/Gxstavo-dev/spent/archive/v0.1.0.tar.gz
 	sha256sums = fae0f66a256b7af36112db7cbbeba8e2c29ce907b417e6d679fe574e311ffd74
 
-pkgname = spent
+pkgname = spent-tracker
