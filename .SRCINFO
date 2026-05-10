@@ -1,19 +1,19 @@
 pkgbase = tsdproxy-bin
 	pkgdesc = Tailscale Docker reverse proxy — expose containers with one label
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/almeidapaulopt/tsdproxy
 	license = MIT
 	conflicts = tsdproxy
 	provides = tsdproxy
 	arch = aarch64
-	source_aarch64 = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.0.0/tsdproxy_2.0.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 99f28df1b659b01e0c3e6a26f4082966e7b855c36cdd0192e870fed35a3c20d2
+	source_aarch64 = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.1.0/tsdproxy_2.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 54e885e9b7b3d9f4dd50f35bc0d7ba69080cd3c95e9fd14a636256def6f23653
 	arch = armv7h
-	source_armv7h = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.0.0/tsdproxy_2.0.0_linux_armv7.tar.gz
-	sha256sums_armv7h = bd4df7d265e831a70213bdd155949ed9f071d12b27455e0b9999a1450ef305b4
+	source_armv7h = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.1.0/tsdproxy_2.1.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 1118cebb19f8007163c9c812bc6f17fcd14ad93ea5bb53d01cfa541a575aff02
 	arch = x86_64
-	source_x86_64 = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.0.0/tsdproxy_2.0.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 03c983a289f57ac9f34c8cc1cf61684522385ec913ec70b93d6196b1b28d0c6f
+	source_x86_64 = https://github.com/almeidapaulopt/tsdproxy/releases/download/v2.1.0/tsdproxy_2.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6c34a229c722f7001cb3e36feb50e60fab03193dc3d3ba1236620c8afa51f54c
 	
 pkgname = tsdproxy-bin
