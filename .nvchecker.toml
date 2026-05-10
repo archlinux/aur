@@ -1,0 +1,5 @@
+[open-wallpaper-engine]
+source = "github"
+github = "waywallen/open-wallpaper-engine"
+prefix = "v"
+use_latest_release = true

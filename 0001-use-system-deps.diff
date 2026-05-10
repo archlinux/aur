@@ -1,0 +1,261 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index db76e90..c660fb1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,6 +18,11 @@ endif()
+ 
+ find_package(PkgConfig REQUIRED)
+ 
++find_package(Eigen3 REQUIRED)
++find_package(nlohmann_json REQUIRED)
++find_package(cubeb REQUIRED)
++find_package(argparse REQUIRED)
++find_package(Vulkan COMPONENTS dxc REQUIRED)
+ 
+ include_directories(SYSTEM third_party)
+ add_subdirectory(third_party)
+@@ -26,7 +31,26 @@ option(BUILD_WESCENE "Build the wescene (Wallpaper Engine *scene*) renderer" ON)
+ option(BUILD_WEWEB   "Build the weweb (Wallpaper Engine *web*) renderer"     ON)
+ 
+ if(BUILD_WEWEB)
+-    include(${CMAKE_SOURCE_DIR}/cmake/CEF.cmake)
++    find_package(CEF REQUIRED)
++    set(CEF_RESOURCE_FILES
++        chrome_100_percent.pak
++        chrome_200_percent.pak
++        icudtl.dat
++        resources.pak
++        v8_context_snapshot.bin
++        vk_swiftshader_icd.json
++        locales
++    )
++    set(CEF_BINARY_FILES
++        chrome-sandbox
++        libcef.so
++        libEGL.so
++        libGLESv2.so
++        libvk_swiftshader.so
++        libvulkan.so.1
++        v8_context_snapshot.bin
++    )
++
+ endif()
+ 
+ add_subdirectory(src)
+diff --git a/deps.json b/deps.json
+index 1f61375..281718d 100644
+--- a/deps.json
++++ b/deps.json
+@@ -1,40 +1,4 @@
+ [
+-  {
+-    "dest": "build/_flatpak_deps/eigen-src",
+-    "disable-shallow-clone": false,
+-    "tag": "3.4.0",
+-    "commit": "3147391d946bb4b6c68edd901f2add6ac1f31f8c",
+-    "type": "git",
+-    "url": "https://gitlab.com/libeigen/eigen.git",
+-    "x-cmake": {
+-      "name": "eigen",
+-      "exclude_from_all": true,
+-      "source_subdir": "cmake-noop"
+-    }
+-  },
+-  {
+-    "dest": "build/_flatpak_deps/nlohmann_json-src",
+-    "disable-shallow-clone": false,
+-    "tag": "v3.11.3",
+-    "commit": "9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03",
+-    "type": "git",
+-    "url": "https://github.com/nlohmann/json.git",
+-    "x-cmake": {
+-      "name": "nlohmann_json",
+-      "exclude_from_all": true
+-    }
+-  },
+-  {
+-    "commit": "a37dadd1ed5949ab0accd7087b7c5c57800eab43",
+-    "dest": "build/_flatpak_deps/cubeb-src",
+-    "disable-shallow-clone": true,
+-    "type": "git",
+-    "url": "https://github.com/mozilla/cubeb.git",
+-    "x-cmake": {
+-      "name": "cubeb",
+-      "exclude_from_all": true
+-    }
+-  },
+   {
+     "dest": "build/_flatpak_deps/spirv_reflect-src",
+     "disable-shallow-clone": false,
+@@ -47,33 +11,6 @@
+       "exclude_from_all": true
+     }
+   },
+-  {
+-    "dest": "build/_flatpak_deps/dxc-src",
+-    "disable-shallow-clone": true,
+-    "tag": "v1.10.2605.2",
+-    "type": "git",
+-    "url": "https://github.com/microsoft/DirectXShaderCompiler.git",
+-    "x-cmake": {
+-      "name": "dxc",
+-      "exclude_from_all": true,
+-      "git_submodules": [
+-        "external/SPIRV-Headers",
+-        "external/SPIRV-Tools",
+-        "external/DirectX-Headers"
+-      ]
+-    }
+-  },
+-  {
+-    "dest": "build/_flatpak_deps/argparse-src",
+-    "disable-shallow-clone": true,
+-    "commit": "d924b84eba1f0f0adf38b20b7b4829f6f65b6570",
+-    "type": "git",
+-    "url": "https://github.com/p-ranav/argparse.git",
+-    "x-cmake": {
+-      "name": "argparse",
+-      "exclude_from_all": true
+-    }
+-  },
+   {
+     "dest": "build/_flatpak_deps/rstd-src",
+     "disable-shallow-clone": false,
+@@ -107,16 +44,5 @@
+       "name": "quickjs",
+       "exclude_from_all": true
+     }
+-  },
+-  {
+-    "dest": "build/_flatpak_deps/cef-src",
+-    "type": "archive",
+-    "url": "https://cef-builds.spotifycdn.com/cef_binary_147.0.10%2Bgd58e84d%2Bchromium-147.0.7727.118_linux64_minimal.tar.bz2",
+-    "sha256": "087ccfa1f0438429e20d91293b15cae08ee9e7b4988cc018d47568dd59dad1ef",
+-    "x-cmake": {
+-      "name": "cef",
+-      "exclude_from_all": true,
+-      "source_subdir": "cmake-noop"
+-    }
+   }
+ ]
+\ No newline at end of file
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 4fa2daa..d848dd3 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -28,7 +28,7 @@ set(warn_opts
+ # does not always export this include path correctly when consumed via
+ # add_subdirectory; force-republish via FetchContent_GetProperties.
+ include(FetchContent)
+-FetchContent_GetProperties(dxc SOURCE_DIR _dxc_source_dir)
++#FetchContent_GetProperties(dxc SOURCE_DIR _dxc_source_dir)
+ 
+ add_subdirectory(Core)
+ add_subdirectory(Vulkan)
+diff --git a/src/Vulkan/CMakeLists.txt b/src/Vulkan/CMakeLists.txt
+index 24306f4..a11072c 100644
+--- a/src/Vulkan/CMakeLists.txt
++++ b/src/Vulkan/CMakeLists.txt
+@@ -7,13 +7,13 @@ target_sources(owe-shader-compile
+   PUBLIC FILE_SET cxx_modules TYPE CXX_MODULES FILES ShaderCompile.cppm)
+ target_link_libraries(owe-shader-compile
+   PUBLIC rstd::rstd rstd.cppstd owe-types wavsen::ffi::vulkan
+-  PRIVATE dxcompiler spirv-reflect-static)
++  PRIVATE Vulkan::dxc_lib spirv-reflect-static)
+ target_include_directories(owe-shader-compile
+   PUBLIC  .. ../Scene/Utils/include
+   PRIVATE ../Scene/Utils ../Scene/Utils/include/Utils .)
+-if(_dxc_source_dir)
+-  target_include_directories(owe-shader-compile PRIVATE ${_dxc_source_dir}/include)
+-endif()
++#if(_dxc_source_dir)
++#  target_include_directories(owe-shader-compile PRIVATE ${_dxc_source_dir}/include)
++#endif()
+ target_compile_options(owe-shader-compile PRIVATE -Wno-missing-field-initializers)
+ set_property(TARGET owe-shader-compile PROPERTY POSITION_INDEPENDENT_CODE ON)
+ set_property(TARGET owe-shader-compile PROPERTY CXX_SCAN_FOR_MODULES ON)
+diff --git a/src/Web/CMakeLists.txt b/src/Web/CMakeLists.txt
+index d429e15..1198b85 100644
+--- a/src/Web/CMakeLists.txt
++++ b/src/Web/CMakeLists.txt
+@@ -10,7 +10,7 @@ add_library(owe-web-host STATIC
+     BrowserHost.cpp)
+ target_include_directories(owe-web-host PUBLIC .)
+ target_link_libraries(owe-web-host
+-    PUBLIC libcef_lib libcef_dll_wrapper nlohmann_json)
++    PUBLIC ${CEF_LIBRARIES} nlohmann_json)
+ target_compile_features(owe-web-host PUBLIC cxx_std_20)
+-weweb_apply_cef_target_settings(owe-web-host)
++SET_LIBRARY_TARGET_PROPERTIES(owe-web-host)
+ set_property(TARGET owe-web-host PROPERTY POSITION_INDEPENDENT_CODE ON)
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index f06efef..29b1556 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -91,9 +91,9 @@ set(USE_WINMM OFF)
+ fetchdeps(${CMAKE_SOURCE_DIR}/deps.json)
+ 
+ # Post-fetch setup for eigen (header-only, source_subdir=cmake-noop).
+-add_library(eigen INTERFACE)
+-add_library(Eigen3::Eigen ALIAS eigen)
+-target_include_directories(eigen SYSTEM INTERFACE ${eigen_SOURCE_DIR})
++#add_library(eigen INTERFACE)
++#add_library(Eigen3::Eigen ALIAS eigen)
++#target_include_directories(eigen SYSTEM INTERFACE ${eigen_SOURCE_DIR})
+ 
+ # Audio output is now handled by wavsen::audio (cubeb-backed). cubeb
+ # itself is fetched via deps.json above and consumed transitively through
+diff --git a/viewer/CMakeLists.txt b/viewer/CMakeLists.txt
+index f6341e1..91eb65e 100644
+--- a/viewer/CMakeLists.txt
++++ b/viewer/CMakeLists.txt
+@@ -32,10 +32,10 @@ if(BUILD_WEWEB)
+         PkgConfig::GLFW
+         Vulkan::Vulkan
+         argparse::argparse
+-        ${CEF_STANDARD_LIBS})
++        ${CEF_LIBRARIES})
+     set_target_properties(WebViewer PROPERTIES
+         BUILD_RPATH   "\$ORIGIN"
+         INSTALL_RPATH "\$ORIGIN"
+         BUILD_WITH_INSTALL_RPATH ON)
+-    weweb_stage_cef_runtime(WebViewer)
++    SET_LIBRARY_TARGET_PROPERTIES(WebViewer)
+ endif()
+diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
+index 5de79be..ef9fc4c 100644
+--- a/waywallen/CMakeLists.txt
++++ b/waywallen/CMakeLists.txt
+@@ -105,9 +105,9 @@ if(BUILD_WEWEB)
+     target_compile_options(waywallen-weweb-renderer PRIVATE
+         -Wall -Wextra -Wpedantic
+     )
+-    weweb_stage_cef_runtime(waywallen-weweb-renderer)
++    #weweb_stage_cef_runtime(waywallen-weweb-renderer)
+ 
+-    set(_WEWEB_INSTALL_DIR share/waywallen/weweb)
++    set(_WEWEB_INSTALL_DIR ${CMAKE_INSTALL_LIBEXECDIR}/weweb)
+     install(TARGETS waywallen-weweb-renderer
+         RUNTIME DESTINATION ${_WEWEB_INSTALL_DIR}
+     )
+@@ -157,5 +157,5 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/renderers/wescene.toml
+     DESTINATION share/waywallen/renderers
+ )
+ 
+-install(FILES $<TARGET_FILE:dxcompiler>
+-        DESTINATION ${CMAKE_INSTALL_LIBDIR})
++#install(FILES $<TARGET_FILE:dxcompiler>
++#        DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/waywallen/renderers/weweb.toml b/waywallen/renderers/weweb.toml
+index 2fc2876..1d0ea69 100644
+--- a/waywallen/renderers/weweb.toml
++++ b/waywallen/renderers/weweb.toml
+@@ -2,7 +2,7 @@
+ 
+ [renderer]
+ name = "weweb-renderer"
+-bin  = "../weweb/waywallen-weweb-renderer"
++bin  = "../../../lib/waywallen/weweb/waywallen-weweb-renderer"
+ types = ["web"]
+ priority = 100
+ spawn_version = 4

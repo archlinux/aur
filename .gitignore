@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!0001-use-system-deps.diff
+!.SRCINFO
+!.nvchecker.toml
+!.gitignore
