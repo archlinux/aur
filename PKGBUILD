@@ -7,6 +7,7 @@ pkgdesc="Library for FT4222HQ – USB 2.0 to Quad SPI / I2C Bridge IC"
 arch=('x86_64')
 url="https://ftdichip.com/products/ft4222h/"
 license=('custom')
+depends=('libftd2xx')
 source=("https://ftdichip.com/wp-content/uploads/2025/04/libft4222-linux-1.4.4.232.zip"
     "ft4222-config.cmake.in"
     "ft4222.rules")
@@ -43,10 +44,6 @@ package() {
 
     # install headers
     install -Dm644 ${srcdir}/${pkgname}-linux-${pkgver}/libft4222.h "${pkgdir}/usr/include/libft4222.h"
-
-    #文件如果已存在则跳过
-    # install -CDm644 ftd2xx.h "${pkgdir}/usr/local/include/ftd2xx.h"
-    # install -CDm644 WinTypes.h "${pkgdir}/usr/local/include/WinTypes.h"
 
     # Install udev rules
     install -D -m644 "${srcdir}"/ft4222.rules "${pkgdir}"/etc/udev/rules.d/ft4222.rules
