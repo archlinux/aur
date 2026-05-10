@@ -1,6 +1,6 @@
 pkgbase = r-biocgraph
 	pkgdesc = Graph examples and use cases in Bioinformatics
-	pkgver = 1.72.0
+	pkgver = 1.74.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biocGraph
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-biocgraph
 	optdepends = r-fibroeset
 	optdepends = r-geneplotter
 	optdepends = r-hgu95av2.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocGraph_1.72.0.tar.gz
-	sha256sums = ca4efbdeeda71e670200a3b2627d7b328ff391b20c0a0d139da25fb7f12c6c8d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocGraph_1.74.0.tar.gz
+	sha256sums = 1d62f79b4e209f14dd46f69ea3766eaaa673c143fd7e7a1a84603f0027551d9b
 
 pkgname = r-biocgraph
