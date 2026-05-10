@@ -51,14 +51,15 @@ package() {
   cp -a node_modules/. "$pkgdir/$mod_dir/node_modules/"
 
   local _pkg
-  for _pkg in ai agent tui coding-agent web-ui; do
+  for _pkg in ai agent tui web-ui; do
     install -dm755 "$pkgdir/$mod_dir/packages/$_pkg"
     cp -a "packages/$_pkg/dist" "packages/$_pkg/package.json" "packages/$_pkg/README.md" \
       "$pkgdir/$mod_dir/packages/$_pkg/"
   done
 
-  cp -a packages/coding-agent/docs packages/coding-agent/examples \
-    packages/coding-agent/CHANGELOG.md \
+  install -dm755 "$pkgdir/$mod_dir/packages/coding-agent"
+  cp -a packages/coding-agent/dist packages/coding-agent/docs packages/coding-agent/examples \
+    packages/coding-agent/package.json packages/coding-agent/README.md packages/coding-agent/CHANGELOG.md \
     "$pkgdir/$mod_dir/packages/coding-agent/"
 
   rm -rf "$pkgdir/$mod_dir/node_modules/koffi"
