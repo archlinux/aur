@@ -1,7 +1,7 @@
 pkgbase = forgecode-bin
 	pkgdesc = An AI-powered code assistant CLI tool
 	pkgver = 2.12.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/antinomyhq/forgecode
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,6 @@ pkgbase = forgecode-bin
 	source_x86_64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.12.14/forge-x86_64-unknown-linux-gnu
 	sha256sums_x86_64 = 27ad448b0f56b4484efe8f54ffd66dbb04fb003a773773a10778e5097adac15c
 	source_aarch64 = forge::https://github.com/tailcallhq/forgecode/releases/download/v2.12.14/forge-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 9975da5922dae9619810cce4c8b34a6cd06adcc8fef1c8dd153d50de1472fbea
+	sha256sums_aarch64 = 2d568b8ec498f7ba013c15f759ac31337bff85ceaa591c676efca5440c040af9
 
 pkgname = forgecode-bin
