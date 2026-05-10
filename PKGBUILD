@@ -2,15 +2,14 @@
 # Maintainer: ShinKouyo <i@0x0f.dev>
 pkgname=astraeditor-git
 _binname=astraeditor-desktop
-pkgver=v1.2.3.r0.g02a911d
-pkgrel=1
+pkgver=v1.2.0.r0.g6b1e0f4
+pkgrel=2
 pkgdesc='AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AstraEditor/'
 license=('GPL-3.0-only')
 makedepends=('nodejs' 'pnpm' 'git' 'python' 'jre-openjdk' 'npm')
-depends=('alsa-lib' 'gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'hicolor-icon-theme'
-         'at-spi2-core' 'libdrm' 'mesa' 'libxcb' 'libnotify' 'electron')
+depends=('alsa-lib' 'gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'hicolor-icon-theme' 'at-spi2-core' 'libdrm' 'mesa' 'libxcb' 'libnotify')
 provides=('astraeditor')
 conflicts=('astraeditor' 'astraeditor-bin')
 options=(!strip !debug)
@@ -21,7 +20,6 @@ pkgver() {
   cd "$pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 build() {
   cd "$pkgname"
   sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#snapshot",|' package.json
@@ -37,7 +35,6 @@ build() {
 
   npx electron-builder --linux --dir --$_target_arch
 }
-
 package() {
   cd "$pkgname"
   local _unpacked_dir="dist/linux-unpacked"
@@ -45,14 +42,10 @@ package() {
   [[ "$CARCH" == "armv7h" ]] && _unpacked_dir="dist/linux-armv7l-unpacked"
 
   install -d "$pkgdir/opt/astraeditor"
-  cp -r "$_unpacked_dir"/resources "$pkgdir/opt/astraeditor/"
+  cp -r "$_unpacked_dir"/* "$pkgdir/opt/astraeditor/"
 
   install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/$_binname" <<EOF
-#!/bin/sh
-exec electron /opt/astraeditor/resources/app.asar "\$@"
-EOF
-  chmod +x "$pkgdir/usr/bin/$_binname"
+  ln -s "/opt/astraeditor/$_binname" "$pkgdir/usr/bin/$_binname"
 
   install -d "$pkgdir/usr/share/applications"
   cat > "$pkgdir/usr/share/applications/$_binname.desktop" <<EOT
@@ -68,8 +61,6 @@ StartupWMClass=$_binname
 Categories=Development;Education;
 Keywords=scratch;
 EOT
-
-  # 安装不同尺寸的图标
   local _res
   for _res in 48 64 128 256 512; do
     local _icon_path="build/icons/${_res}x${_res}.png"
