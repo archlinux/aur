@@ -2,8 +2,8 @@
 
 pkgname=rebased-bin
 _pkgname=rebased
-pkgver=1.0.12
-pkgrel=2
+pkgver=1.0.13
+pkgrel=1
 pkgdesc='Standalone JetBrains-based Git client (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/DetachHead/rebased'
@@ -13,8 +13,8 @@ optdepends=('xdg-utils: open URLs from the IDE')
 provides=('rebased')
 conflicts=('rebased')
 options=('!strip')
-source=("${_pkgname}-${pkgver}-${CARCH}.AppImage::https://github.com/DetachHead/rebased/releases/download/1.0.12/Rebased-x86_64.AppImage")
-sha256sums=('0439aea97e87d4ffba1893a63a7e1d247096dfab5418fba610120bb470fa3b0b')
+source=("${_pkgname}-${pkgver}-${CARCH}.AppImage::https://github.com/DetachHead/rebased/releases/download/1.0.13/Rebased-x86_64.AppImage")
+sha256sums=('5e588adac72e52c9348777448800fd37938fd74429a8d356824a8a1c5405a29b')
 
 package() {
   local appimage="${srcdir}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
@@ -56,6 +56,6 @@ StartupNotify=true
 StartupWMClass=jetbrains-rebased
 Categories=Development;IDE;VersionControl;
 Keywords=git;vcs;jetbrains;
-X-AppImage-Version=1.0.12
+X-AppImage-Version=1.0.13
 DESKTOP
 }
