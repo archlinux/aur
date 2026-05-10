@@ -1,6 +1,6 @@
 pkgbase = dust3d
 	pkgdesc = 3D watertight modeling software
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://dust3d.org/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = dust3d
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-svg
-	source = git+https://github.com/huxingyi/dust3d.git#tag=1.0.1
+	source = git+https://github.com/huxingyi/dust3d.git#tag=1.0.2
 	source = cstdint.patch
-	sha256sums = 96ad590e99cb66873a3ee42966044176f9796fdce5c52b5b8a8b87cd7604f337
-	sha256sums = 8ab39f70a629a4d1e82dfa5a4c88b9dc71bc555da4fca986a362387c7128880e
+	sha256sums = 50de39b6e27f79a66b4cc3fbc6f2d48a29ba9f52225237693acec8872c762352
+	sha256sums = 71aa7d24f7a3ad49cf8f436e0bb2e3df689384dcd1530bf1d7ac2a450ecd2603
 
 pkgname = dust3d
