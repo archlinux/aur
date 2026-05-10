@@ -5,7 +5,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-nightly
-pkgver=0.0.0.r0.g86f2f0b
+pkgver=0.2.0.rc2.r134.g86f2f0b
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu - nightly builds"
 arch=('x86_64' 'aarch64')
@@ -18,20 +18,13 @@ makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost
 optdepends=('gamemode: Gamemoded support')
 options=('!lto' '!debug')
 _commit=86f2f0bc36845ac45de315d9ba78c569b62d866a
-source=("git+https://git.eden-emu.dev/eden-emu/eden.git#commit=${_commit}"
-		"3751.patch"
-		"bd6dd7ecec.patch")
+source=("git+https://git.eden-emu.dev/eden-emu/eden.git#commit=${_commit}")
 sha256sums=('2c7d846fb99a6f49dfd53539f28f49b0c45de75081ac121230d7773c04e2dc2e'
             '106a8f2053c6d52951a312b07a09050423362128a7d26344af0bb0f4495fb856'
             '8d441c5152211510d4fdd5ea39f99d4ba3d4b86c7126d352872fd36bfb492d43')
 pkgver() {
 	cd "$_pkgname"
 	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/.git//'
-}
-prepare() {
-	cd $srcdir/eden
-	patch -p1 < $srcdir/3751.patch
-	patch -p1 < $srcdir/bd6dd7ecec.patch
 }
 build() {
 	cd "$srcdir"
