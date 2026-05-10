@@ -1,0 +1,17 @@
+pkgbase = klex
+	pkgver = 0.3.32
+	pkgrel = 1
+	pkgdesc = FROG: Parallel-first scripting language for batch data processing at scale
+	url = https://github.com/kmcnally5/FROG
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = klex
+	conflicts = klex
+	source = git+https://github.com/kmcnally5/FROG.git#tag=v0.3.32
+	sha256sums = SKIP
+
+pkgname = klex
