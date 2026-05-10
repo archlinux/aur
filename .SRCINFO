@@ -1,7 +1,7 @@
 pkgbase = openai-codex-desktop
 	pkgdesc = OpenAI Codex desktop app
 	pkgver = 26.429.61741
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developers.openai.com/codex/app/
 	arch = x86_64
 	license = custom
@@ -22,10 +22,12 @@ pkgbase = openai-codex-desktop
 	source = node-pty.tgz::https://registry.npmjs.org/node-pty/-/node-pty-1.1.0.tgz
 	source = codex-desktop.sh
 	source = Codex.desktop
+	source = patch-linux-open-targets.mjs
 	sha256sums = c325741ec38a801889518d62ad756db7d6df1035d755db90a046373c96fb5198
 	sha256sums = 2602a5726d0a9d8e6be407c59bc125e605110eda8e3b04e7ef8d6ddf762c9122
 	sha256sums = c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60
 	sha256sums = 0ad6ffebf054f3289c7ed902e3b486e8dbe215dbd28e941c948e1e485963f1e2
 	sha256sums = d3a00f4a4ddf2709d4f018222866df67d155ca36c9dbfa0dd1867d4c9267808d
+	sha256sums = dbcb533d6811bd89009d2bd231a142bf9ce40ff5bbded3c5cb79870e7d9b66e4
 
 pkgname = openai-codex-desktop

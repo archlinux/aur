@@ -3,7 +3,7 @@
 
 pkgname=openai-codex-desktop
 pkgver=26.429.61741
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
@@ -34,6 +34,7 @@ source=(
   "node-pty.tgz::https://registry.npmjs.org/node-pty/-/node-pty-${_node_pty_ver}.tgz"
   "codex-desktop.sh"
   "Codex.desktop"
+  "patch-linux-open-targets.mjs"
 )
 
 noextract=(
@@ -48,6 +49,7 @@ sha256sums=(
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
   '0ad6ffebf054f3289c7ed902e3b486e8dbe215dbd28e941c948e1e485963f1e2'
   'd3a00f4a4ddf2709d4f018222866df67d155ca36c9dbfa0dd1867d4c9267808d'
+  'dbcb533d6811bd89009d2bd231a142bf9ce40ff5bbded3c5cb79870e7d9b66e4'
 )
 
 prepare() {
@@ -82,6 +84,8 @@ prepare() {
 
   rm -rf app-extracted/node_modules/sparkle-darwin
   find app-extracted -type f \( -name '*.dylib' -o -name 'sparkle.node' \) -delete
+
+  node "${srcdir}/patch-linux-open-targets.mjs" app-extracted
 
   local bs3_ver npty_ver
   bs3_ver="$(node -p "require('${srcdir}/app-extracted/node_modules/better-sqlite3/package.json').version")"
