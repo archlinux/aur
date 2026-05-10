@@ -50,23 +50,16 @@ package() {
 
   cp -a node_modules/. "$pkgdir/$mod_dir/node_modules/"
 
-  install -dm755 "$pkgdir/$mod_dir/packages/ai" \
-                 "$pkgdir/$mod_dir/packages/agent" \
-                 "$pkgdir/$mod_dir/packages/tui" \
-                 "$pkgdir/$mod_dir/packages/coding-agent" \
-                 "$pkgdir/$mod_dir/packages/web-ui"
+  local _pkg
+  for _pkg in ai agent tui coding-agent web-ui; do
+    install -dm755 "$pkgdir/$mod_dir/packages/$_pkg"
+    cp -a "packages/$_pkg/dist" "packages/$_pkg/package.json" "packages/$_pkg/README.md" \
+      "$pkgdir/$mod_dir/packages/$_pkg/"
+  done
 
-  cp -a packages/ai/dist packages/ai/package.json packages/ai/README.md \
-    "$pkgdir/$mod_dir/packages/ai/"
-  cp -a packages/agent/dist packages/agent/package.json packages/agent/README.md \
-    "$pkgdir/$mod_dir/packages/agent/"
-  cp -a packages/tui/dist packages/tui/package.json packages/tui/README.md \
-    "$pkgdir/$mod_dir/packages/tui/"
-  cp -a packages/coding-agent/dist packages/coding-agent/docs packages/coding-agent/examples \
-    packages/coding-agent/package.json packages/coding-agent/README.md packages/coding-agent/CHANGELOG.md \
+  cp -a packages/coding-agent/docs packages/coding-agent/examples \
+    packages/coding-agent/CHANGELOG.md \
     "$pkgdir/$mod_dir/packages/coding-agent/"
-  cp -a packages/web-ui/dist packages/web-ui/package.json packages/web-ui/README.md \
-    "$pkgdir/$mod_dir/packages/web-ui/"
 
   rm -rf "$pkgdir/$mod_dir/node_modules/koffi"
   rm -f "$pkgdir/$mod_dir/node_modules/@mariozechner/pi" \
