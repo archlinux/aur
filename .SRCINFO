@@ -1,0 +1,24 @@
+pkgbase = canto-git
+	pkgdesc = EPUB reader with offline TTS and Spotify-style lyrics view
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/lucilf3r/canto
+	install = canto.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	depends = python-pyside6
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = fontconfig
+	optdepends = xdg-utils: open with support
+	provides = canto
+	conflicts = canto
+	source = canto-git::git+https://github.com/lucilf3r/canto.git
+	sha256sums = SKIP
+
+pkgname = canto-git

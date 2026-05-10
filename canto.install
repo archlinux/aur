@@ -1,0 +1,14 @@
+post_install() {
+    echo ""
+    echo "  Canto requires the Kokoro TTS model files (~316 MB)."
+    echo "  Download them by running:"
+    echo ""
+    echo "    bash /opt/canto/setup.sh"
+    echo ""
+    echo "  This only needs to be done once."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
