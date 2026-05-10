@@ -1,7 +1,7 @@
 # Maintainer: Nick Weber <nycz.club>
 pkgname=mongobench-git
 _appname=mongobench
-pkgver=.r32.geee0c5a
+pkgver=1.1.0.r34.g6fc2552
 pkgrel=1
 pkgdesc="A modern, dark-mode-first MongoDB GUI"
 arch=('x86_64')

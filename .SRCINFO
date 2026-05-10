@@ -1,6 +1,6 @@
 pkgbase = mongobench-git
 	pkgdesc = A modern, dark-mode-first MongoDB GUI
-	pkgver = .r32.geee0c5a
+	pkgver = 1.1.0.r34.g6fc2552
 	pkgrel = 1
 	url = https://github.com/ByteExceptionM/MongoBench
 	arch = x86_64
