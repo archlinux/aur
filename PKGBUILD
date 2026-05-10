@@ -22,15 +22,13 @@ source=(
   "${_pkgname}.config.yaml"
   "${_pkgname}.env"
 )
-sha256sums=(
-  'SKIP'
-  '8c81b70ff0b2f8f93b85c47c268ca2aed162da6905089f88accfd924959fd3f2'
-  '4fb9c726039173b2aeacd27a022866c0d69973dca6eef67ac298c49b97fea160'
-  'cd2f6ac0adca23170f23f949059d8970f1ac4f88c7d56b6531fe8cf186317f77'
-  '378e26d2e520242f625e39fb42d8437c022b87ea5051116a7480a91752750304'
-  '23dbeae6f65460742ea8240f7929402ead12d7edce7defe615d06227738544e3'
-  'f0eadd09e1fa6d95c6692da6ba86070ee4adbb1c0e356fb0406891c710d8beac'
-)
+sha256sums=('SKIP'
+            '8c81b70ff0b2f8f93b85c47c268ca2aed162da6905089f88accfd924959fd3f2'
+            '4fb9c726039173b2aeacd27a022866c0d69973dca6eef67ac298c49b97fea160'
+            'cd2f6ac0adca23170f23f949059d8970f1ac4f88c7d56b6531fe8cf186317f77'
+            '378e26d2e520242f625e39fb42d8437c022b87ea5051116a7480a91752750304'
+            '23dbeae6f65460742ea8240f7929402ead12d7edce7defe615d06227738544e3'
+            'f0eadd09e1fa6d95c6692da6ba86070ee4adbb1c0e356fb0406891c710d8beac')
 
 # Generate an Arch-compatible version from the current git revision.
 pkgver() {
