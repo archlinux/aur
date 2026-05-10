@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WRL Cat Control
+Comment=World Radio League CAT Control
+Exec=wrl-cat-control %u
+Icon=wrl-cat-control
+Terminal=false
+Type=Application
+Categories=Network;HamRadio;
+StartupNotify=true
+MimeType=x-scheme-handler/wrl;

@@ -1,0 +1,8 @@
+post_install() {
+    update-desktop-database -q
+    xdg-mime default wrl-cat-control.desktop x-scheme-handler/wrl
+}
+
+post_upgrade() {
+    post_install
+}
