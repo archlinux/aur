@@ -1,60 +1,31 @@
 #!/bin/bash
-
-# --- APT-Fake v1.8 (Gabriele Edition) ---
-G_PURPLE='\033[1;35m'
-G_CYAN='\033[1;36m'
-G_GREEN='\033[1;32m'
-G_RED='\033[1;31m'
-NC='\033[0m'
-
+# --- APT-Fake v2.0 (Gabriele Edition) ---
+G_BLUE='\033[1;34m'; G_CYAN='\033[1;36m'; G_GREEN='\033[1;32m'; G_RED='\033[1;31m'; NC='\033[0m'
 LOG_FILE="$HOME/.apt-fake-history"
 
-# Function: Zenity GUI
-show_gui() {
-    zenity --info \
-        --title="APT-Fake v1.8 - Dashboard" \
-        --text="User: Gabriele\nStatus: Online\n\nBridge active between Ubuntu and Arch.\nCheck terminal for logs." \
-        --icon-name="apt-fake" \
-        --width=350
-}
-
-# Function: Log activity
-log_action() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
-}
-
-if [[ -z "$1" || "$1" == "gui" ]]; then
-    show_gui
-    [[ "$1" == "gui" ]] && exit 0
-    echo -e "${G_PURPLE}Usage: apt [install|update|upgrade|remove|history|gui]${NC}"
+if [[ -z "$1" ]]; then
+    echo -e "${G_BLUE}APT-Fake v2.0${NC} - Gabriele's Package Manager Bridge"
+    echo "Usage: apt [install|update|upgrade|search|history|clean]"
     exit 0
 fi
 
 case "$1" in
-    install)
-        shift
-        packages=${*//-y/}
-        echo -e "${G_CYAN}::${NC} Searching official repositories..."
-        if sudo pacman -S --needed $packages; then
-            log_action "Installed: $packages"
-            echo -e "${G_GREEN}::${NC} Success."
-        else
-            echo -e "${G_CYAN}::${NC} Redirecting to ${G_PURPLE}G-HELPER${NC}..."
-            g-helper $packages
-            log_action "AUR Install Attempt: $packages"
-        fi
-        ;;
     update)
-        sudo pacman -Sy && log_action "Database Updated" ;;
+        (echo "50" ; echo "# Syncing Repos..." ; sudo pacman -Sy --noconfirm > /dev/null ; echo "100") | \
+        zenity --progress --title="APT Update" --auto-close --width=300
+        echo "$(date) - System Database Updated" >> "$LOG_FILE" ;;
+    install)
+        shift; sudo pacman -S --needed $@ || g-helper $@
+        echo "$(date) - Installed: $@" >> "$LOG_FILE" ;;
     upgrade)
-        sudo pacman -Syu && log_action "System Upgraded" ;;
-    remove)
-        shift
-        sudo pacman -Rs $@ && log_action "Removed: $@" ;;
+        sudo pacman -Syu ;;
+    search)
+        shift; echo -e "${G_CYAN}:: Official:${NC}"; pacman -Ss $@
+        echo -e "${G_PURPLE}:: AUR Search Active...${NC}"; g-helper search $@ ;;
     history)
-        echo -e "${G_CYAN}:: Recent Activity:${NC}"
-        tail -n 10 "$LOG_FILE" 2>/dev/null || echo "No history yet."
-        ;;
+        cat "$LOG_FILE" 2>/dev/null || echo "No history yet." ;;
+    clean)
+        sudo pacman -Rns $(pacman -Qdtq) ;;
     *)
-        echo -e "${G_RED}Error:${NC} Command '$1' unknown." ;;
+        sudo pacman $@ ;;
 esac
