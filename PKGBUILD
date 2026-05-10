@@ -4,7 +4,7 @@
 
 pkgname=xorg-xwayland-hidpi-xprop
 pkgver=24.1.11
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=(
     LicenseRef-Adobe-Display-PostScript
