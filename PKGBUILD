@@ -1,7 +1,7 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
 _pkgname=CatClient
 pkgname=catclient
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Yet another fork of TaterClient for DDNet"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 	'discord-game-sdk: Enable rich presence in Discord desktop client.')
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 install="$pkgname.install"
-source=("https://github.com/quomy/CatClient/releases/download/$pkgver/CatClient-ubuntu.tar.gz" "$pkgname.png")
-sha256sums=('e7b07aedc1b22e29823eab2240e8f01d1fb1a4170aa083bd873ccb42765ebaeb'
+source=("https://github.com/rXelelo/CatClient/releases/download/$pkgver/CatClient-ubuntu.tar.gz" "$pkgname.png")
+sha256sums=('90b69759acb55ad99a3bc619d49a38d55d210f95c1168340b2b4ee8b7ae5abbd'
             'ccdd296572e6d931e08ba6aca14f14791a045b1c1e0d3c18b91c3b105c9541f0')
 
 prepare() {
