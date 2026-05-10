@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Petapton <petapton@gmail.com>
 
 pkgname=omen-rgb-keyboard-dkms-git
 _pkgbase=omen-rgb-keyboard
