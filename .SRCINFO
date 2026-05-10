@@ -1,0 +1,20 @@
+pkgbase = cosmic-color-picker
+	pkgdesc = Native Wayland color picker for COSMIC desktop (daemon + GUI + panel applet)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Pyxyll/cosmic-color-picker
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = just
+	makedepends = git
+	depends = grim
+	depends = wl-clipboard
+	depends = libnotify
+	depends = libxkbcommon
+	depends = wayland
+	source = git+https://github.com/Pyxyll/cosmic-color-picker.git#tag=v0.2.1
+	sha256sums = SKIP
+
+pkgname = cosmic-color-picker
