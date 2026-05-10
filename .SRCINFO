@@ -1,7 +1,7 @@
 pkgbase = eralchemy
 	pkgdesc = Entity Relation Diagrams generation tool
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/eralchemy/eralchemy
 	arch = any
 	license = Apache-2.0
@@ -14,10 +14,8 @@ pkgbase = eralchemy
 	depends = python
 	depends = python-pygraphviz
 	depends = python-sqlalchemy
-	source = git+https://github.com/eralchemy/eralchemy.git?signed#commit=v1.6.0
-	source = 0001-Move-run_graph-to-module-scope-for-Python-3.14-compa.patch
+	source = git+https://github.com/eralchemy/eralchemy.git?signed#commit=v1.7.0
 	validpgpkeys = 65290D3F6915674534D87357D5B29CD0C9E06237
-	sha256sums = e74edeca6c67f1158aa7117bc6d157515d61c4dc485f71f6898986c9b670378c
-	sha256sums = 726dc7366397cd7a7e9d53d139ef72ab6dcaa06dc2ebf880ea6796535f065282
+	sha256sums = 52b368579fb2d3c9d4fc49abb96d5780ab0cfaf9f537a221110e083226ee1e66
 
 pkgname = eralchemy
