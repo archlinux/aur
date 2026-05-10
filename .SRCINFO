@@ -1,0 +1,24 @@
+pkgbase = lynxdb
+	pkgdesc = A lightweight schema-on-read analytics in a single binary
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/lynxbase/lynxdb
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0 license
+	makedepends = go>=1.25
+	makedepends = bun
+	makedepends = git
+	makedepends = make
+	options = !strip
+	options = !emptydirs
+	source = lynxdb-0.1.8.tar.gz:https://github.com/lynxbase/lynxdb/archive/v0.1.8.tar.gz
+	sha256sums = 66875ecf1763353a3a903c6ae15568542052dfb7a551610f254308a733fc9e5a
+
+pkgname = lynxdb
