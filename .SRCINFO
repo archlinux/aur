@@ -1,7 +1,7 @@
 pkgbase = gopdf-git
 	pkgdesc = MuPDF-backend PDF viewer written in Go with Lua configuration
 	pkgver = 0.1.0.r0.3bf54a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aethar01/gopdf.git
 	arch = x86_64
 	license = AGPL
