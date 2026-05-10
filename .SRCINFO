@@ -1,6 +1,6 @@
 pkgbase = python-apptools
 	pkgdesc = Application tools
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/enthought/apptools
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-apptools
 	depends = python-traits
 	optdepends = python-configobj: for apptools.preferences package
 	optdepends = python-traitsui: for user interface to apptools
-	source = apptools-5.3.0.tar.gz::https://github.com/enthought/apptools/archive/5.3.0.tar.gz
-	sha256sums = c7f1c0001161f68c2764498329d29316c990db2eadad46a517e4328c1c1f1a14
+	source = apptools-5.3.1.tar.gz::https://github.com/enthought/apptools/archive/5.3.1.tar.gz
+	sha256sums = 17998f72822259f46625d6ddb6b888afaae63e247db30ffc671ff36c08444e28
 
 pkgname = python-apptools
