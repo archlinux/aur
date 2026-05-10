@@ -7,8 +7,8 @@ pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized 
 arch=('x86_64' 'aarch64')
 url="https://github.com/earendil-works/pi"
 license=('MIT')
-depends=('nodejs>=20')
-makedepends=('npm' 'nodejs-lts-jod')
+depends=('nodejs-lts-jod')
+makedepends=('npm')
 optdepends=(
   'tmux: for background bash capabilities'
   'fd: system-provided backend for the find tool'
