@@ -1,7 +1,7 @@
 # Maintainer: Charlotte <cemetery394@gmail.com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron-neo-git
-pkgver=2026.04.27.r44.g7b679b9
+pkgver=2026.04.27.r108.gee04d39
 pkgrel=1
 pkgdesc="Nintendo Switch emulator fork from citron-neo (git version)"
 arch=('x86_64')
@@ -175,7 +175,9 @@ build() {
     -DTITLE_BAR_FORMAT_RUNNING="citron-neo | ${pkgver} {}" \
     -DTITLE_BAR_FORMAT_IDLE="citron-neo | ${pkgver} {}" \
     -DBUILD_ID="archlinux.org" \
-    -DCITRON_TESTS=OFF
+    -DCITRON_TESTS=OFF \
+    -DCITRON_USE_CPM=OFF \
+    -DCITRON_SHADER_TOOL=OFF
 
   cmake --build build
 }
