@@ -1,7 +1,7 @@
 # Maintainer: notfranko_ <notfranko@techlab.cloud>
 
 pkgbase=linux-bsb
-pkgver=6.19.13.arch1
+pkgver=7.0.5.arch1
 pkgrel=1
 pkgdesc='Linux kernel with patches to make the Bigscreen Beyond headset work properly'
 url='https://github.com/archlinux/linux'
@@ -40,20 +40,20 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('0559b1fea740e71714b4368023902b7d098c45ac1faa3176eab392c867645648'
+sha256sums=('965fb0a1c1675399fc60c6063b227c0523041b5f9a662b66462f1212c438ac3c'
             'SKIP'
             '327fd7b94c79fbff03a38e3b6d76e690ca95d9725e5efdb772d7daf423b81749'
             '62aa97495d491b6efda27055a0a203d98ec527a8c7d21a168ffa7fd12c08a927'
             'c22989441488c4d7a027f4ab2c049be838a43caac3f22abd987c0bef718c5438'
-            'e79907a589f909e11d0ddf2296d415fce2a8517706b3dece6d11ba7a268a1e0d'
+            '01833ca865ce6c3a59c40eac570b3fb791b41c233205e1eb460a91aa6fef85f4'
             'SKIP'
             '505d823490e964e66ebe5889a3701347b4e4e2faf1772b3964f0360a176eadf8')
-b2sums=('bd6ae85226bcbaba096c64d5cd20ad18d24e9fb5484394ce7db27326d37da500ffdc7bd765493a0a167944836be7275bb84807991a0266f072c0d87ec5df84b3'
+b2sums=('10b9e0c47da78d605d1ff45054e0693045bcbfe9ab1437ababe9b58383a193c89d5a36f9ee806266c743ae8a320ac60620b3e306751ead2e1a77150cf0d985eb'
         'SKIP'
         '71490adf6abe84974edbd28238a1585eb051b860df0a86e504fbed9bba7a101dff4c9783bf2eca4342c0c53e97af144ec8505904ab94056a563873a397f1f0f8'
         'f2ea744efc628122f96500880717a9bfe03ffdfee30e8027bac44cbc7e0ab2f684dc6a3f9619da8941d1cb45dd80f4e34a022fcfea135baa4174f41fbd10f8eb'
         '77a7eb3a552ca944de6d86364c197472653fba465f0cfbf490059bcf9f5df0638b41478d012febb6be272e16684112116e3fa5d3f0cdd0870f454f588dbd5784'
-        '61af7f7c7dea17d93b7f575e66f741bd281ceace3788b29c11c6c700b6149429ad4edcae19d17ed74fb18f5fe0c35a12da272e49a98719d8898d6dfa5c53e8ca'
+        'd2c2b71ca0e7ee471007df333cb0d04e99ae3130175ca16af1c10c3b208fbaa303e06b1dbd398c483ec1e7953761c04cc52c542f46e4f187367b8c5bd79b0005'
         'SKIP'
         'f31d83e1e10bb901d0d25c1db0ad2844584ff1014c8bf36f342fcf1999f41e5e2d5ddfa20a5a23d4626c6b35005c7e01ebe8ae7f3de3d4b61a189a49add3a158')
 
