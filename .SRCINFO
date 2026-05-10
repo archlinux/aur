@@ -1,6 +1,6 @@
 pkgbase = waytrogen
 	pkgdesc = A lightning fast gui wallpaper setter written in Rust.
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/nikolaizombie1/waytrogen
 	arch = i686
@@ -70,7 +70,7 @@ pkgbase = waytrogen
 	optdepends = gslapper: wallpaper utility for Wayland with video/image support and instant switching via RAM cache
 	conflicts = waytrogen-bin
 	options = !debug
-	source = waytrogen-0.9.5.tar.gz::https://github.com/nikolaizombie1/waytrogen/archive/refs/tags/0.9.5.tar.gz
+	source = waytrogen-0.9.6.tar.gz::https://github.com/nikolaizombie1/waytrogen/archive/refs/tags/0.9.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = waytrogen
