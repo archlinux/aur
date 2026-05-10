@@ -45,7 +45,7 @@ with open('src-tauri/icon.png', 'wb') as f:
 build() {
   cd "$srcdir/spent-tracker-$pkgver"
   bun install
-  bunx tauri build
+  bunx tauri build --bundles deb,rpm 2>&1 | tail -5
 }
 
 package() {
