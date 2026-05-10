@@ -1,33 +1,36 @@
-# Contributor: Gleb Liutsko <gleb290303@gmail.com>
+# Maintainer: hwangsihu
 
 pkgname=python-yandex-music-api
 _name=${pkgname#python-}
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Unofficial Python library for the Yandex.Music API"
 arch=('any')
 url="https://github.com/MarshalX/yandex-music-api"
-license=('LGPL3')
-depends=('python' 'python-requests' 'python-aiohttp' 'python-aiofiles')
-makedepends=('python-setuptools')
+license=('LGPL-3.0-only')
+depends=('python' 'python-pysocks' 'python-requests' 'python-typing_extensions')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
+optdepends=('python-aiofiles: async file I/O for async client'
+            'python-aiohttp: async client support')
 source=("https://github.com/MarshalX/$_name/archive/v$pkgver.tar.gz")
-md5sums=('62b60e48a1bd9a085b65b4185c49d548')
+sha256sums=('d3c324bfb319601a9a922848cf805f5ce1da4ae0bdbbc9176c41f444bf5a031a')
 
 build() {
-  cd $srcdir/$_name-$pkgver
-  python setup.py build
+  cd "$srcdir/$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $srcdir/$_name-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$srcdir/$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  rm $pkgdir/usr/lib/python*/site-packages/tests -r
+  rm -r "$pkgdir"/usr/lib/python*/site-packages/tests
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 check() {
-  cd $srcdir/$_name-$pkgver
-
+  cd "$srcdir/$_name-$pkgver"
   pytest tests
 }
