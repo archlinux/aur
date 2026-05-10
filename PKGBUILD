@@ -1,6 +1,6 @@
 # Maintainer: lucilf3r <ahmedalnanga@gmail.com>
 pkgname=canto-git
-pkgver=r1.0000000
+pkgver=1.0
 pkgrel=1
 pkgdesc="EPUB reader with offline TTS and Spotify-style lyrics view"
 arch=('any')

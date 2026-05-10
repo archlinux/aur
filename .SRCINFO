@@ -1,6 +1,6 @@
 pkgbase = canto-git
 	pkgdesc = EPUB reader with offline TTS and Spotify-style lyrics view
-	pkgver = r1.0000000
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/lucilf3r/canto
 	install = canto.install
