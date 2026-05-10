@@ -25,10 +25,10 @@ pkgbase = pdfapps-bin
 	source = pdfapps.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.9/icon_512.png
 	source = pdfapps.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.13.9/pdfapps.svg
 	sha256sums = 7b168c704551516c29d32684a86ba2ef0755c5a087362ed81a92e0350b7fed71
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 7db363c32a832c173e807e3737b50425dd2554acf93b25715a68483c4ff68c51
+	sha256sums = 0d7610911a09ee9c5ff3770de433bc61c31d81825ff433e8c42e46eedc6324b5
+	sha256sums = 8547fc58d95ce363ea0058a057d1776d169cd7fd4adbb5b91ef478136fefbf12
+	sha256sums = 79800a6233787dc82b3ea31c7de75be10149e387d1180029ec14e59301663c77
+	sha256sums = 97d82b76f38a287d8eaaee1f295ed3848052f35855439a44f57197854ac20361
 
 pkgname = pdfapps-bin
