@@ -1,6 +1,6 @@
 # Maintainer: Terrabade <terrabade@protonmail.com>
 pkgname=shelly-gnome
-pkgver=2.2.3.2.gnome1
+pkgver=2.2.4.1.gnome1
 pkgrel=1
 pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
 arch=('x86_64')
@@ -22,6 +22,7 @@ depends=(
     'glibc'
     'libarchive'
     'dconf'
+    'gnupg'
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
@@ -32,7 +33,7 @@ makedepends=('dotnet-sdk-10.0' 'clang')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
-sha256sums=('12cde51f2b53e7a4f3628727a2fced554dbb0d8006354aa1ebbb891aefbd9ac0')
+sha256sums=('e75ff5d586de58c3beefeb7342500a388f78e9d809a7b0f542b0524db19a8063')
 
 build() {
   cd "$srcdir/Shelly-ALPM-GNOME-${pkgver}"
@@ -40,6 +41,7 @@ build() {
   dotnet publish Shelly-CLI/Shelly-CLI.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly.Gtk/Shelly.Gtk.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly-Notifications/Shelly-Notifications.csproj -c Release -r linux-x64 -o out-notify --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  dotnet publish Shelly.Keys/Shelly.Keys.csproj -c Release -r linux-x64 -o out-keys --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
 }
 
 package() {
@@ -53,6 +55,9 @@ package() {
 
   # Install Shelly-CLI binary
   install -Dm755 out-cli/shelly "$pkgdir/usr/bin/shelly"
+
+  # Install Shelly.Keys binary
+  install -Dm755 out-keys/shelly-keys "$pkgdir/usr/bin/shelly-keys"
 
   # Install desktop entry
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"

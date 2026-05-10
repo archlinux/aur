@@ -1,6 +1,6 @@
 pkgbase = shelly-gnome
 	pkgdesc = Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager.
-	pkgver = 2.2.3.2.gnome1
+	pkgver = 2.2.4.1.gnome1
 	pkgrel = 1
 	url = https://github.com/Terrabade/Shelly-ALPM-GNOME
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = shelly-gnome
 	depends = glibc
 	depends = libarchive
 	depends = dconf
+	depends = gnupg
 	optdepends = flatpak: For supporting flatpak implementation.
 	optdepends = archlinux-appstream-data: package icons and metadata
 	optdepends = fish: Fish shell completions
@@ -27,7 +28,7 @@ pkgbase = shelly-gnome
 	conflicts = shelly
 	conflicts = shelly-bin
 	conflicts = shelly-git
-	source = shelly-gnome-2.2.3.2.gnome1.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v2.2.3.2.gnome1.tar.gz
-	sha256sums = 12cde51f2b53e7a4f3628727a2fced554dbb0d8006354aa1ebbb891aefbd9ac0
+	source = shelly-gnome-2.2.4.1.gnome1.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v2.2.4.1.gnome1.tar.gz
+	sha256sums = e75ff5d586de58c3beefeb7342500a388f78e9d809a7b0f542b0524db19a8063
 
 pkgname = shelly-gnome
