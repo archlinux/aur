@@ -1,13 +1,13 @@
 pkgbase = r-muscle
 	pkgdesc = Multiple Sequence Alignment with MUSCLE
-	pkgver = 3.52.0
+	pkgver = 3.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/muscle
 	arch = x86_64
 	license = Unlimited
 	depends = r
 	depends = r-biostrings
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/muscle_3.52.0.tar.gz
-	sha256sums = 82fca3a6e9e09915f7a7dabf6dac6e35a854daf816e2a2e7509a5a0160f55221
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/muscle_3.54.0.tar.gz
+	sha256sums = c997bebffe240f0275fefcf3d8c6934bacf3359dc988c609df385d1d42d895e8
 
 pkgname = r-muscle
