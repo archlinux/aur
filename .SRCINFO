@@ -1,14 +1,14 @@
 pkgbase = r-go.db
 	pkgdesc = A set of annotation maps describing the entire Gene Ontology
-	pkgver = 3.22.0
+	pkgver = 3.23.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GO.db
 	arch = any
 	license = Artistic-2.0
 	depends = r-annotationdbi
 	optdepends = r-dbi
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/GO.db_3.22.0.tar.gz
-	md5sums = 5ae5557afa56227c4c9c145907b1f585
-	b2sums = 3e3039f6aea264011e19e8747bc822bc3890863122cd13da12d9fd65e0d09b0698f8919fbc55734217fbcb73740ca7e11c55510a41b703d2b5af622d173d7473
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/GO.db_3.23.1.tar.gz
+	md5sums = b9848764614f05b19038754dc6baa78d
+	b2sums = fb697c8ed706342298b5681c3bc131b9353ff51e7f1997b0806d9be350e2a4971b08c9863bdd3ec80a247dfba7734a727dd029bf364ad385e054a3ed112cd626
 
 pkgname = r-go.db
