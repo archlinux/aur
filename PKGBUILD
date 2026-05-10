@@ -19,11 +19,11 @@ source=(git+$url)
 sha256sums=(SKIP)
 
 pkgver() {
-    cd "$srcdir/pass-otp"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir"/$_pkgname
+    git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
-    cd "$srcdir/pass-otp"
-    make PREFIX="/usr" DESTDIR="$pkgdir" install
+    cd "$srcdir"/$_pkgname
+    make PREFIX=/usr DESTDIR="$pkgdir" install
 }
