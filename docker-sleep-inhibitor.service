@@ -1,0 +1,11 @@
+[Unit]
+Description=Inhibit Sleep based on Docker Labels
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker-sleep-inhibitor
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

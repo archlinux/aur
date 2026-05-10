@@ -1,0 +1,17 @@
+pkgbase = docker-sleep-inhibitor
+	pkgdesc = Watches for containers with system.sleep.inhibit=true label and inhibits the system from sleeping
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/eslam-allam/docker-sleep-inhibitor
+	install = docker-sleep-inhibitor.install
+	arch = any
+	license = MIT
+	depends = docker
+	depends = systemd
+	depends = bash
+	source = docker-sleep-inhibitor::git+https://github.com/eslam-allam/docker-sleep-inhibitor.git#tag=v0.0.1
+	source = docker-sleep-inhibitor.service
+	sha256sums = 6e2d62511848f07fb3c2ebf80e3008e8f7a08b58dc7008f9fa3f2e97ab2305bd
+	sha256sums = f573338784e3887eff568860061cdf131a97f50057fd6efd58d873866bf46a35
+
+pkgname = docker-sleep-inhibitor

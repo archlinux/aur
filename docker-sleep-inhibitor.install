@@ -1,0 +1,19 @@
+post_install() {
+    systemctl daemon-reload
+    echo ":: Run 'systemctl enable --now docker-sleep-inhibitor' to start the service."
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    if systemctl is-active --quiet docker-sleep-inhibitor; then
+        systemctl restart docker-sleep-inhibitor
+    fi
+}
+
+pre_remove() {
+    systemctl disable --now docker-sleep-inhibitor
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
