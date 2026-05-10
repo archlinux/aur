@@ -2,7 +2,7 @@
 
 _Name="Sideband"
 pkgname="${_Name,,}"
-pkgver=1.9.2
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=(
@@ -15,8 +15,8 @@ license=(
 )
 depends=(
   'python>=3.13'
-  'python-rns>=1.1.9'
-  'python-lxmf>=0.9.6'
+  'python-rns>=1.2.5'
+  'python-lxmf>=0.9.8'
   'python-lxst>=0.4.6'
   'python-kivy>=2.3.0'
   'python-numpy>=2.0.0'
@@ -49,6 +49,7 @@ optdepends=(
   'python-watchdog: auto reload kv or py'
   'python-pysocks: proxying of MQTT connection'
   'python-firebase: FireBase data collection'
+  'python-keyring: keystore'
 )
 provides=(
   "python-sbapp=${pkgver}"
@@ -60,7 +61,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('3ae37607a545373340ccde6465a2cd012b5fb9e6c62a100cb36aa756e9fa21d4')
+sha256sums=('fc156b3f02f617b32587a79e5970391adc7998aba1e01b4824774f6011eb6abe')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"

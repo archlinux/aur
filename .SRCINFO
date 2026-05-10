@@ -1,6 +1,6 @@
 pkgbase = sideband
 	pkgdesc = Communicate with people or LXMF-compatible systems over Reticulum networks
-	pkgver = 1.9.2
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://unsigned.io/software/Sideband.html
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = sideband
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python>=3.13
-	depends = python-rns>=1.1.9
-	depends = python-lxmf>=0.9.6
+	depends = python-rns>=1.2.5
+	depends = python-lxmf>=0.9.8
 	depends = python-lxst>=0.4.6
 	depends = python-kivy>=2.3.0
 	depends = python-numpy>=2.0.0
@@ -33,9 +33,10 @@ pkgbase = sideband
 	optdepends = python-watchdog: auto reload kv or py
 	optdepends = python-pysocks: proxying of MQTT connection
 	optdepends = python-firebase: FireBase data collection
-	provides = python-sbapp=1.9.2
+	optdepends = python-keyring: keystore
+	provides = python-sbapp=1.9.4
 	conflicts = python-sbapp
-	source = https://github.com/markqvist/Sideband/archive/refs/tags/1.9.2/Sideband-1.9.2.tar.gz
-	sha256sums = 3ae37607a545373340ccde6465a2cd012b5fb9e6c62a100cb36aa756e9fa21d4
+	source = https://github.com/markqvist/Sideband/archive/refs/tags/1.9.4/Sideband-1.9.4.tar.gz
+	sha256sums = fc156b3f02f617b32587a79e5970391adc7998aba1e01b4824774f6011eb6abe
 
 pkgname = sideband
