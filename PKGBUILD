@@ -9,7 +9,7 @@
 _pkgname=links
 pkgname=links-g-directfb
 pkgver=2.30
-pkgrel=6
+pkgrel=7
 pkgdesc="A text WWW browser, similar to Lynx (with directfb, X, and fb graphics. This version also supports SVGALIB)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://links.twibright.com/"
@@ -24,13 +24,15 @@ optdepends=('svgalib: svgalib support')
 provides=('links' 'links-g')
 conflicts=('links')
 replaces=('links')
-source=(http://links.twibright.com/download/${_pkgname}-${pkgver}.tar.bz2 links.desktop)
+source=(http://links.twibright.com/download/${_pkgname}-${pkgver}.tar.bz2 links.desktop links-ftp-strchr.patch)
 sha256sums=('c4631c6b5a11527cdc3cb7872fc23b7f2b25c2b021d596be410dadb40315f166'
-            'e3aed7cda8ccb14295aa28508f528140541e5cc52659186d1f2c1122b0703bcc')
+            'e3aed7cda8ccb14295aa28508f528140541e5cc52659186d1f2c1122b0703bcc'
+            '97de590e19ea80c3d69e7021e698186d1920d81c5fd8b9a6567494864127e8a8')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" configure
+  patch -Np0 -i "../links-ftp-strchr.patch"
 }
 
 build() {

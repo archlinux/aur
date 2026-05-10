@@ -1,7 +1,7 @@
 pkgbase = links-g-directfb
 	pkgdesc = A text WWW browser, similar to Lynx (with directfb, X and fb graphics. This version also supports SVGALIB)
 	pkgver = 2.30
-	pkgrel = 6
+	pkgrel = 7
 	url = http://links.twibright.com/
 	arch = i686
 	arch = x86_64
@@ -39,8 +39,10 @@ pkgbase = links-g-directfb
 #	replaces = links-g
 	source = http://links.twibright.com/download/links-2.30.tar.bz2
 	source = links.desktop
+	source = links-ftp-strchr.patch
 	sha256sums = c4631c6b5a11527cdc3cb7872fc23b7f2b25c2b021d596be410dadb40315f166
 	sha256sums = e3aed7cda8ccb14295aa28508f528140541e5cc52659186d1f2c1122b0703bcc
+	sha256sums = 97de590e19ea80c3d69e7021e698186d1920d81c5fd8b9a6567494864127e8a8
 
 pkgname = links-g-directfb
 
