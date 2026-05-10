@@ -1,7 +1,7 @@
 pkgbase = libcmods
 	pkgdesc = A dynamic dispatch runtime module system library for the C language in C23
 	pkgver = 2.7.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/M1829/LibCMods
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = libcmods
 	makedepends = gcc>=13.1
 	depends = jemalloc
 	options = staticlibs
-	source = https://codeberg.org/M1829/LibCMods/archive/v2.7.30.tar.gz
+	source = libcmods-2.7.30::https://codeberg.org/M1829/LibCMods/archive/v2.7.30.tar.gz
 	sha256sums = 272115619fd43152888de170aea06a1072e4e1417ef05f8964d04ab5827f5bf4
 
 pkgname = libcmods
