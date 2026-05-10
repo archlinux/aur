@@ -1,6 +1,6 @@
 # Maintainer: C-Yassin <c.yassin.org@gmail.com>
 pkgname=flameget
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A GTK4 Download Manager wrapping Aria2, Curl, and YT-DLP"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/C-Yassin/FlameGet"
 license=('MIT' 'LGPL3')
 
 depends=('python' 'python-gobject' 'python-flask' 'gtk4' 'libappindicator'
-         'aria2' 'python-pycurl' 'yt-dlp' 'python-requests' 'python-waitress'
+         'aria2' 'python-pycurl' 'yt-dlp' 'python-certifi' 'python-requests' 'python-waitress' 'xdg-user-dirs'
          'ffmpeg')
 makedepends=('git' 'python-installer')
 
