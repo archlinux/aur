@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=codelink
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
-pkgver=1.78.0
+pkgver=1.80.0
 pkgrel=1
 pkgdesc='Manipulation of Codelink microarray data'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f0ae078d578bb0ce030355d6b9d003fb2a0e74aae90cf5803938aab7ab80b306')
+sha256sums=('00a95faa3828fb18a5e68a5631ea5c5b85489504978b93e7d7ee41080a379dd6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

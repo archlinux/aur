@@ -1,6 +1,6 @@
 pkgbase = r-codelink
 	pkgdesc = Manipulation of Codelink microarray data
-	pkgver = 1.78.0
+	pkgver = 1.80.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/codelink
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-codelink
 	optdepends = r-genefilter
 	optdepends = r-knitr
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/codelink_1.78.0.tar.gz
-	sha256sums = f0ae078d578bb0ce030355d6b9d003fb2a0e74aae90cf5803938aab7ab80b306
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/codelink_1.80.0.tar.gz
+	sha256sums = 00a95faa3828fb18a5e68a5631ea5c5b85489504978b93e7d7ee41080a379dd6
 
 pkgname = r-codelink
