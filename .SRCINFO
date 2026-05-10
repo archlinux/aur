@@ -1,0 +1,16 @@
+pkgbase = vrc-py-uni
+	pkgdesc = Universal VRChat OSC HUD (NVIDIA/AMD support, Async Lyrics, Progress Bars)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/vrc-py
+	arch = any
+	license = MIT
+	depends = python
+	depends = playerctl
+	depends = python-requests
+	optdepends = nvidia-utils: for NVIDIA GPU monitoring
+	optdepends = cmatrix: for --larplarplarpsahur mode
+	source = vrc.py
+	sha256sums = 3ae612ef2e56da6d847b7bc2c569821250ac88e7d4ced84deaffb070e3c6eade
+
+pkgname = vrc-py-uni
