@@ -1,0 +1,13 @@
+pkgbase = python-chibi-marshmallow
+	pkgdesc = fields and snippets for marshmallow
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/chibi-marshmallow/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python-marshmallow
+	source = https://files.pythonhosted.org/packages/source/c/chibi_marshmallow/chibi_marshmallow-1.0.0.tar.gz
+	sha256sums = a5a74b9f0194cb94af06dbde0935f829c322cda9277e89cad2b7d96436af4418
+
+pkgname = python-chibi-marshmallow
