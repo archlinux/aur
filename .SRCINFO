@@ -1,7 +1,7 @@
 pkgbase = rdhm-agent
 	pkgdesc = Remote Disc Health Monitor - Agent daemon
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kicer86/RemoteDiskHealthMonitor
 	install = rdhm-agent.install
 	arch = x86_64

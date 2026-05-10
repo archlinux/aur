@@ -2,7 +2,7 @@
 # Maintainer: Michał Walenciak <michalwalenciak@gmail.com>
 pkgname=rdhm-agent
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote Disc Health Monitor - Agent daemon'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
@@ -36,12 +36,16 @@ prepare() {
     cp -a "$srcdir/googletest" external/googletest
     cp -a "$srcdir/mdns" external/mdns
     cp -a "$srcdir/nlohmann-json" external/nlohmann-json
+
+    sed -i 's#/usr/sbin/rdhm-agent#/usr/bin/rdhm-agent#' \
+        packaging/systemd/rdhm-agent.service
 }
 
 build() {
     cmake -B build -S "$srcdir/$_pkgsrc" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_SBINDIR=bin \
         -DBUILD_MONITOR=OFF \
         -DBUILD_AGENT=ON
     cmake --build build --target agent
