@@ -1,6 +1,6 @@
 pkgbase = python-chibi-requests
 	pkgdesc = python lib to make more easy use and human requests
-	pkgver = 1.5.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://pypi.org/project/chibi-requests/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-chibi-requests
 	depends = python-beautifulsoup4
 	depends = python-marshmallow
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/chibi_requests/chibi_requests-1.5.0.tar.gz
-	sha256sums = eddcd5b5fc1221fbf6bb4d07b692d13d3c61b7c636d257a46e4265b81f60a13a
+	source = https://files.pythonhosted.org/packages/source/c/chibi_requests/chibi_requests-2.0.0.tar.gz
+	sha256sums = 3299803e83285a1989f4fb2806d06ee8e23f3cf8403cd328e7d93eee9397c1cb
 
 pkgname = python-chibi-requests
