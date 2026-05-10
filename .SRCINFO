@@ -1,7 +1,7 @@
 pkgbase = lighthouse-ethereum
 	pkgdesc = Ethereum consensus client in Rust
 	pkgver = 8.1.3
-	pkgrel = 40
+	pkgrel = 44
 	url = https://github.com/sigp/lighthouse
 	arch = x86_64
 	arch = aarch64
@@ -19,6 +19,7 @@ pkgbase = lighthouse-ethereum
 	depends = sqlite
 	depends = zstd
 	conflicts = lighthouse-ethereum-bin
+	conflicts = lighthouse-bin
 	options = !lto
 	source = git+https://github.com/sigp/lighthouse.git#tag=v8.1.3
 	source = xdelta3-rs::git+https://github.com/sigp/xdelta3-rs.git

@@ -3,7 +3,7 @@
 pkgname=lighthouse-ethereum
 pkgver=8.1.3
 _pkgname=lighthouse
-pkgrel=42
+pkgrel=44
 pkgdesc='Ethereum consensus client in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sigp/lighthouse'
@@ -11,7 +11,7 @@ license=('Apache License 2.0')
 # !lto: makepkg LTOFLAGS → cc-rs static archives → bad links with our rustc linker wrapper.
 # Wrapper (lighthouse-link-gcc.sh): strip gc-sections/as-needed from rsp, force lld + --no-gc-sections.
 options=('!lto')
-conflicts=('lighthouse-ethereum-bin')
+conflicts=('lighthouse-ethereum-bin' 'lighthouse-bin')
 
 depends=('openssl' 'sqlite' 'zstd')
 makedepends=('cargo' 'cmake' 'clang' 'lld' 'protobuf' 'make' 'git' 'perl' 'pkgconf')
@@ -70,7 +70,11 @@ build() {
     export CARGO_TARGET_DIR="${srcdir}/target"
     export OPENSSL_NO_VENDOR=1
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-    export FEATURES=sysmalloc,portable
+    # portable: BLST portable; omit sysmalloc so default jemalloc is used (see lighthouse --version).
+    export FEATURES=portable
+    case "${CARCH}" in
+        aarch64) export JEMALLOC_SYS_WITH_LG_PAGE=16 ;; # 64 KiB pages on some arm64 hosts
+    esac
 
     export LIGHTHOUSE_REAL_GCC="/usr/bin/${CARCH}-linux-gnu-gcc"
     [[ -x "${LIGHTHOUSE_REAL_GCC}" ]] || export LIGHTHOUSE_REAL_GCC=/usr/bin/gcc
@@ -91,6 +95,6 @@ build() {
 }
 
 package() {
-    install -D -m755 "${srcdir}/cargo-install/bin/lighthouse" "${pkgdir}/usr/bin/lighthouse-ethereum"
+    install -D -m755 "${srcdir}/cargo-install/bin/lighthouse" "${pkgdir}/usr/bin/lighthouse"
     install -D -m644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
