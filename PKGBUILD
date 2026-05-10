@@ -15,7 +15,7 @@ b2sums=('4dd93e363b94525740599d52f68c06636b385bcf7badf70b8172b82eab6e0b99925d4a8
 prepare() {
     cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target $(rustc --print host-tuple)
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -27,6 +27,6 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm755 "target/release/pacman-repo-stats" "$pkgdir/usr/bin/pacman-repo-stats"
-    install -Dm644 "README.adoc" "$pkgdir/usr/share/doc/${pkgname}/README.adoc"
+    install -vDm755 -t "$pkgdir/usr/bin" target/release/pacman-repo-stats
+    install -vDm644 -t "$pkgdir/usr/share/doc/${pkgname}" README.adoc
 }
