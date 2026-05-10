@@ -1,7 +1,7 @@
 # Maintainer: Dwi Asmoro Bangun <dwiaceromo@gmail.com>
 _pkgname=cwc
 pkgname="$_pkgname-git"
-pkgver=r235.ee7a82b
+pkgver=r269.8f44ca9
 pkgrel=1
 pkgdesc='Extensible Wayland compositor with dynamic window management'
 arch=('x86_64')
@@ -27,7 +27,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'ldoc'
+  # 'ldoc'
   'meson'
   'ninja'
   'wayland-protocols'
@@ -57,7 +57,7 @@ build() {
   cd "$_pkgname" || exit 1
   meson setup build -Dplugins=true --buildtype=release --prefix /usr --reconfigure
   ninja -C build
-  make docs
+  # make docs
 }
 
 package() {
