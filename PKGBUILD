@@ -4,7 +4,7 @@ pkgver=0.0.18
 pkgrel=1
 pkgdesc="AgentOne is a powerful AI agent that gives you freedom to choose your models and control your data."
 arch=('x86_64')
-url="https://github.com/AgentOne-Dev/agent-one-public"
+url="https://www.agent-one.dev"
 license=('LicenseRef-proprietary')
 depends=(
   'cairo'
