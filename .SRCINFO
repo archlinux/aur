@@ -1,12 +1,11 @@
 pkgbase = oolite-git
 	pkgdesc = Open Source remake of Elite with many, many enhancements, git version
-	pkgver = 1.93.0.7809.260501.626c8d9.r0.626c8d98a
-	pkgrel = 1
+	pkgver = 1.93.0.7815.260502.f71e5c6.r2.bc26e9105
+	pkgrel = 2
 	url = https://oolite.space/
 	arch = x86_64
 	groups = game
 	license = GPL-2.0-or-later
-	makedepends = gnustep-make
 	makedepends = gcc-objc
 	makedepends = git
 	makedepends = mozillajs-linux-bin
@@ -27,10 +26,11 @@ pkgbase = oolite-git
 	depends = sdl2-compat
 	depends = libvorbis
 	depends = libpng
+	depends = gnustep-make
 	options = !strip
 	source = oolite-git::git+https://github.com/OoliteProject/oolite
 	source = oolite-git.sh
 	sha512sums = SKIP
-	sha512sums = c76629108a3c2bc3975208e4d9a1b51fb6688b59c08c4cd1b189b317492fe08b7d78b77076baafd550cec9c64ab083b52035a1b7244c7776149927e2294c3d18
+	sha512sums = cecba38425516b6479baf7f24dec24ec13d68ef943ac15810625a64ea80d8d1d90823ea801dfc7402f3df37fe25f8f7b6385964bf5f80839cb09230ca4ea99c5
 
 pkgname = oolite-git
