@@ -2,7 +2,7 @@
 
 pkgname=python-erddapy
 pkgdesc='Retrieve scientific datasets from ERDDAP servers'
-pkgver=2.3.0
+pkgver=3.1.1
 pkgrel=1
 url='https://ioos.github.io/erddapy/'
 arch=('any')
@@ -16,31 +16,43 @@ depends=(
   'python-xarray'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
   'python-setuptools-scm'
   'python-wheel'
 )
+checkdepends=(
+  'python-pytest'
+)
 optdepends=(
   'python-joblib: parallel searching'
 )
 
-_pypi=erddapy
+_commit=ad34f53
 source=(
-  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+  "git+https://github.com/ioos/erddapy.git?signed#commit=$_commit"
 )
 sha256sums=(
-  '660e2df8fd4bcf2f268963528e914456fc5c116574b7307c3b6e89b7ec69f8d1'
+  'ac028baff033e08cb137e87e71cf8a74f5de19db9b6da0eb0789b65b7a904ce2'
+)
+validpgpkeys=(
+  '968479A1AFF927E37D1A566BB5690EEEBB952194'  # GitHub signing key
 )
 
 build() {
-  cd "$_pypi-$pkgver"
+  cd erddapy
   python -m build --wheel --no-isolation
 }
 
+check() {
+  cd erddapy
+  python -m pytest -rxs tests/test_erddapy.py
+}
+
 package() {
-  cd "$_pypi-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd erddapy
+  python -m installer --destdir="$pkgdir" "dist/erddapy-$pkgver-"*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }

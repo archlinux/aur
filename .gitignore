@@ -1,5 +1,6 @@
 pkg/
 src/
+erddapy/
 erddapy-*.tar.gz
 python-erddapy-*.pkg.tar*
 *.log
