@@ -2,13 +2,14 @@
 pkgname=archive-app-bin
 _pkgname=archive-app
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zarządzanie Domowymi Dokumentami (gotowa wersja binarna)"
 arch=('x86_64')
 url="https://github.com/KlapkiSzatana/archive-app"
 license=('GPL-3.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+options=('!strip' '!debug')
 
 source=("https://github.com/KlapkiSzatana/archive-app/releases/download/v${pkgver}/ArchiveApp_linux.tar.gz")
 
