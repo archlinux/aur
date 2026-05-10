@@ -1,0 +1,18 @@
+pkgbase = fuzz-wall
+	pkgdesc = A fuzzel-based wallpaper picker supporting multiple WMs and wallpaper setters
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/youngcoder45/fuzz-wall
+	arch = any
+	license = MIT
+	depends = fuzzel
+	optdepends = swaybg: Wayland wallpaper setter (sway)
+	optdepends = swww: Wayland wallpaper setter with animations (hyprland)
+	optdepends = feh: X11 wallpaper setter
+	optdepends = nitrogen: X11 wallpaper setter with GUI
+	optdepends = xwallpaper: Lightweight X11 wallpaper setter
+	optdepends = libnotify: Desktop notifications support
+	source = fuzz-wall-1.0.0.tar.gz::https://github.com/youngcoder45/fuzz-wall/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = fuzz-wall
