@@ -22,10 +22,17 @@ sha256sums=(
 
 pkgver() {
     cd "$srcdir/MongoBench"
-    printf '%s.r%s.g%s' \
-        "$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo 0.1.0)" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+    git fetch --tags --quiet 2>/dev/null || true
+
+    local tag count hash
+    tag=$(git describe --tags --abbrev=0 2>/dev/null) || tag=""
+    tag=${tag#v}
+    [ -n "$tag" ] || tag="0.1.0"
+
+    count=$(git rev-list --count HEAD)
+    hash=$(git rev-parse --short=7 HEAD)
+
+    printf '%s.r%s.g%s' "$tag" "$count" "$hash"
 }
 
 prepare() {
