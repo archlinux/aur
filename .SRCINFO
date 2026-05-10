@@ -1,1 +1,13 @@
+pkgbase = imate
+	pkgdesc = A lightweight terminal text editor built on ncurses
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/FreeTazaPablo/Imate
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = ncurses
+	source = imate-1.0.tar.gz::https://github.com/FreeTazaPablo/Imate/archive/refs/tags/1.0.tar.gz
+	sha256sums = 998c70edccf9e5c6134cdf6cf35b09dac759533486f7ca628165df4aeb5ffd58
 
+pkgname = imate
