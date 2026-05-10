@@ -11,11 +11,11 @@ pkgbase = passmark-performancetest-bin
 	depends = ncurses5-compat-libs
 	depends = curl
 	options = !strip
-	source_x86_64 = pt_linux_x64_v11.0.1004.zip::https://www.passmark.com/downloads/pt_linux_x64.zip
+	source_x86_64 = pt_linux_x64_v11.0.1004.zip::https://www.passmark.com/downloads/PerformanceTest_Linux_x86-64.zip
 	sha256sums_x86_64 = dab991f957373a5cfaa1e1b212a882bbb4d0fb85abaa22fc7694e8bd9dc070ad
-	source_aarch64 = pt_linux_arm64_v11.0.1004.zip::https://www.passmark.com/downloads/pt_linux_arm64.zip
+	source_aarch64 = pt_linux_arm64_v11.0.1004.zip::https://www.passmark.com/downloads/PerformanceTest_Linux_ARM64.zip
 	sha256sums_aarch64 = 968d247170df1a060e798ce0e9c033c83c8e018fafbd2930d4db666c7d435021
-	source_armv7h = pt_linux_arm32_v11.0.1004.zip::https://www.passmark.com/downloads/pt_linux_arm32.zip
+	source_armv7h = pt_linux_arm32_v11.0.1004.zip::https://www.passmark.com/downloads/PerformanceTest_Linux_ARM32.zip
 	sha256sums_armv7h = c521a068015c551d4ace1ccc229828699fd3b5fac099016aaec0ad6167e42d6f
 
 pkgname = passmark-performancetest-bin

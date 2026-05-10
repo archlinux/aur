@@ -1,5 +1,8 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
+# Workaround recent user-agent block..
+DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --user-agent Mozilla --retry-delay 3 -o %o %u')
+
 pkgname=passmark-performancetest-bin
 pkgver=v11.0.1004
 pkgrel=1
@@ -10,9 +13,9 @@ options=('!strip')
 license=('custom')
 depends=('ncurses5-compat-libs' 'curl')
 changelog=CHANGELOG
-source_x86_64=("pt_linux_x64_$pkgver.zip::https://www.passmark.com/downloads/pt_linux_x64.zip")
-source_aarch64=("pt_linux_arm64_$pkgver.zip::https://www.passmark.com/downloads/pt_linux_arm64.zip")
-source_armv7h=("pt_linux_arm32_$pkgver.zip::https://www.passmark.com/downloads/pt_linux_arm32.zip")
+source_x86_64=("pt_linux_x64_$pkgver.zip::https://www.passmark.com/downloads/PerformanceTest_Linux_x86-64.zip")
+source_aarch64=("pt_linux_arm64_$pkgver.zip::https://www.passmark.com/downloads/PerformanceTest_Linux_ARM64.zip")
+source_armv7h=("pt_linux_arm32_$pkgver.zip::https://www.passmark.com/downloads/PerformanceTest_Linux_ARM32.zip")
 sha256sums_x86_64=('dab991f957373a5cfaa1e1b212a882bbb4d0fb85abaa22fc7694e8bd9dc070ad')
 sha256sums_aarch64=('968d247170df1a060e798ce0e9c033c83c8e018fafbd2930d4db666c7d435021')
 sha256sums_armv7h=('c521a068015c551d4ace1ccc229828699fd3b5fac099016aaec0ad6167e42d6f')
