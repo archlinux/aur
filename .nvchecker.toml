@@ -1,2 +1,3 @@
 [itex2mml]
-source = "manual"
+source = "gems"
+gems = "itextomml"
