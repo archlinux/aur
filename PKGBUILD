@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=4.3.0
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ _node_version="22"
 source=("${pkgname}-${pkgver}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
 		"bitfocus-companion.desktop")
 
-sha256sums=('a87aab05feb374fbb6400a51a94488f4513dd68ac32a6087ede09594f39553d7'
+sha256sums=('368f5949c64662187818e29280bbe018ad81d910dad400d585c348e8d25989c0'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
-b2sums=('46d26ad3487857a91c783b478cd687929437f8468fa6a766e8d7dfaa12f0306db78b20f9e549e0d6ec757950c86997ddf0faf9363a9a9524d8fabb8fbd5314ee'
+b2sums=('a10a87010c6e87e423695b8d760d69db8a90fbbe6b06be1775bda802a95e533cd7b3a9631eb6a23fa76e36ec1732b5817cc0afcc545caf0a4177eea3ad629956'
         '718976c7c24fa0a2a8979a6704b36650ebe71e87edec944c1cc745cfa0e7e5aba7211efb3408b1bf12dc0065f838ed976bea75a818d5abefa23471e2e4354882')
 
 _ensure_local_nvm() {
@@ -91,10 +91,6 @@ package() {
 
 	ln -sv "/usr/lib/bitfocus-companion/companion-launcher" "${pkgdir}/usr/bin/companion"
 	ln -sv "/usr/lib/bitfocus-companion/companion_headless.sh" "${pkgdir}/usr/bin/companion-headless"
-
-	# udev rules
-	install -Dm644 "${pkgname}-${pkgver}/assets/linux/50-companion-desktop.rules" -t "${pkgdir}/etc/udev/rules.d/"
-	install -Dm644 "${pkgname}-${pkgver}/assets/linux/50-companion-headless.rules" -t "${pkgdir}/etc/udev/rules.d/"
 
 	# Desktop file
 	install -Dm644 bitfocus-companion.desktop -t "${pkgdir}/usr/share/applications/"

@@ -1,12 +1,23 @@
+udev_rules_msg() {
+    echo "NOTICE: udev rules are no longer shipped with the package"
+    echo "Due to the modularization of the control surfaces in companion udev rules are generated at runtime."
+    echo "The generate udev rules can be found at ${XDG_CONFIG_HOME}/companion/udev-rules."
+    echo "(By default XDG_CONFIG_HOME is .config inside of your home directory)"
+    echo "After installing or upgrading a controll surface module via the web ui, you must copy the appropiate udev rule file to /etc/udev/rules.d/ and then run 'sudo udevadm control --reload-rules'"
+}
+
 post_install() {
-    echo "Please reboot to apply udev rules or disconnect devices and run 'sudo udevadm control --reload-rules'"
     echo "There is a new environment variable (SENTRY_DISABLE) available to disable sentry error reporting in companion."
     echo "It's not enabled by default. You have to modify the desktop file or systemd unit to use it."
+    udev_rules_msg
 }
 
 post_upgrade() {
     if [ $(vercmp $2 4.2.4) -lt 0 ]; then
         echo "There is a new environment variable (SENTRY_DISABLE) available to disable sentry error reporting in companion."
         echo "It's not enabled by default. You have to modify the desktop file or systemd unit to use it."
+    fi
+    if [ $(vercmp $2 4.3.0) -lt 0 ]; then
+        udev_rules_msg
     fi
 }

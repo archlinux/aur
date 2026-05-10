@@ -1,4 +1,4 @@
-[libation]
+[companion]
 source = "github"
 github = "bitfocus/companion"
 use_max_tag = true
