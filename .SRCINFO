@@ -1,6 +1,6 @@
 pkgbase = freenginx-libressl
 	pkgdesc = webserver in an effort to preserve free and open development of nginx (linked against libressl)
-	pkgver = 1.30.0
+	pkgver = 1.31.0
 	pkgrel = 1
 	epoch = 1
 	url = https://freenginx.org
@@ -38,15 +38,15 @@ pkgbase = freenginx-libressl
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = https://freenginx.org/download/freenginx-1.30.0.tar.gz
-	source = https://freenginx.org/download/freenginx-1.30.0.tar.gz.asc
-	source = hg+https://freenginx.org/hg/nginx-tests#revision=1b153e4703cf
+	source = https://freenginx.org/download/freenginx-1.31.0.tar.gz
+	source = https://freenginx.org/download/freenginx-1.31.0.tar.gz.asc
+	source = hg+https://freenginx.org/hg/nginx-tests#revision=ff476932c980
 	source = service
 	source = logrotate
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = 104d8e9b2f4473b491af430273832561d8803a9cc297b5a7acd09beefddeb27e
+	sha256sums = 94e3f108730c7a37874aceb6f63046390bc995da94dcc6a3b730909089dbac04
 	sha256sums = SKIP
-	sha256sums = f23627926f20856879e88e925a50148f888546582ad5bbac6f4a941a4701e5d7
+	sha256sums = 11953d4d38f283f5c34bfa1d738250d67642a96e6cd6aab3e9f9b96bc0f6476a
 	sha256sums = daa4292d37342f3a1c4e82a85d3b83e3b559f11e8cd309788dc8d6e46c0ce247
 	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
 
@@ -55,7 +55,7 @@ pkgname = freenginx-libressl
 	conflicts = nginx
 
 pkgname = freenginx-libressl-src
-	pkgdesc = Source code of freenginx 1.30.0, useful for building modules
+	pkgdesc = Source code of freenginx 1.31.0, useful for building modules
 	arch = any
 	depends = sh
 	depends = bash
