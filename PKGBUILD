@@ -8,6 +8,7 @@ pkgdesc='Desktop app for StatusInsights built with Flutter'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xuanxuan1231/StatusInsights-Client'
 license=('MIT')
+options=('!debug')
 depends=(
   'gtk3'
   'libayatana-appindicator'

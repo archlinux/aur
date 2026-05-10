@@ -13,6 +13,7 @@ pkgbase = statusinsights-client
 	makedepends = flutter
 	depends = gtk3
 	depends = libayatana-appindicator
+	options = !debug
 	source = git+https://github.com/xuanxuan1231/StatusInsights-Client.git#tag=v1.0.0
 	sha256sums = SKIP
 
