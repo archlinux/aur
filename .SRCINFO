@@ -1,7 +1,7 @@
 pkgbase = smart-updater
 	pkgdesc = A lightweight, intelligent, and beautiful GUI update tool for CachyOS
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/UniqueSpirit/smart-updater
 	arch = any
 	license = GPL
