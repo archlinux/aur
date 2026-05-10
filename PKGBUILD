@@ -31,10 +31,11 @@ build() {
 
 package() {
     cd "${pkgname%-git}"
+    
     install -Dm755 "target/release/hyprmousetrap" "$pkgdir/usr/bin/hyprmousetrap"
     
     install -Dm644 "hyprmousetrap.lua" "$pkgdir/usr/share/hyprmousetrap/hyprmousetrap.lua"
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
-
