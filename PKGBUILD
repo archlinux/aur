@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=goTools
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
-pkgver=1.84.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc='Functions for Gene Ontology database'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-hgu133a.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ead271b8158ad2eda4443418ee32bf3e256bc26c76384d34baed4e1d45c04f06')
+sha256sums=('b056bc5d5d65494d340fe2be393464ffd229aadd1e5339972f6564f8fabdd41a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
