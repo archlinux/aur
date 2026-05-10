@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-source-clone
-pkgver=0.2.0
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to clone sources"
 arch=("x86_64" "aarch64")
