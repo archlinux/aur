@@ -3,11 +3,11 @@
 # Contributor: Maxime Vincent <maxime.vince@gmail.com>
 
 pkgname=wolfssl-git
-pkgver=5.8.4.r548.gbfc4f6bb0
+pkgver=5.9.1.r809.g9f759fa1e0
 pkgrel=1
 pkgdesc='Lightweight, portable, C-language-based SSL/TLS library'
 arch=('x86_64')
-license=('GPL-2.0-or-later')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('cmake' 'git')
 url='https://www.wolfssl.com/'
