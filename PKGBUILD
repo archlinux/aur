@@ -1,6 +1,6 @@
 # Maintainer: AmarBego <begovicamar@proton.me>
 pkgname=gittop-bin
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A lightweight GitHub notifications client. Why spin up a browser just to check your GitHub notifications?"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!strip' '!debug')
 install=gittop.install
 source_x86_64=("gittop-${pkgver}-linux-gnu-x86_64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v${pkgver}/gittop-${pkgver}-linux-gnu-x86_64.tar.gz")
 source_aarch64=("gittop-${pkgver}-linux-gnu-aarch64.tar.gz::https://github.com/AmarBego/GitTop/releases/download/v${pkgver}/gittop-${pkgver}-linux-gnu-aarch64.tar.gz")
-sha256sums_x86_64=('79813785ca2d713e931614a8d605c06a5de0764a883c55efeb2bf5ca003e6401')
-sha256sums_aarch64=('6188a099153a59dd8bf34363157df6a363c7d5b85aafa8f3c53f977979e30aed')
+sha256sums_x86_64=('ee4e9c89f9a48262f1e6b0f09ea74bb59d6288c831ecbdb944c4ea30aaa69cda')
+sha256sums_aarch64=('c325126dd539b158f7b6f1f43752fb99b9d702b3e56e9b05d9c4dc56f5b4f1a2')
 
 package() {
     cd "${srcdir}/gittop-${pkgver}-linux-gnu-${CARCH}"
