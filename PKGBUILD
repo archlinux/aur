@@ -2,7 +2,7 @@
 # Contributor: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=oterm
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="A text-based terminal client for Ollama"
 arch=('any')
@@ -46,7 +46,7 @@ makedepends=(
 	'python-setuptools')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ggozad/oterm/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('d4fda902c7466f618bf8307d752529823a396d961f6c73f6f7ab11349839d602bbc87239ba8aa7f5c3643a58f21718288783fb0f399aa167a6732e8d451363d9')
+b2sums=('c01d1fcc0f54d34bd5c78713b5e2837e86980d4884dd2d82dd5e003a36eae5d0c71e526e8f2a829fbf9148ab4927d19f786bef8021cb8d4e0ae626644af24936')
 
 build() {
 	cd "$pkgname-$pkgver" || exit
