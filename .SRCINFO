@@ -1,0 +1,25 @@
+pkgbase = rdhm-agent
+	pkgdesc = Remote Disc Health Monitor - Agent daemon
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Kicer86/RemoteDiskHealthMonitor
+	install = rdhm-agent.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = smartmontools
+	depends = util-linux
+	source = RemoteDiskHealthMonitor-0.2.0.tar.gz::https://github.com/Kicer86/RemoteDiskHealthMonitor/archive/refs/tags/v0.2.0.tar.gz
+	source = cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git#commit=68fa9bce0f1abb27fc7507c372c6ac0b75f8a878
+	source = googletest::git+https://github.com/google/googletest.git#commit=52eb8108c5bdec04579160ae17225d66034bd723
+	source = mdns::git+https://github.com/mjansson/mdns.git#commit=a569c4759bd47e0f2a7bfc4d4c19620445782806
+	source = nlohmann-json::git+https://github.com/nlohmann/json.git#commit=f534f4f75e12893716ea688679aeb768bff426c4
+	sha256sums = 0bd0bc318485f9f2ceab1f0ef4f5f786ae22694a099752e1bb785543ba24f022
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rdhm-agent
