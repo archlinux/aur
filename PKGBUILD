@@ -1,4 +1,3 @@
-# Maintainer: osch <thinkschmidt@gmail.com>
 pkgname=adobe-courier-otb-git
 pkgver=r1.a343711
 pkgrel=1
