@@ -1,7 +1,7 @@
 pkgbase = mpeghdec-llvm
 	pkgdesc = Fraunhofer MPEG-H audio decoder — built with Clang and LLVM lld
 	pkgver = 3.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mpegh.com/
 	arch = x86_64
 	license = LicenseRef-Custom

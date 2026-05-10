@@ -4,7 +4,7 @@
 _pkgname=mpeghdec
 pkgname=mpeghdec-llvm
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Fraunhofer MPEG-H audio decoder — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://mpegh.com/'
@@ -29,6 +29,14 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
+    export LD=/usr/bin/ld.lld
+    export NM=/usr/bin/llvm-nm
+    export OBJCOPY=/usr/bin/llvm-objcopy
+    export OBJDUMP=/usr/bin/llvm-objdump
+    export READELF=/usr/bin/llvm-readelf
+    export STRIP=/usr/bin/llvm-strip
+    export CFLAGS="${CFLAGS:-} -O3 -march=native"
+    export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     
     cmake -B build -S "mpeghdec-r${pkgver}" \
