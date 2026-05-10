@@ -3,7 +3,7 @@
 pkgname=statusinsights-client
 _srcname=StatusInsights-Client
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop app for StatusInsights built with Flutter'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xuanxuan1231/StatusInsights-Client'
