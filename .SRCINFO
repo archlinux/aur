@@ -1,7 +1,7 @@
 pkgbase = lcevcdec-llvm
 	pkgdesc = Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) — built with Clang and LLVM lld
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/v-novaltd/LCEVCdec/
 	arch = x86_64
 	license = BSD-3-Clause-Clear

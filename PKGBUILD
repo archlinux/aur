@@ -3,7 +3,7 @@
 
 pkgname=lcevcdec-llvm
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -34,6 +34,14 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
+    export LD=/usr/bin/ld.lld
+    export NM=/usr/bin/llvm-nm
+    export OBJCOPY=/usr/bin/llvm-objcopy
+    export OBJDUMP=/usr/bin/llvm-objdump
+    export READELF=/usr/bin/llvm-readelf
+    export STRIP=/usr/bin/llvm-strip
+    export CFLAGS="${CFLAGS:-} -O3 -march=native"
+    export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
     export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
