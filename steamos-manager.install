@@ -1,31 +1,72 @@
+_PPD_CONF=/etc/tuned/ppd.conf
+_BACKUP=/etc/tuned/ppd.conf.gpdwinmini.bak
+
 post_install() {
-  cat <<'EOF'
-==> NOTE: GPD Win Mini TDP control via ACPI/ALIB requires the acpi_call
-==> kernel module to be loaded.
-
-==> Three tuned profiles are installed for desktop power-profile control:
-==>     gpd-win-mini-power-saver   (8W)
-==>     gpd-win-mini-balanced     (15W)
-==>     gpd-win-mini-performance  (20W)
-
-==> Enable tuned and pick a profile:
-==>     sudo systemctl enable --now tuned.service
-==>     sudo tuned-adm profile gpd-win-mini-balanced
-
-==> To wire these into the KDE/GNOME power-profile selector, install
-==> tuned-ppd, then edit /etc/tuned/ppd.conf and set:
-==>     [main]
-==>     default = balanced
-==>     battery_detection = false
-==>
-==>     [profiles]
-==>     power-saver = gpd-win-mini-power-saver
-==>     balanced    = gpd-win-mini-balanced
-==>     performance = gpd-win-mini-performance
-==> followed by:  sudo systemctl restart tuned tuned-ppd
-EOF
+  _configure_ppd_conf
+  _enable_services
+  _print_post_install_msg
 }
 
 post_upgrade() {
-  post_install
+  _configure_ppd_conf
+  _restart_services
+}
+
+post_remove() {
+  if [ -f "${_BACKUP}" ]; then
+    mv -f "${_BACKUP}" "${_PPD_CONF}"
+    systemctl restart tuned-ppd.service 2>/dev/null || true
+    echo "==> Restored ${_PPD_CONF} from ${_BACKUP}"
+  fi
+}
+
+_configure_ppd_conf() {
+  [ -f "${_PPD_CONF}" ] || return 0
+  if grep -q 'gpd-win-mini-balanced' "${_PPD_CONF}" 2>/dev/null; then
+    return 0
+  fi
+  cp -p "${_PPD_CONF}" "${_BACKUP}"
+  cat > "${_PPD_CONF}" <<'EOF'
+[main]
+default = balanced
+battery_detection = false
+
+[profiles]
+power-saver = gpd-win-mini-power-saver
+balanced = gpd-win-mini-balanced
+performance = gpd-win-mini-performance
+EOF
+  echo "==> Wrote ${_PPD_CONF} (previous saved to ${_BACKUP})"
+}
+
+_enable_services() {
+  systemctl enable --now tuned.service 2>/dev/null || true
+  systemctl reset-failed tuned-ppd.service 2>/dev/null || true
+  systemctl restart tuned-ppd.service 2>/dev/null || true
+}
+
+_restart_services() {
+  systemctl is-active --quiet tuned.service && \
+    systemctl restart tuned.service 2>/dev/null || true
+  systemctl reset-failed tuned-ppd.service 2>/dev/null || true
+  systemctl is-active --quiet tuned-ppd.service && \
+    systemctl restart tuned-ppd.service 2>/dev/null || true
+}
+
+_print_post_install_msg() {
+  cat <<'EOF'
+
+==> GPD Win Mini TDP profiles installed:
+==>     gpd-win-mini-power-saver  (8W)
+==>     gpd-win-mini-balanced    (15W)
+==>     gpd-win-mini-performance (20W)
+==>
+==> /etc/tuned/ppd.conf has been wired to these profiles. Your KDE/GNOME
+==> power-profile selector now drives the GPD TDP. Verify with:
+==>     tuned-adm active
+==>     systemctl status tuned-ppd
+==>
+==> If TDP control isn't working, ensure /proc/acpi/call is writable
+==> (acpi_call module loaded).
+EOF
 }
