@@ -1,0 +1,16 @@
+pkgbase = ccusage-all
+	pkgdesc = Usage analyzers for Claude Code, Codex, OpenCode, Amp, Pi, and ccusage MCP
+	pkgver = 18.0.11
+	pkgrel = 1
+	url = https://github.com/ryoppippi/ccusage
+	arch = any
+	license = MIT
+	makedepends = bun
+	makedepends = pnpm
+	depends = nodejs>=20.19.4
+	provides = ccusage
+	conflicts = ccusage
+	source = ccusage-18.0.11.tar.gz::https://github.com/ryoppippi/ccusage/archive/refs/tags/v18.0.11.tar.gz
+	sha256sums = bf3878a6fe1f5ab6afdcd586fbb9abdc31c7ae131b0fbca7c4d1f914bff680a8
+
+pkgname = ccusage-all
