@@ -1,0 +1,3 @@
+[ruby-itex2mml]
+source = "gems"
+gems = "itextomml"

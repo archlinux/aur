@@ -9,7 +9,7 @@
  LEX=flex -P$(YYPREFIX) -olex.yy.c
  SWIG=swig
 -#RUBY=ruby
--RUBY=ruby26
+-RUBY=ruby32
 +RUBY=ruby
  
  RM=rm -f

@@ -1,19 +1,17 @@
 pkgbase = ruby-itex2mml
-	pkgdesc = Ruby bindings for itex2mml
-	pkgver = 1.6.1
+	pkgdesc = iTeX to MathML converter (Ruby bindings)
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://golem.ph.utexas.edu/~distler/blog/itex2MML.html
 	arch = x86_64
-	license = custom:GPL-unknown-version
-	license = custom:LGPL-unknown-version
-	license = custom:MPL-unknown-version
+	license = GPL-2.0-or-later OR LGPL-2.0-or-later OR MPL-1.1
+	checkdepends = ruby-test-unit
 	makedepends = swig
 	depends = glibc
 	depends = ruby
-	noextract = itex2mml-1.6.1.tar.gz
-	source = itex2mml-1.6.1.tar.gz::http://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz
+	source = https://golem.ph.utexas.edu/~distler/blog/files/itexToMML-1.6.2.tar.gz
 	source = itex2mml_fix_makefile.patch
-	sha256sums = 3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f
-	sha256sums = 51f400e16b20f0e14df6f2f5c265f2e9ce686e646374545ee953773193e326d1
+	sha256sums = 8af5a7443df87f74e0cdf2bce27dd78396566cbcffaf15efe1e87325fa6b15d3
+	sha256sums = ac6836a6135a0c0d5b5e4ee4f6372b776f6e6456edee4a39f65b9cdc75cd6b28
 
 pkgname = ruby-itex2mml
