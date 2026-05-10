@@ -1,6 +1,6 @@
 # Maintainer: hahwul <hahwul@gmail.com>
 pkgname=cjules
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Crystal CLI for the Jules API with multi-account support, bulk ops, watch mode, and gitPatch extraction."
 arch=('x86_64' 'aarch64')
