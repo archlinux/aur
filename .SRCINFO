@@ -1,0 +1,19 @@
+pkgbase = coo-bin
+	pkgdesc = A light terminal IRC client built on Bubble Tea (precompiled binary)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/bjarneo/coo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = coo
+	conflicts = coo
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/bjarneo/coo/v0.1.1/LICENSE
+	sha256sums = ebb1323d93aee5f8b4a672ec20ca24954373c85686be39307facb88dd582444c
+	source_x86_64 = coo-0.1.1-x86_64::https://github.com/bjarneo/coo/releases/download/v0.1.1/coo-linux-amd64
+	sha256sums_x86_64 = 77d4f3c2295267f65932682199601f8bb4c4d911a0000610e8c7651ac334e7a4
+	source_aarch64 = coo-0.1.1-aarch64::https://github.com/bjarneo/coo/releases/download/v0.1.1/coo-linux-arm64
+	sha256sums_aarch64 = 55a21f35fd5d35e326e1ba37bd79f52ea90d073672beddba35c7899c769464a6
+
+pkgname = coo-bin
