@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Twilight Princess Dusk
+Comment=Dusk is a reverse-engineered reimplementation of Twilight Princess.
+Exec=tp-dusk
+Icon=tp-dusk
+Terminal=false
+Type=Application
+Categories=Game;
