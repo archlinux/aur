@@ -1,6 +1,6 @@
 # Maintainer: bjarneo <https://github.com/bjarneo>
 pkgname=cliamp
-pkgver=1.48.1
+pkgver=1.49.0
 pkgrel=1
 pkgdesc='A retro terminal music player inspired by Winamp 2.x'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('pipewire-alsa: audio output on PipeWire systems'
   'pulseaudio-alsa: audio output on PulseAudio systems')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjarneo/cliamp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6269415317291831893acb9c69c7fdd1cde4911b00c7558de81b56f008439e77')
+sha256sums=('cdba71ade6eeaa15a6b3171e10de60838e14b02eec4bd078b5445e16a331a177')
 
 build() {
     cd "${pkgname}-${pkgver}"
