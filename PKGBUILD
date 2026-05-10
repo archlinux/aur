@@ -2,20 +2,20 @@
 
 pkgname=execline-static
 _pkgname=execline
-pkgver=2.9.8.1
-pkgrel=2
+pkgver=2.9.9.1
+pkgrel=1
 pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('aarch64' 'i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}"
 license=('ISC')
-makedepends=('skalibs-static>=2.14.5.1' 'musl' 'gcc')
+makedepends=('skalibs-static>=2.15.0.0' 'musl' 'gcc' 'make')
 optdepends=('execline-man-pages')
 provides=('execline')
 conflicts=('execline')
 replaces=('execline-musl')
 options=('staticlibs' '!lto' '!debug')
 source=("${url}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('23350d10797909636060522607591cb4a2118328cb58c5e65fb19a2c0d47264e')
+sha256sums=('be63533297a93c36fd267195117b4e668687a526f834517a8db47d85b6c7ec6a')
 build() {
   cd "${_pkgname}-${pkgver}"
   export CC="musl-gcc"
