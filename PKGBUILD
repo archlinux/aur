@@ -117,11 +117,27 @@ prepare() {
         sha512sum --check "${asset}.sha512"
     )
 
-    # -- Extract --
-    bsdtar \
-        --extract \
-        --file "${srcdir}/${asset}" \
-        --directory "${srcdir}"
+    # -- Extract (normalize archive layout) --
+    # Older releases nested files under a subdirectory (e.g.
+    # cosmostrix-1.1.1-stable.1-linux-x86_64-v3/); newer releases are flat.
+    # Detect and strip the leading directory if present so package() always
+    # finds files at ${srcdir}/cosmostrix, ${srcdir}/LICENSE, etc.
+    local top_entry
+    top_entry="$(bsdtar --list --file "${srcdir}/${asset}" | head -1)"
+
+    if [[ "${top_entry}" == */ ]]; then
+        msg2 "Detected nested archive layout, stripping leading directory"
+        bsdtar \
+            --extract \
+            --file "${srcdir}/${asset}" \
+            --directory "${srcdir}" \
+            --strip-components=1
+    else
+        bsdtar \
+            --extract \
+            --file "${srcdir}/${asset}" \
+            --directory "${srcdir}"
+    fi
 }
 
 # ---------------------------------------------------------------------------
