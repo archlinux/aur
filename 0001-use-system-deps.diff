@@ -206,7 +206,7 @@ index f06efef..29b1556 100644
  # Audio output is now handled by wavsen::audio (cubeb-backed). cubeb
  # itself is fetched via deps.json above and consumed transitively through
 diff --git a/viewer/CMakeLists.txt b/viewer/CMakeLists.txt
-index f6341e1..91eb65e 100644
+index f6341e1..f2bb1a5 100644
 --- a/viewer/CMakeLists.txt
 +++ b/viewer/CMakeLists.txt
 @@ -32,10 +32,10 @@ if(BUILD_WEWEB)
@@ -216,16 +216,29 @@ index f6341e1..91eb65e 100644
 -        ${CEF_STANDARD_LIBS})
 +        ${CEF_LIBRARIES})
      set_target_properties(WebViewer PROPERTIES
-         BUILD_RPATH   "\$ORIGIN"
-         INSTALL_RPATH "\$ORIGIN"
+-        BUILD_RPATH   "\$ORIGIN"
+-        INSTALL_RPATH "\$ORIGIN"
++        BUILD_RPATH   "\$ORIGIN:\$ORIGIN/../lib/cef"
++        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib/cef"
          BUILD_WITH_INSTALL_RPATH ON)
 -    weweb_stage_cef_runtime(WebViewer)
 +    SET_LIBRARY_TARGET_PROPERTIES(WebViewer)
  endif()
 diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
-index 5de79be..ef9fc4c 100644
+index 5de79be..77e2c9e 100644
 --- a/waywallen/CMakeLists.txt
 +++ b/waywallen/CMakeLists.txt
+@@ -76,8 +76,8 @@ if(BUILD_WEWEB)
+     # Install layout: <prefix>/share/waywallen/weweb/{bin, libcef.so, ...}.
+     set_target_properties(waywallen-weweb-renderer PROPERTIES
+         CXX_SCAN_FOR_MODULES ON
+-        BUILD_RPATH   "$ORIGIN"
+-        INSTALL_RPATH "$ORIGIN"
++        BUILD_RPATH   "$ORIGIN:$ORIGIN/../lib/cef"
++        INSTALL_RPATH "$ORIGIN:$ORIGIN/../lib/cef"
+         BUILD_WITH_INSTALL_RPATH ON
+     )
+     target_include_directories(waywallen-weweb-renderer
 @@ -105,9 +105,9 @@ if(BUILD_WEWEB)
      target_compile_options(waywallen-weweb-renderer PRIVATE
          -Wall -Wextra -Wpedantic
@@ -234,9 +247,52 @@ index 5de79be..ef9fc4c 100644
 +    #weweb_stage_cef_runtime(waywallen-weweb-renderer)
  
 -    set(_WEWEB_INSTALL_DIR share/waywallen/weweb)
-+    set(_WEWEB_INSTALL_DIR ${CMAKE_INSTALL_LIBEXECDIR}/weweb)
++    set(_WEWEB_INSTALL_DIR ${CMAKE_INSTALL_BINDIR})
      install(TARGETS waywallen-weweb-renderer
          RUNTIME DESTINATION ${_WEWEB_INSTALL_DIR}
+     )
+@@ -121,25 +121,25 @@ if(BUILD_WEWEB)
+     #   libvk_swiftshader.so   — SwiftShader vulkan ICD; useless when
+     #                            we drop the loader above.
+     #   vk_swiftshader_icd.json — JSON registering the ICD;
+-    set(_CEF_SKIP libvulkan.so.1 libvk_swiftshader.so vk_swiftshader_icd.json)
+-    foreach(_f IN LISTS CEF_BINARY_FILES)
+-        if(NOT _f IN_LIST _CEF_SKIP)
+-            install(FILES ${CEF_BINARY_DIR}/${_f}
+-                DESTINATION ${_WEWEB_INSTALL_DIR})
+-        endif()
+-    endforeach()
++    #set(_CEF_SKIP libvulkan.so.1 libvk_swiftshader.so vk_swiftshader_icd.json)
++    #foreach(_f IN LISTS CEF_BINARY_FILES)
++    #    if(NOT _f IN_LIST _CEF_SKIP)
++    #        install(FILES ${CEF_BINARY_DIR}/${_f}
++    #            DESTINATION ${_WEWEB_INSTALL_DIR})
++    #    endif()
++    #endforeach()
+     # CEF_RESOURCE_FILES contains a `locales` directory entry mixed in
+     # with .pak / .dat files — split per type.
+-    foreach(_f IN LISTS CEF_RESOURCE_FILES)
+-        if(_f STREQUAL "locales")
+-            install(DIRECTORY ${CEF_RESOURCE_DIR}/locales/
+-                DESTINATION ${_WEWEB_INSTALL_DIR}/locales
+-                FILES_MATCHING PATTERN "*.pak")
+-        else()
+-            install(FILES ${CEF_RESOURCE_DIR}/${_f}
+-                DESTINATION ${_WEWEB_INSTALL_DIR})
+-        endif()
+-    endforeach()
++    #foreach(_f IN LISTS CEF_RESOURCE_FILES)
++    #    if(_f STREQUAL "locales")
++    #        install(DIRECTORY ${CEF_RESOURCE_DIR}/locales/
++    #            DESTINATION ${_WEWEB_INSTALL_DIR}/locales
++    #            FILES_MATCHING PATTERN "*.pak")
++    #    else()
++    #        install(FILES ${CEF_RESOURCE_DIR}/${_f}
++    #            DESTINATION ${_WEWEB_INSTALL_DIR})
++    #    endif()
++    #endforeach()
+     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/renderers/weweb.toml
+         DESTINATION share/waywallen/renderers
      )
 @@ -157,5 +157,5 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/renderers/wescene.toml
      DESTINATION share/waywallen/renderers
@@ -247,7 +303,7 @@ index 5de79be..ef9fc4c 100644
 +#install(FILES $<TARGET_FILE:dxcompiler>
 +#        DESTINATION ${CMAKE_INSTALL_LIBDIR})
 diff --git a/waywallen/renderers/weweb.toml b/waywallen/renderers/weweb.toml
-index 2fc2876..1d0ea69 100644
+index 2fc2876..bc1a6d8 100644
 --- a/waywallen/renderers/weweb.toml
 +++ b/waywallen/renderers/weweb.toml
 @@ -2,7 +2,7 @@
@@ -255,7 +311,21 @@ index 2fc2876..1d0ea69 100644
  [renderer]
  name = "weweb-renderer"
 -bin  = "../weweb/waywallen-weweb-renderer"
-+bin  = "../../../lib/waywallen/weweb/waywallen-weweb-renderer"
++bin  = "../../../bin/waywallen-weweb-renderer"
  types = ["web"]
  priority = 100
  spawn_version = 4
+diff --git a/waywallen/web_main.cpp b/waywallen/web_main.cpp
+index ead38fc..b8b8038 100644
+--- a/waywallen/web_main.cpp
++++ b/waywallen/web_main.cpp
+@@ -395,7 +395,8 @@ int main(int argc, char** argv) {
+     });
+ 
+     // BrowserHost::Init wants resources / locales relative to argv[0].
+-    auto exe_dir = executable_dir(argv[0]);
++    //auto exe_dir = executable_dir(argv[0]);
++    auto exe_dir = std::filesystem::path("/usr/lib/cef");
+     weweb::BrowserHost::InitOptions ho;
+     ho.resources_dir = exe_dir;
+     ho.locales_dir   = exe_dir / "locales";

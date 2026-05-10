@@ -1,7 +1,7 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
 	license = GPL-2.0-only
@@ -17,7 +17,6 @@ pkgbase = open-wallpaper-engine
 	makedepends = vulkan-headers
 	makedepends = nlohmann-json
 	makedepends = waywallen-display
-	makedepends = cef
 	depends = libgcc
 	depends = libstdc++
 	depends = glibc
@@ -28,6 +27,7 @@ pkgbase = open-wallpaper-engine
 	depends = vulkan-icd-loader
 	depends = directx-shader-compiler
 	depends = waywallen
+	depends = cef
 	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.1.0
 	source = git+https://github.com/KhronosGroup/SPIRV-Reflect.git#commit=e55086b044225f9b511ae44dbf9b079d3625943f
 	source = git+https://github.com/hypengw/rstd.git#commit=f4f45c507d3d69fd6b31e3139c0d63a57622c0d0
@@ -39,6 +39,6 @@ pkgbase = open-wallpaper-engine
 	sha256sums = 51783e07b586d7d44884d935201308df4e0425a5614731fef167f0fa2ea22a7d
 	sha256sums = 8b94d8c0fd2bd8e7f49200d839bbb9cd1a633a99d4c648743f1ef3b27165e2b8
 	sha256sums = 9ca66e359212494be96f10736090e45eca6593f2977b83a075358456d2c51b7a
-	sha256sums = 5473036be0e9fa076b65fd5072fc4a9fe225a756f7713753a2b29f6a82d862ea
+	sha256sums = bcc157c371849e163155fc789ec6ec52293a62f44ec1b47004c5315c1f1464cc
 
 pkgname = open-wallpaper-engine
