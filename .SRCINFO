@@ -1,0 +1,15 @@
+pkgbase = serwis-app-bin
+	pkgdesc = Proste Prowadzenie Serwisu (gotowa wersja binarna)
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://github.com/KlapkiSzatana/serwis-app
+	arch = x86_64
+	license = GPL-3.0
+	provides = serwis-app
+	conflicts = serwis-app
+	options = !strip
+	options = !debug
+	source = https://github.com/KlapkiSzatana/serwis-app/releases/download/v2.3.2/SerwisApp_linux.tar.gz
+	sha256sums = c90858a6807f8effb8a149ef4e4c4096a1ba4583c29001da6496be4b98ce4e47
+
+pkgname = serwis-app-bin
