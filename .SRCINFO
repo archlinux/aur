@@ -1,0 +1,12 @@
+pkgbase = defer-hpp
+	pkgdesc = Tiny C++20 header-only scope guard for local cleanup
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Pppp1116/defer-in-Cpp
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = defer-hpp-0.1.0-bd236fcd31582de0f7146d5c641d68493dc3051c.tar.gz::https://github.com/Pppp1116/defer-in-Cpp/archive/bd236fcd31582de0f7146d5c641d68493dc3051c.tar.gz
+	sha256sums = c24fdd404a561b3991aa41f4e515d67dfb0533e8257850b4b49476962c2c57ed
+
+pkgname = defer-hpp
