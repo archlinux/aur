@@ -1,0 +1,13 @@
+# This default configuration starts the service and exposes the admin UI.
+server:
+  port: 18000
+  ttfb_timeout: 5000
+
+record:
+  max_size: 100
+
+# Add models through http://localhost:3000/admin or edit this file directly.
+models: []
+
+# Add fallback groups after defining at least one model.
+fallback: {}

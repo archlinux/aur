@@ -1,0 +1,3 @@
+# Ensure the default configuration and state directories exist after install.
+d /etc/nanollm 0750 nanollm nanollm -
+d /var/lib/nanollm 0750 nanollm nanollm -

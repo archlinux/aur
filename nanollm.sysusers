@@ -1,0 +1,2 @@
+# Create a dedicated system user for the nanollm service.
+u nanollm - "nanollm service user" /var/lib/nanollm /usr/bin/nologin

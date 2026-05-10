@@ -1,0 +1,30 @@
+pkgbase = nanollm-git
+	pkgdesc = Lightweight local LLM proxy server
+	pkgver = 0.0.0.r36.gef74938
+	pkgrel = 1
+	url = https://github.com/sunwu51/nanollm
+	arch = any
+	license = ISC
+	makedepends = git
+	makedepends = npm
+	depends = nodejs>=24
+	provides = nanollm
+	conflicts = nanollm
+	backup = etc/nanollm/config.yaml
+	backup = etc/nanollm/nanollm.env
+	source = nanollm::git+https://github.com/sunwu51/nanollm.git
+	source = nanollm.sh
+	source = nanollm.service
+	source = nanollm.sysusers
+	source = nanollm.tmpfiles
+	source = nanollm.config.yaml
+	source = nanollm.env
+	sha256sums = SKIP
+	sha256sums = 8c81b70ff0b2f8f93b85c47c268ca2aed162da6905089f88accfd924959fd3f2
+	sha256sums = 4fb9c726039173b2aeacd27a022866c0d69973dca6eef67ac298c49b97fea160
+	sha256sums = cd2f6ac0adca23170f23f949059d8970f1ac4f88c7d56b6531fe8cf186317f77
+	sha256sums = 378e26d2e520242f625e39fb42d8437c022b87ea5051116a7480a91752750304
+	sha256sums = c32da5a14b1991d616deae4835de04591c2491fd3212e3f338c1b4f7674cae02
+	sha256sums = f0eadd09e1fa6d95c6692da6ba86070ee4adbb1c0e356fb0406891c710d8beac
+
+pkgname = nanollm-git

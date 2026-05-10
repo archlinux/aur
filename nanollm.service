@@ -1,0 +1,43 @@
+[Unit]
+Description=nanollm LLM proxy server
+Documentation=https://github.com/sunwu51/nanollm
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=nanollm
+Group=nanollm
+WorkingDirectory=/var/lib/nanollm
+Environment=HOME=/var/lib/nanollm
+EnvironmentFile=-/etc/nanollm/nanollm.env
+ExecStart=/usr/bin/nanollm --config /etc/nanollm/config.yaml --storage sqlite
+Restart=on-failure
+RestartSec=5s
+
+# Let systemd create and own the persistent runtime directories.
+StateDirectory=nanollm
+ConfigurationDirectory=nanollm
+
+# Keep the service writable only where nanollm persists state or updates config.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/etc/nanollm /var/lib/nanollm
+
+# Drop privileges that are unnecessary for an HTTP proxy running as a user service.
+CapabilityBoundingSet=
+LockPersonality=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
