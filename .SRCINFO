@@ -1,6 +1,6 @@
 pkgbase = localgo-bin
 	pkgdesc = LocalSend v2.1 protocol implementation — LAN file transfer CLI
-	pkgver = 0.3.8
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/bethropolis/localgo
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = localgo-bin
 	conflicts = localgo-git
 	provides = localgo
 	arch = aarch64
-	source_aarch64 = https://github.com/bethropolis/localgo/releases/download/v0.3.8/localgo_0.3.8_linux_arm64.tar.gz
-	sha256sums_aarch64 = fd7c441b623dd151b649e95ea670aebb0765d6573959c67d4ef7fa0d03094f15
+	source_aarch64 = https://github.com/bethropolis/localgo/releases/download/v0.4.0/localgo_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b5d607132d351761d4ee9338fe03df5fed824aed17cb73266635a6c22a156d04
 	arch = x86_64
-	source_x86_64 = https://github.com/bethropolis/localgo/releases/download/v0.3.8/localgo_0.3.8_linux_amd64.tar.gz
-	sha256sums_x86_64 = 367c49a4a825eb3f26399432162d3ba79656aa4dd37a45b97bca806655bad3c5
+	source_x86_64 = https://github.com/bethropolis/localgo/releases/download/v0.4.0/localgo_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4cf405bdf232ca8fa43f99ca64363f5a3207f2a6a16dc955795a97498d117c2d
 	
 pkgname = localgo-bin
