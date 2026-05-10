@@ -15,10 +15,10 @@ sha256sums=('SKIP'
     'SKIP'
     'SKIP')
 options=(staticlibs)
-makedepends=('unzip' 'tar')
+makedepends=()
 
 prepare() {
-    unzip "${pkgname}-linux-${pkgver}.zip"
+    bsdtar -xf "${pkgname}-linux-${pkgver}.zip"
 
     mkdir "${pkgname}-linux-${pkgver}"
 
