@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Skillful
+Comment=Manage local AI skills and agents
+Exec=skillful %U
+Terminal=false
+Type=Application
+Icon=skillful
+Categories=Utility;Development;
+Keywords=AI;Skills;Agents;Claude;Codex;Copilot;
+StartupWMClass=Skillful
+MimeType=x-scheme-handler/skillful;

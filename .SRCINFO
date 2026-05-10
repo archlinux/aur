@@ -1,0 +1,27 @@
+pkgbase = skillful-bin
+	pkgdesc = Desktop app for managing local AI skills and agents as folders on disk
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://skillful.md
+	arch = x86_64
+	license = custom:FSL-1.1-MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = xdg-utils
+	provides = skillful
+	conflicts = skillful
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/Mastermindzh/skillful/v1.0.0/LICENSE
+	source = skillful.desktop
+	source = skillful.png::https://raw.githubusercontent.com/Mastermindzh/skillful/v1.0.0/assets/icons/linux/512x512.png
+	source = tech.mastermindzh.skillful.metainfo.xml::https://raw.githubusercontent.com/Mastermindzh/skillful/v1.0.0/assets/metainfo/tech.mastermindzh.skillful.metainfo.xml
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	source_x86_64 = skillful-1.0.0-linux-x64.tar.gz::https://github.com/Mastermindzh/skillful/releases/download/v1.0.0/skillful-1.0.0-linux-x64.tar.gz
+	sha512sums_x86_64 = SKIP
+
+pkgname = skillful-bin
