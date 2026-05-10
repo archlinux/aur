@@ -1,14 +1,14 @@
 pkgbase = geargrafx
 	pkgdesc = PC Engine / TurboGrafx-16 emulator and debugger
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://github.com/drhelius/Geargrafx
 	arch = x86_64
 	license = GPL3
 	depends = sdl3
-	source = https://github.com/drhelius/Geargrafx/archive/refs/tags/1.7.5.tar.gz
+	source = https://github.com/drhelius/Geargrafx/archive/refs/tags/1.7.6.tar.gz
 	source = geargrafx.desktop
-	sha256sums = 058fbab7aa3eaafb05f042af243ab16e5b7e275d76e38d338e7798b29a83222a
+	sha256sums = e7dedd24e8cb447a6a2fca122df612fb2eb48ac69350aa0fe3208f67646a5300
 	sha256sums = 14e9061980e38d4fb8d42b559a640f4a65352269f56751c55eeff1fa1e8fd3bd
 
 pkgname = geargrafx
