@@ -69,7 +69,7 @@ source=("${_appname}.desktop.in"
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
 sha256sums=('604f5d7cc642d56c919b9d2b7b20a785db4acebf58520f41845347bd81e8ec73'
-            '1313484fc0572d82067f5671327540fcab6747fd2d187f216e1fc8edf3581509'
+            '53754c8ff0ea01d8f79d3e725fa3516511faf1e53804c67dc8f573cdb39e35a3'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
 sha256sums_i686=("$(_dist_checksum "${_tag_i686}")"

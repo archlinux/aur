@@ -209,7 +209,7 @@ if [[ "${_TB_INSTALLED_VERSION_}" == "${_TB_VERSION_}" ]] && [[ ${_TB_REFRESH_} 
 	# clear log
 	> "${_TB_LOG_FILE_}"
 else
-	echo "${0}: Your version in ${_TB_HOME_DIR_} is outdated or you do not have installed ${_TB_PKGNAME_} yet." > "${_TB_LOG_FILE_}"
+	echo "${0}: Your version in ${_TB_HOME_DIR_} is outdated or you do not have ${_TB_PKGNAME_} installed yet." > "${_TB_LOG_FILE_}"
 	_refresh_local_
 fi
 
