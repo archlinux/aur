@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gllvm
-_pkgver=2.0.5
+_pkgver=2.0.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,20 +16,21 @@ depends=(
   r-tmb
 )
 makedepends=(
+  r-rcpp
   r-rcppeigen
 )
 optdepends=(
+  r-ape
   r-corrplot
   r-gclus
   r-knitr
+  r-mvabund
   r-rmarkdown
   r-testthat
-  r-ape
-  r-mvabund
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('accf2017a985b7c6eb55e5a95eae96c6')
-b2sums=('4fb129c0baa4c8b99389215d065d43e7662a68e1cce92ec9bee99fbd3e82e8f568fcb9a4a3831fe993533e6874093b9528b3b54e9606f96c56c8702b79b9d696')
+md5sums=('44151e427d19cd64e9797e642d06448c')
+b2sums=('d6278410786fa62c5639eaa84f3b48e140fcf761ccb109aa2bbba08c743662eeeef90e3644407b4d3694a1f6bb3af134739923fb1b3d1ceafe7244e8e7c258e4')
 
 build() {
   mkdir build
