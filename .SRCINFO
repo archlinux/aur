@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-libsquish
 	pkgdesc = DXT compression library (mingw-w64)
-	pkgver = 1.15
+	pkgver = 1.15.1.3
 	pkgrel = 1
-	url = http://sourceforge.net/projects/libsquish
+	url = https://oblivioncth.github.io/libsquish/
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-cmake
@@ -10,12 +10,8 @@ pkgbase = mingw-w64-libsquish
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://downloads.sourceforge.net/libsquish/libsquish-1.15.tgz
-	source = gcc440.patch
-	source = 0001-fix-install.patch
-	sha1sums = 51844b9a8bc815a27e2cc0ffbede5fee3ef75110
-	sha1sums = 51bcc11eafbf79d9cde24769397c7a42f886154a
-	sha1sums = f533643fb9c15d89a9e8f89eb5b722099b9d7aa1
+	options = !debug
+	source = https://github.com/oblivioncth/libsquish/archive/refs/tags/v1.15.1.3.tar.gz
+	sha256sums = 16acbc13343c2624bc468d1001a060f7a2eeddfbc308ec9dd5ce1eba5a7301bc
 
 pkgname = mingw-w64-libsquish
-
