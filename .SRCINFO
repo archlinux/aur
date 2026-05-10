@@ -1,0 +1,24 @@
+pkgbase = skwd
+	pkgdesc = Skwd
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/liixini/skwd
+	install = skwd.install
+	arch = any
+	license = MIT
+	depends = skwd-daemon
+	depends = quickshell
+	depends = qt6-multimedia
+	depends = qt6-declarative
+	depends = qt6-imageformats
+	depends = matugen
+	depends = curl
+	depends = file
+	depends = inotify-tools
+	depends = iwd
+	depends = ttf-nerd-fonts-symbols
+	depends = ttf-roboto
+	source = skwd::git+https://github.com/liixini/skwd.git#branch=main
+	sha256sums = SKIP
+
+pkgname = skwd

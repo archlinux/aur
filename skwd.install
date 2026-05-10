@@ -1,0 +1,16 @@
+post_install() {
+  echo ">>> skwd installed."
+  echo ">>> Make sure skwd-daemon is running:"
+  echo ">>>   systemctl --user enable --now skwd-daemon.service"
+  echo ">>> Available shells (launch via your compositor's spawn keybind):"
+  echo ">>>   skwd-bar, skwd-launch, skwd-music,"
+  echo ">>>   skwd-notification, skwd-settings, skwd-switch"
+}
+
+post_upgrade() {
+  echo ">>> skwd updated."
+}
+
+pre_remove() {
+  echo ">>> Removing skwd..."
+}
