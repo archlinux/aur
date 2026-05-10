@@ -22,6 +22,11 @@ build() {
 
   npm ci --cache "${srcdir}/npm-cache"
 
+  # This is necessary for building web-ui, these optional packages do not get installed automatically
+  npm install --include=optional --no-save --package-lock=false --cache "${srcdir}/npm-cache" \
+    "@parcel/watcher@$(node -p "require('./node_modules/@parcel/watcher/package.json').version")" \
+    "@tailwindcss/oxide@$(node -p "require('./node_modules/@tailwindcss/oxide/package.json').version")"
+
   npm --prefix packages/tui run build
   ./node_modules/.bin/tsgo -p packages/ai/tsconfig.build.json
   npm --prefix packages/agent run build
