@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=i2pd-tools-git
-pkgver=r321.gb483a59
+pkgver=r325.g34944bb
 pkgrel=1
 pkgdesc='Useful tools for I2P (git version)'
 arch=('x86_64')
@@ -9,8 +9,9 @@ url='https://github.com/PurpleI2P/i2pd-tools/'
 license=('BSD-3-Clause')
 depends=(
     'boost-libs'
-    'gcc-libs'
     'glibc'
+    'libgcc'
+    'libstdc++'
     'openssl'
     'python'
     'zlib')
