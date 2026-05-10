@@ -1,5 +1,5 @@
-pkgbase = freeTask-cli
-	pkgdesc = Turn chores into a game with a CLI tool that gives you free time as a reward.
+pkgbase = freetask-cli
+	pkgdesc = turn chores into a game with a cli tool that gives you free time as a reward
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any
@@ -7,4 +7,4 @@ pkgbase = freeTask-cli
 	source = freeTask
 	sha256sums = SKIP
 
-pkgname = freeTask-cli
+pkgname = freetask-cli

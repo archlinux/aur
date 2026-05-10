@@ -1,7 +1,7 @@
-pkgname=freeTask-cli
+pkgname=freetask-cli
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Turn chores into a game with a CLI tool that gives you free time as a reward."
+pkgdesc="turn chores into a game with a cli tool that gives you free time as a reward"
 arch=('any')
 depends=('python')
 source=("freeTask")
