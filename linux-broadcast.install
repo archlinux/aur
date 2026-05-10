@@ -1,0 +1,34 @@
+_refresh_caches() {
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q /usr/share/applications || true
+  fi
+  if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t /usr/share/icons/hicolor || true
+  fi
+}
+
+_load_module() {
+  # Drop a stale module so the next modprobe picks up our drop-in options.
+  if lsmod 2>/dev/null | grep -q '^v4l2loopback'; then
+    modprobe -r v4l2loopback 2>/dev/null || true
+  fi
+  if ! modprobe v4l2loopback 2>/dev/null; then
+    echo "==> v4l2loopback not loadable yet (DKMS may still be building)."
+    echo "    /etc/modules-load.d/linux-broadcast.conf will load it on the next boot."
+  fi
+}
+
+post_install() {
+  _load_module
+  _refresh_caches
+}
+
+post_upgrade() {
+  _load_module
+  _refresh_caches
+}
+
+post_remove() {
+  modprobe -r v4l2loopback 2>/dev/null || true
+  _refresh_caches
+}
