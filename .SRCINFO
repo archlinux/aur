@@ -1,0 +1,14 @@
+pkgbase = coo
+	pkgdesc = A light terminal IRC client built on Bubble Tea
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/bjarneo/coo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = coo-0.1.1.tar.gz::https://github.com/bjarneo/coo/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = c3fb787d38f4dafd145f4fca511cc5638b9ddc07001b2be23e4b77115e9c0f1d
+
+pkgname = coo
