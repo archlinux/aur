@@ -27,7 +27,7 @@ build() {
     "@parcel/watcher@$(node -p "require('./node_modules/@parcel/watcher/package.json').version")" \
     "@tailwindcss/oxide@$(node -p "require('./node_modules/@tailwindcss/oxide/package.json').version")"
 
-  # Running run build specifically for each target is necessary for ai package
+  # Running run build specifically for each package is necessary to prevent ai package issue
   npm --prefix packages/tui run build
   # This is necessary to prevent ai module fetching models on network in building
   ./node_modules/.bin/tsgo -p packages/ai/tsconfig.build.json
