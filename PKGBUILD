@@ -3,7 +3,7 @@
 # Contributor: Ray Del Rosario <michael@raydelrosario.com>
 pkgname='kubecolor'
 # renovate: datasource=github-releases depName=kubecolor/kubecolor
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Colorize your kubectl output'
 url='https://github.com/kubecolor/kubecolor'
@@ -13,7 +13,7 @@ depends=('kubectl')
 makedepends=('go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('68df2c57700095d4598f91807913a6d8052bfe2ff20046052fcc7350a1a34423')
+sha256sums=('99b2126c4d33664220ee8270def853d668ebdb1418b1eeaf93b1ab7d8799561c')
 
 build() {
 	cd "${pkgname}-${pkgver}"
