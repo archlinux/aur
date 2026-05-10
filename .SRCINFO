@@ -1,0 +1,25 @@
+pkgbase = lcevcdec-llvm
+	pkgdesc = Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) — built with Clang and LLVM lld
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/v-novaltd/LCEVCdec/
+	arch = x86_64
+	license = BSD-3-Clause-Clear
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = lld
+	makedepends = llvm
+	makedepends = python
+	makedepends = range-v3
+	makedepends = rapidjson
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = lcevcdec
+	conflicts = lcevcdec
+	options = !emptydirs
+	source = git+https://github.com/v-novaltd/LCEVCdec.git#tag=4.1.0
+	sha256sums = 125766f07cbef281b8638efe35f8d439e3ce25f96ed6fd611f9849189b9da868
+
+pkgname = lcevcdec-llvm
