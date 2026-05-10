@@ -4,7 +4,7 @@
 _pkgname=xevd
 pkgname=xevd-llvm
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='MPEG-5 EVC (Essential Video Coding) decoder — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://github.com/mpeg5/xevd/'
@@ -32,6 +32,14 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
+    export LD=/usr/bin/ld.lld
+    export NM=/usr/bin/llvm-nm
+    export OBJCOPY=/usr/bin/llvm-objcopy
+    export OBJDUMP=/usr/bin/llvm-objdump
+    export READELF=/usr/bin/llvm-readelf
+    export STRIP=/usr/bin/llvm-strip
+    export CFLAGS="${CFLAGS:-} -O3 -march=native"
+    export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     
     cmake -B build -S "${_pkgname}-${pkgver}" \
