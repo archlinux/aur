@@ -9,6 +9,7 @@ pkgbase = irpf
 	depends = hicolor-icon-theme
 	depends = java-runtime=17
 	depends = sh
+	optdepends = cups: for print support
 	optdepends = gvfs: for importing pre-filled data from a gov.br account
 	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2026/irpf/arquivos/IRPF2026-1.2.zip
 	source = irpf.desktop

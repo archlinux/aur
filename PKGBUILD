@@ -14,6 +14,7 @@ depends=(
     'java-runtime=17'
     'sh')
 optdepends=(
+    'cups: for print support'
     'gvfs: for importing pre-filled data from a gov.br account')
 makedepends=(
     'icoutils')
