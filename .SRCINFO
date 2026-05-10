@@ -1,0 +1,17 @@
+pkgbase = simplex-chat
+	pkgdesc = The first messaging platform that has no user identifiers — terminal CLI client
+	pkgver = 6.5.0
+	pkgrel = 1
+	url = https://simplex.chat
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gmp
+	depends = openssl
+	depends = pcre
+	depends = glibc
+	provides = simplex-chat
+	conflicts = simplex-chat-bin
+	source = simplex-chat-6.5.0::https://github.com/simplex-chat/simplex-chat/releases/download/v6.5.0/simplex-chat-ubuntu-22_04-x86_64
+	sha256sums = 11ba7d48da56d9f8c32214498123913527c2ae938c51314ca69bdbfcaeedb933
+
+pkgname = simplex-chat
