@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-keygen-bin
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="ed25519 key generation and inspection tool for moshpit (pre-compiled binary)"
 arch=('x86_64')
@@ -16,8 +16,8 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 
 source=("${_base}/dist-mp-keygen.tar.gz")
 source_x86_64=("mp-keygen-x86_64::${_base}/mp-keygen-x86_64-unknown-linux-musl")
-sha256sums=('70696eefa5e097475f34f517f020680c4d9d8444bf68acdc018908093fd81b88')
-sha256sums_x86_64=('eef478e97fdb182488faf1927cdaebb400d91a58bc17580455392eaa6afbe99b')
+sha256sums=('b8cbc79cc347289ae899f59e5e9b3045374e0bdef1f3717a6aff28f869b5a6ef')
+sha256sums_x86_64=('f56530713a7b548f01c1443f756a948ffa8a69f29cd1bcb7276ee82bb62b8bc4')
 
 package() {
     install -Dm755 mp-keygen-x86_64 "$pkgdir/usr/bin/mp-keygen"
