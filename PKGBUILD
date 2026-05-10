@@ -86,7 +86,7 @@ build() {
         [[ -n "${_j}" ]] && export CARGO_BUILD_JOBS="${_j}"
     fi
 
-    PROFILE=release make
+    PROFILE=maxperf make
 }
 
 package() {
