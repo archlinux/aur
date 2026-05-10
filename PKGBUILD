@@ -1,10 +1,13 @@
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 # Contributor: Daniel Tobias <https://aur.archlinux.org/account/dantob>
 pkgname=megalogviewer
-pkgver=4.5.21
-# EFI Analytics has a tendency to push minor updates as a bare jar file and
-# let the distribution tarball lag behind.
+pkgver=4.5.22
+# EFI Analytics has a tendency to push minor updates bare jar files, zip files
+# with field mappings and properties files, and # let the distribution tarball
+# lag behind.
 _dist_version=4.5.05
+_fieldmaps_version=4.5.10
+_properties_version=4.5.18
 pkgrel=1
 pkgdesc="Viewer for TunerStudio/MegaSquirt logs"
 arch=(any)
@@ -13,14 +16,19 @@ makedepends=('imagemagick>=7')
 license=(proprietary)
 source=(https://www.tunerstudio.com/downloads2/MegaLogViewerHD_v${_dist_version}.tar.gz
         https://www.tunerstudio.com/appupdates/MegaLogViewer/MegaLogViewer_v${pkgver}.jar
+        https://www.tunerstudio.com/appupdates/MegaLogViewer/FieldMaps_v${_fieldmaps_version}_HD.zip
+        https://www.tunerstudio.com/appupdates/MegaLogViewer/MegaLogViewer_v${_properties_version}.jar
         megalogviewer.sh
         megalogviewer.desktop
         )
 sha256sums=('99e8e8df9465d1ed89d8593d518955e72eff9f1c3ee5fae62ef9ef9abd89d034'
-            '0b800e20c139de3bb9baac16b2ae5a7069408d1dea0c174d91240f81cf0eb542'
+            '08628cd58008b7abbad4f28cb7bc51aabfcf41bc582d9901b45a6873403c701c'
+            '0f55ac67458cf0a2f3eaaea24a28467ed12008b3aa6f9d92ccd81cf25a3ab95b'
+            'fde12a0669c4297ba22d1809a522b6c6f2d5906072d702a226ef95b6875420e4'
             'eff5b0c79e345d1b77b80908deba8805959a878e990601e91ac69a01b8582a5c'
             '6c6238646f60a076ebe0549228b59d7d9f20bc7019a0e7d8b5df2089ba50a396')
-noextract=(MegaLogViewer_v${pkgver}.jar)
+noextract=("MegaLogViewer_v${pkgver}.jar"
+           "FieldMaps_v${_fieldmaps_version}_HD.zip")
 
 build()
 {
@@ -52,6 +60,8 @@ package()
 
     # The filename "HogLogViewer.jar" is correct.
     install -m0644 "${srcdir}/MegaLogViewer_v${pkgver}.jar" "${pkgdir}/usr/lib/megalogviewer/HogLogViewer.jar"
+
+    unzip -d "${pkgdir}/usr/lib/megalogviewer" "${srcdir}/FieldMaps_v${_fieldmaps_version}_HD.zip"
 
     mkdir -p "${pkgdir}/usr/bin"
     install -m755 "${srcdir}/megalogviewer.sh" "${pkgdir}/usr/bin/megalogviewer"
