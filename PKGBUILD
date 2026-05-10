@@ -7,7 +7,7 @@
 _pkgname="odamex"
 pkgname="$_pkgname"
 pkgver=12.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom'
 url="https://github.com/odamex/odamex"
 license=('GPL-2.0-or-later')
@@ -32,6 +32,7 @@ makedepends=(
   'deutex' # AUR
   'git'
   'ninja'
+  'python' # for odamex.wad
 )
 optdepends=(
   'timidity++: Required for the SDL2 MIDI music backend'
@@ -46,6 +47,7 @@ prepare() {
   cd "$_pkgsrc"
   git rm -r libraries/curl
   git rm -r libraries/fltk
+  git rm -r libraries/googletest
   git rm -r libraries/jsoncpp
   git rm -r libraries/libpng
   git rm -r libraries/miniupnp
@@ -70,6 +72,7 @@ build() {
     -Wno-dev
 
     -DBUILD_OR_FAIL=ON
+    -DBUILD_TESTS=OFF
     -DUSE_LTO=OFF
 
     -DENABLE_PORTMIDI=ON

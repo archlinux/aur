@@ -1,7 +1,7 @@
 pkgbase = odamex
 	pkgdesc = A free client/server multiplayer engine for the classic FPS Doom
 	pkgver = 12.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/odamex/odamex
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = odamex
 	makedepends = deutex
 	makedepends = git
 	makedepends = ninja
+	makedepends = python
 	depends = libcurl.so
 	depends = libfltk.so
 	depends = libfltk_images.so
