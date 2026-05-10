@@ -1,5 +1,2 @@
-2c2,3
-< GLEW_FLAGS = $(GLEW_DIR)lib/$(GLEW_LIB)
----
+1a1
 > LDSTATICFLAGS += -lX11 -lXpm -lGLU -lGL
-> GLEW_FLAGS = /usr/lib/$(GLEW_LIB)
