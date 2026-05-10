@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="zxspectrum-utils"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Package of utils for crossdevelopment for ZX Spectrum"
 arch=(
@@ -17,17 +17,27 @@ depends=(
   'libpng'
   'libx11'
 )
-_pkgsrc="${pkgname}-${pkgver}"
-source=(
-  "https://downloads.sourceforge.net/zxspectrumutils/files/${_pkgsrc}.tar.gz"
+makedepends=(
+  'svn'
 )
-md5sums=('da141a0109b46bf862a6cd7a23aff82d')
-sha1sums=('517d697baedc596168281ff0893e9e7670cc2243')
-sha256sums=('5db4145083e5ee84cb67effd75e3fc6f602992a7f6273ff61500337981f77147')
-
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-}
+provides=(
+  "bin2tap=${pkgver}"
+)
+conflicts=(
+  'bin2tap'
+)
+replaces=(
+  'bin2tap'
+)
+# _pkgsrc="${pkgname}-${pkgver}"
+_pkgsrc="zxspectrumutils"
+source=(
+  # "https://downloads.sourceforge.net/zxspectrumutils/files/${_pkgsrc}.tar.gz"
+  "${_pkgsrc}::svn+https://svn.code.sf.net/p/zxspectrumutils/code/trunk#revision=82"
+)
+md5sums=('SKIP')
+sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
   local configure_options=(
