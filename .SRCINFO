@@ -1,14 +1,14 @@
 pkgbase = itex2mml
 	pkgdesc = iTeX to MathML converter
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.6.2
+	pkgrel = 1
 	url = https://golem.ph.utexas.edu/~distler/blog/itex2MML.html
 	arch = x86_64
 	license = GPL-2.0-or-later OR LGPL-2.0-or-later OR MPL-1.1
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	source = https://golem.ph.utexas.edu/~distler/blog/files/itexToMML-1.6.1.tar.gz
-	sha256sums = 3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f
+	source = https://golem.ph.utexas.edu/~distler/blog/files/itexToMML-1.6.2.tar.gz
+	sha256sums = 8af5a7443df87f74e0cdf2bce27dd78396566cbcffaf15efe1e87325fa6b15d3
 
 pkgname = itex2mml

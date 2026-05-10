@@ -3,8 +3,8 @@
 # Contributor: Nathan Owe <ndowens04+AUR @ gmail.com>
 
 pkgname="itex2mml"
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="iTeX to MathML converter"
 arch=(
   'x86_64'
@@ -22,7 +22,7 @@ _pkgsrc="itexToMML"
 source=(
   "https://golem.ph.utexas.edu/~distler/blog/files/itexToMML-${pkgver}.tar.gz"
 )
-sha256sums=('3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f')
+sha256sums=('8af5a7443df87f74e0cdf2bce27dd78396566cbcffaf15efe1e87325fa6b15d3')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}/itex-src"
