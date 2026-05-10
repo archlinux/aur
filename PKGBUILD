@@ -1,9 +1,9 @@
 # Maintainer: jinzhongjia <jinzhongjia@manus.ai>
 
 pkgname=openwarp-bin
-pkgver=2026.05.08.preview
-_debver=2026.05.08.preview
-pkgrel=2
+pkgver=2026.05.10.preview
+_debver=2026.05.10.preview
+pkgrel=1
 pkgdesc="OpenWarp - open-source fork of Warp, a Rust-based terminal with AI built in"
 arch=('x86_64')
 url="https://github.com/zerx-lab/warp"
@@ -31,7 +31,7 @@ provides=('openwarp' 'warp-terminal-oss')
 conflicts=('warp-terminal-oss')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/warp-terminal-oss_${_debver}_amd64.deb")
-sha256sums=('ec54a229ec23852d9ee3558dcc917c0c70340ba53829cfbd9d6312c989a7e0fd')
+sha256sums=('d3070ccd8e3fceddbe439485c1a706a5ffc61e59d6caf9a6e5b726d34babdb63')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
