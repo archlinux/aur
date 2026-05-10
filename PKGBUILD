@@ -1,8 +1,8 @@
 # Maintainer: Dmitriy Q krotesk <at> mail <dot> ru
 pkgname=meshapp-bin
 fullpkgname=meshapp-MeshApp
-pkgver=2.0.5
-pkgrel=8
+pkgver=2.0.11
+pkgrel=1
 pkgdesc="A full-featured desktop client for managing devices and communication in the Meshtastic mesh network."
 arch=('any')
 url="https://git.privatepractice.app/covox/meshapp"
@@ -14,7 +14,7 @@ depends=('alsa-lib' 'brotli' 'libbsd' 'bzip2' 'glibc' 'libcap' 'freetype2' 'libg
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('79878b7600c21517db37c908c5d898ef88254e8149401678b9aec270d1430c2e')
+sha256sums=('96ac67c7d237dc1f1cefc653d94f4c0afdd7eea38c7aafbe7d3e0a63ddca0a98')
 
 prepare(){
     bsdtar xzf data.tar.zst -C "${pkgdir}"
