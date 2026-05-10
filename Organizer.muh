@@ -1,0 +1,96 @@
+dizla os
+dizla json
+dizla time
+dizla shutil
+
+# Optimize for everyone: Finds the home directory automatically
+# Herkes için optimize: Kullanıcı klasörünü otomatik bulur
+home = os.path.expanduser("~")
+ayarlar_dosyasi = os.path.join(home, "settings.json")
+
+# --- SETTINGS WIZARD ---
+gorev ayar_paneli():
+    yaz(mavi + "=== MUHTAR SETTINGS MANAGEMENT ===" + renk_bitir)
+    yaz("1 - Add New Rule (Keep existing ones)")
+    yaz("2 - Reset & Re-install Settings")
+    yaz("3 - Start Guard Duty (No changes)")
+
+    secim = sor("Your choice, bro? (1/2/3): ")
+
+    eger secim == "2" veya (os.path.exists(ayarlar_dosyasi) == yanlis):
+        yaz(kirmizi + "[!] Resetting settings..." + renk_bitir)
+        yeni_kurulum(yanlis)
+    egerdegil secim == "1":
+        yeni_kurulum(dogru)
+
+gorev yeni_kurulum(ekle_modu):
+    gorevler = []
+
+    eger ekle_modu == dogru ve os.path.exists(ayarlar_dosyasi):
+        f = open(ayarlar_dosyasi, "r")
+        eski_data = json.load(f)
+        gorevler = eski_data["tasks"]
+        f.close()
+        yaz(sari + "[*] Existing rules protected, adding new ones..." + renk_bitir)
+
+    dongu dogru:
+        yaz(sari + "\n[ NEW RULE ENTRY ]" + renk_bitir)
+        ext = sor("Extension (e.g., .muh / type 'done' to finish): ")
+        eger ext.kucult() == "done":
+            kir
+
+        w_path = sor(ext + " watch directory: ")
+        t_path = sor(ext + " target directory: ")
+        limit = sor("Time limit (hours): ")
+
+        yeni_is = {
+            "extension": ext.kucult(),
+            "watch_path": w_path,
+            "target_path": t_path,
+            "limit_hours": tam_sayi(limit)
+        }
+        gorevler.ekle(yeni_is)
+        yaz(yesil + "[+] Rule added to list!" + renk_bitir)
+
+    data = {"tasks": gorevler}
+    f = open(ayarlar_dosyasi, "w")
+    json.dump(data, f, indent=4)
+    f.close()
+    yaz(yesil + "[OK] Settings updated successfully!" + renk_bitir)
+
+# --- MAIN ENGINE START ---
+
+ayar_paneli()
+
+f = open(ayarlar_dosyasi, "r")
+ayarlar = json.load(f)
+f.close()
+butun_isler = ayarlar["tasks"]
+
+yaz(yesil + "\n=== MUHTAR SENTINEL v4.0 ON DUTY ===" + renk_bitir)
+
+dongu dogru:
+    simdi = time.time()
+    icin is_birimi icinde butun_isler:
+        ext = is_birimi["extension"]
+        w_dir = is_birimi["watch_path"]
+        t_dir = is_birimi["target_path"]
+        limit = is_birimi["limit_hours"]
+
+        dene:
+            eger os.path.exists(w_dir):
+                dosyalar = os.listdir(w_dir)
+                icin d icinde dosyalar:
+                    eger d.kucult().endswith(ext):
+                        d_yolu = os.path.join(w_dir, d)
+                        dosya_yasi = (simdi - os.path.getmtime(d_yolu)) / 3600
+
+                        eger dosya_yasi >= limit:
+                            eger (os.path.exists(t_dir) == yanlis):
+                                os.makedirs(t_dir)
+                            yaz(kirmizi + "[ROCKET] " + d + " -> " + t_dir + renk_bitir)
+                            shutil.move(d_yolu, os.path.join(t_dir, d))
+        denebozuldu:
+            yaz(sari + "[!] Error: Could not scan " + w_dir + renk_bitir)
+
+    uyu(600) # 10 minutes break
