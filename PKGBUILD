@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-full-llvm
 pkgver=8.1.1
-pkgrel=3
+pkgrel=4
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.8.4'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld'
@@ -210,6 +210,12 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
+    export LD=/usr/bin/ld.lld
+    export NM=/usr/bin/llvm-nm
+    export OBJCOPY=/usr/bin/llvm-objcopy
+    export OBJDUMP=/usr/bin/llvm-objdump
+    export READELF=/usr/bin/llvm-readelf
+    export STRIP=/usr/bin/llvm-strip
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"

@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full-llvm
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld
 	pkgver = 8.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = LicenseRef-nonfree-and-unredistributable
