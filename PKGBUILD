@@ -13,10 +13,8 @@ optdepends=('xdg-utils: open with support')
 install=canto.install
 provides=('canto')
 conflicts=('canto')
-source=("$pkgname::git+https://github.com/lucilf3r/canto.git"
-        "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/kokoro-v0_19.onnx"
-        "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/voices.bin")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+source=("$pkgname::git+https://github.com/lucilf3r/canto.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
@@ -31,6 +29,16 @@ prepare() {
         ebooklib \
         sounddevice \
         onnxruntime
+
+    mkdir -p models
+    if [ ! -f models/kokoro-v0_19.onnx ]; then
+        wget -q -O models/kokoro-v0_19.onnx \
+            "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/kokoro-v0_19.onnx"
+    fi
+    if [ ! -f models/voices.bin ]; then
+        wget -q -O models/voices.bin \
+            "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/voices.bin"
+    fi
 }
 
 package() {
@@ -39,10 +47,6 @@ package() {
     # App files
     install -dm755 "$pkgdir/opt/canto"
     cp -r . "$pkgdir/opt/canto/"
-
-    # Kokoro model files
-    install -Dm644 "$srcdir/kokoro-v0_19.onnx" "$pkgdir/opt/canto/models/kokoro-v0_19.onnx"
-    install -Dm644 "$srcdir/voices.bin"         "$pkgdir/opt/canto/models/voices.bin"
 
     # Launcher script
     install -dm755 "$pkgdir/usr/bin"
