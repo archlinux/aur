@@ -18,6 +18,6 @@ pkgbase = spent-tracker
 	depends = gcc-libs
 	options = !strip
 	source = spent-tracker-0.1.0.tar.gz::https://github.com/Gxstavo-dev/spent/archive/v0.1.0.tar.gz
-	sha256sums = 0298e1599e69a48adab04069120c58b55bc342ea70fac85f404c5ea6bbc4f6c6
+	sha256sums = 532c5a7806d2e0b543dbf0e61278c4889e2765f5f6e9a8af632dd9dd009b85ed
 
 pkgname = spent-tracker
