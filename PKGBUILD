@@ -1,7 +1,7 @@
 # Maintainer: Hornfisk <hornfisk@users.noreply.github.com>
 pkgname=niner
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Three-layer synthesized kick drum plugin (VST3, CLAP, Standalone)"
 arch=('x86_64')
 url="https://github.com/hyperfocusdsp/niner"
@@ -49,6 +49,26 @@ package() {
 
   # Standalone binary
   install -Dm755 target/release/niner-standalone "$pkgdir/usr/bin/niner-standalone"
+
+  # Desktop launcher shim — auto-detects BeatStep MIDI and the running
+  # PipeWire sample-rate / quantum, then execs niner-standalone.
+  install -Dm755 tools/niner-launch.sh "$pkgdir/usr/bin/niner-launch"
+
+  # .desktop entry — render the template against /usr/bin so it shows up
+  # in app menus / rofi.
+  install -dm755 "$pkgdir/usr/share/applications"
+  sed 's|__BIN_DIR__|/usr/bin|g' tools/niner.desktop.template \
+    > "$pkgdir/usr/share/applications/niner.desktop"
+  chmod 644 "$pkgdir/usr/share/applications/niner.desktop"
+
+  # Hicolor icons — `Icon=niner` resolves through these. The
+  # hicolor-icon-theme package's post-transaction hook refreshes the
+  # cache automatically; no manual update needed here.
+  for sz in 16 32 48 128 256 512 1024; do
+    src="assets/icon/niner-${sz}.png"
+    [ -f "$src" ] || continue
+    install -Dm644 "$src" "$pkgdir/usr/share/icons/hicolor/${sz}x${sz}/apps/niner.png"
+  done
 
   # License + readme
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
