@@ -2,7 +2,7 @@
 # Co-maintainer: Lennard Kittner <lennard@kittner.dev>
 
 pkgname=hyper-headset-bin
-pkgver=1.7.3
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='A CLI and tray application for monitoring and managing HyperX headsets. (bin)'
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=(
 )
 
 sha256sums=(
-  'deb7d19f75ed22df0844fdfd25f173fe7e1a61c9b11ddada91c860205571969b'
-  '4422e80aaface3ed435a4f3b107319cf5a2d87c6b9cc7d060afb97be0828c3d9'
+  '6684021cd88c33b65e7c1d202ba9ae2b46d2ce490679e9fc3c0b11d32d57405f'
+  '80eff3766de742f6735304e64fad06d6129096cadd9fe5d69f6f181ddf79a13e'
   '08e7ca1fdd0f6f62d50590afc7092e95ad9d71ebee75eacd604c5ea45462f706'
 )
 

@@ -1,6 +1,6 @@
 pkgbase = hyper-headset-bin
 	pkgdesc = A CLI and tray application for monitoring and managing HyperX headsets. (bin)
-	pkgver = 1.7.3
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/LennardKittner/HyperHeadset
 	install = hyper-headset-bin.install
@@ -11,11 +11,11 @@ pkgbase = hyper-headset-bin
 	provides = hyper-headset
 	conflicts = hyper-headset
 	replaces = hyperx-cloud-ii-wireless-bin
-	source = hyper_headset_Linux.zip::https://github.com/lennardkittner/hyperheadset/releases/download/v1.7.3/hyper_headset_Linux.zip
-	source = 99-HyperHeadset.rules::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v1.7.3/99-HyperHeadset.rules
-	source = hyper-headset.desktop::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v1.7.3/hyper-headset.desktop
-	sha256sums = deb7d19f75ed22df0844fdfd25f173fe7e1a61c9b11ddada91c860205571969b
-	sha256sums = 4422e80aaface3ed435a4f3b107319cf5a2d87c6b9cc7d060afb97be0828c3d9
+	source = hyper_headset_Linux.zip::https://github.com/lennardkittner/hyperheadset/releases/download/v1.8.0/hyper_headset_Linux.zip
+	source = 99-HyperHeadset.rules::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v1.8.0/99-HyperHeadset.rules
+	source = hyper-headset.desktop::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v1.8.0/hyper-headset.desktop
+	sha256sums = 6684021cd88c33b65e7c1d202ba9ae2b46d2ce490679e9fc3c0b11d32d57405f
+	sha256sums = 80eff3766de742f6735304e64fad06d6129096cadd9fe5d69f6f181ddf79a13e
 	sha256sums = 08e7ca1fdd0f6f62d50590afc7092e95ad9d71ebee75eacd604c5ea45462f706
 
 pkgname = hyper-headset-bin
