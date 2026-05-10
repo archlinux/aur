@@ -1,6 +1,6 @@
 pkgbase = cmdcreate
-	pkgdesc = Allows you to create custom commands for your custom scripts
-	pkgver = 1.3.2
+	pkgdesc = Allows you to create custom commands for your custom scripts (Static Musl)
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/owen-debiasio/cmdcreate
 	arch = x86_64
@@ -8,14 +8,15 @@ pkgbase = cmdcreate
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	depends = gcc-libs
+	makedepends = git
+	makedepends = zig
+	makedepends = cargo-zigbuild
 	depends = curl
 	depends = git
 	depends = less
-	depends = openssl
 	provides = cmdcreate
 	conflicts = cmdcreate-git
-	source = cmdcreate-v1.3.2::git+https://github.com/owen-debiasio/cmdcreate.git#tag=v1.3.2
+	source = cmdcreate-v1.3.3::git+https://github.com/owen-debiasio/cmdcreate.git#tag=v1.3.3
 	sha256sums = SKIP
 
 pkgname = cmdcreate
