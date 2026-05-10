@@ -1,0 +1,141 @@
+pkgbase = openvino-llvm
+	pkgdesc = A toolkit for optimizing and deploying deep learning models - built with Clang and LLVM lld
+	pkgver = 2026.1.0
+	pkgrel = 2
+	url = https://docs.openvino.ai/
+	arch = x86_64
+	license = Apache-2.0
+	license = LicenseRef-custom
+	makedepends = clang
+	makedepends = cmake
+	makedepends = flatbuffers
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = lld
+	makedepends = llvm
+	makedepends = ocl-icd
+	makedepends = onetbb
+	makedepends = opencv
+	makedepends = patchelf
+	makedepends = pugixml
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = snappy
+	options = !emptydirs
+	source = git+https://github.com/openvinotoolkit/openvino.git#commit=63e31528c62d3eee06733efa63915ce04bd86f47?signed
+	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
+	source = git+https://github.com/herumi/xbyak.git
+	source = git+https://github.com/madler/zlib.git
+	source = git+https://github.com/gflags/gflags.git
+	source = googletest-openvinotoolkit::git+https://github.com/openvinotoolkit/googletest.git
+	source = git+https://github.com/KhronosGroup/OpenCL-Headers.git
+	source = git+https://github.com/KhronosGroup/OpenCL-CLHPP.git
+	source = git+https://github.com/onnx/onnx.git
+	source = git+https://github.com/protocolbuffers/protobuf.git
+	source = git+https://github.com/pybind/pybind11.git
+	source = git+https://github.com/intel/ittapi.git
+	source = git+https://github.com/nithinn/ncc.git
+	source = git+https://github.com/oneapi-src/oneDNN.git
+	source = git+https://github.com/nlohmann/json.git
+	source = git+https://github.com/ARM-software/ComputeLibrary.git
+	source = git+https://github.com/openvinotoolkit/mlas.git
+	source = git+https://github.com/oneapi-src/level-zero.git
+	source = git+https://github.com/intel/level-zero-npu-extensions.git
+	source = git+https://github.com/jbeder/yaml-cpp.git
+	source = git+https://github.com/openvinotoolkit/telemetry.git
+	source = git+https://github.com/libxsmm/libxsmm.git
+	source = git+https://github.com/ARM-software/kleidiai.git
+	source = git+https://github.com/herumi/xbyak_riscv.git
+	source = 010-openvino-change-install-paths.patch
+	source = 020-openvino-disable-werror.patch
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
+	sha256sums = db6c89e6fea6b483ceb51ea17246b1c3190f8dbff502b259edd32f710a9dd362
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c5ed3a23fc153a082e97841c892b83685426a431a1a32a40f120d91633943e53
+	sha256sums = 66615858cc57df2e0e256798415316e0b6deb41d6d9b3b135e8573f4a71b5f58
+
+pkgname = openvino-llvm
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = onetbb
+	depends = pugixml
+	depends = snappy
+	optdepends = openvino-llvm-intel-gpu-plugin: for Intel GPU plugin
+	optdepends = openvino-llvm-intel-npu-plugin: for Intel NPU plugin
+	provides = openvino=2026.1.0
+	provides = intel-openvino=2026.1.0
+	conflicts = openvino
+	conflicts = intel-openvino
+	replaces = intel-openvino
+
+pkgname = openvino-llvm-intel-gpu-plugin
+	pkgdesc = Intel GPU plugin for OpenVINO
+	depends = glibc
+	depends = intel-compute-runtime
+	depends = libgcc
+	depends = libstdc++
+	depends = ocl-icd
+	depends = onetbb
+	depends = openvino-llvm=2026.1.0
+	depends = pugixml
+	provides = openvino-intel-gpu-plugin=2026.1.0
+	conflicts = openvino-intel-gpu-plugin
+
+pkgname = openvino-llvm-intel-npu-plugin
+	pkgdesc = Intel NPU plugin for OpenVINO
+	depends = glibc
+	depends = intel-npu-compiler
+	depends = intel-npu-driver
+	depends = libgcc
+	depends = libstdc++
+	depends = onetbb
+	depends = opencv
+	depends = openvino-llvm=2026.1.0
+	depends = pugixml
+	provides = openvino-intel-npu-plugin=2026.1.0
+	conflicts = openvino-intel-npu-plugin
+
+pkgname = python-openvino-llvm
+	pkgdesc = Python bindings for OpenVINO
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openvino-llvm=2026.1.0
+	depends = python
+	depends = python-numpy
+	depends = python-openvino-telemetry
+	depends = python-packaging
+	optdepends = python-jax: for JAX frontend
+	optdepends = python-opencv: for filling vectors in benchmark
+	optdepends = python-pillow: for Torchvision to OpenVINO preprocessing converter
+	optdepends = python-pytorch: for PyTorch frontend and Torchvision to OpenVINO preprocessing converter
+	optdepends = python-tensorflow: for TensorFlow frontend
+	optdepends = python-torchvision: for Torchvision to OpenVINO preprocessing converter
+	provides = python-openvino=2026.1.0
+	conflicts = python-openvino
