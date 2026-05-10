@@ -2,7 +2,7 @@
 
 pkgbase=libar2simplified
 pkgname=($pkgbase $pkgbase-doc $pkgbase-musl)
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 _pkgdesc="Facade for libar2"
 pkgdesc="${_pkgdesc}"
@@ -14,7 +14,7 @@ checkdepends=(libar2 libar2-musl)
 _compiler=gcc
 makedepends=(libar2 libar2-musl ${_compiler})
 source=($pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(3e7d1796d758c60a363420856bff16d2947cb9291c5d3fc3fbe1aa7d039bcad0)
+sha256sums=(b748905ebcb9b3f05dbc0efb5af3dd3b9b52377095f79967344196d11d5ae971)
 
 prepare () {
   cd -- "$srcdir"
