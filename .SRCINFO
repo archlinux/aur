@@ -1,6 +1,6 @@
 pkgbase = cc-switch-cli
 	pkgdesc = Cross-platform CLI All-in-One assistant tool for Claude Code, Codex & Gemini CLI
-	pkgver = 5.4.0
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://github.com/SaladDay/cc-switch-cli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = cc-switch-cli
 	provides = cc-switch
 	conflicts = cc-switch
 	conflicts = cc-switch-cli-bin
-	source_x86_64 = cc-switch-cli-5.4.0-x86_64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v5.4.0/cc-switch-cli-linux-x64-musl.tar.gz
-	sha256sums_x86_64 = bcf5ec55fa0262fab0e404c16d6202a1465eeed5b56935a3cc391d4dba70c9be
-	source_aarch64 = cc-switch-cli-5.4.0-aarch64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v5.4.0/cc-switch-cli-linux-arm64-musl.tar.gz
-	sha256sums_aarch64 = 0f2cc06830f22a6197335127486834f34ccb8ab77607db3bb7393ff8cafb23e5
+	source_x86_64 = cc-switch-cli-5.5.0-x86_64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v5.5.0/cc-switch-cli-linux-x64-musl.tar.gz
+	sha256sums_x86_64 = 9afaa026f9bc24a795a3e01e5690ae236895689c349f61a33c476b1867b9acd2
+	source_aarch64 = cc-switch-cli-5.5.0-aarch64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v5.5.0/cc-switch-cli-linux-arm64-musl.tar.gz
+	sha256sums_aarch64 = 2f12db24d7538836550b5d1cb91c42f4bb519f931051b3a4e358f846854ec855
 
 pkgname = cc-switch-cli
