@@ -18,9 +18,29 @@ depends=(
   'pango'
   'gcc-libs'
 )
-makedepends=('cargo' 'bun')
+makedepends=('cargo' 'bun' 'python')
 source=("spent-tracker-$pkgver.tar.gz::https://github.com/Gxstavo-dev/spent/archive/v$pkgver.tar.gz")
 sha256sums=('fa58019a8a8c1b5b5cfc7927bd77c9b8b33d6688e34f2674786816b17cf69f74')
+
+prepare() {
+  cd "$srcdir/spent-tracker-$pkgver"
+  python3 -c "
+import struct, zlib
+def create_png(w, h):
+    raw = b''
+    for y in range(h):
+        raw += b'\x00'
+        for x in range(w):
+            raw += struct.pack('BBBB', 50, 120, 200, 255)
+    compressed = zlib.compress(raw)
+    def chunk(t, d):
+        return struct.pack('>I', len(d)) + t + d + struct.pack('>I', zlib.crc32(t + d) & 0xffffffff)
+    ihdr = struct.pack('>IIBBBBB', w, h, 8, 6, 0, 0, 0)
+    return b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', ihdr) + chunk(b'IDAT', compressed) + chunk(b'IEND', b'')
+with open('src-tauri/icon.png', 'wb') as f:
+    f.write(create_png(256, 256))
+"
+}
 
 build() {
   cd "$srcdir/spent-tracker-$pkgver"
