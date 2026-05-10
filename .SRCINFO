@@ -1,6 +1,6 @@
 pkgbase = opencode-desktop-bin
 	pkgdesc = OpenCode desktop client
-	pkgver = 1.14.44
+	pkgver = 1.14.45
 	pkgrel = 1
 	url = https://opencode.ai
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = opencode-desktop-bin
 	provides = opencode-desktop
 	conflicts = opencode-desktop
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v1.14.44/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v1.14.45/LICENSE
 	sha256sums = 625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b
-	source_x86_64 = opencode-desktop-1.14.44-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v1.14.44/opencode-desktop-linux-amd64.deb
-	sha256sums_x86_64 = 6ba1b05fee6fa5d082d6d41b0d2fc837266789b0bcb6b04c654ac759db03c6fd
+	source_x86_64 = opencode-desktop-1.14.45-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v1.14.45/opencode-desktop-linux-amd64.deb
+	sha256sums_x86_64 = f7beeb1a94ebd3ef0f48e363eda18e5dec6642fdbebdc4fa77b58a21fec540df
 
 pkgname = opencode-desktop-bin
