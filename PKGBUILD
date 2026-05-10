@@ -1,7 +1,7 @@
 pkgname=swagsh
-pkgver=0.5.2
-pkgrel=2
-pkgdesc="A really small shell that aims to be fast and posix-compatible"
+pkgver=0.6.0
+pkgrel=1
+pkgdesc="A sleek, high-performance Linux shell built in Rust for speed and reliability."
 arch=('x86_64')
 url="https://github.com/takashialpha/swagsh"
 license=('Apache-2.0')

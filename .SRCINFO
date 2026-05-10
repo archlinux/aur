@@ -1,12 +1,12 @@
 pkgbase = swagsh
-	pkgdesc = A really small shell that aims to be fast and posix-compatible
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgdesc = A sleek, high-performance Linux shell built in Rust for speed and reliability.
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/takashialpha/swagsh
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/takashialpha/swagsh/releases/download/v0.5.2/swagsh-v0.5.2-x86_64-linux.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/takashialpha/swagsh/v0.5.2/LICENSE
+	source = https://github.com/takashialpha/swagsh/releases/download/v0.6.0/swagsh-v0.6.0-x86_64-linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/takashialpha/swagsh/v0.6.0/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
