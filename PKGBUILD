@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=searchmonkey
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Real-time search for real files. No index. No daemon. No stale results."
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cottrela/searchmonkey-III/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('e87c1cefcbec87a836b7414297cc4e3cb9e68aa4f24ef0f4905a9dadb8027f03'
+sha256sums=('009909fb8465139771b96c3628be9172248ceaa6d8953db0d63e80dfcf3ffcb2'
             '0d0ff90ae4de6eee27b57a3e7706da86fb89df80f3b693554428d76ac797144a')
 
 prepare() {
@@ -28,7 +28,7 @@ prepare() {
   pnpm install --frozen-lockfile
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --manifest-path src-tauri/Cargo.toml --target host-tuple
+  cargo fetch --manifest-path src-tauri/Cargo.toml --locked --target host-tuple
 }
 
 build() {
@@ -41,7 +41,7 @@ build() {
   mkdir -p "src-tauri/binaries/rg-${CARCH}-unknown-linux-gnu/"
   ln -s /usr/bin/rg "src-tauri/binaries/rg-${CARCH}-unknown-linux-gnu/"
 
-  cargo tauri build --no-bundle
+  cargo tauri build --no-bundle -- --frozen
 }
 
 package() {
