@@ -2,7 +2,7 @@
 
 pkgname=game-link-bin
 pkgver=2.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal game companion for linking ROMs and managing media (Pre-compiled)"
 arch=('x86_64')
 url="https://github.com/CarlosEvCode/game_link"
@@ -15,9 +15,11 @@ source=(
   "game-link.desktop"
   "game-link.png::https://raw.githubusercontent.com/CarlosEvCode/game_link/main/linux/game_link.png"
 )
-sha256sums=('aab7181ac1b23bc8ed0f6fd1e173ee6fe4e7ecf85b1a8505427329c2c97f2114'
-            '8dfc420e657ee3c5cc9fa97075c59c00bd18984d61720c1c5e9cdbbac38995c8'
-            '281269ddafe863989f9b8e7a57b42d0e0e66ff0b5ddcc09fe44f9d1287726949')
+sha256sums=(
+  'aab7181ac1b23bc8ed0f6fd1e173ee6fe4e7ecf85b1a8505427329c2c97f2114'
+  '8dfc420e657ee3c5cc9fa97075c59c00bd18984d61720c1c5e9cdbbac38995c8'
+  'SKIP'
+)
 
 package() {
   # Entrar en la subcarpeta estandarizada
