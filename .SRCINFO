@@ -1,6 +1,6 @@
 pkgbase = qtcreator-prerelease
 	pkgdesc = Qt Creator prerelease/latest
-	pkgver = 19.0.0beta2
+	pkgver = 20.0.0beta1
 	pkgrel = 1
 	url = http://qt.io/ide
 	install = qtcreator-prerelease.install
@@ -28,7 +28,7 @@ pkgbase = qtcreator-prerelease
 	optdepends = valgrind: analyze support
 	provides = qtcreator
 	conflicts = qtcreator
-	source = https://download.qt.io/development_releases/qtcreator/19.0/19.0.0-beta2/qt-creator-opensource-src-19.0.0-beta2.tar.xz
-	sha512sums = 94c3b09665004f0d011344f25e2defdfef0b2f5d32bad7b81aec0524de79ca5ed5fe77623350e4cec01656dc8f127d4321d8a4ea88a1a2c57687658b4ecde563
+	source = https://download.qt.io/development_releases/qtcreator/20.0/20.0.0-beta1/qt-creator-opensource-src-20.0.0-beta1.tar.xz
+	sha512sums = 4ec8336d9c675683b218b92088d162699258580354019bbf5fa5e9095e6ef09827ad3c653719e7e5aa2bae03e131ec74af3b10492edf4741b424da93acf01470
 
 pkgname = qtcreator-prerelease
