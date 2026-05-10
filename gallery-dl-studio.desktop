@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Gallery-DL Studio
+GenericName=Gallery Downloader
+Comment=Beautiful GUI for gallery-dl - download images and media from 180+ sites
+Exec=gallery-dl-studio %U
+Icon=gallery-dl-studio
+Terminal=false
+Categories=Network;FileTransfer;Graphics;
+StartupWMClass=Gallery-DL Studio
+Keywords=gallery;download;images;media;
