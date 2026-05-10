@@ -1,0 +1,24 @@
+pkgbase = svt-jpeg-xs-llvm-git
+	pkgdesc = An implementation of the JPEG XS (ISO/IEC 21122) codec (git version) — built with Clang and LLVM lld
+	pkgver = 0.9.0.r50.gc36f29a
+	pkgrel = 1
+	url = https://github.com/OpenVisualCloud/SVT-JPEG-XS/
+	arch = x86_64
+	license = BSD-2-Clause-Patent
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = lld
+	makedepends = llvm
+	makedepends = yasm
+	depends = glibc
+	provides = svt-jpeg-xs-git
+	provides = svt-jpeg-xs
+	conflicts = svt-jpeg-xs-git
+	conflicts = svt-jpeg-xs
+	source = git+https://github.com/OpenVisualCloud/SVT-JPEG-XS.git
+	source = 010-svt-jpeg-xs-remove-werror.patch
+	sha256sums = SKIP
+	sha256sums = 27e8899b11dc3466d9b060571b51d38524e1cfc89f7552e7c8ada3d1a3035dbc
+
+pkgname = svt-jpeg-xs-llvm-git
