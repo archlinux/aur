@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Nordplayer
+Comment=Music Player
+Exec=nordplayer
+Icon=nordplayer_icon
+Terminal=false
+Categories=AudioVideo;Audio;Music;Player;
+Keywords=music;audio;nord;player;sound;
