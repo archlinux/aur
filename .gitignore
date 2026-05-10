@@ -1,0 +1,21 @@
+# Section for my global Gitignore
+# This ensures we don't accidentally push build artifacts or large binaries to the AUR.
+
+
+# [[file:../../../Documents/crowdsec_maintenance.org::*Section for my global Gitignore][Section for my global Gitignore:1]]
+# Ignore build directories
+src/
+pkg/
+crowdsec/
+
+# Ignore all built packages
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Ignore log files
+*.log
+
+# Ignore anything else makepkg might spit out
+/usr/
+# Section for my global Gitignore:1 ends here
