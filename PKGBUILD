@@ -3,12 +3,12 @@
 
 pkgname=geomspace
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser for geometric (i.e. Euclidean, Riemann, Minkowski) spaces"
 arch=($CARCH)
 url="https://sourceforge.net/projects/geomspace/"
 license=(GPL-2.0-only)
-depends=(mesa fltk)
+depends=(opengl-driver fltk glew libxpm)
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgver/GeomSpace-$pkgver-pre-src.tar.gz
 		http://downloads.sourceforge.net/project/$pkgname/Theory/UniformGeomSpace-2010.11.02-en.pdf
 		make.patch
@@ -16,9 +16,9 @@ source=(http://downloads.sourceforge.net/project/$pkgname/$pkgver/GeomSpace-$pkg
 		deps.patch)
 sha256sums=('f20a8f1f189f8f3084f6ceeece99c7818c1563b83f593de4dfcf37b0570e7f11'
             '0f045c086e745dccf45e66d4a361cea91fde0c913a0d67150ac79ef7a2ed466a'
-            '2610c6e1e7dc709b8270c8e52048b02b790ed19eb30b12c8cc711892f07eb262'
-            '6ef44e2cea1ebed7fe94acbd28ab894311183ab0f3396ba41b2ed49ec2a186a1'
-            '206b2b69d1e7aad483e5858857c662ef267038f4715378054c9680a6eeb2480b')
+            '09e0a65343a7aa702d8ee4bc8494aeae8083f00fafc9bbf07a83eba6ec722049'
+            '803228b67b4d43bb6f10ad761a54cde87604dba4e00bf3c9a6184ce25ee5ddb7'
+            'd2c5898a93b3572baa75d52b3a2679a1242c2338fa29703940a0b01b1f537149')
 
 prepare() {
 	cd GeomSpace/make
@@ -29,9 +29,7 @@ prepare() {
 
 build() {
 	cd GeomSpace/make
-	make prepare
-	make compile
-	make build
+	make
 }
 
 package() {

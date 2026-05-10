@@ -1,16 +1,14 @@
---- src/GeomSpace/make/deps	2016-06-11 17:25:08.000000000 +0200
-+++ /home/photon/Desktop/GeomSpace/make/deps	2016-04-30 11:06:16.384909352 +0200
-@@ -1,9 +1,9 @@
--GLEW = glew-2.2.0
--GLEW_DIR = $(BASEDIR)/../$(GLEW)/
--GLEW_LIB = libGLEW.a
-+GLEW = glew
-+GLEW_DIR = /usr/bin/
-+GLEW_LIB = libGLEW.so
-
--FLTK = fltk-1.3.7
--FLTK_DIR = $(BASEDIR)/../$(FLTK)/
-+FLTK = fltk
-+FLTK_DIR = /usr/bin/
-
- DEPS = GLEW FLTK
+1,3c1,3
+< GLEW = glew-2.2.0
+< GLEW_DIR = $(BASEDIR)/../$(GLEW)/
+< GLEW_LIB = libGLEW.a
+---
+> GLEW = glew
+> GLEW_DIR = /usr/bin/
+> GLEW_LIB = libGLEW.so
+5,6c5,6
+< FLTK = fltk-1.3.7
+< FLTK_DIR = $(BASEDIR)/../$(FLTK)/
+---
+> FLTK = fltk
+> FLTK_DIR = /usr/bin/

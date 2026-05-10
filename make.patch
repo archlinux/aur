@@ -1,14 +1,12 @@
---- src/GeomSpace/make/Makefile	2016-06-11 17:25:08.000000000 +0200
-+++ /home/photon/Desktop/Makefile_new	2016-07-11 12:28:47.876278173 +0200
-@@ -15,11 +15,9 @@
- include $(OS).mk
- 
- clean:
--	clear
- 	rm -R $(SRC)/*.o $(BIN)/*
- 
- prepare:
--	clear
- 	@echo "Compile $(APPNAME) version $(VERSION) ($(STATUS)) for $(OS) platform"
- 	@echo "(If you want to change it, modify make/platform file)"
- 	@echo ""
+13c13
+< all: compile build
+---
+> all: build
+18d17
+< 	clear
+22d20
+< 	clear
+42c40
+< build_common:
+---
+> build_common: compile

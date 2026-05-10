@@ -1,10 +1,5 @@
---- src/GeomSpace/make/x11.mk	2016-06-11 17:25:08.000000000 +0200
-+++ /home/photon/Desktop/GeomSpace/make/x11.mk	2016-07-11 12:34:28.599783153 +0200
-@@ -1,5 +1,6 @@
- CXXFLAGS += -DGMSP_X11
--GLEW_FLAGS = $(GLEW_DIR)lib/$(GLEW_LIB)
-+LDSTATICFLAGS += -lX11 -lXpm -lGLU -lGL
-+GLEW_FLAGS = /usr/lib/$(GLEW_LIB)
- SUFFIX = 
- PREFIX = /usr
- SHARE_PATH = $(PREFIX)/share
+2c2,3
+< GLEW_FLAGS = $(GLEW_DIR)lib/$(GLEW_LIB)
+---
+> LDSTATICFLAGS += -lX11 -lXpm -lGLU -lGL
+> GLEW_FLAGS = /usr/lib/$(GLEW_LIB)
