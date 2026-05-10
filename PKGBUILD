@@ -1,6 +1,6 @@
 #Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="mlfbdplugin"
-pkgver="2.0"
+pkgver="2.0.1"
 pkgrel="1"
 pkgdesc="MyLibrary plugin for fbd format files creation"
 arch=('x86_64')
@@ -8,9 +8,9 @@ provides=("${pkgname}")
 source=("https://github.com/ProfessorNavigator/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 url="https://github.com/ProfessorNavigator/mlfbdplugin"
 license=('GPL-3.0-only')
-makedepends=('cmake' 'pkgconf' 'gcc')
+makedepends=('cmake' 'pkgconf' 'gcc' 'qt6-tools')
 depends=('mylibrary')
-sha256sums=('ce92f8b249f278e0517224b5c3278a200a3d50f479c8610b845a157284602b75')
+sha256sums=('20ec0494d484bea693c83e31f60ef50682e17e5a8a604a0125c20839ca2503f7')
 
 build() {   
    local cmake_options=(
