@@ -154,14 +154,14 @@ mkdir -p "$LOG_DIR"
 DATA_LOG=$(date "+%Y-%m-%d_%H-%M-%S")
 LOG_ATUAL="$LOG_DIR/update_$DATA_LOG.log"
 
-# Função para Limpeza logs (FIFO - Keep 7)
+# Função para Limpeza logs (FIFO - Keep 13)
 rotate_logs() {
     local LOG_COUNT
     local OLD_LOG
 
     LOG_COUNT=$(find "$LOG_DIR" -maxdepth 1 -name "update_*.log" 2>/dev/null | wc -l)
     
-    if [ "$LOG_COUNT" -ge 7 ]; then
+    if [ "$LOG_COUNT" -ge 13 ]; then
         OLD_LOG=$(find "$LOG_DIR" -maxdepth 1 -name "update_*.log" -type f -printf '%T@ %p\n' | sort -n | head -n 1 | cut -d' ' -f2-)
         
         if [ -n "$OLD_LOG" ]; then
@@ -177,10 +177,10 @@ rotate_logs
 
 exec > >(tee -i "$LOG_ATUAL") 2>&1
 
-echo -e "${GRAY_NEON}--- INICIANDO REGISTRO DE SESSÃO: $DATA_LOG ---${NC}"
+echo -e "${PINK_NEON}--- INICIANDO REGISTRO DE SESSÃO: $DATA_LOG ---${NC}"
 
 
-# --- CABEÇALHO: ARCH UPDATE FULL v3.7-4 (BLOCK EDITION) ---
+# --- CABEÇALHO: ARCH UPDATE FULL v3.8 (BLOCK EDITION) ---
 clear
 echo -e "${NEON_BLUE}"
 echo "  █████╗ ██████╗  ██████╗██╗  ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗"
@@ -196,12 +196,12 @@ echo -e "                              ${NEON_BLUE}██╔══╝  ██║
 echo -e "                              ${NEON_BLUE}██║     ╚██████╔╝███████╗███████╗${NC}"
 echo -e "                              ${NEON_BLUE}╚═╝      ╚═════╝ ╚══════╝╚══════╝${NC}"
 echo ""
-echo -e "  ${PINK_NEON}─────────────────── ${YELLOW_NEON}VERSION 3.7-4 ${PINK_NEON} ────────────────────${NC}"
-echo -e "  ${PINK_NEON}>> UPDATING • AUTOMATING • SECURING <<${NC}"
+echo -e "  ${PINK_NEON}──────────────────────────────── ${RED_NEON}-->VERSION 3.8 <--${PINK_NEON} ─────────────────────────────────${NC}"
+echo -e "  ${PINK_NEON}───────────────────────>> UPDATING • AUTOMATING • SECURING <<───────────────────────${NC}"
 echo ""
-echo -e "  ${NEON_BLUE}[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]${NC}"
-echo -e "  ${NEON_BLUE}------------------------------------------------------------${NC}"
-sleep 1
+echo -e "  ${NEON_BLUE}─────────────>>[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]<<─────────────${NC}"
+echo -e "  ${NEON_BLUE}-----------------------------------------------------------------------------------------${NC}"
+sleep 2
 
 
 # --- FUNÇÃO DE STATUS ---
@@ -209,6 +209,34 @@ status_msg() {
     echo -e "\n${PINK_NEON}[#]${NC} ${NEON_BLUE}EXECUTING PROTOCOL:${NC} ${YELLOW_NEON}$1${NC}"
     echo -e "${GRAY_NEON}------------------------------------------------------------${NC}"
 }
+
+
+# --- VERIFICAÇÃO DE CONECTIVIDADE ---
+texto_net="ESTABLISHING_UPLINK: CHECKING SECTOR_NETWORK"
+TAM_TEXTO=${#texto_net}
+ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+printf "${NEON_BLUE}║${NC}${YELLOW_NEON} %s%*s${NC}${NEON_BLUE}║${NC}\n" "$texto_net" "$((ESPACOS-1))" ""
+echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+
+# Executa o ping e verifica o código de saída diretamente no 'if'
+if PING_RES=$(ping -c 1 -W 13 8.8.8.8); then
+   
+    LATENCY=$(echo "$PING_RES" | awk -F'time=' '/time=/{print $2}' | awk '{print $1}')
+
+    # Caso o AWK retorne vazio, coloca 0.00 por segurança
+    LATENCY=${LATENCY:-0.00}
+    
+    echo -e "${GREEN_NEON}[SUCCESS]${NC} CONNECTION_OK | LATENCY: ${LATENCY}ms"
+    echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+else
+    # Se o ping falhou (exit code != 0)
+    echo -e "\n${RED_NEON}[ERROR] NO INTERNET CONNECTION${NC}"
+    echo -e "${YELLOW_NEON}[!] Sentinel Protocol aborted. Please check your network sectors${NC}"
+    echo -e "${YELLOW_NEON}--------------------------------------------------------------------------------------${NC}"
+    exit 1
+fi
 
 
 # ---  VERIFICAÇÃO DE ESPAÇO EM DISCO ---
@@ -228,19 +256,21 @@ CHECK_DISK_SPACE() {
     
 
     if [ "$FREE_SPACE" -lt 5 ]; then
-        echo -e "${RED_NEON}[CRÍTICO] Espaço insuficiente: Apenas ${FREE_SPACE}GB livres.${NC}"
-        echo -e "${YELLOW_NEON}[SUGESTÃO] Limpando cache do pacman para tentar liberar espaço...${NC}"
+        echo -e "${RED_NEON}[CRITICAL] Insufficient storage: Only ${FREE_SPACE}GB remaining.${NC}"
+        echo -e "${YELLOW_NEON}[SUGGESTION] Clearing pacman cache to try to free up space...${NC}"
         sudo paccache -rk 1
-        
+        echo -e "${YELLOW_NEON}--------------------------------------------------------------------------------------${NC}"
        
         FREE_SPACE=$(df -BG / | awk 'NR==2 {print $4}' | sed 's/G//')
         if [ "$FREE_SPACE" -lt 5 ]; then
-            echo -e "${RED_NEON}[ERRO FATAL] Espaço ainda insuficiente (${FREE_SPACE}GB). Abortando para evitar corrupção.${NC}"
-            echo "[LOG] Abortando por falta de espaço em $(date)" >> "$LOG_ATUAL"
+            echo -e "${RED_NEON}[FATAL ERROR] Insufficient space (${FREE_SPACE}GB). Aborting to prevent corruption.${NC}"
+            echo "[LOG] Aborting due to insufficient space on $(date)" >> "$LOG_ATUAL"
+            echo -e "${YELLOW_NEON}--------------------------------------------------------------------------------------${NC}"
             exit 1
         fi
     else
-        echo -e "${GREEN_NEON}[OK]${NC} Reserva de disco confirmada: ${FREE_SPACE}GB disponíveis."
+        echo -e "${GREEN_NEON}[OK]${NC} Disk reserve confirmed: ${FREE_SPACE}GB available."
+        echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
     fi
 }
 
@@ -248,20 +278,49 @@ CHECK_DISK_SPACE
 
 
 # 1. OTIMIZAÇÃO DE ESPELHOS (MIRRORS)
-status_msg "OPTIMIZING_NETWORK_MIRRORS"
+TEXTO_REFLECTOR="OPTIMIZING_NETWORK_MIRRORS"
+TAM_TEXTO=${#TEXTO_REFLECTOR}
+ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+printf "${NEON_BLUE}║${NC}${GREEN_NEON} %s%*s${NC}${NEON_BLUE}║${NC}\n" "$TEXTO_REFLECTOR" "$((ESPACOS-1))" ""
+echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+
 if command -v reflector &> /dev/null; then
-    echo -e "${GREEN_NEON}[BUSCANDO]${NC} Selecionando os 5 mirrors HTTPS mais rápidos..."
+    echo -e "${GREEN_NEON}[SEARCHING]${NC} Selecting the 5 fastest HTTPS mirrors..."
     sudo reflector --protocol https --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+    echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 else
-    echo -e "${YELLOW_NEON}[AVISO]${NC} Reflector não encontrado. Pulando otimização de rede."
+    echo -e "${YELLOW_NEON}[WARNING]${NC} Reflector not detected. Skipping network optimization sector."
+    echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 fi
 
+
 # 2. REPOSITÓRIOS OFICIAIS (PACMAN)
-status_msg "CORE_SYSTEM_SYNCHRONIZATION (PACMAN)"
-sudo pacman -Syyu --noconfirm
+
+texto_pacman="CORE_SYSTEM_SYNCHRONIZATION (PACMAN)"
+TAM_TEXTO=${#texto_pacman}
+ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+printf "${NEON_BLUE}║${NC}${YELLOW_NEON} %s%*s${NC}${NEON_BLUE}║${NC}\n" "$texto_pacman" "$((ESPACOS-1))" ""
+echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+echo -e "${RED_NEON} USER INTERACTION REQUIRED:${NC}${CYAN_NEON}\n Confirm updates and resolve dependencies when prompted.${NC}"
+sleep 2
+sudo pacman -Syyu 
+echo -e "\n${CYAN_NEON}--------------------------------------------------------------------------------------${NC}"
+
+
 
 # 3. ATUALIZAÇÃO DO AUR (DETECÇÃO INTELIGENTE)
-status_msg "AUR_SUBSYSTEM_DETECTION"
+
+TEXTO_AUR=" AUR_SUBSYSTEM_DETECTION: SCANNING FOR HELPERS"
+TAM_TEXTO=${#TEXTO_AUR}
+ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+printf "${NEON_BLUE}║${NC}${PINK_NEON} %s%*s${NC}${NEON_BLUE}║${NC}\n" "$TEXTO_AUR" "$((ESPACOS-1))" ""
+echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
 
 YAY_INSTALLED=$(command -v yay)
 PARU_INSTALLED=$(command -v paru)
@@ -300,13 +359,11 @@ if [ -n "$AUR_HELPER" ]; then
     ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
     
     echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
-    
-    
     printf "${NEON_BLUE}║${NC}${PINK_NEON}%s%*s${NC}${NEON_BLUE}║${NC}\n" "$TEXTO" "$ESPACOS" ""
-    
     echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
-
+    
     $AUR_HELPER -Syu --noconfirm
+    echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 fi
 
 
@@ -317,46 +374,41 @@ if command -v flatpak &> /dev/null; then
     TAM_TEXTO=${#TEXTO_FP}
     ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
 
-
     echo -e "\n${PINK_NEON}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
-    
- 
     printf "${PINK_NEON}║${NC}${NEON_BLUE}%s%*s${NC}${PINK_NEON}║${NC}\n" "$TEXTO_FP" "$ESPACOS" ""
-    
-
     echo -e "${PINK_NEON}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
-
-   
-    flatpak update -y
     
+    flatpak update -y
+    echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 else
     echo -e "${GRAY_NEON}[INFO] Flatpak environment not detected. Skipping sector.${NC}"
+    echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 fi
 
 
 # 5. ATUALIZAÇÃO DE SNAPS (DETECÇÃO AUTOMÁTICA)
+
 if command -v snap &> /dev/null; then
    
     TEXTO_SNAP=" STABILIZING SNAP PACKAGES: REFRESHING ALL SNAPS"
     TAM_TEXTO=${#TEXTO_SNAP}
     ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
 
-  
     echo -e "\n${YELLOW_NEON}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
-    
-    
     printf "${YELLOW_NEON}║${NC}${NEON_BLUE}%s%*s${NC}${YELLOW_NEON}║${NC}\n" "$TEXTO_SNAP" "$ESPACOS" ""
-    
-    
     echo -e "${YELLOW_NEON}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
 
     sudo snap refresh
+    echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 else
-    echo -e "${GRAY_NEON}[INFO] Snap environment not detected. Skipping sector.${NC}"
+    echo -e "${YELLOW_NEON}[INFO] Snap environment not detected. Skipping sector.${NC}"
+    echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 fi
 
 
+
 # ---  AUDITORIA DE NÚCLEO (REBOOT CHECK) ---
+
 CHECK_REBOOT_NEEDED() {
     local CRITICAL_PACKAGES="linux|nvidia|mesa|ucode|systemd|wayland|xorg"
     
@@ -392,22 +444,42 @@ CHECK_REBOOT_NEEDED() {
 
 
 
-# 6. LIMPEZA DE ÓRFÃOS
-status_msg "PURGING_RESIDUAL_FRAGMENTS (ORPHANS)"
-ORPHANS=$(pacman -Qdtq)
-if [ -n "$ORPHANS" ]; then
-    sudo pacman -Rns "$ORPHANS" --noconfirm
+# 6 Limpeza de pacotes órfãos
+texto_orfao="PURGING RESIDUAL FRAGMENTS (ORPHANS)"
+TAM_TEXTO=${#texto_orfao}
+ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+printf "${NEON_BLUE}║${NC}${YELLOW_NEON} %s%*s${NC}${NEON_BLUE}║${NC}\n" "$texto_orfao" "$((ESPACOS-1))" ""
+echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+
+mapfile -t ORPHANS_LIST < <(pacman -Qdtq)
+
+if [ ${#ORPHANS_LIST[@]} -gt 0 ]; then
+    sudo pacman -Rns "${ORPHANS_LIST[@]}" --noconfirm
     echo -e "${GREEN_NEON}[SUCCESS]${NC} Residual data erased."
+    echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 else
     echo -e "${YELLOW_NEON}[INFO]${NC} No fragments found in sectors."
+    echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 fi
 
 # 7. LIMPEZA DO CACHE
-status_msg "STABILIZING_CACHE_RESERVES (PACCACHE)"
+
+texto_cache="STABILIZING_CACHE_RESERVES (PACCACHE)"
+TAM_TEXTO=${#texto_cache}
+ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+printf "${NEON_BLUE}║${NC}${YELLOW_NEON}%s%*s${NC}${NEON_BLUE}║${NC}\n" "$texto_cache" "$ESPACOS" ""
+echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+
 if command -v paccache &> /dev/null; then
     sudo paccache -r
+    echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 else
     sudo pacman -Sc --noconfirm
+    echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 fi
 
 
@@ -449,7 +521,11 @@ else
     echo -e "${RED_NEON}[PULADO]${NC} Auditoria ignorada pelo operador."
 fi
 
+
+
 # --- FINALIZAÇÃO ---
+
+
 echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 echo -e "${GREEN_NEON}   [!] ARCH UPDATE PROTOCOL COMPLETE: YOUR SYSTEM IS NOW REINFORCED [!]${NC}"
 echo -e "${PINK_NEON}   >> STATUS: SECURE | ENCRYPTED | OPTIMIZED <<${NC}"
@@ -461,15 +537,18 @@ echo -e "${NEON_BLUE}-----------------------------------------------------------
 
 
 echo ""
-echo -e "      ${ASSINATURA_COR}© [2026] ARCH UPDATER PROTOCOL | by Gustavo Gianeli (Sétimo)${NC}"
+echo -e "      ${ASSINATURA_COR}© [2026] 𝑨𝑹𝑪𝑯 𝑼𝑷𝑫𝑨𝑻𝑬𝑹 𝑭𝑼𝑳𝑳 𝑷𝑹𝑶𝑻𝑶𝑪𝑶𝑳| 𝒃𝒚 𝑮𝒖𝒔𝒕𝒂𝒗𝒐 𝑮𝒊𝒂𝒏𝒆𝒍𝒊 (𝓢é𝓽𝓲𝓶𝓸)${NC}"
 echo ""
 
-## --- PROTOCOLO DE ENCERRAMENTO INTERATIVO v3.7-4 ---
+
+## --- PROTOCOLO DE ENCERRAMENTO INTERATIVO v3.8 ---
+
 echo -e "\n${CYAN_NEON}--------------------------------------------------------------------------------------${NC}"
 echo -e "${MAGENTA_NEON}   >> STATUS: SECURE | O QUE DESEJA FAZER AGORA ? <<${NC}"
 echo -e "${CYAN_NEON}--------------------------------------------------------------------------------------${NC}"
 
 # --- NOTIFICAÇÃO UNIVERSAL (SINALIZAÇÃO VISUAL) ---
+
 NOTIFY_FINISH() {
     
     if command -v notify-send >/dev/null 2>&1; then
@@ -484,13 +563,14 @@ NOTIFY_FINISH() {
 
 
 # --- [SISTEMA] NOTIFICAÇÃO E AUDITORIA FINAL ---
+
 NOTIFY_FINISH
 
 
 CHECK_REBOOT_NEEDED
 
 echo -e "\n${GRAY_NEON}------------------------------------------------------------${NC}"
-echo -e "${CYAN_NEON}              MENU DE ENCERRAMENTO - v3.7-4${NC}"
+echo -e "${CYAN_NEON}              MENU DE ENCERRAMENTO - v3.8${NC}"
 echo -e "${GRAY_NEON}------------------------------------------------------------${NC}"
 
 echo -e "${MAGENTA_NEON}(A)${NC} ${WHITE}Encerrar sessão e fechar terminal${NC} ${CYAN_NEON}(Kill Switch)${NC}"

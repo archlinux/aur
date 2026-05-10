@@ -1,7 +1,7 @@
 pkgbase = arch-update-full
 	pkgdesc = Protocolo Sentinela: Automação de updates (Pacman/AUR/Flatpak/Snap) e auditoria.
-	pkgver = 3.7
-	pkgrel = 4
+	pkgver = 3.8
+	pkgrel = 1
 	url = https://github.com/GustavoGianeli/arch-update-full
 	install = arch-update-full.install
 	arch = any
