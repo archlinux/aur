@@ -7,7 +7,7 @@ Comment=Protocolo Sentinela: Atualização e Auditoria (Pacman/AUR/Flatpak/Snap)
 
 Exec=arch-update-full
 
-Icon=logoarchupdatefull
+Icon=sentinela-v38.png
 
 Terminal=true
 
