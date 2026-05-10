@@ -1,6 +1,6 @@
 pkgbase = mykey
 	pkgdesc = Hardware-focused local authentication, Secret Service, and tray stack for Linux
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/JamesFromFL/mykey
 	install = mykey.install
@@ -20,7 +20,7 @@ pkgbase = mykey
 	optdepends = pam-u2f: security-key enrollment and security-key authentication testing
 	provides = mykey
 	conflicts = mykey-git
-	source = mykey-0.1.0.tar.gz::https://github.com/JamesFromFL/mykey/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 03d34e72ace540078023dad9655f9bc86ff73a5b4db5268f467dbbb28f03f4c2
+	source = mykey-0.1.1.tar.gz::https://github.com/JamesFromFL/mykey/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = af5faa56a1cfbcdd495697fe16644c16afd9446a4674d8c553021e439b95fd1b
 
 pkgname = mykey

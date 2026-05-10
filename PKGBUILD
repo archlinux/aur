@@ -1,7 +1,7 @@
 # Maintainer: JamesFromFL <jamesfromfl@penguinmail.com>
 
 pkgname=mykey
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Hardware-focused local authentication, Secret Service, and tray stack for Linux"
 arch=('x86_64')
@@ -29,7 +29,7 @@ provides=('mykey')
 conflicts=('mykey-git')
 install='mykey.install'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('03d34e72ace540078023dad9655f9bc86ff73a5b4db5268f467dbbb28f03f4c2')
+sha256sums=('af5faa56a1cfbcdd495697fe16644c16afd9446a4674d8c553021e439b95fd1b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -43,6 +43,7 @@ build() {
   cargo build --manifest-path mykey-migrate/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-pin/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-pam/Cargo.toml --release
+  cargo build --manifest-path mykey-auth/mykey-biometrics/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-security-key/Cargo.toml --release
 }
 
@@ -78,6 +79,8 @@ package() {
     "${pkgdir}/usr/bin/mykey-pin-auth"
   install -Dm755 "${srcdir}/target/release/mykey-auth" \
     "${pkgdir}/usr/bin/mykey-auth"
+  install -Dm755 "${srcdir}/target/release/mykey-biometrics" \
+    "${pkgdir}/usr/bin/mykey-biometrics"
   install -Dm755 "${srcdir}/target/release/mykey-elevated-auth" \
     "${pkgdir}/usr/bin/mykey-elevated-auth"
   install -Dm755 "${srcdir}/target/release/mykey-security-key" \
