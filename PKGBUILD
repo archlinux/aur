@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
 pkgname=doudou-unstable
-pkgver=17.0.0
+pkgver=19.0.0
 pkgrel=1
 pkgdesc="Music player for self-hosted services (unstable build from GitHub)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("doudou-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-93/doudou-17.0.0-2026-05-07-linux-x64.zip")
+source=("doudou-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/app-update-2026-05-10-221158/doudou-19.0.0-2026-05-10-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
