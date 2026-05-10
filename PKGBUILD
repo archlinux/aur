@@ -4,7 +4,7 @@
 # Contributor: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 
 pkgname=firebase-tools
-pkgver=15.16.0
+pkgver=15.17.0
 pkgrel=1
 pkgdesc='The Firebase Command Line Tools'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('jq' 'npm' 'node-gyp' 'python')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('6f02af660b1d8c80b28b472b02603d6ec273dcc047ee8c8128aadc5464061354')
+sha256sums=('57902a1fd7ab238d8707c50d7a09d62becb5e5c502395751cef530d96fe8906f')
 
 prepare() {
   # ignore dependencies specific to Bare runtime as they contain prebuilt binaries
