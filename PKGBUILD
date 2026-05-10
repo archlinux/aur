@@ -40,11 +40,28 @@ def create_png(w, h):
 with open('src-tauri/icon.png', 'wb') as f:
     f.write(create_png(256, 256))
 "
+  # Remove beforeBuildCommand to prevent tauri from re-compiling the server
+  python3 -c "
+import json
+with open('src-tauri/tauri.conf.json') as f:
+    cfg = json.load(f)
+cfg['build'].pop('beforeDevCommand', None)
+cfg['build'].pop('beforeBuildCommand', None)
+with open('src-tauri/tauri.conf.json', 'w') as f:
+    json.dump(cfg, f, indent=2)
+"
 }
 
 build() {
   cd "$srcdir/spent-tracker-$pkgver"
   bun install
+  # Compile the express server
+  bun build --compile --target=bun-linux-x64 ./express/src/index.ts --outfile ./express/servidor 2>&1 | tail -2
+  mkdir -p src-tauri/target/release
+  cp express/servidor src-tauri/target/release/servidor
+  # Build frontend
+  bun run build
+  # Build Tauri app (won't recompile server since we removed beforeBuildCommand)
   bunx tauri build --bundles deb,rpm 2>&1 | tail -5
 }
 
