@@ -1,6 +1,6 @@
 # Maintainer: Marco Ziliani
 pkgname=xeqm-gui
-pkgver=2.0.9
+pkgver=2.0.13
 pkgrel=1
 pkgdesc="Official GUI wallet for XEQMLabs (XEQM) cryptocurrency"
 arch=('x86_64')
@@ -10,21 +10,21 @@ depends=('zeromq' 'zstd' 'fuse2' 'hicolor-icon-theme')
 makedepends=()
 options=(!strip)
 source=(
-    "XEQM-GUI-${pkgver}-linux-x86_64.AppImage::https://github.com/EquilibriaHorizon/XEQMLabs-GUI/releases/download/v${pkgver}/XEQM-GUI-${pkgver}-linux-x86_64.AppImage"
+    "XEQM-GUI-${pkgver}-linux.AppImage::https://github.com/EquilibriaHorizon/XEQMLabs-GUI/releases/download/v${pkgver}/XEQM-GUI-${pkgver}-linux.AppImage"
     "boost-libs-1.83.0-9-x86_64.pkg.tar.zst::https://archive.archlinux.org/packages/b/boost-libs/boost-libs-1.83.0-9-x86_64.pkg.tar.zst"
     "libsodium-1.0.18-1-x86_64.pkg.tar.xz::https://archive.archlinux.org/packages/l/libsodium/libsodium-1.0.18-1-x86_64.pkg.tar.xz"
     "xeqm-gui.sh"
     "xeqm-gui.desktop"
 )
 sha256sums=(
-    '1d2bacf89e07420325f9505c8367a855cab11f27780a458cf16aa42be2fb0870'
+    '936672c482d5b39ad56d162b3825f0157629ec321d11ff42484e512b0649389b'
     'bd35288a454689f25ca246c8e0be5dbe44e156ee0084bee6f90b6c0888b811c6'
     '30505f3ce45486cc90a26044160b140729ffd8dada2925bbeb815bc79b630937'
     'SKIP'
     'SKIP'
 )
 noextract=(
-    "XEQM-GUI-${pkgver}-linux-x86_64.AppImage"
+    "XEQM-GUI-${pkgver}-linux.AppImage"
     "boost-libs-1.83.0-9-x86_64.pkg.tar.zst"
     "libsodium-1.0.18-1-x86_64.pkg.tar.xz"
 )
@@ -33,8 +33,8 @@ prepare() {
     cd "$srcdir"
 
     # Extract AppImage
-    chmod +x "XEQM-GUI-${pkgver}-linux-x86_64.AppImage"
-    ./"XEQM-GUI-${pkgver}-linux-x86_64.AppImage" --appimage-extract >/dev/null 2>&1
+    chmod +x "XEQM-GUI-${pkgver}-linux.AppImage"
+    ./"XEQM-GUI-${pkgver}-linux.AppImage" --appimage-extract >/dev/null 2>&1
 
     # Extract bundled libraries
     mkdir -p _boost _sodium
