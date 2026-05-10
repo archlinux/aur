@@ -3,13 +3,14 @@
 _pkgname=mhrv-rs
 pkgname=mhrv-rs-bin
 pkgver=1.9.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Free DPI bypass via a Google Apps Script relay with TLS SNI concealment"
 arch=('aarch64' 'x86_64')
 url="https://github.com/therealaleph/MasterHttpRelayVPN-RUST"
 license=('MIT')
 conflicts=('mhrv-rs')
 provides=('mhrv-rs')
+options=('!debug')
 
 source_aarch64=("${_pkgname}-${pkgver}-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/mhrv-rs-linux-arm64.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/mhrv-rs-linux-amd64.tar.gz")
