@@ -1,0 +1,15 @@
+pkgbase = spacecoffee-scm
+	pkgdesc = SpaceCoffee's vehicles maintainence app
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/space_coffee/scm/desktop
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-serialport
+	depends = qt6-svg
+	source = spacecoffee-scm::git+https://gitlab.com/space_coffee/scm/desktop.git
+	sha256sums = SKIP
+
+pkgname = spacecoffee-scm
