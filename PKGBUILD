@@ -1,7 +1,7 @@
 # Maintainer: Anand <your-github-username>
 pkgname=vectorx-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-intensity GPU/CPU stress tester (Electron/WebGL)"
 arch=('x86_64')
 url="https://github.com/AnandRiftYT/VectorX_Benchmarker"
