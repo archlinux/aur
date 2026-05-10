@@ -3,7 +3,7 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=AnnotationDbi
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dab5c3c6d38999d7f3d0c16dd93d1780')
-b2sums=('357dc84a5d087a3babd270d061e70ffa46c4f4baada4732b35f750bde43a644a96fcad4444cd71c5d8274569bf85d248b18d467fe607674a9a3b8b3b25f25bec')
+md5sums=('65b70a0537974d127d44e98225de05ef')
+b2sums=('36719888900bbb67ffbc86c85a11c5754ea2297b2db87e2b2468c4ba27d4fa2f67d8e203889180c1ea7a4a25402d32613b45f842ab4395d62e82f8aeb0cad1cc')
 
 build() {
   mkdir build
