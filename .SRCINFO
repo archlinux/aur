@@ -1,6 +1,6 @@
 pkgbase = r-generegionscan
 	pkgdesc = GeneRegionScan
-	pkgver = 1.66.0
+	pkgver = 1.68.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GeneRegionScan
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-generegionscan
 	optdepends = r-affy
 	optdepends = r-annotationdbi
 	optdepends = r-bsgenome
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneRegionScan_1.66.0.tar.gz
-	sha256sums = 02ae7dd33a5ce1179cabe02b91a5bb40e1bdc42d26d1746c57a726a5ba4eead4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneRegionScan_1.68.0.tar.gz
+	sha256sums = 5521361f35250373d33c2815fb05d10740ec2fefe42aa3dbacf01578fa0b903c
 
 pkgname = r-generegionscan
