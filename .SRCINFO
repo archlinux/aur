@@ -1,8 +1,8 @@
 pkgbase = g-helper
-	pkgdesc = Gabriele's optimized AUR bridge helper with auto-cleanup (v1.3)
-	pkgver = 1.3
+	pkgdesc = Gabriele's Advanced AUR Bridge with Smart Search (v1.4)
+	pkgver = 1.4
 	pkgrel = 1
-	url = https://tuo-sito.github.io
+	url = https://tuo-utente.github.io
 	arch = any
 	license = GPL3
 	depends = bash
@@ -11,7 +11,9 @@ pkgbase = g-helper
 	depends = binutils
 	depends = gcc
 	depends = make
+	depends = curl
+	depends = jq
 	source = g-helper
-	sha256sums = cc5a3ca7300e7569862a30ddc931064c3f87eb220d9087b486da80eb104b00e7
+	sha256sums = 02367cd29766732b6ba0492588de34da8606391b8798f72ea028ca53c2b9a783
 
 pkgname = g-helper

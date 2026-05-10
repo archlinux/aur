@@ -1,46 +1,45 @@
 #!/bin/bash
-
-# --- G-HELPER v1.3 (Gabriele Edition) ---
+# --- G-HELPER v1.4 (Gabriele Edition) ---
 G_PURPLE='\033[1;35m'
 G_CYAN='\033[1;36m'
 G_GREEN='\033[1;32m'
 G_RED='\033[1;31m'
 NC='\033[0m'
 
-# Funzione di pulizia automatica
-cleanup() {
-    echo -e "\n${G_CYAN}::${NC} Cleaning up build files..."
-    rm -rf "$BUILD_DIR"
+# Funzione per cercare pacchetti nell'AUR
+search_aur() {
+    echo -e "${G_CYAN}::${NC} Searching AUR for: ${G_PURPLE}$1${NC}"
+    curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$1" | \
+    jq -r '.results[] | "\(.Name) \(.Version)\n    \(.Description)\n"' 2>/dev/null || \
+    echo "No results found or jq/curl missing."
 }
 
-# Se l'utente preme Ctrl+C, pulisci tutto
-trap cleanup EXIT
+if [[ "$1" == "search" ]]; then
+    search_aur "$2"
+    exit 0
+fi
 
 if [ -z "$1" ]; then
-    echo -e "${G_PURPLE}G-HELPER v1.3${NC}"
-    echo "Usage: g-helper [package]"
+    echo -e "${G_PURPLE}G-HELPER v1.4${NC} - Maintainer: gabrielearchapt"
+    echo "Usage: g-helper [package_name] or g-helper search [query]"
     exit 1
 fi
 
 PACKAGE=$1
-BUILD_DIR="/tmp/g-helper-$PACKAGE-$(date +%s)"
+BUILD_DIR="/tmp/g-helper-$PACKAGE"
 
-echo -e "${G_CYAN}::${NC} Starting AUR bridge for: ${G_PURPLE}$PACKAGE${NC}"
+echo -e "${G_CYAN}::${NC} Building AUR package: ${G_PURPLE}$PACKAGE${NC}"
 
+# Pulizia preventiva
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR" && cd "$BUILD_DIR"
 
-# Clone con progresso visibile
 if git clone --depth 1 "https://aur.archlinux.org/$PACKAGE.git" .; then
-    echo -e "${G_GREEN}::${NC} Repository cloned. Building now..."
-    
-    # Compilazione e installazione
-    if makepkg -si --noconfirm; then
-        echo -e "${G_GREEN}::${NC} $PACKAGE has been installed successfully."
-    else
-        echo -e "${G_RED}Error:${NC} Build failed for $PACKAGE."
-        exit 1
-    fi
+    makepkg -si --noconfirm
+    # Pulizia finale dopo l'installazione
+    cd .. && rm -rf "$BUILD_DIR"
+    echo -e "${G_GREEN}::${NC} Process complete."
 else
-    echo -e "${G_RED}Error:${NC} Package not found on AUR."
+    echo -e "${G_RED}Error:${NC} Package $PACKAGE not found."
     exit 1
 fi
