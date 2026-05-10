@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd
-pkgver=r3.079e931
+pkgver=r4.a16a3f4
 pkgrel=1
 pkgdesc='Skwd - A Skwd (Quick)shell'
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   'file'
   'inotify-tools'
   'iwd'
+  'cava'
   'ttf-nerd-fonts-symbols'
   'ttf-roboto'
 )
