@@ -1,6 +1,6 @@
 pkgbase = r-org.hs.eg.db
 	pkgdesc = Genome wide annotation for Human
-	pkgver = 3.22.0
+	pkgver = 3.23.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/org.Hs.eg.db
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-org.hs.eg.db
 	optdepends = r-annotate
 	optdepends = r-dbi
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Hs.eg.db_3.22.0.tar.gz
-	md5sums = e80cac6ec018a95aea4f7530350e80a2
-	b2sums = a44fa8fdf76e6bc5b707dd96a55a9ee526fe1c50b79315a62f29fb5bf2d8947d57d33640e45b89d2e3dcab67024fb2ab71771580c3b86f8d66d2e4f63d1d1526
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Hs.eg.db_3.23.1.tar.gz
+	md5sums = 813be1921e7bc08c1348dbce9d244d0a
+	b2sums = 8e82a64c50930734423ddbd921287a66402bfec1abb3a8fece4a06d00550709e8b120aa0f8594a18aa90c0007ffb60903a5d225a351c99ea59c03355ebebd24e
 
 pkgname = r-org.hs.eg.db
