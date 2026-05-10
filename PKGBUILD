@@ -2,7 +2,7 @@
 
 _pkgname=wayland-scroll-factor
 pkgname=wayland-scroll-factor-git
-pkgver=0.3.0.5.gf89f9c4
+pkgver=0.3.0.6.g41118e8
 pkgrel=1
 pkgdesc='Touchpad scroll and gesture tuning for Wayland (GNOME and Hyprland)'
 arch=('x86_64')
