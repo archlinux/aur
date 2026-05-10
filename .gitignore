@@ -4,4 +4,6 @@ pkg/
 src/
 
 .claude/
+.idea/
 deepseek-tui/
+.deepseek/
