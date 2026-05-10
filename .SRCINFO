@@ -1,0 +1,17 @@
+pkgbase = brother-dcp-j1360dw
+	pkgdesc = LPR driver and CUPS wrapper for Brother DCP-J1360DW printer
+	pkgver = 3.6.1
+	pkgrel = 2
+	url = https://www.brother.co.uk/support/dcpj1360dw/downloads
+	install = brother-dcp-j1360dw.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = perl
+	depends = cups
+	optdepends = brscan5
+	source = https://download.brother.com/welcome/dlf107044/dcpj1360dwpdrv-3.6.1-2.x86_64.rpm
+	sha256sums = 5299f6cafccbd7dc6d9bcdfcfa18fe5a0e3ada39f33df2045ad96fc3414db4dd
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcp-j1360dw
