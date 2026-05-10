@@ -2,7 +2,7 @@
 # steamos-manager fork with native ACPI/ALIB TDP control for GPD Win Mini
 
 pkgname=steamos-manager-gpdwinmini-git
-pkgver=r700.g667a7b9
+pkgver=r702.g365f5d3
 pkgrel=1
 pkgdesc="SteamOS Manager with native ACPI/ALIB TDP control for GPD Win Mini (VCS)"
 arch=('x86_64')
@@ -13,9 +13,11 @@ depends=(
   'libspeechd'
   'systemd-libs'
   'dbus'
+  'tuned'
 )
 optdepends=(
   'acpi_call-dkms: Required for GPD Win Mini TDP control via ACPI/ALIB'
+  'tuned-ppd: Map KDE/GNOME power-profile selector onto the GPD tuned profiles (replaces power-profiles-daemon)'
 )
 makedepends=(
   'git'

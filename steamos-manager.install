@@ -1,8 +1,25 @@
 post_install() {
-  echo ""
-  echo "==> NOTE: If TDP control does not appear, try rebooting."
-  echo "==> For GPD Win Mini ACPI/ALIB TDP control, ensure the"
-  echo "==> acpi_call kernel module is installed and loaded manually."
+  cat <<'EOF'
+==> NOTE: GPD Win Mini TDP control via ACPI/ALIB requires the acpi_call
+==> kernel module to be loaded.
+
+==> Three tuned profiles are installed for desktop power-profile control:
+==>     gpd-win-mini-power-saver   (8W)
+==>     gpd-win-mini-balanced     (15W)
+==>     gpd-win-mini-performance  (20W)
+
+==> Enable tuned and pick a profile:
+==>     sudo systemctl enable --now tuned.service
+==>     sudo tuned-adm profile gpd-win-mini-balanced
+
+==> To wire these into the KDE/GNOME power-profile selector, install
+==> tuned-ppd, then edit /etc/tuned/ppd.conf and set:
+==>     [main]
+==>     power_saver = gpd-win-mini-power-saver
+==>     balanced    = gpd-win-mini-balanced
+==>     performance = gpd-win-mini-performance
+==> followed by:  sudo systemctl restart tuned tuned-ppd
+EOF
 }
 
 post_upgrade() {
