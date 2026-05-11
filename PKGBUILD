@@ -25,7 +25,7 @@ source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$_pkgnam
 sha256sums=('0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356'
             'SKIP'
             '7ac937705681460e42028e6ad2d3609b8d21108d534547c87991753c74a8fb5f'
-            '88e965e2da3c907d7f553db75d233911207f4b3653feb681ec373e683c13aa29')
+            'd02eb86645d1692b51ed570c83069daee9f31ead481581906c771ee46e248889')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
 prepare() {
@@ -55,7 +55,7 @@ build() {
 }
 
 package_pidgin-gnutls(){
-  provides=('pidgin')
+  provides=("pidgin=$pkgver")
   conflicts=('pidgin')
   pkgdesc="Multi-protocol instant messaging client"
   depends=('libpurple-gnutls' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
@@ -81,7 +81,7 @@ package_pidgin-gnutls(){
 }
 
 package_libpurple-gnutls(){
-  provides=('libpurple')
+  provides=("libpurple=$pkgver")
   conflicts=('libpurple')
   pkgdesc="IM library extracted from Pidgin"
   depends=('farstream' 'libsasl' 'libidn' 'libnsl' 'libgadu' 'dbus-glib' 'gnutls'
@@ -103,7 +103,7 @@ package_libpurple-gnutls(){
 }
 
 package_finch-gnutls(){
-  provides=('finch')
+  provides=("finch=$pkgver")
   conflicts=('finch')
   pkgdesc="ncurses-based messaging client"
   depends=('libpurple-gnutls' 'libgnt' 'libx11')

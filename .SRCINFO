@@ -33,7 +33,7 @@ pkgbase = pidgin-gnutls
 	sha256sums = 0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356
 	sha256sums = SKIP
 	sha256sums = 7ac937705681460e42028e6ad2d3609b8d21108d534547c87991753c74a8fb5f
-	sha256sums = 88e965e2da3c907d7f553db75d233911207f4b3653feb681ec373e683c13aa29
+	sha256sums = d02eb86645d1692b51ed570c83069daee9f31ead481581906c771ee46e248889
 
 pkgname = pidgin-gnutls
 	pkgdesc = Multi-protocol instant messaging client
@@ -46,7 +46,7 @@ pkgname = pidgin-gnutls
 	depends = gst-plugins-good
 	depends = hicolor-icon-theme
 	optdepends = aspell: for spelling correction
-	provides = pidgin
+	provides = pidgin=2.14.14
 	conflicts = pidgin
 
 pkgname = libpurple-gnutls
@@ -64,7 +64,7 @@ pkgname = libpurple-gnutls
 	optdepends = ca-certificates: SSL CA certificates
 	optdepends = python-dbus: for purple-remote and purple-url-handler
 	optdepends = tk: Tcl/Tk scripting support
-	provides = libpurple
+	provides = libpurple=2.14.14
 	conflicts = libpurple
 
 pkgname = finch-gnutls
@@ -72,5 +72,5 @@ pkgname = finch-gnutls
 	depends = libpurple-gnutls
 	depends = libgnt
 	depends = libx11
-	provides = finch
+	provides = finch=2.14.14
 	conflicts = finch
