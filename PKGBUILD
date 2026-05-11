@@ -1,6 +1,6 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=pam_authelia
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="PAM module that delegates authentication (including 2FA) to an Authelia server."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,7 +19,7 @@ conflicts=(
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/authelia/pam/archive/v${pkgver}.tar.gz")
 
-sha256sums=('e169f6c3369306afe3a33c21fad775d9986e6c3b54fe1a4d980cba4955779d3b')
+sha256sums=('c972bc794eb45e3aeffafe8e148f3d1cfa1a188d21af05cd3e7f9a40444fec67')
 
 build() {
   export GOPATH="${srcdir}/gopath" PATH="${PATH}:${srcdir}/gopath/bin"
