@@ -1,6 +1,6 @@
 pkgbase = hardinfo2-git
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.2.13.r72.ge3a230d
+	pkgver = 2.2.16.r131.g07bb126
 	pkgrel = 1
 	url = https://www.hardinfo2.org
 	install = hardinfo2.install
@@ -30,7 +30,9 @@ pkgbase = hardinfo2-git
 	depends = vulkan-tools
 	depends = xdg-utils
 	optdepends = apcupsd: apcaccess is used for UPS/battery information
+	optdepends = freeipmi: Show ipmi sensors for Workstations/Servers
 	optdepends = fwupd: Firmware module
+	optdepends = wtmpdb: Show latest boots using Who Touched My PC database
 	optdepends = xorg-xrandr: Read monitor setup
 	provides = hardinfo2
 	provides = hardinfo

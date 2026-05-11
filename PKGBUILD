@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.13.r72.ge3a230d
+pkgver=2.2.16.r131.g07bb126
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -33,7 +33,9 @@ makedepends=(
 checkdepends=('appstream')
 optdepends=(
   'apcupsd: apcaccess is used for UPS/battery information'
+  'freeipmi: Show ipmi sensors for Workstations/Servers'
   'fwupd: Firmware module'
+  'wtmpdb: Show latest boots using Who Touched My PC database'
   'xorg-xrandr: Read monitor setup'
 )
 install="${pkgname%-git}.install"
