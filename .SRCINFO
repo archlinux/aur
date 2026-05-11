@@ -25,9 +25,9 @@ pkgbase = xdg-desktop-portal-hyprland-frozen
 	depends = wayland
 	depends = xdg-desktop-portal
 	provides = xdg-desktop-portal-hyprland-frozen
-	provides = xdg-desktop-portal-hyprland
 	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-hyprland-git
+	conflicts = xdg-desktop-portal-hyprland
 	source = xdg-desktop-portal-hyprland-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-xdg-desktop-portal-hyprland-hyprland-v0.54.git
 	sha256sums = SKIP
 
