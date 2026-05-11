@@ -9,6 +9,13 @@ post_install() {
         systemctl --user enable --now aqueous-inputd.socket
     Otherwise the session launcher will spawn it automatically.
 
+    A udev rule (70-aqueous-uaccess.rules) is installed so the active
+    local session user gets an ACL on /dev/input/event* via logind's
+    'uaccess' tag -- you do NOT need to be in the 'input' group. The
+    rule takes effect on the next device add/replug, on reboot, or
+    after:
+        sudo udevadm control --reload && sudo udevadm trigger --subsystem-match=input
+
     The output daemon (aqueous-outputd) drives wlr-randr from inside
     River's control context. It is started automatically by
     /usr/bin/aqueous-init at session start, which also applies the
