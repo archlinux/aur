@@ -1,0 +1,22 @@
+pkgbase = kwin-effects-yet-another-magic-lamp-reloaded-git
+	pkgdesc = Fork of Yet Another Magic Lamp, targeting Plasma 6.6+ with exclusive Wayland support
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/Si13n7/kwin-effects-yet-another-magic-lamp-reloaded
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kwin
+	depends = qt6-base
+	depends = kcmutils
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kwindowsystem
+	depends = libdrm
+	source = kwin-effects-yet-another-magic-lamp-reloaded-git::git+https://github.com/Si13n7/kwin-effects-yet-another-magic-lamp-reloaded.git
+	sha256sums = SKIP
+
+pkgname = kwin-effects-yet-another-magic-lamp-reloaded-git
