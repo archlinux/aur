@@ -1,0 +1,23 @@
+pkgbase = dusk
+	pkgdesc = A reverse-engineered reimplementation of Twilight Princess.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://twilitrealm.dev
+	install = dusk.install
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = rocprofiler
+	depends = freetype2
+	depends = libjpeg-turbo
+	depends = sdl3
+	source = git+https://github.com/TwilitRealm/dusk.git#tag=v1.0.1
+	source = git+https://github.com/encounter/aurora.git
+	source = dusk.desktop
+	sha256sums = 0d76d2fe29a0273aea84f3d71807c09b08911523ebeca8a7db8c8c8fdaae7022
+	sha256sums = SKIP
+	sha256sums = 085c5e05684fbfb877aeddb73ef2cbc326b6de64bd6cc49d72e454d55a023df7
+
+pkgname = dusk

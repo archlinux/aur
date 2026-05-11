@@ -1,0 +1,6 @@
+post_install() {
+  echo ""
+  echo "Dusk does not provide any copyrighted assets."
+  echo "You must provide your own copy of the original game."
+  echo ""
+}

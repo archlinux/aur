@@ -1,0 +1,4 @@
+[dusk]
+source = "git"
+git = "https://github.com/TwilitRealm/dusk.git"
+prefix = "v"
