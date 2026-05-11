@@ -10,11 +10,11 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.12.3')
+provides=('gdal=3.12.4')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.12.3
-pkgrel=1
+pkgver=3.12.4
+pkgrel=2
 pkgdesc="A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=(x86_64)
 url="https://gdal.org/"
@@ -38,7 +38,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              # ogdi
 changelog=$_pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('07b07fccc778d27a00b54961dc20d94a53a9ce4ff0b20b6e98c2f187ca1a7fbca7b0fa105d5b7b13fbd03a54e551dbd9dbd1ce0ca7fc57721405ae09ae5ab2f1')
+b2sums=('a09e0dd2b5da00286e8e2e2b1ccebf3577bfb18fb25ac04b452858e0ccb2dedfbc26c6c741d0c11bd255026d614872920750cf1ab838f8b21acfdcdf71691819')
 
 build() {
   opt_libs=""
@@ -100,13 +100,13 @@ package_gdal-ecw () {
            pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd libaec
            arrow cfitsio hdf5 libheif mariadb-libs netcdf openexr openjpeg2
            podofo poppler postgresql-libs libwebp libecwj2 
-           libkml-git
            )
   optdepends=('arrow: Arrow/Parquet support'
               'cfitsio: FITS support'
               'hdf5: HDF5 support'
               'libheif: HEIF support'
               'libjxl: JPEG XL support'
+              'libkml-git: Full KML/KMZ support'
               'mariadb-libs: MySQL support'
               'netcdf: netCDF support'
               'openexr: EXR support'
