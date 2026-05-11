@@ -4,7 +4,7 @@
 pkgname=hyprland-qt-support-frozen
 pkgver=0.1.0.r8.g073c52b
 pkgrel=1
-conflicts=('hyprland-qt-support' 'hyprland-qt-support-git')
+conflicts=('hyprland-qt-support-git')
 provides=('hyprland-qt-support-frozen' 'hyprland-qt-support')
 pkgdesc="A qml style provider for hypr* qt apps - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
