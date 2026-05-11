@@ -3,7 +3,7 @@ _raw_pkgver=02.06.00.51
 
 pkgname=bambu-studio
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PC Software for BambuLab and other 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
@@ -68,4 +68,8 @@ package() {
 	ln -sf /opt/BambuStudio/bin/bambu-studio $pkgdir/usr/bin/bambu-studio
 	install -Dm0644 $srcdir/BambuStudio.desktop $pkgdir/usr/share/applications/BambuStudio.desktop
 	install -Dm0644 $srcdir/BambuStudio-$_raw_pkgver/LICENSE $pkgdir/usr/share/licenses/BambuStudio/LICENSE
+	install -Dm0644 $srcdir/BambuStudio-$_raw_pkgver/resources/images/BambuStudio_128px.png $pkgdir/usr/share/icons/hicolor/128x128/apps/BambuStudio.png
+	install -Dm0644 $srcdir/BambuStudio-$_raw_pkgver/resources/images/BambuStudio_192px.png $pkgdir/usr/share/icons/hicolor/192x192/apps/BambuStudio.png
+	install -Dm0644 $srcdir/BambuStudio-$_raw_pkgver/resources/images/BambuStudio_32px.png $pkgdir/usr/share/icons/hicolor/32x32/apps/BambuStudio.png
+	install -Dm0644 $srcdir/BambuStudio-$_raw_pkgver/resources/images/BambuStudio.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/BambuStudio.svg
 }
