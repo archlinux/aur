@@ -1,6 +1,6 @@
 pkgbase = pam_authelia-bin
 	pkgdesc = PAM module that delegates authentication (including 2FA) to an Authelia server. Pre-compiled.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/authelia/pam
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = pam_authelia-bin
 	provides = pam_authelia
 	conflicts = pam_authelia
 	conflicts = pam_authelia-git
-	source_x86_64 = https://github.com/authelia/pam/releases/download/v0.1.0/pam_authelia-v0.1.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 8ea6dd93bbb57de209823bcf089bfae535391cedd407c7e674cd60e29c860f1d
-	source_aarch64 = https://github.com/authelia/pam/releases/download/v0.1.0/pam_authelia-v0.1.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 4bbd57d3248b2573dd6c37e22a4503f27efe6c008b7e8cd0fd63b1c584a2d7cb
-	source_armv7h = https://github.com/authelia/pam/releases/download/v0.1.0/pam_authelia-v0.1.0-linux-arm.tar.gz
-	sha256sums_armv7h = 4858886ad5bd7ba9f672c88bdd81cc10749f1c3d6d91d8f2172d66f6409f9e16
+	source_x86_64 = https://github.com/authelia/pam/releases/download/v0.1.1/pam_authelia-v0.1.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 69c88bf40eb13c8ced54adf8b12b7fd78961d32367c9ce4d02219bf88bd93dd0
+	source_aarch64 = https://github.com/authelia/pam/releases/download/v0.1.1/pam_authelia-v0.1.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 00c8d7448813dec26c54d45541bccd77f25a04d218d482b284dd41e0be150e3d
+	source_armv7h = https://github.com/authelia/pam/releases/download/v0.1.1/pam_authelia-v0.1.1-linux-arm.tar.gz
+	sha256sums_armv7h = 17a4890e491c866275f6e0fcd75f9af686b0455d0a5fddd69147b4be9b95f153
 
 pkgname = pam_authelia-bin
