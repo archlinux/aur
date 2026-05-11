@@ -1,61 +1,90 @@
 pkgbase = perl-dist-zilla
 	pkgdesc = distribution builder; installer not included!
 	pkgver = 6.037
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/Dist-Zilla
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
-	checkdepends = perl-test-deep
+	checkdepends = perl-cpan-meta-check>=0.011
+	checkdepends = perl-cpan-meta-requirements>=2.121
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-extutils-manifest>=1.66
+	checkdepends = perl-lib
+	checkdepends = perl-pathtools
+	checkdepends = perl-software-license
 	checkdepends = perl-test-failwarnings
 	checkdepends = perl-test-fatal
 	checkdepends = perl-test-file-sharedir
-	depends = perl
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.78
 	depends = perl-app-cmd
-	depends = perl-class-load
-	depends = perl-cpan-meta-check
-	depends = perl-cpan-uploader
+	depends = perl-archive-tar
+	depends = perl-autodie
+	depends = perl-carp
 	depends = perl-config-ini
 	depends = perl-config-mvp
-	depends = perl-config-mvp-reader-ini
-	depends = perl-data-section
-	depends = perl-datetime
-	depends = perl-file-copy-recursive
+	depends = perl-config-mvp-reader-ini>=2.101461
+	depends = perl-cpan-meta
+	depends = perl-cpan-meta-requirements>=2.121
+	depends = perl-cpan-uploader>=0.103004
+	depends = perl-data-dumper
+	depends = perl-data-section>=0.200002
+	depends = perl-datetime>=0.44
+	depends = perl-digest-md5
+	depends = perl-encode
+	depends = perl-experimental
+	depends = perl-extutils-manifest>=1.66
+	depends = perl-file-copy-recursive>=0.41
 	depends = perl-file-find-rule
-	depends = perl-file-sharedir
-	depends = perl-file-sharedir-install
+	depends = perl-file-path
 	depends = perl-file-pushd
+	depends = perl-file-sharedir
+	depends = perl-file-sharedir-install>=0.03
+	depends = perl-file-temp
 	depends = perl-json-maybexs
-	depends = perl-log-dispatchouli
-	depends = perl-mixin-linewise
+	depends = perl-log-dispatchouli>=1.102220
+	depends = perl-mixin-linewise>=0.100
+	depends = perl-module-corelist
 	depends = perl-module-runtime
 	depends = perl-moose
 	depends = perl-moosex-lazyrequire
-	depends = perl-moosex-role-parameterized
+	depends = perl-moosex-role-parameterized>=1.01
 	depends = perl-moosex-setonce
 	depends = perl-moosex-types
 	depends = perl-moosex-types-perl
-	depends = perl-ppi
+	depends = perl-namespace-autoclean
 	depends = perl-params-util
-	depends = perl-path-tiny
-	depends = perl-perl-prereqscanner
+	depends = perl-parent
+	depends = perl-path-tiny>=0.052
+	depends = perl-pathtools
+	depends = perl-perl-prereqscanner>=1.016
+	depends = perl-pod-simple
+	depends = perl-ppi>=1.222
+	depends = perl-scalar-list-utils
 	depends = perl-software-license
-	depends = perl-string-formatter
-	depends = perl-string-rewriteprefix
+	depends = perl-string-formatter>=0.100680
+	depends = perl-string-rewriteprefix>=0.006
 	depends = perl-sub-exporter
 	depends = perl-sub-exporter-formethods
+	depends = perl-term-ansicolor>=5.00
 	depends = perl-term-encoding
-	depends = perl-term-ui
 	depends = perl-term-readkey
-	depends = perl-text-glob
+	depends = perl-term-readline
+	depends = perl-term-ui
+	depends = perl-test-deep
+	depends = perl-text-glob>=0.08
 	depends = perl-text-template
 	depends = perl-try-tiny
+	depends = perl-version
 	depends = perl-yaml-tiny
-	depends = perl-namespace-autoclean
-	optdepends = perl-data-optlist: Parse and validate simple name/value option pairs
-	optdepends = perl-ppi-xs: Minor XS acceleration for PPI
-	optdepends = perl-term-readline-gnu: GNU Readline XS library wrapper
+	depends = perl>=5.20.0
+	optdepends = cpanminus
+	optdepends = perl-cpan-meta>=2.120900
+	optdepends = perl-data-optlist>=0.110
+	optdepends = perl-ppi-xs
+	optdepends = perl-term-readline-gnu
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Dist-Zilla-6.037.tar.gz
-	md5sums = 55440366afdd28cdcef808c7a7ed1bbc
+	sha256sums = 8c90db44bf09b11041761528edafb821669c87c154a757dd470608545a7dc75e
 
 pkgname = perl-dist-zilla
