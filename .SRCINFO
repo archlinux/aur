@@ -1,0 +1,17 @@
+pkgbase = gst-cam-rs
+	pkgdesc = A Rust-based webcam viewer and recorder using egui and GStreamer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/itonia149/gst-cam-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	source = gst-cam-rs-0.1.0.tar.gz::https://github.com/itonia149/gst-cam-rs/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 83f39ac05a59dc61b5090fca09ae8a2855ba33e24b2cbe745e90b3b2cd6cf3e8
+
+pkgname = gst-cam-rs
