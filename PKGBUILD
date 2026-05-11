@@ -1,5 +1,5 @@
 pkgname=mangayomi-linux
-pkgver=0.7.70
+pkgver=0.7.75
 pkgrel=1
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt Linux zip)"
 arch=('x86_64')
