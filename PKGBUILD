@@ -3,7 +3,7 @@
 
 pkgname=uavs3d-llvm-git
 pkgver=1.1.r50.g0e20d2c
-pkgrel=1
+pkgrel=2
 pkgdesc='An AVS3 decoder supporting AVS3-P2 baseline profile (git version) — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://github.com/uavs3/uavs3d/'
@@ -42,6 +42,8 @@ build() {
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
+    export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     
     local -a _cmake_opts=(
         '-GUnix Makefiles'

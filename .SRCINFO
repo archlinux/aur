@@ -1,7 +1,7 @@
 pkgbase = uavs3d-llvm-git
 	pkgdesc = An AVS3 decoder supporting AVS3-P2 baseline profile (git version) — built with Clang and LLVM lld
 	pkgver = 1.1.r50.g0e20d2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uavs3/uavs3d/
 	arch = x86_64
 	license = BSD-3-Clause
