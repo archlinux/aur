@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('mpv' 'openssl')
 makedepends=('rust' 'cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fezzik-the-giant/riptide/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('497de8962a84d4a41aa05f5e8bc766079b5b4c11bfcc93995e55e0d1f8b09023')
+sha256sums=('fc31f0da70ba895fa92792b3e4dd994843eff62684c4b96b8645426488af78e5')
 
 prepare() {
     cd "$pkgname-$pkgver"
