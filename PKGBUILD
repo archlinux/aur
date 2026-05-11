@@ -1,5 +1,5 @@
 pkgname=glimpse-desktop-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Wayland shell, status panel, idle, lock screen, wallpaper, and sunset daemons for the Glimpse ecosystem"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('gtk4' 'libadwaita' 'gtk4-layer-shell' 'libheif' 'pam')
 provides=('glimpse-panel' 'glimpse-shell' 'glimpse-idle' 'glimpse-lock' 'glimpse-sunset' 'glimpse-wallpaper')
 conflicts=('glimpse-panel' 'glimpse-shell' 'glimpse-idle' 'glimpse-lock' 'glimpse-sunset' 'glimpse-wallpaper')
 source_x86_64=("glimpse-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/glimpse-$pkgver-x86_64.tar.zst")
-b2sums_x86_64=('98ff738c15d12f7a448d1fbbb488d108dfafb0851193c5a156bcb2c30e8c4b22720b4782be2dd80caa117370ac2c79c3c1f2e69c5f22fde39730d84c9ab00b13')
+b2sums_x86_64=('9ca1833aaed63dd07852669a5e92fcf33962721a8b36ebdf56e43c4ed3b51eba7f52a0077b0a326e253c6771f51b251674990b161451ba0c4453fc6fded83019')
 
 package() {
     cp -a "$srcdir/usr" "$pkgdir/"
