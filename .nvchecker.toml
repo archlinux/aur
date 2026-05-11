@@ -1,0 +1,4 @@
+[bb-imager-cli]
+source = "git"
+git = "https://github.com/beagleboard/bb-imager-rs.git"
+prefix = "v"
