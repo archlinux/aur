@@ -3,7 +3,7 @@
 
 pkgname=rockchip-mpp-llvm
 pkgver=1.0.11
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='Rockchip Media Process Platform (MPP) — built with Clang and LLVM lld'
 arch=('x86_64')
@@ -47,6 +47,8 @@ build() {
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
+    export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
+    export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     
     cmake -B build -S "mpp-${pkgver}" \
         -G 'Unix Makefiles' \
