@@ -5,7 +5,7 @@ _pkgname=thelounge
 pkgname=thelounge-beta
 _pkgver=4.5.0-rc.2
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern self-hosted web IRC client (Latest release/pre-release)'
 url='https://thelounge.chat/'
 arch=('any')
@@ -54,6 +54,7 @@ build() {
 package() {
     install -dm755 "$pkgdir/usr/lib/thelounge"
     cp -r "$srcdir/_build/node_modules" "$pkgdir/usr/lib/thelounge"
+    rm -f "$pkgdir/usr/lib/thelounge/node_modules/.yarn-integrity"
 
     install -dm755 "$pkgdir/usr/bin/"
     ln -s "/usr/lib/thelounge/node_modules/thelounge/index.js" "$pkgdir/usr/bin/thelounge"
