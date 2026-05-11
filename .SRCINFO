@@ -1,6 +1,6 @@
 pkgbase = hister-git
 	pkgdesc = Web history on steroids - blazing fast, content-based search for visited websites (git)
-	pkgver = 0.13.0.r116.g2a95f92
+	pkgver = 0.14.0.r0.g49f90a1
 	pkgrel = 1
 	url = https://github.com/asciimoo/hister
 	install = hister.install
@@ -11,7 +11,7 @@ pkgbase = hister-git
 	makedepends = npm
 	makedepends = git
 	depends = sqlite
-	provides = hister=0.13.0.r116.g2a95f92
+	provides = hister=0.14.0.r0.g49f90a1
 	conflicts = hister
 	options = !lto
 	source = hister-git::git+https://github.com/asciimoo/hister.git
