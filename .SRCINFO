@@ -9,7 +9,7 @@ pkgbase = demoneditor-bin
 	depends = gtk3>=3.22
 	depends = python-gobject
 	depends = python-requests
-	depends = python-telnetlib-313-and-up
+	depends = python-telnetlib
 	optdepends = python-pillow
 	optdepends = python-chardet
 	source = https://github.com/DYefremov/DemonEditor/releases/download/3.14.4-b1/DemonEditor-3.14.4-Beta.deb
