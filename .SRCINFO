@@ -1,0 +1,19 @@
+pkgbase = python-pyrubberband
+	pkgdesc = Python wrapper for rubberband (audio time-stretch and pitch-shift)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/bmcfee/pyrubberband
+	arch = any
+	license = ISC
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = rubberband
+	depends = python-numpy
+	depends = python-soundfile
+	source = https://files.pythonhosted.org/packages/b4/5f/e4e737a216c9327931cdee8ca2194c916ee8a1748a8c7c80d5d5a8368d81/pyrubberband-0.4.0.tar.gz
+	sha256sums = 74707ec8ca6c6234e84ad2d9a4aa5c08a62fcfd83da011d535d41f4388ac49f7
+
+pkgname = python-pyrubberband
