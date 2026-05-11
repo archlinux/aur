@@ -2,7 +2,7 @@
 
 _plug=subtext
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R2.2.g8ae5ba2
+pkgver=R6.4.gef0e4c5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -38,5 +38,5 @@ build() {
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
 
-  install -Dm644 "${_plug}/docs/subtext.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.rst"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }

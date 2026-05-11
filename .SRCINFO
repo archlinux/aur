@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-subtext-git
 	pkgdesc = Plugin for Vapoursynth: subtext (GIT version)
-	pkgver = R2.2.g8ae5ba2
+	pkgver = R6.4.gef0e4c5
 	pkgrel = 1
 	url = https://github.com/vapoursynth/subtext
 	arch = any
@@ -16,4 +16,3 @@ pkgbase = vapoursynth-plugin-subtext-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-subtext-git
-
