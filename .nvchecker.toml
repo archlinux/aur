@@ -1,0 +1,3 @@
+[perl-dist-zilla]
+source = "cpan"
+cpan = "Dist-Zilla"
