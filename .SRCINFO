@@ -1,10 +1,10 @@
 pkgbase = lcms2-ff
 	pkgdesc = Small-footprint color management engine including fast_float plugin
-	pkgver = 2.17
+	pkgver = 2.19.1
 	pkgrel = 1
 	url = https://www.littlecms.com/
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	makedepends = git
 	depends = glibc
 	depends = libtiff
@@ -12,7 +12,7 @@ pkgbase = lcms2-ff
 	provides = liblcms2.so
 	conflicts = lcms2
 	options = staticlibs
-	source = https://github.com/mm2/Little-CMS/releases/download/lcms2.17/lcms2-2.17.tar.gz
-	sha256sums = d11af569e42a1baa1650d20ad61d12e41af4fead4aa7964a01f93b08b53ab074
+	source = https://github.com/mm2/Little-CMS/releases/download/lcms2.19.1/lcms2-2.19.1.tar.gz
+	sha256sums = bfc54f7bab59fbc921012014a8032e4cba4abd46db47d46b76416a8c0b2815c8
 
 pkgname = lcms2-ff
