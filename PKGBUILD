@@ -1,6 +1,6 @@
 # Maintainer: mc_klatz
 pkgname=sone
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Native Linux TIDAL client — lossless streaming with bit-perfect ALSA output"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
     'alsa-plugins: exclusive ALSA output (bit-perfect mode)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lullabyX/sone/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0ab1f7c57c8bbd33fd7e6dba68301bc66b2c7b2b5aa1e0769807637112e93638')
+sha256sums=('104e34539d80b14d4748f6e2733f40d9d5a68f062e2196c179deedfb87f196d3')
 
 prepare() {
     cd "$srcdir/sone-$pkgver"
@@ -57,6 +57,6 @@ package() {
         "$pkgdir/usr/share/applications/sone.desktop"
     for size in 32x32 64x64 128x128; do
         install -Dm644 "src-tauri/icons/${size}.png" \
-            "$pkgdir/usr/share/icons/hicolor/${size}/apps/sone.png"
+            "$pkgdir/usr/share/icons/hicolor/${size}/apps/io.github.lullabyX.sone.png"
     done
 }
