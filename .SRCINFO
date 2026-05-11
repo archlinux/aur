@@ -10,6 +10,7 @@ pkgbase = obs-bilibili-stream-bin
 	depends = qt6-base
 	provides = obs-bilibili-stream
 	conflicts = obs-bilibili-stream
+	options = !debug
 	source = obs-bilibili-stream-bin-2.0.12.deb::https://github.com/Zarosmm/obs-bilibili-stream/releases/download/2.0.12/bilibili-stream-for-obs-2.0.12-x86_64-ubuntu-24.04.deb
 	sha256sums = e95849f2ef017aa9e0db40f6127dd729a138af0aeb1e0a5551649ce647feaeeb
 

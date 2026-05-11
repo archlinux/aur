@@ -10,6 +10,7 @@ license=('GPL2')
 depends=('obs-studio' 'curl' 'qt6-base')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+options=('!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/bilibili-stream-for-obs-${pkgver}-x86_64-ubuntu-24.04.deb")
 sha256sums=('e95849f2ef017aa9e0db40f6127dd729a138af0aeb1e0a5551649ce647feaeeb')
 
