@@ -42,5 +42,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/hyprland/"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
