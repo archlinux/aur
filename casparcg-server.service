@@ -1,0 +1,16 @@
+[Unit]
+Description=CasparCG Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=casparcg
+Group=casparcg
+WorkingDirectory=/opt/casparcg         
+ExecStart=/usr/bin/casparcg-server
+Restart=on-failure
+RestartForceExitStatus=5
+
+[Install]
+WantedBy=multi-user.target
