@@ -1,17 +1,16 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 _pkgname=tp-dusk
 pkgname=${_pkgname}-git
-pkgver=r3996.c948bffd32
+pkgver=1.0.1.r1.g764fc0b
 pkgrel=1
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
 license=('CC0-1.0')
-depends=(libjpeg-turbo glibc curl libgcc sdl3 abseil-cpp freetype2 libstdc++)
-makedepends=(cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr)
-provides=(tp-dusk)
-conflicts=(tp-dusk)
+depends=(libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ hicolor-icon-theme bash)
+makedepends=(git cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr patchelf)
 source=(
   "git+$url"
   "git+https://github.com/encounter/aurora.git"
@@ -21,12 +20,12 @@ source=(
 
 sha256sums=('SKIP'
             'SKIP'
-            '9bcacbd0a3da8a4149dd8cc4b904f3e9df6af59eb86de5cd6ece1f6ee1179ad5'
+            'd7fc1497606271498fe7007b526954b671dd22493f33a19b654a9da18eefcce6'
             '1e6547cf4dd69f0ecb6895733dcd13f3e265c6267298c7bf83dd6acbad42fda5')
 
 pkgver() {
 	cd "$srcdir/dusk"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
@@ -40,16 +39,27 @@ prepare() {
 build() {
   cd "$srcdir/dusk"
 
-  cmake --preset linux-default-relwithdebinfo
-  cmake --build --preset linux-default-relwithdebinfo
+  cmake -B build -S dusk -GNinja \
+      -DCMAKE_BUILD_TYPE=None \
+      -DCMAKE_C_COMPILER=clang \
+      -DCMAKE_CXX_COMPILER=clang++ \
+      -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
+      -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
+      -DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
+      -DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
+      -DDUSK_ENABLE_UPDATE_CHECKER=OFF
+  
+    cmake --build build
 }
 
 package() {
-  install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/tp-dusk"
+  install -Dm 755 "${srcdir}/build/dusk" "${pkgdir}/usr/lib/${pkgname}/dusk"
+  install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -dm 755 "${pkgdir}/usr/share/${pkgname}"
+  cp -r "${srcdir}/dusk/res" "${pkgdir}/usr/share/${pkgname}/res"
 
-  install -Dm 755 "${srcdir}/dusk/build/linux-default-relwithdebinfo/dusk" "${pkgdir}/usr/share/tp-dusk/dusk"
-  cp -r "${srcdir}/dusk/res" "${pkgdir}/usr/share/tp-dusk/res"
+  install -Dm 644 "${srcdir}/dusk/res/icon.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
+  install -Dm 755 "tp-dusk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  install -Dm 644 "${srcdir}/dusk/res/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  install -Dm 755 "tp-dusk.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop" 
+  patchelf --remove-rpath "${pkgdir}/usr/lib/${pkgname}/dusk"
 }
