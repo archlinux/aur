@@ -1,7 +1,7 @@
 pkgbase = itksnap-bin
 	pkgdesc = Interactive 3D medical image segmentation tool (ITK-SNAP, prebuilt binary)
 	pkgver = 4.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.itksnap.org
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -34,6 +34,6 @@ pkgbase = itksnap-bin
 	source = https://sourceforge.net/projects/itk-snap/files/itk-snap/4.4.0/itksnap-4.4.0-20250909-Linux-x86_64.tar.gz
 	source = itksnap.desktop
 	sha256sums = 10524c143d329c197a6ce05ac112dcd5686f9c0d4b3b985c2287c02de923948c
-	sha256sums = SKIP
+	sha256sums = 5ffdbb0f8ebad80ebb463a6471abc2b9a202f8032f4d70a58cee999d694173ce
 
 pkgname = itksnap-bin
