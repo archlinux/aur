@@ -1,4 +1,4 @@
-pkgname=lime
+pkgname=lime-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Security wrapper over AUR (paru/yay) with risk analysis"

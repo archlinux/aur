@@ -1,4 +1,4 @@
-pkgbase = lime
+pkgbase = lime-bin
 	pkgdesc = Security wrapper over AUR (paru/yay) with risk analysis
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = lime
 	source = git+https://github.com/pachkakirieshek/lime.git
 	sha256sums = SKIP
 
-pkgname = lime
+pkgname = lime-bin
