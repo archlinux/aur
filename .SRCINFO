@@ -1,6 +1,6 @@
 pkgbase = clipsim-git
 	pkgdesc = clipsim is a simple and fast X clipboard manager written in C.
-	pkgver = r1039.4366025
+	pkgver = r1041.ed980f3
 	pkgrel = 1
 	url = https://github.com/lucas-mior/clipsim
 	arch = x86_64
