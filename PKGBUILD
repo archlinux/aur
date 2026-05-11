@@ -1,10 +1,10 @@
 # Maintainer: Blaadick <null>
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=("i686-w64-mingw32" "x86_64-w64-mingw32")
 
 pkgname="mingw-w64-nlohmann-json"
 pkgver="3.12.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Header-only JSON library for Modern C++ (mingw-w64)"
 url="https://github.com/nlohmann/json"
 license=("MIT")
@@ -26,8 +26,9 @@ build() {
 
 package() {
     cd "$srcdir/json-${pkgver}"
+    export DESTDIR="$pkgdir"
 
     for arch in ${_architectures[@]}; do
-        DESTDIR="$pkgdir" cmake --install "build-${arch}"
+        cmake --install "build-${arch}"
     done
 }
