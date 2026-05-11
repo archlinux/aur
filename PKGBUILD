@@ -1,7 +1,7 @@
 # Maintainer: Latte macchiato <contact@lattemacchiato.dev>
 pkgname=plezy-git
 _pkgname=plezy
-pkgver=1.14.0.r0.g70f6e21
+pkgver=2.0.0.r8.gfd1eaf9d
 pkgver() {
   cd "$pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -36,10 +36,8 @@ source=(
     "$_pkgname::git+$url.git"
     "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutter_ver}-stable.tar.xz"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-)
+sha256sums=('SKIP'
+            'a70e3b829f53acd013aae65995755db0f421457b5ab754afa5a344cd5ec4d8d5')
 
 pkgver() {
     cd "$_pkgname"

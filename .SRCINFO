@@ -1,6 +1,6 @@
 pkgbase = plezy-git
 	pkgdesc = A modern Plex client for desktop and mobile
-	pkgver = 1.14.0.r0.g70f6e21
+	pkgver = 2.0.0.r8.gfd1eaf9d
 	pkgrel = 1
 	url = https://github.com/edde746/plezy
 	arch = x86_64
@@ -24,6 +24,6 @@ pkgbase = plezy-git
 	source = plezy::git+https://github.com/edde746/plezy.git
 	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.38.6-stable.tar.xz
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = a70e3b829f53acd013aae65995755db0f421457b5ab754afa5a344cd5ec4d8d5
 
 pkgname = plezy-git
