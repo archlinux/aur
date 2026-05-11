@@ -7,7 +7,7 @@ _pypi_name=tabledata
 _name=${_pypi_name,,}
 
 pkgname=python-${_name,,}
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Python library to represent tabular data'
 arch=('any')
@@ -32,7 +32,7 @@ depends=(
   'python-typepy')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('e9649cab129d718f3bff4150083b77f8a78c30f6634a30caf692b10fdc60cb97')
+sha256sums=('98c64d0ad6b520846b41000fb3f5b2f42fa7ca2675c2c669e5ccab6b93082a36')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
