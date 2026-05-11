@@ -10,8 +10,8 @@ pkgbase = hyprland-protocols-frozen
 	makedepends = git
 	makedepends = ninja
 	provides = hyprland-protocols-frozen
-	provides = hyprland-protocols
 	conflicts = hyprland-protocols-git
+	conflicts = hyprland-protocols
 	source = hyprland-protocols-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprland-protocols-hyprland-v0.54.git
 	sha256sums = SKIP
 

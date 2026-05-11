@@ -4,8 +4,8 @@
 pkgname=hyprland-protocols-frozen
 pkgver=0.8.0.r3.gc8282f4
 pkgrel=1
-conflicts=('hyprland-protocols-git')
-provides=('hyprland-protocols-frozen' 'hyprland-protocols')
+conflicts=('hyprland-protocols-git' 'hyprland-protocols')
+provides=('hyprland-protocols-frozen' )
 pkgdesc="Wayland protocol extensions for Hyprland - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hyprland-protocols-hyprland-v0.54.git"
