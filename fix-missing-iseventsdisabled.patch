@@ -1,0 +1,14 @@
+--- a/pkg/exporter/utils/utils.go
++++ b/pkg/exporter/utils/utils.go
+@@ -55,6 +55,11 @@ func IsSimEnabled() bool {
+ 	return os.Getenv("SIMENABLED") == "1"
+ }
+ 
++// IsEventsDisabled checks if event collection is disabled via environment variable
++func IsEventsDisabled() bool {
++	return os.Getenv("EVENTS_DISABLED") == "1"
++}
++
+ func IsDebianInstall() bool {
+ 	serviceFiles := []string{ServiceFile, SriovServiceFile, NICServiceFile}
+ 	for _, file := range serviceFiles {
