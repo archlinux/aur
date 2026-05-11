@@ -1,7 +1,7 @@
 pkgbase = tp-dusk
 	pkgdesc = Dusk is a reverse-engineered reimplementation of Twilight Princess.
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/TwilitRealm/dusk
 	arch = x86_64
 	license = CC0-1.0
