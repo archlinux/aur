@@ -1,6 +1,6 @@
 pkgbase = zsh-mend-git
 	pkgdesc = A distro-agnostic system recovery and hardware assistant for Zsh
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/Rakosn1cek/mend
 	arch = any

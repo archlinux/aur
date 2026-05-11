@@ -1,6 +1,6 @@
 # Maintainer: Lukas Grumlik - Rakosn1cek <https://github.com/Rakosn1cek>
 pkgname=zsh-mend-git
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A distro-agnostic system recovery and hardware assistant for Zsh"
 arch=('any')
