@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.6.5
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
@@ -21,6 +21,8 @@ makedepends=(
     'shaderc'
     'vulkan-headers'
     'vulkan-icd-loader'
+    'gtk4'              # build-time headers for the GTK4 OSD frontend
+    'gtk4-layer-shell'  # gtk4-layer-shell-rs needs the system lib at build time
 )
 optdepends=(
     'wtype: keyboard simulation for Wayland (recommended, best CJK support)'
@@ -33,15 +35,25 @@ optdepends=(
     'pulseaudio: audio server (alternative to PipeWire)'
     'vulkan-icd-loader: GPU acceleration via Vulkan for Whisper'
     'onnxruntime: required for ONNX engines (rebuild with onnxruntime installed)'
-    'cuda: GPU acceleration via CUDA for ONNX engines (NVIDIA GPUs)'
-    'rocm-hip-runtime: GPU acceleration via ROCm for ONNX engines (AMD GPUs)'
+    'cuda: GPU acceleration via CUDA 13 for ONNX engines (NVIDIA GPUs, requires driver 580+)'
+    'cuda12.6: GPU acceleration via CUDA 12 for ONNX engines (older NVIDIA setups)'
+    'rocm-hip-runtime: GPU acceleration via MIGraphX for ONNX engines (AMD GPUs)'
     'ollama: local AI summarization for meeting mode'
+    'gtk4: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
+    'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer'
 )
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
+validpgpkeys=('E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6')  # Peter Jackson <pete@peteonrails.com>
+source=(
+    "$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
+)
 # TODO: Update checksum from final release tarball before deploying to AUR
-sha256sums=('SKIP')
+sha256sums=(
+    'f6f2ed932696d112bd419a946e67d28a58c9151761f2cb60fa8e4b7f47bdec80'  # source tarball
+    'SKIP'  # source tarball signature
+)
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -126,13 +138,30 @@ build() {
         export ORT_STRATEGY=system
         cargo clean
         cargo build --frozen --release \
-            --features parakeet-load-dynamic,moonshine,sensevoice,paraformer,dolphin,omnilingual \
+            --features parakeet-load-dynamic,moonshine,sensevoice,paraformer,dolphin,omnilingual,cohere \
             --config 'profile.release.lto=false' \
             --config 'profile.release.codegen-units=8'
         cp target/release/voxtype voxtype-onnx
     else
         echo "=== Skipping ONNX engines (install onnxruntime and rebuild for Parakeet/SenseVoice/etc.) ==="
     fi
+
+    # Build OSD binaries: the launcher (voxtype-osd) plus both frontends.
+    # The launcher has no GUI deps; each frontend is gated on its feature
+    # so the cargo invocation needs both osd-gtk4 and osd-native enabled
+    # to produce all three. These don't need engine features (the OSD
+    # only consumes audio frames over IPC, not the transcribers).
+    cargo clean
+    cargo build --frozen --release \
+        --bin voxtype-osd \
+        --bin voxtype-osd-gtk4 \
+        --bin voxtype-osd-native \
+        --features osd-gtk4,osd-native \
+        --config 'profile.release.lto=false' \
+        --config 'profile.release.codegen-units=8'
+    cp target/release/voxtype-osd voxtype-osd
+    cp target/release/voxtype-osd-gtk4 voxtype-osd-gtk4
+    cp target/release/voxtype-osd-native voxtype-osd-native
 }
 
 check() {
@@ -163,6 +192,24 @@ package() {
     # Create symlink at /usr/bin/voxtype -> /usr/lib/voxtype/voxtype-native
     install -d "$pkgdir/usr/bin"
     ln -sf /usr/lib/voxtype/voxtype-native "$pkgdir/usr/bin/voxtype"
+
+    # Install OSD binaries into /usr/lib/voxtype/, matching the daemon
+    # variant layout. Only the launcher gets a /usr/bin symlink — users
+    # invoke `voxtype-osd` and config picks the frontend at runtime.
+    # The launcher resolves its real path via /proc/self/exe (which
+    # follows the symlink) and probes its parent directory first, so it
+    # finds /usr/lib/voxtype/voxtype-osd-{gtk4,native} without needing
+    # them on PATH.
+    install -Dm755 "voxtype-osd" "$pkgdir/usr/lib/voxtype/voxtype-osd"
+    install -Dm755 "voxtype-osd-gtk4" "$pkgdir/usr/lib/voxtype/voxtype-osd-gtk4"
+    install -Dm755 "voxtype-osd-native" "$pkgdir/usr/lib/voxtype/voxtype-osd-native"
+    ln -sf /usr/lib/voxtype/voxtype-osd "$pkgdir/usr/bin/voxtype-osd"
+
+    # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
+    install -Dm755 "packaging/scripts/voxtype-configure-launcher" \
+        "$pkgdir/usr/bin/voxtype-configure-launcher"
+    install -Dm644 "packaging/voxtype-configure.desktop" \
+        "$pkgdir/usr/share/applications/voxtype-configure.desktop"
 
     # Install default configuration
     install -Dm644 "config/default.toml" "$pkgdir/etc/voxtype/config.toml"
