@@ -16,7 +16,7 @@ source=(
   "${_pkgname}-headers-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/antpln/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-headers-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
   "${_pkgname}.preset"
 )
-sha256sums=('3027d24420a483ada26b1f30e7d9712cbeff74cab66ad130ee77dd509d46ab04' 'a064f873869f43a030b9a4d2ca20be886934626f00ed74ef4adf8c8c0452abb4' 'ed5f628f80039519b190f5ee5d529d167b6521a041ab20701f0c86a76a4ae963')
+sha256sums=('c465ef5ddfb8eee343e1ae48807b1042aa86764761e6a09c2aecb6a164fabaa1' 'e21ef6476e1d1244a950fd384240907199fef8ed3197c96338e5e3fb3e1f4eaa' 'ed5f628f80039519b190f5ee5d529d167b6521a041ab20701f0c86a76a4ae963')
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" "${_pkgname}-headers-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 
 package_linux-galaxyaudio-bin() {
