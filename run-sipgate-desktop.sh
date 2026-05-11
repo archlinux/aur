@@ -45,7 +45,7 @@ if [[ $result -ge 2 ]]; then
   MSG="Please install the latest version of the sipgate package (${LATEST_VERSION}). If there is no AUR package available yet for this version, you may notify the maintainers at https://aur.archlinux.org/packages/sipgate"
   notify-send "$MSG"
   echo "$MSG" >&2
-  exec /opt/sipgate/sipgate-desktop
+  exec /opt/sipgate/sipgate-desktop "$@"
 else
-  exec /opt/sipgate/sipgate-desktop
+  exec /opt/sipgate/sipgate-desktop "$@"
 fi
