@@ -1,7 +1,7 @@
 pkgbase = continuwuity-bin
 	pkgdesc = Community driven continuation of conduwuit & Conduit, focusing on user experience and new features
 	pkgver = 0.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forgejo.ellis.link/continuwuation/continuwuity
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = continuwuity-bin
 	conflicts = continuwuity
 	options = !debug
 	backup = etc/conduwuit/conduwuit.toml
-	source = continuwuity-LICENSE-Apache-2.0::https://forgejo.ellis.link/continuwuation/continuwuity/raw/tag/v0.5.9/LICENSE
+	source = continuwuity-0.5.9-LICENSE::https://forgejo.ellis.link/continuwuation/continuwuity/raw/tag/v0.5.9/LICENSE
 	source = continuwuity-0.5.9-CHANGELOG.md::https://forgejo.ellis.link/continuwuation/continuwuity/raw/tag/v0.5.9/CHANGELOG.md
 	source = continuwuity-0.5.9-conduwuit.service::https://forgejo.ellis.link/continuwuation/continuwuity/raw/tag/v0.5.9/pkg/conduwuit.service
 	source = continuwuity-0.5.9-conduwuit-example.toml::https://forgejo.ellis.link/continuwuation/continuwuity/raw/tag/v0.5.9/conduwuit-example.toml

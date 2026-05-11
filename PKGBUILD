@@ -3,7 +3,7 @@
 pkgname=continuwuity-bin
 _name=${pkgname%-bin}
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Community driven continuation of conduwuit & Conduit, focusing on user experience and new features'
 arch=(x86_64 aarch64)
 url="https://forgejo.ellis.link/continuwuation/$_name"
@@ -15,7 +15,7 @@ backup=(etc/conduwuit/conduwuit.toml)
 options=(!debug)
 source_x86_64=($_name-$pkgver-x86_64::$url/releases/download/v$pkgver/conduwuit-linux-amd64)
 source_aarch64=($_name-$pkgver-aarch64::$url/releases/download/v$pkgver/conduwuit-linux-arm64)
-source=($_name-LICENSE-${license[0]}::$url/raw/tag/v$pkgver/LICENSE
+source=($_name-$pkgver-LICENSE::$url/raw/tag/v$pkgver/LICENSE
         $_name-$pkgver-CHANGELOG.md::$url/raw/tag/v$pkgver/CHANGELOG.md
         $_name-$pkgver-conduwuit.service::$url/raw/tag/v$pkgver/pkg/conduwuit.service
         $_name-$pkgver-conduwuit-example.toml::$url/raw/tag/v$pkgver/conduwuit-example.toml)
@@ -28,7 +28,7 @@ b2sums_aarch64=('5449f2cf4ebbae151a7e123a42f9799d3ce509d4c8ed91f2d62ba2e9e3b914b
 
 package() {
     install -Dm755 $_name-$pkgver-$CARCH "$pkgdir/usr/bin/conduwuit"
-    install -Dm644 $_name-LICENSE-${license[0]} "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 $_name-$pkgver-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 $_name-$pkgver-CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
     install -Dm644 $_name-$pkgver-conduwuit.service "$pkgdir/usr/lib/systemd/system/$_name.service"
     install -Dm600 $_name-$pkgver-conduwuit-example.toml "$pkgdir/etc/conduwuit/conduwuit.toml"
