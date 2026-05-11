@@ -1,6 +1,6 @@
 # Maintainer: Matteo Giordano <mail at matteogiordano dot me>
 pkgname="sabiql"
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="A fast, driver-less TUI to browse, query, and edit PostgreSQL databases"
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('graphviz: for ER diagrams')
 options=(!lto)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('6e8ff58dc18a728d33e54b007e26f2eb3da529adb301d8b0983d887edb1b5d13c4bf93845b375daf8a53bfaeb8f9ddabbc7f87b67389b8b88c5e19f1f42c1b6b')
+sha512sums=('93d3f253a869b1567d623fee51f917088c8bfc1dc22debc3c0d89b34ea8dcef3137e95b0e5caaa0b785bdda6716674bf40764dd7cbc0802033e7c65712a9c567')
 
 build() {
 	cd "$pkgname-$pkgver"
