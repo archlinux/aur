@@ -1,0 +1,22 @@
+pkgbase = lettuceai-cuda-bin
+	pkgdesc = LettuceAI desktop app (prebuilt binary, CUDA variant)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/LettuceAI/app
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = speech-dispatcher
+	depends = openssl
+	depends = cuda
+	provides = lettuceai
+	conflicts = lettuceai-bin
+	conflicts = lettuceai-vulkan-bin
+	conflicts = lettuceai-cuda-bin
+	source = https://github.com/LettuceAI/app/releases/download/desktop-release-1.4.1/lettuceai-linux-x86_64-cuda.tar.gz
+	sha256sums = 8c30b6d9ecae0876e6f1da54c5a0691df1693f5648ae671a8541820f04a0d588
+
+pkgname = lettuceai-cuda-bin
