@@ -11,7 +11,7 @@
 
 pkgname=tiledb
 _pkgname=TileDB
-pkgver=2.29.2
+pkgver=2.30.1
 pkgrel=1
 pkgdesc="The Universal Storage Engine"
 arch=('x86_64')
@@ -20,7 +20,7 @@ license=('MIT')
 makedepends=('git' 'cmake')
 depends=('lz4' 'bzip2' 'zstd' 'zlib' 'libwebp' 'spdlog' 'curl' 'openssl' 'aws-sdk-cpp' 'vcpkg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('44fd4c6c25938a123edc711f082a1c3e632a9f8365e64fe745bbf1e782d671d4')
+sha256sums=('36381f9eaa2a6defc8990aa1a95d1f0e87971748a50bf6fb705bf032ac7384cf')
 
 build() {
   cd "$_pkgname-${pkgver//_/-}"
@@ -31,6 +31,8 @@ build() {
     --enable-serialization \
     --enable-tools \
     --enable-s3 \
+    --enable-gcs \
+    --enable-azure \
     --disable-werror
   make -j $(nproc --all)
 }
