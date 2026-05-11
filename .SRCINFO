@@ -1,0 +1,21 @@
+pkgbase = pam_authelia-git
+	pkgdesc = PAM module that delegates authentication (including 2FA) to an Authelia server.
+	pkgver = 0.1.0.r0.g6c4af6f
+	pkgrel = 1
+	url = https://github.com/authelia/pam
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = gcc
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = pam
+	provides = pam_authelia
+	conflicts = pam_authelia
+	conflicts = pam_authelia-bin
+	source = pam_authelia::git+https://github.com/authelia/pam.git#branch=master
+	sha256sums = SKIP
+
+pkgname = pam_authelia-git
