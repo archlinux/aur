@@ -1,6 +1,6 @@
 pkgbase = pidgin-gnutls
 	pkgver = 2.14.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pidgin.im/
 	arch = x86_64
 	license = GPL
@@ -29,11 +29,13 @@ pkgbase = pidgin-gnutls
 	source = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.14/pidgin-2.14.14.tar.bz2.asc
 	source = libpurple-fix-media-manager-gst-device-reference.patch
 	source = libpurple-unref-gst-devices-from-messages.patch
+	source = pidgin-scale-buddy-icons-for-window.patch
 	validpgpkeys = 40DE1DC7288FE3F50AB938C548F66AFFD9BDB729
 	sha256sums = 0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356
 	sha256sums = SKIP
 	sha256sums = 7ac937705681460e42028e6ad2d3609b8d21108d534547c87991753c74a8fb5f
 	sha256sums = d02eb86645d1692b51ed570c83069daee9f31ead481581906c771ee46e248889
+	sha256sums = 6542aa377bb5c7eb44472a11b1673a8b3a729fc5c532774a0299e5344f53697b
 
 pkgname = pidgin-gnutls
 	pkgdesc = Multi-protocol instant messaging client

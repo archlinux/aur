@@ -1,0 +1,117 @@
+# HG changeset patch
+# User Mr. Tao <tao@post.cz>
+# Date 1778518800 -7200
+#      Mon May 11 19:00:00 2026 +0200
+# Branch release-2.x.y
+2.x.y: Scale buddy icons used as window icons
+
+Pidgin uses the active IM buddy icon as the GTK window icon. Large buddy icons
+are exported by GTK on X11 through _NET_WM_ICON, where a 512x512 ARGB icon can
+exceed the default maximum request size. Some taskbar implementations then keep
+showing the previous icon after switching conversation tabs.
+
+Scale buddy icons used as window icons to the same maximum size used by the
+conversation buddy icon UI. Also desaturate offline buddy icons on the scaled
+copy instead of modifying the animation's static pixbuf in place.
+
+Testing Done:
+Built pidgin/gtkconv.o in an Arch makepkg build tree.
+
+--- a/pidgin/gtkconv.c
++++ b/pidgin/gtkconv.c
+@@ -213,6 +213,41 @@
+ 	return node;
+ }
+ 
++static GdkPixbuf *
++pidgin_conv_create_window_icon(GdkPixbuf *pixbuf, gboolean offline)
++{
++	GdkPixbuf *window_icon = NULL;
++	int height, max_size, scaled_height, scaled_width, width;
++
++	g_return_val_if_fail(pixbuf != NULL, NULL);
++
++	width = gdk_pixbuf_get_width(pixbuf);
++	height = gdk_pixbuf_get_height(pixbuf);
++	max_size = BUDDYICON_SIZE_MAX;
++
++	/* Keep _NET_WM_ICON small enough for X11 and taskbar implementations. */
++	if (width <= max_size && height <= max_size) {
++		window_icon = offline ? gdk_pixbuf_copy(pixbuf) : g_object_ref(pixbuf);
++	} else if (width >= height) {
++		scaled_width = max_size;
++		scaled_height = MAX(1, height * scaled_width / width);
++		window_icon = gdk_pixbuf_scale_simple(pixbuf, scaled_width,
++		                                      scaled_height,
++		                                      GDK_INTERP_BILINEAR);
++	} else {
++		scaled_height = max_size;
++		scaled_width = MAX(1, width * scaled_height / height);
++		window_icon = gdk_pixbuf_scale_simple(pixbuf, scaled_width,
++		                                      scaled_height,
++		                                      GDK_INTERP_BILINEAR);
++	}
++
++	if (window_icon != NULL && offline)
++		gdk_pixbuf_saturate_and_pixelate(window_icon, window_icon, 0.0, FALSE);
++
++	return window_icon;
++}
++
+ /**************************************************************************
+  * Callbacks
+  **************************************************************************/
+@@ -6734,26 +6769,21 @@
+ 	 */
+ 	if (pidgin_conv_window_is_active_conversation(conv))
+ 	{
+-		GList *l = NULL;
+ 		if ((purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_IM) &&
+ 				(gtkconv->u.im->anim))
+ 		{
+ 			PurpleBuddy *buddy = purple_find_buddy(conv->account, conv->name);
+-			window_icon =
++			GdkPixbuf *pixbuf =
+ 				gdk_pixbuf_animation_get_static_image(gtkconv->u.im->anim);
+-
+-			if (buddy &&  !PURPLE_BUDDY_IS_ONLINE(buddy))
+-				gdk_pixbuf_saturate_and_pixelate(window_icon, window_icon, 0.0, FALSE);
+-
+-			g_object_ref(window_icon);
+-			l = g_list_append(l, window_icon);
++			window_icon = pidgin_conv_create_window_icon(pixbuf,
++				buddy && !PURPLE_BUDDY_IS_ONLINE(buddy));
++			if (window_icon != NULL) {
++				gtk_window_set_icon(GTK_WINDOW(win->window), window_icon);
++				g_object_unref(G_OBJECT(window_icon));
++			}
+ 		} else {
+-			l = pidgin_conv_get_tab_icons(conv);
+-		}
+-		gtk_window_set_icon_list(GTK_WINDOW(win->window), l);
+-		if (window_icon != NULL) {
+-			g_object_unref(G_OBJECT(window_icon));
+-			g_list_free(l);
++			GList *l = pidgin_conv_get_tab_icons(conv);
++			gtk_window_set_icon_list(GTK_WINDOW(win->window), l);
+ 		}
+ 	}
+ }
+@@ -7209,10 +7239,14 @@
+ 	/* The buddy icon code needs badly to be fixed. */
+ 	if(pidgin_conv_window_is_active_conversation(conv))
+ 	{
++		GdkPixbuf *window_icon;
+ 		buf = gdk_pixbuf_animation_get_static_image(gtkconv->u.im->anim);
+-		if (buddy && !PURPLE_BUDDY_IS_ONLINE(buddy))
+-			gdk_pixbuf_saturate_and_pixelate(buf, buf, 0.0, FALSE);
+-		gtk_window_set_icon(GTK_WINDOW(win->window), buf);
++		window_icon = pidgin_conv_create_window_icon(buf,
++			buddy && !PURPLE_BUDDY_IS_ONLINE(buddy));
++		if (window_icon != NULL) {
++			gtk_window_set_icon(GTK_WINDOW(win->window), window_icon);
++			g_object_unref(G_OBJECT(window_icon));
++		}
+ 	}
+ }
+ 
