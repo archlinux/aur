@@ -1,0 +1,4 @@
+[plasma6-wallpapers-blurredwallpaper]
+source = "github"
+github = "bouteillerAlan/blurredwallpaper"
+use_latest_release = true

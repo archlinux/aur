@@ -17,7 +17,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('e62d2cf5f656013a09ad5c4444bff834bf6455ce85847fe3cf01e89efefb31098702c9beb10aac9e3aa332130b321d8d67dd0f14ec44365ab87c6709c0600520')
 
 package() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
-    find "${_plasmoidName}" -type f -exec install -Dm 644 "{}" "${pkgdir}/usr/share/plasma/wallpapers/{}" \;
+  cd "$srcdir/${_pkgname}-${pkgver}"
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+  find "${_plasmoidName}" -type f -exec install -Dm 644 "{}" "${pkgdir}/usr/share/plasma/wallpapers/{}" \;
 }
