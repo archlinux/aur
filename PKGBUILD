@@ -5,7 +5,7 @@ _pkgname=nibble
 pkgname=${_pkgname}-bin
 pkgdesc="A local network scanner tui tool"
 
-pkgver=0.8.3
+pkgver=1.0.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('c1819d0b3d0e7df1cdc713250ea4029e626322aae58dc8e49b793b8df1a197b0')
-sha256sums_aarch64=('3d273a1853b423c063f0be947ab7e88def3c9bb72ad6f12cbaf5b2378a630834')
+sha256sums_x86_64=('ab879133b675cbc706d1e739db316ed9412c4ef61cf294679c9079ecbe152c39')
+sha256sums_aarch64=('fdcf5233f755abcb413d5d4ede5a2902fdf946cd993c34f7db44a1548e93b625')
 
 
 package() {
