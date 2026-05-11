@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=PCL-ME
+Comment=Cross-platform Minecraft launcher based on Plain Craft Launcher
+Exec=pcl-me
+Icon=pcl-me
+Terminal=false
+Categories=Game;
+StartupNotify=true
