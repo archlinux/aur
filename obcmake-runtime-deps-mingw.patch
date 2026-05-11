@@ -1,0 +1,42 @@
+diff --git a/cmake/module/OB/Executable.cmake b/cmake/module/OB/Executable.cmake
+index d05a30a..7ed5ef0 100644
+--- a/cmake/module/OB/Executable.cmake
++++ b/cmake/module/OB/Executable.cmake
+@@ -343,37 +343,6 @@ function(ob_add_standard_executable target)
+             COMPONENT ${_TARGET_NAME}
+             ${SUB_PROJ_EXCLUDE_FROM_ALL} # "EXCLUDE_FROM_ALL" if project is not top-level
+         )
+-        install(CODE [==[
+-            file(GET_RUNTIME_DEPENDENCIES
+-                EXECUTABLES "${OB_EXECUTABLE}"
+-                RESOLVED_DEPENDENCIES_VAR _runtime_deps_resolved
+-                UNRESOLVED_DEPENDENCIES_VAR _runtime_deps_unresolved
+-                PRE_EXCLUDE_REGEXES
+-                    [=[api-ms-]=] # VC Redistibutable DLLs
+-                    [=[ext-ms-]=] # Windows extension DLLs
+-                    [=[[Qq]t[0-9]+[^\\/]*\.dll]=] # Qt Libs, don't block on Linux since users likely only have older Qt available
+-                POST_EXCLUDE_REGEXES
+-                    [=[.*system32\/.*\.dll]=] # Windows system DLLs
+-                    [=[^\/(lib|usr\/lib|usr\/local\/lib)]=] # Unix system libraries
+-            )
+-            if(_runtime_deps_unresolved)
+-                foreach(_udep ${_runtime_deps_unresolved})
+-                    message(SEND_ERROR "Failed to resolve dependency: ${_udep}")
+-                endforeach()
+-                message(FATAL_ERROR "Unable to resolve all dependencies for executable ${OB_EXECUTABLE}")
+-            endif()
+-
+-            foreach(_rdep ${_runtime_deps_resolved})
+-                file(INSTALL
+-                  DESTINATION "${CMAKE_INSTALL_PREFIX}/${OB_RUNTIME_PATH}"
+-                  FILES "${_rdep}"
+-                  FOLLOW_SYMLINK_CHAIN
+-            )
+-            endforeach()
+-            ]==]
+-            COMPONENT ${_TARGET_NAME}
+-            ${SUB_PROJ_EXCLUDE_FROM_ALL} # "EXCLUDE_FROM_ALL" if project is not top-level
+-        )
+ 
+         # Qt dependencies (on Windows), only if target links to Qt and the helper script is available
+         if(COMMAND "qt_generate_deploy_app_script")
