@@ -4,7 +4,7 @@
 pkgname='pianobooster'
 pkgdesc='A MIDI file player that teaches you how to play the piano'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 depends=('fluidsynth' 'ftgl' 'hicolor-icon-theme' 'qt5-base' 'rtmidi')
 makedepends=('cmake' 'qt5-tools')
 optdepends=('qt5-translations')
@@ -21,6 +21,7 @@ build () {
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DUSE_SYSTEM_FONT=ON \
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           -DUSE_JACK=ON \
           -DWITH_MAN=ON .
     make
