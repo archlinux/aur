@@ -3,7 +3,7 @@
 
 pkgname=tp-dusk
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd "$srcdir/dusk"
 
-  cmake -B build -S dusk -GNinja \
+  cmake -B build -GNinja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
