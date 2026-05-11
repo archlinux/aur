@@ -1,0 +1,15 @@
+pkgbase = vrc-py-dev
+	pkgdesc = NVIDIA VRChat OSC HUD for Arch (Dev Build)
+	pkgver = 1.0dev
+	pkgrel = 1
+	url = aur.archlinux.org/packages/vrc-py-dev
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	depends = playerctl
+	depends = nvidia-utils
+	source = vr.py
+	sha256sums = 4a3e419a72efe445d0ffa2184962560e56054e8a644980fa8a2a954d860dbb99
+
+pkgname = vrc-py-dev
