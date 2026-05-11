@@ -1,0 +1,3 @@
+[openmeeg]
+source = "git"
+git = "https://github.com/openmeeg/openmeeg.git"
