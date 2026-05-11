@@ -2,13 +2,13 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=odbc
-_pkgver=1.6.4.1
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
 pkgdesc="Connect to ODBC Compatible Databases (using the DBI Interface)"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=5
 
 arch=("i686" "x86_64")
 depends=(
@@ -41,7 +41,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('506d54eb7c7ef1e05b8f6f8137f76c507956e3a753aa3bce447c1a6b353b991454e711f7c3a354e397194b0600ef68fbdb3a5c29c9acdbd754da9bd8ebec6f31')
+b2sums=('d746a2a3a54e261b67f51d0521691d9e07b265a3015df03f65d4b3df04223c28917fce59c0c1e0dd6b8719581adca1acad5210c377dfb6c18caa813454cf4e0d')
 
 build() {
     mkdir -p "${srcdir}/build/"
