@@ -1,8 +1,8 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-git
 pkgver=0.7.1
-pkgrel=1
-pkgdesc="High-performance PDF reader that prioritizes screen space and control"
+pkgrel=2
+pkgdesc="High-performance document and image viewer that prioritizes screen space and control."
 arch=('x86_64')
 url="https://codeberg.org/lektra/lektra"
 license=('AGPL-3.0')
