@@ -6,19 +6,24 @@ pkgrel=2
 pkgdesc='a generic RADIUS proxy that in addition to to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS'
 arch=('i686' 'x86_64')
 url='https://radsecproxy.github.io/'
-depends=('nettle' 'libnettle.so' 'openssl' 'libcrypto.so' 'libssl.so')
+depends=('glibc' 'openssl' 'libcrypto.so' 'libssl.so')
 optdepends=('freeradius: radius server')
 license=('GPL')
 backup=('etc/radsecproxy/radsecproxy.conf')
 validpgpkeys=('210FA7FB28E45779777BAA1C5963D59C3D68633B') # Fabian Mauchle <fabian.mauchle@switch.ch>
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
+        '0001-replace-libnettle-with-OpenSSL-functions.patch'
         'radsecproxy.service')
 sha256sums=('1fe3f25a392b74db1fe62868e19e883acd1dc0e1f318715299920fcc5e166f97'
             'SKIP'
+            'abf5da061c584bc339e7558b76a22921c7b986315ae199ab66c93fc8a737b6b2'
             '3cc1e1a5746e4bd543d2646c6a3b444de05f38d29ca7408a1f5382ab34366cf8')
 
 prepare() {
   cd ${pkgname}-${pkgver}/
+
+  # replace libnettle with OpenSSL functions
+  patch -Np1 < ../0001-replace-libnettle-with-OpenSSL-functions.patch
 
   autoreconf -fi
 }

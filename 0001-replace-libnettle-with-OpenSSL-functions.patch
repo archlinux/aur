@@ -1,0 +1,463 @@
+From 6bf779548020ef791b3bec5ce4bea7c2553899b3 Mon Sep 17 00:00:00 2001
+From: Fabian Mauchle <fabian.mauchle@switch.ch>
+Date: Fri, 10 Jan 2025 17:34:45 +0100
+Subject: replace libnettle with OpenSSL functions
+
+---
+ Makefile.am      |  5 ++--
+ configure.ac     |  3 ---
+ fticks_hashmac.c | 23 +++++++----------
+ radmsg.c         | 68 ++++++++++++++++---------------------------------
+ radsecproxy.c    | 77 +++++++++++++++++++++++++++++---------------------------
+ utilcrypto.c     | 36 ++++++++++++++++++++++++++
+ utilcrypto.h     | 19 ++++++++++++++
+ 7 files changed, 129 insertions(+), 102 deletions(-)
+ create mode 100644 utilcrypto.c
+ create mode 100644 utilcrypto.h
+
+diff --git a/Makefile.am b/Makefile.am
+index c12e478..0fc33dd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -29,7 +29,8 @@ librsp_a_SOURCES = \
+ 	tlscommon.c tlscommon.h \
+ 	tlv11.c tlv11.h \
+ 	udp.c udp.h \
+-	util.c util.h
++	util.c util.h \
++	utilcrypto.c utilcrypto.h
+ 
+ radsecproxy_conf_SOURCES = \
+ 	catgconf.c \
+@@ -45,7 +46,7 @@ AM_CFLAGS = \
+ radsecproxy_LDFLAGS = @OPENSSL_LDFLAGS@ @TARGET_LDFLAGS@
+ radsecproxy_LDADD = librsp.a @OPENSSL_LIBS@ @LIBS@
+ radsecproxy_conf_LDFLAGS = @TARGET_LDFLAGS@
+-radsecproxy_hash_LDADD = fticks_hashmac.o hash.o list.o
++radsecproxy_hash_LDADD = fticks_hashmac.o hash.o list.o utilcrypto.o @OPENSSL_LIBS@
+ 
+ man_MANS = radsecproxy.8 radsecproxy-hash.8 radsecproxy.conf.5
+ 
+diff --git a/configure.ac b/configure.ac
+index a13a1e3..91b3c12 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,9 +65,6 @@ AC_ARG_ENABLE(dtls,
+     fi
+   ])
+ 
+-AC_CHECK_LIB([nettle], [nettle_sha256_init],,
+-    [AC_MSG_ERROR([required library nettle not found])])
+-
+ # check if we need -lresolv
+ AC_CHECK_LIB([resolv], [inet_aton])
+ 
+diff --git a/fticks_hashmac.c b/fticks_hashmac.c
+index 4857e52..95b7605 100644
+--- a/fticks_hashmac.c
++++ b/fticks_hashmac.c
+@@ -2,10 +2,10 @@
+ /* See LICENSE for licensing information. */
+ 
+ #include "fticks_hashmac.h"
++#include "utilcrypto.h"
+ #include <ctype.h>
+ #include <errno.h>
+-#include <nettle/hmac.h>
+-#include <nettle/sha.h>
++#include <openssl/hmac.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -22,28 +22,23 @@ static void _format_hash(const uint8_t *hash, size_t out_len, uint8_t *out) {
+     }
+ 
+     for (ir = 0, iw = 0; iw <= out_len - 3; ir++, iw += 2)
+-        sprintf((char *)out + iw, "%02x", hash[ir % SHA256_DIGEST_SIZE]);
++        sprintf((char *)out + iw, "%02x", hash[ir % EVP_MD_size(sha256digest())]);
+ }
+ 
+ static void _hash(const uint8_t *in,
+                   const uint8_t *key,
+                   size_t out_len,
+                   uint8_t *out) {
++    uint8_t hash[EVP_MD_size(sha256digest())];
+     if (key == NULL) {
+-        struct sha256_ctx ctx;
+-        uint8_t hash[SHA256_DIGEST_SIZE];
++        EVP_MD_CTX *ctx = mdctxcreate(sha256digest());
+ 
+-        sha256_init(&ctx);
+-        sha256_update(&ctx, strlen((char *)in), in);
+-        sha256_digest(&ctx, sizeof(hash), hash);
++        EVP_DigestUpdate(ctx, in, strlen((char *)in));
++        EVP_DigestFinal(ctx, hash, NULL);
+         _format_hash(hash, out_len, out);
++        EVP_MD_CTX_free(ctx);
+     } else {
+-        struct hmac_sha256_ctx ctx;
+-        uint8_t hash[SHA256_DIGEST_SIZE];
+-
+-        hmac_sha256_set_key(&ctx, strlen((char *)key), key);
+-        hmac_sha256_update(&ctx, strlen((char *)in), in);
+-        hmac_sha256_digest(&ctx, sizeof(hash), hash);
++        HMAC(sha256digest(), key, strlen((char *)key), in, strlen((char *)in), hash, NULL);
+         _format_hash(hash, out_len, out);
+     }
+ }
+diff --git a/radmsg.c b/radmsg.c
+index 9d6e23e..6a0133f 100644
+--- a/radmsg.c
++++ b/radmsg.c
+@@ -7,9 +7,10 @@
+ #include "raddict.h"
+ #include "radmsg.h"
+ #include "util.h"
++#include "utilcrypto.h"
+ #include <arpa/inet.h>
+-#include <nettle/hmac.h>
+ #include <openssl/rand.h>
++#include <openssl/hmac.h>
+ #include <pthread.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -134,79 +135,54 @@ int radmsg_copy_attrs(struct radmsg *dst,
+ }
+ 
+ int _checkmsgauth(unsigned char *rad, int radlen, uint8_t *authattr, uint8_t *secret, int secret_len) {
+-    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-    struct hmac_md5_ctx hmacctx;
+-    uint8_t auth[MD5_DIGEST_SIZE], hash[MD5_DIGEST_SIZE];
+-
+-    pthread_mutex_lock(&lock);
++    size_t md5len = EVP_MD_size(md5digest());
++    uint8_t auth[md5len], hash[md5len];
+ 
+     /* hmac is calculated with message-authenticator being sixteen octets of zero */
+     memcpy(auth, authattr, sizeof(auth));
+-    memset(authattr, 0, MD5_DIGEST_SIZE);
+-
+-    hmac_md5_set_key(&hmacctx, secret_len, secret);
+-    hmac_md5_update(&hmacctx, radlen, rad);
+-    hmac_md5_digest(&hmacctx, sizeof(hash), hash);
++    memset(authattr, 0, md5len);
+ 
+-    memcpy(authattr, auth, MD5_DIGEST_SIZE);
++    HMAC(md5digest(), secret, secret_len, rad, radlen, hash, NULL);
++    memcpy(authattr, auth, md5len);
+ 
+-    pthread_mutex_unlock(&lock);
+-
+-    return (memcmp(auth, hash, MD5_DIGEST_SIZE) == 0);
++    return (memcmp(auth, hash, md5len) == 0);
+ }
+ 
+ int _validauth(unsigned char *rad, int len, unsigned char *reqauth, unsigned char *sec, int sec_len) {
+-    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-    struct md5_ctx mdctx;
+-    unsigned char hash[MD5_DIGEST_SIZE];
++    EVP_MD_CTX *mdctx = mdctxcreate(md5digest());
++    unsigned char hash[EVP_MD_size(md5digest())];
+     int result = 0; /* Fail. */
+ 
+-    pthread_mutex_lock(&lock);
+-    md5_init(&mdctx);
+-
+-    md5_update(&mdctx, 4, rad);
+-    md5_update(&mdctx, 16, reqauth);
++    EVP_DigestUpdate(mdctx, rad, 4);
++    EVP_DigestUpdate(mdctx, reqauth, 16);
+     if (len > 20)
+-        md5_update(&mdctx, len - 20, rad + 20);
+-    md5_update(&mdctx, sec_len, sec);
+-    md5_digest(&mdctx, sizeof(hash), hash);
++        EVP_DigestUpdate(mdctx, rad + 20, len - 20);
++    EVP_DigestUpdate(mdctx, sec, sec_len);
++    EVP_DigestFinal(mdctx, hash, NULL);
+ 
+     result = !memcmp(hash, rad + 4, 16);
+ 
+-    pthread_mutex_unlock(&lock);
++    EVP_MD_CTX_free(mdctx);
+     return result;
+ }
+ 
+ int _createmessageauth(unsigned char *rad, int radlen, unsigned char *authattrval, uint8_t *secret, int secret_len) {
+-    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-    struct hmac_md5_ctx hmacctx;
+-
+     if (!authattrval)
+         return 1;
+ 
+-    pthread_mutex_lock(&lock);
+-
+     memset(authattrval, 0, 16);
+-    hmac_md5_set_key(&hmacctx, secret_len, secret);
+-    hmac_md5_update(&hmacctx, radlen, rad);
+-    hmac_md5_digest(&hmacctx, MD5_DIGEST_SIZE, authattrval);
+-
+-    pthread_mutex_unlock(&lock);
++    HMAC(md5digest(), secret, secret_len, rad, radlen, authattrval, NULL);
+     return 1;
+ }
+ 
+ int _radsign(unsigned char *rad, int radlen, unsigned char *sec, int sec_len) {
+-    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-    struct md5_ctx mdctx;
+-
+-    pthread_mutex_lock(&lock);
++    EVP_MD_CTX *mdctx = mdctxcreate(md5digest());
+ 
+-    md5_init(&mdctx);
+-    md5_update(&mdctx, radlen, rad);
+-    md5_update(&mdctx, sec_len, sec);
+-    md5_digest(&mdctx, MD5_DIGEST_SIZE, rad + 4);
++    EVP_DigestUpdate(mdctx, rad, radlen);
++    EVP_DigestUpdate(mdctx, sec, sec_len);
++    EVP_DigestFinal(mdctx, rad + 4, NULL);
+ 
+-    pthread_mutex_unlock(&lock);
++    EVP_MD_CTX_free(mdctx);
+     return 1;
+ }
+ 
+diff --git a/radsecproxy.c b/radsecproxy.c
+index c25552e..1aa9d43 100644
+--- a/radsecproxy.c
++++ b/radsecproxy.c
+@@ -59,12 +59,12 @@
+ #include "tls.h"
+ #include "udp.h"
+ #include "util.h"
++#include "utilcrypto.h"
+ #include <arpa/inet.h>
+ #include <assert.h>
+ #include <ctype.h>
+ #include <errno.h>
+ #include <libgen.h>
+-#include <nettle/md5.h>
+ #include <openssl/err.h>
+ #include <openssl/rand.h>
+ #include <openssl/ssl.h>
+@@ -585,23 +585,24 @@ void sendreply(struct request *rq) {
+ }
+ 
+ static int pwdcrypt(char encrypt_flag, uint8_t *in, uint8_t len, uint8_t *shared, uint8_t sharedlen, uint8_t *auth, uint8_t *salt, uint8_t saltlen) {
+-    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-    struct md5_ctx mdctx;
+-    unsigned char hash[MD5_DIGEST_SIZE], *input;
++    EVP_MD_CTX *mdctx = mdctxcreate(md5digest());
++    unsigned char hash[EVP_MD_size(md5digest())], *input;
+     uint8_t i, offset = 0, out[128];
+ 
+-    pthread_mutex_lock(&lock);
++    if (!mdctx) {
++        debug(DBG_ERR, "pwdcrypt: creating EVP_MD_CTX failed");
++        return 0;
++    }
+ 
+-    md5_init(&mdctx);
+     input = auth;
+     for (;;) {
+-        md5_update(&mdctx, sharedlen, shared);
+-        md5_update(&mdctx, 16, input);
++        EVP_DigestUpdate(mdctx, shared, sharedlen);
++        EVP_DigestUpdate(mdctx, input, 16);
+         if (salt) {
+-            md5_update(&mdctx, saltlen, salt);
++            EVP_DigestUpdate(mdctx, salt, saltlen);
+             salt = NULL;
+         }
+-        md5_digest(&mdctx, sizeof(hash), hash);
++        EVP_DigestFinal(mdctx, hash, NULL);
+         for (i = 0; i < 16; i++)
+             out[offset + i] = hash[i] ^ in[offset + i];
+         if (encrypt_flag)
+@@ -614,18 +615,19 @@ static int pwdcrypt(char encrypt_flag, uint8_t *in, uint8_t len, uint8_t *shared
+     }
+     memcpy(in, out, len);
+ 
+-    pthread_mutex_unlock(&lock);
++    EVP_MD_CTX_free(mdctx);
+     return 1;
+ }
+ 
+ static int msmppencrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sharedlen, uint8_t *auth, uint8_t *salt) {
+-    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-    struct md5_ctx mdctx;
+-    unsigned char hash[MD5_DIGEST_SIZE];
++    EVP_MD_CTX *mdctx = mdctxcreate(md5digest());
++    unsigned char hash[EVP_MD_size(md5digest())];
+     uint8_t i, offset;
+ 
+-    pthread_mutex_lock(&lock);
+-    md5_init(&mdctx);
++    if (!mdctx) {
++        debug(DBG_ERR, "msmppencrypt: creating EVP_MD_CTX failed");
++        return 0;
++    }
+ 
+ #if 0
+     printfchars(NULL, "msppencrypt auth in", "%02x ", auth, 16);
+@@ -633,10 +635,10 @@ static int msmppencrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+     printfchars(NULL, "msppencrypt in", "%02x ", text, len);
+ #endif
+ 
+-    md5_update(&mdctx, sharedlen, shared);
+-    md5_update(&mdctx, 16, auth);
+-    md5_update(&mdctx, 2, salt);
+-    md5_digest(&mdctx, sizeof(hash), hash);
++    EVP_DigestUpdate(mdctx, shared, sharedlen);
++    EVP_DigestUpdate(mdctx, auth, 16);
++    EVP_DigestUpdate(mdctx, salt, 2);
++    EVP_DigestFinal(mdctx, hash, NULL);
+ 
+ #if 0
+     printfchars(NULL, "msppencrypt hash", "%02x ", hash, 16);
+@@ -650,9 +652,9 @@ static int msmppencrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+ 	printf("text + offset - 16 c(%d): ", offset / 16);
+ 	printfchars(NULL, NULL, "%02x ", text + offset - 16, 16);
+ #endif
+-        md5_update(&mdctx, sharedlen, shared);
+-        md5_update(&mdctx, 16, text + offset - 16);
+-        md5_digest(&mdctx, sizeof(hash), hash);
++        EVP_DigestUpdate(mdctx, shared, sharedlen);
++        EVP_DigestUpdate(mdctx, text + offset - 16, 16);
++        EVP_DigestFinal(mdctx, hash, NULL);
+ #if 0
+ 	printfchars(NULL, "msppencrypt hash", "%02x ", hash, 16);
+ #endif
+@@ -665,19 +667,20 @@ static int msmppencrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+     printfchars(NULL, "msppencrypt out", "%02x ", text, len);
+ #endif
+ 
+-    pthread_mutex_unlock(&lock);
++    EVP_MD_CTX_free(mdctx);
+     return 1;
+ }
+ 
+ static int msmppdecrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sharedlen, uint8_t *auth, uint8_t *salt) {
+-    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+-    struct md5_ctx mdctx;
+-    unsigned char hash[MD5_DIGEST_SIZE];
++    EVP_MD_CTX *mdctx = mdctxcreate(md5digest());
++    unsigned char hash[EVP_MD_size(md5digest())];
+     uint8_t i, offset;
+     char plain[255];
+ 
+-    pthread_mutex_lock(&lock);
+-    md5_init(&mdctx);
++    if (!mdctx) {
++        debug(DBG_ERR, "msmppdecrypt: creating EVP_MD_CTX failed");
++        return 0;
++    }
+ 
+ #if 0
+     printfchars(NULL, "msppdecrypt auth in", "%02x ", auth, 16);
+@@ -685,10 +688,10 @@ static int msmppdecrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+     printfchars(NULL, "msppdecrypt in", "%02x ", text, len);
+ #endif
+ 
+-    md5_update(&mdctx, sharedlen, shared);
+-    md5_update(&mdctx, 16, auth);
+-    md5_update(&mdctx, 2, salt);
+-    md5_digest(&mdctx, sizeof(hash), hash);
++    EVP_DigestUpdate(mdctx, shared, sharedlen);
++    EVP_DigestUpdate(mdctx, auth, 16);
++    EVP_DigestUpdate(mdctx, salt, 2);
++    EVP_DigestFinal(mdctx, hash, NULL);
+ 
+ #if 0
+     printfchars(NULL, "msppdecrypt hash", "%02x ", hash, 16);
+@@ -702,9 +705,9 @@ static int msmppdecrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+ 	printf("text + offset - 16 c(%d): ", offset / 16);
+ 	printfchars(NULL, NULL, "%02x ", text + offset - 16, 16);
+ #endif
+-        md5_update(&mdctx, sharedlen, shared);
+-        md5_update(&mdctx, 16, text + offset - 16);
+-        md5_digest(&mdctx, sizeof(hash), hash);
++        EVP_DigestUpdate(mdctx, shared, sharedlen);
++        EVP_DigestUpdate(mdctx, text + offset - 16, 16);
++        EVP_DigestFinal(mdctx, hash, NULL);
+ #if 0
+ 	printfchars(NULL, "msppdecrypt hash", "%02x ", hash, 16);
+ #endif
+@@ -718,7 +721,7 @@ static int msmppdecrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+     printfchars(NULL, "msppdecrypt out", "%02x ", text, len);
+ #endif
+ 
+-    pthread_mutex_unlock(&lock);
++    EVP_MD_CTX_free(mdctx);
+     return 1;
+ }
+ 
+diff --git a/utilcrypto.c b/utilcrypto.c
+new file mode 100644
+index 0000000..3d8568c
+--- /dev/null
++++ b/utilcrypto.c
+@@ -0,0 +1,36 @@
++/* Copyright (c) 2023, SWITCH */
++/* See LICENSE for licensing information. */
++
++#include "utilcrypto.h"
++
++/* OpenSSL documentation mentions performance implications when using EVP_ digest functions,
++ * convert to a singleton.
++*/
++const EVP_MD *md5digest(void) {
++    static const EVP_MD *md5;
++    if (!md5)
++        md5 = EVP_md5();
++    return md5;
++}
++
++const EVP_MD *sha256digest(void) {
++    static const EVP_MD *sha256;
++    if (!sha256)
++        sha256 = EVP_sha256();
++    return sha256;
++}
++
++EVP_MD_CTX *mdctxcreate(const EVP_MD *digest) {
++    EVP_MD_CTX *ctx = EVP_MD_CTX_new();
++    if (!ctx)
++        return NULL;
++    if (!EVP_DigestInit(ctx, digest)) {
++        EVP_MD_CTX_free(ctx);
++        return NULL;
++    }
++    return ctx;
++}
++
++/* Local Variables: */
++/* c-file-style: "stroustrup" */
++/* End: */
+diff --git a/utilcrypto.h b/utilcrypto.h
+new file mode 100644
+index 0000000..060541d
+--- /dev/null
++++ b/utilcrypto.h
+@@ -0,0 +1,19 @@
++
++/* Copyright(c) 2023, SWITCH */
++/* See LICENSE for licensing information. */
++
++#ifndef UTILCRYPTO_H
++#define UTILCRYPTO_H
++
++#include <openssl/evp.h>
++
++const EVP_MD *md5digest(void);
++const EVP_MD *sha256digest(void);
++
++EVP_MD_CTX *mdctxcreate(const EVP_MD *digest);
++
++#endif /*UTILCRYPTO_H*/
++
++/* Local Variables: */
++/* c-file-style: "stroustrup" */
++/* End: */
+-- 
+cgit v1.3.1
+
