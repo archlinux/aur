@@ -1,7 +1,7 @@
 pkgbase = dbflux
 	pkgdesc = A fast, keyboard-first database client
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 0.4.7
+	pkgrel = 3
 	url = https://github.com/0xErwin1/dbflux
 	arch = x86_64
 	arch = aarch64
@@ -30,9 +30,9 @@ pkgbase = dbflux
 	depends = dbus
 	depends = tree-sitter
 	depends = hicolor-icon-theme
-	source_x86_64 = https://github.com/0xErwin1/dbflux/releases/download/v0.4.2/dbflux-linux-amd64.tar.gz
+	source_x86_64 = https://github.com/0xErwin1/dbflux/releases/download/v0.4.7/dbflux-linux-amd64.tar.gz
 	sha256sums_x86_64 = ef8cd737d5c3783b43281fed94689b24237f3cc2cd1c2d1d06fc5dfe3da487f5
-	source_aarch64 = https://github.com/0xErwin1/dbflux/releases/download/v0.4.2/dbflux-linux-arm64.tar.gz
+	source_aarch64 = https://github.com/0xErwin1/dbflux/releases/download/v0.4.7/dbflux-linux-arm64.tar.gz
 	sha256sums_aarch64 = de8dde2c23edda17f1f3897b6cf0b56e476740f11134ab8e1ab02e309e6893b2
 
 pkgname = dbflux

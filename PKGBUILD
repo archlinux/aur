@@ -1,8 +1,8 @@
 # Maintainer: Ignacio Perez <ignacio@feuer.me>
 
 pkgname=dbflux
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.7
+pkgrel=3
 pkgdesc="A fast, keyboard-first database client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xErwin1/dbflux"
