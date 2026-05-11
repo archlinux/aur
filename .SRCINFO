@@ -1,6 +1,6 @@
 pkgbase = sang
         pkgdesc = Sang is not GRUB
-        pkgver = 0.0.3
+        pkgver = 0.0.4
         pkgrel = 1
         url = https://github.com/woowgers/sang
         arch = any
@@ -10,7 +10,9 @@ pkgbase = sang
         depends = efibootmgr
         depends = nushell
         depends = zenity
-        source = sang-v0.0.3.tar.gz::https://github.com/woowgers/sang/archive/0.0.3.tar.gz
-        sha256sums = 9f0eb2487f2515afc91cde2689565006daa1ab88bafbe527afe34143f6ac0d4e
+        depends = jq
+        depends = jc
+        source = sang-v0.0.4.tar.gz::https://github.com/woowgers/sang/archive/0.0.4.tar.gz
+        sha256sums = 958dd02aaa07ff404ac184a1a248710fb585b7666e30b120460dd206dd3efa12
 
 pkgname = sang
