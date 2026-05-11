@@ -43,7 +43,7 @@ build() {
 	ln -svf /usr/bin/rg usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep/bin/rg
 	ln -svf /usr/bin/xdg-open usr/share/windsurf/resources/app/node_modules/open/xdg-open
 	# Icon
-	install -Dm644 "usr/share/pixmaps/${pkgname}.png" "usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
+	install -Dm644 "usr/share/pixmaps/${pkgname}.png" "usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
 }
 
 package_windsurf(){
