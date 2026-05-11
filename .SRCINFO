@@ -1,0 +1,24 @@
+pkgbase = omni-code-bin
+	pkgdesc = Flutter desktop client for managing Omni Code bridge sessions
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/omni-stream-ai/omni-code
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glib2
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gtk3
+	provides = omni-code
+	conflicts = omni-code
+	source = omni-code.desktop
+	source = omni-code.png
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/omni-stream-ai/omni-code/v0.3.1/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ed59c1da82265d3d408c7c47ebdfd1af041ab847e68692387189487dc60a9713
+	source_x86_64 = omni-code-0.3.1-linux-x86_64.tar.gz::https://github.com/omni-stream-ai/omni-code/releases/download/v0.3.1/omni-code-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a93f48d565777c1ce7ac3d325fec03316414cb4b8e417319fbc0b94edf021439
+
+pkgname = omni-code-bin

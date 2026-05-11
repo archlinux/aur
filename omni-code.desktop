@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Omni Code
+Comment=Flutter client for managing Omni Code bridge sessions
+Exec=omni-code
+Icon=omni-code
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+StartupNotify=true
+StartupWMClass=omni_code
