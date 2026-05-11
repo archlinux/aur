@@ -3,6 +3,7 @@ pkgbase = atrium
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/kavau/atrium
+	install = atrium.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = meson
@@ -15,6 +16,8 @@ pkgbase = atrium
 	backup = etc/atrium-greeter.conf
 	backup = etc/pam.d/atrium
 	source = atrium-0.3.0.tar.gz::https://github.com/kavau/atrium/archive/refs/tags/v0.3.0.tar.gz
+	source = atrium.install
 	sha256sums = 204ba1e4120573bcdf466c85508e2b16763656e38ba078b907ddbf4d49f78fb7
+	sha256sums = SKIP
 
 pkgname = atrium

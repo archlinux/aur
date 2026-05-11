@@ -6,6 +6,7 @@ pkgdesc="Wayland multiseat display manager"
 arch=('x86_64')
 url="https://github.com/kavau/atrium"
 license=('GPL-2.0-or-later')
+install=atrium.install
 
 # Runtime dependencies.
 depends=(
@@ -28,8 +29,14 @@ backup=(
 
 # The source tarball from the GitHub release.
 # The ::URL syntax renames the downloaded file to $pkgname-$pkgver.tar.gz
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kavau/atrium/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('204ba1e4120573bcdf466c85508e2b16763656e38ba078b907ddbf4d49f78fb7')
+source=(
+    "$pkgname-$pkgver.tar.gz::https://github.com/kavau/atrium/archive/refs/tags/v$pkgver.tar.gz"
+    "atrium.install"
+)
+sha256sums=(
+    '204ba1e4120573bcdf466c85508e2b16763656e38ba078b907ddbf4d49f78fb7'
+    'SKIP'
+)
 
 build() {
     cd "$pkgname-$pkgver"

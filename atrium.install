@@ -1,0 +1,14 @@
+post_install() {
+    echo ""
+    echo "atrium: enable the service to start at boot:"
+    echo "  sudo systemctl disable display-manager.service"
+    echo "  sudo systemctl enable atrium.service"
+    echo ""
+    echo "See /etc/atrium.conf and /etc/atrium-greeter.conf for configuration."
+}
+
+post_upgrade() {
+    echo "atrium: if upgrading from v0.2.x, /etc/atrium.conf and"
+    echo "  /etc/atrium-greeter.conf are now installed with commented defaults."
+    echo "  Review both files before restarting the service."
+}
