@@ -3,12 +3,12 @@
 
 pkgname=tp-dusk
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
 license=('CC0-1.0')
-depends=(libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ hicolor-icon-theme bash)
+depends=(libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ bash)
 makedepends=(git cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr patchelf)
 source=(
   "git+$url#tag=v${pkgver}"
@@ -52,7 +52,7 @@ package() {
   install -dm 755 "${pkgdir}/usr/share/${pkgname}"
   cp -r "${srcdir}/dusk/res" "${pkgdir}/usr/share/${pkgname}/res"
 
-  install -Dm 644 "${srcdir}/dusk/res/icon.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
+  install -Dm 644 "${srcdir}/dusk/res/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm 755 "tp-dusk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   patchelf --remove-rpath "${pkgdir}/usr/lib/${pkgname}/dusk"
