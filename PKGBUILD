@@ -5,16 +5,13 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname-git"
-pkgver=157.1.r0.g3193fd8
+pkgver=157.4.r54.g54443b9
 pkgrel=2
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
 license=('GPL-3.0-only')
 arch=('any')
 
-depends=(
-  'alsa-lib'
-)
 makedepends=(
   "java-environment=${_java_ver:?}"
   'git'
@@ -92,7 +89,7 @@ if [ -n "\$_best" ]; then
   export JAVA_HOME="\$_best"
 fi
 
-exec /usr/bin/java -jar /usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar "\$@"
+exec "\$JAVA_HOME/bin/java" -jar "/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar" "\$@"
 END
 
   cd "$_pkgsrc"
