@@ -19,6 +19,7 @@ pkgbase = skwd
 	depends = cava
 	depends = ttf-nerd-fonts-symbols
 	depends = ttf-roboto
+	depends = ttf-material-design-icons-desktop-git
 	source = skwd::git+https://github.com/liixini/skwd.git#branch=main
 	sha256sums = SKIP
 
