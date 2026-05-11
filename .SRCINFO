@@ -1,6 +1,6 @@
 pkgbase = blockstream-app-appimage
 	pkgdesc = Blockstream App is a non-custodial Bitcoin wallet, compatible with Blockstream Jade hardware wallet
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://blockstream.com/app/
 	install = blockstream-app-appimage.install
@@ -11,10 +11,10 @@ pkgbase = blockstream-app-appimage
 	depends = zlib
 	depends = fuse
 	depends = gtk3
-	noextract = Blockstream-3.2.0.AppImage
+	noextract = Blockstream-3.3.0.AppImage
 	options = !strip
 	options = !debug
-	source = Blockstream-x86_64-3.2.0.AppImage::https://github.com/Blockstream/green_qt/releases/download/release_3.2.0/Blockstream-x86_64.AppImage
-	sha256sums = 05373eb4e815ad3a8a7c7172ab1001e74025d97e6c953ae50db241cd151aef7a
+	source = Blockstream-x86_64-3.3.0.AppImage::https://github.com/Blockstream/green_qt/releases/download/release_3.3.0/Blockstream-x86_64.AppImage
+	sha256sums = 2a8935447ddf2c17e71655c34ce95d9e721290bad9e76af1062c8b8524be74d5
 
 pkgname = blockstream-app-appimage
