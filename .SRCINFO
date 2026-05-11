@@ -1,6 +1,6 @@
 pkgbase = pidgin
 	pkgver = 2.14.14
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pidgin.im/
 	arch = x86_64
 	license = GPL
@@ -22,9 +22,13 @@ pkgbase = pidgin
 	options = !emptydirs
 	source = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.14/pidgin-2.14.14.tar.bz2
 	source = https://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.14/pidgin-2.14.14.tar.bz2.asc
+	source = libpurple-fix-media-manager-gst-device-reference.patch
+	source = libpurple-unref-gst-devices-from-messages.patch
 	validpgpkeys = 40DE1DC7288FE3F50AB938C548F66AFFD9BDB729
 	sha256sums = 0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356
 	sha256sums = SKIP
+	sha256sums = 4d13b1e22e10c099f80562600fde259c05be4c0e16d5f22353d40fc2d4cb6e7e
+	sha256sums = a3e87df23cc19c03f5eeeb4d8043537b5bff1121a6be7f6e08b035a1d298f9f9
 
 pkgname = libpurple
 	pkgdesc = IM library extracted from Pidgin
