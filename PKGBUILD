@@ -1,18 +1,13 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: samsapti <sam at sapti dot me>
 # Contributor: lsf
 # Contributer: Sam Whited <sam@samwhited.com>
 
-## links
-# https://jitsi.org/jitsi-meet/
-# https://github.com/jitsi/jitsi-meet-electron
-
-## options
-: ${_install_path:=usr/share}
+: ${_install_path:=usr/lib}
 
 _pkgname="jitsi-meet-desktop"
 pkgname="$_pkgname"
-pkgver=2026.4.0
+pkgver=2026.5.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 url="https://github.com/jitsi/jitsi-meet-electron"
@@ -30,10 +25,12 @@ makedepends=(
 _pkgsrc="jitsi-meet-electron-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('022cd0a0064eb136eae6b2938d392406136de63d30bd2883c446bfdd73d00ffe')
+sha256sums=('1ab2e5c01bdb70be917c7573fc8b31d6f37c7d0a9df576574994103006d529a4')
 
 prepare() (
   cd "$_pkgsrc"
+
+  # fix links
   sed -E -e 's#git+ssh://git@github.com#git+https://github.com#g' \
     -i package-lock.json
 
@@ -47,6 +44,8 @@ prepare() (
   jq '.build.files = (["!node_modules/fsevents"] + (.build.files // []))' package.json \
     > package.tmp && mv package.tmp package.json
 
+  # disable updater
+  sed -E -e '/autoUpdater/d' -i main.js
 )
 
 build() (
@@ -89,11 +88,24 @@ package() {
   local _electron_version=$(cat /usr/lib/electron/version)
   depends=("electron${_electron_version%%.*}")
 
+  # asar
   mkdir -pm755 "$pkgdir/$_install_path/$_pkgname/"
   cp -r "$_pkgsrc/dist/linux-unpacked/resources"/* "$pkgdir/$_install_path/$_pkgname/"
 
+  # remove unused sources and prebuilds
+  find "$pkgdir/$_install_path/$_pkgname/app.asar.unpacked/node_modules" \
+    -type d -path "*/src" -exec rm -rf {} +
+
+  find "$pkgdir/$_install_path/$_pkgname/app.asar.unpacked/node_modules" \
+    -type d -path "*/prebuilds/*" \
+    ! -path "*/linux-x64" \
+    ! -path "*/linux-arm64" \
+    -exec rm -rf {} +
+
+  # icon
   install -Dm644 "$_pkgsrc/resources/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
+  # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
@@ -107,6 +119,7 @@ StartupWMClass=Jitsi Meet
 Categories=VideoConference;AudioVideo;Audio;Video;Network;
 END
 
+  # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env bash
 
@@ -133,5 +146,6 @@ export ELECTRON_FORCE_IS_PACKAGED
 exec electron${_electron_version%%.*} "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
 END
 
+  # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
