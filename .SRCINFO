@@ -1,5 +1,5 @@
 pkgbase = hyprcursor-frozen
-	pkgdesc = The hyprland cursor format, library and utilities - Frozen For Yggdrasil, Nordix Desktop Environment
+	pkgdesc = The hyprland cursor format, library and utilities - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)
 	pkgver = 0.1.12.r1.g2fd3642
 	pkgrel = 1
 	url = https://gitlab.com/TheEnchantedPotato/mirror-hyprcursor-hyprland-v0.54.git
@@ -17,7 +17,6 @@ pkgbase = hyprcursor-frozen
 	provides = hyprcursor-frozen
 	provides = hyprcursor
 	provides = libhyprcursor.so
-	conflicts = hyprcursor
 	conflicts = hyprcursor-git
 	source = hyprcursor-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprcursor-hyprland-v0.54.git
 	sha256sums = SKIP
