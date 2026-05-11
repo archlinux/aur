@@ -1,5 +1,5 @@
 pkgname=git-flow-tui
-pkgver=1.2.11
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Terminal UI for gitflow with extended logic for CI/CD'
 arch=('x86_64')
@@ -30,5 +30,6 @@ build() {
 package() {
   cd "$srcdir/${pkgname}"
   
-  install -Dm755 "target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+  install -Dm755 "target/release/git-flow" "$pkgdir/usr/bin/git-flow"
+  install -Dm755 "target/release/git-flow-tui" "$pkgdir/usr/bin/git-flow-tui"
 }
