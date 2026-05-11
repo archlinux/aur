@@ -1,0 +1,204 @@
+# bcon configuration file
+# Keybind preset: default
+#
+# Font settings are commented out by default.
+# bcon will automatically find system fonts via fontconfig.
+# You can specify fonts by family name (e.g. "FiraCode") or file path.
+
+[keybinds]
+copy = ["ctrl+shift+c"]
+paste = ["ctrl+shift+v"]
+screenshot = [
+    "ctrl+shift+s",
+    "printscreen",
+]
+search = ["ctrl+shift+f"]
+copy_mode = ["ctrl+shift+space"]
+font_increase = [
+    "ctrl+=",
+    "ctrl+shift+=",
+]
+font_decrease = [
+    "ctrl+minus",
+    "ctrl+shift+minus",
+]
+font_reset = ["ctrl+0"]
+scroll_up = ["shift+pageup"]
+scroll_down = ["shift+pagedown"]
+ime_toggle = ["ctrl+shift+j"]
+reset_terminal = ["ctrl+shift+escape"]
+notification_panel = ["ctrl+shift+n"]
+notification_mute = ["ctrl+shift+m"]
+split_right = ["ctrl+shift+enter"]
+split_down = ["ctrl+shift+d"]
+close_pane = ["ctrl+shift+w"]
+pane_left = ["ctrl+shift+left"]
+pane_right = ["ctrl+shift+right"]
+pane_up = ["ctrl+shift+up"]
+pane_down = ["ctrl+shift+down"]
+resize_left = ["ctrl+shift+alt+left"]
+resize_right = ["ctrl+shift+alt+right"]
+resize_up = ["ctrl+shift+alt+up"]
+resize_down = ["ctrl+shift+alt+down"]
+zoom_pane = ["ctrl+shift+z"]
+new_tab = ["ctrl+shift+t"]
+close_tab = ["ctrl+shift+q"]
+next_tab = ["ctrl+pagedown"]
+prev_tab = ["ctrl+pageup"]
+
+[font]
+main = "Liberation Mono"
+symbols = "Symbols Nerd Font Mono"
+cjk = "Noto Sans CJK JP"
+emoji = "Noto Color Emoji"
+
+# =============================================================================
+# Font Configuration (Optional)
+# =============================================================================
+# By default, bcon automatically finds fonts via fontconfig.
+# Uncomment and customize if you want to use specific fonts.
+#
+# You can specify fonts by family name OR file path:
+#   main = "FiraCode"                    # by name (resolved via fontconfig)
+#   main = "/usr/share/fonts/.../X.ttf"  # by path (direct)
+#
+# Recommended monospace fonts:
+#   1. FiraCode - ligature support, great for coding
+#   2. JetBrains Mono - designed for developers
+#   3. Hack - clean and readable
+#   4. DejaVu Sans Mono - widely available
+#
+# [font]
+# size = 16.0
+# main = "FiraCode"
+# cjk = "Noto Sans CJK JP"
+# emoji = "Noto Color Emoji"
+# symbols = "Hack Nerd Font Mono"
+#
+# Install on Ubuntu/Debian:
+#   sudo apt install fonts-firacode fonts-noto-color-emoji fonts-noto-cjk
+
+# =============================================================================
+# LCD Subpixel Rendering (High Quality Text Rendering)
+# =============================================================================
+# Default settings are optimized for iTerm2-like sharp rendering.
+# These are the built-in defaults - only uncomment if you need to change them.
+#
+# [font]
+# render_mode = "lcd"           # "lcd" (high quality) or "grayscale"
+# lcd_filter = "default"        # Sharp (less blurry than light)
+# lcd_subpixel = "rgb"          # Adjust to match your panel
+# lcd_gamma = 1.15              # Thinner/tighter appearance (1.0-1.25)
+# lcd_stem_darkening = 0.0      # Disabled recommended (for sharpness)
+# lcd_contrast = 1.15           # Contrast boost
+# lcd_fringe_reduction = 0.1    # Light fringe reduction
+# lcd_subpixel_positioning = true  # 1/3px precision (highest quality)
+# lcd_hinting = "light"         # Natural curves (recommended)
+#
+# Troubleshooting:
+#   Color fringe appears -> Try lcd_subpixel = "bgr"
+#   Blurry text          -> lcd_gamma = 1.2
+#   Text too thick       -> lcd_gamma = 1.15
+#   Vertical monitor     -> lcd_subpixel = "vrgb" or "vbgr"
+
+# =============================================================================
+# Appearance (Optional)
+# =============================================================================
+# [appearance]
+# background = "000000"
+# foreground = "ffffff"
+# cursor = "ffffff"
+# selection = "44475a"
+# scale = 1.0               # Display scale (1.0, 1.25, 1.5, 1.75, 2.0 for HiDPI)
+
+# =============================================================================
+# Color Scheme (Optional - ANSI 16 colors)
+# =============================================================================
+# Default: One Dark inspired (modern, muted colors)
+#
+# [colors]
+# black = "282c34"
+# red = "e06c75"
+# green = "98c379"
+# yellow = "e5c07b"
+# blue = "61afef"
+# magenta = "c678dd"
+# cyan = "56b6c2"
+# white = "abb2bf"
+# bright_black = "5c6370"
+# bright_red = "e06c75"
+# bright_green = "98c379"
+# bright_yellow = "e5c07b"
+# bright_blue = "61afef"
+# bright_magenta = "c678dd"
+# bright_cyan = "56b6c2"
+# bright_white = "ffffff"
+#
+# Popular color schemes:
+#
+# --- Dracula ---
+# black = "21222c", red = "ff5555", green = "50fa7b", yellow = "f1fa8c"
+# blue = "bd93f9", magenta = "ff79c6", cyan = "8be9fd", white = "f8f8f2"
+# bright_black = "6272a4", bright_red = "ff6e6e", bright_green = "69ff94"
+# bright_yellow = "ffffa5", bright_blue = "d6acff", bright_magenta = "ff92df"
+# bright_cyan = "a4ffff", bright_white = "ffffff"
+#
+# --- Nord ---
+# black = "3b4252", red = "bf616a", green = "a3be8c", yellow = "ebcb8b"
+# blue = "81a1c1", magenta = "b48ead", cyan = "88c0d0", white = "e5e9f0"
+# bright_black = "4c566a", bright_red = "bf616a", bright_green = "a3be8c"
+# bright_yellow = "ebcb8b", bright_blue = "81a1c1", bright_magenta = "b48ead"
+# bright_cyan = "8fbcbb", bright_white = "eceff4"
+#
+# --- Gruvbox Dark ---
+# black = "282828", red = "cc241d", green = "98971a", yellow = "d79921"
+# blue = "458588", magenta = "b16286", cyan = "689d6a", white = "a89984"
+# bright_black = "928374", bright_red = "fb4934", bright_green = "b8bb26"
+# bright_yellow = "fabd2f", bright_blue = "83a598", bright_magenta = "d3869b"
+# bright_cyan = "8ec07c", bright_white = "ebdbb2"
+
+# =============================================================================
+# Terminal Settings (Optional)
+# =============================================================================
+# [terminal]
+# scrollback_lines = 10000
+
+# =============================================================================
+# Keyboard Settings (Optional)
+# =============================================================================
+# [keyboard]
+# repeat_delay = 400        # Key repeat delay in milliseconds
+# repeat_rate = 30          # Key repeat rate in milliseconds
+# xkb_layout = "us"         # XKB keyboard layout (e.g., "us", "jp", "de")
+# xkb_variant = ""          # XKB layout variant (e.g., "dvorak", "nodeadkeys")
+# xkb_options = ""          # XKB options (e.g., "ctrl:nocaps", "compose:ralt")
+
+# =============================================================================
+# Mouse Settings (Optional)
+# =============================================================================
+# [mouse]
+# speed = 1.0                # Cursor speed multiplier (default: 1.0)
+#                            # Recommended: 1.5-2.0 for 4K displays
+# tap_to_click = true        # Enable tap-to-click on touchpads
+# natural_scroll = false     # Enable natural (reverse) scrolling
+# disable_while_typing = true # Disable touchpad while typing
+
+# =============================================================================
+# Display Settings (Optional)
+# =============================================================================
+# [drm]
+# device = "auto"           # "auto" (default) or explicit path: "/dev/dri/card1"
+#                            # Optimus laptops: set to Intel iGPU device
+#                            #   ls -l /dev/dri/card* to find available devices
+#                            #   udevadm info -a /dev/dri/card1 | grep -i vendor
+
+# [display]
+# prefer_external = true    # Prefer external monitors (HDMI/DP) over internal (eDP)
+# auto_switch = true        # Auto-switch to external monitor on hotplug connect
+#
+# Connector priority (when prefer_external = true):
+#   HDMI > DisplayPort > DVI > VGA > eDP (internal)
+#
+# Use case: Laptop with external monitor
+#   - Connect external: auto-switch to external display
+#   - Disconnect: auto-fallback to internal display

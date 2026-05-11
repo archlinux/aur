@@ -1,6 +1,6 @@
 pkgbase = bcon
 	pkgdesc = GPU-accelerated terminal emulator for Linux console (DRM/KMS)
-	pkgver = 1.3.4
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/sanohiro/bcon
 	arch = x86_64
@@ -21,7 +21,10 @@ pkgbase = bcon
 	optdepends = noto-fonts-emoji: color emoji rendering
 	options = !lto
 	options = !debug
-	source = bcon-1.3.4.tar.gz::https://github.com/sanohiro/bcon/archive/refs/tags/v1.3.4.tar.gz
-	sha256sums = ab5f484f9102867905347cfe0b21e4073cabf10907d0cb4bb37df8eb67698730
+	backup = etc/bcon/config.toml
+	source = bcon-1.4.0.tar.gz::https://github.com/sanohiro/bcon/archive/refs/tags/v1.4.0.tar.gz
+	source = bcon-default.toml
+	sha256sums = 8a09aefb2dcfd3ea6bda15dabd66ab3db21f49c5065ce66a1bf74415ac283a15
+	sha256sums = ef3370c53ef638602b96ebcc14082648b5c00107c35514f2649e87593fe02a19
 
 pkgname = bcon
