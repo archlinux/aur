@@ -1,4 +1,4 @@
-# Maintainer:  mosra <mosra@centrum.cz>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgbase="openmeeg"
 pkgname=(
