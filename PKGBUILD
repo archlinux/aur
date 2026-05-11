@@ -8,9 +8,12 @@ fi
 #: ${_dotnet_type=-bin}
 : ${_install_path:=usr/lib}
 
+: ${DOTNET_SYSTEM_NET_DISABLEIPV6=1}
+export DOTNET_SYSTEM_NET_DISABLEIPV6
+
 _pkgname="ryujinx"
 pkgname="$_pkgname-canary"
-pkgver=1.3.269
+pkgver=1.3.288
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://git.ryujinx.app/projects/Ryubing"
@@ -40,6 +43,11 @@ _source_ryujinx() {
   _pkgext="tar.gz"
   source=("${_pkgname}-canary-$_pkgver.$_pkgext"::"$url/archive/Canary-$_pkgver.$_pkgext")
   sha256sums=('SKIP')
+}
+
+prepare() {
+  # ensure dotnet uses correct SDK
+  cp "$_pkgsrc"/global.json global.json
 }
 
 pkgver() {
