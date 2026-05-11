@@ -4,7 +4,7 @@
 _pkgname=tp-dusk
 pkgname=${_pkgname}-git
 pkgver=1.0.1.r2.g40e3f7d
-pkgrel=2
+pkgrel=3
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
@@ -53,7 +53,7 @@ build() {
 }
 
 package() {
-  install -Dm 755 "${srcdir}/build/dusk" "${pkgdir}/usr/lib/${pkgname}/dusk"
+  install -Dm 755 "${srcdir}/dusk/build/dusk" "${pkgdir}/usr/lib/${pkgname}/dusk"
   install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -dm 755 "${pkgdir}/usr/share/${pkgname}"
   cp -r "${srcdir}/dusk/res" "${pkgdir}/usr/share/${pkgname}/res"
