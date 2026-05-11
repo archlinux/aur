@@ -1,6 +1,6 @@
 pkgbase = opendoas-patched
 	pkgdesc = Doas with retries + patches
-	pkgver = 6.8.2.r289.5298f3b
+	pkgver = 6.8.3.r289.5298f3b
 	pkgrel = 1
 	url = https://github.com/zeroarchroot/OpenDoas
 	install = opendoas-patched.install
