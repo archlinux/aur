@@ -1,6 +1,6 @@
 # Maintainer: MAGPINY BO <magpinyb@proton.me>
 pkgname=sysinfoviewer
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A comprehensive system information viewer built with wxWidgets"
 arch=('x86_64' 'i686' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=(
   'smartmontools: Disk health information'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Magpiny/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d4d01eecb7643f28d795c42e084fdba80bd1df0a64864d3692cc43a6006804a5')
+sha256sums=('dd622ad4d92c7dfc746d2be2cda9d369e81327906b79407c8d237a60e1332afe')
 
 # Optimization flags for production builds
 export CFLAGS="-march=x86-64 -mtune=generic -O3 -pipe -fno-plt -fexceptions \
