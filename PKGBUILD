@@ -16,6 +16,14 @@ conflicts=("${_pkgname}")
 source=("https://github.com/AcademySoftwareFoundation/openapv/archive/v${pkgver}-fix/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('b91fbb047869899836aec179e5546a969894a67e2b82f865c87089043a06dd00')
 
+prepare() {
+    cd "${_pkgname}-${pkgver}-fix"
+
+    # Some 4K/8K hash-verification decode tests can exceed upstream's 10s limit
+    # on packaging builders while still completing successfully.
+    sed -i 's/TIMEOUT 10/TIMEOUT 60/g' CMakeLists.txt
+}
+
 build() {
     export CC=clang
     export CXX=clang++
