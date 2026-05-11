@@ -1,6 +1,6 @@
 pkgbase = cloudflare-warp-nox-bin
 	pkgdesc = Cloudflare Warp Client (for servers without graphical environment)
-	pkgver = 2026.3.846
+	pkgver = 2026.4.1350
 	pkgrel = 1
 	url = https://1.1.1.1
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = cloudflare-warp-nox-bin
 	provides = warp-svc
 	conflicts = cloudflare-warp
 	conflicts = cloudflare-warp-bin
-	noextract = cloudflare-warp-nox-bin-2026.3.846.deb
+	noextract = cloudflare-warp-nox-bin-2026.4.1350.deb
 	options = !debug
 	options = !strip
 	options = !emptydirs
-	source = cloudflare-warp-nox-bin-2026.3.846.deb::https://pkg.cloudflareclient.com/pool/noble/main/c/cloudflare-warp/cloudflare-warp_2026.3.846.0_amd64.deb
-	b2sums = 264017df01f0ded07573b47a0f09a5fce4abb8265d747a311b4644a3f6c4cbe48fed86644fadf4e327d8f3c5cc90b3c5f3953ec7fb14ff838163737c4853b8b8
+	source = cloudflare-warp-nox-bin-2026.4.1350.deb::https://pkg.cloudflareclient.com/pool/noble/main/c/cloudflare-warp/cloudflare-warp_2026.4.1350.0_amd64.deb
+	b2sums = 6ad567bc9ce5631c7155f373c630179ada8870466740f41e414be1ff271d17480ad0f11c8da696b8d256410c67e9a7eac02e80d7ec966b47a23bb5ad3e598dd7
 
 pkgname = cloudflare-warp-nox-bin
