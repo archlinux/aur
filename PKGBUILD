@@ -1,8 +1,8 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rofi-unicode
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc='Unicode character selector plugin for rofi'
 arch=('x86_64')
 url='https://github.com/rolv-apneseth/rofi-unicode'
@@ -16,25 +16,22 @@ optdepends=(
     'xdotool: X11 - insert icon'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ce5722c9c5a7905647a7d5f06afc09deee4b1e635f4ac7a4f85c6f5fabab013b52928f15c897714c4d81808869438e5822d990f1e385ec304d45b41b14640f7e')
+sha512sums=('d7b26e850918cb9b44a57e1e06e465dbe1197947a3d3ea652912cc9d5ff30241aa686873c0634347df06fcf17253bad53dc0e48cefa577787412c5c17009c4a7')
 options=(!debug !lto)
 
-prepare()
-{
+prepare() {
     cd "$pkgname-$pkgver" || exit
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-build()
-{
+build() {
     cd "$pkgname-$pkgver" || exit
 
     PKGDIR="$pkgdir" just build
 }
 
-package()
-{
+package() {
     cd "$pkgname-$pkgver" || exit
 
     PKGDIR="$pkgdir" just install
