@@ -4,7 +4,7 @@
 pkgname=xdg-desktop-portal-hyprland-frozen version 1.3.9.r5.gbe6771e
 pkgver=1.3.9.r5.gbe6771e
 pkgrel=1
-conflicts=('xdg-desktop-portal-hyprland' 'xdg-desktop-portal-hyprland-git')
+conflicts=('xdg-desktop-portal-hyprland-git')
 provides=('xdg-desktop-portal-hyprland-frozen' 'xdg-desktop-portal-hyprland' "xdg-desktop-portal-impl")
 pkgdesc="xdg-desktop-portal backend for Hyprland - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
