@@ -1,6 +1,6 @@
 # Maintainer: nithin <nithin3dev@gmail.com>
 pkgname=echo-meter
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=5
 pkgdesc="Echo Meter – GTK4 OSD daemon for volume, brightness, mic mute, and keyboard lock status"
 arch=('x86_64')
