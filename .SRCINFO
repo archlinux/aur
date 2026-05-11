@@ -1,6 +1,6 @@
 pkgbase = alacritree-bin
 	pkgdesc = Alacritty fork with worktree-aware sidebars (prebuilt binary)
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/mathix420/alacritree
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = alacritree-bin
 	provides = alacritree
 	conflicts = alacritree
 	conflicts = alacritree-git
-	source_x86_64 = alacritree-bin-0.2.3-x86_64.tar.gz::https://github.com/mathix420/alacritree/releases/download/v0.2.3/alacritree-v0.2.3-x86_64-linux.tar.gz
-	sha256sums_x86_64 = bc44e27ecf27546b4a0135f00f9f1f277863443d63b5fc531daab99aafa4f51e
-	source_aarch64 = alacritree-bin-0.2.3-aarch64.tar.gz::https://github.com/mathix420/alacritree/releases/download/v0.2.3/alacritree-v0.2.3-aarch64-linux.tar.gz
-	sha256sums_aarch64 = dbd758ea2390c3605d257516a31e62a23d05ff41ed1ce8fae503bd859e30e824
+	source_x86_64 = alacritree-bin-0.2.4-x86_64.tar.gz::https://github.com/mathix420/alacritree/releases/download/v0.2.4/alacritree-v0.2.4-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 0bed615e8897bd2ff9aa7d5913bc5eba80ec40a977e6c2de7357b7486a63045a
+	source_aarch64 = alacritree-bin-0.2.4-aarch64.tar.gz::https://github.com/mathix420/alacritree/releases/download/v0.2.4/alacritree-v0.2.4-aarch64-linux.tar.gz
+	sha256sums_aarch64 = c8115b835f0a83233edc30fad76e8a5ab0a2e6a187c614f3cbd60609c8cf0868
 
 pkgname = alacritree-bin
