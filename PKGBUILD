@@ -6,17 +6,16 @@ _appname="no.mifi.${pkgname}"
 _reponame=lossless-cut
 pkgver=3.68.0
 _electronversion=38
-_nodeversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc="The swiss army knife of lossless video/audio editing"
 arch=('x86_64')
 url="https://github.com/mifi/${_reponame}"
 license=('GPL-2.0-only')
 depends=("electron${_electronversion}" 'ffmpeg' 'bash' 'hicolor-icon-theme')
-makedepends=('nodejs-lts-jod' 'npm' 'yarn' 'node-gyp' 'imagemagick' 'librsvg')
+makedepends=('nodejs-lts-jod' 'npm' 'yarn' 'node-gyp' 'librsvg')
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "fix-wayland-wmclass.patch"
+    "fix-wayland-icon.patch"
     "${pkgname}.sh"
 )
 sha256sums=('b4b2e0d4ba06de0243dfa3be5ec964b28f6c694c412487143b9c68d54b94fbb0'
@@ -35,7 +34,7 @@ prepare() {
     cd "${srcdir}/${_reponame}-${pkgver}"
 
     # Fix the window title bar icon
-    patch -Np1 -i "${srcdir}/fix-wayland-wmclass.patch"
+    patch -Np1 -i "${srcdir}/fix-wayland-icon.patch"
 
     export npm_config_cache="$srcdir/npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -135,13 +134,15 @@ build() {
     find -type d -name 'tests' -prune -exec rm -rf {} +
     find -type d -name '__tests__' -prune -exec rm -rf {} +
 
+    find . -type d -empty -print -delete
+
     popd
 
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 
     for res in 16 32 48 64 128 256 512 1024; do
         mkdir -p "icons-build/${res}x${res}"
-        magick -background none "src/renderer/src/icon.svg" -resize "${res}x${res}" "icons-build/${res}x${res}/${pkgname}.png"
+        rsvg-convert -w "${res}" -h "${res}" "src/renderer/src/icon.svg" -o "icons-build/${res}x${res}/${pkgname}.png"
     done
 }
 
