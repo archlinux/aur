@@ -190,6 +190,7 @@ build() {
     
     cd openvino/tools/benchmark_tool
     python -m build --wheel --no-isolation
+    rm -rf "${srcdir}/benchmark_app"
     python -m installer --destdir="${srcdir}/benchmark_app" dist/*.whl
 }
 
@@ -212,6 +213,14 @@ package_openvino-llvm() {
         'intel-openvino')
     replaces=('intel-openvino')
     
+    local _pyver
+    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+    
+    rm -rf intel-gpu-plugin intel-npu-plugin licenses "python${_pyver}"
+    install -d -m755 licenses
+    install -d -m755 intel-gpu-plugin/usr/lib/openvino
+    install -d -m755 intel-npu-plugin/usr/{bin,{lib,share/doc}/openvino}
+    
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 openvino/bin/intel64/Release/libopenvino_template_extension.so -t "${pkgdir}/usr/lib"
     install -D -m644 openvino/bin/intel64/Release/libopenvino_template_plugin.so -t "${pkgdir}/usr/lib/openvino"
@@ -224,11 +233,9 @@ package_openvino-llvm() {
     mv "${pkgdir}/usr/share/doc/openvino/README-protopipe.md" intel-npu-plugin/usr/share/doc/openvino
     mv "${pkgdir}/usr/share/doc/openvino"/README-{compile_tool,single-image-test}.md intel-npu-plugin/usr/share/doc/openvino
     
-    local _pyver
-    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
     mv "${pkgdir}/usr/lib/python${_pyver}" .
     
-    cp "${pkgdir}/usr/share/licenses/${pkgname}"/* licenses
+    cp "${pkgdir}/usr/share/licenses/openvino"/* licenses
 }
 
 package_openvino-llvm-intel-gpu-plugin() {
