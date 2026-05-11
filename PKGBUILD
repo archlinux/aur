@@ -3,7 +3,7 @@
 _pkgname=plover
 
 pkgname="${_pkgname}"-appimage
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Free and open source real-time stenography engine"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/openstenoproject/plover/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('61031cbe9b5ddd8e5b9bcb1eb3b3f57c86887eb2dc2b3927157a661a99127ad8')
+sha256sums_x86_64=('8bd49513a2f0a4914bc73fe405c6a8ba951d58d3d13f420ea035e08647032778')
 
 prepare() {
     chmod +x "${_appimage}"
