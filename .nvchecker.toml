@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/saturneric/GpgFrontend.git"
 prefix = "v"
+exclude_regex = ".*(alpha|beta|rc).*"
