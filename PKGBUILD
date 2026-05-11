@@ -1,7 +1,7 @@
 # Maintainer: Uzanto
 _pkgname=pingall
 pkgname=pingall-git
-pkgver=1.0.1.r37.g69dadd2
+pkgver=2.0.0.r42.g7042e1e
 pkgrel=1
 pkgdesc='Ping everything you can reach'
 arch=('x86_64')
