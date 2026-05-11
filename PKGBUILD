@@ -15,7 +15,7 @@ backup=("usr/share/xdg-desktop-portal/hyprland-portals.conf")
 depends=(
   gcc-libs
   glibc
-  hyprutils-git
+  hyprutils-frozen
 )
 makedepends=(
   cmake
