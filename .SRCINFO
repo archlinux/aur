@@ -1,6 +1,6 @@
 pkgbase = flexbv-free-bin
 	pkgdesc = Free version of the FlexBV boardview software
-	pkgver = 5.3127
+	pkgver = 5.3156
 	pkgrel = 1
 	url = https://pldaniels.com/flexbv5/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = flexbv-free-bin
 	depends = libstdc++
 	depends = gcc-libs
 	conflicts = flexbv-bin
-	source = flexbv-free-5.3127-linux-x86_64.tar.gz::https://pldaniels.com/flexbv5/releases/flexbv-free-5.3127-linux-x86_64.tar.gz
-	sha512sums = 035b41dc1601dfcf711c430028b584835a028544effe146062ce86e8bf148f50f569c8be13ba1f9d5e80b65444b92b2ecde393a30af0ccb49a734c9a57122734
-	b2sums = 26a617f6fbeb51801a4a42366e3b31809f60be289351fbffb5bce47104febc75f03d883acf1cff37b1f6e483c67d94d71db4491864e4e9b5e982acab167d74e2
+	source = flexbv-free-5.3156-linux-x86_64.tar.gz::https://pldaniels.com/flexbv5/releases/flexbv-free-5.3156-linux-x86_64.tar.gz
+	sha512sums = 96aac38ba79a4b9ca4884210aaf1ad44733c058354522cc28e4f75dea87349b590fe43c9053963720a00f4db75addff8056730a36c66f76a9c7d0afa67e939f8
+	b2sums = 39f31431e6dc6f4a312d2fc26123c83875acd03958c66964875880e903d53d6b714e06329a950985197b92545fd5f96df7b70256aacf837dc303fef4f1b995d6
 
 pkgname = flexbv-free-bin
