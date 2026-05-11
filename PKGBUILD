@@ -12,8 +12,8 @@ arch=('any')
 url="https://github.com/dankilman/${_name}"
 license=('MIT')
 provides=("${_exec_final}")
-depends=('python-aiofiles' 'python-aiostream' 'python-click' 'python-easyansi' 'python-wcwidth' 'python-pyte')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry-core')
+depends=('python' 'python-aiofiles' 'python-aiostream' 'python-click' 'python-easyansi' 'python-wcwidth' 'python-pyte')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 		"fix_typo.patch")
 sha256sums=('4fe4a89eaeae6b33d199e772dda211ac1c3de10438c4534b790860a291c722dc'

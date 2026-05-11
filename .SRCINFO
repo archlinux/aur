@@ -10,6 +10,7 @@ pkgbase = python-multiplex
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-poetry-core
+	depends = python
 	depends = python-aiofiles
 	depends = python-aiostream
 	depends = python-click
