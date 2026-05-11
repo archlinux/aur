@@ -5,7 +5,6 @@ pkgdesc="System monitor daemon with GTK4 overlay UI. Monitors backlight, volume,
 pkgver=1.0.0
 pkgrel=1
 arch=(x86_64)
-keywords=(osd daemon gtk4 overlay brightness volume pulseaudio backlight monitor notification wayland)
 url=https://github.com/Nithin-3/ozhium-ollium
 license=(BSD-3-Clause)
 depends=(libpulse gtk4 gtk4-layer-shell)
