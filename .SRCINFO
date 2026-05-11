@@ -1,7 +1,7 @@
 pkgbase = openapv-llvm
 	pkgdesc = The reference implementation of the APV codec — built with Clang and LLVM lld
 	pkgver = 0.2.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AcademySoftwareFoundation/openapv/
 	arch = x86_64
 	license = BSD-3-Clause
