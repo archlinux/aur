@@ -1,6 +1,6 @@
 pkgbase = sonic-frameworks-keybind
 	pkgdesc = sonic-frameworks-keybind allows to have global accelerators that are independent of the focused window
-	pkgver = 6.25.0
+	pkgver = 6.26.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-keybind
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = sonic-frameworks-keybind
 	provides = kglobalaccel
 	conflicts = kglobalaccel
 	replaces = kglobalaccel
-	source = sonic-frameworks-keybind-6.25.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-keybind/archive/refs/tags/6.25.0.tar.gz
-	sha256sums = 6ccc6202b77e53bcefdb0ccad3f40e44921cd6cdc44ecd1b9156d34d906a31c3
+	source = sonic-frameworks-keybind-6.26.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-keybind/archive/refs/tags/6.26.0.tar.gz
+	sha256sums = 4c38636274cf99a068fc240082ecb0158b3b31545616267e85fefee1fc8e2f52
 
 pkgname = sonic-frameworks-keybind

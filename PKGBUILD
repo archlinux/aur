@@ -1,7 +1,7 @@
 # Maintainer: artist for Sonic-DE
 
 pkgname=sonic-frameworks-keybind
-pkgver=6.25.0
+pkgver=6.26.0
 pkgrel=1
 pkgdesc='sonic-frameworks-keybind allows to have global accelerators that are independent of the focused window'
 arch=(x86_64)
@@ -29,4 +29,4 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 }
 
-sha256sums=('6ccc6202b77e53bcefdb0ccad3f40e44921cd6cdc44ecd1b9156d34d906a31c3')
+sha256sums=('4c38636274cf99a068fc240082ecb0158b3b31545616267e85fefee1fc8e2f52')
