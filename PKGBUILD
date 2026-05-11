@@ -3,7 +3,7 @@
 
 pkgname=qdrant-git
 _pkgname=qdrant
-pkgver=1.17.1+r5628+geabee371f
+pkgver=1.18.0+r5933+gfd6746ea9
 pkgrel=1
 pkgdesc="Vector Database and Vector Search Engine for AI"
 backup=('etc/qdrant/config.yaml')
@@ -16,7 +16,6 @@ depends=(
   'jemalloc'
   'libunwind'
   'lz4'
-  'rocksdb'
   'shaderc'
   'xz'
   'zstd'
@@ -81,12 +80,12 @@ build() {
   export ZSTD_SYS_USE_PKG_CONFIG=1
   export SHADERC_LIB_DIR=/usr/lib/
   export AWS_LC_SYS_NO_JITTER_ENTROPY=1 # Work around jitterentropy complaining about -O{1,2,3} flags https://github.com/aws/aws-lc-rs/issues/1097
-  cargo build --release --frozen --features=gpu,stacktrace,rocksdb --bin qdrant
+  cargo build --release --frozen --features=gpu,stacktrace --bin qdrant
 }
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  cargo nextest run --profile ci --frozen --features=gpu,stacktrace,rocksdb
+  cargo nextest run --profile ci --frozen --features=gpu,stacktrace
 }
 
 package() {
