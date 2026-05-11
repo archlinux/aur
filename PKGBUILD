@@ -18,21 +18,21 @@ sha256sums=("800478f3bf35f0621b14928ceb317579f3e8b23de4bd2aac29b6cb8be962bbd8")
 build() {
     cd "libde265-$pkgver"
 
-    for architecture in ${_architectures[@]}; do
-        $architecture-cmake \
-            -B "build-$architecture" \
+    for _arch in ${_architectures[@]}; do
+        $_arch-cmake \
+            -B "build-$_arch" \
             -S . \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
-        cmake --build "build-$architecture" --parallel
+        cmake --build "build-$_arch" --parallel
     done
 }
 
 package () {
     cd "libde265-$pkgver"
 
-    for architecture in ${_architectures[@]}; do
-        cmake --install "build-$architecture" --prefix "$pkgdir/usr/$architecture"
+    for _arch in ${_architectures[@]}; do
+        cmake --install "build-$_arch" --prefix "$pkgdir/usr/$_arch"
     done
 }
