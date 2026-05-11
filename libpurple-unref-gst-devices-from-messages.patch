@@ -1,0 +1,41 @@
+# HG changeset patch
+# User Lukáš Lipinský <lukas.lipinsky@oracle.com>
+# Date 1778499669 -7200
+#      Mon May 11 13:41:09 2026 +0200
+# Branch release-2.x.y
+# Node ID aff978190aac08d5c99d4cde8c4637cf9f0b2460
+# Parent  91b609474f7b8867a6125b03e56b6afbc4006c50
+2.x.y: Unref GstDevice objects from monitor messages
+
+GStreamer device message parsers transfer a full reference to the caller.
+Release that reference after registering or unregistering the device so media
+manager device events do not leak GstDevice objects.
+
+Also guard against NULL devices before passing them to the registration helpers.
+
+Testing Done:
+Configured with ./autogen.sh using libpurple-only Arch packaging options and
+ran make -C libpurple -j$(nproc).
+
+diff --git a/libpurple/mediamanager.c b/libpurple/mediamanager.c
+--- a/libpurple/mediamanager.c
++++ b/libpurple/mediamanager.c
+@@ -2293,10 +2293,16 @@
+ 
+ 	if (message_type == GST_MESSAGE_DEVICE_ADDED) {
+ 		gst_message_parse_device_added(message, &device);
+-		purple_media_manager_register_gst_device(manager, device);
++		if (device != NULL) {
++			purple_media_manager_register_gst_device(manager, device);
++			gst_object_unref(device);
++		}
+ 	} else if (message_type == GST_MESSAGE_DEVICE_REMOVED) {
+ 		gst_message_parse_device_removed (message, &device);
+-		purple_media_manager_unregister_gst_device(manager, device);
++		if (device != NULL) {
++			purple_media_manager_unregister_gst_device(manager, device);
++			gst_object_unref(device);
++		}
+ 	}
+ 
+ 	return TRUE;

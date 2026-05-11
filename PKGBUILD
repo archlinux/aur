@@ -8,8 +8,8 @@
 
 pkgname=('pidgin-gnutls' 'libpurple-gnutls' 'finch-gnutls')
 pkgbase=pidgin-gnutls
-_pkgname="${pkgname%-gnutls}"
-pkgver=2.14.13
+_pkgname=pidgin
+pkgver=2.14.14
 pkgrel=1
 arch=('x86_64')
 url="https://pidgin.im/"
@@ -19,10 +19,21 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'gnutls' 'libsasl' 'libs
              'libnsl' 'avahi' 'ca-certificates' 'intltool' 'libnm' 'dbus-glib'
              'libgnt' 'libxcrypt')
 options=('!emptydirs')
-source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$_pkgname-$pkgver.tar.bz2{,.asc})
-sha256sums=('120049dc8e17e09a2a7d256aff2191ff8491abb840c8c7eb319a161e2df16ba8'
-            'SKIP')
+source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$_pkgname-$pkgver.tar.bz2{,.asc}
+        libpurple-fix-media-manager-gst-device-reference.patch
+        libpurple-unref-gst-devices-from-messages.patch)
+sha256sums=('0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356'
+            'SKIP'
+            '7ac937705681460e42028e6ad2d3609b8d21108d534547c87991753c74a8fb5f'
+            '88e965e2da3c907d7f553db75d233911207f4b3653feb681ec373e683c13aa29')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+
+  patch -Np1 -i ../libpurple-fix-media-manager-gst-device-reference.patch
+  patch -Np1 -i ../libpurple-unref-gst-devices-from-messages.patch
+}
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -33,15 +44,14 @@ build() {
     --disable-schemas-install \
     --disable-gevolution \
     --disable-meanwhile \
-    --enable-gnutls=yes \
-    --enable-nss=no \
-    --with-gnutls-includes=/usr/include/gnutls \
-    --with-gnutls-libs=/usr/lib \
+    --enable-gnutls \
+    --disable-nss \
     --enable-cyrus-sasl \
     --disable-doxygen \
     --enable-nm \
     --with-system-ssl-certs=/etc/ssl/certs
-    make
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 }
 
 package_pidgin-gnutls(){
@@ -60,14 +70,14 @@ package_pidgin-gnutls(){
   make -C pidgin DESTDIR="$pkgdir" install
   make -C doc DESTDIR="$pkgdir" install
 
-  # Remove files that are packaged in libpurle
+  # Remove files that are packaged in libpurple
   make -C libpurple DESTDIR="$pkgdir" uninstall-libLTLIBRARIES
 
-  rm "$pkgdir/usr/share/man/man1/finch.1"
+  rm -f "$pkgdir/usr/share/man/man1/finch.1"
 
   # https://bugs.archlinux.org/task/53770
   # https://bugs.archlinux.org/task/69026
-  find "$pkgdir/usr/lib/perl5" -name perllocal.pod -delete
+  [ ! -d "$pkgdir/usr/lib/perl5" ] || find "$pkgdir/usr/lib/perl5" -name perllocal.pod -delete
 }
 
 package_libpurple-gnutls(){
@@ -89,13 +99,13 @@ package_libpurple-gnutls(){
 
   # https://bugs.archlinux.org/task/53770
   # https://bugs.archlinux.org/task/69026
-  find "$pkgdir/usr/lib/perl5" -name perllocal.pod -delete
+  [ ! -d "$pkgdir/usr/lib/perl5" ] || find "$pkgdir/usr/lib/perl5" -name perllocal.pod -delete
 }
 
 package_finch-gnutls(){
   provides=('finch')
   conflicts=('finch')
-  pkgdesc="A ncurses-based messaging client"
+  pkgdesc="ncurses-based messaging client"
   depends=('libpurple-gnutls' 'libgnt' 'libx11')
 
   cd "$_pkgname-$pkgver"
@@ -106,10 +116,10 @@ package_finch-gnutls(){
   make -C finch DESTDIR="$pkgdir" install
   make -C doc DESTDIR="$pkgdir" install
 
-  # Remove files that are packaged in libpurle
+  # Remove files that are packaged in libpurple
   make -C libpurple DESTDIR="$pkgdir" uninstall-libLTLIBRARIES
 
-  rm "$pkgdir"/usr/share/man/man1/pidgin.1
+  rm -f "$pkgdir"/usr/share/man/man1/pidgin.1
 }
 
 # vim:set ts=2 sw=2 et:

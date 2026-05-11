@@ -1,0 +1,50 @@
+# HG changeset patch
+# User Gary Kramlich <grim@reaperworld.com>
+# Date 1772520168 21600
+#      Tue Mar 03 00:42:48 2026 -0600
+# Branch release-2.x.y
+# Node ID b0cd433f154a91cc95566b4752146735a8a7908c
+# Parent  10a79cb5401b61abe2fa7649172695dcbb8bbb20
+2.x.y: Fix a crash in the media manager
+
+This appears to be a race condition where somehow we get the unregister event
+for a device, but by the time we try to unregister it it's been deleted and
+we're left with a dangling pointer. To avoid this, we add a reference which
+solves the issue.
+
+Testing Done:
+Ran with the patch for awhile and no longer experienced any crashes.
+
+Bugs closed: PIDGIN-18142, PIDGIN-18148, PIDGIN-18155
+
+Reviewed at https://reviews.imfreedom.org/r/4404/
+
+diff --git a/libpurple/mediamanager.c b/libpurple/mediamanager.c
+--- a/libpurple/mediamanager.c
++++ b/libpurple/mediamanager.c
+@@ -2216,7 +2216,8 @@
+ 			"create-cb", gst_device_create_cb,
+ 			NULL);
+ 
+-	g_object_set_data(G_OBJECT(info), "gst-device", device);
++	g_object_set_data_full(G_OBJECT(info), "gst-device", g_object_ref(device),
++	                       g_object_unref);
+ 
+ 	purple_media_manager_register_element(manager, info);
+ 
+@@ -2259,12 +2260,11 @@
+ 				gchar *id;
+ 
+ 				id = purple_media_element_info_get_id(info);
+-				purple_media_manager_unregister_element(manager,
+-						id);
++				purple_media_manager_unregister_element(manager, id);
+ 
+ 				purple_debug_info("mediamanager",
+-						"Unregistered %s device %s",
+-						device_class, name);
++				                  "Unregistered %s device %s\n",
++				                  device_class, name);
+ 
+ 				g_free(id);
+ 
