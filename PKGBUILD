@@ -1,7 +1,7 @@
 # Maintainer: M1829 <m1829js@gmail.com>
 pkgname=mxset
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An optimized hashset in C89, yielding maximum compatibility and great performance.'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://codeberg.org/Muhamix/mxset'

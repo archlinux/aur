@@ -1,7 +1,7 @@
 pkgbase = mxset
 	pkgdesc = An optimized hashset in C89, yielding maximum compatibility and great performance.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Muhamix/mxset
 	arch = x86_64
 	arch = i686
