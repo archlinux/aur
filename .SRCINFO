@@ -1,0 +1,22 @@
+pkgbase = python-s3tokenizer
+	pkgdesc = Speech-to-speech tokenizer used by Chatterbox / WeNet
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/xingchensong/S3Tokenizer
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytorch-opt-cuda
+	depends = python-torchaudio
+	depends = python-numpy
+	depends = python-onnx
+	depends = python-tqdm
+	depends = python-einops
+	source = https://files.pythonhosted.org/packages/94/4e/e64bb980309a22d186efedcd9e5f060a5b1cbffc5c19b356bb42dcc82e07/s3tokenizer-0.3.0.tar.gz
+	sha256sums = 786a5ff8b5ca023507e0a6a8c7793a6aa1b1550a73d7676851d1b8c8b12889c5
+
+pkgname = python-s3tokenizer
