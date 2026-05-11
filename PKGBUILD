@@ -1,5 +1,5 @@
 pkgname=kwin-effects-yet-another-magic-lamp-reloaded-git
-pkgver=r1.0000000
+pkgver=6.6
 pkgrel=1
 pkgdesc="Fork of Yet Another Magic Lamp, targeting Plasma 6.6+ with exclusive Wayland support"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --match "[0-9]*" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
