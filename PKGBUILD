@@ -1,3 +1,4 @@
+pkgbase=lime-bin
 pkgname=lime-bin
 pkgver=1.0.0
 pkgrel=1
