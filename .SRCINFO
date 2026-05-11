@@ -1,21 +1,30 @@
 pkgbase = openmeeg
 	pkgdesc = C++ package for solving the forward problems of electroencephalography (EEG) and magnetoencephalography (MEG)
 	pkgver = 2.5.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openmeeg.github.io
 	arch = x86_64
 	license = custom:CeCILL-B
+	checkdepends = python-pytest
+	checkdepends = python-threadpoolctl
 	makedepends = cmake>=3.14
+	makedepends = eigen
+	makedepends = expat>=2.2.1
+	makedepends = fast_float
 	makedepends = hdf5
 	makedepends = lapacke
 	makedepends = matio
+	makedepends = nlohmann-json
 	makedepends = openblas
+	makedepends = utf8cpp
+	makedepends = vtk
 	makedepends = python>=3.10
 	makedepends = python-setuptools>=68.0.0
 	makedepends = python-setuptools-scm>=6.2
 	makedepends = python-wheel>=0.37.0
 	makedepends = python-numpy>=2.0.0rc1
 	makedepends = swig>=4.2
+	options = !lto
 	source = https://github.com/openmeeg/openmeeg/archive/refs/tags/2.5.16/openmeeg-2.5.16.tar.gz
 	sha256sums = 29485a732e3555425889cfd28474fccd2b3e76b51bb694fc83d86ca052e70884
 
@@ -26,12 +35,13 @@ pkgname = openmeeg
 	depends = libstdc++
 	depends = matio
 	depends = openblas
+	depends = vtk
 	provides = libOpenMEEG.so
 	provides = libOpenMEEGMaths.so
 
 pkgname = python-openmeeg
 	pkgdesc = C++ package for solving the forward problems of electroencephalography (EEG) and magnetoencephalography (MEG) (Python bindings)
-	depends = openmeeg>=2.5.16-1
+	depends = openmeeg>=2.5.16-2
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
