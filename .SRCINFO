@@ -34,12 +34,14 @@ pkgbase = nekobox
 	depends = thrift
 	depends = boost-libs
 	depends = lmdb
-	depends = cpr
 	depends = leveldb
 	depends = yaml-cpp
 	depends = curl
+	depends = openssl
+	depends = zlib
+	depends = libunistring
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.11.14/nekobox-unified-source-5.11.14.tar.xz
-	sha256sums = b115e09870ab072e9f2da93e2f34eaa5080f282244b3b198ffeed7862ddb2f28
+	sha256sums = f6c8d361a0939e94eae51def7f84b5c2f1e09f92e88f4f63bebe8e80b8342bb7
 
 pkgname = nekobox
 
