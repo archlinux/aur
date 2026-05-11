@@ -6,7 +6,7 @@ _appname="no.mifi.${pkgname}"
 _reponame=lossless-cut
 pkgver=3.68.0
 _electronversion=38
-pkgrel=6
+pkgrel=7
 pkgdesc="The swiss army knife of lossless video/audio editing"
 arch=('x86_64')
 url="https://github.com/mifi/${_reponame}"
@@ -163,6 +163,6 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
     done
 
-    install -Dm644 "${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${_appname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname}.appdata.xml"
+    install -Dm644 "${_appname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_appname}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
 }
