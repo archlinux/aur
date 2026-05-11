@@ -2,7 +2,7 @@
 
 pkgname=alacritree-bin
 _pkgname=alacritree
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Alacritty fork with worktree-aware sidebars (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-linux.tar.gz")
 # Hashes are filled in by .github/workflows/aur-bin-publish.yml before the
 # manifest is shipped to AUR.
-sha256sums_x86_64=('7fcdcfae4486e580234a1fb99d80c942724cdcd77c359d9164cbb6bf00312c6c')
-sha256sums_aarch64=('9da7d3563cc968196141deb48e29b51035cd83aa562eabe63e95c9c0bff8f166')
+sha256sums_x86_64=('bc44e27ecf27546b4a0135f00f9f1f277863443d63b5fc531daab99aafa4f51e')
+sha256sums_aarch64=('dbd758ea2390c3605d257516a31e62a23d05ff41ed1ce8fae503bd859e30e824')
 
 package() {
   install -Dm755 "$srcdir/alacritree" "$pkgdir/usr/bin/alacritree"
