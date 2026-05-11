@@ -7,13 +7,13 @@
 : ${_widgets:=GTK2}
 
 [[ "$_widgets" == "GTK2" ]] \
-  && : ${_cksum=607b288964302f068a8815f74838abc3db345c4d350f7919fb1c905225664a7b}
+  && : ${_cksum=86b7eb4d0c5e57f58ac82df45d5167d604b819ae6f1f5f7b623460a56773514a}
 
 : ${_pkgtype:=-${_widgets,,}-bin}
 
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
-pkgver=11.0.0
+pkgver=11.1.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets})"
 url="https://github.com/peazip/PeaZip"
@@ -23,6 +23,7 @@ arch=('x86_64')
 _depends=(
   '7zip'
   'brotli'
+  'glib2'
   'zstd'
 )
 makedepends=(
