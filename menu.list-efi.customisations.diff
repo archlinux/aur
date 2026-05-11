@@ -1,19 +1,19 @@
---- grub4dos-efi.orig/menu.lst	2025-02-12
-+++ grub4dos-efi/menu.lst	2024-02-12
-@@ -1,4 +1,4 @@
+diff -rU1 grub4dos-efi-efi.orig/menu.lst grub4dos-efi-efi/menu.lst
+--- grub4dos-efi-efi.orig/menu.lst	2026-05-11 13:41:29.083693980 +0200
++++ grub4dos-efi-efi/menu.lst	2026-05-11 13:52:44.076672865 +0200
+@@ -1,25 +1,27 @@
 -﻿# 这是一个样品 menu.lst 文件。你应该对它做些改动。
 -# 它必须是 UTF-8 编码，以支持多种语言。
 -# 字体应该是 unifont.hex 格式。
-+﻿# Here's a sample "menu.lst" file. You should make some changes to it.
++﻿﻿# Here's a sample 'menu.lst' file. You should make some changes to it.
 +# It must be UTF-8 encoded to support multiple languages.
 +# The font should be in unifont.hex format.
  
-@@ -6,20 +6,23 @@
  
+-
 -#设置倒计时(秒)
--timeout 30
 +# Setting the countdown time (seconds)
-+timeout 3600
+ timeout 30
  
 -#设置第一项为默认值
 +# Set the default boot item.
@@ -41,30 +41,30 @@
 -#获取水平像素，加载不同尺寸的字体及背景图
 +# Get horizontal pixels, load different sizes of fonts and background images
  #calc *0x834c > nul ;; set a=%@retval%
-@@ -28,25 +31,48 @@
+@@ -28,25 +30,55 @@
  
 -#判断启动环境：if %@uefi%==64    0/32/64=bios/uefi_x86/uefi_x64
 +# Determine the startup environment: if %@uefi%==64    0/32/64=bios/uefi_x86/uefi_x64
  
--#设置菜单框
+ #设置菜单框
 +# Setting up the menu box
  #setmenu --box x=4 w=60 y=6 h=9 l=2
--#设置中文菜单按键帮助
+ #设置中文菜单按键帮助
 +# Setting up Chinese menu button help
  #setmenu --lang=zh
--#设置自动菜单编号
+ #设置自动菜单编号
 +# Setting the Auto Menu Number
  #setmenu --auto-num-on 
--#设置字符串信息
+ #设置字符串信息
 +# Setting string information
  #setmenu --string=x=y=颜色="字符串"
--#设置日期时间
+ #设置日期时间
 +# Setting the date and time
  #setmenu --string=x=y=颜色="date&time=yyyy-MM-dd  HH:mm:ss"
--#设置倒计时
+ #设置倒计时
 +# Setting the countdown
  #setmenu --timeout=x=y=颜色
--#更多菜单编辑功能、动画、图像菜单等等，可参考http://bbs.wuyou.net/forum.php?mod=viewthread&tid=369720&extra=page%3D3
+ #更多菜单编辑功能、动画、图像菜单等等，可参考http://bbs.wuyou.net/forum.php?mod=viewthread&tid=369720&extra=page%3D3
 +# For more menu editing features, animations, image menus, and more, see the http://bbs.wuyou.net/forum.php?mod=viewthread&tid=369720&extra=page%3D3
  
 -title 启动 efi 文件
@@ -102,12 +102,12 @@
 +
 +title CD-image "/cdrom.iso"
  find --set-root /cdrom.iso
-@@ -55,3 +81,3 @@
+@@ -55,3 +87,3 @@
  
 -title 启动虚拟光盘(加载到内存)
 +title CD-image "/cdrom.iso" (loaded into memory)
  find --set-root /cdrom.iso
-@@ -60,6 +86,6 @@
+@@ -60,6 +92,6 @@
  
 -title 启动存在的光盘(cd0)
 +title chainloading "(cd0)"
@@ -116,12 +116,12 @@
 -title 启动虚拟硬盘
 +title HDD image "/boot/hdd.img"
  find --set-root /boot/hdd.img
-@@ -68,3 +94,3 @@
+@@ -68,3 +100,3 @@
  
 -title 启动虚拟硬盘(加载到内存)
 +title HDD image "/boot/hdd.img" (loaded into memory)
  find --set-root /boot/hdd.img
-@@ -73,86 +99,78 @@
+@@ -73,86 +105,77 @@
  
 -title 启动存在的硬盘(hd0)
 +title chainloading "(hd0)"
@@ -143,33 +143,33 @@
 -title 使用外部命令 ntloader 启动 WIM/VHD (kernel方案1)
 -uuid (hdx,y)
 -kernel /efi/grub/ext/ntloader uuid=%?% file=/boot/imgs/winpe.wim
--initrd /efi/grub/ext/initrd.lz1
+-initrd /efi/grub/ext/initrd.cpio
 -
 -title 使用外部命令 ntloader 启动 WIM/VHD (kernel 方案2)
 -find --set-root /boot/imgs/winpe.wim
 -uuid ()
 -find --set-root /efi/grub/ext/ntloader
 -kernel /efi/grub/ext/ntloader uuid=%?% file=/boot/imgs/winpe.wim
--initrd /efi/grub/ext/initrd.lz1
+-initrd /efi/grub/ext/initrd.cpio
 -
 -title 使用外部命令 ntloader 启动 WIM/VHD (chainloader 方案1)
 -uuid (hdx,y)
--chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.lz1 uuid=%?% file=/boot/imgs/winpe.wim
+-chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.cpio uuid=%?% file=/boot/imgs/winpe.wim
 -
 -title 使用外部命令 ntloader 启动 WIM/VHD (chainloader 方案2)
 -find --set-root /boot/imgs/winpe.wim
 -uuid ()
 -find --set-root /efi/grub/ext/ntloader
--chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.lz1 uuid=%?% file=/boot/imgs/winpe.wim
+-chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.cpio uuid=%?% file=/boot/imgs/winpe.wim
 -
 -title 使用外部命令 ntloader 启动 Windows 系统 (kernel 方案)
 -uuid (hdx,y)
 -kernel /efi/grub/ext/ntloader uuid=%?%
--initrd /efi/grub/ext/initrd.lz1
+-initrd /efi/grub/ext/initrd.cpio
 -
 -title 使用外部命令 ntloader 启动 Windows 系统 (chainloader 方案)
 -uuid (hdx,y)
--chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.lz1 uuid=%?%
+-chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.cpio uuid=%?%
 -
 -title 使用外部命令 NTBOOT 启动 WIM/VHD (方案1)
 -find /efi/grub/ext/ntboot | set bd=
@@ -194,8 +194,6 @@
 -title 使用 http 及外部命令 NTBOOT 网启 wim 镜象
 -/efi/grub/ext/ntboot (http)/imgs/pe.wim
 -boot
- 
--title 命令行
 +#Assume external commands are located in /efi/grub/ext/
 +#Assume that WIM/VHD (or the boot folder) is located in (hdx,y)/boot/imgs/
 +#Assuming that winload.efi for windows is located at (hdx,y)
@@ -254,7 +252,8 @@
 +#title Use http and the external command NTBOOT to network boot wim images.
 +#/efi/grub/ext/ntboot (http)/imgs/pe.wim
 +#boot
-+
+ 
+-title 命令行
 +title GRUB command line
  commandline
  
