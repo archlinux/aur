@@ -13,7 +13,7 @@ pkgbase = terax-bin
 	conflicts = terax
 	options = !strip
 	options = !debug
-	source = terax-bin-0.6.1.deb::https://github.com/crynta/terax-ai/releases/download/v0.6.1/Terax _0.6.1_amd64.deb
+	source = terax-bin-0.6.1.deb::https://github.com/crynta/terax-ai/releases/download/v0.6.1/Terax_0.6.1_amd64.deb
 	sha256sums = SKIP
 
 pkgname = terax-bin
