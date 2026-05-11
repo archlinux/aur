@@ -13,7 +13,7 @@
 pkgbase=mesa-nollvm-git
 pkgname=(mesa-nollvm-git)
 pkgdesc="an open-source implementation of the OpenGL specification, git version that doesn't use llvm"
-pkgver=26.1.0_devel.218157.13c9e529bda
+pkgver=26.2.0_devel.222348.d08d345686c
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -62,7 +62,7 @@ build() {
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland \
-       -D gallium-drivers=radeonsi,zink,virgl \
+       -D gallium-drivers=radeonsi,zink,virgl,softpipe \
        -D vulkan-drivers=amd \
        -D egl=enabled \
        -D gallium-extra-hud=true \
