@@ -1,5 +1,5 @@
 pkgbase = spacecoffee-scm
-	pkgdesc = SpaceCoffee's vehicles maintainence app
+	pkgdesc = Diagnostic and maintenance tool for SKN SpaceCoffee vehicles
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/space_coffee/scm/desktop
