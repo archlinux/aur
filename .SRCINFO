@@ -1,7 +1,7 @@
 pkgbase = r-ellmer
 	pkgdesc = Chat with Large Language Models
-	pkgver = 0.4.0
-	pkgrel = 3
+	pkgver = 0.4.1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=ellmer
 	arch = any
 	license = MIT
@@ -36,8 +36,8 @@ pkgbase = r-ellmer
 	optdepends = r-testthat>=3.0.0
 	optdepends = r-vcr>=2.0.0
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/ellmer_0.4.0.tar.gz
-	md5sums = 00febbef895d51f03c87f3377f4c2306
-	sha256sums = 6778c2f9b3f7046ff33b6933a17c3abe7bd64924532df7dfb10d82bf8759c8b1
+	source = https://cran.r-project.org/src/contrib/ellmer_0.4.1.tar.gz
+	md5sums = a11255f800934e0d34d4b0ea64f75350
+	sha256sums = 00dfdbd2d1c23997cf7f4bb333b834662dc3e0466c94b512e9c76690f2b65db5
 
 pkgname = r-ellmer

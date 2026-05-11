@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=ellmer
-_pkgver=0.4.0
+_pkgver=0.4.1
 pkgname=r-ellmer
 pkgdesc="Chat with Large Language Models"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 makedepends=("gcc-fortran")
 
 arch=("any")
@@ -46,8 +46,8 @@ optdepends=(
     "r-withr"
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('00febbef895d51f03c87f3377f4c2306')
-sha256sums=('6778c2f9b3f7046ff33b6933a17c3abe7bd64924532df7dfb10d82bf8759c8b1')
+md5sums=('a11255f800934e0d34d4b0ea64f75350')
+sha256sums=('00dfdbd2d1c23997cf7f4bb333b834662dc3e0466c94b512e9c76690f2b65db5')
 
 build() {
     mkdir -p "${srcdir}/build/"
