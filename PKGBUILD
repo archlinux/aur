@@ -1,7 +1,7 @@
 # Maintainer: Keithsel <keithsel@disroot.org>
 pkgname=9router-bin
 pkgver=0.4.29
-pkgrel=1
+pkgrel=2
 pkgdesc="AI router and proxy providing an OpenAI-compatible endpoint for multiple AI providers"
 arch=('x86_64')
 url="https://github.com/decolua/9router"
