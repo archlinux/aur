@@ -1,6 +1,6 @@
 # Maintainer: Michał Lasak <mlasak@spacecoffee.net>
 pkgname=spacecoffee-scm
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Diagnostic and maintenance tool for SKN SpaceCoffee vehicles"
 arch=('x86_64')
