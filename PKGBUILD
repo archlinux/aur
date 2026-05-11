@@ -1,6 +1,6 @@
 # Maintainer: Feds Farm <root@feds.farm>
 pkgname=opendoas-patched
-pkgver=6.8.3.r289.5298f3b
+pkgver=6.8.3.r290.cb28954
 pkgrel=1
 pkgdesc='Doas with retries + patches'
 arch=(x86_64 i686)
