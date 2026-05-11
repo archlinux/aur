@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Modrzyk <hellonico@gmail.com>
 pkgname=coni-bin
-pkgver=2026.05.08.10.44.03
+pkgver=2026.05.11.14.02.57
 pkgrel=1
 pkgdesc="A fast, standalone Clojure-like interpreter and language written in Go"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('coni')
 
 source_x86_64=("https://coni-lang.org/downloads/coni-linux-x64")
 source_aarch64=("https://coni-lang.org/downloads/coni-linux-arm64")
-sha256sums_x86_64=('27741a9e357aeeac810dc7c473020a32baac66fa2c402111005b476ce53f37ff')
-sha256sums_aarch64=('0d28f4855dd459159c3f6f6df4a2703ffd34f2b4bbf2351b1cec31478fa5a501')
+sha256sums_x86_64=('7ba04bc8c6671f62ef978fe06c01946627fa63b30f09fc19c030f09e42989e2b')
+sha256sums_aarch64=('b6777dcca646cb7aa6c34bd7f8a91bed4532033a9c9be1017794dc065a580839')
 
 package() {
   if [ "$CARCH" = "x86_64" ]; then
