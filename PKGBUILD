@@ -16,7 +16,7 @@
 
 pkgname=rtk-git
 _srcname=rtk
-pkgver=0.38.0.r0.g4338f02
+pkgver=0.39.0.r0.g2fbc751
 pkgrel=1
 pkgdesc="Rust Token Killer - high-performance CLI proxy to minimize LLM token consumption"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ makedepends=(
 provides=("rtk=${pkgver}")
 conflicts=('rtk')
 options=('!lto')
-source=("${_srcname}::git+https://github.com/rtk-ai/rtk.git")
+source=("${_srcname}::git+https://github.com/rtk-ai/rtk.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {

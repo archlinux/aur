@@ -1,6 +1,6 @@
 pkgbase = rtk-git
 	pkgdesc = Rust Token Killer - high-performance CLI proxy to minimize LLM token consumption
-	pkgver = 0.38.0.r0.g4338f02
+	pkgver = 0.39.0.r0.g2fbc751
 	pkgrel = 1
 	url = https://github.com/rtk-ai/rtk
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = rtk-git
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	provides = rtk=0.38.0.r0.g4338f02
+	provides = rtk=0.39.0.r0.g2fbc751
 	conflicts = rtk
 	options = !lto
-	source = rtk::git+https://github.com/rtk-ai/rtk.git
+	source = rtk::git+https://github.com/rtk-ai/rtk.git#branch=master
 	sha256sums = SKIP
 
 pkgname = rtk-git
