@@ -1,19 +1,19 @@
 # Maintainer: Deltachaos <mr@deltachaos.de>
 
 pkgname=warcraftlogsuploader
-pkgver=9.0.33
+pkgver=9.3.6
 pkgrel=1
 pkgdesc="warcraftlogs.com desktop client for Linux"
 arch=('x86_64')
 depends=("fuse2")
 conflicts=("warcraftlogsuploader")
 url="https://warcraftlogs.com/"
-source=("${pkgname}-v${pkgver}.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v9.0.33/warcraftlogs-v9.0.33.AppImage"
+source=("${pkgname}-v${pkgver}.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v9.3.6/warcraftlogs-v9.3.6.AppImage"
         'start')
 license=('custom' 'MIT' 'custom:chromium-licenses')
 options=(!strip)
 # Skip checksum check for the WarcraftLogs binary, to avoid breakage on updates
-sha512sums=('88f1f6b8b954e3c9240d8bdd363229f219afbda349d3e85ec8cd24b85dddda3a0fd45d24b8189fb6d59ee0d0081c507a9ad24b3da694ae7945e355060e4665e1'
+sha512sums=('b9685933b64e29006850cac3b1fa9010590fc78cd701b3e4a3dda644efd0a554144d5dfd4f983d77e430480272428ed8ab53ee87799eb43bcbf6f8974964fd4a'
             '1f8d504fb27e815f7efcc8e97672bad12f531d171ab8a08c49439fb4ee63b07e9355c49e56b5fb2eb2f6d202ce56a0526b609fef4b6209832026709002eba22a')
 
 prepare() {
