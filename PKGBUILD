@@ -15,14 +15,14 @@
 # The sha1 should be: 9bef1128717f958171a4afac3ed78ee2bb4e86ce
 
 pkgname=sm64plus-git
-pkgver=3.1.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A standalone fork of the Super Mario 64 PC Port with quality of life improvements"
 arch=(x86_64)
 url="https://github.com/MorsGames/sm64plus"
 license=('reverse-engineered and unlicensed')
 groups=()
-depends=(sdl2)
+depends=(sdl2 glew)
 makedepends=(git python imagemagick)
 provides=("sm64plus")
 conflicts=("sm64plus")
@@ -30,11 +30,16 @@ replaces=()
 backup=()
 options=()
 install=
-source=('sm64plus::git+https://github.com/MorsGames/sm64plus' sm64plus-wrapper.sh sm64plus.desktop file://baserom.us.z64)
+source=('sm64plus::git+https://github.com/MorsGames/sm64plus'
+	sm64plus-wrapper.sh
+	sm64plus.desktop
+	opengl_error.patch
+	file://baserom.us.z64)
 noextract=()
 sha1sums=('SKIP'
           '31ed4551ebf6db2baebc330168f493b8cca5c847'
           '4e70d3f09e1c1bd06cac62994ac4da9fcf17706b'
+          'd0cb82250701689e8cb0d34b8596f7807d30a32c'
           '9bef1128717f958171a4afac3ed78ee2bb4e86ce')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
@@ -43,6 +48,11 @@ sha1sums=('SKIP'
 pkgver() {
 	cd "$srcdir/sm64plus"
 	printf "%s" "$(cat VERSION | sed 's/^v//')"
+}
+
+prepare() {
+	cd "$srcdir/sm64plus"
+	patch -p1 -i "$srcdir"/opengl_error.patch
 }
 
 build() {

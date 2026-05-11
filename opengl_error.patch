@@ -1,0 +1,12 @@
+diff --git a/src/pc/gfx/gfx_opengl.c b/src/pc/gfx/gfx_opengl.c
+index eb0a192..7ab84b6 100644
+--- a/src/pc/gfx/gfx_opengl.c
++++ b/src/pc/gfx/gfx_opengl.c
+@@ -26,6 +26,7 @@
+ #endif
+ #define GL_GLEXT_PROTOTYPES 1
+ #ifndef TARGET_MACOS
++#include <SDL2/SDL_opengl.h>
+ #include <SDL2/SDL_opengles2.h>
+ #endif
+ #endif
