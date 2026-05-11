@@ -1,10 +1,10 @@
 # Maintainer: Homer Xing <homer dot hsing @t gmail dot com>
 
 pkgname=xiangqilab
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 epoch=
-pkgdesc="An awesome XiangQi desktop app with AI-powered analysis"
+pkgdesc="A fully local Xiangqi desktop app with AI-powered analysis"
 arch=("any")
 url="https://gitlab.com/xiangqilab/xiangqilab"
 license=("AGPL-3.0-or-later")
@@ -13,8 +13,8 @@ depends=("python" "tk")
 makedepends=("python-build" "python-installer" "python-wheel" "gendesk")
 checkdepends=()
 optdepends=(
-  "fairy-stockfish: Chess AI engine with XiangQi support"
-  "fairy-stockfish-xiangqi-nnue: XiangQi neural network"
+  "fairy-stockfish: Chess AI engine with Xiangqi support"
+  "fairy-stockfish-xiangqi-nnue: Xiangqi neural network"
 )
 provides=()
 conflicts=()
@@ -26,7 +26,7 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/xiangqilab/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 noextract=()
 validpgpkeys=()
-sha256sums=("e4824a89e08c96446f20cb7894addc69604b8839079139003b72d9678aae01e1")
+sha256sums=("3dda8e315aae0a12bf5795b187c3592ac821c06c65081d1768d895376716325b")
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
@@ -39,9 +39,9 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 src/xiangqilab/app_icon/app_icon.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
   gendesk --pkgname "$pkgname" \
-          --name="XiangQi Lab" \
+          --name="Xiangqi Lab" \
           --exec="$pkgname" \
-          --comment="An awesome XiangQi desktop app with AI-powered analysis" \
+          --comment="A fully local Xiangqi desktop app with AI-powered analysis" \
           --categories="Game;" \
           --icon="$pkgname" \
           --terminal="false" \
