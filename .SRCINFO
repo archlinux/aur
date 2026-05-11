@@ -1,5 +1,5 @@
 pkgbase = hypridle-frozen
-	pkgdesc = Hyprland's idle daemon - Frozen For Yggdrasil, Nordix Desktop Environment
+	pkgdesc = Hyprland's idle daemon - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)
 	pkgver = 0.1.6.r1.g66d1815
 	pkgrel = 1
 	url = https://gitlab.com/TheEnchantedPotato/mirror-hypridle-hyprland-v0.54.git
@@ -19,7 +19,6 @@ pkgbase = hypridle-frozen
 	depends = wayland
 	provides = hypridle-frozen
 	provides = hypridle
-	conflicts = hypridle
 	conflicts = hypridle-git
 	source = hypridle-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hypridle-hyprland-v0.54.git
 	sha256sums = SKIP
