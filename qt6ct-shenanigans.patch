@@ -194,7 +194,7 @@ index f3e9ef6..a05a9b7 100644
  
  OTHER_FILES += qt6ct.json
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index 569b13f..721e7c8 100644
+index 569b13f..9807d4e 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 @@ -41,38 +41,74 @@
@@ -442,7 +442,7 @@ index 569b13f..721e7c8 100644
 +    m_generalFont = *QGenericUnixTheme::font(QPlatformTheme::SystemFont);
 +    m_generalFont.fromString(settings.value("general"_L1).toString());
 +    m_fixedFont = *QGenericUnixTheme::font(QPlatformTheme::FixedFont);
-+    m_fixedFont.fromString(settings.value("fixed_L1").toString());
++    m_fixedFont.fromString(settings.value("fixed"_L1).toString());
      settings.endGroup();
  
      settings.beginGroup("Interface"_L1);
