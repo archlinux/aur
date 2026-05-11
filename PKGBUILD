@@ -2,7 +2,7 @@
 
 pkgname=solara-kernel-headers
 pkgver=7.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Solara Linux Kernel headers - for building external kernel modules"
 arch=('x86_64')
 url="https://github.com/celestia-foundation/solara"
@@ -25,7 +25,6 @@ prepare() {
 build() {
     cd linux-7.0.5
     make -j$(nproc) scripts
-    make -j$(nproc) modules
 }
 
 package() {

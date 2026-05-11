@@ -1,7 +1,7 @@
 pkgbase = solara-kernel-headers
 	pkgdesc = Solara Linux Kernel headers - for building external kernel modules
 	pkgver = 7.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/celestia-foundation/solara
 	arch = x86_64
 	license = GPL2
