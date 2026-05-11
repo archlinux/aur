@@ -11,9 +11,9 @@ pkgbase = hyprutils-frozen
 	makedepends = ninja
 	depends = pixman
 	provides = hyprutils-frozen
-	provides = hyprutils
 	provides = libhyprutils.so
 	conflicts = hyprutils-git
+	conflicts = hyprutils
 	source = hyprutils-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprutils-hyprland-v0.54.git
 	sha256sums = SKIP
 

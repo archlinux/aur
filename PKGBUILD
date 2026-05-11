@@ -4,8 +4,8 @@
 pkgname=hyprutils-frozen
 pkgver=0.7.0.r0.g05878d9
 pkgrel=1
-conflicts=('hyprutils-git')
-provides=('hyprutils-frozen' 'hyprutils' "libhyprutils.so")
+conflicts=('hyprutils-git' 'hyprutils')
+provides=('hyprutils-frozen' "libhyprutils.so")
 pkgdesc="Hyprland utilities library used across the ecosystem - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hyprutils-hyprland-v0.54.git"
