@@ -1,6 +1,6 @@
 pkgbase = paseo-desktop-bin
 	pkgdesc = One interface for all your Claude Code, Codex and OpenCode agents.
-	pkgver = 0.1.73
+	pkgver = 0.1.74
 	pkgrel = 1
 	url = https://paseo.sh
 	arch = x86_64
@@ -33,11 +33,11 @@ pkgbase = paseo-desktop-bin
 	depends = expat
 	depends = libstdc++
 	depends = libxfixes
-	provides = paseo=0.1.73
+	provides = paseo=0.1.74
 	conflicts = paseo
 	conflicts = paseo-bin
 	conflicts = paseo-appimage
-	source = https://github.com/getpaseo/paseo/releases/download/v0.1.73/Paseo-0.1.73-amd64.deb
-	sha256sums = 19d4d102ec05a935300292b44d583e19d75951ea7f117eee0be292e160fd02f9
+	source = https://github.com/getpaseo/paseo/releases/download/v0.1.74/Paseo-0.1.74-amd64.deb
+	sha256sums = 0a858e8e029ce0dbec9be61a8ef86d66aacd777e706ddfc08553f2a5d4b492bd
 
 pkgname = paseo-desktop-bin
