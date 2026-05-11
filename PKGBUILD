@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon
-pkgver=r53.1094d79
+pkgver=r54.6d5683a
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets'
 arch=('x86_64')
@@ -47,6 +47,7 @@ package() {
   install -Dm755 target/release/skwd-paper-still "$pkgdir/usr/bin/skwd-paper-still"
 
   install -Dm644 data/skwd-daemon.service "$pkgdir/usr/lib/systemd/user/skwd-daemon.service"
+  install -Dm644 data/host/shell.qml "$pkgdir/usr/share/skwd/skwd-daemon/host/shell.qml"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
