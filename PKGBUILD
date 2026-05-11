@@ -3,8 +3,8 @@
 pkgname=dotpeek
 _pkgname=dotpeek
 
-pkgver=2025.3.3
-pkgrel=2
+pkgver=2026.1.1
+pkgrel=1
 arch=('x86_64')
 
 pkgdesc="Free .NET Decompiler and Assembly Browser (running in Wine)"
@@ -20,8 +20,8 @@ source=(
 	"${_pkgname}.exe.desktop"
   "${_pkgname}.py"
 	)
-# There are official sums on https://www.jetbrains.com/decompiler/download/other/#releases-2025
-sha256sums=('eb9f5c5f85d3ee252b8a6eb0a387fec759def88194c4bb056c6973d5a6e08cf6'
+# There are official sums on https://www.jetbrains.com/decompiler/download/other/
+sha256sums=('8cf69f203e3dbec6706c63176ecb7fbed3bf0b2c5a8c2c8c9bf3c6e4f45d0fe1'
             '6c35ca1d9caeb98629270e05aaaecce42b937348d5434adad33eacfbf553092c'
             'c3b1ad6a91100841a5d27fb49ebf64b3e99ddc2cf82f98c5b40845fc1b13eebe')
 
