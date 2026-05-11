@@ -4,8 +4,8 @@
 pkgname=hyprpicker-frozen
 pkgver=0.4.4.r0.gfd77aea
 pkgrel=1
-conflicts=('hyprpicker-git')
-provides=('hyprpicker-frozen' 'hyprpicker')
+conflicts=('hyprpicker-git' 'hyprpicker')
+provides=('hyprpicker-frozen')
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hyprpicker-hyprland-v0.54.git"

@@ -24,8 +24,8 @@ pkgbase = hyprpicker-frozen
 	depends = wayland
 	optdepends = wl-clipboard: --autocopy
 	provides = hyprpicker-frozen
-	provides = hyprpicker
 	conflicts = hyprpicker-git
+	conflicts = hyprpicker
 	source = hyprpicker-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprpicker-hyprland-v0.54.git
 	sha256sums = SKIP
 
