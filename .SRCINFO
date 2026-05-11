@@ -1,12 +1,12 @@
 pkgbase = smtpdane
 	pkgdesc = SMTP DANE testing tool
-	pkgver = 0.5.4
-	pkgrel = 2
+	pkgver = 0.5.7
+	pkgrel = 1
 	url = https://github.com/PennockTech/smtpdane
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/PennockTech/smtpdane/archive/v0.5.4.zip
-	sha256sums = 22a8eafdfba8bc0b0ceaac36d5d675e59990aaa2ca8f98e132653bcaf61bacfe
+	source = https://github.com/PennockTech/smtpdane/archive/v0.5.7.zip
+	sha256sums = bbda68b17375070afc4365006cdd3493b25896d8c84edac77468f1125b805fd1
 
 pkgname = smtpdane
