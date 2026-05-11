@@ -2,7 +2,7 @@
 
 pkgname=star-system
 pkgver=6.01
-pkgrel=2
+pkgrel=3
 pkgdesc="STAR-System is the new driver and API system provided with all new and future STAR-Dundee interface and router devices."
 arch=('x86_64')
 url="http://www.star-dundee.com"
@@ -100,7 +100,7 @@ package() {
 
 	# GUI binaries
 	#mkdir -p ${pkgdir}/usr/bin
-	install -m755 $(ls -1 -d lib/x86-64/Qt5/*|grep -v "\.so") ${pkgdir}/usr/bin
+	install -m755 $(ls -1 -d lib/x86-64/Qt5/*|grep -v "\.so"| grep -v "no_ethernet") ${pkgdir}/usr/bin
 
 	# install service file
 	install -Dm644 ${srcdir}/${pkgname}.service ${pkgdir}/etc/systemd/system/${pkgname}.service

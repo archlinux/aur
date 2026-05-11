@@ -1,7 +1,7 @@
 pkgbase = star-system
 	pkgdesc = STAR-System is the new driver and API system provided with all new and future STAR-Dundee interface and router devices.
 	pkgver = 6.01
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.star-dundee.com
 	install = star-system.install
 	arch = x86_64
