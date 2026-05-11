@@ -1,0 +1,14 @@
+pkgbase = sub2clash-bin
+	pkgdesc = Convert subscription links to Clash and Clash.Meta configs
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/bestnite/sub2clash
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = sub2clash
+	conflicts = sub2clash
+	source = sub2clash_1.1.3_linux_amd64.tar.gz::https://github.com/bestnite/sub2clash/releases/download/v1.1.3/sub2clash_1.1.3_linux_amd64.tar.gz
+	sha256sums = cd683bc60b860f2c4686a7236a6b1d311b680e67d776cd413e986cd4ce632ebb
+
+pkgname = sub2clash-bin
