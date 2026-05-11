@@ -1,7 +1,7 @@
 pkgbase = looking-glass-git
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough
-	pkgver = B7.r67.gcb304115
-	pkgrel = 2
+	pkgver = B7.r190.g7f31ecf5
+	pkgrel = 1
 	epoch = 2
 	url = https://looking-glass.io/
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = looking-glass-git
 	source = imgui::git+https://github.com/ocornut/imgui.git
 	source = wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git
 	source = nanosvg::git+https://github.com/memononen/nanosvg.git
+	source = nettle4-compat.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -34,6 +35,7 @@ pkgbase = looking-glass-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = 0b0cfe95179fef4d5443a66536c6bb628996340c667ad87fbb1bd57cf759e1aec007e44e1a210a4eb63516cc213a47eb9cfe41d18916508d1718ba3e050ddf48
 
 pkgname = looking-glass-git
 	pkgdesc = A client application for accessing the LookingGlass IVSHMEM device of a VM

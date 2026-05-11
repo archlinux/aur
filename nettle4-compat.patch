@@ -1,0 +1,11 @@
+--- a/repos/PureSpice/src/rsa.c
++++ b/repos/PureSpice/src/rsa.c
+@@ -62,7 +62,7 @@
+ 
+   sha1_init(&ctx);
+   sha1_update(&ctx, len, data);
+-  sha1_digest(&ctx, SHA1_HASH_LEN, hash);
++  sha1_digest(&ctx, hash);
+ }
+ 
+ static void oaep_mask(uint8_t * dest, size_t dest_len,

@@ -7,8 +7,8 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B7.r67.gcb304115
-pkgrel=2
+pkgver=B7.r190.g7f31ecf5
+pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
@@ -22,14 +22,16 @@ source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "cimgui::git+https://github.com/cimgui/cimgui.git"
         "imgui::git+https://github.com/ocornut/imgui.git"
         "wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
-        "nanosvg::git+https://github.com/memononen/nanosvg.git")
+        "nanosvg::git+https://github.com/memononen/nanosvg.git"
+        "nettle4-compat.patch")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '0b0cfe95179fef4d5443a66536c6bb628996340c667ad87fbb1bd57cf759e1aec007e44e1a210a4eb63516cc213a47eb9cfe41d18916508d1718ba3e050ddf48')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -52,8 +54,9 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 
 	cd "${srcdir}/${_pkgname}"
-	sed -i '1 i\#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
-		"host/platform/Linux/capture/pipewire/src/portal.c"
+	for patch in "${srcdir}"/*.patch; do
+		patch -p1 < "${patch}"
+	done
 }
 
 build() {
