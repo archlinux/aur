@@ -8,7 +8,7 @@
 pkgname=armagetronad-experimental-bin
 _pkgname=armagetronad-experimental
 _pkgname2=armagetronad
-pkgver=0.4.0.alpha.z5876
+pkgver=0.4.0.alpha.z5971
 pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=()
 provides=($_pkgname)
 conflicts=('armagetronad-git')
 
-_package_id="192925708"
+_package_id="294424607"
 _download_url="https://gitlab.com/armagetronad/armagetronad/-/package_files/$_package_id/download"
 _target="ArmagetronExperimental.AppImage"
 _squashfs_root="squashfs-root"
@@ -28,7 +28,7 @@ source=(
     "$_pkgname.bash"
 )
 sha256sums=(
-    'b403620e006982bf1df575ce59f71e1d5e0cf04a91c2429cbd1c65160237e3ff'
+    '023248997c5730a762f906fd0492431df2b4fc954fabb073a946cc4609c2f7c3'
     '3557d1037871700f2008e23913570b77b1ba232f669875df10dc81be80710b25'
 )
 
