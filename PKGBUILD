@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd
-pkgver=r14.0b06ce8
+pkgver=r15.90e9f3b
 pkgrel=1
 pkgdesc='Skwd - A Skwd (Quick)shell'
 arch=('any')
@@ -83,5 +83,6 @@ package() {
   install -Dm755 packaging/wrappers/skwd-power "$pkgdir/usr/bin/skwd-power"
 
   install -Dm644 data/config.json.example "$_sharedir/data/config.json.example"
+  install -Dm644 data/mdi-icons.json      "$_sharedir/data/mdi-icons.json"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
