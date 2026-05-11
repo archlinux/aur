@@ -8,6 +8,6 @@ pkgbase = localmail
 	depends = fuse2
 	depends = hicolor-icon-theme
 	source = https://download.localmail.dev/releases/1.1.0/LocalMail.AppImage
-	sha256sums = 74a604608d248f38640b1770d3e429e156fc408f85a34f56bb495b66d4ced6f9
+	sha256sums = f946888627f43720b7e228153f99853f1d17bb11ad48bba72be1512405d01d8f
 
 pkgname = localmail
