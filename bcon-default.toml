@@ -47,10 +47,10 @@ next_tab = ["ctrl+pagedown"]
 prev_tab = ["ctrl+pageup"]
 
 [font]
-main = "Liberation Mono"
-symbols = "Symbols Nerd Font Mono"
-cjk = "Noto Sans CJK JP"
-emoji = "Noto Color Emoji"
+# main = ""                    # Monospace font name or path (e.g. "FiraCode")
+# symbols = ""                 # Nerd Font for icons (e.g. "Hack Nerd Font Mono")
+# cjk = ""                     # CJK font for Japanese/Chinese/Korean (e.g. "Noto Sans CJK JP")
+# emoji = ""                   # Color emoji font (e.g. "Noto Color Emoji")
 
 # =============================================================================
 # Font Configuration (Optional)

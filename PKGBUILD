@@ -1,7 +1,7 @@
 # Maintainer: kay-ws <a3.works@gmail.com>
 pkgname=bcon
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU-accelerated terminal emulator for Linux console (DRM/KMS)"
 arch=('x86_64')
 url="https://github.com/sanohiro/bcon"
@@ -46,7 +46,7 @@ optdepends=(
 source=("bcon-${pkgver}.tar.gz::https://github.com/sanohiro/bcon/archive/refs/tags/v${pkgver}.tar.gz"
         "bcon-default.toml")
 sha256sums=('8a09aefb2dcfd3ea6bda15dabd66ab3db21f49c5065ce66a1bf74415ac283a15'
-            'ef3370c53ef638602b96ebcc14082648b5c00107c35514f2649e87593fe02a19')
+            '34aaa8bc982699fb579a42c710ce68d2c1d0bf8e28daf2c8c78abe1f0bbd67f2')
 
 prepare() {
     cd "$srcdir/bcon-$pkgver"
@@ -66,24 +66,44 @@ check() {
     # shipped reference; otherwise users on fresh install get a stale
     # default that won't round-trip through the runtime.
     #
-    # Note: --init-config bakes "# Config path: <abs>" as a header line
-    # which is the only path-dependent content. Strip it from runtime
-    # output before diff (canonical has it stripped at packaging time).
+    # Normalization (1.4.0-2): bcon's Config::default_template() includes
+    # two kinds of environment-dependent content that we must strip before
+    # diffing:
+    #   1. "# Config path: <abs>" header line (path-dependent, only present
+    #      in the runtime output).
+    #   2. [font] section body: Config::default_template() queries
+    #      fontconfig at template-generation time, so detected fonts vary
+    #      by host (build machine vs end-user machine vs CI chroot). We
+    #      keep the "[font]" heading and strip its body in both files.
     rm -f "$srcdir/bcon-default-runtime.toml"
     ./target/release/bcon --init-config="$srcdir/bcon-default-runtime.toml" 2>/dev/null
-    local _runtime_normalized
-    _runtime_normalized=$(mktemp)
-    sed '/^# Config path: /d' "$srcdir/bcon-default-runtime.toml" > "$_runtime_normalized"
-    if ! diff -q "$_runtime_normalized" "$srcdir/bcon-default.toml" > /dev/null; then
+
+    local _norm_runtime _norm_canonical
+    _norm_runtime=$(mktemp)
+    _norm_canonical=$(mktemp)
+
+    _bcon_normalize() {
+        awk '
+            /^# Config path: / { next }
+            /^\[font\]$/      { in_font = 1; print; next }
+            /^\[/ && in_font  { in_font = 0; print; next }
+            in_font           { next }
+                              { print }
+        ' "$1"
+    }
+    _bcon_normalize "$srcdir/bcon-default-runtime.toml" > "$_norm_runtime"
+    _bcon_normalize "$srcdir/bcon-default.toml"         > "$_norm_canonical"
+
+    if ! diff -q "$_norm_canonical" "$_norm_runtime" > /dev/null; then
         echo "ERROR: shipped bcon-default.toml drifted from runtime template" >&2
-        echo "--- shipped (bcon-default.toml)" >&2
-        echo "+++ runtime (bcon --init-config, # Config path: stripped)" >&2
-        diff "$srcdir/bcon-default.toml" "$_runtime_normalized" | head -50 >&2
-        rm -f "$_runtime_normalized"
+        echo "--- shipped (bcon-default.toml, normalized)" >&2
+        echo "+++ runtime (bcon --init-config, normalized)" >&2
+        diff "$_norm_canonical" "$_norm_runtime" | head -50 >&2
+        rm -f "$_norm_runtime" "$_norm_canonical"
         return 1
     fi
-    rm -f "$_runtime_normalized"
-    echo "Drift guard: bcon-default.toml matches runtime Config::default_template() output (path header normalized)"
+    rm -f "$_norm_runtime" "$_norm_canonical"
+    echo "Drift guard: bcon-default.toml matches runtime template (path header + [font] section normalized)"
 }
 
 package() {

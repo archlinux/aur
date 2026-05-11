@@ -1,7 +1,7 @@
 pkgbase = bcon
 	pkgdesc = GPU-accelerated terminal emulator for Linux console (DRM/KMS)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sanohiro/bcon
 	arch = x86_64
 	license = MIT
@@ -25,6 +25,6 @@ pkgbase = bcon
 	source = bcon-1.4.0.tar.gz::https://github.com/sanohiro/bcon/archive/refs/tags/v1.4.0.tar.gz
 	source = bcon-default.toml
 	sha256sums = 8a09aefb2dcfd3ea6bda15dabd66ab3db21f49c5065ce66a1bf74415ac283a15
-	sha256sums = ef3370c53ef638602b96ebcc14082648b5c00107c35514f2649e87593fe02a19
+	sha256sums = 34aaa8bc982699fb579a42c710ce68d2c1d0bf8e28daf2c8c78abe1f0bbd67f2
 
 pkgname = bcon
