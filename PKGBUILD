@@ -1,10 +1,9 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 # Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
-# vim: ts=2 sw=2 et:
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.7.0.preview.1.r11437.faf1e0e
+pkgver=7.7.0.preview.1.r11447.c9ac205
 _major=${pkgver:0:1}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
@@ -12,9 +11,10 @@ arch=('x86_64')
 url="https://github.com/$_name/$_name"
 license=('MIT')
 makedepends=(
-  'git'
   'cmake'
+  'git'
   'jq'
+  'dotnet-install' # AUR
 )
 depends=(
   'krb5'
@@ -23,9 +23,7 @@ depends=(
   'lttng-ust'
   'zlib'
   'icu'
-  # AUR
-  'dotnet-install'
-  'openssl-1.0'
+  'openssl-1.0' # AUR
 )
 provides=("$_name")
 conflicts=("$_name")
@@ -69,7 +67,7 @@ prepare() {
 
   ## Install specified version of dotnet and restore
   dotnet-install --jsonfile global.json
-  dotnet restore
+  dotnet restore -r linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
   
   ## Setup the build target to gather dependency information
   cp "$srcdir/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets" "src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
@@ -109,14 +107,22 @@ build() {
   popd
 
   ## Build powershell core
-  dotnet publish -c Linux "src/$_name-unix/" -o bin -r linux-x64 --sc
+  dotnet publish src/powershell-unix \
+    -p:GenerateFullPaths=true \
+    -p:ErrorOnDuplicatePublishOutputFiles=false \
+    -p:IsWindows=false \
+    -p:AppDeployment=SelfContained \
+    -p:SDKToUse=Microsoft.NET.Sdk \
+    --sc \
+    -c Linux \
+    -r linux-x64 \
+    -o bin
 }
 
 check() {
-  cd "$_name-native/src/libpsl-native"
-  make test
+  ctest --test-dir "$_name-native/src/libpsl-native" --output-on-failure
 
-  cd "$srcdir/$_name"
+  cd "$_name"
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
   export DOTNET_HOME="$srcdir/dotnet"
   export NUGET_PACKAGES="$srcdir/.nuget"
@@ -125,12 +131,43 @@ check() {
 }
 
 package() {
+  export NUGET_PACKAGES="$srcdir/.nuget"
   cd "$_name"
-  mkdir -pv "$pkgdir/opt/microsoft/$_name/$_major"
+  mkdir -p "$pkgdir/opt/microsoft/$_name/$_major"
   _dn="$(jq -r .sdk.version global.json | awk -F. '{print $1 ".0"}')"
+  mkdir -p "src/$_name-unix/bin/Linux/net$_dn/linux-x64/ref"
+
+  # Reference assemblies
+  for file in $(cat src/TypeCatalogGen/$_name.inc); do
+    _asm="${file:0:-1}"
+    if [[ -z "$_asm" ]]; then
+      continue
+    fi
+    cp "$_asm" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/ref"
+  done
+
+  # Modules
+  for dep in "$(grep PackageReference src/Modules/PSGalleryModules.csproj)"; do
+    _modname="$(echo $dep | awk -F\" '{print $2}')"
+    _modname="${_modname,,}"
+    _modver="$(echo $dep | awk -F\" '{print $4}' | awk -F. '{print $1 "." $2 "." $3}')"
+    cp -r "$NUGET_PACKAGES/$_modname/$_modver/" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/Modules"
+  done
+
+  find "src/$_name-unix/bin/Linux/net$_dn/linux-x64/Modules" \( \
+    -name "*.nupkg" \
+    -o -name "*.nupkg.sha512" \
+    -o -name "*.nupkg.metadata" \
+    -o -name "*.nuspec" \
+    -o -name "System.Runtime.InteropServices.RuntimeInformation.dll" \
+    -o -name "fullclr" \
+  \) -delete
+
   cp -ar "src/$_name-unix/bin/Linux/net$_dn/linux-x64/"* "$pkgdir/opt/microsoft/$_name/$_major"
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/microsoft/$_name/$_major/pwsh" "$pkgdir/usr/bin/pwsh"
 }
+
+# vim: ts=2 sw=2 et:

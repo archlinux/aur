@@ -22,6 +22,8 @@ path = [
     "*.hook",
     ".gitignore",
     "Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets",
+    "nuget.modules.config",
+    "nuget.config"
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
