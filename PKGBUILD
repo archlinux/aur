@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitopolis
-pkgver=1.17.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc='CLI tool to manage multiple git repositories'
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(cargo)
 checkdepends=(git)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('a1649c5ff3deeb78f6b438d235188d33d65b110f6ced1fd55492ba961874df25')
+sha256sums=('6fac7b69de953f0407d5cfc7f6f6cea1aa0c021767c0b08f6f2e9c256695a869')
 
 prepare() {
 	cd "$_archive"
