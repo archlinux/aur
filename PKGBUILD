@@ -4,8 +4,8 @@
 pkgname=hyprgraphics-frozen
 pkgver=0.5.0.r3.g13c5366
 pkgrel=1
-conflicts=('hyprgraphics-git')
-provides=('hyprgraphics-frozen' 'hyprgraphics' 'libhyprgraphics.so')
+conflicts=('hyprgraphics-git' 'hyprgraphics')
+provides=('hyprgraphics-frozen' 'libhyprgraphics.so')
 pkgdesc="Hyprland graphics / resource utilities - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hyprgraphics-hyprland-v0.54.git"

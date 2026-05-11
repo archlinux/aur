@@ -21,9 +21,9 @@ pkgbase = hyprgraphics-frozen
 	depends = pango
 	depends = pixman
 	provides = hyprgraphics-frozen
-	provides = hyprgraphics
 	provides = libhyprgraphics.so
 	conflicts = hyprgraphics-git
+	conflicts = hyprgraphics
 	source = hyprgraphics-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprgraphics-hyprland-v0.54.git
 	sha256sums = SKIP
 
