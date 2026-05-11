@@ -4,7 +4,7 @@
 _pkgname=xevd
 pkgname=xevd-llvm
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='MPEG-5 EVC (Essential Video Coding) decoder — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://github.com/mpeg5/xevd/'
@@ -18,7 +18,7 @@ source=("https://github.com/mpeg5/xevd/archive/v${pkgver}/${_pkgname}-${pkgver}.
         '010-xevd-disable-werror.patch'
         '020-xevd-fix-pkg-config.patch')
 sha256sums=('8d55c7ec1a9ad4e70fe91fbe129a1d4dd288bce766f466cba07a29452b3cecd8'
-            '2a7eff2690c0d4d441df97ad37fd7a0e3e0a03705665dad12201f8d8d997f191'
+            '7253ce87e7b64b9c0100e7235193906aa96042aa1f2538cb0ce80baf90de047f'
             '28e46788d188dbbd27c0b47d2c4510029491f434cccfa41967b60d94def36d4a')
 
 prepare() {
@@ -41,6 +41,8 @@ build() {
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
+    export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     
     cmake -B build -S "${_pkgname}-${pkgver}" \
         -G 'Unix Makefiles' \
