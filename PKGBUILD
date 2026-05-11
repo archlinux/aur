@@ -3,7 +3,7 @@
 
 pkgname=tp-dusk
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
@@ -19,7 +19,7 @@ source=(
 
 sha256sums=('0d76d2fe29a0273aea84f3d71807c09b08911523ebeca8a7db8c8c8fdaae7022'
             'SKIP'
-            'a993bedf5127db8629313201fd6259332ae83722647c88d3a926d3240d463ea9'
+            'c6b2449d6f0bba8317dbbe4abafe62a2ea60fb08afcaf8af393abd0f2094e99a'
             '1e6547cf4dd69f0ecb6895733dcd13f3e265c6267298c7bf83dd6acbad42fda5')
 
 prepare() {
