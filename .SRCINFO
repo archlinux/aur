@@ -1,0 +1,15 @@
+pkgbase = the-absolute-reference
+	pkgdesc = Reverse engineered implementation of Tetris the Absolute: The Grand Master 2 Plus
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/burbruee/the-absolute-reference
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = sdl2
+	depends = physfs
+	options = !debug
+	source = https://github.com/burbruee/the-absolute-reference/archive/refs/tags/v0.5.7.tar.gz
+	sha256sums = aa2b25f5fec7a26d75ccb1de720776313a46de7d0f8f7762d511b795c3a30a40
+
+pkgname = the-absolute-reference
