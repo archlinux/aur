@@ -1,7 +1,7 @@
 # Maintainer: Jimmy Källhagen
 # Mail: TheEnchantedPotato@proton.me
 
-pkgname=xdg-desktop-portal-hyprland-frozen version 1.3.9.r5.gbe6771e
+pkgname=xdg-desktop-portal-hyprland-frozen
 pkgver=1.3.9.r5.gbe6771e
 pkgrel=1
 conflicts=('xdg-desktop-portal-hyprland-git')
