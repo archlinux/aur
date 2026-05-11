@@ -1,6 +1,6 @@
 # Maintainer: Uzanto
 pkgname=pingall
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Ping everything you can reach'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'iputils')
 makedepends=('cargo')
 optdepends=('avahi: resolve hostnames via avahi-resolve')
 source=("$pkgname-$pkgver.crate::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('d5d518b897c94a47342b642e8ec01659d38e1911ae15470cc16cd216579fc60e')
+sha256sums=('d8868c6e9590098f98728fb126136f141894b552f124aca68bc6e1a952afd113')
 
 prepare() {
   cd "$pkgname-$pkgver"
