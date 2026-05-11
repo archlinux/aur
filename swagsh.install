@@ -1,0 +1,14 @@
+post_install() {
+  grep -qx /bin/swagsh /etc/shells || echo /bin/swagsh >> /etc/shells
+  grep -qx /usr/bin/swagsh /etc/shells || echo /usr/bin/swagsh >> /etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  sed -i -r '/^(\/usr)?\/bin\/swagsh$/d' etc/shells
+}
+
+# vim:set ts=2 sw=2 et:
