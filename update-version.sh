@@ -20,6 +20,6 @@ git add .SRCINFO PKGBUILD microsip microsip.desktop microsip.png microsip.reg up
 git commit -m "Update to $VER"
 
 # Cleanup
-rm -rf pkg/ src/ *.pkg.tar.zst
+rm -rf pkg/ src/ *.pkg.tar.zst MicroSIP-Lite-*.zip
 
 printf "\nAll done!\nRemember to git push!\n"
