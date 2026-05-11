@@ -1,0 +1,18 @@
+pkgbase = python-conformer
+	pkgdesc = Conformer: Convolution-augmented Transformer (lucidrains)
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/lucidrains/conformer
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytorch-opt-cuda
+	depends = python-einops
+	source = https://files.pythonhosted.org/packages/c0/b2/2859d16fe377f1a5dbd3ba85c68fa0e6deb5605ce86faded85b047f8cbed/conformer-0.3.2.tar.gz
+	sha256sums = 32ef34fa461ff32e1c33061025c0f583884f19d2f0aba200234f4e771f777eda
+
+pkgname = python-conformer
