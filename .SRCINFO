@@ -1,16 +1,15 @@
 pkgbase = element-call
 	pkgdesc = Group calls powered by Matrix
-	pkgver = 0.19.1
+	pkgver = 0.19.3
 	pkgrel = 1
 	url = https://github.com/element-hq/element-call
 	arch = any
 	license = Apache-2.0
-	makedepends = yarn-berry
-	makedepends = liburing
 	makedepends = git
-	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = nodejs-vite
 	provides = element-call
-	source = git+https://github.com/element-hq/element-call#tag=v0.19.1
-	md5sums = 736d762dab97ba704e9545682f20e606
+	source = git+https://github.com/element-hq/element-call#tag=v0.19.3
+	md5sums = fc4434d46a0919bd682b5fa6de5d0023
 
 pkgname = element-call
