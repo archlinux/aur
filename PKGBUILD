@@ -1,7 +1,7 @@
 # Maintainer: Lukas Spies <lukas (at) photoqt _dot_ org>
 
 pkgname=photoqt-extensions
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc="Extensions for PhotoQt image viewer"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('photoqt-extensions-debug')
 depends=('exiv2' 'imagemagick')
 makedepends=('cmake' 'qt6-tools')
 source=(https://photoqt.org/downloads/extensions/$pkgname-$pkgver.tar.gz)
-sha256sums=('9c594bda696e78a51e148a1c5920446bf99dcd1ed1f8de16fff0be9238660d46')
+sha256sums=('597af228ef9a2fca0af73d2b559e676d1f73a4d138852405b0af163149711609')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
