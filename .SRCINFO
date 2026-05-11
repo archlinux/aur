@@ -15,9 +15,9 @@ pkgbase = hyprcursor-frozen
 	depends = libzip
 	depends = tomlplusplus
 	provides = hyprcursor-frozen
-	provides = hyprcursor
 	provides = libhyprcursor.so
 	conflicts = hyprcursor-git
+	conflicts = hyprcursor
 	source = hyprcursor-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprcursor-hyprland-v0.54.git
 	sha256sums = SKIP
 

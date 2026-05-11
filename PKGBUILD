@@ -8,8 +8,8 @@ pkgdesc="The hyprland cursor format, library and utilities - Frozen For Yggdrasi
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hyprcursor-hyprland-v0.54.git"
 license=('BSD-3-Clause')
-conflicts=("hyprcursor-git")
-provides=("hyprcursor-frozen" "hyprcursor" "libhyprcursor.so")
+conflicts=("hyprcursor-git" "hyprcursor")
+provides=("hyprcursor-frozen" "libhyprcursor.so")
 
 depends=(
   cairo
