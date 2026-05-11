@@ -1,4 +1,4 @@
 [ryujinx]
 source = "git"
-git = "https://git.ryujinx.app/ryubing/ryujinx.git"
+git = "https://git.ryujinx.app/projects/Ryubing.git"
 exclude_regex = '^[A-Za-z].*'

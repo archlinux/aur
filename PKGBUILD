@@ -1,17 +1,20 @@
 # Maintainer:
 
 ## options
-: ${_dotnet_type=-9.0}
+#: ${_dotnet_type=-bin}
 : ${_install_path:=usr/lib}
 
-: ${_commit=e2143d43bcb6762340d8a01f20e7b5fdf104f02f}
+: ${_commit=f8167eb6252438c63f82b2bdb04f1215dc47071b} # Canary-1.3.288
+
+: ${DOTNET_SYSTEM_NET_DISABLEIPV6=1}
+export DOTNET_SYSTEM_NET_DISABLEIPV6
 
 _pkgname="ryujinx"
 pkgname="$_pkgname"
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
-url="https://git.ryujinx.app/ryubing/ryujinx"
+url="https://git.ryujinx.app/projects/Ryubing"
 license=('MIT')
 arch=('x86_64')
 
@@ -30,14 +33,13 @@ makedepends=(
 
 options=('!strip' '!debug')
 
-_pkgsrc="$_pkgname-$_commit"
+_pkgsrc="ryubing"
 _pkgext="tar.gz"
-source=("$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"https://legacy.git.ryujinx.app/ryubing/ryujinx/-/archive/$_commit/$_pkgname-$_commit.$_pkgext")
+source=("$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"$url/archive/$_commit.$_pkgext")
 sha256sums=('SKIP')
 
 prepare() {
-  sed -E -e 's&(https://)(git\.ryujinx\.app/api/v4/projects/[0-9]+/packages/nuget/index\.json)&\1legacy.\2&g' -i "$_pkgsrc"/nuget.config
-
+  # ensure dotnet uses correct SDK
   cp "$_pkgsrc"/global.json global.json
 }
 
