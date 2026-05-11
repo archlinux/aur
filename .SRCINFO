@@ -1,0 +1,17 @@
+pkgbase = lime
+	pkgdesc = Security wrapper over AUR (paru/yay) with risk analysis
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pachkakirieshek/lime
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = git+https://github.com/pachkakirieshek/lime.git
+	sha256sums = SKIP
+
+pkgname = lime
