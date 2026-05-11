@@ -1,42 +1,38 @@
-# Maintainer: Adrien DUARTE <samtroulfion@proton.me>
+# Maintainer: Fezzik the Giant <fezzikthegiant@pm.me>
 pkgname=riptide
-pkgver=0.6.5
+pkgver=0.1.0
 pkgrel=1
-pkgdesc='Safe rm with a graveyard (rm, list, prune, resurrect)'
-arch=('x86_64' 'aarch64')
-url='https://github.com/Samtroulcode/riptide'
-license=('MIT' 'Apache-2.0')
-depends=('glibc' 'gcc-libs')
-makedepends=('cargo')
-conflicts=('rip' 'rm-improved' 'rm-improved-git' 'rm-improved-bin' 'rip2-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Samtroulcode/riptide/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ccbe416db136020455a166bf8960e6bff1192a8140afa9be8c06cd68d566daf0')
-# b2sums=('SKIP')
+pkgdesc="A terminal UI music player for Tidal, built with Rust"
+arch=('x86_64')
+url="https://github.com/fezzik-the-giant/riptide"
+license=('GPL-3.0-only')
+depends=('mpv' 'openssl')
+makedepends=('rust' 'cargo' 'pkg-config')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fezzik-the-giant/riptide/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('497de8962a84d4a41aa05f5e8bc766079b5b4c11bfcc93995e55e0d1f8b09023')
 
 prepare() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  export CARGO_HOME="$srcdir/cargo-home"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  export CARGO_HOME="$srcdir/cargo-home"
-  cargo build --frozen --release
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 check() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  export CARGO_HOME="$srcdir/cargo-home"
-  # cargo test --frozen --all
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  install -Dm0755 target/release/riptide-cli "$pkgdir/usr/bin/nrip"
-  #ln -sr "$pkgdir/usr/bin/riptide-cli" "$pkgdir/usr/bin/nrip"
-
-  # Licences (désormais présentes dans l’archive)
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -m0644 LICENSE* "$pkgdir/usr/share/licenses/$pkgname/"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
