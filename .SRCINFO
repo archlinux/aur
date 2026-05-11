@@ -1,7 +1,7 @@
 pkgbase = git-flow-tui
 	pkgdesc = Terminal UI for gitflow with extended logic for CI/CD
 	pkgver = 1.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Emiliopg91/git-flow-tui
 	install = git-flow-tui.install
 	arch = x86_64
