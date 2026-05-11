@@ -1,20 +1,16 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=freedv-gui
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
 license=('LGPL-2.1-or-later')
 url="https://freedv.org/"
-depends=('libpulse' 'hamlib' 'wxwidgets-gtk3' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'python-pytorch' 'python-torchaudio' 'python-matplotlib' 'python-tqdm' 'libebur128')
+depends=('libpulse' 'hamlib' 'wxwidgets-gtk3' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'libebur128')
 makedepends=('cmake' 'patchelf')
-source=(
-  "freedv.sh"
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-  )
-sha512sums=('7d505ff36176baeca347c52a5c7bdb819bea9cd059783588e3438a02a9f707d66cf2201ce7ff202cee660936ff33adcfda4b1a707013b14fcb25b82c3007531a'
-            '4e217542b3cbf35848c392e248ea6141903d81a7b9ea1b2b861dbdb554c347823c65fec3aef5cf3d60b59d0c3216b565c36b5849293e78da6e33d8201d6d8bab')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('34ee5e8287ff430d589d3fe7065a075392e17f03c5e89b3d4a0ae683a94a31572a415ab41554aabfaa22d5b494b4bf15e7f0becee9f39926b42950a1b0765598')
 
 ## trying to use local library
 # Codec2:  fatal error: codec2_alloc.h: No such file or directory
@@ -24,14 +20,12 @@ sha512sums=('7d505ff36176baeca347c52a5c7bdb819bea9cd059783588e3438a02a9f707d66cf
 # radae: who know?!
 # mimalloc: requires cmake patch
 # ebur128: from system
+# rnnoise
 
 radae_bins=(
   "radae_rx"
   "radae_tx"
   "lpcnet_demo"
-  "test_rade_dec"
-  "test_rade_enc"
-  "write_rade_weights"
 )
 radae_libs=(
   "librade.so.0.1"
@@ -52,8 +46,6 @@ build() {
 package() {
   make -C build DESTDIR="$pkgdir" install
 
-  # TODO: radae contains build folder in the header. need removing
-
   # remove local RPATH and copy the file in pkgdir
   for file in "${radae_bins[@]}"; do
     patchelf --remove-rpath "build/rade_build/src/$file"
@@ -69,17 +61,4 @@ package() {
   ln -s "/usr/lib/${radae_libs[0]}" "$pkgdir/usr/lib/librade.so"
 
   install -m0644 -D "$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
-
-  # not nice but this avoid to patch the code; copy as is without cleanup
-  # at the moment we don't create __pycache__
-  # in this way we don't have any issues with new python versions
-  install -m0755 -d "${pkgdir}/opt/freedv-gui"
-  # preserve=mode,timestamp
-  cp -dr --preserve=timestamp "build/rade_src" "${pkgdir}/opt/freedv-gui/rade"
-  rm -rf "${pkgdir}/opt/freedv-gui/rade/.git"
-  rm -rf "${pkgdir}/opt/freedv-gui/rade/.github"
-
-  # we need to change PYTHONPATH to use rade
-  mv "${pkgdir}/usr/bin/freedv" "${pkgdir}/usr/bin/freedv_gui"
-  install -m0755 "${srcdir}/freedv.sh" "${pkgdir}/usr/bin/freedv"
 }
