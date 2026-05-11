@@ -20,7 +20,7 @@ depends=(
   'cava'
   'ttf-nerd-fonts-symbols'
   'ttf-roboto'
-  'ttf-material-design-icons-desktop'
+  'ttf-material-design-icons-desktop-git'
 )
 
 install="${pkgname}.install"
