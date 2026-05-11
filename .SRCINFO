@@ -4,10 +4,11 @@ pkgbase = dsh
 	pkgrel = 1
 	url = http://www.netfort.gr.jp/~dancer/software/dsh.html
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = libdshconfig
 	source = https://www.netfort.gr.jp/~dancer/software/downloads/dsh-0.25.10.tar.gz
-	md5sums = 5269b26348cc1cc6252317c6dca5d219
+	source = test.patch
+	sha256sums = 520031a5474c25c6b3f9a0840e06a4fea4750734043ab06342522f533fa5b4d0
+	sha256sums = 2739f4ddd223c863a065d71aeb197a34e6ec4095e9001396ca1f19afb4eb7d9c
 
 pkgname = dsh
-

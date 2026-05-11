@@ -1,0 +1,11 @@
+diff --git a/tests/param-gnu-getopt.sh b/tests/param-gnu-getopt.sh
+index dd59d93..0161abb 100755
+--- a/tests/param-gnu-getopt.sh
++++ b/tests/param-gnu-getopt.sh
+@@ -2,6 +2,6 @@
+ # check if things are working in a POSIX way, and ensure that GNU getopt workaround is working.
+ set -e
+
+-[ "`./dsh -Mm hoge,test -r echo -c test -m other | sort`" = "\
++[ "`./dsh -Mm hoge,test -r echo -c 'test -m other' | sort`" = "\
+ hoge: hoge test -m other
