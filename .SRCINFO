@@ -1,0 +1,16 @@
+pkgbase = marco-suite
+	pkgdesc = Marco & Polo: Markdown composer and viewer
+	pkgver = 0.23.2
+	pkgrel = 1
+	url = https://github.com/Ranrar/Marco
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = gtksourceview5
+	depends = webkitgtk-6.0
+	options = !lto
+	source = https://github.com/Ranrar/Marco/archive/refs/tags/v0.23.2.tar.gz
+	sha512sums = f521feb0071b4c4506ff4f729ea2a81f5bd5442dca7b59982de75b97820b2a79c3e7751116f03eee22e77b466dbae8e3844d24351e205cbfad49bc4c07e44b8f
+
+pkgname = marco-suite
