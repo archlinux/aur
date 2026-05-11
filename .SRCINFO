@@ -1,6 +1,6 @@
 pkgbase = tuner-git
-	pkgdesc = GNU/Linux app to discover and play internet radio stations. Geared towards RadioBrowser
-	pkgver = 2.0.0.r0.gabb0272
+	pkgdesc = Minimalist radio station player geared towards RadioBrowser
+	pkgver = 2.1.1.beta.1.r79.g8a05367
 	pkgrel = 1
 	url = https://github.com/tuner-labs/tuner
 	arch = x86_64
@@ -10,13 +10,15 @@ pkgbase = tuner-git
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	depends = granite
+	depends = gtk3
+	depends = libgee
 	depends = gst-plugins-bad-libs
-	depends = gst-plugins-good
 	optdepends = gst-libav: play AAC[+] streams
 	provides = tuner
 	conflicts = tuner
-	source = git+https://github.com/tuner-labs/tuner.git
+	source = git+https://github.com/tuner-labs/tuner.git#branch=development
+	source = dont-update-gsettings-schemas-at-build-time.patch
 	sha256sums = SKIP
+	sha256sums = cdf42ae339ae4c837811b302f127846f2a9aee3af19fc824b5743aa7c91d8008
 
 pkgname = tuner-git

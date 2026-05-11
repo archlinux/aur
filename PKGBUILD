@@ -3,30 +3,34 @@
 
 _pkgname=tuner
 pkgname=$_pkgname-git
-pkgver=2.0.0.r0.gabb0272
+pkgver=2.1.1.beta.1.r79.g8a05367
 pkgrel=1
-pkgdesc="GNU/Linux app to discover and play internet radio stations. Geared towards RadioBrowser"
+pkgdesc="Minimalist radio station player geared towards RadioBrowser"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/tuner-labs/${_pkgname}"
 license=('GPL-3.0-only')
-depends=('granite' 'gst-plugins-bad-libs' 'gst-plugins-good')
+depends=('gtk3' 'libgee' 'gst-plugins-bad-libs')
 optdepends=('gst-libav: play AAC[+] streams')
 makedepends=('git' 'meson' 'vala')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git#branch=development"
+        'dont-update-gsettings-schemas-at-build-time.patch')
+sha256sums=('SKIP'
+            'cdf42ae339ae4c837811b302f127846f2a9aee3af19fc824b5743aa7c91d8008')
 
 pkgver() {
     cd "${_pkgname}"
-    git describe --long --tags | sed 's|^v||;s|-|.r|;s|-|.|'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    # Remove the invocation of glib-compile-schemas from the upstream install schema. It prevents building in a clean chroot and
-    # isn't needed as the task is covered by a pacman hook.
-    # Details in upstream issue #215 (https://github.com/louis77/tuner/issues/215).
-    sed -i '/^meson.add_install_script.*glib-compile-schemas/d' tuner/data/meson.build
+    cd "${_pkgname}"
+    for p in "${srcdir}"/*.patch
+    do
+        echo "Applying patch $(basename "${srcdir}"/${p})"
+        patch -p1 -i "${p}"
+    done
 }
 
 build() {
@@ -37,5 +41,5 @@ build() {
 package() {
     DESTDIR="${pkgdir}" meson install -C 'build'
     cd "${pkgdir}"/usr/bin/
-    ln -s com.github.louis77.tuner tuner
+    ln -s io.github.tuner_labs.tuner tuner
 }
