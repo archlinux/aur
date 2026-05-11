@@ -1,0 +1,18 @@
+pkgbase = hope-agent-bin
+	pkgdesc = Local-first AI assistant desktop app — cross-device sessions, IM channel routing
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/shiwenwen/hope-agent
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = hope-agent
+	conflicts = hope-agent
+	options = !strip
+	options = !debug
+	source = hope-agent-0.1.2.deb::https://github.com/shiwenwen/hope-agent/releases/download/v0.1.2/Hope.Agent_0.1.2_amd64.deb
+	sha256sums = 518f65229424c947f25e24b6d9a36ce9b86506cb81f93a56923a5ae8d14c85d7
+
+pkgname = hope-agent-bin
