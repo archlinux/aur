@@ -1,0 +1,7 @@
+skwd/
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar
+*.log
