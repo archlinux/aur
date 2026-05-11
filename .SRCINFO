@@ -1,15 +1,17 @@
 pkgbase = python-pdal
 	pkgdesc = Python extension for PDAL (Point Data Abstraction Library)
-	pkgver = 3.4.5
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://github.com/PDAL/python
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = pybind11
+	makedepends = python-scikit-build-core
 	depends = pdal
 	depends = python
-	source = python-pdal-3.4.5.tar.gz::https://github.com/PDAL/python/archive/refs/tags/3.4.5.tar.gz
-	sha256sums = b264ccd29d349ae2b911cafda8aae4ecafe464a1a62f6c02ad3bf038f660154d
+	source = python-pdal-3.5.3.tar.gz::https://github.com/PDAL/python/archive/refs/tags/3.5.3.tar.gz
+	sha256sums = 59271e46ffa12e8714cb098865c7185a8dd896c885ba6558dfa4b9b83d932c59
 
 pkgname = python-pdal

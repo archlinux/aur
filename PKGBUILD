@@ -1,15 +1,15 @@
 # Maintainer: Sylvain POULAIN <sylvain.poulain at giscan dot com>
 pkgname=python-pdal
-pkgver=3.4.5
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="Python extension for PDAL (Point Data Abstraction Library)"
 arch=('any')
 url="https://github.com/PDAL/python"
 license=('BSD')
 depends=('pdal' 'python')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'pybind11' 'python-scikit-build-core')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PDAL/python/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b264ccd29d349ae2b911cafda8aae4ecafe464a1a62f6c02ad3bf038f660154d')
+sha256sums=('59271e46ffa12e8714cb098865c7185a8dd896c885ba6558dfa4b9b83d932c59')
 
 build() {
   cd "$srcdir/python-$pkgver"
