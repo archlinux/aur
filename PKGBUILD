@@ -2,7 +2,7 @@
 # Maintainer: Axel Navarro <navarroaxel at Gmail>
 
 pkgname=fastlane
-pkgver=2.233.1
+pkgver=2.234.0
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -16,8 +16,8 @@ source=(
   fastlane
 )
 noextract=(fastlane-$pkgver.gem)
-sha256sums=('38b19c43f3d9649eacbd870ae8a59118fbdfcabcbb3b4571ae26ae291d92f694'
-            'feb1a15a8120dd3de709d73287fd4a754dbbfb05fa839f4927b3b7d6ea9b5ee3')
+sha512sums=('e5c00cfbb4de56a5543f7405beaee3b14f4a750a6245d5dbfddaae374471e262d16ee37c502d486699f777cad003f228d0da3137ddcf070d2a2344ac2dda3898'
+  '396618e9e1644d7710fc31c7385cdfd62e9282f397f3e6fe1615b79d08be6fc0f79d71473a280ecf22a61b23e3f0ce4d9062e19dfd9883ea1e77b76c3a49421c')
 
 package() {
   gem install --no-user-install --no-document -i "$pkgdir/opt/fastlane" fastlane-$pkgver.gem
