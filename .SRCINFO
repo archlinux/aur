@@ -1,0 +1,26 @@
+pkgbase = kwin-effects-kdeblur-git
+	pkgdesc = KDE Plasma 6 Better Blur fork (X11 & Wayland)
+	pkgver = r428.4f86e77
+	pkgrel = 1
+	url = https://github.com/can1357/kde-blur
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = kwin
+	makedepends = kwin-x11
+	depends = kio
+	depends = knotifications
+	depends = kcrash
+	depends = kglobalaccel
+	depends = kcmutils
+	depends = libepoxy
+	optdepends = kwin-x11: for X11
+	optdepends = kwin: for Wayland
+	provides = kwin-effects-kdeblur
+	conflicts = kwin-effects-kdeblur
+	source = kwin-effects-kdeblur-git::git+https://github.com/can1357/kde-blur.git
+	sha256sums = SKIP
+
+pkgname = kwin-effects-kdeblur-git
