@@ -1,0 +1,25 @@
+pkgbase = python-chatterbox-tts
+	pkgdesc = Open-source TTS and Voice Conversion by Resemble AI (zero-shot voice cloning)
+	pkgver = 0.1.7
+	pkgrel = 2
+	url = https://github.com/resemble-ai/chatterbox
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytorch-opt-cuda
+	depends = python-torchaudio
+	depends = python-transformers
+	depends = python-diffusers
+	depends = python-numpy
+	depends = python-librosa
+	depends = python-omegaconf
+	depends = python-safetensors
+	depends = python-pyloudnorm
+	source = https://files.pythonhosted.org/packages/c4/b1/8f1203e868111a45b566a79a4f56cd7843c420dfda709b81cebee55afa10/chatterbox_tts-0.1.7.tar.gz
+	sha256sums = ed8afae83819b40a25927c2ef3bcc67f928bdfcf434c1376c972e6039252a187
+
+pkgname = python-chatterbox-tts
