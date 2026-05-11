@@ -4,7 +4,7 @@
  #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,0) /* < 2.6 */
      #error "This kernel is too old: not supported by this driver"
  #endif
--#if LINUX_VERSION_CODE > KERNEL_VERSION(6,11,2) /* > 6.11.2 */
+-#if LINUX_VERSION_CODE > KERNEL_VERSION(6,17,7) /* > 6.17.7 */
 +#if LINUX_VERSION_CODE > KERNEL_VERSION(7,20,0) /* > 6.20.0 */
      #ifndef STAR_TRY_NEWER_KERNEL
          #error "This kernel is too recent: not supported by this driver."
@@ -15,7 +15,7 @@
  #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,0) /* < 2.6 */
      #error "This kernel is too old: not supported by this driver"
  #endif
--#if LINUX_VERSION_CODE > KERNEL_VERSION(6,11,2) /* > 6.11.2 */
+-#if LINUX_VERSION_CODE > KERNEL_VERSION(6,17,7) /* > 6.17.7 */
 +#if LINUX_VERSION_CODE > KERNEL_VERSION(7,20,0) /* > 6.20.0 */
      #ifndef STAR_TRY_NEWER_KERNEL
          #error "This kernel is too recent: not supported by this driver."
@@ -26,7 +26,7 @@
  #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,0) /* < 2.6 */
      #error "This kernel is too old: not supported by this driver"
  #endif
--#if LINUX_VERSION_CODE > KERNEL_VERSION(6,11,2) /* > 6.11.2 */
+-#if LINUX_VERSION_CODE > KERNEL_VERSION(6,17,7) /* > 6.17.7 */
 +#if LINUX_VERSION_CODE > KERNEL_VERSION(7,20,0) /* > 6.20.0 */
      #ifndef STAR_TRY_NEWER_KERNEL
          #error "This kernel is too recent: not supported by this driver."

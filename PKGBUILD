@@ -2,7 +2,7 @@
 
 pkgname=star-system
 pkgver=6.01
-pkgrel=1
+pkgrel=2
 pkgdesc="STAR-System is the new driver and API system provided with all new and future STAR-Dundee interface and router devices."
 arch=('x86_64')
 url="http://www.star-dundee.com"
@@ -110,10 +110,10 @@ package() {
 	chmod 775  ${pkgdir}/run/lock/subsys
 
 }
-sha256sums=('5deb178ac143ad36f478f1ed01375608a23b7e8f1e04d9ef0b39033ade975c83'
+sha256sums=('a9d3cc8ba4147cb60fab3ad529ccf8dca8036f3f4471c2df98a41930868681eb'
             '842d55fd08515bbec1882f80c20fc29a9c28e32aa222718280e37f07794386da'
             'a6f626e79014761d4d86359b7ed08a5f41add4d8d2a04e0c111b83406e97e465'
-            '049d35db604e7404ea280e56880c196b1151f186779055419b4d907974125a1b'
+            '9a63f47ae41269b0679a780abb67a8f4d71ba24652b8a2c57d603f1e5f73a86e'
             '2d84f99f53a2bfd508009fffcefdefb0c5ace7f80240a1f59dbfbe77239ca418'
             'ad92ae049b9c6ac3c9a39a23b66b523f970e28aae0348f78dd2362ac5dd15fa7'
             'a8ff051b5ccb1dfbfe4a74c4213a93f8bb81760e6dee4144ab5c300521959947'
