@@ -3,16 +3,16 @@
 pkgname=python-webauthn
 _name=${pkgname#python-}
 pkgver=2.7.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Pythonic WebAuthn"
 provides=(${pkgname})
 conflicts=(${pkgname})
 arch=('any')
 url="https://github.com/duo-labs/py_webauthn"
 _pydeps=(
-    asn1crypto
     cbor2
     cryptography
+    pyasn1
     pyopenssl
 )
 depends=('python'
