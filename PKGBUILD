@@ -1,0 +1,101 @@
+# Maintainer: jinzhongjia <jinzhongjia@manus.ai>
+
+pkgname=openwarp-git
+pkgver=2026.05.10.preview.r71.g7b7f8362
+pkgrel=1
+pkgdesc="OpenWarp - open-source fork of Warp, a Rust-based terminal with AI built in (git version)"
+arch=('x86_64')
+url="https://github.com/zerx-lab/warp"
+license=('AGPL-3.0-only')
+makedepends=(
+    'git'
+    'rustup'
+    'cmake'
+    'pkgconf'
+    'openssl'
+    'freetype2'
+    'expat'
+    'libgit2'
+    'dbus'
+    'fontconfig'
+    'alsa-lib'
+    'clang'
+    'jq'
+    'brotli'
+    'protobuf'
+)
+depends=(
+    'alsa-lib'
+    'dbus'
+    'fontconfig'
+    'libglvnd'
+    'wayland'
+    'libx11'
+    'libxcb'
+    'libxcursor'
+    'libxi'
+    'libxkbcommon-x11'
+    'zlib'
+)
+optdepends=(
+    'mesa: hardware-accelerated rendering'
+    'adwaita-icon-theme: fallback icon theme'
+    'python: bundled skill scripts (create-skill, pr-comments, feedback)'
+    'python-yaml: skill validation script'
+)
+provides=('openwarp' 'warp-terminal-oss')
+conflicts=('openwarp-bin' 'warp-terminal-oss')
+# '!lto': makepkg 默认会往 CFLAGS/CXXFLAGS/LDFLAGS 注入 -flto=auto。
+#         ring crate 的 build.rs 用这些 CFLAGS 通过 cc-rs 编译 C/asm，
+#         GCC 会产出 slim LTO 对象（.text 段为 0 字节，符号只在 .gnu.lto_.symtab 里）。
+#         rustc 调用的 rust-lld 不识别 GCC 的 GIMPLE LTO plugin，
+#         结果 ring 的全部 C 符号在链接时 undefined。必须关掉 makepkg 的 LTO。
+options=('!strip' '!debug' '!lto')
+source=("${pkgname}::git+https://github.com/zerx-lab/warp.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    export CARGO_HOME="${srcdir}/.cargo"
+    cargo build --release --bin warp-oss --features "gui,nld_improvements"
+}
+
+package() {
+    cd "${srcdir}/${pkgname}"
+
+    _optdir="/opt/warpdotdev/warp-terminal-oss"
+
+    # Install binary
+    install -Dm755 "target/release/warp-oss" "${pkgdir}${_optdir}/warp-oss"
+
+    # Install bundled resources (skills, MCP skills, etc.)
+    if [[ -d "resources/bundled" ]]; then
+        cp -r "resources/bundled" "${pkgdir}${_optdir}/resources"
+    fi
+
+    # Create symlinks
+    install -d "${pkgdir}/usr/bin"
+    ln -s "${_optdir}/warp-oss" "${pkgdir}/usr/bin/warp-terminal-oss"
+    ln -s "${_optdir}/warp-oss" "${pkgdir}/usr/bin/openwarp"
+
+    # Install desktop file (with WMClass fix, matching openwarp-bin)
+    install -Dm644 "app/channels/oss/dev.warp.OpenWarp.desktop" \
+        "${pkgdir}/usr/share/applications/dev.warp.OpenWarp.desktop"
+    sed -i 's/^StartupWMClass=dev\.warp\.OpenWarp$/StartupWMClass=dev.openwarp.OpenWarp/' \
+        "${pkgdir}/usr/share/applications/dev.warp.OpenWarp.desktop"
+
+    # Install icons
+    for _size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512; do
+        _icon="app/channels/oss/icon/no-padding/${_size}.png"
+        if [[ -f "${_icon}" ]]; then
+            install -Dm644 "${_icon}" \
+                "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/dev.warp.OpenWarp.png"
+        fi
+    done
+}
