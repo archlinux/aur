@@ -3,7 +3,7 @@
 
 pkgname=tp-dusk
 pkgver=1.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
@@ -54,5 +54,5 @@ package() {
   install -Dm 644 "${srcdir}/dusk/res/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm 755 "tp-dusk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  patchelf --remove-rpath "${pkgdir}/usr/lib/${pkgname}/dusk"
+  patchelf --remove-rpath "${pkgdir}/usr/share/${pkgname}/dusk"
 }
