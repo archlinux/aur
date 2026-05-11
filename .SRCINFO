@@ -1,12 +1,12 @@
 pkgbase = codesight
 	pkgdesc = AI context generator - codebase mapping, token optimization, and MCP server for Claude Code, Cursor, and Codex
-	pkgver = 1.13.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/Houseofmvps/codesight
 	arch = any
 	license = MIT
 	depends = nodejs
-	source = codesight-1.13.1.tgz::https://registry.npmjs.org/codesight/-/codesight-1.13.1.tgz
-	sha256sums = 1d0e6e1a5ac764fa22ff2fdb549c3a3f897e53f32f39800b44ad4927fc046eda
+	source = codesight-1.14.0.tgz::https://registry.npmjs.org/codesight/-/codesight-1.14.0.tgz
+	sha256sums = c1f5df5854a3eda8b840f64836b68ba2bc10038eeff47d780ea0b956c04f5f56
 
 pkgname = codesight
