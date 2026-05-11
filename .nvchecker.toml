@@ -1,0 +1,5 @@
+[split-watch-bin]
+source = "github"
+github = "It-is-Sean/SplitWatch"
+use_latest_release = true
+prefix = "v"

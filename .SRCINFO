@@ -1,0 +1,27 @@
+pkgbase = split-watch-bin
+	pkgdesc = A lightweight terminal dashboard for periodically running shell commands in multiple panes
+	pkgver = 0.1.5.1
+	pkgrel = 1
+	url = https://github.com/It-is-Sean/SplitWatch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = swatch
+	conflicts = swatch
+	options = !strip
+	source = logs-0.1.5.1.toml::https://raw.githubusercontent.com/It-is-Sean/SplitWatch/v0.1.5.1/examples/logs.toml
+	source = gpu-dev-0.1.5.1.toml::https://raw.githubusercontent.com/It-is-Sean/SplitWatch/v0.1.5.1/examples/gpu-dev.toml
+	source = train-debug-0.1.5.1.toml::https://raw.githubusercontent.com/It-is-Sean/SplitWatch/v0.1.5.1/examples/train-debug.toml
+	source = custom-theme-0.1.5.1.toml::https://raw.githubusercontent.com/It-is-Sean/SplitWatch/v0.1.5.1/examples/custom-theme.toml
+	sha256sums = 50dbbcff818725cd93290d55bd8ad144e75fea56688981c130604b9f2bacdae4
+	sha256sums = 8fbaa623364a9697fa5d1e6f4881f6bfe41a0b87f24354672711761c282926ae
+	sha256sums = fb3188e98db51a654ae3d6723e99201776e5dec38d1aaf32ce8504df99259cd2
+	sha256sums = b163c364cff4bf51df0ee7932c1958ca20fcdb5103ca0fcfd0925872391b09ba
+	source_x86_64 = swatch-x86_64-0.1.5.1.tgz::https://github.com/It-is-Sean/SplitWatch/releases/download/v0.1.5.1/swatch-v0.1.5.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bfe85347eecff847c75b6e3d4cf1164fb6af77cc16d3c8158917b1ef3401941a
+	source_aarch64 = swatch-aarch64-0.1.5.1.tgz::https://github.com/It-is-Sean/SplitWatch/releases/download/v0.1.5.1/swatch-v0.1.5.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3280bab647c64ac25e601e3d81d5bfc8f1e9a942d12ea119b990a6aac1a517c9
+
+pkgname = split-watch-bin
