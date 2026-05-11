@@ -1,0 +1,5 @@
+[locator-bin]
+source = "github"
+github = "NotTanJune/locator"
+use_latest_release = true
+prefix = "v"
