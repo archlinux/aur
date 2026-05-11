@@ -1,6 +1,6 @@
 #Maintainer: Suletta Mercury <hazfen@proton.me>
 pkgname=hjonkcli
-pkgver=1.2
+pkgver=1.02
 pkgrel=1
 pkgdesc="cli client for hjonk.me"
 arch=('x86_64' 'aarch64')
