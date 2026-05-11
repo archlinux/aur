@@ -1,6 +1,6 @@
 pkgname=hyprshell
 # x-release-please-start-version
-pkgver=4.9.5
+pkgver=4.10.0
 # x-release-please-end
 pkgrel=1
 pkgdesc="A modern GTK4-based window switcher and application launcher for Hyprland"
@@ -10,7 +10,7 @@ provides=('hyprshell')
 url="https://github.com/h3rmt/hyprshell/"
 license=("MIT")
 makedepends=('cargo')
-depends=('hyprland' 'gtk4-layer-shell' 'gtk4' 'gcc' 'pixman' 'libadwaita' 'zstd')
+depends=('hyprland' 'gtk4-layer-shell' 'gtk4' 'libadwaita' 'zstd')
 source=("hyprshell-$pkgver.tar.gz::https://static.crates.io/crates/hyprshell/hyprshell-$pkgver.crate")
 
 prepare() {
@@ -32,15 +32,15 @@ package() {
     install -Dm644 "hyprshell-$pkgver/README.md"                            "$pkgdir/usr/share/doc/hyprshell/README.md"
     install -Dm644 "hyprshell-$pkgver/docs/CONFIGURE.md"                    "$pkgdir/usr/share/doc/hyprshell/CONFIGURE.md"
     install -Dm644 "hyprshell-$pkgver/docs/DEBUG.md"                        "$pkgdir/usr/share/doc/hyprshell/DEBUG.md"
-	install -Dm644 "hyprshell-$pkgver/packaging/hyprshell.service"          "$pkgdir/usr/lib/systemd/user/hyprshell.service"
-	install -Dm644 "hyprshell-$pkgver/packaging/hyprshell-settings.png"     "$pkgdir/usr/share/pixmaps/hyprshell.png"
-	install -Dm644 "hyprshell-$pkgver/packaging/hyprshell-settings.desktop" "$pkgdir/usr/share/applications/hyprshell-settings.desktop"
+    install -Dm644 "hyprshell-$pkgver/packaging/hyprshell.service"          "$pkgdir/usr/lib/systemd/user/hyprshell.service"
+    install -Dm644 "hyprshell-$pkgver/packaging/hyprshell-settings.png"     "$pkgdir/usr/share/pixmaps/hyprshell.png"
+    install -Dm644 "hyprshell-$pkgver/packaging/hyprshell-settings.desktop" "$pkgdir/usr/share/applications/hyprshell-settings.desktop"
 
     mkdir "$pkgdir/usr/share/hyprshell"
-    tar -xvf "hyprshell-$pkgver/packaging/usr-share.tar" -C "$pkgdir/usr/share/hyprshell"
+    tar -xvf "hyprshell-$pkgver/packaging/usr-share.tar" -C "$pkgdir/usr/share/hyprshell" | tee >(wc -l | xargs -I {} echo "Extracted {} files to $pkgdir/usr/share/hyprshell") > /dev/null
 
     "$pkgdir/usr/bin/hyprshell" completions bash -p  "$pkgdir/usr/share/bash-completion/completions"
     "$pkgdir/usr/bin/hyprshell" completions fish -p  "$pkgdir/usr/share/fish/vendor_completions.d"
     "$pkgdir/usr/bin/hyprshell" completions zsh -p   "$pkgdir/usr/share/zsh/site-functions"
 }
-sha256sums=('2d48a433f21d99314a8bc6783a195fc4952805c07a59650c5a9541140d91b342')
+sha256sums=('3c62ad460ae9dbbf3ae508d4b63796a530f8bd1bd4e2c23a47805221db1f206c')
