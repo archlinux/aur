@@ -1,0 +1,21 @@
+pkgbase = apt-fake-ubuntu-git
+	pkgdesc = Gabriele's Package Manager Bridge - DEVELOPMENT branch (English)
+	pkgver = 2.1.dev
+	pkgrel = 1
+	url = https://gabrielearchapt.github.io
+	arch = any
+	license = GPL3
+	depends = pacman
+	depends = zenity
+	depends = g-helper
+	depends = git
+	provides = apt-fake-ubuntu
+	conflicts = apt-fake-ubuntu
+	source = apt
+	source = apt-fake.desktop
+	source = apt-fake.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = apt-fake-ubuntu-git

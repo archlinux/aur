@@ -1,0 +1,45 @@
+#!/bin/bash
+# --- APT-Fake v2.1-dev (Development Branch) ---
+# Maintainer: gabrielearchapt
+
+G_BLUE='\033[1;34m'; G_CYAN='\033[1;36m'; G_GREEN='\033[1;32m'
+G_RED='\033[1;31m'; G_YELLOW='\033[1;33m'; NC='\033[0m'
+
+LOG_FILE="$HOME/.apt-fake-history"
+
+echo -e "${G_RED}[DEV-BRANCH]${NC} Running experimental version 2.1-dev"
+
+if [[ -z "$1" ]]; then
+    echo -e "${G_BLUE}APT-Fake v2.1-dev${NC} - Package Manager Bridge"
+    echo "Usage: apt [install|update|upgrade|search|history|clean]"
+    exit 0
+fi
+
+case "$1" in
+    update)
+        echo -e "${G_CYAN}::${NC} Refreshing system databases..."
+        (echo "50" ; sudo pacman -Sy --noconfirm > /dev/null ; echo "100") | \
+        zenity --progress --title="APT-Dev Update" --auto-close --width=300
+        echo "$(date) - [DEV] Database Sync" >> "$LOG_FILE" ;;
+    install)
+        shift
+        echo -e "${G_CYAN}::${NC} Resolving dependencies for: $@"
+        sudo pacman -S --needed $@ || g-helper $@
+        echo "$(date) - [DEV] Installed: $@" >> "$LOG_FILE" ;;
+    upgrade)
+        sudo pacman -Syu ;;
+    search)
+        shift
+        echo -e "${G_CYAN}:: Searching Official Repos...${NC}"
+        pacman -Ss $@
+        echo -e "${G_PURPLE}:: Searching AUR...${NC}"
+        g-helper search $@ ;;
+    history)
+        echo -e "${G_CYAN}:: Activity Log:${NC}"
+        cat "$LOG_FILE" 2>/dev/null || echo "No history found." ;;
+    clean)
+        echo -e "${G_YELLOW}:: Removing unused dependencies...${NC}"
+        sudo pacman -Rns $(pacman -Qdtq) ;;
+    *)
+        sudo pacman "$@" ;;
+esac

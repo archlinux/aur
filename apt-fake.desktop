@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=APT Fake (Dev)
+Comment=Ubuntu management on Arch
+Exec=apt gui
+Icon=apt-fake
+Terminal=false
+Type=Application
+Categories=System;
