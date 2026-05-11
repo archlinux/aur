@@ -1,3 +1,4 @@
+# DEPRECATED: see bailout() below
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -19,58 +20,58 @@ url="https://www.mesa3d.org/"
 arch=(x86_64)
 license=("MIT AND BSD-3-Clause AND SGI-B-2.0")
 makedepends=(
-  clang
-  directx-headers
-  expat
-  glibc
-  libdisplay-info
-  libdrm
-  libelf
-  libgcc
-  libglvnd
-  libpng
-  libstdc++
-  libva
-  libx11
-  libxcb
-  libxext
-  libxml2
-  libxrandr
-  libxshmfence
-  libxxf86vm
-  llvm
-  llvm-libs
-  lm_sensors
-  rust
-  spirv-llvm-translator
-  spirv-tools
-  systemd-libs
-  vulkan-icd-loader
-  wayland
-  xcb-util-keysyms
-  zlib
-  zstd
-
-  # shared between mesa and lib32-mesa
-  cbindgen
-  clang
-  cmake
-  elfutils
-  glslang
-  libclc
-  meson
-  python-mako
-  python-packaging
-  python-ply
-  python-pycparser
-  python-yaml
-  rust-bindgen
-  wayland-protocols
-  xorgproto
-
-  # mesa-only deps
-  libsysprof-capture
-  valgrind
+  # clang
+  # directx-headers
+  # expat
+  # glibc
+  # libdisplay-info
+  # libdrm
+  # libelf
+  # libgcc
+  # libglvnd
+  # libpng
+  # libstdc++
+  # libva
+  # libx11
+  # libxcb
+  # libxext
+  # libxml2
+  # libxrandr
+  # libxshmfence
+  # libxxf86vm
+  # llvm
+  # llvm-libs
+  # lm_sensors
+  # rust
+  # spirv-llvm-translator
+  # spirv-tools
+  # systemd-libs
+  # vulkan-icd-loader
+  # wayland
+  # xcb-util-keysyms
+  # zlib
+  # zstd
+  #
+  # # shared between mesa and lib32-mesa
+  # cbindgen
+  # clang
+  # cmake
+  # elfutils
+  # glslang
+  # libclc
+  # meson
+  # python-mako
+  # python-packaging
+  # python-ply
+  # python-pycparser
+  # python-yaml
+  # rust-bindgen
+  # wayland-protocols
+  # xorgproto
+  #
+  # # mesa-only deps
+  # libsysprof-capture
+  # valgrind
 )
 options=(
   # GCC 14 LTO causes segfault in LLVM under si_llvm_optimize_module
@@ -80,7 +81,7 @@ options=(
   !lto
 )
 source=(
-  "https://archive.mesa3d.org/mesa-$_pkgver.tar.xz"{,.sig}
+  # "https://archive.mesa3d.org/mesa-$_pkgver.tar.xz"{,.sig}
 
   # Fix build on i686
   0001-kk-Fix-debug-printf-specifier.patch
@@ -96,123 +97,74 @@ validpgpkeys=(
   E3E8F480C52ADD73B278EE78E1ECBE07D7D70895 # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>
 )
 
-# Rust crates for NVK, used as Meson subprojects
-declare -A _crates=(
-  bitflags         2.9.1
-  cfg-if           1.0.0
-  equivalent       1.0.1
-  errno            0.3.12
-  hashbrown        0.14.1
-  indexmap         2.2.6
-  libc             0.2.171
-  log              0.4.27
-  once_cell        1.8.0
-  paste            1.0.14
-  pest             2.8.0
-  pest_derive      2.8.0
-  pest_generator   2.8.0
-  pest_meta        2.8.0
-  proc-macro2      1.0.86
-  quote            1.0.35
-  remain           0.2.12
-  roxmltree        0.20.0
-  rustc-hash       2.1.1
-  rustix           1.1.2
-  syn              2.0.87
-  thiserror        2.0.11
-  thiserror-impl   2.0.11
-  ucd-trie         0.1.6
-  unicode-ident    1.0.12
-  windows-link     0.2.0
-  windows-sys      0.61.1
-  zerocopy         0.8.13
-  zerocopy-derive  0.8.13
-)
+# # Rust crates for NVK, used as Meson subprojects
+# declare -A _crates=(
+#   bitflags         2.9.1
+#   cfg-if           1.0.0
+#   equivalent       1.0.1
+#   errno            0.3.12
+#   hashbrown        0.14.1
+#   indexmap         2.2.6
+#   libc             0.2.171
+#   log              0.4.27
+#   once_cell        1.8.0
+#   paste            1.0.14
+#   pest             2.8.0
+#   pest_derive      2.8.0
+#   pest_generator   2.8.0
+#   pest_meta        2.8.0
+#   proc-macro2      1.0.86
+#   quote            1.0.35
+#   remain           0.2.12
+#   roxmltree        0.20.0
+#   rustc-hash       2.1.1
+#   rustix           1.1.2
+#   syn              2.0.87
+#   thiserror        2.0.11
+#   thiserror-impl   2.0.11
+#   ucd-trie         0.1.6
+#   unicode-ident    1.0.12
+#   windows-link     0.2.0
+#   windows-sys      0.61.1
+#   zerocopy         0.8.13
+#   zerocopy-derive  0.8.13
+# )
+#
+# # Used to generate the above table
+# _gencrates() {
+#   grep '^source_url' subprojects/*-rs.wrap | \
+#     sed -r 's|.*crates/([^/]+)/([0-9.]+)/download|\1 \2|' | \
+#     column -t -S 2 | sed 's/^/  /'
+# }
+#
+# for _crate in "${!_crates[@]}"; do
+#   _ver="${_crates[$_crate]}"
+#   source+=(
+#     "$_crate-$_ver.tar.gz::https://crates.io/api/v1/crates/$_crate/$_ver/download"
+#   )
+# done
 
-# Used to generate the above table
-_gencrates() {
-  grep '^source_url' subprojects/*-rs.wrap | \
-    sed -r 's|.*crates/([^/]+)/([0-9.]+)/download|\1 \2|' | \
-    column -t -S 2 | sed 's/^/  /'
-}
-
-for _crate in "${!_crates[@]}"; do
-  _ver="${_crates[$_crate]}"
-  source+=(
-    "$_crate-$_ver.tar.gz::https://crates.io/api/v1/crates/$_crate/$_ver/download"
-  )
-done
-
-b2sums=('594e0737ff10853eac91a45c81db8738874e2d4f61ca2f02229bf62df9d3c133c4e1b605d90c17d17d91df97b78bfdb8051a6e1927b8d7759e4528de0a939f02'
-        'SKIP'
-        'cc21d419a6f60c13cb0da7e3ec0cc741759e3c17afc79b0d8def35159e8584ed94580afac83ab5fbba6158c7eb1999470a4650bfc532bd4343be2166d85aa571'
-        'SKIP'
-        '431439d31632d177aeb15f910b4f546efa76d54fc74fc8e140399dc5e54eca33fd606f11dbfb48fa83067c8474ee512e62751895d5948367b65ab08b984284e5'
-        'a6d47c903be6094423d89b8ec3ca899d0a84df6dbd6e76632bb6c9b9f40ad9c216f8fa400310753d392f85072756b43ac3892e0a2c4d55f87ab6463002554823'
-        '9a73962e1e38b84131ab2350b69a1f5d611c549533eec73e898c394a9b9442f357bb5d5f59e1be12270dd29bdf237dc2d21786c0c2210736e224ef5d48300dcf'
-        '2bfbb3146d63444632b924520bc3d8af4adc6bbc38f4a7c6e8a003365430372ac1c05246684b54f0a98c36c8a7f02c325e1a6dd7fec44adeff41767e427ea77f'
-        'fac5cf6339dc3c0a40b100035a5c874cc7b2efeafeb31c51488d25156e392dc9db86a497e76eead351d2126f69d060422faa9c55d73407a0de9f5be18d234123'
-        'afa9268513caa93fb141e69d27e7d65e72b9232b57d91e499f36ea4ec89d65bc6c8cbb37753ed59d149be5a2d349028b1fb0414c6223914366d6f3f31619855f'
-        '09a2159032baaff7eede480062da30ffec1c1d4c77e76288467941dc13722ab1566742c1821326ca5f8c2f9f7597099e235213ecbf883fd93daf5ae9ad5ee981'
-        'd76b20a45f2a0d888703a429b01397bab847af524e71a97797b472d6de0cf66b6aa2a0f5214451feba5a384534f1912a9e090091e32edcf40d79e60ef92d6022'
-        '91c6da1e49d59f7672be801c53610fbddab9e999de4e1af58659caae54bd1da316683ff441fcee9972317882e51951e53ce1d7ba0b487ab1f70bb40175866177'
-        '7a1b3b82bbbf6a123512815c3e8f068a17890cbbb8b68e88a5a492f62469942fadd776207eebd913052a1c06e1fd37a549e86526b9fc8f08b9ca7cb0044ac16b'
-        'e99a5589c11d79d77a4537b34ce0a45d37b981c123b79b807cea836c89fc3926d693458893baca2882448d3d44e3f64e06141f6d916b748daa10b8cc1ae16d1b'
-        '0184a318bc08a523c0430a04ae9b6e9c862f5acdcd2bd41b3f568c3529239be1951c64410fb3cf26ed9749fd05520e187614d4d28f3e77b1b172a30446d31d16'
-        '4b89e07f23af8328dbb34fe2b3f1b202f1e6a3885a6269740a23359b41bb4099ac2484565d3b2b0936261689ca525785ac620c766997234fd8d0f409e80e5ea3'
-        '56322cafd4f761aa6192d4906ec7884f50f3fc20f0714381d5bba2e8355c03380aa65ea9e68188f75d00cd9014037e2eaac026113c5a57974a33ac46ed1b431c'
-        '33be76d7ab098eaeeaefb2ea5ef20a73221ac51b491d6339e1fff66e24118854f3640de43241e233c68be17804b90d22d75f1d60f7df274acef4647c871e0e17'
-        '4cede03c08758ccd6bf53a0d0057d7542dfdd0c93d342e89f3b90460be85518a9fd24958d8b1da2b5a09b5ddbee8a4263982194158e171c2bba3e394d88d6dac'
-        'b14ee41348336981ab86459417b9feab90879a11a6524a8b43f2b89c09c844b4441c31e315c471be00ad21fa88b5dcc7671b56567fdcd72bb0790ceeaa25813b'
-        '208f858730f90834db4765c5645e9fbdfbf9a9aea939766c2ddcdea027901aca477e8274a9a91bcf7746bcd99ad9b77b96fbe94b778c91277007ec8afebdf58b'
-        '81424245e1e2b94459df68bb3a9a866c6a364102b5e1d010ede9c5f8278f8406d7b651957d091c5914e936b494b0f6e9a6a1dd8b7d35cd7d7100f86dee4ec12e'
-        '9605ca407af248c71e0d2bc24d213aa6ff08a14eb548b85de16de7e172a617cdf12c2e4c686f6dd1c80455448a313f6e7d760885f189ae726934efbe06fb5603'
-        '35e8548611c51ee75f4d04926149e5e54870d7073d9b635d550a6fa0f85891f57f326bdbcff3dd8618cf40f8e08cf903ef87d9c034d5921d8b91e1db842cdd7c'
-        '1649129fb459f1b68423e1f2ddf4f2a4cfb9746796786a7ac3f10f9239aec0023604dfc48835180b554a86c533867ebf335bebd12700a4c2d6ef212738560ac6'
-        '603a41f610c6a2be2ee170f6d35ce1683a50590d909ba5444c1777b9c00b584f4544868f4c4d3b2397ca8b77da2d8a40154ccc6f0f2f6affd2353aebfd6b4515'
-        '9b92fc5f3a3448d023e68e75ebcf71f97b2cd44b0fcb6ebb9fe38243f60cda48bb00cc1e67a779f2e42f56310ef8d7b37d94afe920524263e69c65754cb7cb3e'
-        '973126f9a9ca5f3118e830af11ddde4b26c905e13df89b2888b42facc4e48b3adea53b66405260f6291c3df7ddb85a93856841be3626b005040b3fd15502e2bd'
-        '302d78069d9df05e78b53f0488a9e4eb98fa2bc1e21893dc8a0acf2234347ba7c4df4b9d6b380ae77d8ffb1074b9c790460fe2dae47318aa1c4fe4208244540a'
-        '849e0ec8b86f0622d199eea1e7f03987d93f6231fae53b5dbfd90ae7d4b6a8d9e8cef5856c3714ce1f3f561f1e80dd8ed121e7ab45cecdf722f21c3e5db540c9'
-        '7681b1a7497b5711e663773c1a7e076f333c06c10d3f289079a781c36f050c1620cc279742ea8e5b15ec48f3d6038a6079bbda7fee3ae8e1128bd916d53ed43a'
-        '93385f64103fdb482bec34c7912474ae7a5935948715e6eb9a54907e0db5c39f089f6cd393bab33c935c59a1bbb0f4099431f206343811c1a450554d96a35756')
+b2sums=('cc21d419a6f60c13cb0da7e3ec0cc741759e3c17afc79b0d8def35159e8584ed94580afac83ab5fbba6158c7eb1999470a4650bfc532bd4343be2166d85aa571'
+        '5341f5301580540d6a18d3d119452332aa44259a5f0546cef9cb083b7ee2af38be69490729d28ecb01b70338a93a3e3be053f50a450f299af26e995cc477a2bb')
 
 # https://docs.mesa3d.org/relnotes.html
-sha256sums=('d229c9937d9a25ca0a8958c59f425174563d300ec42acbea2dbe84a055023368'
-            'SKIP'
-            '46191b06854b253fac666fb201063a42c1c793a5eb9ae88614b743291e076d2e'
-            'SKIP'
-            '67914ab451f3bfd2e69e5e9d2ef3858484e7074d63f204fd166ec391b54de21d'
-            'ed646292ffc8188ef8ea4d1e0e0150fb15a5c2e12ad9b8fc191ae7a8a7f3c4b9'
-            '7f9f832470494906d1fca5329f8ab5791cc60beb230c74815dff541cbd2b5ca0'
-            'c19937216e9d3aa9956d9bb8dfc0b0c8beb6058fc4f7a4dc4d850edf86a237d6'
-            '168fb715dda47215e360912c096649d23d58bf392ac62f73919e831745e40f26'
-            '7dfda62a12f55daeae5015f81b0baea145391cb4520f86c248fc615d72640d12'
-            '13dc2df351e3202783a1fe0d44375f7295ffb4049267b0f3018346dc122a1d94'
-            '7988d73a4303ca289df03316bc490e934accf371af6bc745393cf3c2c5c4f25d'
-            '45e46c0661abb7180e7b9c281db115305d49ca1709ab8242adf09666d2173c65'
-            '357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d'
-            'baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd'
-            '1ad5e011230cad274d0532460c5ab69828ea47ae75681b42a841663efffaf794'
-            '5e719e8df665df0d1c8fbfd238015744736151d4445ec0836b8e628aae103b77'
-            'd725d9cfd79e87dccc9341a2ef39d1b6f6353d68c4b33c177febbe1a402c97c5'
-            '26afc1baea8a989337eeb52b6e72a039780ce45c3edfcc9c5b9d112feeb173c2'
-            '3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b'
-            '1b8e56985ec62d17e9c1001dc89c88ecd7dc08e47eba5ec7c29c7b5eeecde967'
-            '6f109e41dd4a3c848907eb83d5a42ea98b3769495597450cf6d153507b166f0f'
-            '291ec9ab5efd934aaf503a6466c5d5251535d108ee747472c3977cc5acc868ef'
-            '6c20b6793b5c2fa6553b250154b78d6d0db37e72700ae35fad9387a46f487c97'
-            'de3145af08024dea9fa9914f381a17b8fc6034dfb00f3a84013f7ff43f29ed4c'
-            'cea14ef9355e3beab063703aa9dab15afd25f0667c341310c1e5274bb1d0da18'
-            'cd15f8a2c5551a84d56efdc1cd049089e409ac19a3072d5037a17fd70719ff3e'
-            '198db74531d58c70a361c42201efde7e2591e976d518caf7662a47dc5720e7b6'
-            'd452f284b73e6d76dd36758a0c8684b1d5be31f92b89d07fd5822175732206fc'
-            '5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5'
-            'db7d01726be8ab66ab32f9df467ae8b1148906685bbe75c82d1e65d7f5b3f841'
-            '692fcb63b64b1758029e0a96ee63e049ce8c5948587f2f7208df04625e5f6b56'
-            '25aa4ce346d03a6dcd68dd8b4010bcb74e54e62c90c573f394c46eae99aba32d')
+sha256sums=('46191b06854b253fac666fb201063a42c1c793a5eb9ae88614b743291e076d2e'
+            '8d92e55b640b2ebf79a0b9731c8e379c60f356b3d01dae8daa5f8f0d1fbfa161')
+
+bailout() {
+  error "
+These packages 'mesa-rdna2vr' and 'vulkan-radeon-rdna2vr' are no longer necessary for AMD RDNA 2 cards to use wired VR. Instead, a better workaround exists:
+1. Install 'mesa' and 'vulkan-radeon', replacing these custom packages.
+2. Set 'RADV_DEBUG=nodisplaydcc %%command%%' as the 'XR Service Launch Options' in your Envision development profile.
+Consult the Linux VR Adventures community for help.
+"
+  exit 1
+}
 
 prepare() {
+  bailout
+  exit 1
+
   cd mesa-$_pkgver
 
   local src
@@ -232,6 +184,9 @@ prepare() {
 }
 
 build() {
+  bailout
+  exit 1
+
   local meson_options=(
     -D amdgpu-virtio=true
     -D android-libbacktrace=disabled
@@ -277,25 +232,28 @@ _pick() {
 }
 
 package_mesa-rdna2vr() {
+  bailout
+  exit 1
+
   depends=(
-    expat
-    glibc
-    libdrm
-    libelf
-    libgcc
-    libglvnd
-    libstdc++
-    libx11
-    libxcb
-    libxext
-    libxshmfence
-    libxxf86vm
-    llvm-libs
-    lm_sensors
-    spirv-tools
-    wayland
-    zlib
-    zstd
+    # expat
+    # glibc
+    # libdrm
+    # libelf
+    # libgcc
+    # libglvnd
+    # libstdc++
+    # libx11
+    # libxcb
+    # libxext
+    # libxshmfence
+    # libxxf86vm
+    # llvm-libs
+    # lm_sensors
+    # spirv-tools
+    # wayland
+    # zlib
+    # zstd
   )
   optdepends=("opengl-man-pages: for the OpenGL API man pages")
   provides=(
@@ -345,27 +303,30 @@ package_mesa-rdna2vr() {
 }
 
 package_vulkan-radeon-rdna2vr() {
+  bailout
+  exit 1
+
   pkgdesc="Open-source Vulkan driver for AMD GPUs - RDNA 2 VR fixes"
   depends=(
-    expat
-    glibc
-    libdisplay-info
-    libdrm
-    libelf
-    libgcc
-    libstdc++
-    libx11
-    libxcb
-    libxshmfence
-    llvm-libs
-    spirv-tools
-    systemd-libs
-    vulkan-icd-loader
-    vulkan-mesa-implicit-layers
-    wayland
-    xcb-util-keysyms
-    zlib
-    zstd
+    # expat
+    # glibc
+    # libdisplay-info
+    # libdrm
+    # libelf
+    # libgcc
+    # libstdc++
+    # libx11
+    # libxcb
+    # libxshmfence
+    # llvm-libs
+    # spirv-tools
+    # systemd-libs
+    # vulkan-icd-loader
+    # vulkan-mesa-implicit-layers
+    # wayland
+    # xcb-util-keysyms
+    # zlib
+    # zstd
   )
   optdepends=("vulkan-mesa-layers: additional vulkan layers")
   conflicts=(vulkan-radeon)
