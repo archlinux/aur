@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A fast image processing library with low memory needs (mingw-w64)"
 arch=("any")
 url="https://www.libvips.org/"
-license=("Apache")
+license=("LGPL-2.1")
 depends=(
     "mingw-w64-crt"
     "mingw-w64-cfitsio"
