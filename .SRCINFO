@@ -1,6 +1,6 @@
 pkgbase = skwd-daemon
 	pkgdesc = Daemon for Skwd Shell, a collection of Quickshell programs and widgets
-	pkgver = r54.6d5683a
+	pkgver = r27.2870e20
 	pkgrel = 1
 	url = https://github.com/liixini/skwd-daemon
 	install = skwd-daemon.install
@@ -21,11 +21,11 @@ pkgbase = skwd-daemon
 	depends = alsa-lib
 	depends = wayland
 	depends = mesa
-	options = !debug
-	options = !lto
 	optdepends = ollama: local LLM for automated wallpaper tagging
 	optdepends = steamcmd: Steam Workshop Wallpaper Engine downloads
 	optdepends = linux-wallpaperengine: Wallpaper Engine scene rendering
+	options = !debug
+	options = !lto
 	source = skwd-daemon::git+https://github.com/liixini/skwd-daemon.git
 	sha256sums = SKIP
 
