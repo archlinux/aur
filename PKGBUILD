@@ -1,7 +1,7 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 
 pkgname=swgp-go
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Simple WireGuard proxy with minimal overhead for WireGuard traffic"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 makedepends=('git' 'go')
 backup=("etc/$pkgname/config.json")
 source=("$pkgname::git+$url.git#tag=v$pkgver?signed")
-b2sums=('9bdaa2e79ee7147cadef43e20a6ca3a59b3e8f7caa9df265ec88856455da243ca222f755510f0bdf8573e0262e8e47c96c98aa03e907c8ba65c670fde2654601')
+b2sums=('9d91d5c264fb96c47e2738d0737b3e312cc7aa4b333c49df077dcdf86694c53b23e9aece6d4357f8ebdf58e454c7c4a94ff9d9fb498baac80025a65d55bfe921')
 validpgpkeys=(
     '4DCED15E346E2923B931D6F71CA27546BEDB8B01' # Ian Chen (database64128) <free122448@hotmail.com>
 )
