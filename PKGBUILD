@@ -34,8 +34,8 @@ source=(
     "atrium.install"
 )
 sha256sums=(
-    '204ba1e4120573bcdf466c85508e2b16763656e38ba078b907ddbf4d49f78fb7'
-    'SKIP'
+    'b0728a225d89676841c32675739f86859b908df63fd820c194d5ff5ea5a9e160'
+    'a16d8e75fa4297285d014a60a67af4b861bf2231db4f14eb51d0aa7f93653c92'
 )
 
 build() {
