@@ -4,7 +4,7 @@
 pkgname=hyprpolkitagent-frozen
 pkgver=0.1.2.r3.g352638e
 pkgrel=1
-conflicts=('hyprpolkitagent' 'hyprpolkitagent-git')
+conflicts=('hyprpolkitagent-git')
 provides=('hyprpolkitagent-frozen' 'hyprpolkitagent')
 pkgdesc="A polkit authentication agent written in QT/QML - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
