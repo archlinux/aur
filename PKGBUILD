@@ -1,6 +1,6 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 pkgname="llm-wiki-bin"
-pkgver="0.4.7"
+pkgver="0.4.8"
 pkgrel=1
 pkgdesc="LLM Wiki is a cross-platform desktop application that turns your documents into an organized, interlinked knowledge base — automatically."
 arch=("x86_64")
@@ -12,7 +12,7 @@ provides=("llm-wiki=${pkgver}")
 conflicts=(llm-wiki llm-wiki-appimage)
 license=("GPL-3.0-only")
 source=("${_github_url}/releases/download/v${pkgver}/LLM.Wiki_${pkgver}_amd64.deb")
-sha256sums=('d8feffc2d6ae504cd97b1ab78c993be8703c3fe21ebf7719e9025ca2a9e8f36e')
+sha256sums=('f75a126fbdfce0a1cef5bbe3afc80e4febe470597e40c40ff72bcc5e1a512b5f')
 
 prepare() {
         ar p LLM.Wiki_${pkgver}_amd64.deb data.tar.gz | tar --zstd -x
