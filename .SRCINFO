@@ -1,6 +1,6 @@
 pkgbase = ghfetch-rs-git
 	pkgdesc = GitHub stats in the terminal, neofetch-style (development snapshot)
-	pkgver = 0.1.0.r15.gc22fbc6
+	pkgver = 0.1.0.r17.gff0bcfb
 	pkgrel = 1
 	url = https://github.com/OneNoted/ghfetch
 	arch = x86_64

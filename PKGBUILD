@@ -1,7 +1,7 @@
 # Maintainer: Jonatan Jonasson <notes@madeingotland.com>
 
 pkgname=ghfetch-rs-git
-pkgver=0.1.0.r15.gc22fbc6
+pkgver=0.1.0.r17.gff0bcfb
 pkgrel=1
 pkgdesc='GitHub stats in the terminal, neofetch-style (development snapshot)'
 arch=('x86_64')
