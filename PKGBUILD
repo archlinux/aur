@@ -1,7 +1,7 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-git
-pkgver=2.4.2.r13.gee5b502
+pkgver=2.4.2.r18.g110f887
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (git version)"
 arch=('x86_64')
@@ -21,6 +21,7 @@ makedepends=(
 )
 optdepends=(
     'bitbox-udev: udev rules for BitBox hardware wallets'
+    'bitcoin-daemon: connect to a local Bitcoin Core node'
     'keepkey-udev: udev rules for KeepKey hardware wallets'
     'ledger-udev: udev rules for Ledger hardware wallets'
     'python-ckcc-protocol: Python CLI and udev rules for Coldcard hardware wallets'
@@ -28,6 +29,7 @@ optdepends=(
 )
 provides=('sparrow-wallet')
 conflicts=('sparrow-wallet' 'sparrow-wallet-reproducible')
+options=(!debug !strip)
 source=(
     "sparrow::git+https://github.com/sparrowwallet/sparrow.git#branch=master"
     "drongo::git+https://github.com/sparrowwallet/drongo.git"

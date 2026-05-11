@@ -1,6 +1,6 @@
 pkgbase = sparrow-wallet-git
 	pkgdesc = Desktop Bitcoin Wallet focused on security and privacy (git version)
-	pkgver = 2.4.2.r13.gee5b502
+	pkgver = 2.4.2.r18.g110f887
 	pkgrel = 1
 	url = https://sparrowwallet.com/
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = sparrow-wallet-git
 	depends = libxrender
 	depends = libxtst
 	optdepends = bitbox-udev: udev rules for BitBox hardware wallets
+	optdepends = bitcoin-daemon: connect to a local Bitcoin Core node
 	optdepends = keepkey-udev: udev rules for KeepKey hardware wallets
 	optdepends = ledger-udev: udev rules for Ledger hardware wallets
 	optdepends = python-ckcc-protocol: Python CLI and udev rules for Coldcard hardware wallets
@@ -21,6 +22,8 @@ pkgbase = sparrow-wallet-git
 	provides = sparrow-wallet
 	conflicts = sparrow-wallet
 	conflicts = sparrow-wallet-reproducible
+	options = !debug
+	options = !strip
 	source = sparrow::git+https://github.com/sparrowwallet/sparrow.git#branch=master
 	source = drongo::git+https://github.com/sparrowwallet/drongo.git
 	source = lark::git+https://github.com/sparrowwallet/lark.git
