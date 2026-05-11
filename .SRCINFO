@@ -1,5 +1,5 @@
 pkgbase = hyprwayland-scanner-frozen
-	pkgdesc = A Hyprland implementation of wayland-scanner, in and for C++ - Frozen For Yggdrasil, Nordix Desktop Environment
+	pkgdesc = A Hyprland implementation of wayland-scanner, in and for C++ - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)
 	pkgver = 0.4.4.r2.g206367a
 	pkgrel = 1
 	url = https://gitlab.com/TheEnchantedPotato/mirror-hyprwayland-scanner-hyprland-v0.54.git
@@ -12,7 +12,6 @@ pkgbase = hyprwayland-scanner-frozen
 	depends = pugixml
 	provides = hyprwayland-scanner-frozen
 	provides = hyprwayland-scanner
-	conflicts = hyprwayland-scanner
 	conflicts = hyprwayland-scanner-git
 	source = hyprwayland-scanner-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprwayland-scanner-hyprland-v0.54.git
 	sha256sums = SKIP

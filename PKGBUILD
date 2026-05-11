@@ -4,7 +4,7 @@
 pkgname=hyprwayland-scanner-frozen
 pkgver=0.4.4.r2.g206367a
 pkgrel=1
-conflicts=('hyprwayland-scanner' 'hyprwayland-scanner-git')
+conflicts=('hyprwayland-scanner-git')
 provides=('hyprwayland-scanner-frozen' 'hyprwayland-scanner')
 pkgdesc="A Hyprland implementation of wayland-scanner, in and for C++ - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
