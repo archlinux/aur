@@ -6,9 +6,13 @@ After=network.target
 [Service]
 Type=simple
 User=borgwarehouse
+SyslogIdentifier=borgwarehouse
+DynamicUser=yes
+StateDirectory=borgwarehouse
 WorkingDirectory=/usr/share/webapps/borgwarehouse/
+ReadWritePaths=/etc/webapps/borgwarehouse/
 EnvironmentFile=/etc/webapps/borgwarehouse/borgwarehouse.env
-ExecStart=/usr/bin/node /usr/share/webapps/borgwarehouse/node_modules/.bin/next start --port "$WEB_SERVER_PORT" -H "$WEB_SERVER_HOST"
+ExecStart=/usr/share/webapps/borgwarehouse/node_modules/.bin/next start --port "$WEB_SERVER_PORT" -H "$WEB_SERVER_HOST"
 Restart=on-failure
 
 [Install]

@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
-pkgver=3.1.2
-pkgrel=2
+pkgver=3.1.4
+pkgrel=1
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
 url="https://github.com/ravinou/borgwarehouse"
@@ -21,7 +21,7 @@ optdepends=(
 )
 makedepends=(
   'fd'
-  'npm'
+  'pnpm'
 )
 backup=(
   "etc/webapps/${pkgname}/${pkgname}.env"
@@ -32,16 +32,12 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}-cron.service"
         "${pkgname}-cron.timer"
-        "sysusers-${pkgname}.conf"
-        "${pkgname}.tmpfiles"
         "fix-env-nodocker.patch")
-sha256sums=('d1bb2cbd1ecdfebefb3f32149eb78de16a001594a2d154fbc5ae50b0a8c4c0d2'
-            '4e5b300b524cd43fb6ad823168375c0d1893e993d5e60a6724dac70272d3e308'
-            '26faf461d271087338f99adeeef1f206edb37f57fd4bd700d5af906352a238b5'
+sha256sums=('2e91af0c7a1a27c3751222e20d1a956e92c33a130ca95c55e534d98104d90ef1'
+            '1dc90e5aecd5f00dc52e877b152a42bd2d66e9814b1718d5456af8898286bc7f'
+            'ce1a55c203eef3c65f186efc3ffa2bcf416de67e5586cf542edf199b8a9ec47a'
             '15bc6db13bfa17402ee07bb2f91711a0d84d298b3fbd3f48722345d4c19bb917'
-            '3f22c300895bff34b8da9719d378e5d11b232bd0143fee8ed6132186652f3dcd'
-            '82978ae331edbd8bd9df65dc5d4797c36199edb25b3db469d8dbb26afae81a7c'
-            '4b4178d54516a5f727ab2afc534e2a7f5fd5270a50ba378a11a12674b9e80f9e')
+            'ab3e40452498b965180109b560d352646c6dcc048675b5fd2b371f6632f6a827')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -54,18 +50,17 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   echo "Building"
-  npm clean-install
-  npm audit fix # currently there is https://security.snyk.io/vuln/SNYK-JS-BRACES-6838727
-  npm run build
-  npm prune --production
+  pnpm install --frozen-lockfile --pro
+  pnpm run build
+  pnpm prune --prod
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   
   echo "Cleaning up source dir"  
-  rm -R .husky docker tests 
-  rm .commitlintrc.mjs .dockerignore .prettierrc.json .pre-commit-config.yaml Dockerfile docker-compose.yml eslint.config.mjs vitest.config.ts 
+  rm -R .husky Containers docker tests 
+  rm .commitlintrc.mjs .dockerignore .npmrc .prettierrc.json .pre-commit-config.yaml Dockerfile docker-compose.yml eslint.config.mjs pnpm-lock.yaml pnpm-workspace.yaml vitest.config.ts 
   fd --threads 1 --no-ignore --hidden '.git' -x rm -R
   
   echo "Applying correct permissions"
@@ -83,8 +78,6 @@ package() {
   ln -s "/etc/webapps/${pkgname}/config" "${pkgdir}/usr/share/webapps/${pkgname}/config"
   touch "${pkgdir}/etc/webapps/${pkgname}/config/repo.json"
   touch "${pkgdir}/etc/webapps/${pkgname}/config/users.json"
-  install -Dm644 "${srcdir}/sysusers-${pkgname}.conf" "$pkgdir/usr/lib/sysusers.d/${pkgname}.conf"
-  install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.service" "$pkgdir/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/${pkgname}-cron.service" "$pkgdir/usr/lib/systemd/system/${pkgname}-cron.service"
   install -Dm644 "${srcdir}/${pkgname}-cron.timer" "$pkgdir/usr/lib/systemd/system/${pkgname}-cron.timer"
