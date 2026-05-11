@@ -1,0 +1,23 @@
+pkgbase = alacritree-git
+	pkgdesc = Alacritty fork with worktree-aware sidebars (built from master)
+	pkgver = 0.1.0.dev.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/mathix420/alacritree
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rust>=1.85
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = fontconfig
+	depends = freetype2
+	depends = libxkbcommon
+	depends = libxcb
+	depends = wayland
+	depends = libglvnd
+	provides = alacritree
+	conflicts = alacritree
+	source = alacritree::git+https://github.com/mathix420/alacritree.git#branch=master
+	sha256sums = SKIP
+
+pkgname = alacritree-git
