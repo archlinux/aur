@@ -2,7 +2,7 @@
 # Maintainer: Hans Bala <hansbala@hansbala.com>
 
 pkgname='lazytorrent-bin'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A lazygit-style terminal UI for torrents over transmission-daemon'
 url='https://github.com/hansbala/lazytorrent'
@@ -13,10 +13,10 @@ conflicts=('lazytorrent')
 depends=('transmission-cli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/hansbala/lazytorrent/releases/download/v${pkgver}/lazytorrent_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('075fd0ea96613868ce57a65938aaf7d03f8a098398bdb0249a13a56053ed7704')
+sha256sums_aarch64=('bb34499376c20bc5ba89ca236e8ca85eca260b2f4539918256e1c39cc9c4a1d8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/hansbala/lazytorrent/releases/download/v${pkgver}/lazytorrent_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('18d51cb88db720f1bacaddda9ab8a3850a74acf7e37a6ec97c6101c3132f4ca4')
+sha256sums_x86_64=('68345fda7d2035d0e204489d62841f4839dbb56a13734a3b8c17e6d10be5e2fe')
 
 package() {
   install -Dm755 "./lazytorrent" "${pkgdir}/usr/bin/lazytorrent"
