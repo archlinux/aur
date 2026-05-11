@@ -34,10 +34,12 @@ pkgbase = nekobox-git
 	depends = thrift
 	depends = boost-libs
 	depends = lmdb
-	depends = cpr
 	depends = leveldb
 	depends = yaml-cpp
 	depends = curl
+	depends = openssl
+	depends = zlib
+	depends = libunistring
 
 pkgname = nekobox-git
 
