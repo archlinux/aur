@@ -1,7 +1,7 @@
 pkgbase = openconnect-git
 	pkgdesc = Open client for Cisco AnyConnect VPN
 	pkgver = 9.12.r225.g8ed0761
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.infradead.org/openconnect/
 	arch = x86_64
