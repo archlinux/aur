@@ -1,6 +1,6 @@
 # Maintainer: Bink
 pkgname=memerist
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A modern meme editor built with GTK 4 and Libadwaita"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,7 @@ makedepends=(
   'ninja'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('166069adabf7202d63fff305e5313db2ee05ac0121b759a6dc12405dae2c0b97')
-b2sums=('7c1d6a1145a988d1c1d00b4aab3560567b485c7e386bab80e17c2b8ad9098c8bc915fe085ec07c003e2fc8d01cb6e04b1266f9563808369d1513b264d4b5ca02')
+b2sums=('b52188482ba01b5fc7dc360879a836cccda707fa545ab8dea568eb55d0b87c4b7ab321b70ea0064a94b96f3f8a53e52ad1b51f8d90ba19b6d52ab3312766107d')
 
 build() {
   cd "${pkgname}-${pkgver}"
