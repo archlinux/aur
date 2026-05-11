@@ -1,7 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <sys/stat.h>
+#ifdef _WIN32
+#include <direct.h>
+#define MKDIR(p) _mkdir(p)
+#else
+#define MKDIR(p) mkdir(p, 0700)
+#endif
 #include <curl/curl.h>
 #include <cjson/cJSON.h>
 
@@ -9,7 +16,15 @@
 #define V1_URL     BASE_URL "v1.0/"
 #define POST_URL   BASE_URL "token/post/create/"
 #define PLATFORM   "curl"
+#ifdef _WIN32
+#define TOKEN_DIR  "\\AppData\\Roaming\\hjonk"
+#define TOKEN_FILE "\\AppData\\Roaming\\hjonk\\token"
+#define HOME_ENV   "USERPROFILE"
+#else
+#define TOKEN_DIR  "/.config/hjonk"
 #define TOKEN_FILE "/.config/hjonk/token"
+#define HOME_ENV   "HOME"
+#endif
 #define MAXLEN     500
 
 typedef struct {
@@ -28,7 +43,7 @@ size_t write_cb(char *ptr, size_t size, size_t nmemb, void *userdata) {
 }
 
 char *token_path(void) {
-    const char *home = getenv("HOME");
+    const char *home = getenv(HOME_ENV);
     if (!home) return NULL;
     char *path = malloc(strlen(home) + strlen(TOKEN_FILE) + 1);
     sprintf(path, "%s%s", home, TOKEN_FILE);
@@ -49,11 +64,11 @@ char *load_token(void) {
 }
 
 int save_token(const char *token) {
-    const char *home = getenv("HOME");
+    const char *home = getenv(HOME_ENV);
     if (!home) return 0;
     char dir[512];
-    snprintf(dir, sizeof(dir), "%s/.config/hjonk", home);
-    mkdir(dir, 0700);
+    snprintf(dir, sizeof(dir), "%s%s", home, TOKEN_DIR);
+    MKDIR(dir);
     char *path = token_path();
     FILE *f = fopen(path, "w");
     free(path);
@@ -83,6 +98,31 @@ cJSON *get_json(const char *url) {
     return json;
 }
 
+// "2026-05-11T02:13:52.000000Z" -> "2026-05-11 02:13" in local time
+const char *format_date(const char *iso) {
+    static char buf[32];
+    if (!iso || strlen(iso) < 19) return iso;
+
+    struct tm t = {0};
+    sscanf(iso, "%d-%d-%dT%d:%d:%d",
+        &t.tm_year, &t.tm_mon, &t.tm_mday,
+        &t.tm_hour, &t.tm_min, &t.tm_sec);
+    t.tm_year -= 1900;
+    t.tm_mon  -= 1;
+    t.tm_isdst = -1;
+
+    // interpret as UTC
+#ifdef _WIN32
+    time_t utc = _mkgmtime(&t);
+#else
+    time_t utc = timegm(&t);
+#endif
+
+    struct tm *local = localtime(&utc);
+    strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M", local);
+    return buf;
+}
+
 const char *jstr(cJSON *obj, const char *key) {
     cJSON *item = cJSON_GetObjectItem(obj, key);
     return (item && cJSON_IsString(item)) ? item->valuestring : NULL;
@@ -98,7 +138,7 @@ void print_post(cJSON *post, const char *handle) {
         return;
 
     const char *created = jstr(post, "created_at");
-    printf("[user %d]  %s\n", jint(post, "user_id"), created ? created : "");
+    printf("[user %d]  %s\n", jint(post, "user_id"), created ? format_date(created) : "");
 
     cJSON *reply_to = cJSON_GetObjectItem(post, "replying_to");
     if (reply_to && !cJSON_IsNull(reply_to))
@@ -271,11 +311,30 @@ void cmd_post(const char *token, const char *content, const char *filepath) {
 
     long http_code = 0;
     curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
-    printf("HTTP %ld\n", http_code);
-    if (buf.data && *buf.data)
-        printf("%s\n", buf.data);
-    free(buf.data);
 
+    if (http_code == 200 && buf.data) {
+        cJSON *resp = cJSON_Parse(buf.data);
+        if (resp && cJSON_IsTrue(cJSON_GetObjectItem(resp, "ok")))
+            printf("posted!\n");
+        else
+            printf("error: server rejected the post\n");
+        cJSON_Delete(resp);
+    } else if (http_code == 413) {
+        fprintf(stderr, "error: file too large\n");
+    } else if (http_code == 415 || http_code == 422) {
+        fprintf(stderr, "error: file type unsupported\n");
+    } else if (http_code == 401 || http_code == 403) {
+        fprintf(stderr, "error: invalid token\n");
+    } else if (http_code >= 500) {
+        fprintf(stderr, "error: server error (HTTP %ld)\n", http_code);
+    } else if (buf.data && buf.data[0] == '<') {
+        // got HTML back — likely redirected due to bad token or unsupported file
+        fprintf(stderr, "error: request rejected (unsupported file type or bad token)\n");
+    } else {
+        fprintf(stderr, "error: HTTP %ld\n", http_code);
+    }
+
+    free(buf.data);
     curl_easy_cleanup(curl);
 }
 
@@ -349,11 +408,29 @@ void cmd_reply(const char *token, const char *post_id, const char *content, cons
 
     long http_code = 0;
     curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
-    printf("HTTP %ld\n", http_code);
-    if (buf.data && *buf.data)
-        printf("%s\n", buf.data);
-    free(buf.data);
 
+    if (http_code == 200 && buf.data) {
+        cJSON *resp = cJSON_Parse(buf.data);
+        if (resp && cJSON_IsTrue(cJSON_GetObjectItem(resp, "ok")))
+            printf("replied!\n");
+        else
+            printf("error: server rejected the reply\n");
+        cJSON_Delete(resp);
+    } else if (http_code == 413) {
+        fprintf(stderr, "error: file too large\n");
+    } else if (http_code == 415 || http_code == 422) {
+        fprintf(stderr, "error: file type unsupported\n");
+    } else if (http_code == 401 || http_code == 403) {
+        fprintf(stderr, "error: invalid token\n");
+    } else if (http_code >= 500) {
+        fprintf(stderr, "error: server error (HTTP %ld)\n", http_code);
+    } else if (buf.data && buf.data[0] == '<') {
+        fprintf(stderr, "error: request rejected (unsupported file type or bad token)\n");
+    } else {
+        fprintf(stderr, "error: HTTP %ld\n", http_code);
+    }
+
+    free(buf.data);
     curl_easy_cleanup(curl);
 }
 

@@ -10,7 +10,7 @@ makedepends=('gcc' 'pkgconf')
 depends=('curl' 'cjson')
 options=('!debug' 'strip')
 source=("hjonk.c")
-sha256sums=('9c7714616738f686920692c12ce4810c378fd5f25efb2e0cb16d013b8339b8da')
+sha256sums=('d2d1a0048efad8298a9a12df61475d3d117ee33c2271677cced316b11354d9d3')
 
 build () {
 	gcc hjonk.c -o hjonkcli \
