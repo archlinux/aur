@@ -40,10 +40,10 @@ package() {
     install -Dm755 "target/release/omikuji" "$pkgdir/usr/bin/omikuji"
 
     install -Dm644 "crates/omikuji/qml/icons/app.png" \
-        "$pkgdir/usr/share/icons/hicolor/512x512/apps/omikuji.png"
+        "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.reakjra.omikuji.png"
 
-    sed "s|@EXEC_PATH@|/usr/bin/omikuji|" packaging/omikuji.desktop.in > omikuji.desktop
-    install -Dm644 omikuji.desktop "$pkgdir/usr/share/applications/omikuji.desktop"
+    sed "s|@EXEC_PATH@|/usr/bin/omikuji|" packaging/io.github.reakjra.omikuji.desktop.in > io.github.reakjra.omikuji.desktop
+    install -Dm644 io.github.reakjra.omikuji.desktop "$pkgdir/usr/share/applications/io.github.reakjra.omikuji.desktop"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
