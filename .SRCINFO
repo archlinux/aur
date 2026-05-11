@@ -1,6 +1,6 @@
 pkgbase = warp-terminal-git
 	pkgdesc = Warp, the Rust-based terminal for developers and teams (built from source, OSS channel)
-	pkgver = 0.2026.05.04.09.01.dev_00.r11.gc65ae25
+	pkgver = 0.2026.05.11.09.24.dev_00.r0.g0d92811
 	pkgrel = 1
 	url = https://github.com/warpdotdev/warp
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = warp-terminal-git
 	optdepends = python: to run bundled helper skills
 	optdepends = python-yaml: to run bundled helper skills
 	optdepends = zenity: for file dialogs in Gnome
-	provides = warp-terminal-oss=0.2026.05.04.09.01.dev_00.r11.gc65ae25
+	provides = warp-terminal-oss=0.2026.05.11.09.24.dev_00.r0.g0d92811
 	options = !lto
 	options = !debug
 	source = warp::git+https://github.com/warpdotdev/warp.git
