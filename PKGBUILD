@@ -4,8 +4,8 @@
 pkgname=aquamarine-frozen
 pkgver=0.8.0.r3.gc8282f4
 pkgrel=1
-conflicts=('aquamarine-git')
-provides=('aquamarine-frozen' 'aquamarine' "libaquamarine.so")
+conflicts=('aquamarine' 'aquamarine-git')
+provides=('aquamarine-frozen' "libaquamarine.so")
 pkgdesc="Aquamarine is a very light linux rendering backend library - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/aquamarine-frozen-mirror.git"
