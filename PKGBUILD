@@ -2,32 +2,36 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=tuner
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="GNU/Linux app to discover and play internet radio stations. Geared towards RadioBrowser"
+pkgdesc="Minimalist radio station player geared towards RadioBrowser"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/tuner-labs/${pkgname}"
 license=('GPL-3.0-only')
-depends=('granite' 'gst-plugins-bad-libs' 'gst-plugins-good')
+depends=('gtk3' 'libgee' 'gst-plugins-bad-libs')
 optdepends=('gst-libav: play AAC[+] streams')
 makedepends=('meson' 'vala')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9d38d0d9dfde3a642936ef51ca9797a1c94b571f940d575e568688089bc1bf9b')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        'dont-update-gsettings-schemas-at-build-time.patch')
+sha256sums=('75b9df7a99712a6ddf75ba5c492546df56826ec78c7bec28a0982cd3370f244c'
+            'cdf42ae339ae4c837811b302f127846f2a9aee3af19fc824b5743aa7c91d8008')
 
 prepare() {
-  # Remove the invocation of glib-compile-schemas from the upstream install schema. It prevents building in a clean chroot and
-  # isn't needed as the task is covered by a hook.
-  # Details in upstream issue #215 (https://github.com/louis77/tuner/issues/215).
-  sed -i '/^meson.add_install_script.*glib-compile-schemas/d' tuner-${pkgver}/data/meson.build
+    cd "${pkgname}-${pkgver}"
+    for p in "${srcdir}"/*.patch
+    do
+        echo "Applying patch $(basename "${srcdir}"/${p})"
+        patch -p1 -i "${p}"
+    done
 }
 
 build() {
-  arch-meson "${pkgname}-${pkgver}" 'build'
-  meson compile -C 'build'
+    arch-meson "${pkgname}-${pkgver}" 'build'
+    meson compile -C 'build'
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C 'build'
-  cd "${pkgdir}"/usr/bin/
-  ln -s com.github.louis77.tuner tuner
+    DESTDIR="${pkgdir}" meson install -C 'build'
+    cd "${pkgdir}"/usr/bin/
+    ln -s io.github.tuner_labs.tuner tuner
 }

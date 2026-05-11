@@ -1,0 +1,22 @@
+--- a/data/meson.build	2026-05-11 00:49:10.829723659 +0200
++++ b/data/meson.build	2026-05-11 01:05:56.693431179 +0200
+@@ -82,11 +82,14 @@
+ 
+ install_data(settings_schemas, install_dir: schemas_dir)
+ 
+-meson.add_install_script (
+-    glib_compile_schemas,
+-    schemas_dir,
+-    install_tag: 'schemas'
+-)
++# Do not run glib-compile-schemas as meson install script. This prevents building in a clean chroot and isn't needed as the task is
++# covered by a pacman hook.
++# Details in upstream issue #215 (https://github.com/tuner-labs/tuner/issues/215).
++#meson.add_install_script (
++#    glib_compile_schemas,
++#    schemas_dir,
++#    install_tag: 'schemas'
++#)
+ 
+ 
+ message('Installed schema\n')
