@@ -18,8 +18,8 @@ pkgbase = hypridle-frozen
 	depends = systemd
 	depends = wayland
 	provides = hypridle-frozen
-	provides = hypridle
 	conflicts = hypridle-git
+	conflicts = hypridle
 	source = hypridle-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hypridle-hyprland-v0.54.git
 	sha256sums = SKIP
 

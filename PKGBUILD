@@ -9,8 +9,8 @@ arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hypridle-hyprland-v0.54.git"
 license=('BSD-3-Clause')
 
-conflicts=("hypridle-git")
-provides=("hypridle-frozen" "hypridle")
+conflicts=("hypridle-git" "hypridle")
+provides=("hypridle-frozen" )
 
 depends=(
   hyprlang-frozen
