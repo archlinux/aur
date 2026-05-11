@@ -1,0 +1,33 @@
+post_install() {
+    id livepeer 2>/dev/null || useradd -r -U -M -s /bin/false -d /var/lib/livepeer livepeer
+    mkdir -p "/var/lib/livepeer"
+    chown -R livepeer:livepeer /var/lib/livepeer /var/cache/livepeer /etc/go-livepeer
+    chmod -R 700 /var/lib/livepeer /var/cache/livepeer /etc/go-livepeer
+    echo -e "####################################################"
+    echo -e "## Before first start you must edit the Livepeer  ##"
+    echo -e "## configuration file with your orchestrator info ##"
+    echo -e "## /etc/go-livepeer/livepeer.conf                 ##"
+    echo -e "##                                                ##"
+    echo -e "## Active Orchestrators should copy the existing  ##"
+    echo -e "## ~/.lpData directory along with the wallet and  ##"
+    echo -e "## orchestrator password files to                 ##"
+    echo -e "## /var/lib/livepeer before starting the service. ##"
+    echo -e "##                                                ##"
+    echo -e "## Update these values with your own and then run ##"
+    echo -e "## sudo systemctl enable --now livepeer.service   ##"
+    echo -e "##                                                ##"
+    echo -e "## Support may be found at Livepeer's official    ##"
+    echo -e "## community channels on their forum & Discord -  ##"
+    echo -e "## https://discord.gguaPhtyrWsF                   ##"
+    echo -e "## https://forum.livepeer.org                     ##"
+    echo -e "####################################################"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    userdel livepeer
+    groupdel livepeer
+}

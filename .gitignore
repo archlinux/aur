@@ -1,0 +1,7 @@
+src/
+pkg/
+*.pkg.tar.*
+*.tar.gz
+go-livepeer/
+lpms/
+ffmpeg-build/
