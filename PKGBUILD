@@ -12,8 +12,7 @@
   provides=("$_pkgname")
   conflicts=("$_pkgname")
   options=('!strip' '!debug')
-  source=("$pkgname-$pkgver.deb::https://github.com/crynta/terax-ai/releases/download/v${pkgver}/Terax
-  _${pkgver}_amd64.deb")
+  source=("$pkgname-$pkgver.deb::https://github.com/crynta/terax-ai/releases/download/v${pkgver}/Terax_${pkgver}_amd64.deb")
   sha256sums=('SKIP')
 
   package() {
