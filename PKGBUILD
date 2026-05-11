@@ -68,6 +68,7 @@ prepare() {
   ## Install specified version of dotnet and restore
   dotnet-install --jsonfile global.json
   dotnet restore -r linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
+  dotnet restore -r linux-x64 -p:SDKToUse=Microsoft.NET.Sdk src/Modules
   
   ## Setup the build target to gather dependency information
   cp "$srcdir/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets" "src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
