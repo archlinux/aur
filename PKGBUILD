@@ -1,7 +1,7 @@
 # Maintainer: Andersmmg <andersmmg at duck dot com>
 pkgname=python-hyprland-schema
 _module=${pkgname#python-}
-pkgver='0.4.0'
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Typed Python schema for every Hyprland configuration option"
 url="https://github.com/BlueManCZ/hyprland-schema"
@@ -10,7 +10,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling'
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8ccd7c79219ee52061aa2d4c77adb5efd0e1fb083a32b97e8805c25d7ebd848c')
+sha256sums=('6588640ce483d08effdb04dfb88250d35bd7887bd5c36f05498ed6d9539730be')
 
 build() {
   cd "$_module-$pkgver"
