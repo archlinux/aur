@@ -1,8 +1,8 @@
 pkgbase = niri-dinit-git
 	pkgdesc = Scrollable-tiling Wayland compositor, with dinit instead of systemd, from source.
-	pkgver = 25.11.r58.g10df9f4
-	pkgrel = 2
-	url = https://github.com/YaLTeR/niri
+	pkgver = 26.04.r20.g3819182
+	pkgrel = 3
+	url = https://github.com/niri-wm/niri
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -30,14 +30,14 @@ pkgbase = niri-dinit-git
 	optdepends = xdg-desktop-portal-gnome: screencasting support
 	optdepends = gnome-keyring: implements the secret portal, for certain apps to work
 	optdepends = polkit-gnome: when apps need to ask for root permissions
-	provides = niri=25.11.r58.g10df9f4
+	provides = niri=26.04.r20.g3819182
 	conflicts = niri
 	conflicts = niri-git
 	conflicts = niri-dinit
 	options = !debug
 	options = !lto
 	options = !strip
-	source = niri::git-lfs+https://github.com/YaLTeR/niri.git#branch=main
+	source = niri::git-lfs+https://github.com/niri-wm/niri.git#branch=main
 	b2sums = SKIP
 
 pkgname = niri-dinit-git

@@ -17,11 +17,11 @@
 : ${_sccache:=}
 
 pkgname=niri-dinit-git
-pkgver=25.11.r58.g10df9f4
-pkgrel=2
+pkgver=26.04.r20.g3819182
+pkgrel=3
 pkgdesc="Scrollable-tiling Wayland compositor, with dinit instead of systemd, from source."
 arch=(x86_64 aarch64)
-url="https://github.com/YaLTeR/niri"
+url="https://github.com/niri-wm/niri"
 license=(GPL-3.0-or-later)
 depends=(cairo glib2 libdisplay-info libinput libpipewire libxkbcommon mesa pango pixman seatd)
 makedepends=(clang rust git makepkg-git-lfs-proto)
