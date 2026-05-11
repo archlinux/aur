@@ -3,19 +3,20 @@
 
 pkgname=mingw-w64-xvidcore
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='XviD is an open source MPEG-4 video codec (mingw-w64)'
 arch=('any')
 url='http://www.xvid.org/'
 license=('GPL')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'nasm' 'yasm')
-options=(!buildflags !strip staticlibs)
+options=(!buildflags !strip staticlibs !debug)
 source=(https://downloads.xvid.com/downloads/xvidcore-${pkgver}.tar.gz)
 sha256sums=('abbdcbd39555691dd1c9b4d08f0a031376a3b211652c0d8b3b8aa9be1303ce2d')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
+  export CFLAGS="-std=gnu17"
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/build-${_arch}"
 
