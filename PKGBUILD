@@ -8,7 +8,7 @@
 
 _pkgname=haveno-reto
 pkgname=retoswap
-pkgver=1.3.0
+pkgver=1.3.1
 _versuffix=-reto
 pkgrel=1
 pkgdesc='Decentralised P2P exchange built on Monero and Tor - unofficial Reto network'
@@ -21,7 +21,7 @@ conflicts=('haveno' "$_pkgname")
 replaces=("$_pkgname")
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/$pkgver$_versuffix.tar.gz"
 	"$pkgname.desktop")
-sha512sums=('534cdf8e5e7228dc0c8ad4ccccfdaff039d1a562efcf82ccf37f5e61195ef59debbb4e77ab228f65a603e959fe9e3a048726a17e4ef3a6c66acfc70aac687100'
+sha512sums=('c88910d415e3c10ede1290acb3af5546b01ee2cbb7df0684910f00189250dc3ad2dbf9aea1dc1ff381af1b6aade63f882142378a6e744c5879c522efc7afd3a0'
             'c6115853745acdb9c4bcf8dbf1e8479aa01131bc05641123cf45bf3fc6029e4edb0ce3930a3c372389e02a51874d686b6cc45166de1d9bba631e6e60c070ecd7')
 install="$pkgname.install"
 
