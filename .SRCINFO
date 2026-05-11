@@ -14,8 +14,8 @@ pkgbase = hyprwire-frozen
 	depends = pugixml
 	depends = libffi
 	provides = hyprwire-frozen
-	provides = hyprwire
 	conflicts = hyprwire-git
+	conflicts = hyprwire
 	source = hyprwire-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprwire-hyprland-v0.54.git
 	sha256sums = SKIP
 
