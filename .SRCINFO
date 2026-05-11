@@ -18,6 +18,7 @@ pkgbase = alacritree-git
 	depends = libglvnd
 	provides = alacritree
 	conflicts = alacritree
+	conflicts = alacritree-bin
 	source = alacritree::git+https://github.com/mathix420/alacritree.git#branch=master
 	sha256sums = SKIP
 
