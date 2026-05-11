@@ -3,6 +3,10 @@ pkgname=linux-broadcast-bin
 _pkgname=linux-broadcast
 pkgver=0.1.2
 pkgrel=1
+# Debian revision baked into the upstream .deb filename by cargo-deb.
+# Unrelated to AUR's pkgrel — bump only if [package.metadata.deb].revision
+# changes in crates/app/Cargo.toml.
+_debrev=1
 pkgdesc="Background-replacement virtual webcam for Linux (MediaPipe / RVM via ONNX Runtime)"
 arch=('x86_64')
 url="https://github.com/Pedrojok01/linux-broadcast"
@@ -24,8 +28,8 @@ optdepends=(
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
-source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}-${_debrev}_amd64.deb")
+sha256sums=('3905e31935d38d702157aa184fd00e3256d199f9d1b54d55b5e783595e4edf78')
 options=('!strip')
 
 package() {
