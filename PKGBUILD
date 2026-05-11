@@ -4,7 +4,7 @@
 pkgbase=stm32cubemx
 pkgname=(stm32cubemx stm32cubemx-jre)
 pkgver=6.17.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemx.html"
 license=('custom')
@@ -26,7 +26,7 @@ package_stm32cubemx() {
   pkgdesc="Graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
   groups=('stm32cube')
   optdepends=(
-    'stm32cubemx-jre: ST packaged Java Runtime'
+    'stm32cubemx-jre: ST packaged Java Runtime (Recommended)'
     'java-runtime>=21: System Java Runtime (Required if stm32cubemx-jre is not installed)'
     'archlinux-java-run>=10: Required to launch with system Java runtime'
   )
