@@ -1,6 +1,6 @@
 pkgbase = tiddl
 	pkgdesc = Download tracks and videos from Tidal with max quality!
-	pkgver = 3.2.2
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://github.com/oskvr37/tiddl
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = tiddl
 	depends = python-aiohttp
 	depends = python-requests-cache
 	depends = python-typing_extensions
-	source = https://github.com/oskvr37/tiddl/archive/refs/tags/v3.2.2.tar.gz
-	sha256sums = 2d3fafa44889ab2db5377c44008b505bdbe5603815b8d2c0b96428d18d8dcd9f
+	source = https://github.com/oskvr37/tiddl/archive/refs/tags/v3.4.3.tar.gz
+	sha256sums = c25606542d3feb4446e94673f515a0e7343c7980b0b0c67411f34c68438a807f
 
 pkgname = tiddl
