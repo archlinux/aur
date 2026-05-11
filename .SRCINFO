@@ -1,0 +1,14 @@
+pkgbase = kwinctrl
+	pkgdesc = KWin CLI Control
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/andrewrabert/kwinctrl
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	source = kwinctrl-0.1.0.tar.gz::https://github.com/andrewrabert/kwinctrl/archive/v0.1.0.tar.gz
+	sha256sums = 2ae92f981887b5d017d7a5f650b70f7bb3e25a6f2b71335a96290f941d2a0b39
+
+pkgname = kwinctrl
