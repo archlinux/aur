@@ -4,8 +4,8 @@
 pkgname=hyprpolkitagent-frozen
 pkgver=0.1.2.r3.g352638e
 pkgrel=1
-conflicts=('hyprpolkitagent-git')
-provides=('hyprpolkitagent-frozen' 'hyprpolkitagent')
+conflicts=('hyprpolkitagent-git' 'hyprpolkitagent')
+provides=('hyprpolkitagent-frozen')
 pkgdesc="A polkit authentication agent written in QT/QML - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hyprpolkitagent-hyprland-v0.54.git"

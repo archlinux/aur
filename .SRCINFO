@@ -13,8 +13,8 @@ pkgbase = hyprpolkitagent-frozen
 	depends = hyprutils-frozen
 	depends = polkit-qt6
 	provides = hyprpolkitagent-frozen
-	provides = hyprpolkitagent
 	conflicts = hyprpolkitagent-git
+	conflicts = hyprpolkitagent
 	source = hyprpolkitagent-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprpolkitagent-hyprland-v0.54.git
 	sha256sums = SKIP
 
