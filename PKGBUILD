@@ -3,19 +3,19 @@
 
 pkgname=odinls-bin
 _pkgname_no_bin="${pkgname%-*}"
-pkgver=dev_2026_02
+pkgver=dev_2026_05
 _pkgver_hyphens="`echo $pkgver | tr _ -`"
-pkgrel=2
+pkgrel=1
 pkgdesc='Language server and source code formatter for Odin'
 arch=('x86_64')
 url='https://github.com/DanielGavin/ols'
 license=('MIT')
 depends=('odin')
-provides=("$_pkgname_no_bin=$pkgver" "odinfmt=$pkgver")
-conflicts=("$_pkgname_no_bin" 'odinfmt')
+provides=("$_pkgname_no_bin=$pkgver" "ols=$pkgver" "odinfmt=$pkgver")
+conflicts=("$_pkgname_no_bin" 'ols' 'odinfmt')
 source=("$url/releases/download/$_pkgver_hyphens/ols-$arch-unknown-linux-gnu.zip"
         "${_pkgname_no_bin}_LICENSE::https://raw.githubusercontent.com/DanielGavin/ols/refs/tags/$_pkgver_hyphens/LICENSE")
-sha256sums=('a713064736034e9d08ff332a88a5f599f23fe6bae1b8f1af9242f3de65a26cc4'
+sha256sums=('3b0d3d37d681cab308f1e72195f3e2bca09d62a31425e61016958cd6982ddc34'
             'efa5894137f6f31af79aef423b8dc33a7709d14b2784f84ef2d04df6ebed82af')
 
 package() {
