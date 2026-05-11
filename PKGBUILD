@@ -1,6 +1,6 @@
 # Maintainer: croaky-fx <217624563+croaky-fx@users.noreply.github.com>
 pkgname=oxiclean
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Fast Cross-Distribution Linux System Cleaner written in Rust"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/croaky-fx/oxiclean"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
-source=("git+$url.git")
+source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
