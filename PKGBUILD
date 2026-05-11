@@ -1,25 +1,40 @@
 pkgname=iscsi-util
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=2
-pkgdesc="A simple and modern GUI for managing iSCSI."
-
+pkgdesc="A simple and modern GUI for managing iSCSI targets and sessions."
 arch=('x86_64')
 license=('MIT')
-depends=('open-iscsi' 'libnotify')
 url="https://github.com/mijocecr/iscsi-util"
-source=("https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_v2.1/ISCSI-Util.tar.gz")
-sha256sums=('SKIP')
+
+depends=(
+  'open-iscsi'          # iscsiadm + iscsid (OBLIGATORIO)
+  'libnotify'           # notify-send para NotificadorLinux
+)
+
+
+source=(
+  "https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_v2.1/ISCSI-Util.tar.gz"
+  "iscsi-util.desktop"
+  "iscsi-util.png"
+)
+
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
-  # Instalar todo el bundle en /usr/lib/iscsi-util
-  install -d "$pkgdir/usr/lib/iscsi-util"
-  cp -r "$srcdir"/* "$pkgdir/usr/lib/iscsi-util/"
 
-  # Crear symlink en /usr/bin
+  # Instalar bundle en /usr/lib/iscsi-util
+  install -d "$pkgdir/usr/lib/iscsi-util"
+  cp -r "$srcdir"/ISCSI-Util/* "$pkgdir/usr/lib/iscsi-util/"
+
+  # Symlink en /usr/bin
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/iscsi-util/ISCSI-Util "$pkgdir/usr/bin/iscsi-util"
 
-  # Desktop entry e icono
-  install -Dm644 "$srcdir/iscsi-util.desktop" "$pkgdir/usr/share/applications/iscsi-util.desktop"
-  install -Dm644 "$srcdir/iscsi-util.png" "$pkgdir/usr/share/pixmaps/iscsi-util.png"
+  # Desktop entry
+  install -Dm644 "$srcdir/iscsi-util.desktop" \
+    "$pkgdir/usr/share/applications/iscsi-util.desktop"
+
+  # Icono
+  install -Dm644 "$srcdir/iscsi-util.png" \
+    "$pkgdir/usr/share/pixmaps/iscsi-util.png"
 }
