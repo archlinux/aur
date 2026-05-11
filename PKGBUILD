@@ -3,7 +3,7 @@
 
 pkgname=svt-jpeg-xs-llvm-git
 pkgver=0.9.0.r50.gc36f29a
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the JPEG XS (ISO/IEC 21122) codec (git version) — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://github.com/OpenVisualCloud/SVT-JPEG-XS/'
@@ -39,6 +39,8 @@ build() {
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
+    export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     
     # fix warning: "_FORTIFY_SOURCE" redefined
     # note: upstream forces _FORTIFY_SOURCE=2
