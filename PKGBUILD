@@ -2,7 +2,7 @@
 # Maintainer: vyrx-dev <dev@vyrx.dev>
 
 pkgname='toofan-bin'
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='A minimal, lightning-fast typing test for your terminal'
 url='https://github.com/vyrx-dev/toofan'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('toofan')
 conflicts=('toofan')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/vyrx-dev/toofan/releases/download/v2.2.0/toofan_2.2.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('15a380951ed39d85e6c7ceafd97a739f419aa15768254461d6014fee068bd8e7')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/vyrx-dev/toofan/releases/download/v2.3.0/toofan_2.3.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('f0d95dfab94fb271204214b78b9ab9b6e35a0e1a21ff2f6e29369a6b9d148e79')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/vyrx-dev/toofan/releases/download/v2.2.0/toofan_2.2.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('cc6ef931036cc8460a7fa8bfe2f68c2957efa54e992463131559c1254d7b50f5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/vyrx-dev/toofan/releases/download/v2.3.0/toofan_2.3.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('29644d1b0af089b2bf9a89a8bfa5073df987f3b51f5acd4db377c44ea00bfd07')
 
 package() {
   # bin
