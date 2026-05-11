@@ -1,0 +1,17 @@
+diff --git a/src/filter/kaleid0sc0pe/kaleid0sc0pe.h b/src/filter/kaleid0sc0pe/kaleid0sc0pe.h
+index c14d05d..80fa1c8 100644
+--- a/src/filter/kaleid0sc0pe/kaleid0sc0pe.h
++++ b/src/filter/kaleid0sc0pe/kaleid0sc0pe.h
+@@ -39,10 +39,12 @@
+ // set sse2 flag on windows
+ #if _M_IX86_FP == 2 || _M_X64 == 100
+ #ifndef _M_ARM
++#ifndef __SSE2__
+ #define __SSE2__
+ #endif
+ #endif
+ #endif
++#endif
+ 
+ #ifdef __SSE2__
+ #include <emmintrin.h>

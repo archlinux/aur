@@ -5,7 +5,7 @@
 pkgname=mingw-w64-frei0r-plugins
 _pkgname=frei0r-plugins
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of video effect plugins (mingw-w64)'
 arch=(any)
 url='https://frei0r.dyne.org/'
@@ -22,11 +22,19 @@ makedepends=(
   mingw-w64-cmake
   git
 )
-source=("git+https://github.com/dyne/frei0r#tag=v$pkgver")
-b2sums=('fdc376ef13f622bcc8880cb0581c1f2bdf67f949d40f173f10fe4347762b0d62787bc0328c8cb8a766701272c584abe3b9043efdc6d8bee29d123fe67b07bfab')
+source=("git+https://github.com/dyne/frei0r#tag=v$pkgver"
+        'sse2-guard.patch')
+b2sums=('fdc376ef13f622bcc8880cb0581c1f2bdf67f949d40f173f10fe4347762b0d62787bc0328c8cb8a766701272c584abe3b9043efdc6d8bee29d123fe67b07bfab'
+        'b5158b6ad08849484d2c1df1ea002a0d547bc06c765af60397bc5349c49b76efc63d843eedb6dcb521a5c0d496e027b944d5750dd1a4e7d633bea38acf9e8037')
 validpgpkeys=(6113D89CA825C5CEDD02C87273B35DA54ACB7D10) # Denis Roio (Jaromil)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/frei0r"
+
+  patch -Np1 -i "${srcdir}/sse2-guard.patch"
+}
 
 build() {
   for _arch in ${_architectures}; do
