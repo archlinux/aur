@@ -1,6 +1,6 @@
 # Maintainer: HanHan666666 <tar.zip@outlook.com>
 pkgname=linglong-store-bin
-pkgver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 pkgdesc="Community store for browsing and installing Linyaps applications"
 arch=('x86_64' 'aarch64')
@@ -34,12 +34,12 @@ source=(
   'linglong-store.svg'
 )
 source_x86_64=(
-  "linglong-store-3.3.4-linux-amd64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/v3.3.4/linglong-store-3.3.4-linux-amd64.tar.gz"
-  "linglong-store-3.3.4-linux-amd64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/v3.3.4/linglong-store-3.3.4-linux-amd64.tar.gz.asc"
+  "linglong-store-3.3.5-linux-amd64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/v3.3.5/linglong-store-3.3.5-linux-amd64.tar.gz"
+  "linglong-store-3.3.5-linux-amd64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/v3.3.5/linglong-store-3.3.5-linux-amd64.tar.gz.asc"
 )
 source_aarch64=(
-  "linglong-store-3.3.4-linux-arm64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/v3.3.4/linglong-store-3.3.4-linux-arm64.tar.gz"
-  "linglong-store-3.3.4-linux-arm64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/v3.3.4/linglong-store-3.3.4-linux-arm64.tar.gz.asc"
+  "linglong-store-3.3.5-linux-arm64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/v3.3.5/linglong-store-3.3.5-linux-arm64.tar.gz"
+  "linglong-store-3.3.5-linux-arm64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/v3.3.5/linglong-store-3.3.5-linux-arm64.tar.gz.asc"
 )
 
 sha256sums=(
@@ -49,12 +49,12 @@ sha256sums=(
   'ca9c4e35c731cbf2fb4b1290e26af7fd0d2dc7bc8a89f6373e1334d27b19e60c'
 )
 sha256sums_x86_64=(
-  'bcc81b247cbfa7fdf70d5b87852fa8e2721580d4ac7e8c4523a2372179783734'
-  'ea9a7036dda1c247968a97d6e49ece9d86f9e7dc03899b84483352befc0b8a15'
+  '201b96b6d03e2fda350814c32dac962245875642877f950c56ffbe11f704e5a9'
+  '4c1888374b952834fed6086410a5e18440bc7876577269466699104cc7c117ee'
 )
 sha256sums_aarch64=(
-  '57a6efd53f912e535dd65268effeba6e5fffb7f4e6f7d5f36ef9aa66925b30f7'
-  '423f5208a17f3d0b0879e9280500bce50d2a2737114d07a7ce02e7f33a5f0eb5'
+  'eed97544f63d3d0664facd16a109676f927f2b58b948b915a82fee6e32465e1c'
+  '3e00b368b66d101cc134b9a41d01b031c731b179a7f6e05559f82c38ea4e63e7'
 )
 
 package() {
