@@ -1,7 +1,7 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=timerrs
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A simple timer for the terminal"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -31,5 +31,4 @@ package() {
 	cd "${pkgname}-${pkgver}"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 target/release/${pkgname} "$pkgdir/usr/bin/${pkgname}"
-    install -Dm755 target/release/${pkgname}ctl "$pkgdir/usr/bin/${pkgname}ctl"
 }
