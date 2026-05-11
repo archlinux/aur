@@ -10,6 +10,8 @@ pkgbase = obs-bilibili-stream
 	depends = obs-studio
 	depends = curl
 	depends = qt6-base
+	conflicts = obs-bilibili-stream-bin
+	options = !debug
 	source = obs-bilibili-stream-2.0.12.tar.gz::https://github.com/Zarosmm/obs-bilibili-stream/archive/refs/tags/2.0.12.tar.gz
 	sha256sums = 005fdac6c148e63010f718e88206034f84407875fc3469ac4ab85da755c619bc
 

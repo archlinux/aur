@@ -10,6 +10,8 @@ url="https://github.com/Zarosmm/obs-bilibili-stream"
 license=('GPL2')
 depends=('obs-studio' 'curl' 'qt6-base')
 makedepends=('cmake' 'ninja')
+conflicts=('obs-bilibili-stream-bin')
+options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('005fdac6c148e63010f718e88206034f84407875fc3469ac4ab85da755c619bc')
 
