@@ -1,6 +1,6 @@
 pkgbase = inputactions-kwin
 	pkgdesc = Mouse and touchpad gestures for Plasma 6 Wayland
-	pkgver = 0.9.0.0
+	pkgver = 0.9.1.0
 	pkgrel = 1
 	url = https://github.com/InputActions/kwin
 	install = inputactions-kwin.install
@@ -23,19 +23,15 @@ pkgbase = inputactions-kwin
 	depends = kcmutils
 	depends = kcoreaddons
 	depends = ki18n
-	depends = inputactions-ctl=0.9.0.0
+	depends = inputactions-ctl
 	optdepends = libnotify: to send a reminder when this package needs to be rebuild
 	provides = inputactions
 	backup = etc/inputactions-kwin/reminder.conf
-	source = inputactions-kwin-0.9.0.0.src.tar.gz::https://github.com/InputActions/kwin/archive/refs/tags/v0.9.0.0.tar.gz
-	source = inputactions-core::git+https://github.com/InputActions/core.git#commit=bc0add8a6e28049570e7cdb6dec94d1597d1c6fe
-	source = inputactions-libevdev-cpp::git+https://github.com/InputActions/libevdev-cpp.git#commit=4707a9eab86a686e0c793d0d9510d5d1ac8cb5e1
+	source = inputactions-kwin-0.9.1.0.tar.gz::https://github.com/InputActions/kwin/releases/download/v0.9.1.0/source.tar.gz
 	source = send-rebuild-reminder
 	source = reminder.conf
 	source = rebuild-reminder.hook
-	sha256sums = aae03398e10708ba08a1610c8ec265dea393fa54a7e5e24474c67ccf177d94e1
-	sha256sums = 6de273d09e7dfddaea0abfc880b80eedda9cdd8c79252c87ce0db5b32f153923
-	sha256sums = ac267fdcadc34048693785e61c97e3fb3d0665261c09db3d8cca66ea4d6875bc
+	sha256sums = 68c6731d7bf057195e139f1f823ac8e708b431810d57729af11b3c8ca1040d13
 	sha256sums = 3ae59b5bea1a0100cc8da51c6a810d70bc989462f2f84beaf6a4f9a06395f62f
 	sha256sums = 57a1e6c7c230c9149e85db13c5dc9f76a4e49c643a03f299750ddc977b36548a
 	sha256sums = 72a8f214c4982110feeb778bf5f915436aa47ff071d301078e6a9459e06a0b13
