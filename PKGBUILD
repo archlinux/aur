@@ -4,7 +4,7 @@
 pkgname=hyprwire-frozen
 pkgver=0.3.0.r16.g62cd80b
 pkgrel=1
-conflicts=('hyprwire' 'hyprwire-git')
+conflicts=('hyprwire-git')
 provides=('hyprwire-frozen' 'hyprwire')
 pkgdesc="A fast and consistent wire protocol for IPC - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
