@@ -2,7 +2,7 @@
 pkgname=spacecoffee-scm
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="SpaceCoffee's vehicles maintainence app"
+pkgdesc="Diagnostic and maintenance tool for SKN SpaceCoffee vehicles"
 arch=('x86_64')
 url="https://gitlab.com/space_coffee/scm/desktop"
 license=('GPL')
