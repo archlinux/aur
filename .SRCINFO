@@ -1,0 +1,19 @@
+pkgbase = terax-bin
+	pkgdesc = Open-source ultra-lightweight AI terminal emulator
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/crynta/terax-ai
+	arch = x86_64
+	license = Apache-2.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	optdepends = xdg-utils: for opening URLs
+	provides = terax
+	conflicts = terax
+	options = !strip
+	options = !debug
+	source = terax-bin-0.6.1.deb::https://github.com/crynta/terax-ai/releases/download/v0.6.1/Terax _0.6.1_amd64.deb
+	sha256sums = SKIP
+
+pkgname = terax-bin
