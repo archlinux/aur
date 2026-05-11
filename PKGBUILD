@@ -8,6 +8,9 @@ arch=('x86_64')
 url="https://github.com/citron-neo/emulator"
 license=('GPL-3.0-or-later')
 
+provides=('citron' 'citron-neo')
+conflicts=('citron' 'citron-git' 'citron-neo' 'citron-bin')
+
 depends=(
   'brotli' 'libgcc' 'lz4' 'glibc' 'zstd' 'sdl2' 'zlib' 'opus'
   'boost-libs' 'ffmpeg' 'libusb' 'openssl' 'speexdsp' 'libva'
