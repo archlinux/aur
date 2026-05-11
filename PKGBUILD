@@ -18,22 +18,22 @@ sha256sums=("4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187")
 build() {
     cd "json-$pkgver"
 
-    for architecture in ${_architectures[@]}; do
-        $architecture-cmake \
-            -B "build-$architecture" \
+    for _arch in ${_architectures[@]}; do
+        $_arch-cmake \
+            -B "build-$_arch" \
             -S . \
             -DCMAKE_BUILD_TYPE=Release \
             -DJSON_BuildTests=OFF \
             -DJSON_MultipleHeaders=ON
 
-        cmake --build "build-$architecture" --parallel
+        cmake --build "build-$_arch" --parallel
     done
 }
 
 package() {
     cd "json-$pkgver"
 
-    for architecture in ${_architectures[@]}; do
-        cmake --install "build-$architecture" --prefix "$pkgdir/usr/$architecture"
+    for _arch in ${_architectures[@]}; do
+        cmake --install "build-$_arch" --prefix "$pkgdir/usr/$_arch"
     done
 }
