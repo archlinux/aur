@@ -1,0 +1,7 @@
+pkg/
+src/
+obs-bilibili-stream-*.tar.gz
+build/
+*.so
+v2.0.12.tar.gz
+2.0.12.tar.gz

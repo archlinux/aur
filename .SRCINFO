@@ -1,0 +1,16 @@
+pkgbase = obs-bilibili-stream
+	pkgdesc = Bilibili stream plugin for OBS Studio (Scan QR code to login, update room info, and get RTMP info)
+	pkgver = 2.0.12
+	pkgrel = 1
+	url = https://github.com/Zarosmm/obs-bilibili-stream
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = ninja
+	depends = obs-studio
+	depends = curl
+	depends = qt6-base
+	source = obs-bilibili-stream-2.0.12.tar.gz::https://github.com/Zarosmm/obs-bilibili-stream/archive/refs/tags/2.0.12.tar.gz
+	sha256sums = 005fdac6c148e63010f718e88206034f84407875fc3469ac4ab85da755c619bc
+
+pkgname = obs-bilibili-stream
