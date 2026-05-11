@@ -5,7 +5,7 @@ GIT_FLOW_BASH_COMP=/usr/share/bash-completion/completions/git-flow
 
 
 generate_bash_completion(){
-    GEN_COMPLETION=1 "$GIT_FLOW_EXEC" > "$GIT_FLOW_BASH_COMP"
+    GFT_GEN_COMPLETION=1 "$GIT_FLOW_EXEC" > "$GIT_FLOW_BASH_COMP"
     chmod 644 "$GIT_FLOW_BASH_COMP"
 }
 
