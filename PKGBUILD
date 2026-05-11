@@ -3,7 +3,7 @@
 pkgname=upscayl
 _pkgname=Upscayl
 pkgver=2.15.0
-pkgrel=6
+pkgrel=7
 _electronversion=39
 pkgdesc="A free and open source AI Image Upscaler App"
 arch=('x86_64')
@@ -13,10 +13,10 @@ license=('AGPL-3.0-only')
 conflicts=("${pkgname}-ncnn" "${pkgname}-ncnn-bin")
 options=('!debug')
 depends=("electron${_electronversion}" 'libvips' 'libgomp' 'openjpeg2' 'vulkan-driver' 'vulkan-icd-loader' 'bash' 'hicolor-icon-theme')
-makedepends=('npm' 'nodejs-lts-iron' 'patchelf' 'imagemagick' 'librsvg')
+makedepends=('npm' 'nodejs-lts-iron' 'patchelf' 'librsvg')
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
-    "fix-wayland-wmclass.patch"
+    "fix-wayland-icon.patch"
     "${pkgname}.sh"
     "${pkgname}.desktop"
 )
@@ -37,7 +37,7 @@ prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     # Fix the window title bar icon
-    patch -Np1 -i "${srcdir}/fix-wayland-wmclass.patch"
+    patch -Np1 -i "${srcdir}/fix-wayland-icon.patch"
 
     export npm_config_cache="$srcdir/npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -121,7 +121,7 @@ build() {
 
     for res in 16 32 48 64 128 256 512 1024; do
         mkdir -p "icons-build/${res}x${res}"
-        magick -background none "renderer/public/logo.svg" -resize "${res}x${res}" "icons-build/${res}x${res}/${pkgname}.png"
+        rsvg-convert -w "${res}" -h "${res}" "renderer/public/logo.svg" -o "icons-build/${res}x${res}/${pkgname}.png"
     done
 }
 
