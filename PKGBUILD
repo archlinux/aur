@@ -19,8 +19,14 @@ build() {
     cd "$srcdir/json-$pkgver"
 
     for architecture in ${_architectures[@]}; do
-        $architecture-cmake -DJSON_BuildTests=OFF -DJSON_MultipleHeaders=ON -B "build-$architecture" -S .
-        cmake --build "build-$architecture"
+        $architecture-cmake \
+            -B "build-$architecture" \
+            -S . \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DJSON_BuildTests=OFF \
+            -DJSON_MultipleHeaders=ON
+
+        cmake --build "build-$architecture" --parallel
     done
 }
 
