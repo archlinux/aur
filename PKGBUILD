@@ -1,18 +1,18 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=2026.04.28
+pkgver=2026.05.08
 pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/directvt/${pkgname}"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'lua' 'freetype2' 'harfbuzz' 'plutovg')
-makedepends=('cmake>=3.24' 'lunasvg')
+makedepends=('cmake>=3.24' 'lunasvg' 'stb')
 # backup=("etc/${pkgname}/settings.xml")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('b41ff15138b8c729d11f5d5d94341bbaaadfe834b73aa8bdd2de7fd15cd8b60c6613516e0a2ea4768db1f8f9cd232e8a3647c49d1e69d2723272a9bdbb817e33')
+b2sums=('8f2d8d80212953f2ca38cb1e5c258fdf1d82c66199754df647b91847a16ad52579921ee1bc1e8866faeb2b902e015bae2265f0b3cbf611e686906adbc8a895af')
 
 build() {
   local cmake_options=(
@@ -22,6 +22,7 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D STB_INCLUDE_DIR:PATH=/usr/include/stb
   )
 
   cd "${srcdir}"
