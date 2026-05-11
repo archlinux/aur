@@ -1,16 +1,16 @@
 pkgbase = grub-imageboot
 	pkgdesc = grub2 script to automatically add boot entries for iso images placed in /boot/images/
-	pkgver = 0.6+nmu2
+	pkgver = 0.6+nmu4
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu/+source/grub-imageboot/
 	install = grub-imageboot.install
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = syslinux
 	depends = bash
 	depends = grub
 	options = emptydirs
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/grub-imageboot/0.6+nmu2/grub-imageboot_0.6+nmu2.tar.xz
-	sha256sums = 5172c2bfa1cd7f569f6dfd18383c39016ea4490f87b3943db7473ec85795507b
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/grub-imageboot/0.6+nmu4/grub-imageboot_0.6+nmu4.tar.xz
+	sha256sums = 3a6f0c8b602ed53225a3cd6105efb7f0f067a3dbb2347e7cf75c12a6e627fe3a
 
 pkgname = grub-imageboot

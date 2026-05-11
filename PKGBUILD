@@ -4,12 +4,12 @@
 
 _pkgname='grub-imageboot'
 pkgname="${_pkgname}"
-pkgver='0.6+nmu2'
+pkgver='0.6+nmu4'
 pkgrel='1'
 pkgdesc="grub2 script to automatically add boot entries for iso images placed in /boot/images/"
 url="https://launchpad.net/ubuntu/+source/grub-imageboot/"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'bash'
   'grub'
@@ -25,7 +25,7 @@ source=(
   #"https://raw.githubusercontent.com/formorer/grub-imageboot/${_commit}/etc/grub-imageboot"
 )
 sha256sums=(
-  '5172c2bfa1cd7f569f6dfd18383c39016ea4490f87b3943db7473ec85795507b'
+  '3a6f0c8b602ed53225a3cd6105efb7f0f067a3dbb2347e7cf75c12a6e627fe3a'
   #'462a9720ffa13ea9378bc485ecc1a88cbee59534a256627e9ba4ce029ed61b39'
   #'12602cea7b5d5b434007b891730a5071c3d2a06ed1cc225932e91d8a5d1f6c20'
 )
