@@ -1,0 +1,40 @@
+pkgbase = sysmanage
+	pkgdesc = Centralized system management server with web-based interface
+	pkgver = 2.3.0.1
+	pkgrel = 1
+	url = https://github.com/bceverly/sysmanage
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python>=3.9
+	depends = postgresql>=15
+	depends = nginx
+	depends = python-aiohttp
+	depends = python-aiofiles
+	depends = python-alembic
+	depends = python-argon2-cffi
+	depends = python-bcrypt
+	depends = python-cryptography
+	depends = python-defusedxml
+	depends = python-fastapi
+	depends = python-httpx
+	depends = python-jinja
+	depends = python-mako
+	depends = python-markupsafe
+	depends = python-orjson
+	depends = python-pillow
+	depends = python-psutil
+	depends = python-psycopg2
+	depends = python-pydantic
+	depends = python-pyyaml
+	depends = python-sqlalchemy
+	depends = python-starlette
+	depends = python-uvicorn
+	depends = python-websockets
+	backup = etc/sysmanage.yaml
+	backup = etc/nginx/conf.d/sysmanage-nginx.conf
+	source = sysmanage-2.3.0.1.tar.gz::https://github.com/bceverly/sysmanage/archive/refs/tags/v2.3.0.1.tar.gz
+	sha256sums = bb66f9fad096f500ac386cfeb4cf56e42b8638e17f016fec79bf200cf1d59501
+
+pkgname = sysmanage
