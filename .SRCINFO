@@ -1,0 +1,17 @@
+pkgbase = opendoas-patched
+	pkgdesc = Doas with retries + patches
+	pkgver = 6.8.2.r289.5298f3b
+	pkgrel = 1
+	url = https://github.com/zeroarchroot/OpenDoas
+	install = opendoas-patched.install
+	arch = x86_64
+	arch = i686
+	license = custom:ISC
+	makedepends = git
+	depends = pam
+	provides = opendoas
+	conflicts = opendoas
+	source = opendoas::git+https://github.com/zeroarchroot/OpenDoas.git
+	sha256sums = SKIP
+
+pkgname = opendoas-patched
