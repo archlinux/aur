@@ -2,7 +2,7 @@
 # Contributor: honjow
 
 pkgname=vboard
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Wayland virtual keyboard for GNU/Linux with modifier key support'
 arch=('any')
