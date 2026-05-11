@@ -1,22 +1,30 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='ryelang'
-pkgname="${_pkgname}-git"
-pkgver=0.0.99.r10.g62b2e9e
-pkgrel=1
+pkgname="$_pkgname-git"
 pkgdesc='Rye — a programming language trying to be flexible about expression, but strict about state (development version)'
-arch=('aarch64' 'x86_64')
+pkgver=0.2.7.r1.ga4a20ae
+pkgrel=1
 url='https://ryelang.org/'
 _url='https://github.com/refaktor/rye'
-license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
+install="$pkgname.install"
+arch=('aarch64' 'x86_64')
+license=('BSD-3-Clause')
+makedepends=('git' 'go')
+depends=('glibc')
+optdepends=(
+  'python-beautifulsoup4: needed for some of the examples'
+  'python-colorama: needed for some of the examples'
+  'python-openai: needed for some of the examples'
+  'python-requests: needed for some of the examples'
+  'python-rich: needed for some of the examples'
+)
 provides=('ryelang')
 conflicts=("${provides[@]}")
-depends=('glibc')
-makedepends=('git' 'go')
 source=("git+$_url.git")
-install="$pkgname.install"
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,7 +38,12 @@ prepare() {
   cd rye
 
   git clean -dfx
+
   go mod tidy
+
+  cd "examples/mqtt" && \
+  sed -i 's|#!/usr/bin/env rye$|#!/usr/bin/ryelang|g' \
+    publisher.rye subscriber.rye
 }
 
 build() {
@@ -65,19 +78,21 @@ package() {
   cd rye
 
   # executable
-  install -vDm0755 -t "$pkgdir/usr/bin" bin/ryelang
+  install -Dm0755 -t "$pkgdir/usr/bin" bin/ryelang
 
   # README and examples
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
-  cp -vfa examples    "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  cp -fa examples    "$pkgdir/usr/share/doc/$pkgname/"
 
   # license
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
   # Symlinks for convenience
   for _dir in doc licenses; do
-    cd "$pkgdir/usr/share/$_dir" && ln -vsr "$pkgname" "$_pkgname"
-  done
+    pushd "$pkgdir/usr/share/$_dir"
+    ln -sr "$pkgname" "$_pkgname"
+    popd
+  done > /dev/null
 }
 
 # eof
