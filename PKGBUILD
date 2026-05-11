@@ -20,5 +20,4 @@ package() {
     cd "comprobot-${pkgver}"
     pip install --root="$pkgdir" --prefix=/usr --no-deps dist/*.whl
     pip install --root="$pkgdir" --prefix=/usr discord.py[voice] python-dotenv requests tomlkit appdirs ollama google-genai groq InquirerPy
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
