@@ -1,9 +1,9 @@
 # Maintainer: Charlotte <cemetery394@gmail.com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron-neo-git
-pkgver=2026.04.27.r109.gf282c44
+pkgver=2026.04.27.r110.g577f0c8
 pkgrel=1
-pkgdesc="Nintendo Switch emulator fork from citron-neo (git version)"
+pkgdesc="Nintendo Switch emulator fork from citron (git version)"
 arch=('x86_64')
 url="https://github.com/citron-neo/emulator"
 license=('GPL-3.0-or-later')
