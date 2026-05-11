@@ -1,11 +1,11 @@
 # Verified Stable: crowdsec-stable
 
-# [[file:../../../Documents/crowdsec_maintenance.org::*Verified Stable: crowdsec-stable][Verified Stable: crowdsec-stable:1]]
+# [[file:../../../../Documents/crowdsec_maintenance.org::*Verified Stable: crowdsec-stable][Verified Stable: crowdsec-stable:1]]
 # Maintainer: Nathan Burke
 pkgname=crowdsec-stable
 _pkgname=crowdsec
-pkgver=1.7.7
-pkgrel=2
+pkgver=1.7.8
+pkgrel=1
 options=('!lto')
 pkgdesc="CrowdSec lightweight and collaborative security engine (GCC 14 Patched)"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ backup=(etc/crowdsec/{acquis,config,console,profiles,simulation}.yaml
         etc/crowdsec/notifications/{email,file,http,sentinel,slack,splunk}.yaml)
 
 source=("${_pkgname}::git+https://github.com/crowdsecurity/crowdsec.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('e7ef7f1e7a5814e9a5bbfe9ecb9dcafb958b9a100758870140286e230a4d0bda')
 
 prepare() {
   cd "$_pkgname"
