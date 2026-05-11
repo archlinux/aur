@@ -2,16 +2,16 @@
 
 _ocamlname=unisim_archisec
 pkgname=ocaml-${_ocamlname}
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Disassembly metadata and DBA (Dynamic Bitvector Automata) semantics of several instruction set architectures"
 arch=('x86_64')
 url="https://binsec.github.io"
 license=('BSD-3-Clause')
-depends=('gcc-libs' 'glibc' 'ocaml')
+depends=('glibc' 'libgcc' 'libstdc++' 'ocaml')
 makedepends=('dune>=3.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/binsec/unisim_archisec/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('bfb98e2c0244cddf6ca6eba5910384157a7e7fe97d5fbcfb3e0f1fb794385cf305294282ba9d6246e91a5f1c4b80bf142ddb308936fba51057c4ce4ffc1d6a30')
+b2sums=('22f9bbffd9535ce80bd962e7925e2be8a61b391168e8ce70f0c5c7a6974d34accd032aeb76761d6612cdb2cd98b61b280d44ad45e65dc647c53fa2f3f159d113')
 
 build() {
     cd $srcdir/${_ocamlname}-${pkgver}
