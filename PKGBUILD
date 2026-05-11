@@ -7,7 +7,7 @@ _pkgname='ryelang'
 pkgname="$_pkgname-git"
 pkgdesc='Rye — a programming language trying to be flexible about expression, but strict about state (development version)'
 pkgver=0.2.7.r1.ga4a20ae
-pkgrel=1
+pkgrel=2
 url='https://ryelang.org/'
 _url='https://github.com/refaktor/rye'
 install="$pkgname.install"
@@ -82,6 +82,7 @@ package() {
 
   # README and examples
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  rm -f "$pkgdir/usr/share/doc/$pkgname/readme_windows.md"
   cp -fa examples    "$pkgdir/usr/share/doc/$pkgname/"
 
   # license
