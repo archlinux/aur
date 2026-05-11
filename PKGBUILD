@@ -1,4 +1,5 @@
-# Maintainer: Mort Yao <soi@mort.ninja>
+# Contributor: Mort Yao <soi@mort.ninja>
+# Mantainer: Pablo Beato <private04@esi.uca>
 
 pkgname=acl2
 pkgver=8.5
