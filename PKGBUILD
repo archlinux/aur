@@ -4,8 +4,8 @@
 pkgname=hyprtoolkit-frozen
 pkgver=r97.f3e4245
 pkgrel=1
-conflicts=('hyprtoolkit-git')
-provides=('hyprtoolkit-frozen' 'hyprtoolkit' 'libhyprtoolkit.so')
+conflicts=('hyprtoolkit-git' 'hyprtoolkit')
+provides=('hyprtoolkit-frozen' 'libhyprtoolkit.so')
 pkgdesc="A modern C++ Wayland-native GUI toolkit - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hyprtoolkit-hyprland-v0.54.git"

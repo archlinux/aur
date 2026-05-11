@@ -22,9 +22,9 @@ pkgbase = hyprtoolkit-frozen
 	depends = pixman
 	depends = wayland
 	provides = hyprtoolkit-frozen
-	provides = hyprtoolkit
 	provides = libhyprtoolkit.so
 	conflicts = hyprtoolkit-git
+	conflicts = hyprtoolkit
 	source = hyprtoolkit-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprtoolkit-hyprland-v0.54.git
 	sha256sums = SKIP
 
