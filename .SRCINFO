@@ -1,7 +1,7 @@
 pkgbase = tuner
 	pkgdesc = Minimalist radio station player geared towards RadioBrowser
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuner-labs/tuner
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = tuner
 	depends = gtk3
 	depends = libgee
 	depends = gst-plugins-bad-libs
+	depends = gst-plugins-good
 	optdepends = gst-libav: play AAC[+] streams
 	source = tuner-2.1.0.tar.gz::https://github.com/tuner-labs/tuner/archive/refs/tags/v2.1.0.tar.gz
 	source = dont-update-gsettings-schemas-at-build-time.patch
