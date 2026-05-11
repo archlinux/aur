@@ -9,6 +9,7 @@ pkgbase = precice
 	makedepends = eigen
 	makedepends = gcc-fortran
 	depends = boost
+	depends = boost-libs
 	depends = libxml2
 	depends = openmpi
 	depends = petsc
