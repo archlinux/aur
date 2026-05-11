@@ -32,7 +32,7 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
     'snappy')
-options=('!emptydirs')
+options=('!emptydirs' '!lto')
 source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?signed"
         'oneDNN-openvinotoolkit'::'git+https://github.com/openvinotoolkit/oneDNN.git'
         'git+https://github.com/herumi/xbyak.git'
@@ -145,6 +145,9 @@ build() {
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
+    export CFLAGS="${CFLAGS// -flto/}"
+    export CXXFLAGS="${CXXFLAGS// -flto/}"
+    export LDFLAGS="${LDFLAGS// -flto/}"
 
     # fix warning: "_FORTIFY_SOURCE" redefined
     # note: upstream forces _FORTIFY_SOURCE=2

@@ -25,6 +25,7 @@ pkgbase = openvino-llvm
 	makedepends = python-wheel
 	makedepends = snappy
 	options = !emptydirs
+	options = !lto
 	source = git+https://github.com/openvinotoolkit/openvino.git#commit=63e31528c62d3eee06733efa63915ce04bd86f47?signed
 	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = git+https://github.com/herumi/xbyak.git
