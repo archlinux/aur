@@ -1,6 +1,6 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('systemd: enable the bundled user service with systemctl --user')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/naurissteins/Veila/releases/download/$pkgver/veila-$pkgver-x86_64-linux.tar.gz"
 )
-sha256sums=('77fa82359f009e88c9ba2855a9da9cf1b5725327f75a65ef91c8aaef1bc0db8b')
+sha256sums=('1182a93c58d4a1ab2036100ec4a3aa08baf73cc52b8bf00fce0782bf1106314d')
 
 package() {
   cd "veila-$pkgver-x86_64-linux"
