@@ -5,13 +5,13 @@
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, flexible, scalable C++ machine learning library"
 arch=(x86_64)
 url="https://${pkgname}.org"
 license=(BSD-3-Clause)
-depends=(armadillo cereal boost lapack ensmallen cython python-numpy python-pandas)
-makedepends=(cmake txt2man python-setuptools python-wheel python-pytest-runner python-pip)
+depends=(armadillo cereal ensmallen lapack python-pandas)
+makedepends=(cmake txt2man cython python-setuptools)
 optdepends=('openmp: parallel computation support'
   'julia: julia bindings support'
   'r: r bindings support'
