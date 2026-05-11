@@ -1,6 +1,6 @@
 pkgbase = gam-git
 	pkgdesc = command line management for Google Workspace
-	pkgver = 7.30.00.r9.gdf75bb9
+	pkgver = 7.43.04.r8.g523bd45
 	pkgrel = 1
 	url = https://github.com/GAM-team/GAM
 	arch = any

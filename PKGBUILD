@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034
 pkgname=gam-git
 _pkgname=${pkgname%-git}
-pkgver=7.30.00.r9.gdf75bb9
+pkgver=7.43.04.r8.g523bd45
 pkgrel=1
 pkgdesc="command line management for Google Workspace"
 arch=('any')
