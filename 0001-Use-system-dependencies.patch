@@ -1,10 +1,11 @@
-From f72e7b1cccdeaec9ff472f45df06bd91b8b419ec Mon Sep 17 00:00:00 2001
+From e8dbfa97e5564d7473dcf0f73200fa219588241b Mon Sep 17 00:00:00 2001
 From: David Hummel <hummeltech@sherpaguru.com>
 Date: Wed, 21 May 2025 22:47:10 +0200
 Subject: [PATCH] Use system dependencies
 
 ---
  .gitmodules                               | 34 -----------------------
+ src/xenia/cpu/backend/assembler.h         |  1 +
  src/xenia/emulator.cc                     |  2 +-
  third_party/SDL2                          |  1 -
  third_party/SDL2/include                  |  1 +
@@ -25,7 +26,7 @@ Subject: [PATCH] Use system dependencies
  third_party/tomlplusplus/toml.hpp         |  1 +
  third_party/utfcpp                        |  2 +-
  third_party/xbyak                         |  2 +-
- 21 files changed, 15 insertions(+), 47 deletions(-)
+ 22 files changed, 16 insertions(+), 47 deletions(-)
  delete mode 160000 third_party/SDL2
  create mode 120000 third_party/SDL2/include
  delete mode 160000 third_party/SPIRV-Tools
@@ -40,7 +41,7 @@ Subject: [PATCH] Use system dependencies
  create mode 120000 third_party/tomlplusplus/toml.hpp
 
 diff --git a/.gitmodules b/.gitmodules
-index 0ee64ac52..b2b50a188 100644
+index efae2de45..21edd1a74 100644
 --- a/.gitmodules
 +++ b/.gitmodules
 @@ -20,24 +20,9 @@
@@ -116,8 +117,20 @@ index 0ee64ac52..b2b50a188 100644
  [submodule "third_party/libusb"]
  	path = third_party/libusb
  	url = https://github.com/libusb/libusb.git
+diff --git a/src/xenia/cpu/backend/assembler.h b/src/xenia/cpu/backend/assembler.h
+index 8cdf18fe7..ff2408074 100644
+--- a/src/xenia/cpu/backend/assembler.h
++++ b/src/xenia/cpu/backend/assembler.h
+@@ -10,6 +10,7 @@
+ #ifndef XENIA_CPU_BACKEND_ASSEMBLER_H_
+ #define XENIA_CPU_BACKEND_ASSEMBLER_H_
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ namespace xe {
 diff --git a/src/xenia/emulator.cc b/src/xenia/emulator.cc
-index b0acd0feb..75e8455a0 100644
+index 6345e0f60..9efd5ff2a 100644
 --- a/src/xenia/emulator.cc
 +++ b/src/xenia/emulator.cc
 @@ -16,7 +16,7 @@
@@ -270,5 +283,5 @@ index 4e44f4614..e09816e75 160000
 -Subproject commit 4e44f4614ddbf038f2a6296f5b906d5c72691e0f
 +Subproject commit e09816e752b0c9d93a4abc4fd045d89c8a3a825d
 -- 
-2.53.0
+2.54.0
 
