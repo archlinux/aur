@@ -1,6 +1,6 @@
 pkgbase = sysinfoviewer
 	pkgdesc = A comprehensive system information viewer built with wxWidgets
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Magpiny/sysinfoviewer
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = sysinfoviewer
 	optdepends = lspci: GPU name detection fallback
 	optdepends = lm_sensors: Additional hardware monitoring support
 	optdepends = smartmontools: Disk health information
-	source = sysinfoviewer-0.3.0.tar.gz::https://github.com/Magpiny/sysinfoviewer/archive/v0.3.0.tar.gz
-	sha256sums = de643a98d3cb35f914cadda3dee16aecc5f7316b59c52a51fa17bd9dcb789427
+	source = sysinfoviewer-0.3.1.tar.gz::https://github.com/Magpiny/sysinfoviewer/archive/v0.3.1.tar.gz
+	sha256sums = d4d01eecb7643f28d795c42e084fdba80bd1df0a64864d3692cc43a6006804a5
 
 pkgname = sysinfoviewer
