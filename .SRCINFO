@@ -1,6 +1,6 @@
 pkgbase = pingall
 	pkgdesc = Ping everything you can reach
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Fierthraix/pingall
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pingall
 	depends = gcc-libs
 	depends = iputils
 	optdepends = avahi: resolve hostnames via avahi-resolve
-	source = pingall-2.0.0.crate::https://static.crates.io/crates/pingall/pingall-2.0.0.crate
-	sha256sums = d8868c6e9590098f98728fb126136f141894b552f124aca68bc6e1a952afd113
+	source = pingall-2.1.0.crate::https://static.crates.io/crates/pingall/pingall-2.1.0.crate
+	sha256sums = f479940117ed019adfe9b7c8fcdbb76b8f80071031464843049e94e985d10384
 
 pkgname = pingall
