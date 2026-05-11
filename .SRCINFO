@@ -1,6 +1,6 @@
 pkgbase = dimethoxy-disflux-git
 	pkgdesc = Unstable build of the latest commit of Disflux from Dimethoxy's GitHub repository
-	pkgver = a99c473
+	pkgver = 139db09
 	pkgrel = 1
 	url = https://github.com/Dimethoxy/Disflux
 	arch = x86_64
