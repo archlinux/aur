@@ -8,7 +8,7 @@ pkgdesc="The official implementation library for the hypr config language - Froz
 conflicts=('hyprlang-git' 'hyprlang')
 provides=('hyprlang-frozen' 'libhyprlang.so')
 arch=('x86_64' 'aarch64')
-url="https://github.com/jimmykallhagen/nordix-hyprland-mirrors"
+url="https://gitlab.com/TheEnchantedPotato/mirror-hyprlang-hyprland-v0.54.git"
 license=('BSD-3-Clause')
 backup=("usr/share/xdg-desktop-portal/hyprland-portals.conf")
 

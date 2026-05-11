@@ -2,7 +2,7 @@ pkgbase = hyprlang-frozen
 	pkgdesc = The official implementation library for the hypr config language - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)
 	pkgver = 0.6.7.r0.g0d00dc1
 	pkgrel = 1
-	url = https://github.com/jimmykallhagen/nordix-hyprland-mirrors
+	url = https://gitlab.com/TheEnchantedPotato/mirror-hyprlang-hyprland-v0.54.git
 	arch = x86_64
 	arch = aarch64
 	license = BSD-3-Clause
@@ -18,7 +18,7 @@ pkgbase = hyprlang-frozen
 	conflicts = hyprlang-git
 	conflicts = hyprlang
 	backup = usr/share/xdg-desktop-portal/hyprland-portals.conf
-	source = hyprlang-frozen::git+https://github.com/jimmykallhagen/nordix-hyprland-mirrors
+	source = hyprlang-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprlang-hyprland-v0.54.git
 	sha256sums = SKIP
 
 pkgname = hyprlang-frozen
