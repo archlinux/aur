@@ -10,6 +10,7 @@ pkgbase = omikuji-git
 	makedepends = pkgconf
 	makedepends = cmake
 	makedepends = git
+	makedepends = qt6-shadertools
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg
