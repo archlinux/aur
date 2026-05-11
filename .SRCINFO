@@ -1,17 +1,19 @@
 pkgbase = lfk-bin
-	pkgdesc = A lightning-fast, keyboard-focused, yazi-inspired terminal user interface for navigating and managing Kubernetes clusters
-	pkgver = 0.11.0
+	pkgdesc = Lightning Fast Kubernetes navigator - keyboard-focused TUI for managing K8s clusters
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/janosmiko/lfk
-	arch = x86_64
-	arch = aarch64
 	license = Apache-2.0
-	provides = lfk
+	optdepends = kubectl: Kubernetes CLI integration
+	optdepends = helm: Helm release management
+	optdepends = trivy: Container image vulnerability scanning
 	conflicts = lfk
-	options = !strip
-	source_x86_64 = lfk-x86_64-0.11.0.tgz::https://github.com/janosmiko/lfk/releases/download/v0.11.0/lfk_0.11.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8c06e3bb928e30dfd3edb3b78eaa6e2786bf2b702300ca2f8d7d356a87f1bc37
-	source_aarch64 = lfk-aarch64-0.11.0.tgz::https://github.com/janosmiko/lfk/releases/download/v0.11.0/lfk_0.11.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = df450a81330e9e9b8aa104650fe6e28a4538ca178191e18f931ef45085d27a9d
-
+	provides = lfk
+	arch = aarch64
+	source_aarch64 = https://github.com/janosmiko/lfk/releases/download/v0.11.1/lfk_0.11.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3d417971a0ee1bab79bc178a4aec605b2f7526693d39fe9266ff7d8ae7f7182b
+	arch = x86_64
+	source_x86_64 = https://github.com/janosmiko/lfk/releases/download/v0.11.1/lfk_0.11.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7ba13b2ea91d7d9ce579e39452b14d928e9fab232738b52a9361b855c9451ed0
+	
 pkgname = lfk-bin
