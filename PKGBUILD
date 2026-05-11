@@ -2,7 +2,7 @@
 
 pkgname=zabbix-agent2-plugin-nvidia-gpu
 pkgver=7.4.10
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Loadable plugin for Nvidia GPU integration in Zabbix agent2"
 arch=(x86_64)
@@ -10,6 +10,7 @@ url="https://cdn.zabbix.com/zabbix-agent2-plugins/sources/nvidia-gpu"
 license=("Apache-2.0")
 depends=("glibc" "zabbix-agent2>=$pkgver" "nvidia-utils")
 makedepends=("go")
+backup=("etc/zabbix/zabbix_agent2.d/plugins.d/nvidia.conf")
 source=(
 	"$url/$pkgname-$pkgver.tar.gz"
 	"nvidia.conf"
