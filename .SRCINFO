@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-bin
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 1.9.4
+	pkgver = 1.9.5
 	pkgrel = 1
 	url = https://github.com/mihomo-party-org/mihomo-party
 	install = mihomo-party.install
@@ -21,9 +21,9 @@ pkgbase = mihomo-party-bin
 	conflicts = mihomo-party
 	source = mihomo-party.sh
 	sha256sums = 242609b1259e999e944b7187f4c03aacba8134a7671ff3a50e2e246b4c4eff48
-	source_x86_64 = mihomo-party-1.9.4-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.4/clash-party-linux-1.9.4-amd64.deb
-	sha256sums_x86_64 = c6d9845506ab56a58c107133f54bb786ba5d27ba776f0a4b28bd7a80548a05db
-	source_aarch64 = mihomo-party-1.9.4-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.4/clash-party-linux-1.9.4-arm64.deb
-	sha256sums_aarch64 = 4dbe9ce8827449e204d5cec1b91b2bf03c1134d981bdedd9916b2397aa59196b
+	source_x86_64 = mihomo-party-1.9.5-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.5/clash-party-linux-1.9.5-amd64.deb
+	sha256sums_x86_64 = 81362c50a66a9676bcab6e3cdf00d29898e323793507d1e1ba3af490ad2161a4
+	source_aarch64 = mihomo-party-1.9.5-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.5/clash-party-linux-1.9.5-arm64.deb
+	sha256sums_aarch64 = a9fce8353875baefe80cfffbd0000c58dedfe84a22e9d9d95f1f7d51d5839d61
 
 pkgname = mihomo-party-bin
