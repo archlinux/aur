@@ -1,7 +1,7 @@
 # Maintainer: Edwar Diaz <edwardiaz.dev@gmail.com>
 
 pkgname=cliprithm
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Smart desktop video silence remover and clip editor built with Tauri and FFmpeg"
 arch=('x86_64')
@@ -12,26 +12,26 @@ makedepends=('cargo' 'nodejs' 'npm' 'patchelf' 'rust')
 optdepends=('xdg-desktop-portal: improved desktop integration for file dialogs and portals')
 provides=('cliprithm')
 conflicts=('cliprithm-bin')
-source=("cliprithm-1.3.0.tar.gz::https://github.com/BOTOOM/Cliprithm/archive/refs/tags/cliprithm-v1.3.0.tar.gz")
-sha256sums=('5b467a100358aa1738135475540b6af932dc493b2ed6e1a25914407462ddae30')
+source=("cliprithm-1.3.1.tar.gz::https://github.com/BOTOOM/Cliprithm/archive/refs/tags/cliprithm-v1.3.1.tar.gz")
+sha256sums=('9e3e80c0abcf2879e90cfd734f2ff0ea925e8e1af8a9678cf822965c72895a7d')
 options=('!lto')
 
 prepare() {
-  cd "Cliprithm-cliprithm-v1.3.0"
+  cd "Cliprithm-cliprithm-v1.3.1"
   export CARGO_HOME="$srcdir/cargo-home"
   export npm_config_cache="$srcdir/npm-cache"
   npm ci --cache "$npm_config_cache" --prefer-offline
 }
 
 build() {
-  cd "Cliprithm-cliprithm-v1.3.0"
+  cd "Cliprithm-cliprithm-v1.3.1"
   export CARGO_HOME="$srcdir/cargo-home"
   export CARGO_TARGET_DIR="$srcdir/target"
   npm run tauri build -- --no-bundle --ci --no-sign
 }
 
 package() {
-  cd "Cliprithm-cliprithm-v1.3.0"
+  cd "Cliprithm-cliprithm-v1.3.1"
 
   install -Dm755 "$srcdir/target/release/cliprithm" "$pkgdir/usr/lib/cliprithm/cliprithm"
   install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/cliprithm.png"
