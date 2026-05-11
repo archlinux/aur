@@ -1,6 +1,6 @@
 pkgbase = openfact
 	pkgdesc = Collect and display system facts
-	pkgver = 5.6.0
+	pkgver = 5.6.1
 	pkgrel = 1
 	url = https://github.com/OpenVoxProject/openfact
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = openfact
 	replaces = cpp-hocon
 	replaces = leatherman
 	replaces = libwhereami
-	source = git+https://github.com/OpenVoxProject/openfact.git#tag=5.6.0
-	sha512sums = d776f533403cd7b6720e5ac0b7b8e528aef8c057124c65d86d3841056332a937f1ccb4a729bcb6e4e2a8e68c3cd95d93972b1c0dee452bda267b13672b0f3195
-	b2sums = 67c1ecd1ed1a7228f1a91bf90e6e4deae150f5664b2168387e5723847121dad68a01394d1e89517a687db5d01395a4864bb95bd38b5b0bf079816c272bf6d461
+	source = git+https://github.com/OpenVoxProject/openfact.git#tag=5.6.1
+	sha512sums = 13944457d98f39464cc737efeecb07ea843970c5e4415b1d487f9bc7890553e7867d3e388db52f9034610fa9b43bd051f12fb20473525c7b0eeebfbc5935b134
+	b2sums = 3d11e355e74b96bd47a2dfc53345e4f391d20658856a83026988b998592f5bdf8f5e91dd0b2b245e9dbc56106da71b9d8814101b3f5aa48f730b26cccda38188
 
 pkgname = openfact
