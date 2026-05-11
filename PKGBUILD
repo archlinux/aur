@@ -1,9 +1,9 @@
-# Maintainer: envolution
+# Maintainer: Steve Holvoet <linux@steho.be>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-markitdown-git
 _pkgname=markitdown
-pkgver=r195+gf58a86495
+pkgver=r307+ga51f725d7
 pkgrel=1
 pkgdesc="Utility tool for converting various files to Markdown (git)"
 arch=(any)
@@ -15,17 +15,20 @@ depends=(
   python-requests
   python-mammoth
   python-markdownify
-  python-numpy
+  python-magika
+  python-charset-normalizer
+  python-defusedxml
   python-pptx
   python-pandas
   python-openpyxl
+  python-xlrd
+  python-lxml
   python-pdfminer
-  python-puremagic
+  python-pdfplumber
+  python-olefile
   python-pydub
   python-youtube-transcript-api
   python-speechrecognition
-  python-pathvalidate
-  python-cobble #not requested by pyproject.toml but apparently needed at runtime
 )
 makedepends=(
   python-build
@@ -35,8 +38,8 @@ makedepends=(
   python-hatch
   git
 )
-checkdepends=(python-pytest
-  python-olefile
+checkdepends=(
+  python-pytest
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -51,20 +54,20 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
+  cd "$_pkgname/packages/$_pkgname"
   python -m build --wheel --no-isolation
 }
 
 check() {
   rm -rf test-env
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer "${_pkgname}/dist/"*.whl
-  test-env/bin/python -m pytest "${_pkgname}/tests/" || true #they are modifying tests and many are currently failing
+  test-env/bin/python -m installer "${_pkgname}/packages/${_pkgname}/dist/"*.whl
+  test-env/bin/python -m pytest "${_pkgname}/packages/${_pkgname}/tests/" || true
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$_pkgname/packages/$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ../../LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 # vim:set ts=2 sw=2 et:
