@@ -3,16 +3,16 @@
 
 pkgname=odinls-git
 _pkgname_no_git="${pkgname%-*}"
-pkgver=dev_2026_02.r104.gbde7cef
-pkgrel=2
+pkgver=dev_2026_05.r14.g85cbf58
+pkgrel=1
 pkgdesc='Language server and source code formatter for Odin'
 arch=('x86_64')
 url='https://github.com/DanielGavin/ols'
 license=('MIT')
 depends=('odin')
 makedepends=('git')
-provides=("$_pkgname_no_git=$pkgver" "odinfmt=$pkgver")
-conflicts=("$_pkgname_no_git" 'odinfmt')
+provides=("$_pkgname_no_git=$pkgver" "ols=$pkgver" "odinfmt=$pkgver")
+conflicts=("$_pkgname_no_git" 'ols' 'odinfmt')
 options=(!lto)
 source=("$_pkgname_no_git::git+$url.git")
 sha256sums=(SKIP)

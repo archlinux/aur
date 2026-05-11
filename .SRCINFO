@@ -1,15 +1,17 @@
 pkgbase = odinls-git
 	pkgdesc = Language server and source code formatter for Odin
-	pkgver = dev_2026_02.r104.gbde7cef
-	pkgrel = 2
+	pkgver = dev_2026_05.r14.g85cbf58
+	pkgrel = 1
 	url = https://github.com/DanielGavin/ols
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = odin
-	provides = odinls=dev_2026_02.r104.gbde7cef
-	provides = odinfmt=dev_2026_02.r104.gbde7cef
+	provides = odinls=dev_2026_05.r14.g85cbf58
+	provides = ols=dev_2026_05.r14.g85cbf58
+	provides = odinfmt=dev_2026_05.r14.g85cbf58
 	conflicts = odinls
+	conflicts = ols
 	conflicts = odinfmt
 	options = !lto
 	source = odinls::git+https://github.com/DanielGavin/ols.git
