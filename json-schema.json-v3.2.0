@@ -1,0 +1,4033 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "ips": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Maps PC names to IP addresses or host names. If port is omited default is usedExample value: {\"PC1\": \"192.168.1.100\", \"PC2\": \"domain.name\", \"PC3: \"domain.or.ip:5000\"} Each key identifies a remote PC, value is its IP/Domain. The address must be accessible from this PC. For internet access, use VPN or tunneling (e.g. ngrok.com)."
+    },
+    "clientPort": {
+      "description": "HTTPS port for secure client PC connections. Must be accessible and not blocked by firewalls. Default is 5000 if not specified.",
+      "default": 5000,
+      "type": "number"
+    },
+    "rgb": {
+      "description": "RGB keyboard lighting for shortcut feedback. Changes key colors during execution. You need to run openrgb server for it, which you can download from https://openrgb.org. Run the application, go to the SDK server tab and click on Start server. Needs OpenRGB server and compatible keyboard, the supported keyboards are here: https://openrgb.org/devices.html. For Linux just install openrgb via your package manager and run the openrgb from root with you default service manager like systemd",
+      "type": "object",
+      "properties": {
+        "deviceName": {
+          "type": "string",
+          "description": "Device name of the keyboard. You can extract it with \"openrgb --list-devices\" command. Select the name after number. Also you can check in openrgb UI in Devices Tab."
+        },
+        "clientName": {
+          "default": "RPC",
+          "description": "Name of this client when connecting to openrg",
+          "type": "string"
+        },
+        "onLed": {
+          "default": "#00FF00",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "red": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "green": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "blue": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              },
+              "required": [
+                "red",
+                "green",
+                "blue"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "string",
+              "pattern": "^#?(?:[0-9A-Fa-f]{6})$",
+              "description": "Hex color representation of a Led. E.g. #FF0000"
+            }
+          ],
+          "description": "RGB color for the keyboard Key when this shorcut is run"
+        },
+        "offLed": {
+          "default": "#000000",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "red": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "green": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "blue": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              },
+              "required": [
+                "red",
+                "green",
+                "blue"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "string",
+              "pattern": "^#?(?:[0-9A-Fa-f]{6})$",
+              "description": "Hex color representation of a Led. E.g. #FF0000"
+            }
+          ],
+          "description": "RGB color for the keyboard Key when this shorcut is not running"
+        },
+        "errorLed": {
+          "default": "#FF0000",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "red": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "green": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "blue": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              },
+              "required": [
+                "red",
+                "green",
+                "blue"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "string",
+              "pattern": "^#?(?:[0-9A-Fa-f]{6})$",
+              "description": "Hex color representation of a Led. E.g. #FF0000"
+            }
+          ],
+          "description": "RGB color for the keyboard Key when the shortcut has finished running but was resulted with error"
+        },
+        "serverPort": {
+          "default": 6742,
+          "description": "Port of the openrgb server",
+          "type": "number"
+        },
+        "serverAddr": {
+          "default": "localhost",
+          "description": "Address of the openrgb server",
+          "type": "string"
+        },
+        "keyMapFn": {
+          "default": "x.toLowerCase().replace(\" arrow\", \"\").replace(\"pause/break\", \"pause\").replace(\"key: \", \"\").replace(\" (ansi)\", \"\").replace(\" \", \"_\")",
+          "description": "Mapping of openRGB provided keyboard \"key\" schema. In other words input: openRgb keyboard provider key name. Output should be a string a type of \"key\" schema.This should be a JS expression that accept variable \"x\" and evaluates to a string. Allows to properly setup mapping in order to avoid exceptions like \"key XXX is not present in keymap\". Default value works for keyboard brand HyperX",
+          "type": "string"
+        }
+      },
+      "required": [
+        "deviceName"
+      ],
+      "additionalProperties": false
+    },
+    "name": {
+      "description": "Name of this schema to print in logs",
+      "type": "string"
+    },
+    "combinations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "delayAfter": {
+            "description": "Delay (ms) after each command. Ensures commands have time to complete.",
+            "type": "number"
+          },
+          "delayBefore": {
+            "description": "Delay (ms) before each command. Helps coordinate timing between different shortcuts.",
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name shown during startup. Helps identify the shortcut's purpose."
+          },
+          "shortCut": {
+            "type": "string",
+            "description": "Keyboard shortcut format: Modifier+Key (e.g., Alt+1, Ctrl+Shift+A). Needs at least one modifier. Max 3 modifiers (e.g., Ctrl+Alt+Shift+S)."
+          },
+          "commands": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/__schema0"
+            },
+            "description": "Commands to run when shortcut triggered. Executes in order unless parallel execution specified."
+          },
+          "behaviour": {
+            "description": "Controls the the behaviour of the process when you press again the shortcut and the old process is still running.",
+            "default": "stacking",
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "stacking",
+                  "pausable",
+                  "restart"
+                ],
+                "description": "Stacking = Current process will keep running and new one will spawn as well. Since all executable items run in transaction by default.The next iteration will wait until current is finished. The default behaviour\nPausable = Current process will stop running and new one won't start.\nRestart = Current process will stop running and new one will start\n"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "groupWith": {
+                    "description": "If type is \"restart\" or \"pausable\" then groupWith will restart/pause all shortcuts with the same name",
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "stacking",
+                      "pausable",
+                      "restart"
+                    ],
+                    "description": "Stacking = Current process will keep running and new one will spawn as well. Since all executable items run in transaction by default.The next iteration will wait until current is finished. The default behaviour\nPausable = Current process will stop running and new one won't start.\nRestart = Current process will stop running and new one will start\n"
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "shortCut",
+          "commands"
+        ],
+        "additionalProperties": false,
+        "description": "This allows to bind a shortcut to a commands list and define execution behaviour. E.g. press `alt+1` on local PC to send a mouseClick on a remote one"
+      },
+      "description": "Array of shortcut definitions that map keyboard combinations to command sequences. Each shortcut must have a unique key combination. This is the main configuration that defines what happens when specific keys are pressed."
+    },
+    "delays": {
+      "description": "Global delays config between commands. If ommited commands will run instantly after each other",
+      "type": "object",
+      "properties": {
+        "beforeCommand": {
+          "default": 0,
+          "description": "Base delay (in milliseconds) before each command. Can be randomized using standardDeviation.",
+          "type": "number"
+        },
+        "afterCommand": {
+          "default": 0,
+          "description": "Base delay (in milliseconds) after each command. Can be randomized using standardDeviation.",
+          "type": "number"
+        },
+        "standardDeviation": {
+          "default": 0,
+          "description": "Controls randomness of global before/after delays.Final delay = base ± (base * standardDeviation). E.g. 0.2 with 1000ms delay gives random delay between 800ms and 1200ms.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "commandDeviation": {
+          "default": 0,
+          "description": "Controls randomness of delays before/after on each command. This doesn't affect global delays, only if a command has its own delayBefore or delayAfter property.Final delay = base ± (base * standardDeviation). E.g. 0.2 with 1000ms delay gives random delay between 800ms and 1200ms.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "randomHugeDelayDeviation": {
+          "default": 0,
+          "description": "Deviation factor for huge delay. Applied only when randomHugeDelayChance is triggered. Final delay = base ± (base * standardDeviation) + (hugeDelay ± (hugeDelay * randomHugeDelayDiviation)).",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "randomHugeDelay": {
+          "default": 0,
+          "description": "Extra delay (in milliseconds) added on top of standard delays. Only applies when randomHugeDelayChance is triggered.",
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "randomHugeDelayChance": {
+          "default": 0,
+          "description": "Probability (0 to 1) of applying a random huge delay after the standard delay.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "macros": {
+      "description": "A map of macros where a key is the macro name and value is its body",
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "description": "A reusable command sequence that can accept variables. Similar to a function that runs a predefined set of commands.",
+        "type": "object",
+        "properties": {
+          "commands": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/__schema0"
+            },
+            "description": "Set of commands for this macro"
+          },
+          "variables": {
+            "description": "Set of variables descriptors for macro",
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "$ref": "#/$defs/__schema1"
+                },
+                "optional": {
+                  "description": "If set to true, the key is be removed is var is not passed",
+                  "type": "boolean"
+                },
+                "default": {
+                  "description": "Default value if value is not passed. Optional should be set to true"
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false,
+              "description": "Variable description for macro"
+            }
+          }
+        },
+        "required": [
+          "commands"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "ips",
+    "combinations"
+  ],
+  "additionalProperties": false,
+  "description": "Root configuration schema that defines the entire setup including remote PCs, shortcuts, RGB settings, and macros. All sections must follow their respective schemas strictly.",
+  "$defs": {
+    "__schema0": {
+      "description": "A command that would be executed on this machine",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "keyPress"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "anyOf": [
+                            {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "0",
+                                    "1",
+                                    "2",
+                                    "3",
+                                    "4",
+                                    "5",
+                                    "6",
+                                    "7",
+                                    "8",
+                                    "9",
+                                    "a",
+                                    "b",
+                                    "c",
+                                    "d",
+                                    "e",
+                                    "f",
+                                    "g",
+                                    "h",
+                                    "i",
+                                    "j",
+                                    "k",
+                                    "l",
+                                    "m",
+                                    "n",
+                                    "o",
+                                    "p",
+                                    "q",
+                                    "r",
+                                    "s",
+                                    "t",
+                                    "u",
+                                    "v",
+                                    "w",
+                                    "x",
+                                    "y",
+                                    "z",
+                                    "f1",
+                                    "f2",
+                                    "f3",
+                                    "f4",
+                                    "f5",
+                                    "f6",
+                                    "f7",
+                                    "f8",
+                                    "f9",
+                                    "f10",
+                                    "f11",
+                                    "f12",
+                                    "f13",
+                                    "f14",
+                                    "f15",
+                                    "f16",
+                                    "f17",
+                                    "f18",
+                                    "f19",
+                                    "f20",
+                                    "f21",
+                                    "f22",
+                                    "f23",
+                                    "f24",
+                                    "backspace",
+                                    "delete",
+                                    "return",
+                                    "enter",
+                                    "tab",
+                                    "escape",
+                                    "space",
+                                    "insert",
+                                    "print_screen",
+                                    "home",
+                                    "end",
+                                    "page_up",
+                                    "page_down",
+                                    "up",
+                                    "down",
+                                    "left",
+                                    "right",
+                                    "caps_lock",
+                                    "num_lock",
+                                    "scroll_lock",
+                                    "add",
+                                    "subtract",
+                                    "multiply",
+                                    "divide",
+                                    "clear",
+                                    "numpad_0",
+                                    "numpad_1",
+                                    "numpad_2",
+                                    "numpad_3",
+                                    "numpad_4",
+                                    "numpad_5",
+                                    "numpad_6",
+                                    "numpad_7",
+                                    "numpad_8",
+                                    "numpad_9",
+                                    "numpad_decimal",
+                                    ",",
+                                    ".",
+                                    "/",
+                                    ";",
+                                    "'",
+                                    "[",
+                                    "]",
+                                    "\\",
+                                    "-",
+                                    "=",
+                                    "`",
+                                    "audio_mute",
+                                    "audio_vol_down",
+                                    "audio_vol_up",
+                                    "audio_play",
+                                    "audio_stop",
+                                    "audio_pause",
+                                    "audio_prev",
+                                    "audio_next",
+                                    "audio_rewind",
+                                    "audio_forward",
+                                    "audio_repeat",
+                                    "audio_random",
+                                    "lights_mon_up",
+                                    "lights_mon_down",
+                                    "lights_kbd_toggle",
+                                    "lights_kbd_up",
+                                    "lights_kbd_down",
+                                    "menu",
+                                    "pause",
+                                    "control",
+                                    "right_control",
+                                    "alt",
+                                    "right_alt",
+                                    "shift",
+                                    "right_shift",
+                                    "meta",
+                                    "right_meta",
+                                    "win",
+                                    "right_win",
+                                    "cmd",
+                                    "right_cmd",
+                                    "fn"
+                                  ],
+                                  "description": "One of the keyboard keys."
+                                },
+                                {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "0",
+                                      "1",
+                                      "2",
+                                      "3",
+                                      "4",
+                                      "5",
+                                      "6",
+                                      "7",
+                                      "8",
+                                      "9",
+                                      "a",
+                                      "b",
+                                      "c",
+                                      "d",
+                                      "e",
+                                      "f",
+                                      "g",
+                                      "h",
+                                      "i",
+                                      "j",
+                                      "k",
+                                      "l",
+                                      "m",
+                                      "n",
+                                      "o",
+                                      "p",
+                                      "q",
+                                      "r",
+                                      "s",
+                                      "t",
+                                      "u",
+                                      "v",
+                                      "w",
+                                      "x",
+                                      "y",
+                                      "z",
+                                      "f1",
+                                      "f2",
+                                      "f3",
+                                      "f4",
+                                      "f5",
+                                      "f6",
+                                      "f7",
+                                      "f8",
+                                      "f9",
+                                      "f10",
+                                      "f11",
+                                      "f12",
+                                      "f13",
+                                      "f14",
+                                      "f15",
+                                      "f16",
+                                      "f17",
+                                      "f18",
+                                      "f19",
+                                      "f20",
+                                      "f21",
+                                      "f22",
+                                      "f23",
+                                      "f24",
+                                      "backspace",
+                                      "delete",
+                                      "return",
+                                      "enter",
+                                      "tab",
+                                      "escape",
+                                      "space",
+                                      "insert",
+                                      "print_screen",
+                                      "home",
+                                      "end",
+                                      "page_up",
+                                      "page_down",
+                                      "up",
+                                      "down",
+                                      "left",
+                                      "right",
+                                      "caps_lock",
+                                      "num_lock",
+                                      "scroll_lock",
+                                      "add",
+                                      "subtract",
+                                      "multiply",
+                                      "divide",
+                                      "clear",
+                                      "numpad_0",
+                                      "numpad_1",
+                                      "numpad_2",
+                                      "numpad_3",
+                                      "numpad_4",
+                                      "numpad_5",
+                                      "numpad_6",
+                                      "numpad_7",
+                                      "numpad_8",
+                                      "numpad_9",
+                                      "numpad_decimal",
+                                      ",",
+                                      ".",
+                                      "/",
+                                      ";",
+                                      "'",
+                                      "[",
+                                      "]",
+                                      "\\",
+                                      "-",
+                                      "=",
+                                      "`",
+                                      "audio_mute",
+                                      "audio_vol_down",
+                                      "audio_vol_up",
+                                      "audio_play",
+                                      "audio_stop",
+                                      "audio_pause",
+                                      "audio_prev",
+                                      "audio_next",
+                                      "audio_rewind",
+                                      "audio_forward",
+                                      "audio_repeat",
+                                      "audio_random",
+                                      "lights_mon_up",
+                                      "lights_mon_down",
+                                      "lights_kbd_toggle",
+                                      "lights_kbd_up",
+                                      "lights_kbd_down",
+                                      "menu",
+                                      "pause",
+                                      "control",
+                                      "right_control",
+                                      "alt",
+                                      "right_alt",
+                                      "shift",
+                                      "right_shift",
+                                      "meta",
+                                      "right_meta",
+                                      "win",
+                                      "right_win",
+                                      "cmd",
+                                      "right_cmd",
+                                      "fn"
+                                    ],
+                                    "description": "One of the keyboard keys."
+                                  }
+                                }
+                              ],
+                              "description": "Key(s) to press. Can be a single key or array of keys for multiple presses."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Key(s) to press. Can be a single key or array of keys for multiple presses."
+                        },
+                        "duration": {
+                          "description": "How long to hold the key down in milliseconds. Recommended minimum 50ms to ensure reliable key registration.",
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 50
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        },
+                        "durationDeviation": {
+                          "description": "Adds randomness to key press duration. Value is the maximum +/- deviation in milliseconds. Useful for simulating human-like input patterns.",
+                          "default": 0,
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        },
+                        "holdKeys": {
+                          "description": "Modifier keys to hold (e.g., Alt for Alt+1, Ctrl+Shift for Ctrl+Shift+A). Can be a key or key array.",
+                          "anyOf": [
+                            {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "0",
+                                    "1",
+                                    "2",
+                                    "3",
+                                    "4",
+                                    "5",
+                                    "6",
+                                    "7",
+                                    "8",
+                                    "9",
+                                    "a",
+                                    "b",
+                                    "c",
+                                    "d",
+                                    "e",
+                                    "f",
+                                    "g",
+                                    "h",
+                                    "i",
+                                    "j",
+                                    "k",
+                                    "l",
+                                    "m",
+                                    "n",
+                                    "o",
+                                    "p",
+                                    "q",
+                                    "r",
+                                    "s",
+                                    "t",
+                                    "u",
+                                    "v",
+                                    "w",
+                                    "x",
+                                    "y",
+                                    "z",
+                                    "f1",
+                                    "f2",
+                                    "f3",
+                                    "f4",
+                                    "f5",
+                                    "f6",
+                                    "f7",
+                                    "f8",
+                                    "f9",
+                                    "f10",
+                                    "f11",
+                                    "f12",
+                                    "f13",
+                                    "f14",
+                                    "f15",
+                                    "f16",
+                                    "f17",
+                                    "f18",
+                                    "f19",
+                                    "f20",
+                                    "f21",
+                                    "f22",
+                                    "f23",
+                                    "f24",
+                                    "backspace",
+                                    "delete",
+                                    "return",
+                                    "enter",
+                                    "tab",
+                                    "escape",
+                                    "space",
+                                    "insert",
+                                    "print_screen",
+                                    "home",
+                                    "end",
+                                    "page_up",
+                                    "page_down",
+                                    "up",
+                                    "down",
+                                    "left",
+                                    "right",
+                                    "caps_lock",
+                                    "num_lock",
+                                    "scroll_lock",
+                                    "add",
+                                    "subtract",
+                                    "multiply",
+                                    "divide",
+                                    "clear",
+                                    "numpad_0",
+                                    "numpad_1",
+                                    "numpad_2",
+                                    "numpad_3",
+                                    "numpad_4",
+                                    "numpad_5",
+                                    "numpad_6",
+                                    "numpad_7",
+                                    "numpad_8",
+                                    "numpad_9",
+                                    "numpad_decimal",
+                                    ",",
+                                    ".",
+                                    "/",
+                                    ";",
+                                    "'",
+                                    "[",
+                                    "]",
+                                    "\\",
+                                    "-",
+                                    "=",
+                                    "`",
+                                    "audio_mute",
+                                    "audio_vol_down",
+                                    "audio_vol_up",
+                                    "audio_play",
+                                    "audio_stop",
+                                    "audio_pause",
+                                    "audio_prev",
+                                    "audio_next",
+                                    "audio_rewind",
+                                    "audio_forward",
+                                    "audio_repeat",
+                                    "audio_random",
+                                    "lights_mon_up",
+                                    "lights_mon_down",
+                                    "lights_kbd_toggle",
+                                    "lights_kbd_up",
+                                    "lights_kbd_down",
+                                    "menu",
+                                    "pause",
+                                    "control",
+                                    "right_control",
+                                    "alt",
+                                    "right_alt",
+                                    "shift",
+                                    "right_shift",
+                                    "meta",
+                                    "right_meta",
+                                    "win",
+                                    "right_win",
+                                    "cmd",
+                                    "right_cmd",
+                                    "fn"
+                                  ],
+                                  "description": "One of the keyboard keys."
+                                },
+                                {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "0",
+                                      "1",
+                                      "2",
+                                      "3",
+                                      "4",
+                                      "5",
+                                      "6",
+                                      "7",
+                                      "8",
+                                      "9",
+                                      "a",
+                                      "b",
+                                      "c",
+                                      "d",
+                                      "e",
+                                      "f",
+                                      "g",
+                                      "h",
+                                      "i",
+                                      "j",
+                                      "k",
+                                      "l",
+                                      "m",
+                                      "n",
+                                      "o",
+                                      "p",
+                                      "q",
+                                      "r",
+                                      "s",
+                                      "t",
+                                      "u",
+                                      "v",
+                                      "w",
+                                      "x",
+                                      "y",
+                                      "z",
+                                      "f1",
+                                      "f2",
+                                      "f3",
+                                      "f4",
+                                      "f5",
+                                      "f6",
+                                      "f7",
+                                      "f8",
+                                      "f9",
+                                      "f10",
+                                      "f11",
+                                      "f12",
+                                      "f13",
+                                      "f14",
+                                      "f15",
+                                      "f16",
+                                      "f17",
+                                      "f18",
+                                      "f19",
+                                      "f20",
+                                      "f21",
+                                      "f22",
+                                      "f23",
+                                      "f24",
+                                      "backspace",
+                                      "delete",
+                                      "return",
+                                      "enter",
+                                      "tab",
+                                      "escape",
+                                      "space",
+                                      "insert",
+                                      "print_screen",
+                                      "home",
+                                      "end",
+                                      "page_up",
+                                      "page_down",
+                                      "up",
+                                      "down",
+                                      "left",
+                                      "right",
+                                      "caps_lock",
+                                      "num_lock",
+                                      "scroll_lock",
+                                      "add",
+                                      "subtract",
+                                      "multiply",
+                                      "divide",
+                                      "clear",
+                                      "numpad_0",
+                                      "numpad_1",
+                                      "numpad_2",
+                                      "numpad_3",
+                                      "numpad_4",
+                                      "numpad_5",
+                                      "numpad_6",
+                                      "numpad_7",
+                                      "numpad_8",
+                                      "numpad_9",
+                                      "numpad_decimal",
+                                      ",",
+                                      ".",
+                                      "/",
+                                      ";",
+                                      "'",
+                                      "[",
+                                      "]",
+                                      "\\",
+                                      "-",
+                                      "=",
+                                      "`",
+                                      "audio_mute",
+                                      "audio_vol_down",
+                                      "audio_vol_up",
+                                      "audio_play",
+                                      "audio_stop",
+                                      "audio_pause",
+                                      "audio_prev",
+                                      "audio_next",
+                                      "audio_rewind",
+                                      "audio_forward",
+                                      "audio_repeat",
+                                      "audio_random",
+                                      "lights_mon_up",
+                                      "lights_mon_down",
+                                      "lights_kbd_toggle",
+                                      "lights_kbd_up",
+                                      "lights_kbd_down",
+                                      "menu",
+                                      "pause",
+                                      "control",
+                                      "right_control",
+                                      "alt",
+                                      "right_alt",
+                                      "shift",
+                                      "right_shift",
+                                      "meta",
+                                      "right_meta",
+                                      "win",
+                                      "right_win",
+                                      "cmd",
+                                      "right_cmd",
+                                      "fn"
+                                    ],
+                                    "description": "One of the keyboard keys."
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "key"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Simulates keyboard input on the remote PC by sending key press events. Supports single keys, key combinations, and modifier keys with customizable timing and randomness. Use this for automating keyboard input or triggering keyboard shortcuts."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "typeText"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "description": "Any string to type"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Any string to type"
+                        },
+                        "keyDelay": {
+                          "description": "Delay between keystroke in milliseconds. By default types as fast as possible, around 40ms per char",
+                          "default": 100,
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        },
+                        "keyDelayDeviation": {
+                          "description": "Deviation for randomness of delay. E.g if keyDelay = 100 and deviation = 0.2. Then value would be 80-120ms",
+                          "default": 0.1,
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Types text on the remote PC."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "setKeyboardLayout"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "layout": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "us",
+                                "en",
+                                "gb",
+                                "au",
+                                "nz",
+                                "ie",
+                                "za",
+                                "de",
+                                "at",
+                                "ch",
+                                "li",
+                                "fr",
+                                "be",
+                                "lu",
+                                "mc",
+                                "es",
+                                "mx",
+                                "cl",
+                                "ve",
+                                "pe",
+                                "ec",
+                                "uy",
+                                "py",
+                                "bo",
+                                "it",
+                                "sm",
+                                "va",
+                                "pt",
+                                "nl",
+                                "sr",
+                                "no",
+                                "dk",
+                                "fi",
+                                "is",
+                                "pl",
+                                "cz",
+                                "sk",
+                                "hu",
+                                "hr",
+                                "ba",
+                                "rs",
+                                "me",
+                                "mk",
+                                "bg",
+                                "ro",
+                                "md",
+                                "ee",
+                                "lv",
+                                "lt",
+                                "mt",
+                                "tr",
+                                "az",
+                                "ru",
+                                "by",
+                                "ua",
+                                "kz",
+                                "kg",
+                                "tj",
+                                "uz",
+                                "tm",
+                                "mn",
+                                "gr",
+                                "ar",
+                                "ae",
+                                "bh",
+                                "dz",
+                                "eg",
+                                "iq",
+                                "jo",
+                                "kw",
+                                "ly",
+                                "ma",
+                                "om",
+                                "qa",
+                                "sa",
+                                "sy",
+                                "tn",
+                                "ye",
+                                "fa",
+                                "ir",
+                                "ur",
+                                "pk",
+                                "il",
+                                "he",
+                                "cn",
+                                "zh",
+                                "tw",
+                                "hk",
+                                "mo",
+                                "jp",
+                                "ja",
+                                "kr",
+                                "ko",
+                                "th",
+                                "vn",
+                                "vi",
+                                "kh",
+                                "km",
+                                "lo",
+                                "my",
+                                "ms",
+                                "id",
+                                "ph",
+                                "tl",
+                                "sg",
+                                "bn",
+                                "bd",
+                                "hi",
+                                "in",
+                                "ta",
+                                "te",
+                                "ml",
+                                "kn",
+                                "gu",
+                                "or",
+                                "pa",
+                                "as",
+                                "ne",
+                                "si",
+                                "lk",
+                                "mm",
+                                "am",
+                                "et",
+                                "sw",
+                                "ke",
+                                "tz",
+                                "zu",
+                                "xh",
+                                "af",
+                                "ha",
+                                "ng",
+                                "sn",
+                                "bf",
+                                "ci",
+                                "gn",
+                                "td",
+                                "cf",
+                                "cm",
+                                "cg",
+                                "cd",
+                                "mg",
+                                "dj",
+                                "eo",
+                                "la",
+                                "eu",
+                                "ca",
+                                "gl",
+                                "cy",
+                                "ga",
+                                "gd",
+                                "br",
+                                "oc",
+                                "co",
+                                "sc",
+                                "fur",
+                                "rm",
+                                "lb",
+                                "fo",
+                                "kl",
+                                "se",
+                                "smj",
+                                "sma",
+                                "smn",
+                                "sms"
+                              ],
+                              "description": "Keyboard layout"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Keyboard layout"
+                        }
+                      },
+                      "required": [
+                        "layout"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Simulates keyboard input on the remote PC by sending key press events. Supports single keys, key combinations, and modifier keys with customizable timing and randomness. Use this for automating keyboard input or triggering keyboard shortcuts."
+                }
+              ],
+              "description": "Keyboard-related remote commands"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "mouseMoveLeftClick"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "description": "X coordinate for mouse cursor."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "X coordinate for mouse cursor."
+                        },
+                        "y": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "description": "Y coordinate for mouse cursor."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Y coordinate for mouse cursor."
+                        },
+                        "pixelsPerIteration": {
+                          "description": "Pixels to move per iteration for smooth movement.",
+                          "default": 20,
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Moves mouse cursor to specified screen coordinates and performs a left-click. Combines movement and clicking into one action."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "mouseMove"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "description": "X coordinate for mouse cursor."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "X coordinate for mouse cursor."
+                        },
+                        "y": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "description": "Y coordinate for mouse cursor."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Y coordinate for mouse cursor."
+                        },
+                        "pixelsPerIteration": {
+                          "description": "Pixels to move per iteration for smooth movement.",
+                          "default": 20,
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Moves mouse cursor to specified screen coordinates."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "mouseClick"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "button": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "LEFT",
+                                "RIGHT",
+                                "MIDDLE"
+                              ],
+                              "description": "Identifier of a mouse button"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Identifier of a mouse button"
+                        }
+                      },
+                      "required": [
+                        "button"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Performs a left mouse click at the current cursor position without moving the mouse. Use when cursor is already positioned."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "leftMouseClick"
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Performs a left mouse click at the current cursor position without moving the mouse. Use when cursor is already positioned."
+                }
+              ],
+              "description": "Mouse-related remote commands"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "killExeByName"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "description": "Name of the executable file to terminate. Example: \"Chrome.exe\". Case-sensitive on some operating systems."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Name of the executable file to terminate. Example: \"Chrome.exe\". Case-sensitive on some operating systems."
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Terminates all processes with the specified executable name. Use with caution - kills all instances of the program."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "killExeByPid"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "pid": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "description": "Process ID (PID) of the process to terminate. Example: 1234. Must be a valid running process ID."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Process ID (PID) of the process to terminate. Example: 1234. Must be a valid running process ID."
+                        }
+                      },
+                      "required": [
+                        "pid"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Terminates a specific process by its PID on the remote PC. More precise than killByName as it targets a single specific process."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "launchExe"
+                    },
+                    "assignVariable": {
+                      "description": "If provided, would assign launched process id to this variable",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        }
+                      ]
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "path": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "description": "Full absolute path to the executable file to run on the remote PC."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Full absolute path to the executable file to run on the remote PC."
+                        },
+                        "arguments": {
+                          "description": "Command-line arguments to pass to the executable. Each array element is a separate argument.",
+                          "default": [],
+                          "anyOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        },
+                        "waitTillFinish": {
+                          "description": "Blocks current execution context until this timeout passes or process is finished, whichever comes first.",
+                          "default": false,
+                          "anyOf": [
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        },
+                        "waitTimeout": {
+                          "description": "Awaits this timeout to pass to get processs id. If waitTillFinish is true, awaits maxium of this timeout. If process failed to finish before it, throws error.",
+                          "default": 300,
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "path"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Starts a program on a remote PC."
+                }
+              ],
+              "description": "Process-related remote commands"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "setWindowBounds"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "wid": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "description": "Window id"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Window id"
+                        },
+                        "bounds": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "x": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number",
+                                      "description": "x position"
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "$ref": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "additionalProperties": false,
+                                      "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                                    }
+                                  ],
+                                  "description": "x position"
+                                },
+                                "y": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number",
+                                      "description": "y position"
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "$ref": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "additionalProperties": false,
+                                      "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                                    }
+                                  ],
+                                  "description": "y position"
+                                },
+                                "width": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number",
+                                      "description": "width"
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "$ref": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "additionalProperties": false,
+                                      "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                                    }
+                                  ],
+                                  "description": "width"
+                                },
+                                "height": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number",
+                                      "description": "height"
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "$ref": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "$ref"
+                                      ],
+                                      "additionalProperties": false,
+                                      "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                                    }
+                                  ],
+                                  "description": "height"
+                                }
+                              },
+                              "required": [
+                                "x",
+                                "y",
+                                "width",
+                                "height"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "wid",
+                        "bounds"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Sets window width height and x y position"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "focusProcessWindow"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "pid": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "description": "Process ID (PID) of the window to focus. Can be obtained from findPidsByName command or launch command with assignId."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Process ID (PID) of the window to focus. Can be obtained from findPidsByName command or launch command with assignId."
+                        }
+                      },
+                      "required": [
+                        "pid"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Brings a window to front and gives it focus by process ID. Useful for window automation and ensuring windows are active."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "delayAfter": {
+                      "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "delayBefore": {
+                      "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "performOnRemote": {
+                      "type": "string",
+                      "const": "focusWindow"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "wid": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "description": "Window ID to focus. Can be obtained from findProcessWindows or findProcessesWindows commands."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Window ID to focus. Can be obtained from findProcessWindows or findProcessesWindows commands."
+                        }
+                      },
+                      "required": [
+                        "wid"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "performOnRemote",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Brings a window to the foreground and gives it focus based on its window ID. Window IDs can be retrieved using findProcessWindows or findProcessesWindows commands."
+                }
+              ],
+              "description": "Window-related remote commands"
+            }
+          ],
+          "description": "One of the commands that would be sent to a remote machine specified in destination property"
+        },
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "destination": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$ref": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "$ref"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "description": "Remote PC from ips or aliases section to send this command to"
+                },
+                "get": {
+                  "type": "string",
+                  "const": "ping"
+                },
+                "assignVariable": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "description": "Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = [\"a\",\"b\"], then a = 1, b = 2. If array length missmatch, an exception is thrown"
+                }
+              },
+              "required": [
+                "destination",
+                "get",
+                "assignVariable"
+              ],
+              "additionalProperties": false,
+              "description": "Pings this client to test whether it's working"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "get": {
+                      "type": "string",
+                      "const": "getMonitors"
+                    },
+                    "assignVariable": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = [\"a\",\"b\"], then a = 1, b = 2. If array length missmatch, an exception is thrown"
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "get",
+                    "assignVariable"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List monitors"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "get": {
+                      "type": "string",
+                      "const": "getMonitorInfo"
+                    },
+                    "assignVariable": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = [\"a\",\"b\"], then a = 1, b = 2. If array length missmatch, an exception is thrown"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "mid": {
+                          "anyOf": [
+                            {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "mid"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "get",
+                    "assignVariable",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get monitor info"
+                }
+              ],
+              "description": "Allows to get information about display and its windows"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "get": {
+                      "type": "string",
+                      "const": "getPidsByName"
+                    },
+                    "assignVariable": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = [\"a\",\"b\"], then a = 1, b = 2. If array length missmatch, an exception is thrown"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "description": "Name of the executable file to search for. Example: \"Chrome.exe\". Case-sensitive on some operating systems."
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ],
+                          "description": "Name of the executable file to search for. Example: \"Chrome.exe\". Case-sensitive on some operating systems."
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "get",
+                    "assignVariable",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Gets list of process ids that match criteria"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "get": {
+                      "type": "string",
+                      "const": "getProcessInfo"
+                    },
+                    "assignVariable": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = [\"a\",\"b\"], then a = 1, b = 2. If array length missmatch, an exception is thrown"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "pid": {
+                          "anyOf": [
+                            {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "pid"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "get",
+                    "assignVariable",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get process's main window"
+                }
+              ],
+              "description": "Handles processes"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "get": {
+                      "type": "string",
+                      "const": "getWindow"
+                    },
+                    "assignVariable": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = [\"a\",\"b\"], then a = 1, b = 2. If array length missmatch, an exception is thrown"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "wid": {
+                          "anyOf": [
+                            {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "wid"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "get",
+                    "assignVariable",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get information about window with specified window id"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "get": {
+                      "type": "string",
+                      "const": "getWindowsIdByPid"
+                    },
+                    "assignVariable": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = [\"a\",\"b\"], then a = 1, b = 2. If array length missmatch, an exception is thrown"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "pid": {
+                          "anyOf": [
+                            {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "pid"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "get",
+                    "assignVariable",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get all windows with their IDs for a concrete process id"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "get": {
+                      "type": "string",
+                      "const": "getActiveWindow"
+                    },
+                    "assignVariable": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = [\"a\",\"b\"], then a = 1, b = 2. If array length missmatch, an exception is thrown"
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "get",
+                    "assignVariable"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get information about current active window"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$ref": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$ref"
+                          ],
+                          "additionalProperties": false,
+                          "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Remote PC from ips or aliases section to send this command to"
+                    },
+                    "get": {
+                      "type": "string",
+                      "const": "getWindowsIdByMultiplePids"
+                    },
+                    "assignVariable": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = [\"a\",\"b\"], then a = 1, b = 2. If array length missmatch, an exception is thrown"
+                    },
+                    "variables": {
+                      "type": "object",
+                      "properties": {
+                        "pids": {
+                          "anyOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0,
+                                "maximum": 9007199254740991
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "$ref": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$ref"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "pids"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "destination",
+                    "get",
+                    "assignVariable",
+                    "variables"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get all windows with their IDs for a concrete process id"
+                }
+              ],
+              "description": "Allows to get information about windows, transform and move them"
+            }
+          ],
+          "description": "Allows to execute getRequest on remote schema and assign it to a variable"
+        },
+        {
+          "description": "A local command that would be executed on this machine",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "macro": {
+                  "type": "string",
+                  "description": "Name of the macro to execute, which must match a key defined in the macros section. Macros help reduce configuration repetition by reusing command sequences."
+                },
+                "variables": {
+                  "description": "Variables to pass to the macro. Object where keys are variable names and values are their values. Values can be strings or numbers and must match the types defined in the macro's variables section.",
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "anyOf": [
+                      {},
+                      {
+                        "type": "object",
+                        "properties": {
+                          "$ref": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "$ref"
+                        ],
+                        "additionalProperties": false,
+                        "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                      }
+                    ]
+                  }
+                },
+                "delayAfter": {
+                  "description": "Delay (ms) after command completes, before next command. Ensures command has time to take effect.",
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$ref": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "$ref"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                },
+                "delayBefore": {
+                  "description": "Delay (ms) before executing command. Helps create precisely timed sequences.",
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$ref": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "$ref"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "macro"
+              ],
+              "additionalProperties": false,
+              "description": "Executes a predefined macro, which is a reusable sequence of commands. Similar to a function call, macros can accept parameters through variables. This helps avoid duplicating complex command sequences and makes configurations more maintainable."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "assignVariable": {
+                  "type": "string",
+                  "description": "Name of the variable to store the expression result. This variable can be referenced in subsequent commands using {{variableName}} syntax."
+                },
+                "expression": {
+                  "type": "string",
+                  "description": "JS like expression that evaluates to some values. E.g. x*2."
+                }
+              },
+              "required": [
+                "assignVariable",
+                "expression"
+              ],
+              "additionalProperties": false,
+              "description": "Allows to create/assign a variable by expression."
+            },
+            {
+              "description": "Run commands in a transaction. Prevents concurrent transactions with same name. Uses PC name for remote commands. Ensures atomic execution.",
+              "type": "object",
+              "properties": {
+                "commands": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/__schema0"
+                  },
+                  "description": "Commands to execute atomically in this transaction. All commands either succeed or fail together."
+                },
+                "transaction": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "$ref": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "$ref"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Reference to a variable from a variables definition section. The value will be replaced at runtime with either:\n1. A matching variable from variables.json\n2. A matching environment variable\n3. A variable created during execution (e.g., from assignId or expression commands)"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "Unique name for the transaction. Helps with logging and debugging transaction execution.If transaction is null, all commands in this block would run despite other commands on the destination pc"
+                }
+              },
+              "required": [
+                "commands",
+                "transaction"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "description": "Allows to execute commands in parallel. Or in threads.",
+              "type": "object",
+              "properties": {
+                "threads": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 10,
+                        "description": "name of the thread, required for req-id log, "
+                      },
+                      "commands": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/$defs/__schema0"
+                        },
+                        "description": "list of commands in this thread"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "commands"
+                    ],
+                    "additionalProperties": false,
+                    "description": "List of commands to execute in a single thread. Commands run sequentially in their thread, while threads run in parallel."
+                  },
+                  "description": "Command sequences to run in parallel. Each thread runs sequentially while threads run simultaneously."
+                }
+              },
+              "required": [
+                "threads"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "description": "Allow to run same commands multiple time or in iteration or loop",
+              "type": "object",
+              "properties": {
+                "commands": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/__schema0"
+                  },
+                  "description": "Sequence of commands to repeat in the loop. Each iteration will execute all commands in order."
+                },
+                "loop": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string",
+                      "description": "JS like expression that evaluates to some values. E.g. x*2."
+                    }
+                  ],
+                  "description": "Number of times to repeat the commands sequence. Positive number: Executes that many iterations. Negative number: Runs indefinitely until manually stopped. If the parent command is pausable, pressing the shortcut again will exit the loop.If string is passed evaluated that string as expresssion and repeat the loop while it's true"
+                }
+              },
+              "required": [
+                "commands",
+                "loop"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "description": "Conditional execution of commands based on a boolean condition. If the condition is true, executes the \"then\" commands, otherwise executes the \"else\" commands if they exist.",
+              "type": "object",
+              "properties": {
+                "if": {
+                  "type": "string",
+                  "description": "JS like expression that evaluates to some values. E.g. x*2."
+                },
+                "then": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/__schema0"
+                  },
+                  "description": "Commands to execute if the condition is true"
+                },
+                "else": {
+                  "description": "Optional commands to execute if the condition is false",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/__schema0"
+                  }
+                }
+              },
+              "required": [
+                "if",
+                "then"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "description": "Allows to execute statements in try block and fail silently by keeping next commands after this command executing",
+              "type": "object",
+              "properties": {
+                "try": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/__schema0"
+                  },
+                  "description": "Commands to execute if the condition is true"
+                },
+                "catch": {
+                  "description": "Execute this commands on catch block. If catch is omited, commands in the try block will fail silently",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/__schema0"
+                  }
+                },
+                "finally": {
+                  "description": "Execute this command after try block, whether it fails/succeed",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/__schema0"
+                  }
+                }
+              },
+              "required": [
+                "try"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "description": "Allow to run same commands in specific order",
+              "type": "object",
+              "properties": {
+                "commands": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/__schema0"
+                  },
+                  "description": "Sequence of commands to repeat in the loop. Each iteration will execute all commands in order."
+                },
+                "shuffle": {
+                  "type": "string",
+                  "enum": [
+                    "random",
+                    "reverse",
+                    "straight"
+                  ],
+                  "description": "Random = shuffle array so it takes next element randomly. Reverse = each time it changes the order from first to last, then from last to first. Straight = Default order from first to last"
+                }
+              },
+              "required": [
+                "commands",
+                "shuffle"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "print": {
+                  "type": "string",
+                  "description": "JS like expression that evaluates to some values. E.g. x*2."
+                }
+              },
+              "required": [
+                "print"
+              ],
+              "additionalProperties": false,
+              "description": "Print the expressions to log"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "reloadConfig": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "Path to a new config. Leave it empty to use current path"
+                    },
+                    "reloadVariables": {
+                      "description": "Path to a variable config file. Leave it empty to use current path",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "reloadConfig"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "reloadConfig": {
+                      "description": "Path to a new config. Leave it empty to use current path",
+                      "type": "string"
+                    },
+                    "reloadVariables": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "Path to a variable config file. Leave it empty to use current path"
+                    }
+                  },
+                  "required": [
+                    "reloadVariables"
+                  ],
+                  "additionalProperties": false
+                }
+              ],
+              "description": "Reloads config or loads config from a new place"
+            }
+          ]
+        }
+      ]
+    },
+    "__schema1": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "string"
+            },
+            {
+              "type": "string",
+              "const": "number"
+            },
+            {
+              "type": "string",
+              "const": "boolean"
+            },
+            {
+              "type": "string",
+              "const": "any"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/__schema1"
+          }
+        },
+        {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/__schema1"
+              }
+            }
+          ]
+        }
+      ],
+      "description": "To validate the type, or cast from env variables"
+    }
+  }
+}
