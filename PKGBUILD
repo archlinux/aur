@@ -2,7 +2,7 @@
 
 pkgname=vykar-server
 _name=vykar
-pkgver=0.14.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Fast, encrypted, deduplicated backups in Rust - only server component'
 url='https://github.com/borgbase/vykar'
@@ -14,7 +14,7 @@ source=(
   "${_name}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   "${pkgname}.service"
 )
-b2sums=('451e86e8ee29852a9253fa5bbcca2539c46287ddf0ae77ca4305a7002b4e2d3895f33014f4c56ffe73083e541ed81e83ffbafab475c09c0210cbcfe4de428402'
+b2sums=('1fe3a14f4d761323b9ebb046bbcefd3553e6c214433eb3bea4bc3c9ebfc8ff5f4dcec465dfabfae5c7de527b25b0cf3d3ac4867a31e612ec11f97b527d50caf9'
         'a50fbfaf866dd1953ad5448a56569fd703498b1a78034906f316932b648da2d4bc74f0154a9440fd4f4dc42c41fcf732febf7c83c28bf51c37ae906ad1e280c9')
 options=(!lto)
 
