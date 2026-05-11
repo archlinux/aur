@@ -1,6 +1,6 @@
 pkgbase = auto-editor
 	pkgdesc = A command line application for automatically editing video and audio.
-	pkgver = 30.1.6
+	pkgver = 30.2.0
 	pkgrel = 1
 	url = https://auto-editor.com/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = auto-editor
 	optdepends = xdg-utils: automatically open completed files with xdg-open
 	provides = auto-editor
 	conflicts = auto-editor-bin
-	source = auto-editor-30.1.6.tar.gz::https://github.com/WyattBlue/auto-editor/archive/refs/tags/30.1.6.tar.gz
-	sha256sums = c9d3f9efc9ec1bb3b0c930595ae389a25bda35eece6ea5657d1ec5573e80f0bd
+	source = auto-editor-30.2.0.tar.gz::https://github.com/WyattBlue/auto-editor/archive/refs/tags/30.2.0.tar.gz
+	sha256sums = d24a53c2e8fb6f9e257950f203468569452b7ba1615770ad04c253f2a73a3649
 
 pkgname = auto-editor
