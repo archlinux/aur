@@ -4,9 +4,9 @@
 
 pkgname=duo_unix
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Login utility and PAM module for Duo Security two-factor authentication'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url='https://www.duosecurity.com/docs/duounix'
 license=('custom:GPL2')
 depends=('pam')
