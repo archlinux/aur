@@ -4,7 +4,7 @@ _architectures=("i686-w64-mingw32" "x86_64-w64-mingw32")
 
 pkgname="mingw-w64-nlohmann-json"
 pkgver="3.12.0"
-pkgrel=3
+pkgrel=4
 pkgdesc="Header-only JSON library for Modern C++ (mingw-w64)"
 url="https://github.com/nlohmann/json"
 license=("MIT")
@@ -16,7 +16,7 @@ source=("https://github.com/nlohmann/json/archive/v${pkgver}.tar.gz")
 sha256sums=("4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187")
 
 build() {
-    cd "$srcdir/json-$pkgver"
+    cd "json-$pkgver"
 
     for architecture in ${_architectures[@]}; do
         $architecture-cmake \
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/json-$pkgver"
+    cd "json-$pkgver"
 
     for architecture in ${_architectures[@]}; do
         cmake --install "build-$architecture" --prefix "$pkgdir/usr/$architecture"
