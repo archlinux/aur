@@ -1,14 +1,17 @@
 pkgbase = canfigger
-	pkgdesc = Lightweight configuration file parser library
-	pkgver = 0.3.1
+	pkgdesc = Lightweight configuration file parser library with XDG path helpers
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://andy5995.github.io/canfigger/
 	arch = x86_64
-	license = MIT-0
+	license = MIT
 	makedepends = meson
 	makedepends = ninja
-	depends = glibc
-	source = https://github.com/andy5995/canfigger/releases/download/v0.3.1/canfigger-0.3.1.tar.xz
-	sha256sums = 8ecb23692b2fdfd8f2f8f22bacf07ab7976915fd157692920c28400caa6aa1bf
+	source = https://github.com/andy5995/canfigger/releases/download/v0.3.2/canfigger-0.3.2.tar.xz
+	sha256sums = f128a62cec50cce16e1e8c87012f8564d972b663316b27358d1d7f6b4486bec8
 
 pkgname = canfigger
+
+pkgname = canfigger-docs
+	pkgdesc = HTML API documentation for canfigger
+	arch = any
