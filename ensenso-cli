@@ -1,9 +1,14 @@
 #!/bin/sh
 if [ -z "$XDG_CONFIG_HOME" ]; then
-	export XDG_CONFIG_HOME="$HOME/.config"
+	XDG_CONFIG_HOME="$HOME/.config"
 fi
 if [ -z "$ENSENSO_INSTALL" ]; then
-	export ENSENSO_INSTALL="$XDG_CONFIG_HOME/ensenso"
+	ENSENSO_INSTALL="$XDG_CONFIG_HOME/ensenso"
 fi
+
+export XDG_CONFIG_HOME
+export ENSENSO_INSTALL
+
+mkdir -p "$ENSENSO_INSTALL"
 
 exec /opt/ensenso/bin/ensenso-cli "$@"
