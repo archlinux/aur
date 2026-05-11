@@ -1,6 +1,6 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=shmooz
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=2
 pkgdesc="A zoom / magnifier utility for Wayland compositors"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('wayland')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chmouel/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('770196d66374057a474306e948f6c1d0da889391b290bc5fa627e2a18f805a8e')
+sha256sums=('02a073a5d4d3882018cae5a96bb8e3ad077201add7c6dc8fd5f9929b15cd0522')
 
 prepare() {
   cd "$pkgname-$pkgver" || exit
