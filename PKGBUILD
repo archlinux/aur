@@ -2,8 +2,8 @@
 
 _pkgname=PKHeX
 pkgname=pkhex-bin
-pkgver=26.04.11
-pkgrel=2
+pkgver=26.05.05
+pkgrel=1
 pkgdesc="Pokémon core series save editor, programmed in C#."
 arch=(any)
 url="https://github.com/kwsch/PKHeX"
