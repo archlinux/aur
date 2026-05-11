@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=starfish
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Starfish: Arch Depdency Viewer"
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=('dotnet-sdk-10.0' 'clang')
 # Source tarball from GitHub release
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Starfish/archive/v${pkgver}.tar.gz")
 
-sha256sums=('83d9fe30753246f1ed5736d9a8468839055628230d5b81be0c3351476a9ef457')
+sha256sums=('c5e658b40ae150e73ddd4f4104c1da8f1b3bef0272d83b7e5010d9cf0bad783a')
 
 build() {
   cd "$srcdir/Starfish-${pkgver}"
@@ -41,12 +41,12 @@ package() {
 Name=Starfish
 Comment=Arch Depdency Viewer
 Exec=/usr/bin/starfish
-Icon=starfishlogo
+Icon=starfish
 Type=Application
 Categories=System;Utility;
 Terminal=false
 EOF
 
   # Install icon
-  install -Dm644 Starfish/Assets/starfish.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/starfishlogo.png"
+  install -Dm644 Starfish/Assets/starfish.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/starfish.png"
 }
