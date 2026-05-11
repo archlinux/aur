@@ -1,6 +1,6 @@
 pkgbase = budget-app
 	pkgdesc = Zarządzanie Budżetem Domowym
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/KlapkiSzatana/budget-app
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = budget-app
 	depends = python-matplotlib
 	depends = python-pypdf
 	depends = python-pillow
-	source = git+https://github.com/KlapkiSzatana/budget-app.git#tag=v1.6.2
+	source = git+https://github.com/KlapkiSzatana/budget-app.git#tag=v1.6.3
 	sha256sums = SKIP
 
 pkgname = budget-app
