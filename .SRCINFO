@@ -2,7 +2,7 @@ pkgbase = tuner
 	pkgdesc = GNU/Linux app to discover and play internet radio stations. Geared towards RadioBrowser
 	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/louis77/tuner
+	url = https://github.com/tuner-labs/tuner
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = tuner
 	depends = gst-plugins-bad-libs
 	depends = gst-plugins-good
 	optdepends = gst-libav: play AAC[+] streams
-	source = tuner-2.0.0.tar.gz::https://github.com/louis77/tuner/archive/refs/tags/v2.0.0.tar.gz
+	source = tuner-2.0.0.tar.gz::https://github.com/tuner-labs/tuner/archive/refs/tags/v2.0.0.tar.gz
 	sha256sums = 9d38d0d9dfde3a642936ef51ca9797a1c94b571f940d575e568688089bc1bf9b
 
 pkgname = tuner
