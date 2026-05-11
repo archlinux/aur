@@ -1,6 +1,6 @@
 pkgbase = python-chromadb-bin
 	pkgdesc = AI-native open-source embedding database (prebuilt)
-	pkgver = 1.5.8
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://github.com/chroma-core/chroma
 	arch = x86_64
