@@ -2,7 +2,7 @@
 
 pkgname=radsecproxy
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='a generic RADIUS proxy that in addition to to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS'
 arch=('i686' 'x86_64')
 url='https://radsecproxy.github.io/'
@@ -18,30 +18,30 @@ sha256sums=('1fe3f25a392b74db1fe62868e19e883acd1dc0e1f318715299920fcc5e166f97'
             '3cc1e1a5746e4bd543d2646c6a3b444de05f38d29ca7408a1f5382ab34366cf8')
 
 prepare() {
-	cd ${pkgname}-${pkgver}/
+  cd ${pkgname}-${pkgver}/
 
-	autoreconf -fi
+  autoreconf -fi
 }
 
 build() {
-	cd ${pkgname}-${pkgver}/
+  cd ${pkgname}-${pkgver}/
 
-	./configure \
-		--prefix=/usr \
-		--bindir=/usr/bin \
-		--sbindir=/usr/bin \
-		--sysconfdir=/etc/radsecproxy
-	make
+  ./configure \
+    --prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc/radsecproxy
+  make
 }
 
 package() {
-	cd ${pkgname}-${pkgver}/
+  cd ${pkgname}-${pkgver}/
 
-	make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 
-	install -D -m0644 radsecproxy.conf.5 "${pkgdir}"/usr/share/man/man5/radsecproxy.conf.5
-	install -D -m0644 radsecproxy.conf-example "${pkgdir}"/etc/radsecproxy/radsecproxy.conf
+  install -D -m0644 radsecproxy.conf.5 "${pkgdir}"/usr/share/man/man5/radsecproxy.conf.5
+  install -D -m0644 radsecproxy.conf-example "${pkgdir}"/etc/radsecproxy/radsecproxy.conf
 
-	install -D -m0644 ${srcdir}/radsecproxy.service "${pkgdir}"/usr/lib/systemd/system/radsecproxy.service
+  install -D -m0644 ${srcdir}/radsecproxy.service "${pkgdir}"/usr/lib/systemd/system/radsecproxy.service
 }
 
