@@ -1,6 +1,7 @@
 # Maintainer: Nithin <nithin3dev@gmail.com>
-
+# SKIP COMMENT CHECK
 pkgname=ozhium-ollium
+pkgdesc="System monitor daemon with GTK4 overlay UI. Monitors backlight, volume, battery, network, and Bluetooth changes and triggers an OSD overlay."
 pkgver=1.0.0
 pkgrel=1
 arch=(x86_64)
