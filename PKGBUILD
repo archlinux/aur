@@ -1,5 +1,5 @@
 pkgname=charliecloud
-pkgver=0.43
+pkgver=0.44
 pkgrel=1
 pkgdesc="A lightweight, fully unprivileged container implementation for HPC applications"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
     'wget: ch-test'
 )
 source=("https://gitlab.com/charliecloud/charliecloud/-/archive/v${pkgver}/charliecloud-v${pkgver}.tar.gz")
-sha1sums=('e4dd24e0e470e270bafd60f56b401ffbc9737c73')
+sha1sums=('92f2ea0ee40d726f2f2b588eb5472d5c31b7d251')
 url="https://charliecloud.io/"
 
 build() {
