@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=wavelog
-pkgver=2.4.1
-pkgrel=1
+pkgver=2.4.2
+pkgrel=2
 pkgdesc="Web-based amateur radio logging software - log your contacts from everywhere"
 arch=('any')
 url="https://www.wavelog.org/"
@@ -25,11 +25,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/wavelog/wavelog/archive/ref
         'nginx.example.conf'
         'wavelog.tmpfiles'
         'fix-install-lock-path.patch')
-sha256sums=('a16c68f85ea3a6c7ad8904c75542a3be4ff359d1422319fcffd523478f81e747'
+sha256sums=('c081f99f79c1a7396c2c488403f705f54f7736ebfdd1cf29386435b5dded0ca7'
             '329d52839b7a46bb91742327941d809a5e416a618c7427aa774e737f2e9c6439'
             '8b91e5fc08206075ee2ec794295c3038904cc547d2f01de9df0da2df257b1566'
             '0612d8d873a5fe50e55e7a055956e10d48d25d5b83db751c121c8615fc372539'
-            '6ceb4c16ac60f7e33d15ef7b8ae8cb2f2e37707c4cf371e558a0a63110db5370')
+            'b4c7f35c30f7598e369bc5b192623e24363b12a8e3ee06a72a0b6f2929b09f1d')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"

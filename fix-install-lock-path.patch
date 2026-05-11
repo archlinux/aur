@@ -1,31 +1,22 @@
---- wavelog-2.3.1/install/index.php	2026-02-11 23:42:59.000000000 +0800
-+++ wavelog-2.3.1.patched/install/index.php	2026-02-15 03:10:51.385753395 +0800
-@@ -15,7 +15,7 @@
+--- wavelog-2.4.2/install/index.php	2026-05-09 17:04:15.000000000 +0800
++++ wavelog-2.4.2.patched/install/index.php	2026-05-11 08:28:13.672626523 +0800
+@@ -33,7 +33,7 @@
  $directory = ltrim(str_replace('/install', '', dirname($_SERVER['SCRIPT_NAME'])), '/');
  $base_url = $http_scheme . '://' . $_SERVER['HTTP_HOST'] . ($directory !== '' ? '/' . $directory : '') . '/';
  
--if (!file_exists('.lock') && !file_exists('../application/config/config.php') && !file_exists('../application/config/docker/config.php')) {
-+if (!file_exists('/var/lib/wavelog/.install_lock') && !file_exists('../application/config/config.php') && !file_exists('../application/config/docker/config.php')) {
+-if (!file_exists('.lock') && !file_exists($db_config_path . 'config.php') && !file_exists($db_config_path . 'database.php')) {
++if (!file_exists('/var/lib/wavelog/.install_lock') && !file_exists($db_config_path . 'config.php') && !file_exists($db_config_path . 'database.php')) {
  
  	include 'includes/interface_assets/header.php';
  
---- wavelog-2.3.1/install/includes/interface_assets/triggers.php	2026-02-11 23:42:59.000000000 +0800
-+++ wavelog-2.3.1.patched/install/includes/interface_assets/triggers.php	2026-02-15 03:10:51.388587039 +0800
-@@ -44,7 +44,7 @@
- 
- if ($_POST['check_lockfile'] ?? false == true) {
- 
--	$lockfile = '../install/.lock';
-+	$lockfile = '/var/lib/wavelog/.install_lock';
- 
- 	if (file_exists($lockfile)) {
- 		$result = 'installer_locked';
-@@ -100,7 +100,7 @@
+--- wavelog-2.4.2/install/includes/interface_assets/triggers.php	2026-05-09 17:04:15.000000000 +0800
++++ wavelog-2.4.2.patched/install/includes/interface_assets/triggers.php	2026-05-11 08:28:17.346850109 +0800
+@@ -87,7 +87,7 @@
  }
  
  if ($_POST['run_installer_lock'] ?? false == true) {
 -	if (touch('.lock')) {
 +	if (touch('/var/lib/wavelog/.install_lock')) {
+ 		unset($_SESSION['installer_token']);
  		echo 'success';
  	} else {
- 		echo 'error';
