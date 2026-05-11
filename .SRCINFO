@@ -1,13 +1,12 @@
 pkgbase = atomicwallet
 	pkgdesc = Crypto wallet for buying, staking and swapping over 1000+ coins and tokens.
-	pkgver = 2.100.8
-	pkgrel = 2
+	pkgver = 2.101.7
+	pkgrel = 1
 	url = https://atomicwallet.io
 	arch = x86_64
 	license = Custon:atomicwallet
 	options = !debug
-	source = https://releases.atomicwallet.io/AtomicWallet-2.100.8.rpm
-	sha256sums = 8991a7d21f6eb73e2ea28d4dcb74e8ddec7232c136c8bfdcd1249e6b730d2c36
-	b2sums = b183f4f75b66744fdf172ecb4ccee826d0375f3fe6f75597cb131804b4996475ec285a8565a20e59c1929cdab9afadb357bede3567bfd170508ce7e2f522e5a1
+	source = https://releases.atomicwallet.io/AtomicWallet-2.101.7.rpm
+	b2sums = f518d66a0e25dfb2e79d323e550a8ca1efd32061c6ab5f6640062c21f696e36c5ddf1bf2e3b6d803b2bc73fe7399f7a2c3625fd692e1aba489128b89977448e4
 
 pkgname = atomicwallet
