@@ -80,6 +80,7 @@ build() {
     -G Ninja
     -W no-dev
     -D CMAKE_BUILD_TYPE=None
+    -D NO_HYPRPM=ON
     -D CMAKE_INSTALL_PREFIX=/usr
   )
   cmake "${cmake_options[@]}"
