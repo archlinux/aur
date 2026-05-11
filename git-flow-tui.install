@@ -1,4 +1,5 @@
 #!/bin/bash
+
 GIT_FLOW_TUI_EXEC=/usr/bin/git-flow-tui
 GIT_FLOW_EXEC=/usr/bin/git-flow
 GIT_FLOW_BASH_COMP=/usr/share/bash-completion/completions/git-flow
@@ -29,9 +30,6 @@ post_install() {
 post_upgrade() {
     create_git_flow_symlink
     generate_bash_completion
-}
-
-pre_remove() {
 }
 
 post_remove() {
