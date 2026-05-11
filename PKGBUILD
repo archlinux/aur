@@ -19,7 +19,7 @@ conflicts=(
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/authelia/pam/archive/v${pkgver}.tar.gz")
 
-sha256sums=('c972bc794eb45e3aeffafe8e148f3d1cfa1a188d21af05cd3e7f9a40444fec67')
+sha256sums=('af9542ea1ade603dcd3ef697e5fd01457317e4fec3151124c6a361c023e6bcfa')
 
 build() {
   export GOPATH="${srcdir}/gopath" PATH="${PATH}:${srcdir}/gopath/bin"

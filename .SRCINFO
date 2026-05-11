@@ -14,6 +14,6 @@ pkgbase = pam_authelia
 	conflicts = pam_authelia-bin
 	conflicts = pam_authelia-git
 	source = pam_authelia-0.1.1.tar.gz::https://github.com/authelia/pam/archive/v0.1.1.tar.gz
-	sha256sums = c972bc794eb45e3aeffafe8e148f3d1cfa1a188d21af05cd3e7f9a40444fec67
+	sha256sums = af9542ea1ade603dcd3ef697e5fd01457317e4fec3151124c6a361c023e6bcfa
 
 pkgname = pam_authelia
