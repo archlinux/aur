@@ -1,6 +1,6 @@
 # Maintainer: VoltChat Team <contact@voltagechat.app>
 pkgname=volt-desktop
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="VoltChat Desktop Application - Electron-based chat client"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://updates.voltagechat.app/desktop/
         "volt-desktop.png")
 noextract=("${pkgname}-${pkgver}.AppImage")
 
-sha256sums=('3168e20be43707359534ae6e8d8b35cb8297e68bad4a443412468fb4d981834d'
+sha256sums=('b01ea5855007113fc2a9982f5bcdfd9e04679f0804b4f8e76c8fc77ae8773d0e'
             'f1640087071165a04b5913c30391021584504f42bab61c36b7959fb3cdcc8da7'
             'f4e59ffb51c7ab41b9f3b1eacd9296801ad684eef88fa862bb44790c5714f56e')
 
