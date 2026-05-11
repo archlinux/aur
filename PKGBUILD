@@ -1,6 +1,6 @@
 # Maintainer: Damian Miller <rysas@mail.naimad.dev>
 pkgname=lumoria
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="A Linux installer and launcher for Final Fantasy XI"
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
 )
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('65f78cc1972b9ab9e9d53699ce40688b969e0d4907457a1b2e333699cbc95b55')
+sha256sums=('9e7ad4513394206c0f4a0da4969241df11f9e6dc1c80d0f5fb0352d8aee59a2f')
 
 build() {
   arch-meson "Lumoria-$pkgver" build
