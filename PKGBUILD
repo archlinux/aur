@@ -4,8 +4,8 @@
 pkgname=hyprlock-frozen
 pkgver=0.9.1.r1.g347e05a
 pkgrel=1
-conflicts=('hyprlock-git')
-provides=('hyprlock-frozen' 'hyprlock')
+conflicts=('hyprlock-git' 'hyprlock')
+provides=('hyprlock-frozen' )
 pkgdesc="Hyprland's GPU-accelerated screen locking utility - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
 backup=('etc/pam.d/hyprlock')
