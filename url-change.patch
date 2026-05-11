@@ -6,7 +6,7 @@ diff -ura hamclock-4.22.orig/ESPHamClock/wifi.cpp hamclock-4.22.new/ESPHamClock/
  
  // host name and port of backend server
 -const char *backend_host = "clearskyinstitute.com";
-+const char *backend_host = "hamclock.com";
++const char *backend_host = "ohb.hamclock.app";
  int backend_port = 80;
  
  // IP where server thinks we came from
