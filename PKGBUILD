@@ -1,7 +1,7 @@
 # Contributor: Andrew Rabert <ar nullsum.net>
 
 pkgname=aweber-cli
-pkgver=0.3.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="CLI for the AWeber API"
 url="https://github.com/andrewrabert/aweber-cli"
@@ -11,7 +11,7 @@ options=(!lto)
 license=('MIT')
 arch=('aarch64' 'x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/andrewrabert/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a561a5f8671396a9662957edadae41b1d68dd08000135e1e45bcf7fb55a2c2e0')
+sha256sums=('6824f31b3e67bf1e37e32da3f0732f227a716ea934fabbbcabbe77fb9b3c4f27')
 
 build() {
   cd "$pkgname-$pkgver"
