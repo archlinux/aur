@@ -1,26 +1,31 @@
 # Maintainer: Vladimir Gladkov <vovkos[at]gmail>
 
 pkgname=ioninja
-pkgver=5.10.2
+pkgver=5.10.3
 pkgtag=
-pkgrel=2
+pkgrel=1
 pkgdesc="Professional all-in-one terminal emulator, sniffer, and protocol analyzer"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "armv7h" "aarch64")
 url="https://ioninja.com"
 license=("custom")
 depends=("qt5-base" "openssl")
 options=("!strip")
 source_i686=("https://ioninja.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-x86.tar.xz")
 source_x86_64=("https://ioninja.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-amd64.tar.xz")
-sha256sums_i686=("fa09bae883e1742c5cbb02264adb66393885cdc06f6897a82ddb87d3e46ea715")
-sha256sums_x86_64=("170b624b9c4bf106c0fa3de4202c1c7038be8087d5d732b570fd98280baf578a")
+source_armv7h=("https://ioninja.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-arm32.tar.xz")
+source_aarch64=("https://ioninja.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-arm64.tar.xz")
+sha256sums_i686=("4da35c4f92ef4391fe9bdc18034107ce21590458d7de06031679c437a2ee4efe")
+sha256sums_x86_64=("e6e68ab81b019f1c775fec3b03e2fcdca4af76134191ae7b221a3d13453f9688")
+sha256sums_armv7h=("989041f16260242ba3414849f3ec2877a6f029342d7f7ed0bcb2a10f2c1907e7")
+sha256sums_aarch64=("6ea064a4033690fde15cc70421187eb3e4e3dea96a39e5ffe6414529cfe287e0")
 
 package() {
-	if [ "$CARCH" == "x86_64" ]; then
-		NJ_ARCH=amd64
-	else
-		NJ_ARCH=x86
-	fi
+	case "$CARCH" in
+	"i686")    NJ_ARCH=x86;;
+	"x86_64")  NJ_ARCH=amd64;;
+	"armv7h")  NJ_ARCH=arm32;;
+	"aarch64") NJ_ARCH=arm64;;
+	esac
 
 	NJ_DIR=ioninja-$pkgver$pkgtag-linux-$NJ_ARCH
 
