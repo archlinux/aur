@@ -1,6 +1,6 @@
 pkgbase = opengrep
 	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/opengrep/opengrep
 	arch = x86_64
@@ -26,13 +26,13 @@ pkgbase = opengrep
 	depends = python-typing_extensions
 	depends = python-urllib3
 	depends = python-wcmatch
-	source = opengrep-1.20.0.tar.gz::https://github.com/opengrep/opengrep/archive/refs/tags/v1.20.0.tar.gz
+	source = opengrep-1.21.0.tar.gz::https://github.com/opengrep/opengrep/archive/refs/tags/v1.21.0.tar.gz
 	source = semgrep-interfaces-e0777714cf175fda0dd9fa679f044cefbc983a13.tar.gz::https://github.com/opengrep/semgrep-interfaces/archive/e0777714cf175fda0dd9fa679f044cefbc983a13.tar.gz
-	sha256sums = 7a67fa772412dafa4835fbe5d7141b99dbce50bf1d2a492d0a8b566eb4091a5b
+	sha256sums = 791cf39a13a7a783581f85d53ebc04f05d629b96cf5d99dbd485571a89283542
 	sha256sums = b3c613800d530257c0b57197f7b33d440a340c7067a4844a8b845383f038135b
-	source_x86_64 = opengrep-core_linux_x86_v1.20.0.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.20.0/opengrep-core_linux_x86.tar.gz
-	sha256sums_x86_64 = 312b705c0011c15303b45ea19242a0df7452a02129dddb89c1a21190ae67410b
-	source_aarch64 = opengrep-core_linux_aarch64_v1.20.0.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.20.0/opengrep-core_linux_aarch64.tar.gz
-	sha256sums_aarch64 = 5f6e39e03ea20291e66eee74c6750f2765ff0a987dba897f14a549fb0ba97469
+	source_x86_64 = opengrep-core_linux_x86_v1.21.0.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.21.0/opengrep-core_linux_x86.tar.gz
+	sha256sums_x86_64 = 890c68a496fda1c867edcae8f7c0c494883bdf9fd2f10d78ec770b5acf0297e2
+	source_aarch64 = opengrep-core_linux_aarch64_v1.21.0.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.21.0/opengrep-core_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 1312305bb11a48dfe6f3c4418a859495cff1bacff4fd535d04c9b9a690b02af5
 
 pkgname = opengrep
