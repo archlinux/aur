@@ -1,0 +1,4 @@
+[febio]
+source = "git"
+git = "https://github.com/febiosoftware/FEBio.git"
+prefix = "v"

@@ -1,0 +1,23 @@
+pkgbase = febio
+	pkgdesc = Nonlinear finite element (FE) solver that is specifically designed for biomechanical applications
+	pkgver = 4.12
+	pkgrel = 1
+	url = https://febio.org
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.10
+	depends = fftw
+	depends = glibc
+	depends = hypre
+	depends = levmar
+	depends = libgomp
+	depends = mmg
+	depends = zlib
+	source = https://github.com/febiosoftware/FEBio/archive/refs/tags/v4.12/FEBio-4.12.tar.gz
+	source = febio_gcc15_include_cstring.patch::https://github.com/febiosoftware/FEBio/pull/92.patch?full_index=1
+	source = febio_cmake.patch
+	sha256sums = 4f21454e2c3c497c7cf85263b0eb080329039297eeb21265121ae67cdb4f64af
+	sha256sums = c4d712939b57bb37d77f49fb36e6bb903ab21a0c2b1f805ed1b38865f6765dd5
+	sha256sums = 4c9e330c92c53792025fd0cc68afd3fbbcf22cb56853cedda59347f39b16c732
+
+pkgname = febio
