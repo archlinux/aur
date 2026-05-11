@@ -1,0 +1,5 @@
+/asus_rog_ryujin-hwmon/
+/src/
+/pkg/
+/*.pkg.tar*
+/*.log

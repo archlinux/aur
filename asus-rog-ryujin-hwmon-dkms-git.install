@@ -1,0 +1,12 @@
+post_install() {
+  cat <<'EOF'
+asus-rog-ryujin-hwmon-dkms-git:
+  The module will be loaded automatically on future boots.
+  For the current boot, after DKMS finishes building, run:
+    sudo modprobe asus_rog_ryujin
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

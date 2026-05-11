@@ -1,0 +1,22 @@
+pkgbase = asus-rog-ryujin-hwmon-dkms-git
+	pkgdesc = Hwmon Linux kernel driver for monitoring ASUS ROG Ryujin AIO coolers
+	pkgver = r19.4b9fccb
+	pkgrel = 1
+	url = https://github.com/aleksamagicka/asus_rog_ryujin-hwmon
+	install = asus-rog-ryujin-hwmon-dkms-git.install
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	optdepends = linux-headers: build the module for the stock Arch kernel
+	optdepends = linux-lts-headers: build the module for the stock Arch LTS kernel
+	provides = asus-rog-ryujin-hwmon-dkms
+	conflicts = asus-rog-ryujin-hwmon-dkms
+	source = asus_rog_ryujin-hwmon::git+https://github.com/aleksamagicka/asus_rog_ryujin-hwmon.git
+	source = dkms.conf
+	source = asus_rog_ryujin.conf
+	sha256sums = SKIP
+	sha256sums = da9bad30a7faa72306f3fefbd4dcc5549710884bb1e700dee5f0276bde9ea4bd
+	sha256sums = 289e1f160ddde0b549167e8669c562e4897caf45b847884fdf4c4e4d1b849081
+
+pkgname = asus-rog-ryujin-hwmon-dkms-git
