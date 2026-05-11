@@ -1,6 +1,6 @@
 # Maintainer: Mark Roboff <mark.roboff@bluecircuit.ai>
 pkgname=vm-curator-bin
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="A TUI application to manage QEMU/KVM VMs (pre-built binary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 provides=('vm-curator')
 conflicts=('vm-curator')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mroboff/vm-curator/releases/download/v$pkgver/vm-curator-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('21f8183719c6103e829cf98589395d30ec17d917921774a0ca9ee73e54838f5d')
+sha256sums=('c5eb6a3ea0d389caa9d33a7fd9e7d3efa3ef33f7e9e543ac42bbb3c07d3e9971')
 
 package() {
     install -Dm755 "vm-curator" "$pkgdir/usr/bin/vm-curator"
