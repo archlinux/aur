@@ -1,7 +1,7 @@
 pkgbase = dimethoxy-disflux-bin
-	pkgdesc = Transient Smearing Audio Effect for VST3, LV2 and CLAP compatible hosts
+	pkgdesc = Phase Dispersion Audio Effect for VST3, LV2 and CLAP compatible hosts
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dimethoxy/Disflux
 	arch = x86_64
 	license = GPL3
