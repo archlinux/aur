@@ -2,8 +2,8 @@
 
 pkgname=fastgltf
 pkgver=0.9.0
-pkgrel=1
-pkgdesc=''
+pkgrel=2
+pkgdesc='A modern C++17 glTF 2.0 library focused on speed, correctness, and usability'
 arch=($CARCH)
 url='https://fastgltf.readthedocs.io/'
 license=('MIT')

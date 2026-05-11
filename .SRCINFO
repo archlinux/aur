@@ -1,6 +1,7 @@
 pkgbase = fastgltf
+	pkgdesc = A modern C++17 glTF 2.0 library focused on speed, correctness, and usability
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fastgltf.readthedocs.io/
 	arch = aarch64
 	license = MIT
