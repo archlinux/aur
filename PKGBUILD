@@ -6,7 +6,7 @@
 _pkgname="mindustry"
 pkgbase="$_pkgname"
 pkgver=157.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
 license=('GPL-3.0-only')
@@ -83,7 +83,7 @@ if [ -n "\$_best" ]; then
   export JAVA_HOME="\$_best"
 fi
 
-exec /usr/bin/java -jar /usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar "\$@"
+exec "\$JAVA_HOME/bin/java" -jar "/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar" "\$@"
 END
 
   cd "$_pkgsrc"
