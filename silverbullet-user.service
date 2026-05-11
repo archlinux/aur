@@ -1,0 +1,20 @@
+[Unit]
+Description=SilverBullet markdown note-taking application (per-user service)
+Documentation=https://silverbullet.md/Install/Configuration
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment=SB_HOSTNAME=localhost
+Environment=SB_PORT=3000
+EnvironmentFile=-%h/.config/silverbullet/defaults
+Environment=SB_FOLDER=%h/.local/share/silverbullet
+ExecStart=/usr/bin/silverbullet
+UMask=0027
+
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
