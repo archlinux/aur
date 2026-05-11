@@ -1,35 +1,97 @@
-# Maintainer: robertfoster
-pkgname='opencode-git'
-pkgver=0.9.3
-options=('!debug' '!strip')
-pkgrel=1
-pkgdesc='The AI coding agent built for the terminal.'
-url='https://github.com/sst/opencode'
-arch=('aarch64' 'x86_64')
-license=('MIT')
-provides=('opencode')
-conflicts=('opencode-bin')
-depends=('fzf' 'ripgrep')
-makedepends=('git' 'bun-bin' 'go')
+# Maintainer: pngdeity <pngdeity@tutanota.com>
+# Contributor: robertfoster <morf3089@gmail.com>
+_pkgname=opencode
 
-source=("${pkgname%%-git}::git+${url}.git")
-sha256sums=('SKIP')
+pkgname=${_pkgname}-git
+_githubname=anomalyco/opencode
+pkgver=1.14.48.r38.gcddab63
+pkgrel=1
+pkgdesc="The open source coding agent"
+url="https://github.com/${_githubname}"
+arch=(aarch64 x86_64)
+license=(MIT)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+depends=(curl fzf git glibc icu ripgrep)
+makedepends=(bun git)
+optdepends=('wl-clipboard: clipboard support on Wayland'
+            'xclip: clipboard support on X11')
+options=('!debug' '!strip')
+source=(
+  "$_pkgname::git+${url}.git"
+  # Live AI model catalog from models.dev — embedded at build time so
+  # opencode can display available models without runtime network access.
+  'models.dev-api.json::https://models.dev/api.json'
+)
+sha256sums=('SKIP'
+            'SKIP')
+
+_target_arch() {
+  case "${CARCH}" in
+    'x86_64')
+      printf 'x64-baseline\n'
+      ;;
+    'aarch64')
+      printf 'arm64\n'
+      ;;
+    *)
+      printf 'Unsupported architecture: %s\n' "${CARCH}" >&2
+      return 1
+      ;;
+  esac
+}
 
 pkgver() {
-  cd "${pkgname%%-git}"
-  printf "%s" "$(git describe --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$_pkgname"
+  local version tag base rev hash
+
+  version=$(sed -n 's/^[[:space:]]*"version": "\([^"]*\)",$/\1/p' packages/opencode/package.json | head -n1)
+  tag="v${version}"
+  base=$(git merge-base HEAD "${tag}")
+  rev=$(git rev-list --count "${base}..HEAD")
+  hash=$(git rev-parse --short=7 HEAD)
+
+  printf '%s.r%s.g%s\n' "${version}" "${rev}" "${hash}"
+}
+
+prepare() {
+  cd "$_pkgname"
+  bun install --frozen-lockfile --ignore-scripts
 }
 
 build() {
-  cd "${pkgname%%-git}"
-  bun install
-  cd packages/tui
-  CGO_ENABLED=0 go build -ldflags="-s -w -X main.Version=${pkgver}" -o tui cmd/opencode/main.go
-  cd "../${pkgname%%-git}"
-  bun build --define OPENCODE_TUI_PATH="'$(realpath ../tui/tui)'" --define OPENCODE_VERSION="'${pkgver}'" --compile --target=bun-linux-x64 --outfile=opencode ./src/index.ts
+  cd "$_pkgname"
+  OPENCODE_VERSION=$pkgver \
+    MODELS_DEV_API_JSON="${srcdir}/models.dev-api.json" \
+    bun run --cwd packages/opencode build --single --baseline --skip-install
+}
+
+check() {
+  cd "$_pkgname/packages/opencode"
+
+  # Tests currently fail due to https://github.com/oven-sh/bun/issues/30014
+  # Revisit once the bug is fixed.
+  #
+  # export GIT_CONFIG_GLOBAL=$PWD/gitconfig
+  # git config --global user.email "builduser@archlinux.org"
+  # git config --global user.name "Build User"
+  # bun test --timeout=20000 --parallel
 }
 
 package() {
-  cd "${pkgname%%-git}/packages/opencode"
-  install -Dm755 ./"${pkgname%%-git}" "${pkgdir}/usr/bin/${pkgname%%-git}"
+  local target
+
+  cd "$_pkgname"
+  target="$(_target_arch)"
+
+  install -Dm755 \
+    "packages/opencode/dist/opencode-linux-${target}/bin/opencode" \
+    "${pkgdir}/usr/bin/opencode"
+
+  SHELL=/bin/bash "${pkgdir}/usr/bin/opencode" completion \
+    | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/opencode"
+  SHELL=/bin/zsh "${pkgdir}/usr/bin/opencode" completion \
+    | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_opencode"
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
