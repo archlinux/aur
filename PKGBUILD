@@ -17,8 +17,9 @@ prepare() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/opt/sovet"
+    install -dm777 "${pkgdir}/opt/sovet"
     install -Dm755 "Soviet_${pkgver}_amd64.AppImage" "${pkgdir}/opt/sovet/sovet.AppImage"
+    chmod 777 "${pkgdir}/opt/sovet/sovet.AppImage"
 
     # Иконка
     install -Dm644 squashfs-root/sovietmsg.png \
