@@ -17,7 +17,7 @@ depends=('python' 'python-aiofiles' 'python-aiostream' 'python-click' 'python-ea
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 		"fix_typo.patch")
 sha256sums=('4fe4a89eaeae6b33d199e772dda211ac1c3de10438c4534b790860a291c722dc'
-            'd2f851cd67bcf58c357c71a418697c68c66d5214d8974dc680d3389d86be5a6c')
+            '20c687508b10d5b0f56f9c2d40dbce9196137d75ded5328043bbb67a4b4d5d93')
 
 prepare() {
 	cd "${_name}-${pkgver}"

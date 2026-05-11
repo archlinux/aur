@@ -1,5 +1,5 @@
---- multiplex-0.6.1/src/multiplex/buffer.py	2024-10-16 00:48:39.257068277 -0300
-+++ multiplex-0.6.1/src/multiplex/buffer.py	2024-10-16 00:48:43.203708134 -0300
+--- ./src/multiplex/buffer.py	2024-10-16 00:48:39.257068277 -0300
++++ ./src/multiplex/buffer.py	2024-10-16 00:48:43.203708134 -0300
 @@ -136,11 +136,11 @@
      def erase_in_display(self, how=0, private=False):
          interval = None
