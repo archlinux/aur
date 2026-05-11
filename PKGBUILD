@@ -1,6 +1,6 @@
 # Maintainer: ML <contact@mlgpt.io>
 pkgname=late-cli
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="High performance coding agent that just works with local or cloud models. Minimal token usage, extreme performance."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:BUSL-1.1')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7058ada1c3a3d7fe5247c2689197596f519fbbc6276e7f3dc3a1ceb3f29422e0')
+sha256sums=('ad80e6b887176352cdc9289afd2d942b2dc70f28d9534059342a61f9047cd16b')
 
 build() {
   cd "${pkgname}-${pkgver}"
