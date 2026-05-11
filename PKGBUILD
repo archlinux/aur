@@ -4,7 +4,7 @@
 # Contributor: neilotoole <neilotoole@apache.org>
 
 pkgname='sq-bin'
-pkgver=0.50.2
+pkgver=0.51.0
 pkgrel=1
 pkgdesc='sq data wrangler'
 url='https://sq.io'
@@ -14,10 +14,10 @@ provides=('sq')
 conflicts=('sq')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v${pkgver}/sq-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('eb475a32453494240c7cac9c54a4c8cf07e7c670a6870014a0db701f12c1d8d3')
+sha256sums_aarch64=('f0e7f3003c760c981bb4afcbd8761e4655b6367ff9e8d8ef3dbd866b19ba4f1b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v${pkgver}/sq-${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('2c7afa781757682e02eb210fb9a2d9526ab168f7393ecf1b8f51850a95817a4b')
+sha256sums_x86_64=('a9424fb9422cf7ae09c8b5bc62b032f20ea708e37183b044a17621e0e9567e76')
 
 package() {
   # bin
