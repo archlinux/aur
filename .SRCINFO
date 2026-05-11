@@ -1,7 +1,7 @@
 pkgbase = linox-icon-theme-git
 	pkgdesc = A premium squircle-based icon theme for Linux desktops blending macOS aesthetics with native Linux consistency
 	pkgver = r15.c03c8bf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abhijeetshewale05/Linox-Icon-Theme
 	install = linox-icon-theme.install
 	arch = any
