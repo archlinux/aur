@@ -1,8 +1,8 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=xmonad-recompile-pacman-hook-git
-pkgver=r81.9d5f298
-pkgrel=2
+pkgver=r108.97400bf
+pkgrel=1
 pkgdesc='Pacman hook to recompile Xmonad config and avoid the infamous black screen'
 arch=('any')
 _gitname='pacman-hooks'
