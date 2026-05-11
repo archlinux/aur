@@ -10,7 +10,6 @@ pkgbase = iscsi-util
 	depends = open-iscsi
 	depends = util-linux
 	depends = libnotify
-	depends = dotnet-runtime-9.0
 	depends = e2fsprogs
 	depends = xfsprogs
 	depends = btrfs-progs
