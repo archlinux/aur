@@ -4,12 +4,12 @@
 _pkgname=tp-dusk
 pkgname=${_pkgname}-git
 pkgver=1.0.1.r2.g40e3f7d
-pkgrel=3
+pkgrel=4
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
 license=('CC0-1.0')
-depends=(libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ hicolor-icon-theme bash)
+depends=(libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ bash)
 makedepends=(git cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr patchelf)
 source=(
   "git+$url"
@@ -20,7 +20,7 @@ source=(
 
 sha256sums=('SKIP'
             'SKIP'
-            '676a98a4e935a1c23406db2d72fb37b80684e495d7264e96c6c08fffc1f7865f'
+            '5e7de2d2280b48efa543dc9a0484d9af6a18d6d881833deb4ca333072bc46aa0'
             '1e6547cf4dd69f0ecb6895733dcd13f3e265c6267298c7bf83dd6acbad42fda5')
 
 pkgver() {
@@ -48,17 +48,15 @@ build() {
       -DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
       -DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
       -DDUSK_ENABLE_UPDATE_CHECKER=OFF
-  
-    cmake --build build
+  cmake --build build
 }
 
 package() {
-  install -Dm 755 "${srcdir}/dusk/build/dusk" "${pkgdir}/usr/lib/${pkgname}/dusk"
+  install -Dm 755 "${srcdir}/dusk/build/dusk" "${pkgdir}/usr/share/${pkgname}/dusk"
   install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/${pkgname}"
-  install -dm 755 "${pkgdir}/usr/share/${pkgname}"
   cp -r "${srcdir}/dusk/res" "${pkgdir}/usr/share/${pkgname}/res"
 
-  install -Dm 644 "${srcdir}/dusk/res/icon.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
+  install -Dm 644 "${srcdir}/dusk/res/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm 755 "tp-dusk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   patchelf --remove-rpath "${pkgdir}/usr/lib/${pkgname}/dusk"
