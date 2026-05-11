@@ -9,7 +9,7 @@
 pkgname=xmind
 _pkgver=26.02.04171-202602092329
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=(x86_64)
 url="https://www.xmind.net"
@@ -18,7 +18,7 @@ depends=(gtk3 alsa-lib libxkbfile nss)
 options=(!strip)
 
 source_x86_64=(
-  "https://dl3.xmind.net/Xmind-for-Linux-amd64bit-${_pkgver}.deb" 
+  "https://dl3.xmind.app/Xmind-for-Linux-amd64bit-${_pkgver}.deb"
   "${pkgname}.desktop" 
   "${pkgname}.sh"
 )

@@ -1,7 +1,7 @@
 pkgbase = xmind
 	pkgdesc = Brainstorming and Mind Mapping Software
 	pkgver = 26.02.04171.202602092329
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xmind.net
 	arch = x86_64
 	license = unknown
