@@ -1,6 +1,6 @@
 pkgbase = mawtrix
 	pkgdesc = Simple [matrix] TUI i made on C# because i was very bored. I wanted to practice and check out how hard it would be to make a Matrix client, turns out, it's not that hard after all.
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/Entarno54/Mawtrix
 	arch = x86_64

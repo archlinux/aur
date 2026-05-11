@@ -1,7 +1,7 @@
 # Maintainer: Entar <akulagin088@gmail.com>
 pkgname=mawtrix
 _pkgname_orig=Mawtrix
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Simple [matrix] TUI i made on C# because i was very bored. I wanted to practice and check out how hard it would be to make a Matrix client, turns out, it's not that hard after all."
 arch=('x86_64')
