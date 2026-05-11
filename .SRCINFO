@@ -5,6 +5,7 @@ pkgbase = tuner
 	url = https://github.com/louis77/tuner
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = vala
