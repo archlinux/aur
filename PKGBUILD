@@ -4,12 +4,12 @@
 _pkgname=tuner
 pkgname=$_pkgname-git
 pkgver=2.1.1.beta.1.r79.g8a05367
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist radio station player geared towards RadioBrowser"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/tuner-labs/${_pkgname}"
 license=('GPL-3.0-only')
-depends=('gtk3' 'libgee' 'gst-plugins-bad-libs')
+depends=('gtk3' 'libgee' 'gst-plugins-bad-libs' 'gst-plugins-good')
 optdepends=('gst-libav: play AAC[+] streams')
 makedepends=('git' 'meson' 'vala')
 provides=("${_pkgname}")
