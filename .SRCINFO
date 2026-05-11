@@ -1,6 +1,6 @@
 pkgbase = koito
 	pkgdesc = Modern, themeable scrobbler that you can use with any program that scrobbles to ListenBrainz
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://koito.io/
 	install = koito.install
@@ -17,10 +17,10 @@ pkgbase = koito
 	depends = poppler-glib
 	optdepends = postgresql: database storage backend
 	backup = etc/koito.env
-	source = koito-0.1.9.tar.gz::https://github.com/gabehf/Koito/archive/refs/tags/v0.1.9.tar.gz
+	source = koito-0.1.10.tar.gz::https://github.com/gabehf/Koito/archive/refs/tags/v0.1.10.tar.gz
 	source = koito.service
 	source = koito.env
-	sha256sums = 7fddf5a8dfb4e99110f569cdabbf7a90abc8306b7bdaebc1df5c8c9e35c595f3
+	sha256sums = 20f815865bbfd372ec801a0a37bd36dfc98a352dd0c5331d56f24b41e638c1ba
 	sha256sums = 512c7911ef7d04561ddc0ccc70d240617be60cdedbfab3bfd43b2ee80d1d43bb
 	sha256sums = e001fae2ecb86bfc5425f4ca2a1c4bcee7522a63406cc1e218a901770197474d
 
