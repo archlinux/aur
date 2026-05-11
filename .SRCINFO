@@ -1,6 +1,6 @@
 pkgbase = jjui
 	pkgdesc = TUI designed for interacting with the Jujutsu version control system
-	pkgver = 0.10.4
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/idursun/jjui
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jjui
 	makedepends = go
 	depends = glibc
 	depends = jujutsu
-	source = https://github.com/idursun/jjui/archive/v0.10.4/jjui-0.10.4.tar.gz
-	sha256sums = a62eb917e69368f72100e2793d3781722fc0f66038e79303bb1b12ef0fc8b8e9
+	source = https://github.com/idursun/jjui/archive/v0.10.5/jjui-0.10.5.tar.gz
+	sha256sums = 0369e07b2aaf52a05d32bb11479fdf314aff19e41d6ebc8facb83340ebc4e2bc
 
 pkgname = jjui
