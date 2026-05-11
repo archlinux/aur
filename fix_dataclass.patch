@@ -1,0 +1,18 @@
+--- ./textomatic/context.py	2020-10-05 16:12:58.489121700 -0300
++++ ./textomatic/context.py	2020-10-05 16:12:58.489121700 -0300
+@@ -1,5 +1,5 @@
+ from contextvars import ContextVar
+-from dataclasses import dataclass
++from dataclasses import dataclass, field
+ 
+ from prompt_toolkit import Application
+ from prompt_toolkit.buffer import Buffer
+@@ -28,7 +28,7 @@
+ 
+ @dataclass
+ class ProcessContext:
+-    processed_command: ProcessedCommand = ProcessedCommand("")
++    processed_command: ProcessedCommand = field(default_factory=lambda: ProcessedCommand(""))
+     processed_input: ProcessedInput = None
+ 
+ 

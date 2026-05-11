@@ -1,0 +1,3 @@
+[python-textomatic]
+source = "pypi"
+pypi = "textomatic"

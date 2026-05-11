@@ -1,0 +1,27 @@
+pkgbase = python-textomatic
+	pkgdesc = Scratchpad for tabular data transformations
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dankilman/textomatic
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-pygments
+	depends = python-prompt_toolkit
+	depends = python-click
+	depends = python-tabulate
+	depends = python-wcwidth
+	depends = python-pyparsing
+	depends = python-clevercsv
+	provides = textomatic
+	source = https://files.pythonhosted.org/packages/source/t/textomatic/textomatic-0.3.0.tar.gz
+	source = fix_dataclass.patch
+	sha256sums = efc7873e6348accd95f3ca2e4d02fecd3aa3cdba1f245052ddadc2ab66fdb278
+	sha256sums = c20f26320230e52c5d93192c6b2dfedc95a951585d3563221969fb9d56e6d7ee
+
+pkgname = python-textomatic
