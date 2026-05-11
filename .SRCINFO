@@ -1,0 +1,22 @@
+pkgbase = akp
+	pkgdesc = A package manager wrapper for pacman, yay and flatpak
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Akr4ta/akp
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = expac
+	depends = gawk
+	depends = ncurses
+	depends = pacman
+	depends = pacman-contrib
+	depends = sed
+	depends = util-linux
+	optdepends = yay: for AUR support
+	optdepends = flatpak: for Flatpak support
+	source = akp-1.0.0.tar.gz::https://github.com/Akr4ta/akp/archive/v1.0.0.tar.gz
+	sha256sums = 63fe48ac698871b00a9b564ca1e9cd9d2683738e652b472ba8f345c590dd1775
+
+pkgname = akp
