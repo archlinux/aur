@@ -1,0 +1,16 @@
+pkgbase = sang
+        pkgdesc = Sang is not GRUB
+        pkgver = 0.0.3
+        pkgrel = 1
+        url = https://github.com/woowgers/sang
+        arch = any
+        license = WTFPL
+        depends = polkit
+        depends = systemd
+        depends = efibootmgr
+        depends = nushell
+        depends = zenity
+        source = sang-v0.0.3.tar.gz::https://github.com/woowgers/sang/archive/0.0.3.tar.gz
+        sha256sums = 9f0eb2487f2515afc91cde2689565006daa1ab88bafbe527afe34143f6ac0d4e
+
+pkgname = sang
