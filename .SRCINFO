@@ -1,0 +1,22 @@
+pkgbase = app-terminator
+	pkgdesc = Unified GTK4/libadwaita manager for installed applications across system packages, Flatpak, Snap, and AppImage
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/r6mez/Terminator
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gettext
+	makedepends = appstream
+	makedepends = desktop-file-utils
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = packagekit
+	depends = polkit-gnome
+	source = app-terminator-0.1.0.tar.gz::https://github.com/r6mez/Terminator/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ea64e743e7fa758ffaa041fad279fa3f7bf64fdda571ff6cec62b0ac8b2ccbe2
+
+pkgname = app-terminator
