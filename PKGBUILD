@@ -4,7 +4,7 @@
 _pkgname=xeve
 pkgname=xeve-llvm
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='MPEG-5 EVC (Essential Video Coding) encoder — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://github.com/mpeg5/xeve/'
@@ -18,7 +18,7 @@ source=("https://github.com/mpeg5/xeve/archive/v${pkgver}/${_pkgname}-${pkgver}.
         '010-xeve-disable-werror.patch'
         '020-xeve-fix-pkg-config.patch')
 sha256sums=('238c95ddd1a63105913d9354045eb329ad9002903a407b5cf1ab16bad324c245'
-            '8c4b607f34a5d39e824f86d00ab101849595cb49a2f67eed131487d658ec7206'
+            'a43abf66e99c1daaee6de8f52f0d270fd89bdd52785f663a73209a1be96839aa'
             '68ae77132ec2b3dd8de641d16f3d7cc0de819ddb116484809445666b4d215187')
 
 prepare() {
@@ -41,6 +41,8 @@ build() {
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
+    export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     # https://github.com/mpeg5/xeve/issues/108
     export CFLAGS+=' -mno-avx'
     

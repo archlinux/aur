@@ -1,11 +1,40 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -103,7 +103,7 @@ elseif( UNIX OR MINGW )
+@@ -15,18 +15,19 @@ execute_process(
+     COMMAND git describe --match "v[0-9]*.[0-9]*.[0-9]*" --abbrev=0 --tags
+     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+     RESULT_VARIABLE RESULT
+-    OUTPUT_VARIABLE OUTPUT)
++    OUTPUT_VARIABLE OUTPUT
++    ERROR_QUIET)
+ 
+ if(NOT RESULT EQUAL 0)
+ 
+-  find_program(GIT_COMMAND "git")
+-  if(GIT_COMMAND)
+-    message(WARNING "There is no valid git repository in your working directory \"${CMAKE_SOURCE_DIR}\" .")
+-  else()
+-    message(WARNING "You have no git tool installed.")
+-  endif()
+-
+   if(NOT EXISTS "${CMAKE_SOURCE_DIR}/version.txt")
++    find_program(GIT_COMMAND "git")
++    if(GIT_COMMAND)
++      message(WARNING "There is no valid git repository in your working directory \"${CMAKE_SOURCE_DIR}\" .")
++    else()
++      message(WARNING "You have no git tool installed.")
++    endif()
++
+     message(FATAL_ERROR
+ 	    "version.txt file doesn't exist!\n"
+ 	    "Since your working directory doesn't contain a git repository you must provide \"${CMAKE_SOURCE_DIR}/version.txt\" file containing a valid version string.\n"
+@@ -103,8 +104,8 @@ elseif( UNIX OR MINGW )
          set(OPT_DBG "-DNDEBUG") # disable assert
      endif()
  
 -    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OPT_DBG} -${OPT_LV} -fomit-frame-pointer -Wall -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-attributes -Werror -Wno-strict-overflow -Wno-unknown-pragmas -Wno-stringop-overflow -std=c99")
-+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OPT_DBG} -${OPT_LV} -fomit-frame-pointer -Wall -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-attributes -Wno-strict-overflow -Wno-unknown-pragmas -Wno-stringop-overflow -std=c99")
-     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-pointer-sign -pthread -Wno-pointer-to-int-cast -Wno-maybe-uninitialized")
+-    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-pointer-sign -pthread -Wno-pointer-to-int-cast -Wno-maybe-uninitialized")
++    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OPT_DBG} -${OPT_LV} -fomit-frame-pointer -Wall -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-attributes -Wno-strict-overflow -Wno-unknown-pragmas -Wno-typedef-redefinition -Wno-for-loop-analysis -Wno-shift-negative-value -Wno-parentheses-equality -Wno-empty-body -std=c99")
++    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-pointer-sign -pthread -Wno-pointer-to-int-cast")
      set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lm")
  endif()
