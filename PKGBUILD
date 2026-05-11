@@ -18,23 +18,23 @@ sha256sums=("d700863b548cbc7f27a678cee305f561669a126eb2cc11d36a7023dfc462b9c4")
 build() {
     cd "SPIRV-Cross-${pkgver//./-}"
 
-    for architecture in ${_architectures[@]}; do
-        $architecture-cmake \
-            -B "build-$architecture" \
+    for _arch in ${_architectures[@]}; do
+        $_arch-cmake \
+            -B "build-$_arch" \
             -S . \
             -DCMAKE_BUILD_TYPE=Release \
             -DSPIRV_CROSS_SHARED=ON \
             -DSPIRV_CROSS_CLI=OFF \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
-        cmake --build "build-$architecture" --parallel
+        cmake --build "build-$_arch" --parallel
     done
 }
 
 package() {
     cd "SPIRV-Cross-${pkgver//./-}"
 
-    for architecture in ${_architectures[@]}; do
-        cmake --install "build-$architecture" --prefix "$pkgdir/usr/$architecture"
+    for _arch in ${_architectures[@]}; do
+        cmake --install "build-$_arch" --prefix "$pkgdir/usr/$_arch"
     done
 }
