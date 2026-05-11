@@ -1,0 +1,23 @@
+pkgbase = 9router-bin
+	pkgdesc = AI router and proxy providing an OpenAI-compatible endpoint for multiple AI providers
+	pkgver = 0.4.29
+	pkgrel = 1
+	url = https://github.com/decolua/9router
+	install = 9router-bin.install
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = python
+	depends = nodejs>=18.0.0
+	optdepends = systemd: user service management via systemctl --user
+	options = !strip
+	source = 9router-bin-0.4.29.tgz::https://registry.npmjs.org/9router/-/9router-0.4.29.tgz
+	source = 9router.sh
+	source = 9router.service
+	source = .env.example
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = 9router-bin

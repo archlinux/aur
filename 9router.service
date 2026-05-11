@@ -1,0 +1,17 @@
+[Unit]
+Description=9Router AI gateway
+Documentation=https://github.com/decolua/9router
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=HOSTNAME=127.0.0.1
+EnvironmentFile=-%h/.9router/.env
+ExecStart=/usr/bin/9router --no-browser --host 127.0.0.1
+Restart=on-failure
+RestartSec=5
+WorkingDirectory=%h
+
+[Install]
+WantedBy=default.target
