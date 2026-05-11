@@ -4,7 +4,7 @@
 
 pkgname=grass
 pkgver=8.5.0
-pkgrel=1
+pkgrel=2
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
@@ -25,8 +25,8 @@ sha256sums=('c40cb6e741e92a253a44ddd38c7b665d0b44726495f0b8422ef205c0d33ca998'
 build() {
   cd $pkgname-$pkgver
 
-  # Ancient autoconf used upstream can't handle CPPFLAGS correctly, so set CPP to ignore warnings
-  CPP="gcc -E -w" \
+  export CXXFLAGS="${CXXFLAGS} -std=c++17"
+
   ./configure \
     --prefix=/opt/$pkgname \
     --enable-largefile \
@@ -43,7 +43,7 @@ build() {
     --with-netcdf \
     --with-openmp \
     --with-pcre \
-    --with-pdal \
+    --with-pdal=/usr/include/pdal \
     --with-proj-share=/usr/share/proj \
     --with-pthread \
     --with-readline \
