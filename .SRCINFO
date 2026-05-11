@@ -1,0 +1,20 @@
+pkgbase = atrium
+	pkgdesc = Wayland multiseat display manager
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/kavau/atrium
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	depends = libsystemd
+	depends = pam
+	depends = gtk4
+	depends = cage
+	backup = etc/atrium.conf
+	backup = etc/atrium-greeter.conf
+	backup = etc/pam.d/atrium
+	source = atrium-0.3.0.tar.gz::https://github.com/kavau/atrium/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 204ba1e4120573bcdf466c85508e2b16763656e38ba078b907ddbf4d49f78fb7
+
+pkgname = atrium
