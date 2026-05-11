@@ -1,0 +1,26 @@
+pkgbase = tw-dusk-git
+	pkgdesc = Dusk is a reverse-engineered reimplementation of Twilight Princess
+	pkgver = r4009.40e3f7d057
+	pkgrel = 1
+	url = https://github.com/TwilitRealm/dusk
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = llvm
+	makedepends = vulkan-headers
+	makedepends = python
+	makedepends = python-markupsafe
+	makedepends = clang
+	makedepends = lld
+	depends = alsa-lib
+	depends = libpulse
+	depends = libxrandr
+	depends = freetype2
+	provides = dusk
+	conflicts = dusk
+	source = dusk::git+https://github.com/TwilitRealm/dusk.git
+	sha256sums = SKIP
+
+pkgname = tw-dusk-git
