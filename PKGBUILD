@@ -1,7 +1,7 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 
 pkgname=specter-desktop-appimage
-pkgver=2.1.7
+pkgver=2.1.8
 _upkgname=Specter
 _lpkgname=specter
 _pkgname="${_lpkgname}_desktop"
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 source=("https://github.com/cryptoadvance/$__pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-$arch-linux-gnu.tar.gz"
         "specter.png"
         "https://raw.githubusercontent.com/cryptoadvance/specter-desktop/refs/heads/master/LICENSE")
-sha256sums=('e60fddb446c286da6ed1eeb40661c3ada37904f1a1d1a961d144354aea8e68a0'
+sha256sums=('7813b2d8d8d4824375bd4b850ff8002d20373252627c93ffc9afed3620c6d7f2'
             'ad1bd497b7fb631cbc161bd559596e0f47df926caa4698190197c127b756900f'
             'a230039985e2c4a8b522399e82b3ff6d74b1d0ff9629ec4c56aad7a5a68f0af5')
 
@@ -43,7 +43,7 @@ package() {
     install -Dm644 "LICENSE"                      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cd squashfs-root
     install -Dm644 "$_lpkgname.desktop"           "${pkgdir}/usr/share/applications/$_lpkgname.desktop"
-    install -Dm644 "usr/share/icons/hicolor/0x0/apps/$_lpkgname.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/$_lpkgname.png"
+    install -Dm644 "usr/share/icons/hicolor/1024x1024/apps/$_lpkgname.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/$_lpkgname.png"
     mkdir "${pkgdir}/usr/bin"
     ln -s "/opt/$__pkgname/$_appimage"            "${pkgdir}/usr/bin/$_upkgname"
 }
