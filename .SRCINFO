@@ -15,6 +15,6 @@ pkgbase = correlation
 	depends = freetype2
 	depends = libxcb
 	source = correlation-2.9.0.tar.gz::https://github.com/Isurwars/Correlation/archive/refs/tags/v2.9.0.tar.gz
-	sha256sums = fda014573abdd77b8e4c38ebfa9d9ec7fdc0f6a6174f31715447ee8ebb12ea9d
+	sha256sums = 2b86f2ebf5a2fc033e1315276178c9b5e8cf48973dadff79536ffb50312b05bd
 
 pkgname = correlation
