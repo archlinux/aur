@@ -1,4 +1,4 @@
-# Maintainer: Filipe <filipeoliv02 at users dot noreply dot github dot com>
+# Maintainer: Filipe Teixeira <filipeh291@gmail.com>
 
 pkgname=waytimer
 pkgver=1.0.0
