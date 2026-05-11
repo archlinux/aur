@@ -2,7 +2,7 @@
 
 pkgname=marco-suite
 pkgver=0.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Marco & Polo: Markdown composer and viewer"
 arch=('x86_64')
 url="https://github.com/Ranrar/Marco"
@@ -16,7 +16,7 @@ options=(!lto)
 build() {
   cd "Marco-$pkgver"
 
-  cargo build --release
+  cargo build --release --workspace
 }
 
 
@@ -29,6 +29,14 @@ package() {
   install -Dm644 "build/linux/marco.desktop" "${pkgdir}/usr/share/applications/marco.desktop"
   install -Dm644 "build/linux/polo.desktop" "${pkgdir}/usr/share/applications/polo.desktop"
 
+  install -Dm644 "target/release/marco_assets/icons/icon_64x64_marco.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/marco.png"
+  install -Dm644 "target/release/marco_assets/icons/icon_64x64_polo.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/polo.png"
+
+  install -Dm644 -t "${pkgdir}/usr/share/marco/icons" target/release/marco_assets/icons/*
+  install -Dm644 -t "${pkgdir}/usr/share/marco/language" target/release/marco_assets/language/*
+  install -Dm644 -t "${pkgdir}/usr/share/marco/themes/editor" target/release/marco_assets/themes/editor/*
+  install -Dm644 -t "${pkgdir}/usr/share/marco/themes/html_viewer" target/release/marco_assets/themes/html_viever/*
+  
   install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" documentation/user_guide/*
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

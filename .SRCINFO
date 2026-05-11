@@ -1,7 +1,7 @@
 pkgbase = marco-suite
 	pkgdesc = Marco & Polo: Markdown composer and viewer
 	pkgver = 0.23.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ranrar/Marco
 	arch = x86_64
 	license = MIT
