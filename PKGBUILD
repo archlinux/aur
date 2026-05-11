@@ -1,6 +1,6 @@
 # Maintainer: Yuuto <notyuuto@outlook.com>
 pkgname=deezer-discord-rpc-bin
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="A Discord RPC for Deezer"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/JustYuuto/deezer-discord-rpc"
 license=('MIT')
 depends=('electron')
 source=("https://github.com/JustYuuto/deezer-discord-rpc/releases/latest/download/DeezerDiscordRPC-linux-amd64.deb")
-md5sums=("2f9d18f1c8395dfeccf87e78b5f996ed")
+md5sums=("133701b55c91354dfb08947ed9ae11fe")
 
 package() {
     # Extract the .deb file
