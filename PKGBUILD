@@ -7,7 +7,8 @@ _uuid='gtk4-ding@smedius.gitlab.com'
 
 pkgname="${_shellextension}-${_extname}"
 pkgver=100.23
-pkgrel=1
+pkgrel=2
+epoch=1
 _pkgver="Gtk4-${pkgver}"
 pkgdesc="GTK4 desktop icons extension fork for GNOME Shell 49, 50, with Desktop Widget support"
 arch=('any')
