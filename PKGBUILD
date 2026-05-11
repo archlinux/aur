@@ -1,6 +1,6 @@
 # Maintainer: Mathis <999frostz@gmail.com>
 pkgname=screenix-bin
-pkgver=0.9.27
+pkgver=0.9.28
 pkgrel=1
 pkgdesc="Professional screen recorder with smooth zoom effects"
 arch=('x86_64')
