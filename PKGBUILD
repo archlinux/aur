@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.0.1.r34.gd7773b2 # Will be updated by pkgver()
+pkgver=0.0.1.r35.gbafc768 # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'pixman' 'libdrm' 'libevdev' 'wlr-randr'
          'noctalia-shell' 'libdecor' 'grim' 'xwayland-satellite'
-         'xdg-desktop-portal-wlr' 'swaylock' 'swayidle')
+         'xdg-desktop-portal-wlr' 'swaylock' 'swayidle' 'wlroots0.20')
 makedepends=('dotnet-sdk-10.0' 'clang' 'zlib' 'krb5' 'git' 'wayland-protocols')
 optdepends=('tuigreet: TUI greeter for greetd (recommended login path)'
             'greetd: minimal login manager for tuigreet'

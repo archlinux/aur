@@ -1,6 +1,6 @@
 pkgbase = aqueous
 	pkgdesc = Aqueous Wayland window manager bundled with RiverDelta
-	pkgver = 0.0.1.r29.gc709494
+	pkgver = 0.0.1.r35.gbafc768
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Aqueous
 	install = aqueous.install
@@ -28,6 +28,7 @@ pkgbase = aqueous
 	depends = xdg-desktop-portal-wlr
 	depends = swaylock
 	depends = swayidle
+	depends = wlroots0.20
 	optdepends = tuigreet: TUI greeter for greetd (recommended login path)
 	optdepends = greetd: minimal login manager for tuigreet
 	optdepends = aqueous-greetd-config: opinionated greetd+tuigreet preset for Aqueous
@@ -39,8 +40,6 @@ pkgbase = aqueous
 	conflicts = aqueous
 	conflicts = riverdelta
 	source = aqueous::git+https://github.com/Seafoam-Labs/Aqueous.git
-	source = riverdelta::git+https://github.com/Seafoam-Labs/RiverDelta.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = aqueous-git
