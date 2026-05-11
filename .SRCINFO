@@ -1,6 +1,6 @@
 pkgbase = cliprithm-bin
 	pkgdesc = Prebuilt Cliprithm AppImage packaged for Arch Linux
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/BOTOOM/Cliprithm
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = cliprithm-bin
 	optdepends = xdg-desktop-portal: improved desktop integration for file dialogs and portals
 	provides = cliprithm
 	conflicts = cliprithm
-	noextract = Cliprithm_1.3.0_amd64.AppImage
-	source = Cliprithm_1.3.0_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.3.0/Cliprithm_1.3.0_amd64.AppImage
-	source = cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.0/src-tauri/icons/128x128.png
-	source = LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.0/LICENSE
-	sha256sums = f1923501acaba4712b92ff44e5e482669438b07c4eeb7e24471ce3d1b0e2be69
+	noextract = Cliprithm_1.3.1_amd64.AppImage
+	source = Cliprithm_1.3.1_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.3.1/Cliprithm_1.3.1_amd64.AppImage
+	source = cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.1/src-tauri/icons/128x128.png
+	source = LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.1/LICENSE
+	sha256sums = 54892bc60c67f087b4d9ce1be0e4f4a67bf672f5c1df94d48b8f6901268af3df
 	sha256sums = c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80
 	sha256sums = d90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c
 
