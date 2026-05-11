@@ -1,6 +1,6 @@
 pkgbase = xdelta3-gui
 	pkgdesc = GUI for xdelta3 application
-	pkgver = 26.02
+	pkgver = 26.05
 	pkgrel = 1
 	url = https://github.com/AdrianTM/xdelta3-gui
 	install = xdelta3-gui.install
@@ -12,7 +12,7 @@ pkgbase = xdelta3-gui
 	depends = qt6-base
 	depends = qt6-svg
 	depends = xdelta3
-	source = https://github.com/AdrianTM/xdelta3-gui/archive/refs/tags/26.02.tar.gz
-	sha256sums = f8a3cdf8bb224e976787214ddbc3c719b8aece565dfd59d161d77e6a6a76a80c
+	source = https://github.com/AdrianTM/xdelta3-gui/archive/refs/tags/26.05.tar.gz
+	sha256sums = 9cb8afcc5ef538f18eb6df936ec993c2e639cf47806703c3436306bca77af75f
 
 pkgname = xdelta3-gui
