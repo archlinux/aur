@@ -1,6 +1,6 @@
 # Maintainer: Matthew Phillips <matthew@matthewphillips.info>
 pkgname=rosie
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A robot helper for agent skills"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('curl' 'libarchive')
 makedepends=('pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/matthewp/rosie/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5f21530e27d3d8cac9e66d3f7a70eb88547c5511aad7a855127798020421aa97')
+sha256sums=('68a4d1fe38011683d9d8f6cc1ebe88eb7639b91a015a1d1e4d6da63029e898ef')
 
 build() {
     cd "$pkgname-$pkgver"
