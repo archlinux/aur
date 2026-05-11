@@ -1,7 +1,7 @@
 # Maintainer: Filipe Teixeira <filipeh291@gmail.com>
 
 pkgname=waytimer
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple activity timer with fuzzel menu and waybar integration"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'fuzzel')
 optdepends=('waybar: waybar integration')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/filipeoliv02/waytimer/archive/v$pkgver.tar.gz")
-sha256sums=('3cc5083410f27f1a2dc0d71dc44a665da9c84857be917434d545854f488022b6')
+sha256sums=('415147a4502ebbe60460527dc1528ca7a9a0b1bcf76731d809d111866c0e47ba')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"

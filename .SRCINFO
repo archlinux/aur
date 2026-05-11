@@ -1,6 +1,6 @@
 pkgbase = waytimer
 	pkgdesc = Simple activity timer with fuzzel menu and waybar integration
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/filipeoliv02/waytimer
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = waytimer
 	depends = python
 	depends = fuzzel
 	optdepends = waybar: waybar integration
-	source = waytimer-1.0.0.tar.gz::https://github.com/filipeoliv02/waytimer/archive/v1.0.0.tar.gz
-	sha256sums = 3cc5083410f27f1a2dc0d71dc44a665da9c84857be917434d545854f488022b6
+	source = waytimer-1.0.1.tar.gz::https://github.com/filipeoliv02/waytimer/archive/v1.0.1.tar.gz
+	sha256sums = 415147a4502ebbe60460527dc1528ca7a9a0b1bcf76731d809d111866c0e47ba
 
 pkgname = waytimer
