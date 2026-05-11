@@ -1,12 +1,14 @@
 # Maintainer: Charlotte <cemetery394@gmail.com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron-neo-git
-pkgver=2026.04.27.r108.gee04d39
+pkgver=2026.04.27.r109.gf282c44
 pkgrel=1
 pkgdesc="Nintendo Switch emulator fork from citron-neo (git version)"
 arch=('x86_64')
 url="https://github.com/citron-neo/emulator"
 license=('GPL-3.0-or-later')
+provides=('citron' 'citron-neo')
+conflicts=('citron' 'citron-git' 'citron-neo' 'citron-bin')
 
 depends=(
   'brotli' 'libgcc' 'lz4' 'glibc' 'zstd' 'sdl2' 'zlib' 'opus'
@@ -24,9 +26,6 @@ makedepends=(
 optdepends=(
 	'gamemode: gamemode support'
 )
-
-provides=('citron' 'citron-git' "${pkgname::-4}")
-conflicts=('citron' 'citron-git' "${pkgname::-4}")
 
 source=("git+https://github.com/citron-neo/emulator.git"
 	"git+https://github.com/lsalzman/enet.git"
