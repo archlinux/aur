@@ -3,7 +3,7 @@
 
 pkgname=unrpyc
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="A ren'py script decompiler"
 arch=("any")
@@ -16,16 +16,16 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CensoredUsername/unrpyc
 sha256sums=('df7446d89f68a9a94a62378248da875e9e75e983bf81de53d92b2c19f359673e')
 
 prepare () {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i "/scripts=/s/]/, 'deobfuscate.py']/" setup.py
 }
 
 package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   
-  install -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}"
   mv "${pkgdir}/usr/bin/unrpyc.py" "${pkgdir}/usr/bin/unrpyc"
 }
