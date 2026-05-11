@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=feature
-_pkgver=1.2.15
+_pkgver=1.2.16
 pkgname=r-${_pkgname,,}
-pkgver=1.2.15
-pkgrel=3
+pkgver=1.2.16
+pkgrel=1
 pkgdesc='Local Inferential Feature Significance for Multivariate Kernel Density Estimation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('de38292b7e800068a20824e2a9e7d5d4d0b465b7925db0d165346aa5030ff67b')
+sha256sums=('5b60f32289dd24f54f330e5a7df60f8d1eb18031bf671b9e9a72a592a257b5a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

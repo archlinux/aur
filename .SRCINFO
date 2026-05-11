@@ -1,7 +1,7 @@
 pkgbase = r-feature
 	pkgdesc = Local Inferential Feature Significance for Multivariate Kernel Density Estimation
-	pkgver = 1.2.15
-	pkgrel = 3
+	pkgver = 1.2.16
+	pkgrel = 1
 	url = https://cran.r-project.org/package=feature
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = r-feature
 	optdepends = r-misc3d
 	optdepends = r-rgl
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/feature_1.2.15.tar.gz
-	sha256sums = de38292b7e800068a20824e2a9e7d5d4d0b465b7925db0d165346aa5030ff67b
+	source = https://cran.r-project.org/src/contrib/feature_1.2.16.tar.gz
+	sha256sums = 5b60f32289dd24f54f330e5a7df60f8d1eb18031bf671b9e9a72a592a257b5a6
 
 pkgname = r-feature
