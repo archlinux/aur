@@ -28,6 +28,7 @@ get_submodule_hash=(
 submodule_hash="$("${get_submodule_hash[@]}" | jq -r '.tree[] | select(.path == "mullvadvpn-app").sha')"
 
 echo 'Updating files'
+sed -i "s/^pkgver=.*/pkgver=${release_tag#v}/" PKGBUILD
 sed -i "s/^_upstream_ref=.*/_upstream_ref=$submodule_hash/" PKGBUILD
 updpkgsums
 makepkg --printsrcinfo >.SRCINFO
