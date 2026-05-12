@@ -1,13 +1,13 @@
 pkgbase = sovet
 	pkgdesc = ЗАЩИЩЕННЫЙ МЕССЕНДЖЕР // АНОНИМНОСТЬ И БЕЗОПАСНОСТЬ
-	pkgver = 2.15.3
+	pkgver = 2.15.4
 	pkgrel = 1
 	url = https://sovetchat.ru
 	arch = x86_64
 	license = custom
 	depends = fuse2
 	options = !strip
-	source_x86_64 = Soviet_2.15.3_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_2.15.3_amd64.AppImage
-	sha256sums_x86_64 = b209eb656ac59526e1ad0f893a273ac266eeb4e51c783dbc1de3df04795ddac3
+	source_x86_64 = Soviet_2.15.4_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_2.15.4_amd64.AppImage
+	sha256sums_x86_64 = fd3743153a497b96e7cd2cd55fd0ef75d21f15aa4289329544ca4313a8778e1c
 
 pkgname = sovet
