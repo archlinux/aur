@@ -6,11 +6,25 @@ set -euo pipefail
 appdir="/usr/lib/openai-codex-desktop"
 electron="/usr/lib/electron39/electron"
 webview_dir="${appdir}/content/webview"
+user_flags=()
 
 [[ -x "${electron}" ]] || {
   echo "Missing Electron runtime: ${electron}" >&2
   exit 1
 }
+
+config_home="${XDG_CONFIG_HOME:-}"
+if [[ -z "${config_home}" && -n "${HOME:-}" ]]; then
+  config_home="${HOME}/.config"
+fi
+
+if [[ -n "${config_home}" && -f "${config_home}/codex-flags.conf" ]]; then
+  while IFS= read -r flag_line || [[ -n "${flag_line}" ]]; do
+    flag_line="${flag_line%%#*}"
+    read -r -a flag_parts <<<"${flag_line}"
+    user_flags+=("${flag_parts[@]}")
+  done <"${config_home}/codex-flags.conf"
+fi
 
 export CODEX_CLI_PATH="${CODEX_CLI_PATH:-$(command -v codex || true)}"
 export BUILD_FLAVOR="${BUILD_FLAVOR:-prod}"
@@ -105,6 +119,7 @@ fi
   --enable-sandbox \
   --ozone-platform-hint=auto \
   --class=Codex \
+  "${user_flags[@]}" \
   "${appdir}/resources/app.asar" \
   "$@" &
 electron_pid=$!
