@@ -1,45 +1,60 @@
-# Maintainer: mehalter <micah at mehalter.com>
-# Maintainer: OpenPrivacy <maildrop AT comedia DOT com>
-# Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
-# Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
+# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Contributor: mehalter <micah at mehalter.com>
+# Contributor: OpenPrivacy <maildrop AT comedia DOT com>
+# Contributor: Cyrinux <pkgbuilds AT levis DOT name>
+# Contributor: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=openscap
-pkgver=1.4.0
+pkgver=1.4.4
 pkgrel=1
-pkgdesc="Open Source Security Compliance Solution"
-
-# i686 is theoretically bulitable, if anyone needs it
-arch=('x86_64')
-url="https://www.open-scap.org/"
-license=('GPL')
-
-# The official site suggested the dependencies in terms of Fedora's rpm.
-# Some of the corresponding packages in Arch remain unclear, which are listed
-# here for now.
-# packege missing: libselinux-devel
-depends=('swig' 'python' 'acl' 'libcap' 'curl' 'libgcrypt' 'libxml2' 'libxslt'
-	'libldap' 'pcre' 'bzip2' 'procps-ng' 'gconf' 'perl' 'perl-xml-parser'
-	'perl-xml-xpath' 'xmlsec')
-optdepends=()
-makedepends=('doxygen' 'cmake')
+pkgdesc='Open Source Security Compliance Solution'
+arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
+url='https://www.open-scap.org/'
+license=('LGPL-2.1-or-later')
+depends=(
+	'acl'
+	'bzip2'
+	'curl'
+	'dbus'
+	'glib2'
+	'libcap'
+	'libgcrypt'
+	'libldap'
+	'libxml2'
+	'libxslt'
+	'libyaml'
+	'openssl'
+	'pcre2'
+	'perl-xml-parser'
+	'perl-xml-xpath'
+	'popt'
+	'procps-ng'
+	'python'
+	'util-linux-libs'
+	'xmlsec'
+)
+makedepends=(
+	'cmake'
+	'doxygen'
+	'swig'
+)
+optdepends=(
+	'libselinux: SELinux boolean and security context probes (AUR)'
+	'openssh: oscap-ssh utility for scanning remote hosts'
+	'rpm-tools: rpminfo probe and scap-as-rpm utility'
+)
 source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('93229826010b2034cb03f34f40c875fc667820b5f7c6332778a908aceeb2a15b5151abd0491c167ed83baff0c4bec3aa1425e40702eda8113a6d1885cb356a03')
+sha512sums=('c69736bee997e50a04aff8e4f22da880f342190e1289c5df0fb73b7af34833d3bd9f4e5055b227a18d571167671f821701a09f8c9a3e4568c7da68cc4be51133')
 
 build() {
-	cd "$pkgname-$pkgver"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ../
-	make
+	cmake -S "$pkgname-$pkgver" -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-Wno-dev
+	cmake --build build
 }
 
-# Notice: It may take a long time to complete the check.
-# check() {
-# cd "$pkgname-$pkgver"
-# make check
-#}
-
 package() {
-	cd "$srcdir/${pkgname}-${pkgver}/build"
-	make DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 }
