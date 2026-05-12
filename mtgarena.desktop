@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Magic: the Gathering Arena
+Comment=Magic: the Gathering Arena via Wine
+Exec=mtgarena
+Type=Application
+Terminal=false
+StartupNotify=true
+Icon=mtgarena
+Categories=Game;Wine;
+MimeType=

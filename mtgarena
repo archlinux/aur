@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export WINEPREFIX="${HOME}/.local/share/mtgarena"
+export WINEARCH=win64
+
+if [ ! -d "${WINEPREFIX}" ]; then
+    wineboot -u
+fi
+
+exec wine /opt/mtgarena/MTGA/MTGA.exe "$@"
