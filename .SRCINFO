@@ -1,0 +1,15 @@
+pkgbase = nusgmon-git
+	pkgdesc = Record and analyze your internet usage (systemd-service)
+	pkgver = 80
+	pkgrel = 1
+	url = https://github.com/LUCKYS1NGHH/nusgmon
+	install = nusgmon.install
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	source = git+https://github.com/LUCKYS1NGHH/nusgmon.git
+	sha256sums = SKIP
+
+pkgname = nusgmon-git
