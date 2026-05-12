@@ -1,7 +1,7 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=vernier-git
 _pkgname=vernier
-pkgver=0.1.1.r1.g285a8f5
+pkgver=0.1.2.r0.gec66d3e
 pkgrel=1
 pkgdesc="Cross-platform pixel-measurement overlay in Rust (latest main)"
 arch=('x86_64' 'aarch64')
