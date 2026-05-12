@@ -1,7 +1,7 @@
 pkgbase = swaystatus
 	pkgdesc = Generate a status line for swaybar
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmcantrell/swaystatus
 	arch = any
 	license = MIT

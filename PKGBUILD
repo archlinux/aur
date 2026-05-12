@@ -2,7 +2,7 @@
 
 pkgname=swaystatus
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate a status line for swaybar"
 arch=('any')
 url="https://github.com/jmcantrell/$pkgname"
@@ -28,6 +28,6 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname#python-}-$pkgver" || return
-    install -pm644 -Dt "$pkgdir"/usr/share/licenses/"$pkgname" ./LICENSE
+    install -p -m644 -D -t "$pkgdir"/usr/share/licenses/"$pkgname" ./LICENSE
     python -m installer --compile-bytecode=1 --destdir="$pkgdir" ./dist/*.whl
 }
