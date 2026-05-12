@@ -2,8 +2,8 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=3.23.2
-pkgrel=3
+pkgver=3.25.2
+pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=(any)
 url="https://github.com/dns-lexicon/dns-lexicon"
@@ -13,6 +13,7 @@ depends=(
   python-cryptography
   python-yaml
   python-requests
+  python-requests-unixsocket
   python-tldextract
   python-importlib-metadata
   python-pyotp
@@ -44,8 +45,8 @@ conflicts=(
     python-lexicon
 )
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('2ebf5668926776dccc3928c808b48eb8774e323ed96ffdf3dcf8151343f40c652cd7bd07198a1565ac9c5bf73071a993aebf27ed117459086eedc2daa3715ce1')
-b2sums=('30d3fd2d95d5265a7ad3c25849b07c5b7e84a48d44771679fd0ec94d74d451c81643c7ba4fa26bf20089f6db7d7cfc99be8eb60133641276319b1f58f445c06d')
+sha512sums=('37a397378488deb0eff593e285cd13df7119c67c15061d635f40ccfdc3d00a70263fde0b3c5bb53a5301fd0e41682aaec60b77ef0164fa3e39173760bfb4698f')
+b2sums=('44b0aedac30daafe78596e2a5531283cceadf83a5036d768ee6979fe7a1285292dde4dbff3af521f585452a45f7d0e9dca1c74a5a07b932f3acb7f9f4e576e31')
 
 build() {
   cd "$pkgname"
@@ -56,7 +57,7 @@ build() {
 check() {
   cd "$pkgname"
 
-  PYTHONPATH="$PWD/src" pytest --deselect tests/providers/test_oci.py
+  PYTHONPATH="$PWD/src" pytest
 }
 
 package() {

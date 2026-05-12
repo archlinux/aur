@@ -1,7 +1,7 @@
 pkgbase = dns-lexicon
 	pkgdesc = Manipulate DNS records on various DNS providers in a standardized/agnostic way
-	pkgver = 3.23.2
-	pkgrel = 3
+	pkgver = 3.25.2
+	pkgrel = 1
 	url = https://github.com/dns-lexicon/dns-lexicon
 	arch = any
 	license = MIT
@@ -20,6 +20,7 @@ pkgbase = dns-lexicon
 	depends = python-cryptography
 	depends = python-yaml
 	depends = python-requests
+	depends = python-requests-unixsocket
 	depends = python-tldextract
 	depends = python-importlib-metadata
 	depends = python-pyotp
