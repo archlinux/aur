@@ -3,24 +3,24 @@
 
 pkgname=v2rayn
 _pkgname=v2rayN
-pkgver=7.20.4
-_bin_commit=bc23807df776ac53bc51056ababa451b93d957ee
-pkgrel=2
+pkgver=7.21.3
+_bin_commit=61f39cfd2db3fed41eddd899a3b63fb1946f8c33
+pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('aarch64' 'x86_64')
 url="https://github.com/2dust/v2rayN"
 license=('GPL-3.0-only')
-depends=('bash' 'dotnet-runtime-8.0' 'fontconfig' 'glibc' 'libgcc' 'libstdc++' 'xray')
-makedepends=('dotnet-sdk-8.0' 'gendesk' 'git')
+depends=('bash' 'dotnet-runtime-10.0' 'fontconfig' 'glibc' 'libgcc' 'libstdc++' 'xray')
+makedepends=('dotnet-sdk-10.0' 'gendesk' 'git')
 options=('!strip')
 install="${pkgname}.install"
 source=("git+${url}#tag=${pkgver}"
         "git+https://github.com/2dust/GlobalHotKeys.git"
         "${pkgname}-bin-${_bin_commit}.zip::${url}-core-bin/raw/${_bin_commit}/v2rayN-linux-64.zip"
         "${pkgname}.sh")
-sha256sums=('0d108da1e86d96202edfca3cd66d646987b7599cee93a9928cd7610b13713719'
+sha256sums=('8045e61df501ed112835ca5f7d3c7e5393ee4f96eae68171659e0ab4485daa42'
             'SKIP'
-            '80a8cb20a98067dc49bfb67109c4fed83e4521aeeb65156383a27b834e33e4d9'
+            '00dafbbcd6a013c97dfff03a95fb1414481b6eb18ad65cfe64247172859a1a9a'
             '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390')
 
 prepare() {

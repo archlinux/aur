@@ -1,30 +1,30 @@
 pkgbase = v2rayn
 	pkgdesc = A GUI client for Windows, Linux and macOS, support Xray and sing-box and others
-	pkgver = 7.20.4
-	pkgrel = 2
+	pkgver = 7.21.3
+	pkgrel = 1
 	url = https://github.com/2dust/v2rayN
 	install = v2rayn.install
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = dotnet-sdk-8.0
+	makedepends = dotnet-sdk-10.0
 	makedepends = gendesk
 	makedepends = git
 	depends = bash
-	depends = dotnet-runtime-8.0
+	depends = dotnet-runtime-10.0
 	depends = fontconfig
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
 	depends = xray
 	options = !strip
-	source = git+https://github.com/2dust/v2rayN#tag=7.20.4
+	source = git+https://github.com/2dust/v2rayN#tag=7.21.3
 	source = git+https://github.com/2dust/GlobalHotKeys.git
-	source = v2rayn-bin-bc23807df776ac53bc51056ababa451b93d957ee.zip::https://github.com/2dust/v2rayN-core-bin/raw/bc23807df776ac53bc51056ababa451b93d957ee/v2rayN-linux-64.zip
+	source = v2rayn-bin-61f39cfd2db3fed41eddd899a3b63fb1946f8c33.zip::https://github.com/2dust/v2rayN-core-bin/raw/61f39cfd2db3fed41eddd899a3b63fb1946f8c33/v2rayN-linux-64.zip
 	source = v2rayn.sh
-	sha256sums = 0d108da1e86d96202edfca3cd66d646987b7599cee93a9928cd7610b13713719
+	sha256sums = 8045e61df501ed112835ca5f7d3c7e5393ee4f96eae68171659e0ab4485daa42
 	sha256sums = SKIP
-	sha256sums = 80a8cb20a98067dc49bfb67109c4fed83e4521aeeb65156383a27b834e33e4d9
+	sha256sums = 00dafbbcd6a013c97dfff03a95fb1414481b6eb18ad65cfe64247172859a1a9a
 	sha256sums = 0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390
 
 pkgname = v2rayn
