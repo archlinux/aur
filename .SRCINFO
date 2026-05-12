@@ -1,0 +1,22 @@
+pkgbase = claudecodeui
+	pkgdesc = Web-based UI for Claude Code, Cursor CLI, Codex, and Gemini CLI (CloudCLI)
+	pkgver = 1.31.5
+	pkgrel = 2
+	url = https://github.com/siteboon/claudecodeui
+	install = claudecodeui.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = python
+	makedepends = libvips
+	depends = nodejs-lts-jod
+	depends = npm
+	optdepends = claude-code: Claude Code CLI
+	optdepends = gemini-cli: Google Gemini CLI
+	provides = cloudcli
+	conflicts = cloudcli-bin
+	source = claudecodeui-1.31.5.tar.gz::https://github.com/siteboon/claudecodeui/archive/v1.31.5.tar.gz
+	sha256sums = ee11106fecd42153e9b14a518dbc4174181e6f62d19e6d95b91fb38505030a15
+
+pkgname = claudecodeui
