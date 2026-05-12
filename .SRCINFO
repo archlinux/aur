@@ -1,7 +1,7 @@
 pkgbase = solara-kernel-headers
-	pkgdesc = Solara Linux Kernel headers - for building external kernel modules
-	pkgver = 7.0.5
-	pkgrel = 2
+	pkgdesc = Header files for the Solara Linux Kernel with ZEN, BORE, CachyOS patches and LLVM optimizations
+	pkgver = 7.0.6
+	pkgrel = 1
 	url = https://github.com/celestia-foundation/solara
 	arch = x86_64
 	license = GPL2
@@ -25,7 +25,21 @@ pkgbase = solara-kernel-headers
 	makedepends = llvm
 	makedepends = zstd
 	depends = solara-kernel
-	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.5.tar.xz
+	provides = linux-headers=7.0.6
+	provides = linux-zen-headers
+	provides = linux-cachyos-headers
+	provides = linux-bore-headers
+	conflicts = linux-headers
+	conflicts = linux-zen-headers
+	conflicts = linux-cachyos-headers
+	conflicts = linux-bore-headers
+	replaces = linux-headers
+	replaces = linux-zen-headers
+	replaces = linux-cachyos-headers
+	replaces = linux-bore-headers
+	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.6.tar.xz
+	source = https://github.com/zen-kernel/zen-kernel/releases/download/v7.0.6-zen1/linux-v7.0.6-zen1.patch.zst
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = solara-kernel-headers
