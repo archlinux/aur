@@ -17,6 +17,6 @@ pkgbase = ostt
 	optdepends = xclip: Clipboard support on X11
 	options = !lto
 	source = ostt-0.0.10.tar.gz::https://github.com/kristoferlund/ostt/archive/refs/tags/v0.0.10.tar.gz
-	sha256sums = SKIP
+	sha256sums = 1032fcf61e6a115d3c8a6e602381697ee8fae76b992255bcd6e90a0ab598aa5b
 
 pkgname = ostt

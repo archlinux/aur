@@ -18,7 +18,7 @@ optdepends=(
 makedepends=('cargo' 'rust' 'git' 'pkgconf')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kristoferlund/ostt/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('1032fcf61e6a115d3c8a6e602381697ee8fae76b992255bcd6e90a0ab598aa5b')
 
 prepare() {
     cd "ostt-${pkgver}"
