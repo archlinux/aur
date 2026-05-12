@@ -1,6 +1,6 @@
 # Maintainer: Jamie Woodruff <jamie@varsuite.co.uk>
 pkgname=localmail
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Local email testing for developers"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://localmail.dev"
 license=('custom:proprietary')
 depends=('fuse2' 'hicolor-icon-theme')
 source=("https://download.localmail.dev/releases/${pkgver}/LocalMail.AppImage")
-sha256sums=('f946888627f43720b7e228153f99853f1d17bb11ad48bba72be1512405d01d8f')
+sha256sums=('bebf827d415c78e518603e09eae140f449f16ef95226066d2f4c1e54de486ed2')
 
 prepare() {
   chmod +x "${srcdir}/LocalMail.AppImage"

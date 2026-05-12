@@ -1,13 +1,13 @@
 pkgbase = localmail
 	pkgdesc = Local email testing for developers
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://localmail.dev
 	arch = x86_64
 	license = custom:proprietary
 	depends = fuse2
 	depends = hicolor-icon-theme
-	source = https://download.localmail.dev/releases/1.1.0/LocalMail.AppImage
-	sha256sums = f946888627f43720b7e228153f99853f1d17bb11ad48bba72be1512405d01d8f
+	source = https://download.localmail.dev/releases/1.1.2/LocalMail.AppImage
+	sha256sums = bebf827d415c78e518603e09eae140f449f16ef95226066d2f4c1e54de486ed2
 
 pkgname = localmail
