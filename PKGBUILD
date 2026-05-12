@@ -20,11 +20,11 @@ depends=(
     'xdotool'
 )
 makedepends=('git')
-source=("git+ssh://git@github.com/flossbud/ToonTown-MultiTool-private.git#tag=v${pkgver}")
+source=("git+https://github.com/flossbud/ToonTown-MultiTool.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 package() {
-    cd "ToonTown-MultiTool-private"
+    cd "ToonTown-MultiTool"
 
     # Install Python source
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
