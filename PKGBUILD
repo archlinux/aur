@@ -1,12 +1,16 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=vernier-bin
 _pkgname=vernier
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Cross-platform pixel-measurement overlay in Rust (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jondkinney/vernier"
 license=('MIT' 'Apache-2.0')
+# !debug suppresses the split `vernier-bin-debug` companion package
+# so AUR helpers don't prompt for it on install. The Rust release
+# binary still keeps its panic location info for backtraces.
+options=(!debug)
 depends=(
     'fontconfig'
     'freetype2'
@@ -26,8 +30,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('425c075d77240d29c6d5f8ea7fa1a2bb12bff7fa6acb7e37e3c0fa9a4937a571')
-sha256sums_aarch64=('3e45f5a9c47ca5461582b2275df8844e5f2697bed0cc46f9a25f37bb3af556b5')
+sha256sums_x86_64=('bb5454b7e7467987a26e94774d455722cf63a11b705bfdcaad41fd174b1847f6')
+sha256sums_aarch64=('e1fcceb2f73b8523c839d74ccb20c8c9a986daa4af1b1603b6ba85f560a304f5')
 
 package() {
     # The tarball's top-level dir is named after the host arch, so
