@@ -2,7 +2,7 @@
 
 _pkgname="protoc-gen-go-grpc"
 pkgname="${_pkgname}-bin"
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="gRPC bindings generator for Go language"
 arch=(
@@ -32,13 +32,13 @@ source_i686=(
 source_x86_64=(
   "${url}/releases/download/cmd%2F${_pkgname}%2Fv${pkgver}/${_pkgname}.v${pkgver}.linux.amd64.tar.gz"
 )
-sha256sums_aarch64=('71f64c5448fe57425002e77a3b85a317dc1ffb276c094ca19f9be3cf3dba066d')
-sha256sums_i686=('2cc5415d9d574a4b24b87ffaba8fda37307c538675f3f98f1c309369eceaeba4')
-sha256sums_x86_64=('d422c203a0f4f050d647c58a11b8854535956b6c9aa655dd8a50b976a2b552f9')
+sha256sums_aarch64=('343307d42a93c0219692302296e5fa38b89a9563732511b18a93479be4b0f43d')
+sha256sums_i686=('0274a1a334c752a6014c88e8bbea4ac34794b843cf32d820d1fe9efa48ee5fdd')
+sha256sums_x86_64=('3d36f376624c73eb62c7a46e34c2b21a1e97684fb1812e882ba775ba05b7bfc9')
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -vDm644 "README.md"   -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -vDm644 "LICENSE"     -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }

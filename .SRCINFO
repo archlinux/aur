@@ -1,6 +1,6 @@
 pkgbase = protoc-gen-go-grpc-bin
 	pkgdesc = gRPC bindings generator for Go language
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/grpc/grpc-go
 	arch = aarch64
@@ -10,11 +10,11 @@ pkgbase = protoc-gen-go-grpc-bin
 	depends = protoc-gen-go
 	provides = protoc-gen-go-grpc
 	conflicts = protoc-gen-go-grpc
-	source_aarch64 = https://github.com/grpc/grpc-go/releases/download/cmd%2Fprotoc-gen-go-grpc%2Fv1.6.1/protoc-gen-go-grpc.v1.6.1.linux.arm64.tar.gz
-	sha256sums_aarch64 = 71f64c5448fe57425002e77a3b85a317dc1ffb276c094ca19f9be3cf3dba066d
-	source_i686 = https://github.com/grpc/grpc-go/releases/download/cmd%2Fprotoc-gen-go-grpc%2Fv1.6.1/protoc-gen-go-grpc.v1.6.1.linux.386.tar.gz
-	sha256sums_i686 = 2cc5415d9d574a4b24b87ffaba8fda37307c538675f3f98f1c309369eceaeba4
-	source_x86_64 = https://github.com/grpc/grpc-go/releases/download/cmd%2Fprotoc-gen-go-grpc%2Fv1.6.1/protoc-gen-go-grpc.v1.6.1.linux.amd64.tar.gz
-	sha256sums_x86_64 = d422c203a0f4f050d647c58a11b8854535956b6c9aa655dd8a50b976a2b552f9
+	source_aarch64 = https://github.com/grpc/grpc-go/releases/download/cmd%2Fprotoc-gen-go-grpc%2Fv1.6.2/protoc-gen-go-grpc.v1.6.2.linux.arm64.tar.gz
+	sha256sums_aarch64 = 343307d42a93c0219692302296e5fa38b89a9563732511b18a93479be4b0f43d
+	source_i686 = https://github.com/grpc/grpc-go/releases/download/cmd%2Fprotoc-gen-go-grpc%2Fv1.6.2/protoc-gen-go-grpc.v1.6.2.linux.386.tar.gz
+	sha256sums_i686 = 0274a1a334c752a6014c88e8bbea4ac34794b843cf32d820d1fe9efa48ee5fdd
+	source_x86_64 = https://github.com/grpc/grpc-go/releases/download/cmd%2Fprotoc-gen-go-grpc%2Fv1.6.2/protoc-gen-go-grpc.v1.6.2.linux.amd64.tar.gz
+	sha256sums_x86_64 = 3d36f376624c73eb62c7a46e34c2b21a1e97684fb1812e882ba775ba05b7bfc9
 
 pkgname = protoc-gen-go-grpc-bin
