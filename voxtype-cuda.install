@@ -13,5 +13,8 @@ post_install() {
     4. Start voxtype:
        systemctl --user enable --now voxtype
 
+    To use ONNX engines (SenseVoice, Parakeet, Moonshine, etc.), make sure
+    that either onnxruntime-cuda or onnxruntime-opt-cuda is installed
+
 EOF
 }

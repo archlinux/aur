@@ -25,7 +25,7 @@ _cuda_arch="${CUDA_ARCH:-}"
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
-pkgver=0.6.6
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Pure CUDA version of the push-to-talk voice-to-text tool"
 arch=(x86_64)
@@ -47,9 +47,13 @@ makedepends=(
     cuda
     git
     pkgconf
+    gtk4
+    gtk4-layer-shell
 )
 optdepends=(
     'dotool: keyboard simulation with layout support (KDE/GNOME compatible)'
+    'gtk4: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
+    'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer'
     'libnotify: desktop notifications'
     'ollama: local AI summarization for meeting mode'
     'pipewire: audio server (recommended)'
@@ -61,8 +65,9 @@ optdepends=(
 )
 backup=(etc/voxtype/config.toml)
 install=$pkgname.install
+validpgpkeys=('E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6')  # Peter Jackson <pete@peteonrails.com>
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bacee4aeef3f56393866d94df2e0a441eb46e433a35f3c0e88e0dc462f1c906d')
+sha256sums=('f6f2ed932696d112bd419a946e67d28a58c9151761f2cb60fa8e4b7f47bdec80')
 
 prepare() {
     cd "$_pkgname-$pkgver"
@@ -158,6 +163,32 @@ build() {
         --config 'profile.release.lto=false' \
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-cuda
+
+    # Build ONNX engines binary if onnxruntime is available
+    export ORT_STRATEGY=system
+    cargo clean
+    cargo build --frozen --release \
+        --features parakeet-load-dynamic,moonshine,sensevoice,paraformer,dolphin,omnilingual,cohere \
+        --config 'profile.release.lto=false' \
+        --config 'profile.release.codegen-units=8'
+    cp target/release/voxtype voxtype-onnx
+
+    # Build OSD binaries: the launcher (voxtype-osd) plus both frontends.
+    # The launcher has no GUI deps; each frontend is gated on its feature
+    # so the cargo invocation needs both osd-gtk4 and osd-native enabled
+    # to produce all three. These don't need engine features (the OSD
+    # only consumes audio frames over IPC, not the transcribers).
+    cargo clean
+    cargo build --frozen --release \
+        --bin voxtype-osd \
+        --bin voxtype-osd-gtk4 \
+        --bin voxtype-osd-native \
+        --features osd-gtk4,osd-native \
+        --config 'profile.release.lto=false' \
+        --config 'profile.release.codegen-units=8'
+    cp target/release/voxtype-osd voxtype-osd
+    cp target/release/voxtype-osd-gtk4 voxtype-osd-gtk4
+    cp target/release/voxtype-osd-native voxtype-osd-native
 }
 
 check() {
@@ -174,10 +205,28 @@ check() {
 package() {
     cd "$_pkgname-$pkgver"
 
-    install -Dm755 "voxtype-cuda" "$pkgdir/usr/lib/voxtype/voxtype-cuda"
-
     install -d "$pkgdir/usr/bin"
     ln -sf /usr/lib/voxtype/voxtype-cuda "$pkgdir/usr/bin/voxtype"
+
+    # Install OSD binaries into /usr/lib/voxtype/, matching the daemon
+    # variant layout. Only the launcher gets a /usr/bin symlink — users
+    # invoke `voxtype-osd` and config picks the frontend at runtime.
+    # The launcher resolves its real path via /proc/self/exe (which
+    # follows the symlink) and probes its parent directory first, so it
+    # finds /usr/lib/voxtype/voxtype-osd-{gtk4,native} without needing
+    # them on PATH.
+    install -Dm755 "voxtype-cuda" "$pkgdir/usr/lib/voxtype/voxtype-cuda"
+    install -Dm755 "voxtype-onnx" "$pkgdir/usr/lib/voxtype/voxtype-onnx"
+    install -Dm755 "voxtype-osd" "$pkgdir/usr/lib/voxtype/voxtype-osd"
+    install -Dm755 "voxtype-osd-gtk4" "$pkgdir/usr/lib/voxtype/voxtype-osd-gtk4"
+    #install -Dm755 "voxtype-osd-native" "$pkgdir/usr/lib/voxtype/voxtype-osd-native"
+    ln -sf /usr/lib/voxtype/voxtype-osd "$pkgdir/usr/bin/voxtype-osd"
+
+    # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
+    install -Dm755 "packaging/scripts/voxtype-configure-launcher" \
+        "$pkgdir/usr/bin/voxtype-configure-launcher"
+    install -Dm644 "packaging/voxtype-configure.desktop" \
+        "$pkgdir/usr/share/applications/voxtype-configure.desktop"
 
     # Install default configuration
     install -Dm644 "config/default.toml" "$pkgdir/etc/voxtype/config.toml"
