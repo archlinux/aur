@@ -1,0 +1,31 @@
+pkgbase = vernier-git
+	pkgdesc = Cross-platform pixel-measurement overlay in Rust (latest main)
+	pkgver = 0.1.1.r1.g285a8f5
+	pkgrel = 1
+	url = https://github.com/jondkinney/vernier
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = git
+	depends = fontconfig
+	depends = freetype2
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = pipewire
+	depends = wayland
+	optdepends = grim: capture held-rect regions via wlr-screencopy
+	optdepends = slurp: region selection for the external screenshot shortcut
+	optdepends = wl-clipboard: copy screenshots / measurements to the clipboard
+	optdepends = libnotify: post-capture notifications
+	optdepends = xdg-desktop-portal-hyprland: global hotkey via the GlobalShortcuts portal
+	provides = vernier=0.1.1.r1.g285a8f5
+	conflicts = vernier
+	conflicts = vernier-bin
+	options = !lto
+	source = vernier::git+https://github.com/jondkinney/vernier.git
+	sha256sums = SKIP
+
+pkgname = vernier-git
