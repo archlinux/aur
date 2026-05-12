@@ -1,0 +1,27 @@
+pkgbase = elo-bin
+	pkgdesc = Conecta Linux ao PJe/Projudi com Java 8 isolado e certificados digitais
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rodolfoaltenrath/elo
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = nss
+	depends = pcsclite
+	depends = polkit
+	optdepends = jre8-openjdk: execução de assinadores Java legados
+	optdepends = icedtea-web: abertura de arquivos .jnlp
+	optdepends = ccid: suporte a leitores smartcard CCID
+	optdepends = opensc: diagnóstico e leitura de certificados
+	optdepends = pcsc-tools: ferramentas de diagnóstico PC/SC
+	provides = elo
+	conflicts = elo
+	source = elo-v0.1.0-linux-amd64.tar.gz::https://github.com/rodolfoaltenrath/elo/releases/download/v0.1.0/elo-v0.1.0-linux-amd64.tar.gz
+	source = elo.desktop::https://github.com/rodolfoaltenrath/elo/raw/main/packaging/arch/elo.desktop
+	source = elo.png::https://github.com/rodolfoaltenrath/elo/raw/main/build/appicon.png
+	sha256sums = 62450d6987d57db95890da34ea0555b39b2c582508f634b3b76d7a3a47f434b7
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = elo-bin
