@@ -1,0 +1,16 @@
+pkgbase = bling-git
+	pkgdesc = Minimal system info fetcher made in C
+	pkgver = r33.1d0d126
+	pkgrel = 1
+	url = https://github.com/mazylol/bling
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = clang
+	provides = bling
+	conflicts = bling
+	options = !strip
+	source = bling::git+https://github.com/mazylol/bling.git
+	sha256sums = SKIP
+
+pkgname = bling-git
