@@ -1,6 +1,6 @@
 pkgname=iscsi-util
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple and modern GUI for managing iSCSI targets and sessions."
 arch=('x86_64')
 license=('MIT')
