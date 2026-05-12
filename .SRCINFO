@@ -1,0 +1,16 @@
+pkgbase = libpdq
+	pkgdesc = Pure-C library for PDQ-256 perceptual image hashing (Meta's algorithm, no OpenCV dependency)
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://gitlab.com/NathanTheTerrible/libpdq
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	depends = glibc
+	provides = libpdq=0.2.3
+	options = staticlibs
+	source = libpdq-0.2.3.tar.gz::https://gitlab.com/NathanTheTerrible/libpdq/-/archive/v0.2.3/libpdq-v0.2.3.tar.gz
+	sha256sums = 53e7f2b6a324712f79e978730d0b0604cae01a0714bc423825c2edafa8ce887c
+
+pkgname = libpdq
