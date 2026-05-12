@@ -10,7 +10,6 @@ pkgbase = photoqt-extensions-bin
 	provides = photoqt-extensions-bin-debug
 	conflicts = photoqt-extensions
 	conflicts = photoqt-extensions-debug
-	conflicts = photoqt
 	source = https://photoqt.org/downloads/bin/photoqt-extensions-5.3.tar.gz
 	sha256sums = 188dce4ee09f4f921c5eec2e777780fa5bcf589da6f8c46a679fa67f33fdfbd7
 
