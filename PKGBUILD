@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=sponge
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sponge: Systemd Mount Manager"
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Sponge"
@@ -30,8 +30,8 @@ build() {
 package() {
   cd "$srcdir/Sponge-${pkgver}"
 
-  # Install shelly-ui binary
-  install -Dm755 out/shelly-ui "$pkgdir/usr/bin/sponge"
+  # Install sponge binary
+  install -Dm755 out/sponge "$pkgdir/usr/bin/sponge"
 
   # Install desktop entry
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.sponge.app.desktop"

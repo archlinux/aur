@@ -1,7 +1,7 @@
 pkgbase = sponge
 	pkgdesc = Sponge: Systemd Mount Manager
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Seafoam-Labs/Sponge
 	arch = x86_64
 	license = GPL-3.0-only
