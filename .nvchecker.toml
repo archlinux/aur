@@ -1,0 +1,3 @@
+[matrix-archiver]
+source = "git"
+git = "https://github.com/andrewrabert/matrix-archiver.git"
