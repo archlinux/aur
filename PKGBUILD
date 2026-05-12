@@ -4,10 +4,10 @@
 _pkgname=dusklight
 pkgname=${_pkgname}-git
 pkgver=1.0.1.r11.g61b2e6c
-pkgrel=4
+pkgrel=5
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
-url="https://github.com/TwilitRealm/dusk"
+url="https://github.com/TwilitRealm/dusklight"
 license=('CC0-1.0')
 depends=(libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ bash)
 makedepends=(git cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr patchelf)
@@ -51,12 +51,12 @@ build() {
 }
 
 package() {
-  install -Dm 755 "${srcdir}/dusk/build/dusklight" "${pkgdir}/usr/share/${_pkgname}/dusklight"
+  install -Dm 755 "${srcdir}/dusklight/build/dusklight" "${pkgdir}/usr/share/${_pkgname}/dusklight"
   install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/${_pkgname}"
-  cp -r "${srcdir}/dusk/res" "${pkgdir}/usr/share/${_pkgname}/res"
+  cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/share/${_pkgname}/res"
 
-  install -Dm 644 "${srcdir}/dusk/platforms/freedesktop/1024x1024/apps/dusklight.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  install -Dm 755 "${srcdir}/dusk/platforms/freedesktop/dusklight.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm 644 "${srcdir}/dusklight/platforms/freedesktop/1024x1024/apps/dusklight.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm 755 "${srcdir}/dusklight/platforms/freedesktop/dusklight.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   patchelf --remove-rpath "${pkgdir}/usr/share/${_pkgname}/dusklight"
 }
