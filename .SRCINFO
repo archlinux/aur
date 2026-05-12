@@ -1,6 +1,6 @@
 pkgbase = hyprscreen
 	pkgdesc = A first-class screenshot and screen-recording app built for Hyprland
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/franlol/hyprscreen
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hyprscreen
 	depends = wl-clipboard
 	depends = hyprland
 	depends = ffmpeg
-	source = hyprscreen-0.1.1.tar.gz::https://github.com/franlol/hyprscreen/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 79ac2e1816354d30f5a668f2da01353e1e90162f866aaa218eae9b74ccda4dae
+	source = hyprscreen-0.1.2.tar.gz::https://github.com/franlol/hyprscreen/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = fdfd5017b0612380348a6435b578a1da89d452a75ed47bbc6cb9d7449b994d3c
 
 pkgname = hyprscreen
