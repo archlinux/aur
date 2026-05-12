@@ -22,6 +22,6 @@ pkgbase = tuxbellum
 	optdepends = mangohud: performance overlay
 	optdepends = mesa-utils: GPU detection via glxinfo
 	source = tuxbellum-3.0.2.tar.gz::https://github.com/Ch3w3y/tuxbellum/releases/download/v3.0.2/tuxbellum-3.0.2.tar.gz
-	sha256sums = 8437bf9a2c5f17184d707c493f767be6663b3dc1b6db17def607722178405220
+	sha256sums = d27aa89f5f10a2c1a3a370175cd652df2d2ce8276934c5758c3683a7668c7bdb
 
 pkgname = tuxbellum
