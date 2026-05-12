@@ -29,5 +29,6 @@ build() {
 }
 
 package() {
+    cd $srcdir/wsjt-z-$pkgver/build
     make DESTDIR="${pkgdir}" install
 }
