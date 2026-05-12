@@ -1,6 +1,6 @@
-# Maintainer: LurkHub <LurkHub@yandex.ru>
+# Maintainer: Sovetchat <support@sovetchat.ru>
 pkgname=sovet
-pkgver=2.15.2
+pkgver=2.15.3
 pkgrel=1
 pkgdesc="ЗАЩИЩЕННЫЙ МЕССЕНДЖЕР // АНОНИМНОСТЬ И БЕЗОПАСНОСТЬ"
 arch=('x86_64')
@@ -8,38 +8,24 @@ url="https://sovetchat.ru"
 license=('custom')
 depends=('fuse2')
 options=('!strip')
-source_x86_64=("Soviet_${pkgver}_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_${pkgver}_amd64.AppImage")
-sha256sums_x86_64=('4659aecc97bc76456bc421a3d35af3cbd331863113f5bf879640a16b311413a0')
-
-prepare() {
-    chmod +x "Soviet_${pkgver}_amd64.AppImage"
-    ./"Soviet_${pkgver}_amd64.AppImage" --appimage-extract >/dev/null 2>&1
-}
+source_x86_64=("Soviet_2.15.3_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_2.15.3_amd64.AppImage")
+sha256sums_x86_64=('63d89456d69fcc91cfbfecf464c3515510bb77b8016cde9156c8c98a8e9f6d99')
 
 package() {
-    install -dm777 "${pkgdir}/opt/sovet"
-    install -Dm755 "Soviet_${pkgver}_amd64.AppImage" "${pkgdir}/opt/sovet/sovet.AppImage"
-    chmod 777 "${pkgdir}/opt/sovet/sovet.AppImage"
+    install -Dm755 "${srcdir}/Soviet_2.15.3_amd64.AppImage" "${pkgdir}/opt/Soviet/Soviet.AppImage"
+    chmod +x "${pkgdir}/opt/Soviet/Soviet.AppImage"
 
-    # Иконка
-    install -Dm644 squashfs-root/sovietmsg.png \
-        "${pkgdir}/usr/share/pixmaps/sovet.png"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -sf /opt/Soviet/Soviet.AppImage "${pkgdir}/usr/bin/sovet"
 
-    # Ярлык в меню
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/sovet.desktop" << EOF
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/sovet.desktop" << 'DESKTOP'
 [Desktop Entry]
 Name=Совет
 Comment=ЗАЩИЩЕННЫЙ МЕССЕНДЖЕР
-Exec=/opt/sovet/sovet.AppImage
+Exec=/usr/bin/sovet
 Icon=sovet
 Type=Application
 Categories=Network;Chat;
-StartupWMClass=sovietmsg
-EOF
-
-    # Обёртка в PATH
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/sovet" << 'EOF'
-#!/bin/bash
-exec /opt/sovet/sovet.AppImage "$@"
-EOF
+DESKTOP
 }
