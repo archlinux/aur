@@ -1,0 +1,13 @@
+post_install() {
+    echo "==> Enable and start hpfand:"
+    echo "      systemctl enable --now hpfand"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl try-restart hpfand 2>/dev/null || true
+}
+
+pre_remove() {
+    systemctl disable --now hpfand 2>/dev/null || true
+}

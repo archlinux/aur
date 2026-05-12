@@ -1,8 +1,9 @@
 pkgbase = hpfand
 	pkgdesc = Fan curve daemon for HP Victus/Omen laptops
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/emomaxd/hpfand
+	install = hpfand.install
 	arch = any
 	license = GPL-2.0-only
 	depends = bash
@@ -10,6 +11,8 @@ pkgbase = hpfand
 	optdepends = inotify-tools: automatic config reload on save
 	optdepends = hp-wmi-dkms: patched kernel module for pre-7.1 kernels
 	source = hpfand-2.0.0.tar.gz::https://github.com/emomaxd/hpfand/archive/refs/tags/v2.0.0.tar.gz
+	source = hpfand.install
 	sha256sums = c3b7c4f878f470efdb21170b4ac4a66b5f081026ada29e78eb088f2820f2b5a2
+	sha256sums = SKIP
 
 pkgname = hpfand
