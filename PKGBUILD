@@ -16,6 +16,6 @@ build() {
 
 package() {
     cd "goPort-$pkgver"
-    install -Dm755 goport "$pkgdir/usr/bin/goport"
+    install -Dm755 goport "$pkgdir/usr/bin/goPort"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
