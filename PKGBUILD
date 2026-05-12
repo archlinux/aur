@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <jinzhongjia@manus.ai>
 
 pkgname=openwarp-git
-pkgver=2026.05.10.preview.r71.g7b7f8362
+pkgver=2026.05.10.preview.r113.g1b7ef954
 pkgrel=1
 pkgdesc="OpenWarp - open-source fork of Warp, a Rust-based terminal with AI built in (git version)"
 arch=('x86_64')
