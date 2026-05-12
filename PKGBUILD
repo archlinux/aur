@@ -9,26 +9,43 @@
 # Contributor: Daffa Haj Tsaqif <narutohaj00@gmail.com>
 
 pkgname=cloudflare-warp-bin
-pkgver=2026.3.846
+pkgver=2026.4.1350
 pkgrel=1
 pkgdesc="Cloudflare Warp Client"
 arch=('x86_64')
 url="https://1.1.1.1"
 license=('unknown')
-depends=('dbus'
+depends=('at-spi2-core'
+         'ayatana-ido'
+         'cairo'
+         'curl'
+         'dbus'
+         'fontconfig'
+         'gdk-pixbuf2'
          'glib2'
          'glibc'
          'gtk3'
+         'harfbuzz'
          'hicolor-icon-theme'
+         'libayatana-appindicator'
+         'libayatana-indicator'
+         'libdbusmenu-glib'
+         'libepoxy'
          'libgcc'
+         'libsoup3'
+         'libstdc++'
          'nftables'
          'nspr'
-         'nss')
+         'nss'
+         'pango'
+         'webkit2gtk-4.1'
+         'zlib')
 provides=('warp-cli' 'warp-diag' 'warp-svc')
 conflicts=("${pkgname%-bin}")
+options=('!strip')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.deb::https://pkg.cloudflareclient.com/pool/noble/main/c/cloudflare-warp/cloudflare-warp_${pkgver}.0_amd64.deb")
-sha256sums=('d522932b4416fb709ca812ea1db22c3e7cbfe9e9328d97bda9172360e327479f')
+sha256sums=('f35ae16dd97e8a78dd970341cb6ae3e8131af1962f79cb7b9d698a874eab7f2a')
 
 prepare() {
     mkdir -p "${srcdir}/build"
