@@ -12,7 +12,7 @@ makedepends=('boost' 'pkgconfig' 'ccache' 'ninja' 'jq' 'coreutils' 'git' 'cmake'
 depends=('acl' 'bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost-libs' 'lmdb' 'leveldb' 'yaml-cpp' 'curl' 'openssl' 'zlib' 'libunistring')
 
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("adfad19ff1e7e806cd2206d14b5d4166589828c480b2f8b560dff35add7a16d0")
+sha256sums=("0ced069bb2f3f6f61d97024f7c0b8839575c5c137d3d996bd4a3a0b25b9a45fe")
 
 nekobox_source_directory="nekobox-unified-source-${pkgver}"
 
