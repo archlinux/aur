@@ -2,8 +2,8 @@
 # slskdn - Unofficial slskd fork with batteries-included Soulseek features
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=2026051219.slskdn.243
-pkgrel=3
+pkgver=2026051220.slskdn.244
+pkgrel=4
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64')
 url="https://github.com/snapetech/slskdn"
@@ -72,12 +72,12 @@ EOF
 
     if [[ -x "${stage_root}/vpn-agent/slskdN-vpn-agent" ]]; then
         install -Dm755 "${stage_root}/vpn-agent/slskdN-vpn-agent" "${pkgdir}/usr/bin/slskdN-vpn-agent"
-        install -Dm644 "${stage_root}/vpn-agent/systemd/slskdN-vpn-split.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-split.service"
-        install -Dm644 "${stage_root}/vpn-agent/systemd/slskdN-vpn-ingress.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-ingress.service"
+        install_vpn_unit "${stage_root}/vpn-agent/systemd/slskdN-vpn-split.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-split.service"
+        install_vpn_unit "${stage_root}/vpn-agent/systemd/slskdN-vpn-ingress.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-ingress.service"
         install -Dm644 "${stage_root}/vpn-agent/systemd/slskdN-vpn-ingress-renew.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-ingress-renew.service"
         install -Dm644 "${stage_root}/vpn-agent/systemd/slskdN-vpn-ingress-renew.timer" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-ingress-renew.timer"
-        install -Dm644 "${stage_root}/vpn-agent/systemd/slskdN-vpn-gluetun-compat.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-gluetun-compat.service"
-        install -Dm644 "${stage_root}/vpn-agent/systemd/slskdN-vpn-watchdog.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-watchdog.service"
+        install_vpn_unit "${stage_root}/vpn-agent/systemd/slskdN-vpn-gluetun-compat.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-gluetun-compat.service"
+        install_vpn_unit "${stage_root}/vpn-agent/systemd/slskdN-vpn-watchdog.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-watchdog.service"
         install -Dm644 "${stage_root}/vpn-agent/systemd/slskdN-vpn-watchdog.timer" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-watchdog.timer"
     fi
 
@@ -85,4 +85,20 @@ EOF
     install -dm775 "${pkgdir}/var/lib/${_pkgname}/downloads"
     install -dm775 "${pkgdir}/var/lib/${_pkgname}/incomplete"
     install -dm755 "${pkgdir}/var/lib/slskdN-vpn"
+}
+
+install_vpn_unit() {
+    local src="$1"
+    local dst="$2"
+
+    install -Dm644 "$src" "$dst"
+    sed -i \
+        -e 's#/usr/local/bin/slskdN-vpn-agent#/usr/bin/slskdN-vpn-agent#g' \
+        -e 's#slskdN\.service#slskd.service#g' \
+        -e '/^Environment=SLSKDN_CONFIG=/d' \
+        -e '/^Environment=SLSKDN_SERVICE_USER=/d' \
+        -e '/^Environment=SLSKDN_PROCESS_NAME=/d' \
+        -e '/^Environment=SLSKDN_SERVICE_NAME=/d' \
+        "$dst"
+    sed -i '/^\[Service\]/a Environment=SLSKDN_CONFIG=/etc/slskd/slskd.yml\nEnvironment=SLSKDN_SERVICE_USER=slskd\nEnvironment=SLSKDN_PROCESS_NAME=slskd\nEnvironment=SLSKDN_SERVICE_NAME=slskd' "$dst"
 }

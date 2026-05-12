@@ -3,6 +3,11 @@ post_install() {
     systemd-tmpfiles --create /usr/lib/tmpfiles.d/slskd.conf >/dev/null 2>&1 || true
     install -d -m 0755 /var/lib/slskdN-vpn >/dev/null 2>&1 || true
     systemctl daemon-reload >/dev/null 2>&1 || true
+    cat <<'EOF'
+slskdN: configuration lives at /etc/slskd/slskd.yml.
+slskdN: if pacman created /etc/slskd/slskd.yml.pacnew, merge any wanted new
+slskdN: defaults manually; pacman preserved your existing configuration.
+EOF
 }
 
 post_upgrade() {
