@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=NVIDIA Nsight Systems
+GenericName=NVIDIA Nsight Systems
+Icon=/usr/lib/nsight-systems/host-linux-x64/nsys-ui.png
+Exec=/usr/bin/nsys-ui
+Keywords=nvidia;nsight;profiler;
+X-AppInstall-Keywords=nvidia;nsight;profiler;
+X-GNOME-Keywords=nvidia;nsight;profiler;
+Terminal=false
+Categories=Development;Profiling;ParallelComputing
