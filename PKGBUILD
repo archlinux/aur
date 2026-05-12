@@ -12,8 +12,8 @@ source_x86_64=("Soviet_2.15.4_amd64.AppImage::https://updates.sovetchat.ru/downl
 sha256sums_x86_64=('fd3743153a497b96e7cd2cd55fd0ef75d21f15aa4289329544ca4313a8778e1c')
 
 package() {
-    install -Dm755 "${srcdir}/Soviet_2.15.4_amd64.AppImage" "${pkgdir}/opt/Soviet/Soviet.AppImage"
-    chmod +x "${pkgdir}/opt/Soviet/Soviet.AppImage"
+    install -d -m0777 "${pkgdir}/opt/Soviet"
+    install -Dm777 "${srcdir}/Soviet_2.15.4_amd64.AppImage" "${pkgdir}/opt/Soviet/Soviet.AppImage"
 
     mkdir -p "${pkgdir}/usr/bin"
     ln -sf /opt/Soviet/Soviet.AppImage "${pkgdir}/usr/bin/sovet"
