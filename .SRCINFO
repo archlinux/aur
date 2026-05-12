@@ -1,13 +1,13 @@
 pkgbase = vapoursynth-plugin-subtext-git
 	pkgdesc = Plugin for Vapoursynth: subtext (GIT version)
 	pkgver = R6.4.gef0e4c5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vapoursynth/subtext
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = meson
-	depends = vapoursynth
+	depends = vapoursynth>=75
 	depends = libass
 	depends = ffmpeg
 	provides = vapoursynth-plugin-subtext

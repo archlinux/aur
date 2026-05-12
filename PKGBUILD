@@ -3,12 +3,12 @@
 _plug=subtext
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=R6.4.gef0e4c5
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/vapoursynth/subtext'
 license=('MIT')
-depends=('vapoursynth'
+depends=('vapoursynth>=75'
   'libass'
   'ffmpeg'
 )
@@ -36,7 +36,8 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  PLUGINDIR=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
 
+  install -Dm755 build/subtext.so "${pkgdir}${PLUGINDIR}/subtext.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
