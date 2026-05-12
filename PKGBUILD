@@ -1,13 +1,13 @@
 # Maintainer: M1829 <m1829js@gmail.com>
 pkgname=mxset
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='An optimized hashset in C89, yielding maximum compatibility and great performance.'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://codeberg.org/Muhamix/mxset'
 license=('LGPL-3.0-or-later')
 source=("$pkgname-$pkgver::https://codeberg.org/Muhamix/mxset/archive/v$pkgver.tar.gz")
-sha256sums=('2ddee252e44822ce1a9ef0ad1ebb8b208c2a21170c1f5198270474c99ae38651')
+sha256sums=('8fbceb161f084a64791ecc80d9eaa592fd81e9d78d5a56c9aad9fa355c4ce7cb')
 options=('staticlibs')
 
 package() {
