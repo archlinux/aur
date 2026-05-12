@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdb-target
-pkgver=17.1.3+13.3
+pkgver=17.2.1+13.4
 pkgrel=1
 pkgdesc="Cross-debugger server for Win32 and Win64 using MinGW-w64 extracted from Debian package"
 arch=(i686 x86_64)
@@ -9,10 +9,10 @@ license=(GPL-3+)
 depends=()
 options=(!docs)
 
-source=("http://ftp.debian.org/debian/pool/main/g/gdb-mingw-w64/gdb-mingw-w64_17.1-3+13.3_amd64.deb")
-sha256sums=('72b3b0c37a51b762435d046a4257bde5b4b66f9ac92bf778342e010b18366b59')
+source=("http://ftp.debian.org/debian/pool/main/g/gdb-mingw-w64/gdb-mingw-w64_17.2-1+13.4_amd64.deb")
+sha256sums=('6540d8fa9b72cd4322987e53300aced45c919569d2b54dc033e376763bb0a50d')
 
-_debfile="$(basename 'http://ftp.debian.org/debian/pool/main/g/gdb-mingw-w64/gdb-mingw-w64_17.1-3+13.3_amd64.deb')"
+_debfile="$(basename 'http://ftp.debian.org/debian/pool/main/g/gdb-mingw-w64/gdb-mingw-w64_17.2-1+13.4_amd64.deb')"
 
 prepare() {
     mkdir -p "${srcdir}/deb_contents"
