@@ -3,7 +3,7 @@
 pkgname=freetube-git
 _pkgname=FreeTube
 pkgver=0.24.0.beta.r10160.b55e623
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source desktop YouTube player built with privacy in mind - built from git source tree.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://freetubeapp.io"
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 prepare() {
-  sed -i "5i electronDist: '/usr/lib/electron41'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
+  sed -i "5i electronDist: '/usr/lib/electron42'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
   sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname/_scripts/build.mjs"
 }
 
