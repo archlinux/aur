@@ -6,8 +6,8 @@ pkgdesc="A simple and modern GUI for managing iSCSI."
 arch=('x86_64')
 license=('MIT')
 depends=('open-iscsi' 'libnotify')
-url="https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro"
-source=("https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro/releases/download/iscsi-util-1.0.6/ISCSI-Util.tar.gz")
+url="https://github.com/mijocecr/iscsi-util"
+source=("https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_v2.1/ISCSI-Util.tar.gz")
 sha256sums=('SKIP')
 
 package() {
