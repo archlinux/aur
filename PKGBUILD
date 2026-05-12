@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=octa-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Multi-format data viewer/editor supporting parquet, csv, json, avro, xlsx and more (pre-compiled)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('octa')
 conflicts=('octa')
 options=(!debug)
 source=("octa-$pkgver-linux-x86_64.tar.gz::$url/releases/download/$pkgver/octa-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('69d2751b8632bc9475bb74b7bc449df3fd5d60e9c169de30300f168a23bf12be')
+sha256sums=('cabd2bdc7caa38998fd112475790a07602e4b5f599c467bf6d4912a80536d447')
 
 package() {
     cd "octa-$pkgver-linux-x86_64"
