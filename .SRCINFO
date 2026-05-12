@@ -1,6 +1,6 @@
 pkgbase = steam-library-manager
 	pkgdesc = A powerful Steam library organizer for Linux - the modern Depressurizer alternative
-	pkgver = 1.4.5
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Switch-Bros/SteamLibraryManager
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = steam-library-manager
 	depends = qt6-base
 	optdepends = python-keyring: secure token storage via system keyring
 	optdepends = python-steamgriddb: artwork browsing via SteamGridDB
-	source = steam-library-manager-1.4.5.tar.gz::https://github.com/Switch-Bros/SteamLibraryManager/archive/v1.4.5.tar.gz
-	sha256sums = cb98b21d87c9de5ddbcbaa37f1c96be08e32a0ae44ec9701019e92354ce074c8
+	source = steam-library-manager-1.5.0.tar.gz::https://github.com/Switch-Bros/SteamLibraryManager/archive/v1.5.0.tar.gz
+	sha256sums = 914af31847fc068f98923f83bbbb5b21896855b0226ec5fc7c34ad7d0b25ee9a
 
 pkgname = steam-library-manager
