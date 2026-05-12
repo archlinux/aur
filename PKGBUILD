@@ -3,7 +3,7 @@
 
 pkgname=lutris-wine-meta
 pkgver=2.1.0
-pkgrel=6
+pkgrel=7
 arch=(any)
 url='https://github.com/lutris/docs/blob/master/WineDependencies.md'
 pkgdesc='Meta package for using lutris with wine'
@@ -33,7 +33,6 @@ depends=(
   gtk3
   lib32-gtk3
   gst-plugins-base-libs
-  lib32-gst-plugins-base-libs
   vulkan-icd-loader
   lib32-vulkan-icd-loader
   sdl2
