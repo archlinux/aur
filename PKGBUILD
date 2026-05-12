@@ -4,7 +4,7 @@
 _pkgname=dusklight
 pkgname=${_pkgname}-git
 pkgver=1.0.1.r11.g61b2e6c
-pkgrel=1
+pkgrel=2
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
@@ -55,8 +55,8 @@ package() {
   install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/${_pkgname}"
   cp -r "${srcdir}/dusk/res" "${pkgdir}/usr/share/${_pkgname}/res"
 
-  install -Dm 644 "${srcdir}/platforms/freedesktop/1024x1024/apps/dusklight.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  install -Dm 755 "${srcdir}/platforms/freedesktop/dusklight.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm 644 "${srcdir}/dusk/platforms/freedesktop/1024x1024/apps/dusklight.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm 755 "${srcdir}/dusk/platforms/freedesktop/dusklight.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   patchelf --remove-rpath "${pkgdir}/usr/share/${_pkgname}/dusk"
 }
