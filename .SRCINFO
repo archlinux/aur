@@ -1,0 +1,17 @@
+pkgbase = gzippy-bin
+	pkgdesc = The fastest gzip implementation — drop-in replacement for gzip/gunzip/zcat
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/JackDanger/gzippy
+	arch = x86_64
+	arch = aarch64
+	license = Zlib
+	optdepends = gzippy-replace-gzip: replace system gzip/gunzip/zcat with gzippy
+	provides = gzippy
+	conflicts = gzippy
+	source_x86_64 = gzippy-x86_64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.4.0/gzippy-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3e89411c87674f8f3a601b2588a1293c72342694f055146aeaad685ba6957967
+	source_aarch64 = gzippy-aarch64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.4.0/gzippy-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a675e67d8dd9077ca2cf27d7899e94e19f7d443785dbe771171bb1ba88a80a22
+
+pkgname = gzippy-bin
