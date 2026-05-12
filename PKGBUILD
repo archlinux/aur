@@ -2,7 +2,7 @@
 _base=trame
 pkgname=python-${_base}
 pkgdesc="Framework to build applications in plain Python"
-pkgver=3.12.0
+pkgver=3.13.1
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -13,7 +13,7 @@ checkdepends=(python-pytest)
 optdepends=('python-pywebview: for app support'
   'jupyterlab: for jupyter support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e9cb492460026c7be63e4f1cfaed5e10a4cbf85ec739490ff3c5a9f4ab070578c5dbe5c15d1b7ea922727a5f240ed446d13006bd8f4a03b2b1a0c6ab9b16560a')
+sha512sums=('31c79c5c00c2a34aa3e1e6cd291c003c5b0a2834fe8d6b594e128f329e108e67a305e70bbb0d79dd60b64af8f4e751044a5bd4dc3472b6f27b6e3ee1b6d968ba')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
