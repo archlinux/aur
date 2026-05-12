@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-bitwarden-bin
 	pkgdesc = A secure and free password manager for all of your devices (binary release)
-	pkgver = 2025.10.0
+	pkgver = 2026.3.0
 	pkgrel = 1
 	url = https://addons.mozilla.org/addon/bitwarden-password-manager
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-extension-bitwarden-bin
 	depends = firefox
 	provides = firefox-extension-bitwarden
 	conflicts = firefox-extension-bitwarden
-	noextract = bitwarden_password_manager-2025.10.0.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/4599707/bitwarden_password_manager-2025.10.0.xpi
-	sha256sums = 31b88743f36032fa3cfb78e0582fb732ef00a3c5915182ba37fd08b04aac1d3b
+	noextract = bitwarden_password_manager-2026.3.0.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/4749958/bitwarden_password_manager-2026.3.0.xpi
+	sha256sums = 2dc6d074d4dc0abd2a8966f5065a55e7252bbf5e54b23c31dbedabfac0d4dbc4
 
 pkgname = firefox-extension-bitwarden-bin
