@@ -1,5 +1,3 @@
-2.43.0-1 [2026-05-06]
-- [Desktop][Enterprise][Experiment] Introduced Secure Access V2.
-- [Android][Enterprise][Experiment] Introduced Secure Access.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 148.0.7778.120.
-
+2.43.2-1 [2026-05-12]
+- [Desktop][BugFix] Fixed a crash that occurs while loading unpacked extensions.
+- Chromium engine updated to 148.0.7778.122.
