@@ -1,6 +1,6 @@
 # Maintainer: dolphinoracle <dolphinoracle@gmail.com>
 pkgname=gazelle-installer
-pkgver=26.05arch
+pkgver=26.5.3arch
 pkgrel=1
 pkgdesc="Customizable GUI installer ported from MX Linux and antiX"
 arch=('x86_64' 'i686')
@@ -26,8 +26,8 @@ optdepends=(
     'partitionmanager: KDE partition manager'
     'cryptsetup: LUKS encryption support'
 )
-source=("https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.05arch.tar.gz")
-sha256sums=('6dc370d7706b6bd305d7c8db720168a2402f182ecc48384f2791ea586219336e')
+source=("https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.5.3arch.tar.gz")
+sha256sums=('e029c2db97098da88b4ed228e95db2906d6528504d1e36a2ba43db37aceebdaa')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
