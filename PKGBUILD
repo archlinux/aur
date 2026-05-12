@@ -1,7 +1,7 @@
 # Maintainer: Origin Security <support@originhq.com>
 pkgname=praxis-bin
-pkgver=0.9.28
-pkgrel=2
+pkgver=0.9.29
+pkgrel=1
 pkgdesc='Praxis - Semantic Command & Control Framework for Agents (pre-built)'
 arch=('x86_64')
 url='https://github.com/originsec/praxis'
@@ -11,7 +11,7 @@ backup=('etc/praxis/env')
 options=('!lto')
 install=praxis.install
 source=(
-    "praxis-${pkgver}-x86_64-linux.tar.gz::https://github.com/originsec/praxis/releases/download/v0.9.28/praxis-0.9.28-x86_64-linux.tar.gz"
+    "praxis-${pkgver}-x86_64-linux.tar.gz::https://github.com/originsec/praxis/releases/download/v0.9.29/praxis-0.9.29-x86_64-linux.tar.gz"
     'praxis-service.service'
     'praxis-sysusers.conf'
     'praxis-tmpfiles.conf'
