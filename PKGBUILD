@@ -338,6 +338,10 @@ _package() {
         'scx-scheds: sched-ext schedulers'
     )
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE V4L2LOOPBACK-MODULE NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
+    # NEW LINES HERE
+    provides+=('linux')
+    conflicts=('linux' 'linux-zen' 'linux-hardened')
+    replaces=('linux' 'linux-zen' 'linux-hardened')
     cd "$_srcname"
     local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
     echo "Installing boot image..."

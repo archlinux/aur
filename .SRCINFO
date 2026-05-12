@@ -49,6 +49,13 @@ pkgname = solara-kernel
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
+	provides = linux
+	conflicts = linux
+	conflicts = linux-zen
+	conflicts = linux-hardened
+	replaces = linux
+	replaces = linux-zen
+	replaces = linux-hardened
 
 pkgname = solara-kernel-hdr
 	pkgdesc = Headers and scripts for building modules for the Solara Linux Kernel — BORE scheduler, CachyOS patches, maximum POWER kernel
