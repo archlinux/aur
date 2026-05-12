@@ -1,9 +1,9 @@
 pkgname=lightningview
-pkgver=2.4.5
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="A lightning-fast cross-platform image viewer written in Rust, supporting many raw camera formats."
 arch=('x86_64')
-url="https://lightningview.app"
+url="https://github.com/dividebysandwich/LightningView"
 license=('GPL-2.0-or-later')
 depends=('hicolor-icon-theme' 'libxkbcommon' 'libx11' 'libxcursor' 'libxrandr' 'libxi' 'fontconfig' 'dbus' 'openssl')
 makedepends=('rust' 'cargo')
@@ -12,7 +12,7 @@ source=(
     "$pkgname.desktop"
     "logo_256.png"
 )
-sha256sums=('b5f77948bb766564a15b5bdc126a9950e547f356c66e1434343d7da252846d20'
+sha256sums=('ed41020de96807c66d0ed80aa4e226a3dd0d49365ab1c290ed77cb2c7fbe4e39'
             '830ce1fe85eb1e00530d020e1c0f735e77e10909d2575e84db231023ce42a99b'
             '09492ed9bde5eb1d4857e2551c0fabcaf57bdd873d09c0112b3b27ef01135893')
 
