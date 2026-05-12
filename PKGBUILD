@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r86040.00b0061463
+pkgver=r86059.906b8c4f52
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -36,6 +36,9 @@ prepare() {
   # https://gitlab.kitware.com/cmake/cmake/-/issues/25079
   # undefined reference to absl::lts_20250814::log_internal::LogMessageFatal::LogMessageFatal(char const*, int, char const*)
   echo "target_link_libraries(vtkRemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
+
+  # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
+  sed -i "/vtkNativePartitioningStrategy/d;/vtkRedistributeDataSetFilter/d" VTK/Filters/ParallelDIY2/CMakeLists.txt
 }
 
 build() {
