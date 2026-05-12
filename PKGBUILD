@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=infer-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Infer is a static analysis tool for Java, C++, Objective-C, and C. Infer is written in OCaml."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/facebook/infer/releases/download/v${pkgver}/infer-li
         'FailingTest.java'
         'PassingTest.java'
         'LICENSE')
-sha512sums=('3656547f86666214fb4b9ec2098b3fa511cb25e4485f1d802a8ac376a9a1cd32ec051111b428db7ad8981a579247dbcff917f20024dded442cb62e95e0f0e4e0'
+sha512sums=('464bbabdbcc843c0851a4aaf9f05b5f32799693caeadc83000e9a031e6dc5c817f5407255ae1f8b11532d09390b25b778b195aae3455a354da9c696e1f1d4b16'
             'e72e043048624ef958dcb03c73b042d17ee162d80f5f9798dd89b25b9ceca6e4852fc4627ac7c1d5162c73834431f61f52d3b37a4f990d1a19dc927665adbb04'
             'd5333a55e34e92225dd2018a1b016c0ffe537773ea8d708cd74e2ae8c6e556cec8998028238fb993a000ef0841a6a21f7585893a58fb6c2208122951b717dd78'
             '716d142870b12af04a19d81197b96f91af1544d1d8f2a4d09248d161cb4995ef3ff4611f8bd175a0553f0911cf24efa79ef97e36a14667f5b2027e053576d880'
