@@ -8,6 +8,6 @@ pkgbase = sovet
 	depends = fuse2
 	options = !strip
 	source_x86_64 = Soviet_2.15.3_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_2.15.3_amd64.AppImage
-	sha256sums_x86_64 = 61f74bf4c44a2294abccfd952071fd2585d0be9b2b12f839daacb8509a9787fa
+	sha256sums_x86_64 = b209eb656ac59526e1ad0f893a273ac266eeb4e51c783dbc1de3df04795ddac3
 
 pkgname = sovet
