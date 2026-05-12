@@ -1,6 +1,6 @@
 # Maintainer: Kristofer Lund <kristoferlund@users.noreply.github.com>
 pkgname=ostt
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Open Speech-to-Text: Terminal application for recording and transcribing audio"
 arch=('x86_64' 'aarch64')
@@ -43,4 +43,3 @@ check() {
     cd "ostt-${pkgver}"
     cargo test --release --locked
 }
-
