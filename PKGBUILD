@@ -22,8 +22,14 @@ source_aarch64=(
   "lfff-linux-aarch64.tar.gz::https://github.com/mrFrok/LibreFastbootFirmwareFlasher/releases/download/v$pkgver/lfff-linux-aarch64.tar.gz"
   "lfff-gui-linux-aarch64.tar.gz::https://github.com/mrFrok/LibreFastbootFirmwareFlasher/releases/download/v$pkgver/lfff-gui-linux-aarch64.tar.gz"
 )
-sha256sums_x86_64=('SKIP' 'SKIP')
-sha256sums_aarch64=('SKIP' 'SKIP')
+sha256sums_x86_64=(
+  '43bcc19cc1faf26f29a7f4a081d639e5f652658d5bddfa0003c92ef36fb2d4b8'
+  '510d3e36531758ce0d7f91abd5434a943a554f49cb1051d6c89c308142058bb1'
+)
+sha256sums_aarch64=(
+  '6c9aac42c9be3963ff65fe92db58202343fbfd88ad01fef30bcde0d81c460c12'
+  '9bf30b482e2beba8aac16cc1b78fbf28552dcf614dea703c494ab809563f1ea7'
+)
 
 source+=(
   "lfff-gui.desktop::https://raw.githubusercontent.com/mrFrok/LibreFastbootFirmwareFlasher/main/lfff-gui.desktop"
