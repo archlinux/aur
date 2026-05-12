@@ -1,0 +1,11 @@
+post_install() {
+	cat << EOF
+
+The server requires files from upstream's repositories:
+
+git clone https://github.com/draxinar/rundir.git /opt/ouo/.rundir
+chown -R ouo:ouo /opt/ouo/.rundir
+
+EOF
+}
+# vim: set tabstop=2 shiftwidth=2 expandtab:

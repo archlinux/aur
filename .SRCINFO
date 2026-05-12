@@ -1,0 +1,27 @@
+pkgbase = ouo
+	pkgdesc = Reverse engineered Ultima Online: The Second Age server
+	pkgver = r18.gfd76750
+	pkgrel = 1
+	url = https://github.com/draxinar/ouo
+	install = ouo.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = sh
+	options = !debug
+	options = !buildflags
+	backup = etc/default/ouo
+	source = ouo::git+https://github.com/draxinar/ouo#commit=fd767502e2ab8d5b46b5855c542df8a7bdbb9a64
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha512sums = 5cc335b60af78ad70052481f4bb8be2dfc3f95bd1e0b5b5fe5931f8349e4ca8fd8ff98d1739be05bc18d57a6c3747f50414149adc796050d407e81ed2aed3293
+	sha512sums = 092eee8bde1e2f0a9efff0f95a1c9439d7740dfdde12262ab54bf21afa06263a39c8238b8abd742ec2e3bcfc19ef37073fbcd8d249d45dcc3724fa6099828cad
+	sha512sums = 44c1eed249e4f9d486b0ff330bc5556be996f44bb3e6ff087cd098c2a798cae0635e477375e9c504547f97b83a2a8e5a5730ff580cb2e6fa5e2f6db5ebe20065
+	b2sums = 314aa0d0b37cc04bcc158179403f26857899f0593aa36080080ba28ba629024dee0cef843a11ca5fcb615f26ca33af54045521610b0b5cdebd1bea22a8bdf509
+	b2sums = dfe261bb1149f279b2ae4566ac76b30ef5ecb6686fcf033b621beb62844b5238c8caefc43b5634870b762d0659511c23d9c636ae47625d4e2cc622b92bf4ace7
+	b2sums = 5eb6123b1e7e412ebe2fd4a2adbdd5846d04efd77319001813c4158eac0804f1891cb9405bd7ece744ae105aefdb816aabdb85216cdb63d62f3b4820ab84d6a8
+
+pkgname = ouo
