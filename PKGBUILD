@@ -12,5 +12,10 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/time-capsule-$pkgver"
-    install -Dm755 main.py "$pkgdir/usr/bin/time-capsule"
+    install -Dm755 main.py "$pkgdir/usr/share/time-capsule/main.py"
+    
+    mkdir -p "$pkgdir/usr/bin"
+    echo '#!/bin/bash' > "$pkgdir/usr/bin/time-capsule"
+    echo 'exec python3 /usr/share/time-capsule/main.py "$@"' >> "$pkgdir/usr/bin/time-capsule"
+    chmod 755 "$pkgdir/usr/bin/time-capsule"
 }
