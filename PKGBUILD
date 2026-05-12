@@ -14,7 +14,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 
 source=("http://ftp.debian.org/debian/pool/main/w/$_pkgbase/${_pkgbase}_$pkgver-${pkgrel}_amd64.deb")
-md5sums=('4b086ac303401cc2a645d9936ac96e80')
+md5sums=('8d4cd32df4c459e010e54ab24e5d0000')
 
 package() {
   cd "$srcdir"
