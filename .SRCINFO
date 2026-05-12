@@ -1,0 +1,25 @@
+pkgbase = python-kvm-serial-git
+	pkgdesc = Python Serial KVM Controller for CH9329 and CH9350L - git version
+	pkgver = 1.5.6.r7.g277619b
+	pkgrel = 1
+	url = https://github.com/sjmf/kvm-serial
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pyserial
+	depends = python-pyusb
+	depends = python-pynput
+	depends = python-screeninfo
+	depends = python-pyqt5
+	depends = python-toml
+	depends = qt5-multimedia
+	provides = python-kvm-serial
+	conflicts = python-kvm-serial
+	source = git+https://github.com/sjmf/kvm-serial.git
+	sha512sums = SKIP
+
+pkgname = python-kvm-serial-git
