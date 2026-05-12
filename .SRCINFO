@@ -1,0 +1,12 @@
+pkgbase = gzippy-replace-gzip
+	pkgdesc = Replace system gzip/gunzip/zcat with gzippy
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/JackDanger/gzippy
+	arch = any
+	license = Zlib
+	depends = gzippy-bin
+	provides = gzip
+	conflicts = gzip
+
+pkgname = gzippy-replace-gzip
