@@ -25,13 +25,13 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    python -m venv --system-site-packages .venv
-    .venv/bin/pip install --quiet \
+    mkdir -p lib
+    python -m pip install --target=lib --quiet \
         supertonic \
         ebooklib \
         sounddevice
 
-    .venv/bin/python -c "
+    PYTHONPATH=lib python -c "
 from supertonic import TTS
 import pathlib
 TTS(auto_download=True, model_dir=pathlib.Path('models/supertonic-3'))
@@ -41,23 +41,20 @@ TTS(auto_download=True, model_dir=pathlib.Path('models/supertonic-3'))
 package() {
     cd "$pkgname"
 
-    # App files
     install -dm755 "$pkgdir/opt/canto"
     cp -r . "$pkgdir/opt/canto/"
 
-    # Launcher script
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/canto" <<'EOF'
 #!/bin/sh
-exec /opt/canto/.venv/bin/python /opt/canto/main.py "$@"
+export PYTHONPATH=/opt/canto/lib
+exec /usr/bin/python3 /opt/canto/main.py "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/canto"
 
-    # Desktop entry
     install -Dm644 canto.desktop \
         "$pkgdir/usr/share/applications/canto.desktop"
 
-    # MIME association for .epub files
     install -dm755 "$pkgdir/usr/share/mime/packages"
     cat > "$pkgdir/usr/share/mime/packages/canto.xml" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
