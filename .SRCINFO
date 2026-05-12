@@ -1,6 +1,6 @@
 pkgbase = masterpdfeditor-qt_include
-	pkgdesc = A complete solution for viewing, creating and editing PDF files. Built upstream with qt libraries included!
-	pkgver = 5.9.97
+	pkgdesc = A complete solution for viewing, creating and editing PDF files (qt5 version with static-linked qt libs).
+	pkgver = 5.9.98
 	pkgrel = 1
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = masterpdfeditor-qt_include
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = glibc>=2.28
-	provides = masterpdfeditor=5.9.97
+	provides = masterpdfeditor=5.9.98
 	conflicts = masterpdfeditor
-	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.9.97-qt5.x86_64-qt_include.tar.gz
-	sha1sums_x86_64 = 2acf3b27e65405523add947b92f2058260baa153
+	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.9.98-1-qt5.x86_64-qt_include.tar.gz
+	sha1sums_x86_64 = b582bac10d09b5a1c4a7a0988d9f95e1582d7121
 
 pkgname = masterpdfeditor-qt_include
