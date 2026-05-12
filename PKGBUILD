@@ -1,7 +1,7 @@
 # Maintainer: Sourav <souravkumar18835@gmail.com>
 pkgname=time-capsule
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A tiny GTK stopwatch and timer capsule"
 arch=('any')
 url="https://github.com/sourav4243/time-capsule"
@@ -18,4 +18,6 @@ package() {
     echo '#!/bin/bash' > "$pkgdir/usr/bin/time-capsule"
     echo 'exec python3 /usr/share/time-capsule/main.py "$@"' >> "$pkgdir/usr/bin/time-capsule"
     chmod 755 "$pkgdir/usr/bin/time-capsule"
+
+    install -Dm644 time-capsule.desktop "$pkgdir/usr/share/applications/time-capsule.desktop"
 }
