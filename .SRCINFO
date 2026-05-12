@@ -1,15 +1,16 @@
 pkgbase = bayestraits
 	pkgdesc = A computer package for performing analyses of trait evolution among groups of species for which a phylogeny or sample of phylogenies is available
-	pkgver = 4.1.3
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = http://www.evolution.reading.ac.uk/BayesTraits.html
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = gcc
 	makedepends = nlopt
 	makedepends = gsl
-	source = http://www.evolution.reading.ac.uk/BayesTraitsV4.1.3/Files/BayesTraitsV4.1.3-src.tar.gz
-	sha256sums = 1c16bb161d3bd910ea8cb5af2c0f71551da5419fbf3d2eca822c1625320e6613
+	makedepends = git
+	source = git+https://github.com/AndrewPMeade/BayesTraits-Release.git
+	sha256sums = SKIP
 
 pkgname = bayestraits
 	depends = nlopt
