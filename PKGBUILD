@@ -1,6 +1,6 @@
 # Maintainer: Sourav <souravkumar18835@gmail.com>
 pkgname=time-capsule
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A tiny GTK stopwatch and timer capsule"
 arch=('any')
