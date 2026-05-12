@@ -2,7 +2,7 @@
 
 pkgname=terax
 pkgver=0.6.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Lightweight AI-native terminal emulator (ADE) built with Tauri 2 and React"
 arch=('x86_64')
 url="https://github.com/crynta/terax-ai"
@@ -40,14 +40,14 @@ prepare() {
     cd "${srcdir}/terax-ai-${pkgver}"
     export npm_config_cache="${srcdir}/.npm-cache"
 
-    # Tailwind v4 + @tailwindcss/oxide silently drops utility classes when
-    # automatic source detection runs on tmpfs (yay/paru default BUILDDIR).
-    # Force-explicit @source so scanning is filesystem-independent.
-    # See: https://github.com/t8y2/dbx/issues/167
-    if ! grep -q '^@source ' src/styles/globals.css; then
-        sed -i '/^@import "tailwindcss";$/a @source "../**/*.{ts,tsx,js,jsx,html}";' \
-            src/styles/globals.css
-    fi
+    # @tailwindcss/oxide walks parent dirs to find a .git boundary and
+    # then honors that repo's .gitignore. The AUR package repo's
+    # .gitignore is `*` (ignore everything but PKGBUILD/.SRCINFO), which
+    # silently excludes the entire upstream source tree from utility
+    # scanning, producing CSS with zero Tailwind utilities. Plant a
+    # local .git marker so oxide stops climbing at this directory.
+    mkdir -p .git
+    : > .git/HEAD
 
     pnpm install --frozen-lockfile
 }
