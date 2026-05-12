@@ -1,0 +1,12 @@
+CryptoPro NGate Client — proprietary software.
+
+Copyright (c) CRYPTO-PRO LLC. All rights reserved.
+https://www.cryptopro.ru/
+
+The CryptoPro NGate client binaries packaged here are redistributed in
+their original, unmodified form from the upstream beta repository at
+https://ng-client.cryptopro.ru/.
+
+Use of the software is governed by the CryptoPro license agreement
+provided by the vendor. This Arch packaging adds no additional rights
+or warranties.

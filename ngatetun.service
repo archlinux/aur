@@ -1,0 +1,14 @@
+[Unit]
+Description=CryptoPro NGate VPN client TUN/TAP daemon
+Documentation=https://www.cryptopro.ru/
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/cprongate/ngatetun
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

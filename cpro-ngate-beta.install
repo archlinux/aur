@@ -1,0 +1,34 @@
+post_install() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  cat <<'EOF'
+
+==> ngatetun is NOT enabled by default.
+    Enable and start the tunnel daemon:
+      sudo systemctl enable --now ngatetun.service
+    GUI:     ngateclient   (or use the desktop entry)
+    Console: ngateconsoleclient
+    Templates: /opt/cprongate/service.ini.template
+               /opt/cprongate/console_client.ini.template
+
+EOF
+}
+
+post_upgrade() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  if systemctl is-active --quiet ngatetun.service; then
+    systemctl restart ngatetun.service >/dev/null 2>&1 || true
+  fi
+}
+
+pre_remove() {
+  if systemctl is-active --quiet ngatetun.service; then
+    systemctl stop ngatetun.service >/dev/null 2>&1 || true
+  fi
+  if systemctl is-enabled --quiet ngatetun.service 2>/dev/null; then
+    systemctl disable ngatetun.service >/dev/null 2>&1 || true
+  fi
+}
+
+post_remove() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}
