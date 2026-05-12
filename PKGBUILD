@@ -2,7 +2,7 @@
 # Contributor: Gentleman Programming <info@gentlemanprogramming.dev>
 
 pkgname=gentle-ai
-pkgver=1.26.5
+pkgver=1.27.5
 pkgrel=1
 pkgdesc="CLI tool to manage and configure AI coding agents ecosystems"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('92c5f1e8a8f0610bb351f8120c7bed57c28c6255ffcd10e6d1fa7726a006c4a3')
+sha256sums=('b3f4bd448e18ae4aaa972e43623aedb6973a18602fc817f9356ad6e732c29a67')
 
 prepare() {
   # Entramos en la carpeta que acabas de ver con 'ls'
@@ -34,7 +34,7 @@ build() {
   # Inyectamos la versión para que 'gentle-ai --version' no devuelva null
   local _ldflags="-X main.version=v${pkgver} -linkmode=external"
 
-  # Compilamos. El binario se guardará en la carpeta 'build/' dentro de 'src/gentle-ai-1.26.5/'
+  # Compilamos. El binario se guardará en la carpeta 'build/' dentro de 'src/gentle-ai-1.27.5/'
   go build -v -o build/gentle-ai -ldflags "$_ldflags" ./cmd/gentle-ai
 }
 
