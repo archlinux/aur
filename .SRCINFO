@@ -1,0 +1,16 @@
+pkgbase = fnclaude-bin
+	pkgdesc = A claude CLI launcher with quality-of-life features (binary release)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fnrhombus/fnclaude
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fnclaude
+	conflicts = fnclaude
+	source_x86_64 = fnclaude-bin-0.1.0-x86_64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v0.1.0/fnclaude_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = eb43f4a173a98598693b04a09677509c5bcc3e86fcec2a058b3482a88c8a5ac9
+	source_aarch64 = fnclaude-bin-0.1.0-aarch64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v0.1.0/fnclaude_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8f49b61851de72f43c53bb4748955039a1ef3a3fd32414b28eac02cfc6dff321
+
+pkgname = fnclaude-bin
