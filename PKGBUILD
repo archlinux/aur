@@ -3,7 +3,8 @@
 pkgname=sing-box-cagedbird-bin
 _pkgname=sing-box
 _pkgver=1.14.0-alpha.21-cagedbird.64eadbec
-pkgver=${_pkgver//-/_}
+pkgver=1.14.0_alpha.21_cagedbird.r2393.g64eadbec
+epoch=1
 pkgrel=1
 pkgdesc='The universal proxy platform with native Clash subscription support (cagedbird binary build)'
 arch=('x86_64' 'aarch64')

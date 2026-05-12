@@ -1,7 +1,8 @@
 pkgbase = sing-box-cagedbird-bin
 	pkgdesc = The universal proxy platform with native Clash subscription support (cagedbird binary build)
-	pkgver = 1.14.0_alpha.21_cagedbird.64eadbec
+	pkgver = 1.14.0_alpha.21_cagedbird.r2393.g64eadbec
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/cagedbird043/sing-box
 	arch = x86_64
 	arch = aarch64
