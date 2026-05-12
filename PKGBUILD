@@ -1,57 +1,41 @@
+# shellcheck disable=SC2148,SC2034,SC2154
 # Maintainer: Alvin
-
 pkgname=pvz-hybrid-bin
-_reponame=pvz-hybrid
-pkgver=0.20
+pkgver=0.20.0
 pkgrel=1
-pkgdesc="植物大战僵尸杂交版linux版 (基于 Godot 原生运行)"
-arch=('x86_64') 
+pkgdesc="植物大战僵尸杂交版 (Linux Native) - Godot 原生移植版本"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://www.pvzhe.com"
-license=('unknown')
-depends=('godot')
-install="${pkgname}.install"
+license=('custom')
+options=(!debug)
+depends=('glibc' 'libgl' 'libx11' 'libxcb' 'fontconfig' 'freetype2' 'vulkan-icd-loader')
+optdepends=('wayland: 原生 Wayland 支持' 'pciutils: 多显卡自动检测 (lspci)')
+install=pvz-hybrid-bin.install
 
-# 声明网络依赖文件：从 Release 下载 pck，从 main 分支 raw 下载 icon
-source=(
-    "https://github.com/cublueer/${_reponame}/releases/download/v${pkgver}/${_reponame}-v${pkgver}.pck"
-    "https://raw.githubusercontent.com/cublueer/${_reponame}/main/icon.png"
-)
+_base_url="https://github.com/cublueer/pvz-hybrid/releases/download/v${pkgver}"
 
-# 校验
-sha256sums=('68f34fe6ea151734a43052fe519a8adb97119bf104ab675808abf94ed2b57c6f'
-            '4cd2117b55449b7cbf396edc0b02f323cac2020d60aa44330b204f748e9f8426')
+source_x86_64=("${_base_url}/pvz-hybrid_${pkgver}_amd64.deb")
+sha256sums_x86_64=('21a32f86b1d244de6e6b2205ad07c5542caeecbbb4d65585f8dc40b038d2ef9b')
+
+source_i686=("${_base_url}/pvz-hybrid_${pkgver}_i386.deb")
+sha256sums_i686=('550a88cdc9e37e2f6627dccc604d78c6d37fb5f50c4787a867639dad6125825e')
+
+source_aarch64=("${_base_url}/pvz-hybrid_${pkgver}_arm64.deb")
+sha256sums_aarch64=('e7ae33f9b710c4cb3efa4fb7dafc6c02569c61d70e15940fd7b1b517138e9f20')
+
+source_armv7h=("${_base_url}/pvz-hybrid_${pkgver}_armhf.deb")
+sha256sums_armv7h=('a10d4242a4717b2298a77e9e1cad001f878d1d289d77e1c957d2370a94a4c60d')
+
+case "$CARCH" in
+    x86_64)  _deb_arch="amd64" ;;
+    i686)    _deb_arch="i386" ;;
+    aarch64) _deb_arch="arm64" ;;
+    armv7h)  _deb_arch="armhf" ;;
+    *)       echo "Unsupported architecture: $CARCH"; exit 1 ;;
+esac
 
 package() {
-    # 1. 创建目标目录
-    install -d "${pkgdir}/usr/share/${pkgname}"
-    install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/share/applications"
-    install -d "${pkgdir}/usr/share/pixmaps"
-
-    # 2. 安装核心数据包 (.pck) 到 /usr/share
-    install -Dm644 "${_reponame}-v${pkgver}.pck" "${pkgdir}/usr/share/${pkgname}/"
-
-    # 3. 创建并安装启动脚本到 /usr/bin
-    cat <<EOF > "${pkgdir}/usr/bin/${pkgname}"
-#!/bin/bash
-# 启动 Godot 并加载游戏数据包
-exec godot --main-pack "/usr/share/${pkgname}/${_reponame}-v${pkgver}.pck" "\$@"
-EOF
-    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
-
-    # 4. 安装应用图标
-    install -Dm644 icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-
-    # 5. 创建并安装 .desktop 桌面快捷方式文件
-    cat <<EOF > "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-[Desktop Entry]
-Name=植物大战僵尸杂交版
-Name[en]=Plants vs Zombies Hybrid
-Comment=植物大战僵尸杂交版 (pvz-hybrid)
-Exec=${pkgname}
-Icon=${pkgname}
-Terminal=false
-Type=Application
-Categories=Game;StrategyGame;
-EOF
+    _deb="pvz-hybrid_${pkgver}_${_deb_arch}.deb"
+    bsdtar -xf "$srcdir/${_deb}" -C "$srcdir" "data.tar.xz"
+    bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
 }
