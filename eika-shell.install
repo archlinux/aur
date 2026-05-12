@@ -1,0 +1,24 @@
+post_install() {
+  if ! grep -qx '/usr/bin/esh' /etc/shells; then
+    echo '/usr/bin/esh' >> /etc/shells
+  fi
+
+  cat <<'EOF'
+
+EikaShell installed as: /usr/bin/esh
+
+Per-user config is read from:
+  ~/.config/esh/eshrc
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if [ -f /etc/shells ]; then
+    sed -i '\|^/usr/bin/esh$|d' /etc/shells
+  fi
+}

@@ -1,0 +1,20 @@
+pkgbase = eika-shell-git
+	pkgdesc = Small Unix-like shell written in C++
+	pkgver = 0.0.0.r69.gd2aeb9b
+	pkgrel = 1
+	url = https://github.com/eika-sia/eika-shell
+	install = eika-shell.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	provides = eika-shell
+	provides = esh
+	conflicts = eika-shell
+	options = !debug
+	source = git+https://github.com/eika-sia/eika-shell.git
+	sha256sums = SKIP
+
+pkgname = eika-shell-git
