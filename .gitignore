@@ -1,0 +1,7 @@
+# Ignore all files except explicitly tracked ones
+/*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!REUSE.toml

@@ -1,0 +1,8 @@
+version = 1
+
+[[annotations]]
+paths = [
+  "PKGBUILD",
+  ".SRCINFO",
+]
+license = "0BSD"

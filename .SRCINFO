@@ -1,0 +1,19 @@
+pkgbase = minimal-bin
+	pkgdesc = A declarative build system, developer environment tool, and task runner
+	pkgver = 3949779
+	pkgrel = 1
+	url = https://go.minimal.dev
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Minimal-Proprietary
+	makedepends = curl
+	depends = git
+	optdepends = bash: shell integration and completions
+	optdepends = zsh: shell integration and completions
+	optdepends = fish: shell integration and completions
+	source_x86_64 = https://storage.googleapis.com/minimal-shim/archives/cli-amd64-linux-3949779.tar.zst
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://storage.googleapis.com/minimal-shim/archives/cli-arm64-linux-3949779.tar.zst
+	sha256sums_aarch64 = SKIP
+
+pkgname = minimal-bin
