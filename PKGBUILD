@@ -3,8 +3,8 @@
 
 _pkgname=dusklight
 pkgname=${_pkgname}-git
-pkgver=1.0.1.r11.g61b2e6c
-pkgrel=5
+pkgver=1.0.1.r16.g2c9b208
+pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -23,12 +23,12 @@ sha256sums=('SKIP'
             '71e621f84d9747788b55e02354e984e327dfaf23df151232067284443e81714a')
 
 pkgver() {
-	cd "$srcdir/dusk"
+	cd "$srcdir/dusklight"
 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
-  cd dusk
+  cd dusklight
 
   git submodule init
   git config submodule.extern/aurora.url "$srcdir/aurora"
@@ -36,7 +36,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/dusk"
+  cd "$srcdir/dusklight"
 
   cmake -B build -GNinja \
     -DCMAKE_BUILD_TYPE=None \
