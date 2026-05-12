@@ -1,3 +1,3 @@
 #!/bin/sh
 
-electron42 /usr/lib/freetube-git/app.asar "$@"
+_electron_ /usr/lib/freetube-git/app.asar "$@"
