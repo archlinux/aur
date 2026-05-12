@@ -1,5 +1,5 @@
 pkgname=hyprwat-bin
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Hyprwat - A Wayland menu tool"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('wayland' 'mesa' 'fontconfig' 'libxkbcommon' 'sdbus-cpp' 'pipewire' 'li
 provides=('hyprwat')
 conflicts=('hyprwat')
 source=("https://github.com/zackb/hyprwat/releases/download/$pkgver/hyprwat-$pkgver.tar.gz")
-sha256sums=('d38451bb6084dec0dceee81d280f2969d8f9ea7f3037c892cd31147cafea1d3f')
+sha256sums=('84bb1f5e6773c792b8fbe92106af206a16da49de8afd09b64c1873f12cb12231')
 
 package() {
     cd "hyprwat-$pkgver"
