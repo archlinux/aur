@@ -11,7 +11,7 @@ optdepends=(
     'hp-wmi-dkms: patched kernel module for pre-7.1 kernels'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emomaxd/hpfand/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('db6dddec9c0a33289663196481b60b224115336e89caf9a322167707f8c1262b')
+sha256sums=('c3b7c4f878f470efdb21170b4ac4a66b5f081026ada29e78eb088f2820f2b5a2')
 
 package() {
     cd "$pkgname-$pkgver"

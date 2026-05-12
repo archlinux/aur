@@ -10,6 +10,6 @@ pkgbase = hpfand
 	optdepends = inotify-tools: automatic config reload on save
 	optdepends = hp-wmi-dkms: patched kernel module for pre-7.1 kernels
 	source = hpfand-2.0.0.tar.gz::https://github.com/emomaxd/hpfand/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = db6dddec9c0a33289663196481b60b224115336e89caf9a322167707f8c1262b
+	sha256sums = c3b7c4f878f470efdb21170b4ac4a66b5f081026ada29e78eb088f2820f2b5a2
 
 pkgname = hpfand
