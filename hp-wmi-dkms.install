@@ -1,0 +1,12 @@
+pre_install() {
+    for kver in $(ls /usr/lib/modules/ 2>/dev/null); do
+        rm -f "/usr/lib/modules/$kver/updates/dkms/hp-wmi.ko.zst" \
+              "/usr/lib/modules/$kver/updates/dkms/hp-wmi.ko" \
+              "/usr/lib/modules/$kver/updates/hp-wmi.ko.zst" \
+              "/usr/lib/modules/$kver/updates/hp-wmi.ko"
+    done
+}
+
+pre_upgrade() {
+    pre_install
+}
