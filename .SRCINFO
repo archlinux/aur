@@ -1,7 +1,7 @@
 pkgbase = unsloth
 	pkgdesc = Web UI for training and running open models locally
 	pkgver = 0.1.39.beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/unslothai/unsloth
 	install = setup.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = unsloth
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = nvm
+	makedepends = npm
 	depends = python
 	depends = python-typer
 	depends = python-pydantic

@@ -3,7 +3,7 @@
 _pkgbase=unsloth
 pkgname="$_pkgbase"
 pkgver=0.1.39.beta
-pkgrel=2
+pkgrel=3
 pkgdesc='Web UI for training and running open models locally'
 arch=('x86_64')
 url='https://github.com/unslothai/unsloth'
@@ -19,7 +19,7 @@ makedepends=(
 	'git'
 	'python-build'
 	'python-installer'
-	'nvm'
+	'npm'
 )
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
