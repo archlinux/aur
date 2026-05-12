@@ -3,7 +3,7 @@
 _realname=rift
 pkgname=${_realname}-bin
 pkgver=5.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The RIFT Intel Fusion Tool, for Eve Online"
 arch=('x86_64')
 
@@ -21,12 +21,12 @@ depends=(
   'libxi'
   'libxrender'
   'libxtst'
-  'openal'
   'zlib'
 )
 
 optdepends=(
-  'xorg-xwayland'
+  'wayland: native Wayland rendering'
+  'xorg-xwayland: X11 fallback on Wayland sessions'
 )
 
 provides=("${_realname}")
