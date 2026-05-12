@@ -1,6 +1,6 @@
 pkgbase = libusbsio
 	pkgdesc = Library for USB-HID communication over SPI, I2C or GPIO
-	pkgver = 2.1.13
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://www.nxp.com/design/software/development-software/library-for-windows-macos-and-ubuntu-linux:LIBUSBSIO
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = libusbsio
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = systemd
-	source = libusbsio-2.1.13.tar.gz::https://files.pythonhosted.org/packages/source/l/libusbsio/libusbsio-2.1.13.tar.gz
-	sha512sums = ddc7428ddbf5b14bb9d91121d0cde0e1fd975a27a1cac50c662b3590785e1279b0e3d9cb93518b8ea976685c1e6287dbee67ed0bdd71635178440a0d355a1195
+	source = libusbsio-2.2.0.tar.gz::https://files.pythonhosted.org/packages/source/l/libusbsio/libusbsio-2.2.0.tar.gz
+	sha512sums = dadb0419edab599f985dd1e4a36986a5f8afd6f926747943fd1f33637e88aae8e07f3abe0af310b6496051f26afba25621962ead4cb9b8de12db85cc7ed464e5
 
 pkgname = libusbsio
 	depends = glibc
@@ -24,5 +24,5 @@ pkgname = python-libusbsio
 	pkgdesc = Library for USB-HID communication over SPI, I2C or GPIO - Python bindings
 	depends = glibc
 	depends = systemd-libs
-	depends = libusbsio=2.1.13
+	depends = libusbsio=2.2.0
 	depends = python

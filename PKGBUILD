@@ -7,7 +7,7 @@ pkgname=(
   libusbsio
   python-libusbsio
 )
-pkgver=2.1.13
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Library for USB-HID communication over SPI, I2C or GPIO"
 arch=($CARCH)
@@ -25,7 +25,7 @@ makedepends=(
   systemd
 )
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('ddc7428ddbf5b14bb9d91121d0cde0e1fd975a27a1cac50c662b3590785e1279b0e3d9cb93518b8ea976685c1e6287dbee67ed0bdd71635178440a0d355a1195')
+sha512sums=('dadb0419edab599f985dd1e4a36986a5f8afd6f926747943fd1f33637e88aae8e07f3abe0af310b6496051f26afba25621962ead4cb9b8de12db85cc7ed464e5')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
