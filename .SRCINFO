@@ -1,0 +1,20 @@
+pkgbase = fauxput-bin
+	pkgdesc = Manage virtual displays on Linux (prebuilt binary)
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/bdelwood/fauxput
+	install = fauxput.install
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = libcap
+	depends = libxcvt
+	depends = util-linux
+	depends = wayland
+	optdepends = sunshine: game-streaming server integration (see /usr/share/fauxput/)
+	provides = fauxput=0.6.1
+	conflicts = fauxput
+	source = fauxput-0.6.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/bdelwood/fauxput/releases/download/v0.6.1/fauxput-v0.6.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = e707538fb96f7a3ea9bd3b0671f6016c2fd272868dadc083d1d9e3848db5aa1e
+
+pkgname = fauxput-bin

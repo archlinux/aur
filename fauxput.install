@@ -1,0 +1,18 @@
+post_install() {
+  setcap cap_dac_override+ep /usr/bin/fauxput
+
+  cat <<'EOF'
+
+==> fauxput installed with cap_dac_override+ep 
+
+    Sunshine streaming integration: configure Sunshine prep-cmd to invoke
+    /usr/share/fauxput/sunshine-fauxput-{up,down}.sh
+    See /usr/share/fauxput/sunshine-apps.json.example.
+
+EOF
+}
+
+post_upgrade() {
+  # File replacement on upgrade drops xattrs, so re-apply.
+  setcap cap_dac_override+ep /usr/bin/fauxput
+}
