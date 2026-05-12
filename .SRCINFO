@@ -7,6 +7,7 @@ pkgbase = element-lk-jwt-service
 	license = AGPL-3
 	makedepends = go
 	makedepends = git
+	backup = etc/lk-jwt-service/env.conf
 	source = https://github.com/element-hq/lk-jwt-service/archive/refs/tags/v0.4.4.tar.gz
 	source = lk-jwt-service.service
 	source = env.conf

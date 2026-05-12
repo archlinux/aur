@@ -9,6 +9,9 @@ arch=(x86_64)
 url='https://github.com/vector-im/lk-jwt-service/'
 license=("AGPL-3")
 makedepends=(go git)
+backup=(
+	"etc/${_reponame}/env.conf"
+)
 source=(
 	"https://github.com/element-hq/${_reponame}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${_reponame}.service"
