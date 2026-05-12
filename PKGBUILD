@@ -2,7 +2,7 @@
 
 _name=ai-translator
 pkgname=${_name}-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Desktop translator powered by Google Gemini AI with 30+ languages and multiple translation styles"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 
 source=("${url}/releases/download/v${pkgver}/${_name}_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('13ae911fe77368e9c37c27e64e9549e14d699b6599f530c6639b2863909aebd8')
 
 package() {
   cd "$srcdir"
