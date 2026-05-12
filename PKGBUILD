@@ -1,6 +1,6 @@
 # Maintainer: mrFrok <https://github.com/mrFrok>
 pkgname=lfff
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Free, open-source firmware flasher for Android A/B devices — CLI + GUI"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=('lfff-bin' 'lfff-gui-bin')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "lfff-gui.desktop::https://raw.githubusercontent.com/mrFrok/LibreFastbootFirmwareFlasher/main/lfff-gui.desktop"
-  "logo.svg::https://raw.githubusercontent.com/mrFrok/LibreFastbootFirmwareFlasher/main/logo.svg"
+  "lfff-gui.svg::https://raw.githubusercontent.com/mrFrok/LibreFastbootFirmwareFlasher/main/lfff-gui.svg"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
@@ -39,7 +39,7 @@ package() {
   install -Dm755 "target/release/lfff"     "$pkgdir/usr/bin/lfff"
   install -Dm755 "target/release/lfff-gui" "$pkgdir/usr/bin/lfff-gui"
   install -Dm644 "$srcdir/lfff-gui.desktop" "$pkgdir/usr/share/applications/lfff-gui.desktop"
-  install -Dm644 "$srcdir/logo.svg"         "$pkgdir/usr/share/icons/hicolor/scalable/apps/lfff-gui.svg"
+  install -Dm644 "$srcdir/lfff-gui.svg"    "$pkgdir/usr/share/icons/hicolor/scalable/apps/lfff-gui.svg"
   install -Dm644 "README.md"  "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "LICENSE"    "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
 }
