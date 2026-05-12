@@ -1,5 +1,5 @@
 pkgname=python-assimulo
-pkgver=3.7.3
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="A package for solving ordinary differential equations and differential algebraic equations"
 url="http://www.jmodelica.org/assimulo"
@@ -8,7 +8,7 @@ license=(LGPL-3.0)
 makedepends=(python-setuptools cython gcc-fortran)
 depends=(glibc python python-scipy python-numpy python-matplotlib sundials superlu_mt)
 source=("https://github.com/modelon-community/Assimulo/archive/Assimulo-${pkgver}.tar.gz")
-sha256sums=('b12d04b4fb0a41e68247731a695be5b31b064db2006ec1d650cdd6816e9dd610')
+sha256sums=('d87966ccc47ddf6514706a61504007ec760b0601457fffb1b3c645fd85505434')
 
 
 prepare() {
