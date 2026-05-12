@@ -1,12 +1,12 @@
 # Maintainer: phil-gru <goldencat@tutamail.com>                                     
 pkgname=pearpass-bin
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="PearPass is a distributed password manager powered by Pear Runtime. It allows secure storage of passwords, credit card details, and secure notes, with peer-to-peer syncing and end-to-end encryption."
 arch=('x86_64')
 url="https://pass.pears.com/"
 license=('custom')
-depends=('webkitgtk-6.0')
+#depends=('webkitgtk-6.0')
 options=(!strip !debug)
 provides=('pearpass')
 _appimage="PearPass-Desktop-Linux-x64-v${pkgver}.AppImage"
@@ -16,8 +16,8 @@ source=(
     "pearpass.png"
     )
 noextract=("${_appimage}")
-sha256sums=('f5b610be1d3ffa5d11a0db032fd5598923c73c0802a8e1ffaa9cf93e913ac1bd'
-            'f8c3f747b72779e0c287a43fe91bf2b80019d5f25b2d919ed9c35352b1fde2c2'
+sha256sums=('db70df54506bd49590c44dd72b2ed50b3eff7812e14cd70f6c23491745cf3af6'
+            '6ad6ae0045b0dd8618c4c69ef465c9496599d6439c2a870d3c41c7141e4a4463'
             '5a2b6c3517d3683808178285a4ec647f531f281af96913b8f11e2a9c6f048f14')
 
 package() {
