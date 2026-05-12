@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=pragtical
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/pragtical/pragtical"
 license=('MIT')
 depends=(
   # Editor Dependencies
-  'luajit' 'sdl3' 'libiconv' 'freetype2' 'pcre2' 'uchardet' 'hicolor-icon-theme'
+  'luajit' 'sdl3' 'sdl3_image' 'libiconv' 'freetype2' 'harfbuzz' 'pcre2' 'uchardet' 'hicolor-icon-theme'
   # Plugin Manager Dependencies
   'lua' 'zlib' 'mbedtls' 'libgit2' 'libzip' 'xz'
 )
@@ -17,7 +17,7 @@ makedepends=('meson>=0.63')
 source=(
   "https://github.com/pragtical/pragtical/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('a33fe06840377a82d361212d761bd8a8b7830daf37143e8174a5c5c9d089b75c')
+sha256sums=('1de1b57ac30bf185d3e2c597b7ce10ca3f972c3fd640a83259b95358d7181169')
 
 build() {
   cd "pragtical-$pkgver"
@@ -35,7 +35,7 @@ build() {
   fi
 
   arch-meson --wrap-mode default --buildtype release $pgo -Db_lto=true \
-    -Dstrip=true -Doptimization=3 --force-fallback-for=sdl3_image $lua \
+    -Dstrip=true -Doptimization=3 $lua \
     build
 
   if [ -n "$PGO" ]; then
