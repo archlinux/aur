@@ -4,7 +4,7 @@
 _pkgname=dusklight
 pkgname=${_pkgname}-git
 pkgver=1.0.1.r11.g61b2e6c
-pkgrel=3
+pkgrel=4
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusk"
@@ -20,7 +20,7 @@ source=(
 
 sha256sums=('SKIP'
             'SKIP'
-            '5e7de2d2280b48efa543dc9a0484d9af6a18d6d881833deb4ca333072bc46aa0')
+            '71e621f84d9747788b55e02354e984e327dfaf23df151232067284443e81714a')
 
 pkgver() {
 	cd "$srcdir/dusk"
