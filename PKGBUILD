@@ -36,7 +36,6 @@ pkgrel=1
 
 arch=('x86_64' 'aarch64')
 license=('MPL' 'GPL' 'LGPL')
-conflicts=('firefox-nightly')
 depends=(
   'dbus-glib'
   'gtk3'
@@ -57,18 +56,34 @@ optdepends=(
 )
 _url="${_base_url}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central"
 
-_src="${_name}-${_version}.${_lang}.linux-${CARCH}"
+_src_x86_64="${_name}-${_version}.${_lang}.linux-x86_64"
+_src_aarch64="${_name}-${_version}.${_lang}.linux-aarch64"
 
-_filename="${_build_id[date]}-${_build_id[time]}-${_src}"
+_filename_x86_64="${_build_id[date]}-${_build_id[time]}-${_src_x86_64}"
+_filename_aarch64="${_build_id[date]}-${_build_id[time]}-${_src_aarch64}"
 
-source=('firefox-nightly.desktop'
+source_x86_64=('firefox-nightly.desktop'
   'policies.json'
-  "${_filename}.tar.xz::${_url}/${_src}.tar.xz"
-  "${_filename}.tar.xz.asc::${_url}/${_src}.tar.xz.asc")
-sha512sums=('320659477fc3319db4b73492aa6ce39c3a5dbc4ab8adc27440cb1e7ab69dad2cea83a57d7cd77eebfe833fb8a48c7e021bdca851f1be4840fae292afdba96664'
-            '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
-            'a63864a10e4c1c3f9dd2e9cfede8f235baa1716f00aac4c7d07a0786a0e86e93cb20e3760a439b3fec4bef3d2ccb7d8df528cf37083941a8d7e252c479b489f0'
-            'SKIP')
+  "${_filename_x86_64}.tar.xz::${_url}/${_src_x86_64}.tar.xz"
+  "${_filename_x86_64}.tar.xz.asc::${_url}/${_src_x86_64}.tar.xz.asc")
+
+source_aarch64=('firefox-nightly.desktop'
+  'policies.json'
+  "${_filename_aarch64}.tar.xz::${_url}/${_src_aarch64}.tar.xz"
+  "${_filename_aarch64}.tar.xz.asc::${_url}/${_src_aarch64}.tar.xz.asc")
+
+
+sha512sums_x86_64=('320659477fc3319db4b73492aa6ce39c3a5dbc4ab8adc27440cb1e7ab69dad2cea83a57d7cd77eebfe833fb8a48c7e021bdca851f1be4840fae292afdba96664'
+                   '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
+                   'a63864a10e4c1c3f9dd2e9cfede8f235baa1716f00aac4c7d07a0786a0e86e93cb20e3760a439b3fec4bef3d2ccb7d8df528cf37083941a8d7e252c479b489f0'
+                   'SKIP')
+sha512sums_aarch64=('320659477fc3319db4b73492aa6ce39c3a5dbc4ab8adc27440cb1e7ab69dad2cea83a57d7cd77eebfe833fb8a48c7e021bdca851f1be4840fae292afdba96664'
+                    '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
+                    'edc5d9f711ab13a828016beaa784ff30b52659abbbd7d5626f7b5547a3ca8732f2af0c95a8082fc2112ea549fb13e73c58d5c8aa564008d9ca34263b02f65b45'
+                    'SKIP')
+                   
+
+
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 package() {
