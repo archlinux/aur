@@ -1,3 +1,15 @@
+diff --git a/frogmouth/__init__.py b/frogmouth/data/__init__.py
+index 976efd3..3ea512c 100644
+--- a/frogmouth/__init__.py
++++ b/frogmouth/__init__.py
+@@ -5,5 +5,5 @@
+ __credits__ = ["Dave Pearson"]
+ __maintainer__ = "Dave Pearson"
+ __email__ = "dave@textualize.io"
+-__version__ = "0.9.1"
++__version__ = "0.9.2"
+ __licence__ = "MIT"
+
 diff --git a/frogmouth/data/config.py b/frogmouth/data/config.py
 index 5702e64..03ee87d 100644
 --- a/frogmouth/data/config.py
