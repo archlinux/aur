@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgbase=openfang
 pkgname=('openfang-cli' 'openfang-gui' 'openfang-whatsapp-gateway')
-pkgver=0.6.7
+pkgver=0.6.9
 pkgrel=1
 pkgdesc='Open-source Agent Operating System built in Rust'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
     "openfang-desktop.desktop"
     "openfang-whatsapp-gateway.service"
 )
-b2sums=('4f5e607977ca6fb67af3db2aee33a6d6c915ec91bee82ea3a242a45bbae08c8daadf07ceea8639685293ba9555d02dbc7ddc53c1c86170ea639f8f68ac96b7bc'
+b2sums=('df295f7b79bebe9616bca51f98ef582be1b6a4c8d077dd7fa6554b284befcf1fe1073174a125f5158f2b852b6216f88d88a0030f3ac1c7d53e9012bfbeb4970d'
         '0672ef1dd58e435156c01674d2e7ad6182d1f4fd7d94b50cd572f194977238765cf9bcf85076aac08b384df85e0b519b748f3a43a39f9250540d5444b3877033'
         '3857bf85c9486bb42f0c5c5efbb61b0f7ab64d25e88decf1cdb39114f5c3b6ba3ef38a9f12f67f8e6445768c4e6406baf4245bb25ecd850020ca425e1b63e1ac'
         'ee111fbee9536979f7f42acc28f11bf74fdeaea41eea2510de8d2d0cd851bbcf69d53238a373918d79d552e1bedba22a7b78408b42048ab5411b75ec13fce78b'
