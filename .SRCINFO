@@ -1,0 +1,23 @@
+pkgbase = omarchy-theme-marketplace-git
+	pkgdesc = Walker and Elephant theme marketplace for Omarchy
+	pkgver = 0.r0.g97ca8b7
+	pkgrel = 1
+	url = https://github.com/prettyletto/omarchy-theme-marketplace
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = elephant
+	depends = imagemagick
+	depends = libnotify
+	depends = uwsm
+	depends = walker
+	depends = xdg-terminal-exec
+	optdepends = omarchy: required for theme installation and Omarchy command integration
+	provides = omarchy-theme-marketplace
+	conflicts = omarchy-theme-marketplace
+	source = git+https://github.com/prettyletto/omarchy-theme-marketplace.git
+	sha256sums = SKIP
+
+pkgname = omarchy-theme-marketplace-git
