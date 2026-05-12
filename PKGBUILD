@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=pam_authelia-git
 _pkgname=pam_authelia
-pkgver=0.1.1.r0.g8c70895
+pkgver=0.1.2.r0.g30432ec
 pkgrel=1
 pkgdesc="PAM module that delegates authentication (including 2FA) to an Authelia server."
 arch=('x86_64' 'aarch64' 'armv7h')
