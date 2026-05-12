@@ -1,6 +1,6 @@
 pkgbase = nscde-zh
 	pkgdesc = Not so Common Desktop Environment: Modern and functional CDE based on FVWM - Chinese Localization
-	pkgver = 2.3.11
+	pkgver = 2.3.10
 	pkgrel = 1
 	url = https://github.com/wenyinos/NsCDE-zh
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = nscde-zh
 	optdepends = arandr: Screen settings
 	optdepends = kcalc: Calculator
 	provides = nscde-zh
-	source = nscde-zh-2.3.11.tar.gz::https://github.com/wenyinos/NsCDE-zh/archive/refs/tags/v2.3.11.tar.gz
+	source = nscde-zh-2.3.10.tar.gz::https://github.com/wenyinos/NsCDE-zh/archive/refs/tags/v2.3.10_zh.tar.gz
 	sha256sums = SKIP
 
 pkgname = nscde-zh
