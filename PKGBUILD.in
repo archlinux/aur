@@ -24,6 +24,7 @@ depends=(
   'openjpeg2'
   'openssl'
   'python'
+  'python-orjson'
   'tzdata'
   'zlib'
 )
