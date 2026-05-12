@@ -1,0 +1,5 @@
+[lssub-bin]
+source = "github"
+github = "tlipinski/lssub"
+use_latest_release = true
+prefix = "v"
