@@ -5,7 +5,9 @@ pkgver=0.20.0
 pkgrel=1
 pkgdesc="植物大战僵尸杂交版 (Linux Native) - Godot 原生移植版本"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url="https://www.pvzhe.com"
+# 官网: https://www.pvzhe.com
+# 项目: https://github.com/cublueer/pvz-hybrid
+url="https://github.com/cublueer/pvz-hybrid"
 license=('custom')
 options=(!debug)
 depends=('glibc' 'libgl' 'libx11' 'libxcb' 'fontconfig' 'freetype2' 'vulkan-icd-loader')
