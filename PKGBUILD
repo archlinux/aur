@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r98382.f92320ef190
+pkgver=r98870.7e081f7b626
 pkgrel=1
 pkgdesc='Software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -22,6 +22,8 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
+  # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
+  sed -i "/vtkNativePartitioningStrategy/d;/vtkRedistributeDataSetFilter/d" Filters/ParallelDIY2/CMakeLists.txt
 }
 
 build() {
