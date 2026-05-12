@@ -1,0 +1,16 @@
+pkgbase = scriptor
+	pkgdesc = Local speech-to-text CLI & TUI.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/giacomopiccinini/scriptor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	provides = scriptor
+	conflicts = scriptor-git
+	options = !lto
+	source = scriptor-1.0.0.tar.gz::https://github.com/giacomopiccinini/scriptor/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = fd6d726645c9f64406e327ec2110f0ae598f30a62dd8a5fcaa2045ce3b775f63
+
+pkgname = scriptor
