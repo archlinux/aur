@@ -1,7 +1,7 @@
 # Maintainer: rzhli
 pkgname=longbridge-bin
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Longbridge Desktop trading platform"
 arch=("x86_64")
 url="https://longbridge.com/desktop/"
@@ -15,6 +15,7 @@ depends=(
     "libxtst"
     "xdg-utils"
     "libxcrypt-compat"
+    "webkit2gtk-4.1"
 )
 provides=("longbridge")
 conflicts=("longbridge")

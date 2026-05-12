@@ -1,7 +1,7 @@
 pkgbase = longbridge-bin
 	pkgdesc = Longbridge Desktop trading platform
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://longbridge.com/desktop/
 	arch = x86_64
 	license = custom
@@ -13,6 +13,7 @@ pkgbase = longbridge-bin
 	depends = libxtst
 	depends = xdg-utils
 	depends = libxcrypt-compat
+	depends = webkit2gtk-4.1
 	provides = longbridge
 	conflicts = longbridge
 	options = !strip
