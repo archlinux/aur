@@ -17,7 +17,6 @@ pkgbase = driftwm-git
 	depends = libxkbcommon
 	provides = driftwm=0.5.0.r13.gbfb9a53
 	conflicts = driftwm
-	backup = etc/driftwm/config.toml
 	options = !debug
 	options = !lto
 	options = !strip
