@@ -24,13 +24,12 @@ optdepends=(
 )
 makedepends=(
     'meson'
-    'meson-python'
     'python-build'
     'python-installer'
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ch3w3y/tuxbellum/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b7668b147958f9edcb847dcc3cf05503ecf1e72941e2b47380d849f73a24f3f2')
+sha256sums=('510d974545b8a0270ca93642c03b3d2ef99cd998333792e2ea4330b6b16d46cc')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -40,12 +39,12 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    # Install desktop entry
     install -Dm644 data/tuxbellum.desktop \
         "${pkgdir}/usr/share/applications/tuxbellum.desktop"
+    # Install metainfo
     install -Dm644 data/tuxbellum.metainfo.xml \
         "${pkgdir}/usr/share/metainfo/tuxbellum.metainfo.xml"
-    install -Dm644 data/icons/bellum.png \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/bellum.png"
     # Install bundled packages (exclude press kit)
     cp -r packages "${pkgdir}/usr/share/tuxbellum/"
     rm -rf "${pkgdir}/usr/share/tuxbellum/packages/Public Press Kit"
