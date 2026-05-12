@@ -1,7 +1,7 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=vernier-git
 _pkgname=vernier
-pkgver=0.1.2.r0.gec66d3e
+pkgver=0.1.3.r0.gc3b8b06
 pkgrel=1
 pkgdesc="Cross-platform pixel-measurement overlay in Rust (latest main)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,9 @@ license=('MIT' 'Apache-2.0')
 # C-level LTO trips up cc-compiled static archives from libspa-sys /
 # libspa: cc::Build picks up makepkg's -flto=auto and emits LTO IR
 # objects that lld then can't resolve when linking the Rust binary.
-options=(!lto)
+# !debug suppresses the split `vernier-git-debug` companion package
+# (same UX reason as the source PKGBUILD).
+options=(!lto !debug)
 depends=(
     'fontconfig'
     'freetype2'
