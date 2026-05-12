@@ -6,7 +6,7 @@
 
 pkgname=tmux-git
 _gitname=tmux
-pkgver=10201_3.4.r33.g3823fa2c
+pkgver=11044_3.6a.r326.gf1f01587
 pkgrel=1
 pkgdesc="A terminal multiplexer"
 url="https://github.com/tmux/tmux/wiki"
@@ -18,7 +18,7 @@ makedepends=('git')
 #depends+=('libutf8proc') && _addconfigureflags+="--enable-utf8proc "
 #depends+=('systemd-libs') && _addconfigureflags+="--enable-systemd "
 #depends+=('libsixel') && _addconfigureflags+="--enable-sixel "
-provides=('tmux')
+provides=("tmux=${pkgver#*_}")
 conflicts=('tmux')
 source=('git+https://github.com/tmux/tmux.git')
 md5sums=('SKIP')

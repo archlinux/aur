@@ -1,6 +1,6 @@
 pkgbase = tmux-git
 	pkgdesc = A terminal multiplexer
-	pkgver = 10201_3.4.r33.g3823fa2c
+	pkgver = 11044_3.6a.r326.gf1f01587
 	pkgrel = 1
 	url = https://github.com/tmux/tmux/wiki
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tmux-git
 	depends = glibc
 	depends = ncurses
 	depends = libevent
-	provides = tmux
+	provides = tmux=3.6a.r326.gf1f01587
 	conflicts = tmux
 	source = git+https://github.com/tmux/tmux.git
 	md5sums = SKIP
