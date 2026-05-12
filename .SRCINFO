@@ -41,7 +41,7 @@ pkgbase = verde-bin
 	options = !strip
 	source = verde-bin-0.1.67.tar.gz::https://github.com/JonathanRiche/verde/releases/download/v0.1.67/verde-v0.1.67-linux-x86_64.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v0.1.67/LICENSE
-	sha256sums = 6e05c408f4288a825f6ff160509176e62bbb32da97e5c1834af9a0581b7497db
+	sha256sums = c67e180cb259587bc1df690179d334b65abf1b56be3b20d5e94aec0af80bbb5d
 	sha256sums = 9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e
 
 pkgname = verde-bin
