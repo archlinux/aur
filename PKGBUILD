@@ -1,6 +1,6 @@
 # Maintainer: Maor Kadosh <maor@avocadosh.xyz>
 pkgname=sononym
-pkgver=1.6.4
+pkgver=1.6.8
 pkgrel=1
 pkgdesc="Audio sample manager and categorizer"
 arch=("x86_64")
@@ -11,7 +11,7 @@ source=("https://www.sononym.net/download/sononym-${pkgver}.tar.bz2"
         "logo.svg"
         "sononym.desktop")
 
-sha256sums=('5685cc55a4a8d2677847a74a6a7d96dd16159cda384cf563971f289b582e3dbe'
+sha256sums=('635864c0bce5f54695ff05e9f4d42a9d1588a1f0ff818873c646708b0255b3ea'
             'a3e8e1f684398ab4fa8d209bee8b0d652fdd0a5f3553276ad1d0664f1a23960e'
             '92685f95c29a0b10a6ece3328b28efc6bfbd6b46fbfa0790c27915b936922249')
 
