@@ -1,6 +1,6 @@
 pkgbase = ledger-udev-git
 	pkgdesc = Udev rules to support Ledger devices on Linux (git-latest)
-	pkgver = r16.f474382
+	pkgver = r18.6d9b025
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/udev-rules
 	install = ledger-udev.install

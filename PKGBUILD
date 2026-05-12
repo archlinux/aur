@@ -1,11 +1,8 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
-# For Issues, Pull Requests
-# https://github.com/phnx47/pkgbuilds
-
 _pkgname=ledger-udev
 pkgname="${_pkgname}-git"
-pkgver=r16.f474382
+pkgver=r18.6d9b025
 pkgrel=1
 pkgdesc='Udev rules to support Ledger devices on Linux (git-latest)'
 arch=('any')
