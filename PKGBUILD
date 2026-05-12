@@ -1,4 +1,4 @@
-# Maintainer: Gunther Schulz <dev@guntherschulz.de>
+# Maintainer: NightStars <nightstars@galaxistars.com>
 
 pkgname=cursor-ai-bin
 pkgver=3.3.30
