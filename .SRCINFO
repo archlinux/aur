@@ -1,0 +1,34 @@
+pkgbase = video-match-finder-git
+	pkgdesc = Partial near-duplicate video detection (DINOv2 + FAISS + Hough/permutation)
+	pkgver = 0.1.0.r1.gfb68025
+	pkgrel = 1
+	url = https://github.com/Sinoosoida/video-match-finder
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = ffmpeg
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-psutil
+	depends = python-typer
+	depends = python-rich
+	depends = python-tqdm
+	depends = python-httpx
+	depends = faiss-cpu
+	optdepends = python-pytorch-cuda: GPU inference (compute capability ≥ 7.5)
+	optdepends = python-fastapi: required for `vmf serve` embeddings endpoint
+	optdepends = uvicorn: required for `vmf serve` embeddings endpoint
+	optdepends = faiss-gpu: faster ANN search on supported NVIDIA GPUs
+	provides = video-match-finder
+	conflicts = video-match-finder
+	source = video-match-finder::git+https://github.com/Sinoosoida/video-match-finder.git
+	sha256sums = SKIP
+
+pkgname = video-match-finder-git
