@@ -1,7 +1,7 @@
 pkgbase = time-capsule
 	pkgdesc = A tiny GTK stopwatch and timer capsule
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sourav4243/time-capsule
 	arch = any
 	license = MIT
