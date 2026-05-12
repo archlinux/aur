@@ -1,0 +1,5 @@
+[rura-bin]
+source = "github"
+github = "tlipinski/rura"
+use_latest_release = true
+prefix = "v"
