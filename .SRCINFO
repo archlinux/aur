@@ -1,6 +1,6 @@
 pkgbase = spek-rs-bin
 	pkgdesc = Acoustic spectrum analyser. Spek alternative written in Rust.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/patryk-ku/spek-rs
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = spek-rs-bin
 	depends = ffmpeg
 	provides = spek-rs
 	conflicts = spek-rs
-	source = spek-rs-v0.3.1::https://github.com/patryk-ku/spek-rs/releases/download/v0.3.1/spek-rs
-	source = spek-rs-v0.3.1.desktop::https://raw.githubusercontent.com/patryk-ku/spek-rs/refs/tags/v0.3.1/packaging/spek-rs.desktop
-	source = spek-rs-v0.3.1-icon.png::https://raw.githubusercontent.com/patryk-ku/spek-rs/refs/tags/v0.3.1/assets/icon.png
-	source = LICENSE-v0.3.1::https://raw.githubusercontent.com/patryk-ku/spek-rs/refs/tags/v0.3.1/LICENSE
-	sha512sums = 89b5f7a826e9d147b3a55f2aaa2d6a380a2c17e4c23a7ab686890c3bb641268a5fae7e856e1cee876f18998cd4df667c8ad6ffb447602d7045162643534b1b68
+	source = spek-rs-v0.3.2::https://github.com/patryk-ku/spek-rs/releases/download/v0.3.2/spek-rs
+	source = spek-rs-v0.3.2.desktop::https://raw.githubusercontent.com/patryk-ku/spek-rs/refs/tags/v0.3.2/packaging/spek-rs.desktop
+	source = spek-rs-v0.3.2-icon.png::https://raw.githubusercontent.com/patryk-ku/spek-rs/refs/tags/v0.3.2/assets/icon.png
+	source = LICENSE-v0.3.2::https://raw.githubusercontent.com/patryk-ku/spek-rs/refs/tags/v0.3.2/LICENSE
+	sha512sums = dfff034449a403fb163d8dd728c924534a13bbc664c3fb25be9eecf66bfc7fcbbee98a85539ad9e8e44b594a6eb2494b1681e09258ced850fcf13f8c3d89ef68
 	sha512sums = 4a00ba02a6a836bfa7ac375a52ad084b40cef78ef89eead750694ec0c4aa4cca5620451ea58930693478a3b3b61acace627d9fbd1253800eeaff003de21bc313
 	sha512sums = c9723f88751e7f8017d6f1e45ffc79db68816be98c385728dcee2b45bd6e178f0a6fc42ebceb794b238df93bce9ca81633bdf92e7d01a0f4943b6aa0a59f5ffa
-	sha512sums = 958949735e9c09b4111851ea918a539876c129a68a41a2037715a557affd43d13b82181e43ed99e783309f7e3886310c9c396baca993bc742d82fde8b2b0a45e
+	sha512sums = 194d6d61854a69b72f7cd6901cc1ab4504068bb2cc95abba9661f3bc42dd25de20eb70259c9b1b65bc03d6f207ee44fa45ed0cda699c0dc4dd5d7c4f53bed840
 
 pkgname = spek-rs-bin

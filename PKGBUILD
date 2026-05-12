@@ -2,7 +2,7 @@
 
 _pkgname=spek-rs
 pkgname="${_pkgname}-bin"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Acoustic spectrum analyser. Spek alternative written in Rust.'
 url="https://github.com/patryk-ku/${_pkgname}"
@@ -15,10 +15,10 @@ source=("${_pkgname}-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}
 	"${_pkgname}-v${pkgver}.desktop::https://raw.githubusercontent.com/patryk-ku/${_pkgname}/refs/tags/v${pkgver}/packaging/spek-rs.desktop"
 	"${_pkgname}-v${pkgver}-icon.png::https://raw.githubusercontent.com/patryk-ku/${_pkgname}/refs/tags/v${pkgver}/assets/icon.png"
 	"LICENSE-v${pkgver}::https://raw.githubusercontent.com/patryk-ku/${_pkgname}/refs/tags/v${pkgver}/LICENSE")
-sha512sums=('89b5f7a826e9d147b3a55f2aaa2d6a380a2c17e4c23a7ab686890c3bb641268a5fae7e856e1cee876f18998cd4df667c8ad6ffb447602d7045162643534b1b68'
+sha512sums=('dfff034449a403fb163d8dd728c924534a13bbc664c3fb25be9eecf66bfc7fcbbee98a85539ad9e8e44b594a6eb2494b1681e09258ced850fcf13f8c3d89ef68'
             '4a00ba02a6a836bfa7ac375a52ad084b40cef78ef89eead750694ec0c4aa4cca5620451ea58930693478a3b3b61acace627d9fbd1253800eeaff003de21bc313'
             'c9723f88751e7f8017d6f1e45ffc79db68816be98c385728dcee2b45bd6e178f0a6fc42ebceb794b238df93bce9ca81633bdf92e7d01a0f4943b6aa0a59f5ffa'
-            '958949735e9c09b4111851ea918a539876c129a68a41a2037715a557affd43d13b82181e43ed99e783309f7e3886310c9c396baca993bc742d82fde8b2b0a45e')
+            '194d6d61854a69b72f7cd6901cc1ab4504068bb2cc95abba9661f3bc42dd25de20eb70259c9b1b65bc03d6f207ee44fa45ed0cda699c0dc4dd5d7c4f53bed840')
 
 package() {
 	install -Dm755 "${_pkgname}-v${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
