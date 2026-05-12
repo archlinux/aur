@@ -13,7 +13,7 @@
 ### BUILD OPTIONS
 # You can modify these settings by executing "env _<setting>=<value> makepkg"
 # instead of modifying the PKGBUILD file. Here's an example:
-# env _makemenuconfig=y _copyfinalconfig=y _subarch=30 makepkg
+# env _makemenuconfig=y _copyfinalconfig=y makepkg
 
 # Toggles colorful log messages.
 #
@@ -87,76 +87,8 @@
 # Set to anything but null to activate.
 : "${_localmodcfg:=""}"
 
-# Optionally select a sub architecture by number or its Kconfig name,
-# for example MCORE2 or MZEN4.
-#
-# Leaving it blank will require user interaction during the build.
-# Note that the default option is empty.
-#
-# Important notice for maintainers:
-# Make sure to update the '_subarch'
-# section inside update_defconfig()
-# if this list is updated on updating
-# the kernel compiler patchset.
-#
-#  1. Generic-x86-64 (GENERIC_CPU)
-#  2. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#  3. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
-#  4. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
-#  5. AMD Barcelona (MBARCELONA)
-#  6. AMD Bobcat (MBOBCAT)
-#  7. AMD Jaguar (MJAGUAR)
-#  8. AMD Bulldozer (MBULLDOZER)
-#  9. AMD Piledriver (MPILEDRIVER)
-#  10. AMD Steamroller (MSTEAMROLLER)
-#  11. AMD Excavator (MEXCAVATOR)
-#  12. AMD Ryzen (MZEN)
-#  13. AMD Ryzen 2 (MZEN2)
-#  14. AMD Ryzen 3 (MZEN3)
-#  15. AMD Ryzen 4 (MZEN4)
-#  16. AMD Ryzen 5 (MZEN5)
-#  17. Intel P4 / older Netburst based Xeon (MPSC)
-#  18. Intel Core 2 (MCORE2)
-#  19. Intel Nehalem (MNEHALEM)
-#  20. Intel Westmere (MWESTMERE)
-#  21. Intel Silvermont (MSILVERMONT)
-#  22. Intel Goldmont (MGOLDMONT)
-#  23. Intel Goldmont Plus (MGOLDMONTPLUS)
-#  24. Intel Sandy Bridge (MSANDYBRIDGE)
-#  25. Intel Ivy Bridge (MIVYBRIDGE)
-#  26. Intel Haswell (MHASWELL)
-#  27. Intel Broadwell (MBROADWELL)
-#  28. Intel Skylake (MSKYLAKE)
-#  29. Intel Skylake-X (7th Gen Core i7/i9) (MSKYLAKEX)
-#  30. Intel Coffee Lake/Kaby Lake Refresh (8th Gen Core i3/i5/i7) (MCANNONLAKE)
-#  31. Intel Ice Lake (MICELAKE_CLIENT)
-#  32. Intel Ice Lake-SP (3rd Gen Xeon Scalable) (MICELAKE_SERVER)
-#  33. Intel Cooper Lake (MCOOPERLAKE)
-#  34. Intel Cascade Lake (MCASCADELAKE)
-#  35. Intel Tiger Lake (MTIGERLAKE)
-#  36. Intel Sapphire Rapids (MSAPPHIRERAPIDS)
-#  37. Intel Rocket Lake (MROCKETLAKE)
-#  38. Intel Alder Lake (MALDERLAKE)
-#  39. Intel Raptor Lake (MRAPTORLAKE)
-#  40. Intel Meteor Lake (MMETEORLAKE)
-#  41. Intel Emerald Rapids (MEMERALDRAPIDS)
-#  42. Intel Diamond Rapids (7th Gen Xeon Scalable) (MDIAMONDRAPIDS)
-: "${_subarch:=""}"
-
-# Selects the x86-64 microarchitecture to compile for.
-# This value is only used by the GENERIC_CPU
-# subarchitecture and is required.
-# Can be either '1', '2', '3' or '4'
-#
-# Set to '1' by default
-#
-# For more information see:
-# https://en.wikipedia.org/wiki/X86-64#Microarchitecture_levels
-: "${_subarch_microarch:="1"}"
-
-
 # Enable compilation with LLVM
-# Be warned, this is largely untested by me (JeremyStarTM). It *should* work,
+# Be warned, this is largely untested by me (im_zerou). It *should* work,
 # but if it doesn't, write a comment and I'll fix it.
 #
 # Set to anything but null to activate.
@@ -186,6 +118,16 @@
 # or some magic pv output should be
 # displayed while the kernel is compiling.
 : "${_show_compile:=""}"
+
+# x86_64 microarchitecture to optimize for.
+#
+# Support has been removed in the kernel 7.0 update, as we threw out
+# the kernel compiler patch for multiple microarchitectures out the
+# window in the process.
+: "${_subarch:=""}"
+
+# See '_subarch'
+: "${_subarch_microarch:=""}"
 
 ### DEPRECATED BUILD OPTIONS END
 
@@ -296,6 +238,10 @@ _check_deprecated_settings() {
         _use_current="y"
     fi
     [ -n "${_show_compile}" ] && _warning "'_show_compile' is no longer supported"
+
+    if [ -n "${_subarch}" ] || [ -n "${_subarch_microarch}" ]; then
+        _warning "'_subarch' and '_subarch_microarch' are no longer supported"
+    fi
 
     # To avoid an error
     true
@@ -472,60 +418,6 @@ _update_defconfig() {
     # Run olddefconfig
     _info "Executing 'make olddefconfig'"
     make ${BUILD_FLAGS[*]} olddefconfig
-
-    # Here we slightly break the config by removing one of the
-    # members of the 'Processor family' selection.
-    # This causes oldconfig to always invoke that selection.
-    sed -i '/CONFIG_GENERIC_CPU/d' .config || :
-    # For a slim chance that someone is building X86_32
-    sed -i '/CONFIG_M686/d' .config || :
-
-    case ${_subarch} in
-        "")
-            # Ask for subarch if none provided
-            timeout -fk 45 30 make "${BUILD_FLAGS[@]}" oldconfig
-            ;;
-        "1" | "GENERIC_CPU")
-            # Set x86-64 microarch
-            scripts/config -e GENERIC_CPU
-            scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
-            make "${BUILD_FLAGS[@]}" oldconfig
-            ;;
-        [1-9]|[1-3][0-9]|[4][0-3]|42)
-            # 1 to 9, 10 to 39, 40 to 42
-            # 42 is the last supported value here, refer to the _subarch
-            # documentation above and keep the last section of this check
-            # in sync with the supported value.
-            # stderr checks below shouldn't be needed with the above check in place,
-            # but will be left in-place regardless in case of future updates
-            # breaking something
-
-            # We're only interested in stderr
-            {
-                local __ERROR
-                __ERROR="$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&${out})"
-            } {out}>/dev/null
-
-            # Invoke echo to sanitize the __ERROR as it can contain
-            # newlines or carriage returns, thus breaking the script.
-            # shellcheck disable=SC2116
-            if [ -n "$(echo ${__ERROR})" ]; then
-                _warning "Selected subarch: ${_subarch} is not supported"
-                exit 1
-            fi
-            ;;
-        *)
-            # String - check if it exists in .config and if it does - set it
-            if grep -q -e "CONFIG_${_subarch}[[:space:]]" -e "CONFIG_${_subarch}=" .config; then
-                # Check if option exists in .config
-                scripts/config -e "${_subarch}"
-                make "${BUILD_FLAGS[@]}" olddefconfig
-            else
-                _warning "Unrecognized subarch value: ${_subarch}"
-                exit 1
-            fi
-            ;;
-    esac
 }
 
 
