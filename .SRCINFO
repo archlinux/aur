@@ -1,0 +1,15 @@
+pkgbase = neomake
+	pkgdesc = TOML/TOMLX-driven parallel build orchestrator with content-addressable caching
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sinisterMage/neomake
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	source = neomake::git+https://github.com/sinisterMage/neomake.git#commit=0595fa86f3f0dcc3d36fc0a9af921d9d5d9d62d3
+	sha256sums = SKIP
+
+pkgname = neomake
