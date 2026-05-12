@@ -22,6 +22,7 @@ makedepends=(
     'rust'
     'cargo'
     'git'
+    'dioxus-cli'
 )
 options=(!lto !debug)
 # dioxus-cli must be installed manually or from AUR at version matching dioxus 0.7.x:
