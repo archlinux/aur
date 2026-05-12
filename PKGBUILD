@@ -2,7 +2,7 @@
 pkgname=eurus-tui-git
 _pkgname=eurus
 pkgver=r26.4dd6cd8  # This is a placeholder; makepkg updates it automatically
-pkgrel=11
+pkgrel=12
 pkgdesc="E2EE Terminal Chat Client (eurus)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sricharanandra/eurus-tui"
