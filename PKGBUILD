@@ -2,14 +2,14 @@
 # Maintainer: Iliya Ivanov <aur@proforge.org>
 
 pkgname=btrustbiss
-pkgver=3.44
-pkgrel=3
+pkgver=3.46
+pkgrel=1
 pkgdesc="Browser independent signing service."
 arch=('x86_64')
 url="https://www.b-trust.org"
 license=('GPL')
 source=("$url/attachments/BtrustPrivateFile/24/docs/B-TrustBISS.tar")
-sha256sums=('a02db035ac7394a5048e999e537a1f318fca09b50b03f0f6826e2b1d84e660cd')
+sha256sums=('29d109420b65abe3dda6dde5fa59892dc99d8152cf8f260c768ad550be4ecda0')
 depends=('pcsclite' 'xdg-utils' 'zlib')
 options=(!strip)
 install=${pkgname}.install
