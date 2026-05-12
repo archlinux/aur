@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.19.3] - 2026-05-12
+
+### Added
+- Create Unit wizard (under construction)
+- [Issue 59](https://github.com/plrigaux/sysd-manager/issues/59) Keyboard shortcuts Ctrl+W and Esc to close sub-windows, and Ctrl+Q to quit the application
+- [Issue 58](https://github.com/plrigaux/sysd-manager/issues/58) Add Services in currated list (Shift+Ctrl+S)
+
+### Fixed
+- [Issue 49](https://github.com/plrigaux/sysd-manager/issues/49) Put focus on search entry when appearing
+- [Issue 61](https://github.com/plrigaux/sysd-manager/issues/61) Keep font choice when switching between ligth and dark mode
+
 ## [2.19.2] - 2026-04-24
 
 ### Added
