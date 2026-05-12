@@ -1,0 +1,11 @@
+/pkg/
+/src/
+/*.pkg.tar.*
+/*.log
+/*.tar.gz
+/config.json
+/sing-box.service
+/sing-box@.service
+/sing-box.sysusers
+/sing-box.rules
+/sing-box-split-dns.xml
