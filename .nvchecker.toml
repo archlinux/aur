@@ -1,0 +1,5 @@
+[ovw-bin]
+source = "github"
+github = "roie/ovw"
+use_latest_release = true
+prefix = "v"
