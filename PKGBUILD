@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.9.4
+pkgver=1.9.5
 _electron=electron41
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
@@ -33,8 +33,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('2530e6d5cc9f734a7d5cc36637f7c335276c54dea2d76e13c4df89d5d208ddbe'
-    '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
+sha256sums=('22a9fe8d51dfe12a715d33359e19e0bf213e96a43d8df1c4ba256bdf49e68e64'
+            '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
     sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
@@ -84,7 +84,7 @@ _clean() {
 package() {
 
     install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/CherryStudio.desktop"
 
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm644 "dist/linux-unpacked"/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
