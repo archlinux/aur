@@ -7,7 +7,7 @@
 _pkgname=lsgpu
 pkgname=${_pkgname}-git
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="List GPUs with details, outputs, and connected monitors."
 arch=(any)
 url="https://github.com/AGuyMarc/${_pkgname}"
@@ -24,20 +24,9 @@ install=
 source=("${pkgname}::git+https://github.com/AGuyMarc/${_pkgname}#tag=v${pkgver}")
 md5sums=('SKIP')
 
-build()
-{
-    cd "${srcdir}/${pkgname}" || exit 1
-
-}
 
 package()
 {
-
-    cd "${srcdir}/${pkgname}" || exit 1
-    mkdir -p "${pkgdir}/usr/share/${_pkgname}/"
-    mkdir -p "${pkgdir}/usr/bin/ "
-
-    cp ${_pkgname}.py "${pkgdir}/usr/share/${_pkgname}/"
-    chmod +x "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.py"
-    ln -s "/usr/share/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}.py" "${pkgdir}/usr/share/${_pkgname}/"
+    ln -sf "/usr/share/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}s"
 }
