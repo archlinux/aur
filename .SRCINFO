@@ -4,6 +4,7 @@ pkgbase = vernier-bin
 	pkgrel = 1
 	url = https://github.com/jondkinney/vernier
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	license = Apache-2.0
 	depends = fontconfig
@@ -22,5 +23,7 @@ pkgbase = vernier-bin
 	conflicts = vernier-git
 	source_x86_64 = vernier-0.1.1-x86_64.tar.gz::https://github.com/jondkinney/vernier/releases/download/v0.1.1/vernier-0.1.1-x86_64.tar.gz
 	sha256sums_x86_64 = 124bf25db6683a5f19494a10c44eeb0f905b9d98468788c1a054e38b58dcf2f5
+	source_aarch64 = vernier-0.1.1-aarch64.tar.gz::https://github.com/jondkinney/vernier/releases/download/v0.1.1/vernier-0.1.1-aarch64.tar.gz
+	sha256sums_aarch64 = 24f9ce4707f8072e5a3eb68174686576a2d74686d6eb554816acaca0f0abb62d
 
 pkgname = vernier-bin

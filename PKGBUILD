@@ -4,7 +4,7 @@ _pkgname=vernier
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="Cross-platform pixel-measurement overlay in Rust (prebuilt binary)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/jondkinney/vernier"
 license=('MIT' 'Apache-2.0')
 depends=(
@@ -25,10 +25,15 @@ optdepends=(
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
+source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64.tar.gz")
 sha256sums_x86_64=('124bf25db6683a5f19494a10c44eeb0f905b9d98468788c1a054e38b58dcf2f5')
+sha256sums_aarch64=('24f9ce4707f8072e5a3eb68174686576a2d74686d6eb554816acaca0f0abb62d')
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver-x86_64"
+    # The tarball's top-level dir is named after the host arch, so
+    # makepkg can pick the right one whether we're packaging on
+    # x86_64 or aarch64. $CARCH is set by makepkg for us.
+    cd "$srcdir/$_pkgname-$pkgver-$CARCH"
 
     install -Dm755 vernier "$pkgdir/usr/bin/vernier"
 
