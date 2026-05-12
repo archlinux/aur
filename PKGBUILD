@@ -14,7 +14,7 @@ depends=('vim-plugin-runtime')
 makedepends=('git')
 groups=('vim-plugins')
 source=("git+${url}#commit=${_gitcommit}")
-sha512sums=('SKIP')
+sha512sums=('e52ef13c9a0fd63c8893ac722698bcd46d9e15612e03083f0660b9bf669b8d4fafef18fa5703f8435bf19bfc27cf93d78b91f1f3c8f2f45c9de6fc03ad485d8d')
 
 latestver() {
   local tmp
