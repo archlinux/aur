@@ -1,6 +1,6 @@
 pkgname=hyprshell
 # x-release-please-start-version
-pkgver=4.10.0
+pkgver=4.10.2
 # x-release-please-end
 pkgrel=1
 pkgdesc="A modern GTK4-based window switcher and application launcher for Hyprland"
@@ -43,4 +43,4 @@ package() {
     "$pkgdir/usr/bin/hyprshell" completions fish -p  "$pkgdir/usr/share/fish/vendor_completions.d"
     "$pkgdir/usr/bin/hyprshell" completions zsh -p   "$pkgdir/usr/share/zsh/site-functions"
 }
-sha256sums=('3c62ad460ae9dbbf3ae508d4b63796a530f8bd1bd4e2c23a47805221db1f206c')
+sha256sums=('db125719144091884f4843f059ffc2a2da3043f28e59bd75042b622953454c7c')
