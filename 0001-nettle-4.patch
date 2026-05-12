@@ -1,0 +1,170 @@
+diff --git a/fticks_hashmac.c b/fticks_hashmac.c
+index 4857e52..18ebd43 100644
+--- a/fticks_hashmac.c
++++ b/fticks_hashmac.c
+@@ -5,7 +5,8 @@
+ #include <ctype.h>
+ #include <errno.h>
+ #include <nettle/hmac.h>
+-#include <nettle/sha.h>
++#include <nettle/sha2.h>
++#include <nettle/version.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -35,7 +36,11 @@ static void _hash(const uint8_t *in,
+ 
+         sha256_init(&ctx);
+         sha256_update(&ctx, strlen((char *)in), in);
++#if NETTLE_VERSION_MAJOR >= 4
++        sha256_digest(&ctx, hash);
++#else
+         sha256_digest(&ctx, sizeof(hash), hash);
++#endif
+         _format_hash(hash, out_len, out);
+     } else {
+         struct hmac_sha256_ctx ctx;
+@@ -43,7 +48,11 @@ static void _hash(const uint8_t *in,
+ 
+         hmac_sha256_set_key(&ctx, strlen((char *)key), key);
+         hmac_sha256_update(&ctx, strlen((char *)in), in);
++#if NETTLE_VERSION_MAJOR >= 4
++        hmac_sha256_digest(&ctx, hash);
++#else
+         hmac_sha256_digest(&ctx, sizeof(hash), hash);
++#endif
+         _format_hash(hash, out_len, out);
+     }
+ }
+diff --git a/radmsg.c b/radmsg.c
+index 4c58bd6..ece2d59 100644
+--- a/radmsg.c
++++ b/radmsg.c
+@@ -9,6 +9,7 @@
+ #include "util.h"
+ #include <arpa/inet.h>
+ #include <nettle/hmac.h>
++#include <nettle/version.h>
+ #include <openssl/rand.h>
+ #include <pthread.h>
+ #include <stdlib.h>
+@@ -149,7 +150,11 @@ int _checkmsgauth(unsigned char *rad, int radlen, uint8_t *authattr, uint8_t *se
+ 
+     hmac_md5_set_key(&hmacctx, secret_len, secret);
+     hmac_md5_update(&hmacctx, radlen, rad);
++#if NETTLE_VERSION_MAJOR >= 4
++    hmac_md5_digest(&hmacctx, hash);
++#else
+     hmac_md5_digest(&hmacctx, sizeof(hash), hash);
++#endif
+ 
+     memcpy(authattr, auth, MD5_DIGEST_SIZE);
+ 
+@@ -172,7 +177,11 @@ int _validauth(unsigned char *rad, int len, unsigned char *reqauth, unsigned cha
+     if (len > 20)
+         md5_update(&mdctx, len - 20, rad + 20);
+     md5_update(&mdctx, sec_len, sec);
++#if NETTLE_VERSION_MAJOR >= 4
++    md5_digest(&mdctx, hash);
++#else
+     md5_digest(&mdctx, sizeof(hash), hash);
++#endif
+ 
+     result = !memcmp(hash, rad + 4, 16);
+ 
+@@ -192,7 +201,11 @@ int _createmessageauth(unsigned char *rad, int radlen, unsigned char *authattrva
+     memset(authattrval, 0, 16);
+     hmac_md5_set_key(&hmacctx, secret_len, secret);
+     hmac_md5_update(&hmacctx, radlen, rad);
++#if NETTLE_VERSION_MAJOR >= 4
++    hmac_md5_digest(&hmacctx, authattrval);
++#else
+     hmac_md5_digest(&hmacctx, MD5_DIGEST_SIZE, authattrval);
++#endif
+ 
+     pthread_mutex_unlock(&lock);
+     return 1;
+@@ -207,7 +220,11 @@ int _radsign(unsigned char *rad, int radlen, unsigned char *sec, int sec_len) {
+     md5_init(&mdctx);
+     md5_update(&mdctx, radlen, rad);
+     md5_update(&mdctx, sec_len, sec);
++#if NETTLE_VERSION_MAJOR >= 4
++    md5_digest(&mdctx, rad + 4);
++#else
+     md5_digest(&mdctx, MD5_DIGEST_SIZE, rad + 4);
++#endif
+ 
+     pthread_mutex_unlock(&lock);
+     return 1;
+diff --git a/radsecproxy.c b/radsecproxy.c
+index 1f3d1bd..3dcb199 100644
+--- a/radsecproxy.c
++++ b/radsecproxy.c
+@@ -65,6 +65,7 @@
+ #include <errno.h>
+ #include <libgen.h>
+ #include <nettle/md5.h>
++#include <nettle/version.h>
+ #include <openssl/err.h>
+ #include <openssl/rand.h>
+ #include <openssl/ssl.h>
+@@ -601,7 +602,11 @@ static int pwdcrypt(char encrypt_flag, uint8_t *in, uint8_t len, uint8_t *shared
+             md5_update(&mdctx, saltlen, salt);
+             salt = NULL;
+         }
++#if NETTLE_VERSION_MAJOR >= 4
++        md5_digest(&mdctx, hash);
++#else
+         md5_digest(&mdctx, sizeof(hash), hash);
++#endif
+         for (i = 0; i < 16; i++)
+             out[offset + i] = hash[i] ^ in[offset + i];
+         if (encrypt_flag)
+@@ -636,7 +641,11 @@ static int msmppencrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+     md5_update(&mdctx, sharedlen, shared);
+     md5_update(&mdctx, 16, auth);
+     md5_update(&mdctx, 2, salt);
++#if NETTLE_VERSION_MAJOR >= 4
++    md5_digest(&mdctx, hash);
++#else
+     md5_digest(&mdctx, sizeof(hash), hash);
++#endif
+ 
+ #if 0
+     printfchars(NULL, "msppencrypt hash", "%02x ", hash, 16);
+@@ -652,7 +661,11 @@ static int msmppencrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+ #endif
+         md5_update(&mdctx, sharedlen, shared);
+         md5_update(&mdctx, 16, text + offset - 16);
++#if NETTLE_VERSION_MAJOR >= 4
++        md5_digest(&mdctx, hash);
++#else
+         md5_digest(&mdctx, sizeof(hash), hash);
++#endif
+ #if 0
+ 	printfchars(NULL, "msppencrypt hash", "%02x ", hash, 16);
+ #endif
+@@ -688,7 +701,11 @@ static int msmppdecrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+     md5_update(&mdctx, sharedlen, shared);
+     md5_update(&mdctx, 16, auth);
+     md5_update(&mdctx, 2, salt);
++#if NETTLE_VERSION_MAJOR >= 4
++    md5_digest(&mdctx, hash);
++#else
+     md5_digest(&mdctx, sizeof(hash), hash);
++#endif
+ 
+ #if 0
+     printfchars(NULL, "msppdecrypt hash", "%02x ", hash, 16);
+@@ -704,7 +721,11 @@ static int msmppdecrypt(uint8_t *text, uint8_t len, uint8_t *shared, uint8_t sha
+ #endif
+         md5_update(&mdctx, sharedlen, shared);
+         md5_update(&mdctx, 16, text + offset - 16);
++#if NETTLE_VERSION_MAJOR >= 4
++        md5_digest(&mdctx, hash);
++#else
+         md5_digest(&mdctx, sizeof(hash), hash);
++#endif
+ #if 0
+ 	printfchars(NULL, "msppdecrypt hash", "%02x ", hash, 16);
+ #endif
