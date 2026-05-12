@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-bin
 	pkgdesc = Fast, Private & Safe Web Browser from Mozilla — Nightly Build (en-US)
-	pkgver = 152.0a1.20260511.090215
+	pkgver = 152.0a1.20260511.160144
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/nightly
 	arch = x86_64
@@ -26,12 +26,12 @@ pkgbase = firefox-nightly-bin
 	conflicts = firefox-nightly
 	source = firefox-nightly.desktop
 	source = policies.json
-	source = 20260511-090215-firefox-152.0a1.en-US.linux-x86_64.tar.xz::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-11-09-02-15-mozilla-central/firefox-152.0a1.en-US.linux-x86_64.tar.xz
-	source = 20260511-090215-firefox-152.0a1.en-US.linux-x86_64.tar.xz.asc::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-11-09-02-15-mozilla-central/firefox-152.0a1.en-US.linux-x86_64.tar.xz.asc
+	source = 20260511-160144-firefox-152.0a1.en-US.linux-x86_64.tar.xz::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-11-16-01-44-mozilla-central/firefox-152.0a1.en-US.linux-x86_64.tar.xz
+	source = 20260511-160144-firefox-152.0a1.en-US.linux-x86_64.tar.xz.asc::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-11-16-01-44-mozilla-central/firefox-152.0a1.en-US.linux-x86_64.tar.xz.asc
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 320659477fc3319db4b73492aa6ce39c3a5dbc4ab8adc27440cb1e7ab69dad2cea83a57d7cd77eebfe833fb8a48c7e021bdca851f1be4840fae292afdba96664
 	sha512sums = 5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308
-	sha512sums = 40414f9c785318f501eec5d0892b28cb892b92ae1633e4a7a30dc24a8505c1f7fcf1cbddf16f07de794768f0ff0951ea9b533f9a2bdbe00fe6a4a5fc934361a5
+	sha512sums = a63864a10e4c1c3f9dd2e9cfede8f235baa1716f00aac4c7d07a0786a0e86e93cb20e3760a439b3fec4bef3d2ccb7d8df528cf37083941a8d7e252c479b489f0
 	sha512sums = SKIP
 
 pkgname = firefox-nightly-bin
