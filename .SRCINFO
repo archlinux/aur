@@ -1,6 +1,6 @@
 pkgbase = resources-git
 	pkgdesc = Monitor your system resources and processes
-	pkgver = 1.10.0.r0.g58aae11
+	pkgver = 1.10.2.r81.gaf0bd53
 	pkgrel = 1
 	url = https://apps.gnome.org/Resources
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = resources-git
 	depends = polkit
 	provides = resources
 	conflicts = resources
-	source = git+https://github.com/nokyan/resources.git
+	source = git+https://gitlab.gnome.org/GNOME/Incubator/resources.git
 	sha256sums = SKIP
 
 pkgname = resources-git

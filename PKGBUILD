@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=resources-git
-pkgver=1.10.0.r0.g58aae11
+pkgver=1.10.2.r81.gaf0bd53
 pkgrel=1
 pkgdesc="Monitor your system resources and processes"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/nokyan/resources.git')
+source=('git+https://gitlab.gnome.org/GNOME/Incubator/resources.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --target host-tuple
 }
 
 build() {
