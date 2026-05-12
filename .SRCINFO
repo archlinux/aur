@@ -1,15 +1,12 @@
 pkgbase = yle-dl-git
 	pkgdesc = Download video and audio from YLE Areena.
-	pkgver = 20250227.r1.g7c53d14
+	pkgver = 20250730.r48.g6893ae5
 	pkgrel = 1
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-flit-core
+	makedepends = python-setuptools
 	depends = ffmpeg
 	depends = python-attrs
 	depends = python-configargparse

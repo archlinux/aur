@@ -3,7 +3,7 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=yle-dl-git
-pkgver=20250227.r1.g7c53d14
+pkgver=20250730.r48.g6893ae5
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=("any")
@@ -18,10 +18,7 @@ depends=('ffmpeg'
 optdepends=('wget: for some rare streams')
 makedepends=(
   'git'
-  'python-build'
-  'python-installer'
-  'python-wheel'
-  'python-flit-core'
+  'python-setuptools'
 )
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -40,10 +37,10 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  python -m build --wheel --no-isolation
+  python setup.py build
 }
 
 package() {
   cd "$pkgname"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
