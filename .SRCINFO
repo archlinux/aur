@@ -1,18 +1,18 @@
 pkgbase = vpinfe
 	pkgdesc = A vpinball frontend for Linux, Mac, and Windows
-	pkgver = 2.2.8
+	pkgver = 2.3.1
 	pkgrel = 1
-	epoch = 29
+	epoch = 30
 	url = https://github.com/superhac/vpinfe
 	arch = any
 	depends = python-pip
 	depends = chromium
 	provides = vpinfe
 	conflicts = vpinfe
-	source = vpinfe-2.2.8.zip::https://github.com/superhac/vpinfe/archive/refs/tags/v2.2.8.zip
+	source = vpinfe-2.3.1.zip::https://github.com/superhac/vpinfe/archive/refs/tags/v2.3.1.zip
 	source = vpinfe.desktop
 	source = vpinfe.png
-	sha256sums = 263c11a52651a73705650796bd7a126df7e588091e9b7af6dc88fa7e0852eac2
+	sha256sums = 94defd61bbbf36549efea83520e086ec36085ed250480e84f5820f78f849b6bb
 	sha256sums = d0c22bc258c3fbee04a31378454246f25a3360cf48e870fcb374559de6b4a072
 	sha256sums = 7e7e1b0854ffcf745d9cf5a643cb005bb3c1c21f58ef50dc9c889eef5e9b92bd
 
