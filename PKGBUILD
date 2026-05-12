@@ -6,7 +6,7 @@ _branch=develop
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='a modern typesetting engine inspired by LaTeX, fully customizable in Lua'
-pkgver=0.15.12.r55.g8cf80aa
+pkgver=0.15.13.r120.g14e4ac7
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -15,7 +15,6 @@ license=(MIT)
 _luadeps=(cassowary
           cldr
           cliargs
-          compat53 # Not needed for Lua 5.3+, LuaJIT is 5.1(ish)
           expat
           filesystem
           fluent
@@ -31,9 +30,9 @@ _luadeps=(cassowary
           vstruct
           zlib)
 depends=("${_luadeps[@]/#/lua51-}"
-         fontconfig
+         fontconfig libfontconfig.so
          freetype2 libfreetype.so
-         gentium-plus-font
+         ttf-gentium-plus
          glibc
          harfbuzz libharfbuzz.so libharfbuzz-subset.so
          icu libicudata.so libicui18n.so libicuio.so libicuuc.so
@@ -45,6 +44,7 @@ optdepends=('otf-libertinus: default math font'
             'noto-fonts-cjk: default font for tate enabled classes'
             'ttf-hack: default mono font')
 makedepends=(cargo
+             lua51-compat53 # Not needed at runtime for for Lua 5.3+ or LuaJIT, but checked for in build
              git
              jq
              luarocks)

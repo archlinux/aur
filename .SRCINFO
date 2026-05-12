@@ -1,19 +1,19 @@
 pkgbase = sile-git
 	pkgdesc = a modern typesetting engine inspired by LaTeX, fully customizable in Lua
-	pkgver = 0.15.12.r55.g8cf80aa
+	pkgver = 0.15.13.r120.g14e4ac7
 	pkgrel = 1
 	url = https://www.sile-typesetter.org
 	arch = x86_64
 	license = MIT
 	checkdepends = poppler
 	makedepends = cargo
+	makedepends = lua51-compat53
 	makedepends = git
 	makedepends = jq
 	makedepends = luarocks
 	depends = lua51-cassowary
 	depends = lua51-cldr
 	depends = lua51-cliargs
-	depends = lua51-compat53
 	depends = lua51-expat
 	depends = lua51-filesystem
 	depends = lua51-fluent
@@ -29,9 +29,10 @@ pkgbase = sile-git
 	depends = lua51-vstruct
 	depends = lua51-zlib
 	depends = fontconfig
+	depends = libfontconfig.so
 	depends = freetype2
 	depends = libfreetype.so
-	depends = gentium-plus-font
+	depends = ttf-gentium-plus
 	depends = glibc
 	depends = harfbuzz
 	depends = libharfbuzz.so
@@ -51,7 +52,7 @@ pkgbase = sile-git
 	optdepends = noto-fonts-cjk: default font for tate enabled classes
 	optdepends = ttf-hack: default mono font
 	provides = libtexpdf.so
-	provides = sile=0.15.12.r55.g8cf80aa
+	provides = sile=0.15.13.r120.g14e4ac7
 	conflicts = sile
 	replaces = sile-luajit-git
 	source = git+https://github.com/sile-typesetter/sile.git#branch=develop
