@@ -10,6 +10,6 @@ source=("https://github.com/TheRealWoculus")
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "$srcdir/arch-package" "$pkgdir/usr/bin/arch-package"
+  find "$srcdir" -type f -name "arch-package" -exec install -Dm755 "{}" "$pkgdir/usr/bin/arch-package" \;
 }
 
