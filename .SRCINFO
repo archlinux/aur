@@ -9,6 +9,6 @@ pkgbase = vectorx-bin
 	depends = libxss
 	depends = nss
 	source = https://github.com/AnandRiftYT/VectorX_Benchmarker/releases/download/VectorX_v.1.1.0_Stable_Release/VectorXBenchmark-cpu-linux-x64.zip
-	sha256sums = cf81579c1dab59070f428c872ac7adff6e11a5ed2d880e111640bef2fc0f1a28
+	sha256sums = 640a9229fa036b9222403f55693481eafceb4e4edae6b78ac15ca9b2502315ec
 
 pkgname = vectorx-bin
