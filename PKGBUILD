@@ -1,8 +1,8 @@
 # Maintainer: twgood <admin@eblanbrowser.ru>
 
-pkgname=eblan-browser
-pkgver=0.3
-pkgrel=3
+pkgname=eblanbrowser-r
+pkgver=0.1
+pkgrel=1
 pkgdesc="EBLAN Browser - a lightweight web browser for russian users."
 arch=("any")
 url="https://eblanbrowser.ru/"

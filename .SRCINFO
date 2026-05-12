@@ -1,0 +1,16 @@
+pkgbase = eblanbrowser-r
+	pkgdesc = EBLAN Browser - a lightweight web browser for russian users.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://eblanbrowser.ru
+	arch = any
+	license = custom:eblanbrowser
+	depends = python
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	source = https://update.riba.click/eb/r/latest.zip
+	source = eblan.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = eblanbrowser-r
