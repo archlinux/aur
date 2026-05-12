@@ -1,0 +1,16 @@
+pkgbase = kilo-cli-git
+	pkgdesc = Kilo is the all-in-one agentic engineering platform.
+	pkgver = r19972.3ea3a1667d
+	pkgrel = 1
+	url = https://github.com/Kilo-Org/kilocode
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bun
+	provides = kilo-bin
+	conflicts = kilo-bin
+	options = !strip
+	source = git+https://github.com/Kilo-Org/kilocode.git
+	sha256sums = SKIP
+
+pkgname = kilo-cli-git
