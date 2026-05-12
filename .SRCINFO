@@ -1,0 +1,24 @@
+pkgbase = howdy-gesture-tfg
+	pkgdesc = Howdy + gesture authentication layer (TFG)
+	pkgver = 0.1.0.r39.g020407f
+	pkgrel = 1
+	url = https://github.com/Palm-Pass/tfg
+	install = howdy-gesture-tfg.install
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	makedepends = cmake
+	makedepends = gobject-introspection
+	depends = pam
+	depends = dbus
+	depends = uv
+	depends = python
+	depends = gobject-introspection
+	depends = cairo
+	depends = mesa
+	backup = etc/howdy/config.ini
+	source = tfg::git+https://github.com/Palm-Pass/tfg.git#branch=main
+	sha256sums = SKIP
+
+pkgname = howdy-gesture-tfg

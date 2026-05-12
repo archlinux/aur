@@ -1,0 +1,62 @@
+post_install() {
+  _howdy_gesture_setup
+}
+
+post_upgrade() {
+  _howdy_gesture_setup
+}
+
+_howdy_gesture_setup() {
+  local root="/usr/lib/howdy"
+  local uvbin="/usr/bin/uv"
+
+  if [[ ! -x "${uvbin}" ]]; then
+    echo "[howdy-gesture-tfg] WARNING: Missing ${uvbin}. Skipping virtualenv setup."
+    return 0
+  fi
+
+  if [[ ! -d "${root}" ]]; then
+    echo "[howdy-gesture-tfg] WARNING: ${root} not found. Skipping virtualenv setup."
+    return 0
+  fi
+
+  if [[ ! -f "${root}/pyproject.toml" || ! -f "${root}/uv.lock" ]]; then
+    echo "[howdy-gesture-tfg] WARNING: Missing pyproject.toml or uv.lock in ${root}. Skipping uv sync."
+    return 0
+  fi
+
+  UV_PYTHON_INSTALL_DIR="${root}/.uv-python" \
+    "${uvbin}" sync --project "${root}" --locked --no-install-project || {
+    echo "[howdy-gesture-tfg] WARNING: Could not sync virtualenv in ${root}/.venv with uv."
+    return 0
+  }
+
+  echo "[howdy-gesture-tfg] Virtualenv synced in ${root}/.venv with uv."
+
+  chmod -R a+rX "${root}/.venv"
+  chmod -R a+rX "${root}/.uv-python"
+  find "${root}/.venv/bin" -type f -exec chmod a+x {} +
+
+  local dlib_dir="/lib/security/howdy/dlib-data"
+  mkdir -p "${dlib_dir}"
+  mkdir -p "/lib/security/howdy/models"
+
+  local install_sh
+  install_sh=$(find "${root}/.venv" -name "install.sh" -path "*/dlib-data/*" 2>/dev/null | head -1)
+
+  if [[ -z "${install_sh}" ]]; then
+    echo "[howdy-gesture-tfg] WARNING: Could not find dlib install.sh in venv. Run it manually from ${dlib_dir}."
+    return 0
+  fi
+
+  cp "${install_sh}" "${dlib_dir}/install.sh"
+  chmod +x "${dlib_dir}/install.sh"
+
+  echo "[howdy-gesture-tfg] Downloading dlib data files (this may take a while)..."
+  (cd "${dlib_dir}" && bash install.sh) || {
+    echo "[howdy-gesture-tfg] WARNING: Failed to download dlib data files. Run 'sudo bash ${dlib_dir}/install.sh' manually."
+    return 0
+  }
+
+  echo "[howdy-gesture-tfg] Dlib data files installed in ${dlib_dir}."
+}
