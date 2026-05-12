@@ -1,0 +1,15 @@
+pkgbase = obs-dvd-screensaver
+	pkgdesc = A plugin for OBS Studio that adds a DVD style screen saver source 📀Will it hit the corner?
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wimpysworld/obs-dvd-screensaver
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	depends = obs-studio
+	depends = glibc
+	source = obs-dvd-screensaver-0.1.0.tar.gz::https://github.com/wimpysworld/obs-dvd-screensaver/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = de7c835b1ebf3ec76209ff758184d39bb3bcfbc5e03c969f6b9bc1a4a50a6474
+
+pkgname = obs-dvd-screensaver
