@@ -1,12 +1,12 @@
 # Maintainer: xiliuya <xiliuya@aliyun.com>
 
 pkgname=ntloader-git
-pkgver=3.0.6.r0.gec501ba
+pkgver=3.0.7.r5.gba97a4b
 pkgrel=1
 pkgdesc="Windows NT6+ loader for grub2 and grub4dos."
 arch=('x86_64')
 url="https://github.com/grub4dos/ntloader.git"
-license=('GPLv2+')
+license=('GPL-3.0-only')
 makedepends=('git' 'gcc' 'binutils' 'zlib' 'make' 'mingw-w64-gcc' 'aarch64-linux-gnu-gcc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

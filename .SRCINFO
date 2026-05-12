@@ -1,10 +1,10 @@
 pkgbase = ntloader-git
 	pkgdesc = Windows NT6+ loader for grub2 and grub4dos.
-	pkgver = 3.0.6.r0.gec501ba
+	pkgver = 3.0.7.r5.gba97a4b
 	pkgrel = 1
 	url = https://github.com/grub4dos/ntloader.git
 	arch = x86_64
-	license = GPLv2+
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = gcc
 	makedepends = binutils
