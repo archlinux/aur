@@ -1,7 +1,7 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-sdl2-git
-pkgver=2026.03.29.r0.g419d76518
+pkgver=2026.05.02.r147.g81766733a
 pkgrel=1
 epoch=3
 pkgdesc="x86 emulator with builtin DOS, with patches with more features - sdl2 git version"
@@ -19,7 +19,8 @@ options=(!debug)
           
 pkgver() {
   cd "$srcdir/dosbox-x"
-  git describe --long --tags | sed 's/^dosbox.x-//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
+  git describe --long --tags | sed 's/^dosbox.x-//' | sed 's/\([^-]*-g\)/r\1/' | sed 's/-/./g' | sed 's/\.osfree//' | cut -c2-48
+  #git describe --long --tags | sed 's/^dosbox.x-//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 build() {
