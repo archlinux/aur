@@ -12,11 +12,11 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=1.1.1
+pkgver=1.2.0
 _tag=stable.1
 pkgrel=1
 
-pkgdesc="A cosmic Matrix-style terminal rain written in Rust"
+pkgdesc="High-performance cinematic terminal renderer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/oxyzenQ/cosmostrix"
 license=('MIT')
