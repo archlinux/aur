@@ -1,0 +1,17 @@
+post_install() {
+    echo ":: Enable the FIPS daemon:"
+    echo "   systemctl enable --now fips.service"
+    echo ""
+    echo ":: Optional: enable .fips DNS routing (requires systemd-resolved):"
+    echo "   systemctl enable --now fips-dns.service"
+    echo ""
+    echo ":: Allow non-root access to fipsctl/fipstop:"
+    echo "   usermod -aG fips \$USER"
+    echo ""
+    echo ":: Edit /etc/fips/fips.yaml before starting."
+}
+
+post_upgrade() {
+    echo ":: Restart the daemon if running:"
+    echo "   systemctl restart fips.service"
+}
