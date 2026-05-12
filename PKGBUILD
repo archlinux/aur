@@ -55,6 +55,7 @@ package_idopte-scm-middleware() {
 }
 
 package_firma-digital-librerias() {
+    depends=("pcsclite")
     provides=("libASEP11.so" "libaseLaserP11.so")
     install -Dm644 "${srcdir}/Firma Digital/Librería/libASEP11.so" "${pkgdir}/usr/lib/libASEP11.so"
     install -Dm644 "${srcdir}/Firma Digital/Librería/libaseLaserP11.so" "${pkgdir}/usr/lib/libaseLaserP11.so"
