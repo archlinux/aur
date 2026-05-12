@@ -69,9 +69,15 @@ makedepends=(
   xorgproto
 )
 
-_pkgsrc=$pkgname
-source=("$_pkgsrc::git+$url")
-sha256sums=('SKIP')
+_pkgsrc=$_pkgname
+source=(
+  "$_pkgsrc::git+$url.git"
+  "udis86::git+https://github.com/canihavesomecoffee/udis86.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 build() {
   local cmake_options=(
