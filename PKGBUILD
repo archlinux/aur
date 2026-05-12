@@ -69,7 +69,7 @@ makedepends=(
   xorgproto
 )
 
-_pkgsrc=$_pkgname
+_pkgsrc=$pkgname
 source=(
   "$_pkgsrc::git+$url.git"
   "udis86::git+https://github.com/canihavesomecoffee/udis86.git"
