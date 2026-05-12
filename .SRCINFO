@@ -1,7 +1,7 @@
 pkgbase = arubasign-rolling-bin
 	pkgdesc = Aruba Digital Signature Suite for signing and verifying documents
 	pkgver = 25.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pec.it/Download.aspx
 	arch = x86_64
 	license = LicenseRef-ArubaPEC
@@ -30,7 +30,7 @@ pkgbase = arubasign-rolling-bin
 	provides = arubasign
 	conflicts = arubasign
 	options = !strip
-	source = arubasign-latest.tar.bz2::https://updatesfirma.aruba.it/downloads/ArubaSign-latest-LINUX.tar.bz2
+	source = ArubaSign-latest-LINUX.tar.zst::https://updatesfirma.aruba.it/downloads/ArubaSign-latest-LINUX.tar.zst
 	source = arubasign.sh
 	source = arubasign.desktop
 	sha256sums = SKIP

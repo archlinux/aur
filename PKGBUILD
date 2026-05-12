@@ -2,7 +2,7 @@
 _pkgname=arubasign
 pkgname=${_pkgname}-rolling-bin
 pkgver=25.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Aruba Digital Signature Suite for signing and verifying documents'
 arch=('x86_64')
 url='https://www.pec.it/Download.aspx'
@@ -34,7 +34,7 @@ optdepends=('pcsc-tools: smartcard debugging tools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
-source=("${_pkgname}-latest.tar.bz2::https://updatesfirma.aruba.it/downloads/ArubaSign-latest-LINUX.tar.bz2"
+source=("ArubaSign-latest-LINUX.tar.zst::https://updatesfirma.aruba.it/downloads/ArubaSign-latest-LINUX.tar.zst"
   "${_pkgname}.sh"
   "${_pkgname}.desktop")
 sha256sums=('SKIP'
@@ -42,13 +42,12 @@ sha256sums=('SKIP'
   '4faa020d89f19c5f9f5c3cc5301c8a6f00cf12a769f0e4a4cd1f0cec73c864f9')
 
 pkgver() {
-  python3 -c "import json, glob; print(json.load(open(glob.glob('.registry/ArubaSign-lin-x64-*-Manifest.json')[0]))['version'])"
+  awk -F' = ' '$1 == "pkgver" { sub(/-.*/, "", $2); print $2; exit }' .PKGINFO
 }
 
 package() {
-  install -dm755 "${pkgdir}/opt/${_pkgname}"
-  cp -r app asp runtime users .registry ApkgTool \
-    "${pkgdir}/opt/${_pkgname}/"
+  install -dm755 "${pkgdir}/opt"
+  cp -r "opt/${_pkgname}" "${pkgdir}/opt/"
 
   chmod +x \
     "${pkgdir}/opt/${_pkgname}/app/lin-x64/ArubaSign" \
@@ -57,8 +56,7 @@ package() {
     "${pkgdir}/opt/${_pkgname}/app/lin-x64/chrome-sandbox" \
     "${pkgdir}/opt/${_pkgname}/asp/lin-x64/ArubaSignPlatform.exe" \
     "${pkgdir}/opt/${_pkgname}/asp/lin-x64/driver/util/convert.exe" \
-    "${pkgdir}/opt/${_pkgname}/asp/lin-x64/driver/util/starthid.exe" \
-    "${pkgdir}/opt/${_pkgname}/ApkgTool"
+    "${pkgdir}/opt/${_pkgname}/asp/lin-x64/driver/util/starthid.exe"
   chmod -R +x \
     "${pkgdir}/opt/${_pkgname}/runtime/jreLin64/bin/" \
     "${pkgdir}/opt/${_pkgname}/runtime/jreLin64/lib/"
@@ -66,8 +64,10 @@ package() {
   install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${_pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 app/lin-x64/ico.png \
+  install -Dm644 "opt/${_pkgname}/app/lin-x64/ico.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-  install -Dm644 app/no-arch/license.txt \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "opt/${_pkgname}/app/lin-x64/LICENSE.electron.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
+  install -Dm644 "opt/${_pkgname}/app/lin-x64/LICENSES.chromium.html" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
