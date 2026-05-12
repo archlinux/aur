@@ -1,6 +1,6 @@
 pkgbase = zsa-zapp
 	pkgdesc = Flash ZSA keyboards from your terminal.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/zsa/zapp
 	arch = x86_64
@@ -9,7 +9,12 @@ pkgbase = zsa-zapp
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = zsa-zapp-1.0.0.tar.gz::https://github.com/zsa/zapp/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 93a35cd47d2e341e26da3038ac3e5e8f8e26d6b65f27130682fc7a95da4556c5
+	depends = systemd-libs
+	source = zsa-zapp-1.0.1.tar.gz::https://github.com/zsa/zapp/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = c4e03dba5d87295d565c6681b3b13956160c364be637bd6756d438fdb3959e4e
 
 pkgname = zsa-zapp
+	depends = glibc
+	depends = libgcc
+	depends = systemd-libs
+	depends = libudev.so
