@@ -5,7 +5,7 @@
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
 pkgver=4.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, flexible, scalable C++ machine learning library"
 arch=(x86_64)
 url="https://${pkgname}.org"
@@ -26,7 +26,7 @@ build() {
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_STANDARD=14 \
+    -DCMAKE_CXX_STANDARD=17 \
     -DBUILD_CLI_EXECUTABLES=ON \
     -DBUILD_PYTHON_BINDINGS=ON \
     -DBUILD_TESTS=OFF \
