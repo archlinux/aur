@@ -14,7 +14,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emomaxd/hpfand/archive/refs/tags/v$pkgver.tar.gz"
         "hpfand.install")
-sha256sums=('c3b7c4f878f470efdb21170b4ac4a66b5f081026ada29e78eb088f2820f2b5a2'
+sha256sums=('79e094b5c35143272c02a5490a7b75386217df74031527d1138f59c9ad7e8b1e'
             '29e104ecfb8a490c34c605b96263d3e1b68e254ba3fd1647d1aa1bcc2cf3ece6')
 
 package() {
