@@ -1,8 +1,8 @@
 # Maintainer: Nathan Elliott <hlrzobfg@addy.io>
 pkgname=libpdq
 pkgver=0.2.3
-pkgrel=1
-pkgdesc="Pure-C library for PDQ-256 perceptual image hashing (Meta's algorithm, no OpenCV dependency)"
+pkgrel=2
+pkgdesc="Library for PDQ-256 perceptual image hashing"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/NathanTheTerrible/libpdq"
 license=('GPL-3.0-or-later')
