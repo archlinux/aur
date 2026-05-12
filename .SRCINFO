@@ -1,7 +1,7 @@
 pkgbase = arch-package
 	pkgdesc = A professional-grade AUR helper and driver manager
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com
 	arch = any
 	license = MIT
