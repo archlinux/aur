@@ -1,0 +1,17 @@
+pkgbase = hue-firelight-git
+	pkgdesc = Realistic flame effect for Philips Hue bulbs over REST + DTLS Entertainment streaming
+	pkgver = r3.f409454
+	pkgrel = 1
+	url = https://github.com/maveric7911/hue-firelight
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = openssl
+	optdepends = philips-hue-bridge: V2 or newer required for the streaming script
+	provides = hue-firelight
+	conflicts = hue-firelight
+	source = git+https://github.com/maveric7911/hue-firelight.git
+	sha256sums = SKIP
+
+pkgname = hue-firelight-git
