@@ -2,7 +2,7 @@
 # Contributor: Jingbei Li <i@jingbei.li>
 _base=installer
 pkgname=pypy3-${_base}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A low-level library for installing from a Python wheel distribution"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(pypy3)
 makedepends=(pypy3-flit-core)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/pypa/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('6d222e9a81ae88b70682e45f1152fad0a7f197b5eda71671b178b78dcf944d7187329ae1856b6e8b93333711428b20d8c3ecdab0e1855b38602c3815ec5dfcdb')
+sha512sums=('6acd541201c5f2b7dc0ae8b8e6d5137ad4eba4faa575e7ddabb239213f03c758f8de3b5888b329b7782397f36610fc877800fb6f41e4f0ee2789111e5e90cf18')
 
 build() {
   cd ${_base}-${pkgver}
