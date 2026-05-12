@@ -1,0 +1,16 @@
+post_install() {
+ local pkgname="hermes-agent"
+ echo "==> Hermes Agent has been installed."
+ echo "==> To get started, run:"
+ echo " mkdir -p ~/.hermes/{cron,sessions,logs,memories,skills,pairing,hooks,image_cache,audio_cache,whatsapp/session}"
+ echo " cp /opt/$pkgname/cli-config.yaml.example ~/.hermes/config.yaml"
+ echo " cp /opt/$pkgname/.env.example ~/.hermes/.env"
+ echo " cp -r /opt/$pkgname/skills ~/.hermes/"
+ echo " ln -s /opt/$pkgname/scripts/whatsapp-bridge ~/.hermes/whatsapp-bridge"
+ echo "==> Add your API keys to ~/.hermes/.env"
+ echo "==> Then run 'hermes model' to configure your provider."
+ echo "==> Run 'hermes doctor' to verify your setup."
+}
+post_upgrade() {
+    post_install
+}
