@@ -3,10 +3,10 @@
 
 pkgname=tp-dusk
 pkgver=1.0.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
-url="https://github.com/TwilitRealm/dusk"
+url="https://github.com/TwilitRealm/dusklight"
 license=('CC0-1.0')
 depends=(libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ bash)
 makedepends=(git cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr patchelf)
@@ -23,7 +23,7 @@ sha256sums=('0d76d2fe29a0273aea84f3d71807c09b08911523ebeca8a7db8c8c8fdaae7022'
             '1e6547cf4dd69f0ecb6895733dcd13f3e265c6267298c7bf83dd6acbad42fda5')
 
 prepare() {
-  cd dusk
+  cd dusklight
 
   git submodule init
   git config submodule.extern/aurora.url "$srcdir/aurora"
@@ -31,7 +31,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/dusk"
+  cd "$srcdir/dusklight"
 
   cmake -B build -GNinja \
     -DCMAKE_BUILD_TYPE=None \
@@ -47,11 +47,11 @@ build() {
 }
 
 package() {
-  install -Dm 755 "${srcdir}/dusk/build/dusk" "${pkgdir}/usr/share/${pkgname}/dusk"
+  install -Dm 755 "${srcdir}/dusklight/build/dusk" "${pkgdir}/usr/share/${pkgname}/dusk"
   install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/${pkgname}"
-  cp -r "${srcdir}/dusk/res" "${pkgdir}/usr/share/${pkgname}/res"
+  cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/share/${pkgname}/res"
 
-  install -Dm 644 "${srcdir}/dusk/res/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm 644 "${srcdir}/dusklight/res/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm 755 "tp-dusk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   patchelf --remove-rpath "${pkgdir}/usr/share/${pkgname}/dusk"
