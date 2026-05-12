@@ -1,0 +1,17 @@
+pkgbase = ssgg-git
+	pkgdesc = Open-source SteelSeries GG replacement for Linux
+	pkgver = r421.ac66c59
+	pkgrel = 1
+	url = https://github.com/Ven0m0/steelseriesgg-rs
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	depends = hidapi
+	provides = ssgg
+	conflicts = ssgg
+	source = ssgg::git+https://github.com/Ven0m0/steelseriesgg-rs.git
+	sha256sums = SKIP
+
+pkgname = ssgg-git
