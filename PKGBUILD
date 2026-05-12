@@ -1,7 +1,7 @@
 # Maintainer: f4iey <jules@f4iey.fr>
 
 pkgname=wfview-bin
-pkgver=2.03
+pkgver=2.11
 pkgrel=2
 _pkgbase=${pkgname%-bin}
 
