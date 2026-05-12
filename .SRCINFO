@@ -1,7 +1,7 @@
 pkgbase = hp-wmi-dkms
 	pkgdesc = Patched hp-wmi kernel module with fan control fixes for HP Victus/Omen (pre-7.1 kernels)
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emomaxd/hpfand
 	arch = any
 	license = GPL-2.0-only
