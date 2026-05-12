@@ -1,7 +1,7 @@
 # Maintainer: Sinoosoida <sinoosoidapass@gmail.com>
 pkgname=video-match-finder-git
 _pkgname=video-match-finder
-pkgver=0.1.0.r8.g9a65c30
+pkgver=0.1.0.r9.g053a9b6
 pkgrel=1
 pkgdesc="Partial near-duplicate video detection (DINOv2 + FAISS + Hough/permutation)"
 arch=('any')
