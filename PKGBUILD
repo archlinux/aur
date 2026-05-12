@@ -1,29 +1,28 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=rill
-pkgver=0.5.0
-pkgrel=5
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A minimalist scrolling window manager for River"
 arch=('x86_64')
+_zigwlver=0.6.0
+_xkbver=0.4.0
 url="https://codeberg.org/lzj15/rill"
 license=('MIT')
 depends=('wayland' 'river' 'libxkbcommon')
 makedepends=('wayland-protocols' 'zig')
 install=rill.install
 source=(https://codeberg.org/lzj15/rill/archive/"$pkgver".tar.gz
-	zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip
-	zig-xkbcommon.tar.gz::https://codeberg.org/ifreund/zig-xkbcommon/archive/v0.4.0.tar.gz)
-sha256sums=('e11a26eef4c1254a634edc12414bc541c583784a286b0a0b1e8e3626ab3e7797'
-            '816d6d9fffeb596244e5467b60f5b21575ba779e441a27dcc63ce5f6a5a09841'
-            'e6df77d511cf9402f6ac08455c8d1fb727b6c3d66191e246671f62e5db083c49')
+	zig-wayland-$_zigwlver.tar.gz::https://github.com/ifreund/zig-wayland/archive/refs/tags/v$_zigwlver.tar.gz
+	zig-xkbcommon-$_xkbver.tar.gz::https://github.com/ifreund/zig-xkbcommon/archive/refs/tags/v$_xkbver.tar.gz
+       )
+sha256sums=('3655b23863194c0d8340397e91e19420c2e9d9935c1e4796898c0d7cd9ae2f9f'
+            'd9804e50f9fa549ad0aed751fbbb5fbc52110d57971b59ecab34ff11f08b0230'
+            'bff568b83a19630dc7cb27950e03337925d0d71b4fb0676bc6ebe2d31d1db032')
 optdepends=('alacritty: Default terminal emulator'
 	    'wireplumber: Default audio manager'
 	    'awww: Default wallpaper manager'
 	    'wl-clip-persist: Used in default configuration')
-noextract=("${source[@]:1}")
 
-prepare() {
-  zig fetch --global-cache-dir ./zig-global-cache "./${source[1]%%::*}"
-}
 
 build() {
   cd "$srcdir/$pkgname"
@@ -32,11 +31,13 @@ build() {
     --prefix /usr \
     --search-prefix /usr \
     --global-cache-dir ../zig-global-cache \
-    --system ../zig-global-cache/p \
     --build-id=sha1 \
     -Dtarget=native-linux.6.6-gnu.2.40 \
     -Dcpu=baseline \
-    -Doptimize=ReleaseSafe
+    -Doptimize=ReleaseSafe \
+    --fork="$srcdir/zig-wayland-${_zigwlver}" \
+    --fork="$srcdir/zig-xkbcommon-${_xkbver}"
+
 }
 
 
