@@ -1,6 +1,6 @@
 pkgbase = appflowy-bin
 	pkgdesc = AppFlowy is an open-source alternative to Notion. You are in charge of your data and customizations.
-	pkgver = 0.11.8
+	pkgver = 0.11.9
 	pkgrel = 1
 	url = https://appflowy.io
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = appflowy-bin
 	optdepends = zenity: bash dialog boxes
 	provides = appflowy
 	conflicts = appflowy
-	source = https://github.com/AppFlowy-IO/AppFlowy/raw/0.11.8/LICENSE
-	source = https://github.com/AppFlowy-IO/AppFlowy/releases/download/0.11.8/AppFlowy-0.11.8-linux-x86_64.deb
+	source = https://github.com/AppFlowy-IO/AppFlowy/raw/0.11.9/LICENSE
+	source = https://github.com/AppFlowy-IO/AppFlowy/releases/download/0.11.9/AppFlowy-0.11.9-linux-x86_64.deb
 	b2sums = 6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237
-	b2sums = 27f061d2c29e24e1ad8ba3c87c6013464565a5a4a8e5077baeba63d6a844f938f9f26db62c125aaf7aafe2bd0671845b01a7ec4c89ea9ebf45dda09a09378e14
+	b2sums = 2c776997a883658c28a11d194d312c9b0b3d70849054fee5eb927f074b2c1ea4673ffda249b1d7798b0dfb613f943404708fd2819f46ea5fcd19053bc6af713e
 
 pkgname = appflowy-bin
