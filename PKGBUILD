@@ -7,7 +7,7 @@
 _pkgname=lsdisplay
 pkgname=${_pkgname}-git
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="List connected displays with details and ASCII layout diagram."
 arch=(any)
 url="https://github.com/AGuyMarc/${_pkgname}"
@@ -26,6 +26,9 @@ md5sums=('SKIP')
 
 package()
 {
-    install -Dm644 "${srcdir}/${_pkgname}.py" "${pkgdir}/usr/share/${_pkgname}/"
-    ln -sf "/usr/share/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+    cd "${srcdir}/${pkgname}" || exit 1
+    mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/${_pkgname}"
+    install -Dm755 "${_pkgname}.py" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.py"
+    ln -sf "/usr/share/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}s"
 }

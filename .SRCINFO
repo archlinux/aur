@@ -1,7 +1,7 @@
 pkgbase = lsdisplay-git
 	pkgdesc = List connected displays with details and ASCII layout diagram.
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AGuyMarc/lsdisplay
 	arch = any
 	license = GPL-2.0
