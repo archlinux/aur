@@ -1,18 +1,17 @@
 # Maintainer: ammarhossain <ammar at butterfly dot so>
 pkgname=rice-cooker
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="a visual (toy) tool for ricing"
 arch=('x86_64')
 url="https://github.com/amarsbar/rice-cooker"
 _srcdir="$pkgname-$pkgver"
 license=('BSD-3-Clause')
-depends=('electron41' 'git' 'hicolor-icon-theme' 'hyprland' 'polkit' 'qt6-5compat' 'qt6-multimedia' 'quickshell-git')
+depends=('electron41' 'git' 'hicolor-icon-theme' 'hyprland' 'hyprpolkitagent' 'polkit' 'qt6-5compat' 'qt6-multimedia' 'quickshell-git')
 makedepends=('cargo' 'npm' 'rust')
 optdepends=(
     'paru: preferred AUR helper for installing rice dependencies'
     'yay: alternative AUR helper for installing rice dependencies'
-    'hyprpolkitagent: polkit authentication agent (any polkit agent works)'
     'ttf-material-symbols-variable: icon font for Whisker and Nandoroid'
     'ttf-outfit: intended UI font for Whisker'
 )
@@ -21,7 +20,7 @@ source=(
     'rice-cooker.sh'
     'rice-cooker.desktop'
 )
-sha256sums=('0ed16e8193cc9b1f3493c536149ac50621aca915e94d152f26bcec666ba6c385'
+sha256sums=('d1a9b99df2b5a34c37e388d73602a0f7968dff08f5a5585d6501c947518d1752'
             '1527354310806f2ae55a2629d2954f02efa6b4063d85233ef3ecc50f53887b91'
             'ed4a26ab693d922de7392f4020a61d75c723c5dfaaa3b828ea5f4c870fb4933d')
 
