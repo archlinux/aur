@@ -1,6 +1,6 @@
 pkgbase = vencord-installer-gui-bin
 	pkgdesc = A GUI application to install Vencord with support for custom user plugins
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/EvilNick2/vencord-installer-gui
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = vencord-installer-gui-bin
 	depends = webkit2gtk-4.1
 	provides = vencord-installer-gui
 	conflicts = vencord-installer-gui
-	source = vencord-installer-gui-bin-2.0.0.deb::https://github.com/EvilNick2/vencord-installer-gui/releases/download/v2.0.0/Vencord.Installer.GUI_2.0.0_amd64.deb
+	source = vencord-installer-gui-bin-2.0.1.deb::https://github.com/EvilNick2/vencord-installer-gui/releases/download/v2.0.1/Vencord.Installer.GUI_2.0.1_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/EvilNick2/vencord-installer-gui/main/LICENSE
-	sha256sums = cdc1e34208e9d98328a25fb62f6f7c39153cce049a871b95a1c79609f27acaec
+	sha256sums = 1f5b4b05c27bfa6268b757cf958748ddd55322cc69eae8dae579d75664d577a9
 	sha256sums = SKIP
 
 pkgname = vencord-installer-gui-bin
