@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=radiosonde_auto_rx
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Automatically Track Radiosonde Launches using RTLSDR"
 arch=('x86_64')
@@ -51,6 +51,7 @@ package() {
     install -Dm755 "auto_rx/mts01mod" "$pkgdir/opt/$pkgname/auto_rx/mts01mod"
     install -Dm755 "auto_rx/iq_dec" "$pkgdir/opt/$pkgname/auto_rx/iq_dec"
     install -Dm755 "auto_rx/weathex301d" "$pkgdir/opt/$pkgname/auto_rx/weathex301d"
+    install -Dm755 "auto_rx/rd94rd41drop" "$pkgdir/opt/$pkgname/auto_rx/rd94rd41drop"
 
     #Inform th user that the building is done and the config file is in /opt/
     echo -e "\033[32mAll Done!\nMake sure to edit the \033[93mstation.cfg\033[32m in \033[33m/opt/$pkgname/auto_rx!\033[0m"
