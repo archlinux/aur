@@ -1,6 +1,6 @@
 pkgbase = viat
 	pkgdesc = A tool for managing virtual file attributes
-	pkgver = 0.9.1
+	pkgver = 0.9.3
 	pkgrel = 1.314
 	url = https://github.com/v--/viat
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = viat
 	depends = python-tomlkit
 	depends = python-wcmatch
 	optdepends = python-pygit2: Git file tracker
-	source = https://github.com/v--/viat/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 671ce496e78b0ed13c904397a6da58f72f75ce2c3885f48ccaacb51ffebff89f
+	source = https://github.com/v--/viat/archive/refs/tags/v0.9.3.tar.gz
+	sha256sums = a461e05510048eed3cb828913c09c5bef6314282e34b70a0ed552dba4e0a3195
 
 pkgname = viat
