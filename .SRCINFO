@@ -1,6 +1,6 @@
 pkgbase = scrcpy-bin
 	pkgdesc = Display and control your Android device
-	pkgver = 3.3.4
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://github.com/Genymobile/scrcpy
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = scrcpy-bin
 	optdepends = libusb: USB connection support
 	provides = scrcpy
 	conflicts = scrcpy
-	source = https://github.com/Genymobile/scrcpy/releases/download/v3.3.4/scrcpy-linux-x86_64-v3.3.4.tar.gz
+	source = https://github.com/Genymobile/scrcpy/releases/download/v4.0/scrcpy-linux-x86_64-v4.0.tar.gz
 	source = scrcpy.desktop
-	sha256sums = 0305d98c06178c67e12427bbf340c436d0d58c9e2a39bf9ffbbf8f54d7ef95a5
-	sha256sums = 17c3b3eda5c73b754e08f6eba4bccede72f0a1c00149ff800539319073ca3587
+	sha256sums = 7daf05af5d575862e62b068cf6852d6068faf7ef3178f3735e3953e778fbf0ab
+	sha256sums = 8919976f02f450bc0b803caa3b6c8c0305f3cea3b2665bdea566bdba48841af3
 
 pkgname = scrcpy-bin
