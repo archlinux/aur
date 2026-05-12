@@ -1,5 +1,6 @@
 [Unit]
 Description=CUPS Web Interface
+Documentation=https://github.com/hanxi/cups-web
 Wants=network-online.target
 Requires=cups.service
 After=cups.service
@@ -13,6 +14,7 @@ Environment=DB_PATH=/var/lib/cups-web/data/cups-web.db
 Environment=UPLOAD_DIR=/var/lib/cups-web/uploads
 Environment=OFD_CONVERTER_JAR=/usr/share/java/ofdrw/ofdrw-converter.jar
 ExecStart=/usr/bin/cups-web
+PrivateTmp=yes
 
 [Install]
 WantedBy=multi-user.target

@@ -1,28 +1,28 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="cups-web"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Web printing management interface for CUPS"
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
+arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64' 'loong64')
 url="https://github.com/hanxi/${pkgname}"
 license=("MIT")
 backup=("etc/conf.d/${pkgname}")
 install="${pkgname}.install"
-depends=("fontconfig" "cups")
+depends=("cups" "fontconfig" "ghostscript")
 makedepends=("npm" "go")
 optdepends=("libreoffice: for document (.doc .docx .xls .xlsx .ppt .pptx) conversion"
             "ofdrw: for OFD file (.ofd) conversion"
             "noto-fonts: for general character support"
-            "noto-fonts-cjk: for CJK character support")
+            "noto-fonts-cjk: for CJK (Chinese Japanese Korean) character support")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.env"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('75012a87ff58d08166131f3ee5bb3c4cdc9ed2315ea6d4dbaa445820381b33e1'
+sha256sums=('558181f974427145b03a4b592903ffdc0c8378d90bc92bf0ee2efb58d79c8479'
             '23f92510f45cabe57fbac3349b8a426085299e045d71e5e79348a2f3a59bd098'
-            'ed6f4fbbd569f74c5c883f6222fc0be672c5be99eb206c80fed6ba3bd781703d'
+            'd0c92ec21b32c0d226f96696d078f369fecee493d2a351d11176014194da05c2'
             '1b448e0b4d6a8d13edbe2f9a051b1392beba42d6773b5da7cf7b260470695548'
             'b17fd1e47cfa27481eb31b526065b424dd30ddc2b57a9e9617d92fdf8c9316c7')
 
