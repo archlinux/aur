@@ -1,7 +1,7 @@
 # Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
 
 pkgname=execline-man-pages
-pkgver=2.9.8.1.3
+pkgver=2.9.9.1.1
 pkgrel=1
 pkgdesc="Man pages for execline"
 url="https://git.sr.ht/~humm/execline-man-pages"
@@ -9,7 +9,7 @@ arch=(any)
 makedepends=(make coreutils)
 license=('ISC')
 source=(https://git.sr.ht/~humm/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('a4b4a0b4cd3a85dc2d2b916260e1d8641afc422c41781578232037cb90f709a0df7ed2cf33cf05c08793c5076dc49cb694ae45206a390690e15b450b90a508a8')
+sha512sums=('bd4ab7d04589003734ef68b5b8f4529a8bcc6c1b387d6e363e5dc9a67d552c5eadc077d4f3eea8ece1d1df21e26833fb4a045377695b0e0c675dec50d5e0e12c')
 
 package() {
   cd ${pkgname}-v${pkgver}
