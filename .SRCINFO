@@ -50,7 +50,7 @@ pkgname = solara-kernel
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
 
-pkgname = solara-kernel-headers
+pkgname = solara-kernel-hdr
 	pkgdesc = Headers and scripts for building modules for the Solara Linux Kernel — BORE scheduler, CachyOS patches, maximum POWER kernel
 	depends = binutils
 	depends = glibc

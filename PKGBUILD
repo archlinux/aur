@@ -349,7 +349,7 @@ _package() {
     rm "$modulesdir"/build
 }
 
-_package-headers() {
+_package-hdr() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     depends=(binutils glibc libelf libgcc openssl pahole xxhash zlib zstd "${pkgbase}")
     provides=(LINUX-HEADERS)
@@ -470,7 +470,7 @@ _package-r8125() {
 
 pkgname=("$pkgbase")
 [ "$_build_debug" = "yes" ] && pkgname+=("$pkgbase-dbg")
-pkgname+=("$pkgbase-headers")
+pkgname+=("$pkgbase-hdr")
 [ "$_build_zfs" = "yes" ] && pkgname+=("$pkgbase-zfs")
 [ "$_build_nvidia_open" = "yes" ] && pkgname+=("$pkgbase-nvidia-open")
 [ "$_build_r8125" = "yes" ] && pkgname+=("$pkgbase-r8125")
