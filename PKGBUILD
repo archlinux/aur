@@ -17,7 +17,7 @@ depends=('gnome-shell' 'file-roller' 'nautilus')
 makedepends=('git' 'meson' 'glib2')
 optdepends=(
   'nodejs: build-time JS tooling'
-  'webkit: HTML widget support'
+  'webkit2gtk-6.0: HTML widget support'
 )
 
 conflicts=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
