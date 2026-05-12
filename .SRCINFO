@@ -1,0 +1,16 @@
+pkgbase = nvidia-arch-setup
+	pkgdesc = Automatic NVIDIA driver configurator for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nanmonk/nvidia-arch-setup
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = pciutils
+	optdepends = paru: AUR helper required for Pascal/Kepler/Fermi legacy drivers
+	optdepends = yay: AUR helper required for Pascal/Kepler/Fermi legacy drivers
+	source = nvidia-arch-setup-1.0.0.tar.gz::https://github.com/Nanmonk/nvidia-arch-setup/archive/v1.0.0.tar.gz
+	sha256sums = 7d4e6141ed525b351b70c32381e4206d1dce8db6799f5d4c4859caf575c7c30b
+
+pkgname = nvidia-arch-setup
