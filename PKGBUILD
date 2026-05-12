@@ -1,7 +1,7 @@
 # Maintainer: Ch3w3y <ch3w3y@github.com>
 # Contributor: Joe Paji <joepaji@github.com>
 pkgname=tuxbellum
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="GTK4 GUI for installing Bellum on Linux via Wine/Proton"
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ch3w3y/tuxbellum/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('41a7975b86aee5c16cd856ced68f7a3b8d0c34ddb06295191847baa62b6ff8cb')
+sha256sums=('b7668b147958f9edcb847dcc3cf05503ecf1e72941e2b47380d849f73a24f3f2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
