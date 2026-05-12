@@ -1,6 +1,6 @@
 # Maintainer: o-murphy <thehelixpg@gmail.com>
 pkgname=ebalistyka-bin
-_pkgver="0.1.13"
+_pkgver="0.1.14"
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="Ballistic trajectory calculator"
@@ -29,8 +29,8 @@ source=(
 source_x86_64=("ebalistyka-x86_64.tar.gz::${_relurl}/ebalistyka_linux_x86_64.tar.gz")
 source_aarch64=("ebalistyka-aarch64.tar.gz::${_relurl}/ebalistyka_linux_aarch64.tar.gz")
 sha256sums=('1070457b57fde586f987281304289a929c7796586f6755b1da3a0fdd6be11b33' '2089e387fefdce7c89e35629500bcbd3e22ee43a196a782f5771ccf2725f270b' '626ce2ad532dcff1e3a31d5a869d4e1087572b1cd332649772dd67bed955e073')
-sha256sums_x86_64=('c2dcbe3044d311321ab48946806bf8e585bbf0b8cdfd33a28b1ac6775531f615')
-sha256sums_aarch64=('dc197e429f3a5558fe3af2b66f433792c59569850f0dadcc8202f0903ec47db7')
+sha256sums_x86_64=('3950daa9d3dc624b48b200020bf63767d6581dc9b6a9029cdd8820ac5a172961')
+sha256sums_aarch64=('3ff64384f314ee594d6e1f960e765cc4cc47fc4849e4c89697b25111cc5befec')
 
 prepare() {
     mkdir -p bundle
