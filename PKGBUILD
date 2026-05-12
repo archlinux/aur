@@ -7,7 +7,7 @@
 _pkgname=lsdisplay
 pkgname=${_pkgname}-git
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="List connected displays with details and ASCII layout diagram."
 arch=(any)
 url="https://github.com/AGuyMarc/${_pkgname}"
@@ -37,7 +37,7 @@ package()
     mkdir -p "${pkgdir}/usr/share/${_pkgname}/"
     mkdir -p "${pkgdir}/usr/bin/ "
 
-    cp lsdiplay.py "${pkgdir}/usr/share/${_pkgname}/"
+    cp ${_pkgname}.py "${pkgdir}/usr/share/${_pkgname}/"
     chmod +x "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.py"
     ln -s "/usr/share/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
 }
