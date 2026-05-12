@@ -3,7 +3,7 @@
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
 pkgver=1.21.2
-pkgrel=3
+pkgrel=4
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
 license=('LGPL-3.0-or-later')
@@ -74,6 +74,7 @@ EOF
 		-e 's/__declspec(dllimport)/__attribute__((__dllimport__))/' \
 		'libheif/api/libheif/heif.h'
 	patch -p1 -i "${srcdir}/svt-av1-4.patch"
+	sed -i 's/svt_config.pred_structure = 2;/svt_config.pred_structure = PredStructure::RANDOM_ACCESS;/' 'libheif/plugins/encoder_svt.cc'
 }
 
 build() {
