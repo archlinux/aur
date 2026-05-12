@@ -1,6 +1,6 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=vernier
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Cross-platform pixel-measurement overlay in Rust"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ optdepends=(
     'xdg-desktop-portal-hyprland: global hotkey via the GlobalShortcuts portal'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jondkinney/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f032713778aedd1bdefe78135694d8f07304d2b0b3572407e0e2ac769567778a')
+sha256sums=('a562e6429cb3bfbf79fba692ce24922a8772ec754f6134fb3bbb38ddcde33a46')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -43,6 +43,10 @@ build() {
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Rewrite $srcdir out of compile-time paths embedded by env!()
+    # / panic-site metadata so the packaged binary doesn't leak the
+    # builder's cache path (and makepkg stops warning about it).
+    export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/build"
     cargo build --frozen --release --bin vernier
 }
 
@@ -63,9 +67,14 @@ package() {
     install -Dm644 "packaging/vernier.desktop" \
         "$pkgdir/usr/share/applications/vernier.desktop"
 
-    # Hicolor icon tree (PNG + scalable SVG, app + symbolic status)
+    # Hicolor icon tree — apps only. Status icons (the tray glyph)
+    # stay out: SNI clients render the daemon's `icon_pixmap` (white,
+    # via the runtime-recolored symbolic SVG), and a themed lookup of
+    # `vernier-symbolic` picks the 16px PNG on small bars and shows
+    # it in whatever single color it was baked in.
     install -d "$pkgdir/usr/share/icons/hicolor"
     cp -r assets/icons/hicolor/. "$pkgdir/usr/share/icons/hicolor/"
+    rm -rf "$pkgdir"/usr/share/icons/hicolor/*/status
 
     # Licenses
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
