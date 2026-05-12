@@ -6,7 +6,7 @@ pkgname=(
   "python-${pkgbase}"
 )
 pkgver=2.5.16
-pkgrel=2
+pkgrel=23
 pkgdesc="C++ package for solving the forward problems of electroencephalography (EEG) and magnetoencephalography (MEG)"
 arch=(
   'x86_64'
@@ -14,7 +14,7 @@ arch=(
 url="https://openmeeg.github.io"
 _url="https://github.com/${pkgbase}/${pkgbase}"
 license=(
-  'custom:CeCILL-B'
+  'CECILL-B'
 )
 makedepends=(
   'cmake>=3.14'
