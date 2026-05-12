@@ -1,8 +1,8 @@
-# Maintainer: Funami
+# Maintainer: naetherm
 pkgname=asset-manager-studio
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Asset Manager Studio"
+pkgdesc="Project, Engine, Asset management for Epic UnrealEngine.  Manage, Download, install assets from Fab, Quixel, Cosmos to Unreal Engine"
 arch=('x86_64')
 url="https://assetmanager.studio/"
 license=('APACHE')
@@ -11,7 +11,7 @@ optdepends=()
 provides=('asset-manager-studio')
 conflicts=('asset-manager-studio')
 source=("https://assetmanager.studio/dl/${pkgver}/asset-manager-studio_${pkgver}_amd64.deb")
-sha256sums=('cf9831ae8590b1f0acb0d3ad12ecaf1e9611ea73a6800b5874acb56f81390cee')
+sha256sums=('d275ccd2fb1b33223218c686b6c43755b342a731d7d2338971f44e6e6fa05cdb')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
