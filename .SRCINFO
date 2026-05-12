@@ -1,0 +1,21 @@
+pkgbase = velotype-bin
+	pkgdesc = Write at the speed of thought - high-performance native Markdown editor built with Rust and GPUI
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/manyougz/velotype
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	provides = velotype
+	conflicts = velotype
+	source_x86_64 = velotype-v0.3.4-linux-x86_64.tar.gz::https://github.com/manyougz/velotype/releases/download/v0.3.4/velotype-v0.3.4-linux-x86_64.tar.gz
+	sha256sums_x86_64 = bcd40c7bf5aa7448b9cac6dd6bf93bd940bcf8a77ee329fc8bd20160a4059cc8
+	source_aarch64 = velotype-v0.3.4-linux-aarch64.tar.gz::https://github.com/manyougz/velotype/releases/download/v0.3.4/velotype-v0.3.4-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 9201b9c2e243cc5fe5a029c19f15344b7d5c8a6a91be9c24e11433c25af7d404
+
+pkgname = velotype-bin
