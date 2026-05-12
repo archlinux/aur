@@ -2,7 +2,7 @@
 
 _reponame="lk-jwt-service"
 pkgname="element-${_reponame}"
-pkgver=0.4.0
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='LiveKit Management Service for Element Call'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
 	"env.conf"
 )
 sha512sums=(
-	'55f368c0cdb5dab0583f42db421c41d9884902bbcd6aff11d642fd083d7aa5e3338479f782eb87dd4e6d26beb5105ba2a084893a21d16d215f01a19a1fa7a781'
+	'4afdb72e72dad8522d0d6e943be56b976c1581a1a7bf1bd66fbaf5849a9a9dba7b14ddb03917a7fc7e0385c9f13aa22d5576ee93e6f26021d4231b79ab32913c'
 	'48fdad2ad2eb41fbba132cf7a8f2abe9ade07cc0d4d9a80c9a8f9180d7810dd46c41b34d889b4194756cbea15bd8d1875aa611bac4ee0cf993dcbf9079f02290'
 	'5d1a093b2764cbab722652f552c229c3269b360d6d0252242280582322d8bf5b78954b57d27009a7da7afa9268377545ff8560579de54296a35c40b226bbc517'
 )
