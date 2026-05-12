@@ -1,7 +1,7 @@
 pkgbase = kibot
 	pkgdesc = KiCad automation utility
-	pkgver = 1.8.5
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://pypi.org/project/kibot
 	arch = any
 	license = AGPL-3.0-or-later
@@ -54,7 +54,7 @@ pkgbase = kibot
 	provides = pcbdraw
 	conflicts = kibot
 	conflicts = pcbdraw
-	source = kibot-1.8.5.tar.gz::https://files.pythonhosted.org/packages/source/k/kibot/kibot-1.8.5.tar.gz
-	sha256sums = 3f759e01b0fa281259876cc1159c132d2d5af4ea2b02c0fe77aaa4193fe76d3d
+	source = kibot-1.9.0.tar.gz::https://files.pythonhosted.org/packages/source/k/kibot/kibot-1.9.0.tar.gz
+	sha256sums = e87285d36bb8c55d71ba3343976c700e710df5b0c0eed7a829b8577f0fd3d940
 
 pkgname = kibot
