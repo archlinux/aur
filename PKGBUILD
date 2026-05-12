@@ -1,5 +1,5 @@
 # Maintainer: M1829 <m1829js@gmail.com>
-pkgname=mxset
+pkgname=mxset-cpp
 pkgver=1.3.0
 pkgrel=1
 pkgdesc='An optimized hashset in C89, yielding maximum compatibility and great performance.'
