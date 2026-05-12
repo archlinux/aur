@@ -5,7 +5,7 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince-git
-pkgver=r1680.668fc15
+pkgver=r1693.b3db730
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
@@ -41,13 +41,13 @@ build() {
 	. <(sed -n '/^exit_on_error() /,/^}/p' $_installsh)
 	. <(sed -n '/^set_install_vars() /,/^}/p' $_installsh)
 	. <(sed -n '/^compile_translations() /,/^}/p' $_installsh)
-	. <(sed -n '/^compile_libscanmem() /,/^}/p' $_installsh)
-	. <(sed -n '/^install_libscanmem() /,/^}/p' $_installsh)
+	. <(sed -n '/^compile_libmemscan() /,/^}/p' $_installsh)
+	. <(sed -n '/^install_libmemscan() /,/^}/p' $_installsh)
 	. <(sed -n '/^install_libptrscan() /,/^}/p' $_installsh)
 
 	# Execute functions
 	set_install_vars "Arch Linux" || exit_on_error
-	install_libscanmem || exit_on_error
+	install_libmemscan || exit_on_error
 	install_libptrscan || exit_on_error
 	compile_translations || exit_on_error
 }

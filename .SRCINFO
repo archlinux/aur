@@ -1,6 +1,6 @@
 pkgbase = pince-git
 	pkgdesc = A Linux reverse engineering tool inspired by Cheat Engine.
-	pkgver = r1680.668fc15
+	pkgver = r1693.b3db730
 	pkgrel = 1
 	url = https://github.com/korcankaraokcu/PINCE
 	arch = any
