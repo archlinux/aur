@@ -3,7 +3,7 @@
 set -euo pipefail
 
 token_arg=()
-if [[ -n "$GITHUB_TOKEN" ]]; then
+if [[ -n "${GITHUB_TOKEN:-}" ]]; then
     token_arg=(-H "Authorization: Bearer $GITHUB_TOKEN")
 fi
 
