@@ -1,12 +1,22 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
-pkgname=python-copier-templates-extensions
+pkgname=python-copier-template-extensions
 pkgdesc='Jinja2 extension for Copier to use relative file paths'
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 url='https://github.com/copier-org/copier-template-extensions'
 license=('ISC')
 arch=('any')
+
+conflicts=(
+  'python-copier-templates-extensions'
+)
+replaces=(
+  'python-copier-templates-extensions'
+)
+provides=(
+  "python-copier-templates-extensions=$pkgver"
+)
 
 depends=(
   'python-copier'
