@@ -1,6 +1,6 @@
 # Maintainer: Ayush Singh <ayush@beagleboard.org>
 pkgname=bb-imager-cli
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Tool for creating and flashing BeagleBoard OS images"
 arch=('x86_64')
@@ -11,9 +11,22 @@ depends=('xz' 'hidapi' 'libusb' 'glibc' 'libgcc')
 makedepends=('rust' 'cpio')
 
 source=("bb-imager-cli-$pkgver::https://github.com/beagleboard/bb-imager-rs/archive/refs/tags/$pkgver.tar.gz"
-        "bb-imager-cli-vendor-$pkgver::https://github.com/beagleboard/bb-imager-rs/releases/download/$pkgver/cargo-vendor.tar.gz")
-sha256sums=('afe90111a72ebaed2b77a63359cbed6ccd1bdfdf1cdcce1e020673cdf3f8d503'
-            'e8385999c28af2301fc1f3c8a5475df529f46a4512589a819a08c21650834f4f')
+        "bb-imager-cli-vendor-$pkgver::https://github.com/beagleboard/bb-imager-rs/releases/download/$pkgver/cargo-vendor.tar.zst")
+sha256sums=('1fc64ed93328d5b96da92fb2a33502f4b2430be684bdf2205c1b3143ed281b22'
+            '620944b6fe79bc8927c1d3ba3e5015f69ee78fe3a3369a603e9ecbe98be078e9')
+
+prepare() {
+        cd "bb-imager-rs-$pkgver"
+
+        mkdir -p .cargo
+        cat > .cargo/config.toml <<EOF
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "${srcdir}/vendor"
+EOF
+}
 
 build() {
         cd "bb-imager-rs-$pkgver"
