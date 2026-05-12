@@ -1,0 +1,5 @@
+[yappers-bin]
+source = "github"
+github = "DeprecatedLuar/yappers-of-linux"
+use_latest_release = true
+prefix = "v"
