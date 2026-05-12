@@ -1,25 +1,49 @@
-# Maintainer: Gentleman Programming <info@gentlemanprogramming.dev>
-# Contributor: Gabriel Fagundez <gabrielfagundeznievas@gmail.com>
+# Maintainer: Guiradev <aur.evacuate190@passinbox.com>
+# Contributor: Gentleman Programming <info@gentlemanprogramming.dev>
 
 pkgname=gentle-ai
-pkgver=1.14.2
+pkgver=1.26.5
 pkgrel=1
-pkgdesc="AI Gentle Stack - Ecosystem configurator for AI coding agents"
+pkgdesc="CLI tool to manage and configure AI coding agents ecosystems"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Gentleman-Programming/gentle-ai"
 license=('MIT')
-provides=('gentle-ai')
-conflicts=('gentle-ai')
+depends=('glibc')
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('92c5f1e8a8f0610bb351f8120c7bed57c28c6255ffcd10e6d1fa7726a006c4a3')
 
-source=("LICENSE")
-source_x86_64=("gentle-ai_1.14.2_linux_amd64.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/releases/download/v1.14.2/gentle-ai_1.14.2_linux_amd64.tar.gz")
-source_aarch64=("gentle-ai_1.14.2_linux_arm64.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/releases/download/v1.14.2/gentle-ai_1.14.2_linux_arm64.tar.gz")
+prepare() {
+  # Entramos en la carpeta que acabas de ver con 'ls'
+  cd "${pkgname}-${pkgver}"
 
-sha256sums=('19b104292ae35263824a05a795fe9f7cf04b408bf9a77603e9a165802434d4a4')
-sha256sums_x86_64=('2eb619f4d001bb49a71ddb53f3cbca22592cdf47b4eece189ce1237cbe52b426')
-sha256sums_aarch64=('74c036d64e104c57f3dd6808f1e831f370211480a575b3d451ebc94b9e30db58')
+  # Descargamos dependencias aquí para que el chroot no necesite red en build()
+  go mod download
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+
+  # Flags de optimización y seguridad estándar de Arch
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+  # Inyectamos la versión para que 'gentle-ai --version' no devuelva null
+  local _ldflags="-X main.version=v${pkgver} -linkmode=external"
+
+  # Compilamos. El binario se guardará en la carpeta 'build/' dentro de 'src/gentle-ai-1.26.5/'
+  go build -v -o build/gentle-ai -ldflags "$_ldflags" ./cmd/gentle-ai
+}
 
 package() {
-  install -Dm755 gentle-ai "${pkgdir}/usr/bin/gentle-ai"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/gentle-ai/LICENSE"
+  cd "${pkgname}-${pkgver}"
+
+  # 1. Instalamos el binario
+  install -Dm755 build/gentle-ai "${pkgdir}/usr/bin/gentle-ai"
+
+  # 2. Instalamos la licencia (obligatorio para MIT en Arch)
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

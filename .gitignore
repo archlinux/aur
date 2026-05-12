@@ -11,6 +11,7 @@ go/
 .opencode/
 *.log
 .engram_cache/
+.atl/
 *.md
 
 # System / HyDE
