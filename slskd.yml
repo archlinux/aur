@@ -23,6 +23,25 @@ web:
 #   directories:
 #     - /path/to/music
 
+# Mesh/DHT rendezvous defaults are enabled in slskdN. Forward 50305/tcp and
+# 50305/udp when exposing mesh publicly. If a VPN rewrites public ports, set
+# advertised_overlay_port manually or use vpn_port_sync after enabling the VPN
+# integration.
+# dht:
+#   enabled: true
+#   lan_only: false
+#   overlay_port: 50305
+#   advertised_overlay_port: 0
+#   vpn_port_sync: disabled
+#   dht_port: 50305
+
+# integrations:
+#   vpn:
+#     enabled: false
+#     port_forwarding: false
+#     gluetun:
+#       url: http://127.0.0.1:8010
+
 # Logging
 # serilog:
 #   minimum_level: Information

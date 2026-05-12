@@ -2,7 +2,7 @@
 # slskdn - Unofficial slskd fork with batteries-included Soulseek features (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=2026050720.slskdn.233
+pkgver=2026051217.slskdn.240
 pkgrel=6
 _archive_root="slskdN-${pkgver//.slskdn/-slskdn}"
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
@@ -29,7 +29,7 @@ source=(
     "slskd.tmpfiles"
 )
 # Note: First hash is SKIP (tarball changes each release), others are static file hashes
-sha256sums=('SKIP' '123cb6af52ee33d04f308751929f662c1437221937eeca9a896a60f746074177' '6d60a8a8ec79b1df0f5839e9a5ba8a77a021cc457fa138a62b58f4321b3a16df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056' '949f950aeb0f24725c901ed9d73a4f679ae8eb4abdfaf108b80e62e6247b85e5')
+sha256sums=('SKIP' '123cb6af52ee33d04f308751929f662c1437221937eeca9a896a60f746074177' '4e5d4be130945d26fca280da86456926be3fb7631c42df9ac505051fc3ca4de6' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056' '949f950aeb0f24725c901ed9d73a4f679ae8eb4abdfaf108b80e62e6247b85e5')
 
 build() {
     cd "${srcdir}/${_archive_root}"
@@ -69,6 +69,16 @@ build() {
         -p:InformationalVersion="$_version" \
         -p:PackageVersion="$_dotnet_version" \
         -p:AllowMissingPrunePackageData=true
+
+    dotnet publish src/slskdN.VpnAgent/slskdN-vpn-agent.csproj \
+        -c Release \
+        -o publish-vpn-agent \
+        --self-contained true \
+        -r "${_rid}" \
+        -p:PublishSingleFile=true \
+        -p:Version="$_dotnet_version" \
+        -p:InformationalVersion="$_version" \
+        -p:PackageVersion="$_dotnet_version"
 }
 
 package() {
@@ -101,7 +111,17 @@ EOF
     install -Dm644 "${srcdir}/slskd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
     install -Dm644 "${srcdir}/slskd.yml" "${pkgdir}/etc/${_pkgname}/${_pkgname}.yml"
 
+    install -Dm755 "publish-vpn-agent/slskdN-vpn-agent" "${pkgdir}/usr/bin/slskdN-vpn-agent"
+    install -Dm644 "src/slskdN.VpnAgent/systemd/slskdN-vpn-split.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-split.service"
+    install -Dm644 "src/slskdN.VpnAgent/systemd/slskdN-vpn-ingress.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-ingress.service"
+    install -Dm644 "src/slskdN.VpnAgent/systemd/slskdN-vpn-ingress-renew.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-ingress-renew.service"
+    install -Dm644 "src/slskdN.VpnAgent/systemd/slskdN-vpn-ingress-renew.timer" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-ingress-renew.timer"
+    install -Dm644 "src/slskdN.VpnAgent/systemd/slskdN-vpn-gluetun-compat.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-gluetun-compat.service"
+    install -Dm644 "src/slskdN.VpnAgent/systemd/slskdN-vpn-watchdog.service" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-watchdog.service"
+    install -Dm644 "src/slskdN.VpnAgent/systemd/slskdN-vpn-watchdog.timer" "${pkgdir}/usr/lib/systemd/system/slskdN-vpn-watchdog.timer"
+
     install -dm775 "${pkgdir}/var/lib/${_pkgname}"
     install -dm775 "${pkgdir}/var/lib/${_pkgname}/downloads"
     install -dm775 "${pkgdir}/var/lib/${_pkgname}/incomplete"
+    install -dm755 "${pkgdir}/var/lib/slskdN-vpn"
 }

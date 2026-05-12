@@ -1,6 +1,7 @@
 post_install() {
     systemd-sysusers /usr/lib/sysusers.d/slskd.conf >/dev/null 2>&1 || true
     systemd-tmpfiles --create /usr/lib/tmpfiles.d/slskd.conf >/dev/null 2>&1 || true
+    install -d -m 0755 /var/lib/slskdN-vpn >/dev/null 2>&1 || true
     systemctl daemon-reload >/dev/null 2>&1 || true
 }
 
