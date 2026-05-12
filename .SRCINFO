@@ -1,0 +1,18 @@
+pkgbase = mullvad-tui
+	pkgdesc = Terminal user interface for mullvad-vpn
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/d10n/mullvad-tui
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = protobuf
+	depends = mullvad-vpn
+	options = !lto
+	options = !debug
+	source = mullvad-tui-v0.8.1.tar.gz::https://github.com/d10n/mullvad-tui/archive/refs/tags/v0.8.1.tar.gz
+	source = mullvadvpn-app-47ef04e6afa863316c2e4f4e37cd6395758bf26f.tar.gz::https://github.com/mullvad/mullvadvpn-app/archive/47ef04e6afa863316c2e4f4e37cd6395758bf26f.tar.gz
+	sha256sums = 06e13b9d93287483f4a54cbc7a724dddbdbc1f526da539f35bd20e7221fd29d0
+	sha256sums = fc7836c51415e112fd93fef160a4abe44ff99eb1cb2bf23a6b7a8124ed29151f
+
+pkgname = mullvad-tui
