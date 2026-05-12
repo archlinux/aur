@@ -2,8 +2,8 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r46094
-pkgrel=2
+pkgver=r46106
+pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
@@ -67,7 +67,7 @@ pkgver() {
 build() {
 	cd "${pkgname}/vice"
 	./autogen.sh 
-    	./configure --prefix=/usr --libdir=/usr/lib --enable-gtk3ui --disable-pdf-docs --enable-ethernet --with-libcurl --with-mpg123
+    	./configure --prefix=/usr --libdir=/usr/lib --enable-gtk3ui --enable-pdf-docs --enable-ethernet --with-libcurl --with-mpg123
 	make
 }
 
