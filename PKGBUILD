@@ -8,7 +8,7 @@ pkgdesc="Fast and highly configurable image viewer with a simple and nice interf
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
-conflicts=('photoqt-bin' 'photoqt-bin-debug' 'photoqt-extensions-bin')
+conflicts=('photoqt-bin' 'photoqt-bin-debug')
 provides=('photoqt-debug')
 depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'mpv' 'resvg>=0.43.0' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2' 'openmp' 'yaml-cpp' 'qca-qt6' 'ffmpegthumbnailer')
 optdepends=('photoqt-extensions: Official extensions for PhotoQt')
