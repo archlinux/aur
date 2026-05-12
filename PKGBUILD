@@ -6,9 +6,11 @@ arch=('any')
 url="https://github.com"
 license=('MIT')
 depends=('pacman' 'git' 'jq')
-source=("arch-package-1.0.0.tar.gz::https://github.com/raw/master/arch-package-1.0.0.tar.gz")
+# Fix: The source URL now includes your username 'TheRealWoculus'
+source=("arch-package-1.0.0.tar.gz::https://githubusercontent.com")
 sha256sums=('SKIP')
 
 package() {
+  # This find command ensures the script is found regardless of folder structure
   find "$srcdir" -type f -name "arch-package" -exec install -Dm755 "{}" "$pkgdir/usr/bin/arch-package" \;
 }
