@@ -1,6 +1,6 @@
 pkgbase = andcli
 	pkgdesc = A 2FA TUI for your shell
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/tjblackheart/andcli
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = andcli
 	depends = glibc
 	options = strip
 	options = buildflags
-	source = https://github.com/tjblackheart/andcli/archive/refs/tags/v2.6.1/andcli-2.6.1.tar.gz
-	sha256sums = fdde2688c2372a8ec566929f04765fff36f820353ea28aeb7138adb73f63798b
+	source = https://github.com/tjblackheart/andcli/archive/refs/tags/v2.6.2/andcli-2.6.2.tar.gz
+	sha256sums = 4f2b44cba5e88ace6befd7d9d15157c4ff785840331c107d024180bbce37fd0b
 
 pkgname = andcli
