@@ -11,7 +11,6 @@ url="https://github.com/cublueer/pvz-hybrid"
 license=('custom')
 options=(!debug)
 depends=('glibc')
-optdepends=('pciutils: 多显卡自动检测 (lspci)')
 install=pvz-hybrid-bin.install
 
 _base_url="https://github.com/cublueer/pvz-hybrid/releases/download/v${pkgver}"

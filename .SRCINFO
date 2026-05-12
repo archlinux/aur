@@ -10,7 +10,6 @@ pkgbase = pvz-hybrid-bin
 	arch = armv7h
 	license = custom
 	depends = glibc
-	optdepends = pciutils: 多显卡自动检测 (lspci)
 	options = !debug
 	source_x86_64 = https://github.com/cublueer/pvz-hybrid/releases/download/v0.20.0/pvz-hybrid_0.20.0_amd64.deb
 	sha256sums_x86_64 = 21a32f86b1d244de6e6b2205ad07c5542caeecbbb4d65585f8dc40b038d2ef9b
