@@ -1,6 +1,6 @@
 pkgbase = perry
 	pkgdesc = Native TypeScript compiler that compiles TypeScript to native executables
-	pkgver = 0.5.585
+	pkgver = 0.5.825
 	pkgrel = 1
 	url = https://github.com/PerryTS/perry
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = perry
 	depends = xz
 	depends = bzip2
 	options = !lto
-	source = perry-0.5.585.tar.gz::https://github.com/PerryTS/perry/archive/refs/tags/v0.5.585.tar.gz
-	sha256sums = 59e3126d81a4a9e99e436e7e219b0652bd920cc20b02dd1073566c401b39a31a
+	source = perry-0.5.825.tar.gz::https://github.com/PerryTS/perry/archive/refs/tags/v0.5.825.tar.gz
+	sha256sums = ee408f54cde3bcebc598923f27cb625dc5495d95342a49b4bb0aa9b0a783efa2
 
 pkgname = perry
