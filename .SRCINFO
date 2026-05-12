@@ -1,6 +1,6 @@
 pkgbase = nexttrace-bin
 	pkgdesc = An open source visual route tracking CLI tool
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/nxtrace/NTrace-core
 	install = nexttrace.install
@@ -8,7 +8,7 @@ pkgbase = nexttrace-bin
 	license = GPL-3.0-only
 	provides = nexttrace
 	conflicts = nexttrace
-	source = nexttrace-bin-1.6.4::https://github.com/nxtrace/NTrace-core/releases/download/v1.6.4/nexttrace_linux_amd64
-	sha256sums = 3d9d68558e27f77159a654ba13ede60bb7d7b3b0109e34e2773d2238470480c4
+	source = nexttrace-bin-1.6.5::https://github.com/nxtrace/NTrace-core/releases/download/v1.6.5/nexttrace_linux_amd64
+	sha256sums = 32e4b43ba72709d8cb16585194315cf316d376cbd14013c58cece90d3764e090
 
 pkgname = nexttrace-bin
