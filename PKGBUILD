@@ -48,10 +48,10 @@ optdepends=(
     'hunspell-ru: For Russian spell checking'
     'hunspell-sk: For Slovak spell checking'
 )
-conflicts=('comm-tac-writer')
-provides=('comm-tac-writer')
-replaces=('comm-tac-writer')
-pkgver=1.4.3.6
+#conflicts=
+#provides=
+#replaces=
+pkgver=1.4.4
 pkgrel=1
 epoch=1
 arch=('any')
