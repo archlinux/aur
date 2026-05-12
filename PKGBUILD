@@ -3,35 +3,21 @@
 pkgname=solara-kernel
 pkgver=7.0.6
 pkgrel=1
-pkgdesc="High-performance Linux kernel with ZEN, BORE, CachyOS patches, Clang/LLVM optimizations and gaming-focused low-latency tweaks"
+pkgdesc="High-performance Linux kernel with ZEN + PRJC (CachyOS) patches and LLVM optimizations"
 arch=('x86_64')
 url="https://github.com/celestia-foundation/solara"
 license=('GPL2')
 
 keywords=(
-  'linux'
-  'kernel'
-  'zen'
-  'bore'
-  'sched'
-  'cachyos'
-  'performance'
-  'gaming'
-  'lowlatency'
-  'clang'
-  'llvm'
-  'custom-kernel'
-  'optimized'
-  'tuned'
-  'solara'
+  'linux' 'kernel' 'zen' 'prjc' 'sched'
+  'cachyos' 'performance' 'gaming'
+  'lowlatency' 'clang' 'llvm' 'solara'
 )
 
 provides=(
   "linux=${pkgver}"
   "linux-zen"
   "linux-cachyos"
-  "linux-bore"
-  "linux-gaming"
   "linux-performance"
 )
 
@@ -39,8 +25,6 @@ conflicts=(
   "linux"
   "linux-zen"
   "linux-cachyos"
-  "linux-bore"
-  "linux-gaming"
   "linux-performance"
 )
 
@@ -48,8 +32,6 @@ replaces=(
   "linux"
   "linux-zen"
   "linux-cachyos"
-  "linux-bore"
-  "linux-gaming"
   "linux-performance"
 )
 
@@ -66,15 +48,23 @@ makedepends=(
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-${pkgver}.tar.xz"
   "https://github.com/zen-kernel/zen-kernel/releases/download/v${pkgver}-zen1/linux-v${pkgver}-zen1.patch.zst"
-  "https://raw.githubusercontent.com/CachyOS/kernel-patches/master/7.0/sched/0001-bore-cachy.patch"
+  "https://raw.githubusercontent.com/CachyOS/kernel-patches/master/7.0/sched/0001-prjc-cachy.patch"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     cd "${srcdir}/linux-${pkgver}"
+
+    # Apply Zen patch
     zstd -d -c "${srcdir}/linux-v${pkgver}-zen1.patch.zst" | patch -p1
-    patch -Np1 -i "${srcdir}/0001-bore-cachy.patch"
+
+    # Apply PRJC (CachyOS) scheduler patch
+    patch -Np1 -i "${srcdir}/0001-prjc-cachy.patch"
+
+    # Default config
     make x86_64_defconfig
+
+    # Branding
     sed -i 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-solara"/' .config
     sed -i 's/CONFIG_DEFAULT_HOSTNAME=.*/CONFIG_DEFAULT_HOSTNAME="solara"/' .config
 }
