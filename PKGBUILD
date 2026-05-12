@@ -2,10 +2,10 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="b64url"
-_cratever="0.1.1"
+_cratever="0.1.2"
 pkgname="b64url"
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='Command line URL-safe Base-64 encoder/decoder'
 url='https://crates.io/crates/b64url'
 license=('MIT')
@@ -13,8 +13,8 @@ license=('MIT')
 depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/b64url/0.1.1/download")
-sha512sums=('0c8749474cd23766744f1df72b5a17f20a170e9eac1b3663f91a7e3bf20760f5f36e08bd0fa859edc368cd01d949fd669abd927c109f276c11b801719afad94b')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/b64url/0.1.2/download")
+sha512sums=('a052dacd578bda936dcb7b69d11fa7afa99f364f3ed8bd2b587fb38c763abaf98c2ac0b713ca8476e20e648b2f6a44be6ae3e2988f8df54098b8c14fd69c5485')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
