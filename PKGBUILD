@@ -1,59 +1,94 @@
 # Maintainer: Celestia Ludenberg <ash8820@proton.me>
 
 pkgname=solara-kernel
-pkgver=7.0.5
+pkgver=7.0.6
 pkgrel=1
-pkgdesc="Solara Linux Kernel - Compiled from Linux ZEN kernel source"
+pkgdesc="High-performance Linux kernel with ZEN, BORE, CachyOS patches, Clang/LLVM optimizations and gaming-focused low-latency tweaks"
 arch=('x86_64')
 url="https://github.com/celestia-foundation/solara"
-keywords=('kernel' 'linux' 'zen' 'solara' 'solara-linux')
 license=('GPL2')
-depends=('coreutils' 'kmod' 'initramfs')
-optdepends=('wireless-regdb' 'linux-firmware' 'modprobed-db' 'scx-sched')
+
+keywords=(
+  'linux'
+  'kernel'
+  'zen'
+  'bore'
+  'sched'
+  'cachyos'
+  'performance'
+  'gaming'
+  'lowlatency'
+  'clang'
+  'llvm'
+  'custom-kernel'
+  'optimized'
+  'tuned'
+  'solara'
+)
+
+provides=(
+  "linux=${pkgver}"
+  "linux-zen"
+  "linux-cachyos"
+  "linux-bore"
+  "linux-gaming"
+  "linux-performance"
+)
+
+conflicts=(
+  "linux"
+  "linux-zen"
+  "linux-cachyos"
+  "linux-bore"
+  "linux-gaming"
+  "linux-performance"
+)
+
+replaces=(
+  "linux"
+  "linux-zen"
+  "linux-cachyos"
+  "linux-bore"
+  "linux-gaming"
+  "linux-performance"
+)
+
 depends=('coreutils' 'kmod' 'initramfs' 'zstd')
 optdepends=('wireless-regdb' 'linux-firmware' 'modprobed-db' 'scx-sched')
-makedepends=('xz' 'bc' 'rsync' 'libelf' 'openssl' 'python' 'tar' 'gcc' 'make' 'patch' 'diffutils' 'git' 'curl' 'flex' 'bison' 'elfutils' 'inetutils' 'clang' 'lld' 'llvm')
 
-source=("https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.5.tar.xz"
-        "https://github.com/zen-kernel/zen-kernel/releases/download/v7.0.5-zen1/linux-v7.0.5-zen1.patch.zst")
-sha256sums=('SKIP' 'SKIP')
+makedepends=(
+  'xz' 'bc' 'rsync' 'libelf' 'openssl' 'python' 'tar'
+  'gcc' 'make' 'patch' 'diffutils' 'git' 'curl'
+  'flex' 'bison' 'elfutils' 'inetutils'
+  'clang' 'lld' 'llvm'
+)
+
+source=(
+  "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-${pkgver}.tar.xz"
+  "https://github.com/zen-kernel/zen-kernel/releases/download/v${pkgver}-zen1/linux-v${pkgver}-zen1.patch.zst"
+  "https://raw.githubusercontent.com/CachyOS/kernel-patches/master/7.0/sched/0001-bore-cachy.patch"
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-    cd linux-7.0.5
-    
-    # Check for .patch file (makepkg may have extracted .zst already)
-    for patch in "${srcdir}"/*.patch; do
-        [ -f "$patch" ] && patch -p1 -N < "$patch" || true
-    done
-    
-    # Fallback: if no .patch, try decompressing .zst
-    if [ ! -f "${srcdir}"/*.patch ] && [ -f "${srcdir}/linux-v7.0.5-zen1.patch.zst" ]; then
-        zstd -d "${srcdir}/linux-v7.0.5-zen1.patch.zst" -o "${srcdir}/linux-v7.0.5-zen1.patch" -f
-        for patch in "${srcdir}"/*.patch; do
-            [ -f "$patch" ] && patch -p1 -N < "$patch" || true
-        done
-    fi
-    
+    cd "${srcdir}/linux-${pkgver}"
+    zstd -d -c "${srcdir}/linux-v${pkgver}-zen1.patch.zst" | patch -p1
+    patch -Np1 -i "${srcdir}/0001-bore-cachy.patch"
     make x86_64_defconfig
-    sed -i 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-solara"/g' .config
-    sed -i 's/CONFIG_DEFAULT_HOSTNAME=.*/CONFIG_DEFAULT_HOSTNAME="solara"/g' .config
+    sed -i 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-solara"/' .config
+    sed -i 's/CONFIG_DEFAULT_HOSTNAME=.*/CONFIG_DEFAULT_HOSTNAME="solara"/' .config
 }
 
 build() {
-    cd linux-7.0.5
-    make -j$(nproc) CC=clang LLVM=1 bzImage
-    make -j$(nproc) CC=clang LLVM=1 modules
+    cd "${srcdir}/linux-${pkgver}"
+    make -j"$(nproc)" CC=clang LLVM=1 bzImage
+    make -j"$(nproc)" CC=clang LLVM=1 modules
 }
 
 package() {
-    cd linux-7.0.5
-    
-    KERNELRELEASE=$(make -s kernelrelease)
-    
+    cd "${srcdir}/linux-${pkgver}"
     make modules_install INSTALL_MOD_PATH="${pkgdir}/usr"
-    
     install -Dm644 arch/x86_64/boot/bzImage "${pkgdir}/boot/vmlinuz-solara"
-    
     install -Dm644 .config "${pkgdir}/boot/config-solara"
     install -Dm644 System.map "${pkgdir}/boot/System.map-solara"
 }
