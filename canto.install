@@ -4,6 +4,8 @@ post_install() {
     echo ""
     echo "    canto [book.epub]"
     echo ""
+    echo "  TTS model (~305 MB) is bundled — no first-run download needed."
+    echo ""
 }
 
 post_upgrade() {

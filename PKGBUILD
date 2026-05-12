@@ -1,12 +1,12 @@
 # Maintainer: lucilf3r <ahmedalnanga@gmail.com>
 pkgname=canto-git
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="EPUB reader with offline TTS and Spotify-style lyrics view"
 arch=('any')
 url="https://github.com/lucilf3r/canto"
 license=('MIT')
-depends=('python' 'pyside6' 'python-numpy' 'python-pillow'
+depends=('python' 'pyside6' 'python-numpy'
          'python-beautifulsoup4' 'python-lxml' 'fontconfig')
 makedepends=('git' 'python-pip')
 optdepends=('xdg-utils: open with support')
@@ -27,20 +27,15 @@ prepare() {
     cd "$pkgname"
     python -m venv --system-site-packages .venv
     .venv/bin/pip install --quiet \
-        kokoro-onnx \
+        supertonic \
         ebooklib \
-        sounddevice \
-        onnxruntime
+        sounddevice
 
-    mkdir -p models
-    if [ ! -f models/kokoro-v0_19.onnx ]; then
-        wget -q -O models/kokoro-v0_19.onnx \
-            "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/kokoro-v0_19.onnx"
-    fi
-    if [ ! -f models/voices.bin ]; then
-        wget -q -O models/voices.bin \
-            "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files/voices.bin"
-    fi
+    .venv/bin/python -c "
+from supertonic import TTS
+import pathlib
+TTS(auto_download=True, model_dir=pathlib.Path('models/supertonic-3'))
+"
 }
 
 package() {
