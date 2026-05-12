@@ -1,7 +1,7 @@
 # Maintainer: Fabio Ferreira <fabio86ferreira@gmail.com>
 
 pkgname=vtrim
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Millisecond-precision desktop video trimmer (Qt 6 + FFmpeg)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 # only used here, to avoid colliding with extra/video-trimmer). The GitHub
 # tag is `v$pkgver`; the tarball it ships extracts as `video-trimmer-$pkgver/`.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a1cdfb86af8213ee95666ae25e3178ba526758118caea63349e153bdf20b0f6')
+sha256sums=('e326527d1d7430e4ffc29cc01a7e9a0281b79c2da917592dd5d026188ae71070')
 
 _srcdir="video-trimmer-$pkgver"
 

@@ -1,6 +1,6 @@
 pkgbase = vtrim
 	pkgdesc = Millisecond-precision desktop video trimmer (Qt 6 + FFmpeg)
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/fabioferreira3/video-trimmer
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vtrim
 	depends = qt6-multimedia-ffmpeg
 	depends = ffmpeg
 	depends = hicolor-icon-theme
-	source = vtrim-0.1.1.tar.gz::https://github.com/fabioferreira3/video-trimmer/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 3a1cdfb86af8213ee95666ae25e3178ba526758118caea63349e153bdf20b0f6
+	source = vtrim-0.2.0.tar.gz::https://github.com/fabioferreira3/video-trimmer/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = e326527d1d7430e4ffc29cc01a7e9a0281b79c2da917592dd5d026188ae71070
 
 pkgname = vtrim
