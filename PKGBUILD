@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/TheRealWoculus/arch-package"
 license=('MIT')
 depends=('pacman' 'git' 'jq')
-source=("arch-package-1.0.0.tar.gz")
+source=("https://github.com")
 sha256sums=('SKIP')
 
 package() {

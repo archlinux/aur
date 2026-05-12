@@ -8,7 +8,7 @@ pkgbase = arch-package
 	depends = pacman
 	depends = git
 	depends = jq
-	source = arch-package-1.0.0.tar.gz
+	source = https://github.com
 	sha256sums = SKIP
 
 pkgname = arch-package
