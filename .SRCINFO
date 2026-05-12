@@ -1,0 +1,21 @@
+pkgbase = mark-preview-git
+	pkgdesc = Simple Markdown viewer with GFM + KaTeX + Mermaid + highlight.js, built with wxWidgets and cmark-gfm
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/komagata/mark-preview
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	makedepends = curl
+	makedepends = pkgconf
+	depends = wxwidgets-gtk3
+	depends = webkit2gtk-4.1
+	depends = cmark-gfm
+	provides = mark-preview
+	conflicts = mark-preview
+	source = mark-preview::git+https://github.com/komagata/mark-preview.git
+	sha256sums = SKIP
+
+pkgname = mark-preview-git
