@@ -1,0 +1,5 @@
+[monogit-bin]
+source = "github"
+github = "JoaoOliveira889/monogit"
+use_latest_release = true
+prefix = "v"
