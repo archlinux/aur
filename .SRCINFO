@@ -1,7 +1,7 @@
 pkgbase = gotouch
 	pkgdesc = Language Agnostic Customizable Boilerplate Project Creator
-	pkgver = 1.16.2
-	pkgrel = 3
+	pkgver = 1.17.0
+	pkgrel = 1
 	url = https://github.com/denizgursoy/gotouch
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = gotouch
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/denizgursoy/gotouch.git#tag=v1.16.2
+	source = git+https://github.com/denizgursoy/gotouch.git#tag=v1.17.0
 	sha256sums = SKIP
 
 pkgname = gotouch
