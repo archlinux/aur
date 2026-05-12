@@ -7,11 +7,13 @@ url="https://github.com/emomaxd/hpfand"
 license=('GPL-2.0-only')
 depends=('dkms')
 source=(
-    "hp-wmi.c::https://raw.githubusercontent.com/emomaxd/linux/hp-wmi-fixes/drivers/platform/x86/hp/hp-wmi.c"
+    "hp-wmi.c::https://raw.githubusercontent.com/emomaxd/linux/hp-wmi-victus-fan-v4/drivers/platform/x86/hp/hp-wmi.c"
     "dkms.conf"
     "Makefile"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('b78469d1ebe5ce82f64a8998f80b1b0480918412c4bf80171e6b7ff78653eb0f'
+            '73adb7825484ada78d4631e4faaef035104c0d458e31743b507207e14022479b'
+            '27590eeaeace6a376fbf25690752b9e8a775843218126ffaf236ba6d669eef69')
 
 package() {
     local srcdir_dkms="$pkgdir/usr/src/$pkgname-$pkgver"
