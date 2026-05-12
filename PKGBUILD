@@ -1,6 +1,6 @@
 pkgname=hpfand
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fan curve daemon for HP Victus/Omen laptops"
 arch=('any')
 url="https://github.com/emomaxd/hpfand"
@@ -19,7 +19,12 @@ post_install() {
 }
 
 post_upgrade() {
-    post_install
+    systemctl daemon-reload
+    systemctl try-restart hpfand 2>/dev/null || true
+}
+
+pre_remove() {
+    systemctl disable --now hpfand 2>/dev/null || true
 }
 
 package() {

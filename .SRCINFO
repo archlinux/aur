@@ -1,7 +1,7 @@
 pkgbase = hpfand
 	pkgdesc = Fan curve daemon for HP Victus/Omen laptops
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/emomaxd/hpfand
 	arch = any
 	license = GPL-2.0-only
