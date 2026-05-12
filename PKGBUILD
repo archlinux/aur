@@ -20,7 +20,8 @@ prepare() {
 
 build() {
     cd $srcdir/wsjt-z-$pkgver
-    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release $srcdir/wsjt-z-$pkgver \
+    mkdir build && cd build
+    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .. \
           -DCMAKE_Fortran_FLAGS="-std=legacy -fallow-argument-mismatch" \
           -DCMAKE_CXX_FLAGS="-Wno-error -Wno-maybe-uninitialized" \
           -DCMAKE_C_FLAGS="-Wno-error -Wno-maybe-uninitialized"
