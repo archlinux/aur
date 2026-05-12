@@ -3,7 +3,7 @@
 pkgbase=python-ext4
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Library for read only interactions with an ext4 filesystem"
 arch=('i686' 'x86_64')
@@ -21,9 +21,9 @@ checkdepends=('python-cachetools'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v${pkgver}/test.py"
         "test-images.tar.gz")
-sha256sums=('c89a3774ad7e8a3f604347cf41a63e71ef76e824315253e9b7e5bad5ac71aedd'
-            '8943ffa62b1b1b7cb9cbff7f3cb6f3489de853fea9170fd5b62645c2944fb75f'
-            'SKIP')
+sha256sums=('9e48bbea4d705b3237b5d32a83cc8496bd893a2f29b9a721a4cec94b0044ac23'
+            '05bad98bf8ad3eeb7e23abfad68cca7dc3c54352155457d11d113b99edb76bd4'
+            '6f93cb7c46b663866d7f90209e0993aa2503ff0258f92bfde4f1d7864090cf02')
 
 prepare() {
     cd ${srcdir}
