@@ -1,7 +1,15 @@
 # Maintainer: zoltix <lli@lli.be>
+# Contributor: Vamp898 <vamp898-aur@ikaros.space>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
+# Contributor: Anthony Wang <a at exozy dot me>
+# Contributor: ny-a <nyaarch64 at gmail dot com>
+# Contributor: Daniel Moch <daniel@danielmoch.com>
+# Contributor: Jean Lucas <jean@4ray.co>
+# Contributor: Fredrick Brennan <copypaste@kittens.ph>
+
 pkgname=mastodon
 pkgver=4.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
 url=https://github.com/mastodon/mastodon
