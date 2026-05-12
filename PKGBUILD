@@ -24,12 +24,13 @@ optdepends=(
 )
 makedepends=(
     'meson'
+    'meson-python'
     'python-build'
     'python-installer'
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ch3w3y/tuxbellum/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e7b94eaaf4db2a281130093a12c0beff141f1059b0e556f58ebf732e1ec7b755')
+sha256sums=('048b692f4e083a31cae20bd66c0daf392ad516d9222423cba9a45fa754250be0')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

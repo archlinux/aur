@@ -6,6 +6,7 @@ pkgbase = tuxbellum
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = meson
+	makedepends = meson-python
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -21,6 +22,6 @@ pkgbase = tuxbellum
 	optdepends = mangohud: performance overlay
 	optdepends = mesa-utils: GPU detection via glxinfo
 	source = tuxbellum-3.0.1.tar.gz::https://github.com/Ch3w3y/tuxbellum/releases/download/v3.0.1/tuxbellum-3.0.1.tar.gz
-	sha256sums = e7b94eaaf4db2a281130093a12c0beff141f1059b0e556f58ebf732e1ec7b755
+	sha256sums = 048b692f4e083a31cae20bd66c0daf392ad516d9222423cba9a45fa754250be0
 
 pkgname = tuxbellum
