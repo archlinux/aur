@@ -5,9 +5,9 @@ _pkgname=perry
 pkgname=${_pkgname}-bin
 pkgdesc="Compiles TypeScript directly to executables using SWC and Cranelift"
 
-pkgver=0.5.887
+pkgver=0.5.875
 pkgrel=1
-_pkgvername=v${pkgver}
+_pkgvername=v0.5.887
 
 arch=('x86_64' 'aarch64')
 _barch=('linux-x86_64' 'linux-aarch64')
