@@ -10,8 +10,14 @@ arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/cublueer/pvz-hybrid"
 license=('custom')
 options=(!debug)
-depends=('glibc' 'libgl' 'libx11' 'libxcb' 'fontconfig' 'freetype2' 'vulkan-icd-loader')
-optdepends=('wayland: 原生 Wayland 支持' 'pciutils: 多显卡自动检测 (lspci)')
+depends=('glibc')
+optdepends=('wayland: 原生 Wayland 支持'
+            'pciutils: 多显卡自动检测 (lspci)'
+            'libgl: OpenGL 渲染支持'
+            'libx11: X11 窗口系统支持'
+            'vulkan-icd-loader: Vulkan 渲染支持'
+            'fontconfig: 字体配置支持'
+            'freetype2: 字体渲染支持')
 install=pvz-hybrid-bin.install
 
 _base_url="https://github.com/cublueer/pvz-hybrid/releases/download/v${pkgver}"
