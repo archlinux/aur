@@ -2,13 +2,13 @@
 
 pkgname=ura-git
 _pkgname=ura
-pkgver=r327.2305b7e
+pkgver=r328.2bb705d
 pkgrel=1
 pkgdesc="A highly customizable Wayland compositor driven by Lua"
 url="https://github.com/levinion/ura"
 arch=("any")
 license=("GPLv3")
-depends=("luajit" "wlroots0.19" "spdlog" "libnotify" "abseil-cpp")
+depends=("luajit" "wlroots0.20" "spdlog" "libnotify" "abseil-cpp")
 makedepends=("cmake" "pkgconf" "make" "nlohmann-json" "cxxopts" "cargo" "wget")
 optdepends=("xwayland-satellite" "foot")
 provides=("ura")
