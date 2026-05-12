@@ -1,0 +1,25 @@
+pkgbase = fips
+	pkgdesc = Distributed, decentralized network routing protocol for mesh nodes
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jmcorgan/fips
+	install = fips.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = systemd-resolved: .fips DNS resolution
+	conflicts = fips-git
+	options = !lto
+	backup = etc/fips/fips.yaml
+	backup = etc/fips/hosts
+	backup = etc/fips/fips.nft
+	source = fips-0.3.0.tar.gz::https://github.com/jmcorgan/fips/archive/v0.3.0.tar.gz
+	source = fips.sysusers
+	source = fips.tmpfiles
+	b2sums = 0dbe292c3d1a5fed76714ec2c7b9759d1abd75fa509427712c008423958ec811ac35ceefba1d876e27c76ab1b197566a56d8d2686934b2f92bb39c8f7977e3a9
+	b2sums = 25a0552f3d67d12f48dfd40fe4776ad7c46afeeab76bd2674b48e234db3c145810a24569a8c1a7f4c186eb546f0fae2ebe1550080c0e91d8eb72ba9934c752a6
+	b2sums = 844257cb8e09cd935d0d6345922d0f3ec777411daca20e24175b346a7b3cb95ebce12631a9466c4d94f1588ed8d62d92514ff24025ccfd0efb358e542b454b00
+
+pkgname = fips
