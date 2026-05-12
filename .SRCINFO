@@ -1,6 +1,6 @@
 pkgbase = pypy3-idna
 	pkgdesc = Internationalized Domain Names in Applications
-	pkgver = 3.13
+	pkgver = 3.14
 	pkgrel = 1
 	url = https://github.com/kjd/idna
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pypy3-idna
 	makedepends = pypy3-installer
 	makedepends = pypy3-flit-core
 	depends = pypy3
-	source = idna-3.13.tar.gz::https://github.com/kjd/idna/archive/v3.13.tar.gz
-	sha512sums = 4f3150da05c7968ab0e83412cf473f3256c2be79700a3be72cc2241086809fc467db849bda4d703e7ae2d757c1f4fcd7d322aa2629f8c407fd73f5ad02bff887
+	source = idna-3.14.tar.gz::https://github.com/kjd/idna/archive/v3.14.tar.gz
+	sha512sums = 7210bf69333f98e75bda74784cd0a44036b8c00cee71df308ff12fd0293a3fe9e2dcba66276f917733addb8cba4b06a5de2b3d3d8a9cfc0afd89ec72f81760c3
 
 pkgname = pypy3-idna
