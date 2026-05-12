@@ -39,7 +39,7 @@ conflicts=('speedynote-bin' 'speedynote-git' 'speedynote-src')
 
 # Source from GitHub release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('6583e670a34db5607a16dad97a91a7412c1d252c242eedfc9a542ddef5431b0f')
+sha256sums=('76a622733c431d784f368c575c8f5f2b01540793cbf3695d75e1c11dbdb9dacf')
 
 build() {
     cd "SpeedyNote-${_tagver}"
