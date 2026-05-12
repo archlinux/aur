@@ -10,7 +10,6 @@ provides=('hyprlang-frozen' 'libhyprlang.so')
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hyprlang-hyprland-v0.54.git"
 license=('BSD-3-Clause')
-backup=("usr/share/xdg-desktop-portal/hyprland-portals.conf")
 
 depends=(
   gcc-libs

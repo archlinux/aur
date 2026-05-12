@@ -17,7 +17,6 @@ pkgbase = hyprlang-frozen
 	provides = libhyprlang.so
 	conflicts = hyprlang-git
 	conflicts = hyprlang
-	backup = usr/share/xdg-desktop-portal/hyprland-portals.conf
 	source = hyprlang-frozen::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprlang-hyprland-v0.54.git
 	sha256sums = SKIP
 
