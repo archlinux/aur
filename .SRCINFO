@@ -1,6 +1,6 @@
 pkgbase = glimpse-desktop-bin
 	pkgdesc = Wayland shell, status panel, idle, lock screen, wallpaper, and sunset daemons for the Glimpse ecosystem
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/alex-oleshkevich/glimpse
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = glimpse-desktop-bin
 	conflicts = glimpse-lock
 	conflicts = glimpse-sunset
 	conflicts = glimpse-wallpaper
-	source_x86_64 = glimpse-0.6.0-x86_64.tar.zst::https://github.com/alex-oleshkevich/glimpse/releases/download/v0.6.0/glimpse-0.6.0-x86_64.tar.zst
-	b2sums_x86_64 = 9ca1833aaed63dd07852669a5e92fcf33962721a8b36ebdf56e43c4ed3b51eba7f52a0077b0a326e253c6771f51b251674990b161451ba0c4453fc6fded83019
+	source_x86_64 = glimpse-0.7.1-x86_64.tar.zst::https://github.com/alex-oleshkevich/glimpse/releases/download/v0.7.1/glimpse-0.7.1-x86_64.tar.zst
+	b2sums_x86_64 = e76da93163dd2427c1b54b98d423ad7ecc7ea6032b57538927f091659e6bd66eca9dc1a55810bff7b8fa7187a2083d30d8b95145ed42cc6aaf8c07d03d9715f3
 
 pkgname = glimpse-desktop-bin
