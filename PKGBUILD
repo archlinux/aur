@@ -1,6 +1,6 @@
 # Maintainer: Scott Jones <scottajones@gmail.com>
 pkgname=omarchy-emacs
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="Emacs integration for Omarchy with automatic theme and font syncing"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('emacs-wayland' 'bash')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('81079d06506a0ec900cf82c33380a1de197f29c1a51cbfd4f619aac2b388d3d9')
+sha256sums=('7fa1c7fcb28581361fc8bf66e5d4c3ba9d785741cc42060f206b5d892bdcd72c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -26,6 +26,7 @@ package() {
 
   # Install hooks
   install -Dm755 hooks/font-set "$pkgdir/usr/share/omarchy-emacs/hooks/font-set"
+  install -Dm755 hooks/theme-set "$pkgdir/usr/share/omarchy-emacs/hooks/theme-set"
 
   # Install bin scripts to PATH
   install -Dm755 bin/omarchy-emacs-setup "$pkgdir/usr/bin/omarchy-emacs-setup"
