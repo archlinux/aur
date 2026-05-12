@@ -21,7 +21,7 @@ makedepends=(
   ninja
 )
 
-pkgsrc=$pkgname
+_pkgsrc=$pkgname
 source=("$_pkgsrc::git+$url")
 sha256sums=('SKIP')
 
