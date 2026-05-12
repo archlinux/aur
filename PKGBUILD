@@ -2,7 +2,7 @@
 
 pkgname=terax
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight AI-native terminal emulator (ADE) built with Tauri 2 and React"
 arch=('x86_64')
 url="https://github.com/crynta/terax-ai"
@@ -39,6 +39,16 @@ sha256sums=('d1058492e72cd0f4663b3e2e5ed987255759933e2c6c029bef9a025ebf350740')
 prepare() {
     cd "${srcdir}/terax-ai-${pkgver}"
     export npm_config_cache="${srcdir}/.npm-cache"
+
+    # Tailwind v4 + @tailwindcss/oxide silently drops utility classes when
+    # automatic source detection runs on tmpfs (yay/paru default BUILDDIR).
+    # Force-explicit @source so scanning is filesystem-independent.
+    # See: https://github.com/t8y2/dbx/issues/167
+    if ! grep -q '^@source ' src/styles/globals.css; then
+        sed -i '/^@import "tailwindcss";$/a @source "../**/*.{ts,tsx,js,jsx,html}";' \
+            src/styles/globals.css
+    fi
+
     pnpm install --frozen-lockfile
 }
 
