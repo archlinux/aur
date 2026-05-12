@@ -1,0 +1,39 @@
+post_install() {
+    systemctl daemon-reload
+    cat <<'EOF'
+
+Netskope Client installed.
+
+  1. Enable and start the system daemon:
+       systemctl enable --now stagentd.service
+
+  2. Enroll with your tenant (token + tenant URL from the admin console):
+       sudo /opt/netskope/stagent/stAgentCli enroll <token> <tenant>
+
+  3. Optional: enable the per-user tray UI:
+       systemctl --user enable --now stagentapp.service
+
+The daemon (stAgentSvc) does the actual traffic steering. The tray UI
+links against an old WebKit ABI that has been patched at package time
+to use webkit2gtk-4.1; if the UI crashes, install AUR webkit2gtk
+(the 4.0 build) and rebuild this package with the patchelf swap
+disabled, then file an issue.
+
+EOF
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    if systemctl is-active --quiet stagentd.service; then
+        systemctl try-restart stagentd.service
+    fi
+}
+
+pre_remove() {
+    systemctl --quiet disable --now stagentd.service 2>/dev/null || true
+    systemctl --global --quiet disable stagentapp.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+}

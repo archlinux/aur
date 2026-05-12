@@ -1,0 +1,11 @@
+# Vendor binary — must never be committed
+STAgent_amd64.deb
+STAgent.run
+STAgent_x86_64.rpm
+
+# makepkg build artefacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log

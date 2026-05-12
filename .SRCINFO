@@ -1,0 +1,23 @@
+pkgbase = netskope-client-bin
+	pkgdesc = Netskope Client (NSClient) endpoint agent for SASE/SWG
+	pkgver = 135.1.4.2595
+	pkgrel = 1
+	url = https://www.netskope.com/
+	install = netskope-client-bin.install
+	arch = x86_64
+	license = LicenseRef-Netskope-EULA
+	makedepends = patchelf
+	depends = nss
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	provides = netskope-client
+	provides = nsclient
+	conflicts = netskope-client
+	conflicts = nsclient
+	options = !strip
+	options = !debug
+	options = !emptydirs
+
+pkgname = netskope-client-bin
