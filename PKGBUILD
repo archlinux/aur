@@ -1,6 +1,6 @@
 pkgname=arch-package
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A professional-grade AUR helper and driver manager"
 arch=('any')
 url="https://github.com"
