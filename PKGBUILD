@@ -1,7 +1,7 @@
 # Maintainer: n0va <n0va@krzak.org>
 pkgname=kewt-git
-pkgver=r0.0000000
-pkgrel=2
+pkgver=r0.0000001
+pkgrel=1
 pkgdesc="A minimalist, 100% POSIX, static site generator inspired by werc and kew"
 arch=('any')
 url="https://kewt.krzak.org"
