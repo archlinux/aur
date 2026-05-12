@@ -71,7 +71,7 @@ makedepends=(
 
 _pkgsrc=$pkgname
 source=(
-  "$_pkgsrc::git+$url.git"
+  "$_pkgsrc::git+$url"
   "udis86::git+https://github.com/canihavesomecoffee/udis86.git"
 )
 sha256sums=(
