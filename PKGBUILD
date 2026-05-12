@@ -4,7 +4,7 @@
 pkgname=plasma6-wallpapers-blurredwallpaper
 _pkgname=blurredwallpaper
 _plasmoidName="a2n.blur"
-pkgver=3.5.1
+pkgver="3.5.2"
 pkgrel=1
 pkgdesc="KDE Plasma wallpaper plugin that blurs or/and dim the wallpaper when a window is active"
 arch=(x86_64)
