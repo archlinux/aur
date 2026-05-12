@@ -12,3 +12,4 @@ sha256sums=('SKIP')
 package() {
   install -Dm755 "$srcdir/arch-package" "$pkgdir/usr/bin/arch-package"
 }
+
