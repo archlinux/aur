@@ -1,0 +1,16 @@
+pkgbase = mullvad-tui-bin
+	pkgdesc = Terminal user interface for mullvad-vpn
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/d10n/mullvad-tui
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = mullvad-vpn
+	provides = mullvad-tui
+	conflicts = mullvad-tui
+	options = !lto
+	options = !debug
+	source = https://github.com/d10n/mullvad-tui/releases/download/v0.8.1/mullvad-tui-0.8.1-x86_64-unknown-linux-musl
+	sha256sums = 2042263a00c194d452979772c80c59abe3c6d381f0bbe6aa19d673fedfcf114f
+
+pkgname = mullvad-tui-bin

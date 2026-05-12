@@ -1,0 +1,5 @@
+/src
+/pkg
+/*.tar.gz
+/*.pkg.tar.zst
+/mullvad-tui-*-x86_64-unknown-linux-musl
