@@ -1,6 +1,6 @@
 # Maintainer: Carsten König <carstenkoenig92@gmail.com>
 pkgname=elasticvue-bin
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="A free and open source gui for elasticsearch"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("elasticvue-${pkgver}::https://github.com/cars10/elasticvue/releases/dow
         "elasticvue.desktop"
         "blue_96.png::https://raw.githubusercontent.com/cars10/elasticvue/master/src/assets/images/logo/blue_96.png")
 
-sha256sums=('1ebddf84cebc936723fb1e2c55bbe25235cc68309d894780adbdafe6a0e6b070'
+sha256sums=('5c383a7a79d8a6f6d7b0f5c0f6aeec88b7ab5e44ce237101f8b01d26bb651dbd'
             'd5a7e0fed82f18ee51dac0258ba5070f145a18c4aa3235c0803afe1351043352'
             '81ea0848c8e3acaa6d1a45725494c3a9117517fda69dac3cda2e80a6e8af0e71')
 
