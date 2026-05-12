@@ -1,6 +1,6 @@
 pkgbase = flux-bin
 	pkgdesc = Open and extensible continuous delivery solution for Kubernetes
-	pkgver = 2.8.6
+	pkgver = 2.8.7
 	pkgrel = 1
 	url = https://fluxcd.io/
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = flux-bin
 	optdepends = zsh-completions: auto-completion for flux in ZSH
 	provides = fluxcd
 	conflicts = fluxcd
-	source_x86_64 = flux-bin-2.8.6_linux_amd64.tar.gz::https://github.com/fluxcd/flux2/releases/download/v2.8.6/flux_2.8.6_linux_amd64.tar.gz
+	source_x86_64 = flux-bin-2.8.7_linux_amd64.tar.gz::https://github.com/fluxcd/flux2/releases/download/v2.8.6/flux_2.8.6_linux_amd64.tar.gz
 	sha256sums_x86_64 = c53cc990ae266f7840f64c81515d701d8821d558a9062aa4211d71b38cf044be
-	source_armv7h = flux-bin-2.8.6_linux_arm.tar.gz::https://github.com/fluxcd/flux2/releases/download/v2.8.6/flux_2.8.6_linux_arm.tar.gz
+	source_armv7h = flux-bin-2.8.7_linux_arm.tar.gz::https://github.com/fluxcd/flux2/releases/download/v2.8.6/flux_2.8.6_linux_arm.tar.gz
 	sha256sums_armv7h = be062d350dbecdcb089556f21cf397e5bd3bdd0732b0e261436b8cea6f20530c
-	source_aarch64 = flux-bin-2.8.6_linux_arm64.tar.gz::https://github.com/fluxcd/flux2/releases/download/v2.8.6/flux_2.8.6_linux_arm64.tar.gz
+	source_aarch64 = flux-bin-2.8.7_linux_arm64.tar.gz::https://github.com/fluxcd/flux2/releases/download/v2.8.6/flux_2.8.6_linux_arm64.tar.gz
 	sha256sums_aarch64 = bc460320c2d33ad833791277896dd1aaf1cff6b3e64ba397c44238f00d4ae5bc
 
 pkgname = flux-bin
