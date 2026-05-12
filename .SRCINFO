@@ -11,7 +11,7 @@ pkgbase = hyprland-qt-support-frozen
 	makedepends = ninja
 	depends = qt6-wayland>=6.6.0
 	depends = hyprlang-frozen
-	provides = hyprland-qt-support
+	provides = hyprland-qt-support-frozen
 	conflicts = hyprland-qt-support-git
 	conflicts = hyprland-qt-support-frozen
 	source = ::git+https://gitlab.com/TheEnchantedPotato/mirror-hyprland-qt-support-hyprland-v0.54.git
