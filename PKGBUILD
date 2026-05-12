@@ -1,25 +1,38 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=llama.cpp-sycl
-pkgver=r1.803627f
+pkgver=2026.0.0
 pkgrel=1
 pkgdesc="llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI (bundled runtime, no separate oneAPI install required). Please read the README on GitHub before use."
 arch=('x86_64')
 url="https://github.com/cantosun99/llama.cpp-sycl"
 license=('MIT')
 
-# Dynamically fetch the latest llama.cpp commit hash so pacman detects updates
-pkgver() {
-    local commit
-    commit=$(git ls-remote https://github.com/ggml-org/llama.cpp HEAD | cut -c1-7)
-    printf "r1.%s\n" "$commit"
-}
+provides=('llama.cpp')
 conflicts=(
     'llama.cpp'
-    'llama.cpp-vulkan'
+    'llama.cpp-git'
+    'llama.cpp-bin'
     'llama.cpp-cuda'
+    'llama.cpp-cuda-git'
+    'llama.cpp-cuda-essentials-only'
+    'llama.cpp-vulkan'
+    'llama.cpp-vulkan-git'
+    'llama.cpp-vulkan-bin'
+    'llama.cpp-vulkan-gemma4'
+    'llama.cpp-cublas-git'
     'llama.cpp-hip'
-    'llama.cpp-sycl-fp16'
-    'llama.cpp-sycl-fp32'
+    'llama.cpp-hip-gfx1151'
+    'llama.cpp-hipblas-git'
+    'llama.cpp-gfx1151'
+    'llama.cpp-openvino'
+    'llama.cpp-clblast'
+    'llama.cpp-clblas-git'
+    'llama.cpp-opencl'
+    'llama.cpp-sycl-f16'
+    'llama.cpp-sycl-f16-git'
+    'llama.cpp-sycl-f32'
+    'llama.cpp-sycl-f32-git'
+    'llama.cpp-bin-noavx'
 )
 depends=(
     'intel-compute-runtime'
@@ -33,7 +46,7 @@ makedepends=(
     'make'
 )
 options=(!strip)
-# URLs of the split tar parts (pinned to release tag for reproducibility)
+
 _source_release="2026.0.0"
 source=(
     "https://github.com/cantosun99/llama.cpp-sycl/releases/download/$_source_release/intel.tar.part-aa"
@@ -41,7 +54,6 @@ source=(
     "https://github.com/cantosun99/llama.cpp-sycl/releases/download/$_source_release/intel.tar.part-ac"
 )
 
-# SHA256 checksums for each part
 sha256sums=(
     'bfb49f991a14dbb11c69618a332e0c5584e39dbc11bfc48f3cc47eb7f0965bcf'
     '8a9ac72795ea4c64a59c481458dd0248013337b8621698ad1ff704048542b015'
@@ -63,13 +75,11 @@ prepare() {
     mkdir -p "${srcdir}/opt"
     tar -xzf "${srcdir}/intel.tar.gz" -C "${srcdir}/opt/"
 
-    # Clone llama.cpp source
+    # Clone latest llama.cpp source (always builds against HEAD)
     git clone --depth=1 https://github.com/ggml-org/llama.cpp "${srcdir}/llama.cpp"
 }
 
 build() {
-    # Source the oneAPI environment so icx/icpx are available
-    # We point it at the extracted toolchain in $srcdir
     local oneapi_root="${srcdir}/opt/intel/oneapi"
 
     # Source setvars if present (standard oneAPI layout)
@@ -85,12 +95,7 @@ build() {
 
     cd "${srcdir}/llama.cpp"
 
-    # Strip -D_FORTIFY_SOURCE from CFLAGS/CXXFLAGS for IntelLLVM device-side
-    # compilation. The SYCL JIT compiler emits __memcpy_chk references when
-    # _FORTIFY_SOURCE is set, but the device runtime cannot resolve glibc's
-    # fortify symbols. This causes a SYCL build program failure at first
-    # kernel warmup ("Unresolved Symbol <__memcpy_chk>" → ggml_sycl_op_mul_mat
-    # → SIGABRT). Stripping the macro restores normal device-side codegen.
+    # Strip -D_FORTIFY_SOURCE from CFLAGS/CXXFLAGS for IntelLLVM device-side compilation.
     # Refs: https://github.com/ggml-org/llama.cpp/issues/11713
     local _cflags="${CFLAGS//-D_FORTIFY_SOURCE=*/} -U_FORTIFY_SOURCE"
     local _cxxflags="${CXXFLAGS//-D_FORTIFY_SOURCE=*/} -U_FORTIFY_SOURCE"
@@ -102,7 +107,8 @@ build() {
         -DCMAKE_C_COMPILER=icx \
         -DCMAKE_CXX_COMPILER=icpx \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_RPATH=/usr/lib
 
     cmake --build build --config Release -j$(nproc)
 }
@@ -113,11 +119,8 @@ package() {
     mkdir -p "${pkgdir}/opt/intel"
     cp -r "${srcdir}/opt/intel/oneapi" "${pkgdir}/opt/intel/"
 
-    # Install all llama.cpp binaries to /usr/bin
-    install -dm755 "${pkgdir}/usr/bin"
-    for bin in "${srcdir}/llama.cpp/build/bin/"*; do
-        [[ -f "$bin" && -x "$bin" ]] && install -m755 "$bin" "${pkgdir}/usr/bin/"
-    done
+    # Install llama.cpp (binaries, shared libs, symlinks, correct RPATHs)
+    DESTDIR="${pkgdir}" cmake --install "${srcdir}/llama.cpp/build"
 
     # Install license
     install -Dm644 "${srcdir}/llama.cpp/LICENSE" \
