@@ -1,13 +1,13 @@
 pkgname=samba-util
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.9.9
+pkgrel=3
 pkgdesc="A simple and modern GUI for managing Samba."
 
 arch=('x86_64')
 license=('MIT')
 depends=('samba' 'systemd')
 url="https://github.com/mijocecr/samba-util"
-source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v1.1/SAMBA-Util.tar.gz")
+source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v3.0/SAMBA-Util.tar.gz")
 sha256sums=('SKIP')
 
 package() {
