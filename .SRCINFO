@@ -1,7 +1,7 @@
 pkgbase = steam-manifest-downloader
 	pkgdesc = Download Steam game depots and manifests via a modern Tauri GUI
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MCbabel/Steam-Manifest-Downloader
 	arch = x86_64
 	license = GPL-2.0-or-later

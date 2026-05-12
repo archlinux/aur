@@ -1,7 +1,7 @@
 # Maintainer: MCbabel <https://github.com/MCbabel>
 pkgname=steam-manifest-downloader
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Download Steam game depots and manifests via a modern Tauri GUI"
 arch=('x86_64')
 url="https://github.com/MCbabel/Steam-Manifest-Downloader"
@@ -33,9 +33,9 @@ prepare() {
 build() {
   cd "Steam-Manifest-Downloader-${pkgver}/src-tauri"
   export RUSTUP_TOOLCHAIN=stable
-  # NO_STRIP keeps the embedded DepotDownloaderMod intact; Tauri's strip pass
-  # would otherwise corrupt the bundled .NET binary.
   export NO_STRIP=true
+  export SMD_BUILD_CHANNEL=stable
+  export SMD_BUILD_DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   cargo build --release --frozen
 }
 
