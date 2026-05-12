@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=4.4.3
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('a9a4d679fd2af7e92377311e60b24c23f5100ef0c2db51412ec650f319cfed28'
+sha256sums=('8ab7ff81a986988caf8af1172c12e093057d13e3863c900f543d29895f0f15c4'
             'SKIP')
 
 package() {
@@ -45,7 +45,7 @@ package() {
 
     # ── Systemd services ─────────────────────────────────────────────────────
     # Arch convention: vendor units go to /usr/lib/systemd/system/
-    install -Dm644 pkg/etc/systemd/system/broadcast-api.service \
+    install -Dm644 pkg/usr/share/hls-livecam-server/broadcast-api-arch.service \
                    "$pkgdir/usr/lib/systemd/system/broadcast-api.service"
     install -Dm644 pkg/etc/systemd/system/ffmpeg-cam-dark.service \
                    "$pkgdir/usr/lib/systemd/system/ffmpeg-cam-dark.service"
