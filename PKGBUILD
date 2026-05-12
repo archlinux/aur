@@ -13,13 +13,13 @@ conflicts=(klog)
 
 if [ "$CARCH" == "x86_64" ]; then
     debfile="klog_${pkgver}-${pkgrel}_amd64.deb"
-    sha256sums=(9e5a5b06f38f018a7d03aeb28d11d7c8d13881a082f06dc0a40b3994247ac459)
+    sha256sums=(c2466629d8d5904699bb2f716a3b604d3044a24ea95e8a9316ffab2950b6b6ea)
 elif [ "$CARCH" == "i686" ]; then
     debfile="klog_${pkgver}-${pkgrel}_i386.deb"
-    sha256sums=(9412951ca07f33fc736f5152dfc438545d9a6df4f9276a97bc472da0d507a12b)
+    sha256sums=(72626b318d8ceb1a602b943250af6cdd10875b9e97c7e891cb103f7c7df8f63a)
 elif [ "$CARCH" == "armv7h" ]; then
     debfile="klog_${pkgver}-${pkgrel}_armhf.deb"
-    sha256sums=(c052b3e55899d4c323a4eb461371495099d9e2b1a4574e11c05fb071914d65bb)
+    sha256sums=(164a923d2a53899781a0a43d8ee8f154bd6c102e4365575654659cadde06b89d)
 fi
 
 source=("http://ftp.fr.debian.org/debian/pool/main/k/klog/${debfile}")
