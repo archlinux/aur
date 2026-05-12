@@ -1,6 +1,6 @@
 pkgbase = schemahero
 	pkgdesc = Declarative database schema management as code (CNCF)
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/schemahero/schemahero
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = schemahero
 	makedepends = go
 	provides = schemahero
 	conflicts = schemahero-bin
-	source = https://github.com/schemahero/schemahero/archive/v0.24.0.tar.gz
-	sha256sums = 684c35a2d1508835878908df029251aa271fafc76518bdf1e6b08ce6e0cfe9a2
+	source = https://github.com/schemahero/schemahero/archive/v0.25.0.tar.gz
+	sha256sums = 091d92c4ce68038f716d9a730b0b5acb57b6ddf66fe501502e777466a9d6134a
 
 pkgname = schemahero
