@@ -7,6 +7,7 @@ url="https://github.com/emomaxd/hpfand"
 license=('GPL-2.0-only')
 depends=('bash' 'systemd')
 install=hpfand.install
+keywords=('fan' 'fan-control' 'hp' 'victus' 'omen' 'hwmon' 'laptop')
 optdepends=(
     'inotify-tools: automatic config reload on save'
     'hp-wmi-dkms: patched kernel module for pre-7.1 kernels'
