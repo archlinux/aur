@@ -33,8 +33,41 @@ package() {
   if [[ -f usr/share/cursor/chrome-sandbox ]]; then
     chmod 4755 usr/share/cursor/chrome-sandbox
   fi
-  if [[ ! -e usr/bin/cursor ]]; then
-    install -d usr/bin
-    ln -sf /usr/share/cursor/cursor usr/bin/cursor
-  fi
+  # Install a launcher wrapper (instead of exposing the raw Electron binary).
+  # This honors cursor-flags.conf and delegates to Cursor's upstream trampoline at /usr/share/cursor/bin/cursor.
+  # and delegates to Cursor's upstream trampoline at /usr/share/cursor/bin/cursor.
+  install -Dm755 /dev/stdin usr/bin/cursor <<'EOF'
+#!/bin/bash
+set -euo pipefail
+
+cursor_bin="/usr/share/cursor/bin/cursor"
+fallback_bin="/usr/share/cursor/cursor"
+flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/cursor-flags.conf"
+
+if [[ ! -x "$cursor_bin" ]]; then
+  cursor_bin="$fallback_bin"
+fi
+
+cursor_flags=()
+if [[ -f "$flags_file" ]]; then
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    line="${line%$'\r'}"
+    line="${line#"${line%%[![:space:]]*}"}"
+    line="${line%"${line##*[![:space:]]}"}"
+    [[ -z "$line" || "$line" == \#* ]] && continue
+    cursor_flags+=("$line")
+  done < "$flags_file"
+fi
+
+case "${1:-}" in
+  agent)
+    exec "$cursor_bin" "$@"
+    ;;
+  editor)
+    shift
+    ;;
+esac
+
+exec "$cursor_bin" "${cursor_flags[@]}" "$@"
+EOF
 }
