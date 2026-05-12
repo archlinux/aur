@@ -1,7 +1,7 @@
 pkgbase = eurus-tui-git
 	pkgdesc = E2EE Terminal Chat Client (eurus)
 	pkgver = r26.4dd6cd8
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/sricharanandra/eurus-tui
 	arch = x86_64
 	arch = aarch64
