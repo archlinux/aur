@@ -2,7 +2,7 @@
 #
 
 pkgname=fauxput
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Manage virtual displays on Linux'
 arch=('x86_64')
@@ -20,10 +20,11 @@ optdepends=(
 )
 makedepends=('cargo' 'git' 'pkgconf' 'rust')
 provides=('fauxput')
+conflicts=('fauxput-bin')
 options=('!lto')
 install='fauxput.install'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ea6e9d736f04bdffde0c47c1da87e95688f6555373cd5ff4c76ab90a303f4875')
+sha256sums=('016a1b0009295e57dc2662d197efc4b8b6149a48598f60632fcb15414f297674')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
