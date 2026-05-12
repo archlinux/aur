@@ -1,7 +1,7 @@
 pkgbase = keyviz-zh-bin
 	pkgdesc = Chinese-localized fork of Keyviz with Linux fixes
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/duanluan/keyviz
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = keyviz-zh-bin
 	conflicts = keyviz-bin
 	conflicts = keyviz-cn-bin
 	options = !strip
-	source = keyviz-6cf089956a3448583074538de2f89f1a12c2ceae.tar.gz::https://codeload.github.com/duanluan/keyviz/tar.gz/6cf089956a3448583074538de2f89f1a12c2ceae
-	sha256sums = 32afe74c18096af2f7fbb0534567d995971e0a1b3779ea9da513d3e90e21831e
+	source = keyviz-abff97c6687e96736c63d4dad1c4bba06a1f8205.tar.gz::https://codeload.github.com/duanluan/keyviz/tar.gz/abff97c6687e96736c63d4dad1c4bba06a1f8205
+	sha256sums = 06f4a2b8b8550a3dff8ade226e905d3abcaceaff8a2795faab73f19dfb7fb512
 
 pkgname = keyviz-zh-bin

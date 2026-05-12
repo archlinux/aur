@@ -2,8 +2,8 @@
 
 pkgname=keyviz-zh-bin
 pkgver=2.1.0
-pkgrel=2
-_commit=6cf089956a3448583074538de2f89f1a12c2ceae
+pkgrel=3
+_commit=abff97c6687e96736c63d4dad1c4bba06a1f8205
 _srcdir="keyviz-${_commit}"
 pkgdesc='Chinese-localized fork of Keyviz with Linux fixes'
 arch=('x86_64')
@@ -15,10 +15,10 @@ provides=('keyviz')
 conflicts=('keyviz' 'keyviz-bin' 'keyviz-cn-bin')
 options=('!strip')
 source=(
-  "${_srcdir}.tar.gz::https://codeload.github.com/duanluan/keyviz/tar.gz/6cf089956a3448583074538de2f89f1a12c2ceae"
+  "${_srcdir}.tar.gz::https://codeload.github.com/duanluan/keyviz/tar.gz/abff97c6687e96736c63d4dad1c4bba06a1f8205"
 )
 sha256sums=(
-  '32afe74c18096af2f7fbb0534567d995971e0a1b3779ea9da513d3e90e21831e'
+  '06f4a2b8b8550a3dff8ade226e905d3abcaceaff8a2795faab73f19dfb7fb512'
 )
 
 build() {
