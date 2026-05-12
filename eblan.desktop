@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=EBLAN Browser
+Comment=Browser for Russian people
+Exec=python3 /opt/eblan-browser/EBLAN.py %U
+Path=/opt/eblan-browser/
+Icon=/opt/eblan-browser/images/logo64.png
+StartupNotify=true
+Terminal=false
+Categories=GNOME;GTK;Network;WebBrowser;
