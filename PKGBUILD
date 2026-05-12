@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=pam_authelia-bin
 _pkgname=pam_authelia
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="PAM module that delegates authentication (including 2FA) to an Authelia server. Pre-compiled."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("https://github.com/authelia/pam/releases/download/v${pkgver}/${_
 source_aarch64=("https://github.com/authelia/pam/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
 source_armv7h=("https://github.com/authelia/pam/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm.tar.gz")
 
-sha256sums_x86_64=('69c88bf40eb13c8ced54adf8b12b7fd78961d32367c9ce4d02219bf88bd93dd0')
-sha256sums_aarch64=('00c8d7448813dec26c54d45541bccd77f25a04d218d482b284dd41e0be150e3d')
-sha256sums_armv7h=('17a4890e491c866275f6e0fcd75f9af686b0455d0a5fddd69147b4be9b95f153')
+sha256sums_x86_64=('32f9a6a1b65a6423a71d46015b35b9bc82f2d7aec587fab401631e64477b674d')
+sha256sums_aarch64=('3af4d047ef5e24bdc72bc96e601f2e050af9ec2d7f742a17937ae28a05c79d8b')
+sha256sums_armv7h=('36b422f45c19580adb67a12dfe8e84c49208189336b2be8e68fc9f9a9843f813')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
