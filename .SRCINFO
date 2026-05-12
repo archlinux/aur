@@ -1,0 +1,21 @@
+pkgbase = singcast
+	pkgdesc = A clash GUI client based on Flutter
+	pkgver = 1.13.11_beta3
+	pkgrel = 1
+	url = https://github.com/mapleafgo/clash-for-flutter
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = libayatana-appindicator
+	depends = polkit
+	provides = singcast
+	conflicts = singcast
+	source_x86_64 = singcast-1.13.11_beta3-x86_64.zip::https://github.com/mapleafgo/clash-for-flutter/releases/download/v1.13.11-beta3/singcast-1.13.11-beta3-linux-amd64.zip
+	source_x86_64 = singcast.desktop
+	source_x86_64 = singcast.png
+	sha256sums_x86_64 = 8c1b176fbe638dfd53625bda4a6488a6ee57984f354d693b826b7fba88eb7590
+	sha256sums_x86_64 = f14d52960b535f9d31d24f08e9b248f3f70f70bfadc4ea58bb57f4d12b711ee9
+	sha256sums_x86_64 = f5e6b74cf5f247e68a8b80d444cab133918479f857a7e4a7ef1940751c60f3bf
+
+pkgname = singcast

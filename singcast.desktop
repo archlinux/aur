@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Singcast
+Exec=/opt/Singcast/singcast %U
+Terminal=false
+Type=Application
+Icon=singcast
+StartupWMClass=Singcast
+Comment=A clash GUI client based on Flutter
+Categories=Network;
