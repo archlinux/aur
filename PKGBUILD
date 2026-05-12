@@ -2,9 +2,9 @@
 
 pkgname=python-copier-templates-extensions
 pkgdesc='Jinja2 extension for Copier to use relative file paths'
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
-url='https://github.com/copier-org/copier-templates-extensions'
+url='https://github.com/copier-org/copier-template-extensions'
 license=('ISC')
 arch=('any')
 
@@ -25,27 +25,27 @@ checkdepends=(
 )
 
 source=(
-  "git+https://github.com/copier-org/copier-templates-extensions.git#tag=$pkgver"
+  "git+https://github.com/copier-org/copier-template-extensions.git#tag=$pkgver"
 )
 sha256sums=(
-  '1a05039f5c155c98bdcf2cff5c3c18106f81ef437266aa53d05fbf298f6eabce'
+  'fd02dc66abd45358cda64a9073b0f2698b2b03df7c9dc62a35a85f9364775a38'
 )
 
 build() {
-  cd copier-templates-extensions
+  cd copier-template-extensions
   python -m build --no-isolation --wheel
 }
 
 check() {
-  cd copier-templates-extensions
+  cd copier-template-extensions
   rm -rf test-env
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer "dist/copier_templates_extensions-$pkgver"-*.whl
+  test-env/bin/python -m installer "dist/copier_template_extensions-$pkgver"-*.whl
   test-env/bin/python -m pytest -v
 }
 
 package() {
-  cd copier-templates-extensions
-  python -m installer --destdir="$pkgdir" "dist/copier_templates_extensions-$pkgver"-*.whl
+  cd copier-template-extensions
+  python -m installer --destdir="$pkgdir" "dist/copier_template_extensions-$pkgver"-*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

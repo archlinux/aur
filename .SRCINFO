@@ -1,8 +1,8 @@
 pkgbase = python-copier-templates-extensions
 	pkgdesc = Jinja2 extension for Copier to use relative file paths
-	pkgver = 0.3.1
+	pkgver = 0.3.3
 	pkgrel = 1
-	url = https://github.com/copier-org/copier-templates-extensions
+	url = https://github.com/copier-org/copier-template-extensions
 	arch = any
 	license = ISC
 	checkdepends = mkdocstrings
@@ -14,7 +14,7 @@ pkgbase = python-copier-templates-extensions
 	makedepends = python-pdm-backend
 	depends = python-copier
 	depends = python-jinja
-	source = git+https://github.com/copier-org/copier-templates-extensions.git#tag=0.3.1
-	sha256sums = 1a05039f5c155c98bdcf2cff5c3c18106f81ef437266aa53d05fbf298f6eabce
+	source = git+https://github.com/copier-org/copier-template-extensions.git#tag=0.3.3
+	sha256sums = fd02dc66abd45358cda64a9073b0f2698b2b03df7c9dc62a35a85f9364775a38
 
 pkgname = python-copier-templates-extensions
