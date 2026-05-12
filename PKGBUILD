@@ -36,5 +36,5 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "${_tgtbin}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
