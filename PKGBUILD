@@ -17,11 +17,7 @@ depends=(
   'libxau'
   'hicolor-icon-theme'
 )
-optdepends=(
-  'cprocsp-rdr-gui-64: CryptoPro CSP token/PKCS#11 support'
-  'cprocsp-rdr-64: CryptoPro CSP readers'
-  'cprocsp-capilite-64: CryptoPro CSP CAPILite'
-)
+optdepends=()
 conflicts=('cpro-ngate' 'cprongate-tun' 'cprongate-gui' 'cprongate-console')
 provides=('cpro-ngate')
 options=('!strip' '!debug')
@@ -65,9 +61,9 @@ package() {
 
   # Binaries: keep at /opt/cprongate, expose CLIs via /usr/bin symlinks.
   install -dm755 "$pkgdir/usr/bin"
-  ln -sf /opt/cprongate/ngateclient        "$pkgdir/usr/bin/ngateclient"
+  ln -sf /opt/cprongate/ngateclient "$pkgdir/usr/bin/ngateclient"
   ln -sf /opt/cprongate/ngateconsoleclient "$pkgdir/usr/bin/ngateconsoleclient"
-  ln -sf /opt/cprongate/ngatetun           "$pkgdir/usr/bin/ngatetun"
+  ln -sf /opt/cprongate/ngatetun "$pkgdir/usr/bin/ngatetun"
 
   # Desktop entry from GUI deb.
   install -Dm644 "extract-gui/usr/share/applications/ngateclient.desktop" \
@@ -89,6 +85,6 @@ package() {
 
   # Make sure the binaries are executable.
   chmod 755 "$pkgdir/opt/cprongate/ngatetun" \
-            "$pkgdir/opt/cprongate/ngateclient" \
-            "$pkgdir/opt/cprongate/ngateconsoleclient"
+    "$pkgdir/opt/cprongate/ngateclient" \
+    "$pkgdir/opt/cprongate/ngateconsoleclient"
 }
