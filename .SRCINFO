@@ -24,6 +24,7 @@ pkgbase = wsjtz
 	depends = libpulse
 	depends = libpng
 	depends = fftw
+	depends = qt5-websockets
 	provides = wsjtx
 	conflicts = wsjtx
 	options = !lto
