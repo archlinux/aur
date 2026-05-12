@@ -1,4 +1,0 @@
-[sponge]
-source = "git"
-git = "https://github.com/go-dev-frame/sponge.git"
-prefix = "v"

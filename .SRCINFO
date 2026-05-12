@@ -1,47 +1,18 @@
 pkgbase = sponge
-	pkgdesc = Effortlessly build stable, reliable, and high-performance backend services with a "low-code" approach
-	pkgver = 1.16.1
+	pkgdesc = Sponge: Systemd Mount Manager
+	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://go-sponge.com
+	url = https://github.com/Seafoam-Labs/Sponge
 	arch = x86_64
-	license = MIT
-	makedepends = go
-	source = sponge-1.16.1.tar.gz::https://github.com/go-dev-frame/sponge/archive/refs/tags/v1.16.1.tar.gz
-	sha256sums = 702e3a0fe95d3f8ef141d038dd48bd4927df8a97604db53125efebd1baf4c58f
+	license = GPL-3.0-only
+	makedepends = dotnet-sdk-10.0
+	makedepends = clang
+	depends = gtk4
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = glibc
+	provides = Sponge
+	source = sponge-0.0.1.tar.gz::https://github.com/Seafoam-Labs/Sponge/archive/v0.0.1.tar.gz
+	sha256sums = c6e1ee07cfd7c3fe0b5ff9bcb9f5a23c653dd10236be8238df9a21d3b01a83c8
 
 pkgname = sponge
-	depends = glibc
-	depends = go
-	depends = protobuf
-	depends = protoc-gen-doc
-	depends = protoc-gen-go
-	depends = protoc-gen-go-gin>=1.16.1
-	depends = protoc-gen-go-grpc
-	depends = protoc-gen-go-rpc-tmpl>=1.16.1
-	depends = protoc-gen-gotag
-	depends = protoc-gen-json-field>=1.16.1
-	depends = protoc-gen-openapiv2
-	depends = protoc-gen-validate
-	depends = swag
-
-pkgname = protoc-gen-go-gin
-	pkgdesc = Protobuf plugin to generate Gin routes, handlers, RPC stubs, and error codes
-	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-go-gin
-	depends = glibc
-	depends = protobuf
-	depends = protoc-gen-go
-	depends = protoc-gen-go-grpc
-
-pkgname = protoc-gen-go-rpc-tmpl
-	pkgdesc = Protobuf plugin to generate RPC service templates and RPC error codes
-	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-go-rpc-tmpl
-	depends = glibc
-	depends = protobuf
-	depends = protoc-gen-go
-	depends = protoc-gen-go-grpc
-
-pkgname = protoc-gen-json-field
-	pkgdesc = Protobuf plugin to generate JSON field code from proto files
-	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-json-field
-	depends = glibc
-	depends = protobuf

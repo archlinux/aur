@@ -1,137 +1,47 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
-# Contributor: wyf9661 <wyf9661 at gmail.com>
-# Contributor: zhufuyi <g.zhufuyi@gmail.com>
-
-pkgbase="sponge"
-pkgname=(
-  "${pkgbase}"
-  "protoc-gen-go-gin"
-  "protoc-gen-go-rpc-tmpl"
-  "protoc-gen-json-field"
-)
-pkgver=1.16.1
+# Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
+# Maintainer: Caroline Snyder <hirpeng@gmail.com>
+pkgname=sponge
+pkgver=0.0.1
 pkgrel=1
-pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
-arch=(
-  'x86_64'
-)
-url="https://go-sponge.com"
-_url="https://github.com/go-dev-frame/${pkgbase}"
-license=(
-  'MIT'
-)
+pkgdesc="Sponge: Systemd Mount Manager"
+arch=('x86_64')
+url="https://github.com/Seafoam-Labs/Sponge"
+license=('GPL-3.0-only')
+provides=('Sponge')
 depends=(
-
+    'gtk4'
+    'glib2'
+    'hicolor-icon-theme'
+    'glibc'
 )
-makedepends=(
-  'go'
-)
-_pkgsrc="${_url##*/}-${pkgver}"
-source=(
-  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
-)
-sha256sums=('702e3a0fe95d3f8ef141d038dd48bd4927df8a97604db53125efebd1baf4c58f')
+makedepends=('dotnet-sdk-10.0' 'clang')
 
-prepare() {
-  export GOMODCACHE="${srcdir}/go-mod-cache"
+# Source tarball from GitHub release
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Sponge/archive/v${pkgver}.tar.gz")
 
-  cd "${srcdir}/${_pkgsrc}"
-  go mod download -modcacherw -x
-
-  mkdir -p "build"
-}
+sha256sums=('c6e1ee07cfd7c3fe0b5ff9bcb9f5a23c653dd10236be8238df9a21d3b01a83c8')
 
 build() {
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOCACHE="${srcdir}/go-cache"
-  export GOMODCACHE="${srcdir}/go-mod-cache"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  cd "$srcdir/Sponge-${pkgver}"
 
-  cd "${srcdir}/${_pkgsrc}"
-  for _name in "${pkgname[@]}"; do
-    go build -v -o "build/${_name}" ./"cmd/${_name}"
-  done
+  dotnet publish Sponge/Sponge.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgsrc}"
-#   go test ./...
-# }
+package() {
+  cd "$srcdir/Sponge-${pkgver}"
 
-package_sponge() {
-  depends+=(
-    'glibc'
-    'go'
-    'protobuf'
-    'protoc-gen-doc'
-    'protoc-gen-go'
-    "protoc-gen-go-gin>=${pkgver}"
-    'protoc-gen-go-grpc'
-    "protoc-gen-go-rpc-tmpl>=${pkgver}"
-    'protoc-gen-gotag'
-    "protoc-gen-json-field>=${pkgver}"
-    'protoc-gen-openapiv2'
-    'protoc-gen-validate'
-    'swag'
-  )
+  # Install shelly-ui binary
+  install -Dm755 out/shelly-ui "$pkgdir/usr/bin/sponge"
 
-  cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_protoc-gen-go-gin() {
-  pkgdesc="Protobuf plugin to generate Gin routes, handlers, RPC stubs, and error codes"
-  url="${_url}/tree/main/cmd/${pkgname}"
-  depends+=(
-    'glibc'
-    'protobuf'
-    'protoc-gen-go'
-    'protoc-gen-go-grpc'
-  )
-
-  cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  cd "cmd/${pkgname}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-}
-
-package_protoc-gen-go-rpc-tmpl() {
-  pkgdesc="Protobuf plugin to generate RPC service templates and RPC error codes"
-  url="${_url}/tree/main/cmd/${pkgname}"
-  depends+=(
-    'glibc'
-    'protobuf'
-    'protoc-gen-go'
-    'protoc-gen-go-grpc'
-  )
-
-  cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  cd "cmd/${pkgname}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-}
-
-package_protoc-gen-json-field() {
-  pkgdesc="Protobuf plugin to generate JSON field code from proto files"
-  url="${_url}/tree/main/cmd/${pkgname}"
-  depends+=(
-    'glibc'
-    'protobuf'
-  )
-
-  cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  cd "cmd/${pkgname}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  # Install desktop entry
+  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.sponge.app.desktop"
+[Desktop Entry]
+Name=Sponge
+Comment=Systemd Mount Manager
+Exec=/usr/bin/sponge
+Icon=sponge
+Type=Application
+Categories=System;Utility;
+Terminal=false
+EOF
 }
