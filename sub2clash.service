@@ -1,0 +1,19 @@
+[Unit]
+Description=Sub2Clash service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sub2clash
+WorkingDirectory=/var/lib/sub2clash
+Restart=on-failure
+RestartSec=5s
+
+# Config search paths include /etc/sub2clash and the working directory.
+# Environment variables can override config with the SUB2CLASH_ prefix.
+# Example override:
+# Environment="SUB2CLASH_ADDRESS=127.0.0.1:8011"
+
+[Install]
+WantedBy=multi-user.target
