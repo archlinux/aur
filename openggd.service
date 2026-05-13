@@ -1,0 +1,21 @@
+[Unit]
+Description=OpenGG Gaming Daemon
+Documentation=https://github.com/UPdullah895/opengg
+After=graphical-session.target pipewire.service wireplumber.service
+Requires=pipewire.service
+
+[Service]
+Type=dbus
+BusName=org.opengg.Daemon
+ExecStart=%h/.local/bin/openggd
+Restart=on-failure
+RestartSec=3
+# Security hardening
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+ReadWritePaths=%h/.config/opengg %h/.local/share/opengg %h/Videos/OpenGG
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

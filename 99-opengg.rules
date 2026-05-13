@@ -1,0 +1,29 @@
+# OpenGG — udev rules for gaming peripherals
+# Install to: /etc/udev/rules.d/99-opengg.rules
+# After install: sudo udevadm control --reload-rules && sudo udevadm trigger
+
+# ── HID Raw devices (mice, keyboards, headsets) ─────────────────
+# Allow 'input' group to read/write HID devices
+SUBSYSTEM=="hidraw", KERNEL=="hidraw*", MODE="0660", GROUP="input"
+
+# ── USB HID gaming peripherals ──────────────────────────────────
+SUBSYSTEM=="usb", ATTR{bInterfaceClass}=="03", MODE="0666"
+
+# ── Common gaming peripheral vendors ────────────────────────────
+# SteelSeries
+SUBSYSTEM=="usb", ATTR{idVendor}=="1038", MODE="0666"
+# Corsair
+SUBSYSTEM=="usb", ATTR{idVendor}=="1b1c", MODE="0666"
+# Razer
+SUBSYSTEM=="usb", ATTR{idVendor}=="1532", MODE="0666"
+# Logitech
+SUBSYSTEM=="usb", ATTR{idVendor}=="046d", MODE="0666"
+# HyperX / Kingston
+SUBSYSTEM=="usb", ATTR{idVendor}=="0951", MODE="0666"
+# Glorious
+SUBSYSTEM=="usb", ATTR{idVendor}=="258a", MODE="0666"
+# Wooting
+SUBSYSTEM=="usb", ATTR{idVendor}=="31e3", MODE="0666"
+
+# ── I2C/SMBus for OpenRGB ───────────────────────────────────────
+KERNEL=="i2c-[0-9]*", MODE="0660", GROUP="i2c"

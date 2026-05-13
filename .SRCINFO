@@ -1,0 +1,20 @@
+pkgbase = opengg-bin
+	pkgdesc = Open-source Linux gaming hub — OpenGG
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/UPdullah895/opengg
+	install = opengg.install
+	arch = x86_64
+	license = MIT
+	depends = pipewire
+	depends = wireplumber
+	depends = ffmpeg
+	depends = gstreamer
+	depends = webkit2gtk-4.1
+	optdepends = polkit: for privileged device setup
+	provides = opengg
+	conflicts = opengg
+	source = https://github.com/UPdullah895/opengg/releases/download/v0.1.2/opengg-v0.1.2-linux-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = opengg-bin

@@ -1,0 +1,16 @@
+post_install() {
+  echo "OpenGG installed."
+  echo ""
+  echo "Post-install steps:"
+  echo "  1. Add your user to required groups:"
+  echo "       sudo usermod -aG audio,input,video,i2c \$USER"
+  echo "  2. Reload udev rules:"
+  echo "       sudo udevadm control --reload-rules && sudo udevadm trigger"
+  echo "  3. Enable the daemon service:"
+  echo "       systemctl --user enable --now openggd.service"
+  echo "  4. Log out and back in for group changes to take effect."
+}
+
+post_upgrade() {
+  post_install
+}
