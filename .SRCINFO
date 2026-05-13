@@ -1,0 +1,14 @@
+pkgbase = urlcode
+	pkgdesc = Percent-encoding on the command line
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/gtsiam/urlcode
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = urlcode-1.1.0.tar.gz::https://github.com/gtsiam/urlcode/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 988e1358b1519e78f6c2118d87da35c869c205b7cc706ff23c9ea540729a4fa2
+
+pkgname = urlcode
