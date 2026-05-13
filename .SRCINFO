@@ -1,12 +1,13 @@
 pkgbase = hdr-launcher-appimage
 	pkgdesc = Launcher for the HewDraw Remix conversion mod for Super Smash Bros. Ultimate
 	pkgver = 0.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/techyCoder81/hdr-launcher-react/
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = hicolor-icon-theme
+	depends = fuse
 	noextract = HDRLauncher-0.7.7.AppImage
 	options = !strip
 	source_x86_64 = HDRLauncher-0.7.7.AppImage::https://github.com/techyCoder81/hdr-launcher-react/releases/download/v0.7.7/HDRLauncher-0.7.7.AppImage

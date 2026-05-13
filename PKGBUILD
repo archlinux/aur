@@ -4,12 +4,12 @@ _pkgname=hdr-launcher
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Launcher for the HewDraw Remix conversion mod for Super Smash Bros. Ultimate"
 arch=('x86_64')
 url="https://github.com/techyCoder81/hdr-launcher-react/"
 license=('MIT')
-depends=('zlib' 'hicolor-icon-theme')
+depends=('zlib' 'hicolor-icon-theme' 'fuse')
 options=(!strip)
 _appimage="HDRLauncher-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/techyCoder81/hdr-launcher-react/releases/download/v${pkgver}/HDRLauncher-${pkgver}.AppImage"
