@@ -1,0 +1,12 @@
+post_install() {
+  echo "Enabling Codex++ injection for openai-codex-desktop..."
+  /usr/bin/codex-plus-plus enable
+}
+
+post_upgrade() {
+  /usr/bin/codex-plus-plus hook-reapply
+}
+
+pre_remove() {
+  /usr/bin/codex-plus-plus disable >/dev/null 2>&1 || true
+}
