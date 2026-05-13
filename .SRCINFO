@@ -1,6 +1,6 @@
 pkgbase = fnox-bin
 	pkgdesc = Fort Knox for your secrets
-	pkgver = 1.24.0
+	pkgver = 1.24.1
 	pkgrel = 1
 	url = https://github.com/jdx/fnox
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = fnox-bin
 	depends = gcc-libs
 	provides = fnox
 	conflicts = fnox
-	source = LICENSE-1.24.0::https://raw.githubusercontent.com/jdx/fnox/v1.24.0/LICENSE
-	source = README-1.24.0.md::https://raw.githubusercontent.com/jdx/fnox/v1.24.0/README.md
+	source = LICENSE-1.24.1::https://raw.githubusercontent.com/jdx/fnox/v1.24.1/LICENSE
+	source = README-1.24.1.md::https://raw.githubusercontent.com/jdx/fnox/v1.24.1/README.md
 	sha256sums = a978dbd843845fb958044bc384c1826bd9cb5e64ea540c392fa410a288de9df4
 	sha256sums = c304d560b42c7fa390e6494a4157eeeaf6f751c27ebd1795563922312676a876
-	source_x86_64 = fnox-x86_64-1.24.0.tar.gz::https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5d15ce680a673c7ae54db706aa5d59f847b78ad70178a8d4c24e7e70d94f5774
-	source_aarch64 = fnox-aarch64-1.24.0.tar.gz::https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a07a192c4aeb015db3a83b8ea3cfef95df776c2d5a9dddb992f99c6c1c182082
+	source_x86_64 = fnox-x86_64-1.24.1.tar.gz::https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 96f8089170e4d3eb0f70d128edd2613142e58a4730351c0415a6452b594304ec
+	source_aarch64 = fnox-aarch64-1.24.1.tar.gz::https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0397055dab81f89cd4eb2ed49ca928427860c3dfad1cabb7af7074161abb3ef3
 
 pkgname = fnox-bin
