@@ -4,7 +4,7 @@
 
 pkgname=gtk2-ng-git
 pkgver=r22068.0675b80da
-pkgrel=2
+pkgrel=3
 pkgdesc="GObject-based multi-platform GUI toolkit (community-maintained fork)"
 url="https://www.gtk.org/"
 arch=(x86_64)
@@ -87,7 +87,7 @@ package() {
     'gnome-themes-extra-gtk2: Default widget theme'
     'python: gtk-builder-convert'
   )
-  provides=(
+  provides+=(
     libgailutil.so
     libgdk-x11-2.0.so
     libgtk-x11-2.0.so

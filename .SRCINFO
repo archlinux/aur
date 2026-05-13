@@ -1,7 +1,7 @@
 pkgbase = gtk2-ng-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (community-maintained fork)
 	pkgver = r22068.0675b80da
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gtk.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -46,6 +46,8 @@ pkgname = gtk2-ng-git
 	optdepends = adwaita-icon-theme: Default icon theme
 	optdepends = gnome-themes-extra-gtk2: Default widget theme
 	optdepends = python: gtk-builder-convert
+	provides = gtk2
+	provides = gtk2=2.24.33
 	provides = libgailutil.so
 	provides = libgdk-x11-2.0.so
 	provides = libgtk-x11-2.0.so
