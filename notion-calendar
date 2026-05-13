@@ -10,4 +10,4 @@ fi
 # Launch
 APP_DIR=/usr/lib/notion-calendar
 cd "$APP_DIR" || exit 1
-exec electron39 "$APP_DIR/app.asar" $NOTION_CALENDAR_USER_FLAGS "$@"
+exec electron39 "$APP_DIR/app.asar" --no-sandbox $NOTION_CALENDAR_USER_FLAGS "$@"
