@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('btrfs-progs')
 makedepends=('scdoc')
 checkdepends=('parallel' 'diffutils')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5b675273b08855d42464f3265615e7589dfe0df9255f1a8c360c3855b8ea024')
+sha256sums=('04b577f97b9804754c3ac5b0077fecaf8040baa10e7ab30eb3a9d42b9ba470e2')
 
 check() {
     cd "$srcdir/$pkgname-$pkgver" || return
@@ -24,7 +24,7 @@ prepare() {
         sed -i "1s:#\!.*/env \(.*\)$:#\!/usr/bin/\1:" "$file" # use explicit shebang
         sed -i "\:/usr/local/etc:s:/usr/local::g" "$file"     # use system etc
         sed -i "\:/usr/local:s:/usr/local:/usr:g" "$file"     # use system prefix
-    done < <(find "$srcdir/$pkgname-$pkgver" -type f)
+    done < <(find -- "$srcdir/$pkgname-$pkgver" -type f)
 }
 
 build() {
