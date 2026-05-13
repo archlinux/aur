@@ -1,6 +1,6 @@
 [Desktop Entry]
 Categories=Game;
 Comment=A modern Rust + wgpu renderer for Resonite
-Exec=/usr/bin/bootstrapper
+Exec=/usr/bin/renderide
 Name=Renderide
 Type=Application

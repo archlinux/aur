@@ -1,5 +1,5 @@
 post_install() {
-  ln -s /usr/bin/renderide /usr/bin/Renderite.Renderer
+  ln -s /usr/bin/renderide-renderer /usr/bin/Renderite.Renderer
 }
 
 pre_remove() {
