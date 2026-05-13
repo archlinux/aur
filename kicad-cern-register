@@ -1,0 +1,177 @@
+#!/bin/sh
+# kicad-cern-register
+#
+# Register the CERN KiCad symbol and footprint libraries
+# (installed under '/usr/share/kicad/cern') into the user's
+# global KiCad library tables ('sym-lib-table' and 'fp-lib-table'
+# in user's KiCad configuration directory).
+#
+# Run this script as your normal user (NOT as root),
+# after installing or upgrading the package.
+
+set -e
+
+show_help() {
+  cat <<'EOF'
+kicad-cern-register
+
+Register the CERN KiCad symbol and footprint libraries installed
+under '/usr/share/kicad/cern' into your user's KiCad library
+tables.
+
+Usage:
+  kicad-cern-register
+
+What this script does:
+
+  1. Detects your KiCad config directory:
+       $XDG_CONFIG_HOME/kicad/<version>
+       or ~/.config/kicad/<version>
+  2. Backs up:
+       sym-lib-table -> sym-lib-table.bak
+       fp-lib-table  -> fp-lib-table.bak
+     (only if the .bak file does not already exist)
+  3. Appends a reference to
+     '/usr/share/kicad/cern/template/sym-lib-table' and
+     '/usr/share/kicad/cern/template/fp-lib-table' to your
+     'sym-lib-table' and 'fp-lib-table', respectively.
+
+If something goes wrong, restore the .bak files manually.
+EOF
+}
+
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+  show_help
+  exit 0
+fi
+
+CERN_BASE="/usr/share/kicad/cern"
+CERN_SYM_DIR="${CERN_BASE}/SchLib"
+CERN_FP_DIR="${CERN_BASE}/PcbLib"
+CERN_TPL_DIR="${CERN_BASE}"
+CERN_SYM_TABLE="${CERN_TPL_DIR}/sym-lib-table"
+CERN_FP_TABLE="${CERN_TPL_DIR}/fp-lib-table"
+
+CONFIG_BASE="${XDG_CONFIG_HOME:-$HOME/.config}/kicad"
+
+# Detect KiCad config directory (prefer highest version)
+CFG_DIR=""
+KI_VERSION=""
+
+for v in 10.0 9.0 8.0 7.0 6.0; do
+  if [ -d "$CONFIG_BASE/$v" ]; then
+    CFG_DIR="$CONFIG_BASE/$v"
+    KI_VERSION="$v"
+    break
+  fi
+done
+
+if [ -z "$CFG_DIR" ]; then
+  echo "ERROR: Could not find a KiCad configuration directory under:"
+  echo "  $CONFIG_BASE/{10.0,9.0,8.0,7.0,6.0}"
+  echo "Open KiCad at least once and try again."
+  exit 1
+fi
+
+USER_SYM_TABLE="$CFG_DIR/sym-lib-table"
+USER_FP_TABLE="$CFG_DIR/fp-lib-table"
+
+ensure_sym_table() {
+  if [ -f "$USER_SYM_TABLE" ]; then
+    return
+  fi
+  echo "No 'sym-lib-table' found in:"
+  echo "  '$CFG_DIR'"
+  echo "Creating a minimal global symbol library table..."
+  cat >"$USER_SYM_TABLE" <<'EOF'
+(sym_lib_table
+  (version 7)
+)
+EOF
+  echo "Created: $USER_SYM_TABLE"
+  echo
+}
+
+ensure_fp_table() {
+  if [ -f "$USER_FP_TABLE" ]; then
+    return
+  fi
+  echo "No 'fp-lib-table' found in:"
+  echo "  '$CFG_DIR'"
+  echo "Creating a minimal global footprint library table..."
+  cat >"$USER_FP_TABLE" <<'EOF'
+(fp_lib_table
+  (version 7)
+)
+EOF
+  echo "Created: $USER_FP_TABLE"
+  echo
+}
+
+ensure_sym_table
+ensure_fp_table
+
+if [ ! -d "$CERN_SYM_DIR" ] && [ ! -d "$CERN_FP_DIR" ]; then
+  echo "ERROR: No CERN libraries found at '$CERN_BASE/'."
+  echo "Make sure the 'kicad-library-cern' package is installed."
+  exit 1
+fi
+
+echo "KiCad config directory: '$CFG_DIR' (version: $KI_VERSION)"
+echo "CERN library root: '$CERN_BASE'"
+echo
+
+# Backups (non-destructive)
+for tbl in "$USER_SYM_TABLE" "$USER_FP_TABLE"; do
+  if [ -f "$tbl" ] && [ ! -f "$tbl.bak" ]; then
+    cp "$tbl" "$tbl.bak"
+    echo "Created backup: $tbl.bak"
+  fi
+done
+echo
+
+update_sym_table() {
+  if [ ! -e "$CERN_SYM_TABLE" ]; then
+    echo "No CERN symbol library table ('$CERN_SYM_TABLE') found; skipping symbols."
+    return 0
+  fi
+
+  local USER_SYM_TABLE_ADDENDUM="	(lib (name \"CERN\") (type \"Table\") (uri \"$CERN_SYM_TABLE\") (options \"\") (descr \"CERN KiCad Libraries\"))"
+
+  if grep -Eq "\([[:space:]]*uri[[:space:]]+\"$CERN_SYM_TABLE\"[[:space:]]*\)" "$USER_SYM_TABLE"; then
+    echo "CERN symbol library already present, skipping."
+  else
+    echo "Adding CERN symbol library table to user symbol library table: '$USER_SYM_TABLE'"
+    sed -i -e "\$s|.*|$USER_SYM_TABLE_ADDENDUM|" "$USER_SYM_TABLE"  # Replace last line (which should contain a single closing ')') with the entry we want to append ...
+    echo ")" >> "$USER_SYM_TABLE"                                   # ... and add the closing ')' to the next line.
+  fi
+}
+
+update_fp_table() {
+  if [ ! -e "$CERN_FP_TABLE" ]; then
+    echo "No CERN footprint library table ('$CERN_FP_TABLE') found; skipping footprints."
+    return 0
+  fi
+
+  local USER_FP_TABLE_ADDENDUM="	(lib (name \"CERN\") (type \"Table\") (uri \"$CERN_FP_TABLE\") (options \"\") (descr \"CERN KiCad Libraries\"))"
+
+  if grep -Eq "\([[:space:]]*uri[[:space:]]+\"$CERN_FP_TABLE\"[[:space:]]*\)" "$USER_FP_TABLE"; then
+    echo "CERN footprint library already present, skipping."
+  else
+    echo "Adding CERN footprint library table to user footprint library table: '$USER_FP_TABLE'"
+    sed -i -e "\$s|.*|$USER_FP_TABLE_ADDENDUM|" "$USER_FP_TABLE"  # Replace last line (which should contain a single closing ')') with the entry we want to append ...
+    echo ")" >> "$USER_FP_TABLE"                                  # ... and add the closing ')' to the next line.
+  fi
+}
+
+update_sym_table
+echo
+update_fp_table
+
+echo
+echo "Done."
+echo "If something looks wrong, you can restore the backups:"
+echo "  '$USER_SYM_TABLE.bak'"
+echo "  '$USER_FP_TABLE.bak'"
+echo
+echo "Restart KiCad to ensure the updated libraries are visible."

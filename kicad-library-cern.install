@@ -1,0 +1,26 @@
+post_install() {
+  cat <<'EOF'
+==> CERN KiCad libraries have been installed under:
+/usr/share/kicad/cern
+
+This package does NOT modify your KiCad library tables automatically.
+
+To register the libraries for your user, quit KiCad, then run:
+
+  kicad-cern-register
+
+and then restart KiCad.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  cat <<'EOF'
+==> The 'kicad-library-cern' package has been removed.
+If you want to clean up manually, edit your user's
+'sym-lib-table' and 'fp-lib-table' files under ~/.config/kicad/<version>.
+EOF
+}
