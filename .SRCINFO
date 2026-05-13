@@ -1,13 +1,13 @@
 pkgbase = see-grub-bin
 	pkgdesc = see-grub is a renderer for grub theme.txts made with Go and Ebitengine
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/Uami-11/see-grub
 	license = MIT
 	conflicts = see-grub
 	provides = see-grub
 	arch = x86_64
-	source_x86_64 = https://github.com/Uami-11/see-grub/releases/download/v0.2.1/see-grub_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 51d38e71c3f2ca291e113ebb3cce0487cf86fb843afccc8d9d551156096fee0a
+	source_x86_64 = https://github.com/Uami-11/see-grub/releases/download/v0.2.2/see-grub_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = da1564301d4513c8aae5f70d65e70e5648dcab5cd51fd14d650bcd270957f70f
 	
 pkgname = see-grub-bin
