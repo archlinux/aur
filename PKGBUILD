@@ -2,7 +2,7 @@
 # Co-Maintainer: Kevin <github@kev314.dev>
 pkgname=noctalia-shell-git
 pkgver=2.3.1.r16.g330eac0
-pkgrel=6
+pkgrel=7
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell. (git version)"
 arch=('any')
 url="https://github.com/noctalia-dev/noctalia-shell"
@@ -25,7 +25,7 @@ optdepends=(
 makedepends=('git')
 provides=('noctalia-shell')
 conflicts=('noctalia-shell')
-source=("git+$url.git")
+source=("git+$url.git#branch=legacy-v4")
 sha256sums=('SKIP')
 
 pkgver() {
