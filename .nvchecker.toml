@@ -1,0 +1,4 @@
+[gnome-shell-extension-o-tiling]
+source = "git"
+git = "https://github.com/oliwebd/o-tiling.git"
+prefix = "v"
