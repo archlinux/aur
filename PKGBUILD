@@ -4,12 +4,20 @@
 # Requires Plasma 6.6+ (KF6 6.6, Qt 6.6, KWin 6.6).
 
 pkgname=plasmazones
-pkgver=2.8.7
+pkgver=2.8.8
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma'
 arch=('x86_64')
 url='https://github.com/fuddlesworth/PlasmaZones'
 license=('GPL-3.0-or-later')
+
+# Exact KWin upstream pin. The kwin-effect plugin's IID embeds KWin's exact
+# upstream version string; KWin refuses to load effects whose IID doesn't
+# match its own version, including across patch bumps (e.g. 6.6.4 -> 6.6.5).
+# kwin is in makedepends below, so it is installed before makepkg evaluates
+# depends. cut strips Arch's pkgrel so we pin to upstream (e.g. "6.6.5").
+_kwin_ver=$(pacman -Q kwin 2>/dev/null | awk '{print $2}' | cut -d- -f1)
+
 depends=(
     'qt6-base'
     'qt6-declarative'
@@ -21,6 +29,7 @@ depends=(
     'kcmutils'
     'kglobalaccel'
     'qt6-wayland'
+    "kwin${_kwin_ver:+=}${_kwin_ver}"
 )
 makedepends=(
     'cmake'
@@ -37,7 +46,7 @@ optdepends=(
 )
 conflicts=('plasmazones-bin' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8770ad397044607e1534c9460aec8479926259883ba04bc3074a329fe02c72ed')
+sha256sums=('d29cad9cff90f2704a96c20b067b87dbd358626f592ea5276aecca0b02defcda')
 install=plasmazones.install
 
 build() {
