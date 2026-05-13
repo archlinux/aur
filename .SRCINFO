@@ -13,6 +13,7 @@ pkgbase = xfwl4-git
 	makedepends = rust
 	makedepends = git
 	makedepends = meson
+	makedepends = gettext
 	depends = gtk3
 	depends = xfconf>=4.21.1
 	depends = libxfce4ui>=4.21.4
