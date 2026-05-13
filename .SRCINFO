@@ -1,0 +1,20 @@
+pkgbase = python-py-tools-ds
+	pkgdesc = A collection of geospatial data analysis tools that simplify standard operations when handling geospatial raster and vector data as well as projections.
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://git.gfz-potsdam.de/danschef/py_tools_ds
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gdal
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-pyproj
+	depends = python-shapely
+	depends = python-spectral
+	source = py_tools_ds-0.24.1::https://git.gfz-potsdam.de/danschef/py_tools_ds/-/archive/v0.24.1/py_tools_ds-v0.24.1.tar.gz
+	sha256sums = 7ccfcef3c2bccfc92e9aa4d1d25ebb0777ea4f4f7ce96675221619d94486bc59
+
+pkgname = python-py-tools-ds
