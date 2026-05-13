@@ -6,7 +6,7 @@ _appname=sqview
 pkgname=${_gitname}-bin
 pkgdesc="A keyboard-first terminal viewer for SQLite databases"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,7 +32,7 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 sha256sums=('d21f768901e1abb761a57da47ab03b3cbc0f6e1725529cd3667ca8b830bc1919'
             'd0d5a61ec9adabd9f56fe77ddeb16947b25d78a4d0a62af8acc1ca120222abe3'
             '5b762bb512134a617eb1d2c3a134325cf15f0135c30f6ef48651b6f169c9325f')
-sha256sums_x86_64=('fffcf23797ef9494af5fbcc74c409364a2e67cefa0aa90f23c6ea1b352f60f01')
+sha256sums_x86_64=('054f674b588c8010839eb0b75f74dbf99358720e63a9e7c74657ec36c8536dd4')
 
 
 package() {
