@@ -1,6 +1,6 @@
 pkgbase = concord
 	pkgdesc = A feature rich terminal client for Discord
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/chojs23/concord
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = concord
 	makedepends = cargo
 	depends = glibc
 	options = !lto
-	source = concord-1.3.0.tar.gz::https://github.com/chojs23/concord/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 41645656a96b23f55a7b16d2a94e301d7dfaab907d2fc38115ea3861d535c1fb
+	source = concord-1.3.2.tar.gz::https://github.com/chojs23/concord/archive/refs/tags/v1.3.2.tar.gz
+	sha256sums = 45b3b0edf4ec5390acbf803a69aa79e25d46557bff0dbed5d058453e669097bf
 
 pkgname = concord
