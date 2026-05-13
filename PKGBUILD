@@ -1,6 +1,6 @@
 # Maintainer: okrinoggen <okrinoggen@users.noreply.github.com>
 pkgname=voxn
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Local-first voice and text note-taking suite"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 )
 conflicts=('voxn-git')
 source=("https://files.pythonhosted.org/packages/source/v/voxn/voxn-${pkgver}.tar.gz")
-sha256sums=('7ae4a587d5ff24d869ad81815f456c8ec2147c578cf6d8009ca7557ad9d86148')
+sha256sums=('a582d3edcaf8af03bb0998bcee528011f811350099391f3ef23604a8c6e607c4')
 
 build() {
   cd "$pkgname-$pkgver"
