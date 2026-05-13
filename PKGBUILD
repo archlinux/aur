@@ -2,13 +2,13 @@
 
 pkgname=freedv-gui
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
 license=('LGPL-2.1-or-later')
 url="https://freedv.org/"
 depends=('libpulse' 'hamlib' 'wxwidgets-gtk3' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'libebur128')
-makedepends=('cmake' 'patchelf')
+makedepends=('cmake' 'patchelf' 'wget')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('34ee5e8287ff430d589d3fe7065a075392e17f03c5e89b3d4a0ae683a94a31572a415ab41554aabfaa22d5b494b4bf15e7f0becee9f39926b42950a1b0765598')
 

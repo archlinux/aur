@@ -1,13 +1,14 @@
 pkgbase = freedv-gui
 	pkgdesc = Digital Voice for Radio Amateurs
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freedv.org/
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-or-later
 	makedepends = cmake
 	makedepends = patchelf
+	makedepends = wget
 	depends = libpulse
 	depends = hamlib
 	depends = wxwidgets-gtk3
