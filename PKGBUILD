@@ -1,6 +1,7 @@
 # Maintainer: Zeta <z@gonzaleza.cr>
-pkgname=('agente-gaudi' 'middleware-idopte' 'certificados-bccr')
+pkgname=('firma-digital-agente-gaudi' 'firma-digital-middleware-idopte' 'firma-digital-certificados-bccr')
 pkgver=Rev28
+pkgbase=firma-digital
 pkgrel=1
 epoch=1
 pkgdesc="Instalador de suite de firma digital costa rica"
@@ -19,7 +20,7 @@ build() {
     bsdtar -xf "${srcdir}/Firma Digital/Agente GAUDI/agente-gaudi_26.0_amd64.rpm" -C "${srcdir}/Firma Digital/Agente GAUDI"
 }
 
-package_certificados-bccr() {
+package_firma-digital-certificados-bccr() {
     depends=("p11-kit" "pcsclite")
     install=certificados.install
     certs=(
@@ -42,7 +43,7 @@ package_certificados-bccr() {
     done
 }
 
-package_agente-gaudi() {
+package_firma-digital-agente-gaudi() {
     provides=("Agente-GAUDI")
     install -d "${srcdir}/Firma Digital/Agente GAUDI/opt" "${pkgdir}/opt" 2> >(read err; error "$err")
     cp -r "${srcdir}/Firma Digital/Agente GAUDI/opt/"* "${pkgdir}/opt/" 2> >(read err; error "$err")
@@ -53,7 +54,7 @@ package_agente-gaudi() {
     ln -s "${srcdir}/Firma Digital/Agente GAUDI/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop" "${pkgdir}/usr/share/applications/Agente-GAUDI.desktop"
 }
 
-package_middleware-idopte() {
+package_firma-digital-middleware-idopte() {
     depends=("aom" "at-spi2-core" "brotli" "bzip2" "cairo" "dav1d" "dbus" "e2fsprogs" "enchant" "expat" "fontconfig" "freetype2" "fribidi" "gdk-pixbuf2" "glib2" "glycin" "graphite" "gst-plugins-base-libs" "gstreamer" "gtk3" "harfbuzz" "harfbuzz-icu" "hidapi" "highway" "hyphen" "icu" "json-glib" "keyutils" "krb5" "lcms2" "libatomic" "libavif" "libcloudproviders" "libdatrie" "libdrm" "libelf" "libepoxy" "libevdev" "libffi" "libgcc" "libgcrypt" "libglvnd" "libgpg-error" "libgudev" "libidn2" "libjpeg-turbo" "libjxl" "libmanette" "libnotify" "libpng" "libpsl" "libseccomp" "libsecret" "libsoup" "libstdc++" "libtasn1" "libthai" "libunistring" "libunwind" "libwebp" "libx11" "libxau" "libxcb" "libxcomposite" "libxcursor" "libxdamage" "libxdmcp" "libxext" "libxfixes" "libxi" "libxinerama" "libxkbcommon" "libxml2" "libxrandr" "libxrender" "libxslt" "libyuv" "mesa" "openssl" "orc" "pango" "pcre2" "pcsclite" "pixman" "rav1e" "sqlite" "svt-av1" "systemd-libs" "tinysparql" "tpm2-tss" "util-linux-libs" "wayland" "webkit2gtk" "woff2" "xz" "zlib" "zstd")
     provides=("legacy.so" "libidolog.so" "libidop11.so" "libt_ias.so" "SCManager" "idocachesrv")
     conflicts=()
