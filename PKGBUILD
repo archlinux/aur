@@ -3,7 +3,7 @@
 # Former Contributor: ml <>
 
 pkgname=alda
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
@@ -12,11 +12,11 @@ license=('EPL-2.0')
 depends=('java-runtime>=8')
 provides=('alda')
 conflicts=('alda-bin') 
-# If it ever appears on the AUR (it was not on the AUR as of 6/25/25), Alda also conflicts with IcedTea (https://openjdk.org/projects/icedtea/). See https://github.com/alda-lang/alda/blob/master/doc/troubleshooting.md#icedtea-related-issues for more.
+# If it ever appears on the AUR (it was not on the AUR as of 5/13/26), Alda also conflicts with IcedTea (https://openjdk.org/projects/icedtea/). See https://github.com/alda-lang/alda/blob/master/doc/troubleshooting.md#icedtea-related-issues for more.
 makedepends=('go')
 source=("$pkgname-release-$pkgver.tar.gz::https://codeload.github.com/$pkgname-lang/$pkgname/tar.gz/refs/tags/release-$pkgver"
   alda-player )
-b2sums=('7d97f433381825a08f95b9aedc34c60e344e8e5360f05bf34f688a57b19bcb8f8a78e37a9aab6b3522fa7285e9e8cb9a36090ab2ef29c959f21e84d91eeb4d68'
+b2sums=('05b64f38d34d4c928f42131db23f420d4150c2774855eca38b0489f601aba73af972275cb34d3b59348eec075eb0a0be79f94eeecb2e0de6d332ba0fd0dbd01b'
   '5d6bdd39c1178fd5504a308d95606a82bae781159128e3c5d79c989a253871b36f92123410479d8734df2dbf335ccab2f194d99503fddb76f9e86bb0ed8acee4')
 
 build() {
