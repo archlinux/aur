@@ -24,7 +24,7 @@ pkgname=(
   pipewire-session-manager-ldac
   pulse-native-provider-ldac
 )
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 epoch=1
 pkgdesc="Low-latency audio/video router and processor with ldac decoder support"
@@ -79,7 +79,7 @@ checkdepends=(
 source=(
   "git+https://gitlab.freedesktop.org/pipewire/pipewire.git#tag=$pkgver"
 )
-b2sums=('054c756beae00a1dc9b757864633f9698a8f6cf5c7c187b2f0d0cb762eec74990e3403e949684b24a5e67d499c9257a91fbd7ebbe764ee34fd02f92844419427')
+b2sums=('48b5141cef2faaae187cef485b4559d876de0c42c5cd07efda38a69134232ccb37406f1c6b015fcb5c9722f000952018bf0eceeaf3c8265940225fcdd282c8d1')
 
 
 prepare() {
