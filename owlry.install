@@ -1,8 +1,127 @@
 ## owlry .install hook
 ##
 ## v2.0 renamed the systemd user units (owlryd.{service,socket} → owlry.{service,socket})
-## and consolidated 14 separate packages into one. Handle the unit migration so users
-## upgrading from 1.x don't end up with an enabled-but-missing owlryd.service.
+## and consolidated 14 separate packages into one.
+##
+## 2.0.1 extends this hook with proactive detection of two common upgrade snags:
+##   1. Stale ~/.config/systemd/user/owlry{,d}.{service,socket} overrides pointing
+##      at a deleted dev-time build path or the removed `owlryd` binary. systemd-user
+##      gives precedence to user-level units over /usr/lib/systemd/user/*, so a
+##      stale override silently breaks the AUR-shipped unit.
+##   2. Compositor configs (Hyprland, Sway, i3, river, niri) with `exec owlryd` /
+##      `exec-once = owlryd` lines that won't resolve anymore.
+##
+## The hook only DETECTS and REPORTS — it never touches user homedirs from a root
+## pacman context. Each affected user gets a precise remediation command.
+
+_owlry_for_each_user() {
+    # Apply $1 (function name) to each logged-in user's home directory.
+    # Falls back silently if loginctl/getent aren't available.
+    local fn="$1"
+    command -v loginctl >/dev/null 2>&1 || return 0
+    command -v getent >/dev/null 2>&1 || return 0
+    local user home
+    while read -r user; do
+        [ -n "$user" ] || continue
+        home="$(getent passwd "$user" 2>/dev/null | awk -F: '{print $6}')"
+        [ -d "$home" ] || continue
+        "$fn" "$user" "$home"
+    done < <(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}')
+}
+
+_owlry_check_unit() {
+    # Inspect a user-level systemd unit; emit a remediation hint if it's stale.
+    # Args: $1=user, $2=home, $3=unit-filename (e.g. owlry.service)
+    local user="$1" home="$2" unit="$3"
+    local svc="$home/.config/systemd/user/$unit"
+    [ -f "$svc" ] || return 1
+    local exec_line
+    exec_line="$(grep -E '^ExecStart=' "$svc" 2>/dev/null | head -1 | sed 's/^ExecStart=//')"
+    case "$exec_line" in
+        */owlryd|*/owlryd\ *)
+            printf '    %s -> references deleted owlryd binary: %s\n' "$svc" "$exec_line"
+            return 0
+            ;;
+        */target/debug/*|*/target/release/*)
+            printf '    %s -> points at a dev-time build path: %s\n' "$svc" "$exec_line"
+            return 0
+            ;;
+        */owlry|*/owlry\ *|/usr/bin/owlry|/usr/bin/owlry\ *)
+            # If the override matches the canonical /usr/bin/owlry, it's harmless
+            # but redundant. Flag it gently.
+            printf '    %s -> user-level override (redundant; AUR ships this unit)\n' "$svc"
+            return 0
+            ;;
+        *)
+            # Unknown ExecStart — flag it so the user can review.
+            printf '    %s -> non-standard ExecStart: %s\n' "$svc" "$exec_line"
+            return 0
+            ;;
+    esac
+}
+
+_owlry_check_compositors() {
+    # Args: $1=user, $2=home
+    local user="$1" home="$2"
+    local found=0 f
+    # Single-file configs
+    for f in \
+        "$home/.config/sway/config" \
+        "$home/.config/i3/config" \
+        "$home/.config/river/init" \
+        "$home/.config/niri/config.kdl"; do
+        if [ -f "$f" ] && grep -qE '\bowlryd\b' "$f" 2>/dev/null; then
+            printf '    %s -> contains `owlryd` reference\n' "$f"
+            found=1
+        fi
+    done
+    # Hyprland — main file + include directory
+    if [ -d "$home/.config/hypr" ]; then
+        while IFS= read -r f; do
+            if grep -qE '\bowlryd\b' "$f" 2>/dev/null; then
+                printf '    %s -> contains `owlryd` reference\n' "$f"
+                found=1
+            fi
+        done < <(find "$home/.config/hypr" -type f \( -name '*.conf' -o -name '*.hyprlang' \) 2>/dev/null)
+    fi
+    return $((1 - found))
+}
+
+_owlry_per_user_migration_check() {
+    local user="$1" home="$2"
+    # Collect all check output in one subshell so internal newlines are
+    # preserved (only the trailing newline gets stripped by $()).
+    local out
+    out="$({
+        _owlry_check_unit "$user" "$home" owlry.service
+        _owlry_check_unit "$user" "$home" owlry.socket
+        _owlry_check_unit "$user" "$home" owlryd.service
+        _owlry_check_unit "$user" "$home" owlryd.socket
+        _owlry_check_compositors "$user" "$home"
+    })"
+
+    [ -z "$out" ] && return 0
+
+    echo
+    echo "  ── user '$user' ─────────────────────────────────────────────"
+    echo "$out"
+    echo
+    echo "  Suggested cleanup (run as '$user'):"
+    echo
+    cat <<EOF
+      # 1. Drop any user-level systemd overrides:
+      rm -f ~/.config/systemd/user/owlry.service ~/.config/systemd/user/owlry.socket
+      rm -f ~/.config/systemd/user/owlryd.service ~/.config/systemd/user/owlryd.socket
+      systemctl --user daemon-reload
+      systemctl --user reenable --now owlry.service
+      systemctl --user reset-failed owlry.service 2>/dev/null || true
+
+      # 2. Replace any \`owlryd\` autostart line in your compositor config:
+      #      exec-once = owlryd       ->   exec-once = owlry -d
+      #      exec       owlryd        ->   exec       owlry -d
+      #    (Usually unnecessary now — owlry.service / owlry.socket replace autostart.)
+EOF
+}
 
 post_upgrade() {
     local old_pkgver="$2"
@@ -20,31 +139,22 @@ post_upgrade() {
   │      owlryd.service  ->  owlry.service                          │
   │      owlryd.socket   ->  owlry.socket                           │
   │                                                                 │
-  │  If you had the old service enabled, run:                       │
-  │      systemctl --user disable --now owlryd.service              │
-  │      systemctl --user enable  --now owlry.service               │
-  │                                                                 │
   │  Plugin packages (bookmarks, systemd, clipboard, …) are now     │
   │  built into owlry by default — they were dropped from AUR and   │
   │  replaced via this package.                                     │
   │                                                                 │
-  │  Widget providers (weather, media, pomodoro) are not in 2.0;    │
-  │  they return in a later 2.x release. See:                       │
-  │      docs/RESTRUCTURE-V2.md (decisions D20, section 8)          │
+  │  Widget providers (weather, media, pomodoro) and bookmarks      │
+  │  are not in 2.0; they return in a later 2.x release. See:       │
+  │      docs/RESTRUCTURE-V2.md (decisions D20, D22)                │
   ╰─────────────────────────────────────────────────────────────────╯
-
 EOF
-            # Best-effort transition: if the old owlryd.service is enabled or
-            # active for the invoking user, stop it and disable it so the new
-            # owlry.service can take over. Errors are non-fatal — pacman runs
-            # as root, so we can only inspect, not toggle user units here.
-            if command -v loginctl >/dev/null 2>&1; then
-                local invoking_user
-                invoking_user="$(loginctl list-users --no-legend 2>/dev/null | awk 'NR==1 {print $2}')"
-                if [ -n "$invoking_user" ]; then
-                    echo "  (Run the systemctl --user commands above as user '$invoking_user'.)"
-                fi
-            fi
+            _owlry_for_each_user _owlry_per_user_migration_check
+            ;;
+        2.0|2.0.0)
+            # 2.0.0 → 2.0.1: re-run the migration check; some users may have
+            # missed cleanup the first time. Idempotent — only prints when
+            # there's still something to flag.
+            _owlry_for_each_user _owlry_per_user_migration_check
             ;;
     esac
 }

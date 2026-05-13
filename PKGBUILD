@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Lightweight Wayland application launcher — UI, daemon, and providers in one binary"
 arch=('x86_64')
@@ -74,7 +74,7 @@ install=owlry.install
 options=('!debug')
 
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v$pkgver.tar.gz")
-b2sums=('e943074d2768cd3260248b67298860b00eeadffab0ccde5bcc07dc71356390c09ea6328fb2655cfdf9323de3a490e410be2b36ac1719bfc11361c4911142ee05')
+b2sums=('2e5b4264b0dd4b49ea6ef5adb1ed9d7b711bf8ad76467a4abe7275d1f2b6ad1c472a39e137b1b9cbda9d8a5d04d58247db8a1f02ca114994be606fc3dd8bab08')
 
 prepare() {
     cd "owlry"
