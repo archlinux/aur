@@ -1,7 +1,7 @@
 pkgbase = niripwmenu-reborn
 	pkgdesc = Power menu widget for niri (Wayland)
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/cmachsocket/niripwmenu-reborn
 	arch = any
 	license = MIT
