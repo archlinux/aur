@@ -1,0 +1,14 @@
+pkgbase = rpnx
+	pkgdesc = a simple reverse polish notation calculator written in C++
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.softkittypa.ws/ika4422/rpnx
+	arch = x86_64
+	license = CNPLv8
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	source = rpnx-1.0.0.tar.gz::https://git.softkittypa.ws/ika4422/rpnx/archive/v1.0.0.tar.gz
+	sha256sums = 2e58fe6ee9a194924fdf0bb97a51c4514e33f822dfa9424659b8e785b4f1215c
+
+pkgname = rpnx
