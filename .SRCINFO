@@ -1,7 +1,7 @@
 pkgbase = dtsfmt
 	pkgdesc = Auto formatter for device tree files written in Rust.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mskelton/dtsfmt
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dtsfmt
 	makedepends = cargo
 	options = !lto
 	source = dtsfmt-0.8.0.tar.gz::https://github.com/mskelton/dtsfmt/archive/v0.8.0.tar.gz
-	source = dtsfmt-ts.tar.gz::https://github.com/joelspadin/tree-sitter-devicetree/archive/6557729f4afaf01dec7481d4e5975515ea8f0edd.tar.gz
+	source = ts-devicetree.tar.gz::https://github.com/joelspadin/tree-sitter-devicetree/archive/6557729f4afaf01dec7481d4e5975515ea8f0edd.tar.gz
 	sha256sums = 436efc35883a48fe68549e1bc86923fcf10696a3c2a7af4ae4463c6b0f67429d
 	sha256sums = cbf55984c8c9edf2eb160591c28da948b67e6522c8aa753f97c68c73457d627f
 
