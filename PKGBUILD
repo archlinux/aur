@@ -58,11 +58,15 @@ package_middleware-idopte() {
     provides=("legacy.so" "libidolog.so" "libidop11.so" "libt_ias.so" "SCManager" "idocachesrv")
     conflicts=()
 
+    msg "Installing smart card middleware"
     for item in "${provides[@]}"; do
-        echo "Installing $item"
-        install -Dm644 "${srcdir}/Firma Digital/Idopte/usr/lib/SCMiddleware/${item}" "${pkgdir}/usr/lib/${item}"
+        msg2 "Installing $item"
+        install -Dm644 "${srcdir}/Firma Digital/Idopte/usr/lib/SCMiddleware/${item}" "${pkgdir}/usr/lib/SCMiddleware/${item}"
     done
 
+    msg "Creating firma digital module"
+    mkdir -p "${pkgdir}/usr/share/p11-kit/modules/"
+    echo -n 'module: /usr/lib/SCMiddleware/libidop11.so' > "${pkgdir}/usr/share/p11-kit/modules/firma-digital.module"
 post_update() {
     post_install
 }
