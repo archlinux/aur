@@ -10,7 +10,7 @@ license=('MIT' 'unknown' 'unknown')
 depends=()
 makedepends=("unzip")
 options=("!strip")
-source=("sfd_ClientesLinux_RPM64_Rev28.zip")
+source=("local://sfd_ClientesLinux_RPM64_Rev28.zip")
 noextract=()
 sha256sums=('f3c5fdd12686533ea60ddf3420e465b94228c7ed67474e031f86f60509f5e45d')
 
