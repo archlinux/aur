@@ -1,0 +1,30 @@
+pkgbase = dusklight
+	pkgdesc = Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/TwilitRealm/dusklight
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = cmake
+	makedepends = meson
+	makedepends = clang
+	makedepends = lld
+	makedepends = llvm
+	makedepends = vulkan-headers
+	makedepends = patchelf
+	depends = glibc
+	depends = libgcc
+	depends = abseil-cpp
+	depends = libstdc++
+	depends = sdl3
+	depends = libjpeg-turbo
+	depends = freetype2
+	provides = tp-dusk
+	conflicts = tp-dusk
+	replaces = tp-dusk
+	source = git+https://github.com/TwilitRealm/dusklight.git#tag=v1.0.1
+	source = git+https://github.com/encounter/aurora.git
+	sha256sums = 0d76d2fe29a0273aea84f3d71807c09b08911523ebeca8a7db8c8c8fdaae7022
+	sha256sums = SKIP
+
+pkgname = dusklight
