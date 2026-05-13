@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-bin
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -36,7 +36,7 @@ conflicts=(
     'shiori-ebook-bin'
 )
 source=("Shiori_${pkgver}_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('794bbb612c4fc03a7aaec59bd1f213644b76006358fa46dfc4761940cf7d1ea1')
+sha256sums=('56450de3b684f30f98a5444fff44feec9b8cac3b4f2b2abcb1c12d2ff74ff2d0')
 
 package() {
     bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
@@ -50,6 +50,17 @@ package() {
         echo "Missing usr/share/applications/Shiori.desktop in release tarball" >&2
         return 1
     fi
+
+    # Hotfix: older release tarballs can contain absolute asset paths (/assets/*, /fonts/*)
+    # that break on some Linux/AUR installs and cause white screen.
+    while IFS= read -r -d '' index_html; do
+        sed -i \
+            -e 's|href="/assets/|href="./assets/|g' \
+            -e 's|src="/assets/|src="./assets/|g' \
+            -e 's|href="/fonts/|href="./fonts/|g' \
+            -e 's|href="/favicon\.png"|href="./favicon.png"|g' \
+            "${index_html}"
+    done < <(find "${pkgdir}/usr" -type f -name index.html -print0)
 
     chmod -R u=rwX,go=rX "${pkgdir}/usr"
     chmod 755 "${pkgdir}/usr/bin/shiori"
