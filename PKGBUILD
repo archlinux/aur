@@ -4,11 +4,11 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Binary wrapper for gaze-gnome-extension from Gundu Labs"
 arch=('x86_64' )
-url="https://github.com/GunduLabs/gaze/releases/tag/v0.1.0"
+url="https://gaze.gundulabs.com"
 license=('custom')
 depends=('gnome-shell' )
 source=("gaze-gnome-extension-0.1.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gnome-extension-0.1.0-1-x86_64.pkg.tar.zst")
-sha256sums=('a695e2229050179ead792d6677cab599144b9558fc31364ff3dd6d283248422d')
+sha256sums=('d4f0a87924f03b5dd2c0ed68fc29e216bf6e0482d1637f151a02fc14294c4393')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-gnome-extension-0.1.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
