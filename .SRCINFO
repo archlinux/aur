@@ -7,6 +7,7 @@ pkgbase = samba-util
 	license = MIT
 	depends = samba
 	depends = systemd
+	depends = cifs-utils
 	source = https://github.com/mijocecr/samba-util/releases/download/samba-util_v3.0/SAMBA-Util.tar.gz
 	sha256sums = SKIP
 

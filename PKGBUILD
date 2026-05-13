@@ -5,7 +5,7 @@ pkgdesc="A simple and modern GUI for managing Samba."
 
 arch=('x86_64')
 license=('MIT')
-depends=('samba' 'systemd')
+depends=('samba' 'systemd' 'cifs-utils')
 url="https://github.com/mijocecr/samba-util"
 source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v3.0/SAMBA-Util.tar.gz")
 sha256sums=('SKIP')
