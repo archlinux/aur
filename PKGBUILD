@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 # Contributor: Yuki Okushi <huyuumi.dev@gmail.com>
 pkgname=pinact
-pkgver=3.9.2
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="CLI to pin GitHub Actions and Reusable Workflows to full hashes"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/suzuki-shunsuke/pinact"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ea47eefa985476b8fe3cafc814d636242fc51897f35328af3809665a0c3841ca')
+sha256sums=('adebd06fbddbdc9fc6dc858cfbce132a3221d880775c4a1102559394c3127f88')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
