@@ -8,8 +8,9 @@ arch=('i686' 'x86_64')
 url="https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/"
 license=('GPL')
 replaces=('coot-data')
-makedepends=('boost' 'bc' 'which')
-depends=('openal' 'boost-libs' 'guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'libvorbis' 'fftw2-float' 'gsl' 'swig'
+makedepends=('eigen' 'boost' 'bc' 'which')
+# todo: gemmi
+depends=('eigen' 'openal' 'boost-libs' 'guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'libvorbis' 'fftw2-float' 'gsl' 'swig'
          'libgl' 'gtk4' 'glib2' 'glm' 'cairo' 'libssm>=1.4' 'zlib' 'curl' 'python' 'python-gobject' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
 source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/refs/tags/Release-$pkgver.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
