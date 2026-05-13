@@ -23,7 +23,7 @@ pkgver () {
 prepare() {
   cd "${srcdir}/vtk"
   # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
-  patch -p1 -i ../diy2.patch
+  patch -p1 -i "${srcdir}"/diy2.patch
 }
 
 build() {
