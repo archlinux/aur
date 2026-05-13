@@ -9,4 +9,5 @@ sha256sums=('0bb9587f81414458bac9d7aaaf2c3d21a33f372f04f561c8c49f2216377c9c87')
 
 package() {
   echo "==> Hello!"
+  echo "==> I am AH by Jeicob_hack 2015"
 }
