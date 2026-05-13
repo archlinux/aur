@@ -18,3 +18,5 @@ go/
 .DS_Store
 *~
 *.swp
+.nvchecker.toml
+aur-build-update.sh
