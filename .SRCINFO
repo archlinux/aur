@@ -14,7 +14,7 @@ pkgbase = eika-shell-git
 	provides = esh
 	conflicts = eika-shell
 	options = !debug
-	source = git+https://github.com/eika-sia/eika-shell.git
+	source = git+https://github.com/eika-sia/eika-shell.git#branch=main
 	sha256sums = SKIP
 
 pkgname = eika-shell-git

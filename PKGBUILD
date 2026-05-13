@@ -11,7 +11,7 @@ makedepends=('git' 'cmake')
 provides=('eika-shell' 'esh')
 conflicts=('eika-shell')
 install='eika-shell.install'
-source=('git+https://github.com/eika-sia/eika-shell.git')
+source=('git+https://github.com/eika-sia/eika-shell.git#branch=main')
 sha256sums=('SKIP')
 options=('!debug')
 
@@ -29,11 +29,12 @@ build() {
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr
 
-  cmake --build "$srcdir/build"
+  cmake --build "$srcdir/build" --parallel
 }
 
 package() {
-  install -Dm755 "$srcdir/build/shell" "$pkgdir/usr/bin/esh"
+  install -Dm755 "$srcdir/build/shell" \
+    "$pkgdir/usr/bin/esh"
 
   install -Dm644 "$srcdir/$_pkgname/README.md" \
     "$pkgdir/usr/share/doc/$pkgname/README.md"
