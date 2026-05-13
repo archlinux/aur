@@ -1,0 +1,17 @@
+pkgbase = repak-bin
+	pkgdesc = Unreal Engine .pak file library and CLI in Rust (binary release)
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/trumank/repak
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = repak=0.2.3
+	conflicts = repak
+	options = !debug
+	source_x86_64 = repak-0.2.3-x86_64.tar.xz::https://github.com/trumank/repak/releases/download/v0.2.3/repak_cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 933bdb8e26f34e8fd70ea50201efca39df041de58aa83b1cd6eb83da124a2046
+
+pkgname = repak-bin
