@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gdb
 	pkgdesc = The GNU Debugger (mingw-w64)
-	pkgver = 17.1
+	pkgver = 17.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mingw-w64-gdb
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://ftp.gnu.org/gnu/gdb/gdb-17.1.tar.xz
-	sha256sums = 14996f5f74c9f68f5a543fdc45bca7800207f91f92aeea6c2e791822c7c6d876
+	source = http://ftp.gnu.org/gnu/gdb/gdb-17.2.tar.xz
+	sha256sums = 1c036c0d72e4b3d1fb5c94c88632add6f9d76f4d7c4d2ea793c12a9f19a3228c
 
 pkgname = mingw-w64-gdb

@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-gdb
-pkgver=17.1
+pkgver=17.2
 pkgrel=1
 pkgdesc="The GNU Debugger (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('mingw-w64-dlfcn' 'mingw-w64-expat' 'mingw-w64-zlib' 'mingw-w64-readlin
 makedepends=('mingw-w64-configure' 'texinfo')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-sha256sums=('14996f5f74c9f68f5a543fdc45bca7800207f91f92aeea6c2e791822c7c6d876')
+sha256sums=('1c036c0d72e4b3d1fb5c94c88632add6f9d76f4d7c4d2ea793c12a9f19a3228c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
