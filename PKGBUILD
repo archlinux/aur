@@ -11,9 +11,9 @@ arch=('x86_64')
 url="https://ikuuu.dev/"
 license=('custom')
 options=(!strip !debug)
-depends=('gtk3')
-provides=("${_pkgname}" "${_binname}")
-conflicts=("${_pkgname}" "${_binname}")
+depends=('gtk3' 'libsecret' 'libayatana-appindicator')
+optdepends=('libkeybinder3: for global hotkeys')
+# no provides/conflicts: keep only the canonical Arch package name
 
 _deb_file="${_pkgname}-${pkgver}-${_buildid}-linux-amd64.deb"
 
@@ -36,9 +36,13 @@ package() {
 		-e "s|^Exec=.*|Exec=${_binname} %U|" \
 		"${pkgdir}/usr/share/applications/iKuuuVPN.desktop"
 
-	# Binaries (provide both iKuuuVPN, ikuuu_vpn and ikuuu-vpn)
+	# License / notices
+	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -m644 \
+		"${pkgdir}/usr/share/iKuuuVPN/data/flutter_assets/NOTICES.Z" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/NOTICES.Z"
+
+	# Binary (canonical command name)
 	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "../share/iKuuuVPN/iKuuuVPN" "${pkgdir}/usr/bin/iKuuuVPN"
-	ln -s "iKuuuVPN" "${pkgdir}/usr/bin/${_pkgname}"
-	ln -s "iKuuuVPN" "${pkgdir}/usr/bin/${_binname}"
+	ln -s "../share/iKuuuVPN/iKuuuVPN" "${pkgdir}/usr/bin/${_binname}"
 }
