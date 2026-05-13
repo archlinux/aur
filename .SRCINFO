@@ -1,17 +1,22 @@
 pkgbase = zsa-zapp-git
 	pkgdesc = Flash ZSA keyboards from your terminal.
-	pkgver = 1.0.0.r1.gaaffabf
-	pkgrel = 2
+	pkgver = 1.0.1.r0.gc1dd545
+	pkgrel = 1
 	url = https://github.com/zsa/zapp
 	arch = x86_64
-	license = custom:MIT-Commons-Clause
+	license = LicenseRef-MIT-Commons-Clause
 	makedepends = git
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	provides = zsa-zapp=1.0.0.r1.gaaffabf
+	depends = systemd-libs
+	provides = zsa-zapp=1.0.1.r0.gc1dd545
 	conflicts = zsa-zapp
 	source = zsa-zapp-git::git+https://github.com/zsa/zapp
 	sha256sums = SKIP
 
 pkgname = zsa-zapp-git
+	depends = glibc
+	depends = libgcc
+	depends = systemd-libs
+	depends = libudev.so
