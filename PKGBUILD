@@ -14,7 +14,7 @@ conflicts=('braincup')
 options=('!strip')
 
 source=("Braincup-${pkgver}-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v${pkgver}/Braincup-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('eb5d219d5b344912f7913fad2fd51200482633a9aeb57afb98f0c6013c8e2fd8')
+sha256sums=('11b0682a91a88edb12661a2c9d7df959beec2e76db396463175c666d0687c4a6')
 
 package() {
     # Install application files
