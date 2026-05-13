@@ -3,7 +3,7 @@
 # Contributor: Evert <evorster at gmail dot com>
 _pkgname=hermes-agent
 pkgname=${_pkgname}-git
-pkgver=2026.5.7.r474.g99ad2d
+pkgver=2026.5.7.r547.g942adf
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -71,10 +71,15 @@ build() {
     (cd scripts/whatsapp-bridge && rm -f package-lock.json && npm install --legacy-peer-deps --omit=dev) || return 1
   fi
 
-  echo "==> Creating Python 3.11 venv and installing dependencies..."
-  uv venv --python 3.11 --clear venv || return 1
-  source venv/bin/activate
-  uv pip install .[all]
+  echo "==> Creating Python venv and installing dependencies..."
+  # Use the system Python (3.14 on Arch) with `python -m venv --copies` to create
+  # a fully self-contained venv.  --copies copies the Python binary into the venv
+  # and correctly patches all its embedded prefix paths, avoiding the /install
+  # hardcoding problem that uv-managed Python has.
+  # hermes-agent itself is pure Python and compatible with Python 3.11 .. 3.14.
+  python -m venv --copies --clear "$srcdir/${_pkgname}/venv" || return 1
+  "$srcdir/${_pkgname}/venv/bin/python" -m pip install -U pip setuptools wheel || return 1
+  "$srcdir/${_pkgname}/venv/bin/python" -m pip install .[all] || return 1
 }
 
 package() {
@@ -89,20 +94,26 @@ package() {
   cp -r web "$_optdir/"
   cp -r scripts "$_optdir/"
 
-  # The TUI launcher uses PROJECT_ROOT/ui-tui, where PROJECT_ROOT is the venv's
-  # site-packages directory (/opt/hermes-agent/venv/lib/python3.11/site-packages
-  # for this package). Put the prebuilt ui-tui tree there so hermes --tui does
-  # not try to npm-install from a missing directory at runtime.
-  if [ -d "ui-tui" ]; then
+  # The TUI launcher (hermes_cli/main.py line 1055-1059) checks HERMES_TUI_DIR.
+  # When set, it looks for $HERMES_TUI_DIR/dist/entry.js — keep the dist/
+  # directory intact so the shortcut path is triggered.
+  if [ -d "ui-tui/dist" ]; then
     _site_packages="$(find "$_optdir/venv/lib" -type d -name site-packages -print -quit)"
-    install -d "$_site_packages"
-    cp -a ui-tui "$_site_packages/"
+    install -d "$_site_packages/ui-tui/dist"
+    cp -a ui-tui/dist/* "$_site_packages/ui-tui/dist/"
   fi
 
-  # Copy node_modules if present (kept alongside app for same path)
-  if [ -d "node_modules" ]; then
-    cp -r node_modules "$_optdir/"
-  fi
+  # NOTE: hermes-agent/package.json exists (for browser tools @askjo/camofox-browser,
+  # agent-browser) but we intentionally do NOT copy the resulting node_modules/ to
+  # $_optdir because:
+  #   1. Native modules (better-sqlite3 etc.) embed $srcdir absolute paths in
+  #      their build artefacts, triggering makepkg's $srcdir reference warning
+  #   2. They are invoked via subprocess at runtime and are not required at
+  #      /opt/hermes-agent/node_modules/ — hermes-agent's Python code does not
+  #      import them directly
+  #   3. Shipping them would add ~100 MB of unnecessary packages
+  # If browser tools are needed at runtime: cd /opt/hermes-agent && npm install
+  :
 
   # Install optional submodule if present
   if [ -d "tinker-atropos" ]; then
@@ -123,8 +134,13 @@ package() {
   install -Dm644 LICENSE "$_optdir/LICENSE"
 
   # Create simple wrapper script in /usr/bin
+  # HERMES_TUI_DIR tells hermes_cli/main.py (line 1055-1059) to use the prebuilt
+  # dist/entry.js bundle directly, skipping all npm install / npm run build.
   install -d "$pkgdir/usr/bin"
-  echo "#!/bin/bash" > "$pkgdir/usr/bin/hermes"
-  echo "exec /opt/${_pkgname}/venv/bin/python -m hermes_cli.main" '"$@"' >> "$pkgdir/usr/bin/hermes"
+  cat > "$pkgdir/usr/bin/hermes" <<'WRAPPER'
+#!/bin/bash
+export HERMES_TUI_DIR=/opt/hermes-agent/venv/lib/python3.14/site-packages/ui-tui
+exec /opt/hermes-agent/venv/bin/python -m hermes_cli.main "$@"
+WRAPPER
   chmod 755 "$pkgdir/usr/bin/hermes"
 }
