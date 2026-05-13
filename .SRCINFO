@@ -1,6 +1,6 @@
 pkgbase = penguin-burner
 	pkgdesc = NVIDIA GPU automatic undervolting and fine tuning tool
-	pkgver = 0.1.5
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/jpietek/PenguinBurner
 	arch = x86_64
@@ -14,8 +14,9 @@ pkgbase = penguin-burner
 	depends = nvidia-utils>=580
 	depends = pyside6>=6.7
 	depends = python
+	depends = python-colorama
 	depends = python-pyqtgraph>=0.13
-	source = penguin-burner-0.1.5.tar.gz::https://github.com/jpietek/PenguinBurner/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 7c2405564ba9e0f44ed90b9db2c3ae793556d3ed3002ed7c507d76af702ac768
+	source = penguin-burner-0.1.7.tar.gz::https://github.com/jpietek/PenguinBurner/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 6526e2cac85009a9efb592ffa9281bd91fcbbee819e560f5ef04f382bbdc9a3d
 
 pkgname = penguin-burner
