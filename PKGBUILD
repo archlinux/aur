@@ -4,7 +4,7 @@
 
 pkgname=cachyos-ananicy-rules
 _gitname=ananicy-rules
-pkgver=1.1.35
+pkgver=1.1.37
 pkgrel=1
 epoch=1
 groups=(cachyos)
@@ -13,7 +13,7 @@ url="https://github.com/CachyOS/${_gitname}"
 license=(GPL-3.0-only)
 pkgdesc='CachyOS - ananicy-rules'
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cd4f0c43eff3a9792a2d24e1a0c8497b162f4ab53f5d3a394a7ed127b8d847db')
+sha256sums=('784a4a02b5be8d2d6eee4de54f0b615a640570e397bc6e73c539cbde602b0ed1')
 replaces=(ananicy-rules-git)
 
 prepare() {
