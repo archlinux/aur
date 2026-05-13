@@ -1,6 +1,6 @@
 pkgbase = namida-bin
 	pkgdesc = A Beautiful and Feature-rich Music Player, With YouTube & Video Support Built in Flutter
-	pkgver = 6.1.0
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = https://github.com/namidaco/namida-snapshots
 	arch = x86_64
@@ -60,7 +60,7 @@ pkgbase = namida-bin
 	depends = glibc
 	provides = namida
 	conflicts = namida
-	source = namida-v6.1.0-beta.linux.tar.gz::https://github.com/namidaco/namida-snapshots/releases/download/6.1.0-beta%2B260512239/namida-v6.1.0-beta.linux.tar.gz
-	sha256sums = 8c891f970b77fbd2a12bd1897be6a6db782a017c7910df756482554ee23c287f
+	source = namida-v6.1.2-beta.linux.tar.gz::https://github.com/namidaco/namida-snapshots/releases/download/6.1.2-beta%2B260513232/namida-v6.1.2-beta.linux.tar.gz
+	sha256sums = 0b467a24deb347783c6dd904ed5f44232e45e0cadc2798230cd1bd8dfab5e63f
 
 pkgname = namida-bin
