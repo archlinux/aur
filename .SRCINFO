@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox ESR fork with increased security, privacy, and customizability
-	pkgver = 140.10.2.100
-	pkgrel = 2
+	pkgver = 140.11.0.100
+	pkgrel = 1
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	install = konform.install
@@ -88,9 +88,9 @@ pkgbase = konform-browser
 	options = !makeflags
 	backup = usr/lib/konform/librewolf.cfg
 	backup = usr/lib/konform/distribution/policies.json
-	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.10.2.100
-	source = firefox-140.10.2esr.source.tar.xz::https://archive.mozilla.org/pub/firefox/candidates/140.10.2esr-candidates/build1/source/firefox-140.10.2esr.source.tar.xz
-	source = firefox-140.10.2esr.source.tar.xz.asc::https://archive.mozilla.org/pub/firefox/candidates/140.10.2esr-candidates/build1/source/firefox-140.10.2esr.source.tar.xz.asc
+	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.11.0.100
+	source = firefox-140.11.0esr.source.tar.xz::https://archive.mozilla.org/pub/firefox/candidates/140.11.0esr-candidates/build1/source/firefox-140.11.0esr.source.tar.xz
+	source = firefox-140.11.0esr.source.tar.xz.asc::https://archive.mozilla.org/pub/firefox/candidates/140.11.0esr-candidates/build1/source/firefox-140.11.0esr.source.tar.xz.asc
 	source = firefox-l10n-e4f894a4eef5c492c83a860a4ff16c8ed361445c.tar.gz::https://github.com/mozilla-l10n/firefox-l10n/archive/e4f894a4eef5c492c83a860a4ff16c8ed361445c.tar.gz
 	source = konform.desktop
 	source = default192x192.png
@@ -98,10 +98,9 @@ pkgbase = konform-browser
 	source = 0002-Use-wasm32-wasip1-target.patch
 	source = 0003-update-rust-bindgen-to-fix-clang22-build.patch.xz
 	source = 0004-skia-m142-update.patch.xz
-	source = 0005-rust1_95compat.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = c0bb994f89dcd089d1395095e13e6af5a1dd2c3c175eb54c52dd0769902f525c
-	sha256sums = 796bf65372e702c13277e6f38e9276ded9dceea81e8934c29a06568016f24e77
+	sha256sums = 789e837e7b05bfa478c054a25931d71b538d78e226c3995d57e1be20cfa58e52
+	sha256sums = 142a82a695240e303eeb5c187dbf4fb1c4ea5190fae0109b87a11796a12c5ef2
 	sha256sums = SKIP
 	sha256sums = 52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b
 	sha256sums = 68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4
@@ -110,6 +109,5 @@ pkgbase = konform-browser
 	sha256sums = baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba
 	sha256sums = 8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d
 	sha256sums = e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760
-	sha256sums = 6476516b1b56fe7b16f53bd4f6d2d77cb297fca0ca895c0354cd07d245d20bdc
 
 pkgname = konform-browser
