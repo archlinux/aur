@@ -6,7 +6,7 @@ pkgname=(
 pkgbase=mini-eq
 _app_id="io.github.bhack.$pkgbase"
 _uuid=mini-eq@bhack.github.io
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Compact PipeWire system-wide parametric EQ"
 arch=('any')
@@ -36,7 +36,7 @@ checkdepends=(
   'python-pytest'
 )
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('79649cd6eea31fa866afd04a4cbaebf6405bfaaaa544e7b2e546d24a981b88de')
+sha256sums=('26c5f8598690f8d644a30837472e3543ab69e8d13e0c6ea20c3cd19804382d8a')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -75,8 +75,10 @@ package_mini-eq() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "src/mini_eq/assets/icons/hicolor/symbolic/apps/${_app_id}-symbolic.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
+  install -Dm644 "src/mini_eq/assets/schemas/${_app_id}.gschema.xml" -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
 
-  # Remove duplicate icons
+  # Remove duplicate icons & schema
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm -r "${pkgdir}${site_packages}/mini_eq/assets/"
 }
