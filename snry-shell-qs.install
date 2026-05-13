@@ -14,10 +14,10 @@ post_install() {
 	echo ">>> Setting up Snry Shell for user: $user"
 
 	# Phase 1: System setup (we are root — groups, services, PAM, logind)
-	snry-daemon setups 2>/dev/null || true
+	HOME="/home/$user" snry-daemon setups 2>/dev/null || true
 
 	# Phase 2: Config sync + daemon binary (as the user)
-	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
 		snry-daemon files 2>/dev/null || true
 
 	echo ""
@@ -36,7 +36,7 @@ post_upgrade() {
 
 	echo ">>> Syncing Snry Shell configs for user: $user"
 
-	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$(id -u "$user")" \
+	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$(id -u "$user")" \
 		snry-daemon files 2>/dev/null || true
 
 	echo ""
