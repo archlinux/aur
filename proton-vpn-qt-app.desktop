@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Proton VPN Qt App
+Name=Proton VPN
 GenericName=VPN Client
 Comment=Qt GUI frontend for Proton VPN CLI
 Exec=proton-vpn-qt-app
