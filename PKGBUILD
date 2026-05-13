@@ -1,30 +1,29 @@
 # shellcheck disable=SC2034,SC2086,SC2128,SC2148,SC2154,SC2164
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+url="https://www.amd.com/en/developer/aocc.html"
+_fetch_data=$(curl -sA 'Mozilla' "$url")
 
 pkgname=aocc
-_major=5-1
-pkgver=5.1.0
+_major=$(echo "$_fetch_data" | grep -oP 'aocc-\K\d+-\d+(?=-eula)' -- | head -1)
+pkgver=$(echo "$_fetch_data" | grep -oP 'aocc-compiler-\K\d+\.\d+\.\d+' -- | head -1)
 pkgrel=1
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
-DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-_url="https://download.amd.com/developer/eula/aocc/aocc-${_major}/aocc-compiler-${pkgver}.tar"
-url="https://www.amd.com/en/developer/aocc.html"
-source=("$_url"
-        "modulefile")
 makedepends=('curl')
 options=('staticlibs' '!strip' 'libtool')
 optdepends=('env-modules')
+source=(
+    "https://download.amd.com/developer/eula/aocc/aocc-${_major}/aocc-compiler-${pkgver}.tar"
+    "modulefile"
+)
 install=aocc.install
-_sha256sum=$(curl -A 'Mozilla' "$url" | grep --perl-regexp '\w{64}(?=\<\/td\>)' --only-matching | sed -n '1 p')
-sha256sums=("${_sha256sum}"
-            '1740216760f755dc031d54f06c29333bca73f728d89a706f405b41e737bfc56f')
-# NB: I should've made my checksum variable lambdas such that they will find all sums,
-# even if AMD change their website, but if they remove the </td> tag from the end,
-# this may fail. In which case, we can possible YOLO remove the lookahead.
-
+sha256sums=(
+    "$(echo "$_fetch_data" | grep -oP '\w{64}(?=</td>)' | sed -n '1p')"
+    '1740216760f755dc031d54f06c29333bca73f728d89a706f405b41e737bfc56f'
+)
 # Default compiler flags
 # This by default sets your flags to CFLAGS, but you may replace them.
 _default_flags="$CFLAGS"
