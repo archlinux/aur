@@ -2,9 +2,9 @@
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=tp-dusk
-pkgver=1.0.1
-pkgrel=9
-pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
 license=('CC0-1.0')
@@ -14,13 +14,11 @@ source=(
   "git+$url#tag=v${pkgver}"
   "git+https://github.com/encounter/aurora.git"
   "launcher.sh"
-  "tp-dusk.desktop"
 )
 
-sha256sums=('0d76d2fe29a0273aea84f3d71807c09b08911523ebeca8a7db8c8c8fdaae7022'
+sha256sums=('ef056bdf3f5362bae86ba8a267e40b0a18d4bcef2abe30e0769e25da4a9c59d7'
             'SKIP'
-            '5e7de2d2280b48efa543dc9a0484d9af6a18d6d881833deb4ca333072bc46aa0'
-            '1e6547cf4dd69f0ecb6895733dcd13f3e265c6267298c7bf83dd6acbad42fda5')
+            '5e7de2d2280b48efa543dc9a0484d9af6a18d6d881833deb4ca333072bc46aa0')
 
 prepare() {
   cd dusklight
@@ -47,12 +45,12 @@ build() {
 }
 
 package() {
-  install -Dm 755 "${srcdir}/dusklight/build/dusk" "${pkgdir}/usr/share/${pkgname}/dusk"
-  install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/${pkgname}"
-  cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/share/${pkgname}/res"
+  install -Dm 755 "${srcdir}/dusklight/build/dusklight" "${pkgdir}/usr/share/dusklight/dusklight"
+  install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/dusklight"
+  cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/share/dusklight/res"
 
-  install -Dm 644 "${srcdir}/dusklight/res/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm 755 "tp-dusk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm 644 "${srcdir}/dusklight/platforms/freedesktop/1024x1024/apps/dusklight.png" "${pkgdir}/usr/share/pixmaps/dusklight.png"
+  install -Dm 755 "${srcdir}/dusklight/platforms/freedesktop/dusklight.desktop" "${pkgdir}/usr/share/applications/dusklight.desktop"
 
-  patchelf --remove-rpath "${pkgdir}/usr/share/${pkgname}/dusk"
+  patchelf --remove-rpath "${pkgdir}/usr/share/dusklight/dusklight"
 }
