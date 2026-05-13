@@ -13,7 +13,7 @@ groups=('xfce4-git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${_pkgver}")
 depends=('gtk3' 'xfconf>=4.21.1' 'libxfce4ui>=4.21.4' 'libdisplay-info' 'libdrm' 'libinput' 'mesa' 'pixman'
-         'seatd' 'libxkbcommon')
+         'seatd' 'libxkbcommon' 'xorg-xwayland')
 makedepends=('cargo' 'rust' 'git' 'meson' 'gettext')
 source=("${_pkgname}::git+https://gitlab.xfce.org/kelnos/xfwl4")
 sha256sums=('SKIP')

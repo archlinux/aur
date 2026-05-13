@@ -24,6 +24,7 @@ pkgbase = xfwl4-git
 	depends = pixman
 	depends = seatd
 	depends = libxkbcommon
+	depends = xorg-xwayland
 	provides = xfwl4=0.1.0dev
 	conflicts = xfwl4
 	source = xfwl4::git+https://gitlab.xfce.org/kelnos/xfwl4
