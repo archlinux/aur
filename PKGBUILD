@@ -3,7 +3,7 @@
 
 pkgname=tp-dusk
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -18,7 +18,7 @@ source=(
 
 sha256sums=('c635abbf7170d74773d5382f1f13a086044d9e0da45804584a215267772d07e9'
             'SKIP'
-            '5e7de2d2280b48efa543dc9a0484d9af6a18d6d881833deb4ca333072bc46aa0')
+            '71e621f84d9747788b55e02354e984e327dfaf23df151232067284443e81714a')
 
 prepare() {
   cd dusklight
