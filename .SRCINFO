@@ -1,0 +1,16 @@
+pkgbase = ttypo-bin
+	pkgdesc = Terminal-based typing test (prebuilt binary)
+	pkgver = 0.1.19
+	pkgrel = 1
+	url = https://github.com/drewja/ttypo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ttypo=0.1.19
+	conflicts = ttypo
+	source_x86_64 = https://github.com/drewja/ttypo/releases/download/v0.1.19/ttypo-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/drewja/ttypo/releases/download/v0.1.19/ttypo-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = ttypo-bin
