@@ -1,7 +1,7 @@
 # Maintainer: Izu <ccatdev@proton.me>
 
 pkgname=concord
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A feature rich terminal client for Discord"
 arch=(x86_64)
@@ -10,8 +10,8 @@ license=(GPL-3.0)
 depends=(glibc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('45b3b0edf4ec5390acbf803a69aa79e25d46557bff0dbed5d058453e669097bf')
 options=('!lto')
-sha256sums=('41645656a96b23f55a7b16d2a94e301d7dfaab907d2fc38115ea3861d535c1fb')
 
 prepare() {
   cd $pkgname-$pkgver
