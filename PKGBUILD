@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=blpapi_cpp
-pkgver=3.25.11.1
+pkgver=3.26.3.1
 pkgrel=1
 pkgdesc="Bloomberg API C++ SDK (BLPAPI)."
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://www.bloomberg.com/professional/support/api-library/"
 license=('custom')
 depends=('glibc')
 source=("https://blpapi.bloomberg.com/download/releases/raw/files/blpapi_cpp_$pkgver-linux.tar.gz")
-sha256sums=('87d9ba2e104ece63050297d472e223100a4b450c7b43164e7f4c10eebdc04f99')
+sha256sums=('af0d9f0cadf1f90b1f1a633baf9e33507f28ccc7916f60b2e8f42e5cc2133cf2')
 
 package() {
   cd "${pkgname}_$pkgver"

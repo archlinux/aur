@@ -1,12 +1,12 @@
 pkgbase = blpapi_cpp
 	pkgdesc = Bloomberg API C++ SDK (BLPAPI).
-	pkgver = 3.25.11.1
+	pkgver = 3.26.3.1
 	pkgrel = 1
 	url = https://www.bloomberg.com/professional/support/api-library/
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = https://blpapi.bloomberg.com/download/releases/raw/files/blpapi_cpp_3.25.11.1-linux.tar.gz
-	sha256sums = 87d9ba2e104ece63050297d472e223100a4b450c7b43164e7f4c10eebdc04f99
+	source = https://blpapi.bloomberg.com/download/releases/raw/files/blpapi_cpp_3.26.3.1-linux.tar.gz
+	sha256sums = af0d9f0cadf1f90b1f1a633baf9e33507f28ccc7916f60b2e8f42e5cc2133cf2
 
 pkgname = blpapi_cpp
