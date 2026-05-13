@@ -6,24 +6,25 @@
 
 _basename=weston
 pkgname="$_basename-git"
-pkgver=14.0.0.r754.gb44cf1b
+pkgver=15.0.0.r303.gf41430a
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
 arch=('x86_64')
 url='https://wayland.freedesktop.org/'
 license=('MIT')
 depends=('fontconfig' 'glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman'
-         'libdrm' 'pam' 'systemd-libs' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp' 'lua'
+         'libdrm' 'pam' 'systemd-libs' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp'
          'mesa' 'libegl' 'libevdev' 'libgles' 'glib2' 'pango' 'lcms2' 'mtdev' 'libx11'
          'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'seatd'
          'gstreamer' 'gst-plugins-base-libs')
-makedepends=('wayland-protocols-git' 'meson' 'ninja' 'freerdp' 'neatvnc' 'libpipewire'
+makedepends=('wayland-protocols-git' 'meson' 'ninja' 'freerdp' 'neatvnc' 'libpipewire' 'lua'
              'xorg-xwayland' 'xcb-util-cursor' 'libdisplay-info' 'vulkan-headers' 'git')
 optdepends=('xorg-xwayland: support x11 backend'
             'libpipewire: support pipewire backend'
             'freerdp: support rdp backend'
             'neatvnc: support vnc backend'
-            'libdisplay-info: support drm backend')
+            'libdisplay-info: support drm backend'
+            'lua: support lua shell')
 conflicts=("$_basename")
 provides=("$_basename")
 options=(!lto)
