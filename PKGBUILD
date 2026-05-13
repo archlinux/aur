@@ -1,7 +1,9 @@
 # Maintainer: esocidae <slusheliott@gmail.com>
+# pkgver/pkgrel/sha256sums below are placeholders; the release workflow
+# (.github/workflows/release.yml, aur-publish job) overwrites them per release.
 pkgname=grimoire-bin
 _pkgname=grimoire
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Mod manager and companion tool for Deadlock (GameBanana browser, hero locker, crosshair designer)"
 arch=('x86_64')
@@ -12,7 +14,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug' '!emptydirs')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/grimoire_${pkgver}_amd64.deb")
-sha256sums=('e16472a2df8e20d720a73f21951eb1f0e4af9206875383ebe88d18a5b31f6878')
+sha256sums=('6bc944d5a67d325dc4278257e109b1154d187c6667360e18df4d5af938d2878e')
 
 package() {
     cd "${srcdir}"
