@@ -1,0 +1,6 @@
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+nix-installer-*-x86_64
+nix-installer-*-aarch64

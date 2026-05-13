@@ -1,0 +1,16 @@
+pkgbase = nix-installer-bin
+	pkgdesc = Determinate Nix Installer (prebuilt binary)
+	pkgver = 3.20.0
+	pkgrel = 1
+	url = https://github.com/DeterminateSystems/nix-installer
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-only
+	provides = nix-installer=3.20.0
+	conflicts = nix-installer
+	source_x86_64 = nix-installer-3.20.0-x86_64::https://github.com/DeterminateSystems/nix-installer/releases/download/v3.20.0/nix-installer-x86_64-linux
+	sha256sums_x86_64 = afaf0c1f426a08967aef4c7f50bbb6282a9312f945775bdf0a0110642339d9d6
+	source_aarch64 = nix-installer-3.20.0-aarch64::https://github.com/DeterminateSystems/nix-installer/releases/download/v3.20.0/nix-installer-aarch64-linux
+	sha256sums_aarch64 = 86fadffa29c5362e16f9f8f2534603846da851ed00af103d3dbebeb30771b8b7
+
+pkgname = nix-installer-bin
