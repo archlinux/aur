@@ -1,0 +1,118 @@
+Subject: rebuild SSLContext per connect; pass use_ssl explicitly; canary on pool desync
+
+Reusing a single ssl.SSLContext across many wrap_socket/teardown cycles
+correlated with a glibc double-free SIGABRT on one production deployment
+after ~14h of frequent mid-stream SSL record errors against a long-lived
+mktxp -> RouterOS api-ssl connection. Root cause not pinned into cpython
+or OpenSSL; n=1; reproducer not isolated.
+
+Defensive change: build the SSLContext fresh inside connect() instead of
+once in __init__. Same pattern as requests/urllib3/aiohttp.
+
+Also passes use_ssl=self.config_entry.use_ssl explicitly to RouterOsApiPool
+instead of letting the pool autodetect from ssl_context being non-None.
+mktxp always populates a port via the config schema so the autodetect was
+never load-bearing in practice, but the implicit "context-determines-port"
+coupling was fragile against future refactors.
+
+The canary at the top of connect() catches a desync (pool.connected=True
+but self.api=None) by forcing pool.disconnect() before retry. It does NOT
+catch the case where self.api is a stale-but-non-None reference; that
+case is undetectable from inside connect() and surfaces as failing API
+calls on the next scrape instead.
+
+Note: ssl.create_default_context() with no cafile= is essentially free
+(OpenSSL's default trust store is lazily loaded). If ssl_ca_file is
+configured, every connect attempt re-reads it from disk -- a behaviour
+change worth noting but typically irrelevant in practice.
+
+Upstream issue: https://github.com/akpw/mktxp/issues/318
+---
+--- a/mktxp/flow/router_connection.py
++++ b/mktxp/flow/router_connection.py
+@@ -59,21 +59,6 @@
+         self.router_name = router_name
+         self.config_entry = config_entry
+         self.last_failure_timestamp = self.successive_failure_count = 0
+-        
+-        ctx = None
+-        if self.config_entry.use_ssl:
+-            ctx = ssl.create_default_context(
+-                cafile=self.config_entry.ssl_ca_file if self.config_entry.ssl_ca_file else None
+-            )
+-            if self.config_entry.no_ssl_certificate:
+-                ctx.check_hostname = False
+-                ctx.set_ciphers('ADH:@SECLEVEL=0')
+-            elif not self.config_entry.ssl_certificate_verify:
+-                ctx.check_hostname = False
+-                ctx.verify_mode = ssl.CERT_NONE
+-            else:
+-                ctx.check_hostname = self.config_entry.ssl_check_hostname
+-                ctx.verify_mode = ssl.CERT_REQUIRED
+ 
+         username = self.config_entry.username
+         password = self.config_entry.password
+@@ -95,11 +80,35 @@
+                 password = password,
+                 port = self.config_entry.port,
+                 plaintext_login = True,
+-                ssl_context = ctx)
+-        
++                use_ssl = self.config_entry.use_ssl,
++                ssl_context = None)
++
+         self.connection.socket_timeout = config_handler.system_entry.socket_timeout
+         self.api = None
+-    
++
++    def _build_ssl_context(self):
++        # Build a fresh SSLContext per connect attempt. Reusing one long-lived
++        # context across many wrap_socket/teardown cycles correlated with a
++        # glibc double-free abort on one deployment after ~14h of frequent
++        # mid-stream SSL record errors. Root cause not pinned into cpython /
++        # OpenSSL; defensive change, consistent with how requests / urllib3 /
++        # aiohttp construct SSL state per connection.
++        if not self.config_entry.use_ssl:
++            return None
++        ctx = ssl.create_default_context(
++            cafile=self.config_entry.ssl_ca_file if self.config_entry.ssl_ca_file else None
++        )
++        if self.config_entry.no_ssl_certificate:
++            ctx.check_hostname = False
++            ctx.set_ciphers('ADH:@SECLEVEL=0')
++        elif not self.config_entry.ssl_certificate_verify:
++            ctx.check_hostname = False
++            ctx.verify_mode = ssl.CERT_NONE
++        else:
++            ctx.check_hostname = self.config_entry.ssl_check_hostname
++            ctx.verify_mode = ssl.CERT_REQUIRED
++        return ctx
++
+     def is_connected(self):
+         if self.connection and self.connection.connected and self.api:
+             return True
+@@ -107,12 +116,24 @@
+ 
+     def connect(self):
+         connect_time = datetime.now()
++        # Paranoid: if pool.connected is True but self.api is None, the two have
++        # desynced -- some path nulled api without disconnecting the pool. Force
++        # pool.disconnect() so the next is_connected() check sees a clean state.
++        # This does NOT catch the broader "stale-but-non-None self.api on a
++        # wedged pool" scenario; that case is undetectable from inside connect()
++        # and would surface as failing API calls in the next scrape instead.
++        if self.connection.connected and self.api is None:
++            print(f'WARNING: pool.connected=True with self.api=None on '
++                  f'{self.router_name}@{self.config_entry.hostname}; forcing pool.disconnect()')
++            self.connection.disconnect()
+         if self.is_connected() or self._in_connect_timeout(connect_time.timestamp()):
+             return
+         try:
+             print(f'Connecting to router {self.router_name}@{self.config_entry.hostname}')
+             if self.config_entry.use_ssl and self.config_entry.no_ssl_certificate:
+                 print(f'Warning: API_SSL connect without router SSL certificate is insecure and should not be used in production environments!')
++            # Fresh SSLContext for this attempt (see _build_ssl_context).
++            self.connection.ssl_context = self._build_ssl_context()
+             self.connection.plaintext_login = self.config_entry.plaintext_login
+             self.api = self.connection.get_api()
+             self._set_connect_state(success = True, connect_time = connect_time)
