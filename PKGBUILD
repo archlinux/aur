@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=dusklight
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=('tp-dusk')
 source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/encounter/aurora.git"
 	)
-sha256sums=('ef056bdf3f5362bae86ba8a267e40b0a18d4bcef2abe30e0769e25da4a9c59d7'
+sha256sums=('c635abbf7170d74773d5382f1f13a086044d9e0da45804584a215267772d07e9'
             'SKIP')
 
 prepare() {
