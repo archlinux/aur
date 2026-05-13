@@ -23,7 +23,7 @@ depends=(
 )
 conflicts=('esphome-desktop')
 source=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver}/ESPHome.Builder_${pkgver}_amd64.deb")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('549c76a42f4cd063db7f1c691d0cbd789dea99003cb092d684344d3b52bdfa27')
 options=('!strip')
 
 package() {
