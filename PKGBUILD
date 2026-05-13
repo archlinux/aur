@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-gui
-pkgver=3.0.6
+pkgver=3.1.0a2
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=(any)
@@ -16,6 +16,7 @@ depends=(
     python-jsonschema
     python-psutil
     python-pyqt6
+    python-qdarkstyle
     python-truststore
     qt6-svg
     qt6-websockets
@@ -33,9 +34,9 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         gns3.desktop
         fix_requirements_for_Arch.patch)
-sha256sums=('3357dfeb76d01d2bf8e72aa201f39061b7ceae9d6002c0d1c2a6283434a9a1b2'
+sha256sums=('b5c139f6c5e9450c2afc27c105ecf50430a48381337efd80275d10aa448574cd'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166'
-            'd0284998a4d50645e9df91af850590ae24b9fa7abebeeb9113e899cab63e266c')
+            '5a3e8838ced932f14c68d5656c48738556907603652ade4480a44a0617f1351d')
 
 prepare() {
     cd "$pkgname-$pkgver"
