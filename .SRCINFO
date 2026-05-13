@@ -1,20 +1,22 @@
 pkgbase = sapmachine11-jdk
 	pkgdesc = SAP's patched build of OpenJDK 11
-	pkgver = 11.0.14.1
+	pkgver = 11.0.30
 	pkgrel = 1
 	url = https://sapmachine.io
 	install = sapmachine-jdk.install
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only WITH Classpath-exception-2.0
 	depends = java-runtime-common
 	depends = java-environment-common
+	depends = glibc
+	depends = zlib
 	provides = java-runtime=11
 	provides = java-runtime-headless=11
 	provides = java-environment=11
 	conflicts = java-runtime<=11
 	conflicts = java-environment<=11
 	options = !strip
-	source = https://github.com/SAP/SapMachine/releases/download/sapmachine-11.0.14.1/sapmachine-jdk-11.0.14.1_linux-x64_bin.tar.gz
-	sha256sums = f9ec22c87c76671ee86bf5aecf5ea9fa1a5767c0d1fa96d331dd942215084ea9
+	source = https://github.com/SAP/SapMachine/releases/download/sapmachine-11.0.30/sapmachine-jdk-11.0.30_linux-x64_bin.tar.gz
+	sha256sums = 123bcd0762ef46bbcb7e3ba6eb1c96db9feb31ca695a40c994a855fbe979b414
 
 pkgname = sapmachine11-jdk
