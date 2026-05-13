@@ -33,6 +33,8 @@ pkgbase = mingw-w64-vtk
 	options = staticlibs
 	options = !strip
 	source = https://www.vtk.org/files/release/9.6/VTK-9.6.1.tar.gz
+	source = diy2.patch
 	sha256sums = 47ca9af899165a33b935533046acce7c0aa3c007f0b57880665bb89d9986543f
+	sha256sums = SKIP
 
 pkgname = mingw-w64-vtk

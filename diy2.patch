@@ -1,0 +1,27 @@
+diff --git a/Filters/ParallelDIY2/vtkNativePartitioningStrategy.cxx b/Filters/ParallelDIY2/vtkNativePartitioningStrategy.cxx
+index 4a56d23c198..8647d064fee 100644
+--- a/Filters/ParallelDIY2/vtkNativePartitioningStrategy.cxx
++++ b/Filters/ParallelDIY2/vtkNativePartitioningStrategy.cxx
+@@ -134,6 +134,7 @@ struct PartitionDistributionWorklet
+ vtkPartitioningStrategy::PartitionInformation CutsToPartition(vtkDataSet* dataset,
+   const std::vector<vtkBoundingBox>& cuts, bool assignBoundaryCellsToSmallestRegionId)
+ {
++#if 0
+   if (!dataset || cuts.empty() || dataset->GetNumberOfCells() == 0)
+   {
+     vtkWarningWithObjectMacro(nullptr, "Either dataset or cuts are empty");
+@@ -196,12 +197,13 @@ vtkPartitioningStrategy::PartitionInformation CutsToPartition(vtkDataSet* datase
+         }
+       }
+     });
+-
+   vtkPartitioningStrategy::PartitionInformation res;
+   ::PartitionDistributionWorklet worker(
+     &res, dataset, &cuts, &cellRegions, assignBoundaryCellsToSmallestRegionId);
+   vtkSMPTools::For(0, numCells, worker);
+   return res;
++#endif
++  return vtkPartitioningStrategy::PartitionInformation();
+ }
+ }
+ 

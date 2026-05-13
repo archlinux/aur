@@ -8,17 +8,23 @@ license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-libtheora' 'mingw-w64-gl2ps' 'mingw-w64-cgns' 'mingw-w64-libharu' 'mingw-w64-verdict' 'mingw-w64-scnlib')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz")
-sha256sums=('47ca9af899165a33b935533046acce7c0aa3c007f0b57880665bb89d9986543f')
+source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz" diy2.patch)
+sha256sums=('47ca9af899165a33b935533046acce7c0aa3c007f0b57880665bb89d9986543f' 'SKIP')
 
 _architectures="x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/VTK-${pkgver}"
+  # localtime_r
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12856.patch | patch -p1
+
+  # expat IMPORTED_IMPLIB
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12937.patch | patch -p1
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12939.patch | patch -p1
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12940.patch | patch -p1
+
+  # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
+  patch -p1 -i "${srcdir}"/diy2.patch
 }
 
 build() {
