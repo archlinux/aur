@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=26.14.37833.4
-_gmmver=22.9.0
+pkgver=26.18.38308.1
+_gmmver=22.10.0
 _gmmsover=12
-_igcver=2.32.7
+_igcver=2.34.4
 _lzsover=1
 _build=0
 pkgrel=1
@@ -18,8 +18,9 @@ depends=(
     'libgcc'
     'libstdc++')
 optdepends=(
-    'igsc: for discrete GPU firmware enumeration through Level Zero'
     'libdrm: for cl_intel_va_api_media_sharing'
+    'libigsc.so=0: for discrete GPU firmware enumeration through Level Zero'
+    'libnl-genl-3.so=200: for using Fabric related APIs in Level Zero'
     'libva: for cl_intel_va_api_media_sharing')
 provides=('intel-compute-runtime' 'intel-gmmlib' 'level-zero-driver' 'opencl-driver')
 conflicts=('intel-compute-runtime' 'intel-gmmlib')
@@ -33,10 +34,10 @@ noextract=("intel-ocloc_${pkgver}-${_build}_amd64.deb"
            "intel-opencl-icd_${pkgver}-${_build}_amd64.deb"
            "${pkgname}-${pkgver}-level-zero-${_gmmver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('7841a45b3e5fafeb97ab530eb872c1607a01723e4d6ae057d0255cd56e168cad'
-            '2e15eeb4fe9c1bba467a655967373eec6a20dd04cc7159de53c359f17ab53e41'
-            '34ce5791160d87ce6d54edb558a4030858ee1dad2afb067b9c5c58d4cde774c6'
-            '9d712f71c18baee076de9961dda71e8089291e1bd0deb5d649ab5ba5de114f97'
+sha256sums=('f36cb8a6899353c61cc7261b650f287f4a652acadaad859103bdfc51f93b6e8a'
+            'b2d0c924e56b3f9e5837774d68b0c67461b8633035d93ca18b1a8e3e5ead15fa'
+            '12b8254e6d3415c32cee9cd13943030b991d91212445c79fe1cc27176a72eca4'
+            '6031a63d6e8a12ce61c14efc15f2c8e727061286e3820b8594e6d00615e04d54'
             '987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e')
 
 prepare() {
