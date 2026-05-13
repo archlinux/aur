@@ -1,10 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgver=9.0.15.sdk313
+pkgver=9.0.16.sdk314
 _runtimever="${pkgver%.sdk*}"
 _dotnetver="${_runtimever%.*}"
 _sdkver="${_dotnetver}.${pkgver##"${_runtimever}.sdk"}"
-pkgrel=3
+pkgrel=1
 
 pkgbase="dotnet-core-${_dotnetver}-bin"
 pkgname=(
@@ -35,9 +35,9 @@ source_${_carch}=(
   'https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-${_arch[${_carch}]}.tar.gz'
 )"
 done
-sha512sums_aarch64=('0278c86bcc9c9da2a2be0f43dd34a8cde2d4b1f541ad101c30db44d44536388fa641c57a07a7ac829b7d403112760b172dc608880f3214208827bb3205c01a60')
-sha512sums_x86_64=('cb2f09cc3e44be152e8f7abdfeb18040f6de5d8195bc723f584483775af169bfa5f17c03ce0cb64fa53bcc7d29eb7810684a3fa4cf6b228fa52ad132bf89bf62')
-sha512sums_armv7h=('267d68b0943f93fcbac7b064d93a31efb35b0c4bec472a9a805ade537708af01f050b2c25506f6ecce51fd6e55e9a1fd78f7bbd0f3ea19d7b3caac1660620c79')
+sha512sums_aarch64=('0b97c29d256d21361fb2d6ffaed1a44ac37a468ce5cea0fa6f26d02a3898c4c466c6c44918d917d9971ef2698963c559efba6033d4eff8c072b750310a4bc17b')
+sha512sums_x86_64=('9cc8250b9e3bbc29b64e55866b1007d49a155e4a3790570e37315e4175fbfaea2e06ff38f6aabd89e35d943f9915b33b32d6aa33e8d419a8fb9d7188cec97a18')
+sha512sums_armv7h=('80d434dc680668ba647c3341e111982265e10da94240297148f68f2c9df88abb9a949f9b5b6a7c4e46e01291d329a9f707a2738439c24e3e829d3d7efff38c6e')
 
 package_dotnet-runtime-9.0-bin() {
   pkgdesc="The .NET Core runtime"
