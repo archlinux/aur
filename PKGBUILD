@@ -27,13 +27,9 @@ sha256sums=('a165ca406286e5cbba4c34e0edd7510d854e753bf1458e0385784b30d7564f19'
             '03cb79cddc04a0303be6d60ba2e7801106b6d4405d33953a2c508c5825c66a7c')
 
 latestver() {
-  # Track the npm stable channel and extract the version from the tarball URL
-  # we actually build from.
-  curl -fsSL "https://registry.npmjs.org/${pkgname}" |
-    jq -r '. as $pkg
-      | $pkg["dist-tags"].stable as $target
-      | $pkg.versions[$target].dist.tarball
-      | capture("/n8n-(?<ver>[0-9]+(\\.[0-9]+)*)\\.tgz$").ver'
+  gh api --paginate repos/n8n-io/n8n/releases --jq \
+    '.[] | select(.prerelease == false and .draft == false) | .tag_name' |
+    sed -nE 's/^n8n@([0-9]+(\.[0-9]+)*)$/\1/p' | sort -V | tail -1
 }
 
 build() {
