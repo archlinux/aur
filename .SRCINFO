@@ -1,0 +1,17 @@
+pkgbase = niripwmenu-reborn
+	pkgdesc = Power menu widget for niri (Wayland)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/cmachsocket/niripwmenu-reborn
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = niri: for logoff command
+	source = git+https://github.com/cmachsocket/niripwmenu-reborn.git#branch=noStyleKit
+	sha256sums = SKIP
+
+pkgname = niripwmenu-reborn
