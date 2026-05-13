@@ -1,92 +1,3 @@
-From d7abae9ece8e4e1a11af071b73f5d5a62e1b3488 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
-Date: Sun, 22 Feb 2026 06:57:03 +0100
-Subject: [PATCH 1/2] plugins/screencast: Fix potential null dereference in
- popup window tracking
-
-Window::transientFor() can return nullptr for windows without a parent.
-Add a null check before passing the result to QList::contains() to
-prevent a potential crash when a popup window is added without a valid
-transient parent.
----
- src/plugins/screencast/windowscreencastsource.cpp | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/src/plugins/screencast/windowscreencastsource.cpp b/src/plugins/screencast/windowscreencastsource.cpp
-index 59708970ea..c565a337da 100644
---- a/src/plugins/screencast/windowscreencastsource.cpp
-+++ b/src/plugins/screencast/windowscreencastsource.cpp
-@@ -33,7 +33,8 @@ WindowScreenCastSource::WindowScreenCastSource(Window *window)
-     add(window);
- 
-     connect(workspace(), &Workspace::windowAdded, this, [this](Window *window) {
--        if (window->isPopupWindow() && m_windows.contains(window->transientFor())) {
-+        Window *parent = window->transientFor();
-+        if (window->isPopupWindow() && parent && m_windows.contains(parent)) {
-             add(window);
-             if (m_active) {
-                 Q_EMIT frame();
--- 
-2.53.0
-
-
-From 39f20df018a643807408588ab0a601474945fd67 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
-Date: Sun, 22 Feb 2026 06:57:23 +0100
-Subject: [PATCH 2/2] plugins/screencast: Add D-Bus API for stream
- introspection and consumer tracking
-
-Adds a D-Bus ObjectManager interface exposing active screencast streams
-with real-time metadata including consumer application detection via
-PipeWire graph traversal. Enables external applications to query which
-screens/windows are being recorded and by which application.
-
-Key features:
-- D-Bus API on session bus (org.kde.KWin.ScreenCast)
-- Per-stream objects with type-specific interfaces (Window/Output/Region)
-- Asynchronous PipeWire consumer detection with separate
-  consumerConnected/consumerDisconnected signals
-- D-Bus PropertiesChanged signals for geometry, caption, state and
-  consumer changes
-- Integration test for D-Bus API (ObjectManager, properties, Stop method)
-
-State values match the D-Bus XML documentation: idle, paused, streaming.
----
- autotests/integration/CMakeLists.txt          |   3 +
- .../integration/screencast_dbus_test.cpp      | 266 ++++++++++
- src/plugins/screencast/CMakeLists.txt         |  38 +-
- .../org.kde.KWin.ScreenCast.Output.xml        |  32 ++
- .../org.kde.KWin.ScreenCast.Region.xml        |  32 ++
- .../org.kde.KWin.ScreenCast.Window.xml        |  47 ++
- .../screencast/org.kde.KWin.ScreenCast.xml    |  36 ++
- .../screencast/outputscreencastsource.cpp     |  26 +
- .../screencast/outputscreencastsource.h       |   9 +
- .../screencast/pipewireconsumertracker.cpp    | 493 ++++++++++++++++++
- .../screencast/pipewireconsumertracker.h      | 107 ++++
- .../screencast/regionscreencastsource.h       |  21 +
- .../screencast/screencastdbusinterface.cpp    | 327 ++++++++++++
- .../screencast/screencastdbusinterface.h      |  58 +++
- src/plugins/screencast/screencastmanager.cpp  |  27 +-
- src/plugins/screencast/screencastmanager.h    |  15 +
- src/plugins/screencast/screencaststream.cpp   |  46 +-
- src/plugins/screencast/screencaststream.h     |  15 +-
- .../screencast/screencaststreamwrapper.cpp    | 187 +++++++
- .../screencast/screencaststreamwrapper.h      |  92 ++++
- .../screencast/windowscreencastsource.cpp     |  52 ++
- .../screencast/windowscreencastsource.h       |  18 +
- 22 files changed, 1943 insertions(+), 4 deletions(-)
- create mode 100644 autotests/integration/screencast_dbus_test.cpp
- create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.Output.xml
- create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.Region.xml
- create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.Window.xml
- create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.xml
- create mode 100644 src/plugins/screencast/pipewireconsumertracker.cpp
- create mode 100644 src/plugins/screencast/pipewireconsumertracker.h
- create mode 100644 src/plugins/screencast/screencastdbusinterface.cpp
- create mode 100644 src/plugins/screencast/screencastdbusinterface.h
- create mode 100644 src/plugins/screencast/screencaststreamwrapper.cpp
- create mode 100644 src/plugins/screencast/screencaststreamwrapper.h
-
 diff --git a/autotests/integration/CMakeLists.txt b/autotests/integration/CMakeLists.txt
 index 7f3e594d7b..40b34d39bd 100644
 --- a/autotests/integration/CMakeLists.txt
@@ -2250,10 +2161,20 @@ index 0000000000..180da82a69
 +
 +} // namespace KWin
 diff --git a/src/plugins/screencast/windowscreencastsource.cpp b/src/plugins/screencast/windowscreencastsource.cpp
-index c565a337da..93a477314f 100644
+index 59708970ea..93a477314f 100644
 --- a/src/plugins/screencast/windowscreencastsource.cpp
 +++ b/src/plugins/screencast/windowscreencastsource.cpp
-@@ -81,12 +81,16 @@ void WindowScreenCastSource::watch(Window *window)
+@@ -33,7 +33,8 @@ WindowScreenCastSource::WindowScreenCastSource(Window *window)
+     add(window);
+ 
+     connect(workspace(), &Workspace::windowAdded, this, [this](Window *window) {
+-        if (window->isPopupWindow() && m_windows.contains(window->transientFor())) {
++        Window *parent = window->transientFor();
++        if (window->isPopupWindow() && parent && m_windows.contains(parent)) {
+             add(window);
+             if (m_active) {
+                 Q_EMIT frame();
+@@ -80,12 +81,16 @@ void WindowScreenCastSource::watch(Window *window)
  {
      window->refOffscreenRendering();
      connect(window, &Window::damaged, this, &WindowScreenCastSource::frame);
@@ -2270,7 +2191,7 @@ index c565a337da..93a477314f 100644
  }
  
  quint32 WindowScreenCastSource::drmFormat() const
-@@ -211,6 +215,54 @@ RectF WindowScreenCastSource::boundingRect() const
+@@ -210,6 +215,54 @@ RectF WindowScreenCastSource::boundingRect() const
      return boundingRect;
  }
  
@@ -2354,6 +2275,3 @@ index 80edd86ac8..67522e9b00 100644
  private:
      void add(Window *window);
      void watch(Window *window);
--- 
-2.53.0
-
