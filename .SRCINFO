@@ -1,6 +1,6 @@
 pkgbase = bouclier-bleu
 	pkgdesc = Modular NGAV/EDR designed to prevent ransomware and memory corruption.
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/alexandreboutrik/bouclier-bleu
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = bouclier-bleu
 	makedepends = attr
 	depends = linux>=5.12
 	backup = etc/bouclier-bleu/config.toml
-	source = bouclier-bleu-0.11.1.tar.gz::https://github.com/alexandreboutrik/bouclier-bleu/archive/refs/tags/v0.11.1.tar.gz
-	sha256sums = 6cf9ed6f19c090a5cccb020c2352edc4e245f10021b8aaf28dac44b43f944dcd
+	source = bouclier-bleu-0.11.2.tar.gz::https://github.com/alexandreboutrik/bouclier-bleu/archive/refs/tags/v0.11.2.tar.gz
+	sha256sums = e97258f01aa5886bdcaa0e0ffa8727f7a0108e92a8e148c8e393ccea8e7f2fd1
 
 pkgname = bouclier-bleu
