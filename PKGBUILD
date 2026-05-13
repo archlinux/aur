@@ -1,6 +1,6 @@
 pkgname=eika-shell-git
 _pkgname=eika-shell
-pkgver=0.0.0.r69.gd2aeb9b
+pkgver=0.0.0.r70.gc05e69f
 pkgrel=1
 pkgdesc='Small Unix-like shell written in C++'
 arch=('x86_64')
