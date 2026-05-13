@@ -1,6 +1,6 @@
 pkgbase = restic-box
 	pkgdesc = A simple GTK3 tray applet for restic backups over SSH, local, or rclone remotes
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/Shikaku2/restic-box
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = restic-box
 	depends = python-cairo
 	optdepends = fuse3: required for restic mount
 	optdepends = rclone: required for rclone backend
-	source = restic-box-0.4.3.tar.gz::https://github.com/Shikaku2/restic-box/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = 90caa62310f218ccdb62742ab310cfba21f06d278c8aa44f5799e86e7466dfb2
+	source = restic-box-0.4.4.tar.gz::https://github.com/Shikaku2/restic-box/archive/refs/tags/v0.4.4.tar.gz
+	sha256sums = ef5f5dc204b078a60a537d873bf5b3c09f7f8e0387901820e14f4dea0ce779a7
 
 pkgname = restic-box
