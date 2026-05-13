@@ -1,6 +1,7 @@
 # Maintainer: flossbud <flossbud27@gmail.com>
 pkgname=ttmt-beta
-pkgver=2.2.0
+_upstream=2.2.0-rc1
+pkgver=2.2.0rc1
 pkgrel=1
 pkgdesc="ToonTown MultiTool BETA — pre-release smoke-test channel. Expect bugs. For stable use, install toontown-multitool instead."
 arch=('any')
@@ -20,7 +21,7 @@ depends=(
     'xdotool'
 )
 makedepends=('git')
-source=("git+https://github.com/flossbud/ToonTown-MultiTool.git#tag=v${pkgver}")
+source=("git+https://github.com/flossbud/ToonTown-MultiTool.git#tag=v${_upstream}")
 sha256sums=('SKIP')
 
 package() {
