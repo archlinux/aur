@@ -1,3 +1,5 @@
+# Maintainer: Raidriar
+
 _pkgname=renderide
 pkgname=$_pkgname-git
 pkgver=r1978.c97d876
