@@ -1,20 +1,22 @@
 pkgbase = sapmachine17-jdk
 	pkgdesc = SAP's patched build of OpenJDK 17
-	pkgver = 17.0.16
+	pkgver = 17.0.19
 	pkgrel = 1
 	url = https://sapmachine.io
 	install = sapmachine-jdk.install
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only WITH Classpath-exception-2.0
 	depends = java-runtime-common
 	depends = java-environment-common
+	depends = glibc
+	depends = zlib
 	provides = java-runtime=17
 	provides = java-runtime-headless=17
 	provides = java-environment=17
 	conflicts = java-runtime<=17
 	conflicts = java-environment<=17
 	options = !strip
-	source = https://github.com/SAP/SapMachine/releases/download/sapmachine-17.0.16/sapmachine-jdk-17.0.16_linux-x64_bin.tar.gz
-	sha256sums = b53bed5cb59021aab585347bcf58d90a08473bc23829140966f931762da80f40
+	source = https://github.com/SAP/SapMachine/releases/download/sapmachine-17.0.19/sapmachine-jdk-17.0.19_linux-x64_bin.tar.gz
+	sha256sums = 6fe7413b5fb62d8307249987fc2863dfa817b54755a4b865e1b4215fbaa7d242
 
 pkgname = sapmachine17-jdk

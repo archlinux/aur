@@ -2,20 +2,20 @@
 
 pkgname=sapmachine17-jdk
 _majorver=17
-pkgver=17.0.16
+pkgver=17.0.19
 pkgrel=1
 pkgdesc="SAP's patched build of OpenJDK 17"
 arch=('x86_64')
 url="https://sapmachine.io"
-license=('GPL2')
-depends=('java-runtime-common' 'java-environment-common')
+license=('GPL-2.0-only WITH Classpath-exception-2.0')
+depends=('java-runtime-common' 'java-environment-common' 'glibc' 'zlib')
 provides=("java-runtime=${_majorver}" "java-runtime-headless=${_majorver}" "java-environment=${_majorver}")
 conflicts=("java-runtime<=${_majorver}" "java-environment<=${_majorver}")
 backup=()
 options=(!strip)
 install=sapmachine-jdk.install
 source=("https://github.com/SAP/SapMachine/releases/download/sapmachine-${pkgver}/sapmachine-jdk-${pkgver}_linux-x64_bin.tar.gz")
-sha256sums=('b53bed5cb59021aab585347bcf58d90a08473bc23829140966f931762da80f40')
+sha256sums=('6fe7413b5fb62d8307249987fc2863dfa817b54755a4b865e1b4215fbaa7d242')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-sapmachine
 
