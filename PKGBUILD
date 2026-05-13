@@ -19,7 +19,7 @@ makedepends=('git')
 checkdepends=('cppunit')
 conflicts=('aria2')
 provides=("aria2=${pkgver%.*}")
-source=("$pkgname::git+https://github.com/tatsuhiro-t/aria2.git"
+source=("$pkgname::git+https://github.com/aria2/aria2.git"
          nettle-4.patch)
 sha256sums=('SKIP'
             'a1968322a46b4d3f0c116d3bac6c94b200458263f5bf4ca06fae2df186ff1f52')
