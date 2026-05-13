@@ -1,17 +1,17 @@
 pkgbase = cppinsights
 	pkgdesc = C++ Insights - See your source code with the eyes of a compiler
-	pkgver = 20.1
-	pkgrel = 2
+	pkgver = 21.1
+	pkgrel = 1
 	url = https://cppinsights.io
 	arch = x86_64
 	license = MIT
 	makedepends = ninja
 	makedepends = cmake
-	depends = llvm20-libs
-	depends = llvm20
-	depends = clang20
+	makedepends = llvm21
+	depends = llvm21-libs
+	depends = clang21
 	conflicts = cppinsights-git
-	source = cppinsights-20.1.tar.gz::https://github.com/andreasfertig/cppinsights/archive/refs/tags/v_20.1.tar.gz
-	b2sums = 58a9224679415801959aa2dac22590bbe31022ad43b10bff744aa3b7b60cc15176bb7f158166a061c6989b9d6db704241c90cf2f08fba438bc6c9d6992ceaec1
+	source = cppinsights-21.1.tar.gz::https://github.com/andreasfertig/cppinsights/archive/refs/tags/v_21.1.tar.gz
+	b2sums = 3ed1ccb9241db3762c8bb1881a38cef5f29351ecb8cb83b674876d077e773d4fd55861453219852d0ad23960e74aead57101a51bab8dc32e22bed326ab2b9fe1
 
 pkgname = cppinsights
