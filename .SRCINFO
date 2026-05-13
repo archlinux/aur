@@ -1,6 +1,6 @@
 pkgbase = video-match-finder-git
 	pkgdesc = Partial near-duplicate video detection (DINOv2 + FAISS + Hough/permutation)
-	pkgver = 0.1.0.r15.ga3fd249
+	pkgver = 0.1.0.r16.gb8389bf
 	pkgrel = 1
 	url = https://github.com/Sinoosoida/video-match-finder
 	arch = any
