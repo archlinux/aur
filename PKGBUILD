@@ -95,4 +95,28 @@ package() {
 source /opt/azurlaneautoscript/venv/bin/activate
 exec python /opt/azurlaneautoscript/app/gui.py "$@"
 EOF
+    # 9. 系统服务
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/${pkgname}.service" <<'EOF'
+[Unit]
+Description=AzurLaneAutoScript Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/azurlaneautoscript
+Restart=on-failure
+
+# 限制写入权限
+#ProtectSystem=strict
+#ReadWritePaths=/opt/azurlaneautoscript /tmp /var/tmp /usr/bin/azurlaneautoscript
+
+# 限制服务运行的文件系统访问
+#ProtectHome=true
+#NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
+
+EOF
+
 }
