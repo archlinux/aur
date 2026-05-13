@@ -37,6 +37,14 @@ package() {
     
     # Install documentation
     install -Dm644 README.md "${pkgdir}/usr/share/doc/ostt/README.md"
+    
+    # Generate shell completions
+    mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+    mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
+    mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d"
+    ./target/release/ostt completions bash > "${pkgdir}/usr/share/bash-completion/completions/ostt"
+    ./target/release/ostt completions zsh > "${pkgdir}/usr/share/zsh/site-functions/_ostt"
+    ./target/release/ostt completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/ostt.fish"
 }
 
 check() {
