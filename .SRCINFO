@@ -1,0 +1,15 @@
+pkgbase = netbird-mullvad-bypass
+	pkgdesc = Allow Mullvad and Netbird to coexist
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/d10n/netbird-mullvad-bypass
+	arch = any
+	license = MIT
+	depends = nftables
+	depends = iproute2
+	optdepends = netbird
+	optdepends = mullvad-vpn
+	source = netbird-mullvad-bypass-1.2.0.tar.gz::https://github.com/d10n/netbird-mullvad-bypass/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = d49737ff94b3cae25aecb52c3369f8be0d475e4b700caf0c39a091c7e986610b
+
+pkgname = netbird-mullvad-bypass
