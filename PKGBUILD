@@ -2,8 +2,8 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.0.1.r38.g36bf21b # Will be updated by pkgver()
-pkgrel=4
+pkgver=0.1.0.r3.g566d4b8 # Will be updated by pkgver()
+pkgrel=1
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'pixman' 'libdrm' 'libevdev' 'wlr-randr'
          'noctalia-shell' 'libdecor' 'grim' 'xwayland-satellite'
-         'xdg-desktop-portal-wlr' 'swaylock' 'swayidle' 'wlroots0.20')
+         'xdg-desktop-portal-wlr' 'wlroots0.20')
 makedepends=('dotnet-sdk-10.0' 'clang' 'zlib' 'krb5' 'git' 'wayland-protocols')
 optdepends=('tuigreet: TUI greeter for greetd (recommended login path)'
             'greetd: minimal login manager for tuigreet'
@@ -123,6 +123,16 @@ package() {
     #   import "file:///usr/share/aqueous/quickshell" as Aqueous
     install -Dm644 "$srcdir/aqueous/packaging/quickshell/OutputControl.qml" \
         "$pkgdir/usr/share/aqueous/quickshell/OutputControl.qml"
+
+    # Default Noctalia config (seeded on first launch by aqueous-init when
+    # the user has no ~/.config/noctalia/settings.json yet).
+    install -Dm644 "$srcdir/aqueous/packaging/noctalia/settings.json" \
+        "$pkgdir/usr/share/aqueous/noctalia/settings.json"
+
+    # Default wallpapers referenced by the shipped Noctalia config.
+    install -d "$pkgdir/usr/share/aqueous/wallpapers"
+    install -m644 "$srcdir/aqueous/packaging/wallpapers/"*.avif \
+        "$pkgdir/usr/share/aqueous/wallpapers/"
 
     # Documented greetd example (not auto-installed to /etc).
     install -Dm644 "$srcdir/aqueous/packaging/greetd/config.toml.example" \
