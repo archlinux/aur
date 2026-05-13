@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-bin
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -9,8 +9,13 @@ license=('MIT')
 depends=(
     'webkit2gtk-4.1'
     'gtk3'
+    'libayatana-appindicator'
+    'librsvg'
     'sqlite'
     'zstd'
+)
+optdepends=(
+    'speech-dispatcher: Native TTS support (experimental)'
 )
 provides=(
     'shiorii'
@@ -31,11 +36,21 @@ conflicts=(
     'shiori-ebook-bin'
 )
 source=("Shiori_${pkgver}_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('ff79dff01bf4c38a5aede8d0c82f4518771c8f1cce0f2806f0aeab3381869eee')
+sha256sums=('794bbb612c4fc03a7aaec59bd1f213644b76006358fa46dfc4761940cf7d1ea1')
 
 package() {
     bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
 
+    if [[ ! -f "${pkgdir}/usr/bin/shiori" ]]; then
+        echo "Missing usr/bin/shiori in release tarball" >&2
+        return 1
+    fi
+
+    if [[ ! -f "${pkgdir}/usr/share/applications/Shiori.desktop" ]]; then
+        echo "Missing usr/share/applications/Shiori.desktop in release tarball" >&2
+        return 1
+    fi
+
     chmod -R u=rwX,go=rX "${pkgdir}/usr"
-    [[ -f "${pkgdir}/usr/bin/shiori" ]] && chmod 755 "${pkgdir}/usr/bin/shiori"
+    chmod 755 "${pkgdir}/usr/bin/shiori"
 }
