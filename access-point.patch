@@ -1,0 +1,6 @@
+--- a/drivers/net/wireless/mediatek/mt7601u/init.c
++++ b/drivers/net/wireless/mediatek/mt7601u/init.c
+@@ -612 +612,2 @@ int mt7601u_register_device(struct mt7601u_dev *dev)
+-	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION);
++	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
++				 BIT(NL80211_IFTYPE_AP);
