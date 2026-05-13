@@ -14,18 +14,6 @@ depends=(
   'python-requests'
   'python-websocket-client'
 )
-provides=(
-  'codexplusplus-codex-desktop'
-  'openai-codex-desktop-codexplusplus'
-)
-conflicts=(
-  'codexplusplus-codex-desktop'
-  'openai-codex-desktop-codexplusplus'
-)
-replaces=(
-  'codexplusplus-codex-desktop'
-  'openai-codex-desktop-codexplusplus'
-)
 makedepends=(
   'python-build'
   'python-installer'
@@ -78,7 +66,6 @@ package() {
   ln -s /usr/bin/codex-plus-plus \
     "${pkgdir}/usr/lib/${pkgname}/bin/codex-desktop-injected"
   ln -s codex-plus-plus "${pkgdir}/usr/bin/codexplusplus"
-  ln -s codex-plus-plus "${pkgdir}/usr/bin/openai-codex-desktop-codexplusplus"
 
   install -Dm644 "${srcdir}/90-codex-plus-plus-reapply.hook" \
     "${pkgdir}/usr/share/libalpm/hooks/90-codex-plus-plus-reapply.hook"
