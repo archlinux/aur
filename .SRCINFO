@@ -1,6 +1,6 @@
 pkgbase = python-pynput
 	pkgdesc = Python library to monitor and control user input devices
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/moses-palmer/pynput
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pynput
 	depends = python-evdev
 	depends = python-six
 	depends = python-xlib
-	source = pynput-1.8.1.tar.gz::https://github.com/moses-palmer/pynput/archive/refs/tags/v1.8.1.tar.gz
-	sha256sums = 72682ecdc4f2c8ac25eecaee80d068f68b5cd6966d07b8915bc9f5e8a39d6a59
+	source = pynput-1.8.2.tar.gz::https://github.com/moses-palmer/pynput/archive/refs/tags/v1.8.2.tar.gz
+	sha256sums = acd65b9e979ae7efe2e2f3fad83a7eda736dd2de364efbc113a9af4c8222a6df
 
 pkgname = python-pynput

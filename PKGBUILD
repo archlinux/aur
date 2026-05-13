@@ -2,7 +2,7 @@
 # Contributor: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=python-pynput
 _name=${pkgname#python-}
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
@@ -20,13 +20,16 @@ makedepends=(
   'python-wheel'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('72682ecdc4f2c8ac25eecaee80d068f68b5cd6966d07b8915bc9f5e8a39d6a59')
+sha256sums=('acd65b9e979ae7efe2e2f3fad83a7eda736dd2de364efbc113a9af4c8222a6df')
 
 prepare() {
   cd "$_name-$pkgver"
 
-  # Don't require SETUP_PACKAGES since we're neither building docs nor uploading to PyPI
-  sed -i 's/setup_requires=RUNTIME_PACKAGES + SETUP_PACKAGES/setup_requires=RUNTIME_PACKAGES/g' setup.py
+  # Don't require SETUP_PACKAGES
+  # only required for building docs and uploading to PyPI
+  sed -i \
+    's/setup_requires=RUNTIME_PACKAGES + SETUP_PACKAGES/setup_requires=RUNTIME_PACKAGES/g' \
+    setup.py
 }
 
 build() {
