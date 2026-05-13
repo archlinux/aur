@@ -7,8 +7,7 @@ pkgrel=1
 pkgdesc="A declarative build system, developer environment tool, and task runner"
 arch=(x86_64 aarch64)
 url="https://minimal.dev"
-# License: custom proprietary license
-license=("LicenseRef-Minimal-Proprietary")
+license=("proprietary")
 depends=(git)
 makedepends=(curl)
 optdepends=(
@@ -28,23 +27,19 @@ pkgver() {
 
 package() {
     # Install the CLI binary as /usr/bin/minimal
-    install -Dm755 "bin/minimal" \
+    install -Dm755 "${srcdir}/bin/minimal" \
         "${pkgdir}/usr/bin/minimal"
-
-    # Install custom license
-    install -Dm644 "LICENSE" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Install pre-packaged completions
     # Bash completions
-    install -Dm644 "completions/bash/minimal" \
+    install -Dm644 "${srcdir}/completions/bash/minimal" \
         "${pkgdir}/usr/share/bash-completion/completions/minimal"
 
     # Zsh completions
-    install -Dm644 "completions/zsh/_minimal" \
+    install -Dm644 "${srcdir}/completions/zsh/_minimal" \
         "${pkgdir}/usr/share/zsh/site-functions/_minimal"
 
     # Fish completions
-    install -Dm644 "completions/fish/minimal.fish" \
+    install -Dm644 "${srcdir}/completions/fish/minimal.fish" \
         "${pkgdir}/usr/share/fish/vendor_completions.d/minimal.fish"
 }
