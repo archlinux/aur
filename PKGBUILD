@@ -4,7 +4,7 @@
 pkgname=vboot-utils
 pkgver=147.16610
 _tag=release-R${pkgver/\./-}.B
-pkgrel=1
+pkgrel=2
 pkgdesc='Chromium OS verified boot utilities'
 arch=(i686 x86_64)
 url='https://chromium.googlesource.com/chromiumos/platform/vboot_reference'
