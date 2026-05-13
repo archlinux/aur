@@ -1,6 +1,6 @@
 # Maintainer: Diego Essaya <dessaya at gmail dot com>
 pkgname=waydoodle
-pkgver=1.3.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A minimalistic screen annotation tool for Wayland'
 arch=('x86_64' 'aarch64')
