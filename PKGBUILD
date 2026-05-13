@@ -1,7 +1,7 @@
 # Maintainer: JamesFromFL <jamesfromfl@penguinmail.com>
 
 pkgname=mykey
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Hardware-focused local authentication, Secret Service, and tray stack for Linux"
 arch=('x86_64')
@@ -29,7 +29,7 @@ provides=('mykey')
 conflicts=('mykey-git')
 install='mykey.install'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('95e5e9c385675fd878edccbefb5f352edc69a33dede01ff282ee12f4a6e0a18a')
+sha256sums=('b31c8182796452502626a7c7918d3fe1785f914d84668b8d4b0b794b08dc00fa')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
