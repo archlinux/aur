@@ -4,8 +4,8 @@
 
 _browser=vivaldi-snapshot
 pkgname=${_browser}-ffmpeg-codecs
-pkgver=148.0.7778.160
-_vivaldi_major_version=7.10
+pkgver=148.0.7778.172
+_vivaldi_major_version=8.0
 _commit=b5e18fb9da84e26ceef30d4e4886696bf59337c0
 #_commit=$(curl -sL "https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${pkgver}/DEPS?format=TEXT" | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgrel=1
