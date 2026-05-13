@@ -1,6 +1,6 @@
 pkgbase = smb-mount-controller-git
 	pkgdesc = A state-based SMB/CIFS mount controller written in bash for Linux that (un)mounts network shares based on reachability
-	pkgver = 0.2.r0.geee443b
+	pkgver = 0.2.r1.g5e1fb02
 	pkgrel = 1
 	url = https://codeberg.org/marvin1099/smb-mount-controller
 	install = smb-controller.install
