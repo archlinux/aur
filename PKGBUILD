@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pipewire-gobject
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Experimental GObject Introspection wrapper for app-facing PipeWire APIs"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
 )
 provides=('libpwg-0.1.so')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bhack/pipewire-gobject/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('700ce5f78a0b904395119d8d9cc19b43e17ded18c302d24780e20ef94705a125')
+sha256sums=('e87cc0d80fbc4e2d40f5d7758e0ef72ad3b42a09476793431ed6730d7660bd8b')
 
 build() {
   arch-meson "$pkgname-$pkgver" build -Dwheel=true
