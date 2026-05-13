@@ -1,7 +1,7 @@
 # Maintainer: MCbabel <https://github.com/MCbabel>
 pkgname=steam-manifest-downloader
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Download Steam game depots and manifests via a modern Tauri GUI"
 arch=('x86_64')
 url="https://github.com/MCbabel/Steam-Manifest-Downloader"
@@ -22,7 +22,7 @@ makedepends=(
   'file'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bfcb64702a5e7d526a27c81f373cdea06a12c2076a3cc48e96e34f4b49c0faf8')
+sha256sums=('8d49bb18cdfc20dbf082be9b8c4b460918761116453dac8dc3c0854620e869a4')
 
 prepare() {
   cd "Steam-Manifest-Downloader-${pkgver}/src-tauri"
