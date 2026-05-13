@@ -1,84 +1,54 @@
-# sidra-bin — AUR package
+# sidra-bin (AUR)
 
-> An elegant Apple Music desktop client for Linux.  
-> No frippery, just quality. A better class of Cider 🍎
+[![Update AUR Package](https://github.com/BUR4KBEY/sidra-bin/actions/workflows/update.yml/badge.svg)](https://github.com/BUR4KBEY/sidra-bin/actions/workflows/update.yml)
 
-Upstream: <https://github.com/wimpysworld/sidra>
+This repository contains the build files for the [sidra-bin](https://aur.archlinux.org/packages/sidra-bin) package on the Arch User Repository (AUR).
 
----
-
-## Why `-bin`?
-
-Sidra depends on [CastLabs Electron](https://github.com/castlabs/electron-releases)
-(`wvcus` variant) for Widevine DRM support on Linux. Standard Electron cannot
-be substituted, and the build system requires Nix with flakes and EVS production
-signing credentials. A source build inside a clean `makepkg` chroot is not
-feasible, so this package installs the official pre-built AppImage from GitHub
-Releases instead.
+**[Sidra](https://github.com/wimpysworld/sidra)** is an elegant Apple Music desktop client for Linux. No frippery, just quality.
 
 ---
 
-## Installation
+## 🚀 Features
+
+- **Automated Upstream Tracking**: A custom GitHub Action monitors the [wimpysworld/sidra](https://github.com/wimpysworld/sidra) repository for new releases everyday at 06:00 AM.
+- **Self-Updating PKGBUILD**: When a new version is detected, the workflow automatically:
+  - Updates `pkgver` and resets `pkgrel`.
+  - Downloads the new AppImage to calculate fresh `sha256sums`.
+  - Regenerates `.SRCINFO`.
+  - Commits changes back to this repository.
+- **Seamless AUR Synchronization**: Automatically mirrors all changes from the `main` branch of this repo to the AUR `master` branch, ensuring the package is always up-to-date for Arch users.
+
+## 🛠 Installation
+
+You can install this package using your favorite AUR helper:
 
 ```bash
-# Using paru
-paru -S sidra-bin
-
-# Using yay
 yay -S sidra-bin
+# or
+paru -S sidra-bin
+```
 
-# Manual
+Alternatively, manual installation:
+
+```bash
 git clone https://aur.archlinux.org/sidra-bin.git
 cd sidra-bin
 makepkg -si
 ```
 
----
+## 🤖 Built with AI
 
-## Updating checksums after a new release
+This automation pipeline and repository structure were architected and refined through a collaborative effort between the maintainer and AI coding agents (**Claude** and **Gemini**).
 
-Before pushing a version bump, download the AppImages and update the
-`sha256sums_*` arrays in the PKGBUILD:
+## 🤝 Contributing
 
-```bash
-curl -LO https://github.com/wimpysworld/sidra/releases/download/<VERSION>/Sidra-linux-x86_64.AppImage
-sha256sum Sidra-linux-x86_64.AppImage
-```
+Contributions are more than welcome! Whether it's:
+- Improving the `PKGBUILD` packaging logic.
+- Refining the automation scripts.
+- Enhancing the documentation.
 
-Then regenerate `.SRCINFO`:
+Please feel free to open an Issue or submit a Pull Request.
 
-```bash
-makepkg --printsrcinfo > .SRCINFO
-```
+## ⚖️ License
 
----
-
-## What the package does
-
-| Step | Detail |
-|------|--------|
-| Extract | Runs `Sidra-linux-<arch>.AppImage --appimage-extract` — no FUSE needed |
-| Install app | Copies `squashfs-root/` → `/opt/sidra/` |
-| Wrapper | `/usr/bin/sidra` → `exec /opt/sidra/sidra "$@"` |
-| Desktop entry | Installs to `/usr/share/applications/sidra.desktop` |
-| Icons | Installs hicolor icon theme entries from inside the AppImage |
-| Sandbox | Sets `chrome-sandbox` setuid root (required by Chromium) |
-
----
-
-## MPRIS / media controls
-
-Sidra registers `org.mpris.MediaPlayer2.sidra` on the D-Bus session bus.
-Any MPRIS-aware front-end (KDE, GNOME Shell, `playerctl`, GSConnect, …)
-will see Sidra automatically once it is running — no extra configuration needed.
-
----
-
-## Maintainer notes
-
-- The AppImage artifact name deliberately omits the version
-  (`Sidra-linux-x86_64.AppImage`, not `Sidra-0.3.3-linux-x86_64.AppImage`).
-  This is set by `build.appImage.artifactName` in `package.json`.
-- Bump `pkgver`, update `sha256sums_*`, regenerate `.SRCINFO`, push.
-- License is [BlueOak-1.0.0](https://blueoakcouncil.org/license/1.0.0) —
-  a permissive, OSI-approved license.
+The packaging files in this repository are licensed under the same terms as the original project where applicable, or as specified in the `PKGBUILD`.
