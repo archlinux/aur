@@ -1,7 +1,16 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 82b7a2d..297fa4a 100644
+index 82b7a2d..d20603e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -28,7 +28,7 @@ option(WAYWALLEN_BUILD_UI      "Build the Qt/QML UI"                   ON)
+ option(WAYWALLEN_BUILD_PLUGINS "Build renderer plugins (image, video)" ON)
+ 
+ if(WAYWALLEN_BUILD_DAEMON)
+-    include(FetchCorrosion)
++    find_package(Corrosion 0.6.1 REQUIRED)
+     # NOTE: no LOCKED here — Cargo.lock is gitignored in this repo, so cargo
+     # must be allowed to (re)generate it on a fresh checkout. Flip to FROZEN
+     # if a committed Cargo.lock is added later for reproducible builds.
 @@ -45,6 +45,8 @@ if(WAYWALLEN_BUILD_DAEMON)
  endif()
  
@@ -12,7 +21,7 @@ index 82b7a2d..297fa4a 100644
  endif()
  
 diff --git a/deps.json b/deps.json
-index 91cc43b..9c03fe3 100644
+index 91cc43b..c8ec931 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -1,39 +1,4 @@

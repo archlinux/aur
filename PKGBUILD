@@ -1,7 +1,5 @@
 # TODO: Use system qmlmaterial, remove qt6-shadertools and git-lfs
 
-# cmake/FetchCorrosion.cmake
-_corrosion_version=0.6.1
 # deps.json
 _rstd_commit=9fdc3ebeda7289bd1db7d2fb0b978e6ed0b1a63e
 _ncrequest_commit=404868aa2aa4481e262f25d8f7d053f42b61b7b8
@@ -18,10 +16,10 @@ url=https://github.com/waywallen/waywallen
 license=(MIT)
 depends=(libgcc libstdc++ glibc libglvnd ffmpeg curl mesa sqlite vulkan-icd-loader
          cubeb qt6-base qt6-declarative qt6-grpc)
-makedepends=(git cmake cargo clang lld vulkan-headers ninja asio pegtl qt6-shadertools git-lfs)
+makedepends=(git cmake cargo clang lld vulkan-headers ninja asio pegtl qt6-shadertools git-lfs
+             corrosion)
 options=(!lto)
 source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
-        "git+https://github.com/corrosion-rs/corrosion.git#tag=v$_corrosion_version"
         "git+https://github.com/hypengw/rstd.git#commit=$_rstd_commit"
         "git+https://github.com/hypengw/ncrequest.git#commit=$_ncrequest_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
@@ -29,13 +27,12 @@ source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit"
         "0001-use-system-deps.diff")
 sha256sums=('d7e6d25674f1e9c590ca4c95be17f1801e2593e55a9ac117fe97cdad53a5abea'
-            '75c1711049c3aa058ef7f8519ecc2a8a437cd31dd8ce4fb0b65c0ba13b7b36f6'
             'de3e235c080bd9ddd26bbddab43d64d3ab329b9ce700b267a5a9d6fb143452e8'
             '939c717802fc9e0ef13e54f547d6f7d1b2b99730eb31c6ef06211a3ffd5495e6'
             'e56b8a07f718b335a8e00c21dd76e3d0e6df7fdf2f367baa33fed8c61b185481'
             'd6cf31c7d8acce6485b14ca73f9cbaeba98062e4f7334afa766b6ea4d4ab4b7f'
             'b46ad38f360b5bcd61362aa3ad97df75fc38d2a4e7e4ad3f0bb5f6c9ea42f23e'
-            '2354b1110b873f26bd6a8653929c7fc983438fcbd81cf648b131844cbe6f2d38')
+            'a97db557835d8a2c1fc841c2a4a8b579e4a4f890159d8b6132706f723796e9b0')
 
 prepare() {
     cd "$pkgname"
@@ -66,7 +63,6 @@ build() {
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_LINKER=lld \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-        -DFETCHCONTENT_SOURCE_DIR_CORROSION="$srcdir/corrosion" \
         -DFETCHCONTENT_SOURCE_DIR_RSTD="$srcdir/rstd" \
         -DFETCHCONTENT_SOURCE_DIR_NCREQUEST="$srcdir/ncrequest" \
         -DFETCHCONTENT_SOURCE_DIR_WAVSEN="$srcdir/wavsen" \
