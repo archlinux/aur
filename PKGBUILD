@@ -3,7 +3,7 @@
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=ffmpeg-normalize
-pkgver=1.37.6
+pkgver=1.37.7
 pkgrel=1
 pkgdesc='Normalize loudness of audio and video files using FFmpeg'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ffmpeg python-colorlog python-ffmpeg-progress-yield python-mutagen pyth
 checkdepends=(git python-pytest uv)
 makedepends=(git python-installer python-uv-build uv)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('f71babefa7b2442ab830c9817792ca7a0f61ad165b51eafc85ebb6489053fdf416cc2f14b72dd8bcbd09e1b51cfb391c2fa0ce9e8c95fdcb38ecd56cc70b201a')
+sha512sums=('19c5fa30bfac428222437e1b6caaabe34aa0ccbec2463a1c10b3e3927d7b42ca8a51e1ced1889f6d80033873d784bbb5dd110cd875c78de081390be8e0a44b91')
 
 #prepare() {
 #  rm -rf $pkgname-$pkgver/dist
