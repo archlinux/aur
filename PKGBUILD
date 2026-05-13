@@ -38,7 +38,7 @@ prepare() {
   echo "target_link_libraries(vtkRemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
 
   # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
-  patch -p1 -i ../diy2.patch
+  patch -p1 -i ../diy2.patch -d VTK
 }
 
 build() {
