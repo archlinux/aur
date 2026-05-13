@@ -1,8 +1,11 @@
 # Maintainer: jinzhongjia <jinzhongjia@manus.ai>
 
 pkgname=openwarp-git
-pkgver=2026.05.10.preview.r113.g1b7ef954
+pkgver=0.2026.05.13.1008.r0.gdbe1b396
 pkgrel=1
+# Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
+# which sorts lower under pacman vercmp. epoch ensures clean upgrades.
+epoch=1
 pkgdesc="OpenWarp - open-source fork of Warp, a Rust-based terminal with AI built in (git version)"
 arch=('x86_64')
 url="https://github.com/zerx-lab/warp"
@@ -63,6 +66,16 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
     export CARGO_HOME="${srcdir}/.cargo"
+
+    # Strip build paths from the binary. Without this, ~30k panic-site file
+    # paths under $srcdir (project source, cargo registry, git checkouts)
+    # get baked into warp-oss and makepkg flags them as $srcdir references.
+    # --remap-path-prefix covers Rust code; -ffile-prefix-map covers the
+    # tree-sitter grammar .c files compiled via cc-rs.
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}=/build --remap-path-prefix=${HOME}=/build/home"
+    export CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=/build"
+    export CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}=/build"
+
     cargo build --release --bin warp-oss --features "gui,nld_improvements"
 }
 

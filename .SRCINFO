@@ -1,7 +1,8 @@
 pkgbase = openwarp-git
 	pkgdesc = OpenWarp - open-source fork of Warp, a Rust-based terminal with AI built in (git version)
-	pkgver = 2026.05.10.preview.r113.g1b7ef954
+	pkgver = 0.2026.05.13.1008.r0.gdbe1b396
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/zerx-lab/warp
 	arch = x86_64
 	license = AGPL-3.0-only
