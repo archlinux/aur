@@ -2,7 +2,7 @@
 
 pkgname=mcp-gitee-git
 pkgver=1.0.0.r1.gb8faf41
-pkgrel=1
+pkgrel=4
 pkgdesc="Gitee MCP Server is a Model Context Protocol (MCP) server implementation for Gitee."
 arch=($CARCH)
 url="https://gitee.com/oschina/mcp-gitee"
@@ -11,10 +11,13 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=(glibc)
-optdepends=()
 makedepends=(
     git
     go
+)
+optdepends=(
+    'gitee-lfs-multipart-uploader: Gitee LFS high-speed object storage direct transfer tool'
+    'mcp-gitee-ent: Gitee Enterprise MCP Server is a Model Context Protocol (MCP) server implementation for Gitee Enterprise.'
 )
 backup=()
 options=('!strip' '!debug')
