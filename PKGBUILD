@@ -1,6 +1,6 @@
 # Maintainer: Jesus Alvarez <jesusalv@rez.codes>
 pkgname=python-cyclopts
-pkgver=3.16.2
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="A modern, intuitive command line interface framework for Python"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
     'python-rich'
     'python-rich-rst'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' 'python-poetry-dynamic-versioning')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
 source=("https://files.pythonhosted.org/packages/source/c/cyclopts/cyclopts-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
