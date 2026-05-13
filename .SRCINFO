@@ -1,0 +1,25 @@
+pkgbase = franzfon-bin
+	pkgdesc = FRANZFON VoIP Softphone (prebuilt binary from vendor)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://franzfon.de
+	arch = x86_64
+	license = MIT
+	license = custom
+	options = !strip
+	options = !emptydirs
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	depends = alsa-lib
+	optdepends = libayatana-appindicator: system tray icon support
+	source = FRANZFON-1.2.0-amd64.deb::https://franzfon.de/updates/linux/FRANZFON-1.2.0-amd64.deb
+	sha512sums = 54081a4788b695a056d93506865218666ebd944770df1a41e47335371bd4a4bbf7f2df4395e5a37c37bc4edbe03c6f41175d1e2d045177f62c9032a2d0a84675
+
+pkgname = franzfon-bin
