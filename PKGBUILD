@@ -1,7 +1,7 @@
 # Maintainer: Jesus Alvarez <jesusalv@rez.codes>
 pkgname=supersayer
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Speech-to-text input tool for GNOME using whisper.cpp and PyGTK"
 arch=('any')
 url="https://git.ironandcode.com/jesusa/supersayer"
@@ -33,12 +33,12 @@ source=("$pkgname-$pkgver.tar.gz::https://git.ironandcode.com/jesusa/supersayer/
 sha256sums=('905d8b84475d0dd32c32381a5c020c820a605edb1b7f7bfdb9b8d535f291ae7f')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

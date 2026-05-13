@@ -1,7 +1,7 @@
 pkgbase = supersayer
 	pkgdesc = Speech-to-text input tool for GNOME using whisper.cpp and PyGTK
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.ironandcode.com/jesusa/supersayer
 	install = supersayer.install
 	arch = any
