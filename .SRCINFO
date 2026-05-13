@@ -1,0 +1,23 @@
+pkgbase = hexapoda-bin
+	pkgdesc = A colorful modal hex editor
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/simonomi/hexapoda
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = hexapoda
+	conflicts = hexapoda
+	options = !strip
+	source = README-0.2.3.md::https://raw.githubusercontent.com/simonomi/hexapoda/v0.2.3/README.md
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/simonomi/hexapoda/v0.2.3/LICENSE
+	sha256sums = 1a33db1d529985eb0f9d9cc1104b7ec5d76e24cf7cc82e26cd55821979a29a76
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = hexapoda-x86_64-0.2.3.tgz::https://github.com/simonomi/hexapoda/releases/download/v0.2.3/hexapoda-linux-x86_64-v0.2.3.tar.gz
+	sha256sums_x86_64 = 9f13022a0e333ad839eb7bcfee93fe010d2768b5ecd6cca6cdf97f7847ae3624
+	source_aarch64 = hexapoda-aarch64-0.2.3.tgz::https://github.com/simonomi/hexapoda/releases/download/v0.2.3/hexapoda-linux-arm-v0.2.3.tar.gz
+	sha256sums_aarch64 = 474442f4483393bfe425ac7ed1a83ba2c24a9ba6c79f484e01f2138a457839c8
+
+pkgname = hexapoda-bin

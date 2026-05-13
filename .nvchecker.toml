@@ -1,0 +1,5 @@
+[hexapoda-bin]
+source = "github"
+github = "simonomi/hexapoda"
+use_latest_release = true
+prefix = "v"
