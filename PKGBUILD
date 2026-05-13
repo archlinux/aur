@@ -22,7 +22,7 @@ package() {
     --global \
     --cache "${srcdir}/npm-cache" \
     --prefix "$pkgdir/usr" \
-    --no-audit --no-fund --no-update-notifier \
+    --no-audit --no-fund --no-update-notifier --ignore-scripts \
     "$srcdir/$pkgname-$pkgver.tgz"
 
     # Clean up srcdir references
