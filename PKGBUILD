@@ -36,7 +36,7 @@ package() {
     --global \
     --cache "${srcdir}/npm-cache" \
     --prefix "$pkgdir/usr" \
-    --no-audit --no-fund --no-update-notifier \
+    --no-audit --no-fund --no-update-notifier --ignore-scripts \
     "$srcdir/$pkgname-$pkgver.tgz"
 
   # remove a non-runtime file that kills the packaging step
