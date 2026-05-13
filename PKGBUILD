@@ -16,18 +16,13 @@ sha256sums=('91882c0ee9ea356350caff4f40626a422523317ce864a90d76501597b8eb17c5')
 options=('!strip')
 
 package() {
-  bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.deb" -C "${pkgdir}" 2>/dev/null || {
-    # If bsdtar fails, extract using ar + tar
-    ar x "${srcdir}/${pkgname%-bin}-${pkgver}.deb"
-    bsdtar -xf data.tar.* -C "${pkgdir}"
-  }
+  cd "${srcdir}"
+  # .deb is an ar archive containing data.tar.gz with the actual files
+  ar x "${srcdir}/${pkgname%-bin}-${pkgver}.deb"
+  bsdtar -xf data.tar.gz -C "${pkgdir}"
 
   # Ensure binary is executable
   if [[ -f "${pkgdir}/usr/bin/zosma-cowork" ]]; then
     chmod +x "${pkgdir}/usr/bin/zosma-cowork"
   fi
-
-  # Install desktop file and icon
-  install -Dm644 "${pkgdir}/usr/share/applications/"*.desktop -t "${pkgdir}/usr/share/applications/" 2>/dev/null || true
-  install -Dm644 "${pkgdir}/usr/share/icons/"* -t "${pkgdir}/usr/share/icons/" 2>/dev/null || true
 }
