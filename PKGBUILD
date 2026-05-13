@@ -1,6 +1,6 @@
 # Maintainer: Nilesh Kevlani <njkevlani@gmail.com>
 pkgname=tolaria-bin
-pkgver=2026.5.12
+pkgver=2026.5.13
 pkgrel=1
 pkgdesc="Personal knowledge and life management app"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=()
 options=('!emptydirs' '!strip')
 makedepends=('libarchive') # For bsdtar
 
-source=("https://github.com/refactoringhq/tolaria/releases/download/v2026-05-12/Tolaria_2026.5.12_amd64.deb")
-sha256sums=('92e58bcdc559e43f862e7a818d37c2745dd6cc6a99f97ea57359ee701e160b1f')
+source=("https://github.com/refactoringhq/tolaria/releases/download/stable-v2026.5.13/Tolaria_2026.5.13_amd64.deb")
+sha256sums=('cac9196d4773c08ed330a54f1a3a651664cac1e081ddb62246dddb987a259b64')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir/"
