@@ -1,11 +1,10 @@
-From e8dbfa97e5564d7473dcf0f73200fa219588241b Mon Sep 17 00:00:00 2001
+From b01550fe81e495f2ba1fb92f17099b65c3fd1e63 Mon Sep 17 00:00:00 2001
 From: David Hummel <hummeltech@sherpaguru.com>
 Date: Wed, 21 May 2025 22:47:10 +0200
 Subject: [PATCH] Use system dependencies
 
 ---
  .gitmodules                               | 34 -----------------------
- src/xenia/cpu/backend/assembler.h         |  1 +
  src/xenia/emulator.cc                     |  2 +-
  third_party/SDL2                          |  1 -
  third_party/SDL2/include                  |  1 +
@@ -26,7 +25,7 @@ Subject: [PATCH] Use system dependencies
  third_party/tomlplusplus/toml.hpp         |  1 +
  third_party/utfcpp                        |  2 +-
  third_party/xbyak                         |  2 +-
- 22 files changed, 16 insertions(+), 47 deletions(-)
+ 21 files changed, 15 insertions(+), 47 deletions(-)
  delete mode 160000 third_party/SDL2
  create mode 120000 third_party/SDL2/include
  delete mode 160000 third_party/SPIRV-Tools
@@ -117,18 +116,6 @@ index efae2de45..21edd1a74 100644
  [submodule "third_party/libusb"]
  	path = third_party/libusb
  	url = https://github.com/libusb/libusb.git
-diff --git a/src/xenia/cpu/backend/assembler.h b/src/xenia/cpu/backend/assembler.h
-index 8cdf18fe7..ff2408074 100644
---- a/src/xenia/cpu/backend/assembler.h
-+++ b/src/xenia/cpu/backend/assembler.h
-@@ -10,6 +10,7 @@
- #ifndef XENIA_CPU_BACKEND_ASSEMBLER_H_
- #define XENIA_CPU_BACKEND_ASSEMBLER_H_
- 
-+#include <cstdint>
- #include <memory>
- 
- namespace xe {
 diff --git a/src/xenia/emulator.cc b/src/xenia/emulator.cc
 index 6345e0f60..9efd5ff2a 100644
 --- a/src/xenia/emulator.cc
