@@ -1,7 +1,7 @@
 _system_wasm_bindgen=false
 _version=0.2.0
 _channel=nightly
-_date=2026-05-12
+_date=2026-05-13
 
 pkgbase=ruffle-nightly
 pkgname=(ruffle-nightly
@@ -27,7 +27,7 @@ fi
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
         "chromium-extension-ruffle.key")
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date")
-sha256sums=('1d9f8d23f83c479507830fd718aa6ea162c04943b85c5f8ca9b564d6d1c8b300')
+sha256sums=('9ecdd03c5bf1cd9156e22dfe50a79d0b91de285e6192fc36e8ee4a0ac3f2ba05')
 options=("!lto")
 
 _FIREFOX_EXTENSION_ID="ruffle@ruffle.rs"
