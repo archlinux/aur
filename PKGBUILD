@@ -2,13 +2,24 @@
 
 pkgname=aetna-volume
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='PipeWire volume control panel built with Aetna'
 arch=('x86_64')
 url='https://github.com/computer-whisperer/aetna-volume'
 license=('MIT OR Apache-2.0')
-depends=('libpipewire' 'libxkbcommon' 'vulkan-icd-loader' 'gcc-libs' 'glibc')
-makedepends=('cargo' 'pkgconf')
+depends=(
+    'libpipewire'
+    'libx11'
+    'libxcursor'
+    'libxi'
+    'libxkbcommon'
+    'libxkbcommon-x11'
+    'vulkan-icd-loader'
+    'wayland'
+    'gcc-libs'
+    'glibc'
+)
+makedepends=('cargo' 'clang' 'pkgconf')
 # Disable system LTO — Arch's default `-flto=auto` lands in CFLAGS and makes
 # libspa's C wrapper (compiled by its build.rs via the `cc` crate) emit
 # LTO-IR objects, which rust-lld can't resolve at the final Rust link step.
