@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=tuistory
-_npmver=0.3.0
+_npmver=0.5.0
 
 pkgname=${_npmname}
 pkgdesc="Playwright for terminal user interfaces"
@@ -19,7 +19,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('e74008e73a3b71f043dd4064ddd7ac1f07854e559ad05133d9eefabd0526d802fa394410cf2de57ef5dada92e564f8d06ffdbb2d8d0e0900640d712d79614331')
+b2sums=('ec79e913b0bd07fb3d9157f562b299ee18fc9fa6a4f0b69bffb25dcfee9566ff8331562f47165b90f382f550f70db96444636cb00d77f5e9056965a1d2630d05')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
