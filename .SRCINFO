@@ -1,7 +1,7 @@
 pkgbase = python-py3dtiles
 	pkgdesc = Python module to manage 3DTiles format
-	pkgver = 9.0.0
-	pkgrel = 2
+	pkgver = 12.1.1
+	pkgrel = 1
 	url = https://gitlab.com/py3dtiles/py3dtiles
 	arch = any
 	license = Apache 2.0
@@ -17,7 +17,8 @@ pkgbase = python-py3dtiles
 	depends = python-laspy
 	depends = python-plyfile
 	depends = python-psycopg2
-	source = py3dtiles-9.0.0.tar.gz::https://gitlab.com/py3dtiles/py3dtiles/-/archive/v9.0.0/py3dtiles-9.0.0.tar.gz
-	sha256sums = 3ef8149d82b9fcc58d0af7312d307f8f27f2a765beef7ddf603c094125ef007c
+	depends = python-psutil
+	source = py3dtiles-v12.1.1.tar.gz::https://gitlab.com/py3dtiles/py3dtiles/-/archive/v12.1.1/py3dtiles-12.1.1.tar.gz
+	sha256sums = 009c92cca4feb28bebb545c1378b2ebe25db14938149521eedfa06226feb8e53
 
 pkgname = python-py3dtiles
