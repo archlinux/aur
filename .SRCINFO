@@ -1,9 +1,10 @@
 pkgbase = plumeimpactor
 	pkgdesc = Sideloading tool for iOS devices
-	pkgver = 2.2.3
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/claration/Impactor
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = fuse3
 	depends = hicolor-icon-theme
@@ -11,9 +12,11 @@ pkgbase = plumeimpactor
 	depends = libayatana-appindicator
 	options = !strip
 	options = !debug
-	source = Impactor-linux-x86_64.appimage::https://github.com/claration/Impactor/releases/download/v2.2.3/Impactor-linux-x86_64.appimage
 	source = LICENSE::https://raw.githubusercontent.com/claration/Impactor/main/LICENSE
-	sha256sums = 962f91d095d7c6aa12702092a27af19416de79fc5c715b929e3290cd51948af4
 	sha256sums = 6e91aca9b6eacf944ae628db34a60253d917b7ddb411c4748ab6e5105ffe5a3e
+	source_x86_64 = Impactor-linux-x86_64-2.4.0.appimage::https://github.com/claration/Impactor/releases/download/v2.4.0/Impactor-linux-x86_64.appimage
+	sha256sums_x86_64 = 427d8660d560a4fb5ffaaed84d280bd9b5603235a3dd56fa055c3e2f3799966f
+	source_aarch64 = Impactor-linux-aarch64-2.4.0.appimage::https://github.com/claration/Impactor/releases/download/v2.4.0/Impactor-linux-aarch64.appimage
+	sha256sums_aarch64 = 138e2ac19bbce27a91cafc40737cdec16a969517eb1d79314b6d387e6025b390
 
 pkgname = plumeimpactor-appimage
