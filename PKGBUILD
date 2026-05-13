@@ -38,11 +38,11 @@ sha256sums=('4256d294aec58932b1723760d19d97528a20bf89922db88e66e3931962d63c36'
 options=(!emptydirs)
 
 prepare() {
-	# extracting app.asar from installer with 7z and ignoring errors
-	7z x "./Notion%20Calendar%20Setup%20${pkgver}.exe" "\$PLUGINSDIR/app-64.7z" -y -bse0 -bso0 || true
-	7z x "./\$PLUGINSDIR/app-64.7z" "resources/app.asar" "resources/app.asar.unpacked" -y -bse0 -bso0 || true
-	rm "./Notion%20Calendar%20Setup%20${pkgver}.exe"
-	rm "./\$PLUGINSDIR/app-64.7z"
+	# bsdtar (makepkg) already extracted the NSIS installer; app.asar is in resources/
+	# Clean up Windows-specific files left by the extraction
+	rm -f "$srcdir/Notion Calendar Setup ${pkgver}.exe" "$srcdir/Notion Calendar.exe"
+	rm -rf "$srcdir/\$PLUGINSDIR" 2>/dev/null || true
+	rm -rf "$srcdir/asar_patched" 2>/dev/null || true
 
 	# extracting resources from app.asar
 	asar e "$srcdir/resources/app.asar" "$srcdir/asar_patched"
@@ -52,10 +52,11 @@ prepare() {
 import sys
 import os
 
-main_js = os.environ.get('SRC_DIR', '') + '/asar_patched/build/main/main.js'
+main_js = os.path.join(os.getcwd(), 'asar_patched/build/main/main.js')
 if not os.path.exists(main_js):
-    # Try to find it
-    for root, dirs, files in os.walk(os.environ.get('srcdir', '.')):
+    # Fallback: walk from srcdir env or cwd
+    search_root = os.environ.get('srcdir') or os.getcwd()
+    for root, dirs, files in os.walk(search_root):
         for f in files:
             if f == 'main.js':
                 main_js = os.path.join(root, f)
@@ -87,6 +88,8 @@ patches = [
     ('if(!(e=this._options.dsn))throw new ae("Attempted to enable Electron native crash reporter but no DSN was supplied");', 'e=this._options.dsn||"https://fake@sentry.io/0";'),
     # Patch 11: disable autoUpdater on linux (a.autoUpdater is undefined)
     ('_subscribeToElectronEvents(){a.autoUpdater.on("before-quit-for-update",((...e)=>{this._log("info","before-quit-for-update",...e),this.emit("before-quit-for-update",...e)})),i.autoUpdater.on("checking-for-update",((...e)=>{this._log("info","checking-for-update",...e),this.emit("checking-for-update",...e)})),i.autoUpdater.on("download-progress",((...e)=>{this._log("info","download-progress",...e),this.emit("download-progress",...e)})),i.autoUpdater.on("update-available",((...e)=>{this._log("info","update-available",...e),this.emit("update-available",...e)})),i.autoUpdater.on("update-not-available",((...e)=>{this._log("info","update-not-available",...e),this.emit("update-not-available",...e)}))}}', '_subscribeToElectronEvents(){if("linux"===process.platform)return;a.autoUpdater.on("before-quit-for-update",((...e)=>{this._log("info","before-quit-for-update",...e),this.emit("before-quit-for-update",...e)})),i.autoUpdater.on("checking-for-update",((...e)=>{this._log("info","checking-for-update",...e),this.emit("checking-for-update",...e)})),i.autoUpdater.on("download-progress",((...e)=>{this._log("info","download-progress",...e),this.emit("download-progress",...e)})),i.autoUpdater.on("update-available",((...e)=>{this._log("info","update-available",...e),this.emit("update-available",...e)})),i.autoUpdater.on("update-not-available",((...e)=>{this._log("info","update-not-available",...e),this.emit("update-not-available",...e)}))}}'),
+    # Patch 12: disable second autoUpdater subscription on linux (Nf.autoUpdater is undefined)
+    ('pT=async()=>{Nf.autoUpdater.on("before-quit-for-update",(()=>{bS=!0,SS(),lT="before-quit-for-update",uT(lT)})),Nf.autoUpdater.on("update-available",(()=>{lT="update-available",uT(lT)})),"latest"!==Wf&&sT(Wf),mT(),setInterval(mT,9e5)}', 'pT=async()=>{if("linux"===process.platform)return;Nf.autoUpdater.on("before-quit-for-update",(()=>{bS=!0,SS(),lT="before-quit-for-update",uT(lT)})),Nf.autoUpdater.on("update-available",(()=>{lT="update-available",uT(lT)})),"latest"!==Wf&&sT(Wf),mT(),setInterval(mT,9e5)}'),
 ]
 
 applied = 0
