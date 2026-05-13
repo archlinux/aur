@@ -8,7 +8,6 @@ pkgbase = firma-digital
 	license = MIT
 	license = unknown
 	license = unknown
-	makedepends = unzip
 	options = !strip
 	source = local://sfd_ClientesLinux_RPM64_Rev28.zip
 	sha256sums = f3c5fdd12686533ea60ddf3420e465b94228c7ed67474e031f86f60509f5e45d
