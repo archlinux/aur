@@ -17,7 +17,7 @@
 
 pkgname=warp-terminal-git
 _srcname=warp
-pkgver=0.2026.05.11.09.24.dev_00.r0.g0d92811
+pkgver=0.2026.05.13.09.14.stable_00.r0.g53d47d1
 pkgrel=1
 pkgdesc="Warp, the Rust-based terminal for developers and teams (built from source, OSS channel)"
 arch=('x86_64' 'aarch64')
@@ -105,7 +105,7 @@ build() {
         --frozen \
         --package warp \
         --bin warp-oss \
-        --features 'release_bundle,gui,nld_improvements'
+        --features 'release_bundle,gui,nld_classifier_v2'
 }
 
 package() {
