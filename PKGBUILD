@@ -4,7 +4,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
-pkgver=6.3.1
+pkgver=6.3.2
 pkgrel=1
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ provides=('swift-language')
 replaces=('swift-language-bin')
 source_x86_64=("https://download.swift.org/swift-$pkgver-release/ubi9/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubi9.tar.gz")
 source_aarch64=("https://download.swift.org/swift-$pkgver-release/ubi9-aarch64/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubi9-aarch64.tar.gz")
-sha256sums_x86_64=('8914741adb96e9c8b0191670e45b407e7b9e074601c92ebcee8cf45813ef8d54')
-sha256sums_aarch64=('a90664eb4b51d45eb43da738a0af7fd88264d3fc11c33944ec5436b2f6d69440')
+sha256sums_x86_64=('0853e2e95f3f56cfbdca97d075e803b44f15f8ab8c49989e37164e8ef0e7d66d')
+sha256sums_aarch64=('d149f60f2c4ad624ddc22e26a7f7967de738af41a9a39b88207a47b7265d399b')
 
 package() {
   find_elf_only() {
