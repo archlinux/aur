@@ -1,0 +1,5 @@
+[pinstar-bin]
+source = "github"
+github = "reekta92/pinstar"
+use_latest_release = true
+prefix = "v"
