@@ -2,24 +2,28 @@
 
 招商随行（[WorkLink](https://www.cm-worklink.com)）的 Arch Linux 打包。
 
+> 已迁移至 AUR，本仓库不再更新。
+>
+> AUR 包：https://aur.archlinux.org/packages/worklink
+
 ## 安装
 
+任选一个 AUR helper：
+
 ```bash
-git clone https://github.com/cmriat/worklink.git
+yay -S worklink
+# 或
+paru -S worklink
+```
+
+裸 `makepkg`：
+
+```bash
+git clone https://aur.archlinux.org/worklink.git
 cd worklink
 makepkg -si
 ```
 
-`makepkg` 会自动下载官方 deb 包、解出内容并安装到系统。
+## 反馈
 
-## 依赖
-
-运行依赖：`desktop-file-utils` `gtk3` `hicolor-icon-theme` `libnotify` `libsecret` `libxss` `libxtst` `nss` `util-linux-libs`
-
-可选：`libappindicator-gtk3`（系统托盘图标）
-
-## 卸载
-
-```bash
-sudo pacman -R worklink
-```
+问题、版本过期、合作维护请到 AUR 页面留言或 flag out-of-date。
