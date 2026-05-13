@@ -1,7 +1,7 @@
-# Maintainer: Julian Corbet <julian.corbet@gmail.com>
+# Maintainer: Julian Corbet <admin+aur@sys.corbet.ch>
 pkgname=dotkeeper-git
 _gitname=dotkeeper
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="P2P file sync with git history — embedded Syncthing + staggered git auto-backup (bleeding-edge, builds from main)"
 arch=('x86_64' 'aarch64')
@@ -32,5 +32,6 @@ package() {
     install -Dm755 dotkeeper "${pkgdir}/usr/bin/dotkeeper"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 dotkeeper.toml.example "${pkgdir}/usr/share/doc/${pkgname}/dotkeeper.toml.example"
+    install -Dm644 repo-config.toml "${pkgdir}/usr/share/doc/${pkgname}/repo-config.toml"
+    install -Dm644 home-manager-denylist.nix "${pkgdir}/usr/share/doc/${pkgname}/home-manager-denylist.nix"
 }
