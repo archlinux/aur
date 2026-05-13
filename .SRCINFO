@@ -1,7 +1,7 @@
 pkgbase = denise
 	pkgdesc = Highly accurate C64/Amiga emulator
-	pkgver = 2.7
-	pkgrel = 3
+	pkgver = 2.8
+	pkgrel = 1
 	url = https://sourceforge.net/projects/deniseemu/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,7 +9,7 @@ pkgbase = denise
 	depends = gtk3
 	depends = openal
 	depends = libpulse
-	source = denise-2.7.tar.gz::https://bitbucket.org/piciji/denise/get/v2.7.tar.gz
-	sha256sums = b8fb5dae55e87bd429faa48c31fe6fc2d02cbf217cd635f38b0c362df606c783
+	source = denise-2.8.tar.gz::https://bitbucket.org/piciji/denise/get/v2.8.tar.gz
+	sha256sums = 50cf89e12c43cabc7e55f2f4da501d5642ad55e6022b135c1d982afb29937588
 
 pkgname = denise
