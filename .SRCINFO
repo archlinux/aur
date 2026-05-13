@@ -1,0 +1,21 @@
+pkgbase = aetna-volume
+	pkgdesc = PipeWire volume control panel built with Aetna
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/computer-whisperer/aetna-volume
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = aetna-volume-0.2.2.tar.gz::https://github.com/computer-whisperer/aetna-volume/archive/refs/tags/v0.2.2.tar.gz
+	source = LICENSE-MIT
+	sha256sums = 21c47ae632ec2c58f32faf949536f5d3777e3031263dbda441530200986687c7
+	sha256sums = 9f00c7ed7074fac147074cf3440eb30099ca20ffce962d9fda4188d84bcdface
+
+pkgname = aetna-volume
