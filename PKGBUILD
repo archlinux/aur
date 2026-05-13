@@ -2,7 +2,7 @@
 
 pkgname=cli-torrent-dl
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI utility to search and download torrents from major torrent sites"
 arch=('any')
 url="https://github.com/X0R0X/cli-torrent-dl"
@@ -24,6 +24,29 @@ optdepends=(
 provides=('tordl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('46c16569467c73387fa9ca7abacc669edb93cc53e0086f87911c26025b1ee448')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -Np1 <<'EOF'
+diff --git a/tordl/func.py b/tordl/func.py
+index 44b59a3..eb9ccfb 100644
+--- a/tordl/func.py
++++ b/tordl/func.py
+@@ -18,7 +18,11 @@ from tordl.rpc import JsonRpcServer, JsonRpcClient
+ def _mk_loop(loop):
+     if not loop:
+         core.mk_loop()
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_event_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+ 
+     return loop
+ 
+EOF
+}
 
 package() {
   cd "$pkgname-$pkgver"
