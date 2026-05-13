@@ -1,12 +1,12 @@
 # Maintainer: Nathanael Bonfim <dev@nathabonfim59.com>
 
 pkgname=dpcode-bin
-pkgver=0.0.44
+pkgver=0.0.45
 pkgrel=1
 pkgdesc='DP Code desktop app packaged from the upstream AppImage'
 arch=('x86_64')
-_upstream_tag='v0.0.44'
-_upstream_version='0.0.44'
+_upstream_tag='v0.0.45'
+_upstream_version='0.0.45'
 _appimage_name="DP-Code-${_upstream_version}-x86_64.AppImage"
 url='https://dpcode.cc'
 license=('MIT')
@@ -52,7 +52,7 @@ source=(
   'LICENSE'
 )
 sha256sums=(
-  'd14a27bdb741a13ab4b6a349f9908fe98c87f5db6feb7fd524d2650d26411705'
+  '7909081cf0bdc065a06041072fa23310ca2f49445bad67b353b6892d88432752'
   '9fada842a88c3b1a503ee45756f781b7d32b39cc97579f4f1e880bb28606e728'
   '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43'
 )
