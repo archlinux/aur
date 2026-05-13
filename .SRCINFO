@@ -1,6 +1,6 @@
 pkgbase = canispack-git
 	pkgdesc = Project launcher for the Canis engine
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 0.1.0.r15.g0fb4db0
 	pkgrel = 1
 	url = https://github.com/EricWRogers/CanisPack
 	arch = x86_64

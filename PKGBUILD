@@ -1,6 +1,6 @@
 # Maintainer: EricWRogers <ericwilliamrogers@gmail.com>
 pkgname=canispack-git
-pkgver=0.1.0.r0.g0000000
+pkgver=0.1.0.r15.g0fb4db0
 pkgrel=1
 pkgdesc='Project launcher for the Canis engine'
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$srcdir/CanisPack"
-  git describe --long --tags --always | sed 's/^v//;s/-/.r/;s/-/./g'
+  printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
