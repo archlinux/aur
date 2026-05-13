@@ -3,12 +3,12 @@
 
 _pkgname=loupe
 pkgname=loupe-git
-pkgver=50.beta.r24.g21ed663
+pkgver=50.0.r16.gd5bf3df
 pkgrel=1
 pkgdesc="simple image viewer for GNOME"
-arch=(x86_64 aarch64)
 url="https://gitlab.gnome.org/GNOME/loupe"
-license=('GPL-3.0-or-later')
+arch=(x86_64 aarch64)
+license=(GPL-3.0-or-later)
 depends=(
   bubblewrap
   cairo
@@ -18,10 +18,10 @@ depends=(
   glibc
   glycin
   graphene
-  gtk4-git
+  gtk4
   hicolor-icon-theme
   lcms2
-  libadwaita-git
+  libadwaita
   libgcc
   libgweather-4
   libseccomp
@@ -37,11 +37,11 @@ conflicts=(loupe)
 source=("git+$url.git")
 b2sums=('SKIP')
 
+# Use debug
+export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
+
 # Use LTO
 export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-
-# Use debug
-export CARGO_PROFILE_RELEASE_DEBUG=2
 
 pkgver() {
   cd $_pkgname
@@ -50,6 +50,10 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+
+  # Match CARGO_HOME in src/meson.build
+  CARGO_HOME="$srcdir/build/cargo-home" \
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -58,7 +62,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs --no-rebuild
 }
 
 package() {
