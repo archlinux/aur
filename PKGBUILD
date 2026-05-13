@@ -1,7 +1,7 @@
 # Maintainer: mrFrok <https://github.com/mrFrok>
 pkgname=lfff
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open-source firmware flasher for Android A/B devices — CLI + GUI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mrFrok/LibreFastbootFirmwareFlasher"
