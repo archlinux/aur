@@ -12,7 +12,7 @@ license=('ISC')
 makedepends=('git' 'go')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+$url#branch=master")
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 
