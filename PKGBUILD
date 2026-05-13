@@ -34,8 +34,8 @@ build() {
 
 package() {
 		cd "$pkgname"
-		install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/renderide"
-		install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/renderide-renderer"
-		install -Dm0755 -t "${pkgdir}/usr/share/applications" "../../renderide.desktop"
-		install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+		install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+		install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname-renderer"
+		install -Dm0755 -t "$pkgdir/usr/share/applications" "../../renderide.desktop"
+		install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
