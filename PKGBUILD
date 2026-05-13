@@ -9,19 +9,19 @@ license=('Apache-2.0')
 depends=('gcc-libs' 'oniguruma' 'openssl')
 makedepends=('cargo' 'oniguruma')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ec8d31d89f98117dea8ae77a25103d1e2ec1fab885a5e8bf8f6b033deb99189a')
+sha256sums=('4138577c879625140aba7ecc9a8c8d7329dd722dc73e14c32e31ad7c9d67c24a')
 
 prepare() {
   cd "SynapsCLI-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "SynapsCLI-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release
+  cargo build --frozen --release
 }
 
 package() {
