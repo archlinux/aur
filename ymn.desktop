@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Yomuna
+Comment=Visual novel transcript and flashcard tool
+Exec=ymn guiv2
+Terminal=false
+Categories=Game;
+Keywords=Japanese;Visual Novel;Transcript;Flashcards;Yomuna;
