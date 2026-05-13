@@ -2,7 +2,7 @@
 _pkgname=musescore
 pkgname=musescore-bin
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Create, play and print beautiful sheet music / AppImage version'
 arch=(x86_64)
 url=https://musescore.org/
@@ -13,7 +13,10 @@ noextract=("${_appimage}")
 depends=(zlib fuse2)
 optdepends=('lame: MP3 export')
 provides=('musescore')
-conflicts=('musescore')
+conflicts=(
+    'musescore'
+    'musescore-git'
+)
 options=(!strip !debug)
 source=("${_appimage}::https://github.com/musescore/MuseScore/releases/download/v${pkgver}/${_appimage}")
 sha256sums=('c292533d4857c7428c190fe95051f7ac28db4adb1809ed3394339e1e44a08f67')
