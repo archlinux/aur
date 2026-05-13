@@ -1,13 +1,12 @@
 pkgbase = odinls-bin
 	pkgdesc = Language server and source code formatter for Odin
 	pkgver = dev_2026_05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DanielGavin/ols
 	arch = x86_64
 	license = MIT
 	depends = odin
 	provides = odinls=dev_2026_05
-	provides = ols=dev_2026_05
 	provides = odinfmt=dev_2026_05
 	conflicts = odinls
 	conflicts = ols
