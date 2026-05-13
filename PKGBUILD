@@ -1,7 +1,7 @@
 # Maintainer: schlndh <schlindenbuch.h@seznam.cz>
 _pkgname=kwin
 pkgname=$_pkgname-povd
-pkgver=6.6.4
+pkgver=6.6.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='An easy to use, but flexible, Wayland compositor (patched for per-output virtual desktops)'
@@ -81,7 +81,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         povd.patch)
-sha256sums=('3f9439760580a977d018daf4b35b62e5a1700def7b21c8dfbfc789d21378d7ad'
+sha256sums=('6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4'
             'SKIP'
             '861b97ab892967682108ac6a24e39f9f0d8c01170afce34f23d8e351fba7a45e')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>

@@ -1,6 +1,6 @@
 pkgbase = kwin-povd
 	pkgdesc = An easy to use, but flexible, Wayland compositor (patched for per-output virtual desktops)
-	pkgver = 6.6.4
+	pkgver = 6.6.5
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -76,15 +76,15 @@ pkgbase = kwin-povd
 	optdepends = plasma-keyboard: virtual keyboard
 	provides = kwin
 	conflicts = kwin
-	source = https://download.kde.org/stable/plasma/6.6.4/kwin-6.6.4.tar.xz
-	source = https://download.kde.org/stable/plasma/6.6.4/kwin-6.6.4.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.6.5/kwin-6.6.5.tar.xz
+	source = https://download.kde.org/stable/plasma/6.6.5/kwin-6.6.5.tar.xz.sig
 	source = povd.patch
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 3f9439760580a977d018daf4b35b62e5a1700def7b21c8dfbfc789d21378d7ad
+	sha256sums = 6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4
 	sha256sums = SKIP
 	sha256sums = 861b97ab892967682108ac6a24e39f9f0d8c01170afce34f23d8e351fba7a45e
 
