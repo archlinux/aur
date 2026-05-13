@@ -8,8 +8,14 @@ url="https://git.uku3lig.net/uku/tyrolienne"
 license=("MPL-2.0")
 depends=("libadwaita>=1.7.0" "ffmpeg")
 makedepends=("cargo" "imagemagick")
-source=("${pkgname}-${pkgver}.tar.gz::https://git.uku3lig.net/uku/tyrolienne/archive/${pkgver}.tar.gz")
-sha256sums=('12d4d2c76a5d5a6e76afb176d6218b68621ba02759206863efc56495459d4a7c')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://git.uku3lig.net/uku/tyrolienne/archive/${pkgver}.tar.gz"
+  "net.uku3lig.tyrolienne.desktop"
+)
+sha256sums=(
+  '12d4d2c76a5d5a6e76afb176d6218b68621ba02759206863efc56495459d4a7c'
+  'SKIP'
+)
 # fixes aws-lc-rs not linking
 options=(!lto !debug)
 
@@ -29,17 +35,5 @@ package() {
                 magick data/icons/tyrolienne.png -resize ${size}x "$dir/net.uku3lig.tyrolienne.png"
         done
 
-        mkdir -p "$pkgdir/usr/share/applications"
-
-        cat << EOF > "$pkgdir/usr/share/applications/net.uku3lig.tyrolienne.desktop"
-[Desktop Entry]
-Comment=Compresses and uploads videos to Zipline
-Exec=tyrolienne %f
-Icon=net.uku3lig.tyrolienne
-MimeType=video/mp4;video/matroska;video/webm;video/quicktime
-Name=Tyrolienne
-Terminal=false
-Type=Application
-Version=1.5
-EOF
+        install -Dm644 "$srcdir/net.uku3lig.tyrolienne.desktop" "$pkgdir/usr/share/applications/net.uku3lig.tyrolienne.desktop"
 }

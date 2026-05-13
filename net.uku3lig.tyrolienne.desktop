@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Compresses and uploads videos to Zipline
+Exec=tyrolienne %f
+Icon=net.uku3lig.tyrolienne
+MimeType=video/mp4;video/matroska;video/webm;video/quicktime
+Name=Tyrolienne
+Terminal=false
+Type=Application
+Version=1.5
