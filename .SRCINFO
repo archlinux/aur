@@ -14,6 +14,6 @@ pkgbase = zosma-cowork-bin
 	conflicts = zosma-cowork
 	options = !strip
 	source = zosma-cowork-0.8.3.deb::https://github.com/zosmaai/zosma-cowork/releases/download/v0.8.3/zosma-cowork_0.8.3_amd64.deb
-	sha256sums = SKIP
+	sha256sums = 91882c0ee9ea356350caff4f40626a422523317ce864a90d76501597b8eb17c5
 
 pkgname = zosma-cowork-bin

@@ -12,7 +12,7 @@ depends=('webkit2gtk-4.1' 'libjavascriptcoregtk-4.1' 'gtk3' 'libappindicator-gtk
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("zosma-cowork-${pkgver}.deb::${url}/releases/download/v${pkgver}/zosma-cowork_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('91882c0ee9ea356350caff4f40626a422523317ce864a90d76501597b8eb17c5')
 options=('!strip')
 
 package() {
