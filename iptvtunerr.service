@@ -1,0 +1,23 @@
+[Unit]
+Description=IPTV Tunerr
+Documentation=https://github.com/snapetech/iptvtunerr
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=iptvtunerr
+Group=iptvtunerr
+EnvironmentFile=-/etc/iptvtunerr/iptvtunerr.env
+WorkingDirectory=/var/lib/iptvtunerr
+ExecStart=/usr/bin/iptv-tunerr run -mode=easy
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/lib/iptvtunerr /var/cache/iptvtunerr /var/log/iptvtunerr
+
+[Install]
+WantedBy=multi-user.target

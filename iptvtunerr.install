@@ -1,0 +1,19 @@
+post_install() {
+  systemd-sysusers iptvtunerr.conf >/dev/null 2>&1 || true
+  systemd-tmpfiles --create iptvtunerr.conf >/dev/null 2>&1 || true
+
+  echo ""
+  echo "IPTV Tunerr has been installed."
+  echo ""
+  echo "1. Edit /etc/iptvtunerr/iptvtunerr.env"
+  echo "2. Start the service:"
+  echo "   sudo systemctl enable --now iptvtunerr.service"
+  echo "3. Open the HDHomeRun-compatible endpoint:"
+  echo "   http://127.0.0.1:5004/discover.json"
+  echo ""
+}
+
+post_upgrade() {
+  systemd-sysusers iptvtunerr.conf >/dev/null 2>&1 || true
+  systemd-tmpfiles --create iptvtunerr.conf >/dev/null 2>&1 || true
+}

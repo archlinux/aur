@@ -1,0 +1,4 @@
+d /etc/iptvtunerr 0755 root root -
+d /var/lib/iptvtunerr 0750 iptvtunerr iptvtunerr -
+d /var/cache/iptvtunerr 0750 iptvtunerr iptvtunerr -
+d /var/log/iptvtunerr 0750 iptvtunerr iptvtunerr -
