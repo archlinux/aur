@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=opencode-desktop-electron-bin
-pkgver=1.14.39
+pkgver=1.14.48
 pkgrel=1
 pkgdesc="OpenCode desktop client (Electron)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver
         "opencode-desktop-${pkgver}-linux-x86_64.AppImage::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-x86_64.AppImage")
 
 sha256sums=('SKIP'
-            '8dfc5424b172815b920cdd88418f98f751a3352fd94317c0f62e46adf35de097')
+            'e6d6161f923bb7d427cb2c801c754e9951e5be780bb01a4f68eaf426832995fd')
 
 package() {
   local appimage="${srcdir}/opencode-desktop-${pkgver}-linux-x86_64.AppImage"
