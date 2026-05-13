@@ -6,9 +6,8 @@ pkgver=3949779
 pkgrel=1
 pkgdesc="A declarative build system, developer environment tool, and task runner"
 arch=(x86_64 aarch64)
-url="https://go.minimal.dev"
+url="https://minimal.dev"
 # License: custom proprietary license
-# See: https://go.minimal.dev/terms
 license=("LicenseRef-Minimal-Proprietary")
 depends=(git)
 makedepends=(curl)
