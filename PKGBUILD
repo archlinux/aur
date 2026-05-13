@@ -2,7 +2,7 @@
 # Contributor: Stoffi05
 
 pkgname=notion-calendar-electron-fixed
-pkgver=1.132.0
+pkgver=1.133.0
 pkgrel=1
 pkgdesc="Notion Calendar Desktop Client - your calendar, tasks, and schedule in one place (official installer, electron39)"
 arch=(x86_64)
@@ -30,7 +30,7 @@ source=(
 	notion-calendar.desktop
 	notion-calendar.png
 )
-sha256sums=('SKIP'
+sha256sums=('4256d294aec58932b1723760d19d97528a20bf89922db88e66e3931962d63c36'
             'SKIP'
             'SKIP'
             'SKIP')
