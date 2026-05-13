@@ -4,11 +4,11 @@
 pkgname=vboot-utils
 pkgver=147.16610
 _tag=release-R${pkgver/\./-}.B
-pkgrel=2
+pkgrel=3
 pkgdesc='Chromium OS verified boot utilities'
 arch=(i686 x86_64)
 url='https://chromium.googlesource.com/chromiumos/platform/vboot_reference'
-license=('custom:chromiumos')
+license=('BSD')
 depends=(libutil-linux openssl libzip chromeos-flashrom-git cbfstool)
 makedepends=(git libyaml trousers)
 source=(git+https://chromium.googlesource.com/chromiumos/platform/vboot_reference#branch=${_tag})
@@ -16,13 +16,13 @@ sha256sums=('SKIP')
 
 build() {
   cd vboot_reference
-  make all
+  make all WERROR=
 }
 
 check() {
   cd vboot_reference
   export PATH="$PATH:$(pwd)/build/futility"
-  make runtests CPPFLAGS="-Wno-array-bounds"
+  make runtests WERROR=
 }
 
 package() {
