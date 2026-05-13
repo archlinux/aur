@@ -1,19 +1,20 @@
---- a/gns3-server-2.2.58/requirements.txt	2026-04-10 14:36:01.000000000 +0200
-+++ b/gns3-server-2.2.58/requirements.txt	2026-04-10 20:13:55.142121920 +0200
-@@ -1,12 +1,12 @@
--jsonschema>=4.25.1,<4.26  # version 4.25.1 is the last to support Python 3.9
--aiohttp>=3.13.3,<3.14
+--- a/gns3-server-2.2.59/requirements.txt	2026-05-08 13:06:04.000000000 +0200
++++ b/gns3-server-2.2.59/requirements.txt	2026-05-13 18:43:52.105152204 +0200
+@@ -1,13 +1,12 @@
+-jsonschema==4.25.1; python_version == '3.9'  # version 4.25.1 is the last to support Python 3.9
+-jsonschema>=4.26.0,<4.27; python_version >= '3.10'
+-aiohttp>=3.13.5,<3.14
 -aiohttp-cors>=0.8.1,<0.9
 -aiofiles>=25.1.0,<26.0
 -Jinja2>=3.1.6,<3.2
--sentry-sdk>=2.50.0,<3  # optional dependency
-+jsonschema>=4.25.1
-+aiohttp>=3.13.3
+-sentry-sdk>=2.59.0,<3  # optional dependency
++jsonschema>=4.26.0
++aiohttp>=3.13.5
 +aiohttp-cors>=0.8.1
 +aiofiles>=25.1.0
 +Jinja2>=3.1.6
-+sentry-sdk>=2.50.0
- psutil>=7.2.1
++sentry-sdk>=2.59.0
+ psutil>=7.2.2
 -async-timeout>=5.0.1,<5.1  # this library has effectively been upstreamed into Python 3.11+
 +async-timeout>=5.0.1
  distro>=1.9.0
