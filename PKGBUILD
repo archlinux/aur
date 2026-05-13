@@ -1,4 +1,5 @@
 pkgname="antivirus"
+pkgbase=jeicob_hack2015
 pkgver=0.0.2
 pkgrel=2
 pkgdesc="A antivirus by Jeicob_hack2015"
