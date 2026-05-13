@@ -2,7 +2,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='lego-bin'
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc='ACME client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
@@ -12,16 +12,16 @@ provides=('lego')
 conflicts=('lego')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/go-acme/lego/releases/download/v${pkgver}/lego_v${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('9c4f95e972c3e70db196ec30933a76ed52cd9bfa75c5d9a4da05cf51962da1fe')
+sha256sums_aarch64=('2554466adb10d1501b4aad6e96add2b4dbfe2d820e063e642845b0f1f9876851')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/go-acme/lego/releases/download/v${pkgver}/lego_v${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('38cd3bfa2669402004e1a96b0997e5b3e52b76f871cf0155b62caf0d72eedfd2')
+sha256sums_armv7h=('7cecb472547f0b1d0f017327779ac7229c5284f36c99f28878fc79cef1bd0f9c')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/go-acme/lego/releases/download/v${pkgver}/lego_v${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('b12f2a06a775897aaac21cfde7c4e7a50cc265cd46418237e2ee7620a1f5de7a')
+sha256sums_i686=('e0e6777666c7de6fc66aa5a3b0097c6d826cce1bcfcad04a6d6ba270134badae')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/go-acme/lego/releases/download/v${pkgver}/lego_v${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('d82ab18985ad21a1a1f53c21e9470100b5171acf86751d0857ed2b9087aa3a42')
+sha256sums_x86_64=('b5b3e121001b1cc103fceda4113a9299d8456aaf1d1afbaef094e65c6a22a4dc')
 
 package() {
   # Bin
