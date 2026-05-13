@@ -1,7 +1,7 @@
 # Maintainer: Ryan C. <admin at thebrowserbay dot org>
 pkgname=phantom-satellite-gtk3-bin
-pkgver=34.2.0
-pkgrel=1.1
+pkgver=34.2.2
+pkgrel=1.2
 pkgdesc="Phantom Satellite - Unofficial build of Pale Moon that aims to support older/niche platforms (GTK3)."
 arch=('x86_64')
 url="https://github.com/DCFUKSURMOM/Phantom-Satellite"

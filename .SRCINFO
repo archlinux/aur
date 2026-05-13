@@ -1,7 +1,7 @@
 pkgbase = phantom-satellite-gtk3-bin
 	pkgdesc = Phantom Satellite - Unofficial build of Pale Moon that aims to support older/niche platforms (GTK3).
-	pkgver = 34.2.0
-	pkgrel = 1.1
+	pkgver = 34.2.2
+	pkgrel = 1.2
 	url = https://github.com/DCFUKSURMOM/Phantom-Satellite
 	arch = x86_64
 	license = MPL-2.0
@@ -10,11 +10,11 @@ pkgbase = phantom-satellite-gtk3-bin
 	depends = dbus-glib
 	depends = nss
 	depends = ffmpeg4.4
-	provides = phantom-satellite=34.2.0
+	provides = phantom-satellite=34.2.2
 	conflicts = phantom-satellite
 	conflicts = phantom-satellite-git
 	options = !strip
-	source = https://github.com/DCFUKSURMOM/Phantom-Satellite/releases/download/v34.2.0/phantomsatellite-34.2.0.linux-x86_64-gtk3.tar.xz
+	source = https://github.com/DCFUKSURMOM/Phantom-Satellite/releases/download/v34.2.2/phantomsatellite-34.2.2.linux-x86_64-gtk3.tar.xz
 	sha256sums = SKIP
 
 pkgname = phantom-satellite-gtk3-bin
