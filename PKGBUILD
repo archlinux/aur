@@ -1,4 +1,4 @@
-# Maintainer: Giosuel <aur@giosuel.ch>
+# Maintainer: Giosuel <arch@giosuel.ch>
 pkgname=containerlab-bin
 pkgver=0.75.0
 pkgrel=1
