@@ -4,11 +4,11 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Binary wrapper for gaze from Gundu Labs"
 arch=('x86_64' )
-url="https://github.com/GunduLabs/gaze/releases/tag/v0.1.0"
+url="https://gaze.gundulabs.com"
 license=('custom')
 depends=('opencv' 'pam' )
 source=("gaze-0.1.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.1.0-1-x86_64.pkg.tar.zst")
-sha256sums=('a669b0cb4c08b70a336f3f93eac58e1aee7bb961bed926e5d098c2a1bbb19a97')
+sha256sums=('3021f0eec9e3248f35c18647f3dc600a39fe60c0fe1cdc719a39271a7ac76eb1')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-0.1.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
