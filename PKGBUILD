@@ -48,6 +48,9 @@ package_agente-gaudi() {
     cp -r "${srcdir}/Firma Digital/Agente GAUDI/opt/"* "${pkgdir}/opt/" 2> >(read err; error "$err")
     install -d "${srcdir}/Firma Digital/Agente GAUDI/usr" "${pkgdir}/usr" 2> >(read err; error "$err")
     cp -r "${srcdir}/Firma Digital/Agente GAUDI/usr/"* "${pkgdir}/usr/" 2> >(read err; error "$err") 
+
+    mkdir -p "${pkgdir}/usr/share/applications/"
+    ln -s "${srcdir}/Firma Digital/Agente GAUDI/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop" "${pkgdir}/usr/share/applications/Agente-GAUDI.desktop"
 }
 
 package_middleware-idopte() {
