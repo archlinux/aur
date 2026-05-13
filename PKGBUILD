@@ -3,7 +3,7 @@
 
 _pkgname=dusklight
 pkgname=${_pkgname}-git
-pkgver=1.0.1.r16.g2c9b208
+pkgver=1.1.1.r0.g7a77d48
 pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
@@ -12,6 +12,7 @@ license=('CC0-1.0')
 depends=(libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ bash)
 makedepends=(git cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr patchelf)
 replaces=(tp-dusk-git)
+conflicts=(tp-dusk)
 source=(
   "git+$url"
   "git+https://github.com/encounter/aurora.git"
