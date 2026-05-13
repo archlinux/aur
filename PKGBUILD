@@ -1,6 +1,6 @@
 # Maintainer: Léo Haf <leo@haf.ovh>
 pkgname=bitcoin-knots
-pkgver=29.3.knots20260210
+pkgver=29.3.knots20260508
 pkgrel=1
 epoch=
 pkgdesc="enhanced Bitcoin node/wallet software"
@@ -15,14 +15,14 @@ conflicts=('bitcoin')
 backup=('etc/bitcoin/bitcoin.conf')
 options=('!debug')
 source=("https://bitcoinknots.org/files/29.x/$pkgver/bitcoin-$pkgver.tar.gz")
-sha256sums=('08ef3b29b0ba5be78c1b2062a6ec08c479dd36a1f83d2e0fa9b2a4ec945d4e8a')
+sha256sums=('8e3aebdacab32f6f6b65d90c98a188952553a12a577e0b58d13525bfd59dd630')
 validpgpkeys=(
 	'DAED928C727D3E613EC46635F5073C4F4882FFFC' # Léo haf <leo@haf.ovh>
 )
 
 build() {
 	cd "bitcoin-$pkgver"
-	cmake -B build
+	cmake -B build -D RDTS_CONSENT=RUNTIME_WARN
 	cmake --build build -j "$(nproc)"
 }
 
