@@ -1,0 +1,13 @@
+pkgbase = mshark
+	pkgdesc = Simple packet capture tool
+	pkgver = 0.0.26
+	pkgrel = 1
+	url = https://github.com/shadowy-pycoder/mshark
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/shadowy-pycoder/mshark
+	sha256sums = SKIP
+
+pkgname = mshark
