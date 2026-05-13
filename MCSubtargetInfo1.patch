@@ -1,0 +1,16 @@
+diff -ura mesa/src/amd/llvm/ac_llvm_helper.cpp mesa.new/src/amd/llvm/ac_llvm_helper.cpp
+--- mesa/src/amd/llvm/ac_llvm_helper.cpp	2026-05-09 20:07:26.439419034 +0200
++++ mesa.new/src/amd/llvm/ac_llvm_helper.cpp	2026-05-09 21:12:25.730986007 +0200
+@@ -71,7 +71,11 @@
+ bool ac_is_llvm_processor_supported(LLVMTargetMachineRef tm, const char *processor)
+ {
+    TargetMachine *TM = reinterpret_cast<TargetMachine *>(tm);
+-   return TM->getMCSubtargetInfo()->isCPUStringValid(processor);
++   #if LLVM_VERSION_MAJOR >= 23
++      return TM->getMCSubtargetInfo().isCPUStringValid(processor);
++   #else
++      return TM->getMCSubtargetInfo()->isCPUStringValid(processor);
++   #endif
+ }
+ 
+ void ac_reset_llvm_all_options_occurrences()

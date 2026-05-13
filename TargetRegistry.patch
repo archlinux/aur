@@ -1,0 +1,16 @@
+diff -ura mesa/src/compiler/clc/clc_helpers.cpp mesa.new/src/compiler/clc/clc_helpers.cpp
+--- mesa/src/compiler/clc/clc_helpers.cpp	2026-05-13 16:52:38.329764652 +0200
++++ mesa.new/src/compiler/clc/clc_helpers.cpp	2026-05-13 17:09:13.612842741 +0200
+@@ -1189,7 +1189,11 @@
+    if (args->use_llvm_spirv_target) {
+       const char *triple = args->address_bits == 32 ? "spirv-unknown-unknown" : "spirv64-unknown-unknown";
+       std::string error_msg("");
+-      auto target = TargetRegistry::lookupTarget(triple, error_msg);
++#if LLVM_VERSION_MAJOR >= 23
++         auto target = TargetRegistry::lookupTarget(llvm::Triple(triple), error_msg);
++#else
++         auto target = TargetRegistry::lookupTarget(triple, error_msg);
++#endif
+       if (target) {
+          auto TM = target->createTargetMachine(
+ #if LLVM_VERSION_MAJOR >= 21
