@@ -19,7 +19,7 @@ optdepends=(
 )
 makedepends=('meson' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tanji/cairn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('589122542ba801a47e1a1eccbdb882bbc785e15192416b2892649bd60cf692d1')
+sha256sums=('5007ae7134805f676b7137d05264efab949ab86c65409cfc6fb8a26d736fc28f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
