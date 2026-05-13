@@ -31,6 +31,8 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	sed -i 's|Werror|Werror -Wno-error=deprecated-declarations|;s|LIBDIR ?= /lib/security|LIBDIR ?= /usr/lib/security|g' src/Makefile
         sed -n '/^License/,/^--$/p' README.txt | grep -v -e '^License' -e '^-\+' > LICENSE
+        # Strip -Werror to allow compilation on GCC 15+
+        sed -i 's/-Werror //g' src/Makefile
 }
 
 build() {
