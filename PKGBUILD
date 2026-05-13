@@ -1,5 +1,5 @@
 pkgname=ensoai
-pkgver=0.2.40
+pkgver=0.2.41
 pkgrel=1
 pkgdesc="Multiple AI Agents, Parallel Workflow - Git worktree manager with AI integration"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
     'cursor: Cursor AI agent support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b51d1f731718a428e5b2f42dea4535abbda0e683caa1c8b20b05368b9db5e37c')
+sha256sums=('5134f9f4cbcaba3fd41adcb415d7410049b5ec20fa253319f0c9682f251b4454')
 
 prepare() {
     cd "$srcdir/EnsoAI-$pkgver"
