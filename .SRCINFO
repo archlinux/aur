@@ -22,11 +22,11 @@ pkgbase = lfff-bin
 	sha256sums = SKIP
 	source_x86_64 = lfff-linux-x86_64.tar.gz::https://github.com/mrFrok/LibreFastbootFirmwareFlasher/releases/download/v2.0.1/lfff-linux-x86_64.tar.gz
 	source_x86_64 = lfff-gui-linux-x86_64.tar.gz::https://github.com/mrFrok/LibreFastbootFirmwareFlasher/releases/download/v2.0.1/lfff-gui-linux-x86_64.tar.gz
-	sha256sums_x86_64 = cab58c0c9c4e95d2b51f6cd64688568e8c5c6ccae0c77f336cef26f9ef7c5d39
-	sha256sums_x86_64 = c383b7cfe049db9373f64534fcb665b1aca49a393b8ee5253051a48269061fa1
+	sha256sums_x86_64 = 8d9b2adc52cd2fddf723e1578916438fc12fe70492c39a37ca3e36a0a3b171ac
+	sha256sums_x86_64 = 1492ede46f127ce62e5e8b327ca5d8d51b6cba23092ff2dbb607f4d3f816b990
 	source_aarch64 = lfff-linux-aarch64.tar.gz::https://github.com/mrFrok/LibreFastbootFirmwareFlasher/releases/download/v2.0.1/lfff-linux-aarch64.tar.gz
 	source_aarch64 = lfff-gui-linux-aarch64.tar.gz::https://github.com/mrFrok/LibreFastbootFirmwareFlasher/releases/download/v2.0.1/lfff-gui-linux-aarch64.tar.gz
-	sha256sums_aarch64 = b1ad6ecd38f444abb13d72980094a5d48f6b6e076fab0f337db0f75f2ddfbbef
-	sha256sums_aarch64 = 127d098d1d910717d3f775c165e3c0923feb7af449369a47c711d482b28e1281
+	sha256sums_aarch64 = 10d5e454ad8e970d3b0c004f5fcd0692c39703d386a2ebd154645bec26246530
+	sha256sums_aarch64 = 04591f09e31d955508019b426f35bb13e6a6ba5d0d2dbb5749b9fc1a0a111107
 
 pkgname = lfff-bin
