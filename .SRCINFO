@@ -1,6 +1,6 @@
 pkgbase = aria2-git
 	pkgdesc = Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink
-	pkgver = 1.37.0.r32.gd372b788
+	pkgver = 1.37.0.r38.gdc89cd3d
 	pkgrel = 1
 	url = https://aria2.github.io/
 	arch = i686
@@ -14,9 +14,11 @@ pkgbase = aria2-git
 	depends = c-ares
 	depends = ca-certificates
 	depends = libssh2
-	provides = aria2=1.37.0.r32
+	provides = aria2=1.37.0.r38
 	conflicts = aria2
 	source = aria2-git::git+https://github.com/tatsuhiro-t/aria2.git
+	source = nettle-4.patch
 	sha256sums = SKIP
+	sha256sums = a1968322a46b4d3f0c116d3bac6c94b200458263f5bf4ca06fae2df186ff1f52
 
 pkgname = aria2-git

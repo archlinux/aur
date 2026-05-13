@@ -8,7 +8,7 @@
 # Contributor: Daniel J Griffiths <ghost1227 at archlinux dot us>
 
 pkgname=aria2-git
-pkgver=1.37.0.r32.gd372b788
+pkgver=1.37.0.r38.gdc89cd3d
 pkgrel=1
 pkgdesc='Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink'
 arch=('i686' 'x86_64')
@@ -19,8 +19,10 @@ makedepends=('git')
 checkdepends=('cppunit')
 conflicts=('aria2')
 provides=("aria2=${pkgver%.*}")
-source=("$pkgname::git+https://github.com/tatsuhiro-t/aria2.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/tatsuhiro-t/aria2.git"
+         nettle-4.patch)
+sha256sums=('SKIP'
+            'a1968322a46b4d3f0c116d3bac6c94b200458263f5bf4ca06fae2df186ff1f52')
 
 
 pkgver() {
@@ -30,6 +32,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
+  patch -p1 -i ../nettle-4.patch
   autoreconf -i
 }
 
