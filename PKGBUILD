@@ -1,9 +1,12 @@
 # Maintainer: jinzhongjia <jinzhongjia@manus.ai>
 
 pkgname=openwarp-bin
-pkgver=2026.05.10.preview
-_debver=2026.05.10.preview
+pkgver=0.2026.05.13.1008
+_debver=0.2026.05.13.1008
 pkgrel=1
+# Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
+# which sorts lower under pacman vercmp. epoch ensures clean upgrades.
+epoch=1
 pkgdesc="OpenWarp - open-source fork of Warp, a Rust-based terminal with AI built in"
 arch=('x86_64')
 url="https://github.com/zerx-lab/warp"
@@ -31,7 +34,7 @@ provides=('openwarp' 'warp-terminal-oss')
 conflicts=('warp-terminal-oss')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/warp-terminal-oss_${_debver}_amd64.deb")
-sha256sums=('d3070ccd8e3fceddbe439485c1a706a5ffc61e59d6caf9a6e5b726d34babdb63')
+sha256sums=('1aa7a0faf29852fb66fa1f0b3fd9c6247aa71df8f83b792b4584a4586555006d')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
