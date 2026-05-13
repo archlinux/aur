@@ -14,14 +14,14 @@ sha256sums=('ec8d31d89f98117dea8ae77a25103d1e2ec1fab885a5e8bf8f6b033deb99189a')
 prepare() {
   cd "SynapsCLI-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "SynapsCLI-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  cargo build --release
 }
 
 package() {
