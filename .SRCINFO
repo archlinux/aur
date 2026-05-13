@@ -1,0 +1,31 @@
+pkgbase = ymn-git
+	pkgdesc = Yomuna visual novel transcript and flashcard tool
+	pkgver = 0.1.0.r0.g05825b6
+	pkgrel = 1
+	url = https://github.com/DarlingGoose/ymn
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = go
+	makedepends = pkgconf
+	depends = ffmpeg
+	depends = glibc
+	depends = gst-plugins-base-libs
+	depends = gstreamer
+	depends = libx11
+	depends = libxkbcommon
+	depends = mesa
+	depends = mpv
+	depends = wayland
+	depends = wine
+	optdepends = steam: Steam/Proton launch flows
+	optdepends = tesseract: legacy OCR workflow
+	optdepends = grim: Wayland screenshot capture for legacy OCR workflow
+	optdepends = slurp: Wayland region selection for legacy OCR workflow
+	optdepends = ollama: local translation backend
+	provides = ymn
+	conflicts = ymn
+	source = ymn::git+https://github.com/DarlingGoose/ymn.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ymn-git
