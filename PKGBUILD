@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=23.0.0_r579902.d6f6cdaddadb
+pkgver=23.0.0_r580373.83dca924c250
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -13,12 +13,10 @@ provides=(libclc)
 conflicts=(libclc)
 makedepends=(llvm-minimal-git clang-minimal-git clang-opencl-headers-minimal-git spirv-llvm-translator-minimal-git cmake git python ninja )
 source=("git+https://github.com/llvm/llvm-project.git"
-        revert-10644a1.patch
-        libclc.pc.in
+        revert-10644a1-v2.patch
 )
 sha256sums=('SKIP'
-            'c0e87c69e4e9f1ea012eab976df2c3327897f03c2037aff3a4f87514c0ae0659'
-            'a4cfc362c5bbfcaae407496abbc5407454474ab1d2f9e4aa1ee12e81be1a0db6')
+            '3c17242360a2578222f843f983c1867b8c0ceefda5ae869f27f9260a3f73d46d')
 options=(!lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
@@ -42,8 +40,7 @@ prepare() {
 
   # https://github.com/llvm/llvm-project/commit/10644a143922816b8326e8be0d1790220ba2cd6b.patch removes the libclc.pc needed by mesa
   # the commit can't be reverted cleanly, manually created a patch
-  patch -Np1 -i "$srcdir"/revert-10644a1.patch
-  cp "$srcdir"/libclc.pc.in libclc/libclc.pc.in
+  patch -Np1 -i "$srcdir"/revert-10644a1-v2.patch
 }
 
 pkgver() {

@@ -1,0 +1,23 @@
+diff -uraN llvm-project/libclc/CMakeLists.txt llvm-project.new/libclc/CMakeLists.txt
+--- llvm-project/libclc/CMakeLists.txt	2026-05-13 18:15:32.309356471 +0200
++++ llvm-project.new/libclc/CMakeLists.txt	2026-05-13 18:19:49.297734842 +0200
+@@ -123,6 +123,9 @@
+   endif()
+ endforeach()
+ 
++configure_file( libclc.pc.in libclc.pc @ONLY )
++install( FILES ${CMAKE_CURRENT_BINARY_DIR}/libclc.pc DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig" )
++
+ # Determine the clang target triple. Vulkan and SPIR-V backend targets use the
+ # triple directly; other SPIR-V targets fall back to the legacy SPIR target.
+ set(clang_triple ${LIBCLC_TARGET})
+diff -uraN llvm-project/libclc/libclc.pc.in llvm-project.new/libclc/libclc.pc.in
+--- llvm-project/libclc/libclc.pc.in	1970-01-01 01:00:00.000000000 +0100
++++ llvm-project.new/libclc/libclc.pc.in	2026-03-20 22:25:14.758732474 +0100
+@@ -0,0 +1,6 @@
++libexecdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_DATADIR@/clc
++
++Name: libclc
++Description: Library requirements of the OpenCL C programming language
++Version: @PROJECT_VERSION@
++Libs: -L${libexecdir}
