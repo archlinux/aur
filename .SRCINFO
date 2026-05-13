@@ -1,0 +1,26 @@
+pkgbase = procps-ng-nosystemd-git
+	pkgdesc = Utilities for monitoring your system and its processes (no SysD!)
+	pkgver = 4.0.6.r52.g1dff30b1
+	pkgrel = 1
+	url = https://gitlab.com/procps-ng/procps
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = gettext
+	makedepends = git
+	makedepends = po4a
+	depends = glibc
+	depends = ncurses
+	depends = libncursesw.so
+	provides = procps
+	provides = procps-ng
+	provides = sysvinit-tools
+	provides = libproc2.so
+	conflicts = procps
+	conflicts = procps-ng
+	conflicts = sysvinit-tools
+	options = !emptydirs
+	source = git+https://gitlab.com/procps-ng/procps.git
+	sha512sums = SKIP
+
+pkgname = procps-ng-nosystemd-git

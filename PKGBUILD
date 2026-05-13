@@ -1,0 +1,47 @@
+# Maintainer: a821 at (nospam) mail de
+# Contributor: UnicornDarkness
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
+
+_realname=procps
+pkgname=procps-ng-nosystemd-git
+pkgver=4.0.6.r52.g1dff30b1
+pkgrel=1
+pkgdesc='Utilities for monitoring your system and its processes (no SysD!)'
+url='https://gitlab.com/procps-ng/procps'
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
+arch=('x86_64')
+depends=('glibc' 'ncurses' 'libncursesw.so')
+makedepends=('gettext' 'git' 'po4a')
+conflicts=('procps' 'procps-ng' 'sysvinit-tools')
+provides=('procps' 'procps-ng' 'sysvinit-tools' 'libproc2.so')
+options=('!emptydirs')
+source=("git+https://gitlab.com/procps-ng/procps.git")
+sha512sums=('SKIP')
+
+pkgver() {
+	cd "$_realname"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cd "$_realname"
+	./autogen.sh
+	./configure \
+		--prefix=/usr \
+		--exec-prefix=/ \
+		--sysconfdir=/etc \
+		--libdir=/usr/lib \
+		--bindir=/usr/bin \
+		--sbindir=/usr/bin \
+		--enable-watch8bit \
+		--disable-modern-top \
+		--disable-kill
+
+	make
+}
+
+package() {
+	cd "$_realname"
+	make DESTDIR="$pkgdir" install
+}
