@@ -6,14 +6,15 @@
 
 pkgname='dasel'
 pkgdesc='Select, put and delete data from JSON, TOML, XML, YAML, HCL, and INI files with a single command-line tool'
-pkgver=3.8.1
-pkgrel=3
+pkgver=3.9.0
+pkgrel=1
 url='https://github.com/TomWright/dasel'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+changelog="$pkgname.changelog"
 
 # Used in LDFLAGS (although no longer used by dasel v3+)
 _majver="${pkgver/[.]*/}"
@@ -81,10 +82,10 @@ package() {
 }
 
 sha256sums=(
-  '92711ddecfad9a1e97a41011d12ea88e9bb3c37827e5d5a718c3a8e8eaa88eaa'
+  'fd217c1a3af287d441df24ae06a0b28a646820ca134bab2f5dce0ccdea8ee872'
 )
 b2sums=(
-  'b519b4aaff19e0856a0273579f5a81af7e67161b55d83234a08de73275c9239b3459c872b108bd34994b654cb78774a52b06259af44d166600665e065e047339'
+  '0eae136343613da4c1a951d2984619cdb0528e7c4473a5b49e96d41789843528e9f8e5fe74933c5fda826a82a4e04092f37d0157442abff6213be0da6866d2f9'
 )
 
 # eof
