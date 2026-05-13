@@ -6,7 +6,6 @@ pkgbase = zosma-cowork-bin
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk-4.1
-	depends = libjavascriptcoregtk-4.1
 	depends = gtk3
 	depends = libappindicator-gtk3
 	depends = librsvg
