@@ -1,7 +1,7 @@
 # Maintainer: Rizki Rakasiwi <rizkirr.xyz@gmail.com>
 pkgname=muslimtify
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An Islamic prayer time notification daemon for Linux"
 arch=('x86_64')
 url="https://github.com/rizukirr/muslimtify"
