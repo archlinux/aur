@@ -4,7 +4,7 @@
 
 
 pkgname=coulr
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Color box to help developers and designers"
 url="https://github.com/Huluti/Coulr"
@@ -14,7 +14,7 @@ depends=('python-gobject' 'libadwaita' 'libportal-gtk4')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('eb43628da7f0df3af9c7dc3acf144e909c8f2741b628042d64cee008161e6875')
+sha256sums=('d2515588de76be41c5ca9893c5d30bbac3a627e52f37c8037c01e40c265e40f4')
 
 build() {
   arch-meson Coulr-$pkgver build
