@@ -1,6 +1,6 @@
 pkgbase = musiclib
-	pkgdesc = KDE-based music library management. Integration with Audacious player, Kid3 Tagger, K3b CD Ripper, kdeconnect and RSGain.
-	pkgver = 1.62
+	pkgdesc = KDE-based music library management. Integration with MPRIS2 players, Kid3 Tagger, K3b CD Ripper, kdeconnect and RSGain.
+	pkgver = 1.70
 	pkgrel = 1
 	url = https://github.com/Harpo3/musiclib
 	install = musiclib.install
@@ -11,7 +11,7 @@ pkgbase = musiclib
 	depends = qt6-base
 	depends = kid3-common
 	depends = perl-image-exiftool
-	depends = audacious
+	depends = qt6-tools
 	depends = kdeconnect
 	depends = bc
 	depends = kcoreaddons
@@ -28,7 +28,7 @@ pkgbase = musiclib
 	optdepends = k3b: KDE CD Ripper and Burner Tool (CD ripping integration)
 	provides = musiclib-cli
 	conflicts = musiclib-cli
-	source = musiclib-1.62.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.62.tar.gz
-	sha256sums = 480131ac489648b53b2525d7677f82c09ecec982eabbdc863e600d3f1829955d
+	source = musiclib-1.70.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.70.tar.gz
+	sha256sums = 1c98d8e08655ca50c98850e87c6eac63e3853c7bf89aa7730abd1541ad021ecb
 
 pkgname = musiclib

@@ -1,8 +1,8 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib
-pkgver=1.62
+pkgver=1.70
 pkgrel=1
-pkgdesc="KDE-based music library management. Integration with Audacious player, Kid3 Tagger, K3b CD Ripper, kdeconnect and RSGain."
+pkgdesc="KDE-based music library management. Integration with MPRIS2 players, Kid3 Tagger, K3b CD Ripper, kdeconnect and RSGain."
 arch=('x86_64')
 url="https://github.com/Harpo3/musiclib"
 license=('GPL-3.0-or-later')
@@ -13,7 +13,7 @@ depends=(
     'qt6-base'              # QtCore runtime (both CLI and GUI link against it)
     'kid3-common'           # Provides the kid3-cli binary
     'perl-image-exiftool'   # Tag reading/writing via exiftool
-    'audacious'             # Music player; provides audtool
+    'qt6-tools'             # Provides qdbus6 for MPRIS2 player D-Bus queries
     'kdeconnect'            # Mobile sync; provides kdeconnect-cli
     'bc'                    # Arithmetic used in shell scripts
     # ── GUI runtime ───────────────────────────────────────────────────────────
@@ -46,7 +46,7 @@ provides=('musiclib-cli')
 conflicts=('musiclib-cli')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('480131ac489648b53b2525d7677f82c09ecec982eabbdc863e600d3f1829955d')
+sha256sums=('1c98d8e08655ca50c98850e87c6eac63e3853c7bf89aa7730abd1541ad021ecb')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
