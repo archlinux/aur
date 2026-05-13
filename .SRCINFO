@@ -1,12 +1,14 @@
 pkgbase = opentracker-cli
 	pkgdesc = CLI for tracking AI provider usage limits
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wsmajt/opentracker
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	provides = opentracker
+	conflicts = opentracker
 	source = opentracker-cli-0.1.0.tar.gz::https://github.com/wsmajt/opentracker/archive/v0.1.0.tar.gz
 	sha256sums = SKIP
 
