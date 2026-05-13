@@ -1,34 +1,70 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 82b7a2d..297fa4a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,6 +45,8 @@ if(WAYWALLEN_BUILD_DAEMON)
+ endif()
+ 
+ if(WAYWALLEN_BUILD_PLUGINS)
++    find_package(cubeb REQUIRED)
++    add_library(cubeb ALIAS cubeb::cubeb)
+     add_subdirectory(plugins)
+ endif()
+ 
 diff --git a/deps.json b/deps.json
-index 452fb5e..2d37d28 100644
+index 91cc43b..9c03fe3 100644
 --- a/deps.json
 +++ b/deps.json
-@@ -8,7 +8,8 @@
-     "url": "https://github.com/chriskohlhoff/asio.git",
-     "x-cmake": {
-       "name": "asio",
+@@ -1,39 +1,4 @@
+ [
+-  {
+-    "dest": "build/_flatpak_deps/asio-src",
+-    "disable-shallow-clone": false,
+-    "tag": "asio-1-30-2",
+-    "commit": "12e0ce9e0500bf0f247dbd1ae894272656456079",
+-    "type": "git",
+-    "url": "https://github.com/chriskohlhoff/asio.git",
+-    "x-cmake": {
+-      "name": "asio",
 -      "exclude_from_all": true
-+      "exclude_from_all": true,
-+      "find_package_args": "GLOBAL"
-     }
-   },
-   {
-@@ -20,7 +21,8 @@
-     "url": "https://github.com/taocpp/PEGTL.git",
-     "x-cmake": {
-       "name": "pegtl",
+-    }
+-  },
+-  {
+-    "dest": "build/_flatpak_deps/pegtl-src",
+-    "disable-shallow-clone": false,
+-    "tag": "3.2.8",
+-    "commit": "be527327653e94b02e711f7eff59285ad13e1db0",
+-    "type": "git",
+-    "url": "https://github.com/taocpp/PEGTL.git",
+-    "x-cmake": {
+-      "name": "pegtl",
 -      "exclude_from_all": true
-+      "exclude_from_all": true,
-+      "find_package_args": "GLOBAL"
-     }
-   },
-   {
-@@ -31,7 +33,8 @@
-     "url": "https://github.com/mozilla/cubeb.git",
-     "x-cmake": {
-       "name": "cubeb",
+-    }
+-  },
+-  {
+-    "commit": "a37dadd1ed5949ab0accd7087b7c5c57800eab43",
+-    "dest": "build/_flatpak_deps/cubeb-src",
+-    "disable-shallow-clone": true,
+-    "type": "git",
+-    "url": "https://github.com/mozilla/cubeb.git",
+-    "x-cmake": {
+-      "name": "cubeb",
 -      "exclude_from_all": true
-+      "exclude_from_all": true,
-+      "find_package_args": "GLOBAL"
-     }
-   },
+-    }
+-  },
    {
+     "commit": "9fdc3ebeda7289bd1db7d2fb0b978e6ed0b1a63e",
+     "dest": "build/_flatpak_deps/rstd-src",
+diff --git a/plugins/CMakeLists.txt b/plugins/CMakeLists.txt
+index 9ec52b1..347c371 100644
+--- a/plugins/CMakeLists.txt
++++ b/plugins/CMakeLists.txt
+@@ -3,7 +3,7 @@ option(WAYWALLEN_BUILD_VIDEO_PLUGIN "Build the ffmpeg+Vulkan video plugin" ON)
+ option(WAYWALLEN_BUILD_MPV_PLUGIN   "Build the libmpv+EGL/GBM video plugin" OFF)
+ 
+ include(${CMAKE_SOURCE_DIR}/cmake/FetchDeps.cmake)
+-fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES rstd cubeb wavsen)
++fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES rstd wavsen)
+ 
+ add_subdirectory(../bridge waywallen-bridge-build)
+ 
