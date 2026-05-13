@@ -1,0 +1,5 @@
+[dusklight]
+source = "github"
+github = "TwilitRealm/dusklight"
+prefix = "v"
+use_max_tag = true
