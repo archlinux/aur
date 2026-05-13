@@ -1,7 +1,7 @@
 pkgbase = rpnx
 	pkgdesc = a simple reverse polish notation calculator written in C++
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.softkittypa.ws/ika4422/rpnx
 	arch = x86_64
 	license = CNPLv8

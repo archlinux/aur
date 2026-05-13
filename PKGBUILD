@@ -1,7 +1,7 @@
 # Maintainer: ika4422 jaiden.lily.brooke@gmail.com
 pkgname=rpnx
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple reverse polish notation calculator written in C++"
 arch=('x86_64')
 url="https://git.softkittypa.ws/ika4422/rpnx"
