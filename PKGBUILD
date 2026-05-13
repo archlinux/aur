@@ -1,4 +1,4 @@
-# Maintainer: Christian Pfeiffer <cpfeiffer@live.de> 
+# Maintainer: Christian Pfeiffer <cpfeiffer@rev-crew.info>
 
 pkgname=cryptpad-sso
 pkgver=0.5.0
