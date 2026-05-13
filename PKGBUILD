@@ -3,7 +3,7 @@
 
 pkgname=notion-calendar-electron-fixed
 pkgver=1.133.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Notion Calendar Desktop Client - your calendar, tasks, and schedule in one place (official installer, electron39)"
 arch=(x86_64)
 url=https://www.notion.so/product/calendar
@@ -66,40 +66,46 @@ with open(main_js, 'r', encoding='utf-8') as f:
 
 patches = [
     # Patch 1: disable auto updates (Windows-only Squirrel)
-    ('if("win32"===process.platform&&!c.default().wasBuiltByUs&&s.existsSync(d.join(a.app.getAppPath(),"../Update.exe")))', 'if(!1)'),
+    ('if("win32"===process.platform&&!d.default().wasBuiltByUs&&s.existsSync(c.join(a.app.getAppPath(),"../Update.exe")))', 'if(!1)'),
     # Patch 2: fix single instance lock for linux
-    ('"win32"!==process.platform||kl||ft().app.quit()', 'kl||ft().app.quit()'),
+    ('"win32"!==process.platform||qf||u().app.quit()', 'qf||u().app.quit()'),
     # Patch 3: fix second-instance event to handle linux
-    ('"win32"===process.platform&&(fl(),jl(t))', 'fl(),jl(t)'),
+    ('"win32"===process.platform&&(tS(),kS(t))', 'tS(),kS(t)'),
     # Patch 4: fix argv protocol handler for linux
-    ('"win32"===process.platform&&jl(process.argv)', 'jl(process.argv)'),
+    ('"win32"===process.platform&&kS(process.argv)', 'kS(process.argv)'),
     # Patch 5: fix protocol registration for linux
-    (',tl&&"win32"===process.platform', ',tl'),
+    (',Mf&&"win32"===process.platform', ',Mf'),
     # Patch 6: fix app user model id (not needed on linux)
-    ('"win32"===process.platform&&ft().app.setAppUserModelId("com.cron.electron");', 'true;'),
+    ('"win32"===process.platform&&u().app.setAppUserModelId("com.cron.electron");', 'true;'),
     # Patch 7: fix tray popup menu for linux (use win32 pattern instead of darwin)
-    ('Xl)if("darwin"===process.platform)Xl.popUpContextMenu();else{', 'Xl)if(false)Xl.popUpContextMenu();else{'),
-    # Patch 8: fix jl function to work on linux (remove win32-only check)
-    ('function jl(e){if("win32"!==process.platform)return;', 'function jl(e){'),
-    # Patch 9: prevent URLs from being treated as file paths in jl function
-    ('const n=e.slice(1).find((e=>A().existsSync(e)));', 'const n=e.slice(1).find((e=>!e.includes("://")&&A().existsSync(e)));'),
+    ('NS)if("darwin"===process.platform)NS.popUpContextMenu();else{', 'NS)if(false)NS.popUpContextMenu();else{'),
+    # Patch 8: fix kS function to work on linux (remove win32-only check)
+    ('function kS(e){if("win32"!==process.platform)return;', 'function kS(e){'),
+    # Patch 9: prevent URLs from being treated as file paths in kS function
+    ('const n=e.slice(1).find((e=>D().existsSync(e)));', 'const n=e.slice(1).find((e=>!e.includes("://")&&D().existsSync(e)));'),
     # Patch 10: disable crash reporter on linux (provide fake DSN to skip throw)
-    ('if(!(e=this._options.dsn))throw new g("Attempted to enable Electron native crash reporter but no DSN was supplied");', 'e=this._options.dsn||"https://fake@sentry.io/0";'),
-    # Patch 11: disable autoUpdater on linux (el.autoUpdater is undefined)
-    ('Bd=async()=>{el.autoUpdater.on("before-quit-for-update",', 'Bd=async()=>{if("linux"===process.platform)return;el.autoUpdater.on("before-quit-for-update",'),
+    ('if(!(e=this._options.dsn))throw new ae("Attempted to enable Electron native crash reporter but no DSN was supplied");', 'e=this._options.dsn||"https://fake@sentry.io/0";'),
+    # Patch 11: disable autoUpdater on linux (a.autoUpdater is undefined)
+    ('_subscribeToElectronEvents(){a.autoUpdater.on("before-quit-for-update",((...e)=>{this._log("info","before-quit-for-update",...e),this.emit("before-quit-for-update",...e)})),i.autoUpdater.on("checking-for-update",((...e)=>{this._log("info","checking-for-update",...e),this.emit("checking-for-update",...e)})),i.autoUpdater.on("download-progress",((...e)=>{this._log("info","download-progress",...e),this.emit("download-progress",...e)})),i.autoUpdater.on("update-available",((...e)=>{this._log("info","update-available",...e),this.emit("update-available",...e)})),i.autoUpdater.on("update-not-available",((...e)=>{this._log("info","update-not-available",...e),this.emit("update-not-available",...e)}))}}', '_subscribeToElectronEvents(){if("linux"===process.platform)return;a.autoUpdater.on("before-quit-for-update",((...e)=>{this._log("info","before-quit-for-update",...e),this.emit("before-quit-for-update",...e)})),i.autoUpdater.on("checking-for-update",((...e)=>{this._log("info","checking-for-update",...e),this.emit("checking-for-update",...e)})),i.autoUpdater.on("download-progress",((...e)=>{this._log("info","download-progress",...e),this.emit("download-progress",...e)})),i.autoUpdater.on("update-available",((...e)=>{this._log("info","update-available",...e),this.emit("update-available",...e)})),i.autoUpdater.on("update-not-available",((...e)=>{this._log("info","update-not-available",...e),this.emit("update-not-available",...e)}))}}'),
 ]
 
+applied = 0
 for old, new in patches:
     if old in content:
-        content = content.replace(old, new)
+        content = content.replace(old, new, 1)
         print(f'Applied: {old[:60]}...')
+        applied += 1
     else:
         print(f'WARNING: Not found: {old[:60]}...', file=sys.stderr)
+
+if applied < len(patches):
+    print(f'ERROR: Only {applied}/{len(patches)} patches applied!', file=sys.stderr)
+    sys.exit(1)
 
 with open(main_js, 'w', encoding='utf-8') as f:
     f.write(content)
 
-print('All patches applied successfully')
+print(f'All {applied} patches applied successfully')
 PYEOF
 
 	# repacking asar with all the patches
