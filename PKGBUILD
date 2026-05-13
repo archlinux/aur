@@ -1,18 +1,19 @@
 # Maintainer: Michael Tews <michael at tews dot dev>
 
 pkgname=rclone-studip-git
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Rclone with a Stud.IP backend"
 arch=(any)
 url="https://github.com/Mewsen/rclone-studip-backend-oot"
 license=(MIT)
+options=(!debug)
 makedepends=(git go)
 optdepends=("fuse3: mount support")
 provides=(rclone)
 conflicts=(rclone rclone-git)
 source=("${pkgname}-${pkgver}::git+https://github.com/Mewsen/rclone-studip-backend-oot.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('af11ca403a053a79e5b71c6c54cefa2f911a073ff5fe4e9ed06bab1c29252d60')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
