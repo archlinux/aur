@@ -13,6 +13,8 @@ pkgbase = tyrolienne
 	options = !lto
 	options = !debug
 	source = tyrolienne-1.2.2.tar.gz::https://git.uku3lig.net/uku/tyrolienne/archive/1.2.2.tar.gz
+	source = net.uku3lig.tyrolienne.desktop
 	sha256sums = 12d4d2c76a5d5a6e76afb176d6218b68621ba02759206863efc56495459d4a7c
+	sha256sums = SKIP
 
 pkgname = tyrolienne
