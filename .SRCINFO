@@ -1,5 +1,5 @@
 pkgbase = firma-digital
-	pkgdesc = Instalador de suite de firma digital costa rica
+	pkgdesc = Instalador de suite para Firma Digital de Costa Rica
 	pkgver = Rev28
 	pkgrel = 1
 	epoch = 1
@@ -13,9 +13,11 @@ pkgbase = firma-digital
 	sha256sums = f3c5fdd12686533ea60ddf3420e465b94228c7ed67474e031f86f60509f5e45d
 
 pkgname = firma-digital-agente-gaudi
+	pkgdesc = Agente GAUDI para Firma Digital de Costa Rica
 	provides = Agente-GAUDI
 
 pkgname = firma-digital-middleware-idopte
+	pkgdesc = Middleware PKCS#11 Idopte para Firma Digital de Costa Rica
 	depends = aom
 	depends = at-spi2-core
 	depends = brotli
@@ -122,6 +124,7 @@ pkgname = firma-digital-middleware-idopte
 	conflicts = 
 
 pkgname = firma-digital-certificados-bccr
+	pkgdesc = Certificados del BCCR para Firma Digital de Costa Rica
 	install = certificados.install
 	depends = p11-kit
 	depends = pcsclite

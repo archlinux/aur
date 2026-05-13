@@ -4,7 +4,7 @@ pkgver=Rev28
 pkgbase=firma-digital
 pkgrel=1
 epoch=1
-pkgdesc="Instalador de suite de firma digital costa rica"
+pkgdesc="Instalador de suite para Firma Digital de Costa Rica"
 arch=(x86_64)
 url="https://soportefirmadigital.com/sfdj/dl.aspx"
 license=('MIT' 'unknown' 'unknown')
@@ -21,6 +21,7 @@ build() {
 }
 
 package_firma-digital-certificados-bccr() {
+    pkgdesc="Certificados del BCCR para Firma Digital de Costa Rica"
     depends=("p11-kit" "pcsclite")
     install=certificados.install
     certs=(
@@ -45,6 +46,7 @@ package_firma-digital-certificados-bccr() {
 
 package_firma-digital-agente-gaudi() {
     provides=("Agente-GAUDI")
+    pkgdesc="Agente GAUDI para Firma Digital de Costa Rica"
     install -d "${srcdir}/Firma Digital/Agente GAUDI/opt" "${pkgdir}/opt" 2> >(read err; error "$err")
     cp -r "${srcdir}/Firma Digital/Agente GAUDI/opt/"* "${pkgdir}/opt/" 2> >(read err; error "$err")
     install -d "${srcdir}/Firma Digital/Agente GAUDI/usr" "${pkgdir}/usr" 2> >(read err; error "$err")
@@ -55,6 +57,7 @@ package_firma-digital-agente-gaudi() {
 }
 
 package_firma-digital-middleware-idopte() {
+    pkgdesc="Middleware PKCS#11 Idopte para Firma Digital de Costa Rica"
     depends=("aom" "at-spi2-core" "brotli" "bzip2" "cairo" "dav1d" "dbus" "e2fsprogs" "enchant" "expat" "fontconfig" "freetype2" "fribidi" "gdk-pixbuf2" "glib2" "glycin" "graphite" "gst-plugins-base-libs" "gstreamer" "gtk3" "harfbuzz" "harfbuzz-icu" "hidapi" "highway" "hyphen" "icu" "json-glib" "keyutils" "krb5" "lcms2" "libatomic" "libavif" "libcloudproviders" "libdatrie" "libdrm" "libelf" "libepoxy" "libevdev" "libffi" "libgcc" "libgcrypt" "libglvnd" "libgpg-error" "libgudev" "libidn2" "libjpeg-turbo" "libjxl" "libmanette" "libnotify" "libpng" "libpsl" "libseccomp" "libsecret" "libsoup" "libstdc++" "libtasn1" "libthai" "libunistring" "libunwind" "libwebp" "libx11" "libxau" "libxcb" "libxcomposite" "libxcursor" "libxdamage" "libxdmcp" "libxext" "libxfixes" "libxi" "libxinerama" "libxkbcommon" "libxml2" "libxrandr" "libxrender" "libxslt" "libyuv" "mesa" "openssl" "orc" "pango" "pcre2" "pcsclite" "pixman" "rav1e" "sqlite" "svt-av1" "systemd-libs" "tinysparql" "tpm2-tss" "util-linux-libs" "wayland" "webkit2gtk" "woff2" "xz" "zlib" "zstd")
     provides=("legacy.so" "libidolog.so" "libidop11.so" "libt_ias.so" "SCManager" "idocachesrv")
     conflicts=()
