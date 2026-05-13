@@ -1,10 +1,10 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
-# Maintainer: Christian Pfeiffer <cpfeiffer@live.de>
+# Maintainer: Christian Pfeiffer <cpfeiffer+aur@rev-crew.info>
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
 pkgver=2026.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
 url="https://github.com/$pkgname/$pkgname"
@@ -15,6 +15,7 @@ optdepends=('nginx: HTTP server providing TLS'
             'certbot: Let’s Encrypt – automatically receive and install X.509 certificates to enable TLS'
             'certbot-nginx: Nginx plugin for Let’s Encrypt client'
             'cryptpad-sso: SSO plugin for Cryptpad')
+conflicts=("cryptpad-sso<0.5.0")
 backup=(etc/webapps/"$pkgname"/config.js
         etc/nginx/sites-available/"$pkgname".conf)
 options=(!strip) # There are no ELF files, no need to strip anything.

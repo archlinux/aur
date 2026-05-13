@@ -1,7 +1,7 @@
 pkgbase = cryptpad
 	pkgdesc = Realtime collaborative visual editor with zero knowlege server
 	pkgver = 2026.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cryptpad/cryptpad
 	arch = any
 	license = AGPL-3.0-only
@@ -13,6 +13,7 @@ pkgbase = cryptpad
 	optdepends = certbot: Let’s Encrypt – automatically receive and install X.509 certificates to enable TLS
 	optdepends = certbot-nginx: Nginx plugin for Let’s Encrypt client
 	optdepends = cryptpad-sso: SSO plugin for Cryptpad
+	conflicts = cryptpad-sso<0.5.0
 	options = !strip
 	backup = etc/webapps/cryptpad/config.js
 	backup = etc/nginx/sites-available/cryptpad.conf
