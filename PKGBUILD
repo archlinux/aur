@@ -15,7 +15,6 @@ noextract=()
 sha256sums=('f3c5fdd12686533ea60ddf3420e465b94228c7ed67474e031f86f60509f5e45d')
 
 build() {
-    unzip -o $source -d "$srcdir"
     bsdtar -xf "${srcdir}/Firma Digital/Idopte/scmiddleware-costa-rica-user_idopte_6.23.44.0_rh9_amd64.rpm" -C "${srcdir}/Firma Digital/Idopte"
     bsdtar -xf "${srcdir}/Firma Digital/Agente GAUDI/agente-gaudi_26.0_amd64.rpm" -C "${srcdir}/Firma Digital/Agente GAUDI"
 }
