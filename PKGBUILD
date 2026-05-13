@@ -67,6 +67,4 @@ package_middleware-idopte() {
     msg "Creating firma digital module"
     mkdir -p "${pkgdir}/usr/share/p11-kit/modules/"
     echo -n 'module: /usr/lib/SCMiddleware/libidop11.so' > "${pkgdir}/usr/share/p11-kit/modules/firma-digital.module"
-post_update() {
-    post_install
 }
