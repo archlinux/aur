@@ -2,7 +2,7 @@
 
 pkgname=sidra-bin
 pkgver=0.3.3
-pkgrel=2
+pkgrel=4
 pkgdesc="An elegant Apple Music desktop client for Linux. No frippery, just quality."
 arch=('x86_64')
 url="https://github.com/wimpysworld/sidra"

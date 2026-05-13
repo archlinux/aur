@@ -1,7 +1,7 @@
 pkgbase = sidra-bin
 	pkgdesc = An elegant Apple Music desktop client for Linux. No frippery, just quality.
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/wimpysworld/sidra
 	arch = x86_64
 	license = BlueOak-1.0.0
