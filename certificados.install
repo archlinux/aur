@@ -1,0 +1,12 @@
+post_install() {
+    update-ca-trust
+    systemctl enable --now pcscd.socket
+}
+
+post_update() {
+    post_install
+}
+
+post_remove() {
+    post_install
+}
