@@ -1,7 +1,7 @@
 pkgbase = piclist
 	pkgdesc = A powerful cloud storage and image hosting management tool
-	pkgver = 3.3.2
-	pkgrel = 3
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = https://piclist.cn/
 	arch = x86_64
 	license = MIT
@@ -12,10 +12,10 @@ pkgbase = piclist
 	depends = electron39
 	depends = bash
 	depends = hicolor-icon-theme
-	source = piclist-3.3.2.tar.gz::https://github.com/Kuingsmile/PicList/archive/refs/tags/v3.3.2.tar.gz
+	source = piclist-3.4.0.tar.gz::https://github.com/Kuingsmile/PicList/archive/refs/tags/v3.4.0.tar.gz
 	source = piclist.desktop
 	source = piclist.sh
-	sha256sums = 0e4a03958acfc95a5ccd2019dd7b5b73976eed7f3dd0a39ae21880a4d6247c20
+	sha256sums = 6b59a4d63d37e0926452f696602407396bcc8ffac49853afeffffd16c131c270
 	sha256sums = 96792576ff904881c2d58e6b7a4aa06aff9d7fa07e950d603c45edda7c4b4de2
 	sha256sums = 4b1dc5f32f0295bd672ea0ff12ac63c98256e1e654d864401fb4f1a6d4b3d8f6
 
