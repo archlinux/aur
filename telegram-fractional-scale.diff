@@ -118,10 +118,10 @@ index 88d437ae..d079c56d 100644
  			}
  		};
 diff --git a/Telegram/SourceFiles/boxes/peer_list_box.cpp b/Telegram/SourceFiles/boxes/peer_list_box.cpp
-index c3f6d405..5dc6a91f 100644
+index 046c2bfb..fe3f179e 100644
 --- a/Telegram/SourceFiles/boxes/peer_list_box.cpp
 +++ b/Telegram/SourceFiles/boxes/peer_list_box.cpp
-@@ -67,11 +67,12 @@ PaintRoundImageCallback ForceRoundUserpicCallback(not_null<PeerData*> peer) {
+@@ -68,11 +68,12 @@ PaintRoundImageCallback ForceRoundUserpicCallback(not_null<PeerData*> peer) {
  	auto userpic = Ui::PeerUserpicView();
  	auto cache = std::make_shared<QImage>();
  	return [=](Painter &p, int x, int y, int outerWidth, int size) mutable {
@@ -151,10 +151,10 @@ index d87ebcb4..0a82b631 100644
  		if (_disabledFrame.size() != full) {
  			repaint = true;
 diff --git a/Telegram/SourceFiles/boxes/peers/edit_peer_color_box.cpp b/Telegram/SourceFiles/boxes/peers/edit_peer_color_box.cpp
-index 5f813d2b..928779bf 100644
+index 03523c9c..fe53ad04 100644
 --- a/Telegram/SourceFiles/boxes/peers/edit_peer_color_box.cpp
 +++ b/Telegram/SourceFiles/boxes/peers/edit_peer_color_box.cpp
-@@ -2827,9 +2827,9 @@ void CheckBoostLevel(
+@@ -2800,9 +2800,9 @@ void CheckBoostLevel(
  ButtonWithEmoji ButtonStyleWithRightEmoji(
  		not_null<Ui::RpWidget*> parent,
  		const QString &noneString,
@@ -369,10 +369,10 @@ index ff78f6b3..3acbfbb0 100644
  		using namespace Images;
  		auto rounding = CornersMaskRef(
 diff --git a/Telegram/SourceFiles/boxes/send_files_box.cpp b/Telegram/SourceFiles/boxes/send_files_box.cpp
-index 362e48ef..8d321b09 100644
+index b40b9fde..ffa1797a 100644
 --- a/Telegram/SourceFiles/boxes/send_files_box.cpp
 +++ b/Telegram/SourceFiles/boxes/send_files_box.cpp
-@@ -1127,7 +1127,8 @@ QImage SendFilesBox::preparePriceTagBg(QSize size) const {
+@@ -1178,7 +1178,8 @@ QImage SendFilesBox::preparePriceTagBg(QSize size) const {
  		bg.fill(Qt::black);
  	}
  
@@ -383,10 +383,10 @@ index 362e48ef..8d321b09 100644
  	result.fill(Qt::black);
  	auto p = QPainter(&result);
 diff --git a/Telegram/SourceFiles/boxes/star_gift_box.cpp b/Telegram/SourceFiles/boxes/star_gift_box.cpp
-index 6b404b99..817f71a8 100644
+index 60ebfd59..26d1d277 100644
 --- a/Telegram/SourceFiles/boxes/star_gift_box.cpp
 +++ b/Telegram/SourceFiles/boxes/star_gift_box.cpp
-@@ -652,10 +652,9 @@ void ShowSentToast(
+@@ -650,10 +650,9 @@ void ShowSentToast(
  
  	const auto bytes = document->createMediaView()->bytes();
  	const auto filepath = document->filepath();
@@ -398,7 +398,7 @@ index 6b404b99..817f71a8 100644
  		Lottie::Quality::Default);
  
  	preview->paintRequest(
-@@ -665,7 +664,11 @@ void ShowSentToast(
+@@ -663,7 +662,11 @@ void ShowSentToast(
  		}
  		const auto image = player->frame();
  		QPainter(preview).drawImage(
@@ -411,7 +411,7 @@ index 6b404b99..817f71a8 100644
  			image);
  		if (player->frameIndex() + 1 != player->framesCount()) {
  			player->markFrameShown();
-@@ -2488,8 +2491,7 @@ void AddWearGiftCover(
+@@ -2486,8 +2489,7 @@ void AddWearGiftCover(
  
  		const auto width = cover->width();
  		const auto pointsHeight = st::uniqueGiftSubtitleTop;
@@ -539,7 +539,7 @@ index 9f0aa64b..4c329193 100644
  
  				auto q = QPainter(&shared->craftBg);
 diff --git a/Telegram/SourceFiles/boxes/sticker_set_box.cpp b/Telegram/SourceFiles/boxes/sticker_set_box.cpp
-index 7598c4b6..490e7086 100644
+index 7200f643..d9af9b24 100644
 --- a/Telegram/SourceFiles/boxes/sticker_set_box.cpp
 +++ b/Telegram/SourceFiles/boxes/sticker_set_box.cpp
 @@ -103,8 +103,7 @@ using TLStickerSet = MTPmessages_StickerSet;
@@ -589,7 +589,7 @@ index 7598c4b6..490e7086 100644
  	const auto point = position + QPoint(shiftx, shifty);
  	p.drawImage(point, bg);
  	if (_premium && _part != RectPart::Center) {
-@@ -2028,8 +2026,7 @@ uint64 StickerSetBox::Inner::setId() const {
+@@ -2032,8 +2030,7 @@ uint64 StickerSetBox::Inner::setId() const {
  QSize StickerSetBox::Inner::boundingBoxSize() const {
  	if (isEmojiSet()) {
  		using namespace Data;
@@ -599,7 +599,7 @@ index 7598c4b6..490e7086 100644
  		return { size, size };
  	}
  	return QSize(
-@@ -2090,7 +2087,7 @@ void StickerSetBox::Inner::setupLottie(int index) {
+@@ -2094,7 +2091,7 @@ void StickerSetBox::Inner::setupLottie(int index) {
  		getLottiePlayer(),
  		element.documentMedia.get(),
  		ChatHelpers::StickerLottieSize::StickerSet,
@@ -608,7 +608,7 @@ index 7598c4b6..490e7086 100644
  }
  
  void StickerSetBox::Inner::setupWebm(int index) {
-@@ -2294,8 +2291,9 @@ void StickerSetBox::Inner::paintSticker(
+@@ -2298,8 +2295,9 @@ void StickerSetBox::Inner::paintSticker(
  		});
  	} else if (element.lottie && element.lottie->ready()) {
  		lottieFrame = element.lottie->frame();
@@ -1186,10 +1186,10 @@ index 6f31f2e3..4a525429 100644
  	bool _rgbaFrame = false;
  	bool _userpicFrame;
 diff --git a/Telegram/SourceFiles/chat_helpers/emoji_list_widget.cpp b/Telegram/SourceFiles/chat_helpers/emoji_list_widget.cpp
-index 6a5d6f36..a28ba457 100644
+index cccfb197..6ccc3028 100644
 --- a/Telegram/SourceFiles/chat_helpers/emoji_list_widget.cpp
 +++ b/Telegram/SourceFiles/chat_helpers/emoji_list_widget.cpp
-@@ -53,6 +53,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+@@ -54,6 +54,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
  #include "settings/sections/settings_premium.h"
  #include "window/window_session_controller.h"
  #include "window/window_controller.h"
@@ -1197,7 +1197,7 @@ index 6a5d6f36..a28ba457 100644
  #include "styles/style_chat_helpers.h"
  #include "styles/style_menu_icons.h"
  
-@@ -287,7 +288,8 @@ void EmojiColorPicker::setSingleSize(QSize size) {
+@@ -288,7 +289,8 @@ void EmojiColorPicker::setSingleSize(QSize size) {
  	_areaPosition = QPoint(
  		(_singleSize.width() - area.width()) / 2,
  		(_singleSize.height() - area.height()) / 2);
@@ -1207,7 +1207,7 @@ index 6a5d6f36..a28ba457 100644
  	_innerPosition = QPoint(
  		(area.width() - esize) / 2,
  		(area.height() - esize) / 2);
-@@ -1484,7 +1486,8 @@ void EmojiListWidget::setSingleSize(QSize size) {
+@@ -1740,7 +1742,8 @@ void EmojiListWidget::setSingleSize(QSize size) {
  	_areaPosition = QPoint(
  		(_singleSize.width() - area.width()) / 2,
  		(_singleSize.height() - area.height()) / 2);
@@ -1217,7 +1217,7 @@ index 6a5d6f36..a28ba457 100644
  	_innerPosition = QPoint(
  		(area.width() - esize) / 2,
  		(area.height() - esize) / 2);
-@@ -2055,7 +2058,7 @@ void EmojiListWidget::drawRecent(
+@@ -2480,7 +2483,7 @@ void EmojiListWidget::drawRecent(
  		if (_premiumMarkFrameCache.isNull()) {
  			const auto ratio = style::DevicePixelRatio();
  			_premiumMarkFrameCache = QImage(
@@ -1226,7 +1226,7 @@ index 6a5d6f36..a28ba457 100644
  				QImage::Format_ARGB32_Premultiplied);
  			_premiumMarkFrameCache.setDevicePixelRatio(ratio);
  		}
-@@ -3413,7 +3416,7 @@ void EmojiListWidget::initButton(
+@@ -3943,7 +3946,7 @@ void EmojiListWidget::initButton(
  	const auto factor = style::DevicePixelRatio();
  	auto prepare = [&](QColor bg, QBrush fg) {
  		auto image = QImage(
@@ -1271,10 +1271,10 @@ index 69654117..fc4b79ea 100644
  		const auto y = (_oneWidth - size) / 2;
  		if (row.custom) {
 diff --git a/Telegram/SourceFiles/chat_helpers/field_autocomplete.cpp b/Telegram/SourceFiles/chat_helpers/field_autocomplete.cpp
-index 0dcef405..e8cbcbbf 100644
+index 5cc507ea..0d20b019 100644
 --- a/Telegram/SourceFiles/chat_helpers/field_autocomplete.cpp
 +++ b/Telegram/SourceFiles/chat_helpers/field_autocomplete.cpp
-@@ -41,6 +41,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+@@ -43,6 +43,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
  #include "ui/painter.h"
  #include "ui/ui_utility.h"
  #include "ui/cached_round_corners.h"
@@ -1282,7 +1282,7 @@ index 0dcef405..e8cbcbbf 100644
  #include "base/unixtime.h"
  #include "base/random.h"
  #include "base/qt/qt_key_modifiers.h"
-@@ -116,6 +117,7 @@ public:
+@@ -117,6 +118,7 @@ public:
  private:
  	void paintEvent(QPaintEvent *e) override;
  	void resizeEvent(QResizeEvent *e) override;
@@ -1290,7 +1290,7 @@ index 0dcef405..e8cbcbbf 100644
  
  	void enterEventHook(QEnterEvent *e) override;
  	void leaveEventHook(QEvent *e) override;
-@@ -991,7 +993,7 @@ void FieldAutocomplete::Inner::paintEvent(QPaintEvent *e) {
+@@ -1056,7 +1058,7 @@ void FieldAutocomplete::Inner::paintEvent(QPaintEvent *e) {
  					p.drawImage(
  						QRect(
  							ppos,
@@ -1299,7 +1299,7 @@ index 0dcef405..e8cbcbbf 100644
  						lottieFrame);
  					if (!paused) {
  						sticker.lottie->markFrameShown();
-@@ -1178,6 +1180,15 @@ void FieldAutocomplete::Inner::resizeEvent(QResizeEvent *e) {
+@@ -1243,6 +1245,15 @@ void FieldAutocomplete::Inner::resizeEvent(QResizeEvent *e) {
  	_stickersPerRow = qMax(1, int32(width() - 2 * st::stickerPanPadding) / int32(st::stickerPanSize.width()));
  }
  
@@ -1386,10 +1386,10 @@ index b5f0b20f..6e335025 100644
  			delta);
  	}
 diff --git a/Telegram/SourceFiles/chat_helpers/stickers_list_footer.cpp b/Telegram/SourceFiles/chat_helpers/stickers_list_footer.cpp
-index 8971ceec..2425b13b 100644
+index 00407574..a567fa4a 100644
 --- a/Telegram/SourceFiles/chat_helpers/stickers_list_footer.cpp
 +++ b/Telegram/SourceFiles/chat_helpers/stickers_list_footer.cpp
-@@ -344,9 +344,9 @@ void StickersListFooter::paintExpanding(
+@@ -362,9 +362,9 @@ void StickersListFooter::paintExpanding(
  }
  
  int StickersListFooter::IconFrameSize() {
@@ -1401,7 +1401,7 @@ index 8971ceec..2425b13b 100644
  }
  
  void StickersListFooter::enumerateVisibleIcons(
-@@ -643,7 +643,7 @@ void StickersListFooter::paint(
+@@ -661,7 +661,7 @@ void StickersListFooter::paint(
  	paintSelectionBg(p, context);
  
  	const auto iconCacheSize = QSize(_singleWidth, st().footer);
@@ -1410,7 +1410,7 @@ index 8971ceec..2425b13b 100644
  	if (_setIconCache.size() != full) {
  		_setIconCache = QImage(full, QImage::Format_ARGB32_Premultiplied);
  		_setIconCache.setDevicePixelRatio(style::DevicePixelRatio());
-@@ -934,6 +934,22 @@ bool StickersListFooter::eventHook(QEvent *e) {
+@@ -952,6 +952,22 @@ bool StickersListFooter::eventHook(QEvent *e) {
  	return InnerFooter::eventHook(e);
  }
  
@@ -1433,7 +1433,7 @@ index 8971ceec..2425b13b 100644
  void StickersListFooter::scrollByWheelEvent(
  		not_null<QWheelEvent*> e) {
  	auto horizontal = (e->angleDelta().x() != 0);
-@@ -1191,7 +1207,7 @@ void StickersListFooter::validateIconLottieAnimation(
+@@ -1209,7 +1225,7 @@ void StickersListFooter::validateIconLottieAnimation(
  		icon.thumbnailMedia.get(),
  		icon.stickerMedia.get(),
  		StickerLottieSize::StickersFooter,
@@ -1442,7 +1442,7 @@ index 8971ceec..2425b13b 100644
  		_renderer());
  	if (!player) {
  		return;
-@@ -1357,11 +1373,9 @@ void StickersListFooter::paintSetIconToCache(
+@@ -1375,11 +1391,9 @@ void StickersListFooter::paintSetIconToCache(
  			});
  		} else if (icon.lottie && icon.lottie->ready()) {
  			const auto frame = icon.lottie->frame();
@@ -1455,7 +1455,7 @@ index 8971ceec..2425b13b 100644
  			}
  			p.drawImage(
  				QRect(
-@@ -1383,6 +1397,10 @@ void StickersListFooter::paintSetIconToCache(
+@@ -1401,6 +1415,10 @@ void StickersListFooter::paintSetIconToCache(
  					style::DevicePixelRatio());
  			}
  			p.drawImage(x, y, frame);
@@ -1467,10 +1467,10 @@ index 8971ceec..2425b13b 100644
  			p.drawImage(x, y, icon.savedFrame);
  		} else if (thumb) {
 diff --git a/Telegram/SourceFiles/chat_helpers/stickers_list_footer.h b/Telegram/SourceFiles/chat_helpers/stickers_list_footer.h
-index e5910d60..1e50a4a2 100644
+index 2da22cb5..b0995cf5 100644
 --- a/Telegram/SourceFiles/chat_helpers/stickers_list_footer.h
 +++ b/Telegram/SourceFiles/chat_helpers/stickers_list_footer.h
-@@ -160,6 +160,7 @@ protected:
+@@ -164,6 +164,7 @@ protected:
  	void mousePressEvent(QMouseEvent *e) override;
  	void mouseMoveEvent(QMouseEvent *e) override;
  	void mouseReleaseEvent(QMouseEvent *e) override;
@@ -1479,10 +1479,10 @@ index e5910d60..1e50a4a2 100644
  
  	void processHideFinished() override;
 diff --git a/Telegram/SourceFiles/chat_helpers/stickers_list_widget.cpp b/Telegram/SourceFiles/chat_helpers/stickers_list_widget.cpp
-index 0843ed7c..8fa5279e 100644
+index bea94e0d..2fa265c8 100644
 --- a/Telegram/SourceFiles/chat_helpers/stickers_list_widget.cpp
 +++ b/Telegram/SourceFiles/chat_helpers/stickers_list_widget.cpp
-@@ -1627,7 +1627,7 @@ void StickersListWidget::setupLottie(Set &set, int section, int index) {
+@@ -1995,7 +1995,7 @@ void StickersListWidget::setupLottie(Set &set, int section, int index) {
  		set.lottiePlayer.get(),
  		sticker.documentMedia.get(),
  		StickerLottieSize::StickersPanel,
@@ -1491,7 +1491,7 @@ index 0843ed7c..8fa5279e 100644
  }
  
  void StickersListWidget::setupWebm(Set &set, int section, int index) {
-@@ -1828,23 +1828,28 @@ void StickersListWidget::paintSticker(
+@@ -2196,23 +2196,28 @@ void StickersListWidget::paintSticker(
  		(_singleSize.height() - size.height()) / 2);
  
  	auto lottieFrame = QImage();
@@ -1526,7 +1526,7 @@ index 0843ed7c..8fa5279e 100644
  		if (sticker.savedFrame.isNull()) {
  			sticker.savedFrame = frame;
  			sticker.savedFrame.setDevicePixelRatio(style::DevicePixelRatio());
-@@ -1866,11 +1871,13 @@ void StickersListWidget::paintSticker(
+@@ -2234,11 +2239,13 @@ void StickersListWidget::paintSticker(
  			if (sticker.savedFrame.isNull()) {
  				sticker.savedFrame = pixmap.toImage().convertToFormat(
  					QImage::Format_ARGB32_Premultiplied);
@@ -1540,7 +1540,7 @@ index 0843ed7c..8fa5279e 100644
  			}
  		} else {
  			p.setOpacity(1.);
-@@ -1908,11 +1915,12 @@ void StickersListWidget::paintSticker(
+@@ -2276,11 +2283,12 @@ void StickersListWidget::paintSticker(
  		Assert(index < corner->size());
  		if (const auto emoji = (*corner)[index]) {
  			const auto size = Ui::Emoji::GetSizeNormal();
@@ -1596,7 +1596,7 @@ index 0a265988..350d7c2e 100644
  	result.setDevicePixelRatio(style::DevicePixelRatio());
  	result.fill(Qt::transparent);
 diff --git a/Telegram/SourceFiles/chat_helpers/tabbed_selector.cpp b/Telegram/SourceFiles/chat_helpers/tabbed_selector.cpp
-index 1a6c78a2..14535ebf 100644
+index 417cb959..4f049160 100644
 --- a/Telegram/SourceFiles/chat_helpers/tabbed_selector.cpp
 +++ b/Telegram/SourceFiles/chat_helpers/tabbed_selector.cpp
 @@ -88,10 +88,9 @@ void TabbedSelector::SlideAnimation::setFinalImages(Direction direction, QImage
@@ -1790,7 +1790,7 @@ index 1b3868ac..75410c63 100644
  	result.setDevicePixelRatio(ratio);
  	result.fill(Qt::transparent);
 diff --git a/Telegram/SourceFiles/data/data_message_reactions.cpp b/Telegram/SourceFiles/data/data_message_reactions.cpp
-index 8c953680..8c777a5a 100644
+index 117a5a3a..45a46b07 100644
 --- a/Telegram/SourceFiles/data/data_message_reactions.cpp
 +++ b/Telegram/SourceFiles/data/data_message_reactions.cpp
 @@ -811,38 +811,40 @@ QImage Reactions::resolveImageFor(const ReactionId &id) {
@@ -1890,7 +1890,7 @@ index 8c953680..8c777a5a 100644
  			hasOne = true;
  		}
 diff --git a/Telegram/SourceFiles/data/data_message_reactions.h b/Telegram/SourceFiles/data/data_message_reactions.h
-index 11da1fec..045861b9 100644
+index 93cef12b..b035ede4 100644
 --- a/Telegram/SourceFiles/data/data_message_reactions.h
 +++ b/Telegram/SourceFiles/data/data_message_reactions.h
 @@ -256,7 +256,7 @@ private:
@@ -1970,10 +1970,10 @@ index a9065630..af1cdf2b 100644
  					std::make_unique<Ui::Text::ShiftedEmoji>(
  						owner->customEmojiManager().create(
 diff --git a/Telegram/SourceFiles/dialogs/dialogs_inner_widget.cpp b/Telegram/SourceFiles/dialogs/dialogs_inner_widget.cpp
-index 80fdc809..b3013c1e 100644
+index 355c56a7..33a2162d 100644
 --- a/Telegram/SourceFiles/dialogs/dialogs_inner_widget.cpp
 +++ b/Telegram/SourceFiles/dialogs/dialogs_inner_widget.cpp
-@@ -931,8 +931,7 @@ void InnerWidget::paintEvent(QPaintEvent *e) {
+@@ -932,8 +932,7 @@ void InnerWidget::paintEvent(QPaintEvent *e) {
  						more++;
  						continue;
  					}
@@ -1983,7 +1983,7 @@ index 80fdc809..b3013c1e 100644
  					if (availableWidth < tagWidth) {
  						more++;
  					} else {
-@@ -944,8 +943,7 @@ void InnerWidget::paintEvent(QPaintEvent *e) {
+@@ -945,8 +944,7 @@ void InnerWidget::paintEvent(QPaintEvent *e) {
  			}
  			if (more) {
  				if (const auto tag = cacheChatsFilterTag({}, more, a)) {
@@ -1993,7 +1993,7 @@ index 80fdc809..b3013c1e 100644
  					if (availableWidth < tagWidth) {
  						more++;
  						if (!chatsFilterTags.empty()) {
-@@ -1379,7 +1377,7 @@ void InnerWidget::fillRightButton(
+@@ -1380,7 +1378,7 @@ void InnerWidget::fillRightButton(
  		st.button.height);
  	const auto generateBg = [&](const style::color &c) {
  		auto bg = QImage(
@@ -2002,7 +2002,7 @@ index 80fdc809..b3013c1e 100644
  			QImage::Format_ARGB32_Premultiplied);
  		bg.setDevicePixelRatio(style::DevicePixelRatio());
  		bg.fill(Qt::transparent);
-@@ -1763,7 +1761,7 @@ void InnerWidget::performDrag() {
+@@ -1765,7 +1763,7 @@ void InnerWidget::performDrag() {
  	}
  
  	const auto &st = st::defaultDialogRow;
@@ -2011,7 +2011,7 @@ index 80fdc809..b3013c1e 100644
  	pixmap.setDevicePixelRatio(style::DevicePixelRatio());
  	pixmap.fill(Qt::transparent);
  	if (const auto draw = PaintUserpicCallback(history->peer, true)) {
-@@ -1843,7 +1841,7 @@ bool InnerWidget::lookupIsInRightButton(
+@@ -1845,7 +1843,7 @@ bool InnerWidget::lookupIsInRightButton(
  		return false;
  	}
  
@@ -2020,7 +2020,7 @@ index 80fdc809..b3013c1e 100644
  	const auto r = QRect(
  		width() - s.width() - button.st->margin.right(),
  		button.st->margin.top(),
-@@ -2186,8 +2184,7 @@ bool InnerWidget::addRightButtonRipple(QPoint origin, Fn<void()> updateCallback)
+@@ -2188,8 +2186,7 @@ bool InnerWidget::addRightButtonRipple(QPoint origin, Fn<void()> updateCallback)
  	if (!(_pressedRightButton && _pressedRightButtonData)) {
  		return false;
  	}
@@ -2031,7 +2031,7 @@ index 80fdc809..b3013c1e 100644
  		_pressedRightButtonData->ripple = std::make_unique<Ui::RippleAnimation>(
  			_pressedRightButtonData->st->button.ripple,
 diff --git a/Telegram/SourceFiles/dialogs/dialogs_row.cpp b/Telegram/SourceFiles/dialogs/dialogs_row.cpp
-index acd8c8cb..4dc8a11f 100644
+index 3b01b6e8..8f231e17 100644
 --- a/Telegram/SourceFiles/dialogs/dialogs_row.cpp
 +++ b/Telegram/SourceFiles/dialogs/dialogs_row.cpp
 @@ -20,6 +20,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
@@ -2113,10 +2113,10 @@ index 7cf7598f..2949cb70 100644
  		p.drawImage(geometry.topLeft(), image);
  	}
 diff --git a/Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp b/Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp
-index ac29683c..466d5411 100644
+index e8e88862..4fe4e499 100644
 --- a/Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp
 +++ b/Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp
-@@ -111,19 +111,19 @@ int PaintRightButtonImpl(QPainter &p, const PaintContext &context) {
+@@ -112,19 +112,19 @@ int PaintRightButtonImpl(QPainter &p, const PaintContext &context) {
  	if (const auto rightButton = context.rightButton) {
  		Assert(rightButton->st != nullptr);
  
@@ -2145,7 +2145,7 @@ index ac29683c..466d5411 100644
  		if (rightButton->ripple) {
  			rightButton->ripple->paint(
  				p,
-@@ -639,7 +639,7 @@ void PaintRow(
+@@ -641,7 +641,7 @@ void PaintRow(
  				availableWidth,
  				context.width,
  				color,
@@ -2154,7 +2154,7 @@ index ac29683c..466d5411 100644
  			auto &cache = thread->cloudDraftTextCache();
  			if (cache.isEmpty()) {
  				using namespace TextUtilities;
-@@ -941,7 +941,7 @@ void PaintRow(
+@@ -943,7 +943,7 @@ void PaintRow(
  		for (const auto &tag : *tags) {
  			p.drawImage(left, context.st->tagTop, *tag);
  			left += st::dialogRowFilterTagSkip
@@ -2265,7 +2265,7 @@ index 6c6d43f1..0e224abb 100644
  		_backgroundNext = std::move(background);
  		_backgroundNight = night;
 diff --git a/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp b/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp
-index e376e726..e75d6cb7 100644
+index 413440d7..4972bae0 100644
 --- a/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp
 +++ b/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp
 @@ -972,12 +972,11 @@ ComposeControls::StarEffect::StarEffect(
@@ -2387,7 +2387,7 @@ index 1a9f03d4..7147a9ef 100644
  		if (player->frameIndex() + 1 != player->framesCount()) {
  			player->markFrameShown();
 diff --git a/Telegram/SourceFiles/history/view/history_view_reply.cpp b/Telegram/SourceFiles/history/view/history_view_reply.cpp
-index 02d79e12..e8bb78ff 100644
+index 6ddb53ad..13a72c9e 100644
 --- a/Telegram/SourceFiles/history/view/history_view_reply.cpp
 +++ b/Telegram/SourceFiles/history/view/history_view_reply.cpp
 @@ -48,12 +48,11 @@ constexpr auto kNonExpandedLinesLimit = 5;
@@ -2465,7 +2465,7 @@ index 94de0a30..7756c508 100644
  			_selectedFrame = QImage(
  				size,
 diff --git a/Telegram/SourceFiles/history/view/media/history_view_document.cpp b/Telegram/SourceFiles/history/view/media/history_view_document.cpp
-index cc8ad9f4..1c854a04 100644
+index 4d94176a..f8d639e5 100644
 --- a/Telegram/SourceFiles/history/view/media/history_view_document.cpp
 +++ b/Telegram/SourceFiles/history/view/media/history_view_document.cpp
 @@ -1023,14 +1023,14 @@ void Document::validateThumbnail(
@@ -2486,10 +2486,10 @@ index cc8ad9f4..1c854a04 100644
  		.options = (normal ? Images::Option() : Images::Option::Blur)
  			| (small ? Images::Option::RoundSmall : Images::Option()),
 diff --git a/Telegram/SourceFiles/history/view/media/history_view_gif.cpp b/Telegram/SourceFiles/history/view/media/history_view_gif.cpp
-index 00ca1fb6..218215f2 100644
+index 742e5f81..c6a03e62 100644
 --- a/Telegram/SourceFiles/history/view/media/history_view_gif.cpp
 +++ b/Telegram/SourceFiles/history/view/media/history_view_gif.cpp
-@@ -553,7 +553,7 @@ void Gif::draw(Painter &p, const PaintContext &context) const {
+@@ -555,7 +555,7 @@ void Gif::draw(Painter &p, const PaintContext &context) const {
  		}
  		auto paused = context.paused || !shouldBePlaying;
  		auto request = ::Media::Streaming::FrameRequest{
@@ -2498,7 +2498,7 @@ index 00ca1fb6..218215f2 100644
  			.blurredBackground = true,
  		};
  		if (isRound) {
-@@ -1081,8 +1081,8 @@ void Gif::validateThumbCache(
+@@ -1083,8 +1083,8 @@ void Gif::validateThumbCache(
  			&& (normal->width() < kUseNonBlurredThreshold)
  			&& (normal->height() < kUseNonBlurredThreshold))
  		: !videothumb;
@@ -2509,7 +2509,7 @@ index 00ca1fb6..218215f2 100644
  		&& _thumbCacheRounding == rounding
  		&& _thumbCacheBlurred == blurred
  		&& _thumbIsEllipse == isEllipse) {
-@@ -1141,8 +1141,8 @@ void Gif::validateSpoilerImageCache(
+@@ -1143,8 +1143,8 @@ void Gif::validateSpoilerImageCache(
  		std::optional<Ui::BubbleRounding> rounding) const {
  	Expects(_spoiler != nullptr);
  
@@ -2520,7 +2520,7 @@ index 00ca1fb6..218215f2 100644
  		&& _spoiler->backgroundRounding == rounding) {
  		return;
  	}
-@@ -1606,8 +1606,8 @@ void Gif::drawGrouped(
+@@ -1608,8 +1608,8 @@ void Gif::drawGrouped(
  			{ originalWidth, originalHeight },
  			{ geometry.width(), geometry.height() });
  		auto request = ::Media::Streaming::FrameRequest{
@@ -2531,7 +2531,7 @@ index 00ca1fb6..218215f2 100644
  			.rounding = MediaRoundingMask(rounding),
  		};
  		if (activeOwnPlaying->instance.playerLocked()) {
-@@ -1986,12 +1986,10 @@ void Gif::validateGroupedCache(
+@@ -1988,12 +1988,10 @@ void Gif::validateGroupedCache(
  	const auto pixSize = Ui::GetImageScaleSizeForGeometry(
  		{ originalWidth, originalHeight },
  		{ width, height });
@@ -2628,10 +2628,10 @@ index b46a9aa0..7df41c73 100644
  			Qt::SmoothTransformation);
  		image.setDevicePixelRatio(ratio);
 diff --git a/Telegram/SourceFiles/history/view/media/history_view_media_generic.cpp b/Telegram/SourceFiles/history/view/media/history_view_media_generic.cpp
-index 7f522d5a..b43d7174 100644
+index 11f29cf4..c789db00 100644
 --- a/Telegram/SourceFiles/history/view/media/history_view_media_generic.cpp
 +++ b/Telegram/SourceFiles/history/view/media/history_view_media_generic.cpp
-@@ -587,7 +587,7 @@ void StickerWithBadgePart::paintBadge(
+@@ -717,7 +717,7 @@ void StickerWithBadgePart::paintBadge(
  		const PaintContext &context) const {
  	validateBadge(context);
  
@@ -2640,7 +2640,7 @@ index 7f522d5a..b43d7174 100644
  	const auto left = (width() - badge.width()) / 2;
  	const auto top = st::chatGiveawayBadgeTop;
  	const auto rect = QRect(left, top, badge.width(), badge.height());
-@@ -641,14 +641,14 @@ void StickerWithBadgePart::validateBadge(
+@@ -771,14 +771,14 @@ void StickerWithBadgePart::validateBadge(
  	_badgeBorder = badgeBorder;
  	const auto iconWidth = _customLeftIcon.isNull()
  		? 0
@@ -2659,7 +2659,7 @@ index 7f522d5a..b43d7174 100644
  	_badge.fill(Qt::transparent);
  
  	auto p = QPainter(&_badge);
-@@ -670,8 +670,8 @@ void StickerWithBadgePart::validateBadge(
+@@ -800,8 +800,8 @@ void StickerWithBadgePart::validateBadge(
  		st::chatGiveawayBadgePadding.top() + font->ascent,
  		_badgeText);
  	if (!_customLeftIcon.isNull()) {
@@ -2671,10 +2671,10 @@ index 7f522d5a..b43d7174 100644
  			left,
  			half + (inner.height() - iconHeight) / 2,
 diff --git a/Telegram/SourceFiles/history/view/media/history_view_media_grouped.cpp b/Telegram/SourceFiles/history/view/media/history_view_media_grouped.cpp
-index a165cb13..5d59b11a 100644
+index 34cad037..cca82c6f 100644
 --- a/Telegram/SourceFiles/history/view/media/history_view_media_grouped.cpp
 +++ b/Telegram/SourceFiles/history/view/media/history_view_media_grouped.cpp
-@@ -325,7 +325,7 @@ Media *GroupedMedia::lookupSpoilerTagMedia() const {
+@@ -332,7 +332,7 @@ Media *GroupedMedia::lookupSpoilerTagMedia() const {
  QImage GroupedMedia::generateSpoilerTagBackground(QRect full) const {
  	const auto ratio = style::DevicePixelRatio();
  	auto result = QImage(
@@ -2825,10 +2825,10 @@ index 6d4eb7dc..a428c1ae 100644
  	auto rounded = Images::Round(
  		std::move(scaled),
 diff --git a/Telegram/SourceFiles/history/view/media/history_view_poll.cpp b/Telegram/SourceFiles/history/view/media/history_view_poll.cpp
-index 5af0bbb8..56322f76 100644
+index cc125b19..083b2878 100644
 --- a/Telegram/SourceFiles/history/view/media/history_view_poll.cpp
 +++ b/Telegram/SourceFiles/history/view/media/history_view_poll.cpp
-@@ -2385,8 +2385,8 @@ void Poll::Header::validateTopMediaCache(QSize size) const {
+@@ -2480,8 +2480,8 @@ void Poll::Header::validateTopMediaCache(QSize size) const {
  	}
  	const auto sw = source.width();
  	const auto sh = source.height();
@@ -3016,10 +3016,10 @@ index 7eb6dd05..64190159 100644
  	st->palette.linkFg = st->palette.selectLinkFg = st::mediaviewTextLinkFg;
  
 diff --git a/Telegram/SourceFiles/history/view/media/menu/history_view_poll_menu.cpp b/Telegram/SourceFiles/history/view/media/menu/history_view_poll_menu.cpp
-index 2a3774d7..a5c1f572 100644
+index 111a67d3..050aa156 100644
 --- a/Telegram/SourceFiles/history/view/media/menu/history_view_poll_menu.cpp
 +++ b/Telegram/SourceFiles/history/view/media/menu/history_view_poll_menu.cpp
-@@ -152,7 +152,7 @@ void VotersItem::paint(Painter &p) {
+@@ -162,7 +162,7 @@ void VotersItem::paint(Painter &p) {
  
  	if (!_userpics.isNull()) {
  		const auto userpicsHeight
@@ -3028,7 +3028,7 @@ index 2a3774d7..a5c1f572 100644
  		const auto x = width() - _st.itemPadding.right() - _userpicsWidth;
  		const auto y = (_height - userpicsHeight) / 2;
  		p.drawImage(x, y, _userpics);
-@@ -519,7 +519,7 @@ void ShowPollGeoPreview(
+@@ -627,7 +627,7 @@ void ShowPollGeoPreview(
  				path.addRoundedRect(outer, radius, radius);
  				p.setClipPath(path);
  				p.drawImage(outer, view->scaled(
@@ -3227,18 +3227,18 @@ index 75e6d453..b2df2962 100644
  	void clearAppearAnimations();
  
 diff --git a/Telegram/SourceFiles/history/view/reactions/history_view_reactions_list.cpp b/Telegram/SourceFiles/history/view/reactions/history_view_reactions_list.cpp
-index c48b0ed6..3a24cf29 100644
+index 73c16d55..76694ed3 100644
 --- a/Telegram/SourceFiles/history/view/reactions/history_view_reactions_list.cpp
 +++ b/Telegram/SourceFiles/history/view/reactions/history_view_reactions_list.cpp
-@@ -17,6 +17,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
- #include "ui/controls/who_reacted_context_action.h"
- #include "ui/text/text_custom_emoji.h"
+@@ -24,6 +24,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ #include "ui/widgets/menu/menu_add_action_callback_factory.h"
+ #include "ui/widgets/popup_menu.h"
  #include "ui/painter.h"
 +#include "ui/style/style_core_scale.h"
  #include "data/stickers/data_custom_emoji.h"
  #include "data/data_message_reaction_id.h"
  #include "main/main_session.h"
-@@ -159,7 +160,8 @@ Row::Row(
+@@ -189,7 +190,8 @@ bool Row::isReactionRow() const {
  }
  
  QSize Row::rightActionSize() const {
@@ -3248,7 +3248,7 @@ index c48b0ed6..3a24cf29 100644
  	return _custom ? QSize(size, size) : QSize();
  }
  
-@@ -167,7 +169,8 @@ QMargins Row::rightActionMargins() const {
+@@ -197,7 +199,8 @@ QMargins Row::rightActionMargins() const {
  	if (!_custom) {
  		return QMargins();
  	}
@@ -3258,7 +3258,7 @@ index c48b0ed6..3a24cf29 100644
  	return QMargins(
  		size / 2,
  		(st::defaultPeerList.item.height - size) / 2,
-@@ -189,7 +192,8 @@ void Row::rightActionPaint(
+@@ -219,7 +222,8 @@ void Row::rightActionPaint(
  	if (!_custom) {
  		return;
  	}
@@ -3443,7 +3443,7 @@ index 68e5de9e..a43ae0e1 100644
  	_linkBadge.fill(Qt::transparent);
  
 diff --git a/Telegram/SourceFiles/info/channel_statistics/boosts/create_giveaway_box.cpp b/Telegram/SourceFiles/info/channel_statistics/boosts/create_giveaway_box.cpp
-index df14f19b..df87fffd 100644
+index f30e4845..e02577ca 100644
 --- a/Telegram/SourceFiles/info/channel_statistics/boosts/create_giveaway_box.cpp
 +++ b/Telegram/SourceFiles/info/channel_statistics/boosts/create_giveaway_box.cpp
 @@ -595,7 +595,7 @@ void CreateGiveawayBox(
@@ -3582,10 +3582,10 @@ index 711abe46..f7743958 100644
  	result.setDevicePixelRatio(ratio);
  	result.fill(Qt::transparent);
 diff --git a/Telegram/SourceFiles/info/profile/info_profile_actions.cpp b/Telegram/SourceFiles/info/profile/info_profile_actions.cpp
-index 8cdc5c2f..00504fe6 100644
+index 2f891c34..9eab1dae 100644
 --- a/Telegram/SourceFiles/info/profile/info_profile_actions.cpp
 +++ b/Telegram/SourceFiles/info/profile/info_profile_actions.cpp
-@@ -1140,7 +1140,7 @@ rpl::producer<CreditsAmount> AddCreditsAction(
+@@ -1142,7 +1142,7 @@ rpl::producer<CreditsAmount> AddCreditsAction(
  		const auto button = wrapButton->entity();
  		const auto icon = Ui::CreateChild<Ui::RpWidget>(button);
  		const auto image = Ui::Earn::MenuIconCredits();
@@ -3663,10 +3663,10 @@ index 08fc0df4..9432dd19 100644
  
  void MemberListRow::paintColoredPill(
 diff --git a/Telegram/SourceFiles/info/profile/info_profile_top_bar.cpp b/Telegram/SourceFiles/info/profile/info_profile_top_bar.cpp
-index 26693dce..1bb4bbc9 100644
+index 8a4a2ca9..5ccd0f31 100644
 --- a/Telegram/SourceFiles/info/profile/info_profile_top_bar.cpp
 +++ b/Telegram/SourceFiles/info/profile/info_profile_top_bar.cpp
-@@ -1788,7 +1788,7 @@ void TopBar::paintUserpic(QPainter &p, const QRect &geometry) {
+@@ -1791,7 +1791,7 @@ void TopBar::paintUserpic(QPainter &p, const QRect &geometry) {
  		_waitingUserpicCloudLoad = false;
  		_userpicUniqueKey = key;
  		const auto fullSize = st::infoProfileTopBarPhotoSize;
@@ -3675,7 +3675,7 @@ index 26693dce..1bb4bbc9 100644
  		auto image = QImage();
  		if (const auto broadcast = _peer->monoforumBroadcast()) {
  			image = PeerData::GenerateUserpicImage(
-@@ -1806,7 +1806,7 @@ void TopBar::paintUserpic(QPainter &p, const QRect &geometry) {
+@@ -1809,7 +1809,7 @@ void TopBar::paintUserpic(QPainter &p, const QRect &geometry) {
  			auto q = QPainter(&image);
  			q.setCompositionMode(QPainter::CompositionMode_DestinationIn);
  			q.drawImage(
@@ -3684,7 +3684,7 @@ index 26693dce..1bb4bbc9 100644
  				_monoforumMask);
  			q.end();
  		} else {
-@@ -1866,11 +1866,9 @@ void TopBar::paintEvent(QPaintEvent *e) {
+@@ -1869,11 +1869,9 @@ void TopBar::paintEvent(QPaintEvent *e) {
  		paintEdges(p);
  	} else {
  		const auto x = (width()
@@ -3698,7 +3698,7 @@ index 26693dce..1bb4bbc9 100644
  		if (_roundEdges) {
  			if (_cachedClipPath.isEmpty()) {
  				const auto radius = st::boxRadius;
-@@ -2187,7 +2185,7 @@ void TopBar::paintAnimatedPattern(
+@@ -2190,7 +2188,7 @@ void TopBar::paintAnimatedPattern(
  		const auto scale = 0.910;
  		const auto size = st::emojiSize;
  		_basePatternImage = QImage(
@@ -3707,7 +3707,7 @@ index 26693dce..1bb4bbc9 100644
  			QImage::Format_ARGB32_Premultiplied);
  		_basePatternImage.setDevicePixelRatio(ratio);
  		_basePatternImage.fill(Qt::transparent);
-@@ -2218,8 +2216,8 @@ void TopBar::paintAnimatedPattern(
+@@ -2221,8 +2219,8 @@ void TopBar::paintAnimatedPattern(
  
  	const auto userpicCenter = rect::center(userpicGeometry);
  	const auto yOffset = 12 * (1. - progress);
@@ -3718,7 +3718,7 @@ index 26693dce..1bb4bbc9 100644
  	const auto halfImageWidth = imageSize.width() * 0.5;
  	const auto halfImageHeight = imageSize.height() * 0.5;
  
-@@ -2424,8 +2422,7 @@ void TopBar::setupNewGifts(
+@@ -2427,8 +2425,7 @@ void TopBar::setupNewGifts(
  					_lottiePlayer.get(),
  					entry.media.get(),
  					StickerLottieSize::PinnedProfileUniqueGiftSize,
@@ -3729,10 +3729,10 @@ index 26693dce..1bb4bbc9 100644
  				allLoaded = false;
  			}
 diff --git a/Telegram/SourceFiles/info/statistics/info_statistics_list_controllers.cpp b/Telegram/SourceFiles/info/statistics/info_statistics_list_controllers.cpp
-index b63a7b49..f79d7812 100644
+index c3795359..118819e9 100644
 --- a/Telegram/SourceFiles/info/statistics/info_statistics_list_controllers.cpp
 +++ b/Telegram/SourceFiles/info/statistics/info_statistics_list_controllers.cpp
-@@ -610,7 +610,7 @@ void BoostRow::invalidateBadges() {
+@@ -622,7 +622,7 @@ void BoostRow::invalidateBadges() {
  
  
  QSize BoostRow::rightActionSize() const {
@@ -3741,7 +3741,7 @@ index b63a7b49..f79d7812 100644
  }
  
  QMargins BoostRow::rightActionMargins() const {
-@@ -646,7 +646,7 @@ int BoostRow::paintNameIconGetWidth(
+@@ -658,7 +658,7 @@ int BoostRow::paintNameIconGetWidth(
  	if (_badge.isNull()) {
  		return 0;
  	}
@@ -3750,7 +3750,7 @@ index b63a7b49..f79d7812 100644
  	const auto nameTooLarge = (nameWidth > availableWidth);
  	const auto &padding = st::boostsListBadgePadding;
  	const auto left = nameTooLarge
-@@ -1143,8 +1143,8 @@ void CreditsRow::paintStatusText(
+@@ -1156,8 +1156,8 @@ void CreditsRow::paintStatusText(
  	PeerListRow::paintStatusText(p, st, x, y, available, outer, selected);
  	p.setPen(st.nameFg);
  	if (!_descriptionThumbnailCache.isNull()) {
@@ -3810,10 +3810,10 @@ index 40f19bd7..1a39398e 100644
  		image.setDevicePixelRatio(style::DevicePixelRatio());
  		image.fill(Qt::transparent);
 diff --git a/Telegram/SourceFiles/inline_bots/inline_bot_layout_internal.cpp b/Telegram/SourceFiles/inline_bots/inline_bot_layout_internal.cpp
-index 4fe5a064..6ad9389c 100644
+index 04b48211..796dcdbd 100644
 --- a/Telegram/SourceFiles/inline_bots/inline_bot_layout_internal.cpp
 +++ b/Telegram/SourceFiles/inline_bots/inline_bot_layout_internal.cpp
-@@ -160,7 +160,7 @@ QRect Gif::innerContentRect() const {
+@@ -165,7 +165,7 @@ QRect Gif::innerContentRect() const {
  	ensureDataMediaCreated(getShownDocument());
  
  	const auto size = (!_thumb.isNull())
@@ -3822,7 +3822,7 @@ index 4fe5a064..6ad9389c 100644
  		: countFrameSize();
  	return QRect(QPoint(), size);
  }
-@@ -345,13 +345,13 @@ void Gif::validateThumbnail(
+@@ -350,13 +350,13 @@ void Gif::validateThumbnail(
  		bool good) const {
  	if (!image || (_thumbGood && !good)) {
  		return;
@@ -3838,7 +3838,7 @@ index 4fe5a064..6ad9389c 100644
  		{
  			.options = (Images::Option::TransparentBackground
  				| (good ? Images::Option() : Images::Option::Blur)),
-@@ -495,9 +495,9 @@ QRect Sticker::innerContentRect() const {
+@@ -501,9 +501,9 @@ QRect Sticker::innerContentRect() const {
  	ensureDataMediaCreated(getShownDocument());
  
  	const auto size = (_lottie && _lottie->ready())
@@ -3850,7 +3850,7 @@ index 4fe5a064..6ad9389c 100644
  		: getThumbSize();
  	const auto pos = QPoint(
  		(st::stickerPanSize.width() - size.width()) / 2,
-@@ -518,7 +518,7 @@ void Sticker::paint(Painter &p, const QRect &clip, const PaintContext *context)
+@@ -524,7 +524,7 @@ void Sticker::paint(Painter &p, const QRect &clip, const PaintContext *context)
  	prepareThumbnail();
  	if (_lottie && _lottie->ready()) {
  		const auto frame = _lottie->frame();
@@ -3859,7 +3859,7 @@ index 4fe5a064..6ad9389c 100644
  		const auto pos = QPoint(
  			(st::stickerPanSize.width() - size.width()) / 2,
  			(st::stickerPanSize.height() - size.height()) / 2);
-@@ -539,8 +539,8 @@ void Sticker::paint(Painter &p, const QRect &clip, const PaintContext *context)
+@@ -545,8 +545,8 @@ void Sticker::paint(Painter &p, const QRect &clip, const PaintContext *context)
  			(st::stickerPanSize.height() - size.width()) / 2,
  			frame);
  	} else if (!_thumb.isNull()) {
@@ -3870,7 +3870,7 @@ index 4fe5a064..6ad9389c 100644
  		const auto pos = QPoint(
  			(st::stickerPanSize.width() - w) / 2,
  			(st::stickerPanSize.height() - h) / 2);
-@@ -601,7 +601,7 @@ void Sticker::setupLottie() const {
+@@ -607,7 +607,7 @@ void Sticker::setupLottie() const {
  	_lottie = ChatHelpers::LottiePlayerFromDocument(
  		_dataMedia.get(),
  		ChatHelpers::StickerLottieSize::InlineResults,
@@ -3879,7 +3879,7 @@ index 4fe5a064..6ad9389c 100644
  
  	_lottie->updates(
  	) | rpl::on_next([=] {
-@@ -769,13 +769,13 @@ void Photo::validateThumbnail(
+@@ -775,13 +775,13 @@ void Photo::validateThumbnail(
  		bool good) const {
  	if (!image || (_thumbGood && !good)) {
  		return;
@@ -3895,7 +3895,7 @@ index 4fe5a064..6ad9389c 100644
  		{
  			.options = (Images::Option::TransparentBackground
  				| (good ? Images::Option() : Images::Option::Blur)),
-@@ -926,7 +926,7 @@ void Video::prepareThumbnail(QSize size) const {
+@@ -932,7 +932,7 @@ void Video::prepareThumbnail(QSize size) const {
  	if (!thumb) {
  		return;
  	}
@@ -3904,7 +3904,7 @@ index 4fe5a064..6ad9389c 100644
  		const auto width = size.width();
  		const auto height = size.height();
  		auto w = qMax(style::ConvertScale(thumb->width()), 1);
-@@ -943,7 +943,7 @@ void Video::prepareThumbnail(QSize size) const {
+@@ -949,7 +949,7 @@ void Video::prepareThumbnail(QSize size) const {
  			}
  		}
  		_thumb = thumb->pixNoCache(
@@ -3913,7 +3913,7 @@ index 4fe5a064..6ad9389c 100644
  			{
  				.options = Images::Option::TransparentBackground,
  				.outer = size,
-@@ -1258,8 +1258,8 @@ TextState Contact::getState(
+@@ -1264,8 +1264,8 @@ TextState Contact::getState(
  
  void Contact::prepareThumbnail(int width, int height) const {
  	if (!hasResultThumb()) {
@@ -3924,7 +3924,7 @@ index 4fe5a064..6ad9389c 100644
  			_thumb = getResultContactAvatar(width, height);
  		}
  		return;
-@@ -1268,8 +1268,8 @@ void Contact::prepareThumbnail(int width, int height) const {
+@@ -1274,8 +1274,8 @@ void Contact::prepareThumbnail(int width, int height) const {
  	const auto origin = fileOrigin();
  	const auto thumb = getResultThumb(origin);
  	if (!thumb
@@ -3935,7 +3935,7 @@ index 4fe5a064..6ad9389c 100644
  		return;
  	}
  	const auto scaled = ScaleDown(
-@@ -1278,7 +1278,7 @@ void Contact::prepareThumbnail(int width, int height) const {
+@@ -1284,7 +1284,7 @@ void Contact::prepareThumbnail(int width, int height) const {
  		width,
  		height);
  	_thumb = Image(base::duplicate(*thumb)).pixNoCache(
@@ -3944,7 +3944,7 @@ index 4fe5a064..6ad9389c 100644
  		{
  			.options = Images::Option::TransparentBackground,
  			.outer = { width, height },
-@@ -1339,12 +1339,12 @@ void Thumbnail::validateThumbnail(
+@@ -1345,12 +1345,12 @@ void Thumbnail::validateThumbnail(
  		bool good) const {
  	if (!image || (_thumbGood && !good)) {
  		return;
@@ -3959,7 +3959,7 @@ index 4fe5a064..6ad9389c 100644
  		{
  			.options = (Images::Option::TransparentBackground
  				| (good ? Images::Option() : Images::Option::Blur)),
-@@ -1398,7 +1398,7 @@ void Thumbnail::prepareThumbnail(QSize size, QSize frame) const {
+@@ -1404,7 +1404,7 @@ void Thumbnail::prepareThumbnail(QSize size, QSize frame) const {
  				frame.width(),
  				frame.height());
  			_thumb = Image(base::duplicate(*thumb)).pixNoCache(
@@ -3968,7 +3968,7 @@ index 4fe5a064..6ad9389c 100644
  				{
  					.options = Images::Option::TransparentBackground,
  					.outer = size,
-@@ -1566,8 +1566,8 @@ void Article::prepareThumbnail(int width, int height) const {
+@@ -1572,8 +1572,8 @@ void Article::prepareThumbnail(int width, int height) const {
  		if (!_thumb.isNull()) {
  			return;
  		}
@@ -3979,7 +3979,7 @@ index 4fe5a064..6ad9389c 100644
  			_thumb = getResultContactAvatar(width, height);
  		}
  		return;
-@@ -1576,8 +1576,8 @@ void Article::prepareThumbnail(int width, int height) const {
+@@ -1582,8 +1582,8 @@ void Article::prepareThumbnail(int width, int height) const {
  	const auto origin = fileOrigin();
  	const auto thumb = getResultThumb(origin);
  	if (!thumb
@@ -3990,7 +3990,7 @@ index 4fe5a064..6ad9389c 100644
  		return;
  	}
  	const auto scaled = ScaleDown(
-@@ -1586,7 +1586,7 @@ void Article::prepareThumbnail(int width, int height) const {
+@@ -1592,7 +1592,7 @@ void Article::prepareThumbnail(int width, int height) const {
  		width,
  		height);
  	_thumb = Image(base::duplicate(*thumb)).pixNoCache(
@@ -3999,7 +3999,7 @@ index 4fe5a064..6ad9389c 100644
  		{
  			.options = Images::Option::TransparentBackground,
  			.outer = { width, height },
-@@ -1608,7 +1608,7 @@ void Article::prepareMediaThumbnail(int width, int height) const {
+@@ -1614,7 +1614,7 @@ void Article::prepareMediaThumbnail(int width, int height) const {
  			width,
  			height);
  		_thumb = image->pixNoCache(
@@ -4008,7 +4008,7 @@ index 4fe5a064..6ad9389c 100644
  			{
  				.options = (Images::Option::TransparentBackground
  					| (good
-@@ -1839,7 +1839,7 @@ void Game::ensureDataMediaCreated(not_null<PhotoData*> photo) const {
+@@ -1845,7 +1845,7 @@ void Game::ensureDataMediaCreated(not_null<PhotoData*> photo) const {
  void Game::validateThumbnail(Image *image, QSize size, bool good) const {
  	if (!image || (_thumbGood && !good)) {
  		return;
@@ -4017,7 +4017,7 @@ index 4fe5a064..6ad9389c 100644
  		&& (_thumbGood || !good)) {
  		return;
  	}
-@@ -1862,7 +1862,7 @@ void Game::validateThumbnail(Image *image, QSize size, bool good) const {
+@@ -1868,7 +1868,7 @@ void Game::validateThumbnail(Image *image, QSize size, bool good) const {
  	}
  	_thumbGood = good;
  	_thumb = image->pixNoCache(
@@ -4148,7 +4148,7 @@ index 3f4d8936..0256901e 100644
  
  	auto left = 0;
 diff --git a/Telegram/SourceFiles/mainwindow.cpp b/Telegram/SourceFiles/mainwindow.cpp
-index 0bfe98a1..ede42d87 100644
+index cc30dc04..a1cf4e6f 100644
 --- a/Telegram/SourceFiles/mainwindow.cpp
 +++ b/Telegram/SourceFiles/mainwindow.cpp
 @@ -48,7 +48,12 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
@@ -4438,10 +4438,10 @@ index 37fb107e..c4dd5c41 100644
  	const auto bounding = layout.nameBoundingRect;
  	const auto left = layout.geometry.x()
 diff --git a/Telegram/SourceFiles/media/streaming/media_streaming_utility.cpp b/Telegram/SourceFiles/media/streaming/media_streaming_utility.cpp
-index 68ccc553..e6370fff 100644
+index 3f6d312d..b408ae54 100644
 --- a/Telegram/SourceFiles/media/streaming/media_streaming_utility.cpp
 +++ b/Telegram/SourceFiles/media/streaming/media_streaming_utility.cpp
-@@ -312,10 +312,9 @@ QImage PrepareBlurredBackground(QSize outer, QImage frame) {
+@@ -315,10 +315,9 @@ QImage PrepareBlurredBackground(QSize outer, QImage frame) {
  void FillBlurredBackground(QPainter &p, QSize outer, QImage bg) {
  	auto hq = PainterHighQualityEnabler(p);
  	const auto rect = QRect(QPoint(), outer);
@@ -4482,10 +4482,10 @@ index 1335fdfb..0dcadbd9 100644
  			(_full.width() - takeWidth) / 2,
  			0,
 diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_opengl.cpp b/Telegram/SourceFiles/media/view/media_view_overlay_opengl.cpp
-index 0c796a88..1b6d4647 100644
+index 0607fead..24329203 100644
 --- a/Telegram/SourceFiles/media/view/media_view_overlay_opengl.cpp
 +++ b/Telegram/SourceFiles/media/view/media_view_overlay_opengl.cpp
-@@ -308,7 +308,6 @@ void OverlayWidget::RendererGL::paint(
+@@ -318,7 +318,6 @@ void OverlayWidget::RendererGL::paint(
  	const auto factor = widget->devicePixelRatioF();
  	if (_factor != factor) {
  		_factor = factor;
@@ -4493,7 +4493,7 @@ index 0c796a88..1b6d4647 100644
  		_controlsImage.invalidate();
  
  		// We use the fact that fade texture atlas
-@@ -864,19 +863,19 @@ void OverlayWidget::RendererGL::validateControls() {
+@@ -874,19 +873,19 @@ void OverlayWidget::RendererGL::validateControls() {
  	maxWidth = std::max(st::mediaviewIconOver, maxWidth);
  	fullHeight += st::mediaviewIconOver;
  	auto image = QImage(
@@ -4518,7 +4518,7 @@ index 0c796a88..1b6d4647 100644
  			height += meta.icon->height();
  		}
  		auto hq = PainterHighQualityEnabler(p);
-@@ -884,9 +883,9 @@ void OverlayWidget::RendererGL::validateControls() {
+@@ -894,9 +893,9 @@ void OverlayWidget::RendererGL::validateControls() {
  		p.setBrush(OverBackgroundColor());
  		p.drawEllipse(
  			QRect(0, height, st::mediaviewIconOver, st::mediaviewIconOver));
@@ -4531,7 +4531,7 @@ index 0c796a88..1b6d4647 100644
  		height += st::mediaviewIconOver;
  	}
  	_controlsImage.setImage(std::move(image));
-@@ -918,10 +917,10 @@ void OverlayWidget::RendererGL::validateControlsFade() {
+@@ -928,10 +927,10 @@ void OverlayWidget::RendererGL::validateControlsFade() {
  	const auto height = bottomTop + bottom.height();
  
  	auto image = QImage(
@@ -4544,7 +4544,7 @@ index 0c796a88..1b6d4647 100644
  
  	auto p = QPainter(&image);
  	top.paint(p, 0, 0, width);
-@@ -1110,18 +1109,18 @@ void OverlayWidget::RendererGL::paintUsingRaster(
+@@ -1120,18 +1119,18 @@ void OverlayWidget::RendererGL::paintUsingRaster(
  		int bufferOffset,
  		bool transparent) {
  	auto raster = image.takeImage();
@@ -4567,7 +4567,7 @@ index 0c796a88..1b6d4647 100644
  	}
  
  	if (transparent) {
-@@ -1176,15 +1175,15 @@ void OverlayWidget::RendererGL::toggleBlending(bool enabled) {
+@@ -1186,15 +1185,15 @@ void OverlayWidget::RendererGL::toggleBlending(bool enabled) {
  }
  
  Rect OverlayWidget::RendererGL::transformRect(const Rect &raster) const {
@@ -4586,7 +4586,7 @@ index 0c796a88..1b6d4647 100644
  }
  
  Rect OverlayWidget::RendererGL::scaleRect(
-@@ -1237,11 +1236,11 @@ void OverlayWidget::RendererGL::paintRecognitionOverlay(
+@@ -1247,11 +1246,11 @@ void OverlayWidget::RendererGL::paintRecognitionOverlay(
  	for (const auto &item : _owner->_recognitionResult.items) {
  		const auto &r = item.rect;
  		const auto lightRect = QRectF(
@@ -4603,7 +4603,7 @@ index 0c796a88..1b6d4647 100644
  		const auto tr = rotated(lightRect.right(), lightRect.top());
  		const auto br = rotated(lightRect.right(), lightRect.bottom());
 diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_opengl.h b/Telegram/SourceFiles/media/view/media_view_overlay_opengl.h
-index 4f4f5832..941a9149 100644
+index 680e4448..67e56946 100644
 --- a/Telegram/SourceFiles/media/view/media_view_overlay_opengl.h
 +++ b/Telegram/SourceFiles/media/view/media_view_overlay_opengl.h
 @@ -119,7 +119,6 @@ private:
@@ -4643,10 +4643,10 @@ index 96191417..97e3c2cf 100644
  	_overControlImage.setDevicePixelRatio(style::DevicePixelRatio());
  	_overControlImage.fill(Qt::transparent);
 diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
-index 83b2430c..c47fc0e3 100644
+index cbe784bd..fdba1415 100644
 --- a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
 +++ b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
-@@ -624,7 +624,7 @@ OverlayWidget::OverlayWidget()
+@@ -625,7 +625,7 @@ OverlayWidget::OverlayWidget()
  	});
  
  	_docRectImage = QImage(
@@ -4655,7 +4655,7 @@ index 83b2430c..c47fc0e3 100644
  		QImage::Format_ARGB32_Premultiplied);
  	_docRectImage.setDevicePixelRatio(style::DevicePixelRatio());
  
-@@ -4706,7 +4706,7 @@ void OverlayWidget::initStreamingThumbnail() {
+@@ -4718,7 +4718,7 @@ void OverlayWidget::initStreamingThumbnail() {
  			size,
  			{
  				.options = good ? goodOptions : options,
@@ -4664,7 +4664,7 @@ index 83b2430c..c47fc0e3 100644
  			}
  		).toImage());
  }
-@@ -5601,8 +5601,8 @@ void OverlayWidget::validatePhotoImage(Image *image, bool blurred) {
+@@ -5609,8 +5609,8 @@ void OverlayWidget::validatePhotoImage(Image *image, bool blurred) {
  	} else if (!_staticContent.isNull() && (blurred || !_blurred)) {
  		return;
  	}
@@ -4675,7 +4675,7 @@ index 83b2430c..c47fc0e3 100644
  	setStaticContent(image->pixNoCache(
  		use,
  		{ .options = (blurred ? Images::Option::Blur : Images::Option()) }
-@@ -5761,14 +5761,14 @@ void OverlayWidget::paint(not_null<Renderer*> renderer) {
+@@ -5769,14 +5769,14 @@ void OverlayWidget::paint(not_null<Renderer*> renderer) {
  					false, // fill transparent background
  					index);
  				const auto base = (index - 1) * 2;
@@ -4694,7 +4694,7 @@ index 83b2430c..c47fc0e3 100644
  				renderer->paintStoriesSiblingPart(
  					base + 1,
  					view.name,
-@@ -7252,8 +7252,7 @@ const -> std::optional<Platform::TextRecognition::RectWithText> {
+@@ -7260,8 +7260,7 @@ const -> std::optional<Platform::TextRecognition::RectWithText> {
  		contentRect = transform.mapRect(contentRect);
  		position = transform.map(position);
  	}
@@ -4705,10 +4705,10 @@ index 83b2430c..c47fc0e3 100644
  		return std::nullopt;
  	}
 diff --git a/Telegram/SourceFiles/media/view/media_view_pip_opengl.cpp b/Telegram/SourceFiles/media/view/media_view_pip_opengl.cpp
-index e50f832c..e8d6f525 100644
+index db811f91..3583aa7e 100644
 --- a/Telegram/SourceFiles/media/view/media_view_pip_opengl.cpp
 +++ b/Telegram/SourceFiles/media/view/media_view_pip_opengl.cpp
-@@ -252,7 +252,7 @@ void Pip::RendererGL::createShadowTexture() {
+@@ -259,7 +259,7 @@ void Pip::RendererGL::createShadowTexture() {
  	const auto size = 2 * PipShadow().topLeft.size()
  		+ QSize(st::roundRadiusLarge, st::roundRadiusLarge);
  	auto image = QImage(
@@ -4717,7 +4717,7 @@ index e50f832c..e8d6f525 100644
  		QImage::Format_ARGB32_Premultiplied);
  	image.setDevicePixelRatio(style::DevicePixelRatio());
  	image.fill(Qt::transparent);
-@@ -273,7 +273,6 @@ void Pip::RendererGL::paint(
+@@ -280,7 +280,6 @@ void Pip::RendererGL::paint(
  	const auto factor = widget->devicePixelRatioF();
  	if (_factor != factor) {
  		_factor = factor;
@@ -4725,7 +4725,7 @@ index e50f832c..e8d6f525 100644
  		_controlsImage.invalidate();
  	}
  	_blendingEnabled = false;
-@@ -671,10 +670,10 @@ void Pip::RendererGL::validateControls() {
+@@ -678,10 +677,10 @@ void Pip::RendererGL::validateControls() {
  		fullHeight += 2 * meta.icon->height();
  	}
  	auto image = QImage(
@@ -4738,7 +4738,7 @@ index e50f832c..e8d6f525 100644
  	{
  		auto p = QPainter(&image);
  		auto index = 0;
-@@ -682,8 +681,8 @@ void Pip::RendererGL::validateControls() {
+@@ -689,8 +688,8 @@ void Pip::RendererGL::validateControls() {
  		const auto paint = [&](not_null<const style::icon*> icon) {
  			icon->paint(p, 0, height, maxWidth);
  			_controlsTextures[index++] = QRect(
@@ -4749,7 +4749,7 @@ index e50f832c..e8d6f525 100644
  			height += icon->height();
  		};
  		for (const auto &meta : metas) {
-@@ -706,7 +705,7 @@ void Pip::RendererGL::paintUsingRaster(
+@@ -713,7 +712,7 @@ void Pip::RendererGL::paintUsingRaster(
  		int bufferOffset,
  		bool transparent) {
  	auto raster = image.takeImage();
@@ -4758,7 +4758,7 @@ index e50f832c..e8d6f525 100644
  	if (raster.width() < size.width() || raster.height() < size.height()) {
  		raster = QImage(size, QImage::Format_ARGB32_Premultiplied);
  		raster.setDevicePixelRatio(_factor);
-@@ -715,8 +714,8 @@ void Pip::RendererGL::paintUsingRaster(
+@@ -722,8 +721,8 @@ void Pip::RendererGL::paintUsingRaster(
  				|| raster.height() > size.height())) {
  			raster.fill(Qt::transparent);
  		}
@@ -4769,7 +4769,7 @@ index e50f832c..e8d6f525 100644
  	}
  
  	if (transparent) {
-@@ -798,15 +797,15 @@ QRect Pip::RendererGL::RoundingRect(ContentGeometry geometry) {
+@@ -805,15 +804,15 @@ QRect Pip::RendererGL::RoundingRect(ContentGeometry geometry) {
  }
  
  Rect Pip::RendererGL::transformRect(const Rect &raster) const {
@@ -4789,7 +4789,7 @@ index e50f832c..e8d6f525 100644
  
  } // namespace Media::View
 diff --git a/Telegram/SourceFiles/media/view/media_view_pip_opengl.h b/Telegram/SourceFiles/media/view/media_view_pip_opengl.h
-index 00b29639..f20d2897 100644
+index 351cfb9e..23558d5f 100644
 --- a/Telegram/SourceFiles/media/view/media_view_pip_opengl.h
 +++ b/Telegram/SourceFiles/media/view/media_view_pip_opengl.h
 @@ -89,7 +89,6 @@ private:
@@ -4823,7 +4823,7 @@ index e164b449..10129b72 100644
  
  	return _preparedStaticContent;
 diff --git a/Telegram/SourceFiles/overview/overview_layout.cpp b/Telegram/SourceFiles/overview/overview_layout.cpp
-index d46518dc..04d6c197 100644
+index 79f66b24..a7a82a88 100644
 --- a/Telegram/SourceFiles/overview/overview_layout.cpp
 +++ b/Telegram/SourceFiles/overview/overview_layout.cpp
 @@ -7,6 +7,8 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
@@ -4835,7 +4835,7 @@ index d46518dc..04d6c197 100644
  #include "overview/overview_checkbox.h"
  #include "overview/overview_layout_delegate.h"
  #include "core/ui_integration.h" // TextContext
-@@ -72,29 +74,29 @@ constexpr auto kStoryRatio = 1.46;
+@@ -74,29 +76,29 @@ using ::Media::ValidFrameSize;
  
  [[nodiscard]] QImage CropMediaFrame(QImage image, int width, int height) {
  	const auto ratio = style::DevicePixelRatio();
@@ -4874,7 +4874,7 @@ index d46518dc..04d6c197 100644
  		const auto skip = (image.height() - use) / 2;
  		return finalize(image.copy(0, skip, image.width(), use));
  	}
-@@ -347,8 +349,7 @@ int32 Photo::resizeGetHeight(int32 width) {
+@@ -349,8 +351,7 @@ int32 Photo::resizeGetHeight(int32 width) {
  
  void Photo::paint(Painter &p, const QRect &clip, TextSelection selection, const PaintContext *context) {
  	const auto selected = (selection == FullSelection);
@@ -4884,7 +4884,7 @@ index d46518dc..04d6c197 100644
  	if (!_goodLoaded || widthChanged) {
  		ensureDataMediaCreated();
  		const auto good = !_spoiler
-@@ -573,7 +574,7 @@ void Video::paint(
+@@ -575,7 +576,7 @@ void Video::paint(
  	const auto radialOpacity = radial ? _radial->opacity() : 0.;
  
  	if ((blurred || thumbnail || good)
@@ -4893,7 +4893,7 @@ index d46518dc..04d6c197 100644
  			|| (_pixBlurred && (thumbnail || good)))) {
  		auto img = good
  			? good->original()
-@@ -1326,7 +1327,7 @@ void Document::paint(Painter &p, const QRect &clip, TextSelection selection, con
+@@ -1328,7 +1329,7 @@ void Document::paint(Painter &p, const QRect &clip, TextSelection selection, con
  								: Images::Option::Blur);
  						const auto image = thumbnail ? thumbnail : blurred;
  						_thumb = image->pixNoCache(
@@ -4902,7 +4902,7 @@ index d46518dc..04d6c197 100644
  							{
  								.options = options,
  								.outer = QSize(
-@@ -1981,8 +1982,9 @@ void Link::validateThumbnail() {
+@@ -1983,8 +1984,9 @@ void Link::validateThumbnail() {
  		_documentMedia = nullptr;
  		delegate()->unregisterHeavyItem(this);
  	} else {
@@ -4914,7 +4914,7 @@ index d46518dc..04d6c197 100644
  		_thumbnail.fill(Qt::transparent);
  		auto p = Painter(&_thumbnail);
  		const auto index = _letter.isEmpty()
-@@ -2227,13 +2229,13 @@ void Gif::validateThumbnail(
+@@ -2230,13 +2232,13 @@ void Gif::validateThumbnail(
  		bool good) {
  	if (!image || (_thumbGood && !good)) {
  		return;
@@ -4931,10 +4931,10 @@ index d46518dc..04d6c197 100644
  			.options = (good ? Images::Option() : Images::Option::Blur),
  			.outer = size,
 diff --git a/Telegram/SourceFiles/payments/ui/payments_reaction_box.cpp b/Telegram/SourceFiles/payments/ui/payments_reaction_box.cpp
-index 3c3b5358..60cc0d75 100644
+index 4288e55e..90d3fd2d 100644
 --- a/Telegram/SourceFiles/payments/ui/payments_reaction_box.cpp
 +++ b/Telegram/SourceFiles/payments/ui/payments_reaction_box.cpp
-@@ -700,7 +700,7 @@ QImage GenerateSmallBadgeImage(
+@@ -697,7 +697,7 @@ QImage GenerateSmallBadgeImage(
  	const auto add = borderSt ? borderSt->width : 0;
  	const auto ratio = style::DevicePixelRatio();
  	auto result = QImage(
@@ -5039,7 +5039,7 @@ index 81242142..e1b860ce 100644
  	{
  		Painter p(&sampleImage);
 diff --git a/Telegram/SourceFiles/settings/settings_credits_graphics.cpp b/Telegram/SourceFiles/settings/settings_credits_graphics.cpp
-index 9ac4584e..edc9c6aa 100644
+index b24a5bb1..22b15ca8 100644
 --- a/Telegram/SourceFiles/settings/settings_credits_graphics.cpp
 +++ b/Telegram/SourceFiles/settings/settings_credits_graphics.cpp
 @@ -626,7 +626,7 @@ void FillCreditOptions(
@@ -5096,10 +5096,10 @@ index 2e183607..3801d387 100644
  		Qt::SmoothTransformation);
  	logo.setDevicePixelRatio(ratio);
 diff --git a/Telegram/SourceFiles/ui/boxes/choose_font_box.cpp b/Telegram/SourceFiles/ui/boxes/choose_font_box.cpp
-index aa750570..7225b0e8 100644
+index c298caea..937ae50a 100644
 --- a/Telegram/SourceFiles/ui/boxes/choose_font_box.cpp
 +++ b/Telegram/SourceFiles/ui/boxes/choose_font_box.cpp
-@@ -307,7 +307,7 @@ void Selector::validateCache(Entry &row) {
+@@ -305,7 +305,7 @@ void Selector::validateCache(Entry &row) {
  	if (row.cache.isNull()) {
  		const auto ratio = style::DevicePixelRatio();
  		row.cache = QImage(
@@ -5108,7 +5108,7 @@ index aa750570..7225b0e8 100644
  			QImage::Format_ARGB32_Premultiplied);
  		row.cache.setDevicePixelRatio(ratio);
  	} else if (row.paletteVersion == version) {
-@@ -596,11 +596,10 @@ PreviewPainter::PreviewPainter(const QImage &bg, PreviewRequest request)
+@@ -594,11 +594,10 @@ PreviewPainter::PreviewPainter(const QImage &bg, PreviewRequest request)
  
  	layout();
  
@@ -5708,19 +5708,19 @@ index 2d2c8b9f..7b675951 100644
  	result = QImage(full, QImage::Format_ARGB32_Premultiplied);
  	result.setDevicePixelRatio(ratio);
 diff --git a/Telegram/SourceFiles/ui/controls/labeled_emoji_tabs.cpp b/Telegram/SourceFiles/ui/controls/labeled_emoji_tabs.cpp
-index d60e5a77..f0c03a54 100644
+index 6449491d..32b1ec89 100644
 --- a/Telegram/SourceFiles/ui/controls/labeled_emoji_tabs.cpp
 +++ b/Telegram/SourceFiles/ui/controls/labeled_emoji_tabs.cpp
-@@ -111,7 +111,7 @@ LabeledEmojiTabs::Button::Button(
+@@ -116,7 +116,7 @@ LabeledEmojiTabs::Button::Button(
  		const auto labelWidth = st::aiComposeStyleLabelFont->width(
  			_descriptor.label);
- 		const auto emojiWidth = (_custom || _descriptor.emoji)
+ 		const auto emojiWidth = (_custom || _descriptor.emoji || _descriptor.icon)
 -			? (Emoji::GetSizeLarge() / style::DevicePixelRatio())
-+			? qRound(Emoji::GetSizeLarge() / style::DevicePixelRatio())
++			? style::LogicalPixels(Emoji::GetSizeLarge())
  			: 0;
  		return padding.left()
  			+ std::max(labelWidth, emojiWidth)
-@@ -157,7 +157,7 @@ void LabeledEmojiTabs::Button::paintEvent(QPaintEvent *e) {
+@@ -162,7 +162,7 @@ void LabeledEmojiTabs::Button::paintEvent(QPaintEvent *e) {
  	paintRipple(p, 0, 0, &ripple);
  
  	if (_custom) {
@@ -5730,10 +5730,10 @@ index d60e5a77..f0c03a54 100644
  		const auto skip = (size - adjusted) / 2;
  		const auto left = (width() - size) / 2;
 diff --git a/Telegram/SourceFiles/ui/controls/location_picker.cpp b/Telegram/SourceFiles/ui/controls/location_picker.cpp
-index dd9c2033..10edb585 100644
+index 7726ebe6..51d5a0ed 100644
 --- a/Telegram/SourceFiles/ui/controls/location_picker.cpp
 +++ b/Telegram/SourceFiles/ui/controls/location_picker.cpp
-@@ -290,7 +290,7 @@ void VenuesController::rowPaintIcon(
+@@ -295,7 +295,7 @@ void VenuesController::rowPaintIcon(
  			data.icon = Images::Read({ .content = bytes }).image;
  			if (!data.icon.isNull()) {
  				data.icon = data.icon.scaled(
@@ -5742,7 +5742,7 @@ index dd9c2033..10edb585 100644
  					Qt::IgnoreAspectRatio,
  					Qt::SmoothTransformation);
  				if (!data.icon.isNull()) {
-@@ -300,7 +300,7 @@ void VenuesController::rowPaintIcon(
+@@ -305,7 +305,7 @@ void VenuesController::rowPaintIcon(
  			}
  		}
  
@@ -5939,10 +5939,10 @@ index b114c15c..dc5a2a39 100644
  						Qt::SmoothTransformation);
  					image = useForumShape()
 diff --git a/Telegram/SourceFiles/ui/controls/who_reacted_context_action.cpp b/Telegram/SourceFiles/ui/controls/who_reacted_context_action.cpp
-index c0aa82fd..9a9ac760 100644
+index f1a2e0d9..46aa6c90 100644
 --- a/Telegram/SourceFiles/ui/controls/who_reacted_context_action.cpp
 +++ b/Telegram/SourceFiles/ui/controls/who_reacted_context_action.cpp
-@@ -802,7 +802,10 @@ void WhoReactedEntryAction::setData(Data &&data) {
+@@ -1072,7 +1072,10 @@ void WhoReactedEntryAction::setData(Data &&data) {
  	const auto goodWidth = st::defaultWhoRead.nameLeft
  		+ textWidth
  		+ rightSkip;
@@ -5953,12 +5953,12 @@ index c0aa82fd..9a9ac760 100644
 +		_st.widthMax);
  	_textWidth = w - (goodWidth - textWidth);
  	setMinWidth(w);
- 	update();
+ 	refreshCloseGeometry();
 diff --git a/Telegram/SourceFiles/ui/dynamic_thumbnails.cpp b/Telegram/SourceFiles/ui/dynamic_thumbnails.cpp
-index b8c6af32..e0064695 100644
+index 8530f8c9..2fae6056 100644
 --- a/Telegram/SourceFiles/ui/dynamic_thumbnails.cpp
 +++ b/Telegram/SourceFiles/ui/dynamic_thumbnails.cpp
-@@ -309,7 +309,8 @@ std::shared_ptr<DynamicImage> PeerUserpic::clone() {
+@@ -315,7 +315,8 @@ std::shared_ptr<DynamicImage> PeerUserpic::clone() {
  QImage PeerUserpic::image(int size) {
  	Expects(_subscribed != nullptr);
  
@@ -5968,7 +5968,7 @@ index b8c6af32..e0064695 100644
  	const auto key = _peer->userpicUniqueKey(_subscribed->view);
  	const auto paletteVersion = style::PaletteVersion();
  	if (!good
-@@ -322,7 +323,7 @@ QImage PeerUserpic::image(int size) {
+@@ -328,7 +329,7 @@ QImage PeerUserpic::image(int size) {
  		const auto ratio = style::DevicePixelRatio();
  		if (!good) {
  			_frame = QImage(
@@ -5977,21 +5977,18 @@ index b8c6af32..e0064695 100644
  				QImage::Format_ARGB32_Premultiplied);
  			_frame.setDevicePixelRatio(ratio);
  		}
-@@ -392,10 +393,11 @@ MediaThumbnail::MediaThumbnail(
+@@ -398,8 +399,8 @@ MediaThumbnail::MediaThumbnail(
  
  QImage MediaThumbnail::image(int size) {
  	const auto ratio = style::DevicePixelRatio();
 -	if (_prepared.width() != size * ratio) {
-+	const auto expected = style::DevicePixels(size);
-+	if (_prepared.width() != expected) {
+-		const auto full = QSize(size, size) * ratio;
++	if (_prepared.width() != style::DevicePixels(size)) {
++		const auto full = style::DevicePixels(QSize(size, size));
  		if (_full.isNull()) {
  			_prepared = QImage(
--				QSize(size, size) * ratio,
-+				style::DevicePixels(QSize(size, size)),
- 				QImage::Format_ARGB32_Premultiplied);
- 			_prepared.fill(Qt::black);
- 		} else {
-@@ -411,7 +413,7 @@ QImage MediaThumbnail::image(int size) {
+ 				full,
+@@ -438,7 +439,7 @@ QImage MediaThumbnail::image(int size) {
  				source = QRect(0, skip, width, width);
  			}
  			_prepared = _full.copy(source).scaled(
@@ -6000,7 +5997,7 @@ index b8c6af32..e0064695 100644
  				Qt::IgnoreAspectRatio,
  				Qt::SmoothTransformation);
  		}
-@@ -545,7 +547,7 @@ std::shared_ptr<DynamicImage> CallThumbnail::clone() {
+@@ -572,7 +573,7 @@ std::shared_ptr<DynamicImage> CallThumbnail::clone() {
  
  QImage CallThumbnail::image(int size) {
  	const auto ratio = style::DevicePixelRatio();
@@ -6009,7 +6006,7 @@ index b8c6af32..e0064695 100644
  	if (_prepared.size() != full) {
  		_prepared = QImage(full, QImage::Format_ARGB32_Premultiplied);
  		_prepared.fill(Qt::black);
-@@ -567,7 +569,7 @@ QImage EmptyThumbnail::image(int size) {
+@@ -594,7 +595,7 @@ QImage EmptyThumbnail::image(int size) {
  	const auto ratio = style::DevicePixelRatio();
  	if (_cached.width() != size * ratio) {
  		_cached = QImage(
@@ -6018,7 +6015,7 @@ index b8c6af32..e0064695 100644
  			QImage::Format_ARGB32_Premultiplied);
  		_cached.fill(Qt::black);
  		_cached.setDevicePixelRatio(ratio);
-@@ -591,7 +593,7 @@ QImage SavedMessagesUserpic::image(int size) {
+@@ -618,7 +619,7 @@ QImage SavedMessagesUserpic::image(int size) {
  		const auto ratio = style::DevicePixelRatio();
  		if (!good) {
  			_frame = QImage(
@@ -6027,7 +6024,7 @@ index b8c6af32..e0064695 100644
  				QImage::Format_ARGB32_Premultiplied);
  			_frame.setDevicePixelRatio(ratio);
  		}
-@@ -622,7 +624,7 @@ QImage RepliesUserpic::image(int size) {
+@@ -649,7 +650,7 @@ QImage RepliesUserpic::image(int size) {
  		const auto ratio = style::DevicePixelRatio();
  		if (!good) {
  			_frame = QImage(
@@ -6036,7 +6033,7 @@ index b8c6af32..e0064695 100644
  				QImage::Format_ARGB32_Premultiplied);
  			_frame.setDevicePixelRatio(ratio);
  		}
-@@ -653,7 +655,7 @@ QImage HiddenAuthorUserpic::image(int size) {
+@@ -680,7 +681,7 @@ QImage HiddenAuthorUserpic::image(int size) {
  		const auto ratio = style::DevicePixelRatio();
  		if (!good) {
  			_frame = QImage(
@@ -6045,7 +6042,7 @@ index b8c6af32..e0064695 100644
  				QImage::Format_ARGB32_Premultiplied);
  			_frame.setDevicePixelRatio(ratio);
  		}
-@@ -687,7 +689,7 @@ QImage IconThumbnail::image(int size) {
+@@ -714,7 +715,7 @@ QImage IconThumbnail::image(int size) {
  		const auto ratio = style::DevicePixelRatio();
  		if (!good) {
  			_frame = QImage(
@@ -6054,7 +6051,7 @@ index b8c6af32..e0064695 100644
  				QImage::Format_ARGB32_Premultiplied);
  			_frame.setDevicePixelRatio(ratio);
  		}
-@@ -752,7 +754,7 @@ QImage EmojiThumbnail::image(int size) {
+@@ -779,7 +780,7 @@ QImage EmojiThumbnail::image(int size) {
  	const auto good = (_frame.width() == size * _frame.devicePixelRatio());
  	if (!good) {
  		_frame = QImage(
@@ -6063,7 +6060,7 @@ index b8c6af32..e0064695 100644
  			QImage::Format_ARGB32_Premultiplied);
  		_frame.setDevicePixelRatio(ratio);
  	}
-@@ -794,8 +796,7 @@ std::shared_ptr<DynamicImage> GeoThumbnail::clone() {
+@@ -821,8 +822,7 @@ std::shared_ptr<DynamicImage> GeoThumbnail::clone() {
  }
  
  QImage GeoThumbnail::image(int size) {
@@ -6073,7 +6070,7 @@ index b8c6af32..e0064695 100644
  	const auto paletteVersion = style::PaletteVersion();
  	if (_prepared.size() == full && _paletteVersion == paletteVersion) {
  		return _prepared;
-@@ -820,7 +821,7 @@ QImage GeoThumbnail::image(int size) {
+@@ -847,7 +847,7 @@ QImage GeoThumbnail::image(int size) {
  	_prepared = Images::Round(
  		std::move(_prepared),
  		ImageRoundRadius::Small);
@@ -6082,7 +6079,7 @@ index b8c6af32..e0064695 100644
  	if (_drawPin && !loaded.isNull()) {
  		auto p = Painter(&_prepared);
  		auto hq = PainterHighQualityEnabler(p);
-@@ -880,9 +881,8 @@ std::shared_ptr<DynamicImage> DocumentFilePreviewThumbnail::clone() {
+@@ -907,9 +907,8 @@ std::shared_ptr<DynamicImage> DocumentFilePreviewThumbnail::clone() {
  }
  
  QImage DocumentFilePreviewThumbnail::image(int size) {
@@ -6093,7 +6090,7 @@ index b8c6af32..e0064695 100644
  	if (good && _paletteVersion == paletteVersion) {
  		return _prepared;
  	}
-@@ -903,7 +903,6 @@ QImage DocumentFilePreviewThumbnail::image(int size) {
+@@ -930,7 +929,6 @@ QImage DocumentFilePreviewThumbnail::image(int size) {
  }
  
  QImage DocumentFilePreviewThumbnail::prepareThumbImage(int size) {
@@ -6101,7 +6098,7 @@ index b8c6af32..e0064695 100644
  	const auto thumbnail = _media->thumbnail();
  	const auto blurred = _media->thumbnailInline();
  	const auto image = thumbnail ? thumbnail : blurred;
-@@ -915,23 +914,22 @@ QImage DocumentFilePreviewThumbnail::prepareThumbImage(int size) {
+@@ -942,23 +940,22 @@ QImage DocumentFilePreviewThumbnail::prepareThumbImage(int size) {
  	const auto x = (full.width() - side) / 2;
  	const auto y = (full.height() - side) / 2;
  	auto result = full.copy(x, y, side, side).scaled(
@@ -6130,7 +6127,7 @@ index b8c6af32..e0064695 100644
  	const auto radius = size / 6;
  	const auto foldSize = size / 4;
 diff --git a/Telegram/SourceFiles/ui/effects/credits_graphics.cpp b/Telegram/SourceFiles/ui/effects/credits_graphics.cpp
-index bfb03738..3e2e99bc 100644
+index b25d9e23..af2c7f20 100644
 --- a/Telegram/SourceFiles/ui/effects/credits_graphics.cpp
 +++ b/Telegram/SourceFiles/ui/effects/credits_graphics.cpp
 @@ -60,7 +60,7 @@ PaintRoundImageCallback MultiThumbnail(
@@ -6673,18 +6670,6 @@ index 33f4b8e3..d2f61ada 100644
  		QImage::Format_ARGB32_Premultiplied);
  	data.fill(Qt::transparent);
  	data.setDevicePixelRatio(style::DevicePixelRatio());
-diff --git a/Telegram/SourceFiles/window/section_widget.cpp b/Telegram/SourceFiles/window/section_widget.cpp
-index b417c4a2..178f50b0 100644
---- a/Telegram/SourceFiles/window/section_widget.cpp
-+++ b/Telegram/SourceFiles/window/section_widget.cpp
-@@ -30,7 +30,6 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
- #include "window/window_slide_animation.h"
- #include "window/window_session_controller.h"
- #include "window/themes/window_theme.h"
--
- #include <rpl/range.h>
- 
- namespace Window {
 diff --git a/Telegram/SourceFiles/window/themes/window_theme_editor_box.cpp b/Telegram/SourceFiles/window/themes/window_theme_editor_box.cpp
 index 3c050bd5..7129c3df 100644
 --- a/Telegram/SourceFiles/window/themes/window_theme_editor_box.cpp
@@ -8655,7 +8640,7 @@ index 3148a071..ff3801b6 100644
  		context.position + QPoint(_padding.left(), _padding.top()),
  		size);
 diff --git a/Telegram/lib_ui/ui/text/text.cpp b/Telegram/lib_ui/ui/text/text.cpp
-index fa7a09ec..b0e5442f 100644
+index 072517f6..2cef845a 100644
 --- a/Telegram/lib_ui/ui/text/text.cpp
 +++ b/Telegram/lib_ui/ui/text/text.cpp
 @@ -135,6 +135,9 @@ not_null<SpoilerMessCache*> DefaultSpoilerCache() {
@@ -8869,10 +8854,10 @@ index 92d40e65..4780bfed 100644
  	result.setDevicePixelRatio(style::DevicePixelRatio());
  	if (!target->testAttribute(Qt::WA_OpaquePaintEvent)) {
 diff --git a/Telegram/lib_ui/ui/widgets/fields/input_field.cpp b/Telegram/lib_ui/ui/widgets/fields/input_field.cpp
-index 8fd4c521..a6e06c68 100644
+index baa70a52..bd56ba56 100644
 --- a/Telegram/lib_ui/ui/widgets/fields/input_field.cpp
 +++ b/Telegram/lib_ui/ui/widgets/fields/input_field.cpp
-@@ -114,7 +114,7 @@ QVariant InputDocument::loadResource(int type, const QUrl &name) {
+@@ -115,7 +115,7 @@ QVariant InputDocument::loadResource(int type, const QUrl &name) {
  	auto result = [&] {
  		if (const auto emoji = Emoji::FromUrl(name.toDisplayString())) {
  			const auto height = std::max(
@@ -8881,7 +8866,7 @@ index 8fd4c521..a6e06c68 100644
  				Emoji::GetSizeNormal());
  			return QVariant(Emoji::SinglePixmap(emoji, height));
  		}
-@@ -863,8 +863,8 @@ QString AccumulateText(Iterator begin, Iterator end) {
+@@ -906,8 +906,8 @@ QString AccumulateText(Iterator begin, Iterator end) {
  QTextImageFormat PrepareEmojiFormat(EmojiPtr emoji, int lineHeight) {
  	const auto factor = style::DevicePixelRatio();
  	const auto size = Emoji::GetSizeNormal();
@@ -8921,7 +8906,7 @@ index 9a189ec3..7e74eca0 100644
  	{
  		QPainter p(&result);
 diff --git a/Telegram/lib_ui/ui/widgets/popup_menu.cpp b/Telegram/lib_ui/ui/widgets/popup_menu.cpp
-index 89dd5d4f..56bb4119 100644
+index 2f1d5f73..4d204ba8 100644
 --- a/Telegram/lib_ui/ui/widgets/popup_menu.cpp
 +++ b/Telegram/lib_ui/ui/widgets/popup_menu.cpp
 @@ -210,17 +210,23 @@ void PopupMenu::handleMenuResize() {
@@ -8955,7 +8940,7 @@ index 89dd5d4f..56bb4119 100644
  }
  
  not_null<QAction*> PopupMenu::addAction(
-@@ -691,9 +697,8 @@ void PopupMenu::startShowAnimation() {
+@@ -697,9 +703,8 @@ void PopupMenu::startShowAnimation() {
  		auto cache = grabForPanelAnimation();
  		_a_opacity = base::take(opacityAnimation);
  
@@ -8966,7 +8951,7 @@ index 89dd5d4f..56bb4119 100644
  		if (_useTransparency) {
  			_showAnimation->setCornerMasks(Images::CornersMask(_st.radius));
  		} else {
-@@ -739,9 +744,8 @@ void PopupMenu::showAnimationCallback() {
+@@ -745,9 +750,8 @@ void PopupMenu::showAnimationCallback() {
  
  QImage PopupMenu::grabForPanelAnimation() {
  	SendPendingMoveResizeEvents(this);
