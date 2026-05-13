@@ -4,7 +4,6 @@ pkgname=sonic-win
 _pkgname=kwin-x11
 pkgver=6.6.4
 _pkgtag=$pkgver
-_plasmaver=$(echo $pkgver | cut -f1-3 -d'.')
 pkgrel=1
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
@@ -23,8 +22,6 @@ depends=(aurorae
          kcrash
          kdeclarative
          kdecoration
-         kglobalaccel
-         kglobalacceld
          kguiaddons
          ki18n
          kirigami
@@ -33,11 +30,9 @@ depends=(aurorae
          knotifications
          kpackage
          kquickcharts
-         kscreenlocker
          kservice
          ksvg
          kwidgetsaddons
-         kwindowsystem
          kxmlgui
          lcms2
          libcanberra
@@ -50,7 +45,6 @@ depends=(aurorae
          libxi
          libxkbcommon
          libxkbcommon-x11
-         libplasma=$_plasmaver
          mesa
          plasma-x11-session
          qt6-5compat
@@ -60,6 +54,11 @@ depends=(aurorae
          qt6-svg
          qt6-tools
          qt6-wayland
+         sonic-frameworks-keybind
+         sonic-frameworks-windowsystem
+         sonic-interface-libraries
+         sonic-keybind-daemon
+         sonic-screenlocker
          systemd-libs
          wayland
          xcb-util-cursor
