@@ -3,7 +3,7 @@
 ### BUILD OPTIONS
 # You can modify these settings by executing "env _<setting>=<value> makepkg"
 # instead of modifying the PKGBUILD file. Here's an example:
-# env _makemenuconfig=y _copyfinalconfig=y _subarch=30 makepkg
+# env _makemenuconfig=y _copyfinalconfig=y makepkg
 
 # Toggles colorful log messages.
 #
@@ -77,76 +77,8 @@
 # Set to anything but null to activate.
 : "${_localmodcfg:=""}"
 
-# Optionally select a sub architecture by number or its Kconfig name,
-# for example MCORE2 or MZEN4.
-#
-# Leaving it blank will require user interaction during the build.
-# Note that the default option is empty.
-#
-# Important notice for maintainers:
-# Make sure to update the '_subarch'
-# section inside update_defconfig()
-# if this list is updated on updating
-# the kernel compiler patchset.
-#
-#  1. Generic-x86-64 (GENERIC_CPU)
-#  2. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#  3. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
-#  4. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
-#  5. AMD Barcelona (MBARCELONA)
-#  6. AMD Bobcat (MBOBCAT)
-#  7. AMD Jaguar (MJAGUAR)
-#  8. AMD Bulldozer (MBULLDOZER)
-#  9. AMD Piledriver (MPILEDRIVER)
-#  10. AMD Steamroller (MSTEAMROLLER)
-#  11. AMD Excavator (MEXCAVATOR)
-#  12. AMD Ryzen (MZEN)
-#  13. AMD Ryzen 2 (MZEN2)
-#  14. AMD Ryzen 3 (MZEN3)
-#  15. AMD Ryzen 4 (MZEN4)
-#  16. AMD Ryzen 5 (MZEN5)
-#  17. Intel P4 / older Netburst based Xeon (MPSC)
-#  18. Intel Core 2 (MCORE2)
-#  19. Intel Nehalem (MNEHALEM)
-#  20. Intel Westmere (MWESTMERE)
-#  21. Intel Silvermont (MSILVERMONT)
-#  22. Intel Goldmont (MGOLDMONT)
-#  23. Intel Goldmont Plus (MGOLDMONTPLUS)
-#  24. Intel Sandy Bridge (MSANDYBRIDGE)
-#  25. Intel Ivy Bridge (MIVYBRIDGE)
-#  26. Intel Haswell (MHASWELL)
-#  27. Intel Broadwell (MBROADWELL)
-#  28. Intel Skylake (MSKYLAKE)
-#  29. Intel Skylake-X (7th Gen Core i7/i9) (MSKYLAKEX)
-#  30. Intel Coffee Lake/Kaby Lake Refresh (8th Gen Core i3/i5/i7) (MCANNONLAKE)
-#  31. Intel Ice Lake (MICELAKE_CLIENT)
-#  32. Intel Ice Lake-SP (3rd Gen Xeon Scalable) (MICELAKE_SERVER)
-#  33. Intel Cooper Lake (MCOOPERLAKE)
-#  34. Intel Cascade Lake (MCASCADELAKE)
-#  35. Intel Tiger Lake (MTIGERLAKE)
-#  36. Intel Sapphire Rapids (MSAPPHIRERAPIDS)
-#  37. Intel Rocket Lake (MROCKETLAKE)
-#  38. Intel Alder Lake (MALDERLAKE)
-#  39. Intel Raptor Lake (MRAPTORLAKE)
-#  40. Intel Meteor Lake (MMETEORLAKE)
-#  41. Intel Emerald Rapids (MEMERALDRAPIDS)
-#  42. Intel Diamond Rapids (7th Gen Xeon Scalable) (MDIAMONDRAPIDS)
-: "${_subarch:=""}"
-
-# Selects the x86-64 microarchitecture to compile for.
-# This value is only used by the GENERIC_CPU
-# subarchitecture and is required.
-# Can be either '1', '2', '3' or '4'
-#
-# Set to '1' by default
-#
-# For more information see:
-# https://en.wikipedia.org/wiki/X86-64#Microarchitecture_levels
-: "${_subarch_microarch:="1"}"
-
-
 # Enable compilation with LLVM
-# Be warned, this is largely untested by me (JeremyStarTM). It *should* work,
+# Be warned, this is largely untested by me (im_zerou). It *should* work,
 # but if it doesn't, write a comment and I'll fix it.
 #
 # Set to anything but null to activate.
@@ -177,18 +109,24 @@
 # displayed while the kernel is compiling.
 : "${_show_compile:=""}"
 
+# x86_64 microarchitecture to optimize for.
+#
+# Support has been removed in the kernel 7.0 update, as we threw out
+# the kernel compiler patch for multiple microarchitectures out the
+# window in the process.
+: "${_subarch:=""}"
+
+# See '_subarch'
+: "${_subarch_microarch:=""}"
+
 ### DEPRECATED BUILD OPTIONS END
 
 
 # Kernel version
-_kernel_major=6.19
+_kernel_major=7.0
 _kernel_minor=6
 # Clear Linux patches version
-_clr=6.19.6-1597
-# kernel_compiler_patch version
-_kernelcompilerpatch="20250818.2"
-# kernel_compiler_patch name
-_kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.16+.patch"
+_clr=7.0.6-1602
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
@@ -204,13 +142,12 @@ license=("GPL-2.0-only")
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
 options=("!strip" "!debug")
 source=(
-    "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
-    "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
-    "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
+    "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-${_kernel_major}.tar.xz"
+    "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-${_kernel_major}.tar.sign"
+    "https://cdn.kernel.org/pub/linux/kernel/v7.x/patch-${_kernel_major}.${_kernel_minor}.xz"
     "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
-    "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
-    "git+https://github.com/openzfs/zfs.git#tag=zfs-2.4.1"
-    "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.19.patch"
+    "git+https://github.com/openzfs/zfs.git#tag=zfs-2.4.2"
+    "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.0.patch"
     "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 
@@ -219,11 +156,10 @@ source=(
 # -> SHA-256 checksums of the package's sources
 #    These need to be updated each release; see the 'source' array
 sha256sums=(
-    "303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357"
+    "bb7f6d80b387c757b7d14bb93028fcb90f793c5c0d367736ee815a100b3891f0"
     "SKIP"
-    "cb25f2161e2eed431e4d91eab65747cb1e626da6c2c1e6aa054025086d32da42"
+    "abd193ca459744d3af3f875d649d01d84dc5e810083e5f1c67eba551c86c4404"
     "SKIP"
-    "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
     'SKIP'
     'SKIP'
     'SKIP'
@@ -299,6 +235,10 @@ _check_deprecated_settings() {
     fi
     [ -n "${_show_compile}" ] && _warning "'_show_compile' is no longer supported"
 
+    if [ -n "${_subarch}" ] || [ -n "${_subarch_microarch}" ]; then
+        _warning "'_subarch' and '_subarch_microarch' are no longer supported"
+    fi
+
     # To avoid an error
     true
 }
@@ -337,12 +277,6 @@ _apply_patches() {
 
         patch -sNp1 -i "${srcdir}/tachyon/patches/${__patch}" || true
     done
-
-    # Patch with kernel_compiler_patch patches.
-    # Do this before any defconfig invocations so we
-    # have all of the extra selectable uarches ready and selectable
-    _info "Applying the kernel compiler patch"
-    patch -sNp1 -i "$srcdir/kernel_compiler_patch-${_kernelcompilerpatch}/${_kernelcompilername}"
 }
 
 
@@ -373,9 +307,9 @@ _copy_defconfig() {
         zcat /proc/config.gz > ./.config
         make ${BUILD_FLAGS[*]} olddefconfig
     else
-        _warning "Your kernel was not compiled with IKCONFIG_PROC."
-        _warning "Unable to read kernel configuration, aborting."
-        exit
+        _error "Your kernel was not compiled with IKCONFIG_PROC."
+        _error "Unable to read kernel configuration, aborting."
+        return 1
     fi
 }
 
@@ -393,6 +327,10 @@ _apply_overrides_on_current_config() {
         echo "Applying patch $src..."
         patch -Np1 <"../$src"
     done
+
+    # Sync config after local patch changes before prepare steps touch Kconfig.
+    _info "Executing 'make olddefconfig' before ZFS integration (current config reuse)"
+    make ${BUILD_FLAGS[*]} olddefconfig
 
     # Prepare kernel tree for external integration
     make ${BUILD_FLAGS[*]} prepare -j$(nproc)
@@ -412,6 +350,16 @@ _apply_overrides_on_current_config() {
 
     # Back to kernel tree
     cd ${srcdir}/${_src_linux}
+
+    _apply_always_on_overrides
+
+    # Finally, sync config without interaction
+    _info "Executing 'make olddefconfig' (current config reuse)"
+    make ${BUILD_FLAGS[*]} olddefconfig
+}
+
+## Applies custom features that must remain enabled regardless of config strategy.
+_apply_always_on_overrides() {
 
     # Enable ZFS and other custom options
     scripts/config -e CONFIG_ZFS
@@ -434,156 +382,10 @@ _apply_overrides_on_current_config() {
     # Virtual USB for specific use-cases
     scripts/config -m CONFIG_USB_DUMMY_HCD \
                    -m CONFIG_USB_MASS_STORAGE
-
-    # Extra configuration (mirrors _update_defconfig)
-    _info "Updating kernel configuration (current config reuse)"
-    # General setup
-    scripts/config --set-str DEFAULT_HOSTNAME archlinux \
-                   -e IKCONFIG \
-                   -e IKCONFIG_PROC \
-                   -u RT_GROUP_SCHED
-    # Power management and ACPI options
-    scripts/config -e ACPI_REV_OVERRIDE_POSSIBLE \
-                   -e ACPI_TABLE_UPGRADE
-    # Virtualization
-    scripts/config -e KVM_SMM
-    # General architecture-dependent options
-    scripts/config -e KPROBES
-    # Enable loadable module support
-    scripts/config -u MODULE_SIG_FORCE
-    # Networking support
-    scripts/config -e NETFILTER_INGRESS
-    # OpenVPN data channel offload (OVPN-DCO)
-    scripts/config -e OVPN
-    # Device Drivers
-    scripts/config -e FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
-                   -e DELL_SMBIOS_SMM \
-                   -m PATA_JMICRON \
-                   -E SOUND SOUND_OSS_CORE \
-                   -e SND_OSSEMUL \
-                   -M SND_OSSEMUL SND_MIXER_OSS \
-                   -M SND_MIXER_OSS SND_PCM_OSS \
-                   -E SND_PCM_OSS SND_PCM_OSS_PLUGINS \
-                   -m AGP -M AGP AGP_INTEL -M AGP_INTEL AGP_VIA
-    # Make section mismatch errors non-fatal
-    scripts/config -e SECTION_MISMATCH_WARN_ONLY
-    # File systems
-    scripts/config -m NTFS3_FS \
-                   -e NTFS3_LZX_XPRESS \
-                   -e NTFS3_FS_POSIX_ACL
-    scripts/config -m SMB_SERVER \
-                   -e SMB_SERVER_SMBDIRECT \
-                   -e SMB_SERVER_CHECK_CAP_NET_ADMIN \
-                   -e SMB_SERVER_KERBEROS5
-    # Security options
-    scripts/config -e SECURITY_SELINUX \
-                   -e SECURITY_SELINUX_BOOTPARAM \
-                   -e SECURITY_SMACK \
-                   -e SECURITY_SMACK_BRINGUP \
-                   -e SECURITY_SMACK_NETFILTER \
-                   -e SECURITY_SMACK_APPEND_SIGNALS \
-                   -e SECURITY_TOMOYO \
-                   -e SECURITY_APPARMOR \
-                   -e SECURITY_YAMA
-    # Landlock
-    scripts/config -e SECURITY_LANDLOCK
-    # Fonts
-    scripts/config -k -e FONT_TER16x32
-
-    # EDAC
-    scripts/config -e EDAC_AMD64 \
-                   -e EDAC_IGEN6
-
-    # LLVM toggles
-    [ -n "${_use_llvm_lto}" ] && scripts/config -d LTO_NONE \
-                                                -e LTO \
-                                                -e LTO_CLANG \
-                                                -e ARCH_SUPPORTS_LTO_CLANG \
-                                                -e ARCH_SUPPORTS_LTO_CLANG_THIN \
-                                                -e HAS_LTO_CLANG \
-                                                -e LTO_CLANG_THIN \
-                                                -e HAVE_GCC_PLUGINS
-
-    # Debug toggles
-    [ "${_debug}" == "y" ] && scripts/config -e DEBUG_INFO \
-                                            -e DEBUG_INFO_BTF \
-                                            -e DEBUG_INFO_DWARF4 \
-                                            -e PAHOLE_HAS_SPLIT_BTF \
-                                            -e DEBUG_INFO_BTF_MODULES
-    [ "${_debug}" == "n" ] && scripts/config -d DEBUG_INFO \
-                                            -d DEBUG_INFO_BTF \
-                                            -d DEBUG_INFO_DWARF4 \
-                                            -d PAHOLE_HAS_SPLIT_BTF \
-                                            -d DEBUG_INFO_BTF_MODULES
-
-    # Finally, sync config without interaction
-    _info "Executing 'make olddefconfig' (current config reuse)"
-    make ${BUILD_FLAGS[*]} olddefconfig
 }
 
-
-## Modifies the kernel configuration and displays a
-## selection of subarches (if left unspecified by the user).
-_update_defconfig() {
-    # Copy configuration file (if found)
-    if [ -f "${startdir}/kconfig" ]; then
-        _info "Using configuration file \"${startdir}/kconfig\""
-        cp -Tf "${startdir}/kconfig" ./.config
-    else
-        _info "Using configuration file \"${srcdir}/${pkgbase}/config\""
-        cp -Tf $srcdir/tachyon/config ./.config
-    fi
-
-	# 添加cjktty补丁
-	local src
-	for src in "${source[@]}"; do
-		src="${src%%::*}"
-		src="${src##*/}"
-		src="${src%.zst}"
-		[[ $src = *.patch ]] || continue
-		echo "Applying patch $src..."
-		patch -Np1 <"../$src"
-	done
-
-	# 编译zfs前面的准备
-	make ${BUILD_FLAGS[*]} prepare -j$(nproc)
-	make ${BUILD_FLAGS[*]} modules_prepare -j$(nproc)
-
-	# 添加zfs补丁
-	cd ${srcdir}/"zfs"
-	./autogen.sh
-	sed -i "s|\$(uname -r)|${pkgver}-clear-cjktty-zfs|g" configure
-	./configure CC=gcc --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
-		--datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-		--libexecdir=/usr/lib/zfs --with-config=kernel \
-		--enable-linux-builtin=yes \
-		--with-linux=${srcdir}/${_src_linux} \
-		--with-linux-obj=${srcdir}/${_src_linux}
-	./copy-builtin ${srcdir}/${_src_linux}
-
-	# 开启zfs选项
-	cd ${srcdir}/${_src_linux}
-	scripts/config -e CONFIG_ZFS
-
-    # 开启cjktty补丁
-    scripts/config -e CONFIG_FONT_CJK_16x16 \
-        -e CONFIG_FONT_CJK_32x32
-
-    # 为了双内核开启kexec相关东西
-    scripts/config -e CONFIG_ARCH_SUPPORTS_KEXEC \
-        -e CONFIG_ARCH_SUPPORTS_KEXEC_FILE \
-        -e CONFIG_ARCH_SUPPORTS_KEXEC_PURGATORY \
-        -e CONFIG_ARCH_SUPPORTS_KEXEC_SIG \
-        -e CONFIG_ARCH_SUPPORTS_KEXEC_SIG_FORCE \
-        -e CONFIG_ARCH_SUPPORTS_KEXEC_BZIMAGE_VERIFY_SIG \
-        -e CONFIG_ARCH_SUPPORTS_KEXEC_JUMP \
-        -e CONFIG_ARCH_SUPPORTS_CRASH_DUMP \
-        -e CONFIG_ARCH_SUPPORTS_CRASH_HOTPLUG
-
-    # 为了unraid硬盘版,开启虚拟usb设备
-    scripts/config -m CONFIG_USB_DUMMY_HCD \
-        -m CONFIG_USB_MASS_STORAGE
-
+## Applies optional maintainer defaults on top of the selected base config.
+_apply_optional_defconfig_overrides() {
     # Extra configuration
     _info "Updating kernel configuration"
     # General setup
@@ -671,63 +473,63 @@ _update_defconfig() {
                                              -d PAHOLE_HAS_SPLIT_BTF \
                                              -d DEBUG_INFO_BTF_MODULES
 
+    # Keep the helper non-fatal when optional branches are skipped.
+    true
+}
+
+
+## Modifies the kernel configuration and displays a
+## selection of subarches (if left unspecified by the user).
+_update_defconfig() {
+    # Copy configuration file (if found)
+    if [ -f "${startdir}/kconfig" ]; then
+        _info "Using configuration file \"${startdir}/kconfig\""
+        cp -Tf "${startdir}/kconfig" ./.config
+    else
+        _info "Using configuration file \"${srcdir}/${pkgbase}/config\""
+        cp -Tf $srcdir/tachyon/config ./.config
+    fi
+
+	# 添加cjktty补丁
+	local src
+	for src in "${source[@]}"; do
+		src="${src%%::*}"
+		src="${src##*/}"
+		src="${src%.zst}"
+		[[ $src = *.patch ]] || continue
+		echo "Applying patch $src..."
+		patch -Np1 <"../$src"
+	done
+
+	# Sync config before prepare steps so new/changed symbols take defaults.
+	_info "Executing 'make olddefconfig' before ZFS integration"
+	make ${BUILD_FLAGS[*]} olddefconfig
+
+	# 编译zfs前面的准备
+	make ${BUILD_FLAGS[*]} prepare -j$(nproc)
+	make ${BUILD_FLAGS[*]} modules_prepare -j$(nproc)
+
+	# 添加zfs补丁
+	cd ${srcdir}/"zfs"
+	./autogen.sh
+	sed -i "s|\$(uname -r)|${pkgver}-clear-cjktty-zfs|g" configure
+	./configure CC=gcc --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
+		--datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
+		--libexecdir=/usr/lib/zfs --with-config=kernel \
+		--enable-linux-builtin=yes \
+		--with-linux=${srcdir}/${_src_linux} \
+		--with-linux-obj=${srcdir}/${_src_linux}
+	./copy-builtin ${srcdir}/${_src_linux}
+
+	# 开启zfs选项
+	cd ${srcdir}/${_src_linux}
+	_apply_always_on_overrides
+	_apply_optional_defconfig_overrides
+
+    # Enable LLVM compilation
     # Run olddefconfig
     _info "Executing 'make olddefconfig'"
     make ${BUILD_FLAGS[*]} olddefconfig
-
-    # Here we slightly break the config by removing one of the
-    # members of the 'Processor family' selection.
-    # This causes oldconfig to always invoke that selection.
-    sed -i '/CONFIG_GENERIC_CPU/d' .config || :
-    # For a slim chance that someone is building X86_32
-    sed -i '/CONFIG_M686/d' .config || :
-
-    case ${_subarch} in
-        "")
-            # Ask for subarch if none provided
-            timeout -fk 45 30 make "${BUILD_FLAGS[@]}" oldconfig
-            ;;
-        "1" | "GENERIC_CPU")
-            # Set x86-64 microarch
-            scripts/config -e GENERIC_CPU
-            scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
-            make "${BUILD_FLAGS[@]}" oldconfig
-            ;;
-        [1-9]|[1-3][0-9]|[4][0-3]|42)
-            # 1 to 9, 10 to 39, 40 to 42
-            # 42 is the last supported value here, refer to the _subarch
-            # documentation above and keep the last section of this check
-            # in sync with the supported value.
-            # stderr checks below shouldn't be needed with the above check in place,
-            # but will be left in-place regardless in case of future updates
-            # breaking something
-
-            # We're only interested in stderr
-            {
-                local __ERROR
-                __ERROR="$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&${out})"
-            } {out}>/dev/null
-
-            # Invoke echo to sanitize the __ERROR as it can contain
-            # newlines or carriage returns, thus breaking the script.
-            # shellcheck disable=SC2116
-            if [ -n "$(echo ${__ERROR})" ]; then
-                _warning "Selected subarch: ${_subarch} is not supported"
-                exit 1
-            fi
-            ;;
-        *)
-            # String - check if it exists in .config and if it does - set it
-            if grep -q -e "CONFIG_${_subarch}[[:space:]]" -e "CONFIG_${_subarch}=" .config; then
-                # Check if option exists in .config
-                scripts/config -e "${_subarch}"
-                make "${BUILD_FLAGS[@]}" olddefconfig
-            else
-                _warning "Unrecognized subarch value: ${_subarch}"
-                exit 1
-            fi
-            ;;
-    esac
 }
 
 
@@ -739,11 +541,12 @@ prepare() {
     _apply_patches
 
     # Config strategy:
-    # - If reusing current config, copy it and apply overrides non-interactively.
-    # - Otherwise, use the original flow that prepares a fresh defconfig.
+    # - If reusing current config, only apply maintainer defaults when requested.
+    # - Otherwise, prepare a fresh defconfig with maintainer defaults.
     if [ -n "${_use_current}" ]; then
         _copy_defconfig
         _apply_overrides_on_current_config
+        [ -n "${_optimize_defconfig}" ] && _apply_optional_defconfig_overrides && make ${BUILD_FLAGS[*]} olddefconfig
     else
         _update_defconfig
     fi
