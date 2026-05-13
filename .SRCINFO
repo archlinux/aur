@@ -1,7 +1,7 @@
 pkgbase = vboot-utils
 	pkgdesc = Chromium OS verified boot utilities
 	pkgver = 147.16610
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chromium.googlesource.com/chromiumos/platform/vboot_reference
 	arch = i686
 	arch = x86_64
