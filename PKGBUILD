@@ -7,11 +7,11 @@ _tag=release-R${pkgver/\./-}.B
 pkgrel=1
 pkgdesc='Chromium OS verified boot utilities'
 arch=(i686 x86_64)
-url='https://chromium.googlesource.com/chromiumos/platform/vboot_reference#branch=${_tag}'
+url='https://chromium.googlesource.com/chromiumos/platform/vboot_reference'
 license=('custom:chromiumos')
 depends=(libutil-linux openssl libzip chromeos-flashrom-git cbfstool)
 makedepends=(git libyaml trousers)
-source=(git+https://chromium.googlesource.com/chromiumos/platform/vboot_reference)
+source=(git+https://chromium.googlesource.com/chromiumos/platform/vboot_reference#branch=${_tag})
 sha256sums=('SKIP')
 
 build() {
