@@ -1,0 +1,70 @@
+## owlry .install hook
+##
+## v2.0 renamed the systemd user units (owlryd.{service,socket} → owlry.{service,socket})
+## and consolidated 14 separate packages into one. Handle the unit migration so users
+## upgrading from 1.x don't end up with an enabled-but-missing owlryd.service.
+
+post_upgrade() {
+    local old_pkgver="$2"
+    case "$old_pkgver" in
+        1.*|0.*)
+            cat <<'EOF'
+
+  ╭─────────────────────────────────────────────────────────────────╮
+  │  owlry 2.0 — the v2 rewrite                                     │
+  │                                                                 │
+  │  The daemon binary 'owlryd' is gone; owlry now ships as a       │
+  │  single binary. Use `owlry -d` (or the systemd service).        │
+  │                                                                 │
+  │  The systemd user unit was renamed:                             │
+  │      owlryd.service  ->  owlry.service                          │
+  │      owlryd.socket   ->  owlry.socket                           │
+  │                                                                 │
+  │  If you had the old service enabled, run:                       │
+  │      systemctl --user disable --now owlryd.service              │
+  │      systemctl --user enable  --now owlry.service               │
+  │                                                                 │
+  │  Plugin packages (bookmarks, systemd, clipboard, …) are now     │
+  │  built into owlry by default — they were dropped from AUR and   │
+  │  replaced via this package.                                     │
+  │                                                                 │
+  │  Widget providers (weather, media, pomodoro) are not in 2.0;    │
+  │  they return in a later 2.x release. See:                       │
+  │      docs/RESTRUCTURE-V2.md (decisions D20, section 8)          │
+  ╰─────────────────────────────────────────────────────────────────╯
+
+EOF
+            # Best-effort transition: if the old owlryd.service is enabled or
+            # active for the invoking user, stop it and disable it so the new
+            # owlry.service can take over. Errors are non-fatal — pacman runs
+            # as root, so we can only inspect, not toggle user units here.
+            if command -v loginctl >/dev/null 2>&1; then
+                local invoking_user
+                invoking_user="$(loginctl list-users --no-legend 2>/dev/null | awk 'NR==1 {print $2}')"
+                if [ -n "$invoking_user" ]; then
+                    echo "  (Run the systemctl --user commands above as user '$invoking_user'.)"
+                fi
+            fi
+            ;;
+    esac
+}
+
+post_install() {
+    cat <<'EOF'
+
+  owlry installed. Start the daemon with:
+      systemctl --user enable --now owlry.service
+
+  Or run ad-hoc:
+      owlry -d &
+      owlry
+
+  Configuration: ~/.config/owlry/config.toml
+  Diagnostics:   owlry doctor
+
+EOF
+}
+
+post_remove() {
+    echo "  owlry removed. Configuration in ~/.config/owlry remains intact."
+}
