@@ -1,0 +1,14 @@
+pkgbase = movistarcli
+	pkgdesc = Unofficial CLI for managing your Movistar HGU router from the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nuriofernandez/movistarcli
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	source = movistarcli-1.0.0.tar.gz::https://github.com/nuriofernandez/movistarcli/archive/v1.0.0.tar.gz
+	sha256sums = 93eaf1d86fe3a67de2320dda660720cc42f19012b0b6f9be2619de0600e49fa1
+
+pkgname = movistarcli
