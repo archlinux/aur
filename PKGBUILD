@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=inlyne
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A GPU powered yet browserless tool to help you quickly view markdown files in the blink of an eye'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr oniguruma)
 makedepends=(cargo libxcb libxkbcommon wayland)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('57968cf496281de1f1f0d2353d282a502d2fd23c8e3ea7b54241686dfcf5392fc8cb48f2c98c5a31519b1ee05b4cae27654f25af29112829892520473662f325')
+b2sums=('bdca855ea21a71c3df068d72acb85f619c1eb757d96d4c66a1eb076ecb439d0e5850261497b308464f0f7a5c2197549cb45b015cf0d6ec32799aeb11b344d37e')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
