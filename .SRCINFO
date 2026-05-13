@@ -1,0 +1,20 @@
+pkgbase = kicad-library-cern-git
+	pkgdesc = Electronics component libraries used at CERN for electronics design using KiCad, regularly converted from the original Altium Designer source libraries at CERN's Electronics Design Office.
+	pkgver = r40.20260513.980670f
+	pkgrel = 1
+	url = https://gitlab.com/ohwr/cern-kicad-libs
+	install = kicad-library-cern.install
+	arch = any
+	license = CERN-OHL-P-2.0
+	makedepends = git
+	optdepends = kicad>=9: To use this electronics component library.
+	optdepends = sh: To run helper script 'kicad-cern-register'.
+	provides = kicad-library-cern
+	conflicts = kicad-library-cern
+	options = !strip
+	source = kicad-library-cern::git+https://gitlab.com/ohwr/cern-kicad-libs.git
+	source = kicad-cern-register
+	sha256sums = SKIP
+	sha256sums = 4b77adb0da3b726fc89a04c63663f514dd6a4aa8901b792ed6007e9323c5943a
+
+pkgname = kicad-library-cern-git
