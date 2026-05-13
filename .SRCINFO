@@ -1,0 +1,19 @@
+pkgbase = encid
+	pkgdesc = Terminal decoder and identifier for encodings, hashes, ciphertext, and CTF-style data
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/admin12121/encid
+	arch = any
+	license = MIT
+	checkdepends = python-bcrypt
+	checkdepends = python-cryptography
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-bcrypt
+	depends = python-cryptography
+	source = https://files.pythonhosted.org/packages/source/e/encid/encid-1.0.1.tar.gz
+	sha256sums = 84bfaa7acab503ebb7415607f2a6a98de796d94278989d3a545b8ff26277ea20
+
+pkgname = encid
