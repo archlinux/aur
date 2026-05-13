@@ -14,8 +14,8 @@ source=("git+https://gitlab.kitware.com/paraview/paraview.git"
         "git+https://gitlab.kitware.com/vtk/vtk.git"
         "git+https://gitlab.kitware.com/paraview/visitbridge.git"
         "git+https://gitlab.kitware.com/paraview/icet.git"
-        "git+https://gitlab.kitware.com/paraview/qttesting.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "git+https://gitlab.kitware.com/paraview/qttesting.git" diy2.patch)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 _architectures="x86_64-w64-mingw32"
 
@@ -38,7 +38,7 @@ prepare() {
   echo "target_link_libraries(vtkRemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
 
   # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
-  sed -i "/vtkNativePartitioningStrategy/d;/vtkRedistributeDataSetFilter/d" VTK/Filters/ParallelDIY2/CMakeLists.txt
+  patch -p1 -i ../diy2.patch
 }
 
 build() {
