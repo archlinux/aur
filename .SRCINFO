@@ -1,6 +1,6 @@
 pkgbase = skwd
 	pkgdesc = Skwd - A Skwd (Quick)shell
-	pkgver = r20.3a8935f
+	pkgver = r21.54f054d
 	pkgrel = 1
 	url = https://github.com/liixini/skwd
 	install = skwd.install
