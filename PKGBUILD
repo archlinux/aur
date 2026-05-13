@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/cap153/LANChat"
 license=('custom')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1' 'libappindicator' 'libayatana-appindicator')
-source=("https://github.com/cap153/LANChat/releases/download/v0.1.3/LANChat_0.1.3_amd64.deb")
+source=("https://github.com/cap153/LANChat/releases/download/v0.1.4/LANChat_0.1.4_amd64.deb")
 sha256sums=('SKIP')
 options=('!strip')
 
