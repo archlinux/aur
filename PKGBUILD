@@ -44,10 +44,10 @@ package_certificados-bccr() {
 
 package_agente-gaudi() {
     provides=("Agente-GAUDI")
-    install -d "${srcdir}/Firma Digital/Agente GAUDI/opt" "${pkgdir}/opt" || echo "Failed"
-    cp -r "${srcdir}/Firma Digital/Agente GAUDI/opt/"* "${pkgdir}/opt/" || echo "Failed"
-    install -d "${srcdir}/Firma Digital/Agente GAUDI/usr" "${pkgdir}/usr" || echo "Failed"
-    cp -r "${srcdir}/Firma Digital/Agente GAUDI/usr/"* "${pkgdir}/usr/" || echo "Failed"
+    install -d "${srcdir}/Firma Digital/Agente GAUDI/opt" "${pkgdir}/opt" 2> >(read err; error "$err")
+    cp -r "${srcdir}/Firma Digital/Agente GAUDI/opt/"* "${pkgdir}/opt/" 2> >(read err; error "$err")
+    install -d "${srcdir}/Firma Digital/Agente GAUDI/usr" "${pkgdir}/usr" 2> >(read err; error "$err")
+    cp -r "${srcdir}/Firma Digital/Agente GAUDI/usr/"* "${pkgdir}/usr/" 2> >(read err; error "$err") 
 }
 
 package_middleware-idopte() {
