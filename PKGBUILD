@@ -1,12 +1,13 @@
 # deps.json
 _spirv_reflect_commit=e55086b044225f9b511ae44dbf9b079d3625943f
-_rstd_commit=f4f45c507d3d69fd6b31e3139c0d63a57622c0d0
-_wavsen_commit=24bade549e5059dbfa02e61df1a4b4a928f5eef7
+_rstd_commit=9fdc3ebeda7289bd1db7d2fb0b978e6ed0b1a63e
+_wavsen_commit=b6fca590e5b874f4d87ba0ab2a54df580e242439
+# aur/quickjs-ng is a static version...
 _quickjs_commit=3c051980ab7e783dfbfb1c70c014ce5e05ecf24c
 
 pkgname=open-wallpaper-engine
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
@@ -21,12 +22,12 @@ source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "git+https://github.com/quickjs-ng/quickjs.git#commit=$_quickjs_commit"
         "0001-use-system-deps.diff")
-sha256sums=('eedefbf3192f04d97027667b7cd7541e475f15146bbf9ac566daf49c246a38df'
+sha256sums=('d14412f5a2a2369baff4272c55c781f4af0c66f005cb7f6b7ccc8f27b5f8cc5a'
             '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
-            '51783e07b586d7d44884d935201308df4e0425a5614731fef167f0fa2ea22a7d'
-            '8b94d8c0fd2bd8e7f49200d839bbb9cd1a633a99d4c648743f1ef3b27165e2b8'
+            'de3e235c080bd9ddd26bbddab43d64d3ab329b9ce700b267a5a9d6fb143452e8'
+            'e56b8a07f718b335a8e00c21dd76e3d0e6df7fdf2f367baa33fed8c61b185481'
             '9ca66e359212494be96f10736090e45eca6593f2977b83a075358456d2c51b7a'
-            'bcc157c371849e163155fc789ec6ec52293a62f44ec1b47004c5315c1f1464cc')
+            '095bddaed96a62d799011b58a6337f345c748f0c8ac31a3f5aa7b3e0c44d4b7b')
 
 prepare() {
     cd "$srcdir/$pkgname"
