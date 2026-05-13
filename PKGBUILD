@@ -1,7 +1,7 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=sddm-conf
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Configuration editor for SDDM similar to sddm-config-editor, but written in C++"
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ license=('MIT')
 depends=('qt5-base')
 makedepends=('cmake' 'qt5-tools' 'qtilitools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d7ff3c814fbee20128c3f55896deb658c877f33f769ccfbd271e8dd68e3bfbe9')
+sha256sums=('7893f6998a2b64307d91db2e5f87628bd77999b729e5022b52fb5ccedd199535')
 
 prepare() {
-    sed -i 's|VERSION 0.2.0|VERSION 0.3.0|' ${pkgname}-${pkgver}/CMakeLists.txt
+    sed -i 's|VERSION 0.2.0|VERSION 0.4.0|' ${pkgname}-${pkgver}/CMakeLists.txt
 }
 
 build() {
