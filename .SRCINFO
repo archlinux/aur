@@ -1,6 +1,6 @@
 pkgbase = byedroid
 	pkgdesc = Terminal UI for Android development
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/cesarferreira/byedroid
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = byedroid
 	depends = libgit2
 	provides = bd
 	conflicts = bd
-	source = byedroid-0.7.0.crate::https://crates.io/api/v1/crates/byedroid/0.7.0/download
-	sha256sums = 2851b47f7fd80194ceee61a746f846e978b18e5e707e0a348284a12e227628ef
+	source = byedroid-0.8.0.crate::https://crates.io/api/v1/crates/byedroid/0.8.0/download
+	sha256sums = a91f9f88410cc65faf49f4e8db62c97b23715efbdcb5bb345c654b4417bb92b1
 
 pkgname = byedroid
