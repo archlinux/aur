@@ -38,19 +38,6 @@ package() {
 
     install -Dm755 "target/release/$_gitname" "$pkgdir/usr/bin/$_gitname"
 
-    # Resource files needed at runtime
-    install -d "$pkgdir/usr/share/$_gitname"
-    cp -r static "$pkgdir/usr/share/$_gitname/"
-    cp -r locales "$pkgdir/usr/share/$_gitname/"
-
-    # Wrapper: cd to shared dir so static/ is found at runtime
-    mv "$pkgdir/usr/bin/$_gitname" "$pkgdir/usr/share/$_gitname/$_gitname-bin"
-    cat > "$pkgdir/usr/bin/$_gitname" << 'WRAPPER'
-#!/bin/sh
-cd /usr/share/sshkeyman && exec ./sshkeyman-bin "$@"
-WRAPPER
-    chmod 755 "$pkgdir/usr/bin/$_gitname"
-
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_gitname/LICENSE" 2>/dev/null || true
     install -Dm644 README.md "$pkgdir/usr/share/doc/$_gitname/README.md"
 }
