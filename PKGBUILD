@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Lightweight Wayland application launcher — UI, daemon, and providers in one binary"
 arch=('x86_64')
@@ -74,7 +74,7 @@ install=owlry.install
 options=('!debug')
 
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v$pkgver.tar.gz")
-b2sums=('2e5b4264b0dd4b49ea6ef5adb1ed9d7b711bf8ad76467a4abe7275d1f2b6ad1c472a39e137b1b9cbda9d8a5d04d58247db8a1f02ca114994be606fc3dd8bab08')
+b2sums=('edc7580b08b3b89da67fba47d38031507794b5b70a786d3bebabfa45c97e3e45af59af8db4b3f4c85011b8eac05459f4f74bbfb0e97c099acc5f9f57e4fcdb7c')
 
 prepare() {
     cd "owlry"
@@ -86,6 +86,15 @@ build() {
     cd "owlry"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Force GNU ld.bfd. Arch's `extra/rust` defaults rustc to `-fuse-ld=lld`,
+    # and LLD's single-pass arg processing can't satisfy `-llua5.4` because
+    # mlua-sys+lua-src emit the `-l` flag before their `-L $OUT_DIR/lib`
+    # search path in the final link line (cargo:rustc-link-lib emitted
+    # before cargo:rustc-link-search). BFD does multi-pass and finds the
+    # archive regardless. RUSTFLAGS env-var beats any cargo config rustflags,
+    # which is necessary here because Arch's rust pkg appears to set its own
+    # RUSTFLAGS that we need to fully override.
+    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
     # 'full' enables every optional provider — the AUR binary is the
     # batteries-included experience. cargo install consumers can still opt
     # to --no-default-features and pick their own subset.
@@ -96,6 +105,7 @@ check() {
     cd "owlry"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
     cargo test --frozen --release --features full
 }
 
@@ -111,6 +121,7 @@ package() {
 
     # Documentation + example configuration.
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 data/owlry.example.lua "$pkgdir/usr/share/doc/$pkgname/owlry.example.lua"
     install -Dm644 data/config.example.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
     install -Dm644 data/style.example.css "$pkgdir/usr/share/doc/$pkgname/style.example.css"
 

@@ -1,6 +1,6 @@
 pkgbase = owlry
 	pkgdesc = Lightweight Wayland application launcher — UI, daemon, and providers in one binary
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	install = owlry.install
@@ -78,7 +78,7 @@ pkgbase = owlry
 	replaces = owlry-meta-tools
 	replaces = owlry-meta-full
 	options = !debug
-	source = owlry-2.0.1.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v2.0.1.tar.gz
-	b2sums = 2e5b4264b0dd4b49ea6ef5adb1ed9d7b711bf8ad76467a4abe7275d1f2b6ad1c472a39e137b1b9cbda9d8a5d04d58247db8a1f02ca114994be606fc3dd8bab08
+	source = owlry-2.1.0.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v2.1.0.tar.gz
+	b2sums = edc7580b08b3b89da67fba47d38031507794b5b70a786d3bebabfa45c97e3e45af59af8db4b3f4c85011b8eac05459f4f74bbfb0e97c099acc5f9f57e4fcdb7c
 
 pkgname = owlry
