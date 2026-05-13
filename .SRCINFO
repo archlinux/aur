@@ -1,7 +1,7 @@
 pkgbase = suprow
 	pkgdesc = Privacy-first desktop browser with spaces, quick access and built-in ad blocking
 	pkgver = 0.9.8.25.beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://suprow.app
 	arch = x86_64
 	license = LicenseRef-custom

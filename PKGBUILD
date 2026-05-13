@@ -3,7 +3,7 @@
 pkgname=suprow
 pkgver=0.9.8.25.beta
 _pkgver=0.9.8.25-beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy-first desktop browser with spaces, quick access and built-in ad blocking"
 arch=('x86_64')
 url="https://suprow.app"
@@ -23,8 +23,8 @@ package() {
     local _srcdir="${srcdir}/suprow-linux-x64"
 
     # Install application files to /opt/suprow
-    install -dm755 "${pkgdir}/opt"
-    cp -a "${_srcdir}" "${pkgdir}/opt/suprow"
+    install -dm755 "${pkgdir}/opt/suprow"
+    cp -a "${_srcdir}/"* "${pkgdir}/opt/suprow/"
 
     # Ensure correct permissions for binaries (zip may not preserve them)
     chmod 755 "${pkgdir}/opt/suprow/suprow"
