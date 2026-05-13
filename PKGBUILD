@@ -3,7 +3,7 @@
 _pkgname=xfwl4
 pkgname=${_pkgname}-git
 _pkgver=0.1.0dev
-pkgver=r446+6fe80c5
+pkgver=r456+993a0e8
 pkgrel=1
 pkgdesc="Wayland compositor for xfce4 (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -15,14 +15,8 @@ provides=("${_pkgname}=${_pkgver}")
 depends=('gtk3' 'xfconf>=4.21.1' 'libxfce4ui>=4.21.4' 'libdisplay-info' 'libdrm' 'libinput' 'mesa' 'pixman'
          'seatd' 'libxkbcommon')
 makedepends=('cargo' 'rust' 'git' 'meson')
-source=("${_pkgname}::git+https://gitlab.xfce.org/kelnos/xfwl4"
-        'fix_podir.patch'
-        'gettext1.0.patch'
-        'disable_xfwl4_binary_install_from_meson.patch')
-sha256sums=('SKIP'
-            '638c8251f11d4b9f312352d19cd1ddeb967b97223db2a774ed9a07f66dfa9808'
-            'eb047de3cc53a456b6d750e6dd4a681427f6a087419898858491cbb05ea02340'
-            '38b3cbd20567118871e1680120a5629f164868452c2329fbda11d12cc50396b8')
+source=("${_pkgname}::git+https://gitlab.xfce.org/kelnos/xfwl4")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -33,13 +27,6 @@ pkgver() {
 
 prepare() {
   cd ${_pkgname}
-  patch -Np2 -i ../fix_podir.patch
-  # Project pulls in bindings for gettext 0.26. We need rust bindings for 1.0
-  patch -Np2 -i ../gettext1.0.patch
-  # The custom install script for the xfwl4 binary doesn't respect the 
-  # --destdir flag and tries to install directly to /usr/bin
-  # Disable installing it with meson; we'll do it manually in package()
-  patch -Np2 -i ../disable_xfwl4_binary_install_from_meson.patch
   
   git submodule init
   git submodule update
@@ -47,6 +34,7 @@ prepare() {
 
 build() {
   local meson_options=(
+    -Duse-system-gettext=true
   )
 
   arch-meson "${_pkgname}" build "${meson_options[@]}"
@@ -55,5 +43,4 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dm755 build/xfwl4/release/xfwl4 "${pkgdir}"/usr/bin/xfwl4
 }
