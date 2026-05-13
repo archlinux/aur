@@ -1,0 +1,13 @@
+pkgbase = brother-hll2442dw-cups-bin
+	pkgdesc = CUPS wrapper for Brother HL-L2442DW printer
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=pl&lang=pl&prod=hll2442dw_eu
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com//welcome/dlf105959/hll2442dwpdrv-4.1.0-1.i386.deb
+	sha256sums = 96a60c3cb4359d25f0da09cbcc137cdf20744a65ac0c1866a4cd5c64639f096a
+
+pkgname = brother-hll2442dw-cups-bin
