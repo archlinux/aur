@@ -1,0 +1,18 @@
+pkgbase =	python-telnetlib3
+		pkgver = 4.0.2
+		pkgrel = 1
+		pkgdesc = "telnetlib3 is a feature-rich Telnet Server, Client, and Protocol library for Python 3.9 and newer."
+		arch = any
+		url = https://pypi.org/project/telnetlib3/
+		license = ISCL
+		depends = python
+    depends = python-wcwidth
+    depends = python-hatchling
+		makedepends = python-build
+    makedepends = python-installer
+    makedepends = python-setuptools
+    makedepends = python-wheel
+		source = https://files.pythonhosted.org/packages/source/t/telnetlib3/telnetlib3-4.0.2.tar.gz
+		sha256sums = 76726d7a7a34163b5dbef461e9cbf8fb4bda8f4fe7fcb225f56cbb4dcf5fd16e
+
+pkgname = python-telnetlib3
