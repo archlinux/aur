@@ -13,6 +13,15 @@ post_install() {
 	# cp -fv /opt/spark-store/extras/store.spark-app.spark-store.policy /usr/share/polkit-1/actions/store.spark-app.spark-store.policy
 	xdg-mime default spark-store.desktop x-scheme-handler/spk
 	update-mime-database /usr/share/mime || true
+
+    systemctl enable --now apm-daily-update
+
+    echo "========================================================"
+    echo -e "  APM Daily updates are enabled by default."
+    echo -e "  You can disable them with the following command:"
+    echo -e "  systemctl stop apm-daily-update"
+    echo -e "  systemctl disable apm-daily-update"
+    echo "========================================================"
 }
 
 post_upgrade() {
