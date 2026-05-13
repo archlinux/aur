@@ -10,14 +10,14 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=148.0.7778.96
+pkgver=148.0.7778.167
 pkgrel=1
 _launcher_ver=8
-_manual_clone=0
+_manual_clone=1
 _system_clang=1
 # ungoogled chromium variables
 _uc_usr=ungoogled-software
-_uc_ver=148.0.7778.96-1
+_uc_ver=148.0.7778.167-1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -79,8 +79,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         enable-widevine-arm64.patch
         use-oauth2-client-switches-as-default.patch
         glibc-2.42-baud-rate-fix.patch)
-sha256sums=('694d4e0269e11056c6dff748da7e8354bfbf90da7ce8f7467a0acfe2994a8688'
-            '13199ffa3bfafcdfa907116432f13f34bfc7767dafb09369ba7814adc570183d'
+sha256sums=('2e2f36e3cd1ebc4ad57fd310774a5e5e9db77883d5f9374fedeaabd3c103b819'
+            '16006bae1ec831a5cca59db79d8a111f5d72aad0f0126f4d44d2d3d1941b1bc0'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
@@ -219,8 +219,11 @@ prepare() {
            third_party/jdk/current/bin
 
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
-  ln -s /usr/bin/rustc third_party/rust-toolchain/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
+
+  # remove x86_64 binary and use our own
+  rm -f third_party/gperf/cipd/bin/gperf
+  ln -s /usr/bin/gperf third_party/gperf/cipd/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
