@@ -1,0 +1,22 @@
+pkgbase = cli-torrent-dl
+	pkgdesc = CLI utility to search and download torrents from major torrent sites
+	pkgver = 1.14
+	pkgrel = 1
+	url = https://github.com/X0R0X/cli-torrent-dl
+	arch = any
+	license = WTFPL
+	depends = python
+	depends = python-aiohttp
+	depends = python-beautifulsoup4
+	depends = python-pyperclip
+	depends = python-pyxdg
+	depends = python-uvloop
+	optdepends = qbittorrent: default torrent client command
+	optdepends = xclip: X11 clipboard support
+	optdepends = xsel: X11 clipboard support
+	optdepends = wl-clipboard: Wayland clipboard support
+	provides = tordl
+	source = cli-torrent-dl-1.14.tar.gz::https://github.com/X0R0X/cli-torrent-dl/archive/refs/tags/v1.14.tar.gz
+	sha256sums = 46c16569467c73387fa9ca7abacc669edb93cc53e0086f87911c26025b1ee448
+
+pkgname = cli-torrent-dl
