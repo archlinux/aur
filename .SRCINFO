@@ -1,7 +1,7 @@
 pkgbase = ase-explorer
 	pkgdesc = ASE Hierarchical Project Explorer with NerdFont Icons
-	pkgver = 0.0.1
-	pkgrel = 5
+	pkgver = 00.00.35
+	pkgrel = 1
 	url = https://github.com/antarien/ase-client-explorer
 	arch = x86_64
 	license = custom
