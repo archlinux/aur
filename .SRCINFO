@@ -1,6 +1,6 @@
 pkgbase = riptide
 	pkgdesc = A terminal UI music player for Tidal, built with Rust
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/fezzik-the-giant/riptide
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = riptide
 	makedepends = pkg-config
 	depends = mpv
 	depends = openssl
-	source = riptide-0.1.4.tar.gz::https://github.com/fezzik-the-giant/riptide/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = 30e83c25bb8ef2870609992adc8a79122b48b00f517334fdc8202770f088a2c1
+	source = riptide-0.2.0.tar.gz::https://github.com/fezzik-the-giant/riptide/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 8c9d82ff7804eaaef4db87e8d82975a4da24a572e8e6b548afa0ea8530039a6b
 
 pkgname = riptide
