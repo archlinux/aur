@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r98870.7e081f7b626
+pkgver=r98876.33b5ee6cdbf
 pkgrel=1
 pkgdesc='Software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -10,8 +10,8 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'git' 'ninja-makeflags')
 provides=('mingw-w64-vtk')
 conflicts=('mingw-w64-vtk')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("git+https://gitlab.kitware.com/vtk/vtk.git")
-sha256sums=('SKIP')
+source=("git+https://gitlab.kitware.com/vtk/vtk.git" diy2.patch)
+sha256sums=('SKIP' 'SKIP')
 
 _architectures="x86_64-w64-mingw32"
 
@@ -23,7 +23,7 @@ pkgver () {
 prepare() {
   cd "${srcdir}/vtk"
   # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
-  sed -i "/vtkNativePartitioningStrategy/d;/vtkRedistributeDataSetFilter/d" Filters/ParallelDIY2/CMakeLists.txt
+  patch -p1 -i ../diy2.patch
 }
 
 build() {

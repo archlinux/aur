@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vtk-git
 	pkgdesc = Software system for 3D computer graphics, image processing, and visualization (mingw-w64)
-	pkgver = r98870.7e081f7b626
+	pkgver = r98876.33b5ee6cdbf
 	pkgrel = 1
 	url = https://www.vtk.org
 	arch = any
@@ -37,6 +37,8 @@ pkgbase = mingw-w64-vtk-git
 	options = staticlibs
 	options = !strip
 	source = git+https://gitlab.kitware.com/vtk/vtk.git
+	source = diy2.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mingw-w64-vtk-git
