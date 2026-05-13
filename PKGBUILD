@@ -2,7 +2,7 @@
 
 pkgname=codex-plus-plus
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Codex++ auto-injector bridge for openai-codex-desktop'
 arch=('any')
 url='https://github.com/BigPizzaV3/CodexPlusPlus'
@@ -13,6 +13,18 @@ depends=(
   'python'
   'python-requests'
   'python-websocket-client'
+)
+provides=(
+  'codexplusplus-codex-desktop'
+  'openai-codex-desktop-codexplusplus'
+)
+conflicts=(
+  'codexplusplus-codex-desktop'
+  'openai-codex-desktop-codexplusplus'
+)
+replaces=(
+  'codexplusplus-codex-desktop'
+  'openai-codex-desktop-codexplusplus'
 )
 makedepends=(
   'python-build'
