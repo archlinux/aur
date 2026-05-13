@@ -1,5 +1,5 @@
 pkgname="antivirus"
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=2
 pkgdesc="A antivirus by Jeicob_hack2015"
 arch=('x86_64')
