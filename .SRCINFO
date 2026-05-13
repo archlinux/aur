@@ -1,7 +1,7 @@
 pkgbase = hyprlang2lua
 	pkgdesc = Convert legacy Hyprland hyprlang (.conf) configuration to the Hyprland 0.55+ Lua format
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EIonTusk/hyprlang2lua
 	arch = x86_64
 	arch = aarch64
