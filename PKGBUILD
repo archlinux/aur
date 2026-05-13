@@ -2,7 +2,7 @@
 
 pkgname=gitee-lfs-multipart-uploader-git
 pkgver=1.0.4.r16.g0ad46f4
-pkgrel=1
+pkgrel=4
 pkgdesc="Gitee LFS high-speed object storage direct transfer tool"
 arch=($CARCH)
 url="https://gitee.com/oscstudio/gitee-lfs-multipart-uploader"
@@ -44,16 +44,36 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
+    export CGO_ENABLED=1
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    # export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     export GO111MODULE=on
     export GOPROXY=https://goproxy.cn,direct
 
+    RAW_GO_VERSION=$(go version)
+    GO_VERSION="${RAW_GO_VERSION/go version go/}"
+    BUILD_TIME=$(date --rfc-3339=seconds 2>/dev/null || date -Iseconds)
+    BUILD_COMMIT=$(git rev-parse HEAD 2>/dev/null || echo "unknown")
+
+    if [ -f "go.mod" ]; then
+        MODULE_NAME=$(head -1 go.mod | awk '{print $2}')
+        echo "Get the module name from go.mod: ${MODULE_NAME}"
+        COMMON_PACKAGE="${MODULE_NAME}/internal/common"
+    else
+        COMMON_PACKAGE="main"
+    fi
+
+    LD_FLAGS="-X '${COMMON_PACKAGE}.Version=${pkgver}'"
+    LD_FLAGS="${LD_FLAGS} -X '${COMMON_PACKAGE}.BuildTime=${BUILD_TIME}'"
+    LD_FLAGS="${LD_FLAGS} -X '${COMMON_PACKAGE}.BuildCommit=${BUILD_COMMIT}'"
+    LD_FLAGS="${LD_FLAGS} -X '${COMMON_PACKAGE}.BuildGoVersion=${GO_VERSION}'"
+
     mkdir -pv build/
-    go build -o build/multipart-transfer ./cmd/multipart-transfer
+    go build -o build/multipart-transfer -ldflags "${LD_FLAGS}" ./cmd/multipart-transfer
 }
 
 package() {

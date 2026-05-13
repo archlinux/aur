@@ -1,7 +1,7 @@
 pkgbase = gitee-lfs-multipart-uploader-git
 	pkgdesc = Gitee LFS high-speed object storage direct transfer tool
 	pkgver = 1.0.4.r16.g0ad46f4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://gitee.com/oscstudio/gitee-lfs-multipart-uploader
 	arch = x86_64
 	license = Apache-2.0
