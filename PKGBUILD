@@ -1,7 +1,7 @@
 # Maintainer: cap153 <1536989047@qq.com>
 
 pkgname=lanchat-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A cross-platform LAN chat software that supports file transfer, written in Rust."
 arch=("x86_64")
