@@ -19,19 +19,27 @@ build() {
     bsdtar -xf "${srcdir}/Firma Digital/Agente GAUDI/agente-gaudi_26.0_amd64.rpm" -C "${srcdir}/Firma Digital/Agente GAUDI"
 }
 
-package_bccr-certificados() {
-    depends=("p11-kit")
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/CA POLITICA PERSONA FISICA - COSTA RICA v2.crt" "${pkgdir}/etc/ca-certificates/trust-source/anchors/CA POLITICA PERSONA FISICA - COSTA RICA v2.crt" 
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/CA POLITICA PERSONA JURIDICA - COSTA RICA v2.crt" "${pkgdir}/etc/ca-certificates/trust-source/anchors/CA POLITICA PERSONA JURIDICA - COSTA RICA v2.crt"
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/CA POLITICA SELLADO DE TIEMPO - COSTA RICA v2.crt" "${pkgdir}/etc/ca-certificates/trust-source/anchors/CA POLITICA SELLADO DE TIEMPO - COSTA RICA v2.crt"
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/CA RAIZ NACIONAL - COSTA RICA v2.crt" "${pkgdir}/etc/ca-certificates/trust-source/anchors/CA RAIZ NACIONAL - COSTA RICA v2.crt"
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/CA SINPE - PERSONA FISICA v2(1).crt" "${pkgdir}/etc/ca-certificates/trust-source/anchors/CA SINPE - PERSONA FISICA v2(1).crt"
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/CA SINPE - PERSONA FISICA v2.cer" "${pkgdir}/etc/ca-certificates/trust-source/anchors/CA SINPE - PERSONA FISICA v2.cer"
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/CA SINPE - PERSONA JURIDICA v2(1).crt" "${pkgdir}/etc/ca-certificates/trust-source/anchors/CA SINPE - PERSONA JURIDICA v2(1).crt"
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/CA SINPE - PERSONA JURIDICA v2.cer" "${pkgdir}/etc/ca-certificates/trust-source/anchors/CA SINPE - PERSONA JURIDICA v2.cer"
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/Certificado Banco Central.cer" "${pkgdir}/etc/ca-certificates/trust-source/anchors/Certificado Banco Central.cer"
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/GlobalSign CodeSigning CA - SHA256 - G3.cer" "${pkgdir}/etc/ca-certificates/trust-source/anchors/GlobalSign CodeSigning CA - SHA256 - G3.cer"
-    install -Dm644 "${srcdir}/Firma Digital/Certificados/GlobalSign Root CA - R3.cer" "${pkgdir}/etc/ca-certificates/trust-source/anchors/GlobalSign Root CA - R3.cer"
+package_certificados-bccr() {
+    depends=("p11-kit" "pcsclite")
+    install=certificados.install
+    certs=(
+        "CA POLITICA PERSONA FISICA - COSTA RICA v2.crt"
+        "CA POLITICA PERSONA JURIDICA - COSTA RICA v2.crt" 
+        "CA POLITICA SELLADO DE TIEMPO - COSTA RICA v2.crt"
+        "CA RAIZ NACIONAL - COSTA RICA v2.crt"
+        "CA SINPE - PERSONA FISICA v2(1).crt"
+        "CA SINPE - PERSONA FISICA v2.cer"
+        "CA SINPE - PERSONA JURIDICA v2(1).crt"
+        "CA SINPE - PERSONA JURIDICA v2.cer"
+        "Certificado Banco Central.cer"
+        "GlobalSign CodeSigning CA - SHA256 - G3.cer"
+        "GlobalSign Root CA - R3.cer"
+    )
+    msg "Installing certificates"
+    for cert in "${certs[@]}"; do
+        msg2 "Installing $cert"
+        install -Dm644 "${srcdir}/Firma Digital/Certificados/${cert}" "${pkgdir}/etc/ca-certificates/trust-source/anchors/${cert}" 
+    done
 }
 
 package_agente-gaudi() {
