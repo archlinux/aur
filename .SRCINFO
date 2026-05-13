@@ -1,6 +1,6 @@
 pkgbase = scroll-rs-bin
 	pkgdesc = Terminal web browser written in Rust
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/isene/scroll
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = scroll-rs-bin
 	provides = scroll
 	conflicts = scroll-rs
 	options = !strip
-	source = README-0.3.2.md::https://raw.githubusercontent.com/isene/scroll/v0.3.2/README.md
+	source = README-0.3.3.md::https://raw.githubusercontent.com/isene/scroll/v0.3.3/README.md
 	sha256sums = 3e102a72cc961a1a579d0a03a7f7414ad2d7536a320edfe112d99951a1c9a3eb
-	source_x86_64 = scroll-x86_64-0.3.2::https://github.com/isene/scroll/releases/download/v0.3.2/scroll-linux-x86_64
-	sha256sums_x86_64 = 4b2c5dad76616b79a73fec6f7ecf68d7221060d7cd92ec39a7df9b43fdca3d43
+	source_x86_64 = scroll-x86_64-0.3.3::https://github.com/isene/scroll/releases/download/v0.3.3/scroll-linux-x86_64
+	sha256sums_x86_64 = 35e9c44c13b3c4225d8a1b95380acce5da4a791c192eef6d9cce960b2c56d281
 
 pkgname = scroll-rs-bin
