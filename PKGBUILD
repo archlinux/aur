@@ -1,7 +1,7 @@
 # Maintainer: Seann Moser <you@example.com>
 pkgname=ymn-git
 pkgver=0.1.0.r0.g05825b6
-pkgrel=1
+pkgrel=2
 pkgdesc="Yomuna visual novel transcript and flashcard tool"
 arch=('x86_64')
 url="https://github.com/DarlingGoose/ymn"
@@ -28,8 +28,14 @@ optdepends=(
 )
 provides=('ymn')
 conflicts=('ymn')
-source=('ymn::git+https://github.com/DarlingGoose/ymn.git#branch=main')
-sha256sums=('SKIP')
+source=(
+  'ymn::git+https://github.com/DarlingGoose/ymn.git#branch=main'
+  'ymn.desktop'
+)
+sha256sums=(
+  'SKIP'
+  'ff3dcc09fe17519f28df9b5d036d99a4097d7b8cea7f95206cce1beec428aac7'
+)
 
 pkgver() {
   cd ymn
@@ -81,5 +87,6 @@ package() {
   cd ymn
 
   install -Dm755 build/ymn "$pkgdir/usr/bin/ymn"
+  install -Dm644 "$srcdir/ymn.desktop" "$pkgdir/usr/share/applications/ymn.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
