@@ -1,6 +1,6 @@
 pkgbase = procps-ng-git
 	pkgdesc = Utilities for monitoring your system and its processes
-	pkgver = 4.0.6.r1.g15056a27
+	pkgver = 4.0.6.r52.g1dff30b1
 	pkgrel = 1
 	url = https://gitlab.com/procps-ng/procps
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = procps-ng-git
 	provides = procps
 	provides = procps-ng
 	provides = sysvinit-tools
-	provides = libproc-2.so
+	provides = libproc2.so
 	conflicts = procps
 	conflicts = procps-ng
 	conflicts = sysvinit-tools
