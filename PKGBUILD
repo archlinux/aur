@@ -30,7 +30,7 @@ source=(
 noextract=("$_jar")
 sha256sums=('3c8132a43bfa9b959b0c8fdbdcf9aa01bd809047ff4fbc1a4aae0eb71331f05e'
             '1beb44e42760445e6a8e83f354926100fbf6161f624782d6d78a1f81130046f2'
-            'c08aa53d12d6b9944bed6e624ed271c94c771e24e9578600b5718b9754a39d3c')
+            '9077b3cdaf76df7179e80033fb471ae5c42698a4f6f93802e26779b04c638c0a')
 
 build() {
    # Add missing abort handler

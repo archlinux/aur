@@ -24,6 +24,6 @@ pkgbase = suwayomi-server-bin
 	source = https://raw.githubusercontent.com/Suwayomi/Suwayomi-Server/refs/tags/v2.2.2100/scripts/resources/catch_abort.c
 	sha256sums = 3c8132a43bfa9b959b0c8fdbdcf9aa01bd809047ff4fbc1a4aae0eb71331f05e
 	sha256sums = 1beb44e42760445e6a8e83f354926100fbf6161f624782d6d78a1f81130046f2
-	sha256sums = c08aa53d12d6b9944bed6e624ed271c94c771e24e9578600b5718b9754a39d3c
+	sha256sums = 9077b3cdaf76df7179e80033fb471ae5c42698a4f6f93802e26779b04c638c0a
 
 pkgname = suwayomi-server-bin
