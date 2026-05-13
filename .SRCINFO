@@ -1,0 +1,22 @@
+pkgbase = python-geoarray
+	pkgdesc = A fast Python interface for image geodata - either on disk or in memory.
+	pkgver = 0.19.2
+	pkgrel = 1
+	url = https://git.gfz-potsdam.de/danschef/geoarray
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cartopy
+	depends = python-gdal
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-py-tools-ds
+	depends = python-shapely
+	depends = python-scikit-image
+	source = geoarray-0.19.2::https://git.gfz-potsdam.de/danschef/geoarray/-/archive/v0.19.2/geoarray-v0.19.2.tar.gz
+	sha256sums = ce2bdf315ecfb572b86ae6e8016e6530a866a946f6e08f0e4ef2f0d09568ef3b
+
+pkgname = python-geoarray
