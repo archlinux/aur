@@ -21,12 +21,12 @@
 # 75             7.5           GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4
 #
 # Reference: https://developer.nvidia.com/cuda-gpus
-_cuda_arch="${CUDA_ARCH:-}"
+_cuda_arch="${CUDA_ARCH:-75;86;89;120}"
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure CUDA version of the push-to-talk voice-to-text tool"
 arch=(x86_64)
 url="https://voxtype.io"
