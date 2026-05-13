@@ -1,0 +1,18 @@
+pkgbase = ikuuu-vpn
+	pkgdesc = iKuuuVPN (repacked from .deb)
+	pkgver = 0.14.4
+	pkgrel = 1
+	url = https://ikuuu.dev/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	provides = ikuuu_vpn
+	provides = ikuuu-vpn
+	conflicts = ikuuu_vpn
+	conflicts = ikuuu-vpn
+	options = !strip
+	options = !debug
+	source = ikuuu_vpn-0.14.4-5dfad582-linux-amd64.deb::https://1858587525.v.123pan.cn/1858587525/client/ikuuu_vpn-0.14.4-5dfad582/ikuuu_vpn-0.14.4-5dfad582-linux-amd64.deb
+	sha256sums = a2c0cece4b85d6181fdac360d640358169257cf4cc1bedd5d02e8b6bbf5c2972
+
+pkgname = ikuuu-vpn
