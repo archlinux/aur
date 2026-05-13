@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FAFAF8"/>
+      <stop offset="100%" style="stop-color:#F0EDE8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background - with macOS padding -->
+  <rect x="24" y="24" width="976" height="976" rx="216" fill="url(#bg)"/>
+  
+  <!-- Terminal prompt chevron -->
+  <path d="M 180 370 L 330 512 L 180 654" 
+        fill="none" stroke="#3B82F6" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Big S -->
+  <text x="575" y="530" 
+        font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', 'Courier New', monospace" 
+        font-weight="700" 
+        font-size="460" 
+        fill="#2D2B28" 
+        text-anchor="middle" 
+        dominant-baseline="central">S</text>
+  
+  <!-- Underscore cursor -->
+  <line x1="790" y1="700" x2="870" y2="700" 
+        stroke="#3B82F6" stroke-width="32" stroke-linecap="round" opacity="0.6"/>
+</svg>

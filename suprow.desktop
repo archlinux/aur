@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=suprow
+GenericName=Web Browser
+Comment=Privacy-first desktop browser with spaces, quick access, built-in ad blocking and zero cloud dependency. Your data stays on your machine.
+Icon=suprow
+Exec=/opt/suprow/suprow
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Network;WebBrowser;
+StartupWMClass=suprow
+MimeType=x-scheme-handler/https;x-scheme-handler/http;
