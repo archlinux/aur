@@ -1,0 +1,23 @@
+pkgbase = tclint
+	pkgdesc = A collection of Tcl CLI tools: linter, formatter, language server
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/nmoroze/tclint
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = git
+	depends = python>=3.10
+	depends = python-ply
+	depends = python-pathspec
+	depends = python-importlib-metadata
+	depends = python-pygls
+	depends = python-voluptuous
+	source = tclint-0.8.0::git+https://github.com/nmoroze/tclint.git#tag=v0.8.0
+	sha256sums = 341a6c57269efc5952dd731520998e2e8c50eedfe07c19ede3bbf9f280978d8e
+
+pkgname = tclint
