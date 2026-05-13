@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/node /usr/lib/9router/cli.js --skip-update "$@"
+exec /usr/bin/node /usr/lib/node_modules/9router/cli.js --skip-update "$@"
