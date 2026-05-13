@@ -21,8 +21,8 @@ conflicts=('aria2')
 provides=("aria2=${pkgver%.*}")
 source=("$pkgname::git+https://github.com/aria2/aria2.git"
          nettle-4.patch)
-sha256sums=('SKIP'
-            'a1968322a46b4d3f0c116d3bac6c94b200458263f5bf4ca06fae2df186ff1f52')
+sha512sums=('SKIP'
+            'b3c2133debdaf986568f5a2e96380a5d898074346d8a4cd9b2236d8c5c93f55a73e3db4545f17a759880e998058ad677d717cd3445ea43e91bd1b4966f7ff092')
 
 
 pkgver() {
