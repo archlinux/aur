@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Mechanical keyboard sound simulator for Wayland (read-only evdev + PipeWire)"
 arch=('any')
-url="https://github.com/HikariLucky/mechclick"
+url="https://github.com/HikariLucky/klickity"
 license=('MIT')
 depends=('python>=3.10' 'python-evdev' 'python-numpy' 'python-sounddevice' 'python-soundfile' 'pipewire')
 makedepends=('git' 'python-setuptools' 'python-wheel')
