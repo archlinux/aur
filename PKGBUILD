@@ -2,7 +2,7 @@
 
 pkgname=keyboard-app
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal on-screen keyboard"
 arch=('x86_64')
 url="https://github.com/occamist/keyboard-app"

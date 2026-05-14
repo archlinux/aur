@@ -1,7 +1,7 @@
 pkgbase = keyboard-app
 	pkgdesc = Universal on-screen keyboard
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/occamist/keyboard-app
 	arch = x86_64
 	license = MIT
