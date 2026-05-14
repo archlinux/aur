@@ -2,7 +2,7 @@ pkgbase = keyboard-app
 	pkgdesc = Universal on-screen keyboard
 	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://github.com/mrwormhole/keyboard-app
+	url = https://github.com/occamist/keyboard-app
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -24,7 +24,7 @@ pkgbase = keyboard-app
 	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = keyboard-app-0.3.0.tar.gz::https://github.com/mrwormhole/keyboard-app/archive/v0.3.0.tar.gz
+	source = keyboard-app-0.3.0.tar.gz::https://github.com/occamist/keyboard-app/archive/v0.3.0.tar.gz
 	sha256sums = df27c4b97f6df6608236b6c5b86c0ed43977e6136904cc866c8fd1e27289555a
 
 pkgname = keyboard-app
