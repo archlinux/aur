@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqminer
-_pkgver=9.7
+_pkgver=9.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('084c1f805f31e9672fcc393362577e5c')
-b2sums=('1ca25cd84448a0e70fbd48504f7d31a52774b2c10a5943d79353105228a9cbaa57e8b29bacdc6882683d1c6ba9742040d37bbbf1aa246044bc7501b8382164ef')
+md5sums=('e05ad843956fce4791be6f9d7df632b8')
+b2sums=('d156cf723c87798b94634d34cc1a0d4e5a5a4baf43d1c62d74d33724d90b5e99dba920155508e5daf92d65082c2c903429077783b8b5a303256b44b2bb9b6514')
 
 build() {
   mkdir build
