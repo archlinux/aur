@@ -20,6 +20,7 @@ makedepends=(
 	'python'
     'qt6-base'
     'qt6-tools'
+    'qt6-svg'
 )
 depends=(
 	'dbus'
