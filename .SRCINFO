@@ -1,7 +1,7 @@
 pkgbase = nut-monitor
 	pkgdesc = GUI to manage devices connected a NUT server
-	pkgver = 2.8.4
-	pkgrel = 3
+	pkgver = 2.8.5
+	pkgrel = 1
 	url = http://www.networkupstools.org/
 	arch = any
 	license = GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = nut-monitor
 	depends = nut
 	depends = python
 	depends = python-pyqt6
-	source = nut::git+https://github.com/networkupstools/nut.git#tag=v2.8.4
-	sha256sums = 6276aa5ba1a2a7ad3831cac7db090a7bbe9bbbc98c5e8723d57e25f09240e254
+	source = nut::git+https://github.com/networkupstools/nut.git#tag=v2.8.5
+	sha256sums = e4f57efb3cf7f2433cda39835b77f9f1754b9b9f86e4c8e8925eafc78c1d1065
 
 pkgname = nut-monitor

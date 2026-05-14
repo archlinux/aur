@@ -4,12 +4,11 @@
 
 _pkgname=nut
 pkgname=nut-monitor
-pkgver=2.8.4
-pkgrel=3
+pkgver=2.8.5
+pkgrel=1
 pkgdesc='GUI to manage devices connected a NUT server'
 arch=(any)
 url=http://www.networkupstools.org/
-_ghurl=https://github.com/networkupstools/${_pkgname}
 license=(GPL-3.0-or-later)
 depends=(
   hicolor-icon-theme
@@ -22,13 +21,22 @@ makedepends=(
   git
   jq
 )
+_ghurl=https://github.com/networkupstools/${_pkgname}
 source=(${_pkgname}::git+${_ghurl}.git#tag=v${pkgver})
-sha256sums=('6276aa5ba1a2a7ad3831cac7db090a7bbe9bbbc98c5e8723d57e25f09240e254')
+sha256sums=('e4f57efb3cf7f2433cda39835b77f9f1754b9b9f86e4c8e8925eafc78c1d1065')
 
 prepare() {
   cd ${_pkgname}
 
   ./autogen.sh
+
+  sed \
+    's|/bin/sh|/usr/bin/sh|' \
+    -i scripts/python/app/NUT-Monitor
+
+  sed \
+    's|@PYTHON3@|/usr/bin/python|' \
+    -i scripts/python/app/NUT-Monitor-py3qt6.in
 
   sed \
     's|os.path.dirname( sys.argv\[0\] )|"/usr/share/nut-monitor"|' \
@@ -37,7 +45,7 @@ prepare() {
 
 build() {
   # configuration adopted from the nut package
-  local _configure_args
+  local -a _configure_args
   _configure_args=(
     --prefix=/usr
     --datadir=/usr/share/nut
