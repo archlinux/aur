@@ -1,0 +1,20 @@
+pkgbase = python-hatch-cython-varde-git
+	pkgdesc = Vardë fork of hatch-cython (GIT version)
+	pkgver = r189.b4199ba
+	pkgrel = 1
+	url = https://github.com/Varde-s-Forks/hatch-cython
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = cython
+	provides = python-hatch-cython
+	conflicts = python-hatch-cython
+	source = hatch_cython::git+https://github.com/Varde-s-Forks/hatch-cython.git
+	sha256sums = SKIP
+
+pkgname = python-hatch-cython-varde-git
