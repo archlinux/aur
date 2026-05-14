@@ -1,7 +1,7 @@
 pkgbase = fftw2-float
 	pkgdesc = A C subroutine library for computing the discrete Fourier transform (DFT); Defaults to single precision
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fftw.org/
 	install = fftw2-float.install
 	arch = i686
@@ -13,8 +13,9 @@ pkgbase = fftw2-float
 	options = !libtool
 	source = http://www.fftw.org/fftw-2.1.5.tar.gz
 	source = doctex.patch
+	source = mpi-comm-f2c.patch
 	md5sums = 8d16a84f3ca02a785ef9eb36249ba433
 	md5sums = ab9e67b83c3254f32aa12b9b16b7d80f
+	md5sums = c3754dcce679c9082e11f3ad7d837c96
 
 pkgname = fftw2-float
-

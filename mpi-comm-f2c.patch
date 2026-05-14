@@ -1,0 +1,13 @@
+--- fftw-2.1.5/mpi/fftw_f77_mpi.h.orig	2003-03-16 18:43:18.000000000 -0500
++++ fftw-2.1.5/mpi/fftw_f77_mpi.h	2003-03-16 18:43:18.000000000 -0500
+@@ -47,7 +47,9 @@
+ */
+
+ #if defined(HAVE_MPI_COMM_F2C)
+-#  define FFTW_MPI_COMM_F2C(comm) MPI_Comm_f2c(*((MPI_Comm *) comm))
++/* Fortran passes MPI communicators as integers (MPI_Fint) by reference.
++   Cast to MPI_Fint* so MPI_Comm_f2c receives the expected integer type. */
++#  define FFTW_MPI_COMM_F2C(comm) MPI_Comm_f2c(*((MPI_Fint *) comm))
+ #elif defined(FFTW_USE_F77_MPI_COMM)
+ #  define FFTW_MPI_COMM_F2C(comm) (* ((MPI_Comm *) comm))
+ #elif defined(FFTW_USE_F77_MPI_COMM_P)

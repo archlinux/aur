@@ -1,9 +1,11 @@
 # Maintainer: Aaron Ali <t0nedef@causal.ca>
 # Contributor: damir <damir@archlinux.org>
+# Contributor: Jakub Smulski <hgonomeg@gmail.com>
+
 
 pkgname=fftw2-float
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A C subroutine library for computing the discrete Fourier transform (DFT); Defaults to single precision"
 arch=('i686' 'x86_64')
 url="http://www.fftw.org/"
@@ -15,6 +17,7 @@ provides=(fftw2)
 source=(
 	"http://www.fftw.org/fftw-${pkgver}.tar.gz"
 	"doctex.patch"
+	"mpi-comm-f2c.patch"
 )
 install=${pkgname}.install
 
@@ -32,8 +35,10 @@ build() {
 	make distclean
 	cd ..
 	patch -p0 < doctex.patch
+	patch -p0 < mpi-comm-f2c.patch
 
 	# copy source tree for two build options
+	rm -rf fftw-${pkgver}-double
 	cp -r fftw-${pkgver} fftw-${pkgver}-double
 
   # build single precision
@@ -79,4 +84,5 @@ package() {
 }
 #
 md5sums=('8d16a84f3ca02a785ef9eb36249ba433'
-         'ab9e67b83c3254f32aa12b9b16b7d80f')
+         'ab9e67b83c3254f32aa12b9b16b7d80f'
+         'c3754dcce679c9082e11f3ad7d837c96')
