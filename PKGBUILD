@@ -2,7 +2,7 @@
 # Contributor: Foxma <foxma at fermentedfox dot co dot uk>
 
 pkgname=mixing-station
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=2
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
@@ -18,7 +18,7 @@ source=(
   'ms-icon.png::https://mixingstation.app/ms-docs/assets/ms.png'
   'mixing-station.desktop')
 sha256sums=(
-  '43a79ac6e0a26ec45b7ee75e61df25e862366c0f833a73ff1af34bab589515f7' # mixing-station.zip
+  '548767d5296e8529d316b816e60240e82559385bddf2402a71c78d73ddec29eb' # mixing-station.zip
   '37b9813d290880f5ff73d569d354867d70a822c3ca87150db7415130b3606410' # mixing-station
   'a5d350e62b37f9394944421d94aaa1a823f396a0e76727cb37898029bc5d77bf' # copyright.txt
   '2a9b5fedbaf45ff7c7822b9cfc6dd50541b68ca39545611814f034608c2f9a00' # ms-icon.png
