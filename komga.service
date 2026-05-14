@@ -8,6 +8,7 @@ Group=komga
 Restart=always
 RestartSec=5
 Type=simple
+SuccessExitStatus=143
 Environment=XDG_CONFIG_HOME=/var/lib/komga
 EnvironmentFile=-/etc/komga.conf
 WorkingDirectory=/var/lib/komga

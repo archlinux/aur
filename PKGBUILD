@@ -3,7 +3,7 @@
 
 pkgname=komga
 pkgver=1.24.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Media server for comics/mangas/BDs with API and OPDS support'
 arch=(any)
 url=https://komga.org
@@ -24,7 +24,7 @@ sha256sums=('3b4e9b1ede0c8062f815fcf49655325f454cffa3269e348d1858f2dd1f3f2752'
             '0c34b357f56a8d8947e5bf153d8a02ca378611f089d8a3c371667f28c223653f'
             'ea583b007a654b24e96838033ae1ce01bd66a0aacf4bda429bb8bbec1bf400ef'
             'a0265a0b8ee1bc887033830c21915939efb6872337dccd5b79edb4ca9e403c1d'
-            'afab9337acdcd5da316bf2d1615b8baed5397372a8ba917383ba480d7f30a699'
+            '36befa343334e370acc01bb0d94427f39c4b0b53de4fd47bc07d6acd5d5782f3'
             '26347d880e10a24d3b4a17a8c6d9dc7c15cda21f50d6a07a8602ab67cd6f2d02'
             '81687c1769a6dcf0df72fed1bc23146f0a36525f8a0f2c279d31bc79b4809a0f')
 
