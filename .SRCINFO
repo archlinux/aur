@@ -1,0 +1,25 @@
+pkgbase = hypr-kdeconnect-fix-git
+	pkgdesc = RemoteDesktop portal bridge for KDE Connect remote input on Hyprland
+	pkgver = r11.ea55f66
+	pkgrel = 1
+	url = https://github.com/gfhdhytghd/hypr-kdeconnect-fix
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gcc
+	makedepends = qt6-base>=6.5
+	makedepends = wayland>=1.20
+	depends = xdg-desktop-portal
+	depends = qt6-base>=6.5
+	depends = wayland>=1.20
+	depends = libxkbcommon>=1.5
+	depends = libei>=1.4
+	provides = hypr-kdeconnect-fix
+	conflicts = hypr-kdeconnect-fix
+	source = hypr-kdeconnect-fix::git+https://github.com/gfhdhytghd/hypr-kdeconnect-fix
+	sha256sums = SKIP
+
+pkgname = hypr-kdeconnect-fix-git
