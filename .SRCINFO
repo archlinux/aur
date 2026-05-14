@@ -8,10 +8,6 @@ pkgbase = hypr-kdeconnect-fix-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = pkgconf
-	makedepends = gcc
-	makedepends = qt6-base>=6.5
-	makedepends = wayland>=1.20
 	depends = xdg-desktop-portal
 	depends = qt6-base>=6.5
 	depends = wayland>=1.20

@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/gfhdhytghd/hypr-kdeconnect-fix"
 license=('MIT')
 depends=('xdg-desktop-portal' 'qt6-base>=6.5' 'wayland>=1.20' 'libxkbcommon>=1.5' 'libei>=1.4')
-makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'gcc' 'qt6-base>=6.5' 'wayland>=1.20')
+makedepends=('git' 'cmake' 'ninja')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}")
