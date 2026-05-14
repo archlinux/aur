@@ -3,7 +3,7 @@
 
 pkgname=libccp4
 pkgver=8.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Protein X-ray crystallography toolkit - Libraries"
 arch=('i686' 'x86_64')
 url="http://www.ccp4.ac.uk/"
@@ -17,8 +17,13 @@ sha256sums=('cb813ae86612a0866329deab7cee96eac573d81be5b240341d40f9ad5322ff2d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  export CFLAGS="-std=gnu17"
-  ./configure --prefix=/usr --enable-shared --datadir=/usr/share/ccp4 --disable-static --disable-fortran
+  export FFLAGS="-fallow-argument-mismatch -std=f2008"
+  export CFLAGS="-Wno-incompatible-pointer-types -std=gnu17"
+  ./configure --prefix=/usr \
+              --enable-shared \
+              --datadir=/usr/share/ccp4 \
+              --disable-static
+  #            --disable-fortran
   make
 }
 
@@ -29,4 +34,5 @@ package() {
   # Some libraries, e.g. Clipper, need it as 'libccp4c.pc'
   install -dm755 "$pkgdir/usr/lib/pkgconfig"
   ln -s "/usr/lib/pkgconfig/ccp4c.pc" "$pkgdir/usr/lib/pkgconfig/libccp4c.pc"
+  ln -s "/usr/lib/pkgconfig/ccp4f.pc" "$pkgdir/usr/lib/pkgconfig/libccp4f.pc"
 } 
