@@ -1,0 +1,71 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: orange-guo <orange-guo@users.noreply.github.com>
+Date: Thu, 14 May 2026 00:00:00 +0000
+Subject: [PATCH] Gate mouse resizing behind advanced mouse actions
+
+When advanced_mouse_actions is disabled, keep normal mouse reporting and
+text selection behavior intact but avoid treating pane frame drags and
+Ctrl+wheel events as pane resize gestures.
+---
+diff --git a/zellij-server/src/tab/mouse_handler.rs b/zellij-server/src/tab/mouse_handler.rs
+index 97f4ce2..8e1828a 100644
+--- a/zellij-server/src/tab/mouse_handler.rs
++++ b/zellij-server/src/tab/mouse_handler.rs
+@@ -216,6 +216,7 @@ struct MouseEventContext {
+     pinned_unselectable: Option<PaneId>,
+     focus_follows_mouse: bool,
+     mouse_click_through: bool,
++    advanced_mouse_actions: bool,
+ }
+ 
+ fn edge_and_delta_to_strategies(
+@@ -399,6 +400,7 @@ impl MouseHandler {
+             pinned_unselectable,
+             focus_follows_mouse: tab.focus_follows_mouse,
+             mouse_click_through: tab.mouse_click_through,
++            advanced_mouse_actions: tab.advanced_mouse_actions,
+         })
+     }
+ 
+@@ -1252,7 +1254,7 @@ impl MouseHandler {
+ 
+         if event.wheel_up || event.wheel_down {
+             if let Some(pane_id) = ctx.pane_id_at_position {
+-                if event.ctrl {
++                if event.ctrl && ctx.advanced_mouse_actions {
+                     if event.wheel_up {
+                         return Ok(MouseAction::ResizeScrollUp { pane_id });
+                     }
+@@ -1273,6 +1275,9 @@ impl MouseHandler {
+         let is_ctrl_left_press =
+             event.ctrl && event.left && event.event_type == MouseEventType::Press;
+         if is_ctrl_left_press {
++            if !ctx.advanced_mouse_actions {
++                return Ok(MouseAction::NoAction);
++            }
+             let Some(details) = &ctx.clicked_pane else {
+                 return Ok(MouseAction::NoAction);
+             };
+@@ -1322,12 +1327,14 @@ impl MouseHandler {
+                 }
+ 
+                 if let Some(edge) = details.edge {
+-                    return Ok(MouseAction::StartResize {
+-                        pane_id: details.pane_id,
+-                        edge,
+-                        is_floating: false,
+-                        position: event.position,
+-                    });
++                    if ctx.advanced_mouse_actions {
++                        return Ok(MouseAction::StartResize {
++                            pane_id: details.pane_id,
++                            edge,
++                            is_floating: false,
++                            position: event.position,
++                        });
++                    }
+                 }
+             }
+ 
+-- 
+2.51.0

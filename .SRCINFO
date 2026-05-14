@@ -1,0 +1,26 @@
+pkgbase = zellij-no-mouse-resize
+	pkgdesc = Zellij with advanced_mouse_actions also gating pane mouse resize
+	pkgver = 0.44.3
+	pkgrel = 1
+	url = https://zellij.dev
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = curl
+	depends = libcurl.so
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	depends = zlib
+	depends = libz.so
+	provides = zellij
+	conflicts = zellij
+	conflicts = zellij-bin
+	conflicts = zellij-git
+	options = !lto
+	source = 0001-gate-mouse-resize-behind-advanced-actions.patch
+	source = zellij-no-mouse-resize-0.44.3.tar.gz::https://github.com/zellij-org/zellij/archive/refs/tags/v0.44.3.tar.gz
+	sha256sums = 08d7a88e5f0546a86f76077a8b10e808e0d6ea1ad3f5355b4ba81d587b7c622e
+	sha256sums = 33ae61fc802b59462fed49b424893596d3aa819646bdce53d5602f714c1264fe
+
+pkgname = zellij-no-mouse-resize
