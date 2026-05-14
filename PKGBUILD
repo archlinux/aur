@@ -7,12 +7,12 @@
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
 pkgver=3.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An email, contacts and calendar server"
 arch=('x86_64')
 url="https://www.cyrusimap.org/"
 license=('BSD-Attribution-HPND-disclaimer')
-makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
+makedepends=('libsasl' 'icu' 'jansson' 'libical3' 'libxml2' 'krb5' 'sqlite'
              'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'zstd'
              'shapelib' 'libldap' 'libcap' 'xapian-core' 'perl' 'clamav' 'rsync'
              'libchardet' 'pcre2' 'xxd' 'libwslay' 'libcom_err.so' 'libuuid.so'
@@ -56,6 +56,18 @@ build() {
   # libchardet's pkgconf flags are broken, so we have to specify them manually
   export LIBCHARDET_CFLAGS="-I/usr/include/chardet"
 
+  # Support for libical 4 is unreleased and it seems there's a nontrivial amount
+  # of other changes, so let's play it safe and stick with version 3
+  if pkgconf --exists libical --atleast-version 4; then
+    # configure doesn't notice when it finds a libical version
+    # that is incompatible and I can't be bothered to come up with a workaround
+    echo "libical version >=4 was found in your build environment." >&2
+    echo "Please use a build environment without it to ensure Cyrus IMAP" \
+      "builds correctly." >&2
+    return 1
+  fi
+  export PKG_CONFIG_PATH="/usr/lib/libical3/pkgconfig:${PKG_CONFIG_PATH}"
+
   ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib/cyrus \
@@ -90,7 +102,7 @@ check() {
 }
 
 package_cyrus-imapd() {
-  depends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
+  depends=('libsasl' 'icu' 'jansson' 'libical3' 'libxml2' 'krb5' 'sqlite'
            'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'zstd'
            'shapelib' 'libldap' 'libcap' 'xapian-core' 'perl' 'libchardet'
            'pcre2' 'libwslay' 'libcom_err.so' 'libuuid.so' 'glibc' 'libgcc'
