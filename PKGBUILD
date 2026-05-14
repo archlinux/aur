@@ -1,4 +1,4 @@
-# Maintainer: Ash <ash8820@proton.me>
+# Maintainer: Celestia Ludenberg <ash8820@proton.me>
 # Based on CachyOS kernel PKGBUILD (GPL-2.0)
 # no i didnt steal it. its called inspiration. totally.
 
@@ -361,7 +361,7 @@ _package-hdr() {
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
     echo "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-        localversion.* version vmlinux
+        localversion.10-pkgrel localversion.20-pkgname version vmlinux
     if ! _is_ci_build; then
         install -Dt "$builddir" -m644 tools/bpf/bpftool/vmlinux.h
     fi
