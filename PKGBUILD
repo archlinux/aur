@@ -4,7 +4,7 @@ pkgrel=2
 pkgdesc="A antivirus by Jeicob_hack2015"
 arch=('x86_64')
 source=("AntiHacksource.sh")
-sha256sums=('0bb9587f81414458bac9d7aaaf2c3d21a33f372f04f561c8c49f2216377c9c87')
+sha256sums=('2ce3791e2f316ebfa3a7c618b5f65180604ffe16bacce19183237c16942347eb')
 
 package() {
   echo "==> Hello!"
