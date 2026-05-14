@@ -1,0 +1,17 @@
+[Unit]
+Description=Sangoma WANPIPE router
+Documentation=man:wanrouter(8)
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service
+Before=dahdi.service
+ConditionPathExists=/etc/wanpipe/wanrouter.rc
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/usr/bin/modprobe dahdi
+ExecStart=/usr/bin/wanrouter start
+ExecStop=/usr/bin/wanrouter stop
+
+[Install]
+WantedBy=multi-user.target
