@@ -1,6 +1,6 @@
 pkgbase = gatelet-bin
 	pkgdesc = Small ngrok-style HTTP tunnel with a public relay daemon and local client
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/alex-oleshkevich/gatelet
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gatelet-bin
 	provides = gateletd
 	conflicts = gatelet
 	conflicts = gateletd
-	source_x86_64 = gatelet-0.4.0-linux-amd64.tar.gz::https://github.com/alex-oleshkevich/gatelet/releases/download/v0.4.0/gatelet_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5c0ba18f0ef938bc80350ab14867fc3c01338095d03f57440515207d392c065e
+	source_x86_64 = gatelet-0.5.0-linux-amd64.tar.gz::https://github.com/alex-oleshkevich/gatelet/releases/download/v0.5.0/gatelet_linux_amd64.tar.gz
+	sha256sums_x86_64 = e37318b06dcc0851b8e8622099770092bab0c659ec68b5545f24c441b76fb928
 
 pkgname = gatelet-bin
