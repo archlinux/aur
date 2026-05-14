@@ -1,0 +1,662 @@
+From 4227fa0bbe4463fc587e2a72600484bcff590697 Mon Sep 17 00:00:00 2001
+From: Assam Boudjelthia <assam.boudjelthia@qt.io>
+Date: Tue, 28 Apr 2026 16:39:42 +0300
+Subject: [PATCH 23/24] Android: implement system locale in QtCore directly
+
+The Android system locale backend lived in the QPA platform
+plugin as QAndroidSystemLocale, a QSystemLocale subclass.
+Service processes built on QCoreApplication never load the
+QPA plugin, so they fell back to the base QSystemLocale built
+from qlocale_unix.cpp, which only reads POSIX env vars.
+Android does not export those, so services were stuck on the
+C locale and translations did not work.
+
+Move the implementation to src/corelib/text, following the
+same shape as qlocale_unix.cpp: override query() and
+fallbackLocale() directly. The lazy QSystemLocale fallback
+in qlocale.cpp now picks up the Android implementation
+regardless of whether a QGuiApplication exists, so services
+and GUI apps share the same JNI-based path.
+
+Fixes: QTBUG-140482
+Change-Id: I86e95ce142419abcdb09b9f1ce1093cfa4be47a3
+---
+ src/corelib/CMakeLists.txt                    |   3 +-
+ src/corelib/text/qlocale_android.cpp          | 249 ++++++++++++++++++
+ src/plugins/platforms/android/CMakeLists.txt  |   2 -
+ .../android/qandroidplatformintegration.cpp   |   4 -
+ .../android/qandroidplatformintegration.h     |   2 -
+ .../android/qandroidsystemlocale.cpp          | 231 ----------------
+ .../platforms/android/qandroidsystemlocale.h  |  36 ---
+ 7 files changed, 251 insertions(+), 276 deletions(-)
+ create mode 100644 src/corelib/text/qlocale_android.cpp
+ delete mode 100644 src/plugins/platforms/android/qandroidsystemlocale.cpp
+ delete mode 100644 src/plugins/platforms/android/qandroidsystemlocale.h
+
+diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
+index 2743b00b2ee..003253f33d4 100644
+--- a/src/corelib/CMakeLists.txt
++++ b/src/corelib/CMakeLists.txt
+@@ -942,7 +942,7 @@ qt_internal_extend_target(Core CONDITION APPLE
+         text/qlocale_mac.mm
+ )
+ 
+-qt_internal_extend_target(Core CONDITION UNIX AND NOT APPLE AND NOT WASM
++qt_internal_extend_target(Core CONDITION UNIX AND NOT APPLE AND NOT WASM AND NOT ANDROID
+     SOURCES
+         text/qlocale_unix.cpp
+ )
+@@ -1197,6 +1197,7 @@ qt_internal_extend_target(Core CONDITION ANDROID
+         platform/android/qandroidtypeconverter_p.h
+         platform/android/qandroiditemmodelproxy_p.h platform/android/qandroiditemmodelproxy.cpp
+         platform/android/qandroidmodelindexproxy_p.h platform/android/qandroidmodelindexproxy.cpp
++        text/qlocale_android.cpp
+     NO_UNITY_BUILD_SOURCES
+         platform/android/qandroidextras.cpp
+         # qtNativeClassName conflicts with similar symbols in android headers
+diff --git a/src/corelib/text/qlocale_android.cpp b/src/corelib/text/qlocale_android.cpp
+new file mode 100644
+index 00000000000..8af8690d948
+--- /dev/null
++++ b/src/corelib/text/qlocale_android.cpp
+@@ -0,0 +1,249 @@
++// Copyright (C) 2026 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
++// Qt-Security score:significant reason:default
++
++#include "qlocale_p.h"
++
++#include <QDateTime>
++#include <QJniObject>
++#include <QReadWriteLock>
++#include <QStringList>
++#include <QVariant>
++
++#include <QtCore/private/qjnihelpers_p.h>
++
++QT_BEGIN_NAMESPACE
++
++#ifndef QT_NO_SYSTEMLOCALE
++
++Q_DECLARE_JNI_CLASS(Locale, "java/util/Locale")
++Q_DECLARE_JNI_CLASS(Resources, "android/content/res/Resources")
++Q_DECLARE_JNI_CLASS(Configuration, "android/content/res/Configuration")
++Q_DECLARE_JNI_CLASS(LocaleList, "android/os/LocaleList")
++Q_DECLARE_JNI_CLASS(DateFormat, "android/text/format/DateFormat")
++
++namespace {
++
++using namespace QtJniTypes;
++
++struct QSystemLocaleData
++{
++    QSystemLocaleData() : locale(QLocale::C) {}
++
++    void readLocaleFromJava();
++
++    QReadWriteLock lock;
++    QLocale locale;
++    bool is24HourFormat = false;
++};
++
++void QSystemLocaleData::readLocaleFromJava()
++{
++    const Locale javaLocaleObject = []{
++        const QJniObject javaContext = QtAndroidPrivate::context();
++        if (javaContext.isValid()) {
++            const QJniObject resources = javaContext.callMethod<Resources>("getResources");
++            const QJniObject configuration = resources.callMethod<Configuration>("getConfiguration");
++            return configuration.getField<Locale>("locale");
++        }
++        return Locale::callStaticMethod<Locale>("getDefault");
++    }();
++
++    const QString languageCode = javaLocaleObject.callMethod<QString>("getLanguage");
++    const QString extraCodes[3] = {
++        javaLocaleObject.callMethod<QString>("getScript"),
++        javaLocaleObject.callMethod<QString>("getCountry"),
++        javaLocaleObject.callMethod<QString>("getVariant"),
++    };
++    QString fullName = languageCode;
++    for (const QString &code : extraCodes) {
++        if (code.isEmpty())
++            continue;
++        if (!fullName.isEmpty())
++            fullName += u'_';
++        fullName += code;
++    }
++
++    const bool is24Hour = DateFormat::callStaticMethod<bool>("is24HourFormat",
++                                                             QtAndroidPrivate::context());
++
++    QWriteLocker locker(&lock);
++    locale = QLocale(fullName);
++    is24HourFormat = is24Hour;
++}
++
++Q_GLOBAL_STATIC(QSystemLocaleData, qSystemLocaleData)
++
++QString convertTo24hFormat(const QString &format)
++{
++    QString format24(format);
++    bool inQuoted = false;
++    for (qsizetype i = 0; i < format24.size(); ++i) {
++        if (format24[i] == u'\'') {
++            inQuoted = !inQuoted;
++            continue;
++        }
++        if (inQuoted)
++            continue;
++
++        // Strip AM/PM markers from the format string.
++        const auto c = format24[i].toUpper();
++        if (c == u'A' || c == u'P')
++            format24.remove(i--, 1);
++    }
++    return format24.trimmed();
++}
++
++} // unnamed namespace
++
++QLocale QSystemLocale::fallbackLocale() const
++{
++    QSystemLocaleData *d = qSystemLocaleData();
++    if (!d)
++        return QLocale(QLocale::C);
++
++    QReadLocker locker(&d->lock);
++    return d->locale;
++}
++
++QVariant QSystemLocale::query(QueryType type, QVariant &&in) const
++{
++    QSystemLocaleData *d = qSystemLocaleData();
++    if (!d)
++        return QVariant();
++
++    if (type == LocaleChanged) {
++        d->readLocaleFromJava();
++        return QVariant();
++    }
++
++    QReadLocker locker(&d->lock);
++    const QLocale &locale = d->locale;
++    const bool is24h = d->is24HourFormat;
++
++    auto timeFormat = [&](QLocale::FormatType fmt) {
++        const QString format = locale.timeFormat(fmt);
++        return is24h ? convertTo24hFormat(format) : format;
++    };
++    auto dateTimeFormat = [&](QLocale::FormatType fmt) {
++        const QString format = locale.dateTimeFormat(fmt);
++        return is24h ? convertTo24hFormat(format) : format;
++    };
++
++    switch (type) {
++    case DecimalPoint:
++        return locale.decimalPoint();
++    case Grouping:
++        return QVariant::fromValue(locale.d->m_data->groupSizes());
++    case GroupSeparator:
++        return locale.groupSeparator();
++    case ZeroDigit:
++        return locale.zeroDigit();
++    case NegativeSign:
++        return locale.negativeSign();
++    case DateFormatLong:
++        return locale.dateFormat(QLocale::LongFormat);
++    case DateFormatShort:
++        return locale.dateFormat(QLocale::ShortFormat);
++    case TimeFormatLong:
++        return timeFormat(QLocale::LongFormat);
++    case TimeFormatShort:
++        return timeFormat(QLocale::ShortFormat);
++    case DayNameLong:
++        return locale.dayName(in.toInt(), QLocale::LongFormat);
++    case DayNameShort:
++        return locale.dayName(in.toInt(), QLocale::ShortFormat);
++    case DayNameNarrow:
++        return locale.dayName(in.toInt(), QLocale::NarrowFormat);
++    case StandaloneDayNameLong:
++        return locale.standaloneDayName(in.toInt(), QLocale::LongFormat);
++    case StandaloneDayNameShort:
++        return locale.standaloneDayName(in.toInt(), QLocale::ShortFormat);
++    case StandaloneDayNameNarrow:
++        return locale.standaloneDayName(in.toInt(), QLocale::NarrowFormat);
++    case MonthNameLong:
++        return locale.monthName(in.toInt(), QLocale::LongFormat);
++    case MonthNameShort:
++        return locale.monthName(in.toInt(), QLocale::ShortFormat);
++    case MonthNameNarrow:
++        return locale.monthName(in.toInt(), QLocale::NarrowFormat);
++    case StandaloneMonthNameLong:
++        return locale.standaloneMonthName(in.toInt(), QLocale::LongFormat);
++    case StandaloneMonthNameShort:
++        return locale.standaloneMonthName(in.toInt(), QLocale::ShortFormat);
++    case StandaloneMonthNameNarrow:
++        return locale.standaloneMonthName(in.toInt(), QLocale::NarrowFormat);
++    case DateToStringLong:
++        return locale.toString(in.toDate(), QLocale::LongFormat);
++    case DateToStringShort:
++        return locale.toString(in.toDate(), QLocale::ShortFormat);
++    case TimeToStringLong:
++        return locale.toString(in.toTime(), timeFormat(QLocale::LongFormat));
++    case TimeToStringShort:
++        return locale.toString(in.toTime(), timeFormat(QLocale::ShortFormat));
++    case DateTimeFormatLong:
++        return dateTimeFormat(QLocale::LongFormat);
++    case DateTimeFormatShort:
++        return dateTimeFormat(QLocale::ShortFormat);
++    case DateTimeToStringLong:
++        return locale.toString(in.toDateTime(), dateTimeFormat(QLocale::LongFormat));
++    case DateTimeToStringShort:
++        return locale.toString(in.toDateTime(), dateTimeFormat(QLocale::ShortFormat));
++    case PositiveSign:
++        return locale.positiveSign();
++    case AMText:
++        return locale.amText();
++    case PMText:
++        return locale.pmText();
++    case FirstDayOfWeek:
++        return locale.firstDayOfWeek();
++    case CurrencySymbol:
++        return locale.currencySymbol(QLocale::CurrencySymbolFormat(in.toUInt()));
++    case CurrencyToString: {
++        switch (in.metaType().id()) {
++        case QMetaType::Int:
++            return locale.toCurrencyString(in.toInt());
++        case QMetaType::UInt:
++            return locale.toCurrencyString(in.toUInt());
++        case QMetaType::Double:
++            return locale.toCurrencyString(in.toDouble());
++        case QMetaType::LongLong:
++            return locale.toCurrencyString(in.toLongLong());
++        case QMetaType::ULongLong:
++            return locale.toCurrencyString(in.toULongLong());
++        default:
++            break;
++        }
++        return QString();
++    }
++    case StringToStandardQuotation:
++        return locale.quoteString(in.value<QStringView>());
++    case StringToAlternateQuotation:
++        return locale.quoteString(in.value<QStringView>(), QLocale::AlternateQuotation);
++    case ListToSeparatedString:
++        return locale.createSeparatedList(in.value<QStringList>());
++    case UILanguages: {
++        if (QtAndroidPrivate::androidSdkVersion() >= 24) {
++            const LocaleList localeListObject =
++                    LocaleList::callStaticMethod<LocaleList>("getDefault");
++            if (localeListObject.isValid()) {
++                QString lang = localeListObject.callMethod<QString>("toLanguageTags");
++                // Some devices wrap the list in [] - strip those if present.
++                if (lang.startsWith(u'[') && lang.endsWith(u']'))
++                    lang = lang.mid(1, lang.length() - 2);
++                return lang.split(u',');
++            }
++        }
++        return QVariant();
++    }
++    case LocaleChanged:
++        Q_UNREACHABLE();
++    default:
++        break;
++    }
++    return QVariant();
++}
++
++#endif // QT_NO_SYSTEMLOCALE
++
++QT_END_NAMESPACE
+diff --git a/src/plugins/platforms/android/CMakeLists.txt b/src/plugins/platforms/android/CMakeLists.txt
+index 7c78252f4c8..33bd7e36a85 100644
+--- a/src/plugins/platforms/android/CMakeLists.txt
++++ b/src/plugins/platforms/android/CMakeLists.txt
+@@ -34,7 +34,6 @@ qt_internal_add_plugin(QAndroidIntegrationPlugin
+         qandroidplatformservices.cpp qandroidplatformservices.h
+         qandroidplatformtheme.cpp qandroidplatformtheme.h
+         qandroidplatformwindow.cpp qandroidplatformwindow.h
+-        qandroidsystemlocale.cpp qandroidsystemlocale.h
+         androidwindowembedding.cpp androidwindowembedding.h
+         androidbackendregister.cpp androidbackendregister.h
+     NO_UNITY_BUILD_SOURCES
+@@ -52,7 +51,6 @@ qt_internal_add_plugin(QAndroidIntegrationPlugin
+         qandroidplatformscreen.cpp
+         qandroidplatformservices.cpp
+         qandroidplatformwindow.cpp
+-        qandroidsystemlocale.cpp
+     INCLUDE_DIRECTORIES
+         ${CMAKE_CURRENT_SOURCE_DIR}
+         ${QtBase_SOURCE_DIR}/src/3rdparty/android
+diff --git a/src/plugins/platforms/android/qandroidplatformintegration.cpp b/src/plugins/platforms/android/qandroidplatformintegration.cpp
+index f282ad6795c..9d18aa807c4 100644
+--- a/src/plugins/platforms/android/qandroidplatformintegration.cpp
++++ b/src/plugins/platforms/android/qandroidplatformintegration.cpp
+@@ -25,7 +25,6 @@
+ #include "qandroidplatformscreen.h"
+ #include "qandroidplatformservices.h"
+ #include "qandroidplatformtheme.h"
+-#include "qandroidsystemlocale.h"
+ 
+ #include <QGuiApplication>
+ #include <QOffscreenSurface>
+@@ -234,8 +233,6 @@ QAndroidPlatformIntegration::QAndroidPlatformIntegration(const QStringList &para
+     m_androidPlatformClipboard = new QAndroidPlatformClipboard();
+ #endif
+ 
+-    m_androidSystemLocale = new QAndroidSystemLocale;
+-
+ #if QT_CONFIG(accessibility)
+         m_accessibility = new QAndroidPlatformAccessibility();
+ #endif // QT_CONFIG(accessibility)
+@@ -440,7 +437,6 @@ QAndroidPlatformIntegration::~QAndroidPlatformIntegration()
+ 
+     delete m_androidPlatformNativeInterface;
+     delete m_androidFDB;
+-    delete m_androidSystemLocale;
+ 
+ #ifndef QT_NO_CLIPBOARD
+     delete m_androidPlatformClipboard;
+diff --git a/src/plugins/platforms/android/qandroidplatformintegration.h b/src/plugins/platforms/android/qandroidplatformintegration.h
+index 3f647c1ef0d..0e86dd2e9b0 100644
+--- a/src/plugins/platforms/android/qandroidplatformintegration.h
++++ b/src/plugins/platforms/android/qandroidplatformintegration.h
+@@ -24,7 +24,6 @@
+ QT_BEGIN_NAMESPACE
+ 
+ class QAndroidPlatformServices;
+-class QAndroidSystemLocale;
+ class QPlatformAccessibility;
+ 
+ struct AndroidStyle;
+@@ -147,7 +146,6 @@ private:
+     QPlatformClipboard *m_androidPlatformClipboard;
+ #endif
+ 
+-    QAndroidSystemLocale *m_androidSystemLocale;
+ #if QT_CONFIG(accessibility)
+     mutable QPlatformAccessibility *m_accessibility;
+ #endif
+diff --git a/src/plugins/platforms/android/qandroidsystemlocale.cpp b/src/plugins/platforms/android/qandroidsystemlocale.cpp
+deleted file mode 100644
+index 2f497646ceb..00000000000
+--- a/src/plugins/platforms/android/qandroidsystemlocale.cpp
++++ /dev/null
+@@ -1,231 +0,0 @@
+-// Copyright (C) 2016 The Qt Company Ltd.
+-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+-// Qt-Security score:significant reason:default
+-
+-#include "androidjnimain.h"
+-#include "qandroidsystemlocale.h"
+-#include "qdatetime.h"
+-#include "qstringlist.h"
+-#include "qvariant.h"
+-
+-#include <QtCore/private/qjnihelpers_p.h>
+-#include <QtCore/QJniObject>
+-
+-QT_BEGIN_NAMESPACE
+-
+-Q_DECLARE_JNI_CLASS(Locale, "java/util/Locale")
+-Q_DECLARE_JNI_CLASS(Resources, "android/content/res/Resources")
+-Q_DECLARE_JNI_CLASS(Configuration, "android/content/res/Configuration")
+-Q_DECLARE_JNI_CLASS(LocaleList, "android/os/LocaleList")
+-Q_DECLARE_JNI_CLASS(DateFormat, "android/text/format/DateFormat")
+-
+-using namespace QtJniTypes;
+-
+-QAndroidSystemLocale::QAndroidSystemLocale() : m_locale(QLocale::C)
+-{
+-}
+-
+-void QAndroidSystemLocale::getLocaleFromJava() const
+-{
+-    const Locale javaLocaleObject = []{
+-        const QJniObject javaContext = QtAndroidPrivate::context();
+-        if (javaContext.isValid()) {
+-            const QJniObject resources = javaContext.callMethod<Resources>("getResources");
+-            const QJniObject configuration = resources.callMethod<Configuration>("getConfiguration");
+-            return configuration.getField<Locale>("locale");
+-        } else {
+-            return Locale::callStaticMethod<Locale>("getDefault");
+-        }
+-    }();
+-
+-    const QString languageCode = javaLocaleObject.callMethod<QString>("getLanguage");
+-    const QString extraCodes[3] = {
+-        javaLocaleObject.callMethod<QString>("getScript"),
+-        javaLocaleObject.callMethod<QString>("getCountry"),
+-        javaLocaleObject.callMethod<QString>("getVariant"),
+-    };
+-    QString fullName = languageCode;
+-    for (const QString &code : extraCodes) {
+-        if (code.isEmpty())
+-            continue;
+-        if (!fullName.isEmpty())
+-            fullName += u'_';
+-        fullName += code;
+-    }
+-
+-    const bool is24HourFormat = DateFormat::callStaticMethod<bool>("is24HourFormat",
+-                                    QNativeInterface::QAndroidApplication::context());
+-
+-    QWriteLocker locker(&m_lock);
+-    m_locale = QLocale(fullName);
+-    m_24hFormat = is24HourFormat;
+-}
+-
+-QString QAndroidSystemLocale::convertTo24hFormat(const QString &format) const
+-{
+-    if (!m_24hFormat)
+-        return format;
+-
+-    QString format24(format);
+-    bool inQuoted = false;
+-    for (qsizetype i = 0; i < format24.size(); ++i) {
+-        if (format24[i] == QLatin1Char('\'')) {
+-            inQuoted = !inQuoted;
+-            continue;
+-        }
+-        if (inQuoted)
+-            continue;
+-
+-        // remove AM/PM markerg from format string
+-        const auto c = format24[i].toUpper();
+-        if (c == QLatin1Char('A') || c == QLatin1Char('P'))
+-            format24.remove(i--, 1);
+-    }
+-
+-    return format24.trimmed();
+-}
+-
+-QString QAndroidSystemLocale::timeToString(const QTime &time, QLocale::FormatType type) const
+-{
+-    if (m_24hFormat)
+-        return m_locale.toString(time, convertTo24hFormat(m_locale.timeFormat(type)));
+-    return m_locale.toString(time, type);
+-}
+-
+-QString QAndroidSystemLocale::dateTimeToString(const QDateTime &dt, QLocale::FormatType type) const
+-{
+-    if (m_24hFormat)
+-        return m_locale.toString(dt, convertTo24hFormat(m_locale.dateTimeFormat(type)));
+-    return m_locale.toString(dt, type);
+-}
+-
+-QVariant QAndroidSystemLocale::query(QueryType type, QVariant &&in) const
+-{
+-    if (type == LocaleChanged) {
+-        getLocaleFromJava();
+-        return QVariant();
+-    }
+-
+-    QReadLocker locker(&m_lock);
+-
+-    switch (type) {
+-    case DecimalPoint:
+-        return m_locale.decimalPoint();
+-    case Grouping:
+-        return QVariant::fromValue(localeData(m_locale)->m_data->groupSizes());
+-    case GroupSeparator:
+-        return m_locale.groupSeparator();
+-    case ZeroDigit:
+-        return m_locale.zeroDigit();
+-    case NegativeSign:
+-        return m_locale.negativeSign();
+-    case DateFormatLong:
+-        return m_locale.dateFormat(QLocale::LongFormat);
+-    case DateFormatShort:
+-        return m_locale.dateFormat(QLocale::ShortFormat);
+-    case TimeFormatLong:
+-        return convertTo24hFormat(m_locale.timeFormat(QLocale::LongFormat));
+-    case TimeFormatShort:
+-        return convertTo24hFormat(m_locale.timeFormat(QLocale::ShortFormat));
+-    case DayNameLong:
+-        return m_locale.dayName(in.toInt(), QLocale::LongFormat);
+-    case DayNameShort:
+-        return m_locale.dayName(in.toInt(), QLocale::ShortFormat);
+-    case DayNameNarrow:
+-        return m_locale.dayName(in.toInt(), QLocale::NarrowFormat);
+-    case StandaloneDayNameLong:
+-        return m_locale.standaloneDayName(in.toInt(), QLocale::LongFormat);
+-    case StandaloneDayNameShort:
+-        return m_locale.standaloneDayName(in.toInt(), QLocale::ShortFormat);
+-    case StandaloneDayNameNarrow:
+-        return m_locale.standaloneDayName(in.toInt(), QLocale::NarrowFormat);
+-    case MonthNameLong:
+-        return m_locale.monthName(in.toInt(), QLocale::LongFormat);
+-    case MonthNameShort:
+-        return m_locale.monthName(in.toInt(), QLocale::ShortFormat);
+-    case MonthNameNarrow:
+-        return m_locale.monthName(in.toInt(), QLocale::NarrowFormat);
+-    case StandaloneMonthNameLong:
+-        return m_locale.standaloneMonthName(in.toInt(), QLocale::LongFormat);
+-    case StandaloneMonthNameShort:
+-        return m_locale.standaloneMonthName(in.toInt(), QLocale::ShortFormat);
+-    case StandaloneMonthNameNarrow:
+-        return m_locale.standaloneMonthName(in.toInt(), QLocale::NarrowFormat);
+-    case DateToStringLong:
+-        return m_locale.toString(in.toDate(), QLocale::LongFormat);
+-    case DateToStringShort:
+-        return m_locale.toString(in.toDate(), QLocale::ShortFormat);
+-    case TimeToStringLong:
+-        return timeToString(in.toTime(), QLocale::LongFormat);
+-    case TimeToStringShort:
+-        return timeToString(in.toTime(), QLocale::ShortFormat);
+-    case DateTimeFormatLong:
+-        return convertTo24hFormat(m_locale.dateTimeFormat(QLocale::LongFormat));
+-    case DateTimeFormatShort:
+-        return convertTo24hFormat(m_locale.dateTimeFormat(QLocale::ShortFormat));
+-    case DateTimeToStringLong:
+-        return dateTimeToString(in.toDateTime(), QLocale::LongFormat);
+-    case DateTimeToStringShort:
+-        return dateTimeToString(in.toDateTime(), QLocale::ShortFormat);
+-    case PositiveSign:
+-        return m_locale.positiveSign();
+-    case AMText:
+-        return m_locale.amText();
+-    case PMText:
+-        return m_locale.pmText();
+-    case FirstDayOfWeek:
+-        return m_locale.firstDayOfWeek();
+-    case CurrencySymbol:
+-        return m_locale .currencySymbol(QLocale::CurrencySymbolFormat(in.toUInt()));
+-    case CurrencyToString: {
+-        switch (in.metaType().id()) {
+-        case QMetaType::Int:
+-            return m_locale .toCurrencyString(in.toInt());
+-        case QMetaType::UInt:
+-            return m_locale .toCurrencyString(in.toUInt());
+-        case QMetaType::Double:
+-            return m_locale .toCurrencyString(in.toDouble());
+-        case QMetaType::LongLong:
+-            return m_locale .toCurrencyString(in.toLongLong());
+-        case QMetaType::ULongLong:
+-            return m_locale .toCurrencyString(in.toULongLong());
+-        default:
+-            break;
+-        }
+-        return QString();
+-    }
+-    case StringToStandardQuotation:
+-        return m_locale.quoteString(in.value<QStringView>());
+-    case StringToAlternateQuotation:
+-        return m_locale.quoteString(in.value<QStringView>(), QLocale::AlternateQuotation);
+-    case ListToSeparatedString:
+-        return m_locale.createSeparatedList(in.value<QStringList>());
+-    case LocaleChanged:
+-        Q_ASSERT_X(false, Q_FUNC_INFO, "This can't happen.");
+-    case UILanguages: {
+-        if (QtAndroidPrivate::androidSdkVersion() >= 24) {
+-            LocaleList localeListObject = LocaleList::callStaticMethod<LocaleList>("getDefault");
+-            if (localeListObject.isValid()) {
+-                QString lang = localeListObject.callMethod<QString>("toLanguageTags");
+-                // Some devices return with it enclosed in []'s so check if both exists before
+-                // removing to ensure it is formatted correctly
+-                if (lang.startsWith(QChar('[')) && lang.endsWith(QChar(']')))
+-                    lang = lang.mid(1, lang.length() - 2);
+-                return lang.split(QChar(','));
+-            }
+-        }
+-        return QVariant();
+-    }
+-    default:
+-        break;
+-    }
+-    return QVariant();
+-}
+-
+-QLocale QAndroidSystemLocale::fallbackLocale() const
+-{
+-    QReadLocker locker(&m_lock);
+-    return m_locale;
+-}
+-
+-QT_END_NAMESPACE
+diff --git a/src/plugins/platforms/android/qandroidsystemlocale.h b/src/plugins/platforms/android/qandroidsystemlocale.h
+deleted file mode 100644
+index f8b84bbe3ac..00000000000
+--- a/src/plugins/platforms/android/qandroidsystemlocale.h
++++ /dev/null
+@@ -1,36 +0,0 @@
+-// Copyright (C) 2016 The Qt Company Ltd.
+-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+-// Qt-Security score:significant reason:default
+-
+-#ifndef QANDROIDSYSTEMLOCALE_H
+-#define QANDROIDSYSTEMLOCALE_H
+-
+-#include "private/qlocale_p.h"
+-#include <QtCore/qreadwritelock.h>
+-
+-QT_BEGIN_NAMESPACE
+-
+-class QAndroidSystemLocale : public QSystemLocale
+-{
+-    Q_DISABLE_COPY_MOVE(QAndroidSystemLocale)
+-public:
+-    QAndroidSystemLocale();
+-
+-    QVariant query(QueryType type, QVariant &&in) const override;
+-    QLocale fallbackLocale() const override;
+-
+-private:
+-    void getLocaleFromJava() const;
+-
+-    QString convertTo24hFormat(const QString &format) const;
+-    QString timeToString(const QTime &time, QLocale::FormatType type) const;
+-    QString dateTimeToString(const QDateTime &dt, QLocale::FormatType type) const;
+-
+-    mutable QLocale m_locale;
+-    mutable QReadWriteLock m_lock;
+-    mutable bool m_24hFormat = false;
+-};
+-
+-QT_END_NAMESPACE
+-
+-#endif // QANDROIDSYSTEMLOCALE_H
+-- 
+2.54.0
+
