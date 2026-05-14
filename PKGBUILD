@@ -6,7 +6,7 @@ _basename=dahdi
 pkgname=dahdi-linux-git
 pkgdesc='DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)'
 pkgver=3.4.0.rc1.r20.gd1c842a
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url=https://www.asterisk.org
 license=(GPL-2.0-only)
@@ -70,11 +70,11 @@ sha256sums=('SKIP'
             '3ff26cf80555fd7470b43a87c51d03c1db2a75abcd4561d79f69b6c48298e4a1')
 
 _kernelver() {
-  pacman -Q linux | cut -f2 -d ' ' | sed 's/\.arch/-arch/'
+  pacman -Q linux-headers | cut -f2 -d ' ' | sed 's/\.arch/-arch/'
 }
 
 _linuxpkgver() {
-  pacman -Q linux | cut -f2 -d ' '
+  pacman -Q linux-headers | cut -f2 -d ' '
 }
 
 prepare() {
