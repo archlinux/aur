@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-leftism-fr-git
+    pkgdesc = Citations de personnalités de gauche pour fortune.
+    pkgver = r26.c1d4dda
+    pkgrel = 1
+    url = https://forge.zenify.fr:4430/litame/leftist-quotes-fr
+    arch = any
+    groups = fortune-mods
+    license = custom:public domain
+    makedepends = git
+    depends = fortune-mod
+    source = git+https://forge.zenify.fr:4430/litame/leftist-quotes-fr
+    sha256sums = SKIP
+
+pkgname = fortune-mod-leftism-fr-git
