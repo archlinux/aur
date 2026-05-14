@@ -8,7 +8,7 @@ pkgname="${_pkgname}-bin"
 pkgdesc="A multi-platform emulator with full re-recording support and Lua scripting"
 
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 
 arch=(x86_64)
 
@@ -24,7 +24,7 @@ source=(
 	"https://github.com/TASEmulators/BizHawk/releases/download/${pkgver}/BizHawk-${pkgver}-linux-x64.tar.gz"
 	"LICENSE.${_pkgname}::https://raw.githubusercontent.com/TASEmulators/BizHawk/${pkgver}/LICENSE"
 )
-md5sums=("73de6ee8954e51cefe72b5796261833c" "2d15d8df1b4ec039a8fac3202a418a3c")
+md5sums=("788863f119bb0f713f82ef37675e92c6" "2d15d8df1b4ec039a8fac3202a418a3c")
 
 options=(!strip !emptydirs)
 install="${_pkgname}.install"
