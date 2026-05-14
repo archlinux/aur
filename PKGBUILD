@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ccsm-bin
 _pkgname=CCSM
-pkgver=0.2.0
+pkgver=0.2.1
 _electronversion=41
 pkgrel=1
 pkgdesc="Desktop GUI for running multiple Claude Code agents in parallel, organized by task. (Prebuilt version. Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bf14755a22d8c6506775b7f5eb07f1ad61cfea36154eba3dc65ead7888fa47a9'
+sha256sums=('7191f17fdce8c22ca8355ef2aed042895097eef075301e441fe11f57e7f6a6b7'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 
 _check_electron_version() {
