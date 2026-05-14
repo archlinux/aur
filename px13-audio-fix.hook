@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/share/alsa/ucm2/sof-soundwire/sof-soundwire.conf
+
+[Action]
+Description = Re-patching sof-soundwire.conf for tas2783 codec (px13-audio-fix)...
+When = PostTransaction
+Exec = /usr/share/px13-audio-fix/patch-ucm.sh

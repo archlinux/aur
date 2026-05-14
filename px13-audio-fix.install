@@ -1,0 +1,37 @@
+post_install() {
+    /usr/share/px13-audio-fix/patch-ucm.sh || true
+    cat <<'EOF'
+
+==> px13-audio-fix installed.
+
+Manual steps still required:
+
+  1. Extract the ASUS firmware blobs (proprietary, not redistributable):
+     Download from
+       https://www.asus.com/laptops/for-creators/proart/proart-px13-hn7306/helpdesk_download
+     Inside the package: 1714-1-0x8.bin, 1714-1-0xB.bin
+     Rename to 1714-1-8.bin, 1714-1-B.bin (drop the 0x), then:
+       sudo cp 1714-1-{8,B}.bin /lib/firmware/
+
+  2. Build & install a kernel with the 16 TAS2783 codec patches from
+     https://github.com/CachyOS/linux-cachyos/issues/737
+     (the 3 ACP-layer PX13 patches are already in Linux 7.0-rc6+).
+     Verify after reboot:
+       amixer -c1 contents | grep -E 'Speaker Playback|Channel Playback'
+
+  3. Restart the audio stack:
+       systemctl --user restart pipewire pipewire-pulse wireplumber
+
+  4. Switch the card profile to HiFi and assign channels:
+       pactl set-card-profile alsa_card.pci-0000_c4_00.5-platform-amd_sdw HiFi
+       amixer -c1 cset name='tas2783-1 Channel Playback' Left
+       amixer -c1 cset name='tas2783-2 Channel Playback' Right
+       sudo alsactl store
+
+Full guide: https://github.com/ftoleedo/px13-audio-fix
+EOF
+}
+
+post_upgrade() {
+    /usr/share/px13-audio-fix/patch-ucm.sh || true
+}
