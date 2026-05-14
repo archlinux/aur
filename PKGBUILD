@@ -3,7 +3,7 @@
 pkgname=python-vspackrgb
 _origpkgname=vspackrgb
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="RGB packing for VapourSynth frames"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -31,9 +31,14 @@ prepare() {
     sed -i '/\[tool.setuptools-git-versioning\]/,/]/d' pyproject.toml
 }
 
+build() {
+    cd "${pkgname}/src/${_origpkgname}" || exit
+    rm -f dist/*.whl
+    python -m build --wheel --no-isolation
+}
+
 package() {
-	cd "${pkgname}/src/${_origpkgname}" || exit
-	python -m build --wheel --no-isolation
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${pkgname}/src/${_origpkgname}" || exit
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
