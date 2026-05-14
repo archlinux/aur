@@ -1,7 +1,7 @@
 pkgname=raifetch
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A fast, multithreaded system information fetch tool written in Rust"
+pkgdesc="A Superfast (<5ms) feature rich System Information Fetch Tool written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Prithiv-0/raifetch"
 license=('GPL3')
