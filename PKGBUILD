@@ -5,7 +5,7 @@
 _pkgname=nut
 pkgname=nut-monitor
 pkgver=2.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI to manage devices connected a NUT server'
 arch=(any)
 url=http://www.networkupstools.org/
@@ -28,8 +28,6 @@ sha256sums=('e4f57efb3cf7f2433cda39835b77f9f1754b9b9f86e4c8e8925eafc78c1d1065')
 prepare() {
   cd ${_pkgname}
 
-  ./autogen.sh
-
   sed \
     's|/bin/sh|/usr/bin/sh|' \
     -i scripts/python/app/NUT-Monitor
@@ -41,6 +39,8 @@ prepare() {
   sed \
     's|os.path.dirname( sys.argv\[0\] )|"/usr/share/nut-monitor"|' \
     -i scripts/python/app/NUT-Monitor-py3qt6.in
+
+  ./autogen.sh
 }
 
 build() {
