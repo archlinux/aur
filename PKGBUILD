@@ -1,17 +1,10 @@
 pkgname=wanpipe
 pkgver=7.0.38
-pkgrel=6
+pkgrel=7
 pkgdesc='Sangoma WANPIPE drivers and utilities for DAHDI'
 arch=(x86_64)
 url=https://ftp.sangoma.com/linux/current_wanpipe/
 license=(GPL-2.0-or-later)
-depends=(
-  dahdi-linux
-  glibc
-  linux
-  ncurses
-  net-tools
-)
 makedepends=(
   autoconf
   automake
@@ -34,6 +27,10 @@ _kernelver() {
   pacman -Q linux | cut -f2 -d ' ' | sed 's/\.arch/-arch/'
 }
 
+_linuxpkgver() {
+  pacman -Q linux | cut -f2 -d ' '
+}
+
 prepare() {
   cd "${pkgname}-${pkgver}"
   patch -Np5 -i "${srcdir}/arch-kernel-compat.patch"
@@ -46,6 +43,14 @@ build() {
 }
 
 package() {
+  depends=(
+    dahdi-linux
+    glibc
+    "linux=$(_linuxpkgver)"
+    ncurses
+    net-tools
+  )
+
   cd "${pkgname}-${pkgver}"
   local kernelver="$(_kernelver)"
 
