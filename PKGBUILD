@@ -2,7 +2,7 @@
 # Maintainer: Eric Kochen <eric@getpurple.sh>
 pkgname=purple-bin
 _pkgname=purple
-pkgver=3.12.3
+pkgver=3.13.0
 pkgrel=1
 pkgdesc='Terminal SSH manager with provider sync, tunnels, file transfer and containers'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("LICENSE::https://raw.githubusercontent.com/erickochen/purple/refs/tags/
 source_x86_64=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('7ffe3e49f530418a8e37f4546534f20ddbd1109a5a3e3b2ae7fde09d27dae1dc')
-sha256sums_x86_64=('f5edd5ceb7a48543df989cf3b890a36ec1eab0abe4e265c376d1c3fc27849743')
-sha256sums_aarch64=('288913176d108a2ca205ad7bcb4be55b5b6aa1549301b5400be2ffb0c6cf4e49')
+sha256sums_x86_64=('48032635dd43d70ea6d2eec4a3ce4debe561c969ee6adb8a6b02be7a323d4652')
+sha256sums_aarch64=('7b2f01c88e8e912077a203dd70ca86e16b716ac465fdad9a70fbd17bc96d13d0')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin" 'purple'
