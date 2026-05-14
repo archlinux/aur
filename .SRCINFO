@@ -1,16 +1,16 @@
 pkgbase = dasel-bin
 	pkgdesc = Query and update data structures from the command line.
-	pkgver = 3.8.1
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://github.com/TomWright/dasel
 	changelog = changelog.md
 	arch = x86_64
 	license = MIT
-	source = dasel-bin-v3.8.1.gz::https://github.com/TomWright/dasel/releases/download/v3.8.1/dasel_linux_amd64.gz
+	source = dasel-bin-v3.10.1.gz::https://github.com/TomWright/dasel/releases/download/v3.10.1/dasel_linux_amd64.gz
 	source = https://raw.githubusercontent.com/TomWright/dasel/master/LICENSE
 	source = https://raw.githubusercontent.com/TomWright/dasel/master/README.md
-	b2sums = a92a61c21ee45cff7b28ff4260d942c9a962275dd6720ec1e03eee46c575160ac7c676291b5752fe5f163f1e3e82e9784e0be097dc5b081ce4a7886104ae7d75
+	b2sums = 890ac314316c1f57ab6568406d1dc01c5acc5321900ebdddee1f52cec6b3f04b5905258a105da7699ea18b6f0d64cce62d60206ac85d9450e5611aef1e91981a
 	b2sums = fc06e1db2cd7753e9188087833b4fad2bdcb78165bef8dd26bab3760c6a76287e8a582e6dcfd61f09f2051e4bcff71361ffd28d0024445ac5243075a86daed69
-	b2sums = b84a0d427b7c8b7f0b2280ff39437abf7d6a04588dcf9ac87ef5c054f673c678bfaf91875e7eb1a8182c75a84762d113d0cb6494c1a2ef05d374543d8a2baa84
+	b2sums = 47970e5f60e7cc8e4e6fe92750874fac7d8ef768f29df2b6e375d7341ab73e41ef1056ab134fe00e3dbcfcab5f3fd0b446f1116fc6960b54d1317d332ea9a73c
 
 pkgname = dasel-bin
