@@ -1,0 +1,13 @@
+[Unit]
+Description=MechClick - Mechanical Keyboard Sound Engine
+Documentation=man:mechclick
+After=graphical-session.target pipewire.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mechclick
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

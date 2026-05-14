@@ -1,0 +1,11 @@
+# AUR ignore typical build files
+*.pkg.tar*
+*.pkg.tar.*
+*.tar.gz
+*.zip
+target/
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc

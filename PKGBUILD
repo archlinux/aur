@@ -2,48 +2,83 @@
 pkgname=klickity
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Mechanical keyboard sound simulator for Wayland (read-only evdev + PipeWire)"
-arch=('any')
+pkgdesc="Mechanical keyboard sound simulator for Wayland — Rust+Tauri edition (evdev + PipeWire)"
+arch=('x86_64')
 url="https://github.com/HikariLucky/klickity"
 license=('MIT')
-depends=('python>=3.10' 'python-evdev' 'python-numpy' 'python-sounddevice' 'python-soundfile' 'pipewire')
-makedepends=('git' 'python-setuptools' 'python-wheel')
-optdepends=('wpctl: PipeWire volume control'
-            'fish: shell integration for PATH')
-source=("git+$url.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+depends=(
+    'gtk4'
+    'libadwaita'
+    'pipewire'
+    'gstreamer'
+    'gst-plugins-base'
+    'evdev'
+)
+makedepends=(
+    'rustup'
+    'cargo'
+    'pkg-config'
+    'glib2'
+    'gobject-introspection'
+    'git'
+)
+optdepends=('wpctl: PipeWire volume control')
+provides=('mechclick')
+conflicts=('mechclick')
+source=(
+    "git+$url.git#tag=v${pkgver}?signed"
+    "mechclick.service"
+    "mechclick.install"
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+
+validpgpkeys=()  # Add maintainer's PGP key if signing
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    rm -rf dist build *.egg-info 2>/dev/null || true
+
+    # Setup Rust toolchain
+    export RUSTUP_HOME="$srcdir/rustup"
+    export CARGO_HOME="$srcdir/cargo"
+    rustup default stable 2>/dev/null || rustup install stable
 }
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+
+    export RUSTUP_HOME="$srcdir/rustup"
+    export CARGO_HOME="$srcdir/cargo"
+
+    # Compile GResources
+    glib-compile-resources \
+        --target="gresource.c" \
+        --sourcedir="data" \
+        --generate \
+        --c-name="mechclick_resources" \
+        "data/gresource.xml"
+
+    # Build release
+    cargo build --release --frozen
 }
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    
-    if [ -d "sounds" ]; then
-        install -dm755 "$pkgdir/usr/local/share/klickity/sounds"
-        cp -r sounds/* "$pkgdir/usr/local/share/klickity/sounds/"
-    fi
-    
-    if [ -f "README.md" ]; then
-        install -Dm644 README.md "$pkgdir/usr/share/doc/klickity/README.md"
-    fi
-    if [ -f "ARCHITECTURE.md" ]; then
-        install -Dm644 ARCHITECTURE.md "$pkgdir/usr/share/doc/klickity/ARCHITECTURE.md"
-    fi
-    if [ -f "docs/ARCHITECTURE.md" ]; then
-        install -Dm644 docs/ARCHITECTURE.md "$pkgdir/usr/share/doc/klickity/ARCHITECTURE.md"
-    fi
-    
-    if [ -f "packaging/klickity.desktop" ]; then
-        install -Dm644 packaging/klickity.desktop "$pkgdir/usr/share/applications/klickity.desktop"
-    fi
+
+    # Binary
+    install -Dm755 "target/release/mechclick" "$pkgdir/usr/bin/mechclick"
+
+    # Desktop entry
+    install -Dm644 "data/mechclick.desktop" "$pkgdir/usr/share/applications/mechclick.desktop"
+
+    # Icon
+    install -Dm644 "data/icons/mechclick-256.svg" "$pkgdir/usr/share/pixmaps/mechclick.svg"
+
+    # Systemd service (user)
+    install -Dm644 "$srcdir/mechclick.service" "$pkgdir/usr/lib/systemd/user/mechclick.service"
+
+    # License
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Documentation
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

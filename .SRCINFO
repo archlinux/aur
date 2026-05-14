@@ -1,22 +1,30 @@
 pkgbase = klickity
-	pkgdesc = Mechanical keyboard sound simulator for Wayland (read-only evdev + PipeWire)
+	pkgdesc = Mechanical keyboard sound simulator for Wayland — Rust+Tauri edition (evdev + PipeWire)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/HikariLucky/klickity
-	arch = any
+	arch = x86_64
 	license = MIT
+	makedepends = rustup
+	makedepends = cargo
+	makedepends = pkg-config
+	makedepends = glib2
+	makedepends = gobject-introspection
 	makedepends = git
-	makedepends = python-setuptools
-	makedepends = python-wheel
-	depends = python>=3.10
-	depends = python-evdev
-	depends = python-numpy
-	depends = python-sounddevice
-	depends = python-soundfile
+	depends = gtk4
+	depends = libadwaita
 	depends = pipewire
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = evdev
 	optdepends = wpctl: PipeWire volume control
-	optdepends = fish: shell integration for PATH
-	source = git+https://github.com/HikariLucky/klickity.git#tag=v1.0.0
+	provides = mechclick
+	conflicts = mechclick
+	source = git+https://github.com/HikariLucky/klickity.git#tag=v1.0.0?signed
+	source = mechclick.service
+	source = mechclick.install
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = klickity
