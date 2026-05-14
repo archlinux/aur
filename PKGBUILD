@@ -1,6 +1,6 @@
 # Maintainer: TheFeelTrain <the@feeltra.in>
 
-pkgname=hatch-sbom
+pkgname=python-hatch-sbom
 _origpkgname=hatch_sbom
 pkgver=0.4.0
 pkgrel=1
