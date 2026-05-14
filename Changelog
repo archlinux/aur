@@ -1,0 +1,11 @@
+
+2026-05-14 A.G. <qrdwibmkg@mozmail.com>
+
+	Updated to latest version 2026.04.
+
+	* PKGBUILD: License corrected. SHA256 checksums are used, because they can
+	be obtained from independent source (official release page) without relying
+	on updpkgsum(1). Sources can be cryptographically validated.
+
+	Public key can be downloaded at
+	https://rakudo.org/downloads/verifying#gpg2-key-list
