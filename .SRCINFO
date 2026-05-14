@@ -1,0 +1,20 @@
+pkgbase = r-bsicons
+	pkgdesc = Easily Work with 'Bootstrap' Icons
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bsicons
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cli
+	depends = r-htmltools
+	depends = r-rlang
+	optdepends = r-bslib
+	optdepends = r-processx
+	optdepends = r-testthat
+	optdepends = r-webshot2
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/bsicons_0.1.2.tar.gz
+	b2sums = 62d5b626d3a5056e46e372c8b65900b74651a6ccdb4e0d2dbca3ec984e146319a56bf06a4049133a6e84e61c8e1b20de2d85e9bde84ae6b2b4e59fae94d2076f
+
+pkgname = r-bsicons
