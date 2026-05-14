@@ -1,21 +1,20 @@
 pkgbase = perl-debug-showstuff
 	pkgdesc = Debug::ShowStuff - A collection of handy debugging routines for displaying the values of variables with a minimum of coding.
 	pkgver = 1.16
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Debug-ShowStuff
+	pkgrel = 2
+	url = https://metacpan.org/dist/Debug-ShowStuff
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	depends = perl-class-isa
 	depends = perl-devel-stacktrace
+	depends = perl-scalar-list-utils
 	depends = perl-string-util
 	depends = perl-term-readkey
 	depends = perl-text-tabulardisplay
 	depends = perl-tie-ixhash
+	depends = perl>=5.3.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIKO/Debug-ShowStuff-1.16.tar.gz
-	md5sums = 435937b830976b4ff486e200ca176b2e
-	sha512sums = 7d42e664812d03b4bbbebb307ae4a8f1ab6ff1dfcd1e1f6a9d9b80fdbd227e37732a2309a14174307690f4fca3db62376cf116585cfad10814f0143111af5de9
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIKO/Debug-ShowStuff-1.16.tar.gz
+	sha256sums = a4dd5d2cd7db8ea6e4861b193e024b4187a2b0ed2b99d587062dfb11a5cd2cb7
 
 pkgname = perl-debug-showstuff
-
