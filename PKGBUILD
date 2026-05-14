@@ -25,6 +25,7 @@ prepare() {
 		cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target host-tuple
+  	git apply ../../Identifier.patch
 }
 
 build() {
