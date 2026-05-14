@@ -1,5 +1,6 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
+# Contributor: Caleb Cushing <xenoterracide@gmail.com>
 
 _author=SMUELLER
 _dist=Class-ISA
