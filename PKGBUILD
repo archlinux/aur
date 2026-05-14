@@ -12,8 +12,8 @@ optdepends=('gzippy-replace-gzip: replace system gzip/gunzip/zcat with gzippy')
 
 source_x86_64=("gzippy-x86_64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.7.1/gzippy-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("gzippy-aarch64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.7.1/gzippy-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('14d51eef71145e75f2fdcb47f3eab2e50449e915dbf2d2ddb61882db37328ac6')
-sha256sums_aarch64=('346b583faccd54a0c46f1666df83946cb796391dc1a5f4c9997ce258e661483b')
+sha256sums_x86_64=('29e54d0189f89d6bd8c5be4b44e9a6a43a341bf68b2e53e18934f15f6b1f03fc')
+sha256sums_aarch64=('cf34ae3a7cbd1038bf46476439dec6c3668a643d5dd59dc9b3f3999895d61688')
 
 package() {
     install -Dm755 gzippy "$pkgdir/usr/bin/gzippy"
