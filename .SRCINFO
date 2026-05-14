@@ -7,6 +7,8 @@ pkgbase = iscsi-util
 	license = MIT
 	depends = open-iscsi
 	depends = libnotify
+	options = !debug
+	options = !strip
 	source = https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_v2.5/ISCSI-Util.tar.gz
 	sha256sums = SKIP
 

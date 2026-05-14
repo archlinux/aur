@@ -4,6 +4,7 @@ pkgrel=3
 pkgdesc="A simple and modern GUI for managing iSCSI."
 
 arch=('x86_64')
+options=('!debug' '!strip')
 license=('MIT')
 depends=('open-iscsi' 'libnotify')
 url="https://github.com/mijocecr/iscsi-util"
