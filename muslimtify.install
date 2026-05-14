@@ -1,17 +1,74 @@
-post_install() {
-    echo "==> Installing.."
-    muslimtify daemon install
+_enable_for_user() {
+    # Best-effort: enable + start the timer for the invoking user when pacman
+    # was run via sudo. In a chroot or as raw root we can't know which user
+    # to target, so we just print instructions.
+    local user="${SUDO_USER:-}"
+    if [ -z "$user" ] || [ "$user" = "root" ]; then
+        echo "==> To enable the daemon for your user, run:"
+        echo "      systemctl --user daemon-reload"
+        echo "      systemctl --user enable --now muslimtify.timer"
+        echo "    Optional one-time setup (auto-detect location & method):"
+        echo "      muslimtify daemon install"
+        return
+    fi
 
-    echo "==> Done!, Print the status with:"
-    echo "      muslimtify daemon status"
+    local uid
+    uid=$(id -u "$user" 2>/dev/null) || return 0
+    local runtime="/run/user/$uid"
+
+    if [ ! -S "$runtime/bus" ]; then
+        echo "==> User '$user' has no active session bus; enable later with:"
+        echo "      systemctl --user enable --now muslimtify.timer"
+        return
+    fi
+
+    runuser -u "$user" -- env XDG_RUNTIME_DIR="$runtime" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=$runtime/bus" \
+        systemctl --user daemon-reload
+    runuser -u "$user" -- env XDG_RUNTIME_DIR="$runtime" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=$runtime/bus" \
+        systemctl --user enable --now muslimtify.timer \
+        && echo "==> muslimtify.timer enabled and started for user '$user'."
+}
+
+post_install() {
+    _enable_for_user
+    echo "==> For auto-detected location and calculation method, run as your user:"
+    echo "      muslimtify daemon install"
 }
 
 post_upgrade() {
-    echo "==> Daemon updated. Restart it with:"
-    echo "      muslimtify daemon uninstall && muslimtify daemon install"
+    local user="${SUDO_USER:-}"
+    if [ -n "$user" ] && [ "$user" != "root" ]; then
+        local uid
+        uid=$(id -u "$user" 2>/dev/null)
+        if [ -n "$uid" ] && [ -S "/run/user/$uid/bus" ]; then
+            runuser -u "$user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+                DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+                systemctl --user daemon-reload
+            runuser -u "$user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+                DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+                systemctl --user try-restart muslimtify.timer || true
+            return
+        fi
+    fi
+    echo "==> Reload as your user to pick up unit changes:"
+    echo "      systemctl --user daemon-reload"
+    echo "      systemctl --user try-restart muslimtify.timer"
 }
 
 post_remove() {
-    echo "==> Remove the daemon with:"
-    echo "      muslimtify daemon uninstall"
+    local user="${SUDO_USER:-}"
+    if [ -n "$user" ] && [ "$user" != "root" ]; then
+        local uid
+        uid=$(id -u "$user" 2>/dev/null)
+        if [ -n "$uid" ] && [ -S "/run/user/$uid/bus" ]; then
+            runuser -u "$user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+                DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+                systemctl --user disable --now muslimtify.timer 2>/dev/null || true
+            return
+        fi
+    fi
+    echo "==> Disable the daemon as your user:"
+    echo "      systemctl --user disable --now muslimtify.timer"
 }
