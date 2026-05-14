@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=renovate
-pkgver=43.179.1
+pkgver=43.179.3
 pkgrel=1
 pkgdesc="Automated dependency updates"
 arch=('any')
@@ -11,12 +11,17 @@ provides=("${pkgname}")
 url="https://github.com/renovatebot/renovate"
 license=('AGPL-3.0-only')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c3a72c1fc3bec2196f4232f9585a158adda050bd51c3e81ad182c948bec750db')
+sha256sums=('2bf7ebe6731455dc46822ab4a5604993ff0e6f578a873de2d9f24aca36c56d7e')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${pkgver}\"/" package.json
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  pnpm version --no-git-tag-version "${pkgver}"
   pnpm install --frozen-lockfile
   pnpm build
 }
