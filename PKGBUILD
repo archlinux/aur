@@ -1,6 +1,6 @@
 # Maintainer: Keon Cachia  <keonfarrugia@gmail.com>
 pkgname=kwim
-pkgver=0.1.4
+pkgver=0.1.5
 _mvzrver=0.3.7
 _zigwlver=0.5.0
 _xkbver=0.4.0
@@ -16,13 +16,14 @@ source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
 	zigwl-$_zigwlver.tar.gz::https://codeberg.org/ifreund/zig-wayland/archive/v$_zigwlver.tar.gz
 	xkb-$_xkbver.tar.gz::https://codeberg.org/ifreund/zig-xkbcommon/archive/v$_xkbver.tar.gz
 	clap-$_clapver.tar.gz::https://github.com/Hejsil/zig-clap/archive/refs/tags/$_clapver.tar.gz)
-sha256sums=('0f0a5048e8b568f21e2bc7f34dc0e627ce570f3b37903704dbfbc2932c1cc4f9'
+sha256sums=('7185de4fc213ec1a7a394e2ed25612c56ce329d95d7f4d3b3809dd594d26c5c3'
             '9f9a28b2f6af44b004cd968fc639dbe6dc088355950a24614622f2ec462c851b'
             'fa9705e83613b5555d7117ce5c602f10591d6598e69a73fba2e6039200db4f4b'
             'e6df77d511cf9402f6ac08455c8d1fb727b6c3d66191e246671f62e5db083c49'
             '7c359dec441866e025065ae9ca706ece72bcf4e8a25fbe31719b1e92ff389648')
-noextract=("${source[@]:1}")
 
+noextract=("${source[@]:1}")
+makedepends=('zig=0.15.2')
 
 prepare() {
   zig fetch --global-cache-dir ./zig-global-cache "./${source[1]%%::*}"
