@@ -1,6 +1,6 @@
 pkgbase = scran
 	pkgdesc = Image and video capture for Wayland
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/iciclejj/scran
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = scran
 	depends = libpipewire
 	depends = ffmpeg
 	depends = blend2d
-	source = scran-0.9.1.tar.gz::https://github.com/iciclejj/scran/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 2d91eee7b0dcf4a80aa20430537e31e1bea5150f40e492d5464193ee6d1f5236
+	source = scran-0.9.2.tar.gz::https://github.com/iciclejj/scran/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = 739133ddfc8fb7481f069b881875c32076107433a863ef81a92740f9cc0bc7c9
 
 pkgname = scran
