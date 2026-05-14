@@ -8,6 +8,7 @@ arch=('x86_64')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
 license=('EUPL-1.2')
 depends=(
+    'vsview-cli'
     'vapoursynth'
     'python-jetpytools'
     'python-vsjetengine'
