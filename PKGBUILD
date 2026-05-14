@@ -8,7 +8,7 @@ url="https://github.com/Virgarakha/termius-clone"
 license=('MIT')
 depends=('fuse2')
 options=('!strip')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/Virgarakha/termius-clone/releases/download/v0.1.0-beta/ORBYT-0.1.0-beta.AppImage")
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/Virgarakha/termius-clone/releases/download/v0.1.0-beta/ORBYT-0.1.0.AppImage")
 sha256sums=('1b6394e93983677d7c33fd939db2c4778d5f3284b464373cb5098d3d2879e50f')
 
 package() {
