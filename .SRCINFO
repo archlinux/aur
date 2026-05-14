@@ -1,7 +1,7 @@
 pkgbase = libccp4
 	pkgdesc = Protein X-ray crystallography toolkit - Libraries
-	pkgver = 6.5.1
-	pkgrel = 8
+	pkgver = 8.0.0
+	pkgrel = 1
 	url = http://www.ccp4.ac.uk/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libccp4
 	makedepends = gcc-fortran
 	depends = mmdb2>=2.0.19-1
 	conflicts = libccp4-bzr
-	source = https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/libccp4-6.5.1.tar.gz
-	sha256sums = 280b473d950cdf8837ef66147ec581104298b892399bd856f13b096f2395dbe5
+	source = https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/libccp4-8.0.0.tar.gz
+	sha256sums = cb813ae86612a0866329deab7cee96eac573d81be5b240341d40f9ad5322ff2d
 
 pkgname = libccp4
