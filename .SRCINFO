@@ -1,6 +1,6 @@
 pkgbase = android-x86-qt6-multimedia
 	pkgdesc = Classes for audio, video, radio and camera functionality (android)
-	pkgver = 6.11.0
+	pkgver = 6.11.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,9 +21,9 @@ pkgbase = android-x86-qt6-multimedia
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.11/6.11.0/submodules/qtmultimedia-everywhere-src-6.11.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.11/6.11.1/submodules/qtmultimedia-everywhere-src-6.11.1.tar.xz
 	source = 0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch
-	sha256sums = 90c4cac0a7a983b68d1b0873d0714e7873b9a493403fa8593e8a4eea3ea26040
-	sha256sums = 2cb2cd01e9c328d11fa6bb627c84f970464396ba1797deeb3b45d3911f5dcec5
+	sha256sums = 390f8e52ddee3aca5c4de7eead900c84c4fa61ff6d1f0ebea9c7543365c09b0a
+	sha256sums = 8e90f36fcbd8dadc903577e53eb4327fe93ba2625ce8626603a545ad96c7475f
 
 pkgname = android-x86-qt6-multimedia
