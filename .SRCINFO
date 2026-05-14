@@ -1,0 +1,26 @@
+pkgbase = apidog-eu-bin
+	pkgdesc = Design. Debug. Test. Document. Mock. Build APIs Faster & Together. (EU Version)
+	pkgver = 2.8.23
+	pkgrel = 1
+	url = https://apidog.com
+	arch = x86_64
+	license = custom
+	depends = nss
+	depends = libx11
+	depends = gtk3
+	depends = libxcb
+	depends = java-runtime
+	depends = alsa-lib
+	depends = lib32-glibc
+	depends = nodejs
+	depends = lib32-gcc-libs
+	depends = libdbusmenu-glib
+	provides = apidog-eu
+	conflicts = apidog
+	options = !strip
+	source_x86_64 = Apidog Europe-2.8.23.AppImage::https://file-assets.eu.apidog.com/download/2.8.23/Apidog%20Europe-2.8.23.AppImage
+	source_x86_64 = apidog-eu.desktop
+	sha256sums_x86_64 = be7cb532a11b29c11d715f6d930796993b784771f703ecd76ab823e6b8034e1d
+	sha256sums_x86_64 = a568c806ae77f3e7858c07ab095309bdcc2f87a71a49bad7e853bc140d30dbeb
+
+pkgname = apidog-eu-bin
