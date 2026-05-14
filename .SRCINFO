@@ -1,0 +1,19 @@
+pkgbase = livekit-cli-bin
+	pkgdesc = LiveKit CLI: command line utilities that interacts with LiveKit
+	pkgver = 2.16.3
+	pkgrel = 1
+	url = https://livekit.io/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache
+	makedepends = go
+	options = !debug
+	source_x86_64 = https://github.com/livekit/livekit-cli/releases/download/v2.16.3/lk_2.16.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 57935ce348a634a1e12769b9eaf7e684cf46920ad65e4b6d88f87a9cd01de2d6
+	source_aarch64 = https://github.com/livekit/livekit-cli/releases/download/v2.16.3/lk_2.16.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 31aa8d5d10455faf4d184674d639f9c03b0a7c64be1dacd32ecc48ec1c5b9df8
+	source_armv7h = https://github.com/livekit/livekit-cli/releases/download/v2.16.3/lk_2.16.3_linux_arm.tar.gz
+	sha256sums_armv7h = f00fde381cf68820acfaaf7fa4fc599f6236e0e03a72ce27a6ffd1fa8b156288
+
+pkgname = livekit-cli-bin
