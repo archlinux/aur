@@ -2,17 +2,32 @@ post_install() {
   cat <<'EOF'
 NOTE: Before starting Koito, complete these steps:
 
-  1) Set up your PostgreSQL database and user.
-     (e.g. create the \`koitodb\` database and a role with access.)
-
-  2) Edit /etc/koito.env to configure:
-       • KOITO_DATABASE_URL
+  1) Edit /etc/koito.env to configure your environment variables:
        • KOITO_ALLOWED_HOSTS
+       (Note: Koito now uses a local SQLite database by default).
 
-  3) Reload systemd and enable/start the service:
+  2) Reload systemd and enable/start the service:
        # systemctl daemon-reload
        # systemctl enable --now koito.service
 
 Enjoy Koito!
 EOF
+}
+
+post_upgrade() {
+  if [[ $(vercmp "$2" "0.2.1") -lt 0 ]]; then
+    cat <<'EOF'
+========================================================================
+                             IMPORTANT
+========================================================================
+Koito v0.2.1 is a bridge release that migrates your database backend
+from PostgreSQL to SQLite.
+
+PLEASE BACKUP YOUR POSTGRESQL DATA BEFORE RESTARTING THE SERVICE!
+
+To ensure automatic migration succeeds, make sure your
+KOITO_DATABASE_URL is still properly set in /etc/koito.env.
+========================================================================
+EOF
+  fi
 }
