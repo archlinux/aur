@@ -1,5 +1,5 @@
+# Maintainer: Jakub Smulski <hgonomeg@gmail.com>
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
-# Contributor: Jakub Smulski <hgonomeg@gmail.com>
 
 pkgname=libccp4
 pkgver=8.0.0
