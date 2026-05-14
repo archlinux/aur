@@ -15,12 +15,12 @@ pkgbase = fluxcast-git
 	depends = libpulse
 	depends = networkmanager
 	depends = python-gobject
-	depends = wf-recorder
 	depends = wpa_supplicant
-	depends = xdg-desktop-portal
+	optdepends = python-dbus-next: WFD portal capture control plane for KDE/GNOME Wayland
 	optdepends = python-pychromecast: Needed for the Cast protocol
 	optdepends = python-upnpclient: Needed for the DLNA protocol
-	optdepends = python-dbus-next: WFD portal capture control plane for KDE/GNOME Wayland
+	optdepends = wf-recorder: Hyprland/wlroots screen capture
+	optdepends = xdg-desktop-portal: Wayland portal service for KDE/GNOME capture
 	provides = fluxcast=r28.f4f396b
 	conflicts = fluxcast
 	source = fluxcast::git+https://github.com/IlyaP358/fluxcast.git
