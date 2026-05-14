@@ -25,7 +25,7 @@ makedepends=(
 )
 optdepends=(
     'perl-bencode'
-    #'perl-compress-ppmd'  # Compress-PPMd dist does not exist on CPAN anymore.
+    #'perl-compress-ppmd'       # Compress-PPMd dist does not exist on CPAN anymore.
     'perl-config-general'
     'perl-convert-bencode'
     #'perl-convert-bencode_xs'  # Failing its tests.
