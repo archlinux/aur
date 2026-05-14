@@ -1,0 +1,22 @@
+pkgbase = claude-p-bin
+	pkgdesc = Drop-in replacement for claude -p using an in-process PTY session
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/smithersai/claude-p
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = claude-code
+	provides = claude-p
+	conflicts = claude-p
+	noextract = claude-p-0.0.4-linux-x64.gz
+	noextract = claude-p-0.0.4-linux-arm64.gz
+	options = !debug
+	source = claude-p-bin-0.0.4.tar.gz::https://github.com/smithersai/claude-p/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = 47bd792185d36058ce90ae4f38442cab00e037bee23f4945ed77e94d22b3a8fa
+	source_x86_64 = claude-p-0.0.4-linux-x64.gz::https://github.com/smithersai/claude-p/releases/download/v0.0.4/claude-p-linux-x64.gz
+	sha256sums_x86_64 = 7feb13e07fc1a1892c7855cf300d084f441acb8d5e30bad37e14aef351f153f9
+	source_aarch64 = claude-p-0.0.4-linux-arm64.gz::https://github.com/smithersai/claude-p/releases/download/v0.0.4/claude-p-linux-arm64.gz
+	sha256sums_aarch64 = a69eba0ef99b2c83f6fc596cdb17189f01cc80a9637d54aebc86e200fc0ffdb4
+
+pkgname = claude-p-bin
