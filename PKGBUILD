@@ -31,7 +31,7 @@ makedepends=(
 #   makepkg -si SRCDEST=. \
 #     source=("$pkgname-$pkgver::git+file://$(realpath ..)")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e162b97ab1239c9b506c12f088faf88071943cdda42b4dff029492192a004fc1')
+sha256sums=('98ee5f5ea1f6ebf44fe46a5dccb0ed69785ed6cc14311bc6bc1081cdf9827ddd')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -52,8 +52,8 @@ package() {
     install -Dm644 redx/resources/redx.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/redx.svg"
     # Also drop the SVG into /usr/share/pixmaps. This is the legacy XDG
-    # icon fallback that doesn't require gtk-update-icon-cache indexing
-    # — which on its own happily ignores SVGs in scalable/apps/ and
+    # icon fallback that doesn't require gtk-update-icon-cache indexing,
+    # which on its own happily ignores SVGs in scalable/apps/ and
     # leaves gnome-shell on Wayland with a generic-icon fallback.
     install -Dm644 redx/resources/redx.svg \
         "$pkgdir/usr/share/pixmaps/redx.svg"
