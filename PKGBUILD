@@ -1,10 +1,9 @@
 # Maintainer: Selim Cifci <cifciselimhasan@gmail.com>
-pkgname=pam-parallel-fprint-git
+pkgname=pam-parallel-fprint
 pkgver=0
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
-    || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  cd "$srcdir/PAM-Parallel-Fprint"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 pkgrel=1
 pkgdesc="PAM module allowing for fprintd and password authentication in parallel"
