@@ -19,15 +19,15 @@ depends=(
   iw
   libpulse
   networkmanager
-  python-dbus-fast
   python-gobject
-  python-pychromecast
-  python-upnpclient
   wf-recorder
   wpa_supplicant
   xdg-desktop-portal
 )
 optdepends=(
+  'python-pychromecast: Needed for the Cast protocol'
+  'python-upnpclient: Needed for the DLNA protocol'
+  'python-dbus-next: WFD portal capture control plane for KDE/GNOME Wayland'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
