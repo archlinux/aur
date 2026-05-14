@@ -9,18 +9,12 @@ license=('LicenseRef-SmoothCSV')
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'hicolor-icon-theme' 'xdg-utils' 'libsoup3' 'cairo' 'gdk-pixbuf2')
 provides=('smoothcsv')
 conflicts=('smoothcsv')
-source=("LICENSE-SmoothCSV.md::https://raw.githubusercontent.com/kohii/smoothcsv-website/refs/heads/main/src/pages/terms.md")
+source=("LICENSE-SmoothCSV.md")
 source_x86_64=("SmoothCSV_${pkgver}_amd64.deb::https://github.com/kohii/smoothcsv3/releases/download/v${pkgver}/SmoothCSV_${pkgver}_amd64.deb")
 source_aarch64=("SmoothCSV_${pkgver}_arm64.deb::https://github.com/kohii/smoothcsv3/releases/download/v${pkgver}/SmoothCSV_${pkgver}_arm64.deb")
-sha256sums=('21185cf5a704c8c91420cb9f25baf0937f852e3a40ada396b9f29cedf79bfab0')
+sha256sums=('b6a5ef347dba58db0b247e5d0e51aa8996a9668fe70171cc8624177af5e297a9')
 sha256sums_x86_64=('b7527435763e50e97325a4dc14e9964e1c5837d628509e99872449e3a1644536')
 sha256sums_aarch64=('419e3f304d377ba19b0ef49f0931ef213f9b5021c74665d7665e7e1c14a2dd51')
-
-prepare() {
-  # Strip the front matter (--- ... ---) from the terms markdown.
-  perl -0pe 's/\A\x{feff}?(?:[[:space:]]*\r?\n)*---\r?\n.*?\r?\n---\r?\n?//s' \
-    "${srcdir}/LICENSE-SmoothCSV.md" > "${srcdir}/LICENSE-SmoothCSV.cleaned.md"
-}
 
 package() {
   local deb_arch
@@ -80,5 +74,5 @@ EOF
     sed -i 's|^Exec=|Exec=env SMOOTHCSV_DIST_CHANNEL=AUR |' "$desktop_file"
   done
 
-  install -Dm644 "${srcdir}/LICENSE-SmoothCSV.cleaned.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-SmoothCSV.md"
+  install -Dm644 "${srcdir}/LICENSE-SmoothCSV.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-SmoothCSV.md"
 }
