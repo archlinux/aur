@@ -1,7 +1,7 @@
 # Maintainer: openZro <dev@openzro.io>
 #
 # This file is a template — the release-binaries.yml workflow rewrites
-# `0.53.1.alpha.61`, `0.53.1-alpha.61`, and the two `__SHA256_<arch>__` markers
+# `0.53.1.alpha.62`, `0.53.1-alpha.62`, and the two `__SHA256_<arch>__` markers
 # below at tag-publish time, then pushes the resulting PKGBUILD to
 # https://aur.archlinux.org/openzro-bin.git via the
 # KSXGitHub/github-actions-deploy-aur action.
@@ -11,8 +11,8 @@
 # spelling for the GitHub Release URL.
 pkgname=openzro-bin
 _pkgname=openzro
-pkgver=0.53.1.alpha.61
-_realver=0.53.1-alpha.61
+pkgver=0.53.1.alpha.62
+_realver=0.53.1-alpha.62
 pkgrel=1
 pkgdesc="openZro client — zero-trust mesh networking (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ depends=('iptables' 'ca-certificates')
 optdepends=('wireguard-tools: kernel WireGuard interface management')
 source_x86_64=("openzro-${_realver}-x86_64.tar.gz::https://github.com/openzro/openzro/releases/download/v${_realver}/openzro_${_realver}_linux_amd64.tar.gz")
 source_aarch64=("openzro-${_realver}-aarch64.tar.gz::https://github.com/openzro/openzro/releases/download/v${_realver}/openzro_${_realver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('8b24a243556c1befdd418e6b946c1f032bc4dc63c9a29d4584e349da1a311b59')
-sha256sums_aarch64=('59090d3be811283bb5fd812e4429a6b9e85412884331b028979a7928ae8fe48d')
+sha256sums_x86_64=('87c5a72139aed3ccf2b31dbf3830c7f7a41e552a5a64c8aa499860e83f5f870f')
+sha256sums_aarch64=('10f2e1a6ef5b54da2649882ad795e5229b87f6c65183a69ce2e6b99fb1e05559')
 
 package() {
     install -Dm0755 "$srcdir/openzro" "$pkgdir/usr/bin/openzro"
