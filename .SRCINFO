@@ -1,22 +1,17 @@
 pkgbase = usearch
-	pkgdesc = Fast open-source search and clustering engine for vectors.
-	pkgver = 2.16.5
+	pkgdesc = Open-source usearch
+	pkgver = 12.0_beta1
 	pkgrel = 1
-	url = https://github.com/unum-cloud/usearch
+	url = https://github.com/rcedgar/usearch12
 	arch = x86_64
-	license = Apache-2.0
-	makedepends = cmake
-	makedepends = git
-	depends = fp16
-	depends = simsimd
-	depends = stringzilla
-	source = usearch::git+https://github.com/unum-cloud/usearch.git#tag=3d7a9017b6326178c7d9cc87742b8b064388b702
-	source = git+https://github.com/Maratyszcza/FP16.git
-	source = git+https://github.com/ashvardanian/SimSIMD.git
-	source = git+https://github.com/ashvardanian/StringZilla.git
-	sha512sums = 9a238a710369a44dabadbe764dec07dac762e8e67cf2a589dba4bb2dbe5040d24a5df05456d5d80936cc700b0138b6fe0828b812988e41f93253516c5e56fe48
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	makedepends = ccache
+	depends = gcc-libs
+	source = https://github.com/rcedgar/usearch12/archive/refs/tags/v12.0-beta1.tar.gz
+	source = gcc15.patch::https://github.com/rcedgar/usearch12/compare/master...starsareintherose:usearch12:master.patch
+	sha256sums = dbb06e4733801dab1c405616880261bd885ab171dfdb1d44e8ede48d739cdc43
+	sha256sums = 3a1b57feb3c647133e3473fc55f02410cd5004b622fe9dd55e4ad223e21a8430
 
 pkgname = usearch
