@@ -1,0 +1,17 @@
+pkgbase = late-cli
+	pkgdesc = Companion CLI for late.sh terminal clubhouse
+	pkgver = 0.24.7
+	pkgrel = 1
+	url = https://github.com/mpiorowski/late-sh
+	arch = x86_64
+	license = custom:FSL-1.1-MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = mold
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://github.com/mpiorowski/late-sh.git#tag=v0.24.7
+	sha256sums = SKIP
+
+pkgname = late-cli
