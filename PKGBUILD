@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.8.5.410"
-pkgrel="2"
+pkgver="11.0.0.0"
+pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -9,17 +9,17 @@ depends=('wine' 'hicolor-icon-theme')
 makedepends=('p7zip' 'icoutils' 'gendesk')
 url="https://www.tracker-software.com/product/pdf-xchange-editor"
 _downloadsource="https://downloads.pdf-xchange.com/${pkgver}"
-_x64file="EditorV10.x64.msi"
+_x64file="EditorV11.x64.msi"
 _installdir="/usr/lib"
 _programname="PDF Editor"
-_commonfiles="Common Files/Tracker Software/Common"
+_commonfiles="Common Files/PDF-XChange"
 _dictionaries="$_commonfiles/Dictionaries"
 _languages="$_commonfiles/Languages"
 _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('bbaa345299c20ed054d7296efc3649b8a656814df70299175b58191dd24f0f34')
+sha256sums=('2ffff2e3fddda9c98dfef82cbb45220610d82010472729f1063a5d464b54ae49')
 
 prepare()
 {
@@ -33,6 +33,7 @@ prepare()
  7z x "$srcdir/e_res.cab" -o"$srcdir"
  7z x "$srcdir/et_res.cab" -o"$srcdir"
  7z x "$srcdir/disk1.cab" -o"$srcdir"
+ 7z x "$srcdir/ICU_res.cab" -o"$srcdir"
  
 }
 
@@ -56,12 +57,6 @@ package()
  install -Dm644 "$srcdir/FID_MSAL_DLL_System_Memory_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Memory.dll"
  install -Dm644 "$srcdir/FID_MSAL_DLL_System_Numerics_Vectors_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Numerics.Vectors.dll"
  install -Dm644 "$srcdir/FID_MSAL_DLL_System_Runtime_CompilerServices_Unsafe_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Runtime.CompilerServices.Unsafe.dll"
- install -Dm644 "$srcdir/FID_PDFX_AUTH64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFX.Auth.x64.dll"
- install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEditCore.x64.dll"
- install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe"
- install -Dm644 "$srcdir/FID_EditorConfig" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe.config"
- install -Dm644 "$srcdir/FID_LiteDrvHelpLicense" "$pkgdir/usr/share/licenses/$pkgname/PDFXLicense.pdf"
- install -Dm644 "$srcdir/FID_PPWorkerX64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFX.ProcessPool.Worker.x64.exe"
  install -Dm644 "$srcdir/FID_AzureRMS64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/AzureRMS.pvp"
  install -Dm644 "$srcdir/FID_Bookmarks64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/Bookmarks.pvp"
  install -Dm644 "$srcdir/FID_Box64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/BoxFileSys.pvp"
@@ -75,12 +70,30 @@ package()
  install -Dm644 "$srcdir/FID_GD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/GoogleDrive.pvp"
  install -Dm644 "$srcdir/FID_IF64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/IdentifyForms.pvp"
  install -Dm644 "$srcdir/FID_Markdown64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MarkdownPlugin.pvp"
- install -Dm644 "$srcdir/FID_MIP_X64_libcrypto_3_x64_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/libcrypto-3-x64.dll"
- install -Dm644 "$srcdir/FID_MIP_X64_libssl_3_x64_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/libssl-3-x64.dll"
- install -Dm644 "$srcdir/FID_MIP_X64_mip_ClientTelemetry_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_ClientTelemetry.dll"
- install -Dm644 "$srcdir/FID_MIP_X64_mip_core_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_core.dll"
- install -Dm644 "$srcdir/FID_MIP_X64_mip_protection_sdk_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_protection_sdk.dll"
- install -Dm644 "$srcdir/FID_MIP_X64_mip_upe_sdk_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_upe_sdk.dll"
+ install -Dm644 "$srcdir/FID_MIP_AX64_libcrypto_3_x64_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/libcrypto-3-x64.dll"
+ install -Dm644 "$srcdir/FID_MIP_AX64_libssl_3_x64_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/libssl-3-x64.dll"
+ install -Dm644 "$srcdir/FID_MIP_AX64_mip_ClientTelemetry_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_ClientTelemetry.dll"
+ install -Dm644 "$srcdir/FID_MIP_AX64_mip_core_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_core.dll"
+ install -Dm644 "$srcdir/FID_MIP_AX64_mip_protection_sdk_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_protection_sdk.dll"
+ install -Dm644 "$srcdir/FID_MIP_AX64_mip_upe_sdk_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_upe_sdk.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_freetype_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/freetype.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKBRep_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKBRep.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKernel_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKernel.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKG2d_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKG2d.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKG3d_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKG3d.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKGeomAlgo_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKGeomAlgo.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKGeomBase_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKGeomBase.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKHLR_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKHLR.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKMath_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKMath.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKMesh_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKMesh.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKMeshVS_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKMeshVS.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKOpenGl_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKOpenGl.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKPrim_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKPrim.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKService_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKService.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKShHealing_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKShHealing.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKTopAlgo_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKTopAlgo.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_TKV3d_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/TKV3d.dll"
+ install -Dm644 "$srcdir/FID_OCCT_X64_zlib1_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCCT/zlib1.dll"
  install -Dm644 "$srcdir/FID_OCR64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCRPlugin.pvp"
  install -Dm644 "$srcdir/FID_OD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OneDrive.pvp"
  install -Dm644 "$srcdir/FID_PDFA64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/PDFAPlugin.pvp"
@@ -90,9 +103,17 @@ package()
  install -Dm644 "$srcdir/FID_SP64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/SharePoint.pvp"
  install -Dm644 "$srcdir/FID_SpellChecker64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/SpellChecker.pvp"
  install -Dm644 "$srcdir/FID_U3D64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/U3DPlugin.pvp"
+ install -Dm644 "$srcdir/FID_PDFX_AUTH64" "$pkgdir${_installdir}/$pkgname/${_programname}/PXC.Auth.x64.dll"
+ install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/${_programname}/PXCEditorCore.x64.dll"
+ install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/${_programname}/PXCEditor.exe"
+ install -Dm644 "$srcdir/FID_EditorConfig" "$pkgdir${_installdir}/$pkgname/${_programname}/PXCEditor.exe.config"
+ install -Dm644 "$srcdir/FID_Broker64" "$pkgdir${_installdir}/$pkgname/${_programname}/PXCHost64.exe"
+ install -Dm644 "$srcdir/FID_LiteDrvHelpLicense" "$pkgdir/usr/share/licenses/$pkgname/PXCLicense.pdf"
+ install -Dm644 "$srcdir/FID_PPWorkerX64" "$pkgdir${_installdir}/$pkgname/${_programname}/PXC.ProcessPool.Worker.x64.exe"
  install -Dm644 "$srcdir/FID_Resource" "$pkgdir${_installdir}/$pkgname/${_programname}/Resources.dat"
  install -Dm644 "$srcdir/FID_Stamps_DynamicDate" "$pkgdir${_installdir}/$pkgname/${_programname}/Stamps/ENU/DynamicDate.pdf"
  install -Dm644 "$srcdir/FID_Stamps_Templates" "$pkgdir${_installdir}/$pkgname/${_programname}/Stamps/Templates.dat"
+ install -Dm644 "$srcdir/FID_ImageProcessDLL" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/11.0/OCV/x64/ImageProcess.dll"
  install -Dm644 "$srcdir/FID_TRUSTLIST" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/CertManager/TrustList.dat"
  install -Dm644 "$srcdir/FID_SD_OXT_cs" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-cs.oxt"
  install -Dm644 "$srcdir/FID_SD_OXT_de" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-de.oxt"
@@ -103,6 +124,7 @@ package()
  install -Dm644 "$srcdir/FID_SD_OXT_uk" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-uk.oxt"
  install -Dm644 "$srcdir/FID_SD_GPLv2" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/GPLv2.txt"
  install -Dm644 "$srcdir/FID_SD_GPLv3" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/GPLv3.txt"
+ install -Dm644 "$srcdir/FID_ICU71_DAT" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/ICU/icudt74l.dat"
  install -Dm644 "$srcdir/FID_RMS_af_ZA" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.af-ZA.xcl"
  install -Dm644 "$srcdir/FID_RMS_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ar-SA.xcl"
  install -Dm644 "$srcdir/FID_RMS_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.az-Latn-AZ.xcl"
@@ -963,7 +985,7 @@ cp "$prefix"/Tesseract/* "/tmp/$pkgname" &>/dev/null
 
 EOF
 
- echo 'WINEPREFIX="$prefix" /usr/bin/wine "'"$_installdir"'/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'WINEPREFIX="$prefix" /usr/bin/wine "'"$_installdir"'/$program/PXCEditor.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 
  echo cp '/tmp/"$pkgname"/*' '"$prefix/Tesseract"' >> "$pkgdir/usr/bin/$pkgname"
