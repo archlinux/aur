@@ -1,6 +1,6 @@
 # Maintainer: Hugo Fabresse <hugo34fabresse@gmail.com>
 pkgname=dentry
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Minimal keyboard-driven file manager for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('qt6-base')
 makedepends=('cmake' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('079194c994fcd45e7c0e9445b971681fe0aa5cca2c084e5077167bddd360c4d1')
+sha256sums=('e822ab77dbb62f3b99e73a595b5824c13a81380b4a9d0c195b249631326b7cee')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
