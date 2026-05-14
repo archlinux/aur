@@ -12,6 +12,7 @@ pkgbase = vsview-git
 	makedepends = python-versioningit
 	makedepends = python-wheel
 	makedepends = python-hatch-sbom
+	depends = vsview-cli
 	depends = vapoursynth
 	depends = python-jetpytools
 	depends = python-vsjetengine
