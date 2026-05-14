@@ -1,15 +1,15 @@
 pkgbase = exam-env
 	pkgdesc = The freeCodeCamp Exam Environment desktop application
-	pkgver = 1.8.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://freecodecamp.org
 	arch = x86_64
 	license = BSD-3-Clause
 	options = !debug
 	options = !strip
-	source = exam-env-1.8.1.AppImage::https://github.com/freecodecamp/exam-env/releases/download/production/1.8.1/Exam.Environment_1.8.1_amd64.AppImage
+	source = exam-env-2.0.0.AppImage::https://github.com/freecodecamp/exam-env/releases/download/production/2.0.0/Exam.Environment_2.0.0_amd64.AppImage
 	source = https://raw.githubusercontent.com/freecodecamp/exam-env/refs/heads/main/LICENSE.md
-	sha256sums = 172f3bbe1602f9375c43209992fc0ea599e3974f19c0f880b370fc99a662f9f9
+	sha256sums = 4274dcf990cc54548858633a14ef2ba74a4fb8c99aaf89ee507d7d3ea0c797ee
 	sha256sums = b078ff602cbd37a85255691adf62a6ee232dbfba6105220827c1352002ad2941
 
 pkgname = exam-env
