@@ -1,6 +1,6 @@
 pkgbase = ovw-bin
 	pkgdesc = A terminal overview for your local projects
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/roie/ovw
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = ovw-bin
 	provides = ovw
 	conflicts = ovw
 	options = !strip
-	source_x86_64 = ovw-x86_64-1.1.1.tgz::https://github.com/roie/ovw/releases/download/v1.1.1/ovw_1.1.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 645509a161f42fd9e304878e051f8c22fbe8b10778664ff130a10dd5017bf444
-	source_aarch64 = ovw-aarch64-1.1.1.tgz::https://github.com/roie/ovw/releases/download/v1.1.1/ovw_1.1.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = ee3ed1f7c7a659682d393b5a8f66f2aef69c62391e5d409ac57572745fa0f068
+	source_x86_64 = ovw-x86_64-1.2.0.tgz::https://github.com/roie/ovw/releases/download/v1.2.0/ovw_1.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 20d1b5222ae5725e16e453ab164da66c2c4951460703c614654784063cd9ad8f
+	source_aarch64 = ovw-aarch64-1.2.0.tgz::https://github.com/roie/ovw/releases/download/v1.2.0/ovw_1.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d7cc4e66c973990c4584dc0eb5562a4acd6be337cc683b06f56c40d5fcea9f61
 
 pkgname = ovw-bin
