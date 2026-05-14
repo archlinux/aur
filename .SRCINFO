@@ -1,6 +1,6 @@
 pkgbase = kobo2notion-git
 	pkgdesc = Easily sync your Kobo highlights to Notion.(Use system-wide electron)
-	pkgver = 1.1.3.r0.g8413051
+	pkgver = 1.2.0.r0.g5c6ad39
 	pkgrel = 1
 	url = https://github.com/ghnmqdtg/Kobo2Notion
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = kobo2notion-git
 	makedepends = curl
 	makedepends = gendesk
 	makedepends = jq
-	depends = electron41
-	provides = kobo2notion=1.1.3
+	depends = electron42
+	provides = kobo2notion=1.2.0
 	conflicts = kobo2notion
 	source = kobo2notion.git::git+https://github.com/ghnmqdtg/Kobo2Notion.git
 	source = kobo2notion.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = kobo2notion-git
