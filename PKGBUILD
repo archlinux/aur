@@ -1,9 +1,9 @@
-  # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-  # Contributor:  solaraquarion <shlomochoina@gmial.com>
-  # Contributor:  derbetakevin <derbetakevin@outlook.de>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor:  solaraquarion <shlomochoina@gmial.com>
+# Contributor:  derbetakevin <derbetakevin@outlook.de>
 pkgname=extraterm-bin
 _pkgname=ExtratermQt
-pkgver=0.81.4
+pkgver=0.82.0
 pkgrel=1
 pkgdesc="The swiss army chainsaw of terminal emulators.(Prebuilt versrion)"
 arch=('x86_64')
@@ -24,16 +24,19 @@ depends=(
     'libxkbcommon-x11'
 )
 options=('!strip')
-source=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.glibc2.34-${CARCH}.AppImage")
-sha256sums=('1188f8802c89ef1f7b36686b62145f65bce0258918621adf9acbcd19043c5645')
+source=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.glibc2.38-${CARCH}.AppImage")
+sha256sums=('c41c6a8abbe2db78df327f26d06339cdb9ceba3c9304460b32f1bc3d7ddfb974')
 prepare() {
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
-      s/Exec=${pkgname%-bin}qt/Exec=${pkgname%-bin}/g
-      s/Icon=extratermqt/Icon=${pkgname%-bin}/g
+        s/Exec=${pkgname%-bin}qt/Exec=${pkgname%-bin}/g
+        s/Icon=extratermqt/Icon=${pkgname%-bin}/g
     " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
