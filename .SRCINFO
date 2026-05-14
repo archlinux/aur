@@ -1,6 +1,6 @@
 pkgbase = sqeel-bin
 	pkgdesc = Vim-modal SQL client: TUI front-end for sqlx-backed connections with LSP-aware editing. (binary release)
-	pkgver = 0.4.11
+	pkgver = 0.4.14
 	pkgrel = 1
 	url = https://sqeel.kryptic.sh/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = sqeel-bin
 	license = MIT
 	depends = libxcb
 	depends = gcc-libs
-	provides = sqeel=0.4.11
+	provides = sqeel=0.4.14
 	conflicts = sqeel
-	source_x86_64 = sqeel-v0.4.11-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/sqeel/releases/download/v0.4.11/sqeel-v0.4.11-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 244aba18abcbe82dfab491e08f008f4b6dc5e29ebb004f563234a175c15da27f
-	source_aarch64 = sqeel-v0.4.11-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/sqeel/releases/download/v0.4.11/sqeel-v0.4.11-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a037203fe575e50d2aea71a2c659d635d2cba060daf43a239b2728879f15ee54
+	source_x86_64 = sqeel-v0.4.14-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/sqeel/releases/download/v0.4.14/sqeel-v0.4.14-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 968ce5c2c3e95762eac94ff77d78beec700ff9bce4d02543d0209a9177d4efbc
+	source_aarch64 = sqeel-v0.4.14-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/sqeel/releases/download/v0.4.14/sqeel-v0.4.14-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 323b87c466c4ae85e66ccc5c26ca10137545f418816b66c6c01dc98b77a843a5
 
 pkgname = sqeel-bin
