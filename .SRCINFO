@@ -1,0 +1,26 @@
+pkgbase = cockatrice-stable
+	pkgdesc = Open-source multiplatform program for playing tabletop card games over a network (stable release)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://cockatrice.github.io/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = mariadb-libs
+	makedepends = xz
+	makedepends = zlib
+	depends = protobuf
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-tools
+	depends = qt6-multimedia
+	depends = qt6-websockets
+	depends = hicolor-icon-theme
+	optdepends = mariadb: database support
+	provides = cockatrice-client
+	conflicts = cockatrice-client
+	conflicts = cockatrice-client-git
+	source = cockatrice-3.0.0.tar.gz::https://github.com/Cockatrice/Cockatrice/archive/refs/tags/2026-05-08-Release-3.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = cockatrice-stable
