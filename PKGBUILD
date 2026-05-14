@@ -1,8 +1,8 @@
-# Maintainer: Raidriar
+# Maintainer: Raidriar <aur.raidriar@pm.me>
 
 _pkgname=renderide
 pkgname=$_pkgname-git
-pkgver=r2063.c5baa47
+pkgver=r2078.319b3b2
 pkgrel=1
 epoch=0
 pkgdesc="A modern Rust + wgpu renderer for Resonite"
