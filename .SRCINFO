@@ -10,6 +10,7 @@ pkgbase = anisocial-desktop-bin
 	depends = libxss
 	provides = anisocial-desktop
 	conflicts = anisocial-desktop
+	noextract = anisocial-desktop-bin-0.1.1.pacman
 	options = !strip
 	options = !debug
 	source = anisocial-desktop-bin-0.1.1.pacman::https://github.com/VandoOmi/AniSocialDesktop/releases/download/v0.1.1/anisocial-desktop-0.1.1.pacman
