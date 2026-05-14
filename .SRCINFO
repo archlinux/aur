@@ -1,5 +1,5 @@
 pkgbase = howdy-next
-	pkgdesc = Windows Hello style facial authentication for Linux
+	pkgdesc = A modernized fork of original Howdy, Facial recognition authentication for Linux
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://codeberg.org/nathawat/howdy-next

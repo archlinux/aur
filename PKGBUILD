@@ -3,7 +3,7 @@
 pkgname="howdy-next"
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Windows Hello style facial authentication for Linux"
+pkgdesc="A modernized fork of original Howdy, Facial recognition authentication for Linux"
 arch=('x86_64')
 url="https://codeberg.org/nathawat/howdy-next"
 license=('MIT')
