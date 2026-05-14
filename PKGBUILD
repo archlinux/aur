@@ -11,7 +11,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/esa/pagmo2/archive/v${pkgver}.tar.gz")
 sha256sums=('ecc180e669fa6bbece959429ac7d92439e89e1fd1c523aa72b11b6c82e414a1d')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "${srcdir}/pagmo2-$pkgver"
@@ -23,14 +23,14 @@ build() {
   cd "${srcdir}/pagmo2-$pkgver"
   for _arch in ${_architectures}; do
     ${_arch}-cmake -DPAGMO_WITH_EIGEN3=ON -DPAGMO_WITH_NLOPT=ON -DPAGMO_WITH_IPOPT=ON -DCMAKE_UNITY_BUILD=ON -B build-${_arch} .
-    make -C build-${_arch}
+    cmake --build build-${_arch}
   done
 }
 
 package() {
+  cd "$srcdir/pagmo2-${pkgver}"
   for _arch in ${_architectures}; do
-    cd "$srcdir/pagmo2-${pkgver}/build-${_arch}"
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --build build-${_arch} --target install
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
