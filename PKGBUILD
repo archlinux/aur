@@ -360,6 +360,10 @@ _package-hdr() {
     cd "${_srcname}"
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
     echo "Installing build files..."
+    if [ ! -f localversion.10-pkgrel ] && [ ! -f localversion.20-pkgname ]; then
+        echo "-$pkgrel" > localversion.10-pkgrel
+        echo "${pkgbase#linux}" > localversion.20-pkgname
+    fi
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
         localversion.10-pkgrel localversion.20-pkgname version vmlinux
     if ! _is_ci_build; then
