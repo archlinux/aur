@@ -1,0 +1,5 @@
+[ukrop-bin]
+source = "github"
+github = "ukroporg/ukrop"
+use_latest_release = true
+prefix = "v"
