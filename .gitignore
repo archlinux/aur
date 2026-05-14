@@ -1,0 +1,5 @@
+nmcrcon/
+pkg/
+src/
+*.tar*
+
