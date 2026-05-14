@@ -1,5 +1,5 @@
 pkgname=kawai-focus-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Kawai-Focus is a focus-training app based on the Pomodoro timer."
 arch=('x86_64')
