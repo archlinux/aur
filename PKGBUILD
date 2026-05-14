@@ -3,7 +3,7 @@
 # Contributor: Peter Jung <ptr1337@archlinux.org>
 
 pkgname=mingw-w64-gcc-msvcrt
-pkgver=15.2.0
+pkgver=16.1.0
 pkgrel=1
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler (w/ MSVCRT as C runtime library)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ options=('staticlibs' '!emptydirs' '!buildflags')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
 validpgpkeys=(D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               13975A70E63C361C73AE69EF6EEB81F8981C74C7) # richard.guenther@gmail.com
-sha512sums=('89047a2e07bd9da265b507b516ed3635adb17491c7f4f67cf090f0bd5b3fc7f2ee6e4cc4008beef7ca884b6b71dffe2bb652b21f01a702e17b468cca2d10b2de'
+sha512sums=('b3454958891ab47e1e5b6cb9396c0ad3b04f32fe2a7bf1153a143f21013fdb6b295ca94c98964698a688e4c1d7555ffd8ffbc20187507cce6b1c32cbcc09897a'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
