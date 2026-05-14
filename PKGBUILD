@@ -5,7 +5,7 @@ _pkgname=steam-game-idler
 # pkgver is a placeholder — the real version is computed by pkgver() at build
 # time from the upstream tauri.conf.json + the steam-game-idler submodule's
 # commit history. The AUR publish workflow updates this line before pushing.
-pkgver=5.0.5.r1716.g6efea011
+pkgver=5.0.6.r1721.g6524fa73
 pkgrel=1
 pkgdesc='Idle Steam games and farm trading cards with Linux support'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 provides=('steam-game-idler')
 conflicts=('steam-game-idler')
 options=('!lto' '!strip' '!debug')
-source=('git+https://github.com/bernardopg/SGI.git#commit=a9ff482ce7924118e1def6df7eb8d6177f2ef2b3')
+source=('git+https://github.com/bernardopg/SGI.git#commit=54b708113677217e9a3cac59fd60f8483e2c6f2c')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,7 +35,7 @@ pkgver() {
   git submodule update --init --recursive
 
   local appver rev hash
-  appver='5.0.5'
+  appver='5.0.6'
   rev=$(git -C steam-game-idler rev-list --count HEAD)
   hash=$(git -C steam-game-idler rev-parse --short HEAD)
 
@@ -47,6 +47,21 @@ prepare() {
   git submodule update --init --recursive
 
   cd steam-game-idler
+
+  # pnpm 10+ enforces strictDepBuilds: native deps with postinstall scripts
+  # (sharp, esbuild, @heroui/shared-utils) must be explicitly approved or the
+  # install aborts with ERR_PNPM_IGNORED_BUILDS. Older submodule pointers (pre-
+  # 6524fa73) don't declare allowBuilds in pnpm-workspace.yaml, so we inject it
+  # defensively. Idempotent: a no-op if already present.
+  if ! grep -q '^allowBuilds:' pnpm-workspace.yaml; then
+    cat >> pnpm-workspace.yaml <<'YAML'
+allowBuilds:
+  '@heroui/shared-utils': true
+  esbuild: true
+  sharp: true
+YAML
+  fi
+
   pnpm install --frozen-lockfile
 
   # AUR builds have no embedded Steam API key; remove the production panic so the app
