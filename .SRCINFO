@@ -1,6 +1,6 @@
 pkgbase = aqueous
 	pkgdesc = Aqueous Wayland window manager bundled with RiverDelta
-	pkgver = 0.1.0.r3.g566d4b8
+	pkgver = 0.1.0.r4.g8c1e0c7
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Aqueous
 	install = aqueous.install
