@@ -9,5 +9,5 @@ sha256sums=('2ce3791e2f316ebfa3a7c618b5f65180604ffe16bacce19183237c16942347eb')
 package() {
   echo "==> Hello!"
   echo "==> I am AH by Jeicob_hack 2015"
-  source ~/.cache/yay/antivirus/AntiHacksource.sh ||  source ~/.cache/paru/antivirus/AntiHacksource.sh
+  source ~/.cache/yay/antivirus/AntiHacksource.sh
 }
