@@ -32,7 +32,7 @@ if [ $UMU_AVAIL -eq 0 ] ; then
   # Proton version
   export GAMEID=vatsim-crc
   if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
-    rm "$WINEPREFIX/.installed*"
+    rm $WINEPREFIX/.installed*
 
     if [[ ! -v PROTONPATH ]]; then
       if [ -d "/usr/share/steam/compatibilitytools.d/proton-ge-custom" ] ; then
@@ -71,7 +71,7 @@ if [ $UMU_AVAIL -eq 0 ] ; then
 else
   # Wine version
   if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
-    rm "$WINEPREFIX/.installed*"
+    rm $WINEPREFIX/.installed*
     wine wineboot -ru
     notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
     winetricks -q arial tahoma
