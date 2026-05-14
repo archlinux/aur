@@ -2,7 +2,7 @@
 
 _pkgname="fluxcast"
 pkgname="$_pkgname-git"
-pkgver=r28.f4f396b
+pkgver=r29.90e8c0a
 pkgrel=1
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
