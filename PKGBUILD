@@ -4,7 +4,7 @@ pkgver=4.4.2.r9.gd35cf24
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
-url="https://git.sr.ht/~shulhan/rescached"
+url="https://kilabit.info/project/rescached/"
 license=('GPL-3.0-or-later')
 
 depends=('bash')
@@ -13,12 +13,13 @@ makedepends=('git' 'go>=1.20')
 
 _sourcedir=$pkgname
 source=(
-	"$pkgname::git+https://git.sr.ht/~shulhan/rescached"
+	"$pkgname::git+https://git.kilabit.info/rescached"
 )
+
 ## For testing on local.
 #_sourcedir=rescached-local
 #source=(
-#	"$_sourcedir::git+file:///home/ms/go/src/git.sr.ht/~shulhan/rescached#branch=dev"
+#	"$_sourcedir::git+file:///home/ms/kilabit.info/_project/src/rescached/#branch=dev"
 #)
 
 sha1sums=(

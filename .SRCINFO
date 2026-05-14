@@ -2,7 +2,7 @@ pkgbase = rescached-git
 	pkgdesc = Resolver/DNS cache daemon
 	pkgver = 4.4.2.r9.gd35cf24
 	pkgrel = 1
-	url = https://git.sr.ht/~shulhan/rescached
+	url = https://kilabit.info/project/rescached/
 	install = rescached.install
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = rescached-git
 	backup = etc/rescached/rescached.cfg
 	backup = etc/rescached/localhost.pem
 	backup = etc/rescached/localhost.pem.key
-	source = rescached-git::git+https://git.sr.ht/~shulhan/rescached
+	source = rescached-git::git+https://git.kilabit.info/rescached
 	sha1sums = SKIP
 
 pkgname = rescached-git
