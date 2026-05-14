@@ -1,0 +1,24 @@
+--- b/CMakeLists.txt
++++ a/CMakeLists.txt
+@@ -21,17 +21,16 @@
+     while(_n GREATER 0 AND NOT _applied)
+         list(SUBLIST _parts 0 ${_n} _head)
+         string(REPLACE ";" "_" _candidate "${_head}")
++        foreach(_root "" "Telegram/")
+-        foreach(_root "Telegram/" "")
+             set(_dir "${CMAKE_SOURCE_DIR}/${_root}${_candidate}")
++            if (IS_DIRECTORY ${_dir})
+-            if (IS_DIRECTORY ${_dir} AND EXISTS ${_dir}/.git)
+                 execute_process(
+                     COMMAND git apply --check ${_patch}
+                     WORKING_DIRECTORY ${_dir}
+                     RESULT_VARIABLE _check_result
++                    OUTPUT_QUIET ERROR_QUIET
+-                    OUTPUT_VARIABLE _check_output
+-                    ERROR_VARIABLE _check_output
+                 )
++                if (_check_result EQUAL 0)
+-                if (_check_result EQUAL 0 AND NOT _check_output MATCHES "Skipped patch")
+                     execute_process(
+                         COMMAND git apply ${_patch}
+                         WORKING_DIRECTORY ${_dir}

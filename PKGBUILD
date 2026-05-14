@@ -9,7 +9,7 @@
 _pkgname="forkgram"
 pkgname="$_pkgname"
 pkgver=6.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -76,10 +76,12 @@ _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
+  '0001-revert-cmake-patch.patch'
 )
 sha256sums=(
   'edfa7b1448f15d05d5ea8295d0a51618d6b66de17cff70f0383049acbc61c421'
   'SKIP'
+  'cf669c8a03f8ffcfb0898534c394324f9d59909e0526b86d63190d662a3dd861'
 )
 
 prepare() {
@@ -97,7 +99,7 @@ prepare() {
   done
 
   # force system minizip-ng
-  rm -rf "$_pkgsrc/Telegram/ThirdParty/minizip"
+  rm -rf "Telegram/ThirdParty/minizip"
   sed -E -e '/pkg_check_modules/s&\bminizip\b&minizip-ng&' -i "cmake/external/minizip/CMakeLists.txt"
 
   # add missing headers for gcc 16
@@ -106,30 +108,12 @@ prepare() {
     "Telegram/ThirdParty/tgcalls/tgcalls/third-party/json11.cpp" \
     "Telegram/ThirdParty/tgcalls/tgcalls/v2/SignalingConnection.h"
 
-  # extra patches
-  local _bn _dir
-  for src in patches/*.patch; do
-    _bn=$(basename "$src")
-
-    case "$_bn" in
-      cmake_*.patch)
-        _dir="cmake"
-        ;;
-      codegen_*.patch)
-        _dir="Telegram/codegen"
-        ;;
-      lib_base_*.patch)
-        _dir="Telegram/lib_base"
-        ;;
-      *)
-        echo "Skipping unknown patch: $src"
-        continue
-        ;;
-    esac
-
-    printf '\nApplying patch: %s\n' "$src"
-    patch -d "$_dir" -Np1 -F100 -i "$PWD/$src"
-  done
+  # disable RHI; breaks image rendering
+  sed -E -e '/qputenv\("QT_WIDGETS_RHI"/d' -i \
+    Telegram/SourceFiles/core/launcher.cpp \
+    Telegram/SourceFiles/platform/linux/specific_linux.cpp \
+    Telegram/SourceFiles/platform/mac/specific_mac.mm \
+    Telegram/SourceFiles/platform/win/specific_win.cpp
 }
 
 build() {
