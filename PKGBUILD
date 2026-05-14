@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vmlinux-to-elf"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Recover a fully analyzable .ELF from a raw kernel, through extracting the kernel symbol table (kallsyms)"
 arch=(
@@ -35,6 +35,7 @@ provides=(
 )
 conflicts=(
   "python-${pkgname}"
+  "vmlinux-to-elf-git"
 )
 options=(
   '!strip'
@@ -43,7 +44,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('efdf3f5e8c67a7eeed7e32e8d9e7f8b8bdbe104f3dc3458d620a9030d5b2ebdc')
+sha256sums=('f1ec7ad50cf565dd8142bba42eff962a288c601cffa0629331d791580496f192')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
