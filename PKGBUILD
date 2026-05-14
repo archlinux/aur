@@ -1,6 +1,6 @@
 pkgname="antivirus"
 pkgver=0.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A antivirus by Jeicob_hack2015"
 arch=('x86_64')
 source=("AntiHacksource.sh")
