@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
-pkgver=4.5.20
+pkgver=4.6.0
 _electronversion=29
 pkgrel=1
 pkgdesc="Galgame Editing. Redefined(Prebuilt version) / 视觉小说编辑，再进化"
@@ -37,8 +37,8 @@ source=(
 )
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
             'd51d809af628cc8292bd430a4847adb4adefa9d4b0aee00a55a84ff9630e167c')
-sha256sums_aarch64=('9f01f231952342d22e09ba414009a0e0683de2c500d5965bc986dfaf16b177e3')
-sha256sums_x86_64=('73e2c90aec21ccd414de02c76e54db4cd020fffe295f6dbb491fe6a52834878e')
+sha256sums_aarch64=('a9ac44b84021b30b7bc83dc8c398461e36d51c85c4b922f470a6e2448fa67517')
+sha256sums_x86_64=('b81a19f8181e25042d6394dea770492021df0c14bb2edcc2ad0838c80eaf951a')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
