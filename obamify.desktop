@@ -1,7 +1,9 @@
 [Desktop Entry]
-Icon=obamify
 Name=obamify
+Comment=Turn any image into obama
+Icon=obamify
 Exec=/usr/bin/obamify
 StartupNotify=false
 Terminal=false
 Type=Application
+Categories=Graphics;

@@ -1,8 +1,8 @@
-# Maintainer: Engdyn <git@engdyn.de>
+# Maintainer: Engdyn <aur [cat] engdyn [dog] de>
 
 pkgname=obamify-git
 _pkgname=obamify
-pkgver=1.3.r12.g764aa3b
+pkgver=1.3.r20.g3689559
 pkgrel=1
 pkgdesc='revolutionary new technology that turns any image into obama'
 arch=('any')
@@ -26,7 +26,7 @@ source=(
     )
 b2sums=(
     'SKIP'
-    'a94d236f938d0b4997d498ef4243833181464f48495358917d6eb24da4fa356d2006576fd5691783fd6f9eca3d2e24fcb7516d3b6d9e37ee1dd0dbdc59e89f2f'
+    '2bb737fe256a1716b81516e81dce26be3c53d580f80d2b2fd4eb5ef1e1435c6cf515524f2c4e39d886000439c9d3ac722ad0930372dba2a0440595de7075686e'
     )
 
 pkgver() {
