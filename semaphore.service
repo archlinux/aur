@@ -1,6 +1,6 @@
 [Unit]
 Description=Ansible Semaphore
-Documentation=https://github.com/ansible-semaphore/semaphore
+Documentation=https://github.com/semaphoreui/semaphore
 Documentation=man:semaphore --help
 After=network.target syslog.target
 
