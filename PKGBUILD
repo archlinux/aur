@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=148.0.7778.167
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=1
 _system_clang=1
@@ -216,13 +216,11 @@ prepare() {
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin \
            third_party/rust-toolchain/bin \
-           third_party/jdk/current/bin
+           third_party/jdk/current/bin \
+           third_party/gperf/cipd/bin
 
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
-
-  # remove x86_64 binary and use our own
-  rm -f third_party/gperf/cipd/bin/gperf
   ln -s /usr/bin/gperf third_party/gperf/cipd/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
