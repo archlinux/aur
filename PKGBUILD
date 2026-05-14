@@ -1,14 +1,14 @@
 # Maintainer: Bink
 pkgname=spriteglypher
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop bitmap font editor with layered effects and PNG atlas export"
 arch=('x86_64')
 url="https://github.com/Fluocode/SpriteGlypher"
 license=('GPL-3.0-only' 'MIT')
 depends=('qt6-base')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Fluocode/SpriteGlypher/archive/a02029b957ad8dacceda787e1987a1986a9a6836.tar.gz")
-b2sums=('104f0019e61aa33f50c0a51b5991066794aa8f81f64d110455f16ed07ffeb10fc7529f7e8bcc9edb991ec315979aa862cdc32a4c82cc1e8376ff2c15a9f72096')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Fluocode/SpriteGlypher/archive/5daeb71f6e973d0fb3712ad915fbc41040a4b02f.tar.gz")
+b2sums=('0cafcd557c5915067cf8ca2dc03a5840a1fd77c8bd92f6bb819c0a413d23893684c2b8d40011a735d147f0d0a2dfbef8da338bd19701712142655c6be31ebb7e')
 
 build() {
 	cd "${srcdir}"/SpriteGlypher-*
