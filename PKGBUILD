@@ -1,4 +1,5 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Yoann Laissus <yoann.laissus@gmail.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon-isolated
