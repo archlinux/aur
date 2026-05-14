@@ -1,4 +1,4 @@
-From 5a876d4cb67408cec82c044fa636fcbcd3a6abf3 Mon Sep 17 00:00:00 2001
+From c927beace6e21e10aed680268c95f9f96efabc7c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 11 Mar 2026 01:07:36 +0100
 Subject: [PATCH 2/2] Allow using LLVM 22
@@ -24,11 +24,11 @@ index 72d27db9e..8a3cba463 100644
  
  # Check for QDoc coverage dependencies
 diff --git a/src/qdoc/qdoc/CMakeLists.txt b/src/qdoc/qdoc/CMakeLists.txt
-index 729f6bbd9..ae504e085 100644
+index 81accae82..ceffcd05a 100644
 --- a/src/qdoc/qdoc/CMakeLists.txt
 +++ b/src/qdoc/qdoc/CMakeLists.txt
-@@ -105,6 +105,7 @@ qt_internal_add_tool(${target_name}
-     DEFINES
+@@ -107,6 +107,7 @@ qt_internal_add_tool(${target_name}
+         QT_NO_KEYWORDS
          # To provide the ability to workaround version-specific Clang issues.
          # A re-export of (LLVM|CLANG)_VERSION_MAJOR done in WrapLibClang.cmake
 +        QT_NO_EMIT
@@ -36,7 +36,7 @@ index 729f6bbd9..ae504e085 100644
  )
  qt_internal_return_unless_building_tools()
 diff --git a/src/qdoc/qdoc/src/qdoc/clangcodeparser.cpp b/src/qdoc/qdoc/src/qdoc/clangcodeparser.cpp
-index dfcfdc382..18eb18d8f 100644
+index be8e01c62..8b1983212 100644
 --- a/src/qdoc/qdoc/src/qdoc/clangcodeparser.cpp
 +++ b/src/qdoc/qdoc/src/qdoc/clangcodeparser.cpp
 @@ -42,7 +42,12 @@
@@ -54,5 +54,5 @@ index dfcfdc382..18eb18d8f 100644
  
  #include <cstdio>
 -- 
-2.53.0
+2.54.0
 
