@@ -13,7 +13,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("git+https://github.com/ianlancetaylor/libbacktrace.git")
 sha256sums=('SKIP')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="x86_64-w64-mingw32"
 
 pkgver() {
   cd "libbacktrace"
