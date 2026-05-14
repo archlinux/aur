@@ -11,20 +11,20 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/devernay/cminpack/archive/v${pkgver}.tar.gz")
 sha256sums=('45675fac0a721a1c7600a91a9842fe1ab313069db163538f2923eaeddb0f46de')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd $srcdir/cminpack-${pkgver}
   for _arch in ${_architectures}; do
     ${_arch}-cmake -DCMINPACK_LIB_INSTALL_DIR=lib -DBUILD_EXAMPLES=OFF -B build-${_arch} .
-    make -C build-${_arch}
+    cmake --build build-${_arch}
   done
 }
 
 package() {
+  cd $srcdir/cminpack-${pkgver}
   for _arch in ${_architectures}; do
-    cd "$srcdir/cminpack-${pkgver}/build-${_arch}"
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --build build-${_arch} --target install
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
