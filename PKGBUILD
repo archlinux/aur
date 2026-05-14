@@ -11,7 +11,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/devernay/cminpack/archive/v${pkgver}.tar.gz")
 sha256sums=('45675fac0a721a1c7600a91a9842fe1ab313069db163538f2923eaeddb0f46de')
 
-_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd $srcdir/cminpack-${pkgver}
