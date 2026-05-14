@@ -1,0 +1,30 @@
+--- a/extras/plugins/processing/riemannian/src/boxes/RiemannianPotato.cpp
++++ b/extras/plugins/processing/riemannian/src/boxes/RiemannianPotato.cpp
+@@ -128,7 +128,7 @@ RiemannianPotato RiemannianPotato::deserializeFromXML(const tinyxml2::XMLElement
+ }
+ 
+ // Save vector of RiemannianPotato objects to XML
+-void Riemannian::saveToXML(const std::vector<RiemannianPotato>& potatoes, const std::string& filename) {
++void saveToXML(const std::vector<RiemannianPotato>& potatoes, const std::string& filename) {
+     tinyxml2::XMLDocument doc;
+     tinyxml2::XMLElement* root = doc.NewElement("RiemannianPotatoes");
+     doc.InsertFirstChild(root);
+@@ -143,7 +143,7 @@ void Riemannian::saveToXML(const std::vector<RiemannianPotato>& potatoes, const
+ }
+ 
+ // Load vector of RiemannianPotato objects from XML
+-std::vector<RiemannianPotato> Riemannian::loadFromXML(const std::string& filename) {
++std::vector<RiemannianPotato> loadFromXML(const std::string& filename) {
+     tinyxml2::XMLDocument doc;
+     std::vector<RiemannianPotato> potatoes;
+ 
+--- a/extras/plugins/processing/signal-processing/src/box-algorithms/CBoxAlgorithmEntropyMeasure.cpp
++++ b/extras/plugins/processing/signal-processing/src/box-algorithms/CBoxAlgorithmEntropyMeasure.cpp
+@@ -24,6 +24,7 @@
+ 
+ 
+ #include <iomanip>
++#include <cmath>
+ #include "CBoxAlgorithmEntropyMeasure.hpp"
+ 
+ namespace OpenViBE {

@@ -1,0 +1,21 @@
+--- a/extras/applications/developer-tools/vrpn-simulator/CMakeLists.txt
++++ b/extras/applications/developer-tools/vrpn-simulator/CMakeLists.txt
+@@ -12,6 +12,7 @@
+ 					  openvibe
+ 					  openvibe-common
+ 					  vrpn
++					  vrpnserver
+ 					  gtk2
+ )
+ 
+--- a/extras/applications/examples/vrpn-to-openvibe/CMakeLists.txt
++++ b/extras/applications/examples/vrpn-to-openvibe/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ 
+ add_executable(${PROJECT_NAME} ${SRC_FILES})
+ 
+-target_link_libraries(${PROJECT_NAME} vrpn)
++target_link_libraries(${PROJECT_NAME} vrpn vrpnserver)
+ 
+ set_property(TARGET ${PROJECT_NAME} PROPERTY FOLDER ${APP_FOLDER})
+ 

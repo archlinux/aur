@@ -1,0 +1,3 @@
+[openvibe]
+source = "git"
+git = "https://gitlab.inria.fr/openvibe/meta.git"

@@ -1,0 +1,149 @@
+--- a/extras/modules/tcptagging/include/tcptagging/CStimulusSender.h
++++ b/extras/modules/tcptagging/include/tcptagging/CStimulusSender.h
+@@ -24,7 +24,7 @@
+ 	bool sendStimulation(uint64_t stimulation, uint64_t timestamp = 0, uint64_t flags = (Flag_Fptime | Flag_Autostamp_Clientside)) override;
+ 
+ protected:
+-	boost::asio::io_service m_ioService;
++	boost::asio::io_context m_ioService;
+ 	boost::asio::ip::tcp::socket m_oStimulusSocket;
+ 	bool m_bConnectedOnce    = false;
+ 	uint64_t m_lastTimestamp = 0;
+--- a/extras/modules/tcptagging/src/CStimulusSender.cpp
++++ b/extras/modules/tcptagging/src/CStimulusSender.cpp
+@@ -23,10 +23,9 @@
+ 	try {
+ 		boost::system::error_code error;
+ 
+-		const boost::asio::ip::tcp::resolver::query query = boost::asio::ip::tcp::resolver::query(
+-			boost::asio::ip::tcp::v4(), sAddress, sStimulusPort, boost::asio::ip::resolver_query_base::numeric_service);
+-		const auto endpointIterator = resolver.resolve(query);
+-		m_oStimulusSocket.connect(*endpointIterator, error);
++		const boost::asio::ip::tcp::resolver::results_type endpointIterator =
++			resolver.resolve(sAddress, sStimulusPort);
++		m_oStimulusSocket.connect(*endpointIterator.begin(), error);
+ 		if (error) {
+ 			std::cout << "-- Boost ASIO connection error: " << error << "\n";
+ 			return false;
+--- a/extras/applications/examples/openvibe-to-tcpip/src/tcpip-client.cpp
++++ b/extras/applications/examples/openvibe-to-tcpip/src/tcpip-client.cpp
+@@ -49,7 +49,7 @@
+ public:
+ 	~TCPWriterClient() { if (m_dataFile.is_open()) { m_dataFile.close(); } }
+ 
+-	TCPWriterClient(boost::asio::io_service& ioService, const char* address, const char* signalPort, const char* stimulusPort, const char* dataFilename)
++	TCPWriterClient(boost::asio::io_context& ioService, const char* address, const char* signalPort, const char* stimulusPort, const char* dataFilename)
+ 		: m_stimulusSocket(ioService), m_signalSocket(ioService)
+ 	{
+ 		boost::system::error_code error;
+@@ -178,7 +178,7 @@
+ 		if (argc == 5) { filename = argv[4]; }
+ 
+ 		std::cout << "This example is intended to be used together with the tcp-writer.xml tutorial.\n\n";
+-		boost::asio::io_service ioService;
++		boost::asio::io_context ioService;
+ 		TCPWriterClient client(ioService, hostname, signalPort, stimulusPort, filename);
+ 		ioService.run();
+ 	}
+--- a/extras/applications/examples/openvibe-to-tcpip/src/tcpip-client.cpp
++++ b/extras/applications/examples/openvibe-to-tcpip/src/tcpip-client.cpp
+@@ -60,8 +60,8 @@
+ 		if ((stimulusPort != nullptr) && strcmp(stimulusPort, "0") != 0) {
+ 			// Stimulus port
+ 			std::cout << "Connecting to stimulus port [" << address << " : " << stimulusPort << "]\n";
+-			const tcp::resolver::query query = tcp::resolver::query(tcp::v4(), address, stimulusPort);
+-			m_stimulusSocket.connect(*resolver.resolve(query), error);
++			const tcp::resolver::results_type endpointIterator = resolver.resolve(address, stimulusPort);
++			m_stimulusSocket.connect(*endpointIterator.begin(), error);
+ 
+ 			// Tell ASIO to read a stimulus
+ 			async_read_until(m_stimulusSocket, m_stimulusStream, "\n", boost::bind(&TCPWriterClient::StimulusHandler, this, boost::asio::placeholders::error));
+@@ -70,8 +70,8 @@
+ 		if ((signalPort != nullptr) && strcmp(signalPort, "0") != 0) {
+ 			// Signal port
+ 			std::cout << "Connecting to signal port [" << address << " : " << signalPort << "]\n";
+-			const tcp::resolver::query query = tcp::resolver::query(tcp::v4(), address, signalPort);
+-			m_signalSocket.connect(*resolver.resolve(query), error);
++			const tcp::resolver::results_type endpointIterator = resolver.resolve(address, signalPort);
++			m_signalSocket.connect(*endpointIterator.begin(), error);
+ 
+ 			const tcp::no_delay noDelay(true);
+ 			m_signalSocket.set_option(noDelay);
+--- a/extras/contrib/plugins/server-extensions/tcp-tagging/ovasCTagStream.h
++++ b/extras/contrib/plugins/server-extensions/tcp-tagging/ovasCTagStream.h
+@@ -63,7 +63,7 @@
+ class CTagSession : public std::enable_shared_from_this<CTagSession>
+ {
+ public:
+-	CTagSession(boost::asio::io_service& ioService, const SharedQueuePtr& queue) : m_socket(ioService), m_queuePtr(queue) { }
++	CTagSession(boost::asio::io_context& ioService, const SharedQueuePtr& queue) : m_socket(ioService), m_queuePtr(queue) { }
+ 
+ 	boost::asio::ip::tcp::socket& socket() { return m_socket; }
+ 	void start();
+@@ -91,7 +91,7 @@
+ 	void startAccept();
+ 	void handleAccept(const SharedSessionPtr& session, const boost::system::error_code& error);
+ 
+-	boost::asio::io_service m_ioService;
++	boost::asio::io_context m_ioService;
+ 	boost::asio::ip::tcp::acceptor m_acceptor;
+ 	const SharedQueuePtr& m_queuePtr;
+ };
+--- a/extras/contrib/plugins/server-drivers/mbt-smarting/src/ovasCSmartingAmp.h
++++ b/extras/contrib/plugins/server-drivers/mbt-smarting/src/ovasCSmartingAmp.h
+@@ -65,7 +65,7 @@
+ private:
+ 
+ 	std::pair<unsigned char*, int> make_command(Command command);
+-	boost::asio::io_service m_io;
++	boost::asio::io_context m_io;
+ 	std::shared_ptr<boost::asio::serial_port> m_port;
+ 	unsigned char m_receiveBuffer[MAX_PACKAGE_SIZE];
+ 	unsigned char m_commandReceiveBuffer[MAX_PORT_SIZE];
+@@ -79,7 +79,7 @@
+ 	int m_failedSamples   = 0;
+ 	int m_receivedSamples = 0;
+ 	std::shared_ptr<std::thread> acquire_t;
+-	std::shared_ptr<boost::asio::deadline_timer> m_timer;
++	std::shared_ptr<boost::asio::steady_timer> m_timer;
+ 
+ 	// read with timeout
+ 	int m_bytes_readed = 0;
+--- a/extras/contrib/plugins/server-drivers/mbt-smarting/src/ovasCSmartingAmp.cpp
++++ b/extras/contrib/plugins/server-drivers/mbt-smarting/src/ovasCSmartingAmp.cpp
+@@ -13,7 +13,7 @@
+ SmartingAmp::SmartingAmp()
+ {
+ 	m_port.reset(new boost::asio::serial_port(m_io));
+-	m_timer.reset(new boost::asio::deadline_timer(m_io));
++	m_timer.reset(new boost::asio::steady_timer(m_io));
+ }
+ 
+ void SmartingAmp::disconnect()
+@@ -314,7 +314,7 @@
+ 	{
+ 		// cancel all async operations
+ 		m_io.stop();
+-		m_io.reset();
++		m_io.restart();
+ 
+ 		// TODO: Implement proper stopping of the acquiring thread		
+ 	}
+@@ -396,7 +396,7 @@
+ 
+ 
+ 	// Setup a deadline time to implement our timeout.
+-	m_timer->expires_from_now(boost::posix_time::milliseconds(timeout));
++	m_timer->expires_after(std::chrono::milliseconds(timeout));
+ 	m_timer->async_wait(boost::bind(&SmartingAmp::timeout_expired, this, boost::asio::placeholders::error));
+ 
+ 	// This will block until a character is read
+@@ -406,7 +406,7 @@
+ 	m_io.stop();
+ 	// After a timeout & cancel it seems we need
+ 	// to do a reset for subsequent reads to work.
+-	m_io.reset();
++	m_io.restart();
+ }
+ 
+ // Called when the timer's deadline expires.

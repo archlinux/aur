@@ -1,0 +1,10 @@
+--- a/extras/plugins/processing/simple-visualization/src/box-algorithms/CBoxAlgorithmErpPlot.cpp
++++ b/extras/plugins/processing/simple-visualization/src/box-algorithms/CBoxAlgorithmErpPlot.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include "CBoxAlgorithmErpPlot.hpp"
+ #include <boost/lexical_cast.hpp>
++#include <algorithm>
+ #include "../utils.hpp"
+ 
+ namespace OpenViBE {

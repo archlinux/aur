@@ -1,0 +1,11 @@
+--- a/designer/applications/platform/designer/src/CInterfacedScenario.cpp
++++ b/designer/applications/platform/designer/src/CInterfacedScenario.cpp
+@@ -2406,7 +2406,7 @@
+ 						id.fromString(box->getAttributeValue(OVP_AttributeId_Metabox_ID));
+ 
+ 						std::string path(m_kernelCtx.getMetaboxManager().getMetaboxFilePath(id).toASCIIString());
+-						std::string ext    = boost::filesystem::extension(path);
++						std::string ext    = boost::filesystem::path(path).extension().string();
+ 						bool canImportFile = false;
+ 
+ 						CString fileExt;
