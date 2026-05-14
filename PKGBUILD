@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-sensors-static
-_qtver=6.11.0
+_qtver=6.11.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,7 +21,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtsensors-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('412829258bc9f42766ed13a4b9d66604f184d349510b3248ec065cf90e1fc3c7')
+sha256sums=('23617062da7be526d023dec7f9b76231001a1098a7e5f94c646f2e4f87cfcf8f')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
