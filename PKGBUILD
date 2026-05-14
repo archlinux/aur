@@ -3,7 +3,7 @@
 pkgname=pake-grok
 _appname=Grok
 _appname_lower=grok
-_pkgver=3.11.0
+_pkgver=3.11.5
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="${_appname} wrapped as a desktop app using Pake"
@@ -17,7 +17,7 @@ source=(
     "${_appname}-${_pkgver}.deb::https://github.com/tw93/Pake/releases/download/V${_pkgver}/${_appname}_${CARCH}.deb"
     "LICENSE-${_pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${_pkgver}/LICENSE"
 )
-sha256sums=('e544c67eb8e721ef1ee1d7207d6ee2e8bec25e8c32355b19c29a8d08c4d4568a'
+sha256sums=('3042fa2fa383fc2bd1fe4e1f47ea363375f7c80ecaf319c8ac3efebe4550fa48'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 
 prepare() {
