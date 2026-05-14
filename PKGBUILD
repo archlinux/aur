@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jlivertool
 _pkgname=JLiverTool
-pkgver=3.0.6
+pkgver=3.0.9
 pkgrel=1
 pkgdesc="Simple Bilibili Danmaku Tool.Bilibili 弹幕机."
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'rustup'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}")
-sha256sums=('367ccf7a84a4e9e3c08f982a18b6efceef1360e597a81140e4247f98785cbd96')
+sha256sums=('414026b83e13fb004fb0f184133d838c840e9d8f6d988b6f4637f838da1b93b8')
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     export CARGO_HOME="${srcdir}/.cargo"
