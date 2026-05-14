@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=goenv
-pkgver=2.2.38
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Like pyenv and rbenv, but for Go."
 
@@ -12,7 +12,7 @@ url="https://github.com/go-nv/goenv"
 depends=('bash' 'python' 'bats')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('ad9d83e0f670c5b3198c421331c0b985')
+md5sums=('8858af7b7d66ef3528d4a06db2dd90e5')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
