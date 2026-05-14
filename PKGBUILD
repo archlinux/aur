@@ -1,11 +1,11 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Polarian <polarian@polarian.dev>
 # Contributor: Utsav <aur (a) utsav2 [.] dev>
 
 _module="glean_parser"
 _pkgname="python-${_module//_/-}"
 pkgname="$_pkgname"
-pkgver=19.0.0
+pkgver=19.1.0
 pkgrel=1
 pkgdesc="Tools for parsing the metadata for Mozilla's glean telemetry SDK"
 url="https://github.com/mozilla/glean_parser"
@@ -35,7 +35,7 @@ _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 _dl_url="https://files.pythonhosted.org/packages/source"
 source=("$_pkgsrc.$_pkgext"::"$_dl_url/${_module::1}/$_module/$_pkgsrc.$_pkgext")
-sha256sums=('bb2e0a4ab6be7e0daa704e4d4e9e34a2020f845a71dfc6c45366a917cbcbf4b3')
+sha256sums=('498399ea5da2f022ffb1ae71a958d1810e61c4f280401fe20ae00888902890ea')
 
 build() {
   cd "$_pkgsrc"
