@@ -3,7 +3,7 @@
 _basename="zig"
 pkgver=0.15.2
 _pkgver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 _llvm=20
 
 pkgname="${_basename}${_pkgver}"
@@ -92,8 +92,8 @@ build() {
   )
 
   cd "${srcdir}"
-  cmake "${cmake_options@]}"
-  cmake --build "${cmake_options1]}"
+  cmake "${cmake_options[@]}"
+  cmake --build "${cmake_options[1]}"
 
   cd "${_pkgsrc}"
   DESTDIR="./fakeinstall" cmake --install "build"
