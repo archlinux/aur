@@ -11,7 +11,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=(https://github.com/cddlib/cddlib/releases/download/$pkgver/cddlib-$pkgver.tar.gz)
 sha256sums=('b87ee07ba2c1d0ab92a3e4eccacdf568f981a095a392e3b9efd7e7e4a9e125b1')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd cddlib-$pkgver
