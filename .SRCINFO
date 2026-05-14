@@ -8,6 +8,6 @@ pkgbase = gaze-bin
 	depends = opencv
 	depends = pam
 	source = gaze-0.1.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.1.0-1-x86_64.pkg.tar.zst
-	sha256sums = a124d202dedcc6c4699361e80ab41ccf03777d4ae38d995209f19a418eeb6c7a
+	sha256sums = 6de935e768a1f25ed677ba473aad7cf93cd189d029aa89df7a33cc97a66d7b7c
 
 pkgname = gaze-bin
