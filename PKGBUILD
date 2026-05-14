@@ -3,8 +3,8 @@
 pkgname=rill-git
 _pkgname=rill
 pkgdesc="A minimalist scrolling window manager for River"
-pkgver=b063485
-pkgrel=3
+pkgver=0.6.0.r1.g81f3f39
+pkgrel=1
 arch=('x86_64' 'aarch64')
 _zigwlver=0.6.0
 _xkbver=0.4.0
@@ -33,7 +33,7 @@ optdepends=('alacritty: Default terminal emulator'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
   cd "$srcdir/$_pkgname"
