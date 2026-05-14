@@ -5,7 +5,7 @@
 
 _pkgname='github-desktop-plus'
 pkgname="${_pkgname}-bin"
-pkgver=3.5.9.1
+pkgver=3.5.9.2
 pkgrel=1
 pkgdesc="Fork of GitHub Desktop with extra features and improvements (binary release)."
 arch=('x86_64' 'aarch64')
@@ -38,8 +38,8 @@ sha256sums=(
     '93847b4cc1e967eae041284e9c7ed3d1a48df38482ff89b681ede79de03e342e'
     '2fb026db6ac25ade0535ec1fffec415fd1d023fbfd28b452f29523e51921083a'
 )
-sha256sums_x86_64=('477ec05294c41b71d38e4378b9d8678f39709407c715597a6e5ecfa714b3eb2f')
-sha256sums_aarch64=('82f7b54fc26580b8c0a258a7d3a46179f9fe72b779a5fba479a669390889d0ef')
+sha256sums_x86_64=('cf9fddfb175dfc425923634e697de501376f50e1e55f2fc5a56d0c05c8e01c73')
+sha256sums_aarch64=('48fbc3537864d24c7bf6c001a782ccced707b1fa94b0d778692263ef97c1751c')
 package() {
     INSTALL_DIR="$pkgdir/opt/${_pkgname}"
 
