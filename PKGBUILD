@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Wang <me at nicho1as dot wang>
 
 pkgname=nmcrcon-git
-pkgver=r51.f1917f7
+pkgver=0.7.3.r0.g8303508
 pkgrel=1
 pkgdesc="Yet another Minecraft RCON client that isn't against humanity and actually works."
 url="https://github.com/nicholascw/nmcrcon"
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL-3.0-only')
 #depends=('libbestline')
 makedepends=('git')
-source=("nmcrcon::git+https://github.com/nicholascw/nmcrcon.git")
+source=("nmcrcon::git+https://github.com/nicholascw/nmcrcon.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver () {
