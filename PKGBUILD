@@ -11,22 +11,22 @@ url="https://www.cgal.org"
 source=(https://github.com/CGAL/cgal/releases/download/v${pkgver}/CGAL-${pkgver}.tar.xz)
 sha256sums=('52506935f70e247ed2777e3c65f20e86f79208c2a2d0e180ae7475daf11c96ef')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 build()
 {
   cd "$srcdir/CGAL-${pkgver}"
   for _arch in ${_architectures}; do
     ${_arch}-cmake -B build-${_arch} .
-    make -C build-${_arch}
+    cmake --build build-${_arch}
   done
 }
 
 package()
 {
+  cd "$srcdir/CGAL-${pkgver}"
   for _arch in ${_architectures}; do
-    cd "$srcdir/CGAL-${pkgver}/build-${_arch}"
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --build build-${_arch} --target install
     rm "$pkgdir"/usr/${_arch}/bin/cgal_*
     rm -r "$pkgdir"/usr/${_arch}/share
   done
