@@ -18,11 +18,11 @@ pkgbase = klickity
 	depends = libevdev
 	depends = gst-plugins-good
 	optdepends = wpctl: PipeWire volume control
-	provides = mechclick
-	conflicts = mechclick
+	provides = klickity
+	conflicts = klickity
 	source = git+https://github.com/HikariLucky/klickity.git#tag=v1.0.0?signed
-	source = mechclick.service
-	source = mechclick.install
+	source = klickity.service
+	source = klickity.install
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

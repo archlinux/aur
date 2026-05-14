@@ -23,12 +23,12 @@ makedepends=(
     'git'
 )
 optdepends=('wpctl: PipeWire volume control')
-provides=('mechclick')
-conflicts=('mechclick')
+provides=('klickity')
+conflicts=('klickity')
 source=(
     "git+$url.git#tag=v${pkgver}?signed"
-    "mechclick.service"
-    "mechclick.install"
+    "klickity.service"
+    "klickity.install"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
@@ -57,7 +57,7 @@ build() {
         --target="gresource.c" \
         --sourcedir="data" \
         --generate \
-        --c-name="mechclick_resources" \
+        --c-name="klickity_resources" \
         "data/gresource.xml"
     
     # Build release
@@ -68,13 +68,13 @@ package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     
     # Binário principal
-    install -Dm755 "target/release/mechclick" "$pkgdir/usr/bin/mechclick"
+    install -Dm755 "target/release/klickity" "$pkgdir/usr/bin/klickity"
     
     # Desktop entry
-    install -Dm644 "data/mechclick.desktop" "$pkgdir/usr/share/applications/mechclick.desktop"
+    install -Dm644 "data/klickity.desktop" "$pkgdir/usr/share/applications/klickity.desktop"
     
     # Ícone
-    install -Dm644 "data/icons/mechclick-256.svg" "$pkgdir/usr/share/pixmaps/mechclick.svg"
+    install -Dm644 "data/icons/klickity-256.svg" "$pkgdir/usr/share/pixmaps/klickity.svg"
     
     # Sons (se existirem)
     if [ -d "data/sounds" ]; then
@@ -89,7 +89,7 @@ package() {
     fi
     
     # Systemd user service
-    install -Dm644 "$srcdir/mechclick.service" "$pkgdir/usr/lib/systemd/user/mechclick.service"
+    install -Dm644 "$srcdir/klickity.service" "$pkgdir/usr/lib/systemd/user/klickity.service"
     
     # License
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

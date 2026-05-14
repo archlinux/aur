@@ -1,0 +1,13 @@
+[Unit]
+Description=Klickity - Mechanical Keyboard Sound Engine
+Documentation=man:klickity
+After=graphical-session.target pipewire.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/klickity
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

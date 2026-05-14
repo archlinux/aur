@@ -1,0 +1,23 @@
+pkgname="klickity"
+
+pkg_install() {
+    # Enable systemd user service
+    if [ -f "$pkgdir/usr/lib/systemd/user/klickity.service" ]; then
+        systemctl --user enable klickity.service 2>/dev/null || true
+    fi
+}
+
+pkg_upgrade() {
+    # Reload systemd daemon after upgrade
+    systemctl --user daemon-reload 2>/dev/null || true
+    
+    # Restart service if running
+    if systemctl --user is-active --quiet klickity.service; then
+        systemctl --user restart klickity.service
+    fi
+}
+
+pkg_remove() {
+    # Disable systemd user service
+    systemctl --user disable klickity.service 2>/dev/null || true
+}
