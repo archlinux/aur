@@ -1,7 +1,7 @@
 # Maintainer: Aleksei Gusev <aleksei.gusev@gmail.com>
 
 pkgname=krunner-zed
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="KRunner plugin to access Zed recent projects"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('rust' 'cargo')
 optdepends=('kde-cli-tools: kstart for proper starting Zed in KDE environment')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hron/krunner-zed/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a914b211e3e3b43e06d6a7e8f7a01745ef942dced50089870cb0d6a8919cd514')
+sha256sums=('8e856c99349152fa1b20231ee87c9b99b3db3286cf207f24bf9061f0c7f06949')
 
 prepare() {
     cd "$pkgname-$pkgver" || exit 1
@@ -45,7 +45,7 @@ package() {
 
     sed "s|Exec=|Exec=/usr/bin/$pkgname|" \
         "package/dev.algus.krunner_zed.service" \
-        > "$srcdir/dev.algus.krunner_zed.service"
+        >"$srcdir/dev.algus.krunner_zed.service"
     install -Dm644 "$srcdir/dev.algus.krunner_zed.service" \
         "$pkgdir/usr/share/dbus-1/services/dev.algus.krunner_zed.service"
 }
