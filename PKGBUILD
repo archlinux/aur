@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onetcli-bin
 _pkgname=OnetCli
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="One Net Client — A cross-platform desktop client for databases, SSH/SFTP, terminals & AI, all in one place. (Prebuilt version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
     'systemd-libs'
 )
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('26e6b06efb12ff9124f5f926f642a215042ef540090f550f78354f0466aefd69')
+sha256sums=('c6ad0e048cf71a87f8054e2b98dccff1fa6816d00067459521c4a7fdcadf4e1e')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
