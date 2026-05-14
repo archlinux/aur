@@ -1,6 +1,6 @@
 # Maintainer: jooch <jooch at gmx dot com>
 pkgname=universal-gcode-sender
-pkgver=2.1.17
+pkgver=2.1.22
 pkgrel=1
 pkgdesc="Java based GRBL compatible cross-platform G-Code sender"
 arch=(any)
@@ -13,9 +13,9 @@ conflicts=(universal-gcode-sender-git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/winder/Universal-G-Code-Sender/archive/v${pkgver}.tar.gz"
 	"universal-gcode-sender.desktop"
 	"ugs_logo_square.svg")
-sha256sums=('abb1fc0b179718b1e6a1bf4f1dd920ab4086b66d67fec5dcfbdcc42db62cfb4b'
-	    'a9b9014f7e154d9e789f0774e0efab1015fdfa67e0af866ec56507d66a6d0f69'
-	    '821f25d7fb74e6fc831a05d3220e1a70561833f725cd43b8566854ca05290d9a')
+sha256sums=('58061ccf42a3651c88a2a06c5b65bed0c23fcc1f9e174e45dc124c670bcaf8d3'
+            'a9b9014f7e154d9e789f0774e0efab1015fdfa67e0af866ec56507d66a6d0f69'
+            '821f25d7fb74e6fc831a05d3220e1a70561833f725cd43b8566854ca05290d9a')
 
 prepare() {
   cd "${srcdir}/Universal-G-Code-Sender-${pkgver}"
