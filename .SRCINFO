@@ -1,6 +1,6 @@
 pkgbase = sway-title-animator
 	pkgdesc = Animated Unicode titlebars for Sway
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/marang/sway-title-animator
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sway-title-animator
 	license = MIT
 	makedepends = go
 	depends = sway
-	source = sway-title-animator-0.1.6.tar.gz::https://github.com/marang/sway-title-animator/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 3d9b6b4de936b78408245d9af63653e201c8d1dac25f35b6fb978590d5924d64
+	source = sway-title-animator-0.1.7.tar.gz::https://github.com/marang/sway-title-animator/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = c8203c6fd57d2e0d8c3037cce6f3531cdcec0ba849fee8420257ee5047f417f1
 
 pkgname = sway-title-animator
