@@ -1,6 +1,6 @@
 pkgbase = nf
 	pkgdesc = A tool to perform RA/RDNSS/NA spoofing
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/shadowy-pycoder/ndpspoof
 	arch = any
