@@ -8,6 +8,6 @@ pkgbase = orbyt
 	depends = fuse2
 	options = !strip
 	source = orbyt-0.1.1.beta.appimage::https://github.com/alvinades98/ORBYT/releases/download/v0.1.1-beta/ORBYT-0.1.1.appimage
-	sha256sums = fe8b3462edfa9cc98dffe57ca56d210e179ace742051b8b89d6ab10e76201bcd
+	sha256sums = eec4c06aab9665ba649daaf4aeef37dd79b96023dc8c9a57b669e8a9db6c4f5f
 
 pkgname = orbyt
