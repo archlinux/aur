@@ -1,11 +1,13 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Yoann Laissus <yoann.laissus@gmail.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
-pkgname=certbot
+pkgname=certbot-isolated
+_reponame="certbot"
 pkgver=5.5.0
 pkgrel=1
-pkgdesc='An ACME client'
+pkgdesc='An ACME client - version with isolated dns-lexicon to avoid conflict with python-lexicon'
 arch=(any)
 license=(Apache-2.0)
 url='https://certbot.eff.org'
@@ -19,6 +21,7 @@ depends=(
   python-distro
   python-parsedatetime
   python-pyrfc3339
+  dns-lexicon-isolated
 )
 makedepends=(
   git
@@ -42,6 +45,9 @@ optdepends=(
   'certbot-nginx: Nginx plugin for Let’s Encrypt client'
 )
 replaces=(letsencrypt)
+provides=(certbot)
+conflicts=(certbot)
+
 # git repository is used because certbot is a huge monorepo and it's easier to
 # share the entire repository across all certbot related packages than a few
 # hundred tarballs.
@@ -61,8 +67,17 @@ b2sums=('6ad84d30bc21e11624a45dcaab8bfefec091e461fbcbca1b03523d4b4c23e0545eadab7
         '773be7c45aaf84b79b260053dd4555be1b913238f680cf2c816e20d585db21c11ff41c985915ab0804bb3bc78af2e1e09133ed3b04e276e6379f63e9522064c1'
         'a75e09a662be6ce1bc533c39bea8ecfd6c0feb3f0066db854de701c1af71534bca750ef5b50826446708823564945aac887649225d15a347efd864dd1e1a8e81')
 
+prepare() {
+  cd "$_repo/$_reponame"
+
+  find . -type f -name '*.py' -exec sed -i \
+      -e 's/\bfrom lexicon\b/from dns_lexicon/g' \
+      -e 's/\bimport lexicon\b/import dns_lexicon/g' \
+      {} +
+}
+
 build() {
-  cd "$_repo/$pkgname"
+  cd "$_repo/$_reponame"
 
   python -m build --wheel --no-isolation
 
@@ -71,7 +86,7 @@ build() {
 }
 
 check() {
-  cd "$_repo/$pkgname"
+  cd "$_repo/$_reponame"
 
   # install to temporary directory
   python -m installer --destdir="$PWD/tmp_install" dist/*.whl
@@ -89,9 +104,9 @@ check() {
 package() {
   # systemd integration
   install -vDm644 -t "$pkgdir/usr/lib/systemd/system" certbot-renew.*
-  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_reponame.conf"
 
-  cd "$_repo/$pkgname"
+  cd "$_repo/$_reponame"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
