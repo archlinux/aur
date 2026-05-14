@@ -2,11 +2,12 @@
 
 pkgname=wayland-scroll-factor
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Touchpad scroll and gesture tuning for Wayland (GNOME and Hyprland)'
 arch=('x86_64')
 url='https://github.com/daniel-g-carrasco/wayland-scroll-factor'
 license=('MIT')
+options=('!debug')
 depends=('gtk4' 'libadwaita' 'python' 'python-gobject')
 makedepends=('meson' 'ninja' 'pkgconf' 'gcc')
 optdepends=(
