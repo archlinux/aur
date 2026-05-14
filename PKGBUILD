@@ -1,6 +1,6 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=indi-3rdparty-drivers
-pkgver=2.2.1
+pkgver=2.2.1.1
 pkgrel=1
 pkgdesc="Indi 3rd party drivers"
 arch=(x86_64 aarch64)
