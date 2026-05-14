@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron /usr/share/fchat-horizon/app.asar "$@"
+exec electron39 /usr/share/fchat-horizon/app.asar "$@"
