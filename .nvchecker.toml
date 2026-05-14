@@ -1,0 +1,3 @@
+[perl-class-isa]
+source = "cpan"
+cpan = "Class-ISA"
