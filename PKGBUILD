@@ -30,7 +30,7 @@ build()
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
     export CARGO_TARGET_DIR="target/"
     export RUSTUP_TOOLCHAIN="stable"
-    cargo build --frozen -p dprint_plugin_malva -r --target wasm32-unknown-unknown FAV TODO
+    cargo build --frozen -p dprint_plugin_malva -r --target wasm32-unknown-unknown
 }
 
 package()
