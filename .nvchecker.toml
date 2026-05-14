@@ -1,0 +1,5 @@
+[renovate]
+source = "github"
+github = "renovatebot/renovate"
+use_latest_release = true
+prefix = "v"
