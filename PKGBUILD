@@ -2,7 +2,7 @@
 
 _plugin=comp
 pkgname=vsview-${_plugin}
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A vsview plugin to make comparison backed by Slowpoke Pics"
 arch=("x86_64")
@@ -24,6 +24,7 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
     "python-versioningit"
+    "python-hatch-sbom"
 )
 source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
 sha256sums=('SKIP')
