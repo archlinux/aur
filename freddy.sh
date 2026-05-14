@@ -18,7 +18,10 @@ krueger() {
     esac
   done
 
-  printf 'Usage: %s on|off\n' "$0" >&2
+  printf 'Usage: %s on|off\n\n' "$0" >&2
+  printf 'Example:\n'
+  printf '  krueger on \x1b[2m# machine cannot sleep\x1b[0m\n'
+  printf '  krueger off \x1b[2m# machine can sleep\x1b[0m\n'
   return 1
 }
 
