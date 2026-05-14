@@ -1,6 +1,6 @@
 pkgbase = pake-gemini
 	pkgdesc = Gemini wrapped as a desktop app using Pake
-	pkgver = 3.11.0
+	pkgver = 3.11.5
 	pkgrel = 1
 	url = https://github.com/tw93/Pake
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = pake-gemini
 	depends = libayatana-appindicator
 	options = !strip
 	options = !debug
-	source = Gemini-3.11.0.deb::https://github.com/tw93/Pake/releases/download/V3.11.0/Gemini_x86_64.deb
-	source = LICENSE-3.11.0::https://raw.githubusercontent.com/tw93/Pake/V3.11.0/LICENSE
-	sha256sums = 611b9a2f61b4485ffa73c9946cdf5584c6c52938cbe22ec93eac25df1dfb696a
+	source = Gemini-3.11.5.deb::https://github.com/tw93/Pake/releases/download/V3.11.5/Gemini_x86_64.deb
+	source = LICENSE-3.11.5::https://raw.githubusercontent.com/tw93/Pake/V3.11.5/LICENSE
+	sha256sums = 8e6d431c0d51ccea154110c30a09ff0f74c5e8469d45b0555b519da9416dbd93
 	sha256sums = 462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758
 
 pkgname = pake-gemini
