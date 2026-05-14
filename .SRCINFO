@@ -1,4 +1,4 @@
-pkgbase = late-cli
+pkgbase = late-sh-cli
 	pkgdesc = Companion CLI for late.sh terminal clubhouse
 	pkgver = 0.24.7
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = late-cli
 	source = git+https://github.com/mpiorowski/late-sh.git#tag=v0.24.7
 	sha256sums = SKIP
 
-pkgname = late-cli
+pkgname = late-sh-cli

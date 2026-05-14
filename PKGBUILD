@@ -1,6 +1,6 @@
 # Maintainer: Latte <latte@invalid>
 
-pkgname=late-cli
+pkgname=late-sh-cli
 pkgver=0.24.7
 pkgrel=1
 pkgdesc='Companion CLI for late.sh terminal clubhouse'
