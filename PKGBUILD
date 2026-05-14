@@ -1,0 +1,60 @@
+# Maintainer: wszqkzqk <wszqkzqk@qq.com>
+
+pkgname=pvz-portable
+pkgver=0.1.23
+pkgrel=1
+pkgdesc="A cross-platform community-driven reimplementation of Plants vs. Zombies: Game of the Year Edition, aiming to bring the 100% authentic PvZ experience to every platform."
+url="https://github.com/wszqkzqk/${pkgname}"
+arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
+license=('LGPL-3.0-or-later')
+depends=(
+    glibc
+    libgcc
+    libjpeg-turbo
+    libogg
+    libopenmpt
+    libpng
+    libstdc++
+    libvorbis
+    mpg123
+    sdl2-compat
+)
+makedepends=(
+    cmake
+    git
+    ninja
+)
+source=(
+    "${pkgname}::git+${url}.git#tag=${pkgver}"
+    # IMPORTANT: You must create this file yourself using assets from your legally owned copy.
+    # See archlinux/README.md in the source tree for instructions.
+    "file://Plants_vs._Zombies_1.2.0.1073_EN.zip"
+)
+sha256sums=('f9ab37f3bdcbd5b9fbc5f9cd66d6dfaf423221ff4def3b71b5ec9dddcd6aca29'
+            'SKIP')
+
+pkgver() {
+    cd "${pkgname}"
+    git describe --tags --abbrev=12 | sed 's/^v//;s/-/./g'
+}
+
+build() {
+    cmake -B build -S "${pkgname}" \
+        -DCMAKE_BUILD_TYPE='Release' \
+        -DCMAKE_INSTALL_PREFIX='/usr'
+    cmake --build build
+}
+
+package() {
+    mkdir -p "${pkgdir}/usr/share/pvz-portable"
+    install -Dm644 "main.pak" "${pkgdir}/usr/share/pvz-portable/main.pak"
+    cp -r "properties" "${pkgdir}/usr/share/pvz-portable"
+
+    install -Dm755 "build/pvz-portable" "${pkgdir}/usr/share/pvz-portable/pvz-portable"
+    install -Dm755 "${pkgname}/archlinux/pvz-portable.sh" "${pkgdir}/usr/bin/pvz-portable"
+
+    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    install -Dm644 "${pkgname}/archlinux/io.github.wszqkzqk.pvz-portable.desktop" "${pkgdir}/usr/share/applications/io.github.wszqkzqk.pvz-portable.desktop"
+    install -Dm644 "${pkgname}/icon.png" "${pkgdir}/usr/share/pixmaps/io.github.wszqkzqk.pvz-portable.png"
+}
