@@ -4,7 +4,7 @@ _dotnetver="10.0"
 
 pkgname=garnet-bin
 _pkgname=${pkgname/-bin/}
-pkgver=1.1.6 # datasource=github-releases depName=microsoft/garnet
+pkgver=1.1.7 # datasource=github-releases depName=microsoft/garnet
 pkgrel=1
 pkgdesc='A high-performance cache-store from Microsoft Research'
 url='https://microsoft.github.io/garnet'
@@ -26,8 +26,8 @@ source=(
 
 sha256sums=('c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383'
             'a536b51496a330d8faa8f00fea134177d6e48f404663211db876af5adc7e6470')
-sha256sums_aarch64=('dbd109e521bc4d8945632fdc0397fdbb0ce2da5a14518a8d1e6766156fe63338')
-sha256sums_x86_64=('dbd109e521bc4d8945632fdc0397fdbb0ce2da5a14518a8d1e6766156fe63338')
+sha256sums_aarch64=('f7eada7c1dbf131ba976136198cde49d6fb997da99fbebbe11a9b16981aff877')
+sha256sums_x86_64=('f7eada7c1dbf131ba976136198cde49d6fb997da99fbebbe11a9b16981aff877')
 
 package() {
 
