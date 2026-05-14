@@ -1,7 +1,7 @@
-From 49efe5594ae01c04a5f1317eab4b66f1120fd3a5 Mon Sep 17 00:00:00 2001
+From 4b7b1b765bbc337b29052a185131f9aa8b633a06 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 1 Dec 2025 11:31:42 +0100
-Subject: [PATCH 22/22] Export some constexpr variables
+Subject: [PATCH 22/24] Export some constexpr variables
 
 From MINGW-packages commit e5c4652cad95df5f6435b6c564c52a7ae7d8e5f7.
 
@@ -14,10 +14,10 @@ Change-Id: I3c051f6f3a6de38fc2e46faaa3358e091bce7b8d
  4 files changed, 13 insertions(+)
 
 diff --git a/src/corelib/kernel/qdeadlinetimer.cpp b/src/corelib/kernel/qdeadlinetimer.cpp
-index 44e84b9bddb..603c0798027 100644
+index 8fc4883fe8d..b2a554c50b5 100644
 --- a/src/corelib/kernel/qdeadlinetimer.cpp
 +++ b/src/corelib/kernel/qdeadlinetimer.cpp
-@@ -6,6 +6,8 @@
+@@ -7,6 +7,8 @@
  
  QT_BEGIN_NAMESPACE
  
@@ -27,10 +27,10 @@ index 44e84b9bddb..603c0798027 100644
  
  using namespace std::chrono;
 diff --git a/src/corelib/time/qtimezone.cpp b/src/corelib/time/qtimezone.cpp
-index 7b43aab22d1..19e7fdd5a22 100644
+index 78c69437a1b..e49f42f2463 100644
 --- a/src/corelib/time/qtimezone.cpp
 +++ b/src/corelib/time/qtimezone.cpp
-@@ -16,6 +16,9 @@
+@@ -17,6 +17,9 @@
  
  QT_BEGIN_NAMESPACE
  
@@ -41,7 +41,7 @@ index 7b43aab22d1..19e7fdd5a22 100644
  using namespace Qt::StringLiterals;
  
 diff --git a/src/gui/rhi/qrhi.cpp b/src/gui/rhi/qrhi.cpp
-index de451e243eb..028bbe7691f 100644
+index 872b55f9e3b..d03a892f39a 100644
 --- a/src/gui/rhi/qrhi.cpp
 +++ b/src/gui/rhi/qrhi.cpp
 @@ -25,6 +25,9 @@
@@ -71,5 +71,5 @@ index 82632110d32..25ae9fb9396 100644
  const QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv4Protocol;
  const QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv6Protocol;
 -- 
-2.53.0
+2.54.0
 
