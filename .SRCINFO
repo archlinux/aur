@@ -1,0 +1,14 @@
+pkgbase = waybound
+	pkgdesc = Hot boundaries (corners and edges) for wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ralphptorres/waybound
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = wayland-protocols
+	depends = wayland
+	source = waybound-0.1.0.tar.gz::https://github.com/ralphptorres/waybound/archive/v0.1.0.tar.gz
+	sha256sums = 31ca0e0636d4d8cee4bb2a13c00097220e083443e6acd47c78db63dbf82f78b3
+
+pkgname = waybound
