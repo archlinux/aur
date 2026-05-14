@@ -39,7 +39,7 @@ validpgpkeys=('81F5E2832BD2545A1897B713AA99442FB680B620') # Samba Distribution V
 sha256sums=('ac24583f271a82ac324f7c6fad7327f65b591ad3492e1dccfee988e2c1c81dd1'
             'SKIP'
             '989cee777ca19230f03623357e9bdc8eb33fce17230790c466aa013ecc6c9ba9'
-            'd6b6e1012977b147754657d37bae6e8f80cde0c8dad3cddca28a77f650334f2f')
+            '85b72d4ab39d22c7d2e4c1ed961982560824c5d764e1abeb48061e5276797972')
 
 build() {
   cd "${srcdir}/${_sambapkg}-${pkgver}"
