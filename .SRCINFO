@@ -1,7 +1,7 @@
 pkgbase = waybar-ycal
 	pkgdesc = Google Calendar + Tasks popup widget for Waybar on Wayland
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yagybaba/waybar-ycal
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = waybar-ycal
 	depends = python-google-auth
 	depends = python-google-auth-oauthlib
 	depends = python-google-api-python-client
+	depends = python-cryptography
 	source = waybar-ycal-1.1.0.tar.gz::https://github.com/yagybaba/waybar-ycal/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = SKIP
 
