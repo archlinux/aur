@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=0.17.0
+pkgver=0.18.0
 _electronversion=37
 pkgrel=1
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2e37779c3c943a19b89875e4855b6276b32014720d3e1804e5dfe9ae4ca5acf9'
+sha256sums=('ee7ea10ad164641e9dc022f44bc1def47547a1b12527ec5c7c2c9b2e6a34779e'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             '3e78d843645c4cc5709698e0717785acdef5f36e60e3e220801bdf3b8effd799'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
