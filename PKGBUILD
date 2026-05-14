@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Mayrink <vncsmyrnk@gmail.com>
 pkgname=fakeapi-git
-pkgver=r194.0d9663f # This gets auto-updated by the pkgver() function
+pkgver=r151.4496006
 pkgrel=1
 pkgdesc="Customizable local REST API for testing."
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/vncsmyrnk/fakeapi"
 license=('GPL-3.0')
 depends=()
 makedepends=('git' 'go')
-provides=('util')
-conflicts=('util')
+provides=('fakeapi')
+conflicts=('fakeapi')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "${pkgname%-git}" || return
-  install -Dm755 ./dist/fakeapi "${pkgdir}/usr/bin/util"
+  install -Dm755 ./dist/fakeapi "${pkgdir}/usr/bin/fakeapi"
 }
