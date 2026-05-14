@@ -1,0 +1,14 @@
+pkgbase = gits
+	pkgdesc = git stats as TUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.pompy.dev/pomp/gits
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://git.pompy.dev/pomp/gits.git#tag=v0.1.0
+	sha256sums = 7f45cf71791e2a5dca643b2bd13fdfd2481a7cb8ca18960d5e09e60d03520eee
+
+pkgname = gits
