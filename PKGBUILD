@@ -12,11 +12,11 @@ source=("git+https://kuronavipad.xantu-ling.ts.net/cgit/rfile.git")
 md5sums=('SKIP')
 
 build() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	gcc rf.c -o rf -Wall -Wextra -pedantic -std=c99
 }
 
 package() {
-	install -Dm755 "$pkgname/rf" "$pkgdir/usr/bin/rf"
+	install -Dm755 "$srcdir/$pkgname/rf" "$srcdir/$pkgdir/usr/bin/rf"
 }
 
