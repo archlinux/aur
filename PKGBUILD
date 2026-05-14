@@ -1,6 +1,6 @@
 # Maintainer: Jack Danger <gzippy@jackdanger.com>
 pkgname=gzippy-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="The fastest gzip implementation — drop-in replacement for gzip/gunzip/zcat"
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ provides=('gzippy')
 conflicts=('gzippy')
 optdepends=('gzippy-replace-gzip: replace system gzip/gunzip/zcat with gzippy')
 
-source_x86_64=("gzippy-x86_64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.7.0/gzippy-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("gzippy-aarch64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.7.0/gzippy-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('c9167e5b9fcec593bb668e8300e90e32772cb62cd27179d042db4a4f6e2d4929')
-sha256sums_aarch64=('aa4f5f25e80be30af703f4e9548e8f2ddea86875d2f30c8a0949ee72056c8920')
+source_x86_64=("gzippy-x86_64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.7.1/gzippy-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("gzippy-aarch64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.7.1/gzippy-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('14d51eef71145e75f2fdcb47f3eab2e50449e915dbf2d2ddb61882db37328ac6')
+sha256sums_aarch64=('346b583faccd54a0c46f1666df83946cb796391dc1a5f4c9997ce258e661483b')
 
 package() {
     install -Dm755 gzippy "$pkgdir/usr/bin/gzippy"
