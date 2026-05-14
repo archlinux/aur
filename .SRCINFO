@@ -1,0 +1,15 @@
+pkgbase = krueger
+	pkgdesc = it turns off or back on the ability for your machine to sleep
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/ag/krueger
+	arch = any
+	license = MIT
+	depends = sudo
+	depends = systemd
+	source = freddy.sh
+	source = LICENSE
+	sha256sums = db70442f92e384ec65327cff86ead11385621667f830af3f6e572697fc616486
+	sha256sums = e22921705aa49dcd333199f70ef270ae2572a1c83e8704abb202075dfff66929
+
+pkgname = krueger
