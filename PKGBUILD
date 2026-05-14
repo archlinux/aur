@@ -1,12 +1,29 @@
 # Maintainer: Twilit Realm <https://github.com/TwilitRealm/dusklight>
 pkgname=dusklight-bin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='PC port of a classic adventure game'
 arch=('x86_64')
 url='https://github.com/TwilitRealm/dusklight'
 license=('CC0-1.0')
-depends=('fuse2' 'hicolor-icon-theme')
+depends=(
+  'fuse2'
+  'hicolor-icon-theme'
+  'glibc'
+  'gcc-libs'
+  'zlib'
+  'gmp'
+  'e2fsprogs'
+  'freetype2'
+)
+optdepends=(
+  'vulkan-icd-loader: Vulkan rendering support'
+  'libglvnd: OpenGL/EGL rendering support'
+  'libx11: X11 video backend'
+  'libxkbcommon: Wayland input support'
+  'alsa-lib: ALSA audio backend'
+  'libpulse: PulseAudio/PipeWire audio backend'
+)
 provides=('dusklight')
 conflicts=('dusklight')
 options=('!strip')
