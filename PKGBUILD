@@ -32,14 +32,14 @@ _sambapkg=samba
 source=(
   "https://download.samba.org/samba/ftp/stable/${_sambapkg}-${pkgver}.tar.gz"
   "https://download.samba.org/samba/ftp/stable/${_sambapkg}-${pkgver}.tar.asc"
-  'README.md'
+  'NOTES'
   'winexe.install'
 )
 validpgpkeys=('81F5E2832BD2545A1897B713AA99442FB680B620') # Samba Distribution Verification Key
 sha256sums=('ac24583f271a82ac324f7c6fad7327f65b591ad3492e1dccfee988e2c1c81dd1'
             'SKIP'
             '989cee777ca19230f03623357e9bdc8eb33fce17230790c466aa013ecc6c9ba9'
-            '85b72d4ab39d22c7d2e4c1ed961982560824c5d764e1abeb48061e5276797972')
+            'cbd542ccd943ae95fb856ba7850ebc1ab5b03da5fe0649dafc989dd3b5bd77a0')
 
 build() {
   cd "${srcdir}/${_sambapkg}-${pkgver}"
@@ -91,6 +91,6 @@ package() {
 
   install -Dm644 examples/winexe/README \
     "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm644 "${srcdir}/README.md" \
-    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "${srcdir}/NOTES" \
+    "${pkgdir}/usr/share/doc/${pkgname}/NOTES"
 }

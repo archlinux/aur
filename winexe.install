@@ -10,8 +10,8 @@ _show_notes() {
           /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
 
     Domain accounts are exempt and do not need this. See KB942817 and
-    /usr/share/doc/winexe/README.md for the full list of caveats
-    (XP/2003/NT4 SMB1 overrides, Win11 first-start timeout retry, etc.).
+    /usr/share/doc/winexe/NOTES for the full list of caveats (XP/2003/NT4 SMB1
+    overrides, Win11 first-start timeout retry, etc.).
 
 EOF
 }
