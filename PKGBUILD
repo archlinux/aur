@@ -2,7 +2,7 @@
 # Maintainer: Uami-11 <nirwan.m.9618@gmail.com>
 
 pkgname='see-grub-bin'
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='see-grub is a renderer for grub theme.txts made with Go and Ebitengine'
 url='https://github.com/Uami-11/see-grub'
@@ -12,7 +12,7 @@ provides=('see-grub')
 conflicts=('see-grub')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Uami-11/see-grub/releases/download/v${pkgver}/see-grub_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('da1564301d4513c8aae5f70d65e70e5648dcab5cd51fd14d650bcd270957f70f')
+sha256sums_x86_64=('83787c108e611637fe2419b02f8eca5e9f4de2cd0ffa858bdf8f7320ba52e089')
 
 package() {
   install -Dm755 "./see-grub" "${pkgdir}/usr/bin/see-grub"
