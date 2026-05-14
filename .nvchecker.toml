@@ -1,0 +1,4 @@
+[python-array-api-extra]
+source = "git"
+git = "https://github.com/data-apis/array-api-extra.git"
+prefix = "v"
