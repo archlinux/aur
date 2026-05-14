@@ -3,12 +3,12 @@
 pkgname=qmd
 _npmname="@tobilu/qmd"
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="On-device search engine for markdown files with BM25, vector, and LLM-powered search"
 arch=('x86_64')
 url="https://github.com/tobi/qmd"
 license=('MIT')
-depends=('nodejs>=22' 'libstdc++.so' 'libgcc')
+depends=('nodejs>=22' 'libstdc++.so' 'libgcc' 'vulkan-icd-loader')
 makedepends=('npm' 'patchelf')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/qmd-${pkgver}.tgz")
@@ -37,11 +37,13 @@ package() {
   install -Dm644 "${pkgdir}/usr/lib/node_modules/@tobilu/qmd/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Keep only CPU x86_64 llama binaries (remove CUDA, Vulkan, ARM variants)
+  # Keep x86_64 CPU and Vulkan llama binaries; qmd auto-selects Vulkan when available.
   local node_root="${pkgdir}/usr/lib/node_modules/@tobilu/qmd"
   local llama_dir="${node_root}/node_modules/@node-llama-cpp"
   for d in "${llama_dir}"/*/; do
-    [[ "$(basename "$d")" == "linux-x64" ]] && continue
+    case "$(basename "$d")" in
+      linux-x64|linux-x64-vulkan) continue ;;
+    esac
     rm -rf "$d"
   done
 
@@ -56,7 +58,8 @@ package() {
 
   # Upstream llama libraries ship RUNPATH=$ORIGIN:, where the trailing empty
   # entry makes the dynamic linker search the current working directory.
-  find "${node_root}/node_modules/@node-llama-cpp/linux-x64/bins/linux-x64" \
+  find "${node_root}/node_modules/@node-llama-cpp" \
+    -path '*/bins/linux-x64*/*' \
     -type f \( -name '*.so' -o -name '*.node' \) \
     -exec patchelf --set-rpath '$ORIGIN' {} +
 
