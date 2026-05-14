@@ -1,6 +1,6 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.28.3
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64')
@@ -13,35 +13,29 @@ optdepends=(
 provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
-source=("https://download.docker.com/linux/ubuntu/dists/noble/pool/stable/amd64/${pkgname}_${pkgver}-1~ubuntu.24.04~noble_amd64.deb")
-sha256sums=('167b4c25222b3e7491be8ac345503778cfd7f0267dab67ba2d6b245131705d68')
-
-prepare() {
-    tar -xf data.tar.xz
-    gunzip -f usr/share/doc/docker-sbx/THIRD-PARTY-NOTICES.gz
-}
+source=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux.tar.gz")
+sha256sums=('9b078b4f8f43f77b7949d95d3d28fdc183d35aef3faee71ede80165ff1a8b73d')
 
 package() {
-
-    install -Dm755 $srcdir/usr/bin/sbx \
+    install -Dm755 "$srcdir/docker-sbx/sbx" \
         "$pkgdir/usr/bin/sbx"
 
-    install -Dm755 $srcdir/usr/libexec/containerd-shim-nerdbox-v1 \
+    install -Dm755 "$srcdir/docker-sbx/containerd-shim-nerdbox-v1" \
         "$pkgdir/usr/libexec/containerd-shim-nerdbox-v1"
-    install -Dm755 $srcdir/usr/libexec/mkfs.erofs \
+    install -Dm755 "$srcdir/docker-sbx/mkfs.erofs" \
         "$pkgdir/usr/libexec/mkfs.erofs"
-    install -Dm644 $srcdir/usr/libexec/nerdbox-kernel-x86_64 \
+    install -Dm644 "$srcdir/docker-sbx/nerdbox-kernel-x86_64" \
         "$pkgdir/usr/libexec/nerdbox-kernel-x86_64"
-    install -Dm644 $srcdir/usr/libexec/nerdbox-initrd-x86_64 \
+    install -Dm644 "$srcdir/docker-sbx/nerdbox-initrd-x86_64" \
         "$pkgdir/usr/libexec/nerdbox-initrd-x86_64"
-    install -Dm755 $srcdir/usr/libexec/lib/libkrun.so \
+    install -Dm755 "$srcdir/docker-sbx/libkrun.so" \
         "$pkgdir/usr/libexec/lib/libkrun.so"
 
-    install -Dm644 $srcdir/etc/apparmor.d/docker-sbx-nerdbox-shim \
+    install -Dm644 "$srcdir/docker-sbx/apparmor-profile" \
         "$pkgdir/etc/apparmor.d/docker-sbx-nerdbox-shim"
 
-    install -Dm644 $srcdir/usr/share/doc/docker-sbx/copyright \
+    install -Dm644 "$srcdir/docker-sbx/LICENSE" \
         "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 $srcdir/usr/share/doc/docker-sbx/THIRD-PARTY-NOTICES \
+    install -Dm644 "$srcdir/docker-sbx/THIRD-PARTY-NOTICES" \
         "$pkgdir/usr/share/licenses/${pkgname}/THIRD-PARTY-NOTICES"
 }
