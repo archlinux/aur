@@ -1,0 +1,3 @@
+# Arch Linux package build files
+*.pkg.tar.zst
+nvtray-git

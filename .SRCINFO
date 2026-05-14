@@ -1,0 +1,24 @@
+pkgbase = nvtray-git
+	pkgdesc = Linux tray application for ejecting NVIDIA GPU from PCI bus
+	pkgver = 0.r15.72d3b15
+	pkgrel = 1
+	url = https://github.com/chenxiex/nvtray
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = gettext
+	depends = python
+	depends = python-pyudev
+	depends = python-gobject
+	depends = libappindicator
+	depends = polkit
+	depends = python-notify2
+	source = nvtray-git::git+https://github.com/chenxiex/nvtray.git
+	sha256sums = SKIP
+
+pkgname = nvtray-git
