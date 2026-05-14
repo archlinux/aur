@@ -5,29 +5,21 @@
 _pkgname=eden
 pkgname=$_pkgname-beta
 pkgver=0.2.0
-_pkgver=v0.2.0-rc2
-pkgrel=4
+_pkgver=v0.2.0
+pkgrel=5
 pkgdesc="Nintendo Switch emulator forked from yuzu - beta and test releases"
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden' 'eden-git' 'eden-bin' 'eden-preview-bin')
-depends=('libusb' 'libva' 'qt6-webengine' 'qt6-charts' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6' 'mbedtls' 'fmt' 'enet' 'cubeb')
-makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
+depends=('libusb' 'libva' 'qt6-webengine' 'qt6-charts' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6' 'mbedtls' 'fmt' 'enet' 'cubeb' 'qt6-charts')
+makedepends=('cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
 optdepends=('gamemode: Gamemoded support')
 options=('!lto' '!debug')
-source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/${_pkgver}.tar.gz"
-		"3751.patch"
-		'bd6dd7ecec.patch')
-sha256sums=('51366a6e3fddc65e6fcf77541fa5d4fd5d647616f8d9db6fc2de65ccf7278693'
-            '106a8f2053c6d52951a312b07a09050423362128a7d26344af0bb0f4495fb856'
-            '8d441c5152211510d4fdd5ea39f99d4ba3d4b86c7126d352872fd36bfb492d43')
-prepare() {
-	cd $srcdir/eden
-	patch -p1 < $srcdir/3751.patch
-	patch -p1 < $srcdir/bd6dd7ecec.patch
-}
+source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/${_pkgver}.tar.gz")
+sha256sums=('6ab816bf58507c809f116f64eb1bee3fa5208ac4fb3364e054fe4026c78048be')
+
 build() {
 	cd "$srcdir"
 	cmake -B build -S $_pkgname -GNinja \
