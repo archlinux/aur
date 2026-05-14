@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frogtalk-bin
 _pkgname=FrogTalk
-pkgver=1.4.1
+pkgver=1.4.3
 _electronversion=41
 pkgrel=1
 pkgdesc="A federated, end-to-end encrypted chat platform. Self-host your own node and join the swamp — or run it completely standalone.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/deadinternetfox/frogtalk/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d8f226cd0b48f07ce4c324bc96d0f6f1ccd9ccfb1ec3adb4322f2cf7ec63789d'
+sha256sums=('1a53f72d51fd8bc15d1d59023bf2d2bbc66694fffd2be929f819b6f3ab6753af'
             '9a919bf3c59d886d7802566024b2eb9b438660d148faad5e6ffcd85afee00380'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
