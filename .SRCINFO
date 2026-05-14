@@ -1,13 +1,16 @@
 pkgbase = gvm-bin
 	pkgdesc = Gradle version manager
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crowforkotlin/gradle-version-manager
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	conflicts = gvm
 	provides = gvm
-	source = gvm-1.0.0-linux-x86_64.tar.gz::https://github.com/crowforkotlin/gradle-version-manager/releases/download/release-1.0.0/gvm-1.0.0-linux-x86_64.tar.gz
-	sha256sums = 828963c9b675fe0ca6ef940fab8847ad404b37c0397014ba80abd14076823b3e
+	source_x86_64 = gvm-1.0.0-linux-x86_64.tar.gz::https://github.com/crowforkotlin/gradle-version-manager/releases/download/release-1.0.0/gvm-1.0.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = dc9ee73516b290934f4929d409640a2dd46590dde1aff8b7cebd32600ee0437c
+	source_aarch64 = gvm-1.0.0-linux-aarch64.tar.gz::https://github.com/crowforkotlin/gradle-version-manager/releases/download/release-1.0.0/gvm-1.0.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 447a05bb69a471e3c9a53a2e998950e0f036683daaf236e09d1357ca8ed6bdad
 
 pkgname = gvm-bin
