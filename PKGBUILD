@@ -1,6 +1,6 @@
 # Maintainer: Daniel Caixinha <2683004+dcaixinha@users.noreply.github.com>
 pkgname=hyprlaser
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A virtual laser pointer for Hyprland (Google-Slides-style red dot with motion trail)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/dcaixinha/$pkgname/archive/
 # NOTE: placeholder until the GitHub repository is made public. Once it is:
 #   updpkgsums
 # from this directory will replace SKIP with the real hash.
-sha256sums=('61def7861e478f2036ed7e81f587e5660f6a1e88f1dbe3087910cf719f21760a')
+sha256sums=('b041fb72c9a4b5d1fffa237918786d2d437a8cdb4f6d2130cf0ef380ba0aefc2')
 
 prepare() {
   cd "$pkgname-$pkgver"
