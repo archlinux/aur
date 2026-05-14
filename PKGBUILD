@@ -2,7 +2,7 @@
 # Please someone maintain this and make a better one, i do not use Arch!!!btw
 _pkgname=cardwire
 pkgname="${_pkgname}-git"
-pkgver=r291.e4a757b
+pkgver=r293.8cbee73
 pkgrel=1
 pkgdesc='GPU manager for Linux using eBPF LSM hooks'
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = cardwire-git
 	pkgdesc = GPU manager for Linux using eBPF LSM hooks
-	pkgver = r291.e4a757b
+	pkgver = r293.8cbee73
 	pkgrel = 1
 	url = https://github.com/OpenGamingCollective/cardwire
 	arch = x86_64
