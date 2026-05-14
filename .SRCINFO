@@ -1,0 +1,17 @@
+pkgbase = hyprlaser
+	pkgdesc = A virtual laser pointer for Hyprland (Google-Slides-style red dot with motion trail)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dcaixinha/hyprlaser
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = hyprland
+	depends = wayland
+	depends = vulkan-icd-loader
+	options = !lto
+	source = hyprlaser-0.1.0.tar.gz::https://github.com/dcaixinha/hyprlaser/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 61def7861e478f2036ed7e81f587e5660f6a1e88f1dbe3087910cf719f21760a
+
+pkgname = hyprlaser
