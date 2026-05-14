@@ -1,0 +1,20 @@
+pkgbase = vectomancy-bin
+	pkgdesc = Image-to-Equation Converter CLI (Pre-compiled)
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/Xuepoo/vectomancy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = vulkan-icd-loader
+	provides = vectomancy
+	conflicts = vectomancy
+	source = LICENSE-4.0.2::https://raw.githubusercontent.com/Xuepoo/vectomancy/v4.0.2/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/Xuepoo/vectomancy/releases/download/v4.0.2/vectomancy-linux-x86_64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/Xuepoo/vectomancy/releases/download/v4.0.2/vectomancy-linux-aarch64
+	sha256sums_aarch64 = SKIP
+
+pkgname = vectomancy-bin
