@@ -3,13 +3,15 @@
 pkgname=suprow
 pkgver=0.9.8.25.beta
 _pkgver=0.9.8.25-beta
-pkgrel=2
-pkgdesc="Privacy-first desktop browser with spaces, quick access and built-in ad blocking"
+pkgrel=3
+pkgdesc="Privacy-first desktop browser with built-in ad blocking"
 arch=('x86_64')
 url="https://suprow.app"
-license=('LicenseRef-custom')
-conflicts=('suprow-bin')
-depends=('nss' 'alsa-lib' 'gtk3' 'xdg-utils' 'mesa' 'hicolor-icon-theme' 'libseccomp')
+license=('MIT')
+depends=('alsa-lib' 'gtk3' 'hicolor-icon-theme' 'libseccomp' 'mesa' 'nss' 'xdg-utils')
+optdepends=('libnotify: desktop notifications'
+            'pipewire: WebRTC and screen sharing under Wayland'
+            'xdg-desktop-portal: desktop integration under Wayland')
 options=('!strip' '!debug')
 source=("suprow-${_pkgver}.zip::https://suprow.app/downloads/releases/lnx/suprow-linux-x64-${_pkgver}.zip"
         "suprow.desktop"
@@ -36,7 +38,7 @@ package() {
 
     # Create symlink in /usr/bin so the binary is available in PATH
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s /opt/suprow/suprow "${pkgdir}/usr/bin/suprow"
+    ln -sf /opt/suprow/suprow "${pkgdir}/usr/bin/suprow"
 
     # Install .desktop entry
     install -Dm644 "${srcdir}/suprow.desktop" "${pkgdir}/usr/share/applications/suprow.desktop"
