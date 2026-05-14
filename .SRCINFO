@@ -1,0 +1,14 @@
+pkgbase = dprint-plugin-malva
+	pkgdesc = CSS, SCSS, Sass and Less code formatting plugin for dprint.
+	pkgver = 0.15.3
+	pkgrel = 1
+	url = https://github.com/g-plane/malva
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = rust-wasm
+	depends = dprint
+	source = dprint-plugin-malva-v0.15.3.tar.gz::https://github.com/g-plane/malva/archive/refs/tags/v0.15.3.tar.gz
+	sha512sums = ec43f524ade0b457404b5f4d80f1bb542bb15d84720a8ddbe6348c67332aafd94cab8da89180b6e1a26ca624a96862f65db37fa8a55be7afef60b813adafd1aa
+
+pkgname = dprint-plugin-malva
