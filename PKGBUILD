@@ -7,7 +7,7 @@ pkgname=${_appname}-bin
 pkgdesc="CLI music downloader powered by yt-dlp with parallel chunk downloading and automatic ID3 tagging"
 
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -26,10 +26,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}")
-sha256sums=('0343885b48179b7356415fb10f4872209e7a402f2bf8228135a0905c63ea8952'
+sha256sums=('798e6c52e3afece7dd5215ce89133f942d0604cb4b8e1f9543ff7d53d55d4895'
             '9627c457ca1df2d8ddf7f6400d98854eb1e47476998abd01ad40160e162c8ad5')
-sha256sums_x86_64=('491eb4326cfc69b6f152a1670855868075ae65165459498de9781c29c1b7f047')
-sha256sums_aarch64=('c404defaf3d59e5eda02fa84afe299e6f4f1065aa48afc319357d3d68ba004bb')
+sha256sums_x86_64=('32005977f7d21f2663201f7c55b9230c8be7c73fd40c46497e8d95c2417616a2')
+sha256sums_aarch64=('0c966d022e655849079dd438137ea2176691bd8154515ac1f3624a8e618028d6')
 
 
 package() {
