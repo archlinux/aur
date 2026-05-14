@@ -1,0 +1,21 @@
+pkgbase = python-clickdc
+	pkgdesc = Manage click arguments using python dataclass
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Kamilcuk/clickdc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-typing_extensions
+	options = !emptydirs
+	source = python-clickdc-0.1.1.tar.gz::https://github.com/Kamilcuk/clickdc/archive/refs/tags/0.1.1.tar.gz
+	source = pyproject.toml.patch
+	sha256sums = 0263e384379bab0134b9b1ebd7257da93f27208ab9c07f1e0b07bb924fda4f20
+	sha256sums = SKIP
+
+pkgname = python-clickdc

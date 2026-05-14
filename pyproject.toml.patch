@@ -1,0 +1,24 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,17 +1,15 @@
+ [build-system]
+-requires = [ "setuptools>=41", "wheel", "setuptools-git-versioning<2", ]
++requires = ["setuptools>=41", "wheel"]
+ build-backend = "setuptools.build_meta"
+ 
+-[tool.setuptools-git-versioning]
+-enabled = true
+-
+ [project]
+ name = "clickdc"
++version = "0.1.1"
+ description = "Manage click arguments using python dataclass"
+ readme = "README.md"
+ authors = [{name = "Kamil Cukrowski"}]
+-license = {text = "MIT"}
+-dynamic = ["version", "dependencies", "optional-dependencies"]
++license = "MIT"
++dynamic = ["dependencies", "optional-dependencies"]
+ 
+ [tool.setuptools.dynamic]
+ dependencies = {file = ["requirements.txt"]}
