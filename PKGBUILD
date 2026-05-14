@@ -2,7 +2,7 @@
 
 _plugin=frameprops-extended
 pkgname=vsview-${_plugin}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A vsview plugin adding more categories and formatters to the built-in vsview frameprops tool"
 arch=("x86_64")
@@ -19,6 +19,7 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
     "python-versioningit"
+    "python-hatch-sbom"
 )
 source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
 sha256sums=('SKIP')
