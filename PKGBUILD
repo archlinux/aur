@@ -25,9 +25,9 @@
 : ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
 
 ## update
-_icver="140.10.1"
-_commit="5162cbc74c483c361ad5709c767c5cb2395ff4f9" # 140.10.1
-_ffsum="4e75c0c3e2c5530de9364de388272bf81b2b32209d98fa4a7eb50d268a17a5bb"
+_icver="140.10.2"
+_commit="f04b721394b9d1103e92dbe989060f96756fe54c" # 140.10.2
+_ffsum="796bf65372e702c13277e6f38e9276ded9dceea81e8934c29a06568016f24e77"
 
 ## package
 _pkgname="icecat"
