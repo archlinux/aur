@@ -1,0 +1,31 @@
+pkgbase = r-tracker
+	pkgdesc = Infrastructure for Running, Cycling and Swimming Data from GPS-Enabled Tracking Devices
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=trackeR
+	arch = any
+	license = GPL-3.0-only
+	depends = r
+	depends = r-zoo
+	depends = r-ggplot2
+	depends = r-ggridges
+	depends = r-xml2
+	depends = r-rsqlite
+	depends = r-jsonlite
+	depends = r-raster
+	depends = r-scam
+	depends = r-foreach
+	depends = r-fda
+	depends = r-sp
+	depends = r-leaflet
+	depends = r-ggmap
+	depends = r-patchwork
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-covr
+	source = https://cran.r-project.org/src/contrib/trackeR_1.6.1.tar.gz
+	b2sums = a027243d9be4121b433ebedc50050abc090c24a0fab6ef03af9078badaeb66bc021c85e4634559141eb9128bbb6d687d58c4765cdb393773503777974b1425a5
+
+pkgname = r-tracker
