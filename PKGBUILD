@@ -1,5 +1,10 @@
+# Maintainer: Selim Cifci <cifciselimhasan@gmail.com>
 pkgname=pamtest
-pkgver=1.0.0
+pkgver=r7.88df403
+pkgver() {
+  cd "$srcdir/Pamtest"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 pkgrel=1
 pkgdesc="PAM-aware program to test PAM modules"
 arch=('x86_64')
