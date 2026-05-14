@@ -1,15 +1,13 @@
-# Maintainer: xiota
-# Maintainer: novadragon <me@novadragon.space>
+# Maintainer: aur.chaotic.cx
+# Contributor: novadragon <me@novadragon.space>
 
 ## options
 : ${_build_debug:=true}
 
-: ${_godot_version:=$(LC_ALL=C pacman -Si extra/godot | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])')-stable}
-
 _pkgname="godot-export-templates"
 pkgname="$_pkgname-linux"
 pkgver=4.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Godot export templates - Linux x86_64'
 url="https://github.com/godotengine/godot"
 license=('MIT')
@@ -27,6 +25,7 @@ provides=("$_pkgname")
 
 options=('!strip' '!debug')
 
+_godot_version="$pkgver-stable"
 _pkgsrc="godot-$_godot_version"
 _pkgext="tar.xz"
 source=(
@@ -42,16 +41,19 @@ prepare() {
   sha256sum -c "$_pkgsrc.$_pkgext.sha256"
 }
 
-pkgver() {
-  echo "${_godot_version%-*}"
-}
-
 build() {
+  local _scons_opts=(
+    arch=x86_64
+    disable_path_overrides=no
+    platform=linux
+    tools=no
+  )
+
   cd "$_pkgsrc"
-  scons platform=linux tools=no target=template_release arch=x86_64
+  scons "${_scons_opts[@]}" target=template_release
 
   if [[ "${_build_debug::1}" == "t" ]]; then
-    scons platform=linux tools=no target=template_debug arch=x86_64
+    scons "${_scons_opts[@]}" target=template_debug
   fi
 }
 

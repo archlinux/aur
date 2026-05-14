@@ -1,4 +1,4 @@
 [godot-export-templates-linux]
-source = "pacman"
-pacman = "godot"
+source = "archpkg"
+archpkg = "godot"
 strip_release = "true"
