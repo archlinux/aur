@@ -1,0 +1,3 @@
+[perl-debug-showstuff]
+source = "cpan"
+cpan = "Debug-ShowStuff"
