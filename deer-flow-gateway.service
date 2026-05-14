@@ -1,0 +1,19 @@
+[Unit]
+Description=DeerFlow Gateway API Server
+After=network.target
+PartOf=deer-flow.target
+
+[Service]
+Type=simple
+User=deer-flow
+Group=deer-flow
+WorkingDirectory=/opt/deer-flow/backend
+EnvironmentFile=-/etc/deer-flow/.env
+Environment=DEER_FLOW_CONFIG_PATH=/etc/deer-flow/config.yaml
+Environment=PYTHONPATH=.
+ExecStart=/opt/deer-flow/backend/.venv/bin/uvicorn app.gateway.app:app --host 0.0.0.0 --port 8001
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=deer-flow.target

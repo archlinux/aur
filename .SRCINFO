@@ -1,0 +1,33 @@
+pkgbase = deer-flow-git
+	pkgdesc = Deep Exploration and Efficient Research Flow — an open-source super agent harness by ByteDance
+	pkgver = 2.0_m1_rc0.r2101.ba864112a
+	pkgrel = 1
+	url = https://github.com/bytedance/deer-flow
+	install = deer-flow.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = python>=3.12
+	depends = nodejs>=22
+	depends = nginx
+	optdepends = docker: sandbox execution mode
+	optdepends = kubernetes: sandbox execution with k8s pods
+	optdepends = pnpm: frontend package manager (if not using corepack)
+	optdepends = uv: python package manager (if not using pipx)
+	provides = deer-flow
+	conflicts = deer-flow
+	source = deer-flow::git+https://github.com/bytedance/deer-flow.git#branch=main
+	source = deer-flow-nginx.conf
+	source = deer-flow-langgraph.service
+	source = deer-flow-gateway.service
+	source = deer-flow-frontend.service
+	source = deer-flow.target
+	sha256sums = SKIP
+	sha256sums = 92a63da438377d5804d25b43e4a19957411be07e36618bc130aa26bf0d69675c
+	sha256sums = a846d2b8d27a8062f811f0b4613bae976a6c14c590a2ba46855b80b4c2de5cee
+	sha256sums = 9dc3bc7fcc61ccb7ae9216ed9876b6d9ea50462d52059710cfdd9416b747e45f
+	sha256sums = db2eeb2148539afda1d2bb7b0a09bd3d5f9d142f3723f5354c62cb05fff141bc
+	sha256sums = 5a6317f3395de78d31a716fe24bb4ce64596fef0cdbb2fe8e052ffbf695f4e16
+
+pkgname = deer-flow-git

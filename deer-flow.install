@@ -1,0 +1,39 @@
+post_install() {
+  getent group deer-flow &>/dev/null || groupadd -r deer-flow >/dev/null
+  getent passwd deer-flow &>/dev/null || useradd -r -g deer-flow -d /opt/deer-flow -s /usr/bin/nologin deer-flow >/dev/null
+
+  chown -R deer-flow:deer-flow /opt/deer-flow
+  chown -R deer-flow:deer-flow /etc/deer-flow
+  chmod 600 /etc/deer-flow/.env
+
+  echo ""
+  echo "==> DeerFlow installed to /opt/deer-flow"
+  echo "==> "
+  echo "==> First-time setup:"
+  echo "==>   1. Copy and edit config:"
+  echo "==>        cp /opt/deer-flow/config.example.yaml /etc/deer-flow/config.yaml"
+  echo "==>   2. Add your API keys to /etc/deer-flow/.env"
+  echo "==>   3. Enable nginx site:"
+  echo "==>        ln -s /etc/nginx/sites-available/deer-flow.conf /etc/nginx/sites-enabled/"
+  echo "==>   4. Generate a BETTER_AUTH_SECRET and set it in the frontend service:"
+  echo "==>        systemctl edit deer-flow-frontend.service"
+  echo "==>        # Add: Environment=BETTER_AUTH_SECRET=<your-secret>"
+  echo "==>   5. Start all services:"
+  echo "==>        systemctl enable --now deer-flow.target"
+  echo "==>   6. Access: http://localhost:2026"
+  echo ""
+}
+
+post_upgrade() {
+  chown -R deer-flow:deer-flow /opt/deer-flow
+}
+
+post_remove() {
+  echo ""
+  echo "==> DeerFlow data remains in /opt/deer-flow and /etc/deer-flow"
+  echo "==> Remove manually if desired:"
+  echo "==>   rm -rf /opt/deer-flow /etc/deer-flow"
+  echo ""
+  getent passwd deer-flow &>/dev/null && userdel deer-flow >/dev/null 2>&1 || true
+  getent group deer-flow &>/dev/null && groupdel deer-flow >/dev/null 2>&1 || true
+}

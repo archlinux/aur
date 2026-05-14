@@ -1,0 +1,6 @@
+[Unit]
+Description=DeerFlow — All Services (LangGraph + Gateway + Frontend)
+After=network.target
+
+[Install]
+WantedBy=multi-user.target

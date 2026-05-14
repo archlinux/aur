@@ -1,0 +1,19 @@
+[Unit]
+Description=DeerFlow LangGraph Agent Server
+After=network.target
+PartOf=deer-flow.target
+
+[Service]
+Type=simple
+User=deer-flow
+Group=deer-flow
+WorkingDirectory=/opt/deer-flow/backend
+EnvironmentFile=-/etc/deer-flow/.env
+Environment=DEER_FLOW_CONFIG_PATH=/etc/deer-flow/config.yaml
+Environment=NO_COLOR=1
+ExecStart=/opt/deer-flow/backend/.venv/bin/langgraph dev --no-browser --n-jobs-per-worker 10 --server-log-level info --no-reload
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=deer-flow.target

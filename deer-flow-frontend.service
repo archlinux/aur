@@ -1,0 +1,19 @@
+[Unit]
+Description=DeerFlow Frontend (Next.js)
+After=network.target
+PartOf=deer-flow.target
+
+[Service]
+Type=simple
+User=deer-flow
+Group=deer-flow
+WorkingDirectory=/opt/deer-flow/frontend
+EnvironmentFile=-/etc/deer-flow/.env
+Environment=DEER_FLOW_CONFIG_PATH=/etc/deer-flow/config.yaml
+Environment=BETTER_AUTH_SECRET=%m
+ExecStart=/usr/bin/pnpm run preview
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=deer-flow.target
