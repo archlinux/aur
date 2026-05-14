@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs' 'vulkan-icd-loader')
 makedepends=('cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xuepoo/vectomancy/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5c39f754967d5865e567c40b14796844ca0133f6fcd2ced94068bda2c4c0ed3')
+sha256sums=('4d0616891dfa9042a41216dd6a7c2fbc403b4b3d597e90bb5b21e04154bab255')
 
 build() {
   cd "$pkgname-$pkgver"
