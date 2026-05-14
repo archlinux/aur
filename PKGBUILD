@@ -2,7 +2,7 @@
 pkgname=kicad-interactive-html-bom-plugin
 _name=InteractiveHtmlBom
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive HTML BOM generation plugin for KiCAD"
 arch=('i686' 'x86_64')
 url="https://github.com/openscopeproject/InteractiveHtmlBom"
@@ -12,7 +12,7 @@ optdepends=('kicad' 'eagle')
 source=("https://github.com/openscopeproject/${_name}/archive/v${pkgver}.tar.gz"
         "${pkgname}")
 sha256sums=('74905074c5ed31c53db1f1829da1c13232542242062f1ebb0f80af685664e574'
-            'd1cb8382b1e63c2afcc1b44fda35e888808765c72ba00a225ad74428ab5e2136')
+            'b2a2b614c0995d5508c09fe9e309ca1e756fed71af38ed222cde7215f8fd7171')
 
 package() {
   cd "$srcdir/${_name}-${pkgver}"
