@@ -1,0 +1,16 @@
+pkgbase = gpu-screen-recorder-qt
+	pkgdesc = Qt6 UI for gpu-screen-recorder (a shadowplay-like screen recorder)
+	pkgver = 5.7.9
+	pkgrel = 1
+	url = https://github.com/Coobyk/gpu-screen-recorder-qt
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = gpu-screen-recorder
+	depends = qt6-base
+	provides = gpu-screen-recorder-gtk
+	conflicts = gpu-screen-recorder-gtk
+	source = gpu-screen-recorder-qt-5.7.9.tar.gz::https://github.com/Coobyk/gpu-screen-recorder-qt/archive/v5.7.9.tar.gz
+	sha256sums = SKIP
+
+pkgname = gpu-screen-recorder-qt
