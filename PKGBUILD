@@ -7,7 +7,7 @@
 test ! -d FreeCAD -a -d ../freecad-git/FreeCAD && ln -s ../freecad-git/FreeCAD .
 
 pkgname=freecad-weekly
-pkgver=1.2.0dev.2026.05.06
+pkgver=1.2.0dev.2026.05.13
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout of last weekly-YYYY.MM.DD tag'
 arch=('x86_64')
@@ -92,7 +92,7 @@ pkgver() {
     # lost since FreeCAD source commit 0026a35886cf7b62d5fa5861ba1e52f7434f84e2
   fi
   hash=$(git rev-parse --short HEAD)
-  weekdate=$(git tag -l weekly\*|tail -1|cut -d- -f2) # remove dots: |tr -d .
+  weekdate=$(git tag -l weekly\*|tail -1|cut -d- -f2) # E.g. 2026.04.29
   printf "%d.%d.%d%s.%s" $major $minor $patch $suffix $weekdate # "$hash"
 }
 
