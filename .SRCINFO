@@ -1,6 +1,6 @@
 pkgbase = vsview-audio-convert
 	pkgdesc = A vsview plugin for converting audio sample types and resampling audio clips.
-	pkgver = 0.1.3.post2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = vsview-audio-convert
 	makedepends = python-setuptools
 	makedepends = python-hatchling
 	makedepends = python-versioningit
+	makedepends = python-hatch-sbom
 	depends = vsview
 	depends = vapoursynth-plugin-audioresample
-	source = vsview-audio-convert::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=audio-convert/v0.1.3.post2
+	source = vsview-audio-convert::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=audio-convert/v0.1.4
 	sha256sums = SKIP
 
 pkgname = vsview-audio-convert

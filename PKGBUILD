@@ -1,8 +1,8 @@
-# Maintainer: TheFeelTrain <the@feeltra.in> 
+# Maintainer: TheFeelTrain <the@feeltra.in>
 
 _plugin=audio-convert
 pkgname=vsview-${_plugin}
-pkgver=0.1.3.post2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A vsview plugin for converting audio sample types and resampling audio clips."
 arch=("x86_64")
@@ -20,6 +20,7 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 	"python-versioningit"
+	"python-hatch-sbom"
 )
 source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
 sha256sums=('SKIP')
