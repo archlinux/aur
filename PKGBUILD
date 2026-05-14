@@ -17,29 +17,29 @@ source=("$pkgname::git+https://github.com/DoubleStyx/Renderide")
 sha256sums=('SKIP')
 
 pkgver() {
-  	cd "$pkgname"
-  	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-		cd "$pkgname"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target host-tuple
-  	git apply ../../Identifier.patch
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target host-tuple
+	git apply ../../Identifier.patch
 }
 
 build() {
-		cd "$pkgname"
-		export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
-		cd "$pkgname"
-		install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
-		install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname-renderer"
-		cp -r "crates/renderide/assets/xr" "$pkgdir/usr/bin/"
-		install -Dm0755 -t "$pkgdir/usr/share/applications" "../../renderide.desktop"
-		install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	cd "$pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname-renderer"
+	cp -r "crates/renderide/assets/xr" "$pkgdir/usr/bin/"
+	install -Dm0755 -t "$pkgdir/usr/share/applications" "../../renderide.desktop"
+	install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
