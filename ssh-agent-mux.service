@@ -1,0 +1,13 @@
+[Unit]
+Description=Combine keys from multiple SSH agents into a single unified socket
+Documentation=https://github.com/overhacked/ssh-agent-mux
+After=gpg-agent.socket ssh-agent.socket
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ssh-agent-mux
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
