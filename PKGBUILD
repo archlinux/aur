@@ -1,4 +1,4 @@
-# Maintainer: Latte <latte@invalid>
+# Maintainer: latte_macchiato <contact@lattemacchiato.dev>
 
 pkgname=late-sh-cli
 pkgver=0.24.7
