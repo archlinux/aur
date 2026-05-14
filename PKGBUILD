@@ -6,7 +6,6 @@ pkgdesc="Web client for Yandex Music with support for themes, addons, Discord Ri
 arch=('x86_64')
 url="https://github.com/Web-Next-Music/Next-Music-Client"
 license=('MIT')
-depends=('glibc' 'gtk3' 'alsa-lib' 'desktop-file-utils')
 options=('!strip' '!debug' '!zipman' '!emptydirs')
 _pkgfile="next-music_3.6.5_x64.pkg.tar.zst"
 _pkgtag="v3.6.5"
