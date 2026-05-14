@@ -1,0 +1,16 @@
+pkgbase = perl-algorithm-lcss
+	pkgdesc = Perl extension for getting the Longest Common Sub-Sequence
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/dist/Algorithm-LCSS
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-algorithm-diff>=1.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JF/JFREEMAN/Algorithm-LCSS-0.01.tar.gz
+	sha256sums = 717cefcc7842a171ab5576f22eb72e566edf061ceaf87dccbe7f2081f5601f78
+
+pkgname = perl-algorithm-lcss

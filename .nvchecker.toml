@@ -1,0 +1,3 @@
+[perl-algorithm-lcss]
+source = "cpan"
+cpan = "Algorithm-LCSS"
