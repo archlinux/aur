@@ -1,0 +1,29 @@
+pkgbase = fluxcast-git
+	pkgdesc = Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast
+	pkgver = r28.f4f396b
+	pkgrel = 1
+	url = https://github.com/IlyaP358/fluxcast
+	arch = any
+	license = BSD-3-Clause
+	depends = ffmpeg
+	depends = glib2
+	depends = gst-plugins-bad
+	depends = gst-plugins-good
+	depends = gst-python
+	depends = gstreamer
+	depends = iw
+	depends = libpulse
+	depends = networkmanager
+	depends = python-dbus-fast
+	depends = python-gobject
+	depends = python-pychromecast
+	depends = python-upnpclient
+	depends = wf-recorder
+	depends = wpa_supplicant
+	depends = xdg-desktop-portal
+	provides = fluxcast=r28.f4f396b
+	conflicts = fluxcast
+	source = fluxcast::git+https://github.com/IlyaP358/fluxcast.git
+	sha256sums = SKIP
+
+pkgname = fluxcast-git
