@@ -1,0 +1,25 @@
+pkgbase = rustpos-bin
+	pkgdesc = A modern, touch-friendly point of sale system built with Rust (binary repackage of upstream .deb)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/dividebysandwich/rustpos
+	install = rustpos-bin.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-2.0-or-later
+	depends = gcc-libs
+	depends = openssl
+	depends = systemd-libs
+	provides = rustpos
+	conflicts = rustpos
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/dividebysandwich/rustpos/releases/download/v1.2.1/rustpos_1.2.1_amd64.deb
+	sha256sums_x86_64 = 8aeb01fc3ab3591c64ed9ebbc91ff2ae030b226d4b5be9ffd25ef507f1d4f6ef
+	source_aarch64 = https://github.com/dividebysandwich/rustpos/releases/download/v1.2.1/rustpos_1.2.1_arm64.deb
+	sha256sums_aarch64 = 60fcb87a0fee542c6ce9ee07058364bc82548e3e667d5a2a639dd617fc66a9d8
+	source_armv7h = https://github.com/dividebysandwich/rustpos/releases/download/v1.2.1/rustpos_1.2.1_armhf.deb
+	sha256sums_armv7h = be07c7391c13f7af63422a6e647b45a3aa6427ab1f5fa6e500d216e578998de2
+
+pkgname = rustpos-bin

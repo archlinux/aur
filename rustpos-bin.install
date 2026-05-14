@@ -1,0 +1,48 @@
+_rustpos_user=rustpos
+_rustpos_home=/opt/rustpos
+
+_create_user() {
+    if ! getent passwd "${_rustpos_user}" >/dev/null; then
+        useradd --system \
+            --home-dir "${_rustpos_home}" \
+            --shell /usr/bin/nologin \
+            --comment "RustPOS service account" \
+            "${_rustpos_user}"
+    fi
+    # Serial / USB receipt-printer access (group is named 'uucp' on Arch).
+    if getent group uucp >/dev/null; then
+        usermod -aG uucp "${_rustpos_user}" 2>/dev/null || true
+    fi
+    install -d -o "${_rustpos_user}" -g "${_rustpos_user}" \
+        "${_rustpos_home}/data" \
+        "${_rustpos_home}/data/item_images"
+    chown -R "${_rustpos_user}:${_rustpos_user}" "${_rustpos_home}/data"
+}
+
+post_install() {
+    _create_user
+    cat <<EOF
+
+RustPOS has been installed.
+  Enable + start:  systemctl enable --now rustpos.service
+  Access:          http://localhost:3000
+
+EOF
+}
+
+post_upgrade() {
+    _create_user
+    systemctl try-restart rustpos.service 2>/dev/null || true
+}
+
+pre_remove() {
+    systemctl stop rustpos.service 2>/dev/null || true
+    systemctl disable rustpos.service 2>/dev/null || true
+}
+
+post_remove() {
+    if getent passwd "${_rustpos_user}" >/dev/null; then
+        userdel "${_rustpos_user}" 2>/dev/null || true
+    fi
+    echo "Note: data in ${_rustpos_home}/data was preserved. Remove manually if no longer needed."
+}
