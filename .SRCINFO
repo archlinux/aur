@@ -1,6 +1,6 @@
 pkgbase = comprobot
 	pkgdesc = A self-hostable Discord bot built for maximum customization.
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/badluma/Comprobot
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = comprobot
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pip
-	source = https://files.pythonhosted.org/packages/source/c/comprobot/comprobot-2.3.0.tar.gz
-	sha256sums = 3088838029998827cad05153b5da6f6f88a16d123fc7c850dae1e1eda153d798
+	source = https://files.pythonhosted.org/packages/source/c/comprobot/comprobot-2.3.1.tar.gz
+	sha256sums = 0b512bfb8fafd344eda2de47b8057d08435d7ad862bebd6f2d09e1b0e0c8a0a4
 
 pkgname = comprobot
