@@ -7,7 +7,7 @@ url="https://github.com/UniqueSpirit/smart-updater"
 license=('GPL')
 depends=('python' 'python-pyqt6' 'pacman-contrib')
 source=("$url/archive/refs/heads/main.zip")
-sha256sums=('1afd38e57b814967410148b8f7a0ffe8de800fc60d1903094321d467b5ce72d4')
+sha256sums=('76501e54478d7d3febf4207dd8d3490b3cbfeae6843527578c30330eafb5c7bd')
 
 package() {
     # 1. Den Hauptordner im System erstellen (/opt/smart-updater)
