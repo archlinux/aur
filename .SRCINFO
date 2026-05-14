@@ -1,7 +1,7 @@
 pkgbase = vsview-cli
-	pkgdesc = The next-generation VapourSynth previewer
+	pkgdesc = Internal Rust-based CLI module for VSView.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/vsview-cli
 	arch = x86_64
 	license = Unlicense
