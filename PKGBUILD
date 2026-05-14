@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notepad--
 _pkgname=NotePad--
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="A text editor written in C++,to eventually surpass Notepad++.一个国产跨平台,轻量级的文本编辑,是替换notepad++的一种选择.其内置强大的代码对比功,让你丢掉付费的beyond compare."
 arch=('x86_64')
@@ -29,6 +29,7 @@ prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i "s/intptr_t/__intptr_t/g" src/qscint/src/xmlMatchedTagsHighlighter.cpp
     sed -i "s/intptr_t/__intptr_t/g" src/qscint/src/xmlMatchedTagsHighlighter.h
+    sed -i 's/QObject::tr(u8"/QObject::tr("/g' src/plugin/helloworld/helloworldexport.cpp
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
