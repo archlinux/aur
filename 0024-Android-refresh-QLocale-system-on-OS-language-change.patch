@@ -1,0 +1,58 @@
+From cf56f4a678a9d47b73aef89f158db3bedfb2663e Mon Sep 17 00:00:00 2001
+From: Assam Boudjelthia <assam.boudjelthia@qt.io>
+Date: Tue, 28 Apr 2026 19:02:41 +0300
+Subject: [PATCH 24/24] Android: refresh QLocale::system() on OS language
+ change
+
+QtActivityBase.onConfigurationChanged() calls back into
+QtNative.updateLocale() when Android signals a configuration
+change that affects the locale. The native handler in
+androidjnimain.cpp posts QEvent::LocaleChange and
+QEvent::LanguageChange so that application code can react,
+but it never invalidated the cached system locale data inside
+QtCore. As a result QLocale::system() kept returning the
+locale that was active when the application started, even
+after the user picked a different OS language.
+
+Use the same transient-QSystemLocale pattern that the test
+helper in tests/shared/localechange.h uses; instantiating
+and immediately destroying a QSystemLocale on the stack
+resets systemLocaleData.m_language_id to 0, so the next
+QLocale::system() goes through updateSystemPrivate(), which
+queries LocaleChanged on the active system locale backend and
+re-reads language, script, territory and the 24-hour-format
+flag from the current Android Configuration.
+
+Fixes: QTBUG-132577
+Task-number: QTBUG-116642
+Change-Id: I05a55d8b99b1f77c1f1514cae6ad75db4c0c9345
+---
+ src/plugins/platforms/android/androidjnimain.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/plugins/platforms/android/androidjnimain.cpp b/src/plugins/platforms/android/androidjnimain.cpp
+index eff52c2fdba..9425b3a5a1a 100644
+--- a/src/plugins/platforms/android/androidjnimain.cpp
++++ b/src/plugins/platforms/android/androidjnimain.cpp
+@@ -32,6 +32,7 @@
+ #include <android/bitmap.h>
+ 
+ #include <QtCore/private/qjnihelpers_p.h>
++#include <QtCore/private/qlocale_p.h>
+ #include <QtCore/qbasicatomic.h>
+ #include <QtCore/qjnienvironment.h>
+ #include <QtCore/qjniobject.h>
+@@ -634,6 +635,10 @@ static void updateApplicationState(JNIEnv */*env*/, jobject /*thiz*/, jint state
+ 
+ static void updateLocale(JNIEnv */*env*/, jobject /*thiz*/)
+ {
++#ifndef QT_NO_SYSTEMLOCALE
++    // Transient instance marks the cached system locale data as stale.
++    { QSystemLocale dummy; }
++#endif
+     QCoreApplication::postEvent(QCoreApplication::instance(), new QEvent(QEvent::LocaleChange));
+     QCoreApplication::postEvent(QCoreApplication::instance(), new QEvent(QEvent::LanguageChange));
+ }
+-- 
+2.54.0
+

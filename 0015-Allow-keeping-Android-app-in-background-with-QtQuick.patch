@@ -1,7 +1,7 @@
-From ddea55994de0f70c1ba79feeaec3a9de80456f2c Mon Sep 17 00:00:00 2001
+From 9182500b81c001d1d9506852ae6650564b27e65d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 May 2025 00:51:18 +0200
-Subject: [PATCH 15/22] Allow keeping Android app in background with
+Subject: [PATCH 15/24] Allow keeping Android app in background with
  QtQuickView
 
 Do not terminate Qt as this would stop the main Qt thread which is not
@@ -31,10 +31,10 @@ index b55aa957506..2ecc0f17ec5 100644
                  }
              }
 diff --git a/src/plugins/platforms/android/androidjnimain.cpp b/src/plugins/platforms/android/androidjnimain.cpp
-index 15155ece6e0..c1f77f41406 100644
+index 4802a104189..eff52c2fdba 100644
 --- a/src/plugins/platforms/android/androidjnimain.cpp
 +++ b/src/plugins/platforms/android/androidjnimain.cpp
-@@ -178,7 +178,7 @@ namespace QtAndroid
+@@ -177,7 +177,7 @@ namespace QtAndroid
              return env->IsInstanceOf(QtAndroidPrivate::service().object(), m_qtServiceClass);
          // return true as default as Qt application is our default use case.
          // famous last words: we should not end up here
@@ -44,5 +44,5 @@ index 15155ece6e0..c1f77f41406 100644
  
  #if QT_CONFIG(accessibility)
 -- 
-2.53.0
+2.54.0
 
