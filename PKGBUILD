@@ -3,7 +3,7 @@
 
 pkgname=hyper-headset-bin
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A CLI and tray application for monitoring and managing HyperX headsets. (bin)'
 arch=('x86_64')
 url='https://github.com/LennardKittner/HyperHeadset'
@@ -15,9 +15,9 @@ conflicts=('hyper-headset')
 replaces=('hyperx-cloud-ii-wireless-bin')
 
 source=(
-  "hyper_headset_Linux.zip::https://github.com/lennardkittner/hyperheadset/releases/download/v${pkgver}/hyper_headset_Linux.zip"
-  "99-HyperHeadset.rules::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v$pkgver/99-HyperHeadset.rules"
-  "hyper-headset.desktop::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v$pkgver/hyper-headset.desktop"
+  "hyper_headset_Linux-${pkgver}.zip::https://github.com/lennardkittner/hyperheadset/releases/download/v${pkgver}/hyper_headset_Linux.zip"
+  "99-HyperHeadset-${pkgver}.rules::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v$pkgver/99-HyperHeadset.rules"
+  "hyper-headset-${pkgver}.desktop::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v$pkgver/hyper-headset.desktop"
 )
 
 sha256sums=(
@@ -30,8 +30,8 @@ package() {
   install -Dm755 hyper_headset "${pkgdir}/usr/bin/hyper_headset"
   install -Dm755 hyper_headset_cli "${pkgdir}/usr/bin/hyper_headset_cli"
 
-  install -Dm644 99-HyperHeadset.rules "${pkgdir}/usr/lib/udev/rules.d/99-HyperHeadset.rules"
+  install -Dm644 99-HyperHeadset-${pkgver}.rules "${pkgdir}/usr/lib/udev/rules.d/99-HyperHeadset.rules"
   
-  install -Dm644 hyper-headset.desktop "${pkgdir}/usr/share/applications/hyper-headset.desktop"
+  install -Dm644 hyper-headset-${pkgver}.desktop "${pkgdir}/usr/share/applications/hyper-headset.desktop"
 }
 
