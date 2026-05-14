@@ -1,0 +1,6 @@
+*.pkg.tar.zst
+pkg/
+src/
+earth
+earthly
+earth-linux-amd64

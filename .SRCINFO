@@ -1,0 +1,13 @@
+pkgbase = earthbuild-bin
+	pkgdesc = EarthBuild is a simple, fast, and consistent build system for containerized, reproducible builds.
+	pkgver = 0.8.17
+	pkgrel = 1
+	url = https://github.com/EarthBuild/earthbuild
+	arch = x86_64
+	license = MPL-2.0 license
+	provides = earthbuild-bin
+	conflicts = earthly
+	source = https://github.com/EarthBuild/earthbuild/releases/download/v0.8.17/earth-linux-amd64
+	sha256sums = 85b7f31020be220493c1ef89fe4e976985a72e54dd12b7dfcf17544c8d4fd880
+
+pkgname = earthbuild-bin
