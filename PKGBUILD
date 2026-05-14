@@ -3,7 +3,7 @@
 pkgname=gpu-screen-recorder-qt
 pkgver=5.7.9
 pkgrel=1
-pkgdesc="Qt6 UI for gpu-screen-recorder (a shadowplay-like screen recorder)"
+pkgdesc="Qt6 UI for gpu-screen-recorder"
 arch=('x86_64')
 url="https://github.com/Coobyk/gpu-screen-recorder-qt"
 license=('GPL3')
