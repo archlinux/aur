@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2125.1.1
+pkgver=2125.1.2
 pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
@@ -9,12 +9,11 @@ url="https://github.com/azahar-emu/azahar"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'libstdc++' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch'
 	 'qt6-multimedia' 'zydis' 'hicolor-icon-theme' 'enet' 'libgcc')
-makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
+makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' 'nlohmann-json' 'spirv-headers'
 	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools')
-options=(!lto)
 source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$pkgver.tar.xz")
 install=${pkgname}.install
-sha256sums=('a1379f408a8d23825dd8adcd51a621a74719bd25c1a85db58ef2b61e96fba298')
+sha256sums=('688db108137fa6f4c29b48b187325a622afef7e3147e5f0b83c6996d96f7328f')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$pkgver"
@@ -28,12 +27,10 @@ build() {
 	cd "$srcdir"
 	[[ $(grep -o sse4_2 /proc/cpuinfo | sed -n 1p) = sse4_2 ]] && local _SSE=ON && echo "SSE4.2 Enabled"
 	cmake -B build -S "$pkgname-unified-source-$pkgver" -G Ninja \
-	-DCMAKE_C_COMPILER=clang \
-	-DCMAKE_CXX_COMPILER=clang++ \
-	-DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
-	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
-	-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
-	-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
+	-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG" \
+	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
+	-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+	-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=None \
 	-DUSE_DISCORD_PRESENCE=ON \
