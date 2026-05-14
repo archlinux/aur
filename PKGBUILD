@@ -13,7 +13,7 @@ source=(
     'git+https://github.com/LotusInputMethod/bamboo-core.git'
 )
 sha256sums=(
-    '57606cd821b47f944f93745eb68626642340b733b8f2c178dcf0e05795af73c0'
+    '22c521590d0c1c5c224e65a26fd60350bf17e8ca732433244416e63b985bef2a'
     'SKIP'
 )
 
