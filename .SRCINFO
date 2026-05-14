@@ -1,13 +1,16 @@
 pkgbase = gemmi
 	pkgdesc = Macromolecular crystallography library and utilities
-	pkgver = 0.6.5
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://project-gemmi.github.io
 	arch = x86_64
 	license = MPL2
+	makedepends = cmake
 	makedepends = gcc-fortran
 	depends = python
-	source = https://github.com/project-gemmi/gemmi/archive/refs/tags/v0.6.5.tar.gz
-	sha256sums = 9159506a16e0d22bbeeefc4d34137099318307db1b2bebf06fb2ae501571b19c
+	depends = nanobind
+	depends = zlib
+	source = https://github.com/project-gemmi/gemmi/archive/refs/tags/v0.7.5.tar.gz
+	sha256sums = 9e2a8a51e62c69bf43f62aadf527ca4312860de8a36c12a8747d3e8ae556f0b3
 
 pkgname = gemmi
