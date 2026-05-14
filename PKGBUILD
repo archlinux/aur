@@ -40,6 +40,8 @@ icons = {
     'com.dec05eba.gpu_screen_recorder.tray-recording.png': (0xe7, 0x4c, 0x3c),
     'com.dec05eba.gpu_screen_recorder.tray-paused.png':    (0xf3, 0x9c, 0x12),
 }
+import os
+os.makedirs('icons/hicolor/32x32/status', exist_ok=True)
 for name, (r, g, b) in icons.items():
     path = f'icons/hicolor/32x32/status/{name}'
     with open(path, 'wb') as f:
