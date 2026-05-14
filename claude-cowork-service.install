@@ -1,4 +1,13 @@
 post_upgrade() {
+  # OpenRC: restart the system service if it's currently running.
+  if command -v rc-service >/dev/null 2>&1 \
+      && [ -e /run/openrc/started/claude-cowork ]; then
+    echo ">>> Restarting claude-cowork OpenRC service..."
+    rc-service claude-cowork restart >/dev/null 2>&1 \
+      && echo "  Restarted" || echo "  Restart failed - restart manually"
+    return 0
+  fi
+
   echo ">>> Restarting claude-cowork service for active users..."
 
   command -v loginctl >/dev/null 2>&1 || return 0
