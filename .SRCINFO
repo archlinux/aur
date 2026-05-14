@@ -1,0 +1,16 @@
+pkgbase = matlab-r2021a-language-server
+	pkgdesc = Implementation of the Microsoft Language Server Protocol for the MATLAB language (R2021a)
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://github.com/mathworks/MATLAB-language-server/tree/v1.2.7
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = sh
+	source = https://github.com/mathworks/MATLAB-language-server/archive/refs/tags/v1.2.7/MATLAB-language-server-1.2.7.tar.gz
+	source = matlab-language-server.sh
+	sha256sums = 4034c3e83e8a64f707439f66e238e74b1cc88496298fa291c62c052a63722b8a
+	sha256sums = 7008369134d1ed4f938acf7de2f443691522c4484d13c3f60fb9deae861eb120
+
+pkgname = matlab-r2021a-language-server
