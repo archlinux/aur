@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.10
+_pkgver=13.0.0-rc.11
 _branding=dr460nized
 
 __pkgname=$_pkgname
@@ -89,7 +89,7 @@ source=(
   fix-wasm32-wasi-target.patch
   0023-bgo-969412-glibc-2.43.patch
 )
-sha256sums=('8010de57862a195277c699202933a7ac82962c0c6821a7a9a2bcabadb1ea677f'
+sha256sums=('96c1950cb0a49a2139580dd41d521647e6ab7303b6d0de317dd3c1dfe8733637'
             'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124'
             '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae')
 
