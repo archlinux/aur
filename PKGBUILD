@@ -11,7 +11,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/vinecopulib/vinecopulib/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2130d5e381e62d13c409a6e44454f171b57bcc2eca049ebe8184a1acf599c7a0')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd vinecopulib-${pkgver}
@@ -27,8 +27,8 @@ build() {
 }
 
 package() {
+  cd vinecopulib-${pkgver}
   for _arch in $_architectures; do
-    cd "$srcdir"/vinecopulib-${pkgver}/build-${_arch}
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --install build-${_arch}
   done
 }
