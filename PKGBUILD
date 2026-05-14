@@ -1,7 +1,7 @@
 # Maintainer: MyApps Contributors <noreply@github.com>
 
 pkgname=myapps
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Linux package manager overview with GTK4 + Libadwaita"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
     'python-wheel'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nicolettas-muggelbude/myapps/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d1764466f18205979fb0eb5b4276a646ebf23eb481dae5e5aa23489ae24e1964')
+sha256sums=('ecf51f93bdeb56483f0ea348a7bd2888f9bcb9399864e18c8a1d2103ae6be34b')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
