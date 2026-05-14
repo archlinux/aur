@@ -3,7 +3,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=sf
-_pkgver=1.1-0
+_pkgver=1.1-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,14 +12,13 @@ arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-only OR MIT')
 depends=(
+  r-classint
+  r-dbi
+  r-s2
+  r-units
   gdal
   geos
   proj
-  r-classint
-  r-dbi
-  r-magrittr
-  r-s2
-  r-units
 )
 makedepends=(
   r-rcpp
@@ -74,9 +73,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('ec00e564eea53ba10a88be12526397c5'
+md5sums=('f944eda85dd69110b8957fa2c0b645fc'
          '1f0ac4a99a8706821bc498b734be839f')
-b2sums=('e58889991924b6ceea151770ac536a1ae5347086323358bd367d8c20f140e9f173656965080e9a0b329fddc90aafbbfd819b56d7810e350c475b48d5f7ca88dd'
+b2sums=('4c6f490ee3cffa3c5a59ee8e9910e1583ce2113a5a2700aee8faeadfd225c446045f311e316d524cb9b6466a99de46a7f56984f7102db7b8a0c85c5fb3a0dfba'
         '988ca59b2da630b1c730865f95f4b2c1ce3a88ed67ce49823914ce50f3fe6972ae44a5cb28037cd043e753ec062ab9ec19a4f7f70c05042e010005afec20cb11')
 
 prepare() {
