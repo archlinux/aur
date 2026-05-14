@@ -1,4 +1,4 @@
-# Maintainer: vlensys (contact me on github for wtv reason)
+# Maintainer: vlensys (contact me on github for wtv reason) hi
 pkgname=lyricspot
 pkgver=2.0.0
 pkgrel=1
