@@ -1,6 +1,6 @@
 # Maintainer: Seann Moser <you@example.com>
 pkgname=ymn-git
-pkgver=0.1.2
+pkgver=0.1.2.r0.g1c579b0
 pkgrel=1
 pkgdesc="Yomuna visual novel transcript and flashcard tool"
 arch=('x86_64')
@@ -37,6 +37,15 @@ sha256sums=(
   'ff3dcc09fe17519f28df9b5d036d99a4097d7b8cea7f95206cce1beec428aac7'
 )
 
+pkgver() {
+  cd ymn
+
+  local tag commits
+  tag="$(git tag --sort=-v:refname --merged HEAD | head -n1)"
+  commits="$(git rev-list --count "${tag}..HEAD")"
+
+  printf '%s.r%s.g%s\n' "${tag#v}" "${commits}" "$(git rev-parse --short HEAD)"
+}
 
 
 prepare() {
