@@ -1,7 +1,7 @@
 pkgbase = midi-daemon
 	pkgdesc = A Lua-scriptable MIDI routing daemon
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rickprice/midi-daemon
 	arch = x86_64
 	license = BSD-3-Clause

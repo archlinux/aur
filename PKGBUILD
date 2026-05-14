@@ -2,7 +2,7 @@
 
 pkgname=midi-daemon
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lua-scriptable MIDI routing daemon"
 arch=('x86_64')
 url="https://github.com/rickprice/midi-daemon"
@@ -56,6 +56,9 @@ EOF
     # System-wide config and empty routes directory
     install -Dm644 config.toml "$pkgdir/etc/$pkgname/config.toml"
     install -dm755 "$pkgdir/etc/$pkgname/routes.d"
+
+    # Sample config
+    install -Dm644 config.toml "$pkgdir/usr/share/doc/$pkgname/config.toml"
 
     # Example Lua routes — copy to /etc/midi-daemon/routes.d/ to activate
     for lua in routes.d/*.lua; do
