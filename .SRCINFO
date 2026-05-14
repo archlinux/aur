@@ -1,0 +1,12 @@
+pkgbase = rf
+	pkgdesc = a suckless and minimal, POSIX C99 alternative to Makefiles!
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://kuronavipad.xantu-ling.ts.net/cgit/rfle.git
+	arch = any
+	license = MIT
+	makedepends = gcc
+	source = git+https://kuronavipad.xantu-ling.ts.net/cgit/rfile.git
+	md5sums = SKIP
+
+pkgname = rf
