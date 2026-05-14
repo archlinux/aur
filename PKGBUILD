@@ -4,6 +4,7 @@ pkgrel=3
 pkgdesc="A simple and modern GUI for managing Samba."
 
 arch=('x86_64')
+options=('!debug' '!strip')
 license=('MIT')
 depends=('samba' 'systemd' 'linux-headers' 'cifs-utils')
 url="https://github.com/mijocecr/samba-util"

@@ -9,6 +9,8 @@ pkgbase = samba-util
 	depends = systemd
 	depends = linux-headers
 	depends = cifs-utils
+	options = !debug
+	options = !strip
 	source = https://github.com/mijocecr/samba-util/releases/download/samba-util_v3.0/SAMBA-Util.tar.gz
 	sha256sums = SKIP
 
