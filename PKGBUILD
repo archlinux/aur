@@ -1,7 +1,7 @@
 # Maintainer: Capricornus007 <sihaogang@gmail.com>
 
 pkgbase=linux-cjktty
-pkgver=7.0.5.arch1
+pkgver=7.0.6.arch1
 pkgrel=1
 pkgdesc='Linux (with cjktty-patches)'
 url='https://github.com/archlinux/linux'
@@ -31,7 +31,7 @@ _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
-  config  # the main kernel config file
+  config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/${pkgver}-${pkgrel}/config.x86_64   # the main kernel config file
 )
 source+=("https://github.com/bigshans/cjktty-patches/raw/refs/heads/master/v7.x/cjktty-7.0.patch"
          "$_cjktty_repo/raw/master/cjktty-add-cjk32x32-font-data.patch")
