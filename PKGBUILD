@@ -3,24 +3,20 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 depends=('enet' 'fmt' 'opus' 'lz4' 'zlib' 'zstd' 'libusb' 'openssl' 'glibc'
 	 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs'
-	 'ffmpeg' 'boost-libs' 'spirv-tools' 'quazip-qt6' 'mbedtls' 'llvm-libs' 'cubeb' 'qt6-charts')
+	 'ffmpeg' 'boost-libs' 'spirv-tools' 'quazip-qt6' 'mbedtls' 'llvm-libs' 'cubeb' 'qt6-charts' 'cpp-jwt' 'cpp-httplib')
 makedepends=('cmake' 'catch2' 'boost' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers')
 optdepends=('gamemode: Gamemoded support')
 conflicts=('eden-bin' 'eden-git' 'eden-preview-bin' 'eden-beta')
 options=('!debug')
-source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/v${pkgver}.tar.gz"
-		"3751.patch"
-		"bd6dd7ecec.patch")
-sha256sums=('6ab816bf58507c809f116f64eb1bee3fa5208ac4fb3364e054fe4026c78048be'
-            '106a8f2053c6d52951a312b07a09050423362128a7d26344af0bb0f4495fb856'
-            '8d441c5152211510d4fdd5ea39f99d4ba3d4b86c7126d352872fd36bfb492d43')
+source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/v${pkgver}.tar.gz")
+sha256sums=('6ab816bf58507c809f116f64eb1bee3fa5208ac4fb3364e054fe4026c78048be')
 
 build() {
 	cd "$srcdir"
