@@ -1,0 +1,18 @@
+pkgbase = gnome-classshare
+	pkgdesc = Dateien teilen und einsammeln im Schulnetz (GNOME)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TutorNachhilfe/gnome-classshare
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-pillow
+	optdepends = python-qrcode: QR-Code-Anzeige
+	source = git+https://github.com/TutorNachhilfe/gnome-classshare.git
+	sha256sums = SKIP
+
+pkgname = gnome-classshare
