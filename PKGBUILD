@@ -11,7 +11,7 @@ url="https://www.cgal.org"
 source=(https://github.com/CGAL/cgal/releases/download/v${pkgver}/CGAL-${pkgver}.tar.xz)
 sha256sums=('52506935f70e247ed2777e3c65f20e86f79208c2a2d0e180ae7475daf11c96ef')
 
-_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build()
 {
