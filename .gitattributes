@@ -1,0 +1,11 @@
+# All files are treated as text files with Unix-style line endings and UTF-8 encoding by default
+* text eol=lf encoding=utf-8
+
+# All .bat files are treated as text files with Windows-style line endings and UTF-8 encoding by default
+*.bat text eol=crlf encoding=utf-8
+
+# All .cmd files are treated as text files with Windows-style line endings and UTF-8 encoding by default
+*.cmd text eol=crlf encoding=utf-8
+
+# All .ini files are treated as text files with Windows-style line endings and UTF-8 encoding by default
+*.ini text eol=crlf encoding=utf-8

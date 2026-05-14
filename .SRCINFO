@@ -1,0 +1,11 @@
+pkgbase = ghostty-xfce4-helper
+	pkgdesc = Adds a "Default Application" entry to Xfce4 for Ghostty.
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	depends = ghostty
+
+pkgname = ghostty-xfce4-helper

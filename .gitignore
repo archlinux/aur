@@ -1,0 +1,45 @@
+# Editors #
+## Visual Studio Code ##
+### Workspace Folder ###
+.vscode/*
+
+### Exceptions ###
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/*.code-snippets
+!.vscode/*.code-workspace
+
+## Vim ##
+### Swap ###
+[._]*.s[a-v][a-z]
+!*.svg
+[._]*.sw[a-p]
+[._]*.s[a-rt-v][a-z]
+[._]*.ss[a-gi-z]
+[._]sw[a-p]
+
+### Session ###
+Session.vim
+Sessionx.vim
+
+### Temporary Files ###
+.netrwhist
+*~
+
+### Auto-generated Tag Files ###
+tags
+
+### Undo Persistence ###
+[._]*.un~
+
+# Logs #
+*.log*
+
+# Environment #
+.env*
+
+# Artifacts #
+## makepkg ##
+pkg/
+*.zst
