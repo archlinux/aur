@@ -1,6 +1,6 @@
 pkgbase = trackaudio-bin
 	pkgdesc = Next-generation cross-platform Audio-For-VATSIM ATC Client
-	pkgver = 1.4.0_beta.1
+	pkgver = 1.4.0_beta.6
 	pkgrel = 1
 	url = https://github.com/pierr3/TrackAudio
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = trackaudio-bin
 	provides = trackaudio
 	conflicts = trackaudio-git
 	options = !debug
-	source = https://github.com/pierr3/TrackAudio/releases/download/1.4.0-beta.1/trackaudio_1.4.0-beta.1_amd64.deb
-	b2sums = 07cf049800ab5094857f10232a588347f496e80b68e68cfc448157f4465f2570c9fc9f3efa906edfa18d2bf6938230d4f8314e629ba3b9553a36db2d4bf26d49
+	source = https://github.com/pierr3/TrackAudio/releases/download/1.4.0-beta.6/trackaudio_1.4.0-beta.6_amd64.deb
+	b2sums = dff8ebfc575918531027889f2d91f82aab861a98f6db0b66fd233e8589e119d45ec6d4746cbb4440cb35376d442adf7ceb2c7f34881eb9f088aaf944593bea6c
 
 pkgname = trackaudio-bin
