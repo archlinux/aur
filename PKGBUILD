@@ -1,5 +1,5 @@
 pkgname=gatelet-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Small ngrok-style HTTP tunnel with a public relay daemon and local client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 provides=('gatelet' 'gateletd')
 conflicts=('gatelet' 'gateletd')
 source_x86_64=("gatelet-$pkgver-linux-amd64.tar.gz::$url/releases/download/v$pkgver/gatelet_linux_amd64.tar.gz")
-sha256sums_x86_64=('bc8668b3530a40d43e3559f2e7355bc4bc89d5e6b12f072b1310b70db26ad415')
+sha256sums_x86_64=('27069ae339e02809f90f97588411ea00d7aea46dca67567c4f211b9d3b037cdd')
 
 package() {
   install -Dm755 gatelet "$pkgdir/usr/bin/gatelet"
