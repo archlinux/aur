@@ -1,6 +1,6 @@
 # Maintainer: Seann Moser <you@example.com>
 pkgname=ymn-git
-pkgver=0.1.1.r0.g1c579b0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Yomuna visual novel transcript and flashcard tool"
 arch=('x86_64')
@@ -37,20 +37,7 @@ sha256sums=(
   'ff3dcc09fe17519f28df9b5d036d99a4097d7b8cea7f95206cce1beec428aac7'
 )
 
-pkgver() {
-  cd ymn
 
-  local ver
-  ver="$(git describe --long --tags --match 'v[0-9]*' 2>/dev/null || true)"
-
-  if [[ -n "$ver" ]]; then
-    printf '%s\n' "${ver#v}" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  else
-    printf '0.1.0.r%s.g%s\n' \
-      "$(git rev-list --count HEAD)" \
-      "$(git rev-parse --short HEAD)"
-  fi
-}
 
 prepare() {
   cd ymn
