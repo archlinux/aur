@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-qt6-positioning
 	pkgdesc = Provides access to position, satellite and area monitoring classes (android)
-	pkgver = 6.11.0
+	pkgver = 6.11.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = android-armv7a-eabi-qt6-positioning
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.11/6.11.0/submodules/qtpositioning-everywhere-src-6.11.0.tar.xz
-	sha256sums = d61fd0985ede513ec34d2d1c1e92f383eb8eb46678ca9da805cf795cccb796e9
+	source = https://download.qt.io/official_releases/qt/6.11/6.11.1/submodules/qtpositioning-everywhere-src-6.11.1.tar.xz
+	sha256sums = d5e6b91801ae286e7630016caea3bdc5e1978b4291d6741d0d64c125650f78f5
 
 pkgname = android-armv7a-eabi-qt6-positioning
