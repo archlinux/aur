@@ -3,7 +3,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=terra
-_pkgver=1.9-11
+_pkgver=1.9-27
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,16 +12,18 @@ arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-or-later')
 depends=(
+  r-rcpp
   gdal
   geos
   proj
-  r-rcpp
 )
 checkdepends=(
   r-tinytest
 )
 optdepends=(
   r-deldir
+  r-future
+  r-future.apply
   r-htmlwidgets
   r-leaflet
   r-ncdf4
@@ -30,15 +32,15 @@ optdepends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eab73345be6021b30424ec0ed40cd8f0')
-b2sums=('510e19bb00d895ee105aa64bac85cff41971cc45665e3f95ac84f0e6073317d9a4b5526f88a0d51446ac2f0c4120a49bce38a507036dd1deb63ea75c012d7941')
+md5sums=('2a1aa70d679256f92161c1a4430c6ed8')
+b2sums=('c936543e660596c1afceaaa7c95bc3f138b2054b819e3d96f0101a832f49edbd9525ea5661f2617d8bb8cd6183dbc105e29ff12897f2242741bffa6547db863a')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" Rscript --vanilla tinytest.R
 }
