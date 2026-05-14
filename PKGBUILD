@@ -2,7 +2,7 @@
 # Release: tag as v<version> and push tag, then create GitHub release.
 # The AUR publish workflow will update pkgver and publish automatically.
 pkgname=snry-shell-qs
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Snry Shell - Hyprland dotfiles managed by snry-daemon'
 arch=('any')
@@ -54,6 +54,8 @@ depends=(
 	matugen
 	otf-space-grotesk
 	starship
+	zsh
+	zsh-theme-powerlevel10k
 	ttf-jetbrains-mono-nerd
 	ttf-material-symbols-variable-git
 	ttf-readex-pro

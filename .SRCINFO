@@ -1,6 +1,6 @@
 pkgbase = snry-shell-qs
 	pkgdesc = Snry Shell - Hyprland dotfiles managed by snry-daemon
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/sonroyaalmerol/snry-shell
 	install = snry-shell-qs.install
@@ -49,6 +49,8 @@ pkgbase = snry-shell-qs
 	depends = matugen
 	depends = otf-space-grotesk
 	depends = starship
+	depends = zsh
+	depends = zsh-theme-powerlevel10k
 	depends = ttf-jetbrains-mono-nerd
 	depends = ttf-material-symbols-variable-git
 	depends = ttf-readex-pro
@@ -95,7 +97,7 @@ pkgbase = snry-shell-qs
 	depends = libqalculate
 	depends = quickshell
 	optdepends = plasma-browser-integration: KDE browser integration support
-	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v2.1.0
+	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v2.2.0
 	sha256sums = SKIP
 
 pkgname = snry-shell-qs
