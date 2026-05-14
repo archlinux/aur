@@ -1,0 +1,17 @@
+pkgbase = zmux-git
+	pkgdesc = tmux-style PTY session multiplexer with JSON-RPC over UNIX sockets
+	pkgver = 0.1.0.r8.g9c581d5
+	pkgrel = 1
+	url = https://github.com/smithersai/zmux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = zig0.15
+	depends = glibc
+	provides = zmux
+	conflicts = zmux
+	source = zmux-git::git+https://github.com/smithersai/zmux.git
+	sha256sums = SKIP
+
+pkgname = zmux-git
