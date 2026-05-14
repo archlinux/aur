@@ -2,7 +2,7 @@
 
 _pkgname="oxker"
 pkgname="${_pkgname}-bin"
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="A simple TUI to view & control Docker containers"
 arch=(
@@ -23,7 +23,7 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_pkgsrc="${_pkgname}-${pkgver}"
+_pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
   "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
@@ -39,9 +39,9 @@ source_x86_64=(
 )
 sha256sums=('3c6d5ca4c89e0f1820b5717504f560fe91a39d300a0fd9d17ea84b38cee74bb3'
             'b73cb1c664857dc71c358b7127f3601be7d625fa97fa2d7e3b1e09381e4d98f0')
-sha256sums_aarch64=('f6cf3abdd356f5c9e065a7c7b355e00c9f1f94c24fb2011ecf2734553fa1832d')
-sha256sums_armv7h=('261791c5d3064ef4ac615b19a299e34ec4e12910f1e6a53db7dddc5cb77e2264')
-sha256sums_x86_64=('b400a47f00ffecab8c53d8b431f21ce8d9cb29dfe963a1651ab3ff6085635d88')
+sha256sums_aarch64=('d28adead20ef1f30818088b993f7b2f036ddb6ec11e8f96803bbe7f0ff1a1ba0')
+sha256sums_armv7h=('d13454004a8bb2c44c3e5caee9aaa1cbface389db479af0f94dd7dd69bc2ec23')
+sha256sums_x86_64=('3775979640701248ff8e7bbb597a6dadc6cd05f8ee9cdfa6a82feb52b8f4dcbd')
 
 package() {
   cd "${srcdir}"
