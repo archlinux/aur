@@ -3,7 +3,7 @@
 pkgname=pake-lizhi
 _appname=LiZhi
 _appname_lower=lizhi
-_pkgver=3.11.0
+_pkgver=3.11.5
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="${_appname} wrapped as a desktop app using Pake"
@@ -17,7 +17,7 @@ source=(
     "${_appname}-${_pkgver}.deb::https://github.com/tw93/Pake/releases/download/V${_pkgver}/${_appname}_${CARCH}.deb"
     "LICENSE-${_pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${_pkgver}/LICENSE"
 )
-sha256sums=('64c3393559f948f39cedd406cb32de618eeef784ecab65374f3118b13fbc1ae3'
+sha256sums=('387c00593e5f7555efe983f2dbf0d92e56a9013e383c74886c70375d7e8d48f3'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 
 prepare() {
