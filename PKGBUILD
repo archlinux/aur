@@ -51,11 +51,13 @@ PYEOF
 }
 
 build() {
+    cd "$srcdir/$pkgname-$pkgver"
     cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 
 package() {
+    cd "$srcdir/$pkgname-$pkgver"
     cmake --install build --prefix "$pkgdir/usr"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
