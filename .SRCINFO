@@ -1,0 +1,19 @@
+pkgbase = vsview-cli
+	pkgdesc = The next-generation VapourSynth previewer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/vsview-cli
+	arch = x86_64
+	license = Unlicense
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-versioningit
+	makedepends = python-wheel
+	makedepends = python-maturin
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/v/vsview_cli/vsview_cli-1.0.0.tar.gz
+	sha256sums = 1f1111fbc1a87dfba395b65053014a3d71a90232df96f279afcec46acd86c901
+
+pkgname = vsview-cli
