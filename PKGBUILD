@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=148.0.7778.167
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 _manual_clone=1
 _system_clang=1
@@ -220,6 +220,7 @@ prepare() {
            third_party/gperf/cipd/bin
 
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  ln -s /usr/bin/rustc third_party/rust-toolchain/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
   ln -s /usr/bin/gperf third_party/gperf/cipd/bin/
 
