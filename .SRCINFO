@@ -1,6 +1,6 @@
 pkgbase = lvce-bin
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.80.18
+	pkgver = 0.80.19
 	pkgrel = 1
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = lvce-bin
 	arch = x86_64
 	license = MIT
 	depends = electron41
-	provides = lvce=0.80.18
+	provides = lvce=0.80.19
 	conflicts = lvce
 	options = !strip
 	options = !emptydirs
@@ -16,11 +16,11 @@ pkgbase = lvce-bin
 	source = lvce.sh
 	sha256sums = ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = lvce-0.80.18-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.80.18/lvce-v0.80.18_arm64.deb
-	sha256sums_aarch64 = a068f21d3eadfe4476e1a01b8a8f5da991fbca77661534749bcf43edb2dba11d
-	source_armv7h = lvce-0.80.18-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.80.18/lvce-v0.80.18_armhf.deb
-	sha256sums_armv7h = 07030635c25290f980b81b714f5ea368c2ce1c26e0094bd5b6bde3da22af7e4d
-	source_x86_64 = lvce-0.80.18-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.80.18/lvce-v0.80.18_amd64.deb
-	sha256sums_x86_64 = 1fe6c10a43dc0dc486628d5e6f1b586b332b6ff0cceec2cabd94bd8b49718648
+	source_aarch64 = lvce-0.80.19-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.80.19/lvce-v0.80.19_arm64.deb
+	sha256sums_aarch64 = beebd4b1c95ae84411a6d27e411eae7e7b00a31d18eb7b881c4c7ed36ca44ae8
+	source_armv7h = lvce-0.80.19-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.80.19/lvce-v0.80.19_armhf.deb
+	sha256sums_armv7h = a3a049710fb558ba19e30fb7a492559a4b30ea81b984feec6fbc8bd7190ebbfe
+	source_x86_64 = lvce-0.80.19-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.80.19/lvce-v0.80.19_amd64.deb
+	sha256sums_x86_64 = ed3542d43a3ac4584812b44d95f4d873e10a7d481e6788b4e9c1ff9d123f056b
 
 pkgname = lvce-bin
