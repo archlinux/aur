@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tmax-bin
-pkgver=1.7.3
+pkgver=1.8.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A powerful cross-platform multi-terminal app with tiling layouts, floating panels, and a keyboard-driven workflow. (Prebuilt version. Use system-wide electron)"
@@ -21,9 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e426d17d718c55e799c1bfab5871e0140ae67551633da4f2b530a759d90c7120'
+sha256sums=('a1be2516c58346ac2e4cbca21195ff815caa16557403e5c229b3b02951ecf39b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
@@ -44,7 +43,6 @@ _check_electron_version() {
         echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
     fi
 }
-
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -57,7 +55,6 @@ prepare() {
         "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/node_modules/node-pty/prebuilds/"{darwin-*,win32-*} \
         "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/node_modules/node-pty/third-party/conpty"
 }
-
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
