@@ -2,7 +2,7 @@
 
 pkgname=vsview-git
 _origpkgname=vsview
-pkgver=0.1.0b3.4.g2cdd138
+pkgver=0.6.0.7.g6d6304c
 pkgrel=1
 pkgdesc='The next-generation VapourSynth previewer (GIT version)'
 arch=('x86_64')
@@ -10,7 +10,6 @@ url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
 license=('EUPL-1.2')
 depends=(
     'vapoursynth'
-    'vapoursynth-plugin-vsjetpack'
     'python-jetpytools'
     'python-vsjetengine'
     'python-vspackrgb'
@@ -29,6 +28,7 @@ makedepends=(
     'python-setuptools'
     'python-versioningit'
     'python-wheel'
+    'python-hatch-sbom'
 )
 optdepends=(
     'vapoursynth-plugin-bestsource: Source filter'
@@ -37,6 +37,7 @@ optdepends=(
     'vsview-frameprops-extended: Add more categories and formats to frameprops'
     "vsview-split-planes: Display video clips' constituent planes"
     'vsview-audio-convert: Convert and resample audio'
+    'vsview-nativeres: Analyze and determine native resolution'
     'vsview-plugins-all: Meta package for all plugins'
     'vsview-plugins-essential: Meta package for essential plugins'
 )
