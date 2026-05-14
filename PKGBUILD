@@ -2,7 +2,7 @@
 # Thanks "Kimiblock Moe", all config files from "https://aur.archlinux.org/packages/cloudreve"
 pkgname=cloudreve-bin
 _pkgname=Cloudreve
-pkgver=4.15.0
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="🌩 Self-hosted file management and sharing system, supports multiple storage providers.(Prebuilt version)支持多家云存储驱动的公有云文件系统"
 arch=(
@@ -25,9 +25,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/down
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
 sha256sums=('5e78a6bc0624c39ca1fb5e7733ffa8472d41540dab2e009871504c82469d0384'
             '3145bf311d7ae94a1f00a8c78df08240fa95668d1a8eb3981ffd7fca3b70535a')
-sha256sums_aarch64=('7fcec42286a2ec40f5b6e231f71d8dd8dfc2f64a11ace0937738ed800ec4c365')
-sha256sums_armv7h=('b9c6ee56216cb448f437d857081fc836370b440b945d648e781eed1732ef4780')
-sha256sums_x86_64=('a22d0ba44f7276fcbaacdf08dcb2bd0c783a5be6fa98d3d4a93a32b7cfda185a')
+sha256sums_aarch64=('988e58ce506455e53d61d88020f61a90652d8e080b7c9ca1dc6313eb008a315b')
+sha256sums_armv7h=('23007143e044b0633d45eec884db5af0baaef45ff0a1e3fb60f152957c8b535e')
+sha256sums_x86_64=('5ebc0b76dbb1f53db542a5ba04cfad2f7f87ab7cc4619adec9a50c2b44d7c68e')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.service" -t "${pkgdir}/usr/lib/systemd/system"
