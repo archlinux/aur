@@ -7,12 +7,18 @@
 # CAUTION: Running macOS on VMware Workstation on non Apple computer is forbidden by
 # Apple and VMware EULAs.
 
+# vmware-keymaps dependency is needed to avoid some conflicts when you install
+# this package with vmware-horizon-client. If you don't plan to install
+# vmware-horizon-client and don't want to add this dependency, you can
+# uncomment the line below:
+#_remove_vmware_keymaps_dependency=y
+
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
 pkgver=26H1
 _buildver=25388281
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=3
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -106,6 +112,12 @@ sha256sums=('3f6d2501e654dbc7701a8290ff6ffcfba6c5444cd5f35f4933cd08c9499f6d84'
             '16f0780792cd66f580a0a872679cac76f8df936a0f2d90ac2d014902d46da58c'
             'cefe79e418a7403bc0a788b1ca695a9463d6c2d9ecbf1ce15125e39e39391c2b')
 options=(!strip emptydirs !debug)
+
+if [ -z "$_remove_vmware_keymaps_dependency" ]; then
+depends+=(
+  vmware-keymaps
+)
+fi
 
 _extractedimages=(windows)
 _isoimages=(linux linuxPreGlibc25 netware solaris winPre2k winPreVista winVistaSP1 winVistaSP2)
@@ -201,6 +213,7 @@ package() {
     vmware-workstation/share/* \
     vmware-workstation/man \
     vmware-network-editor-ui/share/* \
+    vmware-other-apps/share/* \
     "$pkgdir/usr/share"
 
   cp -r \
@@ -212,6 +225,7 @@ package() {
 
   cp -r \
     vmware-workstation/lib/* \
+    vmware-other-apps/lib/* \
     vmware-vmx/{lib/*,roms} \
     vmware-vprobe/lib/* \
     vmware-usbarbitrator/bin \
@@ -271,6 +285,10 @@ package() {
   install -Dm 644 "$srcdir"/vmware-vix-bootstrap "$pkgdir"/etc/vmware-vix/bootstrap
   install -Dm 644 "$srcdir"/vmware-bootstrap "$pkgdir"/etc/vmware/bootstrap
   install -Dm 644 "$srcdir"/config "$pkgdir"/etc/vmware/config
+
+if [ -z "$_remove_vmware_keymaps_dependency" ]; then
+  rm -r "$pkgdir/usr/lib/vmware/xkeymap" # these files are provided by vmware-keymaps package
+fi
 
   echo -e "vmw_vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
 
