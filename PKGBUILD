@@ -5,9 +5,9 @@
 
 _pkgname='leaf-markdown-viewer'
 pkgname="$_pkgname-bin"
-pkgdesc='Leaf if a text-based markdown previewer for yuour terminal (pre-compiled)'
+pkgdesc='Leaf if a text-based markdown previewer for your terminal (pre-compiled)'
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 url='https://github.com/RivoLink/leaf'
 changelog="$pkgname.changelog"
 arch=('x86_64')
