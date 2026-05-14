@@ -1,0 +1,6 @@
+[mongodb70-bin]
+source = 'github'
+github = 'mongodb/mongo'
+use_max_tag = true
+prefix = 'r'
+include_regex = 'r7.0.[\d]+'
