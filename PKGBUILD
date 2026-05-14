@@ -10,7 +10,8 @@ makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('8f24a35f3487fcba4d612320973c747299cbb93c25dd937cff03844a5fdadce667ba5e6475775c652895ecbdfffd243f22ce7ae1256971430012a574ddc311f6')
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd wdm-${pkgver}
@@ -21,8 +22,8 @@ build() {
 }
 
 package() {
+  cd wdm-${pkgver}
   for _arch in $_architectures; do
-    cd "$srcdir"/wdm-${pkgver}/build-${_arch}
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --install build-${_arch}
   done
 }
