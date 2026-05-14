@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=mdcz
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Media metadata scraper built on Electron"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('12b427d9dd64237b17ed0c6a742e63615b5f37c6aa226c93eb29bb1a3ece5b39'
+sha256sums=('f07bbb23bab501525e4edf89c6bb030061d94cdb953115cef995960a99afdeec'
             'cd05629c20de4406029004536b25694cf4b2e27997695d6aa2b8942258d43683'
             'bd506812280590fa11c51feeb3e5286ed4dcd6603f1bd796f8cd567a7dfded16')
 
