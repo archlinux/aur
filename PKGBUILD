@@ -3,7 +3,7 @@
 # Contributor: Aaron Abbott <aabmass at gmail dot com>
 
 pkgname=mycli
-pkgver=1.66.0
+pkgver=1.67.0
 pkgrel=1
 pkgdesc='A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting'
 arch=('any')
@@ -12,6 +12,7 @@ license=('BSD-3-Clause')
 depends=(
     'python'
     'python-click'
+    'python-clickdc'
     'python-cryptography'
     'python-pygments'
     'python-prompt_toolkit'
@@ -39,12 +40,12 @@ optdepends=(
     'python-sshtunnel: SSH support'
 )
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dbcli/mycli/archive/v${pkgver}.tar.gz")
-sha256sums=('62787b30b895dfd9d1ec965c15ad47d02704a7aa9871cf0d87744eb0c1360310')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dbcli/mycli/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('805a34ed100b44279cff922bafe66a061e92410dc929a4576a4588ca8b488fc1')
 
 build() {
-    export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
     cd "$srcdir/$pkgname-$pkgver"
+    export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
     python -m build --wheel --no-isolation
 }
 
