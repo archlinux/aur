@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jumble-bin
-pkgver=26.5.3
+_pkgname=Jumble
+pkgver=26.5.6
 _electronversion=41
 pkgrel=1
 pkgdesc="yet another nostr desktop client.(Prebuilt version.Use system-wide electron.)"
@@ -16,11 +17,11 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CodyTseng/jumble/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('86946f03d05b8cb38e75f16e0137ec216f45fea06a51fcb46cd528918270650e'
+sha256sums=('9a537ca72ba1332acaa3d5fcd4e458d1492f7a6f866a663b020947d7741451cb'
             '636c9ac311004c9c7a64045f683eb1c05e907ea514b268b0cc09f935532d1fb9'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
@@ -52,7 +53,7 @@ prepare() {
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
-    sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
