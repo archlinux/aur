@@ -1,0 +1,14 @@
+pkgbase = perl-text-tabulardisplay
+	pkgdesc = Display text in formatted table output
+	pkgver = 1.38
+	pkgrel = 1
+	url = https://metacpan.org/dist/Text-TabularDisplay
+	arch = any
+	license = GPL-2.0-only
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DA/DARREN/Text-TabularDisplay-1.38.tar.gz
+	sha256sums = eb0990fafa56b667f23db764bdda5a4dc5f4b1ddc4b1383aa5eed6f22ed186e8
+
+pkgname = perl-text-tabulardisplay

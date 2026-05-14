@@ -1,0 +1,3 @@
+[perl-text-tabulardisplay]
+source = "cpan"
+cpan = "Text-TabularDisplay"
