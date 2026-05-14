@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://kilabit.info/project/rescached/"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 
 depends=('bash')
 provides=('rescached')
