@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo
 _pkgname=Folo
-pkgver=1.7.0
+pkgver=1.8.0
 _electronversion=38
 _nodeversion=22
 pkgrel=1
