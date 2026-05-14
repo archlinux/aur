@@ -23,9 +23,9 @@ depends=(
   wpa_supplicant
 )
 optdepends=(
+  'python-dbus-next: WFD portal capture control plane for KDE/GNOME Wayland'
   'python-pychromecast: Needed for the Cast protocol'
   'python-upnpclient: Needed for the DLNA protocol'
-  'python-dbus-next: WFD portal capture control plane for KDE/GNOME Wayland'
   'wf-recorder: Hyprland/wlroots screen capture'
   'xdg-desktop-portal: Wayland portal service for KDE/GNOME capture'
 )
