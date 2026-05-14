@@ -1,7 +1,7 @@
 # Maintainer: Rick Price <fprice@pricemail.ca>
 
 pkgname=midi-daemon
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Lua-scriptable MIDI routing daemon"
 arch=('x86_64')
@@ -9,8 +9,9 @@ url="https://github.com/rickprice/midi-daemon"
 license=('BSD-3-Clause')
 depends=('alsa-lib' 'gcc-libs' 'glibc')
 makedepends=('cargo')
+backup=('etc/midi-daemon/config.toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rickprice/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('89e7d9b96cf7a2dae20f5313705d4677df8ceff364a6fa02a56d001e4cf2216b')
+sha256sums=('345d75478b8bca0510a0dee7fe8ac1449d52d33d692d4d9f966c19f6410cb494')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -34,12 +35,26 @@ package() {
 
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-    # Fix ExecStart to use the installed binary path instead of ~/.cargo/bin
-    install -Dm644 "systemd/$pkgname.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
-    sed -i 's|%h/.cargo/bin/midi-daemon|/usr/bin/midi-daemon|' \
-        "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+    # System service — fix ExecStart to use the installed binary path
+    install -Dm644 "systemd/$pkgname-system.service" \
+        "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    sed -i 's|/usr/local/bin/midi-daemon|/usr/bin/midi-daemon|' \
+        "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 
-    install -Dm644 config.toml "$pkgdir/usr/share/doc/$pkgname/config.toml.example"
+    # Dedicated system user with audio group membership
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf" << EOF
+u midi-daemon - "MIDI Lua Routing Daemon" /var/empty /usr/bin/nologin
+m midi-daemon audio
+EOF
+
+    # System-wide config and empty routes directory
+    install -Dm644 config.toml "$pkgdir/etc/$pkgname/config.toml"
+    install -dm755 "$pkgdir/etc/$pkgname/routes.d"
+
+    # Example Lua routes — copy to /etc/midi-daemon/routes.d/ to activate
+    for lua in routes.d/*.lua; do
+        install -Dm644 "$lua" "$pkgdir/usr/share/doc/$pkgname/examples/$lua"
+    done
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
