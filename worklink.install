@@ -1,9 +1,6 @@
 post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
-	# Link to the binary
-	ln -sf '/opt/招商随行/worklink' '/usr/bin/worklink'
-
 	# SUID chrome-sandbox for Electron 5+
 	chmod 4755 '/opt/招商随行/chrome-sandbox' || true
 
@@ -18,8 +15,5 @@ post_upgrade() {
 
 post_remove() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-
-	# Delete the link to the binary
-	rm -f '/usr/bin/worklink'
 	update-desktop-database -q
 }

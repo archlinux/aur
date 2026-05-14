@@ -1,7 +1,7 @@
 pkgbase = worklink
 	pkgdesc = 招商随行
 	pkgver = 4.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cm-worklink.com
 	install = worklink.install
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = worklink
 	options = !strip
 	options = !emptydirs
 	source = https://cos-cdn.cm-worklink.com/hk-gm-cmuop-ceph-steadiness-bucket/worklink_4.3.3-2253-55e83b_linux-all-amd64.deb
+	source = worklink.sh
 	sha512sums = 65ff26c1b1d7f332728b92db80a72ea4e172ed06676c37eff62f964ef3975aeeef2a5e5f1ba6f1b4f809c8428250832e8df884d12aa330b862c864fde29e75a0
+	sha512sums = SKIP
 
 pkgname = worklink
