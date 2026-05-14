@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dockerfiler
-_pkgver=0.2.5
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,15 +30,16 @@ checkdepends=(
 )
 optdepends=(
   r-knitr
+  r-renv
   r-rmarkdown
   r-testthat
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('66b9d54f977935d10e174ee3cc6112a3'
+md5sums=('6100f2349ebeebe6d83eadd8be15e2ce'
          'ef9a524e620f31b990f6d05fa2050e0c')
-b2sums=('4a719a7c17ff3bf15a62354d942a586656554a11724a656d3a18bcb01d10e130a97ea9fdd3ebc954877a915fff9f48c540867b565e6c9c196b43cfc5f980e4fa'
+b2sums=('8f7ce0c8f926018bc1c66bebf4d30e2c11211734fd5155432d9974bae34294cf39794e20727fab9d9749682df6eed2de086d7169a4ff5e5a1fef02ec2a6ab1f0'
         '0ca7924504a7f0e809afc72d09fae390710ec233078354b710dfb2ed1c1db849bcb19b496ad26182200bfd7b7659e6531ad4bcdf4c1660459ab7cb2425e3eb51')
 
 prepare() {
