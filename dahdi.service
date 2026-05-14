@@ -1,9 +1,13 @@
 [Unit]
-Description=DAHDI configuration script
-After=network.target systemd-udevd.service
+Description=Configure DAHDI spans
+Documentation=man:dahdi_cfg(8)
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service
+ConditionPathExists=/etc/dahdi/system.conf
 
 [Service]
-Type=simple
+Type=oneshot
+RemainAfterExit=yes
 ExecStart=/usr/bin/dahdi_cfg
 ExecStop=/usr/bin/dahdi_cfg -s
 

@@ -6,7 +6,7 @@ _basename=dahdi
 pkgname=dahdi-linux-git
 pkgdesc='DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)'
 pkgver=3.4.0.rc1.r20.gd1c842a
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 url=https://www.asterisk.org
 license=(GPL-2.0-only)
@@ -49,7 +49,7 @@ source=("$_archive::git+https://github.com/asterisk/dahdi-linux#branch=master"
         "$_fwurl/dahdi-fwload-vpmadt032-1.25.0.tar.gz"
 )
 sha256sums=('SKIP'
-            '7c91314aacab22ffd02794abfa7db49f44a796ea54f3e2bc4276616e68b90e0f'
+            '9236a448e6d50b44eded550091460c08ff8a6d5a1643311baa2ac856f88a111c'
             '67bb74c83198946fee1aac138f9aa03d4c23b197813951ea254de69671ada4e6'
             'd5b6ab6851e431afcfec2ecc39d95fa88fe3939ffdb2e3d4f28a43cabf30e95b'
             'e039af8bec36407b74e1dd9ebdd49ba077469eda79d4e6093721ed2836d4536f'
@@ -103,6 +103,7 @@ build() {
 
 package() {
   depends=(
+    dahdi-tools
     libusb
     "linux=$(_linuxpkgver)"
     perl
@@ -119,4 +120,6 @@ package() {
   find . -name "*.ko" \
     -exec gzip -n "{}" \; \
     -exec install -Dm0644 "{}.gz" "$pkgdir/usr/lib/modules/$kernelver/extramodules/{}.gz" \;
+  install -Dm0644 "$srcdir/${pkgname%-linux-git}.service" \
+    "$pkgdir/usr/lib/systemd/system/${pkgname%-linux-git}.service"
 }
