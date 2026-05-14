@@ -11,6 +11,9 @@ license=('GPL2')
 depends=(
 	'gtk3'
 	'sdl3'
+    'qt6-base'
+    'qt6-tools'
+    'qt6-svg'
 	'unzip'
 	'xdg-desktop-portal'
 )
