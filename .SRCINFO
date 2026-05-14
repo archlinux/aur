@@ -1,7 +1,7 @@
 pkgbase = proton-meet
 	pkgdesc = Secure, end-to-end encrypted video conferencing
 	pkgver = 1.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://proton.me/meet
 	arch = any
 	license = GPL-3.0-or-later

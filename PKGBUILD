@@ -2,7 +2,7 @@
 
 pkgname=proton-meet
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Secure, end-to-end encrypted video conferencing'
 arch=(any)
 url='https://proton.me/meet'
@@ -36,6 +36,7 @@ prepare() {
     sed -i 's/"applications\/\*",/"applications\/meet-desktop",/' package.json
 
     export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
+    export SENTRYCLI_SKIP_DOWNLOAD=1
     yarn install
 }
 
