@@ -2,8 +2,8 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=17.11.0
-pkgrel=2
+pkgver=17.11.1
+pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=(any)
 url=https://stylelint.io
@@ -17,7 +17,7 @@ makedepends=(
 optdepends=('stylelint-config-standard: for the standard shareable config')
 options=(!emptydirs)
 source=("git+https://github.com/stylelint/stylelint.git#tag=$pkgver")
-b2sums=('d6a956f048966158b49d4e32bc9a7bed4fa6b7781401e8795ea617b5c0c0e40ff347da8d3c5e77e267cc6093c9cbb1c5b57840bc46a0ce1ec67011d9f90c4970')
+b2sums=('06dcba1ad174a7dda08c4e20729d7f34941e77ec638c5d944ed9107eb6c68881314e015b8f0bc97a0df07a7f9ae995318f76f83c286401291ba545b0ea541811')
 
 prepare() {
 	cd $pkgname
