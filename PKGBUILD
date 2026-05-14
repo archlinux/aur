@@ -1,7 +1,7 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-_srcdir=Tide-island-1.0
-pkgver=1.0
+_srcdir=Tide-island-1.0.1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A dynamic island for Hyprland using Quickshell"
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=(
     'quickshell'
 )
 makedepends=('cmake')
+options=('!debug')
 optdepends=(
     'cava: for audio visualizer'
     'imagemagick: for wallpaper thumbnails'
