@@ -1,6 +1,6 @@
 pkgbase = pake-chatgpt
 	pkgdesc = ChatGPT wrapped as a desktop app using Pake
-	pkgver = 3.11.0
+	pkgver = 3.11.5
 	pkgrel = 1
 	url = https://github.com/tw93/Pake
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = pake-chatgpt
 	depends = libayatana-appindicator
 	options = !strip
 	options = !debug
-	source = ChatGPT-3.11.0.deb::https://github.com/tw93/Pake/releases/download/V3.11.0/ChatGPT_x86_64.deb
-	source = LICENSE-3.11.0::https://raw.githubusercontent.com/tw93/Pake/V3.11.0/LICENSE
-	sha256sums = 16b3e52814fb7cfe94c5f33573c956890a0e4515b0d0365e76f9a8dd95bd7238
+	source = ChatGPT-3.11.5.deb::https://github.com/tw93/Pake/releases/download/V3.11.5/ChatGPT_x86_64.deb
+	source = LICENSE-3.11.5::https://raw.githubusercontent.com/tw93/Pake/V3.11.5/LICENSE
+	sha256sums = 1cef9fe8987055486a1859bbf9c95776a7aae31de09fd28cf0b5651e571a701b
 	sha256sums = 462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758
 
 pkgname = pake-chatgpt
