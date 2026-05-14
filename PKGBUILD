@@ -4,7 +4,7 @@
 : "${MAKEPKG_MATLAB_ROOT:=${MAKEPKG_MATLAB_PREFIX}/MATLAB}"
 
 pkgname="matlab-mcp-core-server"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®"
 arch=(
@@ -30,7 +30,7 @@ source=(
   "${pkgname}.sh"
   # "${pkgname}_disable_telemetry.patch"
 )
-sha256sums=('b4514110dd0c4f3d7980b2afb4d31856220fa5a1a07e2109f7bcba6a19723d46'
+sha256sums=('e5a06264044e6b59b5e84f43d5f2eb19113e1f9156a4490da0d3c09af0434aa9'
             '49d0f8ed16c0828abccb82839263013eb86b664340f46352021f9374574143e7')
 
 prepare() {
