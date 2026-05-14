@@ -1,6 +1,6 @@
 pkgbase = pam-parallel-fprint
 	pkgdesc = PAM module allowing for fprintd and password authentication in parallel
-	pkgver = 1.0.0
+	pkgver = r18.d324d2d
 	pkgrel = 1
 	url = https://github.com/SelimCifci/PAM-Parallel-Fprint
 	arch = x86_64
