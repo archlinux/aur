@@ -2,7 +2,7 @@
 
 pkgname=neper
 pkgver=4.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Polycrystal generation and meshing'
 arch=('x86_64')
 url='https://neper.info'
@@ -18,7 +18,8 @@ sha512sums=('48e21f908702550aaf20b5cf8598fdd810fc4103f7725a8d07276cdda98c72a73d9
 build() {
   cmake -S "${pkgname}-${pkgver}"/src \
         -B build \
-        -D CMAKE_INSTALL_PREFIX:PATH=/usr
+        -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+        -D CMAKE_POLICY_VERSION_MINIMUM=3.5
   make -C build
 }
 
