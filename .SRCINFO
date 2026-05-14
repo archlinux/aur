@@ -1,7 +1,7 @@
 pkgbase = claurst-bin
 	pkgdesc = Your Favorite Terminal Coding Agent, now in Rust
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kuberwastaken/claurst
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = claurst-bin
 	makedepends = curl
 	provides = claurst
 	conflicts = claurst
-	source = LICENSE-::https://raw.githubusercontent.com/Kuberwastaken/claurst/v0.1.0/LICENSE.md
+	source = LICENSE-81cbae84a29ce7e770bf2bc7b178e50bda0ce8de6067aba661b0bc7b05b562f8::https://raw.githubusercontent.com/Kuberwastaken/claurst/v0.1.0/LICENSE.md
 	sha256sums = 81cbae84a29ce7e770bf2bc7b178e50bda0ce8de6067aba661b0bc7b05b562f8
 	source_x86_64 = claurst-linux-x86_64-cbe4196619de4985d564ca244ead51a23261fe18c0f84c95633966c83686e96b.tar.gz::https://github.com/Kuberwastaken/claurst/releases/download/v0.1.0/claurst-linux-x86_64.tar.gz
 	sha256sums_x86_64 = cbe4196619de4985d564ca244ead51a23261fe18c0f84c95633966c83686e96b
