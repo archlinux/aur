@@ -1,6 +1,6 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=indi-3rdparty-drivers
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Indi 3rd party drivers"
 arch=(x86_64 aarch64)
@@ -26,7 +26,7 @@ depends_aarch64=(dfu-util
 makedepends=(cmake)
 makedepends_aarch64=(cmake libgpiod)
 source=(https://github.com/indilib/indi-3rdparty/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('2f5f329326bf6e468e6313724679e2934314dcee234715cbc5cac39279142f04')
+sha256sums=('b336df05a4e4313b02264e6cd59ecc78f0b37ac68eb895ffb617ae553a7db12a')
 options=(!lto)
 install=drivers.install
 
@@ -39,8 +39,6 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	-DSKIP_SETCAP=yes \
-	-DUDEVRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
-	-DFIRMWARE_INSTALL_DIR=/usr/lib/firmware \
 	../indi-3rdparty-$pkgver
   make
 }
@@ -48,9 +46,4 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-  mkdir -p "$pkgdir"/usr/lib/firmware
-  mv "$pkgdir"/lib/udev/rules.d/* "$pkgdir"/usr/lib/udev/rules.d
-  rmdir "$pkgdir/lib/udev/rules.d"
-  rmdir "$pkgdir/lib/udev"
-  rmdir "$pkgdir/lib"
 }
