@@ -1,0 +1,15 @@
+pkgbase = fakeapi-git
+	pkgdesc = Customizable local REST API for testing.
+	pkgver = r194.0d9663f
+	pkgrel = 1
+	url = https://github.com/vncsmyrnk/fakeapi
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = go
+	provides = util
+	conflicts = util
+	source = git+https://github.com/vncsmyrnk/fakeapi.git
+	sha256sums = SKIP
+
+pkgname = fakeapi-git
