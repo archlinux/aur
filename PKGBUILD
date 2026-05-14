@@ -15,8 +15,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=25H2u1
-_buildver=25219725
+pkgver=26H1
+_buildver=25388281
 _pkgver=${pkgver}_${_buildver}
 pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
@@ -59,7 +59,7 @@ backup=(
 )
 
 source=(
-  "VMware-Workstation-${pkgver}-${_buildver}.${CARCH}.bundle::https://archive.org/download/VMware-Workstation-Full-${pkgver}-${_buildver}.${CARCH}/VMware-Workstation-Full-${pkgver}-${_buildver}.${CARCH}.bundle"
+  "VMware-Workstation-Full-${pkgver}-${_buildver}.${CARCH}.bundle::https://archive.org/download/VMware-Workstation-Full-${pkgver}-${_buildver}.${CARCH}/VMware-Workstation-Full-${pkgver}-${_buildver}.${CARCH}.bundle"
 
   "https://packages-prod.broadcom.com/tools/frozen/linux/linux.iso"
   "https://packages-prod.broadcom.com/tools/frozen/linux/linuxPreGlibc25.iso"
@@ -88,7 +88,7 @@ source=(
   'vmmon.patch'
   'vmnet.patch'
 )
-sha256sums=('721aa93c4ebcaa51ac6db75ed97c7a4db10aa88110446890db1e40bfafc7566a'
+sha256sums=('3f6d2501e654dbc7701a8290ff6ffcfba6c5444cd5f35f4933cd08c9499f6d84'
             '4e66b286b743d9cf788c487295b1dec3c6071d657674f650aadc23e8900758ff'
             'aef8f747bd9a6e84d139c57b8c1f8e87c83a9b9df69cd09602030190fec21973'
             '2c89993d811f5d90f7b0e2a286e9339907055e51ecb16f25509e5c4517326487'
@@ -186,7 +186,7 @@ prepare() {
   [[ -d "$extracted_dir" ]] && rm -r "$extracted_dir"
 
   bash \
-    "$(readlink -f "$srcdir/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle")" \
+    "$(readlink -f "$srcdir/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle")" \
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
@@ -213,7 +213,6 @@ package() {
     vmware-workstation/share/* \
     vmware-workstation/man \
     vmware-network-editor-ui/share/* \
-    vmware-player-app/share/* \
     "$pkgdir/usr/share"
 
   cp -r \
@@ -221,12 +220,10 @@ package() {
     vmware-vmx/{,s}bin/* \
     vmware-vix-core/bin/* \
     vmware-vprobe/bin/* \
-    vmware-player-app/bin/* \
     "$pkgdir/usr/bin"
 
   cp -r \
     vmware-workstation/lib/* \
-    vmware-player-app/lib/* \
     vmware-vmx/{lib/*,roms} \
     vmware-vprobe/lib/* \
     vmware-usbarbitrator/bin \
@@ -326,7 +323,6 @@ fi
 
   for link in \
     licenseTool \
-    vmplayer \
     vmware \
     vmware-app-control \
     vmware-enter-serial \
@@ -374,7 +370,6 @@ fi
   done
 
   sed -i 's,@@BINARY@@,/usr/bin/vmware,' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
-  sed -i 's,@@BINARY@@,/usr/bin/vmplayer,' "$pkgdir/usr/share/applications/vmware-player.desktop"
   sed -i 's,@@BINARY@@,/usr/bin/vmware-netcfg,' "$pkgdir/usr/share/applications/vmware-netcfg.desktop"
 
   sed \
@@ -424,7 +419,7 @@ fi
 
   # Define some environment variables for VMware and remove the tests about kernel modules
   install -Dm 644 "$srcdir/vmware-environment.sh" "$pkgdir/etc/conf.d/vmware"
-  for program in vmware vmplayer vmware-tray; do
+  for program in vmware vmware-tray; do
     sed -e '/export PRODUCT_NAME/asource /etc/conf.d/vmware' \
         -e 's/if "$BINDIR"\/vmware-modconfig --appname=.*/if true ||/' \
         -i "$pkgdir/usr/bin/$program"
@@ -432,6 +427,5 @@ fi
 
   # Add StartupWMClass attribute to desktop files
   sed -i '/^StartupNotify=.*/a StartupWMClass=vmware' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
-  sed -i '/^StartupNotify=.*/a StartupWMClass=vmplayer' "$pkgdir/usr/share/applications/vmware-player.desktop"
   sed -i '/^StartupNotify=.*/a StartupWMClass=vmware-netcfg' "$pkgdir/usr/share/applications/vmware-netcfg.desktop"
 }
