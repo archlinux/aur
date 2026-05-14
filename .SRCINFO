@@ -1,6 +1,6 @@
 pkgbase = pamtest
 	pkgdesc = PAM-aware program to test PAM modules
-	pkgver = 1.0.0
+	pkgver = r7.88df403
 	pkgrel = 1
 	url = https://github.com/SelimCifci/Pamtest
 	arch = x86_64

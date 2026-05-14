@@ -1,6 +1,6 @@
 # Maintainer: Selim Cifci <cifciselimhasan@gmail.com>
 pkgname=pamtest
-pkgver=0
+pkgver=r7.88df403
 pkgver() {
   cd "$srcdir/Pamtest"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
