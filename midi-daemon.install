@@ -1,0 +1,5 @@
+post_install() {
+    if [[ ! -f /etc/midi-daemon/config.toml ]]; then
+        install -Dm644 /usr/share/doc/midi-daemon/config.toml /etc/midi-daemon/config.toml
+    fi
+}

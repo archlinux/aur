@@ -9,7 +9,7 @@ url="https://github.com/rickprice/midi-daemon"
 license=('BSD-3-Clause')
 depends=('alsa-lib' 'gcc-libs' 'glibc')
 makedepends=('cargo')
-backup=('etc/midi-daemon/config.toml')
+install=midi-daemon.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rickprice/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('665e09a924be99c10d2b44eaa5833b91e7d12535c1c144da0cd6d4e49e10d768')
 
@@ -53,8 +53,7 @@ u midi-daemon - "MIDI Lua Routing Daemon" /var/empty /usr/bin/nologin
 m midi-daemon audio
 EOF
 
-    # System-wide config and empty routes directory
-    install -Dm644 config.toml "$pkgdir/etc/$pkgname/config.toml"
+    # Empty routes directory (config installed by .install script only if absent)
     install -dm755 "$pkgdir/etc/$pkgname/routes.d"
 
     # Sample config
