@@ -1,0 +1,6 @@
+/pkg/
+/renderide-git/
+/src/
+/*.tar.zst
+/*.tar.gz
+/*.tar.xz
