@@ -1,6 +1,6 @@
 # Maintainer: Jack Danger <gzippy@jackdanger.com>
 pkgname=gzippy-replace-gzip
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Replace system gzip/gunzip/zcat with gzippy"
 arch=('any')
