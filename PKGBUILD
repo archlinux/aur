@@ -2,7 +2,7 @@
 pkgname=klickity
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Mechanical keyboard sound simulator for Wayland — Rust+Tauri edition (evdev + PipeWire)"
+pkgdesc="Mechanical keyboard sound simulator for Wayland — Rust+Tauri edition"
 arch=('x86_64')
 url="https://github.com/HikariLucky/klickity"
 license=('MIT')
