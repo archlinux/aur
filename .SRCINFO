@@ -1,0 +1,18 @@
+pkgbase = anisocial-desktop-bin
+	pkgdesc = Desktop-App für AniSocial.de – Die Anime-Community
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/VandoOmi/AniSocialDesktop
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	provides = anisocial-desktop
+	conflicts = anisocial-desktop
+	options = !strip
+	options = !debug
+	source = anisocial-desktop-bin-0.1.1.pacman::https://github.com/VandoOmi/AniSocialDesktop/releases/download/v0.1.1/anisocial-desktop-0.1.1.pacman
+	sha256sums = SKIP
+
+pkgname = anisocial-desktop-bin
