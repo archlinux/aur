@@ -13,7 +13,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=131.0.5877.24
+pkgver=131.0.5877.55
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
@@ -37,7 +37,7 @@ source=(
     "https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${nwjs_ffmpeg_version}/${nwjs_ffmpeg_version}-linux-x64.zip"
 )
 
-sha512sums=('5a01ee6a571c08d967b6f6ce02b5859de964f7a7a688abb309ca6eb4123d7ed95769a2c798e30266c0ce4c0db95bc741f194b324ae1c5bc8895a07985e74a44a'
+sha512sums=('5c5efd7fc85aa3838c9bbf936691da76d69211c1c67bc86993a35ecd03165dd33f109e11084a3f2dd4da2ef87d2482ccedf5de1cc16689c1b2c99e5801d318c8'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
             'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
             'aaaa4435a3b6a08bf8e6ad4802afcbf111c1e8f477054251f031b70ae57ac1234fa19048121d64c878dc3b1de03522ce7ef11a263a86dc7062f643d569ecff82'
