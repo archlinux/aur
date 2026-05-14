@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd
-pkgver=r22.cb98680
+pkgver=r23.9e88b9a
 pkgrel=1
 pkgdesc='Skwd - A Skwd (Quick)shell'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
   'cava'
   'ttf-nerd-fonts-symbols'
   'ttf-roboto'
-  'ttf-material-design-icons-desktop-git'
+  'ttf-material-design-icons-extended'
 )
 
 install="${pkgname}.install"
