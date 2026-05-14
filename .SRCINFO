@@ -11,6 +11,6 @@ pkgbase = vectomancy
 	depends = gcc-libs
 	depends = vulkan-icd-loader
 	source = vectomancy-4.0.2.tar.gz::https://github.com/Xuepoo/vectomancy/archive/refs/tags/v4.0.2.tar.gz
-	sha256sums = 4d0616891dfa9042a41216dd6a7c2fbc403b4b3d597e90bb5b21e04154bab255
+	sha256sums = 04432733c8b2f0373a9c8142c76039f7b43694d3f5ca1af93412d6f612efe64f
 
 pkgname = vectomancy
