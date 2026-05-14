@@ -5,7 +5,7 @@
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('openscenegraph' 'proj' 'fox' 'xerces-c' 'gdal' 'gl2ps' 'flake8' 'autop
 makedepends=('cmake' 'help2man' 'swig' 'gtest' 'gmock' 'python-setuptools' 'python-build' 'eigen' 'jdk-openjdk' 'maven' 'git' 'python-pip')
 source=("https://sumo.dlr.de/releases/${pkgver}/sumo-src-${pkgver}.tar.gz")
 
-sha256sums=('db9dbc5249905bbbff6b6afc2a405f644dd218265c4381d13f3afcadf4e4c943')
+sha256sums=('8befa700b6b0a02c79733e15ad5c891be421a1649ab973d266d2556c9f6f79ff')
 
 prepare() {
     # example tests still fails
