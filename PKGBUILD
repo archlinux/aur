@@ -1,44 +1,89 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
-pkgname=winexe
-pkgver=1.00
-pkgrel=5
-pkgdesc="Remotely execute commands on Windows NT/2000/XP/2003 systems"
-arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/winexe/"
-license=('GPL3')
-depends=('gnutls' 'libsasl' 'popt' 'talloc' 'tdb')
-makedepends=('python2')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "getopts.patch"
-        "gnutls.patch"
-        "gnutls-priority.patch"
-        "pidl.patch")
-md5sums=('48325521ddc40d14087d1480dc83d51e'
-         '30ca08fe03518e9428799187159c78f4'
-         '201d74de823b8b07195a62a5c9e1bfdf'
-         '922f19f7156e9663659b8b51327222cd'
-         '486d86e0f181a844ddbf1e6267098ef3')
+# Maintainer: Rubin Simons <me@rubin55.org>
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/pidl.patch"  
-  cd "source4"
-  patch -Np1 -i "${srcdir}/getopts.patch"
-  patch -Np2 -i "${srcdir}/gnutls.patch"
-  patch -Np2 -i "${srcdir}/gnutls-priority.patch"
-}
+pkgname=winexe
+pkgver=4.24.2
+pkgrel=1
+pkgdesc='Remote Windows command executor via SMB (from samba/examples/winexe)'
+arch=('x86_64')
+url='https://www.samba.org/'
+license=('GPL3')
+
+# ABI lock: winexe links against /usr/lib/samba/lib*-private-samba.so shipped
+# by the official samba package, so the version should match exactly.
+# The "2:" prefix is samba's epoch (it has used epoch=2 since 2012).
+_sambaepoch=2
+depends=("samba=${_sambaepoch}:${pkgver}")
+
+# We use the MSVCRT-targeted mingw-w64 toolchain (from AUR) so the embedded
+# winexesvc.exe service binaries link against msvcrt.dll and therefore run 
+# on every Windows since NT 4.0 SP6. The UCRT-based mingw-w64-gcc in [extra] 
+# would limit support to Windows 10+ (or Vista/7/8 with KB2999226). 
+makedepends=(
+  'mingw-w64-gcc-msvcrt'
+  'perl-parse-yapp'
+  'cmocka'
+  'bison'
+  'flex'
+  'patchelf'
+)
+
+_sambapkg=samba
+source=(
+  "https://download.samba.org/samba/ftp/stable/${_sambapkg}-${pkgver}.tar.gz"
+  "https://download.samba.org/samba/ftp/stable/${_sambapkg}-${pkgver}.tar.asc"
+)
+validpgpkeys=('81F5E2832BD2545A1897B713AA99442FB680B620') # Samba Distribution Verification Key
+sha256sums=('ac24583f271a82ac324f7c6fad7327f65b591ad3492e1dccfee988e2c1c81dd1'
+            'SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/source4"
-  ./autogen.sh
-  PYTHON_VER=2 ./configure --enable-fhs --prefix=/usr
-  make basics
-  make bin/winexe
+  cd "${srcdir}/${_sambapkg}-${pkgver}"
+
+  # Mirror the configure flags from the official Arch `samba` PKGBUILD so the
+  # winexe binary we produce is ABI-compatible with /usr/lib/samba/*.so on
+  # the user's system. The only addition is --with-winexe.
+  local _samba4_idmap_modules=idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2
+  local _samba4_pdb_modules=pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4
+  local _samba4_auth_modules=auth_unix,auth_wbc,auth_server,auth_netlogond,auth_script,auth_samba4
+
+  ./configure --enable-fhs \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --sbindir=/usr/bin \
+    --libdir=/usr/lib \
+    --libexecdir=/usr/lib/samba \
+    --localstatedir=/var \
+    --with-configdir=/etc/samba \
+    --with-lockdir=/var/cache/samba \
+    --with-sockets-dir=/run/samba \
+    --with-piddir=/run \
+    --with-ads \
+    --with-ldap \
+    --with-winbind \
+    --with-acl-support \
+    --with-systemd \
+    --with-pam \
+    --with-pammodulesdir=/usr/lib/security \
+    --private-libraries='!ldb' \
+    --bundled-libraries='!tdb,!talloc,!pytalloc-util,!tevent,!popt,!pyldb-util' \
+    --with-shared-modules="${_samba4_idmap_modules},${_samba4_pdb_modules},${_samba4_auth_modules},vfs_io_uring" \
+    --disable-rpath-install \
+    --with-profiling-data \
+    --with-winexe
+
+  PYTHONHASHSEED=1 ./buildtools/bin/waf build --targets=winexe -j"$(nproc)"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/source4"
-  install -D -m755 bin/winexe "${pkgdir}/usr/bin/winexe"
-}
+  cd "${srcdir}/${_sambapkg}-${pkgver}"
 
-# vim:set ts=2 sw=2 et:
+  install -Dm755 bin/default/examples/winexe/winexe \
+    "${pkgdir}/usr/bin/winexe"
+
+  # The build directory's RUNPATH is baked in; rewrite it to point at the
+  # samba package's private library directory.
+  patchelf --set-rpath /usr/lib/samba "${pkgdir}/usr/bin/winexe"
+
+  install -Dm644 examples/winexe/README \
+    "${pkgdir}/usr/share/doc/${pkgname}/README"
+}

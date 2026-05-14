@@ -1,27 +1,21 @@
 pkgbase = winexe
-	pkgdesc = Remotely execute commands on Windows NT/2000/XP/2003 systems
-	pkgver = 1.00
-	pkgrel = 5
-	url = http://sourceforge.net/projects/winexe/
-	arch = i686
+	pkgdesc = Remote Windows command executor via SMB (from samba/examples/winexe)
+	pkgver = 4.24.2
+	pkgrel = 1
+	url = https://www.samba.org/
 	arch = x86_64
 	license = GPL3
-	makedepends = python2
-	depends = gnutls
-	depends = libsasl
-	depends = popt
-	depends = talloc
-	depends = tdb
-	source = http://downloads.sourceforge.net/project/winexe/winexe-1.00.tar.gz
-	source = getopts.patch
-	source = gnutls.patch
-	source = gnutls-priority.patch
-	source = pidl.patch
-	md5sums = 48325521ddc40d14087d1480dc83d51e
-	md5sums = 30ca08fe03518e9428799187159c78f4
-	md5sums = 201d74de823b8b07195a62a5c9e1bfdf
-	md5sums = 922f19f7156e9663659b8b51327222cd
-	md5sums = 486d86e0f181a844ddbf1e6267098ef3
+	makedepends = mingw-w64-gcc-msvcrt
+	makedepends = perl-parse-yapp
+	makedepends = cmocka
+	makedepends = bison
+	makedepends = flex
+	makedepends = patchelf
+	depends = samba=2:4.24.2
+	source = https://download.samba.org/samba/ftp/stable/samba-4.24.2.tar.gz
+	source = https://download.samba.org/samba/ftp/stable/samba-4.24.2.tar.asc
+	validpgpkeys = 81F5E2832BD2545A1897B713AA99442FB680B620
+	sha256sums = ac24583f271a82ac324f7c6fad7327f65b591ad3492e1dccfee988e2c1c81dd1
+	sha256sums = SKIP
 
 pkgname = winexe
-
