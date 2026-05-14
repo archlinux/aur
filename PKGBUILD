@@ -1,6 +1,6 @@
 # Maintainer: Adria <adria@lightpanda.io>
 pkgname=lightpanda-bin
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="The headless browser designed for AI and data scripting"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('lightpanda')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/lightpanda-io/browser/releases/download/${pkgver}/lightpanda-x86_64-linux")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/lightpanda-io/browser/releases/download/${pkgver}/lightpanda-aarch64-linux")
 
-sha256sums_x86_64=('54beb96ed3f639becc4fd263a6ba0a69b60e5e7e03ef6fe50d9c6347a3ea395d')
-sha256sums_aarch64=('8ca1dbd9afbac368466e95a6087cb2885ca84cdd3c62987179b8b270be120227')
+sha256sums_x86_64=('256f8dcb45676c53c26a2e5a40a9a60d844feb387d7f43c20925982fa2be723a')
+sha256sums_aarch64=('66b06ce2cc067437245934a0782d574691dee63ee1c2cdc7e949b2efce9764c0')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/lightpanda"
