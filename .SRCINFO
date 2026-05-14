@@ -13,6 +13,6 @@ pkgbase = kawai-focus-bin
 	depends = glib2
 	depends = pango
 	source = Kawai-Focus_0.2.0_amd64.deb::https://github.com/Arduinum/kawai-focus-v2/releases/download/0.2.0-alpha.1/Kawai-Focus_0.2.0_amd64.deb
-	sha256sums = 3ff49a4e124daafb5e660738c275b53ccf3116e759cd6cafde8b77b2257799a6
+	sha256sums = 26195884b612cec86389305f4377c30af28b23c780795429d2fa930b811fa386
 
 pkgname = kawai-focus-bin

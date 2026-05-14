@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'libsoup3' 'gtk3' 'cairo' 'gdk-pixbuf2' 'glib2' 'pango
 
 source=("Kawai-Focus_${pkgver}_amd64.deb::https://github.com/Arduinum/kawai-focus-v2/releases/download/${pkgver}-alpha.1/Kawai-Focus_${pkgver}_amd64.deb")
 
-sha256sums=('3ff49a4e124daafb5e660738c275b53ccf3116e759cd6cafde8b77b2257799a6')
+sha256sums=('26195884b612cec86389305f4377c30af28b23c780795429d2fa930b811fa386')
 
 package() {
 
