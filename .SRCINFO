@@ -1,0 +1,13 @@
+pkgbase = spriteglypher
+	pkgdesc = Desktop bitmap font editor with layered effects and PNG atlas export
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/Fluocode/SpriteGlypher
+	arch = x86_64
+	license = GPL-3.0-only
+	license = MIT
+	depends = qt6-base
+	source = spriteglypher-1.0.6.tar.gz::https://github.com/Fluocode/SpriteGlypher/archive/a02029b957ad8dacceda787e1987a1986a9a6836.tar.gz
+	b2sums = 104f0019e61aa33f50c0a51b5991066794aa8f81f64d110455f16ed07ffeb10fc7529f7e8bcc9edb991ec315979aa862cdc32a4c82cc1e8376ff2c15a9f72096
+
+pkgname = spriteglypher
