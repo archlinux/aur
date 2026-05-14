@@ -1,6 +1,6 @@
 # Maintainer: coldbrxthe <rocattjust@gmail.com>
 pkgname=rs-pug-git
-pkgver=r34.613dc67
+pkgver=r37.e7a7779
 pkgrel=1
 pkgdesc="Terminal YouTube music player with mpv, yt-dlp and Lua plugin support"
 arch=('x86_64')
