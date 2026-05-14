@@ -6,7 +6,7 @@
 # Maintainer: Andy Brennan <andy@hund.io>
 
 pkgname=studio-3t
-pkgver=2026.8.0
+pkgver=2026.9.0
 pkgrel=1
 pkgdesc="The Professional Client, IDE and GUI for MongoDB"
 arch=('x86_64')
@@ -19,7 +19,7 @@ replaces=('mongochef')
 
 source=("$pkgname-$pkgver.tar.gz::https://download.studio3t.com/studio-3t/linux/${pkgver}/${pkgname}-linux-x64.tar.gz")
 
-sha256sums=('70606e649912636178844bfd7cec5868492d90e517ec2f1d3af66434dad59991')
+sha256sums=('529c706d24b50d330c605e9aa42589c24262125d5fdd8a8c96845777c6760fcd')
 
 prepare() {
   # Extract, rename and add execution permision
