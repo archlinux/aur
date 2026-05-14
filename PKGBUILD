@@ -4,7 +4,7 @@
 
 _naclsdkver=11 # If not correct, cmake will make a download.
 pkgname=unvanquished
-pkgver=0.56.1
+pkgver=0.56.2
 pkgrel=1
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game that pits aliens against humans'
 arch=(x86_64 aarch64)
@@ -52,11 +52,11 @@ sha256sums=('b6eb6d2f0a45512cb4b67245fc1454c6d8a2d4ea83ce203c06dcacc51ec411fd'
             '562a0c185dfed2b2dee6135a399b18eff0d5bc5380f19a89ba15fc63b6e2827f'
             '0b0bc478ad6e61dd17fdeb3265a6321d0ca2719eca7bbb432a4b4a497c58a7b0'
             '44df664e8737fd543818cebc1e506a33e724fc3fb73eee46813ec3648eff64a0'
-            '9fc190d2e0eca2533c65b5edc3789eadf7da174a67182a99178fd8522ec5b173'
-            '29d88a3c86054d41ad66417a2378e5d67ed9f1e89cfac0e63257e259111c3f70'
-            '844708ddcd31c332b919e3471e459634f08b1a5c75464aa5207efd716848b512'
-            '94c1b332ad7f5f8435c467e3dd6086504e4e8f076d6dd0f49a17157a8292ea08'
-            '1df2146f7f71b59a92601b6d6ced105de952427dba5837b3725946055ab8b481'
+            'd727baa67b19c69c65c155050bd9222c1fec7912c8c90f636036942ae4e6273e'
+            '6f03358ca6fd523ee7accf9510e80445e0ed88b8845b9b34c3555bd889dbb9ed'
+            'b6e25aed236ec681856d875aa5057a15ce2b86737bd08e89d6af3864745ca2a9'
+            '1863f38c82c172ed2902e6b8201d7df86b298bcc9c415589bbf9b1e306b4851c'
+            '3bb68dcb6537081da4d972d5289fb217a023796c27e4a20807c16f152337c0b7'
             '970e997ccf50a2155fe68a35f9abf2c5c5967cb5686a4855baf0cca89235d28c')
 
 # The prepare function mimics the git submodule dance.
