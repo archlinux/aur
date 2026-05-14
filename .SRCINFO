@@ -17,7 +17,6 @@ pkgbase = perl-data-serializer
 	optdepends = perl-bencode
 	optdepends = perl-config-general
 	optdepends = perl-convert-bencode
-	optdepends = perl-convert-bencode_xs
 	optdepends = perl-crypt-blowfish
 	optdepends = perl-crypt-cbc
 	optdepends = perl-data-denter

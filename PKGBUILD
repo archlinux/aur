@@ -24,11 +24,11 @@ makedepends=(
     'perl-test-simple'
 )
 optdepends=(
-    #'perl-compress-ppmd'  # Compress-PPMd dist does not exist on CPAN anymore.
     'perl-bencode'
+    #'perl-compress-ppmd'  # Compress-PPMd dist does not exist on CPAN anymore.
     'perl-config-general'
     'perl-convert-bencode'
-    'perl-convert-bencode_xs'
+    #'perl-convert-bencode_xs'  # Failing its tests.
     'perl-crypt-blowfish'
     'perl-crypt-cbc'
     'perl-data-denter'
