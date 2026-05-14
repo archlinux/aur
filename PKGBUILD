@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta
-pkgver=6.6
-pkgrel=2
+pkgver=6.7
+pkgrel=1
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
@@ -63,6 +63,7 @@ depends=(aurorae
          print-manager
          spectacle
          systemsettings
+         union
          xdg-desktop-portal-kde
 )
 optdepends=('breeze-grub: Breeze theme for GRUB'

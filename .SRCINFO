@@ -1,7 +1,7 @@
 pkgbase = plasma-meta
 	pkgdesc = Meta package to install KDE Plasma
-	pkgver = 6.6
-	pkgrel = 2
+	pkgver = 6.7
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = any
 	license = None
@@ -60,6 +60,7 @@ pkgbase = plasma-meta
 	depends = print-manager
 	depends = spectacle
 	depends = systemsettings
+	depends = union
 	depends = xdg-desktop-portal-kde
 	optdepends = breeze-grub: Breeze theme for GRUB
 	optdepends = breeze-plymouth: Breeze theme for Plymouth
