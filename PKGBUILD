@@ -1,5 +1,4 @@
 # Maintainer: eloudo <https://codeberg.org/eloudo>
-# Contributor: eloudo
 # Contributor: litame
 
 pkgname=fortune-mod-leftism-fr-git
