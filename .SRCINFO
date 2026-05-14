@@ -1,6 +1,6 @@
 pkgbase = gzippy-bin
 	pkgdesc = The fastest gzip implementation — drop-in replacement for gzip/gunzip/zcat
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/JackDanger/gzippy
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = gzippy-bin
 	optdepends = gzippy-replace-gzip: replace system gzip/gunzip/zcat with gzippy
 	provides = gzippy
 	conflicts = gzippy
-	source_x86_64 = gzippy-x86_64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.7.1/gzippy-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 8a3a004d2fbfe17742d313a6e37f4bafa06d967be1280d0e66e4f4fd672c4032
-	source_aarch64 = gzippy-aarch64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.7.1/gzippy-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 0cdefd1ddd82d0ac741aaeacb3a0cdbebd3853b874b078749d94e8dbd5c9697e
+	source_x86_64 = gzippy-x86_64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.8.0/gzippy-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 42cfe9c75e7b510ef7643e74fe5a771433a594f4c9d5ab56b4ad9980e0fb7e40
+	source_aarch64 = gzippy-aarch64-unknown-linux-gnu.tar.gz::https://github.com/JackDanger/gzippy/releases/download/v0.8.0/gzippy-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 177e5ccd3abab14c066b01f74eb6e3de2e6dfba83cd2bbd87d77dbd96c5e5b81
 
 pkgname = gzippy-bin
