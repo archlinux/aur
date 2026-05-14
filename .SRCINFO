@@ -1,11 +1,12 @@
 pkgbase = epoxy-git
 	pkgdesc = SmartBox-compatible open source tool for signing ePorezi tax forms
-	pkgver = 0.4.0.r1.geb7350a
+	pkgver = 0.4.1.r0.g67a48ec
 	pkgrel = 1
 	url = https://github.com/semyon2105/epoxy
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = patchelf
 	depends = gtk4
 	depends = libxml2
 	depends = nspr

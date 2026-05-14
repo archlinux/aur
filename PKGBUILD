@@ -2,14 +2,14 @@
 
 _pkgname=epoxy
 pkgname=$_pkgname-git
-pkgver=0.4.0.r1.geb7350a
+pkgver=0.4.1.r0.g67a48ec
 pkgrel=1
 pkgdesc='SmartBox-compatible open source tool for signing ePorezi tax forms'
 arch=('x86_64')
 url='https://github.com/semyon2105/epoxy'
 license=('MIT')
 depends=('gtk4' 'libxml2' 'nspr' 'nss' 'xmlsec')
-makedepends=('cargo')
+makedepends=('cargo' 'patchelf')
 optdepends=(
     'srb-id-pkcs11: Serbian ID card support (unofficial)'
 )
@@ -44,6 +44,16 @@ check() {
 
 package() {
     cd "$srcdir/$_pkgname"
+
+    # patch the binary to use xmlsec link name w/o major version as SONAME
+    # to avoid having to rebuild epoxy on each xmlsec1 upgrade
+    xmlsec_linkname="libxmlsec1.so"
+    xmlsec_soname=$(readelf -d "/usr/lib/$xmlsec_linkname" | awk '/SONAME/ {print $NF}' | tr -d '[]')
+    patchelf --replace-needed $xmlsec_soname $xmlsec_linkname "target/release/$_pkgname"
+
+    xmlsec_nss_linkname="libxmlsec1-nss.so"
+    xmlsec_nss_soname=$(readelf -d "/usr/lib/$xmlsec_nss_linkname" | awk '/SONAME/ {print $NF}' | tr -d '[]')
+    patchelf --replace-needed $xmlsec_nss_soname $xmlsec_nss_linkname "target/release/$_pkgname"
 
     install -Dm0755 "target/release/$_pkgname" -t "$pkgdir/usr/bin/"
     install -Dm644 "epoxy/systemd/epoxy.service" -t "$pkgdir/usr/lib/systemd/user/"
