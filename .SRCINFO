@@ -1,0 +1,23 @@
+pkgbase = mechclick
+	pkgdesc = Mechanical keyboard sound simulator for Wayland (read-only evdev + PipeWire)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HikariLucky/mechclick
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-evdev
+	depends = python-numpy
+	depends = python-sounddevice
+	depends = python-soundfile
+	depends = pipewire
+	optdepends = wpctl: PipeWire volume control
+	optdepends = pactl: PulseAudio control
+	optdepends = fish: shell integration for PATH
+	source = git+https://github.com/HikariLucky/mechclick.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = mechclick
