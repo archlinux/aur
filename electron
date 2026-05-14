@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-name=electron43
+name=electron44
 flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/${name}-flags.conf"
 fallback_file="${XDG_CONFIG_HOME:-$HOME/.config}/electron-flags.conf"
 
