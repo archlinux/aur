@@ -1,0 +1,28 @@
+From 48e78d9e18fe57e3b0599274d3be63dbd55ffaad Mon Sep 17 00:00:00 2001
+From: Raidriar <raidriar@noreply.codeberg.org>
+Date: Wed, 13 May 2026 21:07:20 -0700
+Subject: [PATCH] Append AUR to identifier
+
+---
+ crates/renderide/src/frontend/dispatch/ipc_init.rs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/crates/renderide/src/frontend/dispatch/ipc_init.rs b/crates/renderide/src/frontend/dispatch/ipc_init.rs
+index 2645526b..01499228 100644
+--- a/crates/renderide/src/frontend/dispatch/ipc_init.rs
++++ b/crates/renderide/src/frontend/dispatch/ipc_init.rs
+@@ -21,9 +21,9 @@ static RENDERER_IDENTIFIER: LazyLock<String> = LazyLock::new(|| {
+     let version = env!("CARGO_PKG_VERSION");
+     let commit = env!("RENDERIDE_GIT_COMMIT");
+     if commit.is_empty() {
+-        format!("Renderide {version}")
++        format!("Renderide {version} (AUR)")
+     } else {
+-        format!("Renderide {version}-{commit}")
++        format!("Renderide {version}-{commit} (AUR)")
+     }
+ });
+ 
+-- 
+2.54.0
+
