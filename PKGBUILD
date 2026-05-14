@@ -5,7 +5,7 @@ _pkgname=cliamp
 pkgname=${_pkgname}-bin
 pkgdesc="A retro terminal music player inspired by Winamp 2.x"
 
-pkgver=1.49.0
+pkgver=1.50.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,9 +27,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
 sha256sums=('57764ebae827c1c96dc5c1b74e2579ff34d3abcaabb54f5e5498fb2f612330cc'
-            '5120c1bb1e512b4e6dc950a0e4a8f5b421cfb916de3453c83f2e6c65961daef8')
-sha256sums_x86_64=('96f14cd6a2cae83eeb48285328293d493399ed16dae828138cb4d8f24e0c1901')
-sha256sums_aarch64=('17a0fe26fdcd6e827b14fdff86dac326733090667db17c3c3f5c35108f72b390')
+            '36c42efc793f2bf97cc92d38c0cc047885339571bd2e1327c4a7d6e71b8814f5')
+sha256sums_x86_64=('490a210d3893a306d11d173432ec0aa2151cbded41962c58552e4489e812ce39')
+sha256sums_aarch64=('bbaca6cd2d28ab4b3f687ef9b4b20bb7eb71ec86944abeea640cf47d3ff0ceeb')
 
 
 package() {
