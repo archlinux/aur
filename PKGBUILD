@@ -1,21 +1,23 @@
+# Maintainer: Jakub Smulski <hgonomeg@gmail.com>
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
+
 pkgname=libclipper
 _pkgver_base=2.1
-pkgver=2.1.20180802
+pkgver=2.1.20260505
 _url=http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/
 _pkgname=clipper
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of object-oriented libraries for the organisation of crystallographic data"
 arch=('i686' 'x86_64')
 url="http://www.ysbl.york.ac.uk/~cowtan/clipper/clipper.html"
 license=('LGPL')
 makedepends=('gcc-fortran')
 depends=('libccp4>=6.5.1-6' 'mmdb2>=2.0.19-1' 'fftw2-float' 'libssm')
-source=(https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/$_pkgname-$pkgver.tar.gz
-	clipper-configure-2.patch)
+source=(https://ccp4forge.rc-harwell.ac.uk/ccp4/clipper/-/archive/$_pkgver_base/clipper-$_pkgver_base.tar.gz
+	    clipper-configure-2.patch)
 
-sha256sums=('7c7774f224b59458e0faa104d209da906c129523fa737e81eb3b99ec772b81e0'
-            '3cf0a68163451773e9764c11c740fcbd1a91daf9d5782d94049b90f3cd1fe5ae')
+sha256sums=('7e00a954b1501c28ad82ab17b53a9e01d98077f390d32f761810a9e3bcd43857'
+            '3360bd62d5902ef6a740be02708d1a504c63ace3cf351ef380d1934111ef6978')
 
 prepare() {
     cd "$srcdir/$_pkgname-$_pkgver_base"

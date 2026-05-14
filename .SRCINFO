@@ -1,7 +1,7 @@
 pkgbase = libclipper
 	pkgdesc = A set of object-oriented libraries for the organisation of crystallographic data
-	pkgver = 2.1.20180802
-	pkgrel = 3
+	pkgver = 2.1.20260505
+	pkgrel = 5
 	url = http://www.ysbl.york.ac.uk/~cowtan/clipper/clipper.html
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,9 @@ pkgbase = libclipper
 	depends = mmdb2>=2.0.19-1
 	depends = fftw2-float
 	depends = libssm
-	source = https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/clipper-2.1.20180802.tar.gz
+	source = https://ccp4forge.rc-harwell.ac.uk/ccp4/clipper/-/archive/2.1/clipper-2.1.tar.gz
 	source = clipper-configure-2.patch
-	sha256sums = 7c7774f224b59458e0faa104d209da906c129523fa737e81eb3b99ec772b81e0
-	sha256sums = 3cf0a68163451773e9764c11c740fcbd1a91daf9d5782d94049b90f3cd1fe5ae
+	sha256sums = 7e00a954b1501c28ad82ab17b53a9e01d98077f390d32f761810a9e3bcd43857
+	sha256sums = 3360bd62d5902ef6a740be02708d1a504c63ace3cf351ef380d1934111ef6978
 
 pkgname = libclipper
-
