@@ -8,7 +8,7 @@ pkgbase = smart-updater
 	depends = python
 	depends = python-pyqt6
 	depends = pacman-contrib
-	source = https://github.com/UniqueSpirit/smart-updater/archive/refs/heads/main.zip
+	source = smart-updater-1.1.0_alpha.zip::https://github.com/UniqueSpirit/smart-updater/archive/refs/heads/main.zip
 	sha256sums = 76501e54478d7d3febf4207dd8d3490b3cbfeae6843527578c30330eafb5c7bd
 
 pkgname = smart-updater
