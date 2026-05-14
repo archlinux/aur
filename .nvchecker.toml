@@ -1,0 +1,4 @@
+[python-pyriemann]
+source = "git"
+git = "https://github.com/pyRiemann/pyRiemann.git"
+prefix = "v"
