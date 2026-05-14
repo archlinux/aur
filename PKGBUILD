@@ -6,7 +6,7 @@
 _reponame=passwordmanager
 pkgname=mingw-w64-passwordmanager
 _name=${pkgname#mingw-w64-}
-pkgver=4.2.7
+pkgver=4.3.0
 pkgrel=1
 arch=('any')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL (mingw-w64)'
