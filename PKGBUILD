@@ -3,7 +3,7 @@
 
 pkgname=proton-mail
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=(any)
 url='https://proton.me/mail'
@@ -42,6 +42,7 @@ prepare() {
     sed -i 's/"applications\/\*",/"applications\/inbox-desktop",/' package.json
 
     export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
+    export SENTRYCLI_SKIP_DOWNLOAD=1
     yarn install
 }
 

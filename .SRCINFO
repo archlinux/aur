@@ -1,7 +1,7 @@
 pkgbase = proton-mail
 	pkgdesc = Proton official desktop application for Proton Mail and Proton Calendar
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proton.me/mail
 	arch = any
 	license = GPL-3.0-or-later
