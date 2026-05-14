@@ -1,8 +1,8 @@
 # Maintainer: gustavojoaquin <gustavojoaquincalizayaleon2@gmail.com>
 pkgname=lm-studio
-pkgver=0.4.12
+pkgver=0.4.13
 pkgrel=1
-pkgdesc="LM Studio - A desktop app for exploring and running large language models locally"
+pkgdesc="LM Studio - .deb based version"
 arch=('x86_64')
 url="https://lmstudio.ai"
 license=('0BSD')
@@ -10,7 +10,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 options=('!strip')
 _pkgver=${pkgver}-${pkgrel}
 source=("https://installers.lmstudio.ai/linux/x64/${_pkgver}/LM-Studio-${_pkgver}-x64.deb")
-sha256sums=('9ef194296ccbcb6aae38525654a84f4888e6c95ef83c3819b261fa0d7f43e4aa')
+sha256sums=('6c4f4c2ce66b1ddd92d91802560b1555c0d4a3483fb72400367464a6d819fcdd')
 
 package() {
   tar -xJf data.tar.xz -C "${pkgdir}"
