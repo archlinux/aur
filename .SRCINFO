@@ -1,6 +1,6 @@
 pkgbase = proton-pass-git
 	pkgdesc = Proton official password manager
-	pkgver = 1.34.0.r53453.5d85ec7
+	pkgver = 1.36.1.r59198.g0fa8804
 	pkgrel = 1
 	url = https://proton.me/pass
 	arch = x86_64

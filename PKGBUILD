@@ -2,7 +2,7 @@
 
 pkgname=proton-pass-git
 _name=${pkgname%-git}
-pkgver=1.34.0.r53453.5d85ec7
+pkgver=1.36.1.r59198.g0fa8804
 pkgrel=1
 pkgdesc='Proton official password manager'
 arch=('x86_64')
@@ -22,7 +22,7 @@ b2sums=('SKIP'
 
 pkgver() {
     cd ProtonWebClients
-    printf "%s.r%s.%s" \
+    printf "%s.r%s.g%s" \
         "$(jq -r '.version' applications/pass-desktop/package.json)" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short=7 HEAD)"
@@ -53,13 +53,15 @@ prepare() {
     # Fix tray icon path to use app directory
     sed -i "s/app.isPackaged ? process.resourcesPath : app.getAppPath()/require('path').dirname(app.getAppPath())/" \
         applications/pass-desktop/src/main.ts
+
+    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
+    export SENTRYCLI_SKIP_DOWNLOAD=1
+    yarn install
 }
 
 build() {
     cd ProtonWebClients
-    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
     export RUSTUP_TOOLCHAIN=stable
-    yarn install
     yarn workspace proton-pass-desktop build:desktop
 }
 
