@@ -1,6 +1,6 @@
-# Maintainer: Sovetchat <support@sovetchat.ru>
+# Maintainer: LurkHub <LurkHub@yandex.ru>
 pkgname=sovet
-pkgver=2.15.5
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="ЗАЩИЩЕННЫЙ МЕССЕНДЖЕР // АНОНИМНОСТЬ И БЕЗОПАСНОСТЬ"
 arch=('x86_64')
@@ -8,24 +8,38 @@ url="https://sovetchat.ru"
 license=('custom')
 depends=('fuse2')
 options=('!strip')
-source_x86_64=("Soviet_2.15.5_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_2.15.5_amd64.AppImage")
-sha256sums_x86_64=('911a37df8c0fd1b5726d7c99aaa9e7afb1933ad5c37f6d61508f9e8fc28de0e9')
+source_x86_64=("Soviet_${pkgver}_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_${pkgver}_amd64.AppImage")
+sha256sums_x86_64=('f030d816fbfb72508ac9a835d49c296b6c59ee9832b4ce7d67935235f39eb468')
+
+prepare() {
+    chmod +x "Soviet_${pkgver}_amd64.AppImage"
+    ./"Soviet_${pkgver}_amd64.AppImage" --appimage-extract >/dev/null 2>&1
+}
 
 package() {
-    install -d -m0777 "${pkgdir}/opt/Soviet"
-    install -Dm777 "${srcdir}/Soviet_2.15.5_amd64.AppImage" "${pkgdir}/opt/Soviet/Soviet.AppImage"
+    install -dm777 "${pkgdir}/opt/sovet"
+    install -Dm755 "Soviet_${pkgver}_amd64.AppImage" "${pkgdir}/opt/sovet/sovet.AppImage"
+    chmod 777 "${pkgdir}/opt/sovet/sovet.AppImage"
 
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -sf /opt/Soviet/Soviet.AppImage "${pkgdir}/usr/bin/sovet"
+    # Иконка
+    install -Dm644 squashfs-root/sovietmsg.png \
+        "${pkgdir}/usr/share/pixmaps/sovet.png"
 
-    mkdir -p "${pkgdir}/usr/share/applications"
-    cat > "${pkgdir}/usr/share/applications/sovet.desktop" << 'DESKTOP'
+    # Ярлык в меню
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/sovet.desktop" << EOF
 [Desktop Entry]
 Name=Совет
 Comment=ЗАЩИЩЕННЫЙ МЕССЕНДЖЕР
-Exec=/usr/bin/sovet
+Exec=/opt/sovet/sovet.AppImage
 Icon=sovet
 Type=Application
 Categories=Network;Chat;
-DESKTOP
+StartupWMClass=sovietmsg
+EOF
+
+    # Обёртка в PATH
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/sovet" << 'EOF'
+#!/bin/bash
+exec /opt/sovet/sovet.AppImage "$@"
+EOF
 }
