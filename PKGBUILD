@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=authme-bin
 _pkgname=Authme
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="Simple cross-platform two-factor (2FA) authenticator app for desktop.(Prebuilt version)"
 arch=('x86_64')
@@ -17,16 +17,17 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.deb"
 )
-sha256sums=('00fb544dde315fe097a51ead868587a8628094f02a00688e455d5928050c96b8')
+sha256sums=('181823bcb07b480b557cc7b20ee1e9e47775a0fb4ad5337c5f9212923281dedf')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    _icon_sizes=(32x32 128x128 256x256@2)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
 }
