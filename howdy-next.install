@@ -1,0 +1,8 @@
+post_install() {
+	echo '[SETUP] 1. Download OpenCV face models using `sudo howdy download-models`'
+	echo '[SETUP] 2. Set a correct video device using `sudo howdy config`'
+	echo '[SETUP] 3. Test settings with `sudo howdy test`'
+	echo '[SETUP] 4. Add face model with `sudo howdy add`'
+	echo '[SETUP] 5. Add PAM policy `auth sufficient pam_howdy.so` to e.g. top of `/etc/pam.d/system-auth` (global auth)'
+	echo '[INFO] List of available video devices can be obtained with `v4l2-ctl --list-devices` from `v4l-utils` package'
+}
