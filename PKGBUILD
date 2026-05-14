@@ -3,7 +3,7 @@
 
 pkgname=proton-mail-git
 _name=${pkgname%-git}
-pkgver=1.12.1.r58282.0ff71a5
+pkgver=1.12.1.r59198.g0fa8804
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=(any)
@@ -25,7 +25,7 @@ b2sums=('SKIP'
 
 pkgver() {
     cd ProtonWebClients
-    printf "%s.r%s.%s" \
+    printf "%s.r%s.g%s" \
         "$(jq -r '.version' applications/inbox-desktop/package.json)" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short=7 HEAD)"
@@ -53,6 +53,7 @@ prepare() {
     sed -i 's/"applications\/\*",/"applications\/inbox-desktop",/' package.json
 
     export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
+    export SENTRYCLI_SKIP_DOWNLOAD=1
     yarn install
 }
 
