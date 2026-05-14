@@ -2,11 +2,13 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: James Groom <OSSYoshiRulz at gmail dot com>
 
-pkgname="bizhawk-bin"
+_pkgname=bizhawk
+pkgname="${_pkgname}-bin"
+
 pkgdesc="A multi-platform emulator with full re-recording support and Lua scripting"
 
-pkgver=2.11
-pkgrel=2
+pkgver=2.11.1
+pkgrel=1
 
 arch=(x86_64)
 
@@ -16,49 +18,49 @@ license=("LicenseRef-BizHawk" "MIT")
 depends=(glibc mono openal "lua>=5.4" lsb-release)
 makedepends=(gendesk icoutils)
 
-provides=(bizhawk)
+provides=("${_pkgname}")
 
 source=(
 	"https://github.com/TASEmulators/BizHawk/releases/download/${pkgver}/BizHawk-${pkgver}-linux-x64.tar.gz"
-	"LICENSE.bizhawk::https://raw.githubusercontent.com/TASEmulators/BizHawk/${pkgver}/LICENSE"
+	"LICENSE.${_pkgname}::https://raw.githubusercontent.com/TASEmulators/BizHawk/${pkgver}/LICENSE"
 )
-md5sums=("23c56e8016aff7ef377b9f4cfcd54d03" "2d15d8df1b4ec039a8fac3202a418a3c")
+md5sums=("73de6ee8954e51cefe72b5796261833c" "2d15d8df1b4ec039a8fac3202a418a3c")
 
 options=(!strip !emptydirs)
-install="${pkgname}.install"
+install="${_pkgname}.install"
 
 prepare() {
-	# extract the icon out of the executable
+	# extract icon out of executable
 	wrestool -x -R -n 6 "BizHawk-${pkgver}-linux-x64/EmuHawk.exe" -o icon.png
 
-	# generate a .desktop file
+	# generate .desktop file
 	gendesk -f -n \
 		--pkgname BizHawk \
 		--pkgdesc "${pkgdesc}" \
-		--exec bizhawk \
-		--icon bizhawk.png \
+		--exec "${_pkgname}" \
+		--icon "${_pkgname}.png" \
 		--categories "Game;Emulator"
 }
 
 package() {
-	# move to the source directory
+	# move to source directory
 	cd "BizHawk-${pkgver}-linux-x64"
 
-	# copy all files to the package directory
-	find . -type d -exec install -Dm775 -ggames -d "${pkgdir}/opt/bizhawk/{}" \;
+	# copy all files to package directory
+	find . -type d -exec install -Dm775 -ggames -d "${pkgdir}/opt/${_pkgname}/{}" \;
 	find . -type f \
 		-not -name EmuHawkMono.sh \
-		-exec install -Dm664 -ggames "{}" "${pkgdir}/opt/bizhawk/{}" \;
+		-exec install -Dm664 -ggames "{}" "${pkgdir}/opt/${_pkgname}/{}" \;
 
-	install -Dm775 -ggames EmuHawkMono.sh "${pkgdir}/opt/bizhawk/EmuHawkMono.sh"
+	install -Dm775 -ggames EmuHawkMono.sh "${pkgdir}/opt/${_pkgname}/EmuHawkMono.sh"
 
-	# copy the icon and the .desktop file
-	install -Dm644 ../icon.png "${pkgdir}/usr/share/pixmaps/bizhawk.png"
-	install -Dm644 ../BizHawk.desktop "${pkgdir}/usr/share/applications/bizhawk.desktop"
+	# copy icon and .desktop file
+	install -Dm644 ../icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 ../BizHawk.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-	# create a symlink to the executable
-	mkdir -p "${pkgdir}/usr/bin" && ln -s /opt/bizhawk/EmuHawkMono.sh "${pkgdir}/usr/bin/bizhawk"
+	# create symlink to executable
+	mkdir -p "${pkgdir}/usr/bin" && ln -s "/opt/${_pkgname}/EmuHawkMono.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
-	# copy the license file
-	install -Dm644 ../LICENSE.bizhawk "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	# copy license file
+	install -Dm644 ../"LICENSE.${_pkgname}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
