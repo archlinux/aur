@@ -1,11 +1,12 @@
 pkgbase = fcp
 	pkgdesc = A significantly faster alternative to the classic Unix cp(1) command
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svetlitski/fcp
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
+	checkdepends = expect
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc

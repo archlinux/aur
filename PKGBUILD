@@ -2,7 +2,7 @@
 
 pkgname="fcp"
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A significantly faster alternative to the classic Unix cp(1) command"
 arch=(
   'aarch64'
@@ -18,6 +18,9 @@ depends=(
 )
 makedepends=(
   'cargo'
+)
+checkdepends=(
+  'expect'
 )
 _pkgsrc="${url##*/}-${pkgver}"
 source=(
