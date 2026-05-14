@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='carapace-bin'
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='A multi-shell completion binary'
 url='https://github.com/carapace-sh/carapace-bin'
@@ -13,13 +13,13 @@ conflicts=('carapace')
 optdepends=('carapace-aws-bin: for enriched aws completion')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/carapace-sh/carapace-bin/releases/download/v${pkgver}/carapace-bin_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('6cd10d6b41322a7f3bc1688ed25ebcdee9849a293efaedf36523a1df2d81b1d0')
+sha256sums_aarch64=('f490222ed2e0e45bb0418ee90ace8d310c52a5e3223fdcdc0c767324ace4d72b')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/carapace-sh/carapace-bin/releases/download/v${pkgver}/carapace-bin_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('e3057f8f334308466deff61f4b9c924e58808319ca86ebf0c6f65b923b35fc4f')
+sha256sums_i686=('dc0936bdb741a7181569736b63e732f946de200f2791ab22600fab3de6e0fc21')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/carapace-sh/carapace-bin/releases/download/v${pkgver}/carapace-bin_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('02bd7c8975d590c04fdea1fe0ae918f616c53b1c5e0b723deb798efa8504d812')
+sha256sums_x86_64=('e31c8a30531ba03bff4085d8aefc277f0e518c6dc525f42e733f31ad5f5f776b')
 
 package() {
   install -Dm755 "./carapace" "${pkgdir}/usr/bin/carapace"
