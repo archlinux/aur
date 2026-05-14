@@ -1,7 +1,7 @@
 pkgbase = rf
 	pkgdesc = a suckless and minimal, POSIX C99 alternative to Makefiles!
 	pkgver = 1.2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kuronavipad.xantu-ling.ts.net/cgit/rfile.git
 	arch = any
 	license = MIT
