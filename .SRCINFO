@@ -1,6 +1,6 @@
 pkgbase = myapps
 	pkgdesc = Linux package manager overview with GTK4 + Libadwaita
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/nicolettas-muggelbude/myapps
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = myapps
 	depends = libadwaita
 	depends = python-pillow
 	depends = hicolor-icon-theme
-	source = myapps-1.0.4.tar.gz::https://github.com/nicolettas-muggelbude/myapps/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = ae682769db457c48dc529582fabaeb92d5fa1b353d7930f69bec3d36bd63eea6
+	source = myapps-1.0.5.tar.gz::https://github.com/nicolettas-muggelbude/myapps/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = 36979b3b36fdc28c70ef331ffcfc86cd72fb071225643b17134ab6891df3644c
 
 pkgname = myapps
