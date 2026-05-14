@@ -1,7 +1,7 @@
 pkgbase = radii5-bin
 	pkgdesc = CLI music downloader powered by yt-dlp with parallel chunk downloading and automatic ID3 tagging
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/src3s/music
 	arch = x86_64
 	arch = aarch64
@@ -13,11 +13,11 @@ pkgbase = radii5-bin
 	conflicts = radii5
 	source = README-1.0.0.md::https://raw.githubusercontent.com/src3s/music/v1.0.0/README.md
 	source = LICENSE-1.0.0::https://raw.githubusercontent.com/src3s/music/v1.0.0/LICENSE
-	sha256sums = 798e6c52e3afece7dd5215ce89133f942d0604cb4b8e1f9543ff7d53d55d4895
+	sha256sums = cb77c98e3a901d04d641b0afb16d4ddda1dd75ec54e4c9a9450b13352a1c56db
 	sha256sums = 9627c457ca1df2d8ddf7f6400d98854eb1e47476998abd01ad40160e162c8ad5
 	source_x86_64 = radii5-x86_64-1.0.0::https://github.com/src3s/music/releases/download/v1.0.0/radii5-linux-amd64
-	sha256sums_x86_64 = 32005977f7d21f2663201f7c55b9230c8be7c73fd40c46497e8d95c2417616a2
+	sha256sums_x86_64 = 07ba070f3091a5779b0525eec2870a35e1682443a08a0ab5afa6e6d3a52ded3d
 	source_aarch64 = radii5-aarch64-1.0.0::https://github.com/src3s/music/releases/download/v1.0.0/radii5-linux-arm64
-	sha256sums_aarch64 = 0c966d022e655849079dd438137ea2176691bd8154515ac1f3624a8e618028d6
+	sha256sums_aarch64 = 198fef730650b7fb10106aa87960a58da3bdb1c4d216353b7325bfad5e1a64b4
 
 pkgname = radii5-bin
