@@ -1,0 +1,20 @@
+pkgbase = calendar-git
+	pkgdesc = Terminal calendar with Omarchy theme integration
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/baltavay/calendar.cr
+	arch = x86_64
+	license = MIT
+	makedepends = crystal
+	makedepends = shards
+	makedepends = git
+	depends = pcre2
+	depends = libevent
+	depends = gc
+	depends = gcc-libs
+	provides = calendar
+	conflicts = calendar
+	source = git+https://github.com/baltavay/calendar.cr.git
+	sha256sums = SKIP
+
+pkgname = calendar-git
