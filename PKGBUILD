@@ -1,50 +1,79 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
 
-pkgname='perl-data-serializer'
-pkgver='0.60'
-pkgrel='1'
-pkgdesc="Modules that serialize data structures"
+_author=NEELY
+_dist=Data-Serializer
+pkgname=perl-${_dist@L}
+pkgver=0.65
+pkgrel=1
+pkgdesc='Modules that serialize data structures'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-autoloader'
+    'perl-data-dumper>=2.08'
+    'perl-digest-sha'
+    'perl-exporter'
+    'perl-io'
+)
+makedepends=(
+    'perl-module-build>=0.35'
+    'perl-pathtools'
+    'perl-test-simple'
+)
+optdepends=(
+    #'perl-compress-ppmd'  # Compress-PPMd dist does not exist on CPAN anymore.
+    'perl-bencode'
+    'perl-config-general'
+    'perl-convert-bencode'
+    'perl-convert-bencode_xs'
+    'perl-crypt-blowfish'
+    'perl-crypt-cbc'
+    'perl-data-denter'
+    'perl-data-taxi'
+    'perl-freezethaw'
+    'perl-io-compress'
+    'perl-json'
+    'perl-json-xs'
+    'perl-mime-base64'
+    'perl-php-serialization'
+    'perl-storable'
+    'perl-xml-dumper'
+    'perl-xml-simple'
+    'perl-yaml'
+    'perl-yaml-syck'
+)
 options=('!emptydirs')
-depends=('perl')
-makedepends=()
-url='http://search.mcpan.org/dist/Data-Serializer'
-source=('http://search.mcpan.org/CPAN/authors/id/N/NE/NEELY/Data-Serializer-0.60.tar.gz')
-md5sums=('6ca3a58bad4691938b485b9c800aa5cc')
-sha512sums=('85211d2ca5db19219f89da5300b93835866baa5e12237efa61ea82d2b841f6b5a05bca889d98878151d1f7517b2af5d9a1535e7bbcd64245936b270a82be21bb')
-_distdir="Data-Serializer-0.60"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('12155a5200033d80a5f07573775f493f170072cf7b28ae3ca2d152b591971f11')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:

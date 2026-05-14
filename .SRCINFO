@@ -1,16 +1,40 @@
 pkgbase = perl-data-serializer
 	pkgdesc = Modules that serialize data structures
-	pkgver = 0.60
+	pkgver = 0.65
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Data-Serializer
+	url = https://metacpan.org/dist/Data-Serializer
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-module-build>=0.35
+	makedepends = perl-pathtools
+	makedepends = perl-test-simple
 	depends = perl
+	depends = perl-autoloader
+	depends = perl-data-dumper>=2.08
+	depends = perl-digest-sha
+	depends = perl-exporter
+	depends = perl-io
+	optdepends = perl-bencode
+	optdepends = perl-config-general
+	optdepends = perl-convert-bencode
+	optdepends = perl-convert-bencode_xs
+	optdepends = perl-crypt-blowfish
+	optdepends = perl-crypt-cbc
+	optdepends = perl-data-denter
+	optdepends = perl-data-taxi
+	optdepends = perl-freezethaw
+	optdepends = perl-io-compress
+	optdepends = perl-json
+	optdepends = perl-json-xs
+	optdepends = perl-mime-base64
+	optdepends = perl-php-serialization
+	optdepends = perl-storable
+	optdepends = perl-xml-dumper
+	optdepends = perl-xml-simple
+	optdepends = perl-yaml
+	optdepends = perl-yaml-syck
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/N/NE/NEELY/Data-Serializer-0.60.tar.gz
-	md5sums = 6ca3a58bad4691938b485b9c800aa5cc
-	sha512sums = 85211d2ca5db19219f89da5300b93835866baa5e12237efa61ea82d2b841f6b5a05bca889d98878151d1f7517b2af5d9a1535e7bbcd64245936b270a82be21bb
+	source = https://cpan.metacpan.org/authors/id/N/NE/NEELY/Data-Serializer-0.65.tar.gz
+	sha256sums = 12155a5200033d80a5f07573775f493f170072cf7b28ae3ca2d152b591971f11
 
 pkgname = perl-data-serializer
-
