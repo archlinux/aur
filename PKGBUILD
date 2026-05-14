@@ -3,7 +3,7 @@
 _pkgname=hunk
 pkgname=hunk-bin
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Review-first terminal diff viewer for agentic coders"
 arch=('x86_64' 'aarch64')
 url="https://github.com/modem-dev/hunk"
@@ -12,13 +12,10 @@ depends=('glibc')
 provides=('hunk')
 conflicts=('hunk' 'hunk-git' 'hunkdiff')
 options=('!strip')
-source=(
-  "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
-  "SKILL-${pkgver}.md::${url}/raw/v${pkgver}/skills/hunk-review/SKILL.md"
-)
+source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("hunkdiff-${pkgver}-linux-x64.tar.gz::${url}/releases/download/v${pkgver}/hunkdiff-linux-x64.tar.gz")
 source_aarch64=("hunkdiff-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/hunkdiff-linux-arm64.tar.gz")
-sha256sums=('e9a844c47847aacdcb894aed09ae6359f7b4fa85895a9b78edb5864b8bfef439' '356b85488dbee34ef1134b4f89ef39aec5b787fdf739dd8eea368a7d137f8c49')
+sha256sums=('e9a844c47847aacdcb894aed09ae6359f7b4fa85895a9b78edb5864b8bfef439')
 sha256sums_x86_64=('888b356325706acf1a132b9f49630dd849fa6b098a47cc82e27d28f2ef861bc6')
 sha256sums_aarch64=('9315e74c84d1a746b0b568df92cd34df055e00c8b9b5f298b1bb6b9465781ee2')
 
@@ -29,20 +26,23 @@ latestver() {
 
 package() {
   local _libdir="${pkgdir}/usr/lib/hunkdiff"
+  local _srcdir
+
+  if [[ "${CARCH}" == "x86_64" ]]; then
+    _srcdir="hunkdiff-linux-x64"
+  elif [[ "${CARCH}" == "aarch64" ]]; then
+    _srcdir="hunkdiff-linux-arm64"
+  fi
 
   # The bundled `hunk skill path` command walks up the ancestors of the
   # binary's resolved exec path looking for `skills/hunk-review/SKILL.md`,
   # so we install both side-by-side under /usr/lib/hunkdiff and expose the
   # binary on PATH via a symlink in /usr/bin.
-  if [[ "${CARCH}" == "x86_64" ]]; then
-    install -Dm755 "hunkdiff-linux-x64/hunk" "${_libdir}/${_pkgname}"
-  elif [[ "${CARCH}" == "aarch64" ]]; then
-    install -Dm755 "hunkdiff-linux-arm64/hunk" "${_libdir}/${_pkgname}"
-  fi
+  install -Dm755 "${_srcdir}/hunk" "${_libdir}/${_pkgname}"
+  install -Dm644 "${_srcdir}/skills/hunk-review/SKILL.md" "${_libdir}/skills/hunk-review/SKILL.md"
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "../lib/hunkdiff/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "SKILL-${pkgver}.md" "${_libdir}/skills/hunk-review/SKILL.md"
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
