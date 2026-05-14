@@ -9,7 +9,7 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgver=1.17.6
-_subver=1
+_subver=2
 pkgver="${_pkgver}_${_subver}"
 _electronversion=28
 epoch=5
@@ -36,12 +36,28 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('73f479edfdcae4d94361abe5045d77d37cf18411a0336bcdbe606fb0f05d1b2c')
-sha256sums_x86_64=('3861581c869135862e83520495c7cdce85eb4ab65c0648d6570e9a516092d21f')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('e2f5df6b1a8b164a481a1ec5caa940894993cf1a91186736a12618074a9d1b58')
+sha256sums_x86_64=('281973d9d9e21c041e274166159cd5330db65e1ac7edd8bc0ee6c522918e5405')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -49,26 +65,20 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    _get_electron_version
+    _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	find "${srcdir}/opt/${pkgname%-bin}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/opt/${pkgname%-bin}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/opt/${pkgname%-bin}/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
-    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
