@@ -1,0 +1,39 @@
+post_install() {
+    systemd-sysusers vzlogger.conf
+
+    systemd-tmpfiles --create vzlogger.conf
+
+	echo ""
+    echo "==> vzlogger installed successfully."
+    echo ""
+    echo "    Next steps:"
+    echo "    1. Adjust the configuration:      \$EDITOR /etc/vzlogger.conf"
+    echo "    2. Add the _vzlogger user to the 'uucp' group (if serial devices are used):"
+    echo "       usermod -aG uucp _vzlogger"
+    echo "    3. Enable and start the service:"
+    echo "       systemctl enable --now vzlogger.service"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if systemctl is-active --quiet vzlogger.service; then
+        systemctl stop vzlogger.service
+    fi
+    if systemctl is-enabled --quiet vzlogger.service 2>/dev/null; then
+        systemctl disable vzlogger.service
+    fi
+}
+
+post_remove() {
+	echo ""
+    echo "==> vzlogger has been removed."
+    echo "    The system user '_vzlogger' and /etc/vzlogger.conf have been kept."
+    echo "    To remove them completely, run:"
+    echo "       userdel _vzlogger"
+    echo "       rm /etc/vzlogger.conf"
+    echo ""
+}

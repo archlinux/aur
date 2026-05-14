@@ -1,0 +1,59 @@
+[Unit]
+Description=vzlogger – Volkszaehler Logging Daemon
+Documentation=https://wiki.volkszaehler.org/software/controller/vzlogger
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=_vzlogger
+Group=_vzlogger
+
+SupplementaryGroups=uucp
+
+Type=simple
+ExecStart=/usr/bin/vzlogger --config /etc/vzlogger.conf --foreground
+Restart=on-failure
+RestartSec=10
+
+ReadWritePaths=/var/log/vzlogger /run/vzlogger
+ReadOnlyPaths=/etc/vzlogger.conf
+
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=false
+
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectProc=invisible
+ProcSubset=pid
+
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=true
+
+SystemCallFilter=@system-service @network-io @io-event @signal @basic-io @file-system
+SystemCallFilter=~@clock @cpu-emulation @debug @keyring @module @mount @obsolete @privileged @raw-io @reboot @setuid @swap @resources
+SystemCallErrorNumber=EPERM
+SystemCallArchitectures=native
+
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+UMask=0027
+
+RuntimeDirectory=vzlogger
+RuntimeDirectoryMode=0750
+
+LogsDirectory=vzlogger
+LogsDirectoryMode=0750
+
+[Install]
+WantedBy=multi-user.target

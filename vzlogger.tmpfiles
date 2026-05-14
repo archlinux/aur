@@ -1,0 +1,2 @@
+d      /run/vzlogger      0750   _vzlogger   _vzlogger   -      -
+d      /var/log/vzlogger  0750   _vzlogger   _vzlogger   -      -

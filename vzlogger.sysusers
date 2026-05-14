@@ -1,0 +1,7 @@
+# systemd-sysusers(8) Konfiguration für vzlogger
+#
+# Erstellt den Systembenutzer _vzlogger ohne Login-Shell und Home-Verzeichnis.
+# Konvention in Arch Linux: Systembenutzer beginnen mit Unterstrich (_).
+#
+# Typ  Name        ID   Beschreibung                Shell    Home
+u      _vzlogger   -    "vzlogger daemon"            /usr/bin/nologin  -
