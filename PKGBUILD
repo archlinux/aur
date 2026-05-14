@@ -2,7 +2,10 @@
 # Based on https://aur.archlinux.org/packages/caddy-cloudflare
 
 pkgname=caddy-cloudflare-l4
-pkgver=2.11.2
+pkgver_caddy=2.11.3
+pkgver_cloudflare=0.2.4
+pkgver_l4=0.1.1
+pkgver="$pkgver_caddy.$pkgver_cloudflare.$pkgver_l4"
 pkgrel=1
 pkgdesc="Caddy web server with plugins (Cloudflare DNS, L4)"
 arch=('x86_64')
@@ -24,9 +27,9 @@ sha256sums=('9bca9b879484cd1e6c7191c83e077ba9c851c2c10c998333219179bfb0fb93f7'
 backup=("etc/caddy/Caddyfile")
 
 build() {
-  xcaddy build v${pkgver} \
-    --with github.com/caddy-dns/cloudflare \
-    --with github.com/mholt/caddy-l4
+  xcaddy build v${pkgver_caddy} \
+    --with github.com/caddy-dns/cloudflare@v$pkgver_cloudflare \
+    --with github.com/mholt/caddy-l4@v$pkgver_l4
 }
 
 package() {
