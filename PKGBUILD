@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libreoffice-extension-writingtool
-pkgver=26.4
+pkgver=26.4.1
 pkgrel=1
 pkgdesc="WritingTool is a LibreOffice extension for LibreOffice that adds a writing assistant to text editing."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime>=17' 'libreoffice' 'python' 'perl' 'bash')
 install=$pkgname.install
 makedepends=("maven" "java-environment=17")
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d6b99fa1d57c3c84cecbee7f645b79458b990fdf0059cb010af9bd06a729468b')
+sha256sums=('a359cc25518d7348ac7bb3f478bd657c298f181b0a4d6cbb2b95060987f25866')
 
 prepare() {
 	cd "$srcdir/${pkgname:22}-$pkgver"
@@ -21,12 +21,7 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname:22}-$pkgver"
 	export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
-	mvn -X -Dmaven.wagon.http.ssl.insecure=true \
-		-Dmaven.wagon.http.ssl.allowall=true \
-		-Dmaven.wagon.http.ssl.ignore.validity.dates=true \
-		-Dmaven.resolver.transport=wagon \
-		package \
-		-DskipTests
+	mvn package -DskipTests
 }
 
 
