@@ -7,6 +7,7 @@ pkgdesc='Remote Windows command executor via SMB (from samba/examples/winexe)'
 arch=('x86_64')
 url='https://www.samba.org/'
 license=('GPL3')
+install=winexe.install
 
 # ABI lock: winexe links against /usr/lib/samba/lib*-private-samba.so shipped
 # by the official samba package, so the version should match exactly.
@@ -31,10 +32,14 @@ _sambapkg=samba
 source=(
   "https://download.samba.org/samba/ftp/stable/${_sambapkg}-${pkgver}.tar.gz"
   "https://download.samba.org/samba/ftp/stable/${_sambapkg}-${pkgver}.tar.asc"
+  'README.md'
+  'winexe.install'
 )
 validpgpkeys=('81F5E2832BD2545A1897B713AA99442FB680B620') # Samba Distribution Verification Key
 sha256sums=('ac24583f271a82ac324f7c6fad7327f65b591ad3492e1dccfee988e2c1c81dd1'
-            'SKIP')
+            'SKIP'
+            '989cee777ca19230f03623357e9bdc8eb33fce17230790c466aa013ecc6c9ba9'
+            'd6b6e1012977b147754657d37bae6e8f80cde0c8dad3cddca28a77f650334f2f')
 
 build() {
   cd "${srcdir}/${_sambapkg}-${pkgver}"
@@ -86,4 +91,6 @@ package() {
 
   install -Dm644 examples/winexe/README \
     "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm644 "${srcdir}/README.md" \
+    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

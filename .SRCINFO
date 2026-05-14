@@ -3,6 +3,7 @@ pkgbase = winexe
 	pkgver = 4.24.2
 	pkgrel = 1
 	url = https://www.samba.org/
+	install = winexe.install
 	arch = x86_64
 	license = GPL3
 	makedepends = mingw-w64-gcc-msvcrt
@@ -14,8 +15,12 @@ pkgbase = winexe
 	depends = samba=2:4.24.2
 	source = https://download.samba.org/samba/ftp/stable/samba-4.24.2.tar.gz
 	source = https://download.samba.org/samba/ftp/stable/samba-4.24.2.tar.asc
+	source = README.md
+	source = winexe.install
 	validpgpkeys = 81F5E2832BD2545A1897B713AA99442FB680B620
 	sha256sums = ac24583f271a82ac324f7c6fad7327f65b591ad3492e1dccfee988e2c1c81dd1
 	sha256sums = SKIP
+	sha256sums = 989cee777ca19230f03623357e9bdc8eb33fce17230790c466aa013ecc6c9ba9
+	sha256sums = d6b6e1012977b147754657d37bae6e8f80cde0c8dad3cddca28a77f650334f2f
 
 pkgname = winexe

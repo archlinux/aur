@@ -1,0 +1,20 @@
+_show_notes() {
+    cat <<'EOF'
+
+==> winexe is installed at /usr/bin/winexe.
+
+    For local admin accounts on Vista+/Win7/8/10/11, remote UAC token filtering
+    blocks service install over SMB. On the target host, run (as Administrator):
+
+        reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\system" ^
+          /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
+
+    Domain accounts are exempt and do not need this. See KB942817 and
+    /usr/share/doc/winexe/README.md for the full list of caveats
+    (XP/2003/NT4 SMB1 overrides, Win11 first-start timeout retry, etc.).
+
+EOF
+}
+
+post_install() { _show_notes; }
+post_upgrade() { _show_notes; }
