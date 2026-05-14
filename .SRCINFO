@@ -1,0 +1,15 @@
+pkgbase = age-plugin-keystore
+	pkgdesc = org.freedesktop.secrets plugin for age
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/arouene/age-plugin-keystore
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = age: for use with age
+	optdepends = rage-encryption: for use with rage
+	source = age-plugin-keystore-1.1.0.tar.gz::https://github.com/arouene/age-plugin-keystore/archive/v1.1.0.tar.gz
+	sha256sums = 2b41d42ec9b0bb7b244e6d91b22fffa5063943851780f599ca7289ec38abed9d
+
+pkgname = age-plugin-keystore
