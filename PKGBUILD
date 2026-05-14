@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=1.35.0
+pkgver=1.37.3
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -23,7 +23,7 @@ makedepends=(
     'rustup'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=player@${pkgver}")
-sha256sums=('f1836f96b1345548bd9f4a896c2393ee27120b2d607a5f95073204f99695b799')
+sha256sums=('d61527a665a2c0afd2292871d1fc34fa0b03b520ce420c518a9f467470a933b4')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -57,7 +57,8 @@ prepare() {
         s/\"active\"\: true\,/\"active\"\: false\,/g
         s/${_appname}-music-player/${pkgname}/g
     " packages/player/src-tauri/tauri.conf.json
-    sed -i "s/\"react-icons\"\: \"\^5.6.0\"\,/\"react-icons\"\: \"\^5.5.0\"\,/g" packages/player/package.json
+    #sed -i "s/\"react-icons\"\: \"\^5.6.0\"\,/\"react-icons\"\: \"\^5.5.0\"\,/g" packages/player/package.json
+    NODE_ENV=development    pnpm add -D node-addon-api node-gyp
     NODE_ENV=development    pnpm install --no-frozen-lockfile
     rustup default stable
 }
