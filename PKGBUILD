@@ -1,7 +1,7 @@
 # Maintainer: Luke Morrison <lukejmorrison@gmail.com>
 
 pkgname=canvasforge-beta
-pkgver=0.6.0_beta2
+pkgver=0.6.0_beta3
 pkgrel=1
 pkgdesc="Beta PyQt6 canvas utility for remixing screenshots, UI snippets, and vector assets"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('canvasforge')
 options=('!debug')
 _tagver="${pkgver/_beta/-beta.}"
 source=("canvasforge-${_tagver}.tar.gz::${url}/releases/download/v${_tagver}/canvasforge-${_tagver}.tar.gz")
-sha256sums=('4c6d7205a813839f8d2ca2e86c729fd2d8f5eaf040cd5d13752143b39ed4d4f3')
+sha256sums=('5ebba91dc7af09f4ee0e320ef4519a5cc16026dc26b5f14f1162f1b7200f5e9f')
 
 package() {
   cd "canvasforge-${_tagver}"
@@ -41,10 +41,10 @@ package() {
 exec python /usr/share/canvasforge/main.py "$@"
 EOF
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/canvasforge.desktop" <<'EOF'
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/canvasforge.desktop" <<EOF
 [Desktop Entry]
 Type=Application
-Name=CanvasForge Beta
+Name=CanvasForge Beta ${_tagver}
 Comment=Remix screenshots, snippets, and vectors
 Exec=canvasforge
 Icon=canvasforge

@@ -1,6 +1,6 @@
 pkgbase = canvasforge-beta
 	pkgdesc = Beta PyQt6 canvas utility for remixing screenshots, UI snippets, and vector assets
-	pkgver = 0.6.0_beta2
+	pkgver = 0.6.0_beta3
 	pkgrel = 1
 	url = https://github.com/lukejmorrison/canvasforge
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = canvasforge-beta
 	provides = canvasforge
 	conflicts = canvasforge
 	options = !debug
-	source = canvasforge-0.6.0-beta.2.tar.gz::https://github.com/lukejmorrison/canvasforge/releases/download/v0.6.0-beta.2/canvasforge-0.6.0-beta.2.tar.gz
-	sha256sums = 4c6d7205a813839f8d2ca2e86c729fd2d8f5eaf040cd5d13752143b39ed4d4f3
+	source = canvasforge-0.6.0-beta.3.tar.gz::https://github.com/lukejmorrison/canvasforge/releases/download/v0.6.0-beta.3/canvasforge-0.6.0-beta.3.tar.gz
+	sha256sums = 5ebba91dc7af09f4ee0e320ef4519a5cc16026dc26b5f14f1162f1b7200f5e9f
 
 pkgname = canvasforge-beta
