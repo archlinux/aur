@@ -5,10 +5,11 @@ pkgbase = mingw-w64-libcuba
 	url = https://feynarts.de/cuba/
 	arch = any
 	license = LGPL-3.0-or-later
-	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-cmake
 	options = !buildflags
 	options = !strip
 	options = staticlibs
+	options = !debug
 	source = Cuba-4.2.2::git+https://github.com/jschueller/cuba.git
 	sha256sums = SKIP
 

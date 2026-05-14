@@ -5,40 +5,30 @@ pkgdesc='A library for multidimensional numerical integration (mingw-w64)'
 arch=('any')
 url="https://feynarts.de/cuba/"
 license=(LGPL-3.0-or-later)
-makedepends=('mingw-w64-configure')
-options=('!buildflags' '!strip' 'staticlibs')
-#source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
-#sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
+makedepends=('mingw-w64-cmake')
+options=('!buildflags' '!strip' 'staticlibs' '!debug')
 source=(Cuba-$pkgver::git+https://github.com/jschueller/cuba.git)
 sha256sums=(SKIP)
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "$srcdir/Cuba-$pkgver"
-  # sed -i "/MasterExit/d" src/common/Fork.c
-
-  # gcc 15: false' is a keyword with '-std=c23' onwards
-  sed -i "/typedef enum/d" src/common/stddecl.h
-  sed -i "27i#include <stdbool.h>" src/common/stddecl.h
 }
 
 build() {
   cd "$srcdir/Cuba-$pkgver"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    cp ../cuba.h .
-    ${_arch}-configure ..
-    make -j1
-    popd
+    ${_arch}-cmake -B build-${_arch} .
+    cmake --build build-${_arch}
   done
 }
 
 package() {
+  cd "$srcdir"/Cuba-$pkgver
   for _arch in ${_architectures}; do
-    cd "$srcdir"/Cuba-$pkgver/build-${_arch}
-    make DESTDIR="$pkgdir" install -j1
-    rm -r "$pkgdir"/usr/${_arch}/share
+    DESTDIR="$pkgdir" cmake --build build-${_arch} --target install
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
