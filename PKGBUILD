@@ -2,7 +2,7 @@
 
 _pkgname=renovate
 pkgname="${_pkgname}-git"
-pkgver=42.7.1.r0.g4a8391e
+pkgver=43.179.3.r0.g79aa1cd
 pkgrel=1
 pkgdesc="Automated dependency updates (git-latest)"
 arch=('any')
@@ -14,10 +14,15 @@ license=('AGPL-3.0-only')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "${pkgname}"
+
+  sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$(git describe --abbrev=0 --tags)\"/" package.json
+}
+
 build() {
   cd "${pkgname}"
 
-  pnpm version --no-git-tag-version "$(git describe --abbrev=0 --tags)"
   pnpm install --frozen-lockfile
   pnpm build
 }
