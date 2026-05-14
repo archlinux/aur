@@ -1,0 +1,17 @@
+pkgbase = autodarts-manager-bin
+	pkgdesc = Desktop-Verwaltung für Autodarts
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Silko10101986/autodarts-manager
+	arch = x86_64
+	license = custom
+	depends = curl
+	depends = polkit
+	depends = xdg-utils
+	depends = xcb-util-cursor
+	provides = autodarts-manager
+	conflicts = autodarts-manager
+	source = https://github.com/Silko10101986/autodarts-manager/releases/download/v1.0.0/autodarts-manager-1.0.0-linux-x86_64.tar.gz
+	sha256sums = a77b5cdcd7561098016517fa898716264b71b341e82dacfa693d76bc4f15bc19
+
+pkgname = autodarts-manager-bin
