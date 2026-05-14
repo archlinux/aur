@@ -1,0 +1,6 @@
+[no-kmod-autoload]
+source = "gitea"
+host = "codeberg.org"
+gitea = "jb/no-kmod-autoload"
+use_max_tag = true
+prefix = "v"

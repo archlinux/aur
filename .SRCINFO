@@ -1,0 +1,12 @@
+pkgbase = no-kmod-autoload
+	pkgdesc = Disable automatic loading of kernel modules
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/jb/no-kmod-autoload
+	arch = any
+	license = MIT
+	depends = bash
+	source = no-kmod-autoload-0.1.0.tar.gz::https://codeberg.org/jb/no-kmod-autoload/archive/v0.1.0.tar.gz
+	sha256sums = 175d0fd810e9decbaa3d61925e888ed1e78f33bce947e4bbe8ae47da6142de95
+
+pkgname = no-kmod-autoload
