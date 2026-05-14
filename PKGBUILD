@@ -1,23 +1,22 @@
 # Maintainer: Jakub Smulski <hgonomeg@gmail.com>
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/"
 license=('GPL')
 replaces=('coot-data')
-makedepends=('eigen' 'boost' 'bc' 'which')
-# todo: gemmi
-depends=('eigen' 'openal' 'boost-libs' 'guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'libvorbis' 'fftw2-float' 'gsl' 'swig'
+makedepends=('autoconf' 'automake' 'libtool' 'eigen' 'boost' 'bc' 'which')
+depends=('eigen' 'openal' 'boost-libs' 'guile' 'gemmi' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'libvorbis' 'fftw2-float' 'gsl' 'swig'
          'libgl' 'gtk4' 'glib2' 'glm' 'cairo' 'libssm>=1.4' 'zlib' 'curl' 'python' 'python-gobject' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
 source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/refs/tags/Release-$pkgver.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
         )
 
-sha256sums=('ebf19951382151a53ed9c176aea0cf732994235478c64be611cd3f6fc0bdc9ea'
+sha256sums=('36d8902fad4466a549d5cba593ea4df59e183de9171d63a6c520dcf4fc9bfd59'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
             )
