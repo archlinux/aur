@@ -10,7 +10,7 @@
 pkgname=zen-browser-bin
 _pkgname=zen-browser
 _desktopname=zen
-pkgver=1.19.12b
+pkgver=1.19.13b
 pkgrel=1
 pkgdesc="Performance oriented Firefox-based web browser"
 arch=('x86_64' 'aarch64')
@@ -35,8 +35,8 @@ source=("$_pkgname.sh"
 sha256sums=('642bcde5b15fddb712d10ed53299781108a265432237ab27a96c5c5c489718db'
             'bfb347f0e0f6baccaf3b7b51b19a25e5b745d836734cec38611b32af842897f6'
             'e977c3d690224dd727d8761d2c0a66ba41bfd02ae0fd7850c4545d06b5a8e63c')
-sha256sums_x86_64=('156fb68c3a51645514fdd5fcf734d356c9aa6c9801395af75e72311162a00379')
-sha256sums_aarch64=('a69f1bffcedfb9a3d03e7e1a82f617def5374acecbc2c9cb9646fb0b4c1cdf2d')
+sha256sums_x86_64=('dfc79ffb444c6dbf935a60f6ff4c5cb190567baa26f83c8e9cf8457571e1d900')
+sha256sums_aarch64=('9e574c63f652f41c2a0f57b4803dc628f66a7f0a89469271abe1844896f039f2')
 
 
 package() {
