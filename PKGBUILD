@@ -8,6 +8,7 @@ license=('GPL')
 sha512sums=('SKIP')
 source=("git+https://gitlab.com/PieyIsAPie/yauri.git")
 depends=('python3' 'python-requests' 'pacman-contrib' 'git' 'python-colorama' 'sudo' 'fzf' 'pacman')
+makedepends=('git')
 
 package() {
     install -Dm755 yauri/source/yauri.py "$pkgdir/usr/share/yauri/yauri.py" ;

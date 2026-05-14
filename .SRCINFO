@@ -5,6 +5,7 @@ pkgbase = yauri
 	url = https://gitlab.com/PieyIsAPie/yauri
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = python3
 	depends = python-requests
 	depends = pacman-contrib
