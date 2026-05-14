@@ -1,7 +1,7 @@
 # Maintainer: Jesus Alvarez <jesusalv@rez.codes>
 pkgname=supersayer
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Speech-to-text input tool for GNOME using whisper.cpp and PyGTK"
 arch=('any')
 url="https://git.ironandcode.com/jesusa/supersayer"
@@ -30,7 +30,12 @@ optdepends=(
 )
 install=supersayer.install
 source=("$pkgname-$pkgver.tar.gz::https://git.ironandcode.com/jesusa/supersayer/archive/v$pkgver.tar.gz")
-sha256sums=('905d8b84475d0dd32c32381a5c020c820a605edb1b7f7bfdb9b8d535f291ae7f')
+sha256sums=('b807861f668c405c8d069a8ea4a33d57a5ffdef2f2219b2899a21a3e9e1f1d99')
+
+prepare() {
+    # Forgejo archives extract to $pkgname/, local sdists to $pkgname-$pkgver/.
+    [ -d "$pkgname" ] || mv "$pkgname-$pkgver" "$pkgname"
+}
 
 build() {
     cd "$pkgname"
