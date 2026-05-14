@@ -1,3 +1,4 @@
+# Maintainer: Selim Cifci <cifciselimhasan@gmail.com>
 pkgname=pam-parallel-fprint-git
 pkgver=0
 pkgver() {
