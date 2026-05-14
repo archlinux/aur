@@ -8,7 +8,7 @@ license=('MIT')
 depends=('sway')
 makedepends=('go')
 source=("sway-title-animator-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b78ee9f6999dad696ed0a8e7149a459ad97d54a12f8defb2c18f059976b26e78')
+sha256sums=('7832e4644aafeec5434b2ba1d33c2b0794698da79f8956f7272f00f29b2331c3')
 
 build() {
   cd "sway-title-animator-$pkgver"
