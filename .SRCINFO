@@ -1,6 +1,6 @@
 pkgbase = tuxbellum
 	pkgdesc = GTK4 GUI for installing Bellum on Linux via Wine/Proton
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/Ch3w3y/tuxbellum
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = tuxbellum
 	optdepends = gamemode: Feral gamemode performance
 	optdepends = mangohud: performance overlay
 	optdepends = mesa-utils: GPU detection via glxinfo
-	source = tuxbellum-4.0.1.tar.gz::https://github.com/Ch3w3y/tuxbellum/releases/download/v4.0.1/tuxbellum-4.0.1.tar.gz
-	sha256sums = 6408410d0010ea5782caac9116732e71ce8ecdce89b1d025008d31cc17963415
+	source = tuxbellum-4.0.2.tar.gz::https://github.com/Ch3w3y/tuxbellum/releases/download/v4.0.2/tuxbellum-4.0.2.tar.gz
+	sha256sums = 8c9c497b2133a285c0c5ed80e6b562896f64e22a5e3852affabf18084907e19f
 
 pkgname = tuxbellum
