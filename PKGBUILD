@@ -2,7 +2,7 @@
 _sourceName="HyperHeadset"
 
 pkgname="hyper-headset-git"
-pkgver=1.8.0.r0.g638d60e
+pkgver=1.8.0.r6.g1289aad
 pkgrel=1
 pkgdesc="A CLI and tray application for monitoring and managing HyperX headsets."
 arch=('x86_64')
