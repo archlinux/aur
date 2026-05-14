@@ -12,7 +12,7 @@ depends=(
     'pipewire'
     'gstreamer'
     'gst-plugins-base'
-    'evdev'
+    'libevdev'
     'gst-plugins-good'  # Para codecs de áudio
 )
 makedepends=(
