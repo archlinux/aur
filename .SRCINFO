@@ -1,0 +1,19 @@
+pkgbase = raveo-ttf-hinted
+	pkgdesc = Raveo is a warmer modification of Inter with redrawn glyphs, distributed with optional hinting and Nerd Fonts patching.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/jakubfoglar/raveo
+	arch = any
+	license = custom:OFL
+	makedepends = python
+	makedepends = fontforge
+	makedepends = parallel
+	makedepends = ttfautohint
+	depends = fontconfig
+	conflicts = raveo-ttf
+	source = Raveo.1.1.zip::https://github.com/jakubfoglar/raveo/releases/download/v1.1/Raveo.1.1.zip
+	source = font-patcher-3.4.0::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip
+	sha256sums = 9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd
+	sha256sums = a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760
+
+pkgname = raveo-ttf-hinted
