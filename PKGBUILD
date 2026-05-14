@@ -1,6 +1,6 @@
 pkgname=hpfand
-pkgver=2.0.0
-pkgrel=4
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Fan curve daemon for HP Victus/Omen laptops"
 arch=('any')
 url="https://github.com/emomaxd/hpfand"
@@ -14,7 +14,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emomaxd/hpfand/archive/refs/tags/v$pkgver.tar.gz"
         "hpfand.install")
-sha256sums=('79e094b5c35143272c02a5490a7b75386217df74031527d1138f59c9ad7e8b1e'
+sha256sums=('997406f751e463cf386244ae364506e49e2e3df57cb731ab4bd11bf0b69d7c33'
             '29e104ecfb8a490c34c605b96263d3e1b68e254ba3fd1647d1aa1bcc2cf3ece6')
 
 package() {
