@@ -490,4 +490,4 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('SKIP' 'SKIP')
+b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
