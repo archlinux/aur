@@ -11,7 +11,7 @@ depends=('mingw-w64-zlib')
 source=("https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('05931e8dd8c8cac514da8297003c31a206a0004d542b7da500810b85c87c20b9')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd HiGHS-${pkgver}
