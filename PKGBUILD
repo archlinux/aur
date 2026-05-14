@@ -13,7 +13,7 @@ sha256sums=('a0e700f088d0e01d91a3dfca1974440405a7eb3351a5f31503328a86a74cc62e')
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 lyricspot.py "$pkgdir/usr/lib/lyricspot/lyricspot.py"
-  install -Dm644 colorthief.py "$pkgdir/usr/lib/lyricspot/colorthief.py"
+
 
   install -dm755 "$pkgdir/usr/bin"
   cat >"$pkgdir/usr/bin/lyricspot" <<'LAUNCHER'
