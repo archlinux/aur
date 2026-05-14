@@ -1,7 +1,7 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=tempstash
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="stash a copy of a file for a specified period of time"
 arch=(any)
 url="https://sr.ht/~minshall/tempstash/"
@@ -10,7 +10,7 @@ depends=(jq rsync yq zsh)
 makedepends=(asciidoc git)
 optdepends=('cram: functional testing framework')
 # git rev-parse 0.5.4
-_tag=44a7460fa594fdbd362d495a43c69b35e987ef6b
+_tag=bfa06148c5cb7e9e753d1c5861b51c03c33fc6a3
 source=(git+https://git.sr.ht/~minshall/tempstash#tag=${_tag}?signed)
 validpgpkeys=(
     BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F # Greg Minshall <minshall@acm.org>

@@ -1,7 +1,7 @@
 pkgbase = tempstash
 	pkgdesc = stash a copy of a file for a specified period of time
-	pkgver = 0.5.4
-	pkgrel = 2
+	pkgver = 0.5.5
+	pkgrel = 1
 	url = https://sr.ht/~minshall/tempstash/
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = tempstash
 	depends = yq
 	depends = zsh
 	optdepends = cram: functional testing framework
-	source = git+https://git.sr.ht/~minshall/tempstash#tag=44a7460fa594fdbd362d495a43c69b35e987ef6b?signed
+	source = git+https://git.sr.ht/~minshall/tempstash#tag=bfa06148c5cb7e9e753d1c5861b51c03c33fc6a3?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
 	sha256sums = SKIP
 
