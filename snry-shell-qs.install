@@ -20,6 +20,10 @@ post_install() {
 	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
 		snry-daemon files 2>/dev/null || true
 
+	# Phase 3: Enable and start the daemon via systemd user service
+	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		systemctl --user enable --now snry-daemon.service 2>/dev/null || true
+
 	echo ""
 	echo ">>> Snry Shell installed and configured!"
 	echo ">>> Log out and log back in (or reboot) to start."
@@ -34,17 +38,40 @@ post_upgrade() {
 		return 0
 	fi
 
+	local uid
+	uid=$(id -u "$user")
+
 	echo ">>> Syncing Snry Shell configs for user: $user"
 
-	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$(id -u "$user")" \
+	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
 		snry-daemon files 2>/dev/null || true
+
+	# Restart the daemon to pick up any changes
+	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		systemctl --user restart snry-daemon.service 2>/dev/null || true
 
 	echo ""
 	echo ">>> Snry Shell updated!"
-	echo ">>> Log out and log back in (or reboot) to apply changes."
+	echo ">>> The daemon has been restarted via systemd."
 }
 
 post_remove() {
+	local user
+	user=$(logname 2>/dev/null || awk -F: '$3>=1000 && $3<65534 {print $1; exit}' /etc/passwd)
+
+	if [ -z "$user" ]; then
+		echo ">>> Could not detect installing user."
+		echo ">>> Disable the service manually: systemctl --user disable --now snry-daemon.service"
+		return 0
+	fi
+
+	local uid
+	uid=$(id -u "$user")
+
+	# Stop and disable the daemon service
+	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		systemctl --user disable --now snry-daemon.service 2>/dev/null || true
+
 	echo ""
 	echo ">>> Snry Shell has been removed."
 	echo ">>> Config files in ~/.config/ were NOT deleted."
