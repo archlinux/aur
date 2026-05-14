@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=github-store-bin
 _pkgname=GitHub-Store
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="A free, open-source app store for GitHub releases — browse, discover, and install apps with one click. Powered by Kotlin and Compose Multiplatform for Android & Desktop.(Prebuilt version)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a9eb787b43876faa48e510b229a55a588d588d9df1cc66e9aeee1c53f24bdb03'
+sha256sums=('909a4c06f5b610768ef42cc56b9438950edcc291b87008608db630720f59ff21'
             '81266c37f90d6eef62471250c3c906d0dec1f1c3041f22b7b45f7a3be612f9c1')
 prepare() {
     sed -i -e "
