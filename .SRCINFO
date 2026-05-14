@@ -1,12 +1,12 @@
 pkgbase = arfetch-bin
 	pkgdesc = Fetch script written in Python specifically for Artix Linux
-	pkgver = 0.0.2a
+	pkgver = 0.0.3a
 	pkgrel = 1
 	url = https://github.com/ColinZeDev/arfetch
 	arch = x86_64
 	license = MIT
 	depends = ttf-nerd-fonts-symbols
-	source = arfetch-0.0.2a::https://github.com/ColinZeDev/arfetch/releases/download/002a/arfetch
-	sha256sums = cd2387209aaa9347156749c2ff64109de1e3e8e276a0f196e6625f2583b1e532
+	source = arfetch-0.0.3a::https://github.com/ColinZeDev/arfetch/releases/download/003a/arfetch
+	sha256sums = 15d740aeae44bbef90e755d3c46a91ab54385f245ad5d253b995bb7223b42cba
 
 pkgname = arfetch-bin
