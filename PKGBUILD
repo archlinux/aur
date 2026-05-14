@@ -3,7 +3,7 @@
 
 pkgname=libccp4
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Protein X-ray crystallography toolkit - Libraries"
 arch=('i686' 'x86_64')
 url="http://www.ccp4.ac.uk/"
@@ -26,4 +26,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"  
 
   make DESTDIR="$pkgdir/" install
+  # Some libraries, e.g. Clipper, need it as 'libccp4c.pc'
+  install -dm755 "$pkgdir/usr/lib/pkgconfig"
+  ln -s "/usr/lib/pkgconfig/ccp4c.pc" "$pkgdir/usr/lib/pkgconfig/libccp4c.pc"
 } 
