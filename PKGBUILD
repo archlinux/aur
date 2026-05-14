@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Jump directories, run commands, connect to SSH hosts — all from one frecency-ranked, three-panel fuzzy TUI driven by shell hooks."
 
-pkgver=0.18
+pkgver=0.19
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -34,7 +34,7 @@ sha256sums=('f1739dd5e11ac5e43a6ee58c8df3542eb258a70c523d18c0441e80ad9b87110d'
             '7a41aba0e8aa5287d3686fe73743a24e8506df72d52beb5c4c0234374e5a93b8'
             '6e0978e27f667af5f70fd63610ccc5d3e57b34d16ddfe1498c6b490ef97cbe6b'
             'd2d4a499c7eb73a88ea394d039861417836e92a3b4d2410defa6383dab88c56b')
-sha256sums_x86_64=('0845ae189be186197d0191c60766cd85440629b289523ed2839fe5cc5454d9f6')
+sha256sums_x86_64=('24eb11e3af7f611dc046e8d288c9d92103522cd30080835997e9dfb90cf10a43')
 
 
 package() {
