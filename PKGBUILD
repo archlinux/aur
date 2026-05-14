@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soulfire-bin
 _pkgname=SoulFire
-pkgver=2.8.6
-_electronversion=41
+pkgver=2.8.7
+_electronversion=42
 pkgrel=1
 pkgdesc="A frontend for the SoulFire server , with Electron while still using the official SoulFire gRPC API.(Prebuilt version. Use system-wide electron)"
 arch=(
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('b242bd0eacd22f31ec90face1cf4bdb69503f3b7177149311cd353fdf8e74f41')
-sha256sums_x86_64=('f79631d039099f06cd78f4a39ebee294b1d216d8a7beebd98b9e67aebb8ae1cb')
+sha256sums_aarch64=('dc3420f3ca664299658bee5f2303d02a6e6f2c9213a35ef041518feab030908e')
+sha256sums_x86_64=('834938f71a841af5f60ed61d6adce713351a32004a5e4dac45441be3d7ad1743')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
