@@ -4,7 +4,7 @@
 
 pkgname=gns3-server
 pkgver=3.1.0a2
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator, Server package'
 arch=(x86_64 aarch64)
 url="https://github.com/GNS3/$pkgname"
@@ -31,6 +31,7 @@ depends=(
     python-psutil
     python-requests
     python-sqlalchemy
+    python-telnetlib3
     python-truststore
     python-typing_extensions
     python-urllib3
