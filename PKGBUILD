@@ -1,6 +1,6 @@
 # Maintainer: Virgarakha <dev@orbyt.local>
 pkgname=orbyt
-pkgver=0.1.0.beta
+pkgver=0.1.1.beta
 pkgrel=1
 pkgdesc="SSH terminal manager built with Electron and Next.js"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/alvinades98/ORBYT"
 license=('MIT')
 depends=('fuse2')
 options=('!strip')
-source=("${pkgname}-${pkgver}.appimage::https://github.com/alvinades98/ORBYT/releases/download/v0.1.0-beta/ORBYT-0.1.0.appimage")
-sha256sums=('1b6394e93983677d7c33fd939db2c4778d5f3284b464373cb5098d3d2879e50f')
+source=("${pkgname}-${pkgver}.appimage::https://github.com/alvinades98/ORBYT/releases/download/v0.1.1-beta/ORBYT-0.1.1.appimage")
+sha256sums=('fe8b3462edfa9cc98dffe57ca56d210e179ace742051b8b89d6ab10e76201bcd')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}.appimage" "${pkgdir}/usr/bin/${pkgname}"
