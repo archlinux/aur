@@ -15,5 +15,5 @@ ah-superboot () {
 ah-help () {
 	echo "ah-superboot: this update your system and reboot"
 	echo "ah-init: this tell you the malware files (an examle .bat)"
-	echo "tip: don`t run anythink as name is `run me!.bat`"
+	echo "tip: don`t run anythink as name is run me!.bat"
 }
