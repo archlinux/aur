@@ -1,6 +1,6 @@
 pkgbase = iwqt
 	pkgdesc = An iwd network applet for linux systems
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/FinGu/iwqt
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = iwqt
 	depends = sdbus-cpp
 	depends = gcc-libs
 	depends = glibc
-	source = iwqt-0.0.3.tar.gz::https://github.com/FinGu/iwqt/archive/refs/tags/v0.0.3.tar.gz
-	b2sums = cc8d0b3d90e949ab8f130c4b19048fafbffe5b987f0ee163d87ea44e68f92e8daa2d8e98c3954473dcec8045881a44376eb4a96d5ed8d0d3eda6df01267be311
+	source = iwqt-0.0.4.tar.gz::https://github.com/FinGu/iwqt/archive/refs/tags/v0.0.4.tar.gz
+	b2sums = fc136b50afc5d049ab61f37066a9a6d905f48cd9753e73355121429d967fd9561d65b8705b1fdf5c155f563bbc4e9562e26cf778e3c6ec36bcb88bf6213c633e
 
 pkgname = iwqt
