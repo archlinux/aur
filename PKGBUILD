@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3994.9abe85f90
+pkgver=r3998.91f533f86
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -18,6 +18,8 @@ makedepends=(
 	'lld'
 	'ninja'
 	'python'
+    'qt6-base'
+    'qt6-tools'
 )
 depends=(
 	'dbus'
@@ -44,8 +46,6 @@ source=(
 	'fmt'::'git+https://github.com/fmtlib/fmt.git'
 	'glslang'::'git+https://github.com/KhronosGroup/glslang.git'
 	'googletest'::'git+https://github.com/google/googletest.git'
-	'imgui'::'git+https://github.com/ocornut/imgui.git'
-	'imgui_club'::'git+https://github.com/ocornut/imgui_club.git'
     'libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
 	'nativefiledialog-extended'::'git+https://github.com/btzy/nativefiledialog-extended.git'
 	'pugixml'::'git+https://github.com/zeux/pugixml.git'
@@ -120,8 +120,6 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'SKIP'
-	'SKIP'
 
 	'SKIP'
 
@@ -164,8 +162,6 @@ prepare() {
 			['fmt']='external/fmt'
 			['glslang']='external/glslang'
 			['googletest']='external/googletest'
-			['imgui']='external/imgui'
-			['imgui_club']='external/imgui_club'
 			['libadrenotools']='external/libadrenotools'
 			['nativefiledialog-extended']='external/nativefiledialog-extended'
 			['pugixml']='external/pugixml'
