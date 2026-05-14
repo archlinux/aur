@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
 url="https://github.com/IlyaP358/fluxcast"
-license=('BSD-3-Clause')
+license=('GPL-3.0')
 
 depends=(
   ffmpeg
