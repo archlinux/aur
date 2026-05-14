@@ -4,7 +4,7 @@ _pkgname=nheko
 _mtxclientver=0.10.1
 pkgname=nheko-scrollfix-git
 pkgver=0.12.1.r6045.g90ff9c6f
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client for the Matrix protocol with Kirigami wheel scroll fix"
 arch=('x86_64')
 url="https://github.com/Nheko-Reborn/nheko"
@@ -32,6 +32,7 @@ depends=(
     lmdb
     cmark
     libolm
+    re2
     hicolor-icon-theme
     kdsingleapplication
     gst-plugins-bad-libs
