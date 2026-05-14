@@ -12,7 +12,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${_PKGNAME}/${_PKGNAME}/archive/v${pkgver}.tar.gz)
 sha256sums=('95075e1fd0b51d97b1b96b73ebe03b1a551fbcc9cd2b2b6f487ccccedcff5964')
 
-_architectures="x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare(){
   cd "${srcdir}/${_PKGNAME}-${pkgver}"
