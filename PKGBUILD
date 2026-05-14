@@ -1,13 +1,13 @@
 pkgname=smart-updater
-pkgver=1.0
-pkgrel=4
+pkgver=1.1.0_alpha
+pkgrel=1
 pkgdesc="A lightweight, intelligent, and beautiful GUI update tool for CachyOS"
 arch=('any')
 url="https://github.com/UniqueSpirit/smart-updater"
 license=('GPL')
 depends=('python' 'python-pyqt6' 'pacman-contrib')
 source=("$url/archive/refs/heads/main.zip")
-sha256sums=('SKIP')
+sha256sums=('1afd38e57b814967410148b8f7a0ffe8de800fc60d1903094321d467b5ce72d4')
 
 package() {
     # 1. Den Hauptordner im System erstellen (/opt/smart-updater)
