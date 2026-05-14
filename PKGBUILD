@@ -1,6 +1,6 @@
 # Maintainer: Yo'av Moshe <archlinux@yoavmoshe.com>
 pkgname=wttrbar
-pkgver=0.14.4
+pkgver=0.14.5
 pkgrel=1
 pkgdesc="Weather indicator for Waybar"
 url="https://github.com/bjesus/wttrbar"
@@ -9,7 +9,7 @@ license=("MIT")
 options=(!lto)
 makedepends=('rust')
 source=("source-$pkgver.tar.gz::https://github.com/bjesus/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('68e24826345dcf39fbcbc0e417e7382c86dd2b4d216ae9cc93b9aaa98b0216373a5f25e2998e72eee1e8f8be08727550a90fd9c167a94b6a7604f82ce6eb15e8')
+sha512sums=('251f6a34a13f2b8683fd73c282a4131f76922b522575513186bc16a0f69e0ec59327363ba2b76a9e9900ea4e09c859ea06f1a17982317e1c6d2b288cfb8a2153')
 
 prepare() {
   mv $pkgname-$pkgver/* .
