@@ -1,5 +1,19 @@
 post_install() {
-  ln -s /usr/bin/renderide-renderer /usr/bin/Renderite.Renderer
+  # Setup symlink neccesary for launching on Linux. Normally Renderide
+  # tries to create this in the same dir as the bin, but that is /usr/bin
+  # in this case, so it will fail and not launch.
+  ln -sf /usr/bin/renderide-renderer /usr/bin/Renderite.Renderer
+
+  # Notify the user that Resonite is needed separately
+  echo ""
+  echo "Renderide is a custom renderer for Resonite, which"
+  echo "is not included in this package. Resonite must be"
+  echo "installed via Steam in order for Renderide to work."
+  echo ""
+}
+
+post_upgrade() {
+  post_install
 }
 
 pre_remove() {
