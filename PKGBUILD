@@ -64,6 +64,7 @@ fi
 #_libdir="usr/lib/gcc/${CHOST}/${pkgver}"
 
 prepare() {
+  local -
   set -u
   cd "${_basedir}"
 
@@ -100,6 +101,8 @@ prepare() {
       ;;
     esac
   done
+  #cd ..; cp -pr "${_basedir}" 'a'; ln -s "${_basedir}" 'b'; false
+  #diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
   sed -e 's:\bstruct sigaltstack\b:stack_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct sigaltstack\b')
@@ -112,11 +115,10 @@ prepare() {
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-
-  set +u
 }
 
 build() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -163,17 +165,27 @@ build() {
   fi
 
   # The GCC 4.9 library is otherwise found incorrectly when invoking host tools
+  local _rv=0
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
+  nice -n1 make -s || _rv="$?"
+  if [ "${_rv}" -ne 0 ]; then
+    if [ -s 'x86_64-pc-linux-gnu/libgo/sysinfo.go' ] && [ "$(gcc --version | head -1 | awk '{print $3;}' | cut -d'.' -f1)" -eq 16 ]; then
+      sed -e '/^const SYS_SECCOMP =/ s:^:// :g' -i 'x86_64-pc-linux-gnu/libgo/sysinfo.go'
   LD_PRELOAD='/usr/lib/libstdc++.so' \
   nice -n1 make -s
+    else
+      return "${_rv}"
+    fi
+  fi
 
   set +u; msg 'Compile complete'; set -u
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
-  set +u
 }
 
 package() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -204,6 +216,5 @@ package() {
     ln -s "${CHOST}-${_i}-${_pkgver}" "${CHOST}-${_i}-${pkgver}"
   done
   ln -s "gcov-${_pkgver}" "gcov-${pkgver}"
-  set +u
 }
 set +u
