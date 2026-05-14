@@ -1,12 +1,11 @@
-# Contributor: pyjano <pyjano at protonmail dot com>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Contributor: Adrià Arrufat <swiftscythe at gmail dot com>
 # Maintainer: AlaEldin Mohamed <aeiedamo@gmail.com>
+# Contributor: Adrià Arrufat <swiftscythe at gmail dot com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: pyjano <pyjano at protonmail dot com>
 
 pkgname=otf-ibm-plex
-epoch=1
 pkgver=2026.02.12
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Plex typefaces in otf format"
 url="https://github.com/IBM/plex"
 arch=("any")

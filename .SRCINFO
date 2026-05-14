@@ -1,8 +1,7 @@
 pkgbase = otf-ibm-plex
 	pkgdesc = IBM Plex typefaces in otf format
 	pkgver = 2026.02.12
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://github.com/IBM/plex
 	arch = any
 	license = custom:OFL
