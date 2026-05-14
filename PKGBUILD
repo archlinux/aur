@@ -38,6 +38,7 @@ package() {
 		cd "$pkgname"
 		install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
 		install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname-renderer"
+		cp -r "crates/renderide/assets/xr" "$pkgdir/usr/bin/"
 		install -Dm0755 -t "$pkgdir/usr/share/applications" "../../renderide.desktop"
-		install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+		install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
