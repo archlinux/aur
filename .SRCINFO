@@ -1,0 +1,15 @@
+pkgbase = proton-ge-launcher-desktop
+	pkgdesc = Add mimetype association for launching standalone games directly with Proton-GE in file manager
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/proton-ge-launcher-desktop
+	arch = any
+	license = MIT
+	depends = proton-ge-custom
+	depends = hicolor-icon-theme
+	source = proton-ge.desktop
+	source = proton-ge.png
+	sha256sums = f2a7a853fa615b9ee1c3662ce12cb1f2f851a536259eb11bb11214bab5791cd2
+	sha256sums = 931597b1f045c880b3fc6afd589d975e6143aa422b9357328c154cf6e76ab234
+
+pkgname = proton-ge-launcher-desktop
