@@ -1,7 +1,7 @@
 # Maintainer: Lucas Rooyakkers <lucas.rooyakkers@pm.me>
 
 pkgname=aodv-git
-pkgver=0.2.0.r18.g2368069
+pkgver=0.2.0.r24.g9b2bf2d
 pkgrel=1
 pkgdesc="Userspace RFC 3561 ad hoc routing control-plane daemon"
 arch=('x86_64' 'aarch64')
