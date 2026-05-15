@@ -1,6 +1,6 @@
 # Maintainer: Max Emil Yoon Blomstervall <max.blomstervall@gmail.com>
 pkgname=kanban
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Terminal-based kanban board with MCP server integration"
 arch=("x86_64" "aarch64")
@@ -8,7 +8,7 @@ url="https://github.com/fulsomenko/kanban"
 license=("Apache-2.0")
 makedepends=("rust" "cargo")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fulsomenko/kanban/archive/v$pkgver.tar.gz")
-sha256sums=("7e44287dcc23c337b4952323ab207bf0104d1af6a667413368e1265184462d46")
+sha256sums=("4285eaaa9220c87aead5339c6fe9df37fe39dd0956296e5506d7a0d6e110edef")
 
 prepare() {
     cd "$pkgname-$pkgver"
