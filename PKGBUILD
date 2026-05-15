@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/aur.yml` republish.
 pkgname=buffr-bin
 _pkgname=buffr
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Vim-inspired browser. Native, GPU-accelerated. Rust + CEF. (binary release)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ options=(!strip !debug)
 
 source_x86_64=("buffr-${pkgver}-x86_64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v${pkgver}/buffr-${pkgver}-x86_64.tar.gz")
 source_aarch64=("buffr-${pkgver}-aarch64.tar.gz::https://github.com/kryptic-sh/buffr/releases/download/v${pkgver}/buffr-${pkgver}-aarch64.tar.gz")
-sha256sums_x86_64=('9a4b229fc7c299cf09c401cc9e5a57d62deae3dc225c72796eadccc29a3f6b8c')
-sha256sums_aarch64=('1a1a8c174ffa564e0bf46c3e6b6c7591508107aec08842870ecd165c2bb95b20')
+sha256sums_x86_64=('cde31adde5ddf1c085027322f3d11911537d6ba020ff53d48026a288a60e3858')
+sha256sums_aarch64=('d9c907b09c513aad2f71de95c7d47521363b48e1d21bac0b90db7425554025d9')
 
 package() {
     local _arch
