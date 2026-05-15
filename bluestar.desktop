@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bluestar Manager
+Categories=Game;Utility
+Icon=com.bluestar.manager
+Exec="bluestar-manager" %u
+Comment=Powerful mod manager for Sonic Racing: CrossWorlds
+StartupNotify=false
+MimeType=x-scheme-handler/bluestar;
