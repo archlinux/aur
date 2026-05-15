@@ -1,0 +1,5 @@
+[jxplorer]
+source = "github"
+github = "pegacat/jxplorer"
+use_max_tag = true
+prefix = "v"
