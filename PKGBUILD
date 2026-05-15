@@ -1,6 +1,6 @@
 # Maintainer: 5c0 <admin@5c0.io>
 pkgname=metropolis
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="The cyberpunk system monitor for your terminal."
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,11 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b6d624b769ad4bd7e5c672e0db4da3879f2da2b17ab5c788895e18e2cbbcd054')
+sha256sums=('87b5b2c5e33b674961c8ef1680dc1fcb1b6d192d30faa52113f975c0c7aa8072')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
