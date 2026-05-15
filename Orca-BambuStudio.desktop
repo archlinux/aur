@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Orca-BambuStudio
-Exec=LD_PRELOAD=/usr/lib/libsharpyuv.so Orca-BambuStudio-1.0.0
+Exec=LD_PRELOAD=/usr/lib/libsharpyuv.so Orca-BambuStudio
 Icon=OrcaSlicer
 Type=Application
 PrefersNonDefaultGPU=true

@@ -25,7 +25,7 @@ if [ -f "Orca-BambuStudio.desktop" ]; then
   cd "$srcdir"
 
   chmod +x "${_pkgname}-${pkgver}.AppImage"
-  install -Dm755 "${_pkgname}-${pkgver}.AppImage" "$pkgdir/usr/bin/${_pkgname}-${pkgver}"
+  install -Dm755 "${_pkgname}-${pkgver}.AppImage" "$pkgdir/usr/bin/${_pkgname}"
 
   ./"${_pkgname}-${pkgver}.AppImage" --appimage-extract &>/dev/null
 
