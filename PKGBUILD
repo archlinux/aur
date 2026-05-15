@@ -1,15 +1,15 @@
 pkgname=dusk-bin
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
-url="https://github.com/TwilitRealm/dusk"
+url="https://github.com/TwilitRealm/dusklight"
 license=('GPL')
 depends=('glibc' 'gcc-libs' 'curl' 'freetype2' 'libidn2' 'rtmpdump' 'libssh' 'libpsl' 'openssl' 'krb5' 'openldap' 'zstd' 'brotli' 'zlib' 'bzip2' 'libpng' 'libunistring' 'gnutls' 'nettle' 'gmp' 'e2fsprogs' 'cyrus-sasl' 'p11-kit' 'libtasn1' 'keyutils' 'libffi')
 makedepends=('unzip')
-source=("dusk" "https://github.com/TwilitRealm/dusk/releases/download/v$pkgver/Dusk-v$pkgver-linux-x86_64.AppImage")
+source=("dusk" "https://github.com/TwilitRealm/dusk/releases/download/v$pkgver/Dusklight-v$pkgver-linux-x86_64.AppImage")
 sha256sums=('61a2a82768320fdbd9de2cf8ab83d2dd247eada4b80970e746219aa0f8c519aa'
-            '91c46a77f5e5071fcac7a52c21821a927ce2e9301bbb3724675b2040771f5017')
+            'f01b4ad576461f1c3611b6e0ca657cea0be760f60ee9f89961076e791b3ca163')
 
 package() {
     install -dm755 "$pkgdir/usr/bin/Dusk"
