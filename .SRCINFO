@@ -13,6 +13,8 @@ pkgbase = gbe-plus-git
 	conflicts = gbe-plus-rec
 	conflicts = gbe-plus-rec-git
 	source = git+https://github.com/shonumi/gbe-plus.git
+	source = gbe_plus.desktop
 	sha256sums = SKIP
+	sha256sums = 22438f75def3d5ccc06b662f9120508eb0a77ca199bbca9aefba59f6294cc5b3
 
 pkgname = gbe-plus-git
