@@ -1,6 +1,5 @@
 #!/bin/bash
 
-dir=$(dirname "$(readlink -f "$0")")
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -h|-H|-help)
@@ -16,13 +15,13 @@ while [[ "$#" -gt 0 ]]; do
         -n)
             if [ -n "$2" ]; then
 
-                touch "$dir/$2.txt"
+                touch "spinner_wheels/$2.txt"
                 IFS="," read -a values -p "Enter the elements of wheel seperated by a comma: "
                 for n in ${values[*]};
                 do
                     echo "$n"
                 done
-                readarray -t text_files < <(ls | grep ".txt" | sed 's/[".txt"]//g') # Reads direcotry for txt files
+                readarray -t text_files < <(ls spinner_wheels | grep ".txt" | sed 's/[".txt"]') # Reads direcotry for txt files
                 echo "Available wheels: ${text_files[@]}"
                 exit
             else
@@ -33,9 +32,9 @@ while [[ "$#" -gt 0 ]]; do
 
         -N|-e|-E)
             if [ -n "$2" ]; then
-                touch "$dir/$2.txt"
-                nano "$dir/$2.txt"
-                readarray -t text_files < <(ls | grep ".txt" | sed 's/[".txt"]//g') # Reads direcotry for txt files
+                touch "spinner_wheels/$2.txt"
+                nano "spinner_wheels/$2.txt"
+                readarray -t text_files < <(ls spinner_wheels | grep ".txt" | sed 's/[".txt"]') # Reads direcotry for txt files
                 echo "Available wheels: ${text_files[@]}"
                 exit
             else
@@ -44,7 +43,7 @@ while [[ "$#" -gt 0 ]]; do
             fi
             ;;
         -l|-L)
-            readarray -t text_files < <(ls | grep ".txt" | sed 's/[".txt"]//g') # Reads direcotry for txt files
+            readarray -t text_files < <(ls spinner_wheels | grep ".txt" | sed 's/[".txt"]') # Reads direcotry for txt files
             for item in ${text_files[@]}; do 
                 echo $item; 
             done
@@ -65,7 +64,7 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
-readarray -t text_files < <(ls | grep ".txt" | sed 's/[".txt"]//g') # Reads direcotry for txt files
+readarray -t text_files < <(ls spinner_wheels | grep ".txt" | sed 's/[".txt"]//g') # Reads direcotry for txt files
 if [ -n "$MAIN_ARG" ]; then
     if [[ " ${text_files[*]} " =~ " $MAIN_ARG " ]]; then
     # whatever you want to do when array contains value
