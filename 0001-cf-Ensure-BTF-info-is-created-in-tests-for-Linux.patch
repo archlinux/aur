@@ -1,0 +1,65 @@
+From b0c88086e95332adda1642503cf93c7ada7d0782 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 14 May 2026 13:32:23 -0600
+Subject: [PATCH] cf: Ensure BTF info is created in tests for Linux
+
+The OpenAFS configure build step fails on an ArchLinux system with a
+7.0.5-arch1-1.
+
+The configure test to determine how CFLAGS are passed to the Linux build
+process is failing in a post-compile step:
+    build/tools/bpf/resolve_btfids/resolve_btfids
+with the following messages:
+    Cannot find .BTF_ids or symbols sections, skip symbols resolution
+    FAILED: btf permute: Invalid argument
+    FAILED to sort BTF: Invalid argument
+
+The failure is during a step that is translating the dwarf debugging
+information into BTF.  BTF is the BPF Type Format that holds metadata
+used by the eBPF facility.
+
+Investigating the cause shows that the gcc compiler (16.1.1) with the
+default ArchLinux kernel build -O2 option results in optimizing out the
+debugging information related to the formal parameter
+(DW_TAG_formal_parameter) for the conftest function.
+
+The failure within resolve_btfids can be resolved by simply adding a
+function that references its parameter in a fashion that the compiler
+doesn't strip out the debugging information.  It's sufficient to simply
+have any DW_TAG_formal_parameter present in the compiler output.
+
+Add a dummy function, conftest_dummy() to the template that is used to
+create the C code used for by configure when testing for Linux kernel
+features.  Adding the separate function to the template avoids altering
+the function body used by the existing Linux kernel feature checks.
+
+The build failure was reported to the OpenAFS-devel mailing list by
+Michael Dressel <michael.dressel@desy.de> with the following information
+
+  dkms install --no-depmod openafs/1.8.16pre1 -k 7.0.5-arch1-1
+
+  Error! Bad return status for module build on kernel: 7.0.5-arch1-1 (x86_64)
+  Consult /var/lib/dkms/openafs/1.8.16pre1/build/make.log for more information.
+
+Change-Id: Ib03a673f6572c5c564274129987a1170b155e618
+---
+ src/cf/linux-test1.m4 | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/cf/linux-test1.m4 b/src/cf/linux-test1.m4
+index fbe3c1aa8..a700d1e8d 100644
+--- a/src/cf/linux-test1.m4
++++ b/src/cf/linux-test1.m4
+@@ -22,6 +22,9 @@ void conftest(void)
+ $2
+ } 
+ 
++void conftest_dummy(int *x);
++void conftest_dummy(int *x) {*x = 1;}
++
+ MODULE_LICENSE("http://www.openafs.org/dl/license10.html");
+ MODULE_DESCRIPTION("openafs conftest");
+ _ACEOF
+-- 
+2.54.0
+
