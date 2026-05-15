@@ -1,0 +1,4 @@
+[trojita]
+source = "regex"
+url = "https://sourceforge.net/projects/trojita/files/"
+regex = "trojita-([\\d.]+)\\.tar"
