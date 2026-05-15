@@ -1,7 +1,7 @@
 # Maintainer: prayjofir <210920094+prayjofir@users.noreply.github.com>
 # Description: 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 pkgname=anitr-cli-git
-pkgver=r0.main
+pkgver=r1.dummy
 pkgrel=1
 pkgdesc="🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı"
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,12 @@ build() {
   export GOFLAGS="-mod=mod"
   export CGO_ENABLED=0
   go mod tidy
+  local _pkgver
+  _pkgver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
   go build -o build/anitr-cli \
-    -ldflags="-s -w"
+    -ldflags="-s -w \
+      -X 'github.com/prayjofir/anitr-cli/internal/update.version=${_pkgver}' \
+      -X 'github.com/prayjofir/anitr-cli/internal/update.buildEnv=$(go version)'"
 }
 
 package() {
