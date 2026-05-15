@@ -1,6 +1,6 @@
 pkgbase = motorbridge
 	pkgdesc = Unified CAN motor control stack with a vendor-agnostic Rust core, stable C ABI, and Python/C++ bindings
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/tianrking/motorbridge
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = motorbridge
 	options = !debug
 	options = staticlibs
 	options = !lto
-	source = motorbridge::git+https://github.com/tianrking/motorbridge.git#tag=v0.3.0
-	sha256sums = 6381ee81017e2451393adc8bca2fa70176a3052d8cb5189ef3b6a98198ced28c
+	source = motorbridge::git+https://github.com/tianrking/motorbridge.git#tag=v0.3.1
+	sha256sums = dea270c9bdb5584d9641db00b0abbed7c0ad161c5b4394e191717cfd6dc38806
 
 pkgname = motorbridge
 	arch = x86_64
