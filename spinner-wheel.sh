@@ -1,5 +1,6 @@
 #!/bin/bash
 
+dir=$(dirname "$(readlink -f "$0")")
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -h|-H|-help)
@@ -15,7 +16,7 @@ while [[ "$#" -gt 0 ]]; do
         -n)
             if [ -n "$2" ]; then
 
-                touch "$2.txt"
+                touch "$dir/$2.txt"
                 IFS="," read -a values -p "Enter the elements of wheel seperated by a comma: "
                 for n in ${values[*]};
                 do
@@ -32,8 +33,8 @@ while [[ "$#" -gt 0 ]]; do
 
         -N|-e|-E)
             if [ -n "$2" ]; then
-                touch "$2.txt"
-                nano "$2.txt"
+                touch "$dir/$2.txt"
+                nano "$dir/$2.txt"
                 readarray -t text_files < <(ls | grep ".txt" | sed 's/[".txt"]//g') # Reads direcotry for txt files
                 echo "Available wheels: ${text_files[@]}"
                 exit
