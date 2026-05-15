@@ -1,6 +1,6 @@
 # Maintainer: 5unekku <jimmy.bungalo8@gmail.com>
 pkgname=toss-git
-pkgver=0000000
+pkgver=r0.0000000
 pkgrel=1
 pkgdesc="XDG-compliant rm replacement that trashes instead of deletes"
 arch=('x86_64' 'aarch64')
