@@ -1,0 +1,30 @@
+pkgbase = perl-getopt-long-more
+	pkgdesc = Like Getopt::Long, but with more stuffs
+	pkgver = 0.007
+	pkgrel = 1
+	url = https://metacpan.org/dist/Getopt-Long-More
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-simple
+	checkdepends = perl-test-warn
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-carp>=1.12
+	depends = perl-complete-bash>=0.333
+	depends = perl-complete-fish
+	depends = perl-complete-getopt-long>=0.475
+	depends = perl-complete-tcsh
+	depends = perl-complete-util>=0.608
+	depends = perl-complete-zsh
+	depends = perl-exporter>=5.57
+	depends = perl-getopt-long>=2.50
+	depends = perl-scalar-list-utils
+	depends = perl-text-parsewords
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Getopt-Long-More-0.007.tar.gz
+	sha256sums = aeef47c28c4a11364281c452da8afc1b7348632c75fa35f30019bb96ff081c60
+
+pkgname = perl-getopt-long-more
