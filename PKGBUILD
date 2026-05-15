@@ -10,14 +10,14 @@ url="https://packages.debian.org/sid/cowdancer"
 license=('GPL')
 depends=('pbuilder'
          'ncurses'
-	 'ncurses5-compat-libs')
+         'ncurses5-compat-libs')
 makedepends=('quilt')
 optdepends=('qemu: if you want to use qemubuilder'
             'bash-completion: bash autocomplete support')
 
 source=(http://httpredir.debian.org/debian/pool/main/c/$pkgname/${pkgname}_${pkgver}.tar.xz
         series
-	makedev_glibc_fix.patch)
+        makedev_glibc_fix.patch)
 sha256sums=('4fbd0c6e2eafb98ef454eb8255611e42d48d151f49edf2e1f276686e0efd3b5f'
             'c7345323ff3cf9f3e7f7339319f06b14a001dd75fc7720ad4e58ae99db2a62ea'
             'ef983677d8218b3301f194129d9b97f39abf9a4463aa5b6da7b4c376b5b20ed1')
@@ -31,14 +31,15 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	autoreconf --install
-	./configure --prefix=/usr --sbindir=/usr/bin
-	make
+  cd "$srcdir/$pkgname-$pkgver"
+
+  autoreconf --install
+  ./configure --prefix=/usr --sbindir=/usr/bin
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
-	
+  cd "$srcdir/$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir" install
 }
