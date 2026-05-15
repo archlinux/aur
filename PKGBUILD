@@ -1,6 +1,6 @@
 # Maintainer: hyprarcher <hyprarcher@proton.me>
 pkgname=wayscriber-bin
-pkgver=0.9.18
+pkgver=0.9.19
 pkgrel=1
 pkgdesc='Screen annotation tool for Wayland compositors (prebuilt binaries)'
 arch=('x86_64')
@@ -24,8 +24,8 @@ backup=('usr/lib/systemd/user/wayscriber.service')
 provides=('wayscriber')
 conflicts=('wayscriber' 'wayscriber-debug')
 replaces=('wayscriber-debug')
-source_x86_64=("wayscriber-v0.9.18-linux-x86_64.tar.gz::https://github.com/devmobasa/wayscriber/releases/download/v0.9.18/wayscriber-v0.9.18-linux-x86_64.tar.gz")
-sha256sums_x86_64=('ac38721d442c0e7ecdd56ecdd83779d9197b06b65cd63feeb9cfe81cd836224f')
+source_x86_64=("wayscriber-v0.9.19-linux-x86_64.tar.gz::https://github.com/devmobasa/wayscriber/releases/download/v0.9.19/wayscriber-v0.9.19-linux-x86_64.tar.gz")
+sha256sums_x86_64=('7ffb8a1ce60ec3e8f4473e30aced1d0230d671c7277da90f871e53a4c27c4165')
 
 _tarball="wayscriber-v${pkgver}-linux-${CARCH}.tar.gz"
 
