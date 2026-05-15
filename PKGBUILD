@@ -3,7 +3,7 @@
 
 pkgname=zed-git
 _pkgname=${pkgname%-git}
-pkgver=0.234.5.r140.g280f8b1
+pkgver=1.3.2.r34.g4714220
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -40,11 +40,7 @@ makedepends=(cargo
              protobuf
              vulkan-headers
              vulkan-validation-layers)
-optdepends=('clang: improved C/C++ language support'
-            'eslint: improved Javascript language support'
-            'pyright: improved Python language support'
-            'rust-analyzer: improved Rust language support'
-            'org.freedesktop.secrets: to keep you logged into your Zed account')
+optdepends=('org.freedesktop.secrets: to keep you logged into your Zed account')
 replaces=(zed-editor-git)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
