@@ -1,0 +1,3 @@
+[perl-http-server-simple-psgi]
+source = "cpan"
+cpan = "HTTP-Server-Simple-PSGI"
