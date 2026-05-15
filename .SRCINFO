@@ -1,6 +1,6 @@
 pkgbase = mopytui-bin
 	pkgdesc = A feature-rich TUI client for Mopidy with cover art rendering (prebuilt binary)
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/prietus/mopytui
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mopytui-bin
 	provides = mopytui
 	conflicts = mopytui
 	conflicts = mopytui-git
-	source = mopytui-0.1.4-x86_64.tar.gz::https://github.com/prietus/mopytui/releases/download/v0.1.4/mopytui-linux-x86_64.tar.gz
-	sha256sums = e0a35051b60d4dcf965bea91f861c80c5258a2890acf572287fbc98e6f9c024e
+	source = mopytui-0.1.5-x86_64.tar.gz::https://github.com/prietus/mopytui/releases/download/v0.1.5/mopytui-linux-x86_64.tar.gz
+	sha256sums = 18ae076d00dc80cc566107507a28576e3e08f6b98a23fc15491f82c0e2b5a45e
 
 pkgname = mopytui-bin
