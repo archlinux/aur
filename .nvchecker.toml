@@ -1,0 +1,3 @@
+[perl-cookie-baker]
+source = "cpan"
+cpan = "Cookie-Baker"
