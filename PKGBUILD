@@ -2,7 +2,7 @@
 # Maintainer: k0kubun <takashikkbn@gmail.com>
 pkgname=xremap-niri-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (Niri Wayland Version)'
-pkgver=0.15.1
+pkgver=0.15.6
 pkgrel=1
 
 provides=('xremap')
@@ -13,12 +13,12 @@ options=('!debug')
 
 source=("LICENSE-$pkgver::https://raw.githubusercontent.com/xremap/xremap/v$pkgver/LICENSE")
 sha256sums=('60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343')
+sha256sums_x86_64=('6c90d0f3423a5275fbc2fa7992f5bbc42dcbd2753f8248c8b57b2ed09e532728')
+sha256sums_aarch64=('6b7883c5036bc763f276e108f8301a11d92ff4f58209b3ee61d4ea6e1f714a03')
 
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/xremap/xremap/releases/download/v$pkgver/xremap-linux-x86_64-niri.zip")
-sha256sums_x86_64=('bf63e41fbd77d6da93b2cc2e6389f5fc7458e19dae0e3d0a4d31ebbb730fcc36')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/xremap/xremap/releases/download/v$pkgver/xremap-linux-aarch64-niri.zip")
-sha256sums_aarch64=('11f44f8416489207bc5efeb1c0d917109a00de05045adb2bfeeff846c4c081b1')
 
 package() {
 	cd "$srcdir/"

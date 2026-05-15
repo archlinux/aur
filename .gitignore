@@ -1,6 +1,7 @@
 # makepkg artifacts
-*.zip
+*.AppImage
 *.pkg.tar.*
+*.deb
 pkg/
 src/
-LICENSE-*
+LICENSE
