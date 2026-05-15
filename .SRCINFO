@@ -1,7 +1,7 @@
 pkgbase = fastdownloader-bin
-	pkgdesc = A fast video/audio downloader in electron.js.(Prebuilt version.Use system-wide electron)
+	pkgdesc = A fast video/audio downloader for over 1800 websites! (Prebuilt version.Use system-wide electron)
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BERNARDO31P/FastDownloader
 	arch = x86_64
 	license = GPL-3.0-only

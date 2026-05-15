@@ -3,8 +3,8 @@ pkgname=fastdownloader-bin
 _pkgname=FastDownloader
 pkgver=0.8.5
 _electronversion=39
-pkgrel=1
-pkgdesc="A fast video/audio downloader in electron.js.(Prebuilt version.Use system-wide electron)"
+pkgrel=2
+pkgdesc="A fast video/audio downloader for over 1800 websites! (Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/BERNARDO31P/FastDownloader"
 license=('GPL-3.0-only')
@@ -51,7 +51,8 @@ prepare() {
     _check_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/ffmpeg_linux"
-    ln -sf "/usr/bin/yt-dlp" "${srcdir}/opt/${_pkgname}/resources/yt-dlp_linux"
+    #ln -sf "/usr/bin/yt-dlp" "${srcdir}/opt/${_pkgname}/resources/yt-dlp_linux"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/"{apparmor-profile,package-type}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
