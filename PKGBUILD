@@ -31,10 +31,12 @@ conflicts=('ymn')
 source=(
   'ymn::git+https://github.com/DarlingGoose/ymn.git#branch=main'
   'ymn.desktop'
+  'icon.svg'
 )
 sha256sums=(
   'SKIP'
-  'ff3dcc09fe17519f28df9b5d036d99a4097d7b8cea7f95206cce1beec428aac7'
+  'df60b7525f82e0cd8f1910eb2dff2b3d5892c04d9d6f1d30bc28c2b7d24d6468'
+  '77ab34aacd3b216c2c8a243c7a49903a675e0731010d3d421d08a4d200bf8314'
 )
 
 pkgver() {
@@ -84,5 +86,6 @@ package() {
 
   install -Dm755 build/ymn "$pkgdir/usr/bin/ymn"
   install -Dm644 "$srcdir/ymn.desktop" "$pkgdir/usr/share/applications/ymn.desktop"
+  install -Dm644 "$srcdir/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/ymn.svg"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
