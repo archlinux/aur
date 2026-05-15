@@ -1,16 +1,14 @@
 [Unit]
 Description=CPA Usage Keeper
 Documentation=https://github.com/Willxup/cpa-usage-keeper
-Wants=network-online.target
-After=network-online.target
 
 [Service]
 Type=simple
-DynamicUser=yes
 StateDirectory=cpa-usage-keeper
 StateDirectoryMode=0700
-WorkingDirectory=/var/lib/cpa-usage-keeper
-EnvironmentFile=/etc/cpa-usage-keeper.env
+WorkingDirectory=%S/cpa-usage-keeper
+EnvironmentFile=%E/cpa-usage-keeper/cpa-usage-keeper.env
+Environment=WORK_DIR=%S/cpa-usage-keeper
 ExecStart=/usr/bin/cpa-usage-keeper
 Restart=on-failure
 RestartSec=5s
@@ -18,8 +16,6 @@ TimeoutStopSec=30s
 UMask=0077
 NoNewPrivileges=yes
 PrivateTmp=yes
-ProtectSystem=strict
-ProtectHome=true
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

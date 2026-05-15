@@ -1,26 +1,33 @@
 post_install() {
     echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
     echo ::\ Copy\ the\ example\ configuration\ before\ starting\ the\ service:
-    echo \ \ \ sudo\ install\ -Dm600\ /usr/share/doc/cpa-usage-keeper-bin/cpa-usage-keeper.env.example\ /etc/cpa-usage-keeper.env
-    echo \ \ \ sudoedit\ /etc/cpa-usage-keeper.env
+    echo \ \ \ install\ -Dm600\ /usr/share/doc/cpa-usage-keeper-bin/cpa-usage-keeper.env.example\ ~/.config/cpa-usage-keeper/cpa-usage-keeper.env
+    echo \ \ \ \$EDITOR\ ~/.config/cpa-usage-keeper/cpa-usage-keeper.env
     echo ::\ CLIProxyAPI\ must\ publish\ usage\ events:\ set\ usage-statistics-enabled:\ true\ in\ CLIProxyAPI\ config.
-    echo ::\ Dashboard\ listens\ on\ APP_PORT\ from\ /etc/cpa-usage-keeper.env\,\ default\ 8080\ in\ the\ example.
+    echo ::\ Dashboard\ listens\ on\ APP_PORT\ from\ ~/.config/cpa-usage-keeper/cpa-usage-keeper.env\,\ default\ 8080\ in\ the\ example.
+    echo ::\ To\ start\ without\ an\ active\ login\ session\,\ enable\ linger:\ loginctl\ enable-linger\ \$USER
     echo ""
     echo ":: Service Management"
+    echo "   > User Level (Recommended):"
+    echo "     systemctl --user enable --now cpa-usage-keeper.service"
     echo "   > System Level:"
-    echo "     systemctl enable --now cpa-usage-keeper.service"
+    echo "     (System Service is not available for this package)"
 }
 
 post_upgrade() {
     echo ":: Service Management"
+    echo "   > User Level:"
+    echo "     systemctl --user daemon-reload"
+    echo "     systemctl --user restart cpa-usage-keeper.service"
     echo "   > System Level:"
-    echo "     systemctl daemon-reload"
-    echo "     systemctl restart cpa-usage-keeper.service"
+    echo "     (System Service is not available for this package)"
 }
 
 post_remove() {
     echo ":: Service Management"
-    echo "   > System Level:"
+    echo "   > User Level:"
     echo "     The service file has been removed. Stop the service if running:"
-    echo "     systemctl stop cpa-usage-keeper.service"
+    echo "     systemctl --user stop cpa-usage-keeper.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
 }
