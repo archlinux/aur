@@ -1,6 +1,6 @@
 pkgbase = otpclient
 	pkgdesc = A simple GTK+ v3 TOTP/HOTP client
-	pkgver = 5.0.2
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://github.com/paolostivanin/OTPClient
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = otpclient
 	depends = qrencode>4.0.2,
 	depends = libayatana-appindicator
 	provides = otpclient
-	source = otpclient-5.0.2.tar.gz::https://github.com/paolostivanin/OTPClient/archive/v5.0.2.tar.gz
-	source = otpclient-5.0.2.tar.gz.asc::https://github.com/paolostivanin/OTPClient/releases/download/v5.0.2/v5.0.2.tar.gz.asc
+	source = otpclient-5.0.3.tar.gz::https://github.com/paolostivanin/OTPClient/archive/v5.0.3.tar.gz
+	source = otpclient-5.0.3.tar.gz.asc::https://github.com/paolostivanin/OTPClient/releases/download/v5.0.3/v5.0.3.tar.gz.asc
 	validpgpkeys = 060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64
-	sha256sums = 7ed99b1ab270189354f07a1229bf58cb9a9b4e7896b852cd1363e80ceb367076
+	sha256sums = 0ea8e9016e46e30e7080420906d1d69da892d3fe9c1033cd050fd72c4bd6b3a5
 	sha256sums = SKIP
 
 pkgname = otpclient
