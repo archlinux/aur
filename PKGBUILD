@@ -10,7 +10,7 @@ options=('!strip' '!debug' '!zipman' '!emptydirs')
 _pkgfile="next-music_3.6.6_x64.pkg.tar.zst"
 _pkgtag="v3.6.6"
 source=("${_pkgfile}::https://github.com/Web-Next-Music/Next-Music-Client/releases/download/${_pkgtag}/${_pkgfile}")
-sha256sums=('23103de74b109e5bda2e3197da9965e725260b9877fff522f3b8b6736d44f5db')
+sha256sums=('2d0d758922eae20ea2c2a3718a13b4ab61ee40a0044863b801589d158c0d840f')
 noextract=("${_pkgfile}")
 
 package() {

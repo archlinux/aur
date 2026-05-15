@@ -11,6 +11,6 @@ pkgbase = next-music
 	options = !zipman
 	options = !emptydirs
 	source = next-music_3.6.6_x64.pkg.tar.zst::https://github.com/Web-Next-Music/Next-Music-Client/releases/download/v3.6.6/next-music_3.6.6_x64.pkg.tar.zst
-	sha256sums = 23103de74b109e5bda2e3197da9965e725260b9877fff522f3b8b6736d44f5db
+	sha256sums = 2d0d758922eae20ea2c2a3718a13b4ab61ee40a0044863b801589d158c0d840f
 
 pkgname = next-music
