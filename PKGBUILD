@@ -1,21 +1,33 @@
 # Maintainer: Stitchless
+# Maintainer: k0kubun <takashikkbn@gmail.com>
 pkgname=xremap-kde-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (KDE Wayland Version)'
-pkgver=0.15.6
+pkgver=0.15.7
 pkgrel=1
+
 provides=('xremap')
 license=('MIT')
 url='https://github.com/xremap/xremap'
 arch=('x86_64' 'aarch64')
-source=("LICENSE")
-b2sums=('5caf7612d5d1e636a60ad68135f621413b3681e4cda0e2e5d5c76e05d3adf15bc7b5cc030c7b26270fa3dfef181456bfd07d1d3330008564f1e82921eef5d16a')
-b2sums_x86_64=('3f55c249cecb4546fa847721d3e0a777fe84ada14e0fb45268602e217e77101ff76cd09ed8b8f177c9f2f62c7f9c43890bba3d946a100895fd032081061845a7')
-b2sums_aarch64=('e810d932e700f8df086d8b959fc1fee5ce1b0d49fd2cbba5ae1a1cf12069dae3260b0a328b3bc016b00c1d6f02e9bffd8b5a97e5c37dd32c847f43ca5d4335cc')
+options=('!debug')
+
+source=("LICENSE-$pkgver::https://raw.githubusercontent.com/xremap/xremap/v$pkgver/LICENSE")
+sha256sums=('60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343')
+
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/xremap/xremap/releases/download/v$pkgver/xremap-linux-x86_64-kde.zip")
+sha256sums_x86_64=('6651930cb139336034e3d5641c6bbc5ff0ddc082f5763cbd54c13d717c0214b6')
+
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/xremap/xremap/releases/download/v$pkgver/xremap-linux-aarch64-kde.zip")
+sha256sums_aarch64=('e6f4afe09ced0eb5c2b82dcd26bdc71023c888cc523dc2abc256506985272e56')
 
 package() {
-    cd "$srcdir/"
-    install -Dm755 xremap "${pkgdir}/usr/bin/xremap"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/"
+	./xremap --completions zsh > zsh_completions
+	./xremap --completions fish > fish_completions
+	./xremap --completions bash > bash_completions
+	install -Dm644 zsh_completions "${pkgdir}/usr/share/zsh/site-functions/_xremap"
+	install -Dm644 fish_completions "${pkgdir}/usr/share/fish/vendor_completions.d/xremap.fish"
+	install -Dm644 bash_completions "${pkgdir}/usr/share/bash-completion/completions/xremap"
+	install -Dm755 xremap "${pkgdir}/usr/bin/xremap"
+	install -Dm644 "LICENSE-$pkgver" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
