@@ -21,7 +21,7 @@ pkgbase = fluxer-world-bin
 	conflicts = fluxer-world
 	options = !strip
 	options = !debug
-	source = fluxer-world-1.0.79-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v1.0.80/Fluxer-World-1.0.80-linux-x64.tar.gz
+	source = fluxer-world-1.0.80-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v1.0.80/Fluxer-World-1.0.80-linux-x64.tar.gz
 	sha256sums = 1f2739e59fb556ed520686f3e5c68f32cf6a799ffa429298ad437062c9a0662c
 
 pkgname = fluxer-world-bin
