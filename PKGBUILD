@@ -8,8 +8,10 @@ arch=('x86_64')
 url="https://github.com/Nexus-Mods/Vortex"
 license=('GPL-3.0-or-later')
 
-depends=('gtk3' 'nss' 'libxss' 'libnotify' 'libappindicator' 'libsecret' 'nodejs' 'dotnet-runtime-9.0')
-makedepends=('git' 'pnpm' 'npm' 'yarn' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
+depends=('gtk3' 'nss' 'libxss' 'libsecret' 'dotnet-runtime-9.0')
+optdepends=('libappindicator: system tray icon support'
+            'libnotify: desktop notifications')
+makedepends=('git' 'pnpm' 'npm' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
 
 provides=('vortex')
 conflicts=('vortex' 'vortex-git' 'vortex-linux')
