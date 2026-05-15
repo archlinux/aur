@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Re-sync from CachyOS upstream linux-cachyos-rc/{PKGBUILD,config}, then
-# re-apply the px13 customization on top. Called from ~/aur/update-all.sh.
+# re-apply the px13 customization on top. Called from ~/distsystem/aur/update-all.sh.
 # Argument: new version reported by nvchecker (e.g. "7.1-rc3-2")
 set -euo pipefail
 cd "$(dirname "$(readlink -f "$0")")"
