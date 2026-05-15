@@ -12,12 +12,14 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "cheetah-fetch-main"
+    # Musisz wejść do folderu linux, bo tam jest Makefile
+    cd "cheetah-fetch-main/linux"
     make
 }
 
 package() {
-    cd "cheetah-fetch-main"
+    # Tu tak samo - pliki binarne i README są w podfolderach
+    cd "cheetah-fetch-main/linux"
 
     # Install binary
     install -Dm755 cheetahfetch "$pkgdir/usr/bin/cheetahfetch"
@@ -25,7 +27,8 @@ package() {
     # cfetch symlink
     ln -sf /usr/bin/cheetahfetch "$pkgdir/usr/bin/cfetch"
 
-    # License
+    # License (zakładając, że LICENSE jest w głównym folderze)
+    cd ..
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # README
