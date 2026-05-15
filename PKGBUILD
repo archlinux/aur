@@ -1,7 +1,7 @@
 # Maintainer: Charlotte <cemetery394@gmail.com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron-neo-git
-pkgver=2026.04.27.r113.ga27c902
+pkgver=2026.04.27.r116.g6bd30f6
 pkgrel=1
 pkgdesc="Nintendo Switch emulator fork from citron (git version)"
 arch=('x86_64')
@@ -157,7 +157,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCITRON_USE_BUNDLED_FFMPEG=OFF \
     -DCITRON_USE_BUNDLED_QT=OFF \
-    -DCITRON_USE_EXTERNAL_VULKAN_HEADERS=OFF \
+    -DCITRON_USE_EXTERNAL_VULKAN_HEADERS=ON \
     -DCITRON_USE_EXTERNAL_SDL2=OFF \
     -DCITRON_USE_QT_MULTIMEDIA=ON \
     -DCITRON_USE_QT_WEB_ENGINE=ON \
