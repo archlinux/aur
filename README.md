@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 2.0.0-3
+- **Versión:** 2.0.0-4
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.3-arch1-2)
@@ -157,7 +157,9 @@ exports.epicGamesLauncher = "linux" === process.platform
 Cualquier llamada a `winapi.RegGetValue()` etc. lanza `TypeError: winapi.RegGetValue is not a function`,
 que es difícil de depurar.
 
-**Fix:** Reemplazar el `{}` por un `Proxy` que genera un error claro indicando qué función fue llamada:
+**Fix:** Reemplazar el `{}` por un `Proxy` que devuelve funciones no-op silenciosas.
+Un Proxy que lanza excepciones es inseguro porque algunas propiedades (`SetProcessPreferredUILanguages`)
+son accedidas por webpack al cargar el módulo, antes de cualquier try/catch, causando un crash de inicio.
 
 ```js
 // antes
@@ -166,9 +168,7 @@ module.exports = {};
 // después
 module.exports = new Proxy({}, {
   get: function(t, p) {
-    return function() {
-      throw new TypeError('winapi: ' + String(p) + ' not available on Linux');
-    };
+    return function() { return undefined; };
   },
 });
 ```
@@ -254,7 +254,7 @@ vortex-aur-fix/
 
 ---
 
-## Prueba de funcionamiento — 2026-05-15 (pkgrel=3)
+## Prueba de funcionamiento — 2026-05-15 (pkgrel=4)
 
 Probado en Arch Linux (kernel 7.0.3-arch1-2):
 
@@ -267,6 +267,7 @@ Probado en Arch Linux (kernel 7.0.3-arch1-2):
 | Localización manual de juegos (browse dialog) | ✓ |
 | Sin crash por `epicGamesLauncher` null | ✓ |
 | Sin banner de error `gamebryo-plugin-management` | ✓ |
+| Sin crash de inicio por winapi-bindings | ✓ |
 | Login cuenta Nexus Mods Premium | ✓ |
 | Links NXM (descarga con un clic) | ✓ |
 | Instalación de mods | ✓ |
@@ -280,6 +281,7 @@ Probado en Arch Linux (kernel 7.0.3-arch1-2):
 | 1 | Build inicial: dependencias, pnpm, dotnet, patches básicos (requiredFiles, StarterInfo, browseGameLocation) |
 | 2 | Fix REDmod (95 backslash paths en extensión Cyberpunk 2077); elimina error gamebryo-plugin-management |
 | 3 | epicGamesLauncher stub; winapi-bindings Proxy; binarios Linux para Starbound, TF2, RimWorld, War Thunder; filtro de archivos corregido |
+| 4 | winapi-bindings: Proxy no-op silencioso en lugar de Proxy que lanza (fix crash de inicio por SetProcessPreferredUILanguages) |
 
 ---
 

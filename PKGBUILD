@@ -2,7 +2,7 @@
 # Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches"
 arch=('x86_64')
@@ -257,14 +257,13 @@ RENDERER_PATCHES = [
 
 WINAPI_PATCHES = [
     {
-        "name": "winapi-bindings — Proxy stub with useful errors on Linux",
+        "name": "winapi-bindings — silent no-op Proxy on Linux (avoid startup crash)",
         "old": "module.exports = {};",
         "new": (
             "module.exports=new Proxy({},{"
             "get:function(t,p){"
-            "return function(){"
-            "throw new TypeError('winapi: '+String(p)+' not available on Linux');"
-            "};}});"
+            "return function(){return undefined;};"
+            "}});"
         ),
     },
 ]

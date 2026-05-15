@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 2.0.0-3
+**Current release:** 2.0.0-4
 
 ---
 
@@ -196,7 +196,12 @@ when a game plugin calls any method (e.g. `winapi.RegGetValue(...)`) it gets
 about what the caller was trying to do. Most such calls are wrapped in try/catch and
 fail gracefully, but the error message is confusing when debugging.
 
-**Fix:** Replace the empty object with a `Proxy` that generates descriptive errors.
+**Fix:** Replace the empty object with a `Proxy` that returns silent no-op functions.
+Using a throwing Proxy is unsafe because some winapi properties (e.g. `SetProcessPreferredUILanguages`)
+are accessed at module-require time by webpack, before any try/catch can intercept the error,
+causing an unhandled startup crash. The no-op Proxy returns `undefined` silently, matching
+the behavior of the original `{}` (where accessing a missing key returns `undefined`) while
+also surviving direct calls on the returned value.
 
 ```js
 // before
@@ -205,15 +210,12 @@ module.exports = {};
 // after
 module.exports = new Proxy({}, {
   get: function(t, p) {
-    return function() {
-      throw new TypeError('winapi: ' + String(p) + ' not available on Linux');
-    };
+    return function() { return undefined; };
   },
 });
 ```
 
-The runtime behaviour is identical (all registry/winapi calls still throw/catch),
-but the error message now identifies which function was called.
+All registry/winapi calls still silently fail and their callers' `.catch()` handlers fire normally.
 
 ---
 
@@ -363,3 +365,4 @@ makepkg -si
 | 2.0.0-1 | Initial build: dependency fixes, pnpm/dotnet support, core patches 1–4 |
 | 2.0.0-2 | Cyberpunk 2077 extension: fix 95 Windows backslash paths (REDmod detection); remove gamebryo-plugin-management requireExtension calls |
 | 2.0.0-3 | epicGamesLauncher null-safe stub (patch 5); winapi-bindings Proxy; native Linux binaries for Starbound, TF2, RimWorld, War Thunder; correct file browser filter context |
+| 2.0.0-4 | winapi-bindings: switch from throwing Proxy to silent no-op Proxy (fix unhandled startup crash on SetProcessPreferredUILanguages) |
