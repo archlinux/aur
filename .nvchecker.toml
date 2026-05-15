@@ -1,0 +1,5 @@
+[newsboat-og]
+source = "github"
+github = "andreasbaumann/newsboat-og"
+use_max_tag = true
+prefix = "r"
