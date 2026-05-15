@@ -1,0 +1,20 @@
+pkgbase = audium-bin
+	pkgdesc = A keyboard-driven music app for people who live in the terminal.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/takashialpha/audium
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = alsa-lib
+	provides = audium
+	conflicts = audium
+	source = README-1.1.0.md::https://raw.githubusercontent.com/takashialpha/audium/v1.1.0/README.md
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/takashialpha/audium/v1.1.0/LICENSE
+	sha256sums = 041a50c9963c05b9f4bbad20055cae184702f81f2898aa5142eac7c356e309aa
+	sha256sums = a24266a5d80f4172e4356c8cdb0b72c0cc884f27afcc7f274a7a6a15eba5f366
+	source_x86_64 = audium-bin-x86_64-1.1.0.tgz::https://github.com/takashialpha/audium/releases/download/v1.1.0/audium-v1.1.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = e7781999e65e4e5ee8b06ab676d2d9abbe0e825d2996e197d9a4013ece9fa99a
+
+pkgname = audium-bin

@@ -1,0 +1,5 @@
+[audium-bin]
+source = "github"
+github = "takashialpha/audium"
+use_max_tag = true
+prefix = "v"
