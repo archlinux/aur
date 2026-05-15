@@ -145,7 +145,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=6.18
-_minor=30
+_minor=31
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -213,7 +213,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=1c702dda346a59e05cfd3029569bbb1d5d91c54b")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=6330a45b06d20125de679aae5f63ba14082671ef")
 fi
 
 
@@ -746,5 +746,5 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('0ad974535e74f3c7650fed5fe1a6f0f0bae0bc2f3ac822f1e7b71656ef0451a9ddcf34bab9d5a69086e7f8f23959d0a8a1fe2ef0bb16cad2886bac9ed3957faa'
+b2sums=('ebe18cae6546bd712d73b0da076c5ef8d99a91e50f5431ce17a4a561634df1924dfa0fae0c85f1ca38c577ab879dfafd3d308e0936f175bd3a98921f20512513'
         '81fafd3adcaf3b690d8d4791693e68c7ae921d103ebfd70e8d0ae15cd05ecde5e6672ae43c3a7875686d883c1f5b82d2c8b37b40aee8dcb0563913f9dd6469b6')
