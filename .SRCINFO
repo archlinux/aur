@@ -1,7 +1,7 @@
 pkgbase = python-mingus
 	pkgdesc = A package for Python used by programmers, musicians, composers and researchers to make and investigate music.
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bspaans/python-mingus
 	arch = any
 	license = custom:GNU General Public License (GPL)
