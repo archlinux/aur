@@ -1,6 +1,6 @@
 # Maintainer: André LECLERCQ <andre.leclercq.io@protonmail.com>
 pkgname=mattermost-desktop-bin
-pkgver=6.1.2
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Mattermost Desktop application (precompiled binary)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'at-spi2-core' 'libcups' 'libxrandr')
 provides=('mattermost-desktop')
 conflicts=('mattermost-desktop')
 source=("mattermost-desktop-${pkgver}-linux-x64.tar.gz::https://releases.mattermost.com/desktop/${pkgver}/mattermost-desktop-${pkgver}-linux-x64.tar.gz")
-sha256sums=('a4ad8ea37d4ffa26d972ee8b235592048cf904ff84f389304f9da16eb5e7bfbe')
+sha256sums=('43ff4e0384ed7b786c31b0eb800760f3b111de0d7431e127e845d22aef6b2fb5')
 options=('!strip')
 
 package() {
