@@ -2,12 +2,12 @@
 
 pkgname=elio
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Snappy, batteries-included terminal file manager with rich previews, inline images, bulk actions, and trash support'
 arch=('x86_64')
 url='https://elio-fm.github.io/'
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'hicolor-icon-theme')
 makedepends=('cargo')
 conflicts=('elio-bin')
 options=('!lto')
@@ -39,4 +39,14 @@ package() {
   install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  if [[ -f "packaging/linux/${pkgname}.desktop" ]]; then
+    install -Dm644 "packaging/linux/${pkgname}.desktop" \
+      "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+    for size in 48 128 256 512; do
+      install -Dm644 "packaging/linux/icons/hicolor/${size}x${size}/apps/${pkgname}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+    done
+  fi
 }
