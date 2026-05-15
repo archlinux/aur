@@ -6,7 +6,7 @@
 pkgname=forkgram-bin
 _pkgname=forkgram
 pkgver=6.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Forkgram is the fork of the official Telegram Desktop application - Static binary"
 arch=(x86_64)
 url="https://github.com/Forkgram/tdesktop"
@@ -26,6 +26,8 @@ optdepends=(
     'libappindicator-gtk3: to hide Telegram in the tray bar in GTK3-based desktop environment'
     'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
+provides=("forkgram=${pkgver}")
+conflicts=("forkgram")
 
 # Sources
 source=(
@@ -58,6 +60,9 @@ package() {
 	install -dm755 "$pkgdir/usr/bin"
 	install -dm755 "$pkgdir/usr/share/pixmaps/"
 	install -dm755 "$pkgdir/usr/share/applications/"
+
+	# Symling forkgram to Forkgram to compatibility with compiled package
+	ln -sf "/usr/bin/forkgram" "$pkgdir/usr/bin/Forkgram"
 
 	# Program
 	install -Dm755 "$srcdir/Forkgram" "$pkgdir/usr/bin/forkgram"
