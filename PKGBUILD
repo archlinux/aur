@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Mayrink <vncsmyrnk@gmail.com>
 pkgname=shell-utils-git
-pkgver=r273.fd5a75e # This gets auto-updated by the pkgver() function
+pkgver=r274.1cb1c01 # This gets auto-updated by the pkgver() function
 pkgrel=1
 pkgdesc="An attempt to be a shell-agnostic custom utilities tool."
 arch=('x86_64')
@@ -8,10 +8,11 @@ url="https://github.com/vncsmyrnk/shell-utils"
 license=('GPL-3.0')
 depends=()
 makedepends=('git' 'go')
-provides=('util')
-conflicts=('util')
+provides=('util' 'util-complete' 'util-fetch')
+conflicts=('util' 'util-complete' 'util-fetch')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+options=('!strip')
 
 pkgver() {
   cd "${pkgname%-git}" || return

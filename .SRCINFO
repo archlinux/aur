@@ -1,6 +1,6 @@
 pkgbase = shell-utils-git
 	pkgdesc = An attempt to be a shell-agnostic custom utilities tool.
-	pkgver = r273.fd5a75e
+	pkgver = r274.1cb1c01
 	pkgrel = 1
 	url = https://github.com/vncsmyrnk/shell-utils
 	arch = x86_64
@@ -8,7 +8,12 @@ pkgbase = shell-utils-git
 	makedepends = git
 	makedepends = go
 	provides = util
+	provides = util-complete
+	provides = util-fetch
 	conflicts = util
+	conflicts = util-complete
+	conflicts = util-fetch
+	options = !strip
 	source = git+https://github.com/vncsmyrnk/shell-utils.git
 	sha256sums = SKIP
 
