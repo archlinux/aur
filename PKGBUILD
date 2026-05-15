@@ -71,9 +71,24 @@ if [[ "${UE_WITH_FULL_DEBUG_INFO}" != "true" && "${UE_WITH_FULL_DEBUG_INFO}" != 
 fi
 
 # BuildGraph platform toggles
+
+_ue_arch="$(uname -m)"
+
 ## Set these as environment variables in /etc/makepkg.conf if you want predefined behavior
 if [[ "${UE_WITH_LINUX}" != "true" && "${UE_WITH_LINUX}" != "false" ]]; then
-  export UE_WITH_LINUX=true
+  if [[ "${_ue_arch}" =~ ^x86_64 ]]; then
+    export UE_WITH_LINUX=true
+  else
+    export UE_WITH_LINUX=false
+  fi
+fi
+
+if [[ "${UE_WITH_LINUX_ARM}" != "true" && "${UE_WITH_LINUX_ARM}" != "false" ]]; then
+  if [[ "${_ue_arch}" =~ ^aarch64 ]]; then
+    export UE_WITH_LINUX_ARM=true
+  else
+    export UE_WITH_LINUX_ARM=false
+  fi
 fi
 
 if [[ "${UE_WITH_MAC}" != "true" && "${UE_WITH_MAC}" != "false" ]]; then
@@ -155,8 +170,6 @@ _ue_polly_path="$(find /usr/lib /usr/lib64 -name 'LLVMPolly.so' -print -quit 2>/
 if [[ -n "${_ue_polly_path}" ]]; then
   export CFLAGS="${CFLAGS} -fplugin=LLVMPolly.so -mllvm=-polly -mllvm=-polly-ast-use-context -mllvm=-polly-vectorizer=stripmine -mllvm=-polly-invariant-load-hoisting -mllvm=-polly-run-inliner -mllvm=-polly-run-dce"
 fi
-
-_ue_arch="$(uname -m)"
 
 _ue_common_cflags="${_ue_opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fPIE -Wp,-D_FORTIFY_SOURCE=2"
 _ue_common_ldflags="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
@@ -287,12 +300,13 @@ prepare() {
   [[ "${UE_WITH_FULL_DEBUG_INFO}" == "true" ]]      && _ue_debug_text="yes"
   [[ "${UE_USE_DEFAULT_LOGO_AT_INSTALL}" == "0" ]]  && _ue_default_logo_text="no"
 
-  [[ "${UE_WITH_WIN64}" == "true" ]]    && _ue_target_platforms+=("Windows")
-  [[ "${UE_WITH_LINUX}" == "true" ]]    && _ue_target_platforms+=("Linux")
-  [[ "${UE_WITH_MAC}" == "true" ]]      && _ue_target_platforms+=("macOS")
-  [[ "${UE_WITH_TVOS}" == "true" ]]     && _ue_target_platforms+=("tvOS")
-  [[ "${UE_WITH_ANDROID}" == "true" ]]  && _ue_target_platforms+=("Android")
-  [[ "${UE_WITH_IOS}" == "true" ]]      && _ue_target_platforms+=("iOS")
+  [[ "${UE_WITH_WIN64}" == "true" ]]     && _ue_target_platforms+=("Windows")
+  [[ "${UE_WITH_LINUX}" == "true" ]]     && _ue_target_platforms+=("Linux")
+  [[ "${UE_WITH_LINUX_ARM}" == "true" ]] && _ue_target_platforms+=("Linux (ARM)")
+  [[ "${UE_WITH_MAC}" == "true" ]]       && _ue_target_platforms+=("macOS")
+  [[ "${UE_WITH_TVOS}" == "true" ]]      && _ue_target_platforms+=("tvOS")
+  [[ "${UE_WITH_ANDROID}" == "true" ]]   && _ue_target_platforms+=("Android")
+  [[ "${UE_WITH_IOS}" == "true" ]]       && _ue_target_platforms+=("iOS")
 
   if (( ${#_ue_target_platforms[@]} > 0 )); then
     local IFS=", "
@@ -306,6 +320,7 @@ prepare() {
   msg "- Target architecture build:                ${_ue_arch_label}${_ue_arch_detail}"
   msg "- Use system clang:                         ${_ue_use_system_clang}"
   msg "- Integrate prebuilt shader cache:          ${_ue_ddc_text}"
+  msg ''
   msg "- Target platforms supported for export:    ${_ue_platforms_csv}"
   msg "- Game configurations:                      ${UE_GAME_CONFIGURATIONS}"
   msg "- Include full debug info:                  ${_ue_debug_text}"
@@ -404,6 +419,7 @@ build() {
     "${_ue_buildgraph_arch_arg[@]}" \
     -set:WithDDC="${UE_WITH_DDC}" \
     -set:WithLinux="${UE_WITH_LINUX}" \
+    -set:WithLinuxArm64="${UE_WITH_LINUX_ARM}" \
     -set:WithWin64="${UE_WITH_WIN64}" \
     -set:WithMac="${UE_WITH_MAC}" \
     -set:WithAndroid="${UE_WITH_ANDROID}" \
