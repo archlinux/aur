@@ -1,4 +1,3 @@
-# Maintainer Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=openvox-agent-bin
 _pkgname=openvox-agent
 pkgver=8.26.2
