@@ -1,0 +1,5 @@
+[ting-bin]
+source = "github"
+github = "dhth/ting"
+use_latest_release = true
+prefix = "v"

@@ -1,6 +1,6 @@
 pkgbase = ting-bin
 	pkgdesc = Audio feedback on the command line
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/dhth/ting
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ting-bin
 	depends = alsa-lib
 	provides = ting
 	conflicts = ting
-	source_x86_64 = ting-x86_64-0.1.0.tar.gz::https://github.com/dhth/ting/releases/download/v0.1.0/ting-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 35c4de1d634577adb16facc4171c071bc01ec467047aca8085f2d08fe0d1661e
+	source_x86_64 = ting-x86_64-0.1.1.tar.gz::https://github.com/dhth/ting/releases/download/v0.1.1/ting-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = d38d06f7729494a05b8603e87451ba06333377888eeb693481918ab8e9f48f80
 
 pkgname = ting-bin

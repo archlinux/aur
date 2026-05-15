@@ -3,7 +3,7 @@
 _pkgauthor=dhth
 _pkgname=ting
 pkgname=${_pkgname}-bin
-pkgver=0.1.0
+pkgver=0.1.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Audio feedback on the command line"
@@ -18,7 +18,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('35c4de1d634577adb16facc4171c071bc01ec467047aca8085f2d08fe0d1661e')
+sha256sums_x86_64=('d38d06f7729494a05b8603e87451ba06333377888eeb693481918ab8e9f48f80')
 
 
 package() {
