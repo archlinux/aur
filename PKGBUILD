@@ -1,7 +1,7 @@
 # Maintainer: artist for XLibre <artist4xlibre@proton.me>
 
 pkgname=sonic-win
-pkgver=6.6.4
+pkgver=6.6.5
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc='An easy to use, but flexible, X Window Manager for SonicDE'
@@ -76,7 +76,7 @@ provides=(kwin-x11)
 source=("${url}/archive/refs/tags/${_pkgtag}.tar.gz")
 install="$pkgname.install"
 options=(!debug)
-sha256sums=('d7d4c72ce1e519c2248f93f61bd1ddb1e49f9cf15fa13517cc226f92b8467447')
+sha256sums=('d9d1539b8a962dda9c9999326202f05b4a3eb484ffee97b620d33e3e9e73290a')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
