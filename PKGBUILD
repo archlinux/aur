@@ -1,7 +1,7 @@
 # Maintainer: Ismet Togay <ismet.togay+archlinux@gmail.com>
 
 pkgname=akia-bin
-pkgver=6.8.7
+pkgver=6.8.9
 pkgrel=1
 pkgdesc="TÜBİTAK AKİS smart card application"
 arch=('x86_64')
@@ -38,13 +38,11 @@ source=(
     'akia.install'
     'LICENSE'
 )
-sha256sums=(
-    '0d971eb5200a119b779b732144b4d9727bf1841fcb5c46bf3c0316f4df9d3e15'
-    'f5854b72bc40f08747e5c9c7fa35fb890d28265eadb8efd9adb8dfda0d6bfa20'
-    '2be59701fc5064051bb848eceb896bc90e25f5a141651576ce92c274fb01daf4'
-    '82bda1d0f457d0e25db5186d1526b59daeb0cdab7db33a874fb3dc66bc87985a'
-    '5afd2398f945b9d067e2e9834da1ee7d0a62fb3ed98bebbe13c65c7536697410'
-)
+sha256sums=('c49e963ce845e9e6287038d956225717f15eeff5a65461f5433e386380f0fdc6'
+            'f5854b72bc40f08747e5c9c7fa35fb890d28265eadb8efd9adb8dfda0d6bfa20'
+            '2be59701fc5064051bb848eceb896bc90e25f5a141651576ce92c274fb01daf4'
+            '82bda1d0f457d0e25db5186d1526b59daeb0cdab7db33a874fb3dc66bc87985a'
+            '5afd2398f945b9d067e2e9834da1ee7d0a62fb3ed98bebbe13c65c7536697410')
 
 # NOTE: namcap will warn that libakisp11.so lacks FORTIFY; this is a
 # pre-built vendor binary we cannot recompile, so the warning is accepted.
