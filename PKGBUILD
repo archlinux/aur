@@ -16,13 +16,6 @@ optdepends=(
 source=("git+$url")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/fren"
-  printf "r%s.%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
-}
-
 build() {
   cd "$srcdir/fren"
   cargo build --release --locked
