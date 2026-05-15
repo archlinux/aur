@@ -1,7 +1,7 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon-bin
 _pkgname=skwd-daemon
-pkgver=r71.e2fdfd5
+pkgver=r72.a70000f
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets precompiled'
 arch=('x86_64')
@@ -14,10 +14,11 @@ optdepends=(
   'linux-wallpaperengine: Wallpaper Engine scene rendering'
 )
 provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-debug")
+options=('!debug' '!strip')
 install="$_pkgname.install"
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('03fa40f918528d34f7bda06c7fc5cf7953503bd72624fdcbec3d16b87a447d66')
+sha256sums=('8426edea4ce4aaefdd8a1e09178e4768ceedb68a0ea8b38a34cbc9c00f49e0a4')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64"
