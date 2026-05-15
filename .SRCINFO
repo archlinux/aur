@@ -12,7 +12,6 @@ pkgbase = turso
 	makedepends = simsimd
 	depends = glibc
 	depends = libgcc
-	depends = oniguruma
 	options = !lto
 	source = turso-0.6.0.tar.gz::https://github.com/tursodatabase/turso/releases/download/v0.6.0/source.tar.gz
 	sha256sums = 2ce2f00763ed37aadf0f0822387cfde49bdaff9fa599790281031266bf919f83
