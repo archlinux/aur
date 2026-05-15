@@ -1,7 +1,7 @@
 # Maintainer: artist for Artix Linux
 
 pkgname=sonic-screen-library
-pkgver=6.6.4
+pkgver=6.6.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Screen management library for SonicDE Workspaces'
@@ -31,4 +31,4 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 }
 
-sha256sums=('b6160c2709ad6d5d6d7265161062a53e921c191d017c4638945193aa27c2c913')
+sha256sums=('bcd1aa17961ac061c395723d61ddeee76876db4decd6994c54407fc081aaa57a')
