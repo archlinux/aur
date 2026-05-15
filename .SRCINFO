@@ -7,12 +7,11 @@ pkgbase = min-ed-launcher
 	arch = x86_64
 	license = MIT
 	makedepends = dotnet-sdk-8.0-bin
-	makedepends = git
 	depends = zlib-ng-compat
 	depends = hicolor-icon-theme
 	depends = libstdc++
 	options = !strip
-	source = git+https://github.com/rfvgyhn/min-ed-launcher.git#tag=v0.12.2
-	sha256sums = 65d3962f8b45a46ed5fd0b014d7118c7f5d57fdeb35ce7376c587681318e2413
+	source = https://github.com/rfvgyhn/min-ed-launcher/archive/refs/tags/v0.12.2.tar.gz
+	sha256sums = 524a731a311a9a05e3ae1f83fa3f5bb487279da43da673fdabd82398809daa87
 
 pkgname = min-ed-launcher

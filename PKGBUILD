@@ -9,20 +9,19 @@ arch=('x86_64')
 license=(MIT)
 makedepends=(
     'dotnet-sdk-8.0-bin'
-    'git'
 )
 depends=(
     'zlib-ng-compat'
     'hicolor-icon-theme'
     'libstdc++'
 )
-source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('65d3962f8b45a46ed5fd0b014d7118c7f5d57fdeb35ce7376c587681318e2413')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('524a731a311a9a05e3ae1f83fa3f5bb487279da43da673fdabd82398809daa87')
 install=${pkgname}.install
 options=(!strip)
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
 
     dotnet restore -r linux-x64
     dotnet publish src/MinEdLauncher/MinEdLauncher.fsproj -r linux-x64 \
@@ -31,7 +30,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
 
     install -Dm 644 LICENSE \
         -t "$pkgdir/usr/share/licenses/$pkgname"
