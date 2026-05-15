@@ -1,0 +1,3 @@
+[python-postfix-policyd-spf]
+source = "pypi"
+pypi = "pypolicyd-spf"
