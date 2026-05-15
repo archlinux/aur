@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=searchtool-gtk
 pkgver=2.3.0
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A generic GTK search tool and launcher'
 url='https://github.com/v--/searchtool-gtk'
 arch=('any')
@@ -26,5 +26,5 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m755 dist/searchtool-gtk-activate "$pkgdir/usr/bin/searchtool-gtk-activate"
     install -D -m755 dist/searchtool-gtk-dmenu "$pkgdir/usr/bin/searchtool-gtk-dmenu"
-    install -D -m644 searchtool.json.default "$pkgdir/etc/xdg/searchtool.json"
+    install -D -m644 searchtool.toml "$pkgdir/etc/xdg/searchtool.toml"
 }
