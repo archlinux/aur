@@ -1,0 +1,67 @@
+diff --git a/man/rakarrack.1 b/man/rakarrack.1
+index d912a01..89d3503 100644
+--- a/man/rakarrack.1
++++ b/man/rakarrack.1
+@@ -1,22 +1,6 @@
+-.\"                                      Hey, EMACS: -*- nroff -*-
+-.\" First parameter, NAME, should be all caps
+-.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+-.\" other parameters are allowed: see man(7), man(1)
+-.TH RACKARRACK SECTION "abril  24, 2008"
+-.\" Please adjust this date whenever revising the manpage.
+-.\"
+-.\" Some roff macros, for reference:
+-.\" .nh        disable hyphenation
+-.\" .hy        enable hyphenation
+-.\" .ad l      left justify
+-.\" .ad b      justify to both left and right margins
+-.\" .nf        disable filling
+-.\" .fi        enable filling
+-.\" .br        insert line break
+-.\" .sp <n>    insert n+1 empty lines
+-.\" for manpage-specific macros, see man(7)
++.TH RACKARRACK "1" "January 31, 2010"
+ .SH NAME
+-rackarrack \- for guitar players and musicians ...
++rackarrack \- guitar effects processor for GNU/Linux
+ .SH SYNOPSIS
+ .B rakarrack
+ .RI [ options ] " files" ...
+@@ -39,28 +23,27 @@ Rakarrack is designed for Linux distributions with Jack Audio Connection Kit.
+ .TP
+ 
+ .PP
+-.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+-.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
+-.\" respectively.
+-
+ 
+ .SH OPTIONS
+-These programs follow the usual GNU command line syntax, with long
+-options starting with two dashes (`-').
+ A summary of options is included below.
++These programs follow the usual GNU command line syntax, with long options
++starting with two dashes (`-'). A summary of options is included below.
++
+ .TP
+ .B \-h, \-\-help
+ Show summary of options.
+ .TP
+ .B \-n, \-\-no-gui
+-disable GUI
++Disable GUI
+ .TP
+-.B \-b, \-\-Bank [File] 
++.B \-b, \-\-Bank [File]
+ Load a Bank File
+ .TP
+-.B \-l, \-\-Load [File] 
++.B \-l, \-\-Load [File]
+ Load a Preset File
+ 
+ .SH AUTHOR
+-This manual page was written by holborn <holborn@telefonica.net>,
++This manual page was written by holborn <holborn@telefonica.net> and has been
++modified by Tiago Bortoletto Vaz <tiago@debian.org> for the Debian
++distribution.
+ 

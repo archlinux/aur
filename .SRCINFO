@@ -1,25 +1,25 @@
 pkgbase = rakarrack
 	pkgdesc = Versatile guitar multi-effects processor
 	pkgver = 0.6.2+r194+ga620840
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://rakarrack.sourceforge.net
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = GPL-2.0-only
+	makedepends = git
 	makedepends = alsa-utils
 	makedepends = fftw
-	makedepends = fltk
-	makedepends = git
+	makedepends = fltk1.3
 	makedepends = jack
 	makedepends = libsndfile
 	makedepends = libxpm
-	source = rakarrack-a6208406d94a1da978f435605072ee5caefe1491::git+https://git.code.sf.net/p/rakarrack/git#commit=a6208406d94a1da978f435605072ee5caefe1491
-	source = rakarrack_fix_manpage.patch::https://sources.debian.org/data/main/r/rakarrack/0.6.1-9/debian/patches/04_fix_manpage.diff
-	source = rakarrack_fix_format-security.patch::https://github.com/dtimms/rakarrack/commit/55b3362d9b4f7bec167e6ada2444259fbae48979.patch?full_index=1
-	source = rakarrack_fix_segfault.patch::https://sources.debian.org/data/main/r/rakarrack/0.6.1-9/debian/patches/05_fix_segfault.diff
-	source = rakarrack_fix_icons_destdir.patch
-	source = rakarrack_fix_license_destdir.patch
+	source = rakarrack::git+https://git.code.sf.net/p/rakarrack/git#commit=a6208406d94a1da978f435605072ee5caefe1491
+	source = rakarrack_manpage.patch
+	source = rakarrack_format_security.patch::https://github.com/dtimms/rakarrack/commit/55b3362d9b4f7bec167e6ada2444259fbae48979.patch?full_index=1
+	source = rakarrack_segfault.patch
+	source = rakarrack_icons_destdir.patch
+	source = rakarrack_license_destdir.patch
 	source = rakarrack_improve_desktop.patch
 	b2sums = 0b241fb79fabb22d9baf364ca106e46cdbd68c461aef4cef5ff2bc9d7bdec13781f199f8d1b6da07f78885915540e74e4359aa512b4b80420e2030f902ab7d8c
 	b2sums = 778fe891dd2927e61539ce36a1cac419e0c05113a9f6a25ca13a6ea5155f11b1063bd8aa830c9c5ad4de732bd6901ccb13ea4414173ece3a99705103539fcafd
@@ -32,11 +32,12 @@ pkgbase = rakarrack
 pkgname = rakarrack
 	depends = alsa-lib
 	depends = fftw
-	depends = fltk
-	depends = gcc-libs
+	depends = fltk1.3
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = jack
+	depends = libgcc
+	depends = libstdc++
 	depends = libsamplerate
 	depends = libsndfile
 	depends = libx11

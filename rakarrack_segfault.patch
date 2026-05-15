@@ -1,0 +1,22 @@
+Description: Fix segfault with uninitialiized variable
+ Ppreset is uninitialized in this function, which leads to a 
+ segfault later on.
+
+ Thanks to Ben Wiederhake for finding the details.
+
+ The bug was forwarded to Ryan via private mail on 10 Mar 2018.
+
+Author: Stefan Potyra <stefan@potyra.de>
+Bug-Debian: https://bugs.debian.org/892077
+
+--- rakarrack-0.6.1.orig/src/Looper.C
++++ rakarrack-0.6.1/src/Looper.C
+@@ -28,7 +28,7 @@
+ #include <math.h>
+ #include "Looper.h"
+ 
+-Looper::Looper (float * efxoutl_, float * efxoutr_, float size)
++Looper::Looper (float * efxoutl_, float * efxoutr_, float size) : Ppreset(0)
+ {
+   efxoutl = efxoutl_;
+   efxoutr = efxoutr_;
