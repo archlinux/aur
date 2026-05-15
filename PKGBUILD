@@ -7,6 +7,7 @@ pkgdesc='AI-first coding environment'
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
+install=cursor-ai-bin.install
 depends=(xdg-utils ripgrep nodejs
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip !debug) # Don't break ext of VSCode
