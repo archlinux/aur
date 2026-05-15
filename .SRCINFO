@@ -1,0 +1,23 @@
+pkgbase = zellij-no-mouse-resize-bin
+	pkgdesc = Zellij with advanced_mouse_actions also gating pane mouse resize (binary)
+	pkgver = 0.44.3.r1
+	pkgrel = 1
+	url = https://zellij.dev
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	depends = zlib
+	depends = libz.so
+	provides = zellij
+	provides = zellij-no-mouse-resize
+	conflicts = zellij
+	conflicts = zellij-bin
+	conflicts = zellij-git
+	conflicts = zellij-no-mouse-resize
+	options = !strip
+	source_x86_64 = zellij-no-mouse-resize-bin-0.44.3.r1-x86_64.tar.gz::https://github.com/orange-guo/aur-packages/releases/download/zellij-no-mouse-resize-bin-v0.44.3.r1/zellij-no-mouse-resize-bin-0.44.3.r1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f31aafa8645d96caf29dfebbbd8d54bbcae778de95fb06ebd311a5b7fcca4ee0
+
+pkgname = zellij-no-mouse-resize-bin
