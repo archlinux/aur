@@ -1,7 +1,7 @@
 # Maintainer: ZaneFerns360 <zane.ferns360 at gmail dot com>
 
 pkgname=cachyos-themes-sddm-emerald
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="CachyOS Emerald SDDM Theme"
 arch=('any')
