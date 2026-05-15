@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-bin
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -36,7 +36,7 @@ conflicts=(
     'shiori-ebook-bin'
 )
 source=("Shiori_${pkgver}_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('56450de3b684f30f98a5444fff44feec9b8cac3b4f2b2abcb1c12d2ff74ff2d0')
+sha256sums=('4d8551920bed0733660644245a856a1a8a3ba6b045eefdf1cb712356115467d1')
 
 package() {
     bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
@@ -46,21 +46,29 @@ package() {
         return 1
     fi
 
+    if [[ ! -d "${pkgdir}/usr/lib/shiori" ]]; then
+        echo "Missing usr/lib/shiori in release tarball" >&2
+        return 1
+    fi
+
     if [[ ! -f "${pkgdir}/usr/share/applications/Shiori.desktop" ]]; then
         echo "Missing usr/share/applications/Shiori.desktop in release tarball" >&2
         return 1
     fi
 
-    # Hotfix: older release tarballs can contain absolute asset paths (/assets/*, /fonts/*)
-    # that break on some Linux/AUR installs and cause white screen.
-    while IFS= read -r -d '' index_html; do
+    # Harden runtime assets: rewrite absolute-root asset refs in shipped web bundle.
+    while IFS= read -r -d '' web_file; do
         sed -i \
-            -e 's|href="/assets/|href="./assets/|g' \
-            -e 's|src="/assets/|src="./assets/|g' \
-            -e 's|href="/fonts/|href="./fonts/|g' \
-            -e 's|href="/favicon\.png"|href="./favicon.png"|g' \
-            "${index_html}"
-    done < <(find "${pkgdir}/usr" -type f -name index.html -print0)
+            -e 's|"/assets/|"./assets/|g' \
+            -e "s|'\/assets/|'./assets/|g" \
+            -e 's|"/fonts/|"./fonts/|g' \
+            -e "s|'\/fonts/|'./fonts/|g" \
+            -e 's|"/favicon\.png"|"./favicon.png"|g' \
+            -e "s|'\/favicon\.png'|'./favicon.png'|g" \
+            -e 's|"/logo\.png"|"./logo.png"|g' \
+            -e "s|'\/logo\.png'|'./logo.png'|g" \
+            "${web_file}"
+    done < <(find "${pkgdir}/usr/lib/shiori" -type f \( -name '*.html' -o -name '*.js' -o -name '*.css' \) -print0)
 
     chmod -R u=rwX,go=rX "${pkgdir}/usr"
     chmod 755 "${pkgdir}/usr/bin/shiori"
