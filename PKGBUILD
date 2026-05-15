@@ -60,6 +60,6 @@ package() {
 	cd "$_sourcedir"
 	make PREFIX="$pkgdir" install
 	rm -rf ${pkgdir}/usr/share/rescached/
-	install -Dm644 $srcdir/$pkgname/GPL-3.0-only.txt \
+	install -Dm644 $srcdir/$pkgname/LICENSES/GPL-3.0-only.txt \
 		"${pkgdir}/usr/share/licenses/rescached/GPL-3.0-only.txt"
 }
