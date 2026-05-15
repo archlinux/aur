@@ -1,0 +1,4 @@
+[cadius]
+source = "github"
+github = "mach-kernel/cadius"
+use_latest_release = true
