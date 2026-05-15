@@ -1,8 +1,8 @@
 # Maintainer: Stephen Power <simpill at gmail dot com>
 
 pkgname=discord-rpc-lsp-git
-pkgrel=1
-pkgver=0.0.0
+pkgrel=2
+pkgver=1.0.1
 pkgdesc="A Language Server Protocol (LSP) to share what you're coding on Discord."
 arch=('any')
 url="https://github.com/zerootoad/discord-rpc-lsp"

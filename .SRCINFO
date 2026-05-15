@@ -1,7 +1,7 @@
 pkgbase = discord-rpc-lsp-git
 	pkgdesc = A Language Server Protocol (LSP) to share what you're coding on Discord.
-	pkgver = 0.0.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://github.com/zerootoad/discord-rpc-lsp
 	arch = any
 	license = GPL-3.0-or-later
