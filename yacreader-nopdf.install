@@ -1,0 +1,5 @@
+post_install() {
+	echo "Use YACReader to read your comics."
+	echo "Use YACReaderLibrary to manage your digital comic library."
+	echo "This build has no PDF backend; install 'yacreader' from the AUR if you need PDF support."
+}
