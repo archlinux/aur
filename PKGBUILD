@@ -1,5 +1,5 @@
 pkgname=iscsi-util
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=3
 pkgdesc="A simple and modern GUI for managing iSCSI."
 arch=('x86_64')

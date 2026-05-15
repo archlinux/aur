@@ -1,6 +1,6 @@
 pkgbase = iscsi-util
 	pkgdesc = A simple and modern GUI for managing iSCSI.
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 3
 	url = https://github.com/mijocecr/iscsi-util
 	arch = x86_64
