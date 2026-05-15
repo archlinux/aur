@@ -7,14 +7,15 @@ pkgbase = gbe-plus-git
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	depends = qt4
+	depends = qt5-base
 	depends = sdl2_net
-	provides = gbe-plus=r3206.107dc9a2
+	depends = dsl2_image
+	provides = gbe-plus
+	provides = gbe-plus-git
 	conflicts = gbe-plus
+	conflicts = gbe-plus-git
+	conflicts = gbe-plus-rec
 	source = git+https://github.com/shonumi/gbe-plus.git
-	source = cmake-install-location.patch
 	sha256sums = SKIP
-	sha256sums = 502f4cfb184338815285e27af59c5170d7298570332d48ff06b94f87e7054001
 
-pkgname = gbe-plus-git
-
+pkgname = gbe-plus-rec-git
