@@ -4,6 +4,9 @@
 # Contributor: pyjano <pyjano at protonmail dot com>
 
 pkgname=otf-ibm-plex
+epoch=2
+# Currently IBM Plex doesn't have a consistent version scheme across all fonts
+# so just use date of last commit and change pkgrel if needed.
 pkgver=2026.02.12
 pkgrel=2
 pkgdesc="IBM Plex typefaces in otf format"
