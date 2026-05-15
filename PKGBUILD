@@ -2,16 +2,16 @@
 
 pkgname=pi-coding-agent
 pkgver=0.74.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal-based coding agent with multi-model support, mid-session model switching, and a simple CLI for headless coding tasks'
 arch=('x86_64' 'aarch64')
-url='https://shittycodingagent.ai/'
+url='https://pi.dev/'
 license=('MIT')
 options=(!debug !strip)
 
-source_x86_64=("pi-linux-$pkgver.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v$pkgver/pi-linux-x64.tar.gz")
+source_x86_64=("pi-linux-$pkgver.tar.gz::https://github.com/earendil-works/pi/releases/download/v$pkgver/pi-linux-x64.tar.gz")
 sha256sums_x86_64=("d67657a30d49c9faca80868d2a4bdba4dfcac04702893f45a6d14b249345eb8d")
-source_aarch64=("pi-linux-$pkgver.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v$pkgver/pi-linux-arm64.tar.gz")
+source_aarch64=("pi-linux-$pkgver.tar.gz::https://github.com/earendil-works/pi/releases/download/v$pkgver/pi-linux-arm64.tar.gz")
 sha256sums_aarch64=("261aa912878ca983c903d9c4a0408310dd8637b583085651d9b5ddb70c9df572")
 noextract=("pi-linux-$pkgver.tar.gz")
 
