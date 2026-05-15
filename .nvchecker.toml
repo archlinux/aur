@@ -1,0 +1,3 @@
+[perl-getopt-long]
+source = "cpan"
+cpan = "Getopt-Long"
