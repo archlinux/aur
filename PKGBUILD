@@ -12,7 +12,7 @@ source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}
 sha256sums=('96d8ce491729e8c8ad7034a5093601409d8a3f4a34023d0be3db28650ecbb128')
 
 depends=('python')
-
+license=("Artistic-1.0-Perl AND MIT")
 makedepends=('python-setuptools')
 
 build() {
@@ -22,6 +22,6 @@ build() {
 
 package() {
     cd $_name-$pkgver
+    install -Dm644 LICENCE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     python setup.py install --root="$pkgdir" --optimize=1
 }
-
