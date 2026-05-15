@@ -2,7 +2,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname=reth
-pkgver=1.11.3
+pkgver=2.2.0
 pkgrel=4
 pkgdesc="A fast implementation of the Ethereum protocol in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/paradigmxyz/reth"
 license=('MIT' 'APACHE')
 makedepends=('git' 'cargo' 'clang')
 source=("git+https://github.com/paradigmxyz/reth.git#tag=v${pkgver}")
-b2sums=('e9bc650ba060009dfb01fc1bd86b8f64a6e8962e0cb9778fbea4b3c01dfa7231159de06c015afd7c5808aec9cc1b3a7aed6f85bfa4f7bc343ad8bd8361861507')
+b2sums=('ff6979a96e83d6553a5f8e1aee33828c6e8555c21e3f326b469b1dfed6f1e9dc27c3ea1de158ef5727ab10b91ef814e0f39f9b46b8a6ffdb3d65a585ce7ac068')
 options=('!lto' '!strip')
 
 prepare() {
