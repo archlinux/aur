@@ -25,7 +25,7 @@ options=(
   !debug
   !strip
 )
-_cjktty_repo="https://github.com/bigshans/cjktty-patches"
+_cjktty_repo="https://github.com/Capricornus007/cjktty-patches"
 _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
@@ -33,7 +33,7 @@ source=(
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/${pkgver}-${pkgrel}/config.x86_64   # the main kernel config file
 )
-source+=("https://github.com/bigshans/cjktty-patches/raw/refs/heads/master/v7.x/cjktty-7.0.patch"
+source+=("$_cjktty_repo/raw/master/v7.x/cjktty-7.0.8.patch"
          "$_cjktty_repo/raw/master/cjktty-add-cjk32x32-font-data.patch")
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -46,14 +46,14 @@ sha256sums=('1945afb22c9f4f7c78d971210f3bbb7deb09f5d8c41a38bfac772de25f6dcb22'
             'e2d13dc37abdd8ddb6b3e2767d2b8310c2342b56458d2cc73c414a9b50d767ab'
             'SKIP'
             '3861f45a8f5803f2dd901e1c2293296b78f0142c802139040a5f0d040eefa594'
-            'a38d6e7a727b6b5853068844791df5c5eb1b4b3a77ae7d53a9b6d291c2e53ea3'
+            'f17564fbe9c7424bdaaceb998c5d48102021dec11f3c0a4f2789383d1fd331c7'
             'c648ff21f0a5714743bbae85d6c6e1ed2bf961b6bca976d4c6b4c8d3f6b2739f')
 b2sums=('f608ac413f686d3d84ca7bb3d42fa96802e05a7fe8dd8ad6671bb26a8bd5202595cdbbaaee142f94fd9028ed2de832205523766673719960e20b5c0daebdae4b'
         'SKIP'
         '4d64f226336e535c04579cc41386c534ff71ff3653eee725c91ce2e7fc9e4e679b128ed9c40f6d63c85fc8345c7426f974ecb470413fa434507783c783e3ac7a'
         'SKIP'
         'c6260a3252fc2ffbefbb93389d03ee938e399be986eda24d00992b3834d7242e3866f05a3a07dde1da5c641fe737e0b0ff25159d1f31035b50e3923b4a671b4f'
-        '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
+        'b546565721ec4d3ae240f784715d2811a8243f477754575c42baeb1e11a990e28d6816d4ab684a27166148ecea4f9aa8982415f4a2f3c1ba5df876f91e4a5b9b'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
 
 
