@@ -1,0 +1,3 @@
+[perl-unix-passwd-file]
+source = "cpan"
+cpan = "Unix-Passwd-File"

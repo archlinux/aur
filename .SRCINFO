@@ -1,0 +1,29 @@
+pkgbase = perl-unix-passwd-file
+	pkgdesc = Manipulate /etc/{passwd,shadow,group,gshadow} entries
+	pkgver = 0.251
+	pkgrel = 1
+	url = https://metacpan.org/dist/Unix-Passwd-File
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-file-chdir
+	checkdepends = perl-file-copy-recursive
+	checkdepends = perl-file-path
+	checkdepends = perl-file-slurper
+	checkdepends = perl-file-temp
+	checkdepends = perl-findbin
+	checkdepends = perl-io
+	checkdepends = perl-lib
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-crypt-password-util>=0.06
+	depends = perl-experimental
+	depends = perl-file-flock-retry>=0.631
+	depends = perl-list-moreutils
+	depends = perl-scalar-list-utils>=1.45
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Unix-Passwd-File-0.251.tar.gz
+	sha256sums = 840e64e9f58de2d8ba8da47c041efc15e56696de39ea9c43be7f9b2283924261
+
+pkgname = perl-unix-passwd-file
