@@ -2,7 +2,7 @@
 
 pkgname=gopdf-git
 pkgver=0.1.20.r1.g1a4574b
-pkgrel=1
+pkgrel=2
 pkgdesc="MuPDF-backend PDF viewer written in Go with Lua configuration"
 arch=('x86_64')
 url="https://github.com/Aethar01/gopdf.git"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
