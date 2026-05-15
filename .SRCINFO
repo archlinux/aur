@@ -1,5 +1,5 @@
 pkgbase = vortex-linux-fix
-	pkgdesc = Nexus Mods' mod manager - community fork with Linux compatibility patches
+	pkgdesc = Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches
 	pkgver = 2.0.0
 	pkgrel = 1
 	epoch = 1
