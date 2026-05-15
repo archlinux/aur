@@ -1,0 +1,15 @@
+pkgbase = rg-grep
+	pkgdesc = A tiny grep-compatibility shim backed by ripgrep
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/nathawat/rg-grep-shim
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = zig
+	depends = ripgrep
+	provides = grep
+	conflicts = grep
+	source = rg-grep-1.0.0.tar.gz::https://codeberg.org/nathawat/rg-grep-shim/archive/v1.0.0.tar.gz
+	b2sums = ea6b0ae1c9d4871545c770616525ff7ddbdd452455a4f9527a95815a2f53c0b2e22cc464b83c85549ef9041724aa62d93ede221400e7d8fb15b9ef5b4bbfd40f
+
+pkgname = rg-grep
