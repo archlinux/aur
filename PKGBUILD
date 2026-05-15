@@ -1,7 +1,7 @@
 # Maintainer Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=openvox-agent-bin
 _pkgname=openvox-agent
-pkgver=8.25.0
+pkgver=8.26.1
 pkgrel=1
 pkgdesc="Agent of the OpenVox Automation Framework"
 arch=('x86_64')
