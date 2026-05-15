@@ -5,7 +5,7 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.2.0.rc1.r95.gf2c46ea
+pkgver=0.2.0.r1.gd1ceeec
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
