@@ -1,7 +1,7 @@
 # Maintainer: RimuruTemp1421 <daser1421official@gmail.com>
 
 pkgname=anihot-app
-pkgver=6.0.11
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Linux client for AniHot anime streaming app"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('glibc' 'gtk3' 'bash' 'sqlite3')
 options=('!debug')
 source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip")
-sha256sums=('30dff464f40f13f28c387fbca0ebfc5370f74036731de7e50402265eb93ed5b8')
+sha256sums=('d7856195101aa96168a162c799e760815ae1daef2b3c3cd4d0c713322989029e')
 
 # Функция, выполняемая перед удалением пакета (чистим остатки)
 pre_remove() {
