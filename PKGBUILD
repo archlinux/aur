@@ -5,7 +5,7 @@
 
 pkgname=python-print-color
 _name=print-color
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Simple Python wrapper to print color messages in the terminal"
 arch=('any')
@@ -14,7 +14,7 @@ license=(Apache-2.0)
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 depends=(python)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xy3/print-color/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fae0613dba48f6a2b7d652003e0993dcec0e3bc064ce535a95aadc6bb3de2d32')
+sha256sums=('9c06e337e39276c6fbb5acddffd226c66c0272a3c30cb408d8f757df9e34aa61')
 
 build() {
     cd "$_name-$pkgver"
