@@ -3,7 +3,7 @@
 
 pkgname=microsip
 pkgver=3.22.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 arch=(x86_64)
 url=https://www.microsip.org
@@ -15,22 +15,19 @@ source=("MicroSIP-Lite-${pkgver}.zip"::"https://www.microsip.org/downloads/?file
 				"microsip.png"
 				"microsip.reg")
 
-sha256sums=('b2e8ca48595f0289cccd88f8c3d0d71863232429a5a49fda176e705c3613575c'
+sha256sums=('3c381103a50b0e1860f34f9f1e2eb01a2c116682495191b3ce28e785911abfa1'
             '1281b272d173d9ade5f31915804fbb953f61425c0b303af6c097332fbb240a2c'
             '3e505193aba33ca68d9ca0e64624ae0dfe415a6b7e1252b11aaf45d4628f72bf'
             '4d33d040f772c4b1f1652b8af59342bdec600fd3de875e7ef6ee1a43fc3415cf'
             'c97cde99004dbee5cb9b05a7b6bad117e5ec63cb1032fa56efdf07a4b27e3c1d')
 
 package() {
-	depends=(wine libpulse)
+	depends=('wine' 'libpulse')
 
 	install -Dt "${pkgdir}"/usr/share/doc/microsip -m0644 MicroSIP.url
 	install -Dt "${pkgdir}"/usr/share/microsip -m0644 {hangup,msgin,msgout,ringing,ringing2,ringtone}.wav
 	install -Dt "${pkgdir}"/usr/lib/microsip -m0644 lame_enc.dll
-
-	install -Dt "${pkgdir}"/usr/lib/microsip -m0644 MicroSIP.exe
-	mv "${pkgdir}"/usr/lib/microsip/MicroSIP.exe  "${pkgdir}"/usr/lib/microsip/microsip.exe 
-
+	install -Dm0644 "MicroSIP.exe" "${pkgdir}/usr/lib/microsip/microsip.exe"
 	install -Dt "${pkgdir}"/usr/bin -m0755 microsip
 	install -Dt "${pkgdir}"/usr/share/microsip -m0644 microsip.reg
 	install -Dt "${pkgdir}"/usr/share/applications -m0644 microsip.desktop
