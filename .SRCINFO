@@ -1,7 +1,7 @@
 pkgbase = elio-bin
 	pkgdesc = Snappy, batteries-included terminal file manager with rich previews, inline images, bulk actions, and trash support (prebuilt binary)
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/elio-fm/elio
 	arch = x86_64
 	license = MIT
@@ -13,9 +13,9 @@ pkgbase = elio-bin
 	optdepends = resvg: SVG rasterization
 	optdepends = 7zip: archive and comic archive preview fallback
 	optdepends = libarchive: archive and ISO listing fallback through bsdtar
-	provides = elio=1.5.0
+	provides = elio=1.5.1
 	conflicts = elio
-	source = elio-1.5.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/elio-fm/elio/releases/download/v1.5.0/elio-1.5.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 649d3c06a38aea4e57e6180e59e0eb76976e3378c77877d19133a52769bd1303
+	source = elio-1.5.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/elio-fm/elio/releases/download/v1.5.1/elio-1.5.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = d23ddc681d4b42ab0fa817b8e426258967b4543de7a08c685d03effdeb991447
 
 pkgname = elio-bin
