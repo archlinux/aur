@@ -1,6 +1,6 @@
 pkgbase = renderide-git
 	pkgdesc = A modern Rust + wgpu renderer for Resonite
-	pkgver = r2115.4cebbef
+	pkgver = r2118.355bd6f
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/DoubleStyx/Renderide
@@ -9,9 +9,15 @@ pkgbase = renderide-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
+	depends = gstreamer
+	depends = gst-plugins-base-libs
 	provides = renderide
 	options = !lto
 	source = renderide-git::git+https://github.com/DoubleStyx/Renderide
+	source = Identifier.patch
+	source = renderide.desktop
 	sha256sums = SKIP
+	sha256sums = 37e00b83d4e653ca35dfb31b1b1b899696b37a5193f156430ce1ca7374c91f43
+	sha256sums = ac378d546ceed8ec698601684ae58f92cb131a42aa5186316aa6b99f0e86c907
 
 pkgname = renderide-git

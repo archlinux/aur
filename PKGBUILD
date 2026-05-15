@@ -3,19 +3,22 @@
 
 _pkgname=renderide
 pkgname=$_pkgname-git
-pkgver=r2115.4cebbef
+pkgver=r2118.355bd6f
 pkgrel=1
 epoch=0
 pkgdesc="A modern Rust + wgpu renderer for Resonite"
 arch=('x86_64')
 url="https://github.com/DoubleStyx/Renderide"
 license=('MIT')
+depends=('gstreamer' 'gst-plugins-base-libs')
 makedepends=('git' 'cargo')
 provides=('renderide')
 options=(!lto)
 install="renderide.install"
-source=("$pkgname::git+https://github.com/DoubleStyx/Renderide")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/DoubleStyx/Renderide" "Identifier.patch" "renderide.desktop")
+sha256sums=('SKIP'
+            '37e00b83d4e653ca35dfb31b1b1b899696b37a5193f156430ce1ca7374c91f43'
+            'ac378d546ceed8ec698601684ae58f92cb131a42aa5186316aa6b99f0e86c907')
 
 pkgver() {
 	cd "$pkgname"
@@ -26,7 +29,7 @@ prepare() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target host-tuple
-	git apply ../../Identifier.patch
+	git apply "$srcdir/Identifier.patch"
 }
 
 build() {
@@ -41,6 +44,6 @@ package() {
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname-renderer"
 	cp -r "crates/renderide/assets/xr" "$pkgdir/usr/bin/"
-	install -Dm0755 -t "$pkgdir/usr/share/applications" "../../renderide.desktop"
+	install -Dm0755 -t "$pkgdir/usr/share/applications" "$srcdir/renderide.desktop"
 	install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
