@@ -1,6 +1,6 @@
 pkgbase = r-s7
 	pkgdesc = An Object Oriented System Meant to Become a Successor to S3 and S4
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=S7
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = r-s7
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/S7_0.2.1.tar.gz
-	b2sums = e263c664ec6d45631cb1422838579f99fb1b63f35118af747649c9df249e0166ec932fb9b7e7a1521f5fb77a32a0d7531d62edea0cd5c90f47c3a7781e9a8035
+	source = https://cran.r-project.org/src/contrib/S7_0.2.2.tar.gz
+	b2sums = e65baee739867c034c0728f41df87a95308745819d9d6fcb3726a49880a2d5c984864fb75800306d8fac4f422f75a0132ec1e801ed975e75c098a921e457861a
 
 pkgname = r-s7
