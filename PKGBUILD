@@ -1,7 +1,7 @@
 # Maintainer: Huipeng <cheng.huipeng@outlook.com>
 pkgname=qodercli-bin
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Qoder Agentic CLI - Advanced AI coding agent from Alibaba"
 arch=('x86_64' 'aarch64')
 url="https://qoder.com/cli"
@@ -30,7 +30,7 @@ source+=(
 
 sha256sums_x86_64=('89c89c5ee5f0370c997c59a72acf9ebb58d5b02c9a698bb7cde58cf3185d482c')
 sha256sums_aarch64=('e5cba044ad9fcfe757c67b57c0d1f022fb98eaa26de4fba18b94b0595b4fc30c')
-sha256sums=('393ea9043960743ddebf1daa10aa2015a45ee6fb99223f02bc6dc50c5c8d9beb'
+sha256sums=('826892d8617e9bb0670332caf467bce6874786bb677a4932751c7b671f0fdf01'
              'SKIP'
              'SKIP'
              'SKIP')
