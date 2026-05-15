@@ -18,8 +18,13 @@ options=(!strip)
 
 prepare() {
     cd "${srcdir}/" && rm -rf "squashfs-root"
-    chmod +x "${srcdir}/${_pkgname}-x86_64-${pkgver}.AppImage"
-    "${srcdir}/${_pkgname}-x86_64-${pkgver}.AppImage" --appimage-extract
+    local _arch_suffix
+    case "${CARCH}" in
+        x86_64)  _arch_suffix="x86_64" ;;
+        aarch64) _arch_suffix="aarch64" ;;
+    esac
+    chmod +x "${srcdir}/${_pkgname}-${_arch_suffix}-${pkgver}.AppImage"
+    "${srcdir}/${_pkgname}-${_arch_suffix}-${pkgver}.AppImage" --appimage-extract
 }
 
 
