@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Orca-BambuStudio
+Exec=LD_PRELOAD=/usr/lib/libsharpyuv.so Orca-BambuStudio-1.0.0
+Icon=OrcaSlicer
+Type=Application
+PrefersNonDefaultGPU=true
+X-KDE-RunOnDiscreteGpu=true
+Categories=Utility;
+MimeType=model/stl;application/vnd.ms-3mfdocument;application/prs.wavefront-obj;application/x-amf;
