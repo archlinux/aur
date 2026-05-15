@@ -2,8 +2,8 @@
 
 pkgname=hf-mount-bin
 pkgver=0.6.0
-pkgrel=1
-pkgdesc='Mount Hugging Face Buckets and repos as local filesystems. No download, no copy, no waiting.'
+pkgrel=2
+pkgdesc='Mount Hugging Face Buckets and repos as local filesystems. No download, no copy, no waiting. Pre-compiled.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/huggingface/hf-mount'
 license=('Apache-2.0')
@@ -20,6 +20,14 @@ source_x86_64=(
 )
 
 sha256sums_x86_64=('SKIP' 'SKIP' 'SKIP')
+
+source_aarch64=(
+  "${pkgname/-bin/}-aarch64-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname/-bin/}-aarch64-linux"
+  "${pkgname/-bin/}-nfs-aarch64-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname/-bin/}-nfs-aarch64-linux"
+  "${pkgname/-bin/}-fuse-aarch64-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname/-bin/}-fuse-aarch64-linux"
+)
+
+sha256sums_aarch64=('SKIP' 'SKIP' 'SKIP')
 
 package() {
   cd $srcdir
