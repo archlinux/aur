@@ -1,26 +1,20 @@
-# Maintainer: eientei95 <einstein95 at windowslive dot com>
+# Maintainer: RivenSkaye <riven@skaye.blog>
+# Contributor: eientei95 <einstein95 at windowslive dot com>
 
 _pkgname=gbe-plus
 pkgname=${_pkgname}-git
-pkgver=r3206.107dc9a2
+pkgver=r4915.95891bf1
 pkgrel=1
-pkgdesc="DMG/GBC/GBA emulator and experimental NDS emulator."
+pkgdesc="DMG/GBC/GBA/Pokemon Mini emulator and experimental NDS emulator. Successor to GB Enhanced."
 arch=('x86_64')
 url="https://github.com/shonumi/gbe-plus"
 license=('GPL2')
-depends=('qt4' 'sdl2_net')
+depends=('qt5-base' 'sdl2_net')
 makedepends=('cmake' 'git')
 provides=("${_pkgname}=${pkgver%%+*}")
-conflicts=("${_pkgname}")
-source=("git+https://github.com/shonumi/gbe-plus.git"
-	    "cmake-install-location.patch")
-sha256sums=('SKIP'
-	        '502f4cfb184338815285e27af59c5170d7298570332d48ff06b94f87e7054001')
-
-prepare() {
-	cd "$srcdir/${_pkgname}"
-	patch -p1 -i "$srcdir/cmake-install-location.patch"
-}
+conflicts=("${_pkgname}", "gbe-plus-rec", "gbe-plus-rec-git")
+source=("git+https://github.com/shonumi/gbe-plus.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${_pkgname}"
@@ -30,7 +24,7 @@ pkgver() {
 build() {
 	mkdir -p "$srcdir/${_pkgname}/build"
 	cd "$srcdir/${_pkgname}/build"
-	cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
+	cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DIMAGE_FORMATS=OFF
 	make
 }
 
