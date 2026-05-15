@@ -2,7 +2,7 @@
 # contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=nextai-translator-bin
 _pkgname=NextAI.Translator
-pkgver=0.6.14
+pkgver=0.6.15
 pkgrel=1
 pkgdesc="Browser extension and cross-platform desktop application for translation based on ChatGPT API.(Prebuilt version)基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 source=(
 	"${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('4d6d2629609b1beb88d9d81d00a2fd66eb7c1f140ca8b9fb86825d5ae08cd42e')
+sha256sums=('175eac1153b9077a9fe1dd8b4620e5d074a39183d6c6302b151e67b7ee815cea')
 prepare() {
 	bsdtar -xf "${srcdir}/data."*
 	sed -i -e "
@@ -33,9 +33,10 @@ package() {
 	install -Dm755 "${srcdir}/usr/bin/app" "${pkgdir}/usr/bin/${pkgname%-bin}"
 	install -Dm644 "${srcdir}/usr/lib/${_pkgname//./ }/resources/"*.* -t "${pkgdir}/usr/lib/${pkgname%-bin}/resources"
 	install -Dm644 "${srcdir}/usr/share/applications/${_pkgname//./ }.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-	_icon_sizes=(32x32 128x128 256x256@2)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/app.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
+	find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
 }
