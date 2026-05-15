@@ -2,7 +2,7 @@
 # Release: tag as v<version> and push tag, then create GitHub release.
 # The AUR publish workflow will update pkgver and publish automatically.
 pkgname=snry-shell-qs
-pkgver=2.7.2
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Snry Shell - Hyprland dotfiles managed by snry-daemon'
 arch=('any')
@@ -128,11 +128,8 @@ package() {
 	# Install snry-daemon binary
 	install -Dm755 snry-daemon "$pkgdir/usr/bin/snry-daemon"
 
-	# Install snry-shell wrapper (convenience alias)
-	install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
-#!/bin/bash
-exec /usr/bin/snry-daemon setup "$@"
-SCRIPT
+	# Convenience symlink: snry -> snry-daemon
+	ln -s snry-daemon "$pkgdir/usr/bin/snry"
 
 	# Install shared data
 	install -dm755 "$pkgdir/usr/share/snry-shell"

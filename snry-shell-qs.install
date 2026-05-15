@@ -16,11 +16,15 @@ post_install() {
 	# Phase 1: System setup (we are root — groups, services, PAM, logind)
 	HOME="/home/$user" snry-daemon setups 2>/dev/null || true
 
-	# Phase 2: Config sync + daemon binary (as the user)
+	# Phase 2: Install runtime dependencies (as the user)
 	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
-		snry-daemon files 2>/dev/null || true
+		snry-daemon install 2>/dev/null || true
 
-	# Phase 3: Enable and start the daemon via systemd user service
+	# Phase 3: Config sync (as the user)
+	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		snry-daemon sync 2>/dev/null || true
+
+	# Phase 4: Enable and start the daemon via systemd user service
 	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
 		systemctl --user enable --now snry-daemon.service 2>/dev/null || true
 
@@ -41,10 +45,15 @@ post_upgrade() {
 	local uid
 	uid=$(id -u "$user")
 
+	echo ">>> Installing runtime dependencies for user: $user"
+
+	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		snry-daemon install 2>/dev/null || true
+
 	echo ">>> Syncing Snry Shell configs for user: $user"
 
 	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
-		snry-daemon files 2>/dev/null || true
+		snry-daemon sync 2>/dev/null || true
 
 	# Restart the daemon to pick up any changes
 	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
