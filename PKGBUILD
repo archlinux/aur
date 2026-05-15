@@ -4,8 +4,8 @@
 
 _pkgname=my_basic
 pkgname=$_pkgname-git
-pkgver=r1091.g4d4d153
-pkgrel=2
+pkgver=r1095.g38baab0
+pkgrel=1
 pkgdesc="BASIC interpreter"
 arch=('i686' 'x86_64')
 url="https://paladin-t.github.io/my_basic"
@@ -38,14 +38,14 @@ build() {
 package() {
   cd "${pkgname}"
 
-  install -Dm755 output/my_basic "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dvm755 output/my_basic -t "${pkgdir}/usr/bin"
 
-  install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}/sample/yard"
+  install -dvm755 "${pkgdir}/usr/share/doc/${_pkgname}/sample/yard"
 
-  install -m644 README.md HISTORY *.{pdf,html} \
+  install -vm644 README.md HISTORY *.{pdf,html} \
     "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -m644 sample/{README*,*.bas} \
+  install -vm644 sample/{README*,*.bas} \
     "${pkgdir}/usr/share/doc/${_pkgname}/sample"
-  install -m644 sample/yard/{README*,*.bas} \
+  install -vm644 sample/yard/{README*,*.bas} \
     "${pkgdir}/usr/share/doc/${_pkgname}/sample/yard"
 }

@@ -1,7 +1,7 @@
 pkgbase = my_basic-git
 	pkgdesc = BASIC interpreter
-	pkgver = r1091.g4d4d153
-	pkgrel = 2
+	pkgver = r1095.g38baab0
+	pkgrel = 1
 	url = https://paladin-t.github.io/my_basic
 	arch = i686
 	arch = x86_64
