@@ -2,7 +2,7 @@
 
 pkgname=sakura-lsldb
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LSL debugger frontend — drives sakura-slemu for interactive script debugging"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Sakura-Studios-IKE/sakura-lsldb"
