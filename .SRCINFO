@@ -1,6 +1,6 @@
 pkgbase = apertium-recursive
 	pkgdesc = A recursive structural transfer module for Apertium
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://wiki.apertium.org/wiki/Apertium-recursive
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = apertium-recursive
 	depends = libxml2>=2.6.17
 	depends = pcre
 	depends = icu
-	source = apertium-recursive-1.2.1.tar.gz::https://github.com/apertium/apertium-recursive/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = 572d8679202a5da12091c0cd9fc44faef073cb4d805ab85f6768c0a802abea8e
+	source = apertium-recursive-1.2.2.tar.gz::https://github.com/apertium/apertium-recursive/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = fd1490f2c3940f68b6495ef4b00ca7a0d1735673a8bb2c9caba599935057f25e
 
 pkgname = apertium-recursive
