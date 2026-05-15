@@ -1,5 +1,5 @@
 #!/bin/bash
-pkgname="brogue-ce"
+pkgname="brogue-ce-curses"
 local_path="${HOME}/.local/share/${pkgname}"
 
 if [ ! -d "$local_path" ]; then
