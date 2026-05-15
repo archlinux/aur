@@ -1,5 +1,5 @@
 pkgname=goport
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Fast concurrent TCP/UDP port scanner written in Go"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/Slashas632/goPort"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4690b421f5cd280f6e4425d44611535687c366f0c2f957251f0cb47c7463948f')
+sha256sums=('a4dfb5df03c555682ff3dc4d51086442119653a3308d04101f0a2eb43de9a518')
 
 build() {
     cd "goPort-$pkgver"
@@ -16,6 +16,6 @@ build() {
 
 package() {
     cd "goPort-$pkgver"
-    install -Dm755 goport "$pkgdir/usr/bin/goPort"
+    install -Dm755 goport "$pkgdir/usr/bin/goport"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
