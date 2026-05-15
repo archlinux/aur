@@ -1,5 +1,5 @@
 #!/bin/bash
-if [[ ! -d "$my_directory" ]]; then
+if [[ ! -d "spinner_wheels" ]]; then
     echo "The directory doesn't exist."
     echo "Creating directory"
     mkdir spinner_wheels
@@ -111,6 +111,8 @@ if [ -n "$MAIN_ARG" ]; then
             fi
             sleep $speed
         done
+
+        echo "The chosen item is "${words[random_index]}
 
     else
         echo "File '$MAIN_ARG' does not exist"
