@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=todometer-bin
-pkgver=3.0.0
+pkgver=3.0.2
 _electronversion=40
 pkgrel=1
 pkgdesc="A simple, meter-based to-do list built with Electron and React.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/cassidoo/todometer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('03b1a5d9dbb40ddc20cec8d23ada35bcb5ef7eaac24566e8e607d1776f26f08c'
+sha256sums=('d2cb7f69da9e13cd669651005010f25d750fa255d06d60696eaa750f18e85214'
             'dd1ce85f63e9ef4db9503a1f8abd2c0e3eb592bc5dd1fbb6f4968e2c07618dbc'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
