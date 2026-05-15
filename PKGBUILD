@@ -1,6 +1,6 @@
 pkgname=qtjambi
 pkgver=6.11.1
-pkgrel=1
+pkgrel=2
 qtver=6.11.1
 qtjambiver=6.11.1
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
@@ -80,10 +80,10 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${qtjambiver}"
   mkdir -p ${pkgdir}/usr/share/java/qtjambi
-  cp ${pkgver}/deployment/*.jar ${pkgdir}/usr/share/java/qtjambi
-  cp ${pkgver}/deployment/sources/*.jar ${pkgdir}/usr/share/java/qtjambi
+  cp ${pkgver}/distribute/*.jar ${pkgdir}/usr/share/java/qtjambi
+  cp ${pkgver}/distribute/sources/*.jar ${pkgdir}/usr/share/java/qtjambi
   mkdir -p ${pkgdir}/usr/lib
-  cp -P ${pkgver}/deployment/platforms/linux-x64/release/lib/*[^.debug] ${pkgdir}/usr/lib
+  cp -P ${pkgver}/distribute/platforms/linux-x64/release/lib/*[^.debug] ${pkgdir}/usr/lib
   mkdir -p ${pkgdir}/usr/share/licenses/qtjambi
   cp LICENSE.* ${pkgdir}/usr/share/licenses/qtjambi
 }
