@@ -1,0 +1,30 @@
+pkgbase = archward
+	pkgdesc = Safe-update GUI for Arch-based Linux distributions
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/indyfive11/archward
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.11
+	depends = pyside6
+	depends = python-pydantic
+	depends = python-tomli-w
+	depends = pacman>=6.1
+	depends = pacman-contrib
+	optdepends = yay: AUR helper (preferred)
+	optdepends = paru: alternative AUR helper
+	optdepends = aurutils: alternative AUR helper (best-effort)
+	optdepends = ksshaskpass: askpass for KDE/Plasma
+	optdepends = lxqt-openssh-askpass: askpass for LXQt
+	optdepends = x11-ssh-askpass: askpass for other DEs
+	optdepends = polkit: pkexec fallback
+	optdepends = meld: graphical merge tool for pacnew
+	optdepends = libnotify: desktop notifications when an update finishes
+	source = archward-0.3.2.tar.gz::https://github.com/indyfive11/archward/archive/v0.3.2.tar.gz
+	sha256sums = 952b5329e0b4ad4875dbf9de279fe1a8341686aed02937d3ac482c7aabb9aec5
+
+pkgname = archward
