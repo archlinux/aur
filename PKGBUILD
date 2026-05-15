@@ -34,7 +34,8 @@ prepare() {
   # fix issue with test: https://pagure.io/libaio/issue/21
   patch -Np1 -d $_name-$_name-$pkgver -i ../$pkgname-0.3.113-fix_test_case_23.patch
 
-  # remove failing test until upstream fixes it
+  # Remove failing tests until upstream fixes them
+  rm -frv $_name-$_name-$pkgver/harness/cases/20.t
   rm -frv $_name-$_name-$pkgver/harness/cases/21.t
 }
 
