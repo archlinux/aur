@@ -1,7 +1,7 @@
 # Maintainer: RivenSkaye <riven@skaye.blog>
 # Contributor: eientei95 <einstein95 at windowslive dot com>
 
-_pkgname=gbe-plus-rec
+_pkgname=gbe-plus
 pkgname=${_pkgname}-git
 pkgver=r4915.95891bf1
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('qt5-base' 'sdl2_net' 'sdl2_image')
 makedepends=('cmake' 'git')
 provides=("${_pkgname}=${pkgver%%+*}")
-conflicts=("${_pkgname}" "gbe-plus" "gbe-plus-git")
+conflicts=("${_pkgname}-rec" "${_pkgname}" "${_pkgname}-git")
 source=("git+https://github.com/shonumi/gbe-plus.git")
 sha256sums=('SKIP')
 
