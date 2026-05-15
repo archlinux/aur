@@ -84,6 +84,9 @@ package() {
 
   install -Dm755 bin/default/examples/winexe/winexe \
     "${pkgdir}/usr/bin/winexe"
+  
+  mkdir -p "${pkgdir}/usr/share/man/man1"
+  gzip -c docs/manpages/winexe.1 > "${pkgdir}/usr/share/man/man1/winexe.1.gz"
 
   # The build directory's RUNPATH is baked in; rewrite it to point at the
   # samba package's private library directory.
