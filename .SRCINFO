@@ -1,0 +1,18 @@
+pkgbase = kyanite-git
+	pkgdesc = A lightweight, graphical text editor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/pastthepixels/kyanite
+	arch = any
+	makedepends = rust
+	makedepends = clang
+	makedepends = git
+	depends = libadwaita
+	depends = blueprint-compiler
+	depends = libpanel
+	depends = vte4
+	depends = gtksourceview5
+	source = git+https://codeberg.org/pastthepixels/kyanite.git
+	sha256sums = SKIP
+
+pkgname = kyanite-git
