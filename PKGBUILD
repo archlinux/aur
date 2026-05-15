@@ -55,7 +55,7 @@ fi
 
 pkgbase="solara-kernel"
 _major=7.0
-_minor=6
+_minor=8
 pkgver=${_major}.${_minor}
 _tagrel=1
 pkgrel=1
