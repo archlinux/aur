@@ -1,4 +1,4 @@
-pkgbase = gbe-plus-git
+pkgbase = gbe-plus-rec-git
 	pkgdesc = DMG/GBC/GBA emulator and experimental NDS emulator.
 	pkgver = r3206.107dc9a2
 	pkgrel = 1
