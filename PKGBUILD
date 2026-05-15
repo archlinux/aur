@@ -47,5 +47,5 @@ package() {
   cd "$pkgname-v$pkgver"
   make PREFIX="$pkgdir" install
   rm -rf ${pkgdir}/usr/share/rescached/
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/rescached/COPYING"
+  install -Dm644 LICENSES/GPL-3.0-only.txt "${pkgdir}/usr/share/licenses/rescached/GPL-3.0-only.txt"
 }
