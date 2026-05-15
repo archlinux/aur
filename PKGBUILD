@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd "${pkgname%-git}" || return
-  make PREFIX="$pkgdir" install
+  make install PREFIX="$pkgdir" DESTDIR=""
 }
