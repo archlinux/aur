@@ -1,0 +1,15 @@
+pkgbase = conftest-bin
+	pkgdesc = A utility to help you write tests against structured configuration data
+	pkgver = 0.68.2
+	pkgrel = 1
+	url = https://github.com/open-policy-agent/conftest
+	arch = x86_64
+	license = Apache
+	provides = conftest
+	conflicts = conftest
+	source_x86_64 = https://github.com/open-policy-agent/conftest/releases/download/v0.68.2/conftest_0.68.2_Linux_x86_64.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/open-policy-agent/conftest/refs/tags/v0.68.2/LICENSE
+	sha256sums_x86_64 = e8144c6d6d2ae0260b869caa60c7c262a1f95ac63ec1e5d2fb19be452d606347
+	sha256sums_x86_64 = a3fc6a99a82b59b761a6b1aabe8fc540b7046d5f91377fc1d8897dbbf3bd18ac
+
+pkgname = conftest-bin
