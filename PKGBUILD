@@ -1,6 +1,6 @@
 # Maintainer: Rob Petersen <robpetersen907@gmail.com>
 pkgname=archward
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Safe-update GUI for Arch-based Linux distributions"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e8c22dff013761bdf253b5c7543e918d6a7f59b928775b685522f1141f38f1bf')
+sha256sums=('9e21f558eaa4a2297db8f6c8bfcb502bf1e8c60df140b45308b6680ec00a8300')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -45,4 +45,10 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md \
     "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 man/archward.1 \
+    "$pkgdir/usr/share/man/man1/archward.1"
+  install -Dm644 docs/cli.md \
+    "$pkgdir/usr/share/doc/$pkgname/cli.md"
+  install -Dm644 docs/recovery.md \
+    "$pkgdir/usr/share/doc/$pkgname/recovery.md"
 }
