@@ -1,6 +1,6 @@
 # Maintainer: Rob Petersen <robpetersen907@gmail.com>
 pkgname=archward
-pkgver=0.3.2
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Safe-update GUI for Arch-based Linux distributions"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('952b5329e0b4ad4875dbf9de279fe1a8341686aed02937d3ac482c7aabb9aec5')
+sha256sums=('b3a3e72d85d204341c630c774e87b0931c7b31b6a0624a93ee6acf48e36d62b5')
 
 build() {
   cd "$pkgname-$pkgver"
