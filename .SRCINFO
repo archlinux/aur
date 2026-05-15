@@ -1,0 +1,18 @@
+pkgbase = uutils-coreutils-git-bin
+	pkgdesc = Rust rewrite of coreutils (latest-commit)
+	pkgver = 0.8.0.r101.g5daf0a5
+	pkgrel = 1
+	url = https://github.com/uutils/coreutils/releases/download/latest-commit
+	arch = x86_64
+	license = MIT
+	depends = libgcc
+	depends = glibc
+	provides = coreutils
+	conflicts = uutils-coreutils
+	conflicts = coreutils
+	source = https://github.com/uutils/coreutils/releases/download/latest-commit/individual-x86_64-unknown-linux-gnu.tar.zst
+	source = https://github.com/uutils/coreutils/releases/download/latest-commit/docs.tar.zst
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = uutils-coreutils-git-bin
