@@ -3,7 +3,7 @@
 # Contributor: Adam Ehlers Nyholm Thomsen<adament@adament.net>
 
 pkgname=davix
-pkgver=0.8.6
+pkgver=0.8.10
 _pkgver="R_${pkgver//./_}"
 pkgrel=1
 pkgdesc="A client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP protocols."
@@ -18,7 +18,7 @@ source=(
   "${pkgname}-curl::git+https://github.com/curl/curl"
   "${pkgname}-googletest::git+https://github.com/google/googletest"
 )
-b2sums=('2862dfb0a5f370a1dec2c5c56c80ac1f02b0a815a4c553519135a4eff2f1afccdaf2597ddfca5fb57951236be213d4e9f4e5033e8f71cdacb184d1072c8e9b8c'
+b2sums=('675f337aeccd9f5973914c731604c3b411d88049e09fad9e6bfc785ad88d331b4fa5ed25de8801090807fbbbefca4a35bd4c761407bf12097ff9efa8d6cab21f'
         'SKIP'
         'SKIP')
 
