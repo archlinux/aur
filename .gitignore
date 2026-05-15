@@ -1,8 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
+!.gitignore
 !PKGBUILD
 !.SRCINFO
-!uad-ng.desktop
-!.gitignore
+!.nvchecker.toml
+!LICENSE
+!!uad-ng.desktop

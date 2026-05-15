@@ -1,19 +1,20 @@
 pkgbase = universal-android-debloater-bin
 	pkgdesc = Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices.
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = android-tools
+	depends = libgcc
 	provides = universal-android-debloater
 	conflicts = universal-android-debloater
-	source = https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/releases/download/v1.1.2/uad-ng-noselfupdate-linux.tar.gz
-	source = https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/releases/download/v1.1.2/uad-ng-noselfupdate-linux-checksum
-	source = uad-ng.png::https://raw.githubusercontent.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/main/resources/assets/logo-dark.png
+	source = uad-ng-1.2.0-noselfupdate-linux.tar.gz::https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/releases/download/v1.2.0/uad-ng-noselfupdate-linux.tar.gz
+	source = uad-ng-1.2.0-noselfupdate-linux-checksum::https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/releases/download/v1.2.0/uad-ng-noselfupdate-linux-checksum
+	source = uad-ng-1.2.0.png::https://raw.githubusercontent.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/main/resources/assets/logo-dark.png
 	source = uad-ng.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 980273195eb39ae43c776159252d67be0a5eea31faf88b600c2f9218cb099314
+	sha256sums = 7793a2dab004dfd792ba47616413cd77b975d889ecf71a411e6bdf017f8476b7
 	sha256sums = 019c4df893dca5b54557c381881d7946b7a53ebf5b610cc04d61c2980c1a22ec
 	sha256sums = 8d5d790fffd35101af340792d081f8f75b61b1579bc8f89acab818f03f1071ea
 

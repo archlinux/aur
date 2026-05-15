@@ -1,0 +1,4 @@
+[universal-android-debloater-bin]
+source = "git"
+git = "https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation.git"
+prefix = "v"
