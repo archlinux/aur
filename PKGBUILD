@@ -2,7 +2,7 @@
 pkgname=turso
 pkgver=0.6.0
 pkgrel=1
-pkgdesc='Turso Database is an in-process SQL database, compatible with SQLite.'
+pkgdesc='An in-process SQL database, compatible with SQLite.'
 url='https://github.com/tursodatabase/turso'
 license=('MIT')
 arch=('x86_64')
