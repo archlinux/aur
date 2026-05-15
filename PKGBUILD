@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=python-slixmpp-git
-pkgver=r3396.853c77f9
+pkgver=1.15.0.r7.g853c77f
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3 (SleekXMPP asyncio fork)"
 arch=('x86_64' 'armv7h' 'aarch64' 'powerpc')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd slixmpp
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git describe --long --abbrev=7 | sed 's/^slix-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
