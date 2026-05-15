@@ -1,9 +1,9 @@
-diff --git a/Engine/Source/Programs/UnrealBuildTool/Configuration/TargetRules.cs b/Engine/Source/Programs/UnrealBuildTool/Configuration/TargetRules.cs
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Configuration/Rules/TargetRules.cs b/Engine/Source/Programs/UnrealBuildTool/Configuration/Rules/TargetRules.cs
 old mode 100644
 new mode 100755
 index 3c9179b63..ac3bb16b8
---- a/Engine/Source/Programs/UnrealBuildTool/Configuration/TargetRules.cs
-+++ b/Engine/Source/Programs/UnrealBuildTool/Configuration/TargetRules.cs
+--- a/Engine/Source/Programs/UnrealBuildTool/Configuration/Rules/TargetRules.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Configuration/Rules/TargetRules.cs
 @@ -2689,7 +2689,7 @@ namespace UnrealBuildTool
  				}
  				if (Type == TargetType.Program && ProjectFile != null && File!.IsUnderDirectory(ProjectFile.Directory))

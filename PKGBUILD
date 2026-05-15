@@ -8,14 +8,14 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.6.1
+pkgver=5.8
 pkgrel=1
 ## Check unreal-engine/Engine/Config/Linux/Linux_SDK.json (MainVersion value) for what the below should be set to
 UE_SDK_VERSION="native-linux-v26_clang-20.1.8-rockylinux8"
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
-makedepends=('git' 'openssh' 'sed' 'grep' 'glibc' 'wget' 'rsync')
+makedepends=('git' 'openssh' 'sed' 'grep' 'glibc' 'wget' 'rsync' 'clang')
 depends=('sdl3' 'python' 'dotnet-runtime' 'dotnet-sdk' 'vulkan-icd-loader' 'lld' 'xdg-user-dirs' 'dos2unix' 'openssl' 'steam' 'coreutils' 'findutils')
 optdepends=('polly: for potentially increased performance'
             'qt5-base: qmake build system for projects'
@@ -34,14 +34,12 @@ source=("${UE_SDK_VERSION}.tar.gz::https://cdn.unrealengine.com/Toolchain_Linux/
         'unreal-engine.sh'
         'com.unrealengine.UE5Editor.desktop'
         '0001-override-shared-target-build.patch'
-        '0002-suppress-scriptbuild-warnings-for-5-6.patch'
         'unreal-engine-5-pacman-cache.hook'
         'ue5editor.svg')
 sha256sums=('6eef42679b744cdcb50276f2d7cff0a51f7ddd632960e06bfbc3f6b9508ef615'
             '55a8ad79c2e502bc5919249b9d1804ad405795b36630ab2f23aeb99dd218e5f4'
             'aa09746f9db93713f470ef19390a89b279fd5a335835ad95eab6cdaafa1b9e99'
-            'cd512e3fc08aaaa783e8df4a6dcb567a35502c32a6cedf8d4d71ebfa75272735'
-            'e01efe8559076f977c44ab656432a3c8e793e4c7f2b42855f736a08b6f551cf1'
+            '1cedb43efc103c384705e4e18746fed24c60c52a445e89f1acfd0f2992f5291d'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca'
             'b00c398b63f15084c46f3963f62a45284ecd8dae9ba6f38a2c4af370bbfdab8d')
 # Not sure if compiling Unreal with LTO is legal? Lot's of different proprietary software goes into Unreal
@@ -105,6 +103,12 @@ fi
 if [[ -n "${UE_BUILD_ARCH_OVERRIDE}" && "${UE_BUILD_ARCH_OVERRIDE}" != "x64" && "${UE_BUILD_ARCH_OVERRIDE}" != "arm64" ]]; then
   msg "Invalid UE_BUILD_ARCH_OVERRIDE='${UE_BUILD_ARCH_OVERRIDE}'. Expected 'x64' or 'arm64'. Ignoring override."
   unset UE_BUILD_ARCH_OVERRIDE
+fi
+
+# Use System Clang (Arch's clang) instead of bundled Rocky Linux clang to avoid glibc incompatibility
+## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
+if [[ "${UE_USE_SYSTEM_CLANG}" != "true" && "${UE_USE_SYSTEM_CLANG}" != "false" ]]; then
+  export UE_USE_SYSTEM_CLANG=true
 fi
 
 # Change this if you want an alternative non-default logo for UE5's desktop icon; the default logo is enabled by default
@@ -252,19 +256,15 @@ prepare() {
     exit 1
   fi
 
-  local _ue_commit="not-cloned"
   local _ue_install_path="/${UE_INSTALL_DIR#/}"
   local _ue_arch_label="${_ue_build_arch:-unknown}"
   local _ue_arch_detail=""
+  local _ue_use_system_clang="no"
   local _ue_ddc_text="no"
   local _ue_debug_text="no"
   local _ue_default_logo_text="yes"
   local _ue_target_platforms=()
   local _ue_platforms_csv="none"
-
-  if [[ -d "${pkgname}/.git" ]]; then
-    _ue_commit="$(git -C "${pkgname}" rev-parse --short HEAD 2>/dev/null || echo unknown)"
-  fi
 
   if [[ "${_ue_arch_label}" == "x64" ]]; then
     if [[ -n "${_ue_detected_march}" ]]; then
@@ -282,6 +282,7 @@ prepare() {
     fi
   fi
 
+  [[ "${UE_USE_SYSTEM_CLANG}" == "true" ]]          && _ue_use_system_clang="yes"
   [[ "${UE_WITH_DDC}" == "true" ]]                  && _ue_ddc_text="yes"
   [[ "${UE_WITH_FULL_DEBUG_INFO}" == "true" ]]      && _ue_debug_text="yes"
   [[ "${UE_USE_DEFAULT_LOGO_AT_INSTALL}" == "0" ]]  && _ue_default_logo_text="no"
@@ -299,10 +300,11 @@ prepare() {
   fi
 
   msg ''
-  msg "Unreal Engine ${pkgver} (commit ${_ue_commit}) build options summary:"
+  msg "Unreal Engine ${pkgver} build options summary:"
   msg ''
   msg "- End package installation path:            ${_ue_install_path}"
   msg "- Target architecture build:                ${_ue_arch_label}${_ue_arch_detail}"
+  msg "- Use system clang:                         ${_ue_use_system_clang}"
   msg "- Integrate prebuilt shader cache:          ${_ue_ddc_text}"
   msg "- Target platforms supported for export:    ${_ue_platforms_csv}"
   msg "- Game configurations:                      ${UE_GAME_CONFIGURATIONS}"
@@ -358,7 +360,8 @@ prepare() {
     sed -i 's#UnrealVersionSelector-Linux-Shipping -register > /dev/null &#UnrealVersionSelector-Linux-Shipping -register -unattended > /dev/null \&#' Setup.sh
   fi
 
-  ./Setup.sh
+  mkdir -p "${srcdir}/git-deps"
+  ./Setup.sh --cache="${srcdir}/git-deps"
   cd "${srcdir}/${pkgname}/Engine/Build/BatchFiles/Linux/" || return
 
   ## This should just be working, but somehow isn't: https://aur.archlinux.org/packages/unreal-engine#comment-986166
@@ -407,7 +410,8 @@ build() {
     -set:WithIOS="${UE_WITH_IOS}" \
     -set:WithTVOS="${UE_WITH_TVOS}" \
     -set:GameConfigurations="${UE_GAME_CONFIGURATIONS}" \
-    -set:WithFullDebugInfo="${UE_WITH_FULL_DEBUG_INFO}"
+    -set:WithFullDebugInfo="${UE_WITH_FULL_DEBUG_INFO}" \
+    -set:WithSystemClang="${UE_USE_SYSTEM_CLANG}"
 
   if [[ $? -ne 0 ]]; then
     msg "Error: Build failed; try searching the output for suspicious messages." >&2
