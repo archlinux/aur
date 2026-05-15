@@ -1,13 +1,15 @@
 pkgbase = recoverywhiskers
 	pkgdesc = Flux-based data recovery tool for floppy disks
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/JennyFluff/RecoveryWhiskers
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
 	source = recoverywhiskers::git+https://codeberg.org/JennyFluff/RecoveryWhiskers#commit=6295db5150e991d07b5eb57c46fe7637eb330eb6
+	source = recoverywhiskers-testdata::git+https://codeberg.org/JennyFluff/RecoveryWhiskersTestData
 	sha256sums = 7880657436c676d7c6d8140b7f62bb158a317bc7fb90c6f785aa7552fd327a30
+	sha256sums = SKIP
 
 pkgname = recoverywhiskers
