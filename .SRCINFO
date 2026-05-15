@@ -1,15 +1,18 @@
 pkgbase = python-mingus
 	pkgdesc = A package for Python used by programmers, musicians, composers and researchers to make and investigate music.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/bspaans/python-mingus
 	arch = any
-	license = GPL
+	license = custom:GNU General Public License (GPL)
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
 	depends = python-six
-	optdepends = lilypond
-	optdepends = fluidsynth
-	source = https://github.com/bspaans/python-mingus/archive/0.6.0.tar.gz
-	md5sums = c02c316ffbea978257f5cc6a367e8f1e
+	optdepends = lilypond: Score rendering
+	optdepends = fluidsynth: Play MIDI output
+	source = https://github.com/bspaans/python-mingus/archive/0.6.1.tar.gz
+	sha256sums = 05355cd92f4cfe7a25203736482c49fd751cbf9a63201fa0b7a1fb5fd3cd7b10
 
 pkgname = python-mingus
-
