@@ -2,9 +2,9 @@
 
 # Release notes https://rocm.docs.amd.com/en/7.13.0/about/release-notes.html
 pkgname=rocm-gfx101x-bin
-pkgdesc="ROCm Core SDK and TheRock Build System - RDNA4"
+pkgdesc="ROCm Core SDK and TheRock Build System - RDNA1"
 pkgver=7.13.0
-pkgrel=1
+pkgrel=2
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
