@@ -1,0 +1,14 @@
+pkgbase = spinner-wheel
+	pkgdesc = A spinner wheel in your terminal.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = grep
+	depends = awk
+	depends = sed
+	optdepends = nano
+	source = spinner-wheel.sh
+	sha512sums = SKIP
+
+pkgname = spinner-wheel
