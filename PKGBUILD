@@ -8,7 +8,7 @@ url="https://gaze.gundulabs.com"
 license=('custom')
 depends=('opencv' 'pam' )
 source=("gaze-0.1.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.1.0-1-x86_64.pkg.tar.zst")
-sha256sums=('1b5db1813589e29e86afbaf3091810705e7248f7b5f30bdf1d381faf64f59283')
+sha256sums=('a0fc05dbbf3ad20fae2f252a1bc980e135fdeda394e87f5167a61bae5e8d8dc1')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-0.1.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
