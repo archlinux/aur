@@ -1,0 +1,5 @@
+[shmux]
+source = "github"
+github = "shmux/shmux"
+use_max_tag = true
+prefix = "v"
