@@ -19,6 +19,7 @@ pkgbase = python-slixmpp-git
 	depends = python-pyasn1
 	depends = python-pyasn1-modules
 	depends = python-aiohttp
+	optdepends = python-emoji: For compliant XEP-0444 support
 	provides = python-slixmpp
 	conflicts = python-slixmpp
 	options = !emptydirs

@@ -10,6 +10,7 @@ url="https://codeberg.org/poezio/slixmpp"
 license=('MIT')
 depends=('python' 'python-aiodns' 'python-pyasn1' 'python-pyasn1-modules' 'python-aiohttp')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-rust' 'python-setuptools-scm')
+optdepends=('python-emoji: For compliant XEP-0444 support')
 provides=('python-slixmpp')
 conflicts=('python-slixmpp')
 options=(!emptydirs)
