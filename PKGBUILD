@@ -3,7 +3,7 @@ pkgname=ersatztv-bin
 _pkgname=ersatztv
 pkgnamecaps=ErsatzTV
 pkgver=26.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for configuring and streaming custom live channels using your media library"
 url="https://ersatztv.org/"
 arch=('x86_64' 'aarch64')
@@ -27,9 +27,9 @@ package() {
 	install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
 	mkdir -p "$pkgdir/opt/$_pkgname"
 	if [ "$arch" == "x86_64" ]; then
-		cd "$pkgnamecaps-v$pkgver-linux-x64"
+		cd "$pkgnamecaps-Legacy-v$pkgver-linux-x64"
 	elif [ "$arch" == "aarch64" ]; then
-		cd "$pkgnamecaps-v$pkgver-linux-arm64"
+		cd "$pkgnamecaps-Legacy-v$pkgver-linux-arm64"
 	fi
 	mv * "$pkgdir/opt/$_pkgname/"
 }

@@ -1,7 +1,7 @@
 pkgbase = ersatztv-bin
 	pkgdesc = Software for configuring and streaming custom live channels using your media library
 	pkgver = 26.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ersatztv.org/
 	arch = x86_64
 	arch = aarch64
