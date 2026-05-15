@@ -1,9 +1,20 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 3.8.0 ➙ 4.2.2
-              : 2026-04-24 ➙ 2026-05-07
+ Tags         : 3.9.0 ➙ 4.3.0
+              : 2026-04-30 ➙ 2026-05-15
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-15   : 4.3.0
+                  - * Drop the bash code version and sd-boot-set-alternative since its no longer needed.
+                    * Simplify installation.
+                    * When adding a new kernel version, check if previous version still there before
+                      calling *kernel-install remove* to remove the previous version since it may have
+                      already been removed by pacman. No functional impact other than avoiding one
+                      unnecessary fork/exec.
+                    * Remove one unnecessary trigger from kernel update alpm hook.
+ 2026-05-07   ⋯
+              - update Changelog
 
  2026-05-07   : 4.2.2
               - Small code comment clean ups - no functional change
@@ -34,9 +45,4 @@
               - Plugins - simplify getting the loader entry file location
                 Fix efi-tool package remove buglet getting package vers (only impacts memtest86 removal)
  2026-04-24   ⋯
-              - update Changelog
-
- 2026-04-24   : 3.8.0
-              - Tidy up sd-boot-efifs-update a bit
- 2026-04-22   ⋯
               - update Changelog

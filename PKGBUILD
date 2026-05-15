@@ -10,7 +10,7 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="4.2.2"
+pkgver="4.3.0"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
@@ -73,21 +73,23 @@ sha512sums=('SKIP')
 changelog="Changelog"
 
 build() {
-    cd "${_gitname}"/src/c-code
+    cd "${_gitname}"
     echo "***"
     echo "Building:" 
     echo "***"
+    cd ./src
     /usr/bin/cmake -G Ninja -B build
-    /usr/bin/cmake -S . -B build/none -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
-    /usr/bin/cmake --build build/none
+    cd ./build
+    /usr/bin/cmake -S .. -B none -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
+    /usr/bin/cmake --build none
 }
 
 check() {
-    cd "${_gitname}/src/c-code"
+    cd "${_gitname}/src/"
     echo "***"
     echo "Running test suite:"
     echo "***"
-    ./scripts/run-test-suite
+    ./tests/scripts/run-test-suite
 }
 
 package() {
@@ -95,7 +97,10 @@ package() {
     echo "***"
     echo "Installing:"
     echo "***"
-    ./do-install "${pkgdir}"
+    cd src/build
+    DESTDIR="$pkgdir" cmake --install none
+    # dont need the static lib in production
+    /usr/bin/rm -f "$pkgdir"/usr/lib/libsd_boot.a
 }
 # vim:set ts=4 sts=4 sw=4 et:
 
