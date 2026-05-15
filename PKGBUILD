@@ -3,12 +3,12 @@
 
 _realname=lunela-master
 pkgname=lunela
-pkgver=1.3
+pkgver=2.2
 pkgrel=1
-pkgdesc="Print ephemeris of the moon in a terminal"
+pkgdesc="Print ephemeris of the moon and more in a terminal without internet connection."
 arch=('any')
 url="https://gitlab.com/brunoy/lunela.git"
-license=('GPL3')
+license=('WTFPL')
 depends=('python>=3.6')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/brunoy/$pkgname/-/archive/master/$_realname.tar.gz")
