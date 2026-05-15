@@ -1,4 +1,9 @@
 #!/bin/bash
+if [[ ! -d "$my_directory" ]]; then
+    echo "The directory doesn't exist."
+    echo "Creating directory"
+    mkdir spinner_wheels
+fi
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
@@ -21,7 +26,7 @@ while [[ "$#" -gt 0 ]]; do
                 do
                     echo "$n"
                 done
-                readarray -t text_files < <(ls spinner_wheels | grep ".txt" | sed 's/[".txt"]') # Reads direcotry for txt files
+                readarray -t text_files < <(ls spinner_wheels | grep ".txt") # Reads direcotry for txt files
                 echo "Available wheels: ${text_files[@]}"
                 exit
             else
@@ -34,7 +39,7 @@ while [[ "$#" -gt 0 ]]; do
             if [ -n "$2" ]; then
                 touch "spinner_wheels/$2.txt"
                 nano "spinner_wheels/$2.txt"
-                readarray -t text_files < <(ls spinner_wheels | grep ".txt" | sed 's/[".txt"]') # Reads direcotry for txt files
+                readarray -t text_files < <(ls spinner_wheels | grep ".txt") # Reads direcotry for txt files
                 echo "Available wheels: ${text_files[@]}"
                 exit
             else
@@ -43,7 +48,7 @@ while [[ "$#" -gt 0 ]]; do
             fi
             ;;
         -l|-L)
-            readarray -t text_files < <(ls spinner_wheels | grep ".txt" | sed 's/[".txt"]') # Reads direcotry for txt files
+            readarray -t text_files < <(ls spinner_wheels | grep ".txt") # Reads direcotry for txt files
             for item in ${text_files[@]}; do 
                 echo $item; 
             done
@@ -64,7 +69,7 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
-readarray -t text_files < <(ls spinner_wheels | grep ".txt" | sed 's/[".txt"]//g') # Reads direcotry for txt files
+readarray -t text_files < <(ls spinner_wheels | grep ".txt") # Reads direcotry for txt files
 if [ -n "$MAIN_ARG" ]; then
     if [[ " ${text_files[*]} " =~ " $MAIN_ARG " ]]; then
     # whatever you want to do when array contains value
@@ -80,7 +85,7 @@ if [ -n "$MAIN_ARG" ]; then
             lengths+=(${#line})
             start_indexes+=($start_index)
             ((start_index+=((${#line}+1))))
-        done < "${MAIN_ARG}.txt"
+        done < "spinner_wheels/${MAIN_ARG}"
         str_words="${words[@]} "
         while [ ${#str_words} -lt 70 ]; do
             str_words+=$str_words

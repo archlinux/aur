@@ -12,7 +12,6 @@ sha512sums=("SKIP")
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "~/spinner_wheels"
   cp "${srcdir}/spinner-wheel.sh" "${pkgdir}/usr/bin/spinner-wheel"
   chmod +x "${pkgdir}/usr/bin/spinner-wheel"
 }
