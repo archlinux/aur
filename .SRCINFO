@@ -1,6 +1,6 @@
 pkgbase = lib32-taglib
 	pkgdesc = A Library for reading and editing the meta-data of several popular audio formats (32 bit)
-	pkgver = 2.1.1
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://developer.kde.org/~wheeler/taglib.html
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = lib32-taglib
 	depends = taglib
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
-	source = https://taglib.github.io/releases/taglib-2.1.1.tar.gz
-	md5sums = 9feffe76b4643eb724185310879c3123
-	sha256sums = 3716d31f7c83cbf17b67c8cf44dd82b2a2f17e6780472287a16823e70305ddba
+	source = https://taglib.github.io/releases/taglib-2.3.tar.gz
+	md5sums = 5c38962970c698f8d18beddef0df7f9a
+	sha256sums = 7349f6fd942418bc7009ebe743eb7c9d055f02921ec56fa436ec25007c47fd38
 
 pkgname = lib32-taglib
