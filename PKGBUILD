@@ -1,7 +1,7 @@
 # Maintainer: Tadeusz Magura-Witkowski <tadeuszmw gmail>
 
 pkgname=droidstar-git
-pkgver=r80.31614da
+pkgver=r121.8ea9c55
 pkgrel=1
 pkgdesc="This software connects to M17, Fusion (YSF/FCS, DN and VW modes are supported), DMR, P25, NXDN, D-STAR (REF/XRF/DCS) reflectors and AllStar nodes (as an IAX2 client) over UDP."
 arch=('i686' 'x86_64')
@@ -21,6 +21,11 @@ sha1sums=('SKIP'
 pkgver() {
     cd "$srcdir/$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+   cd "$srcdir/$pkgname"
+   sed -i 's/if(TRUE) # set TRUE for md380_vocoder/if(FALSE)/' CMakeLists.txt
 }
 
 
