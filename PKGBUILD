@@ -1,5 +1,5 @@
 pkgname=samba-util
-pkgver=2.9.9
+pkgver=3.0.1
 pkgrel=3
 pkgdesc="A simple and modern GUI for managing Samba."
 arch=('x86_64')
