@@ -2,7 +2,7 @@
 pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="A customisable music player.Binary version."
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.tar.zst::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-archlinux-${CARCH}.tar.zst"
 )
-sha256sums=('e3df8b12245d8bf8cd74ce661a74e4dd4e9d2c3605e65dda51a0f14dc79f801f')
+sha256sums=('7329399436237947306268e5e4cfbf60a8cc6a3df5e0e4248d0fa073057945ed')
 prepare() {
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
 }

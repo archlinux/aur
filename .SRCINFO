@@ -1,6 +1,6 @@
 pkgbase = fooyin-bin
 	pkgdesc = A customisable music player.Binary version.
-	pkgver = 0.10.6
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://www.fooyin.org/
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = fooyin-bin
 	optdepends = libpipewire: For the PipeWire audio output plugin
 	optdepends = libsndfile: For the GME audio input plugin
 	optdepends = libebur128: For the ReplayGain scanner plugin
-	provides = fooyin=0.10.6
+	provides = fooyin=0.10.7
 	conflicts = fooyin
-	source = fooyin-0.10.6.tar.zst::https://github.com/ludouzi/fooyin/releases/download/v0.10.6/fooyin-0.10.6-archlinux-x86_64.tar.zst
-	sha256sums = e3df8b12245d8bf8cd74ce661a74e4dd4e9d2c3605e65dda51a0f14dc79f801f
+	source = fooyin-0.10.7.tar.zst::https://github.com/ludouzi/fooyin/releases/download/v0.10.7/fooyin-0.10.7-archlinux-x86_64.tar.zst
+	sha256sums = 7329399436237947306268e5e4cfbf60a8cc6a3df5e0e4248d0fa073057945ed
 
 pkgname = fooyin-bin
