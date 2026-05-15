@@ -1,6 +1,6 @@
 pkgname=hpe-scripting-toolkit
 pkgver=11.60
-pkgrel=3
+pkgrel=4
 pkgdesc="Command-line tools for scripting HP ProLiant BIOS configuration"
 arch=(x86_64)
 url='https://downloads.linux.hpe.com/SDR/project/stk/'
@@ -49,5 +49,5 @@ package() {
 		esac
 	done
 	# Add extra file
-	cp -av conrep_rmrds.xml "$pkgdir"/opt/hp/hp-scripting-tools/etc/
+	install -m 0644 conrep_rmrds.xml "$pkgdir"/opt/hp/hp-scripting-tools/etc/
 }
