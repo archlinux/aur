@@ -2,7 +2,7 @@
 pkgname=archive-app-bin
 _pkgname=archive-app
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Zarządzanie Domowymi Dokumentami"
 arch=('x86_64')
 url="https://github.com/KlapkiSzatana/archive-app"
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 
 source=("https://github.com/KlapkiSzatana/archive-app/releases/download/v${pkgver}/ArchiveApp_linux.tar.gz")
 
-sha256sums=('88f7743429a496a85e3adfb498a59c4e2f8d763bca15d52a4755dfca4863c566')
+sha256sums=('a8e378786a577d1638c0569db1d0c6e8c3b6b3e8a6ac8c5c17f075e60cff681a')
 
 package() {
 
