@@ -1,6 +1,6 @@
 pkgbase = pingall-git
 	pkgdesc = Ping everything you can reach
-	pkgver = 2.1.0.r46.gcec5eff
+	pkgver = 2.1.1.r49.gce270fa
 	pkgrel = 1
 	url = https://github.com/Fierthraix/pingall
 	arch = x86_64
