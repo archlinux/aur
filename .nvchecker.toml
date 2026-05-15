@@ -1,0 +1,4 @@
+[libgadu]
+source = "github"
+github = "wojtekka/libgadu"
+use_max_tag = true
