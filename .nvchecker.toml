@@ -1,0 +1,5 @@
+[z80ex]
+source = "github"
+github = "lipro/z80ex"
+use_max_tag = true
+prefix = "z80ex-"
