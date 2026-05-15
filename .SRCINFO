@@ -1,7 +1,7 @@
 pkgbase = dusk-bin
 	pkgdesc = Dusk is a reverse-engineered reimplementation of Twilight Princess.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/TwilitRealm/dusklight
 	arch = x86_64
 	license = GPL
@@ -32,9 +32,9 @@ pkgbase = dusk-bin
 	depends = libtasn1
 	depends = keyutils
 	depends = libffi
-	source = dusk
+	source = dusklight
 	source = https://github.com/TwilitRealm/dusk/releases/download/v1.1.1/Dusklight-v1.1.1-linux-x86_64.AppImage
-	sha256sums = 61a2a82768320fdbd9de2cf8ab83d2dd247eada4b80970e746219aa0f8c519aa
+	sha256sums = 9d8b481884b504dc4faf69a882351b9c12d9adb1b2c4a4ed5ec8f9d3bb47b946
 	sha256sums = f01b4ad576461f1c3611b6e0ca657cea0be760f60ee9f89961076e791b3ca163
 
 pkgname = dusk-bin
