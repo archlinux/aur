@@ -3,15 +3,16 @@
 pkgname=hyprmt
 pkgver=3.0.0
 pkgrel=1
+_tag=v${pkgver}
 pkgdesc="Hyprland monitor toggle utility inspired by the Windows + P display picker"
 arch=("x86_64")
 url="https://codeberg.org/nathawat/hyprmt"
 license=("GPL-3.0-or-later")
 depends=("glibc" "hyprland>=0.55.0")
-makedepends=("cargo" "git")
+makedepends=("cargo")
 optdepends=("fuzzel: overlay picker support")
-source=("git+${url}.git#tag=v${pkgver}")
-b2sums=("62508250a872b4f4d29d17460c1540fbc8f7dc82d55cce1da0ac807d41270db80488ef0684b4b8cee772c32667b12828b4ed3016a3fde426cb6216590b474c15")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/nathawat/hyprmt/archive/${_tag}.tar.gz")
+b2sums=("81323ac6b075d5db99a6c972357077fa7b7ae627ba7e39458abc223365f607b957b1fb3ff3597ecc3565a5d4172bfc827cf80e843d0e002a26bef934e58099c1")
 
 prepare() {
     cd "${srcdir}/${pkgname}"
