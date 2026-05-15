@@ -221,7 +221,7 @@ _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
     "https://github.com/CachyOS/linux/releases/download/${_srcname}/${_srcname}.tar.gz"
     "config"
-    "${_cjktty_source}/v7.x/cjktty-7.0.8-cachyos.patch"
+    "${_cjktty_source}/v7.x/cjktty-7.0.8.patch"
     "${_cjktty_source}/cjktty-add-cjk32x32-font-data.patch")
 
 # LLVM makedepends
