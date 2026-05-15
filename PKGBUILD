@@ -17,15 +17,15 @@ makedepends=(
 	'git'
 	'lld'
 	'ninja'
-	'python'
-    'qt6-base'
-    'qt6-tools'
-    'qt6-svg'
 )
 depends=(
+	'python'
 	'dbus'
 	'libcurl-gnutls'
 	'sdl3'
+    'qt6-base'
+    'qt6-tools'
+    'qt6-svg'
 )
 optdepends=(
 	'vulkan-validation-layers: Descriptive vulkan errors'
