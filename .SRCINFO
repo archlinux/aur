@@ -1,6 +1,6 @@
 pkgbase = brave-origin-nightly-bin
 	pkgdesc = The minimalist browser from the makers of Brave (nightly binary release).
-	pkgver = 1.92.61
+	pkgver = 1.92.65
 	pkgrel = 1
 	url = https://brave.com/origin/download-nightly
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = brave-origin-nightly-bin
 	options = !strip
 	source = brave-origin-nightly-bin.sh
 	sha512sums = a9366d90e0e23cb098cae6a86fdd2ef102677df96a6caff27af8f48e7ddb3175829c8dbf32ef55cf6a13383aad9d3d9302826062d7e5743a8ac83960ec175e69
-	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.92.61/brave-origin-nightly_1.92.61_amd64.deb
-	sha512sums_x86_64 = a4949802825f784ae881918d6a5982736799db95e3fadadb32b2464c5010e56af98d40d28c7d49d77c6bb812fbb6ace9aafe9bbcb0b4821aa103b5340bd8895a
-	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.92.61/brave-origin-nightly_1.92.61_arm64.deb
-	sha512sums_aarch64 = 8095d272e916161a5cb38c4939a07760f271e4f6f188a6624716a2cfa310dbb2b68bb7ee2cb1d2521cee3d90be1ae90e2bb09e853724b702b49d5bc4bf6a2b76
+	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.92.65/brave-origin-nightly_1.92.65_amd64.deb
+	sha512sums_x86_64 = 00367c2f7b76d46a73d725c5215b493b0c36d517d59793fe415378b7246e1b3df3a7aa3bc070b3863fdedc6161e9cf90500c86f33f598f03dd1291bf03855866
+	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.92.65/brave-origin-nightly_1.92.65_arm64.deb
+	sha512sums_aarch64 = 219433b4b0bb16f71b1ea692ed358189b6672e97807a6ebe0c6e7caa983a27aa2100eec177c72e238a0c014292491c85a7a76e0bb2209de9a130e5f2814d55a6
 
 pkgname = brave-origin-nightly-bin
