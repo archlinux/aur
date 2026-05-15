@@ -1,0 +1,6 @@
+*
+!.SRCINFO
+!PKGBUILD
+!vivaldi-js-ui.hook
+!vivaldi-autoinject-custom-js-ui.install
+!.gitignore

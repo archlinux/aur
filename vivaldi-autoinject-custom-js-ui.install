@@ -1,5 +1,3 @@
-#!/bin/bash
-
 pre_install() {
   # old versions of the script generated and installed
   # the hook, now it is part of this package, so we

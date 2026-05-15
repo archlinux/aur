@@ -1,8 +1,9 @@
 pkgbase = vivaldi-autoinject-custom-js-ui
 	pkgdesc = manage custom js UI mods for the vivaldi web browser
-	pkgver = 2023.09.05.1
-	pkgrel = 2
-	url = https://github.com/budlabs/vivaldi-autoinject-custom-js-ui
+	pkgver = 2026.05.15
+	pkgrel = 1
+	url = https://github.com/justbispo/vivaldi-autoinject-custom-js-ui
+	install = vivaldi-autoinject-custom-js-ui.install
 	arch = any
 	license = BSD
 	makedepends = gawk
@@ -11,11 +12,9 @@ pkgbase = vivaldi-autoinject-custom-js-ui
 	depends = bash
 	depends = sed
 	depends = vivaldi
-	source = https://github.com/budlabs/vivaldi-autoinject-custom-js-ui/archive/2023.09.05.1/vivaldi-autoinject-custom-js-ui-2023.09.05.1.tar.gz
+	source = https://github.com/justbispo/vivaldi-autoinject-custom-js-ui/archive/2026.05.15/vivaldi-autoinject-custom-js-ui-2026.05.15.tar.gz
 	source = vivaldi-js-ui.hook
-	source = install.bash
-	sha256sums = 92c00cd5e6fa226266ce22cc9f7f304412651289edd70b87797f2929e9cbb1ae
+	sha256sums = 2189fea24175d2265bd317eea2166a43b5949a214b73eb1332df3a5ba49f6a17
 	sha256sums = 3564099604ef8f38d7fe9ec7672b9c3175e6ed11e06e39b5f53f9201ad93127f
-	sha256sums = 40102cc1d69406726de3bd922717587d4f3260276eb7532dd49fffe316f2e0b5
 
 pkgname = vivaldi-autoinject-custom-js-ui
