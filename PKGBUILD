@@ -1,7 +1,7 @@
 # Maintainer: Geoff Clements <ro2kz0@gmail.com>
 pkgname=vibe_player
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='A music player for the Lyrion music server'
 url='https://github.com/GeoffClements/Vibe'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -9,9 +9,9 @@ arch=('x86_64' 'aarch64')
 license=('MIT')
 makedepends=('cargo' 'clang')
 depends=('libdbus' 'libpipewire')
-sha256sums=('b2d73872d5f0b783f410e1a7e27c1bf6da2a074cbf527cb7e446fa3491c2a1c5')
+sha256sums=('3a944892f147a3875b30648fe31326c5fa820beff5e3e7e8b4d5ca15fe3956de')
 
-vibe_features="--no-default-features --features=pipewire,notify"
+_vibe_features="--no-default-features --features=pipewire,notify"
 
 prepare() {
   cd "Vibe-${pkgver}"
@@ -25,7 +25,7 @@ build() {
     export CARGO_PROFILE_RELEASE_LTO=off
   fi
 
-  cargo build --frozen ${vibe_features} --release --target-dir target
+  cargo build --frozen ${_vibe_features} --release --target-dir target
 }
 
 package() {
