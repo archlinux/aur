@@ -4,7 +4,7 @@ _pkgname=DHARMa
 _pkgver=0.4.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Residual Diagnostics for Hierarchical (Multi-Level / Mixed) Regression Models"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -28,11 +28,11 @@ optdepends=(
   r-glmmtmb
   r-knitr
   r-mgcviz
+  r-phylolm
   r-rmarkdown
   r-sfsmisc
   r-spamm
   r-testthat
-  r-phylolm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('4b8ee08f66c220e1e1ad74c6f486e747')
