@@ -1,5 +1,5 @@
 pkgbase = gbe-plus-rec-git
-	pkgdesc = DMG/GBC/GBA emulator and experimental NDS emulator.
+	pkgdesc = DMG/GBC/GBA/Pokemon Mini emulator and experimental NDS emulator with support for playback using Agatsuma and Play-Yan. Successor to GB Enhanced.
 	pkgver = r4915.95891bf1
 	pkgrel = 1
 	url = https://github.com/shonumi/gbe-plus
