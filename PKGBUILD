@@ -5,17 +5,23 @@
 pkgname=gblocks
 _pkgname=Gblocks
 provides=("gblocks")
-pkgver=0.91b
-pkgrel=7
+pkgver=1.0
+pkgrel=1
 pkgdesc="A program written in ANSI C language that eliminates poorly aligned \
 	 positions and divergent regions of an alignment of DNA or protein sequences. https://doi.org/10.1093/oxfordjournals.molbev.a026334"
 url='https://www.biologiaevolutiva.org/jcastresana/Gblocks.html'
 arch=('x86_64')
 license=('unknown')
 depends=('glibc')
-source=("https://www.biologiaevolutiva.org/jcastresana/${_pkgname}/${_pkgname}_Linux64_${pkgver}.tar.Z")
-sha256sums=('563658f03cc5e76234a8aa705bdc149398defec813d3a0c172b5f94c06c880dc')
+makedepends=('tar')
+source=("https://molevol-ibe.csic.es/${_pkgname}/${_pkgname}_${pkgver}_Linux.tar.gz")
+sha256sums=('e899015c8c6583fd6c6799539af31d55a108d7d951c992930f8c452cca371c89')
+
+prepare() {
+  tar -xvf ${_pkgname}_${pkgver}_Linux.tar
+}
+
 package() {
-  install -Dm755 ${_pkgname}_$pkgver/$_pkgname "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 ${_pkgname}_$pkgver/Documentation/Gblocks_documentation.html  $pkgdir/usr/share/doc/$_pkgname/Gblocks_documentation.html
+  install -Dm755 ${_pkgname}_${pkgver}_Linux/$_pkgname "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 ${_pkgname}_${pkgver}_Linux/Documentation/Gblocks_documentation.html  $pkgdir/usr/share/doc/$_pkgname/Gblocks_documentation.html
 }

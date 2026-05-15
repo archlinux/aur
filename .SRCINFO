@@ -1,13 +1,14 @@
 pkgbase = gblocks
 	pkgdesc = A program written in ANSI C language that eliminates poorly aligned positions and divergent regions of an alignment of DNA or protein sequences. https://doi.org/10.1093/oxfordjournals.molbev.a026334
-	pkgver = 0.91b
-	pkgrel = 7
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://www.biologiaevolutiva.org/jcastresana/Gblocks.html
 	arch = x86_64
 	license = unknown
+	makedepends = tar
 	depends = glibc
 	provides = gblocks
-	source = https://www.biologiaevolutiva.org/jcastresana/Gblocks/Gblocks_Linux64_0.91b.tar.Z
-	sha256sums = 563658f03cc5e76234a8aa705bdc149398defec813d3a0c172b5f94c06c880dc
+	source = https://molevol-ibe.csic.es/Gblocks/Gblocks_1.0_Linux.tar.gz
+	sha256sums = e899015c8c6583fd6c6799539af31d55a108d7d951c992930f8c452cca371c89
 
 pkgname = gblocks
