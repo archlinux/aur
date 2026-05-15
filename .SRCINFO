@@ -1,15 +1,13 @@
 pkgbase = fcp-git
 	pkgdesc = A faster rust cp command
-	pkgver = v0.2.1.r9.g6d57487
+	pkgver = v0.2.2.r0.gf8db060
 	pkgrel = 1
 	url = https://github.com/Svetlitski/fcp
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = rust
 	makedepends = cargo
-	depends = glibc
 	provides = fcp
 	conflicts = fcp
 	source = fcp::git+https://github.com/Svetlitski/fcp

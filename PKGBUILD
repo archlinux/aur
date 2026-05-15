@@ -1,17 +1,18 @@
 # Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
 #
 # Upstream: https://git.metalpunks.info/arch-ports
+#
+# vim: ts=2 sw=2
 
 _pkgname=fcp
 pkgname=fcp-git
-pkgver=v0.2.1.r9.g6d57487
+pkgver=v0.2.2.r0.gf8db060
 pkgrel=1
 pkgdesc="A faster rust cp command"
 arch=('i686' 'x86_64')
-url="https://github.com/Svetlitski/fcp"
+url='https://github.com/Svetlitski/fcp'
 license=('BSD')
-depends=('glibc' )
-makedepends=('git' 'rust' 'cargo')
+makedepends=('git' 'cargo')
 provides=('fcp')
 conflicts=('fcp')
 source=("${_pkgname}::git+${url}")
@@ -26,12 +27,12 @@ pkgver() {
 }
 
 build() {
-  return 0
+  cd "${_pkgname}"
+  cargo build --release --locked --all-features
 }
 
 package() {
   cd "${_pkgname}"
-  cargo install --no-track --locked --all-features --path . \
-    --root "${pkgdir}/usr/"
-  install -Dm 644 LICENSE README.md -t "${pkgdir}/usr/share/doc/fcp"
+  install -Dvm755 target/release/fcp -t "${pkgdir}/usr/bin"
+  install -Dvm644 LICENSE README.md -t "${pkgdir}/usr/share/doc/fcp"
 }
