@@ -1,7 +1,7 @@
 pkgbase = penguin-citizen-bin
 	pkgdesc = A Linux management tool for Star Citizen — RSI Launcher GUI with Wine/Proton runner management
 	pkgver = 0.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TomRhodan/penguin-citizen
 	arch = x86_64
 	license = GPL-3.0-or-later

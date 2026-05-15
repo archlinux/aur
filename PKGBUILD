@@ -2,7 +2,7 @@
 pkgname=penguin-citizen-bin
 _pkgname=penguin-citizen
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 # Upstream uses Debian-style release suffix in tags (e.g. v0.5.4-0). Independent of pkgrel.
 _releasetag=2
 pkgdesc="A Linux management tool for Star Citizen — RSI Launcher GUI with Wine/Proton runner management"
