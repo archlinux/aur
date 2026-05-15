@@ -217,7 +217,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=0829cf892b5d7b3a0e8aa76cc7aca02b84f62557")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=6330a45b06d20125de679aae5f63ba14082671ef")
 fi
 
 
