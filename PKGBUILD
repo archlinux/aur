@@ -1,4 +1,5 @@
 # Maintainer: Bronya <kotone[dot]olin1010[at]gmail[dot]com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 ## options
 : ${_install_path:=usr/lib}
