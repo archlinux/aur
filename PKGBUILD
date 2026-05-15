@@ -1,7 +1,7 @@
 # Maintainer: fecet <xiezej@gmail.com>
 pkgname=px13-audio-fix
 pkgver=0.20260515
-pkgrel=1
+pkgrel=2
 pkgdesc="UCM + PipeWire/WirePlumber configs for TAS2783 speakers on ASUS ProArt PX13 (HN7306EA)"
 arch=('any')
 url="https://github.com/ftoleedo/px13-audio-fix"
@@ -22,7 +22,7 @@ source=(
     'patch-ucm.sh'
 )
 sha256sums=('8704e2350ece61e4fbfc6fab0e1555e9dadc4e50509f727c704cae137de7e372'
-            'dff09de813fabb9c3c49289dc3b9516a7a4e9239ade243d1aaea554c61b89b7a'
+            '0e553ee4e084c53fa143622c1664d39398736c7d29f7377ecbe885907a2a43c8'
             'bbbc4eafdbdacfc9af5b58922bb21118da59c88320dae037925ceed5ebfa02ed'
             'a426f056bb4fc3169fe68e8c08172379899e7f03edeb5199b5e7d6c06444444d'
             '2a68adee036530d1fa9e59fba0268d414c31f7c5d4b2ea1e93a11ceb469f4642'
