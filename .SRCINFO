@@ -1,7 +1,7 @@
 pkgbase = orca-bambustudio-appimage
 	pkgdesc = G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/FULU-Foundation/OrcaSlicer-bambulab
 	arch = x86_64
 	license = AGPL-3.0
@@ -17,7 +17,7 @@ pkgbase = orca-bambustudio-appimage
 	source = Orca-BambuStudio.desktop
 	source = orca-bambu
 	sha256sums = fb948fc235c12916fddca8eddf44678ca86c936a4b14acc70d75c2bd22067994
-	sha256sums = 7bda0d428136d58e990dd47b2d2e59d9db86ce479b08d26abc0a7e9eca86ff7a
+	sha256sums = 364e4ba2d39b35e1c19790c581bc8ee632a7411f1667abf097742305cb216bc7
 	sha256sums = 5b90719fdc4f5787d7466a1ef73834ec146a76f13f773b72aaf9b9044e38f675
 
 pkgname = orca-bambustudio-appimage
