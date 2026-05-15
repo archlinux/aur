@@ -3,7 +3,7 @@
 
 _name="aom"
 pkgname="lib32-${_name}"
-pkgver=3.13.3
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (32-bit)"
 arch=(
@@ -19,7 +19,7 @@ depends=(
   'lib32-glibc'
 )
 makedepends=(
-  'cmake'
+  'cmake>=3.16'
   'yasm'
 )
 provides=(
@@ -30,7 +30,7 @@ source=(
   "https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz"
   "https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz.asc"
 )
-b2sums=('00ff9befda464301cd1314f4745ae35ed18f374a574d14a100f2083476b70fee94d95b3aec2c8c298016578fd4eee364ef495b4711092746a90ed3f2656ca7b7'
+b2sums=('a16fa855ac9081d901f3b27318f47c186a15a0841ea1e9f0230a31d90bf265d75ed8f152a07635c3caf38735cceb57f95197fad4efbf8728aba31324d02a5f5b'
         'SKIP')
 validpgpkeys=(
   'B002F08B74A148DAA01F7123A48E86DB0B830498' # AOMedia release signing key <av1-discuss@aomedia.org>
@@ -39,7 +39,7 @@ validpgpkeys=(
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   # Don't require static library
-  sed -i 's/aom aom_static/aom/' build/cmake/aom_install.cmake
+  sed -i 's/aom aom_static/aom/' cmake/aom_install.cmake
 }
 
 build() {
@@ -47,7 +47,9 @@ build() {
   export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=0} -m32"
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  local cmake_arguments=(
+  local cmake_options=(
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
     -G 'Unix Makefiles'
     -W no-dev
     # Upstream would like Release, adding -O3 and removing assertions
@@ -63,13 +65,13 @@ build() {
   )
   
   cd "${srcdir}"
-  cmake -B "${_pkgsrc}/build-makepkg" -S "${_pkgsrc}" "${cmake_arguments[@]}"
-  cmake --build "${_pkgsrc}/build-makepkg"
+  cmake "${cmake_options[@]}"
+  cmake --build "${cmake_options[1]}"
 }
 
 package() {
   cd "${srcdir}"
-  DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build-makepkg"
+  DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
   cd "${pkgdir}/usr"
   rm -rf "bin" "include" "share"
