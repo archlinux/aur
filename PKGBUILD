@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=grx-bin
 _appname=GRX
-pkgver=4.3.6
+pkgver=4.3.7
 _electronversion=42
 pkgrel=1
 pkgdesc="Fastest Web Gerber Renderer.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 #source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-amd64.deb")
 sha256sums=('23bce28c966a0a3af2fedc9c947caedba971615a311ed5402ac717f020db1f48'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('48ee4b6aac42d74c35d5fc35b89f0c024c42414523afa6d1e976a49572d4e257')
+sha256sums_aarch64=('fce4e5aa797ea045397bfcd75a808dd64cd51f64916b8f062dc7a2bc3335ae1a')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
