@@ -12,8 +12,8 @@ depends=('libpng' 'librsvg' 'libsfdo' 'pango' 'seatd' 'ttf-font' 'wlroots-hidpi-
 makedepends=('git' 'meson' 'scdoc' 'wayland-protocols' 'xorg-xwayland')
 optdepends=("bemenu: default launcher via Alt+F3"
             "xorg-xwayland: X11 support")
-conflicts=(labwc)
-provides=(labwc)
+conflicts=(labwc-git labwc)
+provides=(labwc-git labwc)
 source=("git+https://github.com/labwc/${_pkgname}.git"
 	'labwc-wlroots021.patch')
 md5sums=('SKIP'
