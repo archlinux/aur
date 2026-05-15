@@ -5,7 +5,7 @@
 
 pkgname=openafs-modules
 _srcname=openafs
-pkgver=1.8.16pre1
+pkgver=1.8.16
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,8 +16,10 @@ makedepends=('libelf' 'linux-headers' 'openafs>=1.8.12.1-2')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
 install=openafs-modules.install
-source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
-sha256sums=('f3a30f51d802533a0758099fe1499a94886afd03fd17c40588db0e555f6d3817')
+source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+        0001-cf-Ensure-BTF-info-is-created-in-tests-for-Linux.patch)
+sha256sums=('ee8127689757cbd9723a853a12fae281c9de9c3e894a4bd90107fb6f85270469'
+            '6665afb3ee270161da207030a57bda5afe512fad1c182b03b2ea7693d2947a0e')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -32,12 +34,17 @@ _extramodules="/usr/lib/modules/${_kernelver}/extramodules"
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
 
+  # Fix configure checks on Arch Linux
+  patch -p1 < "${srcdir}"/0001-cf-Ensure-BTF-info-is-created-in-tests-for-Linux.patch
+
   # Only needed when changes to configure were made
   ./regen.sh -q
 }
 
 build() {
   cd "${srcdir}/${_srcname}-${pkgver}"
+
+  echo "Building against kernel ${_kernelver}"
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -46,7 +53,7 @@ build() {
               --disable-fuse-client \
               --without-swig \
               --with-linux-kernel-packaging \
-              --with-linux-kernel-build="/usr/lib/modules/${_kernelver}/build"
+              --with-linux-kernel-headers="/usr/lib/modules/${_kernelver}/build"
 
   make only_libafs
 }
