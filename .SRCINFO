@@ -1,0 +1,18 @@
+pkgbase = python-pypiano
+	pkgdesc = Library to programmatically play piano
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/FelixGSE/pypiano
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-mingus
+	depends = fluidsynth
+	depends = soundfont-fluid
+	source = https://github.com/FelixGSE/pypiano/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 0edf01a66c94a3fda5ddccea812eed8d1725a2be75c1db5343d4d28debb92d87
+
+pkgname = python-pypiano
