@@ -5,7 +5,7 @@
 _pkgname=cantera
 pkgname="${_pkgname}"
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='suite of tools for kinetics, thermodynamics, and transport processes'
 arch=('x86_64')
 url='https://cantera.org/'
@@ -24,6 +24,8 @@ prepare() {
     cd "$_pkgname"
     git checkout tags/v$pkgver
     git submodule update
+    sed -i 's/self._selected_species.resize(len(species))/self._selected_species = np.empty(len(species), dtype=np.uint64)/' \
+        interfaces/cython/cantera/solutionbase.pyx
 
 }
 
