@@ -1,0 +1,4 @@
+[qxmledit]
+source = "regex"
+url = "https://sourceforge.net/projects/qxmledit/files/"
+regex = "qxmledit-([\\d.]+)-src\\.tgz"
