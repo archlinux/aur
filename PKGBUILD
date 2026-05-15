@@ -1,7 +1,7 @@
 # Maintainer: TheCrabeuh <clement.dallasenn@outlook.fr>
 
 pkgname=fren-git
-pkgver=r12.145ab60
+pkgver=2.0
 pkgrel=1
 pkgdesc="A TUI file manager that lets you open files and directories with any app"
 arch=('x86_64')
