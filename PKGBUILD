@@ -4,7 +4,7 @@
 
 pkgname=heynote-bin
 _pkgname=Heynote
-pkgver=2.8.2
+pkgver=2.9.0
 # Use electron version that matches https://github.com/heyman/heynote/blob/main/package.json "electron" dependency
 _electronversion=39
 pkgrel=1
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/heyman/heynote/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6caefd02eff45280ef83314fa7fc71ec006d19fdefcd6cd4d572ae38438a3d32'
+sha256sums=('e5208832f869154c297196b15300e3591374e5014b80a284d42d89df695aa47f'
             'd78b14a03247374515264208d64b975e100af8a2fd0464afa07f76ca199700a7'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
