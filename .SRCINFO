@@ -1,0 +1,10 @@
+pkgbase = aur-test-hello
+	pkgdesc = A minimal test package for verifying AUR push workflow
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/awsl1414/aur-packages
+	arch = any
+	license = MIT
+	depends = bash
+
+pkgname = aur-test-hello
