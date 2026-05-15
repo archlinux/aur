@@ -1,0 +1,23 @@
+post_install() {
+    echo ""
+    echo "==> duckwm installed."
+    echo "    Run the following as your user to set up your config:"
+    echo ""
+    echo "      mkdir -p ~/.config/duckwm/meta ~/.config/duckwm/docs"
+    echo "      cp /etc/duckwm/config.lua ~/.config/duckwm/config.lua"
+    echo "      cp /usr/share/duckwm/meta/wm.lua ~/.config/duckwm/meta/wm.lua"
+    echo "      cp /usr/share/doc/duckwm/API.md ~/.config/duckwm/docs/API.md"
+    echo "      cp /usr/share/doc/duckwm/API.norg ~/.config/duckwm/docs/API.norg"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> duckwm upgraded."
+    echo "    Refresh your LuaLS meta and docs:"
+    echo ""
+    echo "      cp /usr/share/duckwm/meta/wm.lua ~/.config/duckwm/meta/wm.lua"
+    echo "      cp /usr/share/doc/duckwm/API.md ~/.config/duckwm/docs/API.md"
+    echo "      cp /usr/share/doc/duckwm/API.norg ~/.config/duckwm/docs/API.norg"
+    echo ""
+}
