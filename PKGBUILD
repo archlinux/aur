@@ -1,6 +1,6 @@
 pkgbase=lyrica
 pkgname=(lyrica plasma-applet-lyrica obs-plugin-lyrica)
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
 pkgdesc="Linux desktop lyrics widget focused on simplicity and integration."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 makedepends=("cargo" "jq")
 options=("!lto") # Undefined references to ...
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chiyuki0325/lyrica/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a51d789ec90f5aa1f517a8b74ab14bdf00a342e7d0897df026a6ff50f2d7193b')
+sha256sums=('854cafcc9cf14cc4650009c13b5147be58d9f344fca04a53304db0eb72693db3')
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
