@@ -1,0 +1,23 @@
+pkgbase = facegate-git
+	pkgdesc = Native facial authentication for Linux PAM (master HEAD)
+	pkgver = 0.3.1.r0.gHEAD
+	pkgrel = 1
+	url = https://github.com/me02329/facegate
+	install = facegate.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust>=1.95
+	makedepends = clang
+	makedepends = pkgconf
+	depends = onnxruntime
+	depends = v4l-utils
+	depends = systemd
+	provides = facegate=0.3.1
+	conflicts = facegate
+	conflicts = facegate-bin
+	source = facegate::git+https://github.com/me02329/facegate.git#branch=master
+	sha256sums = SKIP
+
+pkgname = facegate-git
