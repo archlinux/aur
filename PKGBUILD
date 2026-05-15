@@ -1,9 +1,9 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://rocm.docs.amd.com/en/7.12.0-preview/about/release-notes.html
+# Release notes https://rocm.docs.amd.com/en/7.13.0/about/release-notes.html
 pkgname=rocm-gfx1151-bin
 pkgdesc="ROCm Core SDK and TheRock Build System - Ryzen AI Max 300 - Strix Halo"
-pkgver=7.12.0pre
+pkgver=7.13.0
 pkgrel=1
 epoch=0
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1151-7.12.0.tar.gz"
+"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1151-7.13.0.tar.gz"
 )
 
 sha256sums=(
@@ -32,7 +32,7 @@ sha256sums=(
 package() {
 
     mkdir -p "${srcdir}/opt/rocm"
-    tar xf therock-dist-linux-gfx1151-7.12.0.tar.gz -C ${srcdir}/opt/rocm
+    tar xf therock-dist-linux-gfx1151-7.13.0.tar.gz -C ${srcdir}/opt/rocm
 
     mv "${srcdir}/opt/" "${pkgdir}/"
 
@@ -48,5 +48,5 @@ package() {
     echo /opt/rocm/hip/lib >> "$pkgdir/etc/ld.so.conf.d/rocm-bin.conf"
 
     mkdir -p "${pkgdir}/etc/profile.d"
-    echo export PATH="\${PATH}:/opt/rocm/bin:/opt/rocm/hip/bin" > "$pkgdir/etc/profile.d/rocm-bin.sh"
+    echo export PATH="\${PATH}:/opt/rocm/bin:/opt/rocm/hip/bin:/opt/rocm/llvm/bin" > "$pkgdir/etc/profile.d/rocm-bin.sh"
 }
