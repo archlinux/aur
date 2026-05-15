@@ -6,6 +6,10 @@ msg() {
     echo "[*] $*" >&2
 }
 
+warn() {
+    echo "WARNING: $*" >&2
+}
+
 fail() {
     echo "[*] $*" >&2
     exit 1
@@ -59,6 +63,90 @@ new_tmp_dir() {
     printf '%s\n' "$tmp"
 }
 
+extract_bun_depend() {
+    local source_archive=$1
+    local package_json_path=$2
+    local requirement
+
+    requirement="$(cmd bsdtar -xOf "$source_archive" "$package_json_path" | awk -F'"' '
+BEGIN {
+    in_engines = 0
+}
+/^[[:space:]]*"engines"[[:space:]]*:/ {
+    in_engines = 1
+    next
+}
+in_engines && /^[[:space:]]*}/ {
+    in_engines = 0
+}
+in_engines && $2 == "bun" {
+    print $4
+    found = 1
+    exit
+}
+END {
+    exit(found ? 0 : 1)
+}
+')" || return 1
+
+    case "$requirement" in
+        \>\=[0-9]*)
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+
+    if [[ $requirement == *[[:space:]]* ]]; then
+        return 1
+    fi
+
+    printf 'bun%s\n' "$requirement"
+}
+
+update_bun_makedepend() {
+    local bun_dep=$1
+    local pkgbuild_tmp
+
+    pkgbuild_tmp="$(new_tmp)"
+    awk -v bun_dep="$bun_dep" '
+function emit_dependency(dep) {
+    if (dep == "" || dep ~ /^bun($|[<>=])/) {
+        return
+    }
+
+    printf " \047%s\047", dep
+}
+BEGIN {
+    updated = 0
+}
+/^makedepends=\(/ && !updated {
+    line = $0
+    sub(/^makedepends=\(/, "", line)
+    sub(/\)[[:space:]]*$/, "", line)
+
+    printf "makedepends=(\047%s\047", bun_dep
+    count = split(line, deps, /[[:space:]]+/)
+    for (i = 1; i <= count; i++) {
+        dep = deps[i]
+        gsub(/\047/, "", dep)
+        emit_dependency(dep)
+    }
+    print ")"
+
+    updated = 1
+    next
+}
+{
+    print
+}
+END {
+    exit(updated ? 0 : 1)
+}
+' PKGBUILD >"$pkgbuild_tmp" || fail "unable to update bun make dependency in PKGBUILD"
+    cmd mv "$pkgbuild_tmp" PKGBUILD
+}
+
 trap cleanup EXIT
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -95,6 +183,14 @@ if [[ $pkgver != *.*.* ]]; then
 fi
 
 msg "current pkgver: ${pkgver}"
+
+pkgname="$(awk -F= '/^pkgname=/{print $2; exit}' PKGBUILD)"
+pkgname="${pkgname//[[:space:]]/}"
+
+if [[ -z $pkgname ]]; then
+    fail "unable to extract pkgname from PKGBUILD"
+fi
+
 
 if [[ $pkgver == "$latest_tag" ]]; then
     msg "PKGBUILD already tracks the latest release"
@@ -135,6 +231,18 @@ if [[ $new_checksums != *sums=* ]]; then
     fail "unexpected checksum output from makepkg -g"
 fi
 
+
+source_archive="${pkgname}-${latest_tag}.tar.gz"
+package_json_path="${pkgname}-${latest_tag}/packages/coding-agent/package.json"
+
+if [[ -f $source_archive ]] && bun_dep="$(extract_bun_depend "$source_archive" "$package_json_path")"; then
+    msg "minimum bun make dependency: ${bun_dep}"
+else
+    warn "unable to extract bun engine requirement from ${package_json_path}; using unversioned bun makedepend"
+    bun_dep='bun'
+fi
+
+update_bun_makedepend "$bun_dep"
 pkgbuild_tmp="$(new_tmp)"
 awk -v new_checksums="$new_checksums" '
 function is_integrity_assignment(line) {
