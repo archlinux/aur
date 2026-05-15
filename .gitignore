@@ -8,4 +8,6 @@ pkg
 *.log
 *.py
 *image.sh
-!test-images.tar.gz
+!test-images.tar.xz
+*.ext4
+*.ext4.tmp
