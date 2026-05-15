@@ -1,0 +1,27 @@
+pkgbase = tasks-org-bin
+	pkgdesc = Bringing Astrid Tasks back from the dead
+	pkgver = 15.4.2
+	pkgrel = 1
+	url = https://github.com/tasks/tasks
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = libxtst
+	depends = freetype2
+	depends = alsa-lib
+	depends = libxi
+	depends = fontconfig
+	depends = libglvnd
+	depends = wayland
+	depends = zlib
+	depends = gcc-libs
+	provides = tasks-org
+	conflicts = tasks-org
+	options = !debug
+	source = tasks-org-15.4.2.tar.gz::https://github.com/tasks/tasks/releases/download/15.4.2/tasks-org-15.4.2-linux-amd64.tar.gz
+	sha256sums = 5271ac02a90b83a3c694a629312687a719e184b8a05670e7a5ccd509d1515088
+
+pkgname = tasks-org-bin
