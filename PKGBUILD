@@ -2,19 +2,18 @@
 
 pkgname=redex-git
 _pkgname=redex
-pkgver=r681.44b8fd3
+pkgver=r10012.570e5ca41
 pkgrel=1
 pkgdesc="A bytecode optimizer for Android apps"
 arch=('i686' 'x86_64')
 url="http://fbredex.com/"
 license=('BSD')
-depends=('python' 'boost-libs' 'jsoncpp')
-makedepends=('git' 'boost')
+depends=('python' 'boost-libs' 'jsoncpp' 'protobuf')
+makedepends=('git' 'boost' 'kotlin')
 provides=('redex')
 conflicts=('redex')
 source=("git+https://github.com/facebook/${_pkgname}/")
-sha256sums=('SKIP'
-            '62e48fd8c554cfaaf21eadca6d74617f559780f1fd0fa9d61b5201fce961d6bb')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -32,7 +31,7 @@ build() {
   cd "${_pkgname}"
 
   autoreconf -ivf
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-protobuf
   make
 }
 
