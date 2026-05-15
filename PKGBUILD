@@ -1,6 +1,6 @@
 # Maintainer: longyinstudio<1606776851@qq.com>
 pkgname=video-downloader-longyinstudio
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Download videos from websites like YouTube and many others (based on yt-dlp)"
 arch=('x86_64')
