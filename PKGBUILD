@@ -1,7 +1,7 @@
 # Maintainer: Mike Boiko <mike@boiko.ca>
 
 pkgname=mani
-pkgver=0.32.0
+pkgver=0.32.1
 pkgrel=1
 pkgdesc='A CLI tool that helps you manage multiple repositories'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!debug')
-_commit='75caa4ac6d31a0afb291e738ed5fb7624014cf6d'
+_commit='342a362ce3353ef23e03ec2041022d931ec49368'
 source=("$pkgname::git+https://github.com/alajmo/mani.git#commit=$_commit")
 b2sums=('SKIP')
 
