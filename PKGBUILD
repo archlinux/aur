@@ -3,11 +3,12 @@
 pkgname=conftest-bin
 _pkgname=conftest
 pkgver=0.68.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A utility to help you write tests against structured configuration data'
 arch=('x86_64')
 url='https://github.com/open-policy-agent/conftest'
 license=('Apache-2.0')
+options=(!strip)
 source_x86_64=(
   "https://github.com/open-policy-agent/conftest/releases/download/v${pkgver}/conftest_${pkgver}_Linux_x86_64.tar.gz"
 )
