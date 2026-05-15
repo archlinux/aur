@@ -1,0 +1,49 @@
+pre_install() {
+    dkms remove sealant --all 2>/dev/null || true
+    rm -f /etc/modules-load.d/sealant.conf
+    rm -f /usr/local/share/sealant/watch.py
+}
+
+post_install() {
+    groupadd -f sealant
+    if [ -n "$SUDO_USER" ]; then
+        usermod -aG sealant "$SUDO_USER"
+        echo "NOTE: $SUDO_USER added to sealant group. Log out and back in to apply."
+    else
+        echo "NOTE: Could not detect installing user. If 'sealant status' fails, run:"
+        echo "      sudo usermod -aG sealant <your_user>"
+        echo "      Then log out and back in. Verify with: groups <your_user>"
+    fi
+    dkms install sealant/1.0.2.26 --force 2>/dev/null || true
+    udevadm control --reload-rules
+    udevadm trigger
+    modprobe sealant 2>/dev/null || true
+    [ -d /etc/sealant ] || mkdir -p /etc/sealant
+}
+
+pre_upgrade() {
+    local old_ver=$2
+    dkms remove sealant/${old_ver} --all 2>/dev/null || true
+    dkms remove sealant --all 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    dkms remove sealant --all 2>/dev/null || true
+}
+
+post_remove() {
+    dkms remove sealant/1.0.2.26 --all 2>/dev/null || true
+    rm -rf /usr/src/sealant-1.0.2.26
+    rm -rf /var/lib/dkms/sealant
+    groupdel sealant 2>/dev/null || true
+    rm -f /etc/modules-load.d/sealant.conf
+    rm -f /etc/udev/rules.d/99-sealant.rules
+    rmmod sealant 2>/dev/null || true
+    udevadm control --reload-rules
+    udevadm trigger
+    echo "NOTE: sealant removed. Rules preserved at /etc/sealant/ if you want to keep them."
+}

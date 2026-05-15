@@ -1,0 +1,12 @@
+pkgbase = sealant
+	pkgver = 1.0.2.26
+	pkgrel = 1
+	install = sealant.install
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	options = !debug
+	source = https://github.com/zelphroso/sealant/archive/refs/tags/v1.0.2.26.tar.gz
+	sha256sums = 7609181f06dcc70ba48c437bc5fbd000ce10982fbde12dc33741f6f7bfd41a78
+
+pkgname = sealant
