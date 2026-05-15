@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Virtual Display Tray
+Name[uk]=Сервіс віртуального дисплея
+Comment=Control virtual monitor for tablet via tray icon
+Exec=virtdisp
+Icon=video-display
+Terminal=false
+Type=Application
+Categories=System;Settings;

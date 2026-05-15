@@ -1,0 +1,16 @@
+pkgbase = virtdisp
+	pkgdesc = Tray icon service to use Android tablet as a second monitor via Krfb
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/virtdisp
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt6
+	depends = krfb
+	source = virtdisp-tray.py
+	source = virtdisp.desktop
+	sha256sums = 298b0d7ca6df9ac9a2dd00184255648168e29e8913429f3d2b342aec6357264c
+	sha256sums = 083157fa09b685ca65c0000e67a2466907d7b601df84c072e1770981532b5f68
+
+pkgname = virtdisp
