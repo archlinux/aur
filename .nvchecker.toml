@@ -1,0 +1,3 @@
+[perl-complete-tcsh]
+source = "cpan"
+cpan = "Complete-Tcsh"

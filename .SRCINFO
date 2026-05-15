@@ -1,0 +1,19 @@
+pkgbase = perl-complete-tcsh
+	pkgdesc = Completion module for tcsh shell
+	pkgver = 0.030
+	pkgrel = 1
+	url = https://metacpan.org/dist/Complete-Tcsh
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-complete-bash>=0.331
+	depends = perl-exporter>=5.57
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Complete-Tcsh-0.030.tar.gz
+	sha256sums = e330fd9772559840d1c3abbc54616c39ec5219720f5e6df925f389deba305f1f
+
+pkgname = perl-complete-tcsh
