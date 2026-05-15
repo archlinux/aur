@@ -1,0 +1,4 @@
+[lxappearance-obconf-gtk3]
+source = "github"
+github = "lxde/lxappearance-obconf"
+use_max_tag = true
