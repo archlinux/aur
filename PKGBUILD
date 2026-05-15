@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sergey A <murlakatamenka@disroot.org>
 pkgname=falcond
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="Advanced Linux gaming performance daemon"
 arch=('x86_64')
 url="https://git.pika-os.com/general-packages/falcond"
@@ -17,22 +17,15 @@ makedepends=('zig>=0.16.0')
 optdepends=('scx-tools: SCX Scheduler Integration')
 conflicts=('gamemode')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'build.zig.zon.patch')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('cc71360a5ca88bf097e7be113d2ccd78b89b5e406512eae42ae64e09bd19b2b2'
-            '735f9e430cb58f545de8536ba6c2d4b7ee0b29f5502fe744962968a489f560e6')
+sha256sums=('0e8568af552f2f4e8d3c1c77f8e34b5f0ffc8fc8da65b09fb0558ae7e4b1ae39')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
   bsdtar xf "$pkgname-$pkgver.tar.gz" --strip-components 1 -C "$pkgname-$pkgver"
 
-  cd "$pkgname-$pkgver"
-
-  # Correct otter_conf hash
-  patch -Np1 -i "$srcdir/build.zig.zon.patch"
-
-  cd "$pkgname"
+  cd "$pkgname-$pkgver/$pkgname"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache"
 	zig build --fetch
 }
