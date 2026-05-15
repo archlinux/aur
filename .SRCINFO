@@ -1,7 +1,7 @@
 pkgbase = slopsmith-desktop-git
 	pkgdesc = Standalone desktop app for Slopsmith with VST/NAM support and Audio I/O
 	pkgver = r96.c1ea45e
-	pkgrel = 2
+	pkgrel = 11
 	url = https://github.com/byrongamatos/slopsmith-desktop
 	arch = x86_64
 	license = AGPL3
@@ -23,6 +23,7 @@ pkgbase = slopsmith-desktop-git
 	conflicts = slopsmith-desktop
 	conflicts = slopsmith-git
 	conflicts = slopsmith
+	options = !debug
 	source = slopsmith-desktop::git+https://github.com/byrongamatos/slopsmith-desktop.git
 	source = slopsmith::git+https://github.com/byrongamatos/slopsmith.git
 	source = Rocksmith2014.NET::git+https://github.com/iminashi/Rocksmith2014.NET.git
