@@ -1,0 +1,8 @@
+post_install() {
+    usermod -aG i2c "$1"
+}
+
+post_remove() {
+    echo "note: user still member of i2c group. if no longer needed, run:"
+    echo "  sudo gpasswd -d \$1 i2c"
+}
