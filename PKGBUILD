@@ -8,7 +8,7 @@ url="https://gaze.gundulabs.com"
 license=('custom')
 depends=('gtk4' 'libadwaita' )
 source=("gaze-gui-0.1.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gui-0.1.0-1-x86_64.pkg.tar.zst")
-sha256sums=('99f3a1195cdfdbe2c81bfd3f7d6d6529d36031a2703a9b18b5d4cdb4ac20901a')
+sha256sums=('f62abd3b772eb1289e85325ea320b0d1801ec1587d0722023bf653c8a3f178d6')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-gui-0.1.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
