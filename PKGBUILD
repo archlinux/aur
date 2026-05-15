@@ -3,7 +3,7 @@
 # Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=openai-codex-desktop
-pkgver=26.506.31421
+pkgver=26.513.20950
 pkgrel=1
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
 )
 
 _electron_major=39
-_better_sqlite3_ver=12.8.0
+_better_sqlite3_ver=12.9.0
 _node_pty_ver=1.1.0
 
 source=(
@@ -45,12 +45,12 @@ noextract=(
 )
 
 sha256sums=(
-  '13eba9c4d5a903a7ee80cad99a14a20ef081417b94fc9d0446a22e11bdd56be9'
-  '2602a5726d0a9d8e6be407c59bc125e605110eda8e3b04e7ef8d6ddf762c9122'
+  'cd29516a850973879115b7b4f2a4bfa32a9a05b7d6d84a638f78656c4980e82c'
+  'ad0e29650140c49d0335b1d356596aa8166f12b758f418a98446130e3278f250'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
   '2e075990f5419d66dd98c83e4ec938d5497d1a4ad2e8c766bf3664c35edadf51'
   'd3a00f4a4ddf2709d4f018222866df67d155ca36c9dbfa0dd1867d4c9267808d'
-  '64a75fdebea228552999559661e8bb9cf454b3948678cf5bfce13f41d48094b4'
+  'ee47be1c1e02180d8aeee4b4950cc4acce2130537ab389ed60cfee6fcb53fa07'
 )
 
 prepare() {
