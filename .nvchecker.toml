@@ -1,0 +1,4 @@
+[aiksaurus]
+source = "regex"
+url = "https://sourceforge.net/projects/aiksaurus/files/"
+regex = "aiksaurus/([\\d.]+)/"
