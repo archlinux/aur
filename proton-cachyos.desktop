@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Proton Windows Program Loader (Proton-CachyOS)
+Exec=proton-cachyos %f
+MimeType=application/x-ms-dos-executable;application/x-msi;application/x-ms-shortcut;application/x-bat;application/x-mswinurl
+Icon=proton-cachyos
+NoDisplay=true
+StartupNotify=true
