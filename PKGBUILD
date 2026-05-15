@@ -1,6 +1,6 @@
 # Maintainer: 5unekku <jimmy.bungalo8@gmail.com>
 pkgname=toss-git
-pkgver=r.1
+pkgver=0000000
 pkgrel=1
 pkgdesc="XDG-compliant rm replacement that trashes instead of deletes"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,9 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 2>/dev/null \
+        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
