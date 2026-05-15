@@ -1,6 +1,6 @@
 pkgbase = spider-git
 	pkgdesc = Install and integrate web apps into the GNOME desktop
-	pkgver = v0.0.8
+	pkgver = v0.0.8.r0.gaa642e3
 	pkgrel = 1
 	url = https://github.com/Zaedus/spider
 	arch = x86_64
@@ -10,6 +10,9 @@ pkgbase = spider-git
 	makedepends = rust
 	makedepends = pkgconf
 	makedepends = python-gobject
+	makedepends = gobject-introspection
+	makedepends = python
+	makedepends = cargo
 	depends = gtk4
 	depends = libadwaita
 	depends = webkitgtk-6.0
