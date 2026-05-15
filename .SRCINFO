@@ -1,0 +1,16 @@
+pkgbase = toss-musl-git
+	pkgdesc = XDG-compliant rm replacement that trashes instead of deletes (static musl build)
+	pkgver = r.1
+	pkgrel = 1
+	url = https://codeberg.org/5unekku/toss
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = musl
+	provides = toss
+	conflicts = toss
+	conflicts = toss-git
+	source = toss-musl-git::git+https://codeberg.org/5unekku/toss.git
+	sha256sums = SKIP
+
+pkgname = toss-musl-git
