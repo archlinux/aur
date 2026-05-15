@@ -12,7 +12,7 @@ conflicts=('openmediabridge')
 options=('!strip')
 source=("OpenMediaBridge.Linux.zip::https://github.com/alexvermaning0/OpenMediaBridge/releases/download/${pkgver}/OpenMediaBridge.Linux.zip"
         "LICENSE::https://raw.githubusercontent.com/alexvermaning0/OpenMediaBridge/main/LICENSE")
-sha256sums=('35d6c062d2047d9121b78926f4ac948ec3ab4f5ac906db2bcf978e36b28542b1'
+sha256sums=('758e9750b4027ef3052bfe5d4f9de396b556378a567a616a7fb86dd84c157ac8'
             '50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a')
 
 package() {
