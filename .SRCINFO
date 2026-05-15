@@ -1,0 +1,21 @@
+pkgbase = sakura-lsltest
+	pkgdesc = Pytest-like test framework for LSL — drives sakura-lslc and sakura-slemu
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Sakura-Studios-IKE/sakura-lsltest
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = gcc
+	makedepends = make
+	depends = python>=3.9
+	optdepends = sakura-lslc
+	optdepends = sakura-slemu
+	source = sakura-lsltest-1.0.0.tar.gz::https://github.com/Sakura-Studios-IKE/sakura-lsltest/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sakura-lsltest
