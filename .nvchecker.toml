@@ -1,0 +1,4 @@
+[gcc-ia16]
+source = "github"
+github = "tkchia/gcc-ia16"
+use_max_tag = true
