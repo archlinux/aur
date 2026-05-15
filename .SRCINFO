@@ -1,7 +1,7 @@
 pkgbase = starsector
 	pkgdesc = Starsector (formerly "Starfarer") is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game.
 	pkgver = 0.98a_RC8
-	pkgrel = 3
+	pkgrel = 4
 	url = http://fractalsoftworks.com/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = starsector
 	depends = java-environment=17
 	depends = xorg-xrandr
 	replaces = starfarer
+	backup = usr/share/starsector/data/config/settings.json
 	source = https://f005.backblazeb2.com/file/fractalsoftworks/release/starsector_linux-0.98a-RC8.zip
 	source = starsector.sh
 	source = starsector.desktop
