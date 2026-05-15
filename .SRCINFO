@@ -1,0 +1,22 @@
+pkgbase = claurst-git
+	pkgdesc = Open-source, multi-provider terminal coding agent built in Rust (clean-room reimplementation of Claude Code)
+	pkgver = 0.1.1.r1.gc21436c
+	pkgrel = 1
+	url = https://github.com/kuberwastaken/claurst
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = openssl
+	depends = xdotool
+	provides = claurst
+	conflicts = claurst
+	options = !lto
+	source = claurst::git+https://github.com/kuberwastaken/claurst.git
+	sha256sums = SKIP
+
+pkgname = claurst-git
