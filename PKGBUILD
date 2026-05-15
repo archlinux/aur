@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flyenv-bin
 _pkgname=FlyEnv
-pkgver=4.15.0
+pkgver=4.15.1
 _electronversion=39
 pkgrel=1
 pkgdesc="All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment.(Prebuilt version.Use system-wide electron)"
@@ -59,8 +59,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.rpm")
 sha256sums=('01d77fe9ffb39b0a9507ca8d1cae189f56efd625078c3b13b59ce7aae42a4f7d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('ff6d1ac52d3713d787f843e02b09043537715ca8036f8b42794e290d6de92ed2')
-sha256sums_x86_64=('af2811bcdb9e367b0d45ea700f143e8dc895aa6f088f8b562598328fd2bd35fe')
+sha256sums_aarch64=('7621c8059380b96df9798834259b084966ef169eff8b88d5227a10c27747fc3a')
+sha256sums_x86_64=('a39a070649afb68abcf240f0a3d57a968697503fc73a8589cb8f560007b54811')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
