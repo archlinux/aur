@@ -1,0 +1,12 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.5
+Name=GB Enhanced+
+Comment=GB Enhanced+ GB(C)/GBA/Pokémon Mini/NDS emulation
+Exec=/usr/bin/gbe_plus_qt
+Path=USER_HOME/.gbe_plus
+Categories=Game
+Keywords=GB;GBC;Gameboy;Gameboy Color;GBA;Gameboy Advance;NDS;Nintendo DS;Nintendo;GBE;
+Terminal=False
+Icon=gbe_plus
