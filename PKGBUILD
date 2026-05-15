@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=toggl-cli
-pkgver=0.4.11
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Unofficial CLI for Toggl Track written in Rust, using the v9 API.'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(openssl)
 makedepends=(cargo)
 conflicts=("${pkgname}-bin")
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('34d657a8886861562ab3fe3aac14349ec336a74c19f0bf096e895706904ddcc44e6a00ec0c51fc97b1dbdbda1d6dca19b6f01e9b113cc61ba0713fe2ea7b6101')
+sha512sums=('46f250ece30c2b9ea587de6771495aa7e11d4b0311258d8a1889adc420d209da7aa1236211edac1369ef88ce8c40059e7716e3c171ab46a17328d8ae36ada0aa')
 
 prepare() {
   cd $pkgname-$pkgver
