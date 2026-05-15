@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=harmony-bin
 _pkgname=Harmony
-pkgver=1.0.1
+pkgver=1.2.0
 _electronversion=33
 pkgrel=1
 pkgdesc="Music manager for old-school DJs.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4d3083cf8d65cea5af112468e8376e2e298ecd5e40c01a7fd843cf700890c97d'
+sha256sums=('359af726365e50bc046546719e339f0f3caa9fd44c9324425258ebdf8e171929'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
