@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vibeyard-bin
 _pkgname=Vibeyard
-pkgver=0.2.35
+pkgver=0.2.37
 _electronversion=41
 pkgrel=1
 pkgdesc="The IDE built for AI coding agents.Manage multiple agent sessions, run them in parallel, track costs, and never lose context — with Claude Code, Codex CLI, 和 Gemini CLI. (Prebuilt version.Use system-wide electron)"
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/elirantutia/vibeyard/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('324c1a226fdbcbfbf2fdae395dbd47dc02562a74fa944a333506307c5e2b603b'
+sha256sums=('ac39e7864d79b8edb7bff9fa17f9be888fc0423751b0bdecf1e829766f4aa420'
             'f32a5d5a0a417aa082b78d4455b2ce0d4eee07982062b30daf8d32f3afe28452'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
