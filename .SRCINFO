@@ -1,5 +1,5 @@
 pkgbase = linux-mnt-reform-bin
-	pkgver = 7.0.7.reform1
+	pkgver = 7.0.8.reform1
 	pkgrel = 1
 	url = https://github.com/cetola/mnt-build
 	arch = aarch64
@@ -13,17 +13,17 @@ pkgbase = linux-mnt-reform-bin
 	source = mnt-reform-initramfs.hook
 	source = mnt-reform-initramfs.sh
 	sha256sums = 8a15cec00fc571b7b62dba4ad9aa7b0132fe837dca3a424828bb19a37f5d3e58
-	sha256sums = 5048746dde42df274ced7b043bbe597db040eb700cd9488f3d3360b4555caa75
+	sha256sums = a218a00c0e722f157f0cd958ee44293c57178d5bc41f7a570bf3866e49e03351
 	sha256sums = 24e36fc74f7aa27fe699e5eac923c14ae80c7bc85038cfab3d8cd93148d7cb3e
-	sha256sums = f87227a571bbf3a025e5b8c6de81d0d99ae97afdac0dfe2a1cecdd19bfaeb6d8
-	source_aarch64 = kernel-7.0.7.reform1-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/7.0.7.reform1-aarch64/kernel-7.0.7.reform1.tar.gz
-	source_aarch64 = headers-7.0.7.reform1-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/7.0.7.reform1-aarch64/headers-7.0.7.reform1.tar.gz
-	sha256sums_aarch64 = e6e1c70b0339e420fa62012a0f7ae48986aac3fa46b882d48d8aada97aff0eeb
-	sha256sums_aarch64 = fde9229d00a2454b568df09857692bd37afe03214033d09578ca12f152aaa154
-	source_x86_64 = kernel-7.0.7.reform1-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/7.0.7.reform1-x86_64/kernel-7.0.7.reform1.tar.gz
-	source_x86_64 = headers-7.0.7.reform1-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/7.0.7.reform1-x86_64/headers-7.0.7.reform1.tar.gz
-	sha256sums_x86_64 = 35070c3ba571f37de7f9cad8a7e7594b91d2c3f8317503a887ac50b292931048
-	sha256sums_x86_64 = bde521dcca422f92fb9a1821d1aa7b4a67c261e69736a22eeafd2a767865d391
+	sha256sums = 212cf8782ac59f4c3b1df7aee2deb037155ab714ef6ed322c502fb5df76b67ef
+	source_aarch64 = kernel-7.0.8.reform1-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/7.0.8.reform1-aarch64/kernel-7.0.8.reform1.tar.gz
+	source_aarch64 = headers-7.0.8.reform1-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/7.0.8.reform1-aarch64/headers-7.0.8.reform1.tar.gz
+	sha256sums_aarch64 = 0c12309d77b892d99100263fcbfae7d9bf44e8faf6977de64b964c9849a5d680
+	sha256sums_aarch64 = 988d042fa583fdf237f71f31f13bdea0853c232da8e5c61cf4a57e799dcdf56c
+	source_x86_64 = kernel-7.0.8.reform1-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/7.0.8.reform1-x86_64/kernel-7.0.8.reform1.tar.gz
+	source_x86_64 = headers-7.0.8.reform1-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/7.0.8.reform1-x86_64/headers-7.0.8.reform1.tar.gz
+	sha256sums_x86_64 = 99f6f8c2eacb961111e5fa416d9916618a554155cbb4ef50a5aa195102e51147
+	sha256sums_x86_64 = 29b232eaad0193057e5758a7149eee9862858bf0f49d661a23b56fa4a646d312
 
 pkgname = linux-mnt-reform-bin
 	pkgdesc = Linux kernel for MNT Reform
@@ -33,12 +33,12 @@ pkgname = linux-mnt-reform-bin
 	depends = kmod
 	depends = cpio
 	optdepends = linux-mnt-reform-bin-headers: for building modules
-	provides = linux=7.0.7
+	provides = linux=7.0.8
 	conflicts = linux
 
 pkgname = linux-mnt-reform-bin-headers
 	pkgdesc = Header files and scripts for building modules for linux-mnt-reform-bin kernel
 	depends = perl
-	depends = linux-mnt-reform-bin=7.0.7.reform1-1
-	provides = linux-headers=7.0.7
+	depends = linux-mnt-reform-bin=7.0.8.reform1-1
+	provides = linux-headers=7.0.8
 	conflicts = linux-mnt-reform-headers
