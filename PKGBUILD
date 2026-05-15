@@ -1,6 +1,8 @@
 pkgname=sealant
 pkgver=1.0.2.26
 pkgrel=1
+pkgdesc="From-scratch modern iptables replacement written in C"
+url="https://github.com/zelphroso/sealant"
 arch=('x86_64')
 license=('GPL2')
 depends=('dkms')

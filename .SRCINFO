@@ -1,6 +1,8 @@
 pkgbase = sealant
+	pkgdesc = From-scratch modern iptables replacement written in C
 	pkgver = 1.0.2.26
 	pkgrel = 1
+	url = https://github.com/zelphroso/sealant
 	install = sealant.install
 	arch = x86_64
 	license = GPL2
