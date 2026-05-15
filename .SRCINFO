@@ -1,0 +1,23 @@
+pkgbase = signal-cli-rest-api-git
+	pkgdesc = A small REST API around signal-cli (Go implementation)
+	pkgver = 0.99.r8.gdb63fd1
+	pkgrel = 1
+	url = https://github.com/bbernhard/signal-cli-rest-api
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = signal-cli
+	provides = signal-cli-rest-api
+	conflicts = signal-cli-rest-api
+	source = signal-cli-rest-api-git::git+https://github.com/bbernhard/signal-cli-rest-api.git
+	source = signal-api.service
+	source = signal-api.env
+	source = polling-support.patch
+	sha256sums = SKIP
+	sha256sums = bf7360e70cfa83e47408fdadcb5b19177fcf4c8d9bf5c67bda97b3e356edb7fe
+	sha256sums = 047a2ab37457609eea76d47c8db2df0f0148990b9ea50946f7168d13ef8da15f
+	sha256sums = bf9645023b0f23df716ddd5ae3dab241de8a8d9ddea0951f84a917e3cafdbdaa
+
+pkgname = signal-cli-rest-api-git

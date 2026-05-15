@@ -1,0 +1,13 @@
+[Unit]
+Description=Signal CLI REST API Wrapper
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=%h/.config/signal-api.env
+ExecStart=/usr/bin/signal-cli-rest-api
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

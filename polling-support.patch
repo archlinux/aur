@@ -1,0 +1,91 @@
+diff --git a/src/api/api.go b/src/api/api.go
+index 3ec81a2..9818fc8 100644
+--- a/src/api/api.go
++++ b/src/api/api.go
+@@ -706,7 +706,7 @@ func (a *Api) Receive(c *gin.Context) {
+ 		return
+ 	}
+ 
+-	if a.signalClient.GetSignalCliMode() == client.JsonRpc {
++	if a.signalClient.GetSignalCliMode() == client.JsonRpc && c.Request.Header.Get("Upgrade") == "websocket" {
+ 		ws, err := connectionUpgrader.Upgrade(c.Writer, c.Request, nil)
+ 		if err != nil {
+ 			c.JSON(400, Error{Msg: err.Error()})
+diff --git a/src/client/client.go b/src/client/client.go
+index 5dc5985..9d6bf7e 100644
+--- a/src/client/client.go
++++ b/src/client/client.go
+@@ -1017,7 +1017,23 @@ func (s *SignalClient) SendV2(number string, message string, recps []string, bas
+ 
+ func (s *SignalClient) Receive(number string, timeout int64, ignoreAttachments bool, ignoreStories bool, ignoreAvatars bool, ignoreStickers bool, maxMessages int64, sendReadReceipts bool) (string, error) {
+ 	if s.signalCliMode == JsonRpc {
+-		return "", errors.New("Not implemented")
++		jsonRpc2Client, err := s.getJsonRpc2Client()
++		if err != nil {
++			return "", err
++		}
++		msgs := jsonRpc2Client.Receive()
++		
++		// Convert to list of params (the actual signal message data)
++		results := make([]json.RawMessage, 0)
++		for _, msg := range msgs {
++			results = append(results, msg.Params)
++		}
++
++		jsonBytes, err := json.Marshal(results)
++		if err != nil {
++			return "", err
++		}
++		return string(jsonBytes), nil
+ 	} else {
+ 		command := []string{"--config", s.signalCliConfig, "--output", "json", "-a", number, "receive", "-t", strconv.FormatInt(timeout, 10)}
+ 
+diff --git a/src/client/jsonrpc2.go b/src/client/jsonrpc2.go
+index ef00633..7c3839e 100644
+--- a/src/client/jsonrpc2.go
++++ b/src/client/jsonrpc2.go
+@@ -65,6 +65,8 @@ type JsonRpc2Client struct {
+ 	receivedMessagesMutex    sync.Mutex
+ 	receivedResponsesMutex   sync.Mutex
+ 	address                  string
++	messageBuffer            []JsonRpc2ReceivedMessage
++	bufferSize               int
+ }
+ 
+ func NewJsonRpc2Client(signalCliApiConfig *utils.SignalCliApiConfig, number string) *JsonRpc2Client {
+@@ -73,6 +75,8 @@ func NewJsonRpc2Client(signalCliApiConfig *utils.SignalCliApiConfig, number stri
+ 		number:                   number,
+ 		receivedResponsesById:    make(map[string]chan JsonRpc2MessageResponse),
+ 		receivedMessagesChannels: make(map[string]chan JsonRpc2ReceivedMessage),
++		messageBuffer:            make([]JsonRpc2ReceivedMessage, 0),
++		bufferSize:               100,
+ 	}
+ }
+ 
+@@ -254,6 +258,14 @@ func (r *JsonRpc2Client) ReceiveData(number string, receiveWebhookUrl string) {
+ 					log.Error("Couldn't post data to webhook: ", err)
+ 				}
+ 			}
++
++			// Add to message buffer for polling
++			r.receivedMessagesMutex.Lock()
++			if len(r.messageBuffer) >= r.bufferSize {
++				r.messageBuffer = r.messageBuffer[1:] // Drop oldest
++			}
++			r.messageBuffer = append(r.messageBuffer, resp1)
++			r.receivedMessagesMutex.Unlock()
+ 		}
+ 
+ 		var resp2 JsonRpc2MessageResponse
+@@ -290,3 +302,11 @@ func (r *JsonRpc2Client) RemoveReceiveChannel(channelUuid string) {
+ 	delete(r.receivedMessagesChannels, channelUuid)
+ 	r.receivedMessagesMutex.Unlock()
+ }
++
++func (r *JsonRpc2Client) Receive() []JsonRpc2ReceivedMessage {
++	r.receivedMessagesMutex.Lock()
++	defer r.receivedMessagesMutex.Unlock()
++	msgs := r.messageBuffer
++	r.messageBuffer = make([]JsonRpc2ReceivedMessage, 0)
++	return msgs
++}
