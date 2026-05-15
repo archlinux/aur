@@ -1,7 +1,7 @@
 pkgbase = silverbullet-bin
 	pkgdesc = Programmable, private, browser-based, personal knowledge management platform / wiki (pre-compiled)
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/silverbulletmd/silverbullet
 	install = silverbullet-bin.install
 	changelog = silverbullet-bin.changelog
