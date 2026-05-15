@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=${pkgbase#python-}
 #_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.14.7
+pkgver=0.14.8
 #_pkgver=0.14.0post2
 #_commit="d0134123978678d33573d53a144ce1634e770e10"
 pkgrel=1
@@ -19,7 +19,8 @@ makedepends=('python-setuptools-scm>=8.0'
              'python-numpydoc'
              'python-sphinx_rtd_theme'
              'python-lxml'
-             'python-pillow')
+             'python-pillow'
+         )
 checkdepends=('python-pytest'
 #             'python-pytest-xdist'
 #             'openjpeg2'   # <- pillow <- skimage
@@ -44,7 +45,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('83fe1212ce2397395f4593d38dae20cf')
+md5sums=('f35c95b164d6590b6be3d33a7032f336')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
