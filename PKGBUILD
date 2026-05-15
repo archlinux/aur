@@ -17,7 +17,6 @@ makedepends=('git' 'go')
 
 prepare() {
     cd "${pkgname%-git}"  
-    go mod init github.com/zerootoad/discord-rpc-lsp
     go mod tidy
 }
 
