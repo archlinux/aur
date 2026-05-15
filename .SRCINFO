@@ -1,0 +1,12 @@
+pkgbase = cachyos-themes-sddm-emerald
+	pkgdesc = CachyOS Emerald SDDM Theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ZaneFerns360/cachyos-sddm-emerald
+	arch = any
+	license = CCPL:cc-by-sa
+	depends = sddm
+	source = cachyos-themes-sddm-emerald-1.0.tar.xz::https://github.com/ZaneFerns360/cachyos-sddm-emerald/releases/download/v1.0/cachyos-emerald.tar.xz
+	sha256sums = SKIP
+
+pkgname = cachyos-themes-sddm-emerald
