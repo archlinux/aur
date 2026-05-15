@@ -45,25 +45,23 @@ index c6deed3ab1..9488ba78dc 100644
    LSP.labelDetails.emplace();
    LSP.labelDetails->detail = Signature;
  
-@@ -2396,7 +2412,9 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
-   }
-   LSP.sortText = sortText(Score.Total, FilterText);
+@@ -2398,7 +2414,7 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
    LSP.filterText = FilterText;
--  LSP.textEdit = {CompletionTokenRange, RequiredQualifier + Name, ""};
-+  LSP.textEdit = {CompletionTokenRange,
-+                  AbstractName ? RequiredQualifier : RequiredQualifier + Name,
-+                  ""};
+   TextEdit Edit;
+   Edit.range = CompletionInsertRange;
+-  Edit.newText = RequiredQualifier + Name;
++  Edit.newText = AbstractName ? RequiredQualifier : RequiredQualifier + Name;
    // Merge continuous additionalTextEdits into main edit. The main motivation
    // behind this is to help LSP clients, it seems most of them are confused when
    // they are provided with additionalTextEdits that are consecutive to main
-@@ -2405,7 +2423,7 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
+@@ -2407,7 +2423,7 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
    // is mainly to help LSP clients again, so that changes do not effect each
    // other.
    for (const auto &FixIt : FixIts) {
--    if (FixIt.range.end == LSP.textEdit->range.start) {
-+    if (0 && FixIt.range.end == LSP.textEdit->range.start) {
-       LSP.textEdit->newText = FixIt.newText + LSP.textEdit->newText;
-       LSP.textEdit->range.start = FixIt.range.start;
+-    if (FixIt.range.end == Edit.range.start) {
++    if (0 && FixIt.range.end == Edit.range.start) {
+       Edit.newText = FixIt.newText + Edit.newText;
+       Edit.range.start = FixIt.range.start;
      } else {
 diff --git a/clang-tools-extra/clangd/CodeComplete.h b/clang-tools-extra/clangd/CodeComplete.h
 index 1cf3b41119..2e6cd6567c 100644
