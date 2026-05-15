@@ -1,0 +1,4 @@
+[pidgin]
+source = "regex"
+url = "https://sourceforge.net/projects/pidgin/files/Pidgin/"
+regex = "Pidgin/([\\d.]+)/"
