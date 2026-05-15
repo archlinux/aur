@@ -1,0 +1,6 @@
+*.sync-conflict-*
+.claude-flow/
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
