@@ -2,9 +2,9 @@
 
 _java_ver=21
 _jdkname="zulu${_java_ver}-fx"
-_zulu_build="${_java_ver}.48.17-ca-fx"
+_zulu_build="${_java_ver}.50.19-ca-fx"
 pkgname="${_jdkname}-bin"
-pkgver="${_java_ver}.0.10"
+pkgver="${_java_ver}.0.11"
 pkgrel=1
 pkgdesc='Azul Zulu Builds of OpenJDK With OpenJFX are open source, TCK-tested and certified builds of OpenJDK.'
 arch=('x86_64')
@@ -28,7 +28,7 @@ conflicts=('zulu-21-bin')
 options=('!debug')
 install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
-sha256sums_x86_64=('ec65034d972e9af9f0aad78d7f1c58c5cc29b9f5cdd0266d2fc311b901561933')
+sha256sums_x86_64=('606f53db982ff27f8b439c873c2367a5cbf90f9fd85578fa8eb07c016ab36d8e')
 
 _jvmdir="/usr/lib/jvm/${pkgname}"
 
