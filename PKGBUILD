@@ -11,17 +11,21 @@ options=('!strip' '!debug')
 provides=('orca-bambustudio')
 conflicts=('orca-bambustudio' 'orca-bambustudio-git' 'orca-bambustudio-bin')
 depends=('libwebp' 'webkit2gtk-4.1')
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/FULU-Foundation/OrcaSlicer-bambulab/releases/download/v${pkgver}/OrcaSlicer-BMCU_Linux_AppImage_ubuntu24.04_amd64_${pkgver}.AppImage" "Orca-BambuStudio.desktop")
-sha256sums=('fb948fc235c12916fddca8eddf44678ca86c936a4b14acc70d75c2bd22067994' '519676c63a2ba93e5fbadb8a899dbf7b55c6ba769ecb9c652b7deeacfa47418f')
+source=("${_pkgname}-${pkgver}.AppImage::https://github.com/FULU-Foundation/OrcaSlicer-bambulab/releases/download/v${pkgver}/OrcaSlicer-BMCU_Linux_AppImage_ubuntu24.04_amd64_${pkgver}.AppImage" "Orca-BambuStudio.desktop" "orca-bambu")
+sha256sums=('fb948fc235c12916fddca8eddf44678ca86c936a4b14acc70d75c2bd22067994' '7bda0d428136d58e990dd47b2d2e59d9db86ce479b08d26abc0a7e9eca86ff7a' '5b90719fdc4f5787d7466a1ef73834ec146a76f13f773b72aaf9b9044e38f675')
 
 package() {
 
-if [ -f "Orca-BambuStudio.desktop" ]; then
+  if [ -f "Orca-BambuStudio.desktop" ]; then
     install -Dm644 "Orca-BambuStudio.desktop" "$pkgdir/usr/share/applications/Orca-BambuStudio.desktop"
   else
     msg2 "Fail: Could not automatically find desktop icon file (Orca-BambuStudio.desktop) within the AppImage."
     exit 1
   fi
+
+  chmod +x "orca-bambu"
+  install -Dm755 "orca-bambu" "$pkgdir/usr/bin/orca-bambu"
+
   cd "$srcdir"
 
   chmod +x "${_pkgname}-${pkgver}.AppImage"
