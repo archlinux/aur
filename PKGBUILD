@@ -1,7 +1,7 @@
 # Maintainer:  CloverGit <clovergit@hotmail.com>
 
 pkgname=image2display
-pkgver=1.1.2.0.r0.g47c212a
+pkgver=1.1.7.0.r7.g63cf43e
 pkgrel=1
 pkgdesc='A cross-platform image and font data processing tool for generating data usable by microcontrollers'
 arch=('x86_64' 'aarch64')
@@ -53,7 +53,8 @@ build() {
   cd ${srcdir}/${pkgname}/Image2Display
 
   rm -rf ${srcdir}/build
-  dotnet publish \
+
+  dotnet publish "Image2Display/Image2Display.csproj" \
     -p:PublishSingleFile=true \
     -p:UseAppHost=true \
     --runtime ${_dotnet_os}-${_dotnet_arch} \
@@ -71,12 +72,14 @@ package() {
   cd ${srcdir}
 
   install -Dm755 "${srcdir}/build/publish/Image2Display/release_${_dotnet_os}-${_dotnet_arch}/Image2Display" \
-    -T "${pkgdir}/usr/bin/${pkgname}"
+    -t "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm755 "${srcdir}/build/publish/Image2Display/release_${_dotnet_os}-${_dotnet_arch}/libHarfBuzzSharp.so" \
-    -t "${pkgdir}/usr/lib"
-#  install -Dm755 "${srcdir}/build/publish/Image2Display/release_${_dotnet_os}-${_dotnet_arch}/libSkiaSharp.so" \
-#    -t "${pkgdir}/usr/lib"
+    -t "${pkgdir}/usr/lib/${pkgname}/"
+  install -Dm755 "${srcdir}/build/publish/Image2Display/release_${_dotnet_os}-${_dotnet_arch}/libSkiaSharp.so" \
+    -t "${pkgdir}/usr/lib/${pkgname}/"
 
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -sf "/usr/lib/${pkgname}/Image2Display" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   for _size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
