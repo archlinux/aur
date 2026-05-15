@@ -36,7 +36,7 @@ build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release --features video-textures
 }
 
 package() {
