@@ -1,0 +1,5 @@
+# AUR repo gitignore. Lives next to PKGBUILD on aur.archlinux.org.
+pkg/
+src/
+*.pkg.tar.zst
+*.tar.gz
