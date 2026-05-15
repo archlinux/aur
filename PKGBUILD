@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-bin
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -36,18 +36,13 @@ conflicts=(
     'shiori-ebook-bin'
 )
 source=("Shiori_${pkgver}_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('4d8551920bed0733660644245a856a1a8a3ba6b045eefdf1cb712356115467d1')
+sha256sums=('b937bba2376a5a566820acb2e1a47b06b6bf1450c4c3639c56247cda0fdcc417')
 
 package() {
     bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
 
     if [[ ! -f "${pkgdir}/usr/bin/shiori" ]]; then
         echo "Missing usr/bin/shiori in release tarball" >&2
-        return 1
-    fi
-
-    if [[ ! -d "${pkgdir}/usr/lib/shiori" ]]; then
-        echo "Missing usr/lib/shiori in release tarball" >&2
         return 1
     fi
 
@@ -68,7 +63,7 @@ package() {
             -e 's|"/logo\.png"|"./logo.png"|g' \
             -e "s|'\/logo\.png'|'./logo.png'|g" \
             "${web_file}"
-    done < <(find "${pkgdir}/usr/lib/shiori" -type f \( -name '*.html' -o -name '*.js' -o -name '*.css' \) -print0)
+    done < <(find "${pkgdir}/usr" -type f \( -name '*.html' -o -name '*.js' -o -name '*.css' \) -print0)
 
     chmod -R u=rwX,go=rX "${pkgdir}/usr"
     chmod 755 "${pkgdir}/usr/bin/shiori"
