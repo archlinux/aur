@@ -2,7 +2,7 @@
 
 pkgname=deepseek-tui-bin
 _pkgname=deepseek-tui
-pkgver=0.8.36
+pkgver=0.8.37
 pkgrel=1
 pkgdesc="Coding agent for DeepSeek models that runs in your terminal"
 arch=('x86_64' 'aarch64')
@@ -28,12 +28,12 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    'f6794955120863bb26e349fb6588820d641f4c5efc8989e6b05ce66c7d94d91a'
-    '4ff4f1e51b261a5ba50f07928cbb65e06d9cd7c5be73008d186d04674ffaa336'
+    'afa249cd9ca5f50ac73f529679d303b16a888a97102f72bde6f81cad0466b9e7'
+    'd1a1697c061b40bb9943bd9b66750990533029d1c4cfcf297e574632c1f08f67'
 )
 sha256sums_aarch64=(
-    '9634fef0f007342678e4545d913661cd5038c31c892d7ab055395621d6bce234'
-    'e82ec7da10819756f72c7749ef9c5617aa7a1801560dc1618a1542957f75906a'
+    '207e89494af555d2cb50560dfc79877cddc78810d803c3830b304ebfd31ace51'
+    '8c0773a4e2787ab2bc3c048163ad31d3243227741721d8ecdca37f1b40139235'
 )
 
 package() {
