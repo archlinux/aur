@@ -1,0 +1,28 @@
+pkgbase = perl-complete-getopt-long
+	pkgdesc = Complete command-line argument using Getopt::Long specification
+	pkgver = 0.481
+	pkgrel = 1
+	url = https://metacpan.org/dist/Complete-Getopt-Long
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-complete-bash>=0.333
+	checkdepends = perl-file-chdir
+	checkdepends = perl-file-temp>=0.2307
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-complete-env
+	depends = perl-complete-file>=0.440
+	depends = perl-complete-util>=0.608
+	depends = perl-exporter>=5.57
+	depends = perl-getopt-long-util>=0.896
+	depends = perl-log-ger>=0.038
+	depends = perl-string-wildcard-bash>=0.044
+	depends = perl>=5.10.1
+	optdepends = perl-unix-passwd-file
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Complete-Getopt-Long-0.481.tar.gz
+	sha256sums = 6fc2ca7c3a3725b4eae65c6fae1f97362cf676799b8d4f2257d5675a44da135c
+
+pkgname = perl-complete-getopt-long
