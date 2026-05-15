@@ -1,0 +1,4 @@
+[smp_utils]
+source = "regex"
+url = "http://sg.danny.cz/sg/smp_utils.html"
+regex = "smp_utils-([\\d.]+)\\.tar"
