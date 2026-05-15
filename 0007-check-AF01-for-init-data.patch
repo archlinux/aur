@@ -1,0 +1,65 @@
+diff --git a/sound/soc/codecs/tas2783-sdw.c b/sound/soc/codecs/tas2783-sdw.c
+index 04747acb2ed4..fb113ab693e6 100644
+--- a/sound/soc/codecs/tas2783-sdw.c
++++ b/sound/soc/codecs/tas2783-sdw.c
+@@ -696,22 +696,44 @@ static s32 tas_sa_func_data_init(struct tas2783_prv *tas_dev)
+ 	}
+ 
+ 	if (!sdca_func) {
+-		/* Allocate memory for function data */
+-		tas_dev->sa_func_data = devm_kzalloc(dev, sizeof(*tas_dev->sa_func_data), GFP_KERNEL);
+-		if (!tas_dev->sa_func_data)
+-			return dev_err_probe(dev, -ENOMEM,
+-					     "failed to parse sdca functions");
+-
+-		/* Parse the function */
+-		ret = sdca_parse_function(dev, peripheral, sdca_func,
+-					  tas_dev->sa_func_data);
+-		if (ret)
+-			dev_warn(dev, "smartamp function parse failed:err%d, using defaults", ret);
++		dev_dbg(dev, "Missing Smart Amp function; checking AF01\n");
++		af01_node = device_get_named_child_node(dev, "AF01");
++		if (!af01_node) {
++			dev_dbg(dev, "AF01 node not found, using defaults\n");
++			return 0;
++		}
++
++		if (!fwnode_property_present(af01_node, "mipi-sdca-function-initialization-table")) {
++			dev_warn(dev, "AF01 found but missing init table, using defaults\n");
++			ret = 0;
++			goto out;
++		}
++
++		af01_desc.node = af01_node;
++		af01_desc.type = SDCA_FUNCTION_TYPE_SMART_AMP;
++		af01_desc.name = "tas-smart-amp";
++		sdca_func = &af01_desc;
+ 	}
+ 
+-	return 0;
+-}
++	/* Allocate memory for function data */
++	tas_dev->sa_func_data = devm_kzalloc(dev, sizeof(*tas_dev->sa_func_data), GFP_KERNEL);
++	if (!tas_dev->sa_func_data) {
++		ret = -ENOMEM;
++		goto out;
++	}
+ 
++	ret = sdca_parse_function(dev, peripheral, sdca_func, tas_dev->sa_func_data);
++	
++	if (ret) {
++		dev_warn(dev, "smartamp function parse failed:err %d, using defaults", ret);
++		ret = 0;
++	}
++out:
++	if (af01_node)
++		fwnode_handle_put(af01_node);
++	
++	return ret;
++}
+ static s32 tas_fw_read_hdr(const u8 *data, struct tas_fw_hdr *hdr)
+ {
+ 	hdr->size = get_unaligned_le32(data);
+-- 
+2.54.0
+
