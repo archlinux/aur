@@ -1,0 +1,3 @@
+[perl-complete-bash]
+source = "cpan"
+cpan = "Complete-Bash"
