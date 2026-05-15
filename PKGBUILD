@@ -1,8 +1,8 @@
 # Maintainer: MiguelRegueiro
 
 pkgname=elio
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc='Snappy, batteries-included terminal file manager with rich previews, inline images, bulk actions, and trash support'
 arch=('x86_64')
 url='https://elio-fm.github.io/'
@@ -19,7 +19,7 @@ optdepends=(
   'libarchive: archive and ISO listing fallback through bsdtar'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha256sums=('ee4e55d57353aa3503744f98337e5a69ed8d945fd37fed42b42ead34240f2a5c')
+sha256sums=('fbae5634ac12186bbdf92f049d3866841ecaebd01457afceb34d99d1160ca960')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
