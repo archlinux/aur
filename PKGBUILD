@@ -1,6 +1,6 @@
 # Maintainer: Rob Petersen <robpetersen907@gmail.com>
 pkgname=archward
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Safe-update GUI for Arch-based Linux distributions"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b3a3e72d85d204341c630c774e87b0931c7b31b6a0624a93ee6acf48e36d62b5')
+sha256sums=('90dc4beebee71f15daeb5dd763b43fb9f8a4c5105c1eddd7a01c32e74707fd00')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -39,7 +39,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 packaging/archward.desktop \
     "$pkgdir/usr/share/applications/archward.desktop"
-  install -Dm644 packaging/archward.svg \
+  install -Dm644 src/archward/data/archward.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/archward.svg"
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

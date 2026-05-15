@@ -1,6 +1,6 @@
 pkgbase = archward
 	pkgdesc = Safe-update GUI for Arch-based Linux distributions
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/indyfive11/archward
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = archward
 	optdepends = polkit: pkexec fallback
 	optdepends = meld: graphical merge tool for pacnew
 	optdepends = libnotify: desktop notifications when an update finishes
-	source = archward-0.3.5.tar.gz::https://github.com/indyfive11/archward/archive/v0.3.5.tar.gz
-	sha256sums = b3a3e72d85d204341c630c774e87b0931c7b31b6a0624a93ee6acf48e36d62b5
+	source = archward-0.4.0.tar.gz::https://github.com/indyfive11/archward/archive/v0.4.0.tar.gz
+	sha256sums = 90dc4beebee71f15daeb5dd763b43fb9f8a4c5105c1eddd7a01c32e74707fd00
 
 pkgname = archward
