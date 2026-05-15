@@ -1,13 +1,13 @@
 pkgbase = clipse-gui
 	pkgdesc = A GTK3 GUI for the clipse clipboard manager
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/d7omdev/clipse-gui
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-build
-	makedepends = python-installer
+	makedepends = python-pip
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python

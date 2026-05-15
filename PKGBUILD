@@ -1,7 +1,7 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK3 GUI for the clipse clipboard manager"
 arch=('any')
 url="https://github.com/d7omdev/clipse-gui"
@@ -19,7 +19,7 @@ depends=(
 makedepends=(
 	'git'
 	'python-build'
-	'python-installer'
+	'python-pip'
 	'python-setuptools'
 	'python-wheel'
 )
@@ -36,10 +36,10 @@ build() {
 package() {
 	cd "$srcdir/$pkgname" || exit
 
-	# Install wheel into the package root using PEP 517's standard installer.
-	# This produces a real `clipse-gui` console_script in /usr/bin and drops
-	# the package under site-packages, where Python expects it.
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	# Install wheel into the package root via pip. python-installer breaks on
+	# Python 3.14 (rejects scripts as "outside target directory"); pip resolves
+	# script paths through sysconfig and works correctly.
+	pip install --no-deps --no-build-isolation --ignore-installed --root="$pkgdir" --prefix=/usr dist/*.whl
 
 	# Icon
 	if [ -f "$pkgname.png" ]; then
