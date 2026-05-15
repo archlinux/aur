@@ -3,7 +3,7 @@
 
 pkgname=reth
 pkgver=2.2.0
-pkgrel=4
+pkgrel=1
 pkgdesc="A fast implementation of the Ethereum protocol in Rust"
 arch=('x86_64')
 url="https://github.com/paradigmxyz/reth"
@@ -28,7 +28,7 @@ build() {
 	export CARGO_TARGET_DIR="${srcdir}/target"
 	export CARGO_INCREMENTAL=0
 	export CARGO_NET_OFFLINE=true
-	
+
 	cargo build --bin reth --frozen --release --features jemalloc,asm-keccak
 }
 
