@@ -7,12 +7,14 @@ pkgdesc='A libcosmic app to manage and run macros on Linux.'
 url='https://github.com/EthanRStokes/macros'
 arch=('x86_64')
 license=('GPL-3.0-only')
-makedepends=('rust' 'git')
-depends=('expat' 'fontconfig' 'libxkbcommon')
+makedepends=('cargo' 'git')
+depends=(
+    'expat' 'fontconfig' 'libxkbcommon' 'freetype2' 'hicolor-icon-theme'
+)
 conflicts=('macros')
 provides=('macros')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/EthanRStokes/macros/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b3c2633525efc6803ee369fa5409c5cd6d8bcd732ada396564646cf47fe786c5')
+sha256sums=('18a664634336c5ba2b41b5dc3d076840103a5804a6c0f4e7e481f32167b5f06b')
 options=('!lto')
 
 prepare() {
@@ -32,4 +34,8 @@ package() {
 
     install -Dm644 "res/icons/macros.png" "$pkgdir"/usr/share/icons/hicolor/256x256/apps/macros.png
     install -Dm644 "res/macros.desktop" "$pkgdir"/usr/share/applications/macros.desktop
+
+    install -Dm644 "res/icons/remove.svg" "$pkgdir"/usr/share/macros/icons/remove.svg
+    install -Dm644 "res/icons/up.svg"     "$pkgdir"/usr/share/macros/icons/up.svg
+    install -Dm644 "res/icons/down.svg"   "$pkgdir"/usr/share/macros/icons/down.svg
 }
