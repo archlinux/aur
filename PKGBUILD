@@ -38,6 +38,10 @@ depends=(
     hdf5
 	python-setuptools-scm
 	python-endf
+	anari-sdk
+	viskores
+	albemic
+	onnxruntime
 )
 makedepends=(
     cmake
