@@ -1,10 +1,11 @@
-# Maintainer: taotieren <admin@taotieren.com>
+# Maintainer: wuxxin <wuxxin@gmail.com>
+# Contributor: taotieren <admin@taotieren.com>
 
 pkgname=moltis
-pkgver=0.9.10
+pkgver=20260510.01
 pkgrel=1
-pkgdesc="A personal AI gateway written in Rust. One binary, no runtime, no npm."
-arch=($CARCH)
+pkgdesc="A personal AI gateway written in Rust. One binary, sandboxed, secure."
+arch=('x86_64' 'aarch64')
 url="https://github.com/moltis-org/moltis"
 license=('MIT')
 provides=(
@@ -23,20 +24,34 @@ makedepends=(
     clang
     cargo
     cmake
-    cuda
     git
+    nodejs
+    npm
+    just
 )
 backup=()
 options=(!lto !debug)
 install=
-source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('3ffa9be25e60f0ca19e301fd5ee7b24aa6f43a3680bb73e5777424fe4b7dd4bf')
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
+sha256sums=('14d940e4290036985dbdfc4a4c6c50255b03c3fbcc2a173b4d3313370fba7c51')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
+    
+    # Increase recursion limit for all crate roots
+    for f in crates/*/src/lib.rs crates/*/src/main.rs; do
+        if [ -f "$f" ]; then
+            sed -i '/recursion_limit/d' "$f"
+            echo '#![recursion_limit = "2048"]' | cat - "$f" > temp && mv temp "$f"
+        fi
+    done
+
+    # Disable matrix feature globally as it causes build failure on stable Rust
+    find . -name "Cargo.toml" -exec sed -i 's/"matrix",//g' {} +
+    find . -name "Cargo.toml" -exec sed -i 's/"moltis-matrix\/metrics",//g' {} +
+
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -44,8 +59,12 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --all-features
-
+    
+    # Build web UI assets
+    just build-web-assets
+    
+    # Build release binary
+    cargo build --release -p moltis --features full
 }
 
 # check() {
@@ -58,14 +77,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}/"
 
-    export RUSTUP_TOOLCHAIN=stable
-    #     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    install -Dm0755 target/release/moltis -t "${pkgdir}/usr/bin/"
     install -Dm0644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm0644 LICENSE.md -t ${pkgdir}/usr/share/licenses/${pkgname}/
-
-    find target/release \
-        -maxdepth 1 \
-        -executable \
-        -type f \
-        -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
+    install -Dm0644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
