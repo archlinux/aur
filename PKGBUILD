@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.80.19
+pkgver=0.81.0
 _electronversion=41
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)"
@@ -30,9 +30,9 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('beebd4b1c95ae84411a6d27e411eae7e7b00a31d18eb7b881c4c7ed36ca44ae8')
-sha256sums_armv7h=('a3a049710fb558ba19e30fb7a492559a4b30ea81b984feec6fbc8bd7190ebbfe')
-sha256sums_x86_64=('ed3542d43a3ac4584812b44d95f4d873e10a7d481e6788b4e9c1ff9d123f056b')
+sha256sums_aarch64=('327f56836e8d9ee175651337f3c57f64f381c441af5dba8c6757b8770982797a')
+sha256sums_armv7h=('6738969a6c8a4526f80052b9b391b01a149cd8774ba8fb27321be31c11af86ed')
+sha256sums_x86_64=('26cf5ec54fad28c39c68cd7bc85340129cb3c020bfba2d60266540a8be6ebb69')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
