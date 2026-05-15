@@ -2,7 +2,7 @@
 pkgname=archive-app-bin
 _pkgname=archive-app
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zarządzanie Domowymi Dokumentami (gotowa wersja binarna)"
 arch=('x86_64')
 url="https://github.com/KlapkiSzatana/archive-app"
