@@ -2,7 +2,7 @@
 pkgname=inkdown-bin
 _pkgname=Inkdown
 pkgver=1.3.0
-_electronversion=39
+_electronversion=29
 pkgrel=2
 pkgdesc="A WYSIWYG Markdown editor,improve reading and editing experience,and generate your Markdown files into online documents in the easiest and fastest way.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -15,9 +15,7 @@ conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
 )
-source=(
-    "${pkgname%-bin}.sh"
-)
+source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.deb")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
