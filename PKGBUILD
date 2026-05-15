@@ -9,6 +9,7 @@ license=('Apache-2.0')
 depends=("libxcrypt-compat")
 options=('!debug')
 conflicts=("puppet")
+provides=("puppet")
 backup=("etc/puppetlabs/")
 
 source_x86_64=("https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/${_pkgname}_${pkgver}-1+debian13_amd64.deb")

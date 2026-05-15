@@ -7,6 +7,7 @@ pkgbase = openvox-agent-bin
 	license = Apache-2.0
 	depends = libxcrypt-compat
 	conflicts = puppet
+	provides = puppet
 	options = !debug
 	backup = etc/puppetlabs/
 	source_x86_64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.26.2-1+debian13_amd64.deb
