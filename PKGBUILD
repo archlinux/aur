@@ -135,7 +135,7 @@ prepare() {
     cd "$_srcname"
     echo "Setting version..."
     echo "-$pkgrel" > localversion.10-pkgrel
-    echo "${pkgbase#linux}" > localversion.20-pkgname
+    echo "-solara" > localversion.20-pkgname
 
     local src
     for patch in "${source[@]}"; do
@@ -276,7 +276,7 @@ prepare() {
     [ "$_makexconfig" = "yes" ] && make "${BUILD_FLAGS[@]}" xconfig
 
     local basedir="$(dirname "$(readlink "${srcdir}/config")")"
-    cat .config > "${basedir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
+    cat .config > "${basedir}/config-${pkgver}-${pkgrel}-solara"
 }
 
 _sign_modules() {
@@ -362,7 +362,7 @@ _package-hdr() {
     echo "Installing build files..."
     if [ ! -f localversion.10-pkgrel ] && [ ! -f localversion.20-pkgname ]; then
         echo "-$pkgrel" > localversion.10-pkgrel
-        echo "${pkgbase#linux}" > localversion.20-pkgname
+        echo "-solara" > localversion.20-pkgname
     fi
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
         localversion.10-pkgrel localversion.20-pkgname version vmlinux
