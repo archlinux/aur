@@ -126,8 +126,9 @@ package_nvidia-525xx-dkms() {
 
 package_nvidia-525xx-utils() {
     pkgdesc="NVIDIA drivers utilities, 525 branch"
-    depends=('xorg-server' 'libglvnd' 'egl-wayland')
+    depends=('libglvnd' 'egl-wayland')
     optdepends=('nvidia-settings: configuration tool'
+                'xorg-server: Xorg support'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia: OpenCL support')
     conflicts=('nvidia-utils' 'nvidia-libgl' 'egl-gbm')

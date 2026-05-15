@@ -37,10 +37,10 @@ pkgbase = nvidia-525xx-utils
 pkgname = nvidia-525xx-utils
 	pkgdesc = NVIDIA drivers utilities, 525 branch
 	install = nvidia-525xx-utils.install
-	depends = xorg-server
 	depends = libglvnd
 	depends = egl-wayland
 	optdepends = nvidia-settings: configuration tool
+	optdepends = xorg-server: Xorg support
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = opencl-nvidia: OpenCL support
 	provides = nvidia-utils=525.147.05
