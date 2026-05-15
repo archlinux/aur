@@ -1,6 +1,6 @@
 pkgbase = topgrade-bin
 	pkgdesc = Upgrade all the things
-	pkgver = 17.4.0
+	pkgver = 17.5.0
 	pkgrel = 1
 	url = https://github.com/topgrade-rs/topgrade
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = topgrade-bin
 	license = GPL3
 	provides = topgrade
 	conflicts = topgrade
-	source_x86_64 = topgrade_x86_64-17.4.0.tar.gz::https://github.com/topgrade-rs/topgrade/releases/download/v17.4.0/topgrade-v17.4.0-x86_64-unknown-linux-musl.tar.gz
-	b2sums_x86_64 = 2e556204a5a62009d6a34c8dc34eef18c6bf31199b4258765b9a253f06aa79277b1ae09ad29c0f903141b1acc159a153c22efe3ec00bd626dc1391d364d0412e
-	source_aarch64 = topgrade_aarch64-17.4.0.tar.gz::https://github.com/topgrade-rs/topgrade/releases/download/v17.4.0/topgrade-v17.4.0-aarch64-unknown-linux-musl.tar.gz
-	b2sums_aarch64 = 58029ebfcdbe62c38e6070a43fd8fc68c0e9f70da05c5af27f4ad121a8a9bbd470212e07a6ae9553c3898da3a07af0ec152a0e8860b488f923bf63f7297ef243
-	source_armv7h = topgrade_armv7h-17.4.0.tar.gz::https://github.com/topgrade-rs/topgrade/releases/download/v17.4.0/topgrade-v17.4.0-armv7-unknown-linux-gnueabihf.tar.gz
-	b2sums_armv7h = f814904835620dc461cfaf3ede766adc4798cc0e34ccde79234076f9a25bb1c9d9c7220a51c8e6aeb8390354cc235d04f7b4356f7c70dc68a500f131b4803eb7
+	source_x86_64 = topgrade_x86_64-17.5.0.tar.gz::https://github.com/topgrade-rs/topgrade/releases/download/v17.5.0/topgrade-v17.5.0-x86_64-unknown-linux-musl.tar.gz
+	b2sums_x86_64 = da95ae1e0d50da1b892f9b19d2bb401c4e9ec9567af1d069b1b7bc4501cd2a36c5135870e40967e3fbb6f8d0dd3c6788199a9ee0865fe19cb75d940451cf4923
+	source_aarch64 = topgrade_aarch64-17.5.0.tar.gz::https://github.com/topgrade-rs/topgrade/releases/download/v17.5.0/topgrade-v17.5.0-aarch64-unknown-linux-musl.tar.gz
+	b2sums_aarch64 = ad4a462a2c009208ea63830a151e4f77dc1eaa5c4a8ec8f2a8442d78fd31e54acb68b9f62066ddbafa70c7387e9f1591ff9f16d3bf9feed5fb03b1ce9f84fb87
+	source_armv7h = topgrade_armv7h-17.5.0.tar.gz::https://github.com/topgrade-rs/topgrade/releases/download/v17.5.0/topgrade-v17.5.0-armv7-unknown-linux-gnueabihf.tar.gz
+	b2sums_armv7h = 705a918b996b415befe8ed3e3c6e63f3ccd98ec9564c8c7bcc4a91bda329ecb89a8de164224912c2ec139dc55950b014e5497ac7bc514ce08ad246e8ba0699c7
 
 pkgname = topgrade-bin
