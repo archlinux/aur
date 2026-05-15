@@ -1,6 +1,6 @@
 # Maintainer: Matt Brassey <matt@brassey.io>
 pkgname=agtop
-pkgver=2.4.22
+pkgver=2.4.23
 pkgrel=1
 pkgdesc="Terminal UI for monitoring AI coding agents (Claude Code, Codex, Aider, Cursor, Gemini, Goose, ...) — like top, but for agents."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("agtop-${pkgver}.tar.gz::https://github.com/mbrassey/agtop/archive/v${pkgver}.tar.gz")
-sha256sums=('5236d622d6395071d8a001bea59318a62c50ee830d16e167a07122cc09bbc305')
+sha256sums=('f97c3efe4774d7c89b03db86a58b4dfd110a4694d09b6331801254eeaf635e66')
 options=('!debug')
 
 prepare() {
