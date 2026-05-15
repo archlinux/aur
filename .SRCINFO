@@ -10,7 +10,7 @@ pkgbase = toss-git
 	depends = glibc
 	depends = gcc-libs
 	provides = toss
-	conflicts = toss
+	conflicts = toss-musl-git
 	source = toss-git::git+https://codeberg.org/5unekku/toss.git
 	sha256sums = SKIP
 

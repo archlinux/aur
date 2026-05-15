@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 provides=('toss')
-conflicts=('toss')
+conflicts=('toss-musl-git')
 source=("$pkgname::git+https://codeberg.org/5unekku/toss.git")
 sha256sums=('SKIP')
 
