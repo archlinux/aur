@@ -1,7 +1,7 @@
 pkgbase = wl-freeze-git
 	pkgdesc = wl-freeze is a community-driven utility to suspend a game process (and other programs) in Wayland compositors
-	pkgver = v2.0.2.r4.g082cf30
-	pkgrel = 1
+	pkgver = 2.0.2.r4.g082cf30
+	pkgrel = 2
 	url = https://github.com/Zerodya/wl-freeze
 	arch = any
 	license = GPL

@@ -1,8 +1,8 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 _basename='wl-freeze'
 pkgname="$_basename-git"
-pkgver=v2.0.2.r4.g082cf30
-pkgrel=1
+pkgver=2.0.2.r4.g082cf30
+pkgrel=2
 pkgdesc="wl-freeze is a community-driven utility to suspend a game process (and other programs) in Wayland compositors"
 arch=('any')
 url="https://github.com/Zerodya/wl-freeze"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_basename"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
