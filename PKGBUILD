@@ -9,9 +9,7 @@ url='https://github.com/LykosAI/StabilityMatrix'
 license=('AGPL3')
 
 depends=('dotnet-runtime-9.0' 'libxcrypt-compat')
-makedepends=(
-    'dotnet-sdk-9.0'
-)
+makedepends=('dotnet-sdk-9.0' 'git')
 
 options=('!strip')
 
