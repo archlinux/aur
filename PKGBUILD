@@ -18,7 +18,7 @@ package() {
 
     # Extracting appimage
     cd $srcdir
-    chmod +x ./Dusk-v$pkgver-linux-$arch.AppImage
+    chmod +x ./Dusklight-v$pkgver-linux-$arch.AppImage
     ./Dusklight-v$pkgver-linux-$arch.AppImage --appimage-extract
 
     # Packaging files
