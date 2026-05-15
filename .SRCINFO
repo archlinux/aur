@@ -1,0 +1,23 @@
+pkgbase = campus-lms-bin
+	pkgdesc = Desktop Moodle LMS client (Pre-compiled Binary version)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Kenura-R-Gunarathna/campus-lms
+	arch = x86_64
+	license = MIT
+	depends = libxkbcommon
+	depends = libgl
+	depends = dbus
+	depends = libsecret
+	depends = openssl
+	depends = wayland
+	provides = campus-lms
+	conflicts = campus-lms
+	source = campus-lms::https://github.com/Kenura-R-Gunarathna/campus-lms/releases/download/v0.2.2/campus-lms-linux-x86_64
+	source = campus-lms.desktop
+	source = campus-lms-daemon.service
+	sha256sums = c74a695fe165ada3ef5eeafb0373859665a39626e2e501a3556064d4b31a89c8
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = campus-lms-bin

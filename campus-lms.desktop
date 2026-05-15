@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Campus LMS
+GenericName=LMS Client
+Comment=Moodle LMS client with content diff tracking
+Exec=campus-lms
+Icon=campus-lms
+Categories=Education;Network;
+Keywords=moodle;lms;university;courses;
+StartupWMClass=campus-lms
