@@ -1,8 +1,8 @@
 # Maintainer: jinzhongjia <jinzhongjia@manus.ai>
 
 pkgname=openwarp-bin
-pkgver=0.2026.05.14.1649
-_debver=0.2026.05.14.1649
+pkgver=2026.05.15.preview
+_debver=2026.05.15.preview
 pkgrel=1
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
@@ -34,16 +34,10 @@ provides=('openwarp' 'warp-terminal-oss')
 conflicts=('warp-terminal-oss')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/warp-terminal-oss_${_debver}_amd64.deb")
-sha256sums=('3a5f81ae486521244dfaaba6dd44d39870dd2e32590d978a2f8f118ad66b6563')
+sha256sums=('849a36048f10a6d25a1d3ec381d9f44c8db5b1a51dfa808631cf679eb8923ee5')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-
-    # Upstream desktop entry sets StartupWMClass=dev.warp.OpenWarp, but the
-    # running app uses WM_CLASS=dev.openwarp.OpenWarp, so GNOME can't match
-    # the window to the .desktop and falls back to a generic icon.
-    sed -i 's/^StartupWMClass=dev\.warp\.OpenWarp$/StartupWMClass=dev.openwarp.OpenWarp/' \
-        "${pkgdir}/usr/share/applications/dev.warp.OpenWarp.desktop"
 
     install -d "${pkgdir}/usr/bin"
     ln -s /opt/warpdotdev/warp-terminal-oss/warp-oss "${pkgdir}/usr/bin/warp-terminal-oss"
