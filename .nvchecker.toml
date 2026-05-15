@@ -1,0 +1,3 @@
+[perl-file-flock-retry]
+source = "cpan"
+cpan = "File-Flock-Retry"

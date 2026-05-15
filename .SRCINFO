@@ -1,0 +1,20 @@
+pkgbase = perl-file-flock-retry
+	pkgdesc = Yet another flock module
+	pkgver = 0.632
+	pkgrel = 1
+	url = https://metacpan.org/dist/File-Flock-Retry
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-file-chdir
+	checkdepends = perl-file-slurper
+	checkdepends = perl-file-temp>=0.2307
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/File-Flock-Retry-0.632.tar.gz
+	sha256sums = c60e9445e49be53988b86859834381beb393ca67c5b40ceb49df1d7ab998aca4
+
+pkgname = perl-file-flock-retry
