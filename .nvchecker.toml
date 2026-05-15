@@ -1,0 +1,5 @@
+[rgxg]
+source = "github"
+github = "rgxg/rgxg"
+use_latest_release = true
+prefix = "v"
