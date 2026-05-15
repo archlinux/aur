@@ -9,7 +9,7 @@ url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
 # upstream uses Electron newer than internal VSCode
 _electron=electron39
-depends=(xdg-utils #ripgrep $_electron nodejs
+depends=(xdg-utils ripgrep $_electron nodejs
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip !debug) # Don't break ext of VSCode
 _commit=20b56586b0785b8843487045393c57c6d89b7103
