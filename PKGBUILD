@@ -5,7 +5,7 @@ _mainver=1.9
 _subver=39
 pkgver="${_mainver}.${_subver}"
 _electronversion=41
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows fully customisable notifications when you unlock any achievement on Steam!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/SteamAchievementNotifier/SteamAchievementNotifier"
@@ -23,8 +23,8 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname// /}_V${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('325c6aa343b92b7706709e6318f89b5ab4315cafe940c26ffaa4152942eef926'
-            '3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5')
+sha256sums=('8b22cb4522666ce4aeace9feca5d03ed818dde0d82e4894e968fd14cd19af99d'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
