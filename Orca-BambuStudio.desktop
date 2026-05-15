@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Orca-BambuStudio
-Exec=/usr/local/bin/orca-bambu
+Exec=/usr/bin/orca-bambu
 Icon=OrcaSlicer
 Type=Application
 StartupWMClass=OrcaSlicer

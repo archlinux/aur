@@ -2,7 +2,7 @@
 pkgname=orca-bambustudio-appimage
 _pkgname=Orca-BambuStudio
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/FULU-Foundation/OrcaSlicer-bambulab"
@@ -12,7 +12,7 @@ provides=('orca-bambustudio')
 conflicts=('orca-bambustudio' 'orca-bambustudio-git' 'orca-bambustudio-bin')
 depends=('libwebp' 'webkit2gtk-4.1')
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/FULU-Foundation/OrcaSlicer-bambulab/releases/download/v${pkgver}/OrcaSlicer-BMCU_Linux_AppImage_ubuntu24.04_amd64_${pkgver}.AppImage" "Orca-BambuStudio.desktop" "orca-bambu")
-sha256sums=('fb948fc235c12916fddca8eddf44678ca86c936a4b14acc70d75c2bd22067994' '7bda0d428136d58e990dd47b2d2e59d9db86ce479b08d26abc0a7e9eca86ff7a' '5b90719fdc4f5787d7466a1ef73834ec146a76f13f773b72aaf9b9044e38f675')
+sha256sums=('fb948fc235c12916fddca8eddf44678ca86c936a4b14acc70d75c2bd22067994' '364e4ba2d39b35e1c19790c581bc8ee632a7411f1667abf097742305cb216bc7' '5b90719fdc4f5787d7466a1ef73834ec146a76f13f773b72aaf9b9044e38f675')
 
 package() {
 
