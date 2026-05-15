@@ -1,0 +1,3 @@
+[perl-complete-env]
+source = "cpan"
+cpan = "Complete-Env"
