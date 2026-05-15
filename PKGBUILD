@@ -4,7 +4,7 @@ _pkgname=penguin-citizen
 pkgver=0.5.8
 pkgrel=1
 # Upstream uses Debian-style release suffix in tags (e.g. v0.5.4-0). Independent of pkgrel.
-_releasetag=1
+_releasetag=2
 pkgdesc="A Linux management tool for Star Citizen — RSI Launcher GUI with Wine/Proton runner management"
 arch=('x86_64')
 url="https://github.com/TomRhodan/penguin-citizen"
@@ -30,7 +30,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!emptydirs')
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v${pkgver}-${_releasetag}/Penguin.Citizen_${pkgver}_amd64.deb")
-sha256sums=('964773fd407c7464188adf4c27f6b8e902bec49ad05f22fb5e5fd71807cc0933')
+sha256sums=('90f94e17cb1bd3e8062f3662a8d96bc1365cba74cc55b12ae7418b9355c1f0fc')
 
 package() {
     cd "$srcdir"
