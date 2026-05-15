@@ -2,7 +2,7 @@
 
 : ${_godot_version:=$(LC_ALL=C pacman -Si extra/godot | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])').stable}
 pkgname=godots
-pkgver=1.4.stable
+pkgver=1.4.1.stable
 pkgrel=1
 pkgdesc="A hub for managing your Godot versions and projects."
 url="https://github.com/MakovWait/godots"
@@ -13,7 +13,7 @@ depends=('unzip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MakovWait/godots/archive/refs/tags/v$pkgver.tar.gz")
 makedepends=('godot' 'godot-export-templates-linux')
 options=('!strip')
-sha256sums=('c31b0d2f6d755b04f637c9bdd2c775c41109ef2d228edc260aa921eeb19d85d2')
+sha256sums=('bb952d8a0ded95aac76909459ac877a4a24861af1a709eac9a06304a67d14b14')
 
 build() {
     sed -i "s|custom_template/release=\"\"|custom_template/release=\"/usr/share/godot/export_templates/${_godot_version}/linux_release.x86_64\"|" $pkgname-$pkgver/export_presets.cfg
