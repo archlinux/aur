@@ -1,0 +1,20 @@
+pkgbase = pebble-icon-theme-git
+	pkgdesc = A premium squircle-based icon theme for Linux desktops blending macOS aesthetics with native Linux consistency
+	pkgver = r42.185da58
+	pkgrel = 1
+	url = https://github.com/abhijeetshewale05/Pebble-Icon-Theme
+	install = pebble-icon-theme.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	provides = pebble-icon-theme
+	conflicts = pebble-icon-theme
+	replaces = linox-icon-theme-git
+	replaces = linox-icon-theme
+	options = !strip
+	source = pebble-icon-theme::git+https://github.com/abhijeetshewale05/Pebble-Icon-Theme.git
+	sha256sums = SKIP
+
+pkgname = pebble-icon-theme-git

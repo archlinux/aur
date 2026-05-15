@@ -1,0 +1,18 @@
+_update_caches() {
+  for theme in Pebble Pebble-Blue Pebble-Green Pebble-Orange Pebble-Pink \
+               Pebble-Purple Pebble-Red Pebble-Slate Pebble-Teal Pebble-Yellow Pebble-Yaru; do
+    gtk-update-icon-cache -q -t -f "/usr/share/icons/${theme}" 2>/dev/null || true
+  done
+}
+
+post_install() {
+  _update_caches
+}
+
+post_upgrade() {
+  _update_caches
+}
+
+post_remove() {
+  _update_caches
+}
