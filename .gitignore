@@ -1,0 +1,5 @@
+pkg/
+src/
+emojify-bin/
+*.tar.gz
+*.tar.zst

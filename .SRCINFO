@@ -1,0 +1,19 @@
+pkgbase = emojify-bin
+	pkgdesc = An emoji picker made to be fast. (GTK4/C++)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/RioTheDev/emojify
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = gtkmm-4.0
+	depends = glibmm-2.68
+	depends = libadwaita
+	provides = emojify
+	conflicts = emojify
+	source_x86_64 = https://github.com/RioTheDev/emojify/releases/download/v1.2.0/emojify-x86_64.tar.gz
+	sha256sums_x86_64 = 02a3de31dccb3e15bbcd5fc2ff869e8aebf988f6e5c0d5e743d8c5d588690175
+	source_aarch64 = https://github.com/RioTheDev/emojify/releases/download/v1.2.0/emojify-aarch64.tar.gz
+	sha256sums_aarch64 = b89c329fc548428963523b81a4627707dcc59e46e1e707b85b3c8030389c1b20
+
+pkgname = emojify-bin
