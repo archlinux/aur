@@ -1,0 +1,4 @@
+[basic256]
+source = "regex"
+url = "https://sourceforge.net/projects/kidbasic/files/"
+regex = "basic256_(\\d[\\d.]+)\\.orig\\.tar"
