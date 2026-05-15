@@ -1,0 +1,19 @@
+pkgbase = perl-complete-zsh
+	pkgdesc = Completion module for zsh shell
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/dist/Complete-Zsh
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-complete-bash>=0.27
+	depends = perl-exporter
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Complete-Zsh-0.03.tar.gz
+	sha256sums = e4de755d66fd1d72f61880d3503beccd14127de0a28c357a81d1efc4ac7ac728
+
+pkgname = perl-complete-zsh

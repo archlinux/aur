@@ -1,0 +1,3 @@
+[perl-complete-zsh]
+source = "cpan"
+cpan = "Complete-Zsh"
