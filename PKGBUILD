@@ -1,7 +1,7 @@
 # Maintainer: artist for Sonic-DE
 
 pkgname=sonic-keybind-daemon
-pkgver=6.6.4
+pkgver=6.6.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Daemon for Sonic-DE providing Global Keyboard Shortcut (Accelerator) functionality'
@@ -41,4 +41,4 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 }
 
-sha256sums=('83aa0196fae72af999a08efe2fd290f07506398062e29cfa81d33201f6ec4139')
+sha256sums=('4218fdcde99b3a094cd145cb5ddfa055e999d09d0c06c3bcf67d3724cac6e8ed')
