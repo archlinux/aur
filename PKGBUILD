@@ -1,8 +1,8 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=gopdf-git
-pkgver=0.1.0.r0.3bf54a5
-pkgrel=5
+pkgver=0.1.20.r1.g1a4574b
+pkgrel=1
 pkgdesc="MuPDF-backend PDF viewer written in Go with Lua configuration"
 arch=('x86_64')
 url="https://github.com/Aethar01/gopdf.git"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	git describe --tags --long 2>/dev/null | sed 's/\([^-]*-\)g/r/; s/-/_/g'
+	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
