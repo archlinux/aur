@@ -8,7 +8,7 @@ url="https://gaze.gundulabs.com"
 license=('custom')
 depends=('gnome-shell' )
 source=("gaze-gnome-extension-0.1.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gnome-extension-0.1.0-1-x86_64.pkg.tar.zst")
-sha256sums=('c97b0a6efc873233fab8b552a80a406a49744f64e781941def71cfb1d123a7bd')
+sha256sums=('6db771a8f963afcc849bccdcbba0f25f8f5c7beee5aa71965963a9b67d56f385')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-gnome-extension-0.1.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
