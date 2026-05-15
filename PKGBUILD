@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-mingw
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Alternative NVAPI implementation on top of DXVK'
 arch=('x86_64')
@@ -99,7 +99,7 @@ package() {
     install -Dm 755 -t "$pkgdir/usr/bin" setup_dxvk_nvapi
 }
 
-sha256sums=('17c6f6446930a805299335dc89b6c787ac81ee946c43a67f76acb89eec2942be'
+sha256sums=('17bfb108ca1aa5514598b55fee7c9fd5764755a4aa61b0eaa22fc5502554381c'
             'dff5ecd1a35a94a4dc1fa5fd08c10b5c88703797520d6b315207124ff1adeef8'
             'b0f15bd2fa0f8891e230a7a6432aaa9c0fc4b15899f02737ccd1d5771223e27f'
             '1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e')
