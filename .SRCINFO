@@ -1,0 +1,13 @@
+pkgbase = history-plus
+	pkgdesc = Advanced auditing of shell commands, logging every command and its output in real-time.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/JSNrepo/history-plus
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/JSNrepo/history-plus.git
+	sha256sums = SKIP
+
+pkgname = history-plus
