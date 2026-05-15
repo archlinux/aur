@@ -1,0 +1,10 @@
+*._*
+.DS_Store
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.tgz
+src/
+pkg/
+*.log
+chroot/
