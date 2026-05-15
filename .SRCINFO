@@ -1,0 +1,18 @@
+pkgbase = orca-bambustudio-appimage
+	pkgdesc = PC Software for BambuLab and other 3D printers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FULU-Foundation/OrcaSlicer-bambulab
+	arch = x86_64
+	license = AGPL-3.0
+	depends = webkit2gtk-4.1
+	provides = orca-bambustudio
+	conflicts = orca-bambustudio
+	conflicts = orca-bambustudio-git
+	conflicts = orca-bambustudio-bin
+	options = !strip
+	options = !debug
+	source = Orca-BambuStudio-1.0.0.AppImage::https://github.com/FULU-Foundation/OrcaSlicer-bambulab/releases/download/v1.0.0/OrcaSlicer-BMCU_Linux_AppImage_ubuntu24.04_amd64_1.0.0.AppImage
+	sha256sums = SKIP
+
+pkgname = orca-bambustudio-appimage
