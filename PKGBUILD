@@ -2,8 +2,8 @@
 
 _pkgname=advancely
 pkgname=$_pkgname-bin
-pkgver=1.4.2
-pkgrel=1
+pkgver=1.4.3
+pkgrel=2
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress beyond just Advancements."
 arch=('x86_64')
 url="https://github.com/LNXSeus/Advancely"
