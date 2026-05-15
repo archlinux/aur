@@ -1,0 +1,17 @@
+pkgbase = openmediabridge-bin
+	pkgdesc = media bridge for Resonite VR with MPRIS, synced lyrics, OBS overlay and Discord status
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/alexvermaning0/OpenMediaBridge
+	arch = x86_64
+	license = Apache-2.0
+	depends = playerctl
+	provides = openmediabridge
+	conflicts = openmediabridge
+	options = !strip
+	source = OpenMediaBridge.Linux.zip::https://github.com/alexvermaning0/OpenMediaBridge/releases/download/1.1/OpenMediaBridge.Linux.zip
+	source = LICENSE::https://raw.githubusercontent.com/alexvermaning0/OpenMediaBridge/main/LICENSE
+	sha256sums = 758e9750b4027ef3052bfe5d4f9de396b556378a567a616a7fb86dd84c157ac8
+	sha256sums = 50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a
+
+pkgname = openmediabridge-bin
