@@ -4,7 +4,7 @@
 
 _pkgname=deadbeef-lyricbar
 pkgname=deadbeef-plugin-lyricbar-git
-pkgver=r195.gf6b939b
+pkgver=r197.gcf9f821
 pkgrel=1
 pkgdesc="DeaDBeeF lyric bar plugin"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('git' 'pkgconf' 'taglib')
 source=("${_pkgname}::git+${url}"
         "${_pkgname}-makefile.patch")
 sha256sums=('SKIP'
-            'c78f6e9e84c4ea09f0e31609e434928ac16a6b7a01cec22ac8b86905743bd3f0')
+            '226daee6935c5826d0ad1cefc5671b1c667352017605c852a962b49a727f84c8')
 
 pkgver() {
   cd "${_pkgname}"

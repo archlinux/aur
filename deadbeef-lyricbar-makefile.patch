@@ -1,15 +1,6 @@
-Common subdirectories: deadbeef-lyricbar/gettext and deadbeef-lyricbar-makefile/gettext
-Common subdirectories: deadbeef-lyricbar/.git and deadbeef-lyricbar-makefile/.git
-diff '--color=auto' -u deadbeef-lyricbar/Makefile deadbeef-lyricbar-makefile/Makefile
---- deadbeef-lyricbar/Makefile	2025-11-11 13:58:25.739932642 +0000
-+++ deadbeef-lyricbar-makefile/Makefile	2025-11-11 14:01:50.996557239 +0000
-@@ -1,5 +1,5 @@
- CFLAGS+=-std=c99 -Wall $(COPTS) -D_GNU_SOURCE -fPIC -fvisibility=hidden -flto=auto
--CXXFLAGS+=-std=c++14 -Wall -O2 -fPIC -fvisibility=hidden -flto=auto
-+CXXFLAGS+=-std=c++14 -Wall $(CXXOPTS) -O2 -fPIC -fvisibility=hidden -flto=auto
- LIBFLAGS=`pkg-config --cflags $(GTKMM) $(GTK)`
- LIBS=`pkg-config --libs $(GTKMM) $(GTK)`
- LCURL=-lcurl
+diff '--color=auto' -u -r -N deadbeef-lyricbar/Makefile deadbeef-lyricbar-makefile/Makefile
+--- deadbeef-lyricbar/Makefile	2026-05-15 16:40:00.083436174 +0000
++++ deadbeef-lyricbar-makefile/Makefile	2026-05-15 16:42:01.033266404 +0000
 @@ -78,8 +78,8 @@
  	$(GLIBC) --generate-header src/resources.xml
  
@@ -21,4 +12,3 @@ diff '--color=auto' -u deadbeef-lyricbar/Makefile deadbeef-lyricbar-makefile/Mak
  	$(foreach loc, $(LOCALES), install -d $(prefix)/share/locale/$(loc)/LC_MESSAGES;)
  	$(foreach loc, $(LOCALES), msgfmt gettext/$(loc)/deadbeef-lyricbar.po -o $(prefix)/share/locale/$(loc)/LC_MESSAGES/deadbeef-lyricbar.mo;)
  
-Common subdirectories: deadbeef-lyricbar/src and deadbeef-lyricbar-makefile/src
