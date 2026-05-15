@@ -1,10 +1,9 @@
-diff '--color=auto' -ruN a/install.js b/install.js
---- a/install.js	2023-11-04 15:05:16.506941002 +0100
-+++ b/install.js	2023-11-04 15:12:07.843784464 +0100
+--- a/install.js	2026-01-29 06:04:11.000000000 +0100
++++ b/install.js	2026-05-15 23:14:09.489605003 +0200
 @@ -3,6 +3,10 @@
  const fs = require('fs');
  const path = require('path');
- 
+
 +let prefix = process.argv.filter(a => a.startsWith('--prefix-dir='))
 +  .map(a => a.split('=')[1])[0] || '';
 +console.log(' -> Prefix directory is', prefix);
@@ -15,38 +14,30 @@ diff '--color=auto' -ruN a/install.js b/install.js
 @@ -41,7 +45,7 @@
    one();
  }
- 
+
 -const dir = path.join(share, 'com.add0n.node');
 +const dir = path.join(prefix, share, 'com.add0n.node');
  const name = 'com.add0n.node';
  const ids = require('./config.js').ids;
- 
-@@ -62,7 +66,7 @@
-       fs.writeFile(path.join(root, name + '.json'), `{
-     "name": "${name}",
-     "description": "Node Host for Native Messaging",
--    "path": "${path.join(dir, 'run.sh')}",
-+    "path": "${path.join(share, 'com.add0n.node', 'run.sh')}",
-     "type": "stdio",
-     ${origins}
-     }`, e => {
-@@ -106,55 +110,18 @@
- }
+
+@@ -110,59 +114,29 @@
  async function chrome() {
    if (ids.chrome.length) {
--    await manifest(path.join(
+     await manifest(path.join(
 -      process.env.HOME,
 -      '.config/google-chrome/NativeMessagingHosts'
--    ), 'chrome');
-+    await manifest(path.join(prefix, '/etc/opt/chrome/native-messaging-hosts'), 'chrome');
++      prefix,
++      '/etc/opt/chrome/native-messaging-hosts'
+     ), 'chrome');
      console.log(' -> Chrome Browser is supported');
--    await manifest(path.join(
+     await manifest(path.join(
 -      process.env.HOME,
 -      '.config/chromium/NativeMessagingHosts'
--    ), 'chrome');
-+    await manifest(path.join(prefix, '/etc/chromium/native-messaging-hosts'), 'chrome');
++      prefix,
++      '/etc/chromium/native-messaging-hosts'
+     ), 'chrome');
      console.log(' -> Chromium Browser is supported');
--    await manifest(path.join(
+     await manifest(path.join(
 -      process.env.HOME,
 -      '.config/vivaldi/NativeMessagingHosts'
 -    ), 'chrome');
@@ -59,18 +50,25 @@ diff '--color=auto' -ruN a/install.js b/install.js
 -    await manifest(path.join(
 -      process.env.HOME,
 -      '.config/microsoftedge/NativeMessagingHosts'
--    ), 'chrome');
-+    await manifest(path.join(prefix, '/etc/opt/edge/native-messaging-hosts'), 'chrome');
++      prefix,
++      '/etc/opt/edge/native-messaging-hosts'
+     ), 'chrome');
      console.log(' -> Microsoft Edge Browser is supported');
+-    await manifest(path.join(
+-      process.env.HOME,
+-      '.config/comet/NativeMessagingHosts'
+-    ), 'chrome');
+-    console.log(' -> Perplexity Comet Browser is supported');
    }
  }
  async function firefox() {
    if (ids.firefox.length) {
--    await manifest(path.join(
+     await manifest(path.join(
 -      process.env.HOME,
 -      '.mozilla/native-messaging-hosts'
--    ), 'firefox');
-+    await manifest(path.join(prefix, '/usr/lib/mozilla/native-messaging-hosts'), 'firefox');
++      prefix,
++      '/usr/lib/mozilla/native-messaging-hosts'
+     ), 'firefox');
      console.log(' -> Firefox Browser is supported');
 -    await manifest(path.join(
 -      process.env.HOME,
@@ -89,8 +87,16 @@ diff '--color=auto' -ruN a/install.js b/install.js
 -    console.log(' -> Thunderbird Email Client is supported');
    }
  }
- 
-@@ -171,4 +138,3 @@
+
+@@ -283,7 +257,6 @@
+   try {
+     await chrome();
+     await firefox();
+-    await flatpak();
+     await application();
+     console.log(' => Native Host is installed in', dir);
+     console.log('\n\n>>> host is ready <<<\n\n');
+@@ -293,4 +266,3 @@
      process.exit(-1);
    }
  })();

@@ -1,14 +1,14 @@
 pkgbase = open-in-native-client
 	pkgdesc = Native client for the Open In browser extension
-	pkgver = 1.0.0
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://add0n.com/open-in.html
 	arch = any
 	license = MPL2
 	depends = nodejs
-	source = https://github.com/andy-portmen/native-client/releases/download/1.0.0/linux.zip
+	source = https://github.com/andy-portmen/native-client/releases/download/v1.0.8/linux.zip
 	source = install.patch
-	b2sums = d14a6ca074c574fdac4d6dbd2f7251963894fd0ab570de5e42ce37b38fc89c44f93b1d99f1738544c36daedd44a8d37234e65d2554961b0faaf04cb1f01d3812
-	b2sums = 3320f23defcc30bacfb2b0e64cb0f3bdb73eade12934f36cef56b2c688d5c4b68b8ed23a4dd927313568f713045ffeab4d1268d0c3f2edd644e61ff7111e3911
+	b2sums = 59d42614494610242153775bed30f3bba1db9526b6a592b55a9b24339e116ae45d11a9a5073384f5d052189da7a503aa7a68adfeb9d4edf6e725656db1391e8d
+	b2sums = 9f1130f32ceeef607e21f76fef986789d14e2d1c2795ce24e3c46dfa88d7bffb473ac68b36f9100c9459500e274cce068493d073500236a3587ee15cb75d9047
 
 pkgname = open-in-native-client
