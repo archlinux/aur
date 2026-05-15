@@ -1,11 +1,10 @@
 # Maintainer: artist for XLibre <artist4xlibre@proton.me>
 
 pkgname=sonic-win
-_pkgname=kwin-x11
 pkgver=6.6.4
 _pkgtag=$pkgver
 pkgrel=1
-pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
+pkgdesc='An easy to use, but flexible, X Window Manager for SonicDE'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-win'
 license=(LGPL-2.0-or-later)
@@ -70,9 +69,9 @@ makedepends=(extra-cmake-modules
              plasma-wayland-protocols
              python
              wayland-protocols)
-groups=(sonic-de)
-provides=($_pkgname)
-conflicts=($_pkgname)
+groups=(sonicde)
+conflicts=(kwin-x11)
+provides=(kwin-x11)
 #source=("git+${url}.git#tag=${_pkgtag}")
 source=("${url}/archive/refs/tags/${_pkgtag}.tar.gz")
 install="$pkgname.install"
@@ -80,7 +79,6 @@ options=(!debug)
 sha256sums=('d7d4c72ce1e519c2248f93f61bd1ddb1e49f9cf15fa13517cc226f92b8467447')
 
 build() {
-  #cmake -B build -S $pkgname \
   cmake -B build -S $pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
