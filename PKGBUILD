@@ -16,7 +16,7 @@ url="https://apothem.ahmedgad.com"
 license=('MIT')
 depends=('bash' 'python')
 source=("${pkgname}-v${pkgver}-linux.tar.gz::https://github.com/Gad360/apothem/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('ea3b5a5adabd3cac66e625170f6989880ad850df1af083dfcaa98b05723e71d9')
 
 package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
