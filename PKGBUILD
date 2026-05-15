@@ -3,8 +3,8 @@
 
 _pkgname=sigtop
 pkgname=$_pkgname-git
-pkgver=0.11.0.r3.g67f4309
-pkgrel=1
+pkgver=0.23.0.r0.g83df039
+pkgrel=2
 pkgdesc='Export messages from Signal Desktop'
 arch=('i686' 'x86_64')
 url="https://github.com/tbvdm/$_pkgname"
