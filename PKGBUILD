@@ -2,8 +2,8 @@
 # https://github.com/AshBuk/speak-to-ai
 
 pkgname=speak-to-ai
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64')
 url="https://github.com/AshBuk/speak-to-ai"
@@ -44,7 +44,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    'e2a2cdabc03dc5ac6c078623d29c9766e12e2d728a0a881d85ca18231fda363e'
+    'ca20bf44d1d0833c898f09091b5bb6a7ae19de9f371d3dd51648999f359d9ff2'
     'b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
 )
 
@@ -156,5 +156,4 @@ package() {
     # License and documentation
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
