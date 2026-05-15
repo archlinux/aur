@@ -5,7 +5,7 @@ _pkgname=feedr
 pkgname=${_pkgname}-bin
 pkgdesc="A feature-rich terminal-based RSS/Atom feed reader written in Rust"
 
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ depends=('glibc' 'libgcc' 'openssl')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${arch[0]}")
-sha256sums=('2cc8556124dd530a73b0c43b9a494e83d7394fc24700102d4c429128f1b98897'
+sha256sums=('44a4e94f54a9e6f7fbf445441f7a4f9806b66d52751fb2dfb0734a6615c0023e'
             'e635a29d3556c9b030c44f42c52aee20aa6d22c0e448003baef320e9dc2e1764')
-sha256sums_x86_64=('7720efadadea766c6784eab3d738703261a10d1d4db30f88cf8b1db3314c988a')
+sha256sums_x86_64=('c8dce71f23c19bc4b9b2f62676b0ec963579766057ced02377691c56443abc4d')
 
 
 package() {
