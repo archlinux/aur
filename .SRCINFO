@@ -1,0 +1,17 @@
+pkgbase = syncless-bin
+	pkgdesc = Syncless desktop client, repackaged to run with system Electron
+	pkgver = 0.0.63
+	pkgrel = 1
+	url = https://syncless.ai/
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	makedepends = asar
+	depends = electron41
+	depends = tmux
+	provides = syncless
+	conflicts = syncless
+	source = desktop-windows-latest.exe::https://artifacts.syncless.ai/downloads/desktop-windows-latest.exe
+	sha256sums = 7affc26f6f30be585147a7e17ad2901ed235a571cf618d362db546b2b49a92dd
+
+pkgname = syncless-bin
