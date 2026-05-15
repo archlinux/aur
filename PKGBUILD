@@ -1,6 +1,7 @@
 # run pgo build or not; with X(vfb) or wayland
 : ${_build_profiled:=false}
 : ${_build_profiled_xvfb:=true}
+: ${_package_multilocale:=true}
 
 epoch=1
 # Maintainer: konvix <busybeaver@2mail.co>
@@ -12,7 +13,7 @@ __pkgname=konform
 _ffsrcver=140.11.0
 _ffbuild=2
 _l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1
-_lwrelver=101
+_lwrelver=102
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
@@ -145,8 +146,8 @@ source=(
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
 )
-sha256sums=('92594f6971162bc445bda373839bd565142dfa2dad23fb796d440ce83b087349'
-            '1b034d2117356fda24807a151055132315c6ba58ad2bdf7ec71ee707fac5e028'
+sha256sums=('fe2dffda969a96c10a89cb967003fae5f70dbff374136a57fc7759a128bcd7cf'
+            '142a82a695240e303eeb5c187dbf4fb1c4ea5190fae0109b87a11796a12c5ef2'
             'SKIP'
             '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
@@ -416,13 +417,16 @@ END
   rm -f ../mozconfig  ./mozconfig
 
   ./mach build --priority normal
-  MOZ_PKG_FORMAT=tar ./mach pack-multi-locale --locales ${_languages[@]}
 }
 
 package() {
   _lw_srcdir=$srcdir/src/librewolf-$_ffsrcver-$_lwrelver
   cd "${_lw_srcdir}"
-  DESTDIR="$pkgdir" MOZ_CHROME_MULTILOCALE="${_languages[*]}" ./mach install
+  if [[ "${_package_multilocale}" == "true" ]]; then
+    MOZ_PKG_FORMAT=tar ./mach package-multi-locale --locales ${_languages[@]}
+    export MOZ_CHROME_MULTILOCALE="${_languages[*]}"
+  fi
+  DESTDIR="$pkgdir" ./mach install
 
   rm -f "${pkgdir}/usr/lib/pingsender"
 
@@ -432,6 +436,10 @@ package() {
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
+  # enable langpacks for non-localized builds
+  if [[ "${_package_multilocale}" == "false" ]]; then
+    echo 'pref("intl.multilingual.downloadEnabled", true);' >> "$vendorjs"
+  fi
 
   local distini="$pkgdir/usr/lib/$__pkgname/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
