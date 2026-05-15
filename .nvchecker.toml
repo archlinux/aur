@@ -1,0 +1,3 @@
+[perl-complete-common]
+source = "cpan"
+cpan = "Complete-Common"
