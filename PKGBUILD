@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-vkreflex-layer
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Alternative NVAPI implementation on top of DXVK, Vulkan Reflex layer'
 arch=('x86_64')
@@ -35,4 +35,4 @@ package() {
     DESTDIR="$pkgdir" ninja -C build install
 }
 
-sha256sums=('17c6f6446930a805299335dc89b6c787ac81ee946c43a67f76acb89eec2942be')
+sha256sums=('17bfb108ca1aa5514598b55fee7c9fd5764755a4aa61b0eaa22fc5502554381c')
