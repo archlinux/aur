@@ -136,6 +136,8 @@ build() {
   # https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/3197
   export GI_SCANNER_DISABLE_CACHE=1
 
+  export RUSTUP_TOOLCHAIN=stable
+
   arch-meson gstreamer build "${meson_options[@]}"
   meson compile -C build
 }
@@ -146,6 +148,7 @@ check() (
 
   export CK_TIMEOUT_MULTIPLIER=5
   export NO_AT_BRIDGE=1 GTK_A11Y=none
+  export RUSTUP_TOOLCHAIN=stable
 
   # Flaky due to timeouts
   xvfb-run -s "-nolisten local" \
