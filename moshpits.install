@@ -1,0 +1,83 @@
+post_install() {
+
+    # Create the configuration directory and install a starter config if absent
+    install -d -m 755 -o root -g root /etc/moshpits
+    if [ ! -f /etc/moshpits/moshpits.toml ]; then
+        install -m 644 -o root -g root \
+            /usr/share/doc/moshpits-unstable-bin/examples/moshpits.toml.example \
+            /etc/moshpits/moshpits.toml
+    fi
+
+    # Create the log directory
+    install -d -m 755 -o root -g root /var/log/moshpits
+
+    # Generate a passwordless host key pair on first install (non-interactive, service-safe).
+    # Uses the classical X25519 key type by default; see the post-quantum note below to
+    # switch to an ML-DSA key after install.
+    _key_dir=/etc/moshpits/keys
+    install -d -m 700 -o root -g root "$_key_dir"
+    if [ ! -f "$_key_dir/mps_host_ed25519_key" ]; then
+        mp-keygen generate \
+            --server \
+            --no-passphrase \
+            --output-path "$_key_dir/mps_host_ed25519_key" \
+            --force
+    fi
+
+    echo ""
+    echo "  ── moshpits post-install notes ──────────────────────────────────────────"
+    echo ""
+    echo "  A passwordless host key pair has been generated at:"
+    echo "    $_key_dir/mps_host_ed25519_key"
+    echo "    $_key_dir/mps_host_ed25519_key.pub"
+    echo ""
+    echo "  Post-quantum (ML-DSA) identity keys are supported by this build."
+    echo "  To generate an ML-DSA-65 server key instead:"
+    echo "    mp-keygen generate --server --no-passphrase \\"
+    echo "        --key-type mldsa65 \\"
+    echo "        --output-path /etc/moshpits/keys/mps_host_mldsa65_key --force"
+    echo "  Then update private_key_path / public_key_path in:"
+    echo "    /etc/moshpits/moshpits.toml"
+    echo "  And update --private-key-path / --public-key-path in:"
+    echo "    /usr/lib/systemd/system/mps.service  (override with systemctl edit mps)"
+    echo ""
+    echo "  Review (and customise) the config file at:"
+    echo "    /etc/moshpits/moshpits.toml"
+    echo ""
+    echo "  Open the required ports in your firewall:"
+    echo "    TCP inbound:  40404  (control / key-exchange channel)"
+    echo "    UDP inbound:  50000–59999  (encrypted terminal data)"
+    echo ""
+    echo "  Enable and start the service:"
+    echo "    systemctl enable --now mps"
+    echo ""
+    echo "  ─────────────────────────────────────────────────────────────────────────"
+    echo ""
+}
+
+post_upgrade() {
+    # Reload and restart to pick up the new binary
+    if systemctl is-enabled --quiet mps; then
+        systemctl daemon-reload
+        systemctl restart mps
+        echo "  mps restarted."
+    fi
+}
+
+pre_remove() {
+    # Stop and disable the service before removing files
+    if systemctl is-active --quiet mps; then
+        systemctl stop mps
+    fi
+    if systemctl is-enabled --quiet mps; then
+        systemctl disable mps
+    fi
+}
+
+post_remove() {
+    # Note: /etc/moshpits and /var/log/moshpits are intentionally preserved
+    # to avoid destroying user configuration and logs on uninstall.
+    # Remove them manually if no longer needed:
+    #   rm -rf /etc/moshpits /var/log/moshpits
+    :
+}

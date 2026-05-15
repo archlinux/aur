@@ -1,0 +1,35 @@
+[Unit]
+Description=moshpits remote terminal server
+Documentation=man:mps(1)
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+
+# Read config from /etc/moshpits/moshpits.toml (system-wide default).
+# Override the host key and tracing log paths to the locations set up on install.
+ExecStart=/usr/bin/mps \
+    --config-absolute-path /etc/moshpits/moshpits.toml \
+    --private-key-path /etc/moshpits/keys/mps_host_ed25519_key \
+    --public-key-path /etc/moshpits/keys/mps_host_ed25519_key.pub \
+    --tracing-absolute-path /var/log/moshpits/mps.log
+Restart=on-failure
+RestartSec=5s
+
+# Hardening (relaxed for multi-user root daemon)
+NoNewPrivileges=false
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=false
+ReadWritePaths=/var/log/moshpits /etc/moshpits/keys
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+# Root daemons spawning shells need broad syscall access
+# SystemCallFilter=@system-service is too restrictive for arbitrary user shells
+
+[Install]
+WantedBy=multi-user.target
