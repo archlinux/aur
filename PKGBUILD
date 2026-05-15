@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=7.1.190
+pkgver=7.1.200
 pkgrel=1
 _mpris_ver=2.1.5
 # Commit hash for aunetx/deezer-linux for patches
@@ -10,7 +10,7 @@ pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
 license=('custom')
-depends=('electron39' 'hicolor-icon-theme')
+depends=('electron42' 'hicolor-icon-theme')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'imagemagick' 'npm')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact-win32-x86-$pkgver"
@@ -33,12 +33,13 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     "11-fix-thumbar-actions-${_patch_commit}.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/11-fix-thumbar-actions.patch"
     "12-adjust-volume-on-wheel-${_patch_commit}.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/12-adjust-volume-on-wheel.patch"
     "13-disable-hardware-acceleration-${_patch_commit}.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/13-disable-hardware-acceleration.patch"
+
     # Local patches
     "99-systray-icon.patch"
 )
-sha256sums=('c3806569d7bc1f12d444776981a3872e480486583fb4ee5bca0930fc2acb6434'
+sha256sums=('e628b3e9d67b776f3361050b006ebbd7d52c50e6e83aa18a267bddf75b18bb67'
             'c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f'
-            '3da0c64c3d9216286601e0a28714e37a4bfaf9f56f35856da75986dfa2eba8fb'
+            '2712df28c1c061988ef75bfa543532ce16def27252b572d72ba3944a9788ac2c'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
             'fe9bab50ef433516105ed2f2c349736c0be87c2f75f8d18bf1f011b2115019c1'
             '181016c614fc62595d604d336cdb43c40645d7cc66a35acaf562c9af26177a6e'
