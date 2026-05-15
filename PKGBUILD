@@ -3,7 +3,7 @@
 pkgname=eyebreak
 _hash=9d6df8784a5c11354036b0e81d684f43bd55d46b
 pkgver=r4.${_hash::8}
-pkgrel=2
+pkgrel=3
 pkgdesc="A scheduled timer to protect your eyes"
 arch=(any)
 url=https://gitgud.io/uwu/keybind-visualizer
