@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Mayrink <vncsmyrnk@gmail.com>
 pkgname=shell-utils-git
-pkgver=r271.4f59a2c # This gets auto-updated by the pkgver() function
+pkgver=r272.9be78a3 # This gets auto-updated by the pkgver() function
 pkgrel=1
 pkgdesc="An attempt to be a shell-agnostic custom utilities tool."
 arch=('x86_64')
