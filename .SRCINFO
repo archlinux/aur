@@ -1,6 +1,6 @@
 pkgbase = python-django-stubs-ext
 	pkgdesc = Extensions and monkey-patching for django-stubs.
-	pkgver = 5.1.3
+	pkgver = 5.2.9
 	pkgrel = 1
 	url = https://github.com/typeddjango/django-stubs
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = python-django-stubs-ext
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-uv-build
 	makedepends = python-wheel
 	depends = python-django
-	source = https://github.com/typeddjango/django-stubs/archive/refs/tags/5.1.3.tar.gz
-	sha256sums = 973155c0930c385a15a54d06df15188e1c787b21f99f18fa7c4a7d08c44a265a
+	source = https://github.com/typeddjango/django-stubs/archive/refs/tags/5.2.9.tar.gz
+	sha256sums = a246dea4fff8c8879ba51ce99c246696312d45bf749a8c4050322f6d6f886c59
 
 pkgname = python-django-stubs-ext
