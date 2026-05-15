@@ -1,5 +1,5 @@
 pkgname=gitquarry
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Terminal CLI for public GitHub repository search with explicit discovery controls"
 arch=('x86_64' 'aarch64')
@@ -7,7 +7,7 @@ url="https://github.com/Microck/gitquarry"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz")
-sha256sums=('ec784bce72b6cc43c6d1acf41e4387d647e0f1f90b84db3c108851e0c896ad08')
+sha256sums=('1cf0da83da4de3d9b8f7c59ea9825bf4eacf360e56e62d58be19e3ab7961ae4d')
 
 prepare() {
   cd "$srcdir"

@@ -1,13 +1,13 @@
 pkgbase = gitquarry
 	pkgdesc = Terminal CLI for public GitHub repository search with explicit discovery controls
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/Microck/gitquarry
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = gitquarry-0.1.7.tar.gz::https://github.com/Microck/gitquarry/releases/download/v0.1.7/gitquarry-v0.1.7-source.tar.gz
-	sha256sums = ec784bce72b6cc43c6d1acf41e4387d647e0f1f90b84db3c108851e0c896ad08
+	source = gitquarry-0.1.8.tar.gz::https://github.com/Microck/gitquarry/releases/download/v0.1.8/gitquarry-v0.1.8-source.tar.gz
+	sha256sums = 1cf0da83da4de3d9b8f7c59ea9825bf4eacf360e56e62d58be19e3ab7961ae4d
 
 pkgname = gitquarry
