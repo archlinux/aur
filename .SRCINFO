@@ -1,7 +1,7 @@
 pkgbase = shamela-native
 	pkgdesc = Al-Maktaba Al-Shamela — Arabic and Islamic digital library
 	pkgver = 1447.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shamela.ws
 	arch = x86_64
 	license = LicenseRef-shamela
@@ -10,6 +10,8 @@ pkgbase = shamela-native
 	depends = libselinux
 	depends = libxcrypt-compat
 	depends = python
+	conflicts = shamela
+	conflicts = shamela-bin
 	options = !strip
 	source = shamela.py
 	source = shamela-linux-1447.11.tar.xz::https://archive.org/download/shamela_download/shamela-linux-1447.11.tar.xz
