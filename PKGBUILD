@@ -4,7 +4,7 @@
 # Contributor: Harms <thotro at lyse dot net>
 # Contributor: dnikoloski <nikoloskid at proton dot me>
 pkgname=forticlient
-pkgver=7.4.6.1867
+pkgver=7.4.7.1868
 pkgrel=1
 pkgdesc="Fortinet VPN client ZTNA edition"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=(forticlient)
 depends=('libxss' 'libsecret' 'alsa-lib' 'libnotify' 'gtk3' 'nss' 'libxcrypt-compat' 'libappindicator' 'libappindicator-gtk2' 'org.freedesktop.secrets')
 options=('!strip')
 source=("https://repo.fortinet.com/repo/forticlient/7.4/ubuntu22/pool/non-free/f/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-sha512sums=('a40ec507cdef9aeeb01e9c1c943bc0e666b692f7b7eeef1bad493824aa890853bb5b7060510eecd62d41dcc4d7b6de9127c8fe8d52b4babbaac3ea46d26c939c')
+sha512sums=('fb2695dc3705388c1019fa24caba707ac0c3c92c77249708b6ac7527d3bec73f954ccc37bd39f9a0879e15b74b4976696f6df9c0d1ae312fefee9bea9a516e09')
 package(){
 
 	# Extract package data
