@@ -1,0 +1,16 @@
+pkgbase = sakura-lsldb
+	pkgdesc = LSL debugger frontend — drives sakura-slemu for interactive script debugging
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Sakura-Studios-IKE/sakura-lsldb
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	depends = sakura-slemu
+	source = sakura-lsldb-1.0.0.tar.gz::https://github.com/Sakura-Studios-IKE/sakura-lsldb/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sakura-lsldb
