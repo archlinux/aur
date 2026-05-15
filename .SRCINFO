@@ -1,12 +1,12 @@
 pkgbase = goport
 	pkgdesc = Fast concurrent TCP/UDP port scanner written in Go
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/Slashas632/goPort
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = goport-1.1.1.tar.gz::https://github.com/Slashas632/goPort/archive/v1.1.1.tar.gz
-	sha256sums = e9aafbcbe47cd26dc901ef1745b39829e6a3aef973708b12754e35fba3afcc51
+	source = goport-1.1.2.tar.gz::https://github.com/Slashas632/goPort/archive/v1.1.2.tar.gz
+	sha256sums = 0d5728e6e839fb0bd7c159a235cb94a147ea72d6a373ace0e425ead039e7617b
 
 pkgname = goport
