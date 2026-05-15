@@ -1,7 +1,7 @@
 pkgbase = orca-bambustudio-appimage
 	pkgdesc = PC Software for BambuLab and other 3D printers
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FULU-Foundation/OrcaSlicer-bambulab
 	arch = x86_64
 	license = AGPL-3.0

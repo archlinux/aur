@@ -2,7 +2,7 @@
 pkgname=orca-bambustudio-appimage
 _pkgname=Orca-BambuStudio
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PC Software for BambuLab and other 3D printers"
 arch=('x86_64')
 url="https://github.com/FULU-Foundation/OrcaSlicer-bambulab"
