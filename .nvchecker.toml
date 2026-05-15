@@ -1,0 +1,5 @@
+[netcf]
+source = "git"
+git = "https://pagure.io/netcf.git"
+prefix = "release-"
+include_regex = "^release-[0-9]+\\.[0-9]+\\.[0-9]+$"
