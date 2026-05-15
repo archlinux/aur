@@ -1,6 +1,6 @@
 pkgbase = linux-pf
 	pkgdesc = pf-kernel
-	pkgver = 7.0.pf3
+	pkgver = 7.0.pf4
 	pkgrel = 1
 	url = https://pfkernel.natalenko.name
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = linux-pf
 	makedepends = zstd
 	options = !debug
 	options = !strip
-	source = https://codeberg.org/pf-kernel/linux/archive/0d8a0a4b12b2c020523851e4f34bd331fd640e52.tar.gz
+	source = https://codeberg.org/pf-kernel/linux/archive/44508d47cf9c45f07b3838425a5b82e590e09eea.tar.gz
 	source = config
 	b2sums = SKIP
 	b2sums = 2a2a1330ef43534410fc537b266ad995284c5b24b1e6375fd3e9ad551717ad6ee8701feae4970d6208e878bd0234448c2ed4b664df7ce78d976cfe63df1572f7
