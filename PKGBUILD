@@ -180,7 +180,7 @@ _minor=0
 _rcver=rc3
 pkgver=${_major}.${_rcver}
 _tagrel=2
-pkgrel=1
+pkgrel=2
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
@@ -823,7 +823,7 @@ b2sums=('6b4f00ecce79380790b085091c5f41321e2d1c9e655032b2e1269e0eb98e238826c61c4
 # CachyOS bumps rebase cleanly. Do not edit lines above this marker.
 # ============================================================================
 
-pkgdesc="${pkgdesc} + TAS2783 codec patches for ASUS ProArt PX13 (HN7306EA)"
+pkgdesc="DEPRECATED — use linux-cachyos-px13 (MT7925 BT broken on 7.1-rc)"
 
 # nealstar's 16 codec patches from CachyOS issue 737
 # https://github.com/CachyOS/linux-cachyos/issues/737#issuecomment-2832947040

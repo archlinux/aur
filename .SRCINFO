@@ -1,7 +1,7 @@
 pkgbase = linux-cachyos-rc-px13
-	pkgdesc = Linux Clang ThinLTO + AutoFDO + Cachy Sauce Kernel by CachyOS with other patches and improvements - Release Candidate + TAS2783 codec patches for ASUS ProArt PX13 (HN7306EA)
+	pkgdesc = DEPRECATED — use linux-cachyos-px13 (MT7925 BT broken on 7.1-rc)
 	pkgver = 7.1.rc3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
 	license = GPL-2.0-only
@@ -70,7 +70,7 @@ pkgbase = linux-cachyos-rc-px13
 	b2sums = SKIP
 
 pkgname = linux-cachyos-rc-px13
-	pkgdesc = The Linux Clang ThinLTO + AutoFDO + Cachy Sauce Kernel by CachyOS with other patches and improvements - Release Candidate + TAS2783 codec patches for ASUS ProArt PX13 (HN7306EA) kernel and modules
+	pkgdesc = The DEPRECATED — use linux-cachyos-px13 (MT7925 BT broken on 7.1-rc) kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -87,7 +87,7 @@ pkgname = linux-cachyos-rc-px13
 	provides = ADIOS-MODULE
 
 pkgname = linux-cachyos-rc-px13-headers
-	pkgdesc = Headers and scripts for building modules for the Linux Clang ThinLTO + AutoFDO + Cachy Sauce Kernel by CachyOS with other patches and improvements - Release Candidate + TAS2783 codec patches for ASUS ProArt PX13 (HN7306EA) kernel
+	pkgdesc = Headers and scripts for building modules for the DEPRECATED — use linux-cachyos-px13 (MT7925 BT broken on 7.1-rc) kernel
 	depends = binutils
 	depends = glibc
 	depends = libelf
