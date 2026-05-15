@@ -1,0 +1,23 @@
+pkgbase = claude-workspaces
+	pkgdesc = Workspace manager pra lançar o Claude Code com contexto isolado por projeto
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/itaaloalan/claude-workspaces
+	install = claude-workspaces.install
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = pyside6
+	depends = python-pip
+	optdepends = libnotify: notificações de fim de turno do Claude
+	optdepends = konsole: terminal padrão dos botões "Abrir Terminal"
+	optdepends = code: integração com VS Code
+	optdepends = intellij-idea-community-edition: integração com IntelliJ
+	source = claude-workspaces-0.1.0.tar.gz::https://github.com/itaaloalan/claude-workspaces/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 933fe82345dd2de5ae0e3c91880599c0e895efa0552dfa071f07af4c4dc17fa2
+
+pkgname = claude-workspaces

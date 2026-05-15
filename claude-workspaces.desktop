@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Claude Workspaces
+GenericName=Workspace Manager
+Comment=Gerencie workspaces e abra o Claude Code com contexto isolado por projeto
+Exec=claude-workspaces
+Icon=claude-workspaces
+Terminal=false
+Categories=Development;Utility;IDE;
+StartupNotify=true
+StartupWMClass=claude-workspaces
+Keywords=claude;workspace;ai;projects;dev;
