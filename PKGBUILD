@@ -1,7 +1,7 @@
 # Maintainer: Capricornus007 <sihaogang@gmail.com>
 
 pkgbase=linux-cjktty
-pkgver=7.0.7.arch1
+pkgver=7.0.7.arch2
 pkgrel=1
 pkgdesc='Linux (with cjktty-patches)'
 url='https://github.com/archlinux/linux'
@@ -43,16 +43,16 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('c8e1fe86a3aaff2de6f7401383f959283510c389ff84c15ab711c8fbceb25df4'
             'SKIP'
-            '4a5fa687751890e3850cdbce18728de631877d0c9290d8a3b2a4fd164cf12c63'
+            '316b46c816e133a15c627de6dc2b6049d780e11c7b53f5c1706b71adcf8ae73b'
             'SKIP'
-            'ca1fe1b2bea9c862ba9b2422e47dcae37b2fbd5f97b2fbd9fe8ff303e0126752'
+            'f22c5b017974f25098e9d26ce59a96b865a3439eb74bbda8066414434f508f1c'
             'a38d6e7a727b6b5853068844791df5c5eb1b4b3a77ae7d53a9b6d291c2e53ea3'
             'c648ff21f0a5714743bbae85d6c6e1ed2bf961b6bca976d4c6b4c8d3f6b2739f')
 b2sums=('ae7214087a29d81c77b2351a4781ad248726f2e7b0a8ddb75790fd64825032d94ddb9526e979f0a41eb4b4da0bf76c63b1681e915c90f1706de7df0980c249f9'
         'SKIP'
-        '26202ba5c3155fb045550a349c5f2d43b79848383bfc2052ba22157350327c1e4b8fd347adbe4f978820f26c49d078bdd438d3cf15ed6d8f6c304926dc086200'
+        'de929b694b650de4a401b9fdc1cc938250c71fb02325962b3353a84efb84886e416ebd67b39a17ae49fb99f93f5aeb3d54611bc5fbe9861db8f30a96f246dcb9'
         'SKIP'
-        '9644c05ccef1e7d251462cb5b0b8579e39e892f72b1ec390a030fc9b36d5a2888adb3442b6e1700ff4ca0c983921230822b75f243a7e5db082a2140297d6da83'
+        '78425324d46c41a190686f7aaeebee2c4bf96fe384ba1d1c60c67c40a05f25b89ff16484a9d4adc69ef0bffa1c50443f67278e4081723de410aceacab8af2645'
         '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
 
