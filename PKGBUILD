@@ -3,8 +3,8 @@
 # Contributor: Oirio Joshi <joshirio@protonmail.com>
 
 pkgname=megacmd-bin
-pkgver=2.5.1
-pkgrel=2
+pkgver=2.5.2
+pkgrel=1
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 arch=('x86_64')
 url="http://mega.nz/cmd"
@@ -16,9 +16,9 @@ conflicts=('megacmd' 'ffmpeg-mega')
 source=('LICENSE'
 		"https://mega.nz/linux/repo/Arch_Extra/x86_64//megacmd-$pkgver-1-x86_64.pkg.tar.zst"
 		"https://mega.nz/linux/repo/Arch_Extra/x86_64//megacmd-$pkgver-1-x86_64.pkg.tar.zst.sig")
-sha256sums=('772d38729ab816eb94dbe30de277ffcc5af4e5d2c451cf7c071031ebe78f44ea'
-			'ef595ad5ee5a8806ce4f684e0710bf8f3a1c9c74d215f2b46f784e1ab39267f8'
-			'SKIP')
+sha256sums=('SKIP'
+			'4375fd48f5304e38249b71c3779a05812494748fc1f97cec28adceb993f30753'
+			'be2ac696468393c93736176c4a55fc343208e66ac6e2a36a80e3f1bf548d5919')
 validpgpkeys=('B01C811880480C854C73EC7E1A664B787094A482')
 
 package() {
