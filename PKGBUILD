@@ -7,10 +7,10 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=rofi-git
-pkgver=2.0.0.r47.g89c768c1
+pkgver=2.0.0.r54.gc3bfdaf9
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/DaveDavenport/rofi/'
 license=('MIT')
 depends=(
