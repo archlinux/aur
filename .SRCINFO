@@ -1,6 +1,6 @@
 pkgbase = mingo-bin
 	pkgdesc = A proprietary MongoDB GUI based on electron from developers for developers
-	pkgver = 2026.2.0
+	pkgver = 2026.5.0
 	pkgrel = 1
 	url = https://mingo.io
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = mingo-bin
 	license = LicenseRef-custom
 	depends = electron39
 	depends = libsecret
-	provides = mingo=2026.2.0
+	provides = mingo=2026.5.0
 	conflicts = mingo
-	source = LICENSE-2026.2.0.html::https://mingo.io/eula
+	source = LICENSE-2026.5.0.html::https://mingo.io/eula
 	source = mingo.sh
-	sha256sums = fb76afe53bd87a53ccb346bdb6db5a6b2b7e0629455a0ca52e68b34e4097d343
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = mingo-2026.2.0-aarch64.deb::https://github.com/mingo-app/mingo/releases/download/v2026.2.0/mingo_2026.2.0_arm64.deb
-	sha256sums_aarch64 = 1d49489587138c1d164a9a770b0614c945e2a3945363feda06098db5fc77f185
-	source_x86_64 = mingo-2026.2.0-x86_64.deb::https://github.com/mingo-app/mingo/releases/download/v2026.2.0/mingo_2026.2.0_amd64.deb
-	sha256sums_x86_64 = fc277b18dc1880d74d354f277135041110d4de5b9a1aacbac9650371b7147c63
+	sha256sums = 37b79fef99909ab6f39cac8ae6926dc5cbab886629b498efe123919a4d528511
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = mingo-2026.5.0-aarch64.deb::https://github.com/mingo-app/mingo/releases/download/v2026.5.0/mingo_2026.5.0_arm64.deb
+	sha256sums_aarch64 = f2c203aa8d3d1461e0c487f48351bacf5de3eac29967dc6bf07db25622a47aef
+	source_x86_64 = mingo-2026.5.0-x86_64.deb::https://github.com/mingo-app/mingo/releases/download/v2026.5.0/mingo_2026.5.0_amd64.deb
+	sha256sums_x86_64 = c4a7544eea2036c99ae7516be54790581ffd50f927c375b8b4585f513759b5cf
 
 pkgname = mingo-bin
