@@ -1,5 +1,5 @@
 pkgname=lapifetch
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Simple bunny-themed Linux fetch utility"
 arch=('x86_64')
