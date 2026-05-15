@@ -1,0 +1,24 @@
+pkgbase = perl-complete-file
+	pkgdesc = Completion routines related to files
+	pkgver = 0.443
+	pkgrel = 1
+	url = https://metacpan.org/dist/Complete-File
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-file-chdir
+	checkdepends = perl-file-temp>=0.2307
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-complete-common>=0.22
+	depends = perl-complete-path>=0.251
+	depends = perl-complete-util>=0.608
+	depends = perl-encode
+	depends = perl-exporter>=5.57
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Complete-File-0.443.tar.gz
+	sha256sums = 4a392ad3b5802c076edb0e07769f52f8a394d6718ebbd8a3f49997866f197304
+
+pkgname = perl-complete-file
