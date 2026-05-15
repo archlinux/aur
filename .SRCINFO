@@ -1,0 +1,19 @@
+pkgbase = perl-crypt-password-util
+	pkgdesc = Crypt password utilities
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://metacpan.org/dist/Crypt-Password-Util
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-sort-versions
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-bytes-random-secure
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Crypt-Password-Util-0.17.tar.gz
+	sha256sums = 3e9e595c5aae9769e18a7757f257874e0ed8fab451953a27c8ffe95c6d214667
+
+pkgname = perl-crypt-password-util

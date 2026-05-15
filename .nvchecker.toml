@@ -1,0 +1,3 @@
+[perl-crypt-password-util]
+source = "cpan"
+cpan = "Crypt-Password-Util"
