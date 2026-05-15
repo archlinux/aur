@@ -1,7 +1,7 @@
 # Maintainer: Tiver211 <tiver@tiver212.ru>
 
 pkgname=yandex-music-bin
-pkgver=5.101.2
+pkgver=5.102.0
 pkgrel=1
 pkgdesc="Official Yandex Music desktop app repackaged from the Debian package"
 arch=('x86_64')
@@ -36,7 +36,7 @@ conflicts=(
   'yandex-music-windows'
 )
 
-sha256sums=('a002b341f49031191b4a57fe566e936385b89932ca53e853d72417a6ec760eae')
+sha256sums=('9e751a3589e2042456061c4cb942cd9942b4891095f5dbae49d24b3d8c2f8253')
 
 package() {
   bsdtar -xf "${srcdir}/Yandex_Music_amd64_${pkgver}.deb" -C "$srcdir"
@@ -49,8 +49,8 @@ package() {
   chmod 4755 "$pkgdir/opt/Яндекс Музыка/chrome-sandbox"
 
   install -Dm644 "$pkgdir/opt/Яндекс Музыка/LICENSE.electron.txt" \
-  "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
 
   install -Dm644 "$pkgdir/opt/Яндекс Музыка/LICENSES.chromium.html" \
-  "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
