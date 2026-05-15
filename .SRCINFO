@@ -1,0 +1,28 @@
+pkgbase = perl-mojo-useragent-cached
+	pkgdesc = Caching, Non-blocking I/O HTTP, Local file and WebSocket user agent
+	pkgver = 1.25
+	pkgrel = 1
+	url = https://metacpan.org/dist/Mojo-UserAgent-Cached
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-io-compress
+	makedepends = perl-module-install
+	makedepends = perl-test-simple
+	depends = perl-algorithm-lcss
+	depends = perl-chi
+	depends = perl-data-serializer
+	depends = perl-devel-stacktrace
+	depends = perl-file-path
+	depends = perl-mojolicious>=8.72
+	depends = perl-pathtools
+	depends = perl-readonly
+	depends = perl-scalar-list-utils>=1.29
+	depends = perl-string-truncate
+	depends = perl-time-hires
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/N/NI/NICOMEN/Mojo-UserAgent-Cached-1.25.tar.gz
+	sha256sums = 9599a29138eafd928f585ee30ef166d23ff1dc52a4067e74872c51e16dec864a
+
+pkgname = perl-mojo-useragent-cached

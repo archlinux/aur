@@ -1,0 +1,3 @@
+[perl-mojo-useragent-cached]
+source = "cpan"
+cpan = "Mojo-UserAgent-Cached"
