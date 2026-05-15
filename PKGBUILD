@@ -1,36 +1,39 @@
-# Maintainer: Jeff Dickey <releases at mise dot jdx dot dev>
-
+# Maintainer: czyt <czytcn@gmail.com>
 pkgname=mise-bin
-pkgver=2025.2.7
+pkgver=2026.5.9
 pkgrel=1
-pkgdesc='The front-end to your dev env'
-arch=('x86_64')
-url='https://github.com/jdx/mise'
+pkgdesc="dev tools, env vars, task runner"
+arch=('x86_64' 'aarch64')
+url="https://github.com/jdx/mise"
 license=('MIT')
+depends=('glibc')
+optdepends=(
+    'bash-completion: bash completion support'
+    'usage: completion support'
+)
 provides=('mise')
-conflicts=('mise' 'rtx-bin' 'rtx')
-replaces=('rtx-bin')
-options=('!lto')
-source=("mise-$pkgver.tar.gz::https://github.com/jdx/mise/releases/download/v$pkgver/mise-v$pkgver-linux-x64.tar.gz")
-sha512sums=('e5bec6bbcd2c94f5811bbda060bbab28057a83e758048a0c5f13637947311727b8c4332b81c45e8d35e9beff42a2d83ce9bd951d46eeaf216fa26feb157f7530')
-optdepends=('usage-bin: completion support')
-
-build() {
-  cd "$srcdir/"
-  mise/bin/mise completions bash > mise.bash
-  mise/bin/mise completions fish > mise.fish
-  mise/bin/mise completions zsh > _mise
-}
+conflicts=('mise' 'rtx')
+replaces=('rtx')
+source_x86_64=("https://github.com/jdx/mise/releases/download/v${pkgver}/mise-v${pkgver}-linux-x64-musl.tar.xz")
+source_aarch64=("https://github.com/jdx/mise/releases/download/v${pkgver}/mise-v${pkgver}-linux-arm64-musl.tar.xz")
+sha256sums_x86_64=('677f2631fa618b2c91c5c03d24336ad5dff4ec0075e917d467b5e57afd00464a')
+sha256sums_aarch64=('1e9a2f17f55dbe70c1106e324d8767a96e533559ccf583520c90f49082af89b8')
 
 package() {
-  cd "$srcdir/"
-  install -Dm755 mise/bin/mise "$pkgdir/usr/bin/mise"
-  install -Dm644 mise/man/man1/mise.1 "$pkgdir/usr/share/man/man1/mise.1"
-  install -Dm644 mise.bash "$pkgdir/usr/share/bash-completion/completions/mise"
-  install -Dm644 mise.fish "$pkgdir/usr/share/fish/vendor_completions.d/mise.fish"
-  install -Dm644 _mise "$pkgdir/usr/share/zsh/site-functions/_mise"
-}
+    install -Dm755 "${srcdir}/mise/bin/mise" "${pkgdir}/usr/bin/mise"
 
-check() {
-    "$srcdir/mise/bin/mise" --version
+    # disable mise self-update (managed by pacman)
+    install -Dm644 /dev/null "${pkgdir}/usr/lib/mise/.disable-self-update"
+
+    # man page
+    install -Dm644 "${srcdir}/mise/man/man1/mise.1" "${pkgdir}/usr/share/man/man1/mise.1"
+
+    # fish completion (bash/zsh not included in pre-built tarball)
+    install -Dm644 "${srcdir}/mise/share/fish/vendor_conf.d/mise-activate.fish" "${pkgdir}/usr/share/fish/vendor_conf.d/mise-activate.fish"
+
+    # license
+    install -Dm644 "${srcdir}/mise/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # docs
+    install -Dm644 "${srcdir}/mise/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
