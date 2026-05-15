@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-EnvironmentFile=%h/.config/signal-api.env
+EnvironmentFile=%h/.config/systemd/user/signal-api.env
 ExecStart=/usr/bin/signal-cli-rest-api
 Restart=on-failure
 RestartSec=5s
