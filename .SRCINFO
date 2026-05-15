@@ -1,0 +1,19 @@
+pkgbase = dwproton-launcher
+	pkgdesc = Add a command line launcher and mimetype association for launching standalone games directly with dwproton
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/dwproton-launcher
+	arch = any
+	license = MIT
+	makedepends = imagemagick
+	depends = dwproton
+	depends = hicolor-icon-theme
+	depends = bash
+	source = dwproton.sh
+	source = dwproton.desktop
+	source = dwproton.svg
+	sha256sums = 8791252fa14bcc80b2902a44d064dc8afd0ba231728fa81bd59b62c8805f885f
+	sha256sums = a49b2866ba5b3024d4fa424f4c20c05ddd391138d1afde02497ebe9409e88ae2
+	sha256sums = 91e994eaa1a81ca54ec85c2ed4b6c89509e04fe3b37371327f86952f60a8f6c3
+
+pkgname = dwproton-launcher
