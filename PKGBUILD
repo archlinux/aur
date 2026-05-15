@@ -1,6 +1,6 @@
 # Maintainer: Seann Moser <you@example.com>
 pkgname=ymn-git
-pkgver=0.1.3.r0.gb50f666
+pkgver=0.1.4.r0.g345594a
 pkgrel=1
 pkgdesc="Yomuna visual novel transcript and flashcard tool"
 arch=('x86_64')
