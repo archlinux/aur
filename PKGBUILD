@@ -10,9 +10,9 @@ license=('AGPL-3.0')
 options=('!strip' '!debug')
 provides=('orca-bambustudio')
 conflicts=('orca-bambustudio' 'orca-bambustudio-git' 'orca-bambustudio-bin')
-depends=('webkit2gtk-4.1')
+depends=('libwebp' 'webkit2gtk-4.1')
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/FULU-Foundation/OrcaSlicer-bambulab/releases/download/v${pkgver}/OrcaSlicer-BMCU_Linux_AppImage_ubuntu24.04_amd64_${pkgver}.AppImage" "Orca-BambuStudio.desktop")
-sha256sums=('fb948fc235c12916fddca8eddf44678ca86c936a4b14acc70d75c2bd22067994' 'eb558bedc097fb2b157af351f0ef528dd2266f7533cd75df942015c7d407a345')
+sha256sums=('fb948fc235c12916fddca8eddf44678ca86c936a4b14acc70d75c2bd22067994' '519676c63a2ba93e5fbadb8a899dbf7b55c6ba769ecb9c652b7deeacfa47418f')
 
 package() {
 

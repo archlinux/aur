@@ -5,6 +5,7 @@ pkgbase = orca-bambustudio-appimage
 	url = https://github.com/FULU-Foundation/OrcaSlicer-bambulab
 	arch = x86_64
 	license = AGPL-3.0
+	depends = libwebp
 	depends = webkit2gtk-4.1
 	provides = orca-bambustudio
 	conflicts = orca-bambustudio
