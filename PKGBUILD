@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cadvisor"
-pkgver=0.56.2
+pkgver=0.57.0
 pkgrel=1
 pkgdesc="Analyzes resource usage and performance characteristics of running containers"
 arch=(
@@ -28,7 +28,7 @@ source=(
   "${pkgname}.conf"
   "${pkgname}.service"
 )
-sha256sums=('d67b83db4af5e5c8d4b730f20dd507e2d859ddb8f9e831d0e4509cac9175389d'
+sha256sums=('c7d615e972f746e6b3ec8c22af89ce153b694e2cfb455df4efc30c8fd0a713dd'
             '785c5ad59f9cf5215afaba911a622dd09cc61749d17d8e46b449ccdece2a9787'
             'e6d6e399d0909a7aeb86b4beab52b8895760b740cf26d55f8b87003cb06b5f9b')
 
@@ -37,8 +37,7 @@ prepare() {
 
   cd "${srcdir}/${_pkgsrc}/cmd"
   go mod download -modcacherw -x
-
-  mkdir -p "build"
+  go mod verify
 }
 
 build() {
@@ -68,12 +67,11 @@ check() {
 
 package() {
   cd "${srcdir}"
-  install -vDm644 "${pkgname}.conf"    "${pkgdir}/etc/conf.d/${pkgname}"
-  install -vDm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -vDm644 "${pkgname}.conf" "${pkgdir}/etc/conf.d/${pkgname}"
+  install -vDm644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
 
   cd "${_pkgsrc}"
-  install -vDm755 "cmd/build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "cmd/build/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -vDm644 "CHANGELOG.md" "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
