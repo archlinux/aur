@@ -2,7 +2,7 @@
 _pkgname=slopsmith-desktop
 pkgname=slopsmith-desktop-git
 pkgver=r96.c1ea45e
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone desktop app for Slopsmith with VST/NAM support and Audio I/O"
 arch=('x86_64')
 url="https://github.com/byrongamatos/slopsmith-desktop"
@@ -24,7 +24,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/slopsmith"
   sed -i 's|\.\./\.\./src|\.\./\.\./Rocksmith2014.NET/src|g' rscli/*.fsproj 2>/dev/null || true
-  sed -i 's|\.\.\\\.\.\\src|\.\.\\\.\.\\Rocksmith2014.NET\\src|g' rscli/*.fsproj 2>/dev/null || true
 
   cd "$srcdir/$_pkgname"
   git submodule update --init --recursive
@@ -32,23 +31,27 @@ prepare() {
 }
 
 build() {
+  # 1. Compilar RsCli
   cd "$srcdir/slopsmith/rscli"
+  msg2 "A compilar o motor F# (RsCli)..."
   dotnet publish -c Release --self-contained -r linux-x64 -o ../dist/rscli
 
+  # 2. Estruturar Resources
   cd "$srcdir/$_pkgname"
-  msg2 "A baixar bibliotecas Python (Vendor)..."
-  mkdir -p build-python-libs
-  python -m pip install --target="build-python-libs" -r "$srcdir/slopsmith/requirements.txt"
+  msg2 "A organizar recursos para o Electron..."
+  mkdir -p resources/python/bin resources/python/site-packages resources/bin/rscli
 
-  msg2 "A estruturar a pasta resources para o Electron Builder..."
-  mkdir -p resources/python/bin
-  mkdir -p resources/python/site-packages
-  mkdir -p resources/bin
+  # Injetar o RsCli na pasta bin/rscli (onde o erro ocorreu)
+  cp -r "$srcdir/slopsmith/dist/rscli/"* resources/bin/rscli/
 
+  # Injetar o backend Python
   cp -r "$srcdir/slopsmith" resources/slopsmith
+
+  # Bibliotecas Python (Vendor)
+  python -m pip install --target="build-python-libs" -r "$srcdir/slopsmith/requirements.txt"
   cp -r build-python-libs/* resources/python/site-packages/
 
-  # O Shim do Python com o PYTHONHOME definido e PYTHONPATH expandido com lib e src
+  # Shim do Python
   cat <<'EOF' > resources/python/bin/python3
 #!/bin/sh
 export PYTHONHOME=/usr
@@ -57,15 +60,14 @@ exec /usr/bin/python3 "$@"
 EOF
   chmod +x resources/python/bin/python3
 
+  # Ferramentas de sistema
   ln -sf /usr/bin/ffmpeg resources/bin/ffmpeg
   ln -sf /usr/bin/ffprobe resources/bin/ffprobe
   ln -sf /usr/bin/vgmstream-cli resources/bin/vgmstream-cli
 
-  msg2 "A compilar Audio Engine (C++) e TypeScript..."
+  msg2 "A compilar Audio Engine e Interface..."
   npm run build:audio
   npm run build:ts
-
-  msg2 "A empacotar Electron App..."
   npx electron-builder --linux dir
 }
 
@@ -73,7 +75,6 @@ package() {
   cd "$srcdir/$_pkgname"
   _installdir="$pkgdir/opt/$_pkgname"
   install -d "$_installdir"
-
   cp -r release/linux-unpacked/* "$_installdir/"
 
   install -d "$pkgdir/usr/bin"
@@ -93,9 +94,9 @@ Categories=AudioVideo;Audio;Music;
 EOF
 
   _icon=$(find . -type f \( -name "icon.png" -o -path "*/icons/512x512.png" \) | head -n 1)
-  if [ -n "$_icon" ]; then
-    install -Dm644 "$_icon" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
-  fi
+  [ -n "$_icon" ] && install -Dm644 "$_icon" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 
   chmod +x "$_installdir/slopsmith-desktop"
+  # Garante que o RsCli seja executável dentro do pacote
+  chmod +x "$_installdir/resources/bin/rscli/RsCli"
 }

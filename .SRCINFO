@@ -1,7 +1,7 @@
 pkgbase = slopsmith-desktop-git
 	pkgdesc = Standalone desktop app for Slopsmith with VST/NAM support and Audio I/O
 	pkgver = r96.c1ea45e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/byrongamatos/slopsmith-desktop
 	arch = x86_64
 	license = AGPL3
