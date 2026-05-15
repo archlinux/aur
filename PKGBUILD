@@ -1,6 +1,6 @@
 pkgname=hpe-scripting-toolkit
 pkgver=11.60
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tools for scripting HP ProLiant BIOS configuration"
 arch=(x86_64)
 url='https://downloads.linux.hpe.com/SDR/project/stk/'
@@ -19,8 +19,10 @@ provides=(hp-scripting-tools=$pkgver)
 
 # Debian/Ubuntu/RedHat packages published at:
 #   https://downloads.linux.hpe.com/SDR/project/stk/
-source=("https://downloads.linux.hpe.com/SDR/repo/stk/debian/pool/non-free/hp-scripting-tools_11.60-20_amd64.deb")
-sha256sums=('db7104997c3f07fbdf834a85b1a431db5e15358f356067c02807c7866df5159c')
+source=("https://downloads.linux.hpe.com/SDR/repo/stk/debian/pool/non-free/hp-scripting-tools_11.60-20_amd64.deb"
+	"https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1472592088/v95853/conrep_rmrds.xml")
+sha256sums=('db7104997c3f07fbdf834a85b1a431db5e15358f356067c02807c7866df5159c'
+            '1d4c6198ba6515cc6596e38bd13e6b53ecc2e6d4f4b11914185d203b435ca2fd')
 
 prepare() {
 	mkdir -p $pkgname-$pkgver
@@ -40,4 +42,6 @@ package() {
 		*)	mv -v "$x" "$pkgdir"/usr/bin/hp-"${x##*/}";;
 		esac
 	done
+	# Add extra file
+	cp -av conrep_rmrds.xml "$pkgdir"/opt/hp/hp-scripting-tools/etc/
 }
