@@ -5,7 +5,7 @@ pkgrel=3
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://git.sr.ht/~shulhan/rescached"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 
 depends=('glibc')
 makedepends=('git' 'go>=1.20')
