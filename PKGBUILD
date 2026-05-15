@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Mayrink <vncsmyrnk@gmail.com>
 pkgname=shell-utils-git
-pkgver=r272.9be78a3 # This gets auto-updated by the pkgver() function
+pkgver=r273.fd5a75e # This gets auto-updated by the pkgver() function
 pkgrel=1
 pkgdesc="An attempt to be a shell-agnostic custom utilities tool."
 arch=('x86_64')
@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd "${pkgname%-git}" || return
-  make install PREFIX="$pkgdir/usr" DESTDIR=""
+  make install PREFIX="/usr" DESTDIR="$pkgdir"
 }
