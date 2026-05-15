@@ -1,0 +1,15 @@
+pkgbase = sakura-lslc
+	pkgdesc = LSL (Linden Scripting Language) compiler — part of the Sakura LSL toolchain
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Sakura-Studios-IKE/sakura-lslc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = sakura-lslc-1.0.0.tar.gz::https://github.com/Sakura-Studios-IKE/sakura-lslc/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sakura-lslc
