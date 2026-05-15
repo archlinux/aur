@@ -1,6 +1,6 @@
 [Unit]
 Description=PDS Gatekeeper - 2FA microservice for self-hosted AT Protocol PDSes
-Documentation=https://tangled.org/baileytownsend.dev/pds-gatekeeper
+Documentation=https://tangled.org/did:plc:rnpkyqnmsw4ipey6eotbdnnf/pds-gatekeeper
 Requires=pds.service
 After=pds.service
 

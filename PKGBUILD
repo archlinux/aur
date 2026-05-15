@@ -1,11 +1,11 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 
 pkgname=pds-gatekeeper-git
-pkgver=r18.2e39f1e
-pkgrel=11
+pkgver=r27.9605d15
+pkgrel=1
 pkgdesc="Microservice to bring 2FA to self hosted AT Protocol PDSes"
 arch=('x86_64')
-url="https://tangled.org/baileytownsend.dev/pds-gatekeeper"
+url="https://tangled.org/did:plc:rnpkyqnmsw4ipey6eotbdnnf/pds-gatekeeper"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'atproto-pds')
 makedepends=('cargo' 'git')
@@ -13,12 +13,12 @@ options=('!lto') # LTO causes build failures for sqlx
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}")
 backup=('etc/pds-gatekeeper.env')
-source=("git+https://tangled.org/baileytownsend.dev/pds-gatekeeper.git"
+source=("git+https://tangled.org/did:plc:rnpkyqnmsw4ipey6eotbdnnf/pds-gatekeeper.git"
         'pds-gatekeeper.service'
         'pds-gatekeeper.tmpfiles'
         'pds-gatekeeper.env')
 b2sums=('SKIP'
-        '588b52a264f8692d548f04ea0c142efc5453c6b9f15288ec0c66bdaadb2fd76af5a23ee5693f1dc8816006d304fe8cedf20405df5b53c0e384a4f74855cc3f8c'
+        'bc74db9db2f67fe1f2be78d39d1a6ff3cb3839036945648ec0fc3d85a015d1650086d053830199f1bd4df8257a466142771a213becf11eaadf1bd0424098ccb9'
         'b115bacdf53f3e21976d61972347316f671742efee9b88e121690579998c0b3ec5db313640f61dca735618151f0e3db6c2f62fa1291430dd6d88d3f6d8b204dc'
         'cf188c11ab976a7a54f77eab17cac6206ac95779429e227a44358249b33375e6e0e7f07bdbeb1f2579ce7f1120cc5158eb0e0dae8a82ed3167706dc86e4cea17')
 
