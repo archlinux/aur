@@ -1,5 +1,17 @@
 post_install() {
  local pkgname="hermes-agent"
+ # Auto-configure browser executable path if system Chrome/Chromium exists
+ local env_file="${HERMES_HOME:-$HOME/.hermes}/.env"
+ if [ -f "$env_file" ] && ! grep -q '^AGENT_BROWSER_EXECUTABLE_PATH=' "$env_file" 2>/dev/null; then
+   local browser_path=""
+   for candidate in google-chrome google-chrome-stable chromium chromium-browser chrome; do
+     browser_path="$(command -v "$candidate" 2>/dev/null)" && break
+   done
+   if [ -n "$browser_path" ]; then
+     printf '\n# Hermes Agent browser tools — use the system Chrome/Chromium binary.\nAGENT_BROWSER_EXECUTABLE_PATH=%s\n' "$browser_path" >> "$env_file"
+     echo "==> Configured browser tools to use $browser_path"
+   fi
+ fi
  echo "==> Hermes Agent has been installed."
  echo "==> To get started, run:"
  echo " mkdir -p ~/.hermes/{cron,sessions,logs,memories,skills,pairing,hooks,image_cache,audio_cache,whatsapp/session}"

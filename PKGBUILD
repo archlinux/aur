@@ -3,7 +3,7 @@
 # Contributor: Evert <evorster at gmail dot com>
 _pkgname=hermes-agent
 pkgname=${_pkgname}-git
-pkgver=2026.5.7.r576.g6122a7
+pkgver=2026.5.7.r747.g13c72f
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -108,17 +108,18 @@ package() {
     cp -a ui-tui/dist/* "$_optdir/venv/lib/${_py_ver}/site-packages/ui-tui/dist/"
   fi
 
-  # NOTE: hermes-agent/package.json exists (for browser tools @askjo/camofox-browser,
-  # agent-browser) but we intentionally do NOT copy the resulting node_modules/ to
-  # $_optdir because:
-  #   1. Native modules (better-sqlite3 etc.) embed $srcdir absolute paths in
-  #      their build artefacts, triggering makepkg's $srcdir reference warning
-  #   2. They are invoked via subprocess at runtime and are not required at
-  #      /opt/hermes-agent/node_modules/ — hermes-agent's Python code does not
-  #      import them directly
-  #   3. Shipping them would add ~100 MB of unnecessary packages
-  # If browser tools are needed at runtime: cd /opt/hermes-agent && npm install
-  :
+  # Install browser tool dependencies directly at the package path.
+  # Building here avoids $srcdir references in native modules (better-sqlite3).
+  cp package.json "$_optdir/"
+  [ -f package-lock.json ] && cp package-lock.json "$_optdir/"
+  echo "==> Installing browser tool dependencies..."
+  (cd "$_optdir" && npm install --omit=dev)
+  # Remove build artifacts that embed $pkgdir paths — only the compiled
+  # .node binaries are needed at runtime, not config.gypi / Makefile / .deps.
+  find "$_optdir/node_modules" -path '*/build/Makefile' -delete 2>/dev/null || true
+  find "$_optdir/node_modules" -path '*/build/config.gypi' -delete 2>/dev/null || true
+  find "$_optdir/node_modules" -path '*/build/Release/.deps' -exec rm -rf {} + 2>/dev/null || true
+  find "$_optdir/node_modules" -path '*/build/Release/obj.target' -exec rm -rf {} + 2>/dev/null || true
 
   # Install optional submodule if present
   if [ -d "tinker-atropos" ]; then
