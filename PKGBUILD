@@ -32,9 +32,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	# cow-shell fails to compile if linker is called with '--as-needed'
-	# therefore we strip that flag from LDFLAGS from makepkg.conf
-	export LDFLAGS=$(echo $LDFLAGS | sed 's/,--as-needed//g')
 	autoreconf --install
 	./configure --prefix=/usr --sbindir=/usr/bin
 	make
