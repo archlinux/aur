@@ -1,6 +1,6 @@
 # Maintainer: Xuruh <xuruh@fluxer.world>
 pkgname=fluxer-world-bin
-pkgver=1.0.78
+pkgver=1.0.79
 pkgrel=1
 pkgdesc="Fluxer World desktop client — open-source chat, voice, and community platform"
 arch=('x86_64')
@@ -11,12 +11,14 @@ optdepends=(
     'libappindicator-gtk3: system tray support'
     'xdg-utils: protocol handler registration'
     'vulkan-driver: improved GPU rendering on Wayland'
+    'speech-dispatcher: text-to-speech playback (/tts messages)'
+    'espeak-ng: speech engine for speech-dispatcher'
 )
 provides=('fluxer-world')
 conflicts=('fluxer-world')
 options=('!strip' '!debug')
 source=("fluxer-world-${pkgver}-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v${pkgver}/Fluxer-World-${pkgver}-linux-x64.tar.gz")
-sha256sums=('6554d56526b0f036515658719e5dab2049d66e631838e07a35ed5d8343a14000')
+sha256sums=('765011521cf6e027c2ab38e63a237f41d8e7c7e69fc2540bcee884f6f036a39c')
 
 package() {
     # Install app files (tar.gz extracts to "Fluxer-World-${pkgver}-linux-x64/")
