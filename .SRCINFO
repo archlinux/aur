@@ -1,6 +1,6 @@
 pkgbase = fff-mcp-bin
 	pkgdesc = High-performance file finder MCP server for AI code assistants
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/dmtrKovalenko/fff.nvim
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = fff-mcp-bin
 	provides = fff-mcp
 	conflicts = fff-mcp
 	options = !debug
-	source = LICENSE-0.7.2::https://raw.githubusercontent.com/dmtrKovalenko/fff.nvim/v0.7.2/LICENSE
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/dmtrKovalenko/fff.nvim/v0.8.0/LICENSE
 	sha256sums = f8264de82db188834a5711d7e348dc08c33db14f79bb587ccb42616fd694ee81
-	source_x86_64 = fff-mcp-bin-0.7.2-x86_64::https://github.com/dmtrKovalenko/fff.nvim/releases/download/v0.7.2/fff-mcp-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 483228bbc4ec63b7ab72dc9b4c6d8e9686b8bdca94f72ee1dce4a30f21f403f5
-	source_aarch64 = fff-mcp-bin-0.7.2-aarch64::https://github.com/dmtrKovalenko/fff.nvim/releases/download/v0.7.2/fff-mcp-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = ac56d0ca8d1f001c237e11835d434b07d55faff926110d36cf73b176e040517d
+	source_x86_64 = fff-mcp-bin-0.8.0-x86_64::https://github.com/dmtrKovalenko/fff.nvim/releases/download/v0.8.0/fff-mcp-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 1ab3c54339fa969f2d71a047fe3b1c7a687c60dd9c7a6a95b7163045d6e12a12
+	source_aarch64 = fff-mcp-bin-0.8.0-aarch64::https://github.com/dmtrKovalenko/fff.nvim/releases/download/v0.8.0/fff-mcp-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 01a6ce7c2532f3c4bbe5bfa8bf69cd897d3643806fde420cba64d8704163725c
 
 pkgname = fff-mcp-bin
