@@ -2,7 +2,7 @@
 # Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches"
 arch=('x86_64')
@@ -122,6 +122,12 @@ package() {
     "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets/dotnetprobe" 2>/dev/null || true
 
   chmod 4755 "$pkgdir/opt/Vortex/chrome-sandbox" 2>/dev/null || true
+
+  msg2 "Patching bundled plugins — remove unavailable extension dependency..."
+  local _bp="$pkgdir/opt/Vortex/resources/app.asar.unpacked/bundledPlugins"
+  sed -i 's/context\.requireExtension("gamebryo-plugin-management");//g' \
+    "$_bp/gamebryo-plugin-indexlock/index.cjs" \
+    "$_bp/gamebryo-archive-check/index.cjs"
 
   msg2 "Applying Linux compatibility patches to app.asar..."
   export _VORTEX_ASAR="$pkgdir/opt/Vortex/resources/app.asar"
