@@ -1,0 +1,24 @@
+pkgbase = facegate-bin
+	pkgdesc = Native facial authentication for Linux PAM (upstream binary release)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/me02329/facegate
+	install = facegate.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = onnxruntime
+	depends = v4l-utils
+	depends = systemd
+	optdepends = bash-completion: shell completions
+	optdepends = zsh-completions: shell completions
+	provides = facegate=0.3.1
+	conflicts = facegate
+	conflicts = facegate-git
+	options = !debug
+	options = !strip
+	source = facegate_0.3.1_amd64.deb::https://github.com/me02329/facegate/releases/download/v0.3.1/facegate_0.3.1_amd64.deb
+	source = checksums.sha256-v0.3.1::https://github.com/me02329/facegate/releases/download/v0.3.1/checksums.sha256
+	sha256sums = 16be0bd3e002c1873a658399b73e113dea487b974b9638faf5ca88065664d3bd
+	sha256sums = eac5315f644056863d8d56664ea6f6963afa241b53b67f465eb7e2f7d3a56656
+
+pkgname = facegate-bin

@@ -1,0 +1,58 @@
+## arg 1:  the new package version
+post_install() {
+    # System user/group — broker runs as 'facegate', templates owned by it.
+    getent group facegate >/dev/null 2>&1 || groupadd --system facegate
+    if ! getent passwd facegate >/dev/null 2>&1; then
+        useradd --system --no-create-home --home-dir /var/lib/facegate \
+                --gid facegate --shell /usr/bin/nologin facegate
+    fi
+
+    install -d -m 0755 -o root     -g root     /etc/facegate /usr/share/facegate/models
+    install -d -m 0700 -o facegate -g facegate /var/lib/facegate
+
+    if [ ! -e /var/lib/facegate/audit.log ]; then
+        install -m 0600 -o facegate -g facegate /dev/null /var/lib/facegate/audit.log
+    fi
+
+    systemctl daemon-reload >/dev/null 2>&1 || true
+
+    cat <<MSG
+
+Facegate installed. Next steps:
+  sudo facegate doctor       # verify ONNX runtime + model presence
+  sudo facegate setup        # guided enrollment + PAM wiring
+  systemctl --user enable --now facegate-watch.service
+
+If 'facegate doctor' reports missing models, run:
+  sudo facegate models install
+to fetch SCRFD + ArcFace (~400 MB) from the InsightFace mirror.
+MSG
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    post_install "$1"
+    systemctl try-restart facegate-brokerd.service >/dev/null 2>&1 || true
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    systemctl disable --now facegate-brokerd.service >/dev/null 2>&1 || true
+}
+
+## arg 1:  the old package version
+post_remove() {
+    if getent passwd facegate >/dev/null 2>&1; then
+        userdel facegate >/dev/null 2>&1 || true
+    fi
+    if getent group facegate >/dev/null 2>&1; then
+        groupdel facegate >/dev/null 2>&1 || true
+    fi
+    cat <<MSG
+
+Facegate removed. Per-user templates remain under /var/lib/facegate/.
+Delete them with:
+  sudo rm -rf /var/lib/facegate
+MSG
+}
