@@ -1,0 +1,20 @@
+pkgbase = anitr-cli-git
+	pkgdesc = 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
+	pkgver = r0.main
+	pkgrel = 1
+	url = https://github.com/prayjofir/anitr-cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = mpv
+	optdepends = rofi: X11 kullanıcıları için GUI
+	optdepends = rofi-wayland: Wayland kullanıcıları için GUI
+	optdepends = yt-dlp: Anime indirme özelliği için
+	provides = anitr-cli
+	conflicts = anitr-cli
+	source = anitr-cli-git::git+https://github.com/prayjofir/anitr-cli.git
+	sha256sums = SKIP
+
+pkgname = anitr-cli-git
