@@ -1,0 +1,11 @@
+pkgbase = proart-px13
+	pkgdesc = ASUS ProArt PX13 (HN7306EA) hardware enablement — kernel + audio configs
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/proart-px13
+	arch = any
+	license = MIT
+	depends = linux-cachyos-px13
+	depends = px13-audio-fix
+
+pkgname = proart-px13
