@@ -2,13 +2,14 @@
 
 _pkgname=renovate
 pkgname="${_pkgname}-git"
-pkgver=43.179.3.r0.g79aa1cd
+pkgver=43.180.1.r1.gb4afbae
 pkgrel=1
 pkgdesc="Automated dependency updates (git-latest)"
 arch=('any')
 depends=('nodejs-lts-krypton')
 makedepends=('git' 'pnpm')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 url="https://github.com/renovatebot/renovate"
 license=('AGPL-3.0-only')
 source=("${pkgname}::git+${url}")
