@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-keygen
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="ed25519 key generation and inspection tool for moshpit"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=()
 makedepends=('cargo' 'cmake' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('4843aeb68893f132e3d0cd986b38dee00eb9537024f8eb8fe639ed013afbc541')
+sha256sums=('46d99b952ee2ca365a91d810a972b5fc6b32d4cb08ffd0c11d5a9507219f784b')
 
 prepare() {
     cd "moshpit-$pkgver"
