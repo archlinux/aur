@@ -1,7 +1,7 @@
 # Maintainer: Victor Ferreira
 
 pkgname=pencil-dev-bin
-pkgver=1.1.51
+pkgver=1.1.56
 pkgrel=1
 pkgdesc="Design on canvas. Land in code. Increases engineering speed by bringing designing directly into your IDE."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'libcups' 'lib
 source=("${pkgname}-${pkgver}.tar.gz::https://www.pencil.dev/download/Pencil-linux-x64.tar.gz"
         "pencil-dev.desktop"
         "pencil.png")
-sha256sums=('ae167b756eb4cdd24f813d7fe71af551e93098b6cde53129551e672c68e42da8'
+sha256sums=('219933964e4e0d0487f43acef90b5e897cdc3dcbf97b75e4b8258ea7c2f49afc'
             '73fda772f0429d82e5168ff8de68bfb9ed72ace660758354697f816ba0666a5f'
             '131ee5d9793ddaca67577727532493fb451a02e0903fc804b93d2142de16b331')
 
