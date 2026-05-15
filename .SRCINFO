@@ -11,6 +11,7 @@ pkgbase = howdy-next
 	makedepends = gettext
 	makedepends = opencv
 	makedepends = openssl
+	makedepends = nlohmann-json
 	depends = libinih
 	depends = libevdev
 	depends = pam
