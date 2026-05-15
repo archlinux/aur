@@ -1,0 +1,26 @@
+post_install() {
+    echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
+    echo ::\ Copy\ the\ example\ configuration\ before\ starting\ the\ service:
+    echo \ \ \ sudo\ install\ -Dm600\ /usr/share/doc/cpa-usage-keeper-bin/cpa-usage-keeper.env.example\ /etc/cpa-usage-keeper.env
+    echo \ \ \ sudoedit\ /etc/cpa-usage-keeper.env
+    echo ::\ CLIProxyAPI\ must\ publish\ usage\ events:\ set\ usage-statistics-enabled:\ true\ in\ CLIProxyAPI\ config.
+    echo ::\ Dashboard\ listens\ on\ APP_PORT\ from\ /etc/cpa-usage-keeper.env\,\ default\ 8080\ in\ the\ example.
+    echo ""
+    echo ":: Service Management"
+    echo "   > System Level:"
+    echo "     systemctl enable --now cpa-usage-keeper.service"
+}
+
+post_upgrade() {
+    echo ":: Service Management"
+    echo "   > System Level:"
+    echo "     systemctl daemon-reload"
+    echo "     systemctl restart cpa-usage-keeper.service"
+}
+
+post_remove() {
+    echo ":: Service Management"
+    echo "   > System Level:"
+    echo "     The service file has been removed. Stop the service if running:"
+    echo "     systemctl stop cpa-usage-keeper.service"
+}

@@ -1,0 +1,5 @@
+cpa-usage-keeper.env.example
+cpa-usage-keeper.service
+cpa-usage-keeper-bin.install
+PKGBUILD
+.SRCINFO

@@ -1,0 +1,24 @@
+pkgbase = cpa-usage-keeper-bin
+	pkgdesc = Standalone CLIProxyAPI usage persistence and dashboard service (Binary)
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/Willxup/cpa-usage-keeper
+	install = cpa-usage-keeper-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	optdepends = cli-proxy-api: local CLIProxyAPI backend
+	provides = cpa-usage-keeper
+	conflicts = cpa-usage-keeper
+	options = !strip
+	source = cpa-usage-keeper.env.example
+	source = cpa-usage-keeper.service
+	sha256sums = 696bbfc7c1009afd4bdc32551954fa3cc8500c8ed54625bb06f29db1a2ad9382
+	sha256sums = a945b4c3785867610b8cf9cf7a796f23f495b936b2d65932cace82c06129bab9
+	source_x86_64 = cpa-usage-keeper-bin-1.7.1-x86_64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.7.1/cpa-usage-keeper_v1.7.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4994b800850b23c9c9e127240ccb99651996fa63e1667e73b01d0ae080cd3c7e
+	source_aarch64 = cpa-usage-keeper-bin-1.7.1-aarch64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.7.1/cpa-usage-keeper_v1.7.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 79a9b40912859874d72499c63c1f726f3025d69f55ff8166329953e91aa714ce
+
+pkgname = cpa-usage-keeper-bin
