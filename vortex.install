@@ -1,0 +1,34 @@
+post_install() {
+  chmod 4755 '/opt/Vortex/chrome-sandbox' 2>/dev/null || true
+  update-desktop-database -q
+  update-mime-database /usr/share/mime
+
+  echo ""
+  echo "  ┌─────────────────────────────────────────────────────────┐"
+  echo "  │              vortex-linux-fix instalado                 │"
+  echo "  │                                                         │"
+  echo "  │  Proyecto original: Nexus-Mods/Vortex                  │"
+  echo "  │  github.com/Nexus-Mods/Vortex                          │"
+  echo "  │                                                         │"
+  echo "  │  Muchas gracias al equipo de Nexus Mods por            │"
+  echo "  │  desarrollar y publicar Vortex como software libre.    │"
+  echo "  │                                                         │"
+  echo "  │  Este paquete aplica parches de compatibilidad Linux   │"
+  echo "  │  no incluidos en el proyecto oficial.                  │"
+  echo "  │                                                         │"
+  echo "  │  Mantenido por k8rit0 <angelalvarezferrero@gmail.com>  │"
+  echo "  └─────────────────────────────────────────────────────────┘"
+  echo ""
+  echo ":: Para gestionar enlaces NXM ejecuta:"
+  echo "   xdg-mime default vortex.desktop x-scheme-handler/nxm"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  update-desktop-database -q
+  update-mime-database /usr/share/mime
+}
