@@ -1,4 +1,5 @@
 # Maintainer: k8rit0 <angelalvarezferrero@gmail.com>
+# Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
 pkgver=2.0.0
 pkgrel=1
