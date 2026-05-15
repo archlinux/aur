@@ -1,7 +1,7 @@
 # Maintainer: Lucas Rooyakkers <lucas.rooyakkers@pm.me>
 
 pkgname=aodv
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Userspace RFC 3561 ad hoc routing control-plane daemon"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT OR Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('d25aef1a5156e85433a9a2d321669eabfa476b9811682088f38aaa7fec23e421')
+sha256sums=('2777fdd833a0dc813140b02a918d15ab8cf800ea93e3232852d7d11f0fc98725')
 
 prepare() {
   cd "$pkgname-$pkgver"
