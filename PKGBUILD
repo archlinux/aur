@@ -3,7 +3,7 @@
 pkgname=eyebreak
 _hash=9d6df8784a5c11354036b0e81d684f43bd55d46b
 pkgver=r4.${_hash::8}
-pkgrel=1
+pkgrel=2
 pkgdesc="A scheduled timer to protect your eyes"
 arch=(any)
 url=https://gitgud.io/uwu/keybind-visualizer
@@ -20,6 +20,8 @@ package() {
      install -Dm644 LICENSE          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
      install -Dm644 README.md        "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-     find src -type d -exec install -dm755 "$pkgdir/usr/share/$pkgname/{}" \;
-     find src -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/$pkgname/{}" \;
+     pushd src
+     find . -type d -exec install -dm755 "$pkgdir/usr/share/$pkgname/{}" \;
+     find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/$pkgname/{}" \;
+     popd
 }
