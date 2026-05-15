@@ -1,0 +1,15 @@
+pkgbase = eyebreak
+	pkgdesc = A scheduled timer to protect your eyes
+	pkgver = r4.9d6df878
+	pkgrel = 1
+	url = https://gitgud.io/uwu/keybind-visualizer
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = quickshell
+	depends = sh
+	depends = qt6-declarative
+	source = git::git+https://gitgud.io/uwu/eyebreak#commit=9d6df8784a5c11354036b0e81d684f43bd55d46b
+	sha256sums = b28fae1e9efd1fc868dd20573255c5bab722298e7ecbcaad3933a7a82b40185e
+
+pkgname = eyebreak
