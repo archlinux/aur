@@ -37,10 +37,8 @@ source=(
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.xz"::"$url/releases/download/v${pkgver}/floorp-linux-x86_64.tar.xz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.xz"::"$url/releases/download/v${pkgver}/floorp-linux-aarch64.tar.xz")
 
-sha256sums=(
-  '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
-  '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8'
-)
+sha256sums=('8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
+            '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8')
 sha256sums_x86_64=('0fc3b7f192c9ae1def3a160c68a2dee42c8a0277c1b48deede0bd1f2dc69e317')
 sha256sums_aarch64=('741303a83ba272b035ba850f24dcb21e7300ec1a79f03d93523f794187a5a615')
 

@@ -1,5 +1,5 @@
 [floorp-bin]
-source = "git"
-git = "https://github.com/Floorp-Projects/Floorp"
+source = "github"
+github = "Floorp-Projects/Floorp"
+use_latest_release = true
 prefix = "v"
-exclude_regex = '^(v12\.0\.0.*|.*[A-Za-z]{2}.*)$'
