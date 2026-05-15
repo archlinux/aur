@@ -2,7 +2,7 @@
 # Contributor: eientei95 <einstein95 at windowslive dot com>
 
 _pkgname=gbe-plus
-pkgname=${_pkgname}-git
+pkgname=${_pkgname}-rec-git
 pkgver=r4915.95891bf1
 pkgrel=1
 pkgdesc="DMG/GBC/GBA/Pokemon Mini emulator and experimental NDS emulator with support for playback using Agatsuma and Play-Yan. Successor to GB Enhanced."
