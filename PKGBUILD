@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=r180.8f2f814
+pkgver=r207.f58fae6
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url=https://github.com/sp1ff/indielinks
 license=('GPL-3.0-or-later')
 # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20#note_172172
 options=(!lto)
-depends=('openssl' 'glibc' 'gcc-libs' 'bash' 'acl')
+depends=('openssl' 'glibc' 'gcc-libs' 'bash' 'acl' 'tailwindcss-bin')
 optdepends=('scylla-bin')
 # `cargo` (and the Rust toolchain generally) is required, but I don't want to require
 # the package, since it may have been installed in another way
@@ -41,7 +41,7 @@ build() {
     cd "$_pkgname"
     cargo build --release -j ${_nproc}
     cd indielinks-fe
-    npx @tailwindcss/cli -i style.css -o tailwind.css
+    tailwindcss -i style.css -o tailwind.css
     INDIELINKS_FE_API="http://localhost:20676" INDIELINKS_BASE="/fe" INDIELINKS_PAGE_SIZE="20" trunk build --release
 }
 
@@ -56,7 +56,7 @@ package() {
     cd indielinks-fe/dist
     wasm=$(ls -1 indielinks-fe*.wasm)
     js=$(ls -1 indielinks-fe*.js)
-    css=$(ls -1 style-*.css)
+    css=$(ls -1 tailwind-*.css)
     mv $wasm indielinks-fe.wasm
     mv $js indielinks-fe.js
     mv $css style.css
