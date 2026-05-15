@@ -1,6 +1,6 @@
 pkgbase = toss-musl-git
 	pkgdesc = XDG-compliant rm replacement that trashes instead of deletes (static musl build)
-	pkgver = r.1
+	pkgver = 0000000
 	pkgrel = 1
 	url = https://codeberg.org/5unekku/toss
 	arch = x86_64
