@@ -1,0 +1,5 @@
+[lbforth]
+source = "github"
+github = "DosWorld/lbforth"
+use_max_tag = true
+prefix = "RELEASE-"
