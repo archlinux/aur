@@ -1,0 +1,45 @@
+pkgbase = perl-app-cpan2arch
+	pkgdesc = generate PKGBUILD from CPAN metadata
+	pkgver = v1.0.1
+	pkgrel = 1
+	url = https://metacpan.org/dist/App-cpan2arch
+	arch = any
+	license = MIT-0
+	checkdepends = perl-capture-tiny>=0.50
+	checkdepends = perl-devel-checkbin>=0.04
+	checkdepends = perl-path-tiny>=0.150
+	checkdepends = perl-test-simple
+	checkdepends = perl-text-diff>=1.45
+	makedepends = perl-extutils-makemaker
+	depends = pacman
+	depends = perl-archive-tar
+	depends = perl-capture-tiny>=0.50
+	depends = perl-chi>=0.61
+	depends = perl-cpanel-json-xs>=4.40
+	depends = perl-devel-checkbin>=0.04
+	depends = perl-encode
+	depends = perl-encode-locale>=1.05
+	depends = perl-io-socket-ssl>=2.098
+	depends = perl-list-compare>=0.55
+	depends = perl-module-corelist>=5.20260420
+	depends = perl-mojo-useragent-cached>=1.25
+	depends = perl-mojolicious
+	depends = perl-object-pad>=0.825
+	depends = perl-path-tiny>=0.150
+	depends = perl-pathtools
+	depends = perl-pod-usage
+	depends = perl-scalar-list-utils
+	depends = perl-software-license>=0.104007
+	depends = perl-term-readkey>=2.38
+	depends = perl-term-table
+	depends = perl-time-piece
+	depends = perl-version>=0.9934
+	depends = perl>=5.42.0
+	optdepends = licenses: use system licenses from /usr/share/licenses/spdx
+	optdepends = perl-data-printer>=1.002001: debug support
+	optdepends = perl-getopt-long-more>=0.007: Bash completion support
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RY/RYOSKZYPU/App-cpan2arch-v1.0.1.tar.gz
+	sha256sums = 693d8d64dc76f17f69be770ecfd5e1f542aaaf1bd4bcd15374ecb6d14f43bd3f
+
+pkgname = perl-app-cpan2arch

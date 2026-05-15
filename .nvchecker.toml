@@ -1,0 +1,3 @@
+[perl-app-cpan2arch]
+source = "cpan"
+cpan = "App-cpan2arch"
