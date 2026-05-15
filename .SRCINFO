@@ -1,0 +1,22 @@
+pkgbase = perl-complete-util
+	pkgdesc = General completion routine
+	pkgver = 0.620
+	pkgrel = 1
+	url = https://metacpan.org/dist/Complete-Util
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-complete-common>=0.22
+	depends = perl-exporter>=5.57
+	depends = perl-log-ger>=0.038
+	depends = perl-scalar-list-utils>=1.54
+	depends = perl>=5.10.1
+	optdepends = perl-text-levenshtein-flexible
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Complete-Util-0.620.tar.gz
+	sha256sums = a1644f2ca6483a80cba83590f356ef58a4044a0dcd5468753635ba01be797f0b
+
+pkgname = perl-complete-util
