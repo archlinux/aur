@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop
-pkgver=1.14.50
+pkgver=1.14.51
 pkgrel=1
 pkgdesc='OpenCode desktop app (built from source, runs on system electron41)'
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,9 @@ depends=(
 makedepends=(
   'bun'
   'git'
+  # electron-builder downloads a Ruby-based fpm tool that links against
+  # libcrypt.so.1, which is provided by libxcrypt-compat on Arch.
+  'libxcrypt-compat'
 )
 optdepends=(
   'opencode: standalone terminal CLI (independent of the desktop app, which embeds its own server)'
