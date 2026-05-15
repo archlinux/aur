@@ -4,7 +4,7 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=fastly
-pkgver=14.3.1
+pkgver=15.1.0
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('git' 'go' 'tomlq')
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('445bcb20ad4ba769dbaebdcd6ceeac968a8fa1e3abcf108cf35d6b15381b4adb')
+sha256sums=('99727733abf66a70141ff9d3e3c99f8c15aadc3d7ca4512066c346a59c5bf595')
 validpgpkeys=('A4C2C78656BA5E3DD5F122E4BCE379A5D550C407' ## Mark McDonnell (Integralist)
               '91CDBA857A8A0DE3940FDD90870BC2D54402CD1D' ## Anthony Gomez
               '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') ## GitHub
