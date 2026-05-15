@@ -19,7 +19,7 @@ package() {
     # Extracting appimage
     cd $srcdir
     chmod +x ./Dusk-v$pkgver-linux-$arch.AppImage
-    ./Dusk-v$pkgver-linux-$arch.AppImage --appimage-extract
+    ./Dusklight-v$pkgver-linux-$arch.AppImage --appimage-extract
 
     # Packaging files
     cd "$srcdir/squashfs-root"
@@ -29,7 +29,7 @@ package() {
     install -Dm755 "$srcdir/dusk" "$pkgdir/usr/bin"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/squashfs-root/usr/share/applications/dusk.desktop" \
-    "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/dusk.desktop"
+    install -Dm644 "$srcdir/squashfs-root/usr/share/applications/dusklight.desktop" \
+    "$pkgdir/usr/share/applications/dusklight.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/dusklight.desktop"
 }
