@@ -2,7 +2,7 @@
 
 pkgname=sakura-slemu
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LSL bytecode emulator / Second Life runtime simulator — part of the Sakura LSL toolchain"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Sakura-Studios-IKE/sakura-slemu"
