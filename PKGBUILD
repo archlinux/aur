@@ -1,7 +1,7 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-git
 _pkgname=Shiori
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -74,6 +74,17 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
+
+    # Some user makepkg environments force lld via -fuse-ld=lld and can break
+    # native Rust deps (ring/sqlite/zstd) at final link. Normalize linker.
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=/usr/bin/cc
+    export CFLAGS="${CFLAGS//-fuse-ld=lld/}"
+    export CXXFLAGS="${CXXFLAGS//-fuse-ld=lld/}"
+    export LDFLAGS="${LDFLAGS//-fuse-ld=lld/}"
+    export RUSTFLAGS="${RUSTFLAGS//-Clink-arg=-fuse-ld=lld/}"
+    export RUSTFLAGS="${RUSTFLAGS//-C link-arg=-fuse-ld=lld/}"
+    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-Wl,--no-as-needed"
+
     npm run build
 }
 
