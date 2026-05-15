@@ -1,0 +1,74 @@
+From dda4c1e675c7bd242cd7573fdec01455b9ec46fe Mon Sep 17 00:00:00 2001
+From: Mooneer Salem <mooneer@gmail.com>
+Date: Thu, 14 May 2026 16:46:07 -0700
+Subject: [PATCH] Fix compiler warning/error in EventHandler when using GCC
+ 16.1.
+
+---
+ src/rig_control/SerialPortInRigController.cpp  | 4 ++--
+ src/rig_control/SerialPortOutRigController.cpp | 2 +-
+ src/util/EventHandler.h                        | 9 +++++++++
+ 3 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/src/rig_control/SerialPortInRigController.cpp b/src/rig_control/SerialPortInRigController.cpp
+index f224ccc2d..624922ff8 100644
+--- a/src/rig_control/SerialPortInRigController.cpp
++++ b/src/rig_control/SerialPortInRigController.cpp
+@@ -34,7 +34,7 @@ SerialPortInRigController::SerialPortInRigController(std::string serialPort, boo
+     , suspendChanges_(false)
+ {
+     // Perform required initialization on successful connection.
+-    onRigConnected += [&](IRigController*) {
++    onRigConnected = [&](IRigController*) {
+         // Set RTS and DTR enabled for certain PTT input interfaces.
+         raiseRTS_();
+         raiseDTR_();
+@@ -46,7 +46,7 @@ SerialPortInRigController::SerialPortInRigController(std::string serialPort, boo
+         pollThread_ = std::thread(std::bind(&SerialPortInRigController::pollThreadEntry_, this));
+     };
+ 
+-    onRigDisconnected += [&](IRigController*) {
++    onRigDisconnected = [&](IRigController*) {
+         threadExiting_ = true;
+         pollThread_.join();
+     };
+diff --git a/src/rig_control/SerialPortOutRigController.cpp b/src/rig_control/SerialPortOutRigController.cpp
+index 8aa3f8ef4..028d5dcbd 100644
+--- a/src/rig_control/SerialPortOutRigController.cpp
++++ b/src/rig_control/SerialPortOutRigController.cpp
+@@ -33,7 +33,7 @@ SerialPortOutRigController::SerialPortOutRigController(std::string serialPort, b
+     , rigResponseTime_(0)
+ {
+     // Ensure that PTT is disabled on successful connect.
+-    onRigConnected += [&](IRigController*) {
++    onRigConnected = [&](IRigController*) {
+         ptt(false);
+     };
+ }
+diff --git a/src/util/EventHandler.h b/src/util/EventHandler.h
+index 48d7eb109..835af7485 100644
+--- a/src/util/EventHandler.h
++++ b/src/util/EventHandler.h
+@@ -38,6 +38,7 @@ class EventHandler
+     
+     void operator() (FnArgs... args);
+     EventHandler<FnArgs...>& operator+=(FnType const& fn);
++    EventHandler<FnArgs...>& operator=(FnType const& fn);
+     void clear();
+     
+ private:
+@@ -60,6 +61,14 @@ EventHandler<FnArgs...>& EventHandler<FnArgs...>::operator+=(FnType const& fn)
+     return *this;
+ }
+ 
++template<typename... FnArgs>
++EventHandler<FnArgs...>& EventHandler<FnArgs...>::operator=(FnType const& fn)
++{
++    fnList_.clear();
++    fnList_.push_back(fn);
++    return *this;
++}
++
+ template<typename... FnArgs>
+ void EventHandler<FnArgs...>::clear()
+ {
