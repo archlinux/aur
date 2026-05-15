@@ -1,0 +1,3 @@
+[perl-text-levenshtein-flexible]
+source = "cpan"
+cpan = "Text-Levenshtein-Flexible"

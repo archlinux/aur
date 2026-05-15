@@ -1,0 +1,16 @@
+pkgbase = perl-text-levenshtein-flexible
+	pkgdesc = XS Levenshtein distance calculation with bounds and costs
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://metacpan.org/dist/Text-Levenshtein-Flexible
+	arch = x86_64
+	license = (Artistic-1.0-Perl OR GPL-1.0-or-later) AND PostgreSQL
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-leaktrace
+	makedepends = perl-extutils-makemaker
+	depends = perl>=5.8.8
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MB/MBETHKE/Text-Levenshtein-Flexible-0.10.tar.bz2
+	sha256sums = adb367066b78c36f6ca63206021386ab1409c2da79d69ce7e4605e63e6a5e106
+
+pkgname = perl-text-levenshtein-flexible
