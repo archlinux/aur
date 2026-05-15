@@ -1,7 +1,7 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-git
 _repo=Veila
-pkgver=0.3.1.r0.g0000000
+pkgver=0.3.2.r0.g0000000
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker (latest git)"
 arch=('x86_64')
@@ -13,6 +13,7 @@ options=('!debug')
 depends=('libxkbcommon' 'pam')
 makedepends=('cargo' 'git' 'pkgconf' 'wayland')
 optdepends=('systemd: enable the bundled user service with systemctl --user')
+backup=('etc/pam.d/veila')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -40,12 +41,14 @@ package() {
 
   install -Dm644 assets/systemd/veilad.service \
     "$pkgdir/usr/lib/systemd/user/veilad.service"
+  install -Dm644 packaging/arch/veila.pam "$pkgdir/etc/pam.d/veila"
 
-  install -d "$pkgdir/usr/share/veila"
-  cp -R assets/fonts "$pkgdir/usr/share/veila/"
-  cp -R assets/icons "$pkgdir/usr/share/veila/"
-  cp -R assets/systemd "$pkgdir/usr/share/veila/"
-  cp -R assets/themes "$pkgdir/usr/share/veila/"
+  local asset_dir asset_file
+  for asset_dir in assets/fonts assets/icons assets/systemd assets/themes; do
+    while IFS= read -r -d '' asset_file; do
+      install -Dm644 "$asset_file" "$pkgdir/usr/share/veila/${asset_file#assets/}"
+    done < <(find "$asset_dir" -type f -print0)
+  done
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/veila/README.md"
 }
