@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <jinzhongjia@manus.ai>
 
 pkgname=openwarp-git
-pkgver=0.2026.05.14.1649.r4.g7326fe2d
+pkgver=2026.05.15.preview.r2.gf1e9f43f
 pkgrel=1
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
@@ -97,18 +97,16 @@ package() {
     ln -s "${_optdir}/warp-oss" "${pkgdir}/usr/bin/warp-terminal-oss"
     ln -s "${_optdir}/warp-oss" "${pkgdir}/usr/bin/openwarp"
 
-    # Install desktop file (with WMClass fix, matching openwarp-bin)
-    install -Dm644 "app/channels/oss/dev.warp.OpenWarp.desktop" \
-        "${pkgdir}/usr/share/applications/dev.warp.OpenWarp.desktop"
-    sed -i 's/^StartupWMClass=dev\.warp\.OpenWarp$/StartupWMClass=dev.openwarp.OpenWarp/' \
-        "${pkgdir}/usr/share/applications/dev.warp.OpenWarp.desktop"
+    # Install desktop file
+    install -Dm644 "app/channels/oss/dev.openwarp.OpenWarp.desktop" \
+        "${pkgdir}/usr/share/applications/dev.openwarp.OpenWarp.desktop"
 
     # Install icons
     for _size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512; do
         _icon="app/channels/oss/icon/no-padding/${_size}.png"
         if [[ -f "${_icon}" ]]; then
             install -Dm644 "${_icon}" \
-                "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/dev.warp.OpenWarp.png"
+                "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/dev.openwarp.OpenWarp.png"
         fi
     done
 }
