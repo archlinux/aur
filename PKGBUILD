@@ -2,8 +2,8 @@
 
 _pkgname=viu
 pkgname="${_pkgname}-media-git"
-pkgver=3.2.8.r5.5634214
-pkgrel=1
+pkgver=3.5.0.r3.gf632948
+pkgrel=2
 pkgdesc="Viu, your browser anime experience, from the terminal."
 arch=('x86_64')
 url="https://github.com/viu-media/viu"
@@ -36,8 +36,14 @@ optdepends=('mpv: video player'
             'feh: image viewer (for manga mode)')
 provides=('viu-media')
 conflicts=('viu-media')
+replaces=('fastanime-git')
 source=("git+${url}.git")
 install="${_pkgname}.install"
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     cd "${srcdir}" || exit
