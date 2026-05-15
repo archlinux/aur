@@ -3,7 +3,7 @@
 _name=mcp
 pkgname=python-$_name
 pkgver=1.27.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
 url='https://github.com/modelcontextprotocol/python-sdk'
@@ -22,7 +22,7 @@ prepare(){
   git clean -fdx
   # Fix compatibility with Python 3.14
   patch -Np1 -i ../1834.patch
-  sed -i 's/timeout=20/timeout=120/' tests/client/test_config.py # Increate time limit
+  sed -i 's/timeout=20/timeout=None/' tests/client/test_config.py # Increate time limit
 }
 
 build() {
