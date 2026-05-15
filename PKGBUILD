@@ -1,7 +1,7 @@
 # Maintainer: Cosmic <CosmicHorrorDev@pm.me>
 
 pkgname=metrics-observer
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A text-based UI for observing metrics exported by the `metrics-exporter-tcp` Rust crate'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('0e863e00ca08472332b133863d0f56d731aedb011c2b98b7a9dbf4a787293414df8f0f8e772075ad6a530a04b3f708bb60aa66785a342c7baf5a1c3da4a4f5eb')
+b2sums=('0ddeb7003684e1853627f03b5be6b0eb5714ad71dcd0a0b28282e92d1e5adca9fc8344174aee9733de5f26f6d6a746dfef79829a4071f060b5cf5b868d795a7b')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
