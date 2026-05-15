@@ -12,12 +12,16 @@ post_install() {
 }
 
 post_upgrade() {
-    echo ""
-    echo "==> duckwm upgraded."
-    echo "    Refresh your LuaLS meta and docs:"
-    echo ""
-    echo "      cp /usr/share/duckwm/meta/wm.lua ~/.config/duckwm/meta/wm.lua"
-    echo "      cp /usr/share/doc/duckwm/API.md ~/.config/duckwm/docs/API.md"
-    echo "      cp /usr/share/doc/duckwm/API.norg ~/.config/duckwm/docs/API.norg"
-    echo ""
+    # Refresh meta and docs for all users who have duckwm configured
+    for user_home in /home/*; do
+        if [ -d "$user_home/.config/duckwm/meta" ]; then
+            cp /usr/share/duckwm/meta/wm.lua "$user_home/.config/duckwm/meta/wm.lua"
+            echo "==> Refreshed LuaLS meta for $(basename $user_home)"
+        fi
+        if [ -d "$user_home/.config/duckwm/docs" ]; then
+            cp /usr/share/doc/duckwm/API.md "$user_home/.config/duckwm/docs/API.md"
+            cp /usr/share/doc/duckwm/API.norg "$user_home/.config/duckwm/docs/API.norg"
+            echo "==> Refreshed API docs for $(basename $user_home)"
+        fi
+    done
 }
