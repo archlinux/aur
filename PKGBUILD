@@ -2,7 +2,7 @@
 
 pkgname=goenv
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Like pyenv and rbenv, but for Go."
 
 license=('MIT')

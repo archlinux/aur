@@ -1,7 +1,7 @@
 pkgbase = goenv
 	pkgdesc = Like pyenv and rbenv, but for Go.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/go-nv/goenv
 	arch = i686
 	arch = x86_64
