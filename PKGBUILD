@@ -1,10 +1,11 @@
 # Based on NixOS's package scripts:
 # https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/ro/roslyn-ls/package.nix
 
+# https://github.com/dotnet/roslyn/blob/main/eng/targets/TargetFrameworks.props
 _dotnet_sdk_version=10.0
 _dotnet_runtime_version=$_dotnet_sdk_version
 pkgname=roslyn-ls
-pkgver=2.130.5
+pkgver=2.140.8
 pkgrel=1
 pkgdesc="Language server behind C# Dev Kit for Visual Studio Code"
 arch=(x86_64)
@@ -19,7 +20,7 @@ source=("roslyn-VSCode-CSharp-$pkgver.tar.gz::https://github.com/dotnet/roslyn/a
         # We move it to ${XDG_CACHE_HOME:-$HOME/.cache}/Microsoft/CodeAnalysis/LanguageServer.
         # See also: https://github.com/dotnet/roslyn/issues/76892
         "0001-move-cache-directory.diff")
-sha256sums=('938264f7913a2da256665a808499192ec8fbce69fa53828b3985fe39be45ad59'
+sha256sums=('1616b75e7753c203a1c5ff11e2451cbf3b7058a326c354c2b5093bbbec0b7001'
             '66ef609bcee14f41754820a9dd4aeda578c338867e93da04ce15b48f9f93026b'
             '39817ac608d5eb5d36ab350faa00afde8fdd89e0e6f229a48bfa6374736a4217')
 
