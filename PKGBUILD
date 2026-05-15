@@ -1,6 +1,6 @@
 # Maintainer: saber-88
 pkgname=wallrift
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Wayland wallpaper engine with smooth cursor-based parallax effect"
 arch=('x86_64')
