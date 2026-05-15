@@ -1,6 +1,6 @@
 # Maintainer: Jan Kohnert <bughunter@jan-kohnert.de>
 pkgname=helmify
-pkgver=0.4.19
+pkgver=0.4.20
 pkgrel=1
 pkgdesc="Creates Helm chart from Kubernetes yaml"
 arch=("x86_64")
@@ -12,7 +12,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/arttor/helmify/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha512sums=(
-  "2b9a8acbdc3fb1d81bf02c79c0a17acd3ebc3b1959cb7b2ea56826083686fbfb42b6ac697ebba1dbc9447947fa97a7313bb1e76fbc1935388264de0e2814cbcc"
+  "1d54cc42d5ce329287da052e389cb2a6317416779a9c9cf10e67121500fe45d3b954d01dd63df33aac18166fe28be47e916358cb6f601738bb030f37f08cfaa9"
 )
 
 build() {
