@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Allen Zhong <moeallenz@gmail.com>
+# Maintainer: Allen Zhong <pdev@zhoal.pw>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
@@ -11,12 +11,35 @@
 
 pkgname=tengine
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
+depends=(
+  glibc
+  pcre
+  zlib
+  openssl
+  geoip
+  mailcap
+  libxcrypt
+)
+makedepends=(
+  findutils
+  gd
+  geoip
+  git
+  glibc
+  libxcrypt
+  libxml2
+  libxslt
+  mailcap
+  openssl
+  pcre2
+  rsync
+  zlib
+)
 backup=(etc/tengine/fastcgi.conf
         etc/tengine/fastcgi_params
         etc/tengine/koi-win
@@ -29,10 +52,18 @@ backup=(etc/tengine/fastcgi.conf
 install=tengine.install
 provides=('nginx')
 source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgver.tar.gz
+	"0001-pr-1887.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/1887.patch"
+	"0001-pr-2001.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/2001.patch"
+	"0101-fix-CVE-2026-1642.patch::https://github.com/alibaba/tengine/commit/51e05b88fd2b2c656d087601bdd3186a90334201.patch"
+	"0102-fix-CVE-2026-42945-and-more.patch::https://github.com/alibaba/tengine/commit/70e6ba5f3a021d9cc54c0299fd29c9ef3400adf6.patch"
         service
         logrotate
        )
 sha256sums=('64ed7155c0c904ce0fe7199c21b8eb6c2abfc267278fa8af832c0cb781e864dc'
+            'dc8cba315b440b407548a10077b8bfca84bcbfe647cd215b5b3c73cd59db8f50'
+            '18b5f2a1bdd0b03895f079a5dbaa11e1ee155ce79306a458c1ba68813baf1e50'
+            '28caad27790100a06d7639e4d2b53e60a24974865607af93899f9a056a16ac48'
+            '8ad68aafd671db485cf073c4ec0daf5aebae94b7403b917dc0358c5e180c7856'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
@@ -59,7 +90,7 @@ build() {
         --http-scgi-temp-path=/var/lib/tengine/scgi \
         --http-uwsgi-temp-path=/var/lib/tengine/uwsgi \
         --with-cc-opt="$CFLAGS $CPPFLAGS" \
-        --with-ld-opt="${LDFLAGS// /,}" \
+        --with-ld-opt="$LDFLAGS" \
         --with-compat \
         --with-file-aio \
         --with-http_addition_module \
