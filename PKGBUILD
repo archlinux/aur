@@ -13,9 +13,9 @@ depends=(gcc-libs
 makedepends=(doxygen
              extra-cmake-modules
              qt6-tools)
-conflicts=('kglobalaccel')
-provides=('kglobalaccel')
-replaces=('kglobalaccel')
+conflicts=(kglobalaccel)
+provides=(kglobalaccel)
+replaces=(kglobalaccel)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
 
