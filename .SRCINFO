@@ -22,7 +22,7 @@ pkgbase = linux-zencjk
 	source = https://github.com/zen-kernel/zen-kernel/releases/download/v7.0.8-zen1/linux-v7.0.8-zen1.patch.zst
 	source = https://github.com/zen-kernel/zen-kernel/releases/download/v7.0.8-zen1/linux-v7.0.8-zen1.patch.zst.sig
 	source = config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/7.0.8.zen1-1/config.x86_64
-	source = 0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.0.patch
+	source = 0001-cjktty.patch::https://github.com/Capricornus007/cjktty-patches/raw/master/v7.x/cjktty-7.0.8.patch
 	source = 0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -32,7 +32,7 @@ pkgbase = linux-zencjk
 	b2sums = b18fa6c01409eac5937e1b0e19a1beb03609ab02a9106832756a59d2716674974c572cb8155276a201ad25def107a03edd4bcbbe939b16a974a6995fb80093a8
 	b2sums = SKIP
 	b2sums = dd9eceafcfc10712a048df4480a19e3a98d3870f6133ecee9ff14a06c29c5463adc18e98df1ffaa80b4fb6270fc7ea68cccb69c776cd69d1c7e9abcbc2b4df77
-	b2sums = 9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15
+	b2sums = b546565721ec4d3ae240f784715d2811a8243f477754575c42baeb1e11a990e28d6816d4ab684a27166148ecea4f9aa8982415f4a2f3c1ba5df876f91e4a5b9b
 	b2sums = 101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678
 
 pkgname = linux-zencjk
