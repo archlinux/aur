@@ -1,0 +1,3 @@
+[perl-complete-path]
+source = "cpan"
+cpan = "Complete-Path"

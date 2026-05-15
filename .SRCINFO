@@ -1,0 +1,21 @@
+pkgbase = perl-complete-path
+	pkgdesc = Complete path
+	pkgver = 0.251
+	pkgrel = 1
+	url = https://metacpan.org/dist/Complete-Path
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-complete-common>=0.22
+	depends = perl-complete-util>=0.608
+	depends = perl-exporter>=5.57
+	depends = perl-log-ger>=0.038
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Complete-Path-0.251.tar.gz
+	sha256sums = 0ec61796b0f14eff2d51676d8e2b09cb84e0bd8adb77f3b181613458e47472f1
+
+pkgname = perl-complete-path
