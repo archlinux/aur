@@ -8,7 +8,6 @@ pkgbase = toss-musl-git
 	makedepends = cargo
 	makedepends = musl
 	provides = toss
-	conflicts = toss
 	conflicts = toss-git
 	source = toss-musl-git::git+https://codeberg.org/5unekku/toss.git
 	sha256sums = SKIP

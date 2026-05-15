@@ -8,7 +8,7 @@ url="https://codeberg.org/5unekku/toss"
 license=('Apache-2.0')
 makedepends=('cargo' 'musl')
 provides=('toss')
-conflicts=('toss' 'toss-git')
+conflicts=('toss-git')
 source=("$pkgname::git+https://codeberg.org/5unekku/toss.git")
 sha256sums=('SKIP')
 
