@@ -11,11 +11,11 @@ sha256sums=('e9aafbcbe47cd26dc901ef1745b39829e6a3aef973708b12754e35fba3afcc51')
 
 build() {
     cd "goPort-$pkgver"
-    go build -o goport ./cmd/app
+    go build -o goPort ./cmd/app
 }
 
 package() {
     cd "goPort-$pkgver"
-    install -Dm755 goport "$pkgdir/usr/bin/goport"
+    install -Dm755 goPort "$pkgdir/usr/bin/goPort"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
