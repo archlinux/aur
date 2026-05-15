@@ -32,17 +32,10 @@ depends=(
 makedepends=(
   findutils
   gd
-  geoip
   git
-  glibc
-  libxcrypt
   libxml2
   libxslt
-  mailcap
-  openssl
-  pcre2
   rsync
-  zlib
 )
 backup=(etc/tengine/fastcgi.conf
         etc/tengine/fastcgi_params
