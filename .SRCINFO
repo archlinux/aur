@@ -1,0 +1,19 @@
+pkgbase = perl-string-wildcard-bash
+	pkgdesc = Bash wildcard string routines
+	pkgver = 0.045
+	pkgrel = 1
+	url = https://metacpan.org/dist/String-Wildcard-Bash
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-exporter>=5.57
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/String-Wildcard-Bash-0.045.tar.gz
+	sha256sums = 442730a94dc259e76ae070d5f7f75f394e4e49b8b2e2799f795fb63dc61116d9
+
+pkgname = perl-string-wildcard-bash

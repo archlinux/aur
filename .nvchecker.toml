@@ -1,0 +1,3 @@
+[perl-string-wildcard-bash]
+source = "cpan"
+cpan = "String-Wildcard-Bash"
