@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=3D Movie Maker
+Comment=A classic 3D Movie Maker experience for modern systems
+Exec=3dmovie
+Icon=3dmmex
+Terminal=false
+Categories=Game;Graphics;

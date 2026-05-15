@@ -1,0 +1,5 @@
+[3dmmex]
+source = "git"
+git = "https://github.com/benstone/3DMMEx.git"
+prefix = "v"
+exclude_regex = '.*(alpha|beta|dev|rc).*'

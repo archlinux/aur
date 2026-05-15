@@ -1,0 +1,97 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2ed07d4..9adc50e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,18 +91,18 @@ elseif("${3DMM_GUI}" STREQUAL "SDL")
+     if (WIN32)
+         include(FetchSDL2)
+         include(FetchFluidSynth)
++        include(FetchMiniaudio)
++        include(FetchIniParser)
+     endif()
+ 
+     find_package(SDL2 CONFIG REQUIRED)
+     find_package(SDL2_ttf CONFIG REQUIRED)
+ 
+-    include(FetchMiniaudio)
++    find_package(Miniaudio REQUIRED)
+ 
+-    include(FindFluidSynth)
+     find_package(FluidSynth CONFIG REQUIRED)
+ 
+-    # TODO: Find libiniparser if installed
+-    include(FetchIniParser)
++    find_package(IniParser CONFIG REQUIRED)
+ 
+     find_package(PkgConfig QUIET)
+     if (PkgConfig_FOUND)
+diff --git a/cmake/FindMiniaudio.cmake b/cmake/FindMiniaudio.cmake
+new file mode 100644
+index 0000000..62029c8
+--- /dev/null
++++ b/cmake/FindMiniaudio.cmake
+@@ -0,0 +1,33 @@
++find_package(PkgConfig QUIET)
++if(PkgConfig_FOUND)
++	pkg_check_modules(PC_${CMAKE_FIND_PACKAGE_NAME} QUIET miniaudio)
++endif()
++
++find_path(${CMAKE_FIND_PACKAGE_NAME}_INCLUDE_DIR
++  NAMES miniaudio.h
++  HINTS ${PC_${CMAKE_FIND_PACKAGE_NAME}_INCLUDE_DIRS}
++  PATH_SUFFIXES miniaudio
++)
++find_library(${CMAKE_FIND_PACKAGE_NAME}_LIBRARY
++  NAMES miniaudio
++  HINTS ${PC_${CMAKE_FIND_PACKAGE_NAME}_LIBRARY_DIRS}
++)
++
++include(FindPackageHandleStandardArgs)
++
++find_package_handle_standard_args(${CMAKE_FIND_PACKAGE_NAME}
++	REQUIRED_VARS ${CMAKE_FIND_PACKAGE_NAME}_LIBRARY ${CMAKE_FIND_PACKAGE_NAME}_INCLUDE_DIR)
++
++if(${CMAKE_FIND_PACKAGE_NAME}_FOUND)
++	set(${CMAKE_FIND_PACKAGE_NAME}_LIBRARIES ${${CMAKE_FIND_PACKAGE_NAME}_LIBRARY})
++	set(${CMAKE_FIND_PACKAGE_NAME}_INCLUDE_DIRS ${${CMAKE_FIND_PACKAGE_NAME}_INCLUDE_DIR})
++	set(${CMAKE_FIND_PACKAGE_NAME}_DEFINITIONS ${PC_${CMAKE_FIND_PACKAGE_NAME}_CFLAGS_OTHER})
++
++	if (NOT TARGET miniaudio)
++		add_library(miniaudio UNKNOWN IMPORTED)
++		set_target_properties(miniaudio PROPERTIES
++			IMPORTED_LOCATION "${${CMAKE_FIND_PACKAGE_NAME}_LIBRARY}"
++			INTERFACE_INCLUDE_DIRECTORIES "${${CMAKE_FIND_PACKAGE_NAME}_INCLUDE_DIR}"
++		)
++	endif()
++endif()
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ae5b141..4ec032c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -111,11 +111,21 @@ if(3DMM_GUI STREQUAL "SDL")
+         "${PROJECT_SOURCE_DIR}/src/studio/configini.cpp"
+     )
+ 
+-    target_link_libraries(
+-        studio
+-        PRIVATE
+-        iniparser-static
+-    )
++    if (TARGET iniparser-static)
++        target_link_libraries(
++            studio
++            PRIVATE
++            iniparser-static
++        )
++    elseif (TARGET iniparser-shared)
++        target_link_libraries(
++            studio
++            PRIVATE
++            iniparser-shared
++        )
++    else()
++        message(FATAL_ERROR "IniParser target not found (expected iniparser-static or iniparser-shared)")
++    endif()
+ 
+     # Select portfolio
+     if (WIN32 OR APPLE OR (UNIX AND NOT APPLE))
