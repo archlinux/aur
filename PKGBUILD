@@ -3,7 +3,7 @@
 
 pkgname=dosbox-staging
 pkgver=0.83.0_RC1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('x86_64')
@@ -22,18 +22,16 @@ build() {
     -B build
     -S $pkgname-${pkgver//_/-}
     -W no-dev
-    -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
-    -D USE_SYSTEM_LIBS=ON
     -D OPT_TESTS=OFF
   )
-  cmake "${cmake_options[@]}"
+  cmake --preset "release-linux" "${cmake_options[@]}"
   cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
   install -Dm 644 "${pkgname}-${pkgver//_/-}/docs/README.video" "$pkgdir/usr/share/doc/${pkgname}/video.txt"
   install -Dm 644 "${pkgname}-${pkgver//_/-}/README.md" "$pkgdir/usr/share/doc/${pkgname}/manual.txt"
+  mv "$pkgdir/usr/share/dosbox-staging/resources"/* "$pkgdir/usr/share/dosbox-staging/"
 }
