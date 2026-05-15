@@ -1,0 +1,17 @@
+# shellcheck shell=bash
+# -*- sh -*-
+
+post_install() {
+  : nothing to say…
+}
+
+post_upgrade() {
+  post_install "$@"
+
+  cat <<__EOT__
+» NB: You may need to run “silverbullet --upgrade” and restart
+»     the service. Please consult the changelog.
+__EOT__
+}
+
+# eof

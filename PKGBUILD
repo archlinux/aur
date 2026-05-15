@@ -5,10 +5,12 @@
 
 _pkgname='silverbullet'
 pkgname="$_pkgname-bin"
-pkgdesc='Programmable, private, browser-based, open source, self hosted, personal knowledge management platform (pre-compiled)'
-pkgver=2.7.0
+pkgdesc='Programmable, private, browser-based, personal knowledge management platform / wiki (pre-compiled)'
+pkgver=2.8.0
 pkgrel=1
 url='https://github.com/silverbulletmd/silverbullet'
+install="$pkgname.install"
+changelog="$pkgname.changelog"
 _rawurl='https://raw.githubusercontent.com/silverbulletmd/silverbullet/refs/heads/main'
 arch=('x86_64')
 license=('MIT')
@@ -16,8 +18,8 @@ provides=("$_pkgname")
 conflicts=("${provides[@]}" 'sb')
 backup=("etc/default/$_pkgname")
 source=(
-  "$_pkgname-srv-$pkgver.zip::$url/releases/download/$pkgver/silverbullet-server-linux-$CARCH.zip"
   "$_pkgname-cli-$pkgver.zip::$url/releases/download/$pkgver/sb-linux-$CARCH.zip"
+  "$_pkgname-srv-$pkgver.zip::$url/releases/download/$pkgver/silverbullet-server-linux-$CARCH.zip"
   "$url/releases/download/$pkgver/CHANGELOG.md"
   "$_rawurl/LICENSE.md"
   "$_rawurl/README.md"
@@ -27,8 +29,8 @@ source=(
   'tmpfile.conf'
 )
 sha256sums=(
-  'f1b4ae03f0ee05a8fe495abe157f5edaa1f27b845e83b15e6c8c8bc8b06f0faa'
-  'fbf2cf2d13be496b24ad4950c1f082628a77e117727d3d3094d990e578bbfe89'
+  'e5a2916cf846af9979cf8635f03799725cabab9ced3d220885b22eae0103c407'
+  '1781aa1c083ae06eeab3f5b5066304c5d5afa279a8ae1895a8e769e27f8d4125'
   'SKIP' 'SKIP' 'SKIP'
   '934853f43b399b1761d57ad4d42957863b23459f50f003cd4408c33f238ac012'
   '66bc5f51f8361eabd22aa26e5ebc86eb0d33e07196c93d423c8839b3055200d4'
