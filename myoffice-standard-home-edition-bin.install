@@ -11,7 +11,7 @@ post_install() {
 	SCRIPT_DIR="/opt/myoffice-standard-home-edition"
 	CO_PRODUCT_ARTIFACT_SUFFIX="-home-edition"
 
-	source "${SCRIPT_DIR}/Common.3.5.1.sh"
+	source "${SCRIPT_DIR}/Common.26.1.0.sh"
 	source "${SCRIPT_DIR}/LkSdkUtils.sh"
 
 	# Initialize licensing - for linux create cache of HW ids, due to reading of them requires root access
@@ -78,7 +78,7 @@ pre_remove() {
 	CONFIG_DIR="New Cloud Technologies Ltd."
 	LKSDK_DIR_NAME="LkSdkWorkingDir"
 
-	source "${SCRIPT_DIR}/Common.3.5.1.sh"
+	source "${SCRIPT_DIR}/Common.26.1.0.sh"
 
 	if [[ "${TAG}" == "upgrade" || "${TAG}" == "1" ]]; then
 	    echo "Skipping uninstall step..."
