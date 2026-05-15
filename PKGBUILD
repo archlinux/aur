@@ -94,8 +94,7 @@ prepare() {
 	# Fix webpack.config.js syntax errors
 	sed -i '/minimizerOptions:/,+2d' build/webpack.config.js
 	sed -i '/^                {}$/d' build/webpack.config.js
-	npx eslint --fix build/webpack.config.js
-	NODE_ENV=development    npm install
+	NODE_ENV=development    npm ci
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
