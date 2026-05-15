@@ -1,0 +1,15 @@
+pkgbase = perssua
+	pkgdesc = Your AI companion for LeetCode - because sometimes we all feel stupid
+	pkgver = 0.21.1
+	pkgrel = 1
+	url = https://perssua.com
+	arch = x86_64
+	license = custom:proprietary
+	depends = nss
+	depends = alsa-lib
+	depends = gtk3
+	depends = libxss
+	source = perssua-0.21.1.deb::https://downloads.perssua.com/Perssua-0.21.1-amd64.deb
+	sha256sums = ec07d10b3e360ebd922bd6c16430267f20ff1b05af4b149fc7499db34a5f148e
+
+pkgname = perssua
