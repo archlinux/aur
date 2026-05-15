@@ -1,0 +1,15 @@
+pkgbase = run0-sudo
+	pkgdesc = A tiny sudo-compatibility shim backed by run0
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/nathawat/run0-sudo-shim
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = zig
+	depends = systemd>=256.0
+	provides = sudo
+	conflicts = sudo
+	source = run0-sudo-1.0.0.tar.gz::https://codeberg.org/nathawat/run0-sudo-shim/archive/v1.0.0.tar.gz
+	b2sums = 8260236446707f08e0d6f91afab0442aa9e6d832504d730bd2525bae4d093dd55429e640faeb4ba2a385e16eac2d4634e0e9f8ce7c1c0341032d19aa27dfe054
+
+pkgname = run0-sudo
