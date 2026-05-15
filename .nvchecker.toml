@@ -1,0 +1,4 @@
+[gss]
+source = "regex"
+url = "https://ftp.gnu.org/gnu/gss/"
+regex = "gss-([\\d.]+)\\.tar"
