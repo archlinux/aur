@@ -1,0 +1,19 @@
+pkgbase = perl-getopt-long-util
+	pkgdesc = Utilities for Getopt::Long
+	pkgver = 0.899
+	pkgrel = 1
+	url = https://metacpan.org/dist/Getopt-Long-Util
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-exporter>=5.57
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Getopt-Long-Util-0.899.tar.gz
+	sha256sums = 2facb614bc5391ccc35eaed991d2ec4fccb9c4a28a265a451ca474f193068a18
+
+pkgname = perl-getopt-long-util
