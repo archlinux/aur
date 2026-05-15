@@ -5,13 +5,13 @@ pkgver=4.2
 pkgrel=1
 pkgdesc='Tool for creating .d64 images with custom sector interleaving etc.'
 arch=('x86_64')
-url='https://bitbucket.org/PTV_Claus/cc1541/src/master/'
+url='https://acoustic-velocity.com/cc1541/'
 license=('custom')
 makedepends=('asciidoc')
-source=("https://bitbucket.org/PTV_Claus/cc1541/downloads/cc1541-${pkgver}.zip"
+source=("http://deb.debian.org/debian/pool/main/c/cc1541/cc1541_4.2.orig.tar.gz"
 	"asciidoc.patch")
 
-md5sums=('f0e43a1150c70d2dec934afa36a9919f'
+md5sums=('d0f752b56485766642031f6197d56e16'
          'e4b27bce96d40cfd55c5fe63c8f12cd6')
 
 prepare() {
