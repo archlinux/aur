@@ -1,0 +1,5 @@
+[gotermfx]
+source = "github"
+github = "mohamedation/gotermfx"
+use_max_tag = true
+prefix = "v"

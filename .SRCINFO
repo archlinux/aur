@@ -1,0 +1,15 @@
+pkgbase = gotermfx
+	pkgdesc = Terminal animations for people who spend too much time in the terminal.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mohamedation/gotermfx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gotermfx
+	conflicts = gotermfx
+	options = !strip
+	source = gotermfx-0.1.0.tgz::https://github.com/mohamedation/gotermfx/archive/v0.1.0.tar.gz
+	sha256sums = 2b3b58e4b0686c2ab3061f492f7163c5c76c16927f424e70df6daa681ee69169
+
+pkgname = gotermfx
