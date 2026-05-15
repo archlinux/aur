@@ -2,33 +2,36 @@
 
 PKGBUILD_VERSION=$(cat PKGBUILD | grep 'pkgver=' | cut -d'=' -f2)
 echo "Current PKGBUILD version:"
-echo $PKGBUILD_VERSION
+echo "$PKGBUILD_VERSION"
 
 VERSION_RAW=$(curl --silent https://api.github.com/repos/metabase/metabase/releases/latest | jq -r '.tag_name')
 echo "Latest Metabase version:"
-echo $VERSION_RAW
+echo "$VERSION_RAW"
 VERSION=${VERSION_RAW:1}
-echo $VERSION
+echo "$VERSION"
 
-if [ $PKGBUILD_VERSION != $VERSION ]; then
+if [ "$PKGBUILD_VERSION" != "$VERSION" ]; then
 	echo "Newer version found, starting download"
-	#curl -O https://downloads.metabase.com/latest/metabase.jar
-	curl -O https://downloads.metabase.com/v$VERSION.x/metabase.jar
-	
+	# curl -O https://downloads.metabase.com/latest/metabase.jar
+	# curl -O https://downloads.metabase.com/v$VERSION.x/metabase.jar
+	curl -O https://downloads.metabase.com/$VERSION_RAW/metabase.jar
+
 	sed -i "s/^pkgver=.*/pkgver=$VERSION/" PKGBUILD
 	CHKSUM="$(b2sum metabase.jar | cut -d' ' -f1)"
-	echo $CHKSUM
+	echo "$CHKSUM"
 
 	echo "Press enter to continue, copy the b2sum and paste in PKGBUILD"
-        read
+	read
+
 	vim PKGBUILD
-        makepkg --printsrcinfo > .SRCINFO
+	makepkg --printsrcinfo > .SRCINFO
 
 	echo "Ready to commit?"
 	read
-        git add .SRCINFO PKGBUILD
-        git commit -m "Updated to $VERSION"
-        git push
+
+	git add .SRCINFO PKGBUILD
+	git commit -m "Updated to $VERSION"
+	git push
 
 	echo "Cleanup"
 	rm metabase.jar
