@@ -4,7 +4,7 @@
 pkgname=cockpit-dockermanager-git
 _pkgname=cockpit-dockermanager
 pkgdesc="Cockpit application for managing Docker containers"
-pkgver=1.0.8.r27.g6d107d5
+pkgver=1.0.8.r31.g9d392de
 pkgrel=1
 arch=('any')
 url="https://github.com/chrisjbawden/cockpit-dockermanager"
