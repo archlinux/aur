@@ -1,6 +1,6 @@
 pkgbase = skwd-daemon
 	pkgdesc = Daemon for Skwd Shell, a collection of Quickshell programs and widgets
-	pkgver = r70.b94521c
+	pkgver = r71.e2fdfd5
 	pkgrel = 1
 	url = https://github.com/liixini/skwd-daemon
 	install = skwd-daemon.install
