@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Swiftpoint X1 Control Panel
+Comment=Control Swiftpoint Devices
+Icon=com.swiftpoint
+Exec=swiftpoint-x1-control-panel
+Terminal=false
+Categories=Utility;
