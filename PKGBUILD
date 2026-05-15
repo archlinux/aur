@@ -6,8 +6,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-whisper
-pkgver=8.1
-pkgrel=4
+pkgver=8.1.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video, with vulkan whisper'
 arch=(x86_64)
 url=https://ffmpeg.org
@@ -153,6 +153,7 @@ build() {
     --disable-stripping \
     --enable-amf \
     --enable-avisynth \
+    --enable-cuda-llvm \
     --enable-lto \
     --enable-fontconfig \
     --enable-frei0r \
@@ -210,6 +211,8 @@ build() {
     --enable-libxvid \
     --enable-libzimg \
     --enable-libzmq \
+    --enable-nvdec \
+    --enable-nvenc \
     --enable-opencl \
     --enable-opengl \
     --enable-shared \
