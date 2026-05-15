@@ -9,11 +9,11 @@ pkgver=5.1.1
 _pkgver_release=$pkgver.RELEASE
 _eclipse_pkgver=e4.39.0
 _eclipse_pkgver_short=e4.39
-pkgrel=1
+pkgrel=2
 pkgdesc="Spring Tools, aka Spring Tool Suite (STS), is the next generation of Spring tooling for Eclipse IDE."
 arch=('x86_64')
-url="https://spring.io/tools"
-depends=('unzip' 'webkit2gtk' 'java-runtime>=21')
+url="https://spring.io/tools#eclipse"
+depends=('unzip' 'java-runtime>=21')
 provides=('spring-tool-suite')
 conflicts=('spring-tool-suite')
 install=${pkgname}.install
