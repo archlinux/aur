@@ -1,6 +1,6 @@
 pkgbase = shell-utils-git
 	pkgdesc = An attempt to be a shell-agnostic custom utilities tool.
-	pkgver = r268.9a9e763
+	pkgver = r269.586d4c2
 	pkgrel = 1
 	url = https://github.com/vncsmyrnk/shell-utils
 	arch = x86_64
