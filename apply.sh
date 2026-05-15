@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Apply a new version reported by nvchecker. Called from ~/aur/update-all.sh.
+# Apply a new version reported by nvchecker. Called from ~/distsystem/aur/update-all.sh.
 # Argument: combined version "pkgver-_build-_commit"
 set -euo pipefail
 cd "$(dirname "$(readlink -f "$0")")"
