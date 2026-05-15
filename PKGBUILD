@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Allen Zhong <moeallenz@gmail.com>
+# Maintainer: Allen Zhong <pdev@zhoal.pw>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
@@ -12,21 +12,37 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
 depends=(
-    'pcre'
-    'zlib'
-    'gperftools'
-    'geoip'
-    'mailcap'
-    'libxcrypt'
-    'luajit'
-    'lua-resty-core>=0.1.27'
-    'libmaxminddb'
+  'glibc'
+  'pcre'
+  'zlib'
+  'gperftools'
+  'geoip'
+  'mailcap'
+  'libxcrypt'
+  'luajit'
+  'lua-resty-core=1:0.1.27'
+  'libmaxminddb'
+)
+makedepends=(
+  findutils
+  gd
+  geoip
+  git
+  glibc
+  libxcrypt
+  libxml2
+  libxslt
+  mailcap
+  openssl
+  pcre2
+  rsync
+  zlib
 )
 backup=(etc/tengine/fastcgi.conf
         etc/tengine/fastcgi_params
@@ -42,12 +58,17 @@ conflicts=('tengine')
 provides=('nginx' 'tengine')
 _brotli_ver=1.0.0rc
 _geoip2_ver=3.4
-_fancyidx_ver=0.5.2
-_jdomain_ver=1.4.0
-_tongsuo_ver=8.3.3
+_fancyidx_ver=0.6.0
+_jdomain_ver=1.5.2
+_tongsuo_ver=8.4.0
 source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgver.tar.gz
         service
         logrotate
+        "0001-pr-1887.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/1887.patch"
+        "0001-fix-lua-ngx.location.capture.504.patch::https://github.com/alibaba/tengine/commit/6ee33c50ba1a9690e8f1459df0cfcc2a57626568.patch"
+        "0001-pr-2001.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/2001.patch"
+        "0101-fix-CVE-2026-1642.patch::https://github.com/alibaba/tengine/commit/51e05b88fd2b2c656d087601bdd3186a90334201.patch"
+        "0102-fix-CVE-2026-42945-and-more.patch::https://github.com/alibaba/tengine/commit/70e6ba5f3a021d9cc54c0299fd29c9ef3400adf6.patch"
         brotli-v${_brotli_ver}.tar.gz::https://github.com/google/ngx_brotli/archive/refs/tags/v${_brotli_ver}.tar.gz
         geoip2-v${_geoip2_ver}.tar.gz::https://github.com/leev/ngx_http_geoip2_module/archive/refs/tags/${_geoip2_ver}.tar.gz
         fancyindex-v${_fancyidx_ver}.tar.xz::https://github.com/aperezdc/ngx-fancyindex/releases/download/v${_fancyidx_ver}/ngx-fancyindex-${_fancyidx_ver}.tar.xz
@@ -57,11 +78,16 @@ source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgv
 sha256sums=('64ed7155c0c904ce0fe7199c21b8eb6c2abfc267278fa8af832c0cb781e864dc'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
+            'dc8cba315b440b407548a10077b8bfca84bcbfe647cd215b5b3c73cd59db8f50'
+            'a10e7cc50f100c1fb07d4f692d4ad07020c34fe4aa423507cbd5e46d6370dc5a'
+            '18b5f2a1bdd0b03895f079a5dbaa11e1ee155ce79306a458c1ba68813baf1e50'
+            '28caad27790100a06d7639e4d2b53e60a24974865607af93899f9a056a16ac48'
+            '8ad68aafd671db485cf073c4ec0daf5aebae94b7403b917dc0358c5e180c7856'
             'c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b'
             'ad72fc23348d715a330994984531fab9b3606e160483236737f9a4a6957d9452'
-            '04c3d098ed5d8d6016d92a784c7f7692dd8cd65603a7e7d59dd3d4bbdc374656'
-            '3e8021433b1444b3caa1674fe344dc0ed58b8d8275f227c63950f6a156c31883'
-            '038a75a02d8f7063fbc36d6b9a28f136f25959acda2caa577276849b57c4f698')
+            '2846819d4f80df7c753530b2ea93484d41326f5dc5162dc453b92579203c0c32'
+            '7829440cc448edaa47b4fefb88fe35cad93b02ba5fe850c69a0421ccaa6190aa'
+            '57c2741750a699bfbdaa1bbe44a5733e9c8fc65d086c210151cfbc2bbd6fc975')
 
 prepare() {
     cd tengine-$pkgver
@@ -89,7 +115,7 @@ build() {
         --http-scgi-temp-path=/var/lib/tengine/scgi \
         --http-uwsgi-temp-path=/var/lib/tengine/uwsgi \
         --with-cc-opt="$CFLAGS $CPPFLAGS" \
-        --with-ld-opt="${LDFLAGS// /,},-lpcre" \
+        --with-ld-opt="$LDFLAGS -lpcre" \
         --with-compat \
         --with-file-aio \
         --with-openssl=../Tongsuo-${_tongsuo_ver} \
