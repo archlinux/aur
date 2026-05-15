@@ -1,15 +1,13 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=mise-bin
 pkgver=2026.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="dev tools, env vars, task runner"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jdx/mise"
 license=('MIT')
-depends=('glibc')
 optdepends=(
     'bash-completion: bash completion support'
-    'usage: completion support'
 )
 provides=('mise')
 conflicts=('mise' 'rtx')

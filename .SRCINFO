@@ -1,14 +1,12 @@
 pkgbase = mise-bin
 	pkgdesc = dev tools, env vars, task runner
 	pkgver = 2026.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jdx/mise
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = glibc
 	optdepends = bash-completion: bash completion support
-	optdepends = usage: completion support
 	provides = mise
 	conflicts = mise
 	conflicts = rtx
