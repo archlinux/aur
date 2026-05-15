@@ -1,7 +1,7 @@
 # Maintainer: Sandra Keßler <mail@sandra-kessler.net>
 pkgname=zerodds-bin
 _pkgname=zerodds
-pkgver=1.0.0_rc1
+pkgver=1.0.0_rc.2
 pkgrel=1
 pkgdesc="Pure-Rust OMG Data Distribution Service implementation (precompiled binaries)"
 arch=('x86_64' 'aarch64')
@@ -10,29 +10,50 @@ license=('Apache-2.0')
 provides=('zerodds')
 conflicts=('zerodds')
 depends=('glibc' 'gcc-libs')
-source_x86_64=("https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.1/zerodds-1.0.0-rc.1-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.1/zerodds-1.0.0-rc.1-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+makedepends=('binutils')
+
+# .deb-bundles aus dem GH-release. Jedes .deb enthaelt die fertig
+# kompilierten binaries für seine Komponente. Wir extrahieren die
+# data.tar.* aus jedem .deb und bauen daraus den pacman-package-tree.
+source_x86_64=(
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-cli_1.0.0-rc.2_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-ws-bridge_1.0.0-rc.2_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-mqtt-bridge_1.0.0-rc.2_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-coap-bridge_1.0.0-rc.2_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-amqp-bridge_1.0.0-rc.2_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-grpc-bridge_1.0.0-rc.2_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-corba-bridge_1.0.0-rc.2_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-ros2_1.0.0-rc.2_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-core_1.0.0-rc.2_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-dev_1.0.0-rc.2_amd64.deb"
+)
+source_aarch64=(
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-cli_1.0.0-rc.2_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-ws-bridge_1.0.0-rc.2_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-mqtt-bridge_1.0.0-rc.2_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-coap-bridge_1.0.0-rc.2_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-amqp-bridge_1.0.0-rc.2_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-grpc-bridge_1.0.0-rc.2_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-corba-bridge_1.0.0-rc.2_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-ros2_1.0.0-rc.2_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-core_1.0.0-rc.2_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.2/zerodds-dev_1.0.0-rc.2_arm64.deb"
+)
+sha256sums_x86_64=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums_aarch64=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     cd "${srcdir}"
-    install -dm755 "${pkgdir}/usr/bin"
-    local bin
-    for bin in zerodds-{ws,mqtt,coap,amqp,grpc,corba}-bridged \
-               zerodds-{admin,idlc,xmlc,record,replay,bench,monitor,mq,pcap,perf} \
-               zerodds-ros2-shim; do
-        if [[ -f "$bin" ]]; then
-            install -m755 "$bin" "${pkgdir}/usr/bin/${bin}"
-        fi
+    # Jedes .deb extrahieren: control.tar.* + data.tar.*
+    for deb in *.deb; do
+        ar x "$deb" data.tar.xz 2>/dev/null || ar x "$deb" data.tar.zst 2>/dev/null || ar x "$deb" data.tar.gz
+        if [ -f data.tar.xz ];  then tar -xJf data.tar.xz -C "${pkgdir}"; rm data.tar.xz;  fi
+        if [ -f data.tar.zst ]; then tar --zstd -xf data.tar.zst -C "${pkgdir}"; rm data.tar.zst; fi
+        if [ -f data.tar.gz ];  then tar -xzf data.tar.gz -C "${pkgdir}"; rm data.tar.gz;  fi
     done
-    if [[ -f libzerodds.so ]]; then
-        install -dm755 "${pkgdir}/usr/lib"
-        install -m755 libzerodds.so "${pkgdir}/usr/lib/libzerodds.so"
+    # LICENSE einmal zentral installieren
+    install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}"
+    if [ -f "${pkgdir}/usr/share/doc/zerodds-cli/LICENSE" ]; then
+        cp "${pkgdir}/usr/share/doc/zerodds-cli/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     fi
-    if [[ -f zerodds.h ]]; then
-        install -dm755 "${pkgdir}/usr/include"
-        install -m644 zerodds.h "${pkgdir}/usr/include/"
-    fi
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE" 2>/dev/null || true
 }
