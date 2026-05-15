@@ -1,6 +1,6 @@
 # Maintainer: kondzii14 <dabrowskiii.kacper@gmail.com>
 pkgname=cheetahfetch
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Blazing fast system info fetch tool written in C with inline x86-64 ASM"
 arch=('x86_64')
