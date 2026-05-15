@@ -1,7 +1,7 @@
 pkgbase = goport
 	pkgdesc = Fast concurrent TCP/UDP port scanner written in Go
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Slashas632/goPort
 	arch = x86_64
 	license = MIT

@@ -1,6 +1,6 @@
 pkgname=goport
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast concurrent TCP/UDP port scanner written in Go"
 arch=('x86_64')
 url="https://github.com/Slashas632/goPort"
