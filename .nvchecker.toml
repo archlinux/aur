@@ -1,0 +1,5 @@
+[toggl-cli]
+source = "github"
+github = "watercooler-labs/toggl-cli"
+prefix = "v"
+use_latest_release = true
