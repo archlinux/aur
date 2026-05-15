@@ -3,7 +3,7 @@
 pkgbase=lua-grail
 _rockname=${pkgbase#lua-}
 pkgname=("$pkgbase" "lua51-$_rockname" "lua52-$_rockname" "lua53-$_rockname")
-pkgver=1.0.0
+pkgver=1.1.0
 _rockrel=1
 pkgrel=1
 pkgdesc='a small Lua graphics library that lets you draw lines, polygons and curves'
@@ -16,10 +16,11 @@ makedepends=(lua
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('e5e9ce5ba84afa25442836e2230e522cfc1bd50348c21ce5adb903796c3c1244')
+sha256sums=('d45eb87911d9dbdf183b84a15105edbe4d2589a986198d601cfaf2457debe0fc')
 
 _package() {
 	cd "$_archive"
@@ -30,7 +31,7 @@ _package() {
 
 package_lua-grail() {
 	depends=("${_luadeps[@]/#/${pkgname%-*}-}")
-	_package 5.4
+	_package 5.5
 }
 
 package_lua51-grail() {
@@ -46,4 +47,9 @@ package_lua52-grail() {
 package_lua53-grail() {
 	depends=("${_luadeps[@]/#/${pkgname%-*}-}")
 	_package 5.3
+}
+
+package_lua54-grail() {
+	depends=("${_luadeps[@]/#/${pkgname%-*}-}")
+	_package 5.4
 }
