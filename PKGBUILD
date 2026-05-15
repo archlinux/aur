@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('qt5-base' 'sdl2_net')
 makedepends=('cmake' 'git')
 provides=("${_pkgname}=${pkgver%%+*}")
-conflicts=("${_pkgname}", "gbe-plus-rec", "gbe-plus-rec-git")
+conflicts=("${_pkgname}" "gbe-plus-rec" "gbe-plus-rec-git")
 source=("git+https://github.com/shonumi/gbe-plus.git")
 sha256sums=('SKIP')
 
