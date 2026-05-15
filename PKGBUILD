@@ -65,12 +65,6 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
-# Resolve includes in incomplete headers
-# Limitations: AST for source must be loaded before open incomplete header
-# CLANGD_RESOLVEINCHEADERS:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Add way to remove files from CDB via LSP
 # No need in many cases. Useful only in multi project workspaces with patched client https://github.com/clangd/vscode-clangd/pull/487
 # CLANGD_LSPREMOVEFROMCDB:
@@ -99,7 +93,6 @@
 : ${CLANGD_HOVERVIRTOFF:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERLAYOUTEVERYHERE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERNODEFS:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_RESOLVEINCHEADERS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_LSPREMOVEFROMCDB:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_IMPL_ABSTRACT_CLASS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_INLAYHINTSIGNOREEVIDENT:=$CLANGD_DEFAULT_PATCH_STATE}
@@ -129,7 +122,6 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
     'hover-virt-offset.patch'
     'hover-layout-everyhere.patch'
     'hover-no-defs.patch'
-    'resolve-incomplete-header-includes.patch'
     'lsp-remove-files-from-cdb.patch'
     'implement-abstract-class.patch'
     'inlay-hints-hide-deduced-types-ignore-evident.patch')
@@ -144,7 +136,6 @@ sha256sums=('SKIP'
     '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
     '62e38f3074f39d51524b3d43aabb3991df97e43ea4a8c20e8073c479a41d1057'  # hover-layout-everyhere
     '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
-    '03ea8cac2b932c6657973cf11989a4e34a13958fc3957dfa3e62d44f5daa2a90'  # resolve-incomplete-header-includes
     '63e951edbafca684984c6878a7650570dc20021198622e627d374692b1b6e8eb'  # lsp-remove-files-from-cdb
     '3d395094394e00def6ae7a311cf8ec85e4886336ddb1da5ef3b02d378e455f15'  # implement-abstract-class
     'a63d3afdd26692853b1ef31b2bb285ac8cd0747dac198a09998e3caf184859e6') # inlay-hints-hide-deduced-types-ignore-evident
@@ -211,11 +202,6 @@ prepare() {
     fi
     if [ "$CLANGD_INLAYHINTSIGNOREEVIDENT" != "n" ]; then
         apply_patch inlay-hints-hide-deduced-types-ignore-evident
-    fi
-
-    # Resolve patches
-    if [ "$CLANGD_RESOLVEINCHEADERS" != "n" ]; then
-        apply_patch resolve-incomplete-header-includes
     fi
 
     # User patches
