@@ -1,0 +1,4 @@
+[got-vcs]
+source = "regex"
+url = "https://gameoftrees.org/releases/portable/"
+regex = "got-portable-([\\d.]+)\\.tar"
