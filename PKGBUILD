@@ -2,7 +2,7 @@
 _base=requests
 pkgname=pypy3-${_base}
 pkgdesc="A simple, yet elegant, HTTP library"
-pkgver=2.34.0
+pkgver=2.34.2
 pkgrel=1
 arch=(any)
 url="https://github.com/psf/${_base}"
