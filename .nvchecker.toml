@@ -1,0 +1,4 @@
+[blackcat-bin]
+source = "git"
+git = "https://github.com/j-c-m/blackcat.git"
+prefix = "v"
