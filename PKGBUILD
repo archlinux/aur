@@ -1,6 +1,6 @@
 # Maintainer: wayscriber maintainers <hyprarcher@proton.me>
 pkgname=wayscriber-configurator
-pkgver=0.9.18
+pkgver=0.9.19
 pkgrel=1
 pkgdesc='GUI configurator for wayscriber (Iced)'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
     'wayscriber: integrate with the running daemon and CLI'
 )
 source=("wayscriber-$pkgver.tar.gz::https://github.com/devmobasa/wayscriber/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f92cfbb4b56d232c5f64ad3c36208a864ff35aedf9a2fb69f36f6fdac28dc9a6')
+sha256sums=('c3206833f4f4d8674e4b8ab9c79561c30648df051506ad3d29696b574d71b194')
 
 prepare() {
     cd "wayscriber-$pkgver"
