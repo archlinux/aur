@@ -4,7 +4,7 @@
 
 pkgname=xscreensaver-backends
 _srcname=xscreensaver
-pkgver=6.12
+pkgver=6.15
 pkgrel=1
 pkgdesc="Screensavers from XScreenSaver for common frontends"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(http://www.jwz.org/xscreensaver/${_srcname}-${pkgver}.tar.gz
 	LICENSE
 	migrate-xscreensaver-config.sh
 	xscreensaver-config.xsl)
-sha1sums=('ab363c2373ff3fe8436afeee344195c7ac1e7d09'
+sha1sums=('a4da33d6dec0c2684da1e398230948aaa837667b'
           '3eedb8b91b13c29df9b1fe5cbb027e1470b802d2'
           '19195ef59f0dbc61c6ed599a968213a8f0a7a5d4'
           'e561e36c7bae61c3f5da65e4fb19a22e698f4584')
@@ -42,7 +42,7 @@ build() {
 
 package() {
   cd ${_srcname}-${pkgver}
-  make install_prefix="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mkdir -p "${pkgdir}/usr/share/applications/screensavers/"
   cd "${pkgdir}/usr/share/applications/screensavers/"
@@ -52,7 +52,6 @@ package() {
   # Thank you @dpirate & @Barracuda for your patience
   rm "${pkgdir}/usr/share/applications/xscreensaver.desktop"
   rm "${pkgdir}/usr/share/applications/xscreensaver-settings.desktop"
-  rmdir "${pkgdir}/etc"
   # popsquares exists on most frontends
   if [ -d "${pkgdir}/usr/share/applications/screensavers/popsquares.desktop" ]; then
     rm "${pkgdir}/usr/share/applications/screensavers/popsquares.desktop"
