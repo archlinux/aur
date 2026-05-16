@@ -1,0 +1,22 @@
+pkgbase = pgsodium
+	pkgdesc = libsodium bindings in PostgreSQL
+	pkgver = 3.1.9
+	pkgrel = 1
+	url = https://github.com/michelp/pgsodium/
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = PostgreSQL
+	license = BSD-2-Clause
+	license = MIT
+	makedepends = postgresql
+	makedepends = clang
+	makedepends = llvm
+	depends = postgresql-libs
+	depends = libsodium
+	source = pgsodium-3.1.9.tar.gz::https://github.com/michelp/pgsodium/archive/v3.1.9.tar.gz
+	sha512sums = dacd36a754b6aef23709c4142d3936af3feb0f18ad9f1b32717d43a1f8c2638f8d732fc924e4c6cff8381560bc6cd58e4ee3777ae55e241b35b5c57fb47d5afc
+
+pkgname = pgsodium
