@@ -1,15 +1,14 @@
 # Maintainer: AstralDesigns <ianomiruka@gmail.com>
 pkgname=hyprcandy-plus
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="HyprCandy+ installer — a cohesive Hyprland desktop experience"
 arch=('any')
 url="https://github.com/AstralDesigns/candyinstall"
 license=('custom')
-depends=('bash' 'git' 'curl')
+depends=('bash' 'git' 'curl' 'kitty' 'hyprland' 'quickshell-git')
 optdepends=(
-    'quickshell: required for the bar and control center'
-    'hyprland: the compositor HyprCandy+ is built for'
+    'hyprland-git: latest development build of Hyprland (replaces hyprland)'
 )
 # Source is the install.sh attached to the GitHub release.
 # Update pkgver + the sha256sum when you cut a new release.
@@ -18,6 +17,7 @@ source=("install.sh::https://github.com/AstralDesigns/candyinstall/releases/down
 sha256sums=('SKIP'
             'SKIP')
 install=hyprcandy-plus.install
+
 # No build step needed — pure shell scripts
 build() {
     :

@@ -1,6 +1,6 @@
 pkgbase = hyprcandy-plus
 	pkgdesc = HyprCandy+ installer — a cohesive Hyprland desktop experience
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/AstralDesigns/candyinstall
 	install = hyprcandy-plus.install
@@ -9,10 +9,12 @@ pkgbase = hyprcandy-plus
 	depends = bash
 	depends = git
 	depends = curl
-	optdepends = quickshell: required for the bar and control center
-	optdepends = hyprland: the compositor HyprCandy+ is built for
-	source = install.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v1.0.3/install.sh
-	source = Candy_Update.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v1.0.3/Candy_Update.sh
+	depends = kitty
+	depends = hyprland
+	depends = quickshell-git
+	optdepends = hyprland-git: latest development build of Hyprland (replaces hyprland)
+	source = install.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v1.0.4/install.sh
+	source = Candy_Update.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v1.0.4/Candy_Update.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
 
