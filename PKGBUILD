@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=11.0.0
 _xaliaver=0.4.9
-pkgrel=1
+pkgrel=2
 epoch=1
 
 source=(
@@ -44,7 +44,6 @@ depends=(
 #  lapack          lib32-lapack
   libgudev        lib32-libgudev
   libpcap         lib32-libpcap
-  libsoup         lib32-libsoup
   libunwind       lib32-libunwind
   libvpx          lib32-libvpx
   libx11          lib32-libx11
