@@ -1,0 +1,25 @@
+pkgbase = python-textual-speedups
+	pkgdesc = Optional Rust speedups for Textual
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/willmcgugan/textual-speedups
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/textual_speedups/textual_speedups-0.2.1.tar.gz
+	source = LICENSE
+	sha256sums = 72cf0f7bdeede015367b59b70bcf724ba2c3080a8641ebc5eb94b36ad1536824
+	sha256sums = ee095783c1813f4d83aa1ec37319051dc165e01819529d383d30a79d4fe52d24
+
+pkgname = python-textual-speedups
