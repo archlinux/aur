@@ -1,4 +1,5 @@
 pkgbase = smart-unlock
+	pkgdesc = Auto session unlock daemon
 	pkgver = 0.1.4
 	pkgrel = 2
 	url = https://github.com/agura-lex/smart-unlock

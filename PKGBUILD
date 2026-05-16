@@ -2,7 +2,7 @@
 pkgname=smart-unlock
 pkgver=0.1.4
 pkgrel=2
-pkgdesc=""
+pkgdesc="Auto session unlock daemon"
 arch=('any')
 url="https://github.com/agura-lex/smart-unlock"
 license=('GPL-2.0')
