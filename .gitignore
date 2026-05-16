@@ -3,3 +3,4 @@ src
 *.pkg*
 *.tar.gz
 LICENSE
+*.log

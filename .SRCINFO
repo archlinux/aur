@@ -1,8 +1,9 @@
 pkgbase = nushell-plugin-hcl
 	pkgdesc = A nushell plugin for parsing Hashicorp Configuration Language file format
 	pkgver = 0.112.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crates.io/crates/nu_plugin_hcl
+	install = nushell-plugin-hcl.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT

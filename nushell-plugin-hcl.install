@@ -1,0 +1,30 @@
+post_install() {
+  cat <<EOF
+
+==> To register this plugin with Nushell, run the following from inside nu:
+
+      plugin add /usr/bin/nu_plugin_hcl
+      plugin use hcl
+
+EOF
+}
+
+post_upgrade() {
+  cat <<EOF
+
+==> nu_plugin_hcl was updated. Re-register it from inside nu to refresh signatures:
+
+      plugin add /usr/bin/nu_plugin_hcl
+
+EOF
+}
+
+post_remove() {
+  cat <<EOF
+
+==> If you registered nu_plugin_hcl with Nushell, you may want to remove it:
+
+      plugin rm hcl
+
+EOF
+}
