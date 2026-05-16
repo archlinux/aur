@@ -1,5 +1,5 @@
 pkgname=cigtft
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 url="https://gitlab.com/PieyIsAPie/cigtft"
 pkgdesc="A small streaming file transfer tool for the CLI."
