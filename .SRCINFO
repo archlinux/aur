@@ -1,7 +1,7 @@
 pkgbase = claude-code-cost-calc-git
 	pkgdesc = Estimate Claude Code API spend by scanning local session files (development version)
 	pkgver = r1.cac03ce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ckhordiasma/cccc
 	arch = x86_64
 	license = GPL-3.0-or-later
