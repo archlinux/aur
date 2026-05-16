@@ -1,8 +1,5 @@
 [perry-bin]
-source = "npm"
-npm = "@perryts/perry"
-
-# source = "github"
-# github = "PerryTS/perry"
-# use_latest_release = true
-# prefix = "v"
+source = "github"
+github = "PerryTS/perry"
+use_max_tag = true
+prefix = "v"
