@@ -9,7 +9,7 @@ pkgbase = nmlinux
 	makedepends = python-installer
 	makedepends = python-hatchling
 	depends = python>=3.11
-	depends = python-pyside6
+	depends = pyside6
 	depends = python-ptyprocess
 	depends = python-pyte
 	depends = networkmanager

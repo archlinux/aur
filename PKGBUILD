@@ -8,7 +8,7 @@ url="https://github.com/thongor77/nmlinux"
 license=('GPL2')
 depends=(
     'python>=3.11'
-    'python-pyside6'
+    'pyside6'
     'python-ptyprocess'
     'python-pyte'
     'networkmanager'
