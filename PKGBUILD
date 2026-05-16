@@ -6,7 +6,7 @@ _source_type='pypi-releases'
 _pypi_package='resvg_py'
 
 pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver%%.post*}"
+pkgver="${_upstreamver}"
 pkgrel=1
 pkgdesc="High level wrapper of resvg for python"
 
