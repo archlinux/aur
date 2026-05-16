@@ -13,19 +13,12 @@ lwjgl_path="/tmp/${pkg}/${USER}/lwjgl-natives"
 mkdir -p "$lwjgl_path"
 
 share_dir="${HOME}/.local/share/${pkg}"
-workdir="${share_dir}/var"
+workdir="$share_dir"
 mkdir -p "$workdir"
 
 # Symlink read-only assets to working directory
 ln -sfn "${opt_root}/data" "${workdir}/data"
 ln -sfn "${opt_root}/data/mods" "${workdir}/mods"
-
-# Workaround for #4400
-# TODO Delete after fix
-bad_place="${workdir}${share_dir}"
-mkdir -p "${share_dir}/saves"
-mkdir -p "$bad_place"
-ln -sfn "${share_dir}/saves" "${bad_place}/saves"
 
 cd "$workdir"
 

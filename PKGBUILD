@@ -2,16 +2,13 @@
 # Based on shattered-pixel-dungeon package
 
 pkgname=remixed-dungeon
-pkgver=32.3.beta.6
+pkgver=32.3.fix.1
 pkgrel=1
 pkgdesc='Classig roguelike game with pixel graphics, remix of Pixel Dungeon'
 arch=(any)
 url='https://wiki.nyrds.net/'
-license=(GPL-3.0-only)
-depends=(
-  'java-runtime>=17'
-  hicolor-icon-theme
-)
+license=('GPL-3.0-only')
+depends=('sh' 'java-runtime>=17')
 makedepends=(
   jdk17-openjdk
   gradle8
@@ -23,8 +20,8 @@ source=(
   "${pkgname}.desktop"
 )
 b2sums=(
-  'f7e9ea725d1b416e810008b1f7d4332de31527aa93af04b2a82d8c4696f0c67080d8881c7ad062190a499e50c53c3edb0b977fa5df98723a92659826cb812371'
-  'a05e91c8d04af521014e7287cba6b02b53c07fcad33701917075f17e4e1427146b6c056ad3b0b8ef56267fc3ef6ddf3dfb87732a7b9651da33e8fe7a24a36611'
+  '7bee58abb066ecb386c1fcfea5f8be6f39028b660b87b62b98c0480a3fbb010d1fba00def9a29e981b6816d5154bb5e973daa110db892473843c5c8014104926'
+  'f6b83b27e643536d51d0a2e1acaa8efff58fee65f31e495ee10c6d8fb2efad0eedd50788d7c7e632712e4112e229814ad7210cae0f7298d6bda61b595f126145'
   '58e8e707e57607fcb9a831abadd6412bba85b39e885d7526a84e028960c8e1a631c5a8c1475b5448e4bf506331f5948dd33803baba229dc290dbb5a4326c8410'
 )
 _game_srcdir="${pkgname}-${pkgver}"
