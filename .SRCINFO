@@ -6,6 +6,6 @@ pkgbase = flix-bin
 	arch = x86_64
 	license = custom:proprietary
 	source = flix-bin-2.0.6.111-1-x86_64.pkg.tar.zst::https://github.com/Tobiichi-Origuchi/flix-bin/releases/download/v2.0.6.111/flix-bin-2.0.6.111-1-x86_64.pkg.tar.zst
-	sha256sums = 5495e9fe167ec23b4fde517472452984536ee165585b0637ead2c4675b49041c
+	sha256sums = 2a4073a785026ad1ad35e5ecaee2c9bef8b610988030865d9153da7e32e7ac6a
 
 pkgname = flix-bin
