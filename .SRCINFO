@@ -13,7 +13,9 @@ pkgbase = ordinary-paint-bin
 	options = !debug
 	source = https://github.com/wz-ordinary-ventures/ordinary-paint-releases/releases/download/v0.1.2/ordinary-paint-0.1.2-linux-x64.tar.gz
 	source = LICENSE
+	source = ordinary-paint.png
 	sha256sums = 69ce629bbbcd0e8727a35121c5784f56fd485d1cad76a99f2c3d87623ebf176a
 	sha256sums = SKIP
+	sha256sums = 41a8952bb4377907b680cbbeca25b31cf3f1cc607cc0f5f1be4c6c16bbbcd9a3
 
 pkgname = ordinary-paint-bin

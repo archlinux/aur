@@ -11,9 +11,11 @@ conflicts=('ordinary-paint')
 depends=('gtk3' 'nss' 'alsa-lib')
 options=(!debug)
 source=("https://github.com/wz-ordinary-ventures/ordinary-paint-releases/releases/download/v${pkgver}/ordinary-paint-${pkgver}-linux-x64.tar.gz"
-        "LICENSE")
+        "LICENSE"
+        "ordinary-paint.png")
 sha256sums=('69ce629bbbcd0e8727a35121c5784f56fd485d1cad76a99f2c3d87623ebf176a'
-            'SKIP')
+            'SKIP'
+            '41a8952bb4377907b680cbbeca25b31cf3f1cc607cc0f5f1be4c6c16bbbcd9a3')
 
 package() {
   local _appdir="${srcdir}/ordinary-paint-${pkgver}-linux-x64"
@@ -30,10 +32,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /opt/ordinary-paint/ordinary-paint "${pkgdir}/usr/bin/ordinary-paint"
 
-  local _icons_dir="${srcdir}/icons"
-  for _size in 16 24 32 48 64 128 192 256 512; do
-    install -Dm644 "${_icons_dir}/ordinary-paint-${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/ordinary-paint.png"
-  done
+  install -Dm644 "${srcdir}/ordinary-paint.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/ordinary-paint.png"
 
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
