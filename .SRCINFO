@@ -1,6 +1,6 @@
 pkgbase = tt-flash
 	pkgdesc = Tenstorrent Firmware Update Utility
-	pkgver = 3.6.5
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/tenstorrent/tt-flash
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = tt-flash
 	depends = python-tabulate
 	depends = python-tomli
 	depends = python-tt-tools-common
-	provides = tt-flash=3.6.4
+	provides = tt-flash=3.6.5
 	conflicts = tt-flash
-	source = tt-flash::git+https://github.com/tenstorrent/tt-flash.git#tag=v3.6.5
-	sha256sums = 511b8b806a2aeed65e7ec1d0cc69f4e35ab10a3241aad802d025d4986dec6b0a
+	source = tt-flash::git+https://github.com/tenstorrent/tt-flash.git#tag=v3.7.0
+	sha256sums = 79e534608da7dc1d418c8342c172e85e615a5f847e8f626db0db7a72d30307cc
 
 pkgname = tt-flash
