@@ -1,0 +1,17 @@
+pkgbase = gohan
+	pkgdesc = A simple, fast static site generator written in Go with differential builds
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = https://github.com/bmf-san/gohan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = gohan
+	conflicts = gohan-bin
+	conflicts = gohan-git
+	source = gohan-1.1.9.tgz::https://github.com/bmf-san/gohan/archive/v1.1.9.tar.gz
+	sha256sums = 642f866a9ffbed74135e8cf0ea373a143c652b49d64a8e2e4cd9faa9d5d696cb
+
+pkgname = gohan
