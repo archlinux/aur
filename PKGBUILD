@@ -1,6 +1,6 @@
 # Maintainer: Enbeon <actuallyenbeon at gmail dot com>
 pkgname=megadot
-pkgver=4.5.1_m.10
+pkgver=4.5.1_m.12
 pkgrel=1
 pkgdesc="MegaCrit fork of Godot Engine"
 arch=('any')
@@ -14,12 +14,12 @@ source=(
 	"$pkgname-$pkgver.zip::https://megadot.megacrit.com/${pkgver//_/-}/megadot-${pkgver//_/-}-linux-x86_64-editor-csharp.zip"
 	"megadot"
 	"megadot.desktop"
-	"godot_icon.png::https://godotengine.org/assets/press/icon_color.png"
+	"megadot_icon.png"
 )
-sha256sums=('7e6a1ff2f33827038506580999b7d55666c75b499c32708a312ba00085050414'
+sha256sums=('2e39b200700b45367b9b501c67fd7796bfe996674ac413ce44222292b3c1e8ca'
             '4301b5e7bf07816ae7c39bba9974085638f09789601926b1083b52140acc84b0'
             'bee26e95a693369df0fe8c6e942063fec108bb29eed29c7351902ed8cea9ce28'
-            'cc881332ee52deb4f4e9ae13a523fc7df06a0c2fd31bbb17fafa5931f2ab72d6')
+            '109a3365495052c482a674e54f107dd2ab5a0bc339d0afd75b1357323189d8ca')
 
 prepare() {
 	chmod -R u+w "$srcdir/GodotSharp"
@@ -31,5 +31,5 @@ package() {
 	chmod -R u-w "$pkgdir/usr/lib/$pkgname/GodotSharp"
 	install -Dm755 "megadot" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "megadot.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "godot_icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "megadot_icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
