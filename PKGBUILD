@@ -4,7 +4,7 @@
 pkgname=cosmic-comp-gaming
 pkgver=1.0.13.beta.r7
 pkgrel=1
-pkgdesc="Compositor for the COSMIC desktop environment with gaming patches that should fix cursor problem and fullscreen function"
+pkgdesc="Compositor for the COSMIC desktop environment with gaming patches that support pointer-constraints-v1, pointer-warp-v1, commit-timing-v1, fifo-v1 and respect fullscreen function"
 arch=('x86_64' 'aarch64')
 url="https://github.com/skygrango/cosmic-comp"
 license=('GPL-3.0-only')
