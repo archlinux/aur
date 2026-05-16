@@ -20,7 +20,7 @@ PATH_HOME_SHARE_ROOT = (
     else Path.home() / ".local/share"
 )
 
-PATH_HOME_SHARE_SHAMELA_DIR = PATH_HOME_SHARE_ROOT / "Shamela"
+PATH_HOME_SHARE_SHAMELA_DIR = PATH_HOME_SHARE_ROOT / "shamela"
 PATH_HOME_SHARE_SHAMELA_APP_DIR = PATH_HOME_SHARE_SHAMELA_DIR / "app"
 PATH_HOME_SHARE_SHAMELA_DATABASE_DIR = PATH_HOME_SHARE_SHAMELA_DIR / "database"
 PATH_HOME_SHARE_SHAMELA_DATABASE_USER_DIR = (
@@ -226,13 +226,13 @@ Install:
   shamela install [--seed /path/to/shamela-linux.tar.xz]  (no launch)
 
 User data (books, annotations, settings — portable across platforms):
-  ~/.local/share/Shamela/database/
+  ~/.local/share/shamela/database/
 
 To carry over data from Windows or macOS, place your database/ backup at the
 path above before first launch. See shamela.ws for migration instructions.
 
 To reseed only the application files (keeps books and settings intact):
-  rm -rf ~/.local/share/Shamela/app ~/.local/share/Shamela/shamela.AppImage
+  rm -rf ~/.local/share/shamela/app ~/.local/share/shamela/shamela.AppImage
   shamela install
 """.strip()
 

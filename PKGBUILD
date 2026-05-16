@@ -1,6 +1,6 @@
 pkgname=shamela-native
 pkgver=1447.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Al-Maktaba Al-Shamela — Arabic and Islamic digital library"
 arch=('x86_64')
 url="https://shamela.ws"
