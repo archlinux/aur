@@ -11,10 +11,10 @@ pkgbase = libretro-hatari-enhanced-git
 	depends = zlib
 	depends = glibc
 	depends = libretro-core-info
-	source = git+https://github.com/libretro/hatari.git
+	options = !buildflags
+	source = git+https://github.com/libretro/hatari.git#commit=6aa7c707
 	source = capsimage.patch
 	sha256sums = SKIP
 	sha256sums = 9f53cc41753b285792295bcd56423223e1d24efcbc3c81055dbbc15812472a2d
 
 pkgname = libretro-hatari-enhanced-git
-
