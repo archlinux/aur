@@ -1,0 +1,25 @@
+pkgbase = nodepdf-bin
+	pkgdesc = Lightweight, fast desktop PDF viewer built with Electron and React
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/remdph/node-pdf
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = mesa
+	depends = nspr
+	depends = nss
+	depends = xdg-utils
+	optdepends = libappindicator-gtk3: tray icon support
+	provides = nodepdf
+	conflicts = nodepdf
+	options = !strip
+	options = !debug
+	source = nodepdf-bin-0.1.8.deb::https://github.com/remdph/node-pdf/releases/download/v0.1.8/node-pdf_0.1.8_amd64.deb
+	sha256sums = af09e194c00ae8e20729c21cd91073b02c9046741e0ede441a4fad3865d7635e
+
+pkgname = nodepdf-bin
