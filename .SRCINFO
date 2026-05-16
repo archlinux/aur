@@ -1,0 +1,19 @@
+pkgbase = kurai-cli
+	pkgdesc = 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
+	pkgver = 4.7.0
+	pkgrel = 1
+	url = https://codeberg.org/gamestime102/kurai-cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = mpv
+	optdepends = rofi: X11 kullanıcıları için GUI
+	optdepends = rofi-wayland: Wayland kullanıcıları için GUI
+	optdepends = yt-dlp: Anime indirme özelliği için
+	optdepends = youtube-dl: Anime indirme özelliği için
+	source = kurai-cli-4.7.0.tar.gz::https://codeberg.org/gamestime102/kurai-cli/archive/v4.7.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = kurai-cli
