@@ -1,7 +1,7 @@
 # Maintainer: Enbeon <actuallyenbeon at gmail dot com>
 _pkgname=jd-gui-duo
 pkgname=jd-gui-duo-bin
-pkgver=2.0.111
+pkgver=2.0.112
 pkgrel=1
 pkgdesc="Binary release of jd-gui-duo, a 2-in-1 JAVA decompiler based on JD-CORE v0 and v1"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 	"jd-gui-duo.desktop"
 	"jd_icon_128.png"
 )
-sha256sums=('2b6c5cd9e0f53ae0ba0e146ce32fbdbcfef5a17735ab67db5a1b0cde7db93142'
+sha256sums=('6bf41ade2222553436c812cbe86b20c4904e395fa270150581ca7d7e2ba50fc6'
             '7e3c81892a95aa411afe7a5dc93b5e7a891b1c52fcc65670a08b5b5618b8aafc'
             'd40a09c9c228b55dcb54823b878cd180521386a11abffed478ce89439fd4e184'
             '62c763642af8cbfd1e00dc8763dcc92a66eefc7aceaa4069d29909bfc197240a')
