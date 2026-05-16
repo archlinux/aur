@@ -22,7 +22,7 @@ source=(
     "campus-lms-daemon.service"
 )
 sha256sums=(
-    'sha256:491e5a3128cedbbc57d4a7b034247ef66c2acdab601ba7100e22ededad0f9a84'
+    '491e5a3128cedbbc57d4a7b034247ef66c2acdab601ba7100e22ededad0f9a84'
     'SKIP'
     'SKIP'
 )

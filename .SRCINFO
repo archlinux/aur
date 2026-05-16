@@ -16,7 +16,7 @@ pkgbase = campus-lms-bin
 	source = campus-lms::https://github.com/Kenura-R-Gunarathna/campus-lms/releases/download/v0.3.1/campus-lms-linux-x86_64
 	source = campus-lms.desktop
 	source = campus-lms-daemon.service
-	sha256sums = sha256:491e5a3128cedbbc57d4a7b034247ef66c2acdab601ba7100e22ededad0f9a84
+	sha256sums = 491e5a3128cedbbc57d4a7b034247ef66c2acdab601ba7100e22ededad0f9a84
 	sha256sums = SKIP
 	sha256sums = SKIP
 
