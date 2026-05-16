@@ -1,11 +1,12 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-tui-nightly-bin
-pkgver=nightly.20260516.172124
+pkgver=nightly.20260516.182554
 pkgrel=1
 pkgdesc="Terminal UI for unbill (nightly)"
 arch=('x86_64')
 url="https://github.com/unbill-project/unbill"
 license=('MIT' 'Apache-2.0')
+depends=('unbill-daemon-nightly')
 provides=('unbill-tui')
 conflicts=('unbill-tui' 'unbill-tui-bin')
 _tag=${pkgver//./-}
