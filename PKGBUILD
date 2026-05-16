@@ -9,7 +9,7 @@ source=(
   "flix-bin-2.0.6.111-1-x86_64.pkg.tar.zst::https://github.com/Tobiichi-Origuchi/flix-bin/releases/download/v2.0.6.111/flix-bin-2.0.6.111-1-x86_64.pkg.tar.zst"
 )
 sha256sums=(
-  'f0804293933f37f8a8b5f42b911fe46eb27cf83339b8df22c6bb7f5a02e872eb'
+  '23ffb423bb534f570f31a6afa9c86d8f51053ff72b2018796f4092310259c7f6'
 )
 noextract=(
   'flix-bin-2.0.6.111-1-x86_64.pkg.tar.zst'
