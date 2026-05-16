@@ -15,7 +15,7 @@ UE_SDK_VERSION="native-linux-v26_clang-20.1.8-rockylinux8"
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
-makedepends=('git' 'openssh' 'sed' 'grep' 'glibc' 'wget' 'rsync' 'clang')
+makedepends=('git' 'openssh' 'sed' 'grep' 'glibc' 'wget' 'rsync')
 depends=('sdl3' 'python' 'dotnet-runtime' 'dotnet-sdk' 'vulkan-icd-loader' 'lld' 'xdg-user-dirs' 'dos2unix' 'openssl' 'steam' 'coreutils' 'findutils')
 optdepends=('polly: for potentially increased performance'
             'qt5-base: qmake build system for projects'
@@ -113,19 +113,6 @@ if [[ -z "${UE_GAME_CONFIGURATIONS}" ]]; then
   export UE_GAME_CONFIGURATIONS="Development;Shipping"
 fi
 
-# Optional BuildGraph architecture override: x64 or arm64
-## Leave unset to auto-detect from host architecture
-if [[ -n "${UE_BUILD_ARCH_OVERRIDE}" && "${UE_BUILD_ARCH_OVERRIDE}" != "x64" && "${UE_BUILD_ARCH_OVERRIDE}" != "arm64" ]]; then
-  msg "Invalid UE_BUILD_ARCH_OVERRIDE='${UE_BUILD_ARCH_OVERRIDE}'. Expected 'x64' or 'arm64'. Ignoring override."
-  unset UE_BUILD_ARCH_OVERRIDE
-fi
-
-# Use System Clang (Arch's clang) instead of bundled Rocky Linux clang to avoid glibc incompatibility
-## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
-if [[ "${UE_USE_SYSTEM_CLANG}" != "true" && "${UE_USE_SYSTEM_CLANG}" != "false" ]]; then
-  export UE_USE_SYSTEM_CLANG=true
-fi
-
 # Change this if you want an alternative non-default logo for UE5's desktop icon; the default logo is enabled by default
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
 if [[ "${UE_USE_DEFAULT_LOGO_AT_INSTALL}" != "1" && "${UE_USE_DEFAULT_LOGO_AT_INSTALL}" != "0" ]]; then
@@ -219,14 +206,9 @@ _ue_map_build_arch() {
   esac
 }
 
-if [[ -n "${UE_BUILD_ARCH_OVERRIDE}" ]]; then
-  _ue_build_arch="${UE_BUILD_ARCH_OVERRIDE}"
-else
-  _ue_build_arch="$(_ue_map_build_arch "${_ue_arch}")"
-fi
+_ue_build_arch="$(_ue_map_build_arch "${_ue_arch}")"
 
 if _ue_is_arch_auto_enabled "${UE_ARCH_AUTO}"; then
-
   if [[ "${_ue_arch}" == "x86_64" ]]; then
     _ue_detected_march="$(_ue_detect_x86_64_march)"
 
@@ -270,7 +252,6 @@ prepare() {
   fi
 
   local _ue_install_path="/${UE_INSTALL_DIR#/}"
-  local _ue_arch_label="${_ue_build_arch:-unknown}"
   local _ue_arch_detail=""
   local _ue_use_system_clang="no"
   local _ue_ddc_text="no"
@@ -278,22 +259,6 @@ prepare() {
   local _ue_default_logo_text="yes"
   local _ue_target_platforms=()
   local _ue_platforms_csv="none"
-
-  if [[ "${_ue_arch_label}" == "x64" ]]; then
-    if [[ -n "${_ue_detected_march}" ]]; then
-      _ue_arch_detail=" (${_ue_detected_march})"
-    elif [[ ${CFLAGS} =~ -march=([^[:space:]]+) ]]; then
-      _ue_arch_detail=" (${BASH_REMATCH[1]})"
-    else
-      _ue_arch_detail=" (x86_64)"
-    fi
-  elif [[ "${_ue_arch_label}" == "arm64" ]]; then
-    if [[ ${CFLAGS} =~ -march=([^[:space:]]+) ]]; then
-      _ue_arch_detail=" (${BASH_REMATCH[1]})"
-    else
-      _ue_arch_detail=" (aarch64)"
-    fi
-  fi
 
   [[ "${UE_USE_SYSTEM_CLANG}" == "true" ]]          && _ue_use_system_clang="yes"
   [[ "${UE_WITH_DDC}" == "true" ]]                  && _ue_ddc_text="yes"
@@ -309,7 +274,7 @@ prepare() {
   [[ "${UE_WITH_IOS}" == "true" ]]       && _ue_target_platforms+=("iOS")
 
   if (( ${#_ue_target_platforms[@]} > 0 )); then
-    local IFS=", "
+    local IFS=";"
     _ue_platforms_csv="${_ue_target_platforms[*]}"
   fi
 
@@ -317,8 +282,6 @@ prepare() {
   msg "Unreal Engine ${pkgver} build options summary:"
   msg ''
   msg "- End package installation path:            ${_ue_install_path}"
-  msg "- Target architecture build:                ${_ue_arch_label}${_ue_arch_detail}"
-  msg "- Use system clang:                         ${_ue_use_system_clang}"
   msg "- Integrate prebuilt shader cache:          ${_ue_ddc_text}"
   msg ''
   msg "- Target platforms supported for export:    ${_ue_platforms_csv}"
@@ -334,8 +297,9 @@ prepare() {
     cd "${pkgname}" || return
   else
     cd "${pkgname}" || return
-    CURRENT_CLONED_VERSION="$(git describe --tags)"
-    if [[ "${CURRENT_CLONED_VERSION}" != "${pkgver}-release" ]]; then
+
+    current_cloned_ver="$(git describe --tags --always)"
+    if [[ "${current_cloned_ver}" != "${pkgver}-release" ]]; then
       cd ..
       rm -rf "${pkgname}"
       git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${pkgname}"
@@ -406,17 +370,10 @@ build() {
     exit $?
   fi
 
-  local _ue_buildgraph_arch_arg=()
-
-  if [[ -n "${_ue_build_arch}" ]]; then
-    _ue_buildgraph_arch_arg=(-set:BuildArchitecture="${_ue_build_arch}")
-  fi
-
   "Engine/Build/BatchFiles/RunUAT.sh" BuildGraph \
     -target="Make Installed Build Linux" \
     -script=Engine/Build/InstalledEngineBuild.xml \
     -nosign \
-    "${_ue_buildgraph_arch_arg[@]}" \
     -set:WithDDC="${UE_WITH_DDC}" \
     -set:WithLinux="${UE_WITH_LINUX}" \
     -set:WithLinuxArm64="${UE_WITH_LINUX_ARM}" \
@@ -426,8 +383,7 @@ build() {
     -set:WithIOS="${UE_WITH_IOS}" \
     -set:WithTVOS="${UE_WITH_TVOS}" \
     -set:GameConfigurations="${UE_GAME_CONFIGURATIONS}" \
-    -set:WithFullDebugInfo="${UE_WITH_FULL_DEBUG_INFO}" \
-    -set:WithSystemClang="${UE_USE_SYSTEM_CLANG}"
+    -set:WithFullDebugInfo="${UE_WITH_FULL_DEBUG_INFO}"
 
   if [[ $? -ne 0 ]]; then
     msg "Error: Build failed; try searching the output for suspicious messages." >&2
