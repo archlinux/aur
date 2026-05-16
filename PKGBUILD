@@ -1,6 +1,6 @@
 # Maintainer: gamestime102 < >
 pkgname=dark-dream
-pkgver=1
+pkgver=1.0
 pkgrel=1
 pkgdesc="SDL2 and OpenGL for wirite FPS games: Dark-Dream"
 arch=('x86_64')

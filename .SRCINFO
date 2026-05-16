@@ -1,6 +1,6 @@
 pkgbase = dark-dream
 	pkgdesc = SDL2 and OpenGL for wirite FPS games: Dark-Dream
-	pkgver = 1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://codeberg.org/gamestime102/Dark-Dream
 	arch = x86_64
