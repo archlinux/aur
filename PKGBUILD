@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=kiro-ide
-pkgver=0.12.184
+pkgver=0.12.200
 pkgrel=1
 epoch=1
 pkgdesc='An agentic AI IDE with spec-driven development from prototype to production'
@@ -51,8 +51,8 @@ source=("$pkgname-$pkgver.deb::$_baseurl/$pkgname-$pkgver-stable-linux-x64.deb"
         "$pkgname-$pkgver-deb-signature.bin::$_baseurl/signature.bin"
         "$pkgname-$pkgver-certificate.pem::$_baseurl/certificate.pem"
         "Kiro-LICENSE.txt")
-b2sums=('5656e33b1cf1db244cd6469a6991c917a9102b24d750a9abfe0a8f62a50ffe10ab98c67ce34277a45d8d226fdd413dcf38dbd3c99069bab816745a4baa780ab7'
-        '6e99be2f1631eade992a984b776e8ec6379822f408cfe25ad9fdbc288aed043331d0e73556bcce9b45f6242e84b0dcc385635e5de3617c6c7c90fa47c4561be8'
+b2sums=('5897243ee92be8b4bfd4007b1753a9b6205c3b0f812778c3a01ac05740e30a2305b8600dfa6af4ecf7d8746f12981d5b391390f25b1816f244fcbc0f0339f0af'
+        '05807601cf669bc9e2dc3057e5a7af37931bfe5010e1e5090cdf0f7e3af1dcb873d99b54679934b21793fa98ed7c2f509330842c8d998b6b917fef1399f033e9'
         '4cba4d51523a883653b28e04abc4a0e444d7672636153be9c99058b4469137ab2c591466d9452c5471e1577c6ce9a54edca28f14c01e6d66b36b72eb53f92bc8'
         '4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01')
 
