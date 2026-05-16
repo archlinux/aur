@@ -1,18 +1,20 @@
 pkgbase = orcaqm
 	pkgdesc = Ab initio, DFT, and semi-empirical SCF-MO package
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://www.faccts.de/orca/
 	arch = x86_64
 	license = custom:orca
 	makedepends = xz
 	depends = openmpi
-	noextract = orca_6_1_0_linux_x86-64_shared_openmpi418.tar.xz
+	noextract = orca_6_1_1_linux_x86-64_shared_openmpi418.tar.xz
 	options = staticlibs
 	options = !strip
-	source = local://orca_6_1_0_linux_x86-64_shared_openmpi418.tar.xz
+	source = local://orca_6_1_1_linux_x86-64_shared_openmpi418.tar.xz
 	source = orcaqm
-	b2sums = 9434ae80e628e6e153d5aaf50da987c5e088b1c4540a4a441cfe7564ae5b6796b6ba9cd2e7634768f6cdd6bb2f938a7d8ee7e781c6321522f34028b32fa3311b
+	sha1sums = 98490e09ad999792bd23ed7a06a6799aef01fb5a
+	sha1sums = 76de64338d300b9e2fcc65c4bd7d2b0f4062049f
+	b2sums = 24d63b02f673b0ba06cbb65d5fa1c6b3b4562e421ddee9104698410aa01278e2f3d931ae21c58d98868da43d666ac156777f1e63d0d441d4962b8484c35ce38a
 	b2sums = e580e58eb075e56ee69a9ad20010237f2158b0c92e5eb94d7ea60f3e60677062db64926f42da3cb52652d4515de81fa83ecc150918a17bb4615b20d66c24f23c
 
 pkgname = orcaqm
