@@ -1,23 +1,24 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 # Contributor: Emil Renner Berthing <aur@esmil.dk>
 
+# Maintainer: SummerBreeze630 <xzwf2003@163.com>
+
 _target=riscv64-unknown-elf
 pkgname=$_target-picolibc
-pkgver=1.8.6
+pkgver=1.8.11
 pkgrel=1
 pkgdesc='Fork of newlib with stdio bits from avrlibc'
-conflicts=("$_target-newlib")
 arch=('i686' 'x86_64')
 url='https://github.com/picolibc/picolibc'
 license=('BSD')
 makedepends=("$_target-gcc" 'meson')
 source=("picolibc-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('42696b358c249cfd6e13db672438d6549873ad26816823236e7c9447dbd01db0')
+sha256sums=('28e60a2d218da70c71278708887adc5ecb0843ed31579dcb691e82d7567c203f')
 options=(!strip !buildflags)
 
 build() {
   meson \
-    --prefix="/usr/$_target" \
+    --prefix="/usr/$_target/picolibc" \
     --buildtype=plain \
     --cross-file "picolibc-$pkgver/scripts/cross-${_target}.txt" \
     "picolibc-$pkgver" build
@@ -27,7 +28,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/picolibc-$pkgver/COPYING."{GPL2,NEWLIB,picolibc}
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/picolibc-$pkgver/COPYING.picolibc"
 }
 
 # vim: set ts=2 sw=2 et:
