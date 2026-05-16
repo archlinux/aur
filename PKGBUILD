@@ -7,7 +7,7 @@
 ## GPG key: https://github.com/jsirois.gpg
 
 pkgname=python-pex
-pkgver=2.94.0
+pkgver=2.95.0
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -15,23 +15,25 @@ url='https://docs.pex-tool.org/'
 license=('Apache-2.0')
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-uv' 'python-uv-build' 'python-setuptools')
-# checkdepends=('python-tox')
+checkdepends=('python-pytest')
 changelog=CHANGES.md
 provides=('pex')
 replaces=('pex')
 source=("$pkgname::git+https://github.com/pex-tool/pex#tag=v$pkgver?signed")
 validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')
-sha256sums=('c4e282c939d85692e04ede6f21f4730158182de8f4620fbd50b1645236d62c28')
+sha256sums=('dc856d6686897964425c51aeea334b87826a9fd0100b587a5b8bea5495efa718')
 
 build() {
     cd "$pkgname"
     python -m build --wheel --no-isolation
 }
 
-# check() {
-#   cd "$pkgname"
-#   tox -e check
-# }
+check() {
+    cd "$pkgname"
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -P -m pytest -x -o addopts=""
+}
 
 package() {
     cd "$pkgname"
