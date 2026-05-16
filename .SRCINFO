@@ -1,6 +1,6 @@
 pkgbase = hyprland-agent
 	pkgdesc = Local-first agentic desktop controller for Hyprland / Wayland
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/gianlucamazza/hyprland-agent
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = hyprland-agent
 	optdepends = foot: terminal emulator used by the hyprland-agent-tui.desktop launcher
 	provides = hyprland-agent
 	conflicts = hyprland-agent
-	source = hyprland-agent-1.4.0.tar.gz::https://github.com/gianlucamazza/hyprland-agent/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 595ed11d9abf18af3a4721341d95672c0f08cdf3e800994be0be8fb47b05d212
+	source = hyprland-agent-1.5.0.tar.gz::https://github.com/gianlucamazza/hyprland-agent/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 9cddfe8013f74e47cbe37220e3c84192f42c508093f5db8889131b401470ef54
 
 pkgname = hyprland-agent
