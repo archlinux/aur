@@ -60,4 +60,7 @@ package() {
 
     install -Dm644 "$srcdir/campus-lms-daemon.service" \
         "$pkgdir/usr/lib/systemd/user/campus-lms-daemon.service"
+
+    install -Dm644 "assets/icon.png" \
+        "$pkgdir/usr/share/icons/hicolor/512x512/apps/campus-lms.png"
 }
