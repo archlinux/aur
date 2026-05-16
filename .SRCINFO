@@ -1,0 +1,19 @@
+pkgbase = headset-battery-indicator-git
+	pkgdesc = System tray headset battery indicator with ChatMix and Sidetone controls
+	pkgver = r79.ea0eadc
+	pkgrel = 1
+	url = https://github.com/ruflas/headset-battery-indicator
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = headsetcontrol
+	depends = pyside6
+	provides = headset-battery-indicator
+	conflicts = headset-battery-indicator
+	source = git+https://github.com/ruflas/headset-battery-indicator.git
+	sha256sums = SKIP
+
+pkgname = headset-battery-indicator-git
