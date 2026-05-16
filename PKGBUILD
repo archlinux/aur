@@ -39,21 +39,26 @@ package() {
     sed -i "s|Icon=.*|Icon=superset-desktop|" \
         "${pkgdir}/usr/share/applications/superset-desktop.desktop"
     if [ -d usr/share/icons ]; then
-        cp -r usr/share/icons "${pkgdir}/usr/share/"
-        find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} +
-        find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 {} +
-        find "${pkgdir}/usr/share/icons" -name '*.png' -o -name '*.svg' | while read -r icon; do
-            dir=$(dirname "$icon")
+        # Install icon files directly with binary_name — no cp+mv rename needed
+        find usr/share/icons -type f \( -name '*.png' -o -name '*.svg' \) | while read -r icon; do
+            relpath="${icon#usr/share/icons/}"
+            dir="${pkgdir}/usr/share/icons/$(dirname "$relpath")"
             base=$(basename "$icon")
             ext="${base##*.}"
-            mv "$icon" "${dir}/superset-desktop.${ext}"
+            install -Dm644 "$icon" "${dir}/superset-desktop.${ext}"
+        done
+        # Copy non-icon files (index.theme, etc.) as-is
+        find usr/share/icons -type f ! \( -name '*.png' -o -name '*.svg' \) | while read -r f; do
+            relpath="${f#usr/share/icons/}"
+            install -Dm644 "$f" "${pkgdir}/usr/share/icons/${relpath}"
         done
     fi
 
-    for ext in png svg; do
-        if [ -f *.${ext} ]; then
-            install -Dm644 *.${ext} "${pkgdir}/usr/share/pixmaps/superset-desktop.${ext}"
-            break
-        fi
+    # Install root-level icons to pixmaps (first matching png or svg)
+    for f in *.png *.svg; do
+        [ -f "$f" ] || continue
+        ext="${f##*.}"
+        install -Dm644 "$f" "${pkgdir}/usr/share/pixmaps/superset-desktop.${ext}"
+        break
     done
 }
