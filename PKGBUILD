@@ -27,10 +27,10 @@ optdepends=(
     'iio-sensor-proxy: Enables ambient light sensor for auto brightness'
     'ectool-framework-git: Advanced control over fans, battery limits, and LEDs via EC'
 )
+source=("LICENSE")
+sha256sums=('SKIP')
+
 
 package() {
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    echo "MIT License (c) $(date +%Y) Charlie" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    chmod 644 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
