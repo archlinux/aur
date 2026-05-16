@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=motrix-next-bin
-pkgver=3.8.9
+pkgver=3.8.10
 pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,11 @@ depends=(
     libsoup3
     webkit2gtk-4.1
 )
+source=("LICENSE")
+sha256sums=('82e71190970399412c9e40fc3f4e2dc1cb070d56433ee7f25af7a4e67f401f0e')
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/MotrixNext_${pkgver}_amd64.deb")
-sha256sums_x86_64=('7d43ca04395b14feade74269e492feaacdf043fead9cba656dd931d4035e0295')
-sha256sums_aarch64=('021d72a68c0d296fc71dd8f0864c6698204d8d7bbb8a7ae795942a0ae270be0d')
+sha256sums_x86_64=('bcfe4c92027693d4f44c8bc1ff47c6015ad9b53163a4a296e423f8d166bde3a4')
+sha256sums_aarch64=('14ce0431058bc53c0412d7ebd84d49ec4495220565df070210ded18e09b4f054')
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/MotrixNext_${pkgver}_arm64.deb")
 
 package() {
@@ -37,4 +39,6 @@ package() {
     # Fix empty Categories so KDE launcher displays the app
     sed -i '/^Categories=/c\Categories=Network;FileTransfer;' \
         "$pkgdir/usr/share/applications/MotrixNext.desktop"
+
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
