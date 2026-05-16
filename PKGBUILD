@@ -4,13 +4,13 @@ pkgver=1
 pkgrel=1
 pkgdesc="SDL2 and OpenGL for wirite FPS games: Dark-Dream"
 arch=('x86_64')
-url="https://gitlab.com/gamestime102/Dark-Dream/Dark-Dream"
+url="https://codeberg.org/gamestime102/Dark-Dream"
 license=('GPL')
 depends=('sdl2' 'sdl2_mixer' 'glu' 'libgl')
 makedepends=('git' 'gcc')
 provides=("dark-dream")
 conflicts=("dark-dream")
-source=("git+https://gitlab.com/gamestime102/Dark-Dream/Dark-Dream.git")
+source=("git+https://codeberg.org/gamestime102/Dark-Dream.git")
 sha256sums=('SKIP')
 
 pkgver() {
