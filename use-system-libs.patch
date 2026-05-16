@@ -1,24 +1,30 @@
---- smolvm	2026-04-18 13:16:29.000000000 +0200
-+++ smolvm	2026-04-20 08:59:29.284347514 +0200
-@@ -25,7 +25,6 @@
+--- smolvm	2026-05-15 12:01:49.000000000 +0300
++++ smolvm	2026-05-16 13:46:03.063347508 +0300
+@@ -25,31 +25,12 @@
  
  # The actual binary and libraries are in the same directory
  SMOLVM_BIN="$SCRIPT_DIR/smolvm-bin"
 -SMOLVM_LIB="$SCRIPT_DIR/lib"
+ SMOLVM_BUNDLED_ROOTFS="$SCRIPT_DIR/agent-rootfs"
  
- # Check if binary exists
- if [[ ! -x "$SMOLVM_BIN" ]]; then
-@@ -34,17 +33,6 @@
-     exit 1
+ if [[ -d "$SMOLVM_BUNDLED_ROOTFS" ]]; then
+     export SMOLVM_AGENT_ROOTFS="${SMOLVM_AGENT_ROOTFS:-$SMOLVM_BUNDLED_ROOTFS}"
  fi
  
+-# Check if binary exists
+-if [[ ! -x "$SMOLVM_BIN" ]]; then
+-    echo "Error: smolvm binary not found at $SMOLVM_BIN" >&2
+-    echo "Make sure you extracted the full distribution." >&2
+-    exit 1
+-fi
+-
 -# Check if libraries exist
 -if [[ ! -d "$SMOLVM_LIB" ]]; then
 -    echo "Error: library directory not found at $SMOLVM_LIB" >&2
 -    echo "Make sure you extracted the full distribution." >&2
 -    exit 1
 -fi
-+export SMOLVM_AGENT_ROOTFS='/usr/lib/smolvm/agent-rootfs'
+++export SMOLVM_AGENT_ROOTFS='/usr/lib/smolvm/agent-rootfs'
  
 -# Set library path based on OS and run
 -if [[ "$(uname -s)" == "Darwin" ]]; then

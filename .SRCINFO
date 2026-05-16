@@ -1,6 +1,6 @@
 pkgbase = smolvm-bin
 	pkgdesc = Tool to build & run portable, lightweight, self-contained virtual machines.
-	pkgver = 0.5.20
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/smol-machines/smolvm
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = smolvm-bin
 	conflicts = smolvm-git
 	conflicts = smolvm
 	options = !debug
-	source = smolvm-0.5.20-bin.tar.gz::https://github.com/smol-machines/smolvm/releases/download/v0.5.20/smolvm-0.5.20-linux-x86_64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/smol-machines/smolvm/refs/tags/v0.5.20/LICENSE
+	source = smolvm-0.7.0-bin.tar.gz::https://github.com/smol-machines/smolvm/releases/download/v0.7.0/smolvm-0.7.0-linux-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/smol-machines/smolvm/refs/tags/v0.7.0/LICENSE
 	source = use-system-libs.patch
-	sha256sums = 68431f36711c27dbb989e9ca55f42188a5788faab95a965a3f126481248efc1a
+	sha256sums = f59041bfc7eec9d9ec2b81d9a6a5d60c1479156d1c8baa309c6bc4b3521b9279
 	sha256sums = ac6a4050f2f415a02f3c223ddee932a07de627bc143059e9a1ea9df088e46909
-	sha256sums = a64059e9dacb770103a0edec5e8bb11dcd954d688f688d03bb2ade53a17d5f0b
+	sha256sums = 112528f311357aa84c2179670c57e46b45fe44eb2dd56ce9c4f5a9c633b09797
 
 pkgname = smolvm-bin
