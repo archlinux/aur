@@ -18,7 +18,7 @@ optdepends=('libkeybinder3: for global hotkeys')
 _deb_file="${_pkgname}-${pkgver}-${_buildid}-linux-amd64.deb"
 
 source=("${_deb_file}::https://1858587525.v.123pan.cn/1858587525/client/${_pkgname}-${pkgver}-${_buildid}/${_deb_file}")
-sha256sums=('a2c0cece4b85d6181fdac360d640358169257cf4cc1bedd5d02e8b6bbf5c2972')
+sha256sums=('cf3912e035d8101c259bb1ee2de5e750178f3d43e4babc08f3fca98b5e0a5738')
 
 prepare() {
 	bsdtar -xf "${_deb_file}"

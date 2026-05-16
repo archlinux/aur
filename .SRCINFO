@@ -12,6 +12,6 @@ pkgbase = ikuuu-vpn
 	options = !strip
 	options = !debug
 	source = ikuuu_vpn-0.15.2-201c8a3d-linux-amd64.deb::https://1858587525.v.123pan.cn/1858587525/client/ikuuu_vpn-0.15.2-201c8a3d/ikuuu_vpn-0.15.2-201c8a3d-linux-amd64.deb
-	sha256sums = a2c0cece4b85d6181fdac360d640358169257cf4cc1bedd5d02e8b6bbf5c2972
+	sha256sums = cf3912e035d8101c259bb1ee2de5e750178f3d43e4babc08f3fca98b5e0a5738
 
 pkgname = ikuuu-vpn

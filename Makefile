@@ -9,10 +9,10 @@ test:
 	cp ${TMP_PATH}/*.pkg.tar.zst ./
 
 md5:
-	sha256sum ${TMP_PATH}/*.zip
+	sha256sum ${TMP_PATH}/*.deb
 
 release:
 	makepkg --printsrcinfo > .SRCINFO
 	git add .
-	git commit -m "fix: depends"
+	git commit -m "update: 0.15.2"
 	git push
