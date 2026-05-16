@@ -1,0 +1,9 @@
+pkgbase = flix-bin
+	pkgdesc = 像聊天一样传文件，新一代局域网全端传输工具
+	pkgver = 2.0.6.111
+	pkgrel = 1
+	url = https://github.com/Tobiichi-Origuchi/flix-bin
+	arch = x86_64
+	license = custom:proprietary
+
+pkgname = flix-bin
