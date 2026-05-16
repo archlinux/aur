@@ -1,7 +1,7 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 # Co-maintainer: Evert <evorster at gmail dot com>
 pkgname=hermes-agent
-pkgver=0.13.0
+pkgver=0.14.0
 _tagver=2026.5.16
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
