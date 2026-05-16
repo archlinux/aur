@@ -9,7 +9,7 @@
 _name=naiveproxy
 pkgname=${_name}-bin
 
-pkgver=148.0.7778.96_2
+pkgver=148.0.7778.96_5
 pkgrel=1
 _pkgver=${pkgver//_/-}
 
@@ -63,11 +63,11 @@ for _a in "${!_archmap[@]}"; do
     declare -ag "source_${_a}="'("${_s[@]}")'
 done
 
-sha256sums_aarch64=('113935bc07116de1e260590331d34f2f1793f7e4cf8f96201f6b414d5e442b30'
+sha256sums_aarch64=('88fb88340d70b763cdf66586e056d78cb0877b62899f3194abc30d41e5d18763'
                     '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
                     '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
                     '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
-sha256sums_x86_64=('acd2359291d4248a12e8c1ce51a685562449a9cefe24b97f75929a48e348830f'
+sha256sums_x86_64=('ca6958dcbbfb7b1b38c55a213dab6927ce3c1417d969b815657513b81fc7352d'
                    '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
                    '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
                    '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
