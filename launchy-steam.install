@@ -1,0 +1,11 @@
+post_install() {
+    echo ""
+    echo "  Launchy has been installed."
+    echo ""
+    echo "  To register it as a Steam compatibility tool, run:"
+    echo "    launchy install"
+    echo ""
+    echo "  Then restart Steam and select 'Launchy' in a game's Properties → Compatibility."
+    echo ""
+}
+
