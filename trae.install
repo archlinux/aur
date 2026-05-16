@@ -1,0 +1,25 @@
+post_install() {
+    echo ""
+    echo "  Trae 已安装成功！"
+    echo "  启动命令: trae"
+    echo "  配置目录: ~/.config/trae"
+    echo "  自定义启动参数: ~/.config/trae-flags.conf"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  Trae 已更新至 $1"
+    echo ""
+}
+
+pre_remove() {
+    true
+}
+
+post_remove() {
+    echo ""
+    echo "  Trae 已移除。"
+    echo "  配置文件保留在 ~/.config/trae"
+    echo ""
+}
