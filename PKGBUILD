@@ -2,13 +2,13 @@
 
 _pkgbase=ayuz
 pkgname="$_pkgbase"
-pkgver=1.0.9
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
 url='https://github.com/Traciges/Ayuz'
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita')
+depends=('gtk4' 'gtk4-layer-shell' 'libadwaita')
 optdepends=('libkscreen: OLED flicker-free dimming'
 						'qt6-tools: KWin and KDE integration'
 						'kconfig: OLED Pixel Refresh in KDE'
@@ -26,7 +26,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 replaces=('asus-hub')
 source=("$_pkgbase::git+https://github.com/Traciges/Ayuz.git#tag=v$pkgver")
-sha256sums=('5996e115ef0c5535f8c9debca46bcbb7394140d741d523adf33374f2db663cef')
+sha256sums=('927af6e29280b25be1118abb2d40d220c7b043c1e3dd7da58a298f5c54012ce9')
 
 prepare() {
 	cd "$_pkgbase"
