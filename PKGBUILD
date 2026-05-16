@@ -2,7 +2,7 @@
 
 pkgname=gui.for.singbox
 _name=GUI.for.SingBox
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="GUI.for.SingBox A GUI program developed by vue3 + wails."
 arch=($CARCH)
@@ -38,7 +38,7 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.install"
 )
-sha256sums=('349db89b8d5acf336f122bd04b9bfd3f4fac7e9186a061d5173d9a642c4f03fa'
+sha256sums=('50286d4e9c44a40c1319354da7e345d88bff9892c42e13f2365d55e55046aa9f'
             'c89a7b9740039857f57d6294d28a39854067ddd8469c7f1b5efc62b91cdf772a'
             '8d51fea0925c08e33150be47b4100d145dee7998f241b02f5de42770cf5dfbb2'
             'feb47230c930ff09fc2fdebdf07aa0f76692bda24eeab32727b2286a93516671')
