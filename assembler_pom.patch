@@ -38,10 +38,28 @@
          </executions>
        </plugin>
  
-@@ -111,70 +85,6 @@
-         <artifactId>maven-antrun-plugin</artifactId>
-         <version>3.2.0</version>
-         <executions>
+@@ -125,88 +99,6 @@
+               </target>
+             </configuration>
+           </execution>
+-          <execution>
+-            <id>fix-pe-timestamp</id>
+-            <phase>package</phase>
+-            <goals>
+-              <goal>run</goal>
+-            </goals>
+-            <configuration>
+-              <target>
+-                <!-- Overwrite the PE COFF TimeDateStamp with a fixed epoch so the
+-                     exe hash is identical across builds -->
+-                <exec executable="${java.home}/bin/java" failonerror="true">
+-                  <arg value="${project.basedir}/src/scripts/FixPeTimestamp.java" />
+-                  <arg value="${project.build.directory}/windows/jd-gui-duo.exe" />
+-                  <arg value="1704067200" />
+-                </exec>
+-              </target>
+-            </configuration>
+-          </execution>
 -          <execution>
 -            <id>build-macos-app-bundle</id>
 -            <phase>package</phase>
@@ -109,7 +127,7 @@
          </executions>
        </plugin>
        <plugin>
-@@ -182,21 +92,6 @@
+@@ -214,21 +106,6 @@
          <artifactId>maven-assembly-plugin</artifactId>
          <executions>
            <execution>
@@ -131,7 +149,7 @@
              <id>assemble-linux</id>
              <phase>package</phase>
              <goals>
-@@ -211,21 +106,6 @@
+@@ -243,21 +120,6 @@
                </descriptors>
              </configuration>
            </execution>
@@ -153,7 +171,7 @@
          </executions>
        </plugin>
        <plugin>
-@@ -241,20 +121,10 @@
+@@ -273,20 +135,10 @@
              <configuration>
                <artifacts>
                  <artifact>
@@ -174,7 +192,7 @@
                </artifacts>
              </configuration>
            </execution>
-@@ -269,21 +139,6 @@
+@@ -301,21 +153,6 @@
              <phase>none</phase>
            </execution>
            <execution>
@@ -196,7 +214,7 @@
              <id>install-linux-tar.xz</id>
              <phase>install</phase>
              <goals>
-@@ -298,55 +153,12 @@
+@@ -330,60 +167,12 @@
                <packaging>tar.xz</packaging>
              </configuration>
            </execution>
@@ -229,8 +247,9 @@
 -            </goals>
 -            <configuration>
 -              <headerType>gui</headerType>
--              <outfile>${project.build.directory}/windows/jd-gui-duo-${project.version}.exe</outfile>
--              <jar>${project.build.directory}/lib/jd-gui-duo-app-${project.version}.jar</jar>
+-              <outfile>${project.build.directory}/windows/jd-gui-duo.exe</outfile>
+-              <dontWrapJar>true</dontWrapJar>
+-              <jar>lib/jd-gui-duo-app.jar</jar>
 -              <classPath>
 -                <mainClass>${main.class}</mainClass>
 -                <addDependencies>false</addDependencies>
@@ -247,6 +266,10 @@
 -                </opts>
 -              </jre>
 -              <icon>${project.parent.basedir}/src/launch4j/resources/images/jd-gui.ico</icon>
+-              <!-- Prevent auto-generated VERSIONINFO (FileVersion, Copyright, etc.)
+-                   from embedding ${project.version} and the current year into the
+-                   exe bytes, which would change the hash on every release. -->
+-              <disableVersionInfoDefaults>true</disableVersionInfoDefaults>
 -            </configuration>
 -          </execution>
          </executions>
