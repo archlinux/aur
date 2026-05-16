@@ -1,7 +1,7 @@
 # Maintainer: Charlie <c44014189@gmail.com>
 pkgname=framework-laptop-meta
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Metapackage to install optimal utilities and tweaks for Framework laptops"
 arch=('any')
 url="https://aur.archlinux.org/packages/framework-laptop-meta"

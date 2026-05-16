@@ -1,7 +1,7 @@
 pkgbase = framework-laptop-meta
 	pkgdesc = Metapackage to install optimal utilities and tweaks for Framework laptops
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aur.archlinux.org/packages/framework-laptop-meta
 	arch = any
 	license = MIT
