@@ -2,18 +2,45 @@
 # Maintainer: Laszlo Malina <laszlo@malina.hu>
 
 pkgname=keeper-password-manager
-pkgver=17.5.2
+pkgver=18.0.0
 pkgrel=1
 pkgdesc="Keeper is the world's #1 most downloaded password keeper and secure digital 
  vault for protecting and managing your passwords and other secret information."
 arch=('x86_64')
 url="https://keepersecurity.com"
-license=('Custom')
-depends=('libsecret' 'nss' 'libxss' 'gtk3')
-source=("https://keepersecurity.com/desktop_electron/Linux/repo/deb/keeperpasswordmanager_${pkgver}_amd64.deb"
-        'LICENSE')
-sha512sums=('644efccf5391cddb5498be9482b09ac7bd85f84e735e6b6d942a7db5073f31140d262c1c3e5c4bd576f341b4d1d95f65ca5b283c9a04f3409ee2cfccf26f122c'
-            'SKIP')
+license=('LicenseRef-proprietary')
+
+depends=(
+  'gtk3'
+  'libnotify'
+  'nss'
+  'xdg-utils'
+  'at-spi2-core'
+  'libdrm'
+  'mesa'
+  'libxcb'
+  'libxss'
+  'pcsclite'
+  'alsa-lib'
+)
+
+optdepends=(
+  'gnome-keyring: GNOME keyring integration for credential storage'
+  'libsecret: secret storage backend'
+  'pipewire-pulse: PulseAudio-compatible audio (recommended)'
+  'pulseaudio: PulseAudio audio backend (alternative)'
+  'trash-cli: trash support for xdg-utils'
+  'lsb-release: OS version detection'
+)
+
+source=(
+  "https://keepersecurity.com/desktop_electron/Linux/repo/deb/keeperpasswordmanager_${pkgver}_amd64.deb"
+  'LICENSE'
+)
+sha512sums=(
+  '09174768b2d36123db0450e65776673f26af84703f6617bf1ddf278334cb8d54e6029b4c2edd06860fe08c4fd0d4006366ea9dba388d148b0abfb5442d0bf9e7'
+  'SKIP'
+)
 
 package() { 
   bsdtar -xf "$srcdir"/data.tar.xz -C "$pkgdir"   
