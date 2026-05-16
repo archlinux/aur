@@ -1,6 +1,6 @@
 # Maintainer: kenura-krag <kenura.gunarathna@thenex.global>
 pkgname=campus-lms-bin
-pkgver=0.2.2
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Desktop Moodle LMS client (Pre-compiled Binary version)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "campus-lms-daemon.service"
 )
 sha256sums=(
-    'c74a695fe165ada3ef5eeafb0373859665a39626e2e501a3556064d4b31a89c8'
+    'sha256:491e5a3128cedbbc57d4a7b034247ef66c2acdab601ba7100e22ededad0f9a84'
     'SKIP'
     'SKIP'
 )
