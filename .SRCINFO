@@ -1,6 +1,6 @@
 pkgbase = statecraft
 	pkgdesc = StateCraft is a CLI tool to create complex directory structures via scripts on Linux.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/PhrozenByte/statecraft
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = statecraft
 	optdepends = tar: support for 'tar-xz.sh' state script
 	optdepends = xz: support for 'tar-xz.sh' state script
 	optdepends = jq: support for 'disk-info.sh' state script
-	source = statecraft-1.1.0.tar.gz::https://github.com/PhrozenByte/statecraft/archive/v1.1.0.tar.gz
-	sha256sums = bc86f9a5678721927108ae866a3a6f7d987a51b0cdc40acf2a8a7464e5c871a9
+	source = statecraft-1.2.0.tar.gz::https://github.com/PhrozenByte/statecraft/archive/v1.2.0.tar.gz
+	sha256sums = 6e57f25e9c7aed802e59d5acf1451040d64fc0dd1f374c0985d3e73480c9361c
 
 pkgname = statecraft

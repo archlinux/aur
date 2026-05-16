@@ -1,7 +1,7 @@
-# Maintainer: PhrozenByte <statecraft at daniel-rudolf dot de>
+# Maintainer: Daniel Rudolf <statecraft at daniel-rudolf dot de>
 
 pkgname=statecraft
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="StateCraft is a CLI tool to create complex directory structures via scripts on Linux."
 url='https://github.com/PhrozenByte/statecraft'
@@ -15,7 +15,7 @@ optdepends=("btrfs-progs: support for 'btrfs.sh' state script"
             "jq: support for 'disk-info.sh' state script")
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bc86f9a5678721927108ae866a3a6f7d987a51b0cdc40acf2a8a7464e5c871a9')
+sha256sums=('6e57f25e9c7aed802e59d5acf1451040d64fc0dd1f374c0985d3e73480c9361c')
 
 package() {
     cd $pkgname-$pkgver
