@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=rufin
-pkgver=0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Native GTK music client for Jellyfin'
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ optdepends=(
 conflicts=('rufin-git')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c93a58b4002cf0f94a7c58bad30ae30a888367d2fb6a0592a77224ac18cec644')
+sha256sums=('ecbfb310da026a1df804ba3b4423863b142ba490755aa9ef950b9d04dd9575d6')
 
 prepare() {
   cd "Rufin-${pkgver}" || return

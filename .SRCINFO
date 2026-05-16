@@ -1,6 +1,6 @@
 pkgbase = rufin
 	pkgdesc = Native GTK music client for Jellyfin
-	pkgver = 0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/screwys/Rufin
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = rufin
 	optdepends = kwallet: Secret Service provider for saving Jellyfin tokens
 	conflicts = rufin-git
 	options = !lto
-	source = rufin-0.1.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v0.1.tar.gz
-	sha256sums = c93a58b4002cf0f94a7c58bad30ae30a888367d2fb6a0592a77224ac18cec644
+	source = rufin-0.0.2.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = ecbfb310da026a1df804ba3b4423863b142ba490755aa9ef950b9d04dd9575d6
 
 pkgname = rufin
