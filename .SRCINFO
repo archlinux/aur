@@ -1,7 +1,7 @@
 pkgbase = cvrx-appimage
 	pkgdesc = A standalone companion app for ChilloutVR that expands the user experience! (binary AppImage version)
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/AstroDogeDX/CVRX
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = cvrx-appimage
 	provides = cvrx
 	conflicts = cvrx
 	options = !strip
-	source = https://github.com/Malthbern/CVRX-Linux/releases/download/v1.1.0/cvrx-1.1.0.AppImage
-	sha256sums = f53ab49ff540701d816ce91610ecac8e4db232c7d286178d1822d2cab8b38655
+	source = https://github.com/Malthbern/CVRX-Linux/releases/download/v1.2.0/cvrx-1.2.0.AppImage
+	sha256sums = eac8ff004db85096923ee460e70c6076d35ca11884f2c74013a6fc3acd876de9
 
 pkgname = cvrx-appimage
