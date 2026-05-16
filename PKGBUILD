@@ -10,7 +10,7 @@
 pkgname=pi-hole-ftl-bin
 _pkgname=pi-hole-ftl
 _servicename=pihole-FTL
-pkgver=6.6.1
+pkgver=6.6.2
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
@@ -24,23 +24,23 @@ install="${_pkgname}.install"
 case "$CARCH" in
     i686)
         _arch="386"
-        sha256sums=('10b0e9c92e32e14987d3147e491cfdea5fc1fcc679b4d7b2813b5e87db4b0e9e')
+        sha256sums=('dfaf999411b526dfb0da7155d0fda6d77f25af775959be1961b3a19855b1a354')
         ;;
     x86_64)
         _arch="amd64"
-        sha256sums=('125ad49b45fd5308c9c7b063d98b2ea88570d3be2133b77ed7170b7af9832cd9')
+        sha256sums=('21bdbd517118756edbf8fbb56f3e6d993463621716d1fa89298e7c2c4e555cbb')
         ;;
     arm|armv6h)
         _arch="armv6"
-        sha256sums=('c8ea64c5520148f16f4d5bf0e07257829aa9e5d4d7916e0b943261f8239d5d27')
+        sha256sums=('49fd83df1af6243d1cef63440329a6e40bac22e48f73ecee784f50f2a0e74d6a')
         ;;
     armv7h)
         _arch="armv7"
-        sha256sums=('9eb70a64f2114f113e5950de38df2705305b35e52f2e4960476e906cc9077846')
+        sha256sums=('b427c89d339bc76f4171f3992c9211ecfd9d3be3f32f50ef7932e111c710a217')
         ;;
     aarch64)
         _arch="arm64"
-        sha256sums=('3ae4aa979403807bdaed3a09565e50e9ee9be687e92d8e710c0de862d24bbab7')
+        sha256sums=('b38c2da75922b28313be09493227eb101c1c9104efb3429fc7b26a32152f464d')
         ;;
 esac
 source=("${pkgname}-${CARCH}-v${pkgver}"::"https://github.com/pi-hole/FTL/releases/download/v${pkgver}/pihole-FTL-${_arch}"
