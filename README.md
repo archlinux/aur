@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 2.0.0-4
+- **Versión:** 2.0.0-9
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.3-arch1-2)
@@ -27,8 +27,8 @@ makepkg -si
 
 ## Problemas corregidos
 
-Todos los parches se aplican automáticamente en `package()` del PKGBUILD.  
-No se necesitan scripts externos: todo está integrado como heredoc Python.
+Todos los parches se aplican automáticamente en `package()` del PKGBUILD.
+Los scripts de parcheo están en archivos externos (`patch-asar.py`, `patch-pkg.js`) incluidos como fuentes verificadas.
 
 ---
 
@@ -243,18 +243,20 @@ vortex
 
 ```
 vortex-aur-fix/
-├── PKGBUILD          ← PKGBUILD con todos los patches inline (Python heredoc)
-├── LINUX_PATCHES.md  ← Documentación técnica en inglés
-├── README.md         ← Esta documentación en español
+├── PKGBUILD          ← PKGBUILD principal
+├── .SRCINFO          ← Metadatos AUR generados
+├── patch-asar.py     ← Patcher de app.asar y bundledPlugins
+├── patch-pkg.js      ← Patcher de package.json (prepare + build)
 ├── vortex.desktop    ← Entrada de escritorio
-├── vortex.install    ← Hooks post-install
+├── vortex.install    ← Hooks post-install/post-upgrade
 ├── vortex.sh         ← Script lanzador
-└── install.sh        ← Instalador alternativo
+├── LINUX_PATCHES.md  ← Documentación técnica en inglés
+└── README.md         ← Esta documentación en español
 ```
 
 ---
 
-## Prueba de funcionamiento — 2026-05-15 (pkgrel=4)
+## Prueba de funcionamiento — 2026-05-16 (pkgrel=9)
 
 Probado en Arch Linux (kernel 7.0.3-arch1-2):
 
@@ -282,6 +284,7 @@ Probado en Arch Linux (kernel 7.0.3-arch1-2):
 | 2 | Fix REDmod (95 backslash paths en extensión Cyberpunk 2077); elimina error gamebryo-plugin-management |
 | 3 | epicGamesLauncher stub; winapi-bindings Proxy; binarios Linux para Starbound, TF2, RimWorld, War Thunder; filtro de archivos corregido |
 | 4 | winapi-bindings: Proxy no-op silencioso en lugar de Proxy que lanza (fix crash de inicio por SetProcessPreferredUILanguages) |
+| 5–9 | Refactor: scripts externos (`patch-asar.py`, `patch-pkg.js`); `chmod 777→755` en assets + hook post-upgrade; elimina `dotnet-sdk-9.0` de makedepends (~500MB menos); elimina `NO_PARALLEL` (builds paralelas más rápidas); suprime 28 warnings de subdependencias deprecadas |
 
 ---
 
@@ -297,6 +300,10 @@ Probado en Arch Linux (kernel 7.0.3-arch1-2):
 - [x] `epicGamesLauncher` stub en Linux
 - [x] `winapi-bindings` Proxy con errores claros
 - [x] Binarios Linux: Starbound, TF2, RimWorld, War Thunder
+- [x] Scripts de parche extraídos a archivos externos verificados por sha256
+- [x] Permisos de assets corregidos (777→755) y reforzados en post-upgrade
+- [x] `dotnet-sdk-9.0` eliminado de makedepends (prebuilt en repo)
+- [x] Build paralela de módulos nativos (NO_PARALLEL eliminado)
 - [ ] Binarios Linux: XCom 2, A Hat in Time, Daggerfall Unity
 - [ ] PR upstream a Nexus-Mods/Vortex con los fixes de Linux
 - [ ] Mecanismo automático de re-parche de extensiones de usuario tras actualización
