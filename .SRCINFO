@@ -1,6 +1,6 @@
 pkgbase = kittenspaceagency-bin
 	pkgdesc = Kitten Space Agency - EXPERIMENTAL
-	pkgver = 2026.5.6.4337
+	pkgver = 2026.5.7.4397
 	pkgrel = 1
 	url = https://ksa-linux.ahwoo.com
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = kittenspaceagency-bin
 	depends = gcc-libs
 	depends = dotnet-runtime-10.0
 	options = !strip
-	source = setup_ksa_v2026.5.6.4337.tar.gz::https://ksa-linux.ahwoo.com/download?file=setup_ksa_v2026.5.6.4337.tar.gz
+	source = setup_ksa_v2026.5.7.4397.tar.gz::https://ksa-linux.ahwoo.com/download?file=setup_ksa_v2026.5.7.4397.tar.gz
 	source = kittenspaceagency.png
-	sha256sums = 3be628423855e4043927de1b47a204bd6e6bf230a272f1d5f1bec2e04a081e35
+	sha256sums = c2bb81064c66ae2d2725d17d9455bf6965997e6bcb7edebcaf50a39f26a8bc9d
 	sha256sums = 4e10dedc70614419a5a2354642556d15fe331565d0d94a4fa41ab04dd8b24486
 
 pkgname = kittenspaceagency-bin
