@@ -1,5 +1,5 @@
 pkgbase = rivalcfg-gui
-	pkgdesc = GTK3 GUI configuration tool for SteelSeries Rival 3 mouse
+	pkgdesc = GTK3 GUI configuration tool for SteelSeries mice (via rivalcfg)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/MrGodzilla38/rivalcfg-gui
