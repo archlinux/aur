@@ -2,7 +2,7 @@
 # Mail: TheEnchantedPotato@proton.me
 
 pkgname=hyprutils-frozen
-pkgver=0.7.0.r0.g05878d9
+pkgver=0.11.0
 pkgrel=1
 conflicts=('hyprutils-git' 'hyprutils')
 provides=('hyprutils-frozen' "libhyprutils.so")
