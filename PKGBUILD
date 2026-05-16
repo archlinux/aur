@@ -1,6 +1,6 @@
 # Maintainer: indyfive11 <203553604+indyfive11@users.noreply.github.com>
 pkgname=archward
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Safe-update GUI for Arch-based Linux distributions"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bb803343aaa0ce85387d897a7f0be010c5d91f7689de1c0c3b21999718dd601d')
+sha256sums=('5991376d46d3556494cec86fd148877b30e708124b106e95abdecba1c9b6b7fb')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -51,4 +51,6 @@ package() {
     "$pkgdir/usr/share/doc/$pkgname/cli.md"
   install -Dm644 docs/recovery.md \
     "$pkgdir/usr/share/doc/$pkgname/recovery.md"
+  install -Dm755 src/archward/data/stale_libs_scan \
+    "$pkgdir/usr/share/archward/stale_libs_scan"
 }
