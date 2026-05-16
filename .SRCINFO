@@ -1,6 +1,6 @@
 pkgbase = autolon-bin
 	pkgdesc = Autoclicker and automation controller for Legends of IdleOn - Wayland-only (KDE preferred)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/daveottley/autolon
 	install = autolon.install
@@ -10,9 +10,9 @@ pkgbase = autolon-bin
 	depends = gtk4
 	depends = libxtst
 	depends = qt6-tools
-	provides = autolon=0.1.9
+	provides = autolon=0.1.10
 	conflicts = autolon
-	source_x86_64 = autolon-0.1.9-x86_64.tar.zst::https://github.com/daveottley/autolon/releases/download/v0.1.9/autolon-0.1.9-x86_64.tar.zst
-	sha256sums_x86_64 = 55e6693cfa01006a789428358a8b0ac72580dc98d2ce93600a03258524a952fa
+	source_x86_64 = autolon-0.1.10-x86_64.tar.zst::https://github.com/daveottley/autolon/releases/download/v0.1.10/autolon-0.1.10-x86_64.tar.zst
+	sha256sums_x86_64 = b6d540e3f2384929d9d7819a23bc4b02e42dbcadb7f3569f62ac33ec801d3721
 
 pkgname = autolon-bin
