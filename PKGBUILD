@@ -1,6 +1,6 @@
 # Maintainer: kenura-krag <kenura.gunarathna@thenex.global>
 pkgname=campus-lms-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Desktop Moodle LMS client (Pre-compiled Binary version)"
 arch=('x86_64')
