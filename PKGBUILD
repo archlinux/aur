@@ -2,7 +2,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos-slr
-_srctag=11.0-20260429
+_srctag=11.0-20260506
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -105,6 +105,6 @@ package() {
     install -Dm644 "$srcdir/ntsync.conf" "$pkgdir/usr/lib/modules-load.d/10-$pkgname.conf"
 }
 
-b2sums=('575d51fa6229b68a03cf54ff032e0b8ac728314b7e0b2a174a9d877c0f9d021098941854454b4c9610bfd2979855532b3f773a1a5a821fa404f560cae36c09cc'
+b2sums=('2c1fbf52ba6dcc74c78a978185411ac1fbe82ce86ae0734ae844adabbd72dd9e8290ada5cc53a3ebd7bdcd8aa320d3c259325c904b944bf99017d74a45a0b691'
         'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b'
         '964a3ba277821e570aec2127f0d1ae9898da6976c360deb6b196345a50bd3c2c55cb399527507006d8fddef868069032a30b083f23987d5050f185c74dd9de35')
