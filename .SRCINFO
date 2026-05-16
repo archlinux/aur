@@ -1,16 +1,16 @@
 pkgbase = goshawk-bin
 	pkgdesc = Goshawk server monitoring tool
-	pkgver = 0.0.9
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/gonimals/goshawk
 	license = MIT
 	conflicts = goshawk
 	provides = goshawk
 	arch = aarch64
-	source_aarch64 = https://github.com/gonimals/goshawk/releases/download/v0.0.9/goshawk_0.0.9_linux_arm64.tar.gz
-	sha256sums_aarch64 = cb094f6f743109a943385453ff7b9067d4fc9225c3c6e4abfe1708d44b2c87cb
+	source_aarch64 = https://github.com/gonimals/goshawk/releases/download/v0.1.0/goshawk_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = cbba79d2830598037923d396d9b817a14c0387c8bf341151e19bb4733d847859
 	arch = x86_64
-	source_x86_64 = https://github.com/gonimals/goshawk/releases/download/v0.0.9/goshawk_0.0.9_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2b0c80045cf0c162f954fe0be097432ba8d14911e84a66aa3c9a111f814850d9
+	source_x86_64 = https://github.com/gonimals/goshawk/releases/download/v0.1.0/goshawk_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = dd142f4d554a37b5009b1c0152a2fcda79349ebc3fe58e869fe72eeb21cb02c8
 	
 pkgname = goshawk-bin
