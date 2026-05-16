@@ -1,17 +1,20 @@
 pkgbase = hdrop-git
-	pkgdesc = Emulate 'tdrop' in Hyprland (run, show and hide programs via keybind - similar to a dropdown terminal)
-	pkgver = 0.4.7.9cd5a1c
+	pkgdesc = Emulate tdrop in Hyprland
+	pkgver = r133.ae05f71
 	pkgrel = 1
 	url = https://github.com/Schweber/hdrop
 	arch = any
 	license = AGPL-3.0
 	makedepends = git
-	makedepends = make
+	makedepends = scdoc
 	depends = libnotify
 	depends = jq
 	depends = bash
-	depends = awk
+	depends = gawk
 	depends = hyprland
 	provides = hdrop
+	conflicts = hdrop
+	source = git+https://github.com/Schweber/hdrop.git
+	sha256sums = SKIP
 
 pkgname = hdrop-git
