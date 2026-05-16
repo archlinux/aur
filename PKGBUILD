@@ -2,13 +2,13 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=11.0-20260429
+_srctag=11.0-20260506
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=11.0.0
 _xaliaver=0.4.9
-pkgrel=3
+pkgrel=1
 epoch=1
 
 source=(
@@ -18,7 +18,6 @@ source=(
   https://github.com/madewokherd/xalia/releases/download/xalia-${_xaliaver}/xalia-${_xaliaver}-net48-mono.zip
   compatibilitytool.vdf.template
   ntsync.conf
-  0001-build-disable-extraneous-libsoup-features.patch
 )
 noextract=(
   wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -211,7 +210,6 @@ prepare() {
     [ ! -d build ] && mkdir build
 
     cd proton-cachyos
-    patch -Np1 -i "$srcdir"/0001-build-disable-extraneous-libsoup-features.patch
 
     [ ! -d contrib ] && mkdir -p contrib
     mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
@@ -233,6 +231,7 @@ prepare() {
         gst-plugins-rs
         gstreamer
         libsoup
+        libwebp
         libxml2
         meson
         nghttp2
@@ -246,6 +245,7 @@ prepare() {
         openvr
         OpenXR-SDK
         protonfixes
+        pyroveil
         SPIRV-Headers
         vkd3d
         vkd3d-proton
@@ -345,11 +345,10 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('f8345a08259df329ec6d10fd93ec8f6b11aaf790a8f47d8f27aa4436f0344c4c34efcdf2c497b877cc4763bca25eb366b39bc3c79aa4b0a297c6bbc7a82e8914'
+b2sums=('e8a3fb00f266014c1b57db3ba4227a9fb32bc32a17f1663666bcf91f51b1769048b4b4bd6699c80218c34de7de2c780a2cef7126b78dc40345e5f95e2aa8ef12'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '76bdc625c6c14a6c3e3892649c1fbb7ed127d8ce90079a3f8d317c8e6fd567c763d71dd838f8422c921ed315e9d2735849b223a94a9517ad73d0734d313c1a6f'
         '5a492e5bd62a8116c2571348f01e1ea9dd70e2a185f0891a27be4091c8f182ce55e48f075fe46badf80e0f5b831a1d5993b2b6e1f130f4d6b00e3ef77254d00d'
         'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b'
-        '964a3ba277821e570aec2127f0d1ae9898da6976c360deb6b196345a50bd3c2c55cb399527507006d8fddef868069032a30b083f23987d5050f185c74dd9de35'
-        '1ee7fc123a63e7c4acc5305d30d15e5116fd67909106b59983f7d4cc6bf79e558685b15d7b33013cb18ae1ef9cb720fe653bb8ee287399cb63c29bebd63dd294')
+        '964a3ba277821e570aec2127f0d1ae9898da6976c360deb6b196345a50bd3c2c55cb399527507006d8fddef868069032a30b083f23987d5050f185c74dd9de35')
