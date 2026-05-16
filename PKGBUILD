@@ -2,13 +2,13 @@
 # Contributor: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='omada-controller'
-pkgver=6.1.0.19
+pkgver=6.2.10.17
 pkgrel=1
 pkgdesc='Omada Network Application (SDN Controller)'
 _basepkgname='Omada_Network_Application'
-_basepkgpath='upload/software/2026/202601/20260121'
+_basepkgpath='upload/software/2026/202604/20260429'
 _baseos='linux_x64'
-_suffix='_20260117100056'
+_suffix='_20260428102037'
 arch=('x86_64')
 url='https://support.omadanetworks.com/us/download/software/omada-controller'
 license=('custom')
@@ -21,7 +21,7 @@ source=(
     "git+http://github.com/murtuzaakhtari/omada-controller-scripts.git"
 )
 
-sha256sums=('885eb2aeaed16b300e618297af2132d4e015c7f9bc5edce2ba81b8cdb181e126'
+sha256sums=('d5eb94f235b6ef8ee42d0521498e84a299ded44f8e67ae6fbb74c52bd4822425'
             'SKIP')
 
 package() {
