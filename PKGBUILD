@@ -1,6 +1,6 @@
 # Maintainer: Kernel236 <riccardo-del-signore@hotmail.it>
 pkgname=lazypac
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple lazy human-readable wrapper for pacman/yay/paru"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('yay: AUR helper (recommended)'
             'paru: AUR helper'
             'pacman-contrib: provides pacdiff, suggested after safe-upgrade')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3362db5ff814db6c993722c8fc5e75f3036b625bce511599073f8613321f4477')
+sha256sums=('273078baf10fa30fe34c3e02a733670dfd128345a40ddbe8130f5e0271fe71c4')
 
 package() {
     cd "$srcdir/lazypacman-$pkgver"
