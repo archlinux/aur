@@ -1,7 +1,7 @@
 pkgname=channel-git
 _pkgname=channel
 pkgdesc="input config for river"
-pkgver=96829ef
+pkgver=0.3.2.r4.g76ac97f
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/Sivecano/channel"
@@ -15,7 +15,8 @@ conflicts=("$_pkgname")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "$(git rev-parse --short=7 HEAD)"
+  # printf "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
