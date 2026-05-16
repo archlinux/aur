@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.4.0
+# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.5.0
 pkgname=lemonade-desktop
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (GUI)"
-pkgver=10.4.0
-pkgrel=4
+pkgver=10.5.0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
 license=('Apache-2.0')
@@ -21,7 +21,7 @@ source=(
 )
 
 sha256sums=(
-'55c41cbad71251d5d50b11e27cf810f641b74e16e401a6a4d06e5c3a8d77f5e6'
+'67fe9c5fea3015c957f1aeba9c782292f831a3e27e377e0f7b10ba0fa58c8db8'
 'e232749150095212ea3b74b798a81a16eb409443a4b57dca670cd4f38caa9f2b'
 'd79018cd17fd8524f45f336d63ec86b39f3d3a8e75736cecec9f495ebdce20fa'
 )
@@ -30,13 +30,13 @@ _npmargs="--cache '$srcdir/npm-cache' --no-audit --no-fund"
 
 
 prepare() {
-  #export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=stable
   cd $srcdir/lemonade-$pkgver/src/app  
   npm $_npmargs ci
 }
 
 build() {
-  #export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=stable
   cd $srcdir/lemonade-$pkgver/src/app
   #sed -i '1i cargo-features = ["profile-rustflags", "trim-paths"]' src-tauri/Cargo.toml
   #sed -i '$a trim-paths = "all"' src-tauri/Cargo.toml
