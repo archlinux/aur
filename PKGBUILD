@@ -4,7 +4,7 @@ _author=RYOSKZYPU
 _dist=App-cpan2arch
 pkgname=perl-${_dist@L}
 pkgver=v1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='generate PKGBUILD from CPAN metadata'
 arch=('any')
 url=https://metacpan.org/dist/$_dist
@@ -40,7 +40,7 @@ checkdepends=(
     'perl-capture-tiny>=0.50'
     'perl-devel-checkbin>=0.04'
     'perl-path-tiny>=0.150'
-    'perl-test-simple'
+    'perl-test-simple>=1.302217'
     'perl-text-diff>=1.45'
 )
 optdepends=(

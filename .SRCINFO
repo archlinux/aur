@@ -1,14 +1,14 @@
 pkgbase = perl-app-cpan2arch
 	pkgdesc = generate PKGBUILD from CPAN metadata
 	pkgver = v1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/App-cpan2arch
 	arch = any
 	license = MIT-0
 	checkdepends = perl-capture-tiny>=0.50
 	checkdepends = perl-devel-checkbin>=0.04
 	checkdepends = perl-path-tiny>=0.150
-	checkdepends = perl-test-simple
+	checkdepends = perl-test-simple>=1.302217
 	checkdepends = perl-text-diff>=1.45
 	makedepends = perl-extutils-makemaker
 	depends = pacman
