@@ -2,8 +2,8 @@
 
 _pkgname=advancely
 pkgname=$_pkgname-bin
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress beyond just Advancements."
 arch=('x86_64')
 url="https://github.com/LNXSeus/Advancely"
@@ -16,7 +16,7 @@ source=("Advancely.zip::$url/releases/download/v${pkgver}/Advancely-v${pkgver}-L
         "advancely.png::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v${pkgver}/packaging/linux/advancely.png"
         "advancely.desktop::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v${pkgver}/packaging/linux/advancely.desktop"
         "LICENSE::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v${pkgver}/LICENSES.txt")
-sha256sums=('95cd60d6fb3a305de5e63ee94e7f648087c4e524ae76ebc31b83eac0211327b0'
+sha256sums=('eca4c8ed37eb005186675d5516814c9bb0b7015b990ec666968864fb2fdbac31'
             '4c81cb62b84ff3698f9b4102f3d382e8bc678e1ca09289a33e815d7736912098'
             '0bb1507a70774b586b1c40783e48653df9fd715b624196b87a106dbd347fda3c'
             '8bb22822a63455292196566532618d1aca55b929de1ec5405c5db2d08f83421e'
