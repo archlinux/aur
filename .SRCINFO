@@ -1,6 +1,6 @@
 pkgbase = hyprland-agent
 	pkgdesc = Local-first agentic desktop controller for Hyprland / Wayland
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/gianlucamazza/hyprland-agent
 	arch = any
@@ -30,9 +30,10 @@ pkgbase = hyprland-agent
 	optdepends = mako: desktop notifications via notify-send
 	optdepends = waybar: agent-waybar status module
 	optdepends = fuzzel: fuzzel-agent task launcher
+	optdepends = foot: terminal emulator used by the hyprland-agent-tui.desktop launcher
 	provides = hyprland-agent
 	conflicts = hyprland-agent
-	source = hyprland-agent-1.0.1.tar.gz::https://github.com/gianlucamazza/hyprland-agent/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 0ae7450a37f7955d6bc351c6110c926fc84328fc14cfd6a5a16de8357483bc8c
+	source = hyprland-agent-1.0.2.tar.gz::https://github.com/gianlucamazza/hyprland-agent/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 1bd8eb5d7a8fa2bb0253ac13f1cbdfbf6298918079f0117dc60db92685016547
 
 pkgname = hyprland-agent
