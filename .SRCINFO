@@ -1,0 +1,22 @@
+pkgbase = mugvideo-git
+	pkgdesc = Small GTK4 app for recording short selfie videos
+	pkgver = 0.1.0.r5.g2fe944c
+	pkgrel = 1
+	url = https://github.com/komagata/mugvideo
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = pkgconf
+	depends = gtk4
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	depends = wl-clipboard
+	provides = mugvideo
+	conflicts = mugvideo
+	source = git+https://github.com/komagata/mugvideo.git
+	sha256sums = SKIP
+
+pkgname = mugvideo-git
