@@ -11,7 +11,8 @@ pkgbase = openvox-agent-bin
 	provides = puppet
 	provides = openvox
 	options = !debug
-	backup = etc/puppetlabs/
+	backup = etc/puppetlabs/puppet/puppet.conf
+	backup = etc/puppetlabs/puppet/hiera.yaml
 	source_x86_64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.26.2-1+debian13_amd64.deb
 	b2sums_x86_64 = d83bd3eec9e568a084a29719b498a21241d3af81bf16497f8dee6de069862424b3177c4b5c498e42a62208f847e7e697ce212a48265cbeee506556874b51a155
 
