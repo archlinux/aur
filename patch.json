@@ -541,9 +541,11 @@
 			"taskExecutionTerminal",
 			"dataChannels",
 			"chatSessionsProvider",
+			"chatSessionCustomizationProvider",
 			"devDeviceId",
 			"contribEditorContentMenu",
 			"tokenInformation",
+			"toolInvocationApproveCombination",
 			"chatPromptFiles",
 			"mcpServerDefinitions",
 			"tabInputMultiDiff",
@@ -551,7 +553,9 @@
 			"chatHooks",
 			"chatDebug",
 			"environmentPower",
-			"terminalTitle"
+			"terminalTitle",
+			"languageModelPricing",
+			"chatInputNotification"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -651,6 +655,10 @@
 		"ms-autodev.vscode-autodev": [
 			"chatParticipantAdditions"
 		],
+		"vscjava.migrate-java-to-azure": [
+			"chatParticipantAdditions",
+			"chatParticipantPrivate"
+		],
 		"vscjava.vscode-java-upgrade": [
 			"chatParticipantAdditions",
 			"chatParticipantPrivate"
@@ -674,6 +682,10 @@
 		],
 		"ms-vscode.vscode-eng-codereview": [
 			"chatContextProvider"
+		],
+		"ms-vscode.vscode-chat-customizations-evaluations": [
+			"chatSessionCustomizationProvider",
+			"contribEditorContentMenu"
 		]
 	},
 	"tasConfig": {
