@@ -5,6 +5,7 @@ pkgbase = faden-git
 	url = https://github.com/ReadyPlayerNaN/faden
 	arch = x86_64
 	license = MIT
+	options = !lto
 	makedepends = cargo
 	makedepends = nodejs
 	makedepends = npm

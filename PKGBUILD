@@ -6,6 +6,7 @@ pkgdesc="Faden - desktop app for qualitative interview research"
 arch=('x86_64')
 url="https://github.com/ReadyPlayerNaN/faden"
 license=('MIT')
+options=(!lto)
 depends=('ffmpeg' 'sqlite' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'libsoup3' 'hicolor-icon-theme')
 makedepends=('cargo' 'nodejs' 'npm' 'patchelf' 'pkgconf')
 provides=('faden')
