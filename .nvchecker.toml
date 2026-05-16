@@ -1,0 +1,5 @@
+[jazz-bin]
+source = "github"
+github = "paradise-runner/jazz"
+use_latest_release = true
+prefix = "v"

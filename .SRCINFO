@@ -1,0 +1,20 @@
+pkgbase = jazz-bin
+	pkgdesc = A lightweight daemon that serves rendered markdown files over HTTP on your local network
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/paradise-runner/jazz
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = jazz
+	conflicts = jazz
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/paradise-runner/jazz/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/paradise-runner/jazz/v0.1.0/LICENSE
+	sha256sums = e78de5be8236f0c1bf18d860a5d0fd7a0b6df0b8ac54e77d4a29cb74a14524a8
+	sha256sums = 81186204a0b73840378a005fed4099284e51c75aa7b47eda9e0814ff183fdc89
+	source_x86_64 = jazz-x86_64-0.1.0.tgz::https://github.com/paradise-runner/jazz/releases/download/v0.1.0/jazz-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ced6af5a93711d56de923f411fd86389b651c599718398358f65fe54be43ec17
+
+pkgname = jazz-bin
