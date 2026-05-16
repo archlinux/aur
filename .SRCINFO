@@ -1,7 +1,7 @@
 pkgbase = agildocheats
 	pkgdesc = Trainer de memória Linux: scanner, .CT, congelar valores e teleport (PyQt6)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/juglesbass/AgildoCheats
 	install = agildocheats.install
 	arch = any
