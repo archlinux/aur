@@ -1,14 +1,14 @@
-# Maintainer: TheFeelTrain <thefeeltrain@thefeeltrain.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
 
 _plug=zsmooth
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r410.811e14b
+pkgver=r489.cca19a3
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/adworacz/zsmooth'
 license=('MIT')
-depends=('vapoursynth')
+depends=('vapoursynth>=75')
 makedepends=('zig')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -27,7 +27,8 @@ build() {
 
 package() {
     cd "zsmooth"
-    install -Dm755 zig-out/lib/libzsmooth.so "${pkgdir}/usr/lib/vapoursynth/libzsmooth.so"
+    PLUGINDIR=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
+    install -Dm755 zig-out/lib/libzsmooth.so "${pkgdir}${PLUGINDIR}/libzsmooth.so"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/LICENSE"
 }
