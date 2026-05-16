@@ -1,0 +1,12 @@
+diff '--color=auto' -u -r -N mkpwd-1.6/mkpwd.c mkpwd-1.6-compile/mkpwd.c
+--- mkpwd-1.6/mkpwd.c	2012-08-02 15:22:13.000000000 +0000
++++ mkpwd-1.6-compile/mkpwd.c	2026-05-16 00:29:58.765171338 +0000
+@@ -26,6 +26,8 @@
+ #include <unistd.h>
+ #include <string.h>
+ #include <errno.h>
++#include <ctype.h>
++#include <time.h>
+ 
+ const char* PROGRAM	= "mkpwd";
+ const char* VERSION	= "0.8";
