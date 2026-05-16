@@ -1,14 +1,14 @@
 pkgbase = vapoursynth-plugin-audioresample-git
 	pkgdesc = Plugin for Vapoursynth: audioresample (GIT version)
 	pkgver = v0.4.0.r0.g7a31d4c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ropagr/VS-AudioResample
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	depends = vapoursynth
+	depends = vapoursynth>=75
 	depends = libsoxr
 	provides = vapoursynth-plugin-audioresample
 	conflicts = vapoursynth-plugin-audioresample

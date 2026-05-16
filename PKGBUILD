@@ -3,18 +3,18 @@
 _plug=audioresample
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v0.4.0.r0.g7a31d4c
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url="https://github.com/ropagr/VS-AudioResample"
 license=('MIT')
 depends=(
-    'vapoursynth' 
+    'vapoursynth>=75'
     'libsoxr'
 )
 makedepends=(
     'git'
-    'cmake' 
+    'cmake'
     'ninja'
 )
 provides=("vapoursynth-plugin-${_plug}")
@@ -24,7 +24,7 @@ source=(
     "use-system-libsoxr.patch"
 )
 sha256sums=(
-    'SKIP'       
+    'SKIP'
     'b05a1121883d27ec383a55e24ca709fd63ebf37f5969f5226ecc52278698159b'
 )
 
@@ -48,7 +48,8 @@ build() {
 }
 
 package() {
-    install -Dm755 "build/AudioResample.so" "$pkgdir/usr/lib/vapoursynth/lib${_plug}.so"
+    PLUGINDIR=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
+    install -Dm755 "build/AudioResample.so" "${pkgdir}${PLUGINDIR}/lib${_plug}.so"
     install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
     install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
