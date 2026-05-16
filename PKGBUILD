@@ -1,12 +1,12 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-daemon-nightly-bin
-pkgver=nightly.20260516.172124
+pkgver=nightly.20260516.182554
 pkgrel=1
 pkgdesc="Background daemon for unbill (nightly)"
 arch=('x86_64')
 url="https://github.com/unbill-project/unbill"
 license=('MIT' 'Apache-2.0')
-provides=('unbill-daemon')
+provides=('unbill-daemon' 'unbill-daemon-nightly')
 conflicts=('unbill-daemon' 'unbill-daemon-bin')
 _tag=${pkgver//./-}
 source_x86_64=("unbill-daemon::https://github.com/unbill-project/unbill/releases/download/${_tag}/unbill-daemon-linux-x86_64")
