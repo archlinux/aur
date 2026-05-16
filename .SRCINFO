@@ -1,0 +1,15 @@
+pkgbase = terminal-shot
+	pkgdesc = Turn terminal output into shareable PNG, SVG, or HTML snapshots
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/david-x3d/terminal-shot
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = pnpm
+	depends = nodejs
+	optdepends = chromium: browser engine for PNG rendering through Playwright
+	source = terminal-shot::git+https://github.com/david-x3d/terminal-shot.git#commit=3267c6490423f18955cf7a726bf91fd9a8ca5542
+	sha256sums = SKIP
+
+pkgname = terminal-shot
