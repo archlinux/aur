@@ -1,16 +1,16 @@
 pkgbase = pikr-bin
 	pkgdesc = Vim-modal application launcher — rofi replacement built on floem. (binary release)
-	pkgver = 0.2.2
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://pikr.kryptic.sh/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = pikr=0.2.2
+	provides = pikr=0.3.1
 	conflicts = pikr
-	source_x86_64 = pikr-v0.2.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v0.2.2/pikr-v0.2.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 59f19ebd5c09cd143923670e18bc03363224150b260c415f9a3f15b95aaae4f5
-	source_aarch64 = pikr-v0.2.2-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v0.2.2/pikr-v0.2.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 512d7e26027138f260f318b62fa8c3ba7305cf273792185d149740b23340abfd
+	source_x86_64 = pikr-v0.3.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v0.3.1/pikr-v0.3.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d2ac1da74b0c1d16450fd45519a660359a01f66bf7b684043bbca464b8722594
+	source_aarch64 = pikr-v0.3.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v0.3.1/pikr-v0.3.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a1d6c0a60bd892d26120a1af790f37f860524b56ca145a39af93310c85b6392c
 
 pkgname = pikr-bin
