@@ -12,6 +12,7 @@ pkgbase = claude-code-cost-calc-git
 	conflicts = claude-code-cost-calc
 	conflicts = cccc
 	conflicts = cccc-bin
+	options = !debug
 	source = cccc::git+https://github.com/ckhordiasma/cccc.git
 	sha256sums = SKIP
 

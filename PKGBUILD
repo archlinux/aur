@@ -10,6 +10,7 @@ url="https://github.com/ckhordiasma/cccc"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
+options=('!debug')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" 'cccc' 'cccc-bin')
 source=("${_upstream}::git+${url}.git")
