@@ -4,10 +4,10 @@
 pkgname=nrf-sniffer-ble
 pkgdesc="nRF Sniffer for Bluetooth LE - firmware, SnifferAPI and Wireshark plugin"
 pkgver=4.1.1
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://www.nordicsemi.com/Products/Development-tools/nRF-Sniffer-for-Bluetooth-LE"
-depends=('python' 'python-pyserial' 'wireshark-cli>=4.6.0' )
+depends=('python' 'python-pyserial' 'wireshark-cli>=4.6.5' )
 optdepends=('nrf5x-command-line-tools: for flashing the firmware'
             'nrfconnect-appimage: for flashing the firmware'
             'nrf-udev'
@@ -45,5 +45,5 @@ package() {
   cp -r extcap/SnifferAPI "${pkgdir}/usr/lib/${pkgname}/pymodule"
 
   # Wireshark plugin
-  install -Dm755 nrf_sniffer_ble.sh -t "${pkgdir}/usr/libexec/wireshark/extcap/"
+  install -Dm755 nrf_sniffer_ble.sh -t "${pkgdir}/usr/lib/wireshark/extcap/"
 }

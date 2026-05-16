@@ -1,14 +1,14 @@
 pkgbase = nrf-sniffer-ble
 	pkgdesc = nRF Sniffer for Bluetooth LE - firmware, SnifferAPI and Wireshark plugin
 	pkgver = 4.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.nordicsemi.com/Products/Development-tools/nRF-Sniffer-for-Bluetooth-LE
 	install = nrf-sniffer-ble.install
 	arch = any
 	license = custom
 	depends = python
 	depends = python-pyserial
-	depends = wireshark-cli>=4.6.0
+	depends = wireshark-cli>=4.6.5
 	optdepends = nrf5x-command-line-tools: for flashing the firmware
 	optdepends = nrfconnect-appimage: for flashing the firmware
 	optdepends = nrf-udev
