@@ -1,0 +1,30 @@
+pkgbase = mold-ai
+	pkgdesc = Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (built from source, CUDA)
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/utensils/mold
+	arch = x86_64
+	license = MIT
+	makedepends = rust>=1.85
+	makedepends = cargo
+	makedepends = cuda
+	makedepends = clang
+	makedepends = lld
+	makedepends = nasm
+	depends = cuda
+	depends = gcc-libs
+	depends = glibc
+	optdepends = nvidia-utils: NVIDIA GPU driver (required for any local GPU generation)
+	optdepends = ffmpeg: video output for LTX-Video / LTX-2 (mp4 mux fallback)
+	optdepends = bash-completion: Bash tab completion
+	optdepends = zsh-completions: Zsh tab completion (also auto-found via /usr/share/zsh/site-functions)
+	optdepends = fish: Fish tab completion
+	provides = mold-ai=0.10.0
+	conflicts = mold-ai-bin
+	conflicts = mold-ai-git
+	conflicts = mold
+	options = !lto
+	source = mold-ai-0.10.0.tar.gz::https://github.com/utensils/mold/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 8e996c25346a7677701f4a2c33138f5b0f09b2f3081e0979a0867fc0a352b668
+
+pkgname = mold-ai
