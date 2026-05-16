@@ -1,6 +1,6 @@
-diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile xwpe-1.5.30a-build/Makefile
---- xwpe-1.5.30a/Makefile	2005-07-07 03:53:09.000000000 +0200
-+++ xwpe-1.5.30a-build/Makefile	1970-01-01 01:00:00.000000000 +0100
+diff '--color=auto' -r -u -N xwpe-1.5.30a/Makefile xwpe-1.5.30a-build/Makefile
+--- xwpe-1.5.30a/Makefile	2005-07-07 01:53:09.000000000 +0000
++++ xwpe-1.5.30a-build/Makefile	1970-01-01 00:00:00.000000000 +0000
 @@ -1,156 +0,0 @@
 -# Generated automatically from Makefile.in by configure.
 -#C-Compiler (gcc if exist):
@@ -158,10 +158,10 @@ diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile xwpe-1.5.30a-build/Makefile
 -	$(INSTALL) old/xwpe.1_gr $(MANDIR)/man1/xwpe.1
 -	chmod ugo=r $(MANDIR)/man1/xwpe.1
 -
-diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefile.in
---- xwpe-1.5.30a/Makefile.in	2005-07-07 03:53:09.000000000 +0200
-+++ xwpe-1.5.30a-build/Makefile.in	2022-02-08 20:33:25.219596707 +0100
-@@ -1,24 +1,33 @@
+diff '--color=auto' -r -u -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefile.in
+--- xwpe-1.5.30a/Makefile.in	2005-07-07 01:53:09.000000000 +0000
++++ xwpe-1.5.30a-build/Makefile.in	2026-05-15 23:39:53.364792761 +0000
+@@ -1,24 +1,34 @@
  #C-Compiler (gcc if exist):
 -CC=		@CC@
 -CFLAGS=		@CFLAGS@ @X_CFLAGS@
@@ -190,6 +190,7 @@ diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefil
  DEFS=@DEFS@ -DLIBRARY_DIR=\"$(XWPELIBDIR)\" -DSELECTION
 -INSTALL=	cp
 -LN_S=	@LN_S@
++XDEFS=-DCC_HAS_PROTOS=1 -DHAVE_LIBZ=1 -DHAVE_MKDTEMP=1 -DRANDLIB=1 -DPRNTCMD=\"lpr\" -DMAN_S_OPT=1 -DLIBRARY_DIR=\"$(XWPELIBDIR)\" -DSELECTION
 +INSTALL=install
 +INSTALLBIN=$(INSTALL) -m755
 +INSTALLLIB=$(INSTALL) -m755
@@ -202,7 +203,21 @@ diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefil
  
  # In case configure fails a description of many of the compilation options
  # are provided below so that administrators can determine the proper flags.
-@@ -71,85 +80,111 @@
+@@ -40,11 +50,11 @@
+ # -DNOSYMLINKS          :No symbolic links
+ # -DXDB                 :System has xdb not dbx
+ # -DTERMCAP             :Use termcap instead of curses
+-# -DSIMPLE_BACKUP_SUFFIX=\"\" 
++# -DSIMPLE_BACKUP_SUFFIX=\"\"
+ #                       : The bak-file suffix, default is TurboC-like
+ # -DDEFAULT_ALTMASK=Mod3Mask
+ #                       :Mask to determined if alt is pressed in X
+-# -DINFO_DIR=\"/usr/local/info\"
++# -DINFO_DIR=\"/usr/local/info\ "
+ #                       :Location of info directory
+ # -DLIBRARY_DIR=\"/usr/local/lib/xwpe\"
+ #                       :Location of xwpe library directory
+@@ -71,85 +81,114 @@
  # -lcposix           :Posix Library
  # -linet             :Network library
  
@@ -241,16 +256,16 @@ diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefil
 +OFILES=we_main.o we_block.o we_unix.o we_e_aus.o we_edit.o we_fl_fkt.o \
 +			 we_fl_unix.o we_hfkt.o we_menue.o we_mouse.o we_opt.o we_wind.o \
 +			 we_prog.o we_progn.o we_debug.o WeString.o WeSyntax.o WeExpArr.o \
-+			 WeLinux.o we_gpm.o
++			 WeLinux.o
 +
 +X_OFILES=we_xterm.o WeXterm.o
-+T_OFILES=we_term.o
++T_OFILES=we_term.o we_gpm.o
 +
 +WPE_OBJS=$(OFILES:.o=.wpe.o) $(T_OFILES:.o=.wpe.o)
-+XWPE_OBJS=$(OFILES) $(T_OFILES) $(X_OFILES)
++XWPE_OBJS=$(OFILES:.o=.xwpe.o) $(X_OFILES:.o=.xwpe.o)
 +
 +WPE_LIBS=$(LIBS)
-+XWPE_LIBS=$(LIBS) $(XLIBS)
++XWPE_LIBS=$(XLIBS)
 +
 +TARGETS=wpe xwpe
 +
@@ -261,7 +276,7 @@ diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefil
 +	$(CC) $(CFLAGS) $(DEFS) $(WPE_OBJS) $(WPE_LIBS) -o wpe
 +
 +xwpe:	$(XWPE_OBJS) $(HFILES)
-+	$(CC) $(CFLAGS) $(DEFS) $(XWPE_OBJS) $(XWPE_LIBS) -o xwpe
++	$(CC) $(CFLAGS) $(XDEFS) $(XWPE_OBJS) $(XWPE_LIBS) -o xwpe
  #	$(CC) -Wl,-E $(CFLAGS) $(DEFS) $(OFILES) $(LIBS) -o xwpe
  
  libxwpe-x11.so:	$(X_OFILES)
@@ -278,6 +293,9 @@ diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefil
 -	$(CC) $(CFLAGS) $(DEFS) -c $<
 +%.wpe.o: %.c
 +	$(CC) $(CFLAGS) $(WFLAGS) $(DEFS) -c $< -o $@
++
++%.xwpe.o: %.c
++	$(CC) $(CFLAGS) $(WFLAGS) $(XDEFS) -c $< -o $@
 +
 +%.o: %.c
 +	$(CC) $(CFLAGS) $(WFLAGS) $(DEFS) -c $< -o $@
@@ -327,13 +345,17 @@ diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefil
 -	chmod ugo=r $(XWPELIBDIR)/help.key
 -	$(INSTALL) xwpe.1_eng $(MANDIR)/man1/xwpe.1
 -	chmod ugo=r $(MANDIR)/man1/xwpe.1
-+install: install_wpe install_xwpe
++install: install_data install_wpe install_xwpe
 +
-+install_xwpe: install_data
++install_xwpe:
 +	$(MKDIR) $(DESTDIR)$(BINDIR)
 +	$(INSTALLBIN) xwpe $(DESTDIR)$(BINDIR)
++	$(MKDIR) $(DESTDIR)$(MANDIR)/man1
++	$(INSTALLMAN) xwpe.1_eng $(DESTDIR)$(MANDIR)/man1/xwpe.1
++	$(MKDIR) $(DESTDIR)$(DATADIR)/applications
++	$(INSTALLDATA) xwpe.desktop $(DESTDIR)$(DATADIR)/applications
 +
-+install_wpe: install_data
++install_wpe:
 +	$(MKDIR) $(DESTDIR)$(BINDIR)
 +	$(INSTALLBIN) wpe $(DESTDIR)$(BINDIR)
 +	$(MKDIR) $(DESTDIR)$(MANDIR)/man1
@@ -342,15 +364,11 @@ diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefil
 +install_data: install_data_doc
 +	$(MKDIR) $(DESTDIR)$(XWPELIBDIR)
 +	$(INSTALLDATA) syntax_def $(DESTDIR)$(XWPELIBDIR)
-+	$(MKDIR) $(DESTDIR)$(DATADIR)/applications
-+	$(INSTALLDATA) xwpe.desktop $(DESTDIR)$(DATADIR)/applications
 +
 +install_data_doc:
 +	$(MKDIR) $(DESTDIR)$(XWPELIBDIR)
 +	$(INSTALLDOC) help.xwpe_eng $(DESTDIR)$(XWPELIBDIR)/help.xwpe
 +	$(INSTALLDOC) help.key_eng $(DESTDIR)$(XWPELIBDIR)/help.key
-+	$(MKDIR) $(DESTDIR)$(MANDIR)/man1
-+	$(INSTALLMAN) xwpe.1_eng $(DESTDIR)$(MANDIR)/man1/xwpe.1
  
  # German install uses old documention as no updated version is available
 -install_german:	install_fst
@@ -379,153 +397,67 @@ diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefil
 +	$(MKDIR) $(DESTDIR)$(XWPELIBDIR)
 +	$(INSTALLLIB) libxwpe-x11.so $(DESTDIR)$(XWPELIBDIR)
 +	$(INSTALLLIB) libxwpe-term.so $(DESTDIR)$(XWPELIBDIR)
-diff '--color=auto' -u -r -N xwpe-1.5.30a/WeXterm.c xwpe-1.5.30a-build/WeXterm.c
---- xwpe-1.5.30a/WeXterm.c	2005-07-07 03:53:09.000000000 +0200
-+++ xwpe-1.5.30a-build/WeXterm.c	2022-02-08 18:02:51.448877901 +0100
-@@ -24,6 +24,7 @@
- #include <X11/Xresource.h>
- #include "Xwpe.h"
- #include "WeXterm.h"
-+#include "we_xterm.h"
- 
- /* needed for the time being to call old routines */
- #include "model.h"
-diff '--color=auto' -u -r -N xwpe-1.5.30a/we_debug.c xwpe-1.5.30a-build/we_debug.c
---- xwpe-1.5.30a/we_debug.c	2005-07-07 03:53:09.000000000 +0200
-+++ xwpe-1.5.30a-build/we_debug.c	2022-02-08 16:32:57.222251853 +0100
-@@ -25,6 +25,8 @@
- #include <term.h>
+diff '--color=auto' -r -u -N xwpe-1.5.30a/unixmakr.h xwpe-1.5.30a-build/unixmakr.h
+--- xwpe-1.5.30a/unixmakr.h	2005-07-07 01:53:09.000000000 +0000
++++ xwpe-1.5.30a-build/unixmakr.h	2026-05-15 23:36:41.936577652 +0000
+@@ -9,7 +9,7 @@
+ char *getcwd(char *dir, int n);
  #endif
  
-+#include "we_prog.h"
-+
- #define D_CBREAK -2
- #define CTRLC CtrlC
- #define SVLINES 12
-diff '--color=auto' -u -r -N xwpe-1.5.30a/we_fl_unix.c xwpe-1.5.30a-build/we_fl_unix.c
---- xwpe-1.5.30a/we_fl_unix.c	2005-07-07 03:53:09.000000000 +0200
-+++ xwpe-1.5.30a-build/we_fl_unix.c	2022-02-08 16:14:56.919271238 +0100
-@@ -1033,7 +1033,7 @@
-             fk_mouse(g);
+-#ifdef NCURSES
++#ifndef NO_XWINDOWS
+ #define e_putp(s) 1
+ #else
+ #define e_putp(s) tputs((s), 1, fk_u_putchar)
+diff '--color=auto' -r -u -N xwpe-1.5.30a/we_debug.c xwpe-1.5.30a-build/we_debug.c
+--- xwpe-1.5.30a/we_debug.c	2005-07-07 01:53:09.000000000 +0000
++++ xwpe-1.5.30a-build/we_debug.c	2026-05-15 23:35:09.434071108 +0000
+@@ -66,9 +66,12 @@
+ char *tparm();
+ char *tgoto();
  #endif
-             e_sys_ini();
--            printf(e_msg[ERR_EXEC], filen);
-+            printf("%s %s", e_msg[ERR_EXEC], filen);
-             fflush(stdout);
-           }
-           if ((*e_u_system)(filen))
-@@ -1044,7 +1044,7 @@
-           }
-           else if(!WpeIsXwin())
-           {
--            printf(e_msg[ERR_HITCR]);
-+            printf("%s", e_msg[ERR_HITCR]);
-             fflush(stderr);
-             fflush(stdout);
-             fk_getch();
-diff '--color=auto' -u -r -N xwpe-1.5.30a/we_gpm.h xwpe-1.5.30a-build/we_gpm.h
---- xwpe-1.5.30a/we_gpm.h	1970-01-01 01:00:00.000000000 +0100
-+++ xwpe-1.5.30a-build/we_gpm.h	2022-02-08 16:28:42.107099492 +0100
-@@ -0,0 +1,6 @@
-+#ifndef __WE_GPM_H
-+#define __WE_GPM_H
 +
-+int WpeGpmMouseInit(void);
-+
++#ifdef NO_XWINDOWS
+ #ifdef DEFTPUTS
+ int tputs();
+ #endif
 +#endif
-diff '--color=auto' -u -r -N xwpe-1.5.30a/we_prog.c xwpe-1.5.30a-build/we_prog.c
---- xwpe-1.5.30a/we_prog.c	2005-07-07 03:53:09.000000000 +0200
-+++ xwpe-1.5.30a-build/we_prog.c	2022-02-08 16:33:46.402080573 +0100
-@@ -17,6 +17,8 @@
- #include <sys/wait.h>
- #include <signal.h>
  
-+#include "we_prog.h"
-+
- int e_run_sh(FENSTER *f);
- int e_make_library(char *library, char *ofile, FENSTER *f);
- int e_p_exec(int file, FENSTER *f, PIC *pic);
-@@ -1477,7 +1479,7 @@
-  ret = system(estr);
-  if (!WpeIsXwin())
-  {
--  printf(e_msg[ERR_HITCR]);
-+  printf("%s", e_msg[ERR_HITCR]);
-   fflush(stdout);
-   fk_getch();
+ char *npipe[5] = {  NULL, NULL, NULL, NULL, NULL  };
+ 
+diff '--color=auto' -r -u -N xwpe-1.5.30a/we_unix.c xwpe-1.5.30a-build/we_unix.c
+--- xwpe-1.5.30a/we_unix.c	2005-07-07 01:53:09.000000000 +0000
++++ xwpe-1.5.30a-build/we_unix.c	2026-05-15 23:28:19.902088312 +0000
+@@ -9,8 +9,11 @@
+ #ifdef XWPE_DLL
+ #include <dlfcn.h>
+ #else
+-int WpeXtermInit(int *argc, char **argv);
++#ifdef NO_XWINDOWS
+ int WpeTermInit(int *argc, char **argv);
++#else
++int WpeXtermInit(int *argc, char **argv);
++#endif
+ #endif
+ 
+ #include <termios.h>
+@@ -168,11 +171,12 @@
+   WpeXtermInit(argc, argv);
   }
-diff '--color=auto' -u -r -N xwpe-1.5.30a/we_prog.h xwpe-1.5.30a-build/we_prog.h
---- xwpe-1.5.30a/we_prog.h	1970-01-01 01:00:00.000000000 +0100
-+++ xwpe-1.5.30a-build/we_prog.h	2022-02-08 16:32:06.615858190 +0100
-@@ -0,0 +1,6 @@
-+#ifndef __WE_PROG_H
-+#define __WE_PROG_H
-+
-+int print_to_end_of_buffer(BUFFER *b, char *str, int wrap_limit);
-+
-+#endif
-diff '--color=auto' -u -r -N xwpe-1.5.30a/we_term.c xwpe-1.5.30a-build/we_term.c
---- xwpe-1.5.30a/we_term.c	2005-07-07 03:53:09.000000000 +0200
-+++ xwpe-1.5.30a-build/we_term.c	2022-02-08 17:14:39.247280269 +0100
-@@ -15,6 +15,8 @@
- #define KEYFN 42
- #define NSPCHR 13
- 
-+#include "we_gpm.h"
-+
- #ifndef XWPE_DLL
- #define WpeDllInit WpeTermInit
- #endif
-@@ -97,7 +99,11 @@
- #endif
- #endif
- 
-+#ifdef XWPE_DLL
- int WpeDllInit(int *argc, char **argv)
+  else
+-#endif
 +#else
-+int WpeTermInit(int *argc, char **argv)
-+#endif
- {
-  fk_u_cursor = fk_t_cursor;
-  fk_u_locate = fk_t_locate;
-diff '--color=auto' -u -r -N xwpe-1.5.30a/we_xterm.c xwpe-1.5.30a-build/we_xterm.c
---- xwpe-1.5.30a/we_xterm.c	2005-07-07 03:53:09.000000000 +0200
-+++ xwpe-1.5.30a-build/we_xterm.c	2022-02-08 18:02:18.061217148 +0100
-@@ -15,7 +15,8 @@
- #define WpeDllInit WpeXtermInit
+  {
+   WpeTermInit(argc, argv);
+  }
  #endif
- 
--int e_X_sw_color(void);
-+#include "we_xterm.h"
-+
- int fk_show_cursor(void);
- int e_ini_size(void);
- int e_x_getch(void);
-@@ -71,7 +72,11 @@
- 
- extern struct mouse e_mouse;
- 
-+#ifdef XWPE_DLL
- int WpeDllInit(int *argc, char **argv)
-+#else
-+int WpeXtermInit(int *argc, char **argv)
 +#endif
- {
-  e_s_u_clr = e_s_x_clr;
-  e_n_u_clr = e_n_x_clr;
-diff '--color=auto' -u -r -N xwpe-1.5.30a/we_xterm.h xwpe-1.5.30a-build/we_xterm.h
---- xwpe-1.5.30a/we_xterm.h	1970-01-01 01:00:00.000000000 +0100
-+++ xwpe-1.5.30a-build/we_xterm.h	2022-02-08 18:01:58.385927709 +0100
-@@ -0,0 +1,6 @@
-+#ifndef __WE_XTERM_H
-+#define __WE_XTERM_H
-+
-+int e_X_sw_color(void);
-+
-+#endif
-diff '--color=auto' -u -r -N xwpe-1.5.30a/xwpe.desktop xwpe-1.5.30a-build/xwpe.desktop
---- xwpe-1.5.30a/xwpe.desktop	2006-04-01 18:15:23.000000000 +0200
-+++ xwpe-1.5.30a-build/xwpe.desktop	2022-02-08 20:45:15.538593011 +0100
+  if (WpeIsProg())
+  {
+ #ifndef DEBUGGER
+diff '--color=auto' -r -u -N xwpe-1.5.30a/xwpe.desktop xwpe-1.5.30a-build/xwpe.desktop
+--- xwpe-1.5.30a/xwpe.desktop	2006-04-01 16:15:23.000000000 +0000
++++ xwpe-1.5.30a-build/xwpe.desktop	2026-05-15 22:03:00.570649674 +0000
 @@ -1,8 +1,14 @@
  [Desktop Entry]
 +Version=1.0
