@@ -1,20 +1,20 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm
-pkgver=0.5.20
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64' 'aarch64' 'riscv64')
 url='https://github.com/smol-machines/smolvm'
 license=('Apache-2.0')
-depends=('libkrun' 'libkrunfw')
+depends=('libkrun' 'libkrunfw' 'seatd' 'crun')
 makedepends=('cargo' 'libkrun' 'libkrunfw')
-options=(!lto)
+options=(!lto !debug)
 provides=('smolvm')
 conflicts=('smolvm-git' 'smolvm-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     'Cargo.lock')
-sha256sums=('ceba9666a1a3fcd3bc909423ef1bd550f4b9d0f12d07b4f166e53357888f2e81'
-            '14e0cd94bea5be9b8236951fcb6205660df0875518174c0520a18fd40a16ac89')
+sha256sums=('379108b4de26d4312f4f92b2e0ff25d2ca1e97738e49e690701e4841769ff635'
+            'fa31740ab74f363928e5a431a90f6eed42dcb61cef86cced3ebbf1de9ab4126a')
 
 prepare() {
     cd "$pkgname-$pkgver"

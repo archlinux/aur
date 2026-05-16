@@ -1,6 +1,6 @@
 pkgbase = smolvm
 	pkgdesc = Tool to build & run portable, lightweight, self-contained virtual machines.
-	pkgver = 0.5.20
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/smol-machines/smolvm
 	arch = x86_64
@@ -12,13 +12,16 @@ pkgbase = smolvm
 	makedepends = libkrunfw
 	depends = libkrun
 	depends = libkrunfw
+	depends = seatd
+	depends = crun
 	provides = smolvm
 	conflicts = smolvm-git
 	conflicts = smolvm-bin
 	options = !lto
-	source = smolvm-0.5.20.tar.gz::https://github.com/smol-machines/smolvm/archive/refs/tags/v0.5.20.tar.gz
+	options = !debug
+	source = smolvm-0.7.0.tar.gz::https://github.com/smol-machines/smolvm/archive/refs/tags/v0.7.0.tar.gz
 	source = Cargo.lock
-	sha256sums = ceba9666a1a3fcd3bc909423ef1bd550f4b9d0f12d07b4f166e53357888f2e81
-	sha256sums = 14e0cd94bea5be9b8236951fcb6205660df0875518174c0520a18fd40a16ac89
+	sha256sums = 379108b4de26d4312f4f92b2e0ff25d2ca1e97738e49e690701e4841769ff635
+	sha256sums = fa31740ab74f363928e5a431a90f6eed42dcb61cef86cced3ebbf1de9ab4126a
 
 pkgname = smolvm
