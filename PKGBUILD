@@ -8,8 +8,8 @@
 
 pkgname=libmodsecurity-git
 _name=modsecurity
-pkgver=v3.0.14.r191.gc3e31de
-pkgrel=2
+pkgver=v3.0.15.r0.g0fb4aff
+pkgrel=1
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, git HEAD'
 arch=('x86_64')
 url='https://github.com/SpiderLabs/ModSecurity'
@@ -46,8 +46,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_name}"
-    git submodule init
-    git submodule update
+    git submodule update --init --recursive
     sed -e 's/luajit-2.0/luajit-2.1/g' \
         -e 's/LUA_POSSIBLE_LIB_NAMES="/LUA_POSSIBLE_LIB_NAMES="luajit /g' \
         -i build/lua.m4
