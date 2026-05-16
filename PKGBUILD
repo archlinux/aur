@@ -1,7 +1,7 @@
 # Maintainer: Gianluca <homen3@gmail.com>
 pkgname=hyprland-agent
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Local-first agentic desktop controller for Hyprland / Wayland"
 arch=('any')
 url="https://github.com/gianlucamazza/hyprland-agent"
@@ -10,6 +10,7 @@ depends=(
     'python>=3.13'
     # Python runtime deps (official repos)
     'python-pydantic'
+    'python-rich'
     'python-typer'
     'python-textual'
     'python-httpx'
