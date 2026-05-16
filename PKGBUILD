@@ -1,8 +1,8 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-bin
-pkgver=2.2.4.1
-pkgrel=2
+pkgver=2.3.0.0
+pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -34,7 +34,7 @@ source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
 )
 
-sha256sums=('2578de77d1c0c9c42770d8fc5131e54b5c078cc562814257513ef2557b0ef8c6')
+sha256sums=('b50a6ebe6c5308b58e706951d22f2ab1d12db3d8cc83e6aae8bc6e3eab8ea2e5')
 
 package() {
   # Install Shelly.Gtk binary
@@ -86,6 +86,7 @@ Exec=/usr/bin/shelly-notifications
 Icon=shelly-tray
 Type=Application
 Categories=System;Utility;
+Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
 Terminal=false
 NoDisplay=true
 EOF
@@ -102,6 +103,12 @@ EOF
 
   # Install fish shell completions
   install -Dm644 "$srcdir/shelly.fish" "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
+
+  # Install translations
+if [ -d "$srcdir/locale" ] && [ -n "$(ls -A "$srcdir/locale" 2>/dev/null)" ]; then
+    install -d "$pkgdir/usr/share/locale"
+    cp -r "$srcdir/locale/."/* "$pkgdir/usr/share/locale/" 2>/dev/null || true
+fi
 
   # Install Flatpak integration script
   cat <<'SCRIPT' | install -Dm755 /dev/stdin "$pkgdir/usr/bin/shelly-flatpak-integrate"
