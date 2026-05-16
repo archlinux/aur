@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/Darius662/PipeRDC"
 license=('MIT')
 depends=('python' 'gtk4' 'libadwaita' 'freerdp' 'python-gobject' 'python-secretstorage')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('4ed6b07c5cc7835db43a2d41e80c547f93c3ebdef2a3467c8ccbe9077be79ada')
 
@@ -22,9 +22,8 @@ package() {
         cd "$src_extracted"
     fi
 
-    # Install Python package
-    python -m build --wheel --outdir dist
-    python -m installer --prefix=/usr --destdir="$pkgdir" dist/*.whl
+    # Install Python package using pip into the package root
+    python -m pip install --no-deps --root="$pkgdir" --prefix=/usr .
 
     # Install desktop file
     install -Dm644 data/piperdc.desktop "$pkgdir/usr/share/applications/piperdc.desktop"
