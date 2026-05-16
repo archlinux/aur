@@ -1,23 +1,34 @@
-#Maintainer: Pierre Chevalier <pierrechevalier83@gmail.com>
+# Maintainer: Charlie <c44014189@gmail.com>
 
 pkgname=2048-rs
 _pkgname=game-2048
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="A very pretty cli implementation of the popular 2048 game written in rust"
+pkgdesc="A very pretty CLI implementation of the popular 2048 game written in Rust"
 url="https://github.com/pierrechevalier83/2048-rs"
 makedepends=('cargo')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_pkgname/$pkgver/download")
-sha256sums=('7b4c6bb8bc283427b2faac0817c0d14dcf97a04c07436f76076b941be7ddb07d')
+sha256sums=('ce3f98ac1bce117a108d93e7d87b9911f3df82f3d1a49abe197366cb0fd28981')
+
+prepare() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  cd "$_pkgname-$pkgver"
-  cargo build --release
+  # Changed from $pkgname to $_pkgname
+  cd "$srcdir/$_pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+
+  cargo build --offline --release --all-features
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  install -Dm755 target/release/game-2048 "$pkgdir/usr/bin/2048"
+  cd "$srcdir/$_pkgname-$pkgver"
+  install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$pkgname"
+  
 }
