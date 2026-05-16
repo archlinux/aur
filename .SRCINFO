@@ -1,7 +1,7 @@
 pkgbase = anime-games-launcher-bin
 	pkgdesc = A launcher for various anime games
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/an-anime-team/anime-games-launcher
 	arch = x86_64
 	license = GPL3
@@ -21,10 +21,10 @@ pkgbase = anime-games-launcher-bin
 	provides = anime-games-launcher
 	conflicts = anime-games-launcher-git
 	conflicts = anime-games-launcher
-	source = anime-games-launcher_2.0.0::https://github.com/an-anime-team/anime-games-launcher/releases/download/v2.0.0/anime-games-launcher
+	source = anime-games-launcher_2.1.0::https://github.com/an-anime-team/anime-games-launcher/releases/download/v2.1.0/anime-games-launcher
 	source = icon.png
 	source = anime-games-launcher.desktop
-	md5sums = b651a591c66ff02e9ecf0e22db0539e9
+	md5sums = 5cd1c97d5f461e192b32876dcfffb247
 	md5sums = b0ec5d3121b1b0766a9e53cdd0bc04ee
 	md5sums = 8b61154766b80f75afa4936ca110dfd1
 
