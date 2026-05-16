@@ -1,6 +1,6 @@
 pkgbase = keyboard-app
 	pkgdesc = Universal on-screen keyboard
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 2
 	url = https://github.com/occamist/keyboard-app
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = keyboard-app
 	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = keyboard-app-0.3.0.tar.gz::https://github.com/occamist/keyboard-app/archive/v0.3.0.tar.gz
-	sha256sums = df27c4b97f6df6608236b6c5b86c0ed43977e6136904cc866c8fd1e27289555a
+	source = keyboard-app-v0.4.0.tar.gz::https://github.com/occamist/keyboard-app/archive/v0.4.0.tar.gz
+	sha256sums = 510d71ae5b388ece141dea651e0e7b265a38baefe5c096c136b987b654029691
 
 pkgname = keyboard-app
