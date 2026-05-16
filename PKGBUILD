@@ -1,6 +1,6 @@
 # Maintainer: Istiak <istiakm30@gmail.com>
 pkgname=quillscribe
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="Beautiful Voice-to-Text Transcription App with local and cloud speech-to-text support"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
   'librsvg'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/theguy000/QuillScribe/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1ed9d2dab19c6c8d27553d7c9502ae1c8878a67fb0108f3a75f7894c6867922e')
+sha256sums=('47aaa4151b748cf4278c93e5f38763292fb29761566213b8099d29e1c8f25259')
 
 build() {
   cd "QuillScribe-$pkgver"
