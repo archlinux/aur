@@ -3,7 +3,7 @@
 
 pkgname=github-desktop-mod
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop GitHub repository manager — an alternative to GitHub Desktop for Linux"
 arch=('any')
 url="https://github.com/PerfLite/Github_DesktopMod"
