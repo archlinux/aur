@@ -3,7 +3,7 @@
 pkgname=infnoise-provider-git
 pkgver=r102.16b2a95
 pkgrel=1
-pkgdesc="OpenSSL 3.x provider for the Infinite Noise TRNG (git master)"
+pkgdesc="OpenSSL 3.x provider for the Infinite Noise TRNG"
 arch=('x86_64')
 url="https://github.com/Strykar/infnoise-provider"
 license=('GPL-2.0-or-later')
