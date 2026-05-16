@@ -1,0 +1,3 @@
+[diskwatch]
+source = "cratesio"
+cratesio = "diskwatch"
