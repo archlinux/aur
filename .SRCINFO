@@ -1,0 +1,18 @@
+pkgbase = agildomonitor
+	pkgdesc = Monitor de sistema (CPU, GPU, rede, processos) em PyQt6 para Linux
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/juglesbass/AgildoMonitor
+	install = agildomonitor.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-psutil
+	depends = python-pyqt6
+	optdepends = nvidia-utils: temperatura e VRAM em placas NVIDIA
+	source = AgildoMonitor-1.1.tar.gz::https://github.com/juglesbass/AgildoMonitor/archive/refs/tags/v1.1.tar.gz
+	source = agildomonitor.desktop
+	sha256sums = c6bb1f73ca1a5f78418bdb68392c0797f3d29c59ce04984c2665ff98ff7088fc
+	sha256sums = f6f23d7bec8bc6644701576d0690a53d2cd808c23f9bd06b6cfd9b10aa6a3be7
+
+pkgname = agildomonitor

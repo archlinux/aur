@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Agildo Monitor
+GenericName=Monitor de sistema
+Comment=Monitor de CPU, GPU, rede e processos para Linux (PyQt6)
+Exec=agildomonitor
+Icon=agildomonitor
+Terminal=false
+Categories=Utility;System;Monitor;
+Keywords=monitor;system;cpu;gpu;plasma;cachyos;
