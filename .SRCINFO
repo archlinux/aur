@@ -1,6 +1,6 @@
 pkgbase = advancely-git
 	pkgdesc = A highly customizable and interactive tool to track Minecraft progress beyond just Advancements.
-	pkgver = r974.3865181d
+	pkgver = 1.4.4.r0.g048b77f
 	pkgrel = 1
 	url = https://github.com/LNXSeus/Advancely
 	arch = x86_64
