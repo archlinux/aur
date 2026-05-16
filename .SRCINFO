@@ -1,12 +1,13 @@
 pkgbase = ttf-fixedsys-excelsior-linux
 	pkgdesc = Fixedsys font for linux, use only at 12pt
-	pkgver = 3.02.9
-	pkgrel = 3
+	pkgver = 3.09.10
+	pkgrel = 1
 	url = https://github.com/kika/fixedsys
 	arch = any
 	license = custom
-	source = https://github.com/kika/fixedsys/releases/download/v3.02.9/FSEX302.ttf
-	source = https://github.com/kika/fixedsys/releases/download/v3.02.9/FSEX302-alt.ttf
+	options = !debug
+	source = https://github.com/kika/fixedsys/releases/download/v3.09.10/FSEX302.ttf
+	source = https://github.com/kika/fixedsys/releases/download/v3.09.10/FSEX302-alt.ttf
 	sha256sums = b3f8e1da97b722a42477ee9a72f953eb2bc7c2195df5e2b6b7d4781dd3f8b2cc
 	sha256sums = e4abb547b387d4676892f2db7c4a19d5cda0a91680ccc52331b2b49456e307da
 
