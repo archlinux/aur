@@ -24,7 +24,7 @@ b2sums=('c8cc9ff6b4c8fc96ce99bcd3bba383049d9127f37f0823546f333278c1f8273955e1399
         '9ae11a930e930953b16f7d6d1d3fbf0ebb6c4d8687cac1475560603442ed8edd452200468f7fe9c82af651d40ccad192c036940bfe57ef093e7c30cce93383f0')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_archive_version"
 
   # since Arch only ships one version of PostgreSQL ... obtain the major version
   export _PGMAJOR=$(pg_config --version | sed -e 's/PostgreSQL //' -e 's/\..*//')
@@ -60,7 +60,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_archive_version"
 
   # extension
   cp -rv "target/release/timescaledb_toolkit-pg$_PGMAJOR/." "$pkgdir"
