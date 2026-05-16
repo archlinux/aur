@@ -9,14 +9,14 @@ pkgbase = python-simplesqlite
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-docutils
 	depends = python-dataproperty
 	depends = python-mbstrdecoder
 	depends = python-pathvalidate
 	depends = python-sqliteschema
 	depends = python-tabledata
 	depends = python-typepy
-	source = https://files.pythonhosted.org/packages/source/s/simplesqlite/simplesqlite-1.5.4.tar.gz
-	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
-	sha256sums = 7007d2abed75f2f9b0f1e544a9af2b6d0bd341d8b5519446708e6595ea092d4c
+	source = python-SimpleSQLite-1.5.4.tar.gz::https://github.com/thombashi/SimpleSQLite/archive/refs/tags/v1.5.4.tar.gz
+	sha256sums = 45ca76f04457d1cd08d36fbed064f167451838f47d1407954f99d7c4c96d2aa7
 
 pkgname = python-simplesqlite

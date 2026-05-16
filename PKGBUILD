@@ -1,56 +1,56 @@
-# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
-# Contributor: Florian Wittmann
+# Maintainer: Charlie <c44014189@gmail.com>
 
 _pypi_name=SimpleSQLite
-_name=${_pypi_name,,}
+_name="${_pypi_name,,}"
 
-pkgname=python-${_name,,}
+pkgname="python-$_name"
 pkgver=1.5.4
 pkgrel=1
 pkgdesc='Simplify SQLite database operations'
 arch=('any')
 url="https://github.com/thombashi/${_pypi_name}"
 license=('MIT')
-makedepends=(
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel')
 depends=(
   'python-dataproperty'
   'python-mbstrdecoder'
   'python-pathvalidate'
   'python-sqliteschema'
   'python-tabledata'
-  'python-typepy')
+  'python-typepy'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+  'python-docutils'
+)
 
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('7007d2abed75f2f9b0f1e544a9af2b6d0bd341d8b5519446708e6595ea092d4c')
-validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
+#PyPI only distributes the .whl files, so use github repo
+source=("${pkgname%-*}-$_pypi_name-$pkgver.tar.gz::https://github.com/thombashi/$_pypi_name/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('45ca76f04457d1cd08d36fbed064f167451838f47d1407954f99d7c4c96d2aa7')
 
 build() {
-  cd "${_name}-$pkgver"
+  cd "${_pypi_name}-$pkgver"
 
   python -m build --wheel --no-isolation
 
-  rst2man README.rst "$pkgname.7"
+  if [ -f README.rst ]; then
+    rst2man README.rst "$pkgname.7"
+  fi
 }
 
 package() {
-  cd "${_name}-$pkgver"
+  cd "${_pypi_name}-$pkgver"
 
   export PYTHONHASHSEED=0
-  python -m installer --destdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 "$pkgname.7" -t "$pkgdir/usr/share/man/man7/"
+  if [ -f "$pkgname.7" ]; then
+    install -Dm644 "$pkgname.7" "$pkgdir/usr/share/man/man7/$pkgname.7"
+  fi
 
-  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s \
-    "$_site/${_name}-${pkgver}.dist-info/licenses/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
