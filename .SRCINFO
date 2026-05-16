@@ -1,0 +1,17 @@
+pkgbase = autolon-bin
+	pkgdesc = Native Linux autoclicker and local input automation controller
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/daveottley/autolon
+	install = autolon.install
+	arch = x86_64
+	license = MIT
+	depends = acl
+	depends = gtk4
+	depends = libxtst
+	provides = autolon=0.1.0
+	conflicts = autolon
+	source_x86_64 = autolon-0.1.0-x86_64.tar.zst::https://github.com/daveottley/autolon/releases/download/v0.1.0/autolon-0.1.0-x86_64.tar.zst
+	sha256sums_x86_64 = 62a8f59277cb18f80036a4986ef12ab03f17bc022c0234ecbce8a57e240890e4
+
+pkgname = autolon-bin
