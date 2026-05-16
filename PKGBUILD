@@ -2,7 +2,7 @@
 # Contributor: loathingkernel <loathingkernel @at gmail .dot com>
 pkgname=d7vk
 pkgver=1.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Vulkan-based implementation of D3D7, 6, 5 and 3 for Linux / Wine, spun off from DXVK."
 arch=('x86_64' 'i686')
 url="https://github.com/WinterSnowfall/d7vk"
@@ -28,7 +28,7 @@ sha256sums=('d279a39cf860c9f371f5348ae8080fa227cf636f39910c36360378ada72fbeb3'
             'SKIP'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             '7ef10365d3926f928461f302a35429d13c0fb730a4062d487879c519a3c46b4e'
-            'e496d59eeae7147d02493c53c4d45ab0c0fd22cc6bb893683989607b978224cb')
+            '32b036bea35aa457e4d5a6ed7f2d2883cf97fe97967371b30916d5b9890cab44')
 
 prepare() {
 	cd "$srcdir/${pkgname}"
