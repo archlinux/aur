@@ -1,0 +1,9 @@
+# Build artifacts
+pkg/
+src/
+*.pkg.tar.*
+
+# Downloaded sources (not part of the AUR source)
+*.AppImage
+LICENSE
+icon.png

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=51mazi
+Comment=A desktop writing software for novel writers
+Exec=/usr/bin/51mazi %U
+Icon=com.51mazi.desktop
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupWMClass=51mazi
