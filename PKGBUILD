@@ -6,7 +6,7 @@ pkgdesc="SDL2 and OpenGL for wirite FPS games: Dark-Dream"
 arch=('x86_64')
 url="https://codeberg.org/gamestime102/Dark-Dream"
 license=('GPL')
-depends=('sdl2' 'sdl2_mixer' 'glu' 'libgl')
+depends=('sdl2' 'sdl2_mixer' 'glu' 'libgl' 'zig')
 makedepends=('git' 'gcc')
 provides=("dark-dream")
 conflicts=("dark-dream")
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "Dark-Dream"
-  gcc -O3 dark_dream.c -o dark-dream \
+  gcc -O3 dark_dream.zig -o dark-dream \
       -lSDL2 -lSDL2_mixer -lGL -lGLU -lm \
       -DUSE_SDL_MIXER
 }

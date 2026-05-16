@@ -11,6 +11,7 @@ pkgbase = dark-dream
 	depends = sdl2_mixer
 	depends = glu
 	depends = libgl
+	depends = zig
 	provides = dark-dream
 	conflicts = dark-dream
 	source = git+https://codeberg.org/gamestime102/Dark-Dream.git
