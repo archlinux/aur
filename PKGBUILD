@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=e47e13ca31a98165ee08b817c5efc8d1edf97717} # daily-886
+: ${_runtime_commit:=07adb8dbcb94252bcba77dc92dc8bf2e1a8341db} # daily-907
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.14.0
+pkgver=12.14.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -120,19 +120,15 @@ source=(
 
   # Fix for clang 22
   0003-Use-wasm32-wasip1-target.patch
-
-  # Fix for rust 1.95
-  0004-encoding_rs-rust-1.95.patch
 )
 sha256sums=(
-  'e5b378e42fadbb9fbdf8c5367dee7bec9dcd85d0cb33ba2b7d68e6a84cfdec24'
+  'e9cb28e55ce33787a67ce063c50eb97b8a2786f997db7b1d1be8868039cd0f52'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
   'c2aaff2a743c738edbf02d7be816c30fe3a5acb2d3dcb7a3906357a9f2ed438f'
   '8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245'
   '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
-  '763ced1fb083c3a621bf53c9f65b990308c8dcf944e3d61702ecbc882d318bd7'
 )
 
 _deno() {
