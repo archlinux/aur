@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'gtk4' 'libadwaita' 'freerdp' 'python-gobject' 'python-secretstorage')
 makedepends=('python-build' 'python-installer')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('4ed6b07c5cc7835db43a2d41e80c547f93c3ebdef2a3467c8ccbe9077be79ada')
 
 package() {
     cd "$srcdir/piperdc-$pkgver"
