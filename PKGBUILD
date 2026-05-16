@@ -1,6 +1,6 @@
-# Maintainer: Kostiantyn Kushnir <...>
+# Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 pkgname=openusage-cli-git
-pkgver=0.0.9.r67.ge628c04
+pkgver=0.0.10.r69.g3137803
 pkgrel=1
 pkgdesc="Local daemon and CLI for AI provider usage/quota via OpenUsage plugins"
 arch=('x86_64' 'aarch64')
