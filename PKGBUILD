@@ -9,7 +9,7 @@
 
 pkgname=pure-ftpd-db
 _srcname=pure-ftpd
-pkgver=1.0.53
+pkgver=1.0.54
 pkgrel=1
 pkgdesc="A fast, production quality, standards-conformant FTP server. Compiled with mysql and pgsql."
 arch=('i686' 'x86_64')
@@ -75,7 +75,7 @@ package() {
 	sed -i 's|# TLS\s.*1|TLS 1|' ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
 	sed -i 's|# TLSCipherSuite\s.*HIGH|TLSCipherSuite -S:HIGH:MEDIUM:+TLSv1|' ${pkgdir}/etc/pure-ftpd/pure-ftpd.conf
 }
-sha256sums=('329a1d524476d7a137dcf65af04ec79ddf1c225e2c4ac4a2e884663ef4897fa1'
+sha256sums=('c2bef41f9635c3a87efd65f089c16ca5df9fd02db199d9fdcf12b206b93d41a6'
             '9be7c746d579ea83f17b21f58a4d0055caa370c7bfe543993b1d81ba91672d96'
             '7c20f36c26c5a5cc469f376f6d047a8dc082ed1c34e55f318993aa0f2f4a0646'
             'cabbdf0c1b9fb4651c6f30eea95438b1f4f2b6872e0a62a92cda99afb1b6f6c3')
