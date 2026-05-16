@@ -1,0 +1,22 @@
+pkgbase = infnoise-provider-git
+	pkgdesc = OpenSSL 3.x provider for the Infinite Noise TRNG (git master)
+	pkgver = r102.16b2a95
+	pkgrel = 1
+	url = https://github.com/Strykar/infnoise-provider
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = pandoc
+	makedepends = pkgconf
+	depends = openssl
+	depends = libftdi
+	depends = libinfnoise
+	optdepends = python: run examples/python_demo.py
+	optdepends = python-cryptography: run examples/python_demo.py
+	provides = infnoise-provider
+	conflicts = infnoise-provider
+	backup = etc/ssl/infnoise-provider.cnf
+	source = git+https://github.com/Strykar/infnoise-provider.git
+	sha256sums = SKIP
+
+pkgname = infnoise-provider-git
