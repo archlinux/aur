@@ -1,5 +1,5 @@
 # Maintainer: mainstreamos <https://github.com/MainstreamOS>
-_commit='7511545ee20664e3b8b8d3322c0ffe7567c56f7a'
+_commit='7d1c9a9c6721606b129829134d6f614f015621e2'
 # Useful links:
 # https://git.outfoxxed.me/quickshell/quickshell/commits/branch/master
 # https://aur.archlinux.org/packages/quickshell-git
@@ -10,8 +10,8 @@ replaces=('illogical-impulse-quickshell-git')
 
 _pkgname=quickshell
 pkgname="$_prefix-$_pkgname-git"
-pkgver=0.1.0.r1
-pkgrel=8
+pkgver=0.3.0.r3
+pkgrel=1
 pkgdesc="$_pkgname-git pinned commit and extra deps for $_prefix"
 arch=(x86_64 aarch64)
 url='https://git.outfoxxed.me/quickshell/quickshell'
@@ -28,8 +28,10 @@ depends=(
   'libpipewire'
   'libxcb'
   'wayland'
+  'glib2'
+  'polkit'
   # NOTE: Below are custom dependencies of illogical-impulse
-  qt6-5compat 
+  qt6-5compat
   qt6-avif-image-plugin
   qt6-imageformats
   qt6-multimedia
@@ -49,14 +51,15 @@ makedepends=(
   'cmake'
   'git'
   'ninja'
+  'polkit'
   'qt6-shadertools'
   'spirv-tools'
   'vulkan-headers'
   'wayland'
   'wayland-protocols'
 )
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("$_pkgname" "$_pkgname-git")
+conflicts=("$_pkgname" "$_pkgname-git")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc::git+$url.git#commit=$_commit"
@@ -70,7 +73,6 @@ build() {
     -DCMAKE_BUILD_TYPE="RelWithDebInfo" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DDISTRIBUTOR="AUR (package: quickshell-git)" \
-    -DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO \
     -DINSTALL_QML_PREFIX=lib/qt6/qml
 
   cmake --build build
