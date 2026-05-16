@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://rocm.docs.amd.com/en/7.13.0/about/release-notes.html
+# Release notes https://rocm.docs.amd.com/en/7.13.0-preview/about/release-notes.html
 pkgname=rocm-gfx1152-bin
 pkgdesc="ROCm Core SDK and TheRock Build System - Ryzen AI 300 - Krackan Point"
 pkgver=7.13.0
-pkgrel=1
+pkgrel=2
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -14,7 +14,7 @@ depends=('libdrm' 'ocl-icd' 'gcc-libs' 'numactl' 'suitesparse' 'blas' 'lapack')
 provides=('opencl-driver' 'rocm' 'rocm-core' 'comgr' 'rocm-hip' 'hip' 'hsa-rocr' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb' 'rocprofiler' 'rocprofiler-plugins' 'rocprofiler-register' 'roctracer' 'hsa-amd-aqlprofile' 'rocm-openmp' 'openmp-extras-runtime'
 'rocm-cmake' 'rocm-smi-lib' 'amdsmi' 'amd-smi-lib' 'composable-kernel' 'hipcc' 'rocm-llvm' 'rocblas' 'rocsolver' 'half' 'hipblas' 'hipblas-common' 'hipblaslt' 'hiprand' 'rocdecode' 'rocjpeg' 'rocprim' 'hipcub' 'rocfft' 'hipfft' 'hipfort' 'hipify-clang' 'hipsolver' 'rocsparse' 'hipsparse' 'hipsparselt' 'hiptensor' 'openmp-extras-dev' 'rccl' 'rocrand' 'rocalution' 'rocm-hip-libraries' 'rocthrust' 'rocprofiler-compute' 'rocprofiler-debug'
 'rocprofiler-systems' 'rocm-hip-sdk' 'rocm-opencl' 'rocm-opencl-runtime' 'rocm-opencl-sdk' 'rocwmma' 'rocprofiler-sdk' 'rocprofiler-sdk-roctx' 'rocprofiler-sdk-rocpd' 'rocm-developer-tools' 'rocshmem' 'migraphx' 'miopen' 'miopen-hip' 'mivisionx' 'rocm-ml-libraries' 'rocm-ml-sdk' 'rpp')
-conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-gfx110x-bin' 'rocm-gfx120x-bin' 'rocm-gfx1150-bin' 'rocm-opencl-runtime' 'rocm' 'rocm-core' 'comgr' 'rocm-hip' 'hip' 'hsa-rocr' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb'
+conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-bin' 'rocm-gfx101x-bin' 'rocm-gfx103x-bin' 'rocm-gfx110x-bin' 'rocm-gfx120x-bin' 'rocm-gfx1150-bin' 'rocm-gfx1151-bin' 'rocm-opencl-runtime' 'rocm' 'rocm-core' 'comgr' 'rocm-hip' 'hip' 'hsa-rocr' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb'
 'rocprofiler' 'rocprofiler-plugins' 'rocprofiler-register' 'roctracer' 'hsa-amd-aqlprofile' 'rocm-openmp' 'openmp-extras-runtime' 'rocm-cmake' 'rocm-smi-lib' 'amdsmi' 'amd-smi-lib' 'composable-kernel' 'hipcc' 'rocm-llvm' 'rocblas' 'rocsolver' 'hipblas' 'hipblas-common' 'hipblaslt' 'hiprand' 'rocdecode' 'rocjpeg' 'rocprim' 'hipcub' 'rocfft' 'hipfft' 'hipfort' 
 'hipify-clang' 'hipsolver' 'rocsparse' 'hipsparse' 'hipsparselt' 'hiptensor' 'rccl' 'rocrand' 'rocalution' 'rocm-hip-libraries' 'rocthrust' 'rocprofiler-compute' 'rocprofiler-debug' 'rocprofiler-systems' 'rocm-hip-sdk' 'rocm-opencl' 'rocm-opencl-runtime' 'rocm-opencl-sdk' 'rocwmma' 'rocprofiler-sdk' 'rocprofiler-sdk-roctx' 'rocprofiler-sdk-rocpd' 'rocm-developer-tools' 'rocshmem' 'migraphx' 'miopen' 'miopen-hip' 
 'mivisionx' 'rocm-ml-libraries' 'rocm-ml-sdk' 'rpp')
@@ -48,5 +48,5 @@ package() {
     echo /opt/rocm/hip/lib >> "$pkgdir/etc/ld.so.conf.d/rocm-bin.conf"
 
     mkdir -p "${pkgdir}/etc/profile.d"
-    echo export PATH="\${PATH}:/opt/rocm/bin:/opt/rocm/hip/bin:/opt/rocm/llvm/bin" > "$pkgdir/etc/profile.d/rocm-bin.sh"
+    echo export PATH="\${PATH}:/opt/rocm/bin:/opt/rocm/hip/bin:/opt/rocm/lib/llvm/bin" > "$pkgdir/etc/profile.d/rocm-bin.sh"
 }
