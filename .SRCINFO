@@ -1,13 +1,14 @@
 pkgbase = python-tls-client-git
 	pkgdesc = An advanced HTTP library based on requests and tls-client.
 	pkgver = 1.0.1.r113.20240202.ab6c736
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/tls-client/
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = lib-tls-client

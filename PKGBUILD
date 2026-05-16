@@ -1,9 +1,10 @@
-# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pkgname=python-tls-client
 pkgname="${_pkgname}-git"
 pkgver=1.0.1.r113.20240202.ab6c736
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced HTTP library based on requests and tls-client."
 arch=(
   'any'
@@ -18,7 +19,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  # 'python-setuptools'
+  'python-setuptools'
   'python-wheel'
 )
 provides=(
