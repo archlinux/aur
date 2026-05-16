@@ -1,12 +1,12 @@
 # Maintainer: kawuchuu <kawuchuu at gmail dot com>
 pkgname=firetail-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Firetail music player"
 arch=('x86_64')
 url="https://github.com/kawuchuu/firetail"
 license=('GPL3')
-depends=('electron')
+depends=('electron41')
 options=('!strip' '!debug')
 
 source=("firetail-$pkgver"::"https://github.com/kawuchuu/firetail/releases/download/v$pkgver/Firetail-linux-x64-$pkgver.zip")
@@ -17,7 +17,7 @@ package() {
   cp -r "$srcdir/Firetail-linux-x64/resources" "$pkgdir/usr/lib/$pkgname/"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/firetail" <<EOF
 #!/bin/sh
-exec electron /usr/lib/$pkgname/resources/app.asar "\$@"
+exec electron41 /usr/lib/$pkgname/resources/app.asar "\$@"
 EOF
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/firetail.desktop" <<EOF
