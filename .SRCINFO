@@ -1,6 +1,6 @@
 pkgbase = cigtft
 	pkgdesc = A small streaming file transfer tool for the CLI.
-	pkgver = 1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/PieyIsAPie/cigtft
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = cigtft
 	makedepends = git
 	depends = python3
 	depends = python-tqdm
+	depends = python-pycryptodome
 	source = git+https://gitlab.com/PieyIsAPie/cigtft.git
 	sha512sums = SKIP
 
