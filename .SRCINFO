@@ -1,11 +1,14 @@
 pkgbase = 10ff-git
 	pkgdesc = Typing tests in CLI
-	pkgver = r53.10d48c2
+	pkgver = r56.9be5cf0
 	pkgrel = 1
 	url = https://github.com/rr-/10ff
 	arch = any
 	license = WTFPL
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
 	depends = python
 	source = git+https://github.com/rr-/10ff.git
 	md5sums = SKIP
