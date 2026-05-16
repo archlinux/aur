@@ -1,7 +1,7 @@
 pkgbase = nightingale
 	pkgdesc = Machine learning powered Karaoke app (with scores!)
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rzru/nightingale
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,6 +17,6 @@ pkgbase = nightingale
 	depends = gdk-pixbuf2
 	depends = libsoup3
 	source = https://github.com/rzru/nightingale/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 0bf2acd0615bb6bbd1e90b128376ea0a7891cace39192981539df82df94438bc
+	sha256sums = 0690e5d99d9f48be9e4ef5eab081ea6d6d93533f41d226a30a46a5e1197cb1bf
 
 pkgname = nightingale
