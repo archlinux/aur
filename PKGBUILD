@@ -1,27 +1,35 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Goodarz <1831847+a-goodarzi@users.noreply.github.com>
 
 _pkgname=jottr
 pkgname=${_pkgname}-bin
 pkgver=1.4.3
 pkgrel=1
-pkgdesc="Jottr is a cross-platform plain text editor focused on usability and speed"
+pkgdesc='Simple text editor for writers, journalists and researchers'
 arch=('x86_64')
-url="https://github.com/mfat/${_pkgname}"
-_urlraw="https://raw.githubusercontent.com/mfat/${_pkgname}/v${pkgver}"
-license=('GPL-3.0')
-
+url="https://github.com/mfat/jottr"
+license=('GPL-3.0-only')
+depends=(
+  'bash'
+  'hicolor-icon-theme'
+  'python'
+  'python-feedparser'
+  'python-pyenchant'
+  'python-pyqt5'
+  'python-pyqt5-webengine'
+  'python-pyxdg'
+  'python-requests'
+  'qt5-svg'
+)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('bash' 'hicolor-icon-theme' 'python' 'python-requests' 'python-pyenchant' 'python-feedparser' 'python-pyqt5' 'python-pyqt5-webengine')
-
-options=(!strip)
-
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgrel}_all.deb")
-sha512sums_x86_64=('6fed53f2389f5f013c49c8a98df09f59daecda630bad6466d637bfe1f1eeb4c291ae132279ad7565a959971797a7a3bbc98f677db680403e77e2fdb5a248e958')
+options=('!strip')
+source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgrel}_all.deb")
+sha256sums=(
+  'f4b6d3493eeccaf9ec66ace04f01ff71a789ce26b5f1d176caf7fa15355fa312'
+)
 
 package() {
-    cd "${pkgdir}"
+  cd "${pkgdir}"
 
-    # this extracts all into the pkgdir
-    tar -xf "${srcdir}/data.tar.xz"
+  tar -xf "${srcdir}/data.tar.xz"
 }
