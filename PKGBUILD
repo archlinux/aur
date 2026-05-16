@@ -1,7 +1,7 @@
 # Maintainer: bobrik <an9rax@gmail.com>
 
 pkgname=dota2-minify-rc-bin
-pkgver=1.14rc2
+pkgver=1.14rc3
 pkgrel=1
 pkgdesc="Dota 2 Mod Patcher & Toolkit — prebuilt release candidate binary"
 arch=('x86_64')
@@ -12,13 +12,21 @@ depends=(
   'fontconfig'
   'hicolor-icon-theme'
 )
+makedepends=('7zip')
 provides=('dota2-minify')
 conflicts=('dota2-minify' 'dota2-minify-bin')
 options=('!strip')
 
 _tag="Minify-v${pkgver}"
 source=("${pkgname}-${pkgver}.zip::https://github.com/Egezenn/dota2-minify/releases/download/${_tag}/Minify-v${pkgver}-linux.zip")
-sha256sums=('9ef5eb721e5ef26ac2611c6b003c1f7b496644c36790de62972c2230f36727dc')
+sha256sums=('571288924be80036c783f9b95ddfe2e1b6dc753ae3e76275ab19509f758a4b83')
+
+noextract=("${pkgname}-${pkgver}.zip")
+
+prepare() {
+  cd "${srcdir}"
+  7za x "${pkgname}-${pkgver}.zip"
+}
 
 package() {
   # Zip layout matches the stable binary release:
@@ -88,4 +96,3 @@ EOF
   install -Dm644 "${pkgdir}/usr/share/dota2-minify/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('9ef5eb721e5ef26ac2611c6b003c1f7b496644c36790de62972c2230f36727dc')
