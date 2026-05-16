@@ -1,7 +1,7 @@
 # Maintainer: Alexander Agura <agura.alex@gmail.com>
 pkgname=smart-unlock
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Auto session unlock daemon"
 arch=('any')
 url="https://github.com/agura-lex/smart-unlock"
@@ -19,9 +19,9 @@ package() {
     cd "$pkgname-$pkgver"
     rm -f modules/README.md
     install -Dm755 smart-unlock.sh $pkgdir/usr/bin/smart-unlock
+    install -Dm644 modules/* -t $pkgdir/usr/share/$pkgname/modules
 
     install -Dm644 \
-        modules/* \
         defaults.cnf \
         smart-unlock.cnf.sample \
         -t $pkgdir/usr/share/$pkgname
