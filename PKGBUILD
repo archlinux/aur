@@ -3,8 +3,8 @@
 pkgname=spoofdpi-git
 _pkgname=SpoofDPI
 __pkgname=${pkgname%%-git}
-pkgver=1.2.1.r1.g46afafd
-pkgrel=2
+pkgver=1.5.2.r0.g25c4883
+pkgrel=1
 pkgdesc='A simple and fast anti-censorship tool written in Go'
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/xvzc/SpoofDPI'
@@ -13,14 +13,12 @@ depends=(glibc)
 makedepends=(go git)
 provides=("${__pkgname}")
 conflicts=("${__pkgname}")
-backup=(etc/conf.d/spoofdpi)
+# backup=(etc/spoofdpi.toml)
 options=(!debug)
 source=("git+${url}"
-  "${__pkgname}.conf.d"
   "${__pkgname}.service")
 sha256sums=('SKIP'
-            '6aa0ecb1d0073b970d0f0a71fae521ed1342a4aa9d8ed1887fdadb2f751edb92'
-            '76a22a11e7ffa2c362f32d2e05cee16b056a6ce9b64b3ea10ece8732e77e917a')
+            '8a61496c8621adbbc7b986388f9b2107e4c080d0d6e4d5a8dcb31a992dbc6ffc')
 
 pkgver() {
   cd "${_pkgname}"
@@ -60,6 +58,5 @@ package() {
   cd "${_pkgname}/build"
 
   install -Dm755 "${__pkgname}" "${pkgdir}/usr/bin/${__pkgname}"
-  install -Dm644 "${srcdir}/${__pkgname}.conf.d" "${pkgdir}/etc/conf.d/${__pkgname}"
   install -Dm644 "${srcdir}/${__pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${__pkgname}.service"
 }
