@@ -2,7 +2,7 @@
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/cpa-usage-keeper-bin
 pkgname=cpa-usage-keeper-bin
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc=Standalone\ CLIProxyAPI\ usage\ persistence\ and\ dashboard\ service\ \(Binary\)
 arch=(x86_64 aarch64 )
 url=https://github.com/Willxup/cpa-usage-keeper
@@ -17,7 +17,7 @@ conflicts=(cpa-usage-keeper )
 validpgpkeys=()
 install=cpa-usage-keeper-bin.install
 source=(cpa-usage-keeper.env.example cpa-usage-keeper.service )
-sha256sums=('484bf3aeb083742ecd5116d29d5c7aa73290da64c386ac46a530c7033ad68ac8'
+sha256sums=('688b8677268fa4ae87d6f007b57534d51dc4c55ccf1ca0c06c669410bcf5f1d8'
             '181e37963e289946319ec014253d5cb9a4d6c540d0b0c2d8215e4695811e06c0')
 sha256sums_x86_64=('99e65e8f078d50f9a68f9bbb6d8262179246c1073d1e92dca039d7e8e582b1fe')
 sha256sums_aarch64=('90ebf97f595a40e544a4e047e5e4ee1f8476c80691c00f97413613bc90777c1e')
