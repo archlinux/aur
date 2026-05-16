@@ -16,9 +16,8 @@ optdepends=(
 source=("install.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v${pkgver}/install.sh"
         "Candy_Update.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v${pkgver}/Candy_Update.sh")
 sha256sums=('SKIP'
-install=hyprcandy-plus.install
             'SKIP')
-
+install=hyprcandy-plus.install
 # No build step needed — pure shell scripts
 build() {
     :
