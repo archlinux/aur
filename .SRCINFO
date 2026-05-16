@@ -8,9 +8,9 @@ pkgbase = wo-bin
 	provides = wo
 	arch = aarch64
 	source_aarch64 = https://github.com/antham/wo/releases/download/1.1.0/wo_1.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7d8345bd8ad9eec0b2290cd981f9e181f464ca61956d3241aa93c3c769ba82b8
+	sha256sums_aarch64 = 2f5f5467ab7a2a6f10e58d6ede6409097e6519bd6e5b302c906dff03f150ae10
 	arch = x86_64
 	source_x86_64 = https://github.com/antham/wo/releases/download/1.1.0/wo_1.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 43b8a12b0e2e161badedc6f5645eb66eac543baa5e34d8296108c60d4fe52145
+	sha256sums_x86_64 = 4ae8bb9769409e09ee9c7af85ae0084cc2af666af704706682fdfe46361c7460
 	
 pkgname = wo-bin
