@@ -13,7 +13,7 @@ post_install() {
     echo "    hc-update"
     echo ""
     echo "  You will need a valid HyprCandy+ licence key."
-    echo "  Get one at: https://mirukai.gumroad.com/l/cxsyj"
+    echo "  Get one at: https://mirukai.gumroad.com/l/mmnrfq"
     echo ""
 }
 
