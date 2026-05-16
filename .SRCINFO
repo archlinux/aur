@@ -1,12 +1,13 @@
 pkgbase = sunshine
 	pkgdesc = Self-hosted game stream host for Moonlight
-	pkgver = 2025.924.154138
-	pkgrel = 3
+	pkgver = 2026.516.143833
+	pkgrel = 1
 	url = https://app.lizardbyte.dev/Sunshine
 	install = sunshine.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
+	checkdepends = gcovr
 	makedepends = appstream
 	makedepends = appstream-glib
 	makedepends = cmake
@@ -16,6 +17,9 @@ pkgbase = sunshine
 	makedepends = make
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = python-jinja
+	makedepends = python-setuptools
+	makedepends = shaderc
 	depends = avahi
 	depends = curl
 	depends = libayatana-appindicator
@@ -24,6 +28,7 @@ pkgbase = sunshine
 	depends = libevdev
 	depends = libmfx
 	depends = libnotify
+	depends = libpipewire
 	depends = libpulse
 	depends = libva
 	depends = libx11
@@ -36,11 +41,11 @@ pkgbase = sunshine
 	depends = openssl
 	depends = opus
 	depends = udev
+	depends = vulkan-icd-loader
 	depends = which
 	optdepends = cuda: Nvidia GPU encoding support
 	optdepends = libva-mesa-driver: AMD GPU encoding support
-	optdepends = xorg-server-xvfb: Virtual X server for headless testing
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=86188d47a7463b0f73b35de18a628353adeaa20e
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=14ffa6fdaa53f7b51512be2b3d24f3939695403c
 	sha256sums = SKIP
 
 pkgname = sunshine
