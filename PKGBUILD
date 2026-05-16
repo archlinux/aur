@@ -6,9 +6,9 @@ pkgrel=1
 pkgver=0
 
 pkgver() {
-  curl -s https://api.github.com/repos/SteamClientHomebrew/Millennium/releases \
-    | jq -r 'map(select(.prerelease)) | first | .tag_name' \
-    | sed 's/^v//' | sed 's/-/_/'
+  curl -s https://api.github.com/repos/SteamClientHomebrew/Millennium/releases | \
+  awk -F'"' '{for(i=1; i<=NF; i++) if($i == "tag_name") {gsub(/^v/, "", $(i+2)); print $(i+2); exit}}' | \
+  sed 's/^v//' | sed 's/-/_/'
 }
 _pkgver="$(pkgver)"
 pkgver="${_pkgver}"
@@ -18,7 +18,7 @@ arch=('x86_64')
 license=('MIT')
 provides=('millennium')
 conflicts=('millennium' 'millennium-git')
-makedepends=('coreutils' 'curl' 'jq')
+makedepends=('coreutils' 'curl' 'gawk')
 depends=('steam')
 options=('!strip')
 install=millennium-bin.install
