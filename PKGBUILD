@@ -1,6 +1,6 @@
 # Maintainer: kenura-krag <kenura.gunarathna@thenex.global>
 pkgname=campus-lms-bin
-pkgver=0.3.1
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Desktop Moodle LMS client (Pre-compiled Binary version)"
 arch=('x86_64')
@@ -20,9 +20,11 @@ source=(
     "campus-lms::${url}/releases/download/v${pkgver}/campus-lms-linux-x86_64"
     "campus-lms.desktop"
     "campus-lms-daemon.service"
+    "campus-lms.png"
 )
 sha256sums=(
-    '491e5a3128cedbbc57d4a7b034247ef66c2acdab601ba7100e22ededad0f9a84'
+    '7b65cc2ed5f43cd2a64feebce2f0d1a2fcbfc7a8f571aed67f033544bb383a0b'
+    'SKIP'
     'SKIP'
     'SKIP'
 )
@@ -36,4 +38,7 @@ package() {
 
     install -Dm644 "${srcdir}/campus-lms-daemon.service" \
         "${pkgdir}/usr/lib/systemd/user/campus-lms-daemon.service"
+
+    install -Dm644 "${srcdir}/campus-lms.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/campus-lms.png"
 }
