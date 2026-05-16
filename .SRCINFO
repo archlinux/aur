@@ -1,14 +1,24 @@
 pkgbase = meshoptimizer
 	pkgdesc = Mesh optimization library that makes meshes smaller and faster to render
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://meshoptimizer.org
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	provides = gltfpack
-	conflicts = gltfpack
-	source = https://github.com/zeux/meshoptimizer/archive/v1.1.tar.gz
+	makedepends = libwebp
+	makedepends = zstd
+	source = meshoptimizer-v1.1.tar.gz::https://github.com/zeux/meshoptimizer/archive/v1.1.tar.gz
+	source = basis-universal-88e813c46b3ff42e56ef947b3fa11eeee7a504b0.tar.gz::https://github.com/zeux/basis_universal/archive/88e813c46b3ff42e56ef947b3fa11eeee7a504b0.tar.gz
+	source = use-system-zstd.patch
 	sha256sums = b787011f81b4b3069c2f9065b7c191efdd4189a49be32ba5282dd5579f05261a
+	sha256sums = 5855894bdd7e6b14bd419f6d632079bf4debeac2ac221b181cd06b1329d75ad9
+	sha256sums = e773a16c8cf6ce14fa304c26162a3df18a143bbf76f2e8ee547d48fa4e24afa3
 
 pkgname = meshoptimizer
+
+pkgname = gltfpack
+	pkgdesc = Automatically optimize glTF files to reduce the download size and improve loading and rendering speed
+	depends = meshoptimizer
+	depends = libwebp
+	depends = zstd
