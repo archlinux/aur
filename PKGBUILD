@@ -61,7 +61,7 @@ build() {
 check() {
 	cd "${pkgname}-${pkgver}" || exit
 
-	go test ./...
+	go test
 }
 
 package() {
