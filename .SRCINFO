@@ -1,0 +1,26 @@
+pkgbase = faden
+	pkgdesc = Faden - desktop app for qualitative interview research
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ReadyPlayerNaN/faden
+	arch = x86_64
+	license = MIT
+	options = !lto
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = patchelf
+	makedepends = pkgconf
+	depends = ffmpeg
+	depends = sqlite
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libsoup3
+	depends = hicolor-icon-theme
+	conflicts = faden-bin
+	conflicts = faden-git
+	source = faden-0.1.0.tar.gz::https://github.com/ReadyPlayerNaN/faden/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ddc1ce9e6b014b6fecb80494f6ede1c8bd0ad3718124431c426f9e5d2b58cbe3
+
+pkgname = faden
