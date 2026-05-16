@@ -38,7 +38,7 @@ depends=(
 	'python-websockets'
 	'python-ytmusicapi'
 	'python-datastar-py'
-	'python-spotipy-free'
+	'python-spotipyfree'
 	'uvicorn'
 	'yt-dlp'
 )
