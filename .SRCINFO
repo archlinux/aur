@@ -1,0 +1,18 @@
+pkgbase = gmelons
+	pkgdesc = Melon Café FM player written with GJS
+	pkgver = 1
+	pkgrel = 1
+	url = https://git.sr.ht/~conger/gmelons
+	arch = any
+	license = ISC
+	makedepends = esbuild
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	source = https://git.sr.ht/~conger/gmelons/archive/v1.tar.gz
+	sha256sums = 7aeba170622a011ec3d5d3e85942e13f187d080c44b0f37a062b73eda8de9eb3
+
+pkgname = gmelons
