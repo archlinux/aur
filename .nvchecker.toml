@@ -1,0 +1,7 @@
+[rovr-bin]
+source = "github"
+github = "NSPC911/rovr"
+use_latest_release = true
+from_pattern = 'v([0-9.]*)\.post[0-9]'
+to_pattern = '\1'
+
