@@ -10,7 +10,7 @@ license=('MIT')
 depends=('alsa-lib' 'gtk3' 'libxss' 'nss' 'libxtst' 'libxcrypt-compat' 'at-spi2-core' 'libdrm' 'mesa')
 provides=('zalo-elec')
 conflicts=('zalo-elec')
-options=('!strip' '!emptyvcs')
+options=('!strip' )
 
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
