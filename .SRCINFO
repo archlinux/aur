@@ -1,6 +1,6 @@
 pkgbase = ordinary-paint-bin
-	pkgdesc = A lightweight screenshot annotation tool
-	pkgver = 0.1.1
+	pkgdesc = A screenshot annotation tool
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://wzordinaryventures.com/ordinarypaint
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = ordinary-paint-bin
 	provides = ordinary-paint
 	conflicts = ordinary-paint
 	options = !debug
-	source = https://github.com/wz-ordinary-ventures/ordinary-paint-releases/releases/download/v0.1.1/ordinary-paint-0.1.1-linux-x64.tar.gz
+	source = https://github.com/wz-ordinary-ventures/ordinary-paint-releases/releases/download/v0.1.2/ordinary-paint-0.1.2-linux-x64.tar.gz
 	source = LICENSE
-	sha256sums = 25544baf4a5f724d03105f5311ab25cb996a59d7c315990f627c06823aa052a3
+	sha256sums = 69ce629bbbcd0e8727a35121c5784f56fd485d1cad76a99f2c3d87623ebf176a
 	sha256sums = SKIP
 
 pkgname = ordinary-paint-bin

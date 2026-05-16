@@ -1,8 +1,8 @@
 # Maintainer: WZ Ordinary Ventures <ordinarypaint@wzordinaryventures.com>
 pkgname=ordinary-paint-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc="A lightweight screenshot annotation tool"
+pkgdesc="A screenshot annotation tool"
 arch=('x86_64')
 url="https://wzordinaryventures.com/ordinarypaint"
 license=('custom:Ordinary Paint License')
@@ -12,11 +12,11 @@ depends=('gtk3' 'nss' 'alsa-lib')
 options=(!debug)
 source=("https://github.com/wz-ordinary-ventures/ordinary-paint-releases/releases/download/v${pkgver}/ordinary-paint-${pkgver}-linux-x64.tar.gz"
         "LICENSE")
-sha256sums=('25544baf4a5f724d03105f5311ab25cb996a59d7c315990f627c06823aa052a3'
+sha256sums=('69ce629bbbcd0e8727a35121c5784f56fd485d1cad76a99f2c3d87623ebf176a'
             'SKIP')
 
 package() {
-  local _appdir="${srcdir}/linux-unpacked"
+  local _appdir="${srcdir}/ordinary-paint-${pkgver}-linux-x64"
 
   if [[ ! -d "${_appdir}" ]]; then
     echo "Missing ${_appdir}. Build the Electron unpacked app first with: npm run pack" >&2
