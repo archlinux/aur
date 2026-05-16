@@ -11,10 +11,13 @@ provides=('anisocial-desktop')
 conflicts=('anisocial-desktop')
 options=(!strip !debug)
 source=("${pkgname}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/anisocial-desktop-${pkgver}.pacman")
-sha256sums=('dce0425492dad14c3f0f23813ab6e7432150448f87a161e376130f91e95edc88')
+sha256sums=('SKIP')
 
 package() {
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.pacman" -C "${pkgdir}/"
+
+    # Remove pacman metadata files
+    rm -f "${pkgdir}"/.INSTALL "${pkgdir}"/.MTREE "${pkgdir}"/.PKGINFO "${pkgdir}"/.BUILDINFO "${pkgdir}"/.CHANGELOG
 
     # Fix permissions
     chmod -R g-w "${pkgdir}"
