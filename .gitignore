@@ -1,0 +1,6 @@
+src/
+pkg/
+*.pkg.tar.*
+*.src.tar.*
+*.log
+/peru-dnie-pkcs11
