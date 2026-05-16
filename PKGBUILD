@@ -3,7 +3,7 @@
 pkgname=python-spotipyfree
 _name=${pkgname#python-}
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Spotipy-compatible wrapper using SpotAPI"
 arch=('any')
 url="https://pypi.org/project/spotipyFree/"
