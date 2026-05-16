@@ -1,0 +1,52 @@
+pkgbase = claudette
+	pkgdesc = Desktop orchestrator for parallel Claude Code agents (Tauri 2 + React) — built from source
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://github.com/utensils/Claudette
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust>=1.94
+	makedepends = cargo
+	makedepends = bun
+	makedepends = pkgconf
+	makedepends = webkit2gtk-4.1
+	makedepends = gtk3
+	makedepends = libsoup3
+	makedepends = libayatana-appindicator
+	makedepends = librsvg
+	makedepends = alsa-lib
+	makedepends = openssl
+	makedepends = patchelf
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = alsa-lib
+	depends = openssl
+	depends = git
+	optdepends = claude-code: drive Claude Code sessions (the primary use case)
+	optdepends = xdg-desktop-portal-gtk: native file dialogs (GTK-based DEs: XFCE, MATE, Cinnamon)
+	optdepends = xdg-desktop-portal-gnome: native file dialogs (GNOME)
+	optdepends = xdg-desktop-portal-kde: native file dialogs (KDE Plasma)
+	optdepends = xdg-desktop-portal-hyprland: native file dialogs (Hyprland)
+	optdepends = github-cli: GitHub PR / issue / CI integration via scm-github plugin
+	optdepends = glab: GitLab PR / pipeline integration via scm-gitlab plugin
+	optdepends = direnv: per-workspace env activation via env-direnv plugin
+	optdepends = mise: per-workspace env activation via env-mise plugin
+	optdepends = nix: Nix devshell env activation via env-nix-devshell plugin
+	optdepends = openssh: remote workspaces over SSH transport
+	provides = claudette=0.24.0
+	provides = claudette-cli=0.24.0
+	conflicts = claudette-bin
+	conflicts = claudette-git
+	conflicts = claudette-cli
+	options = !strip
+	options = !debug
+	options = !lto
+	source = https://github.com/utensils/Claudette/archive/refs/tags/v0.24.0.tar.gz
+	sha256sums = e52f832458b668e1f84714caa32878b2d626352d20cbe4073173507f2e082f0b
+
+pkgname = claudette
