@@ -1,0 +1,12 @@
+_atualizar_caches_icones() {
+  if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor 2>/dev/null || true
+  fi
+  if [ -x /usr/bin/kbuildsycoca6 ]; then
+    kbuildsycoca6 --noincremental 2>/dev/null || true
+  fi
+}
+
+post_install() { _atualizar_caches_icones; }
+post_upgrade() { _atualizar_caches_icones; }
+post_remove() { _atualizar_caches_icones; }

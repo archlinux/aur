@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Agildo Cheats
+GenericName=Trainer de memória
+Comment=Scanner de memória, importador .CT e teleport para jogos no Linux (PyQt6)
+Exec=agildocheats
+Icon=agildocheats
+Terminal=false
+Categories=Game;Utility;
+Keywords=cheat;trainer;memory;game;linux;
