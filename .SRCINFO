@@ -1,0 +1,14 @@
+pkgbase = auro
+	pkgdesc = Simple AUR package manager with PKGBUILD review and dependency resolution
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/wypifu/auro
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	depends = python-tomli-w
+	source = auro-0.6.tar.gz::https://github.com/wypifu/auro/archive/v0.6.tar.gz
+	sha256sums = 17665ee20f29cd4b8d3d2998cbb2055b4c3395a85ff2724f7109205871f176c1
+
+pkgname = auro
