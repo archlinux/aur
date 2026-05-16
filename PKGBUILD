@@ -1,6 +1,6 @@
 # Maintainer: Selim Cifci <cifciselimhasan@gmail.com>
 pkgname=pam-parallel-fprint
-pkgver=r18.d324d2d
+pkgver=r19.a132e43
 pkgver() {
   cd "$srcdir/PAM-Parallel-Fprint"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
