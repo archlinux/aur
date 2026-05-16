@@ -2,8 +2,8 @@
 
 _name=livekit
 pkgname=python-$_name
-pkgver=1.1.2
-_livekit_ffi_ver=0.12.48
+pkgver=1.1.8
+_livekit_ffi_ver=0.12.56
 pkgrel=1
 pkgdesc="Python Real-time SDK for LiveKit."
 arch=('x86_64' 'aarch64')
@@ -18,15 +18,15 @@ source=("$_repo/archive/refs/tags/rtc-v$pkgver.tar.gz"
         "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_echo_capture.wav"
         "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_echo_render.wav"
         "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_processed.wav")
-source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@$_livekit_ffi_ver/ffi-linux-x86_64.zip")
-source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@$_livekit_ffi_ver/ffi-linux-arm64.zip")
-sha256sums=('a0f6acbc3324bde33dc6a4eebf31c03209da2adaac12ae30b4e8c22c2cdb35bd'
+source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/livekit-ffi/v$_livekit_ffi_ver/ffi-linux-x86_64.zip")
+source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/livekit-ffi/v$_livekit_ffi_ver/ffi-linux-arm64.zip")
+sha256sums=('ba8898647f25bfb478d2919c21a150a6dca8ca3637993d7c4ac1c4817cb194c8'
             'ac5cba8b2477ab55c9bc5f95faffcd3d9b9ad4e6a01d79308fbe6eeef733ce80'
             '90626c2c532dfb8313ae52501a9500f1c90235570aab8ff1367e7f91fb697a7e'
             'cf50f57f00fa941ab612c57c24a28811b93c878d3c98edcb4a8f21508aa8e566'
             '8a48eb2f6a2143b4bc6adfe306983637f628fffc9d550c60b4ebcecd506d6245')
-sha256sums_x86_64=('50fedb2b9207dacb0aef025e12c8e98271bc130bc5e8ec2458684a7c4143b93f')
-sha256sums_aarch64=('00cdf1ecfc44795e9cbf466c9c847394ed19b1437a2315e37aa56e25c13b71bb')
+sha256sums_x86_64=('42dee31d1612550b7799be5051dfe27ed3cf590763747726e4aa52f0463adbd5')
+sha256sums_aarch64=('658f12ffeb40e2b0ee26c3515c1621dc5944237fe10b6487b75392b1469356c1')
 
 prepare(){
   cp -f "$srcdir"/test_audio.wav "$srcdir"/python-sdks-rtc-v$pkgver/tests/rtc/fixtures/test_audio.wav
@@ -48,7 +48,7 @@ check() {
     --disable-warnings
   )
   cd "$srcdir"/python-sdks-rtc-v$pkgver
-  PYTHONPATH=$PWD/$_name-rtc pytest "${pytest_options[@]}" tests/rtc
+  PYTHONPATH=$PWD/$_name-rtc pytest "${pytest_options[@]}" $_name-rtc/tests tests/rtc
 }
 
 package() {
