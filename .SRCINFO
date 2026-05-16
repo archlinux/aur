@@ -1,6 +1,6 @@
 pkgbase = perl-app-cpan2arch
 	pkgdesc = generate PKGBUILD from CPAN metadata
-	pkgver = v1.0.1
+	pkgver = v1.0.2
 	pkgrel = 1
 	url = https://metacpan.org/dist/App-cpan2arch
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = perl-app-cpan2arch
 	depends = perl-encode-locale>=1.05
 	depends = perl-io-socket-ssl>=2.098
 	depends = perl-list-compare>=0.55
-	depends = perl-module-corelist>=5.20260420
+	depends = perl-module-corelist
 	depends = perl-mojo-useragent-cached>=1.25
 	depends = perl-mojolicious
 	depends = perl-object-pad>=0.825
@@ -33,13 +33,13 @@ pkgbase = perl-app-cpan2arch
 	depends = perl-term-readkey>=2.38
 	depends = perl-term-table
 	depends = perl-time-piece
-	depends = perl-version>=0.9934
+	depends = perl-version
 	depends = perl>=5.42.0
 	optdepends = licenses: use system licenses from /usr/share/licenses/spdx
 	optdepends = perl-data-printer>=1.002001: debug support
 	optdepends = perl-getopt-long-more>=0.007: Bash completion support
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RY/RYOSKZYPU/App-cpan2arch-v1.0.1.tar.gz
-	sha256sums = 693d8d64dc76f17f69be770ecfd5e1f542aaaf1bd4bcd15374ecb6d14f43bd3f
+	source = https://cpan.metacpan.org/authors/id/R/RY/RYOSKZYPU/App-cpan2arch-v1.0.2.tar.gz
+	sha256sums = 98ee6d122f0ca72b3e28034e65542f6b6cfbac1216496fa6095855228a8867ff
 
 pkgname = perl-app-cpan2arch

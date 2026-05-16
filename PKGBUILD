@@ -3,7 +3,7 @@
 _author=RYOSKZYPU
 _dist=App-cpan2arch
 pkgname=perl-${_dist@L}
-pkgver=v1.0.1
+pkgver=v1.0.2
 pkgrel=1
 pkgdesc='generate PKGBUILD from CPAN metadata'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
     'perl-encode-locale>=1.05'
     'perl-io-socket-ssl>=2.098'
     'perl-list-compare>=0.55'
-    'perl-module-corelist>=5.20260420'
+    'perl-module-corelist'
     'perl-mojo-useragent-cached>=1.25'
     'perl-mojolicious'
     'perl-object-pad>=0.825'
@@ -32,7 +32,7 @@ depends=(
     'perl-term-readkey>=2.38'
     'perl-term-table'
     'perl-time-piece'
-    'perl-version>=0.9934'
+    'perl-version'
     'perl>=5.42.0'
 )
 makedepends=('perl-extutils-makemaker')
@@ -50,7 +50,7 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('693d8d64dc76f17f69be770ecfd5e1f542aaaf1bd4bcd15374ecb6d14f43bd3f')
+sha256sums=('98ee6d122f0ca72b3e28034e65542f6b6cfbac1216496fa6095855228a8867ff')
 
 build()
 {
