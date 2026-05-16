@@ -1,6 +1,6 @@
 pkgbase = lilbee
 	pkgdesc = Local search engine and personal encyclopedia for your notes, code, and PDFs
-	pkgver = 0.6.66b474
+	pkgver = 0.6.66b475
 	pkgrel = 1
 	url = https://github.com/tobocop2/lilbee
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lilbee
 	replaces = lilbee-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = lilbee-0.6.66b474::https://github.com/tobocop2/lilbee/releases/download/v0.6.66b474/lilbee-linux-x86_64
-	sha256sums_x86_64 = 1d520587afb485ea0f3577e968fd0b20ca5dcb6809b9640f93250c70ce504aab
+	source_x86_64 = lilbee-0.6.66b475::https://github.com/tobocop2/lilbee/releases/download/v0.6.66b475/lilbee-linux-x86_64
+	sha256sums_x86_64 = ae688010e7bde92109881fb6989e9d1f7be50e88b35fa6298b2450ed05b6a0b2
 
 pkgname = lilbee
