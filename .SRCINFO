@@ -1,7 +1,7 @@
 pkgbase = github-desktop-mod
 	pkgdesc = Desktop GitHub repository manager — an alternative to GitHub Desktop for Linux
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PerfLite/Github_DesktopMod
 	arch = any
 	license = custom

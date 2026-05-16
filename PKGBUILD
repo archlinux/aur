@@ -3,7 +3,7 @@
 
 pkgname=github-desktop-mod
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop GitHub repository manager — an alternative to GitHub Desktop for Linux"
 arch=('any')
 url="https://github.com/PerfLite/Github_DesktopMod"
@@ -21,11 +21,6 @@ depends=(
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/PerfLite/Github_DesktopMod")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.1.0"
-}
 
 package() {
   cd "${srcdir}/${pkgname}"
