@@ -2,14 +2,14 @@
 
 _plug=fftspectrum-rs
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.11.29.g48d96fe
-pkgrel=2
+pkgver=1.0.13.2.gdae5257
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url="https://github.com/sgt0/vapoursynth-fftspectrum-rs"
 license=('MIT')
 depends=(
-    'vapoursynth'
+    'vapoursynth>=75'
 )
 makedepends=(
     'cargo'
@@ -31,6 +31,7 @@ build() {
 }
 
 package(){
-    install -Dm755 "${_plug}/target/release/libfftspectrum_rs.so" "${pkgdir}/usr/lib/vapoursynth/libfftspectrum_rs.so"
+    PLUGINDIR=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
+    install -Dm755 "${_plug}/target/release/libfftspectrum_rs.so" "${pkgdir}${PLUGINDIR}/libfftspectrum_rs.so"
     install -Dm644 "${_plug}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
