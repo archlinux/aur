@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Alexander Agura <agura.alex@gmail.com>
 pkgname=smart-unlock
 pkgver=0.1.4
 pkgrel=1
