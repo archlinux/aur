@@ -32,6 +32,7 @@ pkgbase = rovr
 	depends = python-humanize
 	depends = python-textual-image
 	depends = python-pathvalidate
+	depends = python-resvg_py
 	provides = rovr
 	conflicts = rovr-bin
 	conflicts = rovr-git

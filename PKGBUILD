@@ -21,7 +21,7 @@ provides=("${_pypi_package}")
 conflicts=("${pkgname}"{-bin,-git})
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling')
-depends=('python' 'python-textual-autocomplete' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-textual' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-textual-image' 'python-pathvalidate')
+depends=('python' 'python-textual-autocomplete' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-textual' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-textual-image' 'python-pathvalidate' 'python-resvg_py')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_upstreamver}.tar.gz")
 # source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${_upstreamver}.tar.gz")
