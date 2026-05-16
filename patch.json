@@ -28,6 +28,23 @@
 		]
 	},
 	"extensionRecommendations": {
+		"ms-vscode.vscode-chat-customizations-evaluations": {
+			"onFileOpen": [
+				{
+					"pathGlob": "{**/*prompt.md, **/*skill.md, **/*instructions.md, **/*agent.md}",
+					"important": true
+				},
+				{
+					"languages": [
+						"prompt",
+						"chatagent",
+						"skill",
+						"instructions"
+					],
+					"important": true
+				}
+			]
+		},
 		"ms-dotnettools.csdevkit": {
 			"onFileOpen": [
 				{
@@ -42,6 +59,14 @@
 				},
 				{
 					"pathGlob": "{**/project.json,**/appsettings.json}"
+				}
+			]
+		},
+		"microsoft-aspire.aspire-vscode": {
+			"onFileOpen": [
+				{
+					"pathGlob": "{**/apphost.cs,**/apphost.js,**/apphost.ts,**/apphost.py,**/AppHost.java,**/aspire.config.json,**/.aspire/settings.json}",
+					"important": true
 				}
 			]
 		},
@@ -559,9 +584,11 @@
 				{
 					"pathGlob": "{**/*.ts,**/*.tsx,**/*.js,**/*.jsx,**/*.py,**/*.go,**/*.rb,**/*.html,**/*.css,**/*.php,**/*.cpp,**/*.vue,**/*.c,**/*.sql,**/*.java,**/*.cs,**/*.rs,**/*.dart,**/*.ps,**/*.ps1,**/*.tex}"
 				}
-			],
+			]
+		},
+		"GitHub.copilot-chat": {
 			"onSettingsEditorOpen": {
-				"descriptionOverride": "GitHub Copilot is an AI pair programmer tool that helps you write code faster and smarter."
+				"descriptionOverride": "GitHub Copilot is an AI-powered coding assistant that helps you write code faster and smarter."
 			}
 		},
 		"GitHub.vscode-github-actions": {
