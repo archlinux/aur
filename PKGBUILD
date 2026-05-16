@@ -31,7 +31,7 @@ package() {
 Version=1.0
 Type=Application
 Name=RivalCFG GUI
-Comment=SteelSeries Rival 3 configuration tool
+Comment=SteelSeries mouse configuration tool
 Exec=/usr/share/${pkgname}/rivalcfg_gui.py
 Icon=/usr/share/${pkgname}/logo.png
 Terminal=false
