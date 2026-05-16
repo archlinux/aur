@@ -32,7 +32,7 @@ build() {
   go build -ldflags "
     -X lota/shared.Version=${_pkgver}
     -X lota/shared.Commit=${_commit}
-    -X lota/shared.BuildDate=${_date}
+    -X lota/shared.BuildTime=${_date}
     -extldflags '${LDFLAGS}'" \
     -o "$pkgname" .
 }
@@ -47,4 +47,28 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  # Bash completion
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname" <<'EOF'
+complete -C '/usr/bin/lota' lota
+EOF
+
+  # Zsh completion
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname" <<'EOF'
+#compdef lota
+function _lota {
+    local line="${LBUFFER}${RBUFFER}"
+    export COMP_LINE="$line"
+    export COMP_POINT=${#LBUFFER}
+    local -a completions
+    completions=($('/usr/bin/lota'))
+    compadd -a completions
+}
+compdef _lota lota
+EOF
+
+  # Fish completion
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish" <<'EOF'
+complete -c lota -f -a "(env COMP_LINE=(commandline) COMP_POINT=(commandline -C) /usr/bin/lota)"
+EOF
 }
