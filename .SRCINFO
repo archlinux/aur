@@ -1,0 +1,17 @@
+pkgbase = sysupdate-git
+	pkgdesc = A fast and convenient system update utility for Arch Linux written in Go (Bubble Tea)
+	pkgver = r4.47e0479
+	pkgrel = 1
+	url = https://github.com/monom777/sysupdate
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = pacman
+	depends = flatpak
+	provides = sysupdate
+	conflicts = sysupdate
+	source = sysupdate-git::git+https://github.com/monom777/sysupdate.git
+	sha256sums = SKIP
+
+pkgname = sysupdate-git
