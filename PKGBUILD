@@ -6,9 +6,9 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=8cb324bd2d5efb1926d0b8408b1d367687e50cfa
+_commit=9e7f283e5801bd0707cc5d48d0188c4c162fe7b3
 pkgname=h2o-git
-pkgver=2.2.0.r8594.g8cb324b
+pkgver=2.2.0.r8596.g9e7f283
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
@@ -22,9 +22,6 @@ options=('lto')
 
 #source=("git+https://github.com/h2o/h2o.git"
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
-        # libaegis
-        https://github.com/h2o/h2o/pull/3552.patch
-        
         # openssl
         fix-openssl-deprecated-warn.patch
         #openssl-no-engine.patch
@@ -37,8 +34,7 @@ source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
         https://github.com/h2o/h2o/pull/3551.patch
 
         'h2o.service')
-sha256sums=('94bdf8582a3d418438e91157cdc2c08bf0793eb99081b61dce7300b7d7324142'
-            '03ee41894f4ab8c1ff77fb13eb5054d544e7a2d1c8c5588d3d8947c98821c2d7'
+sha256sums=('c3b88402c277336a88e1068f0b176b5377451f34344ad67c6acbbc54dd1fa655'
             '632f219cc21128810bba4de869de4961ebff9083af31231f721f451d2e58f7e1'
             '930bed0a8b6d75973e21cacb4cfda6bcacf08bc6d1b504b5cc36f56f9d6bfaf8'
             '99b8ae5a7e06af7a4308c60a204b903171bb357d61bf4ea8abb04b1bcc148174'
@@ -65,7 +61,7 @@ prepare() {
     patch -p1 -i ${srcdir}/fix-openssl-deprecated-warn.patch
 
     # libaegis 0.9.1
-    patch -p1 -i ${srcdir}/3552.patch
+    #patch -p1 -i ${srcdir}/3552.patch
 
     # 404 error message
     patch -p1 -i ${srcdir}/3551.patch
