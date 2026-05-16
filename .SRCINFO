@@ -1,5 +1,5 @@
 pkgbase = go-livepeer-git
-	pkgdesc = Decentralized live video broadcasting protocol (git, patched for CUDA 13 scale_cuda)
+	pkgdesc = Decentralized live video broadcasting protocol (patched for CUDA 13 scale_cuda)
 	pkgver = 0.8.10.r4.g9e68815
 	pkgrel = 1
 	url = https://github.com/livepeer/go-livepeer
