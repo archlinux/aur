@@ -1,0 +1,6 @@
+src/
+pkg/
+Vortex/
+__pycache__/
+*.pkg.tar.zst
+*.pkg.tar.xz

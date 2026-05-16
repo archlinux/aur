@@ -1,5 +1,6 @@
 post_install() {
   chmod 4755 '/opt/Vortex/chrome-sandbox' 2>/dev/null || true
+  chmod -R 755 '/opt/Vortex/resources/app.asar.unpacked/assets' 2>/dev/null || true
   update-desktop-database -q
   update-mime-database /usr/share/mime
 
