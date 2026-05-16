@@ -1,0 +1,31 @@
+post_install() {
+  systemd-sysusers /usr/lib/sysusers.d/autolon.conf >/dev/null 2>&1 || true
+  udevadm control --reload-rules >/dev/null 2>&1 || true
+  udevadm trigger --subsystem-match=input >/dev/null 2>&1 || true
+  udevadm trigger --subsystem-match=misc >/dev/null 2>&1 || true
+  udevadm settle >/dev/null 2>&1 || true
+
+  install_user="${SUDO_USER:-}"
+  if [ -n "$install_user" ] && [ "$install_user" != "root" ] && id "$install_user" >/dev/null 2>&1; then
+    usermod -aG autolon-input "$install_user" >/dev/null 2>&1 || true
+    if command -v setfacl >/dev/null 2>&1; then
+      setfacl -m "u:${install_user}:rw" /dev/uinput >/dev/null 2>&1 || true
+      for device in /dev/input/event*; do
+        [ -e "$device" ] || continue
+        if udevadm info -q property -n "$device" 2>/dev/null | grep -qx 'ID_INPUT_KEYBOARD=1'; then
+          setfacl -m "u:${install_user}:rw" "$device" >/dev/null 2>&1 || true
+        fi
+      done
+    fi
+  fi
+
+  cat <<'EOF'
+Autolon input permissions were installed.
+If direct keyboard grab is not ready yet, open a new terminal or log out and back in, then run:
+  autolon verify
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
