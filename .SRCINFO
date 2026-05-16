@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-api3-headers
 	pkgdesc = Headers from VapourSynth R72 for building API3 plugins
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vapoursynth/vapoursynth
 	arch = x86_64
 	license = LGPL-2.1
