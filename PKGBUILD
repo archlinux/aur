@@ -3,8 +3,8 @@
 _pkgname="ikuuu_vpn"
 _binname="ikuuu-vpn"
 pkgname="${_binname}"
-pkgver="0.14.4"
-_buildid="5dfad582"
+pkgver="0.15.2"
+_buildid="201c8a3d"
 pkgrel=1
 pkgdesc="iKuuuVPN (repacked from .deb)"
 arch=('x86_64')
