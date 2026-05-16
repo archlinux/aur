@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://rocm.docs.amd.com/en/7.13.0/about/release-notes.html
+# Release notes https://rocm.docs.amd.com/en/7.13.0-preview/about/release-notes.html
 pkgname=rocm-gfx1151-bin
 pkgdesc="ROCm Core SDK and TheRock Build System - Ryzen AI Max 300 - Strix Halo"
 pkgver=7.13.0
-pkgrel=1
+pkgrel=2
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -26,7 +26,7 @@ source=(
 )
 
 sha256sums=(
-"4628e28d1660269f506d1f2d821d7b84536a01bf56a090c56a84b8cfcf9e3966"
+"6550da740ac8565ec2f1dc886f6ec6425af1df79588d773594163b0778832560"
 )
 
 package() {
