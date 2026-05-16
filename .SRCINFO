@@ -1,19 +1,19 @@
 pkgbase = python-unimpeded
 	pkgdesc = Universal model comparison & parameter estimation over diverse datasets
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/handley-lab/unimpeded
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
-	depends = python-requests
-	depends = python-anesthetic
-	depends = python-pyyaml
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-pandas
 	provides = unimpeded
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/u/unimpeded/unimpeded-1.1.0.tar.gz
-	sha256sums = cee7cc4720c426e6524ca6b2b0c8fa82c4387e9b8aec1455ce8e984192992abe
+	source = https://files.pythonhosted.org/packages/source/u/unimpeded/unimpeded-1.2.0.tar.gz
+	sha256sums = eaba7219f464d53eea6f0962354aba861002ae2d57612f0bbc2e55d3f67b89b3
 
 pkgname = python-unimpeded
