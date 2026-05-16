@@ -2,12 +2,12 @@
 
 pkgname=vapoursynth-api3-headers
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Headers from VapourSynth R72 for building API3 plugins"
 arch=('x86_64')
 url="https://github.com/vapoursynth/vapoursynth"
 license=('LGPL-2.1')
-requires=("vapoursynth>=74")
+depends=("vapoursynth>=74")
 conflicts=("vapoursynth<=73")
 source=("https://github.com/vapoursynth/vapoursynth/archive/refs/tags/R72.tar.gz")
 sha256sums=('650f77feebfd08842b521273f59e0c88f7ba9d7cb5f151d89b79b8dfdd4ce633')
