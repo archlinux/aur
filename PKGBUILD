@@ -1,7 +1,7 @@
 # Maintainer: Gianluca <homen3@gmail.com>
 pkgname=hyprland-agent
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Local-first agentic desktop controller for Hyprland / Wayland"
 arch=('any')
 url="https://github.com/gianlucamazza/hyprland-agent"
@@ -39,7 +39,7 @@ makedepends=('python-installer' 'python-build' 'uv')
 provides=('hyprland-agent')
 conflicts=('hyprland-agent')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gianlucamazza/hyprland-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e85501f2d608733cc6d3216ffc3c3003108939bae63a576cf3810ca8b1a78b43')
+sha256sums=('0ae7450a37f7955d6bc351c6110c926fc84328fc14cfd6a5a16de8357483bc8c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

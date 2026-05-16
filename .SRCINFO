@@ -1,7 +1,7 @@
 pkgbase = hyprland-agent
 	pkgdesc = Local-first agentic desktop controller for Hyprland / Wayland
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/gianlucamazza/hyprland-agent
 	arch = any
 	license = Apache-2.0
@@ -32,7 +32,7 @@ pkgbase = hyprland-agent
 	optdepends = fuzzel: fuzzel-agent task launcher
 	provides = hyprland-agent
 	conflicts = hyprland-agent
-	source = hyprland-agent-1.0.0.tar.gz::https://github.com/gianlucamazza/hyprland-agent/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = e85501f2d608733cc6d3216ffc3c3003108939bae63a576cf3810ca8b1a78b43
+	source = hyprland-agent-1.0.1.tar.gz::https://github.com/gianlucamazza/hyprland-agent/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 0ae7450a37f7955d6bc351c6110c926fc84328fc14cfd6a5a16de8357483bc8c
 
 pkgname = hyprland-agent
