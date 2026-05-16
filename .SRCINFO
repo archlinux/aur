@@ -1,6 +1,6 @@
 pkgbase = tasks-org-bin
 	pkgdesc = Bringing Astrid Tasks back from the dead
-	pkgver = 15.4.2
+	pkgver = 15.5
 	pkgrel = 1
 	url = https://github.com/tasks/tasks
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = tasks-org-bin
 	provides = tasks-org
 	conflicts = tasks-org
 	options = !debug
-	source = tasks-org-15.4.2.tar.gz::https://github.com/tasks/tasks/releases/download/15.4.2/tasks-org-15.4.2-linux-amd64.tar.gz
-	sha256sums = 5271ac02a90b83a3c694a629312687a719e184b8a05670e7a5ccd509d1515088
+	source = tasks-org-15.5.tar.gz::https://github.com/tasks/tasks/releases/download/15.5/tasks-org-15.5-linux-amd64.tar.gz
+	sha256sums = c297873e54c3764afd229503330acbc9ad9493084b672fd9e6ae3a96bcbb1576
 
 pkgname = tasks-org-bin
