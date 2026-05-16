@@ -1,12 +1,13 @@
 pkgbase = vapoursynth-plugin-bm3dhip-git
 	pkgdesc = Plugin for Vapoursynth: bm3dhip (GIT version)
 	pkgver = 2.16.2.g8c16009
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WolframRhodium/VapourSynth-BM3DCUDA
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = vapoursynth-api3-headers
 	depends = vapoursynth>=75
 	depends = rocm-hip-runtime
 	depends = rocm-device-libs
@@ -15,8 +16,6 @@ pkgbase = vapoursynth-plugin-bm3dhip-git
 	conflicts = vapoursynth-plugin-bm3dhip
 	options = !debug
 	source = bm3dhip::git+https://github.com/WolframRhodium/VapourSynth-BM3DCUDA
-	source = vapoursynth::git+https://github.com/vapoursynth/vapoursynth#commit=325756ed04588b31840fdb74479537cddcba4bf7
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-bm3dhip-git
