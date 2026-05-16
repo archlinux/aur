@@ -1,17 +1,24 @@
-# Atualização da cache dos ícones após instalar/desinstalar pacotes KDE/Qt (convenção AUR).
+# Atualiza caches de ícones (GTK + Plasma) após instalar/atualizar o pacote.
+
+_atualizar_caches_icones() {
+  if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor 2>/dev/null || true
+  fi
+  if [ -x /usr/bin/kbuildsycoca6 ]; then
+    kbuildsycoca6 --noincremental 2>/dev/null || true
+  elif [ -x /usr/bin/kbuildsycoca5 ]; then
+    kbuildsycoca5 --noincremental 2>/dev/null || true
+  fi
+}
 
 post_install() {
-  if [ -x /usr/bin/gtk-update-icon-cache ]; then
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 2>/dev/null || :
-  fi
+  _atualizar_caches_icones
 }
 
 post_upgrade() {
-  post_install
+  _atualizar_caches_icones
 }
 
 post_remove() {
-  if [ -x /usr/bin/gtk-update-icon-cache ]; then
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 2>/dev/null || :
-  fi
+  _atualizar_caches_icones
 }
