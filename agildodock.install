@@ -1,0 +1,17 @@
+# Atualização da cache dos ícones após instalar/desinstalar pacotes KDE/Qt (convenção AUR).
+
+post_install() {
+  if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 2>/dev/null || :
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 2>/dev/null || :
+  fi
+}
