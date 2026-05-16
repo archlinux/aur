@@ -1,0 +1,15 @@
+pkgbase = ios-cert-checker
+	pkgdesc = Privacy-first local CLI for inspecting iOS signing certificates and provisioning profiles
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/david-x3d/ios-cert-checker
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	depends = openssl
+	source = ios-cert-checker::git+https://github.com/david-x3d/ios-cert-checker.git#commit=72655d5edcf95e1f7e4df27a43d6b0f98d50fa06
+	sha256sums = SKIP
+
+pkgname = ios-cert-checker
