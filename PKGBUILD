@@ -28,7 +28,7 @@ package() {
     install -Dm755 "${srcdir}/install.sh" \
         "${pkgdir}/usr/local/bin/hc-install"
 
-    # Install the updater as hc-update
+    # Install the updater as hc-update - run from the bar's update popup
     install -Dm755 "${srcdir}/Candy_Update.sh" \
         "${pkgdir}/usr/local/bin/hc-update"
 
