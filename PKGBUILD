@@ -1,5 +1,4 @@
 # Maintainer: Charlie <c44014189@gmail.com>
-# Maintainer: Your Name <your.email@example.com>
 pkgname=framework-laptop-meta
 pkgver=1.0.1
 pkgrel=2
