@@ -6,15 +6,17 @@ arch=('x86_64')
 url='https://github.com/Tobiichi-Origuchi/flix-bin'
 license=('custom:proprietary')
 source=(
-  "flix-bin-2.0.6.111-1-x86_64.pkg.tar.zst::https://github.com/Tobiichi-Origuchi/flix-bin/releases/download/v2.0.6.111/flix-bin-2.0.6.111-1-x86_64.pkg.tar.zst"
+  "${pkgname}-${pkgver}.deb::https://github.com/Tobiichi-Origuchi/flix-bin/releases/download/v2.0.6.111/Flix-Linux-2.0.6.111.deb"
 )
 sha256sums=(
-  '23ffb423bb534f570f31a6afa9c86d8f51053ff72b2018796f4092310259c7f6'
+  '3a2159f27b9a7f6b760242ce7d912ec9443277c5b64e95594b177d325ea637a3'
 )
 noextract=(
-  'flix-bin-2.0.6.111-1-x86_64.pkg.tar.zst'
+  "${pkgname}-${pkgver}.deb"
 )
 
 package() {
-  bsdtar --exclude='.PKGINFO' --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.INSTALL' -xpf "$srcdir/flix-bin-2.0.6.111-1-x86_64.pkg.tar.zst" -C "$pkgdir"
+  cd "$srcdir"
+  bsdtar -xf "${pkgname}-${pkgver}.deb"
+  bsdtar -xf data.tar.* -C "$pkgdir"
 }
