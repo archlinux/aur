@@ -1,0 +1,14 @@
+pkgbase = duplicates-analyzer
+	pkgdesc = A sleek, multi-threaded GUI application to find and clean up duplicate files via MD5 hashes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jodi42-shb/duplicates
+	arch = x86_64
+	license = custom:BSL 1.1
+	makedepends = cargo
+	depends = gcc-libs
+	depends = gtk3
+	source = duplicates-analyzer-1.0.0.tar.gz::https://github.com/jodi42-shb/duplicates/archive/v1.0.0.tar.gz
+	sha256sums = e91e0facd70f65071a764deb10b07ebc52ab345b1bc1dafc2e13f1cc145d9d5e
+
+pkgname = duplicates-analyzer
