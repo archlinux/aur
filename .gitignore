@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!NOW_VERSION
+!README.md
+!update.sh
