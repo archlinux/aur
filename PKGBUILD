@@ -1,7 +1,7 @@
 # Maintainer: Alexander Agura <agura.alex@gmail.com>
 pkgname=smart-unlock
-pkgver=0.1.4
-pkgrel=3
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="Auto session unlock daemon"
 arch=('any')
 url="https://github.com/agura-lex/smart-unlock"
@@ -12,7 +12,7 @@ optdepends=('kdeconnect: kde_connect module'
 options=()
 #install=
 source=("https://github.com/agura-lex/smart-unlock/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('191fb2eb243735427306deff41469390800ebafd51b1bdf9d77ff516b8f65aec')
+sha256sums=('daf8398c14e417465ff816e316c643b942c750cdf74282573892013c1ece8bea')
 
 
 package() {
