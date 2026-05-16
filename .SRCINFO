@@ -19,7 +19,7 @@ pkgbase = openai-codex-reasoning
 	conflicts = openai-codex-reasoning-bin
 	replaces = openai-codex-reasoning-bin
 	options = !lto
-	source = codex::git+https://github.com/OneNoted/codex.git#tag=aur-v0.128.0-reasoning.2
+	source = codex::git+https://github.com/OneNoted/codex.git#tag=aur-v0.128.0-reasoning.3
 	sha256sums = SKIP
 
 pkgname = openai-codex-reasoning
