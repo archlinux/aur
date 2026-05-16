@@ -1,5 +1,5 @@
 pkgname=autolon
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Autoclicker and automation controller for Legends of IdleOn - Wayland-only (KDE preferred)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('cargo' 'git')
 conflicts=('autolon-bin')
 install=autolon.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf095ca4581fe685317b49b7b4b1e4d308380594a991d2db7d7f135097d71010')
+sha256sums=('715481f1cbb131bd1ad7809ff7085d7d1be1891466727c53a7d9bea083964b59')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
