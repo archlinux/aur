@@ -15,7 +15,7 @@ pkgrel=1
 pkgdesc='Computational software for mathematics, science, and engineering, with offline documentation included.'
 arch=('x86_64')
 url='http://www.wolfram.com/mathematica/'
-license=('LicenseRef-WolframMathematicaLicenseAgreement') # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
+license=('LicenseRef-Wolfram-Mathematica-License-Agreement') # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
 makedepends=('curl' 'rsync' 'inetutils')
 depends=(
   'alsa-lib'
@@ -32,7 +32,7 @@ depends=(
   'zstd'
 )
 optdepends=(
-  'qt6-wayland: Full Wayland support'
+  'qt6-wayland: full Wayland support'
   'openssl-1.1: MQTTLink and Kerberos integration'
   'libxinerama: required by FFmpegTools'
   'ffmpeg4.4: alternative FFmpegTools backend'
