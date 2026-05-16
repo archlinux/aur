@@ -1,0 +1,15 @@
+pkgbase = lazypac
+	pkgdesc = Simple lazy human-readable wrapper for pacman/yay/paru
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kernel236/lazypacman
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = yay: AUR helper (recommended)
+	optdepends = paru: AUR helper
+	optdepends = pacman-contrib: provides pacdiff, suggested after safe-upgrade
+	source = lazypac-1.0.0.tar.gz::https://github.com/Kernel236/lazypacman/archive/v1.0.0.tar.gz
+	sha256sums = 3362db5ff814db6c993722c8fc5e75f3036b625bce511599073f8613321f4477
+
+pkgname = lazypac
