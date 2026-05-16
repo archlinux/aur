@@ -1,6 +1,6 @@
 pkgbase = gummy-git
 	pkgdesc = Screen brightness/temperature manager for Linux
-	pkgver = 0.6.0.r0.g24b77f3
+	pkgver = 0.6.1.r0.gb5f468c
 	pkgrel = 1
 	url = https://codeberg.org/fusco/gummy
 	install = gummy.install
@@ -13,14 +13,16 @@ pkgbase = gummy-git
 	makedepends = nlohmann-json
 	depends = ddcutil
 	depends = fmt
+	depends = libatomic
 	depends = libxcb
-	depends = sdbus-cpp
 	depends = spdlog
 	depends = systemd-libs
 	depends = xcb-util-image
-	provides = gummy=0.6.0
+	provides = gummy
 	conflicts = gummy
 	source = fusco.gummy::git+https://codeberg.org/fusco/gummy.git
+	source = sdbus-cpp-1.6.0.tar.gz::https://github.com/Kistler-Group/sdbus-cpp/archive/refs/tags/v1.6.0.tar.gz
 	sha256sums = SKIP
+	sha256sums = 7ec8a2565bfc8f975c7ee528cb292021063ed793d6864c1c8733ca10ff906164
 
 pkgname = gummy-git
