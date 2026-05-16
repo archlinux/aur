@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: loathingkernel <loathingkernel @at gmail .dot com>
 pkgname=d7vk-git
-pkgver=1.9.r0.gad6d3f1
-pkgrel=2
+pkgver=1.10.r0.g9fc2980
+pkgrel=1
 pkgdesc="Vulkan-based implementation of D3D7, 6, 5 and 3 for Linux / Wine, spun off from DXVK."
 arch=('x86_64' 'i686')
 url="https://github.com/WinterSnowfall/d7vk"
@@ -30,11 +30,11 @@ sha256sums=('SKIP'
             'SKIP'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             '7ef10365d3926f928461f302a35429d13c0fb730a4062d487879c519a3c46b4e'
-            'e496d59eeae7147d02493c53c4d45ab0c0fd22cc6bb893683989607b978224cb')
+            '32b036bea35aa457e4d5a6ed7f2d2883cf97fe97967371b30916d5b9890cab44')
 
 pkgver() {
 	cd "$srcdir/${pkgname::-4}"
-	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
+	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//;s/_WIP//'
 }
 
 prepare() {

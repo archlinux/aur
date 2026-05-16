@@ -156,8 +156,8 @@ installFile() {
 
   if [ -n "$1" ]; then
     if [ -f "${dstfile}" ] || [ -h "${dstfile}" ]; then
-      if ! [ -f "${dstfile}.old" ]; then
-        mv -v "${dstfile}" "${dstfile}.old"
+      if ! [ -f "${dstfile%.dll}_.dll" ]; then
+        mv -v "${dstfile}" "${dstfile%.dll}_.dll"
       else
         rm -v "${dstfile}"
       fi
@@ -184,9 +184,9 @@ uninstallFile() {
     return 1
   fi
 
-  if [ -f "${dstfile}.old" ]; then
+  if [ -f "${dstfile%.dll}_.dll" ]; then
     rm -v "${dstfile}"
-    mv -v "${dstfile}.old" "${dstfile}"
+    mv -v "${dstfile%.dll}_.dll" "${dstfile}"
     return 0
   elif [ -f "${dstfile}.old_none" ]; then
     rm -v "${dstfile}.old_none"
