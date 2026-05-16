@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 makepkg --printsrcinfo > .SRCINFO
 # signatures are updated often, so we drop them from .SCRINFO and the AUR
 # page, but keep them in the actual PKGBUILD script to avoid logging in
