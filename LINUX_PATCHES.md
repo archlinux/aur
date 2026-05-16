@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 2.0.0-4
+**Current release:** 2.0.0-9
 
 ---
 
@@ -21,14 +21,16 @@ assumptions that cause concrete failures:
 7. Third-party extensions (e.g. the Cyberpunk 2077 extension) use Windows path separators
    (`\\`) in `path.join()` calls, which are treated as literal characters on Linux.
 
-All patches are applied at package time inside `package()` of the PKGBUILD.  
-No external scripts are required — everything runs as an inline Python heredoc.
+All patches are applied at package time inside `package()` of the PKGBUILD.
+The patch logic lives in two external source files verified by sha256:
+- `patch-asar.py` — patches `app.asar` and `bundledPlugins/`
+- `patch-pkg.js` — patches `package.json` during `prepare()` and `build()`
 
 ---
 
 ## Architecture of the patch system
 
-The PKGBUILD `package()` function runs a single Python script that:
+`patch-asar.py` (called from `package()`) runs a single Python script that:
 
 1. **Patches bundled plugin files** in `app.asar.unpacked/bundledPlugins/` directly
    (readable JS/CJS files — no asar manipulation needed).
@@ -366,3 +368,4 @@ makepkg -si
 | 2.0.0-2 | Cyberpunk 2077 extension: fix 95 Windows backslash paths (REDmod detection); remove gamebryo-plugin-management requireExtension calls |
 | 2.0.0-3 | epicGamesLauncher null-safe stub (patch 5); winapi-bindings Proxy; native Linux binaries for Starbound, TF2, RimWorld, War Thunder; correct file browser filter context |
 | 2.0.0-4 | winapi-bindings: switch from throwing Proxy to silent no-op Proxy (fix unhandled startup crash on SetProcessPreferredUILanguages) |
+| 2.0.0-5–9 | Refactor: extract `patch-asar.py` and `patch-pkg.js` as verified source files; fix `chmod 777→755` on assets dir enforced via `post_upgrade()`; remove `dotnet-sdk-9.0` from makedepends (binary is prebuilt in upstream repo, ~500 MB saved); remove `NO_PARALLEL` (parallel native module builds work correctly); suppress 28 pnpm deprecated subdependency warnings via `allowedDeprecatedVersions` |
