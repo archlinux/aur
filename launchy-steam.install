@@ -6,6 +6,7 @@ post_install() {
     echo "    launchy install"
     echo ""
     echo "  Then restart Steam and select 'Launchy' in a game's Properties → Compatibility."
+    echo "  Alternatively, set it as the default globally in Steam's Settings → Compatibility."
     echo ""
 }
 
