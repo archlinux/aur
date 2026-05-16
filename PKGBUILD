@@ -26,9 +26,6 @@ b2sums=('c8cc9ff6b4c8fc96ce99bcd3bba383049d9127f37f0823546f333278c1f8273955e1399
 prepare() {
   cd "$pkgname-$_archive_version"
 
-  # since Arch only ships one version of PostgreSQL ... obtain the major version
-  export _PGMAJOR=$(pg_config --version | sed -e 's/PostgreSQL //' -e 's/\..*//')
-
   # download dependencies
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -36,6 +33,8 @@ prepare() {
 build() {
   cd "$pkgname-$_archive_version"
 
+  # since Arch only ships one version of PostgreSQL ... obtain the major version
+  local _PGMAJOR=$(pg_config --version | sed -e 's/PostgreSQL //' -e 's/\..*//')
 
   local PGRX_VERSION='=0.18.0'
   cargo install \
@@ -61,6 +60,9 @@ build() {
 
 package() {
   cd "$pkgname-$_archive_version"
+
+  # since Arch only ships one version of PostgreSQL ... obtain the major version
+  local _PGMAJOR=$(pg_config --version | sed -e 's/PostgreSQL //' -e 's/\..*//')
 
   # extension
   cp -rv "target/release/timescaledb_toolkit-pg$_PGMAJOR/." "$pkgdir"
