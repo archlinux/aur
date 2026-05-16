@@ -1,13 +1,13 @@
 pkgbase = shlink-web-client-bin
 	pkgdesc = A ReactJS-based progressive web application for Shlink
-	pkgver = 4.7.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://github.com/shlinkio/shlink-web-client
 	arch = any
 	license = MIT
 	provides = shlink-web-client
 	conflicts = shlink-web-client
-	source = https://github.com/shlinkio/shlink-web-client/releases/download/v4.7.0/shlink-web-client_4.7.0_dist.zip
+	source = https://github.com/shlinkio/shlink-web-client/releases/download/v4.7.1/shlink-web-client_4.7.1_dist.zip
 	sha256sums = 55b5c67b57b47d0c86df7fd32ba9a66f749e8b5947bee6e1d0f5f5b4bd55fdc4
 
 pkgname = shlink-web-client-bin

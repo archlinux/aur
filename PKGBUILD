@@ -2,7 +2,7 @@
 
 pkgname=shlink-web-client-bin
 _pkgname=shlink-web-client
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="A ReactJS-based progressive web application for Shlink"
 arch=("any")
