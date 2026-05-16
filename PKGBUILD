@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.15.0.r114.gdcdbd17
+pkgver=0.15.0.r197.g7337364
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -28,6 +28,7 @@ makedepends=(
 	'magic_enum>=0.9.7'
 	'nlohmann-json>=3.12'
 	'openal'
+	'openssl'
 	'rapidjson'
 	'renderdoc'
 	'robin-map>=1.3'
@@ -91,6 +92,8 @@ prepare() {
 	sed -i '/-march=/d' CMakeLists.txt
 	# use system glslang
 	sed -i '/find_package/s/glslang 15/glslang/' CMakeLists.txt
+	# use system openssl
+	sed -i 's/LibreSSL.*MODULE/OpenSSL CONFIG/' CMakeLists.txt
 }
 
 build() {
