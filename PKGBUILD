@@ -18,10 +18,10 @@ prepare() {
 build() {
   cd "$srcdir"/fmi-library-${pkgver}
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DFMILIB_BUILD_STATIC_LIB=OFF -DFMILIB_BUILD_TESTS=OFF -DFMILIB_EXTERNAL_LIBS=ON -B build .
-  make -C build
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir"/fmi-library-${pkgver}/build
-  make DESTDIR="$pkgdir" install
+  cd "$srcdir"/fmi-library-${pkgver}
+  DESTDIR="$pkgdir" cmake --build build --target install
 }
