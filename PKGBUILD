@@ -3,7 +3,7 @@
 pkgname=crib-bin
 pkgver=0.9.1
 pkgrel=1
-pkgdesc="Crib reads your devcontainer.json config, builds the container, and gets out of your way"
+pkgdesc="Dev containers without the ceremony"
 arch=('x86_64')
 url="https://github.com/fgrehm/crib"
 license=('MIT')
