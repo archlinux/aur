@@ -1,7 +1,7 @@
 pkgbase = mainstream-basic
 	pkgdesc = Mainstream OS Basic Dependencies
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 6
 	arch = any
 	groups = mainstream
 	license = None
@@ -30,6 +30,8 @@ pkgbase = mainstream-basic
 	depends = networkmanager
 	depends = hyprpolkitagent
 	depends = kdialog
+	depends = systemd
+	depends = zip
 	provides = illogical-impulse-basic
 	replaces = illogical-impulse-basic
 

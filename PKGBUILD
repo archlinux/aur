@@ -2,7 +2,7 @@
 groups=(mainstream)
 pkgname=mainstream-basic
 pkgver=1.0
-pkgrel=4
+pkgrel=6
 pkgdesc='Mainstream OS Basic Dependencies'
 provides=('illogical-impulse-basic')
 replaces=('illogical-impulse-basic')
@@ -34,4 +34,6 @@ depends=(
   networkmanager
   hyprpolkitagent
   kdialog
+  systemd
+  zip
 )
