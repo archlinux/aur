@@ -6,9 +6,9 @@ pkgdesc='Intel® Software Guard Extensions SDK for Linux* OS'
 pkgver=2.29
 _pkgver="${pkgver}.100.1"
 pkgrel=1
-url='https://github.com/intel/linux-sgx'
+url='https://github.com/intel/confidential-computing.sgx'
 arch=('x86_64')
-license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
+license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx/blob/main/License.txt
 depends=('gcc-libs' 'python' 'glibc' 'bash' 'openssl')
 optdepends=(
   'intel-sgx-psw: for hardware support'
