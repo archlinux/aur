@@ -8,30 +8,42 @@ pkgdesc="A modern Git CLI tool with both traditional command-line and interactiv
 
 pkgver=8.4.0
 pkgrel=1
-_pkgvername=v${pkgver}
+_ghversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
 
 url="https://github.com/${_pkgauthor}/${_pkgname}"
-_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_ghversion}"
 
 license=('MIT')
 
-depends=('glibc')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}"{,-git})
 
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
-source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_ghversion}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_ghversion}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 sha256sums_x86_64=('0ee44614a1a3a9414a23dc072fd22e980395649f7eb83262a2902df8e0292608')
 sha256sums_aarch64=('9e45e3d61b713bf961fc5f3025e4d4a2b575650857fd82404142de84fa9b90d7')
 
+
+build() {
+	cd "${srcdir}/" || exit
+
+	mkdir -p "./completions/"
+	./${_pkgname} completion bash > ./completions/${_pkgname}.bash
+	./${_pkgname} completion zsh > ./completions/${_pkgname}.zsh
+	./${_pkgname} completion fish > ./completions/${_pkgname}.fish
+}
 
 package() {
 	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -D -m644 "./completions/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+	install -D -m644 "./completions/${_pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+	install -D -m644 "./completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
