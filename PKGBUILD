@@ -1,19 +1,19 @@
 pkgname=hp-wmi-dkms
-pkgver=1.0
-pkgrel=3
-pkgdesc="Patched hp-wmi kernel module with fan control fixes for HP Victus/Omen (pre-7.1 kernels)"
+pkgver=7.1.rc4
+pkgrel=1
+pkgdesc="hp-wmi kernel module from Linux mainline (7.1-rc4+) with HP Victus/Omen fan control and platform profile support"
 arch=('any')
 url="https://github.com/emomaxd/hpfand"
 license=('GPL-2.0-only')
 depends=('dkms')
 install=hp-wmi-dkms.install
 source=(
-    "hp-wmi.c::https://raw.githubusercontent.com/emomaxd/linux/hp-wmi-victus-fan-v4/drivers/platform/x86/hp/hp-wmi.c"
+    "hp-wmi.c::https://raw.githubusercontent.com/torvalds/linux/6916d5703ddf9a38f1f6c2cc793381a24ee914c6/drivers/platform/x86/hp/hp-wmi.c"
     "dkms.conf"
     "Makefile"
     "hp-wmi-dkms.install"
 )
-sha256sums=('b78469d1ebe5ce82f64a8998f80b1b0480918412c4bf80171e6b7ff78653eb0f'
+sha256sums=('1807f924a118fa4783537eb8511808817f21a7866a96ce23bfdfa12ab25b74fd'
             '73adb7825484ada78d4631e4faaef035104c0d458e31743b507207e14022479b'
             '27590eeaeace6a376fbf25690752b9e8a775843218126ffaf236ba6d669eef69'
             '230126dc83e9bda34caf8b14a380bfe3501948ac796d4d939fc4f00516c0cdd4')
