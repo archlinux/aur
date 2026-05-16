@@ -1,0 +1,23 @@
+pkgbase = python-resvg_py
+	pkgdesc = High level wrapper of resvg for python
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/NSPC911/resvg_py
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/resvg_py/resvg_py-0.3.2.tar.gz
+	sha256sums = 7eefcbb18b1c86703eb3577cdcc5f6edb94c76dacb340a07b5a052e16047333a
+
+pkgname = python-resvg_py
