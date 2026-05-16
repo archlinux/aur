@@ -1,0 +1,20 @@
+pkgbase = github-desktop-mod
+	pkgdesc = Desktop GitHub repository manager — an alternative to GitHub Desktop for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/PerfLite/Github_DesktopMod
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = python-pywebview
+	depends = python-requests
+	depends = python-gitpython
+	depends = python-watchdog
+	depends = python-gobject
+	depends = webkit2gtk-4.1
+	depends = git
+	source = github-desktop-mod::git+https://github.com/PerfLite/Github_DesktopMod
+	sha256sums = SKIP
+
+pkgname = github-desktop-mod
