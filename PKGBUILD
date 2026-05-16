@@ -1,7 +1,7 @@
 # Maintainer: Geoff Clements <ro2kz0@gmail.com>
 pkgname=vibe_player
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A music player for the Lyrion music server'
 url='https://github.com/GeoffClements/Vibe'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
