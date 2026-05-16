@@ -7,7 +7,7 @@ _pypi_package='rovr'
 
 pkgname="${_pypi_package}"
 pkgver="${_upstreamver%%.post*}"
-pkgrel=3
+pkgrel=4
 pkgdesc="A post-modern terminal file explorer"
 
 license=('MIT')
@@ -18,8 +18,8 @@ _url_github="https://github.com/NSPC911/${_pypi_package}"
 url="${_url_github}"
 
 provides=("${_pypi_package}")
-replaces=("python-${pkgname}")
-conflicts=("python-${pkgname}")
+conflicts=("${pkgname}"{-bin,-git})
+
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling')
 depends=('python' 'python-textual-autocomplete' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-textual' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-textual-image' 'python-pathvalidate')
 
