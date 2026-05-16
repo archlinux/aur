@@ -8,13 +8,6 @@ post_install() {
     echo ""
     echo "    hc-install"
     echo ""
-    echo "  To update an existing installation:"
-    echo ""
-    echo "    hc-update"
-    echo ""
-    echo "  You will need a valid HyprCandy+ licence key."
-    echo "  Get one at: https://mirukai.gumroad.com/l/mmnrfq"
-    echo ""
 }
 
 post_upgrade() {
@@ -25,6 +18,6 @@ post_remove() {
     echo ""
     echo "  HyprCandy+ installer removed."
     echo "  Your existing HyprCandy+ installation is unaffected."
-    echo "  Run hc-update from your installation directory to manage it."
+    echo "  Run hc-update from your bar to manage it."
     echo ""
 }
