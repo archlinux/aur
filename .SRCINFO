@@ -1,0 +1,19 @@
+pkgbase = mime-tui
+	pkgdesc = Keyboard-driven terminal UI for managing MIME-type to application associations
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/bcorrigan/mime-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	depends = sqlite
+	optdepends = ttf-firacode-nerd: Nerd Font for file-type / app-category icons
+	options = !debug
+	source = mime-tui::git+https://github.com/bcorrigan/mime-tui.git#tag=0.9.0
+	sha256sums = SKIP
+
+pkgname = mime-tui
