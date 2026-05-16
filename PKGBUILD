@@ -3,9 +3,10 @@
 # Contributor: Laurinyecz Zalán <laurinyeczzalan@gmail.com>
 # Contributor: Ernesto Castellotti <mail@ernestocastellotti.it>
 # shellcheck shell=bash disable=SC2034,SC2154
+# 14.04.2026 dj_pask modified only pkgver and md5sums for last boosteroid official version support
 
 pkgname=boosteroid
-pkgver=1.10.9
+pkgver=1.10.12
 pkgrel=1
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -25,8 +26,8 @@ source=(
   "${_custom_name}.md5::https://boosteroid.com/linux/installer/boosteroid-install-x64.md5"
   boosteroid.sh
 )
-md5sums=('f4ba03c0b453ae5aaa665247fcc2d8eb'
-         'd70fbd8ac2cec6b667921ac7bcb0e0ab'
+md5sums=('52202d129a2d8ac5c6893f148205f7f8'
+         '0458249fd19e3c9569e3235b25e70381'
          '033cc5b68298d0fe7d36887b5db6f200')
 noextract=("${_custom_name}.deb")
 
