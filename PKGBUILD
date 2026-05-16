@@ -3,13 +3,14 @@
 pkgname=qmd
 _npmname="@tobilu/qmd"
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="On-device search engine for markdown files with BM25, vector, and LLM-powered search"
 arch=('x86_64')
 url="https://github.com/tobi/qmd"
 license=('MIT')
-depends=('nodejs>=22' 'libstdc++.so' 'libgcc' 'vulkan-icd-loader')
+depends=('nodejs>=22' 'libstdc++.so' 'libgcc')
 makedepends=('npm' 'patchelf')
+optdepends=('vulkan-icd-loader: GPU-accelerated inference via Vulkan backend')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/qmd-${pkgver}.tgz")
 sha256sums=('4f1b000c5b9daa36fcf5d05228d7966fd7df87607af572fca3360597f64286e6')
