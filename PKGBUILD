@@ -3,7 +3,7 @@
 pkgname=infnoise-openssl-git
 pkgver=r22.d161bfd
 pkgrel=3
-pkgdesc="OpenSSL Engine for random number generation using the Infnoise hardware TRNG"
+pkgdesc="Deprecated: use infnoise-provider. OpenSSL 1.x ENGINE for the Infnoise TRNG (ENGINEs are removed in OpenSSL 3.x)"
 arch=('x86_64')
 url="https://github.com/tinskip/infnoise-openssl"
 license=('LGPL-3.0-only')

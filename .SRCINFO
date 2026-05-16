@@ -1,5 +1,5 @@
 pkgbase = infnoise-openssl-git
-	pkgdesc = OpenSSL Engine for random number generation using the Infnoise hardware TRNG
+	pkgdesc = Deprecated: use infnoise-provider. OpenSSL 1.x ENGINE for the Infnoise TRNG (ENGINEs are removed in OpenSSL 3.x)
 	pkgver = r22.d161bfd
 	pkgrel = 3
 	url = https://github.com/tinskip/infnoise-openssl
