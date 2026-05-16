@@ -1,13 +1,14 @@
 pkgbase = shelly-git
 	pkgdesc = Shelly: A Modern Arch Package Manager (git version)
-	pkgver = 2.2.4.0.r0.gfc902f0
-	pkgrel = 2
+	pkgver = 2.3.0.0.r0.g20c568b
+	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = dotnet-sdk-10.0
 	makedepends = git
 	makedepends = clang
+	makedepends = gettext
 	depends = pacman
 	depends = gtk4
 	depends = glib2
