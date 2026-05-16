@@ -1,21 +1,18 @@
 pkgbase = hyprland-agent
 	pkgdesc = Local-first agentic desktop controller for Hyprland / Wayland
-	pkgver = 1.0.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/gianlucamazza/hyprland-agent
 	arch = any
 	license = Apache-2.0
 	makedepends = python-installer
-	makedepends = python-build
 	makedepends = uv
 	depends = python>=3.13
 	depends = python-pydantic
 	depends = python-rich
 	depends = python-typer
 	depends = python-textual
-	depends = python-httpx
 	depends = python-openai
-	depends = python-aiohttp
 	depends = python-yaml
 	depends = python-pillow
 	depends = python-jeepney
@@ -33,7 +30,7 @@ pkgbase = hyprland-agent
 	optdepends = foot: terminal emulator used by the hyprland-agent-tui.desktop launcher
 	provides = hyprland-agent
 	conflicts = hyprland-agent
-	source = hyprland-agent-1.0.2.tar.gz::https://github.com/gianlucamazza/hyprland-agent/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 1bd8eb5d7a8fa2bb0253ac13f1cbdfbf6298918079f0117dc60db92685016547
+	source = hyprland-agent-1.3.0.tar.gz::https://github.com/gianlucamazza/hyprland-agent/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 59dd8180e0dfa0bfb6cb13296a82e6ab846b6d8b0c601bdbe2556d2e29c34865
 
 pkgname = hyprland-agent
