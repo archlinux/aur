@@ -6,8 +6,8 @@ pkgdesc="Faden - desktop app for qualitative interview research"
 arch=('x86_64')
 url="https://github.com/ReadyPlayerNaN/faden"
 license=('MIT')
-depends=('ffmpeg' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'libsoup3' 'hicolor-icon-theme')
-makedepends=('binutils' 'cargo' 'nodejs' 'npm' 'dpkg' 'patchelf')
+depends=('ffmpeg' 'sqlite' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'libsoup3' 'hicolor-icon-theme')
+makedepends=('cargo' 'nodejs' 'npm' 'patchelf' 'pkgconf')
 provides=('faden')
 conflicts=('faden')
 source=("$_pkgname::git+https://github.com/ReadyPlayerNaN/faden.git")
@@ -26,18 +26,25 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  npm run tauri build -- --bundles deb
+  npm run build
+  cargo build --manifest-path src-tauri/Cargo.toml --bins --features tauri/custom-protocol --release
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  local data_dir
-  data_dir="$(find src-tauri/target/release/bundle/deb -type d -path '*/data' | head -n1)"
 
-  if [[ -z "$data_dir" ]]; then
-    echo 'Tauri deb bundle data directory not found' >&2
-    exit 1
-  fi
-
-  cp -a "$data_dir"/. "$pkgdir"/
+  install -Dm755 "src-tauri/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/faden-git/LICENSE"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<DESKTOP
+[Desktop Entry]
+Type=Application
+Name=Faden
+Comment=Faden - desktop app for qualitative interview research
+Exec=$_pkgname
+Icon=$_pkgname
+Terminal=false
+Categories=Office;AudioVideo;
+StartupWMClass=faden
+DESKTOP
 }
