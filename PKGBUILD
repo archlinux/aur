@@ -11,14 +11,14 @@
 
 pkgname=tengine
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
-license=('custom')
+license=('BSD-2-Clause')
 depends=(
   glibc
-  pcre
+  pcre2
   zlib
   openssl
   geoip
