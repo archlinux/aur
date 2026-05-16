@@ -1,54 +1,212 @@
-# Ente-server configuration file
-# This configuration has been modified to work in a standalone non-Docker setup.
+# Configuring museum
+# ------------------
 #
-# Note that the original ente.io local.yaml server configuration,
-# which contains all available options can be found at:
-#     /usr/lib/ente-server/local.yaml
-# or in the online ente.io GIT repo at:
-#     https://github.com/ente-io/ente/blob/main/server/configurations/local.yaml
+# 1. If the environment variable `ENVIRONMENT` is specified, then it is used to
+#    load one of the files from the `configurations/` directory. If not present,
+#    then by default `local.yaml` (this file) will get loaded.
 #
-# When a config item is not used, it must not be deleted, but set to an empty value, for example:
-#     unused-setting: ""
+# 2. If the "credentials-file" config option is set then museum will look for
+#    that file. If found, that file will also be loaded, and entries specified
+#    therein will override the defaults specified here.
+#
+# 3. Then, museum will look for a file named `museum.yaml` (gitignored) in the
+#    current working directory. If found, this file will also be loaded and
+#    merged.
+#
+# 4. Config can be overridden with via environment variables (details below).
+#
+# Environment variables
+# ---------------------
+#
+# All configuration options can be overridden via environment variables. The
+# environment variable should have the prefix "ENTE_", and any nesting should be
+# replaced by underscores.
+#
+# For example, the nested string "db.user" in the config file can alternatively
+# be specified (or be overridden) by setting an environment variable named
+# ENTE_DB_USER.
+#
+# Hyphens "-" will also be be replaced with underscores, so a string like "s3.b2-eu-cen"
+# can be specified by the environment variable named "S3_B2_EU_CEN".
+#
+#
+# Empty strings
+# -------------
+#
+# The empty string indicates missing values (to match go convention).
+#
+# This also means that to override a value that is specified in local.yaml in a
+# subsequently loaded config file, you should specify the key as an empty string
+# (`key: ""`) instead of leaving it unset.
+#
+# ---
 
-# credential config file:
-credentials-file: ""
+# If this option is specified, then it is loaded and gets merged-in over the
+# defaults present in default.yaml. This provides a way to inject credentials
+# and other overrides.
+#
+# The default is to look for a file named credentials.yaml in the CWD.
+#credentials-file: ""
 
-# this dir is used for TLS data, by default this is done by nginx, and thus can be left empty
+# Some credentials (e.g. the TLS cert) are cumbersome to provide inline in the
+# YAML configuration file, thus these are loaded at runtime from separate files.
+#
+# This is the directory where museum should look for them.
+#
+# Currently, the following files are loaded (if needed)
+#
+# - credentials/{tls.cert,tls.key}
+# - credentials/pst-service-account.json
+# - credentials/fcm-service-account.json
+#
+# The default is to look for a these files in a directory named credentials
+# under the CWD.
+# In a self hosted setup this is only used for TLS data, but by default this is done by nginx, and thus can be left empty
 credentials-dir: ""
 
-# std-out of the ente-server is send to the systemd journal, when started via the systemd service
+# By default, museum logs to stdout when running locally. Specify this path to
+# get it to log to a file instead.
+#
+# It must be specified if running in a non-local environment.
+# In a self hosted setup std-out of the ente-server is send to the systemd journal, when started via the systemd service
 # if started without the systemd-service, please specify a log file location instead:
 log-file: ""
 
 # HTTP connection parameters
 http:
-    # If true, bind to 443 and use TLS.
-    # By default, this is false, and ente-server will bind to 8080 without TLS.
-    # TLS is handled by nginx
+    # The port to bind to.
+    # If not specified, defaults to 8080 (HTTP) or 443 (HTTPS with use-tls: true)
+    # port: 8080
+
+    # If true, use TLS for HTTPS connections.
+    # When true and port is not specified, defaults to port 443.
+    # When false and port is not specified, defaults to port 8080.
+    # In a self hosted setup TLS is handled by nginx and thus it can be set to false for local plain HTTP
     use-tls: false
+
+# Specify the base endpoints for various apps
+apps:
+    # Default is https://albums.ente.com
+    #
+    # If you're running a self hosted instance and wish to serve public links for photos,
+    # set this to the URL where your albums web app is running.
+    public-albums:
+    # Default is https://embed.ente.com
+    # For self-hosted instances, set this to the URL where your embed app is running.
+    embed-albums:
+    # Default is https://share.ente.com
+    #
+    # If you're running a self-hosted instance and wish to serve public links for locker,
+    # set this to the URL where your share web app is running.
+    public-locker:
+    # Default is https://paste.ente.com
+    #
+    # If you're running a self-hosted instance and wish to serve Ente Paste,
+    # set this to the URL where your paste web app is running.
+    public-paste:
+    # Default is https://cast.ente.com
+    cast:
+    # Set this to the URL where your accounts web app is running, primarily used for
+    # passkey based 2FA.
+    #
+    # Default is https://accounts.ente.com
+    accounts:
+    # Optional. Used only for Ente's accounts.ente.io -> accounts.ente.com
+    # passkey migration. Users with passkeys scoped to webauthn.legacy-rpid are
+    # sent here.
+    #
+    # Default is https://accounts.ente.io
+    accounts-legacy:
+    # Default is https://family.ente.io
+    family:
+    # Default is https://memories.ente.com
+    #
+    # If you're running a self-hosted instance and wish to serve public memory shares,
+    # set this to the URL where your memories web app is running.
+    public-memories:
+    # Default is https://legacy.ente.com
+    #
+    # If you're running a self-hosted instance and wish to serve legacy kit recovery,
+    # set this to the URL where your legacy recovery web app is running.
+    legacy:
+    custom-domain:
+        # Default is my.ente.com
+        cname:
 
 # Database connection parameters
 db:
     host: /run/postgresql
     port: 5432
     name: ente-server
+    # You might want to set this to "require" for production
+    # See https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-PROTECTION
+    sslmode: disable
+    # These can be specified here, or alternatively provided via the environment
+    # as ENTE_DB_USER and ENTE_DB_PASSWORD.
     user: ente
     password: "<YOUR-STRONG-ENTE-DATABASE-USER-PASSWORD>"
-    sslmode: disable
-    # See https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-PROTECTION
+    # This can be used to provide parameters that are appended verbatim to the
+    # generated DSN used for connecting to the DB.
+    # extra:
 
-# Map of data centers, emulated by minio by default
+# Map of data centers, emulated by minio by default in self hosted setup
+#
 # Each data center also specifies which bucket in that provider should be used.
+#
+# If you're not using replication (it is off by default), you only need to
+# provide valid credentials for the first entry (the default hot storage,
+# "b2-eu-cen").
+#
+# Note that you need to use the same key names (e.g. "b2-eu-cen") as below. The
+# values and the S3 provider itself can any arbitrary S3 storage, it is not tied
+# to the region (eu-cen) or provider (b2, wasabi), but for historical reasons
+# the key names have to be one of those in the list below.
 s3:
+    # Override the primary and secondary hot storage. The commented out values
+    # are the defaults.
+    #
     hot_storage:
         primary: b2-eu-cen
         secondary: ""
     b2-eu-cen:
+        # Uncomment to override top-level bucket configuration for URL addressing and external buckets
+        # are_local_buckets: true
+        # use_path_style_urls: true
         key: minio
         secret: "<YOUR-STRONG-MINIO-ROOT-PASSWORD>"
         endpoint: https://<your_public_domain.tld>:3200
         region: eu-central-2
         bucket: ente-server
+    #wasabi-eu-central-2-v3:
+        # are_local_buckets: true
+        # use_path_style_urls: true
+        #key:
+        #secret:
+        #endpoint:
+        #region:
+        #bucket:
+        # If enabled, this causes us to opt the object out of the compliance
+        # lock when the object is deleted. See "Wasabi Compliance".
+        #
+        # Currently this flag is only honoured for the Wasabi v3 bucket.
+        compliance: true
+    #scw-eu-fr-v3:
+        # are_local_buckets: true
+        # use_path_style_urls: true
+        #key:
+        #secret:
+        #endpoint:
+        #region:
+        #bucket:
+    #wasabi-eu-central-2-derived:
+        #key:
+        #secret:
+        #endpoint:
+        #region:
+        #bucket:
+    # Derived storage bucket is used for storing derived data like embeddings, preview etc.
+    # By default, it is the same as the hot storage bucket.
+    # derived-storage: wasabi-eu-central-2-derived
 
     # If true, enable some workarounds to allow us to use a local minio instance
     # for object storage.
@@ -64,7 +222,6 @@ s3:
     #    not support them, specifically it doesn't support GLACIER).
     #
     are_local_buckets: true
-
     # Uncomment this to use "path" style S3 URLs.
     #
     # By default the bucket name is part of the (sub)domain, e.g.
@@ -76,17 +233,44 @@ s3:
     # resolved, e.g. when running a local instance, or when using MinIO as a
     # production store.
     use_path_style_urls: true
+    #
+    # Warning: For file-storage, do not specify buckets with any lock or versioning enabled.
+    # The application does not handle these cases. By default, we will use the derived-storage or hot storage bucket
+    # as the primary bucket for file-data-config.
+    # file-data-config:
+    #     mldata:
+    #         primaryBucket:
+    #         replicaBuckets: []
+    #     img_preview:
+    #         primaryBucket:
+    #         replicaBuckets: []
+    # attachment-config:
+    #     profile_picture:
+    #         primaryBucket:
+    #         replicaBuckets: []
 
 # Key used for encrypting customer emails before storing them in DB
-# Current values are examples, its recommended replacing them with new unique values
-# Run `ente-server-gen-random-keys` to generate new values
+#
+# [Note: Self hosting credentials]
+#
+# To make it easy to get started, some randomly generated (but fixed) values are
+# provided here. But if you're really going to be using museum, please generate
+# new keys. You can use `go run tools/gen-random-keys/main.go` for that.
+#
+# If you used the quickstart.sh script to prepare your compose.yaml, it would've
+# already generated new random credentials for you in your `museum.yaml`. Those
+# will override these defaults; those are the values for your instance would
+# use, and what you need to backup.
+# Alternativly, in a self hosted setup, run `ente-server-gen-random-keys` to generate new values
 key:
     encryption: yvmG/RnzKrbCb9L3mgsmoxXr9H7i2Z4qlbT0mL3ln4w=
     hash: KXYiG07wC7GIgvCSdg+WmyWdXDAn6XKYJtp/wkEU7x573+byBRAYtpTP0wwvi8i/4l37uicX1dVTUzwH3sLZyw==
 
 # JWT secrets
-# Current value is an example, its recommended replacing it with a new unique value
-# Run `ente-server-gen-random-keys` to generate new values
+#
+# See: [Note: Self hosting credentials] above.
+#
+# Alternativly, run `ente-server-gen-random-keys` to generate new values
 jwt:
     secret: i2DecQmfGreG6q1vBj5tCokhlN41gcfS2cjOs9Po-u8=
 
@@ -97,11 +281,99 @@ jwt:
 # The smtp credentials will be used if the host is specified. Otherwise it will
 # try to use the transmail credentials. Ideally, one of smtp or transmail should
 # be configured for a production instance.
+#
+# username and password are optional (e.g. if you're using a local relay server
+# and don't need authentication).
 smtp:
     host: ""
     port: ""
     username: ""
     password: ""
+    # The email address from which to send the email. Set this to an email
+    # address whose credentials you're providing.
+    email:
+    # Optional override for the sender name in the emails. If specified, it will
+    # be used for all emails sent by the instance (default is email specific).
+    sender-name:
+    # Optional encryption method. If tls or ssl is chosen, encryption is enabled.
+    encryption:
+
+# Zoho Zeptomail config (optional)
+#
+# This is an alternative to the `smtp` configuration for sending emails. If this
+# is set (and SMTP credentials are not set), then museum will use the transmail
+# SDK for sending emails using Zoho Zeptomail.
+transmail:
+    # Transmail token
+    # Mail agent: dev
+    key:
+
+# Apple config (optional)
+# Use case: In-app purchases
+apple:
+    # Secret used when communicating with Apple for validating IAP receipts.
+    shared-secret:
+
+# Stripe config (optional)
+# Use case: Payments
+stripe:
+    us:
+        key:
+        webhook-secret:
+    in:
+        key:
+        webhook-secret:
+    whitelisted-redirect-urls: []
+    path:
+        success: ?status=success&session_id={CHECKOUT_SESSION_ID}
+        cancel: ?status=fail&reason=canceled
+
+# Passkey support (optional)
+# Use case: MFA
+webauthn:
+    # Our "Relying Party" ID. This scopes the generated credentials.
+    # See: https://www.w3.org/TR/webauthn-3/#rp-id
+    rpid: localhost
+    # Whitelist of origins from where we will accept WebAuthn requests.
+    # See: https://github.com/go-webauthn/webauthn
+    rporigins:
+        - "http://localhost:3001"
+    # Optional. Used only when migrating existing passkeys from an older RP ID.
+    # Leave unset for normal deployments. Wrong RP/origin values can prevent
+    # users from using their passkeys.
+    #
+    # Credentials without an rp_id are treated as belonging to legacy-rpid.
+    # Users with such credentials keep using apps.accounts-legacy.
+    legacy-rpid:
+    legacy-rporigins: []
+
+# Discord config (optional)
+# Use case: Devops
+discord:
+    bot:
+        cha-ching:
+            token:
+            channel:
+        mona-lisa:
+            token:
+            channel:
+
+# Zoho Campaigns config (optional)
+# Use case: Sending emails
+zoho:
+    client-id:
+    client-secret:
+    refresh-token:
+    list-key:
+    topic-ids:
+
+# Listmonk Campaigns config (optional)
+# Use case: Sending emails
+listmonk:
+    server-url:
+    username:
+    password:
+    list-ids:
 
 # Various low-level configuration options
 internal:
@@ -113,6 +385,9 @@ internal:
     # restoration test, where we want to be able to access data but otherwise
     # minimize external side effects.
     silent: false
+    # Header gin will trust for resolving the original client IP when requests are proxied.
+    # If the header or value is missing, server will default to X-Forwarded-For, X-Real-IP, remote-addr (in that order).
+    trusted-client-ip-header:
     # If provided, this external healthcheck url is periodically pinged.
     health-check-url:
     # Hardcoded verification codes, useful for logging in when developing.
@@ -128,7 +403,17 @@ internal:
     #     local-domain-suffix: "@example.org"
     #     local-domain-value: 123456
     # List of user IDs that can use the admin API endpoints.
+    # If this is not set, as a fallback, the first user is considered an admin.
     admins: []
+    # In case there is a single admin, it can be alternatively specified by as
+    # the "admin" instead of "admins". This can be useful e.g. when wishing to
+    # pass the admin as an environment variable.
+    admin:
+    # If set to true, users will not be able to register a new account.
+    #
+    # During sign up, the client will get an unauthorized error and
+    # thus cannot create new accounts.
+    disable-registration: false
     # Cleanup delay of S3/MinIO objects in minutes (default: 45 days = 64800 minutes)
     # WARNING: Only change this value when you know what you're doing, since this can cause things to break if configured incorrectly.
     # For example, if replication is enabled then this value should be such that the deletion is never attempted before compliance lock passes.
@@ -141,7 +426,7 @@ internal:
 replication:
     enabled: false
     # The Cloudflare worker to use to download files from the primary hot
-    # bucket. Must be specified if replication is enabled.
+    # bucket. If this isn't specified, files will be downloaded directly.
     worker-url:
     # Number of go routines to spawn for replication
     # This is not related to the worker-url above.
@@ -166,9 +451,3 @@ jobs:
         enabled: false
         # If provided, only objects that begin with this prefix are pruned.
         prefix: ""
-
-# Passkey support (WIP)
-webauthn:
-    rpid: "example.com"
-    rporigins:
-        - "https://example.com:3005"
