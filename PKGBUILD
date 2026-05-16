@@ -1,8 +1,8 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq-bin
-pkgver=1.9.22
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('x86_64')
 url="https://bisq.network"
@@ -11,14 +11,14 @@ depends=('java-runtime')
 validpgpkeys=('B493319106CC3D1F252E19CBF806F422E222AA02'
               'B8A5D214ADFAA387A14C8BCF02AA2BAE387C8307')
 source_x86_64=("https://github.com/bisq-network/bisq/releases/download/v${pkgver}/Bisq-64bit-${pkgver}.deb"{,.asc})
-sha512sums_x86_64=('7ee31110bb8cd8c14c418984ac44b50d83b5f8a1d3b898543e20ab48e9b48ed7135af48a69cc045bb6e82d27554b9ead534cef9a9f105a2197cb4320fbaf0d1d'
+sha512sums_x86_64=('55d6a16f230a091bca08f7120e7cba3dc959c94c4caa0950bd73b72814112bb17c1dad60b31489c1baabcce7af716da72c8c6066e9e7f7c2aee2c596a9050c0f'
                    'SKIP')
 _binname=Bisq
 conflicts=("bisq" "bisq-git")
 provides=("bisq-bin")
 
 prepare() {
-  tar -Jxvf data.tar.xz
+  tar --zstd -xvf data.tar.xz
 }
 
 package() {
