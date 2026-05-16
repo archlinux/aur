@@ -1,7 +1,7 @@
 # Maintainer: Lilly <lilly@hibana.me>
 pkgname=launchy-steam
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurable Steam compatibility tool launcher with per-game settings UI"
 arch=('any')
 url="https://github.com/Chloe-ko/launchy"
