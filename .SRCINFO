@@ -1,0 +1,14 @@
+pkgbase = man-intrinsics-git
+	pkgdesc = man pages from Intel Intrinsics Guide
+	pkgver = r73.1ecedba
+	pkgrel = 1
+	url = https://github.com/WojciechMula/man-intrinsics
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = curl
+	makedepends = python
+	source = git+https://github.com/jaja360/man-intrinsics.git#branch=fix-uops.info-format
+	sha256sums = SKIP
+
+pkgname = man-intrinsics-git
