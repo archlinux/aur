@@ -1,6 +1,6 @@
 pkgbase = autolon
-	pkgdesc = Native Linux autoclicker and local input automation controller - Wayland-only (KDE preferred)
-	pkgver = 0.1.6
+	pkgdesc = Autoclicker and automation controller for Legends of IdleOn - Wayland-only (KDE preferred)
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/daveottley/autolon
 	install = autolon.install
@@ -11,8 +11,9 @@ pkgbase = autolon
 	depends = acl
 	depends = gtk4
 	depends = libxtst
+	depends = qt6-tools
 	conflicts = autolon-bin
-	source = autolon-0.1.6.tar.gz::https://github.com/daveottley/autolon/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = f67b0ab7c5fd283f58616b5efdf20c02866b144708eba403f4690f04a882dce9
+	source = autolon-0.1.7.tar.gz::https://github.com/daveottley/autolon/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 73fdc5dd45ce25d8b375ceaeed606101cacca00c06a8516f7854b8b6ebfddaed
 
 pkgname = autolon
