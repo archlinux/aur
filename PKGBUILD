@@ -14,7 +14,7 @@ optdepends=(
 # Source is the install.sh attached to the GitHub release.
 # Update pkgver + the sha256sum when you cut a new release.
 source=("install.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v${pkgver}/install.sh"
-        "Candy-Update.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v${pkgver}/Candy-Update.sh")
+        "Candy_Update.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v${pkgver}/Candy_Update.sh")
 sha256sums=('SKIP'
 install=hyprcandy-plus.install
             'SKIP')
@@ -30,7 +30,7 @@ package() {
         "${pkgdir}/usr/local/bin/hc-install"
 
     # Install the updater as hc-update
-    install -Dm755 "${srcdir}/Candy-Update.sh" \
+    install -Dm755 "${srcdir}/Candy_Update.sh" \
         "${pkgdir}/usr/local/bin/hc-update"
 
     # License placeholder — replace with your actual licence file if you have one
