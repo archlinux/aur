@@ -1,7 +1,7 @@
 # Maintainer: razvandimescu <razvan@dimescu.com>
 pkgname=numa-git
 _pkgname=numa
-pkgver=0.17.0.r8.gb248df0 # Placeholder — pkgver() rewrites this on each makepkg run
+pkgver=0.17.0.r10.gd2bab1f # Placeholder — pkgver() rewrites this on each makepkg run
 pkgrel=1
 pkgdesc="Portable DNS resolver in Rust — .numa local domains, ad blocking, developer overrides, DNS-over-HTTPS"
 arch=('x86_64')
