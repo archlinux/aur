@@ -1,7 +1,7 @@
 # Maintainer: WZ Ordinary Ventures <ordinarypaint@wzordinaryventures.com>
 pkgname=ordinary-paint-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A screenshot annotation tool"
 arch=('x86_64')
 url="https://wzordinaryventures.com/ordinarypaint"
