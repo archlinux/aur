@@ -1,7 +1,7 @@
 # Maintainer: gogamlg3
 pkgname=tg-ws-proxy-cli
 _name='tg-ws-proxy'
-pkgver=1.6.5
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Local MTProto proxy server for partial bypassing of Telegram loading"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(python-{build,installer,wheel} python-hatchling)
 source=("https://github.com/Flowseal/tg-ws-proxy/archive/refs/tags/v${pkgver}.tar.gz"
         "tg-ws-proxy-wrapper"
         "tg-ws-proxy@.service")
-sha256sums=('07b8f35db143501cdfacab8c45d5bcd4e68c49c842176b3fe323153ac7e8b0b3'
+sha256sums=('6ad18132d6c938fa8747f483b9323395332b56849e1af14e94089552a7d897f6'
             '8b31b2bd47246c52c0fa85b5b423cf2d598e5139fa8250a78379bee778172d10'
             '006b1b827bb0755e50e7f05520d474d3253ac5a588353b5070aa9a27fcc860f8')
 
