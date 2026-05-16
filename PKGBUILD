@@ -1,9 +1,10 @@
+# Maintainer: Origuchi <tobiichioriguchi@gmail.com>
 pkgname=flix-bin
 pkgver=2.0.6.111
 pkgrel=1
 pkgdesc='Flix - 像聊天一样传文件. 跨平台文件传输工具，支持局域网内设备间快速分享文件。'
 arch=('x86_64')
-url='https://github.com/Tobiichi-Origuchi/flix-bin'
+url='https://flix.center'
 license=('custom:proprietary')
 source=(
   "${pkgname}-${pkgver}.deb::https://github.com/Tobiichi-Origuchi/flix-bin/releases/download/v2.0.6.111/Flix-Linux-2.0.6.111.deb"
