@@ -1,7 +1,7 @@
 # Maintainer: Nick Dowsett <nickdowsett42@gmail.com>
 
 pkgname=youtui
-pkgver=0.0.35
+pkgver=0.0.37
 pkgrel=1
 pkgdesc="A simple TUI YouTube Music player written in Rust aiming to implement an Artist->Albums workflow for searching for music, and using discoverability principles for navigation."
 url="https://github.com/nick42d/youtui"
@@ -11,7 +11,7 @@ depends=('alsa-lib')
 optdepends=('yt-dlp: can be used as an alternative music downloader')
 makedepends=('cargo' 'base-devel')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('18d3ed0f399a31ffa56b6431aba8527d5e678e83296b4a58a516866f73670042')
+sha256sums=('c0511d4a2a22c918b21cc99c3a22529a27d9ad43ab6e6e6789cf2e91c31ea372')
 # Workaround for Ring bug https://github.com/briansmith/ring/issues/1444
 # More info: https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
