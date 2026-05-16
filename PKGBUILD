@@ -1,17 +1,17 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>FiTui=fitui
 pkgname=scriptor
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Local speech-to-text CLI & TUI.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/giacomopiccinini/scriptor'
 license=('MIT')
 makedepends=('cargo')
-options=(!lto)
+options=(!lto !debug)
 provides=('scriptor')
 conflicts=('scriptor-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fd6d726645c9f64406e327ec2110f0ae598f30a62dd8a5fcaa2045ce3b775f63')
+sha256sums=('06437a2ec83583c90effd93a78f1301dbc20f18f1a3ff13a3259e3a72aae9571')
 
 prepare() {
     cd "$pkgname-$pkgver"
