@@ -1,6 +1,6 @@
 pkgbase = jack_link
 	pkgdesc = JACK transport bridge to Ableton Link
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/rncbc/jack_link
 	arch = aarch64
@@ -10,14 +10,17 @@ pkgbase = jack_link
 	makedepends = asio
 	makedepends = git
 	makedepends = jack
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
-	source = git+https://github.com/rncbc/jack_link#tag=v0.2.6
-	source = git+https://github.com/Ableton/link
-	sha256sums = 2268587290d30bc4f3502cda7fd2bf8fb39a62635fe025fb5f203f270f077604
-	sha256sums = SKIP
+	depends = libstdc++
+	source = jack_link::git+https://github.com/rncbc/jack_link#tag=v0.2.7
+	source = link::git+https://github.com/Ableton/link.git#commit=e9a2e414d63f55f1aad158370b007a6fbdc1eeb9
+	sha256sums = e6aae89d9f1dcb40957379c22f9c6d364645c937df18ce22fec11c3b459cba70
+	sha256sums = 5e4ad0c3becf9f64741d78bfcf3b96335dd06472af86086a0819766b16d2b28a
 
 pkgname = jack_link
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
+	depends = libstdc++
 	depends = libjack.so
+	depends = libstdc++.so
