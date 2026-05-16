@@ -3,14 +3,14 @@
 
 pkgname=atari800-git
 _pkgname=atari800
-pkgver=r2921.f57dd68e
+pkgver=r2953.41c7a9ce
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="An emulator of the Atari 800/800XL/130XE/5200 with various extensions - git"
 arch=('i686' 'x86_64')
 url="https://atari800.github.io"
 license=('GPL2')
-depends=('sdl')
+depends=('sdl' 'git')
 conflicts=('atari800')
 optdepends=('libpng: PNG screenshot support')
 options=(!debug)
