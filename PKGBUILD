@@ -10,7 +10,7 @@ url="https://github.com/k-and/marvin-cli"
 license=("MIT")
 depends=()
 options=('!debug' '!strip')
-optdepends=()
+optdepends=('amazingmarvin-appimage')
 provides=('marvin-cli')
 conflicts=('marvin-cli')
 
@@ -30,4 +30,17 @@ package() {
     ln -sf "/opt/$pkgname/marvin" "$pkgdir/usr/bin/marvin"
 
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+
+    echo "
+================================================================================
+>>> IMPORTANT: First time? Run 'marvin config apiToken <YourAPIToken>' 
+to authenticate!
+Also note that some commands will only work if you have a running desktop
+application and have enabled the Local API in the API strategy.
+
+If command is silent: try to build yourself with makepkg instead of an
+AUR wrapper.
+================================================================================
+"
 }
