@@ -1,6 +1,6 @@
 pkgbase = herdr-bin
 	pkgdesc = Supervise multiple coding agents in one terminal
-	pkgver = 0.5.8
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://github.com/ogulcancelik/herdr
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = herdr-bin
 	license = AGPL-3.0
 	provides = herdr
 	conflicts = herdr
-	source_x86_64 = herdr-0.5.8-x86_64::https://github.com/ogulcancelik/herdr/releases/download/v0.5.8/herdr-linux-x86_64
-	sha256sums_x86_64 = ce6c2b0ad99201c210c1572214ac2f97aa29873196c17204d13e75fb2cbba8c1
-	source_aarch64 = herdr-0.5.8-aarch64::https://github.com/ogulcancelik/herdr/releases/download/v0.5.8/herdr-linux-aarch64
-	sha256sums_aarch64 = 632218bc788440415f037d1cfc319d4c1661885daf4e64feb40f7bb702665461
+	source_x86_64 = herdr-0.5.9-x86_64::https://github.com/ogulcancelik/herdr/releases/download/v0.5.9/herdr-linux-x86_64
+	sha256sums_x86_64 = 13fec1d1caa82fa3925416d734976c93c7a84d5a87126af319090a38179de76e
+	source_aarch64 = herdr-0.5.9-aarch64::https://github.com/ogulcancelik/herdr/releases/download/v0.5.9/herdr-linux-aarch64
+	sha256sums_aarch64 = 9a38941a4a54d77e0c5101d181270ca95f12e5045e31592f00f007630023810d
 
 pkgname = herdr-bin
