@@ -189,7 +189,7 @@ s3:
         # lock when the object is deleted. See "Wasabi Compliance".
         #
         # Currently this flag is only honoured for the Wasabi v3 bucket.
-        compliance: true
+        #compliance: true
     #scw-eu-fr-v3:
         # are_local_buckets: true
         # use_path_style_urls: true

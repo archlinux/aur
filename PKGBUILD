@@ -34,12 +34,12 @@ source=(
 sha256sums=(
     "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
     "8ef2d314267962529f2581ee5c72500ce3b13f71931298ea5c1f3f0abedd5a6c"
-    "cdee9c25a6e284d1f1687ff2b3ce88362e312fd988585668b472821f7799fafb"
+    "4d8c33db70127c3951e62e7f30249a827778873f21c7b3577a70db4861f71d1d"
     "2d5221aaa83f32bbc8c75c2d7c70f9ff8021d451b544f230c99fe29b84fcba75"
     "72c23c4ba9d3468a1b089d182917123cb15b8bf8b52b3955b98a0357d29b5cbd"
     "6ba953245f2a285dbd82ce65635d19410eab1dcd92821c398bdf7ffba9451a9b"
     "2fb84a3ff08ee8803d5c5e7516a8a9327647bdd8ee00050ea9e567137b936071"
-    "bae2f5586d55a3ed5e97abe9969b1e7762c7252c857bdedb50068fa15ddf0af3"
+    "b9b62f1b10e6bad7aac71e1298bacec998460fc0548fe62f4d5b737ee6ff55bf"
     "405365bd47efa25b8bcefc93a5c0535fd50cce22b5d8dcea070098aa432ff87e"
     "a1149c57e233f7be2f12668f5ef0f03409bd5ad37b1a223bb56d2ae865cf6358"
     "863d111071bb32c8b5f8baa34731a94861940d2d276ffadf9426d3fc492588b6"
@@ -116,6 +116,7 @@ package() {
   install -Dvm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
   find migrations -type f -exec install -Dvm644 "{}" -t "${pkgdir}/usr/lib/${pkgname%-git}/migrations/" \;
   find mail-templates -type f -exec install -Dvm644 "{}" -t "${pkgdir}/usr/lib/${pkgname%-git}/mail-templates/" \;
+  find web-templates -type f -exec install -Dvm644 "{}" -t "${pkgdir}/usr/lib/${pkgname%-git}/web-templates/" \;
 
   # config
   install -dvm755 "${pkgdir}/etc/${pkgname%-git}/"

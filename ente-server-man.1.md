@@ -271,6 +271,9 @@ FILES
 */usr/lib/ente-server/usr.bin.ente-server*
   The ente-server AppArmor profile.
 
+*/usr/lib/ente-server/web-templates*
+  The ente-server web templates
+
 */usr/lib/sysusers.d/ente-server.service*
   The ente-server Systemd user config. Only used during package installation
 
