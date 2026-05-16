@@ -1,5 +1,5 @@
 # Maintainer: Minh Ha <minhha7036@gmail.com>
-pkgname=zalo-elec-bin
+pkgname=zalo-elec
 _pkgname=zalo-elec
 pkgver=1.0.0
 pkgrel=1
