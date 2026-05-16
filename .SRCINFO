@@ -1,6 +1,6 @@
 pkgbase = libar2
 	pkgdesc = Library for the Argon2-family of hashing functions
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libar2
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = libar2
 	makedepends = libblake>=3.0
 	makedepends = libblake-musl>=3.0
 	makedepends = gcc
-	source = libar2-1.2.3.tar.gz::https://codeberg.org/maandree/libar2/archive/1.2.3.tar.gz
-	sha256sums = 2426b8dd9db8923eeb2025b711e922a3f4c2a86f58436199a7d76637b52a40cc
+	source = libar2-1.2.4.tar.gz::https://codeberg.org/maandree/libar2/archive/1.2.4.tar.gz
+	sha256sums = 28421732a88da43052d29be846140f2ca3cfb3088b639f618654e0ed67501ac2
 
 pkgname = libar2
 	pkgdesc = Library for the Argon2-family of hashing functions
