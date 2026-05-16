@@ -2,7 +2,7 @@
 # Maintainer: nicovell3 <nicovell3@gmail.com>
 
 pkgname='goshawk-bin'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Goshawk server monitoring tool'
 url='https://github.com/gonimals/goshawk'
@@ -12,10 +12,10 @@ provides=('goshawk')
 conflicts=('goshawk')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gonimals/goshawk/releases/download/v${pkgver}/goshawk_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('e4ebf2ed7211a5e3cc6f30b0f8473fbe63c0062c020b17031d67d199d6ed3a61')
+sha256sums_aarch64=('cb094f6f743109a943385453ff7b9067d4fc9225c3c6e4abfe1708d44b2c87cb')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gonimals/goshawk/releases/download/v${pkgver}/goshawk_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('35c132e854d0596d6378df560980f3f79c5bfcf7bbd77b54ec18c6b881303b38')
+sha256sums_x86_64=('2b0c80045cf0c162f954fe0be097432ba8d14911e84a66aa3c9a111f814850d9')
 
 package() {
   install -Dm755 "./goshawk" "${pkgdir}/usr/bin/goshawk"
