@@ -1,7 +1,7 @@
 pkgbase = wizstr
 	pkgdesc = C++ string processing library
 	pkgver = 2026.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitee.com/libbylg/str
 	arch = x86_64
 	arch = aarch64
