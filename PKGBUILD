@@ -2,7 +2,7 @@
 pkgname=tpmtb-git
 pkgver=0.7.0.r1.gf7d9b79
 pkgrel=1
-pkgdesc="TPM Trust Bundle CLI - manages and verifies TPM root certificate bundles (git)"
+pkgdesc="TPM Trust Bundle CLI - manages and verifies TPM root certificate bundles"
 arch=('x86_64' 'aarch64')
 url="https://github.com/loicsikidi/tpm-ca-certificates"
 license=('BSD-3-Clause')
