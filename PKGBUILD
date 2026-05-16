@@ -3,7 +3,7 @@
 _pkgauthor=dhth
 _pkgname=bmm
 pkgname=${_pkgname}-bin
-pkgver=0.3.0
+pkgver=0.3.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Get to your bookmarks in a flash"
@@ -18,7 +18,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('ba78c154e0f69042f206389570a310b3f3eb713d3072e4298334ec5fcb6bd654')
+sha256sums_x86_64=('fa61f38ee59a728cfe2ae4e0a2c5b29408cc99132f4b6edb456b622d4d049641')
 
 
 package() {
