@@ -1,7 +1,7 @@
 # Maintainer: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=superslicer-nightly-git
-pkgver=2.3.55.5.r11521.g9f76bc145b
+pkgver=2.3.55.5.r11543.gf2c9dd0d8c
 pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) — nightly dev_27_62 branch"
@@ -9,7 +9,7 @@ arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 options=(!emptydirs)
-depends=('boost-libs' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull' 'slicer-udev' 'wxwidgets-gtk3')
+depends=('boost-libs' 'cgal' 'glew' 'imath' 'libspnav' 'nanosvg' 'nlopt' 'openvdb' 'qhull' 'slicer-udev' 'wxwidgets-gtk3')
 makedepends=('boost' 'cereal' 'cmake' 'eigen' 'libigl' 'ninja' 'openvdb')
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
