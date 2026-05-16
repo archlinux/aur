@@ -1,6 +1,6 @@
 # Maintainer: KlapkiSzatana
 pkgname=serwis-app
-pkgver=2.3.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Proste Prowadzenie Serwisu"
 arch=('any')
