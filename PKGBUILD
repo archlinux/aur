@@ -14,23 +14,23 @@ depends=(
     'bluez'                  # Bluetooth stack
     'bluez-utils'            # Bluetooth tools
     'fwupd'                  # For framework firmware updates
-    'linux-firmware'	     # For WiFi and Bluetooth cards
-    'i2c-tools'  	     # To interface with hardware sensor and expansion modules	
+    'linux-firmware'         # For WiFi and Bluetooth cards
+    'i2c-tools'              # To interface with hardware sensor and expansion modules
 )
 
 optdepends=(
-	'amd-ucode: Microcode updates for AMD Framework models'
-	'intel-ucode: Microcode updates for Intel Framework models'
-	'via: For configuring Framework 16 QMK layouts'
-	'thermald: Intel management daemon to prevent throttling'
-	'tlp: Alternative power management (disable power-profiles-daemon first)'
-	'iio-sensor-proxy: Enables ambient light sensor for auto brightness'
-	'ectool-framework-git: Advanced control over fans, battery limits, and LEDs via EC'
+    'amd-ucode: Microcode updates for AMD Framework models'
+    'intel-ucode: Microcode updates for Intel Framework models'
+    'via: For configuring Framework 16 QMK layouts'
+    'thermald: Intel management daemon to prevent throttling'
+    'tlp: Alternative power management (disable power-profiles-daemon first)'
+    'iio-sensor-proxy: Enables ambient light sensor for auto brightness'
+    'ectool-framework-git: Advanced control over fans, battery limits, and LEDs via EC'
 )
 
 package() {
-
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    echo "MIT License (c) $(date +%Y) Charlie" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"  
-    install -Dm644 /dev/null "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    echo "MIT License (c) $(date +%Y) Charlie" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    chmod 644 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
