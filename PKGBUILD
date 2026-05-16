@@ -1,4 +1,4 @@
-# Maintainer: Rob Petersen <robpetersen907@gmail.com>
+# Maintainer: indyfive11 <203553604+indyfive11@users.noreply.github.com>
 pkgname=archward
 pkgver=0.4.4
 pkgrel=1
