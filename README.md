@@ -288,6 +288,44 @@ Probado en Arch Linux (kernel 7.0.3-arch1-2):
 
 ---
 
+## Sesión de optimización — 2026-05-16
+
+Análisis y mejoras aplicadas al paquete en esta sesión (pkgrel=4 → pkgrel=9):
+
+### Qué se analizó
+
+- Comparativa del PKGBUILD local con el publicado en AUR — **idénticos**
+- Uso real de cada `makedepend` durante la build
+- Tiempos de build con y sin `NO_PARALLEL`
+- Permisos del directorio `assets/` tras instalación limpia vs. upgrade
+
+### Cambios aplicados
+
+| Cambio | Motivo | Impacto |
+|---|---|---|
+| Extraer heredoc Python a `patch-asar.py` | Mantenibilidad, sha256 verificable | El PKGBUILD pasó de ~410 a ~120 líneas |
+| Extraer `node -e` a `patch-pkg.js` | Reutilización en `prepare()` y `build()` | Un solo archivo en lugar de dos bloques inline |
+| `chmod 777→755` en assets + `post_upgrade()` | Seguridad; pacman no actualiza permisos de dirs existentes en upgrade | Corregido en instalaciones limpias y upgrades |
+| Eliminar `dotnet-sdk-9.0` de makedepends | `dotnetprobe` viene precompilado en el repo upstream | ~500 MB menos en builds limpias |
+| Eliminar `NO_PARALLEL="1"` | Workaround ya no necesario | Build paralela de módulos nativos; ~15-20 s menos en builds cacheadas |
+| `allowedDeprecatedVersions` en `patch-pkg.js` | Subdependencias deprecadas que no podemos actualizar | 28 warnings de pnpm eliminados |
+| `.gitignore` | Evitar subir artefactos de build al AUR | Limpieza del repo |
+
+### Resultados de build
+
+| Build | Condiciones | Tiempo |
+|---|---|---|
+| pkgrel=5 | Con `NO_PARALLEL`, clone git completo | 2 min 26 sec |
+| pkgrel=8 | Sin `NO_PARALLEL`, clone cacheado | 1 min 54 sec |
+
+### Descartado
+
+- **Extensión Vortex para los patches**: técnicamente posible para ~30% de los patches (plugins de juego), pero los patches del core (`renderer.js`, `winapi-bindings`) requieren modificar el asar igualmente. Más trabajo del que ahorra.
+- **Repos de CachyOS en la instalación actual**: riesgo de conflictos con paquetes de Omarchy. El kernel `linux-cachyos` sí es instalable de forma independiente.
+- Eliminar `npm` de makedepends: confirmado necesario (electron-builder lo invoca para compilar `loot` y otros módulos nativos).
+
+---
+
 ## Hoja de ruta
 
 - [x] Build funcional en Arch Linux
