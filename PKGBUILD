@@ -4,8 +4,8 @@
 _pkgname="millennium"
 pkgname="${_pkgname}-git"
 _Pkgname="Millennium"
-pkgver=v3.0.0.beta.10.r4.geeca662a
-pkgrel=2
+pkgver=v3.0.0.beta.24.r107.g6db3637a
+pkgrel=1
 pkgdesc="${_Pkgname} is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
 url="https://steambrew.app"
@@ -40,10 +40,8 @@ conflicts=(
 )
 source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=next"
-    "https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/688.patch"
 )
-sha256sums=('SKIP'
-            '6c828ee6fdd285cd315d47c0e2c020647ca4314520aa34b5e109e398558c60a7')
+sha256sums=('SKIP')
 options=(!debug)
 install="${_pkgname}.install"
 
