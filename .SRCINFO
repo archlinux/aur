@@ -20,6 +20,7 @@ pkgbase = kmux-git
 	optdepends = keditbookmarks: to manage bookmarks
 	provides = kmux=26.04.0
 	conflicts = kmux
+	options = !lto
 	source = kmux::git+https://github.com/futpib/kmux.git#branch=master
 	sha256sums = SKIP
 

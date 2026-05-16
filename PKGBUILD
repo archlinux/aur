@@ -28,6 +28,7 @@ optdepends=(
   'keditbookmarks: to manage bookmarks'
 )
 
+options=('!lto')
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
