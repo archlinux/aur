@@ -1,6 +1,6 @@
 pkgbase = autolon
-	pkgdesc = Native Linux autoclicker and local input automation controller
-	pkgver = 0.1.4
+	pkgdesc = Native Linux autoclicker and local input automation controller - Wayland-only (KDE preferred)
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/daveottley/autolon
 	install = autolon.install
@@ -12,7 +12,7 @@ pkgbase = autolon
 	depends = gtk4
 	depends = libxtst
 	conflicts = autolon-bin
-	source = autolon-0.1.4.tar.gz::https://github.com/daveottley/autolon/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = 205c569a52fd153e4af0379f4b694cecb0ba4c89b7756ae075bbb960ddc41695
+	source = autolon-0.1.5.tar.gz::https://github.com/daveottley/autolon/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 678eeb4faffbb64ceab09c3a0dfb87575017eb1ed4030b07531994d3a98fba9d
 
 pkgname = autolon

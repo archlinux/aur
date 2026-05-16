@@ -1,7 +1,7 @@
 pkgname=autolon
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
-pkgdesc='Native Linux autoclicker and local input automation controller'
+pkgdesc='Native Linux autoclicker and local input automation controller - Wayland-only (KDE preferred)'
 arch=('x86_64')
 url='https://github.com/daveottley/autolon'
 license=('MIT')
@@ -10,7 +10,7 @@ makedepends=('cargo' 'git')
 conflicts=('autolon-bin')
 install=autolon.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('205c569a52fd153e4af0379f4b694cecb0ba4c89b7756ae075bbb960ddc41695')
+sha256sums=('678eeb4faffbb64ceab09c3a0dfb87575017eb1ed4030b07531994d3a98fba9d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
