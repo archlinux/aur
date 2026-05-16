@@ -21,11 +21,10 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}" || return
-  # The package path is guessed here as shell-utils need to know it at run time
-  make PREFIX=/usr
+  make
 }
 
 package() {
   cd "${pkgname%-git}" || return
-  make install PREFIX="/usr" DESTDIR="$pkgdir"
+  make install DESTDIR="$pkgdir"
 }
