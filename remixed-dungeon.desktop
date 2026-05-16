@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.5
+Name=Remixed Dungeon
+Comment=Roguelike pixel adventure
+Exec=remixed-dungeon-wrapper.sh
+Icon=remixed-dungeon
+Terminal=false
+Type=Application
+Categories=Game;

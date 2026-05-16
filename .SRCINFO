@@ -1,0 +1,19 @@
+pkgbase = remixed-dungeon
+	pkgdesc = Classig roguelike game with pixel graphics, remix of Pixel Dungeon
+	pkgver = 32.3.beta.6
+	pkgrel = 1
+	url = https://wiki.nyrds.net/
+	arch = any
+	license = GPL-3.0-only
+	makedepends = jdk17-openjdk
+	makedepends = gradle8
+	depends = java-runtime>=17
+	depends = hicolor-icon-theme
+	source = remixed-dungeon-32.3.beta.6.tar.gz::https://github.com/NYRDS/remixed-dungeon/archive/refs/tags/32.3.beta.6.tar.gz
+	source = remixed-dungeon-wrapper.sh
+	source = remixed-dungeon.desktop
+	b2sums = f7e9ea725d1b416e810008b1f7d4332de31527aa93af04b2a82d8c4696f0c67080d8881c7ad062190a499e50c53c3edb0b977fa5df98723a92659826cb812371
+	b2sums = a05e91c8d04af521014e7287cba6b02b53c07fcad33701917075f17e4e1427146b6c056ad3b0b8ef56267fc3ef6ddf3dfb87732a7b9651da33e8fe7a24a36611
+	b2sums = 58e8e707e57607fcb9a831abadd6412bba85b39e885d7526a84e028960c8e1a631c5a8c1475b5448e4bf506331f5948dd33803baba229dc290dbb5a4326c8410
+
+pkgname = remixed-dungeon
