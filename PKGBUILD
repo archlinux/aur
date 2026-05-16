@@ -2,7 +2,7 @@
 # Maintainer: Anthony HAMON <hamon.anth@gmail.com>
 
 pkgname='wo-bin'
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Workspace shell manager'
 url='https://github.com/antham/wo'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('wo')
 conflicts=('wo')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/antham/wo/releases/download/1.0.0/wo_1.0.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('9d2a7ee11695caa4db560847f2b0b59de57aa149270878ecf50b44c4ac527383')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/antham/wo/releases/download/1.1.0/wo_1.1.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('7d8345bd8ad9eec0b2290cd981f9e181f464ca61956d3241aa93c3c769ba82b8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/antham/wo/releases/download/1.0.0/wo_1.0.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('c9bf08f2eb65a047ee155bd8b0712f4af42a22ceceebf076b8d4f3adc6f156dc')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/antham/wo/releases/download/1.1.0/wo_1.1.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('43b8a12b0e2e161badedc6f5645eb66eac543baa5e34d8296108c60d4fe52145')
 
 package() {
   install -Dm755 "./wo" "${pkgdir}/usr/bin/wo"
