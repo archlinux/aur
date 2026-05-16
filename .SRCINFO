@@ -1,0 +1,13 @@
+pkgbase = cybervis
+	pkgdesc = Terminal Spectral Engine — multi-mode ANSI dashboard and matrix visualizer
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://github.com/logandaddy12-dot/cybervis
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	depends = glibc
+	source = cybervis-5.0.c::https://raw.githubusercontent.com/logandaddy12-dot/cybervis/main/Cybervis.c
+	sha256sums = SKIP
+
+pkgname = cybervis
