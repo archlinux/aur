@@ -1,6 +1,6 @@
 pkgbase = zalo-elec
-	pkgdesc = An Unofficial ZaloWeb Electron Application (Binary Release)
-	pkgver = 1.0.2
+	pkgdesc = An Unofficial ZaloWeb Electron Application
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/haminh7036/zalo-elec
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = zalo-elec
 	provides = zalo-elec
 	conflicts = zalo-elec
 	options = !strip
-	source = zalo-elec-1.0.2.deb::https://github.com/haminh7036/zalo-elec/releases/download/v1.0.2/zalo-elec_1.0.2_amd64.deb
-	sha256sums = SKIP
+	source = zalo-elec-1.0.4.deb::https://github.com/haminh7036/zalo-elec/releases/download/v1.0.4/zalo-elec_1.0.4_amd64.deb
+	sha256sums = 901207a9c7fd2a10cbaebc592a77b303e47139307dc89348b6d6dae074a6be4a
 
 pkgname = zalo-elec
