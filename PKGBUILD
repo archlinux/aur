@@ -1,7 +1,7 @@
 # Maintainer: LekkerKofi
 
 pkgname=flux-operator
-pkgver=0.48.0
+pkgver=0.49.0
 pkgrel=1
 pkgdesc="GitOps on Autopilot Mode"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/controlplaneio-fluxcd/flux-operator/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('34544a7ee380c6b0d6dad5693d274838b8607c55d18882f73733e6e6998850de')
+sha256sums=('b8a94f8506bdab34f10af6fd50009a72d033b48378e9bd07920319d91945952e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
