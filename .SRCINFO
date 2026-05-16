@@ -1,5 +1,5 @@
 pkgbase = crib-bin
-	pkgdesc = Crib reads your devcontainer.json config, builds the container, and gets out of your way
+	pkgdesc = Dev containers without the ceremony
 	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/fgrehm/crib
