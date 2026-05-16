@@ -1,0 +1,16 @@
+pkgbase = mesonfe
+	pkgdesc = PyQt5 GUI frontend for the Meson build system
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/andy5995/mesonfe
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = gettext
+	depends = meson
+	depends = python-pyqt5
+	depends = python-platformdirs
+	depends = hicolor-icon-theme
+	source = mesonfe-0.1.0.tar.gz::https://github.com/andy5995/mesonfe/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = c1021aaa404288d304c1d00a11fed2ccdda020dbf0c92e98d36588119d15846d
+
+pkgname = mesonfe
