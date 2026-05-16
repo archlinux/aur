@@ -1,0 +1,18 @@
+pkgbase = sshportal
+	pkgdesc = Transparent SSH bastion daemon
+	pkgver = 1.30.12
+	pkgrel = 5
+	url = https://github.com/alterway/sshportal
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	source = sshportal-1.30.12.tar.gz::https://github.com/alterway/sshportal/archive/v1.30.12.tar.gz
+	source = sshportal.service
+	source = sshportal.confd
+	sha256sums = 3c5abc89c47fd115190dbdad0ff3a4b5fb00eae32cb73b02c092a6d64eb997dd
+	sha256sums = bd5294d5d810491e15d7010e26128a415f0c0ce6e88f162f24efe4df5e3d0380
+	sha256sums = ebe1be4e1e6911a154e0e0f2b1e289b20260774dbab9186c067e2ad11dfc86d0
+
+pkgname = sshportal

@@ -1,0 +1,10 @@
+#
+# Settings for sshportal
+#
+
+SSHPORTAL_LOGS_LOCATION=/var/log/sshportal/session
+SSHPORTAL_DATABASE_URL=/var/lib/sshportal/sshportal.db
+
+#SSHPORTAL_BIND=0.0.0.0:2222
+#SSHPORTAL_DB_DRIVER=sqlite3
+#SSHPORTAL_DEBUG=1

@@ -1,0 +1,46 @@
+# vim: ft=systemd
+
+[Unit]
+After=ssh.service
+
+[Service]
+Type=exec
+DynamicUser=yes
+User=sshportal
+StandardOutput=journal
+StandardError=journal
+LogsDirectory=sshportal
+StateDirectory=sshportal
+EnvironmentFile=-/etc/conf.d/sshportal
+ExecStart=/usr/bin/sshportal server
+ExecStop=/bin/kill -SIGTERM $MAINPID
+
+ProtectSystem=full
+DevicePolicy=closed
+DeviceAllow=/dev/tpm0
+DeviceAllow=/dev/tpmrm0
+ProtectKernelLogs=true
+ProtectProc=invisible
+PrivateUsers=true
+ProtectHome=true
+UMask=0077
+RestrictNamespaces=true
+LockPersonality=true
+NoNewPrivileges=true
+ProtectKernelModules=true
+SystemCallArchitectures=native
+ProtectHostname=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictRealtime=true
+ProtectControlGroups=true
+ProtectKernelTunables=true
+RestrictSUIDSGID=true
+ProtectClock=true
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallFilter=setrlimit
+CapabilityBoundingSet=
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
