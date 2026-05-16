@@ -1,0 +1,14 @@
+pkgbase = pdf-annotator
+	pkgdesc = An application to annotate PDF files.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Mutacim-Billah-Tacin/pdf-annotator
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pymupdf
+	depends = python-pyqt6
+	source = pdf-annotator-1.0.0.tar.gz::https://github.com/Mutacim-Billah-Tacin/pdf-annotator/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 1b72953280c77f4b18af7cb9bd2c2e05118c9031b3f65e97aeb331bb25c04647
+
+pkgname = pdf-annotator
