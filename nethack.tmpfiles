@@ -1,5 +1,10 @@
 d /var/games 0775 root games
-d /var/games/nethack 0775 root games
-z /var/games/nethack/* 0775 root games
-z /usr/lib/nethack/nethack 2755 root games
+d /var/games/nethack 0777 root games
+z /var/games/nethack/livelog 0666 root games
+z /var/games/nethack/logfile 0666 root games
+z /var/games/nethack/perm 0666 root games
+z /var/games/nethack/record 0666 root games
 z /var/games/nethack/save 2775 root games
+z /var/games/nethack/sysconf 0644 root games
+z /var/games/nethack/xlogfile 0666 root games
+z /usr/lib/nethack/nethack 2755 root games

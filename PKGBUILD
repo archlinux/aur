@@ -1,11 +1,12 @@
-# Maintainer: envolution
+# Maintainer: slondr
 # Contributor: Joshua Ward <joshuaward@myoffice.net.au>
 # Contributor: Eric Biggers <ebiggers3@gmail.com>
+# Contributor: Collen Jones <collenjones@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=nethack-git
 _pkgname=NetHack
-pkgver=3.6.7_Released+r17565+g55561da63
+pkgver=5.0.0_Release+r18839+gbc20ccd65
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -13,10 +14,10 @@ url='https://github.com/NetHack/NetHack'
 license=('LicenseRef-custom')
 depends=('ncurses' 'gzip' 'gdb')
 makedepends=(git)
-_branch=NetHack-3.6 #3.7 is not ready yet
+_branch=NetHack-5.0
 source=("git+https://github.com/NetHack/NetHack.git#branch=${_branch}" nethack.tmpfiles)
 sha256sums=('SKIP'
-            '5c68417ff1cf76705a2bf7dc9fa1900156792808cb528d62f53e337030c40ea4')
+  '36aac7645c4972581616e8f78f31c2297e2edfa421f098679004ccb46e44603c')
 conflicts=('nethack')
 provides=('nethack')
 
@@ -41,17 +42,10 @@ prepare() {
   # to allow full access for groups
 
   # With thanks to bugtracker user loqs for the CFLAGS and LDFLAGS adjustments
-  sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/games/nethack/|' \
-    -e '/^SHELLDIR/ s|/games|/usr/bin|' \
-    -e '/^VARDIRPERM/ s|0755|0775|' \
-    -e '/^VARFILEPERM/ s|0600|0664|' \
-    -e '/^GAMEPERM/ s|0755|02755|' \
-    -e '/-DTIMED_DELAY/d' \
-    -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/games/nethack/sysconf\\"|' \
-    -e 's|CFLAGS=-g -O -I../include -DNOTPARMDECL|CFLAGS+= $(CPPFLAGS) -I../include -DNOTPARMDECL|' \
-    -e 's/LFLAGS=-rdynamic/LFLAGS=$(LDFLAGS) -rdynamic/' \
-    -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/nethack/\\"|' \
-    -i sys/unix/hints/linux
+  sed -e "s|^MANDIR=.*|MANDIR=$pkgdir/usr/share/man/man6|" \
+    -e 's|NHCFLAGS+=-DHACKDIR=\\".*\\"|NHCFLAGS+=-DHACKDIR=\\"/var/games/nethack/\\"|' \
+    -e 's|NHCFLAGS+=-DSYSCF -DSYSCF_FILE=\\"$(HACKDIR)/sysconf\\"|NHCFLAGS+=-DSYSCF -DSYSCF_FILE=\\"/var/games/nethack/sysconf\\"|' \
+    -i sys/unix/hints/linux.500
 
   # Fix the way they disable __warn_unused_result__
   sed '/^#define __warn_unused_result__/ s,/\*empty\*/,__unused__,' \
@@ -69,8 +63,9 @@ prepare() {
 
 build() {
   cd "NetHack/sys/unix"
-  sh setup.sh hints/linux
+  sh setup.sh hints/linux.500
   cd "$srcdir/$_pkgname"
+  make fetch-lua
   make
 }
 
@@ -79,7 +74,12 @@ package() {
 
   install -dm755 "$pkgdir"/usr/share/{man/man6,doc/nethack}
   install -dm775 "$pkgdir"/var/games/
-  make PREFIX="$pkgdir" -j1 install manpages # Multi-threaded builds fail.
+  make HACKDIR="$pkgdir/var/games/nethack" \
+    SHELLDIR="$pkgdir/usr/bin" \
+    VARDIR="$pkgdir/var/games/nethack" \
+    INSTDIR="$pkgdir/var/games/nethack" \
+    MANDIR="$pkgdir/usr/share/man/man6" \
+    -j1 install manpages
   sed -e "s|HACKDIR=$pkgdir/|HACKDIR=/|" \
     -e 's|HACK=$HACKDIR|HACK=/usr/lib/nethack|' \
     -i "$pkgdir"/usr/bin/nethack
@@ -93,6 +93,5 @@ package() {
   install -Dm644 dat/license "$pkgdir"/usr/share/licenses/nethack/LICENSE
 
   cd "$pkgdir/var/games/nethack/"
-  chmod o+w logfile perm record
 }
 # vim:set ts=2 sw=2 et:
