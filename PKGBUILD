@@ -23,7 +23,7 @@ package() {
     fi
 
     # Install Python package using pip into the package root
-    python -m pip install --no-deps --root="$pkgdir" --prefix=/usr .
+    python -m pip install --no-deps --no-build-isolation --root="$pkgdir" --prefix=/usr .
 
     # Install desktop file
     install -Dm644 data/piperdc.desktop "$pkgdir/usr/share/applications/piperdc.desktop"
