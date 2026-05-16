@@ -24,11 +24,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_p
 # source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${_upstreamver}.tar.gz")
 sha256sums=('7eefcbb18b1c86703eb3577cdcc5f6edb94c76dacb340a07b5a052e16047333a')
 
-prepare() {
-    cd "${srcdir}/${_pypi_package//-/_}-${_upstreamver}/"
 
-    sed -i -e 's|requires = \[.*\]|requires = \[\"uv_build\"]|g' "./pyproject.toml"
-}
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_upstreamver}/"
 
