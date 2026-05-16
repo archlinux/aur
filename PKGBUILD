@@ -1,7 +1,7 @@
 # Maintainer: Minh Ha <minhha7036@gmail.com>
 pkgname=zalo-elec
 _pkgname=zalo-elec
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An Unofficial ZaloWeb Electron Application (Binary Release)"
 arch=('x86_64')
