@@ -1,0 +1,30 @@
+post_install() {
+    echo ""
+    echo "  ╔═══════════════════════════════════════════════╗"
+    echo "  ║         HyprCandy+ Installer Ready            ║"
+    echo "  ╚═══════════════════════════════════════════════╝"
+    echo ""
+    echo "  Run the installer with:"
+    echo ""
+    echo "    hc-install"
+    echo ""
+    echo "  To update an existing installation:"
+    echo ""
+    echo "    hc-update"
+    echo ""
+    echo "  You will need a valid HyprCandy+ licence key."
+    echo "  Get one at: https://mirukai.gumroad.com/l/cxsyj"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "  HyprCandy+ installer removed."
+    echo "  Your existing HyprCandy+ installation is unaffected."
+    echo "  Run hc-update from your installation directory to manage it."
+    echo ""
+}
