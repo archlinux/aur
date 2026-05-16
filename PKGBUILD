@@ -4,7 +4,7 @@ pkgbase=python-astropy-sphinx-theme
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="The sphinx theme for Astropy and affiliated packages."
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools-scm>=8'
              'python-sphinx')
 checkdepends=('python-pytest')   # sphinx already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('d2e1d0cbc7c9c38feee12a3c982746f2d6d9d326676af4fb56033cb7f78dc402')
+sha256sums=('eff780a7b9b00a165782bd703decff9f32bfa6dcb606ce583fe2fc768ca45019')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
