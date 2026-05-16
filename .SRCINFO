@@ -30,6 +30,7 @@ pkgbase = photoqt
 	depends = yaml-cpp
 	depends = qca-qt6
 	depends = ffmpegthumbnailer
+	depends = qt6-quick3d
 	optdepends = photoqt-extensions: Official extensions for PhotoQt
 	provides = photoqt-debug
 	conflicts = photoqt-bin
