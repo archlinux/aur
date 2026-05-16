@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=konfigkoll
-_pkgver=0.1.16
+_pkgver=0.1.17
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Personal system configuration manager for Arch Linux"
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 makedepends=('cargo' 'cmake' 'clang')
 options=('!lto') # LTO breaks with ring
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/VorpalBlade/paketkoll/archive/refs/tags/$pkgname-v${_pkgver}.tar.gz")
-sha256sums=('e19a8db5c27a5f95095d185378c7cd119b5b9b7ddd1e3dd8b6e33a17d73501df')
+sha256sums=('bdb1d801e72c915630bfc90bc94e5d9525e64f4b261462250946835479bab1a9')
 _unpacked_dir="paketkoll-$pkgname-v$_pkgver"
 
 prepare() {
