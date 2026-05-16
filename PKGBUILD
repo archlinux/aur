@@ -1,9 +1,9 @@
 # Maintainer: KlapkiSzatana
 pkgname=serwis-app-bin
 _pkgname=serwis-app
-pkgver=2.3.2
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Proste Prowadzenie Serwisu (gotowa wersja binarna)"
+pkgdesc="Proste Prowadzenie Serwisu"
 arch=('x86_64')
 url="https://github.com/KlapkiSzatana/serwis-app"
 license=('GPL-3.0')
@@ -13,7 +13,7 @@ conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 
 source=("https://github.com/KlapkiSzatana/serwis-app/releases/download/v${pkgver}/SerwisApp_linux.tar.gz")
-sha256sums=('c90858a6807f8effb8a149ef4e4c4096a1ba4583c29001da6496be4b98ce4e47')
+sha256sums=('8ab1a35bd5c70f08b598df673bc1b426235252490f570990b843edb73fc04334')
 
 package() {
     cd "$srcdir/linux-package"
