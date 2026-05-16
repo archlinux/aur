@@ -1,10 +1,11 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	pkgver = 2.11.0
-	pkgrel = 4
+	pkgver = 2.12.0
+	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD-3-Clause-Modification
+	makedepends = amdsmi
 	makedepends = cmake
 	makedepends = cuda
 	makedepends = cudnn
@@ -24,6 +25,7 @@ pkgbase = python-pytorch
 	makedepends = python-yaml
 	makedepends = rocm-hip-sdk
 	makedepends = rocm-toolchain
+	makedepends = rocprofiler
 	makedepends = roctracer
 	makedepends = shaderc
 	makedepends = vulkan-headers
@@ -56,7 +58,7 @@ pkgbase = python-pytorch
 	optdepends = python-onnxscript: for the ONNX exporter
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.11.0
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.12.0
 	source = python-pytorch-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
 	source = python-pytorch-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
@@ -102,8 +104,7 @@ pkgbase = python-pytorch
 	source = add_gpu_targets_rocm.patch
 	source = aotriton_disable_install.patch
 	source = pyproject.patch
-	source = fix_pybind11.patch
-	b2sums = 995a6fb3164db61d67e877c1b38a3786b75066943f1b9d01b458796124f0183b023548f9839abef5a272a229b6d9969933bdf19072ab50b9eb656e2aebfbb471
+	b2sums = 607de4efeed0bfece53c010bc1493e83c0aff088faea14110b3f64d5e3f231a5bc2677c54a5df0d5069913d0e073356f882c95ef85902b624d51eebda2b985a2
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -149,13 +150,12 @@ pkgbase = python-pytorch
 	b2sums = 007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c
 	b2sums = ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0
 	b2sums = 21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da
-	b2sums = 1fcd8326343b3318eb6475fbd11cd3d28a826627206d55ac95dc13af78946b2bcadc3b0f5be965a33f24c7bb1de62706f256894449fa93604d064c90158ce1e1
 
 pkgname = python-pytorch
 
 pkgname = python-pytorch-opt
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with AVX2 CPU optimizations)
-	provides = python-pytorch=2.11.0
+	provides = python-pytorch=2.12.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-cuda
@@ -190,7 +190,7 @@ pkgname = python-pytorch-cuda
 	depends = nccl
 	depends = cudnn
 	depends = onednn
-	provides = python-pytorch=2.11.0
+	provides = python-pytorch=2.12.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda
@@ -225,8 +225,8 @@ pkgname = python-pytorch-opt-cuda
 	depends = nccl
 	depends = cudnn
 	depends = onednn
-	provides = python-pytorch=2.11.0
-	provides = python-pytorch-cuda=2.11.0
+	provides = python-pytorch=2.12.0
+	provides = python-pytorch-cuda=2.12.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-rocm
@@ -257,14 +257,16 @@ pkgname = python-pytorch-rocm
 	depends = python-yaml
 	depends = qt6-base
 	depends = vulkan-icd-loader
+	depends = amdsmi
 	depends = rocm-hip-sdk
 	depends = hipblaslt
+	depends = rocprofiler
 	depends = roctracer
 	depends = miopen-hip
 	depends = onednn
 	depends = python-triton
 	depends = python-aotriton
-	provides = python-pytorch=2.11.0
+	provides = python-pytorch=2.12.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-rocm
@@ -295,13 +297,15 @@ pkgname = python-pytorch-opt-rocm
 	depends = python-yaml
 	depends = qt6-base
 	depends = vulkan-icd-loader
+	depends = amdsmi
 	depends = rocm-hip-sdk
 	depends = hipblaslt
+	depends = rocprofiler
 	depends = roctracer
 	depends = miopen-hip
 	depends = onednn
 	depends = python-triton
 	depends = python-aotriton
-	provides = python-pytorch=2.11.0
-	provides = python-pytorch-rocm=2.11.0
+	provides = python-pytorch=2.12.0
+	provides = python-pytorch-rocm=2.12.0
 	conflicts = python-pytorch

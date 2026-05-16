@@ -8,8 +8,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.11.0
-pkgrel=4
+pkgver=2.12.0
+pkgrel=1
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -44,6 +44,7 @@ depends=(
 )
 # https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
 makedepends=(
+  amdsmi
   cmake
   cuda
   cudnn
@@ -63,6 +64,7 @@ makedepends=(
   python-yaml
   rocm-hip-sdk
   rocm-toolchain
+  rocprofiler
   roctracer
   shaderc
   vulkan-headers
@@ -117,9 +119,8 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         add_gpu_targets_rocm.patch
         aotriton_disable_install.patch
         pyproject.patch
-        fix_pybind11.patch
         )
-b2sums=('995a6fb3164db61d67e877c1b38a3786b75066943f1b9d01b458796124f0183b023548f9839abef5a272a229b6d9969933bdf19072ab50b9eb656e2aebfbb471'
+b2sums=('607de4efeed0bfece53c010bc1493e83c0aff088faea14110b3f64d5e3f231a5bc2677c54a5df0d5069913d0e073356f882c95ef85902b624d51eebda2b985a2'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -164,8 +165,7 @@ b2sums=('995a6fb3164db61d67e877c1b38a3786b75066943f1b9d01b458796124f0183b023548f
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da'
-        '1fcd8326343b3318eb6475fbd11cd3d28a826627206d55ac95dc13af78946b2bcadc3b0f5be965a33f24c7bb1de62706f256894449fa93604d064c90158ce1e1')
+        '21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -237,11 +237,6 @@ prepare() {
   # into the torch folder. Disable this behavior.
   patch -p1 -i "${srcdir}/aotriton_disable_install.patch"
 
-  # Fix building with pybind11 3.0.2
-  # (https://github.com/pybind/pybind11/pull/5881 added typing for py::make_tuple
-  # and gcc complains when the ?: operator gets different types for each operand)
-  patch -p1 -i "${srcdir}/fix_pybind11.patch"
-
   # Avoid using /usr/include along with -isystem
   # https://bugs.archlinux.org/task/64981
   # https://gitlab.archlinux.org/archlinux/packaging/packages/python-pytorch/-/issues/37
@@ -259,7 +254,7 @@ prepare() {
   cp -r "${_pkgname}" "${_pkgname}-opt-rocm"
 }
 
-# Common build configuration, called in all package() functions.
+# Common build configuration, called in the build() function.
 _prepare() {
   export VERBOSE=1
   export PYTORCH_BUILD_VERSION="${pkgver}"
@@ -453,7 +448,7 @@ package_python-pytorch-opt-cuda() {
 
 package_python-pytorch-rocm() {
   pkgdesc+=" (with ROCm)"
-  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip onednn python-triton python-aotriton)
+  depends+=(amdsmi rocm-hip-sdk hipblaslt rocprofiler roctracer miopen-hip onednn python-triton python-aotriton)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
 
@@ -463,7 +458,7 @@ package_python-pytorch-rocm() {
 
 package_python-pytorch-opt-rocm() {
   pkgdesc+=" (with ROCm and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip onednn python-triton python-aotriton)
+  depends+=(amdsmi rocm-hip-sdk hipblaslt rocprofiler roctracer miopen-hip onednn python-triton python-aotriton)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})
 
