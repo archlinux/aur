@@ -1,8 +1,8 @@
 pkgbase = dotty
-	pkgdesc = A profile-based dotfiles and config manager
+	pkgdesc = Dotfiles and config manager with profiles written in C++
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://github.com/yourusername/dotty
+	pkgrel = 2
+	url = https://github.com/Monjaris/dotty
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
