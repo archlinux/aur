@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=ZEsarUX.13.0.RC.r3.g2819184
+pkgver=ZEsarUX.13.0.RC.r101.g9b3b078
 _ver=13.0
 pkgrel=1
 epoch=3
@@ -12,6 +12,7 @@ url="https://github.com/chernandezba/zesarux"
 license=('GPL-3.0-or-later')
 conflicts=('zesarux')
 depends=('libxxf86vm' 'aalib' 'libcaca' 'alsa-lib' 'python')
+makedepends=('git')
 optdepends=('libpulse: for support Pulseaudio'
 	'openssl: for enable SSL functions'
 	'sdl: for support sdl video and audio output')
