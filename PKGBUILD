@@ -22,8 +22,19 @@ package() {
         cd "$src_extracted"
     fi
 
-    # Install Python package using pip into the package root
-    python -m pip install --no-deps --no-build-isolation --root="$pkgdir" --prefix=/usr .
+    # Install Python package by copying the `src` package into Python's site-packages
+    py_site=$(python -c "import sysconfig; print(sysconfig.get_paths()['purelib'])")
+    install -d "$pkgdir$py_site"
+    cp -r src "$pkgdir$py_site/"
+
+    # Create a simple CLI launcher
+    install -Dm755 /dev/null "$pkgdir/usr/bin/piperdc"
+    cat > "$pkgdir/usr/bin/piperdc" <<'PYL'
+#!/usr/bin/env python3
+from src.main import main
+if __name__ == '__main__':
+    raise SystemExit(main())
+PYL
 
     # Install desktop file
     install -Dm644 data/piperdc.desktop "$pkgdir/usr/share/applications/piperdc.desktop"
