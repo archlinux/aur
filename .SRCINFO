@@ -1,0 +1,12 @@
+pkgbase = smart-unlock
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/agura-lex/smart-unlock
+	arch = any
+	license = GPL-2.0
+	optdepends = kdeconnect: kde_connect module
+	optdepends = bluez-utils: bluetooth module
+	source = https://github.com/agura-lex/smart-unlock/archive/refs/tags/0.1.4.tar.gz
+	sha256sums = 191fb2eb243735427306deff41469390800ebafd51b1bdf9d77ff516b8f65aec
+
+pkgname = smart-unlock
