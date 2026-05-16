@@ -1,6 +1,6 @@
 pkgbase = smart-unlock
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agura-lex/smart-unlock
 	arch = any
 	license = GPL-2.0
