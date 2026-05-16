@@ -16,7 +16,6 @@ pkgbase = python-livekit
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-requests
-	makedepends = unzip
 	depends = python
 	depends = python-protobuf
 	depends = python-aiofiles

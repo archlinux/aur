@@ -11,7 +11,7 @@ _repo='https://github.com/livekit/python-sdks'
 url="$_repo/tree/main/livekit-rtc"
 license=('Apache-2.0')
 depends=('python' 'python-protobuf' 'python-aiofiles' 'python-numpy' 'glibc' 'gcc-libs')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-requests' 'unzip')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-requests')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-matplotlib' 'python-pydantic' 'python-livekit-api')
 source=("$_repo/archive/refs/tags/rtc-v$pkgver.tar.gz"
         "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures/test_audio.wav"
