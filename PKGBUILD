@@ -1,23 +1,26 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Maintainer: nycex <bernhard / ithnet.com>
 
 pkgname=timescaledb-toolkit
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.22.0
+pkgrel=1
 pkgdesc="PostgreSQL extension for TimescaleDB analytics"
 arch=('x86_64')
 url="https://github.com/timescale/timescaledb-toolkit"
 license=('custom:Timescale')
 depends=('gcc-libs' 'postgresql>14' 'timescaledb')
 makedepends=('rust' 'clang' 'llvm')
+options=(!lto)
 # last commit to license - used to pin license version
 _license_commit='490e9405874d284735e27e3f9f63a2f6dd31a08f'
+# use git version (for pgrx 0.18.0) to fix the build for now
+_archive_version='b888ca2e9aebc91e45e6bf22f840e0ebb6dd0ca7'
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+  "$pkgname-$_archive_version.tar.gz::$url/archive/$_archive_version.tar.gz"
   "LICENSE-TIMESCALE-$_license_commit::https://raw.githubusercontent.com/timescale/timescaledb/$_license_commit/tsl/LICENSE-TIMESCALE"
 )
-sha512sums=('b8e63f4f85655b23220cb09716ec88383a42d27e05e1a136abb6c9a4d93ad9b5f2c4c0514a6aa338452b79bc52514056529409cb78f3f7f3f3ad8ea2a86ed3c3'
+sha512sums=('3fdfbc4704eef8d9dfd8651f859d9bf7ef43801151972870cca9cd505b786579e7e45c73d530c08c6bef6402444fe7ad7461f2ecd18ed0a586e39d74513fa2ba'
             'b7c5ce0ef87c1c5c2d4688910a915874be742732a023319e855a8fbb666b0da42683b714e1c3368975431796e4fcd0e524fae80a999bb8f15e4406d97b14a15e')
-b2sums=('ce466bf15488216331fb9b992792bbae52330d89b5a5763b2e9bf2787bcd7d9bbab0b0ff01fe33cdbea639a4466888df95ddfe156e5b6e2e9d568cbdcd01fe74'
+b2sums=('c8cc9ff6b4c8fc96ce99bcd3bba383049d9127f37f0823546f333278c1f8273955e1399bb9cb71cc8df70ac51f5ad8f7373b59de53b2f6e38628eb709ed044ff'
         '9ae11a930e930953b16f7d6d1d3fbf0ebb6c4d8687cac1475560603442ed8edd452200468f7fe9c82af651d40ccad192c036940bfe57ef093e7c30cce93383f0')
 
 prepare() {
@@ -31,23 +34,25 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_archive_version"
 
 
-  local PGX_VERSION='0.7.1'
+  local PGRX_VERSION='=0.18.0'
   cargo install \
-    --version "$PGX_VERSION" \
+    --version "$PGRX_VERSION" \
     --force \
-    cargo-pgx
+    cargo-pgrx
 
   # initialise pgx
-  cargo pgx init --pg14 pg_config
+  cargo pgrx init --pg$_PGMAJOR pg_config
 
   # build extension
   cd extension
-  cargo pgx package
+  # cargo pgrx install --release
+  cargo pgrx package
 
   # post-install script
+  # cargo run --manifest-path ../tools/post-install/Cargo.toml -- pg_config
   cd ..
   cargo run \
     --manifest-path tools/post-install/Cargo.toml -- \

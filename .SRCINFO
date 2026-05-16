@@ -1,7 +1,7 @@
 pkgbase = timescaledb-toolkit
 	pkgdesc = PostgreSQL extension for TimescaleDB analytics
-	pkgver = 1.16.0
-	pkgrel = 2
+	pkgver = 1.22.0
+	pkgrel = 1
 	url = https://github.com/timescale/timescaledb-toolkit
 	arch = x86_64
 	license = custom:Timescale
@@ -11,11 +11,12 @@ pkgbase = timescaledb-toolkit
 	depends = gcc-libs
 	depends = postgresql>14
 	depends = timescaledb
-	source = timescaledb-toolkit-1.16.0.tar.gz::https://github.com/timescale/timescaledb-toolkit/archive/1.16.0.tar.gz
+	options = !lto
+	source = timescaledb-toolkit-b888ca2e9aebc91e45e6bf22f840e0ebb6dd0ca7.tar.gz::https://github.com/timescale/timescaledb-toolkit/archive/b888ca2e9aebc91e45e6bf22f840e0ebb6dd0ca7.tar.gz
 	source = LICENSE-TIMESCALE-490e9405874d284735e27e3f9f63a2f6dd31a08f::https://raw.githubusercontent.com/timescale/timescaledb/490e9405874d284735e27e3f9f63a2f6dd31a08f/tsl/LICENSE-TIMESCALE
-	sha512sums = b8e63f4f85655b23220cb09716ec88383a42d27e05e1a136abb6c9a4d93ad9b5f2c4c0514a6aa338452b79bc52514056529409cb78f3f7f3f3ad8ea2a86ed3c3
+	sha512sums = 3fdfbc4704eef8d9dfd8651f859d9bf7ef43801151972870cca9cd505b786579e7e45c73d530c08c6bef6402444fe7ad7461f2ecd18ed0a586e39d74513fa2ba
 	sha512sums = b7c5ce0ef87c1c5c2d4688910a915874be742732a023319e855a8fbb666b0da42683b714e1c3368975431796e4fcd0e524fae80a999bb8f15e4406d97b14a15e
-	b2sums = ce466bf15488216331fb9b992792bbae52330d89b5a5763b2e9bf2787bcd7d9bbab0b0ff01fe33cdbea639a4466888df95ddfe156e5b6e2e9d568cbdcd01fe74
+	b2sums = c8cc9ff6b4c8fc96ce99bcd3bba383049d9127f37f0823546f333278c1f8273955e1399bb9cb71cc8df70ac51f5ad8f7373b59de53b2f6e38628eb709ed044ff
 	b2sums = 9ae11a930e930953b16f7d6d1d3fbf0ebb6c4d8687cac1475560603442ed8edd452200468f7fe9c82af651d40ccad192c036940bfe57ef093e7c30cce93383f0
 
 pkgname = timescaledb-toolkit
