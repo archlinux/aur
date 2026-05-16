@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zlob
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc='A fast SIMD-accelerated glob pattern matcher'
 url='https://github.com/dmtrKovalenko/zlob'
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('zig')
 provides=('zlob' 'libzlob.so')
 conflicts=('zlob-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('97c785b186fbd6a52205a990b84c3f437132add63c16ea1e2e1925a3e44df772')
+sha256sums=('0c110bf2c058559091c4a51cf002f60870c1b5f688511cfda0a07d795b5d031b')
 
 build() {
     cd "$pkgname-$pkgver"
