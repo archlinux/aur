@@ -2,7 +2,7 @@
 
 _name=genai-prices
 pkgname=python-$_name
-pkgver=0.0.55
+pkgver=0.0.60
 pkgrel=1
 pkgdesc='Calculate prices for calling LLM inference APIs.'
 arch=('any')
@@ -10,9 +10,20 @@ url='https://github.com/pydantic/genai-prices'
 license=('MIT')
 depends=('python' 'python-httpx' 'python-pydantic')
 makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-anyio' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-recording' 'python-ruamel-yaml')
+checkdepends=('python-anyio' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-recording' 'python-pydantic-settings' 'python-rich' 'python-rich-argparse' 'python-boto3' 'python-ruamel-yaml')
+optdepends=('pydantic-settings: cli' 'python-rich: cli' 'python-rich-argparse: cli')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('612f1f8e6ecf7c7ed458445e1ebad3bbf679e58a390ab9f28bf0e0ee072d705f')
+sha256sums=('7003f53f694eace3e561fb2b89d395db4d409f732f5bb0d292dd632fa00324b8')
+
+prepare() {
+  # Fix ValidationError
+  cd "$srcdir"/$_name-$pkgver
+  sed -i 's/no_color/color/g' packages/python/genai_prices/_cli_impl.py
+  sed -i 's/no-color/color/g' packages/python/genai_prices/_cli_impl.py
+  sed -i '137s/False/True/' packages/python/genai_prices/_cli_impl.py
+  sed -i 's/not args.color/args.color/g' packages/python/genai_prices/_cli_impl.py
+  sed -i 's/--no-color/--color/g' tests/test_cli.py
+}
 
 build() {
     cd "$srcdir"/$_name-$pkgver/packages/python
@@ -31,6 +42,7 @@ check() {
   python -m venv --system-site-packages test-env
   cp -f prices/data.schema.json test-env/lib/python$python_version/data.schema.json
   cp -f prices/data.json test-env/lib/python$python_version/data.json
+  cp -f prices/data_slim.json test-env/lib/python$python_version/data_slim.json
   test-env/bin/python -m installer packages/python/dist/*.whl
   test-env/bin/python -m installer prices/dist/*.whl
   test-env/bin/python -m pytest "${pytest_options[@]}" tests
