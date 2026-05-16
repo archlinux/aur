@@ -14,7 +14,7 @@ license=('MIT')
 arch=('any')
 
 _url_pypi="https://pypi.org/project/${_pypi_package}/"
-_url_github="https://github.com/NSPC911/${_pypi_package}"
+_url_github="https://github.com/briceyan/${_pypi_package}"
 url="${_url_github}"
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling' 'rust' 'cargo')
