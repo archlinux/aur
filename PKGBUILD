@@ -6,7 +6,7 @@ _source_type='pypi-releases'
 _pypi_package='resvg'
 
 pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver%%.post*}"
+pkgver="${_upstreamver}"
 pkgrel=1
 pkgdesc="A Python binding of resvg, the high-performance SVG rendering library in Rust"
 
