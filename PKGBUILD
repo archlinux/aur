@@ -6,7 +6,7 @@
 pkgname=mixxx-alpha
 _mixxxver=2.7
 pkgver="2.7.alpha"
-pkgrel=0
+pkgrel=1
 pkgdesc="Digital DJ mixing software (alpha version)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -54,7 +54,7 @@ depends=(
   'rubberband'
   'soundtouch'
   'sqlite'
-  'taglib1'
+  'taglib'
   'ttf-opensans' #?
   'ttf-ubuntu-font-family' #?
   'upower'
