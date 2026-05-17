@@ -1,6 +1,6 @@
 # Maintainer: Julian Corbet <admin+aur@sys.corbet.ch>
 pkgname=dotkeeper-bin
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="P2P file sync with git history — embedded Syncthing + staggered git auto-backup"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('dotkeeper')
 conflicts=('dotkeeper' 'dotkeeper-git')
 source_x86_64=("dotkeeper_${pkgver}_linux_amd64.tar.gz::https://github.com/julian-corbet/dotkeeper/releases/download/v${pkgver}/dotkeeper_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("dotkeeper_${pkgver}_linux_arm64.tar.gz::https://github.com/julian-corbet/dotkeeper/releases/download/v${pkgver}/dotkeeper_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('9903b619d39843dd6cfa596a6c64441c175f157bd79c711b31f0314ff7e94d44')
-sha256sums_aarch64=('ac9c09469d748bf60f3ccbac3e0ee13f8e0311508d0a4b0d5260568d22c3a385')
+sha256sums_x86_64=('0be34819422a7a192478fafbbc371f6276cbe2b6c1cd63efebad1d496fcbc254')
+sha256sums_aarch64=('a2e2b7ad74655c30ff45157f44357efa9ed8d8d8f1a1efb7ed76121e6581a45b')
 
 package() {
     local _arch
