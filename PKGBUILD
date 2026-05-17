@@ -5,7 +5,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="A file packing and encryption tool. Pack files into encrypted .crumbs files, share them, and unpack on another machine."
 arch=('x86_64')
-url="https://github.com/xbz7/crumble"
+url="https://github.com/xbz-seven/crumble"
 license=('MIT')
 depends=(
   'gtk3'
@@ -24,7 +24,7 @@ makedepends=(
   'rust'
   'base-devel'
 )
-source=("${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
