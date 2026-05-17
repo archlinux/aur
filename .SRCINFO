@@ -1,0 +1,27 @@
+pkgbase = proteus-net-bin
+	pkgdesc = Shapeshifting network identity for Linux (prebuilt) — rotates MAC, DHCP, IPv6, and hostname identifiers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kit3713/Proteus
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = networkmanager
+	depends = systemd
+	depends = dbus
+	depends = gcc-libs
+	optdepends = bluez: Bluetooth identifier rotation and BLE RPA mode
+	optdepends = nftables: discovery-block firewall rules
+	optdepends = iw: RF scan and chipset inventory
+	optdepends = wireless-regdb: regulatory-domain change events
+	provides = proteus-net=1.0.0
+	conflicts = proteus-net
+	conflicts = proteus
+	source = proteus-net-1.0.0.tar.gz::https://github.com/Kit3713/Proteus/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0ae011fb392a915a82ef280db02ff59a69f0313b84029c11dca8b09025ead0a5
+	source_x86_64 = proteus-net-1.0.0-x86_64::https://github.com/Kit3713/Proteus/releases/download/v1.0.0/proteus-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 646014dbe3c6c12ead1fd778ae737902c1643e1a33d0adb9c85449c52f9132bc
+	source_aarch64 = proteus-net-1.0.0-aarch64::https://github.com/Kit3713/Proteus/releases/download/v1.0.0/proteus-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = d283f477fe90397aef7a40d7abffc1f95976c71bfd71cd382ff1fcf8442ad8c5
+
+pkgname = proteus-net-bin
