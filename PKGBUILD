@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'oniguruma')
 makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zhiyuHD/ccat/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('010254563979eaf5fd12f2b9dde1ed6076e7e98517c4a6ca95fa7e2f9b4437fc')
+sha256sums=('c13a707d51cbf386de13d36e19c0553ebd7149601534f125bbc5200d454cf139')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
