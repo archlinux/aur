@@ -1,9 +1,9 @@
 # Maintainer: GooseStation contributors
 
 _pkgname=goosestation-libretro
-_upstream_commit=5e7be496a2d0480aaabbe9746a1a4576b469d301
+_upstream_commit=54feef27dab1b105c30ad341e503c399ebb2409d
 _duckstation_srcdir="duckstation-${_upstream_commit}"
-_builder_commit=5f966e870c4f49225cd4fa2cb064772022d5677b
+_builder_commit=0c566bc1984998976603aa3f074e2d21d9252db7
 _builder_raw="https://codeberg.org/hueponik/goosestation-builder/raw/commit/${_builder_commit}"
 pkgname=${_pkgname}
 pkgver=0+git.${_upstream_commit:0:9}
@@ -39,8 +39,8 @@ source=(
   "goosify.sh::${_builder_raw}/goosify.sh"
   "goosestation_libretro.info::${_builder_raw}/goosestation_libretro.info"
 )
-sha256sums=('5ba5c07c054b3b005d82aeafdc46803fc9e2af77a591d3577b64b0a1086792d7'
-            '53890e62adeb8d6f4385d78e3c02a57d8a6c926c00353f3889c0e15d036c2dba'
+sha256sums=('4ff37d0bd075d64f1642aab5aca9544c30cf4df268c2fff0c62e5ff54b49c157'
+            '7a748f2449274447e6b1513bf7381d5e6c16d1f5549b79fe8563dad7717d7204'
             '63131c2f6edd6361049a1fa0824e6fe0b766302c1f150a676a89716b80f6f89a')
 
 prepare() {
