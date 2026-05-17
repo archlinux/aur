@@ -10,7 +10,6 @@ Group=mautrix-meta
 WorkingDirectory=/var/lib/mautrix-meta
 ExecStart=/usr/bin/mautrix-meta -n -c /etc/mautrix-meta/mautrix-meta.yaml
 Restart=on-failure
-RestartSec=30s
 
 ReadWritePaths=/var/lib/mautrix-meta
 ReadWritePaths=/var/log/mautrix-meta
