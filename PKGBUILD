@@ -6,7 +6,7 @@
 pkgname=mixxx-beta
 _mixxxver=2.6
 pkgver="${_mixxxver}.beta"
-pkgrel=4
+pkgrel=5
 pkgdesc="Digital DJ mixing software (beta branch)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -54,7 +54,7 @@ depends=(
   'rubberband'
   'soundtouch'
   'sqlite'
-  'taglib1'
+  'taglib'
   'ttf-opensans' #?
   'ttf-ubuntu-font-family' #?
   'upower'

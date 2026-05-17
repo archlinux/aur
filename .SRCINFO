@@ -1,7 +1,7 @@
 pkgbase = mixxx-beta
 	pkgdesc = Digital DJ mixing software (beta branch).
 	pkgver = 2.6.beta
-	pkgrel = 4
+	pkgrel = 5
 	url = https://mixxx.org/
 	arch = i686
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = mixxx-beta
 	depends = rubberband
 	depends = soundtouch
 	depends = sqlite
-	depends = taglib1
+	depends = taglib
 	depends = ttf-opensans
 	depends = ttf-ubuntu-font-family
 	depends = upower
