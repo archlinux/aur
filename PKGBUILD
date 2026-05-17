@@ -16,18 +16,6 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir/$_pkgsrc"
     install -Dm755 nx-hyprinstall "$pkgdir/usr/bin/nx-hyprinstall"
+    nx-hyprinstall
 }
 
-post_install() {
-    echo "==> nx-hyprinstall installed successfully."
-    echo "==> Do you want to run it now? (y/N): "
-    read -r answer
-    case "$answer" in
-        [Yy]*)
-            /usr/bin/nx-hyprinstall -a
-            ;;
-        *)
-            echo "Run later with: nx-hyprinstall -a"
-            ;;
-    esac
-}
