@@ -7,17 +7,17 @@ arch=('x86_64')
 url='https://flix.center'
 license=('custom:proprietary')
 source=(
-  "${pkgname}-${pkgver}.deb::https://github.com/Tobiichi-Origuchi/flix-bin/releases/download/v2.0.6.111/Flix-Linux-2.0.6.111.deb"
+  "${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/Tobiichi-Origuchi/flix-bin/releases/download/v2.0.6.111/Flix-Linux-2.0.6.111.deb"
 )
 sha256sums=(
   '3a2159f27b9a7f6b760242ce7d912ec9443277c5b64e95594b177d325ea637a3'
 )
 noextract=(
-  "${pkgname}-${pkgver}.deb"
+  "${pkgname}-${pkgver}-${pkgrel}.deb"
 )
 
 package() {
   cd "$srcdir"
-  bsdtar -xf "${pkgname}-${pkgver}.deb"
+  bsdtar -xf "${pkgname}-${pkgver}-${pkgrel}.deb"
   bsdtar -xf data.tar.* -C "$pkgdir"
 }
