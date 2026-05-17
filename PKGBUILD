@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=7.0.5
+_kernver=7.0.8
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=7.0.5-arch1-1
+_KERNNAME=7.0.8-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-7.0.5.arch1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-headers-7.0.5.arch1-1-x86_64.pkg.tar.zst
-_docspkg=linux-docs-7.0.5.arch1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-7.0.8.arch1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-headers-7.0.8.arch1-1-x86_64.pkg.tar.zst
+_docspkg=linux-docs-7.0.8.arch1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('854a77ef6df8107adc5f24d4759aa10d3ec2baa7f08b82ea19f0747b344f1ffd'
-            '10a4ca9dd4893a7ce04e9c1c73470981490860221d877fa617f22100945ad2cb'
-            '46a7199b16da25435625813b5917ddd521cb31a2b86b2f2db7a51a7880c9442d')
+sha256sums=('28de70a005dcc9d40731fdcd6c4ed6747fea48125537434bbc8aaf289615ee38'
+            '555f1112ece832a7ced099b1f39df89a3678552f18d08013333e4afaf8934b8d'
+            '54245f7eda05dc5672bb357a9e1261d06ac9920b7f814ea7cd611e4e0265d15d')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux7.0.5.arch1-1-bin() {
+package_linux7.0.8.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -72,7 +72,7 @@ package_linux7.0.5.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux7.0.5.arch1-1-headers-bin() {
+package_linux7.0.8.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(binutils
            glibc
@@ -90,7 +90,7 @@ package_linux7.0.5.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux7.0.5.arch1-1-docs-bin() {
+package_linux7.0.8.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
