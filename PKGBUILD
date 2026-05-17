@@ -1,7 +1,7 @@
 # Maintainer: PolJak <polesnik.jaka@gmail.com>
 
 pkgname=curd-polland-git
-pkgver=1.1.4
+pkgver=1.4.1.r1.ga8f35d2
 pkgrel=1
 pkgdesc="Watch anime in CLI with AniList Tracking, Discord RPC, Intro/Outro/Filler/Recap Skipping, etc. (Git version)"
 arch=('x86_64' 'aarch64')
@@ -26,10 +26,10 @@ prepare() {
 
 build() {
   cd "$srcdir/curd-polland"
-  go build -o curd-polland .
+  go build -a -trimpath -ldflags="-s -w" -o curd ./cmd/curd
 }
 
 package() {
   cd "$srcdir/curd-polland"
-  install -Dm755 curd-polland "$pkgdir/usr/bin/curd"
+  install -Dm755 curd "$pkgdir/usr/bin/curd"
 }
