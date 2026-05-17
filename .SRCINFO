@@ -1,5 +1,5 @@
 pkgbase = nbtui-git
-	pkgdesc = Ncurses BlueZ TUI manager
+	pkgdesc = Ncurses Bluetooth TUI manager
 	pkgver = r4.b013e36
 	pkgrel = 1
 	url = https://codeberg.org/ItsZariep/nbtui

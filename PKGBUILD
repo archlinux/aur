@@ -2,7 +2,7 @@
 pkgname=nbtui-git
 pkgver=r4.b013e36
 pkgrel=1
-pkgdesc="Ncurses BlueZ TUI manager"
+pkgdesc="Ncurses Bluetooth TUI manager"
 arch=('any')
 url="https://codeberg.org/ItsZariep/nbtui"
 license=('GPL-3.0-only')
