@@ -11,13 +11,10 @@ backup=()
 source=("LICENSE::${url}/raw/refs/heads/main/LICENSE")
 sha256sums=('3bed3331b7048bac17cf50e249d560ccc9508c970da8d7b9283bf4f2e633a91d')
 
-# Ссылки и хэши для x86_64 (amd64)
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums_x86_64=('105ced0bacb52712da33b55bb7223fdb2069c80fdcb5deec9a315a373e67218e')
 
-# Ссылки и хэши для aarch64 (arm64)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
-# ВАЖНО: замени 'SKIP' на реальный хэш от arm64.deb, когда будешь заливать вручную
 sha256sums_aarch64=('SKIP')
 
 build() {
