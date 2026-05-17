@@ -1,14 +1,13 @@
 pkgbase = python-readerwriterlock
 	pkgdesc = A python implementation of the three Reader-Writer problems
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elarivie/pyReaderWriterLock
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python
 	depends = python-typing_extensions
 	source = https://files.pythonhosted.org/packages/source/r/readerwriterlock/readerwriterlock-1.0.9.tar.gz
