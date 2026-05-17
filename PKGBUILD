@@ -2,7 +2,7 @@
 pkgname=tmux-tad
 _pkgname=tad
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tmux session and group manager with a native TUI dashboard (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/ttpears/tad"
@@ -15,6 +15,10 @@ depends=('tmux' 'gcc-libs' 'glibc')
 # `tmux-tad-git` is reserved for a future from-source variant.
 provides=("tmux-tad-bin=$pkgver")
 conflicts=('tad-bin' 'tad' 'tmux-tad-bin' 'tmux-tad-git')
+# Binary is prebuilt and already stripped (Cargo profile.release.strip),
+# so skip makepkg's debug-split and re-strip passes — they only produce
+# an empty tmux-tad-debug package.
+options=('!debug' '!strip')
 source=(
     "$_pkgname-$pkgver::$url/releases/download/v$pkgver/tad-v$pkgver-x86_64-linux"
     "tad.bash-$pkgver::$url/releases/download/v$pkgver/tad.bash"
