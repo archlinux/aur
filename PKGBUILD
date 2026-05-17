@@ -1,7 +1,7 @@
 # Maintainer: Masaki Komagata <komagata@gmail.com>
 
 pkgname=mugvideo-git
-pkgver=0.1.0.r5.g2fe944c
+pkgver=0.2.0.r7.gd900768
 pkgrel=1
 pkgdesc="Small GTK4 app for recording short selfie videos"
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd mugvideo
-  printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.2.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
