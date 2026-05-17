@@ -1,15 +1,14 @@
-# Maintainer: Your Name <your.email@example.com>
-# Contributor: Your Name <your.email@example.com>
+# Maintainer: DXYMic <darius.jeleru@homedsolutions.com>
 
 pkgname=piperdc-git
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern RDP Connection Manager for Linux"
 arch=('x86_64')
 url="https://github.com/Darius662/PipeRDC"
 license=('MIT')
 depends=('python' 'gtk4' 'libadwaita' 'freerdp' 'python-gobject' 'python-secretstorage')
-makedepends=('python-pip' 'python-setuptools' 'python-wheel')
+makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('a98ef870d1a863b6aecf53ed68bfc10f96a3bf8369b8d1b50d4d52dce76b4ff1')
 
@@ -42,7 +41,4 @@ PYL
     # Install icon
     install -Dm644 data/icons/piperdc.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/piperdc.svg"
 
-    # Create symlink for CLI
-    mkdir -p "$pkgdir/usr/bin"
-    ln -sf "/usr/bin/piperdc" "$pkgdir/usr/bin/piperdc"
 }

@@ -1,12 +1,10 @@
 pkgbase = piperdc-git
 	pkgdesc = A modern RDP Connection Manager for Linux
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Darius662/PipeRDC
 	arch = x86_64
 	license = MIT
-	makedepends = python-build
-	makedepends = python-installer
 	depends = python
 	depends = gtk4
 	depends = libadwaita
