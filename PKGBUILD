@@ -1,6 +1,6 @@
 # Maintainer: Kim DaeHyun <kernalix7@kodenet.io>
 #
-# This PKGBUILD is a template. The 0.5.2 / 1b0516314f21e8c81ac702b0879c1e22dc865debe2d99348dd7a184d46015217 placeholders are
+# This PKGBUILD is a template. The __PKGVER__ / __SHA256__ placeholders are
 # stamped by .github/workflows/aur-publish.yml on tag push (v*.*.*) before
 # the file is pushed to ssh://aur@aur.archlinux.org/winpodx.git. Do not hand-
 # edit the placeholders in-tree.
@@ -42,4 +42,12 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  install -Dm644 data/winpodx.desktop \
+    "$pkgdir/usr/share/applications/winpodx.desktop"
+  install -Dm644 data/winpodx-icon.svg \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/winpodx.svg"
+  install -Dm644 data/winpodx.toml.example \
+    "$pkgdir/usr/share/winpodx/winpodx.toml.example"
 }
