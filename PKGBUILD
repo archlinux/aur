@@ -1,6 +1,6 @@
 # Maintainer: Sinoosoida <bokhonko.ma@phystech.edu>
 pkgname=whisper-hotkeyd
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Push-to-talk voice transcription to clipboard, with system tray"
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ff806d9dc2792cca0c04f26254a08d033a0da55b95f3676ce4719c585447c422')
+sha256sums=('b9402f595db81ef0566b477482b823fd5082cc8fb4a4534bfa008ca48bc2a891')
 
 build() {
     cd "$pkgname-$pkgver"
