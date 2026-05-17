@@ -1,5 +1,4 @@
 # Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
-# Contributor: Christian Wieden <wiedenchr at gmail dot com>
 
 pkgname=hstr
 pkgver=3.2
