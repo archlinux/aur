@@ -3,7 +3,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-asn1
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='ASN.1 encoder/decoder'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2d67c5e8f0c88c0612e321af84e8d598bfa51869f9a9597b8d08d355880e9d3e')
+sha256sums=('315936416524cdb742e12fa7056a48171c406ee1b78994fbba742edd9834fa8a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
