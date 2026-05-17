@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=data-peek-bin
-pkgver=0.21.2
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="A minimal, fast SQL client desktop application for developers"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('data-peek')
 conflicts=('data-peek')
 depends=('hicolor-icon-theme')
 source=("https://github.com/Rohithgilla12/data-peek/releases/download/v${pkgver}/data-peek-${pkgver}-amd64.deb")
-sha256sums=('8554131d7956ace806ac1988a92e308ab120902c73a4291da6cc27e30534139a')
+sha256sums=('4fdcb844ab361a7cb9cbdd0f4f1aa9449c7cb711444a64e16cb5073bee27cc85')
 options=('!strip')
 
 package() {
