@@ -1,12 +1,13 @@
 pkgbase = mxset
 	pkgdesc = An optimized hashset in C89, yielding maximum compatibility and great performance.
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Muhamix/mxset
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = LGPL-3.0-or-later
+	conflicts = mxset-cpp
 	options = staticlibs
 	source = mxset-1.4.5::https://codeberg.org/Muhamix/mxset/archive/v1.4.5.tar.gz
 	sha256sums = 9999eb08bc555bb6d9d6715836704f871ae58454401991c5f5df6fb57f689178
