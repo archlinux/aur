@@ -9,9 +9,9 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/zhiyuHD/ccat"
 license=('MIT')
 depends=('gcc-libs' 'oniguruma')
-makedepends=('cargo' 'pkg-config' 'git')
-source=("$pkgname-$pkgver::git+https://github.com/zhiyuHD/ccat.git#tag=v$pkgver")
-sha256sums=('SKIP')
+makedepends=('cargo' 'pkg-config')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zhiyuHD/ccat/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('3200032fbfa06c3ab66ac43ad57d06c9d4cf38d005b78ca9e1e0e1c0ebcb4c9e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
