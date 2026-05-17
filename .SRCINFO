@@ -1,6 +1,6 @@
 pkgbase = rosie
 	pkgdesc = A robot helper for agent skills
-	pkgver = 0.6.4
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/matthewp/rosie
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rosie
 	makedepends = rust
 	makedepends = cargo
 	options = !lto
-	source = rosie-0.6.4.tar.gz::https://github.com/matthewp/rosie/archive/refs/tags/v0.6.4.tar.gz
-	sha256sums = 0c46b0747773457431b4407cc3063771c1664af798e90b1486b505513bb4dd7c
+	source = rosie-0.7.0.tar.gz::https://github.com/matthewp/rosie/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 2ebb2d5f4a77d07a309a54afe45ea2ac8bf302a3f3beaaa770443bc7fc5f9478
 
 pkgname = rosie
