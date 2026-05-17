@@ -1,0 +1,8 @@
+# Build artifacts produced by makepkg — never committed to the AUR repo.
+# Only PKGBUILD and .SRCINFO (and this file) belong here.
+pkg/
+src/
+*.pkg.tar.*
+*.tar.gz
+*.tar.zst
+*.log
