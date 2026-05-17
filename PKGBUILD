@@ -1,24 +1,39 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 _name=ag-ui-protocol
-pkgname=python-${_name}
-pkgver=0.1.10
+pkgname=python-$_name
+pkgver=0.1.18
 pkgrel=1
 pkgdesc="Python SDK for the Agent-User Interaction (AG-UI) Protocol."
 arch=('any')
 license=('MIT')
+_repo="https://github.com/ag-ui-protocol/ag-ui"
 url="https://github.com/ag-ui-protocol/ag-ui/tree/main/sdks/python"
 depends=('python' 'python-pydantic')
-makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('3213991c6b2eb24bb1a8c362ee270c16705a07a4c5962267a083d0959ed894f4')
+makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
+source=("$_repo/archive/refs/tags/$_name@$pkgver.tar.gz")
+sha256sums=('bb4d5233d0a187c5d0f2aab188a9c68a762b18e0a98d6369cd1800fb508e42b0')
+
+prepare() {
+  # Fix build
+  cd "$srcdir"/${_name//-protocol/}-$_name-$pkgver/sdks/python
+  sed -i 's/uv_build>=0.8.0,<0.9/uv_build/g' pyproject.toml
+}
 
 build() {
-    cd "${srcdir}"/${_name//-/_}-${pkgver}
-    python -m build --wheel --no-isolation
+  cd "$srcdir"/${_name//-protocol/}-$_name-$pkgver/sdks/python
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  local pytest_options=(
+    -vv
+  )
+  cd "$srcdir"/${_name//-protocol/}-$_name-$pkgver/sdks/python
+  python -m unittest discover "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  cd "$srcdir"/${_name//-protocol/}-$_name-$pkgver/sdks/python
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
