@@ -1,0 +1,33 @@
+pkgbase = kalign3
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://github.com/TimoLassmann/kalign
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = gcc-libs
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-scikit-build-core
+	makedepends = pybind11
+	makedepends = python-numpy
+	source = kalign3-3.5.1.tar.gz::https://github.com/TimoLassmann/kalign/archive/refs/tags/v3.5.1.tar.gz
+	sha256sums = 983bfd7da76010d59c3de3bae3d977cac78642c5eb061009dd12b11b9db5190d
+
+pkgname = kalign3
+	pkgdesc = A fast and accurate multiple sequence alignment algorithm (v3)
+	depends = glibc
+	depends = gcc-libs
+	depends = libgomp
+	depends = libgcc
+	provides = kalign
+
+pkgname = python-kalign3
+	pkgdesc = Python wrapper for the Kalign multiple sequence alignment engine
+	depends = python
+	depends = python-numpy
+	depends = gcc-libs
+	depends = libgomp
+	depends = libgcc
+	depends = python-biopython
