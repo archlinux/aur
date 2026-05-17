@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx-bin
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="Context Engineering Layer for AI Coding — 59 MCP tools, 10 read modes, 95+ shell patterns, persistent knowledge, multi-agent orchestration. Privacy-first, opt-in only. (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('lean-ctx')
 conflicts=('lean-ctx')
 source_x86_64=("lean-ctx-$pkgver-x86_64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v$pkgver/lean-ctx-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("lean-ctx-$pkgver-aarch64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v$pkgver/lean-ctx-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8f50728216a54167d638834d94443ee0d4bb79461af527700885daf30041ee24')
-sha256sums_aarch64=('a00ee0bb2d4fc0bcf5a9c9acd32e22a23e9eaadaba729777ef15159c69d78c13')
+sha256sums_x86_64=('38bdf91a71b5b49108afda9a7eedddb73b3fb999bbe7a4ef6770160106f19cc5')
+sha256sums_aarch64=('125922392c14e3de7495cefd358e737de7ec639730507c42a730f94aab7ac331')
 
 package() {
   install -Dm755 "lean-ctx" "$pkgdir/usr/bin/lean-ctx"
