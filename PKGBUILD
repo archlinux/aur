@@ -3,26 +3,25 @@
 pkgname=virtual-screen-bin
 _pkgname=virtual-screen
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Use any browser as a second-screen client for KDE Linux"
 arch=('x86_64')
 url="https://github.com/opengeos/virtual-screen"
 license=('MIT')
 depends=(
-  'glib2'
-  'gstreamer'
-  'gst-plugins-bad'
-  'gst-plugins-good'
   'gtk3'
   'hicolor-icon-theme'
-  'iproute2'
-  'libxcvt'
   'webkit2gtk-4.1'
-  'xorg-xrandr'
 )
 optdepends=(
-  'gst-plugins-ugly: H.264 encoding support through x264enc'
+  'gstreamer: GStreamer command-line tools for capture and streaming'
+  'gst-plugins-bad: WebRTC and PipeWire GStreamer elements'
+  'gst-plugins-good: X11, JPEG, VP8, and multipart GStreamer elements'
   'gst-plugin-pipewire: PipeWire capture support for Wayland sessions'
+  'gst-plugins-ugly: H.264 encoding support through x264enc'
+  'iproute2: local network address detection'
+  'libxcvt: cvt command for X11 virtual display modes'
+  'xorg-xrandr: X11 output detection and virtual display setup'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
