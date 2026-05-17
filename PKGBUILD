@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
-pkgver=4.1.5
+pkgver=4.1.6
 pkgrel=1
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
 url="https://github.com/Recol/DLSS-Updater"
-license=('AGPL-3.0-or-later')
+license=('AGPL-3.0-only')
 depends=(
   'python-aiofiles'
   'python-aiohttp'
@@ -34,7 +34,7 @@ checkdepends=('appstream')
 optdepends=('python-rapidfuzz: Fast fuzzy string matching for game search')
 source=("DLSS-Updater-$pkgver.tar.gz::$url/archive/refs/tags/V$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('4651eba5c2eef409c1637065af52f6141f8416df4ad516cfd52a0000701915e5'
+sha256sums=('39514b6c04a1b7d7b35ed460c838cbe8821aa2fd266614ad90d07cc5ecaa2aa1'
             'd98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0')
 
 prepare() {
