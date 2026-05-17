@@ -1,7 +1,7 @@
 # Maintainer: xbz7
 
 pkgname=crumble
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A file packing and encryption tool. Pack files into encrypted .crumbs files, share them, and unpack on another machine."
 arch=('x86_64')
@@ -34,6 +34,7 @@ build() {
   npm run build
 
   export RUSTFLAGS="--remap-path-prefix=${srcdir}=/usr/src/${pkgname}"
+  export TAURI_DEBUG=false
   cargo build --release --manifest-path src-tauri/Cargo.toml
 }
 
