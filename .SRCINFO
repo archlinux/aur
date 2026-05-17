@@ -1,7 +1,7 @@
 pkgbase = ironbar-git
 	pkgdesc = Customisable wlroots/sway bar written in rust
-	pkgver = 0.18.0.r114.ge45a178
-	pkgrel = 2
+	pkgver = 0.19.0.r1.g607e282
+	pkgrel = 1
 	url = https://ironb.ar
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = ironbar-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	makedepends = openssl
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = lua51-lgi
