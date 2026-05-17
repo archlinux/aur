@@ -1,15 +1,15 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 26
+	pkgver = 26.0.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = python-html2text
 	makedepends = alsa-lib
-	noextract = jdk-26_doc-all.zip
-	source = https://download.oracle.com/java/26/archive/jdk-26_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/26+35/c3cc523845074aa0af4f5e1e1ed4151d/jdk-26_doc-all.zip
+	noextract = jdk-26.0.1_doc-all.zip
+	source = https://download.oracle.com/java/26/archive/jdk-26.0.1_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/26.0.1+8/458fda22e4c54d5ba572ab8d2b22eb83/jdk-26.0.1_doc-all.zip
 	source = jdk-26_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-26-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
@@ -17,8 +17,8 @@ pkgbase = jdk
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 2613ca3691fc032ebd38894a42904141556e4f7f05b8f3bb5752d6b805eb4eea
-	sha256sums = d88a5803b60ebf91f69cbbec79a96b681f97965bb61f8c930587ebf8c7970a80
+	sha256sums = 389213eea280b09443f7559561f3ffd88f5c5439455e18f63bd06ed7ee0ffdbd
+	sha256sums = d1298fc3bfe61c2e18fe2b2748c175c5b09ee30304ed0c3fdd50ba172449b754
 	sha256sums = 27984b214d135bc4f6fb04c2d2cb85de8b9ad55f7b5752bf128f58c62e11ddcc
 	sha256sums = 0a0c33a4cebf59d365a95869f0513a8f2b54ed69db7c8b8220f364b4a3069726
 	sha256sums = 25aa549dfc515ca177e416bc1635db85655db2d2e9c77ea153b8768e11953b16
@@ -44,10 +44,10 @@ pkgname = jre
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=26
 	provides = java-runtime-jdk26
-	provides = jre26-jdk=26-1
+	provides = jre26-jdk=26.0.1-1
 	provides = java-runtime-headless=26
 	provides = java-runtime-headless-jdk=26
-	provides = jre26-jdk-headless=26-1
+	provides = jre26-jdk-headless=26.0.1-1
 	conflicts = jdk
 	backup = etc/java-jdk/jaxp.properties
 	backup = etc/java-jdk/jaxp-strict.properties.template
@@ -85,14 +85,14 @@ pkgname = jdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=26
 	provides = java-environment-jdk=26
-	provides = jdk26-jdk=26-1
+	provides = jdk26-jdk=26.0.1-1
 	provides = jre=26
 	provides = java-runtime=26
 	provides = java-runtime-jdk26
-	provides = jre26-jdk=26-1
+	provides = jre26-jdk=26.0.1-1
 	provides = java-runtime-headless=26
 	provides = java-runtime-headless-jdk=26
-	provides = jre26-jdk-headless=26-1
+	provides = jre26-jdk-headless=26.0.1-1
 	conflicts = jre
 	backup = etc/java-jdk/jaxp.properties
 	backup = etc/java-jdk/jaxp-strict.properties.template
