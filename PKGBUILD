@@ -1,6 +1,6 @@
 # Maintainer: Daniel Garcia <dgarcia@kabr.org>
 pkgname=steamfetch
-pkgver=0.5.2
+pkgver=0.5.5
 pkgrel=1
 epoch=
 pkgdesc="neofetch for Steam - Display your Steam stats in terminal with style."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('9f1b6a201ad3aa2aaa51270f068a109f05ad1d1d2e37c1cae3df88e5f4edf421')
+sha256sums=('9726d9675cac0ca7336d64d53f550a7271c184d10be59e65b7a205a7f2ccc3a3')
 validpgpkeys=()
 
 prepare() {

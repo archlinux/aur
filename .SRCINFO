@@ -1,6 +1,6 @@
 pkgbase = steamfetch
 	pkgdesc = neofetch for Steam - Display your Steam stats in terminal with style.
-	pkgver = 0.5.2
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/unhappychoice/steamfetch
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = steamfetch
 	depends = openssl
 	conflicts = steamfetch-git
 	conflicts = steamfetch-bin
-	source = steamfetch-0.5.2.tar.gz::https://github.com/unhappychoice/steamfetch/archive/refs/tags/v0.5.2.tar.gz
-	sha256sums = 9f1b6a201ad3aa2aaa51270f068a109f05ad1d1d2e37c1cae3df88e5f4edf421
+	source = steamfetch-0.5.5.tar.gz::https://github.com/unhappychoice/steamfetch/archive/refs/tags/v0.5.5.tar.gz
+	sha256sums = 9726d9675cac0ca7336d64d53f550a7271c184d10be59e65b7a205a7f2ccc3a3
 
 pkgname = steamfetch
