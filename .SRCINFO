@@ -1,0 +1,24 @@
+pkgbase = feng_calendar-git
+	pkgdesc = 枫枫子的备忘录 - AI-powered schedule/todo extraction app with chat planning, user profiling, and arXiv daily reports (git version)
+	pkgver = 1.0.1.r0.gecb401f
+	pkgrel = 2
+	url = https://github.com/Yao0454/feng_calendar
+	arch = x86_64
+	license = custom:unknown
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkg-config
+	depends = gtk3
+	depends = libgl
+	optdepends = python-fastapi: run local backend server
+	optdepends = ollama: run local AI model for extraction
+	provides = feng_calendar
+	provides = feng_calendar
+	conflicts = feng_calendar
+	options = !debug
+	source = feng_calendar-git::git+https://github.com/Yao0454/feng_calendar.git
+	sha256sums = SKIP
+
+pkgname = feng_calendar-git
