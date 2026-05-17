@@ -2,9 +2,9 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=rufin-git
-pkgver=0.1.r16.geccd289
+pkgver=0.1.3.r0.gd2acaff
 pkgrel=1
-pkgdesc='Native GTK music client for Jellyfin'
+pkgdesc='Native GTK4 Jellyfin/Subsonic Client in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/screwys/Rufin'
 license=('GPL-3.0-or-later')
