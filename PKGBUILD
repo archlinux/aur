@@ -19,10 +19,15 @@ pkgver() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/share/sddm/themes/echo"
-    cp -r "${srcdir}/echo-sddm/"{Main.qml,metadata.desktop,theme.conf,assets} \
+    install -dm755 "${pkgdir}/usr/share/sddm/themes/echo/assets/backgrounds"
+    install -m644 "${srcdir}/echo-sddm/Main.qml" \
         "${pkgdir}/usr/share/sddm/themes/echo/"
+    install -m644 "${srcdir}/echo-sddm/metadata.desktop" \
+        "${pkgdir}/usr/share/sddm/themes/echo/"
+    install -m644 "${srcdir}/echo-sddm/theme.conf" \
+        "${pkgdir}/usr/share/sddm/themes/echo/"
+    cp "${srcdir}/echo-sddm/assets/backgrounds/"* \
+        "${pkgdir}/usr/share/sddm/themes/echo/assets/backgrounds/" 2>/dev/null || true
     install -Dm644 "${srcdir}/echo-sddm/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
