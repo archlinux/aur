@@ -1,7 +1,7 @@
 pkgname=python-helium
 _gitname=helium
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A layer-shell framework written in C++, configured in Python"
 arch=('x86_64')
 url="https://github.com/xZepyx/helium"
@@ -16,6 +16,5 @@ build() {
 }
 package() {
   cd "$srcdir/$_gitname"
-  rm -rf "$pkgdir"/*
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --overwrite-existing --destdir="$pkgdir" dist/*.whl
 }
