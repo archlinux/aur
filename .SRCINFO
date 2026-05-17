@@ -1,6 +1,6 @@
 pkgbase = hyprcaffeine
 	pkgdesc = ☕ Idle inhibition utility for Hyprland — caffeine for your Wayland compositor
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/hbuddenberg/hyprcaffeine
 	install = hyprcaffeine.install
@@ -13,7 +13,7 @@ pkgbase = hyprcaffeine
 	optdepends = gum: interactive menu and styled prompts
 	optdepends = libnotify: desktop notifications
 	optdepends = walker: menu frontend
-	source = hyprcaffeine-0.7.0.tar.gz::https://github.com/hbuddenberg/hyprcaffeine/archive/v0.7.0.tar.gz
-	sha256sums = 5c316e16d015617a957b18c9e35b3bedaf69dd15e35fa82337fc435224b0896a
+	source = hyprcaffeine-0.7.1.tar.gz::https://github.com/hbuddenberg/hyprcaffeine/archive/v0.7.1.tar.gz
+	sha256sums = 99dca45be1787a9d1ab78c57e849190b4297f49647878873b7b6e785ecf2f578
 
 pkgname = hyprcaffeine
