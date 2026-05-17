@@ -30,6 +30,4 @@ check() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 target/release/ccat "$pkgdir/usr/bin/ccat"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
