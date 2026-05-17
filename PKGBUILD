@@ -1,6 +1,6 @@
-# Maintainer: Diego Fernández Menéndez <dfimium499@proton.me>
-# Contributor: David C Rankin <drankinatty@gmail.com>
-# Contributor: Martin Reboredo <yakoyoku@gmail.com>
+# Maintainer: Diego Fernández Menéndez <dfimium499 at proton dot me>
+# Contributor: David C Rankin <drankinatty at gmail dot com>
+# Contributor: Martin Reboredo <yakoyoku at gmail dot com>
 
 pkgname=mongosh
 pkgver=2.8.3
