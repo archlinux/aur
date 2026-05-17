@@ -1,0 +1,16 @@
+pkgbase = dora
+	pkgdesc = Dora desktop database client (prebuilt binary release)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/remcostoeten/dora
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = openssl
+	depends = libsoup3
+	source = dora-0.2.0.tar.gz::https://github.com/remcostoeten/dora/releases/download/v0.2.0/dora-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = dc110cb64493e54d1e6a367c3fa0d9492686898eb81a7856ba79f26722f04647
+
+pkgname = dora
