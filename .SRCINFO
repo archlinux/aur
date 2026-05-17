@@ -1,6 +1,6 @@
 pkgbase = vtm
 	pkgdesc = Terminal multiplexer with window manager and session sharing
-	pkgver = 2026.05.13
+	pkgver = 2026.05.17
 	pkgrel = 1
 	url = https://github.com/directvt/vtm
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = vtm
 	depends = freetype2
 	depends = harfbuzz
 	depends = plutovg
-	source = vtm-2026.05.13.tar.gz::https://github.com/directvt/vtm/archive/refs/tags/v2026.05.13.tar.gz
-	b2sums = 7588be2af5bb301a82bb3f9889ee9dc3a611dfa345a5761ae75aa0e5eba7eefded71665ae29e4ffbba16ec216170786a0b222aed51d41ff18c08f72d79023f64
+	source = vtm-2026.05.17.tar.gz::https://github.com/directvt/vtm/archive/refs/tags/v2026.05.17.tar.gz
+	b2sums = 1c990bc0bc93d2e4e6201d9071116b777ca713b763148c7e12703a389bd0c4222b9d92a25b61f847c670bcc58b05191411cf99a2a64b91c232af421b2182fabd
 
 pkgname = vtm
