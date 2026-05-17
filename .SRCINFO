@@ -1,0 +1,15 @@
+pkgbase = marauder-font
+	pkgdesc = A serif font by indestructible type* inspired by children's books
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://indestructibletype.com/Marauder
+	arch = any
+	license = OFL-1.1
+	source = https://indestructibletype.com/Marauder/Marauder.zip
+	sha256sums = 84215a70e40aa28b4a6001044a639a0b053f09da8ae1c4dc9d1e3a29d4bb1162
+
+pkgname = otf-marauder
+
+pkgname = ttf-marauder
+
+pkgname = ttf-marauder-variable
