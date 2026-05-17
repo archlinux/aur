@@ -1,51 +1,43 @@
 pkgname=plandex-server
-pkgver=2.2.1 # 请根据 GitHub Release 的最新版本修改
-pkgrel=1
+pkgver=2.2.1
+pkgrel=2  # 增加版本修饰
 pkgdesc="AI-driven development engine for complex tasks - Server component"
 arch=('x86_64' 'aarch64')
 url="https://github.com/plandex-ai/plandex"
-license=('MIT') 
+license=('MIT')
 depends=('glibc' 'uvicorn' 'litellm')
-makedepends=('go') # 关键：编译需要 Go 环境
-source=("https://github.com/plandex-ai/plandex/archive/refs/tags/server/v${pkgver}.tar.gz")
-sha256sums=('0d9ed4265b31a9a017741cbf8d2c373099a2446588fe142a8649716f5858e4f9')
+makedepends=('go')
+# 关键：把本地的服务文件也当作源码的一部分包进来
+source=("https://github.com/plandex-ai/plandex/archive/refs/tags/v${pkgver}.tar.gz"
+        "plandex-server.service")
+sha256sums=('0d9ed4265b31a9a017741cbf8d2c373099a2446588fe142a8649716f5858e4f9'
+            'eb306316076e048479e7dd936c315b62ef456006adf45d11ee57e59c6c9fea1d')
 
 prepare() {
   cd "plandex-server-v${pkgver}"
-  # Go 编译缓存目录设置
   mkdir -p gopath
-  export GOPATH="${srcdir}/plandex-${pkgver}/gopath"
+  export GOPATH="${srcdir}/plandex-server-v${pkgver}/gopath"
 }
 
 build() {
-  cd "plandex-server-v${pkgver}"
-  # 核心：进入 server 源码目录进行编译
-  cd app/server 
-  
+  cd "plandex-server-v${pkgver}/app/server"
   export GOPATH="${srcdir}/plandex-server-v${pkgver}/gopath"
-  export CGO_ENABLED=1 # 通常 Go 工具链推荐关闭 CGO 以获得纯静态二进制
-  
-  # 编译命令：-o 指定输出文件名
-  go build -v -ldflags "-s -w" -o plandex-server .
-  #no git check
+  export CGO_ENABLED=1
   go build -v -buildvcs=false -ldflags "-s -w" -o plandex-server .
 }
 
 package() {
-  cd "plandex-server-v${pkgver}/app/server"
+  # 1. 安装主二进制文件
+  install -Dm755 "plandex-server-v${pkgver}/app/server/plandex-server" "${pkgdir}/usr/bin/plandex-server"
   
-  # 将编译好的二进制文件安装到系统路径
-  install -Dm755 plandex-server "${pkgdir}/usr/bin/plandex-server"
-
-  #  关键：把这个该死的 python 脚本也一起复制到 /usr/bin/ 下
-  # 这样当程序在后台调用 uvicorn 时，就能在同级路径或通过定位找到它
-  if [ -f litellm_proxy.py ]; then
-    install -Dm644 litellm_proxy.py "${pkgdir}/usr/bin/litellm_proxy.py"
-  fi
+  # 2. 建立一个共享目录，专门存放那个任性的 python 脚本
+  install -Dm644 "plandex-server-v${pkgver}/app/server/litellm_proxy.py" "${pkgdir}/usr/share/plandex-server/litellm_proxy.py"
   
-  # 如果有开源许可证文件，顺便带上（假设在项目根目录）
-  cd ../..
-  if [ -f LICENSE ]; then
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # 3. 安装 Systemd 服务文件到系统标准路径
+  install -Dm644 "${srcdir}/plandex-server.service" "${pkgdir}/usr/lib/systemd/system/plandex-server.service"
+  
+  # 4. 开源许可证
+  if [ -f "plandex-server-v${pkgver}/LICENSE" ]; then
+    install -Dm644 "plandex-server-v${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
 }

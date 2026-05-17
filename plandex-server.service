@@ -1,0 +1,14 @@
+[Unit]
+Description=Plandex AI-driven development engine Server
+After=network.target
+
+[Service]
+Type=simple
+# 关键：强行把工作目录锁在存放 python 脚本的特定路径
+WorkingDirectory=/usr/share/plandex-server
+ExecStart=/usr/bin/plandex-server
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target
