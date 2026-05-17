@@ -1,0 +1,19 @@
+pkgbase = espressif-ide-latest
+	pkgdesc = Latest Espressif IDE for ESP32 development (Eclipse based)
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/espressif/idf-eclipse-plugin
+	arch = x86_64
+	license = EPL-2.0
+	depends = jdk-openjdk
+	depends = webkit2gtk-4.1
+	depends = gtk2
+	depends = gtk3
+	depends = cmake
+	depends = git
+	depends = python
+	depends = dfu-util
+	source = https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-4.2.0-linux.gtk.x86_64.tar.gz
+	sha256sums = 375705fdb219f32338d2c3a05938296726fd6d3da705f4a6d28032c5
+
+pkgname = espressif-ide-latest
