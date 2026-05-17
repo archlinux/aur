@@ -1,7 +1,7 @@
 # Maintainer: tim <goal10derphone@gmail.com>
 pkgname=klear
 _pkgname=klear
-pkgver=r130.8d83d95
+pkgver=r131.7651d55
 pkgrel=1
 pkgdesc='A minimal Hyprland status bar in Kotlin/Native (tray, popup menus, battery, glassy refraction, session lock)'
 arch=('x86_64')
