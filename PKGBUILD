@@ -1,4 +1,3 @@
-# Maintainer: ytterdal <ytterdal at gmail dot com>
 # Maintainer: xythrez <yuydevel at protonmail com>
 # Contributer: ajs124 < aur AT ajs124 DOT de >
 # Contributer: meyithi <mail at meyithi dot com>
