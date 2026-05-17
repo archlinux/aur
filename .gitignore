@@ -1,0 +1,18 @@
+# makepkg working directories
+src/
+pkg/
+
+# downloaded source files (declared in source=() and pulled fresh by makepkg)
+*.dmg
+*.tar.gz
+*.tar.xz
+*.zip
+
+# build artifacts
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.log
+
+# editor / OS noise
+*.swp
+.DS_Store

@@ -1,0 +1,44 @@
+codebuddy-cn-ide — Licensing Notice
+=====================================
+
+This package is an unofficial, community-maintained Arch Linux package.
+It is not affiliated with, endorsed by, or supported by Tencent.
+
+
+1. The packaging recipe (PKGBUILD)
+----------------------------------
+
+The PKGBUILD that produced this package, together with the helper
+repository at:
+
+    https://github.com/JipZeonGit/codebuddy-ide-cn-linux
+
+are licensed under the MIT License. See LICENSE.helper-MIT in this
+directory for the full MIT text.
+
+The MIT grant covers the packaging recipe and the conversion scripts
+ONLY. It does NOT extend to the bundled Tencent CodeBuddy IDE binaries.
+
+
+2. The bundled software
+-----------------------
+
+The Tencent CodeBuddy IDE binaries installed under /opt/codebuddy-cn-ide
+are obtained at install time directly from Tencent's official CDN by
+the end user's machine, using the upstream URL referenced in the
+PKGBUILD's source=() field.
+
+These binaries remain subject to Tencent's proprietary CodeBuddy
+service license. By using this software you accept the upstream license
+terms published by Tencent at:
+
+    https://copilot.tencent.com/
+
+
+3. Distribution stance
+----------------------
+
+This repository does not redistribute any Tencent binary. It only
+provides automation that fetches them from Tencent's official URL on
+behalf of the end user, who is presumed to be entitled to access those
+URLs under Tencent's terms of service.
