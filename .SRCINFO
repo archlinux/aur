@@ -1,6 +1,6 @@
 pkgbase = cockpit-dockermanager
 	pkgdesc = Cockpit application for managing Docker containers
-	pkgver = 1.0.8
+	pkgver = 1.0.8.2
 	pkgrel = 1
 	url = https://github.com/chrisjbawden/cockpit-dockermanager
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = cockpit-dockermanager
 	makedepends = git
 	depends = cockpit
 	depends = docker
-	source = git+https://github.com/chrisjbawden/cockpit-dockermanager.git#tag=v1.0.8
+	source = git+https://github.com/chrisjbawden/cockpit-dockermanager.git#tag=v1.0.8.2
 	sha256sums = SKIP
 
 pkgname = cockpit-dockermanager
