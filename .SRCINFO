@@ -4,7 +4,6 @@ pkgbase = astap
 	pkgrel = 1
 	url = http://www.hnsky.org/astap.htm
 	arch = x86_64
-	arch = aarch64
 	license = GPL
 	makedepends = lazarus
 	depends = qt5-base
