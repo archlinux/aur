@@ -1,6 +1,6 @@
 pkgbase = python-underthesea
 	pkgdesc = Vietnamese NLP Toolkit
-	pkgver = 9.4.0
+	pkgver = 9.5.0
 	pkgrel = 1
 	url = https://pypi.org/project/underthesea
 	arch = any
@@ -47,7 +47,7 @@ pkgbase = python-underthesea
 	conflicts = python-underthesea
 	options = !strip
 	options = !debug
-	source = underthesea-9.4.0.tar.gz::https://files.pythonhosted.org/packages/source/u/underthesea/underthesea-9.4.0.tar.gz
-	sha256sums = 3cf76445fd038dff5a9b9cd9f89349b500aac84dcd63c5f0503f34e877f41f21
+	source = underthesea-9.5.0.tar.gz::https://files.pythonhosted.org/packages/source/u/underthesea/underthesea-9.5.0.tar.gz
+	sha256sums = ad6261e9fa5a26f6314ec283513260f82ac227844a2811c520ee62b6d967a4f4
 
 pkgname = python-underthesea

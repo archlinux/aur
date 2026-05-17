@@ -3,7 +3,7 @@
 pkgbase=python-underthesea
 pkgname=python-underthesea
 _name=${pkgname#python-}
-pkgver=9.4.0
+pkgver=9.5.0
 pkgrel=1
 epoch=
 pkgdesc="Vietnamese NLP Toolkit"
@@ -63,7 +63,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('3cf76445fd038dff5a9b9cd9f89349b500aac84dcd63c5f0503f34e877f41f21')
+sha256sums=('ad6261e9fa5a26f6314ec283513260f82ac227844a2811c520ee62b6d967a4f4')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
