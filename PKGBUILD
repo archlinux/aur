@@ -1,7 +1,7 @@
 # Maintainer: bananasjim <bananasjim1@gmail.com>
 pkgname=padctl-bin
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="HID gamepad daemon — declarative TOML device config, uinput output (prebuilt musl binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BANANASJIM/padctl"
@@ -15,8 +15,8 @@ _baseurl="${url}/releases/download/v${pkgver}"
 
 source_x86_64=("padctl-v${pkgver}-x86_64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-x86_64-linux-musl.tar.gz")
 source_aarch64=("padctl-v${pkgver}-aarch64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-aarch64-linux-musl.tar.gz")
-sha256sums_x86_64=('6ecd9271cf8806fa7bcb3a3e10c37281051486f861cf56698a53b38d364dbcf8')
-sha256sums_aarch64=('bc91591e9c982dce78706e3e8b7ddb78632c38423a887b4b1c2c34d6fa50f0ce')
+sha256sums_x86_64=('2b75cbe6eed4de89a855e4a566395ba47d1298f42b696dae005ae4335f4f4b1e')
+sha256sums_aarch64=('5167206fb1ca80a810222686a30e10cc0f0d33764a8ab7d0f53e9c8cdb6c34b2')
 
 package() {
     local _arch
