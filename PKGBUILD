@@ -3,7 +3,7 @@
 pkgname=hermes-agent
 pkgver=0.14.0
 _tagver=2026.5.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -119,9 +119,15 @@ package() {
   # Install license to /opt/$pkgname
   install -Dm644 LICENSE "$_optdir/LICENSE"
 
-  # Create simple wrapper script in /usr/bin
+  # Create simple wrapper script in /usr/bin.
+  # Set HERMES_TUI_DIR so the launcher uses the prebuilt bundle without
+  # trying to rebuild via esbuild at runtime (which would fail on the
+  # root-owned site-packages tree).
   install -d "$pkgdir/usr/bin"
-  echo "#!/bin/bash" > "$pkgdir/usr/bin/hermes"
-  echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"' >> "$pkgdir/usr/bin/hermes"
+  {
+    echo "#!/bin/bash"
+    echo "export HERMES_TUI_DIR=/opt/$pkgname/venv/lib/python3.11/site-packages/ui-tui"
+    echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"'
+  } > "$pkgdir/usr/bin/hermes"
   chmod 755 "$pkgdir/usr/bin/hermes"
 }
