@@ -1,7 +1,7 @@
 # Maintainer: WZ Ordinary Ventures <ordinarypaint@wzordinaryventures.com>
 pkgname=ordinary-paint-bin
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="A screenshot annotation tool"
 arch=('x86_64')
 url="https://wzordinaryventures.com/ordinarypaint"
@@ -13,7 +13,7 @@ options=(!debug)
 source=("https://github.com/wz-ordinary-ventures/ordinary-paint-releases/releases/download/v${pkgver}/ordinary-paint-${pkgver}-linux-x64.tar.gz"
         "LICENSE"
         "ordinary-paint.png")
-sha256sums=('69ce629bbbcd0e8727a35121c5784f56fd485d1cad76a99f2c3d87623ebf176a'
+sha256sums=('8deda8a287fa9f3b62e763cfd2e58056307fe34a9dee24d11fae2fd33bbacffc'
             'SKIP'
             '41a8952bb4377907b680cbbeca25b31cf3f1cc607cc0f5f1be4c6c16bbbcd9a3')
 
