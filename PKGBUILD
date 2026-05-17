@@ -11,7 +11,7 @@ source=("git+https://github.com/marleylinux/FastFlowLM-GTK.git")
 sha256sums=('SKIP')
 
 package() {
-    cd "$pkgname"
+    cd "$srcdir/FastFlowLM-GTK"
     install -Dm755 flm-gtk "$pkgdir/usr/bin/flm-gtk"
     install -Dm644 flm-gtk.png "$pkgdir/usr/share/pixmaps/flm-gtk.png"
     install -Dm644 flm-gtk.desktop "$pkgdir/usr/share/applications/flm-gtk.desktop"
