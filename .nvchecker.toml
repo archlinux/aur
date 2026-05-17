@@ -1,0 +1,5 @@
+[squidge-bin]
+source = "github"
+github = "dhth/squidge"
+use_latest_release = true
+prefix = "v"
