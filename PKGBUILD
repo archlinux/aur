@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-bin
-pkgver=2.3.0.1
+pkgver=2.3.0.2
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
 )
 
-sha256sums=('743d50f2b12a76a6ef38abfbd77783028bf9a96c1ebaeae0387066a44973bc5d')
+sha256sums=('bfe8cfbec039547cd643988bb05c8c29c7425893b124d63e37812b5bece15df2')
 
 package() {
   # Install Shelly.Gtk binary
@@ -58,6 +58,7 @@ Exec=/usr/bin/shelly-ui
 Icon=shelly
 Type=Application
 Categories=System;Utility;
+Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
 Terminal=false
 Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
 
