@@ -1,0 +1,21 @@
+pkgbase = paseo-bin
+	pkgdesc = Paseo, Orchestrate coding agents from your desk and your phone
+	pkgver = 0.1.76
+	pkgrel = 1
+	url = https://paseo.sh
+	arch = x86_64
+	depends = gtk3
+	depends = libnotify
+	depends = libnss_nis
+	depends = libxss
+	depends = libx11
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	depends = libappindicator
+	source_x86_64 = paseo-bin-0.1.76-1-x86_64.deb::https://github.com/getpaseo/paseo/releases/download/v0.1.76/Paseo-0.1.76-amd64.deb
+	sha256sums_x86_64 = 8bd026b965009733ae04b1ba797757010b7078729970fadf8981dc86a859b956
+
+pkgname = paseo-bin
