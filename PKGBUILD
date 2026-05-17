@@ -3,7 +3,7 @@
 pkgname=python-spotapi
 _name=${pkgname#python-}
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A sleek API wrapper for Spotify's private API"
 arch=('any')
 url="https://pypi.org/project/spotapi/"
@@ -20,7 +20,7 @@ depends=(
   'python-typing_extensions'
   'python-validators'
 )
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 optdepends=(
   'python-pymongo: pymongo extra'
   'python-redis: redis extra'
