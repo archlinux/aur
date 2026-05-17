@@ -1,119 +1,92 @@
-# private key to sign chromium extension is generated with `openssl genrsa 2048 | openssl pkcs8 -topk8 -nocrypt -traditional`
-
-_channel=nightly
-_date=2024-11-06
+_system_wasm_bindgen=false
 
 pkgbase=ruffle
-pkgname=(ruffle ruffle-demo ruffle-selfhosted firefox-extension-ruffle chromium-extension-ruffle)
-pkgver="0.1.0+$_channel+${_date//-}"
+pkgname=(ruffle
+        ruffle-demo
+        ruffle-selfhosted
+        firefox-extension-ruffle
+        chromium-extension-ruffle)
+pkgver=0.2.0
 pkgrel=1
 arch=("x86_64")
-pkgdesc="A Flash Player emulator written in Rust."
+pkgdesc="A Flash Player emulator written in Rust. (Nightly version)"
 url="https://ruffle.rs/"
 license=("MIT OR Apache-2.0")
-makedepends=("cargo" "cmake" "java-environment" "npm" "nodejs-lts-iron"
-             "wasm-bindgen" "binaryen" "gtk3" "alsa-lib" "libxcb" "systemd-libs"
-             "clang" "jq" "git" "chromium" "openssl")
-source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
-        "chromium-extension-ruffle.key")
-sha256sums=('c8500797af9b5928c1057f3f9dee1db4292c9f086d9902384d93cd178e19938a'
-            'dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46')
+makedepends=("cargo" "cmake" "java-environment" "npm" "nodejs-lts-jod"
+             "binaryen" "gtk3" "alsa-lib" "libxcb" "systemd-libs"
+             "clang" "jq" "git" "openssl" "rust-wasm" "rust-src")
+if "$_system_wasm_bindgen"
+then
+    makedepends+=("wasm-bindgen")
+else
+    makedepends+=("yq")
+fi
+source=("git+https://github.com/ruffle-rs/ruffle.git#tag=v$pkgver")
+sha256sums=('180d700c4e9bc2b346651c83331ad43a9b3abf356e0637cb021f3aecaf0530e6')
 options=("!lto")
 
-_FIREFOX_EXTRNSION_ID="ruffle@ruffle.rs"
+_FIREFOX_EXTENSION_ID="ruffle@ruffle.rs"
 
 prepare() {
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    if ! "$_system_wasm_bindgen"
+    then
+        local require_wasm_bindgen_version
+        require_wasm_bindgen_version="$(tomlq -r '.package[] | select(.name == "wasm-bindgen") | .version' Cargo.lock)"
+        cargo install wasm-bindgen-cli --version "$require_wasm_bindgen_version"
+    fi
+    cargo fetch --locked --target host-tuple
+    cargo fetch --locked --target wasm32-unknown-unknown
     cd web
     npm ci
-    # TODO version_name=$version_number when not nightly
     jq --null-input \
-        --arg version_channel "$_channel" \
-        --arg version_number "$(jq -r .version package.json)" \
-        --arg version_name "$_channel $_date" \
+        --arg version_channel "stable" \
+        --arg version_number "$pkgver" \
+        --arg version_name "$pkgver" \
         --arg build_date "$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d)" \
         --arg build_id "$pkgrel" \
         --arg commitHash "$(git rev-parse HEAD)" \
-        --arg firefox_extension_id "$_FIREFOX_EXTRNSION_ID" \
+        --arg firefox_extension_id "$_FIREFOX_EXTENSION_ID" \
     '$ARGS.named' > version_seal.json
     echo "Generated version_seal.json:"
     cat version_seal.json
 }
 
 build() {
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
+    if ! "$_system_wasm_bindgen"
+    then
+        export PATH="$PATH:$HOME/.cargo/bin"
+    fi
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features \
-        --package=ruffle_desktop
     # libtracy_client-sys seems missing some symbols, skip enabling all features.
+    # jpegxr is not compatible to rust 1.94.0
     cargo build --frozen --release \
+        --package=ruffle_desktop \
         --package=ruffle_scanner \
         --package=exporter
 
-    export CARGO_FEATURES=jpegxr
     # Script will read binary at hardcoded path
     # See web/packages/core/tools/build_wasm.ts for more info.
     unset CARGO_TARGET_DIR
     # Flags does not supported by WASM target:
     # C/CXX: -mtune -march -fcf-protection
     # RUST: -Ctarget-cpu
-    local flag flags
-    for flags in "$CFLAGS" "$CXXFLAGS"
-    do
-        for flag in $flags
-        do
-            if [[ "$flag" =~ ^-m(tune|arch)=[0-9a-z]+ ]] || [[ "$flag" == "-fcf-protection" ]]
-            then
-                echo "Removing $flag in C/CXX FLAGS"
-                CFLAGS=${CFLAGS/$flag/}
-            fi
-        done
-    done
-    if flags="$(echo "$RUSTFLAGS" | grep -o -P '(\ *-C\s*target-cpu=[0-9a-z]+)')"
-    then
-        for flag in $flags
-        do
-            echo "Removing $flag in Rust FLAGS"
-            RUSTFLAGS=${RUSTFLAGS/$flag/}
-        done
-    fi
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's/-m(tune|arch)=[0-9a-zA-Z-]+//g;s/-fcf-protection//g')"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's/-m(tune|arch)=[0-9a-zA-Z-]+//g;s/-fcf-protection//g')"
+    RUSTFLAGS="$(echo "$RUSTFLAGS" | sed -E 's/\s*-C\s*target-cpu=[0-9a-zA-Z]+//')"
 
     cd web
     npm run build:repro
-    unset CARGO_FEATURES
-
-    echo "Signing chromium extension..."
-    mkdir -p extension-chromium
-    bsdtar -x -C extension-chromium -f packages/extension/dist/ruffle_extension.zip
-    local extension_version pubkey extension_id userdatadir
-    extension_version="$(jq -r .version extension-chromium/manifest.json)"
-    pubkey="$(openssl rsa -in "$srcdir/chromium-extension-ruffle.key" -pubout -outform DER | base64 -w0)"
-    extension_id="$(echo "$pubkey" | base64 -d | sha256sum | head -c32 | tr '0-9a-f' 'a-p')"
-    echo "Chromium extension id is $extension_id"
-    echo "$extension_id" > .chromium_extension_id
-    jq --null-input \
-        --arg external_crx "/usr/lib/chromium-extension-ruffle/$extension_id.crx" \
-        --arg external_version "$extension_version" \
-    '$ARGS.named' > "$extension_id.json"
-    jq --ascii-output \
-        --arg key "$pubkey" \
-    '. + {"key": $key}' extension-chromium/manifest.json > manifest.json
-    mv manifest.json extension-chromium/manifest.json
-
-    userdatadir="$(mktemp -d chromium-pack-XXXXXX)"
-    chromium --user-data-dir="$userdatadir" --pack-extension="extension-chromium" \
-        --pack-extension-key="$srcdir/chromium-extension-ruffle.key"
 }
 
 check() {
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features \
-        --package=ruffle_desktop
     cargo test --frozen \
+        --package=ruffle_desktop \
         --package=ruffle_scanner \
         --package=exporter
 
@@ -122,10 +95,10 @@ check() {
 }
 
 package_ruffle() {
-    depends=("hicolor-icon-theme" "alsa-lib" "systemd-libs" "gcc-libs" "glibc")
+    depends=("hicolor-icon-theme" "alsa-lib" "systemd-libs" "libgcc" "glibc")
     pkgdesc+=" (Desktop app and utils)"
 
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     local f
     find target/release -maxdepth 1 -executable -type f | while read -r f
     do
@@ -160,7 +133,7 @@ package_ruffle-demo() {
     pkgdesc+=" (Demo web app)"
     arch=("any")
 
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     mkdir -p "$pkgdir/usr/share/webapps"
     cp -a --no-preserve=ownership \
         web/packages/demo/dist \
@@ -177,7 +150,7 @@ package_ruffle-selfhosted() {
     pkgdesc+=" (JavaScript module)"
     arch=("any")
 
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     mkdir -p \
         "$pkgdir/usr/lib/node_modules" \
         "$pkgdir/usr/share/licenses/$pkgname"
@@ -199,9 +172,9 @@ package_firefox-extension-ruffle() {
     pkgdesc+=" (Unsigned Firefox extension)"
     arch=("any")
 
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     install -Dm644 web/packages/extension/dist/firefox_unsigned.xpi \
-        "$pkgdir/usr/lib/firefox/browser/extensions/$_FIREFOX_EXTRNSION_ID.xpi"
+        "$pkgdir/usr/lib/firefox/browser/extensions/$_FIREFOX_EXTENSION_ID.xpi"
     install -Dm644 web/packages/extension/LICENSE_APACHE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE_APACHE"
     install -Dm644 web/packages/extension/LICENSE_MIT \
@@ -210,17 +183,17 @@ package_firefox-extension-ruffle() {
 
 package_chromium-extension-ruffle() {
     optdepends=("chromium: Load extension in browser.")
-    pkgdesc+=" (Self-signed Chromium extension)"
+    pkgdesc+=" (Chromium extension)"
     arch=("any")
 
-    cd "$srcdir/$pkgbase"
-    local extension_id
-    extension_id=$(<web/.chromium_extension_id)
+    cd "$srcdir/ruffle"
+    local extension_id=donbcfbmhbcapadipfkeojnmajbakjdc # https://chromewebstore.google.com/detail/ruffle-flash-emulator/donbcfbmhbcapadipfkeojnmajbakjdc
     echo  "Installing chromium extension $extension_id..."
-    install -Dm644 "web/$extension_id.json" \
-        "$pkgdir/usr/share/chromium/extensions/$extension_id.json"
-    install -Dm644 web/extension-chromium.crx \
-        "$pkgdir/usr/lib/$pkgname/$extension_id.crx"
+    jq --null-input --raw-output \
+        --arg external_update_url https://clients2.google.com/service/update2/crx \
+        '$ARGS.named' | \
+    install -Dm644 "/dev/stdin" \
+            "$pkgdir/usr/share/chromium/extensions/$extension_id.json"
     install -Dm644 web/packages/extension/LICENSE_APACHE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE_APACHE"
     install -Dm644 web/packages/extension/LICENSE_MIT \

@@ -1,5 +1,5 @@
-src
-pkg
-*.pkg.tar.*
-*.log
-/ruffle/
+*
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!.gitignore
