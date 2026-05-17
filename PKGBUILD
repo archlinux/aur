@@ -31,5 +31,5 @@ build() {
 
 package() {
   cd "$srcdir/curd-polland"
-  install -Dm755 curd-polland "$pkgdir/usr/bin/curd-polland"
+  install -Dm755 curd-polland "$pkgdir/usr/bin/curd"
 }
