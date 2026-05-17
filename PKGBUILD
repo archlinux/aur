@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus <codemux at codemux dot org>
 pkgname=codemux-bin
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="The Agentic Development Environment for Builders"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 provides=('codemux')
 conflicts=('codemux')
 source=("https://github.com/Zeus-Deus/codemux/releases/download/v${pkgver}/codemux_${pkgver}_amd64.AppImage")
-sha256sums=('f9c94c5a67cc3d381d071438123b8ae32bd4560dae8cdf7a7a482c5419015acb')
+sha256sums=('1afe7843c1c5cfadbbb6e476d8c78f8bf1792a35f97e955f94830d490df2d92c')
 options=('!strip')
 
 prepare() {
@@ -34,19 +34,27 @@ package() {
         install -Dm755 usr/bin/agent-browser "${pkgdir}/usr/bin/agent-browser"
     fi
 
-    # Tauri-bundled resources (claude-agent sidecar). Shipped as a
-    # resource (not externalBin) starting v0.2.0 to avoid linuxdeploy's
-    # patchelf corrupting the bun-compiled ~100 MB binary. Tauri places
-    # resources under /usr/lib/<bundle-name>/ on Linux deb/rpm — that's
-    # what AppHandle::path().resource_dir() resolves to at runtime, and
-    # the setup() hook in lib.rs pins CODEMUX_CLAUDE_SIDECAR_PATH from
-    # there. If this directory is missing the agent-chat Claude provider
-    # fails with `provider_not_configured: Claude` on send.
+    # Tauri-bundled resources. Two binaries currently live here:
+    #   - codemux-claude-sidecar-<triple>: claude-agent sidecar (since
+    #     v0.2.0). Shipped as a resource (not externalBin) to avoid
+    #     linuxdeploy's patchelf corrupting the bun-compiled ~100 MB
+    #     binary. Setup hook in lib.rs pins CODEMUX_CLAUDE_SIDECAR_PATH
+    #     from here. Missing → agent-chat Claude provider fails with
+    #     `provider_not_configured: Claude` on send.
+    #   - codemux-remote-<triple>: daemon scp'd to remote SSH hosts on
+    #     first push (since v0.4.0). Resolved at runtime via
+    #     AppHandle::path().resource_dir(). Missing → push-to-host
+    #     errors out with "Codemux build doesn't include codemux-remote
+    #     for x86_64-unknown-linux-gnu".
+    # Tauri places resources under /usr/lib/<bundle-name>/ on deb/rpm,
+    # which is what resource_dir() returns at runtime.
     if [ -d usr/lib/codemux/binaries ]; then
         install -d "${pkgdir}/usr/lib/codemux/binaries"
-        for f in usr/lib/codemux/binaries/codemux-claude-sidecar-*; do
-            [ -f "$f" ] || continue
-            install -Dm755 "$f" "${pkgdir}/${f}"
+        for pattern in codemux-claude-sidecar-* codemux-remote-*; do
+            for f in usr/lib/codemux/binaries/$pattern; do
+                [ -f "$f" ] || continue
+                install -Dm755 "$f" "${pkgdir}/${f}"
+            done
         done
     fi
 
