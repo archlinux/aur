@@ -8,7 +8,7 @@ url="https://github.com/espressif/idf-eclipse-plugin"
 license=('EPL-2.0')
 depends=('jdk-openjdk' 'webkit2gtk-4.1' 'gtk2' 'gtk3' 'cmake' 'git' 'python' 'dfu-util')
 source=("https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-${pkgver}-linux.gtk.x86_64.tar.gz")
-sha256sums=('375705fdb219f32338d2c3a05938296726fd6d3da705f4a6d28032c5')
+sha256sums=('8dd49f6144fb758fe1a61757b0fc27221abe07bd55edb23baf1936f6cfc0204d')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${pkgname}"
