@@ -2,8 +2,8 @@
 
 pkgname=virtual-screen-bin
 _pkgname=virtual-screen
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Use any browser as a second-screen client for KDE Linux"
 arch=('x86_64')
 url="https://github.com/opengeos/virtual-screen"
@@ -39,7 +39,7 @@ sha256sums=(
   'b4ec51e826decc076ec0456c55a793211767a1d7f961c6e3d333768af8582d38'
   '68c28dac195a47963b3ec1f032d5f7cc641a9a46febcbe393c8698ec221b580f'
 )
-sha256sums_x86_64=('66b154cc0af54210dca46ccc207c3ded6640e11245f701e34c894c4a58147f4a')
+sha256sums_x86_64=('1291d3114b8f55969073beb0e413d7e12507cce44d803e7bc2dafc85c11c9984')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
