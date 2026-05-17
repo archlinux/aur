@@ -1,6 +1,6 @@
 pkgbase = wvkbd
 	pkgdesc = On-screen keyboard for wlroots
-	pkgver = 0.17
+	pkgver = 0.19.4
 	pkgrel = 1
 	url = https://git.sr.ht/~proycon/wvkbd
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = wvkbd
 	depends = pango
 	depends = cairo
 	depends = glibc
-	source = wvkbd-0.17.tar.gz::https://git.sr.ht/~proycon/wvkbd/archive/v0.17.tar.gz
-	sha512sums = 49eaf26c634b074b18b8a9c37764fadf8d47e5be5e68fd2d5520dd09d1948cdbb9bba9c118fa699c557840c772489b8f19c3fd07090726e1c6a9dae1615ae706
+	source = wvkbd-0.19.4.tar.gz::https://git.sr.ht/~proycon/wvkbd/archive/v0.19.4.tar.gz
+	sha512sums = e9a877eac4913375a3ea160966d0822ed15be540234148ba2638e5b7c19cfa885b962eba260a0f782a762324732454cf48668d85307a748decb198abeb009784
 
 pkgname = wvkbd
