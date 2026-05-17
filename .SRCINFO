@@ -1,7 +1,7 @@
 pkgbase = unigine-heaven
 	pkgdesc = Unigine Benchmark
 	pkgver = 4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.unigine.com
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = unigine-heaven
 	depends = fontconfig
 	optdepends = openal: sound support
 	source = https://assets.unigine.com/d/Unigine_Heaven-4.0.run
-	sha512sums = f075968d9812c7bd6a19cd27c48612203ce81f48b14ba56239419957fd3342adb31267ed8c261b7b1c68e2589a07d4cee84b199fb12d8d69e2d6a34fbdcf76c1
+	sha512sums = 8fc8b06548d9a6ab40394df48bf9c6c7fbed57419f4df20d03104f133c4ea5a53192b3f139e17dcc314baabee4f3d37274c40d1d5621ea90ee09ad41cd25613b
 
 pkgname = unigine-heaven
-

@@ -1,3 +1,4 @@
+# Maintainer: ytterdal <ytterdal at gmail dot com>
 # Maintainer: xythrez <yuydevel at protonmail com>
 # Contributer: ajs124 < aur AT ajs124 DOT de >
 # Contributer: meyithi <mail at meyithi dot com>
@@ -7,7 +8,7 @@
 pkgname=unigine-heaven
 _pkgname=Unigine_Heaven
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Unigine Benchmark"
 arch=('i686' 'x86_64')
 url="http://www.unigine.com"
@@ -15,7 +16,7 @@ license=('custom:UNIGINE Engine')
 depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig')
 optdepends=('openal: sound support')
 source=("https://assets.unigine.com/d/"${_pkgname}"-"${pkgver}".run")
-sha512sums=('f075968d9812c7bd6a19cd27c48612203ce81f48b14ba56239419957fd3342adb31267ed8c261b7b1c68e2589a07d4cee84b199fb12d8d69e2d6a34fbdcf76c1')
+sha512sums=('8fc8b06548d9a6ab40394df48bf9c6c7fbed57419f4df20d03104f133c4ea5a53192b3f139e17dcc314baabee4f3d37274c40d1d5621ea90ee09ad41cd25613b')
 
 [ "${CARCH}" = "i686" ] && _arch=x86
 [ "${CARCH}" = "x86_64" ] && _arch=x64
