@@ -41,7 +41,7 @@ depends=(
 makedepends=('python-setuptools')
 backup=('etc/sysmanage-agent.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bceverly/sysmanage-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cd782d04ce3462721111507ed2a34f7a34f90b52fad1fe7073f2bd23f1ee6f45')
+sha256sums=('82ca38ca15c9f089d64f1a4d0f1a6eec22afe18bb689a78902d86c44aa50f93f')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
