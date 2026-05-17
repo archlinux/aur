@@ -11,7 +11,7 @@ license=("MIT")
 provides=('shlink-web-client')
 conflicts=('shlink-web-client')
 source=("https://github.com/shlinkio/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_dist.zip")
-sha256sums=('55b5c67b57b47d0c86df7fd32ba9a66f749e8b5947bee6e1d0f5f5b4bd55fdc4')
+sha256sums=('5fc24bc8bf213418509f2e6b811e9484f59967d341e95e7599f2f616f806e1ec')
 
 package() {
     install -dm755 "${pkgdir}/usr/share/webapps/${_pkgname}"
