@@ -16,5 +16,5 @@ sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
 package() {
-  install -Dm755 "$srcdir/curd-linux-${CARCH}" "$pkgdir/usr/bin/curd-polland"
+  install -Dm755 "$srcdir/curd-linux-${CARCH}" "$pkgdir/usr/bin/curd"
 }
