@@ -1,7 +1,7 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=minot
 pkgver=0.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A versatile toolset for debugging and verifying stateful robot perception software."
 arch=('x86_64' 'aarch64')
 url="https://github.com/uos/minot"
@@ -11,11 +11,12 @@ makedepends=('cargo' 'zensical')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
-provides=('minot-coord' 'wind-rat' 'librat')
-conflicts=('minot-coord' 'wind-rat' 'librat')
+provides=('minot-coord' 'librat')
+conflicts=('minot-coord' 'librat')
 
 build() {
   export CARGO_TARGET_DIR="$srcdir/target"
+  cd "$srcdir/$pkgname-$pkgver"
   cargo build --release --locked --no-default-features --features embed-mt-pubsub,embed-coord
 
   cd "$srcdir/$pkgname-$pkgver/docs/" && zensical build --clean && cd -
@@ -30,7 +31,6 @@ package() {
   install -Dm755 "$srcdir/target/release/minot" "$pkgdir/usr/bin/minot"
   install -Dm755 "$srcdir/target/release/minot-coord" "$pkgdir/usr/bin/minot-coord"
 
-  install -Dm755 "$srcdir/target/release/wind-rat" "$pkgdir/usr/bin/wind-rat"
   install -Dm755 "$srcdir/target/release/librat.so" "$pkgdir/usr/lib/librat.so"
   install -Dm755 "$srcdir/target/release/librat.a" "$pkgdir/usr/lib/librat.a"
   install -Dm644 "$srcdir/$pkgname-$pkgver/mt_rat/rat.h" "$pkgdir/usr/include/rat.h"
