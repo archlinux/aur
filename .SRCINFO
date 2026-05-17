@@ -1,6 +1,6 @@
 pkgbase = libblake
 	pkgdesc = Library for the BLAKE-family of hashing functions
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libblake
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = libblake
 	makedepends = glibc
 	makedepends = musl
 	makedepends = gcc
-	source = libblake-3.0.1.tar.gz::https://codeberg.org/maandree/libblake/archive/3.0.1.tar.gz
-	sha256sums = e2fb93671a5731f40f60ddbc8d68d1da5b3a3d813136f32815cff0998c2e56b3
+	source = libblake-3.0.2.tar.gz::https://codeberg.org/maandree/libblake/archive/3.0.2.tar.gz
+	sha256sums = 6eed8a37b78e99d24f18e3779533edbfc236b36ab8cbe9d97463986e9ac02adf
 
 pkgname = libblake
 	pkgdesc = Library for the BLAKE-family of hashing functions

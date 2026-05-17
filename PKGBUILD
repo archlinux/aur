@@ -2,7 +2,7 @@
 
 pkgbase=libblake
 pkgname=($pkgbase $pkgbase-musl)
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 _pkgdesc="Library for the BLAKE-family of hashing functions"
 pkgdesc="${_pkgdesc}"
@@ -14,7 +14,7 @@ checkdepends=(glibc musl)
 _compiler=gcc
 makedepends=(glibc musl ${_compiler})
 source=($pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(e2fb93671a5731f40f60ddbc8d68d1da5b3a3d813136f32815cff0998c2e56b3)
+sha256sums=(6eed8a37b78e99d24f18e3779533edbfc236b36ab8cbe9d97463986e9ac02adf)
 
 build() {
   cd -- "$srcdir"
