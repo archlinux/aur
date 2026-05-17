@@ -1,0 +1,17 @@
+pkgbase = wallpygui
+	pkgdesc = GTK4 wallpaper manager for Wayland desktops
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jR4dh3y/wallpygui
+	arch = any
+	license = MIT
+	depends = awww
+	depends = ffmpeg
+	depends = gtk4
+	depends = mpvpaper
+	depends = python
+	depends = python-gobject
+	source = wallpygui-0.0.1.tar.gz::https://github.com/jR4dh3y/wallpygui/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 7144e7c9b3f81fb816b5fc3ad95cfcabe289f0b33d273dfa4f97950286703384
+
+pkgname = wallpygui
