@@ -25,7 +25,7 @@ build() {
 check() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTONIG_SYSTEM_LIBONIG=1
-  cargo test --release --frozensudo
+  cargo test --release --frozen
 }
 
 package() {
