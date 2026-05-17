@@ -10,9 +10,9 @@ conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
 _ffsrcver=140.11.0
-_ffbuild=1
-_l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
-_lwrelver=100
+_ffbuild=2
+_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1
+_lwrelver=101
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
@@ -145,10 +145,10 @@ source=(
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
 )
-sha256sums=('789e837e7b05bfa478c054a25931d71b538d78e226c3995d57e1be20cfa58e52'
-            '142a82a695240e303eeb5c187dbf4fb1c4ea5190fae0109b87a11796a12c5ef2'
+sha256sums=('92594f6971162bc445bda373839bd565142dfa2dad23fb796d440ce83b087349'
+            '1b034d2117356fda24807a151055132315c6ba58ad2bdf7ec71ee707fac5e028'
             'SKIP'
-            '52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b'
+            '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
@@ -160,6 +160,13 @@ validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
+)
+_languages=(
+    ach af an ar ast az be bg bn br bs ca-valencia ca cak cs cy da de dsb el
+    en-CA en-GB en-US eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE
+    gd gl gn gu-IN he hi-IN hr hsb hu hy-AM ia id is it ja ka kab kk km kn ko lij
+    lt lv mk mr ms my nb-NO ne-NP nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru si sk sl
+    son sq sr sv-SE ta te th tl tr trs uk ur uz vi xh zh-CN zh-TW
 )
 
 prepare() {
@@ -409,12 +416,13 @@ END
   rm -f ../mozconfig  ./mozconfig
 
   ./mach build --priority normal
+  MOZ_PKG_FORMAT=tar ./mach pack-multi-locale --locales ${_languages[@]}
 }
 
 package() {
   _lw_srcdir=$srcdir/src/librewolf-$_ffsrcver-$_lwrelver
   cd "${_lw_srcdir}"
-  DESTDIR="$pkgdir" ./mach install
+  DESTDIR="$pkgdir" MOZ_CHROME_MULTILOCALE="${_languages[*]}" ./mach install
 
   rm -f "${pkgdir}/usr/lib/pingsender"
 
