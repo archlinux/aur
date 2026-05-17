@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-cuda-full
 pkgver=8.1.1
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases'
 arch=('x86_64')
@@ -186,6 +186,18 @@ build() {
     # Ensure nvcc is on PATH for --enable-cuda-nvcc
     export PATH="/opt/cuda/bin:$PATH"
 
+    # FFmpeg's configure defaults --nvccflags to "-gencode arch=compute_30,
+    # code=sm_30 -O2" and falls back through sm_60/sm_75 only when the
+    # toolchain prints the English word "unsupported". That probe is fragile
+    # (locale, wrapper scripts, future CUDA wording can all break it) and
+    # leaves configure with an unbuildable arch -> "ERROR: failed checking
+    # for nvcc". Ask nvcc itself for the lowest arch it supports and pass
+    # --nvccflags explicitly so we don't rely on the probe.
+    local _nvcc_arch
+    _nvcc_arch=$(nvcc --list-gpu-arch 2>/dev/null | head -n1)
+    : "${_nvcc_arch:=compute_75}"
+    local _nvcc_sm=${_nvcc_arch/compute_/sm_}
+
     ./configure \
         --prefix=/usr \
         --disable-debug \
@@ -274,6 +286,7 @@ build() {
         --enable-version3 \
         --enable-vulkan \
         --enable-zlib \
+        --nvccflags="-gencode arch=${_nvcc_arch},code=${_nvcc_sm} -O2" \
         --extra-cflags="-I/opt/cuda/include" \
         --extra-ldflags="-L/opt/cuda/lib64"
 
