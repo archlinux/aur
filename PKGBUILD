@@ -2,18 +2,18 @@
 pkgname=handtex
 _module='Hand-TeX'
 _pkgname_pypi='handtex'
-pkgver='1.0.4'
+pkgver='1.0.5'
 # Sometimes I need to issue a hotfix to the pypi package without updating other releases, so pkgver is the official version.
-_pypiver='1.0.4'
+_pypiver='1.0.5'
 pkgrel=1
 pkgdesc="Handwritten LaTeX symbol classifier for the desktop"
 url="https://github.com/VoxelCubes/Hand-TeX"
-depends=('python>=3.10.0' 'python-pipx' 'python-pillow' 'pyside6' 'python-pytorch' 'python-torchvision' 'python-numpy' 'python-pyxdg' 'python-attrs' 'python-natsort' 'python-loguru' 'python-psutil' 'python-networkx')
+depends=('python>=3.10.0' 'python-pipx' 'python-pillow' 'pyside6' 'python-pytorch' 'python-torchvision' 'python-numpy' 'python-pyxdg' 'python-attrs' 'python-natsort' 'python-loguru' 'python-psutil' 'python-networkx' 'python-packaging')
 makedepends=('python-setuptools' 'python-pip' 'desktop-file-utils')
 license=('GPL')
 arch=('any')
 source=("https://github.com/VoxelCubes/Hand-TeX/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9d1c8b959093e84c8b57837ada83588fa1ee44b3707542d045e5fa5f92f3a26d')
+sha256sums=('1c930d87a1075c1fa9d896dbd1a8515abfd6d8adb29dcd871d0e73450a3a9dc1')
 provides=('handtex')
 
 
