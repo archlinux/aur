@@ -1,7 +1,7 @@
 pkgbase = pince
 	pkgdesc = A Linux reverse engineering tool inspired by Cheat Engine.
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/korcankaraokcu/PINCE
 	arch = any
 	license = GPL-3.0-or-later WITH CC-BY-3.0
@@ -12,7 +12,14 @@ pkgbase = pince
 	makedepends = pkgconf
 	makedepends = git
 	makedepends = sed
+	depends = gdb
 	depends = polkit
+	depends = python-capstone
+	depends = python-keyboard
+	depends = python-keystone
+	depends = python-pexpect
+	depends = python-pygdbmi
+	depends = python-pyqt6
 	optdepends = qt6-wayland: wayland support
 	source = pince::git+https://github.com/korcankaraokcu/PINCE.git#tag=v0.5
 	source = pince.desktop
@@ -22,12 +29,3 @@ pkgbase = pince
 	sha256sums = 4111c85f3e5764a21d5b57c4a7ee82a70d91713c9d1e10aac7045079139446ab
 
 pkgname = pince
-	depends = gdb
-	depends = gobject-introspection-runtime
-	depends = python-capstone
-	depends = python-gobject
-	depends = python-keyboard
-	depends = python-keystone
-	depends = python-pexpect
-	depends = python-pygdbmi
-	depends = python-pyqt6
