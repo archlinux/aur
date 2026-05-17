@@ -1,0 +1,12 @@
+pkgbase = lenovoctl
+	pkgdesc = A lightweight CLI tool to control Lenovo laptop features on Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ayanrajpoot10/lenovoctl
+	arch = any
+	license = MIT
+	depends = bash
+	source = lenovoctl-1.0.0.tar.gz::https://github.com/ayanrajpoot10/lenovoctl/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 5e9fd827d7515cc4d420c08fb21c965ada511c4de8b1ca3bcbc0edebf7120788
+
+pkgname = lenovoctl
