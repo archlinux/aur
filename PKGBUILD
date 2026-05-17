@@ -1,9 +1,10 @@
 # Maintainer: Zhiyu Wang <zhiyuxl@outlook.com>
+# Maintainer: LuoTianyi_arm64 <2153585992@qq.com>
 # Contributor: Crush <crush@ccat.dev>
 
 pkgname=ccat-rs
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal file viewer — markdown, docx, images, PDF, audio, video, JSON, YAML, logs, ELF disasm, diff, gz, archives"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zhiyuHD/ccat"
@@ -18,13 +19,13 @@ build() {
   export CARGO_BUILD_JOBS=$(nproc)
   # Use system oniguruma instead of onig_sys building its own
   export RUSTONIG_SYSTEM_LIBONIG=1
-  cargo build --release --frozen
+  cargo build --release
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTONIG_SYSTEM_LIBONIG=1
-  cargo test --release --frozen
+  cargo test --release --frozensudo
 }
 
 package() {
