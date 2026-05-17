@@ -1,0 +1,198 @@
+diff --git a/common/rdr/AESInStream.cxx b/common/rdr/AESInStream.cxx
+index b10a214a..c0f2a144 100644
+--- a/common/rdr/AESInStream.cxx
++++ b/common/rdr/AESInStream.cxx
+@@ -62,12 +62,12 @@ bool AESInStream::fillBuffer()
+     EAX_SET_NONCE(&eaxCtx128, aes128_encrypt, 16, counter);
+     EAX_UPDATE(&eaxCtx128, aes128_encrypt, 2, ad);
+     EAX_DECRYPT(&eaxCtx128, aes128_encrypt, length, (uint8_t*)end, data);
+-    EAX_DIGEST(&eaxCtx128, aes128_encrypt, 16, macComputed);
++    EAX_DIGEST(&eaxCtx128, aes128_encrypt, macComputed);
+   } else {
+     EAX_SET_NONCE(&eaxCtx256, aes256_encrypt, 16, counter);
+     EAX_UPDATE(&eaxCtx256, aes256_encrypt, 2, ad);
+     EAX_DECRYPT(&eaxCtx256, aes256_encrypt, length, (uint8_t*)end, data);
+-    EAX_DIGEST(&eaxCtx256, aes256_encrypt, 16, macComputed);
++    EAX_DIGEST(&eaxCtx256, aes256_encrypt, macComputed);
+   }
+   if (memcmp(mac, macComputed, 16) != 0)
+     throw std::runtime_error("AESInStream: Failed to authenticate message");
+diff --git a/common/rdr/AESOutStream.cxx b/common/rdr/AESOutStream.cxx
+index 1ec38b56..b74ee562 100644
+--- a/common/rdr/AESOutStream.cxx
++++ b/common/rdr/AESOutStream.cxx
+@@ -83,12 +83,12 @@ void AESOutStream::writeMessage(const uint8_t* data, size_t length)
+     EAX_SET_NONCE(&eaxCtx128, aes128_encrypt, 16, counter);
+     EAX_UPDATE(&eaxCtx128, aes128_encrypt, 2, msg);
+     EAX_ENCRYPT(&eaxCtx128, aes128_encrypt, length, msg + 2, data);
+-    EAX_DIGEST(&eaxCtx128, aes128_encrypt, 16, msg + 2 + length);
++    EAX_DIGEST(&eaxCtx128, aes128_encrypt, msg + 2 + length);
+   } else {
+     EAX_SET_NONCE(&eaxCtx256, aes256_encrypt, 16, counter);
+     EAX_UPDATE(&eaxCtx256, aes256_encrypt, 2, msg);
+     EAX_ENCRYPT(&eaxCtx256, aes256_encrypt, length, msg + 2, data);
+-    EAX_DIGEST(&eaxCtx256, aes256_encrypt, 16, msg + 2 + length);
++    EAX_DIGEST(&eaxCtx256, aes256_encrypt, msg + 2 + length);
+   }
+   out->writeBytes(msg, 2 + length + 16);
+   out->flush();
+diff --git a/common/rfb/CSecurityDH.cxx b/common/rfb/CSecurityDH.cxx
+index 93cf6b26..a230f5d1 100644
+--- a/common/rfb/CSecurityDH.cxx
++++ b/common/rfb/CSecurityDH.cxx
+@@ -125,7 +125,7 @@ void CSecurityDH::writeCredentials()
+   struct md5_ctx md5Ctx;
+   md5_init(&md5Ctx);
+   md5_update(&md5Ctx, sharedSecret.size(), sharedSecret.data());
+-  md5_digest(&md5Ctx, 16, key);
++  md5_digest(&md5Ctx, key);
+   struct aes128_ctx aesCtx;
+   aes128_set_encrypt_key(&aesCtx, key);
+ 
+diff --git a/common/rfb/CSecurityRSAAES.cxx b/common/rfb/CSecurityRSAAES.cxx
+index 513d5605..cda659f1 100644
+--- a/common/rfb/CSecurityRSAAES.cxx
++++ b/common/rfb/CSecurityRSAAES.cxx
+@@ -227,7 +227,7 @@ void CSecurityRSAAES::verifyServer()
+   sha1_update(&ctx, 4, lenServerKey);
+   sha1_update(&ctx, serverKey.size, serverKeyN);
+   sha1_update(&ctx, serverKey.size, serverKeyE);
+-  sha1_digest(&ctx, sizeof(f), f);
++  sha1_digest(&ctx, f);
+   const char *title = "Server key fingerprint";
+   std::string text = core::format(
+     "The server has provided the following identifying information:\n"
+@@ -305,24 +305,24 @@ void CSecurityRSAAES::setCipher()
+     sha1_init(&ctx);
+     sha1_update(&ctx, 16, clientRandom);
+     sha1_update(&ctx, 16, serverRandom);
+-    sha1_digest(&ctx, 16, key);
++    sha1_digest(&ctx, key);
+     rais = new rdr::AESInStream(rawis, key, 128);
+     sha1_init(&ctx);
+     sha1_update(&ctx, 16, serverRandom);
+     sha1_update(&ctx, 16, clientRandom);
+-    sha1_digest(&ctx, 16, key);
++    sha1_digest(&ctx, key);
+     raos = new rdr::AESOutStream(rawos, key, 128);
+   } else {
+     struct sha256_ctx ctx;
+     sha256_init(&ctx);
+     sha256_update(&ctx, 32, clientRandom);
+     sha256_update(&ctx, 32, serverRandom);
+-    sha256_digest(&ctx, 32, key);
++    sha256_digest(&ctx, key);
+     rais = new rdr::AESInStream(rawis, key, 256);
+     sha256_init(&ctx);
+     sha256_update(&ctx, 32, serverRandom);
+     sha256_update(&ctx, 32, clientRandom);
+-    sha256_digest(&ctx, 32, key);
++    sha256_digest(&ctx, key);
+     raos = new rdr::AESOutStream(rawos, key, 256);
+   }
+   if (isAllEncrypted)
+@@ -357,7 +357,7 @@ void CSecurityRSAAES::writeHash()
+     sha1_update(&ctx, 4, lenServerKey);
+     sha1_update(&ctx, serverKey.size, serverKeyN);
+     sha1_update(&ctx, serverKey.size, serverKeyE);
+-    sha1_digest(&ctx, hashSize, hash);
++    sha1_digest(&ctx, hash);
+   } else {
+     hashSize = 32;
+     struct sha256_ctx ctx;
+@@ -368,7 +368,7 @@ void CSecurityRSAAES::writeHash()
+     sha256_update(&ctx, 4, lenServerKey);
+     sha256_update(&ctx, serverKey.size, serverKeyN);
+     sha256_update(&ctx, serverKey.size, serverKeyE);
+-    sha256_digest(&ctx, hashSize, hash);
++    sha256_digest(&ctx, hash);
+   }
+   raos->writeBytes(hash, hashSize);
+   raos->flush();
+@@ -405,7 +405,7 @@ bool CSecurityRSAAES::readHash()
+     sha1_update(&ctx, 4, lenClientKey);
+     sha1_update(&ctx, clientKey.size, clientKeyN);
+     sha1_update(&ctx, clientKey.size, clientKeyE);
+-    sha1_digest(&ctx, hashSize, realHash);
++    sha1_digest(&ctx, realHash);
+   } else {
+     struct sha256_ctx ctx;
+     sha256_init(&ctx);
+@@ -415,7 +415,7 @@ bool CSecurityRSAAES::readHash()
+     sha256_update(&ctx, 4, lenClientKey);
+     sha256_update(&ctx, clientKey.size, clientKeyN);
+     sha256_update(&ctx, clientKey.size, clientKeyE);
+-    sha256_digest(&ctx, hashSize, realHash);
++    sha256_digest(&ctx, realHash);
+   }
+   if (memcmp(hash, realHash, hashSize) != 0)
+     throw protocol_error("Hash doesn't match");
+diff --git a/common/rfb/SSecurityRSAAES.cxx b/common/rfb/SSecurityRSAAES.cxx
+index 405005ab..63dc6188 100644
+--- a/common/rfb/SSecurityRSAAES.cxx
++++ b/common/rfb/SSecurityRSAAES.cxx
+@@ -412,24 +412,24 @@ void SSecurityRSAAES::setCipher()
+     sha1_init(&ctx);
+     sha1_update(&ctx, 16, serverRandom);
+     sha1_update(&ctx, 16, clientRandom);
+-    sha1_digest(&ctx, 16, key);
++    sha1_digest(&ctx, key);
+     rais = new rdr::AESInStream(rawis, key, 128);
+     sha1_init(&ctx);
+     sha1_update(&ctx, 16, clientRandom);
+     sha1_update(&ctx, 16, serverRandom);
+-    sha1_digest(&ctx, 16, key);
++    sha1_digest(&ctx, key);
+     raos = new rdr::AESOutStream(rawos, key, 128);
+   } else {
+     struct sha256_ctx ctx;
+     sha256_init(&ctx);
+     sha256_update(&ctx, 32, serverRandom);
+     sha256_update(&ctx, 32, clientRandom);
+-    sha256_digest(&ctx, 32, key);
++    sha256_digest(&ctx, key);
+     rais = new rdr::AESInStream(rawis, key, 256);
+     sha256_init(&ctx);
+     sha256_update(&ctx, 32, clientRandom);
+     sha256_update(&ctx, 32, serverRandom);
+-    sha256_digest(&ctx, 32, key);
++    sha256_digest(&ctx, key);
+     raos = new rdr::AESOutStream(rawos, key, 256);
+   }
+   if (isAllEncrypted)
+@@ -464,7 +464,7 @@ void SSecurityRSAAES::writeHash()
+     sha1_update(&ctx, 4, lenClientKey);
+     sha1_update(&ctx, clientKey.size, clientKeyN);
+     sha1_update(&ctx, clientKey.size, clientKeyE);
+-    sha1_digest(&ctx, hashSize, hash);
++    sha1_digest(&ctx, hash);
+   } else {
+     hashSize = 32;
+     struct sha256_ctx ctx;
+@@ -475,7 +475,7 @@ void SSecurityRSAAES::writeHash()
+     sha256_update(&ctx, 4, lenClientKey);
+     sha256_update(&ctx, clientKey.size, clientKeyN);
+     sha256_update(&ctx, clientKey.size, clientKeyE);
+-    sha256_digest(&ctx, hashSize, hash);
++    sha256_digest(&ctx, hash);
+   }
+   raos->writeBytes(hash, hashSize);
+   raos->flush();
+@@ -512,7 +512,7 @@ bool SSecurityRSAAES::readHash()
+     sha1_update(&ctx, 4, lenServerKey);
+     sha1_update(&ctx, serverKey.size, serverKeyN);
+     sha1_update(&ctx, serverKey.size, serverKeyE);
+-    sha1_digest(&ctx, hashSize, realHash);
++    sha1_digest(&ctx, realHash);
+   } else {
+     struct sha256_ctx ctx;
+     sha256_init(&ctx);
+@@ -522,7 +522,7 @@ bool SSecurityRSAAES::readHash()
+     sha256_update(&ctx, 4, lenServerKey);
+     sha256_update(&ctx, serverKey.size, serverKeyN);
+     sha256_update(&ctx, serverKey.size, serverKeyE);
+-    sha256_digest(&ctx, hashSize, realHash);
++    sha256_digest(&ctx, realHash);
+   }
+   if (memcmp(hash, realHash, hashSize) != 0)
+     throw protocol_error("Hash doesn't match");

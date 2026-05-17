@@ -2,7 +2,7 @@
 
 pkgname=tigervnc-viewer
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="TigerVNC (Viewer only), forked from the VNC 4 branch of TightVNC."
 arch=('i686' 'x86_64')
 url="http://www.tigervnc.org"
@@ -12,15 +12,18 @@ depends=('fltk1.3' 'gnutls' 'libjpeg-turbo' 'pixman' 'libx11' 'libxi')
 makedepends=('cmake' 'libxext')
 conflicts=('tigervnc' 'tightvnc')
 source=(tigervnc-${pkgver}.tar.gz::https://github.com/TigerVNC/tigervnc/archive/v${pkgver}.tar.gz
-        vncviewer.desktop)
+        vncviewer.desktop
+        nettle-4.patch)
 sha256sums=('b107c0c8b8a962594281690366c24186e95c2ea4a169acbc0076aa62ed01f467'
-            '5d825fee354ed7c37bd4aa0558850d3fd17b7e2423b6818afff43ba26ebfb606')
+            '5d825fee354ed7c37bd4aa0558850d3fd17b7e2423b6818afff43ba26ebfb606'
+            '5d290368a537a0d354773a06c096c1c1b36fd2de4d03860a5d82456f0b527a9b')
 
 prepare() {
   cd ${srcdir}/tigervnc-${pkgver}
   sed -i -e 's/find_package(FLTK REQUIRED)/find_package(FLTK1.3 REQUIRED)/' \
          -e 's/find_package(FLTK)/find_package(FLTK1.3)/' \
          -e 's/if(NOT FLTK_FOUND)/if(NOT FLTK1.3_FOUND)/' CMakeLists.txt
+  patch -p1 -i ../nettle-4.patch
 }
 
 build() {
@@ -34,6 +37,7 @@ build() {
 
 package() {
   cd ${srcdir}/tigervnc-${pkgver}
+  rm -rf $pkgdir
   mv vncviewer/vncviewer.man vncviewer.1 && gzip -9 vncviewer.1
 
   install -Dm755 build/vncviewer/vncviewer $pkgdir/usr/bin/vncviewer
