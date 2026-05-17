@@ -8,12 +8,13 @@ pkgbase = python-helium
 	makedepends = meson
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = git
 	depends = python
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = pybind11
 	depends = nlohmann-json
-	source = https://github.com/xZepyx/helium/archive/main.tar.gz
+	source = helium::git+https://github.com/xZepyx/helium.git
 	sha256sums = SKIP
 
 pkgname = python-helium
