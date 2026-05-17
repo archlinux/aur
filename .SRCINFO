@@ -1,5 +1,5 @@
 pkgbase = ruffle
-	pkgdesc = A Flash Player emulator written in Rust. (Nightly version)
+	pkgdesc = A Flash Player emulator written in Rust.
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://ruffle.rs/
@@ -27,7 +27,7 @@ pkgbase = ruffle
 	sha256sums = 180d700c4e9bc2b346651c83331ad43a9b3abf356e0637cb021f3aecaf0530e6
 
 pkgname = ruffle
-	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (Desktop app and utils)
+	pkgdesc = A Flash Player emulator written in Rust. (Desktop app and utils)
 	depends = hicolor-icon-theme
 	depends = alsa-lib
 	depends = systemd-libs
@@ -35,19 +35,19 @@ pkgname = ruffle
 	depends = glibc
 
 pkgname = ruffle-demo
-	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (Demo web app)
+	pkgdesc = A Flash Player emulator written in Rust. (Demo web app)
 	arch = any
 
 pkgname = ruffle-selfhosted
-	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (JavaScript module)
+	pkgdesc = A Flash Player emulator written in Rust. (JavaScript module)
 	arch = any
 
 pkgname = firefox-extension-ruffle
-	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (Unsigned Firefox extension)
+	pkgdesc = A Flash Player emulator written in Rust. (Unsigned Firefox extension)
 	arch = any
 	optdepends = firefox: Load extension in browser.
 
 pkgname = chromium-extension-ruffle
-	pkgdesc = A Flash Player emulator written in Rust. (Nightly version) (Chromium extension)
+	pkgdesc = A Flash Player emulator written in Rust. (Chromium extension)
 	arch = any
 	optdepends = chromium: Load extension in browser.
