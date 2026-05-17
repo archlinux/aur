@@ -1,0 +1,4 @@
+[pidgin]
+source = "regex"
+url = "https://frodo.looijaard.name/project/psiconv"
+regex = ">([\\d.]+)</"
