@@ -15,6 +15,7 @@ build() {
   python -m build --wheel --no-isolation
 }
 package() {
-  cd $_gitname
+  cd "$srcdir/$_gitname"
+  rm -rf "$pkgdir"/*
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
