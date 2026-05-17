@@ -4,6 +4,7 @@ pkgver=r18.a2a6998
 pkgrel=1
 arch=('x86_64')
 
+license=('GPL3')
 depends=()
 makedepends=('cmake' 'make' 'gcc' 'git')
 
