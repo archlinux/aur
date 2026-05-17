@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-ibm-runtime
 pkgname=python-${_pkgname}
-pkgver=0.46.1
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="IBM Client for Qiskit Runtime"
 arch=(any)
@@ -13,7 +13,6 @@ depends=(
     python-ibm-platform-services
     python-ibm-quantum-schemas
     python-numpy
-    python-packaging
     python-pybase64
     python-pydantic
     python-qiskit
@@ -39,16 +38,8 @@ checkdepends=(
     python-plotly
     python-pytest
 )
-source=(
-    $_pkgname::git+https://github.com/Qiskit/$_pkgname.git#tag=$pkgver
-    fix-test-data-serialization.patch
-)
-b2sums=('dd9f0ffd7acee454c5ff787308745ef02037e75a713cdc78f87e4b78275b9b26a3fcf4cc78e0dfed031b27e340996e2e30cbd56ed6be87881ecb7b84102139d5'
-        '829f30f643704e96361f9cf222f562f1a0a2078e9b4b33e20a2cd5235ad9d1f9bf282f2981e5a582004a57ccc546d940577b9c65fe37f9f0f24087fd863b0420')
-
-prepare() {
-    patch -Np1 -d $_pkgname < fix-test-data-serialization.patch
-}
+source=($_pkgname::git+https://github.com/Qiskit/$_pkgname.git#tag=$pkgver)
+b2sums=('0e998cc505152a92755d7b55de095885d7ec81b00b8b27d51b26e5b79773038561a6f2041f2e69567ebb85337b65c29a741a0f0b08b180cbabb382a69c596850')
 
 build() {
     cd $_pkgname
