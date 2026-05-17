@@ -16,6 +16,8 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir/$_pkgsrc"
     install -Dm755 nx-hyprinstall "$pkgdir/usr/bin/nx-hyprinstall"
-    nx-hyprinstall
+     
+    echo "👟Running installer..."
+    ./nx-hyprinstall -a
 }
 
