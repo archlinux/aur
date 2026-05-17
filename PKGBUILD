@@ -2,7 +2,7 @@
 # Contributor: Your Name <your.email@example.com>
 
 pkgname=piperdc-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A modern RDP Connection Manager for Linux"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'gtk4' 'libadwaita' 'freerdp' 'python-gobject' 'python-secretstorage')
 makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4ed6b07c5cc7835db43a2d41e80c547f93c3ebdef2a3467c8ccbe9077be79ada')
+sha256sums=('a98ef870d1a863b6aecf53ed68bfc10f96a3bf8369b8d1b50d4d52dce76b4ff1')
 
 package() {
     # Locate the extracted source directory (GitHub archives may use the repo's case-sensitive name)

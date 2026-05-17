@@ -1,6 +1,6 @@
 pkgbase = piperdc-git
 	pkgdesc = A modern RDP Connection Manager for Linux
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Darius662/PipeRDC
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = piperdc-git
 	depends = freerdp
 	depends = python-gobject
 	depends = python-secretstorage
-	source = piperdc-git-1.0.0.tar.gz::https://github.com/Darius662/PipeRDC/archive/v1.0.0.tar.gz
-	sha256sums = 4ed6b07c5cc7835db43a2d41e80c547f93c3ebdef2a3467c8ccbe9077be79ada
+	source = piperdc-git-1.0.1.tar.gz::https://github.com/Darius662/PipeRDC/archive/v1.0.1.tar.gz
+	sha256sums = a98ef870d1a863b6aecf53ed68bfc10f96a3bf8369b8d1b50d4d52dce76b4ff1
 
 pkgname = piperdc-git
