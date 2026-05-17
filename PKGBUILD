@@ -2,8 +2,8 @@
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/vibe-kanban-bin
 pkgname=vibe-kanban-bin
 pkgver=0.1.44
-pkgrel=2
-pkgdesc=Vibe\ Kanban\ -\ AI-powered\ Kanban\ board\ \(Binary\)
+pkgrel=3
+pkgdesc=AI-powered\ Kanban\ board
 arch=(x86_64 )
 url=https://vibekanban.com
 license=(Proprietary )
@@ -19,7 +19,7 @@ install=vibe-kanban-bin.install
 source=(vibe-kanban.service )
 sha256sums=('48b6d94e9693f7098ad7d3786ff08b648ce08ab8fcfe8ff13cff97906a12a33f')
 sha256sums_x86_64=('083f15f027a7052916852f40610db34b021f7e7749593623ac3f67a090447a6b')
-source_x86_64=(vibe-kanban-bin-0.1.44.zip::https://npm-cdn.vibekanban.com/binaries/v0.1.44-20260424091429/linux-x64/vibe-kanban.zip )
+source_x86_64=(vibe-kanban-bin-0.1.44-x86_64.zip::https://npm-cdn.vibekanban.com/binaries/v0.1.44-20260424091429/linux-x64/vibe-kanban.zip )
 
 _binary_source_path=vibe-kanban
 _install_bin_path=/usr/bin/vibe-kanban
