@@ -1,7 +1,7 @@
 pkgbase = biscuit-lang-bin
 	pkgdesc = Simple programming language created for fun
 	pkgver = 0.13.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://biscuitlang.org/
 	arch = x86_64
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = biscuit-lang-bin
 	conflicts = biscuit-lang
 	options = !debug
 	backup = etc/biscuit-lang/config.yaml
-	source = biscuit-lang-bin.zip::https://github.com/biscuitlang/bl/releases/download/0.13.0/blc-x86_64-linux.zip
+	source = https://github.com/biscuitlang/bl/releases/download/0.13.0/blc-x86_64-linux.zip
 	sha256sums = 2edb9c2f3e16747c4db34550fba1e1f368ad26ad1697aa18b34b339c41d9d3de
 
 pkgname = biscuit-lang-bin

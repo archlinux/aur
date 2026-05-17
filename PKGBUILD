@@ -3,7 +3,7 @@
 _pkgname=biscuit-lang
 pkgname=biscuit-lang-bin
 pkgver=0.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple programming language created for fun'
 arch=('x86_64')
 url='https://biscuitlang.org/'
@@ -31,7 +31,7 @@ conflicts=('biscuit-lang')
 backup=("etc/$_pkgname/config.yaml")
 options=(!debug)
 
-source=("${pkgname}.zip::https://github.com/biscuitlang/bl/releases/download/$pkgver/blc-x86_64-linux.zip")
+source=("https://github.com/biscuitlang/bl/releases/download/$pkgver/blc-x86_64-linux.zip")
 sha256sums=('2edb9c2f3e16747c4db34550fba1e1f368ad26ad1697aa18b34b339c41d9d3de')
 
 package() {
