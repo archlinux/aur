@@ -2,9 +2,9 @@
 # Contributor: hoverth
 # Adapted from AUR package `organicmaps` by nesk_aur
 pkgname=comaps
-pkgver=v2026.04.23_19
-_tag="${pkgver%%_*}-${pkgver##*_}"
-pkgrel=2
+pkgver=2026.05.06_11
+_tag="v${pkgver%%_*}-${pkgver##*_}"
+pkgrel=1
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
 makedepends=(
