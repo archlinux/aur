@@ -1,0 +1,4 @@
+[cervisia]
+source = "regex"
+url = "https://apps.kde.org/cervisia/index.xml"
+regex = "<title>Release ([\\d.]+)"
