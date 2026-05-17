@@ -4,7 +4,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r9741
+pkgver=r9754
 pkgrel=1
 pkgdesc="Digital DJ mixing software (latest development branch)."
 arch=('i686' 'x86_64' 'aarch64')
@@ -46,7 +46,7 @@ depends=(
 	'rubberband'
 	'soundtouch'
 	'sqlite'
-	'taglib1'
+	'taglib'
 	'ttf-opensans'
 	'ttf-ubuntu-font-family'
 	'upower'
