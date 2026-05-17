@@ -1,0 +1,23 @@
+pkgbase = libastal-brightness-git
+	pkgdesc = Library and cli tool for controlling display brightness
+	pkgver = r895.dd388d2
+	pkgrel = 1
+	url = https://github.com/Aylur/astal
+	arch = x86_64
+	groups = libastal
+	license = LGPL-2.1-only
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = json-glib
+	depends = quarrel
+	provides = astal-brightness
+	provides = libastal-brightness
+	provides = libastal-brightness.so=0-64
+	source = git+https://github.com/Aylur/astal.git
+	sha256sums = SKIP
+
+pkgname = libastal-brightness-git
