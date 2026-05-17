@@ -28,11 +28,11 @@ _pkgname=voxtype
 pkgver=0.7.2
 pkgrel=1
 pkgdesc="Pure CUDA version of the push-to-talk voice-to-text tool"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://voxtype.io"
+license=(MIT)
 provides=($_pkgname)
 conflicts=($_pkgname)
-license=(MIT)
 depends=(
     alsa-lib
     cuda
@@ -49,12 +49,15 @@ makedepends=(
     pkgconf
     gtk4
     gtk4-layer-shell
+    onnxruntime-cuda
 )
 optdepends=(
     'dotool: keyboard simulation with layout support (KDE/GNOME compatible)'
     'gtk4: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
     'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer'
     'libnotify: desktop notifications'
+    'onnxruntime-cuda: required for ONNX engines'
+    'onnxruntime-opt-cuda: required for ONNX engines (with CUDA and AVX2 CPU optimizations)'
     'ollama: local AI summarization for meeting mode'
     'pipewire: audio server (recommended)'
     'pipewire-alsa: ALSA compatibility for PipeWire (required if using PipeWire)'
@@ -66,7 +69,10 @@ optdepends=(
 backup=(etc/voxtype/config.toml)
 install=$pkgname.install
 validpgpkeys=('E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6')  # Peter Jackson <pete@peteonrails.com>
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
+source=(
+  "$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
+#  "$_pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
+)
 sha256sums=('8aa70619fa1fdd9a1f26675e57bdc2e8f96ddfb1789c97ca6c83189154fcde98')
 
 prepare() {
@@ -92,7 +98,6 @@ ERROR: CUDA_ARCH is not set. You must specify your GPU architecture.
   75   → GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4
 
   See: https://developer.nvidia.com/cuda-gpus
-
 EOF
       return 1
     fi
@@ -164,7 +169,6 @@ build() {
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-cuda
 
-    # Build ONNX engines binary if onnxruntime is available
     export ORT_STRATEGY=system
     cargo clean
     cargo build --frozen --release \
@@ -199,7 +203,9 @@ check() {
     export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
     export RUSTUP_TOOLCHAIN=stable
 
-    cargo test --frozen
+    # Skip examples — inspect_cohere_onnx requires the `cohere` feature for
+    # the optional `ort` crate. Examples aren't part of the shipped package.
+    cargo test --frozen --lib --bins --tests
 }
 
 package() {
@@ -219,7 +225,6 @@ package() {
     install -Dm755 "voxtype-onnx" "$pkgdir/usr/lib/voxtype/voxtype-onnx"
     install -Dm755 "voxtype-osd" "$pkgdir/usr/lib/voxtype/voxtype-osd"
     install -Dm755 "voxtype-osd-gtk4" "$pkgdir/usr/lib/voxtype/voxtype-osd-gtk4"
-    #install -Dm755 "voxtype-osd-native" "$pkgdir/usr/lib/voxtype/voxtype-osd-native"
     ln -sf /usr/lib/voxtype/voxtype-osd "$pkgdir/usr/bin/voxtype-osd"
 
     # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
