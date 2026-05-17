@@ -8,7 +8,7 @@ pkgrel=6
 pkgdesc='A monospace font by indestructible type* inspired by typewriters'
 arch=(any)
 url=https://indestructibletype.com/Drafting
-license=(OFL)
+license=(OFL-1.1)
 
 _url=https://github.com/indestructible-type/Drafting
 _commit=c387df13576c3b541352725b021f9f99302e52d6
@@ -16,12 +16,11 @@ source=($_url/archive/$_commit.tar.gz)
 sha256sums=(b058991e681672cbff83859eb5c1d29feb124c563f572782fc1ed5c31a2f4df1)
 
 prepare() {
-    rm -rf $_pkgname-$_commit
-    mv Drafting-$_commit $_pkgname-$_commit
+    mv Drafting-$_commit $_pkgname-$pkgver
 }
 
 package_otf-drafting() {
-    cd "$srcdir"/$_pkgname-$_commit
+    cd "$srcdir"/$_pkgname-$pkgver
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/otf/*.otf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
@@ -29,7 +28,7 @@ package_otf-drafting() {
 }
 
 package_ttf-drafting() {
-    cd "$srcdir"/$_pkgname-$_commit
+    cd "$srcdir"/$_pkgname-$pkgver
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/ttf/*.ttf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
@@ -37,7 +36,7 @@ package_ttf-drafting() {
 }
 
 package_ttf-drafting-variable() {
-    cd "$srcdir"/$_pkgname-$_commit
+    cd "$srcdir"/$_pkgname-$pkgver
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/variable/*.ttf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
