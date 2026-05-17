@@ -2,12 +2,18 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=plasmazones-bin
-pkgver=2.8.8
+# pkgver/pkgrel are placeholders; CI overwrites them with the release tag
+# before publishing. See packaging/arch/update-aur.sh.
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma (binary)'
 arch=('x86_64')
 url='https://github.com/fuddlesworth/PlasmaZones'
-license=('GPL-3.0-or-later')
+# Dual-licensed: the main daemon + KCM + editor are GPL-3.0-or-later; the
+# bundled Phosphor component shared libraries are LGPL-2.1-or-later. The
+# binary tarball contains all of them so both licenses apply to this
+# package.
+license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 
 # Exact KWin upstream version this binary was built against. The kwin-effect
 # plugin's IID embeds KWin's exact upstream version string; KWin refuses to
@@ -35,9 +41,21 @@ optdepends=(
 provides=('plasmazones')
 conflicts=('plasmazones' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/plasmazones-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('de24c396e9c266e4890f40083b93e570a6b7863dc883cb8ff1028656f623d024')
 install=plasmazones.install
 
 package() {
+    # Release tarball contains the full install prefix, including every
+    # Phosphor component shared library, the CMake configs, and the
+    # headers — a straight copy preserves them.
     cp -a "$srcdir/plasmazones-linux-x86_64/usr" "$pkgdir/usr"
+
+    # License files — GPL-3.0-or-later (main) + LGPL-2.1-or-later (the
+    # bundled Phosphor component libraries). The release tarball carries
+    # both at its root, so install from there rather than assuming they
+    # exist in $srcdir.
+    install -Dm644 "$srcdir/plasmazones-linux-x86_64/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/plasmazones-linux-x86_64/COPYING.LESSER" \
+        "$pkgdir/usr/share/licenses/$pkgname/COPYING.LESSER"
 }
