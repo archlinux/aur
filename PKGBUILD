@@ -11,10 +11,43 @@ provides=('pizzaoven')
 conflicts=('pizzaoven')
 options=('!strip')
 source=("PizzaOven-linux-x64.tar.gz::https://github.com/Cristiandis/PizzaOven-Avalonia/releases/download/v$pkgver/PizzaOven-linux-x64.tar.gz")
-sha256sums=('8bd1df94e8c0a042e5a5e720aaf8fb0bf01afc7f17ef6a70cb975290fdd7b11e')
+sha256sums=('7b39bd913e36dd27785ac0f325c4d8185a4f08965f1a9a91cf720e32b999353b')
 
 package() {
-    install -Dm755 PizzaOven "$pkgdir/usr/lib/pizzaoven/PizzaOven"
+    install -Dm755 "$srcdir/PizzaOven" "$pkgdir/usr/lib/pizzaoven/PizzaOven"
+
+    # Themes
+    if [ -d "$srcdir/Themes" ]; then
+        find "$srcdir/Themes" -name "*.potheme" | while read -r f; do
+            install -Dm644 "$f" "$pkgdir/usr/lib/pizzaoven/Themes/$(basename "$f")"
+        done
+    fi
+
+    # GMLoader
+    if [ -d "$srcdir/GMLOADER-windows" ]; then
+        find "$srcdir/GMLOADER-windows" -type f | while read -r f; do
+            rel="${f#$srcdir/}"
+            install -Dm755 "$f" "$pkgdir/usr/lib/pizzaoven/$rel"
+        done
+    fi
+
+    if [ -d "$srcdir/GMLOADER-linux" ]; then
+        find "$srcdir/GMLOADER-linux" -type f | while read -r f; do
+            rel="${f#$srcdir/}"
+            install -Dm755 "$f" "$pkgdir/usr/lib/pizzaoven/$rel"
+        done
+    fi
+
+    # Dependencies
+    if [ -d "$srcdir/Dependencies" ]; then
+        find "$srcdir/Dependencies" -type f | while read -r f; do
+            rel="${f#$srcdir/}"
+            install -Dm644 "$f" "$pkgdir/usr/lib/pizzaoven/$rel"
+        done
+        if [ -f "$pkgdir/usr/lib/pizzaoven/Dependencies/DepotDownloader-linux/DepotDownloader" ]; then
+            chmod 755 "$pkgdir/usr/lib/pizzaoven/Dependencies/DepotDownloader-linux/DepotDownloader"
+        fi
+    fi
 
     # Wrapper script
     install -dm755 "$pkgdir/usr/bin"
@@ -35,7 +68,6 @@ Icon=pizzaoven
 Type=Application
 Categories=Game;
 DESKTOP
-
     # URI handler desktop entry
     cat > "$pkgdir/usr/share/applications/pizzaoven-handler.desktop" << 'DESKTOP'
 [Desktop Entry]
@@ -46,5 +78,6 @@ NoDisplay=true
 MimeType=x-scheme-handler/pizzaovenplus;
 DESKTOP
 
-install -Dm644 "$srcdir/pizzaoven.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/pizzaoven.png"
+    install -Dm644 "$srcdir/pizzaoven.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/pizzaoven.png"
 }
