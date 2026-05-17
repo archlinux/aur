@@ -1,11 +1,11 @@
 # Maintainer: Jaka Polesnik <polesnik.jaka@gmail.com>
 pkgname=portage-manifest
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A unified package browser for Arch Linux - search official repos, AUR, and Flatpak with beautiful README rendering"
 arch=('x86_64')
 url="https://github.com/Pol-Jak-295/portage-manifest"
-license=('CC-BY-NC')
+license=('AGPL3')
 depends=('pacman' 'yay' 'flatpak')
 makedepends=('npm' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Pol-Jak-295/portage-manifest/archive/refs/tags/v$pkgver.tar.gz"
