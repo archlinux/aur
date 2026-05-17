@@ -1,7 +1,7 @@
 pkgbase = rate-mirrors-bin
 	pkgdesc = Everyday-use client-side map-aware mirror ranking tool - pre-built with musl
-	pkgver = 0.28.3
-	pkgrel = 2
+	pkgver = 0.29.0
+	pkgrel = 1
 	url = https://github.com/westandskif/rate-mirrors
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = rate-mirrors-bin
 	provides = rate-mirrors
 	conflicts = rate-mirrors
 	options = !lto
-	source_x86_64 = rate-mirrors-bin-0.28.3-x86_64.tar.gz::https://github.com/westandskif/rate-mirrors/releases/download/v0.28.3/rate-mirrors-v0.28.3-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = a8b2f2c385c0edda558366b6e2ea0286c434d276740e66a5773aea7b71ad16d8
-	source_aarch64 = rate-mirrors-bin-0.28.3-aarch64.tar.gz::https://github.com/westandskif/rate-mirrors/releases/download/v0.28.3/rate-mirrors-v0.28.3-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 191acbe1c52a966a342cd9c6ae32841a11e01fe4c612b8d72267c5f97b1d455c
+	source_x86_64 = rate-mirrors-bin-0.29.0-x86_64.tar.gz::https://github.com/westandskif/rate-mirrors/releases/download/v0.29.0/rate-mirrors-v0.29.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 4b8d9e1b26c13e3ba6abbd942bcac37841393345d44c0cdd18924f9338c433c8
+	source_aarch64 = rate-mirrors-bin-0.29.0-aarch64.tar.gz::https://github.com/westandskif/rate-mirrors/releases/download/v0.29.0/rate-mirrors-v0.29.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = cd5c2642942e83dda24ece54bd94a241c786460a3842f607349a69020dfd3e41
 
 pkgname = rate-mirrors-bin
