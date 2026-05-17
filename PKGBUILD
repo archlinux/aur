@@ -3,15 +3,16 @@
 _pkgname=biscuit-lang
 pkgname=biscuit-lang-bin
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple programming language created for fun'
 arch=('x86_64')
 url='https://biscuitlang.org/'
 license=('MIT')
 
 depends=(
-    'gcc-libs'
     'glibc'
+    'libgcc'
+    'libstdc++'
     'binutils'
     'sh'
 )

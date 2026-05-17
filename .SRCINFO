@@ -1,13 +1,14 @@
 pkgbase = biscuit-lang-bin
 	pkgdesc = Simple programming language created for fun
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://biscuitlang.org/
 	arch = x86_64
 	license = MIT
 	makedepends = chrpath
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = binutils
 	depends = sh
 	optdepends = libpng: for bundled png/freetype extras
