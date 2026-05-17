@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=wasmcloud
 pkgname=wasmcloud-bin
-pkgver=2.0.5
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Build, manage, and scale Wasm apps across any cloud, K8s, or edge"
 arch=(x86_64)
@@ -14,11 +14,12 @@ source=("$_src/raw/v$pkgver/LICENSE")
 _exe="$pkgname-$arch-$pkgver"
 source_x86_64=("$_exe::$_src/releases/download/v$pkgver/wash-x86_64-unknown-linux-gnu")
 sha256sums=('0d7e475818c32a6bad4c0715b1f23848d7e3544774e7d92d4797e076d80f3e04')
-sha256sums_x86_64=('b2a4ad6d13bef4481d6a51abb9e5b277425eb60a5eb2bde638569daeece336cf')
+sha256sums_x86_64=('c9c637a55c6fce7cecb2411db62e36036d5534b818e694cfb28d033adc232f9b')
 
 package() {
     install -Dm755 "$_exe" "$pkgdir/usr/bin/wash"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    chmod +x "$_exe"
     install -Dm644 <(./$_exe completion bash 2>/dev/null) "$pkgdir/usr/share/bash-completion/completions/wash"
     install -Dm644 <(./$_exe completion elvish 2>/dev/null) "$pkgdir/usr/share/elvish/lib/wash.elv"
     install -Dm644 <(./$_exe completion fish 2>/dev/null) "$pkgdir/usr/share/fish/vendor_completions.d/wash.fish"
