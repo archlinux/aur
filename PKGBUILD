@@ -1,6 +1,6 @@
 # Maintainer: LurkHub <LurkHub@yandex.ru>
 pkgname=sovet
-pkgver=2.16.4
+pkgver=2.16.6
 pkgrel=1
 pkgdesc="ЗАЩИЩЕННЫЙ МЕССЕНДЖЕР // АНОНИМНОСТЬ И БЕЗОПАСНОСТЬ"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('fuse2')
 options=('!strip')
 source_x86_64=("Soviet_${pkgver}_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_${pkgver}_amd64.AppImage")
-sha256sums_x86_64=('bda9a9b02cf0830124c3e42fb99cbe0fd44f3a1494e75b2afbbde7cf377828e9')
+sha256sums_x86_64=('09f0f105b8b7467a91b3d2d2658092f6a32549066126542216a242fc3152b332')
 
 prepare() {
     chmod +x "Soviet_${pkgver}_amd64.AppImage"
