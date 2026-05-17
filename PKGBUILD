@@ -1,7 +1,7 @@
 # Maintainer: The SP <ammarsyamil057@gmail.com>
 pkgname=anifetch-cli
-pkgver=1.0.2
-pkgrel=1.3
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Animated terminal fetch with video and audio support"
 arch=('any')
 url="https://github.com/Notenlish/anifetch"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'chafa' 'ffmpeg' 'fastfetch' 'python-platformdirs' 'python-wcwidth' 'python-rich' 'python-pynput')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Notenlish/anifetch/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('75e228a11c1d7816e30f0f0269de8f8c8f5c6e85c02be921791b0d6efb2fb546')
+sha256sums=('a249350724ca66818a74e321477d772fc66d7adfc53b559a15f737b76d0a7572')
 
 build() {
   cd "$srcdir/anifetch-$pkgver"
