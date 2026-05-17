@@ -1,0 +1,17 @@
+pkgbase = shiftpaper
+	pkgdesc = Parallax wallpaper daemon for Wayland with monocular depth estimation
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CPritch/shiftpaper
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = onnxruntime
+	optdepends = cuda: GPU-accelerated depth inference
+	options = !lto
+	source = shiftpaper-0.1.0.tar.gz::https://github.com/CPritch/shiftpaper/archive/v0.1.0.tar.gz
+	sha256sums = 6289ed97d0c538c17ac714517b8e6027baefbb3c2b3d749618e5d39c108e163a
+
+pkgname = shiftpaper
