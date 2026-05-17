@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=anime-games-launcher
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Universal linux launcher for anime games"
 arch=('x86_64')
 url="https://github.com/an-anime-team/anime-games-launcher"
@@ -15,7 +15,7 @@ optdepends=(
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9d50894a351b56be0e7eaaa2f1d76466edd2fa718d494276649145eb739e8f61')
+sha256sums=('56a72e4db5e60509fab9d7ae7f89d476e8eaa130ac5cbba8d38e495a2e5a6be2')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
