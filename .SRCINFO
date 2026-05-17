@@ -1,0 +1,19 @@
+pkgbase = promptr-git
+	pkgver = 0.1.4
+	pkgrel = 1
+	pkgdesc = GTK4 overlay prompt for opencode
+	url = https://github.com/toxdes/promptr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk4
+	depends = gtksourceview5
+	depends = gtk4-layer-shell
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	source = git+https://github.com/toxdes/promptr.git
+	sha256sums = SKIP
+
+pkgname = promptr-git
