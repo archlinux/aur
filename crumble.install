@@ -1,6 +1,6 @@
 post_install() {
-  update-mime-database usr/share/mime &>/dev/null
-  gtk-update-icon-cache usr/share/icons/hicolor &>/dev/null
+  update-mime-database /usr/share/mime &>/dev/null || true
+  gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || true
 }
 
 post_upgrade() {
