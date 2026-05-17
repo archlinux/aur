@@ -3,7 +3,7 @@
 # Maintainer: so1ar <so1ar114514@gmail.com>
 
 pkgname="ryzenadj"
-pkgver=0.17.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="RyzenAdj tool for adjusting Ryzen Mobile power states"
 url="https://github.com/FlyGoat/RyzenAdj"
@@ -15,7 +15,7 @@ license=("LGPL3")
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("848ac9d86ff65d30f5e2c8600aac2613f0f10003b0d6f0e516a54761d7345d44")
+sha256sums=("d1998b6c2d1b564f5d43c786cbf764ca9a1d8bb213e2001f98f611ead3087c7e")
 
 build() {
     cmake -B build -S "${srcdir}/RyzenAdj-${pkgver}" \
