@@ -2,7 +2,7 @@
 _base=ch341-i2c-spi-gpio
 pkgname=${_base}-dkms-git
 pkgver=r59.1f05229
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern CH341 USB-I2C/SPI/GPIO adapter driver (Frank Zago's MFD version)"
 license=(GPL)
 arch=('i686' 'x86_64')
@@ -36,6 +36,9 @@ package() {
   
   # Update version in dkms.conf to match the Arch package
   sed -i "s/PACKAGE_VERSION=.*/PACKAGE_VERSION=\"${pkgver}\"/" "${_srcdir}/dkms.conf"
+  
+  # Remove deprecated CLEAN directive from dkms.conf
+  sed -i '/^CLEAN=/d' "${_srcdir}/dkms.conf"
   
   # Clean up the copied source if necessary
   rm -rf "${_srcdir}/.git"

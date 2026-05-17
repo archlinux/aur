@@ -1,7 +1,7 @@
 pkgbase = ch341-i2c-spi-gpio-dkms-git
 	pkgdesc = Modern CH341 USB-I2C/SPI/GPIO adapter driver (Frank Zago's MFD version)
 	pkgver = r59.1f05229
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/frank-zago/ch341-i2c-spi-gpio
 	install = ch341-i2c-spi-gpio-dkms-git.install
 	arch = i686
