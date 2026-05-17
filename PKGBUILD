@@ -85,7 +85,7 @@ source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.si
         osd-bottom-position.patch)
 sha256sums=('6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4'
             'SKIP'
-            '0579015579a031f1d5f29fc0f494597bf46fe034856203cd9375108a62af1e12')
+            '55c4447d3a1b6bed17650fda038b5fd83994f0bde859f522cb381fc8b9cd5777')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
