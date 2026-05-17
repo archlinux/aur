@@ -1,27 +1,24 @@
-# Contributor: Sergey Kish <sergey.kish@gmail.com>
-# Contributor: itsme <mymail@ishere.ru>
+# Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
 
 pkgname=csstidy
-pkgver=1.4
-pkgrel=4
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="A program that optimises, formats and fixes CSS code"
-arch=('i686' 'x86_64' 'armv7h')
-url="http://sourceforge.net/projects/csstidy/"
-license=('GPL')
-depends=('gcc-libs')
-makedepends=('scons')
+arch=('any')
+url="https://github.com/Cerdic/CSSTidy"
+license=('LGPL-2.1-or-later')
+depends=('php')
 conflicts=('csstidy-cpp-git')
-source=(http://downloads.sourceforge.net/project/csstidy/CSSTidy%20%28C%2B%2B%2C%20stable%29/1.3/csstidy-source-$pkgver.zip
-        'gcc43fix.diff')
-md5sums=('8fcbf5c1c3cafd9232552b3286aabcb9'
-         'a176d2ee8f12c64687d275fe6cbd0134')
-
-build() {
-  cd ${srcdir}
-  patch -p1 <gcc43fix.diff
-  scons || return 1
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Cerdic/CSSTidy/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9ea2334948f114f067a9f9cce630e239c42696d1909c830cd6678b709754eeed')
 
 package() {
-  install -D release/csstidy/csstidy $pkgdir/usr/bin/csstidy
+  cd "CSSTidy-$pkgver"
+  install -dm755 "$pkgdir/usr/share/csstidy"
+  install -m644 class.csstidy.php class.csstidy_optimise.php class.csstidy_print.php \
+    data.inc.php lang.inc.php \
+    template.tpl template1.tpl template2.tpl template3.tpl \
+    "$pkgdir/usr/share/csstidy/"
+  install -Dm755 bin/pcsstidy "$pkgdir/usr/share/csstidy/bin/pcsstidy"
+  ln -s /usr/share/csstidy/bin/pcsstidy "$pkgdir/usr/bin/csstidy"
 }
