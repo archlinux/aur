@@ -1,11 +1,26 @@
 # Maintainer: Cenk Kılıç <cenk1cenk2cenk3@gmail.com>
 pkgname=hyprpilot-bin
-pkgver=1.0.0 # x-release-please-version
+pkgver=2.0.0 # x-release-please-version
 pkgrel=1
 pkgdesc="Tauri overlay daemon for agent-driven workflows on Hyprland (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/hyprpilot/hyprpilot"
 license=('MIT')
+# Runtime deps — verified via `ldd target/release/hyprpilot` + a read of
+# the `tray-icon` crate's Linux backend. `webkit2gtk-4.1` covers webkit
+# + javascriptcoregtk; `gtk3` covers gdk + glib + cairo + pango +
+# harfbuzz transitively; `gtk-layer-shell` is the C wrapper the
+# `gtk-layer-shell` crate binds against — Wayland layer-shell anchored
+# overlay needs it.
+#
+# `libappindicator-gtk3` is required at RUNTIME via `dlopen` (the
+# `libappindicator-rs` crate uses `libloading`, which is why `ldd`
+# shows no static reference). tauri 2's `tray-icon = "0.23"` feature
+# initialises a `TrayIconBuilder` at daemon startup; on GNOME with the
+# AppIndicator extension that path opens `libappindicator-gtk3.so.1`
+# to publish the icon. On Hyprland there's no tray host so the dlopen
+# silently no-ops, but the dep stays declared so KDE / GNOME users
+# don't lose the tray with a confusing silent failure.
 depends=(
   'webkit2gtk-4.1'
   'gtk3'
@@ -20,7 +35,7 @@ source=("$pkgname-$pkgver.tar.zst::https://github.com/hyprpilot/hyprpilot/releas
 # always carries real checksums against the freshly-uploaded
 # tarball). Local-build path: run `updpkgsums` manually after a
 # pkgver edit.
-b2sums=('1c0e21f59caedde77e5e63a4e4f2d55cb44e8d4ffd3eca9281f4d95a3d8621189050bb8690a8543847479403f3d37fb3a759d216486ac0594e1e19a390440c1a')
+b2sums=('d1679134b8c97270a2d3df9b41ffcb2f00ba3a5c22a4f7b48049d9f9a62aaa78cc940738af8e474d4e68a85ce6fe4212671e349593fc90a4a3beafa88262adb7')
 
 package() {
   cd "$srcdir/hyprpilot"
