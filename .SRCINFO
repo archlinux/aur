@@ -1,0 +1,13 @@
+pkgbase = python312-nodeenv
+	pkgdesc = Node.js virtual environment builder for Python 3.12
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/ekalinin/nodeenv
+	arch = any
+	license = BSD
+	makedepends = python312-installer
+	depends = python312
+	source = nodeenv-1.10.0-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/88/b2/d0896bdcdc8d28a7fc5717c305f1a861c26e18c05047949fb371034d98bd/nodeenv-1.10.0-py2.py3-none-any.whl
+	sha256sums = 5bb13e3eed2923615535339b3c620e76779af4cb4c6a90deccc9e36b274d3827
+
+pkgname = python312-nodeenv
