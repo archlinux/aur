@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 2.0.0-10
+**Current release:** 2.0.0-12
 
 ---
 
@@ -354,3 +354,5 @@ makepkg -si
 | 2.0.0-4 | winapi-bindings: switch from throwing Proxy to silent no-op Proxy (fix unhandled startup crash on SetProcessPreferredUILanguages) |
 | 2.0.0-5–9 | Refactor: extract `patch-asar.py` and `patch-pkg.js` as verified source files; fix `chmod 777→755` on assets dir enforced via `post_upgrade()`; remove `dotnet-sdk-9.0` from makedepends (binary is prebuilt in upstream repo, ~500 MB saved); remove `NO_PARALLEL` (parallel native module builds work correctly); suppress 28 pnpm deprecated subdependency warnings via `allowedDeprecatedVersions` |
 | 2.0.0-10 | Fix fragile relative path in `build()` (`../../dist/linux-unpacked` → `$srcdir`-absolute); deduplicate `dotnetprobe` install (removed from `build()`, kept only in `package()` with `install -Dm755`); remove `game-survivingmars` plugin patch (redundant — renderer Patch 5 epicGamesLauncher stub covers it globally) |
+| 2.0.0-11 | Auto-repatch Cyberpunk 2077 extension on every launch: `patch-ext-cp2077.py` fixes 95 Windows backslash paths in `path_1.default.join()` calls; idempotent via `// vortex-linux-fix` marker; `python` added to runtime depends |
+| 2.0.0-12 | Generic extension re-patch system: `vortex.sh` loops over `/opt/Vortex/patch-ext-*.py`; new extension patches require only a new source file in PKGBUILD — no changes to `vortex.sh` needed |
