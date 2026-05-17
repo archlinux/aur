@@ -4,7 +4,7 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.15.0.r8.g37733d4b
+pkgver=0.15.0.r44.gabe9df3a
 pkgrel=1
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
@@ -20,11 +20,11 @@ depends=('python'
     'python-dominate'
     'python-filetype'
     'python-habanero'
+    'python-lark-parser'
     'python-lxml'
     'python-platformdirs'
     'python-prompt_toolkit'
     'python-pygments'
-    'python-pyparsing'
     'python-requests'
     'python-slugify'
     'python-yaml'
