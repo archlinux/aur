@@ -1,0 +1,12 @@
+diff --git a/plugins/editor/tools/layout-maker/sources/reader.cpp b/plugins/editor/tools/layout-maker/sources/reader.cpp
+index ab2fbdf..5e8f70e 100644
+--- a/plugins/editor/tools/layout-maker/sources/reader.cpp
++++ b/plugins/editor/tools/layout-maker/sources/reader.cpp
+@@ -8,6 +8,7 @@
+ //
+ #include "reader.h"
+ #include <absl/strings/string_view.h>
++#include <algorithm>
+ #include <iostream>
+ #include <fstream>
+ 
