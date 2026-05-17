@@ -1,14 +1,14 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: reskoldo73 <reskoldo73@gmail.com>
 
 pkgname=ttf-tiresias
 pkgver=20090804
-pkgrel=5
+pkgrel=6
 pkgdesc="A set of free Sans Serif TrueType fonts"
 arch=('any')
 url="https://www.fontsquirrel.com/fonts/Tiresias-Infofont"
 license=('GPL3')
-source=(https://www.fontsquirrel.com/fonts/download/Tiresias-Infofont)
-sha256sums=('SKIP')
+source=("$pkgname.zip::https://www.fontsquirrel.com/fonts/download/Tiresias-Infofont")
+sha256sums=('b65a90a9109aaaa36656e705d03101dd777743247e76e89260d902a1f571c6f0')
 
 package() {
   install -d "$pkgdir"/usr/share/fonts/TTF
