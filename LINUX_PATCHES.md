@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 2.0.0-9
+**Current release:** 2.0.0-10
 
 ---
 
@@ -260,22 +260,6 @@ is not available there, producing an error banner on every launch.
 
 **Fix:** Remove the `requireExtension` calls from both plugins.
 
-### `game-survivingmars` — belt-and-suspenders epicGamesLauncher guard
-
-In addition to the global `renderer.js` stub (patch 5 above), the Surviving Mars plugin
-gets a local null-check added as a safety net:
-
-```js
-// before
-.catch(() => util.epicGamesLauncher.findByAppId('Ovenbird'))
-
-// after
-.catch(() => util.epicGamesLauncher
-  ? util.epicGamesLauncher.findByAppId('Ovenbird')
-  : Promise.reject(new Error('Epic not available')))
-```
-
----
 
 ## User extension patch: Cyberpunk 2077 extension (runtime, not in PKGBUILD)
 
@@ -369,3 +353,4 @@ makepkg -si
 | 2.0.0-3 | epicGamesLauncher null-safe stub (patch 5); winapi-bindings Proxy; native Linux binaries for Starbound, TF2, RimWorld, War Thunder; correct file browser filter context |
 | 2.0.0-4 | winapi-bindings: switch from throwing Proxy to silent no-op Proxy (fix unhandled startup crash on SetProcessPreferredUILanguages) |
 | 2.0.0-5–9 | Refactor: extract `patch-asar.py` and `patch-pkg.js` as verified source files; fix `chmod 777→755` on assets dir enforced via `post_upgrade()`; remove `dotnet-sdk-9.0` from makedepends (binary is prebuilt in upstream repo, ~500 MB saved); remove `NO_PARALLEL` (parallel native module builds work correctly); suppress 28 pnpm deprecated subdependency warnings via `allowedDeprecatedVersions` |
+| 2.0.0-10 | Fix fragile relative path in `build()` (`../../dist/linux-unpacked` → `$srcdir`-absolute); deduplicate `dotnetprobe` install (removed from `build()`, kept only in `package()` with `install -Dm755`); remove `game-survivingmars` plugin patch (redundant — renderer Patch 5 epicGamesLauncher stub covers it globally) |
