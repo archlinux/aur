@@ -1,8 +1,8 @@
 # Maintainer: k8rit0 <angelalvarezferrero@gmail.com>
 # Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
-pkgver=2.0.0
-pkgrel=12
+pkgver=2.0.1
+pkgrel=1
 epoch=1
 pkgdesc="Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches"
 arch=('x86_64')
@@ -25,11 +25,11 @@ source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
   "patch-asar.py"
   "patch-ext-cp2077.py")
 
-sha256sums=('930848f174257f6c9a81a63a1610492b68bc14bb505dfdd281fc0ccb8c23efac'
+sha256sums=('ea217e24864525a323a848e0b3ff15a4f04dfeccaacf1ef885afe57d0ce61f65'
   '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
   '19420a1af334187b2ba68f0fab3b5170bff5b6096f9e2a30000e712013fd378b'
   'd261f1ef78bb21d72cedeedfd935b099e3d707be709404e894d4aeb47254f1ef'
-  'cdf416b0d955cebad3149d852c3d17e16c7c2a3e7c8808d883265a0b0243890b'
+  'd7a8697a970f519a17aa30a6b30dcb66a3f9b0f306fd9b8a6399cedceed9771a'
   '014b52e419cd627044d6e7ceed3735243ce001ad8c611672e4f972be91a216cc')
 
 options=('!strip' '!debug')

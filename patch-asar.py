@@ -160,8 +160,8 @@ PLUGIN_PATCHES = [
         "file": "game-starbound/index.js",
         "replacements": [
             (
-                "const defaultLocation = 'win64/starbound.exe';",
-                "const defaultLocation = process.platform === 'linux' ? 'linux/starbound' : 'win64/starbound.exe';",
+                'const defaultLocation = "win64/starbound.exe";',
+                "const defaultLocation = process.platform === 'linux' ? 'linux/starbound' : \"win64/starbound.exe\";",
             ),
         ],
     },
@@ -170,12 +170,12 @@ PLUGIN_PATCHES = [
         "file": "game-teamfortress2/index.js",
         "replacements": [
             (
-                "executable: () => 'tf_win64.exe',",
-                "executable: () => process.platform === 'linux' ? 'hl2_linux' : 'tf_win64.exe',",
+                'executable: () => "tf_win64.exe",',
+                "executable: () => process.platform === 'linux' ? 'hl2_linux' : \"tf_win64.exe\",",
             ),
             (
-                "      'tf_win64.exe',\n      path.join('tf', 'gameinfo.txt'),",
-                "      process.platform === 'linux' ? 'hl2_linux' : 'tf_win64.exe',\n      path.join('tf', 'gameinfo.txt'),",
+                'requiredFiles: ["tf_win64.exe", path.join("tf", "gameinfo.txt")],',
+                "requiredFiles: [process.platform === 'linux' ? 'hl2_linux' : \"tf_win64.exe\", path.join(\"tf\", \"gameinfo.txt\")],",
             ),
         ],
     },
@@ -184,12 +184,12 @@ PLUGIN_PATCHES = [
         "file": "game-rimworld/index.js",
         "replacements": [
             (
-                "executable: () => 'RimWorldWin64.exe',",
-                "executable: () => process.platform === 'linux' ? 'RimWorldLinux' : 'RimWorldWin64.exe',",
+                'executable: () => "RimWorldWin64.exe",',
+                "executable: () => process.platform === 'linux' ? 'RimWorldLinux' : \"RimWorldWin64.exe\",",
             ),
             (
-                "      'RimWorldWin64.exe'",
-                "      process.platform === 'linux' ? 'RimWorldLinux' : 'RimWorldWin64.exe'",
+                'requiredFiles: ["RimWorldWin64.exe"],',
+                "requiredFiles: [process.platform === 'linux' ? 'RimWorldLinux' : \"RimWorldWin64.exe\"],",
             ),
         ],
     },
@@ -198,12 +198,12 @@ PLUGIN_PATCHES = [
         "file": "game-warthunder/index.js",
         "replacements": [
             (
-                "executable: () => 'win64/aces.exe',",
-                "executable: () => process.platform === 'linux' ? 'linux64/aces' : 'win64/aces.exe',",
+                'executable: () => "win64/aces.exe",',
+                "executable: () => process.platform === 'linux' ? 'linux64/aces' : \"win64/aces.exe\",",
             ),
             (
-                "      'win64/aces.exe',",
-                "      process.platform === 'linux' ? 'linux64/aces' : 'win64/aces.exe',",
+                'requiredFiles: ["win64/aces.exe"],',
+                "requiredFiles: [process.platform === 'linux' ? 'linux64/aces' : \"win64/aces.exe\"],",
             ),
         ],
     },
