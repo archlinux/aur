@@ -1,7 +1,6 @@
-# Maintainer: Ty Smith <archlinux@m.tysmith.me>
-# Contributor: facelock contributors
+# Maintainer: facelock contributors
 pkgname=facelock
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Face authentication PAM module for Linux"
 arch=('x86_64')
@@ -17,7 +16,7 @@ backup=('etc/facelock/config.toml')
 install=facelock.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('5ccf3971acf47146ae1ac6565a0d8593036c0f7e035f8724b86ce7043b8b6b94')
 
 prepare() {
     cd "$pkgname-$pkgver"

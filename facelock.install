@@ -3,6 +3,14 @@ PAM_LINE="auth  sufficient  pam_facelock.so"
 post_install() {
     systemd-sysusers
     systemd-tmpfiles --create
+    chown root:facelock /var/lib/facelock 2>/dev/null || true
+    chmod 750 /var/lib/facelock 2>/dev/null || true
+    chown root:root /var/lib/facelock/models 2>/dev/null || true
+    chmod 755 /var/lib/facelock/models 2>/dev/null || true
+    chown root:facelock /var/log/facelock 2>/dev/null || true
+    chmod 750 /var/log/facelock 2>/dev/null || true
+    chown root:facelock /var/log/facelock/snapshots 2>/dev/null || true
+    chmod 750 /var/log/facelock/snapshots 2>/dev/null || true
 
     # Reload systemd for D-Bus activation
     systemctl daemon-reload 2>/dev/null || true
@@ -15,6 +23,14 @@ post_install() {
 post_upgrade() {
     systemd-sysusers
     systemd-tmpfiles --create
+    chown root:facelock /var/lib/facelock 2>/dev/null || true
+    chmod 750 /var/lib/facelock 2>/dev/null || true
+    chown root:root /var/lib/facelock/models 2>/dev/null || true
+    chmod 755 /var/lib/facelock/models 2>/dev/null || true
+    chown root:facelock /var/log/facelock 2>/dev/null || true
+    chmod 750 /var/log/facelock 2>/dev/null || true
+    chown root:facelock /var/log/facelock/snapshots 2>/dev/null || true
+    chmod 750 /var/log/facelock/snapshots 2>/dev/null || true
 
     # Restart daemon if running
     if systemctl is-active --quiet facelock-daemon; then
