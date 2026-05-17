@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='A serif font by indestructible type* inspired by Giambattista Bodoni'
 arch=(any)
 url=https://indestructibletype.com/Bodoni
-license=(OFL)
+license=(OFL-1.1)
 
 _url=https://github.com/indestructible-type/Bodoni
 _commit=30ce6cdc354ef179a3b72ba0f0e71826e599348c
@@ -23,16 +23,16 @@ sha256sums=(
     db91c9e415328767e93782fba8d1c31f5520c2798bce09839b129a236ee66ab6
 )
 
+# NOTE: otf-bodoni is actually pkgver=2.3. there exists no v2.4 otf artifacts
+_pkgver=2.3
+
 prepare() {
-    rm -rf $_pkgname-$_commit $_pkgname-$_commit_otf
-    mv Bodoni-$_commit $_pkgname-$_commit
-    mv Bodoni-$_commit_otf $_pkgname-$_commit_otf
+    mv Bodoni-$_commit $_pkgname-$pkgver
+    mv Bodoni-$_commit_otf $_pkgname-$_pkgver
 }
 
-# NOTE: this package pulls from a commit with changes tagged for v2.3 at the
-# latest. thus, otf-bodoni has pkgver=2.3
 package_otf-bodoni() {
-    cd "$srcdir"/$_pkgname-$_commit_otf
+    cd "$srcdir"/$_pkgname-$_pkgver
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/otf/*.otf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
@@ -40,7 +40,7 @@ package_otf-bodoni() {
 }
 
 package_ttf-bodoni() {
-    cd "$srcdir"/$_pkgname-$_commit
+    cd "$srcdir"/$_pkgname-$pkgver
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/ttf/*.ttf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
@@ -48,7 +48,7 @@ package_ttf-bodoni() {
 }
 
 package_ttf-bodoni-variable() {
-    cd "$srcdir"/$_pkgname-$_commit
+    cd "$srcdir"/$_pkgname-$pkgver
     install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/variable/*.ttf
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
