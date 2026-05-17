@@ -1,0 +1,5 @@
+[dstll-bin]
+source = "github"
+github = "dhth/dstll"
+use_latest_release = true
+prefix = "v"
