@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/AmusementClub/vs-mlrt'
 license=('LGPL')
 depends=('vapoursynth' 'cuda' 'cudnn' 'nccl' 'onnx' 'onnxruntime' 'protobuf')
-makedepends=('git' 'ninja' 'cmake' 'jq')
+makedepends=('git' 'ninja' 'cmake' 'jq' 'vapoursynth-api3-headers')
 optdepends=(
   "onnxruntime-opt: AVX2-optimized onnxruntime"
 )

@@ -9,6 +9,7 @@ pkgbase = vapoursynth-plugin-mlrt-ort-runtime-git
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = jq
+	makedepends = vapoursynth-api3-headers
 	depends = vapoursynth
 	depends = cuda
 	depends = cudnn
@@ -20,7 +21,7 @@ pkgbase = vapoursynth-plugin-mlrt-ort-runtime-git
 	provides = vapoursynth-plugin-mlrt
 	conflicts = vapoursynth-plugin-mlrt
 	source = mlrt::git+https://github.com/AmusementClub/vs-mlrt.git
-	source = models-v15.8.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.8/models.v15.8.7z
+	source = models-v15.16.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.16/models.v15.16.7z
 	sha256sums = SKIP
 	sha256sums = SKIP
 
