@@ -1,7 +1,7 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
 
 pkgname=fluidx3d
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="The fastest and most memory efficient lattice Boltzmann CFD software, using OpenCL"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,6 @@ depends=('ocl-icd' 'libxrandr')
 makedepends=('opencl-clhpp' 'ninja')
 options=(!debug)
 source=("https://github.com/ProjectPhysX/FluidX3D/archive/refs/tags/v$pkgver.tar.gz"
-	"graphics-includes-output.patch"
 	"https://cdn.thingiverse.com/assets/92/f0/54/ba/e0/concord_cut_large.stl"
 	"https://cdn.thingiverse.com/assets/0b/5c/e5/f3/f0/techtris_airplane.stl"
 	"https://cdn.thingiverse.com/assets/49/65/42/33/0f/X-Wing.stl"
@@ -24,8 +23,7 @@ source=("https://github.com/ProjectPhysX/FluidX3D/archive/refs/tags/v$pkgver.tar
 	"https://cdn.thingiverse.com/assets/b8/99/d7/5d/2c/StarShipV2.stl"
 )
 
-sha256sums=('d56238e171b8f42eb83735267e288f41b395fb9ac28bd92690675923b95325f0'
-	'3d907e2a21accf92552e8160733fda004339bd88d7e30aba3024f5ac6a5c98fb'
+sha256sums=('457b16f7bec74259594214ae1e44055f181e96b4db876149cbcfdb627a63600a'
 	'db5605f435973c556302124e98ce45dc411ca6a3f71131df37f44ee61f28c9bb'
 	'e8fe5827330bc2adfd5161e42c9d5fd6850d909f7581e0d252e30e3dd623f93d'
 	'47c1c261e0db21faa300574247b646e1886ad4b69932b6e066cd7bf9911da33a'
@@ -65,9 +63,9 @@ fix_stl_path() {
 
 prepare() {
 	cd FluidX3D-$pkgver
-	patch -p1 -i "$srcdir/graphics-includes-output.patch"
 
 	rm -rf src/{OpenCL,X11}
+	sed -i 's|X11/include/||g' src/graphics.cpp
 	sed -i "/define FP16S/d" src/defines.hpp
 	sed -i "/define D3Q19/d" src/defines.hpp
 	sed -i "/define BENCHMARK/d" src/defines.hpp
@@ -88,6 +86,9 @@ prepare() {
 	cd ..
 
 	rm -f samples.ninja
+	prepare_sample "Benchmark-FP32-FP16C" "BENCHMARK D3Q19 FP16C"
+	prepare_sample "Benchmark-FP32-FP16S" "BENCHMARK D3Q19 FP16S"
+	prepare_sample "Benchmark-FP32-FP32" "BENCHMARK D3Q19"
 	prepare_sample "3D Taylor-Green vortices" "D3Q19 FP16S"
 	prepare_sample "2D Taylor-Green vortices" "D2Q9 FP16S"
 	prepare_sample "cylinder in rectangular duct" "D3Q19 FP16S VOLUME_FORCE"
