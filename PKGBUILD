@@ -31,7 +31,7 @@ conflicts=('biscuit-lang')
 backup=("etc/$_pkgname/config.yaml")
 options=(!debug)
 
-source=("https://github.com/biscuitlang/bl/releases/download/$pkgver/blc-x86_64-linux.zip")
+source=("${pkgname}.zip::https://github.com/biscuitlang/bl/releases/download/$pkgver/blc-x86_64-linux.zip")
 sha256sums=('2edb9c2f3e16747c4db34550fba1e1f368ad26ad1697aa18b34b339c41d9d3de')
 
 package() {
