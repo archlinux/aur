@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 2.0.0-9
+- **Versión:** 2.0.0-10
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.3-arch1-2)
@@ -256,7 +256,7 @@ vortex-aur-fix/
 
 ---
 
-## Prueba de funcionamiento — 2026-05-16 (pkgrel=9)
+## Prueba de funcionamiento — 2026-05-17 (pkgrel=10)
 
 Probado en Arch Linux (kernel 7.0.3-arch1-2):
 
@@ -285,6 +285,7 @@ Probado en Arch Linux (kernel 7.0.3-arch1-2):
 | 3 | epicGamesLauncher stub; winapi-bindings Proxy; binarios Linux para Starbound, TF2, RimWorld, War Thunder; filtro de archivos corregido |
 | 4 | winapi-bindings: Proxy no-op silencioso en lugar de Proxy que lanza (fix crash de inicio por SetProcessPreferredUILanguages) |
 | 5–9 | Refactor: scripts externos (`patch-asar.py`, `patch-pkg.js`); `chmod 777→755` en assets + hook post-upgrade; elimina `dotnet-sdk-9.0` de makedepends (~500MB menos); elimina `NO_PARALLEL` (builds paralelas más rápidas); suprime 28 warnings de subdependencias deprecadas |
+| 10 | Ruta absoluta `$srcdir` en `build()`; dotnetprobe consolidado en `package()`; elimina patch redundante de `game-survivingmars` (cubierto por el stub global de epicGamesLauncher) |
 
 ---
 
