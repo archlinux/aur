@@ -2,9 +2,9 @@
 
 pkgname=quarrel-git
 _pkgname=quarrel
-pkgver=r869.9d0d482
-pkgrel=1
-provides=(libquarrel.so=0-64)
+pkgver=r895.dd388d2
+pkgrel=2
+provides=(quarrel libquarrel.so=0-64)
 pkgdesc="Lib for command line argument parsing."
 arch=(x86_64)
 license=(LGPL-2.1-only)
