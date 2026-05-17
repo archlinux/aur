@@ -1,6 +1,6 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-git
-pkgver=0.r448.4d3f3e2
+pkgver=0.r650.76dd077
 pkgrel=1
 epoch=1
 license=('GPL-2.0-only')
@@ -25,6 +25,7 @@ makedepends=(
     'ninja'
     'plasma-wayland-protocols'
     'python'
+    'rust'
     'vulkan-headers'
     'wayland-protocols'
 )
