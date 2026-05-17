@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libsha2
-pkgver=1.1.4.1
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="SHA-2-family hashing library"
 arch=(i686 x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=()
 source=(libsha2-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(eee3547d9225b6a3f9d7f6243c6dede0644f9de4f900933ce23f433b0ffa96e8)
+sha256sums=(f4c8234a5c0516c562635bbb8e586e175d11f2028c6d95c15bbeaf3a02544639)
 
 _config=config-portable.mk
 if test "$(uname -m)" = x86_64; then
