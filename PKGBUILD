@@ -1,6 +1,6 @@
 pkgname=open-design
 pkgver=0.7.0
-pkgrel=6
+pkgrel=7
 _tag="open-design-v${pkgver}"
 # Upstream CLI name is `od`; this package installs `open-design` because /usr/bin/od is coreutils (octal dump).
 pkgdesc='Local-first design product: design skills and design systems with your code-agent CLI; daemon and static web UI (CLI: open-design).'
