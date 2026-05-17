@@ -1,0 +1,18 @@
+post_install() {
+  echo ":: free-claude-code-bin installed to /opt/free-claude-code"
+  echo "   Run 'fcc-init' to set up configuration."
+}
+
+post_upgrade() {
+  :
+}
+
+pre_remove() {
+  :
+}
+
+post_remove() {
+  if [ -d /opt/free-claude-code ]; then
+    rm -rf /opt/free-claude-code
+  fi
+}

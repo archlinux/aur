@@ -1,0 +1,17 @@
+pkgbase = free-claude-code-bin
+	pkgdesc = Proxy to use Claude Code CLI with free alternative providers (NVIDIA NIM, OpenRouter, DeepSeek, etc.)
+	pkgver = 2.0.0.r618.fc3ef0b
+	pkgrel = 1
+	url = https://github.com/Alishahryar1/free-claude-code
+	install = free-claude-code-bin.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = uv
+	depends = python>=3.14
+	provides = free-claude-code
+	conflicts = free-claude-code
+	source = git+https://github.com/Alishahryar1/free-claude-code.git
+	sha256sums = SKIP
+
+pkgname = free-claude-code-bin
