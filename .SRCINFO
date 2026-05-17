@@ -1,0 +1,15 @@
+pkgbase = python312-build
+	pkgdesc = A simple, correct Python build frontend for Python 3.12
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/pypa/build
+	arch = any
+	license = MIT
+	makedepends = python312-installer
+	depends = python312
+	depends = python312-packaging
+	depends = python312-pyproject-hooks
+	source = build-1.3.0-py3-none-any.whl::https://files.pythonhosted.org/packages/cb/8c/2b30c12155ad8de0cf641d76a8b396a16d2c36bc6d50b621a62b7c4567c1/build-1.3.0-py3-none-any.whl
+	sha256sums = 7145f0b5061ba90a1500d60bd1b13ca0a8a4cebdd0cc16ed8adf1c0e739f43b4
+
+pkgname = python312-build
