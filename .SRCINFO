@@ -1,0 +1,17 @@
+pkgbase = yadmm
+	pkgdesc = yet another diva mod manager: A Linux-focused Project DIVA Mega Mix+ mod manager.
+	pkgver = 0.2.0.beta
+	pkgrel = 1
+	url = https://github.com/okawaffles/yadmm
+	arch = x86_64
+	license = GNU GPLv3
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	options = !strip
+	source = yadmm-0.2.0.beta.tar.gz::https://github.com/okawaffles/yadmm/releases/download/v0.2.0.beta/yadmm-0.2.0.beta.tar.xz
+	sha256sums = SKIP
+
+pkgname = yadmm
