@@ -1,18 +1,20 @@
 pkgbase = plandex-server
 	pkgdesc = AI-driven development engine for complex tasks - Server component
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/plandex-ai/plandex
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	makedepends = go
+	depends = postgresql
+	depends = python
 	depends = glibc
 	depends = uvicorn
 	depends = litellm
-	source = https://github.com/plandex-ai/plandex/archive/refs/tags/v2.2.1.tar.gz
+	depends = python-fastapi
+	source = https://github.com/plandex-ai/plandex/archive/refs/tags/server/v2.2.1.tar.gz
 	source = plandex-server.service
 	sha256sums = 0d9ed4265b31a9a017741cbf8d2c373099a2446588fe142a8649716f5858e4f9
-	sha256sums = eb306316076e048479e7dd936c315b62ef456006adf45d11ee57e59c6c9fea1d
+	sha256sums = 40e3d9aea75c7c281562a099bdef1b0ec18f612d2ffb36bcb6d78ea7bb4a51d5
 
 pkgname = plandex-server

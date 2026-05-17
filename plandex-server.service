@@ -1,14 +1,24 @@
 [Unit]
 Description=Plandex AI-driven development engine Server
-After=network.target
+After=network.target postgresql.service
 
 [Service]
 Type=simple
-# 关键：强行把工作目录锁在存放 python 脚本的特定路径
 WorkingDirectory=/usr/share/plandex-server
+User=root
+
+# 1. 核心环境变量（让用户知道去哪里改，或者默认留空让用户在 /etc/environment.d 里配）
+# 也可以在这里指定一个外部配置文件：EnvironmentFile=-/etc/plandex/server.conf
+Environment=DATABASE_URL=postgres://plandex:plandex123@localhost:5432/plandex_db?sslmode=disable
+Environment=SESSION_SECRET=some_random_very_long_secret_string_1234567890
+
+# 2. 预留本地网络工具的代理卡槽（Arch 用户多半用得着，默认注释掉）
+#Environment=HTTP_PROXY=http://127.0.0.1:2080
+#Environment=HTTPS_PROXY=http://127.0.0.1:2080
+#Environment=NO_PROXY=localhost,127.0.0.1,::1
+
 ExecStart=/usr/bin/plandex-server
 Restart=on-failure
-User=root
 
 [Install]
 WantedBy=multi-user.target
