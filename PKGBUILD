@@ -8,8 +8,7 @@ pkgdesc="Print Commands & Files, Manage Printers & Scan Docs from Javascript. JS
 arch=('x86_64')
 url="https://www.neodynamic.com/downloads/jspm/"
 license=('MIT')
-groups=('')
-depends=('at-spi2-core' 'bluez-libs' 'bluez-utils' 'cairo' 'cups' 'gdk-pixbuf2' 'gtk2' 'hicolor-icon-theme' 'libappindicator' 'libayatana-appindicator' 'libx11' 'nss' 'pango' 'sane' 'yozo-office')
+depends=('glibc' 'nss' 'libayatana-appindicator' 'sane' 'cups' 'bluez' 'gtk2' 'freeimage>=3.0.0')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://www.neodynamic.com/downloads/jspm/jspm9-9.0.0.0-amd64.deb")
@@ -20,6 +19,7 @@ package(){
 	# Extract package data
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "usr/share/doc/jspm9/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	# Normalize package directory permissions to avoid pacman warnings
+	find "${pkgdir}" -type d -exec chmod 755 {} +
 
 }
