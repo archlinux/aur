@@ -3,19 +3,19 @@
 
 pkgname=superproductivity
 _name=super-productivity
-pkgver=18.5.0
+pkgver=18.6.0
 pkgrel=1
 pkgdesc="An advanced todo list app with timeboxing and time tracking capabilities"
-arch=('x86_64')
+arch=('any')
 url="https://super-productivity.com"
 license=('MIT')
 _electron=electron41
-depends=('bash' "${_electron}" 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++')
-makedepends=('nvm')
+depends=('bash' "${_electron}" 'hicolor-icon-theme')
+makedepends=('cargo' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/super-productivity/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('51ab22a9d91fd2dc18545e84f37b7c93fe7b9e3cdb0e9bdcb0458bd159d055b1'
+sha256sums=('ba3fd2c85fb49f3e3ac9c5ecac0808f5827173fd1c96910db6ca8aa9a2aad57e'
             'a8945d93cacbe189b538da601b3f6ace0588c3b126236e763e8f2010005513bb'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
@@ -48,7 +48,6 @@ build() {
 package() {
     cd "${_name}-${pkgver}"
     install -Dm644 .tmp/app-builds/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r .tmp/app-builds/linux-unpacked/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     for i in 16 32 48 64 128 256 512 1024; do
