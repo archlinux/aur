@@ -3,7 +3,7 @@
 # Contributor: Sotirios M. Roussis (xToNouSou) <xtonousou@gmail.com>
 
 pkgname=airgeddon
-pkgver=11.61
+pkgver=12.0
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -55,7 +55,7 @@ optdepends=(
 )
 makedepends=('binutils')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('5e7ba6d42f8e5b46980dd1e6a81fcde7203c49ef3a9421e63c6166bcb73f4f56')
+sha256sums=('25104e1f51be06a271282a780bd738efa3cada70d2b6a82a7313c104be310f65')
 
 
 prepare() {
