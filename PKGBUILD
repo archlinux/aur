@@ -23,8 +23,9 @@ build() {
   # Corepack is absent on some Node installs (e.g. nodejs-lts-jod); pin pnpm via npx instead.
   _pnpm() { npx --yes pnpm@10.33.2 "$@"; }
   _pnpm install --frozen-lockfile
+  _pnpm --filter @open-design/contracts build
   _pnpm --filter @open-design/daemon build
-  _pnpm build
+  _pnpm --filter @open-design/web build
 }
 
 package() {
