@@ -1,7 +1,7 @@
 pkgbase = kyber-launcher-inofficial-appimage
 	pkgdesc = Inofficial Linux build of the Kyber mod launcher for Star Wars: Battlefront II (2017). Not endorsed by the Kyber team.
 	pkgver = 0.1.0_beta.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simonlinuxcraft/kyber-linuxport-inofficial
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,6 +10,7 @@ pkgbase = kyber-launcher-inofficial-appimage
 	depends = libnotify
 	depends = gtk3
 	depends = librsvg
+	depends = webkit2gtk-4.1
 	optdepends = zenity: first-start self-install dialog (alternative to kdialog)
 	optdepends = kdialog: first-start self-install dialog (alternative to zenity)
 	options = !strip
