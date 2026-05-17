@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Official Yandex Music App for Linux (beta release)"
 arch=('x86_64')
 url="https://music.yandex.ru/download/"
-license=('unknown')
+license=('proprietary')
 depends=(
     gtk3
     libnotify
