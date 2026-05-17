@@ -1,6 +1,6 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=pelorus-bin
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Highly efficient Lidar Inertial Odometry."
 arch=('x86_64' 'aarch64')
