@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-placebo-git
 	pkgdesc = Plugin for VapourSynth: placebo (GIT version)
-	pkgver = r121.1408380
+	pkgver = r167.ccb4bea
 	pkgrel = 1
 	url = https://github.com/Lypheo/vs-placebo
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = vapoursynth-plugin-placebo-git
 	provides = vapoursynth-plugin-placebo
 	conflicts = vapoursynth-plugin-placebo
 	source = placebo::git+https://github.com/Lypheo/vs-placebo.git
-	source = libp2p::git+https://github.com/sekrit-twc/libp2p.git#commit=ed0a37adf0fdab2af95845fc80e31a6b59debebe
+	source = libp2p.tar.gz::https://github.com/sekrit-twc/libp2p/archive/f50288b0c8db2cb14bb98fc25a5f056609d03652.tar.gz
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 37b14be5b1108268e55aa4fbaf838c287018ecc5b58e15efdfe064916afc44e9
 
 pkgname = vapoursynth-plugin-placebo-git
