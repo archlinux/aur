@@ -14,7 +14,7 @@ depends=(
     'python-uinput'      # AUR
 )
 optdepends=(
-    'python-pyside6: graphical user interface'
+    'pyside6: graphical user interface'
     'fish: fish shell completions'
     'zsh: zsh shell completions'
     'bash-completion: bash shell completions'
