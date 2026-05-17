@@ -1,0 +1,31 @@
+post_install() {
+    echo ""
+    echo "  ☕ HyprCaffeine installed!"
+    echo ""
+    echo "  Quick start:"
+    echo "    hyprcaffeine on 30m    # Activate for 30 minutes"
+    echo "    hyprcaffeine toggle    # Toggle on/off"
+    echo "    hyprcaffeine status    # Check current state"
+    echo ""
+    echo "  Config: ~/.config/hyprcaffeine/config.yaml"
+    echo "  Docs:   /usr/share/doc/hyprcaffeine/"
+    echo ""
+    echo "  ⚠ Polkit rule (optional, for lid inhibit without password):"
+    echo "    sudo cp /usr/share/hyprcaffeine/polkit.rules \\"
+    echo "      /etc/polkit-1/rules.d/50-hyprcaffeine.rules"
+    echo "    # Edit the file to replace YOUR_USERNAME with your username"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "  ☕ HyprCaffeine uninstalled."
+    echo "  Config left at ~/.config/hyprcaffeine/ (remove manually if desired)"
+    echo ""
+    echo "  Remember to remove /etc/polkit-1/rules.d/50-hyprcaffeine.rules if you installed it."
+    echo ""
+}
