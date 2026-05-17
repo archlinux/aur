@@ -1,0 +1,27 @@
+pkgbase = mopidy-goodies-git
+	pkgdesc = HTTP companion endpoints for Mopidy: Tidal favorites, listening stats, audio chain info
+	pkgver = r9.a35a8d2
+	pkgrel = 1
+	url = https://github.com/prietus/mopidy-goodies
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = mopidy
+	depends = python-tornado
+	depends = python-pykka
+	optdepends = mopidy-tidal: required for /favorites endpoints (stats and audio work without it)
+	provides = mopidy-goodies
+	provides = mopidy-tidal-goodies
+	conflicts = mopidy-goodies
+	conflicts = mopidy-tidal-goodies
+	conflicts = mopidy-tidal-goodies-git
+	replaces = mopidy-tidal-goodies-git
+	replaces = mopidy-tidal-goodies
+	source = mopidy-goodies::git+https://github.com/prietus/mopidy-goodies.git
+	sha256sums = SKIP
+
+pkgname = mopidy-goodies-git
