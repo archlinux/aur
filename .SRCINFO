@@ -1,6 +1,6 @@
 pkgbase = cockpit-dockermanager-git
 	pkgdesc = Cockpit application for managing Docker containers
-	pkgver = 1.0.8.r32.g2033eaa
+	pkgver = 1.0.8.2.r4.g6ee4de1
 	pkgrel = 1
 	url = https://github.com/chrisjbawden/cockpit-dockermanager
 	arch = any
