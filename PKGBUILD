@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
@@ -26,6 +26,7 @@ optdepends=(
     'cuda12.6: GPU acceleration via CUDA 12 for ONNX engines (older NVIDIA setups)'
     'rocm-hip-runtime: GPU acceleration via MIGraphX for ONNX engines (AMD GPUs)'
     'ollama: local AI summarization for meeting mode'
+    'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
 )
 provides=('voxtype')
 conflicts=('voxtype')
@@ -63,6 +64,13 @@ source=(
     "voxtype-$pkgver-onnx-migraphx.asc::$_github/voxtype-$pkgver-linux-x86_64-onnx-migraphx.asc"
     "voxtype-$pkgver-onnx-migraphx.libonnxruntime_providers_migraphx.so::$_github/voxtype-$pkgver-linux-x86_64-onnx-migraphx.libonnxruntime_providers_migraphx.so"
     "voxtype-$pkgver-onnx-migraphx.libonnxruntime_providers_shared.so::$_github/voxtype-$pkgver-linux-x86_64-onnx-migraphx.libonnxruntime_providers_shared.so"
+    # OSD launcher + GTK4 frontend (engine-agnostic, built once in Dockerfile.onnx).
+    # The launcher resolves /proc/self/exe, follows the /usr/bin symlink, and
+    # probes its parent dir for voxtype-osd-gtk4 / voxtype-osd-native.
+    "voxtype-$pkgver-osd::$_github/voxtype-$pkgver-linux-x86_64-osd"
+    "voxtype-$pkgver-osd.asc::$_github/voxtype-$pkgver-linux-x86_64-osd.asc"
+    "voxtype-$pkgver-osd-gtk4::$_github/voxtype-$pkgver-linux-x86_64-osd-gtk4"
+    "voxtype-$pkgver-osd-gtk4.asc::$_github/voxtype-$pkgver-linux-x86_64-osd-gtk4.asc"
     # Config and support files
     "config-$pkgver.toml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/config/default.toml"
     "voxtype-$pkgver.service::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/systemd/voxtype.service"
@@ -71,46 +79,56 @@ source=(
     "voxtype-$pkgver.fish::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.fish"
     "LICENSE-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/LICENSE"
     "README-$pkgver.md::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/README.md"
+    # Desktop entry + terminal launcher for `voxtype configure` (TUI surfaced in walker/rofi/etc.)
+    "voxtype-configure-$pkgver.desktop::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/voxtype-configure.desktop"
+    "voxtype-configure-launcher-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/scripts/voxtype-configure-launcher"
 )
 # TODO: Update SHA256 sums from final release artifacts before pushing to AUR.
 # Run after release build:
 #   cd releases/$pkgver && sha256sum voxtype-$pkgver-linux-x86_64-* | sort
 sha256sums=(
     # Whisper binaries
-    'SKIP'  # voxtype-avx2
+    '4a24760905a05bc9da014b96e74d2596c68e7c33baf6b312f868bc5d4ec929e9'  # voxtype-avx2
     'SKIP'  # voxtype-avx2.asc
-    'SKIP'  # voxtype-avx512
+    'ba7d0fd840fdeb8ed69c915ad53723c0be98b69aa3a7f8dc11e6fa4efa81d7d1'  # voxtype-avx512
     'SKIP'  # voxtype-avx512.asc
-    'SKIP'  # voxtype-vulkan
+    '1713c16dd595b5af844a710775de88a466c1eeaaad86dadca5427b15a16bbee7'  # voxtype-vulkan
     'SKIP'  # voxtype-vulkan.asc
     # ONNX CPU binaries
-    'SKIP'  # voxtype-onnx-avx2
+    'bd1a96c748b209112e56a4409aad48f61dd69d0085dc1ac60f8e8c90106065c1'  # voxtype-onnx-avx2
     'SKIP'  # voxtype-onnx-avx2.asc
-    'SKIP'  # voxtype-onnx-avx512
+    '0f75e13185353b7bc9239162ed7742767a082ecfba3631710ce7eec77c2aac5b'  # voxtype-onnx-avx512
     'SKIP'  # voxtype-onnx-avx512.asc
     # ONNX CUDA 12
-    'SKIP'  # voxtype-onnx-cuda-12
+    'e2e8d65d80291a025c1c8c1c772e2a4c27d8c4157e587777d3248916425c83d5'  # voxtype-onnx-cuda-12
     'SKIP'  # voxtype-onnx-cuda-12.asc
-    'SKIP'  # voxtype-onnx-cuda-12.libonnxruntime_providers_cuda.so
-    'SKIP'  # voxtype-onnx-cuda-12.libonnxruntime_providers_shared.so
+    'a8584727d51ba646ac63fc991c2f36ad6cd5b8cc8b1141896e46938700b888d0'  # voxtype-onnx-cuda-12.libonnxruntime_providers_cuda.so
+    '1b028afc079628d76a28d7eb09700a4baead4a27f9634ba82c35398486134114'  # voxtype-onnx-cuda-12.libonnxruntime_providers_shared.so
     # ONNX CUDA 13
-    'SKIP'  # voxtype-onnx-cuda-13
+    'a9207c531a474b0538cfa47ce07a73eb9040d1543293aad78ef542b7023f48d1'  # voxtype-onnx-cuda-13
     'SKIP'  # voxtype-onnx-cuda-13.asc
-    'SKIP'  # voxtype-onnx-cuda-13.libonnxruntime_providers_cuda.so
-    'SKIP'  # voxtype-onnx-cuda-13.libonnxruntime_providers_shared.so
+    '1ed2f69fcb95d4bb25cc42c2d2085324a671dfb11d02b729150f048970bb82f9'  # voxtype-onnx-cuda-13.libonnxruntime_providers_cuda.so
+    '1b028afc079628d76a28d7eb09700a4baead4a27f9634ba82c35398486134114'  # voxtype-onnx-cuda-13.libonnxruntime_providers_shared.so
     # ONNX MIGraphX
-    'SKIP'  # voxtype-onnx-migraphx
+    '88feae369ab7c2ad0a0db3861f3787e9ce17117dd088f4ae53b0a9f5db30fc89'  # voxtype-onnx-migraphx
     'SKIP'  # voxtype-onnx-migraphx.asc
-    'SKIP'  # voxtype-onnx-migraphx.libonnxruntime_providers_migraphx.so
-    'SKIP'  # voxtype-onnx-migraphx.libonnxruntime_providers_shared.so
+    'ddd67e6193ade819ee21f1706d1b03b9151f1d2d2843701e2d19d8b183631707'  # voxtype-onnx-migraphx.libonnxruntime_providers_migraphx.so
+    '17f7cf47ad0d7b5ac895ae588fd62c7f85a13842588161b6a24c7d480f062be4'  # voxtype-onnx-migraphx.libonnxruntime_providers_shared.so
+    # OSD launcher + GTK4 frontend
+    '2413b11a273db3351f8d757c2b1858651c25c1a15febf66bb52dfe45fd4085bd'  # voxtype-osd
+    'SKIP'  # voxtype-osd.asc
+    'a6dc3a38502cdd5d2ed1b3e07518758d30dc4af4dac5dd5e4430ffa57faad3f0'  # voxtype-osd-gtk4
+    'SKIP'  # voxtype-osd-gtk4.asc
     # Config and support files
-    'SKIP'  # config.toml
-    'SKIP'  # voxtype.service
-    'SKIP'  # voxtype.bash
-    'SKIP'  # voxtype.zsh
-    'SKIP'  # voxtype.fish
-    'SKIP'  # LICENSE
-    'SKIP'  # README.md
+    'aaa36cb5f382e66b2d385c657450629209c5875e29c82370cc190202616a8cbe'  # config.toml
+    '531c3658e229619e56bb01659fb81f401767b85e1d6e2acd1ac67ee3414a168c'  # voxtype.service
+    '65c95805d9b03ccc2fadb9d63a03ab79974b00091df8457ee8ef290ec6bd5b12'  # voxtype.bash
+    'e5e63b3c7f48238cf719e4f2ef90c1f9c5c7e8cd25eaebc9f78bdd34b24b6605'  # voxtype.zsh
+    'f720ddd24ee97c105b448323899c36bca7c63d00c2d42c4a3da70c3d157dccbb'  # voxtype.fish
+    '31123c45b4ff9cb5fd9e01083350fea6ccaf14969013fd48e4c95fdf89e6eb4b'  # LICENSE
+    '744134f77ac3d2134682fef0bf2734aee9a36c6bbbac3c5b633ac500fa06273e'  # README.md
+    '32144a4a5210092b0aa909f6de7a43ebe8bbf82fa3dfb1f3519787512fdf8e4b'  # voxtype-configure.desktop
+    '2001788ae3c087ff2589ff69c9598160da1c783025cc52ca3382736694a97090'  # voxtype-configure-launcher
 )
 
 package() {
@@ -171,6 +189,21 @@ package() {
     # /usr/bin/voxtype symlink and the unversioned voxtype-onnx-cuda symlink
     # are created by the .install script's post_install/post_upgrade hooks
     # so they can pick the right CUDA variant for the host.
+
+    # OSD launcher + GTK4 frontend. The launcher resolves /proc/self/exe and
+    # probes its parent directory, so it finds /usr/lib/voxtype/voxtype-osd-gtk4
+    # without needing it on PATH. Only the launcher gets a /usr/bin symlink.
+    install -Dm755 "$srcdir/voxtype-$pkgver-osd" "$pkgdir/usr/lib/voxtype/voxtype-osd"
+    install -Dm755 "$srcdir/voxtype-$pkgver-osd-gtk4" "$pkgdir/usr/lib/voxtype/voxtype-osd-gtk4"
+    install -d "$pkgdir/usr/bin"
+    ln -sf /usr/lib/voxtype/voxtype-osd "$pkgdir/usr/bin/voxtype-osd"
+
+    # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
+    # The launcher discovers a terminal emulator and runs `voxtype configure` inside it.
+    install -Dm755 "$srcdir/voxtype-configure-launcher-$pkgver" \
+        "$pkgdir/usr/bin/voxtype-configure-launcher"
+    install -Dm644 "$srcdir/voxtype-configure-$pkgver.desktop" \
+        "$pkgdir/usr/share/applications/voxtype-configure.desktop"
 
     # Install default configuration
     install -Dm644 "$srcdir/config-$pkgver.toml" "$pkgdir/etc/voxtype/config.toml"
