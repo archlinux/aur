@@ -4,8 +4,6 @@ pkgver=1.0
 pkgrel=1
 arch=('any')
 provides=('gnome-keyring')
-conflicts=('gnome-keyring')
-depends=('oo7')
 description="Dummy package to satisfy gnome-keyring dependency (use with oo7)"
 license=('MIT')
 

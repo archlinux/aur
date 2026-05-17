@@ -3,8 +3,6 @@ pkgbase = oo7-gnome-keyring-dummy
 	pkgrel = 1
 	arch = any
 	license = MIT
-	depends = oo7
 	provides = gnome-keyring
-	conflicts = gnome-keyring
 
 pkgname = oo7-gnome-keyring-dummy
