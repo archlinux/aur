@@ -1,0 +1,25 @@
+pkgbase = zoom-koenrin
+	pkgdesc = Video Conferencing and Web Conferencing Service
+	pkgver = 6.5.11.4015
+	pkgrel = 2
+	url = https://zoom.us
+	arch = x86_64
+	license = custom
+	depends = glib2
+	depends = libpulse
+	depends = libxcb
+	depends = libxshmfence
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-cursor
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = qt5-declarative
+	optdepends = xdg-desktop-portal-impl: screen sharing on Wayland
+	options = !strip
+	options = !debug
+	source = zoom-6.5.11.4015_x86_64.pkg.tar.xz::https://cdn.zoom.us/prod/6.5.11.4015/zoom_x86_64.pkg.tar.xz
+	sha256sums = 87835934335392c9907126e16ccd7a3665e1f0b459039c19a6d5aa28c19ef346
+
+pkgname = zoom-koenrin
