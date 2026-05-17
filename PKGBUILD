@@ -23,7 +23,7 @@ optdepends=(
     'libxtst: cursor confinement on multi-monitor X11/XWayland setups'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f0581260a53e2b693a1842df92d92c7cc5e42b364dfef66e5bd5570ee1e34a84')
+sha256sums=('95c48b5c54c81898694b03ee0c16b3c36c5c957b94c865b6d4aad0c762aea09b')
 
 build() {
     cd "$_pkgname-$pkgver"
