@@ -1,0 +1,21 @@
+diff --git a/codex-rs/config/src/config_toml.rs b/codex-rs/config/src/config_toml.rs
+index 1791ba6..c1b7d6d 100644
+--- a/codex-rs/config/src/config_toml.rs
++++ b/codex-rs/config/src/config_toml.rs
+@@ -290 +290 @@ pub struct ConfigToml {
+-    /// Defaults to `false`.
++    /// Defaults to `true`.
+diff --git a/codex-rs/core/config.schema.json b/codex-rs/core/config.schema.json
+index b2904d2..c00dcc9 100644
+--- a/codex-rs/core/config.schema.json
++++ b/codex-rs/core/config.schema.json
+@@ -4528 +4528 @@
+-      "description": "When set to `true`, `AgentReasoningRawContentEvent` events will be shown in the UI/output. Defaults to `false`.",
++      "description": "When set to `true`, `AgentReasoningRawContentEvent` events will be shown in the UI/output. Defaults to `true`.",
+diff --git a/codex-rs/core/src/config/mod.rs b/codex-rs/core/src/config/mod.rs
+index 742169f..49715ce 100644
+--- a/codex-rs/core/src/config/mod.rs
++++ b/codex-rs/core/src/config/mod.rs
+@@ -3081 +3081 @@ impl Config {
+-                .unwrap_or(false),
++                .unwrap_or(true),

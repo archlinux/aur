@@ -2,10 +2,10 @@
 
 pkgname=openai-codex-reasoning
 pkgver=0.130.0
-pkgrel=1
-pkgdesc="OpenAI Codex CLI fork with inline reasoning traces"
+pkgrel=2
+pkgdesc="OpenAI Codex CLI with raw reasoning traces enabled by default"
 arch=('x86_64' 'aarch64')
-url="https://github.com/OneNoted/codex"
+url="https://github.com/openai/codex"
 license=('Apache-2.0')
 depends=(
   'openssl'
@@ -29,15 +29,25 @@ conflicts=(
 replaces=('openai-codex-reasoning-bin')
 options=('!lto')
 
-_fork_tag='aur-v0.130.0-reasoning.1'
+_upstream_tag="rust-v${pkgver}"
 _source_dir='codex'
 source=(
-  "${_source_dir}::git+https://github.com/OneNoted/codex.git#tag=${_fork_tag}"
+  "${_source_dir}::git+https://github.com/openai/codex.git#tag=${_upstream_tag}"
+  'default-raw-reasoning.patch'
 )
-sha256sums=('SKIP')
+sha256sums=(
+  'SKIP'
+  'dd39bdc924e771e1400f3fbb98c8b48767ed135f0c79a9b99b8ee7da95627758'
+)
 
 prepare() {
-  cd "${srcdir}/${_source_dir}/codex-rs"
+  cd "${srcdir}/${_source_dir}"
+
+  if ! grep -q 'unwrap_or(true)' codex-rs/core/src/config/mod.rs; then
+    patch -Np1 -i "${srcdir}/default-raw-reasoning.patch"
+  fi
+
+  cd codex-rs
 
   export RUSTUP_TOOLCHAIN=stable
 
