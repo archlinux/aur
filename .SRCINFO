@@ -1,6 +1,6 @@
 pkgbase = tmux-tad
 	pkgdesc = Tmux session and group manager with a native TUI dashboard (prebuilt binary)
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/ttpears/tad
 	arch = x86_64
@@ -8,18 +8,18 @@ pkgbase = tmux-tad
 	depends = tmux
 	depends = gcc-libs
 	depends = glibc
-	provides = tmux-tad-bin=0.5.0
+	provides = tmux-tad-bin=0.6.0
 	conflicts = tad-bin
 	conflicts = tad
 	conflicts = tmux-tad-bin
 	conflicts = tmux-tad-git
-	source = tad-0.5.0::https://github.com/ttpears/tad/releases/download/v0.5.0/tad-v0.5.0-x86_64-linux
-	source = tad.bash-0.5.0::https://github.com/ttpears/tad/releases/download/v0.5.0/tad.bash
-	source = _tad-0.5.0::https://github.com/ttpears/tad/releases/download/v0.5.0/_tad
-	source = groups.yaml.example-0.5.0::https://github.com/ttpears/tad/releases/download/v0.5.0/groups.yaml.example
-	source = config.yaml.example-0.5.0::https://github.com/ttpears/tad/releases/download/v0.5.0/config.yaml.example
-	source = LICENSE-0.5.0::https://github.com/ttpears/tad/releases/download/v0.5.0/LICENSE
-	sha256sums = 5d02b0c60b317b7f382ec2beb7a209faf2e69567729619a00c0db1d72a60211f
+	source = tad-0.6.0::https://github.com/ttpears/tad/releases/download/v0.6.0/tad-v0.6.0-x86_64-linux
+	source = tad.bash-0.6.0::https://github.com/ttpears/tad/releases/download/v0.6.0/tad.bash
+	source = _tad-0.6.0::https://github.com/ttpears/tad/releases/download/v0.6.0/_tad
+	source = groups.yaml.example-0.6.0::https://github.com/ttpears/tad/releases/download/v0.6.0/groups.yaml.example
+	source = config.yaml.example-0.6.0::https://github.com/ttpears/tad/releases/download/v0.6.0/config.yaml.example
+	source = LICENSE-0.6.0::https://github.com/ttpears/tad/releases/download/v0.6.0/LICENSE
+	sha256sums = 5a25f357f153a019cfa2779a9f0fb30ed9fd508e68860953efbcbe2e76c7a4d3
 	sha256sums = 8f8f2b70da4f3477f54f4da7d4c6867eed4dc3afe17a6fc2d12b61feaafa597c
 	sha256sums = f9f4e5adb383c4263c1b0b9db5b4b20d7c97850dd3fb8d6e1c55140c84862d00
 	sha256sums = 5a20954483b4d58685a7206afb612f215ff95a950adeeaeae46fa0b8ae5355f3
