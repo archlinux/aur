@@ -1,9 +1,0 @@
---- a/src/placement.cpp
-+++ b/src/placement.cpp
-@@ -394,7 +394,7 @@ std::optional<PlacementCommand> Placement::placeOnScreenDisplay(const Window *c,
-     // place at lower area of the screen
-     const int x = area.left() + (area.width() - size.width()) / 2;
--    const int y = area.top() + 2 * area.height() / 3 - size.height() / 2;
-+    const int y = area.top() + area.height() - size.height() - 60;
-     return QPointF(x, y);
- }

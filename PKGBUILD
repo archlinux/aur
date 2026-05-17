@@ -81,19 +81,18 @@ makedepends=(extra-cmake-modules
              xorg-xwayland)
 optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig}
-        osd-bottom-position.patch)
+source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig})
 sha256sums=('6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4'
-            'SKIP'
-            'ba762e1c5507eeb63ca4c15ed1a213fc015be7e86f850cea9489cb9ede085f75')
+            'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1'  # Nicolas Fella <nicolas.fella@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
 prepare() {
   cd kwin-$pkgver
-  patch -p1 < ../osd-bottom-position.patch
+  sed -i 's|const int y = area.top() + 2 \* area.height() / 3 - size.height() / 2;|const int y = area.top() + area.height() - size.height() - 60;|' src/placement.cpp
 }
 
 build() {
