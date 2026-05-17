@@ -1,6 +1,6 @@
 # Maintainer: jadrens <jadrens@example.com>
 pkgname=headtail-git
-pkgver=1.0.0.r5.ge8e75d4
+pkgver=1.1.0.r0.g2eebb8e-1
 pkgrel=1
 pkgdesc="A combined head and tail utility - print the first and last N lines of a file (git version)"
 arch=('x86_64')
@@ -18,9 +18,11 @@ source=("$pkgname::git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 
+
+
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^[vV]//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
