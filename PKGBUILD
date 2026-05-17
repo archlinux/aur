@@ -2,7 +2,7 @@
 # Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=tidal-hifi
-pkgver=6.3.1
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine"
 arch=(x86_64)
@@ -10,20 +10,20 @@ url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
 depends=(libxss nss gtk3 alsa-lib)
 makedepends=(nodejs npm libxcrypt-compat python)
-source=("${pkgname}-${pkgver}-Mavy.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/${pkgver}-Mavy.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/${pkgver}.tar.gz"
         "tidal-hifi.desktop")
-sha256sums=('4d8ce96576f6fc71edb4621ab233f85c1f2b8b5a947c2fe8ec6e2c539a61f336'
+sha256sums=('17022a7a5d222ee869147b1dec97efb6d06527a635c0b005a0ec339fe131985e'
             '7e3b485443be639c8c13964b94ce20e7df3ba54463c3f0dcf5883a29297d21e3')
 
 build() {
-    cd "tidal-hifi-${pkgver}-Mavy"
+    cd "tidal-hifi-${pkgver}"
 
     npm install
     npm run build-unpacked
 }
 
 package() {
-    cd "tidal-hifi-${pkgver}-Mavy"
+    cd "tidal-hifi-${pkgver}"
 
     install -d "${pkgdir}/opt/tidal-hifi/" "${pkgdir}/usr/bin"
 
