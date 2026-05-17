@@ -8,14 +8,15 @@ license=(GPL)
 arch=('i686' 'x86_64')
 depends=(dkms)
 makedepends=(git)
-optdepends=('linux-headers: build the module against Arch kernel'
+optdepends=('linux-headers: build the module against standard Arch kernel'
   'linux-lts-headers: build the module against LTS Arch kernel'
+  'linux-zen-headers: build the module against ZEN Arch kernel'
+  'linux-hardened-headers: build the module against Hardened Arch kernel'
   'i2c-tools: for interacting with I2C devices'
   'libgpiod: for interacting with GPIO pins')
 url="https://github.com/frank-zago/${_base}"
 source=("git+${url}.git")
 sha512sums=('SKIP')
-
 
 conflicts=('i2c-ch341-dkms' 'spi-ch341-usb-dkms-git')
 replaces=('i2c-ch341-dkms')
