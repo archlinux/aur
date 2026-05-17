@@ -1,33 +1,34 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver=2.3.4-20
+pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
+_pkgver=2.3.4-21
 _prever="pre$_pkgver"
 pkgver="${_pkgver//-/.}"
 pkgrel=1
-pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
-provides=('libslang.so' 'slang' 'slsh')
-conflicts=('libslang.so' 'slang' 'slsh')
 url='https://jedsoft.org/snapshots/'
+changelog="$pkgname.changelog"
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
 depends=(
   'glibc'
   'libpng'
   'oniguruma'
   'pcre'
+  'pcre2'
   'zlib'
 )
+provides=('libslang.so' 'slang' 'slsh')
+conflicts=("${provides[@]}")
 backup=('etc/slsh.rc')
-options=('!makeflags')
 source=("$url$_pkgname-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('105b3b6578fda3c0cedf9125d1c6ecba')
-changelog="$pkgname.changelog"
+md5sums=('3c78ae134669e5c354f4ae60796a93ca')
 
 build() {
   cd "$_pkgname-$_prever"
@@ -65,10 +66,5 @@ package() {
   # contains both the client and the server code.
   rm -vf sldbsock.slc
 }
-
-# Calculated
-b2sums=(
-  'dd8a66c85f20625be9e496aac54cc8e1089b03d4c704ac83025bef85422e5f3de0e9ef3804ca922c486476b3337f62e711f12f899e12ba183f1c8ee3e8264e97'
-)
 
 # eof
