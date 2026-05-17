@@ -1,5 +1,5 @@
 pkgbase = python-qiskit-ibm-experiment
-	pkgdesc = Service that allows accessing the IBM Quantum experiment database.
+	pkgdesc = (DEPRECATED) Service that allows accessing the IBM Quantum experiment database.
 	pkgver = 0.4.8
 	pkgrel = 2
 	url = https://github.com/qiskit-community/qiskit-ibm-experiment
