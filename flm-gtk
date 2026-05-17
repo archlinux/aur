@@ -1,0 +1,815 @@
+#!/usr/bin/env python3
+import warnings
+# Suppress the asyncio policy deprecation warning
+warnings.filterwarnings("ignore", category=DeprecationWarning, module="asyncio")
+
+import sys
+import asyncio
+import json
+import subprocess
+import socket
+import os
+import signal
+import re
+from typing import Optional, List, Dict
+
+import gi
+gi.require_version("Gtk", "4.0")
+gi.require_version("Adw", "1")
+gi.require_version("Soup", "3.0")
+from gi.repository import Gtk, Gdk, Gio, GLib, Adw, Soup
+from gi.events import GLibEventLoopPolicy
+
+# Set the policy BEFORE creating any loops
+asyncio.set_event_loop_policy(GLibEventLoopPolicy())
+
+APP_ID = "com.marley.FastFlowLM-gtk"
+DEFAULT_PORT = 52625
+BASE_URL = f"http://127.0.0.1:{DEFAULT_PORT}/v1"
+
+CSS = """
+.user-bubble {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin: 5px 20px 5px 60px;
+}
+
+.assistant-bubble {
+    background-color: #000000;
+    color: @window_fg_color;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin: 5px 60px 5px 20px;
+}
+
+.chat-scroll {
+    border-bottom: 1px solid @borders;
+}
+
+.input-area {
+    padding: 12px;
+    background-color: @window_bg_color;
+}
+
+.input-view {
+    border-radius: 8px;
+    padding: 8px;
+    background-color: @view_bg_color;
+}
+
+.uninstalled-model-label {
+    color: #808080;
+}
+
+.installed-model-label {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.code-block {
+    font-family: monospace;
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    padding: 4px;
+}
+
+.sidebar-title {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.sidebar-subtitle {
+    color: grey;
+    font-size: 0.8em;
+}
+
+.sidebar-list {
+    background-color: @window_bg_color;
+}
+
+.delete-btn {
+    opacity: 0.3;
+}
+
+.delete-btn:hover {
+    opacity: 1.0;
+    color: @error_color;
+}
+"""
+
+class FlmChatApp(Adw.Application):
+    def __init__(self):
+        super().__init__(application_id=APP_ID, flags=Gio.ApplicationFlags.FLAGS_NONE)
+        self.server_process: Optional[subprocess.Popen] = None
+        self.models: List[Dict] = []
+        self.current_model: Optional[str] = None
+        self.downloading_models = set()
+        self.tasks = set()
+        self.session = Soup.Session()
+        self.history = []
+        self.status_labels = []
+        
+        self.history_dir = os.path.expanduser("~/.config/flm/history")
+        os.makedirs(self.history_dir, exist_ok=True)
+        self.current_session_id = None
+        self.sessions_metadata = []
+        self.allow_mid_chat_switch = False
+
+    def do_activate(self):
+        # ... (silence legacy dark mode warnings)
+        settings = Gtk.Settings.get_default()
+        if settings:
+            settings.set_property("gtk-application-prefer-dark-theme", False)
+
+        # Force dark mode (GNOME aesthetic)
+        Adw.StyleManager.get_default().set_color_scheme(Adw.ColorScheme.PREFER_DARK)
+        
+        # Setup Actions for Menu
+        action_switch = Gio.SimpleAction.new_stateful("allow_switch", None, GLib.Variant.new_boolean(False))
+        action_switch.connect("activate", self.on_allow_switch_toggled)
+        self.add_action(action_switch)
+
+        action_clear = Gio.SimpleAction.new("clear_history", None)
+        action_clear.connect("activate", self.on_clear_history)
+        self.add_action(action_clear)
+
+        self.win = Adw.ApplicationWindow(application=self)
+        self.win.set_default_size(900, 800)
+        self.win.set_title("FastFlowLM-gtk")
+        
+        # ... (CSS and UI Layout)
+        provider = Gtk.CssProvider()
+        provider.load_from_data(CSS.encode())
+        Gtk.StyleContext.add_provider_for_display(
+            Gdk.Display.get_default(),
+            provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
+
+        # OverlaySplitView for Sidebar
+        self.split_view = Adw.OverlaySplitView()
+        self.split_view.set_sidebar_width_fraction(0.3)
+        self.split_view.set_min_sidebar_width(200)
+        self.win.set_content(self.split_view)
+
+        # Sidebar content
+        self.sidebar_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.sidebar_box.add_css_class("sidebar-list")
+        self.sidebar_header = Adw.HeaderBar()
+        self.sidebar_header.set_show_end_title_buttons(False)
+        self.sidebar_box.append(self.sidebar_header)
+
+        self.history_list = Gtk.ListBox()
+        self.history_list.set_selection_mode(Gtk.SelectionMode.SINGLE)
+        self.history_list.connect("row-activated", self.on_history_row_activated)
+        
+        self.sidebar_scrolled = Gtk.ScrolledWindow()
+        self.sidebar_scrolled.set_vexpand(True)
+        self.sidebar_scrolled.set_child(self.history_list)
+        self.sidebar_box.append(self.sidebar_scrolled)
+        self.split_view.set_sidebar(self.sidebar_box)
+
+        # Main Chat content
+        self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.split_view.set_content(self.main_box)
+
+        # HeaderBar
+        self.header = Adw.HeaderBar()
+        self.main_box.append(self.header)
+
+        # Sidebar Toggle
+        self.btn_sidebar = Gtk.ToggleButton(icon_name="sidebar-show-symbolic")
+        self.btn_sidebar.set_tooltip_text("Toggle History")
+        self.btn_sidebar.set_active(True)
+        self.btn_sidebar.connect("toggled", lambda b: self.split_view.set_show_sidebar(b.get_active()))
+        self.header.pack_start(self.btn_sidebar)
+
+        # New Chat Button
+        self.btn_new = Gtk.Button(icon_name="document-new-symbolic")
+        self.btn_new.set_tooltip_text("New Chat")
+        self.btn_new.connect("clicked", self.on_new_chat)
+        self.header.pack_start(self.btn_new)
+        
+        # Options Menu Button
+        self.options_btn = Gtk.MenuButton(icon_name="view-more-symbolic")
+        self.options_btn.set_tooltip_text("Options")
+        self.header.pack_start(self.options_btn)
+        
+        self.options_menu = Gio.Menu()
+        self.options_menu.append("Allow Switching Model mid-chat", "app.allow_switch")
+        self.options_menu.append("Clear All History", "app.clear_history")
+        self.options_btn.set_menu_model(self.options_menu)
+
+        # Model Selector
+        self.model_btn = Gtk.MenuButton()
+        self.model_btn.set_label("Select a model to start")
+        self.header.set_title_widget(self.model_btn)
+        
+        # Eject Button
+        self.btn_eject = Gtk.Button(icon_name="media-eject-symbolic")
+        self.btn_eject.set_tooltip_text("Eject (Stop Server)")
+        self.btn_eject.connect("clicked", self.on_eject)
+        self.header.pack_end(self.btn_eject)
+
+        # Chat List
+        self.scrolled = Gtk.ScrolledWindow()
+        self.scrolled.set_vexpand(True)
+        self.scrolled.add_css_class("chat-scroll")
+        self.chat_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        self.chat_box.set_margin_top(10)
+        self.chat_box.set_margin_bottom(10)
+        self.scrolled.set_child(self.chat_box)
+        self.main_box.append(self.scrolled)
+
+        # Input Area
+        self.input_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        self.input_box.add_css_class("input-area")
+        
+        self.input_scroll = Gtk.ScrolledWindow()
+        self.input_scroll.set_hexpand(True)
+        self.input_scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        self.input_scroll.set_min_content_height(40)
+        self.input_scroll.set_max_content_height(150)
+        self.input_scroll.add_css_class("input-view")
+        
+        self.entry = Gtk.TextView()
+        self.entry.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
+        self.entry.set_accepts_tab(False)
+        self.input_scroll.set_child(self.entry)
+        
+        # Enter to send, Shift+Enter for new line
+        key_ctrl = Gtk.EventControllerKey()
+        key_ctrl.connect("key-pressed", self.on_key_pressed)
+        self.entry.add_controller(key_ctrl)
+        
+        self.input_box.append(self.input_scroll)
+        
+        self.btn_send = Gtk.Button(icon_name="mail-send-symbolic")
+        self.btn_send.connect("clicked", self.on_send)
+        self.btn_send.set_valign(Gtk.Align.END)
+        self.input_box.append(self.btn_send)
+        
+        self.main_box.append(self.input_box)
+
+        self.win.present()
+        
+        # Load history and start async initialization
+        self.load_history_metadata()
+        self.run_task(self.init_server())
+
+    def on_allow_switch_toggled(self, action, value):
+        new_state = not action.get_state().get_boolean()
+        action.set_state(GLib.Variant.new_boolean(new_state))
+        self.allow_mid_chat_switch = new_state
+        self.update_model_ui()
+
+    def run_task(self, coro):
+        task = asyncio.create_task(coro)
+        self.tasks.add(task)
+        task.add_done_callback(self.tasks.discard)
+
+    async def init_server(self):
+        if self.is_server_up():
+            self.add_system_message("Connected to flm serve.")
+            GLib.timeout_add_seconds(2, self.clear_status_labels)
+        
+        self.models = self.get_all_models()
+        self.update_model_ui()
+
+    def is_server_up(self) -> bool:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(0.5)
+            return s.connect_ex(('127.0.0.1', DEFAULT_PORT)) == 0
+
+    def get_all_models(self) -> List[Dict]:
+        try:
+            res = subprocess.run(["flm", "list", "--json"], 
+                               capture_output=True, text=True, check=True)
+            data = json.loads(res.stdout)
+            models = data.get("models", [])
+            models.sort(key=lambda x: (not x.get('installed', False), x['model']))
+            return models
+        except Exception as e:
+            print(f"Error listing models: {e}")
+            return []
+
+    def start_flm_serve(self, model: str):
+        if self.server_process:
+            self.server_process.terminate()
+        self.server_process = subprocess.Popen(["flm", "serve", model], 
+                                             stdout=subprocess.DEVNULL, 
+                                             stderr=subprocess.DEVNULL)
+
+    def update_model_ui(self):
+        if self.current_model:
+            self.model_btn.set_label(self.current_model)
+        else:
+            self.model_btn.set_label("Select a model to start")
+        
+        # Lock model selector if:
+        # 1. Switching is not allowed
+        # 2. AND there's a chat history
+        # 3. AND the server is already up (prevents changing model mid-run)
+        is_running = self.is_server_up()
+        if not self.allow_mid_chat_switch and self.history and is_running:
+            self.model_btn.set_sensitive(False)
+            self.model_btn.set_tooltip_text("Model locked during conversation. Enable switching in Options.")
+        else:
+            self.model_btn.set_sensitive(True)
+            self.model_btn.set_tooltip_text("Select Model")
+
+        popover = Gtk.Popover()
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.set_min_content_height(350)
+        scrolled.set_min_content_width(300)
+        
+        listbox = Gtk.ListBox()
+        listbox.set_selection_mode(Gtk.SelectionMode.NONE)
+        
+        for m in self.models:
+            model_name = m['model']
+            is_installed = m.get('installed', False)
+            is_downloading = model_name in self.downloading_models
+            
+            row = Gtk.ListBoxRow()
+            box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+            box.set_margin_start(10)
+            box.set_margin_end(10)
+            box.set_margin_top(5)
+            box.set_margin_bottom(5)
+
+            label_text = f"⬇ Downloading {model_name}..." if is_downloading else model_name
+            label = Gtk.Label(label=label_text)
+            label.set_xalign(0)
+            
+            if is_downloading:
+                row.set_sensitive(False)
+            elif not is_installed:
+                label.add_css_class("uninstalled-model-label")
+            else:
+                label.add_css_class("installed-model-label")
+            
+            box.append(label)
+            row.set_child(box)
+            listbox.append(row)
+            
+        listbox.connect("row-activated", self.on_row_activated, popover)
+        
+        scrolled.set_child(listbox)
+        popover.set_child(scrolled)
+        self.model_btn.set_popover(popover)
+
+    def on_row_activated(self, listbox, row, popover):
+        index = row.get_index()
+        if index < len(self.models):
+            self.on_model_selected(None, self.models[index], popover)
+
+    def on_model_selected(self, btn, model_data, popover):
+        model_name = model_data['model']
+        is_installed = model_data.get('installed', False)
+        popover.popdown()
+
+        if not is_installed:
+            self.confirm_download(model_data)
+            return
+
+        self.current_model = model_name
+        self.model_btn.set_label(model_name)
+        
+        # Save session so model name is updated in sidebar
+        if self.history:
+            self.save_session()
+        
+        # Always try to start/switch server when a model is explicitly selected
+        self.add_system_message(f"Starting server with {model_name}...")
+        self.start_flm_serve(model_name)
+        self.run_task(self.wait_for_server())
+
+    async def wait_for_server(self):
+        for _ in range(25):
+            await asyncio.sleep(1)
+            if self.is_server_up():
+                self.add_system_message("Server ready.")
+                GLib.timeout_add_seconds(2, self.clear_status_labels)
+                return
+        self.add_system_message("Error: Server failed to start. Check flm logs.")
+
+    def confirm_download(self, model_data):
+        model_name = model_data['model']
+        dialog = Adw.MessageDialog(
+            transient_for=self.win,
+            heading="Download Model?",
+            body=f"Do you want to download {model_name}?"
+        )
+        dialog.add_response("cancel", "Cancel")
+        dialog.add_response("download", "Download")
+        dialog.set_response_appearance("download", Adw.ResponseAppearance.SUGGESTED)
+        
+        # Connect to response signal (modern approach for Adw 1.5+)
+        dialog.connect("response", self.on_download_response, model_name)
+        dialog.present()
+
+    def on_download_response(self, dialog, response, model_name):
+        if response == "download":
+            self.add_system_message(f"Starting download: {model_name}")
+            self.run_task(self.download_model(model_name))
+
+    async def download_model(self, model_name):
+        self.downloading_models.add(model_name)
+        self.update_model_ui()
+        try:
+            process = await asyncio.create_subprocess_exec(
+                "flm", "pull", model_name,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT
+            )
+            stdout, _ = await process.communicate()
+            if process.returncode == 0:
+                self.add_system_message(f"Successfully downloaded {model_name}")
+            else:
+                self.add_system_message(f"Failed to download {model_name}")
+        except Exception as e:
+            self.add_system_message(f"Download error: {str(e)}")
+        finally:
+            self.downloading_models.discard(model_name)
+            self.models = self.get_all_models()
+            self.update_model_ui()
+
+    def markdown_to_pango(self, text: str) -> str:
+        # Escape for Pango
+        text = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        # Bold
+        text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
+        # Multi-line code blocks
+        text = re.sub(r'```(.*?)\n?(.*?)```', r'\n<span font_family="monospace" background="#1e1e1e" color="#dcdcdc">\2</span>\n', text, flags=re.DOTALL)
+        # Inline code
+        text = re.sub(r'`(.*?)`', r'<span font_family="monospace" background="#1e1e1e" color="#dcdcdc">\1</span>', text)
+        return text
+
+    def add_message(self, text: str, is_user: bool):
+        bubble = Gtk.Label()
+        bubble.set_wrap(True)
+        bubble.set_selectable(True)
+        bubble.set_xalign(0)
+        bubble.add_css_class("user-bubble" if is_user else "assistant-bubble")
+        
+        if is_user:
+            bubble.set_text(text)
+        else:
+            bubble.set_use_markup(True)
+            bubble.set_markup(self.markdown_to_pango(text))
+        
+        align = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        if is_user:
+            align.append(Gtk.Box(hexpand=True))
+            align.append(bubble)
+        else:
+            align.append(bubble)
+            align.append(Gtk.Box(hexpand=True))
+            
+        self.chat_box.append(align)
+        GLib.idle_add(self.scroll_to_bottom)
+        return bubble
+
+    def add_system_message(self, text: str):
+        label = Gtk.Label(label=text)
+        label.add_css_class("dim-label")
+        label.set_margin_top(10)
+        label.set_margin_bottom(10)
+        self.chat_box.append(label)
+        self.status_labels.append(label)
+        GLib.idle_add(self.scroll_to_bottom)
+
+    def clear_status_labels(self):
+        for label in self.status_labels:
+            if label.get_parent() == self.chat_box:
+                self.chat_box.remove(label)
+        self.status_labels = []
+        return False
+
+    def scroll_to_bottom(self):
+        adj = self.scrolled.get_vadjustment()
+        adj.set_value(adj.get_upper() - adj.get_page_size())
+
+    def load_history_metadata(self):
+        self.sessions_metadata = []
+        try:
+            if not os.path.exists(self.history_dir):
+                return
+            files = [f for f in os.listdir(self.history_dir) if f.endswith(".json")]
+            files.sort(reverse=True) # Newest first
+            for f in files:
+                path = os.path.join(self.history_dir, f)
+                with open(path, 'r') as jf:
+                    data = json.load(jf)
+                    self.sessions_metadata.append({
+                        "id": data.get("id", f.replace(".json", "")),
+                        "title": data.get("title", "Untitled Chat"),
+                        "model": data.get("model", "unknown")
+                    })
+        except Exception as e:
+            print(f"Error loading history: {e}")
+        self.update_history_ui()
+
+    def update_history_ui(self):
+        # Clear list
+        child = self.history_list.get_first_child()
+        while child:
+            next_child = child.get_next_sibling()
+            self.history_list.remove(child)
+            child = next_child
+        
+        for meta in self.sessions_metadata:
+            row = Gtk.ListBoxRow()
+            main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
+            main_box.set_margin_start(10)
+            main_box.set_margin_end(5)
+            main_box.set_margin_top(10)
+            main_box.set_margin_bottom(10)
+            
+            txt_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+            txt_box.set_hexpand(True)
+            
+            title = Gtk.Label(label=meta["title"])
+            title.set_halign(Gtk.Align.START)
+            title.set_ellipsize(3) # PANGO_ELLIPSIZE_END
+            title.set_max_width_chars(20)
+            title.add_css_class("sidebar-title")
+            
+            model = Gtk.Label(label=meta["model"])
+            model.set_halign(Gtk.Align.START)
+            model.add_css_class("sidebar-subtitle")
+            
+            txt_box.append(title)
+            txt_box.append(model)
+            main_box.append(txt_box)
+            
+            # Delete Button
+            del_btn = Gtk.Button(icon_name="user-trash-symbolic")
+            del_btn.add_css_class("delete-btn")
+            del_btn.set_has_frame(False)
+            del_btn.set_tooltip_text("Delete Chat")
+            del_btn.connect("clicked", self.on_delete_clicked, meta["id"])
+            main_box.append(del_btn)
+            
+            row.set_child(main_box)
+            self.history_list.append(row)
+
+    def on_delete_clicked(self, btn, session_id):
+        dialog = Adw.MessageDialog(
+            transient_for=self.win,
+            heading="Delete Chat?",
+            body="Are you sure you want to permanently delete this conversation?"
+        )
+        dialog.add_response("cancel", "Cancel")
+        dialog.add_response("delete", "Delete")
+        dialog.set_response_appearance("delete", Adw.ResponseAppearance.DESTRUCTIVE)
+        
+        dialog.connect("response", self.on_delete_response, session_id)
+        dialog.present()
+
+    def on_delete_response(self, dialog, response, session_id):
+        if response == "delete":
+            path = os.path.join(self.history_dir, f"{session_id}.json")
+            if os.path.exists(path):
+                os.remove(path)
+            
+            self.sessions_metadata = [m for m in self.sessions_metadata if m["id"] != session_id]
+            
+            if self.current_session_id == session_id:
+                # Clear current chat if it was the one deleted
+                self.on_new_chat(None)
+            
+            self.update_history_ui()
+
+    def on_clear_history(self, action, value):
+        dialog = Adw.MessageDialog(
+            transient_for=self.win,
+            heading="Clear All History?",
+            body="This will permanently delete all saved chat sessions. Continue?"
+        )
+        dialog.add_response("cancel", "Cancel")
+        dialog.add_response("clear", "Clear All")
+        dialog.set_response_appearance("clear", Adw.ResponseAppearance.DESTRUCTIVE)
+        
+        dialog.connect("response", self.on_clear_history_response)
+        dialog.present()
+
+    def on_clear_history_response(self, dialog, response):
+        if response == "clear":
+            try:
+                for f in os.listdir(self.history_dir):
+                    if f.endswith(".json"):
+                        os.remove(os.path.join(self.history_dir, f))
+                self.sessions_metadata = []
+                self.on_new_chat(None)
+                self.update_history_ui()
+            except Exception as e:
+                self.add_system_message(f"Error clearing history: {e}")
+
+    def on_history_row_activated(self, listbox, row):
+        index = row.get_index()
+        if index < len(self.sessions_metadata):
+            session_id = self.sessions_metadata[index]["id"]
+            
+            # If server is running, ask for confirmation before switching
+            if self.is_server_up() or self.server_process:
+                dialog = Adw.MessageDialog(
+                    transient_for=self.win,
+                    heading="Switch Chat?",
+                    body="Switching chats will unload the current model from VRAM/RAM. Continue?"
+                )
+                dialog.add_response("cancel", "Cancel")
+                dialog.add_response("switch", "Switch")
+                dialog.set_response_appearance("switch", Adw.ResponseAppearance.DESTRUCTIVE)
+                
+                dialog.connect("response", self.on_switch_dialog_response, session_id)
+                dialog.present()
+            else:
+                self.load_session(session_id)
+
+    def on_switch_dialog_response(self, dialog, response, session_id):
+        if response == "switch":
+            # Automatically eject before loading new session
+            self.on_eject(None)
+            self.load_session(session_id)
+
+    def save_session(self):
+        if not self.history:
+            return
+            
+        if not self.current_session_id:
+            import time
+            self.current_session_id = str(int(time.time()))
+        
+        # Get title from first user message
+        title = "Untitled Chat"
+        for msg in self.history:
+            if msg["role"] == "user":
+                title = msg["content"][:40].replace("\n", " ") + (len(msg["content"]) > 40 and "..." or "")
+                break
+        
+        data = {
+            "id": self.current_session_id,
+            "title": title,
+            "model": self.current_model or "none",
+            "messages": self.history
+        }
+        
+        path = os.path.join(self.history_dir, f"{self.current_session_id}.json")
+        try:
+            with open(path, 'w') as f:
+                json.dump(data, f)
+            
+            # Update or insert metadata
+            meta = next((m for m in self.sessions_metadata if m["id"] == self.current_session_id), None)
+            if meta:
+                if meta["title"] != title or meta["model"] != data["model"]:
+                    meta["title"] = title
+                    meta["model"] = data["model"]
+                    self.update_history_ui()
+            else:
+                self.sessions_metadata.insert(0, {"id": data["id"], "title": data["title"], "model": data["model"]})
+                self.update_history_ui()
+        except Exception as e:
+            print(f"Error saving session: {e}")
+
+    def load_session(self, session_id):
+        path = os.path.join(self.history_dir, f"{session_id}.json")
+        try:
+            with open(path, 'r') as f:
+                data = json.load(f)
+                self.current_session_id = session_id
+                self.history = data.get("messages", [])
+                self.current_model = data.get("model")
+                
+                # Update UI
+                child = self.chat_box.get_first_child()
+                while child:
+                    next_child = child.get_next_sibling()
+                    self.chat_box.remove(child)
+                    child = next_child
+                
+                for msg in self.history:
+                    self.add_message(msg["content"], msg["role"] == "user")
+                
+                if self.current_model and self.current_model != "none":
+                    self.model_btn.set_label(self.current_model)
+                    # Start the model automatically for this chat
+                    self.add_system_message(f"Loading {self.current_model} for this session...")
+                    self.start_flm_serve(self.current_model)
+                    self.run_task(self.wait_for_server())
+                
+                self.update_model_ui()
+        except Exception as e:
+            self.add_system_message(f"Error loading session: {e}")
+
+    def on_new_chat(self, btn):
+        self.save_session()
+        self.entry.get_buffer().set_text("") # Clear input
+        child = self.chat_box.get_first_child()
+        while child:
+            next_child = child.get_next_sibling()
+            self.chat_box.remove(child)
+            child = next_child
+        self.history = []
+        self.current_session_id = None
+        self.update_model_ui()
+        self.add_system_message("New session started.")
+
+    def on_eject(self, btn):
+        if self.server_process:
+            self.server_process.terminate()
+            self.server_process = None
+        
+        # Forcefully kill any flm serve processes
+        subprocess.run(["pkill", "-f", "flm serve"], capture_output=True)
+        
+        self.current_model = None
+        self.update_model_ui()
+        self.add_system_message("Server stopped and VRAM/RAM cleared.")
+
+    def on_key_pressed(self, ctrl, keyval, keycode, state):
+        if keyval == Gdk.KEY_Return:
+            # If shift is pressed, allow new line
+            if not (state & Gdk.ModifierType.SHIFT_MASK):
+                self.on_send(None)
+                return True # Handled
+        return False
+
+    def on_send(self, widget):
+        buffer = self.entry.get_buffer()
+        start, end = buffer.get_bounds()
+        text = buffer.get_text(start, end, True).strip()
+        
+        if not text:
+            return
+            
+        buffer.set_text("") # Clear
+        self.add_message(text, is_user=True)
+        self.history.append({"role": "user", "content": text})
+        self.save_session()
+        self.run_task(self.get_ai_response())
+
+    async def get_ai_response(self):
+        if not self.current_model:
+            self.add_system_message("Please select a model first.")
+            return
+
+        bubble = self.add_message("", is_user=False)
+        full_content = ""
+        
+        payload = {
+            "model": self.current_model,
+            "messages": self.history,
+            "stream": True
+        }
+        
+        msg = Soup.Message.new("POST", f"{BASE_URL}/chat/completions")
+        msg.set_request_body_from_bytes("application/json", GLib.Bytes.new(json.dumps(payload).encode()))
+        
+        try:
+            stream = await self.session.send_async(msg, GLib.PRIORITY_DEFAULT, None)
+            if not stream:
+                self.add_system_message("Error: Connection to flm failed.")
+                return
+                
+            data_stream = Gio.DataInputStream.new(stream)
+            while True:
+                line_bytes, length = await data_stream.read_line_async(GLib.PRIORITY_DEFAULT, None)
+                if line_bytes is None: break
+                
+                line = line_bytes.decode('utf-8').strip()
+                if not line or not line.startswith("data: "): continue
+                
+                content = line[6:]
+                if content == "[DONE]": break
+                
+                try:
+                    chunk = json.loads(content)
+                    if 'choices' in chunk and len(chunk['choices']) > 0:
+                        text = chunk['choices'][0].get('delta', {}).get('content')
+                        if text:
+                            full_content += text
+                            # Update with markup
+                            bubble.set_markup(self.markdown_to_pango(full_content))
+                            self.scroll_to_bottom()
+                except Exception as e:
+                    print(f"Error parsing chunk: {e}")
+            
+            self.history.append({"role": "assistant", "content": full_content})
+            self.save_session()
+        except Exception as e:
+            self.add_system_message(f"Connection error: {str(e)}")
+
+    def do_shutdown(self):
+        self.save_session()
+        if self.server_process:
+            self.server_process.terminate()
+        Adw.Application.do_shutdown(self)
+
+if __name__ == "__main__":
+    app = FlmChatApp()
+    app.run(sys.argv)
