@@ -1,0 +1,18 @@
+pkgbase = python312-virtualenv
+	pkgdesc = Virtual Python environment builder for Python 3.12
+	pkgver = 21.3.1
+	pkgrel = 1
+	url = https://github.com/pypa/virtualenv
+	arch = any
+	license = MIT
+	makedepends = python312-installer
+	depends = python312
+	depends = python312-distlib
+	depends = python312-filelock
+	depends = python312-platformdirs
+	depends = python312-python-discovery
+	depends = python312-packaging
+	source = virtualenv-21.3.1-py3-none-any.whl::https://files.pythonhosted.org/packages/b1/4f/f71e641e504111a5a74e3a20bc52d01bd86788b22699dd3fee1c63253cf6/virtualenv-21.3.1-py3-none-any.whl
+	sha256sums = d1a71cf58f2f9228fff23a1f6ec15d39785c6b32e03658d104974247145edd35
+
+pkgname = python312-virtualenv
