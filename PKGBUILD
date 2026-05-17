@@ -41,7 +41,7 @@ Version=1.0
 Type=Application
 Name=OpenAnime
 Comment=WebGPU destekli anime izleme uygulaması
-Exec=${pkgname} --no-sandbox --ozone-platform-hint=auto --enable-gpu-rasterization --ignore-gpu-blocklist %u
+Exec=${pkgname} %u
 Icon=${pkgname}
 Terminal=false
 Categories=AudioVideo;Video;Player;
