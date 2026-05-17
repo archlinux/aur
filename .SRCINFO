@@ -1,7 +1,7 @@
 pkgbase = docker-rootless-extras
 	pkgdesc = Extras to run docker as non-root.
 	pkgver = 29.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless-extras.install
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = docker-rootless-extras
 	sha256sums = d0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473
 
 pkgname = docker-rootless-extras
-	depends = bash
 	depends = docker>=1:29.5.0
 	depends = rootlesskit>=3.0.0
+	depends = sh
 	optdepends = fuse-overlayfs: overlayfs support
 	optdepends = slirp4netns: recommended network driver

@@ -5,7 +5,7 @@
 
 pkgname=docker-rootless-extras
 pkgver=29.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extras to run docker as non-root."
 arch=('any')
 url="https://docs.docker.com/engine/security/rootless/"
@@ -26,9 +26,9 @@ sha256sums=('904c9b9e35f6927c0a5e65afb4d35b6bc9eb1278c878044501281fc728c9be46'
 
 package() {
   depends=(
-    bash
     'docker>=1:29.5.0'
     'rootlesskit>=3.0.0'
+    sh
   )
   optdepends=(
     'fuse-overlayfs: overlayfs support'
