@@ -1,7 +1,7 @@
 pkgbase = soundcloud-bin
 	pkgdesc = 🎵🎵🎵 THE BEST SOUNDCLOUD DESKTOP APP FOR WINDOWS, LINUX & MACOS | AI WAVE | NO ADS | NO CAPTCHA | NO RESTRICTIONS
 	pkgver = 7.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zxcloli666/SoundCloud-Desktop
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,6 @@ pkgbase = soundcloud-bin
 	source_x86_64 = soundcloud-7.4.0-x86_64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/7.4.0/soundcloud-desktop_7.4.0_amd64.deb
 	sha256sums_x86_64 = 105ced0bacb52712da33b55bb7223fdb2069c80fdcb5deec9a315a373e67218e
 	source_aarch64 = soundcloud-7.4.0-aarch64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/7.4.0/soundcloud-desktop_7.4.0_arm64.deb
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 915a4f5f10c9930a9188f9680ee3e9c9b68f5d6ab9adb8bef91fbd6e5ac6e8ee
 
 pkgname = soundcloud-bin
