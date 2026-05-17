@@ -1,7 +1,7 @@
 # Maintainer: Terrabade <terrabade@protonmail.com>
 pkgname=shelly-gnome
-pkgver=2.2.4.1.gnome1
-pkgrel=3
+pkgver=2.3.0.2.gnome1
+pkgrel=1
 pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
 arch=('x86_64')
 url="https://github.com/Terrabade/Shelly-ALPM-GNOME"
@@ -29,11 +29,11 @@ optdepends=(
     'archlinux-appstream-data: package icons and metadata'
     'fish: Fish shell completions'
 )
-makedepends=('dotnet-sdk-10.0' 'clang')
+makedepends=('dotnet-sdk-10.0' 'clang' 'gettext')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
-sha256sums=('bf72df2cc5176ec1b4d1b491f2c49d31106629c3b381157ba527512e3926aa3b')
+sha256sums=('26850b7f31f653288506cbaa0a493b6b28f74fcd108b7d163987ba562b374330')
 
 build() {
   cd "$srcdir/Shelly-ALPM-GNOME-${pkgver}"
@@ -42,6 +42,14 @@ build() {
   dotnet publish Shelly.Gtk/Shelly.Gtk.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly-Notifications/Shelly-Notifications.csproj -c Release -r linux-x64 -o out-notify --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly.Keys/Shelly.Keys.csproj -c Release -r linux-x64 -o out-keys --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+
+  # Compile translations
+  for po_file in Shelly.Gtk/po/*.po; do
+    if [ -f "$po_file" ]; then
+      lang=$(basename "$po_file" .po)
+      msgfmt "$po_file" -o "shelly-ui-${lang}.mo"
+    fi
+  done
 }
 
 package() {
@@ -68,6 +76,7 @@ Exec=/usr/bin/shelly-ui
 Icon=shelly
 Type=Application
 Categories=System;Utility;
+Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
 Terminal=false
 Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
 
@@ -96,6 +105,7 @@ Exec=/usr/bin/shelly-notifications
 Icon=shelly-tray
 Type=Application
 Categories=System;Utility;
+Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
 Terminal=false
 NoDisplay=true
 EOF
@@ -111,6 +121,14 @@ EOF
 
   # Install fish shell completions
   install -Dm644 shelly.fish "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
+
+  # Install translations
+  for mo_file in shelly-ui-*.mo; do
+    if [ -f "$mo_file" ]; then
+      lang=$(echo "$mo_file" | sed 's/shelly-ui-\(.*\)\.mo/\1/')
+      install -Dm644 "$mo_file" "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/shelly-ui.mo"
+    fi
+  done
 
   # Install Flatpak integration script
   cat <<'SCRIPT' | install -Dm755 /dev/stdin "$pkgdir/usr/bin/shelly-flatpak-integrate"
