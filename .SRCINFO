@@ -1,0 +1,22 @@
+pkgbase = budslink-git
+	pkgdesc = Battery status and ANC control for several Bluetooth earbuds (git version)
+	pkgver = 0.1.4.r8.ge603dbb
+	pkgrel = 1
+	url = https://github.com/maniacx/BudsLink
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gettext
+	makedepends = glib2-devel
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	depends = bluez
+	provides = budslink
+	conflicts = budslink
+	source = budslink-git::git+https://github.com/maniacx/BudsLink.git
+	md5sums = SKIP
+
+pkgname = budslink-git
