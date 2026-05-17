@@ -1,12 +1,13 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Daenyth <Daenyth+Arch@gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Vitaliy Berdinskikh <skipper13@root.ua>
 
 pkgname=libxmlrpc
 # latest release from https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%20Super%20Stable/
-pkgver=1.59.03
-pkgrel=4
+pkgver=1.64.03
+pkgrel=1
 epoch=1
 pkgdesc='XML-RPC for C and C++'
 arch=(x86_64)
@@ -18,22 +19,16 @@ conflicts=(xmlrpc-c)
 provides=(xmlrpc-c)
 replaces=(xmlrpc-c)
 options=(!emptydirs)
-source=("https://downloads.sourceforge.net/project/xmlrpc-c/Xmlrpc-c%20Super%20Stable/$pkgver/xmlrpc-c-$pkgver.tgz"
-        'https://raw.githubusercontent.com/gentoo/gentoo/61b6130343a41b49da1ffe7376ab5d2077a37411/dev-libs/xmlrpc-c/files/xmlrpc-c-1.59.03-use-system-expat.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/453a1693e786c6e95e7963696a068ca64148a947/dev-libs/xmlrpc-c/files/xmlrpc-c-1.51.06-pkg-config-libxml2.patch')
-b2sums=('7a8d2ea19fe698538747d8b5735eb3247dec0c0ef87204cdec3a2aa051581e2d23b1a7b41673ff422c69474c5a4f24243945d5474c30beafc59235bc60c2cad5'
-        '083684f61e0448ee34b724edf97c349927f0f1360af94cbbbccac3ab0311ec1bc564b4160632281711180c51f75ede0469951dd3ffe3a2a6e71f993acc491944'
-        '498c4654bf5733b2457d5c156f46504dcadaa1befa4e4ff51bd014c4a529f2d3ea76ccc3dc5f0b30f7b6ff32f827148ae9827eca4041c07d8a8b71316cecae27')
+source=("https://downloads.sourceforge.net/project/xmlrpc-c/Xmlrpc-c%20Super%20Stable/$pkgver/xmlrpc-$pkgver.tgz")
+b2sums=('6da8a4872b8e6a6a9131e20be0c0953f0fad852152866e3e13ce713f1079b9d8d81105d0942b3892902414f972719a4b29dfaba958d1476cfc0eade7abdf7935')
 
-prepare() {
-  cd xmlrpc-c-$pkgver
-
-  patch -p1 -i ../xmlrpc-c-1.59.03-use-system-expat.patch
-  patch -p1 -i ../xmlrpc-c-1.51.06-pkg-config-libxml2.patch
-}
+_srcdir="xmlrpc-$pkgver"
 
 build() {
-  cd xmlrpc-c-$pkgver
+  cd "$_srcdir"
+
+  export CFLAGS_PERSONAL="$CFLAGS -fPIC -std=c11 -w -D_GNU_SOURCE -D_DEFAULT_SOURCE"
+  export CXXFLAGS_PERSONAL="$CXXFLAGS -fPIC -std=c++17 -w"
 
   ./configure \
     --disable-cgi-server \
@@ -47,12 +42,13 @@ build() {
   mkdir -p include/curl
   touch include/curl/types.h
 
-  make CFLAGS_PERSONAL="$CFLAGS -fPIC -std=c11 -w -D_GNU_SOURCE -D_DEFAULT_SOURCE" CXXFLAGS_PERSONAL="$CXXFLAGS -fPIC -std=c++17 -w"
-  make -C tools CFLAGS_PERSONAL="$CFLAGS -fPIC -std=c11 -w -D_GNU_SOURCE -D_DEFAULT_SOURCE" CXXFLAGS_PERSONAL="$CXXFLAGS -fPIC -std=c++17 -w"
+  # Random issues happens when running in parallel.
+  make -j1
+  make -j1 -C tools
 }
 
 package() {
-  cd xmlrpc-c-$pkgver
+  cd "$_srcdir"
 
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" -C tools install
