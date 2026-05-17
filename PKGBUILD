@@ -7,6 +7,7 @@ pkgdesc="macOS Terminal-inspired SDDM login theme — frosted glass, real boot a
 arch=('any')
 url="https://github.com/xCaptaiN09/echo-sddm"
 license=('MIT')
+install=echo-sddm.install
 depends=('sddm' 'qt6-declarative' 'qt6-5compat')
 optdepends=('ttf-jetbrains-mono: recommended font')
 source=("git+https://github.com/xCaptaiN09/echo-sddm.git")
@@ -24,3 +25,4 @@ package() {
     install -Dm644 "${srcdir}/echo-sddm/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+

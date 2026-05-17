@@ -1,0 +1,13 @@
+post_install() {
+    echo ""
+    echo "  Echo SDDM installed to /usr/share/sddm/themes/echo"
+    echo ""
+    echo "  To activate, add to /etc/sddm.conf.d/theme.conf:"
+    echo "    [Theme]"
+    echo "    Current=echo"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
