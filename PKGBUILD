@@ -2,7 +2,7 @@
 
 pkgname=thaimeleon
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatically generate a color scheme from a wallpaper'
 arch=('x86_64')
 url='https://codeberg.org/thairanaru/thaimeleon'
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 
 depends=(
     'glibc'
-    'gcc-libs'
+    'libgcc'
 )
 makedepends=(
     'git'

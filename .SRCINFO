@@ -1,14 +1,14 @@
 pkgbase = thaimeleon
 	pkgdesc = Automatically generate a color scheme from a wallpaper
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/thairanaru/thaimeleon
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = cargo
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	source = thaimeleon::git+https://codeberg.org/thairanaru/thaimeleon.git#tag=v0.1.2
 	sha256sums = 9da535b0230858faffe2f25b74d9aa91cc14ed8e8873509eaf900d17d5c226f3
 
