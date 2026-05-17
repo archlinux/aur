@@ -1,11 +1,12 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-tui-bin
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Terminal UI for unbill"
 arch=('x86_64')
 url="https://github.com/unbill-project/unbill"
 license=('MIT' 'Apache-2.0')
+depends=('unbill-daemon')
 provides=('unbill-tui')
 conflicts=('unbill-tui')
 _tag=${pkgver//./-}
