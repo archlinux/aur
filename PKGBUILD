@@ -1,15 +1,16 @@
 # Maintainer: yancat <yancat_aur@icloud.com>
 pkgname=zstbund
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc='打包pacman软件包及其依赖以供离线使用'
 arch=('x86_64')
 url="https://github.com/yan-cat"
 license=('GPL3')
 depends=('pacman' 'zip')
 makedepends=('rust' 'cargo')
-source=('zstbund-1.0.0.tar.gz')
-sha256sums=('97ec6a78812248ff86ba1b6f3c2f3c9acedb7da543d9ef9f910e5c222f9def1f')
+source=("zstbund-${pkgver}.tar.gz")
+sha256sums=('a5a7c2ac281cb74ca03aac6d1648c0847d38e15d0c146936a89196e59d4d379e')
+options=('!debug')
 
 build() {
   cd "$srcdir/zstbund"
@@ -19,4 +20,5 @@ build() {
 package() {
   cd "$srcdir/zstbund"
   install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

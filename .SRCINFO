@@ -1,7 +1,7 @@
 pkgbase = zstbund
 	pkgdesc = 打包pacman软件包及其依赖以供离线使用
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://github.com/yan-cat
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,8 @@ pkgbase = zstbund
 	makedepends = cargo
 	depends = pacman
 	depends = zip
-	source = zstbund-1.0.0.tar.gz
-	sha256sums = 97ec6a78812248ff86ba1b6f3c2f3c9acedb7da543d9ef9f910e5c222f9def1f
+	options = !debug
+	source = zstbund-1.0.1.tar.gz
+	sha256sums = a5a7c2ac281cb74ca03aac6d1648c0847d38e15d0c146936a89196e59d4d379e
 
 pkgname = zstbund
