@@ -9,6 +9,8 @@ depends=('bash' 'git' 'base-devel')
 conflicts=('Microsoft-Windows')
 provides=('nx-hyprinstall')
 
+
+
 _pkgsrc="nx-hyprinstall"
 source=("$_pkgsrc::git+$url")
 sha256sums=('SKIP')
@@ -21,3 +23,4 @@ package() {
     ./nx-hyprinstall -a
 }
 
+install=nx-hyprinstall.install
