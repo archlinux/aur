@@ -1,13 +1,14 @@
 pkgbase = otpclient-git
 	pkgdesc = A simple GTK+ v3 TOTP/HOTP client
-	pkgver = 4.1.0.r0.g5925281
+	pkgver = 5.0.3.r1.gc0a62d4
 	pkgrel = 1
 	url = https://github.com/paolostivanin/OTPClient
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	depends = gtk3
+	depends = gtk4
+	depends = libadwaita
 	depends = jansson
 	depends = libcotp
 	depends = zbar

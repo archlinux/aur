@@ -4,13 +4,13 @@
 
 pkgname=otpclient-git
 _pkgname=OTPClient
-pkgver=4.1.0.r0.g5925281
+pkgver=5.0.3.r1.gc0a62d4
 pkgrel=1
 pkgdesc="A simple GTK+ v3 TOTP/HOTP client"
 arch=('x86_64')
 url="https://github.com/paolostivanin/OTPClient"
 license=('GPL3')
-depends=('gtk3' 'jansson' 'libcotp' 'zbar' 'protobuf' 'protobuf-c' 'qrencode' 'libayatana-appindicator')
+depends=('gtk4' 'libadwaita' 'jansson' 'libcotp' 'zbar' 'protobuf' 'protobuf-c' 'qrencode' 'libayatana-appindicator')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
