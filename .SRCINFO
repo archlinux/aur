@@ -7,6 +7,7 @@ pkgbase = whitelist-bypass-creator-bin
 	license = MIT
 	makedepends = squashfs-tools
 	depends = fuse2
+	options = !strip
 	source = WhitelistBypass.Creator-0.3.2-x86_64.AppImage::https://github.com/kulikov0/whitelist-bypass/releases/download/v0.3.2/WhitelistBypass.Creator-0.3.2-x86_64.AppImage
 	sha256sums = e7eeef9a407fcf4acc84a32f8b757a0b52b0de53de470d7fc89bcdf73c5c2f1a
 
