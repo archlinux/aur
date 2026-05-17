@@ -1,6 +1,6 @@
 pkgbase = echo-sddm-git
-	pkgdesc = macOS Terminal-inspired SDDM login theme — frosted glass, real boot animation, dual login modes
-	pkgver = r9.94e0bf3
+	pkgdesc = macOS Terminal-inspired SDDM login theme — frosted glass, boot animation, dual login modes
+	pkgver = r14.cbb1403
 	pkgrel = 1
 	url = https://github.com/xCaptaiN09/echo-sddm
 	install = echo-sddm.install
