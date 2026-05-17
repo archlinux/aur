@@ -1,5 +1,5 @@
 pkgname=oceandl
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Lightweight C++ CLI for downloading ocean/climate NetCDF datasets from NOAA PSL"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!debug' '!lto')
 
 _source_archive="oceandl-src-v${pkgver}.tar.gz"
 _source_url="${OCEANDL_SOURCE_URL:-https://github.com/lainx86/oceandl/releases/download/v${pkgver}/${_source_archive}}"
-_source_sha256="${OCEANDL_SOURCE_SHA256:-6f5a9c51586c1027114db20c60fe10d74f0b54c259ce6205e5f68a7378dfc45c}"
+_source_sha256="${OCEANDL_SOURCE_SHA256:-16fb1962f25d309cd2bf5733568ce9290afec6cd0c0e74440717355c5112232c}"
 _source_root="oceandl-v${pkgver}"
 
 source=("${_source_archive}::${_source_url}")
