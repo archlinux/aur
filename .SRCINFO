@@ -1,0 +1,20 @@
+pkgbase = linux-overlay-sight
+	pkgdesc = Crosshair overlay for Linux games on KDE Plasma / XWayland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DevBasi/Linux-Overlay-Sight-LOS
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyqt6
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	optdepends = libxtst: cursor confinement on multi-monitor X11/XWayland setups
+	source = linux-overlay-sight-1.0.0.tar.gz::https://github.com/DevBasi/Linux-Overlay-Sight-LOS/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f0581260a53e2b693a1842df92d92c7cc5e42b364dfef66e5bd5570ee1e34a84
+
+pkgname = linux-overlay-sight
