@@ -1,7 +1,7 @@
 # Maintainer: crl <crl18039102576@126.com>
 
 pkgname=python-numpy-mkl-tbb
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Scientific tools for Python, compiled with Intel MKL and TBB"
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer meson-python python-setuptools cython
 checkdepends=(python-pytest python-hypothesis)
 optdepends=('python-threadpoolctl: for show_runtime() support')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha256sums=('2d390634c5182175533585cc89f3608a4682ccb173cc9bb940b2881c8d6f8fa0')
+sha256sums=('ca670567a5683b7c1670ec03e0ddd5862e10934e92a70751d68d7b7b74ca7f9f')
 
 build() {
   source /opt/intel/oneapi/setvars.sh
