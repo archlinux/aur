@@ -1,18 +1,18 @@
 pkgbase = timerrs
 	pkgdesc = A simple timer for the terminal
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/Aethar01/timerrs
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = MIT
+	license = GPL-2.0
 	makedepends = cargo
 	optdepends = dunst: notifications with progress bars
 	optdepends = libnotify: for sending notifications
 	provides = timerrs
-	source = timerrs-v0.1.7.tar.gz::https://github.com/Aethar01/timerrs/archive/refs/tags/v0.1.7.tar.gz
+	source = timerrs-v0.1.8.tar.gz::https://github.com/Aethar01/timerrs/archive/refs/tags/v0.1.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = timerrs

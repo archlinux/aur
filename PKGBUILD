@@ -1,12 +1,12 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=timerrs
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A simple timer for the terminal"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/Aethar01/timerrs"
-license=('MIT')
+license=('GPL-2.0')
 makedepends=('cargo')
 optdepends=('dunst: notifications with progress bars'
 			'libnotify: for sending notifications')
