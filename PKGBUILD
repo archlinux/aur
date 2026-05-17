@@ -2,7 +2,7 @@
 
 pkgname=kb2xb
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard + mouse → Xbox One virtual gamepad (evdev/uinput, Wayland & X11, profile-based)"
 arch=('any')
 url="https://github.com/janyel-lima/kb2xb"

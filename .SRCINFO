@@ -1,7 +1,7 @@
 pkgbase = kb2xb
 	pkgdesc = Keyboard + mouse → Xbox One virtual gamepad (evdev/uinput, Wayland & X11, profile-based)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janyel-lima/kb2xb
 	install = kb2xb.install
 	arch = any
