@@ -4,7 +4,12 @@ pkgbase = flix-bin
 	pkgrel = 1
 	url = https://flix.center
 	arch = x86_64
-	license = custom:proprietary
+	license = LicenseRef-Flix-Proprietary
+	depends = libkeybinder3
+	depends = libappindicator
+	depends = libnotify
+	optdepends = qt5-base: for KDE Plasma sharing integration
+	noextract = flix-bin-2.0.6.111-1.deb
 	source = flix-bin-2.0.6.111-1.deb::https://github.com/Tobiichi-Origuchi/flix-bin/releases/download/v2.0.6.111/Flix-Linux-2.0.6.111.deb
 	sha256sums = 3a2159f27b9a7f6b760242ce7d912ec9443277c5b64e95594b177d325ea637a3
 
