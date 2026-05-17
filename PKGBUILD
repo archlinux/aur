@@ -1,7 +1,7 @@
 pkgname=soundcloud-bin
 pkgver=7.4.0
 pkgrel=1
-pkgdesc="🎵🎵🎵 THE BEST UNOFFICIAL SOUNDCLOUD DESKTOP APP FOR WINDOWS, LINUX & MACOS | AI WAVE | NO ADS | NO CAPTCHA | NO RESTRICTIONS"
+pkgdesc="🎵🎵🎵 THE BEST SOUNDCLOUD DESKTOP APP FOR WINDOWS, LINUX & MACOS | AI WAVE | NO ADS | NO CAPTCHA | NO RESTRICTIONS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zxcloli666/SoundCloud-Desktop"
 license=('MIT')
