@@ -7,7 +7,7 @@ pkgdesc="PKCS#11 module for Peruvian DNIe card-bound PDF signing"
 arch=('x86_64')
 url="https://github.com/codestation/peru-dnie-pkcs11"
 license=('MIT OR Apache-2.0')
-depends=('openssl' 'pcsclite')
+depends=('pcsclite')
 makedepends=('cargo' 'pkgconf' 'rust')
 optdepends=('opensc: pkcs11-tool smoke tests')
 source=("$pkgname::git+https://github.com/codestation/peru-dnie-pkcs11.git#tag=v${pkgver}")

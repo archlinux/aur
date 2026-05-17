@@ -8,7 +8,6 @@ pkgbase = peru-dnie-pkcs11
 	makedepends = cargo
 	makedepends = pkgconf
 	makedepends = rust
-	depends = openssl
 	depends = pcsclite
 	optdepends = opensc: pkcs11-tool smoke tests
 	source = peru-dnie-pkcs11::git+https://github.com/codestation/peru-dnie-pkcs11.git#tag=v0.1.1
