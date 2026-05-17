@@ -12,8 +12,8 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://caido.download/releases/v${pkgver}/caido-cli-v${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://caido.download/releases/v${pkgver}/caido-cli-v${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('730771a9fe085874f1c6647933cccf05f1b2dcf1fdee007e615dd72892746b98')
-sha256sums_aarch64=('734048c1bcbbe03358d412ffe0d84b6361fae3ffd7735e4bd82f82258c8172ad')
+sha256sums_x86_64=('494932b2215d1f88a503a30a60c892a82f34364619f5854effb093d21418fbe4')
+sha256sums_aarch64=('ad8473a378988d602f4469b5fb004b1a4af7794a0019b8bbd7e017d2a9a8217b')
 
 package() {
 	install -Dm755 caido-cli -t $pkgdir/usr/bin
