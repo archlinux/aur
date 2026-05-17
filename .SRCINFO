@@ -1,0 +1,15 @@
+pkgbase = echo-sddm-git
+	pkgdesc = macOS Terminal-inspired SDDM login theme — frosted glass, real boot animation, dual login modes
+	pkgver = r9.94e0bf3
+	pkgrel = 1
+	url = https://github.com/xCaptaiN09/echo-sddm
+	arch = any
+	license = MIT
+	depends = sddm
+	depends = qt6-declarative
+	depends = qt6-5compat
+	optdepends = ttf-jetbrains-mono: recommended font
+	source = git+https://github.com/xCaptaiN09/echo-sddm.git
+	sha256sums = SKIP
+
+pkgname = echo-sddm-git
