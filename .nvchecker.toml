@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/libsdl-org/SDL_image"
 prefix = "release-"
+include_regex = "^release-2.*"
