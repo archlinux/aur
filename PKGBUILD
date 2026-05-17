@@ -9,7 +9,7 @@ license=('Apache-2.0')
 makedepends=('cargo' 'gcc')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v$pkgver/lean-ctx-$pkgver-source.tar.gz")
-sha256sums=('ec2f4a85fbea8255d24e635f0fae249493471a1c7668d0c81f9c4ed42692a3ba')
+sha256sums=('d0193e433c996f108c9076e4b7fb082b37f85ae2f16a909bc7ccb051caebe232')
 
 prepare() {
   cd "$pkgname-$pkgver/rust"
