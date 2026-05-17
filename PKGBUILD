@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'gtk4' 'libadwaita' 'freerdp' 'python-gobject' 'python-secretstorage')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a98ef870d1a863b6aecf53ed68bfc10f96a3bf8369b8d1b50d4d52dce76b4ff1')
+sha256sums=('206824947c6acc98accdc7262b55650c9dcba0b9a7f4b9618b706be0facb199e')
 
 package() {
     # Locate the extracted source directory (GitHub archives may use the repo's case-sensitive name)

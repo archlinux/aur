@@ -12,6 +12,6 @@ pkgbase = piperdc-git
 	depends = python-gobject
 	depends = python-secretstorage
 	source = piperdc-git-1.0.1.tar.gz::https://github.com/Darius662/PipeRDC/archive/v1.0.1.tar.gz
-	sha256sums = a98ef870d1a863b6aecf53ed68bfc10f96a3bf8369b8d1b50d4d52dce76b4ff1
+	sha256sums = 206824947c6acc98accdc7262b55650c9dcba0b9a7f4b9618b706be0facb199e
 
 pkgname = piperdc-git
