@@ -49,7 +49,6 @@ package() {
 	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "CONTRIBUTING.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
-	install -Dm644 "REFACTORING.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 "CHANGELOG.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 "INSIGHTS.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
