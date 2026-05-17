@@ -1,7 +1,7 @@
 pkgbase = simplex-desktop-appimage-bin
 	pkgdesc = SimpleX Chat, the first messaging network operating without user identifiers of any kind (pre-compiled AppImage)
 	pkgver = 6.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://simplex.chat/
 	arch = x86_64
 	license = AGPL-3.0-or-later
