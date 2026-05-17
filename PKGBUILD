@@ -8,7 +8,7 @@
 
 pkgname=rxvt
 pkgver=2.7.10
-pkgrel=9
+pkgrel=10
 pkgdesc='A colour vt102 terminal emulator'
 arch=('i686' 'x86_64')
 url='http://rxvt.sourceforge.net/'
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  CFLAGS="" ./configure --prefix=/usr \
+  CFLAGS="-std=gnu11" ./configure --prefix=/usr \
     --with-terminfo=/usr/share/terminfo \
     --enable-mousewheel \
     --enable-256-color \
