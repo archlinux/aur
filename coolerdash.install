@@ -1,16 +1,8 @@
-# Created by: damachin3 (damachine3 at proton dot me)
-# Website: https://github.com/damachine/coolerdash
-
-# Pacman install hooks
-
 pre_install() {
-    # Stop legacy service
     if systemctl list-unit-files coolerdash.service | grep -q coolerdash; then
         systemctl stop coolerdash.service
         systemctl disable coolerdash.service
     fi
-
-    # Remove legacy files
     rm -f /etc/systemd/system/coolerdash.service
     rm -f /etc/systemd/system/coolerdash-helperd.service
     rm -f /etc/systemd/system/multi-user.target.wants/coolerdash-helperd.service
@@ -26,35 +18,73 @@ pre_install() {
     rm -f /usr/share/applications/coolerdash-settings.desktop
     rm -f /bin/coolerdash
     rm -f /usr/bin/coolerdash
-
-    # Remove legacy user
     if id -u coolerdash &>/dev/null; then
         userdel -rf coolerdash
     fi
+    if [ -f /etc/coolercontrol/plugins/coolerdash/config.json ] && \
+       [ ! -f /var/lib/coolercontrol/plugins/coolerdash/config.json ]; then
+        mkdir -p /var/lib/coolercontrol/plugins/coolerdash
+        cp /etc/coolercontrol/plugins/coolerdash/config.json \
+           /var/lib/coolercontrol/plugins/coolerdash/config.json
+        chmod 600 /var/lib/coolercontrol/plugins/coolerdash/config.json
+    fi
+    if [ -f /etc/coolercontrol/plugins/coolerdash/credentials.json ] && \
+       [ ! -f /var/lib/coolercontrol/plugins/coolerdash/credentials.json ]; then
+        mkdir -p /var/lib/coolercontrol/plugins/coolerdash
+        cp /etc/coolercontrol/plugins/coolerdash/credentials.json \
+           /var/lib/coolercontrol/plugins/coolerdash/credentials.json
+        chmod 600 /var/lib/coolercontrol/plugins/coolerdash/credentials.json
+    fi
+    rm -f /etc/coolercontrol/plugins/coolerdash/manifest.toml
+    rm -rf /etc/coolercontrol/plugins/coolerdash/ui
+    rm -f /etc/coolercontrol/plugins/coolerdash/shutdown.png
+    rm -f /etc/coolercontrol/plugins/coolerdash/README.md
+    rm -f /etc/coolercontrol/plugins/coolerdash/CHANGELOG.md
+    rm -f /etc/coolercontrol/plugins/coolerdash/VERSION
+}
+
+pre_upgrade() {
+    if [ -f /etc/coolercontrol/plugins/coolerdash/config.json ] && \
+       [ ! -f /var/lib/coolercontrol/plugins/coolerdash/config.json ]; then
+        mkdir -p /var/lib/coolercontrol/plugins/coolerdash
+        cp /etc/coolercontrol/plugins/coolerdash/config.json \
+           /var/lib/coolercontrol/plugins/coolerdash/config.json
+        chmod 600 /var/lib/coolercontrol/plugins/coolerdash/config.json
+    fi
+    if [ -f /etc/coolercontrol/plugins/coolerdash/credentials.json ] && \
+       [ ! -f /var/lib/coolercontrol/plugins/coolerdash/credentials.json ]; then
+        mkdir -p /var/lib/coolercontrol/plugins/coolerdash
+        cp /etc/coolercontrol/plugins/coolerdash/credentials.json \
+           /var/lib/coolercontrol/plugins/coolerdash/credentials.json
+        chmod 600 /var/lib/coolercontrol/plugins/coolerdash/credentials.json
+    fi
+    rm -f /etc/coolercontrol/plugins/coolerdash/manifest.toml
+    rm -rf /etc/coolercontrol/plugins/coolerdash/ui
+    rm -f /etc/coolercontrol/plugins/coolerdash/shutdown.png
+    rm -f /etc/coolercontrol/plugins/coolerdash/README.md
+    rm -f /etc/coolercontrol/plugins/coolerdash/CHANGELOG.md
+    rm -f /etc/coolercontrol/plugins/coolerdash/VERSION
 }
 
 post_install() {
-    # Remove legacy files
     rm -f /etc/systemd/system/multi-user.target.wants/coolerdash-helperd.service
     rm -f /etc/systemd/system/coolerdash-helperd.service
     rm -f /usr/lib/systemd/system/coolerdash-helperd.service
     rm -rf /etc/systemd/system/cc-plugin-coolerdash.service.d
     rm -f /usr/lib/udev/rules.d/99-coolerdash.rules
-
-    # Ensure correct permissions on config.json
-    chmod 600 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
-    chmod 600 /etc/coolercontrol/plugins/coolerdash/credentials.json 2>/dev/null || true
-
+    if [ ! -f /var/lib/coolercontrol/plugins/coolerdash/credentials.json ]; then
+        mkdir -p /var/lib/coolercontrol/plugins/coolerdash
+        printf '{\n  "access_token": ""\n}\n' > /var/lib/coolercontrol/plugins/coolerdash/credentials.json
+    fi
+    chmod 600 /var/lib/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+    chmod 600 /var/lib/coolercontrol/plugins/coolerdash/credentials.json 2>/dev/null || true
     systemctl daemon-reload
-
-    # Restart plugin service directly if it already exists (reinstall case)
+    systemctl reset-failed cc-plugin-coolerdash.service >/dev/null 2>&1 || true
     if systemctl list-unit-files cc-plugin-coolerdash.service | grep -q cc-plugin-coolerdash; then
         systemctl restart cc-plugin-coolerdash.service || echo "Note: Plugin restart failed."
-    else
-        # Fresh install: restart CoolerControl so it discovers and starts the plugin service
-        if systemctl list-unit-files coolercontrold.service | grep -q coolercontrold; then
-            systemctl restart coolercontrold.service || echo "Note: CoolerControl restart failed."
-        fi
+    fi
+    if systemctl list-unit-files coolercontrold.service | grep -q coolercontrold; then
+        systemctl restart coolercontrold.service || echo "Note: CoolerControl restart failed."
     fi
 
     echo "================================================================"
@@ -65,52 +95,47 @@ post_install() {
 }
 
 post_upgrade() {
-    # Remove legacy files
     rm -f /etc/systemd/system/multi-user.target.wants/coolerdash-helperd.service
     rm -f /etc/systemd/system/coolerdash-helperd.service
     rm -f /usr/lib/systemd/system/coolerdash-helperd.service
     rm -rf /etc/systemd/system/cc-plugin-coolerdash.service.d
     rm -f /usr/lib/udev/rules.d/99-coolerdash.rules
-
-    # Ensure correct permissions on config.json
-    chmod 600 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
-    chmod 600 /etc/coolercontrol/plugins/coolerdash/credentials.json 2>/dev/null || true
-
+    if [ ! -f /var/lib/coolercontrol/plugins/coolerdash/credentials.json ]; then
+        mkdir -p /var/lib/coolercontrol/plugins/coolerdash
+        printf '{\n  "access_token": ""\n}\n' > /var/lib/coolercontrol/plugins/coolerdash/credentials.json
+    fi
+    chmod 600 /var/lib/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+    chmod 600 /var/lib/coolercontrol/plugins/coolerdash/credentials.json 2>/dev/null || true
     systemctl daemon-reload
-
-    # Restart plugin
+    systemctl reset-failed cc-plugin-coolerdash.service >/dev/null 2>&1 || true
     if systemctl list-unit-files cc-plugin-coolerdash.service | grep -q cc-plugin-coolerdash; then
         systemctl restart cc-plugin-coolerdash.service || echo "Note: Plugin restart failed."
+    fi
+    if systemctl list-unit-files coolercontrold.service | grep -q coolercontrold; then
+        systemctl restart coolercontrold.service || echo "Note: CoolerControl restart failed."
     fi
 
     echo "================================================================"
     echo "CoolerDash upgraded successfully."
     echo "Note: config.json is preserved. If a new template was shipped,"
-    echo "      compare it with /etc/coolercontrol/plugins/coolerdash/config.json.pacnew"
+    echo "      compare it with /var/lib/coolercontrol/plugins/coolerdash/config.json.pacnew"
     echo "Note: credentials.json is never overwritten by updates."
     echo "================================================================"
 }
 
 pre_remove() {
-    # Stop legacy service
     if systemctl list-unit-files coolerdash.service | grep -q coolerdash; then
         systemctl stop coolerdash.service
         systemctl disable coolerdash.service
     fi
-
-    # Stop plugin
     if systemctl list-unit-files cc-plugin-coolerdash.service | grep -q cc-plugin-coolerdash; then
         systemctl stop cc-plugin-coolerdash.service
         systemctl disable cc-plugin-coolerdash.service
     fi
-
-    # Stop helperd
     if systemctl list-unit-files coolerdash-helperd.service | grep -q coolerdash-helperd; then
         systemctl stop --no-block coolerdash-helperd.service
         systemctl disable coolerdash-helperd.service
     fi
-
-    # Remove legacy files
     rm -f /etc/systemd/system/coolerdash-helperd.service
     rm -f /etc/systemd/system/coolerdash.service
     rm -f /etc/systemd/system/multi-user.target.wants/coolerdash-helperd.service
@@ -124,15 +149,10 @@ pre_remove() {
     rm -f /usr/bin/coolerdash
     rm -rf /opt/coolerdash
     rm -rf /etc/coolerdash
-
-    # Remove legacy user
     if id -u coolerdash &>/dev/null; then
         userdel -rf coolerdash
     fi
-
     systemctl daemon-reload
-
-    # Restart CoolerControl
     if systemctl list-unit-files coolercontrold.service | grep -q coolercontrold; then
         systemctl restart coolercontrold.service || echo "Note: CoolerControl restart failed."
     fi

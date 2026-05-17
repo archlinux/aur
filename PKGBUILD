@@ -1,7 +1,7 @@
 # Maintainer: damachin3 (damachine3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 pkgname=coolerdash-git
-pkgver=3.1.2.r0.g29c61f4
+pkgver=3.1.3.r0.g4fdfecf
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -12,10 +12,9 @@ url="https://github.com/damachine/coolerdash"
 license=('MIT')
 depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
-backup=('etc/coolercontrol/plugins/coolerdash/config.json'
-        'etc/coolercontrol/plugins/coolerdash/credentials.json')
+backup=('var/lib/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=29c61f4c7694a458a80ed185b421303f2a2f43a2
+_commit=4fdfecf8e3bfa6346d00e07cd5776f12033a28c6
 source=("coolerdash-git::git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
@@ -56,21 +55,22 @@ check() {
 }
 
 package() {
-    # Binary to /usr/libexec, plugin data stays in /etc/coolercontrol/plugins/
-    install -dm755 "${pkgdir}/etc/coolercontrol/plugins/coolerdash"
+    # Binary to /usr/libexec, plugin data to /var/lib/coolercontrol/plugins/
+    install -dm711 "${pkgdir}/var/lib/coolercontrol"
+    install -dm755 "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash"
     install -Dm755 "${srcdir}/${pkgname}/bin/coolerdash" "${pkgdir}/usr/libexec/coolerdash/coolerdash"
-    install -m644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/README.md"
-    install -m644 "${srcdir}/${pkgname}/VERSION" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/VERSION"
-    install -m644 "${srcdir}/${pkgname}/CHANGELOG.md" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/CHANGELOG.md"
-    install -m600 "${srcdir}/${pkgname}/etc/coolercontrol/plugins/coolerdash/config.json" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/config.json"
+    install -m644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/README.md"
+    install -m644 "${srcdir}/${pkgname}/VERSION" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/VERSION"
+    install -m644 "${srcdir}/${pkgname}/CHANGELOG.md" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/CHANGELOG.md"
+    install -m600 "${srcdir}/${pkgname}/etc/coolercontrol/plugins/coolerdash/config.json" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/config.json"
 
-    install -dm755 "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui"
-    install -m644 "${srcdir}/${pkgname}/etc/coolercontrol/plugins/coolerdash/ui/index.html" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui/index.html"
-    install -m644 "${srcdir}/${pkgname}/images/shutdown.png" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/shutdown.png"
-    install -m644 "${srcdir}/${pkgname}/etc/coolercontrol/plugins/coolerdash/manifest.toml" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/manifest.toml"
+    install -dm755 "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/ui"
+    install -m644 "${srcdir}/${pkgname}/etc/coolercontrol/plugins/coolerdash/ui/index.html" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/ui/index.html"
+    install -m644 "${srcdir}/${pkgname}/images/shutdown.png" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/shutdown.png"
+    install -m644 "${srcdir}/${pkgname}/etc/coolercontrol/plugins/coolerdash/manifest.toml" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/manifest.toml"
 
-    sed -i "s/{{VERSION}}/${pkgver}/g" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/manifest.toml"
-    sed -i "s/{{VERSION}}/${pkgver}/g" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui/index.html"
+    sed -i "s/{{VERSION}}/${pkgver}/g" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/manifest.toml"
+    sed -i "s/{{VERSION}}/${pkgver}/g" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/ui/index.html"
 
     install -Dm644 "${srcdir}/${pkgname}/man/coolerdash.1" "${pkgdir}/usr/share/man/man1/coolerdash.1"
     install -Dm644 "${srcdir}/${pkgname}/etc/applications/coolerdash.desktop" "${pkgdir}/usr/share/applications/coolerdash.desktop"
