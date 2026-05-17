@@ -14,6 +14,6 @@ pkgbase = hyprcaffeine
 	optdepends = libnotify: desktop notifications
 	optdepends = walker: menu frontend
 	source = hyprcaffeine-0.6.3.tar.gz::https://github.com/hbuddenberg/hyprcaffeine/archive/v0.6.3.tar.gz
-	sha256sums = 5b78fb529d42da4053462871f50756b0f67dc40751e05a4bfbcae834003afeff
+	sha256sums = 442d022786df2077300f1613bc3ce8b6c85a0961d3f745207aee3c7f1fc5eeb8
 
 pkgname = hyprcaffeine
