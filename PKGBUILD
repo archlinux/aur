@@ -7,6 +7,7 @@ url="https://github.com/zxcloli666/SoundCloud-Desktop"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'libappindicator' 'gtk3')
 backup=()
+options=('!strip' '!debug')
 
 source=("LICENSE::${url}/raw/refs/heads/main/LICENSE")
 sha256sums=('3bed3331b7048bac17cf50e249d560ccc9508c970da8d7b9283bf4f2e633a91d')
