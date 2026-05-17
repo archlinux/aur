@@ -5,6 +5,7 @@ pkgbase = vapoursynth-plugin-mlrt-ncnn-runtime
 	url = https://github.com/AmusementClub/vs-mlrt
 	arch = x86_64
 	license = GPL-3.0
+	makedepends = vapoursynth-api3-headers
 	depends = vapoursynth
 	depends = protobuf
 	depends = onnx
