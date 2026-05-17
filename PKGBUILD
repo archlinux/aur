@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/ci.yml` republish.
 pkgname=pikr-bin
 _pkgname=pikr
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Vim-modal application launcher — rofi replacement built on floem. (binary release)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=("$_pkgname")
 
 source_x86_64=("pikr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v${pkgver}/pikr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("pikr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v${pkgver}/pikr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('a9b8125be54d46e11866003291e123c83530c93c5dbb5a9f328059721c36f0e1')
-sha256sums_aarch64=('07e0cb4ecc6e6a1f395d516a985fba374b6cecca5429f75be2daffc8e217b328')
+sha256sums_x86_64=('fe71f69cc96c3ab2527fbf99f6da5d49260a10c3101b5c403724f46b9fe11a4d')
+sha256sums_aarch64=('885e804a9ed7723755b40c49fc84e9f91cdf78c6c1238c86aedbefae38d79f86')
 
 package() {
     install -Dm755 "$srcdir/pikr" "$pkgdir/usr/bin/pikr"
