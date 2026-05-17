@@ -2,7 +2,7 @@
 
 pkgname=gopdf-git
 pkgver=0.1.20.r1.g1a4574b
-pkgrel=2
+pkgrel=3
 pkgdesc="MuPDF-backend PDF viewer written in Go with Lua configuration"
 arch=('x86_64')
 url="https://github.com/Aethar01/gopdf.git"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	go build -o gopdf .
+	go build -ldflags "-X main.version=${pkgver}" -o gopdf .
 }
 
 package() {
