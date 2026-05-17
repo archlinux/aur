@@ -1,0 +1,7 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+["pi-ext-observational-memory"]
+source = "npm"
+npm = "pi-observational-memory"
