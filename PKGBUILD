@@ -10,16 +10,14 @@ arch=('x86_64')
 depends=(libgcc glibc)
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
-source=("${url}/individual-x86_64-unknown-linux-gnu.tar.zst" "${url}/docs.tar.zst")
-b2sums=('SKIP' 'SKIP')
+source=("${url}/individual-x86_64-unknown-linux-gnu.tar.zst")
+# "${url}/docs.tar.zst" has uu-
+b2sums=('SKIP')
 # todo: pkgver() {}
 package(){
   for _b in arch kill more uptime hostname;do
     mv bin/$_b bin/uu-$_b
-    rm share/man/man1/${_b}.1
-    rm share/fish/vendor_completions.d/${_b}.fish
-    rm share/zsh/site-functions/_${_b}
   done
   install -d "$pkgdir"/usr
-  mv bin share "$pkgdir"/usr
+  mv bin "$pkgdir"/usr
 }
