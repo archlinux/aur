@@ -1,7 +1,7 @@
 # Maintainer: Daniel Liland <celsiuss@await.sh>
 
 pkgname=preflight
-pkgver=0.9.13
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A modern slicer built for precision and performance. "
 arch=('x86_64')
@@ -11,16 +11,16 @@ depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
   'expat' 'libjpeg-turbo' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
   'openexr' 'openssl' 'openvdb' 'libpng' 'qhull' 'tbb' 'libtiff'
   'wxwidgets-gtk3' 'z3' 'zlib' 'gcc-libs' 'dbus' 'imath'
-  'glib2' 'pango' 'hicolor-icon-theme')
+  'glib2' 'pango' 'hicolor-icon-theme' 'python')
 makedepends=('cmake' 'glu' 'ninja' 'git' 'boost' 'catch2'
-  'cereal' 'cgal' 'eigen' 'nlohmann-json' 'glad')
+  'cereal' 'cgal' 'eigen' 'nlohmann-json' 'glad' 'pybind11')
 options=('!makeflags')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oozebot/preFlight/archive/refs/tags/v${pkgver}.tar.gz"
   0001-fix-building-for-arch.patch
   0002-occt-wrapper-patch.patch)
-sha256sums=('2b057a812deee4e1448228a27da1c64b83fbec8588ed24e6f3ea9626a449b61b'
-            '0985a92b9643c617159a9ded1eed28b6bba1c3a71aae42fbd6e76b210f3491a6'
-            '1c282fa3443bcf5035278a8d4fec9ce08f57a04e7f45699dc9cdc95d2a79d26e')
+sha256sums=('d2e8f000620504fa50e1a433460a83103eff5a6d6621632fffde015c1955e588'
+  '3d867fddf126429d466024e2294365707e1eeb228ad285a63425ba930b8efc54'
+  'c1a10ea0f55202c113fecbc8cb0134c6f4e96abc9265ae3a899a0801b497748b')
 
 _dir="preFlight-$pkgver"
 
@@ -59,7 +59,7 @@ build() {
     -G Ninja \
     -S ${_dir}/deps \
     -B deps_${pkgver} \
-    -DpreFlight_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
+    -DpreFlight_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;pybind11;PythonRuntime;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
   ninja -C deps_${pkgver}
 
   cmake \

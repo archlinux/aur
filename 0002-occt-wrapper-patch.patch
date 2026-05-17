@@ -1,7 +1,7 @@
-From 52d6322444c8dc80095147f5231bfbeff3351557 Mon Sep 17 00:00:00 2001
+From e182a428bf1ec2a906a7a39d6ce4f816fd2c3a69 Mon Sep 17 00:00:00 2001
 From: Celsiuss <liland@await.sh>
 Date: Wed, 18 Feb 2026 23:13:55 +0100
-Subject: [PATCH 2/2] occt wrapper patch
+Subject: [PATCH] occt wrapper patch
 
 ---
  src/libslic3r/CMakeLists.txt    |  2 +-
@@ -10,10 +10,10 @@ Subject: [PATCH 2/2] occt wrapper patch
  3 files changed, 8 insertions(+), 25 deletions(-)
 
 diff --git a/src/libslic3r/CMakeLists.txt b/src/libslic3r/CMakeLists.txt
-index 9207162..9398b9b 100644
+index 908415e..aa6c457 100644
 --- a/src/libslic3r/CMakeLists.txt
 +++ b/src/libslic3r/CMakeLists.txt
-@@ -619,7 +619,7 @@ target_link_libraries(libslic3r PUBLIC
+@@ -643,7 +643,7 @@ target_link_libraries(libslic3r PUBLIC
      libseqarrange
  )
  
@@ -95,5 +95,5 @@ index 10b59f3..5534161 100644
 +    install(TARGETS OCCTWrapper DESTINATION "${CMAKE_INSTALL_BINDIR}")
 +endif ()
 -- 
-2.53.0
+2.54.0
 

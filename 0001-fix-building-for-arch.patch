@@ -1,14 +1,14 @@
-From b4ad503a91caae922d42dc99da2e2f2cb4850169 Mon Sep 17 00:00:00 2001
+From 3e57116deb7ca0ae16c995563e2de575138ba3fd Mon Sep 17 00:00:00 2001
 From: Celsiuss <liland@await.sh>
 Date: Wed, 18 Feb 2026 20:06:09 +0100
-Subject: [PATCH 1/2] fix building for arch
+Subject: [PATCH] fix building for arch
 
 ---
  CMakeLists.txt | 9 ++++++++-
  1 file changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b003450..ddf4928 100644
+index 6be83c8..bea0789 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -17,6 +17,9 @@ if(CMAKE_VERSION VERSION_GREATER_EQUAL "4.0")
@@ -42,5 +42,5 @@ index b003450..ddf4928 100644
  
  find_package(Eigen3 3.3.7...<6.0 REQUIRED) # preFlight: accept Eigen 5.x (jumped from 3.x)
 -- 
-2.53.0
+2.54.0
 
