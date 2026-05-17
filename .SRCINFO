@@ -1,7 +1,7 @@
 pkgbase = ccat-rs
 	pkgdesc = Universal file viewer — markdown, docx, images, PDF, audio, video, JSON, YAML, logs, ELF disasm, diff, gz, archives
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zhiyuHD/ccat
 	arch = x86_64
 	arch = aarch64
