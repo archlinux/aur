@@ -2,8 +2,8 @@
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/claude-code-stable-bin
 pkgname=claude-code-stable-bin
 pkgver=2.1.133
-pkgrel=1
-pkgdesc=Claude\ Code\ terminal-based\ AI\ coding\ assistant\ \(stable\ binary\ release\)
+pkgrel=2
+pkgdesc=Claude\ Code\ terminal-based\ AI\ coding\ assistant\ \(stable\ channel\)
 arch=(x86_64 )
 url=https://github.com/anthropics/claude-code
 license=(LicenseRef-claude-code )
