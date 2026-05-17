@@ -1,6 +1,6 @@
 pkgbase = pince-git
 	pkgdesc = A Linux reverse engineering tool inspired by Cheat Engine.
-	pkgver = r1693.b3db730
+	pkgver = r1696.7119718
 	pkgrel = 1
 	url = https://github.com/korcankaraokcu/PINCE
 	arch = any
@@ -25,9 +25,7 @@ pkgbase = pince-git
 
 pkgname = pince-git
 	depends = gdb
-	depends = gobject-introspection-runtime
 	depends = python-capstone
-	depends = python-gobject
 	depends = python-keyboard
 	depends = python-keystone
 	depends = python-pexpect
