@@ -17,7 +17,7 @@ provides=('moirai-client')
 conflicts=('moirai-client')
 options=('!strip')
 source=("moirai-linux-x64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/moirai-linux-x64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b213cc2d0554437672ed0ef25ded0fe9ce9a0ab6a28fe7b3d20830d95719d7fd')
 
 package() {
   local bundle_dir="${srcdir}/moirai-linux-x64"
