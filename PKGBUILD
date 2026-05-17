@@ -30,7 +30,8 @@ sha256sums=('SKIP')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  npm ci --omit=optional
+  rm -rf package-lock.json node_modules
+  npm install
   npm run build
 
   export RUSTFLAGS="--remap-path-prefix=${srcdir}=/usr/src/${pkgname}"
