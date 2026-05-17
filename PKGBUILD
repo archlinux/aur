@@ -16,11 +16,14 @@ sha256sums=('3200032fbfa06c3ab66ac43ad57d06c9d4cf38d005b78ca9e1e0e1c0ebcb4c9e')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     export CARGO_BUILD_JOBS=$(nproc)
+    # Use system oniguruma instead of onig_sys building its own
+    export RUSTONIG_SYSTEM_LIBONIG=1
     cargo build --release --frozen
 }
 
 check() {
     cd "$srcdir/$pkgname-$pkgver"
+    export RUSTONIG_SYSTEM_LIBONIG=1
     cargo test --release --frozen
 }
 
