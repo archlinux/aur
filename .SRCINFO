@@ -1,0 +1,15 @@
+pkgbase = s6-frontend-man-pages-git
+	pkgdesc = man page versions of the documentation for the s6-frontend s6 frontend
+	pkgver = v0.0.1.2.1.r0.e032e58
+	pkgrel = 1
+	url = https://git.sr.ht/~humm/s6-frontend-man-pages
+	arch = any
+	license = ISC
+	makedepends = git
+	optdepends = s6-frontend: package documented by these man pages
+	provides = s6-frontend-man-pages
+	conflicts = s6-frontend-man-pages
+	source = git+https://git.sr.ht/~humm/s6-frontend-man-pages
+	sha256sums = SKIP
+
+pkgname = s6-frontend-man-pages-git
