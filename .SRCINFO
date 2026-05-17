@@ -1,0 +1,13 @@
+pkgbase = uarty-git
+	pkgver = r18.a2a6998
+	pkgrel = 1
+	arch = x86_64
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	options = !debug
+	source = git+https://github.com/Tronco2018/Uarty.git
+	sha256sums = SKIP
+
+pkgname = uarty-git
