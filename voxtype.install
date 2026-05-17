@@ -70,22 +70,36 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.6.5"
+    echo "==> Voxtype upgraded to 0.7.2"
     echo ""
 
     _detect_gpu
 
     echo ""
-    echo "    v0.6.5: Eager processing, multi-GPU device selection, Parakeet TDT models."
-    echo "    Transcription starts while you're still recording for lower latency."
-    echo "    Hybrid GPU users: set gpu_device in config.toml to pick the right GPU."
+    echo "    What's new in v0.7.2:"
+    echo "      * Streaming dictation (experimental): Parakeet types text at the"
+    echo "        cursor while you speak. Requires [hotkey] mode = toggle, or a"
+    echo "        compositor binding to 'voxtype record toggle'."
+    echo "      * Modifier-release guard (#350): waits for held modifier keys"
+    echo "        (Super/Ctrl/Alt/Shift) to release before typing, so chord"
+    echo "        keybindings no longer collide with the first typed letters."
+    echo "      * Notification stacking fix (#345): status notifications now"
+    echo "        overwrite each other instead of piling up in GNOME/Ubuntu."
+    echo "      * Streaming state icon in Waybar + all 9 status themes."
     echo ""
     # Check if ONNX engines were built
     if [ -f /usr/lib/voxtype/voxtype-onnx ] || [ -f /usr/lib/voxtype/voxtype-onnx-avx2 ]; then
-        echo "    ONNX engines available (SenseVoice, Parakeet, Moonshine, etc.)"
+        echo "    ONNX engines available (Parakeet, Moonshine, SenseVoice, Paraformer,"
+        echo "    Dolphin, Omnilingual, Cohere)."
     else
-        echo "    For ONNX engines: install onnxruntime and rebuild"
+        echo "    For ONNX engines: install onnxruntime and rebuild from source."
     fi
+    echo ""
+    echo "    Restart the daemon to apply updates:"
+    echo "      systemctl --user restart voxtype"
+    echo ""
+    echo "    Full release notes:"
+    echo "      https://github.com/peteonrails/voxtype/releases/tag/v0.7.2"
     echo ""
 }
 

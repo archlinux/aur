@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -51,7 +51,7 @@ source=(
 )
 # TODO: Update checksum from final release tarball before deploying to AUR
 sha256sums=(
-    'f6f2ed932696d112bd419a946e67d28a58c9151761f2cb60fa8e4b7f47bdec80'  # source tarball
+    '8aa70619fa1fdd9a1f26675e57bdc2e8f96ddfb1789c97ca6c83189154fcde98'  # source tarball
     'SKIP'  # source tarball signature
 )
 
