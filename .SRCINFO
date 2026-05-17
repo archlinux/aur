@@ -1,0 +1,16 @@
+pkgbase = headtail-git
+	pkgdesc = A combined head and tail utility - print the first and last N lines of a file (git version)
+	pkgver = 1.0.0.r5.ge8e75d4
+	pkgrel = 1
+	url = https://github.com/jadrens/headtail
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	provides = headtail
+	conflicts = headtail
+	source = headtail-git::git+https://github.com/jadrens/headtail.git#branch=main
+	sha256sums = SKIP
+
+pkgname = headtail-git
