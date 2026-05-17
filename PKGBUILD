@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ctrdecrypt-git
 pkgver=1.1.0.r17.g025d440
-pkgrel=1
+pkgrel=2
 pkgdesc="Decrypt module for cia-unix"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shijimasoft/ctrdecrypt"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 

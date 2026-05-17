@@ -1,7 +1,7 @@
 pkgbase = ctrdecrypt-git
 	pkgdesc = Decrypt module for cia-unix
 	pkgver = 1.1.0.r17.g025d440
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shijimasoft/ctrdecrypt
 	arch = x86_64
 	arch = aarch64
