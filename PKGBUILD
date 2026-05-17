@@ -10,7 +10,7 @@ license=('private')
 depends=(glibc gcc-libs)
 provides=(caido)
 source=("https://caido.download/releases/v${pkgver}/caido-desktop-v${pkgver}-linux-x86_64.AppImage")
-sha256sums=('58365bd793356668bf83be5e070a0f70b6fc0328ec15505cb54cd19677077fa2')
+sha256sums=('196f29addbd1f7e58d3bb6ddcfda24dbb02aadaf7e8e0a59c819d820cf86e58b')
 
 prepare() {
 	chmod +x *.AppImage
