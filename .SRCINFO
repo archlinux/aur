@@ -1,0 +1,27 @@
+pkgbase = vpkmerge-git
+	pkgdesc = Combine multiple Valve Pak (.vpk) mods into one (Deadlock modding; GUI + CLI, built from latest git)
+	pkgver = 0.2.0.r0.gunknown
+	pkgrel = 1
+	url = https://github.com/Slush97/vpkmerge
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = pnpm
+	makedepends = nodejs
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	provides = vpkmerge
+	provides = vpkmerge-cli
+	conflicts = vpkmerge
+	conflicts = vpkmerge-bin
+	conflicts = vpkmerge-cli
+	conflicts = vpkmerge-cli-bin
+	source = git+https://github.com/Slush97/vpkmerge.git
+	sha256sums = SKIP
+
+pkgname = vpkmerge-git
