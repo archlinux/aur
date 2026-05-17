@@ -1,0 +1,20 @@
+pkgbase = yalla-video-bin
+	pkgdesc = Fast desktop video downloader for YouTube and 1000+ sites
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/monzer15/yalla-video-releases
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	depends = libappindicator-gtk3
+	provides = yalla-video
+	conflicts = yalla-video
+	options = !strip
+	source = yalla-video-1.1.2.deb::https://github.com/monzer15/yalla-video-releases/releases/download/v1.1.2/yalla-video_1.1.2_amd64.deb
+	sha256sums = da612fe24a3506ea9dbb7c4ac73bf176e1d8513b4605874ee096cb8fd2b7c4c2
+
+pkgname = yalla-video-bin
