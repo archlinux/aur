@@ -2,7 +2,7 @@
 # Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
 pkgver=2.0.0
-pkgrel=9
+pkgrel=10
 epoch=1
 pkgdesc="Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches"
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=('930848f174257f6c9a81a63a1610492b68bc14bb505dfdd281fc0ccb8c23efac'
   '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
   'b75e3826dd3c0658b9d69ea700e9262609753b2dcb3459c26c1265273338dc1e'
   'd261f1ef78bb21d72cedeedfd935b099e3d707be709404e894d4aeb47254f1ef'
-  'd98060352c970e427532967fbe631c9b821f2810f7a246c9590fa34b6efd0b2c')
+  'cdf416b0d955cebad3149d852c3d17e16c7c2a3e7c8808d883265a0b0243890b')
 
 options=('!strip' '!debug')
 
@@ -65,10 +65,6 @@ build() {
   msg2 "Building project via pnpm..."
   pnpm run dist:all
 
-  msg2 "Installing dotnetprobe..."
-  cp assets/dotnetprobe app/assets/ 2>/dev/null || true
-  chmod +x app/assets/dotnetprobe 2>/dev/null || true
-
   msg2 "Packaging Electron application..."
   cd src/main
   node ./prepare-dist-package.mjs
@@ -84,7 +80,7 @@ build() {
   rm -rf dist/node_modules/winapi-bindings 2>/dev/null || true
   rm -rf dist/node_modules/windows-shortcuts-rs 2>/dev/null || true
 
-  rm -rf ../../dist/linux-unpacked 2>/dev/null || true
+  rm -rf "$srcdir/Vortex/dist/linux-unpacked" 2>/dev/null || true
 
   pnpm exec electron-builder --config ./electron-builder.config.json \
     --publish never \

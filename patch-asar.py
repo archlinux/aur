@@ -207,16 +207,6 @@ PLUGIN_PATCHES = [
             ),
         ],
     },
-    # Surviving Mars — epicGamesLauncher null crash (redundant after renderer patch but safe)
-    {
-        "file": "game-survivingmars/index.js",
-        "replacements": [
-            (
-                ".catch(() => util.epicGamesLauncher.findByAppId('Ovenbird'))",
-                ".catch(() => util.epicGamesLauncher ? util.epicGamesLauncher.findByAppId('Ovenbird') : Promise.reject(new Error('Epic not available')))",
-            ),
-        ],
-    },
 ]
 
 # ── apply plugin patches ───────────────────────────────────────────────────
