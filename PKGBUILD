@@ -18,7 +18,7 @@ depends=(
   qt6-networkauth
   qt6-svg
   zlib-ng
-  libqrencode
+  qrencode
   hicolor-icon-theme
   cmark
   libstdc++
