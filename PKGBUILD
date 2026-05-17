@@ -2,8 +2,8 @@
 
 pkgname=libastal-notifd-git
 _pkgname=notifd
-pkgver=r786.ca3190d
-pkgrel=2
+pkgver=r895.dd388d2
+pkgrel=1
 provides=(astal-notifd libastal-notifd libastal-notifd.so=0-64)
 pkgdesc="A notification daemon library and cli tool "
 arch=(x86_64)
@@ -14,6 +14,7 @@ depends=(
   glibc
   json-glib
   gdk-pixbuf2
+  quarrel
 )
 makedepends=(
   meson
