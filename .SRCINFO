@@ -1,6 +1,6 @@
 pkgbase = headtail-git
 	pkgdesc = A combined head and tail utility - print the first and last N lines of a file (git version)
-	pkgver = 1.0.0.r5.ge8e75d4
+	pkgver = 1.1.0.r0.g2eebb8e
 	pkgrel = 1
 	url = https://github.com/jadrens/headtail
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: jadrens <jadrens@example.com>
 pkgname=headtail-git
-pkgver=1.1.0.r0.g2eebb8e-1
+pkgver=1.1.0.r0.g2eebb8e
 pkgrel=1
 pkgdesc="A combined head and tail utility - print the first and last N lines of a file (git version)"
 arch=('x86_64')
