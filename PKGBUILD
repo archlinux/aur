@@ -3,7 +3,7 @@
 # Maintainer: shenmo <shenmo@spark-app.store>
 
 pkgname=amber-package-manager
-pkgver=1.3.4
+pkgver=1.3.4.0
 pkgrel=1
 pkgdesc="bwrap wrapper for install and running debs inside a Amber-PM container"
 arch=('x86_64' 'aarch64')
@@ -11,12 +11,12 @@ url="https://gitee.com/amber-ce/amber-pm/"
 license=('AGPL-3.0')
 depends=('bubblewrap' 'flatpak' 'polkit' 'systemd' 'procps-ng' 'coreutils' 'fuse-overlayfs')
 optdepends=('dpkg: Enable amber-pm-convert (A tool to convert Debian packages to Amber-PM packages)')
-conflicts=('ace-host-integration' 'amber-pm-store')
+conflicts=('ace-host-integration')
 # provides=('amber-package-manager')
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
 source_aarch64=("https://gitee.com/amber-ce/amber-pm/releases/download/1.2.3/ace-env-arm64.tar.xz")
-sha256sums=('d0689535e424affef40a47678a38dc12303c52ab7591d6c7debc549e7687b4b7')
+sha256sums=('5465b15970dd9c041af49f67a2862d74bf4161fcc50c5c606be5e0e34ba513db')
 sha256sums_aarch64=('b99a96854f8fcba405d46b8a749b07edf584e6119f8bf9b131dfcaaa9b4ad552')
 
 install=amber-package-manager.install
