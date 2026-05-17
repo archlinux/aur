@@ -9,7 +9,6 @@ pkgbase = ch341-i2c-spi-gpio-dkms-git
 	makedepends = git
 	depends = dkms
 	optdepends = linux-headers: build the module against Arch kernel
-	optdepends = linux-ck-headers: build the module against Linux-ck kernel
 	optdepends = linux-lts-headers: build the module against LTS Arch kernel
 	optdepends = i2c-tools: for interacting with I2C devices
 	optdepends = libgpiod: for interacting with GPIO pins

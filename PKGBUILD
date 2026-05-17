@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 depends=(dkms)
 makedepends=(git)
 optdepends=('linux-headers: build the module against Arch kernel'
-  'linux-ck-headers: build the module against Linux-ck kernel'
   'linux-lts-headers: build the module against LTS Arch kernel'
   'i2c-tools: for interacting with I2C devices'
   'libgpiod: for interacting with GPIO pins')
