@@ -1,6 +1,6 @@
 pkgbase = mcp-devtools
 	pkgdesc = A modular MCP server that provides commonly used developer tools for AI coding agents
-	pkgver = 0.59.55
+	pkgver = 0.59.58
 	pkgrel = 1
 	url = https://github.com/sammcj/mcp-devtools
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mcp-devtools
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/sammcj/mcp-devtools.git#tag=v0.59.55
-	sha256sums = 4580fb18ffcb855b9fbc0b0a288f878dc40455d4bf7775634efe7319c1896412
+	source = git+https://github.com/sammcj/mcp-devtools.git#tag=v0.59.58
+	sha256sums = bf26cb6c371b2c9e2d96acb400315c301f2691e1c92d88f514be9140cbe6a0a4
 
 pkgname = mcp-devtools
