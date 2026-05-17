@@ -1,6 +1,6 @@
 pkgbase = pizzaoven-bin
 	pkgdesc = Cross-platform mod manager for Pizza Tower
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Cristiandis/PizzaOven-Avalonia
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pizzaoven-bin
 	provides = pizzaoven
 	conflicts = pizzaoven
 	options = !strip
-	source = PizzaOven-linux-x64.tar.gz::https://github.com/Cristiandis/PizzaOven-Avalonia/releases/download/v1.0.1/PizzaOven-linux-x64.tar.gz
-	sha256sums = f9c1b94e9cf117e68dd6545e95c601e8f5cbc56aad21df586c4cca6a61c750c3
+	source = PizzaOven-linux-x64.tar.gz::https://github.com/Cristiandis/PizzaOven-Avalonia/releases/download/v1.1.0/PizzaOven-linux-x64.tar.gz
+	sha256sums = 8bd1df94e8c0a042e5a5e720aaf8fb0bf01afc7f17ef6a70cb975290fdd7b11e
 
 pkgname = pizzaoven-bin
