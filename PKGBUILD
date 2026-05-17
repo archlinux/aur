@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3998.91f533f86
+pkgver=r4003.78d557464
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -39,7 +39,6 @@ source=(
 	# submodules for vita3k
 	'SPIRV-Cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
 	'VulkanMemoryAllocator-Hpp'::'git+https://github.com/YaaZ/VulkanMemoryAllocator-Hpp.git'
-	'better-enums'::'git+https://github.com/aantron/better-enums.git'
 	'capstone'::'git+https://github.com/aquynh/capstone.git'
 	'concurrentqueue'::'git+https://github.com/cameron314/concurrentqueue.git'
 	'cubeb'::'git+https://github.com/mozilla/cubeb.git'
@@ -91,50 +90,49 @@ sha256sums=(
 	'SKIP'
 	'18009fe1d5e6b44854ab360d0ec01955858d5ddf03f0a807a97cf1c3491d77f7'
 
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
+	'SKIP' # SPIRV-Cross
+	'SKIP' # VulkabnMemoryAllocator-Hpp
+	'SKIP' # capstone
+	'SKIP' # concurrentqueue
+	'SKIP' # cubeb
+	'SKIP' # dirent
+	'SKIP' # fmt
+	'SKIP' # glslang
+	'SKIP' # googletest
+	'SKIP' # libadrenotools
+	'SKIP' # nativefiledialog-extended
+	'SKIP' # pugixml
+	'SKIP' # sdl
+	'SKIP' # spdlog
+	'SKIP' # stb
+	'SKIP' # tracy
+	'SKIP' # vita-toolchain
+	'SKIP' # vita3k-LibAtrac9
+	'SKIP' # vita3k-boost
+	'SKIP' # vita3k-dlmalloc
+	'SKIP' # vita3k-dynarmic
+	'SKIP' # vita3k-ffmpeg
+	'SKIP' # vita3k-libfat16
+	'SKIP' # vita3k-printf
+	'SKIP' # vita3k-psvpfstools
+	'SKIP' # vita3k-substitute
+    'SKIP' # vita3k-zlib
+	'SKIP' # xxHash
+	'SKIP' # yaml-cpp
 
-	'SKIP'
+	'SKIP' # VulkanMemoryAllocator
+	'SKIP' # Vulkan-Headers
 
-	#'SKIP'
+	#'SKIP' # tree-sitter-cpp
 
-	#'SKIP'
-	'SKIP'
+	#'SKIP' #googletest
+	'SKIP' #sanitizers-cmake
 
-	'SKIP'
+	'SKIP' # psp2rela
 
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
+	'SKIP' # libb64
+	'SKIP' # libzrif
+	'SKIP' # psvpfsparser
 )
 
 pkgver() {
@@ -155,7 +153,6 @@ prepare() {
 		local -A _submodules=(
 			['SPIRV-Cross']='external/SPIRV-Cross'
 			['VulkanMemoryAllocator-Hpp']='external/VulkanMemoryAllocator-Hpp'
-			['better-enums']='external/better-enums'
 			['capstone']='external/capstone'
 			['concurrentqueue']='external/concurrentqueue'
 			['cubeb']='external/cubeb'
