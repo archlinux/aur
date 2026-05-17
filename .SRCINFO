@@ -1,0 +1,19 @@
+pkgbase = python-helium
+	pkgdesc = A layer-shell framework written in C++, configured in Python
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xZepyx/helium
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = python-pybind11
+	depends = nlohmann-json
+	source = python-helium-0.1.0.tar.gz::https://github.com/xZepyx/helium/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-helium
