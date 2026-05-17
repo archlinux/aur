@@ -1,0 +1,23 @@
+pkgbase = vpkmerge-bin
+	pkgdesc = Combine multiple Valve Pak (.vpk) mods into one (Deadlock modding; desktop app, prebuilt)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Slush97/vpkmerge
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	provides = vpkmerge
+	conflicts = vpkmerge
+	conflicts = vpkmerge-git
+	noextract = vpkmerge-bin-0.2.0.deb
+	options = !strip
+	options = !emptydirs
+	source = vpkmerge-bin-0.2.0.deb::https://github.com/Slush97/vpkmerge/releases/download/v0.2.0/vpkmerge_0.2.0_amd64.deb
+	source = LICENSE-0.2.0::https://github.com/Slush97/vpkmerge/raw/v0.2.0/LICENSE
+	sha256sums = 91948810b084e4676d33a8a6060210ac01ff75a04d6e5c63c14ae00f4656a864
+	sha256sums = 00b2f40961e16423ce60d95c9087bde5bc5a2ed7d078312a56c54f0452863d19
+
+pkgname = vpkmerge-bin
