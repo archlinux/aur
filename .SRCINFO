@@ -1,0 +1,13 @@
+pkgbase = python312-filelock
+	pkgdesc = Platform independent file lock for Python 3.12
+	pkgver = 3.29.0
+	pkgrel = 1
+	url = https://github.com/tox-dev/filelock
+	arch = any
+	license = Unlicense
+	makedepends = python312-installer
+	depends = python312
+	source = filelock-3.29.0-py3-none-any.whl::https://files.pythonhosted.org/packages/81/47/dd9a212ef6e343a6857485ffe25bba537304f1913bdbed446a23f7f592e1/filelock-3.29.0-py3-none-any.whl
+	sha256sums = 96f5f6344709aa1572bbf631c640e4ebeeb519e08da902c39a001882f30ac258
+
+pkgname = python312-filelock
