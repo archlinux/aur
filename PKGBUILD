@@ -10,11 +10,11 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('87b5b2c5e33b674961c8ef1680dc1fcb1b6d192d30faa52113f975c0c7aa8072')
+sha256sums=('47c1ed75e2d8f3d9f75927cdead1dc68127eb444ed34eb66284e8150e2d29ab9')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
