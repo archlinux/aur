@@ -5,7 +5,7 @@ _pkgname=hulak
 pkgname=${_pkgname}-bin
 pkgdesc="Lightweight file-based API client for terminal nerds"
 
-pkgver=0.3.02
+pkgver=0.3.03
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,10 +24,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('81ab5c27fac20bcb1b906a7bf92359a57a56211f61e61396137c4d457d554763'
+sha256sums=('9af8140936ceca2c98776afd6bc74c7734dc94f6c7123abbc01a6940aa50c11e'
             'ca4a47155ba71183302af8af5c2ec019a322c63dbdbcf104eb46c150f3d3d7ec')
-sha256sums_x86_64=('c942e330cd35bc9fed353eb3cf928ec635c196833d79d5372eef29e9b3953fdc')
-sha256sums_aarch64=('bf9980689d862ef79a789fc0c2c06347bf59c9f22c1fc4dec3e85975be06471a')
+sha256sums_x86_64=('f8208f8f1c815bc7e0f6c0b25bb262f37235a7e89d5190b813e3a10fd2262a0d')
+sha256sums_aarch64=('15a140583afba248cd4c95998fa8864ecb7814ff33f6b546f540f9fa36eaa69c')
 
 
 package() {
