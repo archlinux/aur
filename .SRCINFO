@@ -1,0 +1,16 @@
+pkgbase = simplex-desktop-appimage-bin
+	pkgdesc = SimpleX Chat, the first messaging network operating without user identifiers of any kind (pre-compiled AppImage)
+	pkgver = 6.5.2
+	pkgrel = 1
+	url = https://simplex.chat/
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = fuse2
+	provides = simplex-desktop
+	conflicts = simplex-desktop
+	conflicts = simplex-desktop-bin
+	options = !strip
+	source = simplex-desktop-x86_64.AppImage::https://github.com/simplex-chat/simplex-chat/releases/download/v6.5.2/simplex-desktop-x86_64.AppImage
+	sha256sums = 71a44bd3d3ca277dd71d145e679a92a5f80a1f4c292711921d77c0f37b33e541
+
+pkgname = simplex-desktop-appimage-bin
