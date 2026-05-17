@@ -2,7 +2,7 @@
 
 pkgbase=thorvg
 pkgname=thorvg
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="An open-source, lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 arch=("$CARCH")
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libpng' 'libjpeg' 'libwebp' 'mesa' 'libx11')
 makedepends=('meson' 'ninja')
 source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1a60b794eaac5717ad79d0c7e3d189f46e21d469b3a0013d7804f348fbacdf17')
+sha256sums=('e25f23c0698c739affd1a092f77d0e56d4888deafa05da37ba1eb0f3031fa5cc')
 
 prepare() {
     cd ${pkgname}-${pkgver}
