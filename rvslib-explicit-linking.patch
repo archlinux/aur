@@ -1,0 +1,20 @@
+Add explicit link_directories and target_link_libraries for rvslib so the
+shared library resolves all its symbols at link time.
+
+--- a/rvslib/CMakeLists.txt
++++ b/rvslib/CMakeLists.txt
+@@ -120,6 +120,6 @@ include_directories(./ ../ ../rvs
+   ${AMD_SMI_INC_DIR} ${ROCR_INC_DIR} ${ROCBLAS_INC_DIR} ${HIP_INC_DIR} ${HIPBLASLT_INC_DIR} ${YAML_CPP_INCLUDE_DIR} ${HIPRAND_INC_DIR} ${ROCRAND_INC_DIR} ${HIPBLAS-COMMON_INCLUDE_DIR} ${MXDATAGENERATOR_INC_DIR})
+
+-link_directories(${ASAN_LIB_PATH} ${AMD_SMI_LIB_DIR})
++link_directories(${ASAN_LIB_PATH} ${AMD_SMI_LIB_DIR} ${ROCBLAS_LIB_DIR} ${ROCR_LIB_DIR} ${HIPBLASLT_LIB_DIR} ${HIPRAND_LIB_DIR})
+
+ ## define common source files
+ set(SOURCES
+@@ -173,5 +173,6 @@ set_target_properties(${RVS_TARGET}
+  PROPERTIES SUFFIX .so.${LIB_VERSION_STRING}
+  LIBRARY_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+-target_link_libraries(${RVS_TARGET} ${AMD_SMI_LIB})
++target_link_libraries(${RVS_TARGET} ${AMD_SMI_LIB} rocblas hsa-runtime64::hsa-runtime64 pci ${YAML_CPP_TARGET} hipblaslt hiprand omp)
++target_link_options(${RVS_TARGET} PRIVATE "LINKER:--no-as-needed" "LINKER:-z,defs")
+ ## Install shared library librvslib.so

@@ -1,0 +1,57 @@
+Skip the in-tree network download of mxDataGenerator when MXDATAGENERATOR_INC_DIR
+is supplied externally.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -468,28 +468,28 @@ endif()
+
+ ################################################################################
+ # mxDataGenerator Download
+-configure_file(CMakeMXDataGeneratorDownload.cmake mxDataGenerator-download/CMakeLists.txt)
+-  execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
+-      RESULT_VARIABLE result
+-      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/mxDataGenerator-download )
+-if(result)
+-  message(FATAL_ERROR "CMake step for mxDataGenerator failed: ${result}")
+-endif()
+-  execute_process(COMMAND ${CMAKE_COMMAND} --build .
+-      RESULT_VARIABLE result
+-      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/mxDataGenerator-download )
+-if(result)
+-  message(FATAL_ERROR "Build step for mxDataGenerator failed: ${result}")
+-endif()
+-  execute_process(COMMAND ${CMAKE_COMMAND} ${CMAKE_BINARY_DIR}/mxDataGenerator-src -B${CMAKE_BINARY_DIR}/mxDataGenerator-build
+-      RESULT_VARIABLE result
+-      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/mxDataGenerator-src )
+-if(result)
+-  message(FATAL_ERROR "Config step for mxDataGenerator-src failed: ${result}")
+-endif()
+-
+ if (NOT DEFINED MXDATAGENERATOR_INC_DIR)
++  configure_file(CMakeMXDataGeneratorDownload.cmake mxDataGenerator-download/CMakeLists.txt)
++    execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
++        RESULT_VARIABLE result
++        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/mxDataGenerator-download )
++  if(result)
++    message(FATAL_ERROR "CMake step for mxDataGenerator failed: ${result}")
++  endif()
++    execute_process(COMMAND ${CMAKE_COMMAND} --build .
++        RESULT_VARIABLE result
++        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/mxDataGenerator-download )
++  if(result)
++    message(FATAL_ERROR "Build step for mxDataGenerator failed: ${result}")
++  endif()
++    execute_process(COMMAND ${CMAKE_COMMAND} ${CMAKE_BINARY_DIR}/mxDataGenerator-src -B${CMAKE_BINARY_DIR}/mxDataGenerator-build
++        RESULT_VARIABLE result
++        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/mxDataGenerator-src )
++  if(result)
++    message(FATAL_ERROR "Config step for mxDataGenerator-src failed: ${result}")
++  endif()
++
+   set (MXDATAGENERATOR_INC_DIR "${CMAKE_BINARY_DIR}/mxDataGenerator-src/lib/include")
+-  message ("MXDATAGENERATOR_INC_DIR ${MXDATAGENERATOR_INC_DIR}")
+ endif ()
++message ("MXDATAGENERATOR_INC_DIR ${MXDATAGENERATOR_INC_DIR}")
+ ################################################################################
+
+ ## rocBLAS
