@@ -1,0 +1,67 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	function sudo_env() {
+
+	    userid="$(logname 2>/dev/null || echo $SUDO_USER)"
+
+	    pid=$(ps aux |grep "^$userid" |grep "dbus-daemon" | grep "unix:" |awk "{print $2}")
+
+	    envt=$(cat "/proc/$pid/environ" 2> /dev/null |tr "\\0" "\\n")
+
+	    exports=( "UPSTART_SESSION" "DISPLAY" "DBUS_SESSION_BUS_ADDRESS" "XDG_CURRENT_DESKTOP" "GNOME_DESKTOP_SESSION_ID" )
+
+	    for i in "${exports[@]}"; do
+
+	        if echo "$envt" | grep "^$i=" > /dev/null 2>&1; then
+
+	            eval "$(echo "$envt" | grep "^$i=")" > /dev/null 2>&1
+
+	        export $i > /dev/null 2>&1
+
+	    elif initctl --user get-env $i > /dev/null 2>&1; then
+
+	            eval "$i=$(initctl --user get-env $i)" > /dev/null 2>&1
+
+	        export $i > /dev/null 2>&1
+
+	    fi
+
+	    done
+
+	}
+
+	sudo_env
+
+	echo "Finalizing JSPrintManager 9.0.0.0 installation..."
+
+	"jspm9" -c
+
+	chown -R $SUDO_USER $(eval echo ~$SUDO_USER"/.neodynamic")
+
+	echo "Running JSPrintManager as $SUDO_USER"
+
+	sudo -u $SUDO_USER "jspm9" > /dev/null 2>&1 &
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+
+
+	echo "Stopping JSPrintManager"
+
+	pkill -fx jspm9
+
+	pkill -f /usr/bin/jspm9
+
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
+}
