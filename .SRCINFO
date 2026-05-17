@@ -1,0 +1,23 @@
+pkgbase = opensips-cli
+	pkgdesc = An interactive command line tool that can be used to control and monitor OpenSIPS servers
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/OpenSIPS/opensips-cli
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-cryptography
+	depends = python-sqlalchemy
+	depends = python-pyopenssl
+	depends = python-psutil
+	depends = python-yaml
+	depends = python-pymysql
+	depends = python-opensips
+	backup = etc/opensips-cli.cfg
+	source = opensips-cli-0.4.0.tar.gz::https://github.com/OpenSIPS/opensips-cli/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = 7ade6ea64c05ebaa479432302ece31f60fa4ef5c517375f5258a814ba58c58e4
+
+pkgname = opensips-cli
