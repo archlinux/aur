@@ -1,6 +1,6 @@
 pkgbase = cls-rs
 	pkgdesc = cls - Command-Line Soundboard written in Rust
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://codeberg.org/NorthWestWind/cls
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = cls-rs
 	conflicts = cls-rs-git
 	conflicts = cls-rs-bin
 	replaces = cls-soundboard
-	source = https://codeberg.org/NorthWestWind/cls/archive/v3.2.0.tar.gz
-	sha256sums = 397ce7f1b8e39435a7b0e1c99f70c69c96c4e8afb2cace01b81867b24961eb37
+	source = https://codeberg.org/NorthWestWind/cls/archive/v3.3.0.tar.gz
+	sha256sums = a4faba6112ce6bb583122ef47f3e2059c60b869258ef20206e938aff348fe7fe
 
 pkgname = cls-rs
