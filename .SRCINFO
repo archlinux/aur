@@ -3,7 +3,6 @@ pkgbase = nx-hyprinstall
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/jimmykallhagen/nx-hyprinstall.git
-	install = nx-hyprinstall.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL v3
