@@ -2,80 +2,33 @@ post_install() {
     echo ""
     echo "  ☕ HyprCaffeine installed!"
     echo ""
-    echo "  Quick start:"
-    echo "    hyprcaffeine on 30m    # Activate for 30 minutes"
-    echo "    hyprcaffeine toggle    # Toggle on/off"
-    echo "    hyprcaffeine status    # Check current state"
-    echo ""
-    echo "  Config: ~/.config/hyprcaffeine/config.yaml"
-    echo "  Docs:   /usr/share/doc/hyprcaffeine/"
-    echo ""
 
-    # Auto-configure for the installing user
-    if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
-        _user="$SUDO_USER"
-        _home=$(getent passwd "$_user" | cut -d: -f6)
-    elif [ -n "$USER" ] && [ "$USER" != "root" ]; then
-        _user="$USER"
-        _home="$HOME"
-    else
-        echo "  ⚠ Could not detect user — run 'hyprcaffeine setup' manually."
+    # Detect desktop user
+    _user=""
+    for d in /home/*; do
+        if [ -d "$d/.config/waybar" ] && [ -d "$d/.config/hypr" ]; then
+            _user="$(basename "$d")"
+            break
+        fi
+    done
+
+    if [ -z "$_user" ] || [ "$_user" = "root" ]; then
+        echo "  Run 'hyprcaffeine setup' as your user to configure."
         return 0
     fi
 
-    # 1. Polkit rule (auto-install with correct username)
-    if [ ! -f /etc/polkit-1/rules.d/50-hyprcaffeine.rules ]; then
-        sed "s/YOUR_USERNAME/$_user/g" /usr/share/hyprcaffeine/polkit.rules \
+    echo "  Auto-configuring for: $_user"
+
+    # 1. Polkit rule
+    if [ ! -f /etc/polkit-1/rules.d/50-hyprcaffeine.rules ] && [ -f /usr/share/hyprcaffeine/polkit.rules ]; then
+        sed "s/USER_PLACEHOLDER/$_user/g" /usr/share/hyprcaffeine/polkit.rules \
             > /etc/polkit-1/rules.d/50-hyprcaffeine.rules 2>/dev/null && \
-            echo "  ✅ Polkit rule installed for $_user" || \
-            echo "  ⚠ Polkit: run 'sudo hyprcaffeine setup' to install"
+            echo "  ✅ Polkit rule installed" || true
     fi
 
-    # 2. Waybar integration
-    _wb_config="$_home/.config/waybar/config.jsonc"
-    if [ -f "$_wb_config" ]; then
-        # Migrate old paths
-        sed -i 's|bash [^"]*caffeine-menu\.sh|hyprcaffeine menu|g' "$_wb_config" 2>/dev/null
-
-        # Add module definition if not present
-        if ! grep -q '"custom/hyprcaffeine"' "$_wb_config" 2>/dev/null; then
-            # Insert module block before the last closing brace
-            python3 -c "
-import sys
-p = '$_wb_config'
-c = open(p).read()
-if '\"custom/hyprcaffeine\"' not in c:
-    block = '''
-  \"custom/hyprcaffeine\": {
-    \"exec\": \"hyprcaffeine waybar\",
-    \"on-click\": \"hyprcaffeine toggle\",
-    \"on-click-right\": \"hyprcaffeine menu\",
-    \"interval\": 2,
-    \"return-type\": \"json\"
-  }'''
-    idx = c.rfind('}')
-    c = c[:idx] + ',' + block + '\\n}' 
-    open(p, 'w').write(c)
-" 2>/dev/null && echo "  ✅ Waybar module added" || true
-
-            # Add to modules-right
-            sed -i 's/"modules-right"\s*:\s*\[/"modules-right": [\n    "custom\/hyprcaffeine",/' "$_wb_config" 2>/dev/null || true
-        fi
-
-        # Add CSS if not present
-        _wb_style="$_home/.config/waybar/style.css"
-        if [ -f "$_wb_style" ] && ! grep -q 'HyprCaffeine Waybar Module' "$_wb_style" 2>/dev/null; then
-            cat /usr/share/hyprcaffeine/waybar-css.css >> "$_wb_style" 2>/dev/null && \
-                echo "  ✅ Waybar CSS added" || true
-        fi
-    fi
-
-    # 3. Systemd service
-    _svc_dir="$_home/.config/systemd/user"
-    if [ -d "$_svc_dir" ] || mkdir -p "$_svc_dir" 2>/dev/null; then
-        cp /usr/share/hyprcaffeine/systemd/hyprcaffeine.service "$_svc_dir/" 2>/dev/null && \
-            su - "$_user" -c "systemctl --user daemon-reload && systemctl --user enable hyprcaffeine.service" 2>/dev/null && \
-            echo "  ✅ Systemd service enabled" || true
+    # 2. Waybar + 3. Systemd — run as the user
+    if [ -x /usr/share/hyprcaffeine/scripts/post-install.sh ]; then
+        su - "$_user" -c "bash /usr/share/hyprcaffeine/scripts/post-install.sh" 2>/dev/null
     fi
 
     echo ""
@@ -90,6 +43,7 @@ post_remove() {
     echo "  ☕ HyprCaffeine uninstalled."
     echo "  Config left at ~/.config/hyprcaffeine/ (remove manually if desired)"
     echo ""
-    echo "  Remember to remove /etc/polkit-1/rules.d/50-hyprcaffeine.rules if you installed it."
+    rm -f /etc/polkit-1/rules.d/50-hyprcaffeine.rules 2>/dev/null
+    echo "  Polkit rule removed. Remove waybar module manually if needed."
     echo ""
 }
