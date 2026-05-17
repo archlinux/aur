@@ -1,0 +1,13 @@
+pkgbase = friendly-shell-manager
+	pkgdesc = A clever, colorful and friendly hybrid shell wrapper written in Python
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/TeoCod3z/friendly-shell-manager
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-colorama
+	source = https://github.com/TeoCode3z/friendly-shell-manager/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = friendly-shell-manager
