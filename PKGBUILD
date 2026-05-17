@@ -1,7 +1,7 @@
 #!/bin/bash
 # Maintainer: Holger Schramm <dev@strace.it>
 pkgname=apidog-eu-bin
-pkgver=2.8.23
+pkgver=2.8.29
 pkgrel=1
 pkgdesc="Design. Debug. Test. Document. Mock. Build APIs Faster & Together. (EU Version)"
 provides=('apidog-eu')
@@ -12,10 +12,10 @@ options=(!strip)
 license=('custom')
 depends=(nss libx11 gtk3 libxcb java-runtime alsa-lib lib32-glibc nodejs lib32-gcc-libs libdbusmenu-glib)
 source_x86_64=(
-	"Apidog Europe-${pkgver}.AppImage::https://file-assets.eu.apidog.com/download/${pkgver}/Apidog%20Europe-2.8.23.AppImage"
+	"Apidog Europe-${pkgver}.AppImage::https://file-assets.eu.apidog.com/download/${pkgver}/Apidog%20Europe-${pkgver}.AppImage"
 	"apidog-eu.desktop"
 )
-sha256sums_x86_64=('be7cb532a11b29c11d715f6d930796993b784771f703ecd76ab823e6b8034e1d'
+sha256sums_x86_64=('acf607424933976e585a31628f2d099c823b58a39ba4251cf97af8ccb2765df6'
                    'a568c806ae77f3e7858c07ab095309bdcc2f87a71a49bad7e853bc140d30dbeb')
 
 package() {
