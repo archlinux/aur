@@ -1,0 +1,5 @@
+*
+!/.gitignore
+!/PKGBUILD
+!/update.sh
+!/.SRCINFO
