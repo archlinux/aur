@@ -4,7 +4,7 @@
 pkgname=ccat-rs
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Enhanced cat tool — auto-detect and display markdown, docx, images, and gz files"
+pkgdesc="Universal file viewer — markdown, docx, images, PDF, audio, video, JSON, YAML, logs, ELF disasm, diff, gz, archives"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zhiyuHD/ccat"
 license=('MIT')
