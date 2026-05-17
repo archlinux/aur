@@ -1,7 +1,7 @@
 pkgbase = rocm-validation-suite
 	pkgdesc = Tool for monitoring, stress testing, detecting, and troubleshooting AMD GPU issues
 	pkgver = 7.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCm/ROCmValidationSuite
 	arch = x86_64
 	license = MIT
@@ -25,7 +25,7 @@ pkgbase = rocm-validation-suite
 	source = rvslib-explicit-linking.patch
 	sha256sums = 363009b394350a2ae1d8debe7092c96ab5aa2b183487aed6834580979e969c8c
 	sha256sums = a0c0a78684da2d26ee883ccc632c8f51a4b00cfd3915707f9675cc8c0cf96483
-	sha256sums = f26a1a035f21599c4ed3b1b94c1dd8b556512d71ed63548f3741309df169cddf
-	sha256sums = 176cb468e06ddbad3e75209b3e823212e603a15ae3e5c669678ea61b11c5e3f7
+	sha256sums = a25f9e476b5d9956d7b1d2c9ec7d0dd98c8b157ae3890af9ecfabd56083d73ff
+	sha256sums = 1ae036887dc3bdd330ebe4583e7da37d90192f43db5bfe62713fe4ebec39150e
 
 pkgname = rocm-validation-suite

@@ -4,7 +4,7 @@
 # Contributor: sofiageo <george at sofianos dot dev>
 pkgname=rocm-validation-suite
 pkgver=7.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for monitoring, stress testing, detecting, and troubleshooting AMD GPU issues"
 arch=('x86_64')
 url="https://github.com/ROCm/ROCmValidationSuite"
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rocm-$pkgver.tar.gz"
 sha256sums=('363009b394350a2ae1d8debe7092c96ab5aa2b183487aed6834580979e969c8c'
             'a0c0a78684da2d26ee883ccc632c8f51a4b00cfd3915707f9675cc8c0cf96483'
             'a25f9e476b5d9956d7b1d2c9ec7d0dd98c8b157ae3890af9ecfabd56083d73ff'
-            '4d43c70e73d79507eafbbe4199d838172d3490717e3bca67e6848d158be2cf70')
+            '1ae036887dc3bdd330ebe4583e7da37d90192f43db5bfe62713fe4ebec39150e')
 _srcdir="ROCmValidationSuite-rocm-$pkgver"
 _mxdatagenerator_dir="mxDataGenerator-$_mxdatagenerator_commit"
 
@@ -34,6 +34,7 @@ prepare() {
 build() {
   # -fcf-protection is not supported by HIP, see
   # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.3/page/Appendix_A.html
+  unset CPATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH OBJC_INCLUDE_PATH
 
   CXXFLAGS+=" -fcf-protection=none" \
   cmake \
