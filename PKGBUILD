@@ -1,14 +1,15 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 pkgname=pridefetch-git
-pkgver="r79.9ed33d7"
+pkgver=r85.50ddd29
 pkgrel=1
 pkgdesc="Neofetch clone written in Python with the ability to display pride flags"
 arch=('any')
+license=(LicenseRef-None)
 url="https://github.com/Spyhoodle/pridefetch"
 source=("git+https://github.com/Spyhoodle/pridefetch")
 depends=('python3' 'python-distro')
-makedepends=('git' 'zip')
+makedepends=('git')
 provides=('pridefetch')
 conflicts=('pridefetch')
 sha512sums=('SKIP')
@@ -20,9 +21,8 @@ pkgver() {
 }
 
 package() {
-	cd pridefetch/src
-	zip -r ../pridefetch.zip *
-	cd ..
-	echo "#!/usr/bin/env python" | cat - pridefetch.zip > pridefetch
-	install -Dm755 pridefetch "$pkgdir"/usr/bin/pridefetch
+	cd "$srcdir/${pkgname::-4}/src"
+	bsdtar -a -cf "$srcdir/pridefetch.zip" *
+	echo "#!/usr/bin/env python" | cat - "$srcdir/pridefetch.zip" > "$srcdir/pridefetch-bin"
+	install -Dm755 "$srcdir/pridefetch-bin" "$pkgdir/usr/bin/pridefetch"
 }
