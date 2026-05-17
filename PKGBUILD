@@ -4,7 +4,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 
 pkgname=lib32-sdl2_mixer
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc='A simple multi-channel audio mixer (Version 2)'
 arch=(x86_64)
@@ -26,9 +26,9 @@ makedepends=(
 )
 optdepends=('lib32-fluidsynth: MIDI software synth, replaces built-in timidity')
 source=("https://github.com/libsdl-org/SDL_mixer/releases/download/release-${pkgver}/SDL2_mixer-${pkgver}.tar.gz"{,.sig})
-sha512sums=('6148591404b2113bcdb54391821658548acfe380a9cba660113e55e6f2fb7da2a5a59a99fefe51a0d7f8b91160648f11f72750353da88d285a962e3a410aecd7'
+sha512sums=('9ea190a3e5a0dc3fc9c5a1d0b8aef4af7243559060c8c6d10b0da0defdafd8e78d584ad5ffc88d2e841cdf6886781f77e86b5c95abce6468ed877b372a57747b'
             'SKIP')
-validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6')
+validpgpkeys=('0900104363B4C9D4223DE149D913FE7D4B61D39B') # Sam Lantinga
 
 build() {
   cd "${srcdir}/SDL2_mixer-${pkgver}/"
