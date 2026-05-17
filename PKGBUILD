@@ -1,6 +1,6 @@
 # Maintainer: Hans-Dieter Buddenberg <hbuddenberg@gmail.com>
 pkgname=hyprcaffeine
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='☕ Idle inhibition utility for Hyprland — caffeine for your Wayland compositor'
 arch=(any)
@@ -44,6 +44,9 @@ package() {
 
     # Waybar module template
     install -Dm644 waybar/module.json "${pkgdir}/usr/share/hyprcaffeine/waybar-module.json"
+
+    # Waybar CSS
+    install -Dm644 waybar/waybar-css.css "${pkgdir}/usr/share/hyprcaffeine/waybar-css.css"
 
     # Documentation
     install -dm755 "${pkgdir}/usr/share/doc/hyprcaffeine"
