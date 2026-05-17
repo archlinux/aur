@@ -13,7 +13,7 @@ pkgbase = promptr-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = pkg-config
-	source = git+${url}.git
+	source = git+https://github.com/toxdes/promptr.git
 	sha256sums = SKIP
 
 pkgname = promptr-git
