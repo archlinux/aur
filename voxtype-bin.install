@@ -69,6 +69,30 @@ _preserve_or_set_backend() {
     if [ -f "$saved" ]; then
         target=$(cat "$saved")
         rm -f "$saved"
+
+        # Compatibility map for 0.6.x → 0.7.x binary renames. Users who
+        # had an ONNX engine selected on 0.6.x would otherwise fall back
+        # to CPU Whisper after upgrade because the old binary names no
+        # longer exist; the map preserves engine intent across the rename.
+        case "$target" in
+            */voxtype-parakeet-avx2)
+                target="/usr/lib/voxtype/voxtype-onnx-avx2" ;;
+            */voxtype-parakeet-avx512)
+                target="/usr/lib/voxtype/voxtype-onnx-avx512" ;;
+            */voxtype-onnx-rocm)
+                target="/usr/lib/voxtype/migraphx/voxtype-onnx-migraphx" ;;
+            */voxtype-onnx-cuda)
+                # 0.7.0 split CUDA into 12/13. Pick the variant matching
+                # the host's libcudart soname; fall back to cuda-13 if
+                # neither is detected (modern default).
+                local cuda_major
+                cuda_major=$(_detect_cuda_major 2>/dev/null)
+                if [ -z "$cuda_major" ]; then
+                    cuda_major=13
+                fi
+                target="/usr/lib/voxtype/cuda-${cuda_major}/voxtype-onnx-cuda-${cuda_major}" ;;
+        esac
+
         if [ -f "$target" ]; then
             _install_active_binary "$target"
             # Strip the /usr/lib/voxtype/[<subdir>/]voxtype- prefix for the echo
