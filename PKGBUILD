@@ -12,7 +12,7 @@ source=("$_gitname::git+https://github.com/xZepyx/helium.git")
 sha256sums=('SKIP')
 pkgver() {
   cd $_gitname
-  git describe --long --tags 2>/dev/null | sed 's/^v//; s/-/./g' || echo "$pkgver"
+  printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
   cd $_gitname
