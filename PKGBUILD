@@ -4,13 +4,13 @@
 _pkgname=python-tls-client
 pkgname=${_pkgname}-git
 pkgver=1.0.1.r113.20240202.ab6c736
-pkgrel=3
+pkgrel=4
 pkgdesc="An advanced HTTP library based on requests and tls-client"
 arch=('any')
 url="https://github.com/FlorianREGAZ/Python-Tls-Client"
 license=('MIT')
 depends=('python' 'lib-tls-client' 'python-typing_extensions')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('python-tls-client-bin-git')
