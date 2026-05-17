@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=tunnix-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An encrypted SOCKS5/HTTP proxy tunnel over HTTP/SSE"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('tunnix')
 conflicts=('tunnix')
 
 source_x86_64=("tunnix_linux_x86_64_v${pkgver}.zip::https://github.com/aeroxy/tunnix/releases/download/${pkgver}/tunnix_linux_x86_64.zip")
-sha256sums_x86_64=('bd997605f911c37406e851a026f524fcb302b9d87f6faf6391cb2aa95347342f')
+sha256sums_x86_64=('7eb2c7bbeb4ed615137fe1a2f86dd351d101532e7168ee4610a8fd5db7daeb05')
 
 prepare() {
     cd "${srcdir}"
