@@ -20,12 +20,12 @@ package() {
 Type=Application
 Name=Espressif-IDE (Latest)
 Comment=IDE for ESP32 development
-Exec=/opt/${pkgname}/Espressif-IDE
-Icon=/opt/${pkgname}/icon.png
+Exec=/opt/${pkgname}/Espressif-IDE/espressif-ide
+Icon=/opt/${pkgname}/Espressif-IDE/icon.xpm
 Categories=Development;IDE;
 Terminal=false
 StartupNotify=true
 EOF
 
-	chmod +x "${pkgdir}/opt/${pkgname}/Espressif-IDE"
+	chmod +x "${pkgdir}/opt/${pkgname}/Espressif-IDE/espressif-ide"
 }
