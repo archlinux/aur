@@ -2,8 +2,8 @@
 
 pkgname=claudecodeui
 _pkgname=claudecodeui
-pkgver=1.31.5
-pkgrel=2
+pkgver=1.32.0
+pkgrel=1
 pkgdesc="Web-based UI for Claude Code, Cursor CLI, Codex, and Gemini CLI (CloudCLI)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/siteboon/claudecodeui"
@@ -25,7 +25,7 @@ optdepends=(
 provides=('cloudcli')
 conflicts=('cloudcli-bin')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/siteboon/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ee11106fecd42153e9b14a518dbc4174181e6f62d19e6d95b91fb38505030a15')
+sha256sums=('90c3c6f61afb7c7ae5c944910cee1279ecbc1fb664122a3c229741ffc04d7cdb')
 
 build() {
   cd "$_pkgname-$pkgver"
