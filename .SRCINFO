@@ -1,5 +1,4 @@
 pkgbase = promptr-git
-	pkgname = promptr-git
 	pkgver = 0.1.4
 	pkgrel = 1
 	pkgdesc = GTK4 overlay prompt for opencode
@@ -18,4 +17,3 @@ pkgbase = promptr-git
 	sha256sums = SKIP
 
 pkgname = promptr-git
-
