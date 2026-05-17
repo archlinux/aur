@@ -4,13 +4,13 @@
 # pkgver is set to 5.0.0 is replaced in the update-aur.sh script
 
 pkgname=system-bridge
-pkgver=5.4.4
+pkgver=5.5.0
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
-makedepends=('git' 'go' 'pnpm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.4.4.tar.gz")
-sha256sums=('8721cec5c69fd2d93145045e081418bb0c56febbef6a32ad3c536c709aa3f721')
+makedepends=('git' 'mise')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.5.0.tar.gz")
+sha256sums=('0f5a87aa655e88e8c6d62d075748ea754c7ffbca0741d7b8874c00117779235b')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
@@ -26,10 +26,16 @@ build() {
   ver="${ver/.alpha./-alpha.}"
   ver="${ver/.rc./-rc.}"
   cd "${srcdir}/${pkgname}-${ver}"
+  export MISE_DATA_DIR="${srcdir}/.mise"
+  export MISE_CACHE_DIR="${srcdir}/.cache/mise"
+  export PATH="${MISE_DATA_DIR}/shims:${PATH}"
   export STATIC_EXPORT=true
   export CGO_ENABLED=1
-  make build_web_client
-  go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${pkgver}'" -o "system-bridge" .
+  mise trust -a
+  mise install
+  mise exec -C web-client -- pnpm install --frozen-lockfile
+  mise exec -- make build_web_client
+  mise exec -- go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${pkgver}'" -o "system-bridge" .
 }
 
 package() {
