@@ -2,8 +2,8 @@
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/zellij-no-mouse-resize-bin
 pkgname=zellij-no-mouse-resize-bin
 pkgver=0.44.3.r1
-pkgrel=2
-pkgdesc=Zellij\ with\ advanced_mouse_actions\ also\ gating\ pane\ mouse\ resize\ \(binary\)
+pkgrel=3
+pkgdesc=Zellij\ with\ advanced_mouse_actions\ also\ gating\ pane\ mouse\ resize
 arch=(x86_64 )
 url=https://zellij.dev
 license=(MIT )

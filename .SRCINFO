@@ -1,7 +1,7 @@
 pkgbase = zellij-no-mouse-resize-bin
-	pkgdesc = Zellij with advanced_mouse_actions also gating pane mouse resize (binary)
+	pkgdesc = Zellij with advanced_mouse_actions also gating pane mouse resize
 	pkgver = 0.44.3.r1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zellij.dev
 	arch = x86_64
 	license = MIT
