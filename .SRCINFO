@@ -1,0 +1,22 @@
+pkgbase = jsprintmanager
+	pkgdesc = Print Commands & Files, Manage Printers & Scan Docs from Javascript. JSPrintManager for Linux prints raw commands and files from Javascript right to the client printers. Print files like text plain, images, PDF as well as native raw printer commands like ESC/POS, Postscript, PCL, ZPL, EPL, DPL or any other language supported by the client printer.
+	pkgver = 9.0.0.0
+	pkgrel = 1
+	url = https://www.neodynamic.com/downloads/jspm/
+	install = jsprintmanager.install
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = nss
+	depends = libayatana-appindicator
+	depends = sane
+	depends = cups
+	depends = bluez
+	depends = gtk2
+	depends = freeimage>=3.0.0
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://www.neodynamic.com/downloads/jspm/jspm9-9.0.0.0-amd64.deb
+	sha512sums_x86_64 = 6216f5169f0d2a67d9cda6e3f6da49fa35e762412bef95d13b87563891ff6f6be2b434c8df34ef48d426fbb2740908306d06fce77dc6e19313723d05dec2dc53
+
+pkgname = jsprintmanager
