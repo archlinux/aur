@@ -1,7 +1,7 @@
 pkgbase = padctl-bin
 	pkgdesc = HID gamepad daemon — declarative TOML device config, uinput output (prebuilt musl binary)
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BANANASJIM/padctl
 	arch = x86_64
 	arch = aarch64

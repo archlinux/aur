@@ -1,7 +1,7 @@
 # Maintainer: bananasjim <bananasjim1@gmail.com>
 pkgname=padctl-bin
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="HID gamepad daemon — declarative TOML device config, uinput output (prebuilt musl binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BANANASJIM/padctl"
@@ -45,7 +45,7 @@ package() {
         "${pkgdir}/usr/lib/udev/rules.d/61-padctl-driver-block.rules"
 
     while IFS= read -r -d '' toml; do
-        install -Dm644 "${toml}" "${pkgdir}/usr/share/padctl/${toml#devices/}"
+        install -Dm644 "${toml}" "${pkgdir}/usr/share/padctl/${toml}"
     done < <(find devices -name '*.toml' -print0)
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
