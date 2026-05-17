@@ -1,0 +1,20 @@
+pkgbase = winpodx
+	pkgdesc = Windows app integration for Linux desktop (Podman/FreeRDP RemoteApp)
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/Kernalix7/winpodx
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = pkgconf
+	depends = freerdp
+	depends = xdotool
+	optdepends = podman: default container backend
+	optdepends = docker: alternative container backend
+	optdepends = libvirt: VM backend
+	optdepends = qemu-desktop: KVM backend for libvirt
+	source = winpodx-0.1.7.tar.gz::https://github.com/Kernalix7/winpodx/archive/v0.1.7.tar.gz
+	sha256sums = SKIP
+
+pkgname = winpodx
