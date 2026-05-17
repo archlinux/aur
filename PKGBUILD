@@ -2,8 +2,8 @@
 
 pkgname=openai-codex-reasoning-bin
 pkgver=0.130.0
-pkgrel=1
-pkgdesc="Prebuilt OpenAI Codex CLI fork with inline reasoning traces"
+pkgrel=2
+pkgdesc="Prebuilt OpenAI Codex CLI with raw reasoning traces enabled by default"
 arch=('x86_64')
 url="https://github.com/OneNoted/openai-codex-reasoning-bin"
 license=('Apache-2.0')
@@ -27,12 +27,11 @@ conflicts=(
 )
 replaces=('openai-codex-reasoning')
 
-_fork_tag='aur-v0.130.0-reasoning.1'
-_asset_name="${pkgname}-0.130.0-1-x86_64.tar.zst"
+_asset_name="${pkgname}-0.130.0-2-x86_64.tar.zst"
 source=(
   "${_asset_name}::${url}/releases/download/v${pkgver}-${pkgrel}/${_asset_name}"
 )
-sha256sums=('d9e4aa8c68a1c36f07381c423995f2cc6f29655a19c0c0c935dffe69e7aca742')
+sha256sums=('010c3b76425163540fc5b65de30481c057fa319cd7ba63c6a8c8591171f49fe2')
 
 package() {
   bsdtar -xf "${srcdir}/${_asset_name}" -C "${pkgdir}"
