@@ -8,7 +8,7 @@ pkgname=(
   bisq-daemon
 )
 pkgver=1.9.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
 url="https://bisq.network"
@@ -30,7 +30,7 @@ build() {
   msg2 "Building bisq..."
   sed -i '/vendor = JvmVendorSpec.AZUL/d' build-logic/commons/src/main/groovy/bisq.java-conventions.gradle
   sed -i '/implementation = JvmImplementation.VENDOR_SPECIFIC/d' build-logic/commons/src/main/groovy/bisq.java-conventions.gradle
-  ./gradlew clean build --scan -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk -x test
+  ./gradlew clean build -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk -x test
 }
 
 package_bisq-desktop() {
