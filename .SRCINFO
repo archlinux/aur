@@ -1,11 +1,12 @@
 pkgbase = unbill-bin
 	pkgdesc = Desktop app for unbill
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/unbill-project/unbill
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
+	depends = unbill-daemon
 	depends = cairo
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2
@@ -17,7 +18,7 @@ pkgbase = unbill-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/unbill-project/unbill/releases/download/0-0-2/unbill-linux-x86_64.deb
+	source_x86_64 = https://github.com/unbill-project/unbill/releases/download/0-0-3/unbill-linux-x86_64.deb
 	sha256sums_x86_64 = SKIP
 
 pkgname = unbill-bin
