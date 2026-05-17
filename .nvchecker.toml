@@ -1,0 +1,5 @@
+[tash-bin]
+source = "github"
+github = "dhth/tash"
+use_latest_release = true
+prefix = "v"

@@ -1,6 +1,6 @@
 pkgbase = tash-bin
 	pkgdesc = S[tash] content that you can access later
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/dhth/tash
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = tash-bin
 	depends = glibc
 	provides = tash
 	conflicts = tash
-	source_x86_64 = tash-x86_64-0.1.0.tar.gz::https://github.com/dhth/tash/releases/download/v0.1.0/tash-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = f07369b81fc690688c5a357bbf2789a2291caf1a4f06b2be32432817dc6061dc
-	source_aarch64 = tash-aarch64-0.1.0.tar.gz::https://github.com/dhth/tash/releases/download/v0.1.0/tash-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 52d01a7a50d3350df71eb6daa91dce4f330f3dea66de2939f76435849994eee5
+	source_x86_64 = tash-x86_64-0.1.1.tar.gz::https://github.com/dhth/tash/releases/download/v0.1.1/tash-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 8ddefa5c4e0b481c1f17e5a9c29d6cac7eaaaf75db8f6701529488dab771c928
+	source_aarch64 = tash-aarch64-0.1.1.tar.gz::https://github.com/dhth/tash/releases/download/v0.1.1/tash-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 9be9ff7c22dd7c50773d33b96d38a9fb7e655afdb285f261901b8e61180a0e16
 
 pkgname = tash-bin

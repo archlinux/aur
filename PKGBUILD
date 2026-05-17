@@ -3,7 +3,7 @@
 _pkgauthor=dhth
 _pkgname=tash
 pkgname=${_pkgname}-bin
-pkgver=0.1.0
+pkgver=0.1.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="S[tash] content that you can access later"
@@ -19,8 +19,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('f07369b81fc690688c5a357bbf2789a2291caf1a4f06b2be32432817dc6061dc')
-sha256sums_aarch64=('52d01a7a50d3350df71eb6daa91dce4f330f3dea66de2939f76435849994eee5')
+sha256sums_x86_64=('8ddefa5c4e0b481c1f17e5a9c29d6cac7eaaaf75db8f6701529488dab771c928')
+sha256sums_aarch64=('9be9ff7c22dd7c50773d33b96d38a9fb7e655afdb285f261901b8e61180a0e16')
 
 
 package() {
