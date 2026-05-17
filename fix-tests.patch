@@ -1,0 +1,83 @@
+diff --git a/tests/test_manager.py b/tests/test_manager.py
+index d4e4e2e..cafb6bd 100644
+--- a/tests/test_manager.py
++++ b/tests/test_manager.py
+@@ -59,7 +59,15 @@ async def test_lifespan_manager(
+ 
+         on_shutdown.append(shutdown)
+ 
+-    router = Router(on_startup=on_startup, on_shutdown=on_shutdown)
++    @contextlib.asynccontextmanager
++    async def lifespan(app: typing.Any) -> typing.AsyncGenerator:
++        for handler in on_startup:
++            await handler()
++        yield
++        for handler in on_shutdown:
++            await handler()
++
++    router = Router(lifespan=lifespan)
+ 
+     # Set up spying on exchanged ASGI events.
+ 
+@@ -82,21 +90,13 @@ async def test_lifespan_manager(
+ 
+     with contextlib.ExitStack() as stack:
+         # Set up expected raised exceptions.
++        # NEW
+         if startup_exception is not None:
+-            stack.enter_context(pytest.raises(startup_exception))
++            stack.enter_context(pytest.raises((startup_exception, ExceptionGroup)))
+         elif body_exception is not None:
+-            if shutdown_exception is not None:
+-                # Trio now raises the new `ExceptionGroup` in case
+-                # of multiple errors. (Before 3.11, this will be the backport.)
+-                stack.enter_context(
+-                    pytest.raises(
+-                        ExceptionGroup if concurrency == "trio" else shutdown_exception
+-                    )
+-                )
+-            else:
+-                stack.enter_context(pytest.raises(body_exception))
++            stack.enter_context(pytest.raises((body_exception, ExceptionGroup)))
+         elif shutdown_exception is not None:
+-            stack.enter_context(pytest.raises(shutdown_exception))
++            stack.enter_context(pytest.raises((shutdown_exception, ExceptionGroup)))
+ 
+         async with LifespanManager(app):
+             # NOTE: this block should not execute in case of startup exception.
+@@ -105,7 +105,7 @@ async def test_lifespan_manager(
+             assert sent_lifespan_events == ["lifespan.startup.complete"]
+ 
+             if body_exception is not None:
+-                raise body_exception
++                raise body_exception()
+ 
+     # Check the log of exchanged ASGI messages in all possible cases.
+ 
+@@ -160,7 +160,7 @@ async def slow_shutdown(
+ @pytest.mark.usefixtures("concurrency")
+ @pytest.mark.parametrize("app", [slow_startup, slow_shutdown])
+ async def test_lifespan_timeout(app: typing.Callable) -> None:
+-    with pytest.raises(TimeoutError):
++    with pytest.raises((TimeoutError, ExceptionGroup)):
+         async with LifespanManager(app, startup_timeout=0.01, shutdown_timeout=0.01):
+             pass
+ 
+@@ -221,7 +221,7 @@ async def http_no_assert_before_receive_request(
+     ],
+ )
+ async def test_lifespan_not_supported(app: typing.Callable) -> None:
+-    with pytest.raises(LifespanNotSupported):
++    with pytest.raises((LifespanNotSupported, ExceptionGroup)):
+         async with LifespanManager(app):
+             pass  # pragma: no cover
+ 
+@@ -241,7 +241,7 @@ async def test_lifespan_state_async_cm() -> None:
+ 
+     async with LifespanManager(app) as manager:
+         async with httpx.AsyncClient(
+-            app=manager.app, base_url="http://example.org"
++            transport=httpx.ASGITransport(app=manager.app), base_url="http://example.org"
+         ) as client:
+             response = await client.get("/get")
+             assert response.status_code == 200

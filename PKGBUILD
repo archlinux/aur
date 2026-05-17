@@ -1,28 +1,42 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-pkgbase='python-asgi-lifespan'
-pkgname=('python-asgi-lifespan')
+_name=asgi-lifespan
+pkgname=python-$_name
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Programmatic startup/shutdown of ASGI apps.'
 arch=('any')
-url='https://github.com/florimondmanca/asgi-lifespan'
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/source/a/asgi-lifespan/asgi-lifespan-$pkgver.tar.gz")
-sha256sums=('5e2effaf0bfe39829cf2d64e7ecc47c7d86d676a6599f7afba378c31f5e3a308')
-provides=("python-asgi-lifespan=$pkgver")
-depends=('python>=3.7.0' 'python-sniffio')
-makedepends=('python-setuptools' 'python-setuptools-scm' 'python-wheel')
-#checkdepends=('python-attrs>=19.2' 'python-autoflake' 'python-black==23.3.' 'python-exceptiongroup' 'mypy==1.3.0' 'python-pytest==7.' 'python-pytest-asyncio==0.18.' 'python-pytest-cov' 'python-pytest-trio==0.8.' 'python-ruff==0.0.270' 'python-starlette==0.27.' 'python-trio==0.22.' 'python-httpx==0.24.*')
-#optdepends=('twine')
+url='https://github.com/florimondmanca/asgi-lifespan'
+depends=('python' 'python-sniffio')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-attrs' 'python-pytest' 'python-pytest-asyncio'  'python-pytest-trio' 'python-starlette' 'python-trio' 'python-httpx')
+source=("$url/archive/refs/tags/$pkgver.tar.gz"
+        "fix-tests.patch")
+sha256sums=('6e541007c546d35e91d4eb9b353fec8f921386cd5ca1fddac5380616ac1e42dc'
+            '84a5434e40b64f0d599973e24c5d7638eaf0c3993154e80bd09182ca8416021d')
 
+prepare() {
+  cd "$srcdir"/$_name-$pkgver
+  patch -Np1 -i ../fix-tests.patch
+}
 
 build() {
-  cd "${srcdir}"/asgi-lifespan-$pkgver
-  python setup.py build
+  cd "$srcdir"/$_name-$pkgver
+  python -m build --wheel --no-isolation
 } 
 
+check() {
+  local pytest_options=(
+    -vv
+    --disable-warnings
+    -o "addopts="
+  )
+  cd "$srcdir"/$_name-$pkgver
+  PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
+}
+
 package_python-asgi-lifespan() {
-  cd "${srcdir}"/asgi-lifespan-$pkgver
-  python setup.py install --root="${pkgdir}" --optimize=1
+  cd "$srcdir"/$_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

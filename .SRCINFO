@@ -1,17 +1,27 @@
 pkgbase = python-asgi-lifespan
 	pkgdesc = Programmatic startup/shutdown of ASGI apps.
 	pkgver = 2.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/florimondmanca/asgi-lifespan
 	arch = any
 	license = MIT
+	checkdepends = python-attrs
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-trio
+	checkdepends = python-starlette
+	checkdepends = python-trio
+	checkdepends = python-httpx
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.7.0
+	depends = python
 	depends = python-sniffio
-	provides = python-asgi-lifespan=2.1.0
-	source = https://files.pythonhosted.org/packages/source/a/asgi-lifespan/asgi-lifespan-2.1.0.tar.gz
-	sha256sums = 5e2effaf0bfe39829cf2d64e7ecc47c7d86d676a6599f7afba378c31f5e3a308
+	source = https://github.com/florimondmanca/asgi-lifespan/archive/refs/tags/2.1.0.tar.gz
+	source = fix-tests.patch
+	sha256sums = 6e541007c546d35e91d4eb9b353fec8f921386cd5ca1fddac5380616ac1e42dc
+	sha256sums = 84a5434e40b64f0d599973e24c5d7638eaf0c3993154e80bd09182ca8416021d
 
 pkgname = python-asgi-lifespan
