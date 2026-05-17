@@ -1,6 +1,11 @@
 # Maintainer: graysky <therealgraysky AT proton DOT me>
 # Contributor: Peter Jackson <pete@peteonrails.com>
 
+# optional optimization, uncomment and set to your hardware
+#_cpu="x86-64-v4"
+#export CFLAGS+=" -march=$_cpu -O3"
+#export CXXFLAGS+=" -march=$_cpu -O3"
+
 # Export the variable matching your GPU, then run makepkg:
 #   CUDA_ARCH=120 makepkg -si
 #
@@ -71,9 +76,10 @@ install=$pkgname.install
 validpgpkeys=('E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6')  # Peter Jackson <pete@peteonrails.com>
 source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
-#  "$_pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
+  "$_pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz.asc"
 )
-sha256sums=('8aa70619fa1fdd9a1f26675e57bdc2e8f96ddfb1789c97ca6c83189154fcde98')
+sha256sums=('8aa70619fa1fdd9a1f26675e57bdc2e8f96ddfb1789c97ca6c83189154fcde98'
+            'SKIP')
 
 prepare() {
     cd "$_pkgname-$pkgver"
@@ -140,21 +146,16 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    # Clear flags set by makepkg - they can interfere with whisper-rs/whisper.cpp build
-    unset RUSTFLAGS
-    unset DEBUG_RUSTFLAGS
-    unset CFLAGS
-    unset CXXFLAGS
-    unset LDFLAGS
+    # Clear flags set by makepkg — they interfere with whisper-rs/whisper.cpp
+    unset RUSTFLAGS DEBUG_RUSTFLAGS CFLAGS CXXFLAGS LDFLAGS
 
-    # Remap build paths so binaries don't contain $srcdir references
+    # Remap build paths so binaries don't embed $srcdir references
     local _src="$srcdir/$pkgname-$pkgver"
     export RUSTFLAGS="--remap-path-prefix=$_src/= --remap-path-prefix=${CARGO_HOME}/registry/src/=cargo/"
     export CFLAGS="-ffile-prefix-map=$_src/="
     export CXXFLAGS="-ffile-prefix-map=$_src/="
 
-    # Use clang for C/C++ - avoids whisper.cpp build failures with newer gcc
-    # (e.g. when [testing] repo is enabled)
+    # Use clang - avoids whisper.cpp build failures with newer gcc
     export PATH="/opt/cuda/bin:$PATH"
     export CC=clang
     export CXX=clang++
@@ -164,6 +165,7 @@ build() {
     export CMAKE_TOOLCHAIN_FILE=/tmp/voxtype-cuda-arch.cmake
 
     # Build CUDA binary - Disable LTO to prevent linking hangs (Cargo.toml has lto=true)
+    cargo clean
     cargo build --frozen --release --features gpu-cuda \
         --config 'profile.release.lto=false' \
         --config 'profile.release.codegen-units=8'
@@ -176,6 +178,7 @@ build() {
         --config 'profile.release.lto=false' \
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-onnx
+    unset ORT_STRATEGY
 
     # Build OSD binaries: the launcher (voxtype-osd) plus both frontends.
     # The launcher has no GUI deps; each frontend is gated on its feature
