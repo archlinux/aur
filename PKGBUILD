@@ -5,7 +5,7 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.2.0.r1.gd1ceeec
+pkgver=0.2.0.r10.g5aba461
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ options=('!lto' '!debug')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git")
 sha256sums=('SKIP')
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/.git//'
- }
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/-\(rc[0-9]*\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g;s/.git//'
+}
 build() {
 	cd "$srcdir"
 	cmake -B build -S $_pkgname -GNinja \
