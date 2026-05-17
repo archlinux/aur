@@ -1,0 +1,39 @@
+post_install() {
+    echo ""
+    echo "  ┌─────────────────────────────────────────────────────┐"
+    echo "  │                    kb2xb installed                  │"
+    echo "  └─────────────────────────────────────────────────────┘"
+    echo ""
+    echo "  1. Add your user to the required groups:"
+    echo ""
+    echo "       sudo groupadd -f uinput"
+    echo "       sudo usermod -aG input,uinput \$USER"
+    echo ""
+    echo "  2. Re-login (or reboot) for group changes to take effect."
+    echo ""
+    echo "  3. Reload udev rules (already done by pacman hooks, but"
+    echo "     if /dev/uinput still isn't writable, run manually):"
+    echo ""
+    echo "       sudo udevadm control --reload-rules"
+    echo "       sudo udevadm trigger"
+    echo ""
+    echo "  Then launch with:  kb2xb-gui   or   kb2xb"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  kb2xb upgraded."
+    echo "  If you have issues, re-check group membership:"
+    echo "    groups | grep -E 'input|uinput'"
+    echo ""
+}
+
+post_remove() {
+    echo ""
+    echo "  kb2xb removed."
+    echo "  Your profiles at ~/.config/kb2xb/ were NOT deleted."
+    echo "  Remove them manually if you no longer need them:"
+    echo "    rm -rf ~/.config/kb2xb"
+    echo ""
+}
