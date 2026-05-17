@@ -3,7 +3,7 @@
 _pkgname=pyrefly
 pkgbase=$_pkgname-git
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.63.1.r0.e765bc6
+pkgver=1.0.0.r0.2362c07
 pkgrel=1
 pkgdesc='A fast type checker and language server for Python'
 arch=(x86_64)
