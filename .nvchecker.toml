@@ -1,0 +1,4 @@
+[bochs]
+source = "regex"
+url = "https://sourceforge.net/projects/bochs/files/bochs/"
+regex = "/bochs/([\\d.]+)/"
