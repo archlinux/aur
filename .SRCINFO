@@ -1,0 +1,16 @@
+pkgbase = plandex-bin
+	pkgdesc = AI-powered development agent for your CLI
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/plandex-ai/plandex
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = plandex
+	conflicts = plandex
+	source_x86_64 = plandex-bin-2.2.1-x86_64.tar.gz::https://github.com/plandex-ai/plandex/releases/download/cli%2Fv2.2.1/plandex_2.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2094c11700bef5dc87369214d3da6d9a8a76c1d2e51459045f0c8268fdaeabc9
+	source_aarch64 = plandex-bin-2.2.1-aarch64.tar.gz::https://github.com/plandex-ai/plandex/releases/download/cli%2Fv2.2.1/plandex_2.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5539441719cd8dc34f7209e5a04051540e748ff97d0d85b1cf79035b6cef7920
+
+pkgname = plandex-bin
