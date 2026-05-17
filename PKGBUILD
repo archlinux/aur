@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=stig-viewer-bin
-pkgver=3.4
+pkgver=3.7
 pkgrel=1
 pkgdesc="Graphical user interface for XCCDF STIG files"
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('custom')
 makedepends=('asar')
 provides=("stig-viewer=${pkgver}")
 conflicts=('stig-viewer')
-source=("https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_STIGViewer-linux_x64-3-4-0.zip"
+source=("https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_STIGViewer-linux_x64-3-7-0.zip"
         "local://stig-viewer.desktop")
-sha256sums=('39debcb9c75fd9e7da2bf4e2bb38fc65a64cb6a43b58dac20d46f9c9726e4a22'
+sha256sums=('bd6fedb4e74c61fc0ce35a3f9916295b8b018c219c16e4c7881c26e90f5872f0'
             'SKIP')
 
 package() {
