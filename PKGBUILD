@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/AmusementClub/vs-mlrt'
 license=('LGPL')
 depends=('vapoursynth' 'cuda' 'tensorrt')
-makedepends=('git' 'ninja' 'cmake' 'jq')
+makedepends=('git' 'ninja' 'cmake' 'jq' 'vapoursynth-api3-headers')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 
