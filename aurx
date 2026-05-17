@@ -27,6 +27,7 @@ usage() {
 		The Archlinux User Repository eXplorer.
 		
 		Operations:
+		  describe      print detailed information about a specific package.
 		  install       install any package from AUR or the source path.
 		  remove        remove packages from the system and internal list.
 		  update        force install any package from AUR and delete source after.
@@ -49,6 +50,11 @@ usage() {
 		     --verbosity [LEVEL]               level of verbosity. (2)
 		                                       0 - none, 1 - stderr, 2 - all.
 		  -v --version                         display current version and exit.
+
+		  describe:
+		  -G --git-opts [OPTS]..               opts to give in to git operations. ("")
+		  -o --output [TYPE]                   how to output suggest results. ("formatted")
+		                                       "formatted", "json-lines".
 		
 		  install:
 		     --cleanup                         delete sources after successful installs.
@@ -236,9 +242,7 @@ print_error() {
 			echo "[i] Possible options are: ${OUTPUT_VALUES[*]}." >&2
 			;;
 		76 )
-			local TEMP_PACKAGES
-			TEMP_PACKAGES="$(echo ${PACKAGES_NOT_FOUND[*]})"
-			echo "[!] Could not find ${TEMP_PACKAGES}." >&2
+			echo "[!] Could not find ${PACKAGES_NOT_FOUND[*]}." >&2
 			;;
 		77 )
 			echo "[!] Unknown suggest output value: \"${OUTPUT}\"." >&2
@@ -256,6 +260,16 @@ print_error() {
 		81 )
 			echo "[-] Unknown git-connection value: \"${GIT_CONNECTION}\"." >&2
 			echo "[i] Possible options are: ${GIT_CONNECTION_VALUES[*]}" >&2
+			;;
+		82 )
+			echo "[!] Unknown describe output value: \"${OUTPUT}\"." >&2
+			echo "[i] Possible options are: ${OUTPUT_DESCRIBE_VALUES[*]}." >&2
+			;;
+		150 )
+			echo "[!] Could not fetch \"${SELECTED_PACKAGE}\" information."
+			;;
+		151 )
+			echo "[!] Could not print \"${SELECTED_PACKAGE}\" information."
 			;;
 		* )
 			echo "[-] No error message found for error ${GIVEN_ERROR}." >&2
@@ -317,6 +331,7 @@ aurx_completion() {
 				        COMPREPLY=()
 				        local POSSIBLE_OPERATIONS="${POSSIBLE_OPERATIONS[*]}"
 				        local GENERAL_OPTIONS="${GENERAL_OPTIONS[*]}"
+				        local DESCRIBE_OPTIONS="${DESCRIBE_OPTIONS[*]}"
 				        local INSTALL_OPTIONS="${INSTALL_OPTIONS[*]}"
 				        local REMOVE_OPTIONS="${REMOVE_OPTIONS[*]}"
 				        local UPDATE_OPTIONS="${UPDATE_OPTIONS[*]}"
@@ -329,25 +344,28 @@ aurx_completion() {
 				        local GIT_CONNECTION_VALUES="${GIT_CONNECTION_VALUES[*]}"
 				        local OUTPUT_VALUES="${OUTPUT_VALUES[*]}"
 				        local OUTPUT_SUGGEST_VALUES="${OUTPUT_SUGGEST_VALUES[*]}"
+				        local OUTPUT_DESCRIBE_VALUES="${OUTPUT_DESCRIBE_VALUES[*]}"
 				        local ORDER_BY_VALUES="${ORDER_BY_VALUES[*]}"
 				        local SEARCH_CRITERIA_VALUES="${SEARCH_CRITERIA_VALUES[*]}"
 				        local SORT_BY_VALUES="${SORT_BY_VALUES[*]}"
 				        
 				        if [[ \${CURRENT_WORD} == -* ]]; then
 				                COMPREPLY=( \$(compgen -W "\${GENERAL_OPTIONS}" -- "\${CURRENT_WORD}") )
-				                if [[ \${COMP_WORDS[*]} =~ " install " ]]; then
+				                if printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "describe"; then
+				                        COMPREPLY+=( \$(compgen -W "\${DESCRIBE_OPTIONS}" -- "\${CURRENT_WORD}") )
+				                elif printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "install"; then
 				                        COMPREPLY+=( \$(compgen -W "\${INSTALL_OPTIONS}" -- "\${CURRENT_WORD}") )
-				                elif [[ \${COMP_WORDS[*]} =~ " remove " ]]; then
+				                elif printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "remove"; then
 				                        COMPREPLY+=( \$(compgen -W "\${REMOVE_OPTIONS}" -- "\${CURRENT_WORD}") )
-				                elif [[ \${COMP_WORDS[*]} =~ " update " ]]; then
+				                elif printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "update"; then
 				                        COMPREPLY+=( \$(compgen -W "\${UPDATE_OPTIONS}" -- "\${CURRENT_WORD}") )
-				        	elif [[ \${COMP_WORDS[*]} =~ " search " ]]; then
+				                elif printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "search"; then
 				                        COMPREPLY+=( \$(compgen -W "\${SEARCH_OPTIONS}" -- "\${CURRENT_WORD}") )
-				        	elif [[ \${COMP_WORDS[*]} =~ " suggest " ]]; then
+				                elif printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "suggest"; then
 				                        COMPREPLY+=( \$(compgen -W "\${SUGGEST_OPTIONS}" -- "\${CURRENT_WORD}") )
-				        	elif [[ \${COMP_WORDS[*]} =~ " completion " ]]; then
+				                elif printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "completion"; then
 				                        COMPREPLY+=( \$(compgen -W "\${COMPLETION_OPTIONS}" -- "\${CURRENT_WORD}") )
-				        	elif [[ \${COMP_WORDS[*]} =~ " list " ]]; then
+				                elif printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "list"; then
 				                        COMPREPLY+=( \$(compgen -W "\${LIST_OPTIONS}" -- "\${CURRENT_WORD}") )
 				                fi
 				        elif [[ \${LAST_WORD} == "--search-criteria" ]]; then
@@ -356,9 +374,11 @@ aurx_completion() {
 				                COMPREPLY=( \$(compgen -W "\${COMPARISON_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--git-connection" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${GIT_CONNECTION_VALUES}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${LAST_WORD} == "--output" ]] && [[ \${COMP_WORDS[*]} =~ " search " ]]; then
+				        elif [[ \${LAST_WORD} == "--output" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "search"; then
 				                COMPREPLY=( \$(compgen -W "\${OUTPUT_VALUES}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${LAST_WORD} == "--output" ]] && [[ \${COMP_WORDS[*]} =~ " suggest " ]]; then
+				        elif [[ \${LAST_WORD} == "--output" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "describe"; then
+				                COMPREPLY=( \$(compgen -W "\${OUTPUT_DESCRIBE_VALUES}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--output" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "suggest"; then
 				                COMPREPLY=( \$(compgen -W "\${OUTPUT_SUGGEST_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--order-by" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${ORDER_BY_VALUES}" -- "\${CURRENT_WORD}") )
@@ -394,18 +414,18 @@ aurx_completion() {
 launch_sanity_checks() {
 	# Check if installed kernel is the same version as the running one.
 	if [[ $(vercmp "$(pacman -Q linux | cut -d ' ' -f 2)" "$(uname -r)") -ne 0 ]] \
-		&& [[ " install update remove " =~ ${CURRENT_OPERATION} ]]; then
+		&& printf '%s\n' "install update remove" | grep -qx "${CURRENT_OPERATION}"; then
 		print_error 80
 		exit 80
 	fi
 
-	if [[ ! "${POSSIBLE_OPERATIONS[*]}" =~ ${CURRENT_OPERATION} ]]; then
+	if ! printf '%s\n' "${POSSIBLE_OPERATIONS[@]}" | grep -qx "${CURRENT_OPERATION}"; then
 		print_error 55
 		exit 55
 	fi
 
 	# Root + install/update exception.
-	if [[ ${UID} -eq 0 ]] && [[ " install update " =~ ${CURRENT_OPERATION} ]]; then
+	if [[ ${UID} -eq 0 ]] && printf '%s\n' "install update" | grep -qx "${CURRENT_OPERATION}"; then
 		print_error 57
 		exit 57
 	fi
@@ -429,35 +449,41 @@ launch_sanity_checks() {
 			;;
 	esac
 
-	if [[ ! "${COMPARISON_CRITERIA_VALUES[*]}" =~ ${COMPARISON_CRITERIA} ]]; then
+	if ! printf '%s\n' "${COMPARISON_CRITERIA_VALUES[@]}" | grep -qx "${COMPARISON_CRITERIA}"; then
 		print_error 68
 		exit 68
 	fi
 
-	if [[ ! "${GIT_CONNECTION_VALUES[*]}" =~ ${GIT_CONNECTION} ]]; then
+	if ! printf '%s\n' "${GIT_CONNECTION_VALUES[@]}" | grep -qx "${GIT_CONNECTION}"; then
 		print_error 81
 		exit 81
 	fi
 
-	if [[ ! "${ORDER_BY_VALUES[*]}" =~ ${ORDER_BY} ]]; then
+	if ! printf '%s\n' "${ORDER_BY_VALUES[@]}" | grep -qx "${ORDER_BY}"; then
 		print_error 66
 		exit 66
 	fi
 
-	if [[ ! "${SEARCH_CRITERIA_VALUES[*]}" =~ ${SEARCH_CRITERIA} ]]; then
+	if ! printf '%s\n' "${SEARCH_CRITERIA_VALUES[@]}" | grep -qx "${SEARCH_CRITERIA}"; then
 		print_error 52
 		exit 52
 	fi
 
 	case "${CURRENT_OPERATION}" in
+		describe )
+			if ! printf '%s\n' "${OUTPUT_DESCRIBE_VALUES[@]}" | grep -qx "${OUTPUT}"; then
+				print_error 82
+				exit 82
+			fi
+			;;
 		search )
-			if [[ ! "${OUTPUT_VALUES[*]}" =~ ${OUTPUT} ]]; then
+			if ! printf '%s\n' "${OUTPUT_VALUES[@]}" | grep -qx "${OUTPUT}"; then
 				print_error 75
 				exit 75
 			fi
 			;;
 		suggest )
-			if [[ ! "${OUTPUT_SUGGEST_VALUES[*]}" =~ ${OUTPUT} ]]; then
+			if ! printf '%s\n' "${OUTPUT_SUGGEST_VALUES[@]}" | grep -qx "${OUTPUT}"; then
 				print_error 77
 				exit 77
 			fi
@@ -550,7 +576,7 @@ load_config() {
 		CFG_VAR=$(echo "${CFG_ENV_VAR}" | jq -cr '.key')
 		CFG_VAR_VALUE=$(echo "${CFG_ENV_VAR}" | jq -cr '.value')
 		
-		if [[ "${INTERNAL_VARIABLES[*]}" =~ ${CFG_VAR} ]]; then
+		if printf '%s\n' "${INTERNAL_VARIABLES[@]}" | grep -qx "${CFG_VAR}"; then
 			if [[ -n $(echo "${CFG_VAR_VALUE}" | jq 'path(..) | select(length > 0)' 2> /dev/null) ]]; then
 				print_error 78
 				continue
@@ -558,7 +584,7 @@ load_config() {
 			local VARIABLE_EVALUATION
 			VARIABLE_EVALUATION="${CFG_VAR}=${CFG_VAR_VALUE}"
 			eval "${VARIABLE_EVALUATION}"
-		elif [[ "${INTERNAL_ARRAYS[*]}" =~ ${CFG_VAR} ]]; then
+		elif printf '%s\n' "${INTERNAL_ARRAYS[@]}" | grep -qx "${CFG_VAR}"; then
 			if [[ -n $(echo "${CFG_VAR_VALUE}" | jq 'path(..) | select(length > 1)' 2> /dev/null) ]]; then
 				print_error 78
 				continue
@@ -799,6 +825,46 @@ load_piped_packages() {
 }
 
 # Tier 1 functions.
+gather_aur_package_info() {
+	local PACKAGE_INFORMATION
+	local TARGET_PACKAGE="${1}"
+	if ! PACKAGE_INFORMATION=$(curl --connect-timeout 60 --max-time 180 "${CURL_OPTS[@]}" \
+		"https://aur.archlinux.org/rpc/v5/info?arg[]=${TARGET_PACKAGE}" 2> /dev/null \
+		| jq -cr --arg PACKAGE_NAME "${TARGET_PACKAGE}" \
+			'.results.[0] + {AUR_WEB_URL: "https://aur.archlinux.org/packages/" + $PACKAGE_NAME}'); then
+		print_error 74
+		exit 74
+	fi
+	if [[ "null" == "${PACKAGE_INFORMATION}" ]] \
+		|| [[ -z "${PACKAGE_INFORMATION}" ]]; then
+		return 1
+	fi
+	echo "${PACKAGE_INFORMATION}"
+}
+
+print_aur_package_info() {
+	local PACKAGE_INFORMATION="${1}"
+
+	case "${OUTPUT}" in
+		json-lines )
+			echo "${PACKAGE_INFORMATION}"
+			;;
+		formatted )
+			echo "---"
+			echo "${TARGET_PACKAGE}"
+			echo "---"
+			echo "${PACKAGE_INFORMATION}" \
+				| jq -cr '.FirstSubmitted = (.FirstSubmitted | strftime("%Y-%m-%dT%H:%M:%S"))
+					| .LastModified = (.LastModified | strftime("%Y-%m-%dT%H:%M:%S"))
+					| to_entries[] | [.key, (.value | tostring)] | @tsv' \
+				| column -t -s $'\t'
+			;;
+		* )
+			print_error 82
+			exit 82
+			;;
+	esac
+}
 
 compare_versions() {
 	local TARGET_PACKAGE="${1}"
@@ -822,9 +888,8 @@ compare_versions() {
 			;;
 		rpc )
 			local LATEST_VERSION
-			if ! LATEST_VERSION=$(curl --connect-timeout 60 --max-time 180 "${CURL_OPTS[@]}" \
-				"https://aur.archlinux.org/rpc/v5/info?arg[]=${TARGET_PACKAGE}" 2> /dev/null \
-				| jq -r .results.[0].Version); then
+			if ! LATEST_VERSION=$(OUTPUT="json" gather_aur_package_info "${TARGET_PACKAGE}" \
+				| jq -cr '.Version'); then
 				print_error 74
 				exit 74
 			fi
@@ -838,6 +903,7 @@ compare_versions() {
 	if [[ "${LATEST_VERSION}" == "${INSTALLED_VERSION}" ]] && ! ${FORCE}; then
 		return 1
 	fi
+
 	return 0
 }
 
@@ -1094,6 +1160,7 @@ print_aur_data() {
 			echo "${AUR_DATA}" \
 				| jq -crM ".[] | .results[] | \"\(.Maintainer)/\(.Name) \(.Version): \(.NumVotes) Votes, \(.Popularity) Popularity \(.LocalStatus) \n\t\(.Description)\""
 
+			local IFS=$' '
 			if [[ ${#PACKAGES_NOT_FOUND[@]} -gt 0 ]]; then
 				print_error 76
 			fi
@@ -1106,6 +1173,12 @@ print_aur_data() {
 }
 
 # Tier 2 functions.
+
+describe_aur_package() {
+	local TARGET_PACKAGE="${1}"
+	AUR_PACKAGE_DESCRIPTION=$(gather_aur_package_info "${TARGET_PACKAGE}") || return 150
+	print_aur_package_info "${AUR_PACKAGE_DESCRIPTION}" || return 151
+}
 
 install_aur_package() {
 	local TARGET_PACKAGE="${1}"
@@ -1147,27 +1220,20 @@ install_aur_package() {
 
 remove_aur_package() {
 	local TARGET_PACKAGE="${1}"
-
 	remove_from_system "${TARGET_PACKAGE}" || return 20
-
 	remove_from_package_list "${TARGET_PACKAGE}" || return 21
-
 	return 0
 }
 
 search_aur_packages() {
 	local TARGET_KEYWORDS="${*}"
-
 	AUR_DATA=$(gather_aur_data "${TARGET_KEYWORDS}") || return 30
-
 	AUR_DATA=$(filter_aur_data "${AUR_DATA}") || return 31
-
 	print_aur_data "${AUR_DATA}" || return 32
 }
 
 suggest_aur_package() {
 	local TARGET_KEYWORD="${1}"
-
 	aur_rpc_suggest "${TARGET_KEYWORD}" || return 40
 }
 
@@ -1202,14 +1268,14 @@ process_pseudofunctions() {
 
 launch_execution() {
 	case "${CURRENT_OPERATION}" in
-		install|remove|suggest )
+		describe|install|remove|suggest )
 			for SELECTED_PACKAGE in "${TARGET_PACKAGES[@]}"; do
 				"${CURRENT_OPERATION}"_aur_package "${SELECTED_PACKAGE}" 1> "${STDOUT_DESTINATION}" 2> "${STDERR_DESTINATION}"
 				ERROR_CODE=${?}
 				case ${ERROR_CODE} in
 					0 )
 						;;
-					10|11|12|13|14|20|21|40 )
+					10|11|12|13|14|20|21|40|150|151 )
 						print_error "${ERROR_CODE}"
 						;;
 					* )
@@ -1237,7 +1303,7 @@ launch_execution() {
 			;;
 		completion )
 			COMPLETION_TYPE="${TARGET_PACKAGES[0]}"
-			if [[ "${AVAILABLE_COMPLETIONS[*]}" =~ ${COMPLETION_TYPE} ]]; then
+			if printf '%s\n' "${AVAILABLE_COMPLETIONS[@]}" | grep -qx "${COMPLETION_TYPE}"; then
 				aurx_completion "${COMPLETION_TYPE}"
 				exit 0
 			else
@@ -1273,22 +1339,23 @@ declare -a METADATA_VARIABLES
 declare -a METADATA_ARRAYS
 
 METADATA_VARIABLES=("INTERNAL_VERSION")
-METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "GENERAL_OPTIONS" "INSTALL_OPTIONS" \
+METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "GENERAL_OPTIONS" "DESCRIBE_OPTIONS" "INSTALL_OPTIONS" \
 	"REMOVE_OPTIONS" "UPDATE_OPTIONS" "SEARCH_OPTIONS" "SUGGEST_OPTIONS" "COMPLETION_OPTIONS" "LIST_OPTIONS" "AVAILABLE_COMPLETIONS" \
-	"COMPARISON_CRITERIA_VALUES" "OUTPUT_VALUES" "OUTPUT_SUGGEST_VALUES" "ORDER_BY_VALUES" "SEARCH_CRITERIA_VALUES" "SORT_BY_VALUES")
+	"COMPARISON_CRITERIA_VALUES" "OUTPUT_VALUES" "OUTPUT_DESCRIBE_VALUES" "OUTPUT_SUGGEST_VALUES" "ORDER_BY_VALUES" "SEARCH_CRITERIA_VALUES" "SORT_BY_VALUES")
 
 declare "${METADATA_VARIABLES[@]}"
 declare -a "${METADATA_ARRAYS[@]}"
 
-INTERNAL_VERSION="1.0.7-5"
+INTERNAL_VERSION="1.0.8-3"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" "CONFIG" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "GIT_CONNECTION" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
 	"MAINTAINED" "NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
 	"PARALLEL" "PERSISTENT_PATH" "SEARCH_CRITERIA" "SEARCH_RESULTS" "SORT_BY" "SOURCE_PATH" "TMP_PATH" \
 	"VERBOSITY" "VERIFY_VERSIONS" "WIPE_EXISTING")
 INTERNAL_ARRAYS=("CURL_OPTS" "GIT_OPTS" "MAKEPKG_OPTS" "REMOVE_OPTS")
-POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list" "suggest")
+POSSIBLE_OPERATIONS=("describe" "install" "remove" "update" "search" "completion" "list" "suggest")
 GENERAL_OPTIONS=("-a" "--all" "-c" "--config" "-f" "--force" "-h" "--help" "--persistent-path" "-t" "--tmp-path" "--verbosity" "-v" "--version")
+DESCRIBE_OPTIONS=("-C" "--curl-opts" "-o" "--output")
 INSTALL_OPTIONS=("--cleanup" "--clean-operation" "-x" "--comparison-criteria" "-d" "--download-only" "-G" \
 	"--git-connection" "--git-opts" "-M" "--makepkg-opts" "--overwrite-existing" "--source-path" "-V" "--verify-versions" "--wipe-existing")
 REMOVE_OPTIONS=("-R" "--remove-opts")
@@ -1303,6 +1370,7 @@ AVAILABLE_COMPLETIONS=("bash")
 GIT_CONNECTION_VALUES=("https" "ssh")
 COMPARISON_CRITERIA_VALUES=("rpc" "pkgbuild")
 OUTPUT_VALUES=("formatted" "json" "json-lines")
+OUTPUT_DESCRIBE_VALUES=("formatted" "json-lines")
 OUTPUT_SUGGEST_VALUES=("formatted" "json-lines")
 ORDER_BY_VALUES=("ascending" "descending")
 SEARCH_CRITERIA_VALUES=("name" "name-desc" "depends" "checkdepends" "optdepends" "makedepends" "maintainer" \

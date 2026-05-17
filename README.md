@@ -32,6 +32,7 @@ base-devel, curl>=7.68.0, git, jq.
 
 operation  | description
 :--------- | :----------
+describe   | print detailed information about a specific package.
 install    | install any package from AUR or the working directory.
 remove     | Remove packages from system and the package list.
 update     | pseudofunction - install any package from AUR using temp dir as work dir.
