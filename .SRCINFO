@@ -86,6 +86,6 @@ pkgbase = kwin-osd-bottom
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = 6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4
 	sha256sums = SKIP
-	sha256sums = 55c4447d3a1b6bed17650fda038b5fd83994f0bde859f522cb381fc8b9cd5777
+	sha256sums = ba762e1c5507eeb63ca4c15ed1a213fc015be7e86f850cea9489cb9ede085f75
 
 pkgname = kwin-osd-bottom

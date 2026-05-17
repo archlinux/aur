@@ -1,11 +1,9 @@
---- kwin-6.6.5/src/placement.cpp.orig	2026-05-17 16:08:25.744264798 +0200
-+++ kwin-6.6.5/src/placement.cpp	2026-05-17 16:08:25.745627174 +0200
-@@ -394,7 +394,7 @@
- 
+--- a/src/placement.cpp
++++ b/src/placement.cpp
+@@ -394,7 +394,7 @@ std::optional<PlacementCommand> Placement::placeOnScreenDisplay(const Window *c,
      // place at lower area of the screen
      const int x = area.left() + (area.width() - size.width()) / 2;
 -    const int y = area.top() + 2 * area.height() / 3 - size.height() / 2;
 +    const int y = area.top() + area.height() - size.height() - 60;
- 
      return QPointF(x, y);
  }
