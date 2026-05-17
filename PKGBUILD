@@ -1,4 +1,4 @@
-pkgname=nx-hyprinstall
+pkgname=nx-hyprinstall-frozen
 pkgver=1.0
 pkgrel=1
 pkgdesc="Nordix Installer for the frozen Hyprland stack Pree LUA - For Nordix DE Yggdrasil"
@@ -9,7 +9,7 @@ depends=('bash' 'git' 'base-devel')
 conflicts=('Microsoft-Windows')
 provides=('nx-hyprinstall')
 
-_pkgsrc="nx-hyprinstall"
+_pkgsrc="nx-hyprinstall-frozen"
 source=("$_pkgsrc::git+$url")
 sha256sums=('SKIP')
 
