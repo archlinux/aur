@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 2.0.0-12
+- **Versión:** 2.0.1-1
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.3-arch1-2)
@@ -256,7 +256,7 @@ vortex-aur-fix/
 
 ---
 
-## Prueba de funcionamiento — 2026-05-17 (pkgrel=12)
+## Prueba de funcionamiento — 2026-05-17 (2.0.1-1)
 
 Probado en Arch Linux (kernel 7.0.3-arch1-2):
 
@@ -288,6 +288,7 @@ Probado en Arch Linux (kernel 7.0.3-arch1-2):
 | 10 | Ruta absoluta `$srcdir` en `build()`; dotnetprobe consolidado en `package()`; elimina patch redundante de `game-survivingmars` (cubierto por el stub global de epicGamesLauncher) |
 | 11 | Re-parche automático de la extensión Cyberpunk 2077 en cada arranque: `patch-ext-cp2077.py` corrige 95 rutas backslash Windows en `path.join()`; detección por marker `// vortex-linux-fix`; `python` añadido a `depends` |
 | 12 | Sistema genérico de re-parche: `vortex.sh` itera sobre `patch-ext-*.py` en `/opt/Vortex/`; añadir soporte para nuevas extensiones no requiere modificar `vortex.sh` |
+| **2.0.1-1** | Actualización a upstream 2.0.1; corrección de patterns de plugin patches (comillas simples → dobles en bundled plugins); 16/16 patches [OK] |
 
 ---
 

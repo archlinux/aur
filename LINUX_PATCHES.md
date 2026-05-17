@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 2.0.0-12
+**Current release:** 2.0.1-1
 
 ---
 
@@ -356,3 +356,4 @@ makepkg -si
 | 2.0.0-10 | Fix fragile relative path in `build()` (`../../dist/linux-unpacked` → `$srcdir`-absolute); deduplicate `dotnetprobe` install (removed from `build()`, kept only in `package()` with `install -Dm755`); remove `game-survivingmars` plugin patch (redundant — renderer Patch 5 epicGamesLauncher stub covers it globally) |
 | 2.0.0-11 | Auto-repatch Cyberpunk 2077 extension on every launch: `patch-ext-cp2077.py` fixes 95 Windows backslash paths in `path_1.default.join()` calls; idempotent via `// vortex-linux-fix` marker; `python` added to runtime depends |
 | 2.0.0-12 | Generic extension re-patch system: `vortex.sh` loops over `/opt/Vortex/patch-ext-*.py`; new extension patches require only a new source file in PKGBUILD — no changes to `vortex.sh` needed |
+| **2.0.1-1** | Upstream update to v2.0.1; fix all plugin patch strings for upstream quote style change (single → double quotes, `requiredFiles` collapsed to single-line arrays); all 16 patches confirmed [OK] |
