@@ -1,0 +1,15 @@
+# This is a minimal .SRCINFO template. Update `source` URL before uploading to AUR.
+pkgname = hyprland-dotfiles
+pkgver = 20260517
+pkgrel = 1
+pkgdesc = Hyprland + Wayland configs (hypr, waybar, rofi, kitty)
+url = https://example.com/youruser/hyprland-dotfiles
+license = MIT
+arch = any
+depends = hyprland
+depends = wayland
+optdepends = waybar: status bar
+optdepends = rofi: application launcher
+optdepends = kitty: terminal
+source = hyprland-dotfiles-20260517.tar.gz
+sha256sums = 2bfd78963932beee8a5107b22eae59c7f47ace69d6468e1be7320574daf3b92a
