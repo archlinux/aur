@@ -4,7 +4,7 @@
 # Contributor: Fredrick Brennan <copypaste at kittens dot ph>
 
 pkgname=bdf2psf
-pkgver=1.247
+pkgver=1.248
 pkgrel=1
 epoch=1
 pkgdesc='Debian utility to convert BDF font files to PSF format'
@@ -16,7 +16,7 @@ source=(
   "https://deb.debian.org/debian/pool/main/c/console-setup/${pkgname}_${pkgver}_all.deb"
   "0001-print-help-when-no-args-provided.patch"
 )
-sha256sums=('e7a242df0259cfcd271979ff632c16678c17891d61f97fff63bdaa7cbc8fb721'
+sha256sums=('e753c4f68d6498849dfe46072e6f0d5010ca8b67b25c990bd0c916969d5ff1ca'
             'e371f17d506ff0047818489f6e8af191d6c296bcdaf8b34217ea8cfeeaff9785')
 
 prepare() {
