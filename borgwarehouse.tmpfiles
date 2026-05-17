@@ -1,5 +1,5 @@
 # Override this file with a modified version in /etc/tmpfiles.d/
-Z /etc/webapps/borgwarehouse/ - borgwarehouse borgwarehouse
+Z /etc/webapps/borgwarehouse/* - borgwarehouse borgwarehouse
 z /etc/webapps/borgwarehouse/borgwarehouse.env 0640 borgwarehouse borgwarehouse
 Z /usr/share/webapps/borgwarehouse/ - borgwarehouse borgwarehouse
 Z /usr/share/webapps/borgwarehouse/* - borgwarehouse borgwarehouse
