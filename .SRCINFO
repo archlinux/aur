@@ -1,6 +1,6 @@
 pkgbase = peru-dnie-pkcs11
 	pkgdesc = PKCS#11 module for Peruvian DNIe card-bound PDF signing
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/codestation/peru-dnie-pkcs11
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = peru-dnie-pkcs11
 	depends = openssl
 	depends = pcsclite
 	optdepends = opensc: pkcs11-tool smoke tests
-	source = peru-dnie-pkcs11::git+https://github.com/codestation/peru-dnie-pkcs11.git#tag=v0.1.0
+	source = peru-dnie-pkcs11::git+https://github.com/codestation/peru-dnie-pkcs11.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = peru-dnie-pkcs11

@@ -1,7 +1,7 @@
 # Maintainer: Codestation <codestation@megpoid.dev>
 
 pkgname=peru-dnie-pkcs11
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="PKCS#11 module for Peruvian DNIe card-bound PDF signing"
 arch=('x86_64')
