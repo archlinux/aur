@@ -1,8 +1,8 @@
 post_install() {
   chmod 4755 '/opt/Vortex/chrome-sandbox' 2>/dev/null || true
   chmod -R 755 '/opt/Vortex/resources/app.asar.unpacked/assets' 2>/dev/null || true
-  update-desktop-database -q
-  update-mime-database /usr/share/mime
+  update-desktop-database -q  # registra x-scheme-handler/nxm
+  update-mime-database /usr/share/mime  # innecesario para URL schemes pero inofensivo
 
   echo ""
   echo "  ┌─────────────────────────────────────────────────────────┐"
@@ -30,6 +30,6 @@ post_upgrade() {
 }
 
 post_remove() {
-  update-desktop-database -q
-  update-mime-database /usr/share/mime
+  update-desktop-database -q  # registra x-scheme-handler/nxm
+  update-mime-database /usr/share/mime  # innecesario para URL schemes pero inofensivo
 }
