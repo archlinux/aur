@@ -30,4 +30,8 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 target/release/ccat "$pkgdir/usr/bin/ccat"
+  install -Dm644 completions/ccat.bash "$pkgdir/usr/share/bash-completion/completions/ccat"
+  install -Dm644 completions/_ccat "$pkgdir/usr/share/zsh/site-functions/_ccat"
+  install -Dm644 completions/ccat.fish "$pkgdir/usr/share/fish/vendor_completions.d/ccat.fish"
+  install -Dm644 ccat.1 "$pkgdir/usr/share/man/man1/ccat.1"
 }
