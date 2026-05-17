@@ -1,6 +1,6 @@
 pkgbase = python-git
 	pkgdesc = The Python programming language
-	pkgver = 3.15.0a5.r181.g37c35542a9ca
+	pkgver = 3.15.0b1.r113.gacefff95eab
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64

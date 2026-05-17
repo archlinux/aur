@@ -11,7 +11,7 @@
 shopt -s extglob
 
 pkgname=python-git
-pkgver=3.15.0a5.r181.g37c35542a9ca
+pkgver=3.15.0b1.r113.gacefff95eab
 pkgrel=1
 pkgdesc="The Python programming language"
 arch=('x86_64')
@@ -30,10 +30,9 @@ pkgver() {
 prepare() {
   cd cpython
 
-  # Ensure that we are using the system copy of various libraries (expat, libffi, and libmpdec),
+  # Ensure that we are using the system copy of various libraries (expat),
   # rather than copies shipped in the tarball
   rm -r Modules/expat
-  rm -r Modules/_decimal/libmpdec
 }
 
 build() {
