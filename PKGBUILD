@@ -1,6 +1,6 @@
 pkgname=rune-notes-bin
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='AI-native, local-first markdown notes'
 arch=('x86_64')
 url='https://github.com/eggfriedrice24/rune'
@@ -13,7 +13,7 @@ source=("LICENSE::https://raw.githubusercontent.com/eggfriedrice24/rune/v${pkgve
 source_x86_64=("https://github.com/eggfriedrice24/rune/releases/download/v${pkgver}/rune_${pkgver}_amd64.deb")
 noextract=("rune_${pkgver}_amd64.deb")
 sha256sums=('963a8176a5d89af4c28d4e4906a744a4dc0a8c3b43171cf1e37058a5229f18a0')
-sha256sums_x86_64=('d316152ef1fc95ef06fed1c7fa17db2046cc0b3b746da10f1e0762b7003c8248')
+sha256sums_x86_64=('3abce832754316df3c1140e1349fdbdffadf946ad7e30ffd9ac5a41a48c7ba57')
 
 prepare() {
   rm -rf deb
