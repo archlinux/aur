@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Virtual Screen
+Comment=Use any browser as a second-screen client for KDE Linux.
+Exec=virtual-screen
+Icon=virtual-screen
+Terminal=false
+Categories=Utility;
+StartupWMClass=virtual-screen

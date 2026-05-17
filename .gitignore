@@ -1,0 +1,6 @@
+/*.deb
+/*.png
+/*.pkg.tar.*
+/virtual-screen
+/pkg/
+/src/
