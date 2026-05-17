@@ -1,0 +1,8 @@
+# CH341A USB to I2C/SPI/GPIO adapter
+# Grant 'uaccess' tag to local logged-in users for SPI and GPIO devices
+
+# SPI devices
+SUBSYSTEM=="spidev", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="5512", TAG+="uaccess"
+
+# GPIO chips
+SUBSYSTEM=="gpio", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="5512", TAG+="uaccess"

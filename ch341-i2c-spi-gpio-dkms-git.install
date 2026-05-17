@@ -1,0 +1,14 @@
+post_install() {
+    echo "------------------------------------------------------------------------"
+    echo " To use the CH341 I2C interface without sudo, add your user to the 'i2c' group:"
+    echo "   sudo usermod -aG i2c \$USER"
+    echo " (You will need to log out and log back in for this to take effect)"
+    echo ""
+    echo " SPI and GPIO interfaces are configured with the 'uaccess' tag, granting"
+    echo " access to the active local user automatically."
+    echo "------------------------------------------------------------------------"
+}
+
+post_upgrade() {
+    post_install
+}
