@@ -1,0 +1,19 @@
+pkgbase = python312-pre-commit
+	pkgdesc = Framework for managing and maintaining multi-language pre-commit hooks for Python 3.12
+	pkgver = 4.6.0
+	pkgrel = 1
+	url = https://github.com/pre-commit/pre-commit
+	arch = any
+	license = MIT
+	makedepends = python312-installer
+	depends = git
+	depends = python312
+	depends = python312-cfgv
+	depends = python312-identify
+	depends = python312-nodeenv
+	depends = python312-pyyaml
+	depends = python312-virtualenv
+	source = pre_commit-4.6.0-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/80/6e/4b28b62ecb6aae56769c34a8ff1d661473ec1e9519e2d5f8b2c150086b26/pre_commit-4.6.0-py2.py3-none-any.whl
+	sha256sums = e2cf246f7299edcabcf15f9b0571fdce06058527f0a06535068a86d38089f29b
+
+pkgname = python312-pre-commit
