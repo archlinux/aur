@@ -25,14 +25,14 @@
 : ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
 
 ## update
-_icver="140.10.2"
-_commit="f04b721394b9d1103e92dbe989060f96756fe54c" # 140.10.2
-_ffsum="796bf65372e702c13277e6f38e9276ded9dceea81e8934c29a06568016f24e77"
+_icver="140.11.0-2"
+_commit="056d96e6f753cee6320873a57c18e0b31a7ce57a"
+_ffsum="1b034d2117356fda24807a151055132315c6ba58ad2bdf7ec71ee707fac5e028"
 
 ## package
 _pkgname="icecat"
 pkgname="$_pkgname"
-pkgver="$_icver"
+pkgver="${_icver%%-*}"
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
@@ -118,7 +118,10 @@ options=(
   !strip
 )
 
-noextract=("firefox-${pkgver}esr.source.tar.xz")
+_archive_firefox="firefox-esr-${_icver}-source.tar.xz"
+_archive_icecat="$_pkgname-${_icver}-source.tar.zst"
+
+noextract=("$_archive_firefox")
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgsrc_gnuzilla="gnuzilla"
@@ -126,7 +129,7 @@ _pkgsrc_firefox="firefox-$pkgver"
 _pkgext="tar.gz"
 source=(
   "$_pkgsrc_gnuzilla"::"git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=$_commit"
-  "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"
+  "$_archive_firefox"::"https://ftp.mozilla.org/pub/firefox/candidates/${pkgver}esr-candidates/build${_icver##*-}/source/firefox-${pkgver}esr.source.tar.xz"
 
   # speed up patching
   0000-parallelize-makeicecat.diff
@@ -146,9 +149,6 @@ source=(
   0003-Use-wasm32-wasip1-target.patch
   0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
   0005-skia-m142-update.patch.xz
-
-  # Fix for rust 1.95
-  0006-encoding_rs-rust-1.95.patch
 )
 sha256sums=(
   'SKIP'
@@ -164,7 +164,6 @@ sha256sums=(
   '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
   '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
   'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760'
-  'b55a77a837a808dce0f0e0f5f2c0e787fb56658550991ca39f40365837f145d7'
 )
 
 _make_icecat() (
@@ -172,7 +171,7 @@ _make_icecat() (
   if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ]; then
     echo "Restoring previously patched sources..."
     rm -rf "$srcdir/$_pkgsrc"
-    bsdtar -xf "$SRCDEST/$_pkgsrc.tar.zst"
+    bsdtar -xf "$SRCDEST/$_archive_icecat"
     return
   fi
 
@@ -183,9 +182,7 @@ _make_icecat() (
   mkdir -p output/l10n
 
   echo "Preparing Firefox ESR..."
-  #cp -f "$srcdir/firefox-${pkgver}esr.source.tar.xz"{,.asc} "$_pkgsrc_gnuzilla"/output/
-
-  bsdtar xf "$srcdir/firefox-${pkgver}esr.source.tar.xz"
+  bsdtar -xf "$srcdir/$_archive_firefox"
   mv "$_pkgsrc_firefox" "$srcdir/$_pkgsrc_gnuzilla/output/$_pkgsrc"
 
   echo "Patching sources..."
@@ -217,8 +214,8 @@ _make_icecat() (
   if [[ "${_build_save_source::1}" == "t" ]]; then
     echo "Saving patched sources..."
     mv -f "$_pkgsrc_gnuzilla/output/$_pkgsrc" "$srcdir/"
-    bsdtar -a -cf "$_pkgsrc.tar.zst" --options zstd:compression-level=9 "$_pkgsrc"
-    cp -rf "$_pkgsrc.tar.zst" "$SRCDEST/"
+    bsdtar -a -cf "$_archive_icecat" --options zstd:compression-level=9 "$_pkgsrc"
+    cp -rf "$_archive_icecat" "$SRCDEST/"
   fi
 )
 
@@ -393,20 +390,6 @@ build() (
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
-
-  # workaround for cargo lock
-  install -Dm755 /dev/stdin "$srcdir/cargo-nofrozen" << 'END'
-#!/usr/bin/env bash
-real=$(command -v cargo | grep -v "cargo-nofrozen" | head -n1)
-args=()
-for a in "$@"; do
-  [[ "$a" == "--frozen" ]] && continue
-  args+=("$a")
-done
-exec "$real" "${args[@]}"
-END
-
-  export CARGO="$srcdir/cargo-nofrozen"
 
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
