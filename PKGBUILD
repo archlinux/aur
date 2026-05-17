@@ -5,12 +5,12 @@
 pkgname=vapoursynth-editor
 pkgver=r19_mod_6.10
 _pkgver=R19-mod-6.10
-pkgrel=3
+pkgrel=4
 pkgdesc='Editor for VapourSynth scripts'
 arch=('x86_64')
 url='https://github.com/YomikoR/VapourSynth-Editor'
 license=('MIT')
-depends=('qt6-5compat' 'qt6-websockets' 'vapoursynth>=74')
+depends=('qt6-websockets' 'vapoursynth>=74')
 install='vsedit.install'
 source=("https://github.com/YomikoR/VapourSynth-Editor/archive/refs/tags/${_pkgver}.tar.gz"
         'vsedit.desktop'

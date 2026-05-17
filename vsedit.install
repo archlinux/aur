@@ -1,5 +1,5 @@
 post_install() {
-    echo "In order to properly work with Vapoursynth >=74, Vapoursynth Editor needs to export
+    echo "In order to properly work with Vapoursynth >=74, Vapoursynth Editor needs to export"
     echo "the environment variable 'VSSCRIPT_PATH' by installing '/etc/profile.d/vsedit.sh',"
     echo "but please be aware that this will take effect only after you reboot your system."
 }
