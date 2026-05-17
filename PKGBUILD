@@ -1,7 +1,7 @@
 # Maintainer: DevBasi <https://github.com/DevBasi>
 pkgname=linux-overlay-sight
 _pkgname=Linux-Overlay-Sight-LOS
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Crosshair overlay for Linux games on KDE Plasma / XWayland"
 arch=('any')
@@ -22,8 +22,9 @@ makedepends=(
 optdepends=(
     'libxtst: cursor confinement on multi-monitor X11/XWayland setups'
 )
+install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('95c48b5c54c81898694b03ee0c16b3c36c5c957b94c865b6d4aad0c762aea09b')
+sha256sums=('e3466ea9a9da1b344460c0974cb1407ea804c5eff12fec4a3a6d8769e9c19ac8')
 
 build() {
     cd "$_pkgname-$pkgver"
@@ -45,6 +46,11 @@ package() {
         install -Dm644 "assets/linux-overlay-sight-${s}.png" \
             "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/linux-overlay-sight.png"
     done
+
+    # Legacy XDG pixmap path — некоторые лаунчеры (особенно после AppImage-интеграции)
+    # ищут именно здесь и игнорируют hicolor.
+    install -Dm644 assets/linux-overlay-sight-256.png \
+        "$pkgdir/usr/share/pixmaps/linux-overlay-sight.png"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"

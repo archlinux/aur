@@ -1,0 +1,27 @@
+# Refresh каталогов иконок и приложений сразу после install/upgrade.
+# Системные кэши (hicolor + desktop database) трогаем как root.
+# Per-user KDE cache (ksycoca) пользователь должен сбросить сам — подсказываем.
+
+_refresh_system() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database -q /usr/share/applications      2>/dev/null || true
+}
+
+_hint_user() {
+    cat <<'EOF'
+
+==> Linux Overlay Sight: чтобы новая иконка появилась в меню KDE сразу,
+==> выполни от своего пользователя:
+==>
+==>     kbuildsycoca6 --noincremental
+==>     rm -f ~/.cache/icon-cache.kcache
+==>     killall plasmashell; kstart plasmashell &
+==>
+==> Если иконка всё равно пингвин — выйди из сеанса (Logout) и зайди снова.
+
+EOF
+}
+
+post_install() { _refresh_system; _hint_user; }
+post_upgrade() { _refresh_system; _hint_user; }
+post_remove()  { _refresh_system; }
