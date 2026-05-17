@@ -1,8 +1,8 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=llama.cpp-sycl
 pkgver=2026.0.0
-pkgrel=2
-pkgdesc="llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI (bundled runtime, no separate oneAPI install required). Please read the README on GitHub before use."
+pkgrel=3
+pkgdesc="llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI. Please read the README on GitHub before use."
 arch=('x86_64')
 url="https://github.com/cantosun99/llama.cpp-sycl"
 license=('MIT')
@@ -46,39 +46,47 @@ makedepends=(
     'make'
 )
 options=(!strip !buildflags)
-_source_release="2026.0.0"
+# Direct download links from Intel:
+#   DLE:  https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html
+#   oneDNN: https://www.intel.com/content/www/us/en/developer/tools/oneapi/onednn-download.html
+_source_dle="intel-deep-learning-essentials-2026.0.0.624_offline.sh"
+_source_onednn="intel-onednn-2026.0.0.689_offline.sh"
 source=(
-    "https://github.com/cantosun99/llama.cpp-sycl/releases/download/$_source_release/intel.tar.part-aa"
-    "https://github.com/cantosun99/llama.cpp-sycl/releases/download/$_source_release/intel.tar.part-ab"
-    "https://github.com/cantosun99/llama.cpp-sycl/releases/download/$_source_release/intel.tar.part-ac"
-)
-sha256sums=(
-    'bfb49f991a14dbb11c69618a332e0c5584e39dbc11bfc48f3cc47eb7f0965bcf'
-    '8a9ac72795ea4c64a59c481458dd0248013337b8621698ad1ff704048542b015'
-    '2dd7f0159c2f8f9601c3d4d372be3251a6d5c3b5379dba280e2b5249ed185dd4'
+    "$_source_dle::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/8170208e-86db-4faa-a0d6-1ecf62699574/$_source_dle"
+    "$_source_onednn::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/964163c0-9651-4e14-8ebf-3cc27e2519e4/$_source_onednn"
 )
 noextract=(
-    'intel.tar.part-aa'
-    'intel.tar.part-ab'
-    'intel.tar.part-ac'
+    "$_source_dle"
+    "$_source_onednn"
 )
+# SHA-384 checksums provided by Intel on the download pages
+sha384sums=(
+    '04e1b3392cb01e2f50fbe4ef985686902158af0c232e3990d1955ee2cd67ade8c70ba24f604b45d4f513c3050ecf93d5'
+    '29cd895492bdde32b83611f21e85b06085b15604cd26eb45aa4692c0e1d8a57d34cf2c447d3a07559d46f14c3afc27bf'
+)
+
 prepare() {
-    # Recombine split parts into one tarball
-    echo "Recombining split parts into intel.tar.gz..."
-    cat "${srcdir}"/intel.tar.part-* > "${srcdir}/intel.tar.gz"
-    # Extract the oneAPI toolchain (tar contains intel/oneapi/... → becomes $srcdir/opt/intel/oneapi)
-    echo "Extracting oneAPI toolchain..."
-    mkdir -p "${srcdir}/opt"
-    tar -xzf "${srcdir}/intel.tar.gz" -C "${srcdir}/opt/"
     # Clone latest llama.cpp source (always builds against HEAD)
     git clone --depth=1 https://github.com/ggml-org/llama.cpp "${srcdir}/llama.cpp"
 }
+
 build() {
-    local oneapi_root="${srcdir}/opt/intel/oneapi"
+    # Install Intel Deep Learning Essentials (SYCL compiler icx/icpx, MKL, oneDAL, etc.)
+    echo "Installing Intel Deep Learning Essentials..."
+    sh "${srcdir}/${_source_dle}" -a --silent --eula accept \
+        --install-dir "${srcdir}/oneapi"
+
+    # Install Intel oneAPI Deep Neural Network Library (oneDNN)
+    echo "Installing Intel oneDNN..."
+    sh "${srcdir}/${_source_onednn}" -a --silent --eula accept \
+        --install-dir "${srcdir}/oneapi"
+
+    local oneapi_root="${srcdir}/oneapi"
     # Source setvars.sh to set up the full oneAPI environment
     set +u
     source "${oneapi_root}/setvars.sh" --force
     set -u
+
     cd "${srcdir}/llama.cpp"
     # !buildflags is set in options to prevent makepkg from injecting CFLAGS/CXXFLAGS
     # into the IntelLLVM device-side compilation pipeline, which can cause runtime
@@ -92,18 +100,21 @@ build() {
         -DCMAKE_INSTALL_RPATH=/opt/llama.cpp-sycl/lib
     cmake --build build --config Release -j$(nproc)
 }
+
 package() {
-    # Install oneAPI runtime files to /opt/intel/oneapi on the user's system
-    echo "Installing oneAPI runtime to /opt/intel/oneapi..."
+    # Install oneAPI runtime to /opt/intel/oneapi on the user's system
     mkdir -p "${pkgdir}/opt/intel"
-    cp -r "${srcdir}/opt/intel/oneapi" "${pkgdir}/opt/intel/"
+    cp -r "${srcdir}/oneapi" "${pkgdir}/opt/intel/oneapi"
+
     # Install llama.cpp to /opt/llama.cpp-sycl
     DESTDIR="${pkgdir}" cmake --install "${srcdir}/llama.cpp/build"
+
     # Symlink binaries into /usr/bin so they are accessible system-wide
     mkdir -p "${pkgdir}/usr/bin"
     for bin in "${pkgdir}/opt/llama.cpp-sycl/bin/"*; do
         ln -s "/opt/llama.cpp-sycl/bin/$(basename "$bin")" "${pkgdir}/usr/bin/$(basename "$bin")"
     done
+
     # Install license
     install -Dm644 "${srcdir}/llama.cpp/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
