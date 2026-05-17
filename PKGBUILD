@@ -1,6 +1,6 @@
 pkgname=rune-notes-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='AI-native, local-first markdown notes'
 arch=('x86_64')
 url='https://github.com/eggfriedrice24/rune'
@@ -29,6 +29,7 @@ package() {
   sed -i \
     -e 's/^Exec=.*/Exec=rune-notes/' \
     -e 's/^Icon=.*/Icon=rune-notes/' \
+    -e 's/^StartupWMClass=.*/StartupWMClass=rune-notes/' \
     "$pkgdir/usr/share/applications/rune-notes.desktop"
 
   local icon_path icon_size
