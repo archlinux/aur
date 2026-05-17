@@ -2,7 +2,7 @@
 # Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
 pkgver=2.0.0
-pkgrel=11
+pkgrel=12
 epoch=1
 pkgdesc="Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches"
 arch=('x86_64')
@@ -23,11 +23,11 @@ source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
   "vortex.sh"
   "patch-pkg.js"
   "patch-asar.py"
-  "patch-cp2077-ext.py")
+  "patch-ext-cp2077.py")
 
 sha256sums=('930848f174257f6c9a81a63a1610492b68bc14bb505dfdd281fc0ccb8c23efac'
   '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
-  '7336bbac03b3a0931acdf5e3fb0c9578775e1d29b1bb2d85e5b506af8a1a8ebc'
+  '19420a1af334187b2ba68f0fab3b5170bff5b6096f9e2a30000e712013fd378b'
   'd261f1ef78bb21d72cedeedfd935b099e3d707be709404e894d4aeb47254f1ef'
   'cdf416b0d955cebad3149d852c3d17e16c7c2a3e7c8808d883265a0b0243890b'
   '014b52e419cd627044d6e7ceed3735243ce001ad8c611672e4f972be91a216cc')
@@ -110,7 +110,7 @@ package() {
 
   python3 "$srcdir/patch-asar.py"
 
-  install -Dm644 "$srcdir/patch-cp2077-ext.py" "$pkgdir/opt/Vortex/patch-cp2077-ext.py"
+  install -Dm644 "$srcdir/patch-ext-cp2077.py" "$pkgdir/opt/Vortex/patch-ext-cp2077.py"
 
   install -Dm755 "$srcdir/vortex.sh" "$pkgdir/usr/bin/vortex"
   install -Dm644 "$srcdir/vortex.desktop" "$pkgdir/usr/share/applications/vortex.desktop"
