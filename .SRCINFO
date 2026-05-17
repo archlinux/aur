@@ -1,0 +1,13 @@
+pkgbase = altayibat-bin
+	pkgdesc = نظام الطيبات (altayibat) - سلة المهملات لـ ضياء العوضي | trash meme
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL v3
+	depends = xdg-utils
+	depends = libnotify
+	depends = bash
+	source = setup-trash.sh
+	sha256sums = SKIP
+
+pkgname = altayibat-bin
