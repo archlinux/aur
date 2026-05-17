@@ -1,7 +1,28 @@
 # PlasmaZones pacman install script
+# SPDX-FileCopyrightText: 2026 fuddlesworth
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+# Helper: refresh the icon / desktop / mime / sycoca caches if the
+# relevant tool is on PATH. Errors are swallowed so a minimal chroot
+# without the helper still finishes the install — a kbuildsycoca.hook
+# alacarte handles the canonical sycoca refresh on KDE installs.
+_pz_refresh_caches() {
+    if [[ -x /usr/bin/gtk-update-icon-cache ]]; then
+        /usr/bin/gtk-update-icon-cache -qtf /usr/share/icons/hicolor 2>/dev/null || true
+    fi
+    if [[ -x /usr/bin/update-desktop-database ]]; then
+        /usr/bin/update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    fi
+    if [[ -x /usr/bin/update-mime-database ]]; then
+        /usr/bin/update-mime-database /usr/share/mime 2>/dev/null || true
+    fi
+    if [[ -x /usr/bin/kbuildsycoca6 ]]; then
+        /usr/bin/kbuildsycoca6 --noincremental 2>/dev/null || true
+    fi
+}
+
 post_install() {
+    _pz_refresh_caches
     echo ""
     echo "══════════════════════════════════════════════════════════════════"
     echo "  PlasmaZones installed successfully!"
@@ -16,13 +37,10 @@ post_install() {
     echo ""
     echo "  Settings: System Settings → Window Management → PlasmaZones"
     echo ""
-    echo "  If PlasmaZones doesn't appear in System Settings, run:"
-    echo "      kbuildsycoca6 --noincremental"
-    echo "  or log out and back in."
-    echo ""
 }
 
 post_upgrade() {
+    _pz_refresh_caches
     echo ""
     echo "══════════════════════════════════════════════════════════════════"
     echo "  PlasmaZones upgraded!"
@@ -37,8 +55,18 @@ post_upgrade() {
 }
 
 post_remove() {
+    # The service unit went away with the package, but if the user had
+    # enabled it the broken symlink in ~/.config/systemd/user/ lingers
+    # until manually cleaned. Disable the unit globally so systemd
+    # garbage-collects the symlinks. Safe to run when the unit is
+    # already absent.
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl --global disable plasmazones.service 2>/dev/null || true
+    fi
+    _pz_refresh_caches
     echo ""
-    echo "  To fully remove PlasmaZones:"
-    echo "      systemctl --user disable --now plasmazones.service"
+    echo "  PlasmaZones removed. The systemd unit symlink has been"
+    echo "  disabled; per-user state under ~/.config/plasmazones/ and"
+    echo "  ~/.local/share/plasmazones/ is intentionally left in place."
     echo ""
 }

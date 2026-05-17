@@ -1,15 +1,18 @@
 # Maintainer: fuddlesworth <fuddlesworth at users dot noreply dot github dot com>
+# SPDX-FileCopyrightText: 2026 fuddlesworth
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # Requires Plasma 6.6+ (KF6 6.6, Qt 6.6, KWin 6.6).
 
 pkgname=plasmazones
-pkgver=2.8.8
+# pkgver/pkgrel are placeholders; CI rewrites them against the release tag
+# before publishing. See packaging/arch/update-aur.sh.
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma'
 arch=('x86_64')
 url='https://github.com/fuddlesworth/PlasmaZones'
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 
 # Exact KWin upstream pin. The kwin-effect plugin's IID embeds KWin's exact
 # upstream version string; KWin refuses to load effects whose IID doesn't
@@ -46,7 +49,10 @@ optdepends=(
 )
 conflicts=('plasmazones-bin' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d29cad9cff90f2704a96c20b067b87dbd358626f592ea5276aecca0b02defcda')
+# 'SKIP' so local `makepkg -p PKGBUILD` doesn't fail integrity-check
+# on the placeholder pkgver. release.yml templates a real sha256 when
+# publishing to AUR (see the awk rewrite in the publish-aur job).
+sha256sums=('728c136794e4723193c87281fe183dbcd740adf296168f07af1ef883c58465c3')
 install=plasmazones.install
 
 build() {
@@ -67,4 +73,18 @@ package() {
         "$pkgdir/usr/share/libalpm/hooks/plasmazones-kbuildsycoca.hook"
     install -Dm755 "PlasmaZones-$pkgver/packaging/arch/plasmazones-refresh-sycoca" \
         "$pkgdir/usr/share/libalpm/scripts/plasmazones-refresh-sycoca"
+
+    # License files — GPL-3.0-or-later (main) + LGPL-2.1-or-later (the
+    # bundled Phosphor component libraries). The `license=()` array
+    # above declares both; both files must be shipped under
+    # /usr/share/licenses.
+    install -Dm644 "PlasmaZones-$pkgver/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "PlasmaZones-$pkgver/COPYING.LESSER" \
+        "$pkgdir/usr/share/licenses/$pkgname/COPYING.LESSER"
+
+    # `cmake --install` above also installs every Phosphor component
+    # shared library plus its CMake config and headers into /usr/lib
+    # and /usr/include. No separate -devel package is produced; they
+    # ship bundled with the main package.
 }
