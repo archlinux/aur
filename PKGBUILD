@@ -1,6 +1,6 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 pkgname=wpets-git
-pkgver=4.0.0.2.g2f43f45
+pkgver=4.0.1.2.g1376a9a
 pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 arch=('x86_64' 'aarch64')
