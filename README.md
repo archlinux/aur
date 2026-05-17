@@ -327,6 +327,33 @@ Análisis y mejoras aplicadas al paquete en esta sesión (pkgrel=4 → pkgrel=9)
 
 ---
 
+## Sesión de análisis y limpieza — 2026-05-17
+
+Revisión completa del código y limpieza aplicada al paquete en esta sesión (pkgrel=9 → pkgrel=10):
+
+### Qué se analizó
+
+- PKGBUILD: rutas, orden de operaciones, duplicidades
+- `patch-asar.py`: lógica del formato asar, orden de parcheado, idempotencia del marker, balance de paréntesis en todos los patches de `renderer.js`
+- `patch-pkg.js`: overrides y allowedDeprecatedVersions
+- `vortex.sh`, `vortex.desktop`, `vortex.install`: flags, MimeType, hooks post-install
+
+### Cambios aplicados
+
+| Cambio | Motivo | Impacto |
+|---|---|---|
+| `rm -rf ../../dist/linux-unpacked` → ruta absoluta con `$srcdir` | Ruta relativa asumía cwd=`src/main/`; falla silenciosamente si cambia el layout | Eliminado riesgo de limpieza incorrecta del directorio |
+| Eliminar `cp/chmod` de dotnetprobe en `build()` | Duplicado con `install -Dm755` en `package()`; un solo punto de instalación | Menos código, permisos gestionados por un único `install -Dm755` |
+| Eliminar patch `game-survivingmars` de `PLUGIN_PATCHES` | Redundante: el stub global de `epicGamesLauncher` en renderer Patch 5 cubre el null-check | Menos código a mantener y verificar en cada actualización upstream |
+
+### Hallazgos sin acción requerida
+
+- **Campo `_pls` en reconstrucción asar**: se escribe `4+n` en lugar de `4` (valor fijo del pickle de Chromium). Inofensivo — Electron no lee ese campo tras el parse inicial.
+- **`>>` en pnpm-workspace.yaml**: frágil si se repite en el mismo directorio, pero en el flujo de makepkg el directorio es siempre fresco.
+- **`update-mime-database` en `vortex.install`**: innecesario para URL scheme handlers (los gestiona `update-desktop-database`), pero inofensivo.
+
+---
+
 ## Hoja de ruta
 
 - [x] Build funcional en Arch Linux
