@@ -76,6 +76,12 @@ post_install() {
         mkdir -p /var/lib/coolercontrol/plugins/coolerdash
         printf '{\n  "access_token": ""\n}\n' > /var/lib/coolercontrol/plugins/coolerdash/credentials.json
     fi
+    mkdir -p /etc/coolercontrol
+    if [ -f /var/lib/coolercontrol/plugins/coolerdash/coolerdash.png ]; then
+        if [ -L /etc/coolercontrol/lcd_image.png ] || [ ! -e /etc/coolercontrol/lcd_image.png ]; then
+            ln -sfn /var/lib/coolercontrol/plugins/coolerdash/coolerdash.png /etc/coolercontrol/lcd_image.png
+        fi
+    fi
     chmod 600 /var/lib/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
     chmod 600 /var/lib/coolercontrol/plugins/coolerdash/credentials.json 2>/dev/null || true
     systemctl daemon-reload
@@ -103,6 +109,12 @@ post_upgrade() {
     if [ ! -f /var/lib/coolercontrol/plugins/coolerdash/credentials.json ]; then
         mkdir -p /var/lib/coolercontrol/plugins/coolerdash
         printf '{\n  "access_token": ""\n}\n' > /var/lib/coolercontrol/plugins/coolerdash/credentials.json
+    fi
+    mkdir -p /etc/coolercontrol
+    if [ -f /var/lib/coolercontrol/plugins/coolerdash/coolerdash.png ]; then
+        if [ -L /etc/coolercontrol/lcd_image.png ] || [ ! -e /etc/coolercontrol/lcd_image.png ]; then
+            ln -sfn /var/lib/coolercontrol/plugins/coolerdash/coolerdash.png /etc/coolercontrol/lcd_image.png
+        fi
     fi
     chmod 600 /var/lib/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
     chmod 600 /var/lib/coolercontrol/plugins/coolerdash/credentials.json 2>/dev/null || true
