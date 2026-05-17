@@ -1,0 +1,13 @@
+pkgbase = python312-identify
+	pkgdesc = File identification library for Python 3.12
+	pkgver = 2.6.18
+	pkgrel = 1
+	url = https://github.com/pre-commit/identify
+	arch = any
+	license = MIT
+	makedepends = python312-installer
+	depends = python312
+	source = identify-2.6.18-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/46/33/92ef41c6fad0233e41d3d84ba8e8ad18d1780f1e5d99b3c683e6d7f98b63/identify-2.6.18-py2.py3-none-any.whl
+	sha256sums = 8db9d3c8ea9079db92cafb0ebf97abdc09d52e97f4dcf773a2e694048b7cd737
+
+pkgname = python312-identify
