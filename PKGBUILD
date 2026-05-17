@@ -3,7 +3,7 @@ pkgname=ttmt-beta
 _upstream=2.3.0-a1
 pkgver=2.3.0a1
 pkgrel=1
-pkgdesc="ToonTown MultiTool BETA — pre-release smoke-test channel. Expect bugs. For stable use, install toontown-multitool instead."
+pkgdesc="ToonTown MultiTool BETA, pre-release smoke-test channel. Expect bugs. For stable use, install toontown-multitool instead."
 arch=('any')
 url="https://github.com/flossbud/ToonTown-MultiTool"
 license=('MIT')
@@ -45,7 +45,7 @@ EOF
         "${pkgdir}/usr/share/applications/io.github.flossbud.ToonTownMultiTool-beta.desktop" << 'EOF'
 [Desktop Entry]
 Name=ToonTown MultiTool (Beta)
-Comment=Pre-release smoke-test build — expect bugs
+Comment=Pre-release smoke-test build, expect bugs
 Exec=ttmt-beta
 Icon=ttmt-beta
 StartupWMClass=io.github.flossbud.ToonTownMultiTool-beta
