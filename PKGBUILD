@@ -1,7 +1,7 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=minot-bin
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A versatile toolset for debugging and verifying stateful robot perception software."
 arch=('x86_64')
 url="https://github.com/uos/minot"
@@ -11,8 +11,8 @@ makedepends=('zensical')
 options=('!lto' '!strip' '!debug')
 source=("$pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/minot-$CARCH-unknown-linux-gnu.tar.gz" "$pkgname-$pkgver-src.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP' 'SKIP')
-provides=('minot' 'minot-coord' 'wind-rat' 'librat')
-conflicts=('minot' 'minot-coord' 'wind-rat' 'librat')
+provides=('minot' 'minot-coord' 'librat')
+conflicts=('minot' 'minot-coord' 'librat')
 
 build() {
   cd "$srcdir/minot-$pkgver/docs/" && zensical build --clean && cd -
@@ -28,7 +28,6 @@ build() {
 package() {
   install -Dm755 "$srcdir/minot-$CARCH-unknown-linux-gnu/rat/minot" "$pkgdir/usr/bin/minot"
   install -Dm755 "$srcdir/minot-$CARCH-unknown-linux-gnu/minot-coord" "$pkgdir/usr/bin/minot-coord"
-  install -Dm755 "$srcdir/minot-$CARCH-unknown-linux-gnu/wind-rat" "$pkgdir/usr/bin/wind-rat"
   install -Dm755 "$srcdir/minot-$CARCH-unknown-linux-gnu/librat.so" "$pkgdir/usr/lib/librat.so"
   install -Dm755 "$srcdir/minot-$CARCH-unknown-linux-gnu/librat.a" "$pkgdir/usr/lib/librat.a"
   install -Dm644 "$srcdir/minot-$CARCH-unknown-linux-gnu/rat.h" "$pkgdir/usr/include/rat.h"
