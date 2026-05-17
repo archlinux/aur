@@ -1,6 +1,6 @@
 # Maintainer: InstaZDLL <github.105mh@8shield.net>
 pkgname=waveflow-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Local-first music player desktop app with a Spotify-inspired 3-panel UI'
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=('waveflow')
 conflicts=('waveflow')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::https://github.com/InstaZDLL/WaveFlow/releases/download/v${pkgver}/WaveFlow_${pkgver}_linux-x86_64.deb")
-sha256sums=('32c280a031d9cb568faffe63ddec48baccda76cf39c5fcf167dad80ff125fa31')
+sha256sums=('7d016f83619e71862385e60c35aded35d538c7366a318a9b76ea955244ab7dfe')
 
 prepare() {
   # Crack open the .deb so package() can move its data tarball into $pkgdir.
