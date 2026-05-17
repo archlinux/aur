@@ -1,0 +1,16 @@
+pkgbase = appmeup-bin
+	pkgdesc = Create and edit Chromium web apps from .desktop files
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/mikelexp/appmeup
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	optdepends = google-chrome: Google Chrome browser
+	optdepends = chromium: Chromium browser
+	optdepends = brave-bin: Brave browser
+	optdepends = vivaldi: Vivaldi browser
+	source = https://github.com/mikelexp/appmeup/releases/download/v1.2/appmeup-1.2-linux-x86_64.tar.gz
+	sha256sums = f1063ada2bd960acb3e04e0997ff4dd5701b0d1ed07b81cc0f767b7765a442ea
+
+pkgname = appmeup-bin
