@@ -2,7 +2,7 @@
 
 pkgname=binauralplayer
 _pkgname=BinauralPlayer
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='BinauralPlayer combines traditional media playback with brainwave audio generation'
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt6-base' 'qt6-multimedia' 'qt6-svg')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'vulkan-headers')
 provides=('binauralplayer')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('548ba92dc602e0e2fba8c743b2530c34623f739e2a0e9a2a3795180e8fa0c694')
+sha256sums=('b48779240cf2710a2680bceddee58754ff1979b83ca0ae7f361bcf3c5b75bf69')
 
 #prepare() {
 #}
