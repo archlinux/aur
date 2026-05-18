@@ -5,7 +5,7 @@
 # Based on https://aur.archlinux.org/packages/an-anime-game-launcher-git
 pkgname="anime-games-launcher-git"
 _pkgname="${pkgname%-git}"
-pkgver=2.0.0.r0.g78a8d57
+pkgver=2.1.0.r1.g30342c8
 epoch=1
 pkgrel=1
 pkgdesc="Universal linux launcher for anime games"
@@ -15,14 +15,19 @@ license=("GPL-3.0-only")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 depends=(
-  p7zip
+  7zip
   glibc
   gtk4
   libadwaita
-  xdelta3
   cairo
   glib2
-  gcc-libs
+  pango
+  libgcc
+  wayland
+  unzip
+  git
+  libstdc++
+  libgcc
 )
 makedepends=(cargo git)
 optdepends=(
