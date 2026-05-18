@@ -1,6 +1,6 @@
 pkgbase = mkeditor
 	pkgdesc = The simple markdown editor.(Use system-wide electron)
-	pkgver = 3.6.0
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = https://versyxdigital.github.io/mkeditor
 	arch = any
@@ -12,10 +12,11 @@ pkgbase = mkeditor
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = curl
-	depends = electron37
-	source = mkeditor-3.6.0::git+https://github.com/versyxdigital/mkeditor#tag=v3.6.0
+	makedepends = jq
+	depends = electron42
+	source = mkeditor-3.8.1::git+https://github.com/versyxdigital/mkeditor#tag=v3.8.1
 	source = mkeditor.sh
-	sha256sums = d680ea390762416c57b0b9e140be7e5df66eed9fec4d79861ad33efb60d42801
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 6e131dc88e93cb40d2b5e89c8f3b08187adc979d2cf708eddce399ebf98288b4
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = mkeditor
