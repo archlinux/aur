@@ -12,7 +12,7 @@ source=("git+https://github.com/NobelC/kls.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-  cmake -B build -S "$srcdir" \
+  cmake -B build -S "$srcdir/$pkgname" \
     -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_SANITIZERS=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -21,5 +21,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
