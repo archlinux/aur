@@ -1,3 +1,21 @@
+pre_upgrade() {
+	# Stop the daemon BEFORE pacman replaces files.
+	# This prevents QuickShell from hot-reloading partially-written QML
+	# and crashing the compositor.
+	local user
+	user=$(logname 2>/dev/null || awk -F: '$3>=1000 && $3<65534 {print $1; exit}' /etc/passwd)
+
+	if [ -z "$user" ]; then
+		return 0
+	fi
+
+	local uid
+	uid=$(id -u "$user")
+
+	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		systemctl --user stop snry-daemon.service 2>/dev/null || true
+}
+
 post_install() {
 	# Detect the installing user (not root)
 	local user
@@ -59,8 +77,11 @@ post_upgrade() {
 	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
 		snry-daemon sync 2>/dev/null || true
 
-	# Restart the daemon to pick up any changes
+	# Start the daemon (pre_upgrade stopped it before files were replaced).
+	# Use restart as a safety net in case pre_upgrade didn't run.
 	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		systemctl --user start snry-daemon.service 2>/dev/null \
+		|| sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
 		systemctl --user restart snry-daemon.service 2>/dev/null || true
 
 	echo ""
