@@ -2,7 +2,7 @@
 pkgname=vernier-bin
 _pkgname=vernier
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform pixel-measurement overlay in Rust (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jondkinney/vernier"
@@ -30,7 +30,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('21d364722b1b97470278fdf4b825976ab8fae2eca00834660e4e647edf51e649')
+sha256sums_x86_64=('9380b12414a6cc614e22b7eb8b00ad42509fe025a889ee3f503314f20d7ac537')
 sha256sums_aarch64=('4d798a3771b3fb056fd1b665595a4e3fd809b1aaeee58308a8b52f54f26e1ed1')
 
 package() {
