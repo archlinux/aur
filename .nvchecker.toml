@@ -1,0 +1,5 @@
+[jf-bin]
+source = "github"
+github = "sayanarijit/jf"
+use_latest_release = true
+prefix = "v"
