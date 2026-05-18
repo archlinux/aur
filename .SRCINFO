@@ -1,0 +1,23 @@
+pkgbase = monsoon-git
+	pkgdesc = bittorrent client (daemon + cli + tui) built on libtorrent-rasterbar
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://codeberg.org/5unekku/monsoon
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	makedepends = boost
+	makedepends = clang
+	depends = libtorrent-rasterbar
+	depends = gcc-libs
+	depends = glibc
+	optdepends = curl: fetch torrents from http(s)/ftp(s) URLs and refresh ip filter blocklists
+	optdepends = systemd: for the user service (monsoon service install)
+	provides = monsoon
+	conflicts = monsoon
+	source = monsoon-git::git+https://codeberg.org/5unekku/monsoon.git
+	sha256sums = SKIP
+
+pkgname = monsoon-git
