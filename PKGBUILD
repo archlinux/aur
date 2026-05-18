@@ -1,15 +1,16 @@
 # Maintainer: latte_macchiato <contact@lattemacchiato.dev>
 
 pkgname=late-sh-cli
-pkgver=0.24.7
+pkgver=0.24.11_cli
 pkgrel=1
 pkgdesc='Companion CLI for late.sh terminal clubhouse'
 arch=('x86_64')
 url='https://github.com/mpiorowski/late-sh'
-license=('custom:FSL-1.1-MIT')
+license=('LicenseRef-FSL-1.1-MIT')
 depends=('alsa-lib' 'gcc-libs' 'glibc')
-makedepends=('cargo' 'git' 'mold')
-source=("git+https://github.com/mpiorowski/late-sh.git#tag=v${pkgver}")
+makedepends=('cargo' 'cmake' 'git' 'mold' 'nasm')
+options=('!debug')
+source=("git+https://github.com/mpiorowski/late-sh.git#tag=v${pkgver//_/-}")
 sha256sums=('SKIP')
 
 prepare() {
@@ -24,7 +25,7 @@ build() {
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR=target
   export RUSTUP_TOOLCHAIN=stable
-  export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}=/"
+  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold --remap-path-prefix=${srcdir}=/"
   cargo build --frozen --release --bin late
 }
 
@@ -33,7 +34,7 @@ check() {
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR=target
   export RUSTUP_TOOLCHAIN=stable
-  export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}=/"
+  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold --remap-path-prefix=${srcdir}=/"
   cargo test --frozen -p late-cli
 }
 
