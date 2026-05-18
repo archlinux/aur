@@ -3,7 +3,7 @@ pkgname=synology-drive-client-bin
 pkgver=4.0.3_17892
 _pkgver=4.0.3
 _pkgrel=17892
-pkgrel=1
+pkgrel=2
 pkgdesc="Synology Drive Client desktop application (official binary repack)"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
@@ -24,11 +24,9 @@ sha256sums=('f6aec5a5974d59963ed833fdf1a0cc7bebd612d8691f491c62cba770cdc78d67'
             '0dc43c10722976c544b92400bfcd53e6c0ddb70092d6b397cd146777770eaf18')
 
 package() {
-  # Extract data.tar.xz from the debian package
-  bsdtar -xOf "$srcdir/$filename" data.tar.xz | bsdtar -C "$pkgdir" -xv
-
-  # Fix permissions for chrome-sandbox (required for Electron/QtWebEngine security)
-  find "$pkgdir/opt" -name "chrome-sandbox" -exec chmod 4755 {} +
+  # Makepkg automatically unpacks the .deb, which leaves data.tar.xz in src/
+  cd "$srcdir"
+  bsdtar -xf data.tar.xz -C "$pkgdir"
 
   # Create terminal symlinks
   install -d "$pkgdir/usr/bin"
