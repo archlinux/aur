@@ -1,7 +1,7 @@
 pkgbase = hyprcaffeine
 	pkgdesc = ☕ Idle inhibition utility for Hyprland — caffeine for your Wayland compositor
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hbuddenberg/hyprcaffeine
 	install = hyprcaffeine.install
 	arch = any
