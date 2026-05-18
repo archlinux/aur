@@ -2,8 +2,8 @@
 # Contributor: SZanko szanko at protonmail dot com
 
 pkgname=python-benedict
-pkgver=0.36.0
-pkgrel=2
+pkgver=0.37.0
+pkgrel=1
 pkgdesc="Dict subclass with keylist/keypath support, built-in I/O operations (base64, csv, html, ini, json, pickle, plist, query-string, toml, xls, xml, yaml), s3 support and many utilities."
 arch=('any')
 url="https://github.com/fabiocaccamo/python-benedict"
@@ -14,7 +14,12 @@ depends=(
 	# regular dependencies
 	'python-slugify'
 	'python-typing_extensions'
-	'python-useful-types'
+
+	# some dependencies are needed only for certain "targets". They could be
+	# made optional, but for some targets multiple deps are required at the same
+	# time. This is difficult/impossible to express in AUR. We assume therefore
+	# that all users want to use "parse" and "io" targets, and make deps for
+	# these targets mandatory
 
 	# needed for "parse" target
 	'python-ftfy'
@@ -32,8 +37,9 @@ optdepends=(
 	'python-xlrd: XLS support'
 	'python-boto3: S3 support'
 	'python-xmltodict: HTML & XML support'
-	'python-yaml: YAML support',
-	'python-toml: TOML support'
+	'python-yaml: YAML support'
+	'python-tomli: TOML support'
+	'python-tomli-w: TOML support'
 	'python-pydantic: Schema support'
 )
 
@@ -44,7 +50,7 @@ makedepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=(
-	'2524a1ac342a27523875c1dcbc9ba2808dc8802e7f91159a594320529b88303ac1d7f4cc80982fdde77c6ba1d4980fefae6b4ea0fd79aab07846f16141bffa67'
+	'328e6aebe6652c8dad733071d3e1e002dce970d258a15e48864068eb939d58be37a8e073748b9d8dd241365762485f1bfd86c1ba0694ab206331125b73dc7ce3'
 )
 
 build() {
