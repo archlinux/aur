@@ -3,14 +3,15 @@
 
 pkgname=linux-arctis-manager-git
 _pkgname=Linux-Arctis-Manager
-pkgver=r26.17ec131
+pkgver=r1.e838443
 pkgrel=1
 pkgdesc="An open-source replacement for SteelSeries GG, to manage your Arctis headset on Linux!"
 arch=('x86_64')
 url="https://github.com/elegos/Linux-Arctis-Manager"
 license=('GPL-3.0-only')
 depends=(python-pulsectl python-pyudev python-dbus-next pyside6 python-pyusb python-ruamel-yaml)
-conflicts=(${_pkgname})
+conflicts=('linux-arctis-manager')
+provides=("linux-arctis-manager=${pkgver}")
 makedepends=(uv python-installer git)
 checkdepends=()
 source=("git+https://github.com/elegos/$_pkgname"
