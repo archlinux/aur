@@ -1,0 +1,4 @@
+post_install() {
+  echo "Agildo Specs: execute agildospecs --mostrar"
+  echo "  ou pelo menu Agildo Specs / Thermo > Abrir Agildo Specs"
+}

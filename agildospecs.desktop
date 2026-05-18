@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Agildo Specs
+GenericName=Informações de hardware
+Comment=CPU, GPU, RAM, dual channel, discos e sensores
+Exec=agildospecs --mostrar
+Icon=agildospecs
+Terminal=false
+Categories=Utility;System;
+Keywords=cpu;hardware;ram;specs;
+StartupNotify=false
