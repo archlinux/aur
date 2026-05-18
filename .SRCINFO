@@ -1,0 +1,16 @@
+pkgbase = ustoat
+	pkgdesc = UStoat — A custom stoat client written in python with the use of pygame-ce
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/Spyro24/UStoat
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = python-virtualenv
+	depends = python
+	depends = tk
+	source = git+https://github.com/Spyro24/UStoat.git
+	sha512sums = SKIP
+
+pkgname = ustoat
