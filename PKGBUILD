@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Bester <1872093+nicholasbester@users.noreply.github.com>
 pkgname=clickup-cli-bin
 _pkgname=clickup-cli
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A CLI for the ClickUp API, optimized for AI agents"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/nicholasbester/clickup-cli/releases/download/v${pkgver}/clickup-linux-x86_64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/nicholasbester/clickup-cli/releases/download/v${pkgver}/clickup-linux-arm64.tar.gz")
-sha256sums_x86_64=('06903d9880bdec2d9a9a682915da124554273d70cea131ed2e60c772937f3117')
-sha256sums_aarch64=('33ad78d6115f8ddbef4cd76a51bb687ba63ca4a12ff00f404587e5672b260ae3')
+sha256sums_x86_64=('ab536601ebcf7e801fa243e76d542e9b38533de32e40e31975b9ed16fc87f1b1')
+sha256sums_aarch64=('026223f8df10cf363ccada7540bbbe0678b07789d4c8d9004112dda6d75d24b3')
 
 package() {
   install -Dm755 "${srcdir}/clickup" "${pkgdir}/usr/bin/clickup"
