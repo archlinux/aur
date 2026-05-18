@@ -1,5 +1,5 @@
 # Maintainer: Diego Fernández Menéndez <dfimium499 at proton dot me>
-# Contributor: David C Rankin <drankinatty at gmail dot com>
+# Maintainer: David C Rankin <drankinatty at gmail dot com>
 # Contributor: Martin Reboredo <yakoyoku at gmail dot com>
 
 pkgname=mongosh
