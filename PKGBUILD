@@ -2,8 +2,8 @@
 pkgname=android-tv-remote
 _app_id="io.github.erenseymen.$pkgname"
 pkgver=1.1.3
-pkgrel=1
-_scrcpy_ver=3.3.4
+pkgrel=2
+_scrcpy_ver=4.0
 pkgdesc="A GTK-based remote control for Android TV devices"
 arch=('any')
 url="https://github.com/erenseymen/android-tv-remote"
@@ -23,6 +23,7 @@ makedepends=(
   'python-installer'
   'python-setuptools'
   'python-wheel'
+  'setconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('460f8e9fea9d2621353a58612bb08ade91a88e9fe19608a7a752bd6fd345c23f')
@@ -38,8 +39,8 @@ prepare() {
     src/gnome_adb_tv_remote/ui/ui_utils.py
 
   # Match scrcpy-server version with system scrcpy package version
-  sed -i "s/3.1/"${_scrcpy_ver}"/g" \
-    src/gnome_adb_tv_remote/core/scrcpy_controller.py
+  setconf src/gnome_adb_tv_remote/core/scrcpy_controller.py \
+    SCRCPY_VERSION ""${_scrcpy_ver}""
 }
 
 build() {
