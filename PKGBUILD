@@ -9,7 +9,7 @@ url="https://github.com/WebReflection/krueger"
 license=('MIT')
 depends=('sudo' 'systemd')
 source=('freddy.sh' 'LICENSE')
-sha256sums=('a4eb32002eb28f6dbed54bed0505ec634fac302348370f5f0ff897ea27c80ef6'
+sha256sums=('26c83131607264d413637112d6921ab8cdc6e9290f447a0af5fde41663394c36'
             'e22921705aa49dcd333199f70ef270ae2572a1c83e8704abb202075dfff66929')
 
 package() {
