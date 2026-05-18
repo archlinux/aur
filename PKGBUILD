@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r12453.b9e4c2905
+pkgver=r12460.b6b9145c9
 pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
@@ -106,6 +106,7 @@ _models=(
   'qwen3.6_27b_gptq_int4'
   'qwen3.6_27b_autoround_int4'
   'qwen3.6_27b_nvfp4'
+  'qwen3.6_27b_text_nvfp4'
   'qwen3.6_35b_a3b'
   'qwen3.6_35b_a3b_fp8'
   'qwen3.6_35b_a3b_awq_int4'
@@ -129,9 +130,12 @@ source=("${_pkgname}::git+https://github.com/williamjameshandley/sglang.git#bran
         'wjh-fp4-3d-reshape.patch'
         'SM120-NVFP4-NOTES.md'
         'gemma_4_31b_nvfp4.env.example'
+        'qwen3.6_27b_text_nvfp4.env.example'
+        'cache-fixup'
+        'qwen3.6_27b_text_nvfp4.preprocessor_config.json'
         "${_models[@]/%/.conf}")
 sha256sums=('SKIP')
-for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' 'deepseek_v4.jinja' 'wjh-fp4-3d-reshape.patch' 'SM120-NVFP4-NOTES.md' 'gemma_4_31b_nvfp4.env.example' "${_models[@]}"; do
+for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' 'deepseek_v4.jinja' 'wjh-fp4-3d-reshape.patch' 'SM120-NVFP4-NOTES.md' 'gemma_4_31b_nvfp4.env.example' 'qwen3.6_27b_text_nvfp4.env.example' 'cache-fixup' 'qwen3.6_27b_text_nvfp4.preprocessor_config.json' "${_models[@]}"; do
   sha256sums+=('SKIP')
 done
 
@@ -177,9 +181,21 @@ package() {
     "${pkgdir}/usr/share/doc/${pkgname}/SM120-NVFP4-NOTES.md"
   install -Dm644 "${srcdir}/gemma_4_31b_nvfp4.env.example" \
     "${pkgdir}/usr/share/doc/${pkgname}/gemma_4_31b_nvfp4.env.example"
+  install -Dm644 "${srcdir}/qwen3.6_27b_text_nvfp4.env.example" \
+    "${pkgdir}/usr/share/doc/${pkgname}/qwen3.6_27b_text_nvfp4.env.example"
   # Workaround: deepseek-ai/DeepSeek-V4-Flash ships tokenizer_config.json
   # without a chat_template field, and sglang has no built-in deepseek-v4
   # template. Lifted from DeepSeek-V3.2-Exp, which uses the same special
   # tokens. Remove once upstream ships a chat_template for V4-Flash.
   install -Dm644 "${srcdir}/deepseek_v4.jinja" "${pkgdir}/etc/sglang/deepseek_v4.jinja"
+
+  # HF-cache fixup helper. Idempotent script that injects missing files
+  # (e.g. preprocessor_config.json for text-only siblings of VL checkpoints)
+  # into the relevant snapshot dirs. Invoked via ExecStartPre in the unit.
+  # Cheap no-op when /usr/share/sglang/cache-fixups/ is empty.
+  install -Dm755 "${srcdir}/cache-fixup" "${pkgdir}/usr/lib/sglang/cache-fixup"
+  # Per-model fixup data. The directory name under cache-fixups/ MUST match
+  # the HF Hub cache-dir name (models--<owner>--<repo>).
+  install -Dm644 "${srcdir}/qwen3.6_27b_text_nvfp4.preprocessor_config.json" \
+    "${pkgdir}/usr/share/sglang/cache-fixups/models--sakamakismile--Qwen3.6-27B-Text-NVFP4-MTP/preprocessor_config.json"
 }

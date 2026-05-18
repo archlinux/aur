@@ -19,6 +19,10 @@ EnvironmentFile=-/etc/sglang/sglang.conf
 EnvironmentFile=-/etc/sglang/sglang.env
 EnvironmentFile=-/etc/sglang/%i.conf
 EnvironmentFile=-/etc/sglang/%i.env
+# Inject any missing HF-cache files for checkpoints that ship incomplete
+# (e.g. text-only siblings of VL checkpoints that strip preprocessor_config.json).
+# Idempotent; no-op if /usr/share/sglang/cache-fixups/ is empty. Non-fatal.
+ExecStartPre=-/usr/lib/sglang/cache-fixup
 ExecStart=/usr/bin/python -m sglang.launch_server --host 127.0.0.1 --sleep-on-idle $SGLANG_OPTS $SGLANG_ARGS
 TimeoutStartSec=infinity
 Restart=on-failure

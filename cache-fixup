@@ -1,0 +1,47 @@
+#!/bin/bash
+# Inject HF-cache fixups for sglang models with files missing upstream.
+#
+# Some community NVFP4 text-only checkpoints (e.g. text-only siblings of VL
+# checkpoints) strip preprocessor_config.json. HF Hub then negative-caches the
+# file under .no_exist/, and SGLang's loader crashes before model code runs.
+#
+# This helper walks /usr/share/sglang/cache-fixups/<model-cache-name>/<file>
+# and, for each existing snapshot of <model-cache-name>, drops <file> into
+# snapshots/<hash>/ (if not already present) and clears any negative-cache
+# marker for it. Idempotent; cheap if no fixups apply.
+#
+# Runs as the sglang user via systemd ExecStartPre; assumes HF cache root
+# is /var/lib/sglang/hub (StateDirectory of the sglang@.service).
+
+set -euo pipefail
+
+FIXUPS_DIR=/usr/share/sglang/cache-fixups
+HF_HUB_DIR=/var/lib/sglang/hub
+
+[ -d "$FIXUPS_DIR" ] || exit 0
+
+shopt -s nullglob
+
+for model_dir in "$FIXUPS_DIR"/*/; do
+  model=$(basename "$model_dir")
+  target_dir="$HF_HUB_DIR/$model"
+  [ -d "$target_dir/snapshots" ] || continue
+
+  for snapshot in "$target_dir/snapshots"/*/; do
+    snapshot_hash=$(basename "$snapshot")
+    no_exist_dir="$target_dir/.no_exist/$snapshot_hash"
+
+    for fixup_file in "$model_dir"*; do
+      [ -f "$fixup_file" ] || continue
+      filename=$(basename "$fixup_file")
+
+      if [ -e "$no_exist_dir/$filename" ]; then
+        rm -f "$no_exist_dir/$filename"
+      fi
+
+      if [ ! -e "$snapshot/$filename" ]; then
+        install -m 644 "$fixup_file" "$snapshot/$filename"
+      fi
+    done
+  done
+done
