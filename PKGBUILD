@@ -1,7 +1,7 @@
 # Maintainer: Javier Orfo <javierorfo@protonmail.com>
 #
 pkgname=xtatusbar
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Configurable statusbar for Xorg server using xsetroot"
 arch=('x86_64')
@@ -12,11 +12,11 @@ makedepends=('git' 'gcc')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('5c41ffb209f3837ae64a0fae89c005d4ffc0d16f350bf5fa1f7ed6d7956d8a5c4dea0a24f2b6c5f455e297573bc6602a14e0b3b852ff2becc5bc16c0e39d0ab0')
+sha512sums=('a5559041041ba8fd3544c02f8235b95f48c0742dd411389450a15fb1673b6d2096ce58140866ab058ae47254f709a290c993a228a9ace7db2eb226ca609f16c9')
 
 build() {
   cd "$pkgname"
-  gcc -Wall -O2 -std=c23 -D_POSIX_C_SOURCE=200809L -o xtatusbar src/*.c -lpulse -lX11
+  gcc -Wall -Wextra -std=c23 -pedantic -D_POSIX_C_SOURCE=200809L -o xtatusbar src/*.c -lpulse -lX11
 }
 
 package() {
