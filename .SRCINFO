@@ -1,6 +1,6 @@
 pkgbase = ubaa
 	pkgdesc = Cross-platform Compose Multiplatform client for Beihang University campus services
-	pkgver = 1.6.0
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/BUAASubnet/UBAA
 	arch = x86_64
@@ -10,12 +10,10 @@ pkgbase = ubaa
 	depends = java-runtime>=21
 	depends = bash
 	depends = hicolor-icon-theme
-	conflicts = ubaa-git
-	conflicts = ubaa-bin
-	source = ubaa-1.6.0.tar.gz::https://github.com/BUAASubnet/UBAA/archive/v1.6.0.tar.gz
+	source = ubaa-1.7.2.tar.gz::https://github.com/BUAASubnet/UBAA/archive/v1.7.2.tar.gz
 	source = ubaa.desktop
 	source = ubaa.sh
-	sha256sums = 8d53537a101c2a18d11e005266bfb291d4ca65e12aa63ed6075ccbf2708cc495
+	sha256sums = d6ee1902c339e14c13e78898c3358c9105fbe143667a673874af9bdc66a332b3
 	sha256sums = 79ce57a57321f1844d3f43c1f779d14e6ce95c60d6eb5adbffd0df3703f400e9
 	sha256sums = 6f9e5fb5a184b2ca77382cc00c65fd0ca1e38cf71b72dd419aa88d4efdbf4eaa
 
