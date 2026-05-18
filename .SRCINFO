@@ -1,7 +1,7 @@
 pkgbase = eden-nightly
 	pkgdesc = Nintendo Switch emulator forked from yuzu - nightly builds
 	pkgver = 1779133685.5ab0227624
-	pkgrel = 2
+	pkgrel = 3
 	url = https://eden-emulator.github.io/
 	arch = x86_64
 	arch = aarch64

@@ -6,7 +6,7 @@
 _pkgname=eden
 pkgname=$_pkgname-nightly
 pkgver=1779133685.5ab0227624
-pkgrel=2
+pkgrel=3
 pkgdesc="Nintendo Switch emulator forked from yuzu - nightly builds"
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -29,8 +29,6 @@ build() {
     cmake -B build -S "$_pkgname" -GNinja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=mold" \
-        -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=mold" \
         -DYUZU_ENABLE_LTO=ON \
         -DUSE_DISCORD_PRESENCE=ON \
         -DYUZU_USE_BUNDLED_FFMPEG=OFF \
