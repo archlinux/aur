@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.7.37
-pkgrel=2
+pkgver=5.7.39
+pkgrel=1
 pkgdesc='Cellframe post-quantum blockchain node with SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
             '9b7be4cb912290ed1164dbc3c5f6714c5a9525cc41a4d7ba3115cdbe312a9320'
             '8e880c7559cee668231e4b59a3dddad8ab4a93435b6d8b08dc68b19eded3695d'
             '54c6693d76e9ab69d9de1fef9d4a48b1cec16ade86c814a439b1855185e734e2')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=b129e28cf05289e145592a3ef4a41efec1c221e0
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=72b36b7d5ea79902dcba07d212b4e4584d46244c
 		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.13-py3-none-any.whl
 		cellframe-node.logrotate
 		cellframe-node.service
@@ -41,12 +41,23 @@ build() {
 	cp "$srcdir/$pkgname.service" "$srcdir/$pkgname/dist.linux/share/$pkgname.service"
 	cd "$pkgname"
 
-	cmake -B build \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	local AVX2_SUPPORT=false
+	if grep -q " avx2" /proc/cpuinfo; then
+		AVX2_SUPPORT=true
+	fi
+
+	DEFAULT_BUILD_FLAGS="-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		-DDAP_MANAGE_CFLAGS=OFF \
-		-DCELLFRAME_NO_OPTIMIZATION=OFF \
-		-Wno-dev
+		-Wno-dev"
+
+	if [ "$AVX2_SUPPORT" = true ]; then
+		DEFAULT_BUILD_FLAGS="$DEFAULT_BUILD_FLAGS -DCELLFRAME_NO_OPTIMIZATION=OFF"
+	else
+		DEFAULT_BUILD_FLAGS="$DEFAULT_BUILD_FLAGS -DCELLFRAME_NO_OPTIMIZATION=ON"
+	fi
+
+	cmake -B build $DEFAULT_BUILD_FLAGS
 
 	cmake --build build --clean-first
 }
