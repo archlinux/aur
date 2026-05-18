@@ -16,12 +16,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/polify"
-  git describe --long --tags 2>/dev/null |
-    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-  printf "%s.r%s.%s" \
-         "$(sed -n 's/^version:[[:space:]]*//p' pubspec.yaml | cut -d+ -f1)" \
-         "$(git rev-list --count HEAD)" \
-         "$(git rev-parse --short HEAD)"
+  local _tag
+  if _tag="$(git describe --long --tags 2>/dev/null)"; then
+    printf '%s' "$_tag" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf "%s.r%s.%s" \
+           "$(sed -n 's/^version:[[:space:]]*//p' pubspec.yaml | cut -d+ -f1)" \
+           "$(git rev-list --count HEAD)" \
+           "$(git rev-parse --short HEAD)"
+  fi
 }
 
 build() {
