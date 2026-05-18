@@ -65,5 +65,5 @@ package() {
   install -dm755 "$pkgdir/usr/share/cabana"
   cp -r data assets "$pkgdir/usr/share/cabana/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/cabana.desktop" "$pkgdir/usr/share/applications/cabana.desktop"
+  install -Dm644 ../../cabana.desktop "$pkgdir/usr/share/applications/cabana.desktop"
 }
