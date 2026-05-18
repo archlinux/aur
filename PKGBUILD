@@ -2,7 +2,7 @@
 _pkgname=rquickshare-git
 pkgname=r-quick-share-git
 pkgver=0.11.5.r4.g378d8ae
-pkgrel=2
+pkgrel=3
 pkgdesc=" Rust implementation of NearbyShare/QuickShare from Android for Linux and macOS."
 arch=(x86_64)
 url="https://github.com/Martichou/rquickshare"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname::-4}"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
