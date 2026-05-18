@@ -1,12 +1,11 @@
 pkgbase = python-genai-prices
 	pkgdesc = Calculate prices for calling LLM inference APIs.
 	pkgver = 0.0.60
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pydantic/genai-prices
 	arch = any
 	license = MIT
 	checkdepends = python-anyio
-	checkdepends = python-devtools
 	checkdepends = python-dirty-equals
 	checkdepends = python-inline-snapshot
 	checkdepends = python-pytest
