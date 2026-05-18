@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "data": {
+    "pi-ext-usage": {
+      "version": "0.3.1",
+      "gitref": "refs/tags/usage-extension/v0.3.1",
+      "url": "https://github.com/tmustier/pi-extensions/releases/tag/usage-extension/v0.3.1"
+    }
+  }
+}

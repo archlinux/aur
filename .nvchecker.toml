@@ -1,0 +1,9 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+["pi-ext-usage"]
+source = "github"
+github = "tmustier/pi-extensions"
+use_latest_release = true
+prefix = "usage-extension/v"
