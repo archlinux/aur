@@ -3,7 +3,7 @@
 _pkgauthor=blacknon
 _pkgname=twatch
 pkgname=${_pkgname}-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Wrap a child TUI app and keep screen history'
 
@@ -18,7 +18,7 @@ conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.${arch[0]}-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('16b15abf0c5b5a5c1352b14a707ed3cb8640ccbbbaf488535607918b39e70edb')
+sha256sums_x86_64=('5b958f4c2d80ec1a85f67293034748a3d9de6665d3b09a318eb9c0b244b7ef4a')
 
 package() {
   cd "${srcdir}/" || exit
