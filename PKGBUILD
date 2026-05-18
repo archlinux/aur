@@ -2,7 +2,7 @@
 # Previous maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
@@ -35,8 +35,8 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nokse22/high-tide/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('04c0657fbba4f65897b5950e1a19b7ae0c4513f6f2c702587286b50f996a5c82')
-b2sums=('c8f868337f1751e7813e8fb0de83110bb5037e155b4cfc227d542ffc9fb6299c283a1abca2ea601e6e15ae22e8b2ec8b25a018a95516d8306c59428db483431a')
+sha256sums=('1876cd46e0f7c0393aaf7efde0496b32165a477ea6c62a61aeb7ecff32623047')
+b2sums=('e9d94ea27316421e7ecd3194ef166533f36eaf3448fc2e7e003548f0e6ad7c5252fc2ae9a13072e5f70fb1a68add46dfd240122ddf8ed9b30134a34e81f365a3')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build
