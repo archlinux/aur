@@ -6,7 +6,7 @@ pkgname=agildocheats
 _githubuser=juglesbass
 _repo=AgildoCheats
 
-pkgver=1.0.1
+pkgver=1.0.5
 pkgrel=1
 
 pkgdesc="Trainer de memória Linux: scanner, .CT, congelar valores e teleport (PyQt6)"
@@ -32,7 +32,7 @@ source=(
   "${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz"
   "agildocheats.desktop"
 )
-sha256sums=('b4b361e73952cd3441dd1be9e2cd507f6c498b454333b26840c6e4f7492a6d1d'
+sha256sums=('2bb63f7eed741a7823b2737a4a38f3262f09012617a8b706d5f3578dde2ff6fc'
             '778f0be0ac03ed41991bde29030b88d69f455d252ce1c1c37ad4c1fe478bddda')
 
 package() {
@@ -56,6 +56,10 @@ EOF
       "${icone}/${tam}x${tam}/apps/agildocheats.png"
   fi
   done
+  if [[ -f data/icons/hicolor/scalable/apps/agildocheats.svg ]]; then
+    install -Dm644 data/icons/hicolor/scalable/apps/agildocheats.svg \
+      "${icone}/scalable/apps/agildocheats.svg"
+  fi
   if [[ -f data/icons/hicolor/scalable/apps/agildocheats.png ]]; then
     install -Dm644 data/icons/hicolor/scalable/apps/agildocheats.png \
       "${icone}/scalable/apps/agildocheats.png"
