@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
 pkgver=7.13.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
 license=('Apache-2.0')
-depends=('qt6-multimedia' 'qt6-declarative' 'nodejs' 'qt6-networkauth' 'hicolor-icon-theme' 'gcc-libs' 'glibc' 'qt6-base'
-	 'qt6-webengine')
+depends=('qt6-multimedia' 'qt6-declarative' 'nodejs' 'qt6-networkauth' 'hicolor-icon-theme' 'libgcc' 'glibc' 'qt6-base'
+	 'qt6-webengine' 'libstdc++')
 makedepends=('git' 'cmake' 'qt6-tools' 'npm' 'qt6-shadertools' 'jq' 'ninja' 'clang' 'vulkan-headers')
 options=(!lto)
 optdepends=('openssl: Access HTTPS sources')
