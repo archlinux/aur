@@ -4,7 +4,7 @@
 # Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 
 pkgname=swagger-codegen
-pkgver=3.0.80
+pkgver=3.0.81
 pkgrel=1
 pkgdesc="Swagger Code Generator"
 arch=("any")
@@ -15,7 +15,7 @@ makedepends=('maven')
 provides=('swagger-codegen-cli')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swagger-api/swagger-codegen/archive/v$pkgver.tar.gz"
        swagger-codegen)
-sha256sums=('386235163329de6ab7d6d4c5d9532940f3c732ef085d415a92850834706950de'
+sha256sums=('b16c7c1bc73cdaa0221d26129eccad32f10c2deecc29ccb90fd6bc79c22b9faf'
             'ac1dc1e6661c19572047e7253ddfb5c0861cdae78e2f14105b742fceda2733e3')
 
 build() {
