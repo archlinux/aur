@@ -1,0 +1,24 @@
+pkgbase = beansprout-git
+	pkgdesc = a DWM-style tiling window manager with built-in wallpaper and a clock/bar with configuration in Kdl
+	pkgver = v0.2.3.r25.gdc2ec40
+	pkgrel = 1
+	url = https://codeberg.org/beansprout/beansprout
+	arch = x86_64
+	license = GPL-3.0-only
+	license = CC-BY-4.0
+	license = CC0-1.0
+	makedepends = wayland-protocols
+	makedepends = zig
+	depends = wayland
+	depends = pixman
+	depends = libxkbcommon-x11
+	depends = fcft
+	depends = river
+	provides = beansprout
+	conflicts = beansprout
+	source = git+https://codeberg.org/beansprout/beansprout.git
+	source = beansprout.desktop
+	sha256sums = SKIP
+	sha256sums = 916d7ffef83f534e34a2e858f74ce2a49b1d5035db15ab40ef095a70f9f74f00
+
+pkgname = beansprout-git
