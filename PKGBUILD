@@ -5,8 +5,8 @@
 
 pkgname=plasma-login-manager-git
 _pkgname=plasma-login-manager
-pkgver=r1942.b44d3ef
-pkgrel=1
+pkgver=r1985.f11d215
+pkgrel=2
 pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with an new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
 url='https://invent.kde.org/plasma/plasma-login-manager'
 arch=(x86_64)
@@ -24,7 +24,7 @@ depends=(
     'kwindowsystem'
     'kirigami'
     'plasma-workspace'
-    'libplasma>=6.5.90'
+    'libplasma>=6.6.90'
     'kcoreaddons'
     'qt6-base'
     'kservice'
