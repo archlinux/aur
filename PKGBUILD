@@ -2,19 +2,21 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=eaglemode
-pkgver=0.96.3
+pkgver=0.96.4
 pkgrel=1
 pkgdesc="Visit almost everything in your PC simply by zooming in"
 arch=('i686' 'x86_64')
 url="http://eaglemode.sourceforge.net/"
 license=('GPL-3.0-only')
-depends=('desktop-file-utils' 'gtk2' 'hicolor-icon-theme' 'libtiff'
+depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libtiff'
          'libpng' 'librsvg' 'poppler-glib' 'xdg-utils' 'vlc' 'xz')
 optdepends=('perl: Fetching stock market info for the emStocks plugin'
-            'htmldoc: Rendering HTML documents')
+            'htmldoc: Rendering HTML documents'
+            'pigz: Archive support'
+            '7zip: Archive support')
 makedepends=('perl')
-source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('0077aea60127c90ca5456143acf7a8e1bd2634e36a1bee90c169d1a58927a8e4')
+source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz)
+sha256sums=('9f7b09b02a541c607225a2b8318012017a22c379d9717b34fc57035758933eb8')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
