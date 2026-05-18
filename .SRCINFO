@@ -1,6 +1,6 @@
 pkgbase = powercurve-git
 	pkgdesc = Lightweight desktop power management daemon with configurable fan curves
-	pkgver = 0.3.0.r629.40af432
+	pkgver = 0.3.1.r648.3c6bf1f
 	pkgrel = 1
 	url = https://gitlab.com/vintagetechie/powercurve
 	install = powercurve.install
