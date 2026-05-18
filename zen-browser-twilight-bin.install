@@ -1,0 +1,24 @@
+post_install() {
+    echo ""
+    echo "  Zen Browser Twilight (每夜版) 已安装成功！"
+    echo "  启动命令: zen-browser-twilight"
+    echo "  自定义启动参数: ~/.config/zen-browser-twilight-flags.conf"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  Zen Browser Twilight 已更新至 $1"
+    echo ""
+}
+
+pre_remove() {
+    true
+}
+
+post_remove() {
+    echo ""
+    echo "  Zen Browser Twilight 已移除。"
+    echo "  配置文件保留在 ~/.zen/"
+    echo ""
+}

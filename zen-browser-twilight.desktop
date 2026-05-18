@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Zen Browser Twilight
+Comment=Zen Browser - Twilight nightly build
+GenericName=Web Browser
+Exec=/usr/bin/zen-browser-twilight %u
+Icon=zen-browser-twilight
+Type=Application
+StartupNotify=true
+StartupWMClass=zen-twilight
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+Keywords=zen;browser;twilight;nightly;web;
