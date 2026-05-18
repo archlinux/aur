@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Nobel <jeremynobel16@gmail.com>
 pkgname=kls
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A security-focused directory listing tool"
 arch=('x86_64')
 url="https://github.com/NobelC/kls"
