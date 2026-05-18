@@ -1,6 +1,6 @@
 # Maintainer: viewerofall <gallia2717@yahoo.com>
 pkgname=veil-host-bin
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Nested Wayland compositor — run any GUI app inside your terminal"
 arch=('x86_64' 'aarch64')
