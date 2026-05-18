@@ -4,7 +4,7 @@
 
 pkgname=supabase-bin
 pkgver=2.99.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for Supabase, an open source Firebase alternative"
 arch=(aarch64 x86_64)
 url="https://supabase.com/docs/reference/cli/about"
@@ -12,6 +12,9 @@ _url="https://github.com/supabase/cli"
 license=(MIT)
 provides=(supabase)
 conflicts=(supabase)
+
+source=(https://github.com/supabase/cli/blob/v$pkgver/apps/cli-go/LICENSE)
+sha256sums=("7fd53b5a3bafcf1b92e1fa8952a23a585465a911727bb91e295852f6bd2c4ab0")
 
 source_x86_64=("$_url/releases/download/v$pkgver/supabase_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$_url/releases/download/v$pkgver/supabase_${pkgver}_linux_arm64.tar.gz")
@@ -26,21 +29,19 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"
-  for _sh in bash fish zsh powershell; do
-    ./"supabase" completion "$_sh" > "completions/supabase.$_sh"
+  cd /tmp  # does not work if run in srcdir
+  for _sh in bash fish zsh; do
+    "$srcdir"/supabase --completions "$_sh" > "$srcdir/completions/supabase.$_sh"
   done
 }
 
 package() {
   cd "$srcdir"
-  install -vDm755 "supabase" "$pkgdir/usr/bin/supabase"
-  install -vDm644 "README.md" "$pkgdir/usr/share/doc/supabase/README.md"
-  install -vDm644 "LICENSE" "$pkgdir/usr/share/licenses/supabase-bin/LICENSE"
+  install -vDm755 supabase "$pkgdir/usr/bin/supabase"
+  install -vDm644 LICENSE "$pkgdir/usr/share/licenses/supabase-bin/LICENSE"
 
-  cd "completions"
-  install -vDm644 "supabase.bash" "$pkgdir/usr/share/bash-completion/completions/supabase"
-  install -vDm644 "supabase.fish" "$pkgdir/usr/share/fish/vendor_completions.d/supabase.fish"
-  install -vDm644 "supabase.zsh" "$pkgdir/usr/share/zsh/site-functions/_supabase"
-  install -vDm644 "supabase.powershell" "$pkgdir/usr/share/powershell/Modules/supabase/supabase.ps1"
+  cd completions
+  install -vDm644 supabase.bash "$pkgdir/usr/share/bash-completion/completions/supabase"
+  install -vDm644 supabase.fish "$pkgdir/usr/share/fish/vendor_completions.d/supabase.fish"
+  install -vDm644 supabase.zsh "$pkgdir/usr/share/zsh/site-functions/_supabase"
 }
