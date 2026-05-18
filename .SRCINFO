@@ -1,6 +1,6 @@
 pkgbase = veil-host-bin
 	pkgdesc = Nested Wayland compositor — run any GUI app inside your terminal
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/viewerofall/veilTDC
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = veil-host-bin
 	license = MIT
 	provides = veil-host
 	conflicts = veil-host
-	source_x86_64 = veil-host::https://github.com/viewerofall/veilTDC/releases/download/v1.0.0/veil-host-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = d2947e69c821f9dd6f9606c04356af0568cfed9dd86b09cc165d31c3bd926487
-	source_aarch64 = veil-host::https://github.com/viewerofall/veilTDC/releases/download/v1.0.0/veil-host-aarch64-unknown-linux-gnu
+	source_x86_64 = veil-host::https://github.com/viewerofall/veilTDC/releases/download/v1.2.0/veil-host-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 73afe3a6298c43daaf901d6dbe7e4796f0da5c9439471110c3146492419099c4
+	source_aarch64 = veil-host::https://github.com/viewerofall/veilTDC/releases/download/v1.2.0/veil-host-aarch64-unknown-linux-gnu
 	sha256sums_aarch64 = SKIP
 
 pkgname = veil-host-bin
