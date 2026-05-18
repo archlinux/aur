@@ -34,6 +34,6 @@ package() {
     install -Dm644 license.html          "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
     install -Dm644 README.md             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    rm -rf .git .gitignore .github docker README.md
     find . -type f -exec install -Dm644 {} "${pkgdir}/srv/${pkgname}/"{} \;
+    rm -rf "${pkgdir}/srv/${pkgname}"/{.git,.gitignore,.github,docker,README.md}
 }
