@@ -1,18 +1,17 @@
 pkgbase = python-async-timeout
 	pkgdesc = Timeout context manager for asyncio programs.
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aio-libs/async-timeout
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.8
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/a/async-timeout/async_timeout-5.0.1.tar.gz
 	sha256sums = d9321a7a3d5a6a5e187e824d2fa0793ce379a202935782d555d6e9d2735677d3
 
