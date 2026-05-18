@@ -1,0 +1,142 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+	printf 'Usage: %s [--remove] [THEME_DIR]\n' "${0##*/}"
+	exit 0
+fi
+
+action="patch"
+if [ "${1:-}" = "--remove" ]; then
+	action="remove"
+	shift
+fi
+
+theme_dir="${1:-${FIREFOX_GNOME_THEME_DIR:-/usr/lib/firefox-gnome-theme}}"
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ -n "${GNOME_PYWALFOX_CSS_SOURCE:-}" ]; then
+	source_css="$GNOME_PYWALFOX_CSS_SOURCE"
+elif [ -f "$script_dir/pywalfox-colors.css" ]; then
+	source_css="$script_dir/pywalfox-colors.css"
+else
+	source_css="/usr/share/gnome-pywalfox-theme/pywalfox-colors.css"
+fi
+entry_file="$theme_dir/theme/gnome-theme.css"
+content_entry_file="$theme_dir/userContent.css"
+target_css="$theme_dir/theme/colors/pywalfox.css"
+chrome_import_line='@import "colors/pywalfox.css";'
+chrome_anchor='@import "extensions/adaptive-tab-bar-colour.css" screen and -moz-pref("gnomeTheme.extensions.adaptiveTabBarColour");'
+content_import_line='@import "theme/colors/pywalfox.css";'
+content_anchor='@import "theme/pages/privatebrowsing.css";'
+
+theme_tree_complete() {
+	[ -d "$theme_dir/theme/colors" ] &&
+		[ -f "$entry_file" ] &&
+		[ -f "$content_entry_file" ]
+}
+
+if ! theme_tree_complete; then
+	if [ "$action" = "remove" ]; then
+		printf 'Firefox GNOME Theme directory not found; nothing to remove from %s\n' "$theme_dir"
+		exit 0
+	fi
+
+	printf 'Firefox GNOME Theme directory not found or incomplete: %s\n' "$theme_dir" >&2
+	exit 1
+fi
+
+if [ "$action" = "patch" ] && [ ! -f "$source_css" ]; then
+	printf 'Pywalfox GNOME color bridge not found: %s\n' "$source_css" >&2
+	exit 1
+fi
+
+require_anchor() {
+	local file="$1"
+	local anchor="$2"
+
+	if ! grep -Fxq "$anchor" "$file"; then
+		printf 'Import anchor not found in %s\n' "$file" >&2
+		exit 42
+	fi
+}
+
+ensure_import() {
+	local file="$1"
+	local anchor="$2"
+	local import_line="$3"
+	local tmp
+	local status
+
+	tmp="$(mktemp)"
+	if awk -v anchor="$anchor" -v import_line="$import_line" '
+		$0 == import_line {
+			next
+		}
+		{
+			print
+		}
+		$0 == anchor && !inserted {
+			print import_line
+			inserted = 1
+		}
+		END {
+			if (!inserted) {
+				exit 42
+			}
+		}
+	' "$file" > "$tmp"; then
+		chmod --reference="$file" "$tmp"
+		chown --reference="$file" "$tmp"
+		mv "$tmp" "$file"
+	else
+		status="$?"
+		rm -f "$tmp"
+		if [ "$status" -eq 42 ]; then
+			printf 'Import anchor not found in %s\n' "$file" >&2
+		fi
+		exit "$status"
+	fi
+}
+
+remove_import() {
+	local file="$1"
+	local import_line="$2"
+	local tmp
+	local status
+
+	if ! grep -Fxq "$import_line" "$file"; then
+		return
+	fi
+
+	tmp="$(mktemp)"
+	if awk -v import_line="$import_line" '
+		$0 != import_line {
+			print
+		}
+	' "$file" > "$tmp"; then
+		chmod --reference="$file" "$tmp"
+		chown --reference="$file" "$tmp"
+		mv "$tmp" "$file"
+	else
+		status="$?"
+		rm -f "$tmp"
+		exit "$status"
+	fi
+}
+
+if [ "$action" = "remove" ]; then
+	remove_import "$entry_file" "$chrome_import_line"
+	remove_import "$content_entry_file" "$content_import_line"
+	rm -f "$target_css"
+	chmod 0644 "$entry_file" "$content_entry_file"
+	printf 'Removed Firefox GNOME Theme color patch from %s\n' "$theme_dir"
+	exit 0
+fi
+
+require_anchor "$entry_file" "$chrome_anchor"
+require_anchor "$content_entry_file" "$content_anchor"
+install -Dm644 "$source_css" "$target_css"
+ensure_import "$entry_file" "$chrome_anchor" "$chrome_import_line"
+ensure_import "$content_entry_file" "$content_anchor" "$content_import_line"
+chmod 0644 "$entry_file" "$content_entry_file" "$target_css"
+printf 'Patched Firefox GNOME Theme colors in %s\n' "$theme_dir"

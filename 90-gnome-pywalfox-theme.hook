@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = firefox-gnome-theme
+Target = firefox-gnome-theme-git
+
+[Action]
+Description = Applying Pywalfox colors to Firefox GNOME Theme...
+When = PostTransaction
+Exec = /usr/bin/gnome-pywalfox-theme-patch

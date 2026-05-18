@@ -1,0 +1,82 @@
+/*
+ * Pywalfox color bridge for Firefox GNOME Theme.
+ *
+ * Pywalfox keeps these browser-theme variables current through
+ * browser.theme.update(). Firefox GNOME Theme keeps the layout; this file maps
+ * the live Pywalfox-controlled browser colors onto GNOME theme color tokens.
+ */
+
+:root,
+:root[privatebrowsingmode="temporary"],
+:is(:root, :root[privatebrowsingmode="temporary"]):-moz-window-inactive {
+	/* Accent */
+	--gnome-accent-bg: var(--lwt-toolbar-field-highlight, AccentColor);
+	--gnome-toolbar-star-button: var(--lwt-toolbarbutton-icon-fill-attention, var(--lwt-toolbar-field-highlight, AccentColor));
+
+	/* Window and content */
+	--gnome-window-background: var(--lwt-accent-color);
+	--gnome-window-color: var(--lwt-text-color);
+	--gnome-view-background: var(--lwt-accent-color);
+	--gnome-view-color: var(--lwt-text-color);
+	--gnome-sidebar-background: var(--sidebar-background-color);
+	--gnome-secondary-sidebar-background: var(--sidebar-background-color);
+
+	/* Cards and menus */
+	--gnome-card-background: var(--sidebar-background-color);
+	--gnome-menu-background: var(--arrowpanel-background);
+	--gnome-menu-color: var(--arrowpanel-color);
+
+	/* Header bar and toolbars */
+	--gnome-headerbar-background: var(--lwt-accent-color) !important;
+	--gnome-toolbar-background: var(--lwt-accent-color);
+	--gnome-toolbar-border-color: transparent;
+	--gnome-toolbar-icon-fill: var(--toolbarbutton-icon-fill);
+
+	/* Entries */
+	--gnome-entry-background: var(--toolbar-field-background-color);
+	--gnome-entry-color: var(--toolbar-field-color);
+	--gnome-entry-focused-border-color: var(--gnome-selection-bg);
+
+	/* Tabs */
+	--gnome-tabbar-background: var(--lwt-accent-color);
+	--gnome-tabbar-tab-active-background: var(--lwt-tab-line-color);
+	--gnome-tabbar-tab-active-background-contrast: var(--lwt-tab-line-color);
+	--gnome-tabbar-tab-hover-background: color-mix(in srgb, var(--lwt-accent-color), var(--lwt-text-color) 7%);
+	--gnome-tabbar-tab-active-hover-background: color-mix(in srgb, var(--lwt-tab-line-color), var(--lwt-text-color) 10%);
+	--gnome-tabbar-tab-needs-attetion: var(--lwt-tab-loading-fill);
+
+	/* Private/new-tab pages */
+	--gnome-private-wordmark: var(--newtab-text-primary-color);
+	--gnome-private-in-content-page-background: var(--newtab-background-color);
+	--gnome-private-text-primary-color: var(--newtab-text-primary-color);
+}
+
+/* GNOME Theme has additional tab styling after its color tokens are declared. */
+#TabsToolbar {
+	background: var(--lwt-accent-color) !important;
+}
+
+#tabbrowser-tabs[orient="horizontal"] .tabbrowser-tab[selected="true"] .tab-background {
+	background-color: var(--lwt-tab-line-color) !important;
+}
+
+@-moz-document url-prefix("about:newtab"), url-prefix("about:home"), url-prefix("about:privatebrowsing") {
+	:root {
+		--gnome-window-background: var(--newtab-background-color);
+		--gnome-window-color: var(--newtab-text-primary-color);
+		--gnome-view-background: var(--newtab-background-color);
+		--gnome-view-color: var(--newtab-text-primary-color);
+		--gnome-card-background: var(--newtab-background-card);
+		--gnome-private-wordmark: var(--newtab-text-primary-color);
+		--gnome-private-in-content-page-background: var(--newtab-background-color);
+		--gnome-private-text-primary-color: var(--newtab-text-primary-color);
+	}
+}
+
+@-moz-document url("about:newtab"), url("about:home") {
+	body {
+		--newtab-background-color: revert !important;
+		--newtab-background-color-secondary: var(--gnome-menu-background) !important;
+		background-color: var(--newtab-background-color) !important;
+	}
+}

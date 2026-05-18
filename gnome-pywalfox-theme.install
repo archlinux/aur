@@ -1,0 +1,11 @@
+post_install() {
+	/usr/bin/gnome-pywalfox-theme-patch
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	/usr/bin/gnome-pywalfox-theme-patch --remove
+}
