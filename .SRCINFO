@@ -10,6 +10,6 @@ pkgbase = pizzaoven-bin
 	conflicts = pizzaoven
 	options = !strip
 	source = PizzaOven-linux-x64.tar.gz::https://github.com/Cristiandis/PizzaOven-Avalonia/releases/download/v1.1.2/PizzaOven-linux-x64.tar.gz
-	sha256sums = 2075b9e4a97b2623caa5d668707a2a5a4586c12df6b2484b2072bb4e25ac8dd1
+	sha256sums = 64998366c4918afb950948bc6a4e59db86390f48e269ef6e494082b6e89e4fd4
 
 pkgname = pizzaoven-bin
