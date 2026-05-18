@@ -2,7 +2,7 @@
 
 _pkgname=linear-cli
 pkgname=linear-cli-finesssee
-pkgver=0.3.22
+pkgver=0.3.25
 pkgrel=1
 pkgdesc="A powerful CLI for Linear.app built with Rust (by Finesssee)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -11,15 +11,11 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Finesssee/linear-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('55838e8ddc00abf0d8c2304dba79dca526ed824fe8eacae4cf9ffdad12f20359')
+sha256sums=('7b5f3d4907d519adfd8c93df07c9790afbbd5fa4addd6709f881d38160b89d9b')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
-  
-  # Fix missing Context trait import in auth.rs
-  sed -i '1i use anyhow::Context;' src/commands/auth.rs
-  
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
