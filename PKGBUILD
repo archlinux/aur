@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=hyprpier-git
-pkgver=0.2.2.r0.g277b36d
+pkgver=0.2.2.r1.g0e708cd
 pkgrel=1
 pkgdesc="Hyprland monitor profile manager with Thunderbolt dock detection"
 arch=('x86_64')
