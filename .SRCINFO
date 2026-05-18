@@ -1,7 +1,7 @@
 pkgbase = msty-claw
-	pkgdesc = Msty Claw is an autonomous AI agent application (Beta)
+	pkgdesc = Msty Claw is an autonomous AI agent application designed for complex task orchestration (Beta)
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://msty.ai/claw
 	arch = x86_64
 	license = proprietary
@@ -10,8 +10,15 @@ pkgbase = msty-claw
 	depends = openssl
 	depends = libdbus
 	depends = libglvnd
+	depends = hicolor-icon-theme
+	optdepends = cuda: NVIDIA GPU acceleration
+	optdepends = rocm-core: AMD GPU acceleration
+	optdepends = docker: Intel GPU acceleration (via ipex-llm container workaround)
+	optdepends = libpulse: PulseAudio/Pipewire support
 	provides = msty-claw
+	provides = msty-claw-bin
 	conflicts = msty-claw
+	conflicts = msty-claw-bin
 	source = MstyClaw_amd64_0.6.0.deb::https://next-assets.msty.studio/mstyclaw/latest/linux/MstyClaw_amd64.deb?ver=0.6.0
 	sha256sums = d9e0871816e7e46595639dbafa3f32f6300c674d2eb3442b3d6895582edbe95c
 
