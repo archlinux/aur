@@ -1,18 +1,21 @@
 pkgbase = pingall-git
 	pkgdesc = Ping everything you can reach
-	pkgver = 2.1.1.r49.gce270fa
+	pkgver = 2.1.4.r1.g9732c45
 	pkgrel = 1
 	url = https://github.com/Fierthraix/pingall
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	depends = glibc
 	depends = iputils
-	optdepends = avahi: resolve hostnames via avahi-resolve
+	optdepends = avahi: hostname resolution with avahi-resolve
 	provides = pingall
 	conflicts = pingall
-	source = pingall::git+https://github.com/Fierthraix/pingall
+	conflicts = pingall-bin
+	source = pingall::git+https://github.com/Fierthraix/pingall.git
 	sha256sums = SKIP
 
 pkgname = pingall-git

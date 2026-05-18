@@ -1,46 +1,37 @@
-# Maintainer: Uzanto
-_pkgname=pingall
 pkgname=pingall-git
-pkgver=2.1.1.r49.gce270fa
+_pkgname=pingall
+pkgver=2.1.4.r1.g9732c45
 pkgrel=1
 pkgdesc='Ping everything you can reach'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/Fierthraix/pingall'
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'iputils')
+depends=('gcc-libs' 'glibc' 'iputils')
 makedepends=('cargo' 'git')
-optdepends=('avahi: resolve hostnames via avahi-resolve')
-provides=('pingall')
-conflicts=('pingall')
-source=("$_pkgname::git+$url")
+optdepends=('avahi: hostname resolution with avahi-resolve')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-bin")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-
-  local version
-  version="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -n 1)"
-  printf "%s.r%s.g%s" "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgname}"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
-  cd "$_pkgname"
-  cargo generate-lockfile
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cd "${_pkgname}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo fetch --locked
 }
 
 build() {
-  cd "$_pkgname"
-  cargo build --frozen --release
-}
-
-check() {
-  cd "$_pkgname"
-  cargo test --frozen
+  cd "${_pkgname}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo build --release --locked --all-features
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  cd "${_pkgname}"
+  install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
