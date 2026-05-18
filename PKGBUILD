@@ -1,5 +1,5 @@
 pkgname=dusk-bin
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Dusk is a reverse-engineered reimplementation of Twilight Princess."
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('glibc' 'gcc-libs' 'curl' 'freetype2' 'libidn2' 'rtmpdump' 'libssh' 'li
 makedepends=('unzip')
 source=("dusklight" "https://github.com/TwilitRealm/dusk/releases/download/v$pkgver/Dusklight-v$pkgver-linux-x86_64.AppImage")
 sha256sums=('9d8b481884b504dc4faf69a882351b9c12d9adb1b2c4a4ed5ec8f9d3bb47b946'
-            'f01b4ad576461f1c3611b6e0ca657cea0be760f60ee9f89961076e791b3ca163')
+            '0828681672f0cba54218f26d92d06fc0dd7e3e94e24a643591ad96c9c776357e')
 
 package() {
     install -dm755 "$pkgdir/usr/bin/Dusklight"
