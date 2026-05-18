@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b9213
+pkgver=b9216
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -32,7 +32,7 @@ optdepends=(
   'python-transformers: needed for convert_hf_to_gguf.py'
   'python-gguf: needed for convert_hf_to_gguf.py'
 )
-provides=(${_pkgname} libggml ggml)
+provides=(${_pkgname} libggml libggml-hip.so ggml)
 conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
@@ -41,7 +41,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('6f28af4539d65a8c0a24b408f3254820c174e3167b667617a942f0e2919dc9a3'
+sha256sums=('8eb4c149ee30e8494072bdd34942c6aae15342148dc021a5fbd84393c149ea1a'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
