@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 # Contributor: Michele Balistreri <michele at bitgamma dot com>
 
-# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.5.0
+# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.5.1
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
-pkgver=10.5.0
+pkgver=10.5.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
@@ -24,7 +24,7 @@ tmpfiles.conf
 )
 
 sha256sums=(  
-'67fe9c5fea3015c957f1aeba9c782292f831a3e27e377e0f7b10ba0fa58c8db8'
+'61af76b9568c0002e28da256928885ef860a37a1cf7f6722d8661f6e26f8ccee'
 '03121ca28d210ac8014021c2f2deda4a181f215b1638c493c40a4c7e6056495f'
 '069d5612d570e83128d7eed7ffe4525943d75d22b9c84537d861833157e74b26'
 '2904a5cbdad2ef810f5f0509ad709303541e403a3a52e3d75f1736ed7fbdf69f'
