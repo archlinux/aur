@@ -2,7 +2,7 @@
 pkgname=python-claude-agent-sdk
 _name=${pkgname#python-}
 pkgver=0.2.82
-pkgrel=1
+pkgrel=2
 pkgdesc="Python SDK for Claude Code"
 arch=('any')
 url="https://github.com/anthropics/claude-agent-sdk-python"
@@ -11,6 +11,7 @@ depends=(
   'python'
   'python-anyio'
   'python-mcp'
+  'python-sniffio'
 )
 makedepends=(
   'python-build'
