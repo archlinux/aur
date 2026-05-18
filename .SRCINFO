@@ -1,0 +1,12 @@
+pkgbase = freepats-salamander-sf2
+	pkgdesc = Yamaha C5 grand piano sf2 SoundFont
+	pkgver = 20200602
+	pkgrel = 1
+	url = http://freepats.zenvoid.org/Piano/acoustic-grand-piano.html
+	arch = any
+	groups = soundfonts
+	license = CC-BY-3.0
+	source = https://freepats.zenvoid.org/Piano/SalamanderGrandPiano/SalamanderGrandPiano-SF2-V3+20200602.tar.xz
+	sha256sums = 15edb061d7ba60d58332f72dba8f8ce40988048cc703f935e6320f37d650e213
+
+pkgname = freepats-salamander-sf2
