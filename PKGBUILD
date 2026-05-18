@@ -7,7 +7,7 @@ url="https://github.com/Slashas632/goPort"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0d5728e6e839fb0bd7c159a235cb94a147ea72d6a373ace0e425ead039e7617b')
+sha256sums=('8cc0426d05c26ff5e27419d21e23e07d6a592cca20182d02d050304b4aa648b7')
 
 build() {
     cd "goPort-$pkgver"
