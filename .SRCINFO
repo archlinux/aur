@@ -1,13 +1,14 @@
 pkgbase = fbx-sdk
 	pkgdesc = Platform and API toolkit to transfer existing content into the FBX format.
 	pkgver = 2020.3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.autodesk.com/products/fbx/overview
 	install = fbx-sdk.install
 	arch = x86_64
 	license = LicenseRef-Autodesk-FBX-SDK-2020-License
 	makedepends = rsync
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = libxml2-legacy
 	depends = zlib
 	depends = glibc
