@@ -1,6 +1,6 @@
 # Maintainer: Jon Kinney
 pkgname=tensaku
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='Modern screenshot annotation tool for Wayland'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MPL-2.0')
 depends=('gtk4' 'gtk4-layer-shell' 'libadwaita' 'libepoxy' 'fontconfig')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('10f793e558a8df15974f7c310ea3eff66f49cd023d0eb0c1b9b53fb95e412bff')
+sha256sums=('52762f03a109afa1749e941d2ce2ba9e1956e4fd1975347c0cd92ddfb6e35968')
 
 prepare() {
   cd "$pkgname-$pkgver"
