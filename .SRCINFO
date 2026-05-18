@@ -1,7 +1,7 @@
 pkgbase = agildospecs
 	pkgdesc = Informacoes de hardware estilo CPU-Z: CPU, RAM, dual channel, discos (PyQt6)
 	pkgver = 2.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/juglesbass/AgildoSpecs
 	install = agildospecs.install
 	arch = any
