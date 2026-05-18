@@ -1,7 +1,7 @@
 # Maintainer: orange-guo
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/cpa-usage-keeper-bin
 pkgname=cpa-usage-keeper-bin
-pkgver=1.7.5
+pkgver=1.8.0
 pkgrel=1
 pkgdesc=Standalone\ CLIProxyAPI\ usage\ persistence\ and\ dashboard\ service
 arch=(x86_64 aarch64 )
@@ -19,10 +19,10 @@ install=cpa-usage-keeper-bin.install
 source=(cpa-usage-keeper.env.example cpa-usage-keeper.service )
 sha256sums=('484bf3aeb083742ecd5116d29d5c7aa73290da64c386ac46a530c7033ad68ac8'
             '181e37963e289946319ec014253d5cb9a4d6c540d0b0c2d8215e4695811e06c0')
-sha256sums_x86_64=('054fdec7ec3713cea195763e7d309c208c7a6ae027fe0f4820e5b91c35af073c')
-sha256sums_aarch64=('22b52eb051c9dbf511018ab95f0ce50fb19e111c96b3c8fd05c16f32c1e1ed82')
-source_x86_64=(cpa-usage-keeper-bin-1.7.5-x86_64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.7.5/cpa-usage-keeper_v1.7.5_linux_amd64.tar.gz )
-source_aarch64=(cpa-usage-keeper-bin-1.7.5-aarch64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.7.5/cpa-usage-keeper_v1.7.5_linux_arm64.tar.gz )
+sha256sums_x86_64=('91222107df2c21f712e48271a1894a764dcccb3288ebc7ee7f1ef8b47546aa2b')
+sha256sums_aarch64=('b4161db4d6fd9828e2c7f347f80504717c005ad84595bd64ae480ebbb39183c9')
+source_x86_64=(cpa-usage-keeper-bin-1.8.0-x86_64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.8.0/cpa-usage-keeper_v1.8.0_linux_amd64.tar.gz )
+source_aarch64=(cpa-usage-keeper-bin-1.8.0-aarch64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.8.0/cpa-usage-keeper_v1.8.0_linux_arm64.tar.gz )
 
 _binary_source_path=\*/cpa-usage-keeper
 _install_bin_path=/usr/bin/cpa-usage-keeper
