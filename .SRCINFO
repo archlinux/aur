@@ -1,0 +1,16 @@
+pkgbase = maestro-bin
+	pkgdesc = Mobile UI testing framework (binary release)
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://maestro.dev
+	arch = any
+	license = Apache-2.0
+	depends = bash
+	depends = java-runtime-headless>=17
+	provides = maestro
+	conflicts = maestro
+	conflicts = maestro-dev
+	source = maestro-2.5.1.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.5.1/maestro.zip
+	sha256sums = 2d924bfd37cccabca438a727213648cbfe4f8bb711559ec8e9d199dc09a5ce52
+
+pkgname = maestro-bin
