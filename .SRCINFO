@@ -1,6 +1,6 @@
 pkgbase = hyprpilot-bin
 	pkgdesc = Tauri overlay daemon for agent-driven workflows on Hyprland (prebuilt binary)
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/hyprpilot/hyprpilot
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = hyprpilot-bin
 	depends = libappindicator-gtk3
 	provides = hyprpilot
 	conflicts = hyprpilot-git
-	source = hyprpilot-bin-2.0.2.tar.zst::https://github.com/hyprpilot/hyprpilot/releases/download/v2.0.2/hyprpilot-v2.0.2-x86_64-unknown-linux-gnu.tar.zst
-	b2sums = 1e037946973156b87ff64da9a079997e043de3cd3b31ec3e90ee3c373473ede2768d0f60e360cc2dcd4e82e93dbbcc6c8264aa32c20ed662c00520629d28255b
+	source = hyprpilot-bin-2.0.3.tar.zst::https://github.com/hyprpilot/hyprpilot/releases/download/v2.0.3/hyprpilot-v2.0.3-x86_64-unknown-linux-gnu.tar.zst
+	b2sums = d948c7c8d220febd3a4f3a6f18aa3e5f75b5f60266e6a4aa11c5d608247aa00f682bf9797692daeafa37a8e7468ef915d82cab4b330e1d66e280bfdcc01bf54e
 
 pkgname = hyprpilot-bin
