@@ -1,0 +1,12 @@
+pkgbase = sfiler-git
+	pkgdesc = File transfer: PC <-> Samsung Swift device.
+	pkgver = r6.d625f22
+	pkgrel = 1
+	url = https://github.com/bhmsgame06/sfiler
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = git+https://github.com/bhmsgame06/sfiler
+	sha256sums = SKIP
+
+pkgname = sfiler-git
