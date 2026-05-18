@@ -24,7 +24,6 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
-    -k "not images"
   )
   cd "$srcdir"/$_name-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
