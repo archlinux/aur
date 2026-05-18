@@ -2,7 +2,7 @@
 # Release: tag as v<version> and push tag, then create GitHub release.
 # The AUR publish workflow will update pkgver and publish automatically.
 pkgname=snry-dm
-pkgver=2.9.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Snry Shell Display Manager - Hyprland-based greeter and login screen'
 arch=('x86_64')
