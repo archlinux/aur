@@ -3,8 +3,8 @@ pkgname=synology-drive-client-bin
 pkgver=4.0.3_17892
 _pkgver=4.0.3
 _pkgrel=17892
-pkgrel=2
-pkgdesc="Synology Drive Client desktop application (official binary repack)"
+pkgrel=3
+pkgdesc="Official Synology Drive Client desktop application (official binary repack)"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
 license=('custom:Synology Linux License Grant')
@@ -24,14 +24,14 @@ sha256sums=('f6aec5a5974d59963ed833fdf1a0cc7bebd612d8691f491c62cba770cdc78d67'
             '0dc43c10722976c544b92400bfcd53e6c0ddb70092d6b397cd146777770eaf18')
 
 package() {
-  # Makepkg automatically unpacks the .deb, which leaves data.tar.xz in src/
+  # Extract data.tar.xz from the debian package
   cd "$srcdir"
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
-  # Create terminal symlinks
+  # Create terminal symlinks (using -f to overwrite existing or messy links from the .deb)
   install -d "$pkgdir/usr/bin"
-  ln -s /opt/Synology/SynologyDrive/bin/launcher "$pkgdir/usr/bin/synology-drive"
-  ln -s /opt/Synology/SynologyDrive/bin/launcher "$pkgdir/usr/bin/synology-drive-client"
+  ln -sf /opt/Synology/SynologyDrive/bin/launcher "$pkgdir/usr/bin/synology-drive"
+  ln -sf /opt/Synology/SynologyDrive/bin/launcher "$pkgdir/usr/bin/synology-drive-client"
 
   # Install systemd user service
   install -Dm644 "$srcdir/synology-drive.service" "$pkgdir/usr/lib/systemd/user/synology-drive.service"
