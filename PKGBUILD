@@ -16,7 +16,7 @@ depends=(
 options=('!strip' '!debug')
 
 source=(
-  "termix-linux-x64.tar.gz::https://github.com/Termix-SSH/Termix/releases/download/release-$pkgver-tag/termix_linux_x64_portable.tar.gz"
+  "termix-linux-x64-$pkgver.tar.gz::https://github.com/Termix-SSH/Termix/releases/download/release-$pkgver-tag/termix_linux_x64_portable.tar.gz"
   "termix.desktop"
   "termix.png"
 )
