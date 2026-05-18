@@ -1,9 +1,22 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 3.9.0 ➙ 4.3.0
-              : 2026-04-30 ➙ 2026-05-15
+ Tags         : 4.2.0 ➙ 4.4.0
+              : 2026-05-07 ➙ 2026-05-18
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-18   : 4.4.0
+              - **4.4.0**
+            
+                * Add secure boot signing key changes trigger to ALPM hook to update kernel.
+                * Messages more consistent with prefixes (! = error, ⦁ = top level, ↳ = sub level).
+                * Add brief section on signing kernels and secure boot.
+                * Fix c-code checker (clang-tidy, valgrind)
+                * Simplify some code (readability, maintainability)
+                * Additional boundary case checks.
+                * Loader entry modifier for efi tools handle "uki" row in addition to "linux"
+ 2026-05-15   ⋯
+              - update Changelog
 
  2026-05-15   : 4.3.0
                   - * Drop the bash code version and sd-boot-set-alternative since its no longer needed.
@@ -39,10 +52,4 @@
             
                   See Release for details
  2026-04-30   ⋯
-              - update Changelog
-
- 2026-04-30   : 3.9.0
-              - Plugins - simplify getting the loader entry file location
-                Fix efi-tool package remove buglet getting package vers (only impacts memtest86 removal)
- 2026-04-24   ⋯
               - update Changelog
