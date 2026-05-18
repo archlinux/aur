@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=millisecond-git
-pkgver=0.2.0.r4.g818d194
+pkgver=0.2.3.r1.g49365a9
 pkgrel=1
 pkgdesc="Optimize your Linux system for low latency audio"
 arch=('any')
@@ -18,7 +18,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {

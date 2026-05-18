@@ -1,6 +1,6 @@
 pkgbase = millisecond-git
 	pkgdesc = Optimize your Linux system for low latency audio
-	pkgver = 0.2.0.r4.g818d194
+	pkgver = 0.2.3.r1.g49365a9
 	pkgrel = 1
 	url = https://github.com/gaheldev/Millisecond
 	arch = any
