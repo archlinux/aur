@@ -2,20 +2,19 @@
 # Maintainer: parhelia
 
 pkgname=throne
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64' 'loongarch64' 'riscv64')
 url="https://throneproj.github.io"
 license=('GPL-3.0-or-later')
-conflicts=('nekoray')
-replaces=('nekoray')
+conflicts=(throne-bin throne-git throne-sysqt-bin)
 depends=('glibc' 'qt6-base')
-makedepends=('cmake' 'gendesk' 'git' 'go>=1.25' 'lld' 'protobuf' 'qt6-tools' 'vulkan-headers')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/throneproj/Throne/archive/fb35c38d4fb8775e8f8e617e4f55c8d91e0b63bf.tar.gz"
+makedepends=('cmake' 'gendesk' 'git' 'go' 'lld' 'protobuf' 'qt6-tools' 'vulkan-headers')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/throneproj/Throne/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
         "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set")
-sha256sums=('b03958029be53693302c6edd34ca65a4b27c9e3379ca82e0e6dea57fb2dee98c'
+sha256sums=('344e9e4c3103424ddd295a5430110b2cc95bd6e2d915fcf647756ddc1e5753ed'
             '3bb765a93afa8c4f3b4fbf4440507c79ba32e4e4600e94706ccd7705209e0c34'
             'SKIP')
 
@@ -29,7 +28,6 @@ prepare() {
         --name "${pkgname^}" \
         --categories 'Network'
 
-    mv "${pkgname^}-fb35c38d4fb8775e8f8e617e4f55c8d91e0b63bf" "${pkgname^}-${pkgver}"
     cd "${pkgname^}-${pkgver}/core/server"
     export GOBIN="${srcdir}/bin"
     export PATH="${PATH}:${GOBIN}"
