@@ -1,6 +1,6 @@
 pkgbase = nightingale-git
 	pkgdesc = Machine learning powered Karaoke app (with scores!)
-	pkgver = 0.3.3.r2.g3a3977d
+	pkgver = 0.6.0.r0.g922b383
 	pkgrel = 1
 	url = https://github.com/rzru/nightingale
 	arch = x86_64
