@@ -7,7 +7,8 @@ pkgbase = aev
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
+	options = !debug
 	source = aev-0.1.0.tar.gz::https://github.com/azytar/aev/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 50f3f019ffb9c660a7e1f97dfc23031d50d98e69a630648cbd57564ad8080a58
 
 pkgname = aev

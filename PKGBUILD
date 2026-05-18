@@ -9,7 +9,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/azytar/aev/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('50f3f019ffb9c660a7e1f97dfc23031d50d98e69a630648cbd57564ad8080a58')
-
+options=('!debug')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     cargo build --release
