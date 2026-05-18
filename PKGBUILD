@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=jxl-rs-git
-pkgver=r347.dc0fe7c
+pkgver=0.4.3.r10.gc5528f6
 pkgrel=1
 pkgdesc="This is a work-in-progress, and currently incomplete reimplementation of a JPEG XL decoder in Rust, which aims to be conforming, safe and fast."
 arch=('x86_64')
 url="https://github.com/libjxl/jxl-rs"
 license=('BSD-3-Clause')
-depends=('glibc' 'gcc-libs' 'lcms2')
+depends=('glibc' 'libgcc' 'lcms2')
 makedepends=('cargo' 'git')
 provides=(${pkgname::-4})
 conflicts=(${pkgname::-4})
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 
@@ -29,6 +29,8 @@ build() {
 	cd "$srcdir/$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export CFLAGS+=" -ffat-lto-objects"
+	export CXXFLAGS+=" -ffat-lto-objects"
 	cargo build --frozen --release --all-features
 }
 
