@@ -43,11 +43,14 @@ build() {
     cd "${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # defensive: paru caches the clone dir between builds. if a previous
-    # attempt died partway through, cargo's incremental state can keep
-    # bridge.cpp out-of-date relative to its build outputs, causing
-    # mysterious undefined-symbol errors. wipe target/ to guarantee fresh.
-    rm -rf target
+    # incremental cache: paru keeps the clone dir between -S invocations
+    # (git fetch, not re-clone), so target/ survives. cargo's per-crate
+    # hashing rebuilds only what changed since the last install. typical
+    # reinstall with no source changes ~5s; with small source edits ~30s;
+    # full rebuild only when libtorrent / rustls / cxx update.
+    #
+    # if cargo gets confused (rare now that LTO is disabled), recover with:
+    #   rm -rf ~/.cache/paru/clone/monsoon-git/src/monsoon-git/target
     cargo build --frozen --release
 }
 
