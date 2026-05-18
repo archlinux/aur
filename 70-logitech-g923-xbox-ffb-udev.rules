@@ -1,0 +1,14 @@
+# Logitech G923 Racing Wheel for Xbox One and PC (046d:c26e)
+#
+# Grants the `input` group read/write access to the wheel's /dev/hidraw nodes
+# so that Proton's winebus.sys can read the HID descriptor and expose
+# DirectInput force feedback effects to Windows games running under Proton.
+#
+# Without this rule, hidraw is 0600 root:root by default, winebus falls back
+# to the evdev path, and Xbox-class devices only expose FF_RUMBLE — games
+# like Forza Horizon then hide the force feedback UI entirely.
+#
+# Requires the wheel to already be in PC mode (PID c26e). The
+# `logitech-g923-xbox-udev` package handles the usb_modeswitch from c26d.
+
+KERNEL=="hidraw*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c26e", MODE="0660", GROUP="input"

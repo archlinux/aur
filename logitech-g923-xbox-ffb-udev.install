@@ -1,0 +1,14 @@
+post_install() {
+    udevadm control --reload-rules
+    udevadm trigger --subsystem-match=hidraw
+    echo ":: Reloaded udev rules and retriggered hidraw."
+    echo ":: Unplug and replug the wheel to ensure existing fds pick up the new perms."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    udevadm control --reload-rules
+}

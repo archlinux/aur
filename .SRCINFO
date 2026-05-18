@@ -1,0 +1,16 @@
+pkgbase = logitech-g923-xbox-ffb-udev
+	pkgdesc = Udev rule granting input-group access to /dev/hidraw nodes of the Logitech G923 Racing Wheel for Xbox One and PC (046d:c26e), enabling force feedback through Proton's winebus.sys
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/StonyTark1117/logitech-g923-xbox-ffb-udev
+	install = logitech-g923-xbox-ffb-udev.install
+	arch = any
+	license = MIT
+	depends = systemd
+	depends = logitech-g923-xbox-udev
+	source = 70-logitech-g923-xbox-ffb-udev.rules
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = logitech-g923-xbox-ffb-udev
