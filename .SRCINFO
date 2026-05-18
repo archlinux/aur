@@ -1,6 +1,6 @@
 pkgbase = fheroes2-bin
 	pkgdesc = Modern open source Engine to play Heroes of Might and Magic 2, you will need to provide your own game files to play Heroes of Might and Magic 2.
-	pkgver = 1.1.11
+	pkgver = 1.1.16
 	pkgrel = 1
 	url = https://github.com/ihhub/fheroes2
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = fheroes2-bin
 	conflicts = fheroes2-git
 	source = fheroes2.desktop
 	sha256sums = 9ff72917638d3c1870bf676556bdf09944cf5d8cff11e40c70640385fb869ad3
-	source_x86_64 = https://github.com/ihhub/fheroes2/releases/download/1.1.11/fheroes2_ubuntu_x86-64_SDL2.zip
-	sha256sums_x86_64 = affa210e606e947d946a1a4de714babba7e94668c15bc0e2974f75ed2acd5640
-	source_aarch64 = https://github.com/ihhub/fheroes2/releases/download/1.1.11/fheroes2_ubuntu_arm64_SDL2.zip
-	sha256sums_aarch64 = d9feb31cdb5e7e4ae9a36b4c216d6be70950e1649bd992a2627cb6f71f3d55b4
+	source_x86_64 = https://github.com/ihhub/fheroes2/releases/download/1.1.16/fheroes2_ubuntu_x86-64_SDL2.zip
+	sha256sums_x86_64 = fc36039e62c9d1558929276190beacbbc15f08817556e351cf23b9e5916b7869
+	source_aarch64 = https://github.com/ihhub/fheroes2/releases/download/1.1.16/fheroes2_ubuntu_arm64_SDL2.zip
+	sha256sums_aarch64 = 04699d13c5b2864e58cf5c85aeb907e6dfe0c6516e4cb3faeadb471870c19a68
 
 pkgname = fheroes2-bin
