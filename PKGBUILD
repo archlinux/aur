@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpits
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="moshpits server — SSH and Mosh inspired remote terminal server written in Rust"
 arch=('x86_64')
@@ -15,9 +15,9 @@ source=(
     "mps.service"
 )
 sha256sums=(
-    '03feaf0abcbecf7f8de2446fafe66ba87f9fd88f84eaa612bd5295310eff2371'
+    '81b9c75f0a4240579b321791e2de8cf48c37a3fbb46886fe9f181ad965c6d2c7'
     # Local repo-tracked sidecar file; checksum is intentionally unmanaged in CI.
-    '03feaf0abcbecf7f8de2446fafe66ba87f9fd88f84eaa612bd5295310eff2371'
+    '81b9c75f0a4240579b321791e2de8cf48c37a3fbb46886fe9f181ad965c6d2c7'
 )
 
 prepare() {
