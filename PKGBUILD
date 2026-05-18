@@ -2,7 +2,7 @@
 # Maintainer: Ayoub Tadlaoui <atlas.kaisar@icloud.com>
 
 pkgname='logx-bin'
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='Pretty-print JSON slog logs from stdin, files, or follow mode'
 url='https://github.com/AyoubTadlaoui/GoLogX'
@@ -12,10 +12,10 @@ provides=('GoLogX')
 conflicts=('GoLogX')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AyoubTadlaoui/GoLogX/releases/download/v${pkgver}/GoLogX_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('cbfc24de1ed60cd3f6da44fdabf2358952dec9481f95b960ef647d6cdd6479a3')
+sha256sums_aarch64=('49cfff2935c1f68046ab1ed010c47a8881d7ac0b62e81e9f58251c67c02ab7d9')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AyoubTadlaoui/GoLogX/releases/download/v${pkgver}/GoLogX_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('cae726bc1b66c028edfb0b6343b59942056edeb72300176007641d34d1a2fe88')
+sha256sums_x86_64=('a2723146b901467a72f9274a30ef1855fdd2322ba1b05e087519006b1087f9b6')
 
 package() {
   install -Dm755 "./logx" "${pkgdir}/usr/bin/logx"
