@@ -1,7 +1,7 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=vernier-bin
 _pkgname=vernier
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Cross-platform pixel-measurement overlay in Rust (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('875127b7ad7bf08aaf91f3e3c9fc0110c446f362792d50b0fa1deba57a80c4d9')
-sha256sums_aarch64=('def0bf7e89238bc218e6d513b69da1f85578ebc050ce3529e7a332a245c2487e')
+sha256sums_x86_64=('21d364722b1b97470278fdf4b825976ab8fae2eca00834660e4e647edf51e649')
+sha256sums_aarch64=('4d798a3771b3fb056fd1b665595a4e3fd809b1aaeee58308a8b52f54f26e1ed1')
 
 package() {
     # The tarball's top-level dir is named after the host arch, so

@@ -1,6 +1,6 @@
 pkgbase = vernier-bin
 	pkgdesc = Cross-platform pixel-measurement overlay in Rust (prebuilt binary)
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/jondkinney/vernier
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = vernier-bin
 	optdepends = wl-clipboard: copy screenshots / measurements to the clipboard
 	optdepends = libnotify: post-capture notifications
 	optdepends = xdg-desktop-portal-hyprland: global hotkey via the GlobalShortcuts portal
-	provides = vernier=0.2.0
+	provides = vernier=0.2.2
 	conflicts = vernier
 	conflicts = vernier-git
 	options = !debug
-	source_x86_64 = vernier-0.2.0-x86_64.tar.gz::https://github.com/jondkinney/vernier/releases/download/v0.2.0/vernier-0.2.0-x86_64.tar.gz
-	sha256sums_x86_64 = 875127b7ad7bf08aaf91f3e3c9fc0110c446f362792d50b0fa1deba57a80c4d9
-	source_aarch64 = vernier-0.2.0-aarch64.tar.gz::https://github.com/jondkinney/vernier/releases/download/v0.2.0/vernier-0.2.0-aarch64.tar.gz
-	sha256sums_aarch64 = def0bf7e89238bc218e6d513b69da1f85578ebc050ce3529e7a332a245c2487e
+	source_x86_64 = vernier-0.2.2-x86_64.tar.gz::https://github.com/jondkinney/vernier/releases/download/v0.2.2/vernier-0.2.2-x86_64.tar.gz
+	sha256sums_x86_64 = 21d364722b1b97470278fdf4b825976ab8fae2eca00834660e4e647edf51e649
+	source_aarch64 = vernier-0.2.2-aarch64.tar.gz::https://github.com/jondkinney/vernier/releases/download/v0.2.2/vernier-0.2.2-aarch64.tar.gz
+	sha256sums_aarch64 = 4d798a3771b3fb056fd1b665595a4e3fd809b1aaeee58308a8b52f54f26e1ed1
 
 pkgname = vernier-bin
