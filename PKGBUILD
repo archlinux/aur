@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.9.beta8.r0.g31a24ce2574
+pkgver=10.10.beta1.r0.g1398283a9c5
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -29,6 +29,7 @@ depends=(brial
          gmp
          gmp-ecm
          gsl
+         highs
          iml
          ipython
          lcalc
@@ -145,7 +146,7 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         maxima-5.48.patch)
 sha256sums=('SKIP'
             'c3aa0243de70fe9c58772c83e748510b7af6950f98d01b3a819e6f8d1232c797'
-            'a9a7ef8892b0a1e9d674439cc0b05d6a3990fe56719b2cc1a37593db4450bb48')
+            'a2d0663fe563bd131d47687086e36b1cbd9af158993226f69fecba8344cedb8a')
 
 pkgver() {
   cd sage
@@ -164,7 +165,8 @@ prepare(){
 build() {
   cd sage
   python -m build --wheel --no-isolation \
-    -C setup-args=-Dbuild-docs=false
+    -C setup-args=-Dbuild-docs=false \
+    -C setup-args=-Ddefer_feature_checks=true
 }
 
 check() {
