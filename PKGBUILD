@@ -28,7 +28,7 @@ build() {
 	cd "$srcdir"
 	cmake -B build -S $_pkgname -GNinja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
 		-DYUZU_USE_BUNDLED_SDL2=OFF \
@@ -48,7 +48,7 @@ build() {
 package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir/" cmake --install build
-	install -Dm644 "$srcdir/$_pkgname/dist/72-yuzu-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
+	install -Dm644 "$srcdir/$_pkgname/dist/72-eden-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
 	sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
 	cd "$srcdir/$_pkgname/LICENSES"
 	for file in *.txt;
