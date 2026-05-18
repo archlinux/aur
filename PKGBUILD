@@ -4,7 +4,7 @@
 
 pkgname=trae-cn-desktop-bin
 _pkgname=trae-cn
-pkgver=2.3.25937
+pkgver=2.3.27641
 pkgrel=1
 pkgdesc="字节跳动推出的AI编程IDE（Trae CN）"
 arch=('x86_64' 'aarch64')
@@ -31,21 +31,21 @@ provides=("trae-cn=${pkgver}")
 conflicts=('trae-cn' 'trae-cn-bin')
 
 source_x86_64=(
-    "${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae%20CN-linux-x64.tar.gz"
+    "${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae_CN-linux-x64.tar.gz"
     "${_pkgname}.desktop"
     "${_pkgname}-startup.sh"
 )
 
 source_aarch64=(
-    "${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae%20CN-linux-arm64.tar.gz"
+    "${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae_CN-linux-arm64.tar.gz"
     "${_pkgname}.desktop"
     "${_pkgname}-startup.sh"
 )
 
-sha256sums_x86_64=('5a1eaf8f7919638daad97a3c0adf409a686c1b2e432fa82ce00548c622cf159a'
+sha256sums_x86_64=('3cc8e9133af71fcbe0a703741bd5810cb837d97b7642d33f2e76ed2b74f86f3b'
                    'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
                    'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
-sha256sums_aarch64=('5a1eaf8f7919638daad97a3c0adf409a686c1b2e432fa82ce00548c622cf159a'
+sha256sums_aarch64=('3cc8e9133af71fcbe0a703741bd5810cb837d97b7642d33f2e76ed2b74f86f3b'
                     'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
                     'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
 
