@@ -4,9 +4,12 @@
 pkgname=python-tree-sitter-javascript
 _gitpkgname=tree-sitter-javascript
 pkgver=0.25.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python Bindings for tree-sitter-javascript'
-arch=('x86_64')
+arch=(
+      'x86_64'
+      'aarch64'
+)
 url='https://github.com/tree-sitter/tree-sitter-javascript'
 license=('MIT')
 depends=(
@@ -37,7 +40,7 @@ build() {
 }
 
 package() {
-	python -I -m installer --destdir="${pkgdir}" dist/*.whl
+	python -I -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
 	install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
