@@ -1,0 +1,13 @@
+pkgbase = asc-git
+	pkgdesc = Make a single shell script from images.
+	pkgver = r21.5bb57a5
+	pkgrel = 1
+	url = https://github.com/bhmsgame06/asc
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = libpng
+	source = git+https://github.com/bhmsgame06/asc
+	sha256sums = SKIP
+
+pkgname = asc-git
