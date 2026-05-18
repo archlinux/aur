@@ -1,6 +1,6 @@
 pkgbase = snry-shell
 	pkgdesc = Snry Shell - Hyprland desktop shell managed by snry-daemon
-	pkgver = 2.9.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/sonroyaalmerol/snry-shell
 	install = snry-shell.install
@@ -96,7 +96,7 @@ pkgbase = snry-shell
 	depends = quickshell
 	optdepends = snry-dm: Display manager (greeter/login screen)
 	optdepends = plasma-browser-integration: KDE browser integration support
-	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v2.9.0
+	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v3.0.0
 	sha256sums = SKIP
 
 pkgname = snry-shell
