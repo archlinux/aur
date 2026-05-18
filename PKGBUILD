@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=origami
-_pkgver=1.0.7
+_pkgver=1.0.8
 pkgname=r-${_pkgname,,}
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Generalized Framework for Cross-Validation'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b44034541ac358e0686682684c40e9a1de8d78c7913e56e4d3dbe41a2a55c62c')
+sha256sums=('46762bdcb8cc8113252ac057a9f38820fa0f3ec8807a25280adf5f6054ce4db1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
