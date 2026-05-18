@@ -2,7 +2,7 @@
 
 _name=groq
 pkgname=python-$_name
-pkgver=1.0.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='The official Python library for the groq API.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 
 checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-pytest-xdist' 'python-aiohttp' 'python-httpx-aiohttp' 'npm' 'nodejs')
 optdepends=('python-aiohttp: aiohttp' 'python-httpx-aiohttp: aiohttp')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a9bcc5e84cb58bc92211dbeabf0c62c71ec33ca03bcd84d80fbc4f72d3a37e91')
+sha256sums=('535cace1bb4a446c3742d02bd9d5b4fd933c54de9ed42d4329badd96675dfdbd')
 
 build() {
   cd "$srcdir"/$_name-python-$pkgver
@@ -28,7 +28,7 @@ check() {
     -p 'no:benchmark'
   )
   cd "$srcdir"/$_name-python-$pkgver
-  trap 'pkill "npm exec prism"' EXIT
+  trap 'pkill -f steady' EXIT
   ./scripts/mock --daemon
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
 }
