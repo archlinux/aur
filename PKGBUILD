@@ -40,7 +40,7 @@ options=(!lto)
 # Use tagged release from GitHub
 source=("git+https://github.com/P6g9YHK6/openpilot-cabana-arch.git#tag=v${pkgver}"
          'archlinux.patch')
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$_pkgname"
