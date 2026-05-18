@@ -1,7 +1,7 @@
 pkgbase = nfx-bin
 	pkgdesc = Cross-platform package manager for the Pheonix Studios ecosystem
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pheonix-Studios-Git/NFX
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = nfx-bin
 	conflicts = nfx
 	options = !strip
 	source = https://pheonix-studios-git.github.io/PPI/data/NFX/nfx_zip/NFX-v1.0.1.zip
-	sha256sums = 0093b35c47ba527a998ed3016c2873eba1ce2d06d9a0d275f37c3e398fb12fef
+	sha256sums = c343097feeb001e554eec6c44f58c2353a551f90b649ee8e23a7f7b8f9dd6952
 
 pkgname = nfx-bin
