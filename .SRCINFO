@@ -1,8 +1,8 @@
 pkgbase = crumble
 	pkgdesc = A file packing and encryption tool. Pack files into encrypted .crumbs files, share them, and unpack on another machine.
 	pkgver = 0.1.1
-	pkgrel = 3
-	url = https://github.com/xbz-seven/crumble
+	pkgrel = 4
+	url = https://github.com/xbz-seven/Crumble
 	install = crumble.install
 	arch = x86_64
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = crumble
 	depends = libx11
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
-	source = crumble-0.1.1.tar.gz::https://github.com/xbz-seven/crumble/archive/v0.1.1.tar.gz
+	source = crumble-0.1.1.tar.gz::https://github.com/xbz-seven/Crumble/archive/v0.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = crumble

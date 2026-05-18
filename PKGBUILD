@@ -2,10 +2,10 @@
 
 pkgname=crumble
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A file packing and encryption tool. Pack files into encrypted .crumbs files, share them, and unpack on another machine."
 arch=('x86_64')
-url="https://github.com/xbz-seven/crumble"
+url="https://github.com/xbz-seven/Crumble"
 license=('MIT')
 depends=(
   'gtk3'
