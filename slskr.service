@@ -1,0 +1,22 @@
+[Unit]
+Description=slskr daemon
+Documentation=https://github.com/snapetech/slskr
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=slskr
+Group=slskr
+ExecStart=/usr/bin/slskr serve
+Environment=SLSKR_CONFIG=/etc/slskr/config.toml
+Environment=SLSKR_STATE_DIR=/var/lib/slskr
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/slskr
+
+[Install]
+WantedBy=multi-user.target
