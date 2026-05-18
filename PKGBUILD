@@ -1,6 +1,6 @@
 # Maintainer: Rafael Medeiros <rafamedeiros0@gmail.com>
 pkgname=perssua-bin
-pkgver=0.12.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Your AI companion for LeetCode - because sometimes we all feel stupid"
 arch=('x86_64')
@@ -11,8 +11,11 @@ conflicts=('perssua')
 depends=('gtk3' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
 optdepends=('libappindicator-gtk3: for system tray support')
 options=('!strip' '!emptydirs')
-source=("https://downloads.perssua.com/Perssua-${pkgver}-amd64.deb")
-sha256sums=('4c2d077fc02ab751b7f77680388f6416401c58496e5ffa618178c4ebc56453cc')
+install="${pkgname}.install"
+source=("https://downloads.perssua.com/Perssua-${pkgver}-amd64.deb"
+        "hyprland-perssua.conf")
+sha256sums=('ec07d10b3e360ebd922bd6c16430267f20ff1b05af4b149fc7499db34a5f148e'
+            'SKIP')
 
 package() {
     # Extract data.tar.xz from the .deb archive
@@ -24,4 +27,8 @@ package() {
     # Create symlink in /usr/bin
     install -d "${pkgdir}/usr/bin"
     ln -s /opt/Perssua/perssua "${pkgdir}/usr/bin/perssua"
+
+    # Optional Hyprland snippet to disable backdrop blur on Perssua's overlay
+    install -Dm644 "${srcdir}/hyprland-perssua.conf" \
+        "${pkgdir}/usr/share/perssua/hyprland-perssua.conf"
 }
