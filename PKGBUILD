@@ -1,6 +1,6 @@
 # Maintainer: Thomas Butler <goliyth@gmail.com>
 pkgname=fnclaude-bin
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A claude CLI launcher with quality-of-life features (binary release)"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('fnclaude')
 conflicts=('fnclaude')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v$pkgver/fnclaude_Linux_x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v$pkgver/fnclaude_Linux_arm64.tar.gz")
-sha256sums_x86_64=('cc3c3166f8816a78e72fe6588d7892878eae3a5ff74cad9cb8568b0962686cb3')
-sha256sums_aarch64=('00fae894ef1a95e6f043a5309c5c7b74e2c5fa2d0897fbbb68c0d88c250a9e2e')
+sha256sums_x86_64=('bbe2bf1462317bad5cd6722344033dfaa0854c4303e7f5d941e16e28b45b5dc9')
+sha256sums_aarch64=('b8101ef8925df2e920a9a7c3293d1089a8d19deb32c48640778d6d4a4fbcea2a')
 
 package() {
     install -Dm755 fnclaude "$pkgdir/usr/bin/fnclaude"
