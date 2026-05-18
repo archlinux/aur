@@ -3,7 +3,7 @@
 
 pkgname=libtas
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
 arch=('x86_64')
 url="https://github.com/clementgallet/libTAS"
@@ -31,8 +31,12 @@ prepare() {
 build() {
   cd "libTAS-$pkgver"
 
-  ./configure --prefix=/usr
-  make
+  aclocal
+  autoconf
+  autoheader
+  automake --add-missing
+  CXXFLAGS="-O2 -g -Wall -pedantic" ./configure --prefix=/usr --enable-release-build
+  make -j4
 }
 
 package() {
