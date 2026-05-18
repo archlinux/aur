@@ -1,0 +1,31 @@
+# Maintainer: jeryd leuck <jerydleuck@gmail.com>
+pkgname=msty-studio
+pkgver=2.1.3
+pkgrel=1
+pkgdesc="Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local."
+arch=('x86_64')
+url="https://msty.ai/"
+license=('proprietary')
+depends=('alsa-lib' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxshmfence' 'mesa' 'nss' 'pango')
+provides=('msty' 'msty-deb')
+conflicts=('msty' 'msty-deb' 'msty-bin')
+filename="MstyStudio_amd64_${pkgver}.deb"
+source=("$filename::https://next-assets.msty.studio/app/latest/linux/MstyStudio_amd64.deb?ver=$pkgver")
+sha256sums=("4dbd8aa69cd7de3ff12a1d219556dca7b7de16469f76b943a06f96d6134d3833")
+
+package() {
+  # Extract data.tar.xz from the debian package
+  bsdtar -xOf "$srcdir/$filename" data.tar.xz | bsdtar -C "$pkgdir" -xv
+
+  # Fix permissions for chrome-sandbox (required for Electron sandboxing)
+  chmod 4755 "$pkgdir/opt/MstyStudio/chrome-sandbox"
+
+  # Fix the .desktop file (Name with space, clean up extra lines)
+  sed -i 's/^Name=.*/Name=Msty Studio/' "$pkgdir/usr/share/applications/MstyStudio.desktop"
+  sed -i '/^exec=mstystudio/d' "$pkgdir/usr/share/applications/MstyStudio.desktop"
+
+  # Create symlinks in /usr/bin for terminal access
+  install -d "$pkgdir/usr/bin"
+  ln -s /opt/MstyStudio/MstyStudio "$pkgdir/usr/bin/msty"
+  ln -s /opt/MstyStudio/MstyStudio "$pkgdir/usr/bin/msty-studio"
+}
