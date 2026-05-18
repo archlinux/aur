@@ -5,6 +5,8 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/opt/Synology/SynologyDrive/package/cloudstation/bin/cloud-drive-daemon
+Environment="LD_LIBRARY_PATH=/opt/Synology/SynologyDrive/package/cloudstation/lib"
+WorkingDirectory=/opt/Synology/SynologyDrive/package/cloudstation/bin
 Restart=on-failure
 
 [Install]

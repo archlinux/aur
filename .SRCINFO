@@ -1,11 +1,12 @@
 pkgbase = synology-drive-client-bin
 	pkgdesc = Official Synology Drive Client desktop application (official binary repack)
 	pkgver = 4.0.3_17892
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.synology.com/en-global/releaseNote/SynologyDriveClient
 	install = synology-drive-client-bin.install
 	arch = x86_64
 	license = custom:Synology Linux License Grant
+	makedepends = patchelf
 	depends = glib2
 	depends = glibc
 	depends = qt5-base

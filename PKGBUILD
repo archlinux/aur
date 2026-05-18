@@ -3,12 +3,13 @@ pkgname=synology-drive-client-bin
 pkgver=4.0.3_17892
 _pkgver=4.0.3
 _pkgrel=17892
-pkgrel=3
+pkgrel=4
 pkgdesc="Official Synology Drive Client desktop application (official binary repack)"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
 license=('custom:Synology Linux License Grant')
 depends=('glib2' 'glibc' 'qt5-base' 'qt5-wayland' 'curl' 'libarchive' 'libxkbcommon' 'libice' 'libsm' 'hicolor-icon-theme')
+makedepends=('patchelf')
 optdepends=('nautilus: For nautilus integration'
             'dolphin: For dolphin integration'
             'nemo: For nemo integration')
@@ -32,6 +33,20 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -sf /opt/Synology/SynologyDrive/bin/launcher "$pkgdir/usr/bin/synology-drive"
   ln -sf /opt/Synology/SynologyDrive/bin/launcher "$pkgdir/usr/bin/synology-drive-client"
+
+  # Fix library paths using patchelf
+  # The daemon needs libraries from its own package/cloudstation/lib directory
+  # The launcher needs libraries from the main lib directory
+  find "$pkgdir/opt/Synology/SynologyDrive" -type f -executable -exec file {} + | grep "ELF" | cut -d: -f1 | while read -r binary; do
+    if [[ "$binary" == *"/package/cloudstation/bin/"* ]]; then
+      patchelf --set-rpath '$ORIGIN/../lib' "$binary"
+    elif [[ "$binary" == *"/bin/launcher" ]]; then
+      patchelf --set-rpath '$ORIGIN/../lib' "$binary"
+    elif [[ "$binary" == *".so"* ]]; then
+      # Handle shared objects in subdirectories (like icon-overlay plugins)
+      patchelf --set-rpath '$ORIGIN/../../../lib' "$binary" 2>/dev/null || true
+    fi
+  done
 
   # Install systemd user service
   install -Dm644 "$srcdir/synology-drive.service" "$pkgdir/usr/lib/systemd/user/synology-drive.service"
