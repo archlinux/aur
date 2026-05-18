@@ -1,25 +1,48 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
+# Maintainer: drzoidberg <drzoidberg+aur@cloudblock.dev>
+pkgname=polify-git
+pkgver=0.1.5
 pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
+pkgdesc="Cross-platform music manager with multi-source library, audio fingerprinting, and ID3 tag editing"
 arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+url="https://buildhut.fly.dev/apps/polify"
+license=('MIT')
+depends=('gtk3' 'libepoxy' 'xz' 'mpv' 'ffmpeg' 'sqlite' 'libsecret'
+         'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav')
+makedepends=('git' 'flutter')
+provides=('polify')
+conflicts=('polify')
+source=("polify::git+https://git.sr.ht/~drzoidberg/Polify")
+sha256sums=('SKIP')
 
-options=('!strip')
+pkgver() {
+  cd "$srcdir/polify"
+  git describe --long --tags 2>/dev/null |
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+  printf "%s.r%s.%s" \
+         "$(sed -n 's/^version:[[:space:]]*//p' pubspec.yaml | cut -d+ -f1)" \
+         "$(git rev-list --count HEAD)" \
+         "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/polify"
+  flutter pub get
+  flutter build linux --release
+}
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+  cd "$srcdir/polify"
+
+  # Application bundle
+  install -d "$pkgdir/usr/lib/polify"
+  cp -r build/linux/x64/release/bundle/* "$pkgdir/usr/lib/polify/"
+  chmod -R 755 "$pkgdir/usr/lib/polify"
+
+  # Symlink to /usr/bin
+  install -d "$pkgdir/usr/bin"
+  ln -s /usr/lib/polify/polify "$pkgdir/usr/bin/polify"
+
+  # Desktop entry and icon
+  install -Dm644 linux/polify.desktop "$pkgdir/usr/share/applications/polify.desktop"
+  install -Dm644 assets/launcher_icon.png "$pkgdir/usr/share/pixmaps/polify.png"
 }
