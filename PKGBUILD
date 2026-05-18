@@ -13,9 +13,10 @@ arch=('x86_64' 'aarch64' 'loong64')
 url="https://im.qq.com/${_pkgname}"
 license=('LicenseRef-QQ')
 conflicts=('linuxqq-nt-bwrap' 'linuxqq')
-provides=("linuxqq")
-depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core')
-optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
+provides=("linuxqq=$pkgver")
+depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'pulse-native-provider')
+optdepends=('libappindicator-gtk3: System tray support'
+            'gjs: Screen sharing support')
 source_x86_64=('https://dldir1v6.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.28_260429_amd64_01.deb')
 source_aarch64=('https://dldir1v6.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.28_260429_arm64_01.deb')
 source_loong64=('https://dldir1v6.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.28_260429_loongarch64_01.deb')
@@ -42,4 +43,7 @@ package() {
 
 	# SUID sandbox
 	chmod 4755 "${pkgdir}/opt/QQ/chrome-sandbox"
+
+	# Remove macOS files
+	rm -fv "${pkgdir}/opt/QQ/resources/app/"*.dylib
 }

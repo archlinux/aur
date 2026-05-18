@@ -13,8 +13,10 @@ pkgbase = linuxqq-nt
 	depends = alsa-lib
 	depends = gtk3
 	depends = at-spi2-core
-	optdepends = libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
-	provides = linuxqq
+	depends = pulse-native-provider
+	optdepends = libappindicator-gtk3: System tray support
+	optdepends = gjs: Screen sharing support
+	provides = linuxqq=3.2.28_260429
 	conflicts = linuxqq-nt-bwrap
 	conflicts = linuxqq
 	options = !strip
