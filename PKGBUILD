@@ -5,33 +5,29 @@
 # Contributor: Kyle Keen <keenerd [at] gmail.com>, das-ich <das-ich [at] yandex.ru>
 
 pkgname=powerpanel
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="https://www.cyberpowersystems.com/product/software/powerpanel-for-linux/"
 license=("custom:CyberPower")
-depends=('libusb' 'openssl-1.1' 'paho-mqtt-c')
+depends=('libusb' 'openssl' 'paho-mqtt-c' 'json-c')
 backup=(etc/powerpanel/pwrstatd-{powerfail,lowbatt,email}.sh
         etc/powerpanel/{hibernate,shutdown}.sh
-        etc/pwrstatd.conf)
-
-source=('pwrstatd.service'
-        'hibernate.sh'
+        etc/pwrstatd.conf
+        usr/lib/systemd/system/pwrstatd.service)
+source=('hibernate.sh'
         'shutdown.sh')
-sha256sums=('255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df'
-            'c710ea7765a24fb469adf601f44c8d3857634336bdfc263434ce86c3d67a4a80'
-            '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998')
+sha256sums=('c710ea7765a24fb469adf601f44c8d3857634336bdfc263434ce86c3d67a4a80'
+            '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998'
+            'f257af0fcb5c5df8ba2732b1e0a8a427608f6cef9a7c6ce8ed83d2db2078b859')
 
 if [[ $CARCH = 'x86_64' ]]; then
-  # Filename has two dots at the source
-  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_64bit_v${pkgver}.tar..gz")
-  sha256sums+=('6240dae59202531df91ccf0655cf6c61120fe64dc14642c46579366ed0d8212d')
+  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_64bit_v${pkgver}.tar.gz")
 fi
 
 if [[ $CARCH = 'i686' ]]; then
   source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_32bit_v${pkgver}.tar.gz")
-  sha256sums+=('25921b474ae5795f7a905368dc06b37b9e49d328cd162a032bcb171a5954d7d1')
 fi
 
 package() {
@@ -67,7 +63,7 @@ package() {
   ln -s powerpanel/shutdown.sh "${pkgdir}/etc/shutdown.sh"
 
   # Systemd unit
-  install -Dm644 "${srcdir}/pwrstatd.service" "${pkgdir}/usr/lib/systemd/system/pwrstatd.service"
+  install -Dm644 script/pwrstatd.service "${pkgdir}/usr/lib/systemd/system/pwrstatd.service"
 
   # PowerPanel for Linux client man-page
   install -Dm644 doc/pwrstat.8 "${pkgdir}/usr/share/man/man8/pwrstat.8"
