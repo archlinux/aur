@@ -1,6 +1,6 @@
 pkgbase = krueger
 	pkgdesc = it turns off or back on the ability for your machine to sleep
-	pkgver = 0.0.2
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/WebReflection/krueger
 	arch = any

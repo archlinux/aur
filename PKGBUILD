@@ -1,7 +1,7 @@
 # Maintainer: Andrea Giammarchi <andrea.giammarchi@gmail.com>
 
 pkgname=krueger
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="it turns off or back on the ability for your machine to sleep"
 arch=('any')
