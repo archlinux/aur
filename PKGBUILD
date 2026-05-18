@@ -52,8 +52,14 @@ package() {
   if [[ -n "$_onnxrt_dir" ]]; then
     local _onnxrt_real
     _onnxrt_real="$(readlink -f "$_onnxrt_dir")"
+    local _onnxrt_link
+    _onnxrt_link="$(readlink "$_onnxrt_dir")"
     local _soname
-    _soname="$(basename "$(readlink "$_onnxrt_dir")")"
+    if [[ -n "$_onnxrt_link" ]]; then
+      _soname="$(basename "$_onnxrt_link")"
+    else
+      _soname="$(basename "$_onnxrt_dir")"
+    fi
     install -Dm755 "$_onnxrt_real" "$pkgdir/usr/lib/polify/lib/$_soname"
     ln -sf "$_soname" "$pkgdir/usr/lib/polify/lib/libonnxruntime.so.1"
     ln -sf "libonnxruntime.so.1" "$pkgdir/usr/lib/polify/lib/libonnxruntime.so"
