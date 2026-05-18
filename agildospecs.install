@@ -1,4 +1,10 @@
 post_install() {
   echo "Agildo Specs: execute agildospecs --mostrar"
-  echo "  ou pelo menu Agildo Specs / Thermo > Abrir Agildo Specs"
+  if [[ -d /usr/share/icons/hicolor ]]; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+  fi
+}
+
+post_upgrade() {
+  post_install
 }

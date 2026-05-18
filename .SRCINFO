@@ -1,6 +1,6 @@
 pkgbase = agildospecs
 	pkgdesc = Informacoes de hardware estilo CPU-Z: CPU, RAM, dual channel, discos (PyQt6)
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = https://github.com/juglesbass/AgildoSpecs
 	install = agildospecs.install
@@ -17,7 +17,7 @@ pkgbase = agildospecs
 	optdepends = hwinfo: fallback se lspci nao listar placa
 	optdepends = polkit: pkexec para SMBIOS (RAM e dual channel)
 	optdepends = smartmontools: estado SMART dos discos
-	source = AgildoSpecs-2.1.7.tar.gz::https://github.com/juglesbass/AgildoSpecs/archive/refs/tags/v2.1.7.tar.gz
+	source = AgildoSpecs-2.1.8.tar.gz::https://github.com/juglesbass/AgildoSpecs/archive/refs/tags/v2.1.8.tar.gz
 	source = agildospecs.desktop
 	sha256sums = 56afc517dfb75f5d78e0fe73ca6963e3d4f4f4c75483110a9f2737e44f147479
 	sha256sums = 1bbbec1a37b3e583bc684d8812a0691db47cc0833fa7484d787de294e00985d1

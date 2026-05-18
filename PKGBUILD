@@ -2,7 +2,7 @@
 pkgname=agildospecs
 _githubuser=juglesbass
 _repo=AgildoSpecs
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Informacoes de hardware estilo CPU-Z: CPU, RAM, dual channel, discos (PyQt6)"
 arch=("any")
@@ -36,8 +36,11 @@ exec python -u /usr/lib/agildospecs/agildospecs.py "$@"
 EOF
   install -Dm644 "${srcdir}/agildospecs.desktop" \
     "${pkgdir}/usr/share/applications/agildospecs.desktop"
-  if [[ -f data/icons/hicolor/scalable/apps/agildospecs.svg ]]; then
-    install -Dm644 data/icons/hicolor/scalable/apps/agildospecs.svg \
-      "${pkgdir}/usr/share/icons/hicolor/scalable/apps/agildospecs.svg"
+  if [[ -d data/icons/hicolor ]]; then
+    for icone in data/icons/hicolor/*/apps/agildospecs.*; do
+      [[ -f "$icone" ]] || continue
+      tam="$(basename "$(dirname "$(dirname "$icone")")")"
+      install -Dm644 "$icone" "${pkgdir}/usr/share/icons/hicolor/${tam}/apps/$(basename "$icone")"
+    done
   fi
 }
