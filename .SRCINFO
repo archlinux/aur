@@ -1,0 +1,27 @@
+pkgbase = ai-trader-git
+	pkgdesc = 100% Fully-Automated Agent-Native Trading Platform
+	pkgver = r336.6b2043a
+	pkgrel = 1
+	url = https://github.com/HKUDS/AI-Trader
+	install = ai-trader.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-virtualenv
+	makedepends = npm
+	makedepends = nodejs
+	depends = python
+	optdepends = postgresql: PostgreSQL database backend
+	optdepends = redis: Caching and background task queue
+	provides = ai-trader
+	conflicts = ai-trader
+	backup = etc/ai-trader/.env
+	source = git+https://github.com/HKUDS/AI-Trader.git
+	source = ai-trader.service
+	source = ai-trader-worker.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ai-trader-git

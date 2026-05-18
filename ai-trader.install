@@ -1,0 +1,44 @@
+post_install() {
+  getent group ai-trader &>/dev/null || groupadd -r ai-trader
+  getent passwd ai-trader &>/dev/null || useradd -r -g ai-trader -d /opt/ai-trader -s /usr/bin/nologin ai-trader
+
+  chown -R ai-trader:ai-trader /opt/ai-trader/service/server/data
+  chown -R ai-trader:ai-trader /opt/ai-trader/service/server/logs 2>/dev/null
+
+  if [ ! -f /etc/ai-trader/.env ]; then
+    cp /opt/ai-trader/.env.example /etc/ai-trader/.env
+    chmod 600 /etc/ai-trader/.env
+    chown ai-trader:ai-trader /etc/ai-trader/.env
+  fi
+
+  echo ""
+  echo "==> AI-Trader installed to /opt/ai-trader"
+  echo ""
+  echo "==> Quick start:"
+  echo "==>   1. Edit config:  sudoedit /etc/ai-trader/.env"
+  echo "==>      (set ALPHA_VANTAGE_API_KEY — get free key at alphavantage.co)"
+  echo "==>   2. Start services:  sudo systemctl enable --now ai-trader ai-trader-worker"
+  echo "==>   3. Check API:  curl http://localhost:8000"
+  echo "==>   4. Frontend dev server:"
+  echo "==>      git clone https://github.com/HKUDS/AI-Trader.git ~/ai-trader"
+  echo "==>      cd ~/ai-trader/service/frontend && npm ci && npm run dev"
+  echo "==>      then open http://localhost:3000"
+  echo "==>   5. Logs:  journalctl -u ai-trader -f"
+  echo ""
+  echo "==> Uninstall:  sudo pacman -R ai-trader-git"
+  echo "==>   Data preserved in /opt/ai-trader and /etc/ai-trader"
+  echo ""
+}
+
+post_upgrade() {
+  chown -R ai-trader:ai-trader /opt/ai-trader/service/server/data
+  chown -R ai-trader:ai-trader /opt/ai-trader/service/server/logs 2>/dev/null
+}
+
+post_remove() {
+  echo ""
+  echo "==> AI-Trader data in /opt/ai-trader and config in /etc/ai-trader preserved"
+  echo "==> Remove manually: rm -rf /opt/ai-trader /etc/ai-trader"
+  echo "==> Remove user: userdel ai-trader"
+  echo ""
+}

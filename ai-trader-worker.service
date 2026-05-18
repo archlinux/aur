@@ -1,0 +1,19 @@
+[Unit]
+Description=AI-Trader Background Worker
+After=network.target redis.service postgresql.service ai-trader.service
+Wants=redis.service
+
+[Service]
+Type=simple
+User=ai-trader
+Group=ai-trader
+WorkingDirectory=/opt/ai-trader/service/server
+Environment=DOTENV_PATH=/etc/ai-trader/.env
+ExecStart=/opt/ai-trader/.venv/bin/python worker.py
+Restart=on-failure
+RestartSec=5
+
+ProtectSystem=false
+
+[Install]
+WantedBy=multi-user.target
