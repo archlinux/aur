@@ -1,6 +1,6 @@
 pkgbase = matchmaker-bin
 	pkgdesc = A fast, configurable and intuitive fuzzy searcher
-	pkgver = 0.0.26
+	pkgver = 0.0.29
 	pkgrel = 1
 	url = https://github.com/Squirreljetpack/matchmaker
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = matchmaker-bin
 	depends = libgcc
 	provides = mm
 	conflicts = matchmaker
-	source = README-0.0.26.md::https://raw.githubusercontent.com/Squirreljetpack/matchmaker/0.0.26/matchmaker-cli/README.md
-	source = LICENSE-0.0.26::https://raw.githubusercontent.com/Squirreljetpack/matchmaker/0.0.26/matchmaker-lib/LICENSE
-	sha256sums = 8415b641037e7a45a3ef0b24ab9d247db99cadf912b280dccf9fffe2f4cbf0cc
+	source = README-0.0.29.md::https://raw.githubusercontent.com/Squirreljetpack/matchmaker/0.0.29/matchmaker-cli/README.md
+	source = LICENSE-0.0.29::https://raw.githubusercontent.com/Squirreljetpack/matchmaker/0.0.29/matchmaker-lib/LICENSE
+	sha256sums = 0738347f8fcbed185fe86c42bb343688a4f65c4778f5b98bce066686fd11e273
 	sha256sums = d0b72bc24eb472035c25af6eff3946409fe62609ce40cfd21746af992cf8a8d4
-	source_x86_64 = matchmaker-x86_64-0.0.26.tgz::https://github.com/Squirreljetpack/matchmaker/releases/download/0.0.26/matchmaker-linux.tar.gz
-	sha256sums_x86_64 = 0350da49e7a2f831c19d08cffdd0bc34c778a932c19500fcef99eb3cbdc15a7d
+	source_x86_64 = matchmaker-x86_64-0.0.29.tgz::https://github.com/Squirreljetpack/matchmaker/releases/download/0.0.29/matchmaker-linux.tar.gz
+	sha256sums_x86_64 = 2880e16bb2d262d591ba3865e8115528a49922c2aaa8380018215f9b96901d1d
 
 pkgname = matchmaker-bin
