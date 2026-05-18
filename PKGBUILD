@@ -3,7 +3,7 @@
 
 pkgname=qoredb-bin
 _pkgname=qoredb
-pkgver=0.1.27
+pkgver=0.1.28
 pkgrel=1
 pkgdesc="Next gen database client — lightweight alternative to DBeaver/pgAdmin (binary release)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
     'libsoup'
     'openssl'
     'pango'
-    'webkit2gtk'
+    'webkit2gtk-4.1'
 )
 optdepends=(
     'postgresql-libs: PostgreSQL connection support'
