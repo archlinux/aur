@@ -53,7 +53,7 @@ package() {
     local _onnxrt_real
     _onnxrt_real="$(readlink -f "$_onnxrt_dir")"
     local _onnxrt_link
-    _onnxrt_link="$(readlink "$_onnxrt_dir")"
+    _onnxrt_link="$(readlink "$_onnxrt_dir" 2>/dev/null)" || true
     local _soname
     if [[ -n "$_onnxrt_link" ]]; then
       _soname="$(basename "$_onnxrt_link")"
