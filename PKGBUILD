@@ -6,7 +6,7 @@ _pkgname=ggc
 pkgname=${_pkgname}-bin
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
 
-pkgver=8.4.0
+pkgver=8.5.2
 pkgrel=1
 _ghversion=v${pkgver}
 
@@ -23,8 +23,8 @@ conflicts=("${_pkgname}"{,-git})
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_ghversion}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_ghversion}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('0ee44614a1a3a9414a23dc072fd22e980395649f7eb83262a2902df8e0292608')
-sha256sums_aarch64=('9e45e3d61b713bf961fc5f3025e4d4a2b575650857fd82404142de84fa9b90d7')
+sha256sums_x86_64=('ca4bb65b52e60cc3a664ade6e47f0fedb21136380519c42c22605230bba37a00')
+sha256sums_aarch64=('ebafcfccd66e4028ad22adc8544dcbaa8d683673d5ed922ba25dbde586434863')
 
 
 build() {
