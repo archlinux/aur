@@ -1,5 +1,5 @@
 pkgname=multica-desktop-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills - Desktop GUI"
 arch=(x86_64 aarch64)
@@ -12,8 +12,8 @@ conflicts=("multica-desktop")
 provides=(multica-desktop)
 
 _appimage="multica-desktop-${pkgver}-linux-${arch}.AppImage"
-source=("${_appimage}::https://github.com/multica-ai/multica/releases/download/v0.3.1/multica-desktop-0.3.1-linux-x86_64.AppImage")
-sha256sums=('ecf953f4ea64872535a49e251d566d4b044eb8a117c6ba8d5dbde5fdfaf700df')
+source=("${_appimage}::https://github.com/multica-ai/multica/releases/download/v0.3.2/multica-desktop-0.3.2-linux-x86_64.AppImage")
+sha256sums=('23653a72147c5cad2310d51718a2fa48e218e5ceb626b2f4fe720ffef7d5f2ca')
 noextract=("${_appimage}")
 
 prepare() {
@@ -39,21 +39,18 @@ package() {
     sed -i "s|Icon=.*|Icon=multica-desktop|" \
         "${pkgdir}/usr/share/applications/multica-desktop.desktop"
     if [ -d usr/share/icons ]; then
-        # Install icon files directly with binary_name — no cp+mv rename needed
-        find usr/share/icons -type f \( -name '*.png' -o -name '*.svg' \) | while read -r icon; do
-            relpath="${icon#usr/share/icons/}"
-            dir="${pkgdir}/usr/share/icons/$(dirname "$relpath")"
+        cp -r usr/share/icons "${pkgdir}/usr/share/"
+        find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} +
+        find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 {} +
+        find "${pkgdir}/usr/share/icons" -name '*.png' -o -name '*.svg' | while read -r icon; do
+            dir=$(dirname "$icon")
             base=$(basename "$icon")
             ext="${base##*.}"
-            install -Dm644 "$icon" "${dir}/multica-desktop.${ext}"
-        done
-        # Copy non-icon files (index.theme, etc.) as-is
-        find usr/share/icons -type f ! \( -name '*.png' -o -name '*.svg' \) | while read -r f; do
-            relpath="${f#usr/share/icons/}"
-            install -Dm644 "$f" "${pkgdir}/usr/share/icons/${relpath}"
+            name="${base%.*}"
+            [ "$name" = "multica-desktop" ] && continue
+            mv "$icon" "${dir}/multica-desktop.${ext}"
         done
     fi
-
     # Install root-level icons to pixmaps (first matching png or svg)
     for f in *.png *.svg; do
         [ -f "$f" ] || continue
