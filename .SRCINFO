@@ -1,6 +1,6 @@
 pkgbase = veila-git
 	pkgdesc = Secure, elegant, and fast Wayland screen locker (latest git)
-	pkgver = 0.3.2.r0.g0000000
+	pkgver = 0.4.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/naurissteins/Veila
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = veila-git
 	makedepends = wayland
 	depends = libxkbcommon
 	depends = pam
-	optdepends = systemd: enable the bundled user service with systemctl --user
+	optdepends = systemd: enable the bundled user services with systemctl --user
 	provides = veila
 	conflicts = veila
 	conflicts = veila-bin

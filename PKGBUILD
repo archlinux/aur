@@ -1,7 +1,7 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-git
 _repo=Veila
-pkgver=0.3.2.r0.g0000000
+pkgver=0.4.0.r0.g0000000
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker (latest git)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('veila' 'veila-bin')
 options=('!debug')
 depends=('libxkbcommon' 'pam')
 makedepends=('cargo' 'git' 'pkgconf' 'wayland')
-optdepends=('systemd: enable the bundled user service with systemctl --user')
+optdepends=('systemd: enable the bundled user services with systemctl --user')
 backup=('etc/pam.d/veila')
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -41,6 +41,8 @@ package() {
 
   install -Dm644 assets/systemd/veilad.service \
     "$pkgdir/usr/lib/systemd/user/veilad.service"
+  install -Dm644 assets/systemd/veila-idle.service \
+    "$pkgdir/usr/lib/systemd/user/veila-idle.service"
   install -Dm644 packaging/arch/veila.pam "$pkgdir/etc/pam.d/veila"
 
   local asset_dir asset_file
