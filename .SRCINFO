@@ -1,0 +1,14 @@
+pkgbase = kls
+	pkgdesc = A security-focused directory listing tool
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/NobelC/kls
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://github.com/NobelC/kls.git#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = kls
