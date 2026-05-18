@@ -6,7 +6,7 @@
 #   1. Compute the SHA256 of the tarball:
 #        curl -fsSL https://registry.npmjs.org/@truealter/cli/-/cli-${pkgver}.tgz \
 #          | sha256sum
-#   2. Replace sha256sums=('SKIP')
+#   2. Replace sha256sums=('SKIP') with the real digest.
 #   3. makepkg --printsrcinfo > .SRCINFO
 #   4. git add PKGBUILD .SRCINFO && git commit && git push
 #
@@ -17,7 +17,7 @@
 
 pkgname=truealter-cli
 _npmname='@truealter/cli'
-pkgver=0.2.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='ALTER identity CLI -- login once, authenticated everywhere'
 arch=('any')
@@ -27,7 +27,15 @@ depends=('nodejs>=20')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_npmname}/-/cli-${pkgver}.tgz")
 noextract=("cli-${pkgver}.tgz")
-sha256sums=('560f9da8cb6eb46f26c65b4d8c680b2da707f1daf70625a6940020cddd02b5a4')
+# sha256 pinned to published 0.7.0 tarball.
+# Recompute on every pkgver bump:
+#   curl -fsSL https://registry.npmjs.org/@truealter/cli/-/cli-${pkgver}.tgz \
+#     -o cli-${pkgver}.tgz && sha256sum cli-${pkgver}.tgz
+# CI rejects 'SKIP' values via .github/workflows/ci.yml.
+# NOTE: /boogie-time §1.3 still gates Phase A on major version >= 1.0.0;
+# this PKGBUILD tracks the latest public minor for keep-pace hygiene
+# and will move to v1.0.0 in the launch-trigger PR.
+sha256sums=('187ebe653fdb9075b7d4d5d26fc903ed6c340f3eed0ea7c68495b2bffaf031ad') # pragma: allowlist secret
 
 package() {
   cd "${srcdir}"
