@@ -9,20 +9,21 @@ url="https://zen-browser.app/"
 license=('MPL-2.0')
 conflicts=('zen-browser' 'zen-browser-bin' 'zen-browser-git')
 provides=("zen-browser=$pkgver")
-depends=('alsa-lib' 'gtk3' 'libx11' 'mime-types' 'systemd-libs' 'ttf-font')
-optdepends=('libpulse: audio support'
-            'alsa-lib: audio support'
-            'libnotify: notification support'
-            'hunspell: spell checking')
+depends=('alsa-lib' 'gtk3' 'libx11' 'mime-types' 'nspr' 'nss' 'systemd-libs' 'ttf-font')
+optdepends=('pulse-native-provider: Audio support'
+            'libnotify: Notification integration'
+            'networkmanager: Location detection via available WiFi networks'
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell: Spell checking')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source=("zen-browser-twilight.sh"
         "zen-browser-twilight.desktop"
         "policies.json")
-source_x86_64=("https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz")
-source_aarch64=("https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz")
+source_x86_64=("https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-${CARCH}.tar.xz")
+source_aarch64=("https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-${CARCH}.tar.xz")
 sha512sums=('dae4133154524cca0ed0bed47b9c2a6070be2e9aba603442e3050c40a15fd04b00dd502eeab89b8a0f51ee27020a19b0ee5f2ac87cd4ae9c0694fd21d330c749'
-            '70e0d97a3c9d655e1ab142c6e53c9ab107fb01022df13b9e0573779e7c898ecd04d24b2105cf15a0f0a7284767419b6adaef08ceabb411554bd08bab82c4ee9a'
+            '5f16ff2b8b84402b19b735e2b627d8290bdf9289e7ea26973aa6dc339ce6c9835ce6c4c12df881436108894bcee5623e43b5ef090c641031369ac28975b6107e'
             'f17d02c67f731ea27401176d2fb320a093367d94c8cbfd18a3b76c6f516994b8c547cee970b7bbf0422767064d62410884e07ae6e95b59007b48869e750fdcd9')
 sha512sums_x86_64=('a1b61a6165ed7e8f014a9e66821976b47b427614c60f00300e943e06a3f10ed35c6281a5f0749eb969e5e9ba418af7ec0cdfcc2a7dd5776267f780097c596c47')
 sha512sums_aarch64=('b03d18148a530f51d99c93c2a93d6a562c0e56f492a45830779d8d07139412e63b7f6cdd5db891629f7ce23f81ccb4ca42080eb6b0650b71e720700cc5d97c76')
@@ -41,11 +42,19 @@ package() {
     # Desktop entry
     install -Dm644 "${srcdir}/zen-browser-twilight.desktop" "${pkgdir}/usr/share/applications/zen-browser-twilight.desktop"
 
-    # Icons
-    for size in 16 32 48 64 128; do
-        install -Dm644 "${pkgdir}/opt/${pkgname}/browser/chrome/icons/default/default${size}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/zen-browser-twilight.png" 2>/dev/null || true
+    # Icons (symlinks to avoid duplicating files)
+    for i in 16x16 32x32 48x48 64x64 128x128; do
+        install -d "${pkgdir}/usr/share/icons/hicolor/${i}/apps/"
+        ln -s "/opt/${pkgname}/browser/chrome/icons/default/default${i/x*}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${i}/apps/${pkgname}.png"
     done
+
+    # System dictionaries
+    ln -Ts /usr/share/hunspell "${pkgdir}/opt/${pkgname}/dictionaries"
+    ln -Ts /usr/share/hyphen "${pkgdir}/opt/${pkgname}/hyphenation"
+
+    # System certificates
+    ln -sf /usr/lib/libnssckbi.so "${pkgdir}/opt/${pkgname}/libnssckbi.so"
 
     # Policies - disable auto-update (managed via AUR)
     install -Dm644 "${srcdir}/policies.json" "${pkgdir}/opt/${pkgname}/distribution/policies.json"
