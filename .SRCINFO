@@ -1,16 +1,16 @@
 pkgbase = logx-bin
 	pkgdesc = Pretty-print JSON slog logs from stdin, files, or follow mode
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/AyoubTadlaoui/GoLogX
 	license = MIT
 	conflicts = GoLogX
 	provides = GoLogX
 	arch = aarch64
-	source_aarch64 = https://github.com/AyoubTadlaoui/GoLogX/releases/download/v0.1.13/GoLogX_0.1.13_linux_arm64.tar.gz
-	sha256sums_aarch64 = 249c95591160ab216ee23de1091bdcea55b309e5ee08bd3f0728452ae4a870c7
+	source_aarch64 = https://github.com/AyoubTadlaoui/GoLogX/releases/download/v0.1.14/GoLogX_0.1.14_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0efc1afa55e97e579b8fa6ddc3371135502d03367daafe4ad18f55b0f40aa123
 	arch = x86_64
-	source_x86_64 = https://github.com/AyoubTadlaoui/GoLogX/releases/download/v0.1.13/GoLogX_0.1.13_linux_x86_64.tar.gz
-	sha256sums_x86_64 = e5f8c3b8bb3906e89417d186fef6b2368da7490b6d53e50b301b4a0a696f751e
+	source_x86_64 = https://github.com/AyoubTadlaoui/GoLogX/releases/download/v0.1.14/GoLogX_0.1.14_linux_x86_64.tar.gz
+	sha256sums_x86_64 = e5b9c4120a18b24e0d4775219833e3e572d23aecedfe9cc218069b7dbe1367e2
 	
 pkgname = logx-bin
