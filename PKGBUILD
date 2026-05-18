@@ -1,71 +1,49 @@
-# Maintainer: envolution
+# Maintainer: jeryd leuck <jerydleuck@gmail.com>
+# Contributor: envolution <envolution at mesh dot xyz>
 # Contributor: SoleSoul
-# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=lmstudio-beta
 _appname=lm-studio
-pkgver=0.3.32.1
-_pkgver="${pkgver%.*}-${pkgver##*.}"
+pkgver=0.4.14
 pkgrel=1
-pkgdesc="Discover, download, and run local LLMs"
+pkgdesc="Discover, download, and run local LLMs (Professional Beta Repack)"
 arch=('x86_64')
 url="https://lmstudio.ai/"
 license=('LicenseRef-EULA')
-depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clblast')
-makedepends=('squashfs-tools' 'graphicsmagick')
-options=(!strip !debug)
-_appimage="${pkgname}-${pkgver}.AppImage"
-source=("${_appimage}::https://installers.lmstudio.ai/linux/x64/${_pkgver}/LM-Studio-${_pkgver}-x64.AppImage")
-sha256sums=('ff7fde5fd0bc3b8dee9633e149f6ef063d853ec1683b299e012ff69a9a6b845f')
-noextract=("${_appimage}")
-
-prepare() {
-  rm -rf squashfs-root
-  chmod +x "${_appimage}"
-
-  # get the files we need for packaging
-  unset PAGER # unsquashfs is very picky about pager settings
-  offset=$(./"${_appimage}" --appimage-offset)
-  unsquashfs -q -o "$offset" -d squashfs-root "${_appimage}" \
-    "${_appname}.desktop" \
-    "usr/share/icons/hicolor/0x0/apps/lm-studio.png" \
-    "LICENSE.electron.txt" \
-    "LICENSES.chromium.html"
-  # unsquashfs -o "$offset" -l "${_appimage}" | grep -i license
-}
-
-build() {
-  # Adjust .desktop so it will work outside of AppImage container
-  sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${pkgname}|" \
-    "squashfs-root/${_appname}.desktop"
-  sed -i -E "s|Icon=.*|Icon=${pkgname}|" \
-    "squashfs-root/${_appname}.desktop"
-  sed -i -E "s|Name=.*|Name=LM Studio Beta|" \
-    "squashfs-root/${_appname}.desktop"
-}
+depends=('alsa-lib' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxshmfence' 'mesa' 'nss' 'pango')
+optdepends=('cuda: NVIDIA GPU acceleration'
+            'rocm-core: AMD GPU acceleration')
+provides=('lmstudio')
+conflicts=('lmstudio-beta-appimage')
+filename="LM-Studio-${pkgver}-1-x64.deb"
+source=("$filename::https://installers.lmstudio.ai/linux/x64/${pkgver}-1/LM-Studio-${pkgver}-1-x64.deb")
+sha256sums=('b6a5a61f0058f72f8ad77ceaa6a669b473303f304574ea8f0ba54ccf60e68ee2')
 
 package() {
-  # AppImage
-  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appname}.AppImage"
-  install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/EULA" <<< "https://lmstudio.ai/app-terms"
+  # Extract data.tar.xz from the debian package
+  bsdtar -xOf "$srcdir/$filename" data.tar.xz | bsdtar -C "$pkgdir" -xv
 
-  # Desktop file
-  install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" \
-    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # Fix permissions for chrome-sandbox (required for Electron sandboxing)
+  chmod 4755 "$pkgdir/opt/LM-Studio/chrome-sandbox"
 
-  #source icon from squashfs
-  src_icon="$srcdir/squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png"
-  sizes=("16x16" "32x32" "48x48" "64x64" "128x128" "256x256")
+  # Create symlink for terminal access
+  install -d "$pkgdir/usr/bin"
+  ln -s /opt/LM-Studio/lm-studio "$pkgdir/usr/bin/lmstudio-beta"
+  ln -s /opt/LM-Studio/lm-studio "$pkgdir/usr/bin/lms-beta"
 
-  # Loop through each size and create resized icons
-  for size in "${sizes[@]}"; do
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/$size/apps"
-    gm convert "$src_icon" -resize "$size" "$pkgdir/usr/share/icons/hicolor/$size/apps/${pkgname}.png"
-  done
+  # Fix the icon path (the .deb uses usr/share/icons/hicolor/0x0/...)
+  install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+  mv "$pkgdir/usr/share/icons/hicolor/0x0/apps/lm-studio.png" \
+     "$pkgdir/usr/share/icons/hicolor/512x512/apps/lmstudio-beta.png"
+  rmdir "$pkgdir/usr/share/icons/hicolor/0x0/apps"
+  rmdir "$pkgdir/usr/share/icons/hicolor/0x0"
 
-  # Symlink executable
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/${_appname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
+  # Fix the desktop file
+  mv "$pkgdir/usr/share/applications/lm-studio.desktop" "$pkgdir/usr/share/applications/lmstudio-beta.desktop"
+  sed -i 's/^Name=.*/Name=LM Studio Beta/' "$pkgdir/usr/share/applications/lmstudio-beta.desktop"
+  sed -i "s|^Exec=.*|Exec=/usr/bin/lmstudio-beta %U|" "$pkgdir/usr/share/applications/lmstudio-beta.desktop"
+  sed -i 's/^Icon=.*/Icon=lmstudio-beta/' "$pkgdir/usr/share/applications/lmstudio-beta.desktop"
+  
+  # Install License
+  install -Dm644 "$pkgdir/opt/LM-Studio/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron"
 }
-# vim:set ts=2 sw=2 et:
