@@ -3,7 +3,7 @@
 
 _name=azure-storage-blob
 pkgname=python-$_name
-pkgver=12.26.0
+pkgver=12.29.0
 pkgrel=1
 pkgdesc='Microsoft Azure Blob Storage Client Library for Python.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'python-azure-core' 'python-cryptography' 'python-typing_exten
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-aiohttp: aio')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('5dd7d7824224f7de00bfeb032753601c982655173061e242f13be6e26d78d71f')
+sha256sums=('2824ddd7ebc9056034ebc76b17971a38e9aa5835abb0d565b9700493f2a6c657')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
