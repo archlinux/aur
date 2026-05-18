@@ -25,10 +25,10 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/keyra/keyra-daemon"
-  export CARGO_HOME="$srcdir/cargo-home"
+  # Compilar daemon da raiz do workspace para que o target/ fique em keyra/target/
+  cd "$srcdir/keyra"
   unset CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
-  cargo build --release --locked
+  cargo build --release --locked -p keyra-daemon
 
   cd "$srcdir/keyra/keyra-flutter"
   unset CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
@@ -37,13 +37,11 @@ build() {
 }
 
 package() {
-  # 1. Instalar o Daemon - procurar binário em possíveis camadas de compilação do Cargo
-  local daemon_bin=""
-  daemon_bin=$(find "$srcdir/keyra/keyra-daemon/target" -maxdepth 3 -name keyra-daemon -type f -executable 2>/dev/null | head -1)
-  if [ -z "$daemon_bin" ]; then
-    echo "ERRO: keyra-daemon não encontrado em $srcdir/keyra/keyra-daemon/target/"
-    ls -la "$srcdir/keyra/keyra-daemon/target/" 2>/dev/null || true
-    ls -la "$srcdir/keyra/keyra-daemon/target/release/" 2>/dev/null || true
+  # Binário: em workspace Rust, o target/ fica na raiz keyra/keyra-daemon (nao dentro de keyra-daemon/target/)
+  local daemon_bin="$srcdir/keyra/target/release/keyra-daemon"
+  if [ ! -f "$daemon_bin" ]; then
+    echo "ERRO: keyra-daemon não encontrado em $daemon_bin"
+    ls "$srcdir/keyra/target/release/" 2>/dev/null || true
     exit 1
   fi
   install -Dm755 "$daemon_bin" "$pkgdir/usr/bin/keyra-daemon"
