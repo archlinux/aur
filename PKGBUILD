@@ -4,7 +4,7 @@
 pkgname=python-tree-sitter-python
 _gitpkgname=tree-sitter-python
 pkgver=0.25.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Python Bindings for tree-sitter-python'
 arch=(
       'x86_64'
