@@ -2,7 +2,7 @@
 
 pkgname=shuvscode-bin
 _pkgname=shuvscode
-pkgver=1.120.03314.shuv1
+pkgver=1.120.03315.shuv1
 pkgrel=1
 pkgdesc="shuvscode: an opinionated VS Code/VSCodium fork (bundles Electron)"
 arch=('x86_64')
@@ -37,7 +37,7 @@ source=(
   "shuvscode.desktop"
 )
 sha256sums=(
-  'e2907c47b21b15d75bf89eafeb8746d85f28d9ac0ff91f5920d5d909c0809ca7'
+  'e348916b0af653422fec10506690efe2adddd25d698fae0344f3007cbe81a48e'
   '27281b54125f31c0f89fd5a68b686b9ef10b21f1e8bba1f6eb71e89a43779419'
   '07d8fc26dba7ef143732980b1bdc497f66815570e16c83a20009524f477ae697'
 )
