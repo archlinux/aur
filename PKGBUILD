@@ -11,7 +11,7 @@ depends=(
     'labwc'
     'qt6-base'
     'qt6-wayland'
-    'layershell-qt6'
+    'layer-shell-qt'
     'python'
 )
 makedepends=(
