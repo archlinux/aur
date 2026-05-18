@@ -11,6 +11,6 @@ pkgbase = riptide
 	depends = mpv
 	depends = openssl
 	source = riptide-0.3.5.tar.gz::https://github.com/fezzik-the-giant/riptide/archive/refs/tags/v0.3.5.tar.gz
-	sha256sums = 153be9cf81ecc45bced12759d426c47aa0d0c68099202b809fc7f3c394babecd
+	sha256sums = de304a16c0b841cb0b47e8098f740befdfc642e181e95958f7dca6f893b1d797
 
 pkgname = riptide
