@@ -1,0 +1,21 @@
+pkgbase = treebloom-projector-bin
+	pkgdesc = A modular, interactive process mapping and presentation tool
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://treebloom.org/apps/projector/
+	arch = x86_64
+	license = custom:Proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = pango
+	depends = libsoup3
+	depends = openssl
+	provides = projector
+	conflicts = projector
+	source = treebloom-projector-bin-3.1.1.deb::https://github.com/bertjerred/treebloom-site/releases/download/v3.1.1/Projector_3.1.1_amd64.deb
+	sha256sums = SKIP
+
+pkgname = treebloom-projector-bin
