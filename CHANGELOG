@@ -1,0 +1,45 @@
+3.4.1
+===================
+This release introduces native shell autocompletions, visual highlights for
+destructive commands, and a configuration fix for terminal keyboard enhancements
+on macOS, alongside other minor improvements.
+
+Destructive Command Highlighting
+The TUI now automatically highlights known destructive commands in red to
+provide a clear visual warning before execution (#54).
+
+Shell Autocompletions
+Native shell completion scripts are now available for all currently supported
+shells, improving command-line interaction and discovery directly from your
+prompt.
+
+Keyboard Enhancement Compatibility
+Advanced terminal keyboard protocols are now disabled by default on
+macOS to prevent interference with certain native keyboard layouts. A new
+tui.keyboard_enhancement configuration option has been introduced, allowing
+users to manually enable or disable this protocol as needed.
+
+Configuration Directory Initialization
+Fixed an issue where the configuration editor failed to open if the target
+directory did not exist (#50). The application now ensures the directory is
+created before launching the editor.
+
+
+3.4.0
+===================
+New changelog Subcommand
+Designed to eliminate context switching, this command allows you to read the
+release notes directly in your terminal. After checking for or performing an
+update, you can now immediately review what changed without opening a browser.
+It includes filtering options to list releases by version range (--from, --to)
+or type (--major, --minor).
+
+Comprehensive Update Summary
+The update command now aggregates and displays the Update Considerations for
+all versions covered during the update process, ensuring you don't miss critical
+instructions even when skipping multiple versions.
+
+Fine-Tune Suggestions
+In the variable replacement TUI, you can now press the Right Arrow key on a
+suggestion to copy it into the input field. This makes it easy to fine-tune or
+slightly modify a value before confirming it.
