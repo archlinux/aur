@@ -109,6 +109,9 @@ depends=(
 	quickshell
 )
 makedepends=('git' 'go' 'base-devel')
+replaces=('snry-shell-qs')
+conflicts=('snry-shell-qs')
+provides=('snry-shell-qs=$pkgver')
 optdepends=(
 	'snry-dm: Display manager (greeter/login screen)'
 	'plasma-browser-integration: KDE browser integration support'

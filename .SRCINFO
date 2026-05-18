@@ -96,6 +96,9 @@ pkgbase = snry-shell
 	depends = quickshell
 	optdepends = snry-dm: Display manager (greeter/login screen)
 	optdepends = plasma-browser-integration: KDE browser integration support
+	provides = snry-shell-qs=$pkgver
+	conflicts = snry-shell-qs
+	replaces = snry-shell-qs
 	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v3.0.0
 	sha256sums = SKIP
 
