@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat
-pkgver=2.3.1
+pkgver=2.3.3
 _electronversion=35
-_nodeversion=22
+_nodeversion=24
 pkgrel=1
 pkgdesc="A minimalist offline music library player for desktop, built on Electron, React, and Material UI.Use system-wide electron."
 arch=('any')
