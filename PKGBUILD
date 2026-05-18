@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mcp-gitee-ent
-pkgver=0.1.10
-pkgrel=3
+pkgver=0.1.11
+pkgrel=1
 pkgdesc="Gitee Enterprise MCP Server is a Model Context Protocol (MCP) server implementation for Gitee Enterprise."
 arch=($CARCH)
 url="https://gitee.com/oschina/mcp-gitee-ent"
@@ -23,7 +23,7 @@ backup=()
 options=('!strip' '!debug')
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('25780606b7539923401f96c61b4d825e7dbb636b9cd25f98ae8544a3aba3e4d2')
+sha256sums=('02316a35aa0952f4ce1b5bfdf7fa1e8d370ae545d2ad2abfaf4248421aa46096')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
