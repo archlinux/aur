@@ -6,7 +6,7 @@ _appname=sqview
 pkgname=${_gitname}-bin
 pkgdesc="A keyboard-first terminal viewer for SQLite databases"
 
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,9 +30,9 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENCE.txt"
 		"EXAMPLE-${pkgver}.db::${_ghurlraw}/examples/chinook.db")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 sha256sums=('d21f768901e1abb761a57da47ab03b3cbc0f6e1725529cd3667ca8b830bc1919'
-            '5d25907c372832fcd158111ae792694f73cf13df693efbc902529c5c58be5d51'
-            '655ba94cd9e427e2699afa4309d1494b58b825a863e37c30eae09267a2a5a093')
-sha256sums_x86_64=('7096fb8101a91c97801eb23d64e1a39bb968751cc921fdeda1fa63d9a81521d8')
+            '6ace17ed34b5e716233cd9fa050b54f8f413ccdfabfc39561f6b41f2976bafbe'
+            '1de96d159d647e33944d1f07d8197e30d6722cefa3fbc0933366fa91b5552eeb')
+sha256sums_x86_64=('ac694c3e2c31dc557563a17b9977c4aaaa81b73d0c887c9507afc3687aac5b83')
 
 
 package() {
