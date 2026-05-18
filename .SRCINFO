@@ -1,7 +1,7 @@
 pkgbase = msty-studio
 	pkgdesc = Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local.
 	pkgver = 2.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://msty.ai/
 	arch = x86_64
 	license = proprietary
@@ -31,6 +31,8 @@ pkgbase = msty-studio
 	depends = mesa
 	depends = nss
 	depends = pango
+	optdepends = cuda: NVIDIA GPU acceleration
+	optdepends = rocm-core: AMD GPU acceleration
 	provides = msty
 	provides = msty-deb
 	provides = msty-rocm-bin
