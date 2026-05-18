@@ -30,6 +30,6 @@ pkgbase = synology-drive-client-bin
 	source = synology-drive-client-17892.deb::https://global.synologydownload.com/download/Utility/SynologyDriveClient/4.0.3-17892/Ubuntu/Installer/synology-drive-client-17892.x86_64.deb
 	source = synology-drive.service
 	sha256sums = f6aec5a5974d59963ed833fdf1a0cc7bebd612d8691f491c62cba770cdc78d67
-	sha256sums = 0dc43c10722976c544b92400bfcd53e6c0ddb70092d6b397cd146777770eaf18
+	sha256sums = 569f3ba5a1fc972eee9fc01ce028d68ad7b75e79ff30e3f719237dd41412243c
 
 pkgname = synology-drive-client-bin

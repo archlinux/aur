@@ -22,7 +22,7 @@ filename="synology-drive-client-${_pkgrel}.deb"
 source=("${filename}::https://global.synologydownload.com/download/Utility/SynologyDriveClient/${_pkgver}-${_pkgrel}/Ubuntu/Installer/synology-drive-client-${_pkgrel}.x86_64.deb"
         "synology-drive.service")
 sha256sums=('f6aec5a5974d59963ed833fdf1a0cc7bebd612d8691f491c62cba770cdc78d67'
-            '0dc43c10722976c544b92400bfcd53e6c0ddb70092d6b397cd146777770eaf18')
+            '569f3ba5a1fc972eee9fc01ce028d68ad7b75e79ff30e3f719237dd41412243c')
 
 package() {
   # Extract data.tar.xz from the debian package
