@@ -1,0 +1,94 @@
+post_install() {
+	# Detect the installing user (not root)
+	local user
+	user=$(logname 2>/dev/null || awk -F: '$3>=1000 && $3<65534 {print $1; exit}' /etc/passwd)
+
+	if [ -z "$user" ]; then
+		echo ">>> Could not detect installing user. Run 'snry-daemon setup' manually."
+		return 0
+	fi
+
+	local uid
+	uid=$(id -u "$user")
+
+	echo ">>> Setting up Snry Shell for user: $user"
+
+	# Phase 1: System setup (groups, services, PAM, logind)
+	HOME="/home/$user" snry-daemon setups 2>/dev/null || true
+
+	# Phase 2: Install runtime dependencies (as the user)
+	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		snry-daemon install 2>/dev/null || true
+
+	# Phase 3: Config sync (as the user)
+	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		snry-daemon sync 2>/dev/null || true
+
+	# Phase 4: Enable and start the daemon via systemd user service
+	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		systemctl --user enable --now snry-daemon.service 2>/dev/null || true
+
+	echo ""
+	echo ">>> Snry Shell installed and configured!"
+	echo ">>> Log out and log back in (or reboot) to start."
+	echo ""
+	echo ">>> To enable the display manager (replaces your login screen):"
+	echo ">>>   sudo pacman -S snry-dm"
+	echo ">>>   sudo systemctl enable snry-dm.service"
+}
+
+post_upgrade() {
+	local user
+	user=$(logname 2>/dev/null || awk -F: '$3>=1000 && $3<65534 {print $1; exit}' /etc/passwd)
+
+	if [ -z "$user" ]; then
+		echo ">>> Could not detect installing user. Run 'snry-daemon setup' manually."
+		return 0
+	fi
+
+	local uid
+	uid=$(id -u "$user")
+
+	echo ">>> Installing runtime dependencies for user: $user"
+
+	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		snry-daemon install 2>/dev/null || true
+
+	echo ">>> Syncing Snry Shell configs for user: $user"
+
+	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		snry-daemon sync 2>/dev/null || true
+
+	# Restart the daemon to pick up any changes
+	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		systemctl --user restart snry-daemon.service 2>/dev/null || true
+
+	echo ""
+	echo ">>> Snry Shell updated!"
+	echo ">>> The daemon has been restarted via systemd."
+}
+
+post_remove() {
+	local user
+	user=$(logname 2>/dev/null || awk -F: '$3>=1000 && $3<65534 {print $1; exit}' /etc/passwd)
+
+	if [ -z "$user" ]; then
+		echo ">>> Could not detect installing user."
+		echo ">>> Disable the service manually: systemctl --user disable --now snry-daemon.service"
+		return 0
+	fi
+
+	local uid
+	uid=$(id -u "$user")
+
+	# Stop and disable the daemon service
+	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
+		systemctl --user disable --now snry-daemon.service 2>/dev/null || true
+
+	echo ""
+	echo ">>> Snry Shell has been removed."
+	echo ">>> Config files in ~/.config/ were NOT deleted."
+	echo ">>> To fully clean up, run (before removing this package):"
+	echo ">>>   snry-daemon uninstall"
+	echo ""
+}
