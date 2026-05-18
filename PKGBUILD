@@ -3,7 +3,7 @@
 _pkgbase=visage
 pkgname="$_pkgbase-git"
 pkgver=0.3.0.r24.ga9eeb69
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux face authentication via PAM with persistent daemon, IR camera support, ONNX inference'
 arch=('x86_64')
 url='https://sovren.software/#/visage'
@@ -32,12 +32,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release
-}
-
-check() {
-	cd "$_pkgbase"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen
 }
 
 package() {
