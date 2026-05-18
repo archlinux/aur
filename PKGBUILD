@@ -1,31 +1,53 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="wo"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A workspace shell manager"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/antham/${pkgname}"
-license=('MIT')
-depends=('glibc')
-makedepends=('go')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4c44371ad3bfe892ac06782a29c960bd93535d89fee6244e3dd61048d6bee3d8')
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'go'
+  # 'nano'
+)
+_pkgsrc="${url##*/}-${pkgver}"
+source=(
+  "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
+)
+sha256sums=('689842ef9bc30c7ba7819b6028eef2a8f1206a3ddb9bc008ea2dd872181861d8')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
-  mkdir -p "build" "completions"
+  go mod download -modcacherw -x
+  go mod verify
+
+  mkdir -p "completions"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+  export EDITOR="true"
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" -ldflags "\
+    -X ${url#https://}/internal/cmd.appVersion=${pkgver}" \
+    .
 
   for _sh in bash fish zsh; do
     ./"build/${pkgname}" setup "${_sh}" > "completions/${pkgname}.${_sh}"
@@ -39,12 +61,12 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md"        "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cd "completions"
-  install -Dm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 "${pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -vDm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "${pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }

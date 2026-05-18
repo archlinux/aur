@@ -1,13 +1,13 @@
 pkgbase = wo
 	pkgdesc = A workspace shell manager
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/antham/wo
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = wo-1.0.0.tar.gz::https://github.com/antham/wo/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = 4c44371ad3bfe892ac06782a29c960bd93535d89fee6244e3dd61048d6bee3d8
+	source = https://github.com/antham/wo/archive/refs/tags/1.1.0/wo-1.1.0.tar.gz
+	sha256sums = 689842ef9bc30c7ba7819b6028eef2a8f1206a3ddb9bc008ea2dd872181861d8
 
 pkgname = wo
