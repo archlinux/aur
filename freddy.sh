@@ -28,10 +28,10 @@ krueger() {
       status)
         if [ "$(uname -s)" = "Linux" ]; then
           # check if sleeping is disabled
-          if [ "$(sudo systemctl is-enabled sleep.target)" = "static" ]; then
-            echo 'disabled'
-          else
+          if [ "$(sudo systemctl is-enabled sleep.target)" = "masked" ]; then
             echo 'enabled'
+          else
+            echo 'disabled'
           fi
         else
           # check if sleeping is disabled
