@@ -1,7 +1,7 @@
-# Ignore everything
+# -- Ignore everything by default
 *
 
-# But not these files...
+# -- Except the files required to be in the AUR
 !.gitignore
 !PKGBUILD
 !.SRCINFO
