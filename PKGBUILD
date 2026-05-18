@@ -2,7 +2,7 @@
 # Contributor: soloturn <soloturn@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-gaming
-pkgver=1.0.13.beta.r7
+pkgver=1.0.14.beta.r1
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment with gaming patches that support pointer-constraints-v1, pointer-warp-v1, commit-timing-v1, fifo-v1 and respect fullscreen function"
 arch=('x86_64' 'aarch64')
