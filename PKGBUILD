@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang
-pkgver=0.5.10.post1
-pkgrel=4
+pkgver=0.5.12
+pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang'
@@ -70,8 +70,11 @@ _models=(
   'gemma_4_e2b'
   'gemma_4_e4b'
   'gemma_4_26b_a4b'
+  'gemma_4_26b_a4b_fp8'
+  'gemma_4_26b_a4b_nvfp4'
   'gemma_4_31b'
   'gemma_4_31b_fp8'
+  'gemma_4_31b_nvfp4'
   'qwen3.5_0.8b'
   'qwen3.5_2b'
   'qwen3.5_4b'
@@ -93,8 +96,12 @@ _models=(
   'qwen3.6_27b_awq_int4'
   'qwen3.6_27b_gptq_int4'
   'qwen3.6_27b_autoround_int4'
+  'qwen3.6_27b_nvfp4'
   'qwen3.6_35b_a3b'
   'qwen3.6_35b_a3b_fp8'
+  'qwen3.6_35b_a3b_awq_int4'
+  'qwen3.6_35b_a3b_gptq_int4'
+  'qwen3.6_35b_a3b_autoround_int4'
   'qwen3.6_35b_a3b_nvfp4'
 )
 
@@ -105,7 +112,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         'sglang.env'
         'sglang.sysusers'
         "${_models[@]/%/.conf}")
-sha256sums=('2080e7d8802094ae2b92dead1c6788b7aa2a2ccd06d8ba221bbc5b43d4cb7786')
+sha256sums=('23c3c0cd1df612e96760650bdc3060d2f52e80024a9d991a795507e10aa9b50c')
 for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' "${_models[@]}"; do
   sha256sums+=('SKIP')
 done
