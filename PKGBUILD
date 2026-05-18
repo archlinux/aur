@@ -9,7 +9,7 @@ url='https://www.navicat.com.cn/products/navicat-premium'
 license=('NOASSERTION')
 options=('!strip')
 source_x86_64=("navicat17-premium-cs-${CARCH}-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-x86_64.AppImage")
-sha256sums_x86_64=('0d49ec692c09298ac76ba87acf85bdb6aab0ca293644092497ab0f4ca65aac6e')
+sha256sums_x86_64=('4d45bbfb8829df8c42ee14adb9fec95a4a2bb3fcd462160e0252d017d717a3d6')
 
 package() {
   cd "${srcdir}"
