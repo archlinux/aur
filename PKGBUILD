@@ -2,14 +2,14 @@
 
 _basename="zls"
 pkgname="${_basename}-master"
-pkgver=0.16.0dev.63+60cff3d6
+pkgver=0.17.0dev.38+ae3ab43c
 pkgrel=1
 pkgdesc="A language server for Zig"
 arch=(
   'aarch64'     # 'aarch64'
   'armv7h'      # 'arm'
   'loong64'     # 'loongarch64'
-  # 'powerpc64le' # 'powerpc64le'
+  'powerpc64le' # 'powerpc64le'
   'riscv64'     # 'riscv64'
   # 's390x'       # 's390x'
   'i686'        # 'x86'
@@ -51,9 +51,9 @@ prepare() {
   cd "${_pkgsrc}"
   git -c advice.detachedHead=false checkout "${zls_commit}"
 
-  grep -oP '(?<=\.url = ")[^"]+' build.zig.zon | while read -r zig_fetch_url; do
-    zig-master fetch --global-cache-dir "${srcdir}/zig-global-cache" "${zig_fetch_url}"
-  done
+  # grep -oP '(?<=\.url = ")[^"]+' build.zig.zon | while read -r zig_fetch_url; do
+  #   zig-master fetch --global-cache-dir "${srcdir}/zig-global-cache" "${zig_fetch_url}"
+  # done
 }
 
 pkgver() {
@@ -90,7 +90,7 @@ build() {
     --prefix /usr
     --search-prefix /usr
     --global-cache-dir "${srcdir}/zig-global-cache"
-    --system "${srcdir}/zig-global-cache/p"
+    # --system "${srcdir}/zig-global-cache/p"
     --verbose
     -Dtarget=native-linux.6.15-gnu.2.41
     -Dcpu=baseline
@@ -109,7 +109,7 @@ build() {
 #     --prefix /usr
 #     --search-prefix /usr
 #     --global-cache-dir "${srcdir}/zig-global-cache"
-#     --system "${srcdir}/zig-global-cache/p"
+#     # --system "${srcdir}/zig-global-cache/p"
 #     --verbose
 #     -Dtarget=native-linux.6.15-gnu.2.41
 #     -Dcpu=baseline
