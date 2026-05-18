@@ -1,0 +1,16 @@
+# makepkg work directories
+src/
+pkg/
+
+# makepkg downloads and caches
+*.tgz
+*.tar.gz
+npm-cache/
+
+# Build artefacts
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.log
+
+# Local sisyphus state
+.sisyphus/
