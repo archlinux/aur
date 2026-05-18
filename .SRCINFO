@@ -1,0 +1,19 @@
+pkgbase = keyra-git
+	pkgdesc = Premium low-latency typing sound engine & real-time mechanical keyboard visualizer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hikarilucky79/keyra
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk3
+	depends = alsa-lib
+	depends = glibc
+	depends = gcc-libs
+	provides = keyra
+	conflicts = keyra
+	source = git+https://github.com/hikarilucky79/keyra.git
+	md5sums = SKIP
+
+pkgname = keyra-git

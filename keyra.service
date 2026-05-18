@@ -1,0 +1,16 @@
+[Unit]
+Description=Keyra Audio Feedback Daemon
+Documentation=https://github.com/keyra
+After=sound.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/keyra-daemon
+Restart=on-failure
+RestartSec=2
+# Optional: Allow real-time priority for audio threads to prevent latency spikes
+LimitRTPRIO=95
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Keyra
+Comment=Premium low-latency typing sound engine & real-time keyboard visualizer
+Exec=keyra %U
+Icon=io.github.hikarilucky79.keyra
+Terminal=false
+Type=Application
+Categories=Utility;Settings;Audio;
+Keywords=keyboard;audio;sound;typing;mechanical;visualizer;
+StartupNotify=true
