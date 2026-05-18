@@ -1,6 +1,6 @@
 # Maintainer: fabse
 
-pkgname=iced-comet-git
+pkgname=iced_comet-git
 _pkgname=comet
 pkgver=v0.14.0
 pkgrel=1
@@ -9,8 +9,8 @@ arch=('aarch64' 'x86_64')
 url="https://github.com/iced-rs/comet"
 license=("MIT")
 makedepends=('cargo' 'git')
-conflicts=("comet")
-provides=("comet")
+conflicts=("iced_comet")
+provides=("iced_comet")
 source=('git+https://github.com/iced-rs/comet')
 
 pkgver() {
@@ -30,7 +30,7 @@ build() {
 
 package() {
 	cd "$_pkgname"
-	install -Dm755 "target/release/comet" "$pkgdir/usr/bin/comet"
+	install -Dm755 "target/release/iced_comet" "$pkgdir/usr/bin/iced_comet"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 

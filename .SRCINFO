@@ -1,4 +1,4 @@
-pkgbase = iced-comet-git
+pkgbase = iced_comet-git
 	pkgdesc = Your favorite tool for inspecting and debugging iced applications. Built with iced!
 	pkgver = v0.14.0
 	pkgrel = 1
@@ -8,9 +8,9 @@ pkgbase = iced-comet-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	provides = comet
-	conflicts = comet
+	provides = iced_comet
+	conflicts = iced_comet
 	source = git+https://github.com/iced-rs/comet
 	sha256sums = SKIP
 
-pkgname = iced-comet-git
+pkgname = iced_comet-git
