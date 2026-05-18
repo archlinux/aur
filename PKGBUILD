@@ -6,8 +6,8 @@ pkgdesc="Premium low-latency typing sound engine & real-time mechanical keyboard
 arch=('x86_64')
 url="https://github.com/hikarilucky79/keyra"
 license=('GPL3')
-depends=('gtk3' 'alsa-lib' 'glibc' 'gcc-libs')
-makedepends=('rust' 'cargo')
+depends=('gtk3' 'alsa-lib' 'glibc' 'gcc-libs' 'openssl' 'zstd')
+makedepends=('rust' 'cargo' 'git' 'pkgconf' 'cmake' 'openssl' 'zstd')
 provides=('keyra')
 conflicts=('keyra')
 source=("git+https://github.com/hikarilucky79/keyra.git")
@@ -18,20 +18,35 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
+prepare() {
+  cd "$srcdir/keyra"
+  # Initialize Flutter submodules (tray_manager, etc.)
+  git submodule update --init --recursive
+}
+
 build() {
   cd "$srcdir/keyra/keyra-daemon"
   export CARGO_HOME="$srcdir/cargo-home"
   unset CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
-  cargo build --release
+  cargo build --release --locked
 
   cd "$srcdir/keyra/keyra-flutter"
   unset CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
+  flutter pub get
   flutter build linux --release
 }
 
 package() {
-  # 1. Instalar o Daemon
-  install -Dm755 "$srcdir/keyra/keyra-daemon/target/release/keyra-daemon" "$pkgdir/usr/bin/keyra-daemon"
+  # 1. Instalar o Daemon - procurar binário em possíveis camadas de compilação do Cargo
+  local daemon_bin=""
+  daemon_bin=$(find "$srcdir/keyra/keyra-daemon/target" -maxdepth 3 -name keyra-daemon -type f -executable 2>/dev/null | head -1)
+  if [ -z "$daemon_bin" ]; then
+    echo "ERRO: keyra-daemon não encontrado em $srcdir/keyra/keyra-daemon/target/"
+    ls -la "$srcdir/keyra/keyra-daemon/target/" 2>/dev/null || true
+    ls -la "$srcdir/keyra/keyra-daemon/target/release/" 2>/dev/null || true
+    exit 1
+  fi
+  install -Dm755 "$daemon_bin" "$pkgdir/usr/bin/keyra-daemon"
 
   # 2. Instalar a UI (Flutter bundle) no /opt/keyra
   mkdir -p "$pkgdir/opt/keyra"
