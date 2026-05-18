@@ -1,6 +1,6 @@
 # Maintainer: quonaro <quonaro@gmail.com>
 pkgname=lota
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A declarative task runner for rapid development"
 arch=('x86_64' 'aarch64')
