@@ -1,6 +1,6 @@
 pkgbase = python-exa-py
 	pkgdesc = Python SDK for Exa API.
-	pkgver = 2.5.0
+	pkgver = 2.13.0
 	pkgrel = 1
 	url = https://github.com/exa-labs/exa-py
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-exa-py
 	depends = python-httpx
 	depends = python-httpcore
 	depends = python-dotenv
-	source = https://files.pythonhosted.org/packages/source/e/exa-py/exa_py-2.5.0.tar.gz
-	sha256sums = beb038ff671288e35ab8e6d27811b2d60cd8023c109cb0f48738258b54ed3d82
+	source = https://files.pythonhosted.org/packages/source/e/exa-py/exa_py-2.13.0.tar.gz
+	sha256sums = 423d20772af3c158ad62a41cb7cea427adeb6766c49f59862f9be6b2fd3b7d66
 
 pkgname = python-exa-py
