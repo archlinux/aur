@@ -3,14 +3,17 @@
 pkgname=trae-sg
 pkgver=2.3.25938
 pkgrel=1
-pkgdesc="Trae - AI-powered IDE by ByteDance (Singapore CDN)"
+pkgdesc="AI-powered IDE by ByteDance (Singapore CDN)"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
-license=('custom:Trae')
-provides=('trae')
+license=('LicenseRef-Trae')
+provides=("trae=$pkgver")
 conflicts=('trae' 'trae-bin')
-depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'libsecret' 'xdg-utils')
-optdepends=('libappindicator-gtk3: System tray support')
+depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'libsecret' 'libxkbfile' 'zeromq')
+optdepends=('libappindicator-gtk3: System tray support'
+            'xdg-utils: Open URLs and files with default applications'
+            'python: Python extension support'
+            'nodejs: Node.js extension scripts')
 options=('!strip' '!debug')
 install=trae.install
 source=("trae.sh" "trae.desktop")
@@ -25,7 +28,9 @@ package() {
     install -d "${pkgdir}/opt/trae"
 
     for f in "${srcdir}"/*; do
-        case "${f##*/}" in trae.sh|trae.desktop) continue ;; esac
+        case "${f##*/}" in
+            trae.sh|trae.desktop|*.tar.*) continue ;;
+        esac
         cp -a "$f" "${pkgdir}/opt/trae/"
     done
 
@@ -45,4 +50,11 @@ package() {
     install -Dm644 "${pkgdir}/opt/trae/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${pkgdir}/opt/trae/resources/app/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ThirdPartyNotices"
     install -Dm644 "${pkgdir}/opt/trae/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+
+    # Shell completions
+    install -Dm644 "${pkgdir}/opt/trae/resources/completions/bash/trae" "${pkgdir}/usr/share/bash-completion/completions/trae"
+    install -Dm644 "${pkgdir}/opt/trae/resources/completions/zsh/_trae" "${pkgdir}/usr/share/zsh/site-functions/_trae"
+
+    # Remove unnecessary files
+    rm -rf "${pkgdir}/opt/trae/node_modules"
 }
