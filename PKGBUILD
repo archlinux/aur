@@ -94,9 +94,9 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
-_major=6.19
-pkgver=${_major}.12
-_branch=6.x
+_major=7.0
+pkgver=${_major}.9
+_branch=7.x
 xanmod=1
 _revision=
 _sf_branch=main
@@ -140,14 +140,14 @@ _patches=()
 for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
-sha256sums=('303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357' # kernel
+sha256sums=('bb7f6d80b387c757b7d14bb93028fcb90f793c5c0d367736ee815a100b3891f0' # kernel
             'SKIP'                                                             # kernel signature
-            'c75d87929fcc6bc1c88dac94f80d91e968fd2a00f5e49b56f1ba28a8a618e929' # xanmod patch
+            'd8c1064db07f760cc06412ed7b638221dc8c6130258090df0d5088b95aa64d5f' # xanmod patch
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f' # choose-gcc-optimization.sh
-            '39d092b03b7b12112beb0984fd1ac0fb21b99e9a45cc69b8bcaa2b6d92c8e4a0' # 0001-bore.patch
+            'b4837b153549f025a617b889f9f7b267f56dcb61f1a442013b287aef72402a18' # 0001-bore.patch
             '1f3258ce1842156fcc35ca4775f6ba50f08f8f339b8cfbc3395949bb0e368872' # 0002-glitched-cfs.patch
             'f7aa5e7f23c56ecafd416ddb5fcf723c404a80f220be45168ccd3e43b3f14f84' # 0003-glitched-eevdf-additions.patch
-            '465c70565792ffa3e968619096e75d9235bdcb1685e608fe82649e66504769bd' # 0004-o3-optimization.patch
+            'eec09c73477ec598444704f514c8f81dd3b3443563890d89190f41d099d28edb' # 0004-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
