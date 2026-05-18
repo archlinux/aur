@@ -1,6 +1,6 @@
 # Maintainer: fabse
 
-pkgname=iced_comet-git
+pkgname=iced-comet-git
 _pkgname=comet
 pkgver=v0.14.0
 pkgrel=1
