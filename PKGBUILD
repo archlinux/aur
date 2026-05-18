@@ -38,6 +38,11 @@ build() {
     cd "${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # defensive: paru caches the clone dir between builds. if a previous
+    # attempt died partway through, cargo's incremental state can keep
+    # bridge.cpp out-of-date relative to its build outputs, causing
+    # mysterious undefined-symbol errors. wipe target/ to guarantee fresh.
+    rm -rf target
     cargo build --frozen --release
 }
 
