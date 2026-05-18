@@ -5,7 +5,7 @@ pkgname=agildothermo
 _githubuser=juglesbass
 _repo=AgildoThermo
 
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 
 pkgdesc="Monitor na bandeja: CPU, GPU, RAM, HUD flutuante e alertas (PyQt6)"
@@ -29,9 +29,11 @@ _source_file="${_repo}-${pkgver}.tar.gz"
 source=(
   "${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz"
   "agildothermo.desktop"
+  "agildothermo-autostart.desktop"
 )
-sha256sums=('3f5da32b9f1cb3f71c91f6711d9f19c642d9bc5a89044f0df4643b9367504be9'
-            '1b74ca1072141670c4352b2142893e3cbaa8e8b296bebc6d05895a62d65d9cae')
+sha256sums=('e29f2c5d4dfb08eecd0580c91c0e1bc86c484a9787681d54580b4d863b181cb6'
+            '1b74ca1072141670c4352b2142893e3cbaa8e8b296bebc6d05895a62d65d9cae'
+            '43d81b46fd58acf6604cac1dd31cc517d0bae9cf2868a777a1606beb74a03221')
 
 package() {
   cd "${srcdir}/${_repo}-${pkgver}"
@@ -48,6 +50,8 @@ EOF
 
   install -Dm644 "${srcdir}/agildothermo.desktop" \
     "${pkgdir}/usr/share/applications/agildothermo.desktop"
+  install -Dm644 "${srcdir}/agildothermo-autostart.desktop" \
+    "${pkgdir}/etc/xdg/autostart/agildothermo.desktop"
 
   local icone="${pkgdir}/usr/share/icons/hicolor"
   for tam in 16 22 24 32 48 64 128 256; do

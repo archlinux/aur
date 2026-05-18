@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Agildo Thermo
+Comment=Monitor na bandeja (CPU, GPU, RAM, disco, rede)
+Exec=/usr/bin/agildothermo
+Icon=agildothermo
+Terminal=false
+Categories=Utility;System;
+StartupNotify=false
+Hidden=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=3

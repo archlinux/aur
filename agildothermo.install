@@ -3,6 +3,12 @@ _atualizar_caches() {
   kbuildsycoca6 --noincremental 2>/dev/null || true
 }
 
-post_install() { _atualizar_caches; }
-post_upgrade() { _atualizar_caches; }
+_msg_autostart() {
+  echo "Agildo Thermo: arranque automatico em /etc/xdg/autostart/"
+  echo "  Desactivar: Configuracoes do Sistema > Arranque > Programas automaticamente"
+  echo "  ou: rm /etc/xdg/autostart/agildothermo.desktop"
+}
+
+post_install() { _atualizar_caches; _msg_autostart; }
+post_upgrade() { _atualizar_caches; _msg_autostart; }
 post_remove() { _atualizar_caches; }
