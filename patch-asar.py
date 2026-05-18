@@ -152,7 +152,7 @@ RENDERER_PATCHES = [
             '}catch(e){}'
             '}'
             'return path.join((0,getVortexPath_1.default)("documents"),"My Games");'
-            '})()'
+            '})();'
         ),
     },
     {
