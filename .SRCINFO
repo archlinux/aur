@@ -1,0 +1,22 @@
+pkgbase = sec-audit-git
+	pkgdesc = Linux privacy and security auditor
+	pkgver = r1.g0000000
+	pkgrel = 1
+	url = https://github.com/ungaul/sec-audit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = git
+	optdepends = bind-tools: DNS resolution for telemetry connection check
+	optdepends = usbutils: USB device enumeration
+	optdepends = usbguard: USB device authorization enforcement
+	optdepends = curl: external IP and geolocation lookup
+	provides = sec-audit
+	conflicts = sec-audit
+	source = sec-audit-git::git+https://github.com/ungaul/sec-audit.git
+	sha256sums = SKIP
+
+pkgname = sec-audit-git
