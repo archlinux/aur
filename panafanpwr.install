@@ -1,0 +1,14 @@
+post_install() {
+    echo "To enable panafanpwr, run:"
+    echo "  systemctl enable --now panafanpwrd.socket panafanpwrd-ppd.service"
+    echo "  systemctl enable panafanpwrd-resume.service"
+}
+
+pre_remove() {
+    systemctl disable --now panafanpwrd.socket panafanpwrd-ppd.service panafanpwrd-resume.service 2>/dev/null || true
+}
+
+post_upgrade() {
+    echo "Restart panafanpwrd to apply changes:"
+    echo "  systemctl restart panafanpwrd-ppd.service"
+}
