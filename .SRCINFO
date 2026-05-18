@@ -1,13 +1,14 @@
 pkgbase = geekbench-ai
 	pkgdesc = Geekbench AI is a cross-platform AI benchmark that uses real-world machine learning tasks to evaluate AI workload performance
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.geekbench.com/ai/
 	install = geekbench-ai.install
 	arch = x86_64
 	license = LicenseRef-Geekbench-AI-V1
 	makedepends = patchelf
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = bash
 	depends = ocl-icd
 	depends = onetbb

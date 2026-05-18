@@ -2,12 +2,12 @@
 _pkgname=GeekbenchAI
 pkgname=geekbench-ai
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Geekbench AI is a cross-platform AI benchmark that uses real-world machine learning tasks to evaluate AI workload performance"
 arch=('x86_64')
 url="https://www.geekbench.com/ai/"
 license=('LicenseRef-Geekbench-AI-V1')
-depends=('gcc-libs' 'bash' 'ocl-icd' 'onetbb' 'glibc')
+depends=('libgcc' 'libstdc++' 'bash' 'ocl-icd' 'onetbb' 'glibc')
 makedepends=('patchelf')
 source=("https://cdn.geekbench.com/GeekbenchAI-${pkgver}-Linux.tar.gz"
 	LicenseRef-EULA-AI-V1.txt)
