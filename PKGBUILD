@@ -1,6 +1,6 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=vernier
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Cross-platform pixel-measurement overlay in Rust"
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ optdepends=(
     'xdg-desktop-portal-hyprland: global hotkey via the GlobalShortcuts portal'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jondkinney/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aba2db88f61803b00eef2961dc9340fb9a983a249f64d265cb62349717108817')
+sha256sums=('4fa5f36d0e0b7c765b78022e6b27689a595b9495a56c20dd29ad897786c34f92')
 
 prepare() {
     cd "$pkgname-$pkgver"
