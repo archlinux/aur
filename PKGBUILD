@@ -1,5 +1,5 @@
 pkgname=servebox
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 url="https://gitlab.com/PieyIsAPie/servebox"
 pkgdesc="Certainly the web server of all time. Simple, easy to set up and independent of external libraries"
