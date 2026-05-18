@@ -5,7 +5,7 @@ _pkgname=perry
 pkgname=${_pkgname}-bin
 pkgdesc="Compiles TypeScript directly to executables using SWC and Cranelift"
 
-pkgver=0.5.923
+pkgver=0.5.1008
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,10 +27,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('bec1809954fd5cf93b34d8f952782e8b1f0d999c5ff6e196d4196c0b52457edf'
+sha256sums=('c97ece8dd2230225d3b2a8590837c0d9d966e08f9fc6d1cb37180c52df612e7d'
             'c871483477d7105432645affac5be5edbd92b41a6faedb4c692e0681e46ada09')
-sha256sums_x86_64=('4efac67c7edb2945b6044012ca413d6bccd8b4499ad308e9cf915cec6f818016')
-sha256sums_aarch64=('6e300543174adbd799c6b8a938c3acf9d961b7890e0c64ddc2761286575768cf')
+sha256sums_x86_64=('7e1e84f77ce490eb873c90360ba70cf0b359cd915304ad4d9e271f54dd6dd762')
+sha256sums_aarch64=('9ea1714b5ee202fe4450358ce0b7bf14aaf6359fe52111ceba1682d23a3e4480')
 
 
 package() {
