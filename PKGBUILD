@@ -2,7 +2,7 @@
 
 _pkgname=nufmt
 pkgname=nufmt-git
-pkgver=0.1.0.r75.gf178d80
+pkgver=0.1.3.r81.g2a9661d
 pkgrel=1
 pkgdesc="Formatter for Nushell source code"
 arch=('x86_64')
