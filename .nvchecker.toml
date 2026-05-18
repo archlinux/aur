@@ -1,0 +1,4 @@
+[flexiblas]
+source = "git"
+git = "https://gitlab.mpi-magdeburg.mpg.de/software/flexiblas-release.git"
+prefix = "v"
