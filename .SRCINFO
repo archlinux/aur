@@ -1,6 +1,6 @@
 pkgbase = pi
 	pkgdesc = AI coding agent for the terminal — minimal, extensible and optimized for tool use
-	pkgver = 0.75.2
+	pkgver = 0.75.3
 	pkgrel = 1
 	url = https://github.com/earendil-works/pi
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pi
 	optdepends = tmux: for background bash capabilities
 	optdepends = fd: system-provided backend for the find tool
 	optdepends = ripgrep: system-provided backend for the grep tool
-	source = pi-0.75.2.tar.gz::https://github.com/earendil-works/pi/archive/refs/tags/v0.75.2.tar.gz
-	sha256sums = 954ce574472b1d214e8877dc0425d5a398eab27bc015273089f5d16f4aa1dda8
+	source = pi-0.75.3.tar.gz::https://github.com/earendil-works/pi/archive/refs/tags/v0.75.3.tar.gz
+	sha256sums = 76c5bd518b8139fac9e3a672422b8a943b93b190cb3ef6a4405a161a7d85e1fc
 
 pkgname = pi
