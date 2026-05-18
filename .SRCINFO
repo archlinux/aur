@@ -1,6 +1,6 @@
 pkgbase = emojify-bin
 	pkgdesc = An emoji picker made to be fast. (GTK4/C++)
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/RioTheDev/emojify
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = emojify-bin
 	depends = gtkmm-4.0
 	depends = glibmm-2.68
 	depends = libadwaita
-	source = emojify-6102b45124fb286258e6e2439212290c94db4aeed00c7443b8ab0502791603ea.tar.gz::https://github.com/RioTheDev/emojify/releases/download/v1.3.0/emojify-x86_64.tar.gz
-	source = https://raw.githubusercontent.com/RioTheDev/emojify/v1.3.0/README.md
-	source = https://raw.githubusercontent.com/RioTheDev/emojify/v1.3.0/LICENSE.md
-	sha256sums = 6102b45124fb286258e6e2439212290c94db4aeed00c7443b8ab0502791603ea
+	source = emojify-26927a82a408c874771da1575548f59186e1aa7812ad570511e99678222993bf.tar.gz::https://github.com/RioTheDev/emojify/releases/download/v1.3.1/emojify-x86_64.tar.gz
+	source = https://raw.githubusercontent.com/RioTheDev/emojify/v1.3.1/README.md
+	source = https://raw.githubusercontent.com/RioTheDev/emojify/v1.3.1/LICENSE.md
+	sha256sums = 26927a82a408c874771da1575548f59186e1aa7812ad570511e99678222993bf
 	sha256sums = SKIP
 	sha256sums = SKIP
 
