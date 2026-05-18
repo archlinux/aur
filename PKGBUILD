@@ -3,7 +3,7 @@
 # Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname='gsh'
-pkgver=1.10.3
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='A battery-included, POSIX-compatible, generative shell'
 url='https://github.com/kunchenguid/gsh'
@@ -13,7 +13,7 @@ provides=('gsh')
 conflicts=('gsh')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/kunchenguid/gsh/releases/download/v${pkgver}/gsh-${pkgver}.tar.gz")
-sha256sums=('57221b79994109ac47310ec8c268f3a7a73408d0d3e4383c46ecf4a5b252dff9')
+sha256sums=('c7d39f287eaa4419ef9c756b6422e9dc2542ca611ea90dc43381c69fa2f01371')
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   go mod download
