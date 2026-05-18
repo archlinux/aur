@@ -1,0 +1,25 @@
+pkgbase = unraid-usb-creator
+	pkgdesc = Official Unraid OS USB Flash Creator (Professional Repack)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://unraid.net/download
+	arch = x86_64
+	license = custom
+	depends = curl
+	depends = gnutls
+	depends = hicolor-icon-theme
+	depends = libarchive
+	depends = libusb
+	depends = polkit
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = xz
+	depends = zstd
+	provides = unraid-usb-creator-bin
+	provides = unraid-usb-creator-git
+	conflicts = unraid-usb-creator-bin
+	conflicts = unraid-usb-creator-git
+	source = unraid-usb-creator-1.1.0.appimage::https://github.com/unraid/usb-creator-next/releases/download/v1.1.0/unraid-usb-creator-1.1.0.appimage
+	sha256sums = 348fd23203aece27ef8e1b4ae0fcbdea56ee23fbaf24ed0d88caf6ccdb4d4949
+
+pkgname = unraid-usb-creator
