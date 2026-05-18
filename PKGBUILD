@@ -21,8 +21,10 @@ source=(
   "${_repo}-${pkgver}.tar.gz::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz"
   "agildospecs.desktop"
 )
-sha256sums=('b16278dabc7bdcb4e1e62b4dc6dc3f38e2995d978bfc209ff848173ecce4855c'
-            '1bbbec1a37b3e583bc684d8812a0691db47cc0833fa7484d787de294e00985d1')
+sha256sums=(
+  "b16278dabc7bdcb4e1e62b4dc6dc3f38e2995d978bfc209ff848173ecce4855c"
+  "1bbbec1a37b3e583bc684d8812a0691db47cc0833fa7484d787de294e00985d1"
+)
 
 package() {
   cd "${srcdir}/${_repo}-${pkgver}"
