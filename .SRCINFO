@@ -1,9 +1,10 @@
 pkgbase = python-tree-sitter-json
 	pkgdesc = Python Bindings for tree-sitter-json
 	pkgver = 0.24.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tree-sitter/tree-sitter-json
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-tree-sitter
