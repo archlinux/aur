@@ -1,7 +1,7 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon-bin
 _pkgname=skwd-daemon
-pkgver=r74.5ed1643
+pkgver=r75.1d40fc7
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets precompiled'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=("$_pkgname" "$_pkgname-debug")
 options=('!debug' '!strip')
 install="$_pkgname.install"
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('9362a8cf5ae8ec4712a0d7758cfd3a77384e1f67e7b1a14b63b78d9b87ec5757')
+sha256sums=('aaa9549e4a09fc37be18128a1ab11122f5a05ddf6788e51a1e94f54ad0caf3de')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64"
