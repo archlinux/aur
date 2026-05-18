@@ -2,7 +2,7 @@
 pkgname=python-landlock
 _name=${pkgname#python-}
 pkgver=1.0.0.dev5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to the Landlock Linux Security Module"
 arch=('any')
 url="https://github.com/Edward-Knight/landlock"
@@ -28,6 +28,9 @@ prepare() {
 
   # Skip coverage
   patch -Np1 -i ../drop-coverage.patch
+
+  # Relax flit_core version
+  sed -i 's/flit_core >=3.2,<4/flit_core >=3.2/g' pyproject.toml
 }
 
 build() {
