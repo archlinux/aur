@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.38.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
 url='https://github.com/dokku/dokku'
@@ -40,21 +40,11 @@ depends=(
 source=("${url}/archive/v${pkgver}.zip"
         "${pkgname}.install"
         "scheduler-docker-local.patch"
-        "builder-dockerfile-core-post-extract-fix.patch"
-        "builder-lambda-core-post-extract-fix.patch"
-        "builder-nixpacks-core-post-extract-fix.patch"
-        "builder-pack-core-post-extract-fix.patch"
-        "builder-railpack-core-post-extract-fix.patch"
-        "fix_go_work_missing_storage.patch")
+        "fix_go_work_missing_builds.patch")
 sha256sums=('90ee29d339e2c85274dcbaeb1ad565cb051f7d5292381e168b74d84a45e44b1b'
             'dba725cb3d0009b6fb1134a53ab566c2125627c0aa8c5bee931beb650c5ed633'
-            'fd979a3d612396316603f7677cdcdb7d25c7fecf99c97a8d1458262684913fdd'
-            'bae0fa706e39f5491df96ec81ebd0f5ad60c3e9843dd1c88e01a761731f20d3a'
-            '19bdb2c6bd90114351f36fb33f197ddb559f7a27144fa8dea1fdfdb2c2e22b29'
-            'aea707f7ff5cbd0cab8dced6a7554975098695416306092d6d4e78e8edca6c20'
-            '2221d30d319d216658d43ad9f652305c1bb7a27ccb71b43b7efe8aaf5cefa5a7'
-            'aed3a8cba52caee778cca47377a7bda780eab3be867451ba7d9a305b10e9fac7'
-            '76fd7c3ef53686a1fd3d896ba4a1592653f8991aa691f0656d5199a6d19014a0')
+            '5c450893268e2abd7f781b275e1b8e48846590028c163f37dc30d51075ecb49d'
+            '21edd6f85494f3ab15e0262bae7d2bf7add81875374c3420dbeb3ff1acebcde8')
 install="${pkgname}.install"
 
 build() {
@@ -70,15 +60,8 @@ build() {
   # Fix privilege issue with crontab -u
   patch -p1 -i "${srcdir}/scheduler-docker-local.patch"
 
-  # Fix post extract issue with builder-xxxx
-  patch -p1 -i "$srcdir/builder-dockerfile-core-post-extract-fix.patch"
-  patch -p1 -i "$srcdir/builder-lambda-core-post-extract-fix.patch"
-  patch -p1 -i "$srcdir/builder-nixpacks-core-post-extract-fix.patch"
-  patch -p1 -i "$srcdir/builder-pack-core-post-extract-fix.patch"
-  patch -p1 -i "$srcdir/builder-railpack-core-post-extract-fix.patch"
-
-  # Fix go.work missing storage issue
-  patch -p1 -i "$srcdir/fix_go_work_missing_storage.patch"
+  # Fix go.work missing builds issue
+  patch -p1 -i "$srcdir/fix_go_work_missing_builds.patch"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do

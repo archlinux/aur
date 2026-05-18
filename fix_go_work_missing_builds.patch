@@ -1,0 +1,10 @@
+--- a/go.work	2026-01-10 14:50:01.000000000 +0100
++++ b/go.work	2026-05-18 12:00:00.000000000 +0200
+@@ -6,6 +6,7 @@
+ 	./plugins/apps
+ 	./plugins/builder
+ 	./plugins/buildpacks
++	./plugins/builds
+ 	./plugins/common
+ 	./plugins/config
+ 	./plugins/cron
