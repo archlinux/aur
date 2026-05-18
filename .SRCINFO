@@ -1,6 +1,6 @@
 pkgbase = speedynote
 	pkgdesc = Fast note-taking app with PDF annotation, export, and multi-platform sync
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://github.com/alpha-liu-01/SpeedyNote
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = speedynote
 	conflicts = speedynote-bin
 	conflicts = speedynote-git
 	conflicts = speedynote-src
-	source = speedynote-1.4.5.tar.gz::https://github.com/alpha-liu-01/SpeedyNote/archive/refs/tags/v1.4.5.tar.gz
-	sha256sums = 76a622733c431d784f368c575c8f5f2b01540793cbf3695d75e1c11dbdb9dacf
+	source = speedynote-1.4.6.tar.gz::https://github.com/alpha-liu-01/SpeedyNote/archive/refs/tags/v1.4.6.tar.gz
+	sha256sums = 220ead7cfac189f028af00fdd8a5254c0c0056b8b20982664beac72007eb6d60
 
 pkgname = speedynote
