@@ -1,7 +1,7 @@
 # Maintainer: DarKouto (Daniel Couto) <https://github.com/DarKouto>
 pkgname=lyra-music-bin
-pkgver=1.0.5
-pkgrel=0
+pkgver=1.0.4
+pkgrel=7
 pkgdesc="Lyra Music Desktop - Official AppImage version"
 arch=('x86_64')
 url="https://github.com/Lyra-Music-App/Lyra-Desktop-Releases"
@@ -11,7 +11,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Lyra-Music-${pkgver}-x86_64.AppImage")
 
 # Checksums
-sha256sums=('6ab7d80a36d868507699d309b2e504f30385ffa171f554d374b9095ae3f0e753')
+sha256sums=('26248b6566acf794182ef0adf29c6807705a8efb7a2f9491b74928a7dd735f6b')
 
 # Extract AppImage contents to the squashfs-root folder
 prepare() {
