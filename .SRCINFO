@@ -1,7 +1,7 @@
 pkgbase = vulkan-low-latency-layer
 	pkgdesc = Implicit Vulkan layer that reduces click-to-photon latency for AMD and NVidia.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Korthos-Software/low_latency_layer/
 	arch = x86_64
 	license = MIT

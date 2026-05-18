@@ -2,9 +2,9 @@
 
 pkgname=vulkan-low-latency-layer
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Implicit Vulkan layer that reduces click-to-photon latency for AMD and NVidia.'
-url="https://github.com/Korthos-Software/low_latency_layer/"
+url='https://github.com/Korthos-Software/low_latency_layer/'
 license=('MIT')
 depends=('libstdc++' 'glibc' 'libgcc')
 makedepends=('cmake' 'vulkan-headers' 'vulkan-utility-libraries')
@@ -15,7 +15,10 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 _srcdir="low_latency_layer-$pkgver"
 
 build() {
-	cmake -S "${_srcdir}" -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -S "${_srcdir}" -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' \
+		-DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build
 }
 
