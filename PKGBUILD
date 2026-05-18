@@ -1,14 +1,16 @@
+# Maintainer: Roman Ramskyi <sawsawsa777 at gmail dot com>
 # Maintainer: Ender Shiru <endershiru@outlook.com>
 # Contributor: Jakub 'Eremiell' Marek <eremiell at eremiell dot net>
+
 pkgname=dpp-git
 _pkgname=DPP
-pkgver=10.1.3.r32.7394b841
+pkgver=10.1.4.r40.44bd22a5
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library - git version"
 arch=('x86_64')
 url="https://dpp.dev/"
-license=('Apache')
-depends=('glibc' 'gcc-libs' 'openssl' 'zlib' 'opus' 'libsodium' 'nlohmann-json')
+license=('Apache-2.0')
+depends=('glibc' 'gcc-libs' 'openssl' 'zlib' 'opus' 'nlohmann-json')
 makedepends=('cmake' 'pkgconf' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -31,8 +33,8 @@ build() {
 	cd "${srcdir}/${pkgname}"
 	mkdir -p build
 	cd build
-	cmake -DDPP_BUILD_TEST=OFF -DRUN_LDCONFIG=OFF -DDPP_NO_VCPKG=ON -DDPP_CORO=ON -DDPP_USE_EXTERNAL_JSON=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MESSAGE=NEVER -Wno-dev ..
-	make
+	cmake -DDPP_BUILD_TEST=OFF -DRUN_LDCONFIG=OFF -DDPP_NO_VCPKG=ON -DDPP_USE_EXTERNAL_JSON=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MESSAGE=NEVER -Wno-dev ..
+	make -j
 }
 
 package() {

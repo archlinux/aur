@@ -1,3 +1,9 @@
+# 10.1.4 / 2026-05-18
+
+* bump library to new version
+	* removed libsodium from the dependency list
+	* fixed the license as "Apache" is invalid
+
 # 10.0.25 / 2023-09-01
 
 * namcap started reporting glibc as missing dependency
