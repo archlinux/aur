@@ -1,16 +1,19 @@
 pkgbase = arc-icon-theme-git
-	pkgdesc = Arc icon theme. Latest commit from the master branch on Github.
+	pkgdesc = Arc icon theme. Latest commit from the master branch on GitHub.
 	pkgver = 20161122
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/horst3180/arc-icon-theme
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = automake
 	depends = gtk-update-icon-cache
-	optdepends = moka-icon-theme-git: Arc icon theme was built to be used on top of Moka icon theme
+	depends = moka-icon-theme-git
+	provides = arc-icon-theme
 	conflicts = arc-icon-theme
-	source = git+https://github.com/horst3180/arc-icon-theme.git
-	md5sums = SKIP
+	replaces = arc-icon-theme
+	options = !strip
+	source = git+https://github.com/horst3180/arc-icon-theme.git#branch=master
+	sha256sums = SKIP
 
 pkgname = arc-icon-theme-git
