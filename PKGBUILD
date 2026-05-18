@@ -1,36 +1,36 @@
-# Maintainer: 
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=python-asyncstdlib
-_name=${pkgname#python-}
-pkgver=3.13.1
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
+
+_name=asyncstdlib
+pkgname=python-$_name
+pkgver=3.14.0
 pkgrel=1
-pkgdesc="The missing toolbox for an async world"
+pkgdesc="The missing async toolbox."
 arch=('any')
 url="https://github.com/maxfischer2781/asyncstdlib"
 license=('MIT')
-depends=('python')
-makedepends=(
-  'python-build'
-  'python-flit-core'
-  'python-installer'
-)
+depends=('python' 'python-typing_extensions')
+makedepends=('python-flit-core' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
-source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b8d4bdf36daa4ed4571d94dfa73d3e510824ba610448077e20e02467e787b5be')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('f99396992a3bba7495d8cf6c832bfe8c8727f61213233d3569a5a9cbd1c04385')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$srcdir"/$_name-$pkgver
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_name-$pkgver"
-  pytest
+  local pytest_options=(
+    -vv
+    --disable-warnings
+  )
+  cd "$srcdir"/$_name-$pkgver
+  PYTHONPATH=$PWD pytest "${pytest_options[@]}" unittests
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$srcdir"/$_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
