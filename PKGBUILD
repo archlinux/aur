@@ -41,6 +41,24 @@ prepare() {
 
 build() {
     cd "${pkgname}"
+
+    # ── env diagnostics (printed to stderr) ──────────────────────────────
+    # makes cross-machine failures easier to triage. cheap; runs once.
+    {
+        echo "[monsoon-git build env]"
+        echo "  rustc:       $(rustc --version 2>&1 || echo unknown)"
+        echo "  cargo:       $(cargo --version 2>&1 || echo unknown)"
+        echo "  cc:          $(cc --version 2>&1 | head -1 || echo unknown)"
+        echo "  c++:         $(c++ --version 2>&1 | head -1 || echo unknown)"
+        echo "  libtorrent:  $(pkg-config --modversion libtorrent-rasterbar 2>/dev/null || echo 'pkg-config miss')"
+        echo "  boost hdrs:  $(test -f /usr/include/boost/config.hpp && echo present || echo MISSING)"
+        echo "  RUSTFLAGS:   ${RUSTFLAGS:-(unset)}"
+        echo "  CFLAGS:      ${CFLAGS:-(unset)}"
+        echo "  CXXFLAGS:    ${CXXFLAGS:-(unset)}"
+        echo "  LDFLAGS:     ${LDFLAGS:-(unset)}"
+        echo "  CARGO_PROFILE_RELEASE_LTO: ${CARGO_PROFILE_RELEASE_LTO:-(unset)}"
+    } >&2
+
     export RUSTUP_TOOLCHAIN=stable
     # cache target/ OUTSIDE paru's clone dir. paru runs `git clean -fdx`
     # between -S invocations, which would wipe an in-tree target/ on every
