@@ -20,7 +20,7 @@ depends=(
     'xorg-xwayland'
 )
 source=("https://github.com/Psychotoxical/psysonic/releases/download/app-v${pkgver}/Psysonic_${pkgver}_amd64.deb")
-sha256sums=('6a3609cd24b40b009d3d859717b4e38834d2a211d8ec9a0706a33f1c35414cab')
+sha256sums=('c0da54fbc294b9cebf73bcd92ab09d307dbf5334b878cfb5613de13e8a1eca67')
 
 package() {
     mkdir -p "${srcdir}/data"
