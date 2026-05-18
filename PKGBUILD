@@ -4,106 +4,106 @@
 # Contributor: Jens Staal <staal1978@gmail.com>
 
 _pkgname=ugene
-pkgname=('ugene' 'ugene-cuda')
-pkgver=52.0
-pkgrel=1
+pkgname='ugene'
+pkgver=53.1
+pkgrel=2
 pkgdesc='A free open-source cross-platform bioinformatics software'
 arch=('x86_64')
 url='http://ugene.net'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=(
   glu
   libxtst
-  qt5-script
+  hicolor-icon-theme
+  qt5-base
   qt5-svg
   qt5-websockets
   qt5-networkauth
+  gcc-libs
+  glibc
+  libx11
+  libxext
+  python
+  libgcc
+  bash
+  libstdc++
+  libglvnd
+  sqlite
 )
 makedepends=(
-  cuda
+  cmake
   qt5-tools
   opencl-headers
+  mold
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ugeneunipro/ugene/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2e965b7fbe63cb7dd9a3f0e747d8b55f9008acddf9fb7b83a7f614102d9c353a')
+optdepends=(
+  'man-db: Read manpages'
+)
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ugeneunipro/ugene/archive/refs/tags/${pkgver}.tar.gz"
+        "use_sqlite.patch"
+        "wayland-app-id.patch")
+sha256sums=('3eca3bc97824d855b5dfe4844b7a5d46052f98279fa015c7e152e111f89c4673'
+            'a697c392ce97fec770ff14aca9da9ed052c1d47c5cb08a905dbaef186a327763'
+            '4665ce739e730dd1c9619aa530135f78825324c311df23ba4cc4b8253363d142')
 
 prepare() {
-  cd ${srcdir}
-  cp -a ${_pkgname}-${pkgver} ${_pkgname}-cuda-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  # use system sqlite
+  patch -p1 < ${srcdir}/use_sqlite.patch
+  # Fix generic Wayland window icon
+  patch -p1 < ${srcdir}/wayland-app-id.patch
+
+  # Convert -Werror=foo to -Wfoo to prevent build failure on warnings
+  sed -i 's/-Werror=/-W/g' CMakeLists.txt
+  # Allow deprecated Qt 5.15 APIs
+  sed -i 's/QT_DISABLE_DEPRECATED_BEFORE=0x050F00/QT_DISABLE_DEPRECATED_BEFORE=0x050E00/g' CMakeLists.txt
+  # Fix QComboBox::activated ambiguity for Qt 5
+  sed -i 's/&QComboBox::activated/QOverload<int>::of(\&QComboBox::activated)/g' src/corelibs/U2Gui/src/util/RegionSelectorController.cpp
+  # Fix QButtonGroup::buttonToggled ambiguity for Qt 5
+  sed -i 's/&QButtonGroup::buttonToggled/QOverload<QAbstractButton\*, bool>::of(\&QButtonGroup::buttonToggled)/g' src/corelibs/U2View/src/ov_sequence/find_pattern/FindPatternWidget.cpp
+
+  # Fix the desktop file Exec path
+  sed -i 's|Exec=.*|Exec=ugeneui|' "etc/shared/${_pkgname}.desktop"
+  sed -i 's|Categories=.*|Categories=Science;|' "etc/shared/${_pkgname}.desktop"
+  echo "StartupWMClass=ugene" >> "etc/shared/${_pkgname}.desktop"
 }
 
 build() {
-  # run twice to generate the right installation files
-  # see https://github.com/ugeneunipro/ugene/issues/683#issuecomment-1046370388
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  qmake -r \
-    CONFIG+=x64 \
-    UGENE_CUDA_DETECTED=0 \
-    UGENE_OPENCL_DETECTED=1 \
-    UGENE_USE_BUNDLED_ZLIB=0 \
-    UGENE_USE_SYSTEM_SQLITE=1
-  make
-  qmake -r \
-    CONFIG+=x64 \
-    UGENE_CUDA_DETECTED=0 \
-    UGENE_OPENCL_DETECTED=1 \
-    UGENE_USE_BUNDLED_ZLIB=0 \
-    UGENE_USE_SYSTEM_SQLITE=1
-  make
-
-  cd "${srcdir}/${_pkgname}-cuda-${pkgver}"
-  CUDA_LIB_PATH=/opt/cuda/lib64 \
-  CUDA_INC_PATH=/opt/cuda/include \
-  qmake -r \
-    CONFIG+=x64 \
-    UGENE_CUDA_DETECTED=1 \
-    UGENE_OPENCL_DETECTED=1 \
-    UGENE_USE_BUNDLED_ZLIB=0 \
-    UGENE_USE_SYSTEM_SQLITE=1
-  make
-  CUDA_LIB_PATH=/opt/cuda/lib64 \
-  CUDA_INC_PATH=/opt/cuda/include \
-  qmake -r \
-    CONFIG+=x64 \
-    UGENE_CUDA_DETECTED=1 \
-    UGENE_OPENCL_DETECTED=1 \
-    UGENE_USE_BUNDLED_ZLIB=0 \
-    UGENE_USE_SYSTEM_SQLITE=1
-  make
+  export LDFLAGS="$LDFLAGS -fuse-ld=mold -Wl,-z,relro,-z,now"
+  cmake -B build -S "${_pkgname}-${pkgver}" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_RPATH="/usr/lib/${_pkgname}" \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS"
+  cmake --build build
 }
 
-package_ugene() {
-  cd "${pkgname}-${pkgver}"
-  make install
+package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/pixmaps"
-  # files installed to dist, move them to ${pkgdir}
-  cp -a "${srcdir}/${pkgname}-${pkgver}/dist" "${pkgdir}/opt"
-  mv -vf "${pkgdir}/opt/${_pkgname}-${pkgver}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  ln -sf "/opt/${_pkgname}-${pkgver}/ugene" "${pkgdir}/usr/bin/ugene"
-  ln -sf "/opt/${_pkgname}-${pkgver}/ugeneui" "${pkgdir}/usr/bin/ugeneui"
-  ln -sf "/opt/${_pkgname}-${pkgver}/ugenecl" "${pkgdir}/usr/bin/ugenecl"
-  mv -vf "${pkgdir}/opt/${_pkgname}-${pkgver}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps"
-}
+  install -d "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
+  install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+  install -d "${pkgdir}/usr/share/man/man1"
+  install -d "${pkgdir}/usr/lib/${_pkgname}"
 
-package_ugene-cuda() {
-  pkgdesc="${pkgdesc} (with CUDA)"
-  provides=(ugene=${pkgver})
-  conflicts=(ugene)
-  depends+=(
-    cuda
-)
-  cd "${pkgname}-${pkgver}"
-  make install
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/pixmaps"
-  # files installed to dist, move them to ${pkgdir}
-  cp -av "${srcdir}/${pkgname}-${pkgver}/dist" "${pkgdir}/opt"
-  mv -vf "${pkgdir}/opt/${_pkgname}-${pkgver}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  ln -sf "/opt/${_pkgname}-${pkgver}/ugene" "${pkgdir}/usr/bin/ugene"
-  ln -sf "/opt/${_pkgname}-${pkgver}/ugeneui" "${pkgdir}/usr/bin/ugeneui"
-  ln -sf "/opt/${_pkgname}-${pkgver}/ugenecl" "${pkgdir}/usr/bin/ugenecl"
-  mv -vf "${pkgdir}/opt/${_pkgname}-${pkgver}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps"
+  # copy built files from build/dist to /usr/lib/ugene
+  cp -a "${srcdir}/build/dist/"* "${pkgdir}/usr/lib/${_pkgname}/"
+  
+  # copy data directory from source
+  cp -a "${srcdir}/${_pkgname}-${pkgver}/data" "${pkgdir}/usr/lib/${_pkgname}/"
+
+  # Install desktop file and icon from source folder
+  install -m644 "${srcdir}/${_pkgname}-${pkgver}/etc/shared/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -m644 "${srcdir}/${_pkgname}-${pkgver}/etc/shared/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -m644 "${srcdir}/${_pkgname}-${pkgver}/etc/shared/${_pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
+  install -m644 "${srcdir}/${_pkgname}-${pkgver}/etc/shared/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_pkgname}.png"
+  install -m644 "${srcdir}/${_pkgname}-${pkgver}/src/ugeneui/images/originals/${_pkgname}_128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+
+  # Create symlinks
+  ln -sf "/usr/lib/${_pkgname}/ugene" "${pkgdir}/usr/bin/ugene"
+  ln -sf "/usr/lib/${_pkgname}/ugeneui" "${pkgdir}/usr/bin/ugeneui"
+  ln -sf "/usr/lib/${_pkgname}/ugenecl" "${pkgdir}/usr/bin/ugenecl"
 }

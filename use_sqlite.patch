@@ -1,0 +1,99 @@
+--- a/src/libs_3rdparty/sqlite3/CMakeLists.txt
++++ b/src/libs_3rdparty/sqlite3/CMakeLists.txt
+@@ -1,26 +1,6 @@
+ project(ugenedb)
+-
+ include(${CMAKE_SOURCE_DIR}/cmake/Common.cmake)
+-
+-include_directories(src)
+-
+-file(GLOB_RECURSE SRCS src/*.c)
+-file(GLOB_RECURSE HDRS src/*.h)
+-
+-if (WIN32)
+-    file(GLOB HDRS src/sqlite3.def)
+-endif ()
+-
+-
+-add_definitions(
+-        -DSQLITE_ENABLE_COLUMN_METADATA
+-        -DSQLITE_ENABLE_RTREE
+-        -DSQLITE_OMIT_LOAD_EXTENSION
+-        -DTHREADSAFE
+-)
+-
+-add_library(ugenedb SHARED ${HDRS} ${SRCS})
+-
+-set_property(TARGET ugenedb PROPERTY POSITION_INDEPENDENT_CODE ON)
+-
+-target_link_libraries(ugenedb)
++find_package(SQLite3 REQUIRED)
++add_library(ugenedb INTERFACE)
++target_link_libraries(ugenedb INTERFACE SQLite3::SQLite3)
++target_compile_definitions(ugenedb INTERFACE UGENE_USE_SYSTEM_SQLITE)
+--- a/src/corelibs/U2Core/src/dbi/U2SQLiteTripleStore.cpp
++++ b/src/corelibs/U2Core/src/dbi/U2SQLiteTripleStore.cpp
+@@ -19,7 +19,7 @@
+  * MA 02110-1301, USA.
+  */
+ 
+-#include <3rdparty/sqlite3/sqlite3.h>
++#include <sqlite3.h>
+ 
+ #include <U2Core/Log.h>
+ #include <U2Core/U2SafePoints.h>
+--- a/src/corelibs/U2Core/src/dbi/U2SqlHelpers.cpp
++++ b/src/corelibs/U2Core/src/dbi/U2SqlHelpers.cpp
+@@ -20,7 +20,7 @@
+  */
+ 
+ #include "U2SqlHelpers.h"
+-#include <3rdparty/sqlite3/sqlite3.h>
++#include <sqlite3.h>
+ 
+ #include <U2Core/Log.h>
+ #include <U2Core/U2DbiUtils.h>
+--- a/src/corelibs/U2Formats/src/sqlite_dbi/SQLiteBlobInputStream.cpp
++++ b/src/corelibs/U2Formats/src/sqlite_dbi/SQLiteBlobInputStream.cpp
+@@ -19,7 +19,7 @@
+  * MA 02110-1301, USA.
+  */
+ 
+-#include <3rdparty/sqlite3/sqlite3.h>
++#include <sqlite3.h>
+ 
+ #include <U2Core/U2DbiUtils.h>
+ #include <U2Core/U2SafePoints.h>
+--- a/src/corelibs/U2Formats/src/sqlite_dbi/SQLiteBlobOutputStream.cpp
++++ b/src/corelibs/U2Formats/src/sqlite_dbi/SQLiteBlobOutputStream.cpp
+@@ -19,7 +19,7 @@
+  * MA 02110-1301, USA.
+  */
+ 
+-#include <3rdparty/sqlite3/sqlite3.h>
++#include <sqlite3.h>
+ 
+ #include <U2Core/U2SafePoints.h>
+ #include <U2Core/UdrSchema.h>
+--- a/src/corelibs/U2Formats/src/sqlite_dbi/SQLiteDbi.cpp
++++ b/src/corelibs/U2Formats/src/sqlite_dbi/SQLiteDbi.cpp
+@@ -20,7 +20,7 @@
+  */
+ 
+ #include "SQLiteDbi.h"
+-#include <3rdparty/sqlite3/sqlite3.h>
++#include <sqlite3.h>
+ 
+ #include <QFile>
+ 
+--- a/src/plugins/dbi_bam/src/Dbi.cpp
++++ b/src/plugins/dbi_bam/src/Dbi.cpp
+@@ -20,7 +20,7 @@
+  */
+ 
+ #include "Dbi.h"
+-#include <3rdparty/sqlite3/sqlite3.h>
++#include <sqlite3.h>
+ 
+ #include <QDir>
+ 

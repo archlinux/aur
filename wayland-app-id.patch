@@ -1,0 +1,25 @@
+--- a/src/ugeneui/src/Main.cpp
++++ b/src/ugeneui/src/Main.cpp
+@@ -484,6 +484,10 @@ int main(int argc, char** argv) {
+         QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+     }
+ 
++    // Fix Wayland generic icon by matching app_id with desktop file name
++    QApplication::setApplicationName("ugene");
++    QApplication::setDesktopFileName("ugene");
++
+     // QApplication app(argc, argv);
+     GApplication app(argc, argv);
+     appContext->setWorkingDirectoryPath(QCoreApplication::applicationDirPath());
+@@ -496,8 +500,9 @@ int main(int argc, char** argv) {
+         }
+     }
+     if (isOsLinux()) {
+-        QPixmap pixmap(":/ugene/images/originals/ugene_128.png");
+-        GApplication::setWindowIcon(pixmap);
++        // Try to load icon from theme (matching ugene.desktop), fallback to resource
++        QIcon icon = QIcon::fromTheme("ugene", QIcon(":/ugene/images/originals/ugene_128.png"));
++        QApplication::setWindowIcon(icon);
+     }
+ 
+     QCoreApplication::addLibraryPath(AppContext::getWorkingDirectoryPath());
