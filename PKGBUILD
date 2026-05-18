@@ -2,7 +2,7 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=git-pw
-_tag=2.7.1
+_tag=2.8.1
 pkgname=${_pkgname}
 pkgver=${_tag}
 pkgrel=1
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('python-setuptools' 'python-build' 'python-wheel' 'python-installer')
 source=("${_pkgname}::git+https://github.com/getpatchwork/git-pw.git#tag=${_tag}")
-sha256sums=('3dca9ad6a2b25c690b41068521f9ba16e3e4ec2514b615e80ab3760df7a09f86')
+sha256sums=('8df888358bf8bf3ad62ece0ef98476c5e6a32b2e0109731bc037483e7e010608')
 
 build() {
   cd ${srcdir}/${_pkgname}
