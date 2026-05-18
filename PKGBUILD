@@ -1,7 +1,7 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=llama.cpp-sycl
-pkgver=2026.0.0
-pkgrel=3
+pkgver=b9209
+pkgrel=1
 pkgdesc="llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI. Please read the README on GitHub before use."
 arch=('x86_64')
 url="https://github.com/cantosun99/llama.cpp-sycl"
@@ -39,6 +39,8 @@ depends=(
     'level-zero-loader'
     'level-zero-headers'
     'gcc-libs'
+    'intel-deep-learning-essentials'
+    'intel-oneapi-deep-neural-network-library'
 )
 makedepends=(
     'git'
@@ -46,45 +48,19 @@ makedepends=(
     'make'
 )
 options=(!strip !buildflags)
-# Direct download links from Intel:
-#   DLE:  https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html
-#   oneDNN: https://www.intel.com/content/www/us/en/developer/tools/oneapi/onednn-download.html
-_source_dle="intel-deep-learning-essentials-2026.0.0.624_offline.sh"
-_source_onednn="intel-onednn-2026.0.0.689_offline.sh"
 source=(
-    "$_source_dle::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/8170208e-86db-4faa-a0d6-1ecf62699574/$_source_dle"
-    "$_source_onednn::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/964163c0-9651-4e14-8ebf-3cc27e2519e4/$_source_onednn"
+    "llama.cpp-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
 )
-noextract=(
-    "$_source_dle"
-    "$_source_onednn"
-)
-# SHA-384 checksums provided by Intel on the download pages
-sha384sums=(
-    '04e1b3392cb01e2f50fbe4ef985686902158af0c232e3990d1955ee2cd67ade8c70ba24f604b45d4f513c3050ecf93d5'
-    '29cd895492bdde32b83611f21e85b06085b15604cd26eb45aa4692c0e1d8a57d34cf2c447d3a07559d46f14c3afc27bf'
-)
+sha256sums=('e9a2fc1116fd4b7c5443bc9c1ddb6da66526aa93b98c9ea23b141f43484b7577')
 
 prepare() {
-    # Clone latest llama.cpp source (always builds against HEAD)
-    git clone --depth=1 https://github.com/ggml-org/llama.cpp "${srcdir}/llama.cpp"
+    ln -sf "llama.cpp-${pkgver}" llama.cpp
 }
 
 build() {
-    # Install Intel Deep Learning Essentials (SYCL compiler icx/icpx, MKL, oneDAL, etc.)
-    echo "Installing Intel Deep Learning Essentials..."
-    sh "${srcdir}/${_source_dle}" -a --silent --eula accept \
-        --install-dir "${srcdir}/oneapi"
-
-    # Install Intel oneAPI Deep Neural Network Library (oneDNN)
-    echo "Installing Intel oneDNN..."
-    sh "${srcdir}/${_source_onednn}" -a --silent --eula accept \
-        --install-dir "${srcdir}/oneapi"
-
-    local oneapi_root="${srcdir}/oneapi"
-    # Source setvars.sh to set up the full oneAPI environment
+    # Source oneAPI environment (provided by intel-deep-learning-essentials)
     set +u
-    source "${oneapi_root}/setvars.sh" --force
+    source /opt/intel/oneapi/setvars.sh --force
     set -u
 
     cd "${srcdir}/llama.cpp"
@@ -93,6 +69,7 @@ build() {
     # failures (e.g. unresolved glibc fortify symbols in SYCL device IR).
     cmake -B build \
         -DGGML_SYCL=ON \
+        -DGGML_SYCL_F16=ON \
         -DCMAKE_C_COMPILER=icx \
         -DCMAKE_CXX_COMPILER=icpx \
         -DCMAKE_BUILD_TYPE=Release \
@@ -102,10 +79,6 @@ build() {
 }
 
 package() {
-    # Install oneAPI runtime to /opt/intel/oneapi on the user's system
-    mkdir -p "${pkgdir}/opt/intel"
-    cp -r "${srcdir}/oneapi" "${pkgdir}/opt/intel/oneapi"
-
     # Install llama.cpp to /opt/llama.cpp-sycl
     DESTDIR="${pkgdir}" cmake --install "${srcdir}/llama.cpp/build"
 
