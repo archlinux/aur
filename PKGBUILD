@@ -1,6 +1,6 @@
-# Maintainer: vkSumi <noreply@github.com>
+# Maintainer: reakjra <reakjra@proton.me>
 pkgname=vksumi
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Vulkan layer for runtime color grading on Linux (Adrenalin / Freestyle equivalent)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('vulkan-icd-loader' 'libx11')
 makedepends=('meson' 'ninja' 'glslang' 'vulkan-headers')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('add905a3108998a5058fc562d911c6417c90083b3a13e52b493981375cdfd5bd')
+sha256sums=('c4187cf68e05223c2cb31b9c606aa7736bb91c0635abc4ad655f1d185b52d720')
 
 build() {
     cd vkSumi-$pkgver
