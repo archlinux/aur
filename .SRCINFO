@@ -4,6 +4,7 @@ pkgbase = python-tree-sitter-python
 	pkgrel = 5
 	url = https://github.com/tree-sitter/tree-sitter-python
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-tree-sitter

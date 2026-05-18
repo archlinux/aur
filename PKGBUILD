@@ -6,7 +6,10 @@ _gitpkgname=tree-sitter-python
 pkgver=0.25.0
 pkgrel=5
 pkgdesc='Python Bindings for tree-sitter-python'
-arch=('x86_64')
+arch=(
+      'x86_64'
+      'aarch64'
+)
 url='https://github.com/tree-sitter/tree-sitter-python'
 license=('MIT')
 depends=(
@@ -37,7 +40,7 @@ build() {
 }
 
 package() {
-	python -I -m installer --destdir="${pkgdir}" dist/*.whl
+	python -I -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
 	install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
