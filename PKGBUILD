@@ -1,17 +1,19 @@
 # Maintainer: charlie <github.com/381181295>
 # Co-maintainer: SIGTERM <https://github.com/SIGTERM-015>
 pkgname=chatwise
-pkgver=0.10.8
+pkgver=26.5.0
 pkgrel=1
-pkgdesc="The second fastest AI chatbot"
+pkgdesc="The fastest AI chatbot"
 arch=(x86_64)
 url="https://chatwise.app/"
 license=('LicenseRef-proprietary')
-depends=(cairo gdk-pixbuf2 glib2 gtk3 hicolor-icon-theme libsoup pango webkit2gtk-4.1 openssl libappindicator-gtk3)
+depends=(gtk3 libnotify nss libxss libxtst xdg-utils at-spi2-core util-linux-libs libsecret hicolor-icon-theme libappindicator-gtk3)
 options=(!strip !debug)
-source=("https://github.com/egoist/chatwise-releases/releases/download/v0.10.8/ChatWise_0.10.8_amd64.deb")
-sha256sums=('ae12e637dad7e160bdd3faf9158b6bff3e26d6b099218d6efd06f456b0d9b628')
+source=("https://releases.chatwise.app/${pkgver}/ChatWise-${pkgver}.deb")
+sha256sums=('aa39c7d5673116d9fbec45fa621b560e42dfe47347f6be98b500841528f43238')
 
 package() {
-    tar -xvf data.tar.gz -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
+    install -d "${pkgdir}/usr/bin"
+    ln -s /opt/ChatWise/ChatWise "${pkgdir}/usr/bin/chatwise"
 }
