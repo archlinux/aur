@@ -59,6 +59,15 @@ build() {
         echo "  CARGO_PROFILE_RELEASE_LTO: ${CARGO_PROFILE_RELEASE_LTO:-(unset)}"
     } >&2
 
+    # belt-and-suspenders against env-injected RUSTFLAGS / LTO settings.
+    # options=('!lto') above tells makepkg not to add LTO flags; these
+    # additionally override anything in ~/.cargo/config.toml or shell env
+    # that might re-enable it. C/asm ffi (ring, our libtorrent bridge)
+    # silently lose symbols under LTO.
+    unset RUSTFLAGS CARGO_BUILD_RUSTFLAGS
+    export CARGO_PROFILE_RELEASE_LTO=off
+    export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
+
     export RUSTUP_TOOLCHAIN=stable
     # cache target/ OUTSIDE paru's clone dir. paru runs `git clean -fdx`
     # between -S invocations, which would wipe an in-tree target/ on every
