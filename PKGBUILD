@@ -21,7 +21,7 @@ source=("zen-browser-twilight.sh"
         "policies.json")
 source_x86_64=("https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz")
 source_aarch64=("https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz")
-sha512sums=('2e5309cef36d94dfb85c040a1c6f5b1890b96f59dff71bb90bbb0ba6e0ceed2808a217fb80ce2dd6c4172c95ef0adb6d2fa8d2f9d5651995fa0b09e3a1e4548b'
+sha512sums=('dae4133154524cca0ed0bed47b9c2a6070be2e9aba603442e3050c40a15fd04b00dd502eeab89b8a0f51ee27020a19b0ee5f2ac87cd4ae9c0694fd21d330c749'
             '70e0d97a3c9d655e1ab142c6e53c9ab107fb01022df13b9e0573779e7c898ecd04d24b2105cf15a0f0a7284767419b6adaef08ceabb411554bd08bab82c4ee9a'
             'f17d02c67f731ea27401176d2fb320a093367d94c8cbfd18a3b76c6f516994b8c547cee970b7bbf0422767064d62410884e07ae6e95b59007b48869e750fdcd9')
 sha512sums_x86_64=('a1b61a6165ed7e8f014a9e66821976b47b427614c60f00300e943e06a3f10ed35c6281a5f0749eb969e5e9ba418af7ec0cdfcc2a7dd5776267f780097c596c47')
