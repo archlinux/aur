@@ -1,6 +1,6 @@
 pkgbase = democap
 	pkgdesc = Drag[en]gine motion capture using VR hardware
-	pkgver = 1.6
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://dragondreams.ch/index.php/democap
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = democap
 	depends = dragengine
 	depends = hicolor-icon-theme
 	depends = xdg-utils
-	noextract = DEMoCap-1.6.delga
-	source = democap-1.6::git+https://github.com/LordOfDragons/democap.git#tag=v1.6
-	source = https://github.com/LordOfDragons/democap/releases/download/v1.6/DEMoCap-1.6.delga
+	noextract = DEMoCap-1.8.delga
+	source = democap-1.8::git+https://github.com/LordOfDragons/democap.git#tag=v1.8
+	source = https://github.com/LordOfDragons/democap/releases/download/v1.8/DEMoCap-1.8.delga
 	validpgpkeys = E0ECD22F5F70777588450034446C9C667CFC1DF3
 	validpgpkeys = A58A91BCA5C3B2C34CD57ACB8040F88D27F1D0AA
-	sha256sums = 8e65796e4da1458a7c38cfeac8cf1480d3f024cdd2376ef934fe47a328eb5bd9
-	sha256sums = ca200f753c3b2c18193e7bf3cccff8b39d3eaf65060c1ff8ac80872aabb59987
+	sha256sums = 2ca9ed75757fabc29c238c1615c4d55cc5b2b1df8a373b0cfce73de60583ef93
+	sha256sums = 444457b4f1b2d059cd8795e0d55f74479569c401e2ed410822d561f352dde239
 
 pkgname = democap
