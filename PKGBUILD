@@ -1,17 +1,26 @@
-# Maintainer: Eslam Allam eslamallam73@gmail.com
+# Maintainer: jeryd leuck <jerydleuck@gmail.com>
 pkgname=msty-deb
-conflicts=('msty')
 pkgver=2.1.3
-filename="MstyStudio_amd64_${pkgver}.deb"
-pkgrel=2
+pkgrel=3
 pkgdesc="Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local."
 arch=('x86_64')
 url="https://msty.ai/"
-license=('custom') # Change as needed
-depends=()         # List dependencies
+license=('proprietary')
+depends=('alsa-lib' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxshmfence' 'mesa' 'nss' 'pango')
+provides=('msty')
+conflicts=('msty' 'msty-bin')
+filename="MstyStudio_amd64_${pkgver}.deb"
 source=("$filename::https://next-assets.msty.studio/app/latest/linux/MstyStudio_amd64.deb?ver=$pkgver")
 sha256sums=("4dbd8aa69cd7de3ff12a1d219556dca7b7de16469f76b943a06f96d6134d3833")
 
 package() {
+  # Extract data.tar.xz from the debian package
   bsdtar -xOf "$srcdir/$filename" data.tar.xz | bsdtar -C "$pkgdir" -xv
+
+  # Fix permissions for chrome-sandbox (required for Electron sandboxing)
+  chmod 4755 "$pkgdir/opt/MstyStudio/chrome-sandbox"
+
+  # Create a symlink in /usr/bin for terminal access
+  install -d "$pkgdir/usr/bin"
+  ln -s /opt/MstyStudio/MstyStudio "$pkgdir/usr/bin/msty"
 }
