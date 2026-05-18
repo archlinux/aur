@@ -5,68 +5,69 @@ pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
 pkgver=10.0.0.r1.0dd22337
-pkgrel=1
-pkgdesc='A modern music player'
-arch=('x86_64' 'aarch64')
-url='https://tauonmusicbox.rocks'
-license=('GPL-3.0-or-later')
-
+pkgrel=2
+pkgdesc="A modern music player"
+arch=("x86_64" "aarch64")
+url="https://tauonmusicbox.rocks"
+license=("GPL-3.0-or-later")
+# https://github.com/briansmith/ring/issues/1444 - needed to build lrclib-solver
+options=(!lto)
 conflicts=("${pkgname%-git}")
 depends=(
-	'python-pillow'
-	'python-pylast'
-	'python-pysdl3'
-	'python-send2trash'
-	'python-musicbrainzngs'
-	'python-mutagen'
-	'python-unidecode'
-	'python-setproctitle'
-	'python-gobject'
-	'python-cairo'
-	'python-beautifulsoup4'
-	'python-requests'
-	'python-dbus'
-	'python-natsort'
-	'python-websocket-client'
-	'libayatana-appindicator'
-	'libnotify'
-	'ffmpeg'
-	'flac'
-	'gtk3'
-	'kissfft'
-	'noto-fonts-extra'
-	'noto-fonts'
-	'sdl3_image'
-	'xdg-utils'
-	'mpg123'
-	'opusfile'
-	'wavpack'
-	'libvorbis'
-	'libopenmpt'
-	'libprojectm'
-	'libsamplerate'
-	'opencc'
-	'libgme'
-	'libpipewire'
+	"python-pillow"
+	"python-pylast"
+	"python-pysdl3"
+	"python-send2trash"
+	"python-musicbrainzngs"
+	"python-mutagen"
+	"python-unidecode"
+	"python-setproctitle"
+	"python-gobject"
+	"python-cairo"
+	"python-beautifulsoup4"
+	"python-requests"
+	"python-dbus"
+	"python-natsort"
+	"python-websocket-client"
+	"kissfft"
+	"libnotify"
+	"ffmpeg"
+	"flac"
+	"noto-fonts-extra"
+	"noto-fonts"
+	"xdg-utils"
+	"mpg123"
+	"opusfile"
+	"wavpack"
+	"libvorbis"
+	"libayatana-appindicator"
+	"libopenmpt"
+	"libprojectm"
+	"libsamplerate"
+	"opencc"
+	"libgme"
+	"libpipewire"
+	"sdl3_image"
 )
 
 makedepends=(
-	'miniaudio'
-	'git'
-	'pkgconf'
-	'python-build'
-	'python-installer')
+	"cargo"
+	"git"
+	"miniaudio"
+	"pkgconf"
+	"python-build"
+	"python-installer")
 
 optdepends=(
-	'noto-fonts-cjk: Matching font for CJK characters'
-	'picard: Recommended tag editor'
-	'p7zip: 7z archive extraction support'
-	'unrar: RAR archive extraction support'
-	'python-plexapi: Plex streaming support'
-	'python-pypresence: Discord status support'
-	'python-pychromecast: Chromecast stream support'
-	'python-jxlpy: JPEG XL image support'
-	'python-tidalapi: Tidal feature support'
+	"noto-fonts-cjk: Matching font for CJK characters"
+	"picard: Recommended tag editor"
+	"p7zip: 7z archive extraction support"
+	"unrar: RAR archive extraction support"
+	"python-plexapi: Plex streaming support"
+	"python-pypresence: Discord status support"
+	"python-pychromecast: Chromecast stream support"
+	"python-jxlpy: JPEG XL image support"
+	"python-tidalapi: Tidal feature support"
 )
 
 source=("${pkgname%-git}"::'git+https://github.com/Taiko2k/Tauon.git')
@@ -80,13 +81,24 @@ pkgver() {
 
 prepare() {
 	# Use system kissfft instead of the expected cloned repository
-	sed -i 's|"src/phazor/kissfft/kiss_fftr.c", "src/phazor/kissfft/kiss_fft.c", ||g' tauon-music-box/pyproject.toml
-	sed -i 's|"samplerate"|"kissfft-float", "samplerate"|g' tauon-music-box/pyproject.toml
+	cd "${pkgname%-git}"
+	sed -i 's|"src/phazor/kissfft/kiss_fftr.c", "src/phazor/kissfft/kiss_fft.c", ||g' pyproject.toml
+	sed -i 's|"samplerate"|"kissfft-float", "samplerate"|g' pyproject.toml
+
+	cd src/lrclib-solver
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
 	cd "${pkgname%-git}"
 	python -m build --wheel
+
+	# Tiny Rust binary that calculates LRCLIB challenges
+	cd src/lrclib-solver
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
@@ -104,4 +116,7 @@ package() {
 	install -Dm644 "extra/${_pkgname}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 	install -Dm755 "extra/tauonmb.sh" "${pkgdir}/opt/${pkgname%-git}/tauonmb.sh"
 	install -Dm755 "extra/tauonmb.sh" "${pkgdir}/usr/bin/tauon"
+
+	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+	install -Dm755 "src/lrclib-solver/target/release/lrclib-solver" "${pkgdir}${site_packages}/tauon/lrclib-solver"
 }
