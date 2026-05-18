@@ -1,6 +1,6 @@
 # Maintainer: C-Yassin <c.yassin.org@gmail.com>
 pkgname=flameget
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A GTK4 Download Manager wrapping Aria2, Curl, and YT-DLP"
 arch=('x86_64' 'aarch64')
