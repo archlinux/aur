@@ -13,6 +13,7 @@ pkgbase = mov-watch
 	depends = python-rich
 	depends = python-requests
 	depends = python-pypresence
+	depends = python-playwright
 	depends = yt-dlp
 	depends = python-pillow
 	depends = python-numpy
