@@ -1,0 +1,28 @@
+# makepkg
+/pkg/
+/src/
+*.pkg.tar.*
+*.pkg.tar.zst
+*.src.tar.gz
+*.log
+
+# Local test builds (makepkg extracts source here)
+skills-manager-*/
+
+# Rust / Node (if you build inside a checkout)
+**/target/
+node_modules/
+dist/
+
+# Editor / OS
+*~
+*.swp
+*.swo
+.DS_Store
+.idea/
+.vscode/
+
+# Secrets — never commit
+*.pem
+id_aur
+id_aur.pub
