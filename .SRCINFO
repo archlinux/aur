@@ -3,7 +3,7 @@ pkgbase = openpilot-cabana
 	pkgver = 1.1.2
 	pkgrel = 2
 	epoch = 1
-	url = https://github.com/deanlee/openpilot-cabana
+	url = https://github.com/P6g9YHK6/openpilot-cabana-arch
 	arch = x86_64
 	license = MIT
 	makedepends = python-pip
@@ -34,7 +34,7 @@ pkgbase = openpilot-cabana
 	provides = cabana
 	conflicts = openpilot-cabana-git
 	options = !lto
-	source = git+https://github.com/deanlee/openpilot-cabana.git#tag=v1.1.2
+	source = git+https://github.com/P6g9YHK6/openpilot-cabana-arch.git#tag=v1.1.2
 	source = archlinux.patch
 	sha256sums = SKIP
 
