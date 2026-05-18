@@ -1,0 +1,9 @@
+post_install() {
+	echo 'To finish Biopass setup process, add following lines:'
+	echo 'auth    [success=2 default=ignore]      libbiopass_pam.so'
+	echo 'auth    [success=1 default=ignore]      pam_unix.so nullok'
+	echo 'auth    requisite                       pam_deny.so'
+	echo 'to either:'
+	echo '- `/etc/pam.d/system-auth` file just before `pam_unix.so` for global auth'
+	echo '- `/etc/pam.d/sudo` at the beginning for `sudo` use only'
+}
