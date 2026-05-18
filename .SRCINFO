@@ -1,0 +1,13 @@
+pkgbase = zenvsh
+	pkgdesc = Persistent shell variables for zsh, written in C
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/joako1721/zenv
+	arch = x86_64
+	license = MIT
+	checkdepends = zsh
+	makedepends = gcc
+	source = zenv-0.1.0.tar.gz::https://github.com/joako1721/zenv/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 736559089f87cde4b2c746198382c38c821576cb253665c8d5891be5063e629d
+
+pkgname = zenvsh
