@@ -3,7 +3,7 @@
 _pkgauthor=PerryTS
 _pkgname=perry
 pkgname=${_pkgname}-bin
-pkgdesc="Compiles TypeScript directly to executables using SWC and Cranelift"
+pkgdesc="Native TypeScript compiler that compiles TypeScript to native executables"
 
 pkgver=0.5.1008
 pkgrel=1
