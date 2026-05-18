@@ -1,0 +1,12 @@
+pkgbase = sflasher-git
+	pkgdesc = Samsung Swift (PNX49xx) Flasher/Dumper utility.
+	pkgver = r27.d47c196
+	pkgrel = 1
+	url = https://github.com/bhmsgame06/sflasher
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = git+https://github.com/bhmsgame06/sflasher
+	sha256sums = SKIP
+
+pkgname = sflasher-git
