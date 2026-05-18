@@ -1,15 +1,16 @@
 pkgbase = maestro
-	pkgdesc = Turn natual language into commands. Your CLI tasks, now as easy as a conversation.
-	pkgver = 0.3.0
+	pkgdesc = Mobile UI testing framework
+	pkgver = 2.5.1
 	pkgrel = 1
-	url = https://github.com/pluja/maestro
-	arch = x86_64
-	makedepends = go
-	depends = glibc
-	optdepends = ollama: ollama support.
-	provides = maestro=0.3.0
-	conflicts = maestro
-	source = maestro-0.3.0.tar.gz::https://github.com/pluja/maestro/archive/refs/tags/v0.3.0.tar.gz
-	b2sums = 66a0fb22182bbfee2fa362a7414d08b412697e46e76062d0decf98036545f65cf46ae9bd60ddd291375166f5c49bd707a6d938dc899856aeeb2ea0568f84ceca
+	url = https://maestro.dev
+	arch = any
+	license = Apache-2.0
+	makedepends = java-environment>=17
+	depends = bash
+	depends = java-runtime-headless>=17
+	conflicts = maestro-bin
+	conflicts = maestro-dev
+	source = maestro-2.5.1.tar.gz::https://github.com/mobile-dev-inc/maestro/archive/refs/tags/cli-2.5.1.tar.gz
+	sha256sums = 6561f4e78f7a3f8781f8a5abdbc79386443de27f42fc60640cce21a1cf9f0a3c
 
 pkgname = maestro
