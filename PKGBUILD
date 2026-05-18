@@ -3,7 +3,7 @@
 # Contributor: Daniel Larsson <znixen@live.se>
 
 pkgname=patool
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="portable command line archive file manager"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=("lz4: extracting LZ4 archives"
     "unrar: extracting RAR files"
     "zstd: extracting ZSTANDARD files")
 source=(https://github.com/wummel/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('2f23e2d6513193c28061425d6ddf1f56561ae4003cbe2007fc6d051df273e09a')
+sha256sums=('1c8bbbbe1f421181bf7055ada975befb024c1677449e9d36f42bb45ac69f8b4c')
 
 
 build() {
