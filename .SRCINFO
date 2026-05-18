@@ -7,6 +7,6 @@ pkgbase = msty-deb
 	license = custom
 	conflicts = msty
 	source = MstyStudio_amd64_2.1.3.deb::https://next-assets.msty.studio/app/latest/linux/MstyStudio_amd64.deb?ver=2.1.3
-	sha256sums = 9c97cb6331997848e5c9cba125b9c035456f98a809510b7d462bb7499013c0d8
+	sha256sums = 4dbd8aa69cd7de3ff12a1d219556dca7b7de16469f76b943a06f96d6134d3833
 
 pkgname = msty-deb
