@@ -1,10 +1,8 @@
 # Maintainer: Tim Pearson <ttpears@gmail.com>
 pkgname=tmux-tad
 _pkgname=tad
-pkgver=0.6.0
-# Was 0.6.0-2 as a prebuilt-binary package; bumping pkgrel so existing
-# installs see this source-build rewrite as an upgrade (0.6.0-3 > -2).
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Tmux session and group manager with a native TUI dashboard"
 arch=('x86_64')
 url="https://github.com/ttpears/tad"
@@ -20,7 +18,7 @@ conflicts=('tad-bin' 'tad' 'tmux-tad-bin' 'tmux-tad-git')
 # passes — they only produce an empty tmux-tad-debug package.
 options=('!debug' '!strip')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('88aaa413c5d6dd3a4fcfd3739affa3446638c0356dcfb2d6b95044ec7d983070')
+sha256sums=('4846861d9892d5d9b00fe982ea4903ed49dfcbaa1af2154675e7b8b1cb00993c')
 
 prepare() {
     cd "$_pkgname-$pkgver"
