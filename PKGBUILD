@@ -3,7 +3,7 @@
 _name=asgi-lifespan
 pkgname=python-$_name
 pkgver=2.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Programmatic startup/shutdown of ASGI apps.'
 arch=('any')
 license=('MIT')
@@ -36,7 +36,7 @@ check() {
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
 }
 
-package_python-asgi-lifespan() {
+package() {
   cd "$srcdir"/$_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
