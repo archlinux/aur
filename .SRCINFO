@@ -1,6 +1,6 @@
 pkgbase = moshpit
 	pkgdesc = moshpit client — SSH and Mosh inspired remote terminal client written in Rust
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = moshpit
 	makedepends = cmake
 	makedepends = gcc
 	depends = moshpit-keygen
-	source = moshpit-0.8.0.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.0.tar.gz
-	sha256sums = 46d99b952ee2ca365a91d810a972b5fc6b32d4cb08ffd0c11d5a9507219f784b
+	source = moshpit-0.8.1.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.1.tar.gz
+	sha256sums = 03feaf0abcbecf7f8de2446fafe66ba87f9fd88f84eaa612bd5295310eff2371
 
 pkgname = moshpit
