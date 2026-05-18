@@ -1,13 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vulkan-low-latency-layer-git
 pkgver=0.1.0.r1.g4633ada
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan layer for hardware agnostic input latency reduction"
 arch=('x86_64')
 url="https://github.com/Korthos-Software/low_latency_layer"
 license=('MIT')
 depends=('glibc' 'libstdc++' 'libgcc')
-makedepends=('vulkan-headers' 'vulkan-utility-libraries' 'git' 'cmake' 'ninja')
+makedepends=('vulkan-headers' 'vulkan-utility-libraries' 'git' 'cmake' 'ninja'
+	     'shaderc' 'glslang')
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
 source=("${pkgname::-4}::git+$url.git")

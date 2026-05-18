@@ -1,7 +1,7 @@
 pkgbase = vulkan-low-latency-layer-git
 	pkgdesc = Vulkan layer for hardware agnostic input latency reduction
 	pkgver = 0.1.0.r1.g4633ada
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Korthos-Software/low_latency_layer
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = vulkan-low-latency-layer-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = shaderc
+	makedepends = glslang
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
