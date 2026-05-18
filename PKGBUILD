@@ -4,15 +4,17 @@ _pkgname=efm
 pkgver=2.0.4
 _electronversion=41
 pkgrel=1
-pkgdesc="File manager for Linux - Built with Electron.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A fast, keyboard-friendly file manager for Linux, built with Electron and native GIO bindings.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/Michael-Vanderford/electron-file-manager"
-license=('GPL-3.0-only')
+license=('LGPL-2.1-or-later')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    #'baobab'
+)
+optdepends=(
+    'sshfs: for SSHFS network mounts'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgname%-bin}-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
