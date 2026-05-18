@@ -2,7 +2,7 @@
 
 _name=jsonschema-rs
 pkgname=python-$_name
-pkgver=0.44.1
+pkgver=0.46.5
 pkgrel=1
 pkgdesc="A high-performance JSON Schema validator for Python."
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-flask' 'python-hypothesis' 'python-pytest' 'git')
 options=(!strip lto)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz"
         "suite::git+https://github.com/json-schema-org/JSON-Schema-Test-Suite#commit=583d7c6")
-sha256sums=('49ca909cc3017990a732145b9a7c2f1a0727b2f95dba4190c05a514575b5f4bf'
+sha256sums=('857e37e075a2d9f6f23dea58a559a55b663d3879a252170004b569073dab1ef3'
             'SKIP')
 
 prepare() {
