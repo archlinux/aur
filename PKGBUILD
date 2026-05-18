@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Grotelüschen <tippfehlr@archlinux.org>
 
 pkgname=ocx
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
 pkgdesc="OpenCode extension manager with portable, isolated profiles. Your setup, anywhere."
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(bun)
 makedepends=(git)
 source=("git+$url#tag=v$pkgver")
-sha256sums=('b284168ee240a3a798d7f49d8d828588051bca62a44dd3a8fb07fd93e218f5c1')
+sha256sums=('e81a781f06da0bc62c700e047b64638292efd953dd7a3aa0bb6e73ec4da210d1')
 
 prepare() {
 	cd $pkgname
