@@ -1,6 +1,6 @@
 pkgbase = kalign3
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TimoLassmann/kalign
 	arch = x86_64
 	license = Apache-2.0
@@ -12,6 +12,7 @@ pkgbase = kalign3
 	makedepends = python-scikit-build-core
 	makedepends = pybind11
 	makedepends = python-numpy
+	makedepends = python-biopython
 	source = kalign3-3.5.1.tar.gz::https://github.com/TimoLassmann/kalign/archive/refs/tags/v3.5.1.tar.gz
 	sha256sums = 983bfd7da76010d59c3de3bae3d977cac78642c5eb061009dd12b11b9db5190d
 
