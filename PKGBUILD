@@ -13,6 +13,7 @@ depends=(
 	'pam'
 )
 makedepends=('git' 'go' 'base-devel' 'pam')
+conflicts=('snry-shell-qs')
 optdepends=()
 source=("git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v$pkgver")
 sha256sums=('SKIP')

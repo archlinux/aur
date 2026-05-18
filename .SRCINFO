@@ -12,6 +12,7 @@ pkgbase = snry-dm
 	makedepends = pam
 	depends = snry-shell
 	depends = pam
+	conflicts = snry-shell-qs
 	backup = etc/pam.d/snry-dm
 	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v3.0.0
 	sha256sums = SKIP
