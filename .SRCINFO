@@ -1,0 +1,13 @@
+pkgbase = imaster-image-tool-git
+	pkgdesc = A tool for bidirectional file conversion between PNG (.png) and IM (.ifg) formats.
+	pkgver = r13.dcb0c19
+	pkgrel = 1
+	url = https://github.com/bhmsgame06/imaster-image-tool
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = libpng
+	source = git+https://github.com/bhmsgame06/imaster-image-tool
+	sha256sums = SKIP
+
+pkgname = imaster-image-tool-git
