@@ -37,21 +37,18 @@ package() {
     sed -i "s|Icon=.*|Icon=warp|" \
         "${pkgdir}/usr/share/applications/warp.desktop"
     if [ -d usr/share/icons ]; then
-        # Install icon files directly with binary_name — no cp+mv rename needed
-        find usr/share/icons -type f \( -name '*.png' -o -name '*.svg' \) | while read -r icon; do
-            relpath="${icon#usr/share/icons/}"
-            dir="${pkgdir}/usr/share/icons/$(dirname "$relpath")"
+        cp -r usr/share/icons "${pkgdir}/usr/share/"
+        find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} +
+        find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 {} +
+        find "${pkgdir}/usr/share/icons" -name '*.png' -o -name '*.svg' | while read -r icon; do
+            dir=$(dirname "$icon")
             base=$(basename "$icon")
             ext="${base##*.}"
-            install -Dm644 "$icon" "${dir}/warp.${ext}"
-        done
-        # Copy non-icon files (index.theme, etc.) as-is
-        find usr/share/icons -type f ! \( -name '*.png' -o -name '*.svg' \) | while read -r f; do
-            relpath="${f#usr/share/icons/}"
-            install -Dm644 "$f" "${pkgdir}/usr/share/icons/${relpath}"
+            name="${base%.*}"
+            [ "$name" = "warp" ] && continue
+            mv "$icon" "${dir}/warp.${ext}"
         done
     fi
-
     # Install root-level icons to pixmaps (first matching png or svg)
     for f in *.png *.svg; do
         [ -f "$f" ] || continue
