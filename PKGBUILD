@@ -10,7 +10,7 @@ license=('MIT')
 depends=(
   'capnproto'
   'zeromq'
-  'libcurl'
+  'curl'
   'openssl'
   'bzip2'
   'ffmpeg'
@@ -28,7 +28,7 @@ depends=(
   'zstd'
   'python'
   'python-numpy'
-  'python-cython'
+  'cython'
   'scons'
   'clang'
 )
