@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 2.0.1-1
+**Current release:** 1:2.0.1-3
 
 ---
 
@@ -23,6 +23,7 @@ assumptions that cause concrete failures:
 
 All patches are applied at package time inside `package()` of the PKGBUILD.
 The patch logic lives in two external source files verified by sha256:
+
 - `patch-asar.py` — patches `app.asar` and `bundledPlugins/`
 - `patch-pkg.js` — patches `package.json` during `prepare()` and `build()`
 
@@ -36,9 +37,10 @@ The patch logic lives in two external source files verified by sha256:
    (readable JS/CJS files — no asar manipulation needed).
 
 2. **Patches the asar** for two files inside `resources/app.asar`:
+   
    - `node_modules/winapi-bindings/index.js` — patched first (highest offset in file)
    - `renderer.js` — patched second (lower offset)
-
+   
    The order matters: patching from highest to lowest offset ensures that when
    `update_offsets()` adjusts all entries after the pivot, already-adjusted entries
    are correctly shifted again. The asar is written once at the end.
@@ -92,10 +94,10 @@ requiredFiles||[],file=>bluebird_1.default.resolve(
 )).then(()=>{}).catch(err=>{if("ENOENT"===err.code)return bluebird_1.default.reject(err)})
 ```
 
-| Scenario | Without patch | With patch |
-|---|---|---|
-| Proton/Wine (`.exe` present) | ✓ | ✓ |
-| Native Linux (`.x86_64`) | ✗ Game not found | ✓ |
+| Scenario                     | Without patch    | With patch |
+| ---------------------------- | ---------------- | ---------- |
+| Proton/Wine (`.exe` present) | ✓                | ✓          |
+| Native Linux (`.x86_64`)     | ✗ Game not found | ✓          |
 
 ---
 
@@ -126,11 +128,11 @@ this.exePath = (() => {
 })()
 ```
 
-| Game | Plugin executable | Resolved on Linux |
-|---|---|---|
-| Cyberpunk 2077 (Proton) | `bin/x64/Cyberpunk2077.exe` | unchanged (`.exe` exists via Proton) |
-| Graveyard Keeper (native) | `Graveyard Keeper.exe` | → `Graveyard Keeper.x86_64` |
-| Generic native `linux/` | `game.exe` | → `linux/game` |
+| Game                      | Plugin executable           | Resolved on Linux                    |
+| ------------------------- | --------------------------- | ------------------------------------ |
+| Cyberpunk 2077 (Proton)   | `bin/x64/Cyberpunk2077.exe` | unchanged (`.exe` exists via Proton) |
+| Graveyard Keeper (native) | `Graveyard Keeper.exe`      | → `Graveyard Keeper.x86_64`          |
+| Generic native `linux/`   | `game.exe`                  | → `linux/game`                       |
 
 ---
 
@@ -230,17 +232,20 @@ binary paths in both `executable()` and `requiredFiles`. Since `requiredFiles` a
 checked with `stat()`, the game is not discovered on Linux if the `.exe` doesn't exist
 (Proton does not create fake `.exe` symlinks in the game directory).
 
-| Game | Plugin file | Windows binary | Linux binary |
-|---|---|---|---|
-| Starbound | `game-starbound/index.js` | `win64/starbound.exe` | `linux/starbound` |
-| Team Fortress 2 | `game-teamfortress2/index.js` | `tf_win64.exe` | `hl2_linux` |
-| RimWorld | `game-rimworld/index.js` | `RimWorldWin64.exe` | `RimWorldLinux` |
-| War Thunder | `game-warthunder/index.js` | `win64/aces.exe` | `linux64/aces` |
+| Game            | Plugin file                   | Windows binary                                   | Linux binary      |
+| --------------- | ----------------------------- | ------------------------------------------------ | ----------------- |
+| Starbound       | `game-starbound/index.js`     | `win64/starbound.exe`                            | `linux/starbound` |
+| Team Fortress 2 | `game-teamfortress2/index.js` | `tf_win64.exe`                                   | `hl2_linux`       |
+| RimWorld        | `game-rimworld/index.js`      | `RimWorldWin64.exe`                              | `RimWorldLinux`   |
+| War Thunder     | `game-warthunder/index.js`    | `win64/aces.exe`                                 | `linux64/aces`    |
+| XCOM 2 (base)   | `game-xcom2/index.js`         | `Binaries/Win64/XCom2.exe`                       | `bin/XCOM2`       |
+| XCOM 2 (WOTC)   | `game-xcom2/index.js`         | `XCom2-WarOfTheChosen/Binaries/Win64/XCom2.exe`  | `bin/XCOM2`       |
 
 Each plugin gets both its `executable()` return value and the matching entry in
 `requiredFiles` updated with a `process.platform === 'linux'` conditional.
 
 Example (Starbound):
+
 ```js
 // before
 const defaultLocation = 'win64/starbound.exe';
@@ -260,6 +265,71 @@ is not available there, producing an error banner on every launch.
 
 **Fix:** Remove the `requireExtension` calls from both plugins.
 
+## Patch applied to `gamebryo-test-settings/index.cjs` (bundled plugin)
+
+### 6 — `mygamesPath()`: resolve INI path to Proton prefix on Linux
+
+**Problem:** `mygamesPath()` calls `vortex_api.util.getVortexPath("documents")` which
+resolves to `~/Documents` on Linux. Bethesda games running under Proton store their INI
+files, load order, DLC list and downloaded-content manifests inside the game's Steam
+compatdata prefix instead:
+
+```
+~/.steam/steam/steamapps/compatdata/<APPID>/pfx/drive_c/users/steamuser/Documents/My Games/<gamePath>/
+```
+
+This means Vortex cannot read or write INI settings, load order, or DLC lists for any
+Bethesda game running via Proton on Linux.
+
+**Fix:** On Linux, look up the game's Steam App ID from a hardcoded table. Parse
+`~/.steam/steam/steamapps/libraryfolders.vdf` to discover all Steam library roots
+(covers multi-drive setups). For each library, check if the compatdata prefix exists.
+If found, return that path. Falls back to `~/Documents` if the prefix is not found
+(covers non-Proton installs or unrecognised games).
+
+```js
+// before
+function mygamesPath(gameMode) {
+    return path.join(vortex_api.util.getVortexPath("documents"), "My Games",
+                     gameSupport.get(gameMode, "mygamesPath"));
+}
+
+// after (Linux path, simplified)
+function mygamesPath(gameMode) {
+    if (process.platform === 'linux') {
+        const APPIDS = {
+            skyrim:72850, skyrimse:489830, skyrimvr:611670,
+            enderal:933480, enderalspecialedition:976620,
+            fallout3:22370, fallout4:377160, fallout4vr:611660,
+            falloutnv:22380, starfield:1716740, oblivion:22330
+        };
+        const appId = APPIDS[gameMode];
+        if (appId !== undefined) {
+            const steamRoot = path.join(os.homedir(), '.steam', 'steam');
+            const libs = [path.join(steamRoot, 'steamapps')];
+            // parse libraryfolders.vdf for additional library roots
+            try {
+                const vdf = fs.readFileSync(path.join(steamRoot, 'steamapps', 'libraryfolders.vdf'), 'utf8');
+                for (const m of vdf.matchAll(/"path"\s+"([^"]+)"/g))
+                    libs.push(path.join(m[1], 'steamapps'));
+            } catch (_e) {}
+            for (const lib of libs) {
+                const dp = path.join(lib, 'compatdata', String(appId),
+                                     'pfx', 'drive_c', 'users', 'steamuser', 'Documents');
+                if (fs.existsSync(dp))
+                    return path.join(dp, 'My Games', gameSupport.get(gameMode, "mygamesPath"));
+            }
+        }
+    }
+    return path.join(vortex_api.util.getVortexPath("documents"), "My Games",
+                     gameSupport.get(gameMode, "mygamesPath"));
+}
+```
+
+**Games covered:** Fallout 3, Fallout New Vegas, Fallout 4, Fallout 4 VR, Skyrim,
+Skyrim Special Edition, Skyrim VR, Enderal, Enderal Special Edition, Starfield, Oblivion.
+
+---
 
 ## User extension patch: Cyberpunk 2077 extension (runtime, not in PKGBUILD)
 
@@ -317,13 +387,13 @@ in the ERRO log for the same reason and are equally harmless.
 These patches target minified build output. The corresponding source locations in
 [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) are:
 
-| Patch | Source file |
-|---|---|
-| requiredFiles validator | `src/extensions/gamemode_management/util/verifyGamePath.ts` |
-| StarterInfo.initFromGame | `src/util/StarterInfo.ts` |
-| browseGameLocation | `src/extensions/gamemode_management/util/browseGameLocation.ts` |
-| epicGamesLauncher export | `src/util/api.ts` (re-export from `EpicGamesLauncher`) |
-| winapi-bindings stub | `node_modules/winapi-bindings/index.js` |
+| Patch                    | Source file                                                     |
+| ------------------------ | --------------------------------------------------------------- |
+| requiredFiles validator  | `src/extensions/gamemode_management/util/verifyGamePath.ts`     |
+| StarterInfo.initFromGame | `src/util/StarterInfo.ts`                                       |
+| browseGameLocation       | `src/extensions/gamemode_management/util/browseGameLocation.ts` |
+| epicGamesLauncher export | `src/util/api.ts` (re-export from `EpicGamesLauncher`)          |
+| winapi-bindings stub     | `node_modules/winapi-bindings/index.js`                         |
 
 PRs to the upstream repository fixing these on the source level would make this fork
 unnecessary.
@@ -346,14 +416,43 @@ makepkg -si
 
 ## Changelog
 
-| Release | Changes |
-|---|---|
-| 2.0.0-1 | Initial build: dependency fixes, pnpm/dotnet support, core patches 1–4 |
-| 2.0.0-2 | Cyberpunk 2077 extension: fix 95 Windows backslash paths (REDmod detection); remove gamebryo-plugin-management requireExtension calls |
-| 2.0.0-3 | epicGamesLauncher null-safe stub (patch 5); winapi-bindings Proxy; native Linux binaries for Starbound, TF2, RimWorld, War Thunder; correct file browser filter context |
-| 2.0.0-4 | winapi-bindings: switch from throwing Proxy to silent no-op Proxy (fix unhandled startup crash on SetProcessPreferredUILanguages) |
-| 2.0.0-5–9 | Refactor: extract `patch-asar.py` and `patch-pkg.js` as verified source files; fix `chmod 777→755` on assets dir enforced via `post_upgrade()`; remove `dotnet-sdk-9.0` from makedepends (binary is prebuilt in upstream repo, ~500 MB saved); remove `NO_PARALLEL` (parallel native module builds work correctly); suppress 28 pnpm deprecated subdependency warnings via `allowedDeprecatedVersions` |
-| 2.0.0-10 | Fix fragile relative path in `build()` (`../../dist/linux-unpacked` → `$srcdir`-absolute); deduplicate `dotnetprobe` install (removed from `build()`, kept only in `package()` with `install -Dm755`); remove `game-survivingmars` plugin patch (redundant — renderer Patch 5 epicGamesLauncher stub covers it globally) |
-| 2.0.0-11 | Auto-repatch Cyberpunk 2077 extension on every launch: `patch-ext-cp2077.py` fixes 95 Windows backslash paths in `path_1.default.join()` calls; idempotent via `// vortex-linux-fix` marker; `python` added to runtime depends |
-| 2.0.0-12 | Generic extension re-patch system: `vortex.sh` loops over `/opt/Vortex/patch-ext-*.py`; new extension patches require only a new source file in PKGBUILD — no changes to `vortex.sh` needed |
-| **2.0.1-1** | Upstream update to v2.0.1; fix all plugin patch strings for upstream quote style change (single → double quotes, `requiredFiles` collapsed to single-line arrays); all 16 patches confirmed [OK] |
+| Release       | Changes                                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 2.0.0-1       | Initial build: dependency fixes, pnpm/dotnet support, core patches 1–4                                                                                                                                                                                                                                                                                                                                 |
+| 2.0.0-2       | Cyberpunk 2077 extension: fix 95 Windows backslash paths (REDmod detection); remove gamebryo-plugin-management requireExtension calls                                                                                                                                                                                                                                                                  |
+| 2.0.0-3       | epicGamesLauncher null-safe stub (patch 5); winapi-bindings Proxy; native Linux binaries for Starbound, TF2, RimWorld, War Thunder; correct file browser filter context                                                                                                                                                                                                                                |
+| 2.0.0-4       | winapi-bindings: switch from throwing Proxy to silent no-op Proxy (fix unhandled startup crash on SetProcessPreferredUILanguages)                                                                                                                                                                                                                                                                      |
+| 2.0.0-5–9     | Refactor: extract `patch-asar.py` and `patch-pkg.js` as verified source files; fix `chmod 777→755` on assets dir enforced via `post_upgrade()`; remove `dotnet-sdk-9.0` from makedepends (binary is prebuilt in upstream repo, ~500 MB saved); remove `NO_PARALLEL` (parallel native module builds work correctly); suppress 28 pnpm deprecated subdependency warnings via `allowedDeprecatedVersions` |
+| 2.0.0-10      | Fix fragile relative path in `build()` (`../../dist/linux-unpacked` → `$srcdir`-absolute); deduplicate `dotnetprobe` install (removed from `build()`, kept only in `package()` with `install -Dm755`); remove `game-survivingmars` plugin patch (redundant — renderer Patch 5 epicGamesLauncher stub covers it globally)                                                                               |
+| 2.0.0-11      | Auto-repatch Cyberpunk 2077 extension on every launch: `patch-ext-cp2077.py` fixes 95 Windows backslash paths in `path_1.default.join()` calls; idempotent via `// vortex-linux-fix` marker; `python` added to runtime depends                                                                                                                                                                         |
+| 2.0.0-12      | Generic extension re-patch system: `vortex.sh` loops over `/opt/Vortex/patch-ext-*.py`; new extension patches require only a new source file in PKGBUILD — no changes to `vortex.sh` needed                                                                                                                                                                                                            |
+| **2.0.1-1**   | Upstream update to v2.0.1; fix all plugin patch strings for upstream quote style change (single → double quotes, `requiredFiles` collapsed to single-line arrays); all 16 patches confirmed [OK]                                                                                                                                                                                                       |
+| **1:2.0.1-2** | New patch: `mygamesPath()` in `gamebryo-test-settings` now resolves to the Proton compatdata prefix on Linux instead of `~/Documents`. Searches all Steam libraries via `libraryfolders.vdf`. Covers Fallout 3/NV/4/4VR, Skyrim/SE/VR, Enderal/SE, Starfield, Oblivion. Epoch=1 introduced to fix version ordering after upstream switched to `epoch:pkgver-pkgrel` scheme.                            |
+| **1:2.0.1-3** | XCOM 2 native Linux binary patch: `game-xcom2` plugin now returns `bin/XCOM2` on Linux (Feral port) instead of `Binaries/Win64/XCom2.exe`. Applies to both base game and War of the Chosen. Daggerfall Unity covered by existing generic patches (`.exe`→`.x86_64` fallback). A Hat in Time requires no patch (Proton-only, `.exe` present in game dir). |
+
+---
+
+## Roadmap
+
+- [x] Functional build on Arch Linux
+- [x] `requiredFiles` patch: `.exe` → `.x86_64` fallback
+- [x] `initFromGame` patch: native Linux binary resolution
+- [x] `browseGameLocation` patch: fix manual game location flow
+- [x] Published to AUR as `vortex-linux-fix`
+- [x] Fix REDmod DLC missing (Cyberpunk 2077 extension backslash paths)
+- [x] Fix `gamebryo-plugin-management` error banner
+- [x] `epicGamesLauncher` null-safe stub on Linux
+- [x] `winapi-bindings` silent no-op Proxy (fix startup crash)
+- [x] Native Linux binaries: Starbound, TF2, RimWorld, War Thunder
+- [x] Extract patch scripts to external source files (sha256-verified)
+- [x] Fix asset dir permissions (777→755), enforced on upgrades via `post_upgrade()`
+- [x] Remove `dotnet-sdk-9.0` from makedepends (prebuilt in upstream repo)
+- [x] Parallel native module builds (removed `NO_PARALLEL`)
+- [x] Auto-repatch Cyberpunk 2077 extension on every launch
+- [x] Generic extension re-patch system (`patch-ext-*.py` in `/opt/Vortex/`)
+- [x] Bethesda games INI/AppData path via Proton prefix (Fallout 4, Skyrim, etc.)
+- [x] XCOM 2 + War of the Chosen: native Linux binary `bin/XCOM2` (Feral port)
+- [x] Daggerfall Unity: covered by generic `.exe`→`.x86_64` fallback patches
+- [x] A Hat in Time: no native Linux binary; Proton-only, `.exe` present in game dir — no patch needed
+- [ ] Upstream PRs to Nexus-Mods/Vortex with the Linux fixes
+- [ ] Automatic re-patch of user extensions after update

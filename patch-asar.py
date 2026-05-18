@@ -193,6 +193,21 @@ PLUGIN_PATCHES = [
             ),
         ],
     },
+    # XCOM 2 — native Linux binary is bin/XCOM2 (Feral port, not Binaries/Win64/XCom2.exe)
+    # Both base game and War of the Chosen share the same binary at bin/XCOM2 in the game root.
+    {
+        "file": "game-xcom2/index.js",
+        "replacements": [
+            (
+                'executable: () => path.join("Binaries", "Win64", "XCom2.exe"),',
+                "executable: () => process.platform === 'linux' ? path.join(\"bin\", \"XCOM2\") : path.join(\"Binaries\", \"Win64\", \"XCom2.exe\"),",
+            ),
+            (
+                'executable: () => path.join("XCom2-WarOfTheChosen", "Binaries", "Win64", "XCom2.exe"),',
+                "executable: () => process.platform === 'linux' ? path.join(\"bin\", \"XCOM2\") : path.join(\"XCom2-WarOfTheChosen\", \"Binaries\", \"Win64\", \"XCom2.exe\"),",
+            ),
+        ],
+    },
     # War Thunder — native Linux binary is linux64/aces (not win64/aces.exe)
     {
         "file": "game-warthunder/index.js",

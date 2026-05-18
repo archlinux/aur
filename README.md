@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 2.0.1-1
+- **Versión:** 1:2.0.1-3
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.3-arch1-2)
@@ -75,10 +75,10 @@ bluebird.map(requiredFiles, file =>
 ).then(()=>{}).catch(err => { if ("ENOENT" === err.code) return bluebird.reject(err) })
 ```
 
-| Escenario | Sin patch | Con patch |
-|---|---|---|
-| Proton/Wine (`.exe` presente) | ✓ | ✓ |
-| Nativo Linux (`.x86_64`) | ✗ Game not found | ✓ |
+| Escenario                     | Sin patch        | Con patch |
+| ----------------------------- | ---------------- | --------- |
+| Proton/Wine (`.exe` presente) | ✓                | ✓         |
+| Nativo Linux (`.x86_64`)      | ✗ Game not found | ✓         |
 
 ---
 
@@ -175,19 +175,74 @@ module.exports = new Proxy({}, {
 
 ---
 
+### Patch 6 — `mygamesPath`: redirigir rutas INI a prefijo Proton en Linux
+
+**Problema:** La función `mygamesPath()` del plugin `gamebryo-test-settings` resuelve
+`getVortexPath("documents")` a `~/Documents` en Linux. Pero Proton almacena los
+archivos INI de los juegos Bethesda dentro del prefijo de compatdata del juego, no en
+`~/Documents`.
+
+Resultado: Vortex no encuentra ni lee los `.ini` de configuración, el orden de carga,
+la lista de DLC ni los archivos de contenido descargado.
+
+**Fix:** En Linux, si el juego es uno de los Bethesda soportados, se busca el prefijo
+Proton correcto recorriendo todas las librerías Steam (parseando `libraryfolders.vdf`).
+Si lo encuentra, devuelve la ruta dentro del compatdata. Si no, cae al comportamiento
+original con `~/Documents`.
+
+```js
+// antes
+function mygamesPath(gameMode) {
+    return path.join(vortex_api.util.getVortexPath("documents"), "My Games",
+                     gameSupport.get(gameMode, "mygamesPath"));
+}
+
+// después (Linux)
+function mygamesPath(gameMode) {
+    if (process.platform === 'linux') {
+        const APPIDS = { skyrim:72850, skyrimse:489830, skyrimvr:611670,
+                         enderal:933480, enderalspecialedition:976620,
+                         fallout3:22370, fallout4:377160, fallout4vr:611660,
+                         falloutnv:22380, starfield:1716740, oblivion:22330 };
+        const appId = APPIDS[gameMode];
+        if (appId !== undefined) {
+            // lee libraryfolders.vdf para cubrir librerías Steam externas
+            const libs = [path.join(~, '.steam', 'steam', 'steamapps')];
+            // + libs adicionales del vdf…
+            for (const lib of libs) {
+                const dp = path.join(lib, 'compatdata', String(appId),
+                                     'pfx', 'drive_c', 'users', 'steamuser', 'Documents');
+                if (fs.existsSync(dp))
+                    return path.join(dp, 'My Games', gameSupport.get(gameMode, "mygamesPath"));
+            }
+        }
+    }
+    return path.join(vortex_api.util.getVortexPath("documents"), "My Games",
+                     gameSupport.get(gameMode, "mygamesPath"));
+}
+```
+
+**Juegos cubiertos:** Fallout 3, Fallout NV, Fallout 4, Fallout 4 VR, Skyrim, Skyrim SE,
+Skyrim VR, Enderal, Enderal SE, Starfield, Oblivion.
+
+---
+
 ## Plugins bundled: binarios nativos Linux
 
 Los plugins de juego declaran ejecutables Windows en `executable()` y `requiredFiles`.
 Para juegos con cliente nativo en Linux, se parchean directamente sus archivos.
 
-| Juego | Binario original | Binario Linux | Archivo parchado |
-|---|---|---|---|
-| Starbound | `win64/starbound.exe` | `linux/starbound` | `game-starbound/index.js` |
-| Team Fortress 2 | `tf_win64.exe` | `hl2_linux` | `game-teamfortress2/index.js` |
-| RimWorld | `RimWorldWin64.exe` | `RimWorldLinux` | `game-rimworld/index.js` |
-| War Thunder | `win64/aces.exe` | `linux64/aces` | `game-warthunder/index.js` |
+| Juego           | Binario original                                | Binario Linux     | Archivo parchado              |
+| --------------- | ----------------------------------------------- | ----------------- | ----------------------------- |
+| Starbound       | `win64/starbound.exe`                           | `linux/starbound` | `game-starbound/index.js`     |
+| Team Fortress 2 | `tf_win64.exe`                                  | `hl2_linux`       | `game-teamfortress2/index.js` |
+| RimWorld        | `RimWorldWin64.exe`                             | `RimWorldLinux`   | `game-rimworld/index.js`      |
+| War Thunder     | `win64/aces.exe`                                | `linux64/aces`    | `game-warthunder/index.js`    |
+| XCOM 2 (base)   | `Binaries/Win64/XCom2.exe`                      | `bin/XCOM2`       | `game-xcom2/index.js`         |
+| XCOM 2 (WOTC)   | `XCom2-WarOfTheChosen/Binaries/Win64/XCom2.exe` | `bin/XCOM2`       | `game-xcom2/index.js`         |
 
 Starbound (ejemplo):
+
 ```js
 // antes
 const defaultLocation = 'win64/starbound.exe';
@@ -256,39 +311,44 @@ vortex-aur-fix/
 
 ---
 
-## Prueba de funcionamiento — 2026-05-17 (2.0.1-1)
+## Prueba de funcionamiento — 2026-05-18 (1:2.0.1-2)
 
-Probado en Arch Linux (kernel 7.0.3-arch1-2):
+Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 
-| Característica | Resultado |
-|---|---|
-| Detección de Cyberpunk 2077 (Proton) | ✓ |
-| REDmod detectado correctamente | ✓ (fix backslash paths) |
-| Detección de Starbound (nativo Linux) | ✓ |
-| Detección de Graveyard Keeper (nativo Linux) | ✓ |
-| Localización manual de juegos (browse dialog) | ✓ |
-| Sin crash por `epicGamesLauncher` null | ✓ |
-| Sin banner de error `gamebryo-plugin-management` | ✓ |
-| Sin crash de inicio por winapi-bindings | ✓ |
-| Login cuenta Nexus Mods Premium | ✓ |
-| Links NXM (descarga con un clic) | ✓ |
-| Instalación de mods | ✓ |
+| Característica                                           | Resultado               |
+| -------------------------------------------------------- | ----------------------- |
+| Detección de Cyberpunk 2077 (Proton)                     | ✓                       |
+| REDmod detectado correctamente                           | ✓ (fix backslash paths) |
+| Detección de Starbound (nativo Linux)                    | ✓                       |
+| Detección de Graveyard Keeper (nativo Linux)             | ✓                       |
+| Localización manual de juegos (browse dialog)            | ✓                       |
+| Sin crash por `epicGamesLauncher` null                   | ✓                       |
+| Sin banner de error `gamebryo-plugin-management`         | ✓                       |
+| Sin crash de inicio por winapi-bindings                  | ✓                       |
+| Login cuenta Nexus Mods Premium                          | ✓                       |
+| Links NXM (descarga con un clic)                         | ✓                       |
+| Instalación de mods                                      | ✓                       |
+| INIs de Fallout 4 (Proton) — ruta compatdata correcta    | ✓                       |
+| INIs de Skyrim SE (Proton) — ruta compatdata correcta    | ✓                       |
+| Orden de carga / DLC list / AppData resueltos vía Proton | ✓                       |
 
 ---
 
 ## Historial de cambios
 
-| pkgrel | Cambios |
-|---|---|
-| 1 | Build inicial: dependencias, pnpm, dotnet, patches básicos (requiredFiles, StarterInfo, browseGameLocation) |
-| 2 | Fix REDmod (95 backslash paths en extensión Cyberpunk 2077); elimina error gamebryo-plugin-management |
-| 3 | epicGamesLauncher stub; winapi-bindings Proxy; binarios Linux para Starbound, TF2, RimWorld, War Thunder; filtro de archivos corregido |
-| 4 | winapi-bindings: Proxy no-op silencioso en lugar de Proxy que lanza (fix crash de inicio por SetProcessPreferredUILanguages) |
-| 5–9 | Refactor: scripts externos (`patch-asar.py`, `patch-pkg.js`); `chmod 777→755` en assets + hook post-upgrade; elimina `dotnet-sdk-9.0` de makedepends (~500MB menos); elimina `NO_PARALLEL` (builds paralelas más rápidas); suprime 28 warnings de subdependencias deprecadas |
-| 10 | Ruta absoluta `$srcdir` en `build()`; dotnetprobe consolidado en `package()`; elimina patch redundante de `game-survivingmars` (cubierto por el stub global de epicGamesLauncher) |
-| 11 | Re-parche automático de la extensión Cyberpunk 2077 en cada arranque: `patch-ext-cp2077.py` corrige 95 rutas backslash Windows en `path.join()`; detección por marker `// vortex-linux-fix`; `python` añadido a `depends` |
-| 12 | Sistema genérico de re-parche: `vortex.sh` itera sobre `patch-ext-*.py` en `/opt/Vortex/`; añadir soporte para nuevas extensiones no requiere modificar `vortex.sh` |
-| **2.0.1-1** | Actualización a upstream 2.0.1; corrección de patterns de plugin patches (comillas simples → dobles en bundled plugins); 16/16 patches [OK] |
+| pkgrel        | Cambios                                                                                                                                                                                                                                                                                      |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1             | Build inicial: dependencias, pnpm, dotnet, patches básicos (requiredFiles, StarterInfo, browseGameLocation)                                                                                                                                                                                  |
+| 2             | Fix REDmod (95 backslash paths en extensión Cyberpunk 2077); elimina error gamebryo-plugin-management                                                                                                                                                                                        |
+| 3             | epicGamesLauncher stub; winapi-bindings Proxy; binarios Linux para Starbound, TF2, RimWorld, War Thunder; filtro de archivos corregido                                                                                                                                                       |
+| 4             | winapi-bindings: Proxy no-op silencioso en lugar de Proxy que lanza (fix crash de inicio por SetProcessPreferredUILanguages)                                                                                                                                                                 |
+| 5–9           | Refactor: scripts externos (`patch-asar.py`, `patch-pkg.js`); `chmod 777→755` en assets + hook post-upgrade; elimina `dotnet-sdk-9.0` de makedepends (~500MB menos); elimina `NO_PARALLEL` (builds paralelas más rápidas); suprime 28 warnings de subdependencias deprecadas                 |
+| 10            | Ruta absoluta `$srcdir` en `build()`; dotnetprobe consolidado en `package()`; elimina patch redundante de `game-survivingmars` (cubierto por el stub global de epicGamesLauncher)                                                                                                            |
+| 11            | Re-parche automático de la extensión Cyberpunk 2077 en cada arranque: `patch-ext-cp2077.py` corrige 95 rutas backslash Windows en `path.join()`; detección por marker `// vortex-linux-fix`; `python` añadido a `depends`                                                                    |
+| 12            | Sistema genérico de re-parche: `vortex.sh` itera sobre `patch-ext-*.py` en `/opt/Vortex/`; añadir soporte para nuevas extensiones no requiere modificar `vortex.sh`                                                                                                                          |
+| **2.0.1-1**   | Actualización a upstream 2.0.1; corrección de patterns de plugin patches (comillas simples → dobles en bundled plugins); 16/16 patches [OK]                                                                                                                                                  |
+| **1:2.0.1-2** | Patch `mygamesPath` en `gamebryo-test-settings`: en Linux busca el prefijo Proton correcto recorriendo todas las librerías Steam en lugar de usar `~/Documents`. Cubre Fallout 3/NV/4/4VR, Skyrim/SE/VR, Enderal/SE, Starfield y Oblivion. Epoch=1 añadido por cambio de esquema de versión. |
+| **1:2.0.1-3** | Binario Linux para XCOM 2 y WOTC: `bin/XCOM2` (port Feral) en lugar de `Binaries/Win64/XCom2.exe`. Daggerfall Unity cubierto por patches genéricos (`.exe`→`.x86_64`). A Hat in Time no requiere patch (Proton, `.exe` presente).                                                            |
 
 ---
 
@@ -305,22 +365,22 @@ Análisis y mejoras aplicadas al paquete en esta sesión (pkgrel=4 → pkgrel=9)
 
 ### Cambios aplicados
 
-| Cambio | Motivo | Impacto |
-|---|---|---|
-| Extraer heredoc Python a `patch-asar.py` | Mantenibilidad, sha256 verificable | El PKGBUILD pasó de ~410 a ~120 líneas |
-| Extraer `node -e` a `patch-pkg.js` | Reutilización en `prepare()` y `build()` | Un solo archivo en lugar de dos bloques inline |
-| `chmod 777→755` en assets + `post_upgrade()` | Seguridad; pacman no actualiza permisos de dirs existentes en upgrade | Corregido en instalaciones limpias y upgrades |
-| Eliminar `dotnet-sdk-9.0` de makedepends | `dotnetprobe` viene precompilado en el repo upstream | ~500 MB menos en builds limpias |
-| Eliminar `NO_PARALLEL="1"` | Workaround ya no necesario | Build paralela de módulos nativos; ~15-20 s menos en builds cacheadas |
-| `allowedDeprecatedVersions` en `patch-pkg.js` | Subdependencias deprecadas que no podemos actualizar | 28 warnings de pnpm eliminados |
-| `.gitignore` | Evitar subir artefactos de build al AUR | Limpieza del repo |
+| Cambio                                        | Motivo                                                                | Impacto                                                               |
+| --------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Extraer heredoc Python a `patch-asar.py`      | Mantenibilidad, sha256 verificable                                    | El PKGBUILD pasó de ~410 a ~120 líneas                                |
+| Extraer `node -e` a `patch-pkg.js`            | Reutilización en `prepare()` y `build()`                              | Un solo archivo en lugar de dos bloques inline                        |
+| `chmod 777→755` en assets + `post_upgrade()`  | Seguridad; pacman no actualiza permisos de dirs existentes en upgrade | Corregido en instalaciones limpias y upgrades                         |
+| Eliminar `dotnet-sdk-9.0` de makedepends      | `dotnetprobe` viene precompilado en el repo upstream                  | ~500 MB menos en builds limpias                                       |
+| Eliminar `NO_PARALLEL="1"`                    | Workaround ya no necesario                                            | Build paralela de módulos nativos; ~15-20 s menos en builds cacheadas |
+| `allowedDeprecatedVersions` en `patch-pkg.js` | Subdependencias deprecadas que no podemos actualizar                  | 28 warnings de pnpm eliminados                                        |
+| `.gitignore`                                  | Evitar subir artefactos de build al AUR                               | Limpieza del repo                                                     |
 
 ### Resultados de build
 
-| Build | Condiciones | Tiempo |
-|---|---|---|
+| Build    | Condiciones                           | Tiempo       |
+| -------- | ------------------------------------- | ------------ |
 | pkgrel=5 | Con `NO_PARALLEL`, clone git completo | 2 min 26 sec |
-| pkgrel=8 | Sin `NO_PARALLEL`, clone cacheado | 1 min 54 sec |
+| pkgrel=8 | Sin `NO_PARALLEL`, clone cacheado     | 1 min 54 sec |
 
 ### Descartado
 
@@ -343,17 +403,45 @@ Revisión completa del código y limpieza aplicada al paquete en esta sesión (p
 
 ### Cambios aplicados
 
-| Cambio | Motivo | Impacto |
-|---|---|---|
-| `rm -rf ../../dist/linux-unpacked` → ruta absoluta con `$srcdir` | Ruta relativa asumía cwd=`src/main/`; falla silenciosamente si cambia el layout | Eliminado riesgo de limpieza incorrecta del directorio |
-| Eliminar `cp/chmod` de dotnetprobe en `build()` | Duplicado con `install -Dm755` en `package()`; un solo punto de instalación | Menos código, permisos gestionados por un único `install -Dm755` |
-| Eliminar patch `game-survivingmars` de `PLUGIN_PATCHES` | Redundante: el stub global de `epicGamesLauncher` en renderer Patch 5 cubre el null-check | Menos código a mantener y verificar en cada actualización upstream |
+| Cambio                                                           | Motivo                                                                                    | Impacto                                                            |
+| ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `rm -rf ../../dist/linux-unpacked` → ruta absoluta con `$srcdir` | Ruta relativa asumía cwd=`src/main/`; falla silenciosamente si cambia el layout           | Eliminado riesgo de limpieza incorrecta del directorio             |
+| Eliminar `cp/chmod` de dotnetprobe en `build()`                  | Duplicado con `install -Dm755` en `package()`; un solo punto de instalación               | Menos código, permisos gestionados por un único `install -Dm755`   |
+| Eliminar patch `game-survivingmars` de `PLUGIN_PATCHES`          | Redundante: el stub global de `epicGamesLauncher` en renderer Patch 5 cubre el null-check | Menos código a mantener y verificar en cada actualización upstream |
 
 ### Hallazgos sin acción requerida
 
 - **Campo `_pls` en reconstrucción asar**: se escribe `4+n` en lugar de `4` (valor fijo del pickle de Chromium). Inofensivo — Electron no lee ese campo tras el parse inicial.
 - **`>>` en pnpm-workspace.yaml**: frágil si se repite en el mismo directorio, pero en el flujo de makepkg el directorio es siempre fresco.
 - **`update-mime-database` en `vortex.install`**: innecesario para URL scheme handlers (los gestiona `update-desktop-database`), pero inofensivo.
+
+---
+
+## Sesión — 2026-05-18 (pkgrel=1 → pkgrel=2, epoch=1)
+
+### Problema reportado
+
+Juegos Bethesda (Fallout 4, Skyrim, etc.) no encontraban sus archivos INI, orden de carga,
+lista de DLC ni archivos de contenido descargado. Vortex buscaba en `~/Documents/My Games/`
+pero Proton almacena esos archivos dentro del prefijo de compatdata:
+
+```
+~/.steam/steam/steamapps/compatdata/<APPID>/pfx/drive_c/users/steamuser/Documents/My Games/
+```
+
+### Fix aplicado
+
+Nuevo patch en `gamebryo-test-settings/index.cjs` — función `mygamesPath()`:
+
+- Detecta si es Linux y si el juego es uno de los 11 Bethesda soportados
+- Lee `libraryfolders.vdf` para cubrir librerías Steam externas
+- Busca el prefijo compatdata en cada librería
+- Usa la ruta Proton si existe; cae a `~/Documents` si no
+
+### Juegos cubiertos por el fix
+
+Fallout 3, Fallout NV, Fallout 4, Fallout 4 VR, Skyrim, Skyrim SE, Skyrim VR,
+Enderal, Enderal SE, Starfield, Oblivion.
 
 ---
 
@@ -373,6 +461,9 @@ Revisión completa del código y limpieza aplicada al paquete en esta sesión (p
 - [x] Permisos de assets corregidos (777→755) y reforzados en post-upgrade
 - [x] `dotnet-sdk-9.0` eliminado de makedepends (prebuilt en repo)
 - [x] Build paralela de módulos nativos (NO_PARALLEL eliminado)
-- [ ] Binarios Linux: XCom 2, A Hat in Time, Daggerfall Unity
+- [x] Rutas INI/AppData de juegos Bethesda vía prefijo Proton (Fallout 4, Skyrim, etc.)
+- [x] Binarios Linux: XCOM 2 y WOTC (`bin/XCOM2`, port Feral)
+- [x] Daggerfall Unity: cubierto por patches genéricos (`.exe` → `.x86_64`)
+- [x] A Hat in Time: sin binario Linux nativo, funciona vía Proton sin patch
 - [ ] PR upstream a Nexus-Mods/Vortex con los fixes de Linux
 - [ ] Mecanismo automático de re-parche de extensiones de usuario tras actualización
