@@ -1,7 +1,7 @@
 pkgbase = intel-level-zero-raytracing-support
 	pkgdesc = Intel oneAPI Raytracing Support
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/level-zero-raytracing-support
 	arch = x86_64
 	license = Apache-2.0
@@ -9,7 +9,8 @@ pkgbase = intel-level-zero-raytracing-support
 	makedepends = ninja
 	makedepends = git
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	source = https://github.com/intel/level-zero-raytracing-support/archive/refs/tags/v1.2.3.tar.gz
 	sha256sums = 0bfb03903154228cdba0320e3bc09c57787558b368da315b9b32e9603198b5b3
 
