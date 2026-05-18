@@ -1,5 +1,5 @@
 pkgname=creality-print-appimage
-pkgver=7.1.0.4414
+pkgver=7.1.1.4472
 pkgrel=1
 pkgdesc="Creality Print is a slicer dedicated to FDM printers."
 arch=('x86_64')
@@ -17,11 +17,11 @@ _install_path="/opt/appimages/${_appimage_name}"
 
 noextract=("${_filename}")
 sha512sums_x86_64=(
-  'd0f5f6b4684ff081eb4c35fd9f294dfc29a7d29fcf876ee087ab503302a1fd880a0f961aeddaa9137a562e74366b2174199913bb3777aa2b1502b08034cc82c5'
+  'f211988654a7393b90a759d2c5d58a2ccdb531e75145395a9332069af4da85cda8d212fcfa6f27753623050e574effe4d9b34f96a463689a9fa99d34f4e72b46'
   '7e038ab385f767433de39e8686f29c096fe6d5967e74f185570d37786583554957e483f14489a512fa652048dfcffc10ccc1782d20645e04d2759d475f88b65a'
 )
 source_x86_64=(
-  "${_filename}::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v${_semver_version}/CrealityPrint_Ubuntu2404-V${pkgver}-${arch[0]}-Release.AppImage"
+  "${_filename}::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v${_semver_version}/CrealityPrint-V${pkgver}-${arch[0]}-Release.AppImage"
   "CrealityPrint.desktop.patch"
 )
 
