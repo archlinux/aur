@@ -1,0 +1,18 @@
+pkgbase = vfio-tools-git
+	pkgdesc = A collection of tools and scripts that aim to make PCI passthrough a little easier
+	pkgver = r56.0e50fd1
+	pkgrel = 1
+	url = https://github.com/PassthroughPOST/VFIO-Tools
+	arch = any
+	license = BSD-2-Clause
+	depends = bash
+	depends = libvirt
+	depends = pciutils
+	depends = dialog
+	optdepends = ddcutil: monitor input switching via switch_displays.sh hook
+	provides = vfio-tools
+	conflicts = vfio-tools
+	source = vfio-tools-git::git+https://github.com/PassthroughPOST/VFIO-Tools.git
+	sha256sums = SKIP
+
+pkgname = vfio-tools-git
