@@ -2,7 +2,7 @@
 
 pkgname=nitrokey-app2-bin
 _pkgname=nitrokey-app2
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Nitrokey management application for Nitrokey 3 devices (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,9 @@ source_x86_64=("nitrokeyapp-${pkgver}-${CARCH}::${url}/releases/download/v${pkgv
 source_aarch64=("nitrokeyapp-${pkgver}-${CARCH}::${url}/releases/download/v${pkgver}/nitrokey-app-v${pkgver}-arm64-linux-binary")
 sha256sums=('998e95da01257458b52236746d18036254fd292b63d6d5f4b839d1b82fe94a4e'
             'e49609f53b375f9eb69d7024699e403ad6913f40453bfe2bdf1bab362e78206e'
-            'ad66ee8cd11f0336a8b3621583aa0d382305609dbafb4e415c581e6ea6bfb9ef')
-sha256sums_x86_64=('7c662b313c42789d5bfbcfaa6f74eca315e6eb2c83f19ef3858532a456418b9d')
-sha256sums_aarch64=('3c350255b4e618388795ff911a2bf75050de98e273555a880f7c59501d8b26cf')
+            '501a2cdee6323fc0a79f3744ea6a15af07f008a0b301eba70eb4594860173a70')
+sha256sums_x86_64=('ae7dab9b59d92b940b65903e8245590c5b26c681ec4294c5f2d4ede9207ca92d')
+sha256sums_aarch64=('8c3f1f13dd2800ab34c1fabcbf16731503432e0bc3e53483421bba2b8be75472')
 
 package() {
     install -Dm755 "nitrokeyapp-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/nitrokeyapp"
