@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Boutrik <alexandreboutrik@protonmail.ch>
 pkgname=bouclier-bleu
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Modular NGAV/EDR designed to prevent ransomware and memory corruption."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('linux>=5.12')
 makedepends=('cargo' 'clang' 'llvm' 'pkgconf' 'bpf' 'libelf' 'zlib' 'attr')
 backup=('etc/bouclier-bleu/config.toml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexandreboutrik/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3cde57d9e214aaad4e5ec6277aadd76ce6d5812999a7dee4bf748efd1f34755c')
+sha256sums=('b91ec020892f0a0ca8bd8aeb115583a9554b52ff65e57ffcca9dba2e896f29b3')
 
 build() {
     cd "${pkgname}-${pkgver}"
