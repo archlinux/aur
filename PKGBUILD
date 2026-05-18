@@ -37,10 +37,31 @@ build() {
 package() {
   cd "$srcdir/polify"
 
+  local _bundle="build/linux/x64/release/bundle"
+
   # Application bundle
   install -d "$pkgdir/usr/lib/polify"
-  cp -r build/linux/x64/release/bundle/* "$pkgdir/usr/lib/polify/"
+  cp -r "$_bundle"/* "$pkgdir/usr/lib/polify/"
   chmod -R 755 "$pkgdir/usr/lib/polify"
+
+  # Bundle the real libonnxruntime shared library (Flutter only copies the
+  # broken symlink, not the resolved target)
+  local _onnxrt_dir
+  _onnxrt_dir="$(find build/linux/x64/release/plugins/flutter_onnxruntime \
+    -path '*/onnxruntime-linux-x64-*/lib/libonnxruntime.so.*.*' -print -quit 2>/dev/null)"
+  if [[ -n "$_onnxrt_dir" ]]; then
+    local _onnxrt_real
+    _onnxrt_real="$(readlink -f "$_onnxrt_dir")"
+    local _soname
+    _soname="$(basename "$(readlink "$_onnxrt_dir")")"
+    install -Dm755 "$_onnxrt_real" "$pkgdir/usr/lib/polify/lib/$_soname"
+    ln -sf "$_soname" "$pkgdir/usr/lib/polify/lib/libonnxruntime.so.1"
+    ln -sf "libonnxruntime.so.1" "$pkgdir/usr/lib/polify/lib/libonnxruntime.so"
+  fi
+
+  # Strip embedded build paths (removes $srcdir references from binaries)
+  find "$pkgdir/usr/lib/polify" -type f \( -name '*.so' -o -name '*.so.*' \
+    -o -not -name '*.*' \) -exec strip --strip-unneeded {} + 2>/dev/null || true
 
   # Symlink to /usr/bin
   install -d "$pkgdir/usr/bin"
