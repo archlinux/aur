@@ -1,7 +1,7 @@
 pkgbase = python-jiwer
 	pkgdesc = Evaluate your speech-to-text system with similarity measures such as word error rate (WER).
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jitsi/jiwer
 	arch = any
 	license = Apache-2.0
