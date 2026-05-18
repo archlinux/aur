@@ -1,6 +1,6 @@
 pkgbase = nodepdf-bin
 	pkgdesc = Lightweight, fast desktop PDF viewer built with Electron and React
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/remdph/node-pdf
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = nodepdf-bin
 	conflicts = nodepdf
 	options = !strip
 	options = !debug
-	source = nodepdf-bin-0.2.0.deb::https://github.com/remdph/node-pdf/releases/download/v0.2.0/node-pdf_0.2.0_amd64.deb
-	sha256sums = df5b508a3de8ab36107aa5f800ca308a8c6fecbc736f3b285b5ca23174ae9146
+	source = nodepdf-bin-0.2.1.deb::https://github.com/remdph/node-pdf/releases/download/v0.2.1/node-pdf_0.2.1_amd64.deb
+	sha256sums = ee40b0167ff713f5a63e04a54c61a79b4521b84b33ac4ee5f8ac775136940ec1
 
 pkgname = nodepdf-bin
