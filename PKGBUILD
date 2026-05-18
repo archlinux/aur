@@ -14,6 +14,10 @@ depends=(
   'hicolor-icon-theme'
 )
 makedepends=('gettext')
+checkdepends=(
+  'python-pytest'
+  'ruff'
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andy5995/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('caa23bb637b1fd2ed52ddfdf87ec573cf46723d8aa78c50ce37f18e50f32d0f4')
 
@@ -21,6 +25,11 @@ build() {
   cd "${pkgname}-${pkgver}"
   meson setup _build --prefix=/usr
   meson compile -C _build
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  meson test -C _build
 }
 
 package() {
