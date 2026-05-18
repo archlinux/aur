@@ -1,7 +1,7 @@
 # Maintainer: Issa M. Omais <me0@ioplus.dev>
 
 pkgname=wavetask
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A Plasma 6 task manager plasmoid with zoom effect"
 arch=('x86_64')
@@ -39,7 +39,7 @@ makedepends=(
 
 _pkgsrc="org.vicko.$pkgname-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3fa7de43bc16d780fbb3d310bc6d9a4db63be95f8442e9f7a193e54dbca15413')
+sha256sums=('66c44f4bcc7311c1a74860df2e11ea4a4f5d22a64dae544405da049f4cb45b4d')
 
 options=('!debug')
 
