@@ -1,21 +1,9 @@
 pkgbase = alter-messenger
-	pkgdesc = Native GTK4 inbox for ALTER alter-to-alter messaging
-	pkgver = 0.1.0
+	pkgdesc = WITHDRAWN — pending publication review. Do not install.
+	pkgver = 0.0.0
 	pkgrel = 1
-	url = https://github.com/true-alter/alter-messenger
+	url = https://truealter.com
 	arch = any
-	license = Apache
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-hatchling
-	makedepends = python-wheel
-	depends = python>=3.11
-	depends = gtk4
-	depends = libadwaita
-	depends = python-gobject
-	depends = python-httpx
-	depends = libnotify
-	source = alter-messenger-0.1.0.tar.gz::https://github.com/true-alter/alter-messenger/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	license = Apache-2.0
 
 pkgname = alter-messenger

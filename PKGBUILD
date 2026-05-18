@@ -1,41 +1,19 @@
-# Maintainer: Blake Morrison <hello@truealter.com>
-pkgname=alter-messenger
-pkgver=0.1.0
-pkgrel=1
-pkgdesc="Native GTK4 inbox for ALTER alter-to-alter messaging"
-arch=('any')
-url="https://github.com/true-alter/alter-messenger"
-license=('Apache')
-depends=(
-  'python>=3.11'
-  'gtk4'
-  'libadwaita'
-  'python-gobject'
-  'python-httpx'
-  'libnotify'
-)
-makedepends=(
-  'python-build'
-  'python-installer'
-  'python-hatchling'
-  'python-wheel'
-)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/true-alter/alter-messenger/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+# Maintainer: ALTER <hello@truealter.com>
+#
+# This package has been withdrawn pending publication review.
+# Do not install. A deletion request has been filed with the AUR
+# Trusted User community; the package base will be removed shortly.
 
-build() {
-  cd "$pkgname-$pkgver"
-  python -m build --wheel --no-isolation
-}
+pkgname=alter-messenger
+pkgver=0.0.0
+pkgrel=1
+pkgdesc='WITHDRAWN — pending publication review. Do not install.'
+arch=('any')
+url='https://truealter.com'
+license=('Apache-2.0')
 
 package() {
-  cd "$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm644 data/alter-messenger.desktop \
-    "$pkgdir/usr/share/applications/alter-messenger.desktop"
-  install -Dm644 data/alter-messenger.service \
-    "$pkgdir/usr/lib/systemd/user/alter-messenger.service"
-  install -Dm644 LICENSE \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    echo "This package has been withdrawn." >&2
+    echo "Refer to https://truealter.com for canonical install paths." >&2
+    return 1
 }
