@@ -1,0 +1,8 @@
+_atualizar_caches() {
+  gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor 2>/dev/null || true
+  kbuildsycoca6 --noincremental 2>/dev/null || true
+}
+
+post_install() { _atualizar_caches; }
+post_upgrade() { _atualizar_caches; }
+post_remove() { _atualizar_caches; }

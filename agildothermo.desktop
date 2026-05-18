@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Agildo Thermo
+GenericName=Monitor na bandeja
+Comment=CPU, GPU, RAM, disco e rede na bandeja com HUD flutuante (PyQt6)
+Exec=agildothermo
+Icon=agildothermo
+Terminal=false
+Categories=Utility;System;Monitor;
+Keywords=thermo;temperature;tray;hud;monitor;plasma;
+StartupNotify=false
