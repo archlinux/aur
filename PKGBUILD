@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=logstash-bin
-pkgver=9.4.0
+pkgver=9.4.1
 pkgrel=1
 pkgdesc="Transport and process your logs, events, or other data"
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://artifacts.elastic.co/downloads/logstas
         "logstash.service"
         "logstash.sysusers"
         "logstash.tmpfiles")
-sha512sums=('f14aae6486e0223423999e50581a581aa673d5d50822117b83b25e53ed586303f9c3610b108c5b385a01b47142706beb1fff396af50539ab111d74ee51b657bb'
+sha512sums=('158f3cc9a132d01781200037d5456007319157cd60a8534c079af450f76f0a675d51aa4221a1a61d6307c863cf84300104dd4bc14a17990139043d4fbac25b48'
             '5a50aacd9e1186c4535726d5baf7481133c348286dde83f9c9e9bfab7c3db960a1009165203a5eefd557c83a988571ffbf4e6c8758cbc8c4034c8cb419d04026'
             '5835c9d9f45a194566d8f3eaef679cd103403ccc4e415412bcef869d06d555a299ba3a94d726bc268b92e2cd4ad05977033f0458ebc8371d7c554a89b8559442'
             'ddaa8d5ef02e365af166dad023788fc48b01c0c45511314451c4c57a09dd92c03c99df4c3aabcf484e1b6b55268861c9e9a569635df0056e285bbcc5a399b856')
