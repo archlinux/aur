@@ -4,13 +4,13 @@ pkgname=amneziawg-go
 pkgdesc="AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard. "
 url="https://github.com/amnezia-vpn/amneziawg-go"
 arch=("x86_64")
-pkgver=0.2.17
+pkgver=0.2.18
 pkgrel=1
 license=('MIT')
 makedepends=('go')
 optdepends=('amneziawg-tools: Tools for configuration amneziawg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-go/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('1850a13ec1085252b3b7f020f266cc7eb937441d93e8b56197fefb9e177d0c0b857a661cc23f7ce58b1da0b680d553d9cbc5d2680a3ea7ceac2996f840ec4b96')
+sha512sums=('91e1abdd9e3fb5607dfd86dd8841f980ba6e7449d6f84787c5694c5322b9d64108c35e106621c375adb8a96883e24ddc15d0dab5b636e34512b70f1e58bd7abb')
 
 build(){
 	cd ${pkgname}-${pkgver}/
