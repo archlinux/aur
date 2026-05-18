@@ -2,12 +2,12 @@
 
 pkgname=concord
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A feature-rich TUI client for Discord, written in Rust"
 arch=(x86_64)
 url="https://github.com/chojs23/concord"
-license=(GPL-3.0)
-depends=(glibc)
+license=(GPL-3.0-only)
+depends=(libgcc alsa-lib opus)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e404a0e9b8fcfd36786b7df82c0dd3145fbe029452dfbeac08139094bedf8c4f')
@@ -22,7 +22,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
-  cargo build --frozen --release
+  cargo build --frozen --release --features voice-playback
 }
 
 check() {
