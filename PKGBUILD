@@ -44,7 +44,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    '5db7d854e81ece21aa3b40a1c84831d1cb19ec7a6f2f3003cf59405717bc2bb4'
+    '1bbd4f946509aba5a20fd64b6fb7ee067af00e434916c9c9b7128a936c56e7da'
     'b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
 )
 
@@ -98,7 +98,7 @@ build() {
 
     go build -v \
         -tags systray \
-        -ldflags "-s -w -X github.com/AshBuk/dabri/internal/version.Version=${pkgver} -linkmode=external -extldflags '-Wl,-rpath,/usr/lib/${pkgname}'" \
+        -ldflags "-s -w -X github.com/AshBuk/dabri/v2/internal/version.Version=${pkgver} -linkmode=external -extldflags '-Wl,-rpath,/usr/lib/${pkgname}'" \
         -o "${pkgname}" \
         ./cmd/dabri
 }
