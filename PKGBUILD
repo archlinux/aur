@@ -1,14 +1,14 @@
 # Maintainer: jeryd leuck <jerydleuck@gmail.com>
 pkgname=msty-studio
-pkgver=2.1.3
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local."
 arch=('x86_64')
 url="https://msty.ai/"
 license=('proprietary')
 depends=('alsa-lib' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxshmfence' 'mesa' 'nss' 'pango')
-provides=('msty' 'msty-deb')
-conflicts=('msty' 'msty-deb' 'msty-bin')
+provides=('msty' 'msty-deb' 'msty-rocm-bin')
+conflicts=('msty' 'msty-deb' 'msty-bin' 'msty-rocm-bin')
 filename="MstyStudio_amd64_${pkgver}.deb"
 source=("$filename::https://next-assets.msty.studio/app/latest/linux/MstyStudio_amd64.deb?ver=$pkgver")
 sha256sums=("4dbd8aa69cd7de3ff12a1d219556dca7b7de16469f76b943a06f96d6134d3833")
