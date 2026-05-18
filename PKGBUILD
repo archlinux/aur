@@ -1,5 +1,5 @@
 pkgname=affinity-appimage-bin
-pkgver=3.0.2
+pkgver=10.10
 pkgrel=1
 pkgdesc="Affinity Studio via AppImage"
 arch=('x86_64')

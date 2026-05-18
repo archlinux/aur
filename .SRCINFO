@@ -1,6 +1,6 @@
 pkgbase = affinity-appimage-bin
 	pkgdesc = Affinity Studio via AppImage
-	pkgver = 3.0.2
+	pkgver = 10.10
 	pkgrel = 1
 	url = https://github.com/ryzendew/Linux-Affinity-Installer
 	arch = x86_64
