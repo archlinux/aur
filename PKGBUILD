@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal RSS/Atom feed reader built with Go"
 
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.en.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
 sha256sums=('492f63c7c78dcc7d9ff97e850fb6a57b034f8c99886a9238ecbdf37ae696bcbe')
-sha256sums_x86_64=('7d217868359699655e88688865673bdbc9476a4e2ae6da7652f4599ee59732c4')
-sha256sums_aarch64=('9ae93e0c2f7e4c2316137df31df28d9136ee3729060d6f6ce38aa379cd4ed298')
+sha256sums_x86_64=('943f99440a586769f890f9bf3de308801dc77b12acb5036d62cb5c272ab30eb0')
+sha256sums_aarch64=('33abdc896cef1873b76eb869a06cd6fef5affe5e6ed762b943bfcb976b0df47f')
 
 
 package() {
