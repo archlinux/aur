@@ -1,6 +1,6 @@
 # Maintainer: eDEX-DE Contributors <https://github.com/eDEX-OS/eDEX-DE>
 pkgname=edex-de
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Sci-fi themed Wayland Desktop Environment for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -27,13 +27,14 @@ makedepends=(
     'openssl'
     'libsoup'
     'webkit2gtk-4.1'
+    'nasm'
 )
 provides=('edex-de')
 conflicts=('edex-de-git')
 
 # Source: release CI uploads versioned source tarballs.
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('874c38b32b150332ba0882826cf4ad852417b955ba02a56f12442753a8d5b9f4')
+sha256sums=('6200f05ec1973756025896d6bfb8173356f867e60cbee29b937f80d1cc4a8a8c')
 
 prepare() {
     cd "eDEX-DE-${pkgver}"
@@ -42,13 +43,16 @@ prepare() {
 
 build() {
     cd "eDEX-DE-${pkgver}"
+    # ring crate requires nasm or bfd linker on Arch (lld incompatible without nasm)
+    export CARGO_INCREMENTAL=0
+    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
     npm run tauri -- build --no-bundle
 }
 
 package() {
     cd "eDEX-DE-${pkgver}"
 
-    install -Dm755 "src-tauri/target/release/edex-de" "${pkgdir}/usr/bin/edex-de"
+    install -Dm755 "target/release/edex-de" "${pkgdir}/usr/bin/edex-de"
     install -Dm644 "packaging/edex-de.desktop" "${pkgdir}/usr/share/applications/edex-de.desktop"
 
     for size in 32x32 128x128; do

@@ -1,6 +1,6 @@
 pkgbase = edex-de
 	pkgdesc = Sci-fi themed Wayland Desktop Environment for Hyprland
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/eDEX-OS/eDEX-DE
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = edex-de
 	makedepends = openssl
 	makedepends = libsoup
 	makedepends = webkit2gtk-4.1
+	makedepends = nasm
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
@@ -24,7 +25,7 @@ pkgbase = edex-de
 	optdepends = systemd: service management
 	provides = edex-de
 	conflicts = edex-de-git
-	source = edex-de-1.1.1.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 874c38b32b150332ba0882826cf4ad852417b955ba02a56f12442753a8d5b9f4
+	source = edex-de-1.1.2.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 6200f05ec1973756025896d6bfb8173356f867e60cbee29b937f80d1cc4a8a8c
 
 pkgname = edex-de
