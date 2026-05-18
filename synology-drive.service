@@ -1,0 +1,11 @@
+[Unit]
+Description=Synology Drive Client Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/Synology/SynologyDrive/package/cloudstation/bin/cloud-drive-daemon
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

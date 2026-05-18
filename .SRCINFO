@@ -1,0 +1,34 @@
+pkgbase = synology-drive-client-bin
+	pkgdesc = Synology Drive Client desktop application (official binary repack)
+	pkgver = 4.0.3_17892
+	pkgrel = 1
+	url = https://www.synology.com/en-global/releaseNote/SynologyDriveClient
+	install = synology-drive-client-bin.install
+	arch = x86_64
+	license = custom:Synology Linux License Grant
+	depends = glib2
+	depends = glibc
+	depends = qt5-base
+	depends = qt5-wayland
+	depends = curl
+	depends = libarchive
+	depends = libxkbcommon
+	depends = libice
+	depends = libsm
+	depends = hicolor-icon-theme
+	optdepends = nautilus: For nautilus integration
+	optdepends = dolphin: For dolphin integration
+	optdepends = nemo: For nemo integration
+	provides = synology-drive=4.0.3_17892
+	provides = synology-drive-client=4.0.3_17892
+	conflicts = synology-drive
+	conflicts = synology-drive-client
+	replaces = synology-drive
+	options = !strip
+	options = !debug
+	source = synology-drive-client-17892.deb::https://global.synologydownload.com/download/Utility/SynologyDriveClient/4.0.3-17892/Ubuntu/Installer/synology-drive-client-17892.x86_64.deb
+	source = synology-drive.service
+	sha256sums = f6aec5a5974d59963ed833fdf1a0cc7bebd612d8691f491c62cba770cdc78d67
+	sha256sums = 0dc43c10722976c544b92400bfcd53e6c0ddb70092d6b397cd146777770eaf18
+
+pkgname = synology-drive-client-bin
