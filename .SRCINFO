@@ -1,0 +1,18 @@
+pkgbase = chromatix-bin
+	pkgdesc = Chromatix is a desktop music player for Plex and Jellyfin that transforms your listening experience and makes interacting with your music libraries a joy.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/chromatix-app/chromatix-release
+	arch = x86_64
+	arch = aarch64
+	provides = chromatix
+	conflicts = chromatix
+	options = !debug
+	source = chromatix.sh
+	sha256sums = ec4e803fd0020fbd847ab182e8dd012d9f09d58e83ba99af77c726edb41e52bf
+	source_x86_64 = Chromatix-0.5.2-amd64.deb::https://github.com/chromatix-app/chromatix-release/releases/download/v0.5.2/Chromatix-0.5.2-amd64.deb
+	sha256sums_x86_64 = a86f794b3a8134903009d27fe74fa919186353d64f64ac45366a0a0566bf4cd3
+	source_aarch64 = Chromatix-0.5.2-arm64.deb::https://github.com/chromatix-app/chromatix-release/releases/download/v0.5.2/Chromatix-0.5.2-arm64.deb
+	sha256sums_aarch64 = 2c99b725828e102922c9a41bb0d0376ea824c4dec862be7244d3eba8497bc14a
+
+pkgname = chromatix-bin
