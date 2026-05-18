@@ -1,6 +1,6 @@
 # Maintainer: duck <luis.tomas.nogueira@gmail.com>
 pkgname=duckwm-git
-pkgver=0.0.0.r36.ge2ae1ef
+pkgver=0.0.0.r64.g1e97d87
 pkgrel=1
 pkgdesc="A graph-based tiling window manager with Lua configuration"
 arch=('x86_64')
@@ -51,4 +51,6 @@ package() {
         "$pkgdir/usr/share/doc/duckwm/API.norg"
     install -Dm644 LICENSE \
         "$pkgdir/usr/share/licenses/duckwm/LICENSE"
+    install -Dm644 dist/luarc.json \
+        "$pkgdir/usr/share/duckwm/luarc.json"
 }
