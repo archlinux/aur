@@ -1,7 +1,7 @@
 pkgbase = python-autocrop-git
 	pkgdesc = Automatically crop and rotate scanned images using OpenCV
-	pkgver = 20230113.r6.aa795fb
-	pkgrel = 2
+	pkgver = 20260517.r6.d5b7b7f
+	pkgrel = 1
 	url = https://github.com/z80z80z80/autocrop
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = python-autocrop-git
 	depends = python-numpy
 	provides = python-autocrop
 	conflicts = python-autocrop
-	source = git+https://github.com/z80z80z80/autocrop
+	source = git+https://github.com/z80z80z80/autocrop#branch=main
 	sha512sums = SKIP
 
 pkgname = python-autocrop-git

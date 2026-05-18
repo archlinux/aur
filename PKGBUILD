@@ -2,22 +2,22 @@
 
 _pkgname=autocrop
 pkgname=python-${_pkgname}-git
-pkgver=20230113.r6.aa795fb
-pkgrel=2
+pkgver=20260517.r6.d5b7b7f
+pkgrel=1
 pkgdesc='Automatically crop and rotate scanned images using OpenCV'
 arch=('any')
 url='https://github.com/z80z80z80/autocrop'
 license=('GPL3')
 depends=('python-opencv' 'python-numpy')
 makedepends=('git' 'dos2unix')
-source=('git+https://github.com/z80z80z80/autocrop')
+source=('git+https://github.com/z80z80z80/autocrop#branch=main')
 sha512sums=('SKIP')
 provides=("python-$_pkgname")
 conflicts=("python-$_pkgname")
 
 pkgver() {
   cd $_pkgname
-  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git show -s --format=%ci main | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
