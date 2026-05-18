@@ -3,12 +3,12 @@
 _pkgbase=visage
 pkgname="$_pkgbase-git"
 pkgver=0.3.0.r24.ga9eeb69
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux face authentication via PAM with persistent daemon, IR camera support, ONNX inference'
 arch=('x86_64')
 url='https://sovren.software/#/visage'
 license=('MIT')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'clang')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 install='setup.install'
