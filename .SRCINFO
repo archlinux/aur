@@ -1,7 +1,7 @@
 pkgbase = r-tracker
 	pkgdesc = Infrastructure for Running, Cycling and Swimming Data from GPS-Enabled Tracking Devices
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=trackeR
 	arch = any
 	license = GPL-3.0-only

@@ -3,7 +3,7 @@ _cranname=trackeR
 _cranver=1.6.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Infrastructure for Running, Cycling and Swimming Data from GPS-Enabled Tracking Devices"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -43,4 +43,8 @@ build() {
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  if [[ -f "${srcdir}/build/${_cranname}/LICENSE" ]]; then
+    install -Dm0644 "${srcdir}/build/${_cranname}/LICENSE" \
+      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
 }
