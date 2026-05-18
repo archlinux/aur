@@ -1,8 +1,8 @@
 # Maintainer: AugusDogus <augie@linux.com>
 
 pkgname=cursor-nightly-bin
-pkgver=3.5.3
-_upstream_pkgver=3.5.3
+pkgver=3.5.8
+_upstream_pkgver=3.5.8
 pkgrel=1
 pkgdesc='AI-first coding environment (nightly channel, bundled Electron)'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   'libdbusmenu-glib: KDE global menu support'
 )
 options=(!strip !debug)
-_commit=cc934b516e20cc58a8eabb10d300918fc02b3a2d
+_commit=0e849a87c83c8c4b4095649fcdd17164192ff68f
 source=(
   "cursor_${_upstream_pkgver}_amd64.deb::https://downloads.cursor.com/production/${_commit}/linux/x64/deb/amd64/deb/cursor_${_upstream_pkgver}_amd64.deb"
   cursor.desktop
@@ -37,7 +37,7 @@ source=(
 sha512sums=('SKIP'
   '037aa5d878eddb06fc1d5be788e7bc64545773decacb34228053be746dfc33237371ad49cc331dac8e3437d7d885a9bc1564d0f114fc22e308827b33d0c55ad8'
   '9defecd35fd033a484642732605264cc00faf5791d852234d9705bf9ac005c76173780cd496208e4150685ac9ddbb73c8eb87cd5141526dd4521d455342e8233')
-sha512sums[0]=11b1a37796175b20ec0b889a5b2a822fd044a173c961f87cc7f633618aa686296a13aad2530f927a702db3eba07e7648b2e3abe5dc51f0b83a2851201fd6760a
+sha512sums[0]=02049b97bc87415eeeb0b3a5cb40e74200ea9d41a0b9fe73b473dea4500f2e19315866daf5e6fec58960e8070c999fefc2d6579a869e614619dd064c7ba6ae5c
 noextract=("cursor_${_upstream_pkgver}_amd64.deb")
 
 package() {
@@ -70,6 +70,7 @@ package() {
     chmod 4755 "$pkgdir/usr/share/cursor/chrome-sandbox"
   fi
 }
+
 
 
 
