@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 _pkgname=torchao
 pkgname=python-${_pkgname}-rocm
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Package for applying ao techniques to GPU models (with ROCm/HIP support)"
 arch=(x86_64)
@@ -25,7 +25,7 @@ makedepends=(
 provides=(python-torchao=$pkgver)
 conflicts=(python-torchao)
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/ao.git#tag=v${pkgver}")
-sha256sums=('ae87182d472681ded40f59f8acef411f8b64560701319504c8486a094fc3e2d2')
+sha256sums=('f88bf64047098aff40512287a2574800c3dec19b3cfab23b42e1b192dfa96420')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
