@@ -1,4 +1,4 @@
-pkgname=samba-util
+pkgname=samba-util-bin
 pkgver=3.0.1
 pkgrel=3
 pkgdesc="A simple and modern GUI for managing Samba."

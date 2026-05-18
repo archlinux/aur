@@ -1,4 +1,4 @@
-pkgbase = samba-util
+pkgbase = samba-util-bin
 	pkgdesc = A simple and modern GUI for managing Samba.
 	pkgver = 3.0.1
 	pkgrel = 3
@@ -17,4 +17,4 @@ pkgbase = samba-util
 	source = https://github.com/mijocecr/samba-util/releases/download/samba-util_v3.0/SAMBA-Util.tar.gz
 	sha256sums = SKIP
 
-pkgname = samba-util
+pkgname = samba-util-bin
