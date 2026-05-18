@@ -4,7 +4,7 @@
 pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=9.1.2.r29.26b37c8e
+pkgver=10.0.0.r1.0dd22337
 pkgrel=1
 pkgdesc='A modern music player'
 arch=('x86_64' 'aarch64')
@@ -43,6 +43,7 @@ depends=(
 	'wavpack'
 	'libvorbis'
 	'libopenmpt'
+	'libprojectm'
 	'libsamplerate'
 	'opencc'
 	'libgme'
@@ -65,9 +66,7 @@ optdepends=(
 	'python-pypresence: Discord status support'
 	'python-pychromecast: Chromecast stream support'
 	'python-jxlpy: JPEG XL image support'
-	'python-tekore: Spotify feature support'
 	'python-tidalapi: Tidal feature support'
-	'librespot: Spotify audio playback'
 )
 
 source=("${pkgname%-git}"::'git+https://github.com/Taiko2k/Tauon.git')
