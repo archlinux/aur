@@ -1,7 +1,7 @@
 pkgbase = python-control
 	pkgdesc = Python Control Systems Library.
 	pkgver = 0.10.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/python-control/python-control
 	arch = any
 	license = BSD-3-Clause
