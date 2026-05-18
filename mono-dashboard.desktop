@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Mono Dashboard
+Exec=mono
+Icon=utilities-terminal
+Terminal=true
+Categories=Utility;System;Monitor;
+Comment=Privacy-first screen time dashboard

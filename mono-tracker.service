@@ -1,0 +1,12 @@
+[Unit]
+Description=Mono Screen Time Tracker
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mono-tracker
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=graphical-session.target

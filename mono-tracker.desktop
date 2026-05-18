@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Mono Screen Time Tracker
+Exec=/usr/bin/mono-tracker
+Hidden=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+Comment=Privacy-first screen time monitoring daemon
