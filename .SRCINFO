@@ -1,0 +1,26 @@
+pkgbase = biopass
+	pkgdesc = An alternative to Windows Hello/Howdy
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/TickLabVN/biopass
+	install = setup.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = bun
+	makedepends = cmake
+	makedepends = rust
+	makedepends = cli11
+	depends = libwebkit2gtk-4.1.so
+	depends = librsvg-2.so
+	depends = libssl.so
+	depends = libxdo.so
+	optdepends = libayatana-appindicator: for tray icon support
+	provides = biopass
+	conflicts = biopass
+	options = !lto
+	options = !debug
+	source = biopass::git+https://github.com/TickLabVN/biopass.git#tag=1.2.0
+	sha256sums = dbbb785f509a6d85b3e09e5a9c9af7c432d8a34bc1801783c31534bb8a7c5c74
+
+pkgname = biopass
