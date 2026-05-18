@@ -11,35 +11,35 @@ post_install() {
     # Create the log directory
     install -d -m 755 -o root -g root /var/log/moshpits
 
-    # Generate a passwordless host key pair on first install (non-interactive, service-safe).
-    # Uses the classical X25519 key type by default; see the post-quantum note below to
-    # switch to an ML-DSA key after install.
+    # Generate a passwordless ML-DSA-65 host key pair on first install
+    # (non-interactive, service-safe). ML-DSA-65 is the default for this
+    # post-quantum build; see the note below to switch to classical ed25519.
     _key_dir=/etc/moshpits/keys
     install -d -m 700 -o root -g root "$_key_dir"
-    if [ ! -f "$_key_dir/mps_host_ed25519_key" ]; then
+    if [ ! -f "$_key_dir/mps_host_mldsa65_key" ]; then
         mp-keygen generate \
             --server \
             --no-passphrase \
-            --output-path "$_key_dir/mps_host_ed25519_key" \
+            --key-type mldsa65 \
+            --output-path "$_key_dir/mps_host_mldsa65_key" \
             --force
     fi
 
     echo ""
     echo "  ── moshpits post-install notes ──────────────────────────────────────────"
     echo ""
-    echo "  A passwordless host key pair has been generated at:"
-    echo "    $_key_dir/mps_host_ed25519_key"
-    echo "    $_key_dir/mps_host_ed25519_key.pub"
+    echo "  A passwordless ML-DSA-65 host key pair has been generated at:"
+    echo "    $_key_dir/mps_host_mldsa65_key"
+    echo "    $_key_dir/mps_host_mldsa65_key.pub"
     echo ""
-    echo "  Post-quantum (ML-DSA) identity keys are supported by this build."
-    echo "  To generate an ML-DSA-65 server key instead:"
-    echo "    mp-keygen generate --server --no-passphrase \\"
-    echo "        --key-type mldsa65 \\"
-    echo "        --output-path /etc/moshpits/keys/mps_host_mldsa65_key --force"
-    echo "  Then update private_key_path / public_key_path in:"
+    echo "  Update private_key_path / public_key_path in:"
     echo "    /etc/moshpits/moshpits.toml"
     echo "  And update --private-key-path / --public-key-path in:"
     echo "    /usr/lib/systemd/system/mps.service  (override with systemctl edit mps)"
+    echo ""
+    echo "  To use a classical ed25519 key instead:"
+    echo "    mp-keygen generate --server --no-passphrase \\"
+    echo "        --output-path /etc/moshpits/keys/mps_host_ed25519_key --force"
     echo ""
     echo "  Review (and customise) the config file at:"
     echo "    /etc/moshpits/moshpits.toml"
