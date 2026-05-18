@@ -15,8 +15,8 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_nam
 sha256sums=('178947fc2f995b38497a74172adee64fdeb8b7ec18f2a5934d037641ba265d26')
 
 build() {
-    cd "$srcdir"/$_name-$pkgver
-    python -m build --wheel --no-isolation
+  cd "$srcdir"/$_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
