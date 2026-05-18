@@ -1,0 +1,45 @@
+pkgbase = niri-shm-sharing
+	pkgdesc = A scrollable-tiling Wayland compositor with SHM fallback patch for PipeWire screencasting
+	pkgver = 26.04
+	pkgrel = 1
+	url = https://github.com/niri-wm/niri
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = clang
+	makedepends = git
+	makedepends = rust
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = libdisplay-info
+	depends = libgcc
+	depends = libinput
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = mesa
+	depends = pango
+	depends = pixman
+	depends = seatd
+	depends = systemd-libs
+	depends = xdg-desktop-portal-impl
+	optdepends = alacritty: a suggested GPU-accelerated terminal emulator
+	optdepends = bash: for niri-session script
+	optdepends = fuzzel: a suggested Wayland application launcher
+	optdepends = mako: a suggested Wayland notification daemon
+	optdepends = org.freedesktop.secrets: for apps to rely on secrets portal
+	optdepends = swaybg: a suggested Wayland wallpaper tool
+	optdepends = swaylock: a suggested Wayland screen locker
+	optdepends = waybar: a suggested Wayland customizable desktop bar
+	optdepends = xdg-desktop-portal-gnome: a XDG desktop portal required for screencasting
+	optdepends = xdg-desktop-portal-gtk: a suggested XDG desktop portal
+	optdepends = xwayland-satellite: for running X11 apps in XWayland
+	provides = niri=26.04
+	provides = wayland-compositor
+	conflicts = niri
+	options = !lto
+	source = niri-26.04::git+https://github.com/niri-wm/niri.git#commit=8ed0da44d974c32c6877d2f4630c314da0717ecb
+	source = support-shm-sharing-26.04.patch::https://github.com/wrvsrx/niri/compare/tag_support-shm-sharing_4~19..tag_support-shm-sharing_4.patch
+	sha256sums = SKIP
+	sha256sums = 2cb6f38eb526097382a9ba06285735f4bc3b872136b4c1c975a756b65b5f9f95
+
+pkgname = niri-shm-sharing
