@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=kate-discord-rpc-git
-pkgver=r5.1d790ff
+pkgver=r10.93a14a0
 pkgrel=1
 pkgdesc="Discord RPC Plugin for Kate"
 arch=(x86_64)
 url="https://github.com/leia-uwu/kate-discord-rpc"
 license=('GPL-2.0-only')
-depends=('glibc' 'ktexteditor' 'kparts' 'qt6-base' 'kcoreaddons' 'gcc-libs' 'kconfig')
+depends=('glibc' 'ktexteditor' 'kparts' 'qt6-base' 'kcoreaddons' 'libstdc++' 'kconfig')
 makedepends=('cmake' 'git' 'extra-cmake-modules' 'vulkan-headers' 'rapidjson' 'ninja')
 provides=(${pkgname::-4})
 conflicts=(${pkgname::-4})
