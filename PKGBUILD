@@ -30,7 +30,7 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
-    -o "addopts="
+    --override-ini="addopts="
   )
   cd "$srcdir"/$_name-$pkgver
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
