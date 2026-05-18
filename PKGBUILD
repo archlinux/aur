@@ -2,8 +2,8 @@
 # Previous maintainer: Patrick Fischer <aur@pathin.me>
 # Revived package with updated upstream tarball
 pkgname=windsurf-bin
-pkgver=2.2.17
-pkgrel=2
+pkgver=2.3.9
+pkgrel=1
 pkgdesc="The new purpose-built IDE to harness magic (binary pre-built version)"
 arch=('x86_64')
 url="https://windsurf.com/"
@@ -41,9 +41,9 @@ install=windsurf-bin.install
 # Download URL from Windsurf API
 # To update: curl -s https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest | jq -r '.url'
 # Then update pkgver and the URL below
-_url="https://windsurf-stable.codeiumdata.com/linux-x64/stable/a65d6c4e1fd335336d7a0b601099811667e184ca/Windsurf-linux-x64-${pkgver}.tar.gz"
+_url="https://windsurf-stable.codeiumdata.com/linux-x64/stable/a5d3f1ff990cabc0e8001cce6642bdb7ad429e73/Windsurf-linux-x64-${pkgver}.tar.gz"
 source=("windsurf-${pkgver}.tar.gz::$_url")
-sha256sums=('9593de6b22e85190788185b033d1f4f1ad013c36e1cc737c3696f430fbbeeb54')
+sha256sums=('874024744cd853b7c350fe514be19b0060fac39586253c3b7602d6869473eadc')
 
 build() {
     # Extract the tarball
