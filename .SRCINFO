@@ -1,11 +1,14 @@
 pkgbase = hyprcaffeine
 	pkgdesc = ☕ Idle inhibition utility for Hyprland — caffeine for your Wayland compositor
 	pkgver = 0.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hbuddenberg/hyprcaffeine
 	arch = any
 	license = MIT
-	depends = bash jq hyprland socat
+	depends = bash
+	depends = jq
+	depends = hyprland
+	depends = socat
 	optdepends = gum: interactive menu and styled prompts
 	optdepends = libnotify: desktop notifications
 	optdepends = walker: menu frontend
