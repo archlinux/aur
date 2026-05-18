@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-gfx1151
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)
-	pkgver = b9204
+	pkgver = b9209
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -37,12 +37,10 @@ pkgbase = llama.cpp-gfx1151
 	options = lto
 	options = !debug
 	backup = etc/conf.d/llama.cpp
-	source = llama.cpp-gfx1151-b9204.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b9204.tar.gz
-	source = llama-gfx1151.patch::https://gist.githubusercontent.com/pedapudi/0da060d2a3b49a51155dbf00db61fea0/raw/aaaee0a96656ec0fc49bdfa76acd2b4edbfcbfb9/gistfile1.txt
+	source = llama.cpp-gfx1151-b9209.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b9209.tar.gz
 	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service
 	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf
-	sha256sums = 1b14649229cfefd6b233191d550843ad01d92cc694eb0a813f51d73c1622c1cc
-	sha256sums = 0909c7c3f43ae5fd8db93543d071d9d95bd429808ed31d83f44a54275465fb63
+	sha256sums = e9a2fc1116fd4b7c5443bc9c1ddb6da66526aa93b98c9ea23b141f43484b7577
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
 	sha256sums = e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec
 
