@@ -1,7 +1,7 @@
 pkgbase = apbs
 	pkgdesc = Software for biomolecular electrostatics and solvation calculations
 	pkgver = 3.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.poissonboltzmann.org/
 	arch = x86_64
 	license = custom
@@ -25,6 +25,8 @@ pkgbase = apbs
 	options = !makeflags
 	options = !buildflags
 	source = https://github.com/Electrostatics/apbs/archive/refs/tags/v3.4.1.tar.gz
+	source = vfetk-u_t-signature.patch
 	sha256sums = 644e6246fd37c9dd4172fc7be1763337082ab8584dbcd53e738c831b62c89bb2
+	sha256sums = SKIP
 
 pkgname = apbs

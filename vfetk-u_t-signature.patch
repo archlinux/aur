@@ -1,0 +1,38 @@
+--- a/src/fem/vfetk.h
++++ b/src/fem/vfetk.h
+@@ -751,7 +751,8 @@
+         int type, /**< Point type */
+         int chart, /**< Chart for point coordinates */
+         double txq[], /**< Point coordinates */
+-        double F[] /**< Set to value at point */
++        double F[], /**< Set to value at point */
++        double dF[][3] /**< Set to gradient at point */
+         );
+ 
+ /**
+--- a/src/fem/vfetk.c
++++ b/src/fem/vfetk.c
+@@ -1884,16 +1884,15 @@
+  * similar signature change. - P. Ellis 11-8-2011
+  */
+ VPUBLIC void Vfetk_PDE_u_T(PDE *thee, int type, int chart, double txq[],
+-  double F[]) {
+-/*VPUBLIC void Vfetk_PDE_u_T(sPDE *thee,
+-                           int type,
+-                           int chart,
+-                           double txq[],
+-                           double F[],
+-                           double dF[][3]
+-                          ) { */
++  double F[], double dF[][3]) {
++    int i;
++
++    VASSERT(dF != VNULL);
+ 
+     F[0] = 0.0;
++    for (i = 0; i < 3; i++) {
++        dF[0][i] = 0.0;
++    }
+     var.u_T = F[0];
+ 
+ }

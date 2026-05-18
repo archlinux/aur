@@ -3,7 +3,7 @@
 
 pkgname=apbs
 pkgver=3.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for biomolecular electrostatics and solvation calculations"
 arch=(x86_64)
 url="http://www.poissonboltzmann.org/"
@@ -12,9 +12,16 @@ depends=(python blas suitesparse lapack arpack eigen boost boost-libs metis supe
 makedepends=('cmake>=3.12' make git wget)
 provides=(apbs)
 conflicts=(apbs-bin)
-source=("https://github.com/Electrostatics/apbs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('644e6246fd37c9dd4172fc7be1763337082ab8584dbcd53e738c831b62c89bb2')
+source=("https://github.com/Electrostatics/apbs/archive/refs/tags/v${pkgver}.tar.gz"
+        "vfetk-u_t-signature.patch")
+sha256sums=('644e6246fd37c9dd4172fc7be1763337082ab8584dbcd53e738c831b62c89bb2'
+            'SKIP')
 options=(!makeflags !buildflags)
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/vfetk-u_t-signature.patch"
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -33,8 +40,9 @@ build() {
     RELEASE_TYPE=Debug
     ENABLE_PYGBE=ON
     ENABLE_BEM=ON
-    ENABLE_GEOFLOW=ON
-    FETK_VERSION=57195e55351e04ce6ee0ef56a143c996a9aee7e2
+    ENABLE_GEOFLOW=OFF
+#    FETK_VERSION=57195e55351e04ce6ee0ef56a143c996a9aee7e2
+    FETK_VERSION=main
     ENABLE_iAPBS=ON
     ENABLE_OPENMP=OFF
     ENABLE_PBAM=OFF
@@ -42,14 +50,21 @@ build() {
     ENABLE_PYTHON=OFF
     ENABLE_TESTS=ON
     GET_NanoShaper=ON
-    PYTHON_VERSION="3.10"
+    PYTHON_VERSION="3.14"
 
     # Configure and compile
+
+    # Note: FETK compilation requires C17
+    
     cmake \
+        -DCMAKE_C_STANDARD=17 \
+        -DCMAKE_C_STANDARD_REQUIRED=ON \
+        -DCMAKE_C_EXTENSIONS=ON \
+        -DCMAKE_C_FLAGS="${CFLAGS} -Wno-error=implicit-int -Wno-error=implicit-function-declaration" \
         -DCMAKE_INSTALL_INCLUDEDIR="include" \
         -DBUILD_DOC=${BUILD_DOC} \
         -DAPBS_STATIC_BUILD=${APBS_STATIC_BUILD}  \
-        -DBUILD_TOOLS=O${BUILD_TOOLS} \
+        -DBUILD_TOOLS=${BUILD_TOOLS} \
         -DCMAKE_BUILD_TYPE=$RELEASE_TYPE \
         -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR \
         -DENABLE_PYGBE=${ENABLE_PYGBE} \
