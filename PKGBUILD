@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="zxspectrum-utils"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Package of utils for crossdevelopment for ZX Spectrum"
 arch=(
@@ -35,9 +35,9 @@ source=(
   "https://downloads.sourceforge.net/zxspectrumutils/files/${_pkgsrc}.tar.gz"
   # "${_pkgsrc}::svn+https://svn.code.sf.net/p/zxspectrumutils/code/trunk#revision=82"
 )
-md5sums=('6a28755ac988366db447bb1c95b0dad5')
-sha1sums=('2b897aa442b43b8d185d503057ac322f172ccf29')
-sha256sums=('0077815cf4f0774175a8cd2fb42468edcdf36b77c1b9f464138919750ada8ac5')
+md5sums=('1b9380456ef1d2f0979d6c2d6f6c62c3')
+sha1sums=('846294f0f6be9b03b776b2f52bc5c23b66084772')
+sha256sums=('3d9209d481bd51e6886cf4b3a682e31f82cae553cbf04d20f6be26a33e55702b')
 
 build() {
   local configure_options=(
