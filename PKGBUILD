@@ -29,9 +29,6 @@ makedepends=(
 	'git'
 	'pkg-config'
 )
-optdepends=(
-	'volkszaehler: volkszaehler.org middleware backend'
-)
 backup=('etc/vzlogger.conf')
 install="${pkgname}.install"
 source=(
