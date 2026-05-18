@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=projscope-music-player-bin
 _pkgname="Projscope MP3 Player"
-pkgver=1.1.3
+pkgver=1.1.5
 _electronversion=17
 pkgrel=1
 pkgdesc="Projscope MP3 player is free desktop, cross platform tool (Winamp you are remembered)!(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jviaches/projscope-music-player/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c87457e0f67a47ac09be16913720ebe8a4b77ed5846fc4bb1d8dd22a3b07b87a'
+sha256sums=('6cc0c5446f81de8060e4740748bfa065e34387f55f758657a01085c3bc2cae99'
             '1aa2a3326e734bc2595f638283ed58576d5358bf403f228b48d275b98abe1f3c'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
