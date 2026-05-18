@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('gtk3' 'nss' 'libxss' 'libsecret' 'dotnet-runtime-9.0' 'python')
 optdepends=('libappindicator: system tray icon support'
             'libnotify: desktop notifications')
-makedepends=('git' 'pnpm' 'npm' 'python' 'python-setuptools')
+makedepends=('git' 'pnpm' 'npm' 'python-setuptools')
 
 provides=('vortex')
 conflicts=('vortex' 'vortex-git' 'vortex-linux')

@@ -10,7 +10,6 @@ pkgbase = vortex-linux-fix
 	makedepends = git
 	makedepends = pnpm
 	makedepends = npm
-	makedepends = python
 	makedepends = python-setuptools
 	depends = gtk3
 	depends = nss
