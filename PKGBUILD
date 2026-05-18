@@ -1,4 +1,5 @@
-# Maintainer: zjuyk <ownbyzjuyk@gmail.com>
+# Maintainer: Chenx Dust <chenx_dust@outlook.com>
+# Previous Maintainer: zjuyk <ownbyzjuyk@gmail.com>
 
 pkgname=zju-connect-bin
 _pkgname=zju-connect
