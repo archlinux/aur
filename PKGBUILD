@@ -2,14 +2,14 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=core-lightning-git
-pkgver=25.12.r17283.686ce9890
+pkgver=26.06rc1.r18069.abb0cddaa
 pkgrel=1
 pkgdesc='A lightweight, highly customizable and standard-compliant implementation of the Lightning Network protocol.'
 arch=('x86_64')
 url='https://github.com/ElementsProject/lightning'
 license=('BSD-MIT')
-depends=('gmp' 'libsodium' 'sqlite' 'python-grpcio-tools' 'python-flask' 'python-json5' 'gunicorn' 'python-flask-restx')
-makedepends=('clang' 'git' 'python-pytest' 'python-mako' 'mrkd' 'python-poetry')
+depends=('gmp' 'libsodium' 'sqlite' 'python-grpcio-tools' 'python-flask' 'python-json5' 'gunicorn' 'python-flask-restx' 'lowdown' 'jq')
+makedepends=('clang' 'git' 'python-pytest' 'python-mako' 'uv')
 provides=('python-pyln-client')
 source=('git+https://github.com/ElementsProject/lightning.git'
         'git+https://github.com/zserge/jsmn.git'
@@ -48,7 +48,7 @@ build() {
         PYTEST=pytest ./configure --prefix=/usr
     make LDFLAGS="${LDFLAGS}" libexecdir=/usr/lib
     cd contrib/pyln-client
-    python -m poetry build --format wheel
+    uv build
 }
 
 package() {
@@ -56,5 +56,5 @@ package() {
 
     make DESTDIR="${pkgdir}" libexecdir=/usr/lib install
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-    python -m installer --destdir="$pkgdir" contrib/pyln-client/dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
