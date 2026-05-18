@@ -1,0 +1,15 @@
+pkgbase = calendar-tui-git
+	pkgdesc = Interactive terminal calendar built with ratatui
+	pkgver = r13.d142e7f
+	pkgrel = 1
+	url = https://github.com/Gigas002/calendar-tui
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	options = !strip
+	source = calendar-tui::git+https://github.com/Gigas002/calendar-tui.git
+	b2sums = SKIP
+
+pkgname = calendar-tui-git
