@@ -1,0 +1,45 @@
+0.19.12
+===================
+Fixes a bug where the app can unexpectedly navigate to the "Configure your workspace" view
+
+
+0.19.11
+===================
+CLI
+but reword --json now correctly produces the relevant JSON output
+but redo - new command for re-apply undone operations
+but oplog list now displays more useful descriptions of past operations
+but teardown now supports --checkout-to override to specify the branch to checkout
+
+TUI
+The TUI now updates on filesystem changes
+Repeated "undo" operations now work as expected (undoing further back in history)
+Added "redo" operation to re-apply undone operations
+Fixes a navigation bug while in move mode
+
+
+0.19.10
+===================
+Applying of branches no longer performs an unnecessary rebase
+Adds support for multi-commit selection and operations (e.g. move, squash etc)
+Adds support for SHA-256 repositories
+Amending of commits now shows a modal if there were rejected changes (e.g. due to conflicts)
+Removes the "split branch" options from the UI (it will be back, better)
+
+TUI
+Adds a help modal with an overview of key binds (press ? in the TUI)
+Added experimental light theme (set EXPERIMENTAL_BUT_LIGHT_THEME=1)
+Adds support for operating on multiple commits at once (e.g. move, squash etc)
+Adds an "undo" action for undoing the last operation (press u)
+When squashing multiple commits you can now choose how to combine the commit messages
+Improved "back" behavior when pressing Esc
+
+CLI
+but move now supports moving multiple commits at once
+but apply now resolves short branch names
+but absorb now removes --new (it will be back, better)
+but mcp no longer has the --internal flag
+but push --run-hooks is now replaced with --no-hooks for disabling
+but undo now correctly restores to the latest snapshot
+but branch move has been removed in favor of but move
+removed the implicit "rub" action (e.g. running but <id> <id> as an equivalent to but rub <id> <id>)
