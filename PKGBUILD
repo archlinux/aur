@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=26.2.0_devel.222483.fb0123f42ed
+pkgver=26.2.0_devel.222670.28f3f2569d2
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -31,16 +31,13 @@ conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver 
 url="https://www.mesa3d.org"
 license=("MIT AND BSD-3-Clause AND SGI-B-2.0")
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
-        MCSubtargetInfo1.patch
-        TargetRegistry.patch
+        https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/41558.patch
 )
 
 md5sums=('SKIP'
-         '4cb2330715d362ba4e73940ae9ad7a17'
-         '8ed697ab07e7671ac47c4d12f4b58197')
+         '5521e816f97ce630ba897a5ab199af9a')
 sha512sums=('SKIP'
-            'd849525a79faff8335271c20e03f80a79f8d859239d0112a28056fd2fea5cd83143bc5a4bf959c2e31641c422222877c6ffed622c0c706b0e654a21f60e8a711'
-            '0033fe19d2b9cf9e6e841ade1d574b1cd8f4cd0b7c45c3ab4e268c563316a87939671a80ecc9bdc828ab36b8f86ab7c4136341a3b40571e1ac06bc3ed5788f60')
+            'e8c9d9ebf243c562277cefcf35beda5287625bfa5a2b2bc5c3c5b79860d2d88996fbccb29521af3dea12c810dc1f9f5cc12d727b7b29a106b3922377d155f293')
 options=(!emptydirs !lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
@@ -51,8 +48,7 @@ options=(!emptydirs !lto !debug)
 # If unsure, use NINJAFLAGS=""
 
 prepare() {
-    patch -d mesa -Np1 -i "$srcdir"/MCSubtargetInfo1.patch
-    patch -d mesa -Np1 -i "$srcdir"/TargetRegistry.patch
+    patch -d mesa -Np1 -i "$srcdir"/41558.patch
 }
 
 pkgver() {
