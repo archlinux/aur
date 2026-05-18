@@ -3,7 +3,7 @@
 # Contributor: Angelo Verlain  <hey@vixalien.com>
 
 pkgname=supabase-bin
-pkgver=2.99.0
+pkgver=2.100.0
 pkgrel=2
 pkgdesc="CLI for Supabase, an open source Firebase alternative"
 arch=(aarch64 x86_64)
@@ -13,14 +13,14 @@ license=(MIT)
 provides=(supabase)
 conflicts=(supabase)
 
-source=(https://github.com/supabase/cli/blob/v$pkgver/apps/cli-go/LICENSE)
-sha256sums=("7fd53b5a3bafcf1b92e1fa8952a23a585465a911727bb91e295852f6bd2c4ab0")
+source=(https://raw.githubusercontent.com/supabase/cli/refs/tags/v$pkgver/apps/cli-go/LICENSE)
+sha256sums=("81f7d60afa4316010b1c0df8eb8f0c80b27586a86b72f1bde85e129bfd10d52a")
 
 source_x86_64=("$_url/releases/download/v$pkgver/supabase_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$_url/releases/download/v$pkgver/supabase_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=("c6e491e57776d3c8214dbc026eb08e24133f68ab09014d33bb6819daa771aa0c")
-sha256sums_aarch64=("bb8eb6d5e4a9d47fa8ff5a125b00c24073ea8dbbdfc76628976900ca3830b488")
+sha256sums_x86_64=("b4d772432983d9037fee02192d0e9861d073da4a8f171f5106a3e09985da56db")
+sha256sums_aarch64=("e4bbb59373308bcc64e56996079af4d7b27c9f95541fbdffb78342afc56c59b9")
 
 prepare() {
   cd "$srcdir"
