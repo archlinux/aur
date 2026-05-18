@@ -1,10 +1,14 @@
 pkgbase = python-taxtastic
 	pkgdesc = Build and maintain reference trees, reference alignments, profiles, and associated taxonomic information
-	pkgver = 0.12.0
-	pkgrel = 0
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://fhcrc.github.io/taxtastic/index.html
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-sphinx
 	makedepends = python-ghp-import
@@ -12,11 +16,8 @@ pkgbase = python-taxtastic
 	depends = python
 	depends = python-dendropy
 	depends = python-fastalite
-	depends = python-setuptools
 	depends = python-yaml
-	depends = python-importlib-metadata
 	depends = python-sqlalchemy
-	depends = python-pyaml
 	depends = python-sqlparse
 	depends = python-decorator
 	depends = python-psycopg2
@@ -24,7 +25,7 @@ pkgbase = python-taxtastic
 	depends = python-jinja
 	provides = taxtastic
 	options = !emptydirs
-	source = taxtastic::git+https://github.com/fhcrc/taxtastic.git#tag=v0.12.0
-	b2sums = 5c4d5ff5daf397ca50eb71101bb275559a7e59f4763c0be58d472267f7579cf46531e67c4333f7cde2696bf3f29e1a3dec17b5a1fbb645911c9ff278ce5f8a2c
+	source = taxtastic::git+https://github.com/fhcrc/taxtastic.git#tag=v1.0.1
+	b2sums = aa0fd48e537266d9e34b7b98a27f79bb73669eb32cb48195459bab314feb7e94db79321e763992c8d57a9f3cc3ac521972c4d93f98221913bba80322c2642b04
 
 pkgname = python-taxtastic
