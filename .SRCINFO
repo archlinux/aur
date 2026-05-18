@@ -1,0 +1,25 @@
+pkgbase = widgex-git
+	pkgdesc = Modern widget runtime for Wayland/Hyprland, inspired by Eww, AGS and Quickshell
+	pkgver = r13.90d5620
+	pkgrel = 1
+	url = https://github.com/command-z-z/widgex
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = gtk-layer-shell
+	optdepends = python: for Python-based data sources
+	optdepends = jq: for JSON shell sources
+	provides = widgex
+	conflicts = widgex
+	source = widgex-git::git+https://github.com/command-z-z/widgex.git
+	source = widgex.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = widgex-git
