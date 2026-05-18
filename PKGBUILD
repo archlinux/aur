@@ -1,7 +1,7 @@
 # Maintainer: MegalithOfficial
 
 pkgname=lettuceai-vulkan-bin
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='LettuceAI desktop app (prebuilt binary, Vulkan variant)'
 arch=('x86_64')
@@ -18,8 +18,8 @@ depends=(
 )
 provides=('lettuceai')
 conflicts=('lettuceai-bin' 'lettuceai-vulkan-bin' 'lettuceai-cuda-bin')
-source=('https://github.com/LettuceAI/app/releases/download/desktop-release-1.4.1/lettuceai-linux-x86_64-vulkan.tar.gz')
-sha256sums=('b804e5e7be6eb9188e8798cd816333115b988d71ac34f26c702817d832f036bd')
+source=('https://github.com/LettuceAI/app/releases/download/desktop-release-1.5.0/lettuceai-linux-x86_64-vulkan.tar.gz')
+sha256sums=('9a0f1766df772429dd7a811cdf66f72ea8f43a0c4ea0c7de77c42b038828a28b')
 
 package() {
   install -d "${pkgdir}/usr"
