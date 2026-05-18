@@ -1,7 +1,7 @@
 pkgbase = intel-oneapi-deep-neural-network-library
 	pkgdesc = Intel® Deep Neural Network Library (oneDNN)
 	pkgver = 2026.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/onednn-download.html
 	arch = x86_64
 	license = custom
