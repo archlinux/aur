@@ -3,7 +3,7 @@
 pkgname=ashrwm-git
 _pkgname=ashrwm
 
-pkgver=20260409.r1
+pkgver=20260518.r1
 pkgrel=1
 pkgdesc="a minimal yet functional river window manager with tiling/grid layout and more!"
 arch=('x86_64')
@@ -35,6 +35,8 @@ package() {
     cd "${srcdir}/${pkgname}" || exit 1
 	
     install -Dm755 "zig-out/bin/ashrwm" "${pkgdir}/usr/bin/ashrwm"
+    install -Dm755 "scripts/ashrwm-repl" "${pkgdir}/usr/bin/ashrwm-repl"
+    install -Dm755 "scripts/ashrwm-msg" "${pkgdir}/usr/bin/ashrwm-msg"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "example/config.janet" "${pkgdir}/etc/ashrwm/config.janet"
 }
