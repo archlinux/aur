@@ -2,13 +2,14 @@
 
 pkgname=agsh
 pkgver=0.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose AI agent runtime"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://docs.${pkgname}.sh"
 license=('MIT')
 depends=('glibc' 'libgcc' 'sqlite')
 makedepends=('cargo')
+optdepends=('bubblewrap: sandbox support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/k4yt3x/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('e20a1500ed508e0fd688faa8ccb3fc87fa66abb5974478fae3aa506753a9be62')
 
