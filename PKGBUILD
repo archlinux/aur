@@ -4,9 +4,12 @@
 pkgname=python-tree-sitter-c
 _gitpkgname=tree-sitter-c
 pkgver=0.24.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Python Bindings for tree-sitter-c'
-arch=('x86_64')
+arch=(
+      'x86_64'
+      'aarch64'
+)
 url='https://github.com/tree-sitter/tree-sitter-c'
 license=('MIT')
 depends=(
