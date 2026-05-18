@@ -1,17 +1,17 @@
 # Maintainer: Cristiandis <pizzaoven@izzoserver.top>
 pkgname=pizzaoven-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Cross-platform mod manager for Pizza Tower"
 arch=('x86_64')
 url="https://github.com/Cristiandis/PizzaOven-Avalonia"
 license=('GPL3')
-depends=('dotnet-runtime-8.0' 'xdelta3')
+depends=('dotnet-runtime-8.0')
 provides=('pizzaoven')
 conflicts=('pizzaoven')
 options=('!strip')
 source=("PizzaOven-linux-x64.tar.gz::https://github.com/Cristiandis/PizzaOven-Avalonia/releases/download/v$pkgver/PizzaOven-linux-x64.tar.gz")
-sha256sums=('0084e24f3f701b984bcc9222099ebed21b4d609b4cf67df889963ff0ed107a66')
+sha256sums=('2075b9e4a97b2623caa5d668707a2a5a4586c12df6b2484b2072bb4e25ac8dd1')
 
 package() {
     install -Dm755 "$srcdir/PizzaOven" "$pkgdir/usr/lib/pizzaoven/PizzaOven"
@@ -39,13 +39,18 @@ package() {
     fi
 
     # Dependencies
-    if [ -d "$srcdir/Dependencies" ]; then
+   if [ -d "$srcdir/Dependencies" ]; then
         find "$srcdir/Dependencies" -type f | while read -r f; do
             rel="${f#$srcdir/}"
             install -Dm644 "$f" "$pkgdir/usr/lib/pizzaoven/$rel"
         done
+
         if [ -f "$pkgdir/usr/lib/pizzaoven/Dependencies/DepotDownloader-linux/DepotDownloader" ]; then
             chmod 755 "$pkgdir/usr/lib/pizzaoven/Dependencies/DepotDownloader-linux/DepotDownloader"
+        fi
+
+        if [ -f "$pkgdir/usr/lib/pizzaoven/Dependencies/xdelta3" ]; then
+            chmod 755 "$pkgdir/usr/lib/pizzaoven/Dependencies/xdelta3"
         fi
     fi
 
