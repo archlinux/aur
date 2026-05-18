@@ -34,7 +34,7 @@ pkgbase = zen-browser-twilight-bin
 	sha512sums = f17d02c67f731ea27401176d2fb320a093367d94c8cbfd18a3b76c6f516994b8c547cee970b7bbf0422767064d62410884e07ae6e95b59007b48869e750fdcd9
 	source_x86_64 = https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
 	sha512sums_x86_64 = a1b61a6165ed7e8f014a9e66821976b47b427614c60f00300e943e06a3f10ed35c6281a5f0749eb969e5e9ba418af7ec0cdfcc2a7dd5776267f780097c596c47
-	source_aarch64 = https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
+	source_aarch64 = https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz
 	sha512sums_aarch64 = b03d18148a530f51d99c93c2a93d6a562c0e56f492a45830779d8d07139412e63b7f6cdd5db891629f7ce23f81ccb4ca42080eb6b0650b71e720700cc5d97c76
 
 pkgname = zen-browser-twilight-bin
