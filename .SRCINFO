@@ -1,9 +1,10 @@
 pkgbase = python-tree-sitter-rust
 	pkgdesc = Python Bindings for tree-sitter-rust
 	pkgver = 0.24.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-rust
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer

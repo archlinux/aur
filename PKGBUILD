@@ -4,9 +4,12 @@
 pkgname=python-tree-sitter-rust
 _gitpkgname=tree-sitter-rust
 pkgver=0.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Bindings for tree-sitter-rust'
-arch=('x86_64')
+arch=(
+      'x86_64'
+      'aarch64'
+)
 url='https://github.com/tree-sitter/tree-sitter-rust'
 license=('MIT')
 depends=(
@@ -33,7 +36,7 @@ build() {
 }
 
 package() {
-	python -I -m installer --destdir="${pkgdir}" dist/*.whl
+	python -I -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
 	install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
