@@ -18,7 +18,7 @@ depends=(
   kirigami-addons-git
   maliit-keyboard
   kpipewire-git
-  plasma-settings
+  plasma-settings-git
   kwin-git
   plasma-keyboard-git
 )
