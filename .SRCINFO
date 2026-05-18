@@ -1,7 +1,7 @@
 pkgbase = celestia-bin
 	pkgdesc = Real-time space simulation
 	pkgver = 1.7.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://celestiaproject.space/
 	arch = x86_64
 	license = GPL-2.0
@@ -141,7 +141,7 @@ pkgbase = celestia-bin
 	conflicts = celestia
 	source = https://download.opensuse.org/repositories/home:/munix9:/celestia:/1.7/AppImage//celestia-latest-x86_64.AppImage
 	source = celestia.bash
-	sha256sums = c669cfe5b60c0284bb64b79e9e52126fb15b0cb4b12c51abb1049faba7bdfd09
+	sha256sums = 57cc2ae45a9aeeba7cc2c1b42071b1676a3cb882bad9f8d60cec4731c66f3b70
 	sha256sums = 58672bcc02b5f50eb5dee22264b4ddb629a3927779941e359257927261021830
 
 pkgname = celestia-bin
