@@ -1,5 +1,5 @@
 # Maintainer: Roman Ramskyi <sawsawsa777 at gmail dot com>
-# Maintainer: Ender Shiru <endershiru@outlook.com>
+# Contributor: Ender Shiru <endershiru@outlook.com>
 # Contributor: Jakub 'Eremiell' Marek <eremiell at eremiell dot net>
 
 pkgname=dpp-git
