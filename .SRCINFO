@@ -1,6 +1,6 @@
 pkgbase = kdash
 	pkgdesc = A simple and fast dashboard for Kubernetes
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://kdash.cli.rs/
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = kdash
 	depends = gcc-libs
 	depends = libxcb
 	options = !lto
-	source = kdash::git+https://github.com/kdash-rs/kdash.git#tag=v1.1.1
-	b2sums = fc82506cea345c5322b78e13b5a23b14fdc7ae2e692ed10e50817c8fb070ec563317bd58e2abc4f3e27eb3c0e9a6033346dc56b781e9f2d6728ef7de1fd4ab43
+	source = kdash::git+https://github.com/kdash-rs/kdash.git#tag=v1.1.2
+	b2sums = 1f8cf46943644f62ef4ac74b74bb45455a08bae9fd5f5b2c58e3094e50044d8168cd6d50b9b794c4fdd02d2a8b2b6e19672d22413ea14bf07662bbe529a4ed63
 
 pkgname = kdash
