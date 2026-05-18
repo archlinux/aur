@@ -25,11 +25,11 @@ optdepends=(
     'networkmanager: WiFi status/toggle in panel'
     'bluez: Bluetooth status/toggle in panel'
 )
-source=("$pkgname-master.tar.gz::https://github.com/RidelLazor/PlexDE/archive/refs/heads/master.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/RidelLazor/PlexDE/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/PlexDE-master"
+    cd "$srcdir/PlexDE-$pkgver"
     export QT_QPA_PLATFORM=offscreen
     cmake -B build -S src/shell \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -38,13 +38,13 @@ build() {
 }
 
 check() {
-    cd "$srcdir/PlexDE-master"
+    cd "$srcdir/PlexDE-$pkgver"
     test -x build/pde-shell
     test -f src/pde-ws
 }
 
 package() {
-    cd "$srcdir/PlexDE-master"
+    cd "$srcdir/PlexDE-$pkgver"
 
     # Shell binary
     install -Dm755 build/pde-shell "$pkgdir/usr/bin/pde-shell"
