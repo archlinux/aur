@@ -1,12 +1,12 @@
 pkgbase = hoichess
 	pkgdesc = Xboard compatible chess engine and xiangqi (Chinese chess) engine
 	pkgver = 0.22.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.hoicher.de/hoichess
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL-2.0-only
+	license = GPL-2.0-or-later
 	makedepends = bash
 	makedepends = gcc
 	makedepends = m4
