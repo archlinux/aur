@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=renovate
-pkgver=43.183.1
+pkgver=43.184.0
 pkgrel=1
 pkgdesc="Automated dependency updates"
 arch=('any')
@@ -11,7 +11,7 @@ provides=("${pkgname}")
 url="https://github.com/renovatebot/renovate"
 license=('AGPL-3.0-only')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b6b5b672aa175c2bca9e3f29e9a0ee24b090dd4d3bd5f292267c15710193e378')
+sha256sums=('3e8054a6253864acc1859f09e690db7f99876becf4e3325ff593f5e191028e12')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
