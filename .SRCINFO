@@ -1,0 +1,23 @@
+pkgbase = plexde
+	pkgdesc = Minimal Wayland desktop environment — labwc compositor with custom Qt6 shell
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RidelLazor/PlexDE
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = labwc
+	depends = qt6-base
+	depends = qt6-wayland
+	depends = layershell-qt6
+	depends = python
+	optdepends = python-pillow: regenerate assets
+	optdepends = foot: default terminal emulator
+	optdepends = dolphin: default file manager
+	optdepends = networkmanager: WiFi status/toggle in panel
+	optdepends = bluez: Bluetooth status/toggle in panel
+	source = plexde-1.0.0.tar.gz::https://github.com/RidelLazor/PlexDE/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = plexde
