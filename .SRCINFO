@@ -1,0 +1,16 @@
+pkgbase = qrscan-bin
+	pkgdesc = Scan a QR code in the terminal using the system camera or a given image
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/sayanarijit/qrscan
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = qrscan
+	conflicts = qrscan
+	options = !strip
+	source_x86_64 = qrscan-x86_64-0.1.9.tgz::https://github.com/sayanarijit/qrscan/releases/download/v0.1.9/qrscan-0.1.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d8a39d0a4d0e5118b663ad1f2598d96074ce84c571ddbefa7571497bdcd85715
+
+pkgname = qrscan-bin

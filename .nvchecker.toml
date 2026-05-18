@@ -1,0 +1,5 @@
+[qrscan-bin]
+source = "github"
+github = "sayanarijit/qrscan"
+use_latest_release = true
+prefix = "v"
