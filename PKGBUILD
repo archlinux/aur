@@ -3,7 +3,7 @@
 pkgname=iced-comet-git
 _pkgname=comet
 pkgver=v0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Your favorite tool for inspecting and debugging iced applications. Built with iced!"
 arch=('aarch64' 'x86_64')
 url="https://github.com/iced-rs/comet"
