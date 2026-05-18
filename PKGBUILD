@@ -1,6 +1,6 @@
 # Maintainer: 12tae12 <https://aur.archlinux.org/account/12tae12>
 pkgname=cadoodle-bin
-pkgver=1.4.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Simple drag-and-drop CAD tool, local TinkerCAD alternative (AppImage)"
 arch=('x86_64')
