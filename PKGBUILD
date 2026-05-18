@@ -16,17 +16,21 @@ sha256sums=('4656486b7474fa91c775ed2551c6a28bce5a67a6ef90bead9718c20367546e7a')
 provides=('streamcontroller')
 conflicts=('streamcontroller-git')
 
+prepare() {
+  sed s'|==|>=|g' -i ${_reponame}/requirements.txt
+}
+
 package() {
   # Create virtualenv with dependencies
-  mkdir -p "$pkgdir/usr/local/lib/$_pkgname"
-  python -m venv "$pkgdir/usr/local/lib/$_pkgname"
-  source "$pkgdir/usr/local/lib/$_pkgname/bin/activate"
+  mkdir -p "$pkgdir/usr/lib/$_pkgname/venv"
+  python -m venv "$pkgdir/usr/lib/$_pkgname/venv"
+  source "$pkgdir/usr/lib/$_pkgname/venv/bin/activate"
   cd "$srcdir/$_reponame"
   pip install -r requirements.txt
   deactivate
 
   # Ensure correct venv is used after install
-  cd "$pkgdir/usr/local/lib/$_pkgname/bin"
+  cd "$pkgdir/usr/lib/$_pkgname/venv/bin"
   sed -i "s|$pkgdir||g" *
   cd "$srcdir/$_reponame"
 
@@ -39,7 +43,7 @@ package() {
   cat <<EOF > "$pkgdir/usr/bin/$_pkgname"
 #!/bin/bash
 cd /usr/lib/$_pkgname
-source /usr/local/lib/$_pkgname/bin/activate
+source /usr/lib/$_pkgname/venv/bin/activate
 exec python main.py "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/$_pkgname"
