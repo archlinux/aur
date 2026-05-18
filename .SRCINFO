@@ -1,6 +1,6 @@
 pkgbase = omarchy-window-restore-git
 	pkgdesc = Save and restore closed windows in Omarchy via keybindings
-	pkgver = r53.2dd03ab
+	pkgver = r62.cd2a81d
 	pkgrel = 1
 	url = https://github.com/TimHerb2005/omarchy-window-restore
 	install = omarchy-window-restore-git.install
