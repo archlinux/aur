@@ -2,7 +2,7 @@
 Name=Cabana
 Comment=CAN Bus Visualizer & Analyzer
 Exec=cabana %u
-Icon=cabana
+Icon=/usr/share/icons/hicolor/scalable/apps/cabana.svg
 Terminal=false
 Type=Application
 Categories=Qt;Development;Engineering;
