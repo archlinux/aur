@@ -2,7 +2,7 @@
 
 pkgname=lib32-sdl3_ttf
 pkgver=3.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Library that allows you to use TrueType fonts in your SDL applications (Version 3) (32-bit)'
 url='https://www.libsdl.org/projects/SDL_ttf'
 arch=('x86_64')
@@ -34,6 +34,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  rm -r "${pkgdir}"/usr/{include,share}
   install -Dm644 "SDL3_ttf-${pkgver}/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
