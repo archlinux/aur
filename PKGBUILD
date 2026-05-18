@@ -1,6 +1,6 @@
 # Maintainer: robserob <robin at robserob.dk>
 pkgname=vpin-studio-client-bin
-pkgver=4.9.3
+pkgver=4.9.4
 pkgrel=1
 pkgdesc="Client to connect to Vpin Studio servers, an open source pinball cabinet manager"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/syd711/vpin-studio/release
 	      "vpin-studio.png"
   	    "launcher.sh"
         "license.txt")
-sha256sums=('62b83c11f06d44910fc6322b0a1c5c5f2ab65cdbdd9609796e0b38bb4596ec61'
+sha256sums=('2c27690feea5a5b7f3959b6870fe5fd489c6b93aaa4b06bd985b00baccba40d1'
             'da677687ce26ee9c7da8c9282254f73a2756174047d6683357f3d9b2045aef89'
             '2561ca46d2104ca5bed1e52df71520b51b10e2467b436a5dc50a5a9b46edb879'
             '233136d6c651522ffa4ae591493916a1c8507d673e4d95204d86f31667901c5e'
