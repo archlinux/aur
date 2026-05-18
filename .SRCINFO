@@ -1,0 +1,16 @@
+pkgbase = python-textfsm
+	pkgdesc = An easy encapsulation for paramiko library which contains only common operations
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/google/textfsm
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/textfsm/textfsm-2.1.0.tar.gz
+	sha256sums = 45c18ff2b7c90163dfdff7e20d3f482514cc7aac26bc2547744e79dfa761e458
+
+pkgname = python-textfsm
