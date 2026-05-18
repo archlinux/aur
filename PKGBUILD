@@ -2,7 +2,7 @@
 
 pkgname=circumflex-bin
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool for browsing Hacker News in your terminal. Pre-compiled."
 arch=('i686' 'pentium4' 'x86_64' 'aarch64')
 url="https://github.com/bensadeh/circumflex"
@@ -25,4 +25,10 @@ package() {
 
     install -Dm755 clx "$pkgdir/usr/bin/clx"
     install -Dm644 share/man/clx.1 "$pkgdir/usr/share/man/man1/clx.1"
+    install -Dm644 share/completions/clx.bash \
+        "$pkgdir/usr/share/bash-completion/completions/clx"
+    install -Dm644 share/completions/_clx \
+        "$pkgdir/usr/share/zsh/site-functions/_clx"
+    install -Dm644 share/completions/clx.fish \
+        "$pkgdir/usr/share/fish/vendor_completions.d/clx.fish"
 }

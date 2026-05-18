@@ -1,7 +1,7 @@
 pkgbase = circumflex-bin
 	pkgdesc = A command line tool for browsing Hacker News in your terminal. Pre-compiled.
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bensadeh/circumflex
 	arch = i686
 	arch = pentium4
