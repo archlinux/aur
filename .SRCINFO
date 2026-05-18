@@ -1,6 +1,6 @@
 pkgbase = microcad
 	pkgdesc = a description language for modeling parameterizable geometric objects
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://codeberg.org/microcad/microcad
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = microcad
 	depends = glibc
 	depends = manifold
 	options = !lto
-	source = microcad-0.4.0.tar.gz::https://codeberg.org/microcad/microcad/archive/v0.4.0.tar.gz
-	sha256sums = 98be18aa2691df9708aed34776e0a13cb7aaf9ad33f1ef6af568ef7f0b7fa968
+	source = microcad-0.5.0.tar.gz::https://codeberg.org/microcad/microcad/archive/v0.5.0.tar.gz
+	sha256sums = cb0e450045d7811f506a1cd9d3b0babfe7a124ebee43b5fd4e13d863fb491d5c
 
 pkgname = microcad

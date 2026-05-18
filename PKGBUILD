@@ -2,7 +2,7 @@
 
 pkgdesc='a description language for modeling parameterizable geometric objects'
 pkgname=microcad
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 url="https://codeberg.org/$pkgname/$pkgname"
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(cargo
              ninja)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('98be18aa2691df9708aed34776e0a13cb7aaf9ad33f1ef6af568ef7f0b7fa968')
+sha256sums=('cb0e450045d7811f506a1cd9d3b0babfe7a124ebee43b5fd4e13d863fb491d5c')
 
 prepare() {
 	cd "$pkgname"
