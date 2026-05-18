@@ -1,8 +1,8 @@
 #!/bin/bash
 # Maintainer: czjstmax : <jstmaxlol@disroot.org>
 pkgname=rf
-pkgver=1.2.5
-pkgrel=5
+pkgver=1.3.4
+pkgrel=6
 pkgdesc="a suckless and minimal, POSIX C99 alternative to Makefiles!"
 arch=('any')
 url="https://kuronavipad.xantu-ling.ts.net/cgit/rfile.git"
