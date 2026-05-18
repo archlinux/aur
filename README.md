@@ -1,48 +1,41 @@
-# openpilot-cabana AUR Package
+# openpilot-cabana
 
-## Files
-
-- `PKGBUILD` - Arch Linux package build script
-- `archlinux.patch` - Patches for Arch Linux compatibility (Qt6, compiler warnings)
-- `cabana.desktop` - Desktop entry
-- `.github/workflows/ci.yml` - GitHub Actions for CI/CD
-- `.gitignore` - Build artifacts
-
-## Building
+## Installation
 
 ```bash
-makepkg -s
+paru -S openpilot-cabana
 ```
 
-## Publishing to AUR
-
-1. Create AUR account and add SSH key
-2. Clone: `git clone aur@aur.archlinux.org:openpilot-cabana.git`
-3. Copy files: `cp PKGBUILD archlinux.patch cabana.desktop openpilot-cabana/`
-4. Commit and push: `git add . && git commit -m "Initial" && git push`
-
-## Auto-Update on Release
-
-The CI workflow automatically publishes to AUR when a GitHub release is created.
-
-1. Create a release on GitHub with tag `v*` (e.g., `v1.1.2`)
-2. CI builds and tests
-3. CI pushes updated PKGBUILD to AUR
-
-## Manual Update
+Or manually with `makepkg`:
 
 ```bash
-# Update pkgver and rebuild
+git clone https://aur.archlinux.org/openpilot-cabana.git
+cd openpilot-cabana
 makepkg -s
-makepkg --printsrcinfo > .SRCINFO  # Generate .SRCINFO
-git add PKGBUILD .SRCINFO
-git commit -m "Update to X.Y.Z"
-git push
+pacman -U openpilot-cabana-*.pkg.tar.zst
 ```
 
-## Patches Included
+## About
 
-`archlinux.patch` includes:
-- Qt6 detection via cmake/pkg-config (qmake6 on Arch points to Qt5)
-- Fallback Qt6 tool paths for Arch Linux
-- Compiler warning suppressions for deprecated declarations
+AUR package for [Cabana](https://github.com/deanlee/openpilot-cabana) — a CAN / CAN FD bus analysis and visualization tool. This package auto-updates daily with the latest upstream commits.
+
+## Auto-Update
+
+This package is automatically rebuilt and published to AUR whenever new commits are pushed to the upstream [deanlee/openpilot-cabana](https://github.com/deanlee/openpilot-cabana) repository.
+
+The build pipeline:
+1. Syncs latest commits from upstream every hour
+2. Builds on Arch Linux in GitHub Actions
+3. Publishes updated package to AUR
+
+## Package Contents
+
+- `PKGBUILD` — build script, fetches from upstream tag
+- `archlinux.patch` — patches for Arch Linux compatibility (Qt6 detection, compiler warnings)
+- `cabana.desktop` — desktop entry
+- `cabana-icon.svg` — application icon
+
+## Dependencies
+
+- Arch Linux (x86_64)
+- [Samba](https://wiki.archlinux.org/title/Samba) (optional, for Windows-style network browsing)
