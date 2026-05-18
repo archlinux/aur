@@ -13,8 +13,8 @@ Group=root
 # Override the host key and tracing log paths to the locations set up on install.
 ExecStart=/usr/bin/mps \
     --config-absolute-path /etc/moshpits/moshpits.toml \
-    --private-key-path /etc/moshpits/keys/mps_host_ed25519_key \
-    --public-key-path /etc/moshpits/keys/mps_host_ed25519_key.pub \
+    --private-key-path /etc/moshpits/keys/mps_host_x25519_key \
+    --public-key-path /etc/moshpits/keys/mps_host_x25519_key.pub \
     --tracing-absolute-path /var/log/moshpits/mps.log
 Restart=on-failure
 RestartSec=5s
