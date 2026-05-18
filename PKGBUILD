@@ -6,12 +6,12 @@
 
 pkgname=aria2-fast
 pkgver=1.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Aria2 Download utility with little patch to maximize aria2 download speed'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://aria2.sourceforge.net/'
 license=('GPL')
-depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2')
+depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2' 'nettle3')
 checkdepends=('cppunit')
 provides=('aria2')
 conflicts=('aria2')
