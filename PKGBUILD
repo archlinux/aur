@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.20.0.879.g1b29f3d4af
+pkgver=v0.20.0.927.g33ffaffd66
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -14,10 +14,12 @@ depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt6-base' 'nss' 'a
 conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
 	"open-space"
-	"update-cfg.patch")
+	"update-cfg.patch"
+	"globebrowsingmodule.patch")
 sha256sums=('SKIP'
 			48f9ad3ab1ffc9ef6172cdba1b7bf1d0c36127723d3e73bb7beb273f1d0a54af
 		    776d986d6592fbedddaaa79385d3e42b39e1bd1ae9480404559410bcc930c963
+		    608d02fe1828d5bdc9f5cf20b02d1294b216212ccf0402b4922eacdade1e1088
 		    )
 
 options=(!debug)
@@ -32,6 +34,9 @@ prepare() {
 		git submodule update --init --recursive
 		# patch main configuration file to enable local user execution.
 		patch < "${srcdir}/update-cfg.patch"
+		# patch globebrowsingmodule.cpp to be able to compile against latest GDAL versions
+		patch -Np1 -i "${srcdir}/globebrowsingmodule.patch"
+
 }
 
 
