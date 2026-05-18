@@ -1,0 +1,15 @@
+pkgbase = revo-git
+	pkgdesc = a dynamic language for the joy of programming
+	pkgver = 0.0.1a.053c50b
+	pkgrel = 1
+	url = https://gills.pages.dev/revo
+	arch = x86_64
+	license = MIT
+	makedepends = zig>=0.16.0
+	makedepends = pcre2
+	source = git+https://github.com/if-not-nil/revo
+	source = git+https://github.com/jart/bestline.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = revo-git
