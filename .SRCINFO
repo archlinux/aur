@@ -1,6 +1,6 @@
 pkgbase = xiangqilab
-	pkgdesc = A fully local Xiangqi desktop app with AI-powered analysis
-	pkgver = 1.0.0
+	pkgdesc = A fully local Xiangqi desktop app
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://gitlab.com/xiangqilab/xiangqilab
 	arch = any
@@ -8,12 +8,11 @@ pkgbase = xiangqilab
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = gendesk
 	depends = python
 	depends = tk
 	optdepends = fairy-stockfish: Chess AI engine with Xiangqi support
 	optdepends = fairy-stockfish-xiangqi-nnue: Xiangqi neural network
-	source = xiangqilab-1.0.0.tar.gz::https://gitlab.com/xiangqilab/xiangqilab/-/archive/v1.0.0/xiangqilab-v1.0.0.tar.gz
-	sha256sums = 3dda8e315aae0a12bf5795b187c3592ac821c06c65081d1768d895376716325b
+	source = xiangqilab-1.0.1.tar.gz::https://gitlab.com/xiangqilab/xiangqilab/-/archive/v1.0.1/xiangqilab-v1.0.1.tar.gz
+	sha256sums = 57e12a53f5e6c6f1513d367749dda09e35653220822e8a9cad079b3a290895bc
 
 pkgname = xiangqilab
