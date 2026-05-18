@@ -34,21 +34,23 @@ post_install() {
 	# Phase 1: System setup (groups, services, PAM, logind)
 	HOME="/home/$user" snry-daemon setups 2>/dev/null || true
 
-	# Phase 2: Install runtime dependencies (as the user)
-	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
-		snry-daemon install 2>/dev/null || true
+	# Note: Do NOT run 'snry-daemon install' here — it calls pacman
+	# which deadlocks because pacman already holds the database lock.
+	# Users should run it after pacman finishes.
 
-	# Phase 3: Config sync (as the user)
+	# Phase 2: Config sync (as the user)
 	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
 		snry-daemon sync 2>/dev/null || true
 
-	# Phase 4: Enable and start the daemon via systemd user service
+	# Phase 3: Enable the daemon via systemd user service
 	sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
-		systemctl --user enable --now snry-daemon.service 2>/dev/null || true
+		systemctl --user enable snry-daemon.service 2>/dev/null || true
 
 	echo ""
-	echo ">>> Snry Shell installed and configured!"
-	echo ">>> Log out and log back in (or reboot) to start."
+	echo ">>> Snry Shell installed!"
+	echo ">>> Run these commands to finish setup:"
+	echo ">>>   snry-daemon install"
+	echo ">>>   systemctl --user start snry-daemon.service"
 	echo ""
 	echo ">>> To enable the display manager (replaces your login screen):"
 	echo ">>>   sudo pacman -S snry-dm"
@@ -67,10 +69,9 @@ post_upgrade() {
 	local uid
 	uid=$(id -u "$user")
 
-	echo ">>> Installing runtime dependencies for user: $user"
-
-	sudo -u "$user" HOME="/home/$user" XDG_RUNTIME_DIR="/run/user/$uid" \
-		snry-daemon install 2>/dev/null || true
+	# Note: Do NOT run 'snry-daemon install' here — it calls pacman
+	# which deadlocks because pacman already holds the database lock.
+	# Users should run 'snry-daemon install' manually if deps changed.
 
 	echo ">>> Syncing Snry Shell configs for user: $user"
 
@@ -87,6 +88,8 @@ post_upgrade() {
 	echo ""
 	echo ">>> Snry Shell updated!"
 	echo ">>> The daemon has been restarted via systemd."
+	echo ">>>"
+	echo ">>> If runtime dependencies changed, run: snry-daemon install"
 }
 
 post_remove() {
