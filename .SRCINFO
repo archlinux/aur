@@ -1,6 +1,6 @@
 pkgbase = hyprmon-bin
 	pkgdesc = A multi-monitor profile manager for Hyprland
-	pkgver = 0.0.15
+	pkgver = 0.0.16
 	pkgrel = 1
 	url = https://github.com/erans/hyprmon
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = hyprmon-bin
 	source = hyprmon.png
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = hyprmon-0.0.15-linux-amd64::https://github.com/erans/hyprmon/releases/download/v0.0.15/hyprmon-linux-amd64.tar.gz
-	sha256sums_x86_64 = 2d2492d29771d9f88ad318f84795a72253a6f6f221d84cf70d6f04e0782b056c
-	source_aarch64 = hyprmon-0.0.15-linux-arm64::https://github.com/erans/hyprmon/releases/download/v0.0.15/hyprmon-linux-arm64.tar.gz
-	sha256sums_aarch64 = 0540d46ed0102dba959545dc0b7fe9e3e0737419b8b0bad215d42cdc4f2f85b2
+	source_x86_64 = hyprmon-0.0.16-linux-amd64::https://github.com/erans/hyprmon/releases/download/v0.0.16/hyprmon-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3d115960422c3959b7183a159845b62b144ebdf6a339774bce5c32fe38ad2011
+	source_aarch64 = hyprmon-0.0.16-linux-arm64::https://github.com/erans/hyprmon/releases/download/v0.0.16/hyprmon-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8ba867aa724ba83a990d77267bb45b991214f4aab82f0af69054b4a995d65eea
 
 pkgname = hyprmon-bin
