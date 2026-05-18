@@ -40,8 +40,10 @@ options=(!lto)
 
 # Use tagged release from GitHub
 source=("git+https://github.com/P6g9YHK6/openpilot-cabana-arch.git#tag=v${pkgver}"
-         'archlinux.patch')
-sha256sums=('SKIP' 'SKIP')
+         'archlinux.patch'
+         'cabana.desktop'
+         'cabana-icon.svg')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd "$_pkgname"
@@ -66,4 +68,5 @@ package() {
   cp -r data assets "$pkgdir/usr/share/cabana/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 ../../cabana.desktop "$pkgdir/usr/share/applications/cabana.desktop"
+  install -Dm644 ../../cabana-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/cabana.svg"
 }
