@@ -2,9 +2,9 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-gguf-git
 _pkgname=gguf
-pkgver=b8118.r1.ba3b9c8844
+pkgver=b9209.r9.3a9c1b854d
 pkgrel=1
-pkgdesc="for writing binary files in the GGUF (GGML Universal File) format."
+pkgdesc="GGUF file format library and model conversion tools for llama.cpp"
 arch=('x86_64')
 url='https://ggml.ai/'
 license=(MIT)
@@ -19,12 +19,13 @@ makedepends=(
 optdepends=(
   'python-numpy: for numerical operations'
   'python-tqdm: for progress bars'
-  'python-mkl: for convert_hf_to_gguf.py')
+  'python-torch: for convert_hf_to_gguf.py and convert_lora_to_gguf.py'
+  'python-huggingface-hub: for --remote flag in convert_hf_to_gguf.py')
 provides=('python-gguf')
 conflicts=('python-gguf')
 
 # Source from llama.cpp repository's gguf-py directory
-source=("${pkgname}::git+https://github.com/ggml-org/llama.cpp.git#branch=master")
+source=("${pkgname}::git+https://github.com/ggml-org/llama.cpp.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -48,5 +49,20 @@ package() {
   cd "$pkgname/gguf-py"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  # Install conversion/ package
+  local _pyver
+  _pyver="$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')"
+  local _sitelib="/usr/lib/python${_pyver}/site-packages"
+
+  cd ../
+
+  install -Dm644 "conversion/__init__.py" "$pkgdir${_sitelib}/conversion/__init__.py"
+  install -m644 "conversion"/*.py "$pkgdir${_sitelib}/conversion/"
+
+  # Install conversion scripts
+  install -Dm755 "convert_hf_to_gguf.py" "$pkgdir/usr/bin/convert_hf_to_gguf.py"
+  install -Dm755 "convert_hf_to_gguf_update.py" "$pkgdir/usr/bin/convert_hf_to_gguf_update.py"
+  install -Dm755 "convert_lora_to_gguf.py" "$pkgdir/usr/bin/convert_lora_to_gguf.py"
 }
 # vim:set ts=2 sw=2 et:
