@@ -1,7 +1,7 @@
 # Maintainer: Javier Orfo <javierorfo@protonmail.com>
 
 pkgname=undr
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=2
 pkgdesc="C library with multiple utilities"
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,11 @@ makedepends=('git' 'gcc' 'make')
 provides=('undr')
 conflicts=('undr')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('81ea553ec94e5b56461d7ae22992a627d24634ab185648317b7be58a2c28c946ffa2bfdc28304c351d1451c85d50b8bdca3a7a84e5d75671eadd47a417b24253')
+sha512sums=('0c9d1f70490bcf40451536c9e442d27181e8dbaae38ecae91776e339b2e4763bb8797682c628d8d92cb58633078d062fa08093be6ad8080964a1f3a726404926')
 
 build() {
   cd "${pkgname}"
-  make CFLAGS="-Wall -O2 -g -std=c23 -Iinclude -fPIC -lcrypto" libundr.so
+  make CFLAGS="-Wall -Wextra -g -std=c23 -pedantic -Iinclude -fPIC -lcrypto" libundr.so
 }
 
 package() {
