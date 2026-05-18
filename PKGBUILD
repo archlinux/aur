@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy VVS Star <vitaliy <dot> star <at> Gmail-DOT-Com>
 
 pkgname=free-claude-code-bin
-pkgver=2.0.0.r618.fc3ef0b
+pkgver=2.0.0.r631.23e409c
 pkgrel=1
 pkgdesc="Proxy to use Claude Code CLI with free alternative providers (NVIDIA NIM, OpenRouter, DeepSeek, etc.)"
 arch=('x86_64')
