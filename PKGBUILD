@@ -2,7 +2,7 @@
 
 _gpuarch=gfx120X-all
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=7.13.0a20260508
+pkgver=7.13.0a20260515
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
@@ -35,7 +35,7 @@ provides=("${_rocm_packages[@]}" opencl-driver "rocm=${pkgver}")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
 source=("${url}/tarball/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('dffab8d893484749ea30e7f95467edb13bc3d30a5c73d4fa07589499846190b4')
 
 noextract=("${source[@]##*/}")
 

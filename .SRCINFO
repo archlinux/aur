@@ -1,6 +1,6 @@
 pkgbase = rocm-nightly-gfx120x-all-bin
 	pkgdesc = AMD ROCm Nightly Release (gfx120X-all) - Monolithic Install
-	pkgver = 7.13.0a20260508
+	pkgver = 7.13.0a20260515
 	pkgrel = 1
 	url = https://rocm.nightlies.amd.com
 	arch = x86_64
@@ -62,7 +62,7 @@ pkgbase = rocm-nightly-gfx120x-all-bin
 	provides = rocm-hip-runtime
 	provides = rocm-ml-sdk
 	provides = opencl-driver
-	provides = rocm=7.13.0a20260508
+	provides = rocm=7.13.0a20260515
 	conflicts = hip-runtime-amd
 	conflicts = hip-runtime-nvidia
 	conflicts = amdsmi
@@ -115,10 +115,10 @@ pkgbase = rocm-nightly-gfx120x-all-bin
 	conflicts = rocm-hip-runtime
 	conflicts = rocm-ml-sdk
 	conflicts = rocm
-	noextract = therock-dist-linux-gfx120X-all-7.13.0a20260508.tar.gz
+	noextract = therock-dist-linux-gfx120X-all-7.13.0a20260515.tar.gz
 	options = !strip
 	options = !debug
-	source = https://rocm.nightlies.amd.com/tarball/therock-dist-linux-gfx120X-all-7.13.0a20260508.tar.gz
-	sha256sums = SKIP
+	source = https://rocm.nightlies.amd.com/tarball/therock-dist-linux-gfx120X-all-7.13.0a20260515.tar.gz
+	sha256sums = dffab8d893484749ea30e7f95467edb13bc3d30a5c73d4fa07589499846190b4
 
 pkgname = rocm-nightly-gfx120x-all-bin
