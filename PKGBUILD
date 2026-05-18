@@ -3,10 +3,10 @@
 pkgbase=ce-toolchain
 pkgname=ce-toolchain-bin
 pkgver=15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolchain and libraries for C/C++ programming on the TI-84+ CE calculator series"
 install=$pkgname.install
-depends=("glibc" "zlib" "gcc-libs" "zstd")
+depends=("glibc" "zlib" "libstdc++" "libgcc" "zstd" "gmp" "expat" "mpfr" "python")
 options=("!strip" "!staticlibs")
 provides=("ce-toolchain")
 conflicts=("ce-toolchain")
