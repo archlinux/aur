@@ -2,21 +2,21 @@
 # Maintainer: Leonardo Faoro <ssm@leonardofaoro.com>
 
 pkgname='ssm-bin'
-pkgver=1.0.1
+pkgver=2.2.1_SNAPSHOT_3684574
 pkgrel=1
 pkgdesc='SSH connection manager with a TUI'
 url='https://github.com/lfaoro/ssm'
 arch=('aarch64' 'x86_64')
-license=('BSD-3-Clause')
+license=('MIT')
 provides=('ssm')
 conflicts=('ssm')
 depends=('openssh')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lfaoro/ssm/releases/download/${pkgver}/ssm_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('19a828b1b949a15d96f389f257bf0f72bcfc0ac8903c3f5fc93661ecfecfd9f0')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lfaoro/ssm/releases/download/2.2.1/ssm_2.2.1-SNAPSHOT-3684574_linux_arm64.tar.gz")
+sha256sums_aarch64=('2f87687bc3394bd99856948a7c2c6cef4a90a1619441c119c0b9e807a01eeee1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lfaoro/ssm/releases/download/${pkgver}/ssm_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('82fe569b55a8ed2b86d620818d4c2dfbf356db6f9de1e01f692b5dc67db0104d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lfaoro/ssm/releases/download/2.2.1/ssm_2.2.1-SNAPSHOT-3684574_linux_x86_64.tar.gz")
+sha256sums_x86_64=('a2dd794bee7e7d2d88e8f86d9aa1bd065f662607281b20efe5e319fa65a8a5fd')
 
 package() {
   install -Dm755 "./ssm" "${pkgdir}/usr/bin/ssm"
