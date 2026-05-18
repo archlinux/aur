@@ -1,7 +1,7 @@
 # Maintainer: hikarilucky79 <hikarilucky79@users.noreply.github.com>
 pkgname=keyra-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Premium low-latency typing sound engine & real-time mechanical keyboard visualizer"
 arch=('x86_64')
 url="https://github.com/hikarilucky79/keyra"
