@@ -6,7 +6,7 @@
 _pkgname=eden
 pkgname=$_pkgname-nightly
 pkgver=1779133685.5ab0227624
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu - nightly builds"
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -16,7 +16,7 @@ conflicts=('eden' 'eden-beta' 'eden-git' 'eden-bin' 'eden-preview-bin')
 depends=('libusb' 'libva' 'qt6-webengine' 'qt6-charts' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6' 'mbedtls' 'fmt' 'enet' 'cubeb')
 makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
 optdepends=('gamemode: Gamemoded support')
-options=('!lto' '!debug')
+options=('lto' '!debug')
 _commit=5ab02276242f9ef2324f164390504db6169f68f4
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git#commit=${_commit}")
 sha256sums=('d62da0e3fb7aa6656a312b60a96cc0c374e43bf893130f18a3ba06b795a6a87d')
@@ -26,23 +26,26 @@ pkgver() {
 }
 build() {
 	cd "$srcdir"
-	cmake -B build -S $_pkgname -GNinja \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DUSE_DISCORD_PRESENCE=ON \
-		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
-		-DYUZU_USE_BUNDLED_SDL2=OFF \
-		-DYUZU_USE_EXTERNAL_SDL2=OFF \
-		-DYUZU_USE_BUNDLED_QT=OFF \
-		-DENABLE_QT_TRANSLATION=ON \
-		-DYUZU_USE_QT_MULTIMEDIA=ON \
-		-DYUZU_USE_QT_WEB_ENGINE=ON \
-		-DTITLE_BAR_FORMAT_RUNNING="eden | ${pkgver} {}" \
-		-DTITLE_BAR_FORMAT_IDLE="eden ${pkgver} {}" \
-		-DYUZU_TESTS=OFF \
-		-DDYNARMIC_TESTS=OFF \
-		-DBUILD_TESTING=OFF \
-		-Wno-dev
+    cmake -B build -S "$_pkgname" -GNinja \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=mold" \
+        -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=mold" \
+        -DYUZU_ENABLE_LTO=ON \
+        -DUSE_DISCORD_PRESENCE=ON \
+        -DYUZU_USE_BUNDLED_FFMPEG=OFF \
+        -DYUZU_USE_BUNDLED_SDL2=OFF \
+        -DYUZU_USE_EXTERNAL_SDL2=OFF \
+        -DYUZU_USE_BUNDLED_QT=OFF \
+        -DENABLE_QT_TRANSLATION=ON \
+        -DYUZU_USE_QT_MULTIMEDIA=ON \
+        -DYUZU_USE_QT_WEB_ENGINE=ON \
+        -DTITLE_BAR_FORMAT_RUNNING="eden | ${pkgver} {}" \
+        -DTITLE_BAR_FORMAT_IDLE="eden ${pkgver} {}" \
+        -DYUZU_TESTS=OFF \
+        -DDYNARMIC_TESTS=OFF \
+        -DBUILD_TESTING=OFF \
+        -Wno-dev
 	cmake --build build
 }
 package() {
