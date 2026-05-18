@@ -3,7 +3,7 @@ pkgname=synology-drive-client-bin
 pkgver=4.0.3_17892
 _pkgver=4.0.3
 _pkgrel=17892
-pkgrel=4
+pkgrel=5
 pkgdesc="Official Synology Drive Client desktop application (official binary repack)"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
@@ -35,18 +35,26 @@ package() {
   ln -sf /opt/Synology/SynologyDrive/bin/launcher "$pkgdir/usr/bin/synology-drive-client"
 
   # Fix library paths using patchelf
-  # The daemon needs libraries from its own package/cloudstation/lib directory
-  # The launcher needs libraries from the main lib directory
-  find "$pkgdir/opt/Synology/SynologyDrive" -type f -executable -exec file {} + | grep "ELF" | cut -d: -f1 | while read -r binary; do
-    if [[ "$binary" == *"/package/cloudstation/bin/"* ]]; then
-      patchelf --set-rpath '$ORIGIN/../lib' "$binary"
-    elif [[ "$binary" == *"/bin/launcher" ]]; then
-      patchelf --set-rpath '$ORIGIN/../lib' "$binary"
-    elif [[ "$binary" == *".so"* ]]; then
-      # Handle shared objects in subdirectories (like icon-overlay plugins)
-      patchelf --set-rpath '$ORIGIN/../../../lib' "$binary" 2>/dev/null || true
+  # The daemon and other utilities need libraries from their respective lib directories
+  local cloudstation_bin="$pkgdir/opt/Synology/SynologyDrive/package/cloudstation/bin"
+  local main_bin="$pkgdir/opt/Synology/SynologyDrive/bin"
+
+  echo "Patching RPATH for cloudstation binaries..."
+  for bin in "$cloudstation_bin"/*; do
+    if [[ -x "$bin" && -f "$bin" ]]; then
+      patchelf --set-rpath '$ORIGIN/../lib' "$bin" 2>/dev/null || true
     fi
   done
+
+  echo "Patching RPATH for main binaries..."
+  for bin in "$main_bin"/*; do
+    if [[ -x "$bin" && -f "$bin" ]]; then
+      patchelf --set-rpath '$ORIGIN/../lib' "$bin" 2>/dev/null || true
+    fi
+  done
+
+  # Fix RPATH for plugins as well
+  find "$pkgdir/opt/Synology/SynologyDrive" -name "*.so*" -exec patchelf --set-rpath '$ORIGIN/../lib:$ORIGIN/../../../lib' {} \; 2>/dev/null || true
 
   # Install systemd user service
   install -Dm644 "$srcdir/synology-drive.service" "$pkgdir/usr/lib/systemd/user/synology-drive.service"
