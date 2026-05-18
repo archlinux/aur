@@ -2,7 +2,7 @@
 pkgname=steam-manifest-downloader-bin
 _pkgname=steam-manifest-downloader
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Download Steam game depots and manifests via a modern Tauri GUI (precompiled)"
 arch=('x86_64')
 url="https://github.com/MCbabel/Steam-Manifest-Downloader"
