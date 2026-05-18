@@ -1,0 +1,10 @@
+post_install() {
+  sysusers slskr.conf
+  tmpfiles --create slskr.conf
+  echo "Edit /etc/slskr/config.toml, then enable with: systemctl enable --now slskr.service"
+}
+
+post_upgrade() {
+  sysusers slskr.conf
+  tmpfiles --create slskr.conf
+}

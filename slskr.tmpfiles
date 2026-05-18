@@ -1,0 +1,2 @@
+d /var/lib/slskr 0750 slskr slskr -
+d /etc/slskr 0755 root root -
