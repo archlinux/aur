@@ -1,0 +1,12 @@
+pkgbase = ramdump-49xx-git
+	pkgdesc = A tool for dumping RAM from Samsung Swift devices running on the PNX49xx chipset.
+	pkgver = r15.2a94af2
+	pkgrel = 1
+	url = https://github.com/bhmsgame06/ramdump-49xx
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = git+https://github.com/bhmsgame06/ramdump-49xx
+	sha256sums = SKIP
+
+pkgname = ramdump-49xx-git
