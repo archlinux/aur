@@ -5,7 +5,7 @@ pkgrel=2
 epoch=1
 pkgdesc="CAN Bus Visualizer & Analyzer - Qt-based graphical tool for viewing, analyzing, and reverse-engineering raw CAN bus data"
 arch=('x86_64')
-url="https://github.com/deanlee/openpilot-cabana"
+url="https://github.com/P6g9YHK6/openpilot-cabana-arch"
 license=('MIT')
 depends=(
   'capnproto'
@@ -38,7 +38,7 @@ conflicts=('openpilot-cabana-git')
 options=(!lto)
 
 # Use tagged release from GitHub
-source=("git+https://github.com/deanlee/openpilot-cabana.git#tag=v${pkgver}"
+source=("git+https://github.com/P6g9YHK6/openpilot-cabana-arch.git#tag=v${pkgver}"
          'archlinux.patch')
 sha256sums=('SKIP')
 
