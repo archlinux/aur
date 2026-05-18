@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gerbil-bin
 _pkgname=Gerbil
-pkgver=1.24.4
+pkgver=1.24.5
 _electronversion=42
 pkgrel=1
 pkgdesc="A desktop app for running Large Language Models locally.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('de499611fa900798c4edefc65cba88c0f36026b2a49aa7bbb725c3cd39a32b2d'
+sha256sums=('ca23fe2ab076c8eca40a233059b67d432cc052740f13449a81a8c9edb309aab5'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
