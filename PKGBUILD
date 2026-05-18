@@ -1,4 +1,4 @@
-# Maintainer: Braydon <krazykid1117@gmail.com>
+# Maintainer: StonyTark <krazykid1117@gmail.com>
 pkgname=logitech-g923-xbox-ffb-udev
 pkgver=1.0.0
 pkgrel=1
