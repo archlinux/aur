@@ -5,13 +5,11 @@ pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
 pkgver=10.0.0.r1.0dd22337
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern music player"
 arch=("x86_64" "aarch64")
 url="https://tauonmusicbox.rocks"
 license=("GPL-3.0-or-later")
-# https://github.com/briansmith/ring/issues/1444 - needed to build lrclib-solver
-options=(!lto)
 conflicts=("${pkgname%-git}")
 depends=(
 	"python-pillow"
@@ -98,7 +96,8 @@ build() {
 	cd src/lrclib-solver
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	# LTO disabled due to https://github.com/briansmith/ring/issues/1444
+	CFLAGS="$CFLAGS -fno-lto" cargo build --frozen --release --all-features
 }
 
 package() {

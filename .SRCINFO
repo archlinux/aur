@@ -1,7 +1,7 @@
 pkgbase = tauon-music-box-git
 	pkgdesc = A modern music player
 	pkgver = 10.0.0.r1.0dd22337
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tauonmusicbox.rocks
 	arch = x86_64
 	arch = aarch64
@@ -56,7 +56,6 @@ pkgbase = tauon-music-box-git
 	optdepends = python-jxlpy: JPEG XL image support
 	optdepends = python-tidalapi: Tidal feature support
 	conflicts = tauon-music-box
-	options = !lto
 	source = tauon-music-box::git+https://github.com/Taiko2k/Tauon.git
 	sha256sums = SKIP
 
