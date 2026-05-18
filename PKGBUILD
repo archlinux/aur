@@ -15,6 +15,8 @@ sha256sums=('d10452033473333e216d0a9e4fa2c1e2ef24ffa9c1bfde0acd4c045f2107b613')
 
 prepare() {
   cd "OpenModelica-v${pkgver}"
+  curl -L https://github.com/OpenModelica/OpenModelica/pull/15573.patch | patch -p1
+  echo "v${pkgver}" > OMVERSION.txt
 }
 
 build() {
