@@ -1,6 +1,6 @@
 pkgbase = linux-mainline
 	pkgdesc = Linux Mainline
-	pkgver = 7.1rc3
+	pkgver = 7.1rc4
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -32,12 +32,12 @@ pkgbase = linux-mainline
 	makedepends = texlive-latexextra
 	options = !debug
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v7.1-rc3
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v7.1-rc4
 	source = config.x86_64
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
-	sha256sums = 311a506dc0ba64abd5d3ee0b85690e77fe20b52efd496124825c8b8a901b6cc4
+	sha256sums = e46632c664cd80af9ab29551f30d906563d5bd2ea5769f1cab12970eeebf480e
 	sha256sums = 3a0d5641f9a65d6425823ce0dbf75ec102fbd9c4c8cfbdaac6dc6da864184e3e
 
 pkgname = linux-mainline
