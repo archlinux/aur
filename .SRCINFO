@@ -1,7 +1,7 @@
 pkgbase = kls
 	pkgdesc = A security-focused directory listing tool
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NobelC/kls
 	arch = x86_64
 	license = MIT
