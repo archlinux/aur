@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: P6g9YHK6 <https://github.com/P6g9YHK6>
 pkgname=openpilot-cabana
 _pkgname=openpilot-cabana-arch
 pkgver=1.1.2
@@ -6,7 +6,7 @@ pkgrel=2
 epoch=1
 pkgdesc="CAN Bus Visualizer & Analyzer - Qt-based graphical tool for viewing, analyzing, and reverse-engineering raw CAN bus data"
 arch=('x86_64')
-url="https://github.com/P6g9YHK6/openpilot-cabana-arch"
+url="https://github.com/deanlee/openpilot-cabana"
 license=('MIT')
 depends=(
   'capnproto'
@@ -29,11 +29,8 @@ depends=(
   'zstd'
   'python'
   'python-numpy'
-  'cython'
-  'scons'
-  'clang'
 )
-makedepends=('python-pip' 'git')
+makedepends=('python-pip' 'git' 'cython' 'scons' 'clang')
 provides=('cabana')
 conflicts=('openpilot-cabana-git')
 options=(!lto)
