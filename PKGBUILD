@@ -1,8 +1,8 @@
 # Maintainer: Joao Costa <arch@joaocosta.dev>
 pkgname=tasks-org-bin
 _pkgname=tasks-org
-pkgver=15.5
-pkgrel=1
+pkgver=15.5.0
+pkgrel=2
 pkgdesc="Bringing Astrid Tasks back from the dead"
 arch=('x86_64')
 url="https://github.com/tasks/tasks"
@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'libx11' 'libxext' 'libxrender' 'libxtst' 'freetyp
 options=('!debug')
 provides=('tasks-org')
 conflicts=('tasks-org')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/tasks/tasks/releases/download/${pkgver}/tasks-org-${pkgver}-linux-amd64.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/tasks/tasks/releases/download/15.5/tasks-org-15.5.0-linux-amd64.tar.gz")
 sha256sums=('c297873e54c3764afd229503330acbc9ad9493084b672fd9e6ae3a96bcbb1576')
 
 package() {
