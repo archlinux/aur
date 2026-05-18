@@ -1,7 +1,7 @@
 pkgbase = bin2iso
 	pkgdesc = Converts RAW format (.bin/.cue) files to ISO/WAV format
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/bunnylin/bin2iso
 	arch = x86_64
 	arch = i686

@@ -7,7 +7,7 @@
 
 pkgname=bin2iso
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts RAW format (.bin/.cue) files to ISO/WAV format"
 arch=(x86_64 i686 pentium4 armv7h aarch64)
 url="https://gitlab.com/bunnylin/bin2iso"
@@ -19,7 +19,7 @@ sha256sums=('c96af43f331e58b40a6fc0934b4a232003f65136aa40e29882519205de72e428')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  make
+  make -e
 }
 
 package() {
