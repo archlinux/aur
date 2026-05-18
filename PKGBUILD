@@ -1,6 +1,6 @@
 # Maintainer: Mathias DeWeerdt <your@email.com>
 pkgname=discord-latest-bin
-pkgver=1.0.138
+pkgver=1.0.139
 pkgrel=1
 pkgdesc="Discord - All-in-one voice, video and text communication (latest upstream .deb release)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('discord')
 # Discord ships pre-built Electron binaries — stripping them breaks the app
 options=('!strip' '!debug')
 source=("discord-${pkgver}.deb::https://stable.dl2.discordapp.net/apps/linux/${pkgver}/discord-${pkgver}.deb")
-sha256sums=('e51900d802548d4f7dfe9838e2b98a874ea9cb63f688251e8cfd50b41d307f25')
+sha256sums=('4887d6d3cc990bb59646212aabf661a4ece59231005ea83f76812654e6694148')
 
 package() {
   cd "${srcdir}"
