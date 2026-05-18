@@ -1,7 +1,7 @@
 # Maintainer: Dmitriy Q atsip-help <at> yandex <dot> ru
 pkgname=meshtastic-desktop-bin
-pkgver=2.7.14beta3
-pkgrel=23
+pkgver=2.7.14beta9
+pkgrel=1
 pkgdesc="Meshtastic Desktop Application"
 arch=('any')
 url="https://github.com/meshtastic/Meshtastic-Android"
