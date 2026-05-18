@@ -1,8 +1,9 @@
 pkgbase = wo
 	pkgdesc = A workspace shell manager
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/antham/wo
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = go

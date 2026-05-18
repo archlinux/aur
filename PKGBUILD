@@ -2,9 +2,10 @@
 
 pkgname="wo"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A workspace shell manager"
 arch=(
+  'aarch64'
   'x86_64'
 )
 url="https://github.com/antham/${pkgname}"
