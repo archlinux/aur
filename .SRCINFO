@@ -1,0 +1,22 @@
+pkgbase = alter-runtime
+	pkgdesc = ~Alter Identity Runtime — L3 local sovereign daemon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/true-alter/alter-runtime
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-httpx
+	depends = python-pydantic
+	depends = python-yaml
+	depends = python-watchdog
+	optdepends = python-dbus-next: D-Bus session bus integration
+	optdepends = systemd: systemd user unit integration
+	source = https://files.pythonhosted.org/packages/source/t/truealter/truealter-0.1.0.tar.gz
+	sha256sums = b1c9a3ffd29581b629c154399e86e599b7a2f962af82e4c86e83bfeb9c93dabb
+
+pkgname = alter-runtime
