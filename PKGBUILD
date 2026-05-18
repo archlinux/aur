@@ -3,7 +3,7 @@
 
 _pkgname=dusklight
 pkgname=${_pkgname}-git
-pkgver=1.1.1.r49.ge8a29f6
+pkgver=1.2.0.r0.gc516b91
 pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
