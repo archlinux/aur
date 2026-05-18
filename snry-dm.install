@@ -1,0 +1,45 @@
+post_install() {
+	# Create snry-dm system user for the display manager greeter.
+	if ! id -u snry-dm &>/dev/null; then
+		useradd -r -M -d /var/lib/snry-dm -s /bin/false snry-dm
+		mkdir -p /var/lib/snry-dm/.config
+		chown -R snry-dm:snry-dm /var/lib/snry-dm
+	fi
+
+	echo ""
+	echo ">>> Snry DM (display manager) installed."
+	echo ">>> To enable the display manager (replaces your login screen):"
+	echo ">>>   sudo systemctl enable snry-dm.service"
+	echo ">>>   sudo systemctl start snry-dm.service"
+	echo ""
+	echo ">>> WARNING: Enabling snry-dm will disable other display managers."
+	echo ">>> Make sure Hyprland and Quickshell are working before enabling."
+	echo ""
+}
+
+post_upgrade() {
+	# Ensure the snry-dm user still exists (in case it was removed).
+	if ! id -u snry-dm &>/dev/null; then
+		useradd -r -M -d /var/lib/snry-dm -s /bin/false snry-dm
+	fi
+
+	# Ensure home directory exists.
+	mkdir -p /var/lib/snry-dm/.config
+	chown -R snry-dm:snry-dm /var/lib/snry-dm 2>/dev/null || true
+
+	echo ">>> Snry DM updated."
+}
+
+post_remove() {
+	# Remove the snry-dm system user and home directory.
+	if id -u snry-dm &>/dev/null; then
+		userdel snry-dm 2>/dev/null || true
+	fi
+	rm -rf /var/lib/snry-dm
+
+	echo ""
+	echo ">>> Snry DM has been removed."
+	echo ">>> Remember to disable the service if it was enabled:"
+	echo ">>>   sudo systemctl disable snry-dm.service"
+	echo ""
+}
