@@ -1,6 +1,6 @@
 pkgbase = falcoctl
 	pkgdesc = Administrative tooling for Falco
-	pkgver = 0.12.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/falcosecurity/falcoctl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = falcoctl
 	makedepends = go
 	makedepends = git
 	makedepends = make
-	source = falcoctl-0.12.2.tar.gz::https://github.com/falcosecurity/falcoctl/archive/refs/tags/v0.12.2.tar.gz
-	sha256sums = 05290a97ac6ac886fc4b34d157d533de37d5a1031f81cf4e6eb1f056c4015f49
+	source = falcoctl-0.13.0.tar.gz::https://github.com/falcosecurity/falcoctl/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = 804a37e6372201ee21d3bc99ffea6079484b557ece0aa17719dbc6e8cb2b5fec
 
 pkgname = falcoctl
