@@ -1,6 +1,6 @@
 pkgname=cockatrice-client-stable
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Open-source multiplatform program for playing tabletop card games over a network (stable release)'
 arch=('x86_64')
 url='https://cockatrice.github.io/'
@@ -28,7 +28,7 @@ optdepends=(
     'mariadb: database support'
 )
 
-conflicts=('cockatrice-client-git' 'cockatrice')
+conflicts=('cockatrice-client-beta' 'cockatrice-client-git' 'cockatrice')
 provides=('cockatrice-client')
 
 source=(
