@@ -1,0 +1,19 @@
+pkgbase = tuff-bin
+	pkgdesc = An open-source core for your OS, built on a sandboxed architecture with a local-first AI and a powerful TypeScript SDK.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.4.10
+	pkgrel = 1
+	url = https://tuff.tagzxia.com/
+	arch = x86_64
+	license = MPL-2.0
+	depends = electron41
+	depends = libxt
+	provides = tuff=2.4.10
+	conflicts = tuff
+	options = !emptydirs
+	options = !strip
+	source = tuff-2.4.10.deb::https://github.com/talex-touch/tuff/releases/download/v2.4.10/ubuntu-latest-release-tuff-2.4.10.deb
+	source = tuff.sh
+	sha256sums = 60acc5ce0fcdd41ca54cc7938d7f9537dd7326a5d8d86eb8698349e3167ee559
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = tuff-bin
