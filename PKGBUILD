@@ -1,6 +1,6 @@
 # Maintainer: Cenk Kılıç <cenk1cenk2cenk3@gmail.com>
 pkgname=hyprpilot-bin
-pkgver=2.1.0 # x-release-please-version
+pkgver=2.2.0 # x-release-please-version
 pkgrel=1
 pkgdesc="Tauri overlay daemon for agent-driven workflows on Hyprland (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('MIT')
 # overlay needs it.
 #
 # `libappindicator-gtk3` is required at RUNTIME via `dlopen` (the
-# `libappindicator-rs` crate uses `libloading`, which is why `ldd`
+# `libappindicator-sys` crate uses `libloading`, which is why `ldd`
 # shows no static reference). tauri 2's `tray-icon = "0.23"` feature
 # initialises a `TrayIconBuilder` at daemon startup; on GNOME with the
 # AppIndicator extension that path opens `libappindicator-gtk3.so.1`
@@ -35,7 +35,7 @@ source=("$pkgname-$pkgver.tar.zst::https://github.com/hyprpilot/hyprpilot/releas
 # always carries real checksums against the freshly-uploaded
 # tarball). Local-build path: run `updpkgsums` manually after a
 # pkgver edit.
-b2sums=('322cdd88320b8e543953a67b5e4d623fdccd77fe84d69315c81c6da613ced30916800ca5bd6be9a9f4462b5e221f90c88b06db414b91a163128850e09d1bcd68')
+b2sums=('7957d3589b6e189a03076cf3f3c9af80378d19c1e80ba6ba3c414dff919f523eaa030dcf4314fe922325a9bf08d1e8a9c178f66eb5f9d169f68282a9dcd20acf')
 
 package() {
   cd "$srcdir/hyprpilot"
