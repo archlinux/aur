@@ -1,6 +1,6 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib
-pkgver=1.70
+pkgver=1.71
 pkgrel=1
 pkgdesc="KDE-based music library management. Integration with MPRIS2 players, Kid3 Tagger, K3b CD Ripper, kdeconnect and RSGain."
 arch=('x86_64')
@@ -46,7 +46,7 @@ provides=('musiclib-cli')
 conflicts=('musiclib-cli')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c98d8e08655ca50c98850e87c6eac63e3853c7bf89aa7730abd1541ad021ecb')
+sha256sums=('7094a0ba408776fd8e0a8f7089c289f9e4db6f00e680a2517a97d5d7bf497567')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \

@@ -5,6 +5,7 @@ _warn() {
     echo "  [!] $*"
 }
 post_install() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
     echo ""
     echo "  Run 'musiclib-cli setup' in the console after installation."
     echo ""
