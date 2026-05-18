@@ -1,0 +1,10 @@
+post_install() {
+	echo 'To finish Visage setup process, follow these instructions:'
+	echo '  1. Enable services with `sudo systemctl enable --now visaged visage-resume`'
+	echo '  2. Run `sudo visage setup` to download models'
+	echo '  3. Run `sudo visage enroll --label default --user <your_username>` to add face model'
+	echo '  4. Run `visage verify` to check if auth is working'
+	echo '  5. If it works, add the line `auth [success=done default=ignore] pam_visage.so` to either'
+	echo '    - `/etc/pam.d/system-auth` file just before `pam_unix.so` for global auth'
+	echo '    - `/etc/pam.d/sudo` at the beginning for `sudo` only'
+}
