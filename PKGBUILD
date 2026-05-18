@@ -2,7 +2,7 @@
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
 pkgver=0.38.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
 url="https://github.com/Q00/ouroboros"
@@ -11,6 +11,7 @@ depends=(
   'python'
   'python-aiosqlite'
   'python-anyio'
+  'python-click'
   'python-jsonschema'
   'python-prompt_toolkit'
   'python-pydantic'
