@@ -7,6 +7,7 @@ pkgbase = polify-git
 	license = MIT
 	makedepends = git
 	makedepends = flutter
+	makedepends = make
 	depends = gtk3
 	depends = libepoxy
 	depends = xz

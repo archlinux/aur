@@ -8,7 +8,7 @@ url="https://buildhut.fly.dev/apps/polify"
 license=('MIT')
 depends=('gtk3' 'libepoxy' 'xz' 'mpv' 'ffmpeg' 'sqlite' 'libsecret'
          'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav')
-makedepends=('git' 'flutter')
+makedepends=('git' 'flutter' 'make')
 provides=('polify')
 conflicts=('polify')
 source=("polify::git+https://git.sr.ht/~drzoidberg/Polify")
@@ -29,6 +29,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/polify"
+  make version-info
   flutter pub get
   flutter build linux --release
 }
