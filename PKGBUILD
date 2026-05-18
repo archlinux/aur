@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp-gfx1151
 _pkgname=${pkgname%%-gfx1151}
-pkgver=b9216
+pkgver=b9219
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)"
 arch=(x86_64 armv7h aarch64)
@@ -20,6 +20,8 @@ depends=(
 makedepends=(
   cmake
   git
+  nodejs
+  npm
   shaderc
   vulkan-headers
   spirv-headers
@@ -43,7 +45,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('8eb4c149ee30e8494072bdd34942c6aae15342148dc021a5fbd84393c149ea1a'
+sha256sums=('5cd1b1da160c77dcbce41ffb5a3ee88f4149a51622bb37965f8e486d6db8c97c'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
@@ -54,6 +56,11 @@ prepare() {
 }
 
 build() {
+  pushd "${_pkgname}/tools/ui"
+  npm ci
+  npm run build
+  popd
+
   # 配置环境
   if [[ -z "${ROCM_PATH}" ]]; then
     source /etc/profile
