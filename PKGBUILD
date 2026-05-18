@@ -1,10 +1,10 @@
 # Maintainer: yancat <yancat_aur@icloud.com>
 pkgname=zstbund
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='打包pacman软件包及其依赖以供离线使用'
 arch=('x86_64')
-url="https://github.com/yan-cat"
+url="https://github.com/yan-cat/zstbund"
 license=('GPL3')
 depends=('pacman' 'zip')
 makedepends=('rust' 'cargo')
