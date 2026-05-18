@@ -1,6 +1,6 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib-cli
-pkgver=1.70
+pkgver=1.71
 pkgrel=1
 pkgdesc="Command line application for organizing and managing a music library. Requires Kid3 Audio Tagger and kdeconnect for mobile sync"
 arch=('x86_64')
@@ -33,7 +33,7 @@ conflicts=('musiclib')
 # After tagging on GitHub, compute the hash with: makepkg -g >> PKGBUILD
 # and replace SKIP below with the printed sha256sum line.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c98d8e08655ca50c98850e87c6eac63e3853c7bf89aa7730abd1541ad021ecb')
+sha256sums=('7094a0ba408776fd8e0a8f7089c289f9e4db6f00e680a2517a97d5d7bf497567')
 
 build() {
     # GitHub extracts the tarball as musiclib-<version>/, not musiclib-cli-<version>/
