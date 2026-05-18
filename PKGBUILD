@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=xtool
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Cross-platform Xcode replacement."
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/xtool-org/$pkgname/archive/refs/tags/$pkgver.tar.gz"
 )
-b2sums=('9dde5f6d2ce39fed3566159258bd7a84c3eb0dfe6c2c941f2f758b4003ab944d950f7de8609d19a47ac2b0c637740fb7c137020264c286ba3afa5c5f8519a90b')
+b2sums=('eb8908e177d5db6527e0535e05354d3b918b31f06b576206e71979ce30450ce64de0eaa6119e03bf88851f7b18e9f696654b6316485bab1790ab361cf13574cb')
 
 build() {
   cd "$pkgname-$pkgver"
