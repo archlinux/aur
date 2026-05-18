@@ -5,7 +5,7 @@ Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compat
 - **Versión:** 1:2.0.1-3
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
-- **Probado en:** Arch Linux (kernel 7.0.3-arch1-2)
+- **Probado en:** Arch Linux (kernel 7.0.8-1-cachyos)
 
 ---
 
