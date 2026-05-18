@@ -37,5 +37,6 @@ pkgbase = openpilot-cabana
 	source = git+https://github.com/P6g9YHK6/openpilot-cabana-arch.git#tag=v1.1.2
 	source = archlinux.patch
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = openpilot-cabana
