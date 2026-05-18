@@ -1,13 +1,13 @@
 # Maintainer: jeryd leuck <jerydleuck@gmail.com>
 pkgname=msty-deb
 pkgver=2.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local."
 arch=('x86_64')
 url="https://msty.ai/"
 license=('proprietary')
 depends=('alsa-lib' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxshmfence' 'mesa' 'nss' 'pango')
-provides=('msty')
+provides=('msty' 'msty-studio')
 conflicts=('msty' 'msty-bin')
 filename="MstyStudio_amd64_${pkgver}.deb"
 source=("$filename::https://next-assets.msty.studio/app/latest/linux/MstyStudio_amd64.deb?ver=$pkgver")
@@ -20,7 +20,12 @@ package() {
   # Fix permissions for chrome-sandbox (required for Electron sandboxing)
   chmod 4755 "$pkgdir/opt/MstyStudio/chrome-sandbox"
 
-  # Create a symlink in /usr/bin for terminal access
+  # Fix the .desktop file (Name with space, clean up extra lines)
+  sed -i 's/^Name=.*/Name=Msty Studio/' "$pkgdir/usr/share/applications/MstyStudio.desktop"
+  sed -i '/^exec=mstystudio/d' "$pkgdir/usr/share/applications/MstyStudio.desktop"
+
+  # Create symlinks in /usr/bin for terminal access
   install -d "$pkgdir/usr/bin"
   ln -s /opt/MstyStudio/MstyStudio "$pkgdir/usr/bin/msty"
+  ln -s /opt/MstyStudio/MstyStudio "$pkgdir/usr/bin/msty-studio"
 }
