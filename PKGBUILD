@@ -6,7 +6,7 @@ arch=('any')
 license=('GPL-2.0-or-later')
 depends=('python' 'gtk4' 'python-gobject')
 source=('https://raw.githubusercontent.com/debwuoldirty/icecc3/main/icecc3.tar.gz')
-sha256sums=('542c24797b6b8ab300075a2905a87f7ad64d8c732fb7fcdfb7b5c082d42d9b04')
+sha256sums=('38faf27eaf1479ad1a688cce28ca026960b2de45dd6deedd4c76143763ad019a')
 package() {
     mkdir -p "$pkgdir/opt/icecc3"
     cp -r "$srcdir/icecc3/"* "$pkgdir/opt/icecc3/"
