@@ -1,17 +1,17 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=gotatun
 pkgname=(gotatun libgotatun)
-pkgver=0.1.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Userspace WireGuard® Implementation in Rust"
 arch=('x86_64')
 url="https://github.com/mullvad/gotatun"
-license=('BSD-3-Clause')
-depends=('glibc' 'gcc-libs')
+license=('BSD-3-Clause AND MPL-2.0')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('9b8a980f48f41564c6805d72f4be96627310d10a70af568b186a4b8e37481b9c')
+sha256sums=('a4cd1de8bd8ae3d7054a57f541af0aee08f067437b35dcf103f7a424d4827f0b')
 validpgpkeys=()
 
 prepare() {
@@ -31,11 +31,13 @@ build() {
 package_gotatun() {
 	cd "$pkgbase-$pkgver"
 	install -Dm755 target/release/${pkgname} "$pkgdir/usr/bin/${pkgname}"
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MPL-2.0"
+	install -Dm644 LICENSE-CLOUDFLARE "$pkgdir/usr/share/licneses/$pkgname/LICENSE-BSD-3-Clause"
 }
 
 package_libgotatun() {
 	cd "$pkgbase-$pkgver"
 	install -Dm755 target/release/${pkgname}.so "$pkgdir/usr/lib/${pkgname}.so"
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MPL-2.0"
+	install -Dm644 LICENSE-CLOUDFLARE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-BSD-3-Clause"
 }
