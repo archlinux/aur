@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=openpilot-cabana
-_pkgname=openpilot-cabana
+_pkgname=openpilot-cabana-arch
 pkgver=1.1.2
 pkgrel=2
 epoch=1
