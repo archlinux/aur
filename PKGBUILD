@@ -1,6 +1,6 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-bin
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker"
 arch=('x86_64')
@@ -10,13 +10,13 @@ provides=('veila')
 conflicts=('veila' 'veila-git')
 options=('!debug')
 depends=('libxkbcommon' 'pam')
-optdepends=('systemd: enable the bundled user service with systemctl --user')
+optdepends=('systemd: enable the bundled user services with systemctl --user')
 backup=('etc/pam.d/veila')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/naurissteins/Veila/releases/download/$pkgver/veila-$pkgver-x86_64-linux.tar.gz"
   "veila.pam"
 )
-sha256sums=('c05fd0c896ad8d939687c7a9898c5824ae6fca4ccdb9742aaab178709e291b8c'
+sha256sums=('f74e9767b153be77d693cef786fa1540cb772f87d3cad3d1fb6698cffb31ede3'
             '2f9b7a7a8a8583ed40969240ee7d0d42ffba4a44b69a7d241bd60634795a8e84')
 
 package() {
@@ -28,6 +28,10 @@ package() {
 
   install -Dm644 share/veila/systemd/veilad.service \
     "$pkgdir/usr/lib/systemd/user/veilad.service"
+  if [[ -f share/veila/systemd/veila-idle.service ]]; then
+    install -Dm644 share/veila/systemd/veila-idle.service \
+      "$pkgdir/usr/lib/systemd/user/veila-idle.service"
+  fi
   install -Dm644 "$srcdir/veila.pam" "$pkgdir/etc/pam.d/veila"
 
   local asset_dir asset_file
