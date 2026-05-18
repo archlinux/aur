@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Terminal file manager written in Rust"
 
-pkgver=0.1.48
+pkgver=0.1.49
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('35ec3edbd241031a733f32eba9ce9a735e83030a24e0504c13a2e91577fb86f1')
-sha256sums_x86_64=('7efe055df86b0934f2e8a81deca75b7a6a5e6069ffb7aeb0c9a4fbf2a996c07e')
-sha256sums_aarch64=('431cd78f56db30a3aac683765f31d61a94776b9c749f0de982c3c187679b8d71')
+sha256sums_x86_64=('dbc3819b57b3cb5c91a36e49879a65be18b3ecd212ecf18ee7569815c386a41a')
+sha256sums_aarch64=('66197a30faceba0dbd465341fd3eca46d5f0120382d655a4250c45e8a9ab715b')
 
 
 package() {
