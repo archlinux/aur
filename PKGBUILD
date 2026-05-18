@@ -3,15 +3,18 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 depends=('enet' 'fmt' 'opus' 'lz4' 'zlib' 'zstd' 'libusb' 'openssl' 'glibc'
-	 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs'
-	 'ffmpeg' 'boost-libs' 'spirv-tools' 'quazip-qt6' 'mbedtls' 'llvm-libs' 'cubeb' 'qt6-charts' 'cpp-jwt' 'cpp-httplib')
-makedepends=('cmake' 'catch2' 'boost' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers')
+	 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2'
+	 'ffmpeg' 'boost-libs' 'quazip-qt6' 'cubeb' 'qt6-charts'
+	 'qt6-multimedia' 'libgcc' 'libstdc++')
+makedepends=('cmake' 'catch2' 'boost' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries'
+	     'nlohmann-json' 'ninja' 'gamemode' 'renderdoc'
+	     'qt6-tools' 'nasm' 'opencl-headers')
 optdepends=('gamemode: Gamemoded support')
 conflicts=('eden-bin' 'eden-git' 'eden-preview-bin' 'eden-beta')
 options=('!debug')
