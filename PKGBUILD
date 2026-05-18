@@ -5,8 +5,8 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=netron-bin
 _pkgname=Netron
-pkgver=9.0.7
-_electronversion=41
+pkgver=9.0.8
+_electronversion=42
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models.(Prebuilt version,use system-wide electron)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_x86_64=('64578636ce7ab7dcffdea05caae4f728c28bc7c40fbfca8e590e2bf28ddf1dc3')
+sha256sums_x86_64=('1ff7b6e595a7320a44e3d02ca2b73ec36e965e7b68ac364c8a29f813a9270b79')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
