@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 1:2.0.1-3
+- **Versión:** 1:2.0.1-4
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.8-1-cachyos)
@@ -227,6 +227,59 @@ Skyrim VR, Enderal, Enderal SE, Starfield, Oblivion.
 
 ---
 
+### Patch 7 — `iniFiles` (renderer.js): resolver `mygames` vía prefijo Proton (complemento de Patch 6)
+
+**Problema:** La función `iniFiles()` en `renderer.js` (motor principal de Vortex, no
+el plugin) calcula la carpeta `My Games` independientemente de `mygamesPath()`:
+
+```js
+// dentro de iniFiles(gameMode, discovery)
+const mygames = path.join(getVortexPath("documents"), "My Games");
+```
+
+Este código no usa un `gameMode` conocido de antemano — usa `discovery.path` para
+saber qué juego está activo. Por eso no puede usar la tabla de AppIDs del Patch 6.
+
+**Fix:** IIFE que deduce el AppID a partir de `discovery.path` escaneando los archivos
+`appmanifest_*.acf` de todas las librerías Steam. Cubre automáticamente cualquier juego
+Gamebryo gestionado vía Proton, sin lista de AppIDs fija.
+
+```js
+const mygames = (() => {
+  if ("linux" !== process.platform)
+    return path.join(getVortexPath("documents"), "My Games");
+  const _fs = require("fs");
+  const discPath = discovery?.path;
+  if (!discPath) return path.join(getVortexPath("documents"), "My Games");
+  const normDisc = path.normalize(discPath);
+  // Deduce steamapps desde la ruta de instalación y desde ~/.steam
+  const cands = [/*...*/];
+  // Para cada librería Steam, lee appmanifest_*.acf y busca el juego
+  for (const sd of [...new Set(cands)]) {
+    for (const mf of _fs.readdirSync(sd).filter(f => f.startsWith("appmanifest_"))) {
+      const mt = _fs.readFileSync(path.join(sd, mf), "utf8");
+      const im = mt.match(/"installdir"\s+"([^"]+)"/);
+      if (im && path.normalize(path.join(sd, "common", im[1])) === normDisc) {
+        const idm = mf.match(/appmanifest_(\d+)\.acf/);
+        if (idm) {
+          const mg = path.join(sd, "compatdata", idm[1], "pfx",
+                               "drive_c", "users", "steamuser", "Documents", "My Games");
+          if (_fs.existsSync(mg)) return mg;
+        }
+      }
+    }
+  }
+  return path.join(getVortexPath("documents"), "My Games"); // fallback
+})()
+```
+
+**Diferencia con Patch 6:** El Patch 6 fija el plugin `gamebryo-test-settings` (que
+tiene acceso al `gameMode` y puede usar una tabla de AppIDs). El Patch 7 fija
+`renderer.js` (que tiene acceso a `discovery.path` pero no a un AppID conocido, por
+lo que debe escanear los manifiestos). Ambos son necesarios.
+
+---
+
 ## Plugins bundled: binarios nativos Linux
 
 Los plugins de juego declaran ejecutables Windows en `executable()` y `requiredFiles`.
@@ -349,6 +402,7 @@ Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 | **2.0.1-1**   | Actualización a upstream 2.0.1; corrección de patterns de plugin patches (comillas simples → dobles en bundled plugins); 16/16 patches [OK]                                                                                                                                                  |
 | **1:2.0.1-2** | Patch `mygamesPath` en `gamebryo-test-settings`: en Linux busca el prefijo Proton correcto recorriendo todas las librerías Steam en lugar de usar `~/Documents`. Cubre Fallout 3/NV/4/4VR, Skyrim/SE/VR, Enderal/SE, Starfield y Oblivion. Epoch=1 añadido por cambio de esquema de versión. |
 | **1:2.0.1-3** | Binario Linux para XCOM 2 y WOTC: `bin/XCOM2` (port Feral) en lugar de `Binaries/Win64/XCom2.exe`. Daggerfall Unity cubierto por patches genéricos (`.exe`→`.x86_64`). A Hat in Time no requiere patch (Proton, `.exe` presente).                                                            |
+| **1:2.0.1-4** | Patch 7 — `iniFiles` en renderer.js: complementa el Patch 6 (gamebryo-test-settings) resolviendo `mygames` en el motor central. Usa appmanifest scan para detectar el AppID a partir de `discovery.path`; cubre automáticamente cualquier juego Gamebryo sin lista fija. |
 
 ---
 

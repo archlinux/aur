@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-3
+**Current release:** 1:2.0.1-4
 
 ---
 
@@ -331,6 +331,78 @@ Skyrim Special Edition, Skyrim VR, Enderal, Enderal Special Edition, Starfield, 
 
 ---
 
+### 7 — `iniFiles` in `renderer.js`: resolve `mygames` via Proton prefix (complements Patch 6)
+
+**Problem:** The `iniFiles()` function in `renderer.js` (Vortex core engine, not a plugin)
+computes the `My Games` folder independently of `mygamesPath()`:
+
+```js
+function iniFiles(gameMode, discovery) {
+    const mygames = path.join(getVortexPath("documents"), "My Games");
+    // ...
+    return iniFileList.map(f => template(f, { mygames, game: discovery.path }))
+}
+```
+
+This function doesn't have a known `gameMode`-to-AppID mapping — it only has
+`discovery.path` (the game install directory). It therefore cannot use the static
+AppID table approach from Patch 6. Without this fix, Vortex cannot read or write
+INI files (Fallout4.ini, SkyrimPrefs.ini, etc.) from its main UI on Linux.
+
+**Fix:** Replace the single `path.join(...)` with an IIFE that discovers the AppID
+by scanning `appmanifest_*.acf` files across all Steam libraries and matching
+`installdir` against `discovery.path`.
+
+```js
+const mygames = (() => {
+  if ("linux" !== process.platform)
+    return path.join(getVortexPath("documents"), "My Games");
+  const _fs = require("fs");
+  const discPath = discovery?.path;
+  if (!discPath) return path.join(getVortexPath("documents"), "My Games");
+  const normDisc = path.normalize(discPath);
+  const cands = [];
+  // If discovery.path is steamapps/common/<Game>, go up 2 levels
+  const mc = path.dirname(normDisc), ms = path.dirname(mc);
+  if (path.basename(mc) === "common") cands.push(ms);
+  cands.push(path.join(process.env.HOME, ".steam", "steam", "steamapps"));
+  // Add extra Steam library roots from libraryfolders.vdf
+  try {
+    const lf = path.join(process.env.HOME, ".steam", "steam", "steamapps", "libraryfolders.vdf");
+    for (const m of _fs.readFileSync(lf, "utf8").matchAll(/"path"\s+"([^"]+)"/g))
+      cands.push(path.join(m[1], "steamapps"));
+  } catch(e) {}
+  for (const sd of [...new Set(cands)]) {
+    try {
+      for (const mf of _fs.readdirSync(sd).filter(f => f.startsWith("appmanifest_") && f.endsWith(".acf"))) {
+        try {
+          const mt = _fs.readFileSync(path.join(sd, mf), "utf8");
+          const im = mt.match(/"installdir"\s+"([^"]+)"/);
+          if (im && path.normalize(path.join(sd, "common", im[1])) === normDisc) {
+            const idm = mf.match(/appmanifest_(\d+)\.acf/);
+            if (idm) {
+              const mg = path.join(sd, "compatdata", idm[1], "pfx",
+                                   "drive_c", "users", "steamuser", "Documents", "My Games");
+              if (_fs.existsSync(mg)) return mg;
+            }
+          }
+        } catch(e) {}
+      }
+    } catch(e) {}
+  }
+  return path.join(getVortexPath("documents"), "My Games"); // fallback
+})()
+```
+
+**Difference from Patch 6:** Patch 6 fixes `gamebryo-test-settings` (has `gameMode`, uses
+static AppID table). Patch 7 fixes `renderer.js`'s `iniFiles()` (has `discovery.path`,
+scans appmanifests dynamically). Both are needed for full INI support on Linux.
+
+**Source location:** `src/extensions/gamebryo_support/gameSupport.ts` → `iniFiles()`
+(minified into `renderer.js`)
+
+---
+
 ## User extension patch: Cyberpunk 2077 extension (runtime, not in PKGBUILD)
 
 **Problem:** The official Nexus Mods "Cyberpunk 2077" Vortex extension uses
@@ -429,6 +501,7 @@ makepkg -si
 | **2.0.1-1**   | Upstream update to v2.0.1; fix all plugin patch strings for upstream quote style change (single → double quotes, `requiredFiles` collapsed to single-line arrays); all 16 patches confirmed [OK]                                                                                                                                                                                                       |
 | **1:2.0.1-2** | New patch: `mygamesPath()` in `gamebryo-test-settings` now resolves to the Proton compatdata prefix on Linux instead of `~/Documents`. Searches all Steam libraries via `libraryfolders.vdf`. Covers Fallout 3/NV/4/4VR, Skyrim/SE/VR, Enderal/SE, Starfield, Oblivion. Epoch=1 introduced to fix version ordering after upstream switched to `epoch:pkgver-pkgrel` scheme.                            |
 | **1:2.0.1-3** | XCOM 2 native Linux binary patch: `game-xcom2` plugin now returns `bin/XCOM2` on Linux (Feral port) instead of `Binaries/Win64/XCom2.exe`. Applies to both base game and War of the Chosen. Daggerfall Unity covered by existing generic patches (`.exe`→`.x86_64` fallback). A Hat in Time requires no patch (Proton-only, `.exe` present in game dir). |
+| **1:2.0.1-4** | Patch 7 — `iniFiles` in `renderer.js`: complements the Patch 6 plugin fix by resolving `mygames` in the Vortex core engine. Dynamically discovers AppID by scanning `appmanifest_*.acf` against `discovery.path`; covers any Proton-managed Gamebryo game without a hardcoded AppID table. Reported by AUR user Garecrow. |
 
 ---
 

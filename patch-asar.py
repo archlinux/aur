@@ -50,7 +50,7 @@ def patch_asar_file(raw, header, dss, entry, patches, marker=None):
 
 # ── asar patch definitions ─────────────────────────────────────────────────
 
-PATCH_MARKER = "// vortex-linux-fix-v3\n"
+PATCH_MARKER = "// vortex-linux-fix-v4\n"
 
 RENDERER_PATCHES = [
     {
@@ -108,6 +108,51 @@ RENDERER_PATCHES = [
             ':function manualGameStoreSelection(api,correctedGamePath)'
             '{const gameStores=(0,getGame_1.getGameStores)();'
             'return GameStoreHelper_1.default.identifyStore(correctedGamePath).then(storeId=>{'
+        ),
+    },
+    {
+        "name": "iniFiles — resolve mygames via Proton prefix on Linux (Fallout4/Skyrim INI fix)",
+        "old": (
+            'const mygames=path.join((0,getVortexPath_1.default)("documents"),"My Games");'
+        ),
+        "new": (
+            'const mygames=(()=>{'
+            'if("linux"!==process.platform)return path.join((0,getVortexPath_1.default)("documents"),"My Games");'
+            'const _fs=require("fs");'
+            'const discPath=discovery?.path;'
+            'if(!discPath)return path.join((0,getVortexPath_1.default)("documents"),"My Games");'
+            'const normDisc=path.normalize(discPath);'
+            'const cands=[];'
+            'const mc=path.dirname(normDisc);'
+            'const ms=path.dirname(mc);'
+            'if(path.basename(mc)==="common")cands.push(ms);'
+            'const home=process.env.HOME;'
+            'cands.push(path.join(home,".steam","steam","steamapps"));'
+            'try{'
+            'const lf=path.join(home,".steam","steam","steamapps","libraryfolders.vdf");'
+            'const lfTxt=_fs.readFileSync(lf,"utf8");'
+            'for(const m of lfTxt.matchAll(/"path"\\s+"([^"]+)"/g))cands.push(path.join(m[1],"steamapps"));'
+            '}catch(e){}'
+            'for(const sd of[...new Set(cands)]){'
+            'try{'
+            'const mfs=_fs.readdirSync(sd).filter(f=>f.startsWith("appmanifest_")&&f.endsWith(".acf"));'
+            'for(const mf of mfs){'
+            'try{'
+            'const mt=_fs.readFileSync(path.join(sd,mf),"utf8");'
+            'const im=mt.match(/"installdir"\\s+"([^"]+)"/);'
+            'if(im&&path.normalize(path.join(sd,"common",im[1]))===normDisc){'
+            'const idm=mf.match(/appmanifest_(\\d+)\\.acf/);'
+            'if(idm){'
+            'const mg=path.join(sd,"compatdata",idm[1],"pfx","drive_c","users","steamuser","Documents","My Games");'
+            'if(_fs.existsSync(mg))return mg;'
+            '}'
+            '}'
+            '}catch(e){}'
+            '}'
+            '}catch(e){}'
+            '}'
+            'return path.join((0,getVortexPath_1.default)("documents"),"My Games");'
+            '})()'
         ),
     },
     {
