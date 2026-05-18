@@ -42,20 +42,23 @@ prepare() {
 build() {
     cd "${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    # incremental cache: paru keeps the clone dir between -S invocations
-    # (git fetch, not re-clone), so target/ survives. cargo's per-crate
-    # hashing rebuilds only what changed since the last install. typical
-    # reinstall with no source changes ~5s; with small source edits ~30s;
-    # full rebuild only when libtorrent / rustls / cxx update.
+    # cache target/ OUTSIDE paru's clone dir. paru runs `git clean -fdx`
+    # between -S invocations, which would wipe an in-tree target/ on every
+    # build. parking it under $HOME/.cache/cargo-builds/ lets cargo's
+    # incremental + dep cache survive reinstalls. typical second build
+    # with no source change <5s; with small edits <30s. first build still
+    # pays the full ~2min compile.
     #
-    # if cargo gets confused (rare now that LTO is disabled), recover with:
-    #   rm -rf ~/.cache/paru/clone/monsoon-git/src/monsoon-git/target
+    # one-time recovery if cargo's state ever gets corrupt:
+    #   rm -rf ~/.cache/cargo-builds/monsoon-git
+    export CARGO_TARGET_DIR="${HOME}/.cache/cargo-builds/monsoon-git"
+    mkdir -p "${CARGO_TARGET_DIR}"
     cargo build --frozen --release
 }
 
 package() {
     cd "${pkgname}"
-    install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${HOME}/.cache/cargo-builds/monsoon-git/release/${_pkgname}" \
+        "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
