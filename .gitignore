@@ -1,0 +1,66 @@
+# Editors #
+## Visual Studio Code ##
+### Workspace Folder ###
+.vscode/*
+
+### Exceptions ###
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/*.code-workspace
+!.vscode/*.code-snippets
+
+### Local History ###
+.history/
+
+### Built Visual Studio Code Extensions ###
+*.vsix
+
+## Eclipse ##
+.project
+.classpath
+.settings/
+
+## Vim ##
+### Swap ###
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]*.s[a-rt-v][a-z]
+[._]*.ss[a-gi-z]
+[._]sw[a-p]
+
+### Session ###
+Session.vim
+Sessionx.vim
+
+### Temporary Files ###
+.netrwhist
+*~
+
+### Auto-generated Tag Files ###
+tags
+
+### Undo Persistence ###
+[._]*.un~
+
+## Eclipse ##
+### Core ###
+.classpath
+.factorypath
+.project
+.settings/
+
+# Logs #
+*.log*
+
+# Environment #
+## General ##
+.envrc
+
+# Artifacts #
+src/
+pkg/
+**/*.zst
+**/*.gz
+CMakeLists*.txt
+*cmake.in
