@@ -17,9 +17,9 @@ depends=(
 makedepends=(
     'cmake'
     'qt6-tools'
+    'python-pillow'
 )
 optdepends=(
-    'python-pillow: regenerate assets'
     'foot: default terminal emulator'
     'dolphin: default file manager'
     'networkmanager: WiFi status/toggle in panel'
@@ -52,9 +52,11 @@ package() {
     # Workspace manager
     install -Dm755 src/pde-ws "$pkgdir/usr/bin/pde-ws"
 
-    # Generate fresh assets at build time
+    # Generate and install all assets
     python3 generate_assets.py
-    install -Dm644 assets/background.png "$pkgdir/usr/share/plexde/assets/background.png"
+    for f in assets/*.png; do
+        install -Dm644 "$f" "$pkgdir/usr/share/plexde/$f"
+    done
 
     # Install PlexDE theme for labwc
     install -Dm644 /dev/stdin \
