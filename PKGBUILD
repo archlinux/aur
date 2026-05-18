@@ -6,7 +6,10 @@ _gitpkgname=tree-sitter-markdown
 pkgver=0.5.3
 pkgrel=2
 pkgdesc='Python Bindings for tree-sitter-markdown'
-arch=('x86_64')
+arch=(
+      'x86_64'
+      'aarch64'
+)
 url='https://github.com/tree-sitter-grammars/tree-sitter-markdown'
 license=('MIT')
 depends=(
@@ -43,7 +46,7 @@ build() {
 }
 
 package() {
-	python -I -m installer --destdir="${pkgdir}" dist/*.whl
+	python -I -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
 	install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }

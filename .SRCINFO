@@ -4,6 +4,7 @@ pkgbase = python-tree-sitter-markdown
 	pkgrel = 2
 	url = https://github.com/tree-sitter-grammars/tree-sitter-markdown
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-tree-sitter
