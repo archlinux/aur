@@ -1,0 +1,16 @@
+pkgbase = python-aionowplaying
+	pkgdesc = A cross-platform Now Playing client
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://github.com/BruceZhang1993/aionowplaying
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python-dbus-fast
+	source = https://files.pythonhosted.org/packages/source/a/aionowplaying/aionowplaying-0.11.3.tar.gz
+	sha256sums = 6fd0a4a470b2f3b8602a0a1afcf2e09addf2bd485233ab8fe939146be69104a0
+
+pkgname = python-aionowplaying
