@@ -1,0 +1,2 @@
+#Type Name      ID GECOS                  Home directory       Shell
+u     codex-lb  -  "codex-lb load balancer" /var/lib/codex-lb   -

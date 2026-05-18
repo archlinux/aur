@@ -1,0 +1,13 @@
+# AUR working artifacts (must NOT be pushed to AUR repository)
+*.pkg.tar.*
+*.tar.gz
+*.tar.xz
+*.tar.zst
+src/
+pkg/
+codex_lb-*.tar.gz
+
+# Local agent / IDE state
+.sisyphus/
+.idea/
+.vscode/

@@ -1,0 +1,45 @@
+post_install() {
+  # The codex-lb system user and /var/lib/codex-lb state directory are
+  # provisioned by pacman hooks shipped with the systemd package, triggered
+  # automatically by the sysusers.d and tmpfiles.d snippets installed under
+  # /usr/lib. No manual invocation is required from this script.
+
+  cat <<'EOF'
+==> codex-lb installed.
+    1. Review /etc/codex-lb/codex-lb.env. Defaults bind to 127.0.0.1:2455;
+       set HOST=0.0.0.0 only if exposing the dashboard outside localhost.
+    2. Start the service:
+         sudo systemctl enable --now codex-lb.service
+    3. First-run dashboard bootstrap token is printed to the journal:
+         sudo journalctl -u codex-lb.service -e
+    4. Open the dashboard at http://127.0.0.1:2455 (or your bound host).
+
+    The data-at-rest encryption key is auto-generated on first start at
+    /var/lib/codex-lb/encryption.key. Back it up - losing it makes stored
+    OAuth tokens unrecoverable.
+
+    Database migrations run automatically on startup
+    (CODEX_LB_DATABASE_MIGRATE_ON_STARTUP=true). To run them manually:
+         sudo -u codex-lb codex-lb-db upgrade head
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> codex-lb upgraded. Restart the service to apply:
+         sudo systemctl restart codex-lb.service
+
+    Database schema migrations are applied automatically on the next start
+    when CODEX_LB_DATABASE_MIGRATE_ON_STARTUP=true. A pre-migration SQLite
+    backup is taken under /var/lib/codex-lb/ by default.
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+==> /var/lib/codex-lb and the codex-lb system user were left in place.
+    To purge persistent data:
+         sudo rm -rf /var/lib/codex-lb
+         sudo userdel codex-lb
+EOF
+}

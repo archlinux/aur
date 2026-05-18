@@ -1,0 +1,52 @@
+[Unit]
+Description=codex-lb: ChatGPT account load balancer and proxy
+Documentation=https://github.com/Soju06/codex-lb
+After=network.target
+
+[Service]
+Type=simple
+User=codex-lb
+Group=codex-lb
+EnvironmentFile=/etc/codex-lb/codex-lb.env
+ExecStart=/usr/bin/codex-lb
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+LimitNOFILE=16384
+
+# Persistent state: /var/lib/codex-lb (also provisioned via tmpfiles.d)
+StateDirectory=codex-lb
+StateDirectoryMode=0750
+WorkingDirectory=/var/lib/codex-lb
+
+# --- Hardening ---
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+ProcSubset=pid
+KeyringMode=private
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target
