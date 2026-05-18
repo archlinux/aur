@@ -207,6 +207,40 @@ PLUGIN_PATCHES = [
             ),
         ],
     },
+    # Bethesda games — redirect My Games INI path to Steam Proton prefix on Linux
+    # Vortex uses getVortexPath("documents") which resolves to ~/Documents on Linux,
+    # but Proton stores INIs inside the game's compatdata prefix instead.
+    {
+        "file": "gamebryo-test-settings/index.cjs",
+        "replacements": [
+            (
+                'function mygamesPath(gameMode) {\n'
+                '\treturn path.join(vortex_api.util.getVortexPath("documents"), "My Games", gameSupport.get(gameMode, "mygamesPath"));\n'
+                '}',
+                'function mygamesPath(gameMode) {\n'
+                '\tif (process.platform === \'linux\') {\n'
+                '\t\tconst _sids = {skyrim:72850,skyrimse:489830,skyrimvr:611670,enderal:933480,enderalspecialedition:976620,fallout3:22370,fallout4:377160,fallout4vr:611660,falloutnv:22380,starfield:1716740,oblivion:22330};\n'
+                '\t\tconst _aid = _sids[gameMode];\n'
+                '\t\tif (_aid !== undefined) {\n'
+                '\t\t\tconst _fs = require(\'fs\');\n'
+                '\t\t\tconst _os = require(\'os\');\n'
+                '\t\t\tconst _sr = path.join(_os.homedir(), \'.steam\', \'steam\');\n'
+                '\t\t\tconst _libs = [path.join(_sr, \'steamapps\')];\n'
+                '\t\t\ttry {\n'
+                '\t\t\t\tconst _vdf = _fs.readFileSync(path.join(_sr, \'steamapps\', \'libraryfolders.vdf\'), \'utf8\');\n'
+                '\t\t\t\tfor (const _m of _vdf.matchAll(/"path"\\s+"([^"]+)"/g)) _libs.push(path.join(_m[1], \'steamapps\'));\n'
+                '\t\t\t} catch(_e) {}\n'
+                '\t\t\tfor (const _lib of _libs) {\n'
+                '\t\t\t\tconst _dp = path.join(_lib, \'compatdata\', String(_aid), \'pfx\', \'drive_c\', \'users\', \'steamuser\', \'Documents\');\n'
+                '\t\t\t\tif (_fs.existsSync(_dp)) return path.join(_dp, \'My Games\', gameSupport.get(gameMode, "mygamesPath"));\n'
+                '\t\t\t}\n'
+                '\t\t}\n'
+                '\t}\n'
+                '\treturn path.join(vortex_api.util.getVortexPath("documents"), "My Games", gameSupport.get(gameMode, "mygamesPath"));\n'
+                '}',
+            ),
+        ],
+    },
 ]
 
 # ── apply plugin patches ───────────────────────────────────────────────────
