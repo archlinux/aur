@@ -25,8 +25,8 @@ package() {
    
    #rm -rf "${srcdir}"/*.zip
    install -Dm755 "$srcdir/LADXHD.Patcher.$pkgver.bin" "$pkgdir/usr/bin"
-   install -Dm755 "$srcdir/zeldaladxhd" "$pkgdir/usr/bin"
+   install -Dm755 "$srcdir/zeldaladxhd-$scriptver/zeldaladxhd" "$pkgdir/usr/bin"
    install -Dm755 "$srcdir/LADXHD.Patcher.$pkgver.bin" "$pkgdir/usr/bin"
-   cp -r "$srcdir/zeldaladxhd.svg" "$pkgdir/usr/share/pixmaps"
-   install -Dm755 "$srcdir/zeldaladxhd.desktop" "$pkgdir/usr/share/applications"
+   cp -r "$srcdir/zeldaladxhd-$scriptver/zeldaladxhd.svg" "$pkgdir/usr/share/pixmaps"
+   install -Dm755 "$srcdir/zeldaladxhd-$scriptver/zeldaladxhd.desktop" "$pkgdir/usr/share/applications"
 }
