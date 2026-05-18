@@ -1,0 +1,68 @@
+# Maintainer: Your Name <your.email@example.com>
+pkgname=openpilot-cabana
+pkgver=1.1.2
+pkgrel=2
+epoch=1
+pkgdesc="CAN Bus Visualizer & Analyzer - Qt-based graphical tool for viewing, analyzing, and reverse-engineering raw CAN bus data"
+arch=('x86_64')
+url="https://github.com/deanlee/openpilot-cabana"
+license=('MIT')
+depends=(
+  'capnproto'
+  'zeromq'
+  'libcurl'
+  'openssl'
+  'bzip2'
+  'ffmpeg'
+  'libxkbcommon'
+  'libxcb'
+  'libx11'
+  'libglvnd'
+  'ocl-icd'
+  'qt6-base'
+  'qt6-svg'
+  'qt6-tools'
+  'qt6-charts'
+  'qt6-serialbus'
+  'libusb'
+  'zstd'
+  'python'
+  'python-numpy'
+  'python-cython'
+  'scons'
+  'clang'
+)
+makedepends=('python-pip' 'git')
+provides=('cabana')
+conflicts=('openpilot-cabana-git')
+options=(!lto)
+
+# Use tagged release from GitHub
+source=("git+https://github.com/deanlee/openpilot-cabana.git#tag=v${pkgver}"
+         'archlinux.patch')
+sha256sums=('SKIP')
+
+prepare() {
+  cd "$_pkgname"
+  git submodule update --init --recursive
+
+  # Apply Arch Linux compatibility patches
+  patch -p1 -i "$srcdir/archlinux.patch"
+}
+
+build() {
+  cd "$_pkgname"
+  python -m venv build_venv
+  source build_venv/bin/activate
+  pip install scons numpy cython setuptools pycapnp
+  scons --cache-disable
+}
+
+package() {
+  cd "$_pkgname"
+  install -Dm755 cabana "$pkgdir/usr/bin/cabana"
+  install -dm755 "$pkgdir/usr/share/cabana"
+  cp -r data assets "$pkgdir/usr/share/cabana/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 cabana.desktop "$pkgdir/usr/share/applications/cabana.desktop"
+}
