@@ -36,6 +36,10 @@ pkgbase = openpilot-cabana
 	options = !lto
 	source = git+https://github.com/P6g9YHK6/openpilot-cabana-arch.git#tag=v1.1.2
 	source = archlinux.patch
+	source = cabana.desktop
+	source = cabana-icon.svg
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
