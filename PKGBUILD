@@ -1,6 +1,6 @@
 # Maintainer: duck <luis.tomas.nogueira@gmail.com>
 pkgname=duckwm-git
-pkgver=0.0.0.r64.g1e97d87
+pkgver=0.0.0.r69.g9cdefd2
 pkgrel=1
 pkgdesc="A graph-based tiling window manager with Lua configuration"
 arch=('x86_64')
@@ -37,6 +37,8 @@ package() {
     cd "$pkgname"
     install -Dm755 zig-out/bin/duckwm \
         "$pkgdir/usr/bin/duckwm"
+    install -Dm755 zig-out/bin/quack \
+        "$pkgdir/usr/bin/quack"
     install -Dm644 config/default.lua \
         "$pkgdir/etc/duckwm/config.lua"
     install -Dm644 dist/duckwm.desktop \
