@@ -1,33 +1,39 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: M. Damian "G'lek" Mulligan <glek at glektarssza dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=arc-icon-theme-full-git
-pkgver=1.0.r110.g6073d02
+pkgver=1.0.r114.gbfce0c2e83
 pkgrel=1
 pkgdesc='The complete Arc icon theme'
 arch=('any')
 url='https://github.com/rtlewis88/rtl88-Themes/tree/Arc-ICONS'
 license=('GPL3')
 makedepends=('git')
-optdepends=('arc-gtk-theme' 'arc-solid-gtk-theme')
-provides=("${pkgname%-*}" "${pkgname}" "arc-icon-theme")
-conflicts=("${pkgname%-*}" "${pkgname}" "arc-icon-theme")
+depends=('gtk-update-icon-cache' 'moka-icon-theme')
+optdepends=(
+    'arc-gtk-theme: GTK theming with transparency'
+    'arc-solid-gtk-theme: GTK theming without transparency'
+)
+source=('git+https://github.com/rtlewis88/rtl88-Themes.git#branch=Arc-ICONS')
+sha256sums=('SKIP')
+replaces=('arc-icon-theme')
+provides=('arc-icon-theme')
+conflicts=('arc-icon-theme')
 options=('!strip')
 
 pkgver() {
-  cd "${srcdir}/rtl88-Themes/Arc-ICONS"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/rtl88-Themes/Arc-ICONS" > /dev/null || exit 1
+    git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  echo 'Downloading icons ...'
-  if [[ -d rtl88-Themes ]]; then
-    rm -rf rtl88-Themes
-  fi
-  git clone --single-branch --branch "Arc-ICONS" "https://github.com/rtlewis88/rtl88-Themes"
+build() {
+    cd "${srcdir}/rtl88-Themes/Arc-ICONS" > /dev/null || exit 1
+    # -- GTK icon cache HATES filenames with spaces!
+    mv 'apps/128/Borderlands 2.png' 'apps/128/Borderlands2.png'
+    mv 'apps/128@2x/Borderlands 2.png' 'apps/128@2x/Borderlands2.png'
 }
 
 package() {
-  install -dm755 "${pkgdir}/usr/share/icons/Arc-ICONS"
-  cp -r "${srcdir}"/rtl88-Themes/Arc-ICONS/* "${pkgdir}/usr/share/icons/Arc-ICONS/"
+    install -dm755 "${pkgdir}/usr/share/icons/Arc-ICONS"
+    cp -r "${srcdir}"/rtl88-Themes/Arc-ICONS/* "${pkgdir}/usr/share/icons/Arc-ICONS/"
 }
-# vim:set ts=2 sw=2 et:

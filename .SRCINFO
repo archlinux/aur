@@ -1,20 +1,20 @@
 pkgbase = arc-icon-theme-full-git
 	pkgdesc = The complete Arc icon theme
-	pkgver = 1.0.r110.g6073d02
+	pkgver = 1.0.r114.gbfce0c2e83
 	pkgrel = 1
 	url = https://github.com/rtlewis88/rtl88-Themes/tree/Arc-ICONS
 	arch = any
 	license = GPL3
 	makedepends = git
-	optdepends = arc-gtk-theme
-	optdepends = arc-solid-gtk-theme
-	provides = arc-icon-theme-full
-	provides = arc-icon-theme-full-git
+	depends = gtk-update-icon-cache
+	depends = moka-icon-theme
+	optdepends = arc-gtk-theme: GTK theming with transparency
+	optdepends = arc-solid-gtk-theme: GTK theming without transparency
 	provides = arc-icon-theme
-	conflicts = arc-icon-theme-full
-	conflicts = arc-icon-theme-full-git
 	conflicts = arc-icon-theme
+	replaces = arc-icon-theme
 	options = !strip
+	source = git+https://github.com/rtlewis88/rtl88-Themes.git#branch=Arc-ICONS
+	sha256sums = SKIP
 
 pkgname = arc-icon-theme-full-git
-
