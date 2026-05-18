@@ -17,6 +17,7 @@ pkgbase = monsoon-git
 	optdepends = systemd: for the user service (monsoon service install)
 	provides = monsoon
 	conflicts = monsoon
+	options = !lto
 	source = monsoon-git::git+https://codeberg.org/5unekku/monsoon.git
 	sha256sums = SKIP
 

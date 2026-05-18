@@ -16,6 +16,11 @@ optdepends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+# disable LTO: makepkg's default `lto` option injects -Clinker-plugin-lto
+# into RUSTFLAGS, which breaks ffi to C/asm code (ring, our libtorrent
+# bridge). symptom is undefined symbols at final link for every C-derived
+# function. revisit if we ever ship a pure-rust dep tree.
+options=('!lto')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
