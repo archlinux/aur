@@ -1,7 +1,7 @@
 # Maintainer: nosduco <nosduco at gmail dot com>
 pkgname=streamcontroller
 pkgver=1.5.0beta14
-pkgrel=1
+pkgrel=2
 _pkgver=1.5.0-beta.14
 _reponame=StreamController-$_pkgver
 _pkgname=${pkgname}
