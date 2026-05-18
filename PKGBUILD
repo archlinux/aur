@@ -1,7 +1,7 @@
 # Maintainer: Pavle Barši <pakibarsipavle@gmail.com>
 
 pkgname=mnd
-pkgver=1.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A tool that can deauth multiple networks at once written in C++"
 arch=('x86_64')
