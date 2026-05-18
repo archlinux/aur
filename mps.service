@@ -21,8 +21,18 @@ RestartSec=5s
 
 # Hardening (relaxed for multi-user root daemon)
 NoNewPrivileges=false
-PrivateTmp=true
-ProtectSystem=full
+#
+# ProtectSystem= and PrivateTmp= are intentionally NOT set here.
+# Both directives bind-mount paths read-only (or with a private overlay) in the
+# daemon's mount namespace.  Because spawned user shells are children of this
+# daemon, they inherit that restricted namespace — making /usr, /etc, and /tmp
+# appear read-only inside every moshpit session even when the user has sudo.
+# A PTY-spawning daemon that provides SSH-like shell access cannot apply these
+# forms of per-process filesystem sandboxing.
+# Defense-in-depth: moshpits detects namespace restrictions at runtime and
+# automatically joins the host mount namespace before spawning each shell
+# (see namespace_escape in moshpits.toml, default: true).
+#
 ProtectHome=false
 ReadWritePaths=/var/log/moshpits /etc/moshpits/keys
 ProtectKernelTunables=true
