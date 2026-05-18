@@ -1,6 +1,6 @@
 # Maintainer: Thomas Butler <goliyth@gmail.com>
 pkgname=fnclaude-bin
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A claude CLI launcher with quality-of-life features (binary release)"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('fnclaude')
 conflicts=('fnclaude')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v$pkgver/fnclaude_Linux_x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v$pkgver/fnclaude_Linux_arm64.tar.gz")
-sha256sums_x86_64=('bbe2bf1462317bad5cd6722344033dfaa0854c4303e7f5d941e16e28b45b5dc9')
-sha256sums_aarch64=('b8101ef8925df2e920a9a7c3293d1089a8d19deb32c48640778d6d4a4fbcea2a')
+sha256sums_x86_64=('8b52358cb4d8d7e6ab65bfb0a9387fec10c2c914a4ff984791b8e40bd6c42dfe')
+sha256sums_aarch64=('35a23baca9cae8524d5e410f3c5ea715712e27a0d13590dd83c3d938ecdf65bc')
 
 package() {
     install -Dm755 fnclaude "$pkgdir/usr/bin/fnclaude"
@@ -25,4 +25,11 @@ package() {
     # to see what claude is being told for a given session type.
     install -dm755 "$pkgdir/usr/share/fnclaude/prompts"
     install -Dm644 prompts/*.md "$pkgdir/usr/share/fnclaude/prompts/"
+
+    # Vendor-namespaced host-aliases LUT for the {host-short} placeholder.
+    # Shared with the claude-code-worktree-paths plugin which reads this
+    # same file (npm-installed plugins can't write under /usr/share/, so
+    # fnclaude-bin owns the canonical system-level copy). User-level
+    # override lives at ~/.local/share/fnrhombus/host-aliases.json.
+    install -Dm644 host-aliases.json "$pkgdir/usr/share/fnrhombus/host-aliases.json"
 }
