@@ -1,6 +1,6 @@
 pkgbase = midi-daemon
 	pkgdesc = A Lua-scriptable MIDI routing daemon
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/rickprice/midi-daemon
 	install = midi-daemon.install
@@ -10,7 +10,7 @@ pkgbase = midi-daemon
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
-	source = midi-daemon-0.3.6.tar.gz::https://github.com/rickprice/midi-daemon/archive/refs/tags/v0.3.6.tar.gz
-	sha256sums = f766aa4d70144b804f51bca0c55cee83955b3f6a152f1bb165898a1f2ec3962a
+	source = midi-daemon-0.3.7.tar.gz::https://github.com/rickprice/midi-daemon/archive/refs/tags/v0.3.7.tar.gz
+	sha256sums = e58d0ae54918cdb948163930074b0faf7187e6a47b459c9802bb910405ddc695
 
 pkgname = midi-daemon
