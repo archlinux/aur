@@ -1,0 +1,5 @@
+[ee-bin]
+source = "github"
+github = "ffimnsr/ee"
+use_latest_release = true
+prefix = "v"
