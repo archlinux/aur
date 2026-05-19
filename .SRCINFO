@@ -24,6 +24,6 @@ pkgbase = gitmun-bin
   source = LICENSE.gitmun
   source_x86_64 = https://download.opensuse.org/repositories/home:/cst8t:/gitmun/xUbuntu_26.04/amd64/gitmun_0.5.4-1_amd64.deb
   sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-  sha256sums_x86_64 = 1dad779b53d28ff55498c7ec5552a038b2f3701c9e0ab18c1158eec4f53d6a56
+  sha256sums_x86_64 = 5ab367c0c548a0844ec351d93a4a9782b7929626bee6863a3dbc9fed66c3f3a8
 
 pkgname = gitmun-bin
