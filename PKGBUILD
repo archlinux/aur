@@ -4,7 +4,7 @@
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
 pkgver=b9222
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -22,8 +22,8 @@ depends=(
 makedepends=(
   cmake
   git
-  # nodejs
-  # npm
+  nodejs
+  npm
   rocm-hip-sdk
 )
 optdepends=(
@@ -60,10 +60,10 @@ prepare() {
 }
 
 build() {
-  # pushd "${_pkgname}/tools/ui"
-  # npm ci
-  # npm run build
-  # popd
+  pushd "${_pkgname}/tools/ui"
+  npm ci
+  npm run build
+  popd
 
   if [[ -z "${ROCM_PATH}" ]]; then
     source /etc/profile
@@ -81,7 +81,7 @@ build() {
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_BUILD_TESTS=OFF
     -DLLAMA_USE_SYSTEM_GGML=OFF
-    # -DLLAMA_BUILD_WEBUI=ON
+    -DLLAMA_BUILD_WEBUI=ON
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
     -DGGML_BUILD_EXAMPLES=OFF
