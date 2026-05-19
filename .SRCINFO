@@ -16,6 +16,7 @@ pkgbase = modulejail-git
 	optdepends = util-linux: optional syslog logging of blocked module loads
 	provides = modulejail
 	conflicts = modulejail
+	backup = etc/modulejail/modulejail-aur.conf
 	source = git+https://github.com/jnuyens/modulejail.git
 	source = whitelist.conf.example
 	source = modulejail-aur.conf

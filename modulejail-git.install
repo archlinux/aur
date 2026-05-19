@@ -23,6 +23,8 @@ post_upgrade() {
   fi
 
   if [ "$AUTO_UPDATE" = "true" ]; then
+    echo ""
+    echo "Auto-updating modulejail blacklist..."
     eval modulejail "$ARGS"
   else
     echo ""

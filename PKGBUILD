@@ -13,13 +13,12 @@ optdepends=('curl: optional post-run update check'
             'util-linux: optional syslog logging of blocked module loads')
 provides=('modulejail')
 conflicts=('modulejail')
+backup=('etc/modulejail/modulejail-aur.conf')
 install="modulejail-git.install"
 source=("git+https://github.com/jnuyens/modulejail.git"
-        "whitelist.conf.example"
-        "modulejail-aur.conf")
+        "whitelist.conf.example")
 sha256sums=('SKIP'
-            'fdc60f6603f0fc932d1dfc36469c9e85e8c3ce3612eb3aaa6c747381213e6e24'
-            '01c2cb523ecac01d339d24845d44af46f5a69382b4dc2cb9a6e9b1404a9019e9')
+            'fdc60f6603f0fc932d1dfc36469c9e85e8c3ce3612eb3aaa6c747381213e6e24')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -48,6 +47,6 @@ package() {
   install -Dm 0644 "${srcdir}/whitelist.conf.example" \
      "${pkgdir}/etc/modulejail/whitelist.conf.example"
 
-  install -Dm 0644 "${srcdir}/modulejail-aur.conf" \
+  install -Dm 0644 "${startdir}/modulejail-aur.conf" \
      "${pkgdir}/etc/modulejail/modulejail-aur.conf"
 }
