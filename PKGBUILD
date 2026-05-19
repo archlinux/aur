@@ -1,5 +1,5 @@
 pkgname=susshi
-pkgver=0.15.5
+pkgver=0.15.6
 pkgrel=1
 pkgdesc='modern, terminal-based SSH connection manager'
 url='https://github.com/yatoub/susshi'
@@ -8,7 +8,7 @@ makedepends=('cargo')
 depends=('openssh')
 arch=('i686' 'x86_64' 'aarch64' 'armv6h' 'armv7h')
 source=("https://github.com/yatoub/susshi/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=(dcbd2ac57f952c478c60a3d6b302653f42abb810b90f186eb3e9065c80823af81af254ff6319ee720d10afd1acc29ac4cc2c93537fae4a5b9fa4e6ce4d93ee92)
+b2sums=(af01a4034280cae5f8b1d547f08486698d22ed10e7031697da9e2b5b2baa904d3ddca47ce4afc8f0092e482c2392bd73925b205974f37f4dbfc3101c7e33bdbc)
 
 prepare() {
     cd $pkgname-$pkgver
