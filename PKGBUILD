@@ -1,6 +1,6 @@
 # Maintainer: fecet <xiezej@gmail.com>
 pkgname=asus-proart-px13-quirks
-pkgver=0.20260517
+pkgver=0.20260519
 pkgrel=1
 pkgdesc="Hardware quirks for ASUS ProArt PX13 (HN7306EA): TAS2783 audio configs + MT7925 btusb autosuspend disable"
 arch=('any')
@@ -11,6 +11,8 @@ optdepends=(
     'sof-firmware: SOF firmware for AMD ACP'
     'alsa-utils: alsactl store to persist channel assignments'
     'bluez: enables the BT stack the btusb quirk applies to'
+    'icoutils: wrestool, required by extract-firmware.sh to unpack the ASUS installer'
+    'p7zip: 7z, required by extract-firmware.sh to unpack the nested firmware archive'
 )
 replaces=('px13-audio-fix' 'px13-quirks' 'proart-px13')
 conflicts=('px13-audio-fix' 'px13-quirks' 'proart-px13')
@@ -24,6 +26,7 @@ source=(
     'btusb-no-autosuspend.conf'
     "${pkgname}.hook"
     'patch-ucm.sh'
+    'extract-firmware.sh'
 )
 sha256sums=('8704e2350ece61e4fbfc6fab0e1555e9dadc4e50509f727c704cae137de7e372'
             '0e553ee4e084c53fa143622c1664d39398736c7d29f7377ecbe885907a2a43c8'
@@ -32,7 +35,8 @@ sha256sums=('8704e2350ece61e4fbfc6fab0e1555e9dadc4e50509f727c704cae137de7e372'
             '2a68adee036530d1fa9e59fba0268d414c31f7c5d4b2ea1e93a11ceb469f4642'
             '289f0457bebb51a1a6e2f6a555ebea829b484be837361afc71f7a81fee1e323c'
             'fe26989f6f0c6a42677dc5e64ae3cff3d1563b0024d9ae0e430a1164823000b2'
-            'fbc718da474245fcbb1393a4f9d4ad17fb6a4e545cb40435a3ae8538e5bb5511')
+            'fbc718da474245fcbb1393a4f9d4ad17fb6a4e545cb40435a3ae8538e5bb5511'
+            '99f05f6c6567d56bbd0aebd6219678038b76356c0988fcbff9455acea19db4b6')
 
 package() {
     # ALSA UCM configs (system-wide)
@@ -58,4 +62,9 @@ package() {
         "${pkgdir}/usr/share/libalpm/hooks/95-${pkgname}.hook"
     install -Dm755 "${srcdir}/patch-ucm.sh" \
         "${pkgdir}/usr/share/${pkgname}/patch-ucm.sh"
+
+    # TAS2783 firmware extractor (TI/ASUS blobs are not shipped; user runs this
+    # against the ASUS Windows driver installer they downloaded themselves)
+    install -Dm755 "${srcdir}/extract-firmware.sh" \
+        "${pkgdir}/usr/share/${pkgname}/extract-firmware.sh"
 }
