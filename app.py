@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 import sys
-import os
 import asyncio
 import gi
-
-# Ensure the library path is in sys.path
-sys.path.insert(0, "/usr/lib/fastflowlm-gtk")
-
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 gi.require_version("Soup", "3.0")

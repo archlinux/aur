@@ -1,21 +1,45 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Marley <marley@example.com>
 pkgname=fastflowlm-gtk
-pkgver=2.5.0
+pkgver=2.5
 pkgrel=1
-pkgdesc="A minimalist desktop interface for FastFlowLM"
-arch=('x86_64')
+pkgdesc="A minimalist, modern desktop interface for FastFlowLM, built with GTK 4 and Libadwaita."
+arch=('any')
 url="https://github.com/marleylinux/FastFlowLM-GTK"
 license=('MIT')
-depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'libsoup3' 'gtksourceview5' 'fastflowlm')
-source=("$pkgname::git+https://github.com/marleylinux/FastFlowLM-GTK.git")
-sha256sums=('SKIP')
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'libsoup3' 'gtksourceview5' 'python-psutil' 'fastflowlm')
+source=("fastflowlm-gtk.desktop"
+        "flm-gtk.png"
+        "app.py"
+        "main.py"
+        "flm.py"
+        "utils.py")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -Dm755 app.py "$pkgdir/usr/bin/flm-gtk"
-    install -Dm644 flm-gtk.png "$pkgdir/usr/share/pixmaps/flm-gtk.png"
-    install -Dm644 flm-gtk.desktop "$pkgdir/usr/share/applications/flm-gtk.desktop"
-    
-    install -d "$pkgdir/usr/lib/fastflowlm-gtk"
-    install -m644 main.py utils.py flm.py "$pkgdir/usr/lib/fastflowlm-gtk/"
+  # Install Python files
+  install -d "$pkgdir/usr/share/fastflowlm-gtk"
+  install -m644 "$srcdir/app.py" "$pkgdir/usr/share/fastflowlm-gtk/"
+  install -m644 "$srcdir/main.py" "$pkgdir/usr/share/fastflowlm-gtk/"
+  install -m644 "$srcdir/flm.py" "$pkgdir/usr/share/fastflowlm-gtk/"
+  install -m644 "$srcdir/utils.py" "$pkgdir/usr/share/fastflowlm-gtk/"
+
+  # Install Icon
+  install -Dm644 "$srcdir/flm-gtk.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/fastflowlm-gtk.png"
+
+  # Install Desktop file
+  install -Dm644 "$srcdir/fastflowlm-gtk.desktop" "$pkgdir/usr/share/applications/fastflowlm-gtk.desktop"
+
+  # Create executable wrapper
+  install -d "$pkgdir/usr/bin"
+  cat <<EOF > "$pkgdir/usr/bin/fastflowlm-gtk"
+#!/bin/sh
+export PYTHONPATH="/usr/share/fastflowlm-gtk:\$PYTHONPATH"
+exec python /usr/share/fastflowlm-gtk/app.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/fastflowlm-gtk"
 }
