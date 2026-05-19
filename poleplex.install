@@ -1,0 +1,18 @@
+post_install() {
+  echo ":: PolePlex installed successfully!"
+  echo "   Run 'poleplex --help' to get started."
+  echo "   Example: poleplex firefox-developer"
+}
+
+post_upgrade() {
+  echo ":: PolePlex has been updated."
+}
+
+pre_remove() {
+  echo ":: Removing PolePlex..."
+}
+
+post_remove() {
+  echo ":: PolePlex has been removed."
+  echo "   Cache directory (~/.cache/poleplex) and config (~/.config/poleplex) may remain."
+}
