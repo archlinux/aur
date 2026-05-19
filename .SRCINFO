@@ -1,6 +1,6 @@
 pkgbase = stanmath
 	pkgdesc = reverse-mode automatic differentiation library
-	pkgver = 5.2.0
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/stan-dev/math
 	arch = any
@@ -9,10 +9,8 @@ pkgbase = stanmath
 	makedepends = doxygen
 	makedepends = patch
 	options = !strip
-	source = stanmath-5.2.0.tar.gz::https://github.com/stan-dev/math/archive/refs/tags/v5.2.0.tar.gz
-	source = fix-typo.patch::https://github.com/sukanka/math/commit/225deaaba1d.patch
-	sha256sums = ac34cfab03ea221a757cbc8371fbb24525ed60ee1c8570d73a9255317222df2b
-	sha256sums = 30f55c77490ed99b454714678e2284e2c5e474271ae66391487b62ec7d8c89c1
+	source = stanmath-5.3.0.tar.gz::https://github.com/stan-dev/math/archive/refs/tags/v5.3.0.tar.gz
+	sha256sums = 6ad05c37e7df8add7d0089489249ddaadb57e30cead8cdd1323f4e1283c4fe64
 
 pkgname = stanmath
 
