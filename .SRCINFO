@@ -1,0 +1,21 @@
+pkgbase = vapormove
+	pkgdesc = Vaporwave motion trail effects for Hyprland and X11
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MURDERRA/Vapormove
+	arch = x86_64
+	makedepends = go
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = wayland
+	makedepends = wayland-protocols
+	makedepends = git
+	depends = mesa
+	depends = libxcomposite
+	depends = libxfixes
+	depends = xdotool
+	optdepends = wlr-protocols: для генерации Wayland bindings
+	source = vapormove-0.1.0.tar.gz::https://github.com/MURDERRA/Vapormove/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = vapormove
