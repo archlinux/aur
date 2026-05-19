@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 
 pkgname=koboldcpp-hipblas-portable
-pkgver=1.113
+pkgver=1.113.1
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM, portable build for old CPUs)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
     'koboldcpp.png'
 )
 sha256sums=(
-    '847249c6c20ceeee13e2e1e0fde40308d0958b1913ae9b0be66e6de733d2c48b'
+    'ebaf7cf0fee821fa8c1171dab665bcdd3b6192997e7c560bbb4078eda90ec12e'
     '2f2f45a745b30392d01472c1f5e68f82e5e7d7353a4615cf94b9f0cd4fd0505b'
     'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
