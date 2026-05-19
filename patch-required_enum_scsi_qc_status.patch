@@ -1,0 +1,13 @@
+diff --git a/rts51x_scsi.h b/rts51x_scsi.h
+index c82d080..9846156 100644
+--- a/rts51x_scsi.h
++++ b/rts51x_scsi.h
+@@ -154,7 +154,7 @@ int slave_alloc(struct scsi_device *sdev);
+ int slave_configure(struct scsi_device *sdev);
+ #endif
+ 
+-int queuecommand(struct Scsi_Host *, struct scsi_cmnd *);
++enum scsi_qc_status queuecommand(struct Scsi_Host *, struct scsi_cmnd *);
+ int command_abort(struct scsi_cmnd *srb);
+ int bus_reset(struct scsi_cmnd *srb);
+ 
