@@ -22,16 +22,16 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}"
     
     # 1. Salin seluruh isi folder aplikasi ke /opt/
-    cp -r "${srcdir}/Antigravity-x64/"* "${pkgdir}/opt/${pkgname}/"
+    cp -r "${srcdir}/Antigravity IDE/"* "${pkgdir}/opt/${pkgname}/"
     
     # 2. Buat symlink agar bisa dipanggil lewat terminal
     install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/antigravity" "${pkgdir}/usr/bin/antigravity-ide"
+    ln -s "/opt/${pkgname}/antigravity-ide" "${pkgdir}/usr/bin/antigravity-ide"
     
     # 3. Install file .desktop ke menu aplikasi sistem
     install -Dm644 "${srcdir}/antigravity.desktop" "${pkgdir}/usr/share/applications/antigravity-ide.desktop"
 
     # 4. === INI YANG BARU ===
     # Ambil code.png dari dalam folder ekstrak, dan taruh di folder ikon sistem dengan nama antigravity-ide.png
-    install -Dm644 "${srcdir}/Antigravity-x64/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/antigravity-ide.png"
+    install -Dm644 "${srcdir}/Antigravity IDE/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/antigravity-ide.png"
 }
