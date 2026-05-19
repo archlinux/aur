@@ -52,10 +52,10 @@ build() {
   cd "${srcdir}/${_pkgname}"
   export CARGO_HOME="${srcdir}/cargo"
   if command -v rustup > /dev/null 2>&1; then
-    RUSTFLAGS+="-C target-cpu=native" rustup run stable \
+    RUSTFLAGS+=" -C target-cpu=native" rustup run stable \
       cargo build --release
   elif rustc --version | grep -q nightly; then
-    RUSTFLAGS+="-C target-cpu=native" \
+    RUSTFLAGS+=" -C target-cpu=native" \
       cargo build --release
   else
     cargo build --release
