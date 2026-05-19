@@ -1,6 +1,6 @@
 pkgbase = docker-sbx
 	pkgdesc = Docker sandboxes - run AI coding agents in isolated microVM sandboxes
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://docs.docker.com/ai/sandboxes/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = docker-sbx
 	provides = sbx
 	conflicts = sbx
 	options = !debug
-	source = https://github.com/docker/sbx-releases/releases/download/v0.29.0/DockerSandboxes-linux.tar.gz
-	sha256sums = 9b078b4f8f43f77b7949d95d3d28fdc183d35aef3faee71ede80165ff1a8b73d
+	source = https://github.com/docker/sbx-releases/releases/download/v0.30.0/DockerSandboxes-linux.tar.gz
+	sha256sums = a700de257528cf026442ea3b852f644b43f898addf6a2ed8431e1357bd1b3d78
 
 pkgname = docker-sbx

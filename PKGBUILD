@@ -1,6 +1,6 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
 source=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux.tar.gz")
-sha256sums=('9b078b4f8f43f77b7949d95d3d28fdc183d35aef3faee71ede80165ff1a8b73d')
+sha256sums=('a700de257528cf026442ea3b852f644b43f898addf6a2ed8431e1357bd1b3d78')
 
 package() {
     install -Dm755 "$srcdir/docker-sbx/sbx" \
@@ -28,8 +28,8 @@ package() {
         "$pkgdir/usr/libexec/nerdbox-kernel-x86_64"
     install -Dm644 "$srcdir/docker-sbx/nerdbox-initrd-x86_64" \
         "$pkgdir/usr/libexec/nerdbox-initrd-x86_64"
-    install -Dm755 "$srcdir/docker-sbx/libkrun.so" \
-        "$pkgdir/usr/libexec/lib/libkrun.so"
+    install -Dm755 "$srcdir/docker-sbx/libsailor.so" \
+        "$pkgdir/usr/libexec/lib/libsailor.so"
 
     install -Dm644 "$srcdir/docker-sbx/apparmor-profile" \
         "$pkgdir/etc/apparmor.d/docker-sbx-nerdbox-shim"
