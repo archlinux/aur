@@ -8,7 +8,7 @@ url="https://blog.zain-khan.dev"
 license=('GPL3')
 
 # Core protocol scripts are now designated as true system package prerequisites
-depends=('qt6-base' 'hicolor-icon-theme' 'pwss-core' 'pwss-fetch-https')
+depends=('qt6-base' 'hicolor-icon-theme' 'pwss-core-git' 'pwss-fetch-https-git')
 makedepends=('cmake' 'base-devel')
 provides=('pwss-browser-qt6')
 conflicts=('pwss-browser-qt6')
