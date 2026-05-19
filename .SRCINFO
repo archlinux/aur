@@ -1,6 +1,6 @@
 pkgbase = rustnet-git
 	pkgdesc = Real-time network monitoring TUI with process identification via eBPF and deep packet inspection
-	pkgver = r223.df38754
+	pkgver = r503.db32814
 	pkgrel = 1
 	url = https://github.com/domcyrus/rustnet
 	install = rustnet.install

@@ -3,7 +3,7 @@
 pkgname=rustnet-git
 _pkgname=${pkgname%-git}
 _reponame=${pkgname%-git}
-pkgver=r223.df38754
+pkgver=r503.db32814
 pkgrel=1
 pkgdesc="Real-time network monitoring TUI with process identification via eBPF and deep packet inspection"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -50,8 +50,8 @@ build() {
 
     export CARGO_PROFILE_RELEASE_LTO=thin
     export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-    # Use ebpf for better performance
-    CFLAGS='-flto=auto' cargo build --frozen --release --features ebpf
+
+    cargo build --frozen --release --all-features
 }
 
 check() {
@@ -67,9 +67,10 @@ check() {
     export RUSTFLAGS="-Clinker=$CC -Clink-arg=-fuse-ld=${_LD_LLD}"
     export RUSTDOCFLAGS="$RUSTFLAGS"
 
-    export CARGO_PROFILE_RELEASE_LTO=thin
+    export CARGO_PROFILE_RELEASE_LTO=true
     export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-    CFLAGS='-flto=auto' cargo test --frozen --release --features ebpf
+
+    cargo test --frozen --release --all-features
 }
 
 package() {
