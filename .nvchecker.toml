@@ -1,0 +1,5 @@
+[concord-bin]
+source = "github"
+github = "chojs23/concord"
+use_latest_release = true
+prefix = "v"
