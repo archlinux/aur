@@ -1,6 +1,6 @@
 pkgbase = luffy-bin
 	pkgdesc = Watch movies and series from your commandline
-	pkgver = 1.1.5
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/DemonKingSwarn/luffy
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = luffy-bin
 	optdepends = mpv
 	optdepends = vlc
 	provides = luffy
-	source_x86_64 = https://github.com/DemonKingSwarn/luffy/releases/download/v1.1.5/luffy-linux-amd64
+	source_x86_64 = https://github.com/DemonKingSwarn/luffy/releases/download/v1.2.0/luffy-linux-amd64
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/DemonKingSwarn/luffy/releases/download/v1.1.5/luffy-linux-arm64
+	source_aarch64 = https://github.com/DemonKingSwarn/luffy/releases/download/v1.2.0/luffy-linux-arm64
 	sha256sums_aarch64 = SKIP
 
 pkgname = luffy-bin
