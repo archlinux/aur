@@ -1,0 +1,14 @@
+pkgbase = ligmashark-git
+	pkgdesc = Go-based packet capture tool with optional AI analysis (git version)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/mayshecry/ligmashark
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = libpcap
+	source = git+https://github.com/mayshecry/ligmashark.git
+	sha256sums = SKIP
+
+pkgname = ligmashark-git
