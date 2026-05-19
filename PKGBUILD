@@ -1,4 +1,4 @@
-# Maintainer: Adam Bambuch <adam.bambuch2@gmail.com>
+# Maintainer: Adam Bambuch <adam@bambuch.cz>
 pkgname=modulejail-git
 pkgver=r59.1.2.3.0.gdf4f186
 pkgrel=1
@@ -6,6 +6,7 @@ pkgdesc="Shrink a Linux host's kernel-module attack surface via modprobe.d black
 arch=(any)
 license=('GPL-3.0-only')
 url="https://github.com/jnuyens/modulejail"
+makedepends=('git')
 depends=('coreutils' 'findutils' 'gawk')
 optdepends=('curl: optional post-run update check'
             'wget: optional post-run update check'

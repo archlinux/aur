@@ -6,6 +6,7 @@ pkgbase = modulejail-git
 	install = usage.install
 	arch = any
 	license = GPL-3.0-only
+	makedepends = git
 	depends = coreutils
 	depends = findutils
 	depends = gawk
