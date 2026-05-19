@@ -1,0 +1,10 @@
+# /etc/modulejail/whitelist.conf
+# One module per line. Blank lines and '#' comments are allowed.
+# Names may be written in either dash or underscore form ("nft-compat"
+# or "nft_compat") — the pipeline normalises - to _.
+# The file mode MUST NOT be group-writable or world-writable
+# (ModuleJail will refuse to run otherwise).
+
+# nft_compat
+# xt_owner
+# zfs

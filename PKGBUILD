@@ -14,8 +14,10 @@ optdepends=('curl: optional post-run update check'
 provides=('modulejail')
 conflicts=('modulejail')
 install="usage.install"
-source=("git+https://github.com/jnuyens/modulejail.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/jnuyens/modulejail.git"
+        "whitelist.conf.example")
+sha256sums=('SKIP'
+            'fdc60f6603f0fc932d1dfc36469c9e85e8c3ce3612eb3aaa6c747381213e6e24')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -40,4 +42,7 @@ package() {
      "${pkgdir}/usr/share/doc/modulejail/README.md"
   install -Dm 0644 LICENSE \
      "${pkgdir}/usr/share/doc/modulejail/LICENSE"
+
+  install -Dm 0644 "${srcdir}/whitelist.conf.example" \
+     "${pkgdir}/etc/modulejail/whitelist.conf.example"
 }

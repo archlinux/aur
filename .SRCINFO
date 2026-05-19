@@ -17,6 +17,8 @@ pkgbase = modulejail-git
 	provides = modulejail
 	conflicts = modulejail
 	source = git+https://github.com/jnuyens/modulejail.git
+	source = whitelist.conf.example
 	sha256sums = SKIP
+	sha256sums = fdc60f6603f0fc932d1dfc36469c9e85e8c3ce3612eb3aaa6c747381213e6e24
 
 pkgname = modulejail-git
