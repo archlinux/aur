@@ -1,7 +1,7 @@
 # Maintainer: Icaro Motta <icarogomesmotta@proton.me>
 pkgname=autoanimedownloader-bin
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="An app that automatically downloads your anime from Anilist"
 arch=('x86_64' 'aarch64')
 url="https://github.com/icarosuper/AutoAnimeDownloader"
@@ -11,8 +11,8 @@ provides=('autoanimedownloader')
 conflicts=('autoanimedownloader-git')
 source_x86_64=("https://github.com/icarosuper/AutoAnimeDownloader/releases/download/v${pkgver}/AutoAnimeDownloader_Linux_x86_v${pkgver}.zip")
 source_aarch64=("https://github.com/icarosuper/AutoAnimeDownloader/releases/download/v${pkgver}/AutoAnimeDownloader_Linux_Arm64_v${pkgver}.zip")
-sha256sums_x86_64=('e400ae48c290b24d4e6939a1951029f77f7dd58dd2137f2d1d1629c905f2e53c')
-sha256sums_aarch64=('f1b8b0b27c0a893c8dcc267587bf774e1939869b0c1e679b1c4a91a514cafc43')
+sha256sums_x86_64=('acaa4839af399689ba4a63bce4b1e9b33b7b605872ad80093043cba300cdd0f2')
+sha256sums_aarch64=('71fb14f50b120e6ea357fdb43c8e2026339af83b1cf5066dcad5d518eb29eebd')
 
 package() {
   if [[ "${CARCH}" == "aarch64" ]]; then
