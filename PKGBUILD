@@ -1,6 +1,6 @@
 # Maintainer: soymadip_1
 pkgname=git-credential-keepassxc-bin
-pkgver=0.14.1
+pkgver=0.14.3
 pkgrel=2
 pkgdesc="Helper that allows Git (and shell scripts) to use KeePassXC as credential store (prebuilt binary)"
 arch=('x86_64')
