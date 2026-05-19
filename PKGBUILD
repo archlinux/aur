@@ -1,6 +1,6 @@
 # Maintainer: eDEX-DE Contributors <https://github.com/eDEX-OS/eDEX-DE>
 pkgname=edex-de
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Sci-fi themed Wayland Desktop Environment built on Hyprland"
 arch=('x86_64' 'aarch64')
@@ -58,7 +58,7 @@ conflicts=('edex-de-git')
 
 # Source: release CI uploads versioned source tarballs.
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f12ac7b367e67a4a26c6c9c44d23e7e9540741434c32be9984c867c37034f716')
+sha256sums=('bd8949b6d50ebbd62662edaef62aebfc32dcbc0b534cf1fcd8cad26d0895ef14')
 
 prepare() {
     cd "eDEX-DE-${pkgver}"
