@@ -1,7 +1,7 @@
 # Maintainer: methamphetaminelab <https://github.com/methamphetaminelab>
 pkgname=mpddiscordrpc
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Display MPD currently playing track in Discord Rich Presence"
 arch=("any")
 url="https://github.com/methamphetaminelab/MPDDiscordRPC"

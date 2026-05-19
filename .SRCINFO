@@ -1,7 +1,7 @@
 pkgbase = mpddiscordrpc
 	pkgdesc = Display MPD currently playing track in Discord Rich Presence
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/methamphetaminelab/MPDDiscordRPC
 	arch = any
 	license = MIT
