@@ -7,8 +7,8 @@ _pypi_package='textfsm'
 
 pkgname="python-${_pypi_package}"
 pkgver="${_upstreamver}"
-pkgrel=1
-pkgdesc="An easy encapsulation for paramiko library which contains only common operations"
+pkgrel=2
+pkgdesc="Python module which implements a template based state machine for parsing semi-formatted text"
 arch=('any')
 url='https://github.com/google/textfsm'
 license=('Apache-2.0')

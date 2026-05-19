@@ -1,7 +1,7 @@
 pkgbase = python-textfsm
-	pkgdesc = An easy encapsulation for paramiko library which contains only common operations
+	pkgdesc = Python module which implements a template based state machine for parsing semi-formatted text
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/textfsm
 	arch = any
 	license = Apache-2.0
