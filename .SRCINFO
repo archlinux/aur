@@ -1,0 +1,19 @@
+pkgbase = pwss-browser-qt6-git
+	pkgdesc = Native Qt6 GUI frontend for the PWSS sovereign web toolchain
+	pkgver = 1.0.r0.g20260520
+	pkgrel = 1
+	url = https://blog.zain-khan.dev
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = base-devel
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	depends = pwss-core
+	depends = pwss-fetch-https
+	provides = pwss-browser-qt6
+	conflicts = pwss-browser-qt6
+	source = local_src::git+file:///home/zai1208/pwss-browser-qt6-git
+	md5sums = SKIP
+
+pkgname = pwss-browser-qt6-git
