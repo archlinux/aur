@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
 url="https://voxtype.io"
@@ -48,17 +48,20 @@ source=(
     "voxtype-$pkgver-onnx-avx512::$_github/voxtype-$pkgver-linux-x86_64-onnx-avx512"
     "voxtype-$pkgver-onnx-avx512.asc::$_github/voxtype-$pkgver-linux-x86_64-onnx-avx512.asc"
     # ONNX CUDA 12 binary + companion shared libs (CUDA 12.x hosts: Ubuntu LTS, Debian, older Fedora)
-    # ort 2.0.0-rc.12's CUDA EP dlopen's libonnxruntime_providers_*.so at runtime via /proc/self/exe;
-    # without them co-located, EP registration fails and ort silently falls back to CPU.
     "voxtype-$pkgver-onnx-cuda-12::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda-12"
     "voxtype-$pkgver-onnx-cuda-12.asc::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda-12.asc"
     "voxtype-$pkgver-onnx-cuda-12.libonnxruntime_providers_cuda.so::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda-12.libonnxruntime_providers_cuda.so"
     "voxtype-$pkgver-onnx-cuda-12.libonnxruntime_providers_shared.so::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda-12.libonnxruntime_providers_shared.so"
     # ONNX CUDA 13 binary + companion shared libs (CUDA 13.x hosts: Arch, rolling distros, requires driver 580+)
+    # v0.7.3+: cu13 dlopens ORT at runtime (ort/load-dynamic) because Microsoft's
+    # prebuilt is the only ORT 1.24.4 build with Blackwell sm_120 coverage and
+    # is distributed as .so only. The runtime ships alongside the binary; the
+    # install step below symlinks libonnxruntime.so to this versioned name.
     "voxtype-$pkgver-onnx-cuda-13::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda-13"
     "voxtype-$pkgver-onnx-cuda-13.asc::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda-13.asc"
     "voxtype-$pkgver-onnx-cuda-13.libonnxruntime_providers_cuda.so::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda-13.libonnxruntime_providers_cuda.so"
     "voxtype-$pkgver-onnx-cuda-13.libonnxruntime_providers_shared.so::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda-13.libonnxruntime_providers_shared.so"
+    "voxtype-$pkgver-onnx-cuda-13.libonnxruntime.so.1.24.4::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda-13.libonnxruntime.so.1.24.4"
     # ONNX MIGraphX binary + companion shared libs (AMD GPU EP, replaces ROCm in v0.7.0)
     "voxtype-$pkgver-onnx-migraphx::$_github/voxtype-$pkgver-linux-x86_64-onnx-migraphx"
     "voxtype-$pkgver-onnx-migraphx.asc::$_github/voxtype-$pkgver-linux-x86_64-onnx-migraphx.asc"
@@ -83,41 +86,39 @@ source=(
     "voxtype-configure-$pkgver.desktop::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/voxtype-configure.desktop"
     "voxtype-configure-launcher-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/scripts/voxtype-configure-launcher"
 )
-# TODO: Update SHA256 sums from final release artifacts before pushing to AUR.
-# Run after release build:
-#   cd releases/$pkgver && sha256sum voxtype-$pkgver-linux-x86_64-* | sort
 sha256sums=(
     # Whisper binaries
-    '4a24760905a05bc9da014b96e74d2596c68e7c33baf6b312f868bc5d4ec929e9'  # voxtype-avx2
+    '095191715ee18d320f319332d47ed98841a09e1927e2d2276634ba7a2d16e4e5'  # voxtype-avx2
     'SKIP'  # voxtype-avx2.asc
-    'ba7d0fd840fdeb8ed69c915ad53723c0be98b69aa3a7f8dc11e6fa4efa81d7d1'  # voxtype-avx512
+    'ae72d9105f1e521dfcf2ddf6742a96b8af56b655023d51952b274e11faa2c5d8'  # voxtype-avx512
     'SKIP'  # voxtype-avx512.asc
-    '1713c16dd595b5af844a710775de88a466c1eeaaad86dadca5427b15a16bbee7'  # voxtype-vulkan
+    '3b59c0621de48109c1a63cf5af92ed085bba9d9f7d0a623082d792a2d6c15f6f'  # voxtype-vulkan
     'SKIP'  # voxtype-vulkan.asc
     # ONNX CPU binaries
-    'bd1a96c748b209112e56a4409aad48f61dd69d0085dc1ac60f8e8c90106065c1'  # voxtype-onnx-avx2
+    '792da58000d692bef61b5255740a098b152ad226366682be7a6e139388a68c12'  # voxtype-onnx-avx2
     'SKIP'  # voxtype-onnx-avx2.asc
-    '0f75e13185353b7bc9239162ed7742767a082ecfba3631710ce7eec77c2aac5b'  # voxtype-onnx-avx512
+    '1c55d0ff24d8eb45bff4e88d94f30900ff97fbc908c2a677befb5f5ab46a6c63'  # voxtype-onnx-avx512
     'SKIP'  # voxtype-onnx-avx512.asc
     # ONNX CUDA 12
-    'e2e8d65d80291a025c1c8c1c772e2a4c27d8c4157e587777d3248916425c83d5'  # voxtype-onnx-cuda-12
+    '72c3b291760c6ccf3a46793da440dda36cd4de8210101196163d492f0c58becf'  # voxtype-onnx-cuda-12
     'SKIP'  # voxtype-onnx-cuda-12.asc
     'a8584727d51ba646ac63fc991c2f36ad6cd5b8cc8b1141896e46938700b888d0'  # voxtype-onnx-cuda-12.libonnxruntime_providers_cuda.so
     '1b028afc079628d76a28d7eb09700a4baead4a27f9634ba82c35398486134114'  # voxtype-onnx-cuda-12.libonnxruntime_providers_shared.so
     # ONNX CUDA 13
-    'a9207c531a474b0538cfa47ce07a73eb9040d1543293aad78ef542b7023f48d1'  # voxtype-onnx-cuda-13
+    '4e765462ab4a985acbf6e73385af1d9e40aea1873d407239ae6f495588315a36'  # voxtype-onnx-cuda-13
     'SKIP'  # voxtype-onnx-cuda-13.asc
-    '1ed2f69fcb95d4bb25cc42c2d2085324a671dfb11d02b729150f048970bb82f9'  # voxtype-onnx-cuda-13.libonnxruntime_providers_cuda.so
-    '1b028afc079628d76a28d7eb09700a4baead4a27f9634ba82c35398486134114'  # voxtype-onnx-cuda-13.libonnxruntime_providers_shared.so
+    'b6cb7744d0efd2faced5c83ead374c13e7f2630b5a249ffaf393cdb1e092c92b'  # voxtype-onnx-cuda-13.libonnxruntime_providers_cuda.so
+    'c6a12593396095f5670160e284c35d1700b7708cf3037b7042e2a5200ccae772'  # voxtype-onnx-cuda-13.libonnxruntime_providers_shared.so
+    '1aacefdf0b4afa145d410b2381bbc3db3d978c485fb182c42a2b0b09f91f5310'  # voxtype-onnx-cuda-13.libonnxruntime.so.1.24.4
     # ONNX MIGraphX
-    '88feae369ab7c2ad0a0db3861f3787e9ce17117dd088f4ae53b0a9f5db30fc89'  # voxtype-onnx-migraphx
+    '87b966bc1303048ab019a559839f829031005da96938a81c0f232602e923573a'  # voxtype-onnx-migraphx
     'SKIP'  # voxtype-onnx-migraphx.asc
     'ddd67e6193ade819ee21f1706d1b03b9151f1d2d2843701e2d19d8b183631707'  # voxtype-onnx-migraphx.libonnxruntime_providers_migraphx.so
     '17f7cf47ad0d7b5ac895ae588fd62c7f85a13842588161b6a24c7d480f062be4'  # voxtype-onnx-migraphx.libonnxruntime_providers_shared.so
     # OSD launcher + GTK4 frontend
-    '2413b11a273db3351f8d757c2b1858651c25c1a15febf66bb52dfe45fd4085bd'  # voxtype-osd
+    '3bdbcc84a5fb1853da75377dd199aad2e151f5e7bf59bfdb9a3e20632d3b96d8'  # voxtype-osd
     'SKIP'  # voxtype-osd.asc
-    'a6dc3a38502cdd5d2ed1b3e07518758d30dc4af4dac5dd5e4430ffa57faad3f0'  # voxtype-osd-gtk4
+    '7d8eda8e4511577cf4bebb5ef56d1a09f7eea9419a5af1da97870289e180ad60'  # voxtype-osd-gtk4
     'SKIP'  # voxtype-osd-gtk4.asc
     # Config and support files
     'aaa36cb5f382e66b2d385c657450629209c5875e29c82370cc190202616a8cbe'  # config.toml
@@ -160,13 +161,20 @@ package() {
     ln -sf "cuda-12/voxtype-onnx-cuda-12" \
         "$pkgdir/usr/lib/voxtype/voxtype-onnx-cuda-12"
 
-    # ONNX CUDA 13 (locked to libcudart.so.13 ABI, requires driver 580+)
+    # ONNX CUDA 13 (locked to libcudart.so.13 ABI, requires driver 580+).
+    # v0.7.3+: dlopens ORT at runtime. Install Microsoft's libonnxruntime
+    # under its SONAME plus a libonnxruntime.so symlink that ort/load-dynamic
+    # expects (resolved relative to /proc/self/exe, see ort src/lib.rs:96-109).
     install -Dm755 "$srcdir/voxtype-$pkgver-onnx-cuda-13" \
         "$pkgdir/usr/lib/voxtype/cuda-13/voxtype-onnx-cuda-13"
     install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-13.libonnxruntime_providers_cuda.so" \
         "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime_providers_cuda.so"
     install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-13.libonnxruntime_providers_shared.so" \
         "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime_providers_shared.so"
+    install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-13.libonnxruntime.so.1.24.4" \
+        "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime.so.1.24.4"
+    ln -sf "libonnxruntime.so.1.24.4" \
+        "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime.so"
     ln -sf "cuda-13/voxtype-onnx-cuda-13" \
         "$pkgdir/usr/lib/voxtype/voxtype-onnx-cuda-13"
 
