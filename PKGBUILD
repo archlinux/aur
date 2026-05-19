@@ -2,7 +2,7 @@
 
 pkgbase=zrok2
 pkgname=(zrok2 zrok2-agent zrok2-controller zrok2-frontend zrok2-metrics-bridge)
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='zrok is a next-generation sharing platform, designed to make sharing network and file resources simple and secure.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('npm' 'go')
 
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/openziti/zrok/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6de76009bd724315346a2ae2ccde108416035ad256693c7d132919e1771ec495')
+sha256sums=('07c98d5f9be96885ec98b40446d4d8867f19f4b59f3ae4de0b41cdac8db6c392')
 
 prepare() {
     cd "zrok-$pkgver"

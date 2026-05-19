@@ -1,6 +1,6 @@
 pkgbase = zrok2
 	pkgdesc = zrok is a next-generation sharing platform, designed to make sharing network and file resources simple and secure.
-	pkgver = 2.0.2
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://zrok.io
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = zrok2
 	makedepends = npm
 	makedepends = go
 	depends = glibc
-	source = zrok2-2.0.2.tar.gz::https://github.com/openziti/zrok/archive/refs/tags/v2.0.2.tar.gz
-	sha256sums = 6de76009bd724315346a2ae2ccde108416035ad256693c7d132919e1771ec495
+	source = zrok2-2.0.4.tar.gz::https://github.com/openziti/zrok/archive/refs/tags/v2.0.4.tar.gz
+	sha256sums = 07c98d5f9be96885ec98b40446d4d8867f19f4b59f3ae4de0b41cdac8db6c392
 
 pkgname = zrok2
 
