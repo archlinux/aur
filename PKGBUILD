@@ -2,7 +2,7 @@
 
 _pkgname=hyprosd
 pkgname=hyprosd-git
-pkgver=0.2.0.r4.g8f2fc86
+pkgver=0.2.0.r5.g24f180b
 pkgrel=1
 pkgdesc='Hyprland-focused Wayland OSD daemon'
 arch=('x86_64')
