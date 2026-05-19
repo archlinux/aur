@@ -1,0 +1,19 @@
+pkgbase = pinentry-hypr
+	pkgdesc = A Hyprland-native GnuPG pinentry using Qt6/QML/hyprutils
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AuthenticSm1les/pinentry-hypr
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = hyprutils
+	depends = hyprland-qt-support
+	depends = libsecret
+	provides = pinentry-hypr
+	conflicts = pinentry-hypr-git
+	source = https://github.com/AuthenticSm1les/pinentry-hypr/archive/v0.1.0.tar.gz
+	sha256sums = d243280f6068b0c89bf34fadbc845e2211b15af7d3731fd72abe3e582dbe1bb4
+
+pkgname = pinentry-hypr
