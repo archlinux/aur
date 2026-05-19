@@ -1,0 +1,19 @@
+pkgbase = lua-evm
+	pkgdesc = Pure-Lua client for Ethereum and EVM-compatible blockchains
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/NathanTheTerrible/lua-evm
+	arch = any
+	license = MIT
+	makedepends = make
+	depends = lua
+	optdepends = luajit: required for transaction signing (v0.2+)
+	optdepends = libsecp256k1: required for transaction signing (v0.2+)
+	optdepends = gmp: required for transaction signing (v0.2+)
+	optdepends = curl: default HTTP transport (already on most systems)
+	optdepends = lua51-bitop: bitwise ops for stock Lua 5.1 users
+	provides = lua-evm=0.2.0
+	source = lua-evm-0.2.0.tar.gz::https://gitlab.com/NathanTheTerrible/lua-evm/-/archive/v0.2.0/lua-evm-v0.2.0.tar.gz
+	sha256sums = d116df2529fb4163dd1a46b44b7ee6214fc54206eab3a695baff5b2ffbc9bf61
+
+pkgname = lua-evm
