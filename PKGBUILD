@@ -10,11 +10,11 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="4.7.0"
+pkgver="4.7.1"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
-arch=(any)
+arch=(x86_64)
 license=(GPL-2.0-or-later)
 
 #install='sd-boot.install'

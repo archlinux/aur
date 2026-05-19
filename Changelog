@@ -1,9 +1,17 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.2.2 ➙ 4.7.0
-              : 2026-05-07 ➙ 2026-05-19
+ Tags         : 4.3.0 ➙ 4.7.1
+              : 2026-05-15 ➙ 2026-05-19
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-19   : 4.7.1
+              - **4.7.1**
+            
+                * Change PKGBUILD arch to x85_64 not any.
+                * Change linking to only use libblkid where needed.
+                * Clean up cruft from CMakeLists.txt
+              - update Changelog
 
  2026-05-19   : 4.7.0
               - **4.7.0**
@@ -50,9 +58,4 @@
                       unnecessary fork/exec.
                     * Remove one unnecessary trigger from kernel update alpm hook.
  2026-05-07   ⋯
-              - update Changelog
-
- 2026-05-07   : 4.2.2
-              - Small code comment clean ups - no functional change
-              - delete old now unused directories
               - update Changelog
