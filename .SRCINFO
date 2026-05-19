@@ -1,0 +1,18 @@
+pkgbase = daylog-bin
+	pkgdesc = Terminal screen-time tracker for Linux
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Manas-Kenge/Daylog
+	arch = x86_64
+	license = MIT
+	provides = daylog
+	conflicts = daylog
+	options = !strip
+	source = daylog-0.2.0.tar.gz::https://github.com/Manas-Kenge/Daylog/releases/download/v0.2.0/daylog-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-0.2.0::https://github.com/Manas-Kenge/Daylog/raw/v0.2.0/LICENSE
+	source = README-0.2.0.md::https://github.com/Manas-Kenge/Daylog/raw/v0.2.0/README.md
+	sha256sums = 762dfb55a03c6d802397a57a2e2765a07ed255ea8a4b511ddc747ad8a50e3e42
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = daylog-bin
