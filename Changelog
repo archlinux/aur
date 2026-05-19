@@ -1,9 +1,20 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.2.1 ➙ 4.6.0
-              : 2026-05-07 ➙ 2026-05-18
+ Tags         : 4.2.2 ➙ 4.7.0
+              : 2026-05-07 ➙ 2026-05-19
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-19   : 4.7.0
+              - **4.7.0**
+            
+                * Read /etc/kernel/install.conf so code is aware of layout (bls or uki).
+                * Loader entry plugin now exits earlier for uki kernels which has no loader entries.
+                * kernel-install remove does not need kernel image
+                * Add sbctl and systemd-ukify as dependencies
+                * Little code tidy
+ 2026-05-18   ⋯
+              - update Changelog
 
  2026-05-18   : 4.6.0
               - **4.6.0**
@@ -44,8 +55,4 @@
  2026-05-07   : 4.2.2
               - Small code comment clean ups - no functional change
               - delete old now unused directories
-              - update Changelog
-
- 2026-05-07   : 4.2.1
-              - Make sure test suite runs in fresh set up - fixed
               - update Changelog
