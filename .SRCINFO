@@ -1,0 +1,13 @@
+pkgbase = savvy-mtg-life-counter-bin
+	pkgdesc = Life counter and companion app for Magic: The Gathering
+	pkgver = 4.6.0
+	pkgrel = 1
+	url = https://lifecounter.savvyworker.com
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = fuse2
+	options = !strip
+	source_x86_64 = savvy-mtg-life-counter-bin-4.6.0.AppImage::https://github.com/mufniarz/savvy-mtg-life-counter-releases/releases/download/v4.6.0/Savvy-MTG-Life-Counter-v4.6.0-x86_64.AppImage
+	sha256sums_x86_64 = a8b89b8f7d68ea3a6c7c4557f352f7fe3898c1ab6dd7c09fe5215a5273d88695
+
+pkgname = savvy-mtg-life-counter-bin
