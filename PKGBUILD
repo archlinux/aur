@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 pkgname=antigravity-cli
 pkgver=1.0.0_5288553236791296
 pkgrel=1
