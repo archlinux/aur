@@ -2,7 +2,7 @@
 # Contributor: E-Hern Lee <ehern.lee@gmail.com>
 pkgname=ghidra-extension-kaiju-bin
 _pkgname=kaiju
-pkgver=260515_12.0.4
+pkgver=260515_12.1
 pkgrel=1
 pkgdesc="CERT Kaiju binary analysis improvements for Ghidra (OOAnalyzer, CERT function hashing, GhiHorn)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   'z3-java: GhiHorn plugin for CFG analysis'
 )
 source=("${_pkgname}-${pkgver%%_*}.zip::https://github.com/CERTCC/kaiju/releases/download/${pkgver%%_*}/ghidra_${pkgver#*_}_PUBLIC_20${pkgver%%_*}_kaiju.zip")
-sha256sums=('bbaa6cdf67bd5ae676056b979c408d591d46f1848c5c04fb08dc2aa94606c523')
+sha256sums=('a4813e1b8a00a3172aad2d078b38cb1a0c78ea9a138c25943eab60c842fe2103')
 
 latestver() {
   local gv kv
