@@ -1,7 +1,7 @@
 # Maintainer: Gustav Åkerström 23389010+gustavakerstrom@users.noreply.github.com
 
 pkgname=hf-mount
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Mount Hugging Face Buckets and repos as local filesystems. No download, no copy, no waiting.'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('fuse3')
 makedepends=('rust>=1.89' 'cargo')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4055c4f1939172c11854f2599800c17dbb98737e1ed283e402850641cfb54921')
+sha256sums=('833ef94e2e2c0bc433ba8630a9f14621efc5c214598d32a4d69674fe2ab9a8ba')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

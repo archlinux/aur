@@ -1,6 +1,6 @@
 pkgbase = hf-mount
 	pkgdesc = Mount Hugging Face Buckets and repos as local filesystems. No download, no copy, no waiting.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/huggingface/hf-mount
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hf-mount
 	makedepends = rust>=1.89
 	makedepends = cargo
 	depends = fuse3
-	source = hf-mount-0.6.0.tar.gz::https://github.com/huggingface/hf-mount/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 4055c4f1939172c11854f2599800c17dbb98737e1ed283e402850641cfb54921
+	source = hf-mount-0.6.1.tar.gz::https://github.com/huggingface/hf-mount/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 833ef94e2e2c0bc433ba8630a9f14621efc5c214598d32a4d69674fe2ab9a8ba
 
 pkgname = hf-mount
