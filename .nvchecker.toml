@@ -1,0 +1,5 @@
+[cate-bin]
+source = "github"
+github = "0-AI-UG/cate"
+use_latest_release = true
+prefix = "v"
