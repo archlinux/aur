@@ -1,6 +1,6 @@
 pkgbase = gitnexus
 	pkgdesc = Zero-server code intelligence engine for exploring repositories as a knowledge graph
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/abhigyanpatwari/GitNexus
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gitnexus
 	makedepends = npm
 	depends = nodejs>=22
 	options = !strip
-	source = gitnexus-1.6.4.tar.gz::https://github.com/abhigyanpatwari/GitNexus/archive/refs/tags/v1.6.4.tar.gz
-	sha256sums = 5bdd18a4620727cf9d300334b3cba7b6e6ae14ccc5635139b7b69a64ba3dcc72
+	source = gitnexus-1.6.5.tar.gz::https://github.com/abhigyanpatwari/GitNexus/archive/refs/tags/v1.6.5.tar.gz
+	sha256sums = 731bfb2928166c361005f508f21d82100f68d47d1b793f8b5a1b327a9bcf8e06
 
 pkgname = gitnexus
