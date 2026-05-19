@@ -1,6 +1,6 @@
 pkgbase = ferriskey
 	pkgdesc = open-source IAM solution designed for modern cloud-native environments, high-performance and written in Rust
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://ferriskey.rs/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ferriskey
 	depends = openssl
 	options = !lto
 	options = !debug
-	source = https://github.com/ferriskey/ferriskey/archive/v0.5.0/ferriskey-0.5.0.tar.gz
-	sha256sums = 83f8475726fb32eee70eecb600d10d30125e1985b24a0f56cd62d3291ed352ff
+	source = https://github.com/ferriskey/ferriskey/archive/v0.6.0/ferriskey-0.6.0.tar.gz
+	sha256sums = 9d00ba0d69ce6a0508e18f06701b0472c2fd8cf8d896ee5bf92a92800454924c
 
 pkgname = ferriskey
