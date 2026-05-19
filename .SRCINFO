@@ -1,20 +1,20 @@
 pkgbase = openhantek6022
 	pkgdesc = A DSO software for Hantek USB digital signal oscilloscopes 6022BE/BL.
 	pkgver = 3.4.1.rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenHantek/OpenHantek6022
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = cmake>=3.5
+	makedepends = cmake>=3.12
 	makedepends = make
 	makedepends = sed
 	makedepends = gcc>=4.3
-	makedepends = qt5-tools>=5.4
+	makedepends = qt6-tools>=6.2
 	depends = fftw>=3
-	depends = qt5-base>=5.4
-	depends = qt5-svg>=5.4
+	depends = qt6-base>=6.2
+	depends = qt6-svg>=6.2
 	depends = libusb>=1.0.16
 	provides = openhantek6022
 	conflicts = openhantek6022-git
