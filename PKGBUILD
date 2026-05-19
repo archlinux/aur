@@ -2,7 +2,7 @@
 pkgname=firefox-webhid-bridge
 pkgver=0.2.3
 pkgdesc="The server of firefox ADD-ONS WebHID for Firefox by Sainan"
-pkgrel=1
+pkgrel=2
 arch=('any')
 url=https://github.com/Sainan/WebHID-for-Firefox
 lincenses=('Unlicense')
@@ -28,6 +28,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm664 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LINCESE"
+  install -Dm664 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 server/firefox-webhid-bridge "$pkgdir/usr/bin/firefox-webhid-bridge"
 }

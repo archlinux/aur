@@ -1,7 +1,7 @@
 pkgbase = firefox-webhid-bridge
 	pkgdesc = The server of firefox ADD-ONS WebHID for Firefox by Sainan
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sainan/WebHID-for-Firefox
 	arch = any
 	makedepends = git
