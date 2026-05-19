@@ -17,18 +17,22 @@ check_version:
   artifacts:
     reports:
       dotenv: build.env
+    paths:
+      - build.env
+    when: always
 
 build:
   stage: build
   needs:
     - job: check_version
       artifacts: true
-  rules:
-    - if: '$NEW_VERSION != ""'
   script:
+    - test -f build.env && source build.env || exit 0
+    - test -n "$NEW_VERSION" || exit 0
     - pacman -Syu --noconfirm base-devel
     - useradd -m builder
-    - echo "builder ALL=(ALL) NOPASSWD ALL" >> /etc/sudoers
+    - echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/builder
+    - chmod 440 /etc/sudoers.d/builder
     - sed -i "s/pkgver=.*/pkgver=$NEW_VERSION/" PKGBUILD
     - NEWSHA=$(curl -sL "https://download.kde.org/stable/plasma/$NEW_VERSION/kwin-$NEW_VERSION.tar.xz" | sha256sum | cut -d' ' -f1)
     - sed -i "s/'[a-f0-9]\{64\}'/'$NEWSHA'/" PKGBUILD
@@ -48,9 +52,9 @@ update_aur:
     - job: check_version
       artifacts: true
     - job: build
-  rules:
-    - if: '$NEW_VERSION != ""'
   script:
+    - test -f build.env && source build.env || exit 0
+    - test -n "$NEW_VERSION" || exit 0
     - pacman -Sy --noconfirm git openssh
     - mkdir -p ~/.ssh
     - echo "$AUR_SSH_KEY" | base64 -d > ~/.ssh/id_ed25519
@@ -61,7 +65,6 @@ update_aur:
     - git clone ssh://aur@aur.archlinux.org/kwin-osd-bottom.git /tmp/aur
     - cp PKGBUILD /tmp/aur/
     - cd /tmp/aur
-    - pacman -Sy --noconfirm pacman
     - makepkg --printsrcinfo > .SRCINFO
     - git add PKGBUILD .SRCINFO
     - git commit -m "update to $NEW_VERSION"
