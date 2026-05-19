@@ -1,6 +1,6 @@
 pkgbase = python-stomp.py
 	pkgdesc = Python STOMP client, supporting versions 1.0, 1.1 and 1.2 of the protocol
-	pkgver = 8.1.2
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://github.com/jasonrbriggs/stomp.py
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-stomp.py
 	depends = python
 	depends = python-docopt
 	depends = python-websocket-client
-	source = https://files.pythonhosted.org/packages/source/s/stomp_py/stomp_py-8.1.2.tar.gz
-	sha256sums = b56e62da090863cc65e5fbf832230318cd53e99dc777de19ecb04e83914f1371
+	source = https://files.pythonhosted.org/packages/source/s/stomp_py/stomp_py-9.0.0.tar.gz
+	sha256sums = 77b63fdd6cb2fb5e3d7032c5e1cde70c005f498d6096b77827efe71913196464
 
 pkgname = python-stomp.py
