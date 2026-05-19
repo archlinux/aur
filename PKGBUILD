@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <jinzhongjia@manus.ai>
 
 pkgname=openwarp-git
-pkgver=2026.05.15.preview.r12.gf4baca5e
+pkgver=2026.05.19.preview.r0.g2e8587d7
 pkgrel=1
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
