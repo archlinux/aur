@@ -1,6 +1,6 @@
 pkgbase = arduino-flasher-cli
 	pkgdesc = Arduino UNO Q image flasher
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/arduino/arduino-flasher-cli
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = arduino-flasher-cli
 	license = GPL-3
 	makedepends = go
 	makedepends = go-task
-	depends = qdl-git
-	source = arduino-flasher-cli-0.5.0.tar.gz::https://github.com/arduino/arduino-flasher-cli/archive/v0.5.0.tar.gz
-	sha256sums = 8b9a1521b045db5b0f5b41efbb7a16fdffa8f6d382fa3e5ef46132b636246f94
+	depends = qdl
+	source = arduino-flasher-cli-0.5.1.tar.gz::https://github.com/arduino/arduino-flasher-cli/archive/v0.5.1.tar.gz
+	sha256sums = 5fff4bded7754078986190d15f38dd55f0b25fba4c425680c767663345e0b6a6
 
 pkgname = arduino-flasher-cli
