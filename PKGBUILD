@@ -6,7 +6,7 @@
 # Contributor: ssfdust@gmail.com <ssfdust@gmail.com>
 
 pkgname=cairo-dock-plug-ins-wayland-git
-pkgver=3.6.90.20251025.8aacf61f8
+pkgver=3.6.99.20260513.77abb5eb6
 pkgrel=1
 pkgdesc='Plugins for Cairo-Dock with wayland support'
 arch=('x86_64')
@@ -74,6 +74,10 @@ prepare() {
 
     sed 's/gmcs/mcs/' -i CMakeLists.txt
 
+    # Make clock module optional (disabled by default)
+    sed -i 's/^message (STATUS "> Clock:")$/&\nenable_if_not_defined (enable-clock)\nif (enable-clock)/' CMakeLists.txt
+    sed -i 's/^add_subdirectory (clock)$/&\nendif()/' CMakeLists.txt
+
     if [[ -d "${srcdir}/${pkgname}/${_builddir}" ]];
     then
         rm -rf "${srcdir}/${pkgname}/${_builddir}"
@@ -86,7 +90,8 @@ build() {
 
     cmake .. \
         -DCMAKE_BUILD_TYPE='Release' \
-        -DCMAKE_INSTALL_PREFIX='/usr'
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Denable-clock=OFF
     make -j$(nproc)
 }
 
