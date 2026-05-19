@@ -3,6 +3,7 @@ image: archlinux:latest
 stages:
   - check
   - build
+  - update_aur
 
 check_version:
   stage: check
@@ -22,16 +23,46 @@ build:
   needs:
     - job: check_version
       artifacts: true
+  rules:
+    - if: '$NEW_VERSION != ""'
   script:
     - pacman -Syu --noconfirm base-devel
     - useradd -m builder
     - echo "builder ALL=(ALL) NOPASSWD ALL" >> /etc/sudoers
+    - sed -i "s/pkgver=.*/pkgver=$NEW_VERSION/" PKGBUILD
+    - NEWSHA=$(curl -sL "https://download.kde.org/stable/plasma/$NEW_VERSION/kwin-$NEW_VERSION.tar.xz" | sha256sum | cut -d' ' -f1)
+    - sed -i "s/'[a-f0-9]\{64\}'/'$NEWSHA'/" PKGBUILD
     - cp -r . /home/builder/kwin-osd-bottom
     - chown -R builder /home/builder/kwin-osd-bottom
     - cd /home/builder/kwin-osd-bottom
     - sudo -u builder makepkg -s --noconfirm --skippgpcheck
-    - 'curl -H "Content-Type:application/json" -d "{\"content\":\"kwin-osd-bottom aggiornato alla versione $NEW_VERSION! Scarica da GitLab.\"}" $DISCORD_WEBHOOK'
+    - 'curl -H "Content-Type:application/json" -d "{\"content\":\"✅ kwin-osd-bottom $NEW_VERSION compilato! Scarica da GitLab.\"}" $DISCORD_WEBHOOK'
   artifacts:
     paths:
-      - "/home/builder/kwin-osd-bottom/*.pkg.tar.zst"
+      - "*.pkg.tar.zst"
     expire_in: 7 days
+
+update_aur:
+  stage: update_aur
+  needs:
+    - job: check_version
+      artifacts: true
+    - job: build
+  rules:
+    - if: '$NEW_VERSION != ""'
+  script:
+    - pacman -Sy --noconfirm git openssh
+    - mkdir -p ~/.ssh
+    - echo "$AUR_SSH_KEY" | base64 -d > ~/.ssh/id_ed25519
+    - chmod 600 ~/.ssh/id_ed25519
+    - ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
+    - git config --global user.name "Vittorino_4213"
+    - git config --global user.email "greselin2010@gmail.com"
+    - git clone ssh://aur@aur.archlinux.org/kwin-osd-bottom.git /tmp/aur
+    - cp PKGBUILD /tmp/aur/
+    - cd /tmp/aur
+    - pacman -Sy --noconfirm pacman
+    - makepkg --printsrcinfo > .SRCINFO
+    - git add PKGBUILD .SRCINFO
+    - git commit -m "update to $NEW_VERSION"
+    - git push
