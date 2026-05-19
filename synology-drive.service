@@ -1,11 +1,11 @@
 [Unit]
-Description=Synology Drive Client Daemon
+Description=Synology Drive Client
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/opt/Synology/SynologyDrive/package/cloudstation/bin/cloud-drive-daemon
-WorkingDirectory=/opt/Synology/SynologyDrive/package/cloudstation/bin
+ExecStart=/usr/bin/synology-drive start
+Environment="QT_QPA_PLATFORM=xcb"
 Restart=on-failure
 
 [Install]

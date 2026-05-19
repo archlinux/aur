@@ -3,12 +3,12 @@ pkgname=synology-drive-client-bin
 pkgver=4.0.3_17892
 _pkgver=4.0.3
 _pkgrel=17892
-pkgrel=6
+pkgrel=7
 pkgdesc="Official Synology Drive Client desktop application (official binary repack)"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
 license=('custom:Synology Linux License Grant')
-depends=('glib2' 'glibc' 'qt5-base' 'qt5-wayland' 'curl' 'libarchive' 'libxkbcommon' 'libice' 'libsm' 'hicolor-icon-theme')
+depends=('glib2' 'glibc' 'qt5-base' 'qt5-wayland' 'curl' 'libarchive' 'libxkbcommon' 'libice' 'libsm' 'hicolor-icon-theme' 'net-tools')
 makedepends=('patchelf')
 optdepends=('nautilus: For nautilus integration'
             'dolphin: For dolphin integration'
@@ -22,7 +22,7 @@ filename="synology-drive-client-${_pkgrel}.deb"
 source=("${filename}::https://global.synologydownload.com/download/Utility/SynologyDriveClient/${_pkgver}-${_pkgrel}/Ubuntu/Installer/synology-drive-client-${_pkgrel}.x86_64.deb"
         "synology-drive.service")
 sha256sums=('f6aec5a5974d59963ed833fdf1a0cc7bebd612d8691f491c62cba770cdc78d67'
-            '569f3ba5a1fc972eee9fc01ce028d68ad7b75e79ff30e3f719237dd41412243c')
+            '2c635ea13e8495c23c59d845e843e617b444e22a6ed05d858337cb91208a41d4')
 
 check() {
   echo "Checking for broken library links..."
