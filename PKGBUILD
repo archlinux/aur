@@ -1,6 +1,6 @@
 # Maintainer: eDEX-OS <edex-de@github.com>
 pkgname=edex-de
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="eDEX-DE — A sci-fi Wayland desktop environment built in pure Rust"
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
 )
 install=edex-de.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('49de475ba6cb2fe57f4113265cbe3cd9a7e08c295023c85decedbd11aa29925b')
+sha256sums=('45f47bf0c262d78a063f85a4b3ebd22a1101bdc335d210ba5762da8bf2dc313d')
 
 build() {
     cd "eDEX-DE-${pkgver}"

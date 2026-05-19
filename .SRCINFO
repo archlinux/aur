@@ -1,6 +1,6 @@
 pkgbase = edex-de
 	pkgdesc = eDEX-DE — A sci-fi Wayland desktop environment built in pure Rust
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/eDEX-OS/eDEX-DE
 	install = edex-de.install
@@ -29,7 +29,7 @@ pkgbase = edex-de
 	optdepends = networkmanager: Network management
 	optdepends = bluez: Bluetooth support
 	optdepends = xdg-desktop-portal: Portal support
-	source = edex-de-2.0.6.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v2.0.6.tar.gz
-	sha256sums = 49de475ba6cb2fe57f4113265cbe3cd9a7e08c295023c85decedbd11aa29925b
+	source = edex-de-2.0.7.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v2.0.7.tar.gz
+	sha256sums = 45f47bf0c262d78a063f85a4b3ebd22a1101bdc335d210ba5762da8bf2dc313d
 
 pkgname = edex-de
