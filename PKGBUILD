@@ -1,7 +1,7 @@
 # Maintainer: jeryd leuck <jerydleuck@gmail.com>
 pkgname=msty-claw
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Msty Claw is an autonomous AI agent application designed for complex task orchestration (Beta)"
 arch=('x86_64')
 url="https://msty.ai/claw"
@@ -16,6 +16,16 @@ conflicts=('msty-claw' 'msty-claw-bin')
 filename="MstyClaw_amd64_${pkgver}.deb"
 source=("$filename::https://next-assets.msty.studio/mstyclaw/latest/linux/MstyClaw_amd64.deb?ver=$pkgver")
 sha256sums=('d9e0871816e7e46595639dbafa3f32f6300c674d2eb3442b3d6895582edbe95c')
+
+check() {
+  find "$pkgdir" -type f -exec sh -c 'file "$1" | grep -q ELF' _ {} \; -print | while read -r elf; do
+    if ldd "$elf" | grep -q "not found"; then
+      echo "Broken dependencies in $elf:"
+      ldd "$elf" | grep "not found"
+      exit 1
+    fi
+  done
+}
 
 package() {
   # Extract data.tar.gz from the debian package

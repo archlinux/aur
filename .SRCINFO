@@ -1,7 +1,7 @@
 pkgbase = msty-claw
 	pkgdesc = Msty Claw is an autonomous AI agent application designed for complex task orchestration (Beta)
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://msty.ai/claw
 	arch = x86_64
 	license = proprietary
