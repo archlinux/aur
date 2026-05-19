@@ -1,5 +1,3 @@
-# Maintainer: 4RC3UZ <l4rc3uz@gmail.com>
-
 pkgname=osu-fetch
 pkgver=1.0.0
 pkgrel=1
