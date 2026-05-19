@@ -1,0 +1,56 @@
+#!/bin/bash
+# CUPS Backend for DjVu conversion
+# Derived from user's live system configuration
+
+export GSDJVU=/usr/bin/gsdjvu
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+if [ $# -eq 0 ]; then
+    echo "direct djvu \"Unknown\" \"DjVu Digital (Virtual Printer)\""
+    exit 0
+fi
+
+JOBID="$1"
+USER_NAME="$2"
+TITLE="$3"
+INPUT_FILE="$6"
+
+# Use the username provided by CUPS
+TARGET_USER="$USER_NAME"
+# Default output directory (similar to cups-pdf)
+OUTDIR="/var/spool/cups-pdf/$TARGET_USER"
+
+# Create directory if it doesn't exist (CUPS backend runs as root)
+if [ ! -d "$OUTDIR" ]; then
+    mkdir -p "$OUTDIR"
+    chown "$TARGET_USER" "$OUTDIR"
+    chmod 700 "$OUTDIR"
+fi
+
+# Name cleaning
+SAFE_TITLE=$(echo "$TITLE" | tr " " "_" | tr -cd "[:alnum:]._-")
+[ -z "$SAFE_TITLE" ] && SAFE_TITLE="printjob"
+
+# Add timestamp (Format: YYYY-MM-DD_HH-MM-SS)
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+OUTPUT_FILE="$OUTDIR/${TIMESTAMP}_${SAFE_TITLE}.djvu"
+
+# If input comes from stdin
+if [ -z "$INPUT_FILE" ]; then
+    INPUT_FILE=$(mktemp /tmp/cups_djvu.XXXXXX)
+    cat > "$INPUT_FILE"
+    IS_TEMP=1
+fi
+
+# Conversion (600 DPI, exact colors, text extraction)
+/usr/bin/djvudigital --dpi=600 --exact-color --words "$INPUT_FILE" "$OUTPUT_FILE" > /dev/null 2>&1
+RESULT=$?
+
+if [ $RESULT -eq 0 ] && [ -f "$OUTPUT_FILE" ]; then
+    chown "$TARGET_USER" "$OUTPUT_FILE"
+    chmod 600 "$OUTPUT_FILE"
+fi
+
+[ "$IS_TEMP" = "1" ] && rm -f "$INPUT_FILE"
+
+exit $RESULT

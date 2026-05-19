@@ -1,0 +1,23 @@
+post_install() {
+  echo ">>> To create the virtual DjVu printer, run as root:"
+  echo ">>> lpadmin -p DjVu_Printer -E -v djvu:/ -P /usr/share/cups/model/djvu-printer.ppd"
+  echo ">>> Documents will be saved to /var/spool/cups-pdf/\$USER/"
+  
+  # Restart CUPS to recognize the new backend
+  if systemctl is-active --quiet cups; then
+    systemctl restart cups
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo ">>> Remember to remove the printer if you created it:"
+  echo ">>> lpadmin -x DjVu_Printer"
+  
+  if systemctl is-active --quiet cups; then
+    systemctl restart cups
+  fi
+}

@@ -1,0 +1,54 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion:   "1.1"
+*LanguageVersion: English 
+*LanguageEncoding: ISOLatin1
+*PCFileName:    "DJVU.PPD"
+*Manufacturer:  "Generic"
+*Product:       "(Generic DjVu Printer)"
+*cupsVersion:   1.0
+*cupsManualCopies: True
+*cupsModelNumber:  2
+*ModelName:     "Generic DjVu Printer"
+*ShortNickName: "Generic DjVu Printer"
+*NickName:      "Generic DjVu Printer"
+*PSVersion:     "(3010.107) 0"
+*LanguageLevel: "3"
+*ColorDevice:   True
+*DefaultColorSpace: CMYK
+*FileSystem:    False
+*Throughput:    "30"
+*LandscapeOrientation: Plus90
+*TTRasterizer:  Type42
+*1284DeviceID: "MFG:Generic;CMD:PJL,PDF;MDL:DjVu Printer;CLS:PRINTER;DES:Generic DjVu Printer;DRV:DPDF,R1,M0;"
+*JCLBegin:            "<1B>%-12345X@PJL JOB<0A>"
+*JCLToPDFInterpreter: "@PJL ENTER LANGUAGE = PDF<0A>"
+*JCLEnd:              "<1B>%-12345X@PJL EOJ <0A><1B>%-12345X"
+*cupsFilter: "application/vnd.cups-pdf 0 -"
+
+*OpenGroup: General/General
+*JCLOpenUI *PageSize/Page Size: PickOne
+*OrderDependency: 100 JCLSetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter/Letter: "@PJL SET PAPER=LETTER<0A>"
+*PageSize A4/A4: "@PJL SET PAPER=A4<0A>"
+*PageSize A5/A5: "@PJL SET PAPER=A5<0A>"
+*JCLCloseUI: *PageSize
+
+*OpenGroup: Output/Output Options
+*JCLOpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 100 JCLSetup *Resolution
+*DefaultResolution: 600dpi
+*Resolution 300dpi/300 dpi: "@PJL SET RESOLUTION=300<0A>"
+*Resolution 600dpi/600 dpi: "@PJL SET RESOLUTION=600<0A>"
+*Resolution 1200dpi/1200 dpi: "@PJL SET RESOLUTION=1200<0A>"
+*JCLCloseUI: *Resolution
+*CloseGroup: Output
+
+*% Generic boilerplate PPD stuff
+*DefaultFont: Courier
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
+*Font Symbol: Special "(001.007S)" Special ROM
+*Font ZapfDingbats: Special "(001.004S)" Standard ROM

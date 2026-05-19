@@ -1,0 +1,17 @@
+pkgbase = cups-djvu-printer
+	pkgdesc = A virtual CUPS printer that saves documents as DjVu files in /var/spool/cups-pdf/$USER
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yourusername/cups-djvu-printer
+	install = cups-djvu-printer.install
+	arch = any
+	license = GPL
+	depends = cups
+	depends = djvulibre
+	depends = ghostscript
+	source = djvu-backend
+	source = djvu-printer.ppd
+	sha256sums = 9a8e7f233ef56fcc2a56738cd5b6e6946346eb9bca774c85225a45a65235c01a
+	sha256sums = 194c9cfefffff8f58ca8c0486c3f96ab432b08728aced7fd7f790c77d2983d9e
+
+pkgname = cups-djvu-printer
