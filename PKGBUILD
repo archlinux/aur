@@ -48,6 +48,14 @@ sha256sums=('b49a83f3783d9386e01c182f31371ad12bf7320e62370885e14bdf863733683c'
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
+
+  # Tailwind v4's oxide scanner walks up looking for the nearest .git to anchor
+  # .gitignore lookup. In AUR helpers (yay/paru) the parent .git is the AUR
+  # clone, whose .gitignore is `*` + an allowlist for PKGBUILD/.SRCINFO. That
+  # rule ignores tools/ui/src/lib/**/*.svelte, so Tailwind scans zero files and
+  # the built bundle.css ships without any utility classes. An empty .git in
+  # the extracted source tree stops the upward walk before that point.
+  mkdir -p "${_pkgname}/.git"
 }
 
 build() {
