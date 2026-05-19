@@ -1,0 +1,16 @@
+pkgbase = phonto
+	pkgdesc = GPU-accelerated video wallpaper program for wayland
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/museslabs/phonto
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = wayland
+	depends = gst-plugin-va
+	options = !strip
+	options = !debug
+	source = phonto-0.3.1.tar.gz::https://github.com/museslabs/phonto/archive/v0.3.1.tar.gz
+	sha256sums = 4d040d5aa78d574fd21f36602d56ba8d7b973d844370d2e61644045db1392610
+
+pkgname = phonto
