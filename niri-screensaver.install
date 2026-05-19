@@ -1,0 +1,47 @@
+post_install() {
+    _refresh_caches
+    cat <<'EOF'
+
+==> niri-screensaver installed.
+
+Three things to wire up before it'll trigger:
+
+  1. niri window-rule — append to ~/.config/niri/config.kdl (or include):
+       /usr/share/doc/niri-screensaver/niri-window-rule.kdl
+
+  2. Idle integration — pick one:
+       * Noctalia plugin (recommended)
+           mkdir -p ~/.config/noctalia/plugins
+           ln -sfn /usr/share/niri-screensaver/noctalia-plugin \
+                   ~/.config/noctalia/plugins/niri-screensaver
+         then enable in Noctalia → Settings → Plugins.
+       * Inline Noctalia custom-command snippet:
+           /usr/share/doc/niri-screensaver/noctalia-customCommand.json
+
+  3. Test it inline (no fullscreen):
+       niri-screensaver-ctl test
+
+Optional now-playing overlay needs playerctl; cursor parking needs wlrctl
+(both listed as optional deps).
+
+EOF
+}
+
+post_upgrade() {
+    _refresh_caches
+}
+
+post_remove() {
+    _refresh_caches
+}
+
+_refresh_caches() {
+    # Silent no-ops if the tools aren't installed (gtk4 / desktop-file-utils
+    # are not pulled in just for the cache hooks).
+    if command -v gtk-update-icon-cache &>/dev/null; then
+        gtk-update-icon-cache -q -t /usr/share/icons/hicolor 2>/dev/null || true
+    fi
+    if command -v update-desktop-database &>/dev/null; then
+        update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    fi
+}
