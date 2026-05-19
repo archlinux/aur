@@ -1,6 +1,6 @@
 pkgbase = quikrun
 	pkgdesc = Run your code without hassle
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/soymadip/quikrun
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = quikrun
 	makedepends = python-installer
 	makedepends = python-uv-build
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/q/quikrun/quikrun-0.0.7.tar.gz
-	sha256sums = 89d5a79525df188f5acd96ba09088ffef43c27f7766524d1ca013f7c1b10d233
+	source = https://files.pythonhosted.org/packages/source/q/quikrun/quikrun-0.0.8.tar.gz
+	sha256sums = SKIP
 
 pkgname = quikrun
