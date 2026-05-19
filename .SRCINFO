@@ -1,0 +1,24 @@
+pkgbase = hyprosd-git
+	pkgdesc = Hyprland-focused Wayland OSD daemon
+	pkgver = 0.2.0.r22.g425d4bb
+	pkgrel = 1
+	url = https://github.com/jameswylde/hyprosd
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = pkgconf
+	depends = gtk4
+	depends = gtk4-layer-shell
+	optdepends = wireplumber: volume querying via wpctl
+	optdepends = pulseaudio-utils: fallback volume querying via pactl
+	optdepends = brightnessctl: example brightness keybinds
+	optdepends = hyprland: intended compositor integration
+	provides = hyprosd
+	conflicts = hyprosd
+	options = !debug
+	source = hyprosd::git+https://github.com/jameswylde/hyprosd.git
+	sha256sums = SKIP
+
+pkgname = hyprosd-git
