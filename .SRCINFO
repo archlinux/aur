@@ -1,0 +1,17 @@
+pkgbase = fnclaude-renderer-bin
+	pkgdesc = Configurable TUI front-end for Claude Code with stream-json driving and toggleable visibility filters
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/fnrhombus/fnclaude-renderer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = glow: pretty markdown rendering for assistant output
+	provides = fnclaude-renderer
+	conflicts = fnclaude-renderer
+	source_x86_64 = fnclaude-renderer-bin-1.0.2-x86_64.tar.gz::https://github.com/fnrhombus/fnclaude-renderer/releases/download/v1.0.2/fnclaude-renderer_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a76df3e4355f30be42eacc1b3ea8aa18c9381419c7a31313cc2d040699b2f9da
+	source_aarch64 = fnclaude-renderer-bin-1.0.2-aarch64.tar.gz::https://github.com/fnrhombus/fnclaude-renderer/releases/download/v1.0.2/fnclaude-renderer_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0e3fc5223506a504402079cd6b97b765fe9b3bfead6f07896254a6cc0f741a8e
+
+pkgname = fnclaude-renderer-bin
