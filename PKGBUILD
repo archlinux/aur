@@ -6,11 +6,11 @@ pkgname=(
   'mullvad-vpn-daemon-beta'
 )
 pkgbase=mullvad-vpn-beta
-_pkgver=2026.2
-_channel=stable
+_pkgver=2026.3
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=24
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -28,23 +28,20 @@ depends=(
 makedepends=(
   'cargo'
   'git'
-  'go'
   'libxcrypt-compat'
   'nvm'
   'protobuf'
   'typescript'
 )
 source=(
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
-  "git+https://github.com/mullvad/wireguard-go.git"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgbase%-beta}.sh"
 )
-sha256sums=('2b5274cef078b6f6cb727c67393c32ad68deff959083f531d1b30a70849ce174'
-            'SKIP'
+sha256sums=('cc77cf7bdd203efa064bb47aae8d03acf84f72e3253d7a791c250b69440fc382'
             'SKIP'
             'f3976a76352b09677487569a8538819fd393dbd6c8dbc6345f3022a08054faa9'
             '0cd7bccb05af010cc26cb0a0bb91cb68f279c4d64d7ace35e1902f020bf50311'
@@ -68,9 +65,8 @@ _ensure_local_nvm() {
 
 prepare() {
   cd mullvadvpn-app
-  git submodule init dist-assets/binaries wireguard-go-rs/libwg/wireguard-go
+  git submodule init dist-assets/binaries
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
-  git config submodule.wireguard-go-rs/libwg/wireguard-go.url "$srcdir/wireguard-go"
   git -c protocol.file.allow=always submodule update
 
   # Disable building rpm
@@ -79,22 +75,20 @@ prepare() {
   # Disable publishing for CIs
   patch --strip=1 desktop/packages/${pkgbase%-beta}/tasks/distribution.cjs < ../no-publish.diff
 
-  # Create wireguard-go build directory
-  mkdir -p "build/lib/$CARCH-unknown-linux-gnu"
-
   # Create shell-completions output directory
   mkdir -p build/shell-completions
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 
-  pushd "desktop/packages/${pkgbase%-beta}"
-  export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
   echo "Installing JavaScript dependencies..."
-  npm ci --no-audit --no-fund
+
+  pushd desktop
+  export npm_config_cache="$srcdir/npm_cache"
+  npm run ci
   popd
 }
 
@@ -109,20 +103,6 @@ build() {
 
   echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
 
-  echo "Building wireguard-go..."
-  pushd wireguard-go-rs/libwg
-  export GOPATH="$srcdir/gopath"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
-  popd
-
-  # Clean module cache for makepkg -C
-  go clean -modcache
-
   echo "Building Rust code in release mode using ${RUSTC_VERSION}..."
 
   cargo_crates_to_build=(
@@ -135,14 +115,12 @@ build() {
   cargo build "${CARGO_ARGS[@]}" "${cargo_crates_to_build[@]}"
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
+
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
     cargo run --bin mullvad "${CARGO_ARGS[@]}" -- shell-completions "${sh}" \
       build/shell-completions/
   done
-
-  echo "Updating relays.json..."
-  cargo run -p mullvad-api --bin relay_list "${CARGO_ARGS[@]}" > build/relays.json
 
   # Move binaries to correct locations in dist-assets
   binaries=(
@@ -156,8 +134,9 @@ build() {
     cp "target/release/${binary}" "dist-assets/${binary}"
   done
 
-  pushd "desktop/packages/${pkgbase%-beta}"
   echo "Packing Mullvad VPN ${PRODUCT_VERSION} artifact(s)..."
+
+  pushd "desktop/packages/${pkgbase%-beta}"
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   npm run pack:linux --release
@@ -166,8 +145,8 @@ build() {
 
 package_mullvad-vpn-beta() {
   pkgdesc+=" (desktop application)"
-  optdepends=('libappindicator: tray icon')
   depends+=('mullvad-vpn-daemon-beta')
+  optdepends=('libappindicator: tray icon')
   provides=("${pkgname%-beta}")
   conflicts=("${pkgname%-beta}")
   install="${pkgname%-beta}.install"
@@ -219,7 +198,7 @@ package_mullvad-vpn-daemon-beta() {
     "$pkgdir/opt/Mullvad VPN/resources/"
   ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" "$pkgdir/usr/bin/"
   install -Dm644 dist-assets/ca.crt -t "$pkgdir/opt/Mullvad VPN/resources/"
-  install -m644 build/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
+  install -m644 dist-assets/relays/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
   install -Dm644 dist-assets/linux/mullvad{-daemon,-early-boot-blocking}.service -t \
     "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 build/shell-completions/mullvad.bash \
