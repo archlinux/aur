@@ -1,6 +1,6 @@
 pkgbase = gogofetch-bin
 	pkgdesc = Fetch written in Go with image support (pre-compiled binary)
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://codeberg.org/nekohepott/goGoFetch
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gogofetch-bin
 	depends = chafa
 	provides = gogofetch
 	conflicts = gogofetch
-	source = https://codeberg.org/nekohepott/goGoFetch/releases/download/v1.0.10/gogofetch-v1.0.10-linux-amd64.tar.gz
-	sha256sums = 8012992bcde01cdb3bd4b0eb4e7b5f242c72aafe771b8062c2c0aef8e3ff1fc1
+	source = https://codeberg.org/nekohepott/goGoFetch/releases/download/v1.0.11/gogofetch-v1.0.11-linux-amd64.tar.gz
+	sha256sums = 20eb56e934bfc6dc7214352c962b9e7cc4270302e37f440d36f26bcfacf639b1
 
 pkgname = gogofetch-bin
