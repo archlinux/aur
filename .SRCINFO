@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-cuda
 	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)
-	pkgver = 1.113
+	pkgver = 1.113.1
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = koboldcpp-cuda
 	optdepends = zenity: native file picker dialogs
 	optdepends = yad: native file picker dialogs
 	optdepends = python-jinja: jinja2 templates
-	provides = koboldcpp=1.113
+	provides = koboldcpp=1.113.1
 	conflicts = koboldcpp
-	source = koboldcpp-cuda-1.113.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.113.tar.gz
+	source = koboldcpp-cuda-1.113.1.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.113.1.tar.gz
 	source = koboldcpp.desktop
 	source = koboldcpp.png
-	sha256sums = 847249c6c20ceeee13e2e1e0fde40308d0958b1913ae9b0be66e6de733d2c48b
+	sha256sums = ebaf7cf0fee821fa8c1171dab665bcdd3b6192997e7c560bbb4078eda90ec12e
 	sha256sums = 2f2f45a745b30392d01472c1f5e68f82e5e7d7353a4615cf94b9f0cd4fd0505b
 	sha256sums = d244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54
 
