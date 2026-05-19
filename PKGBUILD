@@ -3,10 +3,10 @@
 : ${aur_llamacpp_build_universal:=false}
 
 pkgname=llama.cpp-opencl
-pkgver=b8644
+pkgver=b9222
 pkgrel=1
-_build_number=8644
-_commit_id=39b27f0
+_build_number=9222
+_commit_id=9a532ae
 pkgdesc="Port of Facebook's LLaMA model in C/C++(with OpenCL Backend support)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
