@@ -4,7 +4,7 @@
 pkgname=python-statemachine
 pkgdesc="Python finite-state machines made easy"
 url="https://github.com/fgmacedo/$pkgname"
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -12,7 +12,7 @@ depends=('python' 'python-pydot')
 makedepends=('python-setuptools')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c57f548dea502b96785cda6596eda003cc6b9fd2bee2a22e4df0adbda51bfbb7c2db8c7a6c700745b9d3aff6ad5d8b34c1e0e63a0e93bcc17648594dfa0d2b1d')
+sha512sums=('d0dbc291361ff9c37b1adac6d3af5333958c945b04d10df9498baa1de8bc5c89b588d86c9006bad16b2b1c966423e397eeaf5ef7f711e4d7d6d2961d31812f15')
 
 _archive="python-statemachine-$pkgver"
 
