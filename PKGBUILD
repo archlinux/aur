@@ -1,20 +1,22 @@
 pkgname=smart-updater
-pkgver=1.1.0_alpha
+pkgver=1.2.0_alpha
 pkgrel=1
 pkgdesc="A lightweight, intelligent, and beautiful GUI update tool for CachyOS"
 arch=('any')
 url="https://github.com/UniqueSpirit/smart-updater"
 license=('GPL')
 depends=('python' 'python-pyqt6' 'pacman-contrib')
-source=("${pkgname}-${pkgver}.zip::$url/archive/refs/heads/main.zip")
-sha256sums=('76501e54478d7d3febf4207dd8d3490b3cbfeae6843527578c30330eafb5c7bd')
+# Zieht jetzt das feste Release, nicht den flexiblen Main-Branch
+source=("${pkgname}-${pkgver}.zip::$url/archive/refs/tags/v1.2.0-alpha.zip")
+sha256sums=('fa929852cd60be4cd59d7d3c38d7a99d40e44aabd1d30358ec537b6b36c83a56')
 
 package() {
     # 1. Den Hauptordner im System erstellen (/opt/smart-updater)
     mkdir -p "$pkgdir/opt/$pkgname"
 
     # 2. Alle Dateien aus deinem GitHub-Zip dorthin kopieren
-    cp -r "$srcdir/$pkgname-main/"* "$pkgdir/opt/$pkgname/"
+    # ACHTUNG: Da wir das Release laden, heißt der Ordner jetzt -1.2.0-alpha
+    cp -r "$srcdir/$pkgname-1.2.0-alpha/"* "$pkgdir/opt/$pkgname/"
 
     # 3. Einen ausführbaren Befehl für das Terminal erstellen
     mkdir -p "$pkgdir/usr/bin"
@@ -29,7 +31,7 @@ Type=Application
 Name=Smart Updater
 Comment=System-Updates einfach und smart
 Exec=smart-updater
-Icon=/opt/smart-updater/maskottchen.png
+Icon=/opt/smart-updater/Icon Logo.png
 Terminal=false
 Categories=System;Settings;" > "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
