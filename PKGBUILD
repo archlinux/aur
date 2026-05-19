@@ -1,7 +1,7 @@
 # Maintainer: jeryd leuck <jerydleuck@gmail.com>
 pkgname=msty-studio
 pkgver=2.7.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local."
 arch=('x86_64')
 url="https://msty.ai/"
@@ -17,6 +17,16 @@ conflicts=('msty' 'msty-deb' 'msty-bin' 'msty-rocm-bin')
 filename="MstyStudio_amd64_${pkgver}.deb"
 source=("$filename::https://next-assets.msty.studio/app/latest/linux/MstyStudio_amd64.deb?ver=$pkgver")
 sha256sums=("4dbd8aa69cd7de3ff12a1d219556dca7b7de16469f76b943a06f96d6134d3833")
+
+check() {
+  find "$pkgdir" -type f -exec sh -c 'file "$1" | grep -q ELF' _ {} \; -print | while read -r elf; do
+    if ldd "$elf" | grep -q "not found"; then
+      echo "Broken dependencies in $elf:"
+      ldd "$elf" | grep "not found"
+      exit 1
+    fi
+  done
+}
 
 package() {
   # Extract data.tar.xz from the debian package

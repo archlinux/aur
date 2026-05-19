@@ -1,7 +1,7 @@
 pkgbase = msty-studio
 	pkgdesc = Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local.
 	pkgver = 2.7.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://msty.ai/
 	arch = x86_64
 	license = proprietary
