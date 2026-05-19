@@ -1,0 +1,22 @@
+pkgbase = epiq
+	pkgdesc = CLI based issue tracker TUI - distributed and backed by git
+	pkgver = 0.6.15
+	pkgrel = 1
+	url = https://github.com/ljtn/epiq
+	arch = x86_64
+	license = LicenseRef-UNLICENSE
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	provides = epiq
+	replaces = nodejs-epiq
+	noextract = epiq-0.6.15.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = epiq-0.6.15.tgz::https://registry.npmjs.org/epiq/-/epiq-0.6.15.tgz
+	b2sums = ce7a568c7a59a0fe8714e78c98f28b3464ace4368872ba8195b88442bb78d65bd1b23b9f312e86f9c68b9183c262e5c392da0f455d75b1fcced6cc5af2ca5f1f
+
+pkgname = epiq

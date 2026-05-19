@@ -1,0 +1,3 @@
+[epiq]
+source = "npm"
+npm = "epiq"
