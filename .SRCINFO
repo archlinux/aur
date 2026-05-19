@@ -1,0 +1,15 @@
+pkgbase = zodiac-bin
+	pkgdesc = Modern, nice software for astrologers.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/zodiac-app
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = qt4
+	depends = qt6-declarative
+	provides = zodiac
+	conflicts = zodiac
+	source = https://sourceforge.net/projects/zodiac-app/files/zodiac-0.7.1.tar.gz
+	sha256sums = d010acccc764f453b080a4aaf695002b840f0a450648a3913bffb86789de865d
+
+pkgname = zodiac-bin
