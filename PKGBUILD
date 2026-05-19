@@ -19,6 +19,7 @@ depends=(
 )
 makedepends=(
   cmake
+  ninja
   opencl-clhpp
 )
 optdepends=(
@@ -27,26 +28,25 @@ optdepends=(
   'python-sentencepiece: needed for convert_hf_to_gguf.py'
   'python-pytorch: needed for convert_hf_to_gguf.py'
   'python-transformers: needed for convert_hf_to_gguf.py'
+  'python-gguf: needed for convert_hf_to_gguf.py'
 )
 conflicts=(libggml ggml llama.cpp llama.cpp-vulkan llama.cpp-cuda llama.cpp-clblast llama.cpp-opencl)
 provides=(llama.cpp)
+backup=("etc/conf.d/llama.cpp")
 source=(
   "llama.cpp-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
   llama.cpp.conf
-  llama.cpp.service	
+  llama.cpp.service
 )
 sha256sums=('SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
-)
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
 prepare() {
   ln -sf "llama.cpp-${pkgver}" llama.cpp
-
   source /opt/intel/openvino/setupvars.sh
 }
 build() {
-
   local _cmake_options=(
     -B build/ReleaseOV
     -G Ninja
