@@ -18,7 +18,7 @@ post_install() {
 }
 
 post_upgrade() {
-  if [ -f /etc/modulejail/modulejail.conf ]; then
+  if [ -f /etc/modulejail/modulejail-aur.conf ]; then
     source /etc/modulejail/modulejail-aur.conf
   fi
 
