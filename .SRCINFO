@@ -1,0 +1,18 @@
+pkgbase = agetha
+	pkgdesc = Agetha AI Desktop Companion
+	pkgver = 1.0
+	pkgrel = 5
+	install = agetha.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pygame
+	depends = python-pillow
+	depends = python-pytesseract
+	depends = python-openai
+	depends = tesseract-data-eng
+	depends = tesseract-data-rus
+	source = git+https://github.com/GoreliSuhar1/agetha.git
+	sha256sums = SKIP
+
+pkgname = agetha

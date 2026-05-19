@@ -1,0 +1,22 @@
+post_install() {
+    echo "--- Configuring Agetha ---"
+    # Используем переменную для пользователя, чтобы скрипт был универсальнее
+    USER_HOME=$(eval echo ~kakoito_4ellik)
+    CONFIG_DIR="$USER_HOME/.config/agetha"
+    CONFIG_FILE="$CONFIG_DIR/config.json"
+
+    if [ ! -f "$CONFIG_FILE" ]; then
+        mkdir -p "$CONFIG_DIR"
+        echo "Configuration file not found."
+        read -p "Enter your Groq API key: " api_key
+        echo "{\"api_key\": \"$api_key\"}" > "$CONFIG_FILE"
+        chown kakoito_4ellik:kakoito_4ellik "$CONFIG_FILE"
+        echo "Key successfully saved to $CONFIG_FILE"
+    else
+        echo "Configuration file already exists, skipping setup."
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
