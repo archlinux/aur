@@ -1,13 +1,13 @@
 pkgbase = fount-bin
 	pkgdesc = A terminal-based Fountain screenplay editor (Binary)
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/BeetleBot/FountTUI
 	arch = x86_64
 	license = GPL3
 	provides = fount
 	conflicts = fount
-	source = fount-bin-0.10.0.tar.gz::https://github.com/BeetleBot/FountTUI/releases/download/v0.10.0/Fount-Linux-x64.tar.gz
-	sha256sums = 4a158e68fa4c2322a1503d33499fecad13a104b8b56cf8e90610216111eb2190
+	source = fount-bin-0.10.1.tar.gz::https://github.com/BeetleBot/FountTUI/releases/download/v0.10.1/Fount-Linux-x64.tar.gz
+	sha256sums = 179630816704c7a27fc19556b06359b114092413855b39560644c367e65ead6e
 
 pkgname = fount-bin
