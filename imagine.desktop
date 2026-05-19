@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=imagine
-Comment=PNG/JPEG optimization app
+Comment=PNG/JPEG/WebP/AVIF optimization app
 Exec=/usr/bin/imagine
 Terminal=false
 Type=Application
