@@ -1,6 +1,6 @@
 pkgbase = hyprosd-git
 	pkgdesc = Hyprland-focused Wayland OSD daemon
-	pkgver = 0.2.0.r22.g425d4bb
+	pkgver = 0.2.0.r1.g7d3d2f7
 	pkgrel = 1
 	url = https://github.com/jameswylde/hyprosd
 	arch = x86_64
