@@ -30,7 +30,7 @@ _cuda_arch="${CUDA_ARCH:-75;86;89;120}"
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Pure CUDA version of the push-to-talk voice-to-text tool"
 arch=(x86_64 aarch64)
@@ -78,7 +78,7 @@ source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
   "$_pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz.asc"
 )
-sha256sums=('8aa70619fa1fdd9a1f26675e57bdc2e8f96ddfb1789c97ca6c83189154fcde98'
+sha256sums=('1a80d5d28136535d705bfcb4e4a0d07fef366ace148e1a5627bdf07185c0821a'
             'SKIP')
 
 prepare() {
@@ -149,7 +149,7 @@ build() {
     # Clear flags set by makepkg — they interfere with whisper-rs/whisper.cpp
     unset RUSTFLAGS DEBUG_RUSTFLAGS CFLAGS CXXFLAGS LDFLAGS
 
-    # Remap build paths so binaries don't embed $srcdir references
+    # Remap build paths so binaries don't contain $srcdir references
     local _src="$srcdir/$pkgname-$pkgver"
     export RUSTFLAGS="--remap-path-prefix=$_src/= --remap-path-prefix=${CARGO_HOME}/registry/src/=cargo/"
     export CFLAGS="-ffile-prefix-map=$_src/="
