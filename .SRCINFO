@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-be
 	pkgdesc = Belarusian language pack for Firefox Nightly
-	pkgver = 152.0a1.20260518.093736
+	pkgver = 153.0a1.20260518.215735
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-be
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-be-152.0a1.20260518.093736.xpi
-	source = firefox-nightly-i18n-be-152.0a1.20260518.093736.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-152.0a1.be.langpack.xpi
-	sha256sums = 924549844ebe58bb37fd80961c5817543fe20370ed9d01eb0bc1fd605a7c8e10
+	noextract = firefox-nightly-i18n-be-153.0a1.20260518.215735.xpi
+	source = firefox-nightly-i18n-be-153.0a1.20260518.215735.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-153.0a1.be.langpack.xpi
+	sha256sums = 56e52c022e36606e770ba14b9240c6c39b2b2178f7168ca212f5a4a81be07e78
 
 pkgname = firefox-nightly-i18n-be
