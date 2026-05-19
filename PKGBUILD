@@ -9,6 +9,8 @@ arch=('x86_64')
 url="https://github.com/psi4j/sunsetr"
 license=('MIT')
 depends=('wayland')
+replaces=('sunsetr-git-debug')
+options=('!debug')
 
 _github_asset_filename="${_realname}-v${pkgver}-x86_64-linux.tar.gz"
 _extracted_dir_name="${_realname}-v${pkgver}"
