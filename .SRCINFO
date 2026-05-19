@@ -1,7 +1,7 @@
 pkgbase = poleplex
 	pkgdesc = Minimalist AUR helper with dependency resolution, clean chroot builds, and parallel compilation
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RidelLazor/PolePlex
 	install = poleplex.install
 	arch = any
