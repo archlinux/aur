@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 provides=('astra')
 conflicts=('astra')
 depends=('fuse2')
-makedepends=('npm' 'base-devel' 'python' 'alsa-lib')
+makedepends=('npm' 'base-devel' 'python' 'alsa-lib' 'librsvg')
 options=('!strip' '!debug')
 source=("git+$url.git")
 md5sums=('SKIP')
@@ -36,8 +36,10 @@ EOF
 
 build() {
   cd "${srcdir}/astra"
-
   npm run build && npx electron-builder --linux --dir
+
+  cd "${srcdir}/astra/logo"
+  rsvg-convert -f png -o astra.png -a astra-logo-static.svg
 }
 
 package() {
@@ -48,7 +50,7 @@ package() {
   install -d "${pkgdir}/opt/astra"
   cp -r "${basedir}/dist/linux-unpacked/"* "${pkgdir}/opt/astra/"
 
-  install -Dm644 "${basedir}/assets/logo/astra-logo-static.svg" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/astra.svg"
+  install -Dm644 "${basedir}/assets/logo/astra.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/astra.svg"
 
   install -Dm644 "${srcdir}/astra.desktop" "${pkgdir}/usr/share/applications/astra.desktop"
 }

@@ -9,6 +9,7 @@ pkgbase = astra-music-git
 	makedepends = base-devel
 	makedepends = python
 	makedepends = alsa-lib
+	makedepends = librsvg
 	depends = fuse2
 	provides = astra
 	conflicts = astra
