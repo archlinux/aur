@@ -6,7 +6,7 @@ pkgdesc="A tiny qt6/qml application to display information about the running sys
 arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/hyprsysteminfo"
 license=('BSD-3-Clause')
-depends=('hyprtoolkit' 'hyprutils' 'libpci')
+depends=('hyprtoolkit' 'hyprutils' 'pciutils')
 makedepends=('cmake' 'glaze')
 source=(
 	"https://github.com/hyprwm/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
