@@ -1,18 +1,20 @@
 pkgbase = hyprwall-git
-	pkgdesc = Wallpaper manager for Hyprland
-	pkgver = r41.0227305
+	pkgdesc = GUI менеджер обоев для Hyprland с поддержкой видео
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Rainkord/HyprWall
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = wayland-protocols
 	makedepends = git
 	depends = qt6-base
-	depends = wayland
 	depends = hyprpaper
-	optdepends = mpvpaper: video wallpaper support
-	provides = hyprwall
-	conflicts = hyprwall
+	depends = mpvpaper
+	depends = wayland
+	optdepends = papirus-icon-theme: icon theme support
 	source = hyprwall-git::git+https://github.com/Rainkord/HyprWall.git
 	sha256sums = SKIP
 

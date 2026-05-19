@@ -1,30 +1,30 @@
 pkgname=hyprwall-git
-pkgver=r41.0227305
+pkgver=0.1.2
 pkgrel=1
-pkgdesc="Wallpaper manager for Hyprland"
+pkgdesc="GUI менеджер обоев для Hyprland с поддержкой видео"
 arch=('x86_64')
 url="https://github.com/Rainkord/HyprWall"
 license=('MIT')
-depends=('qt6-base' 'wayland' 'hyprpaper')
-optdepends=('mpvpaper: video wallpaper support')
-makedepends=('cmake' 'git')
-provides=('hyprwall')
-conflicts=('hyprwall')
+depends=('qt6-base' 'hyprpaper' 'mpvpaper' 'wayland')
+optdepends=('papirus-icon-theme: icon theme support')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'wayland-protocols' 'git')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags --abbrev=0 | sed 's/^v//'
 }
 
 build() {
-    cmake -B build -S "$pkgname" \
+    cd "$pkgname"
+    cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build build -j$(nproc)
+    cmake --build build
 }
 
 package() {
+    cd "$pkgname"
     DESTDIR="$pkgdir" cmake --install build
 }
