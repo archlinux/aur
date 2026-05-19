@@ -1,6 +1,6 @@
 # Maintainer: Matthias Schlich
 pkgname=snglrtty
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Terminal audio visualizer — singularity in your TTY"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libpulse')
 makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/the-unknown/snglrtty/archive/v$pkgver.tar.gz")
-sha256sums=('06b75cfddedd6b3afcf8c61e12699656a55f64c9e4afc5b7164447c28bc7633a')
+sha256sums=('25312c4789b8419e63f0e9151be2bbbef8218e0a5c7c314b19030b2fdb5cd6ef')
 
 prepare() {
     cd "$pkgname-$pkgver"
