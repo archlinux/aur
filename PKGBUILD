@@ -2,16 +2,17 @@
 
 pkgname=pebble-bin
 pkgver=0.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Local-first desktop email client built with Tauri"
 arch=("x86_64")
 url="https://github.com/QingJ01/Pebble"
 license=("AGPL-3.0-only")
 depends=(
   "dbus"
-  "fuse2"
+  "gtk3"
   "hicolor-icon-theme"
   "libayatana-appindicator"
+  "webkit2gtk-4.1"
 )
 optdepends=(
   "gnome-keyring: credential storage backend on GNOME-like desktops"
@@ -38,13 +39,18 @@ sha256sums=(
   "SKIP"
 )
 sha256sums[0]=e0a6d28759fb9966370a858911e19ae6bd5c48fd986ebebfd54d8379d687a5e3
-sha256sums[1]=3f57c46804cfb942f87004fc65b47dac9beb53d4617a755a14a2f2e098bdf6e0
+sha256sums[1]=2b1160e0656b1f61b4c88e84e040af8f2f1100f81845ec5d8ffeb04ea8544ae6
 sha256sums[2]=3cbe399effb8a4e2c3ed81e755d658a1c91bf4acde14a62da080fcd68759e531
 sha256sums[3]=3190ee5ee94568f0fe7adb73aaa01b9423a89536d0004308cc61b137b0db9e7c
 sha256sums[4]=0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 package() {
-  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/Pebble.AppImage"
+  rm -rf "${srcdir}/squashfs-root"
+  chmod +x "${srcdir}/${_appimage}"
+  cd "${srcdir}"
+  "./${_appimage}" --appimage-extract usr/bin/pebble >/dev/null
+
+  install -Dm755 "${srcdir}/squashfs-root/usr/bin/pebble" "${pkgdir}/opt/${pkgname}/pebble"
   install -Dm755 "${srcdir}/pebble-bin.sh" "${pkgdir}/usr/bin/pebble"
   install -Dm644 "${srcdir}/pebble.desktop" "${pkgdir}/usr/share/applications/pebble.desktop"
   install -Dm644 "${srcdir}/pebble.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/pebble.png"
