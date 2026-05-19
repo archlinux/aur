@@ -343,9 +343,9 @@ class FlmChatApp(Adw.Application):
         
         # Update buttons
         any_installed = any(m.get('installed', False) for m in self.models)
-        if not any_installed or not self.current_model:
+        if not any_installed:
             self.btn_new.set_sensitive(False)
-            self.btn_new.set_tooltip_text("Install or select a model to start a new chat.")
+            self.btn_new.set_tooltip_text("Install a model to start a new chat.")
         else:
             self.btn_new.set_sensitive(True)
             self.btn_new.set_tooltip_text("New Chat")

@@ -1,6 +1,6 @@
 # Maintainer: Marley <marley@example.com>
 pkgname=fastflowlm-gtk
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A minimalist, modern desktop interface for FastFlowLM, built with GTK 4 and Libadwaita."
 arch=('any')
@@ -16,7 +16,7 @@ source=("fastflowlm-gtk.desktop"
 sha256sums=('a1cb338b37b7eef0b3824faf4fd622ec9cb4cef26e975bd7bbf9464bd8ff240b'
             'fd6abca67c9170a7795c66c0bf46c9b111a612a930ffae9dd05defeecbbe8c4e'
             '71b15ffa83eb4403d40a9a4c7faac38c1fb37d2594c45b86f9716f20efe6b6f0'
-            '9a33b59115edfc90fc778e73824ee65f42393e48410d7a658005f14e50d471b9'
+            'e7ad07e9b5cc3e6c89c91ce4a6ec732a8d92b1a46d014d8328a20c71b3332246'
             'a402d09de88b74929723ff7367c58dd05aba4f12ff8c9711fae70476de9734e3'
             'f359d5e2b5d03268ab4fdbedb85c3ea208199c007d2c355f5e445ed6c5de0441')
 
