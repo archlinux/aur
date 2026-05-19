@@ -11,6 +11,8 @@ depends=('wayland')
 makedepends=('rust' 'cargo')
 provides=('sunsetr')
 conflicts=('sunsetr-bin' 'sunsetr-git')
+replaces=('sunsetr-git-debug')
+options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('56fc9776b858d1d2b28e62cdcdff079641936d9694abb56108524475a2a51316')
 
