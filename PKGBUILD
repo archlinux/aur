@@ -10,7 +10,7 @@ depends=(
   'pacman>5'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-rs/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux.tar.gz")
-sha256sums=('611a61aff58577aabcf364918154c8e34c99eae9619d70e4689c5b74ff5e418e')
+sha256sums=('5bd3acb7f560ee52b8badfd8dce1db7299e9eb396685065b5149f0678691715b')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"

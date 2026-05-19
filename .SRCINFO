@@ -7,6 +7,6 @@ pkgbase = kdash-bin
 	license = MIT
 	depends = pacman>5
 	source = kdash-bin-1.1.2.tar.gz::https://github.com/kdash-rs/kdash/releases/download/v1.1.2/kdash-linux.tar.gz
-	sha256sums = 611a61aff58577aabcf364918154c8e34c99eae9619d70e4689c5b74ff5e418e
+	sha256sums = 5bd3acb7f560ee52b8badfd8dce1db7299e9eb396685065b5149f0678691715b
 
 pkgname = kdash-bin
