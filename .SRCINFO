@@ -1,0 +1,19 @@
+pkgbase = modulejail-git
+	pkgdesc = Shrink a Linux host's kernel-module attack surface via modprobe.d blacklist (git)
+	pkgver = r700.1.2.3
+	pkgrel = 1
+	url = https://github.com/jnuyens/modulejail
+	install = usage.install
+	arch = any
+	license = GPL-3.0-only
+	depends = coreutils findutils gawk
+	optdepends = curl: optional post-run update check
+	            wget: optional post-run update check
+	            util-linux: optional syslog logging of blocked module loads
+	provides = modulejail
+	conflicts = modulejail
+	source = git+https://github.com/jnuyens/modulejail.git
+	sha256sums = SKIP
+
+pkgname = modulejail-git
+

@@ -1,0 +1,22 @@
+post_install() {
+  echo ""
+  echo "Run 'sudo modulejail' to generate a modprobe.d blacklist for unused kernel modules."
+  echo ""
+  echo "The blacklist is written to /etc/modprobe.d/modulejail-blacklist.conf by default."
+  echo "Use -o <path> to write elsewhere, or -p <profile> to select a baseline profile"
+  echo "(minimal, conservative, desktop). Default profile: conservative."
+  echo ""
+  echo -e "\e[1;32mQuick commands:\e[0m"
+  echo -e "  \e[1;31msudo modulejail -f\e[0m                    # conservative profile, fail on blocked load"
+  echo -e "  \e[1;31msudo modulejail -p desktop -f\e[0m          # desktop profile, fail on blocked load"
+  echo ""
+  echo "See 'man 8 modulejail' for full documentation including profiles, whitelist,"
+  echo "exit codes, and safety model."
+  echo ""
+  echo "To revert: sudo rm /etc/modprobe.d/modulejail-blacklist.conf && sudo reboot"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
