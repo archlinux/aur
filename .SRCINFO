@@ -1,6 +1,6 @@
 pkgbase = arkloop-git
 	pkgdesc = Desktop app for building conversational AI agents
-	pkgver = 26.5.7
+	pkgver = 26.5.19
 	pkgrel = 1
 	url = https://github.com/qqqqqf-q/Arkloop
 	arch = x86_64
