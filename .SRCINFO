@@ -1,6 +1,6 @@
 pkgbase = python-flashinfer
 	pkgdesc = Kernel Library for LLM Serving
-	pkgver = 0.6.9
+	pkgver = 0.6.11.post3
 	pkgrel = 1
 	url = https://github.com/flashinfer-ai/flashinfer
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = python-flashinfer
 	provides = python-flashinfer
 	conflicts = python-flashinfer-rocm
 	options = !strip
-	source = flashinfer-0.6.9.tar.gz::https://github.com/flashinfer-ai/flashinfer/archive/refs/tags/v0.6.9.tar.gz
+	source = flashinfer-0.6.11.post3.tar.gz::https://github.com/flashinfer-ai/flashinfer/archive/refs/tags/v0.6.11.post3.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-flashinfer
