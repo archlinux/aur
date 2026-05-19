@@ -4,6 +4,7 @@ stages:
   - check
   - build
   - update_aur
+  - deploy
 
 check_version:
   stage: check
@@ -40,7 +41,7 @@ build:
     - chown -R builder /home/builder/kwin-osd-bottom
     - cd /home/builder/kwin-osd-bottom
     - sudo -u builder makepkg -s --noconfirm --skippgpcheck
-    - 'curl -H "Content-Type:application/json" -d "{\"content\":\"✅ kwin-osd-bottom $NEW_VERSION compilato! Scarica da GitLab.\"}" $DISCORD_WEBHOOK'
+    - cp /home/builder/kwin-osd-bottom/*.pkg.tar.zst .
   artifacts:
     paths:
       - "*.pkg.tar.zst"
@@ -69,3 +70,22 @@ update_aur:
     - git add PKGBUILD .SRCINFO
     - git commit -m "update to $NEW_VERSION"
     - git push
+
+deploy:
+  stage: deploy
+  needs:
+    - job: check_version
+      artifacts: true
+    - job: build
+      artifacts: true
+  script:
+    - test -f build.env && source build.env || exit 0
+    - test -n "$NEW_VERSION" || exit 0
+    - pacman -Sy --noconfirm openssh
+    - mkdir -p ~/.ssh
+    - echo "$DEPLOY_SSH_KEY" | base64 -d > ~/.ssh/id_ed25519
+    - chmod 600 ~/.ssh/id_ed25519
+    - ssh-keyscan 144.24.248.38 >> ~/.ssh/known_hosts
+    - scp *.pkg.tar.zst ubuntu@144.24.248.38:/var/www/repo/x86_64/
+    - ssh ubuntu@144.24.248.38 "repo-add /var/www/repo/x86_64/kwin-osd-bottom.db.tar.gz /var/www/repo/x86_64/*.pkg.tar.zst"
+    - 'curl -H "Content-Type:application/json" -d "{\"content\":\"✅ kwin-osd-bottom $NEW_VERSION disponibile! Fai sudo pacman -Syu per aggiornare.\"}" $DISCORD_WEBHOOK'
