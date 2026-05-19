@@ -1,6 +1,6 @@
 # Maintainer: Wasylq <wasylq@protonmail.com>
 pkgname=fss
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Scrapes all scenes and metadata from a studio URL'
 arch=('x86_64' 'aarch64')
