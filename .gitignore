@@ -1,0 +1,11 @@
+# Arch Linux packaging
+pkg/
+src/
+*.part
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+*.zip
+*.tgz
+Antigravity*
