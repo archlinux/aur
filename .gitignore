@@ -1,0 +1,9 @@
+# makepkg build artifacts
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+
+# Downloaded sources (kept in PKGBUILD's source array, not in git)
+Antigravity-*.AppImage
+Antigravity-*.tar.gz
