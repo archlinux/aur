@@ -15,7 +15,6 @@ depends=(
     'clang'
     'cmake'
     'pkg-config'
-    'rtaudio'
     'glfw'
     'glm'
     'eigen'
