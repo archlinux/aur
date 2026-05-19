@@ -64,11 +64,13 @@ comfyui:
 
 ### Installation prefix
 
-The default installation directory is `/opt/comfyui`. To install elsewhere (e.g., a larger drive), edit `_prefix` in the `PKGBUILD` before building:
+The default installation directory is `/opt/comfyui`. To install elsewhere (e.g., a larger drive), set `_prefix` as an environment variable when building:
 
 ```bash
-_prefix="/var/remise/comfyui"
+_prefix="/var/remise/comfyui" makepkg -sf
 ```
+
+Alternatively, edit `_prefix` directly in the `PKGBUILD`.
 
 ## Uninstall
 
