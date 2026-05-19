@@ -1,15 +1,15 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=intel-level-zero-raytracing-support
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="Intel oneAPI Raytracing Support"
 arch=('x86_64')
 url="https://github.com/intel/level-zero-raytracing-support"
 license=('Apache-2.0')
 depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('cmake' 'ninja' 'git')
-source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0bfb03903154228cdba0320e3bc09c57787558b368da315b9b32e9603198b5b3')
+source=("$url/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('5ea2371faedf42855554f09250f6ffc46374037116ba812838c9edb49bd9e7e5')
 
 prepare() {
 	cd "${pkgname:6}-$pkgver"
