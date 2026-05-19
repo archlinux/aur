@@ -19,7 +19,8 @@ package() {
     install -d "${pkgdir}/usr/bin"
 
     # Копируем сам скрипт Python
-    install -m644 "${srcdir}/osu-fetch-${pkgver}/osufetch.py" "${pkgdir}/usr/share/osu-fetch/osufetch.py"
+    install -m644 "${srcdir}"/*/osufetch.py "${pkgdir}/usr/share/osu-fetch/osufetch.py"
+
 
     # Бросаем запускатор в системный PATH и делаем его исполняемым
     install -m755 "${srcdir}/osu-fetch.sh" "${pkgdir}/usr/bin/osu-fetch"
