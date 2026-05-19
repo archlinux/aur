@@ -1,9 +1,21 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.2.0 ➙ 4.4.0
+ Tags         : 4.2.1 ➙ 4.6.0
               : 2026-05-07 ➙ 2026-05-18
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-18   : 4.6.0
+              - **4.6.0**
+            
+                * Loader entries are not used for UKI layout.
+                  Turn off messages about missing loader entries.
+            
+                **4.5.0**
+            
+                * Enhance sd-boot-find-mounts using liblkid (new dependency)
+                * Kernel ALPM hook trigger update.
+              - update Changelog
 
  2026-05-18   : 4.4.0
               - **4.4.0**
@@ -36,20 +48,4 @@
 
  2026-05-07   : 4.2.1
               - Make sure test suite runs in fresh set up - fixed
-              - update Changelog
-
- 2026-05-07   : 4.2.0
-              - tidy up for 4.2.0 release
-              - **4.0.1**
-            
-                * New C-code alternative to bash tools..
-            
-                  Activate: /usr/lib/sd-boot/set-alternative binary
-                  Bash:     /usr/lib/sd-boot/set-alternative bash
-            
-                  Bash version remains available for now, and can be re-activated
-                  using *set-alternative*.
-            
-                  See Release for details
- 2026-04-30   ⋯
               - update Changelog
