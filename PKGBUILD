@@ -7,12 +7,12 @@
 # Bitwarden (PM and SM), GNOME Keyring, and custom WASM plugins.  It includes
 # an SSH agent with FUSE-mounted key files and PAM auto-unlock support.
 #
-# The release workflow renders this file by substituting 0.0.27.
+# The release workflow renders this file by substituting 0.0.28.
 # At build time, pkgver() overrides the static version with the actual
 # git-derived version.
 
 pkgname=rosec-git
-pkgver=0.0.27
+pkgver=0.0.28
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)"
 arch=('x86_64' 'aarch64')
@@ -170,15 +170,28 @@ package() {
     install -Dm644 contrib/pam/rosec \
         "${pkgdir}/etc/pam.d/rosec"
 
-    # WASM providers — built from source, bundled in the single package
+    # WASM providers — built from source, bundled in the single package.
+    # Each provider also installs its .wasm.policy.toml sidecar, which is
+    # mandatory under all wasm_verify modes (disabled mode only skips the
+    # cryptographic check, not the declarative policy). No .minisig is
+    # shipped: source builds aren't signed, so users of rosec-git must set
+    # wasm_verify = "disabled" in their config.
     install -Dm644 rosec-bitwarden-pm/target/wasm32-wasip1/release/rosec_bitwarden_pm.wasm \
         "${pkgdir}/usr/lib/rosec/providers/rosec_bitwarden_pm.wasm"
+    install -Dm644 rosec-bitwarden-pm/rosec_bitwarden_pm.wasm.policy.toml \
+        "${pkgdir}/usr/lib/rosec/providers/rosec_bitwarden_pm.wasm.policy.toml"
     install -Dm644 rosec-bitwarden-sm/target/wasm32-wasip1/release/rosec_bitwarden_sm.wasm \
         "${pkgdir}/usr/lib/rosec/providers/rosec_bitwarden_sm.wasm"
+    install -Dm644 rosec-bitwarden-sm/rosec_bitwarden_sm.wasm.policy.toml \
+        "${pkgdir}/usr/lib/rosec/providers/rosec_bitwarden_sm.wasm.policy.toml"
     install -Dm644 rosec-gnome-keyring/target/wasm32-wasip1/release/rosec_gnome_keyring.wasm \
         "${pkgdir}/usr/lib/rosec/providers/rosec_gnome_keyring.wasm"
+    install -Dm644 rosec-gnome-keyring/rosec_gnome_keyring.wasm.policy.toml \
+        "${pkgdir}/usr/lib/rosec/providers/rosec_gnome_keyring.wasm.policy.toml"
     install -Dm644 rosec-keepassxc-file/target/wasm32-wasip1/release/rosec_keepassxc_file.wasm \
         "${pkgdir}/usr/lib/rosec/providers/rosec_keepassxc_file.wasm"
+    install -Dm644 rosec-keepassxc-file/rosec_keepassxc_file.wasm.policy.toml \
+        "${pkgdir}/usr/lib/rosec/providers/rosec_keepassxc_file.wasm.policy.toml"
 
     # Service activation files are generated at runtime by `rosec enable`
     # with the correct binary paths — no static copies shipped.
