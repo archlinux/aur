@@ -1,7 +1,7 @@
 # Maintainer: Latte macchiato <contact@lattemacchiato.dev>
 pkgname=plezy-git
 _pkgname=plezy
-pkgver=2.1.1.r15.g81b05f0
+pkgver=2.1.1.r23.g423be62
 pkgrel=1
 pkgdesc='A modern Plex client for desktop and mobile'
 arch=('x86_64')
@@ -30,13 +30,13 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!debug')
-_flutter_ver=3.38.6
+_flutter_ver=3.44.0
 source=(
     "$_pkgname::git+$url.git"
     "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutter_ver}-stable.tar.xz"
 )
 sha256sums=('SKIP'
-            'a70e3b829f53acd013aae65995755db0f421457b5ab754afa5a344cd5ec4d8d5')
+            'e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5')
 
 pkgver() {
     cd "$_pkgname"
