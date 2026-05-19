@@ -1,6 +1,6 @@
 pkgbase = azsh
 	pkgdesc = A lightweight CLI tool to access Azure Cloud Shell directly from your terminal
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/ayanrajpoot10/azsh
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = azsh
 	makedepends = go
 	provides = azsh
 	conflicts = azsh
-	source = azsh-0.1.0.tar.gz::https://github.com/ayanrajpoot10/azsh/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 0e5ae371783b3747d545a680bacd3a3eaae8595f3f4b6b8039d0f6a8be0a997c
+	source = azsh-0.1.1.tar.gz::https://github.com/ayanrajpoot10/azsh/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 68bbcbd097a61555e9f8996bb24940195e3bee0c7b2783f6a88c0053f12bbada
 
 pkgname = azsh
