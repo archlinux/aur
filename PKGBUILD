@@ -2,7 +2,7 @@
 
 pkgname=poleplex
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimalist AUR helper with dependency resolution, clean chroot builds, and parallel compilation'
 arch=('any')
 url='https://github.com/RidelLazor/PolePlex'
