@@ -3,7 +3,7 @@
 _pkgname="fluxcast"
 pkgname="$_pkgname-git"
 pkgver=0.1.0.beta.r2.g3845c5e
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
 url="https://github.com/IlyaP358/fluxcast"
@@ -61,7 +61,7 @@ package() {
   install -Dm644 "$_pkgsrc/tray.py" -t "$pkgdir/opt/$_pkgname/"
   install -Dm644 "$_pkgsrc/wfd.py" -t "$pkgdir/opt/$_pkgname/"
 
-  install -Dm644 "$_pkgsrc/assets/flcast_logo_512x512.png" -t "$pkgdir/opt/$_pkgname/"
+  install -Dm644 "$_pkgsrc/assets/flcast_logo_512x512.png" -t "$pkgdir/opt/$_pkgname/assets/"
   install -Dm644 "$_pkgsrc/fluxcast.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "$_pkgsrc/assets/flcast_logo_512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/fluxcast.png"
 
