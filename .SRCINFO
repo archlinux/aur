@@ -1,10 +1,10 @@
 pkgbase = mesen-ce-git
 	pkgdesc = Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS)
-	pkgver = r3573.85cb76e9
+	pkgver = r3674.22424d7
 	pkgrel = 1
 	url = https://github.com/nesdev-org/MesenCE
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = dotnet-sdk-8.0
 	makedepends = git
 	makedepends = zip
