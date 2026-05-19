@@ -1,0 +1,17 @@
+pkgbase = electron-dam-bin
+	pkgdesc = A bundle based digital asset manager built on top of electron using React and typescript. Featuring Semantic Search and Ollama support. (Prebuilt version.Use system-wide electron).
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/simeonradivoev/electron-dam
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = electron39
+	provides = electron-dam=1.1.0
+	conflicts = electron-dam
+	source = electron-dam-1.1.0-x86_64.AppImage::https://github.com/simeonradivoev/electron-dam/releases/download/1.1.0/electron-dam.linux.1.1.0.AppImage
+	source = electron-dam.sh
+	sha256sums = d90931f5013dd7e7ecbbb5691cf4a9e082f0c5d993479fd2ade12da7dbc8d43d
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = electron-dam-bin
