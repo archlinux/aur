@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=inlyne-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='A GPU powered yet browserless tool to help you quickly view markdown files in the blink of an eye'
 arch=(x86_64)
@@ -11,7 +11,7 @@ source=("$url/releases/download/v$pkgver/inlyne-v$pkgver-x86_64-unknown-linux-gn
 depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr openssl)
 conflicts=('inlyne')
 provides=('inlyne')
-b2sums=('ad305c6eb0cd63f1f9e3a6abf6652903a6fd4bea6a94ec538fadb54624846be46b4f57283f40988451a1591966f990dd5ccac5f7e16cfa14c0738ebce075c76e')
+b2sums=('01c341b75c02624dc9ccb3b8ccf08a76bc0694da52b6caab9f5de8ba657da9b12131884ee12de9f882d94855bcfa708533a92c57699a1c0a6b82b8faeade53ca')
 
 package() {
   cd "$srcdir/inlyne-v$pkgver-x86_64-unknown-linux-gnu"
