@@ -1,7 +1,7 @@
 pkgbase = mpddiscordrpc
 	pkgdesc = Display MPD currently playing track in Discord Rich Presence
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/methamphetaminelab/MPDDiscordRPC
 	arch = any
 	license = MIT
@@ -14,7 +14,8 @@ pkgbase = mpddiscordrpc
 	depends = python-pypresence
 	depends = python-mpd2
 	depends = python-requests
-	source = mpddiscordrpc::git+https://github.com/methamphetaminelab/MPDDiscordRPC.git#tag=v0.1.0
+	optdepends = python-ytmusicapi: YouTube Music album art lookup
+	source = mpddiscordrpc::git+https://github.com/methamphetaminelab/MPDDiscordRPC.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = mpddiscordrpc
