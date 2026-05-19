@@ -1,13 +1,14 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=bitbucket-cli
 pkgver=0.3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful command-line interface for Bitbucket Cloud - manage repos, PRs, issues, and pipelines from your terminal with OAuth 2.0"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pegasusheavy/bitbucket-cli"
 license=('MIT')
 depends=('dbus' 'gcc-libs' 'glibc')
-makedepends=('cargo')
+makedepends=('cargo' 'dbus' 'pkgconf')
+options=('!lto')
 optdepends=(
     'gnome-keyring: store credentials in GNOME Keyring via Secret Service'
     'kwallet: store credentials in KDE Wallet via Secret Service'
@@ -16,22 +17,31 @@ provides=('bitbucket')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pegasusheavy/bitbucket-cli/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('4e480de12aecb11d04f8c2ce3c312dbe4c1c150cc26a18b324cdaacc4c109af1')
 
+_rust_env() {
+    export RUSTUP_TOOLCHAIN=stable
+    # Upstream enables release LTO; disable for distro builds to avoid LLVM
+    # bitcode mismatches when CC points at system clang (LLVM 22) vs rustc (LLVM 21).
+    export CARGO_PROFILE_RELEASE_LTO=false
+    unset CC CXX CFLAGS CXXFLAGS LDFLAGS
+}
+
 prepare() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    _rust_env
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    _rust_env
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    _rust_env
+    export CARGO_TARGET_DIR=target
     cargo test --frozen --release
 }
 
