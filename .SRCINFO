@@ -1,6 +1,6 @@
 pkgbase = snry-shell
 	pkgdesc = Snry Shell - Hyprland desktop shell managed by snry-daemon
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/sonroyaalmerol/snry-shell
 	install = snry-shell.install
@@ -99,7 +99,7 @@ pkgbase = snry-shell
 	provides = snry-shell-qs=$pkgver
 	conflicts = snry-shell-qs
 	replaces = snry-shell-qs
-	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v3.1.0
+	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v3.1.1
 	sha256sums = SKIP
 
 pkgname = snry-shell
