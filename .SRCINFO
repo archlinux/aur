@@ -1,0 +1,19 @@
+pkgbase = ytc
+	pkgdesc = YouTube TUI client — search, browse history/playlists/subscriptions, play via mpv
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MURDERRA/YTC
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go>=1.21
+	depends = mpv
+	depends = yt-dlp
+	depends = chafa
+	optdepends = firefox: cookie-based auth for history, playlists, subscriptions
+	optdepends = chromium: alternative browser for cookie auth
+	source = ytc-1.0.0.tar.gz::https://github.com/MURDERRA/YTC/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ytc
