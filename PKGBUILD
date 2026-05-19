@@ -17,7 +17,7 @@ _pkgname=nordix-optimized-ananicy-cpp
 pkgname=nordix-optimized-ananicy-cpp
 pkgver=1.2.0.r1.ga42a187
 pkgrel=1
-pkgdesc="Heavily CPU cache optimized: 28-42% more efficient than standard system/git version - nand fix-missing-unistd-includes.patch"
+pkgdesc="Heavily CPU-Cache Optimized: 28%/42% more efficient than standard system/git version - and fix-missing-unistd-includes.patch"
 arch=(x86_64)
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp"
 
