@@ -2,7 +2,7 @@
 
 _pyname=acstools
 pkgname=python-${_pyname}-doc
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Documentation for Python ACS Tools"
 arch=('any')
@@ -14,12 +14,12 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-numpydoc'
              'python-scikit-image')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2035c4cc467ac15f7e06ca8acbb32e41')
+md5sums=('29dfb0807c336bae3a4c9ca765671496')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
 
-    make html
+    make SPHINXOPT="" html
 }
 
 package() {
