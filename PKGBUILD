@@ -1,5 +1,5 @@
-# Maintainer: Fredy García <frealgagu at gmail dot com>
-# Contributor: Damian Nowak <spam at nowaker dot net>
+# Maintainer: Damian Nowak <spam at nowaker dot net>
+# Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=whatsapp-nativefier
 pkgver=2.3000.1019818867
