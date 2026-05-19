@@ -1,6 +1,6 @@
 pkgbase = snry-dm
 	pkgdesc = Snry Shell Display Manager - Hyprland-based greeter and login screen
-	pkgver = 3.1.2
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/sonroyaalmerol/snry-shell
 	install = snry-dm.install
@@ -13,7 +13,7 @@ pkgbase = snry-dm
 	depends = snry-shell
 	depends = pam
 	backup = etc/pam.d/snry-dm
-	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v3.1.2
+	source = git+https://github.com/sonroyaalmerol/snry-shell.git#tag=v3.2.0
 	sha256sums = SKIP
 
 pkgname = snry-dm
