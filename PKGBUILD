@@ -2,7 +2,7 @@
 
 _pkgname="fluxcast"
 pkgname="$_pkgname-git"
-pkgver=r29.90e8c0a
+pkgver=0.1.0.beta.r2.g3845c5e
 pkgrel=1
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
@@ -28,6 +28,11 @@ optdepends=(
   'python-upnpclient: Needed for the DLNA protocol'
   'wf-recorder: Hyprland/wlroots screen capture'
   'xdg-desktop-portal: Wayland portal service for KDE/GNOME capture'
+  'python-pystray: System tray interface'
+  'python-pillow: Tray icon rendering'
+  'tk: About window'
+  'libnotify: Desktop notifications'
+  'libappindicator: Tray backend for Hyprland/KDE'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
@@ -39,10 +44,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  ( set -o pipefail                         # CHANGE THIS ONCE A TAGGED RELEASE COMES OUT
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
@@ -56,7 +58,12 @@ package() {
   install -Dm644 "$_pkgsrc/main.py" -t "$pkgdir/opt/$_pkgname/"
   install -Dm644 "$_pkgsrc/portal_capture.py" -t "$pkgdir/opt/$_pkgname/"
   install -Dm644 "$_pkgsrc/server.py" -t "$pkgdir/opt/$_pkgname/"
+  install -Dm644 "$_pkgsrc/tray.py" -t "$pkgdir/opt/$_pkgname/"
   install -Dm644 "$_pkgsrc/wfd.py" -t "$pkgdir/opt/$_pkgname/"
+
+  install -Dm644 "$_pkgsrc/assets/flcast_logo_512x512.png" -t "$pkgdir/opt/$_pkgname/"
+  install -Dm644 "$_pkgsrc/fluxcast.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$_pkgsrc/assets/flcast_logo_512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/fluxcast.png"
 
   install -Dm755 "../fluxcast.sh" "$pkgdir/usr/bin/fluxcast"
 }

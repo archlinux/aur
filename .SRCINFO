@@ -1,6 +1,6 @@
 pkgbase = fluxcast-git
 	pkgdesc = Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast
-	pkgver = r29.90e8c0a
+	pkgver = 0.1.0.beta.r2.g3845c5e
 	pkgrel = 1
 	url = https://github.com/IlyaP358/fluxcast
 	arch = any
@@ -21,7 +21,12 @@ pkgbase = fluxcast-git
 	optdepends = python-upnpclient: Needed for the DLNA protocol
 	optdepends = wf-recorder: Hyprland/wlroots screen capture
 	optdepends = xdg-desktop-portal: Wayland portal service for KDE/GNOME capture
-	provides = fluxcast=r29.90e8c0a
+	optdepends = python-pystray: System tray interface
+	optdepends = python-pillow: Tray icon rendering
+	optdepends = tk: About window
+	optdepends = libnotify: Desktop notifications
+	optdepends = libappindicator: Tray backend for Hyprland/KDE
+	provides = fluxcast=0.1.0.beta
 	conflicts = fluxcast
 	source = fluxcast::git+https://github.com/IlyaP358/fluxcast.git
 	sha256sums = SKIP
