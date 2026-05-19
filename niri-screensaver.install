@@ -12,9 +12,17 @@ Three things to wire up before it'll trigger:
   2. Idle integration — pick one:
        * Noctalia plugin (recommended)
            mkdir -p ~/.config/noctalia/plugins
-           ln -sfn /usr/share/niri-screensaver/noctalia-plugin \
-                   ~/.config/noctalia/plugins/niri-screensaver
+           cp -r /usr/share/niri-screensaver/noctalia-plugin \
+                 ~/.config/noctalia/plugins/niri-screensaver
          then enable in Noctalia → Settings → Plugins.
+
+         NOTE: copy (not symlink) — Noctalia writes plugin settings
+         back into the plugin dir on every toggle, but the
+         /usr/share/ tree is root-owned. A symlinked plugin will
+         load but its Settings tab silently fails to persist
+         changes. Re-run the `cp -r` after each `pacman -Syu` to
+         pick up plugin updates.
+
        * Inline Noctalia custom-command snippet:
            /usr/share/doc/niri-screensaver/noctalia-customCommand.json
 
