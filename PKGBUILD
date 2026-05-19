@@ -4,7 +4,7 @@
 # Change this variable to set the installation directory.
 #   /opt/comfyui        → standard location (recommended for AUR)
 #   /var/remise/comfyui → install on a different drive
-_prefix="/opt/comfyui"
+_prefix="${_prefix:-/opt/comfyui}"
 # ──────────────────────────────────────────────────────────────────────
 
 pkgname=comfyui
