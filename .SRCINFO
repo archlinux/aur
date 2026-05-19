@@ -1,6 +1,6 @@
 pkgbase = python-warcio
 	pkgdesc = Streaming WARC (and ARC) IO library
-	pkgver = 1.7.5
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/webrecorder/warcio
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-warcio
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-six
-	source = python-warcio-1.7.5.tar.gz::https://files.pythonhosted.org/packages/source/w/warcio/warcio-1.7.5.tar.gz
-	sha256sums = 7247b57e68074cfd9433cb6dc226f8567d6777052abec2d3c78346cffa4d19b9
+	source = warcio-1.8.1.tar.gz::https://github.com/webrecorder/warcio/archive/refs/tags/v1.8.1.tar.gz
+	sha256sums = 19faa8696045074bacb755e04fc16284edf45d6f8b0619dad913cba7e60bcf75
 
 pkgname = python-warcio
