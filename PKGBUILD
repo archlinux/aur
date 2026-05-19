@@ -9,7 +9,7 @@ license=('MIT')
 depends=('cockpit')
 optdepends=('docker: container runtime with Compose plugin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('133fd4646431d8c69ac168c93a1438ca5273854492e030741e3e2173c85907a2')
+sha256sums=('9dc5d7595a24f92a7f4584c83fb2d498b3095fff83558b767ac10296267c3b7c')
 
 package() {
     install -d "${pkgdir}/usr/share/cockpit/${pkgname}"

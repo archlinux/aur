@@ -8,6 +8,6 @@ pkgbase = cockpit-compose
 	depends = cockpit
 	optdepends = docker: container runtime with Compose plugin
 	source = cockpit-compose-0.2.0.tar.gz::https://github.com/RXTX4816/cockpit-compose/releases/download/v0.2.0/cockpit-compose-0.2.0.tar.gz
-	sha256sums = 133fd4646431d8c69ac168c93a1438ca5273854492e030741e3e2173c85907a2
+	sha256sums = 9dc5d7595a24f92a7f4584c83fb2d498b3095fff83558b767ac10296267c3b7c
 
 pkgname = cockpit-compose
