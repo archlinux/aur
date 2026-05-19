@@ -2,7 +2,7 @@
 # Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
 pkgver=2.0.1
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches"
 arch=('x86_64')
@@ -23,14 +23,16 @@ source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
   "vortex.sh"
   "patch-pkg.js"
   "patch-asar.py"
-  "patch-ext-cp2077.py")
+  "patch-ext-cp2077.py"
+  "patch-ext-gamebryo.py")
 
 sha256sums=('ea217e24864525a323a848e0b3ff15a4f04dfeccaacf1ef885afe57d0ce61f65'
   '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
   '19420a1af334187b2ba68f0fab3b5170bff5b6096f9e2a30000e712013fd378b'
   'd261f1ef78bb21d72cedeedfd935b099e3d707be709404e894d4aeb47254f1ef'
   '247b8c92542d4bf4d1218c3702049f3d368fa77d0bba0c671d7a98749a859620'
-  '014b52e419cd627044d6e7ceed3735243ce001ad8c611672e4f972be91a216cc')
+  '014b52e419cd627044d6e7ceed3735243ce001ad8c611672e4f972be91a216cc'
+  'e9ce356b8551b27e49a4ed259670a23c2a8aa05ac897f12e5ceb17c08962b628')
 
 options=('!strip' '!debug')
 
@@ -111,6 +113,7 @@ package() {
   python3 "$srcdir/patch-asar.py"
 
   install -Dm644 "$srcdir/patch-ext-cp2077.py" "$pkgdir/opt/Vortex/patch-ext-cp2077.py"
+  install -Dm644 "$srcdir/patch-ext-gamebryo.py" "$pkgdir/opt/Vortex/patch-ext-gamebryo.py"
 
   install -Dm755 "$srcdir/vortex.sh" "$pkgdir/usr/bin/vortex"
   install -Dm644 "$srcdir/vortex.desktop" "$pkgdir/usr/share/applications/vortex.desktop"

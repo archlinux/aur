@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 1:2.0.1-4
+- **Versión:** 1:2.0.1-6
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.8-1-cachyos)
@@ -172,6 +172,60 @@ module.exports = new Proxy({}, {
   },
 });
 ```
+
+---
+
+### Patch 8 — `appDataPath`: redirigir `Plugins.txt` / `loadorder.txt` al prefijo Proton en Linux
+
+**Problema:** La función `appDataPath()` de la extensión `gamebryo-plugin-management`
+determina dónde están `Plugins.txt` y `loadorder.txt`. Usa `%LOCALAPPDATA%` en Windows.
+En Linux no existe esa variable, por lo que cae al fallback:
+`~/.config/Vortex/../Local/<Game>/` — una ruta incorrecta que no existe.
+
+La ruta correcta en Linux con Proton es:
+```
+~/.steam/steam/steamapps/compatdata/<APPID>/pfx/drive_c/users/steamuser/AppData/Local/<Game>/
+```
+
+Resultado: Vortex no puede leer ni escribir el orden de carga ni la lista de plugins activos.
+
+**Fix:** Script de parche en runtime `patch-ext-gamebryo.py` (ejecutado por `vortex.sh`
+en cada arranque). Aplica el mismo patrón que el patch de `mygamesPath`: busca el prefijo
+compatdata correcto recorriendo todas las librerías Steam.
+
+```js
+// antes
+function appDataPath(gameMode) {
+    const dataPath = gameSupport.get(gameMode, "appDataPath");
+    return process.env.LOCALAPPDATA !== void 0
+        ? path.join(process.env.LOCALAPPDATA, dataPath)
+        : path.resolve(vortex_api.util.getVortexPath("appData"), "..", "Local", dataPath);
+}
+
+// después (Linux)
+function appDataPath(gameMode) {
+    if (process.platform === 'linux') {
+        const APPIDS = { skyrim:72850, skyrimse:489830, ..., fallout4:377160, oblivion:22330 };
+        const appId = APPIDS[gameMode];
+        if (appId !== undefined) {
+            // busca en todas las librerías Steam
+            for (const lib of steamLibs) {
+                const dp = path.join(lib, 'compatdata', String(appId),
+                                     'pfx', 'drive_c', 'users', 'steamuser', 'AppData', 'Local');
+                if (fs.existsSync(dp))
+                    return path.join(dp, gameSupport.get(gameMode, "appDataPath"));
+            }
+        }
+    }
+    // fallback original
+}
+```
+
+**Juegos cubiertos:** Fallout 3, Fallout NV, Fallout 4, Fallout 4 VR, Skyrim, Skyrim SE,
+Skyrim VR, Enderal, Enderal SE, Starfield, Oblivion.
+
+**Nota:** Este parche requiere que la extensión `gamebryo-plugin-management` esté instalada
+en Vortex. Se aplica automáticamente en cada arranque si la extensión está presente.
 
 ---
 
@@ -403,6 +457,8 @@ Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 | **1:2.0.1-2** | Patch `mygamesPath` en `gamebryo-test-settings`: en Linux busca el prefijo Proton correcto recorriendo todas las librerías Steam en lugar de usar `~/Documents`. Cubre Fallout 3/NV/4/4VR, Skyrim/SE/VR, Enderal/SE, Starfield y Oblivion. Epoch=1 añadido por cambio de esquema de versión. |
 | **1:2.0.1-3** | Binario Linux para XCOM 2 y WOTC: `bin/XCOM2` (port Feral) en lugar de `Binaries/Win64/XCom2.exe`. Daggerfall Unity cubierto por patches genéricos (`.exe`→`.x86_64`). A Hat in Time no requiere patch (Proton, `.exe` presente).                                                            |
 | **1:2.0.1-4** | Patch 7 — `iniFiles` en renderer.js: complementa el Patch 6 (gamebryo-test-settings) resolviendo `mygames` en el motor central. Usa appmanifest scan para detectar el AppID a partir de `discovery.path`; cubre automáticamente cualquier juego Gamebryo sin lista fija. |
+| **1:2.0.1-5** | Hotfix: `})()` → `})();` en el new string del patch de `iniFiles`. El `;` faltante provocaba `SyntaxError` en el renderer de Electron (pantalla negra en Vortex). |
+| **1:2.0.1-6** | Patch 8 — `appDataPath` en `gamebryo-plugin-management`: en Linux resuelve `Plugins.txt` y `loadorder.txt` al prefijo Proton en lugar de `~/.config/Local/<game>/`. Script de parche runtime `patch-ext-gamebryo.py`; misma lógica de búsqueda Steam que Patch 6. Reportado por Garecrow. |
 
 ---
 
@@ -519,5 +575,6 @@ Enderal, Enderal SE, Starfield, Oblivion.
 - [x] Binarios Linux: XCOM 2 y WOTC (`bin/XCOM2`, port Feral)
 - [x] Daggerfall Unity: cubierto por patches genéricos (`.exe` → `.x86_64`)
 - [x] A Hat in Time: sin binario Linux nativo, funciona vía Proton sin patch
+- [x] `Plugins.txt` / `loadorder.txt` de juegos Bethesda vía prefijo Proton (`gamebryo-plugin-management`)
 - [ ] PR upstream a Nexus-Mods/Vortex con los fixes de Linux
 - [ ] Mecanismo automático de re-parche de extensiones de usuario tras actualización

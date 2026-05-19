@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-4
+**Current release:** 1:2.0.1-6
 
 ---
 
@@ -403,6 +403,86 @@ scans appmanifests dynamically). Both are needed for full INI support on Linux.
 
 ---
 
+## Patch 8 — `appDataPath()` in `gamebryo-plugin-management` (runtime patch)
+
+**Problem:** `appDataPath()` in `gamebryo-plugin-management` determines where Vortex looks
+for `Plugins.txt` and `loadorder.txt`. On Windows it uses `%LOCALAPPDATA%`. On Linux that
+variable is unset, so the function falls back to:
+
+```js
+path.resolve(vortex_api.util.getVortexPath("appData"), "..", "Local", dataPath)
+// → ~/.config/Vortex/../Local/Fallout4/  (does not exist)
+```
+
+The correct Linux path under Proton is:
+```
+~/.steam/steam/steamapps/compatdata/<APPID>/pfx/drive_c/users/steamuser/AppData/Local/<Game>/
+```
+
+Without this fix Vortex cannot read or write the plugin list (`Plugins.txt`) or load order
+(`loadorder.txt`) for any Bethesda game running under Proton.
+
+**Fix:** Runtime patch script `patch-ext-gamebryo.py`, deployed to `/opt/Vortex/` and
+executed by `vortex.sh` on every launch. The script:
+
+1. Scans `~/.config/Vortex/plugins/` for the `gamebryo-plugin-management` extension.
+2. Identifies it via `info.json` (`"id": "gamebryo-plugin-management"`).
+3. Replaces the compiled `appDataPath()` function with a Linux-aware version that:
+   - Looks up the Steam App ID from a hardcoded table (same games as Patch 6).
+   - Parses `libraryfolders.vdf` to discover all Steam library roots.
+   - Returns the correct `AppData/Local` path inside the Proton prefix if found.
+   - Falls back to the original logic otherwise.
+4. Prepends a marker (`// vortex-linux-fix-appdata`) to prevent double-patching.
+
+```js
+// before
+function appDataPath(gameMode) {
+    const dataPath = gameSupport.get(gameMode, "appDataPath");
+    return process.env.LOCALAPPDATA !== void 0
+        ? path.join(process.env.LOCALAPPDATA, dataPath)
+        : path.resolve(vortex_api.util.getVortexPath("appData"), "..", "Local", dataPath);
+}
+
+// after (Linux branch, simplified)
+function appDataPath(gameMode) {
+    if (process.platform === 'linux') {
+        const APPIDS = { skyrim:72850, skyrimse:489830, skyrimvr:611670,
+                         enderal:933480, enderalspecialedition:976620,
+                         fallout3:22370, fallout4:377160, fallout4vr:611660,
+                         falloutnv:22380, starfield:1716740, oblivion:22330 };
+        const appId = APPIDS[gameMode];
+        if (appId !== undefined) {
+            // discover all Steam libraries via libraryfolders.vdf
+            for (const lib of steamLibs) {
+                const dp = path.join(lib, 'compatdata', String(appId),
+                                     'pfx', 'drive_c', 'users', 'steamuser', 'AppData', 'Local');
+                if (fs.existsSync(dp))
+                    return path.join(dp, gameSupport.get(gameMode, "appDataPath"));
+            }
+        }
+    }
+    // original fallback
+    const dataPath = gameSupport.get(gameMode, "appDataPath");
+    return process.env.LOCALAPPDATA !== void 0
+        ? path.join(process.env.LOCALAPPDATA, dataPath)
+        : path.resolve(vortex_api.util.getVortexPath("appData"), "..", "Local", dataPath);
+}
+```
+
+**Games covered:** Fallout 3, Fallout New Vegas, Fallout 4, Fallout 4 VR, Skyrim,
+Skyrim Special Edition, Skyrim VR, Enderal, Enderal Special Edition, Starfield, Oblivion.
+
+**Why runtime and not PKGBUILD:** `gamebryo-plugin-management` has native module dependencies
+(`esptk`, `loot`) whose build scripts explicitly skip Linux (`process.platform === 'win32'`
+guard). The extension is not bundled in `app.asar` — it is downloaded by users on demand
+via Vortex's Extensions UI. The same `patch-ext-*.py` mechanism already used for the
+Cyberpunk 2077 extension is the correct approach here.
+
+**Source location:** `extensions/gamebryo-plugin-management/src/util/gameSupport.ts` →
+`appDataPath()` (compiled into the extension's `index.cjs` via rolldown).
+
+---
+
 ## User extension patch: Cyberpunk 2077 extension (runtime, not in PKGBUILD)
 
 **Problem:** The official Nexus Mods "Cyberpunk 2077" Vortex extension uses
@@ -502,6 +582,8 @@ makepkg -si
 | **1:2.0.1-2** | New patch: `mygamesPath()` in `gamebryo-test-settings` now resolves to the Proton compatdata prefix on Linux instead of `~/Documents`. Searches all Steam libraries via `libraryfolders.vdf`. Covers Fallout 3/NV/4/4VR, Skyrim/SE/VR, Enderal/SE, Starfield, Oblivion. Epoch=1 introduced to fix version ordering after upstream switched to `epoch:pkgver-pkgrel` scheme.                            |
 | **1:2.0.1-3** | XCOM 2 native Linux binary patch: `game-xcom2` plugin now returns `bin/XCOM2` on Linux (Feral port) instead of `Binaries/Win64/XCom2.exe`. Applies to both base game and War of the Chosen. Daggerfall Unity covered by existing generic patches (`.exe`→`.x86_64` fallback). A Hat in Time requires no patch (Proton-only, `.exe` present in game dir). |
 | **1:2.0.1-4** | Patch 7 — `iniFiles` in `renderer.js`: complements the Patch 6 plugin fix by resolving `mygames` in the Vortex core engine. Dynamically discovers AppID by scanning `appmanifest_*.acf` against `discovery.path`; covers any Proton-managed Gamebryo game without a hardcoded AppID table. Reported by AUR user Garecrow. |
+| **1:2.0.1-5** | Hotfix: missing `;` after `})()` in the `iniFiles` patch new-string caused `SyntaxError` in the Electron renderer (black screen on launch). Fixed by appending `;` to close the IIFE statement correctly. |
+| **1:2.0.1-6** | Patch 8 — `appDataPath()` runtime patch for `gamebryo-plugin-management`: resolves `Plugins.txt` and `loadorder.txt` to the correct Proton compatdata path on Linux. Deployed as `patch-ext-gamebryo.py` (same runtime mechanism as the Cyberpunk 2077 patch). Reported by AUR user Garecrow. |
 
 ---
 
@@ -527,5 +609,6 @@ makepkg -si
 - [x] XCOM 2 + War of the Chosen: native Linux binary `bin/XCOM2` (Feral port)
 - [x] Daggerfall Unity: covered by generic `.exe`→`.x86_64` fallback patches
 - [x] A Hat in Time: no native Linux binary; Proton-only, `.exe` present in game dir — no patch needed
+- [x] `Plugins.txt` / `loadorder.txt` for Bethesda games via Proton prefix (`gamebryo-plugin-management`)
 - [ ] Upstream PRs to Nexus-Mods/Vortex with the Linux fixes
 - [ ] Automatic re-patch of user extensions after update
