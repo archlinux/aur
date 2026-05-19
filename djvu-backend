@@ -1,6 +1,7 @@
 #!/bin/bash
 # CUPS Backend for DjVu conversion
-# Derived from user's live system configuration
+# Enable debug logging to CUPS error_log if needed by uncommenting 'set -x'
+# set -x
 
 export GSDJVU=/usr/bin/gsdjvu
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
