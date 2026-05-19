@@ -6,7 +6,7 @@ pkgdesc="A virtual CUPS printer that saves documents as DjVu files in /var/spool
 arch=('any')
 url="https://github.com/yourusername/cups-djvu-printer"
 license=('GPL')
-depends=('cups' 'djvulibre' 'ghostscript')
+depends=('cups' 'djvulibre' 'ghostscript' 'gsdjvu')
 install="${pkgname}.install"
 source=("djvu-backend"
         "djvu-printer.ppd")

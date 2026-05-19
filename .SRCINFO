@@ -9,6 +9,7 @@ pkgbase = cups-djvu-printer
 	depends = cups
 	depends = djvulibre
 	depends = ghostscript
+	depends = gsdjvu
 	source = djvu-backend
 	source = djvu-printer.ppd
 	sha256sums = 9a8e7f233ef56fcc2a56738cd5b6e6946346eb9bca774c85225a45a65235c01a
