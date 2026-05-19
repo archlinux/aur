@@ -1,6 +1,6 @@
 # Maintainer: zerkawei <zkw@zerkawei.fr>
 pkgname=beeflang-ide-git
-pkgver=r5670.1f27419
+pkgver=r5687.86d3eb2
 pkgrel=1
 pkgdesc="High-performance multi-paradigm programming language focused on developer productivity with experimental IDE"
 arch=(x86_64)
@@ -14,8 +14,8 @@ conflicts=('beeflang')
 
 options=(!buildflags)
 
-source=('git+https://github.com/beefytech/Beef.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/beefytech/Beef.git' 'git+https://github.com/beefytech/Beef_website.git')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "${srcdir}/Beef"
@@ -41,4 +41,8 @@ package() {
 
 	install -Dm644 -t "${pkgdir}/usr/share/applications/" "IDE/Resources/BeefIDE.desktop"
 	install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps/" "IDE/Resources/beeflang.png"
+
+	cd "${srcdir}/Beef_website"
+
+	find Samples -type f -exec install -Dm644 "{}" "${pkgdir}/opt/BeefLang/{}" \;
 }
