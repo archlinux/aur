@@ -20,9 +20,11 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
 
 makedepends=('rust' 'cargo' 'nasm')
-depends=('glibc' 'libgcc' 'libpcap')
+depends=('glibc' 'libgcc' 'libpcap' 'traceroute')
 
 provides=("${_appname}")
+
+install="${_appname}.install"
 
 options=('!lto' '!strip')
 
