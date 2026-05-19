@@ -1,5 +1,5 @@
 pkgbase = windsurf
-	pkgver = 2.2.17
+	pkgver = 2.3.9
 	pkgrel = 1
 	url = https://windsurf.com/
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = windsurf
 	optdepends = libdbusmenu-glib: KDE global menu
 	optdepends = lsof: Terminal splitting
 	optdepends = vulkan-driver
-	noextract = Windsurf-linux-x64-2.2.17.deb
+	noextract = Windsurf-linux-x64-2.3.9.deb
 	options = !strip
-	source = https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-2.2.17.deb
+	source = https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-2.3.9.deb
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
-	sha256sums = 95f4ca585db0b5094bbfef0e79b8d563da9b66e0be1ef5bec13549029ab193b5
+	sha256sums = 786792e8516ad744f9c23c93ec070f2ccb34cfd649801bb51481f6664712ad19
 	sha256sums = 5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1
 
 pkgname = windsurf
