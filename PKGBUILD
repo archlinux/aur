@@ -11,9 +11,6 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
-provides=('python-uuid_extensions')
-conflicts=('python-uuid_extensions')
-replaces=('python-uuid_extensions')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('8c57aa32ee7456d3cc68c95c4530bc571646defac01895cfc73545449894a63c')
 
@@ -25,6 +22,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
   )
   cd "$srcdir"/$_name-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
