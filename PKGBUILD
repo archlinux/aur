@@ -2,7 +2,7 @@
 # Contributor (original package): Cosmo <cptncosmo@gmail.com>
 
 pkgname=fluxer-canary-bin
-pkgver=0.0.225
+pkgver=2026.519.0
 pkgrel=1
 pkgdesc="Fluxer Canary Desktop Application"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!strip')
 source=("fluxer-canary.desktop" "fluxer-canary.png")
 sha256sums=('0435d76ef93c99abd3f772984aa4d535149900c3a810ffba1676f3a4c98134ac'
             'bf29f74512940bb5abfa4cc6579579a2365d78b7a4f6cbf65d58c73cf0202589')
-sha256sums_x86_64=('fb985bbd5489667c8637df2f6b89699eac23a7f702c8a71bffc52f514240515e')
-sha256sums_aarch64=('4b526685ccb05397264bdcf5f2ae0fac2ce49c9337d71a20ba04ebf98b58a58d')
+sha256sums_x86_64=('0b24e145fe658ab8d5b24a144144a0210ffecf64e2076b2975801539bd6a92a3')
+sha256sums_aarch64=('684c48f93472a7759b7492f282619f69ab4cd1697c579da6cea6b9e13d2e6c36')
 
 source_x86_64=("fluxer-${pkgver}-x64.tar.gz::https://api.fluxer.app/dl/desktop/canary/linux/x64/${pkgver}/tar_gz")
 source_aarch64=("fluxer-${pkgver}-arm64.tar.gz::https://api.fluxer.app/dl/desktop/canary/linux/arm64/${pkgver}/tar_gz")
