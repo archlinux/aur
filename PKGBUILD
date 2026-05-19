@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Per-command-tree network sandbox for Linux"
 
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc' 'openssl')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}.${_barch[0]}.tar.gz")
-sha256sums_x86_64=('c462f2a68d347b164c8af950f4d54e97de8753cf9dad7098f0dbfbe25caa5c0a')
+sha256sums_x86_64=('733d5cde86c4ba16a3a50df83bf66f9aa437d4e2d70976d5995e69450ff4dca7')
 
 
 package() {
