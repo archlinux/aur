@@ -6,6 +6,8 @@ pkgdesc="Zed editor with globalization support (pre-built binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/WenYin-Community/zed-globalization"
 license=('AGPL-3.0-or-later' 'Apache-2.0' 'GPL-3.0-or-later')
+provides=('zedg')
+conflicts=('zedg')
 options=('!debug')
 
 source_x86_64=("https://github.com/WenYin-Community/zed-globalization/releases/download/v${pkgver}/zedg-zh-cn-linux-x86_64-v${pkgver}.tar.gz")
