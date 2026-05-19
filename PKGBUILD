@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 _pkgname="plutovg"
 pkgname="$_pkgname"
