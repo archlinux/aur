@@ -1,6 +1,6 @@
 pkgbase = howdy-next-git
 	pkgdesc = A modernized fork of original Howdy, Facial recognition authentication for Linux
-	pkgver = v2.0.0.r137.gc67eca3
+	pkgver = v3.0.0.r171.g5114597
 	pkgrel = 1
 	url = https://codeberg.org/nathawat/howdy-next
 	install = howdy-next.install
@@ -22,9 +22,6 @@ pkgbase = howdy-next-git
 	optdepends = linux-enable-ir-emitter: Enables infrared cameras that are not directly enabled out-of-the box
 	provides = howdy
 	conflicts = howdy
-	conflicts = howdy-git
-	conflicts = howdy-beta-git
-	conflicts = howdy-bin
 	conflicts = howdy-next
 	replaces = howdy-next
 	backup = etc/howdy/config.ini
