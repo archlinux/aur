@@ -1,15 +1,15 @@
 pkgbase = nw
 	pkgdesc = A TUI utility for selecting films to watch from Letterboxd
-	pkgver = 0.2.6
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/jsdoublel/nw
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = go>=1.25.4
-	source = nw-0.2.6.tar.gz::https://github.com/jsdoublel/nw/archive/v0.2.6.tar.gz
+	source = nw-0.3.0.tar.gz::https://github.com/jsdoublel/nw/archive/v0.3.0.tar.gz
 	source = nw.desktop
-	sha256sums = 5081b4ba1d9dffcb766d7d7a56b0d10b3837466a7a2708e2696e247fce25e8be
+	sha256sums = a3895bdda2849d2cb7612a1133204a9019256c8cff678b56b7f470f610411687
 	sha256sums = accc32248ec043a67b664a7869dac1b25dc0193e36ae59b87c54fc565668cad7
 
 pkgname = nw
