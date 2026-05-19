@@ -1,31 +1,17 @@
 # Maintainer: Shahriyar <shahriyardx@github.com>
-# Contributor: Shahriyar
 
 pkgname=brightctrl
 pkgver=0.0.8
 pkgrel=1
 pkgdesc="Terminal UI for external monitor brightness control via DDC/CI"
-arch=("x86_64" "aarch64")
+arch=("x86_64")
 url="https://github.com/shahriyardx/brightctrl"
 license=("MIT")
 depends=("ddcutil")
-makedepends=("bun")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("SKIP")
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  bun install --frozen-lockfile
-}
-
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  bun run compile
-}
+source_x86_64=("brightctrl::https://github.com/shahriyardx/brightctrl/releases/download/v$pkgver/brightctrl-x86_64")
+sha256sums_x86_64=("9eb71733811c19c251767ae086baf22897b446d67638c19cd25621a70811f8f2")
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 brightctrl "$pkgdir/usr/bin/brightctrl"
-  install -Dm755 brightctrl "$pkgdir/usr/bin/bctrl"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/brightctrl" "$pkgdir/usr/bin/brightctrl"
+  install -Dm755 "$srcdir/brightctrl" "$pkgdir/usr/bin/bctrl"
 }
