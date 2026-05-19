@@ -8,7 +8,7 @@ url="https://buildhut.fly.dev/apps/polify"
 license=('MIT')
 depends=('gtk3' 'libepoxy' 'xz' 'mpv' 'ffmpeg' 'sqlite' 'libsecret'
          'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav')
-makedepends=('git' 'flutter' 'make')
+makedepends=('git' 'flutter' 'make' 'patchelf')
 provides=('polify')
 conflicts=('polify')
 source=("polify::git+https://git.sr.ht/~drzoidberg/Polify")
@@ -44,6 +44,9 @@ package() {
   cp -r "$_bundle"/* "$pkgdir/usr/lib/polify/"
   chmod -R 755 "$pkgdir/usr/lib/polify"
 
+  # Remove broken symlink that Flutter's bundler left behind
+  rm -f "$pkgdir/usr/lib/polify/lib/libonnxruntime.so"
+
   # Bundle the real libonnxruntime shared library (Flutter only copies the
   # broken symlink, not the resolved target)
   local _onnxrt_libdir
@@ -71,7 +74,15 @@ package() {
     fi
   fi
 
-  # Strip embedded build paths (removes $srcdir references from binaries)
+  # Fix RUNPATH: remove build directory references so the linker finds
+  # co-located libraries in $ORIGIN (the lib/ directory)
+  # - Main binary: needs $ORIGIN/lib to find plugins
+  # - Plugin .so files: need $ORIGIN to find co-located libraries
+  patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/usr/lib/polify/polify" 2>/dev/null || true
+  find "$pkgdir/usr/lib/polify/lib" -type f \( -name '*.so' -o -name '*.so.*' \) \
+    -exec patchelf --set-rpath '$ORIGIN' {} + 2>/dev/null || true
+
+  # Strip debug symbols and unneeded metadata
   find "$pkgdir/usr/lib/polify" -type f \( -name '*.so' -o -name '*.so.*' \
     -o -not -name '*.*' \) -exec strip --strip-unneeded {} + 2>/dev/null || true
 
