@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Freed <jon at freed dot dev>
 pkgname=niri-screensaver
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="TerminalTextEffects-based screensaver for the niri Wayland compositor"
 arch=('any')
@@ -14,13 +14,13 @@ depends=(
 )
 optdepends=(
     'noctalia-shell: idle/lock integration via included plugin'
-    'playerctl: now-playing overlay between effects (SHOW_NOW_PLAYING=true)'
-    'wlrctl: cursor parking under niri (recommended)'
-    'ydotool: fallback for cursor parking when wlrctl is absent'
-    'figlet: large ASCII rendering for clock and now-playing overlays'
+    'playerctl: now-playing overlay'
+    'wlrctl: cursor parking under niri'
+    'ydotool: cursor-parking fallback if wlrctl is absent'
+    'figlet: large ASCII rendering for clock and overlays'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a6e6766cb4ede44c47f309406b8ff343f847a7be0b7692c026160604b9f50e9b')
+sha256sums=('df23b79c01c9504fcd4229d1685e34a53ca7458b3327bd06b2f925b6a761c0bb')
 install="$pkgname.install"
 
 package() {
