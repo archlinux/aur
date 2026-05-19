@@ -1,6 +1,6 @@
 pkgbase = sniffercommit
 	pkgdesc = Fast C++20-powered pre-commit hook and CI generator
-	pkgver = 0.1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/slowy07/sniffercommit
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sniffercommit
 	depends = bash
 	depends = fmt
 	depends = tomlplusplus
-	source = sniffercommit-0.1.0.tar.gz::https://github.com/slowy07/sniffercommit/archive/refs/tags/v0.1.0.tar.gz
+	source = sniffercommit-0.2.1.tar.gz::https://github.com/slowy07/sniffercommit/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = sniffercommit
