@@ -1,7 +1,7 @@
 # Maintainer:  NourEddine Yassine <NourEddineX at protonmail dot com>
 # Contributor: Albert Latham <me@albertlatham.com>
 pkgname=abacusai-bin
-pkgver=1.106.21803
+pkgver=1.106.22001
 pkgrel=1
 pkgdesc="A powerful desktop AI assistant with agentic browsing, listening, coding CLI and editor"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=('deepagent-bn' 'deepagent' 'codellm' 'codellm-bin')
 source_x86_64=("https://github.com/abacusai/deepagent-releases/releases/download/${pkgver}/AbacusAI-linux-x64-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/abacusai/deepagent-releases/releases/download/${pkgver}/AbacusAI-linux-arm64-${pkgver}.tar.gz")
 
-sha256sums_x86_64=('aca73cdb96531488fc856276c515f94e7ee6ac59c3d31f7c289693c1a344f080')
-sha256sums_aarch64=('56162ef6b84ad3dc61677e1210baef5534aa001d912c629acf26cef27965c2aa')
+sha256sums_x86_64=('5feea1950e7f58e98d2665f63486c7b0fb6356babdc0fc4c59606512e5e8217e')
+sha256sums_aarch64=('c78459c0cbdf9bfd999146ee864de05be4775178020b94687d9c32810f76e4fa')
 
 package() {
     cd "$srcdir"
