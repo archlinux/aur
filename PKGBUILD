@@ -1,4 +1,4 @@
-# Maintainer: Adeel Shahid <imadeelshahid at gmail dot com>
+# Maintainer: Muhammad Adeel <imadeelshahid at gmail dot com>
 # Contributor: Mubashir Haroon <mubashirmusab at gmail dot com>
 
 pkgname=hunspell-ur
