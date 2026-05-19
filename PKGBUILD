@@ -46,23 +46,29 @@ package() {
 
   # Bundle the real libonnxruntime shared library (Flutter only copies the
   # broken symlink, not the resolved target)
-  local _onnxrt_dir
-  _onnxrt_dir="$(find build/linux/x64/release/plugins/flutter_onnxruntime \
-    -path '*/onnxruntime-linux-x64-*/lib/libonnxruntime.so.*.*' -print -quit 2>/dev/null)"
-  if [[ -n "$_onnxrt_dir" ]]; then
+  local _onnxrt_libdir
+  _onnxrt_libdir="$(find build/linux/x64/release/plugins/flutter_onnxruntime \
+    -path '*/onnxruntime-linux-x64-*/lib' -type d -print -quit 2>/dev/null)"
+  if [[ -n "$_onnxrt_libdir" ]]; then
+    # Copy the versioned real library (e.g. libonnxruntime.so.1.22.0)
     local _onnxrt_real
-    _onnxrt_real="$(readlink -f "$_onnxrt_dir")"
-    local _onnxrt_link
-    _onnxrt_link="$(readlink "$_onnxrt_dir" 2>/dev/null)" || true
-    local _soname
-    if [[ -n "$_onnxrt_link" ]]; then
-      _soname="$(basename "$_onnxrt_link")"
-    else
-      _soname="$(basename "$_onnxrt_dir")"
+    _onnxrt_real="$(find "$_onnxrt_libdir" -name 'libonnxruntime.so.*.*.*' \
+      -not -type l -print -quit 2>/dev/null)"
+    if [[ -n "$_onnxrt_real" ]]; then
+      local _realname
+      _realname="$(basename "$_onnxrt_real")"
+      install -Dm755 "$_onnxrt_real" "$pkgdir/usr/lib/polify/lib/$_realname"
+      ln -sf "$_realname" "$pkgdir/usr/lib/polify/lib/libonnxruntime.so.1"
+      ln -sf "libonnxruntime.so.1" "$pkgdir/usr/lib/polify/lib/libonnxruntime.so"
     fi
-    install -Dm755 "$_onnxrt_real" "$pkgdir/usr/lib/polify/lib/$_soname"
-    ln -sf "$_soname" "$pkgdir/usr/lib/polify/lib/libonnxruntime.so.1"
-    ln -sf "libonnxruntime.so.1" "$pkgdir/usr/lib/polify/lib/libonnxruntime.so"
+
+    # Copy optional execution providers library (loaded via dlopen at runtime)
+    local _providers
+    _providers="$(find "$_onnxrt_libdir" -name 'libonnxruntime_providers_shared.so' \
+      -not -type l -print -quit 2>/dev/null)"
+    if [[ -n "$_providers" ]]; then
+      install -Dm755 "$_providers" "$pkgdir/usr/lib/polify/lib/"
+    fi
   fi
 
   # Strip embedded build paths (removes $srcdir references from binaries)
