@@ -1,5 +1,4 @@
-# Maintainer: khidarlamine hamdi <khidarlaminehamdi+aur@gmail.com>
-# Contributor: smiley <smiley@archlinux.us>
+# Maintainer: smiley <smiley@aur.archlinux.org>
 pkgname="hyprsysteminfo"
 pkgver=0.2.0
 pkgrel=1
