@@ -1,0 +1,19 @@
+pkgbase = mpddiscordrpc
+	pkgdesc = Display MPD currently playing track in Discord Rich Presence
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/methamphetaminelab/MPDDiscordRPC
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pypresence
+	depends = python-mpd2
+	depends = python-requests
+	source = MPDDiscordRPC-0.1.0.tar.gz::https://github.com/methamphetaminelab/MPDDiscordRPC/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = mpddiscordrpc
