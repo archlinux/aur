@@ -43,7 +43,11 @@ if [ -z "$INPUT_FILE" ]; then
 fi
 
 # Conversion (600 DPI, exact colors, text extraction)
-/usr/bin/djvudigital --dpi=600 --exact-color --words "$INPUT_FILE" "$OUTPUT_FILE" > /dev/null 2>&1
+if [ "$IS_TEMP" = "1" ]; then
+    /usr/bin/djvudigital --dpi=600 --exact-color --words "$INPUT_FILE" "$OUTPUT_FILE" > /dev/null 2>&1
+else
+    /usr/bin/djvudigital --dpi=600 --exact-color --words "${INPUT_FILE:-/dev/stdin}" "$OUTPUT_FILE" > /dev/null 2>&1
+fi
 RESULT=$?
 
 if [ $RESULT -eq 0 ] && [ -f "$OUTPUT_FILE" ]; then

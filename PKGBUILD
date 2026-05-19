@@ -10,7 +10,7 @@ depends=('cups' 'djvulibre' 'ghostscript' 'gsdjvu')
 install="${pkgname}.install"
 source=("djvu-backend"
         "djvu-printer.ppd")
-sha256sums=('9a8e7f233ef56fcc2a56738cd5b6e6946346eb9bca774c85225a45a65235c01a'
+sha256sums=('cc990f3702bd4f7e44884c46d0efd5a0b3f549139d599f4f9d4b7e108484dd31'
             '194c9cfefffff8f58ca8c0486c3f96ab432b08728aced7fd7f790c77d2983d9e')
 
 package() {
