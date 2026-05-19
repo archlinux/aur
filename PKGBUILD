@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.71.0
+pkgver=1.71.1
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -56,9 +56,13 @@ prepare() {
   # Removing @theia/ai-vercel-ai because it pulls in opentelemetry.
   # Manually add upstream URL of vscode-builtin-extensions (not an OpenVSX URL)
   # Add postinstall script.
+  # Pin ripgrep version as suggested in https://github.com/eclipse-theia/theia/issues/17482
+  # until https://github.com/eclipse-theia/theia/pull/17483 takes effect.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
   grep -vE "@theia/(ai-vercel-ai|getting-started|git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
   jq '.theiaPlugins."vscode-builtin-extensions" = "https://github.com/eclipse-theia/vscode-builtin-extensions/releases/download/1.108.2/vscode-builtin-extensions-1.108.2.tar.gz" |
+      .resolutions."**/@vscode/ripgrep" = "1.17.1" |
+      .overrides."@vscode/ripgrep" = "1.17.1" |
       .scripts.postinstall = "theia-patch"' >package.json
 }
 
