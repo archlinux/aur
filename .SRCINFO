@@ -1,6 +1,6 @@
 pkgbase = onlyoffice-bin
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors
-	pkgver = 9.3.1
+	pkgver = 9.4.0
 	pkgrel = 1
 	url = https://www.onlyoffice.com/
 	arch = x86_64
@@ -51,15 +51,15 @@ pkgbase = onlyoffice-bin
 	optdepends = libreoffice: for OpenSymbol fonts
 	optdepends = otf-takao: for japanese Takao fonts
 	optdepends = ttf-ms-fonts: for Microsoft fonts
-	provides = onlyoffice=9.3.1
+	provides = onlyoffice=9.4.0
 	conflicts = onlyoffice
-	noextract = onlyoffice-desktopeditors-x86_64-9.3.1.deb
+	noextract = onlyoffice-desktopeditors-x86_64-9.4.0.deb
 	options = !debug
 	options = !emptydirs
 	options = !strip
-	source = onlyoffice-desktopeditors-x86_64-9.3.1.deb::https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v9.3.1/onlyoffice-desktopeditors_amd64.deb
+	source = onlyoffice-desktopeditors-x86_64-9.4.0.deb::https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v9.4.0/onlyoffice-desktopeditors_amd64.deb
 	source = 010-onlyoffice-bin-fix-document-opening.patch
-	sha256sums = 2fdda24d2efe65528d0aabad0633d868f22f67cf1567f8df39e72cba24f6af24
+	sha256sums = 4271434e81be42b1559fd989d24bf6d413482f278dc6a5e328202a4fc1a18649
 	sha256sums = 670de5f8b72679a54ff41a96ba1bdba9231a93260d1a8eaf304f66c8e40efdb7
 
 pkgname = onlyoffice-bin
