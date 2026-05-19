@@ -2,7 +2,7 @@
 pkgname=linux-wallpaper-engine-ux
 _pkgname=linux-wallpaper-engine
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern desktop GUI for linux-wallpaperengine"
 arch=('x86_64')
 url="https://github.com/jagrat7/linux-wallpaper-engine"
@@ -16,7 +16,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6be75737950a01060566287adc94ad701964988971dd6d129ef980ef65e5a791')
-options=('!debug')
+
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -30,15 +30,21 @@ build() {
   local electron_version
   local electron_zip_dir
   local electron_unpack_dir
+  local forge_out_dir
   local forge_tmpdir
+  local vite_dir
 
   electron_version="$(cat /usr/lib/electron39/version)"
   electron_zip_dir="$srcdir/electron-zip"
   electron_unpack_dir="$srcdir/electron-v$electron_version-linux-x64"
+  forge_out_dir="$srcdir/forge-out"
   forge_tmpdir="$srcdir/forge-tmp"
+  vite_dir=".vite"
 
   [[ -d "$electron_unpack_dir" ]] && rm -rf "$electron_unpack_dir"
   [[ -d "$electron_zip_dir" ]] && rm -rf "$electron_zip_dir"
+  [[ -d "$forge_out_dir" ]] && rm -rf "$forge_out_dir"
+  [[ -d "$vite_dir" ]] && rm -rf "$vite_dir"
 
   mkdir -p "$electron_zip_dir"
   cp -a /usr/lib/electron39 "$electron_unpack_dir"
@@ -49,18 +55,20 @@ build() {
     zip -0 -r -y "$electron_zip_dir/electron-v$electron_version-linux-x64.zip" .
   )
 
+  sed -i 's/const config: ForgeConfig = {/const config: ForgeConfig = { outDir: process.env.ELECTRON_FORGE_OUT_DIR,/' forge.config.ts
   sed -i 's/packagerConfig: {/packagerConfig: { electronZipDir: process.env.ELECTRON_ZIP_DIR,/' forge.config.ts
   sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"$electron_version\"/" package.json
 
   export ELECTRON_ZIP_DIR="$electron_zip_dir"
+  export ELECTRON_FORGE_OUT_DIR="$forge_out_dir"
   export CI=true
   export TMPDIR="$forge_tmpdir"
 
   mkdir -p "$TMPDIR"
   bun run package
 
-  if [[ ! -d out ]]; then
-    echo "error: electron-forge finished but produced no out/ directory" >&2
+  if [[ ! -d "$forge_out_dir" ]]; then
+    echo "error: electron-forge finished but produced no output directory" >&2
     return 1
   fi
 }
@@ -69,10 +77,13 @@ package() {
   cd "$_pkgname-$pkgver"
 
   local app_dir
-  app_dir="$(find out -maxdepth 1 -mindepth 1 -type d -name '*-linux-x64' | head -n 1)"
+  local forge_out_dir
+
+  forge_out_dir="$srcdir/forge-out"
+  app_dir="$(find "$forge_out_dir" -maxdepth 1 -mindepth 1 -type d -name '*-linux-x64' | head -n 1)"
 
   if [[ -z "$app_dir" || ! -d "$app_dir/resources" ]]; then
-    echo "error: no packaged app dir found under out/" >&2
+    echo "error: no packaged app dir found under $forge_out_dir" >&2
     return 1
   fi
 
