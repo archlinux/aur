@@ -3,7 +3,7 @@
 _pyname="sandwine"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=6.0.0+17.r368.20251219.fcc1bc3
+pkgver=6.0.0+63.r414.20260517.f7ad9d4
 pkgrel=1
 pkgdesc="A command-line tool to run Windows applications on GNU/Linux that offers more isolation than raw Wine and more convenience than raw bubblewrap. (Uses bubblewrap.)"
 arch=(
@@ -17,6 +17,7 @@ license=("GPL-3.0-or-later")
 depends=(
   'bubblewrap>=0.8.0'
   'python>=3.9'
+  'python-coloredlogs>=15.0.1'
   'wine'
 )
 makedepends=(
@@ -26,9 +27,7 @@ makedepends=(
   'python-setuptools>=61.0.0'
   'python-wheel'
 )
-optdepends=(
-  'python-coloredlogs>=15.0.1'
-)
+optdepends=()
 checkdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
