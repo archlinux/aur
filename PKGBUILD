@@ -6,7 +6,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 pkgname=python-ffmpeg-core
 epoch=
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Core runtime for typed-ffmpeg (DAG, compilation, IR layer)'
 arch=(any)
 url=https://pypi.org/project/ffmpeg-core/
@@ -24,7 +24,7 @@ source+=(https://files.pythonhosted.org/packages/a8/c3/127d79ddeb402fe17216555f0
 md5sums+=(468cdf5dd19e8c3e52e66fc0962489de)
 noextract+=(ffmpeg_core-4.1-py3-none-any.whl)
 source+=(LICENSE)
-md5sums+=(e4761ae89d23a3f9a0ac3c39c13262dd)
+md5sums+=(3ddc9ea27f7286b3d3de7cbf734ffd09)
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |

@@ -1,7 +1,7 @@
 pkgbase = python-ffmpeg-core
 	pkgdesc = Core runtime for typed-ffmpeg (DAG, compilation, IR layer)
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/ffmpeg-core/
 	arch = any
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = python-ffmpeg-core
 	source = LICENSE
 	md5sums = SKIP
 	md5sums = 468cdf5dd19e8c3e52e66fc0962489de
-	md5sums = e4761ae89d23a3f9a0ac3c39c13262dd
+	md5sums = 3ddc9ea27f7286b3d3de7cbf734ffd09
 
 pkgname = python-ffmpeg-core
