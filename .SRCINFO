@@ -1,0 +1,14 @@
+pkgbase = pwss-fetch-https-git
+	pkgdesc = HTTPS resolution for PWSS handles and manifests.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zai1208/pwss-fetch-https
+	arch = any
+	license = GPL3
+	depends = curl
+	depends = jq
+	depends = gnupg
+	source = git+https://github.com/zai1208/pwss-fetch-https.git
+	sha256sums = SKIP
+
+pkgname = pwss-fetch-https-git
