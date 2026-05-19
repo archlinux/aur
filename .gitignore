@@ -1,3 +1,8 @@
-/*.xz
-/pkg
-/src
+# AUR / makepkg artifacts
+*.tar.gz
+*.tar.zst
+*.tar.xz
+*.pkg.tar.*
+*.src.tar.*
+pkg/
+src/
