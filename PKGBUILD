@@ -27,9 +27,11 @@ optdepends=(
   'python-sentencepiece: needed for convert_hf_to_gguf.py'
   'python-pytorch: needed for convert_hf_to_gguf.py'
   'python-transformers: needed for convert_hf_to_gguf.py'
+  'python-gguf: needed for convert_hf_to_gguf.py'
 )
 conflicts=(libggml ggml llama.cpp llama.cpp-vulkan llama.cpp-cuda llama.cpp-clblast llama.cpp-openvino)
 provides=(llama.cpp)
+backup=("etc/conf.d/llama.cpp")
 source=(
   "llama.cpp-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
   llama.cpp.conf
@@ -43,7 +45,6 @@ prepare() {
   ln -sf "llama.cpp-${pkgver}" llama.cpp
 }
 build() {
-
   local _cmake_options=(
     -B build
     -S "llama.cpp"
