@@ -1,5 +1,6 @@
 whatsapp-nativefier-*.pkg.tar.zst
 whatsapp-nativefier-*.pkg.tar.xz
+whatsapp-nativefier-*.pkg.tar.gz
 whatsapp-nativefier-*.log
 PKGBUILD-namcap.log
 pkg/
