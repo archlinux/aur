@@ -1,23 +1,32 @@
-# Maintainer: Mubashir Haroon <mubashirmusab at gmail dot com>
+# Maintainer: Adeel Shahid <imadeelshahid at gmail dot com>
+# Contributor: Mubashir Haroon <mubashirmusab at gmail dot com>
 
 pkgname=hunspell-ur
 pkgver=0.64
-pkgrel=3
-pkgdesc="Urdu hunspell dictionaries"
+pkgrel=4
+pkgdesc="Urdu hunspell dictionary (ur_PK, with ur_IN alias)"
 arch=('any')
-url="http://www.codeplex.com/UrduDictionary"
-license=('LGPLv2')
-optdepends=(
-	'hunspell: the spell checking libraries and apps'
-)
+url="https://packages.fedoraproject.org/pkgs/hunspell-ur/hunspell-ur/"
+license=('LGPL-2.1-or-later')
+optdepends=('hunspell: the spell checking libraries and apps')
 makedepends=('rpmextract')
-source=("https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/27/Workstation/x86_64/os/Packages/h/$pkgname-$pkgver-13.fc27.noarch.rpm")
-sha512sums=('a873ef1c2edd04b31a0e312bc83b10ffb5617e854d98686c4b2887568124c8fa7e4479c322089483c5213e7b3621b521a1405cc65b51e7468c3b51a4c5127ce3')
+
+# Pinned to a Koji build artifact (not the active mirror) so the URL stays
+# valid after this Fedora release is archived. Bump _fcver/_fcrel when a newer
+# Fedora build of hunspell-ur is published.
+_fcrel=35
+_fcver=44
+source=("https://kojipkgs.fedoraproject.org/packages/$pkgname/$pkgver/$_fcrel.fc$_fcver/noarch/$pkgname-$pkgver-$_fcrel.fc$_fcver.noarch.rpm")
+sha512sums=('04a21f03efe1efd9359fc2e3d996ccddc9373828282131786d04bd3f26814399a431bd8461e5127fdb3272cb2ac1dfd2b512bc669ed89107b25493469ec1234f')
 
 package() {
-	rpm2cpio $pkgname-$pkgver-13.fc27.noarch.rpm | bsdtar -xf - -C "$pkgdir/"
+	rpmextract.sh "$srcdir/$pkgname-$pkgver-$_fcrel.fc$_fcver.noarch.rpm"
 
-	cp -r "$pkgdir"/usr/share/myspell/ "$pkgdir"/usr/share/hunspell
-	mkdir "$pkgdir"/usr/share/myspell/dicts
-	mv "$pkgdir"/usr/share/myspell/*.* "$pkgdir"/usr/share/myspell/dicts/
+	install -Dm644 usr/share/hunspell/ur_PK.aff "$pkgdir/usr/share/hunspell/ur_PK.aff"
+	install -Dm644 usr/share/hunspell/ur_PK.dic "$pkgdir/usr/share/hunspell/ur_PK.dic"
+
+	# ur_IN locale alias — same dictionary, just under a second name so apps
+	# configured for Indian Urdu also find it.
+	ln -s ur_PK.aff "$pkgdir/usr/share/hunspell/ur_IN.aff"
+	ln -s ur_PK.dic "$pkgdir/usr/share/hunspell/ur_IN.dic"
 }

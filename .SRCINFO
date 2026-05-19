@@ -1,14 +1,13 @@
 pkgbase = hunspell-ur
-	pkgdesc = Urdu hunspell dictionaries
+	pkgdesc = Urdu hunspell dictionary (ur_PK, with ur_IN alias)
 	pkgver = 0.64
-	pkgrel = 3
-	url = http://www.codeplex.com/UrduDictionary
+	pkgrel = 4
+	url = https://packages.fedoraproject.org/pkgs/hunspell-ur/hunspell-ur/
 	arch = any
-	license = LGPLv2
+	license = LGPL-2.1-or-later
 	makedepends = rpmextract
 	optdepends = hunspell: the spell checking libraries and apps
-	source = https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/27/Workstation/x86_64/os/Packages/h/hunspell-ur-0.64-13.fc27.noarch.rpm
-	sha512sums = a873ef1c2edd04b31a0e312bc83b10ffb5617e854d98686c4b2887568124c8fa7e4479c322089483c5213e7b3621b521a1405cc65b51e7468c3b51a4c5127ce3
+	source = https://kojipkgs.fedoraproject.org/packages/hunspell-ur/0.64/35.fc44/noarch/hunspell-ur-0.64-35.fc44.noarch.rpm
+	sha512sums = 04a21f03efe1efd9359fc2e3d996ccddc9373828282131786d04bd3f26814399a431bd8461e5127fdb3272cb2ac1dfd2b512bc669ed89107b25493469ec1234f
 
 pkgname = hunspell-ur
-
