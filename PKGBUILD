@@ -1,8 +1,8 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=navicat17-premium-cs
-pkgver=17.3.8
-pkgrel=2
+pkgver=17.3.9
+pkgrel=1
 pkgdesc='Navicat Premium is a multi-connection database development tool. (Chinese Simplified)'
 arch=('x86_64')
 url='https://www.navicat.com.cn/products/navicat-premium'
