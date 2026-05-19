@@ -1,0 +1,14 @@
+pkgbase = pwss-browser-glow-git
+	pkgdesc = TUI-first browsing experience for the PWSS protocol.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zai1208/pwss-browser-glow
+	arch = any
+	license = GPL3
+	depends = glow
+	depends = pwss-core-git
+	depends = pwss-fetch-https-git
+	source = git+https://github.com/zai1208/pwss-browser-glow.git
+	sha256sums = SKIP
+
+pkgname = pwss-browser-glow-git
