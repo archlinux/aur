@@ -1,4 +1,4 @@
-pkgbase = synology-chat-bin
+pkgbase = synology-chat-client-bin
 	pkgdesc = Desktop client for Synology Chat
 	pkgver = 1.2.3_0232
 	pkgrel = 1
@@ -42,4 +42,4 @@ pkgbase = synology-chat-bin
 	source = Synology_Chat_Client-1.2.3-0232.deb::https://global.synologydownload.com/download/Utility/ChatClient/1.2.3-0232/Ubuntu/x86_64/Synology%20Chat%20Client-1.2.3-0232.deb
 	sha256sums = 92bf9e650de82556f0959dd1c6923a0134c515c464095ef7c26210cf8ccc5161
 
-pkgname = synology-chat-bin
+pkgname = synology-chat-client-bin

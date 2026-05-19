@@ -1,5 +1,5 @@
 # Maintainer: jeryd leuck <jerydleuck@gmail.com>
-pkgname=synology-chat-bin
+pkgname=synology-chat-client-bin
 pkgver=1.2.3_0232
 _pkgver=1.2.3-0232
 pkgrel=1
