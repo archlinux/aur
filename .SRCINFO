@@ -1,6 +1,6 @@
 pkgbase = twriter-bin
 	pkgdesc = Editor de novelas en ES/EN con conversor RAE de diálogos, gramática vía LanguageTool, export EPUB
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/T4toh/tWriter
 	install = twriter-bin.install
@@ -16,7 +16,7 @@ pkgbase = twriter-bin
 	conflicts = twriter
 	options = !strip
 	options = !debug
-	source = twriter-bin-0.4.0.deb::https://github.com/T4toh/tWriter/releases/download/v0.4.0/tWriter_0.4.0_amd64.deb
-	sha256sums = 305f95bc76d1c8c16d5ee7c9bffb435a968c8336c4997b742175ec96d8af64d0
+	source = twriter-bin-0.4.1.deb::https://github.com/T4toh/tWriter/releases/download/v0.4.1/tWriter_0.4.1_amd64.deb
+	sha256sums = 34285816b4eb22ac713d8da0ef599f7ea295d805f1532cad436f1296e3329228
 
 pkgname = twriter-bin
