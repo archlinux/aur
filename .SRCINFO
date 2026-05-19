@@ -1,0 +1,13 @@
+pkgbase = beebeep-bin
+	pkgdesc = Secure LAN messenger and file sender (binary version)
+	pkgver = 5.8.6
+	pkgrel = 1
+	url = https://www.beebeep.net
+	arch = x86_64
+	license = GPL3
+	depends = qt5-multimedia
+	depends = qt5-x11extras
+	source = https://sourceforge.net/projects/beebeep/files/Linux/beebeep_5.8.6_amd64.deb
+	sha256sums = ff2bd2fcee5f07844904be88162839c205b92e8632bdadae7f07f1ea27912ae7
+
+pkgname = beebeep-bin
