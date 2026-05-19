@@ -1,5 +1,5 @@
 pkgname="firefox-extension-plasma-integration"
-pkgver=2.1.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="KDE plasma browser integration extension for firefox"
 arch=("any")
@@ -8,7 +8,7 @@ license=("CC0-1.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT")
 makedepends=("web-ext" "jq")
 _ref="browser/$pkgver"
 source=("plasma-browser-integration-${_ref/\//-}.tar.gz::https://invent.kde.org/plasma/plasma-browser-integration/-/archive/$_ref/plasma-browser-integration-${_ref/\//-}.tar.gz")
-sha256sums=('81ee3be873d67e62eb79b1d6ec216b77e314e86828f65011e6aa2a7f7da03065')
+sha256sums=('f318fc799b236c44856339c7ab9260542e1f5a1b0dd5927180e917fd4eed3771')
 
 build(){
     cd "$srcdir/plasma-browser-integration-${_ref/\//-}/extension"

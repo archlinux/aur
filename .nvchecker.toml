@@ -1,0 +1,7 @@
+[firefox-extension-plasma-integration]
+prefix = "browser/"
+source = "gitlab"
+gitlab = "plasma/plasma-browser-integration"
+host = "invent.kde.org"
+use_max_tag = true
+include_regex = 'browser\/(([0-9]+\.)+[0-9]+)'
