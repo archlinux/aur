@@ -1,6 +1,6 @@
 pkgbase = pinentry-hypr-git
 	pkgdesc = A Hyprland-native GnuPG pinentry using Qt6/QML/hyprutils
-	pkgver = 0.1.0.r1.g4ba31e1
+	pkgver = 0.1.0.r4.ga8d98a1
 	pkgrel = 1
 	url = https://github.com/AuthenticSm1les/pinentry-hypr
 	arch = x86_64

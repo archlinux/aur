@@ -1,6 +1,6 @@
 # Maintainer: smiley <me@smileyhq.pro>
 pkgname=pinentry-hypr-git
-pkgver=0.1.0.r1.g4ba31e1
+pkgver=0.1.0.r4.ga8d98a1
 pkgrel=1
 pkgdesc="A Hyprland-native GnuPG pinentry using Qt6/QML/hyprutils"
 arch=('x86_64')
