@@ -9,8 +9,14 @@ pkgbase = navicat17-premium-zh-cn
 	depends = fontconfig
 	depends = freetype2
 	depends = hicolor-icon-theme
+	provides = navicat=17.3.9
+	conflicts = navicat
+	conflicts = navicat-premium
+	conflicts = navicat17-premium
 	options = !strip
 	options = !debug
+	source = navicat.sh
+	sha512sums = 17a32a0a6ae67043f6f21cf248ecdc187972c3cb2d57b325ff1b9fa34389e3208da3e143df187669e5211ef121670de6d36391b02432f927870c78a859c22c16
 	source_x86_64 = navicat17-premium-cs-x86_64-17.3.9.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-x86_64.AppImage
 	sha512sums_x86_64 = 496352100be4a039fad27679d81386210455e08a2d52eb7993ae5e4253df466a83c95feb24b537c4e6df7776733c227b5e77a08859a1e94a0ea48c099b6ad979
 	source_aarch64 = navicat17-premium-cs-aarch64-17.3.9.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-aarch64.AppImage
