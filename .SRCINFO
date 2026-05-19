@@ -1,0 +1,18 @@
+pkgbase = antigravity-cli-bin
+	pkgdesc = Google Antigravity CLI (agy)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://antigravity.google
+	arch = x86_64
+	arch = aarch64
+	license = custom:unknown
+	provides = antigravity-cli
+	provides = agy
+	conflicts = antigravity-cli
+	options = !strip
+	source_x86_64 = antigravity-cli-bin-1.0.0-x86_64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-cli/1.0.0-5288553236791296/linux-x64/cli_linux_x64.tar.gz
+	sha512sums_x86_64 = 5ccdcc01fb863c7e8e56473c6c95dba75fed4fd2a242200d80cfc4c7fab811b733f5a7fab25332130aad298e72627e1018e6911a5658f4f059ef6e019f211972
+	source_aarch64 = antigravity-cli-bin-1.0.0-aarch64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-cli/1.0.0-5288553236791296/linux-arm/cli_linux_arm64.tar.gz
+	sha512sums_aarch64 = 9797c7955d0e07fc57605f81fab16dfd2f390d43b2508af3ca697b1cfa498e37e43a3a9a55ad8b26eb1353d80bbec522d108eb75a0eb0eb00e979cb579d6e277
+
+pkgname = antigravity-cli-bin
