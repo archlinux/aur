@@ -1,0 +1,19 @@
+pkgbase = hyprwall
+	pkgdesc = Wallpaper manager for Hyprland
+	pkgver = r41.0227305
+	pkgrel = 1
+	url = https://github.com/Rainkord/HyprWall
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = wayland
+	depends = hyprpaper
+	optdepends = mpvpaper: video wallpaper support
+	provides = hyprwall
+	conflicts = hyprwall
+	source = hyprwall::git+https://github.com/Rainkord/HyprWall.git
+	sha256sums = SKIP
+
+pkgname = hyprwall
