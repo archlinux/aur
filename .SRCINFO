@@ -1,17 +1,17 @@
 pkgbase = php-pdo-oci
 	pkgdesc = PDO driver for OCI8
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://pecl.php.net/package/PDO_OCI
 	arch = x86_64
 	license = PHP
 	depends = php>=8.3.0
-	depends = php-oci8>=3.3.0
+	depends = php-oci8>=3.4.0
 	conflicts = php-pdo-oci-git
 	backup = etc/php/conf.d/${_extname}.ini
-	source = https://pecl.php.net/get/pdo_oci-1.1.0.tgz
+	source = https://pecl.php.net/get/pdo_oci-1.2.0.tgz
 	source = patch.diff
-	md5sums = 9e3888c2a1077496c5f01d60fcfb3914
-	md5sums = 74552b37da712404393cfca947c8e402
+	sha256sums = c55e59bceb68c243e7b6ea90d1d4b28690b997e30392f10a1e8462f12d3f937e
+	sha256sums = 838804413b28dab6ff03b64f7a4b419419fcdfc8b738191d7df461089dc653eb
 
 pkgname = php-pdo-oci
