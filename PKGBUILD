@@ -1,11 +1,11 @@
 # Maintainer: jeryd leuck <jerydleuck@gmail.com>
 pkgname=msty-studio
 pkgver=2.7.3
-pkgrel=4
-pkgdesc="Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local."
+pkgrel=5
+pkgdesc="Desktop AI workflow application (Local/Private)"
 arch=('x86_64')
 url="https://msty.ai/"
-license=('proprietary')
+license=('custom:proprietary')
 depends=('alsa-lib' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxshmfence' 'mesa' 'nss' 'pango')
 optdepends=('cuda: NVIDIA GPU acceleration'
             'rocm-core: AMD GPU acceleration'
@@ -43,4 +43,8 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s /opt/MstyStudio/MstyStudio "$pkgdir/usr/bin/msty"
   ln -s /opt/MstyStudio/MstyStudio "$pkgdir/usr/bin/msty-studio"
+
+  # Install Licenses
+  install -Dm644 "$pkgdir/opt/MstyStudio/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron"
+  install -Dm644 "$pkgdir/opt/MstyStudio/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
