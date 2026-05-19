@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pebble
+Comment=Local-first desktop email client
+Exec=pebble %U
+Terminal=false
+Type=Application
+Icon=pebble
+Categories=Network;Email;
+StartupWMClass=Pebble
+MimeType=x-scheme-handler/mailto;
