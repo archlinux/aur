@@ -4,7 +4,7 @@
 
 pkgname=supabase-bin
 pkgver=2.100.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI for Supabase, an open source Firebase alternative"
 arch=(aarch64 x86_64)
 url="https://supabase.com/docs/reference/cli/about"
@@ -12,6 +12,7 @@ _url="https://github.com/supabase/cli"
 license=(MIT)
 provides=(supabase)
 conflicts=(supabase)
+options=(!strip)  # breaks Bun packaging
 
 source=(https://raw.githubusercontent.com/supabase/cli/refs/tags/v$pkgver/apps/cli-go/LICENSE)
 sha256sums=("81f7d60afa4316010b1c0df8eb8f0c80b27586a86b72f1bde85e129bfd10d52a")
