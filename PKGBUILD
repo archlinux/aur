@@ -1,6 +1,6 @@
 pkgname=linux-wallpaper-engine-bin
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="Wallpaper Engine for Linux by jagrat7. (Requires linux-wallpaperengine-git)"
 arch=('x86_64')
 url="https://github.com/jagrat7/linux-wallpaper-engine"
@@ -8,7 +8,7 @@ license=('MIT')
 options=('!strip' '!debug')
 depends=('libxcb' 'mesa' 'libdrm' 'at-spi2-core' 'xdg-utils' 'nss' 'libnotify' 'gtk3' 'linux-wallpaperengine-git')
 source=("${url}/releases/download/v${pkgver}/linux-wallpaper-engine_${pkgver}_amd64.deb")
-sha256sums=('49a033fa1cd147604c359b2b54a27262d75e066ba0d7980cf2e5fcb632465bc1')
+sha256sums=('bbd92ed9065ca3054a81cd1287336db83fcda89ba2fce6bfc373d22084467668')
 
 package() {
     cd "${srcdir}"

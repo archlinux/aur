@@ -1,7 +1,7 @@
 pkgbase = linux-wallpaper-engine-bin
 	pkgdesc = Wallpaper Engine for Linux by jagrat7. (Requires linux-wallpaperengine-git)
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = https://github.com/jagrat7/linux-wallpaper-engine
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = linux-wallpaper-engine-bin
 	depends = linux-wallpaperengine-git
 	options = !strip
 	options = !debug
-	source = https://github.com/jagrat7/linux-wallpaper-engine/releases/download/v0.4.2/linux-wallpaper-engine_0.4.2_amd64.deb
-	sha256sums = 49a033fa1cd147604c359b2b54a27262d75e066ba0d7980cf2e5fcb632465bc1
+	source = https://github.com/jagrat7/linux-wallpaper-engine/releases/download/v0.4.3/linux-wallpaper-engine_0.4.3_amd64.deb
+	sha256sums = bbd92ed9065ca3054a81cd1287336db83fcda89ba2fce6bfc373d22084467668
 
 pkgname = linux-wallpaper-engine-bin
