@@ -1,0 +1,10 @@
+diff --unified --recursive --text a/pyproject.toml b/pyproject.toml
+--- a/pyproject.toml	2025-03-02 20:28:05.788275000 +0100
++++ b/pyproject.toml	2026-05-19 10:25:53.682518598 +0200
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["flit_core >=3.2,<4"]
++requires = ["flit_core >=3.2,<5"]
+ build-backend = "flit_core.buildapi"
+ 
+ 
