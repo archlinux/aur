@@ -5,7 +5,7 @@
 pkgname=trae-cn-desktop-bin
 _pkgname=trae-cn
 pkgver=2.3.27641
-pkgrel=1
+pkgrel=2
 pkgdesc="字节跳动推出的AI编程IDE（Trae CN）"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -33,20 +33,24 @@ conflicts=('trae-cn' 'trae-cn-bin')
 source_x86_64=(
     "${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae_CN-linux-x64.tar.gz"
     "${_pkgname}.desktop"
+    "${_pkgname}-url-handler.desktop"
     "${_pkgname}-startup.sh"
 )
 
 source_aarch64=(
     "${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae_CN-linux-arm64.tar.gz"
     "${_pkgname}.desktop"
+    "${_pkgname}-url-handler.desktop"
     "${_pkgname}-startup.sh"
 )
 
 sha256sums_x86_64=('3cc8e9133af71fcbe0a703741bd5810cb837d97b7642d33f2e76ed2b74f86f3b'
-                   'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
+                   '30c7bcb0c9d3afcdd751f114b154ad09f2fea481abb2c431469368c6d6069b1c'
+                   'e95823c65fb48674878ebb8c99719fbcf3eb9ccb89e61e4d37bd0b5be300b168'
                    'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
 sha256sums_aarch64=('3cc8e9133af71fcbe0a703741bd5810cb837d97b7642d33f2e76ed2b74f86f3b'
-                    'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
+                    '30c7bcb0c9d3afcdd751f114b154ad09f2fea481abb2c431469368c6d6069b1c'
+                    'e95823c65fb48674878ebb8c99719fbcf3eb9ccb89e61e4d37bd0b5be300b168'
                     'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
 
 
@@ -57,6 +61,7 @@ package() {
     bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.tar.gz" -C "${pkgdir}/opt/${_pkgname}"
     chmod 4755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/${_pkgname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-url-handler.desktop"
     install -Dm644 "${srcdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
     install -Dm644 "${srcdir}/resources/app/LICENSE.txt"  "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
     install -Dm644 "${srcdir}/resources/completions/bash/${_pkgname}"  "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
