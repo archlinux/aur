@@ -1,6 +1,6 @@
 pkgbase = perfetto
 	pkgdesc = Python APIs and bindings for Perfetto
-	pkgver = 55.2
+	pkgver = 55.3
 	pkgrel = 1
 	url = https://github.com/google/perfetto
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = perfetto
 	makedepends = clang
 	depends = gcc-libs
 	depends = python-protobuf
-	source = perfetto-55.2.tar.gz::https://github.com/google/perfetto/archive/v55.2.tar.gz
-	sha512sums = 4196f11538969f86d2ecc822af5e6f1f607f86ea3f46e31180889bd949f14c52c3d7c338a29cad0cab8ffb46db7d27c8aa30ba58820b40abec52473e9c9bd6ea
+	source = perfetto-55.3.tar.gz::https://github.com/google/perfetto/archive/v55.3.tar.gz
+	sha512sums = 071516aba28af4818defbc16b619c2a0af7ac991537a4429fe506000a91d092787f33f20f0f03d459bd6c4bc82ea59576b709786618ad20ff5ea0ba66090485b
 
 pkgname = perfetto
