@@ -1,21 +1,22 @@
-#Maintainer: Lothar_m <lothar_m at riseup dot net>
+# Contributor: Lothar_m <lothar_m at riseup dot net>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Jack Roehr <jack@seatgull.com>
+# Contributor: tee <teeaur at duck dot com>
 
 pkgname='ticker-git'
 _gitname='ticker'
-pkgver=1.9.r5.g51260c4
+pkgver=0.3.0.r428.g0a22557
 pkgrel=1
-arch=('i686' 'x86_64')
-url="http://joeyh.name/code/ticker/"
-depends=('slang')
+arch=('x86_64')
+url="https://github.com/achannarasappa/ticker"
+depends=('glibc')
 makedepends=('git')
-license=('GPL')
-pkgdesc="Ticker is a program that scrolls a message across the top or bottom line of your screen, in a manner similar to a stock ticker. Ticker supports communicating with programs that changes the text periodically."
+license=('GPL-3.0-or-later')
+pkgdesc="Terminal stock ticker with live updates and position tracking"
 provides=(ticker)
-conflicts=(ticker)
-source=("git://git.kitenet.net/ticker"
-		)
-md5sums=('SKIP'
-		)
+#conflicts=(ticker)
+source=("git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -23,20 +24,35 @@ pkgver() {
 	git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
-	cd "${_gitname}"
-	cd "$srcdir/$_gitname"
-
-	# building ....
-	./configure --prefix=/usr
-	make
+prepare() {
+	cd "$_gitname"
+	mkdir -p build/
+	go mod download
 }
 
+build() {
+	local CGO_CPPFLAGS="${CPPFLAGS}"
+	local CGO_CFLAGS="${CFLAGS}"
+	local CGO_CXXFLAGS="${CXXFLAGS}"
+	local CGO_LDFLAGS="${LDFLAGS}"
+	local GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	cd "$_gitname"
+	go build -o build -ldflags "-linkmode=external -X '${url#https://}/cmd.Version=v$pkgver'"
+}
 
 package() {
-	# install executable
-	install -D -m755 "$srcdir/$_gitname/ticker" "$pkgdir/usr/bin/ticker"
+	cd "$_gitname"
+	install -Dv "build/$_gitname" -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$_gitname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$_gitname/"
 
-	# install license
-	install -D -m644 "$srcdir/$_gitname/GPL" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd build
+	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+	./ticker completion bash > "${pkgdir}/usr/share/bash-completion/completions/ticker"
+
+	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
+	./ticker completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_ticker"
+
+	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+	./ticker completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/ticker.fish"
 }
