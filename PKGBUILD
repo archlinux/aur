@@ -1,7 +1,7 @@
 # Maintainer: Daniel Grasso
 
 pkgname=wayland-scroll-factor
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Touchpad scroll and gesture tuning for Wayland (GNOME and Hyprland)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 install=wayland-scroll-factor.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/daniel-g-carrasco/wayland-scroll-factor/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6efdab0ea8d98a79ec49f50960b89d2c19eb7f0f4bad40f09d53f38d8f2685b0')
+sha256sums=('d6c84957f371a2a5ec4c393661fab538d2f1328ee95cb0950e3f4732f039e48f')
 
 build() {
   cd "$pkgname-$pkgver"
