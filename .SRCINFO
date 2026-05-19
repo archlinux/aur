@@ -1,0 +1,19 @@
+pkgbase = antigravity-ide
+	pkgdesc = Antigravity Development IDE
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://website-resmi-antigravity.com
+	arch = x86_64
+	license = custom
+	depends = nss
+	depends = alsa-lib
+	depends = gtk3
+	depends = libxss
+	provides = antigravity-ide
+	conflicts = antigravity-ide
+	source = antigravity-ide-2.0.1.tar.gz::https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/2.0.1-4861014005645312/linux-x64/Antigravity%20IDE.tar.gz
+	source = antigravity.desktop
+	sha256sums = 747163aa3a8afba4b316f97c40b4a75ca4736a59768a416cd1e881e73ec31ef9
+	sha256sums = 61478433011e6a73f6f3fc8288d972f3fa3f86d6de104256bba9ac4be29b70ca
+
+pkgname = antigravity-ide

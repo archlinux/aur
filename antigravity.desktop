@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Antigravity IDE
+Comment=Antigravity Development Tool
+Exec=antigravity-ide %U
+Icon=antigravity-ide
+Terminal=false
+Type=Application
+Categories=Development;
