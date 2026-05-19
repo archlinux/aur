@@ -2,7 +2,7 @@
 pkgname=mono-tracker-git
 _pkgname=mono
 pkgver=v0.3.0.r1.40d062f
-pkgrel=2
+pkgrel=3
 pkgdesc="Privacy-first screen time tracking application for Linux with TUI dashboard"
 arch=('x86_64')
 url="https://github.com/xonoxc/mono"
@@ -40,6 +40,16 @@ build() {
   export CARGO_HOME="$srcdir/cargo"
   export ZSTD_SYS_USE_PKG_CONFIG=1
   cargo build --release --frozen
+}
+
+check() {
+  find "$pkgdir" -type f -exec sh -c 'file "$1" | grep -q ELF' _ {} \; -print | while read -r elf; do
+    if ldd "$elf" | grep -q "not found"; then
+      echo "Broken dependencies in $elf:"
+      ldd "$elf" | grep "not found"
+      exit 1
+    fi
+  done
 }
 
 package() {

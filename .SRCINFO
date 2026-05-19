@@ -1,7 +1,7 @@
 pkgbase = mono-tracker-git
 	pkgdesc = Privacy-first screen time tracking application for Linux with TUI dashboard
 	pkgver = v0.3.0.r1.40d062f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xonoxc/mono
 	arch = x86_64
 	license = MIT
