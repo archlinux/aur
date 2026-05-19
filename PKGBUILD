@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat-git
-pkgver=2.2.2.r1.g8b7b6c5
-_electronversion=35
-_nodeversion=22
+pkgver=2.3.4.r1.gb200861
+_electronversion=42
+_nodeversion=24
 pkgrel=1
 pkgdesc="A minimalist offline music library player for desktop, built on Electron, React, and Material UI.(Use system-wide electron)"
 arch=('any')
@@ -58,7 +58,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
