@@ -4,7 +4,7 @@ pkgver=0.1.5
 pkgrel=1
 pkgdesc="Cross-platform music manager with multi-source library, audio fingerprinting, and ID3 tag editing"
 arch=('x86_64')
-url="https://buildhut.fly.dev/apps/polify"
+url="https://buildhut.fly.dev/apps/Polify"
 license=('MIT')
 depends=('gtk3' 'libepoxy' 'xz' 'mpv' 'ffmpeg' 'sqlite' 'libsecret'
          'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav')
