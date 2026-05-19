@@ -1,11 +1,71 @@
 --- a/ggml/src/ggml-blas/ggml-blas.cpp	2026-03-22 22:33:52.000000000 +0500
 +++ b/ggml/src/ggml-blas/ggml-blas.cpp	2026-03-25 18:51:39.173264481 +0500
-@@ -14,6 +14,8 @@
+@@ -14,6 +14,10 @@
  #   include <blis.h>
  #elif defined(GGML_BLAS_USE_NVPL)
  #   include <nvpl_blas.h>
 +#elif defined(GGML_BLAS_USE_CLBLAST)
++#	define CL_TARGET_OPENCL_VERSION 120
++#	define CL_USE_DEPRECATED_OPENCL_1_2_APIS
 +#   include <clblast_netlib_c.h>
  #else
  #   include <cblas.h>
  #endif
+@@ -138,7 +142,7 @@
+                 x = (float *) wdata + i02*ne_plane + i03*ne02*ne_plane;
+             }
+ 
+-            cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans,
++            cblas_sgemm(CLBlastLayoutRowMajor, CLBlastTransposeNo, CLBlastTransposeYes,
+                         ne1, ne01, ne10,
+                         1.0f,   y, ne10,
+                                 x, ne00,
+@@ -187,15 +191,27 @@
+     int n = src0->ne[0];
+     int k = src0->ne[1];
+     int m = src1->ne[0];
++#if defined(GGML_BLAS_USE_CLBLAST)
++	CLBlastTranspose transposeA;
++#else
++	CBLAS_TRANSPOSE transposeA;
++#endif
+ 
+-    CBLAS_TRANSPOSE transposeA;
+     int lda;
+ 
+     if (!ggml_is_transposed(src1)) {
++#if defined(GGML_BLAS_USE_CLBLAST)
++		transposeA = CLBlastTransposeYes;
++#else
+         transposeA = CblasTrans;
++#endif
+         lda = m;
+     } else {
+-        transposeA = CblasNoTrans;
++#if defined(GGML_BLAS_USE_CLBLAST)
++		transposeA = CLBlastTransposeNo;
++#else
++        transposeA = CblasTransNo;
++#endif
+         lda = k;
+     }
+ 
+@@ -203,7 +219,7 @@
+     float * b = (float *) ((char *) src0->data);
+     float * c = (float *) ((char *) dst->data);
+ 
+-    cblas_sgemm(CblasRowMajor, transposeA, CblasNoTrans, m, n, k, 1.0, a, lda, b, n, 0.0, c, n);
++    cblas_sgemm(CLBlastLayoutRowMajor, transposeA, CLBlastTransposeNo, m, n, k, 1.0, a, lda, b, n, 0.0, c, n);
+ 
+     GGML_UNUSED(ctx);
+ }
+@@ -335,6 +351,8 @@
+         return "NVPL";
+     #elif defined(GGML_BLAS_USE_OPENBLAS)
+         return "OpenBLAS";
++    #elif defined(GGML_BLAS_USE_CLBLAST)
++    	return "CLBlast";
+     #else
+         return "BLAS";
+     #endif
+

@@ -3,10 +3,10 @@
 : ${aur_llamacpp_build_universal:=false}
 
 pkgname=llama.cpp-clblast
-pkgver=b8644
+pkgver=b9222
 pkgrel=1
-_build_number=8644
-_commit_id=39b27f0
+_build_number=9222
+_commit_id=9a532ae
 pkgdesc="Port of Facebook's LLaMA model in C/C++(with Unofficial CLBlast Backend support)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -26,6 +26,7 @@ optdepends=(
   'python-sentencepiece: needed for convert_hf_to_gguf.py'
   'python-pytorch: needed for convert_hf_to_gguf.py'
   'python-transformers: needed for convert_hf_to_gguf.py'
+  'python-gguf: needed for convert_hf_to_gguf.py'
 )
 conflicts=(libggml ggml llama.cpp llama.cpp-vulkan llama.cpp-cuda llama.cpp-opencl llama.cpp-openvino)
 provides=(llama.cpp)
@@ -35,7 +36,6 @@ source=(
   llama.cpp.service
   0001-add-clblast-to-cmake.patch
   0002-add-clblast-header.patch
-	
 )
 sha256sums=('SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
