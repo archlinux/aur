@@ -43,10 +43,11 @@ package() {
     install -Dm644 "${srcdir}/zen-browser-twilight.desktop" "${pkgdir}/usr/share/applications/zen-browser-twilight.desktop"
 
     # Icons (symlinks to avoid duplicating files)
+    _iconname="zen-browser-twilight"
     for i in 16x16 32x32 48x48 64x64 128x128; do
         install -d "${pkgdir}/usr/share/icons/hicolor/${i}/apps/"
         ln -s "/opt/${pkgname}/browser/chrome/icons/default/default${i/x*}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${i}/apps/${pkgname}.png"
+            "${pkgdir}/usr/share/icons/hicolor/${i}/apps/${_iconname}.png"
     done
 
     # System dictionaries
