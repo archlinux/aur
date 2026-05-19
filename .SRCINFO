@@ -1,7 +1,7 @@
 pkgbase = agsh
 	pkgdesc = A general-purpose AI agent runtime
-	pkgver = 0.23.1
-	pkgrel = 2
+	pkgver = 0.24.1
+	pkgrel = 1
 	url = https://docs.agsh.sh
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = agsh
 	depends = libgcc
 	depends = sqlite
 	optdepends = bubblewrap: sandbox support
-	source = agsh-0.23.1.tar.gz::https://github.com/k4yt3x/agsh/archive/0.23.1.tar.gz
-	sha256sums = e20a1500ed508e0fd688faa8ccb3fc87fa66abb5974478fae3aa506753a9be62
+	source = agsh-0.24.1.tar.gz::https://github.com/k4yt3x/agsh/archive/0.24.1.tar.gz
+	sha256sums = 5e609e261f4de8bf2d5ed0ad8e2d0ae79248d8b108f6514406abf18fbc08bdcb
 
 pkgname = agsh
