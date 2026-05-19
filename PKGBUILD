@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-quota
 _npmname=@slkiser/opencode-quota
-pkgver=3.8.5
+pkgver=3.8.7
 pkgrel=1
 pkgdesc="OpenCode plugin for quota & token usage tracking with zero context window pollution"
 arch=('x86_64')
@@ -12,10 +12,8 @@ makedepends=('npm')
 options=('!debug')
 install=$pkgname.install
 
-source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz"
-        "$pkgname-$pkgver-package-lock.json::https://raw.githubusercontent.com/slkiser/opencode-quota/v$pkgver/package-lock.json")
-sha256sums=('b9b84fdc8154cdcfc6423963d93e353fcdbf2b35ab2cd5f8fcdca1ead557f0f9'
-            '18db4c2a63380a36e07ebf4cc34a4456468eb1728f1bc1321047feb7be01ce61')
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz")
+sha256sums=('4bce7e4beab2545a62d197241ac7ad25d9e611f6beaa16220cb82e34f2248584')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/$_npmname/latest" | jq -r '.version'
@@ -24,22 +22,13 @@ latestver() {
 package() {
     cd "$srcdir/package"
 
-    cp "$srcdir/$pkgname-$pkgver-package-lock.json" package-lock.json
-    npm ci --omit=dev --ignore-scripts
+    npm install --omit=dev --omit=peer --ignore-scripts
 
-    mapfile -t _peerdeps < <(node <<'JS'
-const fs = require("node:fs")
-
-const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"))
-const lock = JSON.parse(fs.readFileSync("package-lock.json", "utf8"))
-
-for (const name of Object.keys(pkg.peerDependencies ?? {})) {
-  const locked = lock.packages?.[`node_modules/${name}`]?.version
-  if (!locked) throw new Error(`package-lock.json does not pin ${name}`)
-  console.log(`${name}@${locked}`)
-}
-JS
-    )
+    mapfile -t _peerdeps < <(node -e '
+      const pkg = require("./package.json");
+      for (const [name, range] of Object.entries(pkg.peerDependencies ?? {}))
+        console.log(`${name}@${range}`);
+    ')
     if ((${#_peerdeps[@]})); then
         rm -rf "$srcdir/peer-root"
         npm install --prefix "$srcdir/peer-root" --omit=dev --ignore-scripts "${_peerdeps[@]}"
