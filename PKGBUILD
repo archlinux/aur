@@ -1,7 +1,7 @@
 # Maintainer: Adam Bambuch <adam@bambuch.cz>
 pkgname=modulejail-git
 pkgver=r59.1.2.3.0.gdf4f186
-pkgrel=2
+pkgrel=4
 pkgdesc="Shrink a Linux host's kernel-module attack surface via modprobe.d blacklist (git)"
 arch=(any)
 license=('GPL-3.0-only')
