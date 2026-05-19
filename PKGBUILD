@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpits-unstable-bin
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="moshpits server with post-quantum support — SSH and Mosh inspired remote terminal server (pre-compiled binary)"
 arch=('x86_64')
@@ -19,8 +19,8 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mps.tar.gz" "mps.service")
 source_x86_64=("mps-unstable-x86_64::${_base}/mps-unstable-x86_64-unknown-linux-musl")
 # First entry is the release dist tarball; local sidecar file is intentionally SKIP.
-sha256sums=('e7342a3f3588bb8c664b8464a0c200c52eb8c3353966bad18dd58dc42aa74218' 'SKIP')
-sha256sums_x86_64=('61a3ac14a589df5dd313373438d2632718f70e465cfa252870b84f0236528484')
+sha256sums=('9edc352426435e5f704d15a0bbf990ff000f2138c2adb0f30f0481d94a9828f6' 'SKIP')
+sha256sums_x86_64=('e0d096c7506beda3b9a94777f97beba451e6b8a3de1f96d3685001830e421f55')
 
 package() {
     install -Dm755 mps-unstable-x86_64 "$pkgdir/usr/bin/mps"
