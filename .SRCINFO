@@ -9,7 +9,6 @@ pkgbase = morph
 	makedepends = gcc
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = qt6-network
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = qt6-5compat

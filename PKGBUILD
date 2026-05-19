@@ -6,7 +6,7 @@ pkgdesc="Modern music player with dynamic UI and QML theme support"
 arch=('x86_64')
 url="https://github.com/lizapropanol/morph"
 license=('GPL3')
-depends=('qt6-base' 'qt6-declarative' 'qt6-network' 'qt6-multimedia' 'qt6-svg' 'qt6-5compat' 
+depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-svg' 'qt6-5compat' 
          'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'hicolor-icon-theme')
 makedepends=('cmake' 'gcc')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
