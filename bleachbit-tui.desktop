@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BleachBit TUI
+Comment=Free space and maintain privacy (Terminal UI)
+TryExec=bleachbit-tui
+Exec=bleachbit-tui-launcher
+Icon=bleachbit
+Terminal=false
+Categories=System;Utility;

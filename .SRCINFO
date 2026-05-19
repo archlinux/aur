@@ -1,7 +1,7 @@
 pkgbase = bleachbit-tui-git
 	pkgdesc = Free space and maintain privacy (Experimental TUI branch)
 	pkgver = 6.0.0.r17.9bb4a493
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bleachbit/bleachbit
 	arch = any
 	license = GPL-3.0-or-later
@@ -18,6 +18,10 @@ pkgbase = bleachbit-tui-git
 	conflicts = bleachbit
 	conflicts = bleachbit-git
 	source = bleachbit::git+https://github.com/bleachbit/bleachbit.git#branch=tui
+	source = bleachbit-tui.desktop
+	source = bleachbit-tui-launcher.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = bleachbit-tui-git

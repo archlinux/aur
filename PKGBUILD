@@ -1,7 +1,7 @@
 # Maintainer: jeryd leuck <jerydleuck@gmail.com>
 pkgname=bleachbit-tui-git
 pkgver=6.0.0.r17.9bb4a493
-pkgrel=1
+pkgrel=3
 pkgdesc="Free space and maintain privacy (Experimental TUI branch)"
 arch=('any')
 url="https://github.com/bleachbit/bleachbit"
@@ -11,8 +11,12 @@ optdepends=('gtk3: for GTK+ UI' 'python-gobject: for GTK+ UI')
 makedepends=('git' 'make')
 provides=('bleachbit')
 conflicts=('bleachbit' 'bleachbit-git')
-source=("bleachbit::git+https://github.com/bleachbit/bleachbit.git#branch=tui")
-sha256sums=('SKIP')
+source=("bleachbit::git+https://github.com/bleachbit/bleachbit.git#branch=tui"
+        "bleachbit-tui.desktop"
+        "bleachbit-tui-launcher.sh")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd bleachbit
@@ -36,4 +40,10 @@ package() {
   
   # Install the TUI entrypoint
   install -Dm755 bleachbit_tui.py "$pkgdir/usr/bin/bleachbit-tui"
+
+  # Install the universal terminal wrapper
+  install -Dm755 "$srcdir/bleachbit-tui-launcher.sh" "$pkgdir/usr/bin/bleachbit-tui-launcher"
+
+  # Install the custom TUI desktop shortcut
+  install -Dm644 "$srcdir/bleachbit-tui.desktop" "$pkgdir/usr/share/applications/bleachbit-tui.desktop"
 }
