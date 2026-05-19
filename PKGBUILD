@@ -2,7 +2,7 @@
 pkgname=linux-wallpaper-engine-ux
 _pkgname=linux-wallpaper-engine
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern desktop GUI for linux-wallpaperengine"
 arch=('x86_64')
 url="https://github.com/jagrat7/linux-wallpaper-engine"
