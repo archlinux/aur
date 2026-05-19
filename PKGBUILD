@@ -4,8 +4,8 @@
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 _binaryname=ToDesk
-pkgver=4.8.1.0
-pkgrel=2
+pkgver=4.8.6.2
+pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64')
 url="https://www.todesk.com/"
@@ -30,7 +30,7 @@ source_x86_64=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-amd64.deb")
 source_aarch64=("https://dl.todesk.com/linux/${_pkgname}-v4.7.2.0-arm64.deb")
 source_armv7h=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-armv7l.deb")
 sha256sums=('402b2db2586c723af990beb0f96249b9680880f4f30e58a7cbe7cbd20b979a0b')
-sha256sums_x86_64=('a8bc48ed6fbbb0cf2162faf6cebd302e6ab869763639d246eabb399343f41586')
+sha256sums_x86_64=('b3f2af7fc120948903df3aa455955cb5823fb5c1f5ec7dca17ac8a4cba53c808')
 sha256sums_aarch64=('07a1239d0ea6b94f24e12b446d39cf6b23747b2e52f09c3dff50daa1394ae0b5')
 
 _install() {
