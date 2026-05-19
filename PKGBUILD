@@ -2,7 +2,7 @@
 pkgname=synology-chat
 pkgver=1.2.3_0232
 _pkgver=1.2.3-0232
-pkgrel=1
+pkgrel=2
 pkgdesc="Synology Chat Client is the desktop client software of Synology Chat."
 arch=('x86_64')
 url="https://www.synology.com/dsm/feature/chat"
@@ -14,6 +14,16 @@ conflicts=('synochat')
 filename="Synology_Chat_Client-${_pkgver}.deb"
 source=("$filename::https://global.synologydownload.com/download/Utility/ChatClient/${_pkgver}/Ubuntu/x86_64/Synology%20Chat%20Client-${_pkgver}.deb")
 sha256sums=('92bf9e650de82556f0959dd1c6923a0134c515c464095ef7c26210cf8ccc5161')
+
+check() {
+  find "$pkgdir" -type f -exec sh -c 'file "$1" | grep -q ELF' _ {} \; -print | while read -r elf; do
+    if ldd "$elf" | grep -q "not found"; then
+      echo "Broken dependencies in $elf:"
+      ldd "$elf" | grep "not found"
+      exit 1
+    fi
+  done
+}
 
 package() {
   # Extract data.tar.xz from the debian package
