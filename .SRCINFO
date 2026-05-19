@@ -1,0 +1,15 @@
+pkgbase = wbij
+	pkgdesc = a CLI tool for wbijanie zadań
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://repos.adamm.rocks/maleszka/wbij
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = zig>=0.15.2
+	makedepends = zig<0.16.0
+	depends = fzf
+	conflicts = wbij-bin
+	source = wbij-0.2.1.tar.gz::https://repos.adamm.rocks/maleszka/wbij/archive/v0.2.1.tar.gz
+	sha256sums = 43884295847439a8dbae4146eb8383b9e781c26c4003dd7dde0774d6e661135a
+
+pkgname = wbij
