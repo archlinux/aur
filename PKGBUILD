@@ -12,7 +12,10 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 flm-gtk "$pkgdir/usr/bin/flm-gtk"
+    install -Dm755 app.py "$pkgdir/usr/bin/flm-gtk"
     install -Dm644 flm-gtk.png "$pkgdir/usr/share/pixmaps/flm-gtk.png"
     install -Dm644 flm-gtk.desktop "$pkgdir/usr/share/applications/flm-gtk.desktop"
+    
+    install -d "$pkgdir/usr/lib/fastflowlm-gtk"
+    install -m644 main.py utils.py flm.py "$pkgdir/usr/lib/fastflowlm-gtk/"
 }
