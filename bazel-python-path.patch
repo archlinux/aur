@@ -1,8 +1,8 @@
 diff --git a/tools/bazel b/tools/bazel
-index 9cb423d8..6f745aa7 100755
+index 44bafbfb..3e6acdab 100755
 --- a/tools/bazel
 +++ b/tools/bazel
-@@ -149,6 +149,7 @@ else
+@@ -219,6 +219,7 @@ else
    fi
  fi
  

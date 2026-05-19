@@ -1,8 +1,8 @@
 diff --git a/bazel/utils.bzl b/bazel/utils.bzl
-index 286a21bb..270d6146 100644
+index beb4b85b..fb7719cb 100644
 --- a/bazel/utils.bzl
 +++ b/bazel/utils.bzl
-@@ -106,50 +106,5 @@ def get_toolchain_subs(ctx):
+@@ -197,52 +197,5 @@ def get_toolchain_subs(ctx):
      return distro, arch, substitutions
  
  def get_host_distro_major_version(repository_ctx):
@@ -18,6 +18,8 @@ index 286a21bb..270d6146 100644
 -        "Debian GNU/Linux 12": "debian12",
 -        "Red Hat Enterprise Linux 8*": "rhel8",
 -        "Red Hat Enterprise Linux 9*": "rhel9",
+-        "Red Hat Enterprise Linux 10*": "rhel10",
+-        "Fedora*": "rhel10",
 -        "SLES 15*": "suse15",
 -    }
 -
