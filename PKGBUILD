@@ -4,7 +4,7 @@ pkgbase=python-acstools
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Python Tools for ACS (Advanced Camera for Surveys) Data"
 arch=('any')
@@ -25,14 +25,14 @@ checkdepends=('python-pytest-astropy-header'
               'python-ci_watson'
               'python-scikit-image')  # stsci.tools, {ci_watson -> crds} -> astropy, requests skimage -> matplotlib, scipy
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2035c4cc467ac15f7e06ca8acbb32e41')
+md5sums=('29dfb0807c336bae3a4c9ca765671496')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
-    msg "Building Docs"
-    PYTHONPATH="../build/lib" make SPHINXOPTS="" -C doc html
+#   msg "Building Docs"
+#   PYTHONPATH="../build/lib" make SPHINXOPTS="" -C doc html
 }
 
 check() {
@@ -45,7 +45,7 @@ package_python-acstools() {
     depends=('python>=3.10' 'python-astropy' 'python-requests' 'python-yaml')
     optdepends=('python-matplotlib'
                 'python-scipy'
-                'python-scikit-image'
+                'python-scikit-image>=0.11'
                 'python-stsci.imagestats'
                 'python-photutils'
                 'python-dask'
