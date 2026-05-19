@@ -1,7 +1,7 @@
 # Maintainer: jeryd leuck <jerydleuck@gmail.com>
 pkgname=bleachbit-tui-git
 pkgver=6.0.0.r17.9bb4a493
-pkgrel=3
+pkgrel=4
 pkgdesc="Free space and maintain privacy (Experimental TUI branch)"
 arch=('any')
 url="https://github.com/bleachbit/bleachbit"
@@ -32,6 +32,9 @@ package() {
   cd bleachbit
   make DESTDIR="$pkgdir" prefix=/usr install
   
+  # Remove the upstream GUI desktop file so we don't have duplicate launchers
+  rm -f "$pkgdir/usr/share/applications/org.bleachbit.BleachBit.desktop"
+
   # The upstream Makefile on the 'tui' branch currently misses the TUI module files.
   # We manually install them here until it's fixed upstream.
   mkdir -p "$pkgdir/usr/share/bleachbit/bleachbit/tui/screens"
@@ -40,6 +43,9 @@ package() {
   
   # Install the TUI entrypoint
   install -Dm755 bleachbit_tui.py "$pkgdir/usr/bin/bleachbit-tui"
+
+  # Fix Python path for the TUI entrypoint so it can find the bleachbit modules
+  sed -i '/import sys/a sys.path.append("/usr/share/")' "$pkgdir/usr/bin/bleachbit-tui"
 
   # Install the universal terminal wrapper
   install -Dm755 "$srcdir/bleachbit-tui-launcher.sh" "$pkgdir/usr/bin/bleachbit-tui-launcher"
