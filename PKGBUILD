@@ -1,6 +1,6 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=fastflowlm-gtk
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A minimalist desktop interface for FastFlowLM"
 arch=('x86_64')
