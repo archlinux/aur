@@ -1,22 +1,21 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-nihtest
-pkgver=1.10.1
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='A testing tool for command line utilities'
 arch=('any')
 url='https://github.com/nih-at/nihtest/'
 license=('BSD-3-Clause')
 depends=(
-    'python'
-    'python-dateutil')
+    'python')
 makedepends=(
     'python-build'
     'python-installer'
     'python-setuptools'
     'python-wheel')
 source=("https://github.com/nih-at/nihtest/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4bf6545725eedcf0e0476fbd84350d917142ee993b19c29093fba1a20907a07a')
+sha256sums=('0ed23b2238a80870557e3d13b72efa179c6cf71531c0618711e0bc82442015bc')
 
 build() {
     cd "nihtest-${pkgver}"
