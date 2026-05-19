@@ -1,31 +1,6 @@
-diff -ura src/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx src.new/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx
---- src/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx	2024-03-01 14:59:11.000000000 +0200
-+++ src.new/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx	2024-09-12 11:55:05.077845925 +0300
-@@ -30,6 +30,7 @@
- 
- #include <sstream>
- #include <stdexcept>
-+#include <cassert>
- 
- namespace otb
- {
-
-diff -ura src/Modules/Core/Adapters/GdalAdapters/src/otbOGRFieldWrapper.cxx src.new/Modules/Core/Adapters/GdalAdapters/src/otbOGRFieldWrapper.cxx
---- src/Modules/Core/Adapters/GdalAdapters/src/otbOGRFieldWrapper.cxx	2025-03-24 10:29:03
-+++ src.new/Modules/Core/Adapters/GdalAdapters/src/otbOGRFieldWrapper.cxx	2025-11-09 19:32:18
-@@ -98,7 +98,7 @@
- /*=================================[ Field ]=================================*/
- /*===========================================================================*/
- 
--otb::ogr::Field::Field(otb::ogr::Feature& feature, int index) : m_Definition(*feature.ogr().GetFieldDefnRef(index)), m_Feature(feature.sptr()), m_index(index)
-+otb::ogr::Field::Field(otb::ogr::Feature& feature, int index) : m_Definition(const_cast <OGRFieldDefn &> (*feature.ogr().GetFieldDefnRef(index))), m_Feature(feature.sptr()), m_index(index)
- {
-   CheckInvariants();
- }
-
 diff -ura src/Modules/Core/Adapters/GdalAdapters/src/otbOGRFeatureWrapper.cxx src.new/Modules/Core/Adapters/GdalAdapters/src/otbOGRFeatureWrapper.cxx
---- src/Modules/Core/Adapters/GdalAdapters/src/otbOGRFeatureWrapper.cxx	2025-03-24 10:29:03
-+++ src.new/Modules/Core/Adapters/GdalAdapters/src/otbOGRFeatureWrapper.cxx	2025-11-09 19:59:03
+--- src/Modules/Core/Adapters/GdalAdapters/src/otbOGRFeatureWrapper.cxx	2025-03-24 11:29:03.000000000 +0200
++++ src.new/Modules/Core/Adapters/GdalAdapters/src/otbOGRFeatureWrapper.cxx	2026-05-19 09:58:02.273516785 +0300
 @@ -132,7 +132,7 @@
  
  otb::ogr::FieldDefn otb::ogr::Feature::UncheckedGetFieldDefn(int index) const
@@ -44,10 +19,62 @@ diff -ura src/Modules/Core/Adapters/GdalAdapters/src/otbOGRFeatureWrapper.cxx sr
  }
  
  /*===========================================================================*/
-
+diff -ura src/Modules/Core/Adapters/GdalAdapters/src/otbOGRFieldWrapper.cxx src.new/Modules/Core/Adapters/GdalAdapters/src/otbOGRFieldWrapper.cxx
+--- src/Modules/Core/Adapters/GdalAdapters/src/otbOGRFieldWrapper.cxx	2025-03-24 11:29:03.000000000 +0200
++++ src.new/Modules/Core/Adapters/GdalAdapters/src/otbOGRFieldWrapper.cxx	2026-05-19 09:58:02.273390698 +0300
+@@ -98,7 +98,7 @@
+ /*=================================[ Field ]=================================*/
+ /*===========================================================================*/
+ 
+-otb::ogr::Field::Field(otb::ogr::Feature& feature, int index) : m_Definition(*feature.ogr().GetFieldDefnRef(index)), m_Feature(feature.sptr()), m_index(index)
++otb::ogr::Field::Field(otb::ogr::Feature& feature, int index) : m_Definition(const_cast <OGRFieldDefn &> (*feature.ogr().GetFieldDefnRef(index))), m_Feature(feature.sptr()), m_index(index)
+ {
+   CheckInvariants();
+ }
+diff -ura src/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx src.new/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx
+--- src/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx	2025-03-24 11:29:03.000000000 +0200
++++ src.new/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx	2026-05-19 09:58:02.273213844 +0300
+@@ -30,6 +30,7 @@
+ 
+ #include <sstream>
+ #include <stdexcept>
++#include <cassert>
+ 
+ namespace otb
+ {
+diff -ura src/Modules/Core/IO/IOGDAL/src/otbGDALImageIO.cxx src.new/Modules/Core/IO/IOGDAL/src/otbGDALImageIO.cxx
+--- src/Modules/Core/IO/IOGDAL/src/otbGDALImageIO.cxx	2025-03-24 11:29:03.000000000 +0200
++++ src.new/Modules/Core/IO/IOGDAL/src/otbGDALImageIO.cxx	2026-05-19 09:58:52.581512597 +0300
+@@ -278,7 +278,7 @@
+ bool GDALImageIO::GetSubDatasetInfo(std::vector<std::string>& names, std::vector<std::string>& desc)
+ {
+   // Note: we assume that the subdatasets are in order : SUBDATASET_ID_NAME, SUBDATASET_ID_DESC, SUBDATASET_ID+1_NAME, SUBDATASET_ID+1_DESC
+-  char** papszMetadata;
++  CSLConstList papszMetadata;
+   papszMetadata = m_Dataset->GetDataSet()->GetMetadata("SUBDATASETS");
+ 
+   // Have we find some dataSet ?
+@@ -436,7 +436,7 @@
+   {
+     // this happen in the case of a hdf file with SUBDATASETS
+     // Note: we assume that the datasets are in order
+-    char** papszMetadata;
++    CSLConstList papszMetadata;
+     papszMetadata = m_Dataset->GetDataSet()->GetMetadata("SUBDATASETS");
+     // TODO: we might want to keep the list of names somewhere, at least the number of datasets
+     std::vector<std::string> names;
+@@ -741,7 +741,7 @@
+ 
+   if (m_NumberOfDimensions == 3)
+     m_Spacing[2] = 1;
+-  char** papszMetadata = dataset->GetMetadata(nullptr);
++  CSLConstList papszMetadata = dataset->GetMetadata(nullptr);
+ 
+   /* -------------------------------------------------------------------- */
+   /*      Report general info.                                            */
 diff -ura src/Modules/Core/IO/IOGDAL/src/otbOGRIOHelper.cxx src.new/Modules/Core/IO/IOGDAL/src/otbOGRIOHelper.cxx
---- src/Modules/Core/IO/IOGDAL/src/otbOGRIOHelper.cxx	2025-03-24 10:29:03
-+++ src.new/Modules/Core/IO/IOGDAL/src/otbOGRIOHelper.cxx	2025-11-10 09:14:33
+--- src/Modules/Core/IO/IOGDAL/src/otbOGRIOHelper.cxx	2025-03-24 11:29:03.000000000 +0200
++++ src.new/Modules/Core/IO/IOGDAL/src/otbOGRIOHelper.cxx	2026-05-19 09:58:02.273712063 +0300
 @@ -213,7 +213,7 @@
      {
        if (ogr::IsFieldSetAndNotNull(feature, fieldNum))
@@ -136,10 +163,9 @@ diff -ura src/Modules/Core/IO/IOGDAL/src/otbOGRIOHelper.cxx src.new/Modules/Core
        ogrFeature->SetGeometry(ogrCollectionGeometry);
  
        if (ogrCurrentLayer->CreateFeature(ogrFeature) != OGRERR_NONE)
-
 diff -ura src/Modules/Core/IO/IOGDAL/src/otbOGRVectorDataIO.cxx src.new/Modules/Core/IO/IOGDAL/src/otbOGRVectorDataIO.cxx
---- src/Modules/Core/IO/IOGDAL/src/otbOGRVectorDataIO.cxx	2025-03-24 10:29:03
-+++ src.new/Modules/Core/IO/IOGDAL/src/otbOGRVectorDataIO.cxx	2025-11-10 09:24:13
+--- src/Modules/Core/IO/IOGDAL/src/otbOGRVectorDataIO.cxx	2025-03-24 11:29:03.000000000 +0200
++++ src.new/Modules/Core/IO/IOGDAL/src/otbOGRVectorDataIO.cxx	2026-05-19 09:58:02.273933206 +0300
 @@ -102,7 +102,7 @@
    DataTreePointerType tree = data->GetDataTree();
    DataNodePointerType root = tree->GetRoot()->Get();
@@ -148,10 +174,10 @@ diff -ura src/Modules/Core/IO/IOGDAL/src/otbOGRVectorDataIO.cxx src.new/Modules/
 +  const OGRSpatialReference* oSRS = nullptr;
    // We take the assumption that the spatial reference is common to all layers
    oSRS = m_DataSource->GetLayer(0)->GetSpatialRef();
-
+ 
 diff -ura src/Modules/Core/IO/TestKernel/src/otbTestHelper.cxx src.new/Modules/Core/IO/TestKernel/src/otbTestHelper.cxx
---- src/Modules/Core/IO/TestKernel/src/otbTestHelper.cxx	2025-03-24 10:29:03
-+++ src.new/Modules/Core/IO/TestKernel/src/otbTestHelper.cxx	2025-11-10 09:26:36
+--- src/Modules/Core/IO/TestKernel/src/otbTestHelper.cxx	2025-03-24 11:29:03.000000000 +0200
++++ src.new/Modules/Core/IO/TestKernel/src/otbTestHelper.cxx	2026-05-19 09:58:02.274215157 +0300
 @@ -2002,7 +2002,7 @@
    {
      for (int iField = 0; iField < feature->GetFieldCount(); iField++)
@@ -160,3 +186,16 @@ diff -ura src/Modules/Core/IO/TestKernel/src/otbTestHelper.cxx src.new/Modules/C
 +      OGRFieldDefn* poFDefn = const_cast<OGRFieldDefn*>(feature->GetDefnRef()->GetFieldDefn(iField));
  
        fprintf(fpOut, "  %s (%s) = ", poFDefn->GetNameRef(), OGRFieldDefn::GetFieldTypeName(poFDefn->GetType()));
+ 
+diff -ura src/Modules/Core/Metadata/src/otbCosmoImageMetadataInterface.cxx src.new/Modules/Core/Metadata/src/otbCosmoImageMetadataInterface.cxx
+--- src/Modules/Core/Metadata/src/otbCosmoImageMetadataInterface.cxx	2025-03-24 11:29:03.000000000 +0200
++++ src.new/Modules/Core/Metadata/src/otbCosmoImageMetadataInterface.cxx	2026-05-19 09:58:46.476995460 +0300
+@@ -50,7 +50,7 @@
+   std::vector<std::map<std::string, std::string> > metadataBands;
+   GDALDataset * dataset = static_cast<GDALDataset*>(GDALOpen(file.c_str(), GA_ReadOnly));
+   // Metadata for dataset
+-  char** papszMetadata = dataset->GetMetadata(nullptr);
++  CSLConstList papszMetadata = dataset->GetMetadata(nullptr);
+   for (int cpt = 0; papszMetadata[cpt] != nullptr; ++cpt)
+     {
+     std::string key, value;
