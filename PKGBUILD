@@ -6,7 +6,7 @@ _pkgname=EasyTier
 pkgbase=easytier
 pkgname=($pkgbase $pkgbase-core $pkgbase-cli $pkgbase-web)
 pkgver=2.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
@@ -48,7 +48,7 @@ build() {
     export RUSTFLAGS="-Clinker=$CC -Clink-arg=-fuse-ld=${_LD_LLD}"
     export RUSTDOCFLAGS="$RUSTFLAGS"
 
-    export CARGO_PROFILE_RELEASE_LTO=thin
+    export CARGO_PROFILE_RELEASE_LTO=true
     export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1

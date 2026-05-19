@@ -1,7 +1,7 @@
 pkgbase = easytier
 	pkgdesc = A simple, decentralized mesh VPN with WireGuard support.
 	pkgver = 2.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EasyTier/EasyTier
 	arch = x86_64
 	arch = aarch64
