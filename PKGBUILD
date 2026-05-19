@@ -2,8 +2,8 @@
 
 _pkgname="fluxcast"
 pkgname="$_pkgname-git"
-pkgver=0.1.0.beta.r2.g3845c5e
-pkgrel=2
+pkgver=0.1.0.beta.r3.g531cd8f
+pkgrel=1
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
 url="https://github.com/IlyaP358/fluxcast"
@@ -50,20 +50,13 @@ pkgver() {
 package() {
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$_pkgsrc/README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 "$_pkgsrc/documentation/DOCUMENTATION.md" -t "$pkgdir/usr/share/doc/$pkgname/documentation/"
 
-  install -Dm644 "$_pkgsrc/capture.py" -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 "$_pkgsrc/cast.py" -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 "$_pkgsrc/diagnostics.py" -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 "$_pkgsrc/dlna.py" -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 "$_pkgsrc/main.py" -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 "$_pkgsrc/portal_capture.py" -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 "$_pkgsrc/server.py" -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 "$_pkgsrc/tray.py" -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 "$_pkgsrc/wfd.py" -t "$pkgdir/opt/$_pkgname/"
+  install -Dm644 "$_pkgsrc"/src/*.py -t "$pkgdir/opt/$_pkgname/"
+  install -Dm644 "$_pkgsrc/src/assets/flcast_logo_512x512.png" -t "$pkgdir/opt/$_pkgname/assets/"
 
-  install -Dm644 "$_pkgsrc/assets/flcast_logo_512x512.png" -t "$pkgdir/opt/$_pkgname/assets/"
-  install -Dm644 "$_pkgsrc/fluxcast.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "$_pkgsrc/assets/flcast_logo_512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/fluxcast.png"
+  install -Dm644 "$_pkgsrc/meta/fluxcast.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$_pkgsrc/src/assets/flcast_logo_512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/fluxcast.png"
 
   install -Dm755 "../fluxcast.sh" "$pkgdir/usr/bin/fluxcast"
 }
