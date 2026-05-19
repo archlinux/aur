@@ -1,6 +1,6 @@
 pkgbase = hyprwat-bin
 	pkgdesc = Hyprwat - A Wayland menu tool
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/zackb/hyprwat
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hyprwat-bin
 	depends = libdrm
 	provides = hyprwat
 	conflicts = hyprwat
-	source = https://github.com/zackb/hyprwat/releases/download/0.10.3/hyprwat-0.10.3.tar.gz
-	sha256sums = 84bb1f5e6773c792b8fbe92106af206a16da49de8afd09b64c1873f12cb12231
+	source = https://github.com/zackb/hyprwat/releases/download/0.10.4/hyprwat-0.10.4.tar.gz
+	sha256sums = 1c1f39afd949217c1e667906d88e300f2d330a714295e41dae7fdc6d116e35ef
 
 pkgname = hyprwat-bin
