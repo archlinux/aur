@@ -18,5 +18,16 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install
+  if [ -f /etc/modulejail/modulejail.conf ]; then
+    source /etc/modulejail/modulejail-aur.conf
+  fi
+
+  if [ "$AUTO_UPDATE" = "true" ]; then
+    eval modulejail "$ARGS"
+  else
+    echo ""
+    echo "Run 'sudo modulejail' to regenerate the blacklist."
+    echo "Enable auto-update in /etc/modulejail/modulejail-aur.conf"
+    echo ""
+  fi
 }
