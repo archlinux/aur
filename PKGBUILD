@@ -3,14 +3,14 @@ pkgname=polify-git
 pkgver=0.1.5
 pkgrel=1
 pkgdesc="Cross-platform music manager with multi-source library, audio fingerprinting, and ID3 tag editing"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://buildhut.fly.dev/apps/Polify"
 license=('MIT')
 depends=('gtk3' 'libepoxy' 'xz' 'mpv' 'ffmpeg' 'sqlite' 'libsecret'
          'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav')
 makedepends=('git' 'flutter' 'make' 'patchelf')
 provides=('polify')
-conflicts=('polify')
+conflicts=('polify' 'polify-bin')
 source=("polify::git+https://git.sr.ht/~drzoidberg/Polify")
 sha256sums=('SKIP')
 
@@ -37,7 +37,14 @@ build() {
 package() {
   cd "$srcdir/polify"
 
-  local _bundle="build/linux/x64/release/bundle"
+  # Flutter build output: x64 on x86_64, arm64 on aarch64
+  local _archdir
+  case "$CARCH" in
+    x86_64)  _archdir="x64" ;;
+    aarch64) _archdir="arm64" ;;
+  esac
+
+  local _bundle="build/linux/$_archdir/release/bundle"
 
   # Application bundle
   install -d "$pkgdir/usr/lib/polify"
@@ -50,8 +57,8 @@ package() {
   # Bundle the real libonnxruntime shared library (Flutter only copies the
   # broken symlink, not the resolved target)
   local _onnxrt_libdir
-  _onnxrt_libdir="$(find build/linux/x64/release/plugins/flutter_onnxruntime \
-    -path '*/onnxruntime-linux-x64-*/lib' -type d -print -quit 2>/dev/null)"
+  _onnxrt_libdir="$(find "build/linux/$_archdir/release/plugins/flutter_onnxruntime" \
+    -path '*/onnxruntime-linux-*/lib' -type d -print -quit 2>/dev/null)"
   if [[ -n "$_onnxrt_libdir" ]]; then
     # Copy the versioned real library (e.g. libonnxruntime.so.1.22.0)
     local _onnxrt_real

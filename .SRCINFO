@@ -4,6 +4,7 @@ pkgbase = polify-git
 	pkgrel = 1
 	url = https://buildhut.fly.dev/apps/Polify
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = flutter
@@ -22,6 +23,7 @@ pkgbase = polify-git
 	depends = gst-libav
 	provides = polify
 	conflicts = polify
+	conflicts = polify-bin
 	source = polify::git+https://git.sr.ht/~drzoidberg/Polify
 	sha256sums = SKIP
 
