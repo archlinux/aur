@@ -1,8 +1,8 @@
 # Maintainer: Gustav Åkerström 23389010+gustavakerstrom@users.noreply.github.com
 
 pkgname=hf-mount-bin
-pkgver=0.6.0
-pkgrel=4
+pkgver=0.6.1
+pkgrel=1
 pkgdesc='Mount Hugging Face Buckets and repos as local filesystems. No download, no copy, no waiting. Pre-compiled.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/huggingface/hf-mount'
@@ -20,9 +20,9 @@ source_x86_64=(
 )
 
 sha256sums_x86_64=(
-  '2237097e861875aa2bd6e466844c6f03e26ccbb78867addb869af1b5fe8b0cc6'
-  'd6516702ef684044359c6fc39d6270b19e1b4f0c39ff9d7f92fa20bc802ba4d0'
-  'b9a2c3a2557f4005a538b8fcb753c9954aa3ab33c4fa74b24299e7ce3ad398f1'
+  '3c6b65a389aa4067c69be520ebb7af6cfa515571aeeb9adb3ea2a0edb239ebd3'
+  '18e12d1ee20981c5dae2855aac619613b7ee654ef9d078bcfcacd95b003a485b'
+  'e3e89a884e7d9947bcac89bca64dd7725f7b90e19a09e48dff9b756f5ec3dbb5'
 )
 
 source_aarch64=(
@@ -32,9 +32,9 @@ source_aarch64=(
 )
 
 sha256sums_aarch64=(
-  '9e76cb7f0475809d271f876cb05448bda6702c313b31b070cae36cbe2266f45c'
-  '35e793a8206b224c602f47225c1b0a2111fabf8bffe8ab535c85c0c407d63a1a'
-  '6223fd10b94e4ebe0fad8b1fe621b5c607ad662f6537e00dec324c1096d840be'
+  'cac09eb3836b8bb85ac0d47c5d10fd7345d1b2cba4c4b15078efd2ee3d072ffe'
+  '69008da75423a06ce55cfbee3758d0d9ddb077a586b7eba62b81490003827f8d'
+  '792951c362eaed014d6a4b49b54f4b889f4fccf5012161e39a813b5d342faeab'
 )
 
 package() {
