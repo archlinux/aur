@@ -1,7 +1,7 @@
 pkgbase = modulejail-git
 	pkgdesc = Shrink a Linux host's kernel-module attack surface via modprobe.d blacklist (git)
 	pkgver = r59.1.2.3.0.gdf4f186
-	pkgrel = 3
+	pkgrel = 2
 	url = https://github.com/jnuyens/modulejail
 	install = modulejail-git.install
 	arch = any

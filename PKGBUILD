@@ -1,7 +1,7 @@
 # Maintainer: Adam Bambuch <adam@bambuch.cz>
 pkgname=modulejail-git
 pkgver=r59.1.2.3.0.gdf4f186
-pkgrel=3
+pkgrel=2
 pkgdesc="Shrink a Linux host's kernel-module attack surface via modprobe.d blacklist (git)"
 arch=(any)
 license=('GPL-3.0-only')
@@ -43,9 +43,9 @@ package() {
   install -Dm 0644 LICENSE \
      "${pkgdir}/usr/share/doc/modulejail/LICENSE"
 
-  install -Dm 0600 "${startdir}/whitelist.conf" \
+  install -Dm 0644 "${startdir}/whitelist.conf" \
      "${pkgdir}/etc/modulejail/whitelist.conf"
 
-  install -Dm 0600 "${startdir}/modulejail-aur.conf" \
+  install -Dm 0644 "${startdir}/modulejail-aur.conf" \
      "${pkgdir}/etc/modulejail/modulejail-aur.conf"
 }
