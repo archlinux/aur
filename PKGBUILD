@@ -4,7 +4,7 @@
 
 pkgname=shader-slang
 pkgver=2026.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
@@ -19,12 +19,14 @@ sha256sums=('3637a3d5edc63a54bd4322f1b44a7d21950c8e81ceef46340f7b07b9ae493d84'
             'SKIP')
 makedepends=(
 	cmake
+	git
 	glm
 	python3
 	spirv-headers
 	stb
 	unordered_dense
 	vulkan-headers
+	vulkan-icd-loader
 )
 depends=(
 	glslang
