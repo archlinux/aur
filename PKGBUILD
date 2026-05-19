@@ -1,6 +1,6 @@
 # Maintainer: Vando <vando.02800@tutamail.com>
 pkgname=anisocial-desktop-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Desktop-App für AniSocial.de – Die Anime-Community"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('anisocial-desktop')
 conflicts=('anisocial-desktop')
 options=(!strip !debug)
 source=("${pkgname}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/anisocial-desktop-${pkgver}.pacman")
-sha256sums=('9485b9744ed576e7c1f837c6886005f2dec4281303cf3d3e6f27288229280393')
+sha256sums=('04e83283b9533355ebe17b5a1abfc0ee04ff2b464db5beb52317bd45de5cede1')
 
 package() {
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.pacman" -C "${pkgdir}/"
