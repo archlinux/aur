@@ -1,6 +1,6 @@
 pkgbase = plutosvg
 	pkgdesc = Tiny SVG rendering library in C
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/sammycage/plutosvg
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = plutosvg
 	depends = freetype2
 	depends = libplutovg.so
 	provides = libplutosvg.so
-	source = plutosvg::git+https://github.com/sammycage/plutosvg.git#tag=v0.0.7
-	sha256sums = ef0d243dd1ba49503df3e6fd72799b388ed6e4ffde63659e94036d6ec616e93c
+	source = plutosvg::git+https://github.com/sammycage/plutosvg.git#tag=v0.0.8
+	sha256sums = 9a9fda98d8f6b462f744711584264cd463ac9cee8fd7a01f08e5e954f5452ef2
 
 pkgname = plutosvg

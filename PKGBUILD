@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 _pkgname="plutosvg"
 pkgname="$_pkgname"
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Tiny SVG rendering library in C"
 url="https://github.com/sammycage/plutosvg"
@@ -23,7 +23,7 @@ provides=('libplutosvg.so')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgname"::"git+$url.git#tag=v$pkgver")
-sha256sums=('ef0d243dd1ba49503df3e6fd72799b388ed6e4ffde63659e94036d6ec616e93c')
+sha256sums=('9a9fda98d8f6b462f744711584264cd463ac9cee8fd7a01f08e5e954f5452ef2')
 
 build() {
   local _cmake_options=(
