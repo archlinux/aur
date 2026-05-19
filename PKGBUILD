@@ -5,7 +5,7 @@ _pkgname=steam-game-idler
 # pkgver is a placeholder — the real version is computed by pkgver() at build
 # time from the upstream tauri.conf.json + the steam-game-idler submodule's
 # commit history. The AUR publish workflow updates this line before pushing.
-pkgver=5.0.7.r1722.g19cd6f22
+pkgver=5.0.8.r1723.g4a15a776
 pkgrel=1
 pkgdesc='Idle Steam games and farm trading cards with Linux support'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 provides=('steam-game-idler')
 conflicts=('steam-game-idler')
 options=('!lto' '!strip' '!debug')
-source=('git+https://github.com/bernardopg/SGI.git#commit=1eff46f3797dd6ddb7b8df9331901e594a1a65fb')
+source=('git+https://github.com/bernardopg/SGI.git#commit=dab4be8170056a1ebb15f9e4207b0f1b3acf2ba4')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,7 +35,7 @@ pkgver() {
   git submodule update --init --recursive
 
   local appver rev hash
-  appver='5.0.7'
+  appver='5.0.8'
   rev=$(git -C steam-game-idler rev-list --count HEAD)
   hash=$(git -C steam-game-idler rev-parse --short HEAD)
 
