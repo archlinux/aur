@@ -1,0 +1,17 @@
+pkgbase = lota-bin
+	pkgdesc = A declarative task runner for rapid development (binary release)
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/quonaro/lota
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = lota
+	conflicts = lota
+	source_x86_64 = lota-bin-1.5.1::https://github.com/quonaro/Lota/releases/download/v1.5.1/lota-linux-amd64
+	sha256sums_x86_64 = 98400a373b9ec2beee8b054610dbd2f8599e89788eed04b5ec3cd67ad4049cee
+	source_aarch64 = lota-bin-1.5.1::https://github.com/quonaro/Lota/releases/download/v1.5.1/lota-linux-arm64
+	sha256sums_aarch64 = 4bec59ce77fd44a09231a2d60ba13e04b6156b50b285f94cd2ef2ecbf34b8fa1
+
+pkgname = lota-bin

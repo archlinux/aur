@@ -1,0 +1,5 @@
+# Ignore everything except AUR package files
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
