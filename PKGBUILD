@@ -2,25 +2,37 @@
 
 _name=openai-agents
 pkgname=python-$_name
-pkgver=0.10.5
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."
 arch=('any')
 url='https://github.com/openai/openai-agents-python'
 license=('MIT')
-depends=('python' 'python-openai' 'python-pydantic' 'python-griffe' 'python-typing_extensions' 'python-requests' 'python-mcp')
+depends=('python' 'python-openai' 'python-pydantic' 'python-griffelib' 'python-typing_extensions' 'python-requests' 'python-websockets' 'python-mcp')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-xdist' 'python-inline-snapshot' 'python-sounddevice' 'python-websockets' 'python-graphviz' 'python-fastapi' 'python-aiosqlite' 'python-cryptography' 'python-fakeredis' 'litellm')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-xdist' 'python-inline-snapshot' 'python-graphviz' 'python-fastapi' 'python-aiosqlite' 'python-cryptography' 'python-fakeredis'  'python-pymongo' 'litellm' 'python-sqlalchemy' 'python-docker' 'python-runloop_api_client')
 optdepends=('python-numpy: voice' 'python-websockets: voice'
             'python-graphviz: viz'
             'litellm: litellm'
+            'python-any-llm-sdk: any-llm'
             'python-websockets: realtime'
             'python-sqlalchemy: sqlalchemy' 'python-asyncpg: sqlalchemy'
             'python-cryptography: encrypt'
             'python-redis: redis'
-            'python-dapr: dapr' 'python-grpcio: dapr')
+            'python-dapr: dapr' 'python-grpcio: dapr'
+            'python-pymongo: mongodb'
+            'python-docker: docker'
+            'python-blaxel: blaxel' 'python-aiohttp: blaxel'
+            'python-daytona: daytona'
+            'python-aiohttp: cloudflare'
+            'python-e2b: e2b' 'python-e2b-code-interpreter: e2b'
+            'python-modal: modal'
+            'python-runloop_api_client: runloop'
+            'python-vercel: vercel'
+            'python-boto3: s3'
+            'python-temporalio: temporal' 'python-textual: temporal')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('73cef5263eeb98437b874b29c800694617af7d9626be19514b4ed6f434874c1e')
+sha256sums=('63b6dda6bd4fb51169e2a2cbd5d187a4e5ce823bbd15f965c8ed1d3b89072eec')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
