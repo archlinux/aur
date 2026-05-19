@@ -1,7 +1,7 @@
 pkgbase = python-sqlglot
 	pkgdesc = An easily customizable SQL parser and transpiler
 	pkgver = 30.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tobymao/sqlglot
 	arch = any
 	license = MIT

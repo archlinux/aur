@@ -2,7 +2,7 @@
 
 pkgname=python-sqlglot
 pkgver=30.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An easily customizable SQL parser and transpiler'
 arch=('any')
 url='https://github.com/tobymao/sqlglot'
@@ -21,6 +21,7 @@ sha256sums=('c60499a1d064c5787f0f292da2fab1aa0f9a468e504750c43477c394e443e441')
 
 build() {
     cd "$srcdir/sqlglot-${pkgver}"
+    export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
     python -m build --wheel --no-isolation
 }
 
