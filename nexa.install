@@ -1,17 +1,18 @@
 post_install() {
   echo ":: Nexa has been installed successfully."
   echo ":: To enable the media daemon for your user, run:"
-  echo "   systemctl --user enable --now nexad.service"
+  echo "    systemctl --user enable --now nexad.service"
 }
 
 post_upgrade() {
-  echo ":: Nexa has been updated. Reloading user units..."
-  systemctl --user daemon-reload
-  echo ":: If the daemon is already running, you may need to restart it:"
-  echo "   systemctl --user restart nexad.service"
+  echo ":: Nexa has been updated to version $1."
+  echo ":: To apply changes, reload your user daemon and restart the service:"
+  echo "    systemctl --user daemon-reload"
+  echo "    systemctl --user restart nexad.service"
 }
 
 post_remove() {
-  echo ":: Cleaning up Nexa user services..."
-  systemctl --user daemon-reload
+  echo ":: Nexa has been removed."
+  echo ":: To clean up active user systemd states, run:"
+  echo "    systemctl --user daemon-reload"
 }
