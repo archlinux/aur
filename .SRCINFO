@@ -9,11 +9,12 @@ pkgbase = mpddiscordrpc
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = git
 	depends = python
 	depends = python-pypresence
 	depends = python-mpd2
 	depends = python-requests
-	source = MPDDiscordRPC-0.1.0.tar.gz::https://github.com/methamphetaminelab/MPDDiscordRPC/archive/v0.1.0.tar.gz
+	source = mpddiscordrpc::git+https://github.com/methamphetaminelab/MPDDiscordRPC.git#tag=v0.1.0
 	sha256sums = SKIP
 
 pkgname = mpddiscordrpc

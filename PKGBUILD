@@ -7,17 +7,17 @@ arch=("any")
 url="https://github.com/methamphetaminelab/MPDDiscordRPC"
 license=("MIT")
 depends=("python" "python-pypresence" "python-mpd2" "python-requests")
-makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
-source=("MPDDiscordRPC-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel" "git")
+source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=("SKIP")
 
 build() {
-    cd "MPDDiscordRPC-$pkgver"
+    cd "$pkgname"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "MPDDiscordRPC-$pkgver"
+    cd "$pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "systemd/mpddiscordrpc.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
 }
