@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libheif
 	pkgdesc = HEIF file format decoder and encoder (mingw-w64)
-	pkgver = 1.21.2
-	pkgrel = 4
+	pkgver = 1.22.0
+	pkgrel = 1
 	url = https://github.com/strukturag/libheif
 	arch = any
 	license = LGPL-3.0-or-later
@@ -24,9 +24,7 @@ pkgbase = mingw-w64-libheif
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = libheif-1.21.2.tar.gz::https://github.com/strukturag/libheif/archive/v1.21.2.tar.gz
-	source = svt-av1-4.patch
-	sha256sums = 79996de959d28ca82ef070c382304683f5cdaf04cbe2953a74587160a3710a36
-	sha256sums = 84c9298918dcb1de59acb3eb25aff657eee2a602bf3d2572c93663dd1374b15f
+	source = libheif-1.22.0.tar.gz::https://github.com/strukturag/libheif/archive/v1.22.0.tar.gz
+	sha256sums = 43055f032bc3c74595a68a21709a54b64733e4d97619452275414b849298aeea
 
 pkgname = mingw-w64-libheif
