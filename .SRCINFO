@@ -1,14 +1,14 @@
 pkgbase = gearlynx
 	pkgdesc = Atari Lynx Emulator and Debugger
-	pkgver = 1.2.11
+	pkgver = 1.2.12
 	pkgrel = 1
 	url = https://github.com/drhelius/Gearlynx
 	arch = x86_64
 	license = GPL3
 	depends = sdl3
-	source = https://github.com/drhelius/Gearlynx/archive/refs/tags/1.2.11.tar.gz
+	source = https://github.com/drhelius/Gearlynx/archive/refs/tags/1.2.12.tar.gz
 	source = gearlynx.desktop
-	sha256sums = 28c2402038a398b63cf33047dea7c1f05557089df90eef9612b9dde5fc94952b
+	sha256sums = 39076bdae95eb1275c9c7a4f4f64f11a7f71ebf76da172f3e9b72260d2bc19d8
 	sha256sums = 99b4dbf55dfc8071a541237029079c68f34ea11d67c25e2ffa4525e7c3e9086b
 
 pkgname = gearlynx
