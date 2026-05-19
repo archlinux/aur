@@ -1,0 +1,20 @@
+pkgbase = nytrogen-git
+	pkgdesc = A lightweight systems programming language and compiler built from scratch
+	pkgver = 0.1.r158.gb39826a
+	pkgrel = 1
+	url = https://github.com/X12-Cloud/Nytrogen
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	makedepends = lua54
+	depends = glibc
+	optdepends = nasm: Required for assembling x86_64 output
+	optdepends = ld: Required for linking object files
+	provides = nytrogen
+	conflicts = nytrogen
+	source = Nytrogen::git+https://github.com/X12-Cloud/Nytrogen.git
+	sha256sums = SKIP
+
+pkgname = nytrogen-git
