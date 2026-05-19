@@ -1,7 +1,7 @@
 # Maintainer: fkzys <fkzys at proton dot me>
 _pkgname=subs2srs
 pkgname=subs2srs-gui
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Generate Anki flashcards from media with subtitles (GTK4 port)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('noto-fonts-cjk: CJK font support')
 provides=('subs2srs' 'subs2srs-gui')
 conflicts=('subs2srs' 'subs2srs-gui' 'subs2srs-mono-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1699b8cda74df0cf90d8962b5a306922934a51693f5b14baf4a1f100d586a0e3')
+sha256sums=('cf11021996bd0fc10c7583ccd95326cb40bd11ffac446bea94d9233883269948')
 
 build() {
     cd "${_pkgname}-${pkgver}"
