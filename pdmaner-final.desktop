@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=PDManer
+Name[zh_CN]=PDManer元数建模
+Comment=Relational database modeling tool
+Comment[zh_CN]=关系数据库模型建模工具
+Exec=pdmaner-final
+Icon=pdmaner-final
+Categories=Development;Database;
+Terminal=false
+StartupWMClass=PDManer
+MimeType=application/json;

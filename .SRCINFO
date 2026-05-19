@@ -1,0 +1,22 @@
+pkgbase = pdmaner-final
+	pkgdesc = PDManer元数建模 - 多操作系统开源免费的桌面版关系数据库模型建模工具 (最终发行版 v4.9.3)
+	pkgver = 4.9.3
+	pkgrel = 2
+	url = https://github.com/mybolide/pdmaner-final-release
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = npm
+	depends = electron
+	depends = java-runtime
+	provides = pdmaner-final
+	conflicts = pdmaner-final
+	source = pdmaner-final-4.9.3.tar.gz::https://github.com/mybolide/pdmaner-final-release/archive/refs/tags/4.9.3.tar.gz
+	source = chiner-java.jar::https://raw.githubusercontent.com/601824142/pdmaner/develop/public/jar/chiner-java.jar
+	source = pdmaner-final.sh
+	source = pdmaner-final.desktop
+	sha256sums = SKIP
+	sha256sums = 0a9a1159d97092483c335355cc4607a34ed513b790705c35cb36e88406b2bd68
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pdmaner-final
