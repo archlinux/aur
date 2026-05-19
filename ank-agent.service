@@ -1,5 +1,7 @@
 [Unit]
 Description=Ankaios agent
+After=network.target ank-server.service
+Wants=network.target
 
 [Service]
 Environment="RUST_LOG=info"

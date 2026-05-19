@@ -1,5 +1,5 @@
 post_install() {
-        echo '>>> To customize the configure of the Ankaios CLI, users'
-	echo '>>> can copy the configuration from "/etc/ankaios/ank.conf"'
-	echo '>>> to "$HOME/.config/ankaios/" and adapt it to their needs.'
+    echo '>>> To customize the configure of the Ankaios CLI, users'
+    echo '>>> can copy the configuration from "/etc/ankaios/ank.conf"'
+    echo '>>> to "$HOME/.config/ankaios/" and adapt it to their needs.'
 }
