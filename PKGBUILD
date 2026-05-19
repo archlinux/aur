@@ -1,6 +1,6 @@
 pkgname=osu-fetch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A sleek, CLI fetch tool for osu! player statistics"
 arch=('any')
 url="https://github.com/test2793/osu-fetch"
@@ -14,8 +14,11 @@ sha256sums=('8de106388615341c470c2bccaa572b3d2af0a5a0276a8892f2ccca0aca09997a'
 package() {
     install -d "${pkgdir}/usr/share/osu-fetch"
     install -d "${pkgdir}/usr/bin"
-
+    
+    # 1. Ищем osufetch.py глубоко внутри архива и копируем
     find "${srcdir}" -name "osufetch.py" -exec install -m644 {} "${pkgdir}/usr/share/osu-fetch/osufetch.py" \;
-    install -m755 "${srcdir}"/*/osu-fetch.sh "${pkgdir}/usr/bin/osu-fetch"
+    
+    # 2. А скрипт osu-fetch.sh берем прямо из корня src/ без всяких звездочек!
+    install -m755 "${srcdir}/osu-fetch.sh" "${pkgdir}/usr/bin/osu-fetch"
 }
 
