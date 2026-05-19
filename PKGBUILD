@@ -1,6 +1,6 @@
 pkgname=osu-fetch
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A sleek, CLI fetch tool for osu! player statistics"
 arch=('any')
 url="https://github.com/test2793/osu-fetch"
@@ -12,9 +12,10 @@ sha256sums=('8de106388615341c470c2bccaa572b3d2af0a5a0276a8892f2ccca0aca09997a'
             'a5dff6b37bebe2780ab8ae035db5b6baf4fadd63ca25242cbdc65542eadbb25b')
 
 prepare() {
-    # Распаковываем внутренний tar, который выплюнул GitHub
-    tar -xf "${srcdir}/v1.0.0.tar" -C "${srcdir}"
+    # Распаковываем любой tar-архив, который оказался внутри src/
+    tar -xf "${srcdir}"/*.tar -C "${srcdir}"
 }
+
 
 package() {
     install -d "${pkgdir}/usr/share/osu-fetch"
