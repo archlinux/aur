@@ -2,20 +2,20 @@
 
 _pyname=tweakwcs
 pkgname=python-${_pyname}-doc
-pkgver=0.8.12
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Documentation for tweakwcs"
 arch=('any')
 url="https://tweakwcs.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=("python-${_pyname}=${pkgver}"
-             'python-setuptools'
              'python-sphinx-automodapi'
+             'python-sphinxcontrib-jquery'
              'python-numpydoc'
-             'python-stsci_rtd_theme'
+             'python-sphinx_rtd_theme'
              'texlive-latexextra')  # latex(texlive-bin), mktexfmt(texlive-basic), latex.fmt(texlive-latex), anyfontsize.sty needed
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('ea0380e019ff6f83b24c3f3a93ea957c')
+md5sums=('0cbe5a3d32f93a97e267f6b982d03ea7')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
