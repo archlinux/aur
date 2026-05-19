@@ -3,7 +3,7 @@
 pkgname=imagecompare-bin
 pkgver=1.1.3
 pkgrel=1
-pkgdesc='Image Compare lets you inspect two or more images side by side, in a stacked view, or with a heatmap of perceptual differences. It supports synchronized zoom and pan, grid layouts, multiple image formats, faithful color-profile rendering, and fast image loading with Qt6 and libvips.'
+pkgdesc='Image Compare lets you inspect two or more images side by side, in a stacked view, or with a heatmap of perceptual differences. With various other helpful features.'
 arch=('x86_64')
 url='https://github.com/gimletlove/imagecompare'
 license=('GPL-3.0-or-later')
