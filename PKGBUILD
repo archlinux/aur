@@ -6,7 +6,7 @@ pkgdesc="Shrink a Linux host's kernel-module attack surface via modprobe.d black
 arch=(any)
 license=('GPL-3.0-only')
 url="https://github.com/jnuyens/modulejail"
-makedepends=('git')
+makedepends=('git' 'gzip')
 depends=('coreutils' 'findutils' 'gawk')
 optdepends=('curl: optional post-run update check'
             'wget: optional post-run update check'
