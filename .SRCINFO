@@ -1,7 +1,7 @@
 pkgbase = graylog
 	pkgdesc = Free and open source log management platform
-	pkgver = 7.1.0
-	pkgrel = 2
+	pkgver = 7.1.1
+	pkgrel = 1
 	url = https://github.com/graylog2/graylog2-server
 	install = graylog.install
 	changelog = UPGRADING.md
@@ -13,10 +13,10 @@ pkgbase = graylog
 	optdepends = opensearch>1.1
 	optdepends = opensearch<=2.19.3
 	backup = etc/graylog/server/server.conf
-	source = graylog-7.1.0.tar.gz::https://packages.graylog2.org/releases/graylog/graylog-7.1.0.tgz
+	source = graylog-7.1.1.tar.gz::https://packages.graylog2.org/releases/graylog/graylog-7.1.1.tgz
 	source = graylog-tmpfiles.conf
 	source = graylog.service
-	sha256sums = c814e7e589002ea5fb96f5a0982c120370f742bf5715977e01963f644ac2b28d
+	sha256sums = 45966eabd1f877633ee0e46eda0a7a2714a961fd4b1b67bd7c5cf5f56e13846c
 	sha256sums = c29ccbf1fc25f6d00afd520811c3aab4b6adcb4d12bb4686400adeb0b040409a
 	sha256sums = fc94037dd0c40999c7316b8347259b5de56414bc0849248fb52959c00c98e506
 
