@@ -1,7 +1,7 @@
 pkgbase = python-nihtest-git
 	pkgdesc = A testing tool for command line utilities (git version)
-	pkgver = 1.9.1.r5.ged3aaee
-	pkgrel = 2
+	pkgver = 1.11.1.r0.g01d2588
+	pkgrel = 1
 	url = https://github.com/nih-at/nihtest/
 	arch = any
 	license = BSD-3-Clause
@@ -11,7 +11,6 @@ pkgbase = python-nihtest-git
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = python-dateutil
 	provides = python-nihtest
 	conflicts = python-nihtest
 	source = git+https://github.com/nih-at/nihtest.git

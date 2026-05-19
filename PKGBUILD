@@ -1,15 +1,14 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-nihtest-git
-pkgver=1.9.1.r5.ged3aaee
-pkgrel=2
+pkgver=1.11.1.r0.g01d2588
+pkgrel=1
 pkgdesc='A testing tool for command line utilities (git version)'
 arch=('any')
 url='https://github.com/nih-at/nihtest/'
 license=('BSD-3-Clause')
 depends=(
-    'python'
-    'python-dateutil')
+    'python')
 makedepends=(
     'git'
     'python-build'
