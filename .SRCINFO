@@ -1,6 +1,6 @@
 pkgbase = python-numpy-mkl
 	pkgdesc = Scientific tools for Python, compiled with Intel MKL
-	pkgver = 2.4.5
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://numpy.org
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = python-numpy-mkl
 	depends = python
 	depends = intel-oneapi-mkl
 	optdepends = python-threadpoolctl: for show_runtime() support
-	provides = python-numpy=2.4.5
+	provides = python-numpy=2.4.6
 	conflicts = python-numpy
-	source = git+https://github.com/numpy/numpy.git?signed#tag=v2.4.5
+	source = git+https://github.com/numpy/numpy.git?signed#tag=v2.4.6
 	source = numpy-meson::git+https://github.com/numpy/meson.git
 	source = numpy-highway::git+https://github.com/google/highway.git
 	source = numpy-x86-simd-sort::git+https://github.com/intel/x86-simd-sort
@@ -28,7 +28,7 @@ pkgbase = python-numpy-mkl
 	source = numpy-svml::git+https://github.com/numpy/SVML.git
 	source = numpy-pythoncapi-compat::git+https://github.com/python/pythoncapi-compat
 	validpgpkeys = 53A0E5283F05E29D7129149E679F228377C5247B
-	sha512sums = ba9d24c61403a7db94cdd78b752c82c52b1718771d4843a755db6f7e6382c7d2649fb4dd9a03f44e8c28abbf556822652e4ed3b067fb620205417e4eff4bcca3
+	sha512sums = a2ade66e9bb508863e2d50d7e40e6389da1193719bcb7665f928b87c87c988b1db034cee788eb424e090610a2e4104a98ecb4f7d496d66bd0e8cf73f1fa33a48
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
