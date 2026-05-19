@@ -4,13 +4,13 @@
 #
 # This PKGBUILD installs the pre-built GNOME Keyring WASM provider for
 # rosec from the GitHub release.
-# The release workflow renders this file by substituting 0.0.27 and
-# e3edf15a3f5aed14f9349ba2bdd202f4960f1823642944e27a5ed111485f8106 before committing to the AUR.
+# The release workflow renders this file by substituting 0.0.28 and
+# 09d5f6067a01392eda1e0177609c9116b2fd99f2d38b9565e6949218eeb9d1ff before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-provider-gnome-keyring-bin
-pkgver=0.0.27
+pkgver=0.0.28
 pkgrel=1
 pkgdesc="GNOME Keyring read-only provider for rosec (prebuilt)"
 arch=('any')
@@ -25,11 +25,13 @@ conflicts=('rosec-provider-gnome-keyring')
 source=(
     "rosec-provider-gnome-keyring-${pkgver}.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-provider-gnome-keyring-${pkgver}.wasm.tar.gz"
 )
-sha256sums=('e3edf15a3f5aed14f9349ba2bdd202f4960f1823642944e27a5ed111485f8106')
+sha256sums=('09d5f6067a01392eda1e0177609c9116b2fd99f2d38b9565e6949218eeb9d1ff')
 
 package() {
     install -Dm644 "${srcdir}/rosec_gnome_keyring.wasm" \
         "${pkgdir}/usr/lib/rosec/providers/rosec_gnome_keyring.wasm"
+    install -Dm644 "${srcdir}/rosec_gnome_keyring.wasm.policy.toml" \
+        "${pkgdir}/usr/lib/rosec/providers/rosec_gnome_keyring.wasm.policy.toml"
     install -Dm644 "${srcdir}/rosec_gnome_keyring.wasm.minisig" \
         "${pkgdir}/usr/lib/rosec/providers/rosec_gnome_keyring.wasm.minisig"
 }
