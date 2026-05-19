@@ -1,6 +1,6 @@
 pkgbase = esphome-desktop-bin
 	pkgdesc = Desktop application for ESPHome (pre-built binary)
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/esphome/esphome-desktop
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = esphome-desktop-bin
 	depends = webkit2gtk-4.1
 	conflicts = esphome-desktop
 	options = !strip
-	source = esphome-desktop-bin-0.8.2.deb::https://github.com/esphome/esphome-desktop/releases/download/v0.8.2/ESPHome.Builder_0.8.2_amd64.deb
-	sha256sums = b5515d76b5f564e5f9ace926161ba51c8ebe646cb8837d7a78d1c1be22393faa
+	source = esphome-desktop-bin-0.8.3.deb::https://github.com/esphome/esphome-desktop/releases/download/v0.8.3/ESPHome.Builder_0.8.3_amd64.deb
+	sha256sums = 7d083869e1e011fbbc90987ba0360e79dccb23f08016ca6e74a0bcd3ae986009
 
 pkgname = esphome-desktop-bin
