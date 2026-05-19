@@ -31,7 +31,7 @@ post_upgrade() {
     eval modulejail "$ARGS"
   else
     echo ""
-    echo "Run 'sudo modulejail' to regenerate the blacklist."
+    echo "Run 'sudo modulejail ...' to regenerate the blacklist (e.g. sudo modulejail -p desktop -f)."
     echo "Enable auto-update in /etc/modulejail/modulejail-aur.conf"
     echo ""
   fi
