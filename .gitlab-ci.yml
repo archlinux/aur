@@ -1,0 +1,37 @@
+image: archlinux:latest
+
+stages:
+  - check
+  - build
+
+check_version:
+  stage: check
+  script:
+    - pacman -Sy --noconfirm curl
+    - LATEST=$(curl -s "https://archlinux.org/packages/extra/x86_64/kwin/json/" | grep -o '"pkgver":"[^"]*"' | cut -d'"' -f4)
+    - CURRENT=$(grep "pkgver=" PKGBUILD | cut -d= -f2)
+    - echo "Latest=$LATEST Current=$CURRENT"
+    - '[ "$LATEST" != "$CURRENT" ] || exit 0'
+    - echo "NEW_VERSION=$LATEST" >> build.env
+  artifacts:
+    reports:
+      dotenv: build.env
+
+build:
+  stage: build
+  needs:
+    - job: check_version
+      artifacts: true
+  script:
+    - pacman -Syu --noconfirm base-devel
+    - useradd -m builder
+    - echo "builder ALL=(ALL) NOPASSWD ALL" >> /etc/sudoers
+    - cp -r . /home/builder/kwin-osd-bottom
+    - chown -R builder /home/builder/kwin-osd-bottom
+    - cd /home/builder/kwin-osd-bottom
+    - sudo -u builder makepkg -s --noconfirm --skippgpcheck
+    - 'curl -H "Content-Type:application/json" -d "{\"content\":\"kwin-osd-bottom aggiornato alla versione $NEW_VERSION! Scarica da GitLab.\"}" $DISCORD_WEBHOOK'
+  artifacts:
+    paths:
+      - "/home/builder/kwin-osd-bottom/*.pkg.tar.zst"
+    expire_in: 7 days
