@@ -2,17 +2,15 @@
 
 pkgname=libsai-git
 _pkgname=libsai
-pkgver=r313.ecd0762
+pkgver=r314.e390cd2
 pkgrel=1
 pkgdesc="Library for reading PaintTool Sai image files."
 arch=(x86_64)
 url="https://github.com/Wunkolo/libsai"
 license=(MIT)
 makedepends=(git)
-source=("git+https://github.com/Wunkolo/libsai"
-		"cmake-header-install-fix.patch")
-sha256sums=("SKIP"
-			"9a1558bd1ac1466124ceb50ddbb523adf1a8dbd78e341e3024ab1f9c942257c2")
+source=("git+https://github.com/Wunkolo/libsai")
+sha256sums=("SKIP")
 
 pkgver() {
 	cd ${_pkgname}
@@ -21,7 +19,6 @@ pkgver() {
 
 prepare() {
 	cd ${_pkgname}
-	patch -p1 < ${srcdir}/cmake-header-install-fix.patch
 	mkdir -p build
 }
 

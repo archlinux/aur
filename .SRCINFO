@@ -1,14 +1,12 @@
 pkgbase = libsai-git
 	pkgdesc = Library for reading PaintTool Sai image files.
-	pkgver = r313.ecd0762
+	pkgver = r314.e390cd2
 	pkgrel = 1
 	url = https://github.com/Wunkolo/libsai
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	source = git+https://github.com/Wunkolo/libsai
-	source = cmake-header-install-fix.patch
 	sha256sums = SKIP
-	sha256sums = 9a1558bd1ac1466124ceb50ddbb523adf1a8dbd78e341e3024ab1f9c942257c2
 
 pkgname = libsai-git
