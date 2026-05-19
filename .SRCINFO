@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-vulkan-bin
 	pkgdesc = LLM inference in C/C++ (with Vulkan GPU optimizations) (precompiled Linux binaries)
-	pkgver = b9209
+	pkgver = b9222
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = llama.cpp-vulkan-bin
 	conflicts = libggml
 	conflicts = ggml
 	backup = etc/conf.d/llama.cpp
-	source = README-b9209.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/b9209/README.md
+	source = README-b9222.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/b9222/README.md
 	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf
 	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service
 	sha256sums = fdb1441c2e8159956dd50d3dd1634ac9c38edbfbb831b39e47cafeadaacbf0fd
 	sha256sums = e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
-	source_x86_64 = llama.cpp-vulkan-b9209.tgz::https://github.com/ggml-org/llama.cpp/releases/download/b9209/llama-b9209-bin-ubuntu-vulkan-x64.tar.gz
-	sha256sums_x86_64 = 345dc14b35302f5d798b2ca1ec7940ff976b32a2b701f3f755266f33d7811f6d
+	source_x86_64 = llama.cpp-vulkan-b9222.tgz::https://github.com/ggml-org/llama.cpp/releases/download/b9222/llama-b9222-bin-ubuntu-vulkan-x64.tar.gz
+	sha256sums_x86_64 = 0960f8d9a651692b6c6c3e4fe30cea8c1e966a9005f97fee7fe630068739dc12
 
 pkgname = llama.cpp-vulkan-bin
