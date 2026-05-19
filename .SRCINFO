@@ -10,6 +10,8 @@ pkgbase = arctis-sound-manager
 	makedepends = uv
 	depends = python>=3.10
 	depends = pyside6
+	depends = qt6-svg
+	depends = python-babel
 	depends = python-pillow
 	depends = python-pyudev
 	depends = python-pyusb
@@ -22,7 +24,7 @@ pkgbase = arctis-sound-manager
 	depends = curl
 	depends = swh-plugins
 	depends = noise-suppression-for-voice
-	source = arctis-sound-manager-main.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/vmain/arctis-sound-manager-main.tar.gz
+	source = arctis-sound-manager-1.1.34.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v1.1.34/arctis-sound-manager-1.1.34.tar.gz
 	sha256sums = 60786a1dfe3eb69e6f99a8dd64c5ebf3e4ab029409384cc5f571000d67f6689f
 
 pkgname = arctis-sound-manager
