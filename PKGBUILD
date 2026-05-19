@@ -6,8 +6,8 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=lsgpu
 pkgname=${_pkgname}-git
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=0
 pkgdesc="List GPUs with details, outputs, and connected monitors."
 arch=(any)
 url="https://github.com/AGuyMarc/${_pkgname}"
@@ -32,4 +32,6 @@ package()
     mkdir -p "${pkgdir}/usr/share/${_pkgname}"
     install -Dm755 "${_pkgname}.py" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.py"
     ln -sf "/usr/share/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}s"
+    mkdir -p "${pkgdir}/usr/share/man/man1"
+    install -Dm644 "${_pkgname}s.1" "${pkgdir}/usr/share/man/man1/lsgpus.1"
 }
