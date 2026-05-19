@@ -1,0 +1,12 @@
+pkgbase = pwss-core-git
+	pkgdesc = The mathematical guardian for PWSS. Verifies PGP signatures.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zai1208/pwss-core
+	arch = any
+	license = GPL3
+	depends = gnupg
+	source = git+https://github.com/zai1208/pwss-core.git
+	sha256sums = SKIP
+
+pkgname = pwss-core-git
