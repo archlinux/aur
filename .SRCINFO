@@ -1,6 +1,6 @@
 pkgbase = cryptpad-sso
 	pkgdesc = SSO plugin for Cryptpad
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/cryptpad/sso
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = cryptpad-sso
 	depends = cryptpad
 	options = !strip
 	backup = etc/webapps/cryptpad/sso.js
-	source = https://github.com/cryptpad/sso/archive/0.5.0.tar.gz
+	source = https://github.com/cryptpad/sso/archive/0.5.1.tar.gz
 	source = https://github.com/cryptpad/cryptpad/raw/main/config/sso.example.js
-	sha256sums = afd9bd7d9fa81eece1eb694f0b17cbf2dfb5c22c3780b53892d4abf4fc2ef07b
+	sha256sums = 72f5d6636e9eb21d2ea528657a6f140514fefe755b64c1f0fb748538b8425e27
 	sha256sums = b4eb1f69fc931fc6202d9903b28052f6dbad481d6083d4263fb03830099b60bb
 
 pkgname = cryptpad-sso

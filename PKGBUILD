@@ -1,7 +1,7 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer@rev-crew.info>
 
 pkgname=cryptpad-sso
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="SSO plugin for Cryptpad"
 arch=('any')
@@ -12,7 +12,7 @@ backup=(etc/webapps/cryptpad/sso.js)
 options=(!strip)
 source=("$url/archive/$pkgver.tar.gz"
         "https://github.com/cryptpad/cryptpad/raw/main/config/sso.example.js")
-sha256sums=('afd9bd7d9fa81eece1eb694f0b17cbf2dfb5c22c3780b53892d4abf4fc2ef07b'
+sha256sums=('72f5d6636e9eb21d2ea528657a6f140514fefe755b64c1f0fb748538b8425e27'
             'b4eb1f69fc931fc6202d9903b28052f6dbad481d6083d4263fb03830099b60bb')
 
 package() {
