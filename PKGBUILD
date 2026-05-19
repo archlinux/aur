@@ -2,8 +2,8 @@
 
 pkgname=fcp-support-git
 _pkgname=fcp-support
-pkgver=r49.1540316
-pkgrel=2
+pkgver=r50.8313436
+pkgrel=1
 pkgdesc="Focusrite Control Protocol user-space driver for Scarlett 4th Gen big models (16i16, 18i16, 18i20)"
 arch=('x86_64')
 url="https://github.com/geoffreybennett/fcp-support"
@@ -27,20 +27,13 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$pkgname.install
-source=("git+${url}.git#branch=1.0beta"
-        'fix-openssl-3.6.2-base64.patch')
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+${url}.git#branch=1.0beta")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
     # Get version from git tags
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$_pkgname"
-    patch -Np1 -i "$srcdir/fix-openssl-3.6.2-base64.patch"
 }
 
 build() {
