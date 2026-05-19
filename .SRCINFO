@@ -1,7 +1,7 @@
 pkgbase = valhalla
 	pkgdesc = Routing engine for OpenStreetMap.
-	pkgver = 3.6.3
-	pkgrel = 3
+	pkgver = 3.7.0
+	pkgrel = 1
 	url = https://github.com/valhalla/valhalla
 	arch = x86_64
 	arch = aarch64
@@ -25,11 +25,10 @@ pkgbase = valhalla
 	depends = luajit
 	depends = chrono-date
 	depends = gdal
-	source = valhalla-3.6.3::git+https://github.com/valhalla/valhalla#tag=3.6.3
-	source = fix-cxxopts-cstdint.patch
+	depends = lz4
+	source = valhalla-3.7.0::git+https://github.com/valhalla/valhalla#tag=3.7.0
 	source = fix-adminbuilder-empty-inner-rings.patch
 	sha256sums = SKIP
-	sha256sums = acadf0436ebe1932cd742201b16ce2d26f3f0bc2a8cddd7ee18e14534b81c2ce
-	sha256sums = SKIP
+	sha256sums = 3d0965861289a20e6fa85cd17b2eb8c246a4f1566b93df3bc9af811fb04ed0ff
 
 pkgname = valhalla

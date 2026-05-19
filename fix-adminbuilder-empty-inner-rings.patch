@@ -1,12 +1,16 @@
+# upstream issue: https://github.com/valhalla/valhalla/issues/6075
+# upstream PR:    https://github.com/valhalla/valhalla/pull/6077 (kinkard, auto-merge enabled)
+# Uses std::vector::data() — safe on empty vectors (returns nullptr or a
+# valid past-the-end pointer; either is fine when paired with size()==0).
+# Identical to PR #6077, so this patch becomes a no-op once the PR lands.
 --- a/src/mjolnir/adminbuilder.cc
 +++ b/src/mjolnir/adminbuilder.cc
-@@ -133,7 +133,8 @@
+@@ -133,7 +133,7 @@
    for (const auto& inner : polygon.inners()) {
      inner_rings.push_back(geos_helper_t::from_striped_container(inner));
    }
 -  auto* geos_poly = GEOSGeom_createPolygon(outer_ring, &inner_rings.front(), inner_rings.size());
-+  auto* geos_poly = GEOSGeom_createPolygon(outer_ring,
-+      inner_rings.empty() ? nullptr : &inner_rings.front(), inner_rings.size());
++  auto* geos_poly = GEOSGeom_createPolygon(outer_ring, inner_rings.data(), inner_rings.size());
    auto* buffered = GEOSBuffer(geos_poly, 0, 8);
    GEOSNormalize(buffered);
    auto geom_type = GEOSGeomTypeId(buffered);

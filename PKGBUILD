@@ -3,34 +3,48 @@
 
 _pkgname=valhalla
 pkgname=$_pkgname
-pkgver=3.6.3
+pkgver=3.7.0
 pkgrel=3
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64' 'aarch64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
-depends=('prime_server' 'boost-libs' 'protobuf' 'abseil-cpp' 'python' 'python-numpy' 'libspatialite' 'luajit' 'chrono-date' 'gdal')
+depends=('prime_server' 'boost-libs' 'protobuf' 'abseil-cpp' 'python' 'python-numpy' 'libspatialite' 'luajit' 'chrono-date' 'gdal' 'lz4')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost' 'cxxopts' 'libosmium' 'protozero' 'rapidjson')
 source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver"
-        "fix-cxxopts-cstdint.patch"
         "fix-adminbuilder-empty-inner-rings.patch")
 sha256sums=('SKIP'
-            'acadf0436ebe1932cd742201b16ce2d26f3f0bc2a8cddd7ee18e14534b81c2ce'
-            'SKIP')
+            '8708ddd79807add40a974dd663d5310eea5037afe74b66cdbea1250bfd9cca42')
 
 prepare() {
   cd "$_pkgname-$pkgver"
   git submodule update --init --recursive
 
-  # Fix missing cstdint include in cxxopts (conditional application)
-  patch -Np1 --forward -i ../fix-cxxopts-cstdint.patch || true
-
   # Fix crash when admin polygon has no inner rings (empty vector .front() call)
-  patch -Np1 --forward -i ../fix-adminbuilder-empty-inner-rings.patch || true
+  # Issue: https://github.com/valhalla/valhalla/issues/6075
+  # Fix PR: https://github.com/valhalla/valhalla/pull/6077 (auto-merge); drop this patch once it lands.
+  patch -Np1 --forward -i ../fix-adminbuilder-empty-inner-rings.patch
+
+  # -mno-sse4.2 is APPENDED to user CFLAGS to subtract SSE4.2 codegen.
+  # Why: any -march= that enables SSE4.2 (i.e. -march=native on any CPU >= Nehalem,
+  # or any -march=x86-64-v2 or higher) makes valhalla's libvalhalla.so.3 emit
+  # 'pcmpgtq' instructions inside std::_Hashtable::_M_insert_unique_node and
+  # osmium::io::Reader<>. This SSE4.2 codegen path causes the .eh_frame
+  # exception-unwind tables for valhalla::sif::CostFactory::CreateModeCosting to
+  # become inconsistent. On a thrown exception inside that function (any /route
+  # request with costing=auto|truck|taxi), the unwinder lands at a trap-filler
+  # address `mov 0x28, %eax; ud2` between two endbr64 landing pads, dereferencing
+  # null+0x28 → SIGSEGV. Bug confirmed in valhalla 3.6.3, 3.7.0, and master
+  # (commit 7c220b4, 2026-05-11). Upstream docker uses no -march so it never
+  # triggers. Full investigation: build/debug/INVESTIGATION.md in valhalla-pi repo.
+  #
+  # Trade-off: -mno-sse4.2 removes SSE4.2 AND everything above it in gcc's flag
+  # hierarchy (AVX, AVX2, FMA, AVX-512). Routing is memory-bound; perf impact
+  # is small. Remove this flag if/when upstream fixes the underlying UB.
 
   cmake -S. -Bbuild \
-    -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
-    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
+    -DCMAKE_C_FLAGS:STRING="${CFLAGS} -mno-sse4.2" \
+    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -mno-sse4.2" \
     -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
@@ -44,8 +58,7 @@ prepare() {
     -DENABLE_SINGLE_FILES_WERROR=Off \
     -DENABLE_WERROR=Off \
     -DBUILD_SHARED_LIBS=On \
-    -DENABLE_TESTS=OFF \
-    -DCMAKE_DISABLE_FIND_PACKAGE_nanobind=TRUE
+    -DENABLE_TESTS=OFF
 
 }
 
