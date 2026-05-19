@@ -14,14 +14,10 @@ sha256sums=('8de106388615341c470c2bccaa572b3d2af0a5a0276a8892f2ccca0aca09997a'
             'a5dff6b37bebe2780ab8ae035db5b6baf4fadd63ca25242cbdc65542eadbb25b')
 
 package() {
-    # Создаем директории в фиктивном корне пакета
     install -d "${pkgdir}/usr/share/osu-fetch"
     install -d "${pkgdir}/usr/bin"
 
-    # Копируем сам скрипт Python
-    install -m644 "${srcdir}"/*/osufetch.py "${pkgdir}/usr/share/osu-fetch/osufetch.py"
-
-
-    # Бросаем запускатор в системный PATH и делаем его исполняемым
-    install -m755 "${srcdir}/osu-fetch.sh" "${pkgdir}/usr/bin/osu-fetch"
+    find "${srcdir}" -name "osufetch.py" -exec install -m644 {} "${pkgdir}/usr/share/osu-fetch/osufetch.py" \;
+    install -m755 "${srcdir}"/*/osu-fetch.sh "${pkgdir}/usr/bin/osu-fetch"
 }
+
