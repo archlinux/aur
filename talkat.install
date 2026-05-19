@@ -1,0 +1,35 @@
+post_install() {
+    echo "==> Talkat has been installed."
+    echo ""
+    echo "==> IMPORTANT: Calibrate your microphone before first use:"
+    echo "    talkat calibrate"
+    echo ""
+    echo "==> This sets the optimal silence threshold for your environment."
+    echo "==> Without calibration, voice detection may not work properly."
+    echo ""
+    echo "==> After calibration, enable and start the service:"
+    echo "    systemctl --user enable --now talkat"
+    echo ""
+    echo "==> Or to start just this once:"
+    echo "    systemctl --user start talkat"
+    echo ""
+    echo "==> Then test voice dictation:"
+    echo "    talkat listen"
+}
+
+post_upgrade() {
+    echo "==> Talkat has been upgraded."
+    echo "==> Restart the service to use the new version:"
+    echo "    systemctl --user restart talkat"
+}
+
+pre_remove() {
+    # Stop the service before removal
+    systemctl --user stop talkat 2>/dev/null || true
+}
+
+post_remove() {
+    echo "==> Talkat has been removed."
+    echo "==> To clean up the systemd service, run:"
+    echo "    systemctl --user daemon-reload"
+}
