@@ -1,0 +1,34 @@
+post_install() {
+  if [ ! -f /etc/micdn/micdn.xml ]; then
+    install -dm755 /etc/micdn
+    cp /usr/share/micdn/micdn.xml.default /etc/micdn/micdn.xml
+    chmod 0644 /etc/micdn/micdn.xml
+  fi
+
+  systemd-sysusers micdn.conf 2>/dev/null || :
+  systemd-tmpfiles --create micdn.conf 2>/dev/null || :
+
+  if [ -d /var/lib/micdn ]; then
+    chown -R micdn:beangle /var/cache/micdn /var/lib/micdn /var/log/micdn 2>/dev/null || :
+    chmod 2775 /var/cache/micdn /var/cache/micdn/asset /var/cache/micdn/www 2>/dev/null || :
+    chmod 2775 /var/lib/micdn /var/lib/micdn/blob /var/lib/micdn/maven \
+      /var/lib/micdn/npm /var/lib/micdn/local 2>/dev/null || :
+    chmod 2775 /var/log/micdn 2>/dev/null || :
+  fi
+
+  systemctl daemon-reload 2>/dev/null || :
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if [ "$1" -eq 0 ]; then
+    systemctl stop micdn.service 2>/dev/null || :
+  fi
+}
+
+post_remove() {
+  systemctl daemon-reload 2>/dev/null || :
+}

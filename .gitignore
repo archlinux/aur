@@ -1,0 +1,18 @@
+# makepkg 工作目录
+/src/
+/pkg/
+
+# 本地编出的包
+/*.pkg.tar.*
+/*.pkg.tar.zst
+
+# 误放在 AUR 仓库根目录的源码克隆（应在 src/micdn/，由 makepkg 生成）
+/micdn/
+
+# 误拷贝的上游 scripts/
+/scripts/
+
+# 编辑器 / 系统
+*~
+*.swp
+.DS_Store
