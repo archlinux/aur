@@ -1,0 +1,18 @@
+pkgbase = ros2-humble-irobot-create-msgs
+	pkgdesc = Package containing action, message, and service definitions used by the iRobot(R) Create(R) platform.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://index.ros.org/p/irobot_create_msgs/
+	arch = x86_64
+	license = BSD
+	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = python>=3.10.0
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = http://packages.ros.org/ros2/ubuntu/pool/main/r/ros-humble-irobot-create-msgs/ros-humble-irobot-create-msgs_2.1.0-1jammy.20260414.034437_amd64.deb
+	sha512sums_x86_64 = 720877435f760bf704691da67f4d6b5c82ede5954dad2c7c68f0f858b236e43b400e657539887c92bccbb7c417886bbe60c82cdf1e83506f633dd11173e5df04
+
+pkgname = ros2-humble-irobot-create-msgs
