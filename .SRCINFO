@@ -1,0 +1,23 @@
+pkgbase = bleachbit-tui-git
+	pkgdesc = Free space and maintain privacy (Experimental TUI branch)
+	pkgver = 6.0.0.r17.9bb4a493
+	pkgrel = 1
+	url = https://github.com/bleachbit/bleachbit
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = make
+	depends = python
+	depends = python-requests
+	depends = python-chardet
+	depends = python-textual
+	depends = python-psutil
+	optdepends = gtk3: for GTK+ UI
+	optdepends = python-gobject: for GTK+ UI
+	provides = bleachbit
+	conflicts = bleachbit
+	conflicts = bleachbit-git
+	source = bleachbit::git+https://github.com/bleachbit/bleachbit.git#branch=tui
+	sha256sums = SKIP
+
+pkgname = bleachbit-tui-git
