@@ -2,7 +2,7 @@
 
 pkgname=lettuceai-bin
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='LettuceAI desktop app (prebuilt binary, CPU variant)'
 arch=('x86_64')
 url='https://github.com/LettuceAI/app'
@@ -16,8 +16,11 @@ depends=(
   'openssl'
 )
 provides=('lettuceai')
-conflicts=('lettuceai-bin' 'lettuceai-vulkan-bin' 'lettuceai-cuda-bin')
-source=('https://github.com/LettuceAI/app/releases/download/desktop-release-1.5.0/lettuceai-linux-x86_64-cpu.tar.gz')
+conflicts=(
+  'lettuceai-vulkan-bin'
+  'lettuceai-cuda-bin'
+)
+source=('lettuceai-linux-x86_64-cpu.tar.gz::https://github.com/LettuceAI/app/releases/download/desktop-release-1.5.0/lettuceai-linux-x86_64-cpu.tar.gz')
 sha256sums=('0b8560fbf2021d5cd41c93a16f744287e6412b7821246f00f3a75ddb16679bac')
 
 package() {
