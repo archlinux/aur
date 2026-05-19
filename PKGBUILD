@@ -3,7 +3,7 @@ pkgname=synology-drive-client-bin
 pkgver=4.0.3_17892
 _pkgver=4.0.3
 _pkgrel=17892
-pkgrel=5
+pkgrel=6
 pkgdesc="Official Synology Drive Client desktop application (official binary repack)"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyDriveClient"
@@ -23,6 +23,27 @@ source=("${filename}::https://global.synologydownload.com/download/Utility/Synol
         "synology-drive.service")
 sha256sums=('f6aec5a5974d59963ed833fdf1a0cc7bebd612d8691f491c62cba770cdc78d67'
             '569f3ba5a1fc972eee9fc01ce028d68ad7b75e79ff30e3f719237dd41412243c')
+
+check() {
+  echo "Checking for broken library links..."
+  # Use LD_LIBRARY_PATH in the check to mirror the actual runtime/RPATH environment
+  find "$pkgdir/opt/Synology/SynologyDrive" -type f -executable -exec file {} + | grep "ELF" | cut -d: -f1 | while read -r bin; do
+    # Check if the binary can find its libraries. 
+    # We include the internal lib paths so ldd can resolve the bundled libs.
+    local lib_path=""
+    if [[ "$bin" == *"/package/cloudstation/bin/"* ]]; then
+        lib_path="$pkgdir/opt/Synology/SynologyDrive/package/cloudstation/lib"
+    else
+        lib_path="$pkgdir/opt/Synology/SynologyDrive/lib"
+    fi
+
+    if LD_LIBRARY_PATH="$lib_path" ldd "$bin" | grep -q "not found"; then
+      echo "ERROR: Broken dependencies in $bin"
+      LD_LIBRARY_PATH="$lib_path" ldd "$bin" | grep "not found"
+      exit 1
+    fi
+  done
+}
 
 package() {
   # Extract data.tar.xz from the debian package

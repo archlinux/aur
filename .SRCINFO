@@ -1,7 +1,7 @@
 pkgbase = synology-drive-client-bin
 	pkgdesc = Official Synology Drive Client desktop application (official binary repack)
 	pkgver = 4.0.3_17892
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.synology.com/en-global/releaseNote/SynologyDriveClient
 	install = synology-drive-client-bin.install
 	arch = x86_64
