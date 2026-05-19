@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Freed <jon at freed dot dev>
 pkgname=niri-screensaver-git
 _pkgname=niri-screensaver
-pkgver=0.5.4.r3.gd21b96b
+pkgver=0.5.5.r0.g7e948d7
 pkgrel=1
 pkgdesc="TerminalTextEffects-based screensaver for the niri Wayland compositor (git)"
 arch=('any')
