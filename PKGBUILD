@@ -6,8 +6,8 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=lsdisplay
 pkgname=${_pkgname}-git
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="List connected displays with details and ASCII layout diagram."
 arch=(any)
 url="https://github.com/AGuyMarc/${_pkgname}"
@@ -30,5 +30,8 @@ package()
     mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/${_pkgname}"
     install -Dm755 "${_pkgname}.py" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.py"
-    ln -sf "/usr/share/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}s"
+    ln -sf "/usr/share/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+    mkdir -p "${pkgdir}/usr/share/man/man1"
+    install -Dm644 "${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+
 }
