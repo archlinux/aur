@@ -2,7 +2,7 @@
 # Fomer maintainer: Crawcik <crawcik@gmail.com>
 
 pkgname=flax
-pkgver=1.11.06802
+pkgver=1.12.6912
 pkgrel=1
 pkgdesc="Flax Engine – multi-platform 3D game engine"
 arch=('x86_64')
@@ -15,10 +15,11 @@ optdepends=('dotnet-sdk: Dotnet 8 SDK'
             'portaudio: PortAudio audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
-source=(https://vps2.flaxengine.com/store/builds/Package_1_11_06802/{FlaxEditorLinux,Linux}.zip)
+source=(https://vps2.flaxengine.com/store/builds/Package_$(echo $pkgver | cut -d "." -f 1)_$(echo $pkgver | cut -d "." -f 2)_0$(echo $pkgver | cut -d "." -f 3)/{FlaxEditorLinux,Linux}.zip)
 noextract=({FlaxEditorLinux,Linux}.zip)
 conflicts=(flax-git)
-sha256sums=('3a42f31c5b3e22f4074fbf6d549ce5a17aa7076e4286459dfbded16bff674960' '1373a181b3af08a827f128ffb33478c3e8e5f9179896f95720c6bb9ee7530c92')
+sha256sums=('d7d6c835e0845e9b7de67ec2f79df62df67a82cb645b43be9e8c8c28d28dbb45'
+            '7be2ec219d2abcf5631aee307a9a52ee0051dc8f67fe5d0a542a17a4676c67b3')
 
 package() {
 	cd "$srcdir"
