@@ -3,7 +3,7 @@
 
 _name=primp
 pkgname=python-$_name
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='HTTP client that can impersonate web browsers.'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel' '
 checkdepends=('python-certifi' 'python-pytest' 'python-pytest-asyncio')
 options=(!strip lto)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c751c68038f1c18be871f547d20959552d6498e55012f14805b88bf221dfc5c0')
+sha256sums=('11ba37857e35f750f2ccc8f83cefb6b264bd06bce15c35fe349869f16c514575')
 
 build(){
   cd "$srcdir"/$_name-$pkgver/crates/$_name-python
