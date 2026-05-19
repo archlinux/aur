@@ -1,15 +1,15 @@
 pkgbase = osu-fetch
 	pkgdesc = A stylish fetch utility for osu! players
 	pkgver = 1.0.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/test2793/osu-fetch
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-requests
-	source = git+https://github.com/test2793/osu-fetch.git
 	source = osu-fetch.sh
-	sha256sums = SKIP
+	source = osufetch.py
 	sha256sums = a5dff6b37bebe2780ab8ae035db5b6baf4fadd63ca25242cbdc65542eadbb25b
+	sha256sums = SKIP
 
 pkgname = osu-fetch
