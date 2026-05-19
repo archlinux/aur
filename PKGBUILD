@@ -20,14 +20,37 @@ sha256sums=('747163aa3a8afba4b316f97c40b4a75ca4736a59768a416cd1e881e73ec31ef9'
 
 package() {
     install -d "${pkgdir}/opt/${pkgname}"
-    
+
     # 1. Salin seluruh isi folder aplikasi ke /opt/
     cp -r "${srcdir}/Antigravity IDE/"* "${pkgdir}/opt/${pkgname}/"
-    
-    # 2. Buat symlink agar bisa dipanggil lewat terminal
+
+    # 2. Buat eksekutor (Wrapper Script) agar bisa dipanggil lewat terminal
+    # Ini menggantikan symlink langsung, untuk menangani pembuatan symlink folder ~ milik user
     install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/antigravity-ide" "${pkgdir}/usr/bin/antigravity-ide"
-    
+
+    cat << 'EOF' > "${pkgdir}/usr/bin/antigravity-ide"
+#!/bin/bash
+
+# Buat direktori sumber jika belum ada agar symlink tidak error
+mkdir -p "$HOME/.config/Antigravity"
+mkdir -p "$HOME/.antigravity"
+
+# Buat symlink folder konfigurasi jika belum ada
+if [ ! -e "$HOME/.config/Antigravity IDE" ]; then
+    ln -s "$HOME/.config/Antigravity" "$HOME/.config/Antigravity IDE"
+fi
+
+if [ ! -e "$HOME/.antigravity-ide" ]; then
+    ln -s "$HOME/.antigravity" "$HOME/.antigravity-ide"
+fi
+
+# Jalankan aplikasi utama
+exec "/opt/antigravity-ide/antigravity" "$@"
+EOF
+
+    # Beri izin eksekusi pada wrapper script
+    chmod +x "${pkgdir}/usr/bin/antigravity-ide"
+
     # 3. Install file .desktop ke menu aplikasi sistem
     install -Dm644 "${srcdir}/antigravity.desktop" "${pkgdir}/usr/share/applications/antigravity-ide.desktop"
 
