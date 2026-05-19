@@ -1,6 +1,6 @@
 pkgbase = susshi-bin
 	pkgdesc = modern, terminal-based SSH connection manager (pre-built binary)
-	pkgver = 0.15.5
+	pkgver = 0.15.6
 	pkgrel = 1
 	url = https://github.com/yatoub/susshi
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = susshi-bin
 	depends = openssh
 	provides = susshi
 	conflicts = susshi
-	source = https://github.com/yatoub/susshi/archive/refs/tags/v0.15.5.tar.gz
-	b2sums = dcbd2ac57f952c478c60a3d6b302653f42abb810b90f186eb3e9065c80823af81af254ff6319ee720d10afd1acc29ac4cc2c93537fae4a5b9fa4e6ce4d93ee92
-	source_x86_64 = susshi-0.15.5-linux-amd64::https://github.com/yatoub/susshi/releases/download/v0.15.5/susshi-linux-amd64
-	b2sums_x86_64 = 5984085db8ca08a30232b661d42811ff27e8c2650caaecd8f0de462c50ec313f86d623935b5748100d319de2350d5d79290367ace54dc2db8a65ba19238c9820
+	source = https://github.com/yatoub/susshi/archive/refs/tags/v0.15.6.tar.gz
+	b2sums = af01a4034280cae5f8b1d547f08486698d22ed10e7031697da9e2b5b2baa904d3ddca47ce4afc8f0092e482c2392bd73925b205974f37f4dbfc3101c7e33bdbc
+	source_x86_64 = susshi-0.15.6-linux-amd64::https://github.com/yatoub/susshi/releases/download/v0.15.6/susshi-linux-amd64
+	b2sums_x86_64 = f615663d8afd9db4d5368392b0dceac450de3740f413e6fd6fcdedeae509fa0e6ca2f02e9d7bb7c0b39b8b536d2879a6e14fbf47399488cd172840dbb3fae0e8
 
 pkgname = susshi-bin
