@@ -1,7 +1,7 @@
 # Maintainer: Davi Alves Sampaio <davialvessampaio00@gmail.com>
 pkgname=otf-atkinson-hyperlegible-next-nerd-git
 pkgver=r17.7925f50 # Placeholder; pkgver() rewrites this automatically before build
-pkgrel=2
+pkgrel=3
 pkgdesc="Fully patched Nerd Font version of Atkinson Hyperlegible Next and Mono (OTF, built dynamically from source)"
 arch=('any')
 url="https://github.com/googlefonts/atkinson-hyperlegible-next"
@@ -38,7 +38,6 @@ build() {
         HOME="$worker_home" /usr/bin/font-patcher \
             --complete --careful \
             --outputdir "$OUTPUTDIR/" \
-            --metrics TYPO \
             "$f" || true
     }
     export -f _patch_font
