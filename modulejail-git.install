@@ -15,6 +15,9 @@ post_install() {
   echo ""
   echo "To revert: sudo rm /etc/modprobe.d/modulejail-blacklist.conf"
   echo ""
+  echo "To auto-regenerate the blacklist on package upgrades, edit"
+  echo "/etc/modulejail/modulejail-aur.conf and set AUTO_UPDATE=true."
+  echo ""
 }
 
 post_upgrade() {
