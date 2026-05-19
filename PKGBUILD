@@ -3,24 +3,31 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=fpm2
-pkgver=0.90
+pkgver=0.90.2
 pkgrel=1
 pkgdesc="Figaro's Password Manager 2"
 arch=('i686' 'x86_64')
 url="http://als.regnet.cz/fpm2/"
 license=('GPL')
 depends=('gtk3')
-makedepends=('intltool>=0.35.0' 'pkgconf>=1.0')
-source=(http://als.regnet.cz/$pkgname/download/$pkgname-$pkgver.tar.xz)
-sha256sums=('1f3ab9c41c86267da97c48dda2f2333e163a3179fb21be1d34d4b4bf8792dfd1')
+makedepends=('meson' 'pkgconf>=1.0')
+source=(https://als.regnet.cz/$pkgname/download/$pkgname-$pkgver.tar.xz
+        fix-nettle-digest.patch)
+sha256sums=('85b2a996bdbf65028b92a8c1d7ceed62787560562344a3f66397e7cd85d72030'
+            '913dde987f4e7ef924a396b5801723eccf87c2c788a71c913391b51075ae76a6')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 -i "$srcdir/fix-nettle-digest.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+  meson setup build
+  meson compile -C build
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }

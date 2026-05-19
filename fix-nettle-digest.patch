@@ -1,0 +1,40 @@
+diff --git a/src/fpm_nettle.c b/src/fpm_nettle.c
+index e0e9505..be43b60 100644
+--- a/src/fpm_nettle.c
++++ b/src/fpm_nettle.c
+@@ -64,7 +64,7 @@ void aes256_gcm_set_iv (fpm_cipher *cipher, byte *iv) {
+ }
+ 
+ void aes256_gcm_get_tag (fpm_cipher *cipher, gsize len, byte *tag) {
+-    gcm_aes256_digest (cipher->context, len, tag);
++    gcm_aes256_digest (cipher->context, tag);
+ }
+ 
+ void aes256_gcm_add_data (fpm_cipher *cipher, gsize len, byte *data) {
+@@ -89,7 +89,7 @@ void aes128_eax_set_iv (fpm_cipher *cipher, byte *iv) {
+ }
+ 
+ void aes128_eax_get_tag (fpm_cipher *cipher, gsize len, byte *tag) {
+-    eax_aes128_digest (cipher->context, len, tag);
++    eax_aes128_digest (cipher->context, tag);
+ }
+ 
+ void aes128_eax_add_data (fpm_cipher *cipher, gsize len, byte *data) {
+@@ -114,7 +114,7 @@ void chacha_poly1305_set_iv (fpm_cipher *cipher, byte *iv) {
+ }
+ 
+ void chacha_poly1305_get_tag (fpm_cipher *cipher, gsize len, byte *tag) {
+-    chacha_poly1305_digest (cipher->context, len, tag);
++    chacha_poly1305_digest (cipher->context, tag);
+ }
+ 
+ void chacha_poly1305_add_data (fpm_cipher *cipher, gsize len, byte *data) {
+@@ -139,7 +139,7 @@ void camellia256_gcm_set_iv (fpm_cipher *cipher, byte *iv) {
+ }
+ 
+ void camellia256_gcm_get_tag (fpm_cipher *cipher, gsize len, byte *tag) {
+-    gcm_camellia256_digest (cipher->context, len, tag);
++    gcm_camellia256_digest (cipher->context, tag);
+ }
+ 
+ void camellia256_gcm_add_data (fpm_cipher *cipher, gsize len, byte *data) {
