@@ -1,6 +1,6 @@
 pkgbase = autosubsync-bin
 	pkgdesc = Automatic subtitle synchronization tool.
-	pkgver = 6.3
+	pkgver = 6.4
 	pkgrel = 1
 	url = https://github.com/denizsafak/AutoSubSync
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = autosubsync-bin
 	depends = hicolor-icon-theme
 	provides = autosubsync
 	options = !strip
-	source = AutoSubSync-linux-amd64.AppImage::https://github.com/denizsafak/AutoSubSync/releases/download/v6.3/AutoSubSync-linux-amd64.AppImage
+	source = AutoSubSync-linux-amd64.AppImage::https://github.com/denizsafak/AutoSubSync/releases/download/v6.4/AutoSubSync-linux-amd64.AppImage
 	source = autosubsync.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
