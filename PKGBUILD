@@ -1,4 +1,4 @@
-pkgname=hyprwall
+pkgname=hyprwall-git
 pkgver=r41.0227305
 pkgrel=1
 pkgdesc="Wallpaper manager for Hyprland"
