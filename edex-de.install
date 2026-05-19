@@ -1,0 +1,18 @@
+post_install() {
+    echo ""
+    echo "==> eDEX-DE installed."
+    echo ""
+    echo "IMPORTANT: To use eDEX-DE as your desktop environment, your user"
+    echo "must be in the 'seat', 'input', and 'video' groups."
+    echo ""
+    echo "Run the following, then LOG OUT COMPLETELY and log back in:"
+    echo ""
+    echo "  sudo usermod -aG seat,input,video \$USER"
+    echo ""
+    echo "Then select 'eDEX-DE' from your display manager login screen."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
