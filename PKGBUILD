@@ -1,8 +1,8 @@
 # Maintainer: xbz7
 
 pkgname=crumble
-pkgver=0.1.1
-pkgrel=4
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A file packing and encryption tool. Pack files into encrypted .crumbs files, share them, and unpack on another machine."
 arch=('x86_64')
 url="https://github.com/xbz-seven/Crumble"
