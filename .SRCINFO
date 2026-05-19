@@ -10,9 +10,6 @@ pkgbase = python-typio
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	depends = python-art
-	depends = python-matplotlib
-	depends = python-pillow
 	source = https://github.com/sepandhaghighi/typio/archive/v1.0.tar.gz
 	sha256sums = cc8c7b41d9c6ecee0cd0f43f1afda237428dcb299084d18ccb7055d7ae2e2029
 
