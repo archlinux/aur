@@ -12,10 +12,10 @@ provides=('pomogoro')
 conflicts=('pomogoro')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bemoty/pomogoro/releases/download/v${pkgver}/pomogoro_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('cee0d1d15da722e6a71cf0733cd021dc797c7a7f93a3c695af681eb78925dfa8')
+sha256sums_aarch64=('03d6cd4c2a925bd14c47611e38da2b487d447fcc933807ac710e213651ede8de')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bemoty/pomogoro/releases/download/v${pkgver}/pomogoro_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('b32b0b8643d5eebaba01e26275090953febabc5b7f279eef00feee03131886b3')
+sha256sums_x86_64=('9725cae201ad37c4770f3b0dedbb720688bee7f38fd719148c82c36d464e83c0')
 
 package() {
   install -Dm755 "./pomogoro" "${pkgdir}/usr/bin/pomogoro"
