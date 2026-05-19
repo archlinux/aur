@@ -1,8 +1,30 @@
+_print_notes() {
+    cat <<'EOF'
+
+==> logitech-g923-xbox-ffb-udev installed.
+==> The udev rule has been reloaded and hidraw retriggered.
+
+==> Before force feedback will work, please verify all three of the following:
+
+  1) Your user must be a member of the `input` group:
+       groups | grep -q input || sudo gpasswd -a "$USER" input && newgrp input
+     (Log out and back in if `newgrp` is not effective for your session.)
+
+  2) Unplug and replug the wheel after install. Existing /dev/hidraw* file
+     descriptors keep their old permissions until the device is re-enumerated.
+
+  3) The wheel must already be in PC mode (USB PID 046d:c26e). The dependency
+     `logitech-g923-xbox-udev` handles the usb_modeswitch from the boot PID
+     (c26d) to c26e on plug-in; if it is not installed or has not yet run, this
+     rule will have nothing to match.
+
+EOF
+}
+
 post_install() {
     udevadm control --reload-rules
     udevadm trigger --subsystem-match=hidraw
-    echo ":: Reloaded udev rules and retriggered hidraw."
-    echo ":: Unplug and replug the wheel to ensure existing fds pick up the new perms."
+    _print_notes
 }
 
 post_upgrade() {
