@@ -10,7 +10,7 @@
 # TODO split packages? nimbus/supervisor/ui ?
 
 pkgname=storm
-pkgver=2.8.7
+pkgver=2.8.8
 pkgrel=1
 pkgdesc='Apache Storm is a free and open source distributed realtime computation system'
 arch=('any')
@@ -34,7 +34,7 @@ source=("${pkgname}-${pkgver}.tar.gz::$_closest_mirror"
         'systemd_storm-ui.service'
         'systemd_sysusers.d_storm.conf'
         'systemd_tmpfiles.d_storm.conf')
-sha256sums=('5a50b02c11e8a67baf8302cc3c9b5b099422fc0d0f076a67f657901748b8a741'
+sha256sums=('170922171ba72a659f7bc5cd68636b3f3e54d208032a9bf9ea01142fe5ce24c2'
             'c94799f4b459f5218faf1da57936baeb4c32b9542a1ba0aacdd637bf2f3aaf05'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             '2dafe9352ed01fbe0c74ec6e29e0233a842c4fead7af38cd3540bf69c93a895c'
