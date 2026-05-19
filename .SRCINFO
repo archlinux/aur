@@ -1,17 +1,13 @@
 pkgbase = otf-atkinson-hyperlegible-next-nerd-git
 	pkgdesc = Fully patched Nerd Font version of Atkinson Hyperlegible Next and Mono (OTF, built dynamically from source)
 	pkgver = r17.7925f50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/atkinson-hyperlegible-next
 	arch = any
 	license = OFL
 	makedepends = git
 	makedepends = font-patcher
 	makedepends = fontforge
-	provides = otf-atkinson-hyperlegible-next=1.0
-	provides = otf-atkinsonhyperlegiblemono-nerd=3.4.0
-	conflicts = otf-atkinson-hyperlegible-next
-	conflicts = otf-atkinsonhyperlegiblemono-nerd
 	source = atkinson-next::git+https://github.com/googlefonts/atkinson-hyperlegible-next.git
 	source = atkinson-mono::git+https://github.com/googlefonts/atkinson-hyperlegible-next-mono.git
 	sha256sums = SKIP
