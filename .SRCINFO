@@ -1,6 +1,6 @@
 pkgbase = zen-browser
 	pkgdesc = Firefox-based web browser built from upstream release source snapshot
-	pkgver = 1.19.12b
+	pkgver = 1.19.13b
 	pkgrel = 2
 	url = https://zen-browser.app
 	arch = x86_64
@@ -62,14 +62,14 @@ pkgbase = zen-browser
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	conflicts = zen-browser-bin
-	noextract = zen-source-1.19.12b.tar.zst
+	noextract = zen-source-1.19.13b.tar.zst
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = zen-source-1.19.12b.tar.zst::https://github.com/zen-browser/desktop/releases/download/1.19.12b/zen.source.tar.zst
+	source = zen-source-1.19.13b.tar.zst::https://github.com/zen-browser/desktop/releases/download/1.19.13b/zen.source.tar.zst
 	source = zen-browser.desktop
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/149.0.2-1/0004-Use-wasm32-wasip1-target.patch
-	sha256sums = c18cfced452f4e4edf4c47872f086297d29f40ca0f6f5bc01e3f32d2e730432a
+	sha256sums = 74c5a4a44441e73be5ed546a3d34c0ab3d26576f40c362f023476a05fc410559
 	sha256sums = af16fec9a88cbfffee34a6a4eb5b3074931477fcefee252840d77cf146568851
 	sha256sums = 28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89
 

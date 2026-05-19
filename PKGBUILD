@@ -3,7 +3,7 @@
 # Contributor: StaticNullException <aurcontact@teto.party>
 
 pkgname=zen-browser
-pkgver=1.19.12b
+pkgver=1.19.13b
 pkgrel=2
 pkgdesc='Firefox-based web browser built from upstream release source snapshot'
 url='https://zen-browser.app'
@@ -89,7 +89,7 @@ source=(
   #'https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/149.0.2-1/0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch' # Commented out until figured out
   'https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/149.0.2-1/0004-Use-wasm32-wasip1-target.patch'
 )
-sha256sums=('c18cfced452f4e4edf4c47872f086297d29f40ca0f6f5bc01e3f32d2e730432a'
+sha256sums=('74c5a4a44441e73be5ed546a3d34c0ab3d26576f40c362f023476a05fc410559'
             'af16fec9a88cbfffee34a6a4eb5b3074931477fcefee252840d77cf146568851'
             '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89')
 noextract=("$_srcroot-$pkgver.tar.zst")
