@@ -2,14 +2,14 @@
 pkgname=firefox-webhid-bridge
 pkgver=0.2.3
 pkgdesc="The server of firefox ADD-ONS WebHID for Firefox by Sainan"
-pkgrel=2
+pkgrel=3
 arch=('any')
 url=https://github.com/Sainan/WebHID-for-Firefox
-lincenses=('Unlicense')
+license=('Unlicense')
 depends=('glibc')
 makedepends=('git' 'clang' 'lld' 'php')
 provides=('firefox-webhid-bridge')
-conflits=('firefox-webhid-bridge')
+conflicts=('firefox-webhid-bridge')
 
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 md5sums=('214b50a5ea294a9c3542887a568b21d9')
