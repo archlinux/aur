@@ -1,11 +1,7 @@
 # Maintainer: Latte macchiato <contact@lattemacchiato.dev>
 pkgname=plezy-git
 _pkgname=plezy
-pkgver=2.0.0.r8.gfd1eaf9d
-pkgver() {
-  cd "$pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+pkgver=2.1.1.r15.g81b05f0
 pkgrel=1
 pkgdesc='A modern Plex client for desktop and mobile'
 arch=('x86_64')
@@ -15,6 +11,7 @@ depends=(
     'gtk3'
     'mpv'
     'libepoxy'
+    'libevdev'
     'libkeybinder3'
     'alsa-lib'
     'glib2'
@@ -23,6 +20,7 @@ depends=(
 makedepends=(
     'clang'
     'cmake'
+    'java-environment'
     'ninja'
     'pkgconf'
     'git'
@@ -31,6 +29,7 @@ makedepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('!debug')
 _flutter_ver=3.38.6
 source=(
     "$_pkgname::git+$url.git"
@@ -41,7 +40,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' \
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' \
         || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
