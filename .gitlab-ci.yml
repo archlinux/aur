@@ -7,11 +7,11 @@ stages:
 check_version:
   stage: check
   script:
-    - pacman -Sy --noconfirm curl
-    - LATEST=$(curl -s "https://archlinux.org/packages/extra/x86_64/kwin/json/" | grep -o '"pkgver":"[^"]*"' | cut -d'"' -f4)
+    - pacman -Sy --noconfirm curl python3
+    - LATEST=$(curl -s "https://archlinux.org/packages/extra/x86_64/kwin/json/" | python3 -c "import sys,json; print(json.load(sys.stdin)['pkgver'])")
     - CURRENT=$(grep "pkgver=" PKGBUILD | cut -d= -f2)
     - echo "Latest=$LATEST Current=$CURRENT"
-    - '[ "$LATEST" != "$CURRENT" ] || exit 0'
+    - if [ "$LATEST" = "$CURRENT" ]; then echo "No update needed"; exit 0; fi
     - echo "NEW_VERSION=$LATEST" >> build.env
   artifacts:
     reports:
