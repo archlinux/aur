@@ -1,12 +1,12 @@
 pkgbase = scarlett2-firmware
 	pkgdesc = Firmware for Focusrite Scarlett 2nd/3rd/4th Gen, Clarett USB/+, and Vocaster
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/geoffreybennett/scarlett2-firmware
 	arch = any
 	license = custom:Focusrite
-	source = scarlett2-firmware-1.0.tar.gz::https://github.com/geoffreybennett/scarlett2-firmware/archive/refs/tags/1.0.tar.gz
-	sha256sums = c9c31dd97b5d615ea75d71e57662e927f2f8ab460238143637a462f89f80fa33
+	source = scarlett2-firmware-1.1.tar.gz::https://github.com/geoffreybennett/scarlett2-firmware/archive/refs/tags/1.1.tar.gz
+	sha256sums = be86197db08d768568853d82529d1b8929aea60d8b3690a2a41972800c1ad555
 
 pkgname = scarlett2-firmware
