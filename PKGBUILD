@@ -14,8 +14,8 @@ pkgname=(
   libnm-iwd
   nm-iwd-cloud-setup
 )
-pkgver=1.56.0
-pkgrel=2
+pkgver=1.56.1
+pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
 arch=(x86_64)
@@ -26,6 +26,7 @@ makedepends=(
   curl
   dnsmasq
   git
+  glib2
   glib2-devel
   glibc
   gobject-introspection
@@ -55,8 +56,6 @@ makedepends=(
   systemd
   systemd-libs
   vala
-  vala
-  wpa_supplicant
 )
 checkdepends=(
   libx11
@@ -64,7 +63,7 @@ checkdepends=(
 )
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=${pkgver/[a-z]/-&}"
         "$pkgbase.install")
-b2sums=('43aee5cce5e92861f89520fbb2174ed54a89adc89d6b903b40feddf3f8ab5b0f97559a90efc83cb2919e3eca01700726b8d2f665621bcf3a491127981625e136'
+b2sums=('fbd3fd7ca98b75cddc61c85e888f10f103dfed2405e9798a6bfc988788312b47b3b5f011664db303939c75ca404e258a23b8515a308cbf77ecfc29188524e20e'
         '1045d7a75487dd063e2d52f2c94944c04650b9337d4cb839b66dc692f477797406ed2164725a53a1c213c46dd7ea398ca9764ee09386766554aa179d8c320cd2')
 
 build() {
@@ -76,10 +75,11 @@ build() {
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
     -D suspend_resume=systemd
-    -D modify_system=true
+    -D polkit_noauth_group=wheel
     -D selinux=false
 
     # features
+    -D config_wifi_backend_default=iwd
     -D iwd=true
     -D teamdctl=true
 
