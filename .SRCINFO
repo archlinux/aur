@@ -1,0 +1,16 @@
+pkgbase = elf-stat-git
+	pkgdesc = Elf-stat is a low-level utility designed to inspect file metadata on linux x86_64.
+	pkgver = 0.1.r0.g1234567
+	pkgrel = 1
+	url = https://github.com/simeulinuxkaliaiwr/elf-stat
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nasm
+	makedepends = gcc
+	provides = elf-stat
+	conflicts = elf-stat
+	source = elf-stat-git::git+https://github.com/simeulinuxkaliaiwr/elf-stat.git
+	sha256sums = SKIP
+
+pkgname = elf-stat-git
