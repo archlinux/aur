@@ -1,19 +1,19 @@
 # Maintainer: Juan Roa <hello@juanroa.dev>
 pkgname=athas
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Lightweight code editor built with React, TypeScript, and Tauri"
 arch=('x86_64' 'aarch64')
 url="https://athas.dev"
 license=('AGPL-3.0-or-later')
-depends=('gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'webkit2gtk-4.1')
+depends=('gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'openssl' 'webkit2gtk-4.1')
 makedepends=('bun' 'cmake' 'npm' 'rust')
 conflicts=('athas-bin')
 _source_name=athas
 source=("${_source_name}-${pkgver}.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v${pkgver}.tar.gz"
         '0001-add-missing-js-deps-and-swift-cli-override.patch'
         '0002-add-packaging-tree-sitter-bootstrap-script.patch')
-sha256sums=('90f3508b473ee763e1c14905b2641df4dad645ebb9a07517abe0116828ab9102'
+sha256sums=('501f01e32a1c51bb1fb28b6ba0c7ac008d3cf70456e70624ed9fb7c82a1bed5b'
             '8f74e00d2051ff1a330b8cb18757ce29742c6c228b888e32d02eb7b821355e89'
             'bc65eec041814fbab5b7e4336d633abe6975227cd630e92ddf07f69a3624e492')
 
@@ -56,6 +56,7 @@ build() {
 	export RUSTFLAGS="${RUSTFLAGS:+${RUSTFLAGS} }--remap-path-prefix=${srcdir}=${debug_prefix}"
 	export CARGO_HOME="${cargo_home}"
 	export CARGO_TARGET_DIR="${cargo_target}"
+	export OPENSSL_NO_VENDOR=1
 	export npm_config_fetch_retries=5
 	export npm_config_fetch_retry_maxtimeout=300000
 	export npm_config_fetch_retry_mintimeout=20000
