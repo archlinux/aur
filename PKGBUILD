@@ -2,13 +2,13 @@
 
 pkgname=rkn-block-checker
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Diagnose RKN/TSPU internet blocks layer by layer (DNS, TCP, TLS, HTTP)"
 arch=('any')
 url="https://github.com/MayersScott/rkn-block-checker"
 license=('MIT')
 depends=('python>=3.10' 'python-requests')
-makedepends=('python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://github.com/MayersScott/rkn-block-checker/releases/download/v${pkgver}/rkn_block_checker-${pkgver}.tar.gz")
 sha256sums=('e25322753f5831882db36426985b90678caec3fd9234d8089187ff0afd4fe1d3')
 b2sums=('SKIP')

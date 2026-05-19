@@ -1,7 +1,7 @@
 pkgbase = rkn-block-checker
 	pkgdesc = Diagnose RKN/TSPU internet blocks layer by layer (DNS, TCP, TLS, HTTP)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MayersScott/rkn-block-checker
 	arch = any
 	license = MIT
