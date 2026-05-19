@@ -6,6 +6,8 @@ pkgbase = brightctrl
 	arch = x86_64
 	license = MIT
 	depends = ddcutil
+	options = !strip
+	options = !debug
 	source_x86_64 = brightctrl::https://github.com/shahriyardx/brightctrl/releases/download/v0.0.8/brightctrl-x86_64
 	sha256sums_x86_64 = 9eb71733811c19c251767ae086baf22897b446d67638c19cd25621a70811f8f2
 
