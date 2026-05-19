@@ -14,6 +14,8 @@ post_install() {
         echo "      sudo usermod -aG sealant <your_user>"
         echo "      Then log out and back in. Verify with: groups <your_user>"
     fi
+    dkms add sealant/1.0.2.26 2>/dev/null || true
+    dkms build sealant/1.0.2.26 2>/dev/null || true
     dkms install sealant/1.0.2.26 --force 2>/dev/null || true
     udevadm control --reload-rules
     udevadm trigger
