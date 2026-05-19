@@ -1,7 +1,7 @@
 pkgbase = fpm2
 	pkgdesc = Figaro's Password Manager 2
 	pkgver = 0.90.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://als.regnet.cz/fpm2/
 	arch = i686
 	arch = x86_64

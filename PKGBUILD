@@ -4,7 +4,7 @@
 
 pkgname=fpm2
 pkgver=0.90.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Figaro's Password Manager 2"
 arch=('i686' 'x86_64')
 url="http://als.regnet.cz/fpm2/"
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  meson setup build
+  meson setup build --prefix=/usr
   meson compile -C build
 }
 
