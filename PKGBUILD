@@ -49,26 +49,11 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   # Bash completion
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname" <<'EOF'
-complete -C '/usr/bin/lota' lota
-EOF
+  ./$pkgname --completion-script bash > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 
   # Zsh completion
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname" <<'EOF'
-#compdef lota
-function _lota {
-    local line="${LBUFFER}${RBUFFER}"
-    export COMP_LINE="$line"
-    export COMP_POINT=${#LBUFFER}
-    local -a completions
-    completions=($('/usr/bin/lota'))
-    compadd -a completions
-}
-compdef _lota lota
-EOF
+  ./$pkgname --completion-script zsh > "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 
   # Fish completion
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish" <<'EOF'
-complete -c lota -f -a "(env COMP_LINE=(commandline) COMP_POINT=(commandline -C) /usr/bin/lota)"
-EOF
+  ./$pkgname --completion-script fish > "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 }
