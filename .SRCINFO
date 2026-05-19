@@ -1,6 +1,6 @@
 pkgbase = steam-game-idler-git
 	pkgdesc = Idle Steam games and farm trading cards with Linux support
-	pkgver = 5.0.8.r1723.g4a15a776
+	pkgver = 5.0.9.r1723.g4a15a776
 	pkgrel = 1
 	url = https://github.com/bernardopg/SGI
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = steam-game-idler-git
 	options = !lto
 	options = !strip
 	options = !debug
-	source = git+https://github.com/bernardopg/SGI.git#commit=dab4be8170056a1ebb15f9e4207b0f1b3acf2ba4
+	source = git+https://github.com/bernardopg/SGI.git#commit=6ee5ede61e9e5a614bd03b390d2cf408ab73edd5
 	sha256sums = SKIP
 
 pkgname = steam-game-idler-git
