@@ -1,6 +1,6 @@
 # Maintainer: eDEX-OS <edex-de@github.com>
 pkgname=edex-de
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="eDEX-DE — A sci-fi Wayland desktop environment built in pure Rust"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=(
     'libxkbcommon'
     'libinput'
-    'libseat'
+    'libseat.so'
     'mesa'
     'wayland'
     'systemd-libs'
@@ -36,7 +36,7 @@ optdepends=(
     'xdg-desktop-portal: Portal support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eDEX-OS/eDEX-DE/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4a56509b98f7e3e03798ba77262f07d9d68a06d5e88b7db82cc6ab31c8eb2d39')
+sha256sums=('c2c26d650fbd85ca8f16ee00c5751c95e2beda8dc318d8d75cef01cf19606bcb')
 
 build() {
     cd "eDEX-DE-${pkgver}"
