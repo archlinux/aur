@@ -9,6 +9,8 @@ arch=('x86_64')
 url="https://github.com/psi4j/sunsetr"
 license=('MIT')
 depends=('wayland')
+provides=('sunsetr')
+conflicts=('sunsetr' 'sunsetr-git')
 replaces=('sunsetr-git-debug')
 options=('!debug')
 
