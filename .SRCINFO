@@ -1,7 +1,7 @@
 pkgbase = sniffercommit
 	pkgdesc = Fast C++20-powered pre-commit hook and CI generator
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slowy07/sniffercommit
 	arch = x86_64
 	license = MIT
