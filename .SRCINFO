@@ -1,0 +1,18 @@
+pkgbase = python-pathschema
+	pkgdesc = Python path schema validation
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Apollo-Roboto/python-pathschema.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pylint
+	makedepends = python-colorama
+	depends = python
+	source = pathschema::git+https://github.com/Apollo-Roboto/python-pathschema.git#commit=90627c7a575766c8b7dd5b215405a8f8ee0d2922
+	sha256sums = SKIP
+
+pkgname = python-pathschema
