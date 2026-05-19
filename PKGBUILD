@@ -1,11 +1,11 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=greenboost-git
-pkgver=2.8.2.r10.752d9e2
+pkgver=2.8.2.r13.1bb976e
 pkgrel=1
-pkgdesc="CUDA memory orchestrator for NVIDIA GPUs — unified VRAM + System RAM + SSD pool (git master)"
+pkgdesc="CUDA memory orchestrator for NVIDIA GPUs — unified VRAM + System RAM + SSD pool (dev fork, fix/arch-compat branch)"
 arch=('x86_64')
-url="https://gitlab.com/IsolatedOctopi/greenboost"
+url="https://gitlab.com/evorster/greenboost"
 license=('GPL-2.0-or-later')
 depends=('dkms')
 makedepends=('git' 'vulkan-headers')
@@ -17,7 +17,7 @@ optdepends=(
 provides=('greenboost')
 conflicts=('greenboost')
 install=greenboost-git.install
-source=("git+${url}.git")
+source=("git+${url}.git#branch=fix/arch-compat")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -129,6 +129,13 @@ WRAPEOF
                GREENBOOST_COMMANDS.md GREENBOOST_PROTON.md; do
         [[ -f "$doc" ]] && install -m644 "$doc" "$pkgdir/usr/share/doc/$pkgname/"
     done
+
+    # ── udev rule (fix /dev/greenboost permissions) ──────────────────────
+    install -dm755 "$pkgdir/usr/lib/udev/rules.d"
+    cat > "$pkgdir/usr/lib/udev/rules.d/99-greenboost.rules" <<'RULEEOF'
+SUBSYSTEM=="greenboost", MODE="0660", GROUP="video"
+RULEEOF
+    chmod 644 "$pkgdir/usr/lib/udev/rules.d/99-greenboost.rules"
 
     # ── License ────────────────────────────────────────────────────────
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"

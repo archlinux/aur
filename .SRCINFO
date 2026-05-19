@@ -1,8 +1,8 @@
 pkgbase = greenboost-git
-	pkgdesc = CUDA memory orchestrator for NVIDIA GPUs — unified VRAM + System RAM + SSD pool (git master)
-	pkgver = 2.8.2.r10.752d9e2
+	pkgdesc = CUDA memory orchestrator for NVIDIA GPUs — unified VRAM + System RAM + SSD pool (dev fork, fix/arch-compat branch)
+	pkgver = 2.8.2.r13.1bb976e
 	pkgrel = 1
-	url = https://gitlab.com/IsolatedOctopi/greenboost
+	url = https://gitlab.com/evorster/greenboost
 	install = greenboost-git.install
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -14,7 +14,7 @@ pkgbase = greenboost-git
 	optdepends = lib32-glibc: needed if 32-bit audit library is shipped (built automatically when multilib is present)
 	provides = greenboost
 	conflicts = greenboost
-	source = git+https://gitlab.com/IsolatedOctopi/greenboost.git
+	source = git+https://gitlab.com/evorster/greenboost.git#branch=fix/arch-compat
 	sha256sums = SKIP
 
 pkgname = greenboost-git
