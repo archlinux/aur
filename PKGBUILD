@@ -2,7 +2,7 @@
 pkgname=mono-tracker-git
 _pkgname=mono
 pkgver=v0.3.0.r1.40d062f
-pkgrel=3
+pkgrel=4
 pkgdesc="Privacy-first screen time tracking application for Linux with TUI dashboard"
 arch=('x86_64')
 url="https://github.com/xonoxc/mono"
@@ -68,4 +68,7 @@ package() {
 
   # Install Desktop Launcher
   install -Dm644 "$srcdir/mono-dashboard.desktop" "$pkgdir/usr/share/applications/mono.desktop"
+
+  # Install License
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
