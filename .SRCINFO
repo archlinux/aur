@@ -1,0 +1,20 @@
+pkgbase = nvitop-git
+	pkgdesc = GPU process monitor for NVIDIA GPUs
+	pkgver = 1.7.0.r0.g3e797b2
+	pkgrel = 1
+	url = https://github.com/XuehaiPan/nvitop
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	depends = python-nvidia-ml-py
+	provides = nvitop
+	conflicts = nvitop
+	source = git+https://github.com/XuehaiPan/nvitop.git
+	sha256sums = SKIP
+
+pkgname = nvitop-git
