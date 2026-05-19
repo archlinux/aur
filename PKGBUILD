@@ -1,8 +1,8 @@
 # Maintainer: jinzhongjia <jinzhongjia@manus.ai>
 
 pkgname=openwarp-bin
-pkgver=2026.05.15.preview
-_debver=2026.05.15.preview
+pkgver=2026.05.19.preview
+_debver=2026.05.19.preview
 pkgrel=1
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
@@ -34,7 +34,7 @@ provides=('openwarp' 'warp-terminal-oss')
 conflicts=('warp-terminal-oss')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/warp-terminal-oss_${_debver}_amd64.deb")
-sha256sums=('849a36048f10a6d25a1d3ec381d9f44c8db5b1a51dfa808631cf679eb8923ee5')
+sha256sums=('1f40e9a78cfae8c729c95f03a5a82cf15ce9f8fe1d6d629c4777beacda389c44')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
