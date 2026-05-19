@@ -1,7 +1,7 @@
 pkgbase = modulejail-git
 	pkgdesc = Shrink a Linux host's kernel-module attack surface via modprobe.d blacklist (git)
 	pkgver = r59.1.2.3.0.gdf4f186
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jnuyens/modulejail
 	install = modulejail-git.install
 	arch = any
@@ -17,11 +17,8 @@ pkgbase = modulejail-git
 	provides = modulejail
 	conflicts = modulejail
 	backup = etc/modulejail/modulejail-aur.conf
+	backup = etc/modulejail/whitelist.conf
 	source = git+https://github.com/jnuyens/modulejail.git
-	source = whitelist.conf.example
-	source = modulejail-aur.conf
 	sha256sums = SKIP
-	sha256sums = fdc60f6603f0fc932d1dfc36469c9e85e8c3ce3612eb3aaa6c747381213e6e24
-	sha256sums = 01c2cb523ecac01d339d24845d44af46f5a69382b4dc2cb9a6e9b1404a9019e9
 
 pkgname = modulejail-git
