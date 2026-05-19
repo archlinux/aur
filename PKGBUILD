@@ -1,7 +1,7 @@
-# Maintainer: nathawat <nathawat at no reply dot codeberg dot org>
+# Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname="howdy-next-git"
-pkgver=v2.0.0.r137.gc67eca3
+pkgver=v3.0.0.r171.g5114597
 pkgrel=1
 pkgdesc="A modernized fork of original Howdy, Facial recognition authentication for Linux"
 arch=('x86_64')
@@ -46,6 +46,7 @@ build() {
 
 package() {
 	meson install -C "$srcdir/build" --destdir "$pkgdir"
+	chmod 4755 "$pkgdir/usr/lib/howdy/howdy-auth-helper"
 	install -d -m750 "$pkgdir/etc/howdy"
 	install -m640 "$srcdir/howdy-next/config/config.ini" "$pkgdir/etc/howdy/config.ini"
 	install -Dm644 "$srcdir/howdy-next/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

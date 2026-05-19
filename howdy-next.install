@@ -1,8 +1,34 @@
+pre_install() {
+	echo '[CAUTION] Before enabling PAM integration, keep a root shell open: sudo -i'
+	echo '[CAUTION] Use it to repair /etc/pam.d/* or /etc/howdy/config.ini if authentication breaks.'
+}
+
+pre_upgrade() {
+	echo '[CAUTION] This upgrade contains breaking PAM/config changes.'
+	echo '[CAUTION] Keep a root shell open with sudo -i until sudo/login/lock-screen auth is tested.'
+	echo '[MIGRATION] Move workaround=... from config.ini to the pam_howdy.so line.'
+	echo '[MIGRATION] Replace device_fps = -1 with device_fps = 0.'
+	echo '[MIGRATION] Remove obsolete config keys: workaround, gtk_stdout.'
+}
+
 post_install() {
-	echo '[SETUP] 1. Download OpenCV face models using `sudo howdy download-models`'
-	echo '[SETUP] 2. Set a correct video device using `sudo howdy config`'
-	echo '[SETUP] 3. Test settings with `sudo howdy test`'
-	echo '[SETUP] 4. Add face model with `sudo howdy add`'
-	echo '[SETUP] 5. Add PAM policy `auth sufficient pam_howdy.so` to e.g. top of `/etc/pam.d/system-auth` (global auth)'
-	echo '[INFO] List of available video devices can be obtained with `v4l2-ctl --list-devices` from `v4l-utils` package'
+	echo '[SETUP] 1. Download models: sudo howdy download-models'
+	echo '[SETUP] 2. Configure camera: sudo howdy config'
+	echo '[SETUP] 3. Test camera/auth: sudo howdy test'
+	echo '[SETUP] 4. Add a face model: sudo howdy add'
+	echo '[SETUP] 5. Add pam_howdy.so to the relevant service in /etc/pam.d/'
+	echo '[SETUP]    Example: auth sufficient pam_howdy.so workaround=native'
+	echo '[INFO] List video devices: v4l2-ctl --list-devices'
+}
+
+post_upgrade() {
+	echo '[POST-UPGRADE] If pacman created /etc/howdy/config.ini.pacnew, merge it into your current config.'
+	echo '[POST-UPGRADE] Example: sudo -i'
+	echo '[POST-UPGRADE]          pacdiff /etc/howdy/config.ini'
+	echo '[POST-UPGRADE] Then check required migrations:'
+	echo '[POST-UPGRADE]   - workaround=... belongs on the pam_howdy.so line, not in config.ini'
+	echo '[POST-UPGRADE]   - device_fps = -1 must be changed to device_fps = 0'
+	echo '[POST-UPGRADE]   - remove obsolete keys: workaround, gtk_stdout'
+	echo '[POST-UPGRADE] Test before closing the root shell: sudo howdy test && sudo -k && sudo true'
+	echo '[POST-UPGRADE] Also test lock-screen auth if pam_howdy.so is used there.'
 }
