@@ -1,14 +1,14 @@
 pkgbase = vouch-proxy
 	pkgdesc = an SSO and OAuth / OIDC login solution for Nginx using the auth_request module
-	pkgver = 0.45.0
+	pkgver = 0.47.2
 	pkgrel = 1
 	url = https://github.com/vouch/vouch-proxy
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = vouch-proxy-0.45.0.tar.gz::https://github.com/vouch/vouch-proxy/archive/v0.45.0.tar.gz
+	source = https://github.com/vouch/vouch-proxy/archive/v0.47.2/vouch-proxy-0.47.2.tar.gz
 	source = vouch-proxy.service
-	sha256sums = 8a8c19a9d3cc62a292ece5a41e11f2ee432cb559be2bd4cb02e0bec49ce26433
+	sha256sums = b05df1b60ebac1964ad70100abf993162774f768842df575133c5cd0009aecc1
 	sha256sums = f4c79517e2eca2ca13756bf2c4fdafa7c2970195548151bf527178dfd8953603
 
 pkgname = vouch-proxy
