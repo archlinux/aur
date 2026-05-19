@@ -2,7 +2,7 @@
 pkgname=lota-bin
 pkgver=1.5.10
 pkgrel=1
-pkgdesc="A declarative task runner for rapid development (binary release)"
+pkgdesc="A configurable task runner for rapid development (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/quonaro/lota"
 license=('Apache-2.0')

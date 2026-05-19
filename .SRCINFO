@@ -1,5 +1,5 @@
 pkgbase = lota-bin
-	pkgdesc = A declarative task runner for rapid development (binary release)
+	pkgdesc = A configurable task runner for rapid development (binary release)
 	pkgver = 1.5.10
 	pkgrel = 1
 	url = https://github.com/quonaro/lota
