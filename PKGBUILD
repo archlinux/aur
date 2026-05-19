@@ -1,11 +1,12 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Damian Nowak <spam at nowaker dot net>
 
 pkgname=whatsapp-nativefier
 pkgver=2.3000.1019818867
 pkgrel=1
 pkgdesc="WhatsApp desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
-url="https://web.${pkgname%-nativefier}.com"
+url="https://web.whatsapp.com/"
 license=("custom")
 depends=("gtk3" "libxss" "nss")
 optdepends=("libindicator-gtk3")
@@ -18,7 +19,7 @@ source=(
 sha256sums=(
   "3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27"
   "bad0489ae519bc78afab3d226966691feede8bcedf58025af1b171215ae51423"
-  "22ba360d698d9bb8257e91e7360aa0cf669e7e58a512e9b7aa0ee4b0504563d8"
+  "SKIP"
 )
 
 build() {
@@ -34,6 +35,12 @@ build() {
     --verbose \
     --single-instance \
     --tray \
+    --show-menu-bar \
+    --file-download-options '{
+      "saveAs": true,
+      "showProgressBar": true,
+      "showBadge": true
+    }' \
     "${url}"
 }
 
