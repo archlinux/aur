@@ -2,7 +2,7 @@
 
 _pkgbase='nsproxy'
 pkgname="${_pkgbase}-git"
-pkgver=0.2.0.3.g7306d12
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A tool to force applications to use a specific SOCKS5 or HTTP proxy (git version to track dev branch)'
 url="https://github.com/nlzy/${_pkgbase}"
@@ -21,13 +21,14 @@ pkgver() {
 }
 
 build() {
+  export CFLAGS=$(echo "${CFLAGS}" | sed 's/ -Wp,-D_FORTIFY_SOURCE=[^ ]\+ / /')
+  export CXXFLAGS=$(echo "${CXXFLAGS}" | sed 's/ -Wp,-D_FORTIFY_SOURCE=[^ ]\+ / /')
   cmake -B build -S "${_pkgbase}" \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
+    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
   cmake --build build
 }
 
 package() {
-  install -Dm755 "build/${_pkgbase}" "${pkgdir}"/usr/bin/"${_pkgbase}"
+  cmake --install build
 }
