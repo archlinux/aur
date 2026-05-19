@@ -29,15 +29,23 @@ build() {
 
   local electron_version
   local electron_zip_dir
+  local electron_unpack_dir
+  local forge_tmpdir
+
   electron_version="$(cat /usr/lib/electron39/version)"
   electron_zip_dir="$srcdir/electron-zip"
+  electron_unpack_dir="$srcdir/electron-v$electron_version-linux-x64"
+  forge_tmpdir="$srcdir/forge-tmp"
+
+  [[ -d "$electron_unpack_dir" ]] && rm -rf "$electron_unpack_dir"
+  [[ -d "$electron_zip_dir" ]] && rm -rf "$electron_zip_dir"
 
   mkdir -p "$electron_zip_dir"
-  cp -a /usr/lib/electron39 "$srcdir/electron-v$electron_version-linux-x64"
-  chmod -R u+w "$srcdir/electron-v$electron_version-linux-x64"
+  cp -a /usr/lib/electron39 "$electron_unpack_dir"
+  chmod -R u+w "$electron_unpack_dir"
 
   (
-    cd "$srcdir/electron-v$electron_version-linux-x64"
+    cd "$electron_unpack_dir"
     zip -0 -r -y "$electron_zip_dir/electron-v$electron_version-linux-x64.zip" .
   )
 
@@ -46,15 +54,27 @@ build() {
 
   export ELECTRON_ZIP_DIR="$electron_zip_dir"
   export CI=true
+  export TMPDIR="$forge_tmpdir"
 
+  mkdir -p "$TMPDIR"
   bun run package
+
+  if [[ ! -d out ]]; then
+    echo "error: electron-forge finished but produced no out/ directory" >&2
+    return 1
+  fi
 }
 
 package() {
   cd "$_pkgname-$pkgver"
 
   local app_dir
-  app_dir="$(find out -maxdepth 1 -type d -name '*-linux-x64' | head -n 1)"
+  app_dir="$(find out -maxdepth 1 -mindepth 1 -type d -name '*-linux-x64' | head -n 1)"
+
+  if [[ -z "$app_dir" || ! -d "$app_dir/resources" ]]; then
+    echo "error: no packaged app dir found under out/" >&2
+    return 1
+  fi
 
   install -dm755 "$pkgdir/usr/lib/$pkgname"
   cp -a "$app_dir/resources/app.asar" "$pkgdir/usr/lib/$pkgname"
