@@ -13,20 +13,18 @@ makedepends=('cmake' 'base-devel')
 provides=('pwss-browser-qt6')
 conflicts=('pwss-browser-qt6')
 
-source=("local_src::git+file://${PWD}")
+source=("${pkgname}::git+https://github.com/zai1208/pwss-browser-qt6-git.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/local_src"
-  if git rev-parse --git-dir >/dev/null 2>&1; then
-    printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  else
-    date +%Y%m%d
-  fi
+  cd "${srcdir}/${pkgname}"
+
+  # Standard clean git versioning string for the AUR
+  printf "1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/local_src"
+  cd "${srcdir}/${pkgname}"
   cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -34,17 +32,14 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/local_src"
+  cd "${srcdir}/${pkgname}"
 
-  # Install ONLY the frontend binary
   install -Dm755 build/pwss-browser-qt6 "${pkgdir}/usr/bin/pwss-browser-qt6"
 
-  # Deploy application desktop infrastructure
   if [ -f "pwss-browser.desktop" ]; then
     install -Dm644 pwss-browser.desktop "${pkgdir}/usr/share/applications/pwss-browser.desktop"
   fi
 
-  # Deploy scalable vector icon asset
   if [ -f "pwss-browser.svg" ]; then
     install -Dm644 pwss-browser.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pwss-browser.svg"
   fi
