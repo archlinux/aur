@@ -1,14 +1,14 @@
-# Maintainer: Daniel Poellmann <aur@<lastname><firstname>.de>
+# Maintainer: Zoe Wetzel <aur@commanderred.xyz>
 
 pkgname=matrix.sh
 epoch=1
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Bash script to send messages to a matrix chat.'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/fabianonline/matrix.sh'
 license=('GPL3')
-depends=()
+depends=('curl' 'jq')
 makedepends=()
 source=("matrix.sh::https://raw.githubusercontent.com/fabianonline/matrix.sh/master/matrix.sh")
 sha256sums=('9307d677ece2c82bceb59cf33d1edc18024b512b6f5458e63a7b57e3710ad5ef')
