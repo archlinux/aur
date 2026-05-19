@@ -420,19 +420,23 @@ The correct Linux path under Proton is:
 ```
 
 Without this fix Vortex cannot read or write the plugin list (`Plugins.txt`) or load order
-(`loadorder.txt`) for any Bethesda game running under Proton.
+(`loadorder.txt`) for any game running under Proton.
 
 **Fix:** Runtime patch script `patch-ext-gamebryo.py`, deployed to `/opt/Vortex/` and
 executed by `vortex.sh` on every launch. The script:
 
 1. Scans `~/.config/Vortex/plugins/` for the `gamebryo-plugin-management` extension.
 2. Identifies it via `info.json` (`"id": "gamebryo-plugin-management"`).
-3. Replaces the compiled `appDataPath()` function with a Linux-aware version that:
-   - Looks up the Steam App ID from a hardcoded table (same games as Patch 6).
-   - Parses `libraryfolders.vdf` to discover all Steam library roots.
-   - Returns the correct `AppData/Local` path inside the Proton prefix if found.
-   - Falls back to the original logic otherwise.
+3. Replaces the compiled `appDataPath()` function with a Linux-aware **generic** version that:
+   - Calls `discoveryForGame(gameMode)` — a module-level function already available in the
+     same compiled scope, initialised by `initGameSupport(api)` — to get `discovery.path`.
+   - Scans `appmanifest_*.acf` files across all Steam libraries to find the AppID by matching
+     `installdir` against `discovery.path` (same approach as Patch 7 in `renderer.js`).
+   - Returns the correct `AppData/Local/<game>` path inside the Proton prefix if found.
+   - Falls back to the original logic otherwise (non-Proton installs, unrecognised games).
 4. Prepends a marker (`// vortex-linux-fix-appdata`) to prevent double-patching.
+
+No hardcoded AppID table — works for **any game** that `gamebryo-plugin-management` supports.
 
 ```js
 // before
@@ -446,20 +450,31 @@ function appDataPath(gameMode) {
 // after (Linux branch, simplified)
 function appDataPath(gameMode) {
     if (process.platform === 'linux') {
-        const APPIDS = { skyrim:72850, skyrimse:489830, skyrimvr:611670,
-                         enderal:933480, enderalspecialedition:976620,
-                         fallout3:22370, fallout4:377160, fallout4vr:611660,
-                         falloutnv:22380, starfield:1716740, oblivion:22330 };
-        const appId = APPIDS[gameMode];
-        if (appId !== undefined) {
-            // discover all Steam libraries via libraryfolders.vdf
-            for (const lib of steamLibs) {
-                const dp = path.join(lib, 'compatdata', String(appId),
-                                     'pfx', 'drive_c', 'users', 'steamuser', 'AppData', 'Local');
-                if (fs.existsSync(dp))
-                    return path.join(dp, gameSupport.get(gameMode, "appDataPath"));
+        try {
+            const disc = discoveryForGame && discoveryForGame(gameMode);
+            const discPath = disc && disc.path;
+            if (discPath) {
+                const normDisc = path.normalize(discPath);
+                // discover all Steam libraries via libraryfolders.vdf
+                for (const lib of steamLibs) {
+                    // scan appmanifest_*.acf to match installdir → AppID
+                    for (const mf of fs.readdirSync(lib).filter(f => f.startsWith('appmanifest_'))) {
+                        const mt = fs.readFileSync(path.join(lib, mf), 'utf8');
+                        const im = mt.match(/"installdir"\s+"([^"]+)"/);
+                        if (im && path.normalize(path.join(lib, 'common', im[1])) === normDisc) {
+                            const idm = mf.match(/appmanifest_(\d+)\.acf/);
+                            if (idm) {
+                                const dp = path.join(lib, 'compatdata', idm[1],
+                                                     'pfx', 'drive_c', 'users', 'steamuser',
+                                                     'AppData', 'Local');
+                                if (fs.existsSync(dp))
+                                    return path.join(dp, gameSupport.get(gameMode, "appDataPath"));
+                            }
+                        }
+                    }
+                }
             }
-        }
+        } catch(_e) {}
     }
     // original fallback
     const dataPath = gameSupport.get(gameMode, "appDataPath");
@@ -469,14 +484,16 @@ function appDataPath(gameMode) {
 }
 ```
 
-**Games covered:** Fallout 3, Fallout New Vegas, Fallout 4, Fallout 4 VR, Skyrim,
-Skyrim Special Edition, Skyrim VR, Enderal, Enderal Special Edition, Starfield, Oblivion.
+**Difference from Patch 6:** Patch 6 (`mygamesPath`) uses a hardcoded AppID table because
+`gamebryo-test-settings` is a bundled plugin compiled separately and has no access to
+`discoveryForGame`. Patch 8 is in `gamebryo-plugin-management` which has `discoveryForGame`
+in scope, enabling the generic appmanifest scan approach used by Patch 7.
 
 **Why runtime and not PKGBUILD:** `gamebryo-plugin-management` has native module dependencies
-(`esptk`, `loot`) whose build scripts explicitly skip Linux (`process.platform === 'win32'`
-guard). The extension is not bundled in `app.asar` — it is downloaded by users on demand
-via Vortex's Extensions UI. The same `patch-ext-*.py` mechanism already used for the
-Cyberpunk 2077 extension is the correct approach here.
+(`esptk`, `loot`) whose build scripts explicitly skip Linux. The extension is not bundled in
+`app.asar` — it is downloaded by users on demand via Vortex's Extensions UI. The same
+`patch-ext-*.py` mechanism already used for the Cyberpunk 2077 extension is the correct
+approach here.
 
 **Source location:** `extensions/gamebryo-plugin-management/src/util/gameSupport.ts` →
 `appDataPath()` (compiled into the extension's `index.cjs` via rolldown).
