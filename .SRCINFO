@@ -1,6 +1,6 @@
 pkgbase = wx-cli-bin
 	pkgdesc = WeChat local data CLI with daemon architecture
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jackwener/wx-cli
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = wx-cli-bin
 	license = Apache-2.0
 	provides = wx-cli
 	conflicts = wx-cli
-	source = LICENSE-0.2.0::https://github.com/jackwener/wx-cli/raw/v0.2.0/LICENSE
+	source = LICENSE-0.3.0::https://github.com/jackwener/wx-cli/raw/v0.3.0/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = wx-cli-x86_64::https://github.com/jackwener/wx-cli/releases/download/v0.2.0/wx-linux-x86_64
+	source_x86_64 = wx-cli-x86_64::https://github.com/jackwener/wx-cli/releases/download/v0.3.0/wx-linux-x86_64
 	sha256sums_x86_64 = efc43bc064a42c74f543999f7afadb12ced82a1e3151c3146450c7259ec8a8ed
-	source_aarch64 = wx-cli-aarch64::https://github.com/jackwener/wx-cli/releases/download/v0.2.0/wx-linux-arm64
-	sha256sums_aarch64 = dbd8bf6f59b0d562ab44d52170a9190b379c0a441f2b20a94983a2aefe5cd732
+	source_aarch64 = wx-cli-aarch64::https://github.com/jackwener/wx-cli/releases/download/v0.3.0/wx-linux-arm64
+	sha256sums_aarch64 = 31e568a840e35c6a15672f0828cf3930e2f5de3b354161ac666c3f88bb96380e
 
 pkgname = wx-cli-bin

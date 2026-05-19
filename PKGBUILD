@@ -1,7 +1,7 @@
 # Maintainer: Nirvam <marvinbeeblebrox at gmail dot com>
 
 pkgname=wx-cli-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="WeChat local data CLI with daemon architecture"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source_x86_64=("wx-cli-x86_64::${url}/releases/download/v${pkgver}/wx-linux-x86_
 source_aarch64=("wx-cli-aarch64::${url}/releases/download/v${pkgver}/wx-linux-arm64")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 sha256sums_x86_64=('efc43bc064a42c74f543999f7afadb12ced82a1e3151c3146450c7259ec8a8ed')
-sha256sums_aarch64=('dbd8bf6f59b0d562ab44d52170a9190b379c0a441f2b20a94983a2aefe5cd732')
+sha256sums_aarch64=('31e568a840e35c6a15672f0828cf3930e2f5de3b354161ac666c3f88bb96380e')
 
 package() {
     cd "${srcdir}"
