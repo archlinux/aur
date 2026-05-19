@@ -1,6 +1,6 @@
 pkgbase = voxtype
 	pkgdesc = Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://voxtype.io
 	install = voxtype.install
@@ -38,10 +38,10 @@ pkgbase = voxtype
 	optdepends = gtk4: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)
 	optdepends = gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer
 	backup = etc/voxtype/config.toml
-	source = voxtype-0.7.2.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v0.7.2.tar.gz
-	source = voxtype-0.7.2.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v0.7.2/voxtype-0.7.2.tar.gz.asc
+	source = voxtype-0.7.3.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v0.7.3.tar.gz
+	source = voxtype-0.7.3.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v0.7.3/voxtype-0.7.3.tar.gz.asc
 	validpgpkeys = E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6
-	sha256sums = 8aa70619fa1fdd9a1f26675e57bdc2e8f96ddfb1789c97ca6c83189154fcde98
+	sha256sums = 1a80d5d28136535d705bfcb4e4a0d07fef366ace148e1a5627bdf07185c0821a
 	sha256sums = SKIP
 
 pkgname = voxtype
