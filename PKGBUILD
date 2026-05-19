@@ -1,11 +1,11 @@
-# Maintainer: Jason Scurtu <jscurtu@gmail.com>
+# Maintainer: Jason Scurtu <code@xarbit.dev>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=plasma6-applets-appgrid
-pkgver=1.7.9
+pkgver=1.7.10
 pkgrel=1
 pkgdesc="A modern fullscreen application launcher for KDE Plasma"
 arch=('x86_64')
-url="https://github.com/xarbit/plasma6-applet-appgrid"
+url="https://appgrid.xarbit.dev"
 license=('GPL-2.0-or-later')
 depends=(
     'plasma-workspace'
@@ -32,12 +32,13 @@ makedepends=(
     'extra-cmake-modules'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xarbit/plasma6-applet-appgrid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d42f4db825e8e01d59960086cce1e8a1b2a05ae1e44f11367f855e08e662898f')
+sha256sums=('3786b5895b619e4061dc76f9fe769e9c7b5c083fc291fceba68bb48dc16d0b8e')
 
 build() {
     cmake -B build -S "plasma6-applet-appgrid-${pkgver}" \
         -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DAPPGRID_VERSION_OVERRIDE="${pkgver}"
     cmake --build build
 }
 
