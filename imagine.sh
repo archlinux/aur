@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Launch application
-exec /opt/imagine/imagine "$@"
+exec /opt/imagine/imagineplus "$@"
