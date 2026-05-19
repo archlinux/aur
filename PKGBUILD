@@ -1,7 +1,7 @@
 # Maintainer: Fabian Hartmann <worldwidefab+arch gmail com>
 _pkgname='Ambermoon.net'
 pkgname=ambermoon-net
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 epoch=
 pkgdesc="C# rewrite of the 1993 Amiga RPG Ambermoon"
@@ -18,7 +18,7 @@ provides=("ambermoon-net=${pkgver}")
 conflicts=("ambermoon-net-bin")
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b32409528091e2659f471474beb60a9cb8d9e7608efe149c5394ca0189420a94')
+sha256sums=('4237221543ddcc3df2033f9d2f0f75a77ba160124297551e0cc9ed9cc697ef2d')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
@@ -38,9 +38,7 @@ build() {
 package() {
 	# Bundle to /opt
 	cd "$srcdir/${_pkgname}-${pkgver}/publish-linux"
-	install -d "${pkgdir}/opt/Ambermoon.net"
-	cp -r * "${pkgdir}/opt/Ambermoon.net"
-	chmod 755 "${pkgdir}/opt/Ambermoon.net/Ambermoon.net"
+	install -Dm755 Ambermoon.net "${pkgdir}/opt/Ambermoon.net/Ambermoon.net"
 
 	# Launcher
     	install -d "${pkgdir}/usr/bin"
@@ -51,11 +49,20 @@ exec ./Ambermoon.net "$@"
 EOF
     	chmod 755 "${pkgdir}/usr/bin/ambermoon-net"
 
+	# Documentation
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+		"${srcdir}/${_pkgname}-${pkgver}/FAQ.md" \
+		"${srcdir}/${_pkgname}-${pkgver}/FirstPlay.md" \
+		"${srcdir}/${_pkgname}-${pkgver}/Configuration.md" \
+		"${srcdir}/${_pkgname}-${pkgver}/Controls.md" \
+		"${srcdir}/${_pkgname}-${pkgver}/CustomMusic.md"
+
 	# License
 	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	# Desktop entry
-	install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/ambermoon-net.desktop" <<EOF
+	install -d "${pkgdir}/usr/share/applications/"
+	cat > "${pkgdir}/usr/share/applications/ambermoon-net.desktop" <<EOF
 [Desktop Entry]
 Type=Application
 Name=Ambermoon.net
