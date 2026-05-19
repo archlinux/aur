@@ -1,11 +1,11 @@
-# Maintainer: Pranav Jerry <libreinator at disroot dot org>
+# Maintainer: perry <libreinator at disroot dot org>
 _basename=pybatmesh
 pkgname="$_basename"
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python script to create a batman-adv mesh network"
 arch=("any")
-url="https://git.disroot.org/pranav/${_basename}"
+url="https://git.disroot.org/perry/${_basename}"
 license=("GPL3")
 depends=("iwd" "python-dasbus" "systemd>=248" "python-systemd")
 optdepends=("batctl: for debugging")
@@ -17,13 +17,13 @@ source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-	cd "$srcdir/$_basename"
-	make
-	return $?
+    cd "$srcdir/$_basename"
+    make
+    return $?
 }
 
 package() {
-	cd "$srcdir/$_basename"
-	make DESTDIR="$pkgdir" install
-	return $?
+    cd "$srcdir/$_basename"
+    make DESTDIR="$pkgdir" install
+    return $?
 }
