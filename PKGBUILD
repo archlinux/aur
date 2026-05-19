@@ -1,6 +1,6 @@
 # Maintainer: Cristiandis <pizzaoven@izzoserver.top>
 pkgname=pizzaoven-bin
-pkgver=1.1.2
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Cross-platform mod manager for Pizza Tower"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('pizzaoven')
 conflicts=('pizzaoven')
 options=('!strip')
 source=("PizzaOven-linux-x64.tar.gz::https://github.com/Cristiandis/PizzaOven-Avalonia/releases/download/v$pkgver/PizzaOven-linux-x64.tar.gz")
-sha256sums=('64998366c4918afb950948bc6a4e59db86390f48e269ef6e494082b6e89e4fd4')
+sha256sums=('73f452a04a90eeb5f0c45cdbcb3363ea87ca57a8eee95a6f59262ee15abd47ad')
 
 package() {
     install -Dm755 "$srcdir/PizzaOven" "$pkgdir/usr/lib/pizzaoven/PizzaOven"
