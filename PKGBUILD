@@ -1,5 +1,5 @@
 pkgname=verde-bin
-pkgver=0.1.81
+pkgver=0.1.82
 pkgrel=1
 pkgdesc='Desktop GUI for coding agents like Codex and OpenCode'
 arch=('x86_64')
@@ -51,7 +51,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '29b585d79a0e53545a2deff3678cdf3b84d3ae7e2445b42e3d90a08a6e6b8412'
+  '7f510f6c3f2fefd8802758ffb65d737aa09da929e28cf5ab380f85577b9ae820'
   '9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e'
 )
 
@@ -66,6 +66,12 @@ package() {
 #!/usr/bin/env bash
 set -euo pipefail
 exec /usr/lib/verde/verde "$@"
+EOF
+
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/verde-launch" <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+exec /usr/lib/verde/verde-launch "$@"
 EOF
 
   install -Dm644 "${release_root}/share/applications/verde.desktop" \
