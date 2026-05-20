@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=stremio-linux-shell
 pkgver=1.0.0_beta.13
-pkgrel=1
+pkgrel=2
 _cef_version=138.0.21
 _cef_full_name=cef_binary_138.0.21+g54811fe+chromium-138.0.7204.101_linux64_minimal.tar.bz2
 pkgdesc="A native Linux client for Stremio"
@@ -9,12 +9,12 @@ arch=('x86_64')
 url="https://github.com/Stremio/$pkgname"
 license=('GPL-3.0-only')
 depends=(
-    'gtk4'
-    'libadwaita'
-    'webkitgtk-6.0'
+    'gtk3'
     'mpv'
     'openssl'
     'hicolor-icon-theme'
+    'libayatana-appindicator'
+    'nodejs'
 )
 makedepends=(
     'cargo'
