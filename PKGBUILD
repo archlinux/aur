@@ -3,7 +3,7 @@
 
 _gem=glib2
 pkgname="ruby-${_gem}"
-pkgver=4.3.2
+pkgver=4.3.6
 pkgrel=1
 pkgdesc='Ruby/GLib2 is a Ruby binding of GLib-2.x.'
 arch=(x86_64 i686 armv7h aarch64)
@@ -12,7 +12,7 @@ license=(LGPL-2.1-only)
 depends=(ruby glib2 glibc)
 makedepends=(ruby-pkg-config ruby-native-package-installer)
 source=("ruby-gnome-${pkgver}.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a2b66682d55b1815710361d275603b544e207d63e5b93be8a14a239657774f01')
+sha256sums=('95cbee4e62acdc270ab6bf13a5fd2f911cf038cee12644aa62b1ffa246c05e76')
 
 build() {
   # warning when build with -D_FORTIFY_SOURCE=3 (Arch Linux default)
