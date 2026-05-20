@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=telemost
-pkgver=2.31.9.8326
+pkgver=2.32.5.8344
 pkgrel=1
 pkgdesc="Yandex video conferencing client (Wine). Camera and screen sharing may not work under Wine."
 arch=('x86_64')
