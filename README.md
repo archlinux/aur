@@ -3,7 +3,7 @@
 Arch Linux PKGBUILD that wraps [web.whatsapp.com](https://web.whatsapp.com/) into a desktop app via [nativefier](https://github.com/nativefier/nativefier) + Electron.
 
 - **AUR**: https://aur.archlinux.org/packages/whatsapp-nativefier
-- **Source mirror**: https://gitlab.com/Nowaker/aur-whatsapp-nativefier-2
+- **Source mirror**: https://gitlab.com/Nowaker/aur-whatsapp-nativefier
 
 ## History
 
@@ -36,4 +36,4 @@ yay -S whatsapp-nativefier
 
 ## Reporting issues
 
-File issues on the [GitLab mirror](https://gitlab.com/Nowaker/aur-whatsapp-nativefier-2/-/issues). The AUR page is best used for `out-of-date` flags and package-policy comments.
+File issues on the [GitLab mirror](https://gitlab.com/Nowaker/aur-whatsapp-nativefier/-/issues). The AUR page is best used for `out-of-date` flags and package-policy comments.
