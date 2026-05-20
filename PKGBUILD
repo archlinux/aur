@@ -1,14 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=dusklight
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
 license=('CC0-1.0')
 depends=('glibc' 'libgcc' 'abseil-cpp' 'libstdc++' 'sdl3' 'libjpeg-turbo' 'freetype2'
 	 'zlib' 'libpng')
-makedepends=('cmake' 'meson' 'clang' 'lld' 'vulkan-headers' 'patchelf' 'git')
+makedepends=('cmake' 'ninja' 'clang' 'lld' 'vulkan-headers' 'patchelf' 'git')
 provides=('tp-dusk')
 conflicts=('tp-dusk')
 replaces=('tp-dusk')
