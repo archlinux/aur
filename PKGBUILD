@@ -1,6 +1,6 @@
 pkgname=nusgmon-git
-pkgdesc="Record and analyze your internet usage (systemd-service)"
-depends=('python' 'python-psutil')
+pkgdesc="Record, log, and analyze your internet usage (systemd-service)"
+depends=('python' 'python-psutil' 'systemd')
 makedepends=('git')
 pkgver=80
 pkgrel=1

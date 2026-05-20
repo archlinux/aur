@@ -1,5 +1,5 @@
 pkgbase = nusgmon-git
-	pkgdesc = Record and analyze your internet usage (systemd-service)
+	pkgdesc = Record, log, and analyze your internet usage (systemd-service)
 	pkgver = 80
 	pkgrel = 1
 	url = https://github.com/LUCKYS1NGHH/nusgmon
@@ -9,6 +9,7 @@ pkgbase = nusgmon-git
 	makedepends = git
 	depends = python
 	depends = python-psutil
+	depends = systemd
 	source = git+https://github.com/LUCKYS1NGHH/nusgmon.git
 	sha256sums = SKIP
 
