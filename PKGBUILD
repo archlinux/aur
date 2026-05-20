@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 
 pkgdesc="Fork of Super Mario 64 Co-op with more features, customizability and power to the Lua API"
 
-pkgver=r4921.6092488
+pkgver=r5064.23d8a73
 pkgrel=1
 epoch=1
 
@@ -20,9 +20,8 @@ depends=(sdl2)
 makedepends=(git "python>=3.6" glew zlib curl audiofile gendesk)
 
 provides=("${_pkgname}=${pkgver}")
-#conflicts=()
 
-source=("git+https://github.com/coop-deluxe/${_pkgname}.git" "${_pkgname}.sh" "${_pkgname}.png")
+source=("git+https://github.com/coop-deluxe/${_pkgname}.git#branch=dev" "${_pkgname}.sh" "${_pkgname}.png")
 md5sums=(SKIP 314f0815dc7132df21bbd3a9d391f2be 9bec90a66559edbf42992c4985e4548a)
 
 #options=("!strip")
