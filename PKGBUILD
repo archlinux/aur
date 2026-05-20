@@ -1,7 +1,7 @@
 # Maintainer: JamesFromFL <jamesfromfl@penguinmail.com>
 
 pkgname=mykey-git
-pkgver=0.1.0.r0.g0000000
+pkgver=0.1.5.r0.g0000000
 pkgrel=1
 pkgdesc="Hardware-focused local authentication, Secret Service, and tray stack for Linux"
 arch=('x86_64')
@@ -34,9 +34,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf '0.1.0.r%s.g%s' \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 \
+    | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {

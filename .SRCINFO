@@ -1,6 +1,6 @@
 pkgbase = mykey-git
 	pkgdesc = Hardware-focused local authentication, Secret Service, and tray stack for Linux
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 0.1.5.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/JamesFromFL/mykey
 	install = mykey.install
