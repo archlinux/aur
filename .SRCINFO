@@ -1,6 +1,6 @@
 pkgbase = nvim-treesitter-parsers-main-git
 	pkgdesc = All of the registered tree sitter parsers used by Neovim; main branch of nvim-treesitter
-	pkgver = r6382.c82bf96f0
+	pkgver = r6388.4916d6592
 	pkgrel = 1
 	url = https://github.com/nvim-treesitter/nvim-treesitter
 	arch = x86_64

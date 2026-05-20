@@ -1,7 +1,7 @@
 # Maintainer: Senan Kelly <senan@senan.xyz>
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=nvim-treesitter-parsers-main-git
-pkgver=r6382.c82bf96f0
+pkgver=r6388.4916d6592
 pkgrel=1
 pkgdesc="All of the registered tree sitter parsers used by Neovim; main branch of nvim-treesitter"
 arch=(x86_64)
