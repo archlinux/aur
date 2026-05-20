@@ -3,7 +3,7 @@
 _appname=amber
 
 pkgname=${_appname}-bash-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="The programming language compiled to bash"
 
@@ -21,9 +21,9 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::https://github.com/amber-l
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::https://github.com/amber-lang/${_appname}/releases/download/${pkgver}-alpha/${_appname}-linux-gnu-${arch[1]}.tar.xz")
 
 sha256sums=('93f4c218cd385c90e7ba1c22b66d8458dd47c648b1c4ff2b2261467ce6a2572e'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('4deaaa2d63aa4addcf8514efa11446f76ac998b7ccbb290eb821966c82992729')
-sha256sums_aarch64=('c1ecad1e98404fd0e1d8817e11feeabb8cc3061d1229d5b963ba204fad3ed671')
+            'e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118')
+sha256sums_x86_64=('578d3d6335aca1bfc902477a1553561990505a8727ecd9b848af20a072867ee4')
+sha256sums_aarch64=('b5f3b46cc2f3eaabc51c136eb46d000cbcbf21b68e5efc61926c54ed509fe9ae')
 
 package() {
 	cd "${srcdir}/" || exit
