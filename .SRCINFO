@@ -1,11 +1,13 @@
 pkgbase = try-cli-bin
 	pkgdesc = A fast, interactive CLI tool for managing ephemeral development workspaces
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tobi/try-cli
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = patchelf
+	depends = glibc
 	provides = try
 	conflicts = try-cli
 	options = !strip
