@@ -1,6 +1,6 @@
 pkgbase = niri-battery-keeper-bin
 	pkgdesc = Keeps battery on a Niri laptop by reining in background apps via systemd cgroups
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/petrovichest/niri-battery-keeper
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = niri-battery-keeper-bin
 	provides = niri-battery-keeper
 	conflicts = niri-battery-keeper
 	conflicts = niri-battery-keeper-git
-	source = niri-battery-keeper-0.3.0.tar.gz::https://github.com/petrovichest/niri-battery-keeper/releases/download/v0.3.0/niri-battery-keeper-x86_64-linux.tar.gz
-	source = niri-battery-keeper.service::https://github.com/petrovichest/niri-battery-keeper/raw/v0.3.0/systemd/niri-battery-keeper.service
-	source = niri-battery-keeper.desktop::https://github.com/petrovichest/niri-battery-keeper/raw/v0.3.0/assets/niri-battery-keeper.desktop
-	source = niri-battery-keeper.svg::https://github.com/petrovichest/niri-battery-keeper/raw/v0.3.0/assets/niri-battery-keeper.svg
-	sha256sums = 17fb7ea72e3bb9dd74f58269e8e1c414652262ca20f368055fef82bf9cad6277
-	sha256sums = 225c9eaa706798836be7825e42f9b7fb64b24115282e3691c3743a2bc5b7d851
+	source = niri-battery-keeper-0.3.1.tar.gz::https://github.com/petrovichest/niri-battery-keeper/releases/download/v0.3.1/niri-battery-keeper-x86_64-linux.tar.gz
+	source = niri-battery-keeper.service::https://github.com/petrovichest/niri-battery-keeper/raw/v0.3.1/systemd/system/niri-battery-keeper.service
+	source = niri-battery-keeper.desktop::https://github.com/petrovichest/niri-battery-keeper/raw/v0.3.1/assets/niri-battery-keeper.desktop
+	source = niri-battery-keeper.svg::https://github.com/petrovichest/niri-battery-keeper/raw/v0.3.1/assets/niri-battery-keeper.svg
+	sha256sums = 7e167b74dd6105d512178c853d9ac4fa3ff3284a9edfbb7590d2ffef4c572b0f
+	sha256sums = c699085341f0b29f8165f6b6c0862de8f973043313d7f219e4c3f0e15268309c
 	sha256sums = c57c0d1b4e4d47c684f2e51ab73f5e71e5778a3a4d78fa6ad4af2f044bedf930
 	sha256sums = 80b0168f05200ec07882e0971a2983eeba882f2c8a7d41ab3d4c2b55bfbe287a
 

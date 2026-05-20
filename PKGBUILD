@@ -1,7 +1,7 @@
 # Maintainer: petrovichest <caludesaul@pm.me>
 pkgname=niri-battery-keeper-bin
 _pkgname=niri-battery-keeper
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Keeps battery on a Niri laptop by reining in background apps via systemd cgroups"
 arch=('x86_64')
@@ -18,12 +18,12 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 # package always matches the binary version.
 source=(
     "${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/niri-battery-keeper-x86_64-linux.tar.gz"
-    "${_pkgname}.service::${url}/raw/v${pkgver}/systemd/niri-battery-keeper.service"
+    "${_pkgname}.service::${url}/raw/v${pkgver}/systemd/system/niri-battery-keeper.service"
     "${_pkgname}.desktop::${url}/raw/v${pkgver}/assets/niri-battery-keeper.desktop"
     "${_pkgname}.svg::${url}/raw/v${pkgver}/assets/niri-battery-keeper.svg"
 )
 # Real sha256sums are substituted by the release CI pipeline.
-sha256sums=('17fb7ea72e3bb9dd74f58269e8e1c414652262ca20f368055fef82bf9cad6277' '225c9eaa706798836be7825e42f9b7fb64b24115282e3691c3743a2bc5b7d851' 'c57c0d1b4e4d47c684f2e51ab73f5e71e5778a3a4d78fa6ad4af2f044bedf930' '80b0168f05200ec07882e0971a2983eeba882f2c8a7d41ab3d4c2b55bfbe287a')
+sha256sums=('7e167b74dd6105d512178c853d9ac4fa3ff3284a9edfbb7590d2ffef4c572b0f' 'c699085341f0b29f8165f6b6c0862de8f973043313d7f219e4c3f0e15268309c' 'c57c0d1b4e4d47c684f2e51ab73f5e71e5778a3a4d78fa6ad4af2f044bedf930' '80b0168f05200ec07882e0971a2983eeba882f2c8a7d41ab3d4c2b55bfbe287a')
 
 package() {
     cd "${srcdir}/${_pkgname}-v${pkgver}-x86_64-linux"
