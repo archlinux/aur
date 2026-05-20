@@ -1,6 +1,6 @@
 pkgbase = sync-worktrees
 	pkgdesc = Git cli tool for managing worktrees
-	pkgver = 3.6.2
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://github.com/coderaiser/cloudcmd
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = sync-worktrees
 	makedepends = jq
 	depends = nodejs
 	provides = sync-worktrees
-	noextract = sync-worktrees-3.6.2.tgz
+	noextract = sync-worktrees-3.6.3.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = sync-worktrees-3.6.2.tgz::https://registry.npmjs.org/sync-worktrees/-/sync-worktrees-3.6.2.tgz
-	b2sums = bc4f55dec18d81f7a5a69c6a98b9ca5023d25f6085030feeeaa8caa618ba6f6614b69f63502e3ce6d120b6704b28fa734b9c21c276a121478a934335b8a8d8f7
+	source = sync-worktrees-3.6.3.tgz::https://registry.npmjs.org/sync-worktrees/-/sync-worktrees-3.6.3.tgz
+	b2sums = 3fc42387d8476268924cd4ec2d5ead9a90debfc6a4c5e13232fc1183eef1e8994dbbeb9c874e6569cc0aa3a90481296b10a0a8e048dc581810ff97570cfa96b8
 
 pkgname = sync-worktrees
