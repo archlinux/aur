@@ -1,6 +1,6 @@
 pkgbase = openwarp-bin
 	pkgdesc = OpenWarp - open-source fork of Warp, a Rust-based terminal with AI built in
-	pkgver = 2026.05.19.preview
+	pkgver = 2026.05.20.preview
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/zerx-lab/warp
@@ -26,7 +26,7 @@ pkgbase = openwarp-bin
 	conflicts = warp-terminal-oss
 	options = !strip
 	options = !debug
-	source = openwarp-bin-2026.05.19.preview.deb::https://github.com/zerx-lab/warp/releases/download/v2026.05.19.preview/warp-terminal-oss_2026.05.19.preview_amd64.deb
-	sha256sums = 1f40e9a78cfae8c729c95f03a5a82cf15ce9f8fe1d6d629c4777beacda389c44
+	source = openwarp-bin-2026.05.20.preview.deb::https://github.com/zerx-lab/warp/releases/download/v2026.05.20.preview/warp-terminal-oss_2026.05.20.preview_amd64.deb
+	sha256sums = b4dd34ee2e0685a6de3c660a5702aecbc6074650f3dcc6383b767ff176fd413c
 
 pkgname = openwarp-bin
