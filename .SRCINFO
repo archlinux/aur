@@ -1,6 +1,6 @@
 pkgbase = tpdf-bin
 	pkgdesc = A terminal PDF viewer written in Rust, with vim key-bindings and watch mode.
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://www.github.com/NiJingzhe/TermPDF
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = tpdf-bin
 	provides = tpdf
 	conflicts = tpdf
 	conflicts = tpdf-git
-	source_x86_64 = https://www.github.com/NiJingzhe/TermPDF/releases/download/v0.1.1/termpdf-0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b47feee17d896cd8ec6bda2485600ff12335e269d058202be8a5243e9716be5f
-	source_aarch64 = https://www.github.com/NiJingzhe/TermPDF/releases/download/v0.1.1/termpdf-0.1.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 689bad899aa6779686ce921eb805426d972706634fa5a315027647a9835727e2
+	source_x86_64 = https://www.github.com/NiJingzhe/TermPDF/releases/download/v0.2.0/termpdf-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 535af90ba8b3bc400b8d0a13007ccf97094b27e66271ac06e5eb3682cc17e8a9
+	source_aarch64 = https://www.github.com/NiJingzhe/TermPDF/releases/download/v0.2.0/termpdf-0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e1c1138d3b0d5c5fa13af8844b27dce1d8d3b298628aa817912e1052895d5c58
 
 pkgname = tpdf-bin
