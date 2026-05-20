@@ -1,5 +1,5 @@
 pkgbase = otpclient-git
-	pkgdesc = A simple GTK+ v3 TOTP/HOTP client
+	pkgdesc = easy-to-use GTK4 TOTP/HOTP client
 	pkgver = 5.0.4.r1.g334e5b2
 	pkgrel = 1
 	url = https://github.com/paolostivanin/OTPClient
