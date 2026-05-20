@@ -1,6 +1,6 @@
 origname='alsa-scarlett-gui'
 pkgname='alsa-scarlett-gui-git'
-pkgver=1.0beta6
+pkgver=1.0beta9
 pkgrel=1
 pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
 arch=('i686' 'x86_64')
