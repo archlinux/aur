@@ -1,6 +1,6 @@
 pkgbase = kb2xb
 	pkgdesc = Keyboard + mouse → Xbox One virtual gamepad (evdev/uinput, Wayland & X11, profile-based)
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/janyel-lima/kb2xb
 	install = kb2xb.install
@@ -13,7 +13,7 @@ pkgbase = kb2xb
 	optdepends = fish: fish shell completions
 	optdepends = zsh: zsh shell completions
 	optdepends = bash-completion: bash shell completions
-	source = kb2xb-1.0.1.tar.gz::https://github.com/janyel-lima/kb2xb/archive/v1.0.1.tar.gz
-	sha256sums = 78a3fe454ffd5695a511abd0d2a44377e80dff2927d55cb1d1b78afbf24a86e0
+	source = kb2xb-1.1.0.tar.gz::https://github.com/janyel-lima/kb2xb/archive/v1.1.0.tar.gz
+	sha256sums = 1f2a3b2b5bab6c9477abcd25c5135b85f322d0cfde94de75dc4ede539cdfeb2b
 
 pkgname = kb2xb
