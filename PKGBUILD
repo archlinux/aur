@@ -1,7 +1,7 @@
 # Maintainer: kewl fft <kewl@alto.eu.org>
 
 pkgname=cursor-appimage
-pkgver=3.4.20
+pkgver=3.5.17
 pkgrel=1
 pkgdesc="Cursor AI code editor (AppImage, extracted)"
 arch=('x86_64')
@@ -13,13 +13,13 @@ _watch=(
   'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/3.5' 'header' 'regex' 'Cursor-([0-9.]+)-x86_64.AppImage' 'pkgver'
   'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/3.5' 'header' 'regex' 'location:.*production/([a-f0-9]+)/' '_commit'
 )
-_commit="0cf8b06883f54e26bb4f0fb8647c9500ccb4331f"
+_commit="d5b2fc092e16007956c9e5047f76097b9e626cab"
 
 source=(
   "Cursor-${pkgver}.AppImage::https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage"
 )
 
-sha512sums=('b1a63774b6f0768dbd0a7978a4dd4a3fb7bfb71de0eb68e52ca564cffc4999c8a3ddfa23d588f77dbd0f278a44d3e12f05821cd059668a15bdf3fd38b82fe4b0')
+sha512sums=('da2e01e43d7ef49e4f5ee906597fa2d877bde9e9d793a8fe46e96893da557399d8a1f9d4c907c5b99beed7e558c81c813de42f2c587399dd21688f8703952a14')
 
 prepare() {
   cd "${srcdir}"
