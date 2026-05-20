@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+exec /usr/bin/python /usr/share/gnome-theme-manager/gnome-theme-manager.py "$@"
