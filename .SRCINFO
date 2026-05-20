@@ -15,6 +15,6 @@ pkgbase = podctl-bin
 	conflicts = podctl-git
 	options = !strip
 	source = podctl-0.1.0-x86_64-linux-musl.tar.gz::https://github.com/Rockykln/podctl/releases/download/v0.1.0/podctl-0.1.0-x86_64-linux-musl.tar.gz
-	sha256sums = b64a5ad9c0fb2f5dd3df1d40eae9d10c05bd9399ba853de3cebe270dc93cccc5
+	sha256sums = 9fe9b6e10f0cc382bdfd7c8522fceb04787e7b16df19305cb51b642b56e99eca
 
 pkgname = podctl-bin

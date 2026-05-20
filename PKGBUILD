@@ -15,7 +15,7 @@ optdepends=(
 provides=('podctl')
 conflicts=('podctl' 'podctl-git')
 source=("${_pkgname}-${pkgver}-x86_64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-x86_64-linux-musl.tar.gz")
-sha256sums=('b64a5ad9c0fb2f5dd3df1d40eae9d10c05bd9399ba853de3cebe270dc93cccc5')
+sha256sums=('9fe9b6e10f0cc382bdfd7c8522fceb04787e7b16df19305cb51b642b56e99eca')
 options=('!strip')   # musl-static binary, already stripped by release workflow
 
 package() {
