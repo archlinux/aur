@@ -3,7 +3,7 @@
 pkgname=echoroutine
 _pkgrepo=EchoRoutine
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered daily routine voice assistant — schedule blocks announced via ElevenLabs TTS"
 arch=('x86_64')
 url="https://github.com/kurojs/EchoRoutine"

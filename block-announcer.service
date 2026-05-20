@@ -1,0 +1,6 @@
+[Unit]
+Description=Schedule Announcer — AI voice + desktop notifications at schedule block changes
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/block-announcer
