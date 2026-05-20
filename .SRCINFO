@@ -1,6 +1,6 @@
 pkgbase = securepasswd_mgmt
 	pkgdesc = A secure, cross-platform password manager with TOTP support
-	pkgver = 2026.03.19
+	pkgver = 2026.05.16
 	pkgrel = 1
 	url = https://github.com/fam007e/SecurePasswd_MGMT
 	install = securepasswd_mgmt.install
@@ -18,7 +18,7 @@ pkgbase = securepasswd_mgmt
 	depends = cmocka
 	depends = pcre2
 	depends = libcsv
-	source = securepasswd_mgmt-2026.03.19.tar.gz::https://github.com/fam007e/SecurePasswd_MGMT/archive/refs/tags/v2026.03.19.tar.gz
-	sha256sums = 50addb54a073de1f58954fc5b9b66d7f6f77d39772b57d604ef0e4185cb714f7
+	source = securepasswd_mgmt-2026.05.16.tar.gz::https://github.com/fam007e/SecurePasswd_MGMT/archive/refs/tags/v2026.05.16.tar.gz
+	sha256sums = effb4a3f15d4752022bf1ba2655a511c647c5d16a59b652db8c30c589bb6ac5b
 
 pkgname = securepasswd_mgmt
