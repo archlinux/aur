@@ -1,6 +1,6 @@
 # Maintainer: 123llyrr
 pkgname=plank-wayland-git
-pkgver=r4.43b3a52
+pkgver=r5.9c03302
 pkgrel=1
 pkgdesc="Plank-like Wayland dock and launcher powered by Quickshell"
 arch=('any')
