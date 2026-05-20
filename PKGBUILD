@@ -1,5 +1,5 @@
 pkgname=openwhispr-vulkan
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Voice-to-text dictation app with local Whisper/Parakeet and cloud models (Vulkan GPU acceleration)"
 arch=('x86_64')
@@ -43,7 +43,7 @@ source=(
   "https://github.com/OpenWhispr/openwhispr/releases/download/v${pkgver}/OpenWhispr-${pkgver}-linux-x64.tar.gz"
   "whisper.cpp-${_whisper_cpp_ver}.tar.gz::https://github.com/OpenWhispr/whisper.cpp/archive/refs/tags/${_whisper_cpp_ver}.tar.gz"
 )
-sha256sums=('fa9fc4efaed008a38c6afa80ddc473e66f3fdc1bd3c85fa6a10523ee9f7a6cbf'
+sha256sums=('533f3fe5e4b1d0056be44a69c59b35d4243fcd59bd8bba5d9eb84831fa339bee'
             '887ffffbbeb7c014dfb004886f7ae5ab7485abe45dabf97777a57fa909714bb2')
 # ^ Placeholders: the CI workflow replaces these with real SHA-256 sums
 #   via `updpkgsums` every time either version is bumped.
