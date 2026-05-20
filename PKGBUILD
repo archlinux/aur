@@ -1,7 +1,7 @@
 # Maintainer: Ariejan de Vroom <ariejan.de.vroom@kabisa.nl>
 pkgname=slopsmith-desktop-bin
 _pkgname=slopsmith-desktop
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Slopsmith desktop app with integrated audio engine, VST hosting, and amp modeling"
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('1241ddc4159e0b9dc016f3398c11c6b6aba230f1d2779b6e38d5381160a16957')
+sha256sums=('af2cee489e6ed0105eff7ce412eb4d755299c0d218f15bbeb4af920f3783e054')
 noextract=("${_pkgname}-${pkgver}.deb")
 
 package() {

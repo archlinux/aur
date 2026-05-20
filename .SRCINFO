@@ -1,6 +1,6 @@
 pkgbase = slopsmith-desktop-bin
 	pkgdesc = Slopsmith desktop app with integrated audio engine, VST hosting, and amp modeling
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/byrongamatos/slopsmith-desktop
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = slopsmith-desktop-bin
 	optdepends = jack2: low-latency audio I/O
 	provides = slopsmith-desktop
 	conflicts = slopsmith-desktop
-	noextract = slopsmith-desktop-0.2.7.deb
+	noextract = slopsmith-desktop-0.2.8.deb
 	options = !strip
 	options = !debug
-	source = slopsmith-desktop-0.2.7.deb::https://github.com/byrongamatos/slopsmith-desktop/releases/download/v0.2.7/slopsmith-desktop_0.2.7_amd64.deb
-	sha256sums = 1241ddc4159e0b9dc016f3398c11c6b6aba230f1d2779b6e38d5381160a16957
+	source = slopsmith-desktop-0.2.8.deb::https://github.com/byrongamatos/slopsmith-desktop/releases/download/v0.2.8/slopsmith-desktop_0.2.8_amd64.deb
+	sha256sums = af2cee489e6ed0105eff7ce412eb4d755299c0d218f15bbeb4af920f3783e054
 
 pkgname = slopsmith-desktop-bin
