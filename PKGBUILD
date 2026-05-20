@@ -4,7 +4,7 @@
 
 pkgname=bsc
 pkgver=2026.01
-pkgrel=1
+pkgrel=2
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
