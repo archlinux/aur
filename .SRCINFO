@@ -1,7 +1,7 @@
 pkgbase = ticker-bin
 	pkgdesc = Terminal stock ticker with live updates and position tracking
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/achannarasappa/ticker
 	arch = x86_64
 	arch = armv6h
