@@ -31,6 +31,7 @@ prepare() {
 
     ./configure --prefix="/usr"
 }
+
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}" || exit
 
