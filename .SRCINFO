@@ -2,7 +2,7 @@ pkgbase = nordix-cli-arch
 	pkgdesc = Nordix CLI tools - for managing an arch linux system from maintenance to troubleshooting
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/jimmykallhagen/zfs-destroy-snapshots
+	url = https://github.com/jimmykallhagen/nordix-cli-arch.git
 	arch = x86_64
 	arch = aarch64
 	license = GPL v3 or later
@@ -11,7 +11,7 @@ pkgbase = nordix-cli-arch
 	depends = base-devel
 	provides = nordix-cli-arch
 	conflicts = Microsoft-Windows
-	source = nordix-cli-arch::git+https://github.com/jimmykallhagen/zfs-destroy-snapshots
+	source = nordix-cli-arch::git+https://github.com/jimmykallhagen/nordix-cli-arch.git
 	sha256sums = SKIP
 
 pkgname = nordix-cli-arch
