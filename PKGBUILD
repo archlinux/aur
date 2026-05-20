@@ -3,7 +3,7 @@
 
 pkgname=python-stdlib-list
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A list of Python Standard Libraries'
 arch=('any')
 url='https://github.com/pypi/stdlib-list'
@@ -18,6 +18,12 @@ makedepends=(
 checkdepends=('python-pytest')
 source=("$pkgname::git+$url#commit=v$pkgver")
 b2sums=('c017ad0067d39415551fb9ae6020965c07136faa0219dcd2880cdc6aecb58ff9191383902973c758b6e134606fb51a64c0ec35f3d8581e4cad4b14f0df95a9a2')
+
+prepare() {
+  cd "$pkgname"
+  # ignore restricted flit-core version
+  sed -i 's/,<4//' pyproject.toml
+}
 
 build() {
   cd "$pkgname"
