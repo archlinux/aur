@@ -1,24 +1,15 @@
 pkgbase = rstudio-desktop-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary from RStudio official repository)
 	pkgver = 2026.04.0.526
-	pkgrel = 1
-	url = http://www.rstudio.org/
-	install = rstudio-desktop-bin.install
+	pkgrel = 2
+	url = https://posit.co/products/open-source/rstudio/
 	arch = x86_64
-	license = GPL
+	license = AGPL
 	depends = r>=3.3.0
-	depends = hicolor-icon-theme
-	depends = shared-mime-info
-	depends = openssl
-	depends = openssl-1.1
-	depends = nss
-	depends = at-spi2-core
-	depends = gtk3
-	depends = alsa-lib
-	depends = libedit
-	depends = postgresql-libs
 	depends = sqlite
-	optdepends = clang: C/C++ and Rcpp support
+	depends = libxkbcommon
+	optdepends = clang: C/C++ and Rcpp code completion
+	optdepends = ttf-dejavu: fallback font support
 	provides = rstudio-desktop=2026.04.0.526
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
