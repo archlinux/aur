@@ -1,10 +1,10 @@
 # Maintainer: Amirul Fitri <tounghacker@gmail.com>
 
 # maintainer's variables
-_commit=06bee5321cecd9a9ffaceb164b5adb2ffafae781
+_commit=b07a5c8187bc3e6f1461efab89fe07f467e300db
 
 pkgname=frozen
-pkgver=1.2.0
+pkgver=1.2.0+16+gb07a5c8
 pkgrel=1
 pkgdesc="A header-only, constexpr alternative to gperf for C++14 users"
 arch=('any')
