@@ -1,3 +1,24 @@
 pre_remove() {
-  rm -f /etc/pacman.d/hooks/95-bootrecov-pre-transaction.hook
+  : "${BOOTRECOV_PACMAN_HOOK_PATH:=/etc/pacman.d/hooks/95-bootrecov-pre-transaction.hook}"
+  : "${BOOTRECOV_PACMAN_POST_HOOK_PATH:=/etc/pacman.d/hooks/96-bootrecov-post-transaction.hook}"
+  : "${BOOTRECOV_MKINITCPIO_INSTALL_HOOK:=/usr/lib/initcpio/install/bootrecov}"
+  : "${BOOTRECOV_MKINITCPIO_RUNTIME_HOOK:=/usr/lib/initcpio/hooks/bootrecov}"
+  : "${BOOTRECOV_MKINITCPIO_CONF:=/etc/mkinitcpio.conf}"
+
+  rm -f "$BOOTRECOV_PACMAN_HOOK_PATH"
+  rm -f "$BOOTRECOV_PACMAN_POST_HOOK_PATH"
+  rm -f "$BOOTRECOV_MKINITCPIO_INSTALL_HOOK"
+  rm -f "$BOOTRECOV_MKINITCPIO_RUNTIME_HOOK"
+
+  if [ -f "$BOOTRECOV_MKINITCPIO_CONF" ] && grep -Eq '^[[:space:]]*HOOKS=.*(^|[[:space:](])bootrecov([[:space:])]|$)' "$BOOTRECOV_MKINITCPIO_CONF"; then
+    cp -p "$BOOTRECOV_MKINITCPIO_CONF" "$BOOTRECOV_MKINITCPIO_CONF.bootrecov-remove-$(date -u +%Y%m%d-%H%M%S)" 2>/dev/null || true
+    sed -i -E '/^[[:space:]]*HOOKS=/ {
+      s/[[:space:]]+bootrecov([[:space:]]|[)])/\1/g
+      s/\(bootrecov[[:space:]]+/(/g
+      s/\(bootrecov\)/()/g
+    }' "$BOOTRECOV_MKINITCPIO_CONF"
+    if command -v mkinitcpio >/dev/null 2>&1; then
+      mkinitcpio -P || echo "bootrecov warning: mkinitcpio -P failed while removing bootrecov hook" >&2
+    fi
+  fi
 }
