@@ -1,5 +1,5 @@
 pkgname=legion-gui
-pkgver=0.5.2.r0.4a3231e
+pkgver=0.7.0.r0.c4a3604
 pkgrel=5
 pkgdesc="Legion GUI (Sparta successor), ported from Kali Linux for Arch Linux"
 arch=("any")
@@ -26,52 +26,44 @@ prepare() {
   sed -i "s|smtp-user-enum -M|smtp-user-enum.pl -M|" legion.conf
   grep -q '^nikto="http,https,ssl,soap,http-proxy,http-alt,https-alt", tcp$' legion.conf || sed -i '/^screenshooter="http,https,ssl,http-proxy,http-alt,https-alt", tcp$/a nikto="http,https,ssl,soap,http-proxy,http-alt,https-alt", tcp' legion.conf
 
-  python - <<'PY'
+  python - <<'PYSHODAN'
 from pathlib import Path
 
 p = Path("scripts/python/pyShodan.py")
 s = p.read_text()
 s = s.replace(
-    """from pyShodan import PyShodan
-""",
-    """try:
-    from pyShodan import PyShodan
-except ImportError:
-    PyShodan = None
-""",
+    "from pyShodan import PyShodan\n",
+    "try:\n    from pyShodan import PyShodan\nexcept ImportError:\n    PyShodan = None\n",
     1,
 )
 s = s.replace(
-    """        try:
-            pyShodanObj = PyShodan()
-""",
-    """        try:
-            if PyShodan is None:
-                print("pyShodan module not installed.")
-                return {}
-            pyShodanObj = PyShodan()
-""",
+    "        try:\n            pyShodanObj = PyShodan()\n",
+    "        try:\n            if PyShodan is None:\n                print(\"pyShodan module not installed.\")\n                return {}\n            pyShodanObj = PyShodan()\n",
     1,
 )
 p.write_text(s)
-PY
+PYSHODAN
 
-  python - <<'PY'
+  python - <<'PSCREEN'
 from pathlib import Path
 
 p = Path("app/Screenshooter.py")
 s = p.read_text()
 
-old = """        if isKali():
+old = '''        # Use eyewitness under Kali.
+        # Use webdriver if not Kali.
+        # Once eyewitness is more broadly available, the counter case can be eliminated.
+        if isKali():
             eyewitness_path = "/usr/bin/eyewitness"
         else:
             eyewitness_path = "/usr/local/bin/eyewitness"
-"""
-new = """        if os.path.isfile("/usr/bin/eyewitness"):
+'''
+new = '''        # Prefer packaged EyeWitness path on Arch/Linux, fall back to legacy path.
+        if os.path.isfile("/usr/bin/eyewitness"):
             eyewitness_path = "/usr/bin/eyewitness"
         else:
             eyewitness_path = "/usr/local/bin/eyewitness"
-"""
+'''
 if old in s:
     s = s.replace(old, new, 1)
 
@@ -81,7 +73,7 @@ if legacy_err in s:
     s = s.replace(legacy_err, new_err, 1)
 
 p.write_text(s)
-PY
+PSCREEN
 }
 
 build() {
@@ -99,7 +91,9 @@ package() {
   install -m644 CHANGELOG.txt "$pkgdir/usr/share/legion/CHANGELOG.txt"
   install -m644 LICENSE "$pkgdir/usr/share/legion/LICENSE"
   install -m644 legion.py "$pkgdir/usr/share/legion/legion.py"
-  install -m644 nmap.xsl "$pkgdir/usr/share/legion/nmap.xsl"
+  if test -f nmap.xsl; then
+    install -m644 nmap.xsl "$pkgdir/usr/share/legion/nmap.xsl"
+  fi
 
   install -Dm644 legion.conf "$pkgdir/etc/legion.conf"
   ln -sf /etc/legion.conf "$pkgdir/usr/share/legion/legion.conf"
