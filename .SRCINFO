@@ -1,0 +1,19 @@
+pkgbase = yuri
+	pkgdesc = yuri straight in your terminal
+	pkgver = 0.1.0.r0.geda526c
+	pkgrel = 1
+	url = https://github.com/vlensys/yuri
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	optdepends = mpv: anime playback
+	optdepends = kitty: manga and novel rendering
+	optdepends = foot: manga and novel rendering
+	provides = yuri
+	conflicts = yuri
+	source = git+https://github.com/vlensys/yuri.git
+	sha256sums = SKIP
+
+pkgname = yuri
