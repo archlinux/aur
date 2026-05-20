@@ -1,7 +1,7 @@
 pkgbase = python-hyprland-state
 	pkgdesc = Live state interface for Hyprland — options, animations, monitors, binds, and devices
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/BlueManCZ/hyprland-state
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-hyprland-state
 	makedepends = python-hatchling
 	depends = python
 	depends = hyprland
-	source = python-hyprland-state-0.2.1.tar.gz::https://github.com/BlueManCZ/hyprland-state/archive/v0.2.1.tar.gz
-	sha256sums = 27e134c54ce0d7569ba3d22e053d8a0e495b97edfa96bed6c9e6b858bad35b4b
+	source = python-hyprland-state-0.4.1.tar.gz::https://github.com/BlueManCZ/hyprland-state/archive/v0.4.1.tar.gz
+	sha256sums = a045859ebac047488881cb1261bf3426336b77f7f72d6e6c2ecdd4098dd3b46b
 
 pkgname = python-hyprland-state
