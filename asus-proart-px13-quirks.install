@@ -4,28 +4,20 @@ post_install() {
 
 ==> asus-proart-px13-quirks installed.
 
-Audio (TAS2783) -- manual steps still required:
+Audio (TAS2783):
 
-  1. Download the SmartAMP installer from ASUS (license unclear, so the
-     package ships only an extractor, not the blobs themselves):
-       https://www.asus.com/laptops/for-creators/proart/proart-px13-hn7306/helpdesk_download
-     Driver & Tools -> Windows 11 64-bit -> "TI Smart Amplifier Driver for
-     Speakers" (file name: SmartAMP_TI_DCH_TexasInstruments_Z_V6.3.1.15_47519.exe).
+  1. This package installs the ASUS SmartAMP firmware blobs under
+     /usr/lib/firmware.
 
-  2. Extract and install the firmware (verifies SHA-256, deploys to
-     /lib/firmware/):
-       sudo /usr/share/asus-proart-px13-quirks/extract-firmware.sh \
-           ~/Downloads/SmartAMP_TI_DCH_TexasInstruments_Z_V6.3.1.15_47519.exe
-
-  3. The linux-cachyos-px13 kernel already ships the 16 TAS2783 codec patches
+  2. The linux-cachyos-px13 kernel already ships the 16 TAS2783 codec patches
      from https://github.com/CachyOS/linux-cachyos/issues/737 plus the
      ACP-layer PX13 patches. Verify after reboot:
        amixer -c1 contents | grep -E 'Speaker Playback|Channel Playback'
 
-  4. Restart the audio stack:
+  3. Restart the audio stack:
        systemctl --user restart pipewire pipewire-pulse wireplumber
 
-  5. Switch the card profile to HiFi and assign channels:
+  4. Switch the card profile to HiFi and assign channels:
        pactl set-card-profile alsa_card.pci-0000_c4_00.5-platform-amd_sdw HiFi
        amixer -c1 cset name='tas2783-1 Channel Playback' Left
        amixer -c1 cset name='tas2783-2 Channel Playback' Right

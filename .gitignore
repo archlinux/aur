@@ -2,3 +2,4 @@ pkg/
 src/
 *.pkg.tar.zst
 *.pkg.tar.xz
+SmartAMP_TI_DCH_TexasInstruments_Z_V*.exe
