@@ -1,6 +1,6 @@
 pkgbase = ruby-gstreamer
 	pkgdesc = Ruby/GStreamer is a Ruby binding for GStreamer.
-	pkgver = 4.3.2
+	pkgver = 4.3.6
 	pkgrel = 1
 	url = https://github.com/ruby-gnome/ruby-gnome
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ruby-gstreamer
 	depends = ruby-glib2
 	depends = glibc
 	depends = glib2
-	source = ruby-gnome-4.3.2.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/4.3.2.tar.gz
-	sha256sums = a2b66682d55b1815710361d275603b544e207d63e5b93be8a14a239657774f01
+	source = ruby-gnome-4.3.6.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/4.3.6.tar.gz
+	sha256sums = 95cbee4e62acdc270ab6bf13a5fd2f911cf038cee12644aa62b1ffa246c05e76
 
 pkgname = ruby-gstreamer
