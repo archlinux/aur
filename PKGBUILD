@@ -2,7 +2,7 @@
 
 pkgname=termilyon
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4+VTE tabbed terminal emulator"
 arch=('x86_64')
 url="https://github.com/alikaya/termilyon"
@@ -14,12 +14,12 @@ sha256sums=('470f3e7cb7f079fe9e4635b40d6d9f708e69d811fd130bfb4b83967ac8a7a89c')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked
+  cargo fetch
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
