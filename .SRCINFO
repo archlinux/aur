@@ -1,12 +1,12 @@
 pkgbase = socialstreamninja-bin
 	pkgdesc = A complete chat ecosystem across social media platforms
-	pkgver = 0.3.98
+	pkgver = 0.3.113
 	pkgrel = 1
 	url = https://github.com/steveseguin/social_stream
 	arch = x86_64
 	license = GPL-3.0
 	options = !strip
-	source = https://github.com/steveseguin/social_stream/releases/download/0.3.98/socialstreamninja_linux_v0.3.98_x86_64.AppImage
-	sha256sums = 915688eeb11cdeea266f1b2a53c6044f36ecb822cd8461746f5819bd41e9de1a
+	source = https://github.com/steveseguin/social_stream/releases/download/v0.3.113/socialstreamninja_linux_v0.3.113_x86_64.AppImage
+	sha256sums = 28afe38913bb22ce1ba3be6c23ec61d05f2af1693c7e3b09f0cf705d62b870c6
 
 pkgname = socialstreamninja-bin
