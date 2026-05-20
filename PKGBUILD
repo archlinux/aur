@@ -6,7 +6,7 @@ _pkgname=ggc
 pkgname=${_pkgname}
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
 
-pkgver=8.5.3
+pkgver=8.6.2
 pkgrel=1
 _ghversion=v${pkgver}
 
@@ -23,7 +23,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}"{-bin,-git})
 
 source=("${_pkgname}-${pkgver}.tgz::${url}/archive/${_ghversion}.tar.gz")
-sha256sums=('3abebc41588308973a0e4d488b27bade3d1f63f239c928aaed9529074ccb4ca9')
+sha256sums=('71b5dd209ce945bbff2e9a221023f52b8de9190add9915c1be34626b53c360d0')
 
 
 prepare() {
