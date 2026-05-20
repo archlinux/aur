@@ -16,7 +16,7 @@ checkdepends=('dejagnu' 'iverilog' 'pkg-config' 'systemc' 'tcsh' 'time')
 optdepends=('tcl: bluesim and bluetcl')
 source=("bsc-${pkgver}::https://github.com/B-Lang-org/bsc/archive/refs/tags/${pkgver}.tar.gz"
         "https://github.com/B-Lang-org/bsc/releases/download/${pkgver}/yices-src-for-bsc-${pkgver}.tar.gz")
-sha256sums=('93758334747b2412b90e70cf0f4292976938545e2c30de01b0760d5088545fa7'
+sha256sums=('f9204b7d6efd6ac2b2c1b42c80b01d179319ac33575d258719eaf73be44d4ec5'
             'a5114c8f1e04a75a06598ac9763922f9186554b6f1326c1454b2e06deafd5575')
 _prefix="/opt/bsc"
 

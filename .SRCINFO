@@ -25,7 +25,7 @@ pkgbase = bsc
 	optdepends = tcl: bluesim and bluetcl
 	source = bsc-2026.01::https://github.com/B-Lang-org/bsc/archive/refs/tags/2026.01.tar.gz
 	source = https://github.com/B-Lang-org/bsc/releases/download/2026.01/yices-src-for-bsc-2026.01.tar.gz
-	sha256sums = 93758334747b2412b90e70cf0f4292976938545e2c30de01b0760d5088545fa7
+	sha256sums = f9204b7d6efd6ac2b2c1b42c80b01d179319ac33575d258719eaf73be44d4ec5
 	sha256sums = a5114c8f1e04a75a06598ac9763922f9186554b6f1326c1454b2e06deafd5575
 
 pkgname = bsc
