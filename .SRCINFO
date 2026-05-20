@@ -1,0 +1,27 @@
+pkgbase = wayland-power-manager-git
+	pkgdesc = GTK3 power manager frontend for labwc using swayidle/logind
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 97
+	url = https://github.com/REPLACE_ME/wayland-power-manager
+	install = wayland-power-manager.install
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gettext
+	depends = gtk3
+	depends = glib2
+	depends = systemd
+	depends = swayidle
+	depends = swaylock
+	optdepends = upower: preferred battery/AC detection source and battery events
+	optdepends = libnotify: desktop notifications for critical battery alerts
+	optdepends = wlopm: DPMS off/on control under labwc without swaymsg
+	optdepends = batticonplus-ayatana: tray battery monitor integration
+	provides = wayland-power-manager
+	conflicts = wayland-power-manager
+	source = git+https://github.com/sfs-pra/wayland-power-manager.git
+	sha256sums = SKIP
+
+pkgname = wayland-power-manager-git

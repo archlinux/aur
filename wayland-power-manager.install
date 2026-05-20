@@ -1,0 +1,8 @@
+post_install() {
+  systemctl --global daemon-reload >/dev/null 2>&1 || true
+  systemctl --global preset wayland-powerd.service swayidle.service >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+  post_install
+}
