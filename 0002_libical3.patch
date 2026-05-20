@@ -1,0 +1,38 @@
+--- a/pg-gvm-22.6.17/include/ical_utils.h
++++ b/pg-gvm-22.6.17/include/ical_utils.h
+@@ -24,7 +24,7 @@
+ #ifndef _GVMD_MANAGE_UTILS_X_H
+ #define _GVMD_MANAGE_UTILS_X_H
+ 
+-#include <libical/ical.h>
++#include <libical3/libical/ical.h>
+ #include <time.h>
+ 
+ icaltimezone *
+
+--- a/pg-gvm-22.6.17/CMakeLists.txt
++++ b/pg-gvm-22.6.17/CMakeLists.txt
+@@ -122,6 +122,13 @@
+   OUTPUT_STRIP_TRAILING_WHITESPACE
+ )
+ 
++# Retrieve libical3 library directories
++execute_process(
++  COMMAND ${PGCONFIG} --libs
++  OUTPUT_VARIABLE LIBICAL3_ACTUAL_LIBRARIES
++  OUTPUT_STRIP_TRAILING_WHITESPACE
++)
++
+ find_package(PostgreSQL REQUIRED)
+ if(NOT PostgreSQL_FOUND)
+   message(SEND_ERROR "The PostgreSQL library is required.")
+@@ -151,7 +158,7 @@
+   ${LIBGVM_BASE_INCLUDE_DIRS}
+ )
+ include_directories("include")
+-link_libraries(${LIBICAL_LIBRARIES} ${LIBGVM_BASE_LDFLAGS})
++link_libraries(${LIBICAL3_ACTUAL_LIBRARIES} ${LIBGVM_BASE_LDFLAGS})
+ set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--as-needed")
+ # Set control file for postgres extension definition
+ set(CONTROLIN "control.in")
+

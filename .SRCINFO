@@ -1,7 +1,7 @@
 pkgbase = pg-gvm
 	pkgdesc = Greenbone Library for helper functions in PostgreSQL
 	pkgver = 22.6.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/pg-gvm
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -12,14 +12,16 @@ pkgbase = pg-gvm
 	makedepends = libxslt
 	depends = gvm-libs
 	depends = glib2
-	depends = libical
+	depends = libical3
 	depends = postgresql
 	source = pg-gvm-22.6.17.tar.gz::https://github.com/greenbone/pg-gvm/archive/v22.6.17.tar.gz
 	source = pg-gvm-22.6.17.tar.gz.asc::https://github.com/greenbone/pg-gvm/releases/download/v22.6.17/pg-gvm-22.6.17.tar.gz.asc
 	source = 0001_not-sbin.patch
+	source = 0002_libical3.patch
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
 	sha512sums = 2ee7c0a964b96b71302cc1f9a93a0ff8a7d88c87e202801f57dd0475b38e6696e1ae897f1a2e59ae2674b4a821695b04a5dd3a1434168cf16b43460aec647fdc
 	sha512sums = SKIP
 	sha512sums = 724ad7720f6ce75747b26478e27fad18b678af6361b4c1a5fe5bb6563265d7db78761b74995c04ea57ad78fb9fd0408d237440f04958bebc03bd6cddb2432481
+	sha512sums = eadcff083bb237f254191e9fe7240be90c92c4bbedcb1853290e8fa6c45b562b05b520429bfd0827515389a5cda7ab4bdbcec1d433a7ed81ab6926f82c80581d
 
 pkgname = pg-gvm
