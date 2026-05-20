@@ -1,0 +1,13 @@
+pkgbase = pass-systemd-cred-server
+	pkgdesc = systemd credential server backed by zx2c4's pass
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mnussbaum/pass-systemd-cred-server
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = pass
+	source = pass-systemd-cred-server-0.1.0.tar.gz::https://github.com/mnussbaum/pass-systemd-cred-server/archive/v0.1.0.tar.gz
+	b2sums = 778e4267e11706e0af23c5a5f5a7558e0b093756903292f74ff94358523b3af77ca18b554e09d769d3187784691485c950f275d736d9cd08306a3ef1a1e57cee
+
+pkgname = pass-systemd-cred-server
