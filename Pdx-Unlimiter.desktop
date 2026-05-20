@@ -7,5 +7,5 @@ Exec=/opt/pdx-unlimiter/bin/pdx-unlimiter %U
 Path=/opt/pdx-unlimiter
 Icon=pdx-unlimiter
 Terminal=false
-Categories=Utility;Development;
+Categories=Utility;Game;
 StartupNotify=true
