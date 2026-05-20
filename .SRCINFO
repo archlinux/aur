@@ -1,0 +1,23 @@
+pkgbase = lsport
+	pkgdesc = A fast and elegant command-line utility for inspecting and managing TCP ports on macOS and Linux
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/0xBroom/lsport
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-rich
+	depends = python-psutil
+	depends = python-typer
+	provides = lsport
+	conflicts = python-lsport
+	replaces = python-lsport
+	source = https://files.pythonhosted.org/packages/source/l/lsport/lsport-0.3.1.tar.gz
+	sha256sums = 4c7e810549c0ff92f19f1e5fc511435452585858161c383f0e6efc7e0d98757f
+
+pkgname = lsport
