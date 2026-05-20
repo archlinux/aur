@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("sponsor-free=${pkgver}")
 conflicts=('sponsor-free')
 
-depends=('perl>=5.36.0' 'ffmpeg' 'perl-uri' 'perl-io-socket-ssl')
+depends=('perl>=5.36.0' 'ffmpeg' 'perl-uri' 'perl-io-socket-ssl' 'perl-image-exiftool')
 optdepends=()
 
 source=("git+https://github.com/trizen/${_pkgname}.git")
