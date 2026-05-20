@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 _pkgname=danmu2ass
 pkgname=$_pkgname-git
-pkgver=1.0.1.r2.16ae89f
+pkgver=1.0.2.r0.g3b8046d
 pkgrel=1
 pkgdesc='Convert danmuku of Bilibili to ass subtitle file'
 url='https://github.com/gwy15/danmu2ass'
@@ -18,16 +18,15 @@ options=(!lto)
 
 pkgver() {
     cd "$_pkgname"
-
-    printf '%s' "$(git describe --long --tags | sed 's/^v//; s/\([^-]*-\)g/r\1/; s/-/./g')"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "$_pkgname"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo update --precise 0.3.35 time@0.3.30
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo update --workspace --offline
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
