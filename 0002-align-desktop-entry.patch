@@ -1,14 +1,6 @@
-# Maintainer: Sam Sinclair <sam at playleft dot com>
-# Contributor: Pujan Modha <pujan.pm@hotmail.com>
-# Contributor: init_harsh
-# /*
-#  * SPDX-FileCopyrightText: 2025 Arch Linux Contributors
-#  *
-#  * SPDX-License-Identifier: 0BSD
-#  */
-From fdfe0739e3b136d9fd3048934edd030a1b88e41d Mon Sep 17 00:00:00 2001
-From: Sam Sinclair <sam@playleft.com>
-Date: Tue, 20 Jan 2026 11:14:31 +1100
+From 29a512e0e19c4fc3b4c1575109a33ab3026d8ba1 Mon Sep 17 00:00:00 2001
+From: Sam Smith <sam@playleft.com>
+Date: Thu, 21 May 2026 08:13:09 +1000
 Subject: [PATCH] align .desktop with wrapper
 
 ---
@@ -16,7 +8,7 @@ Subject: [PATCH] align .desktop with wrapper
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/helium.desktop b/helium.desktop
-index 5c242d4..f602605 100644
+index 08a2cb4..58b24ba 100644
 --- a/helium.desktop
 +++ b/helium.desktop
 @@ -1,6 +1,6 @@
@@ -27,21 +19,20 @@ index 5c242d4..f602605 100644
  
  # For future reference, these translations are available in the Chromium
  # tree at chrome/installer/linux/common/desktop.template.
-@@ -111,11 +111,11 @@ Comment[zh_CN]=访问互联网
+@@ -111,10 +111,10 @@ Comment[zh_CN]=访问互联网
  Comment[zh_HK]=連線到網際網路
  Comment[zh_TW]=連線到網際網路
  
 -Exec=helium %U
 +Exec=helium-browser %U
  StartupNotify=true
- StartupWMClass=helium
  Terminal=false
 -Icon=helium
 +Icon=helium-browser
  Type=Application
  Categories=Network;WebBrowser;
  MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;
-@@ -173,7 +173,7 @@ Name[uk]=Нове вікно
+@@ -172,7 +172,7 @@ Name[uk]=Нове вікно
  Name[vi]=Cửa sổ Mới
  Name[zh_CN]=新建窗口
  Name[zh_TW]=開新視窗
@@ -50,12 +41,12 @@ index 5c242d4..f602605 100644
  
  [Desktop Action new-private-window]
  Name=New Incognito Window
-@@ -225,4 +225,4 @@ Name[uk]=Нове вікно в режимі анонімного перегля
+@@ -224,4 +224,4 @@ Name[uk]=Нове вікно в режимі анонімного перегля
  Name[vi]=Cửa sổ ẩn danh mới
  Name[zh_CN]=新建隐身窗口
  Name[zh_TW]=新增無痕式視窗
 -Exec=helium --incognito
 +Exec=helium-browser --incognito
 -- 
-2.52.0
+2.54.0
 
