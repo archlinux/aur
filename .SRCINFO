@@ -1,0 +1,14 @@
+pkgbase = gtfsclean-bin
+	pkgdesc = A tool for checking, sanitizing and minimizing GTFS feeds.
+	pkgver = snapshot_5
+	pkgrel = 1
+	url = https://github.com/public-transport/gtfsclean
+	arch = x86_64
+	license = GPL-2.0-only
+	provides = gtfsclean
+	conflicts = gtfsclean
+	noextract = gtfsclean
+	source = gtfsclean-snapshot_5::https://github.com/public-transport/gtfsclean/releases/download/snapshot-5/gtfsclean
+	b2sums = 9d6c9c1299c2d044a8390154a3b3cb116334d65d263b469902fdd500d7884b11d844df9797e3b36f6b18f62470e31841fc5b6ae66a6fe9d198617032fdf36e19
+
+pkgname = gtfsclean-bin
