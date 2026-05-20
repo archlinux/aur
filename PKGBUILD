@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=2.10.2
+pkgver=2.11.1
 _electronversion=33
 pkgrel=1
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('15323ee92cfaf7ad9574b5ee671bde1d7ff9656bfb6b4234777027852b7e41ea')
-sha256sums_x86_64=('2ba89e0ccba63d16a3e340fce6e3eaa330615321d418b218b7c1f6905ffa45dd')
+sha256sums_aarch64=('8a4a7167716cdf1c8272f4a728817cdfa56b6e0e525424b642074db98ede9e6e')
+sha256sums_x86_64=('ee6c4e4bc22a18c5b324d8a30bfca8e6a6a3278826d5cf35b58b9df3f1ce9aa7')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
