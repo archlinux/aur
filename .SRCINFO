@@ -1,7 +1,7 @@
 pkgbase = wx-cli-bin
 	pkgdesc = WeChat local data CLI with daemon architecture
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jackwener/wx-cli
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = wx-cli-bin
 	depends = glibc
 	provides = wx-cli
 	conflicts = wx-cli
+	options = !strip
 	source = LICENSE-0.3.0::https://github.com/jackwener/wx-cli/raw/v0.3.0/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 	source_x86_64 = wx-cli-x86_64::https://github.com/jackwener/wx-cli/releases/download/v0.3.0/wx-linux-x86_64
