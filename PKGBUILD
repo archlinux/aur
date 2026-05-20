@@ -1,51 +1,30 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
-# Maintainer: Cameron Otsuka <cameron@otsuka.haus>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Cameron Otsuka <cameron@otsuka.haus>
 
 _name=llm-ollama
 pkgname="python-${_name}"
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="LLM plugin providing access to models running on an Ollama server"
 arch=("any")
 url="https://github.com/taketwo/llm-ollama"
 license=("Apache-2.0")
-
 depends=("python" "python-llm" "python-ollama" "python-pydantic")
-makedepends=("python-build" "python-installer" "python-poetry" "python-wheel")
-checkdepends=("python-nest-asyncio" "python-pytest-asyncio" "python-pytest-recording" "python-deepmerge")
-
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/taketwo/llm-ollama/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('67b800c411589a791792404138b9d85a077561c3f90560c4b2395856adbd9529')
+sha256sums=('b07a376c83649921d3269f9f81941f07a0aa644ed664c2ba646113cb9440f3ba')
+
+latestver() {
+  gh api repos/taketwo/llm-ollama/releases/latest --jq '.tag_name'
+}
 
 build() {
   cd "${_name}-${pkgver}"
-
-  echo >&2 'Building wheel'
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "${_name}-${pkgver}"
-
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-
-  echo >&2 'Running unit tests'
-  test-env/bin/python -m pytest
 }
 
 package() {
   cd "${_name}-${pkgver}"
-
-  echo >&2 'Packaging the wheel'
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  echo >&2 'Packaging the documentation'
-  install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    README.md
-
-  echo >&2 'Packaging the license'
-  install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-    LICENSE
 }
