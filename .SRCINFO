@@ -1,7 +1,7 @@
 pkgbase = certbot-isolated
 	pkgdesc = An ACME client - version with isolated dns-lexicon to avoid conflict with python-lexicon
 	pkgver = 5.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://certbot.eff.org
 	arch = any
 	license = Apache-2.0
@@ -18,7 +18,7 @@ pkgbase = certbot-isolated
 	makedepends = python-sphinx_rtd_theme
 	depends = ca-certificates
 	depends = python
-	depends = python-acme=5.6.0
+	depends = python-acme-isolated=5.6.0
 	depends = python-configargparse
 	depends = python-configobj
 	depends = python-cryptography
