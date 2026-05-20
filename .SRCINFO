@@ -1,6 +1,6 @@
 pkgbase = mini-eq
 	pkgdesc = Compact PipeWire system-wide parametric EQ
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/bhack/mini-eq
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = mini-eq
 	depends = python-gobject
 	depends = python-numpy
 	depends = wireplumber
-	source = mini-eq-0.8.2.tar.gz::https://github.com/bhack/mini-eq/archive/refs/tags/v0.8.2.tar.gz
-	sha256sums = a28c9608ccc32ed05a85dc1933f1e93250500578853b319bc2556fa65d6aa2be
+	source = mini-eq-0.8.3.tar.gz::https://github.com/bhack/mini-eq/archive/refs/tags/v0.8.3.tar.gz
+	sha256sums = 772258541e67c916c606ccf90e76dce364bc22c0efffc66e9801126143a88b1b
 
 pkgname = mini-eq
 	optdepends = gnome-shell-extension-mini-eq: Control Mini EQ from the panel
