@@ -1,6 +1,6 @@
 pkgbase = timer-rs-bin
 	pkgdesc = Timer application
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/pando85/timer
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = timer-rs-bin
 	depends = alsa-lib
 	provides = timer-rs
 	conflicts = timer-rs
-	source = https://github.com/pando85/timer/releases/download/v0.11.1/timer-0.11.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 57d9860c874623df7fcb0e83b37e0053a0f94dc8b97f56df1bec128e419e4eb4
+	source = https://github.com/pando85/timer/releases/download/v0.11.2/timer-0.11.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 3239d6700a25bfead181699e7b4b0241b6d380e65c86849f53204527a71eb7f0
 
 pkgname = timer-rs-bin
