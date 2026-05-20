@@ -1,6 +1,6 @@
 pkgbase = fnclaude-bin
 	pkgdesc = A claude CLI launcher with quality-of-life features (binary release)
-	pkgver = 5.2.0
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/fnrhombus/fnclaude
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = fnclaude-bin
 	license = MIT
 	provides = fnclaude
 	conflicts = fnclaude
-	source_x86_64 = fnclaude-bin-5.2.0-x86_64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v5.2.0/fnclaude_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 495a63137f3ff32d8bab0ce6c9d3f0c31f082662eebaea985069036c98322124
-	source_aarch64 = fnclaude-bin-5.2.0-aarch64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v5.2.0/fnclaude_Linux_arm64.tar.gz
-	sha256sums_aarch64 = f12afd25af05775330b0b0a101943430c23694007adff200128c0bf766bedf0c
+	source_x86_64 = fnclaude-bin-5.3.0-x86_64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v5.3.0/fnclaude_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c4a5c764a6ab4f4592d7e6b1bece2902ecec843679c623ce33ac97d58ea8c2c4
+	source_aarch64 = fnclaude-bin-5.3.0-aarch64.tar.gz::https://github.com/fnrhombus/fnclaude/releases/download/v5.3.0/fnclaude_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a3fdaca937624d679becab5ccc01dda509b9c4301418755b62e65551863c04c2
 
 pkgname = fnclaude-bin
