@@ -1,6 +1,6 @@
 pkgbase = sharkey
 	pkgdesc = A Sharkish microblogging platform
-	pkgver = 2025.4.6
+	pkgver = 2025.4.7
 	pkgrel = 1
 	url = https://activitypub.software/TransFem-org/Sharkey
 	install = sharkey.install
