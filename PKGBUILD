@@ -1,6 +1,6 @@
 # Maintainer: Mohammed El-sayed Ahmed <MohammedEl-sayedAhmed@users.noreply.github.com>
 pkgname=clipman-clipboard
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A clipboard history manager for Wayland (GNOME, KDE, Sway, Hyprland, etc.)"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 )
 _srcname=clipman
 source=("$_srcname-$pkgver.tar.gz::https://github.com/MohammedEl-sayedAhmed/clipman/archive/v$pkgver.tar.gz")
-sha256sums=('bb5f2ccfb41eea1bf92bfe76fb1b786bb14f782782f155b2575f72d7859cc116')
+sha256sums=('40c5c52a042acf1da544dfabbfe3d908b5d3f88a078eb0c672d23868dc2020b9')
 
 package() {
     cd "$srcdir/$_srcname-$pkgver"

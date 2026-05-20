@@ -1,6 +1,6 @@
 pkgbase = clipman-clipboard
 	pkgdesc = A clipboard history manager for Wayland (GNOME, KDE, Sway, Hyprland, etc.)
-	pkgver = 1.0.4
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/MohammedEl-sayedAhmed/clipman
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = clipman-clipboard
 	depends = gtk3
 	depends = wl-clipboard
 	optdepends = gnome-shell: native clipboard monitoring via GNOME Shell extension
-	source = clipman-1.0.4.tar.gz::https://github.com/MohammedEl-sayedAhmed/clipman/archive/v1.0.4.tar.gz
-	sha256sums = bb5f2ccfb41eea1bf92bfe76fb1b786bb14f782782f155b2575f72d7859cc116
+	source = clipman-1.0.6.tar.gz::https://github.com/MohammedEl-sayedAhmed/clipman/archive/v1.0.6.tar.gz
+	sha256sums = 40c5c52a042acf1da544dfabbfe3d908b5d3f88a078eb0c672d23868dc2020b9
 
 pkgname = clipman-clipboard
