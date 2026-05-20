@@ -6,6 +6,7 @@ pkgbase = wbij-bin
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = fzf
+	provides = wbij
 	conflicts = wbij
 	source = wbij-bin-0.2.1::https://repos.adamm.rocks/maleszka/wbij/releases/download/v0.2.1/wbij
 	sha256sums = 018a76f86a779f97fd9be57a36bf8408cd9881034136967d7d2911d45af0fc46
