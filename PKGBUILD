@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Ausset <guillaume+arch@ausset.me>
 
 pkgname=colgrep-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Semantic code search powered by ColBERT (prebuilt binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'openssl')
 provides=('colgrep')
 conflicts=('colgrep')
 source=("https://github.com/lightonai/next-plaid/releases/download/v${pkgver}/colgrep-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('0bb54942c28e5a1513d6027816e3f8b8ab7f69cc9d96a36bf128afaff3b84f7d')
+sha256sums=('7e6f8719dd804cea11131415895db8b871df94798ea232fc71afc01aefb276e0')
 
 package() {
 	cd "${srcdir}/colgrep-x86_64-unknown-linux-gnu"
