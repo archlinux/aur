@@ -2,7 +2,7 @@
 
 _pyname=angr-management
 pkgname=python-${_pyname}
-pkgver=9.2.160
+pkgver=9.2.197
 pkgrel=1
 pkgdesc='The official GUI for angr'
 url='https://github.com/angr/angr-management'
@@ -15,6 +15,7 @@ depends=(
   'python'
   'python-angr'
   'python-bidict'
+  'python-binsync'
   'python-cle'
   'python-libbs'
   'python-pyqodeng'
@@ -33,8 +34,8 @@ makedepends=(
   'python-wheel'
 )
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('499fa15bda2147c5351db436c62c191b88e3f729bd5884884532831c89d2d1b3d411d69eb759ffdcd78c7efaae3f95950bdf392b4457f1d44ca119314d98cf0a')
-b2sums=('1c16a9e31d7dfa5e816b3440b92d6c0c4916ce8c24e01d9d18d4c99eb3fc776a8cd87373615c6e3f0851d93a8120a53bda2aca8107303a912985db7dccd08c71')
+sha512sums=('954530576d7417c4e6d615b9b58be5e6fe540f3534f0ab9aae3251784c68e12bd5d47009d94f2e5fe77e877d67f93160d432053bae75ee06933accc4d0a252d9')
+b2sums=('e0e8a67d82b0ce83858257d6a212087fd62885d59ccd6140bf7ba897bcb6aecc42873fac964fd31ed698a80558b82b3fd2931ce67ab11e54972e65d1662f1ca2')
 
 prepare() {
   # we don't support version pinning
