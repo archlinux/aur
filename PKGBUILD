@@ -1,7 +1,7 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql18
-pkgver=18.3
+pkgver=18.4
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=2
@@ -54,7 +54,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
         postgresql-doc.patch)
-sha256sums=('d95663fbbf3a80f81a9d98d895266bdcb74ba274bcc04ef6d76630a72dee016f'
+sha256sums=('81a81ec695fb0c7901407defaa1d2f7973617154cf27ba74e3a7ab8e64436094'
             '1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774'
             '3835a4a66a565d767868aef853aa56e13ba0367a42d82d96e4673f5ffe3eacc7'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
