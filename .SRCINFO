@@ -1,14 +1,14 @@
 pkgbase = minizign
 	pkgdesc = Minisign reimplemented in Zig
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/jedisct1/zig-minisign
 	arch = x86_64
 	license = ISC
 	makedepends = git
 	makedepends = zig>=0.16
-	source = zig-minisign::git+https://github.com/jedisct1/zig-minisign.git#tag=0.1.12?signed
+	source = zig-minisign::git+https://github.com/jedisct1/zig-minisign.git#tag=0.1.13?signed
 	validpgpkeys = 54A2B8892CC3D6A597B92B6C210627AABA709FE1
-	b2sums = 43af4f7db7e83fd193ee5fba8666cf425757b0e62f52fe42f94d9bc383f9a1355498f3cdab179e11606a31a5a2374560952d64978120bc49a9f46f0b8853d52d
+	b2sums = 9c06b36a82fa6c15c2f3b3f718b89a7961a5e3e3bd15e070a4a6b2130818d0d8367586ae01fbd090160b995411110cc50e015f80b4f6e7ed080048dff65b3917
 
 pkgname = minizign

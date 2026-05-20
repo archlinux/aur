@@ -2,7 +2,7 @@
 
 _zig=0.16
 pkgname="minizign"
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Minisign reimplemented in Zig"
 arch=(
@@ -17,7 +17,7 @@ makedepends=(
   "zig>=${_zig}"
 )
 # _zigdepends=(
-#   "zig-clap::git+https://github.com/Hejsil/zig-clap.git#commit=8d97efa1ee1e575443c7888d5c38e1c3fc145cf5"
+#   "zig-clap::git+https://github.com/Hejsil/zig-clap.git#commit=bf56f229ed5b6c381d90e192234913c6deb3f688"
 # )
 _pkgsrc="${url##*/}"
 source=(
@@ -27,7 +27,7 @@ source=(
 # noextract=(
 #   "${_zigdepends[@]%%::*}"
 # )
-b2sums=('43af4f7db7e83fd193ee5fba8666cf425757b0e62f52fe42f94d9bc383f9a1355498f3cdab179e11606a31a5a2374560952d64978120bc49a9f46f0b8853d52d')
+b2sums=('9c06b36a82fa6c15c2f3b3f718b89a7961a5e3e3bd15e070a4a6b2130818d0d8367586ae01fbd090160b995411110cc50e015f80b4f6e7ed080048dff65b3917')
 validpgpkeys=(
   '54A2B8892CC3D6A597B92B6C210627AABA709FE1' # Frank Denis (Jedi/Sector One) <pgp@pureftpd.org>
 )
