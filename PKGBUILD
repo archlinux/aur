@@ -1,53 +1,47 @@
-# Maintainer: Benjamin Schneider <ben@bens.haus>
-# Contributor: Gabriel S. <g.soares@ifpeopensource.com.br>
-# Contributor: David P. <megver83@parabola.nu>
-
 _target=arm-linux-gnueabi
 pkgname=$_target-binutils
 pkgver=2.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM GNU EABI little-endian target'
-arch=('x86_64' 'i686' 'armv7h')
+arch=(aarch64 armv7h x86_64)
 url='https://www.gnu.org/software/binutils/'
-license=(GPL)
+license=(GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-or-later LGPL-3.0-or-later GFDL-1.3 FSFAP)
 depends=(zlib)
-source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha512sums=('0706f565112981eea5f6f412a928f14ffcd7afec0e289259709c5d6a41fd54d0ebe675de0580684affe20ac71b7686e235555f8f3ca20537f99330ca46491ab9'
-            'SKIP')
-validpgpkeys=('5EF3A41171BB77E6110ED2D01F3D03348DB1A3E2'  # Sam James <sam@gentoo.org>
-              '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
+source=(https://ftpmirror.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
+b2sums=('02a084ce9052ff18c20dc0620cd75deebf551b65fc5ed31ea9c79713bfc8c6bfa63275b4579e86c70af98f9ea0d093580f73d7598576750e5fb301b5a5934508'
+        'SKIP')
+validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F) # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
 prepare() {
-  cd binutils-$pkgver
+  cd "binutils-$pkgver"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+
+  # Turn off development mode (-Werror, gas run-time checks, date in sonames)
+  sed -i '/^development=/s/true/false/' bfd/development.sh
 }
 
 build() {
-  cd binutils-$pkgver
-
-  if [ "${CARCH}" != "i686" ]; then
-    # enabling gold linker at i686 makes the install fail
-    enable_gold='--enable-gold'
-  fi
+  cd "binutils-$pkgver"
 
   ./configure --target=$_target \
               --with-sysroot=/usr/$_target \
               --prefix=/usr \
+              --disable-gprofng \
               --disable-multilib \
-              --disable-werror \
               --with-gnu-as \
               --with-gnu-ld \
               --disable-nls \
+              --enable-gold \
               --enable-ld=default \
-              $enable_gold \
               --enable-plugins \
-              --enable-deterministic-archives
+              --enable-deterministic-archives \
+              --enable-new-dtags
 
   make
 }
 
 check() {
-  cd binutils-$pkgver
+  cd "binutils-$pkgver"
 
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # do not abort on errors - manually check log files
@@ -55,7 +49,7 @@ check() {
 }
 
 package() {
-  cd binutils-$pkgver
+  cd "binutils-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
