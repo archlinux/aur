@@ -11,7 +11,7 @@ pkgbase = neve-bin
 	conflicts = neve
 	conflicts = neve-git
 	source_x86_64 = neve-3.11.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v3.11.0/neve-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 469aeff39951e395b0c14b905aa3f7a6c5bfe5d0b7e75a5a080b9e4ff9312338
+	sha256sums_x86_64 = 7ba765d37cb2cd659ed0409ba1459d8957ea3b9bbdbee8c781f65577f353d6a1
 	source_aarch64 = neve-3.11.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v3.11.0/neve-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = dbe0c7fe11c1243d64db1ff31c98bb553a05735a631c14940a3f1c9228afce59
 
