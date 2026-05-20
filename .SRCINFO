@@ -1,12 +1,13 @@
 pkgbase = kewt-git
 	pkgdesc = A minimalist, 100% POSIX, static site generator inspired by werc and kew
-	pkgver = r0.0000001
+	pkgver = r0.0000002
 	pkgrel = 1
 	url = https://kewt.krzak.org
 	arch = any
 	license = ISC
 	makedepends = git
 	depends = sh
+	optdepends = bash-completion: bash shell completions
 	provides = kewt
 	conflicts = kewt
 	conflicts = kewt-bin

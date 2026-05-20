@@ -1,6 +1,6 @@
 # Maintainer: n0va <n0va@krzak.org>
 pkgname=kewt-git
-pkgver=r0.0000001
+pkgver=r0.0000002
 pkgrel=1
 pkgdesc="A minimalist, 100% POSIX, static site generator inspired by werc and kew"
 arch=('any')
@@ -28,4 +28,5 @@ package() {
   install -Dm755 kewt "${pkgdir}/usr/bin/kewt"
   install -d "${pkgdir}/usr/share/zsh/site-functions"
   "${pkgdir}/usr/bin/kewt" --dump-zsh-completions > "${pkgdir}/usr/share/zsh/site-functions/_kewt"
+  install -Dm644 packaging/bash/kewt.bash "${pkgdir}/usr/share/bash-completion/completions/kewt"
 }
