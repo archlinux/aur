@@ -1,6 +1,6 @@
 pkgbase = pwss-browser-qt6-git
 	pkgdesc = Native Qt6 GUI frontend for the PWSS sovereign web toolchain
-	pkgver = 1.0.r0.g20260520
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://blog.zain-khan.dev
 	arch = x86_64

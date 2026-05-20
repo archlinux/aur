@@ -1,6 +1,6 @@
 # Maintainer: Zain Khan <zai1208@protonmail.com>
 pkgname=pwss-browser-qt6-git
-pkgver=1.0.r0.g$(date +%Y%m%d)
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Native Qt6 GUI frontend for the PWSS sovereign web toolchain"
 arch=('x86_64')
