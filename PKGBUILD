@@ -14,7 +14,7 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("wx-cli-x86_64::${url}/releases/download/v${pkgver}/wx-linux-x86_64")
 source_aarch64=("wx-cli-aarch64::${url}/releases/download/v${pkgver}/wx-linux-arm64")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('efc43bc064a42c74f543999f7afadb12ced82a1e3151c3146450c7259ec8a8ed')
+sha256sums_x86_64=('695e636de33aa5a906e222d092d3b5a101f01a55e43839a3efab94691ab9dff5')
 sha256sums_aarch64=('31e568a840e35c6a15672f0828cf3930e2f5de3b354161ac666c3f88bb96380e')
 
 package() {
