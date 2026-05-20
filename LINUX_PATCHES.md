@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-6
+**Current release:** 1:2.0.1-7
 
 ---
 
@@ -45,7 +45,7 @@ The patch logic lives in two external source files verified by sha256:
    `update_offsets()` adjusts all entries after the pivot, already-adjusted entries
    are correctly shifted again. The asar is written once at the end.
 
-3. The marker `// vortex-linux-fix-v3` is prepended to `renderer.js`. On re-runs,
+3. The marker `// vortex-linux-fix-v5` is prepended to `renderer.js`. On re-runs,
    the old marker is stripped before patches are re-applied (idempotent).
 
 ---
@@ -160,6 +160,65 @@ as a safe default (store attribution is cosmetic; Vortex works correctly either 
       }
 )
 ```
+
+---
+
+### 9 & 10 — Generic .NET game version detection on Linux
+
+**Problem:** Vortex detects installed game versions by reading the PE version resource from
+the game's `.exe` file (`testExecProvider` / `getExecGameVersion` in `renderer.js`). On Linux,
+.NET-based games (Stardew Valley, and any other game built with .NET Core/5+) ship a native
+ELF binary or a shell script — neither of which has PE version metadata. As a result:
+
+- `testExecProvider` returns `false` (version reads as "0.0.0", provider not selected).
+- The fallback provider returns "0.0.0" unchanged.
+- The Nexus Collections dialog "Game version mismatch" shows **"Your game version:"** empty,
+  even when the installed version exactly matches the collection's requirement.
+
+.NET Core games store their version in a `<GameName>.deps.json` file alongside the executable:
+
+```json
+{
+  "libraries": {
+    "Stardew Valley/1.6.15.24356": { "type": "project", ... }
+  }
+}
+```
+
+**Fix:** Both `testExecProvider` and `getExecGameVersion` gain a Linux fallback path that:
+
+1. Scans the game directory for files matching `*.deps.json`.
+2. For each deps.json, strips `.deps.json` to get the expected library name prefix.
+3. Searches `libraries` for an entry starting with `<name>/` whose version isn't `"0.0.0"`.
+4. Returns the version string if found; continues to next file if not.
+
+`testExecProvider` returns `true` when a version is found (enabling the exec provider for
+the game), so that `getExecGameVersion` is later called and returns the correct version.
+
+```js
+// getExecGameVersion — new Linux fallback (added to renderer.js)
+if ("linux" === process.platform && "0.0.0" === _ver) {
+    const _fls = fs.readdirSync(discovery.path).filter(f => f.endsWith(".deps.json"));
+    for (const _f of _fls) {
+        const _d = JSON.parse(fs.readFileSync(path.join(discovery.path, _f), "utf8"));
+        const _gb = _f.replace(/\.deps\.json$/, "");
+        for (const _lib of Object.keys(_d.libraries || {})) {
+            const _si = _lib.indexOf("/");
+            if (_si > -1 && _lib.substring(0, _si) === _gb) {
+                const _v = _lib.substring(_si + 1);
+                if (_v && "0.0.0" !== _v) { _ver = _v; break; }
+            }
+        }
+        if ("0.0.0" !== _ver) break;
+    }
+}
+```
+
+**Scope:** Works for any .NET Core/5+ game without per-game patches. Tested with Stardew
+Valley (`Stardew Valley.deps.json` → version `1.6.15.24356`).
+
+**Source location:** `src/extensions/gameversion_management/GameVersionManager.ts` and
+`src/extensions/gameversion_management/util/getGameVersion.ts` (minified into `renderer.js`)
 
 ---
 
@@ -601,6 +660,7 @@ makepkg -si
 | **1:2.0.1-4** | Patch 7 — `iniFiles` in `renderer.js`: complements the Patch 6 plugin fix by resolving `mygames` in the Vortex core engine. Dynamically discovers AppID by scanning `appmanifest_*.acf` against `discovery.path`; covers any Proton-managed Gamebryo game without a hardcoded AppID table. Reported by AUR user Garecrow. |
 | **1:2.0.1-5** | Hotfix: missing `;` after `})()` in the `iniFiles` patch new-string caused `SyntaxError` in the Electron renderer (black screen on launch). Fixed by appending `;` to close the IIFE statement correctly. |
 | **1:2.0.1-6** | Patch 8 — `appDataPath()` runtime patch for `gamebryo-plugin-management`: resolves `Plugins.txt` and `loadorder.txt` to the correct Proton compatdata path on Linux. Deployed as `patch-ext-gamebryo.py` (same runtime mechanism as the Cyberpunk 2077 patch). Reported by AUR user Garecrow. |
+| **1:2.0.1-7** | Patches 9 & 10 — Generic .NET game version detection on Linux: `testExecProvider` and `getExecGameVersion` now fall back to scanning `*.deps.json` (the .NET Core dependency manifest) when the executable has no PE version info. Fixes the empty "Your game version:" field in Nexus Collections for .NET-based games (Stardew Valley, etc.). Generic solution — no per-game patches needed. |
 
 ---
 
@@ -627,5 +687,6 @@ makepkg -si
 - [x] Daggerfall Unity: covered by generic `.exe`→`.x86_64` fallback patches
 - [x] A Hat in Time: no native Linux binary; Proton-only, `.exe` present in game dir — no patch needed
 - [x] `Plugins.txt` / `loadorder.txt` for Bethesda games via Proton prefix (`gamebryo-plugin-management`)
+- [x] Generic .NET game version detection on Linux via `deps.json` fallback (Stardew Valley and similar)
 - [ ] Upstream PRs to Nexus-Mods/Vortex with the Linux fixes
 - [ ] Automatic re-patch of user extensions after update

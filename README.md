@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 1:2.0.1-6
+- **Versión:** 1:2.0.1-7
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.8-1-cachyos)
@@ -125,6 +125,46 @@ y el flujo falla aunque la carpeta sea correcta.
     ? bluebird.resolve({ corrected, store: "steam" })
     : manualGameStoreSelection(api, corrected)
 )
+```
+
+---
+
+### Patches 9 y 10 — Detección genérica de versión .NET en Linux
+
+**Problema:** En Linux, Vortex detecta la versión de un juego leyendo los metadatos PE del
+ejecutable (`.exe`). Para juegos .NET nativos de Linux (como Stardew Valley), el binario es
+un script de bash o un ELF sin versión PE, por lo que `testExecProvider` devuelve false y
+`getExecGameVersion` devuelve "0.0.0". El resultado es que el diálogo de colecciones
+"Game version mismatch" muestra "Your game version:" vacío, aunque la versión instalada
+sea exactamente la requerida.
+
+**Fix:** En Linux, cuando el ejecutable no tiene versión PE:
+1. `testExecProvider` — si no encuentra versión PE, escanea `*.deps.json` en la carpeta del
+   juego (formato de .NET Core). Si alguno contiene `<GameName>/<version>` en `libraries`,
+   devuelve `true` (el proveedor sí soporta la detección).
+2. `getExecGameVersion` — misma lógica: si la versión PE es "0.0.0", intenta leer
+   `<GameName>.deps.json` y extrae la versión del campo `libraries`.
+
+**Alcance:** Funciona para cualquier juego .NET Core/5+ sin necesidad de parche por juego.
+Stardew Valley (`.deps.json` → `Stardew Valley/1.6.15.24356`) y cualquier otro título .NET.
+
+```js
+// getExecGameVersion — nuevo fallback Linux en renderer.js
+if ("linux" === process.platform && "0.0.0" === _ver) {
+    const _fls = readdirSync(discovery.path).filter(f => f.endsWith(".deps.json"));
+    for (const _f of _fls) {
+        const _d = JSON.parse(readFileSync(join(discovery.path, _f)));
+        const _gb = _f.replace(/\.deps\.json$/, "");
+        for (const _lib of Object.keys(_d.libraries || {})) {
+            const _si = _lib.indexOf("/");
+            if (_si > -1 && _lib.substring(0, _si) === _gb) {
+                const _v = _lib.substring(_si + 1);
+                if (_v && "0.0.0" !== _v) { _ver = _v; break; }
+            }
+        }
+        if ("0.0.0" !== _ver) break;
+    }
+}
 ```
 
 ---
@@ -459,6 +499,7 @@ Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 | **1:2.0.1-4** | Patch 7 — `iniFiles` en renderer.js: complementa el Patch 6 (gamebryo-test-settings) resolviendo `mygames` en el motor central. Usa appmanifest scan para detectar el AppID a partir de `discovery.path`; cubre automáticamente cualquier juego Gamebryo sin lista fija. |
 | **1:2.0.1-5** | Hotfix: `})()` → `})();` en el new string del patch de `iniFiles`. El `;` faltante provocaba `SyntaxError` en el renderer de Electron (pantalla negra en Vortex). |
 | **1:2.0.1-6** | Patch 8 — `appDataPath` en `gamebryo-plugin-management`: en Linux resuelve `Plugins.txt` y `loadorder.txt` al prefijo Proton en lugar de `~/.config/Local/<game>/`. Script de parche runtime `patch-ext-gamebryo.py`; misma lógica de búsqueda Steam que Patch 6. Reportado por Garecrow. |
+| **1:2.0.1-7** | Patches 9 y 10 — Detección genérica de versión de juego en Linux: `testExecProvider` y `getExecGameVersion` buscan `.deps.json` de .NET si el ejecutable no tiene versión PE. Arregla el diálogo "Game version mismatch" vacío en colecciones de Nexus para juegos .NET (Stardew Valley, etc.). Solución genérica — funciona para cualquier juego .NET sin parche por juego. |
 
 ---
 
@@ -576,5 +617,6 @@ Enderal, Enderal SE, Starfield, Oblivion.
 - [x] Daggerfall Unity: cubierto por patches genéricos (`.exe` → `.x86_64`)
 - [x] A Hat in Time: sin binario Linux nativo, funciona vía Proton sin patch
 - [x] `Plugins.txt` / `loadorder.txt` de juegos Bethesda vía prefijo Proton (`gamebryo-plugin-management`)
+- [x] Detección genérica de versión para juegos .NET en Linux (Stardew Valley y similares): `deps.json` fallback
 - [ ] PR upstream a Nexus-Mods/Vortex con los fixes de Linux
 - [ ] Mecanismo automático de re-parche de extensiones de usuario tras actualización

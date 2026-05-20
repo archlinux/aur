@@ -50,7 +50,7 @@ def patch_asar_file(raw, header, dss, entry, patches, marker=None):
 
 # ── asar patch definitions ─────────────────────────────────────────────────
 
-PATCH_MARKER = "// vortex-linux-fix-v4\n"
+PATCH_MARKER = "// vortex-linux-fix-v5\n"
 
 RENDERER_PATCHES = [
     {
@@ -165,6 +165,74 @@ RENDERER_PATCHES = [
             'queryPath:()=>Promise.reject(new Error("Epic not available on Linux")),'
             'getAppById:()=>void 0}'
             ':EpicGamesLauncher_1.default;'
+        ),
+    },
+    {
+        "name": "testExecProvider — detect .NET deps.json version on Linux when exe has no PE version",
+        "old": (
+            'exports.testExecProvider=async function testExecProvider(game,discovery){'
+            'const exeName=discovery.executable||game.executable();'
+            'if(void 0===discovery?.path||void 0===exeName)return Promise.resolve(!1);'
+            'const exePath=path_1.default.join(discovery.path,exeName);'
+            'try{await(0,fs_1.statAsync)(exePath);'
+            'return"0.0.0"===exeVersion.default(exePath)?Promise.resolve(!1):Promise.resolve(!0)}'
+            'catch(err){return(0,log_1.log)("error","unable to test executable version fields",err),Promise.resolve(!1)}}'
+        ),
+        "new": (
+            'exports.testExecProvider=async function testExecProvider(game,discovery){'
+            'const exeName=discovery.executable||game.executable();'
+            'if(void 0===discovery?.path||void 0===exeName)return Promise.resolve(!1);'
+            'const exePath=path_1.default.join(discovery.path,exeName);'
+            'try{await(0,fs_1.statAsync)(exePath);'
+            'let _ev;try{_ev=exeVersion.default(exePath)}catch(e){_ev="0.0.0"}'
+            'if("0.0.0"!==_ev)return Promise.resolve(!0);'
+            'if("linux"===process.platform){'
+            'const _lfs=require("fs");'
+            'try{'
+            'const _fls=_lfs.readdirSync(discovery.path).filter(f=>f.endsWith(".deps.json"));'
+            'for(const _f of _fls){'
+            'try{'
+            'const _d=JSON.parse(_lfs.readFileSync(path_1.default.join(discovery.path,_f),"utf8")),'
+            '_gb=_f.replace(/\\.deps\\.json$/,"");'
+            'if(Object.keys(_d.libraries||{}).some(n=>{'
+            'const _si=n.indexOf("/");'
+            'return _si>-1&&n.substring(0,_si)===_gb&&n.substring(_si+1)&&"0.0.0"!==n.substring(_si+1)'
+            '}))return Promise.resolve(!0)'
+            '}catch(e){}}'
+            '}catch(e){}}'
+            'return Promise.resolve(!1)}'
+            'catch(err){return(0,log_1.log)("error","unable to test executable version fields",err),Promise.resolve(!1)}}'
+        ),
+    },
+    {
+        "name": "getExecGameVersion — read .NET deps.json version on Linux as fallback",
+        "old": (
+            'exports.getExecGameVersion=async function getExecGameVersion(game,discovery){'
+            'const exePath=path_1.default.join(discovery.path,discovery.executable||game.executable());'
+            'try{const version=exeVersion.default(exePath);return Promise.resolve(version)}'
+            'catch(err){return Promise.resolve("0.0.0")}};'
+        ),
+        "new": (
+            'exports.getExecGameVersion=async function getExecGameVersion(game,discovery){'
+            'const exePath=path_1.default.join(discovery.path,discovery.executable||game.executable());'
+            'let _ver;try{_ver=exeVersion.default(exePath)}catch(err){_ver="0.0.0"}'
+            'if("linux"===process.platform&&"0.0.0"===_ver){'
+            'const _lfs=require("fs");'
+            'try{'
+            'const _fls=_lfs.readdirSync(discovery.path).filter(f=>f.endsWith(".deps.json"));'
+            'for(const _f of _fls){'
+            'try{'
+            'const _d=JSON.parse(_lfs.readFileSync(path_1.default.join(discovery.path,_f),"utf8")),'
+            '_gb=_f.replace(/\\.deps\\.json$/,"");'
+            'for(const _lib of Object.keys(_d.libraries||{})){'
+            'const _si=_lib.indexOf("/");'
+            'if(_si>-1&&_lib.substring(0,_si)===_gb){'
+            'const _v=_lib.substring(_si+1);'
+            'if(_v&&"0.0.0"!==_v){_ver=_v;break}}}'
+            'if("0.0.0"!==_ver)break'
+            '}catch(e){}}}'
+            'catch(e){}}'
+            'return Promise.resolve(_ver)};'
         ),
     },
 ]
