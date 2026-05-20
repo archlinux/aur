@@ -1,0 +1,21 @@
+pkgbase = vm-curator-gtk
+	pkgdesc = GTK4/libadwaita graphical frontend for the vm-curator QEMU/KVM manager
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/indyfive11/vm-curator-gtk
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkg-config
+	depends = gcc-libs
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = gtk4-layer-shell
+	optdepends = qemu-desktop: launch and run virtual machines
+	optdepends = qemu-base: minimal QEMU without GUI tools
+	source = vm-curator-gtk-0.2.1.tar.gz::https://github.com/indyfive11/vm-curator-gtk/archive/v0.2.1.tar.gz
+	sha256sums = 64a7192eeac1806327b0a50d62c39555eca1003a05f080a399a27c521086fecd
+
+pkgname = vm-curator-gtk
