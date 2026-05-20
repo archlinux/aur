@@ -18,7 +18,7 @@ conflicts=("$_pkgname")
 
 options=('!strip' '!debug')
 
-_dl_url="https://codeberg.org/jessienab/icecat-bin/releases/download/$pkgver/"
+_dl_url="https://git.nabein.me/icecat-bin-old/$pkgver/"
 _dl_file="icecat-$pkgver.en-US.linux-$CARCH.tar.xz"
 
 noextract=("$_dl_url/$_dl_file")
