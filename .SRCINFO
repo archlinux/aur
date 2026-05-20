@@ -14,7 +14,7 @@ pkgbase = chatlab
 	source = chatlab.sh
 	sha256sums = b2d306e957e9d5d8dd4b0a7f2f9fa055ad764441bd805ff2fb2db01c2607e5be
 	sha256sums = 349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0
-	sha256sums = 8c3aadabf3e120e146c1f670b7db682957e001a34ddc5e7a642dcd094b77c4fc
+	sha256sums = 018864695044b9188a291a0c30db9322cba764f29198fd2014fbb0c43b1c0103
 
 pkgname = chatlab-cli
 	pkgdesc = Rediscover your social memories with local, AI-powered analysis (cli tool)
@@ -24,7 +24,6 @@ pkgname = chatlab-desktop
 	pkgdesc = Rediscover your social memories with local, AI-powered analysis (desktop app)
 	install = chatlab.install
 	depends = bash
-	depends = curl
 	depends = electron35
 	depends = hicolor-icon-theme
 	provides = chatlab

@@ -16,7 +16,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}.sh")
 sha256sums=('b2d306e957e9d5d8dd4b0a7f2f9fa055ad764441bd805ff2fb2db01c2607e5be'
             '349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0'
-            '8c3aadabf3e120e146c1f670b7db682957e001a34ddc5e7a642dcd094b77c4fc')
+            '018864695044b9188a291a0c30db9322cba764f29198fd2014fbb0c43b1c0103')
 
 prepare() {
     sed -i "s|_ELECTRON_VERSION_|$_electron|" "${pkgbase}.sh"
@@ -24,8 +24,13 @@ prepare() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electron"
 
-    cd "${_reponame}-${pkgver}"
-    npm --prefix="apps/cli" pkg set version="${pkgver}"
+    cd "${_reponame}-${pkgver}/apps/cli"
+    local _jieba=$(npm pkg get "optionalDependencies.@node-rs/jieba" | sed 's|\"||g')
+    npm pkg delete "optionalDependencies.@node-rs/jieba"
+    npm pkg set "dependencies.@node-rs/jieba"="$_jieba"
+    npm pkg set version="${pkgver}"
+
+    cd ../..
     rm -rf "${pkgbase}-cli" 2>/dev/null || true
     NODE_ENV="development" pnpm install
     find node_modules -type f \( -name "*.js.map" -o -name "*.mjs.map" -o -name "*.css.map" \) -delete
@@ -40,6 +45,7 @@ build() {
     find "${pkgbase}-cli" -type f \( -name "*.js.map" -o -name "*.mjs.map" -o -name "*.css.map" \) -delete
     sed -i "s|#!/usr/bin/env node|#!/usr/bin/node|" "${pkgbase}-cli/bin/${pkgbase}.mjs"
     grep -rl "${srcdir}/${_reponame}-${pkgver}/${pkgbase}-cli" "${pkgbase}-cli" | xargs -I {} sed -i "s|${srcdir}/${_reponame}-${pkgver}/${pkgbase}-cli|/usr/lib/${pkgbase}/cli|g" {} 
+    grep -rl "${srcdir}/${_reponame}-${pkgver}/apps/cli" "${pkgbase}-cli" | xargs -I {} sed -i "s|${srcdir}/${_reponame}-${pkgver}/apps/cli|/usr/lib/${pkgbase}/cli|g" {} 
 
     # build desktop
     pnpm --prefix="apps/desktop" run build
@@ -63,7 +69,7 @@ package_chatlab-cli() {
 
 package_chatlab-desktop() {
     pkgdesc+=" (desktop app)"
-    depends=("bash" "curl" "${_electron}" "hicolor-icon-theme")
+    depends=("bash" "${_electron}" "hicolor-icon-theme")
     provides=("${pkgbase}")
     conflicts=("${pkgbase}")
     replaces=("${pkgbase}")
