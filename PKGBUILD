@@ -14,7 +14,7 @@
 pkgname=cardmirror-bin
 # Original semver — matches the git tag without the leading `v`.
 # Bump this and `pkgrel` when cutting a new release.
-_origver=0.1.0-alpha.1
+_origver=0.1.0-alpha.2
 # Arch packaging convention: pkgver can't contain `-`, so we
 # convert hyphens to underscores (`0.1.0-alpha.1` → `0.1.0_alpha.1`).
 pkgver=${_origver//-/_}
