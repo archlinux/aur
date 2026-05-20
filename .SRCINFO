@@ -1,6 +1,6 @@
 pkgbase = cate-bin
 	pkgdesc = A spatial desktop IDE with an infinite canvas for code, terminals, browsers, and git
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/0-AI-UG/cate
 	arch = x86_64
@@ -35,11 +35,11 @@ pkgbase = cate-bin
 	provides = cate
 	conflicts = cate
 	options = !strip
-	source = README-0.4.3.md::https://raw.githubusercontent.com/0-AI-UG/cate/v0.4.3/README.md
-	source = LICENSE-0.4.3::https://raw.githubusercontent.com/0-AI-UG/cate/v0.4.3/LICENSE
-	sha256sums = 467d7623c107fb2d72bb64f755e1cbb7a21502fde6f17fa587b2e1fb3aa1b6c9
+	source = README-0.4.4.md::https://raw.githubusercontent.com/0-AI-UG/cate/v0.4.4/README.md
+	source = LICENSE-0.4.4::https://raw.githubusercontent.com/0-AI-UG/cate/v0.4.4/LICENSE
+	sha256sums = da710fd233944d8d1f130b43606864a0d2f1ed4c5b8f4e014138e49cfbe32cec
 	sha256sums = 1e585acefe712004c775251ae0146fc72ac59fc776851b0bc227130f429d585c
-	source_x86_64 = https://github.com/0-AI-UG/cate/releases/download/v0.4.3/cate_0.4.3_amd64.deb
-	sha256sums_x86_64 = 201eb0bb7b1bb81acf4ad8e144d98f1909e437ec3f88c14cbbcb27e72e8c047c
+	source_x86_64 = https://github.com/0-AI-UG/cate/releases/download/v0.4.4/cate_0.4.4_amd64.deb
+	sha256sums_x86_64 = 88be32f6cc47d5f7618d065bbf852d6ba0b5b9a8d74c62c9e42e38a84dbe9a10
 
 pkgname = cate-bin
