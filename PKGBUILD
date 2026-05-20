@@ -1,7 +1,7 @@
 # Maintainer: VanHoney Ltd.
 pkgname=ion-nemesis-cli
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Local-first iON Data Security Systems Nemesis Engine CLI"
 arch=('x86_64')
 url="https://github.com/VanHoney-ltd/iON-Data-Systems-powered-by-the-NEMESIS-ENGINE"
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}/core"
-  cargo build --release --locked --bins
+  cargo build --release --locked --bin ion --bin minios --bin minios-export
 }
 
 check() {
@@ -46,7 +46,6 @@ package() {
   install -Dm755 core/target/release/ion "${pkgdir}/usr/bin/ion"
   install -Dm755 core/target/release/minios "${pkgdir}/usr/bin/minios"
   install -Dm755 core/target/release/minios-export "${pkgdir}/usr/bin/minios-export"
-  install -Dm755 core/target/release/pcr-packet "${pkgdir}/usr/bin/pcr-packet"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
