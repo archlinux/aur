@@ -1,7 +1,3 @@
-# Maintainer: Benjamin Schneider <ben at bens dot haus>
-# Contributor: mickael9 <mickael9 at gmail dot com>
-# Contributor: Sebastien Duthil <duthils at free dot fr>
-
 pkgname=factorio-demo
 pkgver=2.0.76
 pkgrel=1
