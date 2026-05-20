@@ -3,12 +3,12 @@
 # shellcheck disable=SC2154
 # The PKGBUILD for Haveno-reto.
 # Based on the haveno PKGBUILD
-# Maintainer: Duje Mihanović <duje.mihanovic@skole.hr>
+# Maintainer: Duje Mihanović <duje@dujemihanovic.xyz>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 _pkgname=haveno-reto
 pkgname=retoswap
-pkgver=1.3.1
+pkgver=1.4.0
 _versuffix=-reto
 pkgrel=1
 pkgdesc='Decentralised P2P exchange built on Monero and Tor - unofficial Reto network'
@@ -21,7 +21,7 @@ conflicts=('haveno' "$_pkgname")
 replaces=("$_pkgname")
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/$pkgver$_versuffix.tar.gz"
 	"$pkgname.desktop")
-sha512sums=('c88910d415e3c10ede1290acb3af5546b01ee2cbb7df0684910f00189250dc3ad2dbf9aea1dc1ff381af1b6aade63f882142378a6e744c5879c522efc7afd3a0'
+sha512sums=('5549fd5129ad675472fa0c72e710c861b728c8e7c4513af9e664ec29571f52d104313f58d6ca61c55d38202a97209ed606b67e49d0c974bab6aa5f7dbe97b7e1'
             'c6115853745acdb9c4bcf8dbf1e8479aa01131bc05641123cf45bf3fc6029e4edb0ce3930a3c372389e02a51874d686b6cc45166de1d9bba631e6e60c070ecd7')
 install="$pkgname.install"
 
