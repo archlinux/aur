@@ -1,60 +1,71 @@
-# Maintainer: robertfoster
+# Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
+# Contributor: robertfoster
 
 pkgname=stable-diffusion.cpp-git
-pkgver=r256.5900ef6
+_name=${pkgname%-git}
+pkgver=r633.5b0267e
 pkgrel=1
 pkgdesc="Stable Diffusion in pure C/C++"
-arch=('armv7h' 'aarch64' 'x86_64')
+arch=('aarch64' 'x86_64')
 url="https://github.com/leejet/stable-diffusion.cpp"
 license=("MIT")
-depends=('openblas')
-makedepends=(
-  'cmake'
-  'git'
+depends=(
+    'openblas'
+    'libwebp'
 )
-conflicts=("${pkgname%%-git}")
-provides=("${pkgname%%-git}")
-source=("${pkgname%%-git}::git+${url}"
-  "git+https://github.com/ggerganov/ggml.git#commit=ff9052988b76e137bcf92bb335733933ca196ac0")
+makedepends=(
+    'cmake'
+    'pnpm' # frontend
+    'ninja'
+    'git'
+)
+conflicts=("$_name")
+provides=("$_name")
+source=("$_name::git+https://github.com/leejet/stable-diffusion.cpp.git"
+        'git+https://github.com/ggml-org/ggml.git'
+        'git+https://github.com/leejet/sdcpp-webui.git'
+        'git+https://github.com/webmproject/libwebm.git')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
 
 pkgver() {
-  cd "${srcdir}/${pkgname%%-git}"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd "$_name"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname%%-git}"
-  git submodule init
-  git config submodule.ggml.url "${srcdir}/ggml"
-  git -c protocol.file.allow=always submodule update --remote
+    cd "$_name"
+    git submodule init
+    git config submodule.ggml.url "$srcdir/ggml"
+    git config submodule.examples/server/frontend.url "$srcdir/sdcpp-webui"
+    git config submodule.thirdparty/libwebm.url "$srcdir/libwebm"
+    git config submodule.thirdparty/libwebp.update none
+
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cmake \
-    -B "${srcdir}/build" \
-    -S "${srcdir}/${pkgname%%-git}" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_BLAS=ON \
-    -DGGML_BLAS_VENDOR=OpenBLAS
-
-  cmake --build build
+    cmake \
+        -G Ninja \
+        -B build \
+        -S "$_name" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DSD_BUILD_SHARED_LIBS=ON \
+        -DSD_BUILD_SHARED_GGML_LIB=OFF \
+        -DSD_USE_SYSTEM_WEBP=ON \
+        -DSD_USE_SYSTEM_WEBM=OFF \
+        -DGGML_BLAS=ON \
+        -DGGML_BLAS_VENDOR=OpenBLAS
+    ninja -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
+    DESTDIR="$pkgdir" ninja -C build install/local examples/install
 
-  rm "${pkgdir}/usr/include/"ggml*
-
-  install -Dm644 "${srcdir}/${pkgname%%-git}/LICENSE" \
-    -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  rm -rf "${pkgdir}/usr/include/gguf.h"
-  rm -rf "${pkgdir}/usr/lib/cmake/ggml/ggml-config.cmake"
-  rm -rf "${pkgdir}/usr/lib/cmake/ggml/ggml-version.cmake"
-  rm -rf "${pkgdir}"/usr/lib/*.a
+    install -Dm644 "$srcdir/$_name/LICENSE" \
+        -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
-sha256sums=('SKIP'
-  'SKIP')
