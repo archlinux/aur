@@ -3,23 +3,16 @@
 
 pkgname=python-diagrams
 _name=${pkgname//python-}
-pkgver=0.23.4
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="Diagram as Code for prototyping cloud system architectures"
 arch=('any')
 url="https://diagrams.mingrammer.com"
 license=('MIT')
-depends=('python-graphviz' 'python-jinja')
+depends=('python' 'python-graphviz' 'python-jinja')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-        "resources.patch")
-sha256sums=('b7ada0b119b5189dd021b1dc1467fad3704737452bb18b1e06d05e4d1fa48ed7'
-            'a32edb9d779f786fd02632d95cdd0b22a45e3e845b3c63e8c9ab2491b6396732')
-
-prepare() {
-    cd $_name-$pkgver
-    patch -p1 < ../resources.patch
-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('87480ba0b2d26987a69f7d553aa0cb1cebf1406adc03fef7031bdfff026bfc51')
 
 build() {
     cd $_name-$pkgver
