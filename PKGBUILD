@@ -36,7 +36,7 @@ package() {
 
   install -Dm755 build/pwss-browser-qt6 "${pkgdir}/usr/bin/pwss-browser-qt6"
 
-  if [ -f "pwss-browser.desktop" ]; then
+  if [ -f "pwss-browser-qt6.desktop" ]; then
     install -Dm644 pwss-browser.desktop "${pkgdir}/usr/share/applications/pwss-browser.desktop"
   fi
 
