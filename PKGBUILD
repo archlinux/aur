@@ -2,7 +2,7 @@
 # Contributor: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli
-pkgver=1.9.36
+pkgver=1.9.37
 pkgrel=1
 
 _denodomver="0.1.41-alpha-artifacts"
@@ -45,7 +45,7 @@ source=(
 )
 
 sha256sums=(
-  "39d2e4546274be39a27cceeeed21a60b693c4c477a8c8cb43fb34326442f3910"
+  "78fcd90e983e3e7dbe3f0d1921cc10253c1eca7b92c20dd4bc2a3c1bca0a9af5"
   "5ab1a73e73b9edf9d2c81e655658d970e6212497a5368d8f0bc8613bbdf8d91d"
 )
 
