@@ -1,7 +1,7 @@
 # Maintainer: Alberto Perillo <alberto@perillo.uy>
 pypkgname=telnetlib3
 pkgname=python-${pypkgname}
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="telnetlib3 is a feature-rich Telnet Server, Client, and Protocol library for Python 3.9 and newer."
 arch=('any')
@@ -10,7 +10,7 @@ license=('ISCL')
 depends=('python' 'python-wcwidth' 'python-hatchling')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pypkgname::1}/${pypkgname}/${pypkgname}-${pkgver}.tar.gz")
-sha256sums=('76726d7a7a34163b5dbef461e9cbf8fb4bda8f4fe7fcb225f56cbb4dcf5fd16e')
+sha256sums=('e1f205e2d0d6804dd1ae1d7392aa45843958e648f16f6c331b0c241305bc9adc')
 
 build() {
     cd "${pypkgname}-${pkgver}"
