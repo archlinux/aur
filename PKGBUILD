@@ -24,33 +24,17 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    # Install the binary
     install -Dm755 "target/release/${pkgname}" \
                     "${pkgdir}/usr/bin/${pkgname}"
 
-    # Install the license file
     install -Dm644 "LICENSE" \
                     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    # Install the systemd user service file
     install -Dm644 "${pkgname}.service" \
                     "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
-    # Install README
     install -Dm644 "README.md" \
                     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-}
-
-post_install() {
-    echo ":: Sleep/resume detection is handled automatically via D-Bus"
-}
-
-post_upgrade() {
-    # Clean up old sleep hook from previous versions (< 0.8.0)
-    if [ -f "/usr/lib/systemd/system-sleep/${pkgname}-resume" ]; then
-        echo ":: Removing deprecated sleep hook (sleep/resume now handled via D-Bus)"
-        rm -f "/usr/lib/systemd/system-sleep/${pkgname}-resume"
-    fi
 }
 
 # vim:set ts=4 sw=4 et:
