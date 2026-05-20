@@ -2,7 +2,7 @@
 
 pkgname=easyrpg-player-git
 _pkgname=${pkgname%-*}
-pkgver=0.8.1.r0.g2b909be57
+pkgver=0.8.1.r366.g9a8e2ff63
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)"
 arch=('x86_64')
@@ -11,12 +11,11 @@ license=('GPL-3.0-or-later')
 conflicts=("$_pkgname")
 provides=("$_pkgname=${pkgver%.r*}")
 makedepends=('git' 'cmake' 'ninja' 'asciidoctor' 'nlohmann-json')
-depends=('liblcf-git' 'sdl2' 'libpng' 'pixman' 'fmt' 'freetype2' 'harfbuzz'
+depends=('liblcf-git' 'sdl3' 'libpng' 'pixman' 'fmt' 'freetype2' 'harfbuzz'
          'mpg123' 'libsndfile' 'libvorbis' 'opusfile' 'speexdsp' 'lhasa'
-         'hicolor-icon-theme')
+         'hicolor-icon-theme' 'fluidsynth')
 optdepends=('alsa-lib: native MIDI playback (needs sequencer)'
             'wildmidi: decoder for MIDI (needs "GUS patches")'
-            'fluidsynth: better MIDI decoder (needs soundfont)'
             'libxmp: decoder for tracker music, used by few games'
             'rpg2000-rtp: run time package for some 2k games'
             'rpg2003-rtp: run time package for some 2k3 games'
