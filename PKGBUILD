@@ -7,7 +7,7 @@
 test ! -d FreeCAD -a -d ../freecad-git/FreeCAD && ln -s ../freecad-git/FreeCAD .
 
 pkgname=freecad-weekly
-pkgver=1.2.0dev.2026.05.13
+pkgver=1.2.0dev.2026.05.20
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout of last weekly-YYYY.MM.DD tag'
 arch=('x86_64')
