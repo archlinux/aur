@@ -1,7 +1,7 @@
 pkgbase = legion-gui
 	pkgdesc = Legion GUI (Sparta successor), ported from Kali Linux for Arch Linux
 	pkgver = 0.7.0.r0.c4a3604
-	pkgrel = 12
+	pkgrel = 13
 	url = https://gitlab.com/kalilinux/packages/legion
 	arch = any
 	license = GPL-3.0-only
@@ -30,6 +30,16 @@ pkgbase = legion-gui
 	depends = xorg-server-xvfb
 	optdepends = nikto: web server scanning actions
 	optdepends = whatweb: web fingerprinting actions
+	optdepends = wpscan: WordPress scanning actions
+	optdepends = hydra: brute-force actions
+	optdepends = gobuster: web content discovery fallback
+	optdepends = feroxbuster-bin: web content discovery actions
+	optdepends = nuclei-bin: nuclei web and CVE actions
+	optdepends = httpx-bin: ProjectDiscovery httpx binary, installed as httpx-toolkit
+	optdepends = dirsearch: web content discovery actions
+	optdepends = ffuf: web fuzzing actions
+	optdepends = katana-bin: ProjectDiscovery crawler actions
+	optdepends = dirb: common web wordlist
 	optdepends = smtp-user-enum-git: SMTP enumeration actions
 	backup = etc/legion.conf
 	source = git+https://gitlab.com/kalilinux/packages/legion.git#branch=kali/master
