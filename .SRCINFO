@@ -1,5 +1,5 @@
 pkgbase = ils
-	pkgdesc = A fast, interactive file explorer for the terminal
+	pkgdesc = Interactive List Command
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/dfandinodovalo/ils

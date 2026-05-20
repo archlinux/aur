@@ -5,7 +5,7 @@ _pkgname=ils
 pkgname=${_pkgname}
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A fast, interactive file explorer for the terminal"
+pkgdesc="Interactive List Command"
 
 _github="https://github.com/${_pkgauthor}/${_pkgname}"
 url="${_github}"
