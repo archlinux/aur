@@ -1,6 +1,6 @@
 # Maintainer: 123llyrr
 pkgname=plank-wayland-git
-pkgver=r3.1334e4c
+pkgver=r4.43b3a52
 pkgrel=1
 pkgdesc="Plank-like Wayland dock and launcher powered by Quickshell"
 arch=('any')
@@ -29,6 +29,7 @@ package() {
     chmod 755 "$pkgdir/usr/share/plank-wayland/run.sh"
 
     install -Dm644 plank-wayland.desktop "$pkgdir/usr/share/applications/plank-wayland.desktop"
+    install -Dm644 icons/plank-wayland.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/plank-wayland.svg"
 
     install -dm755 "$pkgdir/usr/bin"
     ln -s /usr/share/plank-wayland/run.sh "$pkgdir/usr/bin/plank-wayland"
