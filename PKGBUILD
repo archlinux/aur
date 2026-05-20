@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=rufin
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Native GTK4 Jellyfin/Subsonic Client in Rust'
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ optdepends=(
 conflicts=('rufin-git')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('48548db6f2e28ce7ced6670204748d422cd5cd0bd83d43d137fa877f050b4fca')
+sha256sums=('e5d37d14d200b487380b91dddbe21180be02b7a272b6d2b634e3bc761c6fe088')
 
 prepare() {
   cd "Rufin-${pkgver}" || return
@@ -68,6 +68,8 @@ package() {
     "$pkgdir/usr/share/metainfo/io.github.screwys.Rufin.metainfo.xml"
   install -Dm644 data/icons/hicolor/scalable/apps/io.github.screwys.Rufin.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.screwys.Rufin.svg"
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/64x64/apps" \
+    data/icons/hicolor/64x64/apps/*.png
 
   local lang po_file
   for po_file in po/*.po; do
