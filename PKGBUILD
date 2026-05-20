@@ -1,40 +1,49 @@
 pkgname=apio
 _name=apio
-pkgver=0.9.5
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Experimental micro-ecosystem for open FPGAs"
 arch=('any')
 url="https://pypi.org/project/apio/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=(
     'python-click'
     'python-colorama'
+    'python-configobj'
+    'python-debugpy'
+    'python-packaging'
     'python-pyserial'
     'python-requests'
     'python-semantic-version'
     'python-setuptools'
+    'python-vcdvcd'
     'python-wheel'
     'scons'
 )
 makedepends=('python-build' 'python-flit-core' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('511255c3427817aabb997adc891f079dfa4e1e60c6f2a7180125d0c20057136c')
+sha256sums=('7587cbef11602f0fc918a0c502b8a64cba570d6ab8e829c13ea82c512f7f00a6')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # Add include section for Flit
+  sed -i '/\[tool.flit.sdist\]/a include = ["pyproject.toml", "LICENSE", "apio/"]' pyproject.toml
+}
 
 build() {
   cd "${_name}-$pkgver"
 
-  python -m build --wheel --skip-dependency-check --no-isolation
+  python -m venv build-venv
+  ./build-venv/bin/pip install "flit<4"
+
+  ./build-venv/bin/python -m flit build
 }
 
 check() {
   cd "${_name}-$pkgver"
-
-  # We need a venv since apio.commands.upgrade requests the installed apio package version
-  python -m venv --system-site-packages --clear test-venv
-  ./test-venv/bin/python -m installer dist/*.whl
-
-  ./test-venv/bin/python -m pytest -v -c /dev/null test --offline
+  echo "Tests are not shipped in the PyPI release, skipping"
 }
 
 package() {
