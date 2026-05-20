@@ -1,7 +1,7 @@
 # Maintainer: Elk Cloner <dev [at] elkcl [dot] ru>
 
 pkgname=yukigram-bin
-pkgver=6.8.2.2_pre.4
+pkgver=6.8.2.2
 pkgrel=1
 pkgdesc="Telegram Desktop, minus the bullshit, plus the features"
 arch=(x86_64)
@@ -19,11 +19,10 @@ conflicts=(telegram-desktop)
 provides=(telegram-desktop)
 
 source=($url/releases/download/v${pkgver/_/-}/binary-${CARCH}.tar.gz)
-sha256sums=('0bfa33c5aa88a5a31f44e911bc1bccff829d9f3ea7c3ef221f01ff7d95d01a56')
+sha256sums=('021ccebaa5bfe586e72253696f8f4b07befed7fbdc76886950d7509b5acb3961')
 
 package() {
 	install -dm755 "$pkgdir/usr"
-
-	cp -r "$srcdir/bin" "$pkgdir/usr"
-	cp -r "$srcdir/share" "$pkgdir/usr"
+	cp -a "$srcdir/bin" "$pkgdir/usr"
+	cp -a "$srcdir/share" "$pkgdir/usr"
 }
