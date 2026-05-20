@@ -7,13 +7,14 @@ pkgrel=1
 pkgdesc="Open Source Airtable Alternative: Turns any MySQL, PostgreSQL, SQL Server, SQLite & MariaDB into a smart spreadsheet."
 
 arch=("x86_64")
-license=('AGPL-3.0-only')
+license=('SUL-1.0')
 
 url="https://nocodb.com"
 _src="https://github.com/nocodb/nocodb"
 
 provides=(nocodb)
 conflicts=(nocodb)
+depends=(libgcc glibc libstdc++)
 
 install="${pkgname}.install"
 options=(!strip)
