@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=dusklight
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -21,7 +21,7 @@ sha256sums=('da3145d2795552aa319fd13eed8b42089cb1e07b9643521ad514a461b9cc53ca'
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	git config submoudle.extern/aurora.url "$srcdir/aurora"
+	git config submodule.extern/aurora.url "$srcdir/aurora"
 	git -c protocol.file.allow=always submodule update
 }
 
