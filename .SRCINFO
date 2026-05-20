@@ -1,0 +1,19 @@
+pkgbase = python-seppia
+	pkgdesc = Seppia — personal assistant CLI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lucafulgenzi/seppia
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-typer
+	depends = python-rich
+	depends = python-httpx
+	depends = python-websockets
+	source = https://files.pythonhosted.org/packages/source/s/seppia/seppia-0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-seppia
