@@ -1,0 +1,7 @@
+#!/bin/sh
+
+post_upgrade() {
+  if (( "$(vercmp "$2" 4.10)" < 0 )); then
+    echo "Please note: The btrfs-scrub@ timer and service files from the core/ package have been added to this one."
+  fi
+}
