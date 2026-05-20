@@ -1,6 +1,6 @@
 pkgbase = semaphore-bin
 	pkgdesc = Modern UI for Ansible (Binary Release)
-	pkgver = 2.18.2
+	pkgver = 2.18.4
 	pkgrel = 1
 	url = https://www.semaphoreui.com/
 	install = semaphore.install
@@ -16,9 +16,9 @@ pkgbase = semaphore-bin
 	source = semaphore.sysusers.d
 	sha256sums = 3fde097494ba8433a972b3cdf175a4feff66005e21d4009b07437686220b9a00
 	sha256sums = fb2699dfd2c5873ae5ffb340bb38d88ea7ab39034f338ba2915e8e91320e9945
-	source_x86_64 = https://github.com/semaphoreui/semaphore/releases/download/v2.18.2/semaphore_2.18.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8a2cf595c64472c2592b2196d3aebe9fa18f43fba7ce6e14f54364a7bd93ef5d
-	source_aarch64 = https://github.com/semaphoreui/semaphore/releases/download/v2.18.2/semaphore_2.18.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = bb0c27ac83bf686d2d693b3cbe27cc0dbf3cb52a085f4443c50416b6f963d0d7
+	source_x86_64 = https://github.com/semaphoreui/semaphore/releases/download/v2.18.4/semaphore_2.18.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = bf6b8116824dc818879a40a90bf884194ea4e1e5fe0b3fce1e033927aa609e5b
+	source_aarch64 = https://github.com/semaphoreui/semaphore/releases/download/v2.18.4/semaphore_2.18.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = dd52d98fdc20e7cccefffb1c35b57c234b88ca6022ab9fa92278fd79842c50e4
 
 pkgname = semaphore-bin
