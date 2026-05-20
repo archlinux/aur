@@ -1,0 +1,22 @@
+pkgbase = umpire-mpi
+	pkgdesc = Application-focused management and coordination of complex hierarchical memory (MPI build)
+	pkgver = 2025.12.0
+	pkgrel = 1
+	url = https://github.com/LLNL/Umpire
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = fmt
+	depends = gcc-libs
+	depends = openmpi
+	provides = umpire=2025.12.0
+	conflicts = umpire
+	conflicts = umpire-cuda
+	source = umpire-2025.12.0.tar.gz::https://github.com/LLNL/Umpire/archive/refs/tags/v2025.12.0.tar.gz
+	source = blt-e346c776b27493aa058fac5c7afc9a09bb6014bd.tar.gz::https://github.com/LLNL/blt/archive/e346c776b27493aa058fac5c7afc9a09bb6014bd.tar.gz
+	source = camp-a8caefa9f4c811b1a114b4ed2c9b681d40f12325.tar.gz::https://github.com/LLNL/camp/archive/a8caefa9f4c811b1a114b4ed2c9b681d40f12325.tar.gz
+	sha256sums = 04f59c1e84d50a0fe2b165e136ebc3aba928d134449a419acc5a920e83cf0dcf
+	sha256sums = f810cf1d6081ccf1ba0454f09d3a7bbf76f270df717a4f61180ba54a577d6323
+	sha256sums = 6449e5d9a0d96b9ab26ab64ffc969a06b90443e8d913fd47eebb285b11da5289
+
+pkgname = umpire-mpi
