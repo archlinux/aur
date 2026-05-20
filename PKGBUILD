@@ -5,7 +5,7 @@
 # Contributor: Brandon Invergo <brandon@invergo.net>
 
 pkgname=img2pdf-git
-pkgver=0.6.3.r1.g8036638
+pkgver=0.6.3.r3.g8bd5855
 pkgrel=1
 epoch=1
 pkgdesc='Losslessly convert raster images to PDF'
@@ -27,6 +27,12 @@ conflicts=('img2pdf')
 source=("git+${url}")
 md5sums=(SKIP)
 
+prepare() {
+    cd ${pkgname%-git}
+    # remove flit-core version restriction
+    sed -i 's/,<4//' pyproject.toml
+}
+
 pkgver() {
     cd ${pkgname%-git}
     git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
@@ -44,7 +50,11 @@ check() {
         -i src/img2pdf_test.py
 
     # Failures with depth
-    pytest -vv --color=yes || echo "Tests failed"
+    pytest -vv --color=yes \
+        --deselect 'src/img2pdf_test.py::test_miff_cmyk8[internal]' \
+        --deselect 'src/img2pdf_test.py::test_miff_cmyk8[pikepdf]' \
+        --deselect 'src/img2pdf_test.py::test_miff_cmyk16[internal]' \
+        --deselect 'src/img2pdf_test.py::test_miff_cmyk16[pikepdf]'
 }
 
 package() {

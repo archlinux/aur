@@ -1,6 +1,6 @@
 pkgbase = img2pdf-git
 	pkgdesc = Losslessly convert raster images to PDF
-	pkgver = 0.6.3.r1.g8036638
+	pkgver = 0.6.3.r3.g8bd5855
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.mister-muffin.de/josch/img2pdf
