@@ -1,15 +1,15 @@
 # Author: RickaPrincy <rckprincy@gmail.com>
 pkgname=libtempli
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="Templi is a tool that simplifies boilerplate creation and usage"
 arch=('x86_64')
 depends=()
 url="https://github.com/RickaPrincy/Templi"
 license=('MIT')
-source=("templi-cli-linux-x86_64@$pkgver.tar.gz::https://github.com/RickaPrincy/Templi/releases/download/v4.1.2/templi-cli-linux-x86_64@$pkgver.tar.gz")
+source=("templi-lib-linux-x86_64@$pkgver.tar.gz::https://github.com/RickaPrincy/Templi/releases/download/v4.1.3/templi-lib-linux-x86_64@$pkgver.tar.gz")
 
-sha256sums=("9033fef233a04c4cebefbee345087d034e8c00e32acb7deba55709b0d2c4a930")
+sha256sums=("8858f0cc384d9a7b3616e902a81162d7d56d75e6e1248ca94e24e9ebefb5a0b2")
 
 package() {
     echo "Installing to \"$pkgdir/usr/\""
