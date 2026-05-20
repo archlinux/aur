@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-dam-bin
 _pkgname='Electron DAM'
-pkgver=1.1.0
+pkgver=1.1.1
 _electronversion=39
 pkgrel=1
 pkgdesc="A bundle based digital asset manager built on top of electron using React and typescript. Featuring Semantic Search and Ollama support. (Prebuilt version.Use system-wide electron)."
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}.linux.${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d90931f5013dd7e7ecbbb5691cf4a9e082f0c5d993479fd2ade12da7dbc8d43d'
+sha256sums=('3d30af2f6451e7e67e9f46c22328cf7676882c5d1da0955b9e9d73726896b971'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
