@@ -1,7 +1,7 @@
 # Maintainer: Andersmmg <andersmmg at duck dot com>
 pkgname=hyprmod-git
 _pkgname=hyprmod
-pkgver=r43.83b9838
+pkgver=r67.e746aa6
 pkgrel=1
 pkgdesc="A native GTK4/libadwaita settings app for Hyprland."
 arch=('x86_64')
