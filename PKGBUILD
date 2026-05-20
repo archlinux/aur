@@ -1,36 +1,22 @@
-# Maintainer: Sasha Marie te Rehorst <sasha.marieterehorst@gmail.com>
-# Contributor: Martin Stolpe <martin dot stolpe at gmail dot com>
-# Contributor: Antonio Rojas <arojas@archlinux.org>
-
+# Maintainer: User8395 <therealuser8395@proton.me>
 _pkgname=kuserfeedback
 pkgname=kuserfeedback-git
 pkgver=6.22.0.r10.ge2a29c6
 pkgrel=1
 pkgdesc="Framework for collecting user feedback for applications via telemetry and surveys (Git version)"
-arch=(x86_64)
-url="https://kde.org/products/frameworks/"
+arch=(any)
+url="https://invent.kde.org/libraries/kuserfeedback.git"
 license=(LGPL-2.0-only LGPL-3.0-only)
-depends=(gcc-libs glibc qt6-base)
-makedepends=(git extra-cmake-modules qt6-tools clang qt6-charts qt6-svg qt6-declarative)
-optdepends=('qt6-declarative: QML bindings'
-            'qt6-charts: User Feedback console'
-            'qt6-svg: User Feedback console')
+depends=(gcc-libs glibc qt6-base qt6-declarative qt6-multimedia kcolorscheme-git kconfig-git kcoreaddons-git kcrash-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kirigami-git kitemmodels-git ksvg-git libstdc++-git sonnet-git)
+makedepends=(git extra-cmake-modules-git)
+optdepends=()
 conflicts=(kuserfeedback kuserfeedback5)
-provides=(kuserfeedback)
-replaces=(kuserfeedback5)
-source=("git+https://invent.kde.org/libraries/$_pkgname.git")
+source=("git+https://invent.kde.org/libraries/kuserfeedback.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  local _ver
-  _ver="$(git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
-
-  if [ -z "$_ver" ]; then
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  else
-    echo "$_ver"
-  fi
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
