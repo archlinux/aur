@@ -1,13 +1,13 @@
 pkgname=zeldaladxhd-bin
 pkgver=v1.8.4
-pkgrel=1
+pkgrel=2
 scriptver=1.0.1
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 pkgdesc="Open source and unofficial Links Awakening DX HD PC port"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated"
-depends=('zenity' 'yad' 'git')
+depends=('zenity' 'yad' 'git' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'openal' 'libgl')
 options=('!strip')
 license=('GPL')
 makedepends=('unzip')
@@ -24,11 +24,6 @@ package() {
    install -dm755 "$pkgdir/usr/share/applications"
    install -dm755 "$pkgdir/usr/share/pixmaps"
 
-   #Unpack Appimage
-   #cd $srcdir
-   #./LADXHD-Patcher-*.AppImage --appimage-extract
-
-   #install -Dm755 "$srcdir/squashfs-root/usr/bin/Patcher" "$pkgdir/usr/share/games/Zeldaladxhd/patcher"
    local patcher_pattern
    case "$CARCH" in
       x86_64) patcher_pattern='*Patcher-*x64*.AppImage' ;;
