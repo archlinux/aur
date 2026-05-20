@@ -6,7 +6,7 @@
 pkgname=certbot-isolated
 _reponame="certbot"
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An ACME client - version with isolated dns-lexicon to avoid conflict with python-lexicon'
 arch=(any)
 license=(Apache-2.0)
@@ -14,7 +14,7 @@ url='https://certbot.eff.org'
 depends=(
   ca-certificates
   python
-  "python-acme=$pkgver"
+  "python-acme-isolated=$pkgver"
   python-configargparse
   python-configobj
   python-cryptography
