@@ -2,7 +2,7 @@
 
 pkgname=sunsetr-git
 _realname=sunsetr
-pkgver=r403.6e994ac
+pkgver=0.11.1.r134.g3564204
 pkgrel=1
 pkgdesc="Automatic blue light filter for Hyprland, Niri, and everything Wayland (git version)"
 arch=('x86_64')
@@ -12,16 +12,19 @@ depends=('wayland')
 makedepends=('git' 'rust' 'cargo')
 provides=('sunsetr')
 conflicts=('sunsetr' 'sunsetr-bin')
+replaces=('sunsetr-git-debug')
+options=('!debug')
 source=("${_realname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_realname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "${srcdir}/${_realname}"
+    export SUNSETR_VERSION="$pkgver"
     cargo build --release --locked
 }
 
