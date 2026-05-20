@@ -1,6 +1,6 @@
 pkgbase = joplin-server-bin
 	pkgdesc = Joplin Server, via Docker image
-	pkgver = 3.6.1
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://hub.docker.com/r/joplin/server
 	arch = any
