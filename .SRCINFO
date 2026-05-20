@@ -1,7 +1,7 @@
 pkgbase = ttf-tiresias
 	pkgdesc = A set of free Sans Serif TrueType fonts
 	pkgver = 20090804
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.fontsquirrel.com/fonts/Tiresias-Infofont
 	arch = any
 	license = GPL3
