@@ -2,12 +2,11 @@
 
 pkgname=ttf-tiresias
 pkgver=20090804
-pkgrel=10
+pkgrel=11
 pkgdesc="A set of free Sans Serif TrueType fonts"
 arch=('any')
 url="https://www.fontsquirrel.com/fonts/Tiresias-Infofont"
 license=('GPL3')
-DLAGENTS=('https::/usr/bin/curl -A "Mozilla/5.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 source=("$pkgname.zip::https://www.fontsquirrel.com/fonts/download/Tiresias-Infofont")
 sha256sums=('SKIP')
 
