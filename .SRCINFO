@@ -1,6 +1,6 @@
 pkgbase = kate-root
 	pkgdesc = Advanced Text Editor from the KDE project, patched to be able to run as root.
-	pkgver = 26.04.0
+	pkgver = 26.04.1
 	pkgrel = 1
 	url = https://apps.kde.org/kate/
 	arch = x86_64
@@ -68,24 +68,24 @@ pkgbase = kate-root
 	optdepends = rust: Rust LSP support.
 	optdepends = svgpart: SVG preview.
 	optdepends = texlab: LaTeX LSP support.
-	provides = kate=26.04.0
-	provides = kwrite=26.04.0
-	provides = kate-kf6=26.04.0
-	provides = kwrite-kf6=26.04.0
-	provides = kate-qt6=26.04.0
-	provides = kwrite-qt6=26.04.0
+	provides = kate=26.04.1
+	provides = kwrite=26.04.1
+	provides = kate-kf6=26.04.1
+	provides = kwrite-kf6=26.04.1
+	provides = kate-qt6=26.04.1
+	provides = kwrite-qt6=26.04.1
 	conflicts = kate
 	conflicts = kwrite
 	replaces = kwrite<=23.99
 	replaces = kwrite-root
-	source = https://download.kde.org/stable/release-service/26.04.0/src/kate-26.04.0.tar.xz
-	source = https://download.kde.org/stable/release-service/26.04.0/src/kate-26.04.0.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/26.04.1/src/kate-26.04.1.tar.xz
+	source = https://download.kde.org/stable/release-service/26.04.1/src/kate-26.04.1.tar.xz.sig
 	source = 0001-Defuse-root-block.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = ad4a04785a289f9ffb58f71eae6f5f2236118c09bd08b773b49a4a6363418d0d
-	sha256sums = 5765cc4e9591f7f508625385696a6210b708624ce084d6a0d6c9a6dbe562cb9b
+	sha256sums = 74cce1dc7f488a6e1f0a4412abe5bc42edb4506b418c2f940b7ed11258022198
+	sha256sums = 9dd6ce3b0d5a4349cf15afe2fcdd8ed42da88c20e7f66f5792e46e6cd8a16ce1
 	sha256sums = abc7a33c8e8cd3a79ea4699bca0086c4146a9a43771a10fc60b97dcf62faca44
 
 pkgname = kate-root
