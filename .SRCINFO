@@ -1,6 +1,6 @@
 pkgbase = yuri
 	pkgdesc = yuri straight in your terminal
-	pkgver = 0.1.0.r0.geda526c
+	pkgver = 0.1.0.r32.g504737b
 	pkgrel = 1
 	url = https://github.com/vlensys/yuri
 	arch = any
