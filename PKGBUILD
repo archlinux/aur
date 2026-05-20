@@ -1,6 +1,6 @@
 # Maintainer: croaky-fx <217624563+croaky-fx@users.noreply.github.com>
 pkgname=oxiclean
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Fast Cross-Distribution Linux System Cleaner written in Rust"
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  cargo build --release  --locked
+  cargo build --release --locked
 }
 
 package() {
