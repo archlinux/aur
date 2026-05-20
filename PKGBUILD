@@ -14,7 +14,7 @@ source_x86_64=("https://github.com/WenYin-Community/zed-globalization/releases/d
 source_aarch64=("https://github.com/WenYin-Community/zed-globalization/releases/download/v${pkgver}/zedg-zh-cn-linux-aarch64-v${pkgver}.tar.gz")
 
 sha256sums_x86_64=('72a7b97c3461397195e677b075043b7dcad16f26fdeb7199fe0d60de25d4974a')
-sha256sums_aarch64=('37bf6163003d76d3d65fe50321d9603fa312ebf04d19c706124e9133dad32701')
+sha256sums_aarch64=('a50af818f5a59cb316830dedba7025efb0181a0e0de667c3edf755c779340c1e')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/"
