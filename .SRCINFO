@@ -1,7 +1,7 @@
 pkgbase = stremio-linux-shell
 	pkgdesc = A native Linux client for Stremio
 	pkgver = 1.0.0_beta.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Stremio/stremio-linux-shell
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,7 @@ pkgbase = stremio-linux-shell
 	depends = hicolor-icon-theme
 	depends = libayatana-appindicator
 	depends = nodejs
+	optdepends = xdg-desktop-portal-impl: enabling background mode & opening URLs
 	provides = stremio
 	conflicts = stremio
 	conflicts = stremio-git

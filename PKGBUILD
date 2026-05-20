@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=stremio-linux-shell
 pkgver=1.0.0_beta.13
-pkgrel=2
+pkgrel=3
 _cef_version=138.0.21
 _cef_full_name=cef_binary_138.0.21+g54811fe+chromium-138.0.7204.101_linux64_minimal.tar.bz2
 pkgdesc="A native Linux client for Stremio"
@@ -21,6 +21,7 @@ makedepends=(
     'clang'
     'patchelf'
 )
+optdepends=('xdg-desktop-portal-impl: enabling background mode & opening URLs')
 provides=('stremio')
 conflicts=('stremio' 'stremio-git' 'stremio-linux-shell-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
