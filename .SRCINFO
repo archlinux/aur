@@ -1,7 +1,7 @@
 pkgbase = gvmd
 	pkgdesc = Vulnerability manager Daemon
 	pkgver = 26.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gvmd
 	install = gvmd.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gvmd
 	depends = cjson
 	depends = gvm-libs
 	depends = libbsd
-	depends = libical
+	depends = libical3
 	depends = pg-gvm
 	depends = python
 	depends = gnutls

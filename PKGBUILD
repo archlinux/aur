@@ -2,13 +2,13 @@
 
 pkgname=gvmd
 pkgver=26.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
 license=('AGPL-3.0-only')
 install=gvmd.install
-depends=('ospd-openvas' 'cjson' 'gvm-libs' 'libbsd' 'libical' 'pg-gvm' 'python' 'gnutls' 'postgresql' 'libxslt')
+depends=('ospd-openvas' 'cjson' 'gvm-libs' 'libbsd' 'libical3' 'pg-gvm' 'python' 'gnutls' 'postgresql' 'libxslt')
 makedepends=('cmake' 'doxygen' 'xmltoman' 'libxslt')
 optdepends=('logrotate: for rotating logs'
             'greenbone-feed-sync: scripts for downloading updated feed informations')
@@ -33,6 +33,8 @@ build() {
   # Not compatible with C23
   CFLAGS+=' -std=gnu17'
 
+  # Not compatible with libical 4.x
+  export PKG_CONFIG_PATH="/usr/lib/libical3/pkgconfig:${PKG_CONFIG_PATH}"
   cmake \
     -B build \
     -S "$pkgname-$pkgver" \
