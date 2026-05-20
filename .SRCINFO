@@ -1,12 +1,12 @@
 pkgbase = loginx
 pkgdesc = Console getty/login/xinit replacement
-pkgver = 1.4
+pkgver = 1.5
 pkgrel = 1
 url = https://sourceforge.net/projects/loginx
 arch = x86_64
 license = ISC
 depends = pam
 depends = ncurses
-source = loginx-1.4.tar.gz::https://sourceforge.net/projects/loginx/files/loginx-1.4.tar.gz/download
-sha256sums = b11faae3ec0be7922127367974624dc574d8297f1f0e44d276c76f37ea5f46af
+source = loginx-1.5.tar.gz::https://sourceforge.net/projects/loginx/files/loginx-1.5.tar.gz/download
+sha256sums = fa699469cae83ae639b6b8d6f7a2855993df2603a2fb732709f0f2d21ea4e2b4
 pkgname = loginx
