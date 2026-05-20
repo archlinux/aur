@@ -4,7 +4,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots0.20-hidpi-xprop
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (stable, with patches)'
@@ -46,7 +46,7 @@ source=("${pkgname}::git+${url}#tag=${pkgver}"
         0001-xwayland-support-HiDPI-scale.patch
         0002-Fix-configure_notify-event.patch
         0003-Fix-size-hints-under-Xwayland-scaling.patch)
-sha512sums=('299f2a43ceb3a47f79fed3125139997698f06fc9406f75222ec5caa94eeda9667e5f8c83a6f706913aff46b45a22a85819f88e7224e75081e577070717e54dc7'
+sha512sums=('e9d87665966c9eb6056e8675844bf6d663f87bc8101edde91484dfa1cfa264718d78b342b6b1112cdbb5c5fa76070719340253af0513c62229ce2c8c31a1f25a'
             'b055e51be19d3921811871dd6cbeb75d697a3b806c92c422017d96c6de4a23c477caa3d82e500ff1f6f75dfa6f28a4a3b522eff10c956742c2a8e59d686bc0c9'
             '423784601afa4266faf3bce669a9cd98aec6ef726595a71611408b8f698942b1738e40639b7ade9bc918485ee53152c2665e7b3928984e454b3130aadd7f6623'
             '4c98b79ee474464cfa6fd03020d6b41464945ebb65e55ac06485876b6cbff19496af9acd7ac399578699c55052728fbad89f6491b6af58b4b7d05966adee6099'
