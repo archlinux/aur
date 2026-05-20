@@ -8,8 +8,8 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=4.6.2
-pkgrel=6
+pkgver=4.6.3
+pkgrel=1
 pkgdesc="Godot Engine - Prebuilt binary from GitHub"
 arch=(
   'aarch64'
@@ -50,15 +50,15 @@ source_x86_64=(
 )
 
 
-sha256sums=('3465f34ae41cb7d7c17b0516c7cce93cc8a7a4d62331456b7b18e4e1d1b064c2')
-sha256sums_aarch64=('c9154154de14acb1f38a6c8618f01f4111ecbd1cdbcecd0a5151be42de2bd1c9'
-                    '65ee9699f6112c87bff2191c8e82ed96cf4c48c6e1549b8a9eb2664a8e80c99e')
-sha256sums_armv7h=('d78dc08446394b6023624df7e1cead16fc9464409dd44df71f7febb5a88d1e88'
-                   '388f44c5fab27e69762c8061c290177156b53f63c71e1add01cefd53ed5a1de0')
-sha256sums_i686=('5c750b9ad53955f1e54fdf2dd61f75c6074d4972872b12e64046ec2f2b928c12'
-                 '9d96e2ce7578a6f323a4ab02a7d82c518dd139c802d170270ca59a73a134aa29')
-sha256sums_x86_64=('30e6b6d141f0cd5bebd629ad1d0ef1324e60091bb20662d026b402ba58c59937'
-                   '7d53302c31648ad98b620e8ca5b0c869c1066495770e62b2fa770cfeb004f167')
+sha256sums=('2261028c0dfc10e0cf4800a5b2e5a57ea241f72965162327f5764d536a69a46a')
+sha256sums_aarch64=('90c70382eee1542904bf507b9bdc6e62a230ac73fd214bf3887a9e0a4d85aeed'
+                    '970d2fecb66d8cff7457903e291cac4293e2468d24375db58b747a0f8b6c58e4')
+sha256sums_armv7h=('9db8b77e916d45f9368c7654b9fa9b0e9b03dacd032118ad854f96c6e62c21b9'
+                   '17054d83892fefb920a4a00b06d7cec4ceee877ceec8acd2ca4deefe5fb178fa')
+sha256sums_i686=('03acad0ea2713954c3b499eaf3a2863892996100b91e58023bb125edb07f6292'
+                 'a5a96b09bfcfabb2ff2f50aa3ba0f24ec41b2437729c8ccbaf0045c91b724b60')
+sha256sums_x86_64=('d0bc2113065e481c9c2c2b2c37daa4e8be3fe9e27f0ab9ab0b6096e9a37907f3'
+                   '702a8a6785060203fd46373adf864586ecf0c377ac685d7107dde66b1eba0a9e')
 
 prepare(){
 
