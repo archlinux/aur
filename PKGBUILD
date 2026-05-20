@@ -15,7 +15,7 @@ noextract=()
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "plasma-settings"
+  cd "plasma-player"
   git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
