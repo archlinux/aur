@@ -1,7 +1,7 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 
 pkgname=phonto
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='GPU-accelerated video wallpaper program for wayland'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL-3.0-or-later)
 depends=(wayland gst-plugin-va)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=(4d040d5aa78d574fd21f36602d56ba8d7b973d844370d2e61644045db1392610)
+sha256sums=(205505094128583d8364090754d1f367216fd07d4ae04b6fba20640cc71a9403)
 options=(!strip !debug)
 
 prepare() {
