@@ -1,6 +1,6 @@
 pkgbase = ruby-gdk_pixbuf2
 	pkgdesc = Ruby/GdkPixbuf2 is a Ruby binding of GdkPixbuf-2.x.
-	pkgver = 4.3.2
+	pkgver = 4.3.6
 	pkgrel = 1
 	url = https://github.com/ruby-gnome/ruby-gnome
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-gdk_pixbuf2
 	makedepends = ruby-native-package-installer
 	makedepends = ruby-rake
 	depends = ruby
-	depends = ruby-gio2=4.3.2
+	depends = ruby-gio2=4.3.6
 	depends = gdk-pixbuf2
 	replaces = ruby-gdkpixbuf2
-	source = ruby-gnome-4.3.2.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/4.3.2.tar.gz
-	sha256sums = a2b66682d55b1815710361d275603b544e207d63e5b93be8a14a239657774f01
+	source = ruby-gnome-4.3.6.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/4.3.6.tar.gz
+	sha256sums = 95cbee4e62acdc270ab6bf13a5fd2f911cf038cee12644aa62b1ffa246c05e76
 
 pkgname = ruby-gdk_pixbuf2
