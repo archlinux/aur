@@ -6,7 +6,7 @@ _appname=omny
 pkgname=${_gitname}-bin
 pkgdesc="TUI SSH dashboard & server manager — manage all your servers from a single terminal window"
 
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('62cbef2f7df5217f333839853a23b814158983564b09b6365c17344deb584908'
+sha256sums=('4316319551ad8ab99795b7efa5ec7f206c7516bd36ec5b0d8644d72fc54f4e3b'
             'c0004499a5a1e5b50c2953271bd448da1f707e34502e2f3298f5b9ff70d548ca')
-sha256sums_x86_64=('8a898d3620e8bdd7ab1cc8637b1a24f1b27135e9ae62e54145c7eea5f3e1b8f9')
+sha256sums_x86_64=('dddfbb8e19826e1e63d84f29ac4cb4b1b1f50fd1bf15bd1e8cb1cc8f21f108f4')
 
 
 package() {
