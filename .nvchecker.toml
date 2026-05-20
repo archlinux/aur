@@ -1,5 +1,5 @@
-[nping-bin]
+[nbping-bin]
 source = "github"
-github = "hanshuaikang/Nping"
+github = "hanshuaikang/NBping"
 use_latest_release = true
 prefix = "v"
