@@ -24,7 +24,7 @@ package() {
 
     cp -r "${srcdir}/Antigravity IDE/"* "${pkgdir}/opt/${pkgname}/"
 
-    ln -s "/opt/${pkgname}/antigravity" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/${pkgname}/antigravity-ide" "${pkgdir}/usr/bin/${pkgname}"
 
     install -Dm644 "${srcdir}/antigravity.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/Antigravity IDE/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
