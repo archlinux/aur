@@ -1,6 +1,6 @@
 pkgbase = local-chaos
 	pkgdesc = A script for creating and managing a local subset of Chaotic-AUR
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/plax/local-chaos
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = local-chaos
 	depends = coreutils
 	depends = pacman
 	depends = pacutils
-	source = local-chaos-0.1.1.tar.gz::https://codeberg.org/plax/local-chaos/archive/0.1.1.tar.gz
-	sha256sums = e70fd461ae89a2de18241118ca11b6b06acaa91b84654da4d66f118ac22b35fe
+	source = local-chaos-0.2.0.tar.gz::https://codeberg.org/plax/local-chaos/archive/0.2.0.tar.gz
+	sha256sums = b21382b48b5d17a63e19fc7fdb750e6eee91c9918cac2a5a245f7820ac1f05d7
 
 pkgname = local-chaos
