@@ -1,6 +1,6 @@
 pkgbase = nono-ai-bin
 	pkgdesc = Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock (pre-built binary)
-	pkgver = 0.56.0
+	pkgver = 0.57.0
 	pkgrel = 1
 	url = https://github.com/always-further/nono
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = nono-ai-bin
 	conflicts = nono-ai-git
 	options = !strip
 	options = !debug
-	source = LICENSE-0.56.0::https://raw.githubusercontent.com/always-further/nono/v0.56.0/LICENSE
-	source = README-0.56.0.md::https://raw.githubusercontent.com/always-further/nono/v0.56.0/README.md
+	source = LICENSE-0.57.0::https://raw.githubusercontent.com/always-further/nono/v0.57.0/LICENSE
+	source = README-0.57.0.md::https://raw.githubusercontent.com/always-further/nono/v0.57.0/README.md
 	sha256sums = 7310e9389f298b89bb2f90ac4b6081ed5b6a1c4a7b8547df5d52966a57cb0929
 	sha256sums = a8f2602b8fdbf9a94a0d224892995767b3c31d8c33dba860c4b327c2831b0b19
-	source_x86_64 = nono-0.56.0-x86_64.tar.gz::https://github.com/always-further/nono/releases/download/v0.56.0/nono-v0.56.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9f68637c5bac1ba7036249f4874f528a307cbeba6fa99b899129d45632041f58
-	source_aarch64 = nono-0.56.0-aarch64.tar.gz::https://github.com/always-further/nono/releases/download/v0.56.0/nono-v0.56.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = febe968c398b66268d4e81036adf5dc11ee88669cafdee026b2ea45be6eb9cbd
+	source_x86_64 = nono-0.57.0-x86_64.tar.gz::https://github.com/always-further/nono/releases/download/v0.57.0/nono-v0.57.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3b27a6d8a05a5034360bafd538cd52e0c87c1431346dee1246ddb6a8df01f8b1
+	source_aarch64 = nono-0.57.0-aarch64.tar.gz::https://github.com/always-further/nono/releases/download/v0.57.0/nono-v0.57.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 659c8fd7bb7f4652b02bc15814254817e2a5f2204d2d34201e51a2ca5d10a71f
 
 pkgname = nono-ai-bin
