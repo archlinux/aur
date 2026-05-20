@@ -1,6 +1,6 @@
 pkgbase = redmine-cli-bin
 	pkgdesc = Command-line interface for Redmine
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/aarondpn/redmine-cli
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = redmine-cli-bin
 	optdepends = fish: fish completions
 	provides = redmine-cli
 	conflicts = redmine-cli
-	source = upstream-LICENSE::https://raw.githubusercontent.com/aarondpn/redmine-cli/v2.5.0/LICENSE
+	source = upstream-LICENSE::https://raw.githubusercontent.com/aarondpn/redmine-cli/v2.6.0/LICENSE
 	sha256sums = c36401440220a687e7586f5b9af730a964ced9f672e004dea4d74013fa04f760
-	source_x86_64 = redmine-cli-2.5.0-linux-amd64.tar.gz::https://github.com/aarondpn/redmine-cli/releases/download/v2.5.0/redmine-cli-linux-amd64.tar.gz
-	sha256sums_x86_64 = 03b3a71bb4d050d00583e154800610fecf0dfb46745e49069117cc18eb0106a6
-	source_aarch64 = redmine-cli-2.5.0-linux-arm64.tar.gz::https://github.com/aarondpn/redmine-cli/releases/download/v2.5.0/redmine-cli-linux-arm64.tar.gz
-	sha256sums_aarch64 = c73ccdf6782c44416cdf8786967bf5229af9c2f49253246d80b7122cf55f0e5e
+	source_x86_64 = redmine-cli-2.6.0-linux-amd64.tar.gz::https://github.com/aarondpn/redmine-cli/releases/download/v2.6.0/redmine-cli-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1fcdc7375ca5b37d5bccb112e3ea7045805ad018ebbc0b4164115402da079d62
+	source_aarch64 = redmine-cli-2.6.0-linux-arm64.tar.gz::https://github.com/aarondpn/redmine-cli/releases/download/v2.6.0/redmine-cli-linux-arm64.tar.gz
+	sha256sums_aarch64 = bab857c1fb3731d78d5e073dba16ae44eac5938bce0fcbcdd2d6b31cb741f717
 
 pkgname = redmine-cli-bin
