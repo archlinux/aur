@@ -1,7 +1,7 @@
 pkgbase = legion-gui
 	pkgdesc = Legion GUI (Sparta successor), ported from Kali Linux for Arch Linux
 	pkgver = 0.7.0.r0.c4a3604
-	pkgrel = 5
+	pkgrel = 12
 	url = https://gitlab.com/kalilinux/packages/legion
 	arch = any
 	license = GPL-3.0-only
