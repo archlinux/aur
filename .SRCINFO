@@ -1,6 +1,6 @@
 pkgbase = faden
 	pkgdesc = Faden - desktop app for qualitative interview research
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/ReadyPlayerNaN/faden
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = faden
 	depends = libsoup3
 	depends = hicolor-icon-theme
 	conflicts = faden-git
-	source = faden-0.2.3-linux-x86_64.tar.gz::https://github.com/ReadyPlayerNaN/faden/releases/download/v0.2.3/faden-0.2.3-linux-x86_64.tar.gz
-	sha256sums = 648ab1fdb8b0da8513bd42904f92140aab914bee992e405f39a608403b0cda58
+	source = faden-0.2.4-linux-x86_64.tar.gz::https://github.com/ReadyPlayerNaN/faden/releases/download/v0.2.4/faden-0.2.4-linux-x86_64.tar.gz
+	sha256sums = 626ae1bd47fcf77058eb99170cb8b1252079019891c6297843d883f3f35e8245
 
 pkgname = faden
