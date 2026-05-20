@@ -2,7 +2,7 @@
 
 _pkgname=mhrv-rs
 pkgname=mhrv-rs-bin
-pkgver=1.9.31
+pkgver=1.9.33
 pkgrel=1
 pkgdesc="Free DPI bypass via a Google Apps Script relay with TLS SNI concealment"
 arch=('aarch64' 'x86_64')
@@ -15,8 +15,8 @@ options=('!debug')
 source_aarch64=("${_pkgname}-${pkgver}-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/mhrv-rs-linux-arm64.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/mhrv-rs-linux-amd64.tar.gz")
 
-sha256sums_aarch64=('b11c58cdc70e14513857dfd521f6095aff99120e4a93066eef42f7ef92eab22d')
-sha256sums_x86_64=('9310270bf35ee1c1595ec54c7c41c0f24fbe80aa39aae01d6d7c985dc639017b')
+sha256sums_aarch64=('f88eea8e4dc4d144f7ffd2e5e524edb6a9539ec8e85c4778d8f290206f69e8ce')
+sha256sums_x86_64=('1f5d9181b9fcdca32fe72edf2777461b91a744b08b154eb02f12cf959501c928')
 
 package() {
     install -Dm755 ${srcdir}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
