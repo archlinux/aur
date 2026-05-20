@@ -1,12 +1,12 @@
 # Maintainer: Kuro <kuro@kuro.run>
 
 pkgname=echoroutine
-_pkgrepo=schedule-announcer
+_pkgrepo=EchoRoutine
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="AI-powered daily routine voice assistant — schedule blocks announced via ElevenLabs TTS"
 arch=('x86_64')
-url="https://github.com/kurojs/schedule-announcer"
+url="https://github.com/kurojs/EchoRoutine"
 license=('MIT')
 depends=(
   'opencode'
@@ -14,7 +14,7 @@ depends=(
   'systemd'
 )
 makedepends=('go')
-source=("$_pkgrepo::git+https://github.com/kurojs/schedule-announcer.git")
+source=("$_pkgrepo::git+https://github.com/kurojs/EchoRoutine.git")
 sha256sums=('SKIP')
 
 pkgver() {
