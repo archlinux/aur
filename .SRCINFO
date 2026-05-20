@@ -1,0 +1,25 @@
+pkgbase = gnome-theme-manager
+	pkgdesc = Application designed to seamlessly browse, download, install, and apply GNOME themes and customizations directly from gnome-look.org
+	pkgver = 2.0.beta
+	pkgrel = 1
+	url = https://github.com/unaibenidorm/Gnome-Theme-Manager
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = polkit
+	provides = gnome-theme-manager
+	conflicts = gnome-theme-manager
+	source = gnome-theme-manager::git+https://github.com/unaibenidorm/Gnome-Theme-Manager.git#tag=Beta-2.0
+	source = gnome-theme-manager-bin
+	sha256sums = efab5c647132512920845cdad906739e284fc5de5772d9c98fd7ef8cc11dbbcc
+	sha256sums = 93d3e7ac7ecd304e37b37487abae2d43880042116cc2a880c3160ffce811a4a5
+
+pkgname = gnome-theme-manager
