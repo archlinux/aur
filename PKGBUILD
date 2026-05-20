@@ -5,14 +5,14 @@
 pkgname=certbot-dns-ovh-isolated
 _reponame="certbot-dns-ovh"
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OVH DNS Authenticator plugin for Certbot - version with isolated dns-lexicon to avoid conflict with python-lexicon'
 arch=(any)
 license=(Apache-2.0)
 url='https://pypi.python.org/pypi/certbot-dns-ovh'
 depends=(
   "certbot-isolated=$pkgver"
-  "python-acme=$pkgver"
+  "python-acme-isolated=$pkgver"
 )
 makedepends=(
   git
