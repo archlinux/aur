@@ -1,7 +1,7 @@
 # Maintainer: Neal Peng <vimlinux@proton.me>
 pkgname=markra
 _pkgname=Markra
-pkgver=0.1.23
+pkgver=0.1.28
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor with native AI."
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('markra-bin')
 options=('!strip' '!debug')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x64.rpm")
 
-sha256sums=('c582159623c2cd0ccbce17cac5a1195ccd8707cea2ccc22c0ec0d510cffb4e60')
+sha256sums=('7ab24e816179992ca21d365d7dec8e38e7fc1e76f07e3db327dea61b20020656')
 
 package() {
     install -Dm755 -t "$pkgdir/usr/bin" "${srcdir}/usr/bin/markra"
