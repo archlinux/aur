@@ -1,0 +1,55 @@
+_refresh_desktop() {
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        update-desktop-database -q /usr/share/applications >/dev/null 2>&1 || true
+    fi
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        gtk-update-icon-cache -qtf /usr/share/icons/hicolor >/dev/null 2>&1 || true
+    fi
+}
+
+post_install() {
+    _refresh_desktop
+    cat <<'EOF'
+
+==> Codex Desktop (community Linux build). The in-app auto-updater is OFF;
+    update with:  sudo pacman -Syu
+
+==> Computer Use lets the Codex agent control your desktop. The MCP backend and
+    in-app UI are enabled in this build, but accessibility (a11y) and input need
+    a one-time, opt-in setup:
+
+      1. Install the runtime bits:
+           sudo pacman -S ydotool xdg-desktop-portal-wlr   # niri/sway/wlroots
+           #            ... or xdg-desktop-portal-gnome for GNOME/Mutter
+
+      2. Allow synthetic input (access to /dev/uinput):
+           sudo usermod -aG input "$USER"                  # then log out / back in
+           systemctl --user enable --now ydotool.service   # or run ydotoold manually
+
+      3. Enable the AT-SPI accessibility bus (read the apps' a11y tree):
+           gsettings set org.gnome.desktop.interface toolkit-accessibility true
+           # non-GNOME alternative:
+           busctl --user set-property org.a11y.Bus /org/a11y/bus org.a11y.Status \
+                  IsEnabled b true
+           # restart the target app afterwards so its a11y tree populates
+
+      4. Verify from the app's Computer Use panel (Doctor), or run the bundled
+         backend directly:
+           "$(find /opt/codex-desktop -name codex-computer-use-linux 2>/dev/null | head -1)" doctor
+
+    On niri, window list/focus works out of the box via niri IPC — no extra setup.
+
+==> Read Aloud (TTS) is opt-in: enable it in app settings, then the Kokoro voice
+    model downloads on first use (needs python-pip or uv, plus alsa-utils).
+    The remote-mobile-control feature is experimental; OpenAI may still reject
+    Linux host registration server-side.
+EOF
+}
+
+post_upgrade() {
+    _refresh_desktop
+}
+
+post_remove() {
+    _refresh_desktop
+}

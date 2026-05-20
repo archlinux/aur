@@ -1,0 +1,9 @@
+# makepkg build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+
+# makepkg VCS source mirror: a bare clone the git+ source caches next to the
+# PKGBUILD; it shares the package name. The build working copy lives in src/.
+/codex-desktop-linux/
