@@ -1,6 +1,6 @@
 pkgbase = arnis
 	pkgdesc = Generate any location from the real world in Minecraft
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/louis-e/arnis
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = arnis
 	depends = webkit2gtk-4.1
 	conflicts = arnis-bin
 	conflicts = arnis-git
-	source = arnis-2.7.0.tar.gz::https://github.com/louis-e/arnis/archive/refs/tags/v2.7.0.tar.gz
-	sha256sums = a325392dfcf17f414c2ef8667d55c2c88088b93d26d14c4623939ff6d8e02ef8
+	source = arnis-2.8.0.tar.gz::https://github.com/louis-e/arnis/archive/refs/tags/v2.8.0.tar.gz
+	sha256sums = 8a9ff671d974c30c2e3760429ac5b33988ba581b397bf9a3b758609584b31c1b
 
 pkgname = arnis
