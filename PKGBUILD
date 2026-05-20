@@ -2,11 +2,11 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette
-pkgver=0.2.1.g49
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 i686 x86_64)
-url="https://gitlab.gnome.org/Rirusha/${pkgname^}"
+url="https://altlinux.space/rirusha/${pkgname^}"
 license=(GPL-3.0-or-later)
 depends=(
   cairo
@@ -33,11 +33,11 @@ makedepends=(
   vala
 )
 options=(!debug)
-source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/${pkgname^}-v$pkgver.tar.gz")
-sha512sums=('7e61a736402a878634678a09d2fb9d9da93a14241df626eb67f86cf95756311dc4005a1d7c6bd217aac682b98e471aa15f72f8860d2f8eca0f9c92887d716692')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/sources.tar.gz")
+sha512sums=('958ab86fcdc46d385835b1098c26dc7b3499f0cb50470ca557ad9a7221d6113d6305232462ad36bb72f9d027df17869ad1fab8a68f172d5ded0c795fdde47ccd')
 
 build() {
-  arch-meson ${pkgname^}-v$pkgver build
+  arch-meson build
   meson configure  build --no-pager
   meson compile -C build
 }
