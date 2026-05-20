@@ -1,47 +1,45 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 pkgname=podctl-bin
-_pkgname=pods
+_pkgname=podctl
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup"
 arch=('x86_64')
-url="https://github.com/Rockykln/pods"
+url="https://github.com/Rockykln/podctl"
 license=('MIT' 'Apache-2.0')
 depends=('bluez-utils' 'dbus')
 optdepends=(
-  'libpulse: audio verbs (volume, mute, profile, codec, default sink, latency, pods meter)'
-  'systemd: pods install / pods reboot user services'
+  'libpulse: audio verbs (volume, mute, profile, codec, default sink, latency, podctl meter)'
+  'systemd: podctl install / podctl reboot user services'
 )
-# Installs /usr/bin/pods, /usr/bin/podsd etc. Conflicts with the
-# unrelated Podman tooling that uses the same `pods` binary name.
-provides=('podctl' 'pods')
-conflicts=('podctl' 'podctl-git' 'pods' 'pods-bin' 'pods-git')
-source=("${_pkgname}-${pkgver}-x86_64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/pods-${pkgver}-x86_64-linux-musl.tar.gz")
+provides=('podctl')
+conflicts=('podctl' 'podctl-git')
+source=("${_pkgname}-${pkgver}-x86_64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-x86_64-linux-musl.tar.gz")
 sha256sums=('b64a5ad9c0fb2f5dd3df1d40eae9d10c05bd9399ba853de3cebe270dc93cccc5')
 options=('!strip')   # musl-static binary, already stripped by release workflow
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}-x86_64-linux-musl"
 
-  install -Dm755 pods         "${pkgdir}/usr/bin/pods"
-  install -Dm755 podsd        "${pkgdir}/usr/bin/podsd"
-  install -Dm755 pods-tray    "${pkgdir}/usr/bin/pods-tray"
-  install -Dm755 pods-popup   "${pkgdir}/usr/bin/pods-popup"
+  install -Dm755 podctl         "${pkgdir}/usr/bin/podctl"
+  install -Dm755 podctld        "${pkgdir}/usr/bin/podctld"
+  install -Dm755 podctl-tray    "${pkgdir}/usr/bin/podctl-tray"
+  install -Dm755 podctl-popup   "${pkgdir}/usr/bin/podctl-popup"
 
-  install -Dm644 pods.1   "${pkgdir}/usr/share/man/man1/pods.1"
-  install -Dm644 podsd.1  "${pkgdir}/usr/share/man/man1/podsd.1"
+  install -Dm644 podctl.1   "${pkgdir}/usr/share/man/man1/podctl.1"
+  install -Dm644 podctld.1  "${pkgdir}/usr/share/man/man1/podctld.1"
 
-  install -Dm644 completion/pods.bash \
-    "${pkgdir}/usr/share/bash-completion/completions/pods"
-  install -Dm644 completion/_pods.zsh \
-    "${pkgdir}/usr/share/zsh/site-functions/_pods"
-  install -Dm644 completion/pods.fish \
-    "${pkgdir}/usr/share/fish/vendor_completions.d/pods.fish"
+  install -Dm644 completion/podctl.bash \
+    "${pkgdir}/usr/share/bash-completion/completions/podctl"
+  install -Dm644 completion/_podctl.zsh \
+    "${pkgdir}/usr/share/zsh/site-functions/_podctl"
+  install -Dm644 completion/podctl.fish \
+    "${pkgdir}/usr/share/fish/vendor_completions.d/podctl.fish"
 
   # The shipped .service files use /usr/local/bin as a placeholder so
-  # `pods install` can replace it with the per-user XDG path. For the
+  # `podctl install` can replace it with the per-user XDG path. For the
   # AUR package the binaries live in /usr/bin, so patch that in.
-  for unit in podsd.service pods-tray.service pods-popup.service; do
+  for unit in podctld.service podctl-tray.service podctl-popup.service; do
     sed "s|/usr/local/bin|/usr/bin|g" "${unit}" \
       > "${srcdir}/${unit}.fixed"
     install -Dm644 "${srcdir}/${unit}.fixed" \
