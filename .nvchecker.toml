@@ -1,0 +1,5 @@
+[ils]
+source = "github"
+github = "dfandinodovalo/ils"
+use_latest_release = true
+prefix = "v"

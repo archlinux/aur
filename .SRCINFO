@@ -1,0 +1,21 @@
+pkgbase = ils
+	pkgdesc = A fast, interactive file explorer for the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dfandinodovalo/ils
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	depends = ncurses
+	provides = ils
+	options = !debug
+	options = !lto
+	source = ils-1.0.0.tgz::https://github.com/dfandinodovalo/ils/archive/v1.0.0.tar.gz
+	source = LICENSE
+	sha256sums = 753d789971b0ce5a657f94eec36f147b96ccadba2132383787a1a1bf3f31eb49
+	sha256sums = edc676b7fe20e06a1c5d785bf6db356fa7d46e8156e649034185539b39920c47
+
+pkgname = ils
