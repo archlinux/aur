@@ -87,6 +87,7 @@ pkgver()
 {
   cd "${srcdir}/${_gitname}"
   git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)
 }
 
 #
@@ -103,13 +104,12 @@ prepare()
   #git submodule update --init
   git submodule init;
 
-  # NOTE these submodules are currenly only used by MacOS builds - ignore them for now:
-  # NOTE: submodules/hunspell, submodules/libssh, submodules/openssl-cmake, submodules/zlib
-  # TODO: see if submodules/wx-config-msys2 can be skipped too
+  # NOTE these submodules are currenly only used by MacOS/Msys builds - ignore them for now:
+  # NOTE: submodules/hunspell, submodules/libssh, submodules/openssl-cmake, submodules/zlib, submodules/wx-config-msys2
   git submodule --quiet deinit submodules/hunspell;  # MacOS only
   git submodule --quiet deinit submodules/libssh;  # MacOS only
   git submodule --quiet deinit submodules/openssl-cmake;  # MacOS only
-  git submodule --quiet deinit submodules/wx-config-msys2;  # MacOS only
+  git submodule --quiet deinit submodules/wx-config-msys2;  # MSys only
   git submodule --quiet deinit submodules/zlib;  # MacOS only
 
   git submodule update;
@@ -165,6 +165,7 @@ build()
     -DENABLE_LLDB=1 \
     -DENABLE_SFTP=1 \
     -DWITH_MYSQL=0 \
+    -DWITH_POSTGRES=0 \
     -DCOPY_WX_LIBS=0 \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 
