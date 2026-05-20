@@ -1,6 +1,6 @@
 pkgbase = libtape-git
 	pkgdesc = Tape library for your Cassette application (Unofficial Yandex Music SDK)
-	pkgver = r140.3f640f3
+	pkgver = r141.e153ada
 	pkgrel = 1
 	url = https://altlinux.space/rirusha/libtape
 	arch = aarch64

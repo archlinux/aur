@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=libtape-git
-pkgver=r140.3f640f3
+pkgver=r141.e153ada
 pkgrel=1
 pkgdesc="Tape library for your Cassette application (Unofficial Yandex Music SDK)"
 arch=(aarch64 i686 x86_64)
@@ -34,12 +34,6 @@ b2sums=('SKIP')
 pkgver() {
   cd ${pkgname%-git}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-  sed -i -e 's/(Error e)/(GLib.Error e)/g' \
-         -e 's/catch (Error e)/catch (GLib.Error e)/g' \
-            "$srcdir/libtape/lib/yandex-music/client.vala"
 }
 
 build() {
