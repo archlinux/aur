@@ -1,0 +1,19 @@
+pkgbase = pi3-smart-workspace
+	pkgdesc = Switch i3 workspaces based on which output your mouse cursor is on
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitea.weircon.dk/agw/pi3-smart-workspace
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python
+	depends = i3-wm
+	depends = python-i3ipc
+	depends = python-pynput
+	source = pi3-smart-workspace-0.2.1.tar.gz::https://gitea.weircon.dk/agw/pi3-smart-workspace/archive/v0.2.1.tar.gz
+	sha256sums = d35230028c08d91d356980ebaf77c512233ebfd3da3a44236868221e1e2e816f
+
+pkgname = pi3-smart-workspace
