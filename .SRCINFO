@@ -1,6 +1,6 @@
 pkgbase = otpclient-git
 	pkgdesc = A simple GTK+ v3 TOTP/HOTP client
-	pkgver = 5.0.3.r1.gc0a62d4
+	pkgver = 5.0.4.r1.g334e5b2
 	pkgrel = 1
 	url = https://github.com/paolostivanin/OTPClient
 	arch = x86_64
@@ -19,8 +19,10 @@ pkgbase = otpclient-git
 	provides = otpclient
 	conflicts = otpclient
 	source = git+https://github.com/paolostivanin/OTPClient?signed
+	source = 0001_dont-gsettings-iconcache.patch
 	validpgpkeys = 060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
+	sha256sums = a58c264507d7ce91600c30a2fe4841aeaf7b413260058cbac1ded2cb80251758
 
 pkgname = otpclient-git
