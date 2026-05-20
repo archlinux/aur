@@ -1,5 +1,5 @@
 pkgname=openmm
-pkgver=8.4.0
+pkgver=8.5.1
 pkgrel=1
 pkgdesc="Toolkit for molecular simulation using high performance GPU code"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('cuda: NVIDIA GPU support'
             'hip-runtime-amd: AMD GPU support'
             'rocm-cmake: AMD GPU support')
 source=("https://github.com/pandegroup/openmm/archive/${pkgver}.tar.gz")
-sha256sums=('2fbc4171a7d15342260a4eef0f09bdd5f8e002994b403dddb9b2a5eeba16724a')
+sha256sums=('16b2c2a4ce959be223ba4cc00dcb22a5d84ae3fb8c3948643632f6bda1ce6944')
 
 #export CC=gcc-14
 #export CXX=g++-14
@@ -28,12 +28,51 @@ build() {
     ../openmm-${pkgver}
   make
 }
-check () {
-  msg2 "Testing openmm"
-  cd "${srcdir}"/build
-  #make test
-}
 
+#check () {
+#  msg2 "Testing openmm"
+#  cd "${srcdir}"/build
+#  #make test
+#}
+
+#check() {
+#  msg2 "Testing openmm"
+#  cd "${srcdir}/build"
+#
+#  env \
+#    LD_LIBRARY_PATH="${PWD}" \
+#    OPENMM_PLUGIN_DIR="${PWD}" \
+#    ctest --output-on-failure
+#}
+
+check() {
+  if [[ "${OPENMM_SKIP_TESTS:-0}" == "1" ]]; then
+    warning "Skipping OpenMM tests because OPENMM_SKIP_TESTS=1"
+    return 0
+  fi
+
+  msg2 "Testing openmm (It can take 2-3 hours)"
+  cd "${srcdir}/build"
+
+  env \
+    LD_LIBRARY_PATH="${PWD}" \
+    OPENMM_PLUGIN_DIR="${PWD}" \
+    ctest --output-on-failure 2>&1 | tee test.log
+
+  status=${PIPESTATUS[0]}
+
+  # Ignore failures in stochastic tests 
+  if (( status != 0 )); then
+    failed=$(grep -c '\*\*\*Failed' test.log || true)
+    stochastic=$(grep -c 'This test is stochastic and may occasionally fail' test.log || true)
+
+    if (( failed > 0 && failed == stochastic )); then
+      warning "Ignoring ${failed} stochastic OpenMM test failure(s)"
+    else
+      return "$status"
+    fi
+  fi
+}
 
 package() {
   cd "${srcdir}"/build
