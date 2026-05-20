@@ -1,7 +1,7 @@
 pkgbase = electron42-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
 	pkgver = 42.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org
 	arch = aarch64
 	arch = armv7h
@@ -21,6 +21,8 @@ pkgbase = electron42-bin
 	conflicts = electron42
 	noextract = electron42-chromedriver-42.2.0-x86_64.zip
 	noextract = electron42-42.2.0-x86_64.zip
+	source = electron42.sh
+	sha256sums = ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157
 	source_aarch64 = electron42-chromedriver-42.2.0-aarch64.zip::https://github.com/electron/electron/releases/download/v42.2.0/chromedriver-v42.2.0-linux-arm64.zip
 	source_aarch64 = electron42-42.2.0-aarch64.zip::https://github.com/electron/electron/releases/download/v42.2.0/electron-v42.2.0-linux-arm64.zip
 	sha256sums_aarch64 = 8f6c2462e05491ab7a6ea6492fe7f62c8de1b01900978dd3dcbc878fde6f5e3e
