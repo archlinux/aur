@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: loathingkernel <loathingkernel @at gmail .dot com>
 pkgname=d7vk
-pkgver=1.9
-pkgrel=4
+pkgver=1.10
+pkgrel=1
 pkgdesc="Vulkan-based implementation of D3D7, 6, 5 and 3 for Linux / Wine, spun off from DXVK."
 arch=('x86_64' 'i686')
 url="https://github.com/WinterSnowfall/d7vk"
@@ -20,7 +20,7 @@ source=("git+$url.git#tag=v${pkgver}"
 	"setup_d7vk"
 	"setup_d7vk.sh"
 	)
-sha256sums=('d279a39cf860c9f371f5348ae8080fa227cf636f39910c36360378ada72fbeb3'
+sha256sums=('65550f9619f387a76d7f9246b313c3796a16fb1a3e1be627f76ff5a8f6b56c04'
             'SKIP'
             'SKIP'
             'SKIP'
