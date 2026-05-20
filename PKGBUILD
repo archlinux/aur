@@ -1,34 +1,32 @@
-# Maintainer: Aditya Mehra <aix (dot) m (at) outlook (dot) com>
-
-_pkgname=plank-player
+# Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plank-player-git
-pkgver=r01.3ba5ba8
+pkgver=???
 pkgrel=1
-pkgdesc="Multimedia Player for playing local files on Plasma Bigscreen"
-arch=("x86_64" "i686" "armv7h" "aarch64")
-url="https://invent.kde.org/Plasma-Bigscreen/plank-player/"
-license=('GPL')
-depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-multimedia' 'qt5-declarative' 'kirigami2' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
-makedepends=('git' 'cmake' 'extra-cmake-modules')
-provides=("plank-player")
-conflicts=("plank-player")
-install=$pkgname.install
-source=('git+https://invent.kde.org/Plasma-Bigscreen/plank-player')
-sha512sums=('SKIP')
+pkgdesc="Multimedia Player for playing local files on Plasma Bigscreen allowing navigation with just a remote control (Git version)"
+arch=('any')
+url="https://invent.kde.org/plasma/plank-player"
+license=('GPL2')
+groups=()
+depends=('plasma-bigscreen-git' 'qt6-graphicaleffects' 'qt6-multimedia' 'hicolor-icon-theme')
+makedepends=('cmake' 'extra-cmake-modules')
+conflicts=('plank-player')
+source=('git+https://invent.kde.org/plasma/plank-player')
+noextract=()
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "plasma-settings"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $srcdir/$_pkgname
-  mkdir -p build && cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+	cd "$srcdir/plank-player"
+	cmake -B build \
+	      -DBUILD_TESTING="OFF" 
+	cmake --build build
 }
 
 package() {
-  cd $srcdir/$_pkgname/build
-  make DESTDIR="$pkgdir/" install
+	cd "$srcdir/plank-player/build"
+	DESTDIR="$pkgdir/" make install
 }
