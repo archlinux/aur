@@ -8,7 +8,7 @@ pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
 pkgver=2026.518.0
 _pkgtag=$pkgver-lazer
-pkgrel=1
+pkgrel=2
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
 url="https://osu.ppy.sh"
@@ -34,7 +34,7 @@ noextract=("osu.AppImage")
 sha256sums=('e0b2cd8eb284052efb2c86eaf8ee97a718fa0afb9f18302936ab3ad473762660'
             '30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
-            'e08a76a780960fffbd63fed26df21f0e7846d9bc8b366bfdbb54b07bf543113e'
+            '7e80497273890b3f0729898921d61258138cc29d3d074cd50dd7813c3b083932'
             '44e9e6a85c43086644f427b62d6d8b265c0e2ac1b5091d8ff0c626c58a91836d'
             '5e3ec691dc34eec83978728e3fc0fee7c3a6b3f9f78c6d463d46763de0a7cae2')
 package() {
