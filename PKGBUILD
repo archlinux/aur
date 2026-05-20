@@ -2,7 +2,7 @@
 
 _pkgname=timer-rs
 pkgname="${_pkgname}"
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Simple countdown terminal alarm"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
