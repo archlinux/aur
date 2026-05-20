@@ -10,7 +10,7 @@ pkgbase = python-click-extra
 	depends = python
 	depends = python-boltons
 	depends = python-pygments
-	depends = python-click
+	depends = python-click>=8.3.1
 	depends = python-json5
 	depends = python-hjson
 	depends = python-tomli
