@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Stoiakin <VStoiakin at lavabit dot com>
 
 pkgname=rutoken
-pkgver=2.18.4.0
+pkgver=2.19.0.0
 pkgrel=1
 pkgdesc="Support for cryptographic tokens from Aktiv-Soft JSC"
 url="https://www.rutoken.ru/support/download/"
@@ -15,7 +15,7 @@ source=("https://download.rutoken.ru/Rutoken/Utilites/rtAdmin/3.1/Linux/rtadmin.
         "https://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp-${pkgver}-1.x86_64.rpm"
         "sd-rutoken")
 b2sums=('74a32be7b93d839e4afc31eb1733020826114c06f1b787bb6e9d8121de6662262822e15bf439a292e6199114df42fb76a44d4bd60772184c243b8a41dc61008a'
-        'ae5187cd169862a7982e693299e69cdcb2aa1e78acea40367ca7265d608dd2718d446f3a4c33e82c34c58f385423b74eb14f7b92746548c71db5ee3c6f2b0e62'
+        '73611ecd0976875b3096e809d5bf85522af83d0e81a11466ebb86f5adb36e58a945218d6f789b62955379eda6bcfa2ce0fe06b441e9dbac586476006a45d3ecf'
         'SKIP')
 
 package() {
