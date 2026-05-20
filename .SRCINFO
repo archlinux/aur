@@ -1,7 +1,7 @@
 pkgbase = shellgame
 pkgdesc = Terminal Arcade Collection — 13 classic games (Snake, Tetris, Pac-Man, Dig Dug and more)
 pkgver = 1.0
-pkgrel = 1
+pkgrel = 2
 url = https://github.com/MCookinho/shellgame
 arch = x86_64
 arch = aarch64
