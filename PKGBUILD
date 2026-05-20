@@ -4,12 +4,12 @@ _pkgname=dwproton
 pkgname=${_pkgname}-bin
 _srcver=11.0-2
 pkgver=${_srcver//-/_}
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS."
 arch=('x86_64')
 url="https://dawn.wine/dawn-winery/dwproton"
-license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
+license=('BSD-2-Clause' 'LGPL-2.1-only' 'Zlib' 'MIT' 'MPL-2.0' 'custom')
 options=(!strip emptydirs)
 provides=('proton' 'dwproton')
 _srcdir="${_pkgname}-${_srcver}-${CARCH}"
@@ -42,6 +42,16 @@ depends=(
   xorg-xrandr
   xz
   zenity
+  mpg123
+  libpulse
+  libpcap
+  openxr
+  libvdpau
+  nettle3
+  libvorbis
+  opus
+  python-filelock
+  libogg
 )
 depends_x86_64=(
   lib32-alsa-plugins
@@ -58,10 +68,24 @@ depends_x86_64=(
   lib32-libxinerama
   lib32-libxss
   lib32-nss
+  lib32-libxkbcommon
   lib32-pipewire
   lib32-systemd
   lib32-vulkan-driver
   lib32-vulkan-icd-loader
+  lib32-gstreamer
+  lib32-libpcap
+  lib32-libgudev
+  lib32-libusb
+  lib32-libpulse
+  lib32-libvdpau
+  lib32-gst-plugins-base-libs
+  lib32-mpg123
+  lib32-orc
+  lib32-opus
+  lib32-libvorbis
+  lib32-libwebp
+  lib32-libogg
 )
 optdepends=(
   steam
