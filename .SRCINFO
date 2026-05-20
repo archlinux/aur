@@ -29,8 +29,8 @@ pkgbase = elyprismlauncher-bin
 	optdepends = flite: minecraft voice narration
 	provides = elyprismlauncher
 	conflicts = elyprismlauncher
-	noextract = PineconeMC-Linux-Qt6-Portable-11.0.2.tar.gz
-	source = https://github.com/ElyPrismLauncher/Launcher/releases/download/11.0.2/PineconeMC-Linux-Qt6-Portable-11.0.2.tar.gz
+	noextract = PineconeMC-ArchLinux-11.0.2.pkg.tar.zst
+	source = https://github.com/ElyPrismLauncher/Launcher/releases/download/11.0.2/PineconeMC-ArchLinux-11.0.2.pkg.tar.zst
 	sha256sums = SKIP
 
 pkgname = elyprismlauncher-bin

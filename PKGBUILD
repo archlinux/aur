@@ -17,24 +17,13 @@ optdepends=('glfw: to use system GLFW libraries'
             'java-runtime=8: support for Minecraft versions < 1.17'
             'flite: minecraft voice narration'
 )
-source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${pkgver}/PineconeMC-Linux-Qt6-Portable-${pkgver}.tar.gz")
-noextract=("PineconeMC-Linux-Qt6-Portable-${pkgver}.tar.gz")
+source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${pkgver}/PineconeMC-ArchLinux-${pkgver}.pkg.tar.zst")
+noextract=("PineconeMC-ArchLinux-${pkgver}.pkg.tar.zst")
 sha256sums=('SKIP')
 
 package()
 {
-	install -d "${pkgdir}/usr"
-	tar -C "${pkgdir}/usr" -xvf PineconeMC-Linux-Qt6-Portable-${pkgver}.tar.gz
-	
-	# We must now remove the bundled libraries and the portable flag.
-	rm -rf "${pkgdir}"/usr/manifest.txt
-	rm -rf "${pkgdir}"/usr/portable.txt
-	rm -rf "${pkgdir}"/usr/bin/xdg-open
-	rm -rf "${pkgdir}"/usr/lib
-	rm -rf "${pkgdir}"/usr/share/X11
-	rm -rf "${pkgdir}"/usr/share/glib-2.0
-	rm -rf "${pkgdir}"/usr/share/libthai
-	# NOTE: Qt6 is still statically linked unfortunately.
-	
-	chown -R root:root "${pkgdir}/usr"  # files in tarball are not owned by root
+	mkdir ${pkgdir}/usr
+	cd ${pkgdir}/usr
+	tar -xvf ${srcdir}/PineconeMC-ArchLinux-${pkgver}.pkg.tar.zst --strip-components=1
 }
