@@ -17,7 +17,7 @@ optdepends=(
 provides=('podctl' 'pods')
 conflicts=('podctl' 'podctl-git' 'pods' 'pods-bin' 'pods-git')
 source=("${_pkgname}-${pkgver}-x86_64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/pods-${pkgver}-x86_64-linux-musl.tar.gz")
-sha256sums=('fb141a6836f34b10724b08f0813d26ed03ad3b5155f26d8427a3ff6c711d3f71')
+sha256sums=('b64a5ad9c0fb2f5dd3df1d40eae9d10c05bd9399ba853de3cebe270dc93cccc5')
 options=('!strip')   # musl-static binary, already stripped by release workflow
 
 package() {
