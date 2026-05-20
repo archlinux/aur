@@ -1,10 +1,8 @@
 # Maintainer: Fermín Olaiz <ferminolaiz@gmail.com>
 
-# @todo add icons and update app database (see build/linux/install.sh)
-
 pkgname=aerion
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Lightweight E-Mail Client"
 arch=('x86_64')
 url="https://aerion.3df.io"
@@ -27,6 +25,8 @@ check() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm755 -t "$pkgdir/usr/bin/" 'build/bin/aerion'
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" 'LICENSE'
+	install -Dm755 -t "$pkgdir/usr/bin/" build/bin/aerion
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	install -Dm644 aerion.desktop "$pkgdir/usr/share/applications/io.github.hkdb.Aerion.desktop"
+	install -Dm644 aerion.png "/usr/share/icons/hicolor/256x256/apps/io.github.hkdb.Aerion.png"
 }
