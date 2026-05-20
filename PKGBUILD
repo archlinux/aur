@@ -2,9 +2,9 @@
 
 pkgname=joker
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Small Clojure interpreter, linter, and formatter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/candid82/joker"
 license=('EPL-1.0')
 depends=('glibc')

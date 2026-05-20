@@ -1,9 +1,10 @@
 pkgbase = joker
 	pkgdesc = Small Clojure interpreter, linter, and formatter
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/candid82/joker
 	arch = x86_64
+	arch = aarch64
 	license = EPL-1.0
 	makedepends = go
 	depends = glibc
