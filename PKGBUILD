@@ -13,7 +13,7 @@ makedepends=('cmake' 'base-devel')
 provides=('pwss-browser-qt6')
 conflicts=('pwss-browser-qt6')
 
-source=("${pkgname}::git+https://github.com/zai1208/pwss-browser-qt6-git.git")
+source=("${pkgname}::git+https://github.com/zai1208/pwss-browser-qt6.git")
 md5sums=('SKIP')
 
 pkgver() {

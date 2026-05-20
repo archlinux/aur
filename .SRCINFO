@@ -13,7 +13,7 @@ pkgbase = pwss-browser-qt6-git
 	depends = pwss-fetch-https-git
 	provides = pwss-browser-qt6
 	conflicts = pwss-browser-qt6
-	source = pwss-browser-qt6-git::git+https://github.com/zai1208/pwss-browser-qt6-git.git
+	source = pwss-browser-qt6-git::git+https://github.com/zai1208/pwss-browser-qt6.git
 	md5sums = SKIP
 
 pkgname = pwss-browser-qt6-git
