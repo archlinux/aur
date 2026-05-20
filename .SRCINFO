@@ -1,0 +1,22 @@
+pkgbase = lazydiff-bin
+	pkgdesc = A fast terminal UI for reviewing Git diffs
+	pkgver = 0.1.0
+	pkgrel = 6
+	url = https://github.com/Ataraxy-Labs/lazydiff
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = zlib
+	provides = lazydiff
+	conflicts = lazydiff
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/Ataraxy-Labs/lazydiff/v0.1.0-alpha.6/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/Ataraxy-Labs/lazydiff/v0.1.0-alpha.6/LICENSE
+	sha256sums = bec8d8dcb14eb0baa5c4227f7f44d2d1c2378f279b48a4427963343cfd273070
+	sha256sums = ac1c162eee0bc8161b18d934bb406dae9d7624a261fbb7bf58d4aeb7ea1736b8
+	source_x86_64 = lazydiff-x86_64-0.1.0.tgz::https://github.com/Ataraxy-Labs/lazydiff/releases/download/v0.1.0-alpha.6/lazydiff-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c358980578f22c3aad61638a1fba5f8b6fec93e6e71b1a328c184a681e0f10f9
+
+pkgname = lazydiff-bin
