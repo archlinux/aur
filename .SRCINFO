@@ -10,7 +10,7 @@ pkgbase = wordle-aid
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
-	depends = python>=3.8
+	depends = python>=3.9
 	depends = python-pyspellchecker
 	depends = python-argparse-from-file
 	source = wordle-aid-2.10.tar.gz::https://github.com/bulletmark/wordle-aid/archive/2.10.tar.gz
