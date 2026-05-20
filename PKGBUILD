@@ -1,7 +1,7 @@
 # Maintainer: mnussbaum <michaelnussbaum08@gmail.com>
 pkgname=pass-systemd-cred-server
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="systemd credential server backed by zx2c4's pass"
 arch=('x86_64')
 url='https://github.com/mnussbaum/pass-systemd-cred-server'
