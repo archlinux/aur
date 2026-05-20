@@ -1,6 +1,6 @@
 # Maintainer: Rafael Maldonado <remdph@gmail.com>
 pkgname=nodepdf-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Lightweight, fast desktop PDF viewer built with Electron and React"
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=('!strip' '!debug')
 source=(
   "${pkgname}-${pkgver}.deb::https://github.com/remdph/node-pdf/releases/download/v${pkgver}/node-pdf_${pkgver}_amd64.deb"
 )
-sha256sums=('a48bdc75d32b65d9a774b0f0e6038b606c0063c1485f67b9bc279feff8645696')
+sha256sums=('45fdb1d4579db9407813645c43f468f5e0e968e2854a3a6dec54bd3c9678e317')
 
 prepare() {
   cd "$srcdir"
