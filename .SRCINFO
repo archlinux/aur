@@ -1,6 +1,6 @@
 pkgbase = mistral-vibe
 	pkgdesc = Minimal CLI coding agent by Mistral
-	pkgver = 2.10.0
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://github.com/mistralai/mistral-vibe
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = mistral-vibe
 	depends = python-watchfiles
 	depends = python-yaml
 	depends = python-sounddevice
-	source = git+https://github.com/mistralai/mistral-vibe.git#tag=v2.10.0
-	sha256sums = 7148f293c472e3459a072d7e6ac62212a290d15e158dc483c2923e321a43e19a
+	source = git+https://github.com/mistralai/mistral-vibe.git#tag=v2.10.1
+	sha256sums = bc2a9797d1d0de513b39f53a989605f83b8369fcc6e2ea170e46bacc07645af0
 
 pkgname = mistral-vibe
