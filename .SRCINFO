@@ -1,13 +1,13 @@
 pkgbase = apothem
 	pkgdesc = One shared profile · materialized into eleven AI-coding-tool harnesses.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://apothem.ahmedgad.com
 	arch = any
 	license = MIT
 	depends = bash
 	depends = python
-	source = apothem-v1.0.0-linux.tar.gz::https://github.com/Gad360/apothem/releases/download/v1.0.0/apothem-v1.0.0-linux.tar.gz
-	sha256sums = 3f276c7ba4bc3c084c2e0290ffebadcc465a126d218118b0b84aa0289b33ce56
+	source = apothem-v1.1.0-linux.tar.gz::https://github.com/Gad360/apothem/releases/download/v1.1.0/apothem-v1.1.0-linux.tar.gz
+	sha256sums = f7ca4cd997e556902e05857b319247385261b6b4f200fdfb61798300fd9ff2de
 
 pkgname = apothem
