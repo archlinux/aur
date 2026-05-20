@@ -1,4 +1,4 @@
-# Maintainer: Akhmad Fauzan <ozan6825@gmail.com>
+# Maintainer: Akhmad Fauzan <2586ozan@gmail.com>
 pkgname=antigravity-ide
 pkgver=2.0.1
 pkgrel=1
