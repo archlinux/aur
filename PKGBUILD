@@ -1,9 +1,9 @@
 pkgname=nextor-ip-changer
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A tool to change TOR IP instantly using a single click"
 arch=('any')
-url="https://github.com/Stalin-143/NexTOR_IP_CHANGER"
+url="https://github.com/0x5t4l1n/NexTOR_IP_CHANGER"
 license=('MIT')
 depends=('python' 'tor')
 makedepends=('git')
