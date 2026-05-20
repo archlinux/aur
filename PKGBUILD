@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.7.240.r0.gdc6c4d7e4e
+pkgver=2.7.356.r0.ga19b3747ea
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
@@ -15,10 +15,10 @@ license=(
 )
 
 depends=(
-    alsa-lib
+    dbus
     ffmpeg
     hicolor-icon-theme
-    libaio
+    curl
     libbacktrace
     libglvnd
     libpcap
@@ -26,14 +26,21 @@ depends=(
     libxi
     libxrandr
     qt6-base
-    qt6-svg
+    freetype2
+    glibc
+    libgcc
+    libjpeg-turbo
+    libstdc++
+    libwebp
+    libx11
+    lz4
+    systemd-libs
+    zlib
+    zstd
     plutosvg
     plutovg
     sdl3
     shaderc
-    soundtouch
-    wayland
-    xcb-util-cursor
     kddockwidgets
     rapidyaml
 )
