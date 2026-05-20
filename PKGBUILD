@@ -7,8 +7,8 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=6.3.0.1
-pkgrel=2
+pkgver=6.3.1.0
+pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
 url='https://github.com/meganz/MEGAsync/'
@@ -46,7 +46,7 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         '020-megasync-app-fix-cmake-dependencies-detection.patch'
         '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch'
         '040-megasync-sdk-add-missing-icu-link-library.patch')
-sha256sums=('b79056faf3d321cbc992258fc22b844952b342dc42a6e6ab24ecab8f20a8a3e6'
+sha256sums=('fc98f3220d70f01838accb7f600368df30b4b4f0f0d742ceb9d1d29946f9d5df'
             'SKIP'
             '5219537875385e9399b1a76a5775722053880cdfc0c33b5726504e020e11ad70'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
