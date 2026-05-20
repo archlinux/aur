@@ -1,9 +1,10 @@
 pkgbase = uupd
 	pkgdesc = Centralized update service/checker made for Universal Blue
-	pkgver = 1.2.5
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/ublue-os/uupd
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
 	makedepends = just
@@ -12,7 +13,7 @@ pkgbase = uupd
 	optdepends = bootc
 	optdepends = distrobox
 	optdepends = flatpak
-	source = https://github.com/ublue-os/uupd/archive/refs/tags/v1.2.5.tar.gz
-	sha256sums = 422bab0a35272d6e02e01b26ac4fcde15faca3166fff6c599795d87a97a1f1f1
+	source = https://github.com/ublue-os/uupd/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 6132b4e1dcc8bd993cf532384dbaf8021084731d709652e4a4105f4b8e04acd8
 
 pkgname = uupd

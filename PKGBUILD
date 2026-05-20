@@ -1,10 +1,9 @@
 # Maintainer: Hec <hec@heccraft.com>
-
 pkgname=uupd
-pkgver=1.2.5
+pkgver=1.3.0 # renovate: datasource=github-releases depName=ublue-os/uupd
 pkgrel=1
 pkgdesc="Centralized update service/checker made for Universal Blue"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/ublue-os/$pkgname"
 license=('Apache-2.0')
 depends=(libnotify
@@ -15,7 +14,7 @@ optdepends=(bootc
   distrobox
   flatpak)
 source=(https://github.com/ublue-os/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('422bab0a35272d6e02e01b26ac4fcde15faca3166fff6c599795d87a97a1f1f1')
+sha256sums=('6132b4e1dcc8bd993cf532384dbaf8021084731d709652e4a4105f4b8e04acd8')
 
 build() {
 	cd "$pkgname-$pkgver"
