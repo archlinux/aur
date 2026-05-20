@@ -1,0 +1,27 @@
+pkgbase = aerion-bin
+	pkgdesc = An Open Source Lightweight E-Mail Client
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://aerion.3df.io
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = at-spi2-core
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = harfbuzz
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = zlib
+	provides = aerion
+	conflicts = aerion
+	source_x86_64 = aerion-bin-0.2.3-x86_64.tar.gz::https://github.com/hkdb/aerion/releases/download/v0.2.3/aerion-linux-amd64.tar.gz
+	sha256sums_x86_64 = 19edb9c9b92b827cefd1e2cd12500146364681f060b43c08dee6828f50f51c37
+	source_aarch64 = aerion-bin-0.2.3-aarch64.tar.gz::https://github.com/hkdb/aerion/releases/download/v0.2.3/aerion-linux-arm64.tar.gz
+	sha256sums_aarch64 = f134794e52396592d8fbe21ef8c181052851231963e2331122794b56c5090f25
+
+pkgname = aerion-bin
