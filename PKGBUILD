@@ -10,11 +10,11 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.12.4')
+provides=('gdal=3.13.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.12.4
-pkgrel=2
+pkgver=3.13.0
+pkgrel=1
 pkgdesc="A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=(x86_64)
 url="https://gdal.org/"
@@ -38,7 +38,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              # ogdi
 changelog=$_pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('a09e0dd2b5da00286e8e2e2b1ccebf3577bfb18fb25ac04b452858e0ccb2dedfbc26c6c741d0c11bd255026d614872920750cf1ab838f8b21acfdcdf71691819')
+b2sums=('f8136f226bf2201a732e7acc61d23024a9f65fc9037386f18b3db4edb85672c054ac29703df1404a33efd97b266f0e40e716b0880e619dea3256e14afd366aaa')
 
 build() {
   opt_libs=""
