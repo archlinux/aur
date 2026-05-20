@@ -1,8 +1,8 @@
 # Contributor: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname=gosplugin
-pkgver=1.3.19.0
-pkgrel=5
+pkgver=1.3.42.0
+pkgrel=1
 pkgdesc='Crypto Interface Web Browser Plugin for https://gosuslugi.ru/'
 arch=('x86_64')
 url="https://www.gosuslugi.ru/help/faq/esignature/3842"
@@ -55,7 +55,7 @@ source=(
     "${pkgname}-${pkgver}-${pkgrel}.deb.zip::https://gu-st.ru/content/Gosplugin/Gosplugin_Linux-Debian_Installer.deb.zip"
 	'gosuslugi_plugin.sh'
 )
-sha256sums=('0c370ba1f9df8588ea3e0189bd6bf55cecd8d675234bc48697cd6bcdbcd4dc06'
+sha256sums=('332b321e069c34eda5c22ded50696d5bd58df077408262c74fbe9894e7611ef8'
             'b2a148903b0fc84a60a8e1423b01c865491401a2b65d6b16dbe8442b15705dda')
 
 _script='Gosplugin_Linux-Debian_Installer.deb.sh'
@@ -65,7 +65,7 @@ prepare() {
 	tail -n +$((payload_offset + 1)) "${_script}" | bsdtar -xC "${srcdir}"
 	filename=$(ls "${srcdir}"/gosuslugi-plugin_*.deb)
 	bsdtar -xf "${filename}"
-	bsdtar -xf "${srcdir}/data.tar.gz"
+	bsdtar -xf "${srcdir}/data.tar.xz"
 }
 
 pkgver() {
