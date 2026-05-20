@@ -5,7 +5,7 @@
 # (aur.archlinux.org:komai.git) is kept in sync from the upstream file above.
 # Patches are welcome at the upstream repository, not against the AUR copy.
 pkgname=komai
-pkgver=2026.05.20.0
+pkgver=2026.05.20.1
 pkgrel=1
 pkgdesc="A fine Matrix chat app you can get to love"
 arch=('x86_64')
@@ -48,7 +48,6 @@ optdepends=(
 	'gst-libav: Video messages'
 	'gst-plugin-qml6: Video calls support'
 	'gst-plugin-pipewire: Screen sharing on Wayland (xdg-desktop-portal)'
-	'hunspell-en_us: alternative English spell-check dictionary; see the hunspell-* packages for other languages (a fallback en_US is bundled)'
 )
 source=("git+https://github.com/etkecc/komai.git#tag=v${pkgver}")
 sha256sums=('SKIP')
