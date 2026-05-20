@@ -1,13 +1,13 @@
 pkgname=legion-gui
 pkgver=0.7.0.r0.c4a3604
-pkgrel=13
+pkgrel=14
 pkgdesc="Legion GUI (Sparta successor), ported from Kali Linux for Arch Linux"
 arch=("any")
 url="https://gitlab.com/kalilinux/packages/legion"
 license=("GPL-3.0-only")
 backup=("etc/legion.conf")
-depends=("python" "polkit" "nmap" "xterm" "xdg-utils" "python-colorama" "python-pandas" "python-pyfiglet" "python-pyqt6" "python-qasync" "python-requests" "python-rich" "python-service-identity" "python-six" "python-sqlalchemy" "python-termcolor" "python-urllib3" "chromium" "xorg-server-xvfb")
-optdepends=("nikto: web server scanning actions" "whatweb: web fingerprinting actions" "wpscan: WordPress scanning actions" "hydra: brute-force actions" "gobuster: web content discovery fallback" "feroxbuster-bin: web content discovery actions" "nuclei-bin: nuclei web and CVE actions" "httpx-bin: ProjectDiscovery httpx binary, installed as httpx-toolkit" "dirsearch: web content discovery actions" "ffuf: web fuzzing actions" "katana-bin: ProjectDiscovery crawler actions" "dirb: common web wordlist" "smtp-user-enum-git: SMTP enumeration actions")
+depends=("python" "polkit" "nmap" "xterm" "xdg-utils" "python-colorama" "python-pandas" "python-pyfiglet" "python-pyqt6" "python-qasync" "python-requests" "python-rich" "python-service-identity" "python-six" "python-sqlalchemy" "python-termcolor" "python-urllib3" "chromium" "xorg-server-xvfb" "curl" "nikto" "whatweb" "wpscan" "hydra" "gobuster" "feroxbuster-bin" "nuclei-bin" "httpx-bin" "dirsearch" "ffuf" "katana-bin" "dirb" "smtp-user-enum-git")
+optdepends=()
 makedepends=("git" "patch" "perl" "python-pip")
 source=("git+https://gitlab.com/kalilinux/packages/legion.git#branch=kali/master" "eyewitness::git+https://github.com/RedSiege/EyeWitness.git#branch=master" "legion-gui.desktop" "legion-gui-launcher")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
