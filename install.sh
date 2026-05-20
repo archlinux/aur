@@ -20,7 +20,7 @@ function _install_local() {
     srcdir=$(pwd)
 
     # Download terms
-    curl -s 'https://www.kakaocorp.com/page/service/service/KakaoTalk' -o 'terms.html'
+    curl -s 'https://t1.kakaocdn.net/kakaocorp/pw/policy/files/20260221/%EC%B9%B4%EC%B9%B4%EC%98%A4%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%95%BD%EA%B4%80_20260221_F.pdf' -o 'terms.pdf'
 
     # Patch "kakaotalk.desktop"
     srcfile="${srcdir}/kakaotalk.desktop"
@@ -31,7 +31,7 @@ function _install_local() {
     install -Dm755 -t "${pkgdir}/bin" "${srcdir}/kakaotalk"
     install -Dm644 -t "${pkgdir}/share/applications" -S "$(basename "${srcfile}")" "${tgtfile}"
     install -Dm644 -t "${pkgdir}/share/icons/hicolor/256x256/apps" "${srcdir}/kakaotalk.png"
-    install -Dm644 -t "${pkgdir}/share/licenses/kakaotalk" "${srcdir}/terms.html"
+    install -Dm644 -t "${pkgdir}/share/licenses/kakaotalk" "${srcdir}/terms.pdf"
 
     # Cleanup
     rm -f "${tgtfile}"

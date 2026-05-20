@@ -10,6 +10,7 @@
 *.sig
 
 terms.html
+terms.pdf
 
 pkg/
 src/

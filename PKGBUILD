@@ -9,7 +9,7 @@ arch=(
     'x86_64'
 )
 source=(
-    'https://www.kakao.com/ko/terms.html'
+    'terms.pdf::https://t1.kakaocdn.net/kakaocorp/pw/policy/files/20260221/%EC%B9%B4%EC%B9%B4%EC%98%A4%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%95%BD%EA%B4%80_20260221_F.pdf'
     'LICENSE'
     'kakaotalk'
     'kakaotalk.desktop'
@@ -70,5 +70,5 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/kakaotalk.desktop"
     install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${srcdir}/kakaotalk.png"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/kakaotalk" "${srcdir}/LICENSE"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/kakaotalk" "${srcdir}/terms.html"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/kakaotalk" "${srcdir}/terms.pdf"
 }

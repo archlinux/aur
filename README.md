@@ -122,4 +122,4 @@ TODO: TBD
 
 그 외의 **모든 파일**들은 해당 레포지토리에서 라이선스를 적용하지 않습니다.
 
-카카오톡 사용자 약관에 관해서는 다음 링크를 참고해주세요: https://www.kakao.com/ko/terms.html
+카카오톡 사용자 약관에 관해서는 다음 링크를 참고해주세요: https://www.kakao.com/policy/kakaoTerms?type=s&version=simple&lang=ko
