@@ -1,0 +1,21 @@
+pkgbase = acp6x-victus-16e1-dkms
+	pkgdesc = Patched AMD ACP6x Audio Driver for HP Victus 16-e1xxx (fixes internal microphone)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bugzilla.kernel.org/show_bug.cgi?id=218926
+	install = acp6x-victus-16e1-dkms.install
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = dkms.conf
+	source = acp6x-mach.c
+	source = acp6x-pdm-dma.c
+	source = acp6x.h
+	source = Makefile
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = acp6x-victus-16e1-dkms

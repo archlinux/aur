@@ -1,0 +1,12 @@
+post_install() {
+    dkms install acp6x-victus-16e1/1.0
+}
+
+post_upgrade() {
+    dkms remove acp6x-victus-16e1/1.0 --all 2>/dev/null
+    dkms install acp6x-victus-16e1/1.0
+}
+
+pre_remove() {
+    dkms remove acp6x-victus-16e1/1.0 --all
+}
