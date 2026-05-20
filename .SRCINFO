@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-cranexpr-git
+	pkgdesc = Plugin for Vapoursynth: cranexpr (GIT version)
+	pkgver = 0.7.0.12.g687effd
+	pkgrel = 1
+	url = https://github.com/sgt0/cranexpr
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = vapoursynth>=75
+	provides = vapoursynth-plugin-cranexpr
+	conflicts = vapoursynth-plugin-cranexpr
+	options = debug
+	source = cranexpr::git+https://github.com/sgt0/cranexpr.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-cranexpr-git
