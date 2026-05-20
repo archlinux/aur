@@ -1,0 +1,18 @@
+pkgbase = wallfinder-git
+	pkgdesc = A terminal-based wallpaper selector for Wayland compositors
+	pkgver = r1.abc1234
+	pkgrel = 1
+	url = https://github.com/gustahxn/wallfinder
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fzf
+	depends = chafa
+	depends = swaybg
+	depends = libnotify
+	provides = wallfinder
+	conflicts = wallfinder
+	source = git+https://github.com/gustahxn/wallfinder.git
+	md5sums = SKIP
+
+pkgname = wallfinder-git
