@@ -1,4 +1,5 @@
-# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=python-diagrams
 _name=${pkgname//python-}
