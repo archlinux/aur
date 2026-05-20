@@ -2,7 +2,7 @@
 
 pkgname=python-mappy
 _source=minimap2
-pkgver=2.30
+pkgver=2.31
 pkgrel=1
 pkgdesc="Python interface to minimap2, a fast and accurate C program to align genomic and transcribe nucleotide sequences"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
 
 options=(!emptydirs)
 source=(${_source}-${pkgver}.tar.gz::https://github.com/lh3/minimap2/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('4e5cd621be2b2685c5c88d9b9b169c7e036ab9fff2f3afe1a1d4091ae3176380')
+sha256sums=('bff334a0e4512644e2f3e29944aeec408f49450f4f74dc39fe89e5273869255b')
 
 prepare() {
     cd ${_source}-${pkgver}
