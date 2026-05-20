@@ -8,7 +8,7 @@
 # Maintainer: Ahmed G. Gad <me@ahmedgad.com>
 
 pkgname=apothem
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="One shared profile · materialized into eleven AI-coding-tool harnesses."
 arch=('any')
@@ -16,7 +16,7 @@ url="https://apothem.ahmedgad.com"
 license=('MIT')
 depends=('bash' 'python')
 source=("${pkgname}-v${pkgver}-linux.tar.gz::https://github.com/Gad360/apothem/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux.tar.gz")
-sha256sums=('ea3b5a5adabd3cac66e625170f6989880ad850df1af083dfcaa98b05723e71d9')
+sha256sums=('3f276c7ba4bc3c084c2e0290ffebadcc465a126d218118b0b84aa0289b33ce56')
 
 package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
