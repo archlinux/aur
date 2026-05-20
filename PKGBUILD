@@ -3,7 +3,7 @@
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.7.0.preview.1.r11447.c9ac205
+pkgver=7.7.0.preview.1.r11450.90d3b7f
 _major=${pkgver:0:1}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
@@ -116,8 +116,7 @@ build() {
     -p:SDKToUse=Microsoft.NET.Sdk \
     --sc \
     -c Linux \
-    -r linux-x64 \
-    -o bin
+    -r linux-x64
 }
 
 check() {
@@ -128,7 +127,7 @@ check() {
   export DOTNET_HOME="$srcdir/dotnet"
   export NUGET_PACKAGES="$srcdir/.nuget"
   export PATH="$PATH:$DOTNET_HOME"
-  dotnet test
+  dotnet test -c Linux
 }
 
 package() {
@@ -136,7 +135,7 @@ package() {
   cd "$_name"
   mkdir -p "$pkgdir/opt/microsoft/$_name/$_major"
   _dn="$(jq -r .sdk.version global.json | awk -F. '{print $1 ".0"}')"
-  mkdir -p "src/$_name-unix/bin/Linux/net$_dn/linux-x64/ref"
+  mkdir -p "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/ref"
 
   # Reference assemblies
   for file in $(cat src/TypeCatalogGen/$_name.inc); do
@@ -144,7 +143,7 @@ package() {
     if [[ -z "$_asm" ]]; then
       continue
     fi
-    cp "$_asm" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/ref"
+    cp "$_asm" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/ref"
   done
 
   # Modules
@@ -152,10 +151,10 @@ package() {
     _modname="$(echo $dep | awk -F\" '{print $2}')"
     _modname="${_modname,,}"
     _modver="$(echo $dep | awk -F\" '{print $4}' | awk -F. '{print $1 "." $2 "." $3}')"
-    cp -r "$NUGET_PACKAGES/$_modname/$_modver/" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/Modules"
+    cp -r "$NUGET_PACKAGES/$_modname/$_modver/" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/Modules"
   done
 
-  find "src/$_name-unix/bin/Linux/net$_dn/linux-x64/Modules" \( \
+  find "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/Modules" \( \
     -name "*.nupkg" \
     -o -name "*.nupkg.sha512" \
     -o -name "*.nupkg.metadata" \
@@ -164,7 +163,7 @@ package() {
     -o -name "fullclr" \
   \) -delete
 
-  cp -ar "src/$_name-unix/bin/Linux/net$_dn/linux-x64/"* "$pkgdir/opt/microsoft/$_name/$_major"
+  cp -ar "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/"* "$pkgdir/opt/microsoft/$_name/$_major"
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
   mkdir -p "$pkgdir/usr/bin"
