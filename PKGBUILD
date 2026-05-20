@@ -5,7 +5,7 @@ pkgname=clash-verge-rev
 _pkgname=${pkgname%-rev}
 pkgver=2.5.1
 _ipc_ver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -63,7 +63,7 @@ _prepare_service() {
 
 _build_service() {
 	echo "==> Starting ${FUNCNAME[0]}()..."
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release --features standalone
 }
 
 _package_service() {
