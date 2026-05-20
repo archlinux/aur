@@ -1,15 +1,15 @@
 pkgbase = vgmstream-cli-bin
 	pkgdesc = A command line tool for decoding streamed (prerecorded) video game audio.
-	pkgver = r2083
+	pkgver = r2117
 	pkgrel = 1
 	url = https://github.com/vgmstream/vgmstream
 	arch = x86_64
 	license = ISC
 	provides = vgmstream-cli
 	conflicts = vgmstream-cli
-	source = vgmstream-r2083-cli.zip::https://github.com/vgmstream/vgmstream/releases/download/r2083/vgmstream-linux-cli.zip
-	source = COPYING-r2083::https://raw.githubusercontent.com/vgmstream/vgmstream/refs/tags/r2083/COPYING
-	b2sums = 071dce6235696953d68c101575b38e193ed5c55b047eb29c045424d0e7929e5544417395468d50cabe5c79993bc57334da9e186b8a4988738694c2b12717ac9a
-	b2sums = 5479d2622114a8d645ab500181c267e8af19f1b877c7b9e289619166d0d95cbfcb2a731fded3862dd684f21927341fad95fa5ba482c05446fc4b76ef9cb7201d
+	source = vgmstream-r2117-cli.zip::https://github.com/vgmstream/vgmstream/releases/download/r2117/vgmstream-linux.zip
+	source = COPYING-r2117::https://raw.githubusercontent.com/vgmstream/vgmstream/refs/tags/r2117/COPYING
+	b2sums = b602e47ea19c39a24b4a4ef819c7aa1e6cd5741e0f547bfa8aba2b0d042df62aee2a01213c76b4154888d3089b12249f489a33e918bebffc48904225e2a3e3d6
+	b2sums = f739f4ad63c767e3e9bac73efd8fda360033d9fc1b3eb0cef4084489577ce7798512578d8076681b9df09c49be4c31893fa0a5a4572644dfc1a46207349e07a5
 
 pkgname = vgmstream-cli-bin

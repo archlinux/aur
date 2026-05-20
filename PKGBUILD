@@ -1,7 +1,7 @@
 # Maintainer: Alleop <aur dot contest432 at passinbox dot com>
 _pkgname=vgmstream
 pkgname=$_pkgname-cli-bin
-pkgver=r2083
+pkgver=r2117
 pkgrel=1
 pkgdesc='A command line tool for decoding streamed (prerecorded) video game audio.'
 arch=('x86_64')
@@ -9,10 +9,10 @@ url="https://github.com/$_pkgname/$_pkgname"
 license=('ISC')
 provides=("$_pkgname-cli")
 conflicts=("$_pkgname-cli")
-source=("$_pkgname-$pkgver-cli.zip"::"$url/releases/download/$pkgver/$_pkgname-linux-cli.zip"
+source=("$_pkgname-$pkgver-cli.zip"::"$url/releases/download/$pkgver/$_pkgname-linux.zip"
         "COPYING-$pkgver"::"https://raw.githubusercontent.com/$_pkgname/$_pkgname/refs/tags/$pkgver/COPYING")
-b2sums=('071dce6235696953d68c101575b38e193ed5c55b047eb29c045424d0e7929e5544417395468d50cabe5c79993bc57334da9e186b8a4988738694c2b12717ac9a'
-        '5479d2622114a8d645ab500181c267e8af19f1b877c7b9e289619166d0d95cbfcb2a731fded3862dd684f21927341fad95fa5ba482c05446fc4b76ef9cb7201d')
+b2sums=('b602e47ea19c39a24b4a4ef819c7aa1e6cd5741e0f547bfa8aba2b0d042df62aee2a01213c76b4154888d3089b12249f489a33e918bebffc48904225e2a3e3d6'
+        'f739f4ad63c767e3e9bac73efd8fda360033d9fc1b3eb0cef4084489577ce7798512578d8076681b9df09c49be4c31893fa0a5a4572644dfc1a46207349e07a5')
 
 package() {
 	install -Dm644 COPYING-$pkgver "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
