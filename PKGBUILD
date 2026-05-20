@@ -2,9 +2,9 @@
 # Originally maintained by Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributions by Thomas Sowell <tom@fancydriving.org>
 pkgname=vboot-utils
-pkgver=147.16610
+pkgver=148.16640
 _tag=release-R${pkgver/\./-}.B
-pkgrel=3
+pkgrel=1
 pkgdesc='Chromium OS verified boot utilities'
 arch=(i686 x86_64)
 url='https://chromium.googlesource.com/chromiumos/platform/vboot_reference'
