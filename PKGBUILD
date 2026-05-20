@@ -1,15 +1,15 @@
 # Maintainer: Rayr https://rayr.ml/LinkInBio/
 
 pkgname=weather-cli
-pkgver=1.2.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="An app made to get weather information through the terminal written in Go"
 arch=('x86_64')
 url="https://github.com/Rayrsn/Weather-Cli"
 license=('GPL')
 makedepends=('go')
 source=("https://github.com/Rayrsn/Weather-Cli/archive/refs/tags/$pkgver.zip")
-md5sums=('c527ccfa94eae146d593ed69febf8f66')
+md5sums=('480ace48d263a0f01a2c89a7f9c0df4d')
 
 # Go Flags https://wiki.archlinux.org/title/Go_package_guidelines#Flags_and_build_options
 export CGO_CPPFLAGS="${CPPFLAGS}"
