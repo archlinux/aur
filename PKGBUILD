@@ -1,7 +1,7 @@
 # Maintainer: w1zx1
 pkgname=screentaker
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a lightweight and reliable screenshooter for X11 written in Rust"
 arch=('x86_64')
 options=('!debug')
@@ -12,12 +12,12 @@ source=("https://github.com/w1zx1/screentaker/archive/refs/heads/main.tar.gz")
 sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-main"
   cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-main"
   install -Dm755 "target/release/screentaker" "$pkgdir/usr/bin/screentaker"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
