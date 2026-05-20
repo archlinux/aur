@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=stump
-pkgver=0.0.12
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A free and open source comics, manga and digital book server with OPDS support'
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('6a93cf4aa70db7d978c476d268d766a054482afccb7160f5e24351309276d2c5'
+sha256sums=('ca63bc291f4ba661a8ee6ca2dc63aca87412ca98d56d610a03280650bd5fc5bb'
             '0acbaeaeec495b4ae9e55401edb4d1f395fb3b2edc68d8c41f0d9fffe925f0ea'
             'da29676564e82d6b642b433156e679055d776c790f61356b64a0a5d65be476ef'
             '366d457de40ce59aa50fe860a21b8db2db84a8fd48fc2a68f38b0eff2ec73dcc')
@@ -47,8 +47,8 @@ build() {
 
   yarn web build
 
-  cargo build --package prisma-cli --bin prisma-cli --frozen --release
-  target/release/prisma-cli generate --schema=./core/prisma/schema.prisma
+  # cargo build --package prisma-cli --bin prisma-cli --frozen --release
+  # target/release/prisma-cli generate --schema=./core/prisma/schema.prisma
   cargo build --package stump_server --bin stump_server --frozen --release
 }
 
