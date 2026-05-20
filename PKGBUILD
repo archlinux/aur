@@ -11,7 +11,7 @@ pkgname=uniclipboard-git
 _pkgname=uniclipboard
 # pkgver 是 AUR web 上展示用的 snapshot；makepkg 实际编译时调用下方 pkgver() 重算。
 # CI 在 push 前会用 git describe 的当前值 sed 替换，保持 web 视图不过期。
-pkgver=0.0.0.r1.geab0b73
+pkgver=0.10.0.r9.gdf79879
 pkgrel=1
 pkgdesc="Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted"
 arch=('x86_64' 'aarch64')
