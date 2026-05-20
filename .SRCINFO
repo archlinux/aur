@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-claude-pulse
 	pkgdesc = Real-time Claude Code agent monitoring for GNOME Shell
-	pkgver = 1.1.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/delfour-co/claude-pulse
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-claude-pulse
 	makedepends = glib2
 	depends = gnome-shell>=45
 	depends = jq
-	source = gnome-shell-extension-claude-pulse-1.1.0.tar.gz::https://github.com/delfour-co/claude-pulse/archive/v1.1.0/claude-pulse-1.1.0.tar.gz
-	sha256sums = e1c678f0fd9be1b5f55f56e4c5ab23d40c8b06baf4349b041696873d529fffed
+	source = gnome-shell-extension-claude-pulse-1.3.0.tar.gz::https://github.com/delfour-co/claude-pulse/archive/v1.3.0/claude-pulse-1.3.0.tar.gz
+	sha256sums = 2c565dab53f6e52186686743f60da0763c8adee07eae743196770a711eef72e5
 
 pkgname = gnome-shell-extension-claude-pulse

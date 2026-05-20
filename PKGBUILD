@@ -1,6 +1,6 @@
 # Maintainer: Delfour.co <contact@delfour.co>
 pkgname=gnome-shell-extension-claude-pulse
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Real-time Claude Code agent monitoring for GNOME Shell"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gnome-shell>=45' 'jq')
 makedepends=('glib2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/delfour-co/claude-pulse/archive/v${pkgver}.tar.gz")
-sha256sums=('e1c678f0fd9be1b5f55f56e4c5ab23d40c8b06baf4349b041696873d529fffed')
+sha256sums=('2c565dab53f6e52186686743f60da0763c8adee07eae743196770a711eef72e5')
 
 _uuid="claude-pulse@delfour.co"
 
