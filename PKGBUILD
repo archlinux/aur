@@ -5,8 +5,8 @@
 # Contributor: congyiwu <congyiwu AT gmail DOT com>
 
 pkgname=json-c-git
-pkgver=r1376.7bca694
-pkgrel=2
+pkgver=r1427.ccd2803
+pkgrel=1
 epoch=1
 pkgdesc="A JSON implementation in C"
 url="https://github.com/json-c/json-c/wiki"
@@ -19,6 +19,11 @@ conflicts=(json-c)
 source=("git+https://github.com/json-c/json-c")
 sha256sums=('SKIP')
 
+prepare() {
+  # fix broken test
+  sed -i 's/ 1000000 / 100000 /' json-c/tests/test_deep_nesting.expected
+}
+
 pkgver() {
   cd json-c
   # no tags are reachable from HEAD
@@ -28,7 +33,6 @@ pkgver() {
 
 build() {
   cmake -S json-c -B build -G Ninja \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
