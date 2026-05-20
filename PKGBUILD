@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=openair
-_pkgver=3.0.0
+_pkgver=3.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,14 +28,14 @@ optdepends=(
   r-legendry
   r-quantreg
   r-rmarkdown
-  r-rnaturalearthdata
+  r-rnaturalearth
   r-sf
   r-spelling
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d4bb7b146892c378edc18fda54dd2317')
-b2sums=('1e8a58b8547c7f2fda3951808ae4e0ee41b3c008c94d47d4dd888404dceb6a0ae5e7c9915000409886f1ea821df6eff78e75d982af62d82b12c3a6cca950eff0')
+md5sums=('34870e5594e1000f4a3b9b13ae3c9192')
+b2sums=('313f79debb9bf2a64caefd10d48cc913614dc4c8a9357232574288d0f8bd96c082e953950a3cde8eed7cbfedcbfe3c6906237258e729137d257df7431da8e9a4')
 
 build() {
   mkdir build
