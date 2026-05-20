@@ -1,13 +1,13 @@
 pkgbase = brightctrl
 	pkgdesc = Terminal UI for external monitor brightness control via DDC/CI
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/shahriyardx/brightctrl
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = ddcutil
-	source = brightctrl::https://github.com/shahriyardx/brightctrl/releases/download/v0.1.0/brightctrl
+	source = brightctrl::https://github.com/shahriyardx/brightctrl/releases/download/v0.1.1/brightctrl
 	sha256sums = SKIP
 
 pkgname = brightctrl

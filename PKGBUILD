@@ -1,7 +1,7 @@
 # Maintainer: Shahriyar <shahriyardx@github.com>
 
 pkgname=brightctrl
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Terminal UI for external monitor brightness control via DDC/CI"
 arch=("any")
