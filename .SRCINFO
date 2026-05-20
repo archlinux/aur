@@ -60,12 +60,10 @@ pkgbase = waterfox
 	source = waterfox.desktop
 	source = 0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 	source = 0002-Fix-sandbox-to-build-with-glibc-2.43.patch
-	source = 0003-encoding_rs-rust-1.95.patch
 	sha256sums = 1e2863d4c533af73995f66e1b517416b501573956eec1619e8854c6b4ecf3f77
 	sha256sums = 488f92d42d7ef459b0dd912e70eced3a32db074428d6f761b29612f2b4aabb77
 	sha256sums = 9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286
 	sha256sums = 157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852
 	sha256sums = 404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8
-	sha256sums = 763ced1fb083c3a621bf53c9f65b990308c8dcf944e3d61702ecbc882d318bd7
 
 pkgname = waterfox
