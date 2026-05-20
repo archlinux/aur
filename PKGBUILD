@@ -12,7 +12,7 @@
 #      chown -R b /pkg && sudo -u b makepkg -s --noconfirm"
 
 pkgname=devforge
-pkgver=0.1.21
+pkgver=0.1.23
 pkgrel=1
 pkgdesc="Tmux + kanban + git web cockpit (F.O.R.G.E.) — single-binary devforge"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ optdepends=(
   'ripgrep: helper для television (channel content)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/darkClaw921/F.O.R.G.E./archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c27ea08cb946d08d90a497e05308b4e64ad20b0b137fb06a7029e994f80a66cf')
+sha256sums=('1bc6f2de7b6be7df43e7715339b59bffdecea52342b6596387993a25756a080a')
 options=('!lto')
 
 _srcdir="F.O.R.G.E.-$pkgver"
@@ -38,14 +38,14 @@ build() {
   cd "$_srcdir"
   export CARGO_TARGET_DIR="$srcdir/target"
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release -p devforge
+  cargo build --release --locked -p devforge
 }
 
 check() {
   cd "$_srcdir"
   export CARGO_TARGET_DIR="$srcdir/target"
   # Тесты devforge могут требовать tmux в PATH — мягкий режим.
-  cargo test --release -p devforge || true
+  cargo test --release --locked -p devforge || true
 }
 
 package() {
