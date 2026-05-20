@@ -28,7 +28,7 @@ prepare() {
     npm --prefix="apps/cli" pkg set version="${pkgver}"
     rm -rf "${pkgbase}-cli" 2>/dev/null || true
     NODE_ENV="development" pnpm install
-    find node_modules -type f -name "*.js.map" -o -name "*.mjs.map" -o -name "*.css.map" -delete
+    find node_modules -type f \( -name "*.js.map" -o -name "*.mjs.map" -o -name "*.css.map" \) -delete
 }
 
 build() {
@@ -36,8 +36,8 @@ build() {
     
     # build cli
     pnpm --prefix="apps/cli" run build:full
-    find apps/cli/dist* -type f -name "*.js.map" -o -name "*.mjs.map" -o -name "*.css.map" -delete
     pnpm deploy --filter "${pkgbase}-cli" --prod "${pkgbase}-cli"
+    find "${pkgbase}-cli" -type f \( -name "*.js.map" -o -name "*.mjs.map" -o -name "*.css.map" \) -delete
     sed -i "s|#!/usr/bin/env node|#!/usr/bin/node|" "${pkgbase}-cli/bin/${pkgbase}.mjs"
     grep -rl "${srcdir}/${_reponame}-${pkgver}/${pkgbase}-cli" "${pkgbase}-cli" | xargs -I {} sed -i "s|${srcdir}/${_reponame}-${pkgver}/${pkgbase}-cli|/usr/lib/${pkgbase}/cli|g" {} 
 
