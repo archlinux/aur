@@ -1,21 +1,21 @@
 # Maintainer: George Hu <integral@archlinux.org>
 
 pkgname=closely
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="Subscribe to updates from people you follow, from any platform to any platform"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SpriteOvO/${pkgname}"
 license=('AGPL-3.0-only')
-depends=('openssl')
+depends=('glibc' 'libgcc' 'openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('07add8492e4c7ae211bcf92773395f499a9e41e7502f858cd05325e0c38a09a9')
+sha256sums=('0ab822944a12f730daf7dcadf21f4a95829f29e72d6b2115245132b61a3168ff')
 
 prepare() {
 	cd "${pkgname}-${pkgver}/"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
