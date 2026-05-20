@@ -3,7 +3,7 @@
 _pkgauthor=unhappychoice
 _pkgname=splashboard
 pkgname=${_pkgname}-bin
-pkgver=1.1.1
+pkgver=2.6.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A customizable terminal splash screen with plugin-based data sources"
@@ -31,18 +31,18 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('16e5a239e6cb767747480dfd5707228219403b7ee0b02b9ea1b1f39f8819b1d7'
-            'd1dc133758f29614f280e4bf43adc5fc46425122af5b3dc1a62440fc1a430dfe'
-            '7db5baa820998ae3c540399df1357279387c929dcf9f5d805842df024b971f2c'
+            '7efc86707cf14bfab0e6aa5c2dd630c9cf2c09a58bc3d18ccc9ccbad009cd137'
+            '8de9daec1fc9a8d6bf92ae376723d812e7dc65e6a4b1ac82c9261f9b7ab271bf'
             '4f79a47832c68b8c68fa95c454b78a540fbac1b62bf5a63aa70bca18e4edef8c'
             '059e02c134b0fc7121993f2361da0477eb59209d99ffddedd1b6a0bcd806a4ff'
             'd15669b4705ac20cd03bafa621196c3c36620af0d7a3a2bfd17a3b1d72961f04'
-            '8e22e17ea3e4215b569a035d29607ff81b3a1b463e5f16ce9095589e8de606a7'
+            '701d66bf2fb306db0e539ee4546e9013a8a10170ff28092734f9b7eade7d5988'
             '2c07b15141e9acc73108a7b00e240f88b82bf6a8adebb9e5289f7116344c9ff6'
             'c4cda8d6a15ccfde4bcc8c852590eff6ef056dc29d94795b7fcc89446f289444'
             'e7966b37e08daa82ac8a128b032e13e1c5ce958e97d4dae54c9eec5640654434'
             'dde9f13f7d3e34437432a888e8ba5b330e8f88a47c03fd2e30130703aef92504')
-sha256sums_x86_64=('db6f53f6181f45424b607c1fc021e057852d60c74c17fb7106bb2d2750a3bd74')
-sha256sums_aarch64=('3dd808ed9849dd4c2836ed3f490ee8b982e492953ebed9f7d1b109b03c39dbda')
+sha256sums_x86_64=('8d73403f99622844fec137f4b691be77fdcedb6caecd493fc824ad7ae8fc9e96')
+sha256sums_aarch64=('cf1fde3d9f213fb7558283a19da11dbf66b5f61b9e078f1e7455dbcae5da7a26')
 
 
 package() {
