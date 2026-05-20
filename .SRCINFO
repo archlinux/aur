@@ -1,6 +1,6 @@
 pkgbase = tsukimi-git
 	pkgdesc = A simple third-party Jellyfin client for Linux
-	pkgver = 26.5.3.r1396.g035db78
+	pkgver = 26.5.3.r1401.g63c389a
 	pkgrel = 1
 	url = https://github.com/tsukinaha/tsukimi
 	arch = x86_64

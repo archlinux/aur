@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=26.5.3.r1396.g035db78
+pkgver=26.5.3.r1401.g63c389a
 pkgrel=1
 pkgdesc='A simple third-party Jellyfin client for Linux'
 arch=('x86_64')
@@ -72,5 +72,5 @@ package() {
 	install -Dm 644 -t "${pkgdir}/usr/share/glib-2.0/schemas" "resources/moe.tsuna.tsukimi.gschema.xml"
 	install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${srcdir}/tsukimi.desktop"
 	install -Dm 644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/" "${srcdir}/tsukimi.svg"
-	cp -r "i18n/locale" "${pkgdir}/usr/share/locale"
+	cp -r "target/i18n/locale" "${pkgdir}/usr/share/"
 }
