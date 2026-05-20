@@ -1,0 +1,21 @@
+pkgbase = ion-nemesis-cli
+	pkgdesc = Local-first iON Data Security Systems Nemesis Engine CLI
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/VanHoney-ltd/iON-Data-Systems-powered-by-the-NEMESIS-ENGINE
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	depends = sqlite
+	depends = libimobiledevice
+	depends = ifuse
+	optdepends = ollama: local LLM runtime for Psyche/Nemesis analysis
+	optdepends = python: transcription and diarization helper scripts
+	optdepends = ffmpeg: media probing and transcription preparation
+	source = ion-nemesis-cli::git+https://github.com/VanHoney-ltd/iON-Data-Systems-powered-by-the-NEMESIS-ENGINE.git#branch=nemesis-cli-aur-ready
+	sha256sums = SKIP
+
+pkgname = ion-nemesis-cli
