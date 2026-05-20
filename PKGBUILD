@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('pass')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('778e4267e11706e0af23c5a5f5a7558e0b093756903292f74ff94358523b3af77ca18b554e09d769d3187784691485c950f275d736d9cd08306a3ef1a1e57cee')
+b2sums=('caa58a2e7087a49c56d1cb221e68c34729a00b9e90efe00c08ba41a77307a8ac74c1eaadfc91f1761e613b85ff86ddced37718ee081528a6fef7e5d4b2e6ceed')
 
 prepare() {
     cd "$pkgname-$pkgver"
