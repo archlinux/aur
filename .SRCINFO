@@ -1,7 +1,7 @@
 pkgbase = python-sqlite-vec
-	pkgdesc = A vector search SQLite extension that runs anywhere!
-	pkgver = 0.1.6
-	pkgrel = 2
+	pkgdesc = A vector search SQLite extension.
+	pkgver = 0.1.9
+	pkgrel = 1
 	url = https://github.com/asg017/sqlite-vec
 	arch = x86_64
 	arch = aarch64
@@ -11,10 +11,12 @@ pkgbase = python-sqlite-vec
 	makedepends = python-installer
 	makedepends = gcc
 	makedepends = sqlite-dist
+	makedepends = git
 	depends = python
 	depends = python-numpy
 	depends = glibc
-	source = https://github.com/asg017/sqlite-vec/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 2df2c99d8ac53f88b0944bbca078993b348ae3f1a164bc97570d47b9563effea
+	depends = sqlite
+	source = sqlite-vec::git+https://github.com/asg017/sqlite-vec.git#tag=v0.1.9
+	sha256sums = d15838d73835fd0410ed60f8dec3aaa1129ec33342c42a5ba260dc92eca604e2
 
 pkgname = python-sqlite-vec
