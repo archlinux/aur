@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Antigravity IDE
-Comment=Antigravity Development Tool
-Exec=antigravity-ide %F
-Icon=antigravity-ide
-Terminal=false
-Type=Application
-Categories=Development;IDE;
-MimeType=text/plain;inode/directory;application/json;text/javascript;text/html;text/css;text/x-script.python;application/xml;
