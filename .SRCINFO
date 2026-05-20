@@ -1,15 +1,15 @@
 pkgbase = dearsql
 	pkgdesc = Cross-platform SQL database client
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/dunkbing/dearsql
 	arch = x86_64
 	license = FSL
 	options = !strip
-	source = dearsql-0.4.8.AppImage::https://github.com/dunkbing/dearsql/releases/download/v0.4.8/dearsql-x86_64.AppImage
-	source = dearsql.desktop::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v0.4.8/packaging/io.gitlab.dunkbing.dearsql.desktop
-	source = dearsql.png::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v0.4.8/assets/appicon.png
-	sha256sums = a0e5663598d70d406ba720e0ef0ea6999520c02484c75223c9c9a1e29e5f174d
+	source = dearsql-0.4.9.AppImage::https://github.com/dunkbing/dearsql/releases/download/v0.4.9/dearsql-x86_64.AppImage
+	source = dearsql.desktop::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v0.4.9/packaging/io.gitlab.dunkbing.dearsql.desktop
+	source = dearsql.png::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v0.4.9/assets/appicon.png
+	sha256sums = 29e80faca9b7979fe45a953af84dae00aa6182e0ab36d369dc8159ef54c98b90
 	sha256sums = 8d1eb52592409db0b26abb3def7be743c926ceb4212fddffdfb13d4a5f72420c
 	sha256sums = 03e01e1fe765e93f167d0870e010cd43d4fcb24fe103f7fadf50a6f540828167
 
