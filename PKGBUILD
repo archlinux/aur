@@ -1,4 +1,4 @@
-# Maintainer: Bowen <bowen@local>
+# Maintainer: Goldbro233 <bowensun_06@outlook.com>
 
 pkgname=floral-notepaper
 pkgver=1.0.3
