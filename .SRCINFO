@@ -1,19 +1,19 @@
 pkgbase = sokuji-bin
 	pkgdesc = Provide real-time simultaneous interpretation using OpenAI's Realtime API.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.27.1
+	pkgver = 0.27.2
 	pkgrel = 1
 	url = https://github.com/kizuna-ai-lab/sokuji
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron40
-	provides = sokuji=0.27.1
+	provides = sokuji=0.27.2
 	conflicts = sokuji
 	source = sokuji.sh
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = sokuji-0.27.1-aarch64.deb::https://github.com/kizuna-ai-lab/sokuji/releases/download/v0.27.1/sokuji_0.27.1_arm64.deb
-	sha256sums_aarch64 = 5f1c9680b23e3e5959d8ef7808fb2dacff12a98bc64717fe688cd88c8d826427
-	source_x86_64 = sokuji-0.27.1-x86_64.deb::https://github.com/kizuna-ai-lab/sokuji/releases/download/v0.27.1/sokuji_0.27.1_amd64.deb
-	sha256sums_x86_64 = 017dee4d20e016a00fc664ba03fce32a23aea3f035b5f6564117c7465615e007
+	source_aarch64 = sokuji-0.27.2-aarch64.deb::https://github.com/kizuna-ai-lab/sokuji/releases/download/v0.27.2/sokuji_0.27.2_arm64.deb
+	sha256sums_aarch64 = 3cee5cc63e414043e033c6c70d85580f8c4ba92813853223acf5deabe07bb053
+	source_x86_64 = sokuji-0.27.2-x86_64.deb::https://github.com/kizuna-ai-lab/sokuji/releases/download/v0.27.2/sokuji_0.27.2_amd64.deb
+	sha256sums_x86_64 = f1ea1a70e0c154e19b26b15be664a06c702813cc3ff437ad1a3562e957da37e4
 
 pkgname = sokuji-bin

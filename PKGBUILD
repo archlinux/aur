@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sokuji-bin
 _pkgname=Sokuji
-pkgver=0.27.1
+pkgver=0.27.2
 _electronversion=40
 pkgrel=1
 pkgdesc="Provide real-time simultaneous interpretation using OpenAI's Realtime API.(Prebuilt version.Use system-wide electron)"
@@ -20,8 +20,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('5f1c9680b23e3e5959d8ef7808fb2dacff12a98bc64717fe688cd88c8d826427')
-sha256sums_x86_64=('017dee4d20e016a00fc664ba03fce32a23aea3f035b5f6564117c7465615e007')
+sha256sums_aarch64=('3cee5cc63e414043e033c6c70d85580f8c4ba92813853223acf5deabe07bb053')
+sha256sums_x86_64=('f1ea1a70e0c154e19b26b15be664a06c702813cc3ff437ad1a3562e957da37e4')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
