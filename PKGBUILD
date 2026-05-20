@@ -1,28 +1,35 @@
-# Maintainer: Elias Werberich <elias@werberich.de>
-# Contributor: Alexander F. Rødseth <xyproto@archlinux.org> (from python-pyro)
-# Contributor: Angel Velasquez <angvp@archlinux.org> (from python-pyro)
-# Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.br> (from python-pyro)
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributor: Elias Werberich <elias@werberich.de>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.br>
 
 pkgname=python-pyro5
-pkgver=5.15
+pkgver=5.16
 pkgrel=1
-epoch=0
-pkgdesc='Distributed object middleware for Python (RPC), Version 5'
-url='https://github.com/irmen/Pyro5'
+pkgdesc='Remote objects communication library'
 arch=(any)
+url="https://github.com/irmen/Pyro5/"
 license=(MIT)
-makedepends=('git' 'python-setuptools')
-optdepends=('python-msgpack>=0.5.2')
-depends=('python>=3.8' 'python-serpent>=1.41')
-conflicts=('python-pyro5-git')
-source=("git+$url#tag=v$pkgver")
-sha256sums=('SKIP')
+depends=('python'
+         'python-greenlet'
+         'python-serpent')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
+optdepends=('python-msgpack: alternate serializer')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('7e58547b9cccd729854d50bee6f262776cbbd7ef03b8d2d1f0dbd8d28504d5db')
 
-package() {
-  cd Pyro5
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+build() {
+	cd "Pyro5-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
-# getver: github.com/irmen/Pyro5/tags
-# vim: ts=2 sw=2 et:
+package() {
+	cd "Pyro5-$pkgver"
+	python -m installer --destdir="${pkgdir}/" dist/*.whl
+	install -Dvm644 Readme.rst -t "${pkgdir}/usr/share/doc/$pkgname/"
+	install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+}
