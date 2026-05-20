@@ -53,6 +53,7 @@ build() {
 	export OPENSSL_NO_VENDOR=true
 	export LIBGIT2_NO_VENDOR=1
 	export TURBO_TELEMETRY_DISABLED=1
+	export CHANNEL=release
 
 	# keep in sync with crates/gitbutler-tauri/tauri.conf.release.json
 	pnpm build:desktop -- --mode production
