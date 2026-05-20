@@ -1,0 +1,6 @@
+[basalt]
+source = "github"
+github = "erikjuhani/basalt"
+use_max_tag = true
+include_regex = "basalt/v.*"
+prefix = "basalt/v"
