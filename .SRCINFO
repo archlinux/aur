@@ -1,6 +1,6 @@
 pkgbase = postgresql14
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 14.21
+	pkgver = 14.23
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = postgresql14
 	makedepends = llvm15
 	makedepends = clang15
 	makedepends = libxslt
-	source = https://ftp.postgresql.org/pub/source/v14.21/postgresql-14.21.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v14.23/postgresql-14.23.tar.bz2
 	source = postgresql.service
 	source = postgresql-check-db-dir
 	source = postgresql.sysusers
@@ -27,7 +27,7 @@ pkgbase = postgresql14
 	source = pgenv.sh
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
-	sha256sums = 5b30f19347efff32b6e09ed2cdff0b04e9aee913ec9bb7414de2b7c17b17f1f9
+	sha256sums = cc7216822b546330e29c2f91e123c8734a4c41795082145bb962aa712e8c94a5
 	sha256sums = 5f45d2ad3a93f5ea87ea40bc82a5377e5b8faca9586bfa84d4efe05bdd90ebb6
 	sha256sums = e0445d31cbafe6a06af38224d4e6ff976cc8977d140adadc99a2e11f2152a485
 	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
@@ -57,7 +57,7 @@ pkgname = postgresql14-docs
 pkgname = postgresql14
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql14-libs>=14.21
+	depends = postgresql14-libs>=14.23
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
