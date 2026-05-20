@@ -1,40 +1,36 @@
-# Maintainer: you
-pkgname=voquill
-pkgver=0.0.432
-pkgrel=1
-pkgdesc='AI voice dictation'
-arch=('x86_64')
-url='https://github.com/josiahsrc/voquill'
-license=('custom:proprietary')
-depends=(
-    'gtk3'
-    'webkit2gtk-4.1'
-    'xdotool'
-    'libayatana-appindicator'
-    'alsa-lib'
-    'libxtst'
-)
-options=('!strip')
-_tag="desktop-v${pkgver}"
-source=("Voquill_${pkgver}_amd64.deb::https://github.com/josiahsrc/voquill/releases/download/${_tag}/Voquill_${pkgver}_amd64.deb")
-sha256sums=('06deff2b70b75729d307b7d01fc597fa165f0e1d2f57de3e086cb22fd1761a5d')
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Sajid Ahamed <crxssrazr93@gmail.com>
 
-prepare() {
-    cd "${srcdir}"
-    ar x "Voquill_${pkgver}_amd64.deb"
-    tar -xzf data.tar.gz
+pkgname=voquill
+pkgver=0.0.641
+pkgrel=1
+pkgdesc="AI voice dictation with local Whisper transcription"
+arch=('x86_64')
+url="https://github.com/josiahsrc/voquill"
+license=('AGPL-3.0-only')
+depends=(
+  'alsa-lib'
+  'gtk3'
+  'gtk-layer-shell'
+  'libayatana-appindicator'
+  'libpulse'
+  'vulkan-icd-loader'
+  'webkit2gtk-4.1'
+  'wtype'
+  'xdotool'
+)
+provides=('voquill-gpu')
+conflicts=('voquill-gpu')
+options=('!debug')
+_debname=voquill-desktop
+source=("${_debname}_${pkgver}_amd64.deb::https://github.com/josiahsrc/voquill/releases/download/desktop-v${pkgver}/${_debname}_${pkgver}_amd64.deb")
+sha256sums=('265cf7f4eca04917a3dc0bdcf4d231418a3e5b603f1f1f42b97092ceb9557957')
+
+latestver() {
+  gh api --paginate repos/josiahsrc/voquill/tags --jq '.[].name' |
+    sed -nE 's/^desktop-v([0-9]+(\.[0-9]+)*)$/\1/p' | sort -V | tail -1
 }
 
 package() {
-    cd "${srcdir}"
-
-    install -Dm755 usr/bin/Voquill "${pkgdir}/usr/bin/Voquill"
-
-    install -Dm644 usr/share/applications/Voquill.desktop \
-        "${pkgdir}/usr/share/applications/Voquill.desktop"
-
-    for size in 32x32 128x128 256x256@2; do
-        install -Dm644 "usr/share/icons/hicolor/${size}/apps/Voquill.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}/apps/Voquill.png"
-    done
+  bsdtar -O -xf "${srcdir}/${_debname}_${pkgver}_amd64.deb" data.tar.gz | bsdtar -C "${pkgdir}" -xzf -
 }
