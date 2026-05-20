@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="easy-to-use GTK4 TOTP/HOTP client"
 arch=('x86_64')
 url="https://github.com/paolostivanin/OTPClient"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'jansson' 'libcotp' 'zbar' 'protobuf' 'protobuf-c' 'qrencode' 'libayatana-appindicator')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
@@ -40,7 +40,6 @@ build() {
     -DSHARE_INSTALL_PREFIX:PATH=/usr/share \
     -DENABLE_MINIMIZE_TO_TRAY=ON \
     -Wno-dev
-  #cmake --build build --target all
   cmake --build build
 }
 
