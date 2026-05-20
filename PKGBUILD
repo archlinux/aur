@@ -1,11 +1,11 @@
 # Maintainer: William Canin <hello.williamcanin@gmail.com>
 
 pkgname=smog-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Turn data into unreadable noise."
 arch=('x86_64')
-url="https://github.com/evolvbits/smog"
+url="https://github.com/orbitbits/smog"
 license=('custom')
 depends=('glibc' 'gcc-libs')
 install='smog.install'
@@ -13,24 +13,24 @@ options=('!strip' '!debug')
 
 # - Build and install via makepkg -
 # Before building, import the maintainer's GPG key:
-#   gpg --keyserver keyserver.ubuntu.com --recv-keys 09E5808E5970720142EDFC4FE6A5CC75350F3DCE
+#   gpg --keyserver keyserver.ubuntu.com --recv-keys DE28149E82A46E5182C42E716FC4906130203368
 # Or via direct file:
-#   curl https://raw.githubusercontent.com/evolvbits/pubkey/main/pubkey.asc | gpg --import
+#   curl https://raw.githubusercontent.com/orbitbits/pubkey/main/pubkey.asc | gpg --import
 
-validpgpkeys=('09E5808E5970720142EDFC4FE6A5CC75350F3DCE')
+validpgpkeys=('DE28149E82A46E5182C42E716FC4906130203368')
 
 source=(
-  "smog-$pkgver-linux-x86_64::https://raw.githubusercontent.com/evolvbits/smog/binaries/v$pkgver/smog-$pkgver-linux-x86_64"
-  "SHA256SUMS::https://raw.githubusercontent.com/evolvbits/smog/binaries/v$pkgver/SHA256SUMS"
-  "SHA256SUMS.asc::https://raw.githubusercontent.com/evolvbits/smog/binaries/v$pkgver/SHA256SUMS.asc"
-  "LICENSE::https://raw.githubusercontent.com/evolvbits/smog/main/LICENSE"
+  "smog-$pkgver-linux-x86_64::https://raw.githubusercontent.com/orbitbits/smog/binaries/v$pkgver/smog-$pkgver-linux-x86_64"
+  "SHA256SUMS::https://raw.githubusercontent.com/orbitbits/smog/binaries/v$pkgver/SHA256SUMS"
+  "SHA256SUMS.sig::https://raw.githubusercontent.com/orbitbits/smog/binaries/v$pkgver/SHA256SUMS.sig"
+  "LICENSE::https://raw.githubusercontent.com/orbitbits/smog/main/LICENSE"
 )
 
 sha256sums=(
   'SKIP'         # binary — verified via GPG
-  'SKIP'         # SHA256SUMS — verified via GPG (SHA256SUMS.asc)
+  'SKIP'         # SHA256SUMS — verified via GPG (SHA256SUMS.sig)
   'SKIP'         # GPG signature
-  'c22e966230beaa3e13b78fd849cafa16e15fa95a82d307dd2cf501d06d0cf4a3' # LICENSE - manual: sha256sum LICENSE
+  'b6f62366c51f557cfb766ccfa00cca1cdc10342b1b02a6313b0f410092dfefea' # LICENSE - manual: sha256sum LICENSE
 )
 
 prepare() {
