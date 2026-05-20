@@ -4,7 +4,7 @@
 
 pkgname=openai-codex-desktop
 pkgver=26.513.20950
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
@@ -30,7 +30,7 @@ _better_sqlite3_ver=12.9.0
 _node_pty_ver=1.1.0
 
 source=(
-  "Codex.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-${pkgver}.zip"
+  "Codex-${pkgver}.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-${pkgver}.zip"
   "better-sqlite3.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-${_better_sqlite3_ver}.tgz"
   "node-pty.tgz::https://registry.npmjs.org/node-pty/-/node-pty-${_node_pty_ver}.tgz"
   "codex-desktop.sh"
@@ -39,7 +39,7 @@ source=(
 )
 
 noextract=(
-  'Codex.zip'
+  "Codex-${pkgver}.zip"
   'better-sqlite3.tgz'
   'node-pty.tgz'
 )
@@ -58,7 +58,7 @@ prepare() {
   rm -rf dmg app-extracted app.asar app.asar.unpacked native-build
   mkdir dmg
 
-  bsdtar -xf "Codex.zip" -C "${srcdir}/dmg"
+  bsdtar -xf "Codex-${pkgver}.zip" -C "${srcdir}/dmg"
 
   local appdir
   appdir="$(find dmg -maxdepth 4 -type d -name '*.app' ! -path '*/__MACOSX/*' | head -n1)"
