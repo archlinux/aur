@@ -24,7 +24,7 @@ depends=('bash' 'git' 'base-devel')
 conflicts=('Microsoft-Windows')
 provides=('zfs-destroy-snapshots')
 
-_pkgsrc="nx-hyprinstall"
+_pkgsrc="zfs-destroy-snapshots"
 source=("$_pkgsrc::git+$url")
 sha256sums=('SKIP')
 

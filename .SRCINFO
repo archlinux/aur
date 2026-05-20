@@ -11,7 +11,7 @@ pkgbase = zfs-destroy-snapshots
 	depends = base-devel
 	provides = zfs-destroy-snapshots
 	conflicts = Microsoft-Windows
-	source = nx-hyprinstall::git+https://github.com/jimmykallhagen/zfs-destroy-snapshots
+	source = zfs-destroy-snapshots::git+https://github.com/jimmykallhagen/zfs-destroy-snapshots
 	sha256sums = SKIP
 
 pkgname = zfs-destroy-snapshots
