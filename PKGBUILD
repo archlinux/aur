@@ -31,6 +31,8 @@ build() {
   export GOMODCACHE="${srcdir}/bash-agent-${pkgver}/go/.gomodcache"
   go -C go mod download
   go -C go build -ldflags="-s -w" -trimpath -o "${srcdir}/bash-agent-${pkgver}/dist/goagent" ./cmd/goagent
+  # Go 模块文件默认只读，会导致 makepkg/yaourt 清理临时目录时报权限错误
+  chmod -R u+w "${srcdir}/bash-agent-${pkgver}/go/.gomodcache"
 
   # 3. Build Rust edition
   # makepkg.conf 的 CFLAGS 包含 -flto=auto，会导致 GCC 编译 ring 的 C/汇编代码时
