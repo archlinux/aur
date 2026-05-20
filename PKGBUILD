@@ -1,14 +1,14 @@
 # Maintainer: Fabian Hartmann <worldwidefab+arch gmail com>
 _pkgname='Ambermoon.net'
 pkgname=ambermoon-net
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 epoch=
 pkgdesc="C# rewrite of the 1993 Amiga RPG Ambermoon"
 arch=('x86_64')
 url="https://github.com/Pyrdacor/Ambermoon.net"
 license=('GPL-3.0-only')
-depends=('glibc' 'gcc-libs' 'libxkbcommon' 'mesa' 'openal')
+depends=('glibc' 'gcc-libs' 'libxkbcommon' 'libglvnd' 'openal')
 # Build targets net8.0 and net9.0. The 'dotnet-sdk' meta-package
 # (currently 10.x as of 2026-05) successfully builds these via
 # backward compatibility. If a future .NET release breaks the build,
@@ -18,7 +18,7 @@ provides=("ambermoon-net=${pkgver}")
 conflicts=("ambermoon-net-bin")
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4237221543ddcc3df2033f9d2f0f75a77ba160124297551e0cc9ed9cc697ef2d')
+sha256sums=('586732ca6d898c766e7973eb1629adf2d3a187de29de3ac2ea7e3bd74b7a8fad')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
