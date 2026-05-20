@@ -1,6 +1,6 @@
 pkgbase = paraninfodl
 	pkgdesc = Download ebooks from ebooks.paraninfo.es as PDF
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/El-Mundos/paraninfodl
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = paraninfodl
 	depends = python-pillow
 	depends = python-requests
 	depends = img2pdf
-	source = paraninfodl-1.0.1.tar.gz::https://github.com/El-Mundos/paraninfodl/archive/v1.0.1.tar.gz
-	sha256sums = 4011fed5c3efec9cda0e1266604d47bc00bae21d7303645a31269fce95414a6c
+	source = paraninfodl-1.1.0.tar.gz::https://github.com/El-Mundos/paraninfodl/archive/v1.1.0.tar.gz
+	sha256sums = 26cb811b0e685fdaa36db5e1fe05b509f165db8d8c2df48eed9f67ab71bede2a
 
 pkgname = paraninfodl

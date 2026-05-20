@@ -1,6 +1,6 @@
 # Maintainer: El-Mundos <taber.nandez.sergio@gmail.com>
 pkgname=paraninfodl
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Download ebooks from ebooks.paraninfo.es as PDF"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/El-Mundos/paraninfodl/archive/v$pkgver.tar.gz")
-sha256sums=('4011fed5c3efec9cda0e1266604d47bc00bae21d7303645a31269fce95414a6c')
+sha256sums=('26cb811b0e685fdaa36db5e1fe05b509f165db8d8c2df48eed9f67ab71bede2a')
 
 build() {
     cd "$pkgname-$pkgver"
