@@ -1,7 +1,7 @@
 pkgbase = ion-nemesis-cli
 	pkgdesc = Local-first iON Data Security Systems Nemesis Engine CLI
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VanHoney-ltd/iON-Data-Systems-powered-by-the-NEMESIS-ENGINE
 	arch = x86_64
 	license = custom

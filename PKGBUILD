@@ -1,7 +1,7 @@
 # Maintainer: VanHoney Ltd.
 pkgname=ion-nemesis-cli
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Local-first iON Data Security Systems Nemesis Engine CLI"
 arch=('x86_64')
 url="https://github.com/VanHoney-ltd/iON-Data-Systems-powered-by-the-NEMESIS-ENGINE"
