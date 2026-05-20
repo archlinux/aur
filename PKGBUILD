@@ -1,13 +1,15 @@
-# Maintainer: David Birks <david@birks.dev>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: David Birks <david@birks.dev>
 
 pkgname=emdash-bin
-pkgver=0.3.41
+pkgver=1.1.22
 pkgrel=1
 pkgdesc="Run multiple coding agents in parallel"
 arch=('x86_64')
-url="https://github.com/generalaction/emdash"
-license=('MIT')
+url="https://emdash.sh"
+license=('Apache-2.0')
 depends=(
+  'alsa-lib'
   'gtk3'
   'libnotify'
   'nss'
@@ -15,23 +17,28 @@ depends=(
   'libxtst'
   'xdg-utils'
   'at-spi2-core'
-  'util-linux'
+  'util-linux-libs'
   'libsecret'
 )
 optdepends=(
-  'libappindicator-gtk3: for system tray icon support'
+  'libappindicator-gtk3: system tray icon support'
 )
 provides=('emdash')
 conflicts=('emdash')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/generalaction/emdash/releases/download/v${pkgver}/emdash-amd64.deb")
-sha256sums=('f8499b2ab34e917d301b00ad844da7dc19aefe78191d4b01e4cc8ecc03bc8159')
+sha256sums=('06cea3fd44a438a24bda2f6cbeeb445d6f2f1bb65ef5932c8b3f85bb6bdd2d83')
+
+latestver() {
+  gh api repos/generalaction/emdash/releases/latest --jq '.tag_name' | sed 's/^v//'
+}
 
 package() {
-  # Extract the .deb package
   bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
 
-  # Create symlink to /usr/bin
+  # Remove Debian changelog
+  rm -rf "${pkgdir}/usr/share/doc"
+
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s /opt/emdash/emdash "${pkgdir}/usr/bin/emdash"
+  ln -s /opt/Emdash/emdash "${pkgdir}/usr/bin/emdash"
 }
