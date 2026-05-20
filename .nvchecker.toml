@@ -1,0 +1,4 @@
+[dsh]
+source = "regex"
+url = "https://sources.debian.org/src/dsh/"
+regex = '/src/dsh/(\d\.\d{1,}\.\d{1,})'
