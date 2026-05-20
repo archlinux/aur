@@ -5,19 +5,20 @@ pkgrel=1
 pkgdesc="a lightweight and reliable screenshooter for X11 written in Rust"
 arch=('x86_64')
 options=('!debug')
-url="https://aur.archlinux.org/packages/screentaker"
+url="https://github.com/w1zx1/screentaker"
 license=('MIT')
 makedepends=('rust')
-source=()
-md5sums=()
+source=("https://github.com/w1zx1/screentaker/archive/refs/heads/main.tar.gz")
+sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/.."
+  cd "$srcdir/$pkgname-$pkgver"
   cargo build --release --locked
 }
 
 package() {
-  install -Dm755 "$srcdir/../target/release/screentaker" "$pkgdir/usr/bin/screentaker"
-  install -Dm644 "$srcdir/../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/../README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 "target/release/screentaker" "$pkgdir/usr/bin/screentaker"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
