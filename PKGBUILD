@@ -3,7 +3,7 @@
 pkgname=dotpeek
 _pkgname=dotpeek
 
-pkgver=2026.1.1
+pkgver=2026.1.2
 pkgrel=1
 arch=('x86_64')
 
@@ -21,7 +21,7 @@ source=(
   "${_pkgname}.py"
 	)
 # There are official sums on https://www.jetbrains.com/decompiler/download/other/
-sha256sums=('8cf69f203e3dbec6706c63176ecb7fbed3bf0b2c5a8c2c8c9bf3c6e4f45d0fe1'
+sha256sums=('e211a6ad87c530cfda6f68cc4a337cec78e2dacdd1ba493d211169934c67952b'
             '6c35ca1d9caeb98629270e05aaaecce42b937348d5434adad33eacfbf553092c'
             'c3b1ad6a91100841a5d27fb49ebf64b3e99ddc2cf82f98c5b40845fc1b13eebe')
 
