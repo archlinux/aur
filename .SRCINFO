@@ -19,7 +19,7 @@ pkgbase = aerion
 	depends = webkit2gtk-4.1
 	depends = zlib
 	provides = aerion
-	source = https://github.com/hkdb/aerion/archive/refs/tags/v0.2.3.tar.gz
+	source = aerion-0.2.3.tar.gz::https://github.com/hkdb/aerion/archive/refs/tags/v0.2.3.tar.gz
 	sha256sums = 54d40a98c2a18ab29daca3799b453b053e12e55236f98dd20e735410318aafec
 
 pkgname = aerion

@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=('at-spi2-core' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'harfbuzz' 'libsoup3' 'pango' 'webkit2gtk-4.1' 'zlib')
 makedepends=('go' 'wails')
 provides=('aerion')
-source=("https://github.com/hkdb/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hkdb/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('54d40a98c2a18ab29daca3799b453b053e12e55236f98dd20e735410318aafec')
 
 build() {
