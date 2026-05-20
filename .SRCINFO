@@ -1,0 +1,17 @@
+pkgbase = nordix-cli-zfs
+	pkgdesc = Nordix CLI tools - for managing an ZFS system from maintenance to troubleshooting
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jimmykallhagen/nordix-cli-zfs.git
+	arch = x86_64
+	arch = aarch64
+	license = GPL v3 or later
+	depends = bash
+	depends = git
+	depends = base-devel
+	provides = nordix-cli-zfs
+	conflicts = Microsoft-Windows
+	source = nordix-cli-zfs::git+https://github.com/jimmykallhagen/nordix-cli-zfs.git
+	sha256sums = SKIP
+
+pkgname = nordix-cli-zfs
