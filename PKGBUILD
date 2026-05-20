@@ -1,7 +1,7 @@
 # Contributor: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname=rutoken-pkcs11
-pkgver=2.18.1.0
+pkgver=2.19.0.0
 pkgrel=1
 pkgdesc='Интерфейс RSALabs PKCS#11'
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=(!strip)
 
 _file='librtpkcs11ecp.so'
 source=("http://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp_${pkgver}-1_amd64.deb")
-sha256sums=('f0b8f28611fa508c9f4a48e2a2a3e4da3d81d04b2fae94ef9a3b9b6b75e1d281')
+sha256sums=('6cf9fe1209bc5bcddcc0765171cc6e261a2af43b08e1c3d44f6ff300204934a2')
 
 package() {
 	bsdtar -xf "${srcdir}/data.tar.xz"
