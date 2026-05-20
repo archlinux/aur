@@ -2,6 +2,7 @@
 Name=AudioBookConverter
 Comment=AudioBookConverter
 Exec=/opt/audiobookconverter/bin/AudioBookConverter
+Path=/opt/audiobookconverter/bin/
 Icon=/opt/audiobookconverter/lib/AudioBookConverter.png
 Terminal=false
 Type=Application
