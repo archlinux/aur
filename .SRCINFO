@@ -1,6 +1,6 @@
 pkgbase = concord
 	pkgdesc = A feature-rich TUI client for Discord, written in Rust
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/chojs23/concord
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = concord
 	depends = alsa-lib
 	depends = opus
 	options = !lto
-	source = concord-2.0.4.tar.gz::https://github.com/chojs23/concord/archive/refs/tags/v2.0.4.tar.gz
-	sha256sums = 9a95ae58a9d5c53b2c1f0dd62636d6f30f71af061cfa9937eb192419679ddd9c
+	source = concord-2.0.5.tar.gz::https://github.com/chojs23/concord/archive/refs/tags/v2.0.5.tar.gz
+	sha256sums = c1a6f21f7ff8a640b198e606baa9255177338acf7e6246fb7cebb4b8a5a8c283
 
 pkgname = concord
