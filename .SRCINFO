@@ -1,6 +1,6 @@
 pkgbase = cline-cli
 	pkgdesc = Autonomous coding agent CLI - capable of creating/editing files, running commands, using the browser, and more.
-	pkgver = 3.0.8
+	pkgver = 3.0.9
 	pkgrel = 1
 	url = https://www.npmjs.com/package/cline
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = cline-cli
 	depends = nodejs
 	provides = cline
 	replaces = nodejs-cline
-	noextract = cline-cli-3.0.8.tgz
+	noextract = cline-cli-3.0.9.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = cline-cli-3.0.8.tgz::https://registry.npmjs.org/cline/-/cline-3.0.8.tgz
-	b2sums = 8ebb510f92abf5e243fb2113f03f36334535d743e41e0c27918c3b794799a4f53c30af510cf6f4c44dc9b9852138a024eb71b5488c43c88c504a83fd466f7200
+	source = cline-cli-3.0.9.tgz::https://registry.npmjs.org/cline/-/cline-3.0.9.tgz
+	b2sums = 27218bafe3c2382f15e4d7eafb8d97940820241b5355352706d040bc70aa14a538a85b8190f4b76b760f4b4d18dc9ab1dd25771e5205819832aa5d2fce8f446c
 
 pkgname = cline-cli

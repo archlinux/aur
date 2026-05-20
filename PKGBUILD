@@ -1,25 +1,26 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=cline
-_npmver=3.0.8
-
-pkgname=${_npmname}-cli
+_appname=cline
+pkgname=${_appname}-cli
 pkgdesc="Autonomous coding agent CLI - capable of creating/editing files, running commands, using the browser, and more."
-pkgver=$_npmver
+pkgver=3.0.9
 pkgrel=1
+
 arch=("x86_64")
 url="https://www.npmjs.com/package/cline"
 license=("Apache-2.0")
-replaces=("nodejs-${_npmname}")
-depends=("glibc" "gcc-libs" "bash" "nodejs")
+
 makedepends=("npm" "jq")
-provides=("${_npmname}")
+depends=("glibc" "gcc-libs" "bash" "nodejs")
+
+provides=("${_appname}")
+replaces=("nodejs-${_appname}")
 
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
-source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('8ebb510f92abf5e243fb2113f03f36334535d743e41e0c27918c3b794799a4f53c30af510cf6f4c44dc9b9852138a024eb71b5488c43c88c504a83fd466f7200')
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_appname}/-/${_appname}-${pkgver}.tgz")
+b2sums=('27218bafe3c2382f15e4d7eafb8d97940820241b5355352706d040bc70aa14a538a85b8190f4b76b760f4b4d18dc9ab1dd25771e5205819832aa5d2fce8f446c')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
@@ -38,7 +39,7 @@ package() {
 	find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
 	local tmppackage="$(mktemp)"
-	local pkgjson="$pkgdir/usr/lib/node_modules/$_npmname/package.json"
+	local pkgjson="$pkgdir/usr/lib/node_modules/$_appname/package.json"
 	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
@@ -52,5 +53,5 @@ package() {
 
 	# Install README file
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-	ln -sf "/usr/lib/node_modules/${_npmname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	ln -sf "/usr/lib/node_modules/${_appname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
