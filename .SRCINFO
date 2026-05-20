@@ -1,7 +1,7 @@
 pkgbase = bash-agent
 	pkgdesc = A lightweight coding agent that runs in your terminal - Bash/Go/Rust editions
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lloydzhou/bash-agent
 	arch = x86_64
 	arch = aarch64

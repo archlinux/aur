@@ -1,9 +1,9 @@
-# Maintainer: Lloyd <lloyd@example.com>
+# Maintainer: Lloyd <lloydzhou@qq.com>
 # Contributor: Lloyd <lloyd@example.com>
 
 pkgname=bash-agent
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight coding agent that runs in your terminal - Bash/Go/Rust editions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lloydzhou/bash-agent"
