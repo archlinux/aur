@@ -2,12 +2,12 @@
 
 _pkgname=span
 pkgname=${_pkgname}-git
-pkgver=20220321
+pkgver=20220615
 pkgrel=1
 pkgdesc="Implementation of C++20's std::span for older compilers"
 arch=('any')
 url="https://github.com/tcbrindle/span"
-license=('custom')
+license=('BSL-1.0')
 makedepends=('git')
 provides=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/tcbrindle/span.git")
