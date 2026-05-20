@@ -1,7 +1,7 @@
 pkgbase = nheko-scrollfix-git
 	pkgdesc = Desktop client for the Matrix protocol with Kirigami wheel scroll fix
 	pkgver = 0.12.1.r6045.g90ff9c6f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Nheko-Reborn/nheko
 	arch = x86_64
 	license = GPL-3.0-or-later

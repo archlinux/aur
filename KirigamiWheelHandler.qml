@@ -9,4 +9,6 @@ Kirigami.WheelHandler {
     target: parent
     filterMouseEvents: true
     keyNavigationEnabled: true
+    horizontalStepSize: Qt.styleHints.wheelScrollLines * 40
+    verticalStepSize: Qt.styleHints.wheelScrollLines * 40
 }
