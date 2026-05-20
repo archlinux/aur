@@ -1,7 +1,7 @@
 pkgbase = lettuceai-bin
 	pkgdesc = LettuceAI desktop app (prebuilt binary, CPU variant)
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/LettuceAI/app
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -14,7 +14,7 @@ pkgbase = lettuceai-bin
 	provides = lettuceai
 	conflicts = lettuceai-vulkan-bin
 	conflicts = lettuceai-cuda-bin
-	source = lettuceai-linux-x86_64-cpu.tar.gz::https://github.com/LettuceAI/app/releases/download/desktop-release-1.5.0/lettuceai-linux-x86_64-cpu.tar.gz
-	sha256sums = 0b8560fbf2021d5cd41c93a16f744287e6412b7821246f00f3a75ddb16679bac
+	source = lettuceai-linux-x86_64-cpu.tar.gz::https://github.com/LettuceAI/app/releases/download/desktop-release-1.5.1/lettuceai-linux-x86_64-cpu.tar.gz
+	sha256sums = e3956992a817f04adf1f7dd5130dd0eef416e4df0b043b9623a3500624bc251d
 
 pkgname = lettuceai-bin

@@ -1,8 +1,8 @@
 # Maintainer: MegalithOfficial
 
 pkgname=lettuceai-bin
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc='LettuceAI desktop app (prebuilt binary, CPU variant)'
 arch=('x86_64')
 url='https://github.com/LettuceAI/app'
@@ -20,8 +20,8 @@ conflicts=(
   'lettuceai-vulkan-bin'
   'lettuceai-cuda-bin'
 )
-source=('lettuceai-linux-x86_64-cpu.tar.gz::https://github.com/LettuceAI/app/releases/download/desktop-release-1.5.0/lettuceai-linux-x86_64-cpu.tar.gz')
-sha256sums=('0b8560fbf2021d5cd41c93a16f744287e6412b7821246f00f3a75ddb16679bac')
+source=('lettuceai-linux-x86_64-cpu.tar.gz::https://github.com/LettuceAI/app/releases/download/desktop-release-1.5.1/lettuceai-linux-x86_64-cpu.tar.gz')
+sha256sums=('e3956992a817f04adf1f7dd5130dd0eef416e4df0b043b9623a3500624bc251d')
 
 package() {
   install -d "${pkgdir}/usr"
