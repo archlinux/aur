@@ -6,7 +6,11 @@ import signal
 import fcntl
 import time
 import gi
+import logging
 from typing import Optional, List, Dict
+
+# Configure basic logging
+logging.basicConfig(level=logging.ERROR, format='%(levelname)s: %(message)s')
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
@@ -42,6 +46,7 @@ class FlmChatApp(Adw.Application):
         self.current_session_id = None
         self.sessions_metadata = []
         self.allow_mid_chat_switch = False
+        self.is_sending = False
         
         self.lock_fd = None
         self.acquire_system_lock()
@@ -246,6 +251,7 @@ class FlmChatApp(Adw.Application):
                 row.set_visible(False)
 
     def on_attach_clicked(self, btn):
+        self.btn_attach.set_sensitive(False)
         dialog = Gtk.FileChooserNative.new("Select Image", self.win, Gtk.FileChooserAction.OPEN, "Open", "Cancel")
         filter = Gtk.FileFilter()
         filter.set_name("Images")
@@ -257,6 +263,7 @@ class FlmChatApp(Adw.Application):
         dialog.show()
 
     def on_file_selected(self, dialog, response):
+        self.btn_attach.set_sensitive(self.is_current_model_capable())
         if response == Gtk.ResponseType.ACCEPT:
             file = dialog.get_file()
             path = file.get_path()
@@ -719,8 +726,7 @@ class FlmChatApp(Adw.Application):
 
     def on_switch_dialog_response(self, dialog, response, session_id):
         if response == "switch":
-            if self.ai_task and not self.ai_task.done():
-                self.ai_task.cancel()
+            self.cancel_ai_task()
             
             self.execute_eject()
             self.run_task(self.load_session(session_id))
@@ -762,7 +768,7 @@ class FlmChatApp(Adw.Application):
                 self.sessions_metadata.insert(0, {"id": data["id"], "title": data["title"], "model": data["model"]})
                 self.update_history_ui()
         except Exception as e:
-            print(f"Error saving session: {e}")
+            logging.error(f"Error saving session: {e}")
 
     async def load_session(self, session_id):
         path = os.path.join(self.history_dir, f"{session_id}.json")
@@ -884,7 +890,24 @@ class FlmChatApp(Adw.Application):
             self.chat_box.remove(child)
             child = self.chat_box.get_first_child()
 
+    def cancel_ai_task(self):
+        if self.ai_task and not self.ai_task.done():
+            self.ai_task.cancel()
+        
+        # Remove any lingering "Thinking..." labels
+        children = self.chat_box.get_first_child()
+        while children:
+            next_child = children.get_next_sibling()
+            if isinstance(children, Gtk.Label) and children.get_text() == "Thinking...":
+                self.chat_box.remove(children)
+            children = next_child
+
+        self.is_sending = False
+        
     def on_send(self, widget):
+        if self.is_sending:
+            return
+            
         buffer = self.entry.get_buffer()
         start, end = buffer.get_bounds()
         text = buffer.get_text(start, end, True).strip()
@@ -892,8 +915,11 @@ class FlmChatApp(Adw.Application):
         if not text and not self.selected_image_path:
             return
             
-        if self.ai_task and not self.ai_task.done():
-            self.ai_task.cancel()
+        self.is_sending = True
+        
+        # Immediate UI lock
+        self.input_box.set_sensitive(False)
+        self.entry.set_editable(False)
             
         buffer.set_text("")
         self.add_message(text, is_user=True, image_path=self.selected_image_path)
@@ -910,44 +936,43 @@ class FlmChatApp(Adw.Application):
         GLib.idle_add(self.scroll_to_bottom)
 
     async def get_ai_response(self):
-        if not self.current_model:
-            self.add_system_message("Please select a model first.")
-            return
-
-        thinking_label = Gtk.Label(label="Thinking...")
-        thinking_label.add_css_class("dim-label")
-        self.chat_box.append(thinking_label)
-        
-        bubble = self.add_message("", is_user=False)
-        full_content = ""
-        
-        messages = []
-        for msg in self.history:
-            content = [{"type": "text", "text": msg.get("content", "")}]
-            if msg.get("image"):
-                try:
-                    import base64
-                    with open(msg["image"], "rb") as image_file:
-                        encoded = base64.b64encode(image_file.read()).decode('utf-8')
-                        content.append({"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{encoded}"}})
-                except Exception as e:
-                    print(f"Error encoding image: {e}")
-            messages.append({"role": msg["role"], "content": content})
-
-        payload = {
-            "model": self.current_model,
-            "messages": messages,
-            "stream": True
-        }
-        
-        msg = Soup.Message.new("POST", f"{BASE_URL}/chat/completions")
-        msg.set_request_body_from_bytes("application/json", GLib.Bytes.new(json.dumps(payload).encode()))
-        
         try:
+            if not self.current_model:
+                self.add_system_message("Please select a model first.")
+                return
+
+            thinking_label = Gtk.Label(label="Thinking...")
+            thinking_label.add_css_class("dim-label")
+            self.chat_box.append(thinking_label)
+            
+            bubble = self.add_message("", is_user=False)
+            full_content = ""
+            
+            messages = []
+            for msg in self.history:
+                content = [{"type": "text", "text": msg.get("content", "")}]
+                if msg.get("image"):
+                    try:
+                        import base64
+                        with open(msg["image"], "rb") as image_file:
+                            encoded = base64.b64encode(image_file.read()).decode('utf-8')
+                            content.append({"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{encoded}"}})
+                    except Exception as e:
+                        print(f"Error encoding image: {e}")
+                messages.append({"role": msg["role"], "content": content})
+
+            payload = {
+                "model": self.current_model,
+                "messages": messages,
+                "stream": True
+            }
+            
+            msg = Soup.Message.new("POST", f"{BASE_URL}/chat/completions")
+            msg.set_request_body_from_bytes("application/json", GLib.Bytes.new(json.dumps(payload).encode()))
+            
             stream = await self.session.send_async(msg, GLib.PRIORITY_DEFAULT, None)
             if not stream:
                 self.add_system_message("Error: Network endpoint request failed.")
-                self.chat_box.remove(thinking_label)
                 return
                 
             data_stream = Gio.DataInputStream.new(stream)
@@ -969,24 +994,35 @@ class FlmChatApp(Adw.Application):
                             if thinking_label.get_parent() == self.chat_box:
                                 self.chat_box.remove(thinking_label)
                             full_content += text
-                            bubble.set_markup(utils.markdown_to_pango(full_content))
+                            def update_bubble():
+                                try:
+                                    bubble.set_markup(utils.markdown_to_pango(full_content))
+                                except Exception as e:
+                                    print(f"Markup error: {e}")
+                            GLib.idle_add(update_bubble)
                     self.scroll_to_bottom()
                 except Exception as e:
                     print(f"Error parsing chunk: {e}")
             
-            if thinking_label.get_parent() == self.chat_box:
-                self.chat_box.remove(thinking_label)
-            
             self.history.append({"role": "assistant", "content": full_content})
             self.save_session()
         except asyncio.CancelledError:
-            if thinking_label.get_parent() == self.chat_box:
-                self.chat_box.remove(thinking_label)
             raise
         except Exception as e:
-            if thinking_label.get_parent() == self.chat_box:
-                self.chat_box.remove(thinking_label)
             self.add_system_message(f"Connection mapping error: {str(e)}")
+        finally:
+            self.is_sending = False
+            
+            # Robust UI unlock upon completion
+            def unlock_ui():
+                self.input_box.set_sensitive(True)
+                self.entry.set_editable(True)
+                self.btn_attach.set_sensitive(self.is_current_model_capable())
+                self.entry.grab_focus()
+            GLib.idle_add(unlock_ui)
+            
+            if thinking_label.get_parent() == self.chat_box:
+                GLib.idle_add(lambda: self.chat_box.remove(thinking_label))
 
     def on_choose_color(self, action, value):
         dialog = Gtk.ColorDialog.new()
@@ -1023,7 +1059,7 @@ class FlmChatApp(Adw.Application):
             with open(config_path, "w") as f:
                 json.dump({"accent_color": hex_color}, f)
         except Exception as e:
-            print(f"Error applying color: {e}")
+            logging.error(f"Error applying color: {e}")
 
     def do_shutdown(self):
         self.save_session()
