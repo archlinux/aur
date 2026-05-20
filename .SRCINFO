@@ -1,15 +1,18 @@
 pkgbase = kewt-bin
 	pkgdesc = A minimalist, 100% POSIX, static site generator inspired by werc and kew
-	pkgver = 1.6.6
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://kewt.krzak.org
 	arch = any
 	license = ISC
 	depends = sh
+	optdepends = bash-completion: bash shell completions
 	provides = kewt
 	conflicts = kewt
 	conflicts = kewt-git
-	source = kewt-bin-1.6.6.sh::https://git.krzak.org/N0VA/kewt/releases/download/v1.6.6/kewt
-	sha256sums = d9bf6bd6d7290e75dae2d7c08869549dda7c3e620e8ea1c8be94fa0d1487c954
+	source = kewt-bin-1.6.7.sh::https://git.krzak.org/N0VA/kewt/releases/download/v1.6.7/kewt
+	source = kewt-bin-1.6.7.bash::https://git.krzak.org/N0VA/kewt/releases/download/v1.6.7/kewt.bash
+	sha256sums = 92326e979aa3d58441842b43f9fa9a98abda0f06fe08a8331ef16b9516cdddc7
+	sha256sums = SKIP
 
 pkgname = kewt-bin
