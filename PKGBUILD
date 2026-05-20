@@ -1,5 +1,5 @@
 # Maintainer: Lloyd <lloydzhou@qq.com>
-# Contributor: Lloyd <lloyd@example.com>
+# Contributor: Lloyd <lloydzhou@qq.com>
 
 pkgname=bash-agent
 pkgver=3.0.3
