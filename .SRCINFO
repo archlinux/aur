@@ -1,0 +1,24 @@
+pkgbase = podctl-bin
+	pkgdesc = Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Rockykln/pods
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = bluez-utils
+	depends = dbus
+	optdepends = libpulse: audio verbs (volume, mute, profile, codec, default sink, latency, pods meter)
+	optdepends = systemd: pods install / pods reboot user services
+	provides = podctl
+	provides = pods
+	conflicts = podctl
+	conflicts = podctl-git
+	conflicts = pods
+	conflicts = pods-bin
+	conflicts = pods-git
+	options = !strip
+	source = pods-0.1.0-x86_64-linux-musl.tar.gz::https://github.com/Rockykln/pods/releases/download/v0.1.0/pods-0.1.0-x86_64-linux-musl.tar.gz
+	sha256sums = fb141a6836f34b10724b08f0813d26ed03ad3b5155f26d8427a3ff6c711d3f71
+
+pkgname = podctl-bin
