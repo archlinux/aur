@@ -1,6 +1,6 @@
 pkgbase = msedgedriver-stable-bin
 	pkgdesc = Standalone server that implements the W3C WebDriver standard (for microsoft edge)
-	pkgver = 121.0.2277.128
+	pkgver = 148.0.3967.70
 	pkgrel = 1
 	url = https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = msedgedriver-stable-bin
 	depends = glib2
 	depends = nss
 	depends = xdg-utils
-	optdepends = microsoft-edge-stable=121.0.2277.128-1
-	provides = msedgedriver=121.0.2277.128
+	optdepends = microsoft-edge-stable=148.0.3967.70-1
+	provides = msedgedriver=148.0.3967.70
 	provides = msedgedriver-stable
 	conflicts = msedgedriver
 	conflicts = msedgedriver-beta
@@ -18,7 +18,7 @@ pkgbase = msedgedriver-stable-bin
 	conflicts = msedgedriver-bin
 	conflicts = msedgedriver-beta-bin
 	conflicts = msedgedriver-dev-bin
-	source = msedgedriver_121.0.2277.128_linux64.zip::https://msedgedriver.azureedge.net/121.0.2277.128/edgedriver_linux64.zip
-	sha512sums = af21eb39d26d00bc6da21a9e2975f18db0d0b351e4f688f5605eb921e0f97631686730e5f087967be55c185b8e32417236709f6dbfc24766e977c048f669df77
+	source = msedgedriver_148.0.3967.70_linux64.zip::https://msedgedriver.microsoft.com/148.0.3967.70/edgedriver_linux64.zip
+	sha512sums = 114e75b9cc4ba59301c7d91b536e6c1b90a271e1863f2f8c214044754737b80ad86b2df4a54d5db7e87146fb200d8cd9fb716275e5eb390df67abe985dd67531
 
 pkgname = msedgedriver-stable-bin
