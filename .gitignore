@@ -1,0 +1,12 @@
+# makepkg artifacts
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar.*
+*.log
+
+# editor / OS
+*.swp
+.DS_Store

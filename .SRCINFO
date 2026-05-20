@@ -1,0 +1,21 @@
+pkgbase = gitorii
+	pkgdesc = A human-first Git client with multi-platform CI/CD control plane (GitLab + GitHub)
+	pkgver = 0.7.11
+	pkgrel = 1
+	url = https://gitlab.com/paskidev/gitorii
+	arch = x86_64
+	arch = aarch64
+	license = custom:TSAL-1.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	depends = zlib
+	provides = torii
+	conflicts = gitorii-experimental
+	conflicts = gitorii-bin
+	options = !lto
+	source = gitorii-0.7.11.tar.gz::https://gitlab.com/paskidev/gitorii/-/archive/v0.7.11/gitorii-v0.7.11.tar.gz
+	sha256sums = SKIP
+
+pkgname = gitorii
