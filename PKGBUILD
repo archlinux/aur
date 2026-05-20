@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-mne-qt-browser
 _name=$(printf '%s' "${pkgname#python-}" | tr '-' '_')
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Alternative backend for plotting with MNE-Python"
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs')
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('4ef6daaa1c25b6eda6eb370a571847dc950f05d4a97be4e49452428e8db5bbd2')
+sha256sums=('2a7fcf892f9fa31b8a678f600d946dc3090d2c1576aa3643851f0c97d98dd269')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
