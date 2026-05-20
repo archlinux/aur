@@ -1,0 +1,14 @@
+pkgbase = vapoursynth-plugin-cranexpr-bin
+	pkgdesc = Plugin for VapourSynth: cranexpr (binary release)
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/sgt0/cranexpr
+	arch = x86_64
+	license = MIT
+	depends = vapoursynth>=75
+	provides = vapoursynth-plugin-cranexpr
+	conflicts = vapoursynth-plugin-cranexpr
+	source = https://github.com/sgt0/cranexpr/releases/download/v0.7.0/cranexpr-x86_64-unknown-linux-gnu.zip
+	sha256sums = 94cd3dd434561f62f2cc32bc44f654df4f2a65ebf36fe96f7e6006a0f0745366
+
+pkgname = vapoursynth-plugin-cranexpr-bin
