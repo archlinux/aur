@@ -9,10 +9,6 @@ pkgbase = yuri
 	makedepends = python-setuptools
 	depends = python
 	optdepends = mpv: anime playback
-	optdepends = kitty: manga and novel rendering
-	optdepends = foot: manga and novel rendering
-	provides = yuri
-	conflicts = yuri
 	source = git+https://github.com/vlensys/yuri.git
 	sha256sums = SKIP
 

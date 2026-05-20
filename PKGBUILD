@@ -11,11 +11,7 @@ depends=('python')
 makedepends=('git' 'python-setuptools')
 optdepends=(
   'mpv: anime playback'
-  'kitty: manga and novel rendering'
-  'foot: manga and novel rendering'
 )
-provides=('yuri')
-conflicts=('yuri')
 source=('git+https://github.com/vlensys/yuri.git')
 sha256sums=('SKIP')
 
