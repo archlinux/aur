@@ -1,0 +1,63 @@
+From: =?utf-8?b?0L3QsNCx?= <nabijaczleweli@nabijaczleweli.xyz>
+Date: Wed, 30 Oct 2024 17:46:16 +0100
+Subject: Remove broken detection of getopt("+...") support, always exists
+
+---
+ configure.ac | 44 +-------------------------------------------
+ 1 file changed, 1 insertion(+), 43 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a5d3117..cd7938e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -53,49 +53,7 @@ yes) AC_DEFINE(SETNETGRENT_RETURNS_VOID,,[If setnetgrent returns void like AIX s
+ no) AC_MSG_RESULT([no]) ;;
+ esac
+ 
+-getopt_gnu=0
+-AC_MSG_CHECKING([getopt with a GNU option reordering extention])
+-AC_TRY_RUN([
+-#define _GNU_SOURCE
+-#include <getopt.h>
+-int main()
+-{
+-  char *opts@<:@@:>@ = {"hoge", "-a", "hostname", "-c", 0};
+-  int c;
+-
+-  while (-1 != (c = getopt (4, opts, "ac")))
+-    {
+-      switch (c)
+-	{
+-	case 'c':
+-	  exit (0);
+-	}
+-    }
+-  exit (1);
+-}
+-], AC_TRY_RUN([
+-#define _GNU_SOURCE
+-#include <getopt.h>
+-int main()
+-{
+-  char *opts@<:@@:>@ = {"hoge", "-a", "hostname", "-c", 0};
+-  int c;
+-
+-  while (-1 != (c = getopt (4, opts, "+ac")))
+-    {
+-      switch (c)
+-	{
+-	case 'c':
+-	  exit (1);
+-	}
+-    }
+-  exit (0);
+-}], [getopt_gnu=yes], 
+-   [getopt_gnu=no_workaround]
+-   ),
+-   [getopt_gnu=posix],
+-   [getopt_gnu=cross]
+-)
++getopt_gnu=yes
+ 
+ case ${getopt_gnu} in
+   yes) AC_DEFINE([GETOPT_WITH_GNU_REORDERING_EXTENTION],,[If getopt has an extention of reordering the parameters before processing, and it can be cancelled with adding a "+" at the start like GNU getopt, enable this option.])

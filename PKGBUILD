@@ -4,7 +4,7 @@
 
 pkgname=dsh
 pkgver=0.25.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Distributed shell (or dancer’s shell) executes command remotely on several different machines at the same time."
 arch=('x86_64')
 url="http://www.netfort.gr.jp/~dancer/software/dsh.html"
@@ -12,14 +12,17 @@ license=('GPL-2.0-or-later')
 depends=('libdshconfig')
 source=(
 	"https://www.netfort.gr.jp/~dancer/software/downloads/$pkgname-$pkgver.tar.gz"
+	"https://sources.debian.org/data/main/d/dsh/0.25.10-2/debian/patches/0002-Remove-broken-detection-of-getopt-.-support-always-e.patch"
 	test.patch
 )
 sha256sums=('520031a5474c25c6b3f9a0840e06a4fea4750734043ab06342522f533fa5b4d0'
+            'fb74392ef9d57ca36dbd3f4b6da9dac0fa243519a7345a8cd720d4b87dccc257'
             '2739f4ddd223c863a065d71aeb197a34e6ec4095e9001396ca1f19afb4eb7d9c')
 
 prepare() {
  cd "$pkgname-$pkgver"
  patch -p1 < ../test.patch
+ patch -p1 < ../0002-Remove-broken-detection-of-getopt-.-support-always-e.patch
 }
 
 build() {

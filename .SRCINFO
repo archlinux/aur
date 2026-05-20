@@ -1,14 +1,16 @@
 pkgbase = dsh
 	pkgdesc = Distributed shell (or dancer’s shell) executes command remotely on several different machines at the same time.
 	pkgver = 0.25.10
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.netfort.gr.jp/~dancer/software/dsh.html
-	arch = any
+	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = libdshconfig
 	source = https://www.netfort.gr.jp/~dancer/software/downloads/dsh-0.25.10.tar.gz
+	source = https://sources.debian.org/data/main/d/dsh/0.25.10-2/debian/patches/0002-Remove-broken-detection-of-getopt-.-support-always-e.patch
 	source = test.patch
 	sha256sums = 520031a5474c25c6b3f9a0840e06a4fea4750734043ab06342522f533fa5b4d0
+	sha256sums = fb74392ef9d57ca36dbd3f4b6da9dac0fa243519a7345a8cd720d4b87dccc257
 	sha256sums = 2739f4ddd223c863a065d71aeb197a34e6ec4095e9001396ca1f19afb4eb7d9c
 
 pkgname = dsh
