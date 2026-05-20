@@ -15,7 +15,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('8f1ea53677bbfd6470fc7b20bf2d65d5f2a902f81ef021c8a1275657c0a652c3'
+sha256sums=('b2d306e957e9d5d8dd4b0a7f2f9fa055ad764441bd805ff2fb2db01c2607e5be'
             '349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0'
             'fb6c27bd33a4ffaabdec337528a097db6b623d7d0b3f94ebf79144574244bb94')
 
