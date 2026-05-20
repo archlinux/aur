@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://antigravity.google"
 license=('LicenseRef-Google-Antigravity')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxkbcommon' 'libxdamage' 'cups')
+options=(!strip !debug)
 provides=('antigravity-ide')
 conflicts=('antigravity-ide')
 
