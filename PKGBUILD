@@ -4,7 +4,7 @@
 
 _pkgname=frida_tools
 pkgname=python-frida-tools
-pkgver=14.8.1
+pkgver=14.8.2
 pkgrel=1
 pkgdesc="CLI tools for Frida. Python 3 version from PyPi."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=(python-build python-installer python-wheel python-setuptools)
 # Sourced from https://pypi.org/project/frida-tools/#files
 source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
-sha256sums=('f23654f62b1e69581cbfcbc4284626269bd2187d28b9b5037935175485a0a821'
+sha256sums=('a9775bc305b840cc2a5510bf5e7f570dcf36a844cea7be85c28147db66789d9d'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
 conflicts=("python2-${_pkgname}")
 
