@@ -2,7 +2,7 @@
 
 pkgname=gitbutler
 pkgver=0.19.13
-pkgrel=1
+pkgrel=2
 url="https://github.com/${pkgname}app/$pkgname"
 pkgdesc='Version control client, backed by Git, powered by Tauri/Rust/Svelte'
 arch=(x86_64)
