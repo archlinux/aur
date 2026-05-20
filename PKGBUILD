@@ -1,8 +1,11 @@
 pkgname=python-tree-sitter
 pkgver=0.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings to the tree-sitter parsing library'
-arch=('x86_64')
+arch=(
+  'x86_64'
+  'aarch64'
+)
 url='https://github.com/tree-sitter/py-tree-sitter'
 license=('MIT')
 depends=(
