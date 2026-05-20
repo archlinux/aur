@@ -2,7 +2,7 @@
 
 pkgname=aerion
 pkgver=0.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="An Open Source Lightweight E-Mail Client"
 arch=('x86_64')
 url="https://aerion.3df.io"
@@ -28,5 +28,5 @@ package() {
 	install -Dm755 -t "$pkgdir/usr/bin/" build/bin/aerion
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 	install -Dm644 build/linux/aerion.desktop "$pkgdir/usr/share/applications/io.github.hkdb.Aerion.desktop"
-	install -Dm644 build/linux/aerion.png "/usr/share/icons/hicolor/256x256/apps/io.github.hkdb.Aerion.png"
+	install -Dm644 build/linux/aerion.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/io.github.hkdb.Aerion.png"
 }
