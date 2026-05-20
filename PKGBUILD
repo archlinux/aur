@@ -2,7 +2,7 @@
 
 pkgname=pi
 pkgver=0.75.4
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/earendil-works/pi"
@@ -20,12 +20,7 @@ sha256sums=('383d45be50edcf5c20816dfb514e33036339cbe09f293be42e6180172a66925b')
 build() {
   cd "${pkgname}-${pkgver}"
 
-  npm ci --cache "${srcdir}/npm-cache"
-
-  # This is necessary for building web-ui, these optional packages do not get installed automatically
-  npm install --include=optional --no-save --package-lock=false --cache "${srcdir}/npm-cache" \
-    "@parcel/watcher@$(node -p "require('./node_modules/@parcel/watcher/package.json').version")" \
-    "@tailwindcss/oxide@$(node -p "require('./node_modules/@tailwindcss/oxide/package.json').version")"
+  npm ci --cache "${srcdir}/npm-cache" --ignore-scripts --no-audit --no-fund
 
   # Running run build specifically for each package is necessary to prevent ai package issue
   npm --prefix packages/tui run build
@@ -33,7 +28,6 @@ build() {
   ./node_modules/.bin/tsgo -p packages/ai/tsconfig.build.json
   npm --prefix packages/agent run build
   npm --prefix packages/coding-agent run build
-  npm --prefix packages/web-ui run build
 
   # Remove packages which are only necessary in development / building
   npm prune --omit=dev --cache "${srcdir}/npm-cache"
@@ -53,7 +47,7 @@ package() {
 
   # Copy all necessary files for all packages except coding-agent
   local _pkg
-  for _pkg in ai agent tui web-ui; do
+  for _pkg in ai agent tui; do
     install -dm755 "$pkgdir/$mod_dir/packages/$_pkg"
     cp -a "packages/$_pkg/dist" "packages/$_pkg/package.json" "packages/$_pkg/README.md" \
       "$pkgdir/$mod_dir/packages/$_pkg/"
