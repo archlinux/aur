@@ -1,6 +1,6 @@
 pkgbase = bsc
 	pkgdesc = Bluespec Compiler (BSC)
-	pkgver = 2025.01.1
+	pkgver = 2026.01
 	pkgrel = 1
 	url = https://github.com/B-Lang-org/bsc
 	arch = x86_64
@@ -21,10 +21,11 @@ pkgbase = bsc
 	depends = haskell-syb
 	depends = haskell-regex-compat
 	depends = haskell-split
+	depends = haskell-strict-concurrency
 	optdepends = tcl: bluesim and bluetcl
-	source = bsc-2025.01.1::https://github.com/B-Lang-org/bsc/archive/refs/tags/2025.01.1.tar.gz
-	source = https://github.com/B-Lang-org/bsc/releases/download/2025.01.1/yices-src-for-bsc-2025.01.1.tar.gz
-	sha256sums = 6b08d6893e454d26ab12a8b68c5b7383d2060e10817c9fb4d3d19084a4f740f5
-	sha256sums = a7211d089be68303983cc644b70edaae8efab529ff63fd8670a4f20119888781
+	source = bsc-2026.01::https://github.com/B-Lang-org/bsc/archive/refs/tags/2026.01.tar.gz
+	source = https://github.com/B-Lang-org/bsc/releases/download/2026.01/yices-src-for-bsc-2026.01.tar.gz
+	sha256sums = 93758334747b2412b90e70cf0f4292976938545e2c30de01b0760d5088545fa7
+	sha256sums = a5114c8f1e04a75a06598ac9763922f9186554b6f1326c1454b2e06deafd5575
 
 pkgname = bsc
