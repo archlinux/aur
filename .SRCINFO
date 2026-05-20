@@ -1,0 +1,22 @@
+pkgbase = rsclip-wl-bin
+	pkgdesc = Wayland clipboard manager with GTK UI and background daemon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jR4dh3y/rsclip-wl
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
+	optdepends = tesseract: OCR support
+	optdepends = wl-clipboard: wl-copy and wl-paste integration
+	optdepends = wtype: auto-paste into the focused window
+	provides = rsclip-wl
+	conflicts = clipvault
+	conflicts = clipvault-bin
+	conflicts = rsclip-wl
+	source = rsclip-wl-bin-0.1.0.tar.zst::https://github.com/jR4dh3y/rsclip-wl/releases/download/v0.1.0/clipvault-0.1.0-x86_64.tar.zst
+	sha256sums = fed8563714223dae08eafdad11b0b528a03208b72d83b01c884f0a61b877c135
+
+pkgname = rsclip-wl-bin
