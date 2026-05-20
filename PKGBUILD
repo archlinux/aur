@@ -9,7 +9,7 @@ pkgname=${_pkgname}-bin
 pkgdesc="Terminal stock ticker with live updates and position tracking"
 
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -46,5 +46,5 @@ package () {
 	./${_pkgname} completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 
 	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-	./${_pkgname} completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/t${_pkgname}.fish"
+	./${_pkgname} completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 }
