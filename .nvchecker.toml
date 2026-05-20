@@ -1,0 +1,10 @@
+[waydroidsu-bin]
+source = "jq"
+url = "https://api.github.com/repos/mistrmochov/WaydroidSU/releases/latest"
+filter = ".assets[] | select(.name | test(\".pkg.tar.zst$\")) | .name | capture(\"wsu-(?<ver>.*?)-x86_64-\") | .ver"
+from_pattern = '-'
+to_pattern = '_'
+
+# source = "github"
+# github = "mistrmochov/WaydroidSU"
+# use_latest_release = true

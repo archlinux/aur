@@ -1,0 +1,27 @@
+pkgbase = waydroidsu-bin
+	pkgdesc = CLI Magisk manager and installer for Waydroid written in Rust
+	pkgver = 0.1.2_1
+	pkgrel = 1
+	url = https://github.com/mistrmochov/WaydroidSU
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = bzip2
+	depends = dbus
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = systemd-libs
+	depends = xz
+	provides = waydroidsu=0.1.2
+	conflicts = waydroidsu
+	source = WaydroidSU-0.1.2-LICENSE.txt::https://github.com/mistrmochov/WaydroidSU/raw/refs/tags/0.1.2/LICENSE.txt
+	source = WaydroidSU-0.1.2-README.md::https://github.com/mistrmochov/WaydroidSU/raw/refs/tags/0.1.2/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 8720aa94ac1c43acce9c67156816c4d514a885e6e3b72604d232c699198eb0cd
+	source_aarch64 = waydroidsu-0.1.2-1-aarch64-archlinuxarm.pkg.tar.xz::https://github.com/mistrmochov/WaydroidSU/releases/download/0.1.2/wsu-0.1.2-1-aarch64-archlinuxarm.pkg.tar.xz
+	sha256sums_aarch64 = a44350f0316b42dad0bbb2c1b67cc18c44f28c19a25ea5eb06f20b121a8aa1c0
+	source_x86_64 = waydroidsu-0.1.2-1-x86_64-archlinux.pkg.tar.zst::https://github.com/mistrmochov/WaydroidSU/releases/download/0.1.2/wsu-0.1.2-1-x86_64-archlinux.pkg.tar.zst
+	sha256sums_x86_64 = 7552038967e62c0bf91bed3cbad399949bee0f1a4793ea3c96bc7759adf35084
+
+pkgname = waydroidsu-bin
