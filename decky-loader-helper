@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+DECKY_LOADER_VERSION="$1"
+
+DECKY_USER="$2"
+DECKY_USER_HOME=$(getent passwd $DECKY_USER | cut -d: -f6)
+
+DECKY_VAR_DATA="$DECKY_USER_HOME/.local/var/opt/decky-loader"
+install -d -o $DECKY_USER -g $DECKY_USER "$DECKY_VAR_DATA/plugins"
+echo "$DECKY_LOADER_VERSION" >"$DECKY_VAR_DATA/.loader.version"
+
+STEAM_DEBUGGING_FILE="$DECKY_USER_HOME/.steam/steam/.cef-enable-remote-debugging"
+[ -f "$STEAM_DEBUGGING_FILE" ] || touch "$STEAM_DEBUGGING_FILE"
