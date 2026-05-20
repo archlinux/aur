@@ -1,8 +1,8 @@
 # Maintainer: Fermín Olaiz <ferminolaiz@gmail.com>
 
 pkgname=aerion
-pkgver=0.2.3
-pkgrel=4
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="An Open Source Lightweight E-Mail Client"
 arch=('x86_64')
 url="https://aerion.3df.io"
@@ -11,7 +11,7 @@ depends=('at-spi2-core' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'harfbuzz' 
 makedepends=('go' 'wails')
 provides=('aerion')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hkdb/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('54d40a98c2a18ab29daca3799b453b053e12e55236f98dd20e735410318aafec')
+sha256sums=('639ba99e1c5a5dc6d059a1148682e015f8928cc9ec437ae2428e2d96aac29f75')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
