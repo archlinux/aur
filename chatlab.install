@@ -1,5 +1,5 @@
 post_install() {
-    echo "You can add custom permanent flags for ChatLab in .config/ChatLab/user-flags.conf"
+    echo "You can add custom permanent flags for ChatLab in ~/.chatlab/user-flags.conf"
 }
 
 post_upgrade() {

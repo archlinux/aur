@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-CHATLAB_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/ChatLab"
+CHATLAB_CONFIG_DIR="${HOME}/.chatlab"
 CHATLAB_USER_FLAGS_FILE="${CHATLAB_CONFIG_DIR}/user-flags.conf"
 CHATLAB_NLP_DICT_DIR="${CHATLAB_CONFIG_DIR}/data/nlp"
 DICT_DOWNLOAD_URL_BASE='https://chatlab.fun/assets/nlp'

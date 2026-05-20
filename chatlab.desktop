@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=ChatLab
-Exec=/usr/bin/chatlab %U
+Exec=/usr/bin/chatlab-desktop %U
 Terminal=false
 Type=Application
 Icon=chatlab
