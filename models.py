@@ -50,14 +50,18 @@ async def wait_for_server(app) -> None:
 
 def confirm_download(app, model_data: dict) -> None:
     """Shows confirmation dialog before starting model download."""
+    if len(app.downloading_models) > 0:
+        display.add_system_message(app, "A download is already in progress. Please wait.")
+        return
+
     model_name = model_data['model']
     dialog = Adw.MessageDialog(
         transient_for=app.win,
         heading="Download Model?",
-        body=f"Do you want to download {model_name}?"
+        body=f"Are you sure you want to download {model_name}? \n\nNote: The chat interface, sidebar, and other controls will be locked while the download is in progress."
     )
     dialog.add_response("cancel", "Cancel")
-    dialog.add_response("download", "Download")
+    dialog.add_response("download", "Download and Lock Interface")
     dialog.set_response_appearance("download", Adw.ResponseAppearance.SUGGESTED)
     
     dialog.connect("response", lambda d, r: on_download_response(app, d, r, model_name))
@@ -132,6 +136,21 @@ def update_model_ui(app) -> None:
     """Refreshes the model selector button UI state."""
     app.models = flm.get_all_models()
     
+    is_downloading_any = len(app.downloading_models) > 0
+    download_msg = "Please wait for the current download to complete."
+    
+    # Global UI Lock during download
+    app.btn_new.set_sensitive(not is_downloading_any)
+    app.history_list.set_sensitive(not is_downloading_any)
+    if is_downloading_any:
+        app.btn_new.set_tooltip_text(download_msg)
+        app.history_list.set_tooltip_text(download_msg)
+        app.sidebar_box.set_tooltip_text(download_msg)
+    else:
+        app.btn_new.set_tooltip_text("New Chat")
+        app.history_list.set_tooltip_text(None)
+        app.sidebar_box.set_tooltip_text(None)
+    
     if app.current_model and app.current_model != "none":
         label_text = app.current_model
         model_data = next((m for m in app.models if m['model'] == app.current_model), None)
@@ -141,19 +160,16 @@ def update_model_ui(app) -> None:
     else:
         app.model_btn.set_label("Select a model to start")
     
-    # Always allow new chat if models are available in the registry
-    if app.models:
-        app.btn_new.set_sensitive(True)
-        app.btn_new.set_tooltip_text("New Chat")
+    # Model button enabled only if no download is happening
+    app.model_btn.set_sensitive(not is_downloading_any and app.current_session_id is not None)
+    if is_downloading_any:
+        app.model_btn.set_tooltip_text(download_msg)
     else:
-        app.btn_new.set_sensitive(False)
-        app.btn_new.set_tooltip_text("No models found in registry.")
+        app.model_btn.set_tooltip_text("Select Model")
 
     is_running = flm.is_server_ready(app.current_model) if app.current_model else False
     ram_ok = flm.has_sufficient_ram()
     
-    # Enforce sensitivity based on model selection and download state
-    is_downloading_any = len(app.downloading_models) > 0
     has_model = app.current_model is not None and app.current_model != "none"
     
     # Check if the currently selected model is actually installed
@@ -162,9 +178,7 @@ def update_model_ui(app) -> None:
         m_data = next((m for m in app.models if m['model'] == app.current_model), None)
         is_current_installed = m_data is not None and m_data.get('installed', False)
 
-    # Input is allowed if we have a session and model selected. 
-    # We remove the hard requirement for the server to be running (is_running)
-    # to prevent locking the UI on backend crashes.
+    # Input is allowed if we have a session, a model, it's installed, and not downloading
     is_input_allowed = (app.current_session_id is not None and 
                         has_model and 
                         is_current_installed and 
@@ -173,6 +187,13 @@ def update_model_ui(app) -> None:
     app.entry.set_sensitive(is_input_allowed)
     app.btn_send.set_sensitive(is_input_allowed)
     app.btn_attach.set_sensitive(app.is_current_model_capable() and is_current_installed and not is_downloading_any)
+    
+    if is_downloading_any:
+        app.entry.set_tooltip_text(download_msg)
+        app.btn_send.set_tooltip_text(download_msg)
+    else:
+        app.entry.set_tooltip_text("Type your message here")
+        app.btn_send.set_tooltip_text("Send message")
     
     if app.current_session_id is None:
         app.model_btn.set_sensitive(False)
@@ -183,9 +204,6 @@ def update_model_ui(app) -> None:
     elif not ram_ok and not is_running:
         app.model_btn.set_sensitive(False)
         app.model_btn.set_tooltip_text("System RAM is critically low. Free memory to load models.")
-    else:
-        app.model_btn.set_sensitive(True)
-        app.model_btn.set_tooltip_text("Select Model")
 
     popover = Gtk.Popover()
     scrolled = Gtk.ScrolledWindow()
@@ -302,8 +320,6 @@ def on_delete_response(app, dialog: Adw.MessageDialog, response: str, model_data
             subprocess.run(["flm", "remove", model_name], check=True)
             
             # 2. Proactive folder cleanup in ~/.config/flm/models/
-            # Many models use the repo name as the folder name.
-            # We can try to derive this from the 'url' or 'file_url' in model_data.
             repo_folder = None
             url = model_data.get('url') or model_data.get('file_url')
             if url:
@@ -316,7 +332,6 @@ def on_delete_response(app, dialog: Adw.MessageDialog, response: str, model_data
                 models_dir = os.path.expanduser("~/.config/flm/models")
                 target_path = os.path.join(models_dir, repo_folder)
                 if os.path.exists(target_path):
-                    import shutil
                     shutil.rmtree(target_path)
                     display.add_system_message(app, f"Purged model directory: {repo_folder}")
 
