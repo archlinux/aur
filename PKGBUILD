@@ -4,7 +4,7 @@
 
 pkgname=libtas
 pkgver=1.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
 arch=('x86_64')
 url="https://github.com/clementgallet/libTAS"
@@ -36,7 +36,7 @@ build() {
   autoconf
   autoheader
   automake --add-missing
-  CXXFLAGS="-O2 -g -Wall -pedantic" ./configure --prefix=/usr --enable-release-build
+  CXXFLAGS="-O2 -g -Wall -pedantic" ./configure --prefix=/usr --enable-release-build --with-i386
   make -j4
 }
 
