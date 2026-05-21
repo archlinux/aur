@@ -1,15 +1,16 @@
 pkgbase = openchamber
 	pkgdesc = Desktop and web interface for OpenCode AI agent
-	pkgver = 1.10.4
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://github.com/btriapitsyn/openchamber
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	makedepends = jq
-	depends = nodejs
-	noextract = web-1.10.4.tgz
-	source = https://registry.npmjs.org/@openchamber/web/-/web-1.10.4.tgz
-	sha256sums = c43e53d8cbc786cad94eeb01c0730a34941eec2b901d74446420c8e39b0a5d39
+	makedepends = nodejs-lts-jod
+	depends = nodejs-lts-jod
+	noextract = web-1.11.3.tgz
+	source = https://registry.npmjs.org/@openchamber/web/-/web-1.11.3.tgz
+	sha256sums = 4ab98bbdbf547082cbcc33f987bdbc14a4fb4c7bebb7235c0ba93b85d8616c61
 
 pkgname = openchamber
