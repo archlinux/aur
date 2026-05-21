@@ -7,16 +7,10 @@ arch=("any")
 url="https://github.com/soymadip/quikrun"
 license=("GPL3")
 depends=("python")
-makedepends=("python-build" "python-installer" "python-uv-build")
-source=("https://files.pythonhosted.org/packages/source/q/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('7be41e5cda768e5ea8fc68e1b19d210be7e1b7c8e0e56e44261fde8375e7a8f2')
-
-build() {
-    cd "$srcdir/$pkgname-$pkgver" || exit 1
-    python -m build --wheel --no-isolation
-}
+makedepends=("python-installer")
+source=("https://files.pythonhosted.org/packages/py3/q/$pkgname/$pkgname-$pkgver-py3-none-any.whl")
+sha256sums=('8f011c465d042e262b3ac32709738dd7564e0a3aa0285525db0f439f689a78e0')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver" || exit 1
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" "$srcdir/$pkgname-$pkgver-py3-none-any.whl"
 }

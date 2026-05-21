@@ -5,11 +5,9 @@ pkgbase = quikrun
 	url = https://github.com/soymadip/quikrun
 	arch = any
 	license = GPL3
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-uv-build
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/q/quikrun/quikrun-1.1.0.tar.gz
-	sha256sums = 7be41e5cda768e5ea8fc68e1b19d210be7e1b7c8e0e56e44261fde8375e7a8f2
+	source = https://files.pythonhosted.org/packages/py3/q/quikrun/quikrun-1.1.0-py3-none-any.whl
+	sha256sums = 8f011c465d042e262b3ac32709738dd7564e0a3aa0285525db0f439f689a78e0
 
 pkgname = quikrun
