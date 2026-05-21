@@ -3,7 +3,7 @@
 pkgname=amnesia
 pkgdesc='ram only secure notepad'
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=('MIT')
 url='https://github.com/Laticee/amnesia'
@@ -32,6 +32,7 @@ check() {
 
 package() {
   cd ${pkgname}-${pkgver}
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
 
