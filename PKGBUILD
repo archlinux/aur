@@ -10,7 +10,7 @@ depends=('dbus' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 optdepends=('systemd-resolved: .fips DNS resolution')
 provides=('fips')
-conflicts=('fips')
+conflicts=('fips' 'fips-debug')
 backup=('etc/fips/fips.yaml' 'etc/fips/hosts' 'etc/fips/fips.nft')
 install=fips.install
 source=("fips::git+https://github.com/jmcorgan/fips.git"
@@ -59,6 +59,10 @@ package() {
     install -Dm0644 packaging/debian/fips-dns.service "$pkgdir/usr/lib/systemd/system/fips-dns.service"
     install -Dm0644 packaging/debian/fips-gateway.service "$pkgdir/usr/lib/systemd/system/fips-gateway.service"
     install -Dm0644 packaging/debian/fips-firewall.service "$pkgdir/usr/lib/systemd/system/fips-firewall.service"
+
+    # DNS helper scripts referenced by fips-dns.service
+    install -Dm0755 packaging/common/fips-dns-setup "$pkgdir/usr/lib/fips/fips-dns-setup"
+    install -Dm0755 packaging/common/fips-dns-teardown "$pkgdir/usr/lib/fips/fips-dns-teardown"
 
     # Config files (from packaging/common/)
     install -Dm0600 packaging/common/fips.yaml "$pkgdir/etc/fips/fips.yaml"

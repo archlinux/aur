@@ -14,6 +14,7 @@ pkgbase = fips-git
 	optdepends = systemd-resolved: .fips DNS resolution
 	provides = fips
 	conflicts = fips
+	conflicts = fips-debug
 	options = !lto
 	options = !debug
 	backup = etc/fips/fips.yaml
