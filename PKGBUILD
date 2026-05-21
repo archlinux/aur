@@ -2,7 +2,7 @@
 # Contributor: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 
 pkgname=freshrss
-pkgver=1.29.0
+pkgver=1.29.1
 pkgrel=1
 pkgdesc='A free, self-hostable aggregator…'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('apache: Web server to run FreshRSS'
             'sqlite: Database server to run FreshRSS')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreshRSS/FreshRSS/archive/$pkgver.tar.gz")
-b2sums=('1625472eb973c6d7379bb87b90efc12853fa8b3c3a1b5dbae522df933e8478f3f9c9de78226bd45bd585e9099bd838d7353a1bb663be005c374aaf5582789f6c')
+b2sums=('89851bbb958d2230c7c86384aaafba559185c4fb76d479c02bd1b4ce4df797b0ad6e0fc8634a9301b5123378c069197b1d0d503915f445b7f15b5211df1a781a')
 
 prepare() {
   cd "${srcdir}/FreshRSS-$pkgver"
