@@ -24,7 +24,7 @@ source=(
   "upstream-LICENSE::${url}/raw/tag/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '2807ed3af918406284a61744d432cce1903ae64d60c5b7413e9cea1c39a2628a'
+  '09aed0444a819a2d529ca17fe6a9c90abfd03043da59b1585464da51b1827aea'
   '9be548f8ac17e571d7a82ab7931d4c761d75855cba77f2f58d50018e6faf1f1b'
 )
 
