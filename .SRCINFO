@@ -1,6 +1,6 @@
 pkgbase = modemmanager-qt-git
 	pkgdesc = Qt wrapper for ModemManager DBus API
-	pkgver = r457.70e7a3a
+	pkgver = 6.26.0.r2.gb53fdd0
 	pkgrel = 1
 	url = https://invent.kde.org/frameworks/modemmanager-qt
 	arch = any

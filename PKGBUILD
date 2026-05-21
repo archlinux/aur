@@ -1,7 +1,7 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 _pkgname=modemmanager-qt
 pkgname=modemmanager-qt-git
-pkgver=r457.70e7a3a
+pkgver=6.26.0.r2.gb53fdd0
 pkgrel=1
 pkgdesc='Qt wrapper for ModemManager DBus API'
 arch=(any)
