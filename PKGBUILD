@@ -1,7 +1,7 @@
 # Maintainer: Valen <valen@users.noreply.github.com>
 
 pkgname=yuri
-pkgver=0.1.0.r32.g504737b
+pkgver=0.1.0.r33.g0c9ab7b
 pkgrel=1
 pkgdesc='yuri straight in your terminal'
 arch=('any')
