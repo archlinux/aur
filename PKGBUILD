@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-bin
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -36,7 +36,7 @@ conflicts=(
     'shiori-ebook-bin'
 )
 source=("Shiori_${pkgver}_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('01919af409d96fe9c02926f54767955ffac326141654c2c4efbd88a8e4e31174')
+sha256sums=('cd2f87537d3a90507067a8bacad6da9106f4b3a5757a9e00ac65fbfabd0ba35a')
 
 package() {
     bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
@@ -50,6 +50,30 @@ package() {
         echo "Missing usr/share/applications/Shiori.desktop in release tarball" >&2
         return 1
     fi
+
+    # Move the real binary to /usr/lib/shiori/ so the wrapper at /usr/bin/shiori
+    # can set required webkit2gtk env vars before exec-ing it.
+    install -d "${pkgdir}/usr/lib/shiori"
+    mv "${pkgdir}/usr/bin/shiori" "${pkgdir}/usr/lib/shiori/shiori"
+    chmod 755 "${pkgdir}/usr/lib/shiori/shiori"
+
+    # Wrapper script: sets WEBKIT_DISABLE_DMABUF_RENDERER=1 unconditionally.
+    # This fixes the blank white screen on Arch Linux with webkit2gtk-4.1.
+    # Users who need DMA-BUF can override by setting SHIORI_WEBKIT_DMABUF=1.
+    cat > "${pkgdir}/usr/bin/shiori" <<'EOF'
+#!/bin/sh
+# Shiori launcher — disables broken DMA-BUF renderer on webkit2gtk-4.1
+# to prevent blank/white screen on Arch Linux (both X11 and Wayland).
+# Set SHIORI_WEBKIT_DMABUF=1 to opt back in to DMA-BUF rendering.
+if [ -z "${SHIORI_WEBKIT_DMABUF}" ]; then
+    export WEBKIT_DISABLE_DMABUF_RENDERER=1
+fi
+exec /usr/lib/shiori/shiori "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/shiori"
+
+    # Update the .desktop Exec= to point to the wrapper (which is already /usr/bin/shiori)
+    # — no change needed since /usr/bin/shiori is the wrapper itself.
 
     # Harden runtime assets: rewrite absolute-root asset refs in shipped web bundle.
     # This covers both the main JS/CSS chunks and the fonts/fonts.css file.
@@ -76,4 +100,5 @@ package() {
 
     chmod -R u=rwX,go=rX "${pkgdir}/usr"
     chmod 755 "${pkgdir}/usr/bin/shiori"
+    chmod 755 "${pkgdir}/usr/lib/shiori/shiori"
 }
