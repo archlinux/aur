@@ -2,7 +2,7 @@
 
 pkgname=sunsetr
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic blue light filter for Hyprland, Niri, and everything Wayland"
 arch=('x86_64')
 url="https://github.com/psi4j/sunsetr"
@@ -18,6 +18,7 @@ sha256sums=('fb82d3095212caf10ba2dd0afe3a6787218d202eb5cf70f0c85da8cbed672e71')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export SUNSETR_VERSION="$pkgver"
     cargo build --release --locked
 }
 
