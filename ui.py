@@ -19,7 +19,7 @@ import display
 def show_welcome_message(app):
     display.chat_box_remove_all(app)
 
-    # Strictly disable all interactive elements and remove popover to prevent clicking
+    # Strictly disable all interactive elements
     app.model_btn.set_sensitive(False)
     app.model_btn.set_popover(None)
     app.model_btn.set_tooltip_text("Start a new chat to select a model.")
@@ -27,8 +27,7 @@ def show_welcome_message(app):
     app.entry.set_sensitive(False)
     app.btn_send.set_sensitive(False)
     app.btn_repair.set_sensitive(False)
-    app.btn_attach.set_sensitive(False)
-    # Create the welcome content
+    app.btn_attach.set_sensitive(False)    # Create the welcome content
     welcome_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
     # ... (rest of the UI construction)
 

@@ -290,26 +290,27 @@ class FlmChatApp(Adw.Application):
             self.history_list.append(row)
 
     def execute_new_chat(self):
-        # 1. Save the previous session before clearing anything (if it had an ID)
+        # Save previous session if it exists
         self.save_session()
 
-        # 2. Reset the internal state
+        # Reset state
         self.execute_eject()
         self.entry.get_buffer().set_text("")
         display.chat_box_remove_all(self)
 
-        # 3. Explicitly reset history and clear current session ID
+        # Reset history and ID - session will be created on send
         self.history = []
         self.current_session_id = None
         self.is_welcome_screen = False
 
-        # 4. Re-enable UI
+        # Re-enable UI
         self.model_btn.set_sensitive(True)
+        # Restore the popover menu so models can be selected
+        models.update_model_ui(self)
         self.entry.set_sensitive(True)
         self.btn_send.set_sensitive(True)
         self.update_model_ui()
         display.add_system_message(self, "Ready. Select a model and send a message to start.")
-
     def execute_eject(self):
         if self.server_process:
             self.server_process.terminate()
