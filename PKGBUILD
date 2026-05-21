@@ -34,12 +34,12 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/xmm7360-pci/tool"
-    make -f Makefile.tool clean 2>/dev/null || true
+    make -f ./Makefile.tool clean 2>/dev/null || true
 }
 
 build() {
     cd "$srcdir/xmm7360-pci/tool"
-    make -f Makefile.tool
+    make -f ./Makefile.tool
 }
 
 package() {
