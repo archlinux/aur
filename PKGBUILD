@@ -1,4 +1,5 @@
-# Maintainer: Tricia, `creyon` <gtcreyon@gmail.com>
+# Maintainer: Célestin Matte aur [at] ploudseeker dot com
+# Contributor: Tricia, `creyon` <gtcreyon@gmail.com>
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=libtas
