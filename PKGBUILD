@@ -1,7 +1,7 @@
 # Maintainer: Manas Kenge <Manas-Kenge@users.noreply.github.com>
 pkgname=daylog-bin
 _pkgname=daylog
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Terminal screen-time tracker for Linux"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "README-${pkgver}.md::${url}/raw/v${pkgver}/README.md"
 )
 sha256sums=(
-    '762dfb55a03c6d802397a57a2e2765a07ed255ea8a4b511ddc747ad8a50e3e42'
+    '2d135a9a85e47dd3d7a78f11ad1ccbdc92652b61af64b4a929f7b58efc7c2b9e'
     'SKIP'
     'SKIP'
 )
