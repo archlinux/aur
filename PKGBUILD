@@ -6,7 +6,7 @@ _pkgname=ansisvg
 pkgname=${_pkgname}-bin
 pkgdesc="Convert ANSI to SVG"
 
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,9 +26,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 sha256sums=('265974823e3438d015acbbb43c0f745530bd20f50b2b7cb97f5397e1027fc2cc'
-            '24d933035fa5d768174d3a86ff79873c35d893c4aa1998f3d3df3e9e89cb334f')
-sha256sums_x86_64=('7ae9e5cc2d39d72661fba547716d0aa2c2eb3ccb3ceeb86ead6125dbb7f287f4')
-sha256sums_aarch64=('0e0c5faf241213d243499e0782de32fd3e3f512a6799c7faa478bc6bb5aa084c')
+            'f42251a28e282ba0516e3ee9659df6cb94aa8fd32fbcdd714ccea7f81e611ba7')
+sha256sums_x86_64=('79eac5bad918ad9e4acec3baafdfa613176578f73411167dfdbab17d50b00ad6')
+sha256sums_aarch64=('08af1981da8a3ed3b1c1afa1afd18c2a7cbf9de329ef74861db0c7704db9974c')
 
 
 package() {
