@@ -1,11 +1,11 @@
-# Maintainer: Landon Porter <landonp95@gmail.com>
+# Maintainer: Landon Porter <dev@mazylol.com>
 
 _pkgname=bling
 pkgname="${_pkgname}-git"
-pkgver=r33.1d0d126
+pkgver=r34.8b35ee1
 pkgrel=1
 pkgdesc="Minimal system info fetcher made in C"
-url="https://github.com/mazylol/bling"
+url="https://codeberg.org/mazylol/bling"
 arch=('x86_64')
 license=('GPL-3.0-only')
 makedepends=('git' 'clang')
