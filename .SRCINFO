@@ -1,0 +1,14 @@
+pkgbase = betterleaks
+	pkgdesc = Go-based secret scanner offering CEL rule evaluation and Gitleaks compatibility
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/betterleaks/betterleaks
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = betterleaks-1.3.0.tar.gz::https://github.com/betterleaks/betterleaks/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = a3df6a7a21bef08684896271b7e25284299c678804be5cad682a8d56745b422e
+
+pkgname = betterleaks
