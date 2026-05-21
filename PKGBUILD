@@ -14,18 +14,19 @@ url="https://buildhut.fly.dev/apps/Polify"
 license=('MIT')
 depends=('gtk3' 'libepoxy' 'xz' 'mpv' 'ffmpeg' 'sqlite' 'libsecret'
          'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav')
+makedepends=('patchelf')
 provides=('polify')
 conflicts=('polify' 'polify-git')
 validpgpkeys=('EF27591A48D4B6F7C7E55F49EC8E0E98E7C13D19')
 source=("polify-${pkgver}-linux-x86_64.tar.zst::https://buildhut.fly.dev/api/apps/Polify/latest/linux/x86_64/tar.zst"
-        "polify-${pkgver}-linux-x86_64.tar.zst.sig::https://buildhut.fly.dev/api/apps/Polify/latest/linux/x86_64/tar.zst.sig")
+        "polify-${pkgver}-linux-x86_64.tar.zst.sig::https://buildhut.fly.dev/api/apps/Polify/latest/linux/x86_64/tar.zst/signature")
 sha256sums=('SKIP'
             'SKIP')
 b2sums=('SKIP'
         'SKIP')
 
 # Expected tarball layout (from make release):
-#   bundle/          — Flutter Linux release bundle contents
+#   bundle/          — Flutter Linux release bundle contents (includes onnxruntime libs)
 #   polify.desktop   — XDG desktop entry
 #   polify.png       — Application icon
 
@@ -36,6 +37,18 @@ package() {
   install -d "$pkgdir/usr/lib/polify"
   cp -a bundle/* "$pkgdir/usr/lib/polify/"
   chmod -R 755 "$pkgdir/usr/lib/polify"
+
+  # Fix RUNPATH: remove build directory references so the linker finds
+  # co-located libraries in $ORIGIN (the lib/ directory)
+  # - Main binary: needs $ORIGIN/lib to find plugins
+  # - Plugin .so files: need $ORIGIN to find co-located libraries
+  patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/usr/lib/polify/polify" 2>/dev/null || true
+  find "$pkgdir/usr/lib/polify/lib" -type f \( -name '*.so' -o -name '*.so.*' \) \
+    -exec patchelf --set-rpath '$ORIGIN' {} + 2>/dev/null || true
+
+  # Strip debug symbols and unneeded metadata
+  find "$pkgdir/usr/lib/polify" -type f \( -name '*.so' -o -name '*.so.*' \
+    -o -not -name '*.*' \) -exec strip --strip-unneeded {} + 2>/dev/null || true
 
   # Symlink to /usr/bin
   install -d "$pkgdir/usr/bin"
