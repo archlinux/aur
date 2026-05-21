@@ -1,6 +1,6 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=fastflowlm-gtk
-pkgver=1.6.7
+pkgver=1.6.8
 pkgrel=1
 pkgdesc="A minimalist, modern desktop interface for FastFlowLM, built with GTK 4 and Libadwaita."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/marleylinux/FastFlowLM-GTK"
 license=('MIT')
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'libsoup3' 'gtksourceview5' 'python-psutil' 'fastflowlm')
 source=("fastflowlm-gtk.desktop"
-        "flm-gtk.png"
+        "flm-gtk.webp"
         "app.py"
         "main.py"
         "flm.py"
@@ -29,7 +29,7 @@ package() {
   chmod 755 "$pkgdir/usr/share/fastflowlm-gtk/app.py"
 
   # Install Icon
-  install -Dm644 "$srcdir/flm-gtk.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/fastflowlm-gtk.png"
+  install -Dm644 "$srcdir/flm-gtk.webp" "$pkgdir/usr/share/icons/hicolor/256x256/apps/fastflowlm-gtk.png"
 
   # Install Desktop file
   install -Dm644 "$srcdir/fastflowlm-gtk.desktop" "$pkgdir/usr/share/applications/fastflowlm-gtk.desktop"

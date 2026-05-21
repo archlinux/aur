@@ -1,6 +1,6 @@
 pkgbase = fastflowlm-gtk
 	pkgdesc = A minimalist, modern desktop interface for FastFlowLM, built with GTK 4 and Libadwaita.
-	pkgver = 1.6.7
+	pkgver = 1.6.8
 	pkgrel = 1
 	url = https://github.com/marleylinux/FastFlowLM-GTK
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = fastflowlm-gtk
 	depends = python-psutil
 	depends = fastflowlm
 	source = fastflowlm-gtk.desktop
-	source = flm-gtk.png
+	source = flm-gtk.webp
 	source = app.py
 	source = main.py
 	source = flm.py
