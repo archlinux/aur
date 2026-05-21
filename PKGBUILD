@@ -10,7 +10,7 @@ url="https://github.com/BerkeOruc/oplire"
 license=('MIT')
 makedepends=('cargo')
 depends=('glibc')
-optdepends=('cloudflare-warp: for WARP tunnel rate limit reset functionality')
+optdepends=('cloudflare-warp-bin: for WARP tunnel rate limit reset functionality')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BerkeOruc/oplire/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
