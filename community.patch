@@ -1,0 +1,11 @@
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -2477,7 +2477,7 @@
+ 
+ [[package]]
+ name = "weylus"
+-version = "2025.11.4"
++version = "2026.5.21"
+ dependencies = [
+  "autopilot",
+  "bitflags 2.11.0",

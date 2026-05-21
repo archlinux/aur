@@ -1,5 +1,6 @@
 *
 
+!*.patch
 !.SRCINFO
 !PKGBUILD
 !.gitignore

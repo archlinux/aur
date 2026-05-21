@@ -1,17 +1,15 @@
 pkgbase = weylus-community-git
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
-	pkgver = 2025.11.04.r0.gfd1f1f1
-	pkgrel = 3
+	pkgver = 2026.5.21.r0.g1655735
+	pkgrel = 1
 	url = https://github.com/electronstudio/WeylusCommunityEdition
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = rust
-	makedepends = typescript
-	makedepends = gcc
+	makedepends = typescript<6.0.0
 	makedepends = libx11
 	makedepends = pkg-config
 	makedepends = git
-	makedepends = make
 	makedepends = cmake
 	makedepends = nasm
 	depends = cairo
@@ -28,13 +26,15 @@ pkgbase = weylus-community-git
 	depends = pango
 	depends = ffmpeg
 	optdepends = gst-plugin-pipewire: Wayland and or pipewire support
-	provides = weylus=2025.11.04
+	provides = weylus=2026.5.21
 	conflicts = weylus
 	conflicts = weylus-bin
 	conflicts = weylus-git
 	options = !debug
 	options = !lto
 	source = weylus::git+https://github.com/electronstudio/WeylusCommunityEdition.git
+	source = community.patch
 	sha256sums = SKIP
+	sha256sums = e066e4eeca91540056fb56bb5a8f763abf5c224ee4443212cb02969e0828dfff
 
 pkgname = weylus-community-git
