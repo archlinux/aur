@@ -16,11 +16,11 @@ pkgver() {
 
 package() {
     install -d "$pkgdir/opt/jacket"
-    # Копируем файл из корня репозитория
     install -Dm755 jacket_run.sh "$pkgdir/opt/jacket/jacket_run.sh"
-    # Копируем остальные файлы (кроме тех, что не нужны)
     cp -r JacketVoice/* "$pkgdir/opt/jacket/"
     
+    # Создаем директорию bin
     install -d "$pkgdir/usr/bin"
-    ln -s /opt/jacket/jacket_run.sh "$pkgdir/usr/bin/jacket"
+    # Удаляем старый файл, если он есть, и создаем симлинк на новый скрипт
+    ln -sf /opt/jacket/jacket_run.sh "$pkgdir/usr/bin/jacket"
 }
