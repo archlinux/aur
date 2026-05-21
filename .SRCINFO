@@ -1,7 +1,7 @@
 pkgbase = spamassassin-milter
 	pkgdesc = Milter for spam filtering with SpamAssassin (Rust)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/glts/spamassassin-milter
 	arch = x86_64
 	license = GPL-3.0-or-later
