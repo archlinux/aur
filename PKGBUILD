@@ -15,9 +15,13 @@ pkgver() {
 }
 
 package() {
-  install -d "$pkgdir/opt/jacket"
-  cp -r JacketVoice/* "$pkgdir/opt/jacket/"
-  
-  install -d "$pkgdir/usr/bin"
-  ln -s /opt/jacket/jacket_run.sh "$pkgdir/usr/bin/jacket"
+    install -d "$pkgdir/opt/jacket"
+    # Копируем файлы и даем права 755 на скрипт запуска
+    install -Dm755 jacket_run.sh "$pkgdir/opt/jacket/jacket_run.sh"
+    # Копируем остальное (права 644)
+    cp -r * "$pkgdir/opt/jacket/"
+    
+    # Создаем ссылку
+    install -d "$pkgdir/usr/bin"
+    ln -s /opt/jacket/jacket_run.sh "$pkgdir/usr/bin/jacket"
 }
