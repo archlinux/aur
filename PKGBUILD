@@ -2,7 +2,7 @@
 
 pkgname=sunsetr-bin
 _realname=sunsetr
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Automatic blue light filter for Hyprland, Niri, and everything Wayland (pre-compiled binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ _extracted_dir_name="${_realname}-v${pkgver}"
 _local_tarball_name="${_realname}-${pkgver}-x86_64-linux.tar.gz"
 
 source=("${_local_tarball_name}::${url}/releases/download/v${pkgver}/${_github_asset_filename}")
-sha256sums=('7378b1315bcf2633fb18afbd2a833f13d6f18f0f26fd68a71350928773dd7793')
+sha256sums=('6a8267b5176b44c1512973dc032bd22b8327fa96b98418ecd71c5d93075500f1')
 
 package() {
 
