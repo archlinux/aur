@@ -8,7 +8,6 @@ url="https://github.com/Froststrap/Froststrap"
 license=('AGPL-3.0-or-later' 'MIT' 'Unlicense')
 depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk-10.0' 'git')
-optdepends=('Sober: Running Roblox On Linux')
 source=("git+https://github.com/Froststrap/Froststrap.git#branch=feat/crossplatform"
         "git+https://github.com/Froststrap/ColorPicker-Avalonia.git")
 sha256sums=('SKIP'

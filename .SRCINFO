@@ -13,7 +13,6 @@ pkgbase = froststrap
 	depends = icu
 	depends = fontconfig
 	depends = hicolor-icon-theme
-	optdepends = Sober: Running Roblox On Linux
 	source = git+https://github.com/Froststrap/Froststrap.git#branch=feat/crossplatform
 	source = git+https://github.com/Froststrap/ColorPicker-Avalonia.git
 	sha256sums = SKIP
