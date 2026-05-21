@@ -3,8 +3,8 @@
 
 pkgname=ender-dots
 pkgver=2026.05.19
-pkgrel=1
-pkgdesc="AI-first Arch Linux ecosystem — KDE dotfiles, Neovim, OpenCode, Fish, Starship, Vicinae, custom Japanese OCR/study scripts, and automated workflows"
+pkgrel=2
+pkgdesc="AI-first Arch Linux ecosystem — KDE dotfiles, Neovim, OpenCode, Fish, Starship, Vicinae themes, custom Japanese OCR/study scripts, and automated workflows. Includes interactive TUI installer."
 arch=('any')
 url="https://github.com/kurojs/EnderDots"
 license=('MIT')
@@ -21,28 +21,40 @@ optdepends=(
   'zed: Zed editor config'
   'ghostty: Ghostty terminal config'
   'warp-terminal: Warp terminal config'
-  'vicinae: Application launcher config'
+  'vicinae: Application launcher config and themes'
   'kwin: KDE window rules and tiling'
   'python: For custom scripts (OCR, Spotify, etc.)'
   'manga-ocr: Japanese OCR scripts'
   'ffmpeg: Audio playback for TTS scripts'
 )
-source=("master.tar.gz::https://github.com/kurojs/EnderDots/archive/master.tar.gz")
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kurojs/EnderDots/archive/master.tar.gz")
 sha256sums=('SKIP')
+
+build() {
+  cd "$srcdir/EnderDots-master/installer"
+  go build -o ender-dots-installer -ldflags="-s -w" .
+}
 
 package() {
   cd "$srcdir/EnderDots-master"
 
-  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$pkgname/.config"
+  install -dm755 "$pkgdir/usr/share/$pkgname/.local"
+  install -dm755 "$pkgdir/usr/share/$pkgname/home"
+  install -dm755 "$pkgdir/usr/share/$pkgname/usr"
+  install -dm755 "$pkgdir/usr/share/$pkgname/Docs"
 
-  cp -r .config "$pkgdir/usr/share/$pkgname/"
-  cp -r .local "$pkgdir/usr/share/$pkgname/"
-  cp -r .gemini "$pkgdir/usr/share/$pkgname/"
-  cp -r .zen "$pkgdir/usr/share/$pkgname/"
-  cp -r home "$pkgdir/usr/share/$pkgname/"
-  cp -r usr "$pkgdir/usr/share/$pkgname/"
-  cp -r Docs "$pkgdir/usr/share/$pkgname/"
+  cp -r .config/* "$pkgdir/usr/share/$pkgname/.config/"
+  cp -r .local/* "$pkgdir/usr/share/$pkgname/.local/"
+  cp -r home/* "$pkgdir/usr/share/$pkgname/home/"
+  cp -r usr/* "$pkgdir/usr/share/$pkgname/usr/"
+  cp -r Docs/* "$pkgdir/usr/share/$pkgname/Docs/"
+  [ -d .gemini ] && cp -r .gemini "$pkgdir/usr/share/$pkgname/"
+  [ -d .zen ] && cp -r .zen "$pkgdir/usr/share/$pkgname/"
 
   install -Dm644 README.md "$pkgdir/usr/share/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/$pkgname/LICENSE"
+
+  install -Dm755 installer/ender-dots-installer "$pkgdir/usr/bin/ender-dots"
 }
