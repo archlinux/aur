@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-bin
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -36,7 +36,7 @@ conflicts=(
     'shiori-ebook-bin'
 )
 source=("Shiori_${pkgver}_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('19fb0cd0ab018ef822a9ddbb5e5a0426eb4debb5ae51762830d5d77eb2aec45a')
+sha256sums=('eb7776f2692eef469f0313a72047995e21b8703d306a59d2fbee64796d78dfc8')
 
 package() {
     bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
@@ -52,6 +52,7 @@ package() {
     fi
 
     # Harden runtime assets: rewrite absolute-root asset refs in shipped web bundle.
+    # This covers both the main JS/CSS chunks and the fonts/fonts.css file.
     while IFS= read -r -d '' web_file; do
         sed -i \
             -e 's|"/assets/|"./assets/|g' \
@@ -64,6 +65,14 @@ package() {
             -e "s|'\/logo\.png'|'./logo.png'|g" \
             "${web_file}"
     done < <(find "${pkgdir}/usr" -type f \( -name '*.html' -o -name '*.js' -o -name '*.css' \) -print0)
+
+    # Fix fonts.css: rewrite absolute /FontName.woff2 refs to same-directory ./FontName.woff2
+    # This ensures fonts load correctly under Tauri's custom protocol on Linux.
+    local fonts_css
+    fonts_css=$(find "${pkgdir}/usr" -name 'fonts.css' -print -quit)
+    if [[ -f "${fonts_css}" ]]; then
+        sed -i "s|url('\//|url('./|g; s|url('/|url('./|g" "${fonts_css}"
+    fi
 
     chmod -R u=rwX,go=rX "${pkgdir}/usr"
     chmod 755 "${pkgdir}/usr/bin/shiori"
