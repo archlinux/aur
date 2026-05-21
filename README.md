@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 1:2.0.1-7
+- **Versión:** 1:2.0.1-8
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.8-1-cachyos)
@@ -138,34 +138,44 @@ un script de bash o un ELF sin versión PE, por lo que `testExecProvider` devuel
 "Game version mismatch" muestra "Your game version:" vacío, aunque la versión instalada
 sea exactamente la requerida.
 
-**Fix:** En Linux, cuando el ejecutable no tiene versión PE:
-1. `testExecProvider` — si no encuentra versión PE, escanea `*.deps.json` en la carpeta del
-   juego (formato de .NET Core). Si alguno contiene `<GameName>/<version>` en `libraries`,
-   devuelve `true` (el proveedor sí soporta la detección).
-2. `getExecGameVersion` — misma lógica: si la versión PE es "0.0.0", intenta leer
-   `<GameName>.deps.json` y extrae la versión del campo `libraries`.
+**Fix:** En Linux, cuando el ejecutable no tiene versión PE, se escanean los archivos
+`*.deps.json` de la carpeta del juego (manifiestos de dependencias .NET Core/5+).
+En lugar de usar el nombre del archivo `.deps.json` como prefijo de búsqueda (lo que fallaba
+cuando había varios `.deps.json` en el directorio, p.ej. `BmFont.deps.json` se leía antes
+que `Stardew Valley.deps.json` en orden alfabético devolviendo `BmFont/1.0.0`), el algoritmo
+normaliza el nombre del ejecutable (minúsculas, sin espacios/puntos/guiones/subrayados) y
+busca la clave de biblioteca que mejor coincida:
 
-**Alcance:** Funciona para cualquier juego .NET Core/5+ sin necesidad de parche por juego.
-Stardew Valley (`.deps.json` → `Stardew Valley/1.6.15.24356`) y cualquier otro título .NET.
+- **Score 2** (match exacto): `StardewValley` normalizado = `stardewvalley` == `Stardew Valley` normalizado = `stardewvalley` ✓
+- **Score 1** (prefijo): `stardewvalley` es prefijo de `stardewvalleygamedata`
+- **Score 0** (sin relación): `bmfont`, `monogame`, etc. → ignorado
+
+Solo se acepta la versión si el score es ≥ 1.
 
 ```js
-// getExecGameVersion — nuevo fallback Linux en renderer.js
+// getExecGameVersion — fallback Linux con matching normalizado (renderer.js)
 if ("linux" === process.platform && "0.0.0" === _ver) {
-    const _fls = readdirSync(discovery.path).filter(f => f.endsWith(".deps.json"));
+    const _norm = s => s.toLowerCase().replace(/[\s.\-_]/g, "");
+    const _en = _norm(path.basename(exePath).replace(/\.[^.]+$/, ""));
+    const _fls = fs.readdirSync(discovery.path).filter(f => f.endsWith(".deps.json"));
+    let _best = null, _bsc = -1;
     for (const _f of _fls) {
-        const _d = JSON.parse(readFileSync(join(discovery.path, _f)));
-        const _gb = _f.replace(/\.deps\.json$/, "");
+        const _d = JSON.parse(fs.readFileSync(path.join(discovery.path, _f), "utf8"));
         for (const _lib of Object.keys(_d.libraries || {})) {
             const _si = _lib.indexOf("/");
-            if (_si > -1 && _lib.substring(0, _si) === _gb) {
-                const _v = _lib.substring(_si + 1);
-                if (_v && "0.0.0" !== _v) { _ver = _v; break; }
-            }
+            const _lv = _lib.substring(_si + 1);
+            if (!_lv || "0.0.0" === _lv) continue;
+            const _ln = _norm(_lib.substring(0, _si));
+            const _sc = _ln === _en ? 2 : (_ln.startsWith(_en) || _en.startsWith(_ln)) ? 1 : 0;
+            if (_sc > _bsc) { _bsc = _sc; _best = _lv; }
         }
-        if ("0.0.0" !== _ver) break;
     }
+    if (_best && _bsc >= 1) _ver = _best;
 }
 ```
+
+**Alcance:** Funciona para cualquier juego .NET Core/5+ sin necesidad de parche por juego.
+Stardew Valley: ejecutable `StardewValley` → `stardewvalley` == clave `Stardew Valley` → versión `1.6.15.24356`.
 
 ---
 
@@ -500,6 +510,7 @@ Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 | **1:2.0.1-5** | Hotfix: `})()` → `})();` en el new string del patch de `iniFiles`. El `;` faltante provocaba `SyntaxError` en el renderer de Electron (pantalla negra en Vortex). |
 | **1:2.0.1-6** | Patch 8 — `appDataPath` en `gamebryo-plugin-management`: en Linux resuelve `Plugins.txt` y `loadorder.txt` al prefijo Proton en lugar de `~/.config/Local/<game>/`. Script de parche runtime `patch-ext-gamebryo.py`; misma lógica de búsqueda Steam que Patch 6. Reportado por Garecrow. |
 | **1:2.0.1-7** | Patches 9 y 10 — Detección genérica de versión de juego en Linux: `testExecProvider` y `getExecGameVersion` buscan `.deps.json` de .NET si el ejecutable no tiene versión PE. Arregla el diálogo "Game version mismatch" vacío en colecciones de Nexus para juegos .NET (Stardew Valley, etc.). Solución genérica — funciona para cualquier juego .NET sin parche por juego. |
+| **1:2.0.1-8** | Patches 9 y 10 v6 — Normalización del nombre del ejecutable al buscar en `.deps.json`: minúsculas, sin espacios/puntos/guiones/subrayados, con puntuación (exacto=2, prefijo=1). Arregla falsos positivos cuando hay varios `.deps.json` en el directorio del juego (p.ej. `BmFont.deps.json` devolvía versión errónea antes que `Stardew Valley.deps.json`). Incluye parches de migración v5→v6 para asars ya instalados. |
 
 ---
 

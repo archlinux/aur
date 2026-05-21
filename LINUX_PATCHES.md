@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-7
+**Current release:** 1:2.0.1-8
 
 ---
 
@@ -185,37 +185,50 @@ ELF binary or a shell script — neither of which has PE version metadata. As a 
 }
 ```
 
-**Fix:** Both `testExecProvider` and `getExecGameVersion` gain a Linux fallback path that:
+**Fix (v6 — 1:2.0.1-8):** Both `testExecProvider` and `getExecGameVersion` gain a Linux
+fallback that normalizes names before matching, fixing false positives when multiple
+`.deps.json` files are present (e.g. `BmFont.deps.json` being read before
+`Stardew Valley.deps.json` alphabetically and returning the wrong version).
 
-1. Scans the game directory for files matching `*.deps.json`.
-2. For each deps.json, strips `.deps.json` to get the expected library name prefix.
-3. Searches `libraries` for an entry starting with `<name>/` whose version isn't `"0.0.0"`.
-4. Returns the version string if found; continues to next file if not.
+The algorithm:
 
-`testExecProvider` returns `true` when a version is found (enabling the exec provider for
-the game), so that `getExecGameVersion` is later called and returns the correct version.
+1. Normalizes the executable filename: lowercase, strip spaces/dots/hyphens/underscores.
+   `StardewValley` → `stardewvalley`.
+2. Scans all `*.deps.json` files in the game directory.
+3. For each library key (`Name/version`), normalizes the name part the same way.
+4. Scores each match: **2** = exact, **1** = prefix (either direction), **0** = unrelated.
+5. Accepts the best-scoring version if score ≥ 1.
+
+`testExecProvider` returns `true` when any match with score ≥ 1 is found.
 
 ```js
-// getExecGameVersion — new Linux fallback (added to renderer.js)
+// getExecGameVersion — normalized Linux fallback (renderer.js, v6)
 if ("linux" === process.platform && "0.0.0" === _ver) {
+    const _norm = s => s.toLowerCase().replace(/[\s.\-_]/g, "");
+    const _en = _norm(path.basename(exePath).replace(/\.[^.]+$/, ""));
     const _fls = fs.readdirSync(discovery.path).filter(f => f.endsWith(".deps.json"));
+    let _best = null, _bsc = -1;
     for (const _f of _fls) {
         const _d = JSON.parse(fs.readFileSync(path.join(discovery.path, _f), "utf8"));
-        const _gb = _f.replace(/\.deps\.json$/, "");
         for (const _lib of Object.keys(_d.libraries || {})) {
             const _si = _lib.indexOf("/");
-            if (_si > -1 && _lib.substring(0, _si) === _gb) {
-                const _v = _lib.substring(_si + 1);
-                if (_v && "0.0.0" !== _v) { _ver = _v; break; }
-            }
+            const _lv = _lib.substring(_si + 1);
+            if (!_lv || "0.0.0" === _lv) continue;
+            const _ln = _norm(_lib.substring(0, _si));
+            const _sc = _ln === _en ? 2 : (_ln.startsWith(_en) || _en.startsWith(_ln)) ? 1 : 0;
+            if (_sc > _bsc) { _bsc = _sc; _best = _lv; }
         }
-        if ("0.0.0" !== _ver) break;
     }
+    if (_best && _bsc >= 1) _ver = _best;
 }
 ```
 
+Also includes migration patches (v5→v6) so users with a locally-patched asar get
+updated without reinstalling.
+
 **Scope:** Works for any .NET Core/5+ game without per-game patches. Tested with Stardew
-Valley (`Stardew Valley.deps.json` → version `1.6.15.24356`).
+Valley: `StardewValley` → `stardewvalley` == `Stardew Valley` → `stardewvalley` → version
+`1.6.15.24356`.
 
 **Source location:** `src/extensions/gameversion_management/GameVersionManager.ts` and
 `src/extensions/gameversion_management/util/getGameVersion.ts` (minified into `renderer.js`)
@@ -661,6 +674,7 @@ makepkg -si
 | **1:2.0.1-5** | Hotfix: missing `;` after `})()` in the `iniFiles` patch new-string caused `SyntaxError` in the Electron renderer (black screen on launch). Fixed by appending `;` to close the IIFE statement correctly. |
 | **1:2.0.1-6** | Patch 8 — `appDataPath()` runtime patch for `gamebryo-plugin-management`: resolves `Plugins.txt` and `loadorder.txt` to the correct Proton compatdata path on Linux. Deployed as `patch-ext-gamebryo.py` (same runtime mechanism as the Cyberpunk 2077 patch). Reported by AUR user Garecrow. |
 | **1:2.0.1-7** | Patches 9 & 10 — Generic .NET game version detection on Linux: `testExecProvider` and `getExecGameVersion` now fall back to scanning `*.deps.json` (the .NET Core dependency manifest) when the executable has no PE version info. Fixes the empty "Your game version:" field in Nexus Collections for .NET-based games (Stardew Valley, etc.). Generic solution — no per-game patches needed. |
+| **1:2.0.1-8** | Patches 9 & 10 v6 — Normalize exe name when matching `.deps.json` library keys (lowercase, strip spaces/dots/hyphens/underscores + scoring: exact=2, prefix=1). Fixes false positives when multiple `.deps.json` files exist in the game dir (e.g. `BmFont.deps.json` returned wrong version before `Stardew Valley.deps.json`). Includes v5→v6 migration patches for locally-installed asars. |
 
 ---
 
