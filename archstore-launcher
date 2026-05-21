@@ -1,0 +1,30 @@
+#!/bin/bash
+# ArchStore Launcher — Desktop entry startup wrapper
+# Launches the FastAPI uvicorn backend on port 8000 and opens the browser interface.
+
+echo "Starting ArchStore backend service..."
+
+# Launch FastAPI backend in background using standard python module invocation
+python -m uvicorn main:app --app-dir /usr/share/archstore/backend --host 127.0.0.1 --port 8000 --log-level warning &
+BACKEND_PID=$!
+
+# Trap exit signals to ensure the background backend service is cleanly stopped
+trap "echo 'Stopping ArchStore backend...'; kill $BACKEND_PID 2>/dev/null; exit 0" SIGINT SIGTERM EXIT
+
+# Wait a brief moment for the port to bind
+sleep 1.2
+
+# Check if the service is running
+if ! kill -0 $BACKEND_PID 2>/dev/null; then
+    echo "Error: ArchStore backend failed to start." >&2
+    exit 1
+fi
+
+echo "ArchStore backend running (PID: $BACKEND_PID)."
+echo "Opening frontend interface in your default browser..."
+
+# Open standard system browser using xdg-open
+xdg-open "http://localhost:8000/" &
+
+# Wait for the backend process to terminate
+wait $BACKEND_PID

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ArchStore
+Comment=Classic Arch Linux package manager client combining pacman and AUR
+Exec=archstore
+Icon=archstore
+Terminal=false
+Type=Application
+Categories=System;Settings;PackageManager;
+Keywords=package;install;remove;update;aur;pacman;store;
+StartupNotify=true
