@@ -25,6 +25,7 @@ pkgbase = kirigami-addons-git
 	depends = qt6-declarative
 	depends = qt6-multimedia
 	depends = sonnet-git
+	provides = kirigami-addons
 	source = git+https://invent.kde.org/libraries/kirigami-addons.git
 	sha256sums = SKIP
 

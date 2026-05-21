@@ -9,6 +9,7 @@ url="https://invent.kde.org/libraries/kirigami-addons"
 license=(GPL-2.0-or-later LGPL-2.1-or-later)
 depends=(gcc-libs glibc kcolorscheme-git kconfig-git kcoreaddons-git kcrash-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kirigami-git kitemmodels-git ksvg-git qt6-base qt6-declarative qt6-multimedia sonnet-git)
 makedepends=(git extra-cmake-modules-git)
+provides=(kirigami-addons) # this shouldn't be neccessary at all
 source=("git+https://invent.kde.org/libraries/kirigami-addons.git")
 sha256sums=('SKIP')
 
