@@ -1,4 +1,4 @@
-# Maintainer: Hanahime King <hanahimeking@gmail.com>
+# Maintainer: AoiNyanko <AoiNyanko@outlook.jp>, Hanahime King <hanahimeking@gmail.com>
 
 pkgname=shim-msft2023sig
 pkgver=16.1
