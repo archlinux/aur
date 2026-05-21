@@ -1,0 +1,31 @@
+pkgbase = grabit-bin
+	pkgdesc = Screenshot, screen-recording, OCR, and uploader for wlroots Wayland compositors (prebuilt binary)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://heliopolis.live/creations/grabit
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = cairo
+	depends = curl
+	depends = dbus
+	depends = file
+	depends = json-c
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = ffmpeg: --record support
+	optdepends = tesseract: --tesseract (OCR) support
+	optdepends = tesseract-data-eng: english OCR data
+	optdepends = libjpeg-turbo: JPEG output (--format jpeg)
+	optdepends = libwebp: WebP output (--format webp)
+	optdepends = pipewire: pw-play (default shutter-sound player)
+	optdepends = libpulse: paplay (alternative sound player)
+	optdepends = alsa-utils: aplay (alternative sound player)
+	optdepends = sox: play (alternative sound player)
+	provides = grabit=0.2.0
+	conflicts = grabit
+	source = LICENSE-0.2.0::https://heliopolis.live/creations/grabit/-/raw/0.2.0/LICENSE
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = grabit-0.2.0-x86_64::https://heliopolis.live/api/v4/projects/creations%2Fgrabit/packages/generic/grabit/0.2.0/grabit-x86_64-linux
+	sha256sums_x86_64 = 49517c67134d5eafe16bd6a49d65e17486026488db3aaff899584c004d3ece8b
+
+pkgname = grabit-bin
