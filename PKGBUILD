@@ -33,13 +33,13 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/xmm7360-pci/rpc"
-    make -f ../Makefile.tool clean 2>/dev/null || true
+    cd "$srcdir/xmm7360-pci/tool"
+    make clean 2>/dev/null || true
 }
 
 build() {
-    cd "$srcdir/xmm7360-pci/rpc"
-    make -f ../Makefile.tool
+    cd "$srcdir/xmm7360-pci/tool"
+    make
 }
 
 package() {
@@ -49,42 +49,42 @@ package() {
 
     # ── Kernel module source for DKMS ────────────────────────────────────
     install -dm755                  "${pkgdir}${_dkms_src}"
-    install -m644 "$_src/xmm7360.c"     "${pkgdir}${_dkms_src}/"
-    install -m644 "$_src/Makefile.dkms" "${pkgdir}${_dkms_src}/Makefile"
-    install -m644 "$_src/dkms.conf"     "${pkgdir}${_dkms_src}/"
+    install -m644 "$_src/kernel/xmm7360.c"     "${pkgdir}${_dkms_src}/"
+    install -m644 "$_src/kernel/Makefile.dkms" "${pkgdir}${_dkms_src}/Makefile"
+    install -m644 "$_src/kernel/dkms.conf"     "${pkgdir}${_dkms_src}/"
     sed -i "s/@VERSION@/${pkgver}/" "${pkgdir}${_dkms_src}/dkms.conf"
 
     # ── RPC userspace tool ───────────────────────────────────────────────
-    install -Dm755 "$_src/rpc/open_xdatachannel" \
+    install -Dm755 "$_src/tool/open_xdatachannel" \
         "${pkgdir}/usr/bin/open_xdatachannel"
 
     # Manual recovery tool (escape hatch for total wedge)
-    install -Dm755 "$_src/xmm7360-reset" \
+    install -Dm755 "$_src/scripts/xmm7360-reset" \
         "${pkgdir}/usr/bin/xmm7360-reset"
 
     # ── Man page ─────────────────────────────────────────────────────────
-    install -Dm644 "$_src/open_xdatachannel.8" \
+    install -Dm644 "$_src/tool/open_xdatachannel.8" \
         "${pkgdir}/usr/share/man/man8/open_xdatachannel.8"
 
     # ── udev rules (also catches kernel-emitted XMM7360_STATE uevents) ───
-    install -Dm644 "$_src/80-xmm7360.rules" \
+    install -Dm644 "$_src/udev/80-xmm7360.rules" \
         "${pkgdir}/usr/lib/udev/rules.d/80-xmm7360.rules"
 
 
     # ── Boot-time RPC init (triggered by udev when ttyXMM1 appears) ──────
-    install -Dm644 "$_src/xmm7360-init.service" \
+    install -Dm644 "$_src/systemd/xmm7360-init.service" \
         "${pkgdir}/usr/lib/systemd/system/xmm7360-init.service"
-    install -Dm644 "$_src/xmm7360-signal.service" \
+    install -Dm644 "$_src/systemd/xmm7360-signal.service" \
         "${pkgdir}/usr/lib/systemd/system/xmm7360-signal.service"
-    install -Dm644 "$_src/xmm7360-rescan.service" \
+    install -Dm644 "$_src/systemd/xmm7360-rescan.service" \
         "${pkgdir}/usr/lib/systemd/system/xmm7360-rescan.service"
 
     # ── Last-resort module reload (triggered by kernel uevent) ───────────
-    install -Dm644 "$_src/xmm7360-recovery.service" \
+    install -Dm644 "$_src/systemd/xmm7360-recovery.service" \
         "${pkgdir}/usr/lib/systemd/system/xmm7360-recovery.service"
 
     # ── modprobe config (blacklist iosm) ─────────────────────────────────
-    install -Dm644 "$_src/xmm7360-modprobe.conf" \
+    install -Dm644 "$_src/conf/xmm7360-modprobe.conf" \
         "${pkgdir}/usr/lib/modprobe.d/xmm7360.conf"
 
     # ── Default config ───────────────────────────────────────────────────
