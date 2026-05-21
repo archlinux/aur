@@ -1,7 +1,7 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=milou-git
 _pkgname=milou
-pkgver=v5.18.90.r10.g7efea66
+pkgver=6.6.90.r1.g141bee0
 pkgrel=1
 pkgdesc="A dedicated search application built on top of Baloo"
 arch=(x86_64)
