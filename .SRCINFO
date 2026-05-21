@@ -1,6 +1,6 @@
 pkgbase = aev
 	pkgdesc = Minimal fast system fetch tool written in Rust
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/azytar/aev
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = aev
 	makedepends = cargo
 	depends = gcc-libs
 	options = !debug
-	source = aev-0.1.0.tar.gz::https://github.com/azytar/aev/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 50f3f019ffb9c660a7e1f97dfc23031d50d98e69a630648cbd57564ad8080a58
+	source = aev-0.2.0.tar.gz::https://github.com/azytar/aev/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 954675f6295cd49661ebf78f000317a6b743ce613f6d16986a62dd547f8282f1
 
 pkgname = aev
