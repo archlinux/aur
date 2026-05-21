@@ -3,15 +3,15 @@
 
 pkgname=sunshine-bin
 _pkgname=${pkgname%-bin}
-pkgver=2025.924.154138
+pkgver=2026.516.143833
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight."
 url="https://app.lizardbyte.dev"
 source=(
-    "$_pkgname-$pkgver.pkg.tar.zst"::"https://github.com/LizardByte/Sunshine/releases/download/$_gittag/sunshine.pkg.tar.zst"
+    "$_pkgname-$pkgver-1-x86_64.pkg.tar.zst"::"https://github.com/LizardByte/Sunshine/releases/download/$_gittag/sunshine-$pkgver-1-x86_64.pkg.tar.zst"
 )
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 license=('GPL-3.0-only')
 install=sunshine.install
 depends=(
@@ -21,7 +21,8 @@ depends=(
     'libcap'
     'libdrm'
     'libevdev'
-    'libminiupnpc.so'  # miniupnpc
+    'libpipewire'
+    'miniupnpc'
     'libmfx'
     'libnotify'
     'libpulse'
@@ -35,15 +36,18 @@ depends=(
     'openssl'
     'opus'
     'udev'
+    'vulkan-icd-loader'
     'which'
 )
 optdepends=(
+    'cuda: Nvidia GPU encoding support'
     'libva-mesa-driver: AMD GPU encoding support'
+    'xorg-server-xvfb: Virtual X server for headless testing'
 )
 # makedepends=('patchelf')
 conflicts=('sunshine')
 provides=('sunshine')
-b2sums=('3b9a7fdcc2c75ae31b4b8ec135a483ba89e7af7ea437a2c93fbaa5799e0bb9742c9452df5cda4145cf4465256fa0d5886b85685a44577b1a3a1358c5d66b7fcb')
+b2sums=('86bc061bfdab533987a1d32faa02ca275364915cc7eebb54e0ab4ddee19c1b9de980e5c7b4a0bfbd0ef5b0a6bf509f25f9525bf214881ce4dd45da6ec6c0f778')
 
 # prepare() {
 #     patchelf \
@@ -58,6 +62,6 @@ b2sums=('3b9a7fdcc2c75ae31b4b8ec135a483ba89e7af7ea437a2c93fbaa5799e0bb9742c9452d
 # }
 
 package() {
-    install -Dm755 "usr/bin/sunshine-$pkgver" "$pkgdir/usr/bin/sunshine"
+    install -Dm755 "usr/bin/sunshine" "$pkgdir/usr/bin/sunshine"
     cp -r "usr/lib" "usr/share" "$pkgdir/usr"
 }
