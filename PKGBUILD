@@ -1,7 +1,7 @@
 # Maintainer: Marcos Gutiérrez Alonso <margual56@gmail.com>
 
 pkgname=twingate-status-bin
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A tray notification for your Twingate status"
 url="https://codeberg.org/marcos56/twingate-status"
