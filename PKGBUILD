@@ -10,7 +10,7 @@ pkgdesc='Modern self-hosted web IRC client (Latest release/pre-release)'
 url='https://thelounge.chat/'
 arch=('any')
 license=('MIT')
-depends=('nodejs>=22' 'nodejs<25')
+depends=('nodejs-lts-krypton')
 options=('!lto')
 makedepends=('yarn' 'git')
 conflicts=('thelounge')

@@ -7,8 +7,7 @@ pkgbase = thelounge-beta
 	license = MIT
 	makedepends = yarn
 	makedepends = git
-	depends = nodejs>=22
-	depends = nodejs<25
+	depends = nodejs-lts-krypton
 	provides = thelounge
 	conflicts = thelounge
 	noextract = thelounge-4.5.0.tgz
