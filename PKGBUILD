@@ -1,7 +1,7 @@
 # Maintainer: Tiver211 <tiver@tiver212.ru>
 
 pkgname=yandex-music-bin
-pkgver=5.102.0
+pkgver=5.103.2
 pkgrel=1
 pkgdesc="Official Yandex Music desktop app repackaged from the Debian package"
 arch=('x86_64')
@@ -36,7 +36,7 @@ conflicts=(
   'yandex-music-windows'
 )
 
-sha256sums=('9e751a3589e2042456061c4cb942cd9942b4891095f5dbae49d24b3d8c2f8253')
+sha256sums=('48a7c9c09aa5be8c6346ccdda73991ff0d97a354bedb89a46a4140543e6dbd7b')
 
 package() {
   bsdtar -xf "${srcdir}/Yandex_Music_amd64_${pkgver}.deb" -C "$srcdir"
