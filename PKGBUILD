@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=26.2.0_devel.222670.28f3f2569d2
+pkgver=26.2.0_devel.222892.7b286abe336
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -35,9 +35,9 @@ source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
 )
 
 md5sums=('SKIP'
-         '5521e816f97ce630ba897a5ab199af9a')
+         '775d9f209690492087c470771e92fcbe')
 sha512sums=('SKIP'
-            'e8c9d9ebf243c562277cefcf35beda5287625bfa5a2b2bc5c3c5b79860d2d88996fbccb29521af3dea12c810dc1f9f5cc12d727b7b29a106b3922377d155f293')
+            'b149cf6a87e0434130e5f119828130241fe7eb7bdd0586ac02e111e607c675f7dcc1eb2855c76fb5dcb1eb5b652f83d8e7fe1b8cef876299221087e72ed88c3d')
 options=(!emptydirs !lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
