@@ -28,7 +28,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../dist/lib" make -C docs html
