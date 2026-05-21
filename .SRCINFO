@@ -1,0 +1,13 @@
+pkgbase = vpnz-waybar-bin
+	pkgdesc = A Waybar custom module to monitor and toggle VPN Apps
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ticnoo/vpnz-waybar
+	arch = x86_64
+	license = MIT
+	provides = vpnz-waybar
+	conflicts = vpnz-waybar
+	source = vpnz-waybar-bin-0.1::https://github.com/ticnoo/vpnz-waybar/releases/download/0.1/vpnz-waybar
+	sha256sums = f6b85210c8fcc7305f2cdf6a5402076f1d4c6eda147b042040e28c54bfcf8158
+
+pkgname = vpnz-waybar-bin
