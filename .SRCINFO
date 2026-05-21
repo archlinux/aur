@@ -1,0 +1,21 @@
+pkgbase = obs-linux-openvr
+	pkgdesc = OpenVR Capture plugin for OBS Studio on Linux
+	pkgver = 1.9.0pre
+	pkgrel = 1
+	url = https://github.com/maxsspeaker/OpenVR-Capture-Linux
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = mesa
+	depends = obs-studio
+	depends = openvr
+	depends = glfw>=3.0.0
+	source = git+https://github.com/maxsspeaker/OpenVR-Capture-Linux#tag=v1.9.0pre-linux
+	source = git+https://github.com/obsproject/obs-studio.git#commit=fb4d98bf88fae5fc85cb
+	source = git+https://github.com/ValveSoftware/openvr.git#commit=0924064316de3effbcd1
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = obs-linux-openvr
