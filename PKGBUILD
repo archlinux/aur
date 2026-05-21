@@ -1,11 +1,11 @@
-# Maintainer: Landon Porter <landonp95@gmail.com>
+# Maintainer: Landon Porter <dev@mazylol.com>
 
 _pkgname=squigwire
 pkgname="${_pkgname}-git"
 pkgver=r4.824f98a
 pkgrel=1
 pkgdesc="System-wide PipeWire parametric EQ"
-url="https://github.com/mazylol/squigwire"
+url="https://codeberg.org/mazylol/squigwire"
 arch=('x86_64')
 license=('GPL-3.0-only')
 depends=('pipewire')
