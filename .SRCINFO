@@ -1,6 +1,6 @@
 pkgbase = sparrow-wallet
 	pkgdesc = Desktop Bitcoin Wallet focused on security and privacy. Free and open source
-	pkgver = 2.4.2
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://sparrowwallet.com/
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = sparrow-wallet
 	optdepends = trezor-udev: udev rules for Trezor hardware wallets
 	conflicts = sparrow-wallet-git
 	conflicts = sparrow-wallet-reproducible
-	source = https://github.com/sparrowwallet/sparrow/releases/download/2.4.2/sparrowwallet-2.4.2-x86_64.tar.gz
-	source = https://github.com/sparrowwallet/sparrow/releases/download/2.4.2/sparrow-2.4.2-manifest.txt
-	source = https://github.com/sparrowwallet/sparrow/releases/download/2.4.2/sparrow-2.4.2-manifest.txt.asc
-	source = https://raw.githubusercontent.com/sparrowwallet/sparrow/refs/tags/2.4.2/src/main/deploy/package/linux/Sparrow.desktop
+	source = https://github.com/sparrowwallet/sparrow/releases/download/2.5.0/sparrowwallet-2.5.0-x86_64.tar.gz
+	source = https://github.com/sparrowwallet/sparrow/releases/download/2.5.0/sparrow-2.5.0-manifest.txt
+	source = https://github.com/sparrowwallet/sparrow/releases/download/2.5.0/sparrow-2.5.0-manifest.txt.asc
+	source = https://raw.githubusercontent.com/sparrowwallet/sparrow/refs/tags/2.5.0/src/main/deploy/package/linux/Sparrow.desktop
 	validpgpkeys = D4D0D3202FC06849A257B38DE94618334C674B40
-	sha256sums = 06fb5067e6fe1e3fbd78174b83f29f61479142d8742d6c306d951031fc936b21
-	sha256sums = 72ffdb914640ac04a05a3804a6175673aa7c47db8e3a44fe21d739dec8c4390d
+	sha256sums = 56de4bbf2edc1473dec1cd162708db1fe484d86e7d889e3ea8077d0172faa180
+	sha256sums = 8546c208f69a691e30cd2513b5edb671f3087ac4fcb880b379a8cfdbed133b20
 	sha256sums = SKIP
 	sha256sums = 71c5d812d7f84faff1898c2407454f230308e148052cde950ccf4ab9a0b2848c
 
