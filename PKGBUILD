@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.1.0.r4.g8c1e0c7 # Will be updated by pkgver()
+pkgver=0.1.0.r98.gf328206 # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
@@ -68,7 +68,7 @@ build() {
     # Build Aqueous components
     local rid; rid=$(_rid_map)
     cd "$srcdir/aqueous"
-    for proj in Aqueous/Aqueous.csproj Aqueous.InputDaemon/Aqueous.InputDaemon.csproj Aqueous.OutputDaemon/Aqueous.OutputDaemon.csproj; do
+    for proj in Aqueous/Aqueous.csproj Aqueous.OutputDaemon/Aqueous.OutputDaemon.csproj; do
         local name; name=$(basename "$proj" .csproj)
         dotnet publish "$proj" -c Release -r "$rid" --self-contained true /p:PublishAot=true -o "$srcdir/publish/$name"
     done
@@ -84,7 +84,6 @@ build() {
 package() {
     # Install Aqueous binaries
     install -Dm755 "$srcdir/publish/Aqueous/aqueous" "$pkgdir/usr/bin/aqueous"
-    install -Dm755 "$srcdir/publish/Aqueous.InputDaemon/aqueous-inputd" "$pkgdir/usr/bin/aqueous-inputd"
     install -Dm755 "$srcdir/publish/Aqueous.OutputDaemon/aqueous-outputd" "$pkgdir/usr/bin/aqueous-outputd"
 
     # Install RiverDelta binary as 'riverdelta' instead of 'river'
@@ -103,21 +102,12 @@ package() {
     install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/etc/xdg/aqueous/wm.toml"
     install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/usr/share/aqueous/wm.toml"
 
-    # systemd user units for the input daemon (optional; launcher falls
-    # back to spawning the daemon directly if the unit is inactive).
-    install -Dm644 "$srcdir/aqueous/packaging/aqueous-inputd.service" \
-        "$pkgdir/usr/lib/systemd/user/aqueous-inputd.service"
-    install -Dm644 "$srcdir/aqueous/packaging/aqueous-inputd.socket" \
-        "$pkgdir/usr/lib/systemd/user/aqueous-inputd.socket"
+    # systemd user unit for the output daemon. Input config no longer
+    # needs a sidecar: the Aqueous WM applies [input.*] from wm.toml
+    # directly to the compositor via the river_libinput_config_v1
+    # protocol.
     install -Dm644 "$srcdir/aqueous/packaging/aqueous-outputd.service" \
         "$pkgdir/usr/lib/systemd/user/aqueous-outputd.service"
-
-    # udev rule: tag /dev/input/event* with uaccess so the active local
-    # session user gets an ACL on input devices automatically. This makes
-    # aqueous-inputd work out of the box without adding users to the
-    # 'input' group (matches niri's approach).
-    install -Dm644 "$srcdir/aqueous/packaging/udev/70-aqueous-uaccess.rules" \
-        "$pkgdir/usr/lib/udev/rules.d/70-aqueous-uaccess.rules"
 
     # Quickshell/Noctalia bridge for the output daemon. Imported as
     #   import "file:///usr/share/aqueous/quickshell" as Aqueous
