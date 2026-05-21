@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.19.5] - 2026-05-14
+## [2.19.6] - 2026-05-20
+
+### Fixed
+- About dialog crash
+
+## [2.19.5] - 2026-05-20
 
 ### Added
 - Column sizes are preserved between list refresh
