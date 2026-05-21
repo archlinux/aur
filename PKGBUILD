@@ -1,7 +1,7 @@
 # Maintainer: ExploitCraft <emonkk06@gmail.com>
 
 pkgname=reconninja
-pkgver=8.4.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="38-phase automated reconnaissance framework for authorized security assessments"
 arch=('any')
@@ -85,7 +85,7 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ExploitCraft/ReconNinja/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c7a5852a17f10b075fa698c3a6e2fd54456dd68aab0f52848516ff3487371ecb')
+sha256sums=('d06fd47b03af1341dfcd3f7f06c6e201aa45560dbe0e418c510531fa9790f238')
 
 build() {
   cd "ReconNinja-${pkgver}"
