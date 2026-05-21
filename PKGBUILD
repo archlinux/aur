@@ -8,13 +8,12 @@ url="https://github.com/toxdes/promptr"
 license=('MIT')
 depends=('gtk4' 'gtksourceview5' 'gtk4-layer-shell')
 
-source_x86_64=("promptr-0.1.8-${CARCH}.deb::https://packages.toxdes.com/apt/pool/main/p/promptr/promptr_${pkgver}_amd64.deb")
-sha256sums_x86_64=('86cd616a15be8f751673fb872349b9e2322c795deb38629bf1d249fd397a2ef0')
+source_x86_64=("promptr-${pkgver}-x86_64.tar.gz::https://packages.toxdes.com/releases/promptr_${pkgver}_amd64.tar.gz")
+sha256sums_x86_64=('f34aa3c5754c8c7ffe74a63f7d582011af8bc79a18211cbdca124593cef3516f')
 
-source_aarch64=("promptr-0.1.8-${CARCH}.deb::https://packages.toxdes.com/apt/pool/main/p/promptr/promptr_${pkgver}_arm64.deb")
-sha256sums_aarch64=('c7ef9eca2d26a95274ae6073456cc4803a09c2c215de873565ad12fa44337700')
+source_aarch64=("promptr-${pkgver}-aarch64.tar.gz::https://packages.toxdes.com/releases/promptr_${pkgver}_arm64.tar.gz")
+sha256sums_aarch64=('04248c7a85825ab47f0376dbc4101bb0b3e67fe61019f146df2c4373fcc3196f')
 
 package() {
-  bsdtar -xOf "${srcdir}/promptr-${pkgver}-${CARCH}.deb" data.tar.xz \
-    | tar -x -C "${pkgdir}"
+  bsdtar -xf "${srcdir}/promptr-${pkgver}-${CARCH}.tar.gz" -C "${pkgdir}"
 }
