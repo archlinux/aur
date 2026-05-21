@@ -3,7 +3,7 @@
 pkgname=gitfourchette-bin
 _pkgname=gitfourchette
 
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 
@@ -33,8 +33,8 @@ source_aarch64=(
 source_x86_64=(
   ${url}/releases/download/v${pkgver}/GitFourchette-${pkgver}-${arch}.AppImage
 )
-sha256sums_x86_64=('541b6d30d41ae6db9a4f3dbcd5d0ddd2c4e4d8629b64cd9119f448c42a4e1ba9')
-sha256sums_aarch64=('541b6d30d41ae6db9a4f3dbcd5d0ddd2c4e4d8629b64cd9119f448c42a4e1ba9')
+sha256sums_x86_64=('a3a0cf893684b4f45e45bbf33dc1b325b0d08230a2701c1a7052d18f88ae4129')
+sha256sums_aarch64=('a3a0cf893684b4f45e45bbf33dc1b325b0d08230a2701c1a7052d18f88ae4129')
 
 package(){
   chmod +x ./GitFourchette-${pkgver}-${arch}.AppImage
