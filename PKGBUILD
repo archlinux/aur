@@ -2,8 +2,8 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 pkgname=snakemake
-pkgver=9.19.0
-pkgrel=2
+pkgver=9.21.0
+pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
@@ -19,6 +19,7 @@ depends=(
     python-jsonschema
     jupyter-nbformat
     python-packaging
+    python-platformdirs
     python-psutil
     'python-pulp>=2.3.1'
     python-yaml
@@ -29,7 +30,7 @@ depends=(
     'python-snakemake-interface-common>=1.20.1'
     'python-snakemake-interface-executor-plugins>=9.3.2'
     'python-snakemake-interface-logger-plugins>=1.1.0'
-    'python-snakemake-interface-storage-plugins>=4.3.2'
+    'python-snakemake-interface-storage-plugins>=4.4.1'
     'python-snakemake-interface-report-plugins>=1.2.0'
     'python-snakemake-interface-scheduler-plugins>=2.0.0'
     python-tabulate
@@ -55,7 +56,7 @@ optdepends=(
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('c7d3fbbf00b1bdf992bc61b9dcee21b5c3fb95a038cd58d53c6369a7c4f0609e')
+sha256sums=('2d520b7f081bd67de59ec4e21a36db93eef29ec96f02769826fef85dd821d795')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

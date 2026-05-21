@@ -1,7 +1,7 @@
 pkgbase = snakemake
 	pkgdesc = Python-based language and execution environment for GNU Make-like workflows
-	pkgver = 9.19.0
-	pkgrel = 2
+	pkgver = 9.21.0
+	pkgrel = 1
 	url = https://snakemake.readthedocs.io
 	arch = any
 	license = MIT
@@ -21,6 +21,7 @@ pkgbase = snakemake
 	depends = python-jsonschema
 	depends = jupyter-nbformat
 	depends = python-packaging
+	depends = python-platformdirs
 	depends = python-psutil
 	depends = python-pulp>=2.3.1
 	depends = python-yaml
@@ -33,7 +34,7 @@ pkgbase = snakemake
 	depends = python-snakemake-interface-common>=1.20.1
 	depends = python-snakemake-interface-executor-plugins>=9.3.2
 	depends = python-snakemake-interface-logger-plugins>=1.1.0
-	depends = python-snakemake-interface-storage-plugins>=4.3.2
+	depends = python-snakemake-interface-storage-plugins>=4.4.1
 	depends = python-snakemake-interface-report-plugins>=1.2.0
 	depends = python-snakemake-interface-scheduler-plugins>=2.0.0
 	depends = python-tabulate
@@ -56,7 +57,7 @@ pkgbase = snakemake
 	optdepends = python-ftputil: For FTP support
 	optdepends = python-xrootd: For XRootD support
 	optdepends = slacker: For messaging
-	source = https://files.pythonhosted.org/packages/source/s/snakemake/snakemake-9.19.0.tar.gz
-	sha256sums = c7d3fbbf00b1bdf992bc61b9dcee21b5c3fb95a038cd58d53c6369a7c4f0609e
+	source = https://files.pythonhosted.org/packages/source/s/snakemake/snakemake-9.21.0.tar.gz
+	sha256sums = 2d520b7f081bd67de59ec4e21a36db93eef29ec96f02769826fef85dd821d795
 
 pkgname = snakemake
