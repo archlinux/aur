@@ -1,12 +1,12 @@
 pkgbase = feedr
 	pkgdesc = A feature-rich terminal-based RSS/Atom feed reader written in Rust.
-	pkgver = 0.4.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/bahdotsh/feedr
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = feedr-0.4.0.tar.gz::https://github.com/bahdotsh/feedr/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = f5489f59667b99dea5b6b81062634b68a9563f55a3ea6bd40afd006be28ec127
+	source = feedr-0.8.0.tar.gz::https://github.com/bahdotsh/feedr/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 347c142d9b8694d71687e358b3d9c820768c7aa1897bcf30f53e1e050b954817
 
 pkgname = feedr
