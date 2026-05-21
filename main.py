@@ -289,19 +289,19 @@ class FlmChatApp(Adw.Application):
             self.history_list.append(row)
 
     def execute_new_chat(self):
-        # Save previous session if it exists
+        # 1. Save the previous session before clearing anything (if it had an ID)
         self.save_session()
         
-        # Reset state
+        # 2. Reset the internal state
         self.execute_eject()
         self.entry.get_buffer().set_text("")
         display.chat_box_remove_all(self)
         
-        # Reset history and ID - session will be created on send
+        # 3. Explicitly reset history and clear current session ID
         self.history = []
         self.current_session_id = None
         
-        # Re-enable UI
+        # 4. Re-enable UI
         self.model_btn.set_sensitive(True)
         self.entry.set_sensitive(True)
         self.btn_send.set_sensitive(True)
