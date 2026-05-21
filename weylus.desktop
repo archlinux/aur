@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Weylus
+Comment=Use your tablet as graphic tablet/touch screen on your computer.
+TryExec=weylus
+Exec=weylus
+Terminal=false
+Icon=io.github.electronstudio.WeylusCommunityEdition
+Categories=Office;Graphics;Education;Presentation;
+StartupWMClass=weylus
