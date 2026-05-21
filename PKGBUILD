@@ -1,31 +1,24 @@
-# Maintainer: Martin Stolpe <martin dot stolpe at gmail dot com>
-# Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Timothée Ravier <tim@siosm.fr>
-
+# Maintainer: User8395 <therealuser8395@proton.me>
 _pkgname=modemmanager-qt
 pkgname=modemmanager-qt-git
 pkgver=r457.70e7a3a
 pkgrel=1
 pkgdesc='Qt wrapper for ModemManager DBus API'
-arch=(i686 x86_64)
-url='https://community.kde.org/Frameworks'
+arch=(any)
+url='https://invent.kde.org/frameworks/modemmanager-qt'
 license=(LGPL)
-depends=(modemmanager qt5-base)
-makedepends=(extra-cmake-modules doxygen git qt5-tools qt5-doc git)
-groups=(kf5)
+depends=(modemmanager-git qt6-base)
+makedepends=(cmake extra-cmake-modules-git doxygen qt6-tools)
+groups=(kf6-git)
 conflicts=(libmm-qt5 libmm-qt-git modemmanager-qt)
-provides=(modemmanager-qt)
 replaces=(libmm-qt-git)
-source=("git+https://github.com/KDE/$_pkgname.git")
+source=("git+https://invent.kde.org/frameworks/modemmanager-qt")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 build() {
   cmake -B build -S $_pkgname \
