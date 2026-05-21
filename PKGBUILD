@@ -3,16 +3,15 @@
 pkgname=python-dict2css
 _name=${pkgname#python-}
 pkgver=0.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A μ-library for constructing cascading style sheets from Python dictionaries'
 arch=('any')
 url='https://github.com/sphinx-toolbox/dict2css'
 license=('MIT')
 depends=(
   'python'
-  python-cssutils
-  'python-css-parser'
   'python-domdf-python-tools'
+  'python-tinycss2'
 )
 makedepends=(
   'git'
