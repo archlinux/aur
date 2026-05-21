@@ -17,7 +17,7 @@ pkgver() {
     cd "$pkgname"
     (
         set -o pipefail
-        git describe --long --tags --abbrev=7 2>/dev/null |
+        git describe --long --tags --match 'v[0-9]*' --abbrev=7 2>/dev/null |
             sed 's/^v//;s/-/.r/;s/-/./' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
