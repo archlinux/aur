@@ -1,0 +1,10 @@
+*.pkg.tar.*
+*.pkg.tar.xz
+*.pkg.tar.zst
+src/
+pkg/
+*.deb
+*.part
+*.tar.gz
+*.tar.xz
+*.zip
