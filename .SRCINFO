@@ -1,0 +1,17 @@
+pkgbase = shim-msft2023sig
+	pkgdesc = Fedora-signed x64 shim with Microsoft UEFI CA 2023 signature support
+	pkgver = 16.1
+	pkgrel = 7
+	url = https://github.com/rhboot/shim/
+	install = shim-msft2023sig.install
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = rpmextract
+	optdepends = shim-msft2023sig-helper: deploy shim to an ESP safely
+	optdepends = sbsigntools: inspect Authenticode signatures with sbverify
+	optdepends = binutils: inspect SBAT sections with objdump
+	optdepends = mokutil: inspect Secure Boot and MOK state
+	source_x86_64 = shim-x64-16.1-7.x86_64.rpm::https://mirror.de.leaseweb.net/fedora/development/rawhide/Everything/x86_64/os/Packages/s/shim-x64-16.1-7.x86_64.rpm
+	sha256sums_x86_64 = 04b7132d6316bff71427120b6aba85eb4490b2621ccb2f2559bd321ccb25f028
+
+pkgname = shim-msft2023sig
