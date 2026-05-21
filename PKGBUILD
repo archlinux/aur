@@ -1,7 +1,7 @@
 # Maintainer: snapetech <iptvtunerr@proton.me>
 pkgname=iptvtunerr-bin
 _pkgname=iptvtunerr
-pkgver=0.1.82
+pkgver=0.1.83
 pkgrel=1
 pkgdesc="IPTV to Plex, Emby, and Jellyfin bridge with HDHomeRun-style tuner and XMLTV guide support (prebuilt binary)"
 arch=('x86_64')
