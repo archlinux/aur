@@ -1,4 +1,4 @@
-# Maintainer: Darko <info at icod dot de>
+# Maintainer: Darko Luketic <info at icod dot de>
 
 pkgname=antigravity2-bin
 _pkgname=antigravity2
