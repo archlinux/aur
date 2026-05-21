@@ -16,9 +16,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # Gera a versão baseando-se nas tags do Git de forma dinâmica
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
-  printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Evita o pipeline gotcha usando um if statement para testar tags
+  if git describe --tags &>/dev/null; then
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 prepare() {
