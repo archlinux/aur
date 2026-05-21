@@ -1,6 +1,6 @@
 pkgbase = logibar
 	pkgdesc = Waybar widgets and daemons for monitoring Logitech wireless peripheral battery levels
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/mryll/logibar
 	install = logibar.install
@@ -12,7 +12,7 @@ pkgbase = logibar
 	depends = python-hidapi
 	provides = waybar-logitech-battery
 	conflicts = waybar-logitech-battery
-	source = logibar-0.1.3.tar.gz::https://github.com/mryll/logibar/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = e753a0e869861a63ba137dd796db16278d166d016bde3b404d9b4fafbe754ba2
+	source = logibar-0.1.4.tar.gz::https://github.com/mryll/logibar/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 91600c42c1049c068561dc3ff5ab3402edb2b827ca5c4259850ed0b6977b02d7
 
 pkgname = logibar
