@@ -1,0 +1,21 @@
+pkgbase = python-clairvoyance
+	pkgdesc = Obtain GraphQL API schema even if introspection is disabled
+	pkgver = 2.5.5
+	pkgrel = 1
+	url = https://github.com/nikitastupin/clairvoyance
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-aiohttp
+	depends = python-rich
+	optdepends = python-aiodns: DNS resolution speedup for aiohttp
+	optdepends = python-brotli: Brotli compression support for aiohttp
+	provides = clairvoyance
+	conflicts = clairvoyance
+	source = clairvoyance-2.5.5.tar.gz::https://files.pythonhosted.org/packages/source/c/clairvoyance/clairvoyance-2.5.5.tar.gz
+	sha256sums = 5d47d60adf5f43c5d7e99234637b8fa56c45dcb4373081a79b2e093daf707aee
+
+pkgname = python-clairvoyance
