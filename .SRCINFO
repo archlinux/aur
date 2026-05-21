@@ -1,0 +1,21 @@
+pkgbase = nnd-git
+	pkgdesc = A debugger for Linux
+	pkgver = 0.77.r0.g2f14def
+	pkgrel = 1
+	url = https://github.com/al13n321/nnd
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = nnd
+	conflicts = nnd
+	conflicts = nnd-bin
+	options = !lto
+	source = nnd-main::git+https://github.com/al13n321/nnd.git#branch=main
+	sha256sums = SKIP
+
+pkgname = nnd-git
