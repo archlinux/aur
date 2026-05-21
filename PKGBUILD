@@ -1,6 +1,6 @@
 # Maintainer: 32archusers <https://github.com/32archusers>
 pkgname=web-archer-git
-pkgver=r1.1234aef
+pkgver=r6.6468986
 pkgrel=1
 pkgdesc="A bug-fixed, multi-threaded text scraper and website crawling tool."
 arch=('any')

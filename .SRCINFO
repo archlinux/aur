@@ -1,6 +1,6 @@
 pkgbase = web-archer-git
 	pkgdesc = A bug-fixed, multi-threaded text scraper and website crawling tool.
-	pkgver = r1.1234aef
+	pkgver = r6.6468986
 	pkgrel = 1
 	url = https://github.com/32archusers/web-archer
 	arch = any
