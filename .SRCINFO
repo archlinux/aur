@@ -1,0 +1,15 @@
+pkgbase = fluxpass
+	pkgdesc = GUI password manager for pass (passwordstore.org) with type-based entries
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/unassignedthread/FluxPass
+	arch = any
+	license = MIT
+	makedepends = maven
+	depends = java-runtime>=17
+	depends = pass
+	depends = gnupg
+	source = fluxpass-1.0.0.tar.gz::https://github.com/unassignedthread/FluxPass/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = fluxpass
