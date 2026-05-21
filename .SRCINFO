@@ -1,6 +1,6 @@
 pkgbase = codex-desktop-linux
 	pkgdesc = Codex Desktop for Linux — community rebuild of the macOS OpenAI Codex Desktop app (all Linux features, no auto-updater)
-	pkgver = 26.513.31313.dev
+	pkgver = 26.513.31313.dev.r626.g33395586
 	pkgrel = 1
 	url = https://github.com/ilysenko/codex-desktop-linux
 	install = codex-desktop-linux.install
@@ -51,6 +51,8 @@ pkgbase = codex-desktop-linux
 	options = !debug
 	options = !strip
 	source = codex-desktop-linux::git+https://github.com/ilysenko/codex-desktop-linux.git
+	source = Codex-26.513.31313.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-26.513.31313.zip
 	sha256sums = SKIP
+	sha256sums = 6001ed876cc8b62e1ae41b7c9e1246c31e7bd13eb11aa5ba7ff163bd9ef88c80
 
 pkgname = codex-desktop-linux

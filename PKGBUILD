@@ -4,13 +4,14 @@
 # logic lives upstream at https://github.com/ilysenko/codex-desktop-linux and
 # converts the proprietary Codex.dmg into a runnable Linux Electron tree.
 #
-# The DMG is fetched as an unversioned "latest" artifact at build time, so this
-# package is non-reproducible by nature. pkgver tracks the Codex app version
-# published in the official Sparkle appcast and is bumped by apply.sh/nvchecker;
-# there is intentionally no pkgver() so the rolling git HEAD does not override it.
+# The macOS app payload is pinned to the appcast-versioned arm64 zip
+# (Codex-darwin-arm64-$_appver.zip) and checksummed, so the build is reproducible.
+# _appver tracks the Sparkle appcast shortVersionString (bumped by apply.sh/
+# nvchecker); pkgver() appends the git rev so patch-logic changes also bump pkgver.
 
 pkgname=codex-desktop-linux
-pkgver=26.513.31313.dev
+_appver=26.513.31313   # Sparkle appcast shortVersionString; bumped by apply.sh/nvchecker
+pkgver=26.513.31313.dev.r626.g33395586   # placeholder; pkgver() derives the real value
 pkgrel=1
 pkgdesc="Codex Desktop for Linux — community rebuild of the macOS OpenAI Codex Desktop app (all Linux features, no auto-updater)"
 arch=('x86_64')
@@ -67,13 +68,22 @@ provides=('codex-desktop')
 conflicts=('codex-desktop')
 options=('!debug' '!strip')
 install="$pkgname.install"
-source=("$pkgname::git+https://github.com/ilysenko/codex-desktop-linux.git")
-sha256sums=('SKIP')
+source=(
+    "$pkgname::git+https://github.com/ilysenko/codex-desktop-linux.git"
+    "Codex-$_appver.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-$_appver.zip"
+)
+sha256sums=('SKIP'
+            '6001ed876cc8b62e1ae41b7c9e1246c31e7bd13eb11aa5ba7ff163bd9ef88c80')
 
 # Installed app identity stays "codex-desktop": it matches the Electron app's
 # WM_CLASS and settings dir (~/.config/codex-desktop) and the upstream native
 # package, so the desktop entry binds the taskbar icon correctly.
 _appname=codex-desktop
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf '%s.dev.r%s.g%s' "$_appver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=8 HEAD)"
+}
 
 prepare() {
     cd "$srcdir/$pkgname"
@@ -95,9 +105,13 @@ build() {
     export PACKAGE_WITH_UPDATER=0                 # updates come from pacman/AUR
     export CODEX_LINUX_ENABLE_COMPUTER_USE_UI=1   # expose the in-app Computer Use UI
 
-    # DMG -> codex-app/: downloads dmg/electron/node, patches app.asar, rebuilds
-    # native modules, builds the Rust backends, runs feature stage hooks.
-    # --fresh is non-interactive.
+    # Pin the macOS app payload to the appcast-versioned arm64 zip (no versioned
+    # .dmg exists); 7z extracts the .app and only the JS asar + webview are used
+    # (native modules are rebuilt for Linux), so the macOS arch is irrelevant.
+    export PROVIDED_DMG_PATH="$srcdir/Codex-$_appver.zip"
+
+    # codex-app/: patches app.asar, rebuilds native modules, builds Rust backends,
+    # runs feature stage hooks. --fresh is non-interactive.
     ./install.sh --fresh
 }
 
