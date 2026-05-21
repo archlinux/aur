@@ -1,0 +1,22 @@
+pkgbase = brother-dcpt830dw
+	pkgdesc = LPR and CUPS driver for Brother DCP-T830DW
+	pkgver = 3.6.1
+	pkgrel = 2
+	url = https://support.brother.com/g/b/producttop.aspx?c=ae&lang=en&prod=dcpt830dw_all
+	arch = x86_64
+	license = custom:Brother
+	license = GPL
+	depends = cups
+	depends = gcc-libs
+	depends = ghostscript
+	depends = glibc
+	depends = perl
+	optdepends = brscan5: SANE scanner driver support
+	optdepends = brscan-skey: scan-key support from the device panel
+	optdepends = sane-airscan: driverless eSCL/WSD scanner support
+	options = !strip
+	options = !debug
+	source = https://download.brother.com/welcome/dlf106494/dcpt830dwpdrv-3.6.1-2.x86_64.rpm
+	sha256sums = 233f9b1dfc1c6ae0304407d4fb43314a99c34637ba5170930d4d1045e9006398
+
+pkgname = brother-dcpt830dw
