@@ -4,7 +4,7 @@
 
 pkgbase=pm-netlink-client
 pkgname=('pm-netlink-client' 'pm-netlink-client-gui')
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Linux whitelist split tunneling controller for Xray-core, nftables, policy routing, and systemd'
 arch=('any')
@@ -45,15 +45,10 @@ package_pm-netlink-client() {
     'iproute2'
     'systemd'
   )
-  backup=('etc/pm-netlink-client/config.yaml')
-
   cd "$pkgbase"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
   rm -f "$pkgdir/usr/bin/pm-netlink-client-gui"
-
-  install -Dm644 packaging/default-config.yaml "$pkgdir/etc/pm-netlink-client/config.yaml"
-  install -dm700 "$pkgdir/etc/pm-netlink-client/profiles"
 
   install -Dm644 systemd/pm-netlink-clientd.service \
     "$pkgdir/usr/lib/systemd/system/pm-netlink-clientd.service"
@@ -82,6 +77,10 @@ package_pm-netlink-client-gui() {
   install -Dm755 "$_tmpdir/usr/bin/pm-netlink-client-gui" "$pkgdir/usr/bin/pm-netlink-client-gui"
   install -Dm644 packaging/pm-netlink-client-gui.desktop \
     "$pkgdir/usr/share/applications/pm-netlink-client-gui.desktop"
+  install -Dm644 packaging/polkit/org.pm-netlink-client.gui-helper.policy \
+    "$pkgdir/usr/share/polkit-1/actions/org.pm-netlink-client.gui-helper.policy"
+  install -Dm644 packaging/polkit/49-pm-netlink-client-gui.rules \
+    "$pkgdir/usr/share/polkit-1/rules.d/49-pm-netlink-client-gui.rules"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 README_en.md "$pkgdir/usr/share/doc/$pkgname/README_en.md"

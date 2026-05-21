@@ -3,3 +3,5 @@ pkg/
 *.pkg.tar.*
 *.pkg.tar.*.sig
 pm-netlink-client/
+install-local.sh
+PKGBUILD.local
