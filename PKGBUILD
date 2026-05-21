@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=oposSOM
-_pkgver=2.26.0
+_pkgver=2.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ depends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ab6bf864cd700cef76c210d0757c358a')
-b2sums=('b56a85e4e5dfadcaf35bc1bffd9a45a01cf3e035ae2510bf78b2215280c4b527364c2492e24d78e856828da84e5a502aeec411bc82bbb0b836aed6996ed90313')
+md5sums=('448fc707020ebd9313ab16d5dc30a739')
+b2sums=('6c4c59b77641765e100ced5f3cfc71533f86cd58fa434caa09156f5d577cf52e82074f8d196fede38cb4ccce6ed2e89f51eb8f7104297bae3fd90cf9e1efdbc5')
 
 build() {
   mkdir build
