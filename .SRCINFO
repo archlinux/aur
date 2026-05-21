@@ -1,0 +1,25 @@
+pkgbase = web-archer-git
+	pkgdesc = A bug-fixed, multi-threaded text scraper and website crawling tool.
+	pkgver = r1.1234aef
+	pkgrel = 1
+	url = https://github.com/32archusers/web-archer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-curl_cffi
+	depends = python-ddgs
+	provides = web-archer
+	provides = web-scout
+	conflicts = web-archer
+	conflicts = web-scout
+	source = git+https://github.com/32archusers/web-archer.git
+	sha256sums = SKIP
+
+pkgname = web-archer-git
