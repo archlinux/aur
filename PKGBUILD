@@ -10,6 +10,7 @@ license=(LGPL-2.0-only LGPL-3.0-only)
 depends=(gcc-libs glibc qt6-base)
 makedepends=(git extra-cmake-modules-git clang qt6-charts qt6-declarative qt6-svg qt6-tools)
 conflicts=(kuserfeedback kuserfeedback5)
+provides=(kuserfeedback)
 source=("git+https://invent.kde.org/libraries/kuserfeedback.git")
 sha256sums=('SKIP')
 

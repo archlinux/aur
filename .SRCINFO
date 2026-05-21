@@ -16,6 +16,7 @@ pkgbase = kuserfeedback-git
 	depends = gcc-libs
 	depends = glibc
 	depends = qt6-base
+	provides = kuserfeedback
 	conflicts = kuserfeedback
 	conflicts = kuserfeedback5
 	source = git+https://invent.kde.org/libraries/kuserfeedback.git
