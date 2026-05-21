@@ -50,12 +50,12 @@ def save_session(app) -> None:
 def load_history_metadata(app) -> None:
     """Scans history directory and loads metadata for the sidebar."""
     app.sessions_metadata = []
-    try:
-        if not os.path.exists(app.history_dir):
-            return
-        files = [f for f in os.listdir(app.history_dir) if f.endswith(".json")]
-        files.sort(reverse=True)
-        for f in files:
+    if not os.path.exists(app.history_dir):
+        return
+    files = [f for f in os.listdir(app.history_dir) if f.endswith(".json")]
+    files.sort(reverse=True)
+    for f in files:
+        try:
             path = os.path.join(app.history_dir, f)
             with open(path, 'r') as jf:
                 data = json.load(jf)
@@ -64,6 +64,6 @@ def load_history_metadata(app) -> None:
                     "title": data.get("title", "Untitled Chat"),
                     "model": data.get("model", "unknown")
                 })
-    except Exception as e:
-        print(f"Error loading history: {e}")
+        except Exception as e:
+            print(f"Error loading session {f}: {e}")
     app.update_history_ui()

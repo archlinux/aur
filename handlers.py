@@ -27,7 +27,7 @@ def on_send(app, widget: Optional[Gtk.Widget]) -> None:
     if not text and not app.selected_image_path:
         return
     
-    # Initialize session ID on first message if not already set
+    # Initialize session ID if not set
     if not app.current_session_id:
         app.current_session_id = str(int(time.time()))
         

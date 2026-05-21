@@ -24,8 +24,6 @@ async def wait_for_server(app) -> None:
     app.btn_send.set_sensitive(False)
     
     for i in range(45):
-        await asyncio.sleep(1)
-        
         # Check if process died unexpectedly
         if app.server_process and app.server_process.poll() is not None:
             rc = app.server_process.poll()
@@ -39,8 +37,11 @@ async def wait_for_server(app) -> None:
             GLib.timeout_add_seconds(2, lambda: display.clear_status_labels(app))
             update_model_ui(app)
             return
-        elif i % 5 == 0:
+            
+        if i % 5 == 0:
             display.add_system_message(app, f"Waiting for {app.current_model} to initialize...")
+        
+        await asyncio.sleep(1)
             
     display.add_system_message(app, "Error: Runtime server failed to stabilize.")
     update_model_ui(app)
@@ -243,7 +244,7 @@ def update_model_ui(app) -> None:
             info_btn.add_css_class("flat")
             info_btn.add_css_class("dim-label")
             info_btn.set_tooltip_text("Model Details")
-            info_btn.connect("clicked", lambda b: show_model_info(app, m))
+            info_btn.connect("clicked", lambda b, m=m: show_model_info(app, m))
             actions.append(info_btn)
 
             # Trash Button
