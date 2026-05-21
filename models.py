@@ -195,9 +195,6 @@ def update_model_ui(app) -> None:
         app.entry.set_tooltip_text("Type your message here")
         app.btn_send.set_tooltip_text("Send message")
     
-    if app.current_session_id is None:
-        app.model_btn.set_sensitive(False)
-        app.model_btn.set_tooltip_text("Start a new chat to select a model.")
     elif not app.allow_mid_chat_switch and app.history:
         app.model_btn.set_sensitive(False)
         app.model_btn.set_tooltip_text("Model locked in memory during active conversation.")
