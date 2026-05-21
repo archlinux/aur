@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=neo4r
-_pkgver=0.1.1
+_pkgver=0.1.4
 pkgname=r-${_pkgname,,}
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="A 'Neo4J' Driver"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,7 +28,7 @@ depends=(
   r-tidyselect
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('47e5f51c6980a9383befc8247a5cdee708d60652e4908b2e510cb12a2c949968')
+sha256sums=('36204c52981335ba41c1ed1bd8b0fc2d25f74f110ae6622fc6d61a3c72e64905')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

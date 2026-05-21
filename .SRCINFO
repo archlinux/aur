@@ -1,7 +1,7 @@
 pkgbase = r-neo4r
 	pkgdesc = A 'Neo4J' Driver
-	pkgver = 0.1.1
-	pkgrel = 4
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=neo4r
 	arch = any
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = r-neo4r
 	depends = r-tibble
 	depends = r-tidyr
 	depends = r-tidyselect
-	source = https://cran.r-project.org/src/contrib/neo4r_0.1.1.tar.gz
-	sha256sums = 47e5f51c6980a9383befc8247a5cdee708d60652e4908b2e510cb12a2c949968
+	source = https://cran.r-project.org/src/contrib/neo4r_0.1.4.tar.gz
+	sha256sums = 36204c52981335ba41c1ed1bd8b0fc2d25f74f110ae6622fc6d61a3c72e64905
 
 pkgname = r-neo4r
