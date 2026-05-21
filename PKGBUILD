@@ -3,7 +3,7 @@
 _pkgauthor=Strophox
 _pkgname=tetro-tui
 pkgname=${_pkgname}-bin
-pkgdesc="A cross-platform terminal game where tetrominos fall and stack"
+pkgdesc="A terminal-based but modern tetromino-stacking game that is customizable and cross-platform."
 
 pkgver=3.5.1
 pkgrel=1
