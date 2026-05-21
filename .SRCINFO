@@ -1,11 +1,11 @@
 pkgbase = forge-gui-desktop
 	pkgdesc = The Magic: The Gathering Rules Engine (now with Shandalar-style adventure mode)
 	pkgver = 2.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Card-Forge/forge
 	arch = any
 	license = GPL3
-	depends = jre17-openjdk
+	depends = java-runtime>=17
 	source = https://github.com/Card-Forge/forge/releases/download/forge-2.0.12/forge-installer-2.0.12.tar.bz2
 	source = https://github.com/Card-Forge/forge/raw/e16a80e822dd040cc6c768152f3493eb4f2ce09a/AppIcon.png
 	source = forge-gui-desktop.desktop

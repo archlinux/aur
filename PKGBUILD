@@ -1,12 +1,12 @@
 # Maintainer: Nathan Chere <aur at nathanchere dot com dot au>
 pkgname=forge-gui-desktop
 pkgver=2.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="The Magic: The Gathering Rules Engine (now with Shandalar-style adventure mode)"
 arch=('any')
 url="https://github.com/Card-Forge/forge"
 license=('GPL3')
-depends=('jre17-openjdk')
+depends=('java-runtime>=17')
 source=("https://github.com/Card-Forge/forge/releases/download/forge-$pkgver/forge-installer-$pkgver.tar.bz2"
 	"https://github.com/Card-Forge/forge/raw/e16a80e822dd040cc6c768152f3493eb4f2ce09a/AppIcon.png"
 	"forge-gui-desktop.desktop"
