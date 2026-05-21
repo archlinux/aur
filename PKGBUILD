@@ -1,15 +1,14 @@
 # Maintainer: FXS <admin@fxs.life>
 pkgname=rustle-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A modern music player built with Rust and iced, supporting NetEase Cloud Music (prebuilt binary)"
 arch=('x86_64')
-url="https://github.com/ArcticFoxNetwork/Rustle"
+url="https://github.com/Fei-xiangShi/Rustle"
 license=('AGPL-3.0-or-later')
 depends=(
     'dbus'
     'alsa-lib'
-    'libayatana-appindicator'
 )
 provides=('rustle')
 conflicts=('rustle')
@@ -21,10 +20,8 @@ optdepends=(
 options=('!strip')
 source=(
     "$pkgname-$pkgver.AppImage::$url/releases/download/v$pkgver/rustle-linux-x86_64.AppImage"
-    "rustle.png::$url/raw/main/assets/icons/icon_256.png"
 )
 sha256sums=(
-    'SKIP'
     'SKIP'
 )
 
@@ -44,20 +41,15 @@ package() {
 exec /opt/$pkgname/AppRun "\$@"
 EOF
 
-    # Install desktop file
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/rustle.desktop" << EOF
-[Desktop Entry]
-Name=Rustle
-Comment=A modern music player
-Exec=rustle
-Icon=rustle
-Type=Application
-Categories=Audio;Music;Player;AudioVideo;
-Keywords=music;player;netease;cloud;
-EOF
-
-    # Install icon
-    install -Dm644 "rustle.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/rustle.png"
+    # Install desktop metadata and icon shipped inside the AppImage
+    install -Dm644 "squashfs-root/usr/share/applications/life.fxs.rustle.desktop" \
+        "$pkgdir/usr/share/applications/life.fxs.rustle.desktop"
+    install -Dm644 "squashfs-root/usr/share/metainfo/life.fxs.rustle.metainfo.xml" \
+        "$pkgdir/usr/share/metainfo/life.fxs.rustle.metainfo.xml"
+    install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/life.fxs.rustle.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/life.fxs.rustle.png"
+    install -Dm644 "squashfs-root/usr/share/licenses/rustle/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Fix permissions
     chmod -R 755 "$pkgdir/opt/$pkgname"
