@@ -38,7 +38,7 @@ depends=(
 
 options=(!emptydirs)
 
-source=("$pkgname-src-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('09a5d04c21af762a0abc498c50b291d37824c03bf54e89efab193dee4df1ee39')
 
 
