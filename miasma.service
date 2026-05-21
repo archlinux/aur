@@ -1,0 +1,8 @@
+[Unit]
+Description=Tarpit to trap web scrapers
+
+[Service]
+ExecStart=/usr/bin/miasma
+
+[Install]
+WantedBy=multi-user.target
