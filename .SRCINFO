@@ -1,6 +1,6 @@
 pkgbase = tapeback-diarize
 	pkgdesc = Speaker diarization support for tapeback (pyannote + PyTorch)
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/yastcher/tapeback
 	install = tapeback-diarize.install
