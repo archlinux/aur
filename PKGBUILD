@@ -1,7 +1,7 @@
 # Maintainer: Latte macchiato <contact@lattemacchiato.dev>
 pkgname=plezy-git
 _pkgname=plezy
-pkgver=2.1.1.r23.g423be62
+pkgver=2.1.1.r46.gb547f8a
 pkgrel=1
 pkgdesc='A modern Plex client for desktop and mobile'
 arch=('x86_64')
@@ -16,6 +16,8 @@ depends=(
     'alsa-lib'
     'glib2'
     'xdg-user-dirs'
+    'curl'
+    'hicolor-icon-theme'
 )
 makedepends=(
     'clang'
@@ -24,7 +26,7 @@ makedepends=(
     'ninja'
     'pkgconf'
     'git'
-    'curl'
+    'patchelf'
     'unzip'
 )
 provides=("$_pkgname")
@@ -66,6 +68,13 @@ package() {
     # Install the application bundle
     install -dm755 "$pkgdir/opt/$_pkgname"
     cp -r build/linux/x64/release/bundle/* "$pkgdir/opt/$_pkgname/"
+
+    # Replace Flutter build-time RUNPATHs with relocatable bundle-local paths.
+    find "$pkgdir/opt/$_pkgname/lib" -type f -name '*.so' \
+        -exec patchelf --set-rpath '$ORIGIN' {} +
+    if [[ -f "$pkgdir/opt/$_pkgname/lib/crashpad_handler" ]]; then
+        patchelf --set-rpath '$ORIGIN' "$pkgdir/opt/$_pkgname/lib/crashpad_handler"
+    fi
 
     # Create wrapper script
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<EOF
