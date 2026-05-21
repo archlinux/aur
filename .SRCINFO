@@ -1,0 +1,20 @@
+pkgbase = hypr-bin
+	pkgdesc = Customizable git worktree manager
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/Stephanvs/hypr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = hypr
+	conflicts = hypr
+	options = !strip
+	options = !debug
+	source_x86_64 = hypr-bin-0.3.2-x86_64.tar.gz::https://github.com/Stephanvs/hypr/releases/download/v0.3.2/hypr-linux-x64.tar.gz
+	sha256sums_x86_64 = 5ce8663b1b32b433883d9ee90b3290f26a3a55e5fd24ae23cdfa915cac018842
+	source_aarch64 = hypr-bin-0.3.2-aarch64.tar.gz::https://github.com/Stephanvs/hypr/releases/download/v0.3.2/hypr-linux-arm64.tar.gz
+	sha256sums_aarch64 = ac57df319ab5c4607a16497b78e06b85bd6cd7baf49b4fafe8e22c9a36de9047
+
+pkgname = hypr-bin
