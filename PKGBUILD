@@ -2,14 +2,13 @@
 # Maintainer: czjstmax : <jstmaxlol@disroot.org>
 pkgname=noshmore
 pkgver=2.21
-pkgrel=8
+pkgrel=9
 pkgdesc="an extended version of nosh, a minimal POSIX C shell."
 arch=('any')
-#url="https://github.com/jstmaxlol/noshmore"
-url="https://kuronavipad.xantu-ling.ts.net/cgit/noshmore.git"
+url="https://git.czkove.cc/noshmore.git"
 license=('MIT')
 makedepends=('readline')
-source=("git+https://kuronavipad.xantu-ling.ts.net/cgit/noshmore.git")
+source=("git+https://git.czkove.cc/noshmore.git")
 md5sums=('SKIP')
 
 build() {

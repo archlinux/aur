@@ -1,12 +1,12 @@
 pkgbase = noshmore
 	pkgdesc = an extended version of nosh, a minimal POSIX C shell.
 	pkgver = 2.21
-	pkgrel = 8
-	url = https://kuronavipad.xantu-ling.ts.net/cgit/noshmore.git
+	pkgrel = 9
+	url = https://git.czkove.cc/noshmore.git
 	arch = any
 	license = MIT
 	makedepends = readline
-	source = git+https://kuronavipad.xantu-ling.ts.net/cgit/noshmore.git
+	source = git+https://git.czkove.cc/noshmore.git
 	md5sums = SKIP
 
 pkgname = noshmore
