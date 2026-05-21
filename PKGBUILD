@@ -2,7 +2,7 @@
 # Contributor: mekyt <hello at mek dot yt>
 
 pkgname="openfga"
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="High performance and flexible authorization/permission engine built for developers and inspired by Google Zanzibar"
 arch=(
@@ -30,7 +30,7 @@ source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
   "${pkgname}."{service,sysusers,tmpfiles,yaml}
 )
-sha256sums=('45addf5b109e77cf0a1fb8235730ef2d362540685cc7919cd858d8909e7bf0d3'
+sha256sums=('a940db3b822c7697d2ddf8a5b3bea89ca0a7a86138f88843b15dff5f0890fb0b'
             '6f5b8d7257f4158b3800346d9fa0679e1041c92987b0303f04439a54e3488580'
             '0236b9c80bc4a6ca17c0cc5cae1091a0225cdc29163667661353d42927ecb1e7'
             'ac8e4f66ab7fd0540f58d3de61940f0dea1494fa05b4b984796c1db41a053ea1'
