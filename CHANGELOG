@@ -1,3 +1,11 @@
+0.19.13
+===================
+Adds an option to set ptyxis as the default terminal
+
+CLI
+Adds the ability to directly commit into a new branch (bound to b)
+
+
 0.19.12
 ===================
 Fixes a bug where the app can unexpectedly navigate to the "Configure your workspace" view
