@@ -1,0 +1,62 @@
+--- ./tests/wasm/run_wasm_tests.sh	2026-05-21 18:25:25.287077810 -0300
++++ ./tests/wasm/run_wasm_tests.sh	2026-05-21 18:25:25.287077810 -0300
+@@ -1,20 +1,20 @@
+ #!/bin/bash
+ # Automated WASM target test suite
+-# Usage: ./tests/wasm/run_wasm_tests.sh
++# Usage: /usr/share/perry/tests/run_wasm_tests.sh
+ #
+ # Compiles each .ts test file to WASM HTML, then runs it in Node.js
+ # and compares output against expected output.
+ 
+ set -e
+-PERRY="./target/release/perry"
++PERRY="/usr/bin/perry"
+ DIR="$(cd "$(dirname "$0")" && pwd)"
+ PASS=0
+ FAIL=0
+ ERRORS=""
+ 
+ if [ ! -f "$PERRY" ]; then
+-  echo "Building perry..."
+-  cargo build --release -p perry 2>/dev/null
++  echo "Perry not found!"
++  exit 1
+ fi
+ 
+ run_test() {
+@@ -73,25 +73,24 @@
+       echo "PASS $name"
+       PASS=$((PASS + 1))
+     else
+-      echo "FAIL $name"
+-      echo "  expected: $(echo "$expected" | head -3)"
+-      echo "  actual:   $(echo "$actual" | head -3)"
++      echo "FAIL $name  (output mismatch)"
++      echo "* Expected:"
++      echo "$expected"
++      echo "* Actual:"
++      echo "$actual"
+       FAIL=$((FAIL + 1))
+-      ERRORS="$ERRORS\n  $name: output mismatch"
++      ERRORS="$ERRORS\n  $name - Output Mismatch"
+     fi
+   else
+     # No expected file — just check it doesn't crash
+     if echo "$actual" | grep -q "WASM_ERROR:"; then
+       echo "FAIL $name (runtime error)"
+-      echo "  $actual"
++      echo "$actual"
+       FAIL=$((FAIL + 1))
+-      ERRORS="$ERRORS\n  $name: $actual"
++      ERRORS="$ERRORS\n  $name - Runtime Error"
+     else
+-      echo "PASS $name (no crash)"
++      echo "PASS $name - No Crash"
+       PASS=$((PASS + 1))
+-      # Generate expected file
+-      echo "$actual" > "$expected_file"
+-      echo "  (generated $name.expected)"
+     fi
+   fi
+ 
