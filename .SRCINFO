@@ -5,7 +5,7 @@ pkgbase = phoenix-flatpak
 	url = https://phoenix.celenity.dev
 	arch = any
 	license = GPL-3.0-or-later
-	source = phoenix-flatpak-202605211-1.tar.xz::https://releases.celenity.dev/phoenix/releases/{PHOENIX_VERSION}/linux-flatpak/phoenix-{PHOENIX_VERSION}-linux-flatpak.tar.xz
+	source = phoenix-flatpak-202605211-1.tar.xz::https://releases.celenity.dev/phoenix/releases/2026.05.21.1/linux-flatpak/phoenix-2026.05.21.1-linux-flatpak.tar.xz
 	sha512sums = e65e21e10e8b082a2686c733f6aac966f96ffec6bb33ac4beec8d5056004587d097a32e50b679a44c9ea2dec20d5a44522a4f10e2d33a3b720f3b6f52267d876
 
 pkgname = phoenix-flatpak
