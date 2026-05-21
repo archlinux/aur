@@ -1,9 +1,9 @@
 # Maintainer: ExploitCraft <emonkk06@gmail.com>
 
 pkgname=reconninja
-pkgver=9.1.0
+pkgver=9.1.1
 pkgrel=1
-pkgdesc="38-phase automated reconnaissance framework for authorized security assessments"
+pkgdesc="Autonomous multi-phase security reconnaissance framework"
 arch=('any')
 url="https://github.com/ExploitCraft/ReconNinja"
 license=('MIT')
@@ -84,16 +84,21 @@ makedepends=(
   'python-setuptools'
 )
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ExploitCraft/ReconNinja/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1eb7a744cd152673c10216edb7968fa3533056195e69e417450f83c270b0f3db')
+pkgver() {
+  cd "ReconNinja"
+  grep -oP '__version__\s*=\s*"\K[^"]+' info/info.py | head -1
+}
+
+source=("${pkgname}::git+https://github.com/ExploitCraft/ReconNinja.git#branch=main")
+sha256sums=('fe1220deb8b18ec70c500f48bd76f05f2315b5e94e06b617b510f5d418d52701')
 
 build() {
-  cd "ReconNinja-${pkgver}"
+  cd "$pkgname"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "ReconNinja-${pkgver}"
+  cd "$pkgname"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 

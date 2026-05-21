@@ -1,6 +1,6 @@
 pkgbase = reconninja
-	pkgdesc = 38-phase automated reconnaissance framework for authorized security assessments
-	pkgver = 9.1.0
+	pkgdesc = Autonomous multi-phase security reconnaissance framework
+	pkgver = 9.1.1
 	pkgrel = 1
 	url = https://github.com/ExploitCraft/ReconNinja
 	arch = any
@@ -54,7 +54,7 @@ pkgbase = reconninja
 	depends = net-tools
 	depends = curl
 	depends = seclists
-	source = reconninja-9.1.0.tar.gz::https://github.com/ExploitCraft/ReconNinja/archive/refs/tags/v9.1.0.tar.gz
-	sha256sums = 1eb7a744cd152673c10216edb7968fa3533056195e69e417450f83c270b0f3db
+	source = reconninja::git+https://github.com/ExploitCraft/ReconNinja.git#branch=main
+	sha256sums = fe1220deb8b18ec70c500f48bd76f05f2315b5e94e06b617b510f5d418d52701
 
 pkgname = reconninja
