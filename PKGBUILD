@@ -1,6 +1,6 @@
 # Maintainer: El-Mundos <taber.nandez.sergio@gmail.com>
 pkgname=paraninfodl
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Download ebooks from ebooks.paraninfo.es as PDF"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/El-Mundos/paraninfodl/archive/v$pkgver.tar.gz")
-sha256sums=('cf64b537fa66b9ab44a446da99da95f163f3ba92dc9b6e855f5a61c5902b41e0')
+sha256sums=('e7663f68424433ad8ba78a95a4a70261ff5ea447d14995794ad45a4f79a84f8c')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -35,4 +35,8 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 completions/paraninfodl.fish \
         "$pkgdir/usr/share/fish/vendor_completions.d/paraninfodl.fish"
+    install -Dm644 completions/paraninfodl.bash \
+        "$pkgdir/usr/share/bash-completion/completions/paraninfodl"
+    install -Dm644 completions/_paraninfodl \
+        "$pkgdir/usr/share/zsh/site-functions/_paraninfodl"
 }
