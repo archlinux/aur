@@ -16,8 +16,8 @@ pkgname='cnrdrvcups-lb'
 # https://gdlp01.c-wss.com/gds/8/0100007658/45/linux-UFRII-drv-v610-m17n-01.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/46/linux-UFRII-drv-v610-m17n-03.tar.gz
 #https://gdlp01.c-wss.com/gds/8/0100007658/47/linux-UFRII-drv-v620-m17n-20.tar.gz
-
-_pkgver='6.20';  _dl='8/0100007658/47';_suffix1='m17n';_suffix2='20'
+#https://gdlp01.c-wss.com/gds/8/0100007658/48/linux-UFRII-drv-v630-m17n-07.tar.gz
+_pkgver='6.30';  _dl='8/0100007658/48';_suffix1='m17n';_suffix2='07'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 epoch=1
@@ -28,8 +28,8 @@ arch=('x86_64' 'aarch64')
 url='https://www.canon-europe.com/support/consumer/products/printers/i-sensys/mf-series/i-sensys-mf657cdw.html?type=drivers&language=EN&os=Linux%20(64-bit)'
 license=('GPL-2.0-only' 'MIT' 'LicenseRef-custom')
 # parts of the code are GPL or MIT licensed, other parts have a custom license
-makedepends=(jbigkit gzip)
-depends=(libcups glibc gcc-libs libxml2-legacy libxml2 glib2 hicolor-icon-theme libjpeg6-turbo gtk3)
+makedepends=(jbigkit gzip libxml2)
+depends=(libcups glibc libstdc++ glib2 hicolor-icon-theme libjpeg6-turbo gtk3)
 optdepends=('jbigkit: solves some cpu hangs'
             'ghostscript: necessary for printing on some devices'
             'at-spi2-core: for cnsetuputil2'
@@ -45,9 +45,9 @@ options=(emptydirs !strip !libtool !debug)
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
                 replace_incorrect_int_with_char.patch
 )
-md5sums=('5b42c627a2079fd65cfdc611c6f61b82'
+md5sums=('fe47fb8aae918c4987117cc0eba6f888'
          '8bc26ff46bf5877b5800b77685d5d917')
-sha512sums=('ac5ed49da292f4cf84652863762806d2fd3bdb0322c362e405151fb5769a3af5f11c21fe606395eeff933cc88a47fa1d1c3dbd232188cdf0d0db596562d7f868'
+sha512sums=('210aa05136c67a084b92e728666f1a2d6df25eb6fe94ea16f1e7d83b35a61da75ba918e157f4dabba1ef972465132cd5ae14646dfadf4945523b36896f971f8c'
             '1d118eeee1ce069b59db00cba5b534986ccbd1da3a9c4a4ba6892be4a478c2dac4bd83dae1b2dd28f0e58a145609c60940cd661fee87d025a12f856e161b1f65')
 
 
@@ -177,7 +177,7 @@ package() {
     sh 'make.install.Arch'
     
     # package creates empty directories in /etc and /usr.
-    # If those in /etc are not present, some functionality is unavailable. manually remove the empy 
+    # If those in /etc are not present, some functionality is unavailable. manually remove the empty in /usr
     rmdir "$pkgdir"/usr/include
     
     # copy icons 
@@ -225,14 +225,14 @@ package() {
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-m17n/Documents"
     
-    install -Dpm644 deutsch/"README-ufr2-6.2xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.2xDE.html"
-    install -Dpm644 espanol/"README-ufr2-6.2xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.2xSP.html"
-    install -Dpm644 francais/"README-ufr2-6.2xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.2xFR.html"
-    install -Dpm644 italiano/"README-ufr2-6.2xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.2xIT.html"
-    install -Dpm644 korean/"README-ufr2-6.2xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.2xKR.html"
-    install -Dpm644 simplified_chinese/"README-ufr2-6.2xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.2xSC.html"
-    install -Dpm644 traditional_chinese/"README-ufr2-6.2xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.2xTC.html"
-    install -Dpm644 uk_eng/"README-ufr2-6.2xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.2xUK.html"
+    install -Dpm644 deutsch/"README-ufr2-6.3xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xDE.html"
+    install -Dpm644 espanol/"README-ufr2-6.3xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xSP.html"
+    install -Dpm644 francais/"README-ufr2-6.3xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xFR.html"
+    install -Dpm644 italiano/"README-ufr2-6.3xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xIT.html"
+    install -Dpm644 korean/"README-ufr2-6.3xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xKR.html"
+    install -Dpm644 simplified_chinese/"README-ufr2-6.3xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xSC.html"
+    install -Dpm644 traditional_chinese/"README-ufr2-6.3xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xTC.html"
+    install -Dpm644 uk_eng/"README-ufr2-6.3xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.3xUK.html"
     
     install -Dpm644 deutsch/"UsersGuide-ufr2-DE.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-DE.html"
     install -Dpm644 espanol/"UsersGuide-ufr2-SP.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-SP.html"
