@@ -1,7 +1,7 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 _pkgname=plasma-wayland-protocols
 pkgname="plasma-wayland-protocols-git"
-pkgver=1.11.1.r6.gb3c1826
+pkgver=1.21.0.r0.g4c015e9
 pkgrel=1
 pkgdesc="Plasma Specific Protocols for Wayland (Git version)"
 arch=(any)
