@@ -1,6 +1,6 @@
 pkgbase = kuserfeedback-git
 	pkgdesc = Framework for collecting user feedback for applications via telemetry and surveys (Git version)
-	pkgver = 6.22.0.r10.ge2a29c6
+	pkgver = 6.26.0.r4.gcf5f9c4
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/kuserfeedback.git
 	arch = any
