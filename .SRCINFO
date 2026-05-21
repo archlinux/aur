@@ -1,0 +1,16 @@
+pkgbase = aiman-git
+	pkgdesc = Agent Inventory Manager Loadout CLI
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/axsmak/aim
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	provides = aiman
+	conflicts = aiman
+	source = aiman::git+https://github.com/axsmak/aim.git
+	sha256sums = SKIP
+
+pkgname = aiman-git
