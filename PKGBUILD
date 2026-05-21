@@ -5,10 +5,10 @@ pkgver=2.21
 pkgrel=9
 pkgdesc="an extended version of nosh, a minimal POSIX C shell."
 arch=('any')
-url="https://git.czkove.cc/noshmore.git"
+url="https://git.czkove.cc/noshmore"
 license=('MIT')
 makedepends=('readline')
-source=("git+https://git.czkove.cc/noshmore.git")
+source=("git+https://git.czkove.cc/noshmore")
 md5sums=('SKIP')
 
 build() {
