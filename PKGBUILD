@@ -1,17 +1,19 @@
 pkgname=openwork
-pkgver=0.13.10+aurtest.3.1.17266c2
-pkgrel=1
+pkgver=0.13.11
+pkgrel=1 # pkgrel should change when PKGBUILD does. Standard is to change back to 1 next time. Any interger is valid.
 pkgdesc="An Open source alternative to Claude Cowork"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/different-ai/openwork"
 license=('MIT')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libdrm' 'libxkbcommon' 'mesa' 'dbus' 'hicolor-icon-theme')
 options=(!strip)
 
 # Architecture-specific sources and checksums
-source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::https://github.com/different-ai/openwork/releases/download/aur-test-v0.13.10-aurtest.3.1-17266c2/openwork-linux-x64-0.13.10.tar.gz")
-sha256sums_x86_64=('227f569bc3badd202a1b1a56367accccf50a7854a01d0b07715657fdbda6b34b')
+source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::${url}/releases/download/v${pkgver}/openwork-linux-x64-${pkgver}.tar.gz")
+sha256sums_x86_64=('46d79b3723019aa91a94a149358b62facab2fadd31f130a32620f6c8e138f2d9')
 
+source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::${url}/releases/download/v${pkgver}/openwork-linux-arm64-${pkgver}.tar.gz")
+sha256sums_aarch64=('b05f1cf196e17b46020958848d47254655f140099956845459bcde63d8bcb16a')
 
 package() {
   cd "${srcdir}"
