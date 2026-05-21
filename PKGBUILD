@@ -1,19 +1,23 @@
-# Maintainer: hackia <hackia at eytukan dot com>
-
-pkgname="do"
-pkgver=0.0.0
-pkgrel=3
-pkgdesc="do"
+#!/bin/bash
+# Maintainer: czjstmax : <jstmaxlol@disroot.org>
+pkgname=do
+pkgver=latest
+pkgrel=1
+pkgdesc="doscript is a minimal, hackable and portable scripting language for writing complex interactive build recipes"
 arch=('any')
-url="https://github.com/kireidowa/do"
-license=('AGPL-3.0-or-later')
-depends=('cmake')
-provides=('do')
-source=("https://github.com/kireidowa/do/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('4727a1be3d3b9f4f7d37a05a84e16d1b249c3b712d16764024efe456110ad4cc7ba0b5057e5224eb11787977016c2b1f9bc2ad3bf574ea239097dee18e53c36c')
+url="https://git.czkove.cc/do"
+license=('MIT')
+makedepends=('base-devel')
+depends=()
+source=("git+https://git.czkove.cc/do")
+md5sums=('SKIP')
+
+build() {
+	cd "$srcdir/$pkgname"
+	gcc do.c -o do -O1 -Wall -Wextra -pedantic -std=c11
+}
 
 package() {
-  cd "$pkgname-$pkgver"
-  cmake . && make && sudo make install
+	install -Dm755 "$srcdir/$pkgname/do" "$pkgdir/usr/bin/$pkgname"
 }
 
