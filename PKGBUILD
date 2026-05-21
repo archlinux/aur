@@ -9,7 +9,7 @@ license=('MIT')
 depends=('vulkan-icd-loader' 'libx11')
 makedepends=('meson' 'ninja' 'glslang' 'vulkan-headers')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('1b8ebdfef994313b4110616c0a9cd5a663dd521fe29c1f1fe50c6190cb727cbf')
+sha256sums=('10262242421773a0058c8bf4b0a325c49274e46b183a8097ad2f8985f7bfef3d')
 
 build() {
     cd vkSumi-$pkgver
