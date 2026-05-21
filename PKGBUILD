@@ -1,6 +1,6 @@
-# Maintainer: Marley <marley@example.com>
+# Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=fastflowlm-gtk
-pkgver=1.2.0
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="A minimalist, modern desktop interface for FastFlowLM, built with GTK 4 and Libadwaita."
 arch=('any')
@@ -12,16 +12,21 @@ source=("fastflowlm-gtk.desktop"
         "app.py"
         "main.py"
         "flm.py"
-        "utils.py")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "utils.py"
+        "ui.py"
+        "sessions.py"
+        "network.py"
+        "theme.py"
+        "handlers.py"
+        "models.py"
+        "display.py")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   # Install Python files
   install -d "$pkgdir/usr/share/fastflowlm-gtk"
-  install -m755 "$srcdir/app.py" "$pkgdir/usr/share/fastflowlm-gtk/"
-  install -m644 "$srcdir/main.py" "$pkgdir/usr/share/fastflowlm-gtk/"
-  install -m644 "$srcdir/flm.py" "$pkgdir/usr/share/fastflowlm-gtk/"
-  install -m644 "$srcdir/utils.py" "$pkgdir/usr/share/fastflowlm-gtk/"
+  install -m644 "$srcdir/"*.py "$pkgdir/usr/share/fastflowlm-gtk/"
+  chmod 755 "$pkgdir/usr/share/fastflowlm-gtk/app.py"
 
   # Install Icon
   install -Dm644 "$srcdir/flm-gtk.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/fastflowlm-gtk.png"

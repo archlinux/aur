@@ -24,9 +24,10 @@ mkdir -p "$INSTALL_DIR"
 mkdir -p "$ICON_DIR"
 mkdir -p "$APP_DIR"
 
-# Install Python files
-cp app.py main.py flm.py utils.py "$INSTALL_DIR/"
+# Install all Python files
+cp *.py "$INSTALL_DIR/"
 chmod 644 "$INSTALL_DIR"/*.py
+chmod 755 "$INSTALL_DIR/app.py"
 
 # Install Icon
 cp flm-gtk.png "$ICON_DIR/fastflowlm-gtk.png"

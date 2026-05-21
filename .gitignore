@@ -1,0 +1,5 @@
+__pycache__/
+*.log
+pkg/
+src/
+*.pkg.tar.zst
