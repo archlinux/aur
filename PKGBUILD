@@ -2,7 +2,7 @@
 
 pkgname=elfeed2
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="standalone feed reader and successor to elfeed"
 arch=('x86_64')
 url="https://github.com/skeeto/elfeed2"
@@ -18,7 +18,7 @@ build() {
         -B build
         -W no-dev
         -D CMAKE_BUILD_TYPE=None
-        -D CMAKE_INSTALL_PREFIX=/usr
+        -D CMAKE_INSTALL_PREFIX=/usr/bin
         -D DEPS=LOCAL
     )
     cmake "${cmake_options[@]}"
