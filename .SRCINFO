@@ -1,0 +1,26 @@
+pkgbase = ender-dots
+	pkgdesc = AI-first Arch Linux ecosystem — KDE dotfiles, Neovim, OpenCode, Fish, Starship, Vicinae, custom Japanese OCR/study scripts, and automated workflows
+	pkgver = 2026.05.19
+	pkgrel = 1
+	url = https://github.com/kurojs/EnderDots
+	arch = any
+	license = MIT
+	depends = fish
+	depends = starship
+	depends = neovim
+	depends = git
+	depends = curl
+	depends = jq
+	optdepends = opencode: AI-first IDE config
+	optdepends = zed: Zed editor config
+	optdepends = ghostty: Ghostty terminal config
+	optdepends = warp-terminal: Warp terminal config
+	optdepends = vicinae: Application launcher config
+	optdepends = kwin: KDE window rules and tiling
+	optdepends = python: For custom scripts (OCR, Spotify, etc.)
+	optdepends = manga-ocr: Japanese OCR scripts
+	optdepends = ffmpeg: Audio playback for TTS scripts
+	source = master.tar.gz::https://github.com/kurojs/EnderDots/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = ender-dots
