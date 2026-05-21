@@ -1,6 +1,6 @@
 pkgbase = iptvtunerr
 	pkgdesc = IPTV to Plex, Emby, and Jellyfin bridge with HDHomeRun-style tuner and XMLTV guide support
-	pkgver = 0.1.79
+	pkgver = 0.1.80
 	pkgrel = 1
 	url = https://github.com/snapetech/iptvtunerr
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = iptvtunerr
 	conflicts = iptvtunerr-bin
 	backup = etc/iptvtunerr/iptvtunerr.env
 	install = iptvtunerr.install
-	source = iptvtunerr-0.1.79.tar.gz::https://github.com/snapetech/iptvtunerr/archive/refs/tags/v0.1.79.tar.gz
+	source = iptvtunerr-0.1.80.tar.gz::https://github.com/snapetech/iptvtunerr/archive/refs/tags/v0.1.80.tar.gz
 	source = iptvtunerr.service
 	source = iptvtunerr.env
 	source = iptvtunerr.sysusers
