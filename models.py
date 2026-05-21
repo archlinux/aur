@@ -160,10 +160,12 @@ def update_model_ui(app) -> None:
     else:
         app.model_btn.set_label("Select a model to start")
     
-    # Model button enabled only if no download is happening
-    app.model_btn.set_sensitive(not is_downloading_any)
+    # Model button enabled if not downloading and not on welcome screen
+    app.model_btn.set_sensitive(not is_downloading_any and not getattr(app, 'is_welcome_screen', False))
     if is_downloading_any:
         app.model_btn.set_tooltip_text(download_msg)
+    elif getattr(app, 'is_welcome_screen', False):
+        app.model_btn.set_tooltip_text("Start a new chat to select a model.")
     else:
         app.model_btn.set_tooltip_text("Select Model")
 

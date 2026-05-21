@@ -53,10 +53,11 @@ class FlmChatApp(Adw.Application):
         
         self.history_dir = os.path.expanduser("~/.config/flm/history")
         os.makedirs(self.history_dir, exist_ok=True)
-        self.current_session_id: Optional[str] = None
+        self.current_session_id = None
         self.sessions_metadata = []
         self.allow_mid_chat_switch = False
         self.is_sending = False
+        self.is_welcome_screen = True
         self.BASE_URL = BASE_URL
         
         self.lock_fd = None
@@ -291,16 +292,17 @@ class FlmChatApp(Adw.Application):
     def execute_new_chat(self):
         # 1. Save the previous session before clearing anything (if it had an ID)
         self.save_session()
-        
+
         # 2. Reset the internal state
         self.execute_eject()
         self.entry.get_buffer().set_text("")
         display.chat_box_remove_all(self)
-        
+
         # 3. Explicitly reset history and clear current session ID
         self.history = []
         self.current_session_id = None
-        
+        self.is_welcome_screen = False
+
         # 4. Re-enable UI
         self.model_btn.set_sensitive(True)
         self.entry.set_sensitive(True)
