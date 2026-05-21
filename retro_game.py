@@ -213,7 +213,6 @@ while True:
             score += 1
             total_score += 1
             sound_coin.play()
-            # ИСПРАВЛЕНО: Проверяем локальный счёт текущего уровня, а не глобальный!
             if score >= max_coins:
                 sound_win.play()
                 game_state = 'WIN_SCREEN'
@@ -223,7 +222,8 @@ while True:
     game_surface.fill(COLOR_BG)
 
     if game_state == 'MENU':
-        game_surface.blit(font.render("PROCEDURAL RETRO 1982", True, COLOR_PLAYER), (35, 40))
+        # ИСПРАВЛЕНО НА ОФИЦИАЛЬНОЕ НАЗВАНИЕ НАШЕЙ ИГРЫ
+        game_surface.blit(font.render("2-MICRO-PLATFORMER 1982", True, COLOR_PLAYER), (30, 40))
         game_surface.blit(font.render(f"HI-SCORE: {high_score}", True, COLOR_COIN), (65, 70))
         if (menu_timer // 5) % 2 == 0:
             game_surface.blit(font.render("PRESS SPACE TO START", True, COLOR_COIN), (45, 105))
