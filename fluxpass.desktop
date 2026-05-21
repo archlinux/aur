@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FluxPass
+Comment=GUI password manager for pass
+Exec=/usr/bin/fluxpass
+Icon=fluxpass
+Terminal=false
+Type=Application
+Categories=Utility;Security;
+Keywords=password;manager;pass;gpg;
