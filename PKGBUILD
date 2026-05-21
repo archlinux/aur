@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=gh-markdown-preview
-pkgver=1.11.0
-pkgrel=4
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="GitHub CLI extension to preview Markdown looks like GitHub."
 arch=('x86_64' 'aarch64')
 url="https://github.com/yusukebe/gh-markdown-preview"
