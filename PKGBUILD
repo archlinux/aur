@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.8.1.r12.ga620cb8
+pkgver=1.8.1.r29.ge40b4ca
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -30,8 +30,9 @@ checkdepends=('appstream')
 optdepends=(
   'gamemode: Feral GameMode daemon for CPU/GPU optimisation'
   'pascube: OpenGL preview cube for testing the MangoHud overlay'
-  'protontricks: required for Wine prefix manager'
+  'protontricks: Required for Wine prefix manager'
   'vkbasalt: Vulkan post-processing effects'
+  'vksumi: Color grading Vulkan layer'
   'vulkan-tools: Vulkan cube for testing Vulkan layer injection'
   'zenergy-dkms: Displays AMD CPU power metrics'
   'zenity: FGMod GUI'
