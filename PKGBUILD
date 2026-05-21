@@ -1,7 +1,7 @@
 # Maintainer: Campbell Jones <serebit at archlinux dot org>
 
 pkgname=vkcheck-git
-pkgver=r60.1e962b6
+pkgver=r76.8e3de7b
 pkgrel=1
 pkgdesc='Display extensions supported by Vulkan implementations'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -22,6 +22,7 @@ makedepends=(
     'meson'
     'vulkan-headers'
     'vulkan-profiles'
+    'vulkan-utility-libraries'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
