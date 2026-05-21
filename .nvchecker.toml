@@ -1,0 +1,5 @@
+[rmux]
+source = "github"
+github = "Helvesec/rmux"
+prefix = "v"
+use_latest_release = true
