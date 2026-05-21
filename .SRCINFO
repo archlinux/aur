@@ -1,6 +1,6 @@
 pkgbase = sqldef
 	pkgdesc = Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server
-	pkgver = 3.11.1
+	pkgver = 3.11.2
 	pkgrel = 1
 	url = https://github.com/sqldef/sqldef
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = sqldef
 	depends = glibc
 	conflicts = mysqldef-bin
 	options = !lto
-	source = sqldef-3.11.1.tar.gz::https://github.com/sqldef/sqldef/archive/refs/tags/v3.11.1.tar.gz
-	sha256sums = 22f92fa2645e4095a1d3a4886ed236277c3655eee2408c243ac2139611a1b069
+	source = sqldef-3.11.2.tar.gz::https://github.com/sqldef/sqldef/archive/refs/tags/v3.11.2.tar.gz
+	sha256sums = 3363058cd38fa6589eb379fd9f3634fac2138110d866debb574a9b8037b90bdc
 
 pkgname = mysqldef
 
