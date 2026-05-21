@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 ## options
 : ${_widgets=qt6}
@@ -136,7 +136,7 @@ package() {
   # res
   _path_src="$_pkgsrc/peazip-sources/res/share"
   mkdir -pm755 "$pkgdir/usr/share/$_pkgname"
-  cp -a "$_path_src"/{icons,lang,themes} "$pkgdir/usr/share/$_pkgname/"
+  cp -r "$_path_src"/{icons,lang,themes} "$pkgdir/usr/share/$_pkgname/"
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
