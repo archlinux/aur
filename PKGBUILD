@@ -5,12 +5,12 @@ _pkgname=perry
 pkgname=${_pkgname}-bin
 pkgdesc="Native TypeScript compiler that compiles TypeScript to native executables"
 
-pkgver=0.5.1008
+pkgver=0.5.1020
 pkgrel=1
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('linux-x86_64' 'linux-aarch64')
+_barch=('linux-x86_64-musl' 'linux-aarch64-musl')
 
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
@@ -19,7 +19,6 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'libgcc' 'xz')
 
 options=(!strip)
 
@@ -29,8 +28,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 sha256sums=('c97ece8dd2230225d3b2a8590837c0d9d966e08f9fc6d1cb37180c52df612e7d'
             'c871483477d7105432645affac5be5edbd92b41a6faedb4c692e0681e46ada09')
-sha256sums_x86_64=('7e1e84f77ce490eb873c90360ba70cf0b359cd915304ad4d9e271f54dd6dd762')
-sha256sums_aarch64=('9ea1714b5ee202fe4450358ce0b7bf14aaf6359fe52111ceba1682d23a3e4480')
+sha256sums_x86_64=('2f548c41dac5a732389aa3b417ae1acad863034c2f4db1591690c8e9af7af9fd')
+sha256sums_aarch64=('8c5c97f9e14838b196fd8bf3f1ab8dc6fac9234cc11f1f5cb3c97730cddaf8c8')
 
 
 package() {
