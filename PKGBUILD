@@ -17,7 +17,7 @@ sha256sums=(
 )
 
 package() {
-  bsdtar -xf data.tar.xz -C "$pkgdir"
+  bsdtar -xf data.tar.zst -C "$pkgdir"
   install -Dm644 "$pkgdir"/opt/flix/data/flutter_assets/assets/data/flix_privacy.md "$pkgdir"/usr/share/licenses/${pkgname}/flix_privacy.md
   ln -s "$pkgdir"/opt/flix/flix "$pkgdir"/usr/bin/flix
   sed -i     -e "s/Icon=com.ifreedomer.flix/Icon=flix/"     -e "s/Exec=flix %F/Exec=\/opt\/flix\/flix %F/"     "$pkgdir"/usr/share/applications/flix-send.desktop
