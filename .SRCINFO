@@ -1,6 +1,6 @@
 pkgbase = markra
 	pkgdesc = A WYSIWYG Markdown editor with native AI.
-	pkgver = 0.1.28
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/murongg/markra
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = markra
 	conflicts = markra-bin
 	options = !strip
 	options = !debug
-	source = https://github.com/murongg/markra/releases/download/v0.1.28/Markra_0.1.28_linux_x64.rpm
-	sha256sums = 7ab24e816179992ca21d365d7dec8e38e7fc1e76f07e3db327dea61b20020656
+	source = https://github.com/murongg/markra/releases/download/v0.2.0/Markra_0.2.0_linux_x64.rpm
+	sha256sums = 076d7d67bcd126d69ce0bd9d9272703e26330187df9880d7efc27ac5195430ce
 
 pkgname = markra
