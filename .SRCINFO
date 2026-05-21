@@ -1,0 +1,21 @@
+pkgbase = swpui-bin
+	pkgdesc = Search and replace, TUI style.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/beeb/swpui
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	makedepends = xz
+	provides = swp
+	conflicts = swpui-git
+	conflicts = swpui
+	options = !debug
+	source_x86_64 = swpui-bin-0.7.2-bin.tar.xz::https://github.com/beeb/swpui/releases/download/v0.7.2/swpui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 0df8d4d05aa0b0189cc87a903f25db927830aa86098b6ef1165656e1ed72fcca
+	source_aarch64 = swpui-bin-0.7.2-bin.tar.xz::https://github.com/beeb/swpui/releases/download/v0.7.2/swpui-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 75a84912fb263b8dbabf974a2999934498cf302d09a07578cb45488771f8ec20
+
+pkgname = swpui-bin
