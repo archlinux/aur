@@ -2,7 +2,7 @@
 
 pkgname=ttf-unifont-csur
 pkgver=17.0.04
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType part of the GNU Unifont containing Michael Everson's ConScript Unicode Registry (CSUR) Private Use Area (PUA) glyphs"
 url="http://unifoundry.com/unifont.html"
 arch=('any')
