@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=23.0.0_r580373.83dca924c250
+pkgver=23.0.0_r581483.5c5f736c661c
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -57,7 +57,7 @@ pkgver() {
     echo "${_pkgver}"
 }
 
-_targets=( amdgcn-amd-amdhsa-llvm spirv64-unknown-vulkan nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda spirv-mesa3d- spirv64-mesa3d- )
+_targets=( amdgcn-amd-amdhsa-llvm spirv64-unknown-vulkan nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda spirv32-mesa-mesa3d spirv64-mesa-mesa3d )
 build() {
     export CC=clang
     export CXX=clang++
