@@ -1,0 +1,19 @@
+pkgbase = squigwire-git
+	pkgdesc = System-wide PipeWire parametric EQ
+	pkgver = r4.824f98a
+	pkgrel = 1
+	url = https://github.com/mazylol/squigwire
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = pipewire
+	provides = squigwire
+	conflicts = squigwire
+	options = !strip
+	source = squigwire::git+https://github.com/mazylol/squigwire.git
+	sha256sums = SKIP
+
+pkgname = squigwire-git
