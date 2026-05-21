@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=journalview
-pkgver=0.0.41
+pkgver=0.0.43
 pkgrel=1
 pkgdesc="View, filter, and navigate system logs from journalctl"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6aa21f09bc312532d8ca71da579dd1997a89d36c167ff32e5e038a83c4a19b6e')
+sha256sums=('994f27f7b5a164ed03904ceddab683e8a72a8ad7b40645e7163fd1e2caf8d363')
 
 prepare() {
   cd "$pkgname-$pkgver"
