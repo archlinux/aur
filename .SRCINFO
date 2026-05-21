@@ -1,6 +1,6 @@
 pkgbase = claude-code-stable
 	pkgdesc = An agentic coding tool that lives in your terminal (stable channel)
-	pkgver = 2.1.140
+	pkgver = 2.1.141
 	pkgrel = 1
 	url = https://github.com/anthropics/claude-code
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = claude-code-stable
 	source = LICENSE::https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/LICENSE.md
 	sha256sums = 728158fd1037143fad6907e8fa34804177e598b7326519503fe83cafdef849e6
 	source_x86_64 = claude-2.1.58-x86_64::https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.58/linux-x64/claude
-	sha256sums_x86_64 = 807a5d6ca063f5e03e4b7283934036a3122723b28c28e1a6978e98cf2d43d0b5
+	sha256sums_x86_64 = 832be26e8f15b2ae99e520a22b034fc4bfad1cb5b84de6b706487072c56bb42e
 	source_aarch64 = claude-2.1.58-aarch64::https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.58/linux-arm64/claude
-	sha256sums_aarch64 = 0ec6fc062e99aa95a6edbb5308a563262d27a0772b107d01d4fa61110fb44472
+	sha256sums_aarch64 = dc931e24f62afbadc8dc68115278b08493825a3ed1ea753d587077181a6cc63b
 
 pkgname = claude-code-stable
