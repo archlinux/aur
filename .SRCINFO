@@ -1,0 +1,33 @@
+pkgbase = tg-ws-proxy
+	pkgdesc = Telegram Desktop WebSocket Bridge Proxy
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/Flowseal/tg-ws-proxy
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = python
+	depends = python-cryptography
+	depends = python-customtkinter
+	depends = python-gobject
+	depends = python-pillow
+	depends = python-psutil
+	depends = python-pyperclip
+	depends = python-pystray
+	depends = tk
+	depends = xdg-utils
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	conflicts = tg-ws-proxy-bin
+	conflicts = tg-ws-proxy-cli
+	conflicts = tg-ws-proxy-git
+	source = tg-ws-proxy-1.7.0::git+https://github.com/Flowseal/tg-ws-proxy.git#tag=v1.7.0
+	b2sums = SKIP
+
+pkgname = tg-ws-proxy
