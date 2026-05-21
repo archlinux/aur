@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=TG WS Proxy
+Comment=Telegram Desktop WebSocket Bridge Proxy
+Exec=/usr/bin/tg-ws-proxy-tray-linux
+Icon=tg-ws-proxy
+Terminal=false
+Categories=Network;Utility;

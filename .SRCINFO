@@ -10,6 +10,7 @@ pkgbase = tg-ws-proxy
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = imagemagick
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = python
@@ -28,6 +29,10 @@ pkgbase = tg-ws-proxy
 	conflicts = tg-ws-proxy-cli
 	conflicts = tg-ws-proxy-git
 	source = tg-ws-proxy-1.7.0::git+https://github.com/Flowseal/tg-ws-proxy.git#tag=v1.7.0
+	source = tg-ws-proxy.desktop
+	source = tg-ws-proxy.service
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = tg-ws-proxy

@@ -1,0 +1,13 @@
+[Unit]
+Description=Telegram Desktop WebSocket Bridge Proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tg-ws-proxy
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
