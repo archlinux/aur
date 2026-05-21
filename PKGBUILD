@@ -1,5 +1,4 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
-# Contributor: Pierre Chapuis <arch@catwell.info>
 
 pkgname="ntfyme"
 pkgver=0.0.2
