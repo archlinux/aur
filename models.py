@@ -161,7 +161,7 @@ def update_model_ui(app) -> None:
         app.model_btn.set_label("Select a model to start")
     
     # Model button enabled only if no download is happening
-    app.model_btn.set_sensitive(not is_downloading_any and app.current_session_id is not None)
+    app.model_btn.set_sensitive(not is_downloading_any)
     if is_downloading_any:
         app.model_btn.set_tooltip_text(download_msg)
     else:
