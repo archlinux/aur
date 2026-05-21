@@ -1,6 +1,6 @@
 pkgbase = r-tronco
 	pkgdesc = TRONCO, an R package for TRanslational ONCOlogy
-	pkgver = 2.40.1
+	pkgver = 2.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TRONCO
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-tronco
 	optdepends = r-magick
 	optdepends = r-rwikipathways
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TRONCO_2.40.1.tar.gz
-	sha256sums = ffeecb8119a9b99c1cd125b0c2ec23c6306ca10374b0229811bae76e8b7d5d25
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TRONCO_2.44.0.tar.gz
+	sha256sums = 55d923643f19283d155d0146645b089e51db7287878280c553a57206453be941
 
 pkgname = r-tronco
