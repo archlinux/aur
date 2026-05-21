@@ -1,23 +1,22 @@
-
+# Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=kglobalacceld-git
+_pkgname=kglobalacceld
 pkgver=_r237.g8827cbc
 pkgrel=1
 pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality'
-arch=($CARCH)
+arch=(any)
 url='https://invent.kde.org/plasma/kglobalacceld'
 license=(LGPL)
-depends=(kconfig-git kcoreaddons-git kcrash-git kdbusaddons-git kwindowsystem-git kglobalaccel-git kio-git kservice-git knotifications-git)
+depends=(gcc-libs glibc qt6-base kconfig-git kcoreaddons-git kcrash-git kdbusaddons-git kglobalaccel-git kio-git kjobwidgets-git kservice-git kwindowsystem-git libx11 libxcb xcb-util-keysms)
 makedepends=(git extra-cmake-modules-git)
-conflicts=(${pkgname%-git})
-provides=(${pkgname%-git})
+conflicts=(kglobalacceld)
 groups=(kf6-git)
 source=("git+https://invent.kde.org/plasma/kglobalacceld.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
-  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
