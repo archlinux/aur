@@ -27,7 +27,12 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    (
+        set -o pipefail
+        git describe --long --tags --match 'v[0-9]*' --abbrev=7 2>/dev/null |
+            sed 's/^v//;s/-/.r/;s/-/./' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
