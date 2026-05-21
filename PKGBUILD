@@ -1,7 +1,7 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-reproducible
-pkgver=2.4.2
+pkgver=2.5.0
 _jdkver=25.0.2_10
 _jdkmajor="${_jdkver%%[^0-9]*}"
 pkgrel=1
@@ -34,8 +34,8 @@ source=(
     "lark::git+https://github.com/sparrowwallet/lark.git"
     "https://github.com/adoptium/temurin${_jdkmajor}-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK${_jdkmajor}U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
 )
-sha256sums=('21cca9385ec1bb09e97f44832a3db2ce7a62591b6587743e5dcc69ca1fb45566'
-            '06fb5067e6fe1e3fbd78174b83f29f61479142d8742d6c306d951031fc936b21'
+sha256sums=('d62a38d83b0b57f6fde1b848ff5a32265efe783472741231cb5bfa96fba7423c'
+            '56de4bbf2edc1473dec1cd162708db1fe484d86e7d889e3ea8077d0172faa180'
             'SKIP'
             'SKIP'
             '987387933b64b9833846dee373b640440d3e1fd48a04804ec01a6dbf718e8ab8')
