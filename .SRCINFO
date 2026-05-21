@@ -1,6 +1,6 @@
 pkgbase = honeymux-bin
 	pkgdesc = A new UX layer for the terminal, built on tmux
-	pkgver = 0.108.0
+	pkgver = 0.108.1
 	pkgrel = 1
 	url = https://github.com/honeymux/honeymux
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = honeymux-bin
 	provides = hmx
 	conflicts = honeymux
 	options = !strip
-	source = README-0.108.0.md::https://raw.githubusercontent.com/honeymux/honeymux/v0.108.0/README.md
-	source = LICENSE-0.108.0::https://raw.githubusercontent.com/honeymux/honeymux/v0.108.0/LICENSE
+	source = README-0.108.1.md::https://raw.githubusercontent.com/honeymux/honeymux/v0.108.1/README.md
+	source = LICENSE-0.108.1::https://raw.githubusercontent.com/honeymux/honeymux/v0.108.1/LICENSE
 	sha256sums = 47976b36b3716dd7a25174ff7d7b7911a72f3c1ff4e810ee6f76e8e4da8ac3e0
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = hmx-x86_64-0.108.0::https://github.com/honeymux/honeymux/releases/download/v0.108.0/hmx-linux-x64
-	sha256sums_x86_64 = ec25d23b0cea25809310c6018e8473b47a5b32e04ca1533c1c84f60786099bc2
-	source_aarch64 = hmx-aarch64-0.108.0::https://github.com/honeymux/honeymux/releases/download/v0.108.0/hmx-linux-arm64
-	sha256sums_aarch64 = 1258cce2e3366e285e70ca5661a788f7bf4295e9c6ca051d123949e24009d58b
+	source_x86_64 = hmx-x86_64-0.108.1::https://github.com/honeymux/honeymux/releases/download/v0.108.1/hmx-linux-x64
+	sha256sums_x86_64 = 77b2c75448a975fbe4ca13a17ba9b23ff0a770a21f444c6d2ebfefae1a1dfdaa
+	source_aarch64 = hmx-aarch64-0.108.1::https://github.com/honeymux/honeymux/releases/download/v0.108.1/hmx-linux-arm64
+	sha256sums_aarch64 = 28d0b1534ce232c184ab1cca7f68677272b6aa3eed859e2c71ade929d4e0e1e0
 
 pkgname = honeymux-bin
