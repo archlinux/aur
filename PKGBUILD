@@ -1,73 +1,83 @@
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 # Maintainer: Manuel Barrio Linares <mbarriolinares at gmail dot com>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=antigravity-ide
 pkgver=2.0.1
-_execution_id=4861014005645312
-pkgrel=1
-pkgdesc='An agentic development platform from Google, evolving the IDE into the agent-first era.'
-arch=('x86_64')
+pkgrel=2
+pkgdesc='An agentic development platform from Google, evolving the IDE into the agent-first era'
+arch=(aarch64 x86_64)
 url='https://antigravity.google/'
-license=('LicenseRef-Google-Antigravity')
-depends=('alsa-lib' 'gtk3' 'nss' 'libxss' 'libsecret' 'libxkbfile')
-options=('!strip' '!debug')
-source=("${pkgname}-${pkgver}.tar.gz::https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_execution_id}/linux-x64/Antigravity%20IDE.tar.gz")
-sha256sums=('747163aa3a8afba4b316f97c40b4a75ca4736a59768a416cd1e881e73ec31ef9')
+license=(LicenseRef-Google-Antigravity)
+depends=(alsa-lib
+         at-spi2-core
+         bash
+         cairo
+         curl
+         dbus
+         expat
+         glib2
+         glibc
+         gtk3
+         libcups
+         libgcc
+         libsecret
+         libsoup3
+         libstdc++
+         libx11
+         libxcb
+         libxcomposite
+         libxdamage
+         libxext
+         libxfixes
+         libxkbcommon
+         libxkbfile
+         libxrandr
+         mesa
+         nspr
+         nss
+         openssl
+         pango
+         systemd-libs
+         util-linux-libs
+         webkit2gtk-4.1)
+conflicts=('antigravity<2.0')
+options=(!strip !debug)
+install=$pkgname.install
+source=(antigravity-ide.sh
+        antigravity-ide.desktop
+        antigravity-ide-url-handler.desktop
+        antigravity-ide.appdata.xml
+        antigravity-ide-workspace.xml)
+_build=4861014005645312
+source_x86_64=($pkgname-$pkgver-x86_64.tar.gz::https://dl.google.com/release2/j0qc3/antigravity/stable/$pkgver-$_build/linux-x64/Antigravity%20IDE.tar.gz)
+source_aarch64=($pkgname-$pkgver-aarch64.tar.gz::https://dl.google.com/release2/j0qc3/antigravity/stable/$pkgver-$_build/linux-arm/Antigravity%20IDE.tar.gz)
+b2sums=('20a33a75e654ffb6535cd415d52b06559cb681da84eace78702fea50d5362ad23b478c8308bd4b7c48820d8a01c84b5643e754f561e0afa843a5495a694ca86e'
+        '5047eb55fc8d0a9288c852ddb6fb32cb41915d97d600d3e40c8b52dbbb0efa6ffb173439a2511b44d39b539655f3f2f0bd569da95023da2373e29da69f68be5f'
+        'ccd8e86e6acc9e542428377b3fadc743b8b2e7d59e6aa96c9aa21a8b743af9532aefdfdab062bb296515bdf0752e2b3208b888869bae4a55b4ddd07652d5f37f'
+        '8d082784596cfe67fe48e409d780ae03f6e6c9aa999412d9b2a47bfcdb6357a08a5abf9c4fd90e2c49df5ecbd98c179c43a6bcc38e477aace24f4ba23a481a6c'
+        'f6ed182fbf1463a24dc5545c71d7924b1e9b7c9832d25bfe09974a63c72385dfecbe0b609a492717348178ba6b61601f4ccea53d3f2942dd330567da40be6e95')
+b2sums_aarch64=('6a3eb288d22e291beb53e5e3ddd2c0ffb08604a6df4ec3731666186c0b008dff898a226205eb44ae8430cbedbfc6d39a5c886d99b3fcb5d8230da93a1176b272')
+b2sums_x86_64=('5dffe37e89f526b06f504e86bb345429caf3ddfb6345ad191617d7d3c705d29bbc91b79b2ccadb251755b467419e07761dcdb36bdb59e8012d3413d419dc70fa')
 
 package() {
-    # 1. Copy application files to /opt/antigravity-ide
-    install -d "${pkgdir}/opt/antigravity-ide"
-    cp -r "${srcdir}/Antigravity IDE/"* "${pkgdir}/opt/antigravity-ide/"
+    install -d "$pkgdir/opt"
+    cp -a "Antigravity IDE" "$pkgdir/opt/antigravity-ide"
+    rm -r "$pkgdir/opt/antigravity-ide/resources/completions"
 
-    # 2. Install wrapper script
-    install -d "${pkgdir}/usr/bin"
-    cat << 'EOF' > "${pkgdir}/usr/bin/antigravity-ide"
-#!/bin/bash
+    install -Dm755 antigravity-ide.sh "$pkgdir/usr/bin/$pkgname"
 
-XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s /opt/antigravity-ide/resources/app/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s /opt/antigravity-ide/LICENSES.chromium.html -t "$pkgdir/usr/share/licenses/$pkgname"
 
-# Allow users to override command-line options
-if [[ -f $XDG_CONFIG_HOME/antigravity-ide-flags.conf ]]; then
-    ANTIGRAVITY_IDE_USER_FLAGS="$(sed 's/#.*//' $XDG_CONFIG_HOME/antigravity-ide-flags.conf | tr '\n' ' ')"
-fi
+    install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
+    install -Dm644 $pkgname-url-handler.desktop -t "$pkgdir/usr/share/applications"
+    install -Dm644 $pkgname.appdata.xml -t "$pkgdir/usr/share/metainfo"
+    install -Dm644 $pkgname-workspace.xml -t "$pkgdir/usr/share/mime/packages"
 
-# Launch
-/opt/antigravity-ide/antigravity-ide "$@" $ANTIGRAVITY_IDE_USER_FLAGS &>/dev/null &
-EOF
-    chmod +x "${pkgdir}/usr/bin/antigravity-ide"
-
-    # 3. Install desktop entry and URL handler
-    install -d "${pkgdir}/usr/share/applications"
-    cat << 'EOF' > "${pkgdir}/usr/share/applications/antigravity-ide.desktop"
-[Desktop Entry]
-Name=Antigravity IDE
-Comment=Experience liftoff
-Exec=/usr/bin/antigravity-ide %F
-Icon=antigravity-ide
-Type=Application
-StartupNotify=false
-StartupWMClass=antigravity-ide
-Categories=TextEditor;Development;IDE;
-EOF
-
-    cat << 'EOF' > "${pkgdir}/usr/share/applications/antigravity-url-handler.desktop"
-[Desktop Entry]
-Name=Antigravity - URL Handler
-Comment=Experience liftoff
-Exec=/usr/bin/antigravity-ide --open-url %U
-Icon=antigravity-ide
-Type=Application
-NoDisplay=true
-StartupNotify=true
-Categories=Utility;TextEditor;Development;IDE;
-MimeType=x-scheme-handler/antigravity;
-EOF
-
-    # 4. Install icon
-    install -Dm644 "${srcdir}/Antigravity IDE/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/antigravity-ide.png"
-    ln -s antigravity-ide.png "${pkgdir}/usr/share/pixmaps/antigravity.png"
-
-    # 5. Install licenses
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s /opt/antigravity-ide/resources/app/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-    ln -s /opt/antigravity-ide/LICENSES.chromium.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+    cd "Antigravity IDE"
+    install -Dm644 resources/completions/bash/$pkgname -t "$pkgdir/usr/share/bash-completion/completions"
+    install -Dm644 resources/completions/zsh/_$pkgname -t "$pkgdir/usr/share/zsh/site-functions"
+    install -Dm644 resources/app/resources/linux/code.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }

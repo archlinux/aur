@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+	<id>antigravity-ide.desktop</id>
+	<metadata_license>MIT</metadata_license>
+	<project_license>MIT</project_license>
+	<name>Antigravity IDE</name>
+	<url type="homepage">https://antigravity.google</url>
+	<summary>Experience liftoff</summary>
+	<description>
+		<p>Google Antigravity IDE - Experience liftoff</p>
+	</description>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://code.visualstudio.com/home/home-screenshot-linux-lg.png</image>
+			<caption>Editing TypeScript and searching for extensions</caption>
+		</screenshot>
+	</screenshots>
+</component>
