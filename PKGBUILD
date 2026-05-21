@@ -8,7 +8,7 @@
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
 pkgver=140.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
 arch=('i686' 'x86_64')
