@@ -6,7 +6,7 @@ pkgdesc="GUI password manager for pass (passwordstore.org) with type-based entri
 arch=('any')
 url="https://github.com/unassignedthread/FluxPass"
 license=('MIT')
-depends=('java-runtime>=17' 'pass' 'gnupg')
+depends=('java-runtime>=17' 'java-openjfx' 'pass' 'gnupg')
 makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')

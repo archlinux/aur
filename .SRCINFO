@@ -7,6 +7,7 @@ pkgbase = fluxpass
 	license = MIT
 	makedepends = maven
 	depends = java-runtime>=17
+	depends = java-openjfx
 	depends = pass
 	depends = gnupg
 	source = fluxpass-1.0.0.tar.gz::https://github.com/unassignedthread/FluxPass/archive/refs/tags/v1.0.0.tar.gz
