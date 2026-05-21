@@ -36,8 +36,8 @@ build() {
   autoconf
   autoheader
   automake --add-missing
-  CXXFLAGS="-O2 -g -Wall -pedantic" ./configure --prefix=/usr --enable-release-build --with-i386
-  make -j4
+  ./configure --prefix=/usr --enable-release-build --with-i386
+  make
 }
 
 package() {
