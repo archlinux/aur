@@ -5,7 +5,7 @@
 ---
 
 ## 💡 The Philosophy: "Download and Chat"
-We believe interacting with local AI should be effortless. FastFlowLM-gtk is designed to remove the friction of complex setups:
+I believe interacting with local AI should be effortless. FastFlowLM-gtk is designed to remove the friction of complex setups:
 1. **Launch:** Open the app.
 2. **Select:** Pick a model from the built-in registry.
 3. **Download:** One click downloads and prepares the model for you.

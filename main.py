@@ -72,7 +72,6 @@ class FlmChatApp(Adw.Application):
         """Initializes the main window and UI components."""
         Adw.StyleManager.get_default().set_color_scheme(Adw.ColorScheme.PREFER_DARK)
         
-        # Populate models first before any UI logic
         self.models = flm.get_all_models()
         
         action_switch = Gio.SimpleAction.new_stateful("allow_switch", None, GLib.Variant.new_boolean(False))
@@ -117,13 +116,11 @@ class FlmChatApp(Adw.Application):
         menu.append("Choose Accent Color", "app.choose_color")
         self.options_btn.set_menu_model(menu)
 
-        # Ensure initial state is set before the window appears
         self.update_model_ui()
         self.show_welcome_message()
 
         self.win.present()
         
-        # Apply theme after window is present
         theme.apply_theme(self, self.theme_color)
         
         GLib.idle_add(lambda: sessions.load_history_metadata(self))
@@ -131,8 +128,6 @@ class FlmChatApp(Adw.Application):
 
     def on_search_changed(self, entry):
         text = entry.get_text().lower()
-        
-        # Pre-load cache if not already populated
         if not hasattr(self, '_search_cache'):
             self._search_cache = {}
             for meta in self.sessions_metadata:
@@ -141,7 +136,6 @@ class FlmChatApp(Adw.Application):
                 try:
                     with open(path, 'r') as f:
                         data = json.load(f)
-                        # Concatenate all content for search
                         full_text = " ".join([msg.get("content", "") for msg in data.get("messages", [])])
                         self._search_cache[session_id] = full_text.lower()
                 except Exception as e:
@@ -210,7 +204,6 @@ class FlmChatApp(Adw.Application):
 
     def update_model_ui(self):
         models.update_model_ui(self)
-        # Handle repair button visibility/sensitivity
         self.btn_repair.set_sensitive(self.current_model is not None and self.current_model != "none")
 
     def on_row_activated(self, listbox, row, popover):
@@ -284,25 +277,19 @@ class FlmChatApp(Adw.Application):
             self.history_list.append(row)
 
     def execute_new_chat(self):
-        # Save previous session if it exists
         self.save_session()
-        # Invalidate cache so new chat is indexed on next search
         if hasattr(self, '_search_cache'):
             del self._search_cache
 
-        # Reset state
         self.execute_eject()
         self.entry.get_buffer().set_text("")
         display.chat_box_remove_all(self)
 
-        # Reset history and ID - session will be created on send
         self.history = []
         self.current_session_id = None
         self.is_welcome_screen = False
 
-        # Re-enable UI
         self.model_btn.set_sensitive(True)
-        # Restore the popover menu so models can be selected
         models.update_model_ui(self)
         self.entry.set_sensitive(True)
         self.btn_send.set_sensitive(True)
@@ -341,7 +328,6 @@ class FlmChatApp(Adw.Application):
         sessions.save_session(self)
 
     async def load_session(self, session_id):
-        # 1. Purge current state completely before loading new one
         self.history = []
         self.current_session_id = None
         self.current_model = None
@@ -356,7 +342,6 @@ class FlmChatApp(Adw.Application):
                 self.history = data.get("messages", [])
                 self.current_model = data.get("model")
                 
-                # Display messages
                 for msg in self.history:
                     display.add_message(self, msg.get("content", ""), msg["role"] == "user", msg.get("image"))
                 
@@ -370,7 +355,6 @@ class FlmChatApp(Adw.Application):
                         self.server_process = flm.start_flm_serve(self.current_model, self.server_process)
                         self.run_task(self.wait_for_server())
                     else:
-                        # Model not installed or missing
                         dialog = Adw.MessageDialog(
                             transient_for=self.win,
                             heading="Model Missing",
@@ -394,7 +378,6 @@ class FlmChatApp(Adw.Application):
             else:
                 display.add_system_message(self, "Error: Model not found in registry.")
         else:
-            # Keep the model name selected but input will be disabled by update_model_ui
             self.update_model_ui()
         dialog.destroy()
 
@@ -428,7 +411,6 @@ class FlmChatApp(Adw.Application):
         handlers.on_send(self, widget)
 
     def unlock_ui(self):
-        """Restores user interaction capabilities to the input area."""
         self.input_box.set_sensitive(True)
         self.entry.set_editable(True)
         self.btn_attach.set_sensitive(self.is_current_model_capable())
@@ -467,9 +449,16 @@ class FlmChatApp(Adw.Application):
 
                 if msg.get("image"):
                     try:
-                        # Use GdkPixbuf to convert any format (PNG, WebP) to a standard JPEG for the AI
                         pixbuf = GdkPixbuf.Pixbuf.new_from_file(msg["image"])
-                        success, buffer = pixbuf.save_to_bufferv("jpeg", [], [])
+                        
+                        # Handle transparency by compositing onto white
+                        if pixbuf.get_has_alpha():
+                            white_pixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, False, 8, pixbuf.get_width(), pixbuf.get_height())
+                            white_pixbuf.fill(0xffffffff)
+                            pixbuf.composite(white_pixbuf, 0, 0, pixbuf.get_width(), pixbuf.get_height(), 0, 0, 1, 1, GdkPixbuf.InterpType.BILINEAR, 255)
+                            pixbuf = white_pixbuf
+
+                        success, buffer = pixbuf.save_to_bufferv("jpeg", ["quality"], ["90"])
                         if success:
                             encoded = base64.b64encode(buffer).decode("utf-8")
                             messages[-1]["content"].append({
@@ -477,9 +466,10 @@ class FlmChatApp(Adw.Application):
                                 "image_url": {"url": f"data:image/jpeg;base64,{encoded}"}
                             })
                         else:
-                            logging.error(f"Failed to convert image to JPEG: {msg['image']}")
+                            logging.error(f"Failed to convert image: {msg['image']}")
                     except Exception as e:
                         logging.error(f"Error encoding image: {e}")
+
             stream = await network.get_ai_response(self, bubble, thinking_box, messages)
             if not stream:
                 display.add_system_message(self, "Error: Connection lost or network endpoint failed.")
@@ -508,7 +498,6 @@ class FlmChatApp(Adw.Application):
                     except json.JSONDecodeError as e:
                         logging.error(f"JSON parsing error: {e}")
             
-            # Post-stream: Re-render bubble to process code blocks
             parent = bubble.get_parent()
             if parent:
                 parent.remove(bubble)

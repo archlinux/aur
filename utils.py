@@ -189,51 +189,95 @@ def markdown_to_pango(text: str) -> str:
     text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
     return text
 
+def looks_like_code(text: str) -> bool:
+    """Heuristic to determine if a block of text is code without backticks."""
+    lines = text.split('\n')
+    if len(lines) < 2: return False # Ignore very short single-word messages
+    
+    score = 0
+    
+    # 1. High-Signal Patterns (+15 points each)
+    high_signal = [
+        r"def\s+\w+\(.*\):",           # Python function
+        r"if\s+__name__\s*==\s*",       # Python main
+        r"#include\s*[<\"]",            # C/C++ include
+        r"int\s+main\s*\(",             # C main
+        r"void\s+\w+\s*\(",             # C/Java function
+        r"public\s+class\s+\w+",        # Java/C# class
+        r"const\s+\w+\s*=\s*\(.*\)\s*=>", # JS Arrow function
+        r"#!/bin/\w+",                  # Shebang
+    ]
+    
+    # 2. Mid-Signal Patterns (+5 points each)
+    mid_signal = [
+        r"^import\s+\w+",               # Import at start of line
+        r"^from\s+\w+\s+import",        # Python from-import
+        r"console\.log\(",              # JS log
+        r"std::\w+",                    # C++ namespace
+        r"printf\(",                    # C print
+        r"cout\s*<<",                   # C++ print
+        r"export\s+\w+=",               # Bash export
+        r"apt-get\s+install",           # Linux command
+        r"pacman\s+-S",                 # Arch command
+    ]
+
+    for line in lines:
+        line = line.strip()
+        if not line: continue
+        
+        for pattern in high_signal:
+            if re.search(pattern, line): score += 15
+        for pattern in mid_signal:
+            if re.search(pattern, line): score += 5
+            
+        # 3. Structural Signal
+        if any(line.endswith(c) for c in [';', '{', '}', ':', ')']):
+            score += 3
+        if line.startswith('    ') or line.startswith('\t'):
+            score += 3
+
+    # Threshold: 15 points means we are confident it's code
+    return score >= 15
+
 def parse_message(text: str):
     """Parses text into a list of (type, content, language) chunks."""
     if not text:
         return [("text", "", None)]
     
-    pattern = re.compile(r"```(\w+)?(?:\s|\n)*(.*?)```", re.DOTALL)
-    chunks = []
-    last_end = 0
-    
-    # Language detection heuristics
-    py_keywords = {"import", "from", "def", "class", "print", "if __name__"}
-    sh_keywords = {"sudo", "apt", "pacman", "ls", "grep", "cd", "export", "echo"}
-    c_keywords = {"#include", "int main", "void ", "char*", "printf"}
-    
-    for match in pattern.finditer(text):
-        if match.start() > last_end:
-            chunks.append(("text", text[last_end:match.start()], None))
+    # Check for backticks first
+    if "```" in text:
+        pattern = re.compile(r"```(\w+)?(?:\s|\n)*(.*?)```", re.DOTALL)
+        chunks = []
+        last_end = 0
         
-        language = match.group(1)
-        code = match.group(2)
+        # Language detection keywords
+        py_keywords = {"import", "from", "def", "class", "print", "if __name__"}
+        sh_keywords = {"sudo", "apt", "pacman", "ls", "grep", "cd", "export", "echo"}
+        c_keywords = {"#include", "int main", "void ", "char*", "printf"}
         
-        if not language:
-            code_lower = code.lower()
-            if any(k in code_lower for k in py_keywords):
-                language = "python3"
-            elif any(k in code_lower for k in sh_keywords):
-                language = "sh"
-            elif any(k in code_lower for k in c_keywords):
-                language = "c"
-            else:
-                language = "text"
-        elif language.lower() in py_keywords | sh_keywords | c_keywords:
-            # Language tag was actually code
-            code = language + (" " if language else "") + code
-            code_lower = code.lower()
-            if any(k in code_lower for k in py_keywords):
-                language = "python3"
-            elif any(k in code_lower for k in sh_keywords):
-                language = "sh"
-            else:
-                language = "text"
+        for match in pattern.finditer(text):
+            if match.start() > last_end:
+                chunks.append(("text", text[last_end:match.start()], None))
             
-        chunks.append(("code", code.strip(), language))
-        last_end = match.end()
+            language = match.group(1)
+            code = match.group(2)
+            
+            if not language:
+                code_lower = code.lower()
+                if any(k in code_lower for k in py_keywords): language = "python3"
+                elif any(k in code_lower for k in sh_keywords): language = "sh"
+                elif any(k in code_lower for k in c_keywords): language = "c"
+                else: language = "text"
+            
+            chunks.append(("code", code.strip(), language))
+            last_end = match.end()
+        
+        if last_end < len(text):
+            chunks.append(("text", text[last_end:], None))
+        return chunks
     
-    if last_end < len(text):
-        chunks.append(("text", text[last_end:], None))
-    return chunks
+    # If no backticks, use heuristic for the whole message
+    if looks_like_code(text):
+        return [("code", text.strip(), "text")] # Use "text" language to trigger auto-detection in display.py
+        
+    return [("text", text, None)]

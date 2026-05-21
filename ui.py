@@ -137,6 +137,7 @@ def build_main_content(app) -> Gtk.Box:
     
     app.scrolled = Gtk.ScrolledWindow()
     app.scrolled.set_vexpand(True)
+    app.scrolled.set_kinetic_scrolling(True)
     app.scrolled.add_css_class("chat-scroll")
     app.chat_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
     app.chat_box.set_margin_top(18)

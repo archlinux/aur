@@ -14,9 +14,9 @@ def create_code_block(code: str, language_id: str) -> Gtk.ScrolledWindow:
     
     # Map common markdown tags to GtkSource identifiers
     lang_map = {
-        "python": "python3",
-        "py": "python3",
-        "python3": "python3",
+        "python": "python",
+        "py": "python",
+        "python3": "python",
         "bash": "sh",
         "sh": "sh",
         "shell": "sh",
@@ -31,6 +31,8 @@ def create_code_block(code: str, language_id: str) -> Gtk.ScrolledWindow:
     }
     
     target_lang = lang_map.get(language_id.lower(), language_id)
+    if target_lang == "text":
+        target_lang = "c"
     lang = lang_manager.get_language(target_lang)
     
     buffer = GtkSource.Buffer.new_with_language(lang) if lang else GtkSource.Buffer.new()
@@ -38,7 +40,7 @@ def create_code_block(code: str, language_id: str) -> Gtk.ScrolledWindow:
     
     # Apply a dark-friendly style scheme
     scheme_manager = GtkSource.StyleSchemeManager.get_default()
-    scheme = scheme_manager.get_scheme("adwaita") or scheme_manager.get_scheme("oblivion")
+    scheme = scheme_manager.get_scheme("Adwaita-dark") or scheme_manager.get_scheme("oblivion")
     if scheme:
         buffer.set_style_scheme(scheme)
     
@@ -116,9 +118,10 @@ def add_message(app, text: str, is_user: bool, image_path: Optional[str] = None)
     return last_bubble
 
 def copy_to_clipboard(text: str) -> None:
-    """Copies the provided text to the system clipboard."""
+    """Copies the provided text to the system clipboard using GTK 4's ContentProvider."""
     clipboard = Gdk.Display.get_default().get_clipboard()
-    clipboard.set(text)
+    content = Gdk.ContentProvider.new_for_value(text)
+    clipboard.set_content(content)
 
 def add_system_message(app, text: str) -> None:
     """Adds a system status message to the chat view."""
