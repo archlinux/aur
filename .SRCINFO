@@ -1,7 +1,7 @@
 pkgbase = cppp-git
 	pkgdesc = Miscellaneous C++ utilities and enhancements to the stdlib
 	pkgver = r127.b2079a9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marralesfios/cppp
 	arch = any
 	license = unknown

@@ -1,7 +1,7 @@
 # Maintainer: marralesfios <marralesfios@gmail.com>
 pkgname=cppp-git
 pkgver=r127.b2079a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Miscellaneous C++ utilities and enhancements to the stdlib"
 arch=('any')
 url="https://github.com/marralesfios/cppp"
@@ -27,5 +27,5 @@ package(){
     pwd
 	cd cppp
 	mkdir -pm 755 $pkgdir/usr/include/cppp
-	find . ! -path "*/.*" -type f | xargs install -m 644 -t $pkgdir/usr/include/cppp
+	find . ! -path "*/.*" -type f -exec install -m 644 -D {} $pkgdir/usr/include/cppp/{} \;
 }
