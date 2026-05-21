@@ -1,6 +1,6 @@
 pkgbase = r-stringdb
 	pkgdesc = Protein-Protein Interaction Networks and Functional Enrichment Analysis
-	pkgver = 2.22.0
+	pkgver = 2.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/STRINGdb
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = r-stringdb
 	depends = r-sqldf
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/STRINGdb_2.22.0.tar.gz
-	md5sums = edb5a92f1cf55c5929bb60b4500d6b17
-	b2sums = 4ddd8759e0fade6a473ad6dee4bb5dba3563c6fffb73df44e66651ede688e5f4c22b76d086da4671225083fa82902efbf96e545230f3f255b855f68bb6673585
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/STRINGdb_2.24.0.tar.gz
+	md5sums = 87476ae5f1fd80443014ec829ad7739b
+	b2sums = 5e569d8af5a7cf8a29860788f386a3287e7a9b23c3561c142baf0a9717fe0ee9ae799589c6be28eef3c18b1b159edaf316dd46072432d2e9a1e4e3fd12558114
 
 pkgname = r-stringdb
