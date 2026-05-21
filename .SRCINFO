@@ -1,0 +1,24 @@
+pkgbase = wipeforge-git
+	pkgdesc = Secure Disk Destruction Tool
+	pkgver = 0.1.0.r0.g1234567
+	pkgrel = 1
+	url = https://github.com/Priyanshu-200607/Wipe-Forge
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-textual
+	depends = python-pyudev
+	depends = python-psutil
+	depends = hdparm
+	depends = nvme-cli
+	provides = wipeforge
+	conflicts = wipeforge
+	source = wipeforge-git::git+https://github.com/Priyanshu-200607/Wipe-Forge.git#branch=main
+	sha256sums = SKIP
+
+pkgname = wipeforge-git
