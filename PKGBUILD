@@ -1,7 +1,7 @@
 # Maintainer: ExploitCraft <emonkk06@gmail.com>
 
 pkgname=reconninja
-pkgver=9.1.1
+pkgver=0
 pkgrel=1
 pkgdesc="Autonomous multi-phase security reconnaissance framework"
 arch=('any')
@@ -82,26 +82,28 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
+  'python-setuptools-scm'
 )
 
+# VCS source — always tracks main branch; sha256sums must stay SKIP for git sources
+source=("${pkgname}::git+https://github.com/ExploitCraft/ReconNinja.git#branch=main")
+sha256sums=('SKIP')
+
 pkgver() {
-  cd "ReconNinja"
+  cd "${pkgname}"
   grep -oP '__version__\s*=\s*"\K[^"]+' info/info.py | head -1
 }
 
-source=("${pkgname}::git+https://github.com/ExploitCraft/ReconNinja.git#branch=main")
-sha256sums=('fe1220deb8b18ec70c500f48bd76f05f2315b5e94e06b617b510f5d418d52701')
-
 build() {
-  cd "$pkgname"
+  cd "${pkgname}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}"
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

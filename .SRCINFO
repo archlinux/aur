@@ -1,6 +1,6 @@
 pkgbase = reconninja
 	pkgdesc = Autonomous multi-phase security reconnaissance framework
-	pkgver = 9.1.1
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/ExploitCraft/ReconNinja
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = reconninja
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python>=3.10
 	depends = python-rich
 	depends = python-dotenv
@@ -55,6 +56,6 @@ pkgbase = reconninja
 	depends = curl
 	depends = seclists
 	source = reconninja::git+https://github.com/ExploitCraft/ReconNinja.git#branch=main
-	sha256sums = fe1220deb8b18ec70c500f48bd76f05f2315b5e94e06b617b510f5d418d52701
+	sha256sums = SKIP
 
 pkgname = reconninja
