@@ -34,8 +34,8 @@ check() {
 }
 
 package() {
-  # Copy extracted files to pkgdir
-  cp -a "$srcdir/pkg-contents/." "$pkgdir/"
+  # Copy extracted files to pkgdir (do not preserve ownership to support container builds)
+  cp -a --no-preserve=ownership "$srcdir/pkg-contents/." "$pkgdir/"
 
   # Fix permissions for chrome-sandbox (required for Electron sandboxing)
   chmod 4755 "$pkgdir/opt/MstyStudio/chrome-sandbox"
