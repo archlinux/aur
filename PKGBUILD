@@ -20,7 +20,7 @@ validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <com dot 
 build() {
 	cd "${srcdir}/unifont-${pkgver}/font"
 	make hex
-	make csurttf
+	make ttf-csur
 }
 
 package() {
