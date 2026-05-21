@@ -1,6 +1,6 @@
 pkgbase = python-kicad-snapshot
 	pkgdesc = Snapshot and visual diff tool for KiCad projects
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/tanakamasayuki/kicad-snapshot
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-kicad-snapshot
 	optdepends = kicad: Electronic schematic and printed circuit board (PCB) design tools
 	provides = python-kicad-snapshot
 	conflicts = python-kicad-snapshot
-	source = kicad-snapshot::git+https://github.com/tanakamasayuki/kicad-snapshot.git#tag=v1.0.5
-	sha256sums = 88a6ee0dc44c29f0949251502c686215710af1b0b179354065aeb924672ff349
+	source = kicad-snapshot::git+https://github.com/tanakamasayuki/kicad-snapshot.git#tag=v1.0.6
+	sha256sums = f70dc641eef055f88801aeb84cf72938acb470f12504253282f0b18eea3cfdec
 
 pkgname = python-kicad-snapshot
