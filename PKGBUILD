@@ -11,9 +11,9 @@ makedepends=('python-pip')
 depends=('python' 'libedit' 'krb5' 'sqlite' 'postgresql-libs')
 provides=('pgadmin4-server')
 conflicts=('pgadmin4-server')
-source=("pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}-1.plucky_amd64.deb"
+source=("pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}-1.noble_amd64.deb"
         "requirements.txt::https://raw.githubusercontent.com/pgadmin-org/pgadmin4/refs/heads/master/requirements.txt")
-#source=("pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}_amd64.deb")
+#source=("pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}_amd64.deb")
 sha256sums=('97c2459419344e7765f16e8461f25bbde534aca3cab8bdd685bfb740eedc1b35'
             'SKIP')
 
