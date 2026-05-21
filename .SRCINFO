@@ -1,11 +1,14 @@
 pkgbase = nnote
 	pkgdesc = A minimal CLI note taker
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stiermid/nnote
 	arch = any
 	license = GPL-3.0-or-later
-	makedepends = uv
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
 	depends = python
 	depends = python-click
 	depends = python-pyyaml
