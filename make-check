@@ -1,0 +1,19 @@
+#!/bin/bash
+# Package build check -- run by arch-aur-pkgbuild skill during validation
+# Simpler version for automated runs; users get the verbose one in-project.
+set -euo pipefail
+unset PACMAN; PATH=/usr/bin:$PATH
+
+pkgdir=${0%%/*}  # dirname $0
+cd -P -- "$pkgdir" || exit 1
+
+if [[ -d src ]]; then makepkg -ef
+else makepkg -f; fi
+
+shellcheck --shell=bash --exclude=SC2034,SC2154,SC2164 PKGBUILD
+shopt -s nullglob
+for specimen in PKGBUILD *pkg.tar*; do
+    echo "++ namcap of $specimen"
+    namcap "$specimen" | grep -Ev 'W: Dependency (glibc|libgcc) detected and implicitly satisfied'
+done
+makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2

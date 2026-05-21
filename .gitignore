@@ -1,0 +1,6 @@
+pkg/
+src/
+imgclip/
+foo
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
