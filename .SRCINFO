@@ -1,7 +1,7 @@
 pkgbase = shellgame
 	pkgdesc = Terminal Arcade Collection — 25 classic and original games (Snake, Tetris, Pac-Man, Spire Ascent and more)
-	pkgver = 1.1
-	pkgrel = 3
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/MCookinho/shellgame
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = shellgame
 	makedepends = gcc
 	makedepends = make
 	depends = ncurses
-	source = https://github.com/MCookinho/shellgame/archive/v1.1.tar.gz
+	source = https://github.com/MCookinho/shellgame/archive/v1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = shellgame

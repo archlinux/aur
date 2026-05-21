@@ -2,8 +2,8 @@
 # Contributor: Peu Borges <148594362+MCookinho@users.noreply.github.com>
 
 pkgname=shellgame
-pkgver=1.1
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 pkgdesc="Terminal Arcade Collection — 25 classic and original games (Snake, Tetris, Pac-Man, Spire Ascent and more)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MCookinho/shellgame"
