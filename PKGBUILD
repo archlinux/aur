@@ -1,6 +1,6 @@
 # Maintainer: BeetleBot <nikarabilla@gmail.com>
 pkgname=fount-bin
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A terminal-based Fountain screenplay editor (Binary)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('fount')
 conflicts=('fount')
 # We point to the Fount-Linux-x64.tar.gz from your GitHub release
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Fount-Linux-x64.tar.gz")
-sha256sums=('5f26113c458c72b3dbf58f800c5b1804f03a298d8e73c81256ab3d88f44cefc1')
+sha256sums=('04a5d5f37232cdbac33d153094abdda369961b0ca5fc07a6b8fc24e0abf95582')
 package() {
   install -Dm755 "${srcdir}/fount" "${pkgdir}/usr/bin/fount"
   install -Dm644 "${srcdir}/fount.desktop" "${pkgdir}/usr/share/applications/fount.desktop"
