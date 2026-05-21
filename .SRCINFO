@@ -1,5 +1,5 @@
 pkgbase = quazip-qt5
-	pkgdesc = C++ wrapper for the ZIP/UNZIP C package
+	pkgdesc = C++ wrapper for the ZIP/UNZIP C package (qt5)
 	pkgver = 1.5
 	pkgrel = 1
 	url = https://stachenov.github.io/quazip/
@@ -14,4 +14,3 @@ pkgbase = quazip-qt5
 	sha256sums = 405b72b6e76c8987ff41a762523b8f64876ba406d8a831d268ee0b63f1369582
 
 pkgname = quazip-qt5
-	pkgdesc = C++ wrapper for the ZIP/UNZIP C package (qt5)

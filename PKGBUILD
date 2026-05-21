@@ -4,7 +4,7 @@ _pkgname=quazip
 pkgname=$_pkgname-qt5
 pkgver=1.5
 pkgrel=1
-pkgdesc='C++ wrapper for the ZIP/UNZIP C package'
+pkgdesc='C++ wrapper for the ZIP/UNZIP C package (qt5)'
 url='https://stachenov.github.io/quazip/'
 license=(LGPL-2.1-or-later)
 arch=(x86_64)
@@ -18,7 +18,6 @@ build() {
   cmake --build build
 }
 
-package_quazip-qt5() {
-  pkgdesc='C++ wrapper for the ZIP/UNZIP C package (qt5)'
+package() {
   DESTDIR="$pkgdir" cmake --install build
 }
