@@ -11,6 +11,7 @@ pkgbase = blutter-git
 	depends = icu
 	depends = git
 	depends = ninja
+	depends = pkgconf
 	depends = python
 	depends = python-pyelftools
 	depends = python-requests

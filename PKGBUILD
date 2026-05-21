@@ -13,6 +13,7 @@ depends=(
     'icu'
     'git'
     'ninja'
+    'pkgconf'
     'python'
     'python-pyelftools'
     'python-requests'
@@ -36,7 +37,6 @@ prepare() {
 
     # blutter.py: redirect BIN_DIR, PKG_INC_DIR, PKG_LIB_DIR, BUILD_DIR
     sed -i \
-        -e "s|^SCRIPT_DIR = .*|SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))|" \
         -e "/^SCRIPT_DIR/a\\
 CACHE_DIR = os.path.join(os.environ.get('XDG_CACHE_HOME', os.path.join(os.path.expanduser('~'), '.cache')), 'blutter')\\
 os.makedirs(CACHE_DIR, exist_ok=True)" \
@@ -95,5 +95,7 @@ exec python3 /usr/lib/blutter/blutter.py "$@"
 LAUNCHER
 
     # License
+    rm "${pkgdir}/usr/lib/blutter/scripts/init_env_win.py"
+
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
