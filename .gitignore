@@ -1,0 +1,15 @@
+# makepkg build artifacts
+/pkg/
+/src/
+
+# Built packages and logs
+*.pkg.tar*
+*.log
+*.log.*
+
+# Downloaded upstream archives
+/Antigravity-*.tar.gz
+
+# makepkg metadata/cache files
+/*.sig
+/*.sig.*
