@@ -1,6 +1,6 @@
 pkgbase = bootrecov
 	pkgdesc = TUI/CLI helper for /boot recovery snapshots and bootloader fallback entries
-	pkgver = 0.4.9
+	pkgver = 0.4.10
 	pkgrel = 1
 	url = https://github.com/marang/bootrecov
 	install = bootrecov.install
@@ -12,7 +12,7 @@ pkgbase = bootrecov
 	depends = grub
 	depends = squashfs-tools
 	options = !debug
-	source = bootrecov-0.4.9.tar.gz::https://github.com/marang/bootrecov/archive/refs/tags/v0.4.9.tar.gz
-	sha256sums = 2320fff8369a8cb62bda0228d486bb048cdc9fab59e16763181048bb96864241
+	source = bootrecov-0.4.10.tar.gz::https://github.com/marang/bootrecov/archive/refs/tags/v0.4.10.tar.gz
+	sha256sums = 00dc6ea5b93eae1ff71dacee398e2a5accf61fe85509d162f2e2e01c45cd1018
 
 pkgname = bootrecov
