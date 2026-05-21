@@ -7,7 +7,7 @@ pkgbase = oplire
 	license = MIT
 	makedepends = cargo
 	depends = glibc
-	depends = cloudflare-warp
+	optdepends = cloudflare-warp: for WARP tunnel rate limit reset functionality
 	source = oplire-2.1.0.tar.gz::https://github.com/BerkeOruc/oplire/archive/v2.1.0.tar.gz
 	sha256sums = SKIP
 
