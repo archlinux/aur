@@ -1,6 +1,6 @@
 pkgbase = mousehop-bin
 	pkgdesc = Software KVM Switch / mouse & keyboard sharing software for Local Area Networks (prebuilt binary)
-	pkgver = 0.11.4
+	pkgver = 0.11.5
 	pkgrel = 1
 	url = https://github.com/jondkinney/mousehop
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = mousehop-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = hicolor-icon-theme
-	provides = mousehop=0.11.4
+	provides = mousehop=0.11.5
 	conflicts = mousehop
 	conflicts = mousehop-git
-	source_x86_64 = mousehop-0.11.4-x86_64.tar.gz::https://github.com/jondkinney/mousehop/releases/download/v0.11.4/mousehop-0.11.4-x86_64.tar.gz
-	sha256sums_x86_64 = 09cd84bd685d9741601e2ea3555b97a690d59c09a41a267b65f93a3a3f1b3a50
-	source_aarch64 = mousehop-0.11.4-aarch64.tar.gz::https://github.com/jondkinney/mousehop/releases/download/v0.11.4/mousehop-0.11.4-aarch64.tar.gz
-	sha256sums_aarch64 = ffac1781eddd2a0678174109a72fcae05a340aad16c62f696a6751118abe3c22
+	source_x86_64 = mousehop-0.11.5-x86_64.tar.gz::https://github.com/jondkinney/mousehop/releases/download/v0.11.5/mousehop-0.11.5-x86_64.tar.gz
+	sha256sums_x86_64 = 9ab3d5d6c53a3f5003e108234246c589feb3139f5973dea137774ac05f9d7631
+	source_aarch64 = mousehop-0.11.5-aarch64.tar.gz::https://github.com/jondkinney/mousehop/releases/download/v0.11.5/mousehop-0.11.5-aarch64.tar.gz
+	sha256sums_aarch64 = df2ba67fedfdf15763e83646d60ad1f16b2f941fa303c9a31cff88ccb353dce4
 
 pkgname = mousehop-bin
