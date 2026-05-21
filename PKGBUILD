@@ -1,7 +1,7 @@
-# Maintainer: Parth Gajjar <your-email@example.com>
+# Maintainer: Parth Gajjar <gajjarparth09@gmail.com>
 pkgname=toss-api-bin
 _pkgname=toss-api
-pkgver=0.1.3             # Change this to match your current GitHub release tag
+pkgver=0.1.5             # Change this to match your current GitHub release tag
 pkgrel=1
 pkgdesc="A Vim-inspired TUI API client"
 arch=('x86_64')
