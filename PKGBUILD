@@ -1,26 +1,24 @@
-# Maintainer: trya <tryagainprod@gmail.com>
+# Maintainer: KNOSSOS team <knossosteam ät gmail.com>
 
-pkgname=quazip-qt5
-pkgver=0.7.1
+_pkgname=quazip
+pkgname=$_pkgname-qt5
+pkgver=1.5
 pkgrel=1
-pkgdesc="C++ wrapper for the Gilles Vollant's ZIP/UNZIP C package (Qt5 library)"
-url="http://sourceforge.net/projects/quazip/"
-arch=('i686' 'x86_64')
-depends=('qt5-base')
-conflicts=('quazip')
-source=("http://downloads.sourceforge.net/project/quazip/quazip/$pkgver/quazip-$pkgver.tar.gz")
-license=('LGPL')
-md5sums=('3b99effb2a9417707d463e6f19cf2629')
+pkgdesc='C++ wrapper for the ZIP/UNZIP C package'
+url='https://stachenov.github.io/quazip/'
+license=(LGPL-2.1-or-later)
+arch=(x86_64)
+depends=(bzip2 qt5-base zlib)
+makedepends=(cmake ninja)
+source=($_pkgname-$pkgver.tar.gz::https://github.com/stachenov/quazip/archive/v$pkgver.tar.gz)
+sha256sums=('405b72b6e76c8987ff41a762523b8f64876ba406d8a831d268ee0b63f1369582')
 
 build() {
-  cd "$srcdir/quazip-$pkgver/quazip"
-  qmake-qt5 PREFIX="$pkgdir/usr"
-  make
+  cmake -S $_pkgname-$pkgver -B build -G Ninja -DQUAZIP_QT_MAJOR_VERSION=5 -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
-package() {
-  cd "$srcdir/quazip-$pkgver/quazip"
-  make install
-  install -Dm644 ../FindQuaZip.cmake \
-    "$pkgdir/usr/share/cmake-3.0/Modules/FindQuaZip.cmake"
+package_quazip-qt5() {
+  pkgdesc='C++ wrapper for the ZIP/UNZIP C package (qt5)'
+  DESTDIR="$pkgdir" cmake --install build
 }
