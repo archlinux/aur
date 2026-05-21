@@ -1,6 +1,6 @@
 pkgbase = r-seqcombo
 	pkgdesc = Visualization Tool for Sequence Recombination and Reassortment
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/seqcombo
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-seqcombo
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-tibble
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqcombo_1.32.0.tar.gz
-	sha256sums = 3e26369afb448c674ec5c580a74819c815f89e49dc23c2f6f2e4ae9a3d03ae8b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqcombo_1.34.0.tar.gz
+	sha256sums = 8f5b6c6ff6d158c5d2d7d6645503fb4fd0c98214731aa891cce43eb447681e3e
 
 pkgname = r-seqcombo
