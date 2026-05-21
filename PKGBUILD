@@ -1,9 +1,9 @@
 # Maintainer: HeadedBranch <isaac.hesslegrave at gmail dot com>
 
 pkgname=python-asciify-them
-_name=${pkgname#python-}
+name=${pkgname#python-}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to turn images into ASCII art drawings"
 arch=(any)
 license=("MIT")
@@ -21,5 +21,6 @@ build() {
 
 package() {
   cd $_filename-$pkgver
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
