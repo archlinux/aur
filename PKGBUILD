@@ -15,7 +15,7 @@ optdepends=(
   'gnome-keyring: GNOME-based credential storage'
 )
 provides=('nono')
-conflicts=('nono')
+conflicts=('nono', 'nono-ai-bin')
 options=(!lto)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/always-further/nono/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('eefa9dda3672b672d24612b4594296cc9153f868e3af949e7200af7745be509c')
