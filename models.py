@@ -195,7 +195,7 @@ def update_model_ui(app) -> None:
         app.entry.set_tooltip_text("Type your message here")
         app.btn_send.set_tooltip_text("Send message")
     
-    elif not app.allow_mid_chat_switch and app.history:
+    if not app.allow_mid_chat_switch and app.history:
         app.model_btn.set_sensitive(False)
         app.model_btn.set_tooltip_text("Model locked in memory during active conversation.")
     elif not ram_ok and not is_running:
