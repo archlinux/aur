@@ -1,5 +1,5 @@
 pkgbase = nnote
-	pkgdesc = A minimal CLI note taker
+	pkgdesc = A plain, file-based note-taking CLI
 	pkgver = 0.3.3
 	pkgrel = 2
 	url = https://github.com/stiermid/nnote

@@ -2,7 +2,7 @@
 pkgname=nnote
 pkgver=0.3.3
 pkgrel=2
-pkgdesc="A minimal CLI note taker"
+pkgdesc="A plain, file-based note-taking CLI"
 arch=('any')
 url="https://github.com/stiermid/nnote"
 license=('GPL-3.0-or-later')
