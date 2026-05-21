@@ -15,7 +15,7 @@ conflicts=('eden' 'eden-bin' 'eden-git')
 provides=('eden')
 options=(!strip)
 _appimage="${_pkgname}-Linux-${pkgver}-amd64.AppImage"
-source_x86_64=("${_appimage}::https://git.eden-emu.dev/eden-emu/eden/releases/download/v${pkgver}/${_pkgname}-Linux-v${pkgver}-amd64-clang-pgo.AppImage")
+source_x86_64=("${_appimage}::https://stable.eden-emu.dev/v${pkgver}/${_pkgname}-Linux-v${pkgver}-amd64-clang-pgo.AppImage")
 sha256sums_x86_64=("68c8b5ace9772b0016a73c77089968b84708dace06ae5c9a472e21fab030465f")
 
 prepare() {
