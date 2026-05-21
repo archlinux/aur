@@ -1,6 +1,6 @@
 # Maintainer: IAP-IT <info at iap-it dot de>
 pkgname=franzfon-bin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="FRANZFON VoIP Softphone (prebuilt binary from vendor)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 )
 options=('!strip' '!emptydirs')
 source=("FRANZFON-${pkgver}-amd64.deb::${url}/updates/linux/FRANZFON-${pkgver}-amd64.deb")
-sha512sums=('9055c6abcecefa8c2338c1d2b51273928a05dd7b82d7837cec6712b72dcec66c888f8f440f9e48e1e4a1ba296f0681fb2702315018edc3648ddc109b699a0ff2')
+sha512sums=('a1bcaa39d8f28e1d08d9646521c7a73fba200fab1f4fa06b7b6ac3de560831b3a3a0c0a7f54e141005b90d3a5f1c80094be108c9a4a67585477b104e0b4fe7fc')
 
 package() {
   cd "$srcdir"
