@@ -1,0 +1,127 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+_binary=/usr/lib/mpc-autofill/autofill-linux.bin
+
+if [[ ! -x $_binary ]]; then
+  printf 'mpc-autofill: executable not found: %s\n' "$_binary" >&2
+  exit 127
+fi
+
+_prompt() {
+  local _question=$1
+  local _default=$2
+  local _reply
+
+  printf '%s [%s]: ' "$_question" "$_default" >&2
+  IFS= read -r _reply
+  printf '%s' "${_reply:-$_default}"
+}
+
+_prompt_choice() {
+  local _question=$1
+  local _default=$2
+  shift 2
+  local _reply
+  local _choice
+  local _choices
+
+  printf -v _choices '%s, ' "$@"
+  _choices=${_choices%, }
+
+  while true; do
+    printf '%s (%s) [%s]: ' "$_question" "$_choices" "$_default" >&2
+    IFS= read -r _reply
+    _reply=${_reply:-$_default}
+    for _choice in "$@"; do
+      if [[ ${_reply,,} == "${_choice,,}" ]]; then
+        printf '%s' "$_choice"
+        return
+      fi
+    done
+    printf 'Please enter one of: %s\n' "$_choices" >&2
+  done
+}
+
+_prompt_flag() {
+  local _question=$1
+  local _default=$2
+  local _enabled_flag=$3
+  local _disabled_flag=$4
+  local _reply
+
+  while true; do
+    printf '%s [%s]: ' "$_question" "$_default" >&2
+    IFS= read -r _reply
+    _reply=${_reply:-$_default}
+    case "${_reply,,}" in
+      y | yes)
+        printf '%s' "$_enabled_flag"
+        return
+        ;;
+      n | no)
+        printf '%s' "$_disabled_flag"
+        return
+        ;;
+      *)
+        printf 'Please enter yes or no.\n' >&2
+        ;;
+    esac
+  done
+}
+
+_expand_directory() {
+  local _directory=$1
+
+  if [[ $_directory == '~' ]]; then
+    _directory=$HOME
+  elif [[ $_directory == '~/'* ]]; then
+    _directory=${HOME}/${_directory#'~/'}
+  fi
+
+  printf '%s' "$_directory"
+}
+
+_has_directory=0
+for _arg in "$@"; do
+  case "$_arg" in
+    -d | -d* | --directory | --directory=*)
+      _has_directory=1
+      break
+      ;;
+  esac
+done
+
+if (($# == 0)) && [[ -t 0 && -t 1 ]]; then
+  _directory=$(_expand_directory "$(_prompt 'Directory containing MPC Autofill XML files' "$PWD")")
+
+  while [[ ! -d $_directory ]]; do
+    printf 'Directory does not exist: %s\n' "$_directory" >&2
+    _directory=$(_expand_directory "$(_prompt 'Directory containing MPC Autofill XML files' "$PWD")")
+  done
+  _directory=$(cd -- "$_directory" && pwd -P)
+
+  _browser=$(_prompt_choice 'Browser to automate' chrome brave chrome edge)
+  _site=$(
+    _prompt_choice 'Card printing site' MakePlayingCards \
+      MakePlayingCards PrinterStudio PrinterStudioDE PrinterStudioES PrinterStudioFR PrinterStudioUK
+  )
+  _auto_save_flag=$(_prompt_flag 'Automatically save the project while running?' yes --auto-save --no-auto-save)
+  _post_processing_flag=$(
+    _prompt_flag 'Post-process images to reduce upload time and size?' yes \
+      --image-post-processing --no-image-post-processing
+  )
+
+  exec "$_binary" \
+    --directory "$_directory" \
+    --browser "$_browser" \
+    --site "$_site" \
+    "$_auto_save_flag" \
+    "$_post_processing_flag"
+fi
+
+if ((_has_directory)); then
+  exec "$_binary" "$@"
+fi
+
+exec "$_binary" --directory "$PWD" "$@"

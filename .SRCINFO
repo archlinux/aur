@@ -1,0 +1,25 @@
+pkgbase = mpc-autofill-bin
+	pkgdesc = Print automation software for MakePlayingCards tabletop card orders
+	pkgver = 4.7
+	pkgrel = 1
+	url = https://github.com/chilli-axe/mpc-autofill
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = bash
+	depends = glibc
+	optdepends = chromium: Chromium browser backend
+	optdepends = google-chrome: default Chrome browser backend
+	optdepends = brave-bin: Brave browser backend
+	optdepends = microsoft-edge-stable-bin: Edge browser backend
+	provides = mpc-autofill=4.7
+	conflicts = mpc-autofill
+	options = !strip
+	options = !debug
+	source = mpc-autofill-bin-4.7.zip::https://github.com/chilli-axe/mpc-autofill/releases/download/v4.7/autofill-linux.zip
+	source = mpc-autofill-4.7-LICENSE.md::https://raw.githubusercontent.com/chilli-axe/mpc-autofill/v4.7/LICENSE.md
+	source = mpc-autofill
+	sha256sums = 9c78a438105f97c1cfc373956b26029716eb7c4e204896c13d73c73ab230ef54
+	sha256sums = f817886ee6bb65ed3098a7987b1e9781653d15c71f85589ce0d2af663c66d373
+	sha256sums = e0270fbb05ccae97d3b4aacf42a8ca5b78e774dd3b1abd8376f664e8032dda41
+
+pkgname = mpc-autofill-bin
