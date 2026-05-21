@@ -1,0 +1,17 @@
+_update_caches() {
+  find /usr/share/icons -maxdepth 1 -name 'Moga-Neon-*' -type d | while read -r theme; do
+    gtk-update-icon-cache -q -t -f "$theme" 2>/dev/null || true
+  done
+}
+
+post_install() {
+  _update_caches
+}
+
+post_upgrade() {
+  _update_caches
+}
+
+post_remove() {
+  _update_caches
+}
