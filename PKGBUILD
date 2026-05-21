@@ -9,7 +9,7 @@ _pkgname=grafana
 pkgver=13.0.1
 _pkgver=13.0.1+security-01
 _build_id=25720641773
-pkgrel=3
+pkgrel=4
 pkgdesc='Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version'
 url='https://grafana.com/grafana/download?edition=oss'
 conflicts=('grafana')
@@ -36,7 +36,7 @@ sha256sums_armv7h=('50be251ff259ebb45264cc5370ded71dcb08414c31023e972996e7028d23
 sha256sums_aarch64=('d01a3660bd020faf838cfcc72f793e50bffc261a81e88d42829f2623aced3201')
 
 prepare() {
-  cd ${_pkgname}-${pkgver}
+  cd ${_pkgname}-${_pkgver}
   # set arch linux paths
   sed -ri 's,^(\s*data\s*=).*,\1 /var/lib/grafana,' conf/defaults.ini
   sed -ri 's,^(\s*plugins\s*=).*,\1 /var/lib/grafana/plugins,' conf/defaults.ini
