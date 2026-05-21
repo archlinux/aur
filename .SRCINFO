@@ -1,0 +1,23 @@
+pkgbase = tunedesk
+	pkgdesc = Desktop client for IPTV
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NotNoss/Tunedesk
+	install = tunedesk.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/NotNoss/Tunedesk/releases/download/1.0.0/tunedesk_1.0.0_amd64.deb
+	sha256sums_x86_64 = ab237fadcfe67eedd9c8659ee1db60eb069cf8848734646955d54c7ca355b630
+
+pkgname = tunedesk
