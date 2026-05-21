@@ -1953,7 +1953,7 @@ checksum = "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03"
 
 [[package]]
 name = "smolfile"
-version = "0.7.1"
+version = "0.7.2"
 dependencies = [
  "serde",
  "tempfile",
@@ -1978,7 +1978,7 @@ dependencies = [
 
 [[package]]
 name = "smolvm"
-version = "0.7.1"
+version = "0.7.2"
 dependencies = [
  "async-stream",
  "axum",
@@ -2019,7 +2019,7 @@ dependencies = [
 
 [[package]]
 name = "smolvm-agent"
-version = "0.7.1"
+version = "0.7.2"
 dependencies = [
  "lazy_static",
  "libc",
@@ -2035,7 +2035,7 @@ dependencies = [
 
 [[package]]
 name = "smolvm-napi"
-version = "0.7.1"
+version = "0.7.2"
 dependencies = [
  "napi",
  "napi-build",
@@ -2048,7 +2048,7 @@ dependencies = [
 
 [[package]]
 name = "smolvm-network"
-version = "0.7.1"
+version = "0.7.2"
 dependencies = [
  "crossbeam-queue",
  "humantime",
@@ -2059,7 +2059,7 @@ dependencies = [
 
 [[package]]
 name = "smolvm-pack"
-version = "0.7.1"
+version = "0.7.2"
 dependencies = [
  "crc32fast",
  "dirs",
@@ -2076,7 +2076,7 @@ dependencies = [
 
 [[package]]
 name = "smolvm-protocol"
-version = "0.7.1"
+version = "0.7.2"
 dependencies = [
  "base64",
  "serde",
@@ -2086,7 +2086,7 @@ dependencies = [
 
 [[package]]
 name = "smolvm-registry"
-version = "0.7.1"
+version = "0.7.2"
 dependencies = [
  "bytes",
  "dirs",
