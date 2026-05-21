@@ -47,27 +47,7 @@ if [ -z "$SUDO_HOME" ]; then
 fi
 
 while IFS= read -r package || [ -n "$package" ]; do
-	branch=${package#discord}
-	branch=${branch#-}
-	branch=${branch:-stable}
-
-	config=""
-
-	case "$branch" in
-		stable)
-			config="discord"
-		;;
-		canary)
-			config="discordcanary"
-		;;
-		ptb)
-			config="discordptb"
-		;;
-		*)
-			echo_hook "Unsupported branch: $branch"
-			exit 1
-		;;
-	esac
+	config=${package//-/}
 
 	echo_hook "Installing Vencord for $branch branch..."
 	vencordinstallercli -install -location $SUDO_HOME/.config/$config/app-*/ || {
