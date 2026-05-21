@@ -188,3 +188,52 @@ def markdown_to_pango(text: str) -> str:
     text = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
     return text
+
+def parse_message(text: str):
+    """Parses text into a list of (type, content, language) chunks."""
+    if not text:
+        return [("text", "", None)]
+    
+    pattern = re.compile(r"```(\w+)?(?:\s|\n)*(.*?)```", re.DOTALL)
+    chunks = []
+    last_end = 0
+    
+    # Language detection heuristics
+    py_keywords = {"import", "from", "def", "class", "print", "if __name__"}
+    sh_keywords = {"sudo", "apt", "pacman", "ls", "grep", "cd", "export", "echo"}
+    c_keywords = {"#include", "int main", "void ", "char*", "printf"}
+    
+    for match in pattern.finditer(text):
+        if match.start() > last_end:
+            chunks.append(("text", text[last_end:match.start()], None))
+        
+        language = match.group(1)
+        code = match.group(2)
+        
+        if not language:
+            code_lower = code.lower()
+            if any(k in code_lower for k in py_keywords):
+                language = "python3"
+            elif any(k in code_lower for k in sh_keywords):
+                language = "sh"
+            elif any(k in code_lower for k in c_keywords):
+                language = "c"
+            else:
+                language = "text"
+        elif language.lower() in py_keywords | sh_keywords | c_keywords:
+            # Language tag was actually code
+            code = language + (" " if language else "") + code
+            code_lower = code.lower()
+            if any(k in code_lower for k in py_keywords):
+                language = "python3"
+            elif any(k in code_lower for k in sh_keywords):
+                language = "sh"
+            else:
+                language = "text"
+            
+        chunks.append(("code", code.strip(), language))
+        last_end = match.end()
+    
+    if last_end < len(text):
+        chunks.append(("text", text[last_end:], None))
+    return chunks

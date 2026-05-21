@@ -2,18 +2,7 @@
 Module for UI components and structure.
 Handles initial widget layout construction.
 """
-import gi
-gi.require_version("Gtk", "4.0")
-gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw
-
-"""
-Module for UI components and structure.
-Handles initial widget layout construction.
-"""
-import gi
-gi.require_version("Gtk", "4.0")
-gi.require_version("Adw", "1")
+import init_gi
 from gi.repository import Gtk, Adw
 import display
 def show_welcome_message(app):

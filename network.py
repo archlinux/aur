@@ -3,8 +3,7 @@ Module for API network interactions.
 Manages asynchronous communication with the local LLM server.
 """
 import json
-import gi
-gi.require_version("Soup", "3.0")
+import init_gi
 from gi.repository import Soup, GLib
 from typing import List
 

@@ -1,6 +1,4 @@
-import gi
-gi.require_version("Gtk", "4.0")
-gi.require_version("Gdk", "4.0")
+import init_gi
 from gi.repository import Gtk, Gdk, GLib, Adw
 import asyncio
 import display
@@ -181,6 +179,9 @@ def on_clear_history_response(app, dialog, response):
             app.sessions_metadata = []
             app.current_session_id = None
             app.history = []
+            # Invalidate search cache
+            if hasattr(app, '_search_cache'):
+                app._search_cache = {}
             app.update_model_ui()
             app.show_welcome_message()
             display.add_system_message(app, "History cleared.")

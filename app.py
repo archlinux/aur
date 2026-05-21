@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import asyncio
-import gi
-gi.require_version("Gtk", "4.0")
-gi.require_version("Adw", "1")
-gi.require_version("Soup", "3.0")
+import init_gi
 from gi.repository import Gio
 from gi.events import GLibEventLoopPolicy
 from main import FlmChatApp

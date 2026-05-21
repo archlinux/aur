@@ -2,38 +2,98 @@
 Module for chat display management.
 Handles UI rendering, message bubble construction, and visual status updates.
 """
-import gi
-gi.require_version("Gtk", "4.0")
-gi.require_version("Gdk", "4.0")
-from gi.repository import Gtk, Gdk, GLib
+import init_gi
+from gi.repository import Gtk, Gdk, GLib, GtkSource
 import utils
+import logging
 from typing import Optional
+
+def create_code_block(code: str, language_id: str) -> Gtk.ScrolledWindow:
+    """Creates a GtkSourceView widget for syntax highlighting with theme support."""
+    lang_manager = GtkSource.LanguageManager.get_default()
+    
+    # Map common markdown tags to GtkSource identifiers
+    lang_map = {
+        "python": "python3",
+        "py": "python3",
+        "python3": "python3",
+        "bash": "sh",
+        "sh": "sh",
+        "shell": "sh",
+        "js": "js",
+        "javascript": "js",
+        "html": "html",
+        "css": "css",
+        "cpp": "cpp",
+        "c++": "cpp",
+        "c": "c",
+        "json": "json"
+    }
+    
+    target_lang = lang_map.get(language_id.lower(), language_id)
+    lang = lang_manager.get_language(target_lang)
+    
+    buffer = GtkSource.Buffer.new_with_language(lang) if lang else GtkSource.Buffer.new()
+    buffer.set_text(code)
+    
+    # Apply a dark-friendly style scheme
+    scheme_manager = GtkSource.StyleSchemeManager.get_default()
+    scheme = scheme_manager.get_scheme("adwaita") or scheme_manager.get_scheme("oblivion")
+    if scheme:
+        buffer.set_style_scheme(scheme)
+    
+    view = GtkSource.View.new_with_buffer(buffer)
+    view.set_editable(False)
+    view.set_show_line_numbers(True)
+    view.set_monospace(True)
+    view.set_wrap_mode(Gtk.WrapMode.WORD) # Enable wrapping
+    view.add_css_class("code-block")
+    
+    scrolled = Gtk.ScrolledWindow()
+    scrolled.set_hexpand(True) # Force horizontal expansion
+    scrolled.set_vexpand(False)
+    scrolled.set_propagate_natural_height(True)
+    scrolled.set_min_content_height(100) # Increased min height
+    scrolled.set_min_content_width(350)  # Ensure a base width
+    scrolled.set_max_content_height(600)
+    scrolled.set_child(view)
+    return scrolled
 
 def add_message(app, text: str, is_user: bool, image_path: Optional[str] = None) -> Gtk.Label:
     """
-    Renders a chat bubble to the main display area with modern styling.
+    Renders a chat bubble, handling both plain text and code blocks.
     """
     bubble_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
     bubble_box.add_css_class("user-bubble" if is_user else "assistant-bubble")
     
     if image_path:
-        img = Gtk.Image.new_from_file(image_path)
-        img.set_pixel_size(240)
-        img.add_css_class("rounded-image") # Assuming rounding via global style or similar
-        bubble_box.append(img)
+        try:
+            texture = Gdk.Texture.new_from_filename(image_path)
+            img = Gtk.Image.new_from_paintable(texture)
+            img.set_pixel_size(240)
+            img.add_css_class("rounded-image")
+            bubble_box.append(img)
+        except Exception as e:
+            logging.error(f"Failed to load image {image_path}: {e}")
+            img = Gtk.Image.new_from_icon_name("image-missing-symbolic")
+            img.set_pixel_size(64)
+            bubble_box.append(img)
         
-    bubble = Gtk.Label()
-    bubble.set_wrap(True)
-    bubble.set_selectable(True)
-    bubble.set_xalign(0)
-    bubble.set_use_markup(True)
+    chunks = utils.parse_message(text)
     
-    if is_user:
-        bubble.set_text(text)
-    else:
-        bubble.set_markup(utils.markdown_to_pango(text))
-    
-    bubble_box.append(bubble)
+    last_bubble = None
+    for ctype, content, lang in chunks:
+        if ctype == "code":
+            bubble_box.append(create_code_block(content, lang))
+        else:
+            bubble = Gtk.Label()
+            bubble.set_wrap(True)
+            bubble.set_selectable(True)
+            bubble.set_xalign(0)
+            bubble.set_use_markup(True)
+            bubble.set_markup(utils.markdown_to_pango(content))
+            bubble_box.append(bubble)
+            last_bubble = bubble
     
     if not is_user:
         copy_btn = Gtk.Button(icon_name="edit-copy-symbolic")
@@ -53,7 +113,7 @@ def add_message(app, text: str, is_user: bool, image_path: Optional[str] = None)
         
     app.chat_box.append(align)
     GLib.idle_add(scroll_to_bottom, app)
-    return bubble
+    return last_bubble
 
 def copy_to_clipboard(text: str) -> None:
     """Copies the provided text to the system clipboard."""
@@ -141,10 +201,18 @@ def update_thumbnail(app) -> None:
         child = app.thumb_box.get_first_child()
 
     if app.selected_image_path:
-        img = Gtk.Image.new_from_file(app.selected_image_path)
-        img.set_pixel_size(100)
-        img.set_hexpand(True)
-        app.thumb_box.append(img)
+        try:
+            texture = Gdk.Texture.new_from_filename(app.selected_image_path)
+            img = Gtk.Image.new_from_paintable(texture)
+            img.set_pixel_size(100)
+            img.set_hexpand(True)
+            app.thumb_box.append(img)
+        except Exception as e:
+            logging.error(f"Thumbnail load failed: {e}")
+            img = Gtk.Image.new_from_icon_name("image-missing-symbolic")
+            img.set_pixel_size(64)
+            app.thumb_box.append(img)
+
         btn = Gtk.Button(icon_name="window-close-symbolic")
         btn.connect("clicked", lambda b: on_remove_thumbnail(app))
         app.thumb_box.append(btn)

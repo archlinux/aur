@@ -2,15 +2,12 @@
 Module for model management and installation.
 Handles server lifecycle, model downloads, and UI synchronization.
 """
-import gi
-gi.require_version("Gtk", "4.0")
-gi.require_version("Adw", "1")
+import init_gi
 from gi.repository import Gtk, Adw, GLib
 import asyncio
 import subprocess
 import os
 import shutil
-import json
 import flm
 import re
 import display
@@ -361,6 +358,7 @@ def on_model_selected(app, btn: Optional[Gtk.Button], model_data: dict, popover:
         app.save_session()
 
     if not is_installed:
+        display.add_system_message(app, f"Error: Please download {model_name} before starting.")
         confirm_download(app, model_data)
     else:
         display.add_system_message(app, f"Starting process matrix for {model_name}...")

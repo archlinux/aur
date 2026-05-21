@@ -1,7 +1,7 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=fastflowlm-gtk
 pkgver=1.6.9
-pkgrel=1
+pkgrel=3
 pkgdesc="A minimalist, modern desktop interface for FastFlowLM, built with GTK 4 and Libadwaita."
 arch=('any')
 url="https://github.com/marleylinux/FastFlowLM-GTK"
@@ -20,8 +20,9 @@ source=("fastflowlm-gtk.desktop"
         "theme.py"
         "handlers.py"
         "models.py"
-        "display.py")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "display.py"
+        "init_gi.py")
+        sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   # Install Python files

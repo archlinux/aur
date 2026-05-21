@@ -4,6 +4,7 @@ Handles dynamic CSS application and user preference saving.
 """
 import os
 import json
+import utils
 
 def load_theme_color() -> str:
     """Loads the user's saved accent color from the config file."""
@@ -19,6 +20,6 @@ def apply_theme(app, hex_color: str) -> None:
     """Applies the custom accent color CSS to the application."""
     full_css = f"""
     @define-color accent_bg_color {hex_color};
-    {app.utils.CSS}
+    {utils.CSS}
     """
     app.css_provider.load_from_data(full_css.encode())

@@ -2,18 +2,15 @@ import asyncio
 import json
 import subprocess
 import os
-import signal
 import fcntl
 import time
-import gi
 import logging
 import base64
 from typing import Optional, List, Dict
 
-gi.require_version("Gtk", "4.0")
-gi.require_version("Adw", "1")
-gi.require_version("Soup", "3.0")
-from gi.repository import Gtk, Gdk, Gio, GLib, Adw, Soup
+import init_gi
+import gi
+from gi.repository import Gtk, Gdk, GdkPixbuf, Gio, GLib, Adw, Soup
 
 import utils
 import flm
@@ -42,7 +39,6 @@ class FlmChatApp(Adw.Application):
         self.theme_color: str = theme.load_theme_color()
         self.models: List[Dict] = flm.get_all_models()
         self.current_model: Optional[str] = None
-        self.utils = utils
 
         self.downloading_models = set()
         self.tasks = set()
@@ -135,23 +131,26 @@ class FlmChatApp(Adw.Application):
 
     def on_search_changed(self, entry):
         text = entry.get_text().lower()
+        
+        # Pre-load cache if not already populated
         if not hasattr(self, '_search_cache'):
             self._search_cache = {}
-        
-        for i, row in enumerate(self.history_list):
-            session_id = self.sessions_metadata[i]["id"]
-            path = os.path.join(self.history_dir, f"{session_id}.json")
-            
-            if session_id not in self._search_cache:
+            for meta in self.sessions_metadata:
+                session_id = meta["id"]
+                path = os.path.join(self.history_dir, f"{session_id}.json")
                 try:
                     with open(path, 'r') as f:
                         data = json.load(f)
-                        self._search_cache[session_id] = data.get("messages", [])
+                        # Concatenate all content for search
+                        full_text = " ".join([msg.get("content", "") for msg in data.get("messages", [])])
+                        self._search_cache[session_id] = full_text.lower()
                 except Exception as e:
                     logging.error(f"Failed to cache session {session_id}: {e}")
-                    self._search_cache[session_id] = []
-            
-            messages = self._search_cache[session_id]
+                    self._search_cache[session_id] = ""
+        
+        for i, row in enumerate(self.history_list):
+            session_id = self.sessions_metadata[i]["id"]
+            content = self._search_cache.get(session_id, "")
             
             main_box = row.get_child()
             txt_box = main_box.get_first_child()
@@ -163,18 +162,13 @@ class FlmChatApp(Adw.Application):
                 model_label.set_label(self.sessions_metadata[i]["model"])
                 continue
                 
-            found_text = None
-            for msg in messages:
-                content = msg.get("content", "")
-                if text in content.lower():
-                    start_idx = content.lower().find(text)
-                    preview = content[start_idx:start_idx+40]
-                    found_text = f"{preview}..."
-                    break
-            
-            row.set_visible(found_text is not None)
-            if found_text:
-                model_label.set_label(found_text)
+            if text in content:
+                row.set_visible(True)
+                start_idx = content.find(text)
+                preview = content[max(0, start_idx-20):start_idx+20]
+                model_label.set_label(f"...{preview}...")
+            else:
+                row.set_visible(False)
 
     def on_attach_clicked(self, btn):
         handlers.on_attach_clicked(self, btn)
@@ -292,6 +286,9 @@ class FlmChatApp(Adw.Application):
     def execute_new_chat(self):
         # Save previous session if it exists
         self.save_session()
+        # Invalidate cache so new chat is indexed on next search
+        if hasattr(self, '_search_cache'):
+            del self._search_cache
 
         # Reset state
         self.execute_eject()
@@ -311,6 +308,7 @@ class FlmChatApp(Adw.Application):
         self.btn_send.set_sensitive(True)
         self.update_model_ui()
         display.add_system_message(self, "Ready. Select a model and send a message to start.")
+
     def execute_eject(self):
         if self.server_process:
             self.server_process.terminate()
@@ -438,30 +436,24 @@ class FlmChatApp(Adw.Application):
         self.is_sending = False
 
     async def get_ai_response(self):
-        thinking_box = None
-        try:
-            if not self.current_model:
-                display.add_system_message(self, "Please select a model first.")
-                return
-            
-            # Final safety check: is the server actually responsive?
-            if not flm.is_server_ready(self.current_model):
-                display.add_system_message(self, "Error: Model server is not responding. Try reloading the model.")
-                return
+        if not self.current_model:
+            display.add_system_message(self, "Please select a model first.")
+            return
 
-            thinking_box = display.add_spinner(self)
-            
-            bubble = display.add_message(self, "", is_user=False)
-            full_content = ""
-            
+        if not flm.is_server_ready(self.current_model):
+            display.add_system_message(self, "Error: Model server is not responding. Try reloading the model.")
+            return
+
+        thinking_box = display.add_spinner(self)
+        bubble = display.add_message(self, "", is_user=False)
+        full_content = ""
+        
+        try:
             messages = []
             for msg in self.history:
                 role = msg["role"]
                 text_content = msg.get("content", "")
-                
-                # Merge consecutive messages from the same role to prevent backend crashes
                 if messages and messages[-1]["role"] == role:
-                    # Append text to existing last message
                     current_content = messages[-1]["content"]
                     for item in current_content:
                         if item["type"] == "text":
@@ -473,75 +465,76 @@ class FlmChatApp(Adw.Application):
                     content = [{"type": "text", "text": text_content}]
                     messages.append({"role": role, "content": content})
 
-                # Handle images (for the current or merged message)
                 if msg.get("image"):
                     try:
-                        with open(msg["image"], "rb") as image_file:
-                            encoded = base64.b64encode(image_file.read()).decode('utf-8')
-                            # Images are always appended to the current message's content
+                        # Use GdkPixbuf to convert any format (PNG, WebP) to a standard JPEG for the AI
+                        pixbuf = GdkPixbuf.Pixbuf.new_from_file(msg["image"])
+                        success, buffer = pixbuf.save_to_bufferv("jpeg", [], [])
+                        if success:
+                            encoded = base64.b64encode(buffer).decode("utf-8")
                             messages[-1]["content"].append({
                                 "type": "image_url", 
                                 "image_url": {"url": f"data:image/jpeg;base64,{encoded}"}
                             })
+                        else:
+                            logging.error(f"Failed to convert image to JPEG: {msg['image']}")
                     except Exception as e:
                         logging.error(f"Error encoding image: {e}")
-
             stream = await network.get_ai_response(self, bubble, thinking_box, messages)
             if not stream:
                 display.add_system_message(self, "Error: Connection lost or network endpoint failed.")
-                if thinking_box and thinking_box.get_parent() == self.chat_box:
-                    self.chat_box.remove(thinking_box)
-                
-                # Safely remove the empty assistant bubble container
-                parent = bubble.get_parent()
-                if parent:
-                    align = parent.get_parent()
-                    if align and align.get_parent() == self.chat_box:
-                        self.chat_box.remove(align)
                 return
-                
-            try:
-                data_stream = Gio.DataInputStream.new(stream)
-                while True:
-                    line_bytes, length = await data_stream.read_line_async(GLib.PRIORITY_DEFAULT, None)
-                    if line_bytes is None: break
-                    
-                    line = line_bytes.decode('utf-8').strip()
-                    if not line: continue
-                    if line.startswith("data: "):
-                        content = line[6:]
-                        if content == "[DONE]": break
-                        
-                        try:
-                            chunk = json.loads(content)
-                            if 'choices' in chunk and len(chunk['choices']) > 0:
-                                text = chunk['choices'][0].get('delta', {}).get('content')
-                                if text:
-                                    if thinking_box and thinking_box.get_parent() == self.chat_box:
-                                        self.chat_box.remove(thinking_box)
-                                    full_content += text
-                                    markup = utils.markdown_to_pango(full_content)
-                                    GLib.idle_add(bubble.set_markup, markup)
+
+            data_stream = Gio.DataInputStream.new(stream)
+            while True:
+                line_bytes, length = await data_stream.read_line_async(GLib.PRIORITY_DEFAULT, None)
+                if line_bytes is None: break
+                line = line_bytes.decode("utf-8").strip()
+                if not line: continue
+                if line.startswith("data: "):
+                    content = line[6:]
+                    if content == "[DONE]": break
+                    try:
+                        chunk = json.loads(content)
+                        if "choices" in chunk and len(chunk["choices"]) > 0:
+                            text = chunk["choices"][0].get("delta", {}).get("content")
+                            if text:
+                                if thinking_box and thinking_box.get_parent() == self.chat_box:
+                                    self.chat_box.remove(thinking_box)
+                                full_content += text
+                                markup = utils.markdown_to_pango(full_content)
+                                GLib.idle_add(bubble.set_markup, markup)
                             display.scroll_to_bottom(self)
-                        except json.JSONDecodeError as e:
-                            logging.error(f"JSON parsing error: {e}")
+                    except json.JSONDecodeError as e:
+                        logging.error(f"JSON parsing error: {e}")
+            
+            # Post-stream: Re-render bubble to process code blocks
+            parent = bubble.get_parent()
+            if parent:
+                parent.remove(bubble)
+                chunks = utils.parse_message(full_content)
+                for ctype, content, lang in chunks:
+                    if ctype == "code":
+                        parent.append(display.create_code_block(content, lang))
                     else:
-                        logging.warning(f"Unexpected stream line format: {line}")
-            except Exception as e:
-                logging.error(f"Stream reading error: {e}")
-            finally:
-                stream.close(None)
+                        new_bubble = Gtk.Label()
+                        new_bubble.set_wrap(True)
+                        new_bubble.set_selectable(True)
+                        new_bubble.set_xalign(0)
+                        new_bubble.set_use_markup(True)
+                        new_bubble.set_markup(utils.markdown_to_pango(content))
+                        parent.append(new_bubble)
             
             self.history.append({"role": "assistant", "content": full_content})
             self.save_session()
+        
         except asyncio.CancelledError:
             raise
         except Exception as e:
-            logging.error(f"Connection mapping error: {str(e)}")
+            logging.error(f"General response error: {str(e)}")
         finally:
             self.is_sending = False
             GLib.idle_add(self.unlock_ui)
-            
             if thinking_box and thinking_box.get_parent() == self.chat_box:
                 GLib.idle_add(self.chat_box.remove, thinking_box)
 

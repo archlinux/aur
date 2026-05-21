@@ -18,14 +18,14 @@ That's it. No complicated server configurations, no browser overhead—just pure
 ## 🚀 Key Features
 
 ### 💬 Intuitive Chat Interface
-*   **Markdown Rendering:** Bold, code blocks, and lists are formatted beautifully in the chat.
-*   **Vision Support:** Easily attach images to VLMs (Vision Language Models) to analyze content.
+*   **Professional Syntax Highlighting:** Integrated **GtkSourceView** provides IDE-grade coloring for Python, Bash, C++, and more.
+*   **Smart Markdown:** Heuristic-based parsing automatically detects code languages in your snippets.
+*   **Vision Support:** Robust support for VLMs with standardized JPEG normalization for maximum AI compatibility.
 *   **Native Feel:** Perfectly at home on your Linux desktop with Libadwaita aesthetics.
-*   **Distraction-Free:** No tracking, no cloud accounts, and no Electron bloat.
 
 ### 📂 Session Intelligence
+*   **Instant Search:** Blazing fast history search powered by an in-memory session cache.
 *   **Auto-Save:** Your conversations are kept safe automatically.
-*   **Searchable History:** Quickly find past chats using the built-in sidebar search.
 *   **Smart State:** The interface manages everything, so you don't break sessions mid-thought.
 
 ### 🛠 Powerful System Control
@@ -80,4 +80,5 @@ yay -S fastflowlm-gtk
 Contributions are encouraged! If you find a bug or have an idea, feel free to submit a Pull Request or open an issue on the GitHub repository.
 
 *Powered by [FastFlowLM](https://github.com/FastFlowLM/FastFlowLM).*
+
 *Contact: warburtonmarley@proton.me*
