@@ -3,10 +3,9 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Atari 2600 style 2-bit platformer game with procedural maze generation"
 arch=('any')
-url="https://github.com"
 license=('MIT')
 depends=('python' 'python-pygame')
-source=("retro_game.py::https://githubusercontent.com"
+source=("retro_game.py"
         "2-micro-platformer-1982"
         "2-micro-platformer-1982.desktop")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
