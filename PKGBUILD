@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 # Contributor: Michele Balistreri <michele at bitgamma dot com>
 
-# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.5.1
+# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.6.0
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
-pkgver=10.5.1
+pkgver=10.6.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
@@ -19,15 +19,13 @@ _cores=8
 source=(
 "${pkgname}-${pkgver}.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/refs/tags/v${pkgver}.tar.gz"
 "httplib-${_httplibver}.tar.gz::https://github.com/yhirose/cpp-httplib/archive/refs/tags/v${_httplibver}.tar.gz"
-sysusers.conf
 tmpfiles.conf
 )
 
 sha256sums=(  
-'61af76b9568c0002e28da256928885ef860a37a1cf7f6722d8661f6e26f8ccee'
+'552d4585044e482b017a2cd6522731cef42d5984673db2daf43056065643060e'
 '03121ca28d210ac8014021c2f2deda4a181f215b1638c493c40a4c7e6056495f'
-'069d5612d570e83128d7eed7ffe4525943d75d22b9c84537d861833157e74b26'
-'2904a5cbdad2ef810f5f0509ad709303541e403a3a52e3d75f1736ed7fbdf69f'
+'757132b8ebf0847798765b911a4226100e102ac32531cdcf91dbc9436e52a011'
 )
 
 build() {
@@ -56,8 +54,7 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
   
   install -dm0755 "${pkgdir}"/var/lib/lemonade
-  install -dm0755 "${pkgdir}"/etc/lemonade  
-
-  install -vDm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -dm0755 "${pkgdir}"/etc/lemonade
+  sed -i 's/^u/u!/' "${pkgdir}"/usr/lib/sysusers.d/lemonade.conf
   install -vDm644 "${srcdir}/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
