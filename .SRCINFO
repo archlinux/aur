@@ -1,6 +1,6 @@
 pkgbase = field-monitor
 	pkgdesc = Remote-desktop client designed for the GNOME platform. Access virtual machines and other external screens.
-	pkgver = 50.0
+	pkgver = 50.1
 	pkgrel = 1
 	url = https://github.com/theCapypara/field-monitor
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = field-monitor
 	depends = json-c
 	depends = libtirpc
 	depends = gtk-vnc
-	source = git+https://github.com/theCapypara/field-monitor#tag=v50.0
-	sha256sums = 64534f2fee55dcbea43167c7c4d14975fbcbee5376763ae2b824770afe873983
+	source = git+https://github.com/theCapypara/field-monitor#tag=v50.1
+	sha256sums = ab483b0e2aca8365479c24263c66aaa7e1dab2654928e1a57d5e748be99eedd2
 
 pkgname = field-monitor
