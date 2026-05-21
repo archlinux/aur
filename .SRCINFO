@@ -10,7 +10,7 @@ pkgbase = pgadmin4-desktop-bin
 	depends = python-dbus
 	provides = pgadmin4-desktop
 	conflicts = pgadmin4-desktop
-	source = pgadmin4-desktop-9.15-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_9.15-1.plucky_amd64.deb
+	source = pgadmin4-desktop-9.15-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_9.15-1.noble_amd64.deb
 	sha256sums = 96ee69e77c5f18419a0b2e3fa5052b755ad2b31e25b57bad3c7e6522489f394e
 
 pkgname = pgadmin4-desktop-bin

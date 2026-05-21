@@ -11,8 +11,8 @@ url='https://www.pgadmin.org/'
 depends=("pgadmin4-server" 'xdg-utils' 'python-dbus')
 provides=('pgadmin4-desktop')
 conflicts=('pgadmin4-desktop')
-source=("pgadmin4-desktop-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_${pkgver}-1.plucky_amd64.deb")
-#source=("pgadmin4-desktop-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_${pkgver}_amd64.deb")
+source=("pgadmin4-desktop-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_${pkgver}-1.noble_amd64.deb")
+#source=("pgadmin4-desktop-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_${pkgver}_amd64.deb")
 sha256sums=('96ee69e77c5f18419a0b2e3fa5052b755ad2b31e25b57bad3c7e6522489f394e')
 
 
