@@ -12,6 +12,6 @@ pkgbase = vksumi
 	depends = vulkan-icd-loader
 	depends = libx11
 	source = https://github.com/reakjra/vkSumi/archive/v0.0.6.tar.gz
-	sha256sums = b4e9b2ea30fe369525f6b7d34369282f06777ea522d1790db9df03ac80fa9028
+	sha256sums = 1b8ebdfef994313b4110616c0a9cd5a663dd521fe29c1f1fe50c6190cb727cbf
 
 pkgname = vksumi
