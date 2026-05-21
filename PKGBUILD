@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rogue
-_pkgver=2.1.7
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7f27f037ed14a157a027ae395abc2829')
-b2sums=('bf6e026815f3838ff3fd0857cbb5c461c88d3d10a13af809618536dd45f6b11f777fdbbdfc30fc1387b3b6b1abbbf5c532873863549c865e1eb2a2d0b19a4326')
+md5sums=('8b4cf50f0b42d6264b227c8b03e0e747')
+b2sums=('fbd0a10cd34e59c3d3aad80a59deef6ec3e7da4d9dfd33ec0c5ed28ec995d3ffdb48f945bdb162a253561997b7dda2c9692d8af30c9a3f9c2a9cc65322d66626')
 
 build() {
   mkdir build
