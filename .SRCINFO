@@ -18,7 +18,7 @@ pkgbase = bigkis-bin
 	options = !debug
 	source = bigkis-linux-amd64::https://codeberg.org/gurg/bigkis/releases/download/v0.7.0/bigkis-linux-amd64
 	source = upstream-LICENSE::https://codeberg.org/gurg/bigkis/raw/tag/v0.7.0/LICENSE
-	sha256sums = 32aaddcca4c0344f0556211e3375317b5ecda1ec50aaa90a995e1a4861cf2b1c
+	sha256sums = 690f7177af1fcb5d36f3b3633e43ca2b2887cfeb6c72b13b3309a8c7598e1c5e
 	sha256sums = 9be548f8ac17e571d7a82ab7931d4c761d75855cba77f2f58d50018e6faf1f1b
 
 pkgname = bigkis-bin
