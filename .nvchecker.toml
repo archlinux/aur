@@ -1,0 +1,5 @@
+[bigfiles-bin]
+source = "github"
+github = "Par-python/bigfiles"
+use_latest_release = true
+prefix = "v"
