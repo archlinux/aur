@@ -1,29 +1,26 @@
-# Maintainer: zan <zan@420blaze.it>
-# Contributor: Antonio Rojas < nqn1976 @ gmail.com >
-
+# Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=milou-git
-_name=${pkgname%-git}
+_pkgname=milou
 pkgver=v5.18.90.r10.g7efea66
 pkgrel=1
 pkgdesc="A dedicated search application built on top of Baloo"
 arch=(x86_64)
 url='https://invent.kde.org/plasma/milou'
 license=(LGPL)
-provides=(milou)
 conflicts=(milou)
-groups=(plasma)
-depends=(krunner)
-makedepends=('extra-cmake-modules' 'git' 'kdoctools')
-source=("git+https://invent.kde.org/plasma/$_name.git")
+groups=(plasma-git)
+depends=(qt6-base qt6-declarative libplasma-git kconfig-git kcoreaddons-git kirigami-git krunner-git ksvg-git)
+makedepends=(extra-cmake-modules-git git kdoctools-git)
+source=("git+https://invent.kde.org/plasma/milou.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_name
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S $_name
+  cmake -B build -S $_pkgname
   cmake --build build
 }
 

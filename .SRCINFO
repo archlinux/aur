@@ -4,16 +4,21 @@ pkgbase = milou-git
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/milou
 	arch = x86_64
-	groups = plasma
+	groups = plasma-git
 	license = LGPL
-	makedepends = extra-cmake-modules
+	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = kdoctools
-	depends = krunner
-	provides = milou
+	makedepends = kdoctools-git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = libplasma-git
+	depends = kconfig-git
+	depends = kcoreaddons-git
+	depends = kirigami-git
+	depends = krunner-git
+	depends = ksvg-git
 	conflicts = milou
 	source = git+https://invent.kde.org/plasma/milou.git
 	md5sums = SKIP
 
 pkgname = milou-git
-
