@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="uncover"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Quickly discover exposed hosts on the internet using multiple search engines"
 arch=(
@@ -25,7 +25,7 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-b2sums=('f9b7d7258eb65e369e4083b1f764e222203eb2d56cfcb974768044ae03a52c776cb1f378e1274b8599971d569821fc88ca43fd94e0e9a6cedf0d8c832a04cccb')
+b2sums=('dda51f68780edbcf6038bd64f8e93b1ccb3a9603680c21e1ade34b4d45264520675f9688c2f54aaf3d8d3df179a6ed707a7aaa971b7915e6cb75d349c7976c84')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -33,8 +33,6 @@ prepare() {
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
   go mod verify
-
-  mkdir -p "build"
 }
 
 build() {
@@ -57,7 +55,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -vDm755 "build/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -vDm644 "README.md"  -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

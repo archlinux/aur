@@ -1,6 +1,6 @@
 pkgbase = uncover
 	pkgdesc = Quickly discover exposed hosts on the internet using multiple search engines
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/uncover
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = uncover
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = uncover::git+https://github.com/projectdiscovery/uncover.git#tag=v1.2.0
-	b2sums = f9b7d7258eb65e369e4083b1f764e222203eb2d56cfcb974768044ae03a52c776cb1f378e1274b8599971d569821fc88ca43fd94e0e9a6cedf0d8c832a04cccb
+	source = uncover::git+https://github.com/projectdiscovery/uncover.git#tag=v1.2.1
+	b2sums = dda51f68780edbcf6038bd64f8e93b1ccb3a9603680c21e1ade34b4d45264520675f9688c2f54aaf3d8d3df179a6ed707a7aaa971b7915e6cb75d349c7976c84
 
 pkgname = uncover
