@@ -5,7 +5,7 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.2.0.r20.ge875a31
+pkgver=0.2.0.r24.g24dc383
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
@@ -30,9 +30,8 @@ build() {
 		-DCMAKE_BUILD_TYPE=None \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_USE_BUNDLED_FFMPEG=ON \
-		-DYUZU_USE_BUNDLED_SDL2=OFF \
+		-DYUZU_USE_BUNDLED_SDL3=OFF \
 		-DDiscordRPC_FORCE_BUNDLED=ON \
-		-DYUZU_USE_EXTERNAL_SDL2=OFF \
 		-DYUZU_USE_BUNDLED_QT=OFF \
 		-Dxbyak_FORCE_BUNDLED=ON \
 		-DENABLE_QT=ON \
