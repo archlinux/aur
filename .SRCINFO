@@ -1,6 +1,6 @@
 pkgbase = smolvm-git
 	pkgdesc = Tool to build & run portable, lightweight, self-contained virtual machines.
-	pkgver = 0.5.20.r0.g27e4604
+	pkgver = 0.7.1.r11.gfea85d2
 	pkgrel = 1
 	url = https://github.com/smol-machines/smolvm
 	arch = x86_64
@@ -8,15 +8,24 @@ pkgbase = smolvm-git
 	arch = riscv64
 	license = Apache-2.0
 	makedepends = cargo
-	makedepends = libkrun
-	makedepends = libkrunfw
+	makedepends = curl
+	makedepends = tar
+	makedepends = busybox
+	makedepends = alpine-sdk
 	makedepends = git
 	depends = libkrun
 	depends = libkrunfw
+	depends = seatd
+	depends = crun
+	depends = jq
+	depends = e2fsprogs
+	depends = util-linux
+	depends = libcap
 	provides = smolvm
 	conflicts = smolvm
 	conflicts = smolvm-bin
 	options = !lto
+	options = !debug
 	source = smolvm-main::git+https://github.com/smol-machines/smolvm.git#branch=main
 	sha256sums = SKIP
 
