@@ -1,16 +1,16 @@
 # Maintainer: Izu <ccatdev@proton.me>
 
 pkgname=concord
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="A feature-rich TUI client for Discord, written in Rust"
 arch=(x86_64)
 url="https://github.com/chojs23/concord"
 license=(GPL-3.0-only)
-depends=(libgcc alsa-lib opus)
+depends=(glibc libgcc alsa-lib opus)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c1a6f21f7ff8a640b198e606baa9255177338acf7e6246fb7cebb4b8a5a8c283')
+sha256sums=('42afa753368ce95cc823a3281c3375592f3bddeffcaca2eecd0b9ac9c91ffdd8')
 options=('!lto')
 
 prepare() {
