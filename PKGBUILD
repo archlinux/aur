@@ -13,7 +13,8 @@ arch=('x86_64')
 url="https://buildhut.fly.dev/apps/Polify"
 license=('MIT')
 depends=('gtk3' 'libepoxy' 'xz' 'mpv' 'ffmpeg' 'sqlite' 'libsecret'
-         'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav')
+         'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav'
+         'libayatana-appindicator' 'flac' 'opus' 'libogg' 'libvorbis')
 makedepends=('patchelf')
 provides=('polify')
 conflicts=('polify' 'polify-git')
@@ -37,6 +38,18 @@ package() {
   install -d "$pkgdir/usr/lib/polify"
   cp -a bundle/* "$pkgdir/usr/lib/polify/"
   chmod -R 755 "$pkgdir/usr/lib/polify"
+
+  # Replace link-time canonical appindicator with ayatana.
+  # The CI may link against libappindicator3 but the runtime code
+  # dlopens libayatana-appindicator3 first — mixing both causes segfaults.
+  patchelf --replace-needed libappindicator3.so.1 libayatana-appindicator3.so.1 \
+    "$pkgdir/usr/lib/polify/lib/libsystem_tray_plugin.so" 2>/dev/null || true
+
+  # Replace Debian-style vorbis sonames with Arch sonames
+  patchelf --replace-needed libvorbis.so.0.4.9 libvorbis.so.0 \
+    "$pkgdir/usr/lib/polify/lib/libflutter_soloud_plugin.so" 2>/dev/null || true
+  patchelf --replace-needed libvorbisfile.so.3.3.8 libvorbisfile.so.3 \
+    "$pkgdir/usr/lib/polify/lib/libflutter_soloud_plugin.so" 2>/dev/null || true
 
   # Fix RUNPATH: remove build directory references so the linker finds
   # co-located libraries in $ORIGIN (the lib/ directory)
