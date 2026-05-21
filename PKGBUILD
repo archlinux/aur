@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=insight
-_pkgver=1.5.0
+_pkgver=1.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,6 +28,7 @@ optdepends=(
   r-blme
   r-brms
   r-broom
+  r-bsda
   r-car
   r-cardata
   r-censreg
@@ -141,8 +142,8 @@ optdepends=(
   r-workflows
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('51ab0a4a428fdca829787279e2564b21')
-b2sums=('f72fae74735d27da1c6adbfca0035c9fb65c567fef79d1dc49c81b8506342336468ade63f653b13c944f002ea1588d27f8e83e3d9fa626cdde1a4c9a24232a40')
+md5sums=('e07b3d3ce79a19dcd5804c162b9e0b95')
+b2sums=('2988bb73b9a66ef3e4e4b516a3d6e2a3d9c66c838c8e0cc1d4dbd313cbda46d2de35cbd70f07968a1a51d4f299073a7bf10f12cf64d51989022d0d21d009d5ac')
 
 build() {
   mkdir build
