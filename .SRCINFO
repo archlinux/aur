@@ -1,0 +1,16 @@
+pkgbase = elfeed2
+	pkgdesc = standalone feed reader and successor to elfeed
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/skeeto/elfeed2
+	arch = x86_64
+	license = Unlicense
+	makedepends = cpp-httplib
+	makedepends = pugixml
+	makedepends = sqlite3
+	makedepends = wxwidgets-gtk3
+	depends = glibc
+	source = https://github.com/skeeto/elfeed2/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 9c8c2052be7643dd6f4e1da579ccfb76aa5ff342043112a9ef349f5460fb9e3c
+
+pkgname = elfeed2
