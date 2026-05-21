@@ -5,7 +5,7 @@
 _naclsdkver=11 # If not correct, cmake will make a download.
 pkgname=unvanquished
 pkgver=0.56.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game that pits aliens against humans'
 arch=(x86_64 aarch64)
 url='https://www.unvanquished.net'
@@ -27,7 +27,9 @@ install=unvanquished.install
 _archive="archive/refs/tags/unvanquished/${pkgver}.tar.gz"
 _suffix="unvanquished-${pkgver}"
 _unvanquished="Unvanquished-${_suffix}"
-_daemon="Daemon-${_suffix}"
+#_daemon="Daemon-${_suffix}" # TODO: Restore.
+_daemon_ver="379d88a0687995b6cb6074368fcc68c163e5242d"
+_daemon="Daemon-${_daemon_ver}"
 _breakpad="breakpad-${_suffix}"
 _crunch="crunch-${_suffix}"
 _recast="recastnavigation-${_suffix}"
@@ -40,7 +42,8 @@ source=("unvanquished.install"
         "unvanquished.desktop"
         "unvanquished.service"
         "unvanquished_${pkgver}.tar.gz::https://github.com/Unvanquished/Unvanquished/${_archive}"
-        "daemon_${pkgver}.tar.gz::https://github.com/DaemonEngine/Daemon/${_archive}"
+        #"daemon_${pkgver}.tar.gz::https://github.com/DaemonEngine/Daemon/${_archive}" # TODO: Restore.
+        "daemon_${pkgver}-nettlefix.tar.gz::https://github.com/DaemonEngine/Daemon/archive/${_daemon_ver}.tar.gz"
         "breakpad_${pkgver}.tar.gz::https://github.com/DaemonEngine/breakpad/${_archive}"
         "crunch_${pkgver}.tar.gz::https://github.com/DaemonEngine/crunch/${_archive}"
         "recastnavigation_${pkgver}.tar.gz::https://github.com/DaemonEngine/recastnavigation/${_archive}"
@@ -53,7 +56,7 @@ sha256sums=('b6eb6d2f0a45512cb4b67245fc1454c6d8a2d4ea83ce203c06dcacc51ec411fd'
             '0b0bc478ad6e61dd17fdeb3265a6321d0ca2719eca7bbb432a4b4a497c58a7b0'
             '44df664e8737fd543818cebc1e506a33e724fc3fb73eee46813ec3648eff64a0'
             'd727baa67b19c69c65c155050bd9222c1fec7912c8c90f636036942ae4e6273e'
-            '6f03358ca6fd523ee7accf9510e80445e0ed88b8845b9b34c3555bd889dbb9ed'
+            'e68b64330c02180e1e363985705248bd3b93e6d05b11b5d632c399dca8bf8f3a'
             'b6e25aed236ec681856d875aa5057a15ce2b86737bd08e89d6af3864745ca2a9'
             '1863f38c82c172ed2902e6b8201d7df86b298bcc9c415589bbf9b1e306b4851c'
             '3bb68dcb6537081da4d972d5289fb217a023796c27e4a20807c16f152337c0b7'
