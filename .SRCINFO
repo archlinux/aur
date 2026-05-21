@@ -1,13 +1,14 @@
 pkgbase = oplire
-	pkgdesc = Reset OpenCode rate limit by managing Cloudflare WARP tunnel
-	pkgver = 0.1.0
+	pkgdesc = OpenCode Limit Reset + Anthropic Proxy Bridge - Reverse proxy for Claude Code with auto WARP rate limit reset
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/BerkeOruc/oplire
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = glibc
-	source = oplire-0.1.0.tar.gz::https://github.com/BerkeOruc/oplire/archive/v0.1.0.tar.gz
+	depends = cloudflare-warp
+	source = oplire-2.1.0.tar.gz::https://github.com/BerkeOruc/oplire/archive/v2.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = oplire
