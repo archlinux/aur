@@ -1,4 +1,4 @@
-# Maintainer: Darko <darko@users.noreply.github.com>
+# Maintainer: Darko <info at icod dot de>
 
 pkgname=antigravity2-bin
 _pkgname=antigravity2
