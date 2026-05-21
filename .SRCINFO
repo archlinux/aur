@@ -1,7 +1,7 @@
 pkgbase = bash-agent
 	pkgdesc = A lightweight coding agent that runs in your terminal - Bash/Go/Rust editions
-	pkgver = 3.0.3
-	pkgrel = 3
+	pkgver = 3.0.4
+	pkgrel = 1
 	url = https://github.com/lloydzhou/bash-agent
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = bash-agent
 	depends = curl
 	depends = gawk
 	options = !strip
-	source = bash-agent-3.0.3.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v3.0.3.tar.gz
-	sha256sums = SKIP
+	source = bash-agent-3.0.4.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v3.0.4.tar.gz
+	sha256sums = 18d40cfb6379108e72133b48c35cdef221d9ee699b2a0ded67372d79a9b3c1d5
 
 pkgname = bash-agent

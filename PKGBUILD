@@ -2,8 +2,8 @@
 # Contributor: Lloyd <lloydzhou@qq.com>
 
 pkgname=bash-agent
-pkgver=3.0.3
-pkgrel=2
+pkgver=3.0.4
+pkgrel=1
 pkgdesc="A lightweight coding agent that runs in your terminal - Bash/Go/Rust editions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lloydzhou/bash-agent"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('bash' 'curl' 'gawk')
 makedepends=('go' 'rust' 'make' 'nasm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('18d40cfb6379108e72133b48c35cdef221d9ee699b2a0ded67372d79a9b3c1d5')
 options=('!strip')
 
 prepare() {
