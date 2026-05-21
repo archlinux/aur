@@ -11,7 +11,7 @@ license=('MIT')
 depends=('bash' 'curl' 'gawk')
 makedepends=('go' 'rust' 'make' 'nasm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('18d40cfb6379108e72133b48c35cdef221d9ee699b2a0ded67372d79a9b3c1d5')
+sha256sums=('30a5c25ba6b50ef24c126249241c92ad15e2c2a46966fcb7385b6d551a686721')
 options=('!strip')
 
 prepare() {
