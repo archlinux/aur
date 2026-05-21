@@ -1,44 +1,45 @@
 # FastFlowLM-gtk
 
-**FastFlowLM-gtk** is a lightweight, high-performance, and native interface for the [FastFlowLM](https://github.com/FastFlowLM/FastFlowLM) local LLM engine. Designed specifically for Linux power users, it leverages **GTK 4** and **Libadwaita** to deliver a fluid, distraction-free chat experience that avoids the massive resource overhead of browser-based or Electron applications.
+**FastFlowLM-gtk** is a lightweight, high-performance, and native interface for the [FastFlowLM](https://github.com/FastFlowLM/FastFlowLM) local LLM engine. Designed specifically for Linux power users, it leverages **GTK 4** and **Libadwaita** to deliver a fluid, distraction-free chat experience.
 
 ---
 
-## 🚀 Detailed Feature Set
+## 💡 The Philosophy: "Download and Chat"
+We believe interacting with local AI should be effortless. FastFlowLM-gtk is designed to remove the friction of complex setups:
+1. **Launch:** Open the app.
+2. **Select:** Pick a model from the built-in registry.
+3. **Download:** One click downloads and prepares the model for you.
+4. **Chat:** Start typing instantly. 
 
-### 💬 Intelligent Chatting
-*   **Persistent & Synchronized:** Seamless message serialization keeps sessions consistent, even during intensive inference.
-*   **Markdown Support:** Rich rendering of bold, code blocks, and lists directly in the conversation.
-*   **Visual Attachments:** Drag-and-drop or file-selector support for vision-capable models (VLMs).
-*   **Smart Focus:** Automatic cursor snapping to the input bar when the AI finishes responding, allowing for immediate follow-up.
-*   **Real-time Streaming:** Native token-by-token streaming, optimized for latency with modern NPU-accelerated hardware.
-
-### 📂 Session & History Management
-*   **Auto-Persistence:** Every message is saved locally to `~/.config/flm/history`.
-*   **Searchable Sidebar:** A responsive sidebar enables you to find specific information within your past conversations instantly.
-*   **Easy Cleanup:** Tools to delete single sessions or clear the entire history database with a few clicks.
-
-### 🛠 System Integration & Control
-*   **Model Lifecycle:** Manage your model downloads directly within the app.
-*   **System Awareness:** Real-time RAM monitoring and resource locking to prevent out-of-memory (OOM) crashes during local execution.
-*   **Accent Theming:** Dynamic CSS injection allows the interface to respect your system's accent color preferences.
-*   **Model Repair:** Built-in "Repair" functionality (refresh icon) to force-reinstall corrupted models without leaving the application.
+That's it. No complicated server configurations, no browser overhead—just pure, local AI power.
 
 ---
 
-## 🏗 Architectural Overview
+## 🚀 Key Features
 
-The application is engineered as a clean, modular controller-service system:
+### 💬 Intuitive Chat Interface
+*   **Markdown Rendering:** Bold, code blocks, and lists are formatted beautifully in the chat.
+*   **Vision Support:** Easily attach images to VLMs (Vision Language Models) to analyze content.
+*   **Native Feel:** Perfectly at home on your Linux desktop with Libadwaita aesthetics.
+*   **Distraction-Free:** No tracking, no cloud accounts, and no Electron bloat.
 
-| Module | Purpose |
-| :--- | :--- |
-| **`main.py`** | **Orchestrator:** Manages application state, lifecycle, and component initialization. |
-| **`ui.py`** | **Layouts:** Defines the structure of the chat interface and sidebar widgets. |
-| **`display.py`** | **Render Logic:** Manages chat bubble creation, system messages, and visual feedback. |
-| **`handlers.py`** | **Interaction Logic:** Centralized event handling for keys, clicks, and state transitions. |
-| **`models.py`** | **System Infrastructure:** Server process management, model downloading, and file system integrity. |
-| **`network.py`** | **Communication:** Handles asynchronous API interactions with the `flm` server. |
-| **`sessions.py`** | **Persistence:** Responsible for reading/writing session data and history metadata. |
+### 📂 Session Intelligence
+*   **Auto-Save:** Your conversations are kept safe automatically.
+*   **Searchable History:** Quickly find past chats using the built-in sidebar search.
+*   **Smart State:** The interface manages everything, so you don't break sessions mid-thought.
+
+### 🛠 Powerful System Control
+*   **Resource Monitoring:** Real-time RAM awareness prevents system freezes.
+*   **Model Management:** Download, update, or repair model files directly from within the application.
+*   **Dynamic Theming:** Automatically adapts to your system's accent color preferences.
+
+---
+
+## 🏗 Architectural Philosophy
+The app follows a clean modular design, keeping the interface snappy and the backend robust:
+*   **Orchestration (`main.py`):** The clean "brain" that keeps everything synchronized.
+*   **Events (`handlers.py`):** All clicks, keyboard inputs, and state changes are centralized for predictability.
+*   **System (`models.py` & `network.py`):** Handles model downloads, server lifecycle, and communication with the inference engine.
 
 ---
 
@@ -57,8 +58,7 @@ yay -S fastflowlm-gtk
    cd FastFlowLM-gtk
    ```
 2. **System Dependencies:**
-   Ensure your system has the following installed:
-   - `python`, `python-gobject`, `gtk4`, `libadwaita`, `libsoup3`, `gtksourceview5`, `python-psutil`, `fastflowlm`.
+   Ensure you have the required dependencies: `python`, `python-gobject`, `gtk4`, `libadwaita`, `libsoup3`, `gtksourceview5`, `python-psutil`, `fastflowlm`, and `webp-pixbuf-loader`.
 3. **Installation:**
    Run the installation script to set up files, icons, and desktop entries:
    ```bash
@@ -69,8 +69,9 @@ yay -S fastflowlm-gtk
 
 ## 🔧 Troubleshooting
 
-*   **Models Failing to Load:** If a model fails to initialize, click the **Repair** (refresh) icon in the top header bar to re-download the model files.
-*   **UI Sensitivity:** If the input bar is disabled, ensure a model is selected. If a backend server crash occurs, the UI will attempt to remain active; check the logs at `~/.config/flm/server.log`.
+*   **Models Failing to Load:** Use the **Repair** (refresh) icon in the top header bar to force-reinstall a model if it seems corrupted.
+*   **Black Images:** Ensure the `webp-pixbuf-loader` package is installed on your system to correctly render WebP icons/images.
+*   **UI Sensitivity:** If buttons are disabled, check the system RAM status in the logs or wait for an active model download to finish.
 *   **Performance:** For optimal performance, ensure you have sufficient RAM available as indicated by the app's internal checks.
 
 ---
