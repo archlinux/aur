@@ -1,6 +1,6 @@
 pkgbase = session-desktop-bin
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.17.16
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://getsession.org
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = session-desktop-bin
 	provides = session-desktop
 	conflicts = session-desktop
 	options = !strip
-	source = https://github.com/session-foundation/session-desktop/releases/download/v1.17.16/session-desktop-linux-amd64-1.17.16.deb
-	sha256sums = 44447285661661d92411f0831de9f7330acf6412873a2120dd42816b930a4eea
+	source = https://github.com/session-foundation/session-desktop/releases/download/v1.18.0/session-desktop-linux-amd64-1.18.0.deb
+	sha256sums = 1db21c24ce708e016715625be4f2d27c5611e66371414c5cb2a54416beda610e
 
 pkgname = session-desktop-bin

@@ -5,7 +5,7 @@
 # Contributor: Ewhal <ewhal@pantsu.cat>
 
 pkgname=session-desktop-bin
-pkgver=1.17.16
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
@@ -17,11 +17,11 @@ provides=(session-desktop)
 conflicts=(session-desktop)
 options=(!strip)
 source=(https://github.com/session-foundation/session-desktop/releases/download/v$pkgver/session-desktop-linux-amd64-$pkgver.deb)
-sha256sums=('44447285661661d92411f0831de9f7330acf6412873a2120dd42816b930a4eea')
+sha256sums=('1db21c24ce708e016715625be4f2d27c5611e66371414c5cb2a54416beda610e')
 
 package() {
-    tar xf $srcdir/data.tar.xz -C $pkgdir
-    chmod 4755 $pkgdir/opt/Session/chrome-sandbox
-    install -Ddm0755 $pkgdir/usr/bin
-    ln -s /opt/Session/session-desktop $pkgdir/usr/bin/session-messenger-desktop
+    tar --no-same-owner -xf "$srcdir/data.tar.xz" -C "$pkgdir"
+    chmod 4755 "$pkgdir/opt/Session/chrome-sandbox"
+    install -Ddm0755 "$pkgdir/usr/bin"
+    ln -s /opt/Session/session-desktop "$pkgdir/usr/bin/session-messenger-desktop"
 }
