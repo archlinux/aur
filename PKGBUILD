@@ -4,7 +4,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-finance-quote'
-pkgver='1.68'
+pkgver='1.69'
 pkgrel='1'
 pkgdesc="Get stock and mutual fund quotes from various exchanges"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('perl-date-manip>=0' 'perl-date-range>=0' 'perl-date-simple>=0' 'perl-d
 checkdepends=('perl-test-kwalitee>=0' 'perl-test-perl-critic>=0' 'perl-test-pod>=0' 'perl-test-pod-coverage>=1.00' 'perl-clone-choose>=0')
 url='https://metacpan.org/release/Finance-Quote'
 source=("http://search.cpan.org/CPAN/authors/id/B/BP/BPSCHUCK/Finance-Quote-${pkgver}.tar.gz")
-sha512sums=('ee49ea9b6d3873eb78b6a928dd18c49f7d2c62d8646a8eb91d90455b4c345677b1dc3baa42d13ce4a7e692c3a426eb3fb51f73809e857a5dce41b2b34e1c47e2')
+sha512sums=('bdf459f353bcce94634cfae67d887660b2bf2c61cd8818aeaad19d87796c6d6b470468c735d324949a3be8f91bd0830c1fc74db8d04a8fbbba4e8ad22fa7f205')
 _distdir="Finance-Quote-${pkgver}"
 
 build() {
