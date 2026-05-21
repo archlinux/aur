@@ -1,6 +1,6 @@
 pkgbase = sapling-scm-bin
-	pkgdesc = Sapling SCM is a cross-platform, highly scalable, Git-compatible source control system.
-	pkgver = 0.2.20230523.092610+f12b7eee
+	pkgdesc = A user friendly, scalable and Git compatible source control system.
+	pkgver = 0.2.20260519.201124+961b43fa
 	pkgrel = 1
 	epoch = 1
 	url = https://sapling-scm.com/
@@ -8,13 +8,13 @@ pkgbase = sapling-scm-bin
 	license = GPL2
 	depends = curl
 	depends = nodejs
-	depends = python310
-	depends = github-cli
+	optdepends = git: for using Sapling in Git mode
+	optdepends = github-cli: for GitHub interactions
 	optdepends = watchman: for faster file watching
 	provides = sapling-scm
 	conflicts = sapling-scm
 	options = !strip
-	source = https://github.com/facebook/sapling/releases/download/0.2.20230523-092610+f12b7eee/sapling_0.2.20230523-092610+f12b7eee_amd64.Ubuntu22.04.deb
-	sha256sums = 916ad6c7088a7cb47a3d511ea669140d6305d882ddefd95320c0e38e5c1cbeb0
+	source = https://github.com/facebook/sapling/releases/download/0.2.20260519-201124+961b43fa/sapling-0.2.20260519-201124+961b43fa-linux-x64.tar.xz
+	sha256sums = 3c7ac19203a7334a9547d8f8cec193dc2c2c998df7702d4ddfde1d00ab741cf0
 
 pkgname = sapling-scm-bin
