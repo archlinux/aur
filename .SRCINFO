@@ -1,8 +1,8 @@
 pkgbase = nmrs
 	pkgdesc = Wayland-native GUI for NetworkManager, built with Rust and GTK4
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
-	url = https://github.com/cachebag/nmrs
+	url = https://github.com/networkmanager-rs/nmrs-gui
 	arch = x86_64
 	license = MIT
 	makedepends = rust
@@ -10,9 +10,9 @@ pkgbase = nmrs
 	depends = gtk4
 	depends = libadwaita
 	depends = networkmanager
-	source = nmrs-1.5.1.tar.gz::https://github.com/cachebag/nmrs/archive/refs/tags/gui-v1.5.1.tar.gz
+	source = nmrs-1.6.0.tar.gz::https://github.com/networkmanager-rs/nmrs-gui/archive/refs/tags/nmrs-gui-v1.6.0.tar.gz
 	source = nmrs.desktop
-	sha256sums = 732f78c979d4a8df5a95202496e346888d6951f77a274788e01f8c4c5199a094
+	sha256sums = 474cc1cd3ee9513fa9f02c6268217aea6331462326891b318e74040f0161e830
 	sha256sums = 2279f157e299d52fabad1dfd9abd9e862b48dbba83921680f5134a537db061ef
 
 pkgname = nmrs
