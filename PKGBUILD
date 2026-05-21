@@ -1,23 +1,22 @@
-
+# Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=kcolorscheme-git
+_pkgname=kcolorscheme
 pkgver=5.240.0_r121.g1fba09a
 pkgrel=1
 pkgdesc='Classes to read and interact with KColorScheme'
-arch=($CARCH)
+arch=(any)
 url='https://invent.kde.org/frameworks/kcolorscheme'
 license=(LGPL)
-depends=(kconfig-git kguiaddons-git ki18n-git)
-makedepends=(git extra-cmake-modules-git)
-conflicts=(${pkgname%-git})
-provides=(${pkgname%-git})
+depends=(qt6-base kconfig-git kguiaddons-git ki18n-git)
+makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+conflicts=($_pkgname)
 groups=(kf6-git)
 source=("git+https://invent.kde.org/frameworks/kcolorscheme.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
-  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
