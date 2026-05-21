@@ -11,6 +11,13 @@ depends=("java-runtime-headless>=17" "bash")
 source=("maestro-${pkgver}.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-${pkgver}/maestro.zip")
 sha256sums=("80185105a5d7e227e3b3fbcf225f45b312508ea676a9fc8e1b1aa1cac8b9ff6e")
 
+prepare() {
+    for f in "${srcdir}"/maestro/lib/maestro-cli-*.jar; do
+        [[ ! -e "$f" || "$f" == "${srcdir}"/maestro/lib/maestro-cli-"${pkgver}.jar" ]] && continue
+        rm -f "$f"
+    done
+}
+
 package() {
     # Create necessary directories
     install -dm755 "${pkgdir}/opt/maestro-dev"
