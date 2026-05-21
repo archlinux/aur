@@ -1,6 +1,6 @@
 pkgbase = hulak-bin
 	pkgdesc = Lightweight file-based API client for terminal nerds
-	pkgver = 0.3.03
+	pkgver = 0.3.04
 	pkgrel = 1
 	url = https://github.com/xaaha/hulak
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = hulak-bin
 	license = MIT
 	provides = hulak
 	conflicts = hulak
-	source = README-0.3.03.md::https://raw.githubusercontent.com/xaaha/hulak/v0.3.03/README.md
-	source = LICENSE-0.3.03::https://raw.githubusercontent.com/xaaha/hulak/v0.3.03/LICENSE
+	source = README-0.3.04.md::https://raw.githubusercontent.com/xaaha/hulak/v0.3.04/README.md
+	source = LICENSE-0.3.04::https://raw.githubusercontent.com/xaaha/hulak/v0.3.04/LICENSE
 	sha256sums = 9af8140936ceca2c98776afd6bc74c7734dc94f6c7123abbc01a6940aa50c11e
 	sha256sums = ca4a47155ba71183302af8af5c2ec019a322c63dbdbcf104eb46c150f3d3d7ec
-	source_x86_64 = hulak-x86_64-0.3.03.tgz::https://github.com/xaaha/hulak/releases/download/v0.3.03/hulak_0.3.03_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = f8208f8f1c815bc7e0f6c0b25bb262f37235a7e89d5190b813e3a10fd2262a0d
-	source_aarch64 = hulak-aarch64-0.3.03.tgz::https://github.com/xaaha/hulak/releases/download/v0.3.03/hulak_0.3.03_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 15a140583afba248cd4c95998fa8864ecb7814ff33f6b546f540f9fa36eaa69c
+	source_x86_64 = hulak-x86_64-0.3.04.tgz::https://github.com/xaaha/hulak/releases/download/v0.3.04/hulak_0.3.04_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4b62dd8a59d3e35bb06b645a935f0d8d16b884492dbd1807325d55f6921635e3
+	source_aarch64 = hulak-aarch64-0.3.04.tgz::https://github.com/xaaha/hulak/releases/download/v0.3.04/hulak_0.3.04_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 1884ba6600406168ad664053dd84a8cd1ad1337141e39312388de665aa344a61
 
 pkgname = hulak-bin
