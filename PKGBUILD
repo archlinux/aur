@@ -1,7 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=eigenwallet-developertools-bin
-_pkgver="4.6.1"
+_pkgver="4.6.4"
 pkgver=${_pkgver/-beta./.}
 pkgrel=1
 epoch=
@@ -26,11 +26,11 @@ source=(
 	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/orchestrator_${_pkgver}_Linux_x86_64.tar"
 	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/rendezvous-node_${_pkgver}_Linux_x86_64.tar"
 )
-sha256sums=('8c74683585f400faaaa89787d8ad328af748df83417c8ac1a7ae8dd493c59b8b'
-            '2ef951d5cf1eb12db6263ebc12a59e109c2cee099ad049c212072d88e7074b1f'
-            '2d6324c22729c94658512c4bbbed4497149b8e521c471695fa19ab6d8f38d0bc'
-            'f0078990c1a96e68dc8e0b4711d283a57c2fc3c9b8b84b78d87e5e8ad1e2620d'
-            'ab3365ad9bd68a4da36714c303964a35868109231c352aff8934c8d10a96688f')
+sha256sums=('0208a98ad460036033a4da8f713e50810631b198d4493cc1f8f1a858fefdc266'
+            'e0d3a85b596479349a48f2f74fec364bf3f4651d3be92ce77cff71ee4be76380'
+            'eac6de60dcd888c46e3e64d38cbde7d75d51ae39d922ba2141e80a330242f5b2'
+            '421331892bda4eceeaaf0f6c48639887c81409dc45f58121219843cedf77b429'
+            'fcec1c4d2a931ea09164c68dc0b36feea873ce9a9ef4f7a3945fe2107573671b')
 validpgpkeys=()
 install="$pkgname.install"
 
