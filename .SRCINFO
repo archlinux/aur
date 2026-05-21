@@ -1,6 +1,6 @@
 pkgbase = archstore-git
 	pkgdesc = Classic Arch Linux package manager client combining pacman and AUR
-	pkgver = 1.0.0.r0.g0000000
+	pkgver = v0.2.r0.g6e020a9
 	pkgrel = 1
 	url = https://github.com/0x5t4l1n/AURHub
 	arch = x86_64

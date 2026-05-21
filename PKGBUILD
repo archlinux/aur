@@ -2,7 +2,7 @@
 
 pkgname=archstore-git
 _pkgname=AURHub
-pkgver=1.0.0.r7.ca081b4
+pkgver=v0.2.r0.g6e020a9
 pkgrel=1
 pkgdesc="Classic Arch Linux package manager client combining pacman and AUR"
 arch=('x86_64')
