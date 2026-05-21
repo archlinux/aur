@@ -1,7 +1,7 @@
 # Maintainer: Yarok
 # contributor: dmitrysvd
 pkgname=yandex-music-beta
-pkgver=5.102.0
+pkgver=5.103.2
 pkgrel=1
 pkgdesc="Official Yandex Music App for Linux (beta release)"
 arch=('x86_64')
@@ -38,3 +38,4 @@ package() {
     # Fix GTK version error for Gnome users
     sed -i 's|Exec="/opt/yandex-music/yandexmusic"|Exec="/opt/yandex-music/yandexmusic" --gtk-version=3|' "${pkgdir}/usr/share/applications/yandexmusic.desktop"
 }
+sha256sums=('48a7c9c09aa5be8c6346ccdda73991ff0d97a354bedb89a46a4140543e6dbd7b')
