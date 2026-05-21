@@ -2,13 +2,13 @@
 # Maintainer: czjstmax <jstmaxlol@disroot.org>, <maxwasmailed@proton.me>
 pkgname=getg
 pkgver=11_20.001
-pkgrel=2
+pkgrel=3
 pkgdesc="g - the *permissive* git wrapper."
 arch=('any')
-url="https://kuronavipad.xantu-ling.ts.net/cgit/g.git"
+url="https://git.czkove.cc/g"
 license=('MIT')
 makedepends=('git' 'gcc')
-source=("git+https://kuronavipad.xantu-ling.ts.net/cgit/g.git")
+source=("git+https://git.czkove.cc/g")
 md5sums=('SKIP')
 
 build() {
@@ -19,4 +19,5 @@ build() {
 package() {
 	install -Dm755 "$srcdir/g/g" "$pkgdir/usr/bin/g"
 }
+
 
