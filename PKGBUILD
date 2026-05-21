@@ -2,7 +2,7 @@
 # Maintainer: budRich of budlabs
 
 pkgname=vivaldi-autoinject-custom-js-ui
-pkgver=2026.05.15
+pkgver=2026.05.21
 pkgrel=1
 pkgdesc='manage custom js UI mods for the vivaldi web browser'
 arch=('any')
@@ -15,7 +15,7 @@ source=(
     "$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz"
     vivaldi-js-ui.hook
 )
-sha256sums=('2189fea24175d2265bd317eea2166a43b5949a214b73eb1332df3a5ba49f6a17'
+sha256sums=('a22e87cc9a7c554a0921e9835b4094a25cf85f5e4a4774b447bc6079b365f76a'
             '3564099604ef8f38d7fe9ec7672b9c3175e6ed11e06e39b5f53f9201ad93127f')
 
 package() {
