@@ -2,7 +2,7 @@ pkgbase = crain-git
 	pkgdesc = the worst storm this side of the silicon (terminal-based rain)
 	pkgver = r21.eb8edab
 	pkgrel = 1
-	url = https://github.com/mazylol/crain
+	url = https://codeberg.org/mazylol/crain
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = crain-git
 	provides = crain
 	conflicts = crain
 	options = !strip
-	source = crain::git+https://github.com/mazylol/crain.git
+	source = crain::git+https://codeberg.org/mazylol/crain.git
 	sha256sums = SKIP
 
 pkgname = crain-git

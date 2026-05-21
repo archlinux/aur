@@ -1,11 +1,11 @@
-# Maintainer: Landon Porter <landonp95@gmail.com>
+# Maintainer: Landon Porter <dev@mazylol.com>
 
 _pkgname=crain
 pkgname="${_pkgname}-git"
 pkgver=r21.eb8edab
 pkgrel=1
 pkgdesc="the worst storm this side of the silicon (terminal-based rain)"
-url="https://github.com/mazylol/crain"
+url="https://codeberg.org/mazylol/crain"
 arch=('x86_64')
 license=('GPL-3.0-only')
 depends=('ncurses')
