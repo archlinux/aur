@@ -1,0 +1,5 @@
+[scout-bin]
+source = "github"
+github = "mirageglobe/scout"
+use_latest_release = true
+prefix = "v"
