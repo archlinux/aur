@@ -21,7 +21,7 @@ makedepends=('linux-headers' 'git')
 optdepends=('linux-headers: required by DKMS on kernel update')
 
 provides=('xmm7360-dkms')
-conflicts=('xmm7360' 'xmm7360-dkms' 'xmm7360-git' 'xmm7360-pci-dkms' 'xmm7360-pci-spat-dkms-git')
+conflicts=('xmm7360' 'xmm7360-dkms' 'xmm7360-git' 'xmm7360-pci-dkms')
 install="${pkgname%-git}.install"
 
 source=("xmm7360-pci::git+${url}.git")
@@ -34,16 +34,16 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/xmm7360-pci/tool"
-    make -f ./Makefile clean 2>/dev/null || true
+    make clean 2>/dev/null || true
 }
 
 build() {
     cd "$srcdir/xmm7360-pci/tool"
-    make -f ./Makefile
+    make
 }
 
 package() {
-    local _src="$srcdir/xmm7360-pci/kernel"
+    local _src="$srcdir/xmm7360-pci"
     local _module="xmm7360"
     local _dkms_src="/usr/src/${_module}-${pkgver}"
 
