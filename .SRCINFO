@@ -1,7 +1,7 @@
 pkgbase = python-textual-fspicker
 	pkgdesc = A simple Textual filesystem picker dialog library
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davep/textual-fspicker
 	arch = any
 	license = MIT
@@ -12,7 +12,9 @@ pkgbase = python-textual-fspicker
 	makedepends = python-installer
 	depends = python
 	depends = python-textual
-	source = python-textual-fspicker-1.0.1.tar.gz::https://github.com/davep/textual-fspicker/archive/v1.0.1.tar.gz
-	sha256sums = c9818863c1db42359283f7aa094f6588a48e8a0215d78f89aeb727ac3adc920d
+	source = https://files.pythonhosted.org/packages/source/t/textual_fspicker/textual_fspicker-1.0.1.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/davep/textual-fspicker/v1.0.1/LICENSE
+	sha256sums = 58f7fa983ded7a5ed69b7279f66de57a0ef6fad0e3acb622f217682e85986c9c
+	sha256sums = 9a3f784f2f73961691644b9f24eee2a82f761d9a0220e66786feadde9a38c124
 
 pkgname = python-textual-fspicker
