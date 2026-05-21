@@ -2,7 +2,7 @@
 
 pkgname=spamassassin-milter
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Milter for spam filtering with SpamAssassin (Rust)"
 arch=('x86_64')
 url="https://codeberg.org/glts/spamassassin-milter"
@@ -17,7 +17,7 @@ sha512sums=('645e2d4479a19bb6b8b4927b10d35e3064eff5f5d74e07b6ebf751a74be6bf44e9b
 build() {
   cd "$pkgname"
 
-  cargo build --release --locked
+  SPAMASSASSIN_MILTER_SPAMC=/usr/bin/vendor_perl/spamc cargo build --release --locked
 }
 
 check() {
