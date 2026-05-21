@@ -5,14 +5,14 @@
 _naclsdkver=11 # If not correct, cmake will make a download.
 pkgname=unvanquished
 pkgver=0.56.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game that pits aliens against humans'
 arch=(x86_64 aarch64)
 url='https://www.unvanquished.net'
 license=(GPL-3.0-or-later)
 makedepends=(cmake)
 depends=("unvanquished-data>=${pkgver}"
-         'zlib' 'gmp' 'nettle' 'geoip' 'curl' 'sdl2' 'glew' 'libpng'
+         'zlib' 'gmp' 'nettle' 'geoip' 'curl' 'sdl3' 'glew' 'libpng'
          'libjpeg-turbo' 'libwebp>=0.2.0' 'freetype2' 'openal' 'libogg'
          'libvorbis' 'speex' 'libtheora' 'opusfile' 'ncurses' 'xdg-utils'
          'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
