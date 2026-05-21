@@ -61,7 +61,7 @@ while IFS= read -r package || [ -n "$package" ]; do
 			config="discordcanary"
 		;;
 		ptb)
-			config="discordptptb"
+			config="discordptb"
 		;;
 		*)
 			echo_hook "Unsupported branch: $branch"
